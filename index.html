@@ -7,20 +7,27 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="assets/logo/favicon.png">
 </head>
 <body>
 
-<div class="cursor-dot" id="cursorDot"></div>
+<div class="page-wrap">
 
 <nav>
-  <a href="/" class="wordmark">Atlas</a>
+  <span class="nav-corner-l"></span>
+  <span class="nav-corner-r"></span>
+  <span class="nav-coords">59.9139°N · 10.7522°E</span>
+  <a href="/" class="wordmark"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></a>
   <div class="nav-links">
     <a href="/about.html">About Us</a>
+    <span class="nav-sep">|</span>
     <a href="/knowledge-base.html">Knowledge Base</a>
+    <span class="nav-sep">|</span>
     <a href="/podcast.html">Podcast</a>
   </div>
-  <a href="/enquire.html" class="nav-cta" data-hover>Enquire Now</a>
+  <a href="/enquire.html" class="nav-cta" data-hover><span>Enquire Now</span></a>
 </nav>
+<div class="nav-chevron"></div>
 
 <header class="hero">
   <div class="hero-media">
@@ -57,7 +64,7 @@
     <p>Our Himalayan expedition delivers an aerial experience that makes you soar over landscapes shaped by time and legend, you get to drift over ancient monasteries while exploring your limits in thin air. It's a journey that stirs the soul.</p>
     <div class="trip-facts">
       <div class="fact"><span class="fact-label">Duration</span><span class="fact-value">Placeholder</span></div>
-      <div class="fact"><span class="fact-label">Skill Level</span><span class="fact-value">Placeholder</span></div>
+      <div class="fact"><span class="fact-label">Skill Level</span><div class="skill-meter"><span class="skill-seg filled"></span><span class="skill-seg filled"></span><span class="skill-seg filled"></span><span class="skill-seg filled"></span><span class="skill-seg"></span></div></div>
       <div class="fact"><span class="fact-label">Group Size</span><span class="fact-value">Placeholder</span></div>
       <div class="fact"><span class="fact-label">Best Season</span><span class="fact-value">Placeholder</span></div>
     </div>
@@ -73,7 +80,7 @@
     <p>From chasing personal bests and world records to gliding over thousand year old baobab trees while observing zebras and giraffes in their natural habitat below, Our Kenya expedition offers an aerial exploration that is bound to make you yearning for more.</p>
     <div class="trip-facts">
       <div class="fact"><span class="fact-label">Duration</span><span class="fact-value">Placeholder</span></div>
-      <div class="fact"><span class="fact-label">Skill Level</span><span class="fact-value">Placeholder</span></div>
+      <div class="fact"><span class="fact-label">Skill Level</span><div class="skill-meter"><span class="skill-seg filled"></span><span class="skill-seg filled"></span><span class="skill-seg"></span><span class="skill-seg"></span><span class="skill-seg"></span></div></div>
       <div class="fact"><span class="fact-label">Group Size</span><span class="fact-value">Placeholder</span></div>
       <div class="fact"><span class="fact-label">Best Season</span><span class="fact-value">Placeholder</span></div>
     </div>
@@ -89,7 +96,7 @@
     <p>Let the calm Pacific breezes carry you into long, graceful, and endlessly rewarding flights. From traversing Lima's iconic cityscape skyline to discovering hidden gems in remote Andean communities, Peru offers a soaring adventure crafted for pilots who crave exploration and freedom.</p>
     <div class="trip-facts">
       <div class="fact"><span class="fact-label">Duration</span><span class="fact-value">Placeholder</span></div>
-      <div class="fact"><span class="fact-label">Skill Level</span><span class="fact-value">Placeholder</span></div>
+      <div class="fact"><span class="fact-label">Skill Level</span><div class="skill-meter"><span class="skill-seg filled"></span><span class="skill-seg filled"></span><span class="skill-seg filled"></span><span class="skill-seg"></span><span class="skill-seg"></span></div></div>
       <div class="fact"><span class="fact-label">Group Size</span><span class="fact-value">Placeholder</span></div>
       <div class="fact"><span class="fact-label">Best Season</span><span class="fact-value">Placeholder</span></div>
     </div>
@@ -105,7 +112,7 @@
     <p>Our Flagship Offering. This is an expedition for pilots who crave the feeling of floating over a landscape untouched, unhurried, and utterly otherworldly. Wind carved marvels make surreal rock formations look like we're flying in a lunarscape, and dried ancient seabeds become our landing grounds. Be a pilot or be a fossil hunter. We promise that you'll collect bragging rights for life in Kazakhstan!</p>
     <div class="trip-facts">
       <div class="fact"><span class="fact-label">Duration</span><span class="fact-value">Placeholder</span></div>
-      <div class="fact"><span class="fact-label">Skill Level</span><span class="fact-value">Placeholder</span></div>
+      <div class="fact"><span class="fact-label">Skill Level</span><div class="skill-meter"><span class="skill-seg filled"></span><span class="skill-seg filled"></span><span class="skill-seg filled"></span><span class="skill-seg filled"></span><span class="skill-seg filled"></span></div></div>
       <div class="fact"><span class="fact-label">Group Size</span><span class="fact-value">Placeholder</span></div>
       <div class="fact"><span class="fact-label">Best Season</span><span class="fact-value">Placeholder</span></div>
     </div>
@@ -142,10 +149,11 @@
 
 <section class="cta-band">
   <div class="cta-card">
+  <span class="cta-hud-tag">Booking Open</span>
   <p class="cta-eyebrow">Ready To Touch The Sky With Glory?</p>
   <h2>Book a free 30-minute, no obligation virtual call</h2>
   <div class="cta-buttons">
-    <a href="/book-a-call.html" class="btn-solid" data-hover><span>Book a Call</span></a>
+    <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" class="btn-solid" data-hover><span>Book a Call</span></a>
     <a href="https://wa.me/4796757456" target="_blank" rel="noopener" class="listen-btn" data-hover>
       <span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.4-4.1A7.9 7.9 0 1 1 8.7 19L4 20Z"/><path d="M8.5 9.5c.3-.8 1-.7 1.5-.5.3.1.5.6.7 1 .2.4.1.6-.1.9-.2.3-.4.4-.2.8.2.4 1 1.5 2.3 2 .3.1.5.1.7-.1.2-.3.6-.8.9-1 .3-.2.5-.1.8 0 .3.1 1.6.7 1.9.9.2.1.4.2.4.5 0 .8-.3 1.6-1.4 1.9-1 .3-1.8.2-3.2-.3-2.6-1-4.3-3.5-4.5-3.8-.1-.2-1-1.3-1-2.5 0-1.1.6-1.6.8-1.8Z" fill="currentColor" stroke="none"/></svg>
@@ -179,36 +187,69 @@
     <p>Conversations with pilots, dreamers and those who have lived life around a wing. Each episode dives into the mindset, journeys, and defining moments in the skies where flying, travel, and personal growth all converge while creating the art of flight.</p>
     <p>Discover our most streamed podcast episodes below. Handpicked favorites packed with wanderlust vibes, tech insights, pro hacks, and free flight folklore.</p>
   </div>
-  <div class="episodes">
-    <div class="ep-card">
-      <div class="ep-photo"><img src="assets/podcast/guest-honorin.jpg" alt="Honorin Hamard"></div>
-      <p class="ep-title">Flying To Win</p>
-      <p class="ep-name">Honorin Hamard</p>
-      <a href="#" class="ep-link" data-hover>Listen Now →</a>
-    </div>
-    <div class="ep-card">
-      <div class="ep-photo"><img src="assets/podcast/guest-antoine.jpg" alt="Antoine Girard"></div>
-      <p class="ep-title">Flying 8000ers</p>
-      <p class="ep-name">Antoine Girard</p>
-      <a href="#" class="ep-link" data-hover>Listen Now →</a>
-    </div>
-    <div class="ep-card">
-      <div class="ep-photo"><img src="assets/podcast/guest-urs-haari.jpg" alt="Urs Haari"></div>
-      <p class="ep-title">Untold Truth About Reserve Parachutes</p>
-      <p class="ep-name">Urs Haari</p>
-      <a href="#" class="ep-link" data-hover>Listen Now →</a>
-    </div>
-    <div class="ep-card">
-      <div class="ep-photo"><img src="assets/podcast/guest-kinga.jpg" alt="Kinga Masztalerz"></div>
-      <p class="ep-title">Master Fear, Build Resilience &amp; Find Joy</p>
-      <p class="ep-name">Kinga Masztalerz</p>
-      <a href="#" class="ep-link" data-hover>Listen Now →</a>
-    </div>
-    <div class="ep-card">
-      <div class="ep-photo"><img src="assets/podcast/guest-will-gadd.jpg" alt="Will Gadd"></div>
-      <p class="ep-title">Field Protocols For Rewiring Risk Intuition</p>
-      <p class="ep-name">Will Gadd</p>
-      <a href="#" class="ep-link" data-hover>Listen Now →</a>
+  <div class="episodes-viewport">
+    <div class="ep-track">
+      <div class="ep-card">
+        <div class="ep-photo"><img src="assets/podcast/guest-honorin.jpg" alt="Honorin Hamard"></div>
+        <p class="ep-title">Flying To Win</p>
+        <p class="ep-name">Honorin Hamard</p>
+        <a href="#" class="ep-link" data-hover>Listen Now →</a>
+      </div>
+      <div class="ep-card">
+        <div class="ep-photo"><img src="assets/podcast/guest-antoine.jpg" alt="Antoine Girard"></div>
+        <p class="ep-title">Flying 8000ers</p>
+        <p class="ep-name">Antoine Girard</p>
+        <a href="#" class="ep-link" data-hover>Listen Now →</a>
+      </div>
+      <div class="ep-card">
+        <div class="ep-photo"><img src="assets/podcast/guest-urs-haari.jpg" alt="Urs Haari"></div>
+        <p class="ep-title">Untold Truth About Reserve Parachutes</p>
+        <p class="ep-name">Urs Haari</p>
+        <a href="#" class="ep-link" data-hover>Listen Now →</a>
+      </div>
+      <div class="ep-card">
+        <div class="ep-photo"><img src="assets/podcast/guest-kinga.jpg" alt="Kinga Masztalerz"></div>
+        <p class="ep-title">Master Fear, Build Resilience &amp; Find Joy</p>
+        <p class="ep-name">Kinga Masztalerz</p>
+        <a href="#" class="ep-link" data-hover>Listen Now →</a>
+      </div>
+      <div class="ep-card">
+        <div class="ep-photo"><img src="assets/podcast/guest-will-gadd.jpg" alt="Will Gadd"></div>
+        <p class="ep-title">Field Protocols For Rewiring Risk Intuition</p>
+        <p class="ep-name">Will Gadd</p>
+        <a href="#" class="ep-link" data-hover>Listen Now →</a>
+      </div>
+      <!-- duplicated for a seamless loop -->
+      <div class="ep-card" aria-hidden="true">
+        <div class="ep-photo"><img src="assets/podcast/guest-honorin.jpg" alt=""></div>
+        <p class="ep-title">Flying To Win</p>
+        <p class="ep-name">Honorin Hamard</p>
+        <a href="#" class="ep-link" tabindex="-1">Listen Now →</a>
+      </div>
+      <div class="ep-card" aria-hidden="true">
+        <div class="ep-photo"><img src="assets/podcast/guest-antoine.jpg" alt=""></div>
+        <p class="ep-title">Flying 8000ers</p>
+        <p class="ep-name">Antoine Girard</p>
+        <a href="#" class="ep-link" tabindex="-1">Listen Now →</a>
+      </div>
+      <div class="ep-card" aria-hidden="true">
+        <div class="ep-photo"><img src="assets/podcast/guest-urs-haari.jpg" alt=""></div>
+        <p class="ep-title">Untold Truth About Reserve Parachutes</p>
+        <p class="ep-name">Urs Haari</p>
+        <a href="#" class="ep-link" tabindex="-1">Listen Now →</a>
+      </div>
+      <div class="ep-card" aria-hidden="true">
+        <div class="ep-photo"><img src="assets/podcast/guest-kinga.jpg" alt=""></div>
+        <p class="ep-title">Master Fear, Build Resilience &amp; Find Joy</p>
+        <p class="ep-name">Kinga Masztalerz</p>
+        <a href="#" class="ep-link" tabindex="-1">Listen Now →</a>
+      </div>
+      <div class="ep-card" aria-hidden="true">
+        <div class="ep-photo"><img src="assets/podcast/guest-will-gadd.jpg" alt=""></div>
+        <p class="ep-title">Field Protocols For Rewiring Risk Intuition</p>
+        <p class="ep-name">Will Gadd</p>
+        <a href="#" class="ep-link" tabindex="-1">Listen Now →</a>
+      </div>
     </div>
   </div>
   <div class="listen-bar">
@@ -256,6 +297,13 @@
 </section>
 
 <section class="newsletter">
+  <svg class="contour-bg" viewBox="0 0 1000 500" preserveAspectRatio="none">
+    <path d="M-20 80 C 150 40, 300 120, 480 70 S 800 20, 1020 90" fill="none" stroke="currentColor" stroke-width="1"/>
+    <path d="M-20 150 C 180 100, 340 200, 500 140 S 820 90, 1020 170" fill="none" stroke="currentColor" stroke-width="1"/>
+    <path d="M-20 230 C 200 170, 360 280, 520 210 S 840 160, 1020 250" fill="none" stroke="currentColor" stroke-width="1"/>
+    <path d="M-20 310 C 220 250, 380 360, 540 290 S 860 240, 1020 330" fill="none" stroke="currentColor" stroke-width="1"/>
+    <path d="M-20 390 C 240 330, 400 440, 560 370 S 880 320, 1020 410" fill="none" stroke="currentColor" stroke-width="1"/>
+  </svg>
   <span class="newsletter-ring"></span>
   <div class="newsletter-left">
     <p class="newsletter-eyebrow">Stay In Touch</p>
@@ -270,10 +318,15 @@
   </div>
 </section>
 
+
+
+</div><!-- /.page-wrap -->
+
 <footer>
+  <div class="footer-content">
   <div class="footer-top">
     <div class="footer-col">
-      <span class="wordmark">Atlas</span>
+      <span class="wordmark"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></span>
       <p>Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>Oslo, Norway</p>
     </div>
     <div class="footer-col">
@@ -300,6 +353,10 @@
     <span>Privacy Policy</span>
     <span>Cookie Policy</span>
     <span>Paragliding Atlas 2026</span>
+  </div>
+  </div>
+  <div class="footer-graphic">
+    <img src="assets/footer/mountains.png" alt="Paragliding Atlas — Touch the Sky with Glory">
   </div>
 </footer>
 

@@ -1,20 +1,40 @@
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const dot = document.getElementById('cursorDot');
 
-if (!reduced && dot && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-  window.addEventListener('mousemove', (e) => {
-    dot.style.left = e.clientX + 'px';
-    dot.style.top = e.clientY + 'px';
+// Topo map parallax (About page) — subtle vertical drift as the section scrolls by
+const topoBg = document.getElementById('topoBg');
+const discoverSection = document.getElementById('discoverSection');
+if (topoBg && discoverSection && !reduced) {
+  let ticking = false;
+  function updateParallax() {
+    const rect = discoverSection.getBoundingClientRect();
+    const viewportMid = window.innerHeight / 2;
+    const sectionMid = rect.top + rect.height / 2;
+    const offset = (viewportMid - sectionMid) * 0.08;
+    topoBg.style.transform = `translateY(${offset}px)`;
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
   });
+  updateParallax();
+}
+if (!reduced) {
+  const revealTargets = document.querySelectorAll(
+    '.destination, .why-card, .cta-card, .ep-card, .newsletter, .ep-map-section'
+  );
+  revealTargets.forEach((el) => el.classList.add('reveal'));
 
-  document.querySelectorAll('[data-hover]').forEach((el) => {
-    el.addEventListener('mouseenter', () => {
-      dot.style.transform = 'translate(-50%,-65%) scale(1.8)';
-      dot.style.background = 'var(--orange)';
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
     });
-    el.addEventListener('mouseleave', () => {
-      dot.style.transform = 'translate(-50%,-65%) scale(1)';
-      dot.style.background = 'var(--white)';
-    });
-  });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  revealTargets.forEach((el) => observer.observe(el));
 }
