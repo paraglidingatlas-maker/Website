@@ -25,16 +25,34 @@ if (!reduced) {
   const revealTargets = document.querySelectorAll(
     '.destination, .why-card, .cta-card, .ep-card, .newsletter, .ep-map-section'
   );
-  revealTargets.forEach((el) => el.classList.add('reveal'));
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    revealTargets.forEach((el, i) => {
+      gsap.from(el, {
+        opacity: 0,
+        y: 40,
+        duration: 0.9,
+        delay: (i % 5) * 0.06,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 88%',
+          toggleActions: 'play none none none',
+        },
+      });
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-
-  revealTargets.forEach((el) => observer.observe(el));
+  } else {
+    // Fallback: plain CSS-transition reveal if GSAP failed to load
+    revealTargets.forEach((el) => el.classList.add('reveal'));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+    revealTargets.forEach((el) => observer.observe(el));
+  }
 }
