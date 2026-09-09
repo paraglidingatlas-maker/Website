@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Episodes: Paragliding Atlas</title>
+<link rel="icon" type="image/png" href="assets/logo/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Functional first pass — real layout/design to be built next */
+  .lib-hero{padding:clamp(3rem,7vw,4.5rem) clamp(1.5rem,5vw,4rem) clamp(2rem,5vw,3rem);background:var(--bg);}
+  .lib-hero h1{font-family:var(--font-display);font-weight:800;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--white);margin-bottom:0.6rem;}
+  .lib-hero p{color:var(--gray-light);font-size:0.95rem;}
+  .lib-controls{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+    padding:0 clamp(1.5rem,5vw,4rem) 1.5rem;background:var(--bg);
+  }
+  .lib-count{color:var(--gray-light);font-size:0.88rem;}
+  .lib-sort{display:flex;align-items:center;gap:0.6rem;}
+  .lib-sort label{color:var(--gray-light);font-size:0.85rem;}
+  .lib-sort select{
+    background:var(--card);color:var(--white);border:1px solid rgba(180,180,180,0.25);
+    padding:0.5rem 0.9rem;font-family:var(--font-body);font-size:0.85rem;
+  }
+  .lib-list{padding:0 clamp(1.5rem,5vw,4rem) clamp(3rem,7vw,4.5rem);background:var(--bg);}
+  .lib-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:1.2rem;max-width:1400px;margin:0 auto;}
+  .lib-card{
+    display:block;background:var(--card);border:1px solid rgba(180,180,180,0.15);
+    padding:1.3rem;text-decoration:none;transition:border-color 0.2s ease, transform 0.2s ease;
+  }
+  .lib-card:hover{border-color:rgba(255,117,23,0.4);transform:translateY(-2px);}
+  .lib-card-title{color:var(--white);font-weight:600;font-size:0.92rem;line-height:1.4;}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+<nav>
+  <span class="nav-corner-l"></span>
+  <span class="nav-corner-r"></span>
+  <span class="nav-coords">59.9139°N · 10.7522°E</span>
+  <a href="index.html" class="wordmark"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></a>
+  <div class="nav-links">
+    <a href="about.html">About Us</a>
+    <span class="nav-sep">|</span>
+    <a href="knowledge-base.html">Knowledge Base</a>
+    <span class="nav-sep">|</span>
+    <a href="podcast.html">Podcast</a>
+  </div>
+  <a href="enquire.html" class="nav-cta" data-hover><span>Enquire Now</span></a>
+</nav>
+<div class="nav-chevron"></div>
+
+<header class="lib-hero">
+  <h1>All Episodes</h1>
+  <p>Every episode we've published, in one place. Real layout and design coming next — this is the functional first pass.</p>
+</header>
+
+<div class="lib-controls">
+  <p class="lib-count" id="libCount"></p>
+  <div class="lib-sort">
+    <label for="libSortSelect">Sort by:</label>
+    <select id="libSortSelect">
+      <option value="title-asc">Title (A–Z)</option>
+      <option value="title-desc">Title (Z–A)</option>
+    </select>
+  </div>
+</div>
+
+<div class="lib-list">
+  <div class="lib-grid" id="libGrid"></div>
+</div>
+
+</div><!-- /.page-wrap -->
+
+<footer>
+  <div class="footer-content">
+  <div class="footer-top">
+    <div class="footer-col">
+      <span class="wordmark"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></span>
+      <p>Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>Oslo, Norway</p>
+    </div>
+    <div class="footer-col">
+      <h4>Enquiries</h4>
+      <a href="#">General</a>
+      <a href="#">Trips</a>
+      <a href="#">FAQs</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#">All Episodes</a>
+      <a href="#">Kenya Tour</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Links</h4>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="#">Passion</a>
+      <a href="#">Mission Statement</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Terms &amp; Conditions</span>
+    <span>Privacy Policy</span>
+    <span>Cookie Policy</span>
+    <span>Paragliding Atlas 2026</span>
+  </div>
+  </div>
+  <div class="footer-graphic">
+    <img src="assets/footer/mountains.png" alt="Paragliding Atlas — Touch the Sky with Glory">
+  </div>
+</footer>
+
+<script src="episode-search-data.js"></script>
+<script>
+  // Functional first pass: real data, basic sort. Visual layout to be
+  // designed properly in the next step per request.
+  const grid = document.getElementById('libGrid');
+  const countEl = document.getElementById('libCount');
+  const sortSelect = document.getElementById('libSortSelect');
+
+  function render() {
+    const sortVal = sortSelect.value;
+    const sorted = [...EPISODE_SEARCH_DATA].sort((a, b) => {
+      if (sortVal === 'title-asc') return a.title.localeCompare(b.title);
+      if (sortVal === 'title-desc') return b.title.localeCompare(a.title);
+      return 0;
+    });
+
+    countEl.textContent = `${sorted.length} episodes`;
+    grid.innerHTML = sorted
+      .map(
+        (ep) => `
+      <a class="lib-card" href="https://www.youtube.com/watch?v=${ep.video_id}" target="_blank" rel="noopener">
+        <p class="lib-card-title">${ep.title}</p>
+      </a>`
+      )
+      .join('');
+  }
+
+  sortSelect.addEventListener('change', render);
+  render();
+</script>
+<script src="script.js"></script>
+</body>
+</html>
