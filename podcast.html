@@ -169,7 +169,31 @@
     background:linear-gradient(180deg, var(--card) 0%, var(--card) 82%, var(--bg) 100%);
     padding:clamp(3.5rem,8vw,5.5rem) clamp(1.5rem,5vw,4rem);
   }
-  /* ===== COLLABORATE / SPONSOR ===== */
+  /* ===== WHAT YOU CAN EXPECT ===== */
+  .expect-section{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:var(--bg);}
+  .expect-head{max-width:700px;margin:0 auto 3rem;text-align:center;}
+  .expect-head .kicker{margin-bottom:0.6rem;}
+  .expect-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--white);}
+  .expect-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;max-width:1400px;margin:0 auto;}
+  .expect-item{text-align:center;}
+  .expect-icon{
+    width:52px;height:52px;border-radius:50%;background:var(--card);border:1.5px solid var(--orange);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;
+    transition:box-shadow 0.25s ease, transform 0.25s ease;
+  }
+  .expect-item:hover .expect-icon{box-shadow:0 0 16px 2px rgba(255,117,23,0.5);transform:scale(1.08);}
+  .expect-icon svg{width:22px;height:22px;color:var(--orange);}
+  .expect-item h3{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--white);margin-bottom:0.8rem;}
+  .expect-item p{color:var(--gray-light);font-size:0.85rem;line-height:1.65;}
+
+  @media(max-width:1000px){
+    .expect-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:560px){
+    .expect-grid{grid-template-columns:1fr;}
+  }
+
+
   .work-with-us{
     padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);
     background:linear-gradient(180deg, var(--bg) 0%, var(--bg) 85%, var(--card) 100%);
@@ -383,6 +407,40 @@
       <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="listen-btn" data-hover><span>Spotify</span></a>
       <a href="https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803" target="_blank" rel="noopener" class="listen-btn" data-hover><span>Apple Podcasts</span></a>
       <a href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener" class="listen-btn" data-hover><span>YouTube</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="expect-section">
+  <div class="expect-head">
+    <p class="kicker">What The Show Is About</p>
+    <h2>What You Can Expect</h2>
+  </div>
+  <div class="expect-grid">
+    <div class="expect-item">
+      <div class="expect-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-6 2 2-6Z" fill="currentColor" stroke="none"/></svg></div>
+      <h3>Global Destinations</h3>
+      <p>From the towering peaks of the Himalayas to the serene landscapes of the African Highlands, join us as we explore the world's premier paragliding spots</p>
+    </div>
+    <div class="expect-item">
+      <div class="expect-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
+      <h3>Expert Insights</h3>
+      <p>Learn the ins and outs of paragliding with advice from professionals who live and breathe the sport. Discover the best seasons for flying, understand complex topographies, and get a sneak peek into local flying cultures.</p>
+    </div>
+    <div class="expect-item">
+      <div class="expect-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6l7-3Z"/></svg></div>
+      <h3>Safety First</h3>
+      <p>Navigating the skies is thrilling, but safety is paramount. Gain knowledge about airspace regulations, weather considerations, and equipment must-haves to ensure each flight is not just exhilarating but also secure.</p>
+    </div>
+    <div class="expect-item">
+      <div class="expect-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 12.6 12 21.2 2.8 12 4 4l8-1.2 8.6 8.8Z"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+      <h3>Cultural Immersion</h3>
+      <p>Paragliding is more than just taking off; it's about immersing yourself in new cultures. Learn about the customs, traditions, and local delicacies that make each destination unique.</p>
+    </div>
+    <div class="expect-item">
+      <div class="expect-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></div>
+      <h3>Thematic Mini-Series</h3>
+      <p>Dive deeper with our thematic mini-series, where we zoom in on specific topics, hosting a lineup of industry professionals to share their stories, challenges, and the joy of flying.</p>
     </div>
   </div>
 </section>
