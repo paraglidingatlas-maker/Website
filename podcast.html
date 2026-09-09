@@ -18,11 +18,6 @@
   .pod-hero-copy h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.08;color:var(--white);margin-bottom:1rem;}
   .pod-hero-copy p{color:var(--gray-light);font-size:1.05rem;max-width:600px;}
 
-  .stat-bar{padding:2.2rem clamp(1.5rem,5vw,4rem);background:var(--card);border-top:1px solid rgba(180,180,180,0.15);border-bottom:1px solid rgba(180,180,180,0.15);display:flex;justify-content:center;gap:clamp(2rem,6vw,5rem);flex-wrap:wrap;}
-  .stat-item{text-align:center;}
-  .stat-item .num{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--orange);}
-  .stat-item .label{color:var(--gray-light);font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;}
-
   .host{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:var(--bg);border-bottom:1px solid rgba(180,180,180,0.15);display:grid;grid-template-columns:280px 1fr;gap:3rem;align-items:start;}
   .host-photo{width:100%;aspect-ratio:1/1;background:var(--card);border:1px solid rgba(255,117,23,0.25);display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:0.8rem;text-align:center;padding:1rem;}
   .host-copy .kicker{color:var(--orange);font-size:0.95rem;font-weight:500;margin-bottom:0.6rem;}
@@ -30,18 +25,186 @@
   .host-copy p{color:var(--gray-light);line-height:1.75;margin-bottom:1.1rem;max-width:62ch;}
   .host-platforms{display:flex;gap:0.9rem;flex-wrap:wrap;margin-top:1.5rem;}
 
-  .archive{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:var(--bg);border-bottom:1px solid rgba(180,180,180,0.15);}
-  .archive-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:2.5rem;}
-  .archive-head .kicker{color:var(--orange);font-size:0.95rem;font-weight:500;margin-bottom:0.6rem;}
-  .archive-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--white);}
-  .archive-search{position:relative;min-width:260px;}
-  .archive-search input{
-    width:100%;background:var(--card);border:1px solid rgba(255,117,23,0.3);
-    color:var(--white);padding:0.75rem 1rem 0.75rem 2.4rem;font-family:var(--font-body);font-size:0.9rem;
+  /* ===== PULL QUOTE ===== */
+  .pull-quote{
+    position:relative;padding:clamp(3rem,7vw,4.5rem) clamp(1.5rem,5vw,6rem);
+    background:var(--card);border-bottom:1px solid rgba(180,180,180,0.15);text-align:center;
   }
-  .archive-search input::placeholder{color:var(--gray);}
-  .archive-search svg{position:absolute;left:0.8rem;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--orange);}
-  .archive-count{color:var(--gray);font-size:0.8rem;margin-bottom:1.5rem;}
+  .quote-mark{
+    display:block;font-family:var(--font-display);font-weight:800;font-size:4rem;color:var(--orange);
+    opacity:0.5;line-height:1;margin-bottom:-1rem;
+  }
+  .pull-quote p{
+    font-family:var(--font-display);font-weight:600;font-size:clamp(1.2rem,2.6vw,1.7rem);
+    color:var(--white);line-height:1.5;max-width:900px;margin:0 auto;
+  }
+
+  /* ===== ANIMATED STAT BAR ===== */
+  .stat-bar{padding:2.4rem clamp(1.5rem,5vw,4rem);background:var(--bg);border-bottom:1px solid rgba(180,180,180,0.15);display:flex;justify-content:center;gap:clamp(2.5rem,7vw,6rem);flex-wrap:wrap;}
+  .stat-item{text-align:center;}
+  .stat-item .num{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--orange);}
+  .stat-item .label{color:var(--gray-light);font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;}
+
+  /* ===== GLIMPSE OF THE SHOW ===== */
+  .glimpse{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:var(--bg);border-bottom:1px solid rgba(180,180,180,0.15);}
+  .glimpse-head{max-width:700px;margin:0 auto 2.5rem;text-align:center;}
+  .glimpse-head .kicker{color:var(--orange);font-size:0.95rem;font-weight:500;margin-bottom:0.8rem;}
+  .glimpse-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.3rem);color:var(--white);line-height:1.3;}
+  .glimpse-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;max-width:1300px;margin:0 auto;}
+  .glimpse-photo{position:relative;aspect-ratio:3/4;overflow:hidden;}
+  .glimpse-photo.tall{aspect-ratio:3/4.6;margin-top:-1.5rem;}
+  .glimpse-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(0.3);transition:filter 0.3s ease, transform 0.4s ease;}
+  .glimpse-photo:hover img{filter:grayscale(0);transform:scale(1.05);}
+  .glimpse-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, transparent 50%, rgba(20,21,25,0.85) 100%);}
+  .glimpse-name{position:absolute;bottom:0.8rem;left:0;right:0;text-align:center;color:var(--white);font-size:0.8rem;font-weight:600;z-index:1;}
+
+  @media(max-width:820px){
+    .glimpse-grid{grid-template-columns:repeat(2,1fr);}
+    .glimpse-photo.tall{margin-top:0;}
+  }
+
+  /* ===== FEEDBACK SECTION: testimonials + question form ===== */
+  .feedback-section{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:var(--card);border-bottom:1px solid rgba(180,180,180,0.15);}
+  .testimonials-head{text-align:center;margin-bottom:2.5rem;}
+  .testimonials-head .kicker{color:var(--orange);font-size:0.95rem;font-weight:500;}
+  .testimonials-wrap{display:flex;align-items:center;gap:1rem;max-width:1300px;margin:0 auto 3.5rem;}
+  .testi-arrow{
+    flex-shrink:0;width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(255,117,23,0.4);
+    background:none;color:var(--orange);display:flex;align-items:center;justify-content:center;cursor:pointer;
+    transition:background 0.2s ease;
+  }
+  .testi-arrow:hover{background:rgba(255,117,23,0.15);}
+  .testi-arrow svg{width:16px;height:16px;}
+  .testimonials-track{
+    display:flex;gap:1.2rem;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;
+    flex:1;padding-bottom:0.5rem;
+  }
+  .testimonials-track::-webkit-scrollbar{display:none;}
+  .testi-card{
+    flex:0 0 260px;scroll-snap-align:start;background:var(--bg);border:1px solid rgba(180,180,180,0.15);
+    border-top:2px solid var(--orange);padding:1.6rem 1.4rem;
+  }
+  .testi-quote{font-family:var(--font-display);font-weight:700;font-size:0.98rem;color:var(--white);margin-bottom:0.8rem;}
+  .testi-body{color:var(--gray-light);font-size:0.86rem;line-height:1.6;margin-bottom:1.2rem;}
+  .testi-by{color:var(--gray);font-size:0.76rem;text-transform:uppercase;letter-spacing:0.05em;}
+
+  .glassB-wrap{position:relative;background:radial-gradient(ellipse at 30% 20%, rgba(255,117,23,0.15), transparent 60%),radial-gradient(ellipse at 80% 80%, rgba(255,117,23,0.08), transparent 60%);}
+  .glassB{
+    position:relative;max-width:900px;margin:0 auto;padding:2rem 2.5rem;
+    background:rgba(255,255,255,0.04);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    border-left:3px solid var(--orange);
+  }
+  .glassB::before{
+    content:"";position:absolute;inset:0;padding:1px;
+    background:conic-gradient(from var(--a,0deg), var(--orange), transparent 25%, transparent 75%, #1e3a8a, var(--orange));
+    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;
+    animation:rotate-border 4s linear infinite;
+    pointer-events:none;
+  }
+  @keyframes rotate-border{to{--a:360deg;}}
+  @property --a{syntax:'<angle>';initial-value:0deg;inherits:false;}
+  .glassB::after{
+    content:"";position:absolute;top:12px;right:12px;width:16px;height:16px;
+    border:1.5px solid rgba(255,117,23,0.6);border-left:none;border-bottom:none;
+  }
+  .glassB-tag{position:relative;display:inline-block;color:var(--gray-light);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.9rem;}
+  .glassB-title{position:relative;font-family:var(--font-display);font-weight:700;font-size:1.4rem;color:var(--white);}
+  .glassB-sub{position:relative;color:var(--gray-light);font-size:0.88rem;max-width:44ch;margin-bottom:1.5rem;}
+  .glassB-row{display:flex;gap:1rem;margin-bottom:1rem;position:relative;flex-wrap:wrap;}
+  .glassB-row input{flex:1;min-width:200px;}
+  .glassB-field{position:relative;margin-bottom:1.2rem;}
+  .glassB-field input, .glassB-field textarea, .glassB-row input{
+    width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);
+    color:var(--white);padding:0.8rem 1.1rem;font-family:var(--font-body);font-size:0.9rem;
+    outline:none;box-shadow:none;border-radius:0;-webkit-appearance:none;appearance:none;
+  }
+  .glassB-field textarea{resize:vertical;min-height:70px;}
+  .glassB-row input:focus, .glassB-field input:focus, .glassB-field textarea:focus{border-color:var(--orange);}
+  .glassB-field input::placeholder, .glassB-field textarea::placeholder, .glassB-row input::placeholder{color:var(--gray);}
+  .glassB-bottom{display:flex;justify-content:space-between;align-items:center;position:relative;flex-wrap:wrap;gap:1rem;}
+  .glassB-submit{
+    background:var(--orange);color:#171712;border:none;padding:0.85rem 1.8rem;
+    font-weight:700;font-size:0.9rem;cursor:pointer;
+    transform:skewX(-10deg);transform-origin:left top;
+  }
+  .glassB-submit span{display:inline-block;transform:skewX(10deg);}
+  .qf-status{color:var(--orange);font-size:0.85rem;position:relative;}
+
+  @media(max-width:700px){
+    .testi-card{flex-basis:220px;}
+  }
+
+  .archive{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:var(--bg);border-bottom:1px solid rgba(180,180,180,0.15);}
+
+  /* ===== NEVER MISS AN EPISODE — animated equalizer newsletter ===== */
+  .pod-newsletter{
+    position:relative;overflow:hidden;background:var(--bg);
+    padding:clamp(3.5rem,8vw,5.5rem) clamp(1.5rem,5vw,4rem);
+    border-bottom:1px solid rgba(180,180,180,0.15);
+  }
+  .eq-bars{
+    position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-between;
+    padding:0;gap:2px;opacity:0.35;
+  }
+  .eq-bars span{
+    flex:1;background:linear-gradient(180deg, var(--orange), transparent);
+    animation:eq-bounce 1.4s ease-in-out infinite;
+    transform-origin:bottom;
+  }
+  @keyframes eq-bounce{
+    0%,100%{transform:scaleY(0.15);}
+    50%{transform:scaleY(1);}
+  }
+  @media(prefers-reduced-motion: reduce){
+    .eq-bars span{animation:none;transform:scaleY(0.4);}
+  }
+  .pod-newsletter-panel{
+    position:relative;z-index:1;
+    background:rgba(32,33,39,0.55);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border:1px solid rgba(255,117,23,0.25);
+    padding:clamp(2rem,5vw,3rem);
+    display:flex;align-items:center;justify-content:space-between;gap:2.5rem;flex-wrap:wrap;
+  }
+  .pod-newsletter-left{display:flex;align-items:center;gap:1.3rem;}
+  .pod-newsletter-icon{
+    width:52px;height:52px;border-radius:50%;border:1.5px solid var(--orange);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    animation:live-pulse 2.4s ease-in-out infinite;
+  }
+  .pod-newsletter-icon svg{width:24px;height:24px;color:var(--orange);}
+  .pod-newsletter-left h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.4rem,2.5vw,1.9rem);color:var(--white);margin-bottom:0.4rem;}
+  .pod-newsletter-left p{color:var(--gray-light);font-size:0.92rem;max-width:38ch;}
+  .pod-newsletter-form{display:flex;gap:0;flex-shrink:0;position:relative;}
+  .pod-newsletter-input-wrap{position:relative;}
+  .pod-newsletter-form input{
+    background:transparent;border:none;
+    border-top:1px solid rgba(180,180,180,0.4);
+    border-bottom:1px solid rgba(180,180,180,0.4);
+    padding:0.9rem 1.4rem;color:var(--white);font-family:var(--font-body);font-size:0.95rem;
+    width:380px;letter-spacing:0.02em;
+    outline:none;box-shadow:none;border-radius:0;
+    -webkit-appearance:none;appearance:none;
+    transition:border-color 0.2s ease;
+  }
+  .pod-newsletter-form input:focus, .pod-newsletter-form input:focus-visible{
+    outline:none !important;box-shadow:none !important;
+    border-top-color:var(--orange);border-bottom-color:var(--orange);
+  }
+  .pod-newsletter-form input::placeholder{color:var(--gray);}
+  .pod-newsletter-form button{
+    background:var(--orange);color:var(--bg);border:none;font-weight:700;font-size:0.9rem;
+    padding:0 1.8rem;cursor:pointer;transform:skewX(-8deg);transform-origin:left top;
+    letter-spacing:0.03em;text-transform:uppercase;
+  }
+  .pod-newsletter-form button span{display:inline-block;transform:skewX(8deg);}
+
+  @media(max-width:700px){
+    .pod-newsletter-panel{flex-direction:column;align-items:flex-start;}
+    .pod-newsletter-form{width:100%;}
+    .pod-newsletter-form input{flex:1;min-width:0;width:auto;}
+  }
 
   .live-feed{margin-bottom:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(180,180,180,0.15);}
   .live-feed-head{display:flex;align-items:center;gap:0.6rem;margin-bottom:1.3rem;}
@@ -106,17 +269,6 @@
   .see-more-btn:disabled{opacity:0.4;cursor:default;}
   .live-counter{color:var(--gray);font-size:0.78rem;border:1px solid rgba(180,180,180,0.2);padding:0.3rem 0.8rem;border-radius:20px;}
 
-  .arc-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));gap:1rem;}
-  .arc-card{
-    display:flex;flex-direction:column;justify-content:space-between;gap:1rem;
-    background:var(--card);border:1px solid rgba(180,180,180,0.12);padding:1.2rem 1.3rem;
-    min-height:110px;transition:border-color 0.2s ease, transform 0.2s ease;
-  }
-  .arc-card:hover{border-color:rgba(255,117,23,0.4);transform:translateY(-2px);}
-  .arc-title{color:var(--white);font-size:0.88rem;font-weight:600;line-height:1.4;}
-  .arc-link{color:var(--orange);font-size:0.8rem;font-weight:600;}
-  .arc-card.hidden{display:none;}
-
   @media(max-width:820px){
     .host{grid-template-columns:1fr;}
     .host-photo{max-width:220px;}
@@ -154,11 +306,15 @@
   </div>
 </header>
 
-<div class="stat-bar">
-  <div class="stat-item"><span class="num">79</span><span class="label">Episodes</span></div>
-  <div class="stat-item"><span class="num">20+</span><span class="label">Countries</span></div>
-  <div class="stat-item"><span class="num">60+</span><span class="label">Expert Guests</span></div>
-  <div class="stat-item"><span class="num">Weekly</span><span class="label">New Episodes</span></div>
+<section class="pull-quote">
+  <span class="quote-mark">"</span>
+  <p>Intimate, deep and often thought provoking, these conversations are curated to stimulate, educate, inspire and empower you to touch the sky with glory every time you practice the art of flight.</p>
+</section>
+
+<div class="stat-bar" id="animStats">
+  <div class="stat-item"><span class="num" data-target="100000" data-suffix="+">0</span><span class="label">Streams</span></div>
+  <div class="stat-item"><span class="num" data-target="130" data-suffix="+">0</span><span class="label">Countries Reached</span></div>
+  <div class="stat-item"><span class="num" data-target="80" data-suffix="+">0</span><span class="label">Expert Insights</span></div>
 </div>
 
 <section class="host">
@@ -167,12 +323,25 @@
     <p class="kicker">Meet Your Host</p>
     <h2>Aninder Singh</h2>
     <p>Every week, Aninder dives deep into all things paragliding with some of the most forward-thinking, paradigm-busting minds in the sport.</p>
-    <p>Intimate, deep, and often thought-provoking, these conversations are curated to stimulate, educate, and empower you to touch the sky with glory every time you practice the art of flight.</p>
     <div class="host-platforms">
       <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="listen-btn" data-hover><span>Spotify</span></a>
       <a href="https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803" target="_blank" rel="noopener" class="listen-btn" data-hover><span>Apple Podcasts</span></a>
       <a href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener" class="listen-btn" data-hover><span>YouTube</span></a>
     </div>
+  </div>
+</section>
+
+<section class="glimpse">
+  <div class="glimpse-head">
+    <p class="kicker">A Glimpse Of The Show</p>
+    <h2>Conversations Drawn From The World Of Free Flight In The Blue Yonder</h2>
+  </div>
+  <div class="glimpse-grid">
+    <div class="glimpse-photo"><img src="assets/podcast/guest-will-gadd.jpg" alt="Will Gadd"><span class="glimpse-name">Will Gadd</span></div>
+    <div class="glimpse-photo tall"><img src="assets/podcast/guest-honorin.jpg" alt="Honorin Hamard"><span class="glimpse-name">Honorin Hamard</span></div>
+    <div class="glimpse-photo"><img src="assets/podcast/guest-kinga.jpg" alt="Kinga Masztalerz"><span class="glimpse-name">Kinga Masztalerz</span></div>
+    <div class="glimpse-photo"><img src="assets/podcast/guest-urs-haari.jpg" alt="Urs Haari"><span class="glimpse-name">Urs Haari</span></div>
+    <div class="glimpse-photo tall"><img src="assets/podcast/guest-antoine.jpg" alt="Antoine Girard"><span class="glimpse-name">Antoine Girard</span></div>
   </div>
 </section>
 
@@ -189,347 +358,81 @@
       <span class="live-counter" id="liveCounter"></span>
     </div>
   </div>
+</section>
 
-  <div class="archive-head">
-    <div>
-      <p class="kicker">Full Transmission Archive</p>
-      <h2>Every Episode, Logged</h2>
-    </div>
-    <div class="archive-search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input type="text" id="archiveSearch" placeholder="Search episodes or guests...">
-    </div>
+<section class="feedback-section">
+  <div class="testimonials-head">
+    <p class="kicker">What Listeners Are Saying</p>
   </div>
-  <p class="archive-count" id="archiveCount">Showing all 79 episodes</p>
-  <div class="arc-grid" id="archiveGrid">
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Luc-Armant-talks-about-The-Moment-Coefficient--Enzo-3-Certification-Debate--Physics-of-Stability-e3o6qb5" target="_blank" rel="noopener" class="arc-card" data-title="luc armant talks about the moment coefficient, enzo 3 certification debate &amp; physics of stability">
-        <p class="arc-title">Luc Armant talks about The Moment Coefficient, Enzo 3 Certification Debate &amp; Physics of Stability</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Technical-Masterclass-by-Brett-Janaway--Science-of-Paraglider-Trimming-Performance--New-Legalities-e3nshjb" target="_blank" rel="noopener" class="arc-card" data-title="technical masterclass by brett janaway: science of paraglider trimming, performance &amp; new legalities">
-        <p class="arc-title">Technical Masterclass by Brett Janaway: Science of Paraglider Trimming, Performance &amp; New Legalities</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Robert-Robbie-Whittall-113-mins-of-Unhinged-conversations-with-The-Man-Behind-Ozone-Paragliders-e3nkg0l" target="_blank" rel="noopener" class="arc-card" data-title="robert (robbie) whittall: 113 mins of unhinged conversations with the man behind ozone paragliders">
-        <p class="arc-title">Robert (Robbie) Whittall: 113 mins of Unhinged Conversations With The Man Behind Ozone Paragliders</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Metacognition-Paraglidings-Hidden-Psychology-with-Beni-Kalin--Heli-Schrempf-e3n6aeu" target="_blank" rel="noopener" class="arc-card" data-title="metacognition: paragliding's hidden psychology with beni kalin &amp; heli schrempf">
-        <p class="arc-title">Metacognition: Paragliding's Hidden Psychology with Beni Kalin &amp; Heli Schrempf</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/The-Russell-Ogden-Interview-Decoding-The-Paragliding-Mastery-Protocol-Progression--Fear--Competition-e3ld21b" target="_blank" rel="noopener" class="arc-card" data-title="the russell ogden interview: decoding the paragliding mastery protocol">
-        <p class="arc-title">The Russell Ogden Interview: Decoding The Paragliding Mastery Protocol</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Paragliding-Physiology--Safety-Protocols--Dr-Matt-Wikes-Explains-Biophysics-in-the-Art-of-Flight-e3i8068" target="_blank" rel="noopener" class="arc-card" data-title="paragliding physiology &amp; safety protocols — dr matt wikes explains biophysics in the art of flight">
-        <p class="arc-title">Paragliding Physiology &amp; Safety Protocols — Dr Matt Wikes Explains Biophysics in the Art of Flight</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/If-you-fly-in-the-Himalayas--Alps--or-above-3000-mtrs--this-episode-is-for-you---ft--Dr-Matt-Wikes-e3i3gda" target="_blank" rel="noopener" class="arc-card" data-title="if you fly in the himalayas, alps, or above 3000mtrs, this episode is for you — ft. dr matt wikes">
-        <p class="arc-title">If You Fly in the Himalayas, Alps, or Above 3000mtrs, This Episode Is For You — ft. Dr Matt Wikes</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Cognitive-Bias-of-Dunning-Kruger-Effect-in-Paragliding--Explained-by-Beni-Kalin--Heli-Schrempf-e3hns3m" target="_blank" rel="noopener" class="arc-card" data-title="cognitive bias of dunning kruger effect in paragliding — beni kalin &amp; heli schrempf">
-        <p class="arc-title">Cognitive Bias of Dunning Kruger Effect in Paragliding — Beni Kalin &amp; Heli Schrempf</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Sports-Psychology-for-Paragliding-Train-Your-Mind-to-Fly-Better-with-Yvonne-Dathe-e3h150v" target="_blank" rel="noopener" class="arc-card" data-title="sports psychology for paragliding: train your mind to fly better with yvonne dathe">
-        <p class="arc-title">Sports Psychology for Paragliding: Train Your Mind to Fly Better with Yvonne Dathe</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/From-Cuba-to-Socotra-Inside-the-Worlds-Most-Unique-Paragliding-Tours-e3gnq77" target="_blank" rel="noopener" class="arc-card" data-title="from cuba to socotra: inside the world's most unique paragliding tours">
-        <p class="arc-title">From Cuba to Socotra: Inside the World's Most Unique Paragliding Tours</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/How-to-Fly-With-Your-Dog--Explained-by-Shams-e3gg20j" target="_blank" rel="noopener" class="arc-card" data-title="how to fly with your dog — explained by shams">
-        <p class="arc-title">How to Fly With Your Dog — Explained by Shams</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Survived-15-Years-of-Flying-Then-a-Rescue-Helicopter-Changed-Everything--A-Talk-With-Nick-Neynes-e3fvupf" target="_blank" rel="noopener" class="arc-card" data-title="survived 15 years of flying then a rescue helicopter changed everything — a talk with nick neynens">
-        <p class="arc-title">Survived 15 Years of Flying Then a Rescue Helicopter Changed Everything — A Talk With Nick Neynens</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/From-Tents-to-Trophies-Understanding-Acro-Champions-Mindset-on-Ego--Glory--Drugs--Luke-De-Weert-e3eb0ve" target="_blank" rel="noopener" class="arc-card" data-title="from tents to trophies: understanding acro champion's mindset on ego, glory &amp; drugs — luke de weert">
-        <p class="arc-title">From Tents to Trophies: Understanding Acro Champion's Mindset on Ego, Glory &amp; Drugs — Luke De Weert</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Tom-Lolies-Explains-The-Science-Of-Wing-Design-and-Evolution-from-ENC-to-CSC-e3da9jn" target="_blank" rel="noopener" class="arc-card" data-title="tom lolies explains the science of wing design and evolution from enc to csc">
-        <p class="arc-title">Tom Lolies Explains The Science Of Wing Design and Evolution from ENC to CSC</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/The-Art-of-Capturing-Human-Flight--Jake-Hollands-Guide-to-Filming-Passion-Projects-in-Paragliding-e3cra14" target="_blank" rel="noopener" class="arc-card" data-title="the art of capturing human flight — jake holland's guide to filming passion projects">
-        <p class="arc-title">The Art of Capturing Human Flight — Jake Holland's Guide to Filming Passion Projects</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Master-the-Art-of-Scoring-in-Paragliding-A-New-Pilots-Guide-to-the-GAP-Formula--Strategy--Joerg-Ewald-e3cegbg" target="_blank" rel="noopener" class="arc-card" data-title="master the art of scoring in paragliding: a new pilot's guide to the gap formula &amp; strategy — joerg ewald">
-        <p class="arc-title">Master the Art of Scoring in Paragliding: A New Pilot's Guide to the GAP Formula &amp; Strategy — Joerg Ewald</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Snippet-A-Reserve-Parachute-Trick-Every-Pilot-Should-Know--by-Urs-Haari-e3c6unr" target="_blank" rel="noopener" class="arc-card" data-title="snippet: a reserve parachute trick every pilot should know — urs haari">
-        <p class="arc-title">Snippet: A Reserve Parachute Trick Every Pilot Should Know — Urs Haari</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Watch-this-Before-you-Buy-a-Paragliding-Harness--A-Talk-with-Zsolt-Ero-e3bsglh" target="_blank" rel="noopener" class="arc-card" data-title="watch this before you buy a paragliding harness — a talk with zsolt ero">
-        <p class="arc-title">Watch This Before You Buy a Paragliding Harness — A Talk With Zsolt Ero</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/The-Inside-Story-of-Sports-Racing-Series-SRS-by-Brett-Janaway-e3b7t4g" target="_blank" rel="noopener" class="arc-card" data-title="the inside story of sports racing series (srs) by brett janaway">
-        <p class="arc-title">The Inside Story of Sports Racing Series (SRS) by Brett Janaway</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/The-Unfiltered-Truth-About-Paragliding-Governance-with-Bill-Hughes--Goran-Dimiskovski-e3apoo6" target="_blank" rel="noopener" class="arc-card" data-title="the unfiltered truth about paragliding governance — bill hughes &amp; goran dimiskovski">
-        <p class="arc-title">The Unfiltered Truth About Paragliding Governance — Bill Hughes &amp; Goran Dimiskovski</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Bill-Belcourt-The-Uncomfortable-Truth-No-One-is-Talking-about-in-the-Current-Safety-Paradox-e3a7or9" target="_blank" rel="noopener" class="arc-card" data-title="bill belcourt: the uncomfortable truth no one is talking about in the current safety paradox">
-        <p class="arc-title">Bill Belcourt: The Uncomfortable Truth No One Is Talking About in the Current Safety Paradox</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="bruce goldsmith explains mrt scoring system and its impact on paragliding competitions">
-        <p class="arc-title">Bruce Goldsmith Explains MRT Scoring System and Its Impact on Paragliding Competitions</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="luc armant talks about debunking the myths and upgrading enzo 3">
-        <p class="arc-title">Luc Armant Talks About Debunking the Myths and Upgrading Enzo 3</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="insights from the gaggle with tilen ceglar &amp; stan radzikowski">
-        <p class="arc-title">Insights From The Gaggle with Tilen Ceglar &amp; Stan Radzikowski</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="pal takats on challenges, change &amp; the future of paragliding">
-        <p class="arc-title">Pal Takats on Challenges, Change &amp; The Future of Paragliding</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="#civlresign with julien garcia">
-        <p class="arc-title">#CIVLRESIGN with Julien Garcia</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="anatomy of a dream with damien lacaze: a lifestyle full of grit, grace and vertical freedom">
-        <p class="arc-title">Anatomy of a Dream with Damien Lacaze: A Lifestyle Full of Grit, Grace and Vertical Freedom</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="demystifying the science behind endless fun factor of parakites with bryan van ostheim">
-        <p class="arc-title">Demystifying The Science Behind Endless Fun Factor of Parakites With Bryan Van Ostheim</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="legacy and lifetimes of gin seok song: 5 decades of pioneering the art of free flight">
-        <p class="arc-title">Legacy and Lifetimes of Gin Seok Song: 5 Decades of Pioneering the Art of Free Flight</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="maxime pinot: the journey within — mapping our quest to touch the sky with glory">
-        <p class="arc-title">Maxime Pinot: The Journey Within — Mapping Our Quest to Touch The Sky With Glory</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="understanding skymate: paragliding world's first ai powered smart harness system with roman barthelemy">
-        <p class="arc-title">Understanding Skymate: Paragliding World's First AI Powered Smart Harness System with Roman Barthelemy</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="science backed pre flight rituals to unlock laser sharp paragliding clarity: on demand">
-        <p class="arc-title">Science Backed Pre Flight Rituals to Unlock Laser Sharp Paragliding Clarity: On Demand</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="the resilience equation: erlend ukvitne's unrelenting path to x-alps and the brink of a hike and fly world record">
-        <p class="arc-title">The Resilience Equation: Erlend Ukvitne's Unrelenting Path to X-Alps and the Brink of a Hike and Fly World Record</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="mastering the unknown: neuroscience of crisis management &amp; neuroplasticity training">
-        <p class="arc-title">Mastering the Unknown: Neuroscience of Crisis Management &amp; Neuroplasticity Training</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="consequence over probability: will gadd's field protocols for rewiring risk intuition and why true safety lies in clarity">
-        <p class="arc-title">Consequence Over Probability: Will Gadd's Field Protocols for Rewiring Risk Intuition and Why True Safety Lies in Clarity</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="why paragliding's safety future looks different: rast inventor michael nesler &amp; the leeloox effect">
-        <p class="arc-title">Why Paragliding's Safety Future Looks Different: RAST Inventor Michael Nesler &amp; the LeelooX Effect</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="grant smith: the silent mind in screaming winds — unlocking peak focus to attain flow state in paragliding">
-        <p class="arc-title">Grant Smith: The Silent Mind In Screaming Winds — Unlocking Peak Focus To Attain Flow State In Paragliding</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="meteorology 101: a beginner's guide to understanding weather apps and decoding endless forecasting options">
-        <p class="arc-title">Meteorology 101: A Beginner's Guide to Understanding Weather Apps and Decoding Endless Forecasting Options</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="urs haari: the real truth about reserve parachutes — a paragliding survival guide">
-        <p class="arc-title">Urs Haari: The Real Truth About Reserve Parachutes — A Paragliding Survival Guide</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="shane tighe's road to x-alps: engineering conquests in the sky from australia's flatlands to the pinnacle of hike and fly">
-        <p class="arc-title">Shane Tighe's Road to X-Alps: Engineering Conquests In The Sky from Australia's Flatlands to the Pinnacle of Hike and Fly</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="aljaž valič: 777 — paragliding's slovenian mavericks redefining the en b class and elevating free flight performance">
-        <p class="arc-title">Aljaž Valič: 777 — Paragliding's Slovenian Mavericks Redefining the EN B Class And Elevating Free Flight Performance</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="sandrine roy: vol biv &amp; freedom unfiltered — a human-powered odyssey by paragliding, biking &amp; sailing around the globe">
-        <p class="arc-title">Sandrine Roy: Vol Biv &amp; Freedom Unfiltered — A Human-Powered Odyssey By Paragliding, Biking &amp; Sailing Around The Globe</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="alain zoller: the science of en certifications — how work group 6 shaped paragliding testing, innovation &amp; safety">
-        <p class="arc-title">Alain Zoller: The Science of EN Certifications — How Work Group 6 Shaped Paragliding Testing, Innovation &amp; Safety</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="ziad bassil: finest paragliding reviews &amp; superpower of changing wings as a human">
-        <p class="arc-title">Ziad Bassil: Finest Paragliding Reviews &amp; Superpower of Changing Wings as A Human</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="eddie colfox: storytime — chasing adventure with the real og john silvester &amp; 3 decades of making memories across the globe">
-        <p class="arc-title">Eddie Colfox: Storytime — Chasing Adventure With the Real OG John Silvester &amp; 3 Decades of Making Memories Across The Globe</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="ashutosh chopra: identifying passion vs obsession — an aviator's approach to overcoming adversity, rebuilding trust and finding joy in the skies">
-        <p class="arc-title">Ashutosh Chopra: Identifying Passion Vs Obsession — An Aviator's Approach to Overcoming Adversity, Rebuilding Trust and Finding Joy in the Skies</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="kinga masztalerz: building a healthy relationship with the skies — how to master fear, build resilience &amp; find joy through paragliding">
-        <p class="arc-title">Kinga Masztalerz: Building a Healthy Relationship with the Skies — How to Master Fear, Build Resilience &amp; Find Joy Through Paragliding</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="helmut schrempf: modernizing siv courses — how this new training method can help you master glider control and improve paragliding safety">
-        <p class="arc-title">Helmut Schrempf: Modernizing SIV Courses — How This New Training Method Can Help You Master Glider Control and Improve Paragliding Safety</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="a note of thanks">
-        <p class="arc-title">A Note of Thanks</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="storytellers: marko milutinovic (mid-air collision)">
-        <p class="arc-title">Storytellers: Marko Milutinovic (Mid-Air Collision)</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="new technologies 5: frantisek pavlousek (up paragliders)">
-        <p class="arc-title">New Technologies 5: Frantisek Pavlousek (UP Paragliders)</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="flying &amp; filming 3: andreas lattner (hochzwei.media)">
-        <p class="arc-title">Flying &amp; Filming 3: Andreas Lattner (hochzwei.media)</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="flying &amp; filming 2: benjamin kellet">
-        <p class="arc-title">Flying &amp; Filming 2: Benjamin Kellet</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="risk vs reward 5: gabriel orsini (partytillimpact)">
-        <p class="arc-title">Risk Vs Reward 5: Gabriel Orsini (partytillimpact)</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="helmet safety: christian ciech — icaro 2000 [1st anniversary edition]">
-        <p class="arc-title">Helmet Safety: Christian Ciech — ICARO 2000 [1st Anniversary Edition]</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="risk vs reward 4: raúl rodríguez">
-        <p class="arc-title">Risk Vs Reward 4: Raúl Rodríguez</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="brand stories: neo — eric roussel">
-        <p class="arc-title">Brand Stories: Neo — Eric Roussel</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="carabiner fatigue: finsterwalder &amp; charly (whitepaper)">
-        <p class="arc-title">Carabiner Fatigue: Finsterwalder &amp; Charly (Whitepaper)</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="flying &amp; filming 1: benjamin jordan">
-        <p class="arc-title">Flying &amp; Filming 1: Benjamin Jordan</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="living the dream: benjamin jordan">
-        <p class="arc-title">Living The Dream: Benjamin Jordan</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="risk vs reward 3: manfred ruhmer">
-        <p class="arc-title">Risk Vs Reward 3: Manfred Ruhmer</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="risk vs reward 2: subir sidhu">
-        <p class="arc-title">Risk Vs Reward 2: Subir Sidhu</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="risk vs reward 1: philipp zellner">
-        <p class="arc-title">Risk Vs Reward 1: Philipp Zellner</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="new technologies 4: veselin ovcharov (fly the earth)">
-        <p class="arc-title">New Technologies 4: Veselin Ovcharov (Fly The Earth)</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="new technologies 3: stephan stiegler (airdesign paragliders)">
-        <p class="arc-title">New Technologies 3: Stephan Stiegler (AirDesign Paragliders)</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="new technologies 2: guillem batlle &amp; adrià grau (niviuk paragliders)">
-        <p class="arc-title">New Technologies 2: Guillem Batlle &amp; Adrià Grau (Niviuk Paragliders)</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="new technologies 1: beni kälin (speedflyingschool.com)">
-        <p class="arc-title">New Technologies 1: Beni Kälin (speedflyingschool.com)</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="pwc lifestyle: klaudia bulgakow">
-        <p class="arc-title">PWC Lifestyle: Klaudia Bulgakow</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="pwca: goran dimiskovski">
-        <p class="arc-title">PWCA: Goran Dimiskovski</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="pre pwc kenya: nikolay yotov">
-        <p class="arc-title">Pre PWC Kenya: Nikolay Yotov</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="navigating panchgani (pre pwc india): vistasp kharas">
-        <p class="arc-title">Navigating Panchgani (Pre PWC India): Vistasp Kharas</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="ama #1">
-        <p class="arc-title">AMA #1</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="navigating australia: godfrey wenness">
-        <p class="arc-title">Navigating Australia: Godfrey Wenness</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="sky gods: flying to win — honorin hamard">
-        <p class="arc-title">Sky Gods: Flying to Win — Honorin Hamard</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="sky gods: flying 8000ers — antoine girard">
-        <p class="arc-title">Sky Gods: Flying 8000ers — Antoine Girard</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="navigating india: jigish gohil (bonus ep)">
-        <p class="arc-title">Navigating India: Jigish Gohil (Bonus Ep)</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="navigating india: eddie colfox">
-        <p class="arc-title">Navigating India: Eddie Colfox</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="navigating colombia: pal takats">
-        <p class="arc-title">Navigating Colombia: Pal Takats</p>
-        <span class="arc-link">Listen →</span>
-      </a>
-      <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="arc-card" data-title="touch the sky with glory">
-        <p class="arc-title">Touch The Sky With Glory</p>
-        <span class="arc-link">Listen →</span>
-      </a>
+  <div class="testimonials-wrap">
+    <button class="testi-arrow left" id="testiPrev" aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="testimonials-track" id="testiTrack">
+      <div class="testi-card">
+        <p class="testi-quote">"Love This Podcast!"</p>
+        <p class="testi-body">Aninder, and everyone else who works on this podcast, thank you. Your energy and passion is contagious and helpful.</p>
+        <span class="testi-by">By shu12323</span>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"Amazing And Life Changing Podcast"</p>
+        <p class="testi-body">I wasn't a fan of podcasts, but after listening to a few episodes I've quickly become a fan of the format entirely.</p>
+        <span class="testi-by">By chrisalan83</span>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"A Special Energy That Draws People In"</p>
+        <p class="testi-body">Aninder has a real talent for taking people on a journey with every conversation. It never feels like a scripted interview.</p>
+        <span class="testi-by">By flywithme</span>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"Great Show"</p>
+        <p class="testi-body">I just listened to my first episode, it was so relatable, easy to listen to, and easy to connect with. Continued listener now.</p>
+        <span class="testi-by">By patty1186</span>
+      </div>
+    </div>
+    <button class="testi-arrow right" id="testiNext" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <div class="glassB-wrap">
+    <div class="glassB">
+      <span class="glassB-tag">Line Open</span>
+      <h3 class="glassB-title">Got a Question For The Show?</h3>
+      <p class="glassB-sub">Whether it's about gear, safety, technique, or the mindset side of flying, Aninder reads every submission personally.</p>
+      <form id="questionForm">
+        <div class="glassB-row">
+          <input type="text" placeholder="Your name" required>
+          <input type="email" placeholder="Your email" required>
+        </div>
+        <div class="glassB-field"><textarea rows="2" placeholder="Your question or topic" required></textarea></div>
+        <div class="glassB-bottom">
+          <button type="submit" class="glassB-submit"><span>Submit Question</span></button>
+          <p class="qf-status" id="qfStatus"></p>
+        </div>
+      </form>
+    </div>
   </div>
 </section>
 
-<section class="cta-band">
-  <div class="cta-card">
-  <span class="cta-hud-tag">Line Open</span>
-  <p class="cta-eyebrow">Got a Question For The Show?</p>
-  <h2>Submit a question and hear it answered on the podcast</h2>
-  <div class="cta-buttons">
-    <a href="https://w.app/paragliding" target="_blank" rel="noopener" class="btn-solid" data-hover><span>Submit a Question</span></a>
-  </div>
-  <p class="cta-body">Whether it's about gear, safety, technique, or the mindset side of flying, Aninder reads every submission personally.</p>
+<section class="pod-newsletter">
+  <div class="eq-bars" id="eqBars"></div>
+  <div class="pod-newsletter-panel">
+    <div class="pod-newsletter-left">
+      <div class="pod-newsletter-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2" y="14" width="5" height="7" rx="2"/><rect x="17" y="14" width="5" height="7" rx="2"/></svg>
+      </div>
+      <div>
+        <h2>Never Miss an Episode</h2>
+        <p>Subscribe to get the latest episodes and exclusive content delivered to your inbox.</p>
+      </div>
+    </div>
+    <form class="pod-newsletter-form">
+      <div class="pod-newsletter-input-wrap">
+        <input type="email" placeholder="Enter your email" required>
+      </div>
+      <button type="submit"><span>Subscribe</span></button>
+    </form>
   </div>
 </section>
 
@@ -575,30 +478,78 @@
 
 <script src="script.js"></script>
 <script>
-  // Simple client-side search filter for the episode archive
-  const searchInput = document.getElementById('archiveSearch');
-  const cards = document.querySelectorAll('.arc-card');
-  const countEl = document.getElementById('archiveCount');
-  if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      const q = searchInput.value.toLowerCase().trim();
-      let visible = 0;
-      cards.forEach((card) => {
-        const match = card.dataset.title.includes(q);
-        card.classList.toggle('hidden', !match);
-        if (match) visible++;
+  // Animated count-up stats: numbers climb from 0 to their real value once
+  // scrolled into view, once per page load.
+  (function () {
+    const statsEl = document.getElementById('animStats');
+    if (!statsEl) return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const nums = statsEl.querySelectorAll('.num');
+
+    function animateCount(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || '';
+      if (reducedMotion) {
+        el.textContent = target.toLocaleString() + suffix;
+        return;
+      }
+      const duration = 1600;
+      const start = performance.now();
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target).toLocaleString() + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          nums.forEach(animateCount);
+          observer.disconnect();
+        }
       });
-      countEl.textContent = q ? `Showing ${visible} of 79 episodes` : 'Showing all 79 episodes';
+    }, { threshold: 0.4 });
+    observer.observe(statsEl);
+  })();
+
+  // Testimonials carousel: arrows scroll the track by one card width
+  (function () {
+    const track = document.getElementById('testiTrack');
+    const prevBtn = document.getElementById('testiPrev');
+    const nextBtn = document.getElementById('testiNext');
+    if (!track) return;
+    const scrollAmount = 280;
+    prevBtn.addEventListener('click', () => track.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
+    nextBtn.addEventListener('click', () => track.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
+  })();
+
+  // Question form: no backend wired up yet, so this just confirms receipt
+  // client-side. Replace with a real endpoint (e.g. Formspree) when ready.
+  (function () {
+    const form = document.getElementById('questionForm');
+    const status = document.getElementById('qfStatus');
+    if (!form) return;
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      status.textContent = "Thanks — this form isn't wired to send anywhere yet, but your message would be received here once it is.";
+      form.reset();
     });
-  }
+  })();
 </script>
 <script>
-  // Live RSS feed with a real functioning inline player. Fetches the RAW feed
-  // XML through a CORS proxy (browsers can't fetch cross-origin XML directly)
-  // and parses it natively with DOMParser — no third-party item-count cap,
-  // unlike rss2json's free tier which silently truncated to 10 regardless of
-  // what was requested. If the proxy or feed is ever unreachable, the static
-  // archive below still works as a fallback.
+  // ============================================================
+  // ⚠️ CONFIRMED WORKING — DO NOT MODIFY WITHOUT EXPLICIT REQUEST
+  // This is the live RSS integration. It took several failed attempts
+  // (rss2json's free tier silently capped at 10 items regardless of what
+  // was requested) before landing on this approach: fetch the RAW feed XML
+  // through a CORS proxy, then parse it natively with the browser's own
+  // DOMParser — no third-party item-count cap. User confirmed this actually
+  // works correctly for the first time. Leave this block untouched in future
+  // edits unless the user specifically asks to change the RSS logic itself.
+  // ============================================================
   (function () {
     const statusEl = document.getElementById('liveFeedStatus');
     const gridEl = document.getElementById('liveFeedGrid');
@@ -821,6 +772,21 @@
       }
     });
   })();
+
+  // Generate equalizer bars with randomized timing so they bounce organically
+  // rather than in mechanical unison
+  const eqBars = document.getElementById('eqBars');
+  if (eqBars) {
+    const barCount = 48;
+    for (let i = 0; i < barCount; i++) {
+      const bar = document.createElement('span');
+      const duration = (0.9 + Math.random() * 1.2).toFixed(2);
+      const delay = (Math.random() * 1.5).toFixed(2);
+      bar.style.animationDuration = `${duration}s`;
+      bar.style.animationDelay = `${delay}s`;
+      eqBars.appendChild(bar);
+    }
+  }
 </script>
 </body>
 </html>
