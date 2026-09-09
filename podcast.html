@@ -107,15 +107,28 @@
   }
   .testimonials-track::-webkit-scrollbar{display:none;}
   .testi-card{
-    flex:0 0 280px;scroll-snap-align:start;background:var(--card);border:1px solid rgba(180,180,180,0.15);
-    border-top:2px solid var(--orange);padding:1.6rem 1.4rem;display:flex;flex-direction:column;
+    position:relative;flex:0 0 280px;scroll-snap-align:start;background:var(--card);
+    border:1px solid rgba(180,180,180,0.15);padding:1.8rem 1.5rem 1.5rem;
+    display:flex;flex-direction:column;overflow:hidden;
+    transition:border-color 0.25s ease, transform 0.25s ease;
   }
-  .testi-body{color:var(--gray-light);font-size:0.86rem;line-height:1.6;margin-bottom:1rem;}
-  .testi-by{color:var(--white);font-size:0.78rem;font-weight:600;margin-bottom:0.6rem;}
+  .testi-card:hover{border-color:rgba(255,117,23,0.35);transform:translateY(-3px);}
+  .testi-card::before{
+    content:"\201C";position:absolute;top:-0.6rem;right:0.8rem;
+    font-family:var(--font-display);font-weight:800;font-size:5rem;
+    color:rgba(255,117,23,0.08);line-height:1;pointer-events:none;
+  }
+  .testi-avatar{
+    width:34px;height:34px;border-radius:50%;background:rgba(255,117,23,0.12);
+    border:1px solid rgba(255,117,23,0.4);color:var(--orange);font-weight:700;font-size:0.85rem;
+    display:flex;align-items:center;justify-content:center;margin-bottom:1rem;position:relative;
+  }
+  .testi-body{color:var(--gray-light);font-size:0.86rem;line-height:1.6;margin-bottom:1rem;position:relative;}
+  .testi-by{color:var(--white);font-size:0.78rem;font-weight:600;margin-bottom:0.6rem;position:relative;}
   .testi-video{
     margin-top:auto;padding-top:0.7rem;border-top:1px solid rgba(180,180,180,0.12);
     color:var(--gray);font-size:0.68rem;line-height:1.4;text-decoration:none;
-    display:block;transition:color 0.2s ease;
+    display:block;transition:color 0.2s ease;position:relative;
   }
   .testi-video:hover{color:var(--orange);}
 
@@ -494,55 +507,66 @@
     </button>
     <div class="testimonials-track" id="testiTrack">
       <div class="testi-card">
+        <div class="testi-avatar">B</div>
         <p class="testi-body">Aninder! Just want to say, wow, I didn't know about your podcast until just recently. This one with Russel is fantastic, not only because of him &amp; his honesty but also due to your style and your deep questions. Really really well done, thanks for doing this for all of us in the flying community!</p>
         <span class="testi-by">@bdwelle43</span>
         <a class="testi-video" href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener">▶ The Russell Ogden Interview: Decoding Paragliding Mastery Protocols</a>
       </div>
       <div class="testi-card">
+        <div class="testi-avatar">S</div>
         <p class="testi-body">Thank you for getting Dr Matt Wikes on your podcast. This one has been very informative.</p>
         <span class="testi-by">@sebass156</span>
       </div>
       <div class="testi-card">
+        <div class="testi-avatar">G</div>
         <p class="testi-body">Excellent discussion and subject! I share your observations and analysis, but besides sharing or not, these are the kind of topics and discussions we should be having in our communities. Thanks for that!</p>
         <span class="testi-by">@gblanco69</span>
         <a class="testi-video" href="https://www.youtube.com/watch?v=kSoFk23TuX0" target="_blank" rel="noopener">▶ Watch this Before you Buy a Paragliding Harness | A Talk with Zsolt Ero</a>
       </div>
       <div class="testi-card">
+        <div class="testi-avatar">H</div>
         <p class="testi-body">another masterclass, thanks for sharing</p>
         <span class="testi-by">@Hemersonr</span>
         <a class="testi-video" href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener">▶ How to Thermal Like a Pro: Find, Center &amp; Climb with Brett Janaway</a>
       </div>
       <div class="testi-card">
+        <div class="testi-avatar">C</div>
         <p class="testi-body">Thank you for the show and the huge amount of info. I'm glad that I got the confirmation that what I do seems to be right regarding the "blocked" hips subject… Happy flights!</p>
         <span class="testi-by">@cristianmanu2745</span>
         <a class="testi-video" href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener">▶ Metacognition: Paragliding's Hidden Psychology with Beni Kalin &amp; Heli Schrempf</a>
       </div>
       <div class="testi-card">
+        <div class="testi-avatar">C</div>
         <p class="testi-body">This is really good. I've learned a lot and it has completely changed my understanding of harness protection.</p>
         <span class="testi-by">@cedarsunshine</span>
         <a class="testi-video" href="https://www.youtube.com/watch?v=kSoFk23TuX0" target="_blank" rel="noopener">▶ Watch this Before you Buy a Paragliding Harness | A Talk with Zsolt Ero</a>
       </div>
       <div class="testi-card">
+        <div class="testi-avatar">N</div>
         <p class="testi-body">Dude this is literally the most interesting episode of your podcast (so far). Thx so much to both of you fellas!</p>
         <span class="testi-by">@navernoe_sasha</span>
         <a class="testi-video" href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener">▶ Tom Lolies Explains The Science Of Wing Design and Evolution from ENC to CSC</a>
       </div>
       <div class="testi-card">
+        <div class="testi-avatar">B</div>
         <p class="testi-body">Finally a debrief of the sportive part of the event, thanks! :)</p>
         <span class="testi-by">@BaptisteLambert-y3k</span>
         <a class="testi-video" href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener">▶ Task 1 Highlights | 15th Paragliding World Cup Super Final Pegalajar 2026</a>
       </div>
       <div class="testi-card">
+        <div class="testi-avatar">I</div>
         <p class="testi-body">Best coverage of an XC comp so far, IMO. Really liked the part where you gave the summary of the race using tracklogs playback.</p>
         <span class="testi-by">@imdakshnain</span>
         <a class="testi-video" href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener">▶ Task 1 Highlights | 15th Paragliding World Cup Super Final Pegalajar 2026</a>
       </div>
       <div class="testi-card">
+        <div class="testi-avatar">L</div>
         <p class="testi-body">Super insightful, hearing the GOAT designer explaining the principles of our so wonderful equipment.</p>
         <span class="testi-by">@lexrobe_fly</span>
         <a class="testi-video" href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener">▶ Luc Armant talks about The Moment Coefficient, Enzo 3 Certification Debate &amp; Physics of Stability</a>
       </div>
       <div class="testi-card">
+        <div class="testi-avatar">P</div>
         <p class="testi-body">wow another big stone in the puddle, waves a'coming, thanks for having the balls to do it</p>
         <span class="testi-by">@philippebroers2838</span>
         <a class="testi-video" href="https://www.youtube.com/watch?v=kSoFk23TuX0" target="_blank" rel="noopener">▶ Watch this Before you Buy a Paragliding Harness | A Talk with Zsolt Ero</a>
@@ -713,7 +737,8 @@
     observer.observe(statsEl);
   })();
 
-  // Testimonials carousel: arrows scroll the track by one card width
+  // Testimonials carousel: arrows scroll manually, plus a slow continuous
+  // auto-scroll that pauses on hover so people can read comfortably
   (function () {
     const track = document.getElementById('testiTrack');
     const prevBtn = document.getElementById('testiPrev');
@@ -722,6 +747,26 @@
     const scrollAmount = 280;
     prevBtn.addEventListener('click', () => track.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
     nextBtn.addEventListener('click', () => track.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let autoScroll;
+      const startAutoScroll = () => {
+        autoScroll = setInterval(() => {
+          const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 5;
+          if (atEnd) {
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            track.scrollBy({ left: 1, behavior: 'auto' });
+          }
+        }, 30);
+      };
+      const stopAutoScroll = () => clearInterval(autoScroll);
+
+      startAutoScroll();
+      track.addEventListener('mouseenter', stopAutoScroll);
+      track.addEventListener('mouseleave', startAutoScroll);
+      track.addEventListener('touchstart', stopAutoScroll, { passive: true });
+    }
   })();
 
   // Question form: no backend wired up yet, so this just confirms receipt
