@@ -169,7 +169,37 @@
     background:linear-gradient(180deg, var(--card) 0%, var(--card) 82%, var(--bg) 100%);
     padding:clamp(3.5rem,8vw,5.5rem) clamp(1.5rem,5vw,4rem);
   }
-  .eq-bars{
+  /* ===== COLLABORATE / SPONSOR ===== */
+  .work-with-us{
+    padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);
+    background:linear-gradient(180deg, var(--bg) 0%, var(--bg) 85%, var(--card) 100%);
+  }
+  .wwu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:1300px;margin:0 auto;}
+  .wwu-card{
+    position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.12);
+    padding:2rem 2.2rem;display:flex;flex-direction:column;
+  }
+  .wwu-card::before, .wwu-card::after{content:"";position:absolute;width:16px;height:16px;border:1.5px solid rgba(255,117,23,0.5);}
+  .wwu-card::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .wwu-card::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+  .wwu-card h3{font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--white);margin-bottom:1.3rem;}
+  .wwu-card h3 span{color:var(--orange);}
+  .wwu-card p{color:var(--gray-light);font-size:0.92rem;line-height:1.75;margin-bottom:1rem;}
+  .wwu-card .wwu-contact{color:var(--white);font-weight:600;margin-bottom:1.5rem;}
+  .wwu-card .wwu-contact a{color:var(--orange);text-decoration:none;}
+  .wwu-card .wwu-contact a:hover{text-decoration:underline;}
+  .wwu-btn{
+    align-self:flex-start;margin-top:auto;background:var(--orange);color:#171712;border:none;
+    padding:0.85rem 1.8rem;font-weight:700;font-size:0.9rem;cursor:pointer;text-decoration:none;
+    transform:skewX(-10deg);transform-origin:left top;
+  }
+  .wwu-btn span{display:inline-block;transform:skewX(10deg);}
+
+  @media(max-width:820px){
+    .wwu-grid{grid-template-columns:1fr;}
+  }
+
+
     position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-between;
     padding:0;gap:2px;opacity:0.35;
   }
@@ -494,6 +524,25 @@
       </div>
       <button type="submit"><span>Subscribe</span></button>
     </form>
+  </div>
+</section>
+
+<section class="work-with-us">
+  <div class="wwu-grid">
+    <div class="wwu-card">
+      <h3>Collaborate with <span>Aninder</span></h3>
+      <p>Are you a pilot, instructor, or weather guru with insights to share? If you've got stories about epic flights, hard-won lessons, or next-level techniques, let's get you on Paragliding Atlas.</p>
+      <p>Let's team up to help pilots across the globe fly smarter and push boundaries together.</p>
+      <p class="wwu-contact">Email me at <a href="mailto:aninder@paragliding.com">aninder@paragliding.com</a> and we'll take it from there.</p>
+      <a href="mailto:aninder@paragliding.com" class="wwu-btn"><span>Get In Touch</span></a>
+    </div>
+    <div class="wwu-card">
+      <h3>Sponsor <span>Paragliding Atlas</span> Podcast</h3>
+      <p>Connect with the fastest growing community of pilots on the interweb. Reach out to our ever increasing audience base from 85 countries and counting.</p>
+      <p>If your brand shares our love for the skies, we'd be honored to explore how we might work together to serve this incredible sport.</p>
+      <p class="wwu-contact">Let's help more pilots fly smarter and safer, together.</p>
+      <a href="mailto:aninder@paragliding.com?subject=Sponsorship Enquiry" class="wwu-btn"><span>Sponsorship</span></a>
+    </div>
   </div>
 </section>
 
