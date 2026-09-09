@@ -22,6 +22,7 @@
   .ep-body{padding:0 clamp(1.5rem,5vw,4rem) clamp(4rem,9vw,6rem);background:var(--bg);}
   .ep-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:1.3rem;max-width:1300px;margin:0 auto;}
   .ep-tile{
+    cursor:pointer;
     position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.15);
     text-decoration:none;overflow:hidden;aspect-ratio:16/10;display:flex;align-items:flex-end;
     transition:border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
@@ -63,7 +64,36 @@
 </header>
 
 <div class="ep-body">
-  <div class="ep-empty">Episodes for this series are coming soon. Check back shortly, or explore the <a href="../podcast.html" style="color:var(--orange);">full podcast archive</a> in the meantime.</div>
+  <div class="ep-grid">
+    <div class="ep-tile" data-title="On Challenges, Change & The Future of Paragliding" data-guest="Pal Takats" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">On Challenges, Change & The Future of Paragliding</p>
+        <p class="ep-tile-guest">Pal Takats</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="Legacy and Lifetimes: 5 Decades of Pioneering the Art of Free Flight" data-guest="Gin Seok Song" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">Legacy and Lifetimes: 5 Decades of Pioneering the Art of Free Flight</p>
+        <p class="ep-tile-guest">Gin Seok Song</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="Brand Stories: Neo" data-guest="Eric Roussel" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">Brand Stories: Neo</p>
+        <p class="ep-tile-guest">Eric Roussel</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="PWCA" data-guest="Goran Dimiskovski" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">PWCA</p>
+        <p class="ep-tile-guest">Goran Dimiskovski</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 </div><!-- /.page-wrap -->
@@ -107,5 +137,6 @@
 </footer>
 
 <script src="../script.js"></script>
+<script src="../episode-modal.js"></script>
 </body>
 </html>

@@ -22,6 +22,7 @@
   .ep-body{padding:0 clamp(1.5rem,5vw,4rem) clamp(4rem,9vw,6rem);background:var(--bg);}
   .ep-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:1.3rem;max-width:1300px;margin:0 auto;}
   .ep-tile{
+    cursor:pointer;
     position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.15);
     text-decoration:none;overflow:hidden;aspect-ratio:16/10;display:flex;align-items:flex-end;
     transition:border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
@@ -64,20 +65,55 @@
 
 <div class="ep-body">
   <div class="ep-grid">
-    <a class="ep-tile" href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">
+    <div class="ep-tile" data-title="From Tents to Trophies: Understanding Acro Champion's Mindset on Ego, Glory & Drugs" data-guest="Luke De Weert" data-desc="" data-readmore="../podcast.html" data-yt-id="">
       <div class="ep-tile-bg"></div>
       <div class="ep-tile-overlay">
-        <p class="ep-tile-title">Build Resilience, Master Fear & Find Joy</p>
-        <p class="ep-tile-guest">Kinga Masztalerz</p>
+        <p class="ep-tile-title">From Tents to Trophies: Understanding Acro Champion's Mindset on Ego, Glory & Drugs</p>
+        <p class="ep-tile-guest">Luke De Weert</p>
       </div>
-    </a>
-    <a class="ep-tile" href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">
+    </div>
+    <div class="ep-tile" data-title="Master the Art of Scoring in Paragliding: A New Pilot's Guide to the GAP Formula & Strategy" data-guest="Joerg Ewald" data-desc="" data-readmore="../podcast.html" data-yt-id="">
       <div class="ep-tile-bg"></div>
       <div class="ep-tile-overlay">
-        <p class="ep-tile-title">Adventures With John Silvester</p>
-        <p class="ep-tile-guest">Eddie Colfox</p>
+        <p class="ep-tile-title">Master the Art of Scoring in Paragliding: A New Pilot's Guide to the GAP Formula & Strategy</p>
+        <p class="ep-tile-guest">Joerg Ewald</p>
       </div>
-    </a>
+    </div>
+    <div class="ep-tile" data-title="The Inside Story of Sports Racing Series (SRS)" data-guest="Brett Janaway" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">The Inside Story of Sports Racing Series (SRS)</p>
+        <p class="ep-tile-guest">Brett Janaway</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="Bruce Goldsmith Explains MRT Scoring System and Its Impact on Paragliding Competitions" data-guest="Bruce Goldsmith" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">Bruce Goldsmith Explains MRT Scoring System and Its Impact on Paragliding Competitions</p>
+        <p class="ep-tile-guest">Bruce Goldsmith</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="Shane Tighe's Road to X-Alps: Engineering Conquests In The Sky from Australia's Flatlands to the Pinnacle of Hike and Fly" data-guest="Shane Tighe" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">Shane Tighe's Road to X-Alps: Engineering Conquests In The Sky from Australia's Flatlands to the Pinnacle of Hike and Fly</p>
+        <p class="ep-tile-guest">Shane Tighe</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="The Resilience Equation: Erlend Ukvitne's Unrelenting Path to X-Alps and the Brink of a Hike and Fly World Record" data-guest="Erlend Ukvitne" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">The Resilience Equation: Erlend Ukvitne's Unrelenting Path to X-Alps and the Brink of a Hike and Fly World Record</p>
+        <p class="ep-tile-guest">Erlend Ukvitne</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="PWC Lifestyle" data-guest="Klaudia Bulgakow" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">PWC Lifestyle</p>
+        <p class="ep-tile-guest">Klaudia Bulgakow</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -122,5 +158,6 @@
 </footer>
 
 <script src="../script.js"></script>
+<script src="../episode-modal.js"></script>
 </body>
 </html>

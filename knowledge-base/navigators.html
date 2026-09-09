@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Navigators — Core Series: Paragliding Atlas</title>
+<title>Navigators — Knowledge Base: Paragliding Atlas</title>
 <link rel="icon" type="image/png" href="../assets/logo/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
 <style>
+
   .cat-hero{padding:clamp(3.5rem,8vw,5.5rem) clamp(1.5rem,5vw,4rem) clamp(2.5rem,6vw,3.5rem);background:var(--bg);}
   .breadcrumb{color:var(--gray);font-size:0.8rem;margin-bottom:1.2rem;}
   .breadcrumb a{color:var(--gray-light);text-decoration:none;}
@@ -18,10 +19,10 @@
   .point-row{display:flex;flex-wrap:wrap;gap:1.5rem;}
   .point-row span{color:var(--gray-light);font-size:0.82rem;position:relative;padding-left:1rem;}
   .point-row span::before{content:"▸";position:absolute;left:0;color:var(--orange);}
-
   .ep-body{padding:0 clamp(1.5rem,5vw,4rem) clamp(4rem,9vw,6rem);background:var(--bg);}
   .ep-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:1.3rem;max-width:1300px;margin:0 auto;}
   .ep-tile{
+    cursor:pointer;
     position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.15);
     text-decoration:none;overflow:hidden;aspect-ratio:16/10;display:flex;align-items:flex-end;
     transition:border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
@@ -31,6 +32,8 @@
   .ep-tile-overlay{position:relative;padding:1.2rem;background:linear-gradient(0deg, rgba(10,10,12,0.9), transparent 70%);width:100%;}
   .ep-tile-title{font-family:var(--font-display);font-weight:700;font-size:0.98rem;color:var(--white);margin-bottom:0.3rem;line-height:1.3;}
   .ep-tile-guest{color:var(--orange);font-size:0.8rem;font-weight:600;}
+  .ep-empty{background:var(--card);border:1px solid rgba(255,117,23,0.2);border-left:3px solid var(--orange);padding:2rem;max-width:1300px;margin:0 auto;color:var(--gray-light);font-size:0.92rem;}
+
 </style>
 </head>
 <body>
@@ -57,51 +60,53 @@
   <p class="breadcrumb"><a href="../knowledge-base.html">Knowledge Base</a> / <a href="core-series.html">Core Series</a> / Navigators</p>
   <h1>Navigators</h1>
   <p>Site-specific guides built with local expert insights to help you understand not just where to fly, but how to fly it right.</p>
-  <div class="point-row">
-    <span>In-depth site breakdowns</span>
-    <span>Local weather patterns &amp; triggers</span>
-    <span>Airspace rules and regulations</span>
-    <span>Proven best practices (and common mistakes to avoid)</span>
-  </div>
+  <div class="point-row"><span>In-depth site breakdowns</span><span>Local weather patterns &amp; triggers</span><span>Airspace rules and regulations</span><span>Proven best practices (and common mistakes to avoid)</span></div>
 </header>
 
 <div class="ep-body">
   <div class="ep-grid">
-    <a class="ep-tile" href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">
-      <div class="ep-tile-bg"></div>
-      <div class="ep-tile-overlay">
-        <p class="ep-tile-title">Navigating India (Bonus Ep.)</p>
-        <p class="ep-tile-guest">Jigish Gohil</p>
-      </div>
-    </a>
-    <a class="ep-tile" href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">
-      <div class="ep-tile-bg"></div>
-      <div class="ep-tile-overlay">
-        <p class="ep-tile-title">Navigating India</p>
-        <p class="ep-tile-guest">Eddie Colfox</p>
-      </div>
-    </a>
-    <a class="ep-tile" href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">
+    <div class="ep-tile" data-title="Navigating Colombia" data-guest="Pal Takats" data-desc="" data-readmore="../podcast.html" data-yt-id="">
       <div class="ep-tile-bg"></div>
       <div class="ep-tile-overlay">
         <p class="ep-tile-title">Navigating Colombia</p>
         <p class="ep-tile-guest">Pal Takats</p>
       </div>
-    </a>
-    <a class="ep-tile" href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">
-      <div class="ep-tile-bg"></div>
-      <div class="ep-tile-overlay">
-        <p class="ep-tile-title">Navigating Panchgani (Pre PWC India)</p>
-        <p class="ep-tile-guest">Vistasp Kharas</p>
-      </div>
-    </a>
-    <a class="ep-tile" href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">
+    </div>
+    <div class="ep-tile" data-title="Navigating Australia" data-guest="Godfrey Wenness" data-desc="" data-readmore="../podcast.html" data-yt-id="">
       <div class="ep-tile-bg"></div>
       <div class="ep-tile-overlay">
         <p class="ep-tile-title">Navigating Australia</p>
         <p class="ep-tile-guest">Godfrey Wenness</p>
       </div>
-    </a>
+    </div>
+    <div class="ep-tile" data-title="Navigating India" data-guest="Eddie Colfox" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">Navigating India</p>
+        <p class="ep-tile-guest">Eddie Colfox</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="Navigating India (Bonus Ep.)" data-guest="Jigish Gohil" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">Navigating India (Bonus Ep.)</p>
+        <p class="ep-tile-guest">Jigish Gohil</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="Navigating Panchgani (Pre PWC India)" data-guest="Vistasp Kharas" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">Navigating Panchgani (Pre PWC India)</p>
+        <p class="ep-tile-guest">Vistasp Kharas</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="Pre PWC Kenya" data-guest="Nikolay Yotov" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">Pre PWC Kenya</p>
+        <p class="ep-tile-guest">Nikolay Yotov</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -146,5 +151,6 @@
 </footer>
 
 <script src="../script.js"></script>
+<script src="../episode-modal.js"></script>
 </body>
 </html>

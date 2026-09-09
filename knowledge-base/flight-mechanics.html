@@ -22,6 +22,7 @@
   .ep-body{padding:0 clamp(1.5rem,5vw,4rem) clamp(4rem,9vw,6rem);background:var(--bg);}
   .ep-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:1.3rem;max-width:1300px;margin:0 auto;}
   .ep-tile{
+    cursor:pointer;
     position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.15);
     text-decoration:none;overflow:hidden;aspect-ratio:16/10;display:flex;align-items:flex-end;
     transition:border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
@@ -63,7 +64,50 @@
 </header>
 
 <div class="ep-body">
-  <div class="ep-empty">Episodes for this series are coming soon. Check back shortly, or explore the <a href="../podcast.html" style="color:var(--orange);">full podcast archive</a> in the meantime.</div>
+  <div class="ep-grid">
+    <div class="ep-tile" data-title="The Science Of Wing Design and Evolution from ENC to CSC" data-guest="Tom Lolies" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">The Science Of Wing Design and Evolution from ENC to CSC</p>
+        <p class="ep-tile-guest">Tom Lolies</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="Modernizing SIV Courses: How This New Training Method Can Help You Master Glider Control and Improve Paragliding Safety" data-guest="Helmut Schrempf" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">Modernizing SIV Courses: How This New Training Method Can Help You Master Glider Control and Improve Paragliding Safety</p>
+        <p class="ep-tile-guest">Helmut Schrempf</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="The Science of EN Certifications: How Work Group 6 Shaped Paragliding Testing, Innovation & Safety" data-guest="Alain Zoller" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">The Science of EN Certifications: How Work Group 6 Shaped Paragliding Testing, Innovation & Safety</p>
+        <p class="ep-tile-guest">Alain Zoller</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="Demystifying The Science Behind the Endless Fun Factor of Parakites" data-guest="Bryan Van Ostheim" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">Demystifying The Science Behind the Endless Fun Factor of Parakites</p>
+        <p class="ep-tile-guest">Bryan Van Ostheim</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="Debunking the Myths and Upgrading Enzo 3" data-guest="Luc Armant" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">Debunking the Myths and Upgrading Enzo 3</p>
+        <p class="ep-tile-guest">Luc Armant</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="777: Paragliding's Slovenian Mavericks Redefining the EN B Class And Elevating Free Flight Performance" data-guest="Aljaž Valič" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">777: Paragliding's Slovenian Mavericks Redefining the EN B Class And Elevating Free Flight Performance</p>
+        <p class="ep-tile-guest">Aljaž Valič</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 </div><!-- /.page-wrap -->
@@ -107,5 +151,6 @@
 </footer>
 
 <script src="../script.js"></script>
+<script src="../episode-modal.js"></script>
 </body>
 </html>

@@ -22,6 +22,7 @@
   .ep-body{padding:0 clamp(1.5rem,5vw,4rem) clamp(4rem,9vw,6rem);background:var(--bg);}
   .ep-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:1.3rem;max-width:1300px;margin:0 auto;}
   .ep-tile{
+    cursor:pointer;
     position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.15);
     text-decoration:none;overflow:hidden;aspect-ratio:16/10;display:flex;align-items:flex-end;
     transition:border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
@@ -64,20 +65,48 @@
 
 <div class="ep-body">
   <div class="ep-grid">
-    <a class="ep-tile" href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">
+    <div class="ep-tile" data-title="Anatomy of a Dream: A Lifestyle Full of Grit, Grace and Vertical Freedom" data-guest="Damien Lacaze" data-desc="" data-readmore="../podcast.html" data-yt-id="">
       <div class="ep-tile-bg"></div>
       <div class="ep-tile-overlay">
-        <p class="ep-tile-title">Build Resilience, Master Fear & Find Joy</p>
-        <p class="ep-tile-guest">Kinga Masztalerz</p>
+        <p class="ep-tile-title">Anatomy of a Dream: A Lifestyle Full of Grit, Grace and Vertical Freedom</p>
+        <p class="ep-tile-guest">Damien Lacaze</p>
       </div>
-    </a>
-    <a class="ep-tile" href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">
+    </div>
+    <div class="ep-tile" data-title="Vol Biv & Freedom Unfiltered: A Human-Powered Odyssey By Paragliding, Biking & Sailing Around The Globe" data-guest="Sandrine Roy" data-desc="" data-readmore="../podcast.html" data-yt-id="">
       <div class="ep-tile-bg"></div>
       <div class="ep-tile-overlay">
-        <p class="ep-tile-title">Adventures With John Silvester</p>
-        <p class="ep-tile-guest">Eddie Colfox</p>
+        <p class="ep-tile-title">Vol Biv & Freedom Unfiltered: A Human-Powered Odyssey By Paragliding, Biking & Sailing Around The Globe</p>
+        <p class="ep-tile-guest">Sandrine Roy</p>
       </div>
-    </a>
+    </div>
+    <div class="ep-tile" data-title="From Cuba to Socotra: Inside the World's Most Unique Paragliding Tours" data-guest="" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">From Cuba to Socotra: Inside the World's Most Unique Paragliding Tours</p>
+        <p class="ep-tile-guest"></p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="Touch The Sky With Glory" data-guest="" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">Touch The Sky With Glory</p>
+        <p class="ep-tile-guest"></p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="How to Fly With Your Dog" data-guest="Shams" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">How to Fly With Your Dog</p>
+        <p class="ep-tile-guest">Shams</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="Living The Dream" data-guest="Benjamin Jordan" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">Living The Dream</p>
+        <p class="ep-tile-guest">Benjamin Jordan</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -122,5 +151,6 @@
 </footer>
 
 <script src="../script.js"></script>
+<script src="../episode-modal.js"></script>
 </body>
 </html>

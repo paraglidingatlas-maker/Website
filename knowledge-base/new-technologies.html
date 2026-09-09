@@ -22,6 +22,7 @@
   .ep-body{padding:0 clamp(1.5rem,5vw,4rem) clamp(4rem,9vw,6rem);background:var(--bg);}
   .ep-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:1.3rem;max-width:1300px;margin:0 auto;}
   .ep-tile{
+    cursor:pointer;
     position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.15);
     text-decoration:none;overflow:hidden;aspect-ratio:16/10;display:flex;align-items:flex-end;
     transition:border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
@@ -63,7 +64,57 @@
 </header>
 
 <div class="ep-body">
-  <div class="ep-empty">Episodes for this series are coming soon. Check back shortly, or explore the <a href="../podcast.html" style="color:var(--orange);">full podcast archive</a> in the meantime.</div>
+  <div class="ep-grid">
+    <div class="ep-tile" data-title="New Technologies 1" data-guest="Beni Kälin (speedflyingschool.com)" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">New Technologies 1</p>
+        <p class="ep-tile-guest">Beni Kälin (speedflyingschool.com)</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="New Technologies 2" data-guest="Guillem Batlle &amp; Adrià Grau (Niviuk Paragliders)" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">New Technologies 2</p>
+        <p class="ep-tile-guest">Guillem Batlle &amp; Adrià Grau (Niviuk Paragliders)</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="New Technologies 3" data-guest="Stephan Stiegler (AirDesign Paragliders)" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">New Technologies 3</p>
+        <p class="ep-tile-guest">Stephan Stiegler (AirDesign Paragliders)</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="New Technologies 4" data-guest="Veselin Ovcharov (Fly The Earth)" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">New Technologies 4</p>
+        <p class="ep-tile-guest">Veselin Ovcharov (Fly The Earth)</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="New Technologies 5" data-guest="Frantisek Pavlousek (UP Paragliders)" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">New Technologies 5</p>
+        <p class="ep-tile-guest">Frantisek Pavlousek (UP Paragliders)</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="Understanding Skymate: Paragliding World's First AI Powered Smart Harness System" data-guest="Roman Barthelemy" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">Understanding Skymate: Paragliding World's First AI Powered Smart Harness System</p>
+        <p class="ep-tile-guest">Roman Barthelemy</p>
+      </div>
+    </div>
+    <div class="ep-tile" data-title="Why Paragliding's Safety Future Looks Different: RAST Inventor Michael Nesler & the LeelooX Effect" data-guest="Michael Nesler" data-desc="" data-readmore="../podcast.html" data-yt-id="">
+      <div class="ep-tile-bg"></div>
+      <div class="ep-tile-overlay">
+        <p class="ep-tile-title">Why Paragliding's Safety Future Looks Different: RAST Inventor Michael Nesler & the LeelooX Effect</p>
+        <p class="ep-tile-guest">Michael Nesler</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 </div><!-- /.page-wrap -->
@@ -107,5 +158,6 @@
 </footer>
 
 <script src="../script.js"></script>
+<script src="../episode-modal.js"></script>
 </body>
 </html>

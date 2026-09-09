@@ -132,6 +132,7 @@ SUBSERIES_CSS = """
   .ep-body{padding:0 clamp(1.5rem,5vw,4rem) clamp(4rem,9vw,6rem);background:var(--bg);}
   .ep-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:1.3rem;max-width:1300px;margin:0 auto;}
   .ep-tile{
+    cursor:pointer;
     position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.15);
     text-decoration:none;overflow:hidden;aspect-ratio:16/10;display:flex;align-items:flex-end;
     transition:border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
@@ -183,13 +184,13 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
     if episodes:
         tiles = "".join(
             f"""
-    <a class="ep-tile" href="{e.get('link', 'https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec')}" target="_blank" rel="noopener">
+    <div class="ep-tile" data-title="{e['title'].replace('"', '&quot;')}" data-guest="{e['guest']}" data-desc="{e.get('desc', '')}" data-readmore="{e.get('readmore', '../podcast.html')}" data-yt-id="{e.get('yt_id', '')}">
       <div class="ep-tile-bg"></div>
       <div class="ep-tile-overlay">
         <p class="ep-tile-title">{e['title']}</p>
         <p class="ep-tile-guest">{e['guest']}</p>
       </div>
-    </a>"""
+    </div>"""
             for e in episodes
         )
         ep_html = f'<div class="ep-grid">{tiles}\n  </div>'
@@ -206,8 +207,15 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
 <div class="ep-body">
   {ep_html}
 </div>"""
-    html = NAV_HEADER.format(title=title, css=SUBSERIES_CSS, body=body) + NAV_FOOTER
-    write(f"{slug}.html", html)
+    html = NAV_HEADER.format(title=title, css=SUBSERIES_CSS, body=body)
+    html = html.replace(
+        '<script src="../script.js"></script>\n</body>',
+        '<script src="../script.js"></script>\n<script src="../episode-modal.js"></script>\n</body>'
+    )
+    write(f"{slug}.html", html + NAV_FOOTER.replace(
+        '<script src="../script.js"></script>\n</body>',
+        '<script src="../script.js"></script>\n<script src="../episode-modal.js"></script>\n</body>'
+    ))
 
 
 # ── Icons ────────────────────────────────────────────────────────────────
@@ -225,14 +233,44 @@ ICONS = {
     "backpack": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 8V6a5 5 0 0 1 10 0v2"/><rect x="5" y="8" width="14" height="13" rx="2"/><path d="M9 12h6M9 16h6"/></svg>',
 }
 
-# ── Build Living The Dream (under Core Series) ──────────────────────────
+# ── Build Navigators and Sky Gods (under Core Series) ────────────────────
+subseries_page(
+    "navigators", "core-series", "Core Series", "Navigators",
+    "Site-specific guides built with local expert insights to help you understand not just where to fly, but how to fly it right.",
+    ["In-depth site breakdowns", "Local weather patterns &amp; triggers", "Airspace rules and regulations", "Proven best practices (and common mistakes to avoid)"],
+    [
+        {"title": "Navigating Colombia", "guest": "Pal Takats"},
+        {"title": "Navigating Australia", "guest": "Godfrey Wenness"},
+        {"title": "Navigating India", "guest": "Eddie Colfox"},
+        {"title": "Navigating India (Bonus Ep.)", "guest": "Jigish Gohil"},
+        {"title": "Navigating Panchgani (Pre PWC India)", "guest": "Vistasp Kharas"},
+        {"title": "Pre PWC Kenya", "guest": "Nikolay Yotov"},
+    ],
+)
+
+subseries_page(
+    "sky-gods", "core-series", "Core Series", "Sky Gods",
+    "Step into the minds of the most influential pilots and understand what drives excellence at the highest level.",
+    ["Career journeys and milestones", "Training philosophies", "Personal rituals and mindset", "Lessons from elite performance"],
+    [
+        {"title": "Sky Gods: Flying To Win", "guest": "Honorin Hamard", "readmore": "../podcast.html"},
+        {"title": "Sky Gods: Flying 8000ers", "guest": "Antoine Girard"},
+        {"title": "The Journey Within: Mapping Our Quest to Touch The Sky With Glory", "guest": "Maxime Pinot"},
+    ],
+)
+
+# ── Living The Dream (under Core Series) ─────────────────────────────────
 subseries_page(
     "living-the-dream", "core-series", "Core Series", "Living The Dream",
     "Explore real pathways to turning passion into a sustainable lifestyle.",
     ["Career opportunities in paragliding", "Business and income pathways", "Lifestyle and work balance", "Long-term sustainability insights"],
     [
-        {"title": "Build Resilience, Master Fear & Find Joy", "guest": "Kinga Masztalerz"},
-        {"title": "Adventures With John Silvester", "guest": "Eddie Colfox"},
+        {"title": "Anatomy of a Dream: A Lifestyle Full of Grit, Grace and Vertical Freedom", "guest": "Damien Lacaze"},
+        {"title": "Vol Biv & Freedom Unfiltered: A Human-Powered Odyssey By Paragliding, Biking & Sailing Around The Globe", "guest": "Sandrine Roy"},
+        {"title": "From Cuba to Socotra: Inside the World's Most Unique Paragliding Tours", "guest": ""},
+        {"title": "Touch The Sky With Glory", "guest": ""},
+        {"title": "How to Fly With Your Dog", "guest": "Shams"},
+        {"title": "Living The Dream", "guest": "Benjamin Jordan"},
     ],
 )
 
@@ -258,8 +296,13 @@ subseries_page(
     "Get a clear view of modern race formats and evolving rules, with insights from experienced competitors and organizers.",
     ["Competition formats and scoring systems", "Race strategy and decision-making", "Event structures and calendars", "Insights from pilots and organizers"],
     [
-        {"title": "Build Resilience, Master Fear & Find Joy", "guest": "Kinga Masztalerz"},
-        {"title": "Adventures With John Silvester", "guest": "Eddie Colfox"},
+        {"title": "From Tents to Trophies: Understanding Acro Champion's Mindset on Ego, Glory & Drugs", "guest": "Luke De Weert"},
+        {"title": "Master the Art of Scoring in Paragliding: A New Pilot's Guide to the GAP Formula & Strategy", "guest": "Joerg Ewald"},
+        {"title": "The Inside Story of Sports Racing Series (SRS)", "guest": "Brett Janaway"},
+        {"title": "Bruce Goldsmith Explains MRT Scoring System and Its Impact on Paragliding Competitions", "guest": "Bruce Goldsmith"},
+        {"title": "Shane Tighe's Road to X-Alps: Engineering Conquests In The Sky from Australia's Flatlands to the Pinnacle of Hike and Fly", "guest": "Shane Tighe"},
+        {"title": "The Resilience Equation: Erlend Ukvitne's Unrelenting Path to X-Alps and the Brink of a Hike and Fly World Record", "guest": "Erlend Ukvitne"},
+        {"title": "PWC Lifestyle", "guest": "Klaudia Bulgakow"},
     ],
 )
 
@@ -268,11 +311,13 @@ subseries_page(
     "Learn how to balance performance with safety by understanding when to push and when to hold back.",
     ["Risk assessment in real conditions", "High-consequence scenario awareness", "Personal limit setting", "Practical decision-making frameworks"],
     [
-        {"title": "Risk vs Reward — Episode 1", "guest": "Philippo Zellner"},
-        {"title": "Risk vs Reward — Episode 2", "guest": "Subir Sidhu"},
-        {"title": "Risk vs Reward — Episode 3", "guest": "Manfred Ruhner"},
-        {"title": "Risk vs Reward — Episode 4", "guest": "Raul Rodriguez"},
-        {"title": "Risk vs Reward — Episode 5", "guest": "Sabine Cross"},
+        {"title": "Risk Vs Reward 1", "guest": "Philipp Zellner"},
+        {"title": "Risk Vs Reward 2", "guest": "Subir Sidhu"},
+        {"title": "Risk Vs Reward 3", "guest": "Manfred Ruhmer"},
+        {"title": "Risk Vs Reward 4", "guest": "Raúl Rodríguez"},
+        {"title": "Risk Vs Reward 5", "guest": "Gabriel Orsini (partytillimpact)"},
+        {"title": "Consequence Over Probability: Will Gadd's Field Protocols for Rewiring Risk Intuition and Why True Safety Lies in Clarity", "guest": "Will Gadd"},
+        {"title": "Building a Healthy Relationship with the Skies: How to Master Fear, Build Resilience & Find Joy Through Paragliding", "guest": "Kinga Masztalerz"},
     ],
 )
 
@@ -280,7 +325,19 @@ subseries_page(
     "resources-tools-tips", "competitions", "Competitions & Performance", "Resources, Tools & Tips",
     "Break down real flights and decisions using tools and insights that accelerate your learning curve.",
     ["Tracklog analysis techniques", "Performance review tools", "Case studies of notable flights", "Practical tips from experienced pilots"],
-    [],
+    [
+        {"title": "Finest Paragliding Reviews & Superpower of Changing Wings as A Human", "guest": "Ziad Bassil"},
+        {"title": "The Art of Capturing Human Flight: A Guide to Filming Passion Projects in Paragliding", "guest": "Jake Holland"},
+        {"title": "Flying & Filming 1", "guest": "Benjamin Jordan"},
+        {"title": "Flying & Filming 2", "guest": "Benjamin Kellet"},
+        {"title": "Flying & Filming 3", "guest": "Andreas Lattner (hochzwei.media)"},
+        {"title": "Science Backed Pre Flight Rituals to Unlock Laser Sharp Paragliding Clarity", "guest": "On Demand"},
+        {"title": "The Silent Mind In Screaming Winds: Unlocking Peak Focus To Attain Flow State In Paragliding", "guest": "Grant Smith"},
+        {"title": "Sports Psychology for Paragliding: Train Your Mind to Fly Better", "guest": "Yvonne Dathe"},
+        {"title": "Mastering the Unknown: Neuroscience of Crisis Management & Neuroplasticity Training", "guest": ""},
+        {"title": "Identifying Passion Vs Obsession: An Aviator's Approach to Overcoming Adversity, Rebuilding Trust and Finding Joy in the Skies", "guest": "Ashutosh Chopra"},
+        {"title": "AMA #1", "guest": ""},
+    ],
 )
 
 # ── Meteorology & Weather Analysis category + sub-series ────────────────
@@ -298,7 +355,9 @@ subseries_page(
     "weather-patterns", "meteorology", "Meteorology & Weather Analysis", "Weather Patterns and Forecasting",
     "Build a solid foundation in understanding weather systems and how they influence flying conditions.",
     ["Pressure systems and fronts", "Cloud formations and indicators", "Wind patterns and thermals", "Forecast interpretation"],
-    [],
+    [
+        {"title": "Meteorology 101: A Beginner's Guide to Understanding Weather Apps and Decoding Endless Forecasting Options", "guest": ""},
+    ],
 )
 
 # ── Industry & Community category + sub-series ───────────────────────────
@@ -322,21 +381,35 @@ subseries_page(
     "brand-stories", "industry", "Industry & Community", "Brand Stories &amp; Manufacturer Profiles",
     "Explore the evolution, philosophy, and innovation shaping the equipment you trust.",
     ["Company histories and milestones", "Design philosophies", "Product development processes", "Certification and safety standards"],
-    [],
+    [
+        {"title": "On Challenges, Change & The Future of Paragliding", "guest": "Pal Takats"},
+        {"title": "Legacy and Lifetimes: 5 Decades of Pioneering the Art of Free Flight", "guest": "Gin Seok Song"},
+        {"title": "Brand Stories: Neo", "guest": "Eric Roussel"},
+        {"title": "PWCA", "guest": "Goran Dimiskovski"},
+    ],
 )
 
 subseries_page(
     "storytellers", "industry", "Industry & Community", "Storytellers",
     "Go beyond flying and into the lives, journeys, and perspectives of the sport through human stories.",
     ["Personal pilot journeys", "Community voices", "Cultural perspectives", "Real-world experiences"],
-    [],
+    [
+        {"title": "Storytime: Chasing Adventure With the Real OG John Silvester & 3 Decades of Making Memories Across The Globe", "guest": "Eddie Colfox"},
+        {"title": "Storytellers: Mid-Air Collision", "guest": "Marko Milutinovic"},
+    ],
 )
 
 subseries_page(
     "the-dark-side", "industry", "Industry & Community", "The Dark Side: Learning from Incidents",
     "Understand accidents and incidents through detailed analysis to improve awareness and safety.",
     ["Incident case studies", "Root cause analysis", "Contributing factors", "Preventive lessons and insights"],
-    [],
+    [
+        {"title": "The Uncomfortable Truth No One is Talking About in the Current Safety Paradox", "guest": "Bill Belcourt"},
+        {"title": "Survived 15 Years of Flying, Then a Rescue Helicopter Changed Everything", "guest": "Nick Neynes"},
+        {"title": "The Unfiltered Truth About Paragliding Governance", "guest": "Bill Hughes &amp; Goran Dimiskovski"},
+        {"title": "Insights From The Gaggle", "guest": "Tilen Ceglar &amp; Stan Radzikowski"},
+        {"title": "#CIVLRESIGN", "guest": "Julien Garcia"},
+    ],
 )
 
 # ── Technical Focus & Flight Safety category + sub-series ────────────────
@@ -360,21 +433,43 @@ subseries_page(
     "flight-mechanics", "technical", "Technical Focus & Flight Safety", "Flight Mechanics",
     "Build a deeper understanding of the forces and principles that govern safe and efficient flight.",
     ["Aerodynamic fundamentals", "AOA and airspeed", "Wing behavior in different phases", "Control inputs and their effects"],
-    [],
+    [
+        {"title": "The Science Of Wing Design and Evolution from ENC to CSC", "guest": "Tom Lolies"},
+        {"title": "Modernizing SIV Courses: How This New Training Method Can Help You Master Glider Control and Improve Paragliding Safety", "guest": "Helmut Schrempf"},
+        {"title": "The Science of EN Certifications: How Work Group 6 Shaped Paragliding Testing, Innovation & Safety", "guest": "Alain Zoller"},
+        {"title": "Demystifying The Science Behind the Endless Fun Factor of Parakites", "guest": "Bryan Van Ostheim"},
+        {"title": "Debunking the Myths and Upgrading Enzo 3", "guest": "Luc Armant"},
+        {"title": "777: Paragliding's Slovenian Mavericks Redefining the EN B Class And Elevating Free Flight Performance", "guest": "Aljaž Valič"},
+    ],
 )
 
 subseries_page(
     "new-technologies", "technical", "Technical Focus & Flight Safety", "New Technologies",
     "Stay current with the latest trends and innovations in paragliding tech.",
     ["New materials and wing design", "Safety system innovations", "Flight instruments and analytics", "Emerging trends in paragliding tech"],
-    [],
+    [
+        {"title": "New Technologies 1", "guest": "Beni Kälin (speedflyingschool.com)"},
+        {"title": "New Technologies 2", "guest": "Guillem Batlle &amp; Adrià Grau (Niviuk Paragliders)"},
+        {"title": "New Technologies 3", "guest": "Stephan Stiegler (AirDesign Paragliders)"},
+        {"title": "New Technologies 4", "guest": "Veselin Ovcharov (Fly The Earth)"},
+        {"title": "New Technologies 5", "guest": "Frantisek Pavlousek (UP Paragliders)"},
+        {"title": "Understanding Skymate: Paragliding World's First AI Powered Smart Harness System", "guest": "Roman Barthelemy"},
+        {"title": "Why Paragliding's Safety Future Looks Different: RAST Inventor Michael Nesler & the LeelooX Effect", "guest": "Michael Nesler"},
+    ],
 )
 
 subseries_page(
     "know-your-equipment", "technical", "Technical Focus & Flight Safety", "Know Your Equipment",
     "Master your flying kit and gear with detailed tutorials and maintenance guides.",
     ["Canopy construction and materials", "Harness systems and protection", "Reserve parachute handling", "Maintenance and care practices"],
-    [],
+    [
+        {"title": "The Real Truth About Reserve Parachutes: A Paragliding Survival Guide", "guest": "Urs Haari"},
+        {"title": "Watch This Before You Buy a Paragliding Harness", "guest": "Zsolt Ero", "yt_id": "kSoFk23TuX0", "readmore": "../episodes/watch-this-before-you-buy-a-paragliding-harness.html"},
+        {"title": "Snippet: A Reserve Parachute Trick Every Pilot Should Know", "guest": "Urs Haari"},
+        {"title": "Helmet Safety: ICARO 2000 [1st Anniversary Edition]", "guest": "Christian Ciech"},
+        {"title": "Carabiner Fatigue (Whitepaper)", "guest": "Finsterwalder &amp; Charly"},
+        {"title": "A Note of Thanks", "guest": ""},
+    ],
 )
 
 print("Done.")
