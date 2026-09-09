@@ -43,7 +43,11 @@
   /* ===== ANIMATED STAT BAR ===== */
   .stat-bar{padding:2.4rem clamp(1.5rem,5vw,4rem);background:linear-gradient(180deg, var(--bg) 0%, var(--bg) 75%, var(--card) 100%);display:flex;justify-content:center;gap:clamp(2.5rem,7vw,6rem);flex-wrap:wrap;}
   .stat-item{text-align:center;}
-  .stat-item .num{font-family:var(--font-body);font-weight:700;font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--orange);letter-spacing:-0.02em;}
+  .stat-item .num{
+    font-family:var(--font-body);font-weight:700;font-size:clamp(1.8rem,3.4vw,2.6rem);
+    color:var(--orange);letter-spacing:0.01em;font-variant-numeric:tabular-nums;
+    text-shadow:0 0 18px rgba(255,117,23,0.35);
+  }
   .stat-item .label{color:var(--gray-light);font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;}
 
   /* ===== GLIMPSE OF THE SHOW: featured + playlist, real YouTube data ===== */
@@ -130,12 +134,16 @@
   .glassB-row input{flex:1;min-width:200px;}
   .glassB-field{position:relative;margin-bottom:1.2rem;}
   .glassB-field input, .glassB-field textarea, .glassB-row input{
-    width:100%;background:var(--bg);border:1px solid rgba(255,255,255,0.12);
-    color:var(--white);padding:0.8rem 1.1rem;font-family:var(--font-body);font-size:0.9rem;
+    width:100%;background:transparent;border:none;
+    border-top:1px solid rgba(180,180,180,0.3);border-bottom:1px solid rgba(180,180,180,0.3);
+    color:var(--white);padding:0.9rem 0.2rem;font-family:var(--font-body);font-size:0.92rem;
     outline:none;box-shadow:none;border-radius:0;-webkit-appearance:none;appearance:none;
+    transition:border-color 0.2s ease;
   }
   .glassB-field textarea{resize:vertical;min-height:70px;}
-  .glassB-row input:focus, .glassB-field input:focus, .glassB-field textarea:focus{border-color:var(--orange);}
+  .glassB-row input:focus, .glassB-field input:focus, .glassB-field textarea:focus{
+    border-top-color:var(--orange);border-bottom-color:var(--orange);
+  }
   .glassB-field input::placeholder, .glassB-field textarea::placeholder, .glassB-row input::placeholder{color:var(--gray);}
   .glassB-bottom{display:flex;justify-content:space-between;align-items:center;position:relative;flex-wrap:wrap;gap:1rem;}
   .glassB-submit{
