@@ -75,8 +75,19 @@
     targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 1.4;
   });
 
+  // Only render when the hero is actually visible — prevents this loop from
+  // competing with the page's scroll-smoothing loop once scrolled past,
+  // which was causing uneven/heavy scroll behavior further down the page.
+  let isVisible = true;
+  const visibilityObserver = new IntersectionObserver(
+    (entries) => { isVisible = entries[0].isIntersecting; },
+    { threshold: 0 }
+  );
+  visibilityObserver.observe(hero);
+
   function animate() {
     requestAnimationFrame(animate);
+    if (!isVisible) return;
 
     const pos = geometry.attributes.position.array;
     for (let i = 0; i < particleCount; i++) {

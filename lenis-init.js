@@ -9,8 +9,8 @@
   if (typeof Lenis === 'undefined') return;
 
   const lenis = new Lenis({
-    duration: 1.1,          // how long a scroll "settles" for — higher = heavier/slower feel
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth ease-out
+    duration: 1.2,           // how long a scroll "settles" for — higher = heavier/slower feel
+    easing: (t) => 1 - Math.pow(1 - t, 3), // gentle cubic ease-out, standard and predictable
     smoothWheel: true,
     touchMultiplier: 1.5,
   });
