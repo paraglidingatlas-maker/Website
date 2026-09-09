@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Episode Page Concepts — Prototype</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#141519; --card:#202127; --orange:#ff7517;
+  --white:#f6f4f4; --gray:#737373; --gray-light:#b4b4b4;
+  --font-display:"Poppins",sans-serif; --font-body:"DM Sans",sans-serif; --font-mono:"Space Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0a0a0c;color:var(--white);font-family:var(--font-body);}
+img{max-width:100%;display:block;}
+.label{max-width:1100px;margin:3.5rem auto 0.8rem;padding:0 2rem;color:var(--orange);font-family:var(--font-display);font-weight:700;font-size:1.1rem;}
+.sublabel{max-width:1100px;margin:0 auto 1.2rem;padding:0 2rem;color:var(--gray);font-size:0.9rem;}
+.stage{max-width:1100px;margin:0 auto 3rem;border:1px dashed rgba(180,180,180,0.2);overflow:hidden;}
+
+/* ============ CONCEPT A: Magazine Editorial / Parallax ============ */
+.pageA{background:var(--bg);}
+.heroA{position:relative;height:380px;overflow:hidden;background:linear-gradient(135deg,#3a3020,#1a1510);}
+.heroA-bg{position:absolute;inset:-20% 0;background:linear-gradient(160deg,#4a3520 0%,#20180f 60%);opacity:0.9;}
+.heroA-content{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem;}
+.heroA-tag{color:var(--orange);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.8rem;}
+.heroA h1{font-family:var(--font-display);font-weight:800;font-size:2.2rem;max-width:700px;line-height:1.15;}
+.bodyA{padding:3rem 2.5rem;max-width:720px;margin:0 auto;}
+.quoteA{font-family:var(--font-display);font-weight:700;font-size:1.6rem;line-height:1.4;color:var(--orange);margin:2.5rem 0;padding-left:1.2rem;border-left:3px solid var(--orange);}
+.dropcapA::first-letter{font-family:var(--font-display);font-weight:800;font-size:3.4rem;float:left;line-height:0.8;margin:0.1rem 0.5rem 0 0;color:var(--orange);}
+.bodyA p{color:var(--gray-light);line-height:1.85;margin-bottom:1.3rem;font-size:1rem;}
+.tsA{color:var(--gray);font-family:var(--font-mono);font-size:0.72rem;margin-right:0.6rem;}
+
+/* ============ CONCEPT B: Sticky Player + Chapter Nav ============ */
+.pageB{background:var(--bg);display:grid;grid-template-columns:220px 1fr;}
+.chapNavB{background:var(--card);padding:2rem 1.2rem;border-right:1px solid rgba(180,180,180,0.1);}
+.chapNavB-title{color:var(--gray);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;}
+.chapB-item{display:block;padding:0.6rem 0.7rem;color:var(--gray-light);font-size:0.82rem;border-left:2px solid transparent;cursor:pointer;text-decoration:none;}
+.chapB-item.active{border-left-color:var(--orange);color:var(--white);background:rgba(255,117,23,0.06);}
+.chapB-time{display:block;color:var(--gray);font-size:0.68rem;font-family:var(--font-mono);margin-top:0.2rem;}
+.contentB{padding:2rem 2.5rem;}
+.contentB h1{font-family:var(--font-display);font-weight:800;font-size:1.7rem;margin-bottom:0.8rem;}
+.contentB-guest{color:var(--orange);font-size:0.9rem;margin-bottom:1.5rem;}
+.playerB{background:var(--card);border:1px solid rgba(255,117,23,0.3);padding:1rem 1.3rem;display:flex;align-items:center;gap:1rem;margin-bottom:2rem;position:sticky;top:1rem;z-index:2;}
+.playerB-btn{width:38px;height:38px;border-radius:50%;background:var(--orange);border:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;}
+.playerB-btn svg{width:14px;height:14px;color:#171712;}
+.playerB-track{flex:1;height:4px;background:rgba(180,180,180,0.2);position:relative;}
+.playerB-fill{position:absolute;left:0;top:0;bottom:0;width:22%;background:var(--orange);}
+.playerB-time{color:var(--gray);font-size:0.72rem;font-family:var(--font-mono);}
+.contentB p{color:var(--gray-light);line-height:1.8;margin-bottom:1.1rem;font-size:0.95rem;}
+.contentB .tsB{color:var(--orange);font-family:var(--font-mono);font-size:0.72rem;margin-right:0.6rem;}
+
+/* ============ CONCEPT C: Dossier / Mission File ============ */
+.pageC{background:var(--bg);position:relative;}
+.stampC{position:absolute;top:1.5rem;right:1.5rem;border:2px solid var(--orange);color:var(--orange);font-family:var(--font-mono);font-size:0.7rem;padding:0.4rem 0.8rem;transform:rotate(6deg);opacity:0.8;}
+.headC{padding:3rem 2.5rem 1.5rem;border-bottom:1px solid rgba(255,117,23,0.2);}
+.fileNoC{color:var(--gray);font-family:var(--font-mono);font-size:0.75rem;margin-bottom:1rem;}
+.headC h1{font-family:var(--font-display);font-weight:800;font-size:2rem;max-width:700px;line-height:1.2;margin-bottom:1rem;}
+.badgeC-row{display:flex;align-items:center;gap:1rem;}
+.badgeC{width:56px;height:56px;border:1.5px solid var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;color:var(--orange);font-size:1.3rem;}
+.badgeC-name{font-weight:600;}
+.badgeC-role{color:var(--gray);font-size:0.8rem;}
+.bodyC{padding:2.5rem;max-width:720px;}
+.bodyC .fieldnote{background:var(--card);border-left:3px solid var(--orange);padding:1.2rem 1.4rem;font-family:var(--font-mono);font-size:0.85rem;color:var(--orange);margin:2rem 0;line-height:1.6;}
+.bodyC p{color:var(--gray-light);line-height:1.8;margin-bottom:1.2rem;font-size:0.95rem;}
+.tsC{color:var(--gray);font-family:var(--font-mono);font-size:0.7rem;background:var(--card);padding:0.1rem 0.4rem;margin-right:0.6rem;}
+
+/* ============ CONCEPT D: Waveform Hero + Split Bio ============ */
+.pageD{background:var(--bg);}
+.heroD{padding:3rem 2.5rem 2rem;text-align:center;position:relative;overflow:hidden;}
+.wavesD{display:flex;align-items:center;justify-content:center;gap:2px;height:60px;margin-bottom:1.5rem;opacity:0.6;}
+.wavesD span{width:3px;background:var(--orange);border-radius:2px;}
+.heroD h1{font-family:var(--font-display);font-weight:800;font-size:2rem;max-width:680px;margin:0 auto 0.6rem;}
+.heroD-guest{color:var(--orange);font-size:0.9rem;}
+.bodyD{display:grid;grid-template-columns:260px 1fr;gap:2rem;padding:2rem 2.5rem 3rem;max-width:1050px;margin:0 auto;}
+.bioD{position:sticky;top:2rem;align-self:start;background:var(--card);border:1px solid rgba(180,180,180,0.12);padding:1.5rem;}
+.bioD h3{font-family:var(--font-display);font-weight:700;font-size:0.85rem;color:var(--orange);text-transform:uppercase;margin-bottom:0.8rem;}
+.bioD p{color:var(--gray-light);font-size:0.88rem;line-height:1.6;margin-bottom:1rem;}
+.bioD .linksD{display:flex;flex-direction:column;gap:0.5rem;}
+.bioD .linksD a{color:var(--white);font-size:0.85rem;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:2px;width:fit-content;}
+.transcriptD p{color:var(--gray-light);line-height:1.8;margin-bottom:1.2rem;font-size:0.95rem;}
+.tsD{color:var(--orange);font-weight:700;font-size:0.78rem;margin-right:0.5rem;}
+</style>
+</head>
+<body>
+
+<div class="label">Concept A — Magazine Editorial / Parallax</div>
+<div class="sublabel">Full-bleed atmospheric hero, huge pull-quote as a visual break, drop-cap opening paragraph, article-style flow. Inspired by long-form editorial sites (Song Exploder's blog approach, elevated).</div>
+<div class="stage">
+  <div class="pageA">
+    <div class="heroA">
+      <div class="heroA-bg"></div>
+      <div class="heroA-content">
+        <span class="heroA-tag">Episode — Dec 4, 2025</span>
+        <h1>Watch This Before You Buy a Paragliding Harness</h1>
+      </div>
+    </div>
+    <div class="bodyA">
+      <p class="dropcapA"><span class="tsA">00:00</span>A harness to a paraglider pilot is the same as a cockpit to a pilot flying an airplane — every strap, every buckle, every piece of foam is a decision that matters the moment things go wrong.</p>
+      <p class="quoteA">"The back protector isn't optional gear. It's the one piece of your setup you hope you never need to test."</p>
+      <p><span class="tsA">03:42</span>Zsolt Ero walks through the real science behind back protectors, Koroyd versus airbag systems, and why most pilots buy harnesses for comfort when they should be buying them for what happens on the worst day.</p>
+      <p><span class="tsA">08:15</span>We get into competition safety standards, how CIVL is evolving its recommendations, and what actually changed after recent high-profile incidents in the sport.</p>
+    </div>
+  </div>
+</div>
+
+<div class="label">Concept B — Sticky Player + Chapter Navigation</div>
+<div class="sublabel">A left sidebar of timestamped chapters (highlighted as you scroll), and a sticky mini-player that stays visible the whole read. Directly inspired by top real podcast sites' timestamped transcript pattern.</div>
+<div class="stage">
+  <div class="pageB">
+    <div class="chapNavB">
+      <p class="chapNavB-title">Chapters</p>
+      <a class="chapB-item active">Why Harnesses Matter<span class="chapB-time">00:00</span></a>
+      <a class="chapB-item">Back Protector Science<span class="chapB-time">03:42</span></a>
+      <a class="chapB-item">Koroyd vs Airbag<span class="chapB-time">08:15</span></a>
+      <a class="chapB-item">Competition Standards<span class="chapB-time">14:20</span></a>
+      <a class="chapB-item">What To Actually Buy<span class="chapB-time">22:05</span></a>
+    </div>
+    <div class="contentB">
+      <h1>Watch This Before You Buy a Paragliding Harness</h1>
+      <p class="contentB-guest">Zsolt Ero · Dec 4, 2025 · 41 min</p>
+      <div class="playerB">
+        <button class="playerB-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7Z"/></svg></button>
+        <div class="playerB-track"><div class="playerB-fill"></div></div>
+        <span class="playerB-time">9:02 / 41:17</span>
+      </div>
+      <p><span class="tsB">00:00</span>A harness to a paraglider pilot is the same as a cockpit to a pilot flying an airplane — every strap, every buckle, every piece of foam is a decision that matters the moment things go wrong.</p>
+      <p><span class="tsB">03:42</span>Zsolt Ero walks through the real science behind back protectors, Koroyd versus airbag systems, and why most pilots buy harnesses for comfort when they should be buying them for what happens on the worst day.</p>
+      <p><span class="tsB">08:15</span>We get into competition safety standards, how CIVL is evolving its recommendations, and what actually changed after recent high-profile incidents in the sport.</p>
+    </div>
+  </div>
+</div>
+
+<div class="label">Concept C — Dossier / Mission File</div>
+<div class="sublabel">Extends your site's own established language: a "FILE NO." stamp, a guest ID-badge, transcript pull-quotes styled as typed field notes. Ties directly into the flight-log aesthetic already on your About page.</div>
+<div class="stage">
+  <div class="pageC">
+    <div class="stampC">CLEARED</div>
+    <div class="headC">
+      <p class="fileNoC">FILE NO. EP-0047 // TRANSMISSION LOG</p>
+      <h1>Watch This Before You Buy a Paragliding Harness</h1>
+      <div class="badgeC-row">
+        <div class="badgeC">ZE</div>
+        <div><div class="badgeC-name">Zsolt Ero</div><div class="badgeC-role">Harness Safety Researcher</div></div>
+      </div>
+    </div>
+    <div class="bodyC">
+      <p><span class="tsC">00:00</span>A harness to a paraglider pilot is the same as a cockpit to a pilot flying an airplane — every strap, every buckle, every piece of foam is a decision that matters the moment things go wrong.</p>
+      <div class="fieldnote">"THE BACK PROTECTOR IS THE ONE PIECE OF GEAR YOU HOPE TO NEVER NEED." — Z. ERO</div>
+      <p><span class="tsC">03:42</span>Zsolt Ero walks through the real science behind back protectors, Koroyd versus airbag systems, and why most pilots buy harnesses for comfort when they should be buying them for what happens on the worst day.</p>
+      <p><span class="tsC">08:15</span>We get into competition safety standards, how CIVL is evolving its recommendations, and what actually changed after recent high-profile incidents in the sport.</p>
+    </div>
+  </div>
+</div>
+
+<div class="label">Concept D — Waveform Hero + Split Bio</div>
+<div class="sublabel">A centered waveform visual as the opening moment (matches your podcast page's equalizer language), then a sticky guest-bio column running alongside the transcript.</div>
+<div class="stage">
+  <div class="pageD">
+    <div class="heroD">
+      <div class="wavesD" id="wavesD"></div>
+      <h1>Watch This Before You Buy a Paragliding Harness</h1>
+      <p class="heroD-guest">Zsolt Ero · December 4, 2025</p>
+    </div>
+    <div class="bodyD">
+      <div class="bioD">
+        <h3>About The Guest</h3>
+        <p>Zsolt Ero writes Hyperpilot, researching paragliding harness safety, back protectors, and competition safety standards.</p>
+        <div class="linksD">
+          <a href="#">Listen on Spotify →</a>
+          <a href="#">Watch on YouTube →</a>
+          <a href="#">Read Hyperpilot →</a>
+        </div>
+      </div>
+      <div class="transcriptD">
+        <p><span class="tsD">00:00</span>A harness to a paraglider pilot is the same as a cockpit to a pilot flying an airplane — every strap, every buckle, every piece of foam is a decision that matters the moment things go wrong.</p>
+        <p><span class="tsD">03:42</span>Zsolt Ero walks through the real science behind back protectors, Koroyd versus airbag systems, and why most pilots buy harnesses for comfort when they should be buying them for what happens on the worst day.</p>
+        <p><span class="tsD">08:15</span>We get into competition safety standards, how CIVL is evolving its recommendations, and what actually changed after recent high-profile incidents in the sport.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const wavesD = document.getElementById('wavesD');
+  for (let i = 0; i < 60; i++) {
+    const bar = document.createElement('span');
+    bar.style.height = (10 + Math.random() * 50) + 'px';
+    wavesD.appendChild(bar);
+  }
+</script>
+</body>
+</html>
