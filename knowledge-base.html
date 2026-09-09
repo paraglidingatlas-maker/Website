@@ -37,7 +37,15 @@
   .kb-category-head p{color:var(--gray-light);line-height:1.7;}
 
   .series-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:1.5rem;max-width:1300px;}
-  .series-card{position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.12);padding:1.8rem;}
+  .series-card{position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.12);padding:1.8rem;transition:border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;}
+  .series-card:hover{border-color:rgba(255,117,23,0.4);box-shadow:0 0 24px rgba(255,117,23,0.15);transform:translateY(-3px);}
+  .series-icon{
+    width:44px;height:44px;border-radius:50%;background:var(--orange);
+    display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;
+    transition:box-shadow 0.25s ease, transform 0.25s ease;
+  }
+  .series-icon svg{width:20px;height:20px;color:#171712;}
+  .series-card:hover .series-icon{box-shadow:0 0 18px 3px rgba(255,117,23,0.6);transform:scale(1.08);}
   .series-card::before, .series-card::after{content:"";position:absolute;width:14px;height:14px;border:1.5px solid rgba(255,117,23,0.5);}
   .series-card::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
   .series-card::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
@@ -153,6 +161,7 @@
   </div>
   <div class="series-grid">
     <div class="series-card">
+      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-6 2 2-6Z" fill="currentColor" stroke="none"/></svg></div>
       <h3>Navigators</h3>
       <p>Our flagship series covers navigation and route planning for exploring new flying sites, with insights from experts native to each area — to-do lists, common mistakes, local culture, airspace rules, and weather patterns.</p>
       <ul class="series-points">
@@ -163,6 +172,7 @@
       </ul>
     </div>
     <div class="series-card">
+      <div class="series-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9l-6.2 3.5 1.6-6.8-5.2-4.6 6.9-.7Z"/></svg></div>
       <h3>Sky Gods</h3>
       <p>Meet the legends who have redefined chasing airtime in paragliding — true pioneers of free flight, through in-depth profiles, interviews, and stories of record-breaking achievement.</p>
       <ul class="series-points">
@@ -173,6 +183,7 @@
       </ul>
     </div>
     <div class="series-card">
+      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 20l6-11 4 6.5L16 9l5 11Z"/></svg></div>
       <h3>Living The Dream</h3>
       <p>Ever wondered how to break free from the 9-5 and make a living off the art of flight? Real career paths in paragliding and how to build a sustainable, flying-focused lifestyle.</p>
       <ul class="series-points">
@@ -199,6 +210,7 @@
   </div>
   <div class="series-grid">
     <div class="series-card">
+      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4h8v4a4 4 0 0 1-8 0V4Z"/><path d="M6 5H4a2 2 0 0 0 0 4h2M18 5h2a2 2 0 0 1 0 4h-2M12 12v3M9 20h6M10 17h4v3h-4z"/></svg></div>
       <h3>World Cups, Racing and Competing</h3>
       <p>A clear view of modern race formats and evolving rules, with insights from experienced competitors and organizers, plus strategy, glider choice, and risk management.</p>
       <ul class="series-points">
@@ -209,6 +221,7 @@
       </ul>
     </div>
     <div class="series-card">
+      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7l-3 6a3 3 0 0 0 6 0l-3-6ZM19 7l-3 6a3 3 0 0 0 6 0l-3-6ZM5 7h14M8 21h8"/></svg></div>
       <h3>Risk vs. Reward</h3>
       <p>How to make calculated decisions that balance competitive advantage with safety — judging weather, terrain, and traffic, and setting personal limits you can stick to under pressure.</p>
       <ul class="series-points">
@@ -219,6 +232,7 @@
       </ul>
     </div>
     <div class="series-card">
+      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2-2Z"/></svg></div>
       <h3>Resources, Tools &amp; Tips</h3>
       <p>Uncover the secrets behind epic flights, tracklog analysis, and decision-making in challenging conditions — learn what happens in the air and how to review it properly.</p>
       <ul class="series-points">
@@ -239,6 +253,7 @@
   </div>
   <div class="series-grid">
     <div class="series-card">
+      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 19a4.5 4.5 0 0 1-.5-9 5 5 0 0 1 9.6-1.5A4 4 0 0 1 17.5 16.5"/><path d="M6.5 19h11a3.5 3.5 0 0 0 0-7"/></svg></div>
       <h3>Weather Patterns and Forecasting</h3>
       <p>Build a solid foundation in understanding weather systems and how they influence flying conditions, from pressure systems to micrometeorology and valley winds.</p>
       <ul class="series-points">
@@ -259,6 +274,7 @@
   </div>
   <div class="series-grid">
     <div class="series-card">
+      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 12.6 12 21.2 2.8 12 4 4l8-1.2 8.6 8.8Z"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
       <h3>Brand Stories &amp; Manufacturer Profiles</h3>
       <p>Discover the history and innovation behind the leading paragliding brands, from company milestones to design philosophy and certification standards.</p>
       <ul class="series-points">
@@ -269,6 +285,7 @@
       </ul>
     </div>
     <div class="series-card">
+      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
       <h3>Storytellers</h3>
       <p>Go beyond flying and into the lives, journeys, and perspectives of the sport through real human stories from the community.</p>
       <ul class="series-points">
@@ -279,6 +296,7 @@
       </ul>
     </div>
     <div class="series-card">
+      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v4M12 17h.01"/></svg></div>
       <h3>The Dark Side: Learning from Incidents</h3>
       <p>Critical analysis of accidents and incidents to prevent future occurrences and improve safety standards across the sport.</p>
       <ul class="series-points">
@@ -299,6 +317,7 @@
   </div>
   <div class="series-grid">
     <div class="series-card">
+      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
       <h3>Flight Mechanics</h3>
       <p>Build a deeper understanding of the forces and principles that govern safe and efficient flight, from angle of attack to weight-shift control.</p>
       <ul class="series-points">
@@ -309,6 +328,7 @@
       </ul>
     </div>
     <div class="series-card">
+      <div class="series-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div>
       <h3>New Technologies</h3>
       <p>Stay current with the latest trends and innovations in paragliding tech — new materials, smart safety systems, and digital analytics tools transforming how we fly and train.</p>
       <ul class="series-points">
@@ -319,6 +339,7 @@
       </ul>
     </div>
     <div class="series-card">
+      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 8V6a5 5 0 0 1 10 0v2"/><rect x="5" y="8" width="14" height="13" rx="2"/><path d="M9 12h6M9 16h6"/></svg></div>
       <h3>Know Your Equipment</h3>
       <p>Master your flying kit and gear with detailed tutorials and maintenance guides, featuring guests from leading manufacturers in the market.</p>
       <ul class="series-points">
