@@ -39,6 +39,11 @@
     font-family:var(--font-display);font-weight:600;font-size:clamp(1.2rem,2.6vw,1.7rem);
     color:var(--white);line-height:1.5;max-width:900px;margin:0 auto;
   }
+  .kinetic-word{
+    display:inline-block;opacity:0;transform:translateY(0.4em);
+    transition:opacity 0.5s ease, transform 0.5s ease;
+  }
+  .kinetic-word.visible{opacity:1;transform:translateY(0);}
 
   /* ===== ANIMATED STAT BAR ===== */
   .stat-bar{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:linear-gradient(180deg, var(--bg) 0%, var(--card) 100%);display:flex;justify-content:center;gap:clamp(2.5rem,7vw,6rem);flex-wrap:wrap;}
@@ -404,7 +409,7 @@
 
 <section class="pull-quote">
   <span class="quote-mark">"</span>
-  <p>Intimate, deep and often thought provoking, these conversations are curated to stimulate, educate, inspire and empower you to touch the sky with glory every time you practice the art of flight.</p>
+  <p id="kineticQuote">Intimate, deep and often thought provoking, these conversations are curated to stimulate, educate, inspire and empower you to touch the sky with glory every time you practice the art of flight.</p>
 </section>
 
 <div class="stat-bar" id="animStats">
@@ -683,6 +688,7 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="kinetic-type.js"></script>
 <script>
   // Animated count-up stats: numbers climb from 0 to their real value once
   // scrolled into view, once per page load.
