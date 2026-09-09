@@ -87,6 +87,7 @@
   /* ===== FEEDBACK SECTION: testimonials + question form ===== */
   .feedback-section{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:linear-gradient(180deg, var(--bg) 0%, var(--bg) 85%, var(--card) 100%);}
   .testimonials-head{margin-bottom:2.5rem;}
+  .testimonials-head h2{font-family:var(--font-display);font-weight:800;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--white);line-height:1.1;}
   .testimonials-head .kicker{color:var(--orange);font-size:0.95rem;font-weight:500;}
   .testimonials-wrap{display:flex;align-items:center;gap:1rem;max-width:1300px;margin:0 auto 3.5rem;}
   .testi-arrow{
@@ -114,34 +115,22 @@
   }
   .testi-video:hover{color:var(--orange);}
 
-  .glassB-wrap{position:relative;background:radial-gradient(ellipse at 30% 20%, rgba(255,117,23,0.15), transparent 60%),radial-gradient(ellipse at 80% 80%, rgba(255,117,23,0.08), transparent 60%);}
+  .glassB-wrap{background:var(--bg);}
   .glassB{
-    position:relative;max-width:900px;margin:0 auto;padding:2rem 2.5rem;
-    background:rgba(255,255,255,0.04);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-    border-left:3px solid var(--orange);
+    position:relative;max-width:900px;margin:0 auto;padding:2.2rem 2.5rem;
+    background:var(--card);border:1px solid rgba(180,180,180,0.12);border-left:3px solid var(--orange);
   }
-  .glassB::before{
-    content:"";position:absolute;inset:0;padding:1px;
-    background:conic-gradient(from var(--a,0deg), var(--orange), transparent 25%, transparent 75%, #1e3a8a, var(--orange));
-    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite:xor;mask-composite:exclude;
-    animation:rotate-border 4s linear infinite;
-    pointer-events:none;
-  }
-  @keyframes rotate-border{to{--a:360deg;}}
-  @property --a{syntax:'<angle>';initial-value:0deg;inherits:false;}
-  .glassB::after{
-    content:"";position:absolute;top:12px;right:12px;width:16px;height:16px;
-    border:1.5px solid rgba(255,117,23,0.6);border-left:none;border-bottom:none;
-  }
-  .glassB-tag{position:relative;display:inline-block;color:var(--gray-light);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.9rem;}
-  .glassB-title{position:relative;font-family:var(--font-display);font-weight:700;font-size:1.4rem;color:var(--white);}
-  .glassB-sub{position:relative;color:var(--gray-light);font-size:0.88rem;max-width:44ch;margin-bottom:1.5rem;}
+  .glassB::before, .glassB::after{content:"";position:absolute;width:16px;height:16px;border:1.5px solid rgba(255,117,23,0.5);}
+  .glassB::before{top:-1px;right:-1px;border-left:none;border-bottom:none;}
+  .glassB::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+  .glassB-tag{position:relative;display:inline-block;color:var(--orange);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;margin-bottom:1rem;}
+  .glassB-title{position:relative;font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,2.8vw,2rem);color:var(--white);line-height:1.15;}
+  .glassB-sub{position:relative;color:var(--gray-light);font-size:0.92rem;max-width:48ch;margin-bottom:1.8rem;margin-top:0.8rem;}
   .glassB-row{display:flex;gap:1rem;margin-bottom:1rem;position:relative;flex-wrap:wrap;}
   .glassB-row input{flex:1;min-width:200px;}
   .glassB-field{position:relative;margin-bottom:1.2rem;}
   .glassB-field input, .glassB-field textarea, .glassB-row input{
-    width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);
+    width:100%;background:var(--bg);border:1px solid rgba(255,255,255,0.12);
     color:var(--white);padding:0.8rem 1.1rem;font-family:var(--font-body);font-size:0.9rem;
     outline:none;box-shadow:none;border-radius:0;-webkit-appearance:none;appearance:none;
   }
@@ -488,7 +477,8 @@
 
 <section class="feedback-section">
   <div class="testimonials-head">
-    <p class="kicker">What Listeners Are Saying</p>
+    <p class="kicker">Community</p>
+    <h2>What Listeners Are Saying</h2>
   </div>
   <div class="testimonials-wrap">
     <button class="testi-arrow left" id="testiPrev" aria-label="Previous">
