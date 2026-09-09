@@ -102,12 +102,12 @@
   .testi-arrow:hover{background:rgba(255,117,23,0.15);}
   .testi-arrow svg{width:16px;height:16px;}
   .testimonials-track{
-    display:flex;gap:1.2rem;overflow-x:auto;scroll-behavior:smooth;
+    display:flex;gap:1.2rem;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;
     flex:1;padding-bottom:0.5rem;
   }
   .testimonials-track::-webkit-scrollbar{display:none;}
   .testi-card{
-    position:relative;flex:0 0 280px;background:var(--card);
+    position:relative;flex:0 0 280px;scroll-snap-align:start;background:var(--card);
     border:1px solid rgba(180,180,180,0.15);padding:1.8rem 1.5rem 1.5rem;
     display:flex;flex-direction:column;overflow:hidden;
     transition:border-color 0.25s ease, transform 0.25s ease;
@@ -737,8 +737,7 @@
     observer.observe(statsEl);
   })();
 
-  // Testimonials carousel: arrows scroll manually, plus a slow continuous
-  // auto-scroll that pauses on hover so people can read comfortably
+  // Testimonials carousel: arrows scroll the track by one card width
   (function () {
     const track = document.getElementById('testiTrack');
     const prevBtn = document.getElementById('testiPrev');
@@ -747,26 +746,6 @@
     const scrollAmount = 280;
     prevBtn.addEventListener('click', () => track.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
     nextBtn.addEventListener('click', () => track.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
-
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      let autoScroll;
-      const startAutoScroll = () => {
-        autoScroll = setInterval(() => {
-          const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 5;
-          if (atEnd) {
-            track.scrollTo({ left: 0, behavior: 'smooth' });
-          } else {
-            track.scrollBy({ left: 1, behavior: 'auto' });
-          }
-        }, 30);
-      };
-      const stopAutoScroll = () => clearInterval(autoScroll);
-
-      startAutoScroll();
-      track.addEventListener('mouseenter', stopAutoScroll);
-      track.addEventListener('mouseleave', startAutoScroll);
-      track.addEventListener('touchstart', stopAutoScroll, { passive: true });
-    }
   })();
 
   // Question form: no backend wired up yet, so this just confirms receipt
