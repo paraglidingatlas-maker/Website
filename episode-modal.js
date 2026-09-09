@@ -49,6 +49,7 @@
     const guest = tile.dataset.guest || '';
     const desc = tile.dataset.desc || 'Full episode details and show notes coming soon.';
     const ytId = tile.dataset.ytId || '';
+    const spotify = tile.dataset.spotify || '';
     const readMore = tile.dataset.readmore || '../podcast.html';
     const thumbSrc = ytId
       ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`
@@ -70,8 +71,12 @@
         iframe.style.display = 'block';
         thumb.style.display = 'none';
         playBtn.style.display = 'none';
+      } else if (spotify) {
+        // No YouTube video confirmed, but a real Spotify link is — send there
+        // instead of guessing at a YouTube search.
+        window.open(spotify, '_blank', 'noopener');
       } else {
-        // No confirmed video ID yet — honest fallback instead of a broken embed
+        // Honest last-resort fallback instead of a broken embed
         window.open(`https://www.youtube.com/@ParaglidingAtlas/search?query=${encodeURIComponent(title)}`, '_blank', 'noopener');
       }
     };
