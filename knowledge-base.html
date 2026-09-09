@@ -14,13 +14,6 @@
   .kb-hero h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,4.5vw,3.2rem);color:var(--white);margin-bottom:1rem;}
   .kb-hero p{color:var(--gray-light);font-size:1.05rem;max-width:640px;margin:0 auto;}
 
-  .kb-catnav{display:flex;flex-wrap:wrap;justify-content:center;gap:0.8rem;padding:0 clamp(1.5rem,5vw,4rem) clamp(3.5rem,8vw,5rem);background:var(--bg);}
-  .kb-catnav a{
-    background:var(--card);border:1px solid rgba(255,117,23,0.25);color:var(--gray-light);
-    font-size:0.85rem;font-weight:600;padding:0.7rem 1.3rem;text-decoration:none;transition:all 0.2s ease;
-  }
-  .kb-catnav a:hover{background:var(--orange);color:#171712;border-color:var(--orange);}
-
   .kb-howto{padding:clamp(3.5rem,8vw,5.5rem) clamp(1.5rem,5vw,4rem);background:var(--card);}
   .kb-howto-head{max-width:700px;margin:0 auto 2.5rem;}
   .kb-howto-head .kicker{margin-bottom:0.6rem;}
@@ -30,66 +23,34 @@
   .kb-howto-badge{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--orange);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:var(--font-display);font-weight:700;color:var(--orange);}
   .kb-howto-item p{color:var(--gray-light);font-size:0.9rem;line-height:1.5;}
 
-  .kb-category{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:var(--bg);scroll-margin-top:100px;}
-  .kb-category-head{max-width:800px;margin-bottom:3rem;}
-  .kb-category-head .kicker{margin-bottom:0.6rem;}
-  .kb-category-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.7rem,3.2vw,2.4rem);color:var(--white);margin-bottom:1rem;}
-  .kb-category-head p{color:var(--gray-light);line-height:1.7;}
-
-  .series-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:1.5rem;max-width:1300px;}
-  .series-card{position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.12);padding:1.8rem;transition:border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;}
-  .series-card:hover{border-color:rgba(255,117,23,0.4);box-shadow:0 0 24px rgba(255,117,23,0.15);transform:translateY(-3px);}
-  .series-icon{
-    width:44px;height:44px;border-radius:50%;background:var(--orange);
-    display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;
+  .kb-portal{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:var(--bg);}
+  .kb-portal-head{max-width:700px;margin:0 auto 3rem;text-align:center;}
+  .kb-portal-head .kicker{margin-bottom:0.6rem;}
+  .kb-portal-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.7rem,3.2vw,2.3rem);color:var(--white);}
+  .kb-cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem;max-width:1300px;margin:0 auto;}
+  .kb-cat-card{
+    position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.12);
+    padding:1.8rem 1.4rem;text-decoration:none;display:flex;flex-direction:column;
+    min-height:220px;transition:border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+  .kb-cat-card:hover{border-color:rgba(255,117,23,0.45);box-shadow:0 0 26px rgba(255,117,23,0.18);transform:translateY(-4px);}
+  .kb-cat-icon{
+    width:46px;height:46px;border-radius:50%;background:var(--orange);
+    display:flex;align-items:center;justify-content:center;margin-bottom:1.3rem;
     transition:box-shadow 0.25s ease, transform 0.25s ease;
   }
-  .series-icon svg{width:20px;height:20px;color:#171712;}
-  .series-card:hover .series-icon{box-shadow:0 0 18px 3px rgba(255,117,23,0.6);transform:scale(1.08);}
-  .series-card::before, .series-card::after{content:"";position:absolute;width:14px;height:14px;border:1.5px solid rgba(255,117,23,0.5);}
-  .series-card::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
-  .series-card::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
-  .series-card h3{font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--white);margin-bottom:0.9rem;}
-  .series-card p{color:var(--gray-light);font-size:0.9rem;line-height:1.65;margin-bottom:1.2rem;}
-  .series-points{list-style:none;}
-  .series-points li{color:var(--gray-light);font-size:0.84rem;padding:0.4rem 0 0.4rem 1.2rem;position:relative;border-top:1px solid rgba(180,180,180,0.08);}
-  .series-points li:first-child{border-top:none;}
-  .series-points li::before{content:"▸";position:absolute;left:0;color:var(--orange);}
+  .kb-cat-icon svg{width:22px;height:22px;color:#171712;}
+  .kb-cat-card:hover .kb-cat-icon{box-shadow:0 0 18px 3px rgba(255,117,23,0.6);transform:scale(1.08);}
+  .kb-cat-card h3{font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--white);margin-bottom:0.6rem;line-height:1.3;}
+  .kb-cat-card p{color:var(--gray-light);font-size:0.82rem;line-height:1.5;margin-bottom:auto;}
+  .kb-cat-arrow{margin-top:1.2rem;color:var(--orange);font-size:0.85rem;font-weight:600;}
 
-  .kb-featured{
-    background:var(--bg);border:1px solid rgba(255,117,23,0.3);border-left:3px solid var(--orange);
-    padding:1.8rem 2rem;margin-top:2rem;max-width:1300px;
-  }
-  .kb-featured span.tag{color:var(--orange);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;}
-  .kb-featured h4{font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--white);margin:0.6rem 0;}
-  .kb-featured p{color:var(--gray-light);font-size:0.9rem;line-height:1.65;margin-bottom:1rem;}
-  .kb-featured a{color:var(--orange);font-size:0.86rem;font-weight:600;text-decoration:none;}
-  .kb-featured a:hover{text-decoration:underline;}
-
-  .kb-faq{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:var(--card);}
-  .kb-faq-head{max-width:700px;margin:0 auto 1rem;}
-  .kb-faq-head .kicker{margin-bottom:0.6rem;}
-  .kb-faq-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--white);margin-bottom:1rem;}
-  .kb-faq-head p{color:var(--gray-light);font-size:0.9rem;line-height:1.7;margin-bottom:2.5rem;}
-  .kb-faq-cols{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;max-width:1300px;margin:0 auto;}
-  .kb-faq-col h4{color:var(--orange);font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1.2rem;}
-  .kb-faq-item{border-bottom:1px solid rgba(180,180,180,0.12);}
-  .kb-faq-question{
-    width:100%;text-align:left;background:none;border:none;color:var(--white);
-    font-family:var(--font-body);font-size:0.92rem;font-weight:600;padding:1rem 1.8rem 1rem 0;
-    cursor:pointer;position:relative;
-  }
-  .kb-faq-question::after{content:"+";position:absolute;right:0;top:1rem;color:var(--orange);font-size:1.2rem;transition:transform 0.2s ease;}
-  .kb-faq-item.open .kb-faq-question::after{transform:rotate(45deg);}
-  .kb-faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
-  .kb-faq-item.open .kb-faq-answer{max-height:300px;}
-  .kb-faq-answer p{color:var(--gray-light);font-size:0.86rem;line-height:1.65;padding-bottom:1.2rem;}
-
-  @media(max-width:900px){
+  @media(max-width:1000px){
+    .kb-cat-grid{grid-template-columns:repeat(2,1fr);}
     .kb-howto-grid{grid-template-columns:1fr 1fr;}
-    .kb-faq-cols{grid-template-columns:1fr;}
   }
   @media(max-width:560px){
+    .kb-cat-grid{grid-template-columns:1fr;}
     .kb-howto-grid{grid-template-columns:1fr;}
   }
 </style>
@@ -120,14 +81,6 @@
   <p>Discover the fascinating world of paragliding through our comprehensive collection of resources, guides, and expert insights.</p>
 </header>
 
-<nav class="kb-catnav">
-  <a href="#core-series">Core Series</a>
-  <a href="#competitions">Competitions &amp; Performance</a>
-  <a href="#meteorology">Meteorology &amp; Weather Analysis</a>
-  <a href="#industry">Industry &amp; Community</a>
-  <a href="#technical">Technical Focus &amp; Flight Safety</a>
-</nav>
-
 <section class="kb-howto">
   <div class="kb-howto-head">
     <span class="kicker">How To Use This Resource</span>
@@ -153,242 +106,42 @@
   </div>
 </section>
 
-<section class="kb-category" id="core-series">
-  <div class="kb-category-head">
-    <span class="kicker">Core Series</span>
-    <h2>Where to start</h2>
-    <p>This comprehensive collection is divided into three main sections, each designed to inspire, equip, and build your understanding of free flight from the ground up.</p>
+<section class="kb-portal">
+  <div class="kb-portal-head">
+    <span class="kicker">Explore Categories</span>
+    <h2>Five ways into the archive</h2>
   </div>
-  <div class="series-grid">
-    <div class="series-card">
-      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-6 2 2-6Z" fill="currentColor" stroke="none"/></svg></div>
-      <h3>Navigators</h3>
-      <p>Our flagship series covers navigation and route planning for exploring new flying sites, with insights from experts native to each area — to-do lists, common mistakes, local culture, airspace rules, and weather patterns.</p>
-      <ul class="series-points">
-        <li>In-depth site breakdowns</li>
-        <li>Local weather patterns &amp; triggers</li>
-        <li>Airspace rules and regulations</li>
-        <li>Proven best practices (and mistakes to avoid)</li>
-      </ul>
-    </div>
-    <div class="series-card">
-      <div class="series-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9l-6.2 3.5 1.6-6.8-5.2-4.6 6.9-.7Z"/></svg></div>
-      <h3>Sky Gods</h3>
-      <p>Meet the legends who have redefined chasing airtime in paragliding — true pioneers of free flight, through in-depth profiles, interviews, and stories of record-breaking achievement.</p>
-      <ul class="series-points">
-        <li>Career journeys and milestones</li>
-        <li>Training philosophies</li>
-        <li>Personal rituals and mindset</li>
-        <li>Lessons from elite performance</li>
-      </ul>
-    </div>
-    <div class="series-card">
-      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 20l6-11 4 6.5L16 9l5 11Z"/></svg></div>
-      <h3>Living The Dream</h3>
-      <p>Ever wondered how to break free from the 9-5 and make a living off the art of flight? Real career paths in paragliding and how to build a sustainable, flying-focused lifestyle.</p>
-      <ul class="series-points">
-        <li>Career opportunities in paragliding</li>
-        <li>Business and income pathways</li>
-        <li>Lifestyle and work balance</li>
-        <li>Long-term sustainability insights</li>
-      </ul>
-    </div>
-  </div>
-  <div class="kb-featured">
-    <span class="tag">Featured Episode</span>
-    <h4>Consequence Over Probability: Will Gadd on Why True Safety Lies in Clarity</h4>
-    <p>Ice-climbing world champion and Red Bull athlete Will Gadd dismantles risk intuition, shares his field-tested protocols, and reveals why true safety lives in focus and clarity.</p>
-    <a href="podcast.html">Read More →</a>
-  </div>
-</section>
-
-<section class="kb-category" id="competitions">
-  <div class="kb-category-head">
-    <span class="kicker">Competitions &amp; Performance</span>
-    <h2>Racing, strategy, and pushing your limits safely</h2>
-    <p>A tour into the thrilling world of racing paragliders — strategies, training techniques, and the mindset required to excel in high-stakes competitions, from the pilots who have done it all.</p>
-  </div>
-  <div class="series-grid">
-    <div class="series-card">
-      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4h8v4a4 4 0 0 1-8 0V4Z"/><path d="M6 5H4a2 2 0 0 0 0 4h2M18 5h2a2 2 0 0 1 0 4h-2M12 12v3M9 20h6M10 17h4v3h-4z"/></svg></div>
-      <h3>World Cups, Racing and Competing</h3>
-      <p>A clear view of modern race formats and evolving rules, with insights from experienced competitors and organizers, plus strategy, glider choice, and risk management.</p>
-      <ul class="series-points">
-        <li>Competition formats and scoring systems</li>
-        <li>Race strategy and decision-making</li>
-        <li>Event structures and calendars</li>
-        <li>Insights from pilots and organizers</li>
-      </ul>
-    </div>
-    <div class="series-card">
-      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7l-3 6a3 3 0 0 0 6 0l-3-6ZM19 7l-3 6a3 3 0 0 0 6 0l-3-6ZM5 7h14M8 21h8"/></svg></div>
-      <h3>Risk vs. Reward</h3>
-      <p>How to make calculated decisions that balance competitive advantage with safety — judging weather, terrain, and traffic, and setting personal limits you can stick to under pressure.</p>
-      <ul class="series-points">
-        <li>Risk assessment in real conditions</li>
-        <li>High-consequence scenario awareness</li>
-        <li>Personal limit setting</li>
-        <li>Practical decision-making frameworks</li>
-      </ul>
-    </div>
-    <div class="series-card">
-      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2-2Z"/></svg></div>
-      <h3>Resources, Tools &amp; Tips</h3>
-      <p>Uncover the secrets behind epic flights, tracklog analysis, and decision-making in challenging conditions — learn what happens in the air and how to review it properly.</p>
-      <ul class="series-points">
-        <li>Tracklog analysis techniques</li>
-        <li>Performance review tools</li>
-        <li>Case studies of notable flights</li>
-        <li>Practical tips from experienced pilots</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="kb-category" id="meteorology">
-  <div class="kb-category-head">
-    <span class="kicker">Meteorology &amp; Weather Analysis</span>
-    <h2>Read the skies better</h2>
-    <p>Understanding weather patterns and atmospheric conditions is crucial for safe paragliding — this section exists to help you build exactly that.</p>
-  </div>
-  <div class="series-grid">
-    <div class="series-card">
-      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 19a4.5 4.5 0 0 1-.5-9 5 5 0 0 1 9.6-1.5A4 4 0 0 1 17.5 16.5"/><path d="M6.5 19h11a3.5 3.5 0 0 0 0-7"/></svg></div>
-      <h3>Weather Patterns and Forecasting</h3>
-      <p>Build a solid foundation in understanding weather systems and how they influence flying conditions, from pressure systems to micrometeorology and valley winds.</p>
-      <ul class="series-points">
-        <li>Pressure systems and fronts</li>
-        <li>Cloud formations and indicators</li>
-        <li>Wind patterns and thermals</li>
-        <li>Forecast interpretation</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="kb-category" id="industry">
-  <div class="kb-category-head">
-    <span class="kicker">Industry &amp; Community</span>
-    <h2>The business and the people behind the sport</h2>
-    <p>Explore the business side of paragliding and learn from the collective wisdom of our global community.</p>
-  </div>
-  <div class="series-grid">
-    <div class="series-card">
-      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 12.6 12 21.2 2.8 12 4 4l8-1.2 8.6 8.8Z"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
-      <h3>Brand Stories &amp; Manufacturer Profiles</h3>
-      <p>Discover the history and innovation behind the leading paragliding brands, from company milestones to design philosophy and certification standards.</p>
-      <ul class="series-points">
-        <li>Company histories and milestones</li>
-        <li>Design philosophies</li>
-        <li>Product development processes</li>
-        <li>Certification and safety standards</li>
-      </ul>
-    </div>
-    <div class="series-card">
-      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
-      <h3>Storytellers</h3>
-      <p>Go beyond flying and into the lives, journeys, and perspectives of the sport through real human stories from the community.</p>
-      <ul class="series-points">
-        <li>Personal pilot journeys</li>
-        <li>Community voices</li>
-        <li>Cultural perspectives</li>
-        <li>Real-world experiences</li>
-      </ul>
-    </div>
-    <div class="series-card">
-      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v4M12 17h.01"/></svg></div>
-      <h3>The Dark Side: Learning from Incidents</h3>
-      <p>Critical analysis of accidents and incidents to prevent future occurrences and improve safety standards across the sport.</p>
-      <ul class="series-points">
-        <li>Incident case studies</li>
-        <li>Root cause analysis</li>
-        <li>Contributing factors</li>
-        <li>Preventive lessons and insights</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="kb-category" id="technical">
-  <div class="kb-category-head">
-    <span class="kicker">Technical Focus &amp; Flight Safety</span>
-    <h2>From fundamental aerodynamics to cutting-edge innovation</h2>
-    <p>A deep dive into the technical aspects of free flight — comprehensive knowledge about the mechanics, equipment, and technological advances in paragliding, as and when they happen.</p>
-  </div>
-  <div class="series-grid">
-    <div class="series-card">
-      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
-      <h3>Flight Mechanics</h3>
-      <p>Build a deeper understanding of the forces and principles that govern safe and efficient flight, from angle of attack to weight-shift control.</p>
-      <ul class="series-points">
-        <li>Aerodynamic fundamentals</li>
-        <li>AOA and airspeed</li>
-        <li>Wing behavior in different phases</li>
-        <li>Control inputs and their effects</li>
-      </ul>
-    </div>
-    <div class="series-card">
-      <div class="series-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div>
-      <h3>New Technologies</h3>
-      <p>Stay current with the latest trends and innovations in paragliding tech — new materials, smart safety systems, and digital analytics tools transforming how we fly and train.</p>
-      <ul class="series-points">
-        <li>New materials and wing design</li>
-        <li>Safety system innovations</li>
-        <li>Flight instruments and analytics</li>
-        <li>Emerging trends in paragliding tech</li>
-      </ul>
-    </div>
-    <div class="series-card">
-      <div class="series-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 8V6a5 5 0 0 1 10 0v2"/><rect x="5" y="8" width="14" height="13" rx="2"/><path d="M9 12h6M9 16h6"/></svg></div>
-      <h3>Know Your Equipment</h3>
-      <p>Master your flying kit and gear with detailed tutorials and maintenance guides, featuring guests from leading manufacturers in the market.</p>
-      <ul class="series-points">
-        <li>Canopy construction and materials</li>
-        <li>Harness systems and protection</li>
-        <li>Reserve parachute handling</li>
-        <li>Maintenance and care practices</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="kb-faq">
-  <div class="kb-faq-head">
-    <span class="kicker">Safety Information &amp; Disclosure Statements</span>
-    <h2>Before you rely on anything here</h2>
-    <p>This data is published by Paragliding Atlas in the interest of the exchange of information for the sake of flight safety. Every effort has been made to ensure the information here is as accurate and complete as possible — but any action you take based on it is entirely at your own risk. Nothing here replaces the individual advice of a professional instructor at the time of flight. Our goal is simple: knowledge is useless unless you share it, and more aviation knowledge means fewer accidents. We strongly encourage flight safety.</p>
-  </div>
-  <div class="kb-faq-cols">
-    <div class="kb-faq-col">
-      <h4>Safety Information</h4>
-      <div class="kb-faq-item">
-        <button class="kb-faq-question">Is paragliding dangerous?</button>
-        <div class="kb-faq-answer"><p>While paragliding involves inherent risks like any aerial sport, following proper safety protocols, getting certified training, and using appropriate equipment significantly reduces these risks. Our podcast discussions are for informational purposes only and should not replace proper training.</p></div>
-      </div>
-      <div class="kb-faq-item">
-        <button class="kb-faq-question">Should I try the techniques discussed in the podcast?</button>
-        <div class="kb-faq-answer"><p>Techniques discussed are shared for educational context, not as instructions to attempt without qualified supervision. Always train with a certified instructor before applying anything discussed here.</p></div>
-      </div>
-      <div class="kb-faq-item">
-        <button class="kb-faq-question">Are your recommendations official safety guidelines?</button>
-        <div class="kb-faq-answer"><p>No. Nothing on this site or podcast constitutes official safety guidelines. Always defer to your national federation and certified instructors for official standards.</p></div>
-      </div>
-    </div>
-    <div class="kb-faq-col">
-      <h4>Disclosure Statements</h4>
-      <div class="kb-faq-item">
-        <button class="kb-faq-question">Do you accept liability for podcast information?</button>
-        <div class="kb-faq-answer"><p>No. It is solely your responsibility to evaluate the accuracy, completeness, and usefulness of all opinions, advice, and other information provided through the show.</p></div>
-      </div>
-      <div class="kb-faq-item">
-        <button class="kb-faq-question">What are your affiliate relationships and content policy?</button>
-        <div class="kb-faq-answer"><p>We aim to be transparent about any sponsored content or affiliate relationships when they exist. Our goal is to spread useful aviation knowledge, not to promote products we don't believe in.</p></div>
-      </div>
-      <div class="kb-faq-item">
-        <button class="kb-faq-question">How do you handle user privacy?</button>
-        <div class="kb-faq-answer"><p>We only collect what's needed to run the site and communicate with subscribers, and never sell personal information to third parties.</p></div>
-      </div>
-    </div>
+  <div class="kb-cat-grid">
+    <a class="kb-cat-card" href="knowledge-base/core-series.html">
+      <div class="kb-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></div>
+      <h3>Core Series</h3>
+      <p>Navigators, Sky Gods, and Living The Dream — where to start.</p>
+      <span class="kb-cat-arrow">Explore →</span>
+    </a>
+    <a class="kb-cat-card" href="knowledge-base/competitions.html">
+      <div class="kb-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4h8v4a4 4 0 0 1-8 0V4Z"/><path d="M6 5H4a2 2 0 0 0 0 4h2M18 5h2a2 2 0 0 1 0 4h-2M12 12v3M9 20h6M10 17h4v3h-4z"/></svg></div>
+      <h3>Competitions &amp; Performance</h3>
+      <p>Racing, strategy, and pushing your limits safely.</p>
+      <span class="kb-cat-arrow">Explore →</span>
+    </a>
+    <a class="kb-cat-card" href="knowledge-base/meteorology.html">
+      <div class="kb-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 19a4.5 4.5 0 0 1-.5-9 5 5 0 0 1 9.6-1.5A4 4 0 0 1 17.5 16.5"/><path d="M6.5 19h11a3.5 3.5 0 0 0 0-7"/></svg></div>
+      <h3>Meteorology &amp; Weather Analysis</h3>
+      <p>Read the skies better before you fly.</p>
+      <span class="kb-cat-arrow">Explore →</span>
+    </a>
+    <a class="kb-cat-card" href="knowledge-base/industry.html">
+      <div class="kb-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 12.6 12 21.2 2.8 12 4 4l8-1.2 8.6 8.8Z"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+      <h3>Industry &amp; Community</h3>
+      <p>The business and the people behind the sport.</p>
+      <span class="kb-cat-arrow">Explore →</span>
+    </a>
+    <a class="kb-cat-card" href="knowledge-base/technical.html">
+      <div class="kb-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+      <h3>Technical Focus &amp; Flight Safety</h3>
+      <p>From fundamental aerodynamics to cutting-edge innovation.</p>
+      <span class="kb-cat-arrow">Explore →</span>
+    </a>
   </div>
 </section>
 
@@ -433,12 +186,5 @@
 </footer>
 
 <script src="script.js"></script>
-<script>
-  document.querySelectorAll('.kb-faq-question').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      btn.parentElement.classList.toggle('open');
-    });
-  });
-</script>
 </body>
 </html>
