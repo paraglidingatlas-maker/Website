@@ -10,7 +10,7 @@
 
   const channelId = 'UC0xDTfl8kurPl9CgpsLTr2Q';
   const feedUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
-  const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(feedUrl)}`;
+  const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(feedUrl)}`;
 
   function renderFeatured(video) {
     featuredEl.innerHTML = `
