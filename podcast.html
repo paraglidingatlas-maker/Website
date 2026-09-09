@@ -43,7 +43,7 @@
   /* ===== ANIMATED STAT BAR ===== */
   .stat-bar{padding:2.4rem clamp(1.5rem,5vw,4rem);background:linear-gradient(180deg, var(--bg) 0%, var(--bg) 75%, var(--card) 100%);display:flex;justify-content:center;gap:clamp(2.5rem,7vw,6rem);flex-wrap:wrap;}
   .stat-item{text-align:center;}
-  .stat-item .num{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--orange);}
+  .stat-item .num{font-family:var(--font-body);font-weight:700;font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--orange);letter-spacing:-0.02em;}
   .stat-item .label{color:var(--gray-light);font-size:0.82rem;text-transform:uppercase;letter-spacing:0.05em;}
 
   /* ===== GLIMPSE OF THE SHOW: featured + playlist, real YouTube data ===== */
@@ -117,7 +117,7 @@
 
   .glassB-wrap{background:var(--bg);}
   .glassB{
-    position:relative;max-width:900px;margin:0 auto;padding:2.2rem 2.5rem;
+    position:relative;max-width:1300px;margin:0 auto;padding:2.2rem 2.5rem;
     background:var(--card);border:1px solid rgba(180,180,180,0.12);border-left:3px solid var(--orange);
   }
   .glassB::before, .glassB::after{content:"";position:absolute;width:16px;height:16px;border:1.5px solid rgba(255,117,23,0.5);}
