@@ -10,7 +10,7 @@
 
   const channelId = 'UC0xDTfl8kurPl9CgpsLTr2Q';
   const feedUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
-  const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(feedUrl)}`;
+  const proxyUrl = `https://restless-king-e534.aninder.workers.dev/?url=${encodeURIComponent(feedUrl)}`;
 
   function renderFeatured(video) {
     featuredEl.innerHTML = `

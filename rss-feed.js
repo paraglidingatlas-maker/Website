@@ -12,7 +12,7 @@
     const statusEl = document.getElementById('liveFeedStatus');
     const gridEl = document.getElementById('liveFeedGrid');
     const rssUrl = 'https://anchor.fm/s/ed1344d8/podcast/rss';
-    const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(rssUrl)}`;
+    const proxyUrl = `https://restless-king-e534.aninder.workers.dev/?url=${encodeURIComponent(rssUrl)}`;
 
     const audio = new Audio();
     let activeRow = null;
