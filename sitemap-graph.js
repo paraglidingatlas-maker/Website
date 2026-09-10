@@ -50,60 +50,90 @@
     return t;
   }
 
-  function seed() {
-    data.nodes.forEach(function (n) {
-      if (n.x || n.y) return;
-      var p = (parents[n.id] || [])[0], pn = p && byId[p];
-      var a = Math.random() * Math.PI * 2, d = 78 + n.depth * 16;
-      n.x = (pn ? pn.x : 0) + Math.cos(a) * d;
-      n.y = (pn ? pn.y : 0) + Math.sin(a) * d;
-    });
+  var W = 900, H = 640, view = { x: 0, y: 0, k: 1 };
+  var COLW = 215, ROWH = 34;
+
+  /* Primary parent, so the two-parent series still form a clean tree.
+     The second edge is drawn as a cross link on top of it. */
+  function primary(id) {
+    var ps = parents[id] || [];
+    for (var i = 0; i < ps.length; i++) if (byId[ps[i]].shown) return ps[i];
+    return ps[0];
   }
 
-  var W = 900, H = 640, view = { x: 0, y: 0, k: 1 };
-
-  function tick(steps) {
-    var live = data.nodes.filter(function (n) { return n.shown; });
-    for (var s = 0; s < steps; s++) {
-      for (var i = 0; i < live.length; i++) {
-        for (var j = i + 1; j < live.length; j++) {
-          var a = live[i], b = live[j];
-          var dx = b.x - a.x, dy = b.y - a.y;
-          var d = Math.sqrt(dx * dx + dy * dy) || 0.01;
-          if (d > 280) continue;
-          var f = 1600 / (d * d);
-          a.vx -= dx / d * f; a.vy -= dy / d * f;
-          b.vx += dx / d * f; b.vy += dy / d * f;
-        }
+  /* Tidy tree: column by depth, leaves take the next free row, parents centre
+     on their children. Anything already open therefore sits to the LEFT of
+     whatever you just opened, and the new branch extends to the right. */
+  function layout() {
+    var row = 0;
+    (function place(id) {
+      var n = byId[id];
+      var ch = (kids[id] || []).filter(function (k) {
+        return byId[k].shown && primary(k) === id;
+      });
+      n.tx = n.depth * COLW;
+      if (!ch.length || !n.open) {
+        n.ty = row * ROWH; row += 1; return;
       }
-      data.links.forEach(function (l) {
-        var a = byId[l.s], b = byId[l.t];
-        if (!a.shown || !b.shown) return;
-        var dx = b.x - a.x, dy = b.y - a.y;
-        var d = Math.sqrt(dx * dx + dy * dy) || 0.01;
-        var f = (d - (66 + (a.depth + b.depth) * 9)) * 0.035;
-        a.vx += dx / d * f; a.vy += dy / d * f;
-        b.vx -= dx / d * f; b.vy -= dy / d * f;
-      });
-      live.forEach(function (n) {
-        n.vx -= n.x * 0.0032; n.vy -= n.y * 0.0032;
-        if (n.id === "home") { n.x = 0; n.y = 0; n.vx = 0; n.vy = 0; return; }
-        n.vx *= 0.86; n.vy *= 0.86;
-        n.x += n.vx; n.y += n.vy;
-      });
-    }
+      var first = row;
+      ch.forEach(place);
+      if (row === first) { n.ty = row * ROWH; row += 1; }
+      else n.ty = (byId[ch[0]].ty + byId[ch[ch.length - 1]].ty) / 2;
+    })("home");
+    var f = byId[focus] || byId.home;
+    var shift = f.ty || 0;
+    data.nodes.forEach(function (n) { if (n.ty !== undefined) n.ty -= shift; });
   }
 
   function fit() {
-    var live = data.nodes.filter(function (n) { return n.shown; });
+    var live = data.nodes.filter(function (n) { return n.shown && n.tx !== undefined; });
     if (!live.length) return;
-    var xs = live.map(function (n) { return n.x; }), ys = live.map(function (n) { return n.y; });
-    var minx = Math.min.apply(null, xs), maxx = Math.max.apply(null, xs);
+    var xs = live.map(function (n) { return n.tx; });
+    var ys = live.map(function (n) { return n.ty; });
+    var minx = Math.min.apply(null, xs) - 30;
+    var maxx = Math.max.apply(null, xs) + 175;   /* room for the labels */
     var miny = Math.min.apply(null, ys), maxy = Math.max.apply(null, ys);
-    var pad = 110;
-    view.k = Math.min(W / (maxx - minx + pad * 2), H / (maxy - miny + pad * 2), 1.4);
+    var pad = 50;
+    view.k = Math.max(0.3, Math.min(W / (maxx - minx + pad), H / (maxy - miny + pad * 2), 1.25));
     view.x = W / 2 - (minx + maxx) / 2 * view.k;
     view.y = H / 2 - (miny + maxy) / 2 * view.k;
+  }
+
+  var anim = null;
+  function settle(instant) {
+    if (anim) { cancelAnimationFrame(anim); anim = null; }
+    /* new arrivals slide out from their parent rather than in from nowhere */
+    data.nodes.forEach(function (n) {
+      if (n.tx === undefined || n.x || n.y || n.id === "home") return;
+      var p = byId[primary(n.id)];
+      if (p) { n.x = p.x; n.y = p.y; }
+    });
+    if (instant || reduce) {
+      data.nodes.forEach(function (n) {
+        if (n.tx !== undefined) { n.x = n.tx; n.y = n.ty; }
+      });
+      fit(); draw(); return;
+    }
+    var from = {};
+    data.nodes.forEach(function (n) { from[n.id] = { x: n.x, y: n.y }; });
+    var v0 = { x: view.x, y: view.y, k: view.k };
+    fit();
+    var v1 = { x: view.x, y: view.y, k: view.k };
+    var t0 = performance.now(), DUR = 430;
+    (function step(now) {
+      var q = Math.min(1, (now - t0) / DUR);
+      var e = 1 - Math.pow(1 - q, 3);
+      data.nodes.forEach(function (n) {
+        if (n.tx === undefined) return;
+        n.x = from[n.id].x + (n.tx - from[n.id].x) * e;
+        n.y = from[n.id].y + (n.ty - from[n.id].y) * e;
+      });
+      view.x = v0.x + (v1.x - v0.x) * e;
+      view.y = v0.y + (v1.y - v0.y) * e;
+      view.k = v0.k + (v1.k - v0.k) * e;
+      draw();
+      anim = q < 1 ? requestAnimationFrame(step) : null;
+    })(t0);
   }
 
   /* ---------------- shapes: instrument rather than dot ---------------- */
@@ -207,8 +237,8 @@
       var has = (kids[n.id] || []).length;
       if (!n.shown || !has || n.open) return;
       var p = (parents[n.id] || [])[0], pn = p && byId[p];
-      var base = pn ? Math.atan2(n.y - pn.y, n.x - pn.x) : -Math.PI / 2;
-      var count = Math.min(has, 5), spread = Math.PI * 0.62;
+      var base = 0;   /* the tree grows rightward, so hints point right */
+      var count = Math.min(has, 5), spread = Math.PI * 0.5;
       for (var i = 0; i < count; i++) {
         var a = base + (count === 1 ? 0 : (i / (count - 1) - 0.5) * spread);
         var r0 = SIZE[n.kind] + 4, len = 13 + Math.min(has, 12);
@@ -290,9 +320,10 @@
     focus = n.id;
     if (has) {
       n.open = !n.open;
-      recompute(); seed(); tick(reduce ? 300 : 230); fit();
+      recompute(); layout(); settle();
+    } else {
+      draw();
     }
-    draw();
     info(n);
   }
 
@@ -345,8 +376,8 @@
   bind("sm-reset", function () {
     data.nodes.forEach(function (n) { n.open = n.depth < 1; });
     focus = "home";
-    recompute(); seed(); tick(reduce ? 400 : 320); fit(); draw();
+    recompute(); layout(); settle();
   });
 
-  recompute(); seed(); tick(reduce ? 400 : 340); fit(); draw();
+  recompute(); layout(); settle(true);
 })();
