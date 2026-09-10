@@ -100,7 +100,7 @@
   }
 
   var cam = { x: 0, z: 0 };
-  var FOCAL = 760, EYE = 380, HOR = H * 0.215, NEAR = 330;
+  var FOCAL = 900, EYE = 820, HOR = H * 0.11, NEAR = 430;
 
   function project(gx, gz, alt) {
     var rz = (gz - cam.z) + NEAR;
@@ -122,6 +122,8 @@
     gz: Math.random() * 2200 - 300, alt: Math.random() * 420 + 30, r: Math.random() * 1.2 + 0.5 });
   for (i = 0; i < 110; i++) STARS.push({ x: Math.random() * 1600 - 200,
     y: Math.random() * HOR * 0.95, r: Math.random() * 0.85 + 0.25 });
+
+  var moving = false;
 
   function draw() {
     while (svg.firstChild) svg.removeChild(svg.firstChild);
@@ -148,7 +150,7 @@
     el(svg, "rect", { width: W, height: HOR + 3, fill: "url(#sm-sky)" });
 
     var sky = el(svg, "g", {});
-    STARS.forEach(function (st) {
+    if (!moving) STARS.forEach(function (st) {
       var x = ((st.x - cam.x * 0.012) % 1600 + 1600) % 1600 - 200;
       el(sky, "circle", { cx: x, cy: st.y, r: st.r,
         fill: "rgba(246,244,244,0.5)", opacity: 0.15 + 0.38 * (st.y / HOR) });
@@ -165,10 +167,11 @@
       fill: "#16171d", stroke: "rgba(180,180,180,0.18)", "stroke-width": 1 });
 
     var grid = el(svg, "g", {}), gz, gx, pts, q;
-    var z0 = Math.floor((cam.z - NEAR) / 150) * 150;
-    for (gz = z0; gz < cam.z + 2900; gz += 150) {
+    var ZS = moving ? 300 : 150, XS = moving ? 300 : 180;
+    var z0 = Math.floor((cam.z - NEAR) / ZS) * ZS;
+    for (gz = z0; gz < cam.z + 2900; gz += ZS) {
       pts = [];
-      for (gx = cam.x - 2700; gx <= cam.x + 2700; gx += 180) {
+      for (gx = cam.x - 2700; gx <= cam.x + 2700; gx += XS) {
         q = project(gx, gz, ter(gx, gz));
         if (q.s > 0.03) pts.push(q.x.toFixed(1) + "," + q.y.toFixed(1));
       }
@@ -178,10 +181,10 @@
         stroke: "rgba(180,180,180,0.8)", "stroke-width": Math.max(0.4, q.s * 0.85),
         opacity: 0.07 + q.fog * 0.25 });
     }
-    var x0 = Math.floor((cam.x - 2700) / 180) * 180;
-    for (gx = x0; gx < cam.x + 2700; gx += 180) {
+    var x0 = Math.floor((cam.x - 2700) / (moving ? 360 : 180)) * (moving ? 360 : 180);
+    for (gx = x0; gx < cam.x + 2700; gx += (moving ? 360 : 180)) {
       pts = [];
-      for (gz = Math.max(z0, cam.z - NEAR + 90); gz < cam.z + 2900; gz += 150) {
+      for (gz = Math.max(z0, cam.z - NEAR + 90); gz < cam.z + 2900; gz += ZS) {
         q = project(gx, gz, ter(gx, gz));
         if (q.s > 0.03) pts.push(q.x.toFixed(1) + "," + q.y.toFixed(1));
       }
@@ -191,7 +194,7 @@
     }
 
     var dust = el(svg, "g", {});
-    DUST.forEach(function (m) {
+    if (!moving) DUST.forEach(function (m) {
       var p = project(m.gx, m.gz, m.alt);
       if (p.s < 0.07 || p.x < -50 || p.x > W + 50) return;
       el(dust, "circle", { cx: p.x, cy: p.y, r: m.r * p.s * 1.7,
@@ -206,7 +209,9 @@
     });
     var order = vis.slice().sort(function (a, b) { return a.pr.s - b.pr.s; });
 
-    var farG = el(svg, "g", { filter: "url(#sm-far)" }), nearG = el(svg, "g", {});
+    var nearG = el(svg, "g", {});
+    var farG = moving ? nearG : el(svg, "g", { filter: "url(#sm-far)" });
+    if (moving) svg.appendChild(nearG);
     function bucket(n) { return n.pr.s < 0.30 ? farG : nearG; }
 
     order.forEach(function (n) {
@@ -251,7 +256,7 @@
         "stroke-width": Math.max(0.9, 1.5 / Math.max(sc, 0.25)),
         "stroke-linecap": "round", "stroke-linejoin": "round" });
 
-      if (q.s > 0.2 && (tr < 2 || n.depth < 3)) {
+      if (q.s > 0.2 && (tr < 2 || n.depth < 3) && !(moving && tr === 2)) {
         var fs = Math.max(7.5, Math.min(13, 11 * q.s));
         var tx = el(g, "text", { x: q.x + 20 * q.s, y: q.y + fs * 0.35,
           fill: tr === 0 ? "rgba(246,244,244,0.92)" : "rgba(180,180,180,0.68)",
@@ -281,13 +286,14 @@
     if (anim) cancelAnimationFrame(anim);
     var x0 = cam.x, z0 = cam.z, t0 = performance.now();
     if (reduce) { cam.x = tx; cam.z = tz; draw(); return; }
+    moving = true;
     (function step(now) {
       var q = Math.min(1, (now - t0) / ms);
       var e = q < 0.5 ? 4 * q * q * q : 1 - Math.pow(-2 * q + 2, 3) / 2;
       cam.x = x0 + (tx - x0) * e;
       cam.z = z0 + (tz - z0) * e;
-      draw();
-      anim = q < 1 ? requestAnimationFrame(step) : null;
+      if (q < 1) { draw(); anim = requestAnimationFrame(step); }
+      else { anim = null; moving = false; draw(); }   /* full detail once still */
     })(t0);
   }
 
@@ -331,6 +337,7 @@
   svg.addEventListener("pointermove", function (e) {
     if (!drag) return;
     if (anim) { cancelAnimationFrame(anim); anim = null; }
+    moving = true;
     var r = svg.getBoundingClientRect();
     var k = 1 / Math.min(r.width / W, r.height / H);
     cam.x = drag.cx - (e.clientX - drag.x) * k * 1.5;
@@ -338,15 +345,20 @@
     draw();
   });
   ["pointerup", "pointercancel"].forEach(function (t) {
-    svg.addEventListener(t, function () { drag = null; });
+    svg.addEventListener(t, function () {
+      if (!drag) return;
+      drag = null;
+      moving = false;
+      draw();
+    });
   });
 
   function bind(id, fn) { var e = document.getElementById(id); if (e) e.addEventListener("click", fn); }
-  bind("sm-in", function () { EYE = Math.max(240, EYE - 45); draw(); });
-  bind("sm-out", function () { EYE = Math.min(560, EYE + 45); draw(); });
+  bind("sm-in", function () { EYE = Math.max(380, EYE - 90); draw(); });
+  bind("sm-out", function () { EYE = Math.min(1400, EYE + 90); draw(); });
   bind("sm-reset", function () {
     data.nodes.forEach(function (n) { n.open = n.depth < 1; n.via = null; });
-    focus = "home"; EYE = 380; layout();
+    focus = "home"; EYE = 820; layout();
     fly(byId.home.gx + COLX * 0.4, byId.home.gz - 60, 1000);
     info(byId.home);
   });
