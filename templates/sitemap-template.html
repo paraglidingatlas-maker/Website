@@ -60,9 +60,9 @@
 
 /* three tiers of attention: what just opened, the path back, everything else */
 .t0{opacity:1;}
-.t1{opacity:0.46;}
-.t2{opacity:0.17;}
-.sm-node,.sm-edge,.sm-flow,.sm-stub{transition:opacity 0.32s ease;}
+.t1{opacity:0.5;}
+.t2{opacity:0.2;}
+.sm-node,.sm-edge,.sm-flow,.sm-stub{transition:opacity 0.55s cubic-bezier(.4,0,.2,1);}
 
 .sm-edge{stroke:rgba(180,180,180,0.34);stroke-width:1;}
 .sm-flow{fill:rgba(180,180,180,0.4);}
@@ -135,7 +135,7 @@
          role="img" aria-label="Network graph of the site structure. A full text index follows below."></svg>
   </div>
   <div class="sm-bar">
-    <p id="sm-info"><strong>Click a node to open it out.</strong><span>Nothing here takes you away from this page unless you ask it to.</span></p>
+    <p id="sm-info"><strong>Click a node to open it out.</strong><span>Drag the canvas to move around. Nothing takes you off this page unless you ask it to.</span></p>
     <div class="sm-ctrl">
       <button id="sm-out" type="button" aria-label="Zoom out">&minus;</button>
       <button id="sm-in" type="button" aria-label="Zoom in">+</button>

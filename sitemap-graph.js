@@ -80,23 +80,19 @@
       if (row === first) { n.ty = row * ROWH; row += 1; }
       else n.ty = (byId[ch[0]].ty + byId[ch[ch.length - 1]].ty) / 2;
     })("home");
-    var f = byId[focus] || byId.home;
-    var shift = f.ty || 0;
-    data.nodes.forEach(function (n) { if (n.ty !== undefined) n.ty -= shift; });
+
   }
 
-  function fit() {
-    var live = data.nodes.filter(function (n) { return n.shown && n.tx !== undefined; });
-    if (!live.length) return;
-    var xs = live.map(function (n) { return n.tx; });
-    var ys = live.map(function (n) { return n.ty; });
-    var minx = Math.min.apply(null, xs) - 30;
-    var maxx = Math.max.apply(null, xs) + 175;   /* room for the labels */
-    var miny = Math.min.apply(null, ys), maxy = Math.max.apply(null, ys);
-    var pad = 50;
-    view.k = Math.max(0.3, Math.min(W / (maxx - minx + pad), H / (maxy - miny + pad * 2), 1.25));
-    view.x = W / 2 - (minx + maxx) / 2 * view.k;
-    view.y = H / 2 - (miny + maxy) / 2 * view.k;
+  /* The canvas is wider than the frame on purpose. Rather than rescaling to fit
+     everything, the camera travels: it keeps whatever you just opened a third of
+     the way in from the left, so the columns you came through stay behind you
+     and the new branch has clear space ahead. Zoom never changes by itself,
+     which is what stops the whole thing lurching. */
+  function camera() {
+    var f = byId[focus] || byId.home;
+    if (f.tx === undefined) return;
+    view.x = W * 0.33 - f.tx * view.k;
+    view.y = H * 0.5 - f.ty * view.k;
   }
 
   var anim = null;
@@ -112,17 +108,18 @@
       data.nodes.forEach(function (n) {
         if (n.tx !== undefined) { n.x = n.tx; n.y = n.ty; }
       });
-      fit(); draw(); return;
+      camera(); draw(); return;
     }
     var from = {};
     data.nodes.forEach(function (n) { from[n.id] = { x: n.x, y: n.y }; });
-    var v0 = { x: view.x, y: view.y, k: view.k };
-    fit();
-    var v1 = { x: view.x, y: view.y, k: view.k };
-    var t0 = performance.now(), DUR = 430;
+    var v0 = { x: view.x, y: view.y };
+    camera();
+    var v1 = { x: view.x, y: view.y };
+    var t0 = performance.now(), DUR = 620;
     (function step(now) {
       var q = Math.min(1, (now - t0) / DUR);
-      var e = 1 - Math.pow(1 - q, 3);
+      /* gentle ease in and out, no overshoot, nothing snappy */
+      var e = q < 0.5 ? 4 * q * q * q : 1 - Math.pow(-2 * q + 2, 3) / 2;
       data.nodes.forEach(function (n) {
         if (n.tx === undefined) return;
         n.x = from[n.id].x + (n.tx - from[n.id].x) * e;
@@ -130,7 +127,6 @@
       });
       view.x = v0.x + (v1.x - v0.x) * e;
       view.y = v0.y + (v1.y - v0.y) * e;
-      view.k = v0.k + (v1.k - v0.k) * e;
       draw();
       anim = q < 1 ? requestAnimationFrame(step) : null;
     })(t0);
@@ -322,7 +318,7 @@
       n.open = !n.open;
       recompute(); layout(); settle();
     } else {
-      draw();
+      settle();          /* no children: just travel to it */
     }
     info(n);
   }
@@ -344,20 +340,29 @@
   });
 
   function zoom(mult) {
-    view.k = Math.max(0.45, Math.min(2.6, view.k * mult));
+    var f = byId[focus] || byId.home;
+    var before = view.k;
+    view.k = Math.max(0.45, Math.min(2.2, view.k * mult));
+    if (f.tx !== undefined) {          /* zoom about the node you are on */
+      view.x = W * 0.33 - f.tx * view.k;
+      view.y = H * 0.5 - f.ty * view.k;
+    } else {
+      view.x = W / 2 - (W / 2 - view.x) * (view.k / before);
+      view.y = H / 2 - (H / 2 - view.y) * (view.k / before);
+    }
     draw();
   }
   /* Wheel zooms while the pointer is over the map, the way the globe on the
      home page does. The difference: once you are fully zoomed out and keep
      scrolling out, the event is left alone so the page scrolls on past instead
      of trapping you inside the graph. Same at full zoom in. */
-  var MINK = 0.45, MAXK = 2.6;
+  var MINK = 0.45, MAXK = 2.2;
   svg.addEventListener("wheel", function (e) {
     var out = e.deltaY > 0;
     if ((out && view.k <= MINK + 0.001) || (!out && view.k >= MAXK - 0.001)) return;
     e.preventDefault();
     var before = view.k;
-    view.k = Math.max(MINK, Math.min(MAXK, view.k * (out ? 0.92 : 1.087)));
+    view.k = Math.max(MINK, Math.min(MAXK, view.k * (out ? 0.94 : 1.064)));
     /* keep the point under the cursor roughly still */
     var r = svg.getBoundingClientRect();
     var cx = (e.clientX - r.left) * (W / r.width);
@@ -376,7 +381,7 @@
   bind("sm-reset", function () {
     data.nodes.forEach(function (n) { n.open = n.depth < 1; });
     focus = "home";
-    recompute(); layout(); settle();
+    recompute(); layout(); view.k = 1; settle();
   });
 
   recompute(); layout(); settle(true);
