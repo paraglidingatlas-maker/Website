@@ -15,9 +15,16 @@ TOPICS = {}
 for k, v in __import__('re').findall(r'"([^"]+)"\s*:\s*"([^"]+)"', _blk):
     TOPICS[k] = v
 
-EPS = [{"order": int(o), "id": i, "topic": t, "title": json.loads(ti)}
-       for o, i, t, ti in re.findall(
-           r'\{ order: (\d+), id: "([^"]+)", topic: "([^"]+)", title: (".*?") \},', lib)]
+TITLE_RE = re.compile(r'title:\s*("(?:\\.|[^"\\])*")')
+EPS = []
+for _row in re.findall(r"\{([^{}]*)\}", lib.rsplit("LIB_EPISODES", 1)[-1]):
+    _o = re.search(r"order:\s*(\d+)", _row)
+    _i = re.search(r'id:\s*"([^"]+)"', _row)
+    _t = re.search(r'topic:\s*"([^"]+)"', _row)
+    _ti = re.search(TITLE_RE, _row)
+    if _o and _i and _t and _ti:
+        EPS.append({"order": int(_o.group(1)), "id": _i.group(1),
+                    "topic": _t.group(1), "title": json.loads(_ti.group(1))})
 META = json.load(open(os.path.join(ROOT, 'episode-meta.json')))
 PAGE = {m["video_id"]: m for m in META if m.get("video_id")}
 
