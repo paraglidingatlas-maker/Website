@@ -1,0 +1,3589 @@
+WEBVTT
+
+00:00:00.520 --> 00:00:02.600
+Hello and welcome back to Paragliding Atlas.
+
+00:00:02.600 --> 00:00:06.160
+I'm your host, Aninder Singh. And if you have been liking
+
+00:00:06.160 --> 00:00:08.720
+what's coming your way so far, then make it your mission to
+
+00:00:08.720 --> 00:00:11.200
+make someone else's flight safer as well.
+
+00:00:11.280 --> 00:00:14.120
+So feel free to share this with your friends and family who
+
+00:00:14.120 --> 00:00:16.960
+share the skies with us. And if you want more of this,
+
+00:00:16.960 --> 00:00:18.640
+then don't forget to hit the subscribe button.
+
+00:00:19.720 --> 00:00:24.320
+For today's episode, we have none other than Yorg Evald.
+
+00:00:24.320 --> 00:00:27.560
+Yorg, welcome to the show. Thank you.
+
+00:00:27.840 --> 00:00:29.320
+Thanks for having me. Hello.
+
+00:00:30.120 --> 00:00:35.280
+Yo, I have heard about you from YouTube where I was trying to
+
+00:00:35.280 --> 00:00:42.640
+decode the algorithms which decide how many points go into
+
+00:00:42.640 --> 00:00:47.960
+making of a champion. So like that is the simplest way
+
+00:00:47.960 --> 00:00:52.680
+I can, I can describe this. But for for our viewers who are,
+
+00:00:52.880 --> 00:00:56.080
+you know, have recently started flying and are not from your
+
+00:00:56.080 --> 00:00:58.080
+era, can you give a tiny bit of introduction?
+
+00:00:59.200 --> 00:01:07.680
+Well, OK, I started flying in 1992 as a young student and it
+
+00:01:07.680 --> 00:01:10.360
+took me about 10 years to discover competitions.
+
+00:01:10.560 --> 00:01:13.960
+So I only started flying competitions in 2002.
+
+00:01:14.720 --> 00:01:19.400
+Joined the World Cup the first time in 2004 and stayed there
+
+00:01:19.400 --> 00:01:22.920
+until I retired from competition flying in 2025.
+
+00:01:22.920 --> 00:01:28.440
+Years ago on the side, I got involved in scoring because I
+
+00:01:28.440 --> 00:01:33.880
+started my own Little League in Northern California in 2001 or
+
+00:01:33.880 --> 00:01:36.920
+two. And because of that, I wanted to
+
+00:01:36.920 --> 00:01:39.360
+know how scoring works and stayed involved with it.
+
+00:01:39.920 --> 00:01:45.800
+And then since about 2011, I am the person who is managing,
+
+00:01:45.840 --> 00:01:50.920
+maintaining, further developing the software that is creating
+
+00:01:50.920 --> 00:01:54.400
+the scoring for us. And because of that, I also had
+
+00:01:54.400 --> 00:01:58.600
+to develop an understanding of that algorithm that gives out
+
+00:01:58.600 --> 00:02:02.960
+the points that makes champions. And I've been involved in
+
+00:02:02.960 --> 00:02:07.360
+creating updates, changing it, making it better over the years.
+
+00:02:08.160 --> 00:02:10.560
+And yeah, that's still my involvement.
+
+00:02:10.560 --> 00:02:14.840
+I still work with the PWCA and with CIVL, the two world bodies
+
+00:02:15.840 --> 00:02:21.960
+on the scoring topic. I advise federations, I score.
+
+00:02:22.240 --> 00:02:26.680
+I'm a race director now in Switzerland, so various touch
+
+00:02:26.680 --> 00:02:28.680
+points with the whole making champions.
+
+00:02:29.040 --> 00:02:30.920
+Yeah. And I can only imagine the
+
+00:02:30.920 --> 00:02:34.400
+amount of experience and the wealth of knowledge that comes
+
+00:02:34.400 --> 00:02:37.480
+with it, which is also the reason why I was very excited to
+
+00:02:37.480 --> 00:02:40.200
+have you on the show. And finally, I think after
+
+00:02:40.200 --> 00:02:43.040
+exchanging emails over back and forth over a few months, we have
+
+00:02:43.040 --> 00:02:49.200
+finally made it happen today. Yeah, usually, you know, the
+
+00:02:49.200 --> 00:02:52.840
+first thing that comes to my mind is that anybody who is into
+
+00:02:53.960 --> 00:02:58.600
+IT or computers or especially softwaresimtalkingaboutthe.com
+
+00:02:58.600 --> 00:03:01.440
+boom. When anybody and everyone who
+
+00:03:01.440 --> 00:03:03.800
+was with computers just got rich.
+
+00:03:04.920 --> 00:03:07.360
+Softwares is usually one of those things where you know
+
+00:03:07.840 --> 00:03:11.920
+these days piracy and all of those illegal downloads are more
+
+00:03:11.920 --> 00:03:15.400
+or less becoming a thing of the past and people are making fair
+
+00:03:15.400 --> 00:03:19.600
+bit of money with softwares. So my curiosity is that is this
+
+00:03:19.600 --> 00:03:23.840
+finally that one business model or something in paragliding
+
+00:03:23.840 --> 00:03:25.720
+where the creator is getting rich?
+
+00:03:25.720 --> 00:03:28.320
+Like has somebody actually managed to get rich from
+
+00:03:28.320 --> 00:03:32.000
+softwares in paragliding? No, it's still, I mean, I do
+
+00:03:32.000 --> 00:03:36.320
+this as a hobby. I, I do get paid a little bit
+
+00:03:36.320 --> 00:03:40.920
+for doing the work I do for, for various associations, but that
+
+00:03:40.920 --> 00:03:42.960
+is just to pay the expenses more or less.
+
+00:03:43.320 --> 00:03:48.800
+I have a daytime job and that's what feeds me and gives me a
+
+00:03:48.800 --> 00:03:52.360
+roof over the over my head. The rest is just for fun.
+
+00:03:53.840 --> 00:03:58.880
+OK, well I hope that gets better and you can live off softwares
+
+00:03:58.880 --> 00:04:01.440
+and be a part of the Silicon Valley.
+
+00:04:01.840 --> 00:04:05.960
+But anyways, how did life look like before we had such
+
+00:04:05.960 --> 00:04:08.200
+automated solutions? Because I do remember some of
+
+00:04:08.200 --> 00:04:12.520
+my, yeah, old timers telling me that people used to fly with GPS
+
+00:04:12.520 --> 00:04:15.520
+cameras and they used to take photos and what was.
+
+00:04:16.320 --> 00:04:20.920
+Not even GPS. So when competition started, and
+
+00:04:21.079 --> 00:04:24.560
+I have to say I'm very lucky, I was not really doing, I was not
+
+00:04:24.560 --> 00:04:28.720
+doing competitions then because at that time I don't think I
+
+00:04:28.720 --> 00:04:30.800
+would have enjoyed it. I probably would have stopped
+
+00:04:30.800 --> 00:04:34.040
+doing it right away. But yes, people were flying with
+
+00:04:34.040 --> 00:04:38.960
+cameras and they had the basically the control zones, the
+
+00:04:38.960 --> 00:04:44.800
+turn points they had to take were specific buildings or
+
+00:04:44.800 --> 00:04:48.680
+mountaintops or church Spires and things like that.
+
+00:04:48.680 --> 00:04:53.000
+And they had to take pictures of those things, come back to goal
+
+00:04:53.000 --> 00:04:57.080
+hand in their camera. And then the scorekeeper was
+
+00:04:57.080 --> 00:05:00.320
+actually developing the film that the pictures that they
+
+00:05:00.320 --> 00:05:02.960
+took. It was developed overnight and
+
+00:05:02.960 --> 00:05:05.560
+then they looked at on the negatives.
+
+00:05:05.560 --> 00:05:08.640
+Is this really that you're inspired or is it maybe the one
+
+00:05:08.960 --> 00:05:13.480
+a village over, depending on that, decided if somebody
+
+00:05:13.480 --> 00:05:17.320
+completed the course or not? And yeah, that's how winners
+
+00:05:17.320 --> 00:05:19.720
+were made. That's in the old days.
+
+00:05:19.720 --> 00:05:22.760
+I remember it because my dad was a sailplane pilot flying
+
+00:05:22.760 --> 00:05:25.680
+competitions and there it was exactly like that and
+
+00:05:25.680 --> 00:05:29.840
+paragliding copied that initially and then only when GPS
+
+00:05:29.840 --> 00:05:34.000
+came out and we started having those handy little handheld GPS
+
+00:05:34.000 --> 00:05:39.160
+devices, people start thinking of how could we use those and
+
+00:05:39.520 --> 00:05:42.520
+spare ourselves the the hassle of the camera work.
+
+00:05:43.120 --> 00:05:45.320
+Is is that also coming in from sailplanes?
+
+00:05:45.320 --> 00:05:48.520
+Because they obviously would have thought about GPS as well.
+
+00:05:49.320 --> 00:05:53.520
+Yeah, but actually the way the scoring works now is very
+
+00:05:53.520 --> 00:05:56.640
+specific to paragliding the the way we do the scoring.
+
+00:05:57.000 --> 00:05:59.920
+It was invented by three hang glider pilots.
+
+00:05:59.920 --> 00:06:02.560
+You know, Hang Gliding. Paragliding belongs together at
+
+00:06:02.560 --> 00:06:05.200
+the world level. There is one association.
+
+00:06:05.520 --> 00:06:09.160
+So these three guys, they developed the first version of
+
+00:06:09.160 --> 00:06:14.000
+the scoring formulas, throwing algorithms that is taking into
+
+00:06:14.000 --> 00:06:17.800
+account that you can track a pilot at that time it was maybe
+
+00:06:17.800 --> 00:06:20.880
+every 30 seconds. By now it's every second and
+
+00:06:20.880 --> 00:06:23.880
+have much more information about where they are and what they do.
+
+00:06:24.480 --> 00:06:28.600
+And based on that, we developed this formula that we have today,
+
+00:06:28.720 --> 00:06:30.880
+the the gap formula as we call it.
+
+00:06:31.480 --> 00:06:33.200
+Does does GAP stand for something?
+
+00:06:33.840 --> 00:06:36.520
+Yeah, that's the first letters of the three names of those
+
+00:06:36.520 --> 00:06:39.240
+three guys. Oh yeah.
+
+00:06:39.440 --> 00:06:42.080
+Justin. Gilles, Angela and Paul, Angelo
+
+00:06:42.080 --> 00:06:45.800
+and Paul. OK, and these guys were just
+
+00:06:45.800 --> 00:06:48.760
+like some geniuses or just regular pilots who decided to
+
+00:06:48.760 --> 00:06:53.760
+find a solution for. They were pretty bright.
+
+00:06:54.640 --> 00:06:57.320
+Technically interested hang glider pilots, yeah.
+
+00:06:57.960 --> 00:06:59.920
+Would love to have them on the show if possible.
+
+00:07:01.880 --> 00:07:03.680
+Some of them are no longer around.
+
+00:07:04.000 --> 00:07:06.600
+I could imagine, I could imagine, but anyways, we thank
+
+00:07:06.600 --> 00:07:11.400
+them for their contribution and we thank you for joining us to
+
+00:07:11.400 --> 00:07:13.600
+explain their contribution. So you're.
+
+00:07:13.600 --> 00:07:18.400
+OK, I'll. Do my best, you know, to to let
+
+00:07:18.400 --> 00:07:22.680
+our pilots know who are listening to us, who are yet to
+
+00:07:22.800 --> 00:07:27.440
+race in their first comp. What is a comp looking like?
+
+00:07:27.440 --> 00:07:30.040
+What is the task? I've heard the word task so many
+
+00:07:30.040 --> 00:07:30.760
+times. So what?
+
+00:07:30.760 --> 00:07:31.760
+Yeah. Exactly.
+
+00:07:31.760 --> 00:07:33.720
+So what is a task? How do we race?
+
+00:07:34.360 --> 00:07:39.400
+When I explain that usually I draw this analogy to sailing
+
+00:07:39.400 --> 00:07:41.800
+regattas. So similar to a sailing
+
+00:07:41.800 --> 00:07:46.040
+regattas, what we do is we have to follow a predefined course
+
+00:07:46.600 --> 00:07:49.760
+and whoever flies that the fastest is the winner.
+
+00:07:50.320 --> 00:07:54.400
+That's the very, very simple, simplistic view on it.
+
+00:07:55.000 --> 00:07:58.320
+There is a little difference to sailing and sailing, unless you
+
+00:07:58.320 --> 00:08:01.000
+have a major, I don't know, your, your mouse breaks or
+
+00:08:01.000 --> 00:08:03.120
+something, you will probably make it to goal.
+
+00:08:03.480 --> 00:08:07.680
+Whereas in paragliding competitions, it's not a given
+
+00:08:07.680 --> 00:08:10.920
+that you make it to goal. Yeah.
+
+00:08:10.920 --> 00:08:14.480
+OK. So basically it's just like, you
+
+00:08:14.480 --> 00:08:17.600
+know, going around a controlled area rather than.
+
+00:08:17.600 --> 00:08:21.720
+Just yeah, exactly. And the way it works is the task
+
+00:08:21.720 --> 00:08:25.280
+setters in the beginning of the day, they basically define a
+
+00:08:25.280 --> 00:08:31.160
+task, Say we start here and we have these three areas and then
+
+00:08:31.160 --> 00:08:35.280
+we have the goal here. And they say you have to fly to
+
+00:08:35.280 --> 00:08:40.480
+this cylinder here or just circle from above, then to this
+
+00:08:40.480 --> 00:08:42.440
+one, then to this one, and then to goal.
+
+00:08:43.600 --> 00:08:48.520
+And they give us a time when we are allowed to launch.
+
+00:08:50.720 --> 00:08:53.240
+So probably can't write my hand, read my handwriting.
+
+00:08:53.680 --> 00:08:57.880
+And then the start, actually the race start is in the air.
+
+00:08:57.880 --> 00:09:01.640
+So everybody has time to go high, put themselves in a good
+
+00:09:01.640 --> 00:09:05.560
+position. And then at this predefined
+
+00:09:05.560 --> 00:09:09.840
+time, the start opens and then everybody can start racing the
+
+00:09:09.840 --> 00:09:13.120
+rest of the course all the way to goal.
+
+00:09:13.400 --> 00:09:17.160
+But as I said, you have to You always have the risk that you
+
+00:09:17.160 --> 00:09:20.200
+plight like light, you find the next thermal and maybe you
+
+00:09:20.200 --> 00:09:23.000
+missed that thermal and your flight is over here so you don't
+
+00:09:23.000 --> 00:09:26.520
+make it all the way to go. I feel the pain, York.
+
+00:09:26.520 --> 00:09:29.400
+I know the pain and I'm pretty sure you feel it.
+
+00:09:29.400 --> 00:09:31.080
+To everybody. Everybody.
+
+00:09:31.080 --> 00:09:34.160
+Yeah, but that's part of the the learning curve.
+
+00:09:34.480 --> 00:09:39.720
+The The hard life of a compilot watching the lead gaggle fly
+
+00:09:39.720 --> 00:09:44.040
+over you because you were too ambitious to try and outcome.
+
+00:09:44.040 --> 00:09:47.560
+Them that's one way to do it, but the other is just seeing the
+
+00:09:47.720 --> 00:09:51.520
+lead gaggle from far from far behind disappear over the
+
+00:09:51.520 --> 00:09:55.120
+horizon and then sinking out. There's many ways to do that,
+
+00:09:55.120 --> 00:09:57.880
+but yeah, that's one of the things where we are different
+
+00:09:57.960 --> 00:10:02.600
+from the sailing regardless. OK, Bjork, There's one another
+
+00:10:02.600 --> 00:10:07.800
+task type that I've heard about here and there at times and it's
+
+00:10:07.800 --> 00:10:11.080
+it reminds me of cycling, you know, especially Tour de France,
+
+00:10:11.080 --> 00:10:15.040
+which is like right through this course as quick as possible, but
+
+00:10:15.040 --> 00:10:19.760
+in a single pilot format. So time trials have been a part
+
+00:10:19.760 --> 00:10:23.000
+of paragliding more or less. But like, when do time trials
+
+00:10:23.000 --> 00:10:25.560
+come? Were they popular?
+
+00:10:26.040 --> 00:10:27.760
+Why don't we see them very often?
+
+00:10:27.760 --> 00:10:29.560
+Or what's? Let's talk a little bit about
+
+00:10:29.560 --> 00:10:30.640
+time trials in. Yeah.
+
+00:10:30.640 --> 00:10:32.440
+OK. So yes, you're right.
+
+00:10:32.440 --> 00:10:35.320
+There are time trials. So what I described just now is
+
+00:10:35.320 --> 00:10:38.360
+the general format and we have two ways of doing that.
+
+00:10:38.760 --> 00:10:42.440
+And the one that we are mainly familiar with, the one we see
+
+00:10:42.440 --> 00:10:47.080
+mostly is the format we call a race, and that's a mass start.
+
+00:10:47.080 --> 00:10:50.680
+So if we say this cylinder here is the start cylinder, then
+
+00:10:50.680 --> 00:10:53.440
+everybody gaggles up here, waits, and then at the
+
+00:10:53.440 --> 00:10:57.560
+predefined time they go forward and race towards goal.
+
+00:10:57.960 --> 00:11:02.200
+That's the race. And the one you mentioned, now
+
+00:11:02.200 --> 00:11:09.400
+the time trial is 1 where I don't wait until the start time
+
+00:11:10.280 --> 00:11:13.040
+comes. I have the option to start
+
+00:11:13.040 --> 00:11:16.320
+whenever I feel it. So it's individual time.
+
+00:11:16.320 --> 00:11:21.280
+My time counts. Whenever I want to start, then I
+
+00:11:21.280 --> 00:11:26.360
+go. I go and store my my task and
+
+00:11:26.400 --> 00:11:28.360
+everybody else does it at their own time.
+
+00:11:29.440 --> 00:11:34.280
+This has a little bit of a bad reputation, and that goes back
+
+00:11:34.280 --> 00:11:42.560
+20-30 years ago because for some reason these tasks, time trials
+
+00:11:42.560 --> 00:11:46.880
+were only set in bad conditions. Yeah, we can't really do a race.
+
+00:11:46.880 --> 00:11:50.080
+It's we don't have the time for everybody to launch and get
+
+00:11:50.080 --> 00:11:52.120
+high. So let's do a time trial.
+
+00:11:52.680 --> 00:11:56.720
+And that way time trialer for a lot of people are associated
+
+00:11:56.720 --> 00:12:01.960
+with bad conditions, maybe questionable safety,
+
+00:12:01.960 --> 00:12:04.640
+questionable sportive conditions.
+
+00:12:05.160 --> 00:12:08.440
+And that's why more and more people try to avoid them.
+
+00:12:09.880 --> 00:12:12.600
+They are interesting because they are totally different.
+
+00:12:12.680 --> 00:12:17.080
+They require different tactics. And especially for a beginner,
+
+00:12:17.080 --> 00:12:22.320
+they can be really interesting because like you said, you see
+
+00:12:22.320 --> 00:12:25.960
+the OR like we talked about before, you see often at the
+
+00:12:25.960 --> 00:12:29.920
+start, right away you see the top pilots disappear.
+
+00:12:30.000 --> 00:12:31.880
+They fly away from you and they're gone.
+
+00:12:32.800 --> 00:12:37.520
+And that reduces my ability to observe them and learn from them
+
+00:12:37.960 --> 00:12:40.480
+quite a bit. As soon as it starts open,
+
+00:12:40.480 --> 00:12:42.200
+they're gone and I don't see them anymore.
+
+00:12:43.000 --> 00:12:48.160
+In a time trial, I can set myself the the objective to
+
+00:12:48.160 --> 00:12:52.120
+start early, maybe before everybody else, and be already
+
+00:12:52.120 --> 00:12:55.800
+somewhere along the course line by the time the main gaggle
+
+00:12:55.800 --> 00:12:59.400
+passes me. So by the time we're flying
+
+00:12:59.400 --> 00:13:02.200
+together, I'm already halfway through the task and I'm in a
+
+00:13:02.200 --> 00:13:04.880
+different position. I have a different set of
+
+00:13:04.880 --> 00:13:07.960
+challenges around me and I can see how they do that.
+
+00:13:08.320 --> 00:13:12.840
+So the learning experience for me is better if I'm in front and
+
+00:13:12.840 --> 00:13:16.040
+let them catch up with me rather than them flying away from me at
+
+00:13:16.040 --> 00:13:20.480
+the start. That's why I think time trials
+
+00:13:20.480 --> 00:13:24.720
+are really interesting. And yeah, I mentioned it before.
+
+00:13:24.720 --> 00:13:27.680
+I'll be race director here in Switzerland for for the next
+
+00:13:27.680 --> 00:13:31.040
+year and I already promised my pilots that we will set time
+
+00:13:31.040 --> 00:13:32.720
+trials every now and then next year.
+
+00:13:33.440 --> 00:13:37.280
+That's exciting. And has it been tried in World
+
+00:13:37.280 --> 00:13:39.200
+Cups and Cat 1 and stuff like that as well?
+
+00:13:39.200 --> 00:13:41.600
+Of course, yeah, it's it's every now and then.
+
+00:13:41.640 --> 00:13:43.800
+But as I said, usually when conditions are bad.
+
+00:13:45.040 --> 00:13:47.320
+Alright. And, and it's for some reason
+
+00:13:47.320 --> 00:13:51.760
+there doesn't seem to be 100% fairness because I don't know
+
+00:13:51.760 --> 00:13:56.800
+how the start window works in this one, but if somebody you
+
+00:13:56.800 --> 00:13:59.840
+know takes off at a cycle or during the time of the day when
+
+00:13:59.840 --> 00:14:03.800
+cycles are stronger, then they get more advantage than the one
+
+00:14:03.800 --> 00:14:07.400
+who went in earlier, so. It basically goes back to the
+
+00:14:07.400 --> 00:14:10.400
+original thinking of what are, what are we doing?
+
+00:14:10.400 --> 00:14:13.360
+It's we still call them cross country competitions.
+
+00:14:14.080 --> 00:14:16.960
+So it's about being able to charge the conditions and make
+
+00:14:16.960 --> 00:14:20.720
+the right decision at the right point in time to maximise the
+
+00:14:20.720 --> 00:14:23.320
+day and make, take the yeah, make the most of it.
+
+00:14:24.040 --> 00:14:28.280
+So, yeah, you, you, you have to make more decisions yourself
+
+00:14:28.280 --> 00:14:31.920
+because in the race the start time is defined, somebody else
+
+00:14:31.920 --> 00:14:34.560
+made that decision. Then is when everybody starts.
+
+00:14:35.000 --> 00:14:38.120
+And in the time trial, there's this added complexity that you,
+
+00:14:38.280 --> 00:14:42.160
+you decide yourself, but you, you win a little bit more
+
+00:14:42.160 --> 00:14:45.600
+freedom also to, to, yeah, choosing a different time.
+
+00:14:45.600 --> 00:14:47.600
+And maybe it's the better one than everybody else.
+
+00:14:47.600 --> 00:14:52.880
+You get away. OK, OK, York, I want to clarify
+
+00:14:52.880 --> 00:14:55.840
+some abbreviations for our viewers.
+
+00:14:56.120 --> 00:14:57.840
+It's just so that if we use them.
+
+00:14:57.840 --> 00:14:59.280
+Later. Have we cleaned this up in the
+
+00:14:59.280 --> 00:15:00.840
+meantime? Go ahead.
+
+00:15:01.400 --> 00:15:06.960
+Yeah. So you know ESS and triple S and
+
+00:15:06.960 --> 00:15:10.920
+there are quite a lot of such abbreviations which I see when I
+
+00:15:11.000 --> 00:15:14.840
+open up X contest. Could you talk to us about the
+
+00:15:14.840 --> 00:15:19.440
+most commonly used ones that people see on their X contest
+
+00:15:19.440 --> 00:15:21.440
+screen as soon as they open up the interface?
+
+00:15:23.440 --> 00:15:28.000
+OK, now let's do this little sample task again.
+
+00:15:31.280 --> 00:15:37.480
+So we have to start and we have a turn point.
+
+00:15:37.600 --> 00:15:44.680
+Sorry, in German it's the same word and I am still keep mixing
+
+00:15:44.680 --> 00:15:46.560
+them up. We have launch and we have to
+
+00:15:46.560 --> 00:15:50.320
+start and we have the first turn point.
+
+00:15:50.320 --> 00:15:57.680
+We have the second turn point and we have goal here and this
+
+00:15:57.680 --> 00:16:02.520
+one here is what is called ESS and the start is sometimes
+
+00:16:02.520 --> 00:16:07.880
+called SSS Triple S. Why is that?
+
+00:16:08.960 --> 00:16:12.160
+Like I said before, we launch and the clock is not running
+
+00:16:12.160 --> 00:16:15.840
+yet, so I'm not racing yet. I launch and I have time to put
+
+00:16:15.840 --> 00:16:19.600
+myself in a good position. This is the start line.
+
+00:16:19.800 --> 00:16:24.320
+I can cross it as many times as I want before the start, but I
+
+00:16:24.320 --> 00:16:28.560
+have to be inside of the cylinder at the start time and
+
+00:16:28.560 --> 00:16:33.760
+only fly out after the start. But that's the start of what we
+
+00:16:33.760 --> 00:16:37.680
+call the speed section. This part here from the start
+
+00:16:37.680 --> 00:16:41.720
+over the turn points to this here, which I explained in a
+
+00:16:41.720 --> 00:16:43.720
+second. That's called the speed section.
+
+00:16:43.720 --> 00:16:45.760
+That's where we measure how fast are you.
+
+00:16:46.520 --> 00:16:49.440
+What happens before doesn't count for your time.
+
+00:16:49.440 --> 00:16:52.120
+What happens afterwards doesn't count for your time.
+
+00:16:52.520 --> 00:16:55.200
+So, but this year, the speed section, that's the part you
+
+00:16:55.200 --> 00:16:58.720
+need to fly the fastest. So this is simply the start of
+
+00:16:58.720 --> 00:17:01.400
+the speed section. And this year is the end of the
+
+00:17:01.400 --> 00:17:05.000
+speed section, ESS. That's where we block you.
+
+00:17:05.440 --> 00:17:08.680
+That's the time you get. But you still have to fly to
+
+00:17:08.680 --> 00:17:11.119
+goal, otherwise you will not get your full points.
+
+00:17:12.640 --> 00:17:15.160
+But again, you can do that on your own time.
+
+00:17:15.160 --> 00:17:19.119
+This is not timed at all. What counts is the speed set.
+
+00:17:19.960 --> 00:17:22.000
+Yeah, thank you for explaining it so well.
+
+00:17:22.000 --> 00:17:24.960
+This is like so much easier to understand with the diagrams and
+
+00:17:25.079 --> 00:17:26.640
+it feels like intuitive learning.
+
+00:17:28.720 --> 00:17:34.560
+York, I'm I'm glad you mentioned points because to me when I open
+
+00:17:34.560 --> 00:17:38.560
+up PwC websites or or something like, you know, where the
+
+00:17:38.560 --> 00:17:42.200
+results are mentioned, there are, I don't know man, like
+
+00:17:43.080 --> 00:17:45.440
+leading points, distance points and speed points.
+
+00:17:45.440 --> 00:17:48.720
+And like how many types of points do we have?
+
+00:17:49.040 --> 00:17:51.880
+Or how many points, how many type of points do we really need
+
+00:17:51.880 --> 00:17:54.480
+to figure out a winner? Like why can't it be just like
+
+00:17:54.480 --> 00:17:58.200
+go to point A to point B and the fastest fastest guy wins?
+
+00:17:59.280 --> 00:18:04.040
+The answer for that really you, you should ask that those three
+
+00:18:04.040 --> 00:18:07.320
+guys who invented Cup, why they did that.
+
+00:18:07.320 --> 00:18:09.360
+I mean, I have some neat ideas why they did that.
+
+00:18:09.360 --> 00:18:12.280
+But yeah, that basically goes back to them.
+
+00:18:12.280 --> 00:18:16.200
+Before, when everybody was flying with cameras, it was just
+
+00:18:16.200 --> 00:18:20.240
+the time you took from the start to the goal.
+
+00:18:20.880 --> 00:18:23.280
+If you didn't make a goal, it was the distance.
+
+00:18:23.280 --> 00:18:26.480
+But yeah, it was a little simpler at that.
+
+00:18:27.280 --> 00:18:32.680
+What we have now is basically in one task, in one race, we play 3
+
+00:18:32.680 --> 00:18:37.240
+different games. We have three games where we can
+
+00:18:37.240 --> 00:18:40.800
+make points. The first game is the distance
+
+00:18:40.800 --> 00:18:43.600
+game. Whoever flies far the further
+
+00:18:44.280 --> 00:18:48.640
+gets more points. And of course that's maximized.
+
+00:18:48.640 --> 00:18:50.920
+When I get to goal, I cannot fly further than goal.
+
+00:18:50.920 --> 00:18:54.360
+So then I have the maximum of the points for distance.
+
+00:18:55.080 --> 00:18:59.720
+That's the game #1 the game #2 is flying the speed section that
+
+00:18:59.720 --> 00:19:02.960
+we just looked at, flying that as fast as possible.
+
+00:19:03.360 --> 00:19:08.920
+The faster I fly it and make it to goal, the more of those.
+
+00:19:09.440 --> 00:19:12.920
+We call them time points. You get the time points, measure
+
+00:19:12.920 --> 00:19:15.080
+how fast you fly. That's the second game.
+
+00:19:15.720 --> 00:19:19.400
+And then the third game is you mentioned them, the leading
+
+00:19:19.400 --> 00:19:27.320
+points that goes back to when GAP was invented is originally
+
+00:19:27.320 --> 00:19:29.360
+it was really something very specific to Hang Gliding
+
+00:19:29.360 --> 00:19:31.040
+competitions. But by now we have them
+
+00:19:31.040 --> 00:19:34.520
+everywhere. But basically that game right
+
+00:19:34.520 --> 00:19:38.440
+now measures how much progress you make, especially in the
+
+00:19:38.440 --> 00:19:42.880
+middle half of the task and compared to everybody else.
+
+00:19:43.640 --> 00:19:46.040
+And again, that gives you points.
+
+00:19:46.040 --> 00:19:48.640
+If you do well in that game, you get more points.
+
+00:19:49.080 --> 00:19:52.720
+And then in the end, your your task result is the sum of the
+
+00:19:52.720 --> 00:19:54.600
+points you made in those three games.
+
+00:19:55.520 --> 00:19:59.080
+And because we have those three different games, it's possible
+
+00:19:59.080 --> 00:20:01.680
+that the task winner is not the fastest pilot.
+
+00:20:02.200 --> 00:20:05.080
+But the one who just had the most points in all three games
+
+00:20:05.080 --> 00:20:09.080
+together? This is very interesting.
+
+00:20:09.440 --> 00:20:12.960
+So game one is distance that is making it a goal.
+
+00:20:13.360 --> 00:20:17.000
+If you don't make it a goal, the penalties will pretty much make
+
+00:20:17.000 --> 00:20:21.240
+it senseless. This is not really a penalty.
+
+00:20:21.240 --> 00:20:24.320
+You're just, if you don't make it to goal, you don't get any
+
+00:20:24.320 --> 00:20:26.880
+time points and that's really the the big portion.
+
+00:20:27.080 --> 00:20:30.040
+Yeah, yeah, like you, you miss out on something which will will
+
+00:20:30.040 --> 00:20:35.520
+make it worthless, correct. The second game is speed, which
+
+00:20:35.520 --> 00:20:39.520
+is like how fast and who leads. So basically there's incentive.
+
+00:20:40.280 --> 00:20:43.440
+I don't know, somebody labeled it as incentive for risk taking.
+
+00:20:43.440 --> 00:20:45.840
+I don't want to, you know, put it in some things.
+
+00:20:45.840 --> 00:20:48.680
+But yes, incentive for being courageous and looking for
+
+00:20:49.000 --> 00:20:51.840
+terminals rather than just following the third game that
+
+00:20:51.840 --> 00:20:53.720
+you mentioned. I do not understand that which
+
+00:20:53.720 --> 00:20:55.520
+was I think. You're just mixed up the two.
+
+00:20:55.520 --> 00:20:59.880
+So the second really is just about speed and especially if
+
+00:20:59.880 --> 00:21:03.080
+you consider what we talked about before the the time
+
+00:21:03.080 --> 00:21:07.040
+trials, it's really just how fast do I manage to get from the
+
+00:21:07.040 --> 00:21:09.360
+start to the end of speed section.
+
+00:21:09.880 --> 00:21:13.960
+But that defines how many points I get, regardless of whether I'm
+
+00:21:13.960 --> 00:21:15.960
+the first one doing it or the last one.
+
+00:21:16.640 --> 00:21:18.080
+OK. What was though?
+
+00:21:18.080 --> 00:21:21.560
+That's the speed and the last, the third one, the third game is
+
+00:21:21.560 --> 00:21:25.720
+what we call the leading game. It's the the leading points are
+
+00:21:25.720 --> 00:21:29.920
+given there and that measures how fast.
+
+00:21:30.080 --> 00:21:32.600
+Basically, we have this curve here.
+
+00:21:35.080 --> 00:21:45.200
+So if this is the task distance from the start to ESS, and so
+
+00:21:46.520 --> 00:21:51.280
+the more closely I follow the optimized route to make progress
+
+00:21:51.640 --> 00:21:55.520
+along the optimized route, the more points I get during this
+
+00:21:55.520 --> 00:21:57.560
+middle. Yeah, about 50%.
+
+00:21:58.480 --> 00:22:08.080
+That's an additional way of, yeah, of rewarding fast pilots
+
+00:22:08.080 --> 00:22:12.360
+who fly in the front. And as you said, it's it's, it's
+
+00:22:12.360 --> 00:22:15.840
+encouraging people to not just hang back and observe others and
+
+00:22:15.840 --> 00:22:19.240
+be one thermal behind. It's to encourage people to be
+
+00:22:19.240 --> 00:22:21.760
+the ones who go out and find the thermals in the front.
+
+00:22:23.160 --> 00:22:25.760
+But you have to be able to do that consistently.
+
+00:22:25.760 --> 00:22:28.880
+You really need to fly out a certain, I don't know, one
+
+00:22:28.880 --> 00:22:32.640
+thermal lead over the rest to make this count and make more
+
+00:22:32.640 --> 00:22:35.800
+points, really noticeably more points than everybody else.
+
+00:22:36.360 --> 00:22:40.040
+Oh yeah, I was actually curious that how big of a difference,
+
+00:22:40.040 --> 00:22:44.560
+Like let's say if you can see a pilot 10 meters in front of you,
+
+00:22:45.000 --> 00:22:48.600
+is it making a huge difference? No, no, no, no.
+
+00:22:48.600 --> 00:22:53.360
+It really is like I did some simulations and it starts
+
+00:22:53.360 --> 00:22:56.480
+getting interesting when we're talking kilometre or more.
+
+00:22:57.080 --> 00:22:59.880
+And so really it's like when I was flying, it was always the,
+
+00:23:00.080 --> 00:23:02.560
+yeah, if he's one thermal in front of me, it's probably going
+
+00:23:02.560 --> 00:23:06.200
+to gain more leading points than me, so I have to try to close
+
+00:23:06.200 --> 00:23:08.720
+the gap. But once you're always more or
+
+00:23:08.720 --> 00:23:11.120
+less in the same thermal, then it doesn't matter anymore.
+
+00:23:11.720 --> 00:23:16.400
+Oh wow so like lead gaggle, you know, because these days we have
+
+00:23:16.400 --> 00:23:19.480
+more than like a lot of times more than half of the field is
+
+00:23:19.480 --> 00:23:23.080
+landing within 5 minutes. But let's say the 1st 20 or
+
+00:23:23.080 --> 00:23:27.240
+first 30 pilots who are coming in to land in goal, are they
+
+00:23:27.240 --> 00:23:30.240
+more or less having same leading points?
+
+00:23:30.240 --> 00:23:32.640
+I mean if they have managed to stick together for the race.
+
+00:23:32.760 --> 00:23:35.480
+If they always stick together, then yes, they will have the
+
+00:23:35.480 --> 00:23:38.480
+same. But yeah, the differences then
+
+00:23:38.480 --> 00:23:41.320
+are very small and that's what exactly what you see in those
+
+00:23:41.320 --> 00:23:45.320
+races, like at the World Championships where there was
+
+00:23:45.320 --> 00:23:47.560
+this huge gaggle flying the whole course.
+
+00:23:47.920 --> 00:23:52.320
+Then their differences are very minimal in terms of leading
+
+00:23:52.320 --> 00:23:55.200
+points and time points. So they're very close together
+
+00:23:55.200 --> 00:23:59.880
+in the end. I remember this discussion that
+
+00:23:59.880 --> 00:24:05.640
+we were having at PwC Macedonia where Maxine was crushing the
+
+00:24:05.640 --> 00:24:10.680
+day for at least the 70% of the task until he like finally
+
+00:24:10.680 --> 00:24:13.080
+bombed out. And that was task too.
+
+00:24:13.080 --> 00:24:17.320
+And he there somebody said that you have to attack him from the
+
+00:24:17.320 --> 00:24:20.880
+below because if you let him top out the thermals, he's just
+
+00:24:20.880 --> 00:24:23.240
+going to keep on like, you know, he's not going to give you time
+
+00:24:23.240 --> 00:24:25.840
+to breathe. He's going to go hit the core,
+
+00:24:26.080 --> 00:24:29.440
+top it off and boom. But the only way to counter that
+
+00:24:29.600 --> 00:24:33.160
+is to not give him time to breathe, which is like go, go,
+
+00:24:33.200 --> 00:24:35.920
+top it off and then. Yeah, yeah.
+
+00:24:36.160 --> 00:24:38.760
+I mean, that's really, really high, high top level.
+
+00:24:38.760 --> 00:24:42.800
+It hardly gets any more top level than him and Onoha.
+
+00:24:43.680 --> 00:24:47.000
+They really have that game down and it's it's basically then
+
+00:24:47.360 --> 00:24:50.800
+it's no longer about the flying technique or any like that.
+
+00:24:50.800 --> 00:24:52.960
+It's just a mind game and it's just in the air.
+
+00:24:55.840 --> 00:25:00.480
+People who start flying, who do their first competitions, don't
+
+00:25:00.520 --> 00:25:03.320
+worry about that, really slide to goal.
+
+00:25:03.480 --> 00:25:04.960
+That's the only thing that counts.
+
+00:25:05.800 --> 00:25:07.760
+Yeah, I mean, but dream about it.
+
+00:25:07.840 --> 00:25:10.480
+Maybe one day it will count as well if you work hard enough.
+
+00:25:11.560 --> 00:25:14.440
+When we talk about those three games, that's always how
+
+00:25:14.440 --> 00:25:18.560
+basically people who start out, I say play one game, start with
+
+00:25:18.560 --> 00:25:20.720
+the distance game, that's all that matters.
+
+00:25:20.720 --> 00:25:22.200
+Everything else, it doesn't matter.
+
+00:25:22.200 --> 00:25:26.320
+Because if you try to be fast before you can go far, you will
+
+00:25:26.320 --> 00:25:30.720
+not get anywhere. And so, yeah, the first, I don't
+
+00:25:30.720 --> 00:25:33.520
+know, few races keep getting better.
+
+00:25:33.520 --> 00:25:38.040
+Try to just fly as far as possible and celebrate when you
+
+00:25:38.040 --> 00:25:40.640
+make it further than before, celebrated when you make it
+
+00:25:40.640 --> 00:25:43.480
+further than your colleagues, celebrated when you make it to
+
+00:25:43.480 --> 00:25:47.520
+goal and only once you make it consistently the goal.
+
+00:25:47.520 --> 00:25:50.360
+When that's basically not an issue anymore and you're truly
+
+00:25:50.360 --> 00:25:54.680
+going to make it to goal and like 80% of the tasks, then try
+
+00:25:54.680 --> 00:25:57.760
+to speed it up. Try to be fast.
+
+00:25:57.880 --> 00:26:02.280
+Not only make it there, but also be quick and once you're there,
+
+00:26:02.480 --> 00:26:05.560
+you basically automatically with the lead gaggle and then you can
+
+00:26:05.560 --> 00:26:09.440
+start playing the game about leading points and not waiting
+
+00:26:09.440 --> 00:26:15.160
+for them to fly out, but try to fly out front, try to win the
+
+00:26:15.160 --> 00:26:19.760
+lead in front of them. That's a natural progression if
+
+00:26:19.760 --> 00:26:22.760
+you start worrying about optimized lines and leading
+
+00:26:22.760 --> 00:26:25.400
+points before you even make it to goal consistently.
+
+00:26:26.080 --> 00:26:30.080
+Usually pilots like that they, they get, yeah, frustrated and
+
+00:26:30.320 --> 00:26:32.360
+stop, stop with the sport eventually.
+
+00:26:33.800 --> 00:26:37.000
+That's a shame. That's not a good thing to
+
+00:26:37.000 --> 00:26:40.160
+happen, considering how beautiful and fun it is to race
+
+00:26:40.160 --> 00:26:42.760
+with more than 100 humans in the sky.
+
+00:26:44.760 --> 00:26:46.680
+I find it. I find it fascinating here.
+
+00:26:46.880 --> 00:26:49.400
+I mean, imagine, yeah. Absolutely, absolutely.
+
+00:26:49.680 --> 00:26:54.240
+But on the other hand, if you set your goals too high, it's
+
+00:26:54.240 --> 00:26:57.320
+like with any sport, you have to really see the progression.
+
+00:26:57.320 --> 00:27:02.880
+Otherwise it's just a mountain you will never be able to get
+
+00:27:02.880 --> 00:27:06.240
+over. And then you turn around and you
+
+00:27:06.240 --> 00:27:10.240
+go home. And so I think that there is
+
+00:27:10.920 --> 00:27:14.400
+you'd really need to have the right mindset and be aware of we
+
+00:27:14.400 --> 00:27:17.120
+have these three games and let's start with the first one, the
+
+00:27:17.120 --> 00:27:20.640
+simple one. The others ones will come over
+
+00:27:20.640 --> 00:27:23.800
+time. Out of the other two, which is
+
+00:27:23.800 --> 00:27:26.960
+basically speed and leading, which is more or less your
+
+00:27:26.960 --> 00:27:31.360
+ability to go on full bar and control and keep the wing open
+
+00:27:31.720 --> 00:27:33.760
+and still make tactical decisions.
+
+00:27:34.440 --> 00:27:41.000
+You know, because if I'm wrong. Flying fast doesn't mean flying
+
+00:27:41.000 --> 00:27:43.320
+full bar. Flying fast means flying
+
+00:27:43.320 --> 00:27:45.840
+efficient. Not losing time in weak thermals
+
+00:27:45.840 --> 00:27:50.040
+when there's better thermals, Not losing time getting into
+
+00:27:50.040 --> 00:27:57.120
+thermals until it climbs. Finding to the yeah, flying
+
+00:27:57.120 --> 00:28:00.680
+directly to the thermal rather than flying somewhere and then
+
+00:28:00.680 --> 00:28:02.600
+starting to look for thermal while you're low.
+
+00:28:03.640 --> 00:28:08.160
+Knowing when to stop and turn and make altitude and when to
+
+00:28:08.160 --> 00:28:10.120
+say, oh, there's something better in front.
+
+00:28:10.120 --> 00:28:12.800
+I keep going. That is what makes you flying
+
+00:28:12.800 --> 00:28:14.680
+fast. And then the, the, the thing
+
+00:28:14.680 --> 00:28:19.320
+with the speed bar is really just the cherry on the cake when
+
+00:28:19.320 --> 00:28:22.880
+when you have mastered that part and you consistently fly into a
+
+00:28:22.880 --> 00:28:27.760
+thermal, top it out and before it gets weak, leave it and go to
+
+00:28:27.760 --> 00:28:31.760
+the next one. That's when when your speed over
+
+00:28:31.760 --> 00:28:35.880
+the course is high. So it's not about being able to
+
+00:28:35.880 --> 00:28:40.840
+fly top speed in between for 5 minutes and risking the your
+
+00:28:40.840 --> 00:28:43.120
+wind blows up and you need to go down on the reserve.
+
+00:28:43.400 --> 00:28:46.880
+It's about being able to keep a high speed consistently
+
+00:28:46.880 --> 00:28:50.440
+throughout the whole race. And that is, yeah, using
+
+00:28:50.440 --> 00:28:53.160
+thermals. Well, not losing time in
+
+00:28:53.160 --> 00:28:55.520
+thermals. Thank you so much for
+
+00:28:55.520 --> 00:28:58.120
+clarification. I did had that idea in my mind,
+
+00:28:58.120 --> 00:29:02.920
+but maybe I was not able to portrait very clearly in my
+
+00:29:02.920 --> 00:29:06.400
+words. But it seems like this is such a
+
+00:29:06.400 --> 00:29:09.680
+deep topic that we could have an episode for every single one of
+
+00:29:09.680 --> 00:29:11.400
+these, you know, priorities that.
+
+00:29:11.520 --> 00:29:14.080
+Yeah, I mean, that's what what you say is.
+
+00:29:14.080 --> 00:29:18.000
+It is exciting because there's so much room to to start out
+
+00:29:18.000 --> 00:29:20.080
+small and become better and better and better.
+
+00:29:20.640 --> 00:29:22.400
+That's what's so fascinating about it.
+
+00:29:22.880 --> 00:29:27.360
+OK, York, I I really want to look at an example of a real
+
+00:29:27.360 --> 00:29:29.440
+world com, but we'll we'll get to that later.
+
+00:29:29.440 --> 00:29:35.440
+You know, before I, I want to ask you, let's talk about
+
+00:29:35.720 --> 00:29:39.240
+special cases. We have metrology, we have, you
+
+00:29:39.240 --> 00:29:43.440
+know, other factors. We have Level 3 calls for our
+
+00:29:43.440 --> 00:29:45.400
+viewers. Level 3 is basically when the
+
+00:29:45.400 --> 00:29:48.960
+pilots say that the atmospheric conditions are becoming too
+
+00:29:48.960 --> 00:29:51.720
+dangerous to be in the sky. Level 1 and level 2.
+
+00:29:51.840 --> 00:29:54.960
+Level 1 Is is not normal or how does that work?
+
+00:29:55.280 --> 00:30:00.000
+Well, we we say level 1 is yeah, is nothing is nothing is wrong.
+
+00:30:00.000 --> 00:30:03.600
+Everything is fine. I'm happy flying level 2, it's
+
+00:30:03.600 --> 00:30:11.080
+it's demanding but safe and Level 3 is it's getting to be
+
+00:30:11.080 --> 00:30:13.320
+unsafe or there already is unsafe.
+
+00:30:15.000 --> 00:30:18.440
+That's basically that system was introduced to make it simple for
+
+00:30:18.440 --> 00:30:21.480
+pilots to report back their view of the conditions.
+
+00:30:21.920 --> 00:30:25.480
+Because as an organiser, as a race director, you have this
+
+00:30:26.200 --> 00:30:29.440
+situation where you make a guess on how things will be.
+
+00:30:29.680 --> 00:30:32.120
+You set a task, you send everybody out, and then they're
+
+00:30:32.120 --> 00:30:36.480
+spread over quite a big area. And you can't be everywhere.
+
+00:30:36.680 --> 00:30:40.760
+You, you have to basically start collecting information.
+
+00:30:40.760 --> 00:30:42.840
+And the people who are best suited to give you the
+
+00:30:42.840 --> 00:30:44.760
+information are the pilots themselves.
+
+00:30:45.440 --> 00:30:49.960
+But if you, everyone of them was, yeah, giving you a verbose
+
+00:30:49.960 --> 00:30:53.200
+information about how they feel and how that last thermal was
+
+00:30:53.200 --> 00:30:56.480
+and how the wind is and all, we would never end.
+
+00:30:57.000 --> 00:31:00.320
+And so that's why we introduced this level 1-2 or three.
+
+00:31:00.480 --> 00:31:04.280
+And by now there is even apps where our pilots can tell us
+
+00:31:04.280 --> 00:31:08.000
+right away with one click on the phone what the level is they
+
+00:31:08.440 --> 00:31:11.320
+they experience. And we even see where they are
+
+00:31:11.320 --> 00:31:14.600
+when they report that. So we can complete our picture
+
+00:31:14.600 --> 00:31:17.840
+of the environment like that. What app is this that I'm not
+
+00:31:17.840 --> 00:31:19.400
+aware? Of oh, that's something we have
+
+00:31:19.400 --> 00:31:21.880
+for the Swiss, the Swiss competition.
+
+00:31:21.880 --> 00:31:24.880
+Share it with the world, Sir, Make it a better place.
+
+00:31:25.560 --> 00:31:27.720
+Or is it your copyright or you want to keep it secret?
+
+00:31:27.720 --> 00:31:32.360
+No, no, no, no, no, no, no. That's something similar is
+
+00:31:32.360 --> 00:31:36.080
+going on with the new trackers. You can do it there in the World
+
+00:31:36.080 --> 00:31:40.120
+Cup with the old, the fly master devices that were live tracking,
+
+00:31:40.360 --> 00:31:42.080
+you were able to give feedback there.
+
+00:31:42.360 --> 00:31:48.840
+So being able to not only tell pilots that the task is stopped,
+
+00:31:48.840 --> 00:31:52.760
+but before that ask pilots for feedback on what is going on is
+
+00:31:52.760 --> 00:31:58.440
+really, really valuable for for the the race director who to
+
+00:31:58.440 --> 00:32:02.000
+judge if the situation is still safe to continue the race or
+
+00:32:02.400 --> 00:32:06.520
+talking about special cases, decide that the race is stopped.
+
+00:32:07.160 --> 00:32:09.840
+That's basically he has only two options, right?
+
+00:32:09.840 --> 00:32:13.840
+He can, when once the first pilot has launched, the race is
+
+00:32:13.840 --> 00:32:17.880
+on, it will run. And the only thing he can do is
+
+00:32:17.880 --> 00:32:21.160
+let it run until everybody's on the ground or he can say the
+
+00:32:21.160 --> 00:32:26.880
+race is stopped now and then, Yeah, everybody has to decide on
+
+00:32:26.880 --> 00:32:29.200
+their own if, where, where to land, what to do.
+
+00:32:29.600 --> 00:32:32.360
+But the race is no longer running, so there's no point in
+
+00:32:32.360 --> 00:32:35.800
+pushing forward anymore. So when the task is stopped or
+
+00:32:35.800 --> 00:32:39.040
+the race is stopped because of a Level 3 call, that means
+
+00:32:39.120 --> 00:32:41.000
+everybody gets 0 points for that day.
+
+00:32:41.600 --> 00:32:45.440
+Nope, no, no, we got over that. That was for a while, especially
+
+00:32:45.440 --> 00:32:48.520
+in the laps time. I, I was in the World Cup once
+
+00:32:48.520 --> 00:32:51.080
+where I was leading in the laps time race and then they stopped
+
+00:32:51.080 --> 00:32:53.000
+at 5 minutes before we crossed the goal line.
+
+00:32:53.000 --> 00:32:56.880
+And at that time in the World Cup, a stop elapsed time was
+
+00:32:56.880 --> 00:32:59.280
+still a zero. I was not happy.
+
+00:33:00.200 --> 00:33:04.280
+And then we changed the rules, made some adjustments to make it
+
+00:33:04.280 --> 00:33:07.120
+possible. So even stopped tasks even
+
+00:33:07.120 --> 00:33:11.720
+elapsed as time trials, stopped time trials can be scored.
+
+00:33:12.120 --> 00:33:14.120
+So no, we don't throw that task away.
+
+00:33:14.120 --> 00:33:19.120
+We, we score it. We just look at, apart from
+
+00:33:19.120 --> 00:33:23.440
+everything else that we look at, how far did pilots get, how fast
+
+00:33:23.440 --> 00:33:27.000
+were they in goal to determine how many points we hand out.
+
+00:33:27.280 --> 00:33:32.360
+We also look at how basically what degree is the task already
+
+00:33:32.360 --> 00:33:35.320
+decided. You know, when 90% of the field
+
+00:33:35.320 --> 00:33:40.760
+is already landed and the field is really widely spread out, we
+
+00:33:40.760 --> 00:33:44.520
+say, yeah, that task is done. That wouldn't have changed much
+
+00:33:44.520 --> 00:33:46.600
+if we had it let it run to the end.
+
+00:33:47.000 --> 00:33:50.640
+So we score it very highly. Whereas if everybody's still
+
+00:33:50.640 --> 00:33:54.920
+bunched up in one thermal, everybody's still flying, then
+
+00:33:54.920 --> 00:33:57.080
+we say, well, that was not decided yet.
+
+00:33:57.080 --> 00:34:01.480
+So we can't really give that task too many points because
+
+00:34:02.520 --> 00:34:05.800
+things could have changed considerably if we hadn't let it
+
+00:34:05.800 --> 00:34:08.320
+run. And so we are just like that,
+
+00:34:08.320 --> 00:34:10.960
+but we still score the task and give points.
+
+00:34:11.679 --> 00:34:15.440
+Just out of curiosity, I believe a lot of this is software
+
+00:34:15.440 --> 00:34:18.400
+controlled where there are set algorithms for calculations and
+
+00:34:18.400 --> 00:34:20.280
+formulas which decide who's getting.
+
+00:34:20.280 --> 00:34:23.880
+So it's completely fair, you know, nobody can point out
+
+00:34:23.880 --> 00:34:26.880
+discrepancies in the system where it favours 1 pilot.
+
+00:34:27.280 --> 00:34:30.600
+But I mean it could be a type but like one specific pilot.
+
+00:34:30.600 --> 00:34:34.360
+But let's say when the human element comes, so how much of
+
+00:34:34.360 --> 00:34:38.280
+this there is a human element? Like for example if we have to
+
+00:34:38.280 --> 00:34:41.600
+say how many decisions are being made by human which could
+
+00:34:41.600 --> 00:34:46.000
+actually cause some sort of a favourism if if at all.
+
+00:34:47.239 --> 00:34:51.440
+You mean in the final results the the the scores that pilots
+
+00:34:51.440 --> 00:34:54.120
+get in the end? More or less for example, this
+
+00:34:54.159 --> 00:34:58.640
+day that you're saying if the field is spread wide or the
+
+00:34:58.680 --> 00:35:00.240
+field. No, that's all calculated.
+
+00:35:00.240 --> 00:35:02.960
+There is 0 human human factor in there.
+
+00:35:02.960 --> 00:35:09.120
+That's all math. So yeah, apart from penalties.
+
+00:35:09.120 --> 00:35:17.320
+Penalties are usually defined by the race director and there,
+
+00:35:17.800 --> 00:35:21.080
+yeah, some, there's some human factor there.
+
+00:35:21.080 --> 00:35:24.480
+They may decide it's a 0 for today, or they may decide, yeah,
+
+00:35:24.480 --> 00:35:28.760
+we we just cross out 50% of the offending pilots score.
+
+00:35:29.280 --> 00:35:32.960
+But that's really the only place where some human interaction
+
+00:35:32.960 --> 00:35:34.640
+takes place and affects the score.
+
+00:35:34.840 --> 00:35:39.440
+Everything else is purely math, purely calculated based on the
+
+00:35:39.440 --> 00:35:41.440
+track that we receive, of course.
+
+00:35:41.440 --> 00:35:45.080
+So ultimately, it is the pilot's actions that create the tracks
+
+00:35:45.080 --> 00:35:48.440
+that create the score. I was literally going to come to
+
+00:35:48.440 --> 00:35:53.880
+that next, like the track that is the key here, you know?
+
+00:35:53.880 --> 00:35:57.640
+So yeah. Has it ever happened just out of
+
+00:35:57.640 --> 00:36:02.480
+curiosity that tampered tracks? Or can they be even tampered by
+
+00:36:02.720 --> 00:36:04.640
+somebody learner or somebody deeky?
+
+00:36:04.760 --> 00:36:08.360
+Where? Yeah, not so easily because I
+
+00:36:08.760 --> 00:36:13.280
+mean they are the ITC files that everybody uses that we also
+
+00:36:13.280 --> 00:36:16.280
+upload the next contest for, for our cross country flying.
+
+00:36:17.200 --> 00:36:21.640
+In theory you would be able to put different to yeah, put
+
+00:36:21.640 --> 00:36:24.800
+different coordinates in there because all they are is every
+
+00:36:24.800 --> 00:36:28.480
+lines as this is the point where this pilot was at this time at
+
+00:36:28.480 --> 00:36:31.280
+this altitude. So you could change that.
+
+00:36:32.360 --> 00:36:35.520
+But the effort to do that is really high.
+
+00:36:35.960 --> 00:36:40.240
+And the files themselves have some temper proving inside.
+
+00:36:40.240 --> 00:36:44.640
+So with as soon as you change 1 digit in there, the scorekeeper
+
+00:36:44.640 --> 00:36:48.040
+will get an alarm when you try, when he tries to evaluate that
+
+00:36:48.240 --> 00:36:53.240
+file and he will not accept it. So of course there have been
+
+00:36:53.240 --> 00:36:56.360
+attempts to tamper, but those were usually found out.
+
+00:36:57.600 --> 00:36:59.880
+Of course, we only know about the ones we found out.
+
+00:37:00.240 --> 00:37:07.040
+On the other hand, my theory is our sport is happening in closed
+
+00:37:07.040 --> 00:37:09.560
+space. We usually we see each other.
+
+00:37:10.040 --> 00:37:13.800
+So if suddenly somebody is supposed to have won the task
+
+00:37:13.800 --> 00:37:16.360
+when everybody knows, well, he was flying behind me the whole
+
+00:37:16.360 --> 00:37:20.160
+day, that will come out. You cannot cheat yourself in
+
+00:37:20.160 --> 00:37:24.640
+front by modifying your task or for a rear track final sort I.
+
+00:37:25.040 --> 00:37:29.560
+Mean that's what I'm wondering, like how would you cheat in
+
+00:37:29.560 --> 00:37:31.480
+this? Like would you reduce the timing
+
+00:37:31.480 --> 00:37:33.120
+that you have compared to the other birds?
+
+00:37:33.120 --> 00:37:35.200
+No, you can't. You basically have to give
+
+00:37:35.200 --> 00:37:38.160
+yourself a different position all along the flight so that you
+
+00:37:38.160 --> 00:37:41.280
+end up being goal faster. Yeah.
+
+00:37:43.560 --> 00:37:46.640
+Interesting. It's really and the top of that,
+
+00:37:46.680 --> 00:37:48.800
+there's just nothing to win. So why do it?
+
+00:37:48.800 --> 00:37:51.320
+We do this for fun because it's exciting.
+
+00:37:52.880 --> 00:37:55.920
+Even in the World Championships you will not win more than a
+
+00:37:55.920 --> 00:37:58.840
+flower pot, so why would anybody want to do that?
+
+00:37:59.440 --> 00:38:03.120
+Oh man, that just sounds very sad a world championship and a
+
+00:38:03.120 --> 00:38:06.400
+flower pot for a price for fuck's sake that has to change.
+
+00:38:08.480 --> 00:38:12.520
+Let's talk about the rule breaches that one might
+
+00:38:12.800 --> 00:38:17.000
+encounter such as early start or you know, missing the turn point
+
+00:38:17.000 --> 00:38:20.320
+or you know, the out of task cloud flying airspace.
+
+00:38:20.320 --> 00:38:25.560
+So just like what is unsupported behaviour in an in the air and
+
+00:38:25.560 --> 00:38:26.960
+on the ground? Nothing like.
+
+00:38:27.080 --> 00:38:29.440
+OK, So what? The points you mentioned are not
+
+00:38:29.440 --> 00:38:31.960
+really unsupported if I start too early.
+
+00:38:31.960 --> 00:38:35.720
+Remember the task from before? Let's put it like this.
+
+00:38:37.920 --> 00:38:42.640
+Like I said, we start for a race, we are all waiting here
+
+00:38:43.120 --> 00:38:47.120
+and yeah, it can happen that somebody gets so excited and
+
+00:38:47.120 --> 00:38:52.520
+forgets that the start is at 12:30 and they cross the line at
+
+00:38:52.520 --> 00:38:56.640
+12:29 and then fly the whole task.
+
+00:38:58.160 --> 00:39:02.400
+And sad news, they only get scored for distance from the
+
+00:39:02.400 --> 00:39:06.480
+start to from launch to the start.
+
+00:39:09.480 --> 00:39:12.680
+Let me put this another caller. So they get scored for this.
+
+00:39:12.680 --> 00:39:15.520
+If they jumped too early, they do the start.
+
+00:39:16.240 --> 00:39:21.560
+If they notice it, if they notice it out here, come back
+
+00:39:21.640 --> 00:39:24.840
+and then fly the task, they get scored for the whole distance.
+
+00:39:24.880 --> 00:39:28.040
+But if they start too early and then fly it all as far as they
+
+00:39:28.040 --> 00:39:31.600
+want, they only get scored scored for this party.
+
+00:39:33.120 --> 00:39:36.840
+But that's not a rule breach. It's just a mistake the pilot
+
+00:39:36.840 --> 00:39:39.120
+made. And it's the same thing if they
+
+00:39:39.120 --> 00:39:42.080
+miss a turn point. So if they turn around too
+
+00:39:42.080 --> 00:39:44.360
+early, like now let's put it here.
+
+00:39:44.760 --> 00:39:49.200
+If instead of going all the way, have one track point in the IGC
+
+00:39:49.200 --> 00:39:51.560
+inside the cylinder and then go back.
+
+00:39:52.160 --> 00:39:58.720
+If they instead turn around too early, then the distance only
+
+00:39:58.720 --> 00:40:01.760
+counts to this point because they didn't get into this
+
+00:40:01.760 --> 00:40:04.120
+control zone. So we only count them to this
+
+00:40:04.120 --> 00:40:06.080
+distance. And even if they fly further all
+
+00:40:06.080 --> 00:40:09.560
+the way to goal, that doesn't. They don't get scored for that,
+
+00:40:10.280 --> 00:40:13.600
+they are only scored to this point where they missed the
+
+00:40:13.600 --> 00:40:16.280
+turn. Point the the distance is like
+
+00:40:16.280 --> 00:40:17.760
+let's say it would be tiny, right?
+
+00:40:17.760 --> 00:40:20.120
+Nobody would do this deliberately and even if they do
+
+00:40:20.120 --> 00:40:23.880
+miss, it would be off by like few 100 meters at Max or like
+
+00:40:23.880 --> 00:40:26.000
+less than 50 meters or something so.
+
+00:40:26.000 --> 00:40:30.880
+Yeah, we've had cases of 1m. Sounds like a heartbreak for the
+
+00:40:30.880 --> 00:40:33.400
+pilot. Yeah, yeah, it really hurts you
+
+00:40:33.400 --> 00:40:36.040
+also as a scorer if you have to give somebody a bad score
+
+00:40:36.040 --> 00:40:38.520
+because they missed the turn point for 1m.
+
+00:40:38.720 --> 00:40:41.120
+But I mean, we have a tolerance in here.
+
+00:40:41.120 --> 00:40:44.080
+We actually don't measure exactly at this.
+
+00:40:44.400 --> 00:40:48.440
+We give you at least 5 meters and if it's big cylinders even
+
+00:40:48.440 --> 00:40:53.480
+more where we say, well, if you got it wrong for whatever
+
+00:40:53.480 --> 00:40:57.360
+reason, usually the yeah, your, your instrument calculated the
+
+00:40:57.360 --> 00:41:01.440
+distance a little different or whatever, we give you really a
+
+00:41:01.440 --> 00:41:06.080
+margin of error and only if you're outside of that margin of
+
+00:41:06.080 --> 00:41:08.360
+error, then yeah, sorry, you didn't make it there.
+
+00:41:08.360 --> 00:41:10.040
+So we can't score you for the whole way.
+
+00:41:11.720 --> 00:41:17.240
+It happens not so often actually, these instruments are
+
+00:41:17.240 --> 00:41:20.680
+quite good. We record a point every second.
+
+00:41:20.680 --> 00:41:26.320
+So before when when we started out with GPS, the the memory was
+
+00:41:26.320 --> 00:41:29.400
+so small, we only had a point every every 30 seconds.
+
+00:41:29.760 --> 00:41:33.080
+So it could happen. You went in and you went out and
+
+00:41:33.240 --> 00:41:37.120
+while the time you during the time you were in the instrument
+
+00:41:37.120 --> 00:41:41.240
+didn't record a point, so you were not in the turn point,
+
+00:41:41.720 --> 00:41:43.920
+supposedly that could happen at that time.
+
+00:41:43.920 --> 00:41:47.560
+But nowadays, where we record everything in one second, that
+
+00:41:47.560 --> 00:41:51.960
+mess, that doesn't happen. Just to illustrate this example
+
+00:41:51.960 --> 00:41:56.320
+better, let's assume that you are going to get 100 points
+
+00:41:57.080 --> 00:42:02.320
+added to your task score when you actually cross the line.
+
+00:42:02.840 --> 00:42:07.120
+But if you miss it by 10 metres, can you give an idea?
+
+00:42:07.120 --> 00:42:10.800
+Like how many out of hundreds? Do you still get it really
+
+00:42:10.800 --> 00:42:14.680
+depends on where you go because like I said, we play the
+
+00:42:14.840 --> 00:42:17.000
+distance game. We now talk about the distance
+
+00:42:17.000 --> 00:42:22.120
+game and it really depends on which turn point you miss.
+
+00:42:22.120 --> 00:42:27.680
+Because if you flew already, if you flew already to here, but
+
+00:42:27.680 --> 00:42:31.160
+you miss this one, you already covered quite a bit of distance.
+
+00:42:31.480 --> 00:42:34.360
+So you get all this distance and you get the distance points for
+
+00:42:34.360 --> 00:42:37.240
+that. But if you miss the the first
+
+00:42:37.240 --> 00:42:42.000
+one here, obviously you covered less distance until you made
+
+00:42:42.000 --> 00:42:44.280
+that mistake. So you get to accordingly less
+
+00:42:44.840 --> 00:42:48.560
+fewer distance points. So let's say there are two turn
+
+00:42:48.560 --> 00:42:50.680
+points, and then there's start, and then there's gold.
+
+00:42:51.040 --> 00:42:55.720
+So if you go to turn point #1 you miss it.
+
+00:42:55.720 --> 00:43:00.880
+You go to turn point #2 the points that you get is for the
+
+00:43:00.880 --> 00:43:05.200
+journey from start gate to turn .1 or just till the start gate.
+
+00:43:05.880 --> 00:43:11.680
+No, all the way to here. OK, but then no further because
+
+00:43:11.760 --> 00:43:14.200
+you're supposed to go inside the cylinder.
+
+00:43:14.200 --> 00:43:16.200
+You didn't, so that's the distance you get.
+
+00:43:16.480 --> 00:43:19.960
+So whichever turn point you missed, the distance point stop
+
+00:43:19.960 --> 00:43:21.920
+there. Yeah, exactly.
+
+00:43:21.960 --> 00:43:23.960
+Makes sense, I thought that it is.
+
+00:43:24.040 --> 00:43:26.880
+You are just missing out on the few meters that you're missing
+
+00:43:27.640 --> 00:43:29.240
+from the points from. Those, No.
+
+00:43:30.080 --> 00:43:33.160
+Then you can actually calculate. Well, if I don't fly all the way
+
+00:43:33.160 --> 00:43:36.200
+there and maybe sink out, I turn around now and I just miss a
+
+00:43:36.240 --> 00:43:38.520
+few. Yeah, yeah, This point, Nope,
+
+00:43:38.600 --> 00:43:41.760
+you have to go in, otherwise everything you do afterwards is
+
+00:43:41.760 --> 00:43:46.800
+pointless. Got it, the tolerance.
+
+00:43:47.360 --> 00:43:52.760
+This happened with me in PwC Macedonia where I had gliders
+
+00:43:52.760 --> 00:43:57.240
+above me, gliders below me with a separation of almost 100 to
+
+00:43:57.240 --> 00:43:59.560
+200 meters. So nothing too huge that it
+
+00:43:59.560 --> 00:44:04.640
+could create a false perception. But I clearly saw some wings
+
+00:44:04.640 --> 00:44:07.720
+turning before me at the same turn point and some wings
+
+00:44:07.720 --> 00:44:09.720
+turning after me at the same turn point.
+
+00:44:10.080 --> 00:44:13.000
+But my I turned when my instrument said that yes it is
+
+00:44:13.000 --> 00:44:15.600
+checked. So why what is happening here?
+
+00:44:16.560 --> 00:44:18.640
+So there are several factors playing into it.
+
+00:44:18.640 --> 00:44:23.520
+One is your GPS and the other pilots GPS.
+
+00:44:24.120 --> 00:44:28.240
+Even if you put them in the exact same spot, they may still
+
+00:44:28.240 --> 00:44:32.560
+have different positions up to 2030 meters difference.
+
+00:44:33.200 --> 00:44:36.800
+And if everybody flies by their instrument, it doesn't matter
+
+00:44:36.800 --> 00:44:40.400
+that they they they sit apart a little bit because you still
+
+00:44:40.400 --> 00:44:44.920
+have to cover the full distance. But yeah, that can lead to that
+
+00:44:44.920 --> 00:44:49.400
+situation that you describe where you're 500 meters to that
+
+00:44:49.400 --> 00:44:53.280
+point is in a different spot in the real world than the other
+
+00:44:53.280 --> 00:44:55.240
+pilots. So they turn around quicker.
+
+00:44:56.000 --> 00:45:00.000
+But the other thing is that for I talked about the tolerance and
+
+00:45:00.000 --> 00:45:04.320
+especially for big cylinders, it used to be, we changed that a
+
+00:45:04.320 --> 00:45:07.120
+little now for this year. But it used to be that this
+
+00:45:07.120 --> 00:45:13.880
+tolerance zone that we created to make it sure that different
+
+00:45:13.880 --> 00:45:16.960
+softwares still see you in inside the cylinder.
+
+00:45:17.960 --> 00:45:22.080
+It could be a few 100 meters, let's say 100 meters.
+
+00:45:22.680 --> 00:45:25.720
+And this is something we created.
+
+00:45:25.720 --> 00:45:32.480
+So pilots could go right here and be safe even if their
+
+00:45:32.480 --> 00:45:34.960
+instrument showed them. Yeah.
+
+00:45:34.960 --> 00:45:37.400
+So as soon as the instrument showed them that they were
+
+00:45:37.400 --> 00:45:40.600
+inside the cylinder, they could really rely on that.
+
+00:45:40.600 --> 00:45:42.840
+The scoring software would also see it that way.
+
+00:45:43.280 --> 00:45:46.640
+But now what we saw is that pilots know about this tolerance
+
+00:45:46.640 --> 00:45:51.400
+zone and actually turn around here trusting that they don't
+
+00:45:51.400 --> 00:45:55.240
+need the tolerance, that their position will be accurate
+
+00:45:55.240 --> 00:45:58.320
+enough. And turns out our instruments
+
+00:45:58.320 --> 00:46:01.200
+are so good that yes, indeed, most of the time we don't need
+
+00:46:01.200 --> 00:46:03.400
+the tolerance. And that's why we made it much,
+
+00:46:03.400 --> 00:46:07.160
+much smaller. It will not go completely away,
+
+00:46:07.160 --> 00:46:10.920
+but it will go towards the five meters I mentioned before, even
+
+00:46:10.920 --> 00:46:13.680
+on big cylinders. And then, yeah, it doesn't
+
+00:46:13.680 --> 00:46:16.080
+matter anymore where you turn. It's everybody's at the same
+
+00:46:16.080 --> 00:46:18.760
+time. But that's something we really
+
+00:46:18.760 --> 00:46:23.480
+observed a few years back. The tolerance was even double
+
+00:46:23.480 --> 00:46:26.360
+what it was now. And that's when we saw people
+
+00:46:26.360 --> 00:46:31.600
+start playing with that, turning early, winning, you know, up to
+
+00:46:31.600 --> 00:46:34.080
+200 meters. I mean, if you turn here instead
+
+00:46:34.080 --> 00:46:38.640
+of here, you win 200 meters on the people who fly actually into
+
+00:46:38.640 --> 00:46:40.480
+the cylinder according to their instrument.
+
+00:46:41.080 --> 00:46:44.840
+But doesn't the instrument give you a ping or something which is
+
+00:46:44.840 --> 00:46:48.880
+a necessity to target because? Yeah, there is intern
+
+00:46:48.880 --> 00:46:51.400
+instruments who actually also know about this tolerance and
+
+00:46:51.400 --> 00:46:55.000
+allow you to burn early and tell you you got it.
+
+00:46:55.560 --> 00:46:57.440
+God damn I never knew this existed.
+
+00:46:58.000 --> 00:47:02.240
+OK is that is that where tech doping might come into
+
+00:47:02.240 --> 00:47:04.160
+paragliding? That's a very like I never
+
+00:47:04.160 --> 00:47:07.600
+thought paragliding. It's it doesn't hurt to know
+
+00:47:07.600 --> 00:47:12.080
+about all your equipment and how to best use it in competitions.
+
+00:47:13.320 --> 00:47:15.720
+Once you're at a certain level. No, don't.
+
+00:47:15.720 --> 00:47:17.440
+Don't worry about that when you're still playing the
+
+00:47:17.440 --> 00:47:23.880
+distance game, but when you're really already pretty good and
+
+00:47:23.880 --> 00:47:27.280
+the speed game and starting to get into the leading game, then
+
+00:47:27.280 --> 00:47:28.720
+things like that can be important.
+
+00:47:29.760 --> 00:47:33.040
+Got it right. You're, you know, before we move
+
+00:47:33.040 --> 00:47:35.920
+on to the last part of the show where I really want to zero in
+
+00:47:35.920 --> 00:47:40.040
+on like the balancing of competition tactics and postal
+
+00:47:40.040 --> 00:47:43.880
+safety and sportive risks versus transported risk.
+
+00:47:44.280 --> 00:47:49.240
+I want to tell our viewers that how are rankings and daily
+
+00:47:49.240 --> 00:47:53.920
+scores calculated? Because we do have handicaps, we
+
+00:47:53.920 --> 00:48:00.080
+do have MRT and then we do have like discard or some of all like
+
+00:48:00.200 --> 00:48:04.200
+FTV, which I've heard. So let's let's try and give our
+
+00:48:04.200 --> 00:48:08.200
+viewers an illustration of these terminologies.
+
+00:48:08.200 --> 00:48:12.720
+And to our viewers, if you have any questions, please do feel
+
+00:48:12.720 --> 00:48:15.960
+free to reach out to me or York because this is a bit of a
+
+00:48:15.960 --> 00:48:18.520
+complicated topic and things can arise.
+
+00:48:18.520 --> 00:48:21.440
+Or feel free to drop in what you think in the comments below
+
+00:48:21.480 --> 00:48:24.120
+because we will go ahead and check that as well.
+
+00:48:24.120 --> 00:48:27.280
+But yeah, do you want to share your screen, York?
+
+00:48:27.920 --> 00:48:33.560
+Yeah, I'm working on it 2nd, so here we go.
+
+00:48:34.000 --> 00:48:38.000
+I feel like we are going to open a Pandora's box of WPRS.
+
+00:48:38.000 --> 00:48:40.720
+This has been the biggest mystery of my flying life.
+
+00:48:40.720 --> 00:48:43.480
+Yeah, let's let's keep that to the S rest.
+
+00:48:43.480 --> 00:48:44.920
+So that's the going to be the dessert.
+
+00:48:44.960 --> 00:48:49.600
+Let's start with daily scores. So like we talked about tasks,
+
+00:48:49.920 --> 00:48:53.520
+we talked about the three games we play and at the end of the
+
+00:48:53.520 --> 00:48:56.480
+day, at the end of the task, we get a task result.
+
+00:48:56.720 --> 00:49:01.760
+And what we show here, I hope you can see it, are the task
+
+00:49:01.760 --> 00:49:06.040
+results of the, I think this is task one of the World
+
+00:49:06.040 --> 00:49:10.240
+Championships. And yeah, like you say, you, you
+
+00:49:10.280 --> 00:49:13.600
+look at this and yeah, what happened, what what was going
+
+00:49:13.600 --> 00:49:17.440
+on. So let's look at the information
+
+00:49:17.440 --> 00:49:21.600
+here a little real quick. In the front part is quite
+
+00:49:21.600 --> 00:49:24.200
+understandable. We have who is in which rank?
+
+00:49:24.200 --> 00:49:26.960
+What is their pilot ID? Every pilot has an ID, so we
+
+00:49:26.960 --> 00:49:32.400
+know who we talk about, male or female, the nationality or
+
+00:49:32.400 --> 00:49:34.600
+Collider or they fly, who are the sponsors.
+
+00:49:34.680 --> 00:49:36.600
+That's all the pilot information.
+
+00:49:37.240 --> 00:49:41.960
+And then we come to the race and we mentioned it before, we
+
+00:49:41.960 --> 00:49:46.560
+explained how we count the time from the start to the end of
+
+00:49:46.560 --> 00:49:49.080
+speed section. So here it's only 1.
+
+00:49:49.240 --> 00:49:53.920
+So it's start of speed and end of speed section.
+
+00:49:54.880 --> 00:49:59.720
+So we see here this pilot started at 1330 and actually if
+
+00:49:59.720 --> 00:50:03.320
+he looked down, they all started at 1330 because it was a race.
+
+00:50:03.360 --> 00:50:06.440
+So the start time for everybody was 1330.
+
+00:50:06.680 --> 00:50:11.040
+And no matter how much later after 1330 they crossed the
+
+00:50:11.040 --> 00:50:13.560
+line, the start time for them is 1330.
+
+00:50:14.480 --> 00:50:18.280
+And then we see for every of them when they actually crossed
+
+00:50:18.280 --> 00:50:23.240
+the end of speed, that's the cylinder where we stop the time
+
+00:50:23.640 --> 00:50:25.520
+and then they still have to fly to goal.
+
+00:50:26.200 --> 00:50:29.400
+And here you already see something interesting that about
+
+00:50:29.400 --> 00:50:33.400
+this 2 is in second place. He was actually 76 seconds first
+
+00:50:33.400 --> 00:50:36.480
+before on over at the end of speed section.
+
+00:50:37.320 --> 00:50:40.800
+Why didn't he win? Remember, we play 3 different
+
+00:50:40.800 --> 00:50:43.720
+games. So yeah, the the next column
+
+00:50:43.720 --> 00:50:48.480
+just calculates end of speed section minus start of speed
+
+00:50:48.480 --> 00:50:50.400
+section. So we see how long they actually
+
+00:50:50.400 --> 00:50:55.600
+took for the speed section and we calculate how fast they are
+
+00:50:55.600 --> 00:50:58.440
+on the speed section. So we see here the average, the
+
+00:50:58.440 --> 00:51:03.360
+speed of, but this was 28.52 kilometers an hour for the speed
+
+00:51:03.360 --> 00:51:05.400
+section. How far did he get?
+
+00:51:05.400 --> 00:51:09.360
+Now we're looking at the distance game 67.3.
+
+00:51:09.400 --> 00:51:12.320
+Of course, everybody else we see on this screen also, because
+
+00:51:12.320 --> 00:51:15.200
+they all flew into goal and that's the maximum distance you
+
+00:51:15.200 --> 00:51:18.520
+can fly. And now we look at the points.
+
+00:51:18.520 --> 00:51:22.080
+Now we look at the points of the three different games.
+
+00:51:22.640 --> 00:51:26.400
+We have distance points. And again, because everybody
+
+00:51:26.400 --> 00:51:28.080
+here on this screen flew the same.
+
+00:51:28.080 --> 00:51:30.960
+There is further down there the people who didn't make it into
+
+00:51:30.960 --> 00:51:34.320
+goal, but everybody who flew to goal, who flew the 67.3
+
+00:51:34.320 --> 00:51:38.000
+kilometers, they get 542.3 points.
+
+00:51:38.440 --> 00:51:43.200
+So they all they have the basically they all win all
+
+00:51:43.200 --> 00:51:45.520
+together. They all win the distance game.
+
+00:51:45.680 --> 00:51:50.520
+There is no distinction there. Now let's skip over this one and
+
+00:51:50.520 --> 00:51:54.560
+look at the speed, the speed game, which is expressed in time
+
+00:51:54.560 --> 00:52:00.720
+points where the faster pilot is the shorter the time for the
+
+00:52:00.720 --> 00:52:02.600
+speed section, the more points they get.
+
+00:52:02.600 --> 00:52:09.480
+And we see here up this he got 327.7 and Onora who was 7
+
+00:52:09.480 --> 00:52:16.000
+seconds later, he got yeah, more than a pointless, so 326.4.
+
+00:52:16.840 --> 00:52:21.240
+But we play a third game. We were we play the leading game
+
+00:52:21.480 --> 00:52:23.920
+and that's the the middle column here.
+
+00:52:24.640 --> 00:52:30.200
+And here you can see that while Baptist won 111.7 leading
+
+00:52:30.200 --> 00:52:34.080
+points, somewhere along the way he must have fallen a little
+
+00:52:34.080 --> 00:52:38.360
+behind Onura. Onura wins 115.2, and then when
+
+00:52:38.360 --> 00:52:43.480
+we add up those three points, Onura still has 2.2 points more
+
+00:52:43.480 --> 00:52:46.280
+than but this and wins today. Does that make sense?
+
+00:52:48.120 --> 00:52:52.800
+It's fascinating and I'm finally like able to read a score sheet
+
+00:52:52.800 --> 00:52:56.760
+from a paragliding competition. So yes, OK it makes complete
+
+00:52:56.760 --> 00:53:01.520
+sense but that is like so damn close I can see a difference of
+
+00:53:02.120 --> 00:53:05.560
+like almost a few meters is costing a task win.
+
+00:53:06.360 --> 00:53:07.320
+Wow. Yeah.
+
+00:53:07.320 --> 00:53:09.440
+I mean, it's we, we don't really know.
+
+00:53:09.440 --> 00:53:13.440
+And that's that's kind of where the third game is really
+
+00:53:13.440 --> 00:53:15.840
+complicated and technical. The leading points.
+
+00:53:16.120 --> 00:53:20.640
+We don't really see what happened and why Unova has,
+
+00:53:20.880 --> 00:53:25.560
+yeah, 4 points more in leading than than everybody else.
+
+00:53:26.320 --> 00:53:28.440
+What happened there? I mean, we can only imagine.
+
+00:53:28.440 --> 00:53:32.400
+Or we can go back on the track, the the the tracking and replay
+
+00:53:32.400 --> 00:53:37.120
+it and see how at one point he got a big lead, probably right
+
+00:53:37.120 --> 00:53:40.120
+about in the middle of the task where it counts the most.
+
+00:53:40.720 --> 00:53:44.960
+He of course at the level he is flying, he knows that he knows
+
+00:53:44.960 --> 00:53:49.200
+exactly when is the right moment to go out and create the lead
+
+00:53:49.200 --> 00:53:53.040
+like that and then allow the gaggle to catch him again, fly
+
+00:53:53.040 --> 00:53:56.600
+more relaxed all the way into goal, even allow somebody else
+
+00:53:56.600 --> 00:54:00.040
+to pass him in the end because he had that lead in between.
+
+00:54:00.520 --> 00:54:04.440
+But that's really like top, top, top level.
+
+00:54:04.600 --> 00:54:06.960
+That's not everybody will fly like that.
+
+00:54:08.240 --> 00:54:12.120
+Wow. OK, so this is basically your
+
+00:54:12.120 --> 00:54:14.240
+individual score for a day. Correct.
+
+00:54:14.960 --> 00:54:18.280
+Yeah. Should we look at the cumulative
+
+00:54:18.280 --> 00:54:21.480
+score at the end of comp and maybe then we can also talk
+
+00:54:21.480 --> 00:54:24.760
+about discord? So that was about the the
+
+00:54:24.760 --> 00:54:30.880
+individual day tasks task results that we looked at and
+
+00:54:31.200 --> 00:54:33.680
+you asked us about the competition results.
+
+00:54:33.680 --> 00:54:38.480
+So now let's look, take a look at the competition results of
+
+00:54:38.480 --> 00:54:42.120
+that same competition, actually the World Championship in
+
+00:54:42.120 --> 00:54:46.840
+Brazil. And these are the results after
+
+00:54:47.040 --> 00:54:49.800
+8 tasks. How do I know that?
+
+00:54:50.160 --> 00:54:54.440
+I see here it goes from T1 to T8T8 is the last task.
+
+00:54:54.440 --> 00:55:00.400
+So there were eight tasks flown. And we see that it's not just
+
+00:55:00.400 --> 00:55:03.120
+the numbers, the scores of the tasks.
+
+00:55:03.120 --> 00:55:05.680
+These are the numbers we saw before of task one.
+
+00:55:06.000 --> 00:55:09.760
+Some of them are crossed out, sometimes we have other numbers
+
+00:55:09.760 --> 00:55:11.480
+in there. Why is that?
+
+00:55:14.520 --> 00:55:19.240
+In paragliding at one point we decided that we give people a
+
+00:55:19.240 --> 00:55:22.960
+chance to become a champion even if they have a bad day.
+
+00:55:23.760 --> 00:55:29.360
+So we introduced the so-called discard system where it'd be bad
+
+00:55:29.360 --> 00:55:34.440
+days get crossed out and only a part of the scores that you
+
+00:55:34.440 --> 00:55:37.480
+actually fly count towards your final score.
+
+00:55:39.960 --> 00:55:45.040
+The way this is calculated is mathematically beautiful, but
+
+00:55:45.400 --> 00:55:49.680
+not so easy to understand. I usually give a one hour
+
+00:55:49.680 --> 00:55:55.200
+lecture on that alone. And that's what you see here
+
+00:55:55.200 --> 00:56:00.120
+basically is when the score is completely crossed out, that
+
+00:56:00.120 --> 00:56:04.520
+means it's one of his worst scores and it's completely
+
+00:56:04.520 --> 00:56:06.800
+crossed out. He totally discards that.
+
+00:56:07.320 --> 00:56:09.640
+And I mean, here it's it's amazing.
+
+00:56:09.640 --> 00:56:13.680
+But this his his worst score is 705.
+
+00:56:13.680 --> 00:56:18.000
+His second worst score that he completely crosses out is 949
+
+00:56:18.200 --> 00:56:20.120
+out of the thousand. That is amazing.
+
+00:56:21.040 --> 00:56:26.280
+And whereas Honora he at least yeah, he had really a bad day
+
+00:56:26.280 --> 00:56:30.320
+the last day he only made 260 point that they probably didn't
+
+00:56:30.320 --> 00:56:32.880
+even make it to goal, but it didn't count for him.
+
+00:56:33.200 --> 00:56:35.440
+He crossed that one out and that's how he still won the
+
+00:56:35.440 --> 00:56:38.440
+silver medal. And then we have those tasks in
+
+00:56:38.440 --> 00:56:42.560
+between where the original score is crossed out and we see a
+
+00:56:42.560 --> 00:56:44.440
+lower score that actually counts.
+
+00:56:44.760 --> 00:56:49.120
+And that's one of the specialities of this discard
+
+00:56:49.120 --> 00:56:54.000
+system that we use, FTV, where partial tasks can be discarded.
+
+00:56:54.560 --> 00:56:57.480
+That's what's happening here with T4 for both.
+
+00:56:57.480 --> 00:57:02.880
+But this stand on over they discard a part of task 4.
+
+00:57:03.400 --> 00:57:10.120
+So instead of 952 it only counts nine 798.9 points.
+
+00:57:10.920 --> 00:57:13.280
+That's the number that is not crossed out is what?
+
+00:57:13.280 --> 00:57:16.080
+How much counts for that thing? I didn't understand this York.
+
+00:57:16.200 --> 00:57:18.160
+Why is talk? Sorry.
+
+00:57:19.240 --> 00:57:23.560
+OK, so let's look at just Baptist.
+
+00:57:24.440 --> 00:57:29.760
+Task 2 is his first task, so that one he crosses out.
+
+00:57:30.280 --> 00:57:33.760
+His second verse is task 8, He completely drops that.
+
+00:57:34.320 --> 00:57:40.240
+His third verse is task 4. Every pilot has a certain number
+
+00:57:40.240 --> 00:57:46.880
+of tasks or partial tasks they can discard, and because he
+
+00:57:46.880 --> 00:57:51.040
+already used 2 full ones, he cannot discard a full task
+
+00:57:51.040 --> 00:57:53.640
+anymore. So he only discards, I don't
+
+00:57:53.640 --> 00:57:57.320
+know, maybe 10 percent, 50% of task 4.
+
+00:57:58.360 --> 00:58:01.520
+If you want to more know, know more details, then let's do one
+
+00:58:01.520 --> 00:58:04.280
+on the on FTV. But like I said, it's about an
+
+00:58:04.280 --> 00:58:07.880
+hour and you need to do a little bit of math in your head.
+
+00:58:10.000 --> 00:58:13.920
+Yeah, maybe we can save that for some other time, but just for
+
+00:58:13.920 --> 00:58:17.800
+our listeners who are watching, do you coach regarding this or
+
+00:58:17.800 --> 00:58:20.760
+do you educate people regarding this as well?
+
+00:58:20.760 --> 00:58:25.280
+Yeah, yeah, I do some, yeah, mainly of course for the space
+
+00:58:25.280 --> 00:58:27.120
+pilots. But I've also been doing this in
+
+00:58:27.120 --> 00:58:32.440
+online lectures for, for other federations because yeah, know
+
+00:58:32.440 --> 00:58:35.880
+how for that is important, is crucial, and it's not very
+
+00:58:35.880 --> 00:58:40.080
+widely spread yet. So I do what I can to make
+
+00:58:40.080 --> 00:58:42.840
+people understand how that works and how their scoring works.
+
+00:58:43.720 --> 00:58:45.280
+Got it. So if anybody's interested, they
+
+00:58:45.280 --> 00:58:47.240
+can basically get in touch with you on your.
+
+00:58:47.440 --> 00:58:49.760
+Absolutely, Yeah, I love to do that.
+
+00:58:50.080 --> 00:58:52.960
+Sometimes I do it in competitions when I used to
+
+00:58:52.960 --> 00:58:56.400
+compete still there's a rainy day in the basically every
+
+00:58:56.400 --> 00:58:59.640
+competition. So I will do my my presentations
+
+00:58:59.640 --> 00:59:02.320
+there and nowadays I can do it online.
+
+00:59:02.320 --> 00:59:04.160
+That's easy. Got it.
+
+00:59:04.160 --> 00:59:07.400
+So we'll drop in your details, contact details in the show
+
+00:59:07.400 --> 00:59:11.360
+notes below. But so task 4 is basically
+
+00:59:11.360 --> 00:59:14.400
+something complicated that happens in parallel lighting and
+
+00:59:14.400 --> 00:59:18.480
+it is eventually. That's the simplest way for me
+
+00:59:18.480 --> 00:59:21.080
+to understand it here. That is the only thing that
+
+00:59:21.080 --> 00:59:24.280
+makes sense. So, but OK, but why are three
+
+00:59:24.280 --> 00:59:26.800
+tasks discarded out of eight? Like what's the point of having
+
+00:59:26.800 --> 00:59:28.600
+a task if you're in a cut of three anyways?
+
+00:59:28.600 --> 00:59:31.560
+Like, you know, that's a lot of effort and money being going
+
+00:59:31.560 --> 00:59:33.080
+into. Three, yeah, but if you look
+
+00:59:33.080 --> 00:59:36.040
+further down, it's not the same tasks for everybody.
+
+00:59:36.160 --> 00:59:42.280
+Like here in 13 place we have Yajek and he had a really good
+
+00:59:42.280 --> 00:59:45.480
+day on the task 8. So for him, task 8 actually
+
+00:59:45.480 --> 00:59:48.320
+counts. So it's not the same tasks that
+
+00:59:48.320 --> 00:59:50.720
+get crossed for everybody. It's really the worst that get
+
+00:59:50.720 --> 00:59:54.360
+crossed that day on task 7, but task 8 counts for him.
+
+00:59:54.760 --> 00:59:57.680
+I'm just saying to bring down the cost because costs are such
+
+00:59:57.680 --> 01:00:00.920
+a huge thing in paragliding. And why do we have 8 days when
+
+01:00:00.920 --> 01:00:03.840
+five are anyways taken? Like why do we even discard?
+
+01:00:03.880 --> 01:00:07.920
+Look at him Darko, he had a bad day on task 1.
+
+01:00:07.920 --> 01:00:12.880
+He bombed out 233 points. Basically if every task counted,
+
+01:00:12.880 --> 01:00:15.240
+he could have gone home. After that he travelled all the
+
+01:00:15.240 --> 01:00:18.680
+way to to Brazil. But the first day adjustments
+
+01:00:18.680 --> 01:00:22.600
+were not done properly, didn't really feel comfortable,
+
+01:00:22.600 --> 01:00:27.440
+whatever he didn't fly well. And after that, if every task
+
+01:00:27.440 --> 01:00:32.400
+counts, the the competition is over for those pilots who didn't
+
+01:00:32.400 --> 01:00:36.160
+make it to goal. But because he knows that his
+
+01:00:36.160 --> 01:00:39.200
+worst task will be crossed, he can continue and push.
+
+01:00:39.800 --> 01:00:45.080
+And yeah, he has another one where he did probably even made
+
+01:00:45.080 --> 01:00:47.640
+it to goal. And in the end he's 12th in the
+
+01:00:47.640 --> 01:00:51.600
+world championship. So I think in an amateur sport
+
+01:00:51.600 --> 01:00:54.840
+where people do a lot of this on their own money, on their own
+
+01:00:54.840 --> 01:01:02.360
+time, giving them some way of, yeah, if if you mess up once or
+
+01:01:02.360 --> 01:01:06.000
+twice, it's OK, you can still be with the top people.
+
+01:01:07.120 --> 01:01:09.320
+I think it's fair. It's a It's a good approach.
+
+01:01:11.600 --> 01:01:17.640
+OK, York Handicap, is that a part of the system?
+
+01:01:17.640 --> 01:01:21.840
+Because scoring has like some sort of a handicap?
+
+01:01:21.840 --> 01:01:25.960
+I've heard sometimes that has been a solution to equalize the
+
+01:01:25.960 --> 01:01:26.800
+field. So what?
+
+01:01:26.800 --> 01:01:32.560
+What is handicap in scoring? We in the official in, in gap in
+
+01:01:32.560 --> 01:01:35.600
+the formula we talked about there is no handicap.
+
+01:01:36.960 --> 01:01:41.560
+So whatever you see in some competitions about handicaps
+
+01:01:41.560 --> 01:01:47.560
+were like lower class wings get some kind of bonus, some kind of
+
+01:01:47.560 --> 01:01:50.040
+support. So that is specific to those
+
+01:01:50.040 --> 01:01:53.680
+competitions and usually means manual work of changing the
+
+01:01:53.680 --> 01:01:58.160
+comp, the results after they come out of the scoring software
+
+01:01:59.080 --> 01:02:01.680
+including MRT. That's what you mentioned before
+
+01:02:01.680 --> 01:02:05.440
+where lower class sliders don't have to fly all.
+
+01:02:06.560 --> 01:02:08.720
+They basically have a slightly different task where all the
+
+01:02:08.720 --> 01:02:11.720
+turn points are bigger so they don't have to fly that much
+
+01:02:11.720 --> 01:02:15.480
+distance. We discussed once introducing
+
+01:02:15.480 --> 01:02:19.400
+that in the scoring software, but in the end there's it didn't
+
+01:02:19.400 --> 01:02:24.960
+happen and it's not something CIVL, the World Organization or
+
+01:02:24.960 --> 01:02:27.440
+PwC. On the other hand, they they
+
+01:02:27.440 --> 01:02:30.600
+don't see a need for that. So it's probably not going to
+
+01:02:30.600 --> 01:02:34.360
+happen anytime soon. The gap is the software that you
+
+01:02:34.360 --> 01:02:37.080
+mentioned, right? The app is the formula.
+
+01:02:37.240 --> 01:02:39.800
+There are several software systems that implement that
+
+01:02:39.800 --> 01:02:42.920
+formula. The one I work on the the one I
+
+01:02:42.920 --> 01:02:46.520
+maintain is called FS or FS Flight.
+
+01:02:47.360 --> 01:02:51.320
+There are a few others, but yeah.
+
+01:02:51.640 --> 01:02:54.560
+Just out of curiosity, are these available in public domain?
+
+01:02:54.560 --> 01:02:58.960
+Like if I want to for example put out a sample task for myself
+
+01:02:59.720 --> 01:03:02.880
+practice, you know there is a cross country place that I I'm
+
+01:03:02.880 --> 01:03:05.040
+going and I want to have a sample task and I want to
+
+01:03:05.040 --> 01:03:08.760
+practice 8 days in a row. Is it possible for me to just
+
+01:03:08.760 --> 01:03:12.200
+download something which has gap, upload my track logs at the
+
+01:03:12.200 --> 01:03:15.800
+end of the day and have a proper set pattern to observe after 8
+
+01:03:15.800 --> 01:03:19.200
+days? Absolutely, yeah.
+
+01:03:19.200 --> 01:03:23.000
+I mean, all, all, most of those scoring softwares are freely
+
+01:03:23.000 --> 01:03:26.560
+available and certainly the ones supported by CIBL because they,
+
+01:03:26.560 --> 01:03:30.360
+they do that, they, they invest in those to, to support the
+
+01:03:30.360 --> 01:03:32.680
+sport. So they're freely available.
+
+01:03:33.520 --> 01:03:35.760
+OK, that's good. It's just when you train
+
+01:03:35.760 --> 01:03:39.480
+yourself like that, I mean, the, the what the FS mainly does,
+
+01:03:39.480 --> 01:03:45.080
+what those scoring do is ranking pilots based on their on their
+
+01:03:45.080 --> 01:03:49.320
+performance all on the same day. So for individual training, it's
+
+01:03:49.320 --> 01:03:54.000
+probably not the best tool, but organizing a little competition
+
+01:03:54.000 --> 01:03:57.600
+on your home hill with your friends, but definitely there's
+
+01:03:57.600 --> 01:04:00.040
+a lot of people who do that and then score it in FS.
+
+01:04:00.320 --> 01:04:04.040
+Now we looked at the task results, or let's break it down
+
+01:04:04.040 --> 01:04:05.800
+even more. We looked at the three games we
+
+01:04:05.800 --> 01:04:08.640
+play, the distance game, the speed game, the leading game,
+
+01:04:09.040 --> 01:04:11.360
+and all this adds up to the task results.
+
+01:04:12.120 --> 01:04:15.400
+And then we have the competition results, which are formed from
+
+01:04:15.400 --> 01:04:18.280
+those task results. And yeah, something magical
+
+01:04:18.280 --> 01:04:23.400
+weird happens in there to cross out some of those at the end of
+
+01:04:23.400 --> 01:04:26.760
+the competition. We have competition results.
+
+01:04:27.040 --> 01:04:31.960
+And if the competition was previously announced in the
+
+01:04:31.960 --> 01:04:38.720
+proper way and was accepted as an international competition by
+
+01:04:38.720 --> 01:04:44.760
+CIBL, then it can be uploaded on this website that CIBL runs on
+
+01:04:44.760 --> 01:04:49.200
+civil comps and enter into the world pilot ranking system,
+
+01:04:49.560 --> 01:04:53.240
+which means that every pilot who participated in that competition
+
+01:04:53.240 --> 01:04:59.680
+automatically gets scored in the world in this world ranking gets
+
+01:04:59.680 --> 01:05:03.240
+points there. And that's where we see not only
+
+01:05:03.240 --> 01:05:05.960
+the the results of one competition, we basically see
+
+01:05:05.960 --> 01:05:11.800
+who is the best pilot over WPRS looks at the last three years.
+
+01:05:12.080 --> 01:05:16.400
+So over this last three-year stretch, who is the best pilot?
+
+01:05:16.760 --> 01:05:23.280
+And you can break it down by also juniors, female pilots.
+
+01:05:23.280 --> 01:05:27.240
+You can break it down by continents, even your country.
+
+01:05:27.240 --> 01:05:31.560
+So who is the best? Yeah, Norwegian pilot in the
+
+01:05:31.560 --> 01:05:34.880
+world ranking. And you, you can rank yourself
+
+01:05:34.880 --> 01:05:37.240
+like this. I'm Indian York, just to let you
+
+01:05:37.240 --> 01:05:39.160
+know. Yeah, but you live in Norfolk.
+
+01:05:39.760 --> 01:05:42.080
+It's not that. Yeah, but they don't give me the
+
+01:05:42.080 --> 01:05:44.600
+sporting license, so I still compete under the Indian flag.
+
+01:05:45.080 --> 01:05:46.800
+OK. Yeah, well, I get it.
+
+01:05:46.800 --> 01:05:48.480
+I get it. Thank you for the clarification.
+
+01:05:50.280 --> 01:05:53.840
+OK, so you're, I think more or less we have given people
+
+01:05:54.080 --> 01:05:58.160
+everything that they should know to have their first comp at
+
+01:05:58.160 --> 01:06:00.400
+least. Way more than that.
+
+01:06:00.440 --> 01:06:02.920
+I would be scared if they used all of that.
+
+01:06:03.320 --> 01:06:07.040
+No really I think the the main point is don't race.
+
+01:06:07.800 --> 01:06:11.560
+Fly as far as possible and start about thinking flying fast once
+
+01:06:11.560 --> 01:06:14.600
+you have the first game down and everything else will come
+
+01:06:14.600 --> 01:06:16.960
+naturally and you'll pick up a lot of those things.
+
+01:06:16.960 --> 01:06:20.680
+You don't need to worry too much about those technicalities.
+
+01:06:20.720 --> 01:06:23.200
+That's the beauty of it. Yes, it's complicated, but the
+
+01:06:23.200 --> 01:06:24.720
+computer does all the work for you.
+
+01:06:26.080 --> 01:06:28.400
+It's all about having fun, enjoying and learning,
+
+01:06:28.640 --> 01:06:32.080
+progressing, and yeah, that's all.
+
+01:06:32.080 --> 01:06:37.200
+There it is. That was so beautifully put.
+
+01:06:38.400 --> 01:06:42.880
+You know, a, a philosophical thought comes to my mind when
+
+01:06:42.880 --> 01:06:46.880
+you were speaking. That is, racing and paralleling
+
+01:06:47.680 --> 01:06:53.920
+is a journey, not a race. Beautiful it is if if you take
+
+01:06:53.920 --> 01:06:59.680
+your whole career, it is absolutely a journey and you you
+
+01:06:59.680 --> 01:07:04.520
+start crawling, you're happy to actually make it up in the first
+
+01:07:04.520 --> 01:07:08.520
+thermal before the start and maybe bomb out right away.
+
+01:07:09.600 --> 01:07:12.800
+Done that plenty times. And then you get more and more
+
+01:07:12.800 --> 01:07:15.880
+and you get further and further. And in the end you, you race
+
+01:07:15.880 --> 01:07:23.040
+with the best with on around and at least you race with them in
+
+01:07:23.040 --> 01:07:29.360
+the World Cup. And it is probably as achievable
+
+01:07:29.360 --> 01:07:33.760
+as in hardly any other sport where within, if you really put
+
+01:07:33.760 --> 01:07:37.840
+your mind to it and work on it and progress properly after a
+
+01:07:37.840 --> 01:07:42.160
+few years from somebody who has never raced before, you will be
+
+01:07:42.160 --> 01:07:45.000
+able to race in the World Cup with the best in the world.
+
+01:07:46.360 --> 01:07:50.240
+And that's another part that is, for me, was always very, very
+
+01:07:50.240 --> 01:07:53.920
+exciting. I want to share an experience
+
+01:07:54.120 --> 01:07:56.000
+that I happened before we close for the day.
+
+01:07:56.000 --> 01:08:00.440
+York. This PwC was my first more or
+
+01:08:00.440 --> 01:08:02.760
+less like a gaggle flying experience.
+
+01:08:02.760 --> 01:08:05.080
+I mean, I've flown in crowded places.
+
+01:08:05.600 --> 01:08:07.120
+India anyways has a lot of people.
+
+01:08:07.120 --> 01:08:10.640
+And during the summer season, it's it's peak, including the
+
+01:08:10.640 --> 01:08:12.000
+tandem. Then you throw in everything.
+
+01:08:12.000 --> 01:08:16.319
+It's it's madness. But this was the first time I
+
+01:08:16.319 --> 01:08:19.319
+was, or maybe, yeah, like one of the first times that I was
+
+01:08:19.319 --> 01:08:22.920
+racing shoulder to shoulder with some of the top pilots in our
+
+01:08:22.920 --> 01:08:26.520
+sport and almost, OK. I never made it to gold on any
+
+01:08:26.520 --> 01:08:30.760
+of the days, just to clarify. But I I bombed out later and
+
+01:08:30.760 --> 01:08:33.800
+later, you know, like there was a day when I bombed out after
+
+01:08:33.800 --> 01:08:35.920
+the second thermal and then there was a day I bombed out of
+
+01:08:35.960 --> 01:08:41.600
+the halfway mark or something. But then a few weeks later I
+
+01:08:41.600 --> 01:08:47.120
+went to Bulgaria and took part in a friendly comp like Cat 2
+
+01:08:47.520 --> 01:08:50.439
+where like let's say there were only two submarines and the
+
+01:08:50.439 --> 01:08:53.000
+total field was like 30 pilots. So you know what the level is.
+
+01:08:54.279 --> 01:08:56.479
+And I landed 1st and goal on on task one.
+
+01:09:00.800 --> 01:09:03.160
+Yeah. And one could assume that if you
+
+01:09:03.160 --> 01:09:06.560
+had not had the experience in Macedonia before, that would not
+
+01:09:06.560 --> 01:09:09.399
+have happened. I beat the submarines and the
+
+01:09:09.399 --> 01:09:11.960
+Enzos. York 2 submarines and Enzos were
+
+01:09:11.960 --> 01:09:16.000
+behind my triangle and XL. Seven fabulous.
+
+01:09:17.399 --> 01:09:21.640
+You know what I'm saying is prioritizing comps is very
+
+01:09:21.640 --> 01:09:27.160
+important because it's a lot of money, investment and emotional,
+
+01:09:27.399 --> 01:09:29.640
+you know, surcharge that is associated with it.
+
+01:09:29.640 --> 01:09:34.359
+Because everybody wants to stand on the podium out of the 120 at
+
+01:09:34.359 --> 01:09:37.960
+the start line, but only three will get a chance and 10 will
+
+01:09:37.960 --> 01:09:41.200
+the the others who get to stand by the side of it.
+
+01:09:41.560 --> 01:09:47.359
+So a pilot is looking to fill up his racing calendar and they are
+
+01:09:47.359 --> 01:09:48.960
+just starting out in the circuit.
+
+01:09:49.160 --> 01:09:51.680
+How would you tell them to prioritise the comps?
+
+01:09:51.680 --> 01:09:57.480
+Because WPRS is acting very pilot quality heavy, You know,
+
+01:09:57.480 --> 01:10:01.000
+it depends on who's racing where and how many.
+
+01:10:01.000 --> 01:10:04.320
+So let's let's just talk about prioritizing and picking and
+
+01:10:04.320 --> 01:10:09.520
+choosing before you go racing. I think before you do that you
+
+01:10:09.520 --> 01:10:11.360
+have to decide what are your goals.
+
+01:10:11.920 --> 01:10:16.040
+If your goal is to just have fun and you don't have a long term
+
+01:10:16.040 --> 01:10:20.200
+plan, you pick the competitions by the places where you want to
+
+01:10:20.200 --> 01:10:24.280
+fly or where your friends go. There's nothing wrong with that.
+
+01:10:24.280 --> 01:10:29.400
+That's a really good tactics to have fun, fly a lot and learn a
+
+01:10:29.400 --> 01:10:32.520
+lot. If you want to progress and you
+
+01:10:32.520 --> 01:10:36.200
+say, well next year I want to be able to take part in cat tools
+
+01:10:36.200 --> 01:10:39.320
+where this year they don't let me in because I'm not ranked
+
+01:10:39.320 --> 01:10:42.600
+well enough, then you have a goal there.
+
+01:10:42.760 --> 01:10:47.120
+I need to improve my world ranking to get into the better
+
+01:10:47.120 --> 01:10:52.240
+comps next year, the higher ranked next year and not cat
+
+01:10:52.240 --> 01:10:53.600
+ones. Cat ones is only world
+
+01:10:53.600 --> 01:10:57.120
+championship and continental championship so don't worry
+
+01:10:57.120 --> 01:11:00.480
+about those yet. So but all the others are cat
+
+01:11:00.480 --> 01:11:03.920
+tools. But cat tools the the popular
+
+01:11:03.920 --> 01:11:08.200
+ones usually the ones that draw a big crowd and also good
+
+01:11:08.200 --> 01:11:11.080
+pilots. They're usually overbooked so
+
+01:11:11.080 --> 01:11:13.720
+they can choose themselves who they want.
+
+01:11:14.240 --> 01:11:17.040
+So they picked the top pilots in the world ranking.
+
+01:11:17.240 --> 01:11:20.960
+So they say we have 120 spots and they just go, they ranked,
+
+01:11:21.120 --> 01:11:23.920
+they look at the pilots that signed up and look at them how
+
+01:11:23.920 --> 01:11:25.800
+are they ranked right now in the world ranking?
+
+01:11:26.160 --> 01:11:29.400
+And they take top 120. And if you're not in there,
+
+01:11:29.680 --> 01:11:32.760
+you're out and maybe come in later, but your chances are
+
+01:11:32.760 --> 01:11:35.480
+small. So if you want to work yourself
+
+01:11:35.480 --> 01:11:39.440
+up to the top competitions, you have to work yourself up in the
+
+01:11:39.440 --> 01:11:41.920
+world ranking. And so you have to pick
+
+01:11:41.920 --> 01:11:46.000
+competitions where they're not too over your head and you will
+
+01:11:46.000 --> 01:11:50.200
+end up pretty low in the ranking and not make any points.
+
+01:11:50.680 --> 01:11:56.080
+But on the other hand, also not too easy, not a thirty person
+
+01:11:56.080 --> 01:11:59.560
+competition where everybody bombs out all the time and you
+
+01:11:59.560 --> 01:12:02.640
+win, but you don't get any points because everybody else is
+
+01:12:02.720 --> 01:12:05.520
+ranked low. So you have to make that
+
+01:12:05.520 --> 01:12:08.520
+decision. And some of the competitions
+
+01:12:08.520 --> 01:12:12.600
+actually they are aware of that and they help you doing that by
+
+01:12:12.600 --> 01:12:16.600
+showing you what the quality of the pilots were already
+
+01:12:16.600 --> 01:12:18.040
+registered. What is it?
+
+01:12:18.040 --> 01:12:21.000
+So how many points can you expect to win in that
+
+01:12:21.000 --> 01:12:24.040
+competition that can help you judge a little bit.
+
+01:12:24.040 --> 01:12:27.280
+Should I go to this competition or to this one?
+
+01:12:27.520 --> 01:12:29.920
+Well, which one give will give me more points?
+
+01:12:30.200 --> 01:12:33.040
+But then you're still you. You have to win to get those
+
+01:12:33.040 --> 01:12:38.400
+points, and that's not easy. Should we do a screen share and
+
+01:12:38.400 --> 01:12:41.800
+give 5 more minutes or should we save this for 2026?
+
+01:12:42.840 --> 01:12:44.880
+Let's do it 2026. I need to go home.
+
+01:12:45.320 --> 01:12:48.400
+I I can imagine you've been standing for so long so.
+
+01:12:49.280 --> 01:12:51.360
+That's OK. Okie, dokie, okie, dokie.
+
+01:12:52.040 --> 01:12:55.760
+Yeah, amazing York. What can I say?
+
+01:12:56.440 --> 01:13:00.480
+Hands down, my competition knowledge just got elevated to a
+
+01:13:00.480 --> 01:13:04.560
+whole new different level and. Mission accomplished. 100
+
+01:13:04.560 --> 01:13:07.600
+percent, 100%. And what I want to say is that
+
+01:13:07.800 --> 01:13:10.600
+thank you for spreading out this good in the world for the past
+
+01:13:10.600 --> 01:13:13.440
+few decades. York, the work that you put in
+
+01:13:13.440 --> 01:13:16.600
+for the sport is quite nice. And I would say that a lot of
+
+01:13:16.600 --> 01:13:20.720
+people don't know about the heroes who work behind, you
+
+01:13:20.720 --> 01:13:22.360
+know, the closed doors or something.
+
+01:13:22.360 --> 01:13:26.520
+So you happen to be one of them. It was an absolute.
+
+01:13:26.520 --> 01:13:28.520
+Fortunately not always behind closed doors.
+
+01:13:28.520 --> 01:13:33.600
+So people, I get to work with people also as a race director
+
+01:13:33.600 --> 01:13:36.600
+or even when I scored. So yeah, people are aware of me.
+
+01:13:36.760 --> 01:13:40.680
+But yeah, it's a different kind of work than saying it,
+
+01:13:40.680 --> 01:13:45.040
+designing a wing or whatever. But it all like one thing
+
+01:13:45.040 --> 01:13:49.960
+without the other wouldn't work. So yeah, Luke alone, yeah, great
+
+01:13:49.960 --> 01:13:51.920
+wings, but no, scoring doesn't work.
+
+01:13:52.080 --> 01:13:54.720
+Scoring alone without great wings, forget about it.
+
+01:13:54.720 --> 01:13:59.000
+So it really needs everything. I would want to leave our
+
+01:13:59.000 --> 01:14:03.280
+audiences by saying that it sounds super complicated, but
+
+01:14:03.280 --> 01:14:06.480
+believe me, just like everything else in paragliding, competing
+
+01:14:06.480 --> 01:14:09.000
+is super addictive as well if you get the hang of it.
+
+01:14:09.040 --> 01:14:11.760
+So that's it from us for this time.
+
+01:14:11.800 --> 01:14:13.680
+Thank you for joining us and stay tuned.
+
+01:14:13.680 --> 01:14:16.160
+More episodes coming soon. Bye bye.
+
+01:14:19.480 --> 01:14:24.280
+Free audio post production biophonic.com.

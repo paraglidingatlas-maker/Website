@@ -786,7 +786,8 @@ Open, roughly in order of value:
    ~90 pages, and has since before any of this work. A dead button site wide.
    Needs a real page written, not invented copy.
 
-2. **Episode summaries.** The `summary` field is empty on nearly every page. Two
+2. **Episode summaries. NOW EASIER: 65 episodes have a transcript, not 46.**
+   The 19 added in the ninth update can be summarised from their real content. The `summary` field is empty on nearly every page. Two
    good sentences per episode does more for being cited by answer engines than
    the whole transcript does. Rules agreed with the user:
    - NEVER summarise from a title alone. That produces plausible, subtly wrong
@@ -829,9 +830,21 @@ Open, roughly in order of value:
    **Standing instruction unchanged: scan any new batch of transcripts for
    language before publishing them.**
 
-4. **Transcripts for the remaining 40 episodes.** No transcript exists for them.
-   The 52 that do exist came from the user's Drive folder. Anything new needs
-   the same treatment (see the transcripts section above).
+4. **Transcripts: 65 of 86 pages now have one, up from 46 (ninth update).**
+   19 were pulled from Spotify's own `podcast:transcript` tags in the RSS feed,
+   converted from SRT, and verified before writing: English by stopword count,
+   plausible length, and for the three fuzzy title matches the pairing was
+   confirmed against the globe's OWN existing slug mapping rather than trusted
+   from a similarity score. None were skipped.
+   **These 19 have no speaker labels** and their pages say so. Do not hand label
+   them the way the Eric Roussel page was done; that was a one off the user
+   asked for on a single episode and it took reading the whole transcript.
+   **21 pages still have no transcript**, and the feed cannot fill them:
+   - 8 match a feed episode that carries no `.srt` at all.
+   - 13 have no feed match, so they are YouTube-only videos (tutorials, reels,
+     the Oslo cinematics) rather than podcast episodes.
+   The only routes left for those are Autotekst, or leaving them as player-only
+   pages, which is a perfectly good outcome for a cinematic reel.
 
 5. **FAQ block on episode pages.** `.cd-faq` exists in the CSS and the prototype
    but is deliberately unbuilt. The user has a specific plan for it and wants it
