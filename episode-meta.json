@@ -17,59 +17,72 @@
       "1": "Guest"
     },
     "summary": "Alain Zoller of Air Turquoise explains who actually decides that a wing is safe to fly, walking through the CEN technical committees and the Work Group 6 that writes paragliding's test standards. He argues a certification class does not make one wing better than another, only better matched to what a pilot wants, and that collapse testing is not representative of what the air really does.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "Look for when choosing a reserve?",
-        "at": "00:00:46"
+        "title": "How reserve certification works, and ideal descent speed",
+        "at": "00:00:46",
+        "src": "claude"
       },
       {
-        "title": "Somebody who has tested endless amounts of wings. Do you have a…",
-        "at": "00:05:19"
+        "title": "Air Turquoise, and what a test house actually does",
+        "at": "00:05:19",
+        "src": "claude"
       },
       {
-        "title": "Rules for the sake of the sport. I do not understand that. Could…",
-        "at": "00:15:12"
+        "title": "Rules written for security, and where they went",
+        "at": "00:15:12",
+        "src": "claude"
       },
       {
-        "title": "That you guys are just the go-to test house for anyone who wants to…",
-        "at": "00:24:41"
+        "title": "What sets Air Turquoise apart",
+        "at": "00:24:41",
+        "src": "claude"
       },
       {
-        "title": "The major differences between AFNOR and LTF?",
-        "at": "00:28:25"
+        "title": "The major differences between AFNOR and LTF",
+        "at": "00:28:25",
+        "src": "claude"
       },
       {
-        "title": "Community where even the top of the line pilots are paying the…",
-        "at": "00:39:47"
+        "title": "Why the elite level keeps seeing serious accidents",
+        "at": "00:39:47",
+        "src": "claude"
       },
       {
-        "title": "Because I never see CCC test reports out there. Have I missed…",
-        "at": "00:43:50"
+        "title": "Do CCC wings even have certification",
+        "at": "00:43:50",
+        "src": "claude"
       },
       {
-        "title": "Either shrunk a little bit or elongated a little bit as per the use?",
-        "at": "00:47:58"
+        "title": "Can certification change once the trim drifts",
+        "at": "00:47:58",
+        "src": "claude"
       },
       {
-        "title": "Trying to choose a glider and they are going through the test…",
-        "at": "00:52:36"
+        "title": "Reading a test report as a buyer",
+        "at": "00:52:36",
+        "src": "claude"
       },
       {
-        "title": "The point and paperwork is just an excuse that we are making right…",
-        "at": "01:01:56"
+        "title": "Is the will there to address this",
+        "at": "01:01:56",
+        "src": "claude"
       },
       {
-        "title": "Tests. As a customer, it's unlikely that you will impact in the…",
-        "at": "01:06:17"
+        "title": "Harnesses, and how easily they go wrong",
+        "at": "01:06:17",
+        "src": "claude"
       },
       {
-        "title": "Does that make a difference or is it just marketing?",
-        "at": "01:15:50"
+        "title": "Does the mixture matter, or is it marketing",
+        "at": "01:15:50",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -111,59 +124,72 @@
       "1": "Anindya Singh"
     },
     "summary": "Aljaz Valic, co-founder of the Slovenian brand 777, sets out the design thinking behind their EN B wings and why he believes development stalls once a class becomes effectively one single type and results come down to pilot skill alone. He also revisits the old story of the Spectra and the Gambit being banned, and what that did to the Gambit's chances.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "One question that I've been wanting to ask you guys for ages. Why…",
-        "at": "00:00:17"
+        "title": "Why the Spectra and Gambit were banned",
+        "at": "00:00:17",
+        "src": "claude"
       },
       {
-        "title": "Like in the sport of paragliding?",
-        "at": "00:06:56"
+        "title": "From pilot to designer",
+        "at": "00:06:56",
+        "src": "claude"
       },
       {
-        "title": "Help us understand the design from the drawing board to actually…",
-        "at": "00:13:11"
+        "title": "From the drawing board to a wing you can fly",
+        "at": "00:13:11",
+        "src": "claude"
       },
       {
-        "title": "Maybe even three. Most selling two-liner C classes are Photon…",
-        "at": "00:26:23"
+        "title": "The most popular two liner C class wings",
+        "at": "00:26:23",
+        "src": "claude"
       },
       {
-        "title": "What's your personal opinion on this?",
-        "at": "00:30:08"
+        "title": "His own view of the competition",
+        "at": "00:30:08",
+        "src": "claude"
       },
       {
-        "title": "Gambit get banned at one point of time by Civil?",
-        "at": "00:38:14"
+        "title": "The ban, and what it did to the Gambit",
+        "at": "00:38:14",
+        "src": "claude"
       },
       {
-        "title": "Internal structure is all about distributing air and maintaining…",
-        "at": "00:45:17"
+        "title": "Internal structure, and distributing air",
+        "at": "00:45:17",
+        "src": "claude"
       },
       {
-        "title": "Things that you will tell them before they choose a wing from a…",
-        "at": "00:51:38"
+        "title": "What he would tell his own kids before they choose",
+        "at": "00:51:38",
+        "src": "claude"
       },
       {
-        "title": "Difference when it comes to enhancing performance?",
-        "at": "00:55:37"
+        "title": "Pulleys, maillons and coatings",
+        "at": "00:55:37",
+        "src": "claude"
       },
       {
-        "title": "Art of flight that brings them their life?",
-        "at": "00:59:42"
+        "title": "Giving people the art of flight",
+        "at": "00:59:42",
+        "src": "claude"
       },
       {
-        "title": "The final customer. Like who in this supply chain is making the…",
-        "at": "01:04:54"
+        "title": "Who in the supply chain makes the money",
+        "at": "01:04:54",
+        "src": "claude"
       },
       {
-        "title": "This really helping the industry or is this actually taking us…",
-        "at": "01:11:45"
+        "title": "Are two liner Cs helping the industry",
+        "at": "01:11:45",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -490,59 +516,72 @@
       "1": "Guest"
     },
     "summary": "Will Gadd argues that the people who show up determined to overcome their fear are the ones who do not last, and that the useful move is to accept the fear and build real capacity behind it. His framework is consequence over probability, judging what could actually kill you rather than what is merely likely, worked through a loop of trying, listening, learning and adapting.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "To get out there and you got to listen. Like, what's the world…",
-        "at": "00:00:40"
+        "title": "Try, listen, learn, adapt",
+        "at": "00:00:40",
+        "src": "claude"
       },
       {
-        "title": "Think it is for anybody else. But that basic question is, what's…",
-        "at": "00:04:50"
+        "title": "Making it work as a professional",
+        "at": "00:04:50",
+        "src": "claude"
       },
       {
-        "title": "How do you deal with that?",
-        "at": "00:09:22"
+        "title": "Hazard, mitigation, and the unusual ones",
+        "at": "00:09:22",
+        "src": "claude"
       },
       {
-        "title": "Top because I was so afraid to run the drop, right?",
-        "at": "00:15:31"
+        "title": "Being too afraid to run the drop",
+        "at": "00:15:31",
+        "src": "claude"
       },
       {
-        "title": "The things that you don't know to fear yet, you know?",
-        "at": "00:19:36"
+        "title": "The things you do not yet know to fear",
+        "at": "00:19:36",
+        "src": "claude"
       },
       {
-        "title": "Windsock, a temporary one, or hold up a string or something, right?",
-        "at": "00:23:57"
+        "title": "Going deeper instead of accepting the risk",
+        "at": "00:23:57",
+        "src": "claude"
       },
       {
-        "title": "Like, when did it switch?",
-        "at": "00:27:43"
+        "title": "When the switch happened",
+        "at": "00:27:43",
+        "src": "claude"
       },
       {
-        "title": "Honesty with yourself. It's like, why did this happen?",
-        "at": "00:38:28"
+        "title": "Being honest with yourself about why",
+        "at": "00:38:28",
+        "src": "claude"
       },
       {
-        "title": "Engage here. Okay, so how am I going to make that work?",
-        "at": "00:43:13"
+        "title": "Preparing for the group in front of you",
+        "at": "00:43:13",
+        "src": "claude"
       },
       {
-        "title": "Have to learn. Like, why didn't they respond well to what you were…",
-        "at": "00:46:53"
+        "title": "Learning from the calls that do not land",
+        "at": "00:46:53",
+        "src": "claude"
       },
       {
-        "title": "Like, all right, what's got any issues here?",
-        "at": "00:50:41"
+        "title": "Spotting issues without terrifying anyone",
+        "at": "00:50:41",
+        "src": "claude"
       },
       {
-        "title": "Like that'll kill you. And what am I going to do about it?",
-        "at": "00:55:22"
+        "title": "What could actually kill you, and what to do",
+        "at": "00:55:22",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -580,55 +619,67 @@
       "1": "In"
     },
     "summary": "Eddie Colfox was one of the early explorers of vol biv flying, and this is three decades of stories from expeditions alongside John Silvester. The films that came out of those trips, among them Birdman of the Karakoram and Temple in the Clouds, run through the conversation.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "Tell us a little bit about what our audiences are in for and what…",
-        "at": "00:03:00"
+        "title": "Seeing the sport evolve and survive",
+        "at": "00:03:00",
+        "src": "claude"
       },
       {
-        "title": "Or did people have to really dig in and find the right person and…",
-        "at": "00:06:38"
+        "title": "When hang gliding ruled the scene",
+        "at": "00:06:38",
+        "src": "claude"
       },
       {
-        "title": "With can inspire the next generation with your stories. But take me…",
-        "at": "00:11:22"
+        "title": "Inspiring the next generation",
+        "at": "00:11:22",
+        "src": "claude"
       },
       {
-        "title": "Is it just the age or nature or is it actually something more to it?",
-        "at": "00:16:04"
+        "title": "Bold pilots and old pilots",
+        "at": "00:16:04",
+        "src": "claude"
       },
       {
-        "title": "How was the availability of trustworthy gear?",
-        "at": "00:25:00"
+        "title": "How trustworthy the gear was back then",
+        "at": "00:25:00",
+        "src": "claude"
       },
       {
-        "title": "Others come back in the day?",
-        "at": "00:29:43"
+        "title": "Hunza, Bir, and the early sites",
+        "at": "00:29:43",
+        "src": "claude"
       },
       {
-        "title": "Guys must have been the first ones to offer tours in that region…",
-        "at": "00:35:02"
+        "title": "Being first to run tours out there",
+        "at": "00:35:02",
+        "src": "claude"
       },
       {
-        "title": "Any obstacles, be it mentally or physically, that he found…",
-        "at": "00:39:07"
+        "title": "The obstacles John faced",
+        "at": "00:39:07",
+        "src": "claude"
       },
       {
-        "title": "Some of the biggest technical revolutions have happened in your…",
-        "at": "00:43:09"
+        "title": "The technical revolutions he has seen",
+        "at": "00:43:09",
+        "src": "claude"
       },
       {
-        "title": "Started paragliding, or were they before you got in the sport?",
-        "at": "00:48:23"
+        "title": "Ozone, and where it began",
+        "at": "00:48:23",
+        "src": "claude"
       },
       {
-        "title": "Bara Bengal flight to our audiences last time around as well. Yeah.…",
-        "at": "00:52:33"
+        "title": "One flight from a life: Barabangal",
+        "at": "00:52:33",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -790,59 +841,72 @@
       "1": "Andreas Lattner"
     },
     "summary": "Andreas Lattner of hochzwei.media describes leaving a salaried job to build a living out of flying and filming, in one of the most expensive economies in the world. The conversation is about how he and his partner turned that plan into work that actually pays, and what it took along the way.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "Dream life in a van. Now you're talking about moving to a permanent…",
-        "at": "00:03:31"
+        "title": "Leaving the van for somewhere permanent",
+        "at": "00:03:31",
+        "src": "claude"
       },
       {
-        "title": "Or what's your heritage because of the language that you transfer…",
-        "at": "00:09:25"
+        "title": "Working in German and in English",
+        "at": "00:09:25",
+        "src": "claude"
       },
       {
-        "title": "One in front of the camera or behind the scenes as well affect…",
-        "at": "00:14:56"
+        "title": "Working as a team against going solo",
+        "at": "00:14:56",
+        "src": "claude"
       },
       {
-        "title": "People with all your equipment and toys. Tell us about House on…",
-        "at": "00:21:35"
+        "title": "Van life with all the equipment",
+        "at": "00:21:35",
+        "src": "claude"
       },
       {
-        "title": "Living of Auschwitz media. Okay, one more time. Tell me, how do I…",
-        "at": "00:26:53"
+        "title": "How the money side actually works",
+        "at": "00:26:53",
+        "src": "claude"
       },
       {
-        "title": "Is there a hint of a rockstar lifestyle in this kind of paragliding…",
-        "at": "00:30:49"
+        "title": "Is there a rockstar side to this",
+        "at": "00:30:49",
+        "src": "claude"
       },
       {
-        "title": "Team up with paragliding brands?",
-        "at": "00:40:55"
+        "title": "Finding deals with paragliding brands",
+        "at": "00:40:55",
+        "src": "claude"
       },
       {
-        "title": "People who have big dreams and the will also look at getting a…",
-        "at": "00:47:24"
+        "title": "Free wings, and who actually gets them",
+        "at": "00:47:24",
+        "src": "claude"
       },
       {
-        "title": "Beginner episodes. You'll see Antoine sharing all his wisdom. He…",
-        "at": "00:54:39"
+        "title": "Beginner episodes, and learning from others",
+        "at": "00:54:39",
+        "src": "claude"
       },
       {
-        "title": "Name correctly. Man, the cinematic brilliance that guy brings to…",
-        "at": "01:01:52"
+        "title": "Cinematic work, and what it takes",
+        "at": "01:01:52",
+        "src": "claude"
       },
       {
-        "title": "Up very quick. What does it take to, first of all, dream about it…",
-        "at": "01:06:04"
+        "title": "Dreaming about 8,000 metres",
+        "at": "01:06:04",
+        "src": "claude"
       },
       {
-        "title": "Just out of curiosity, you must be using glacier shoes, right?",
-        "at": "01:09:47"
+        "title": "A cold night out, and the gear for it",
+        "at": "01:09:47",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -884,55 +948,67 @@
       "1": "Humble"
     },
     "summary": "A conversation about flow state and what pulls a pilot out of it, in particular the voices that arrive once you start flying to impress the people watching rather than for reasons of your own. The argument is to hold your attention on the process instead of the outcome, since fixing on the end result is usually what makes people give up before it arrives.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "Like this where there's less noise, to say the least, the easiest…",
-        "at": "00:10:01"
+        "title": "Oslo, and a quieter kind of introspection",
+        "at": "00:10:01",
+        "src": "claude"
       },
       {
-        "title": "Because you're in the moment?",
-        "at": "00:17:07"
+        "title": "Improving as a person, not just a pilot",
+        "at": "00:17:07",
+        "src": "claude"
       },
       {
-        "title": "It's the same want. and how you control that one versus how you get…",
-        "at": "00:24:25"
+        "title": "Chasing things, and controlling the wanting",
+        "at": "00:24:25",
+        "src": "claude"
       },
       {
-        "title": "You do make the end goal, then it's a bonus. Yeah, who doesn't like…",
-        "at": "00:28:44"
+        "title": "Going out for fun, with the goal as a bonus",
+        "at": "00:28:44",
+        "src": "claude"
       },
       {
-        "title": "That started giving me launch anxiety. And of course, if you start…",
-        "at": "00:39:19"
+        "title": "Where the launch anxiety came from",
+        "at": "00:39:19",
+        "src": "claude"
       },
       {
-        "title": "Usually, what are the ways or the rituals of some sort?",
-        "at": "00:47:49"
+        "title": "Rituals, and visualising a new site",
+        "at": "00:47:49",
+        "src": "claude"
       },
       {
-        "title": "You. So just do yoga and you're set for an epic flight. How simple…",
-        "at": "00:53:16"
+        "title": "Is it really as simple as doing yoga",
+        "at": "00:53:16",
+        "src": "claude"
       },
       {
-        "title": "Conditions, then back off. How hard can it be?",
-        "at": "01:08:50"
+        "title": "Backing off, and not lying to yourself",
+        "at": "01:08:50",
+        "src": "claude"
       },
       {
-        "title": "Are uncomfortable What is the easiest way to bring yourself back in…",
-        "at": "01:17:10"
+        "title": "Bringing yourself back when uncomfortable",
+        "at": "01:17:10",
+        "src": "claude"
       },
       {
-        "title": "More than that, like why aren't you famous yet?",
-        "at": "01:23:06"
+        "title": "The rewards of actually practising this",
+        "at": "01:23:06",
+        "src": "claude"
       },
       {
-        "title": "Solution to all the world's problems?",
-        "at": "01:37:33"
+        "title": "Mastering the mind through flying",
+        "at": "01:37:33",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -966,51 +1042,62 @@
       "1": "Christian Ciech"
     },
     "summary": "Christian Ciech of ICARO 2000 explains what actually goes into a flying helmet, from design and materials through to how certification works in practice. It is one of the few conversations in the sport with someone who flew at the very top and also builds the equipment.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "What's up pilots across the world?",
-        "at": "00:00:06"
+        "title": "Welcome, and a year of the show",
+        "at": "00:00:06",
+        "src": "claude"
       },
       {
-        "title": "People try to venture into it?",
-        "at": "00:04:18"
+        "title": "Why so few competitors enter the market",
+        "at": "00:04:18",
+        "src": "claude"
       },
       {
-        "title": "Norms and what exactly is the certification today?",
-        "at": "00:09:34"
+        "title": "Norms, and what certification means today",
+        "at": "00:09:34",
+        "src": "claude"
       },
       {
-        "title": "If they offer more protection, why can't we just simply use them in…",
-        "at": "00:13:13"
+        "title": "Why not simply use a motorcycle helmet",
+        "at": "00:13:13",
+        "src": "claude"
       },
       {
-        "title": "Is that a lot less safer than the usual free flight helmets that…",
-        "at": "00:16:55"
+        "title": "Climbing helmets in hike and fly",
+        "at": "00:16:55",
+        "src": "claude"
       },
       {
-        "title": "Paragliding is an expensive sport. What should you prioritize…",
-        "at": "00:22:13"
+        "title": "What to prioritise when money is tight",
+        "at": "00:22:13",
+        "src": "claude"
       },
       {
-        "title": "Smarter in time to come as well?",
-        "at": "00:27:46"
+        "title": "Smarter helmets, and the tech coming",
+        "at": "00:27:46",
+        "src": "claude"
       },
       {
-        "title": "Now is the time to change?",
-        "at": "00:33:22"
+        "title": "Telling when a helmet needs replacing",
+        "at": "00:33:22",
+        "src": "claude"
       },
       {
-        "title": "Can paraglider pilots also try a Procopter helmet?",
-        "at": "00:37:34"
+        "title": "The range, and the flagship",
+        "at": "00:37:34",
+        "src": "claude"
       },
       {
-        "title": "You tell us about what is so great about this helmet and how did…",
-        "at": "00:42:29"
+        "title": "How this helmet came into existence",
+        "at": "00:42:29",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -1052,47 +1139,57 @@
       "1": "Modernizing SIV Courses"
     },
     "summary": "Helmut Schrempf sets out a modernised way of running SIV courses, built around teaching deliberate control of the wing rather than working through a fixed list of manoeuvres. His case is that this is how pilots genuinely build confidence in the air, and that it raises the safety bar rather than trading it away.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "Just let our audiences know. What is safety pilot coaching all…",
-        "at": "00:04:54"
+        "title": "What safety pilot coaching actually is",
+        "at": "00:04:54",
+        "src": "claude"
       },
       {
-        "title": "Was it physically impossible to prevent that kind of force?",
-        "at": "00:10:55"
+        "title": "Was that force impossible to prevent",
+        "at": "00:10:55",
+        "src": "claude"
       },
       {
-        "title": "Possible position to have an ideal reaction or close to ideal…",
-        "at": "00:31:52"
+        "title": "Anticipating collapses on a stable wing",
+        "at": "00:31:52",
+        "src": "claude"
       },
       {
-        "title": "Brake line for optimal flying performance?",
-        "at": "00:35:59"
+        "title": "Brake line position and performance",
+        "at": "00:35:59",
+        "src": "claude"
       },
       {
-        "title": "Technologies. Why did this happen?",
-        "at": "00:40:09"
+        "title": "Why the technology went that way",
+        "at": "00:40:09",
+        "src": "claude"
       },
       {
-        "title": "Safety pilot coaching is teaching us to control ourselves and the…",
-        "at": "00:49:18"
+        "title": "Controlling yourself, not just the glider",
+        "at": "00:49:18",
+        "src": "claude"
       },
       {
-        "title": "People follow so they can become a safer pilot overall?",
-        "at": "01:02:33"
+        "title": "What a pilot can do wherever they are",
+        "at": "01:02:33",
+        "src": "claude"
       },
       {
-        "title": "While getting into this new style of coaching. When it comes down…",
-        "at": "01:11:25"
+        "title": "Manoeuvres, and the philosophy behind them",
+        "at": "01:11:25",
+        "src": "claude"
       },
       {
-        "title": "Show. Any closing thoughts before we say goodbye for now?",
-        "at": "01:17:12"
+        "title": "Closing thoughts",
+        "at": "01:17:12",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -1795,59 +1892,72 @@
       "1": "Beni Kälin"
     },
     "summary": "Beni Kalin introduces the wing technology from Go Flare Global and how borrowing ideas from kiting lets a wing convert vertical energy in a way a conventional paraglider cannot. The conversation covers what that changes for performance and for how the wing actually feels to fly.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "If I have to begin, you know, on some note, speed flying school…",
-        "at": "00:03:39"
+        "title": "The speed flying school, and what sits behind it",
+        "at": "00:03:39",
+        "src": "claude"
       },
       {
-        "title": "You try to give as much as you can, even though it's very early…",
-        "at": "00:08:52"
+        "title": "The psychology of an instructor",
+        "at": "00:08:52",
+        "src": "claude"
       },
       {
-        "title": "Is in conventional sports. You're becoming better of other people…",
-        "at": "00:12:52"
+        "title": "Competing, glory, and what people are chasing",
+        "at": "00:12:52",
+        "src": "claude"
       },
       {
-        "title": "Was your setup when you were having fun. Exactly, yeah. Wow. Do…",
-        "at": "00:17:38"
+        "title": "Kite risers on a paragliding harness",
+        "at": "00:17:38",
+        "src": "claude"
       },
       {
-        "title": "Like, where do you start?",
-        "at": "00:22:56"
+        "title": "Where do you even start",
+        "at": "00:22:56",
+        "src": "claude"
       },
       {
-        "title": "Have YouTube videos where they're teaching you skills?",
-        "at": "00:27:23"
+        "title": "Learning from YouTube instead of an instructor",
+        "at": "00:27:23",
+        "src": "claude"
       },
       {
-        "title": "The worst that That can happen. Like, how does shitting your pants…",
-        "at": "00:32:36"
+        "title": "The worst that can happen",
+        "at": "00:32:36",
+        "src": "claude"
       },
       {
-        "title": "How would an SIV look under a moustache compared to a regular…",
-        "at": "00:36:08"
+        "title": "How an SIV differs under one of these wings",
+        "at": "00:36:08",
+        "src": "claude"
       },
       {
-        "title": "Talk to non-flyers, you know, when I talk to my friends who don't…",
-        "at": "00:41:11"
+        "title": "Explaining it to people who do not fly",
+        "at": "00:41:11",
+        "src": "claude"
       },
       {
-        "title": "Gets after graduating is, should I buy an A wing or should I buy a…",
-        "at": "00:45:22"
+        "title": "An A wing or a B wing after graduating",
+        "at": "00:45:22",
+        "src": "claude"
       },
       {
-        "title": "Maybe, are they the foil?",
-        "at": "00:49:03"
+        "title": "Kites that inflate the leading edge",
+        "at": "00:49:03",
+        "src": "claude"
       },
       {
-        "title": "Or do you guys fly the commercial ones as well?",
-        "at": "00:57:23"
+        "title": "Do they fly the commercial ones too",
+        "at": "00:57:23",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -2363,59 +2473,72 @@
       "1": "Goran Dimiskovski"
     },
     "summary": "Goran Dimiskovski, president of the Paragliding World Cup Association, describes what it takes to organise racing at that scale and what goes on behind the scenes of a World Cup. He speaks frankly about both the highs and the lows of running the sport's biggest competition circuit.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "Because we see that you are one of the longest serving presidents…",
-        "at": "00:05:11"
+        "title": "Being one of the longest serving presidents",
+        "at": "00:05:11",
+        "src": "claude"
       },
       {
-        "title": "Performance focused rather than adding on to the glamour and all of…",
-        "at": "00:09:18"
+        "title": "Pilot focused rather than glamour",
+        "at": "00:09:18",
+        "src": "claude"
       },
       {
-        "title": "Why did we, a lot of pilots who really wanted to push, felt like…",
-        "at": "00:13:53"
+        "title": "Why the PWCA needed to exist",
+        "at": "00:13:53",
+        "src": "claude"
       },
       {
-        "title": "Or is it basically kind of heading as per where the money is…",
-        "at": "00:22:41"
+        "title": "Whether it simply follows the money",
+        "at": "00:22:41",
+        "src": "claude"
       },
       {
-        "title": "Explain us what are the options to go out and chase racing?",
-        "at": "00:30:43"
+        "title": "Where a new pilot starts if they want to race",
+        "at": "00:30:43",
+        "src": "claude"
       },
       {
-        "title": "Are all of these things and how do you understand what they are?",
-        "at": "00:38:34"
+        "title": "PWCA, SRS, and what the categories mean",
+        "at": "00:38:34",
+        "src": "claude"
       },
       {
-        "title": "About category two, is there, the civil is still defining the…",
-        "at": "00:47:11"
+        "title": "Category two, and how it is defined",
+        "at": "00:47:11",
+        "src": "claude"
       },
       {
-        "title": "Course you know takes away a little bit of fun but having a…",
-        "at": "01:00:22"
+        "title": "Prize money, and what it takes away",
+        "at": "01:00:22",
+        "src": "claude"
       },
       {
-        "title": "Guys that I am good enough to be a World Cup pilot?",
-        "at": "01:08:45"
+        "title": "Proving you are good enough for a World Cup",
+        "at": "01:08:45",
+        "src": "claude"
       },
       {
-        "title": "Am I pushing the bar enough or like basically going out and putting…",
-        "at": "01:17:40"
+        "title": "What a pilot has to work out for themselves",
+        "at": "01:17:40",
+        "src": "claude"
       },
       {
-        "title": "Ever going to look at standardization of equipment to a point where…",
-        "at": "01:23:34"
+        "title": "Would standardised equipment level the field",
+        "at": "01:23:34",
+        "src": "claude"
       },
       {
-        "title": "What's next, what is the future of PWCA?",
-        "at": "01:33:32"
+        "title": "What is next for the PWCA",
+        "at": "01:33:32",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -2697,59 +2820,72 @@
       "1": "Gabriel Orsini"
     },
     "summary": "Gabriel Orsini, who flies under the name partytillimpact, talks about safety, gear rigs and how transparent manufacturers really are about their equipment. The thread running through it is how to keep pushing your flying and do it safely, from a pilot most people assume has already used up several lives.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "Your name of your creating handle, which is Party Deal Impact. What…",
-        "at": "00:02:22"
+        "title": "Where the name partytillimpact came from",
+        "at": "00:02:22",
+        "src": "claude"
       },
       {
-        "title": "Curiosity stems from the fact that I think a couple of decades ago…",
-        "at": "00:06:54"
+        "title": "Where the ideas for new gear come from",
+        "at": "00:06:54",
+        "src": "claude"
       },
       {
-        "title": "That in any reserve deployment scenarios?",
-        "at": "00:12:15"
+        "title": "Grabbing the bag, not the handle",
+        "at": "00:12:15",
+        "src": "claude"
       },
       {
-        "title": "Included in our SIV training so that a person at least has a feel…",
-        "at": "00:18:16"
+        "title": "Should deployment training be part of SIV",
+        "at": "00:18:16",
+        "src": "claude"
       },
       {
-        "title": "Is that what you're saying?",
-        "at": "00:22:31"
+        "title": "Did round reserves become obsolete",
+        "at": "00:22:31",
+        "src": "claude"
       },
       {
-        "title": "Freshwater, but are taking the precautions and packing it well and…",
-        "at": "00:28:01"
+        "title": "How many deployments a reserve can safely take",
+        "at": "00:28:01",
+        "src": "claude"
       },
       {
-        "title": "Innovation from the position of shoulder straps. So this attachment…",
-        "at": "00:31:57"
+        "title": "Shoulder straps, and the stand up systems",
+        "at": "00:31:57",
+        "src": "claude"
       },
       {
-        "title": "Experimenting. So is this somewhere where it's the more fragile I…",
-        "at": "00:43:07"
+        "title": "New brands, and who is making the money",
+        "at": "00:43:07",
+        "src": "claude"
       },
       {
-        "title": "Think people should look for something like that as well while…",
-        "at": "00:49:09"
+        "title": "Should schools publish their accident lists",
+        "at": "00:49:09",
+        "src": "claude"
       },
       {
-        "title": "Find the courage to question that, hey, how much do you love what…",
-        "at": "00:55:21"
+        "title": "Choosing an instructor, and the margins involved",
+        "at": "00:55:21",
+        "src": "claude"
       },
       {
-        "title": "We can make in time to come. But for now, enlighten us, Gabe. How…",
-        "at": "01:00:03"
+        "title": "The book he keeps threatening to write",
+        "at": "01:00:03",
+        "src": "claude"
       },
       {
-        "title": "Kind of Ethics of business, you can say. So has there been some…",
-        "at": "01:15:22"
+        "title": "Ethics in the business of gear",
+        "at": "01:15:22",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -3237,59 +3373,72 @@
       "1": "Guest"
     },
     "summary": "Urs Haari argues the reserve certification process needs new rules, describing a descent where his measured ground speed under a reserve reached 50 kilometres an hour, far beyond what the published limits imply. He also warns that ground handling a reserve can wreck the fabric within minutes, leaving damage that stays invisible to the naked eye until it is lit properly.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "I can do to get out of this situation?",
-        "at": "00:15:12"
+        "title": "Getting back to a calm mind, and finding options",
+        "at": "00:15:12",
+        "src": "claude"
       },
       {
-        "title": "All the time new things you fly to the wrong place and when you…",
-        "at": "00:18:47"
+        "title": "Flying somewhere new, and staying in flow",
+        "at": "00:18:47",
+        "src": "claude"
       },
       {
-        "title": "Safety, reserve parachutes. Is Beemer that you offer any different…",
-        "at": "00:25:40"
+        "title": "Starting Beamer after his own accident",
+        "at": "00:25:40",
+        "src": "claude"
       },
       {
-        "title": "Unconscious. That is important. This brings me to a point, Urs.…",
-        "at": "00:33:43"
+        "title": "Why the procedure has to be in your unconscious",
+        "at": "00:33:43",
+        "src": "claude"
       },
       {
-        "title": "Skydive on the base. We were in front of the plane and the guys…",
-        "at": "00:38:55"
+        "title": "How skydiving handles repacking, and we do not",
+        "at": "00:38:55",
+        "src": "claude"
       },
       {
-        "title": "It, it was windy like hell. It was thermic. And how was your…",
-        "at": "00:46:17"
+        "title": "Analysing a deployment that went wrong",
+        "at": "00:46:17",
+        "src": "claude"
       },
       {
-        "title": "Endurance to chance, train this, even more game changer. Why did…",
-        "at": "00:52:46"
+        "title": "Deciding the moment to throw",
+        "at": "00:52:46",
+        "src": "claude"
       },
       {
-        "title": "Dive and didn't activate his base system. I asked him, Daniel, why?",
-        "at": "01:00:00"
+        "title": "A collapse, a broken back, and a system unused",
+        "at": "01:00:00",
+        "src": "claude"
       },
       {
-        "title": "Square, round, triangle, I'm talking about unsteerable, they glide…",
-        "at": "01:08:39"
+        "title": "How sink rate is measured in testing",
+        "at": "01:08:39",
+        "src": "claude"
       },
       {
-        "title": "Was 50 kilometers an hour under the reserve parachute. What the…",
-        "at": "01:12:46"
+        "title": "Fifty kilometres an hour under a reserve",
+        "at": "01:12:46",
+        "src": "claude"
       },
       {
-        "title": "Meters per second sink rate as a maximum. So maybe this was tested…",
-        "at": "01:31:27"
+        "title": "EN against LTF, and the sink rate allowed",
+        "at": "01:31:27",
+        "src": "claude"
       },
       {
-        "title": "To come into the game and tell us we need certain rules to make the…",
-        "at": "01:42:20"
+        "title": "Where the federations need to step in",
+        "at": "01:42:20",
+        "src": "claude"
       }
     ],
     "guest_links": [],
