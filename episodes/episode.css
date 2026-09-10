@@ -32,6 +32,9 @@
   .cd-center{min-width:0;}
   .cd-player{position:relative;width:100%;aspect-ratio:16/9;background:var(--card);overflow:hidden;margin-bottom:1.2rem;}
   .cd-player img{width:100%;height:100%;object-fit:cover;opacity:0.55;}
+/* the prototype used a still image here; a real embed needs its own rule or it
+   falls back to the default 300x150 iframe size */
+.cd-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
   .cd-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;}
   .cd-play-shape{width:82px;height:56px;border-radius:14px;background:var(--orange);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 30px rgba(255,117,23,0.45);transition:transform .2s ease;}
   .cd-play:hover .cd-play-shape{transform:scale(1.08);}
