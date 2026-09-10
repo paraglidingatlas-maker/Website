@@ -184,17 +184,21 @@
   function show(t, title, sub) {
     topic = t;
     var r = $("results");
+    var entering = r.classList.contains("lib-hidden");
     $("landing").classList.add("lib-hidden");
     r.classList.remove("lib-hidden");
     $("rT").textContent = title;
     $("rS").textContent = sub;
     draw();
-    window.scrollTo({ top: 0 });
-    r.classList.remove("opening");
-    void r.offsetWidth;
-    r.classList.add("opening");
+    if (entering) {                /* not on every keystroke */
+      window.scrollTo({ top: 0 });
+      r.classList.remove("opening");
+      void r.offsetWidth;
+      r.classList.add("opening");
+    }
   }
   function home() {
+    ["q", "q2"].forEach(function (id) { var el = $(id); if (el) el.value = ""; });
     $("results").classList.add("lib-hidden");
     $("landing").classList.remove("lib-hidden");
     topic = null;
@@ -241,12 +245,34 @@
   $("back").addEventListener("click", function () { location.hash = ""; });
   $("allBtn").addEventListener("click", function () { location.hash = "all"; });
   $("widen").addEventListener("click", function () { reset(); draw(); });
-  $("q").addEventListener("input", function (ev) {
-    var v = ev.target.value.trim();
-    if (!v) return;
+  /* The search box used to live only inside #landing, and show() hides #landing.
+     So the first keystroke hid the box the user was typing into, and the handler
+     also cleared its value, which meant a query could never be longer than one
+     character. There are now two boxes, one per view, kept in sync, and neither
+     is cleared while typing. */
+  function onSearch(v) {
+    v = String(v).trim();
+    if (!v) {                      /* emptying the box goes back, it does not sit on a stale result */
+      q = "";
+      if (topic === null) { location.hash = ""; } else { draw(); }
+      return;
+    }
     q = norm(v);
     show(null, "Search results", 'Matching "' + v + '" across every episode.');
-    ev.target.value = "";
+  }
+  function syncBoxes(from, v) {
+    ["q", "q2"].forEach(function (id) {
+      var el = $(id);
+      if (el && el !== from && el.value !== v) el.value = v;
+    });
+  }
+  ["q", "q2"].forEach(function (id) {
+    var el = $(id);
+    if (!el) return;
+    el.addEventListener("input", function (ev) {
+      syncBoxes(ev.target, ev.target.value);
+      onSearch(ev.target.value);
+    });
   });
 
   /* ---------- enrich with real durations from the podcast feed ---------- */
