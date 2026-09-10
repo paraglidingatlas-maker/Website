@@ -63,6 +63,43 @@ h2.sm-h{font-family:var(--font-display);font-weight:700;font-size:1.35rem;
   transition:color 0.15s ease;}
 .sm-eps a:hover{color:var(--orange);}
 .sm-eps a.sm-out::after{content:" \2197";color:var(--gray);font-size:0.78rem;}
+
+/* network graph */
+.sm-graph{position:relative;background:#101116;border:1px solid rgba(180,180,180,0.14);
+  margin:2.4rem 0 1rem;overflow:hidden;}
+.sm-graph::before,.sm-graph::after{content:"";position:absolute;width:11px;height:11px;
+  border-color:var(--orange);z-index:3;pointer-events:none;}
+.sm-graph::before{top:8px;left:8px;border-left:1.5px solid;border-top:1.5px solid;}
+.sm-graph::after{bottom:8px;right:8px;border-right:1.5px solid;border-bottom:1.5px solid;}
+#sm-svg{display:block;width:100%;height:620px;cursor:grab;touch-action:none;}
+#sm-svg:active{cursor:grabbing;}
+.sm-edge{stroke:rgba(180,180,180,0.22);stroke-width:1;}
+.sm-edge-series{stroke:rgba(255,117,23,0.22);}
+.sm-edge-episode{stroke:rgba(180,180,180,0.14);}
+.sm-node{cursor:pointer;}
+.sm-node circle{fill:#20222a;stroke:rgba(180,180,180,0.4);stroke-width:1.4;
+  transition:fill 0.15s ease,stroke 0.15s ease;}
+.sm-node:hover circle,.sm-node:focus circle{fill:var(--orange);stroke:var(--orange);}
+.sm-node:focus{outline:none;}
+.sm-root circle{fill:var(--orange);stroke:var(--orange);}
+.sm-section circle{stroke:var(--orange);stroke-width:2;}
+.sm-category circle{stroke:rgba(255,117,23,0.7);}
+.sm-closed circle{fill:#2a2c35;}
+.sm-plus{fill:var(--orange);font-family:var(--font-body);font-size:10px;
+  text-anchor:middle;pointer-events:none;font-weight:700;}
+.sm-node:hover .sm-plus{fill:#141519;}
+.sm-label{fill:var(--gray-light);font-family:var(--font-body);font-size:11px;pointer-events:none;}
+.sm-root .sm-label,.sm-section .sm-label{fill:var(--white);font-weight:600;font-size:12.5px;}
+.sm-node:hover .sm-label{fill:var(--orange);}
+.sm-bar{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;
+  margin-bottom:2.6rem;}
+#sm-info{color:var(--gray);font-size:0.83rem;}
+#sm-info strong{color:var(--white);font-weight:600;margin-right:0.5rem;}
+#sm-expand{background:none;border:1px solid rgba(180,180,180,0.28);color:var(--gray-light);
+  font-family:var(--font-body);font-size:0.8rem;padding:0.42rem 1rem;cursor:pointer;
+  transition:all 0.16s ease;}
+#sm-expand:hover{color:var(--white);border-color:var(--orange);}
+@media (max-width:720px){#sm-svg{height:440px;}}
 </style>
 </head>
 <body>
@@ -112,6 +149,15 @@ h2.sm-h{font-family:var(--font-display);font-weight:700;font-size:1.35rem;
     </a>
   </div>
 
+  <div class="sm-graph">
+    <svg id="sm-svg" viewBox="0 0 900 620" preserveAspectRatio="xMidYMid meet"
+         role="img" aria-label="Network graph of the site structure. A full text index follows below."></svg>
+  </div>
+  <div class="sm-bar">
+    <p id="sm-info"><strong>Drag to move, scroll to zoom.</strong><span>Click a ringed node to open what is under it.</span></p>
+    <button id="sm-expand" type="button">Expand everything</button>
+  </div>
+
   <h2 class="sm-h">Every series, every episode</h2>
   <p class="sm-sub">Open a series to see what is in it. Titles that link to a full page have a transcript with chapters you can jump through. The rest open on YouTube.</p>
 
@@ -159,5 +205,7 @@ h2.sm-h{font-family:var(--font-display);font-weight:700;font-size:1.35rem;
   </div>
 </footer>
 
+<script>window.SITEMAP_GRAPH = {{GRAPH}};</script>
+<script src="sitemap-graph.js"></script>
 </body>
 </html>

@@ -70,8 +70,49 @@ for cat, series_list in CATS:
                s.replace(' ', '%20').replace(',', '%2C'), "".join(links)))
     rows.append('<section class="sm-cat">\n  <h2>%s</h2>\n%s\n</section>' % (esc(cat), "\n".join(cards)))
 
+
+# ---------------- graph data ----------------
+CAT_PAGE = {"Core series": "core-series", "Competitions": "competitions",
+            "Meteorology": "meteorology", "Industry": "industry", "Technical": "technical"}
+
+nodes, links = [], []
+def node(nid, label, kind, url=None, depth=0):
+    nodes.append({"id": nid, "label": label, "kind": kind, "url": url, "depth": depth})
+def link(a, b):
+    links.append({"s": a, "t": b})
+
+node("home", "Home", "root", "index.html", 0)
+node("about", "About Us", "section", "about.html", 1)
+node("kb", "Knowledge Base", "section", "knowledge-base.html", 1)
+node("pod", "Podcast", "section", "podcast.html", 1)
+node("lib", "Episode Library", "section", "library.html", 1)
+for a in ("about", "kb", "pod"): link("home", a)
+link("pod", "lib")
+
+for cat, series_list in CATS:
+    cid = "cat:" + cat
+    page = CAT_PAGE.get(cat)
+    node(cid, cat, "category", ("knowledge-base/%s.html" % page) if page and page in KB_PAGE else "knowledge-base.html", 2)
+    link("kb", cid)
+    for sname in series_list:
+        sid = "ser:" + sname
+        kb = kb_slug(sname)
+        node(sid, sname, "series",
+             ("knowledge-base/%s.html" % kb) if kb else ("library.html#s=" + sname.replace(" ", "%20")), 3)
+        link(cid, sid)
+        link("lib", sid)          # the same series is reachable from the library too
+        for e in sorted([x for x in EPS if x["topic"] == sname], key=lambda x: x["order"]):
+            m = PAGE.get(e["id"])
+            eid = "ep:" + e["id"]
+            node(eid, e["title"].split("[")[0].strip()[:60], "episode",
+                 ("episodes/%s.html" % m["slug"]) if m else ("https://www.youtube.com/watch?v=%s" % e["id"]), 4)
+            link(sid, eid)
+
+GRAPH = json.dumps({"nodes": nodes, "links": links}, ensure_ascii=False)
+
 tmpl = open(os.path.join(ROOT, 'sitemap-template.html')).read()
 out = tmpl.replace('{{TREE}}', "\n".join(rows))
+out = out.replace('{{GRAPH}}', GRAPH)
 out = out.replace('{{EPCOUNT}}', str(len(EPS)))
 out = out.replace('{{PAGECOUNT}}', str(sum(1 for e in EPS if e["id"] in PAGE)))
 out = out.replace('{{SERIESCOUNT}}', str(len(TOPICS)))
