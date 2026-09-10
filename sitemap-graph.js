@@ -1,7 +1,9 @@
-/* Sitemap: the site as a landscape you fly across.
-   True ground plane projection, undulating terrain, a camera that travels.
-   Drag to fly. Click a node to travel there and open what is under it.
-   Nothing here navigates; the bar below offers the page as an explicit link. */
+/* Sitemap network graph.
+   Small force directed layout written from scratch, no external dependency.
+   Opens as the nav bar; everything below stays folded until asked for.
+   Opening a branch pushes everything else back so attention lands on what just
+   appeared. The wheel scrolls the page as normal; zoom is on the buttons, or
+   ctrl/cmd with the wheel, or a trackpad pinch. */
 (function () {
   "use strict";
 
@@ -11,416 +13,389 @@
 
   var NS = "http://www.w3.org/2000/svg";
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var W = 1180, H = 660;
-  function resize() {
-    var r = svg.getBoundingClientRect();
-    if (r.width < 40 || r.height < 40) return;
-    W = Math.round(r.width);
-    H = Math.round(r.height);
-    HOR = H * 0.30;
-    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
-  }
+  var SIZE = { root: 17, section: 13, category: 10, series: 8.5, episode: 5 };
 
   var kids = {}, parents = {}, byId = {};
   data.links.forEach(function (l) {
     (kids[l.s] = kids[l.s] || []).push(l.t);
     (parents[l.t] = parents[l.t] || []).push(l.s);
   });
-  data.nodes.forEach(function (n, i) {
+  data.nodes.forEach(function (n) {
     byId[n.id] = n;
+    n.x = 0; n.y = 0; n.vx = 0; n.vy = 0;
     n.open = n.depth < 1;
-    n.hover = (i * 37 % 11) * 5;      /* a little vertical scatter */
+    n.shown = n.depth <= 1;
   });
+
   var focus = "home";
 
-  function shown(n) {
-    var up = primaryRaw(n.id), g = 0;
-    while (up && g++ < 14) {
-      if (!byId[up].open) return false;
-      up = primaryRaw(up);
-    }
-    return true;
+  function recompute() {
+    data.nodes.forEach(function (n) { n.shown = n.depth === 0; });
+    (function walk(id) {
+      var n = byId[id];
+      if (!n || !n.open) return;
+      (kids[id] || []).forEach(function (k) { byId[k].shown = true; walk(k); });
+    })("home");
   }
-  function primaryRaw(id) {
+
+  /* tier 0 = what just opened and its children, 1 = the path back to home,
+     2 = everything else, pushed into the background */
+  function tiers() {
+    var t = {};
+    data.nodes.forEach(function (n) { t[n.id] = 2; });
+    var up = focus, guard = 0;
+    while (up && guard++ < 20) { t[up] = 1; up = (parents[up] || [])[0]; }
+    t[focus] = 0;
+    (kids[focus] || []).forEach(function (k) { t[k] = 0; });
+    return t;
+  }
+
+  var W = 900, H = 640, view = { x: 0, y: 0, k: 1 };
+  var COLW = 215, ROWH = 34;
+
+  /* Primary parent, so the two-parent series still form a clean tree.
+     The second edge is drawn as a cross link on top of it. */
+  function primary(id) {
     var n = byId[id];
-    if (n && n.via) return n.via;
-    return (parents[id] || [])[0] || null;
-  }
-  function tier(n) {
-    if (n.id === focus) return 0;
-    if ((kids[focus] || []).indexOf(n.id) !== -1) return 0;
-    var up = focus, g = 0;
-    while (up && g++ < 14) { if (up === n.id) return 1; up = primaryRaw(up); }
-    return 2;
+    if (n && n.via && byId[n.via] && byId[n.via].shown && byId[n.via].open) return n.via;
+    var ps = parents[id] || [];
+    for (var i = 0; i < ps.length; i++) if (byId[ps[i]].shown) return ps[i];
+    return ps[0];
   }
 
-  /* ---------------- glyphs: thin HUD chevrons, one per family ---------------- */
-  /* Drawn pointing along +X, roughly 26 units long, stroked not filled. */
-  var GLYPH = [
-    "M-11 -8 L2 0 L-11 8 M-2 -8 L11 0 L-2 8",                       /* nested pair */
-    "M-11 -7 L4 0 L-11 7 M-11 0 H-3",                                /* split tail */
-    "M-12 -8 L-2 0 L-12 8 M-4 -6 L4 0 L-4 6 M3 -4 L9 0 L3 4",        /* three stacked */
-    "M-10 -8 L3 0 L-10 8 M-12 -10 V-6 M-12 10 V6 M8 -3 V3",          /* bracketed */
-    "M-12 -8 L10 0 L-12 8 L-6 0 Z",                                  /* outline dart */
-    "M-11 -8 L3 0 L-11 8 M-13 -4 L-7 -4 M-13 4 L-7 4",               /* slashed */
-    "M-10 -9 L4 0 L-10 9 M-10 -3 L-1 -3 M-10 3 L-1 3"                /* ribbed */
-  ];
-  /* every category, and everything under it, gets its own arrow */
-  var CATORDER = [], glyphOf = {};
-  data.nodes.forEach(function (n) {
-    if (n.kind === "category" && CATORDER.indexOf(n.id) === -1) CATORDER.push(n.id);
-  });
-  function glyphIndex(n) {
-    if (n.kind === "root") return 3;
-    if (n.kind === "section") return 1;
-    if (glyphOf[n.id] !== undefined) return glyphOf[n.id];
-    var up = n.id, g = 0, found = null;
-    while (up && g++ < 14) {
-      if (byId[up].kind === "category") { found = up; break; }
-      up = primaryRaw(up);
-    }
-    var idx = found ? 2 + (CATORDER.indexOf(found) % 5) : 0;
-    glyphOf[n.id] = idx;
-    return idx;
-  }
-
-  /* ---------------- ground layout ---------------- */
-  var COLX = 340, ROWZ = 150;
+  /* Tidy tree: column by depth, leaves take the next free row, parents centre
+     on their children. Anything already open therefore sits to the LEFT of
+     whatever you just opened, and the new branch extends to the right. */
   function layout() {
     var row = 0;
     (function place(id) {
       var n = byId[id];
       var ch = (kids[id] || []).filter(function (k) {
-        return byId[k].open !== undefined && primaryRaw(k) === id && shown(byId[k]);
+        return byId[k].shown && primary(k) === id;
       });
-      n.gx = n.depth * COLX;
-      if (!ch.length || !n.open) { n.gz = row * ROWZ; row++; return; }
+      n.tx = n.depth * COLW;
+      if (!ch.length || !n.open) {
+        n.ty = row * ROWH; row += 1; return;
+      }
       var first = row;
       ch.forEach(place);
-      if (row === first) { n.gz = row * ROWZ; row++; }
-      else n.gz = (byId[ch[0]].gz + byId[ch[ch.length - 1]].gz) / 2;
+      if (row === first) { n.ty = row * ROWH; row += 1; }
+      else n.ty = (byId[ch[0]].ty + byId[ch[ch.length - 1]].ty) / 2;
     })("home");
+
   }
 
-  function ter(x, z) {
-    return Math.sin(x * 0.0015) * 30 + Math.sin(z * 0.0019 + 1.3) * 24 +
-           Math.sin((x + z) * 0.00085) * 18 + Math.sin(x * 0.0043 + z * 0.0031) * 7;
-  }
-
-  var cam = { x: 0, z: 0 };
-  var FOCAL = 900, EYE = 820, HOR = H * 0.30, NEAR = 430;
-  var panX = 0, panY = 0;
-
-  function project(gx, gz, alt) {
-    var rz = (gz - cam.z) + NEAR;
-    if (rz < 70) rz = 70;
-    var s = FOCAL / rz;
-    return { x: W / 2 + (gx - cam.x) * s + panX, y: HOR + (EYE - (alt || 0)) * s + panY, s: s,
-             fog: Math.max(0, Math.min(1, (s - 0.30) / 0.95)) };
-  }
-  function el(p, t, a) {
-    var e = document.createElementNS(NS, t);
-    for (var k in a) e.setAttribute(k, a[k]);
-    p.appendChild(e);
-    return e;
-  }
-  function trunc(t, n) { return t.length > n ? t.slice(0, n - 1) + "\u2026" : t; }
-
-  var DUST = [], STARS = [], i;
-  for (i = 0; i < 90; i++) DUST.push({ gx: (Math.random() - 0.35) * 3600,
-    gz: Math.random() * 2200 - 300, alt: Math.random() * 420 + 30, r: Math.random() * 1.2 + 0.5 });
-  for (i = 0; i < 110; i++) STARS.push({ x: Math.random() * 1600 - 200,
-    y: Math.random() * HOR * 0.95, r: Math.random() * 0.85 + 0.25 });
-
-  var moving = false;
-
-  function draw() {
-    while (svg.firstChild) svg.removeChild(svg.firstChild);
-    var defs = el(svg, "defs", {});
-    defs.innerHTML =
-      '<linearGradient id="sm-sky" x1="0" y1="0" x2="0" y2="1">' +
-        '<stop offset="0" stop-color="#0e0f13"/><stop offset="62%" stop-color="#141519"/>' +
-        '<stop offset="88%" stop-color="#15161c"/>' +
-      '<stop offset="100%" stop-color="#101116"/></linearGradient>' +
-      '<linearGradient id="sm-hg" x1="0" y1="0" x2="0" y2="1">' +
-        '<stop offset="0" stop-color="rgba(180,180,180,0)"/>' +
-        '<stop offset="72%" stop-color="rgba(180,180,180,0.09)"/>' +
-        '<stop offset="92%" stop-color="rgba(180,180,180,0.09)"/>' +
-      '<stop offset="100%" stop-color="rgba(180,180,180,0)"/></linearGradient>' +
-      '<linearGradient id="sm-fog" x1="0" y1="0" x2="0" y2="1">' +
-        '<stop offset="0" stop-color="rgba(16,17,22,0)"/>' +
-      '<stop offset="26%" stop-color="rgba(16,17,22,0.72)"/>' +
-        '<stop offset="62%" stop-color="rgba(16,17,22,0.45)"/>' +
-        '<stop offset="100%" stop-color="rgba(16,17,22,0)"/></linearGradient>' +
-      '<radialGradient id="sm-vig" cx="50%" cy="52%" r="74%">' +
-        '<stop offset="58%" stop-color="rgba(14,15,19,0)"/>' +
-        '<stop offset="100%" stop-color="rgba(14,15,19,0.86)"/></radialGradient>' +
-      '<filter id="sm-far" x="-40%" y="-40%" width="180%" height="180%">' +
-        '<feGaussianBlur stdDeviation="1.3"/></filter>';
-
-    el(svg, "rect", { width: W, height: H, fill: "#101116" });
-    el(svg, "rect", { width: W, height: HOR + 3, fill: "url(#sm-sky)" });
-
-    var sky = el(svg, "g", {});
-    if (!moving) STARS.forEach(function (st) {
-      var x = ((st.x - cam.x * 0.012) % 1600 + 1600) % 1600 - 200;
-      el(sky, "circle", { cx: x, cy: st.y, r: st.r,
-        fill: "rgba(246,244,244,0.5)", opacity: 0.15 + 0.38 * (st.y / HOR) });
-    });
-    el(svg, "rect", { width: W, height: HOR + 3, fill: "url(#sm-hg)" });
-
-    var rp = "M-60 " + (HOR + 3), x, t, h;
-    for (x = -60; x <= W + 60; x += 26) {
-      t = (x + cam.x * 0.045) * 0.0042;
-      h = Math.sin(t) * 15 + Math.sin(t * 2.3) * 8 + Math.sin(t * 0.66) * 20;
-      rp += " L" + x + " " + (HOR - 16 - h);
-    }
-    el(svg, "path", { d: rp + " L" + (W + 60) + " " + (HOR + 3) + " Z",
-      fill: "#16171d", stroke: "rgba(180,180,180,0.18)", "stroke-width": 1 });
-
-    var grid = el(svg, "g", {}), gz, gx, pts, q;
-    var ZS = moving ? 300 : 150, XS = moving ? 300 : 180;
-    var z0 = Math.floor((cam.z - NEAR) / ZS) * ZS;
-    for (gz = z0; gz < cam.z + 2900; gz += ZS) {
-      pts = [];
-      for (gx = cam.x - 2700; gx <= cam.x + 2700; gx += XS) {
-        q = project(gx, gz, ter(gx, gz));
-        if (q.s > 0.03) pts.push(q.x.toFixed(1) + "," + q.y.toFixed(1));
-      }
-      if (pts.length < 2) continue;
-      q = project(0, gz, 0);
-      el(grid, "polyline", { points: pts.join(" "), fill: "none",
-        stroke: "rgba(180,180,180,0.8)", "stroke-width": Math.max(0.4, q.s * 0.85),
-        opacity: 0.07 + q.fog * 0.25 });
-    }
-    var x0 = Math.floor((cam.x - 2700) / (moving ? 360 : 180)) * (moving ? 360 : 180);
-    for (gx = x0; gx < cam.x + 2700; gx += (moving ? 360 : 180)) {
-      pts = [];
-      for (gz = Math.max(z0, cam.z - NEAR + 90); gz < cam.z + 2900; gz += ZS) {
-        q = project(gx, gz, ter(gx, gz));
-        if (q.s > 0.03) pts.push(q.x.toFixed(1) + "," + q.y.toFixed(1));
-      }
-      if (pts.length > 1)
-        el(grid, "polyline", { points: pts.join(" "), fill: "none",
-          stroke: "rgba(180,180,180,0.62)", "stroke-width": 0.7, opacity: 0.09 });
-    }
-
-    var dust = el(svg, "g", {});
-    if (!moving) DUST.forEach(function (m) {
-      var p = project(m.gx, m.gz, m.alt);
-      if (p.s < 0.07 || p.x < -50 || p.x > W + 50) return;
-      el(dust, "circle", { cx: p.x, cy: p.y, r: m.r * p.s * 1.7,
-        fill: "rgba(246,244,244,0.5)", opacity: 0.04 + p.fog * 0.14 });
-    });
-
-    var vis = data.nodes.filter(function (n) { return n.gx !== undefined && shown(n); });
-    vis.forEach(function (n) {
-      n.alt = ter(n.gx, n.gz) + 118 + n.hover;
-      n.pr = project(n.gx, n.gz, n.alt);
-      n.gr = project(n.gx, n.gz, ter(n.gx, n.gz));
-    });
-    var order = vis.slice().sort(function (a, b) { return a.pr.s - b.pr.s; });
-
-    var nearG = el(svg, "g", {});
-    var farG = moving ? nearG : el(svg, "g", { filter: "url(#sm-far)" });
-    if (moving) svg.appendChild(nearG);
-    function bucket(n) { return n.pr.s < 0.30 ? farG : nearG; }
-
-    order.forEach(function (n) {
-      var p = byId[primaryRaw(n.id)];
-      if (!p || !p.pr) return;
-      var tr = Math.max(tier(n), tier(p));
-      el(bucket(n), "line", { x1: p.pr.x, y1: p.pr.y, x2: n.pr.x, y2: n.pr.y,
-        stroke: "rgba(246,244,244,1)",
-        "stroke-width": Math.max(0.5, n.pr.s * 1.1),
-        "stroke-dasharray": (4 * n.pr.s).toFixed(1) + " " + (6 * n.pr.s).toFixed(1),
-        opacity: (tr === 0 ? 0.46 : tr === 1 ? 0.22 : 0.09) * (0.3 + n.pr.fog * 0.7) });
-    });
-
-    order.forEach(function (n) {
-      var tr = tier(n), q = n.pr;
-      if (q.s < 0.045) return;
-      var op = (tr === 0 ? 1 : tr === 1 ? 0.5 : 0.2) * (0.28 + q.fog * 0.72);
-      var g = el(bucket(n), "g", { opacity: op, "class": "sm-marker",
-        tabindex: "0", role: "button" });
-      g.setAttribute("aria-label", n.label);
-
-      el(g, "line", { x1: q.x, y1: q.y, x2: n.gr.x, y2: n.gr.y,
-        stroke: "rgba(180,180,180,0.5)", "stroke-width": Math.max(0.4, q.s * 0.5),
-        opacity: 0.24 });
-      el(g, "ellipse", { cx: n.gr.x, cy: n.gr.y, rx: 8 * q.s, ry: 2.6 * q.s,
-        fill: "rgba(180,180,180,0.2)" });
-
-      var p = byId[primaryRaw(n.id)];
-      var ang = (p && p.pr) ? Math.atan2(q.y - p.pr.y, q.x - p.pr.x) * 180 / Math.PI : 0;
-      var sc = q.s * (n.kind === "root" ? 1.9 : n.depth < 3 ? 1.35 : 0.95);
-
-      /* a generous transparent target, since a stroked chevron is a thin thing to hit */
-      el(g, "rect", { x: q.x - 26 * Math.max(q.s, 0.5), y: q.y - 15 * Math.max(q.s, 0.5),
-        width: 190 * Math.max(q.s, 0.34), height: 30 * Math.max(q.s, 0.5),
-        fill: "transparent", "class": "sm-pad" });
-
-      /* thin stroked chevron rather than a solid delta */
-      el(g, "path", { d: GLYPH[glyphIndex(n)],
-        transform: "translate(" + q.x + "," + q.y + ") rotate(" + ang + ") scale(" + sc + ")",
-        fill: "none", "class": "sm-glyph",
-        stroke: tr === 0 ? "rgba(246,244,244,0.9)" : "rgba(180,180,180,0.62)",
-        "stroke-width": Math.max(0.9, 1.5 / Math.max(sc, 0.25)),
-        "stroke-linecap": "round", "stroke-linejoin": "round" });
-
-      if (q.s > 0.2 && (tr < 2 || n.depth < 3) && !(moving && tr === 2)) {
-        var fs = Math.max(7.5, Math.min(13, 11 * q.s));
-        var tx = el(g, "text", { x: q.x + 20 * q.s, y: q.y + fs * 0.35,
-          fill: tr === 0 ? "rgba(246,244,244,0.92)" : "rgba(180,180,180,0.68)",
-          "class": "sm-lbl", "font-family": "var(--mono, monospace)", "font-size": fs,
-          "letter-spacing": "0.08em" });
-        tx.textContent = trunc(n.label.toUpperCase(), n.depth > 2 ? 42 : 34);
-        if ((kids[n.id] || []).length && !n.open) {
-          var pl = el(g, "text", { x: q.x + 20 * q.s, y: q.y + fs * 1.6,
-            fill: "rgba(115,115,115,0.85)", "class": "sm-lbl2", "font-family": "var(--mono, monospace)",
-            "font-size": fs * 0.78, "letter-spacing": "0.12em" });
-          pl.textContent = "+ " + kids[n.id].length;
-        }
-      }
-      g.addEventListener("click", function (e) { e.stopPropagation(); go(n); });
-      g.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(n); }
-      });
-    });
-
-    el(svg, "rect", { x: 0, y: HOR - H * 0.07, width: W, height: H * 0.36,
-      fill: "url(#sm-fog)", "pointer-events": "none" });
-    el(svg, "rect", { width: W, height: H, fill: "url(#sm-vig)", "pointer-events": "none" });
+  /* The canvas is wider than the frame on purpose. Rather than rescaling to fit
+     everything, the camera travels: it keeps whatever you just opened a third of
+     the way in from the left, so the columns you came through stay behind you
+     and the new branch has clear space ahead. Zoom never changes by itself,
+     which is what stops the whole thing lurching. */
+  function camera() {
+    var f = byId[focus] || byId.home;
+    if (f.tx === undefined) return;
+    view.x = W * 0.33 - f.tx * view.k;
+    view.y = H * 0.5 - f.ty * view.k;
   }
 
   var anim = null;
-  function fly(tx, tz, ms, px, py) {
-    if (anim) cancelAnimationFrame(anim);
-    var x0 = cam.x, z0 = cam.z, t0 = performance.now();
-    var p0 = panX, q0 = panY;
-    if (px === undefined) { px = panX; py = panY; }
-    if (reduce) { cam.x = tx; cam.z = tz; panX = px; panY = py; draw(); return; }
-    moving = true;
+  function settle(instant) {
+    if (anim) { cancelAnimationFrame(anim); anim = null; }
+    /* new arrivals slide out from their parent rather than in from nowhere */
+    data.nodes.forEach(function (n) {
+      if (n.tx === undefined || n.x || n.y || n.id === "home") return;
+      var p = byId[primary(n.id)];
+      if (p) { n.x = p.x; n.y = p.y; }
+    });
+    if (instant || reduce) {
+      data.nodes.forEach(function (n) {
+        if (n.tx !== undefined) { n.x = n.tx; n.y = n.ty; }
+      });
+      camera(); draw(); return;
+    }
+    var from = {};
+    data.nodes.forEach(function (n) { from[n.id] = { x: n.x, y: n.y }; });
+    var v0 = { x: view.x, y: view.y };
+    camera();
+    var v1 = { x: view.x, y: view.y };
+    var t0 = performance.now(), DUR = 620;
     (function step(now) {
-      var q = Math.min(1, (now - t0) / ms);
+      var q = Math.min(1, (now - t0) / DUR);
+      /* gentle ease in and out, no overshoot, nothing snappy */
       var e = q < 0.5 ? 4 * q * q * q : 1 - Math.pow(-2 * q + 2, 3) / 2;
-      cam.x = x0 + (tx - x0) * e;
-      cam.z = z0 + (tz - z0) * e;
-      panX = p0 + (px - p0) * e;
-      panY = q0 + (py - q0) * e;
-      if (q < 1) { draw(); anim = requestAnimationFrame(step); }
-      else { anim = null; moving = false; draw(); }   /* full detail once still */
+      data.nodes.forEach(function (n) {
+        if (n.tx === undefined) return;
+        n.x = from[n.id].x + (n.tx - from[n.id].x) * e;
+        n.y = from[n.id].y + (n.ty - from[n.id].y) * e;
+      });
+      view.x = v0.x + (v1.x - v0.x) * e;
+      view.y = v0.y + (v1.y - v0.y) * e;
+      draw();
+      anim = q < 1 ? requestAnimationFrame(step) : null;
     })(t0);
   }
 
+  /* ---------------- shapes: instrument rather than dot ---------------- */
+  function poly(sides, r, rot) {
+    var pts = [];
+    for (var i = 0; i < sides; i++) {
+      var a = rot + i * 2 * Math.PI / sides;
+      pts.push((Math.cos(a) * r).toFixed(1) + "," + (Math.sin(a) * r).toFixed(1));
+    }
+    return pts.join(" ");
+  }
+
+  function shape(n, into) {
+    var r = SIZE[n.kind], el;
+    if (n.kind === "root") {
+      var hit = document.createElementNS(NS, "circle");
+      hit.setAttribute("r", r + 4);
+      hit.setAttribute("class", "sm-hit");
+      into.appendChild(hit);
+      [[r, "sm-ring"], [r * 0.5, "sm-core"]].forEach(function (p) {
+        var c = document.createElementNS(NS, "circle");
+        c.setAttribute("r", p[0]);
+        c.setAttribute("class", p[1]);
+        into.appendChild(c);
+      });
+      [[-r - 6, 0, -r - 2, 0], [r + 2, 0, r + 6, 0],
+       [0, -r - 6, 0, -r - 2], [0, r + 2, 0, r + 6]].forEach(function (t) {
+        var l = document.createElementNS(NS, "line");
+        l.setAttribute("x1", t[0]); l.setAttribute("y1", t[1]);
+        l.setAttribute("x2", t[2]); l.setAttribute("y2", t[3]);
+        l.setAttribute("class", "sm-cross");
+        into.appendChild(l);
+      });
+      return;
+    }
+    if (n.kind === "section") {
+      el = document.createElementNS(NS, "polygon");
+      el.setAttribute("points", poly(6, r, Math.PI / 6));
+    } else if (n.kind === "category") {
+      el = document.createElementNS(NS, "polygon");
+      el.setAttribute("points", poly(4, r, 0));
+    } else if (n.kind === "series") {
+      el = document.createElementNS(NS, "rect");
+      el.setAttribute("x", -r); el.setAttribute("y", -r * 0.7);
+      el.setAttribute("width", r * 2); el.setAttribute("height", r * 1.4);
+    } else {
+      el = document.createElementNS(NS, "rect");
+      el.setAttribute("x", -r * 0.62); el.setAttribute("y", -r * 0.62);
+      el.setAttribute("width", r * 1.24); el.setAttribute("height", r * 1.24);
+      el.setAttribute("transform", "rotate(45)");
+    }
+    el.setAttribute("class", "sm-glyph");
+    into.appendChild(el);
+  }
+
+  function draw() {
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var t = tiers();
+
+    var defs = document.createElementNS(NS, "defs");
+    defs.innerHTML =
+      '<pattern id="smgrid" width="34" height="34" patternUnits="userSpaceOnUse">' +
+      '<path d="M34 0H0V34" fill="none" stroke="rgba(180,180,180,0.05)" stroke-width="1"/>' +
+      '</pattern>' +
+      '<radialGradient id="smvig" cx="50%" cy="50%" r="72%">' +
+      '<stop offset="52%" stop-color="rgba(16,17,22,0)"/>' +
+      '<stop offset="100%" stop-color="rgba(16,17,22,0.9)"/></radialGradient>';
+    svg.appendChild(defs);
+
+    var bg = document.createElementNS(NS, "rect");
+    bg.setAttribute("width", W); bg.setAttribute("height", H);
+    bg.setAttribute("fill", "url(#smgrid)");
+    svg.appendChild(bg);
+
+    var g = document.createElementNS(NS, "g");
+    g.setAttribute("transform",
+      "translate(" + view.x + "," + view.y + ") scale(" + view.k + ")");
+    svg.appendChild(g);
+
+    data.links.forEach(function (l) {
+      var a = byId[l.s], b = byId[l.t];
+      if (!a.shown || !b.shown) return;
+      var dx = b.x - a.x, dy = b.y - a.y, d = Math.sqrt(dx * dx + dy * dy) || 1;
+      var pad = SIZE[b.kind] + 5;
+      var tier = Math.max(t[a.id], t[b.id]);
+      var ln = document.createElementNS(NS, "line");
+      ln.setAttribute("x1", a.x); ln.setAttribute("y1", a.y);
+      ln.setAttribute("x2", b.x - dx / d * pad);
+      ln.setAttribute("y2", b.y - dy / d * pad);
+      ln.setAttribute("class", "sm-edge t" + tier);
+      g.appendChild(ln);
+      var tk = document.createElementNS(NS, "circle");
+      tk.setAttribute("cx", a.x + dx * 0.64);
+      tk.setAttribute("cy", a.y + dy * 0.64);
+      tk.setAttribute("r", 1.5);
+      tk.setAttribute("class", "sm-flow t" + tier);
+      g.appendChild(tk);
+    });
+
+    data.nodes.forEach(function (n) {
+      var has = (kids[n.id] || []).length;
+      if (!n.shown || !has || n.open) return;
+      var p = (parents[n.id] || [])[0], pn = p && byId[p];
+      var base = 0;   /* the tree grows rightward, so hints point right */
+      var count = Math.min(has, 5), spread = Math.PI * 0.5;
+      for (var i = 0; i < count; i++) {
+        var a = base + (count === 1 ? 0 : (i / (count - 1) - 0.5) * spread);
+        var r0 = SIZE[n.kind] + 4, len = 13 + Math.min(has, 12);
+        var ln = document.createElementNS(NS, "line");
+        ln.setAttribute("x1", n.x + Math.cos(a) * r0);
+        ln.setAttribute("y1", n.y + Math.sin(a) * r0);
+        ln.setAttribute("x2", n.x + Math.cos(a) * (r0 + len));
+        ln.setAttribute("y2", n.y + Math.sin(a) * (r0 + len));
+        ln.setAttribute("class", "sm-stub t" + t[n.id]);
+        g.appendChild(ln);
+      }
+    });
+
+    data.nodes.forEach(function (n) {
+      if (!n.shown) return;
+      var has = (kids[n.id] || []).length;
+      var grp = document.createElementNS(NS, "g");
+      grp.setAttribute("class", "sm-node sm-" + n.kind + " t" + t[n.id] +
+        (has && n.open ? " sm-open" : "") + (n.id === focus ? " sm-focus" : ""));
+      grp.setAttribute("transform", "translate(" + n.x + "," + n.y + ")");
+      grp.setAttribute("tabindex", "0");
+      grp.setAttribute("role", "button");
+      grp.setAttribute("aria-label",
+        n.label + (has ? ", " + has + " below" : ""));
+      shape(n, grp);
+
+      if (n.kind !== "episode" || t[n.id] === 0) {
+        var pad = SIZE[n.kind] + 7;
+        var lead = document.createElementNS(NS, "line");
+        lead.setAttribute("x1", pad - 5); lead.setAttribute("y1", 0);
+        lead.setAttribute("x2", pad); lead.setAttribute("y2", 0);
+        lead.setAttribute("class", "sm-lead");
+        grp.appendChild(lead);
+        var tx = document.createElementNS(NS, "text");
+        tx.setAttribute("class", "sm-label");
+        tx.setAttribute("x", pad + 4);
+        tx.setAttribute("dy", "0.34em");
+        tx.textContent = n.label.length > 32 ? n.label.slice(0, 31) + "\u2026" : n.label;
+        grp.appendChild(tx);
+      }
+
+      grp.addEventListener("click", function () { hit(n); });
+      grp.addEventListener("keydown", function (ev) {
+        if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); hit(n); }
+      });
+      
+      g.appendChild(grp);
+    });
+
+    var vig = document.createElementNS(NS, "rect");
+    vig.setAttribute("width", W); vig.setAttribute("height", H);
+    vig.setAttribute("fill", "url(#smvig)");
+    vig.setAttribute("pointer-events", "none");
+    svg.appendChild(vig);
+  }
+
   var panel = document.getElementById("sm-info");
-  var WHAT = { root: "the front page", section: "a main section",
-    category: "a group of series", series: "a series", episode: "an episode" };
+  var WHAT = {
+    root: "the front page", section: "a main section",
+    category: "a group of series", series: "a series",
+    episode: "an episode"
+  };
   function info(n) {
     if (!panel) return;
     var has = (kids[n.id] || []).length;
     var where = (parents[n.id] || []).map(function (p) { return byId[p].label; }).join(" and ");
     var line = WHAT[n.kind] || "";
     if (where) line += ", under " + where;
-    if (has) line += ". " + has + (n.open ? " ahead, click again to fold away" : " ahead, click to open");
-    var link = n.url ? ' <a class="sm-go" href="' + n.url + '"' +
-      (/^https?:/.test(n.url) ? ' target="_blank" rel="noopener"' : '') + '>Open this page</a>' : "";
+    if (has) line += ". " + has + (n.open ? " below, click to fold away" : " below, click to open out");
+    var link = n.url
+      ? ' <a class="sm-go" href="' + n.url + '"' +
+        (/^https?:/.test(n.url) ? ' target="_blank" rel="noopener"' : '') + '>Open this page</a>'
+      : "";
     panel.innerHTML = "<strong>" + n.label + "</strong><span>" + line + "</span>" + link;
   }
 
-  function go(n) {
+  function hit(n) {
     var has = (kids[n.id] || []).length;
     if (has) {
       n.open = !n.open;
-      if (n.open) (kids[n.id] || []).forEach(function (k) { byId[k].via = n.id; });
-      focus = n.open ? n.id : (n.via || primaryRaw(n.id) || "home");
+      /* Opening carries you forward to the new branch. Folding away pulls back
+         to the parent, so you land where you came from with this node and its
+         siblings in view rather than sitting on a node with nothing under it. */
+      if (n.open) {
+        /* remember the way in, so folding away retraces the path you took
+           rather than the first parent in the data */
+        (kids[n.id] || []).forEach(function (k) { byId[k].via = n.id; });
+        focus = n.id;
+      } else {
+        focus = n.via || (parents[n.id] || [])[0] || "home";
+      }
+      recompute(); layout(); settle();
     } else {
       focus = n.id;
+      settle();          /* no children: just travel to it */
     }
-    layout();
-    frame(950);
     info(n);
-  }
-
-  /* Centre on the focused node and its visible children, and pull back far
-     enough that the whole group sits inside the frame. */
-  function frame(ms) {
-    var f = byId[focus];
-    if (!f || f.gx === undefined) return;
-    var grp = [f];
-    (kids[focus] || []).forEach(function (k) {
-      var c = byId[k];
-      if (c && c.gx !== undefined && shown(c)) grp.push(c);
-    });
-    var xs = grp.map(function (n) { return n.gx; });
-    var zs = grp.map(function (n) { return n.gz; });
-    var cx = (Math.min.apply(null, xs) + Math.max.apply(null, xs)) / 2;
-    var cz = (Math.min.apply(null, zs) + Math.max.apply(null, zs)) / 2;
-    var spread = Math.max.apply(null, zs) - Math.min.apply(null, zs);
-    var wide = Math.max.apply(null, xs) - Math.min.apply(null, xs);
-    var back = 300 + spread * 0.30 + wide * 0.10;
-    var tx = cx, tz = cz - back;
-
-    /* work out where that group would land, then offset the view so it sits
-       squarely in the middle of the frame rather than drifting into a corner */
-    var sx = cam.x, sz = cam.z, sp = panX, sq = panY;
-    cam.x = tx; cam.z = tz; panX = 0; panY = 0;
-    var lo = { x: 1e9, y: 1e9 }, hi = { x: -1e9, y: -1e9 };
-    grp.forEach(function (n) {
-      var q = project(n.gx, n.gz, ter(n.gx, n.gz) + 118 + n.hover);
-      lo.x = Math.min(lo.x, q.x); hi.x = Math.max(hi.x, q.x);
-      lo.y = Math.min(lo.y, q.y); hi.y = Math.max(hi.y, q.y);
-    });
-    var wantX = W * 0.5 - (lo.x + hi.x) / 2;
-    var wantY = H * 0.54 - (lo.y + hi.y) / 2;
-    cam.x = sx; cam.z = sz; panX = sp; panY = sq;
-
-    if (!ms) { cam.x = tx; cam.z = tz; panX = wantX; panY = wantY; return; }
-    fly(tx, tz, ms, wantX, wantY);
   }
 
   var drag = null;
   svg.addEventListener("pointerdown", function (e) {
-    /* capturing the pointer here would steal the click from the marker */
-    if (e.target.closest && e.target.closest(".sm-marker")) return;
-    drag = { x: e.clientX, y: e.clientY, px: panX, py: panY };
+    if (e.target.closest && e.target.closest(".sm-node")) return;
+    drag = { x: e.clientX, y: e.clientY, vx: view.x, vy: view.y };
     svg.setPointerCapture(e.pointerId);
   });
   svg.addEventListener("pointermove", function (e) {
     if (!drag) return;
-    if (anim) { cancelAnimationFrame(anim); anim = null; }
-    moving = true;
-    panX = drag.px + (e.clientX - drag.x);
-    panY = drag.py + (e.clientY - drag.y);
+    view.x = drag.vx + (e.clientX - drag.x);
+    view.y = drag.vy + (e.clientY - drag.y);
     draw();
   });
-  ["pointerup", "pointercancel"].forEach(function (t) {
-    svg.addEventListener(t, function () {
-      if (!drag) return;
-      drag = null;
-      moving = false;
-      draw();
-    });
+  ["pointerup", "pointercancel"].forEach(function (evt) {
+    svg.addEventListener(evt, function () { drag = null; });
   });
 
-  function bind(id, fn) { var e = document.getElementById(id); if (e) e.addEventListener("click", fn); }
-  bind("sm-in", function () { EYE = Math.max(380, EYE - 90); draw(); });
-  bind("sm-out", function () { EYE = Math.min(1400, EYE + 90); draw(); });
+  function zoom(mult) {
+    var f = byId[focus] || byId.home;
+    var before = view.k;
+    view.k = Math.max(0.45, Math.min(2.2, view.k * mult));
+    if (f.tx !== undefined) {          /* zoom about the node you are on */
+      view.x = W * 0.33 - f.tx * view.k;
+      view.y = H * 0.5 - f.ty * view.k;
+    } else {
+      view.x = W / 2 - (W / 2 - view.x) * (view.k / before);
+      view.y = H / 2 - (H / 2 - view.y) * (view.k / before);
+    }
+    draw();
+  }
+  /* Wheel zooms while the pointer is over the map, the way the globe on the
+     home page does. The difference: once you are fully zoomed out and keep
+     scrolling out, the event is left alone so the page scrolls on past instead
+     of trapping you inside the graph. Same at full zoom in. */
+  var MINK = 0.45, MAXK = 2.2;
+  svg.addEventListener("wheel", function (e) {
+    var out = e.deltaY > 0;
+    if ((out && view.k <= MINK + 0.001) || (!out && view.k >= MAXK - 0.001)) return;
+    e.preventDefault();
+    var before = view.k;
+    view.k = Math.max(MINK, Math.min(MAXK, view.k * (out ? 0.94 : 1.064)));
+    /* keep the point under the cursor roughly still */
+    var r = svg.getBoundingClientRect();
+    var cx = (e.clientX - r.left) * (W / r.width);
+    var cy = (e.clientY - r.top) * (H / r.height);
+    view.x = cx - (cx - view.x) * (view.k / before);
+    view.y = cy - (cy - view.y) * (view.k / before);
+    draw();
+  }, { passive: false });
+
+  function bind(id, fn) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener("click", fn);
+  }
+  bind("sm-in", function () { zoom(1.18); });
+  bind("sm-out", function () { zoom(0.85); });
   bind("sm-reset", function () {
-    data.nodes.forEach(function (n) { n.open = n.depth < 1; n.via = null; });
-    focus = "home"; EYE = 820; layout();
-    frame(1000);
-    info(byId.home);
+    data.nodes.forEach(function (n) { n.open = n.depth < 1; });
+    focus = "home";
+    recompute(); layout(); view.k = 1; settle();
   });
 
-  resize();
-  layout();
-  frame(0);
-  draw();
-  var rt;
-  window.addEventListener("resize", function () {
-    clearTimeout(rt);
-    rt = setTimeout(function () { resize(); frame(0); draw(); }, 150);
-  });
-  info(byId.home);
+  recompute(); layout(); settle(true);
 })();

@@ -9,10 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-#sm-svg{--mono:"JetBrains Mono",ui-monospace,monospace;}
 .sm-wrap{max-width:1140px;margin:0 auto;padding:clamp(2.5rem,5.5vw,4rem) clamp(1.25rem,4vw,3rem) 5rem;}
 .sm-wrap h1{font-family:var(--font-display);font-weight:800;
   font-size:clamp(2rem,4.4vw,3rem);letter-spacing:-0.025em;line-height:1.08;}
@@ -50,26 +48,50 @@
 .sm-eps a:hover{color:var(--orange);}
 .sm-eps a.sm-out::after{content:" \2197";color:var(--gray);font-size:0.78rem;}
 
-/* the landscape */
-.sm-graph{position:relative;background:#0a0c11;width:100%;border:1px solid rgba(180,180,180,0.1);
+/* network graph */
+.sm-graph{position:relative;background:#101116;border:1px solid rgba(180,180,180,0.1);
   margin:2.2rem 0 1rem;overflow:hidden;}
 .sm-graph::before,.sm-graph::after{content:"";position:absolute;width:12px;height:12px;
-  border-color:rgba(255,117,23,0.4);z-index:5;pointer-events:none;}
+  border-color:rgba(255,117,23,0.4);z-index:3;pointer-events:none;}
 .sm-graph::before{top:9px;left:9px;border-left:1px solid;border-top:1px solid;}
 .sm-graph::after{bottom:9px;right:9px;border-right:1px solid;border-bottom:1px solid;}
-#sm-svg{display:block;width:100%;height:min(78vh,820px);cursor:grab;touch-action:pan-y;}
+#sm-svg{display:block;width:100%;height:640px;cursor:grab;touch-action:pan-y;}
 #sm-svg:active{cursor:grabbing;}
-/* orange only on hover, the way the rest of the site works */
-#sm-svg .sm-marker{cursor:pointer;}
-#sm-svg .sm-marker .sm-glyph,#sm-svg .sm-marker .sm-lbl{transition:stroke .16s ease,fill .16s ease;}
-#sm-svg .sm-marker:hover .sm-glyph,#sm-svg .sm-marker:focus-visible .sm-glyph{stroke:var(--orange);}
-#sm-svg .sm-marker:hover .sm-lbl,#sm-svg .sm-marker:focus-visible .sm-lbl{fill:var(--orange);}
-#sm-svg .sm-marker:focus{outline:none;}
+
+/* three tiers of attention: what just opened, the path back, everything else */
+.t0{opacity:1;}
+.t1{opacity:0.5;}
+.t2{opacity:0.2;}
+.sm-node,.sm-edge,.sm-flow,.sm-stub{transition:opacity 0.55s cubic-bezier(.4,0,.2,1);}
+
+.sm-edge{stroke:rgba(180,180,180,0.34);stroke-width:1;}
+.sm-flow{fill:rgba(180,180,180,0.4);}
+.sm-stub{stroke:rgba(180,180,180,0.2);stroke-width:1;}
+
+.sm-node{cursor:pointer;}
+.sm-hit{fill:transparent;}
+.sm-glyph{fill:#171921;stroke:rgba(180,180,180,0.5);stroke-width:1.2;
+  transition:fill 0.16s ease,stroke 0.16s ease;}
+.sm-ring{fill:none;stroke:rgba(246,244,244,0.5);stroke-width:1.2;}
+.sm-core{fill:rgba(246,244,244,0.72);}
+.sm-cross{stroke:rgba(246,244,244,0.34);stroke-width:1;}
+.sm-open .sm-glyph{fill:#101116;stroke:rgba(180,180,180,0.32);}
+.sm-node:hover .sm-glyph,.sm-node:focus .sm-glyph{stroke:var(--orange);fill:#1d1f27;}
+.sm-focus .sm-glyph{stroke:rgba(246,244,244,0.85);}
+.sm-node:focus{outline:none;}
+
+.sm-lead{stroke:rgba(180,180,180,0.35);stroke-width:1;}
+.sm-label{fill:var(--gray);font-family:var(--font-body);font-size:11px;
+  pointer-events:none;transition:fill 0.16s ease;}
+.sm-root .sm-label,.sm-section .sm-label{fill:var(--gray-light);font-weight:600;
+  font-size:12px;letter-spacing:0.04em;}
+.sm-node:hover .sm-label,.sm-node:focus .sm-label{fill:var(--orange);}
 
 .sm-bar{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;}
-#sm-info{color:var(--gray);font-size:0.82rem;display:flex;flex-wrap:wrap;
-  align-items:baseline;gap:0.15rem 0.55rem;min-height:1.5rem;max-width:64ch;}
+#sm-info{color:var(--gray);font-size:0.82rem;}
 #sm-info strong{color:var(--gray-light);font-weight:600;margin-right:0.55rem;}
+#sm-info{display:flex;flex-wrap:wrap;align-items:baseline;gap:0.15rem 0.55rem;
+  min-height:1.5rem;max-width:64ch;}
 .sm-go{color:var(--orange);text-decoration:underline;text-underline-offset:3px;
   font-size:0.8rem;white-space:nowrap;}
 .sm-ctrl{display:flex;gap:0.4rem;}
@@ -77,7 +99,7 @@
   font-family:var(--font-body);font-size:0.78rem;padding:0.34rem 0.8rem;cursor:pointer;
   min-width:2.1rem;transition:all 0.16s ease;}
 .sm-ctrl button:hover{color:var(--gray-light);border-color:rgba(180,180,180,0.42);}
-@media (max-width:720px){#sm-svg{height:min(64vh,480px);}}
+@media (max-width:720px){#sm-svg{height:440px;}}
 </style>
 </head>
 <body>
@@ -105,18 +127,18 @@
 <div class="sm-wrap">
 
   <h1>How to find your way around</h1>
-  <p class="sm-lede">The whole site laid out as ground you can fly across. Start at Home and follow each line to see what lies further out. Clicking only travels and opens, so you can explore the shape of things without losing your place.</p>
+  <p class="sm-lede">The whole site as a map. Start at the centre and open each branch to see what sits under it. Clicking only opens a branch, so you can explore the shape of things without losing your place.</p>
   <p class="sm-stat">{{SERIESCOUNT}} series &middot; {{EPCOUNT}} episodes &middot; {{PAGECOUNT}} with full transcripts</p>
 
   <div class="sm-graph">
-    <svg id="sm-svg" viewBox="0 0 1180 660" preserveAspectRatio="none"
-         role="img" aria-label="The site drawn as a landscape you can fly across. A full text index follows below."></svg>
+    <svg id="sm-svg" viewBox="0 0 900 620" preserveAspectRatio="xMidYMid meet"
+         role="img" aria-label="Network graph of the site structure. A full text index follows below."></svg>
   </div>
   <div class="sm-bar">
-    <p id="sm-info"><strong>Drag to fly across it.</strong><span>Click a marker to travel there and open what lies ahead. Nothing takes you off this page unless you ask it to.</span></p>
+    <p id="sm-info"><strong>Click a node to open it out.</strong><span>Drag the canvas to move around. Nothing takes you off this page unless you ask it to.</span></p>
     <div class="sm-ctrl">
-      <button id="sm-out" type="button" aria-label="Raise the camera">&uarr;</button>
-      <button id="sm-in" type="button" aria-label="Lower the camera">&darr;</button>
+      <button id="sm-out" type="button" aria-label="Zoom out">&minus;</button>
+      <button id="sm-in" type="button" aria-label="Zoom in">+</button>
       <button id="sm-reset" type="button">Reset</button>
     </div>
   </div>
