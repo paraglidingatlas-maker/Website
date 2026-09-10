@@ -183,6 +183,10 @@ def render_transcript(paras, chapters, speakers):
     .cd-line is a two column grid, so both cells are always emitted.
     """
     blocks, out = [], []
+    if not paras:
+        return ('      <div class="cd-block"><p class="cd-line"><span class="cd-ts"></span>'
+                '<p>A transcript for this episode has not been produced yet. '
+                'The full conversation is in the player above.</p></p></div>')
     if not chapters:
         chapters = [{"title": "Transcript", "at": 0.0}]
     bounds = [c["at"] for c in chapters] + [float("inf")]
@@ -211,6 +215,8 @@ def render_transcript(paras, chapters, speakers):
 
 
 def render_rail(chapters):
+    if not chapters:
+        return '      <p class="cd-rail-none">No transcript for this episode yet.</p>'
     return "\n".join(
         '      <a class="cd-chap%s" href="#c%d">%s<time>%s</time></a>'
         % (" active" if n == 0 else "", n + 1, esc(c["title"]), clock(c["at"]))
@@ -282,17 +288,20 @@ def build(meta, cues, chapters):
 def main(only=None):
     metas = json.load(open(os.path.join(ROOT, "episode-meta.json"), encoding="utf-8"))
     os.makedirs(OUT, exist_ok=True)
-    built, skipped = 0, []
+    built, skipped, noted = 0, [], []
     for meta in metas:
         slug = meta["slug"]
         if only and slug not in only:
             continue
         vtt = os.path.join(TX, slug + ".vtt")
-        if not os.path.exists(vtt):
-            skipped.append((slug, "no transcript at transcripts/%s.vtt" % slug))
-            continue
-        cues = parse_vtt(vtt)
-        chapters, warn = resolve_chapters(meta, cues)
+        if os.path.exists(vtt):
+            cues = parse_vtt(vtt)
+            chapters, warn = resolve_chapters(meta, cues)
+        else:
+            # No transcript yet. The page is still worth having: player, series,
+            # related episodes and links all stand on their own.
+            cues, chapters, warn = [], [], []
+            noted.append(slug)
         for w in warn:
             print("  warning [%s] %s" % (slug, w))
         page = build(meta, cues, chapters)
@@ -302,6 +311,8 @@ def main(only=None):
     print("\n%d page(s) built." % built)
     for s, why in skipped:
         print("  skipped %-46s %s" % (s, why))
+    if noted:
+        print("  %d built without a transcript (player and links only)" % len(noted))
 
 
 if __name__ == "__main__":

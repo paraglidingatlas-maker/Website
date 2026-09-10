@@ -96,3 +96,5 @@
     .cd-rail-title{padding-left:0;}
     .cd-chap{padding-left:0.8rem;}
   }
+
+.cd-rail-none{color:var(--gray);font-size:0.8rem;line-height:1.5;}
