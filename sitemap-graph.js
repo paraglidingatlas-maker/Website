@@ -386,10 +386,18 @@
         focus = n.via || (parents[n.id] || [])[0] || "home";
       }
       recompute(); layout(); settle();
-    } else {
-      focus = n.id;
-      settle();          /* no children: just travel to it */
+      info(n);
+      return;
     }
+    /* A node with nothing under it is a destination, so go there. Episodes with
+       a page of their own open in this tab; the rest fall back to YouTube. */
+    if (n.url) {
+      if (/^https?:/.test(n.url)) window.open(n.url, "_blank", "noopener");
+      else window.location.href = n.url;
+      return;
+    }
+    focus = n.id;
+    draw();
     info(n);
   }
 
