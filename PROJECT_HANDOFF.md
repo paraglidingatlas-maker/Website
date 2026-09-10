@@ -786,16 +786,25 @@ Open, roughly in order of value:
    ~90 pages, and has since before any of this work. A dead button site wide.
    Needs a real page written, not invented copy.
 
-2. **Episode summaries. STARTED: 6 of 86 written, 71 episodes now have a
+2. **Episode summaries. IN PROGRESS: 16 of 86 written, 71 episodes have a
    transcript to work from.**
-   Done: How to Thermal Like a Pro, Luc Armant, Robbie Whittall, Brett Janaway's
-   Technical Masterclass, Russell Ogden, Metacognition. Each was written from the
+   Batch 1: How to Thermal Like a Pro, Luc Armant, Robbie Whittall, Brett
+   Janaway's Technical Masterclass, Russell Ogden, Metacognition.
+   Batch 2, the ten longest remaining transcripts: Urs Haari on reserves, The
+   Silent Mind In Screaming Winds, Kinga Masztalerz, Godfrey Wenness, Gabriel
+   Orsini, Honorin Hamard, Alain Zoller, Tom Lolies, Goran Dimiskovski, Beni
+   Kalin on New Technologies 1.
+   **Method that works, reuse it:** take the longest transcripts first, read each
+   episode's own opening (roughly 300 to 400 words, where the host almost always
+   states the topic) alongside the show notes from the feed with the boilerplate
+   links stripped out, then write two sentences. That is enough grounding to be
+   accurate and cheap enough to do ten in a batch. Each was written from the
    episode's OWN transcript, cross checked against the show notes in the feed,
    and carries `_summary_source` recording that. Two sentences each, no em-dashes.
    The summary feeds both the on page `.cd-summary` and the `<meta name=
    "description">`, which is the part answer engines actually read, so this is
    the highest value remaining work on the site.
-   65 to go. Batch 8 to 10 per session; context is the constraint, not difficulty.
+   70 to go. Batch 8 to 10 per session; context is the constraint, not difficulty.
    For the 15 pages with no transcript, use the show notes from the feed or leave
    the summary empty. NEVER write one from the title alone. The `summary` field is empty on nearly every page. Two
    good sentences per episode does more for being cited by answer engines than
