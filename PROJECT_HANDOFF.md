@@ -422,3 +422,81 @@ by series or hand picked, and whether the primary player is YouTube or Spotify.
 13. **The sandbox allowlist is fixed at session start.** Adding domains at
     claude.ai/settings/capabilities does not affect a conversation already in
     progress. A new chat is required.
+
+## Episode pages: BUILT AND WORKING (fourth update, 2026-09-10)
+
+### The transcripts
+The user has 52 real transcripts in a Google Drive folder:
+`https://drive.google.com/drive/folders/1Vx4cPOOJZZhAS47upZhx4UMtEMxuInxM`
+They are PDF conversions of WebVTT files produced by Autotekst using Whisper V3.
+**They carry real timestamps AND speaker diarisation tags** (`[SPEAKER_00]`,
+`[SPEAKER_01]`), so the per-line timestamps and speaker attribution in the
+Chapter Deck design both work with real data. This answers the open question
+from the previous handoff.
+
+**Getting them into the sandbox. Three routes, in order of preference:**
+1. **Ask the user to upload a single ZIP of all 52 files.** A zip lands only on
+   disk at `/mnt/user-data/uploads`, so nothing passes through the conversation.
+   `unzip` and `pdftotext` are both present, and `pypdf` is installed. This works
+   in any session with no settings change and is by far the cheapest route.
+2. Allowlist `drive.google.com` and `googleusercontent.com` at
+   claude.ai/settings/capabilities, set the folder to "anyone with the link",
+   then curl each file id. Remember the allowlist only applies to a session
+   started AFTER the change.
+3. The Google Drive connector (`read_file_content`) works and needs no setup, but
+   each transcript is 4,000 to 15,000 words, so pulling 52 through the
+   conversation will blow the context many times over. Use it for one or two
+   files only.
+
+### The generator
+`generate_chapter_deck.py` reads `transcripts/<slug>.vtt` plus `episode-meta.json`
+and writes `episodes/<slug>.html`. Run `python3 generate_chapter_deck.py` for all,
+or pass slugs to build a subset. It parses VTT, merges cues into paragraphs on
+speaker change or a pause, and places chapters.
+
+`episodes/episode.css` is lifted verbatim from the agreed prototype so the design
+is single sourced. `episode-template.html` is the page shell. Nav, footer and
+design tokens come from `../styles.css`.
+
+**Chapters** come from the user's own show notes. Each chapter in
+`episode-meta.json` carries a `cue`: a short phrase actually spoken in the
+episode. The generator finds that phrase in the transcript by fuzzy word match
+(0.7 threshold) and takes its real timestamp. A chapter can carry an explicit
+`at` instead. Unplaceable cues print a warning and are skipped, so bad chapter
+data fails loudly rather than silently inventing timings.
+
+One page is built and live as a working reference:
+`episodes/carabiner-fatigue.html`, from `transcripts/carabiner-fatigue.vtt`.
+Its chapter titles and summary are marked `** review` in `episode-meta.json`
+because that episode's show notes have no bullet list.
+
+### Episode numbering (user's instruction, not yet implemented)
+The "Episode 47" line in the design is currently blank. The user wants real
+numbers: the show began around November 2023, so number episodes chronologically
+from 1 by `pubDate` in the RSS feed, oldest first. Confirm the first episode's
+actual pubDate from the feed rather than assuming, then write the number into
+each `episode-meta.json` entry as `epno` (e.g. "Episode 12").
+
+### Still open on episode pages
+- **The FAQ block is deliberately unbuilt.** `.cd-faq` exists in the CSS and in
+  the prototype. The user has something specific in mind for it and wants to
+  handle it before the project wraps. Do not invent FAQ content.
+- **Guest roles**: the line under the guest's name in the sidebar. The RSS has
+  guest names and links but no job titles. Needs either a line per guest from the
+  user, or extraction from how they are introduced in the transcript.
+- **Related episodes**: proposal on the table is to fill automatically from the
+  same series, overridable per episode in `episode-meta.json`. Awaiting a decision.
+- The prototype's custom play button (`.cd-play`) is unused; the page embeds
+  YouTube directly instead.
+
+## Lesson learned, added this session
+14. **Diff generated markup against the prototype's class list BEFORE pushing.**
+    The first generated episode page was visibly broken: `.cd-line` is a two
+    column grid whose first cell is a per-line timestamp, and the text cell must
+    be a `<p>` because `.cd-line p` carries the font size. The generator put the
+    speaker span in the timestamp cell, omitted that cell entirely on unlabelled
+    paragraphs (collapsing text into a 64px column), used `h3` for chapter
+    headings where only `.cd-block h2` is styled, and invented a `cd-box-title`
+    class that nothing styles. All four would have been caught in seconds by
+    comparing the classes used against the classes the CSS defines. That check is
+    now part of the routine and comes back clean.
