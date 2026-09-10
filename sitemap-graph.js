@@ -230,6 +230,137 @@
              showing: true, lines: lines, fs: fs };
   }
 
+  /* The one place an edge's geometry is defined. The drawn grey line and the
+     travelling signal both read from here, so the signal can never drift off
+     the line it is supposed to be following. */
+  function edgeGeom(a, b, tierOfA) {
+    var info = labelInfo(a, tierOfA === undefined ? 2 : tierOfA);
+    var dx = b.x - a.x, dy = b.y - a.y, d = Math.sqrt(dx * dx + dy * dy) || 1;
+    var pad = SIZE[b.kind] + 5;
+    return { x1: a.x + info.end + 10, y1: a.y,
+             x2: b.x - dx / d * pad, y2: b.y - dy / d * pad };
+  }
+
+  /* ---------------- travelling signal ----------------
+     A very small orange dot that moves node to node along the existing grey
+     lines. It never follows the cursor; it follows the network. */
+  var SIG = null, sigAnim = null, sigAt = null, activeId = null, arriveAt = null;
+
+  function ancestry(id) {
+    var out = [], up = id, g = 0;
+    while (up && g++ < 20) { out.push(up); up = (byId[up].via) || (parents[up] || [])[0]; }
+    return out;
+  }
+
+  /* the node ids to walk through to get from a to b, up to the shared parent
+     and back down, so the signal only ever uses edges that actually exist */
+  function route(a, b) {
+    var up = ancestry(a), down = ancestry(b), i, j;
+    for (i = 0; i < up.length; i++) {
+      j = down.indexOf(up[i]);
+      if (j !== -1) return up.slice(0, i + 1).concat(down.slice(0, j).reverse());
+    }
+    return [a, b];
+  }
+
+  /* turn that into points, reading each hop from edgeGeom so the signal sits
+     exactly on the drawn line, whichever direction it is travelling */
+  function polyline(ids) {
+    var pts = [], k;
+    for (k = 0; k < ids.length - 1; k++) {
+      var p = byId[ids[k]], q = byId[ids[k + 1]];
+      if (!p || !q || !p.shown || !q.shown) continue;
+      var down = (kids[p.id] || []).indexOf(q.id) !== -1;
+      var gm = down ? edgeGeom(p, q) : edgeGeom(q, p);
+      if (down) pts.push([gm.x1, gm.y1], [gm.x2, gm.y2]);
+      else pts.push([gm.x2, gm.y2], [gm.x1, gm.y1]);
+    }
+    return pts;
+  }
+
+  function lengths(pts) {
+    var segs = [], total = 0, i;
+    for (i = 0; i < pts.length - 1; i++) {
+      var dx = pts[i + 1][0] - pts[i][0], dy = pts[i + 1][1] - pts[i][1];
+      var L = Math.sqrt(dx * dx + dy * dy);
+      segs.push(L); total += L;
+    }
+    return { segs: segs, total: total };
+  }
+
+  function pointAt(pts, segs, dist) {
+    var i, acc = 0;
+    for (i = 0; i < segs.length; i++) {
+      if (acc + segs[i] >= dist || i === segs.length - 1) {
+        var f = segs[i] ? (dist - acc) / segs[i] : 0;
+        f = Math.max(0, Math.min(1, f));
+        return [pts[i][0] + (pts[i + 1][0] - pts[i][0]) * f,
+                pts[i][1] + (pts[i + 1][1] - pts[i][1]) * f];
+      }
+      acc += segs[i];
+    }
+    return pts[pts.length - 1];
+  }
+
+  /* one dot plus four smaller ones behind it, all on the same path */
+  var TRAIL = [0, 5, 10, 16, 23];
+  function paintSignal() {
+    if (!SIG) return;
+    while (SIG.firstChild) SIG.removeChild(SIG.firstChild);
+    if (arriveAt && byId[arriveAt] && byId[arriveAt].shown) {
+      var n = byId[arriveAt];
+      var ring = document.createElementNS(NS, "circle");
+      ring.setAttribute("cx", n.x); ring.setAttribute("cy", n.y);
+      ring.setAttribute("r", SIZE[n.kind] + 4);
+      ring.setAttribute("class", "sm-arrive");
+      SIG.appendChild(ring);
+    }
+    if (!sigAt) return;
+    for (var i = TRAIL.length - 1; i >= 0; i--) {
+      var pt = sigAt.at(TRAIL[i]);
+      if (!pt) continue;
+      var c = document.createElementNS(NS, "circle");
+      c.setAttribute("cx", pt[0]); c.setAttribute("cy", pt[1]);
+      c.setAttribute("r", (1.5 - i * 0.26).toFixed(2));
+      c.setAttribute("class", "sm-sig" + (i ? " sm-sig-t" : ""));
+      c.setAttribute("opacity", (1 - i * 0.21).toFixed(2));
+      SIG.appendChild(c);
+    }
+  }
+
+  function signalTo(id) {
+    if (id === activeId && !sigAnim) return;
+    var from = activeId;
+    activeId = id;
+    if (!from || from === id) { arriveAt = id; paintSignal(); return; }
+
+    var pts = polyline(route(from, id));
+    if (pts.length < 2) { arriveAt = id; sigAt = null; paintSignal(); return; }
+    var L = lengths(pts);
+    if (!L.total) { arriveAt = id; sigAt = null; paintSignal(); return; }
+
+    if (reduce) { arriveAt = id; sigAt = null; paintSignal(); return; }
+
+    if (sigAnim) { cancelAnimationFrame(sigAnim); sigAnim = null; }
+    arriveAt = null;
+    var t0 = performance.now();
+    var dur = Math.max(260, Math.min(900, L.total * 1.15));
+    (function step(now) {
+      var q = Math.min(1, (now - t0) / dur);
+      var e = q * q * (3 - 2 * q);            /* ease in and out, no overshoot */
+      var d = e * L.total;
+      sigAt = { at: function (back) {
+        var v = d - back;
+        return v < 0 ? null : pointAt(pts, L.segs, v);
+      } };
+      paintSignal();
+      if (q < 1) sigAnim = requestAnimationFrame(step);
+      else {
+        sigAnim = null; sigAt = null; arriveAt = id; paintSignal();
+      }
+    })(t0);
+  }
+
   function draw() {
     while (svg.firstChild) svg.removeChild(svg.firstChild);
     var t = tiers();
@@ -257,14 +388,12 @@
     data.links.forEach(function (l) {
       var a = byId[l.s], b = byId[l.t];
       if (!a.shown || !b.shown) return;
-      var aInfo = labelInfo(a, t[a.id]);
-      var dx = b.x - a.x, dy = b.y - a.y, d = Math.sqrt(dx * dx + dy * dy) || 1;
-      var pad = SIZE[b.kind] + 5;
+      var dx = b.x - a.x, dy = b.y - a.y;
+      var gm = edgeGeom(a, b, t[a.id]);
       var tier = Math.max(t[a.id], t[b.id]);
       var ln = document.createElementNS(NS, "line");
-      ln.setAttribute("x1", a.x + aInfo.end + 10); ln.setAttribute("y1", a.y);
-      ln.setAttribute("x2", b.x - dx / d * pad);
-      ln.setAttribute("y2", b.y - dy / d * pad);
+      ln.setAttribute("x1", gm.x1); ln.setAttribute("y1", gm.y1);
+      ln.setAttribute("x2", gm.x2); ln.setAttribute("y2", gm.y2);
       ln.setAttribute("class", "sm-edge t" + tier);
       g.appendChild(ln);
       var tk = document.createElementNS(NS, "circle");
@@ -340,8 +469,19 @@
         if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); hit(n); }
       });
       
+      grp.addEventListener("pointerenter", function (ev) {
+        if (ev.pointerType && ev.pointerType !== "mouse") return;   /* not on touch */
+        signalTo(n.id);
+      });
+
       g.appendChild(grp);
     });
+
+    SIG = document.createElementNS(NS, "g");
+    SIG.setAttribute("class", "sm-signal");
+    SIG.setAttribute("pointer-events", "none");
+    g.appendChild(SIG);
+    paintSignal();
 
     var vig = document.createElementNS(NS, "rect");
     vig.setAttribute("width", W); vig.setAttribute("height", H);

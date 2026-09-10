@@ -86,6 +86,23 @@
 .sm-root .sm-label,.sm-section .sm-label{fill:var(--gray-light);font-weight:600;
   font-size:12px;letter-spacing:0.04em;}
 .sm-node:hover .sm-label,.sm-node:focus .sm-label{fill:var(--orange);}
+
+/* the travelling signal: an accent, never a second connector.
+   The head is the same visual weight as the grey line it runs along. */
+.sm-signal{pointer-events:none;}
+.sm-sig{fill:var(--orange);}
+.sm-sig-t{fill:var(--orange);}
+.sm-arrive{fill:none;stroke:var(--orange);stroke-width:1;opacity:0.5;
+  animation:smSettle 900ms ease-out forwards;}
+@keyframes smSettle{
+  0%{opacity:0.55;transform:scale(0.94);}
+  35%{opacity:0.4;}
+  100%{opacity:0.16;transform:scale(1);}
+}
+.sm-arrive{transform-box:fill-box;transform-origin:center;}
+@media (prefers-reduced-motion:reduce){
+  .sm-arrive{animation:none;opacity:0.3;}
+}
 /* a node with nothing under it is a destination, so mark it as one */
 .sm-node:hover .sm-hit,.sm-node:focus .sm-hit{fill:rgba(255,117,23,0.05);}
 .sm-episode:hover .sm-label,.sm-episode:focus .sm-label{text-decoration:underline;
