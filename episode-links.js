@@ -1,10 +1,11 @@
-/* Generated. Maps a YouTube id to the episode page on this site, so the
-   library, the Knowledge Base and the sitemap all send people to the same
-   place. Do not edit by hand. */
+/* Generated. Maps a YouTube id to its page on this site, so the library,
+   the Knowledge Base and the sitemap all send people to the same place.
+   Do not edit by hand. */
 window.EPISODE_PAGES = {
  "0VPg7TZ9hK0": "navigating-panchgani-vistasp-kharas",
  "3ZySapU_YLI": "the-art-of-capturing-human-flight-jake-holland-s-guide-to",
  "78PaTvxRWJ0": "aljaz-valic-777-paraglidings-slovenian-mavericks",
+ "7ezjN2F247A": "birds-eye-view-of-oslo-stunning-nordic-cityscape-part-2",
  "7il6yV1vdIc": "task-2-highlights-15th-paragliding-world-cup-super-final",
  "9GfZcM3P3jY": "brand-stories-neo-eric-roussel",
  "AvSCngFI7R0": "if-you-fly-in-the-himalayas-alps-or-above-3000-mtrs-this",
@@ -19,6 +20,7 @@ window.EPISODE_PAGES = {
  "FOuAWMeoxs4": "highlights-day-1-pwca-superfinal-2026",
  "FvIZpqydhyo": "pal-takats-on-challenges-change-the-future-of-paragliding",
  "G-gqUxq0C6Q": "how-to-thermal-like-a-pro-find-center-climb-paragliding",
+ "Hei3hWbkbwg": "birds-eye-view-of-oslo-stunning-nordic-cityscape",
  "J5j3Hk_HcFQ": "metacognition-paragliding-s-hidden-psychology-with-beni",
  "J8visA4lxys": "risk-vs-reward-2-subir-sidhu",
  "Kdd1R8x36vU": "from-tents-to-trophies-understanding-acro-champion-s",
@@ -38,6 +40,7 @@ window.EPISODE_PAGES = {
  "UVLF8l0qFlA": "pre-pwc-kenya-nikolay-yotov",
  "VmaPERBK-lo": "the-unfiltered-truth-about-paragliding-governance-with",
  "VqkYy6YhXcY": "consequence-over-probability-will-gadd-on-why-true-safety",
+ "XHIQS658G24": "just-another-day-in-paradise-oslo-paragliding-norway",
  "YGU7-ctBYYE": "why-paraglidings-safety-future-looks-different-rast",
  "YyGdTDXC1Lc": "bill-belcourt-the-uncomfortable-truth-no-one-is-talking",
  "ZjSojM_Ao0U": "pwc-lifestyle-klaudia-bulgakow",
@@ -60,6 +63,7 @@ window.EPISODE_PAGES = {
  "kOgDYSvfUuo": "navigating-colombia-pal-takats",
  "kSoFk23TuX0": "watch-this-before-you-buy-a-paragliding-harness-a-talk",
  "l1gmplS02FI": "pwca-goran-dimiskovski",
+ "l_iHET2H5E0": "art-of-flight-in-norwegian-skies",
  "mYG80ZiHIyo": "sports-psychology-for-paragliding-train-your-mind-to-fly",
  "md9ls8OtBiA": "risk-vs-reward-1-philipp-zellner",
  "njoPDwe457w": "risk-vs-reward-3-manfred-ruhmer",
