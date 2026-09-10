@@ -1,0 +1,1594 @@
+WEBVTT
+
+00:00.149 --> 00:04.011
+[SPEAKER_01]: [Automatic captions by Autotekst using OpenAI Whisper V3. May contain recognition errors.] Once on a festival, we gave out a glider to a pilot. The pilot came back, and
+
+00:04.031 --> 00:12.295
+[SPEAKER_01]: then he was complaining about the handling. The turning is too less, entering, whatever. And then I tried to give him some advice, how to
+
+00:12.336 --> 00:19.839
+[SPEAKER_01]: shift the brake and whatever. Maybe he can try whatever. And then his answer was simply, I only fly on Sundays. I don't care.
+
+00:23.201 --> 00:34.718
+[SPEAKER_01]: So I had two prototypes. Actually, very similar glider. DC. And both worked and both performed better. And I said, oh, fuck. Yeah. Shall we
+
+00:34.738 --> 00:35.560
+[SPEAKER_01]: certify now both?
+
+00:39.665 --> 00:48.491
+[SPEAKER_00]: A big hello to all our listeners. Welcome back to Paragliding Atlas once again everyone. The podcast where we soar through the world of free
+
+00:48.551 --> 00:58.258
+[SPEAKER_00]: flight, exploring the latest gear, tech and all the adventures that come with it. Humble apologies for taking forever and much longer than
+
+00:58.318 --> 01:06.721
+[SPEAKER_00]: planned to come out with this one. The excuse is still the same, just been chasing some crazy good airtime and some very high cloud bases in
+
+01:06.781 --> 01:15.543
+[SPEAKER_00]: various locations that our planet has had to offer this summer. However, bygones are bygones and basically to put it simply, after
+
+01:15.583 --> 01:25.106
+[SPEAKER_00]: blowing most of my money and getting a really good tan, I am back to being my usual self. In coming days, there's a lot of accumulated content that
+
+01:25.166 --> 01:35.351
+[SPEAKER_00]: is planned for release and as I usually say, Stay tuned, stay excited, it's just gonna get better from here on. On that note, without further
+
+01:35.371 --> 01:44.877
+[SPEAKER_00]: ado, let's dive deep into the episode number 3 which was recorded long back of the topic new technologies. And this time around we have another
+
+01:44.957 --> 01:54.562
+[SPEAKER_00]: truly special guest called Stefan Steigler. For those of you who know him, he is the mastermind behind Air Design Paragliders. The reason why
+
+01:54.582 --> 02:02.266
+[SPEAKER_00]: I'm using the word mastermind is that because it takes quite a lot of courage to come out with a brand new design and be one of the first ones in
+
+02:02.286 --> 02:10.531
+[SPEAKER_00]: the industry to set a status quo, especially with all the commercial risks involved and the amount of money that is being put into the R&D and
+
+02:10.731 --> 02:19.016
+[SPEAKER_00]: just going out there in the market and saying that, hey, I'm going to take the lead and let's see who wants to follow. So needless to say, Stefan and
+
+02:19.036 --> 02:25.640
+[SPEAKER_00]: his team have been at the forefront of paragliding innovation as they were the first ones to come out with this brand new concept of two liner
+
+02:25.801 --> 02:34.987
+[SPEAKER_00]: ENC. Not so long ago, they had the second generation of the same kind out on the market as well. This talk is mostly about the brilliant mind that
+
+02:35.007 --> 02:43.233
+[SPEAKER_00]: has gone behind the design and the challenges that they faced. A lot of things about what this means for the future of paragliding. So let's
+
+02:43.293 --> 02:44.995
+[SPEAKER_00]: dive right in and let's get this going.
+
+02:50.422 --> 02:56.887
+[SPEAKER_00]: Stefan Zeigler, thank you so much for coming on Paragliding Atlas Man. So nice to see you here. How is life treating you? Thanks for having me.
+
+02:57.267 --> 03:04.812
+[SPEAKER_00]: Yeah, I heard you are trying to be one of the fittest paragliding designers out there, smashing an Ironman very soon. So I think life
+
+03:04.872 --> 03:12.177
+[SPEAKER_00]: seems exciting in the air and also on the ground. But if you can give us a little bit of a history, what's going on? Yeah, you know, it's, well, I
+
+03:13.278 --> 03:21.279
+[SPEAKER_01]: don't know if this is a big deal, but I think it's important to set some goals in your life. And currently, you know, paragliding i did i'm
+
+03:21.439 --> 03:29.243
+[SPEAKER_01]: flying since 35 years now and achieved a lot of things and yeah it's always to expand your horizon and currently the last past years it's
+
+03:29.303 --> 03:37.608
+[SPEAKER_01]: more like yeah triathlon is so my my thing it was just more like an accident that i get to got to this but now i carry on and i get really
+
+03:37.668 --> 03:47.919
+[SPEAKER_01]: motivated and training and but it gives so much insight to to the body, how it's evolving, developing, what you can do, what you can achieve.
+
+03:47.999 --> 03:56.703
+[SPEAKER_01]: It's also for your health and your nutrition. It's so complex, all the thing, and so interesting. And yeah, I'm setting my goals now in this,
+
+03:57.063 --> 04:05.868
+[SPEAKER_01]: another sport, like say, not giving up paragliding, don't worry, but it's, it's, it, it makes fun actually, you know, even it's, it's really
+
+04:05.948 --> 04:17.992
+[SPEAKER_01]: cruel running a marathon in a, in a triathlon, but it, it, All over, it's fun and it's very positive, everything. So I just can recommend to
+
+04:18.032 --> 04:24.836
+[SPEAKER_01]: everybody else, set yourself some goals which you think you can achieve, and then you really surprise yourself what is possible, what
+
+04:24.876 --> 04:33.061
+[SPEAKER_01]: you can do. You never thought before it's possible. And then when you've done it, you say, oh, I've done it. I never thought it's possible. And
+
+04:33.081 --> 04:41.866
+[SPEAKER_01]: this is something that keeps you progressing and developing and I think this is important. Now, so good to hear that. And so are we eventually
+
+04:41.926 --> 04:50.789
+[SPEAKER_00]: looking at the designer himself trying to compete in Excel or Dolomiti Man or something like that eventually? Because if you're good on the
+
+04:50.809 --> 05:00.473
+[SPEAKER_00]: ground and you make your own links, then I think that should be the next logical step for anyone pushing the limits. Well, currently it's,
+
+05:00.653 --> 05:02.914
+[SPEAKER_01]: yeah, I'm running out of time. It is. Honestly.
+
+05:05.952 --> 05:15.796
+[SPEAKER_01]: what a shame now we have to get you in the competition never say no never say no but no no no whatever was happening next year well the past past
+
+05:15.837 --> 05:25.181
+[SPEAKER_01]: months we were very busy you know certifying all this this cloud so it was a hard work and there was almost no time left besides working so yeah it's
+
+05:25.201 --> 05:34.825
+[SPEAKER_01]: always a mixture Amazing. But Stefan, just to help our audiences get on track, how did, like you said, you have 35 years of history in the sport
+
+05:34.945 --> 05:42.568
+[SPEAKER_00]: and, you know, you have always tried to probably, you know, try and make the most of what you have. So can you just tell us a little of a journey,
+
+05:42.608 --> 05:49.890
+[SPEAKER_00]: like how did designing come into your life? I mean, of course, all of us start with flying and the fascination for aviation and everything. How
+
+05:49.910 --> 05:59.233
+[SPEAKER_00]: did you decide that, okay, you know, about time I start putting my mind, body and soul into creating something because i love the i mean there are
+
+05:59.273 --> 06:08.195
+[SPEAKER_00]: a lot of things that we will eventually talk about but the the the outer look or the design of the air design wings the way you guys color them and
+
+06:08.215 --> 06:16.877
+[SPEAKER_00]: the way you have the the lines displaying over them it's it's like it it depicts a little bit of a flow state to me so i'm just curious like what was
+
+06:16.917 --> 06:24.659
+[SPEAKER_00]: the mindset that went behind creating something like this eventually and how did you reach this stage in your life Well, I started paragliding
+
+06:24.919 --> 06:36.083
+[SPEAKER_01]: in 1988. So it sounds a really long time ago. Actually, it is. And from the beginning on, I felt really comfortable with paragliding. I was
+
+06:36.143 --> 06:43.986
+[SPEAKER_01]: progressing very fast. So immediately after the course, I can stay longer in the air than the others. I have more control about the glider. I
+
+06:44.067 --> 06:51.951
+[SPEAKER_01]: enjoyed it more. And so the first things we started doing, you know, the gliders these days, they have no performance at all. You know, it's like
+
+06:52.011 --> 07:00.456
+[SPEAKER_01]: not paragliding, it was para-falling more or less. It's like skydiving kind of thing. Yeah, we were not really sure on the takeoff if we can make
+
+07:00.496 --> 07:11.823
+[SPEAKER_01]: it over the trees. Even it was so steep. But it progressed and then I was one of the first ones started, yeah, sermeling and flying to the next
+
+07:11.863 --> 07:21.347
+[SPEAKER_01]: sermel and tried to figure out how to reach the next mountain. And then like this, the cross crunchy kind of developed in our area like this, you
+
+07:21.367 --> 07:28.709
+[SPEAKER_01]: know, because then I showed the others, hey, this is working. We can fly further. And so, and at the same time, the paragliding design
+
+07:28.849 --> 07:36.872
+[SPEAKER_01]: increased. And then I started because of the competing. First, it was just who can stay longest in the air. And then it was really like a spot
+
+07:36.932 --> 07:45.752
+[SPEAKER_01]: landing. So very, yeah, nonsense competitions, actually. But it was kind of a competition. And I was always good on the front. so i enjoyed it
+
+07:46.332 --> 07:52.556
+[SPEAKER_01]: and then the next cross country come and then the real competitions came where we're going on speed on turn points and stuff like this so it was
+
+07:52.617 --> 08:03.584
+[SPEAKER_01]: progressing very fast and i got a sponsor contract for competing so this was my entry into this kind of semi professional sport still i was
+
+08:03.624 --> 08:13.940
+[SPEAKER_01]: working but yeah i was always supported and then i got a phone call not not that we are we're in the beginning from pro design They were looking for a
+
+08:13.960 --> 08:22.824
+[SPEAKER_01]: test pilot. And I said, yeah, why not? So I started working really professionally as a test pilot and competing at the site. And then after
+
+08:22.884 --> 08:31.547
+[SPEAKER_01]: four years working for ProDesign, I became a world champion in Japan. And this opened all the doors for every possibility. And I changed the
+
+08:31.627 --> 08:42.522
+[SPEAKER_01]: company to UP, Ultralight Products. And then I was working also for test pilot and competition pilot. and then one day there's something
+
+08:42.562 --> 08:53.413
+[SPEAKER_01]: happened that the designer there is he said he's quitting he's leaving tomorrow if you want kind of you know but very short time and then it was
+
+08:53.473 --> 09:03.322
+[SPEAKER_01]: like yeah if you want to take it over i give you an introduction into the design software and you can try doing it and and actually these days we
+
+09:03.362 --> 09:13.922
+[SPEAKER_01]: were too it was torsion city and me and we said yeah why not then my thing was always you know we were testing but not the designer and it was always
+
+09:13.942 --> 09:20.344
+[SPEAKER_01]: the point that i always had to get the feedback i had to get the feeling for the glider how it's feeling how it's performing if it's too dynamic or
+
+09:20.404 --> 09:29.647
+[SPEAKER_01]: too static and stuff like this so the other colors behaviors whatever but i had no in view deeper in inside view what in the design is affecting
+
+09:29.687 --> 09:38.566
+[SPEAKER_01]: this behavior And this was always the missing link kind of, you know, and this was then the possibility to take, to get into the designing. It was
+
+09:38.626 --> 09:47.469
+[SPEAKER_01]: very funny, just a short introduction, a few days into software like this. And I say, okay, now try to make your glider. And, but for me, it was
+
+09:47.929 --> 09:57.465
+[SPEAKER_01]: kind of a eye opener because then I saw, ah, This profile is in this glider and that is why it's shooting like hell, you know, or we got this deep
+
+09:57.505 --> 10:07.288
+[SPEAKER_01]: store problem, you know? So I could combine the design and the practical experience I had with the glider, you know? And this is, I think, one of
+
+10:07.328 --> 10:16.971
+[SPEAKER_01]: the keys of the success for my gliders because I do both. It's not separated. For sure, we have input from many pilots and test pilots, but
+
+10:17.768 --> 10:28.071
+[SPEAKER_01]: it's like we have to be on on the same flow of understanding each other that we know what we do and what we yeah when we change something but it's
+
+10:28.672 --> 10:37.934
+[SPEAKER_01]: changing actually on the glider and i know then actually you know because i designed it i have something in my back mind always you know why
+
+10:37.994 --> 10:44.939
+[SPEAKER_01]: i change the design whatever i want to improve something change the characteristics and then i fly it Then I know immediately, ah, okay,
+
+10:44.979 --> 10:51.127
+[SPEAKER_01]: it's not working. It's working. Or this is very strange. And then we find out whatever. So it's always the combination between the practical
+
+10:51.147 --> 11:00.599
+[SPEAKER_01]: experience, the feedback and to design and force and bake all the time, you know? And yeah, from that time on, you know, it was actually more or
+
+11:00.619 --> 11:09.684
+[SPEAKER_01]: less, uh, It's like collecting experience on the design side and on the practical side, on the test side, on the input. So it never stops. It's
+
+11:09.704 --> 11:16.649
+[SPEAKER_01]: never the same. You can't say you design a glider, make small modifications. Okay, you want this new prototype, very similar,
+
+11:17.110 --> 11:26.637
+[SPEAKER_01]: completely different in the reality. It's a living thing. Like somebody said once. That's true. Yeah. And then UB also came to an end and
+
+11:27.498 --> 11:35.964
+[SPEAKER_01]: a former colleague from me, Martin Gostner, contacted me. And by the short kind of internet set airwave, but this work didn't work out
+
+11:36.265 --> 11:45.089
+[SPEAKER_01]: internally. But Martin and we, we came together and say, okay, we're doing this now since almost 30 years or whatever. He's very, you know,
+
+11:45.410 --> 11:54.655
+[SPEAKER_01]: into the sales ship and I'm into the science. So, and we have a lot of ideas and we cannot realize them anymore, you know, like being an employee and
+
+11:54.695 --> 12:04.013
+[SPEAKER_01]: not your own boss. And we have, so we're just stuck somewhere, you know? So we said, so why not doing it on company and try to realize what we want to
+
+12:04.033 --> 12:13.319
+[SPEAKER_01]: do. And actually this was the beginning of air design and it works like we thought, you know, we're making paragliders and we have pretty some
+
+12:13.399 --> 12:20.002
+[SPEAKER_01]: models in our range, which are in the beginning. Now they're the best selling models actually. But in beginning, it was kind of a crazy
+
+12:20.042 --> 12:27.314
+[SPEAKER_01]: concept where they said, What for? We need an A, a B, a C glider. You know, this is the mainstream. We have to sell gliders. We have to make profit,
+
+12:27.354 --> 12:36.279
+[SPEAKER_01]: whatever. We have to live in, even we don't get rich, but somehow we have to fill the boxes, you know? What is it? Yeah, but I, for I can fly, I want a
+
+12:36.299 --> 12:44.484
+[SPEAKER_01]: glider like this, you know? And it's not on the market. It's not there. It's existing. So I make one, you know? So that's why, for example, the
+
+12:44.504 --> 12:53.557
+[SPEAKER_01]: Susi, yeah, was created because I wanted to have a small light glider, which performs very good, pretty well. and ticks all these boxes and but
+
+12:53.617 --> 13:03.435
+[SPEAKER_01]: it's not you cannot put it in a standard category for example so Yeah, we do a lot of things which sounds a bit crazy sometimes, like making a
+
+13:03.475 --> 13:14.625
+[SPEAKER_01]: two-line Susie, which is then the loco glider, for example. So we had no clue for what this glider is, you know, actually. But it was fun to make it
+
+13:14.685 --> 13:22.252
+[SPEAKER_01]: and it's fun to fly it. So we said, okay, let's certify because we can do it and it works. So why not just bring it, do something completely
+
+13:22.272 --> 13:34.384
+[SPEAKER_01]: different, you know. It's not always thinking in boxes. It's more like, okay, you have to be open-minded all the time, get input, and not try to
+
+13:34.464 --> 13:42.813
+[SPEAKER_01]: follow everybody or anything. Just go your own way. And if you think, oh, this could be interesting, just try it out, try it out. You never know.
+
+13:43.613 --> 13:55.295
+[SPEAKER_01]: Wow. I think what really fascinates me about this story is that you just were chasing passion since day one without any set specific goals and
+
+13:55.336 --> 14:02.017
+[SPEAKER_00]: everything else just came your way naturally. And I think that's what eventually happens when you do something with all your heart and soul.
+
+14:02.397 --> 14:10.119
+[SPEAKER_00]: Things just work out. All you have to have is the will and put in the effort. So I think that's a very... Very good progression, I must say,
+
+14:10.139 --> 14:17.341
+[SPEAKER_00]: from an athlete to a designer to a manufacturer to a brand owner or something like that. Yeah, I would not say that everything happened by
+
+14:17.421 --> 14:23.863
+[SPEAKER_01]: accident like this. You're not sure there were certain goals that you want to achieve, but somehow you were right to say that this is like,
+
+14:23.943 --> 14:33.867
+[SPEAKER_01]: okay, it worked out like this and it progressed and evolved like this all the time, all the time. So actually this point where I'm sitting now,
+
+14:33.887 --> 14:46.054
+[SPEAKER_01]: where I'm rich now, actually somehow I also feel that okay this has i got to this point i don't know why you know even you know for sure it's it's
+
+14:46.254 --> 14:53.703
+[SPEAKER_01]: there's a structure and there are goals step by step whatever but something's just involved and that makes the next thing possible
+
+14:54.064 --> 15:02.553
+[SPEAKER_01]: that's the point yeah Got it. But I just want to quickly touch upon the fact that from the transition from an athletic career to sitting behind
+
+15:02.593 --> 15:09.401
+[SPEAKER_00]: a desk, like, you know, being a world champion and kind of chasing all the airtime and, you know, all the glory that comes with it and pushing the
+
+15:09.421 --> 15:18.188
+[SPEAKER_00]: speed bar and leaving your competitors behind is a quite fulfilling feeling in itself. And eventually when you have to switch over to a
+
+15:18.248 --> 15:28.232
+[SPEAKER_00]: screen and try to have a nine to five in your life, I mean, kind of, I mean, it's far away from a nine to five, but still, was it a hard transition? Did
+
+15:28.272 --> 15:36.175
+[SPEAKER_00]: you have to kind of, you know, ask, I mean, convince yourself that, okay, now this is where money is and this is where I need to kind of put in my
+
+15:36.215 --> 15:44.260
+[SPEAKER_00]: resources? Or did it just like, okay, this is a part of life and you just very easily cruised into your new role or just like life just happened
+
+15:44.280 --> 15:52.666
+[SPEAKER_00]: that way like how did athletic transition from an athlete to a to an employee or a owner business owner happen well actually this this
+
+15:52.746 --> 16:03.011
+[SPEAKER_00]: transition to to do both things i think this made a lot of things easier i would say it's not it's not as a test pilot you yeah you stuck because you
+
+16:03.051 --> 16:13.278
+[SPEAKER_01]: can't do more than just testing and giving feedback but as designing and testing yeah you you do both and you can really progress you do one step
+
+16:13.338 --> 16:21.984
+[SPEAKER_01]: after the other for sure it's a much more much more time involved you spend it but you don't count it really because you see the progress so you
+
+16:22.005 --> 16:31.767
+[SPEAKER_01]: go on and you accept it and and so on yeah and and the same is like being an employee or or having your own company Yeah, it's the same. You're not
+
+16:31.807 --> 16:40.169
+[SPEAKER_01]: working from nine to five. You work whenever the weather is fine or it's needed or sometimes more, sometimes less. Sometimes I take my time off.
+
+16:40.229 --> 16:52.111
+[SPEAKER_01]: Sometimes I have to take time where I don't have time for working or solving things or drive to Switzerland for 10, 15, 14 hours out and back
+
+16:52.231 --> 17:01.671
+[SPEAKER_01]: one day just to make things happen. And normally as an employee, you wouldn't do that. whatever. But it's, you're not counting this. It's
+
+17:01.731 --> 17:12.340
+[SPEAKER_01]: always the project, the goal, the motivation is still there. And yeah, that keeps going. Now, so I think you're basically stressing on the fact
+
+17:12.360 --> 17:19.306
+[SPEAKER_00]: right mindset will get you places all you gotta do is dream and kind of put in the work and then things happen, right? Yeah, in the beginning, when
+
+17:19.346 --> 17:26.671
+[SPEAKER_01]: we founded Edesign, we were really working really hard. And both my colleague and me, we were really close for burnout. So we were really
+
+17:27.032 --> 17:39.718
+[SPEAKER_01]: working too much. But this is also a process where you have to start learning to stop at a certain point. To say, okay, it's not... You can't
+
+17:39.778 --> 17:50.441
+[SPEAKER_01]: do more than what is ours today. So you have to stop, come to an end, switch off. And switching off, it's not only switching off the computer, it's
+
+17:50.481 --> 17:58.103
+[SPEAKER_01]: also switching off your brain. This is the most important thing. And this is very hard. It's a very tough experience that you get to this point
+
+17:58.143 --> 18:06.145
+[SPEAKER_01]: where you say, okay, there's no other chance. Now you're saying, okay, if I'm not stopping now, you kill yourself, actually. I think this is a
+
+18:06.900 --> 18:14.783
+[SPEAKER_01]: Yeah, this is a social disease, I would say, of our community worldwide everywhere. But yeah, it's a process you have to learn for yourself.
+
+18:14.863 --> 18:22.717
+[SPEAKER_01]: Everybody has to learn this stuff. And it's like when you take things a little bit more relaxed, The funny thing is you put less working hours
+
+18:23.057 --> 18:32.942
+[SPEAKER_01]: into everything currently like this, but the result is much more than before where I was stressed from morning to night. And it's like I went to
+
+18:33.002 --> 18:39.866
+[SPEAKER_01]: sleep and designing in my dreams, whatever. And then in the morning waking up and say, oh, I have to empty my brain, go switching off the
+
+18:39.906 --> 18:48.709
+[SPEAKER_01]: computer and stuff like this. But this makes you completely mad. I think I have a thing or two to learn because that is, as I was telling you
+
+18:48.950 --> 18:56.295
+[SPEAKER_00]: yesterday, I was kind of in that same drive mode that, oh my God, this is all I have to do. But anyways, without deviating from the talk, let me
+
+18:56.395 --> 19:03.661
+[SPEAKER_00]: backtrack you a little bit to the beginning of paragliding, as you said, because you've seen the wings from the time when it was very hard to get
+
+19:03.921 --> 19:11.627
+[SPEAKER_00]: the minimal glide ratio back. to a point where you guys are pioneering in the industry and bringing out a second generation of a whole new
+
+19:11.647 --> 19:21.096
+[SPEAKER_00]: technology of two-liner Cs. So what has been the philosophy of the wings? You know, we have seen like crazy wings come out and people
+
+19:21.136 --> 19:31.219
+[SPEAKER_00]: chasing more penetration, more glide, and yet eventually safety also became a part of the whole scenario. Like R11 was there. I mean, on
+
+19:31.239 --> 19:39.322
+[SPEAKER_00]: YouTube, there's a famous wing called Death Blade and all of that. So eventually we decided as a community that not to push performance and
+
+19:39.342 --> 19:48.130
+[SPEAKER_00]: bring in the safety aspect, but How do you think paragliding has evolved and what has been the mindset from the very early days when even
+
+19:48.170 --> 19:57.799
+[SPEAKER_00]: transitioning from one thermal to other was a question until now when we are just smashing 600 plus kilometers in world records? How has the
+
+19:57.840 --> 20:09.550
+[SPEAKER_00]: journey been from your eyes as a designer and as an athlete? That's a big topic. Yeah. Sorry to ask you an open-ended question, but Mike, it's you
+
+20:09.610 --> 20:20.639
+[SPEAKER_00]: who has seen this from day one. I had to bring it out. Yeah. In the beginning, the gliders progressed so fast. And in the beginning, the
+
+20:20.659 --> 20:28.285
+[SPEAKER_01]: gliders actually, when I look back, there were some models which are really scary, dangerous. And a lot of accidents happened at that time.
+
+20:29.465 --> 20:37.962
+[SPEAKER_01]: and my my motivation was always you know for sure i had accidents as well and you know afterwards you analyze it and say okay why did something
+
+20:38.002 --> 20:46.327
+[SPEAKER_01]: happen because you want to keep on flying. And if I don't know why something happens, I probably will stop because I cannot solve my
+
+20:46.367 --> 20:56.331
+[SPEAKER_01]: fears. So I need to, I need to need to know why things are happening. And I think maybe this is kind of a background when I started making
+
+20:56.371 --> 21:05.174
+[SPEAKER_01]: paragliding. It's also kind of philosophy, how I do the gliders. It's like, I always have this, maybe a little bit conservative in terms of
+
+21:05.354 --> 21:15.696
+[SPEAKER_01]: safety. And durability and everything, what makes you comfortable in flight. Not pushing the limits sometimes so hard. Even sometimes I try
+
+21:15.716 --> 21:27.189
+[SPEAKER_01]: to push the limits, but I always end up in a very comfortable glider. That's very funny. I don't know why. Yeah, I think it's always, you know,
+
+21:27.229 --> 21:36.343
+[SPEAKER_01]: when I look, when I go outside, I go to visit the flight school nearby or when I go up the hill and I see the students and the training here on the
+
+21:36.363 --> 21:47.732
+[SPEAKER_01]: takeoff, then you see the different level of pilots. It's also a matter that I can feel like they feel and what their ability is. And I watch them
+
+21:47.872 --> 21:56.378
+[SPEAKER_01]: all the time, you know. So I see what are the demands on the A glider, B glider, C glider, or where you shift the behavior of a glider and the
+
+21:56.398 --> 22:05.802
+[SPEAKER_01]: design then. Because we have to make the gliders for the pilots to... And not for a category, actually. The category is just the finalization of
+
+22:05.842 --> 22:19.665
+[SPEAKER_01]: the certification. But actually, the glider itself has to work for the abilities and the demands for A pilot or B pilot, for example. And this is
+
+22:19.725 --> 22:28.927
+[SPEAKER_01]: actually the main work in the design process, besides the certification and everything. So the flying characteristics is
+
+22:28.967 --> 22:37.360
+[SPEAKER_01]: always the thing. No, makes sense. Makes sense. And I think this resonates a bit with your philosophy of air design that have fun and be a
+
+22:37.420 --> 22:45.002
+[SPEAKER_00]: rebel at the same time. So I think as long as it puts a smile on your face while you're putting your glider in the air and, you know, making,
+
+22:45.282 --> 22:53.084
+[SPEAKER_00]: making airtime with it. It's always the best thing if there's a customer comes back and says, okay, I like your glider and it makes me so happy and
+
+22:53.104 --> 23:00.347
+[SPEAKER_01]: it's so nice and whatever. It's just like, okay, yeah, we put a lot of effort in and this is the payback then. yes it's like yeah it's like
+
+23:00.488 --> 23:07.233
+[SPEAKER_01]: that's your profit yeah it's your earning actually and the other thing is like when you say when you mentioned when osun came out with the
+
+23:07.273 --> 23:16.802
+[SPEAKER_01]: two-line concept for sure this is something very interesting and it was clear that this opens a new a new yeah design philosophy and a new
+
+23:16.882 --> 23:27.331
+[SPEAKER_01]: approach and a new category of gliders on the market and yeah and from the beginning on i was always interested how this is How is this working?
+
+23:27.811 --> 23:36.820
+[SPEAKER_01]: Because logically, just making a glider and reducing the line attachments, it wouldn't work. So we have to rethink completely
+
+23:36.860 --> 23:49.324
+[SPEAKER_01]: everything. And in the past years it was the major work happened all just to find out how to make this work and then how to make it work for the
+
+23:49.364 --> 23:58.751
+[SPEAKER_01]: performance and for the safety and so on there and then when you know where what what is happening in this construct for for example because
+
+23:58.791 --> 24:08.254
+[SPEAKER_01]: it's a very high complicated flexible and stiff whatever it's so yes it's pretty complicated when it's finally it's very simple But as long
+
+24:08.294 --> 24:17.701
+[SPEAKER_01]: as it's not working, then it's very complicated. And now when you get to this point, when we got to this point where I say, okay, yeah, we have our
+
+24:18.582 --> 24:30.427
+[SPEAKER_01]: base of design and we know, okay, where we can screw, turn the screws to change the behavior or characteristic and where to... put the right
+
+24:30.467 --> 24:39.270
+[SPEAKER_01]: trigger for the performance and the floating and everything else. So now this is the funny thing where you can work and develop and move
+
+24:39.310 --> 24:49.994
+[SPEAKER_01]: different directions or shift one project to another category like we did in the ENC then. So yeah, I think this two line glider is a complete new
+
+24:50.794 --> 24:59.076
+[SPEAKER_01]: chapter in parallel gliding. Wow, good to hear that. But I think before we move on to the new tech of two-lighter, I just quickly want to touch
+
+24:59.136 --> 25:09.083
+[SPEAKER_00]: upon the philosophy of glider being considered as a living thing and the EN certification. Because for me, when I go out and fly my wings and I go
+
+25:09.163 --> 25:20.190
+[SPEAKER_00]: out and kind of put them in different conditions, EN certification only makes sense to me up to a point before the real scenario and the actual air
+
+25:20.330 --> 25:28.118
+[SPEAKER_00]: and how you handle the wing and everything comes in. So, I mean, to make it simpler, let's say when I look at my glider as a real thing, a real thing
+
+25:28.158 --> 25:36.972
+[SPEAKER_00]: can have different behavior in different settings, right? If you put it in an easier setting, it will behave easier. If you put it in a difficult
+
+25:37.012 --> 25:47.320
+[SPEAKER_00]: setting, it will be difficult. So the stress or the essence of EN or the letter that is being given, how important is it from your point of view as
+
+25:47.360 --> 25:54.165
+[SPEAKER_00]: a designer? Because I've seen few companies coming out and saying that we're just going to do stress load and we're not going to go in and get the
+
+25:54.225 --> 26:04.570
+[SPEAKER_00]: numbers because they are only valid in calm air. And as a manufacturer, because I've tried divulging into that side a little bit, and the amount
+
+26:04.610 --> 26:14.273
+[SPEAKER_00]: of money that a manufacturer has to bring in to get Ian certified, just the fee and the cost structure of that is quite substantial. So what I'm
+
+26:14.373 --> 26:24.296
+[SPEAKER_00]: trying to understand is, is Ian really even helping the community, or is it just holding back the progression or the design in that direction?
+
+26:24.496 --> 26:33.280
+[SPEAKER_00]: How do you look at the importance of Ian certification? Well, first I have to say maybe there's a lot of misunderstanding about the EN-NOM on
+
+26:33.300 --> 26:47.649
+[SPEAKER_01]: the market because the EN-NOM is a standardized procedure to rate a paraglider in certain maneuvers. That means to give a certain rating,
+
+26:48.589 --> 26:57.195
+[SPEAKER_01]: the maneuver has to be very strictly made, always the same maneuver, you know, otherwise you cannot compare it and then you cannot rank it. So in
+
+26:57.215 --> 27:08.158
+[SPEAKER_01]: the worst case, scenario the glider behaves practically completely different then it reacts to this certain specific maneuver for example
+
+27:08.178 --> 27:15.120
+[SPEAKER_01]: you know for example you have to make a collapse which is exactly in this angle of in this field on the paraglider you may have to mark the
+
+27:15.500 --> 27:23.402
+[SPEAKER_01]: paraglider with a 70 percent collapse for example when you make the collapse a collapse has to be exactly in this field you know sometimes
+
+27:23.442 --> 27:33.857
+[SPEAKER_01]: the glider practically does not go in there or goes too flat or too steep But it has to go in there to rate it and to compare it because otherwise
+
+27:34.237 --> 27:45.421
+[SPEAKER_01]: this is the definition of a norm. A norm is something always the same, simply said, you know. And this is then, you know, okay, we have done the
+
+27:45.441 --> 27:54.164
+[SPEAKER_01]: certification and we have the practical behavior for cloud. Sometimes this is not always the same. But here we come to the duty obligation from
+
+27:54.184 --> 28:05.559
+[SPEAKER_01]: the manufacturer, from designer, you know. Our job is mainly to make the glider fly like an E&A or E&P glider. So it's absolutely useless if I make
+
+28:05.599 --> 28:15.681
+[SPEAKER_01]: a glider which is certified in the category but behaves so fucking nasty that it's over demanding the pilot in this category. So it's a big
+
+28:16.102 --> 28:25.224
+[SPEAKER_01]: responsibility for the manufacturer to make a glider practically work like it's certified. And this is one of our main goals always. If I make a
+
+28:25.264 --> 28:33.973
+[SPEAKER_01]: big glider, high big glider, Okay, we push to place it really to the upper edge of this category. But still, when it's practically flown, all this
+
+28:34.013 --> 28:42.675
+[SPEAKER_01]: practical behavior like your brake travel, turning, agility, or if it's nervous or whatever, or too demanding, or too much moving,
+
+28:42.715 --> 28:50.476
+[SPEAKER_01]: whatever, or it's collapsing all the time, it's too less stable, or it has to be stable when you push the speed bar because the people don't
+
+28:50.496 --> 29:04.382
+[SPEAKER_01]: care. They say it's certified, it has to be working. So it's our job to make it also like the category. Not like the category, but saying it
+
+29:04.422 --> 29:14.971
+[SPEAKER_01]: should behave in this category, I would say. And while I just can talk for myself, we put a lot of effort into this. And maybe this is leading over to
+
+29:15.011 --> 29:24.091
+[SPEAKER_01]: the two-line E and C glider, which in the beginning, because we were the first ones, and I think one of the first questions was really like, oh a
+
+29:24.111 --> 29:32.737
+[SPEAKER_01]: two-liner in e and c how will this behave is it demanding or how is it flying whatever nobody had an idea about it because previously it was
+
+29:32.797 --> 29:42.985
+[SPEAKER_01]: just the ccc and the d gliders and it was just saying oh it's just experts and it's yeah that is almost nice there's no no safety at all there and
+
+29:43.005 --> 29:50.651
+[SPEAKER_01]: then suddenly it should be c and it's tested with falling lines so it doesn't say anything about the practical collapsing behavior so it
+
+29:50.711 --> 30:00.177
+[SPEAKER_01]: must be dangerous you know this is what's typical thinking before and then people ask me how is it flying i said yeah actually like a sea glider
+
+30:01.078 --> 30:10.384
+[SPEAKER_01]: you know how shall the sea glider fly yeah sure it should be manageable you know in a controlled manner but focusing on the performance
+
+30:10.964 --> 30:20.507
+[SPEAKER_01]: shouldn't over demand you and and cause stable collapsing sure you get collapses even on a two-line glider but it has to be manageable and not
+
+30:20.747 --> 30:30.652
+[SPEAKER_01]: and not make you fall down or put your rescue so and and not nervous or the launch also take off behavior everything so and if you compare it to the
+
+30:30.793 --> 30:39.394
+[SPEAKER_01]: previous three-line glider that wow if you get used to it it's it's not much difference believe me try it and yeah every glider we gave out that
+
+30:39.434 --> 30:49.696
+[SPEAKER_01]: came back and said yeah actually stefan you're right it's a yeah it's a sea glider yeah yeah yeah yeah yeah and well we were actually one year
+
+30:49.736 --> 30:56.798
+[SPEAKER_01]: ahead and we had the first year we were the only ones i think you see glad and actually we opened the market for everybody else because we we put a
+
+30:57.318 --> 31:06.871
+[SPEAKER_01]: put an acceptance into this market for two line letters and yeah but but it is like it is it's it's it's not like only certifying a glider in a c
+
+31:06.911 --> 31:17.659
+[SPEAKER_01]: class which is mainly less of the program in designing a glider it's more like making the gotta fly like a e and c glider and you have to get this
+
+31:17.739 --> 31:26.663
+[SPEAKER_01]: feeling from the demands like i said previously it doesn't matter which categories you have to feel into this category and say okay what are the
+
+31:26.683 --> 31:33.067
+[SPEAKER_01]: characteristics in this category how should the glider fly doesn't matter if it's three-line glider for two-line cloud or whatever yeah
+
+31:33.927 --> 31:41.109
+[SPEAKER_01]: you know i mean i i do understand my question was a bit open-ended but i'll tell you the dilemma behind the question That is when, as a pilot, you
+
+31:41.129 --> 31:48.913
+[SPEAKER_00]: want to progress. And, you know, the motivation of pilots to progress is different and depending upon how hard they want to chase and what their
+
+31:48.953 --> 31:58.198
+[SPEAKER_00]: goals are and what kind of airtime they get. So, out of the school, it's a no-brainer. You can go for E&A and that's the safest, that will keep you,
+
+31:58.398 --> 32:05.023
+[SPEAKER_00]: you know, that will stay over your head and that will make sure you have a good time. But the moment you start progressing, the amount of
+
+32:05.103 --> 32:13.310
+[SPEAKER_00]: categories that have come in, the subcategories in the main categories are kind of making the question a bit more hazy. And the moment you take
+
+32:13.330 --> 32:20.115
+[SPEAKER_00]: the question to your teacher or to someone like your mentor or something, it's like nobody wants to give you an advice that might put
+
+32:20.155 --> 32:29.203
+[SPEAKER_00]: them in a spot. It's like, hey, I told you to go on a high B and maybe high B is too hard for you. So when decision making comes to a pilot that I go from an
+
+32:29.523 --> 32:39.068
+[SPEAKER_00]: E and A wing to an E and B wing? Do I go on a high B? Do I go on a low B or a mid B? Because every brand is promising some things. And eventually, because
+
+32:39.248 --> 32:46.592
+[SPEAKER_00]: I mean, this again stems from the fact that I do believe the glider in a manner that it is a living thing, that when it interacts with you, when
+
+32:46.612 --> 32:55.076
+[SPEAKER_00]: you're spending time under it, and when you're kind of, you know, basically working together to get the airtime. And same goes for the
+
+32:55.096 --> 33:04.399
+[SPEAKER_00]: two-liner C. So how do you upgrade? Because earlier there was a very simple progression that go E and A, go low B, and then go three-liner C. So
+
+33:04.619 --> 33:13.161
+[SPEAKER_00]: it was like, okay, once you have spent enough airtime and hours, then all of this can't fall in place as they should be. But now it's like, should
+
+33:13.201 --> 33:22.063
+[SPEAKER_00]: you go from E and A to a high B or from a high B to a two- liner C or should you stay on three-liners? So... As a designer, I understand you mentioned
+
+33:22.083 --> 33:32.008
+[SPEAKER_00]: that you can just go out and feel how it is. But a lot of pilots in our community do not stay in Western Europe or do not have access to that kind
+
+33:32.048 --> 33:40.133
+[SPEAKER_00]: of dealers who stock all of these things. So when decision making comes to those kind of people who do not have the resources and internet and
+
+33:40.533 --> 33:50.179
+[SPEAKER_00]: testimonials and website reviews and the information is the only way forward. Do you have any recommendation on how can they try and look at
+
+33:50.519 --> 34:01.287
+[SPEAKER_00]: the homologation and the eventual upgradation plan? Because I myself come from India and I have had to make quite some tough decisions without
+
+34:01.327 --> 34:12.622
+[SPEAKER_00]: a lot of support and information around it. So just for that aspect. Yeah. Safety in paragliding. I think it's We're going a little bit less
+
+34:12.722 --> 34:20.687
+[SPEAKER_01]: from the gliders now. We're going more to the pilot's abilities, I think. I think, yeah, like you said, the ENA glider, school glider has to
+
+34:20.727 --> 34:30.433
+[SPEAKER_01]: tick all the boxes, most safest one, whatever. And then the question arises, can I progress which category, whatever? My point is always,
+
+34:30.713 --> 34:41.699
+[SPEAKER_01]: like I say, Okay, a low B is still really okay if you're motivated and collect your experience, whatever. And then mid to high B, I think the
+
+34:41.739 --> 34:50.467
+[SPEAKER_01]: trigger point is always for me, I say, okay, I cannot judge a pilot. If somebody asks me, for example, can I fly this guy? I don't know you. How
+
+34:50.487 --> 34:59.634
+[SPEAKER_01]: shall I judge? So it's impossible. But I always say it's like, okay, you have to start learning flying actively. So if you're able to fly
+
+34:59.734 --> 35:11.555
+[SPEAKER_01]: actively, I think the edge for this is like mid B, high B. Mid B, you should at least starting to fly actively. And flying actively really means,
+
+35:12.376 --> 35:20.422
+[SPEAKER_01]: it's like, you know what I mean? To be prepared when the glider is pitching to stop it. This is the initial thing. And then it progresses.
+
+35:20.822 --> 35:28.228
+[SPEAKER_01]: And they say, okay, I feel it before it's happening, you know? And to control it and to avoid collapses, whatever, you know, it's you
+
+35:28.308 --> 35:36.266
+[SPEAKER_01]: controlling the paraglider. The paraglider is not controlling you. So this is the key point for me by saying, okay, so here we are on the ability
+
+35:36.286 --> 35:47.114
+[SPEAKER_01]: of the pilot, what he can fly. As soon as he can fly actively, actually, there is no border which gets him to the top end. It's just a matter of
+
+35:47.514 --> 35:57.621
+[SPEAKER_01]: motivation, experience, or goals he's trying to achieve or whatever. And it's not even connectively saying, oh, I have 300 hours of flying.
+
+35:57.661 --> 36:09.782
+[SPEAKER_01]: Can I fly it now? It doesn't say anything about how you're flying. It's, yeah, you can have a lot of flying hours, but yeah, maybe it's hard to say,
+
+36:09.822 --> 36:15.983
+[SPEAKER_01]: but yeah, you shouldn't fly anything else than an E glider, yeah? And then on the other hand, there's some, I see here in the valley, some
+
+36:16.043 --> 36:24.905
+[SPEAKER_01]: youngsters flying, coming out from the flight school, flying a few miles, an E and A glider, get straight to a B, high B, and then next year
+
+36:24.925 --> 36:34.522
+[SPEAKER_01]: they fly a two-line C glider. And I kind of, wow, really? So fast? And then I look at them flying and say, okay, yeah, yeah, it looks fine. It looks
+
+36:34.542 --> 36:42.603
+[SPEAKER_01]: fine. I have the control. So some people are progressing very fast. They get the ability. They're training really hard, going to safety
+
+36:42.643 --> 36:51.405
+[SPEAKER_01]: clinics, whatever, and get their abilities and the control on the glider, everything very fast. And others, they're just stuck. So it's
+
+36:51.465 --> 37:00.801
+[SPEAKER_01]: really impossible to give an advice. That's why I think nobody can tell you, oh, you can fly this glider. It's no problem. Sure, because
+
+37:01.822 --> 37:09.385
+[SPEAKER_01]: nowadays everybody wants to shift the responsibility from yourself to somebody else. So somebody has to tell me what I'm able to fly and say,
+
+37:10.606 --> 37:20.910
+[SPEAKER_01]: shall I? I cannot take off your responsibility or your judgment. It's yourself judging. And if you judge yourself wrong, then you have to live
+
+37:20.950 --> 37:32.973
+[SPEAKER_01]: with this decision. It's true like this. And you have to accept it. It's not. Makes sense. But this is also, you can lead this then over, you know,
+
+37:33.093 --> 37:41.517
+[SPEAKER_01]: to the glider, you know. Sometimes then it's the glider, it's not the pilot, you know. But it's always connected, you know. If you have a pilot
+
+37:41.577 --> 37:50.800
+[SPEAKER_01]: under the wrong glider, It's a bad combination, you know, but if the right, you know, that's why we have the categories. Yeah. And that is
+
+37:50.820 --> 37:59.404
+[SPEAKER_01]: where we're talking before it's the, that the designer has to also fulfill this category practically and not just for the certification.
+
+37:59.445 --> 38:07.249
+[SPEAKER_01]: So this is where everything should match actually, you know, and also it should match then practically also, yeah, that the right pilot should
+
+38:07.289 --> 38:16.682
+[SPEAKER_01]: fly the right glider to make the sport safe. So I think to sum it up, basically, you're saying that look at every input, but eventually
+
+38:16.762 --> 38:24.308
+[SPEAKER_00]: intuition is the one which will keep you safe and kind of take you in the right direction. Because regardless of what your instructor thinks,
+
+38:24.388 --> 38:32.434
+[SPEAKER_00]: your friends think, or somebody who has seen you, or the homologation says, or whatever the text on the website promises, the manual says,
+
+38:32.594 --> 38:42.461
+[SPEAKER_00]: eventually it is you who's going to go out and try and behave with the glider as a cohesive unit. And it is your own intuition. So if you think
+
+38:42.501 --> 38:48.863
+[SPEAKER_00]: you are ready and if you think the glider is not making you shit your pants, then I think it is about time. We try to give advice as much as
+
+38:48.943 --> 38:55.645
+[SPEAKER_01]: possible. I have so many requests always saying, okay, which glider should I fly, whatever, and then try to find out and stuff like this. So
+
+38:55.685 --> 39:05.349
+[SPEAKER_01]: we're always trying to give advice, but we never say, okay, this is the one. Or if somebody asks, how is this glider flying? And I say, okay, you
+
+39:05.369 --> 39:16.950
+[SPEAKER_01]: get all the input from us, but we cannot take your decision from you. And one advice is always to stay open, get information, try to progress, go
+
+39:16.970 --> 39:24.976
+[SPEAKER_01]: to safety clinics, get familiar with your glider, do ground handling, get a feeling for your glider and stuff like this. You know, this is all
+
+39:25.036 --> 39:33.636
+[SPEAKER_01]: helping yourself. Got it. But I mean, what I think I was trying to get at is that this is not, the homologation is just not marketing by the links.
+
+39:33.696 --> 39:42.077
+[SPEAKER_00]: Like there is actual essence to homologation and one should not just look at it that because brands want to sell most and they want to pitch
+
+39:42.117 --> 39:48.859
+[SPEAKER_00]: their gliders in a very different manner. So that's why it's like low B, mid B, high B, and then three liner C and two liner C. Like it actually does
+
+39:48.919 --> 40:00.745
+[SPEAKER_00]: make a difference and it actually does matter in real life flying. so we had i remember a discussion in the yeah in the paragliding association
+
+40:01.325 --> 40:13.636
+[SPEAKER_01]: but it's pretty some years ago they want to eliminate all the category categories no a no b no c no one or two it was just uh describing the
+
+40:13.676 --> 40:24.599
+[SPEAKER_01]: paraglider and then the it's the the pilot has to find the right glider it was a very strange uh approach to this Well, it has some benefits and
+
+40:24.659 --> 40:34.627
+[SPEAKER_01]: negative things. So, yeah. Nowadays, everybody is used to this, you know, to the system. And as well, we have in every country, we have
+
+40:34.667 --> 40:43.454
+[SPEAKER_01]: different laws and some countries are not allowed to fly without any certification. Nowadays, everything has to be certified, unified and
+
+40:44.094 --> 40:54.739
+[SPEAKER_01]: regulated. So, I think we cannot avoid this anywhere just from the perspective. And i think the market worldwide is so used to this system
+
+40:54.799 --> 41:04.884
+[SPEAKER_01]: now that yeah it's it's it's working it's reliable i would say it's not like well i think i know in the past we had we had gliders there were
+
+41:04.904 --> 41:16.728
+[SPEAKER_01]: gliders where they were not really matching the category for example but the market solves this out then itself i would say you know But I think
+
+41:17.108 --> 41:26.515
+[SPEAKER_01]: nowadays it's like many gliders or all gliders are on a similar level. Like saying, okay, you can trust the category practically and on the
+
+41:26.535 --> 41:34.821
+[SPEAKER_01]: certification side. It's very hard to read the tendency if you compare the letters and the certification between the gliders. Because like we
+
+41:34.841 --> 41:45.978
+[SPEAKER_01]: said before, it's maybe not reflecting 100% the practical behavior of the glider. So you have to get into... the manufacturer's description
+
+41:46.018 --> 41:54.480
+[SPEAKER_01]: where it tells you okay for what it is like especially in the big category it's so widespread out from low mid high some if even three or four
+
+41:54.520 --> 42:02.022
+[SPEAKER_01]: gliders placed in there so you have to go a little bit more in detail on to the description of the paraglider itself yeah if you look at the ratings
+
+42:02.103 --> 42:12.946
+[SPEAKER_01]: and collect how many bees got this glider and then compare it to the other one i think this is not giving you a real point actually but yeah
+
+42:12.986 --> 42:24.951
+[SPEAKER_01]: sometimes Yeah, I should trust the manufacturer a little bit more. We're not trying to sell the gliders at all. We try to get the best
+
+42:24.991 --> 42:34.237
+[SPEAKER_01]: information out and try to help the pilot to find the right glider. That's for sure more important. No, 100%. And I thank you for explaining
+
+42:34.277 --> 42:40.118
+[SPEAKER_00]: it so well. I think I hope this brings a little bit of clarity to our audiences when it comes to decision making while choosing the new
+
+42:40.138 --> 42:48.440
+[SPEAKER_00]: thing. But, you know, I just want to stress on the fact when you said the market weeds out the competition itself and the market responds
+
+42:48.480 --> 42:55.162
+[SPEAKER_00]: accordingly once you put out a product. One glider that has particularly made me very curious, and I'm pretty sure I share the
+
+42:55.202 --> 43:04.864
+[SPEAKER_00]: sentiment of some of our audience members as well, is that Enzo hasn't been upgraded for years in a row. They put out a design on the market,
+
+43:05.465 --> 43:12.598
+[SPEAKER_00]: everyone else is trying to do their own thing, but this design is still going out, smashing it, winning it, one of the most popular ones. And
+
+43:12.938 --> 43:21.402
+[SPEAKER_00]: when we put that design philosophy in other wings, same brand, you go in the B category, they love upgrading it every year. And they love saying
+
+43:21.422 --> 43:28.826
+[SPEAKER_00]: that, okay, this is a tiny bit better. This is better handling, this is better security and all that. So when it comes to coming with version two
+
+43:29.126 --> 43:37.451
+[SPEAKER_00]: of a wing, Especially when you guys came out with Volt as the first brand in the whole industry to come out with version 2 of a brand new
+
+43:37.471 --> 43:48.299
+[SPEAKER_00]: technology. What really prompts a designer or the thought process that says that, okay, now I know. And now I know how the people are receiving
+
+43:48.339 --> 43:58.584
+[SPEAKER_00]: it. Now I know what the pilots are doing it. And now I think it's ready to go a notch higher. And why exactly is top-of-the-line gliders not going a
+
+43:58.644 --> 44:07.106
+[SPEAKER_00]: notch higher as frequently as the bottom ones? Is this, again, just marketing because the bottom ones are sold in much higher numbers and
+
+44:07.566 --> 44:16.513
+[SPEAKER_00]: top ones are just very few performance-oriented ones and they don't make a lot of financial sales? So what is your take on Enzo, I mean, Enzo
+
+44:16.533 --> 44:24.605
+[SPEAKER_00]: class, like CCC class, and the further versions coming out on lower classes? And then, of course, we can touch upon Vault and the philosophy
+
+44:24.625 --> 44:34.566
+[SPEAKER_00]: behind it. Well, I think Enso, this category, I think it is quite leveled out. So either also there is no demand because there is no better
+
+44:34.626 --> 44:43.632
+[SPEAKER_01]: competitor in this market or they're really leveling themselves, like you're saying. So they have really put the level of performance with
+
+44:43.652 --> 44:54.780
+[SPEAKER_01]: their first or second product so high. So there is no need actually. And it's even very hard to progress to make it even better. So that's when you
+
+44:54.800 --> 45:06.727
+[SPEAKER_01]: have achieved this, Why bring a new one if you maybe don't need to or you can't? Sure, you always can work on general characteristics like
+
+45:06.787 --> 45:16.934
+[SPEAKER_01]: handling, brake pressure, stuff like this, or maybe a little bit more top end speed, whatever. But yeah, it's so high level, so high level. So I
+
+45:16.954 --> 45:27.979
+[SPEAKER_01]: think this is when you hit the ceiling, like saying in the performance and everything, a glider can run really long time. Previously we had in
+
+45:27.999 --> 45:38.528
+[SPEAKER_01]: the, when we started the competing and the PwC with the open class glider studies, we had every few months, we had a new prototype because we
+
+45:38.568 --> 45:48.923
+[SPEAKER_01]: always constantly developing. And soon we went back from a PwC. set on a computer and try to make improve and stuff and i saw constantly okay this
+
+45:48.963 --> 45:56.947
+[SPEAKER_01]: glider has a benefit there this one there so i want mine is lacking there or minus advantage there so any almost every competition had a new
+
+45:56.967 --> 46:05.632
+[SPEAKER_01]: prototype and every time progressing sometimes reverse you know it's not always progressing and the prototype is not always playing good but
+
+46:05.672 --> 46:14.089
+[SPEAKER_01]: it's also a misbuster like saying oh can i have a prototype prototypes are so much better No, 90% of the prototypes are worse than the serial
+
+46:14.109 --> 46:23.651
+[SPEAKER_01]: glider. That's why it's called prototype. It's not working. If it would work, it wouldn't be a prototype. Yeah. No, coming back to the original.
+
+46:23.671 --> 46:34.974
+[SPEAKER_01]: Yeah. This is, you know, and so, yeah, that's, that's the point. And in the C class, the vault, well, actually we were, well, we brought out the
+
+46:35.034 --> 46:47.237
+[SPEAKER_01]: first vault. Yeah. was it bolt four i mix up the numbers as well so many already yeah and we were the first one yeah and it was a big success and it
+
+46:47.497 --> 46:59.183
+[SPEAKER_01]: it it lifted the performance level in the c category like yeah not much big difference to a and declutter but still uh yeah short uh shortcut
+
+46:59.283 --> 47:07.784
+[SPEAKER_01]: maybe in the top end performance yeah okay it's enc class what do you expect the same thing like a d yeah but it's almost there you know but yeah
+
+47:07.884 --> 47:18.668
+[SPEAKER_01]: maybe not so it's good and uh we didn't have any d glider in the in in our range so the goal was to bring a t glider and the next two years the
+
+47:18.729 --> 47:29.993
+[SPEAKER_01]: development was mainly focused on end glider so we didn't intend it to bring it to to to make an app follow for the c glider for the world but then
+
+47:30.434 --> 47:43.560
+[SPEAKER_01]: it turned out the end we found some little kniffs tricks in the development where we could push the performance and everything on a
+
+47:43.640 --> 47:54.905
+[SPEAKER_01]: little on the next level, you know, and it worked on the ENT. And as I made also like saying, okay, let's see if it also works now in the same concept
+
+47:54.986 --> 48:08.079
+[SPEAKER_01]: in the C. So I had two prototypes, actually very similar glider, the C. And both worked and both performed better. And I say, oh, fuck. Yeah.
+
+48:08.519 --> 48:19.012
+[SPEAKER_01]: Shall we certify now both? I say, yeah, why not? You know, it would be a waste, a waste, a waste of development and resources. If you say, OK, we
+
+48:19.032 --> 48:27.752
+[SPEAKER_01]: have now a better platform. Well, it means better, yeah. But it's a progressed ENC, the next one, like we have already. So why not launching
+
+48:27.792 --> 48:35.894
+[SPEAKER_01]: this as well, you know, because it would be a race, you know. And then meanwhile, all the competitors came out with the ENC two-line gliders.
+
+48:36.214 --> 48:46.396
+[SPEAKER_01]: So the competition in this class was rising more and more. And the comparison and everything, yeah. Yeah. So we said, okay, we can do the
+
+48:46.416 --> 48:55.713
+[SPEAKER_01]: next step now, you know. We can push further. the ceiling on the C-Class now with the new one as well. So even though the Volt 4 was just running two
+
+48:55.753 --> 49:05.416
+[SPEAKER_01]: years, actually, which is, yeah, for high performance, actually, it's not long, it's not short. But yeah, we would like to leave the gliders
+
+49:05.456 --> 49:16.319
+[SPEAKER_01]: running longer. But yeah, if we have the chance to improve something, so we would go for it. And so we also brought the Volt 5, you know. And
+
+49:16.359 --> 49:27.326
+[SPEAKER_01]: actually... There is not much difference, but in the details, it's always these little margins. You have a little bit better floating. You
+
+49:27.366 --> 49:37.355
+[SPEAKER_01]: have the brake pressure is a bit reduced. This was what topic on the first one, the feedback we got. And the top end performance on top speed is also
+
+49:37.395 --> 49:47.460
+[SPEAKER_01]: better now. So it's... It's an improvement. So you cannot, you can't say the World 4 is now a bad glider. It's still very good, you know, but the
+
+49:47.620 --> 49:59.648
+[SPEAKER_01]: World 5, we had the chance to, to, yeah, to improve it, to prove it. And this, this, this, this, this. Some say it's little things, but at the end
+
+49:59.668 --> 50:06.413
+[SPEAKER_01]: they end up and they make a better glider, you know, and then you make a transition, you have a bit better floating. and everything and then
+
+50:06.613 --> 50:14.278
+[SPEAKER_01]: yeah you end up higher on the other side you know on the next so that's that's the point or you're faster and tighter so at the end it's yeah next
+
+50:14.298 --> 50:24.078
+[SPEAKER_01]: time Yeah, of course. But, you know, I'll just request you to put on a buyer's shirt for a second and not a designer's shirt. Maybe I'm
+
+50:24.118 --> 50:32.543
+[SPEAKER_00]: repeating my question so you can pass this if you want to. But let's say when a buyer is looking to go out shopping for a new tech, say, all right,
+
+50:32.643 --> 50:43.269
+[SPEAKER_00]: you know, two-liner C or a high B or something. And there is one brand. I mean, I don't mind taking names because that's the only way to expose our
+
+50:43.349 --> 50:51.494
+[SPEAKER_00]: audiences to the reality. So let's say BGD came out with a high B. And then BGD did not feel like coming out with a high B for a super long time. It was
+
+50:51.514 --> 50:58.798
+[SPEAKER_00]: like, all right, this is the best I can, and this is what my resources allow me. You like it, go ahead. But then you have Nivea, then you have
+
+50:58.918 --> 51:07.681
+[SPEAKER_00]: Ozone, constantly upgrading high Bs. And I mean, even you guys, you know, bringing out with different small, small improvements and
+
+51:07.701 --> 51:18.263
+[SPEAKER_00]: everything. So as a buyer, if you look at the triple C philosophy that all right, you know, has the designer maxed out high B in this category or has
+
+51:18.303 --> 51:27.885
+[SPEAKER_00]: the designer just gotten lazy because he doesn't want to put in the effort? So when you go out to make a decision, do you do you think versions
+
+51:28.045 --> 51:36.849
+[SPEAKER_00]: or categories like let's say version one version two version three are they actual improvements or are they just like designers trying to put
+
+51:36.909 --> 51:44.291
+[SPEAKER_00]: out marketing or just correcting what they haven't done or should you place more trust on the ones which are like hey this is all that this
+
+51:44.812 --> 51:53.031
+[SPEAKER_00]: category offers and this is all that i've put in and it kind of works well like enzo is one of the examples of that category so Well, I can just talk
+
+51:53.091 --> 52:04.374
+[SPEAKER_01]: for myself. And I would say, yeah, so most categories of things are quite leveled out. It's very difficult to make a real advancement. So mainly
+
+52:04.434 --> 52:15.877
+[SPEAKER_01]: it's about the flight characteristics, which then often have as well an output to performance as well. But in general, performance-wise,
+
+52:15.917 --> 52:25.976
+[SPEAKER_01]: whatever, it's pretty leveled, I would say. It's really hard. to progress. And even so, and sometimes, that's why sometimes it takes so
+
+52:26.037 --> 52:35.339
+[SPEAKER_01]: long to bring an app follower, you know? For example, here on the, yeah, we had this thing, you know, with the World 4, two years, for example, and
+
+52:35.399 --> 52:43.381
+[SPEAKER_01]: replacing the model. On the Rise 4, we had, it was running almost five years, you know? And still a good glider, you know? And it was very
+
+52:43.541 --> 52:54.660
+[SPEAKER_01]: difficult to improve it. But it took so long because it was so hard to improve it. to find something really which design-wise gives you a
+
+52:54.700 --> 53:02.562
+[SPEAKER_01]: benefit or improves the performance or anything just a little bit, you know? So we were struggling from prototype to prototype, making
+
+53:02.622 --> 53:13.386
+[SPEAKER_01]: comparison flights and saying, ah, there's nothing moving. It's still the same. But there's no use to make the same glider, a new glider which is
+
+53:13.646 --> 53:22.307
+[SPEAKER_01]: the same like the old one. It's useless, you know? So... in our case on this special model you know on the rise it took so long because it took so
+
+53:22.327 --> 53:30.991
+[SPEAKER_01]: long you know to make a better model and and the improvements still they are not big you know all over it's a complete new glider it's not like you
+
+53:31.031 --> 53:40.514
+[SPEAKER_01]: have we have taken the old one make smaller modification it's a complete new glider It's maybe just the amount of cells is the same, but it's the
+
+53:40.634 --> 53:45.976
+[SPEAKER_01]: arc is different, the outline is different, the profile is different, the line setting is different, the inner structure is different.
+
+53:46.496 --> 53:55.471
+[SPEAKER_01]: Everything is completely different. It's a complete new development, but to get to this very little point where you say, oh, we achieved more
+
+53:55.491 --> 54:03.475
+[SPEAKER_01]: stability in accelerated flight we have more control now we have maybe a little bit more top end speed we have a bit more performance at the at the
+
+54:03.495 --> 54:12.318
+[SPEAKER_01]: high end whatever we have a little bit more floating ability we have a little bit more precise handling yeah all after all this makes a new
+
+54:12.338 --> 54:20.679
+[SPEAKER_01]: glider better even it's it's little you know but in comparison in combination everything You fly the old one and fly a new one and say,
+
+54:20.959 --> 54:28.884
+[SPEAKER_01]: yeah, I like the new one much better. It's a better glider. It's nicer. It's better, you know. But you see a little bit of conflict from the
+
+54:28.904 --> 54:35.989
+[SPEAKER_01]: manufacturers. They're saying, yeah, the effort to making better gliders, it's getting higher and higher. And the development is
+
+54:36.049 --> 54:42.553
+[SPEAKER_01]: getting longer and longer sometimes because it's really getting harder and harder. On some categories, the performance is not the
+
+54:42.573 --> 54:53.498
+[SPEAKER_01]: benchmark, for example, on the lower categories. Mm-hmm. Sure, you have to have it and it's always a focus to improve performance. But when
+
+54:53.538 --> 55:05.448
+[SPEAKER_01]: you see what happened in the past years, like in the last 10 years or 20 years, how much has changed in the flying characteristics of the
+
+55:05.468 --> 55:14.965
+[SPEAKER_01]: gliders, you know? I think the gliders are much more comparable now between the manufacturers, also from the flying characteristics, the
+
+55:14.985 --> 55:24.108
+[SPEAKER_01]: leveling in between a little bit more, you know, like in 20 years ago, you had in the same category, you had some very dynamic gliders or you had
+
+55:24.128 --> 55:35.071
+[SPEAKER_01]: some really static gliders, you know, with no handling or whatever. And now everybody is, I think, is going to the optimum and yeah, more and more
+
+55:35.892 --> 55:48.884
+[SPEAKER_01]: with I don't know what it's to ride with. I can imagine the dilemma and the hard work that a designer has to put in because the market is brutal and
+
+55:49.324 --> 55:57.132
+[SPEAKER_00]: the customers want something exciting all the time. You can't just change the color or the visual design. You have to put in the effort and
+
+55:58.092 --> 56:08.959
+[SPEAKER_00]: It's quite a hard work that you guys put in for all of us. But I think to sum it up, basically version twos or the next version of a wing is usually a
+
+56:09.059 --> 56:17.924
+[SPEAKER_00]: lot more internally as well than just a visual and the marketing from what it is. And customers should do their own research before going
+
+56:17.944 --> 56:26.332
+[SPEAKER_00]: ahead with that one. For the customer, it's not visible what is happening in the design or what has been put in to make it there. It's not
+
+56:26.372 --> 56:33.799
+[SPEAKER_01]: visible at all. Most things are just happening internally in the structures of the paraglider. If you have a look inside, you see, oh my
+
+56:33.819 --> 56:42.847
+[SPEAKER_01]: God, what is going in there? So many structures, crosswise, strap structures, everything, wires and stuff like this all over. And every
+
+56:42.887 --> 56:50.913
+[SPEAKER_01]: tiny piece has a purpose, you know? It has a purpose where it's put, where it's stiffness, where it's thicker, thinner, where I put a hole, where I
+
+56:50.973 --> 56:59.777
+[SPEAKER_01]: make this strap, whatever. Every piece has a purpose, you know? And it's influencing the character of the paraglider. Yeah. It blows my mind,
+
+56:59.837 --> 57:09.805
+[SPEAKER_00]: man, how the technology has reached so far that such a complicated structure made so accessible that this is one of the most simplest yet
+
+57:09.925 --> 57:18.192
+[SPEAKER_00]: complicated form of aviation that humans have. Just pack it up in a backpack and get the art of flight in your life. As a customer, you go to
+
+57:18.212 --> 57:28.261
+[SPEAKER_01]: the shop, try a glider, your decisions, I like it or I don't like it, and then you buy it and you don't need to think about anything. My... my
+
+57:28.281 --> 57:39.176
+[SPEAKER_01]: typical work is like getting up in the morning take the gliders we want to test the prototypes then we have something in mind where we have to test
+
+57:39.376 --> 57:50.503
+[SPEAKER_01]: or compare or to find out tendencies sometimes And doing testing, okay, we have the video documentation and camera. So we're working also like
+
+57:50.543 --> 57:58.669
+[SPEAKER_01]: this. And then we're not testing the whole day. It's like sometimes it's stopping earlier or later. And sometimes things are not working. We
+
+57:58.689 --> 58:04.673
+[SPEAKER_01]: have to find out why it's not working. We don't understand it. We can't see it because sometimes it's happening so fast you can't see it. So we
+
+58:04.693 --> 58:13.603
+[SPEAKER_01]: have to drive it back. to the office upload the videos and the pictures and then going picture frame by frame what actually happens to find out
+
+58:13.703 --> 58:21.146
+[SPEAKER_01]: why it happens so on you know and then we make a decision okay oh we have make an adjustment there on this web on this cross board on this or
+
+58:21.166 --> 58:28.409
+[SPEAKER_01]: whatever oh it's so far we have to make a new prototype and then we go into the workshop making the sewing machine making modification prepare
+
+58:28.429 --> 58:37.450
+[SPEAKER_01]: everything for the next day and then the next day it repeats again so wow So it's not just going out, having fun and doing servers and flying and
+
+58:37.570 --> 58:51.395
+[SPEAKER_01]: then pour some collapses. Oh, yeah, okay. Nice. Let's do that tomorrow. It's so technical, meanwhile. And half of the day just goes by by making
+
+58:52.095 --> 59:02.817
+[SPEAKER_01]: analyzes and modifications again on the paraglider. So flying itself is getting less and less, you know, kind of, you know. I can imagine the
+
+59:02.857 --> 59:11.061
+[SPEAKER_00]: amount of stress and hard work that you guys put in to make us have all the fun. So thank you for your effort, Stefan. I hope there are more people
+
+59:11.101 --> 59:23.407
+[SPEAKER_00]: like you in the industry in time to come. All right. So, you know, let's switch over to the tool I received, the Volt 5 speed machine. And the
+
+59:25.249 --> 59:38.319
+[SPEAKER_00]: thing that really kind of gets me excited is when I'm on the page, the logo of Volt says electrifying performance. So What is this new glider all
+
+59:38.359 --> 59:48.505
+[SPEAKER_00]: about, man? And if you can just let our listeners know what to expect when they try to go in for a second generation of a first of its own kind in the
+
+59:48.545 --> 59:56.290
+[SPEAKER_00]: new technology as a pioneer designer, you know, because you guys have pushed the status quo. And I think it must be quite nerve wracking to come
+
+59:56.390 --> 01:00:05.353
+[SPEAKER_00]: out with a brand new tech in such a market. Which is a niche at the same time, you know, kind of brutal at times because people love going with
+
+01:00:05.373 --> 01:00:13.395
+[SPEAKER_00]: the legacy factor. So what did your philosophy and if you can just talk about tool literacy according to your own self. So I'll be super
+
+01:00:13.415 --> 01:00:25.333
+[SPEAKER_00]: thankful for us for that. I think many points we already crossed a little bit and think. So when it started, we were the first one, Mr. Bolt 4, it was
+
+01:00:25.393 --> 01:00:34.538
+[SPEAKER_01]: like, we didn't know really, shall we? You know, the Bolt 3 actually, the old three-line glider, it was time to replace it. So we started design
+
+01:00:34.559 --> 01:00:42.304
+[SPEAKER_01]: process for app followers. So the intention was actually first to make a three-line glider. And then the idea came also up, okay, we were working
+
+01:00:42.364 --> 01:00:50.871
+[SPEAKER_01]: on an E&D two-line glider. So might not trying out on the same concept doing it with two-line ladder so i had actually two prototypes three
+
+01:00:51.011 --> 01:00:57.901
+[SPEAKER_01]: three-line prototype and two-line prototype and the funny thing was that the two-line prototype worked and the three-line prototype not
+
+01:00:59.704 --> 01:01:13.826
+[SPEAKER_01]: how does that happen Wow, that's very gliding. You never know. Interesting. All right. So we said, okay, what shall we do? We would be
+
+01:01:13.866 --> 01:01:23.969
+[SPEAKER_01]: the first ones to launch an ENC two-line glider, but actually we have a glider that can pass the certification in ENC and it flies like an ENC
+
+01:01:24.029 --> 01:01:35.042
+[SPEAKER_01]: glider. So what is the market? Is the market really to accept a two-line C glider? Or not. And at the same time, you know, there was this, this
+
+01:01:35.202 --> 01:01:45.448
+[SPEAKER_01]: modification or this update on the, on the EN category where the falling lines are allowed in the ENC. And this was already decided a year before
+
+01:01:45.468 --> 01:01:56.754
+[SPEAKER_01]: or even, you know, but it wasn't valid unless it's, it's, it's published this norm and everybody was just waiting for this publication of the
+
+01:01:56.794 --> 01:02:07.182
+[SPEAKER_01]: norm. So it's being valid. So it was just a matter of time where saying. yeah, we have to go this direction because now it's possible now. And we
+
+01:02:07.202 --> 01:02:14.466
+[SPEAKER_01]: were just waiting for the publication, publication, always asking Alan Zola or DHV, hey, what's going on? It's on the table in the secretary
+
+01:02:14.506 --> 01:02:24.053
+[SPEAKER_01]: since one year. When do they publish it? It's already decided. And on the paper, it's signed. Just what is this bureaucracy publication? When is
+
+01:02:24.073 --> 01:02:27.255
+[SPEAKER_01]: this happening? I said, yeah, maybe. I don't know. I don't know.
+
+01:02:30.714 --> 01:02:39.077
+[SPEAKER_01]: And then we were really, we took the decision, okay, maybe it's a risk, but we said, okay, let's check the boxes. Okay, it flies like an ENC
+
+01:02:39.157 --> 01:02:51.001
+[SPEAKER_01]: glider, could fly as ENC. It's a better ENC glider, so why not? So, yeah, it was quite, there was a little risk, but it was logic for us, so we did it.
+
+01:02:51.961 --> 01:03:03.384
+[SPEAKER_01]: And then, yeah, we were really surprised that none of the competitors were bringing theirs for one year. so the vault 4 was running without any
+
+01:03:03.804 --> 01:03:13.553
+[SPEAKER_01]: other competitor in the c class one year and and i think what's what's going on we couldn't believe it it was really that was a big the biggest
+
+01:03:13.573 --> 01:03:23.223
+[SPEAKER_01]: surprise even here yeah it must be nerve-wracking i mean you know you come out really we didn't we don't complain about this then but it was as a
+
+01:03:23.263 --> 01:03:31.997
+[SPEAKER_01]: free year for us you know kind of in this market But it's like before I said, yeah, the interesting first months were really like, how is the
+
+01:03:32.017 --> 01:03:40.381
+[SPEAKER_01]: glider accepted on the market? Because it's the first two- line glider in the ESEA class. And the feedback was always very positive. It's like I
+
+01:03:40.401 --> 01:03:52.640
+[SPEAKER_01]: said, okay, it has to fly like E&C glider and controllable for E&C pilot. And at the same time, it's performing like E&D glider. So it's, yeah. It
+
+01:03:52.660 --> 01:04:00.968
+[SPEAKER_01]: was good. It was good. Yeah. So it worked out very well then. And then second year, then all the competitors came with the Tulang Yardas and
+
+01:04:01.048 --> 01:04:11.258
+[SPEAKER_01]: they had a market flatting out a little bit. And like I said, with the Volt 5, the brand new one now, yeah, we found out, we researched a lot of things
+
+01:04:11.858 --> 01:04:24.429
+[SPEAKER_01]: which works out in the concept on the hero. And then it was the point where I said, okay, these new innovations, I cannot tell you what it is. It's a
+
+01:04:24.469 --> 01:04:35.314
+[SPEAKER_01]: design secret, of course, how we achieved to improve the performance. But it was so significant that we said, okay, I have to try it also on the
+
+01:04:35.334 --> 01:04:44.924
+[SPEAKER_01]: world concept to bring it in. This was actually then the point where I said, okay, yeah, it's such an improvement. that we say, OK, we have been
+
+01:04:44.964 --> 01:04:50.909
+[SPEAKER_01]: bringing the World 5 as well. So the Hero 2, E&D Glider, and E&C World 5 at the same time.
+
+01:04:54.471 --> 01:05:02.074
+[SPEAKER_01]: now great i think you know kudos to your bravery and the courage that everybody at air design showed and kind of opened up a whole new
+
+01:05:02.474 --> 01:05:09.077
+[SPEAKER_01]: technology and the way forward for paragliders but the thing is the thing is you know we could have stopped developing because we have
+
+01:05:09.137 --> 01:05:20.021
+[SPEAKER_01]: almost we have a glider in the scene but we didn't stop we just carried on and when we see a chance or something for improvement we just we just do it
+
+01:05:20.041 --> 01:05:28.674
+[SPEAKER_01]: you know We're just not following a certain structure like the marketing says every three years. Now it's time for a new glider or we
+
+01:05:28.694 --> 01:05:39.057
+[SPEAKER_01]: have to follow this routine, whatever. Sometimes things are different, but you can be sure it's always maybe something new,
+
+01:05:39.237 --> 01:05:48.580
+[SPEAKER_01]: something completely new, something crazy, something with a progress, which makes sense, whatever. So we are open. We're not
+
+01:05:48.640 --> 01:05:57.646
+[SPEAKER_01]: limiting ourselves. That's the thing. We do. Yeah, actually, we do what we want. I can say it. It sounds like a bit nasty, I would say, you know, but
+
+01:05:57.986 --> 01:06:06.783
+[SPEAKER_01]: maybe this is also part of our success. No, 100%. I think I want to circle back to the point when we started the podcast where you were like, I mean,
+
+01:06:06.844 --> 01:06:14.528
+[SPEAKER_00]: I was like, I can completely see that you're just chasing passion and everything else is falling into place. So here as well, you know, even as
+
+01:06:14.588 --> 01:06:21.172
+[SPEAKER_00]: an athlete, when you were just like kind of competing and all of that, like the design and the whole from athletic to ownership and all of that
+
+01:06:21.192 --> 01:06:27.095
+[SPEAKER_00]: structure just flourished. fell into your place right now i see the same philosophy in your head even now that you're just you're just wanting to
+
+01:06:27.135 --> 01:06:33.099
+[SPEAKER_00]: go out and create a better version of what you have done and everything else is just kind of working itself out and i think that's the most
+
+01:06:33.199 --> 01:06:41.184
+[SPEAKER_00]: beautiful way to progress in any aspect of life not just not just paragliding not just kind of designing it's just like yeah yeah like you
+
+01:06:41.204 --> 01:06:50.067
+[SPEAKER_00]: say it's not only paragliding it goes on your life it's it's about progressing and never stop oh i love it man But quickly, Stefan, I want to
+
+01:06:50.087 --> 01:07:00.529
+[SPEAKER_00]: touch upon the winglets concept and the love-hate relationship that our industry has with winglets. You see, some people love making fun of
+
+01:07:00.629 --> 01:07:09.112
+[SPEAKER_00]: it. Some people say that it does make a difference. Some people will bring it on and some take it off. So please explain to our audiences what
+
+01:07:09.312 --> 01:07:16.674
+[SPEAKER_00]: are winglets and why are they in paragliding and what difference does it make, man? Because I'm super confused, you know, and I'm pretty sure
+
+01:07:16.714 --> 01:07:26.922
+[SPEAKER_00]: some people in our audience is as well. You know, it's like every solution is based on a problem. And that's why we have the winglets. To
+
+01:07:28.083 --> 01:07:40.507
+[SPEAKER_01]: say it in short. And now it's like... yeah this is one one yeah it's in the in the design progress especially on the on the performing gliders it's
+
+01:07:40.587 --> 01:07:50.771
+[SPEAKER_01]: more and more common that we get a problem with the stable spiral because it's the gliders get so so rigid and and and performing and more
+
+01:07:50.811 --> 01:07:59.015
+[SPEAKER_01]: effective that it's really hard to control the spiral so if we had some prototypes you do one turn enter the spiral and the other blackout
+
+01:07:59.515 --> 01:08:11.263
+[SPEAKER_01]: instantly and then to make this glider exit in in 360 700 some turns it's it's almost impossible you know some never exit just accelerating what
+
+01:08:11.303 --> 01:08:24.167
+[SPEAKER_01]: else you know and this was i think this is a a major problem in the design and And the previous models, sometimes it took us half a year to sort out
+
+01:08:24.207 --> 01:08:34.531
+[SPEAKER_01]: the spiral problems on a design. And the problem is, when you change something in the design, it has an effect on other behaviors. In the
+
+01:08:34.571 --> 01:08:43.215
+[SPEAKER_01]: worst case, it kills you the performance or whatever. So it's always a balancing between certain characteristics, behaviors of the glider
+
+01:08:43.255 --> 01:08:49.598
+[SPEAKER_01]: now. Some are just practically and some are on the safety side, sometimes shifting between. So sometimes you just jump from one
+
+01:08:49.658 --> 01:08:56.681
+[SPEAKER_01]: problem to the other one, you know. You solve one problem and suddenly this solving created another problem or whatever. And just putting a
+
+01:08:56.721 --> 01:09:06.345
+[SPEAKER_01]: winglet on the glider solves it without infecting anything else, you know. And the effect of these winglets, well, we had already small
+
+01:09:06.385 --> 01:09:11.564
+[SPEAKER_01]: winglets on the tips, which is kind of, yeah. For the vortex, like airplanes,
+
+01:09:14.205 --> 01:09:22.567
+[SPEAKER_01]: the effect, maybe it's more marketing. On some prototypes, we had an effect, which say, OK, it improves performance a little bit. But
+
+01:09:22.647 --> 01:09:31.989
+[SPEAKER_01]: actually, for real life, for real gains, it's too small. We could make it bigger, but then has an influence on the handling, whatever, because
+
+01:09:32.049 --> 01:09:40.568
+[SPEAKER_01]: it's too stable then. It's not rolling at all anymore. But yeah, we balanced it out a little bit, you know? And these additional ones, the
+
+01:09:40.588 --> 01:09:48.091
+[SPEAKER_01]: winglets inside the sail, they work really like, yeah, it's like when you're doing the spiral, it's like the glider is also rolling and diving
+
+01:09:48.131 --> 01:09:57.776
+[SPEAKER_01]: at the same time. And the winglets is like, well, it's not talking aerodynamically, what's happening aerodynamically. It's just like a
+
+01:09:57.816 --> 01:10:10.321
+[SPEAKER_01]: wall stopping the roll effect kind of. So it reduces the g- force, so it's not accelerating that much. And it in it it tends to to straighten out the
+
+01:10:10.341 --> 01:10:17.923
+[SPEAKER_01]: glider a little bit yeah so it's it's a matter how big you make them where you place them further in further out for the front further back
+
+01:10:18.623 --> 01:10:26.906
+[SPEAKER_01]: sometimes you angle them also a little bit so there's a lot a lot of things you can play around with this and and yeah it's it's a very easy way to
+
+01:10:26.966 --> 01:10:36.588
+[SPEAKER_01]: control this the spiral you know And I'm pretty sure that more and more gliders will have such winglets like we see on other manufacturers
+
+01:10:36.628 --> 01:10:45.935
+[SPEAKER_01]: already, even in lower classes, for example, you know. Because, for example, yeah, we never had the problem with a lower class with spirals,
+
+01:10:45.955 --> 01:10:53.921
+[SPEAKER_01]: you know. But even putting now a winglet on the next generation, maybe on a lower class glider, would give it even more control on the spiral
+
+01:10:53.961 --> 01:11:04.878
+[SPEAKER_01]: behavior. The pilots, you know. There's a funny thing when you go to the flight school and, you know, the beginners, and they say, did you do a
+
+01:11:04.898 --> 01:11:15.580
+[SPEAKER_01]: spiral or what? No, no, it's too dangerous. So scared, so scared, so out of control. And I say, yeah, here you go. Yeah, more accessible. We have
+
+01:11:15.600 --> 01:11:24.382
+[SPEAKER_01]: Gladys. It's like you can pull very hard spiral, almost like in a set maneuver. You pull it in like this and then just make an instant release.
+
+01:11:24.722 --> 01:11:34.822
+[SPEAKER_01]: Hands up. And the Gladiators, whoop. releases fly straight you know without any shooting whatever so we call it instant instant release so
+
+01:11:34.902 --> 01:11:46.225
+[SPEAKER_01]: you don't need you don't need to have any any careness about the spiral anymore what category are you talking about the suzy does it and for
+
+01:11:46.265 --> 01:11:55.465
+[SPEAKER_01]: example even without the winglets they do it like this Oh, that's very interesting because exiting a bad spiral is the recipe for disaster.
+
+01:11:55.485 --> 01:12:01.528
+[SPEAKER_00]: And if you're telling me you can exit, because I mean, whenever you, whenever you, you're, you're shitting your pants, you just want to go
+
+01:12:01.548 --> 01:12:08.792
+[SPEAKER_00]: hands up, right? And the moment you go hands up, it's like everything happens in front of you. So if, if you guys have fixed that problem, I
+
+01:12:08.812 --> 01:12:17.625
+[SPEAKER_00]: think it's, it's a pretty good development. If you get into a mind from a beginner year, you never have, you haven't done it. And as soon as you
+
+01:12:17.665 --> 01:12:28.827
+[SPEAKER_01]: enter the spiral, your G-force increases, the speed increases, you're losing the control, actually, because you get fear, you get freezing,
+
+01:12:28.987 --> 01:12:39.430
+[SPEAKER_01]: and whatever. Fuck, what shall I do now? Whatever. And sometimes you react completely wrong because it's too much for you. So sometimes it's
+
+01:12:39.450 --> 01:12:48.673
+[SPEAKER_01]: just let go, you know? And if you're ever glad, just, okay, let go, and it does itself. So you get into this, and then you can start controlling it.
+
+01:12:48.953 --> 01:12:55.318
+[SPEAKER_01]: So the instructor can tell you everything before, you know? But when you're in it, it's completely different when you're doing it for
+
+01:12:55.338 --> 01:13:05.787
+[SPEAKER_01]: yourself. It's like every maneuver you do for the first time, it's like, oh, fuck, you know? It's really... But I know my... I can tell you, I
+
+01:13:05.807 --> 01:13:16.133
+[SPEAKER_01]: always aspire to the right side, you know? And sometimes as a control... at the end i tried to spiral on the left side and it feels like so awkward
+
+01:13:16.633 --> 01:13:25.523
+[SPEAKER_01]: it's like i have no control i have no feeling at all it's just like i know exactly what is what i have to do but it's really like oh this is so weird
+
+01:13:25.583 --> 01:13:35.542
+[SPEAKER_01]: it's so weird so you can feel how a beginner also feels you know it's like yeah Can you answer a dilemma? It just came to my mind, a question which I
+
+01:13:35.582 --> 01:13:44.326
+[SPEAKER_00]: have my personal one, and I mean, maybe some of the audience members can benefit from that as well. I fly Ikuma, a high B, as of now, and I've flown
+
+01:13:44.346 --> 01:13:51.730
+[SPEAKER_00]: it for like almost 200 hours. And I have a tendency of spiraling to the right, you know, because that's just my stronger side. So every time I
+
+01:13:51.750 --> 01:13:58.273
+[SPEAKER_00]: spiral, I practice spiral, I'm spiraling to the right. Eventually, what has happened is my glider doesn't fly straight anymore,
+
+01:13:58.974 --> 01:14:08.174
+[SPEAKER_00]: regardless of how many trimmings I do. So what have I done, basically? I don't understand. Is it the fabric that has shifted? Because I've
+
+01:14:08.234 --> 01:14:15.517
+[SPEAKER_00]: trimmed it, like, you know, thick and thin, like, to the precise measurement. I mean, okay, I haven't changed the line set, but do you
+
+01:14:15.557 --> 01:14:27.741
+[SPEAKER_00]: think there could be a chance that spiraling just one direction could actually cause your wink to go a bit weird? Well, if you spiral to one
+
+01:14:27.781 --> 01:14:36.465
+[SPEAKER_01]: direction, it's quite normal that the gliders stretch differently right and left side. So the first topic, like you said, is checking the
+
+01:14:36.485 --> 01:14:46.169
+[SPEAKER_01]: trim. So normally you find out that right and left side, the trimming is different. Even so, when you say, okay, the trim is checked and it's
+
+01:14:46.229 --> 01:14:55.771
+[SPEAKER_01]: perfect, it's hard to say. I mean, did the stitching go somewhere? Did the fabric happen? Did something like that? Yeah, it's... it's hard to
+
+01:14:55.811 --> 01:15:04.882
+[SPEAKER_01]: say you know it's just guessing but for sure the also the material has a has a stretch but normally the nylon goes goes back to the original state
+
+01:15:05.923 --> 01:15:14.931
+[SPEAKER_01]: so it's quite it's not that logic but it's it's not said that it's couldn't happen you know maybe start sparring to the other side That's
+
+01:15:14.951 --> 01:15:23.974
+[SPEAKER_00]: what I'm doing now. Actually, it is helping because I'm developing the left side feeling as well, as you said, because it feels so unnatural
+
+01:15:24.054 --> 01:15:31.336
+[SPEAKER_00]: when you're comfortable in one direction and then you go the other one. So I'm like, all right, let me try and stretch my wing to the other one.
+
+01:15:31.536 --> 01:15:39.718
+[SPEAKER_00]: Let's see. Actually, this is an interesting point because this is one of the design processes where we paid a lot of attention on the world and on
+
+01:15:39.818 --> 01:15:51.987
+[SPEAKER_01]: Europe about durability of performance. because there's so many inner structures sometimes very little structures on on on the let's say what
+
+01:15:52.007 --> 01:16:00.773
+[SPEAKER_01]: the minimum what is necessary to keep the weight low But still it has to be durable. Like you say, okay. When you start spiraling, not stretching
+
+01:16:00.993 --> 01:16:09.495
+[SPEAKER_01]: the straps or the cutting and the weft and the weaving has to be in the right direction, whatever, you know? So if you shift the cutting from
+
+01:16:09.535 --> 01:16:17.818
+[SPEAKER_01]: the balance, of course it's different. Yeah. Even this makes a glider turn. So it's the manufacturing process has to be very right. We are very
+
+01:16:17.898 --> 01:16:31.148
+[SPEAKER_01]: aware where to support certain parts, which additional like sticky patches or different alignments, whatever, to keep the most important
+
+01:16:31.568 --> 01:16:41.393
+[SPEAKER_01]: structures and power forces constant, for example. And this is to guarantee that even after a lot of hours of flying, the glider keeps its
+
+01:16:41.473 --> 01:16:49.887
+[SPEAKER_01]: characteristics. You have to imagine a two-lang glider is just two attachment points with a very far distance between and to the rear. And
+
+01:16:50.067 --> 01:16:59.154
+[SPEAKER_01]: there's a lot of forces when you spiral or flying all the time. And the glider is working constantly. So there's a movement and a force inside
+
+01:16:59.254 --> 01:17:09.538
+[SPEAKER_01]: everywhere, on every part. And If they give in, whatever. So you might lose performance. Even you don't feel it, you don't see it. Maybe you see
+
+01:17:09.578 --> 01:17:16.283
+[SPEAKER_01]: it then when another friend of yours flying with the same, with a new glider or a different glider flies side by side and you're just losing.
+
+01:17:17.044 --> 01:17:27.951
+[SPEAKER_01]: And then they're like, what the hell is going on? And this could be a kind of aging of performance. And we had prototypes in the beginning. We had
+
+01:17:27.971 --> 01:17:38.869
+[SPEAKER_01]: the performance for... two three flights and then it was dropping and we didn't know why wow that's interesting this was just a matter of the
+
+01:17:38.929 --> 01:17:48.310
+[SPEAKER_01]: inner structures where they were lacking of supporter and and or put them wrongly or yeah it's just technique of manufacturing sometimes so
+
+01:17:48.770 --> 01:17:59.236
+[SPEAKER_01]: and it happened to us very in the beginning of this design process so we we had an eye on this and we we yeah we located all these spots more or less you
+
+01:17:59.276 --> 01:18:09.582
+[SPEAKER_01]: know what is happening here and therefore we we yeah we also say okay this is yeah we we have this durability in performance it's not only the
+
+01:18:09.662 --> 01:18:18.727
+[SPEAKER_01]: material from the porosity body and the line strength so it's also the characteristic and performance as a durability in this kind of
+
+01:18:18.767 --> 01:18:27.154
+[SPEAKER_01]: classes. Now makes a lot of sense and does answer my question up to a point because I've put my wing in every sorts of situations. But yeah, it at
+
+01:18:27.194 --> 01:18:34.000
+[SPEAKER_00]: least gives me wing control and more comfort. But I think on that note, Stefan, we have pretty much covered everything that our audience
+
+01:18:34.040 --> 01:18:41.806
+[SPEAKER_00]: members would be curious about in design. But one thing that I really would like for you to throw some light on before we call it quits for the
+
+01:18:41.826 --> 01:18:51.634
+[SPEAKER_00]: day is that what does it take for a designer to start working on a triple c and eventually what exactly is coming from your end in that category
+
+01:18:51.674 --> 01:18:59.901
+[SPEAKER_00]: because of course as a pioneer brand you know a lot of our audiences will stay excited so if you could just give a sneak peek without letting any
+
+01:18:59.921 --> 01:19:08.508
+[SPEAKER_00]: secrets what what are you guys what are you guys up to in the coming days and coming years yeah maybe you have noticed one light and your range is
+
+01:19:08.548 --> 01:19:09.028
+[SPEAKER_00]: missing yeah
+
+01:19:11.987 --> 01:19:20.429
+[SPEAKER_00]: Just yet. I'm pretty sure your passion and your drive will make that happen very soon. But yeah, I want to get your perspective on that. No,
+
+01:19:21.009 --> 01:19:33.092
+[SPEAKER_01]: it's not yet a priority because still we have different projects which are also important. And just recently we launched four gliders. But
+
+01:19:33.352 --> 01:19:47.556
+[SPEAKER_01]: yeah, there is some guessing and some thinking behind the CNC project as well. But it's not yet, I would say, a main focus. Got it. I think, I mean,
+
+01:19:47.596 --> 01:19:57.684
+[SPEAKER_00]: the amount of R&D you guys have put in the other classes, especially from high B to, of course, the latest one, two-liner. And the D category, that
+
+01:19:57.744 --> 01:20:06.108
+[SPEAKER_00]: itself is very exciting for our audiences to have a look at and stay excited. But I think before we call it quits, we usually have, I mean, I
+
+01:20:06.128 --> 01:20:19.430
+[SPEAKER_00]: don't know if it's a tradition or something, but I request my guests to share one incident from their flying career, or incident as in like one
+
+01:20:19.470 --> 01:20:26.312
+[SPEAKER_00]: story that kind of makes you laugh or has remained with you. So is there anything that you can share with our audiences that has stuck with you
+
+01:20:26.532 --> 01:20:34.295
+[SPEAKER_00]: over your flying career, which will be of some value, be it humorous or be it otherwise? I'm pretty sure as a test pilot and as a designer and
+
+01:20:34.335 --> 01:20:42.862
+[SPEAKER_00]: everything, you've had quite a few memorable ones. So just put on one if you can. Yeah. It's what I wanted to say before, because when we were
+
+01:20:42.902 --> 01:20:51.390
+[SPEAKER_01]: talking about pilots and progressing and whatever, and abilities, once on a festival, we gave out a glider to a pilot. The pilot came back,
+
+01:20:51.430 --> 01:21:00.594
+[SPEAKER_01]: and then he was complaining about the handling. The turning is too less, entering, whatever. And then I tried to give him some advice, how to
+
+01:21:00.654 --> 01:21:13.081
+[SPEAKER_01]: shift the brake and whatever. Maybe he can try whatever. And then his answer was simply to say, I only fly on Sundays. I don't care. Weird.
+
+01:21:13.521 --> 01:21:19.325
+[SPEAKER_00]: So getting airtime is essential to know about glider. Every advice is useless.
+
+01:21:22.544 --> 01:21:30.310
+[SPEAKER_00]: yeah all right stefan stiegel thank you so much for your time today and sharing all the wisdom knowledge and the passion behind your design and
+
+01:21:30.330 --> 01:21:37.996
+[SPEAKER_00]: the ultimate product of air air design you know needless to say your bladders are visually very appealing and today our audience has got to
+
+01:21:38.456 --> 01:21:48.003
+[SPEAKER_00]: get a behind the scenes a little bit into your mind and how it works so I'm excited. I'm pretty sure my audiences will be excited as well. And thank
+
+01:21:48.023 --> 01:21:54.726
+[SPEAKER_00]: you for working hard and bringing on these pioneering technologies. And I wish you good luck and cannot wait to have you back on the show, man,
+
+01:21:54.786 --> 01:22:03.231
+[SPEAKER_00]: when you bring out something as amazing as this one, as you have. Yeah, thanks for having me. It was a pleasure talking to you and maybe giving
+
+01:22:03.271 --> 01:22:13.591
+[SPEAKER_01]: you some, yeah, some input and interviews. And yeah, hopefully it was interesting for everybody. And yeah, you're listening maybe to the
+
+01:22:13.611 --> 01:22:20.799
+[SPEAKER_01]: hands and, and yeah, never know. So thank you much. Awesome.

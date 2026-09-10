@@ -1,0 +1,1423 @@
+WEBVTT
+
+00:04.785 --> 00:08.488
+[SPEAKER_01]: [Automatic captions by Autotekst using OpenAI Whisper V3. May contain recognition errors.] Hello everyone, welcome back to Paragliding Atlas and your weekly dose of
+
+00:08.629 --> 00:18.698
+[SPEAKER_01]: awesomeness at whichever streaming platform you're tuning into. And joining us this time around is none other than Michael Nessler. For
+
+00:18.738 --> 00:25.244
+[SPEAKER_01]: those of you who have already heard his name, I'm pretty sure you know his achievements. But for those of you who are wondering who he is, well, no
+
+00:25.304 --> 00:33.312
+[SPEAKER_01]: prizes in guessing, this episode is going to be a tell-all tale. But to give you a little bit of an introduction, Michael is one of the most
+
+00:33.792 --> 00:42.601
+[SPEAKER_01]: innovative and respected minds in paragliding industry because time and again, he has not only successfully challenged the status quo, but
+
+00:42.621 --> 00:53.932
+[SPEAKER_01]: his technologies have gone on and created an actual difference in making flying more safe and more fun in various ways. To put it simply, he
+
+00:54.053 --> 01:02.776
+[SPEAKER_01]: is the one who invented RAST, the revolutionary system which prevents collapses, which is being used in swing paragliders. And more
+
+01:02.856 --> 01:13.580
+[SPEAKER_01]: recently, as some of you might have known already, he has come out with his very own revolutionary wing, which is a two-liner in ENB category.
+
+01:13.640 --> 01:25.124
+[SPEAKER_01]: Let me repeat that. ENB as in B for Bravo. So for all of you guys out there who want to go out and chase some fun while staying safe, this man is the
+
+01:25.204 --> 01:35.966
+[SPEAKER_01]: brain behind the tech and today we dive right in and we ask him all the questions that you've been wondering about the sensational ENB class
+
+01:36.346 --> 01:44.690
+[SPEAKER_01]: two-liner paraglider and of course the other amazing things that he has done over a period of time in this industry. So I'm going to say what I
+
+01:44.750 --> 01:51.399
+[SPEAKER_01]: always say, and that is without further ado, let's tune in. And I hope you like it.
+
+01:55.094 --> 02:01.736
+[SPEAKER_01]: All right, Michael, let's dive right into this. The reason why I stumbled upon your website is that you have a very sensational new
+
+02:01.776 --> 02:09.598
+[SPEAKER_01]: product, a two-liner in an ENB category where you have managed to certify it and the DHV is supporting this new invention. I was just
+
+02:09.638 --> 02:17.300
+[SPEAKER_01]: thinking as I was preparing this episode, I was like, why did paragliders have three-line concept? What is the history behind
+
+02:17.320 --> 02:27.921
+[SPEAKER_01]: three-line concept? Yeah, it's a long time ago when we begin to paragliding. For me, it was about 40 years ago. The first paraglider,
+
+02:28.082 --> 02:39.828
+[SPEAKER_00]: there was two lands on both of them. And they divided on top on A and B, what go to one mainline and C and D goes to the next mainline. And the origin was
+
+02:39.868 --> 02:52.289
+[SPEAKER_00]: this. And for, after, I guess, 20 years ago, somebody tried to make only four line attachment points on the rings, the guide. Then we go to three
+
+02:52.329 --> 03:03.451
+[SPEAKER_00]: line attachment points, but always three or four main lines, RBCD. And then step by step, the target was to reduce the line resistance and the
+
+03:03.531 --> 03:13.811
+[SPEAKER_00]: number of lines. But especially the line resistance, it's not the problem that the diameter or the How can I explain? The resistance to the
+
+03:13.851 --> 03:23.295
+[SPEAKER_00]: wind of our lines, but the problem is that the lines on the back, there is not much load. They are blown out of the wind from the speed. So the target
+
+03:23.335 --> 03:33.638
+[SPEAKER_00]: was to have a lot of lines or less lines, but every line that goes down to the pilot has to be loaded. In the beginning, we had four lines about 30
+
+03:33.959 --> 03:44.684
+[SPEAKER_00]: years ago. It means A, B, C, D lines at the bottom. The D lines were always not under load. This is A, B, C, D, and then a brake line. So five, if you
+
+03:44.704 --> 03:54.174
+[SPEAKER_01]: have to look at it. Of course. The brake line is always faster. And the main problem at this time was that the last line, section, the D line, was
+
+03:54.214 --> 04:02.478
+[SPEAKER_00]: not loaded. There was about one, two kilos of line, and this is not very much. And with the speed you got, the lines were blowing out, and they
+
+04:02.498 --> 04:11.644
+[SPEAKER_00]: pulled me down the trailing edge or close to the trailing edge. The first step was to collect the C and D lines on top and bring it down only with one
+
+04:11.664 --> 04:26.002
+[SPEAKER_00]: main line. This was the three-liner. the next step would be to line down because the a and b section on bottom is loaded more and to reduce the
+
+04:26.082 --> 04:36.046
+[SPEAKER_00]: blown out effect from the wind but if you look today every canopy you will find the two line i have four attachment points on the canopy so this is
+
+04:36.086 --> 04:47.662
+[SPEAKER_00]: not a real two liner has been made about 15 years ago for testing if only a and b that's my point on the canopy This was working, but it was not flying
+
+04:47.682 --> 04:54.974
+[SPEAKER_00]: very well. Interesting. Okay, I'm very curious about this line attachment points and the geometry that it makes. But just before we
+
+04:54.994 --> 05:03.296
+[SPEAKER_01]: dive into that, let's speak a little bit about transition from ram air canopies into the more elliptical or ellipsoid shaped which we have
+
+05:03.356 --> 05:10.818
+[SPEAKER_01]: now. Because I think we started with skydiving looking canopies where people were just taking the risers in the air and jumping off. So what
+
+05:11.338 --> 05:19.394
+[SPEAKER_01]: line concept was that? And what were the early inventions of paragliding looking like, if I may ask? When I started paragliding, I
+
+05:19.494 --> 05:28.238
+[SPEAKER_00]: used a skydiving canopy where we put our reinforcements on the nose to keep it open and take off. And the line concept at this time was already
+
+05:28.578 --> 05:40.323
+[SPEAKER_00]: two lines on the main lines. And on the top, we had four attachment points, A, B, C, D, collected to A and B main lines. It's nearly the same
+
+05:40.343 --> 05:52.726
+[SPEAKER_00]: system we have today again. But between this and today, there was some transitions this different line concept was also works very well but as
+
+05:52.826 --> 06:01.330
+[SPEAKER_00]: i told before the main problem was always that we have to load the lines what coming down to the pilot so you're basically saying that the load
+
+06:01.390 --> 06:08.314
+[SPEAKER_00]: distribution has improved over a period of time due to which the pressure has improved in the canopy and that is what actually enhances
+
+06:08.334 --> 06:16.194
+[SPEAKER_00]: performance is that the key here yes this is one of the keys the second key is of course unless i have the court of the profile the deepness from
+
+06:17.015 --> 06:29.540
+[SPEAKER_00]: front to back unless i can put the online attachment points so when i have three meter fifty like the old wins head in the center i need to support
+
+06:29.560 --> 06:39.017
+[SPEAKER_00]: the profile is for attachment points if i have only two meter fifty it's easier To support it with three attachment points, I would like a
+
+06:39.057 --> 06:50.971
+[SPEAKER_00]: two-liner with double B attachment points on top. Is this the aspect ratio that you're speaking about? Yes, of course. The aspect ratio and
+
+06:51.051 --> 07:00.923
+[SPEAKER_00]: also the surface is what you need to fly well. What I'm wondering, is it about reducing the cross-section area of the whole setup? Or is it about
+
+07:01.143 --> 07:12.708
+[SPEAKER_01]: just reducing the drag? Or is it about finding a sweet spot between both of them? It's more complex. Just to give you an idea, when we begin to fly,
+
+07:12.769 --> 07:19.392
+[SPEAKER_00]: the canopy used a profile, IFOIL, where the thickness was between 9% and 12% of the cold.
+
+07:22.650 --> 07:33.297
+[SPEAKER_00]: So if you mean if you have a one meter code, you've got. Yes. It's like the amount of air distance between top surface and bottom surface. The
+
+07:33.357 --> 07:45.184
+[SPEAKER_00]: weeks from today have 18%. It means we are using in relation much thicker airfoils today than 40 years ago. But this kind of airfoils is better for
+
+07:45.204 --> 07:54.467
+[SPEAKER_00]: paragliding because we are flying at low speed compared to aviation. And these thick airfoils give me the possibility to use less line
+
+07:54.507 --> 08:03.917
+[SPEAKER_00]: attachment points because I have more volume and that is more stable. This is so interesting. The combination between aspect ratio, lower
+
+08:03.997 --> 08:15.068
+[SPEAKER_00]: chord, and thicker profiles give me more possibilities to use less attachment points on the canopy. because the more air inside it is the
+
+08:15.088 --> 08:24.478
+[SPEAKER_00]: more pressure it is and the more pressure it is like the main problem even today is to support the area in the ring between the second attachment
+
+08:24.518 --> 08:35.523
+[SPEAKER_00]: point on the two liner and the next on the b section because the distance there is very long So what usually happens, what is the trade-off that a
+
+08:35.583 --> 08:43.227
+[SPEAKER_01]: designer is working with when there's an increased distance between two attachment points? Is it that in that localized area there's low
+
+08:43.267 --> 08:50.310
+[SPEAKER_01]: pressure or is the canopy more likely to fold in those areas because it's not tight enough? What are we looking at with increasing distance?
+
+08:51.191 --> 08:59.315
+[SPEAKER_00]: Yeah, there are many problems if the distance is too big. For example, if you begin with easy wing overs, you will see that the canopy is squeezed
+
+08:59.375 --> 09:10.026
+[SPEAKER_00]: there. So you lose the shape of the airfoil. It means you lose also our lift. This is one of the big problems with the C2 liner self at the moment.
+
+09:10.947 --> 09:22.672
+[SPEAKER_00]: After a lot of flights, when the rods in the front are not in the original shape, but they are still bended, and the porosity going higher, Then
+
+09:22.712 --> 09:33.116
+[SPEAKER_00]: the pressure inside is not enough to keep your airfoil in the shape what you need between this area where you have a big distance. So what
+
+09:33.136 --> 09:41.239
+[SPEAKER_00]: happens? If you accelerate, it can be that they don't keep the shape and you lose a lot of performance and safety. That's also the reason for why
+
+09:41.279 --> 09:53.406
+[SPEAKER_00]: the two liners, for example, have the double A points very far behind. So you have less distance between these two sections. where does the what
+
+09:53.446 --> 10:00.291
+[SPEAKER_01]: is it called i'm forgetting the name where we have the stabilo lines attached what is the profile is it a profile of the canopy or shape of the
+
+10:00.311 --> 10:00.691
+[SPEAKER_01]: canopy
+
+10:03.433 --> 10:11.559
+[SPEAKER_01]: yeah so where does arc come into play and how important is arc with all of this because i think when you as a designer sit on a table there are like so
+
+10:11.599 --> 10:22.463
+[SPEAKER_01]: many variables to consider before you start like fine tuning the perfect balance points So how does an arc of a glider play its shape in
+
+10:22.683 --> 10:29.749
+[SPEAKER_01]: performance and safety when it comes to reducing drag and cross-section and everything? Yeah, it's also not so easy to explain
+
+10:29.789 --> 10:40.338
+[SPEAKER_00]: because there are a lot of things connected, but I will try. Let's say if you make a half circle of arc, you get very good handling. You get very
+
+10:40.498 --> 10:49.325
+[SPEAKER_00]: easy collapses and front stars, of course, but you lose performance in gliding and thermaling. this is the main problem and if you accelerate
+
+10:49.365 --> 10:59.589
+[SPEAKER_00]: the glider you lose a lot of performance if you make it completely flat the pressure and the load distribution will not work well if you get a
+
+10:59.629 --> 11:12.774
+[SPEAKER_00]: collapse you cannot reopen it the canopies of today are a mix between half circle and flat means only elliptic and the half of ellipse and here
+
+11:12.814 --> 11:24.090
+[SPEAKER_00]: is depending the kind of canopy and also what kind of airfoil you are using and a lot of other parameters. But one of the main things what the
+
+11:24.310 --> 11:36.333
+[SPEAKER_00]: arc is defining is the behavior in collapsing. The other thing is with the arc you can handle when your canopy is going in stable spiral or not.
+
+11:38.873 --> 11:48.702
+[SPEAKER_00]: As closer you go to a half circle, the easier and faster your glider will go for example in a stable spiral. And that's why it's difficult to bring
+
+11:48.722 --> 12:00.626
+[SPEAKER_00]: them out. Fair enough. Just to get started on your amazing project. Like basically ENB class, when we as consumers look at classifications, it
+
+12:00.666 --> 12:07.668
+[SPEAKER_01]: seems people in your time, when they were bringing out with these safety, like I would say work group six or other parameters around it,
+
+12:08.408 --> 12:17.682
+[SPEAKER_01]: they wanted to make paragliding safer. So they came out with a lot of European norms, which laid the guidelines. ENB class in general, past
+
+12:17.782 --> 12:27.107
+[SPEAKER_01]: few years, I would say, let's say maybe five. This is before the ENC two-liners came into the picture. ENB class started expanding itself
+
+12:27.327 --> 12:34.829
+[SPEAKER_01]: in low B, mid B, high B because of the possibilities with respect to certification. It is generally considered as a safe class where people
+
+12:34.889 --> 12:43.298
+[SPEAKER_01]: can step over straight after school. Some do that. Some go to high Bs to test out their endurance. But it is like the stepping stone which
+
+12:43.358 --> 12:51.825
+[SPEAKER_01]: prepares you for the hotter wings that a sport has to offer. Somebody of your stature coming out in the market and saying that, hey, I am going to
+
+12:51.865 --> 12:59.914
+[SPEAKER_01]: bring out a two liner concept, challenge the status quo, which everybody else is afraid to because everybody has just done three
+
+12:59.934 --> 13:09.742
+[SPEAKER_01]: liners. So what was the mindset behind having a two liner in ENB class? Like, how did you start thinking about it? Okay. First, I have to say that
+
+13:09.822 --> 13:19.189
+[SPEAKER_00]: the problem of the C two-liners is that there doesn't use a wing already existing from a three-liner and bring it to a two-liner concept. But
+
+13:19.229 --> 13:28.736
+[SPEAKER_00]: they construct the wings for the maximum possible performance in this class with the two-liner concept. And this is difficult to compare
+
+13:28.817 --> 13:36.302
+[SPEAKER_00]: because everybody is speaking about two-liners and connected to the mindset that we have more performance and less safety. This is simply
+
+13:36.342 --> 13:47.179
+[SPEAKER_00]: bullshit. If you use the same wing with a two-liner and a three-liner concept, you will find out very fast that it's more stable and easier in
+
+13:47.199 --> 13:58.288
+[SPEAKER_00]: the maneuvers with the two-liner if you are using the same canopy. Of course, if I begin to say I have to win the performance competition on the
+
+13:58.328 --> 14:08.492
+[SPEAKER_00]: C-class and I put somebody did with 7.5 aspect ratio, 7.2 in the C-class, these wings are difficult to fly and not so safe. but this is not
+
+14:08.572 --> 14:17.216
+[SPEAKER_00]: connected to the two-line concept but it's the whole together our concept was i tried about two years ago because everybody say oh we have
+
+14:17.256 --> 14:28.240
+[SPEAKER_00]: to need a to make a two-liner i say okay i will try to existing wing i just modify the line concept i let all the rest the same like it is so we convert
+
+14:28.281 --> 14:37.585
+[SPEAKER_00]: the lilo my personal little about two years ago in a two- liner And I found out a lot of interesting things. The first, it was more stable and more
+
+14:37.645 --> 14:48.374
+[SPEAKER_00]: performing. Obviously. That's a nice thing. The next thing, I miss every system of fast descending. I cannot more make big ears. I cannot
+
+14:48.414 --> 14:56.641
+[SPEAKER_00]: make a front style. I cannot make a side collapse. I cannot spiral down, of course. I cannot make a B-style. Let's say I can make it, but it's not
+
+14:56.681 --> 15:08.622
+[SPEAKER_00]: fun. I was thinking about, after one year, what I flew it, that all these things, that it's flying more stable, the behavior is easier, the
+
+15:08.662 --> 15:18.406
+[SPEAKER_00]: handling also was better. How can I bring it in the B- class? Because this is a B-glider, I like it. Because I fly the Hulier and the Dolomites in
+
+15:18.646 --> 15:29.209
+[SPEAKER_00]: mostly all conditions, and I don't need a wing where I have fear to take off. I need also the possibility to make big ears or asymmetric collapse
+
+15:29.249 --> 15:42.300
+[SPEAKER_00]: for going down fastly. And so I'll come to the solution. Why don't let the normal lines, A lines, what I had on the old Lilo, in the same position on
+
+15:42.320 --> 15:52.068
+[SPEAKER_00]: this, but without load. So if I need it for takeoff. One more time. I did not understand that. Do you know the normal Lilo have A, B, C, D points on
+
+15:52.108 --> 16:04.731
+[SPEAKER_00]: top? The two-liner kneeler has a double A and double B on top. And the double A is beginning very far behind because I need to support here,
+
+16:04.831 --> 16:16.936
+[SPEAKER_00]: there. So the old points of the A on the 10% of the cord, that was still there with the loop, but I removed it for using it as two-liner. The idea
+
+16:16.996 --> 16:28.169
+[SPEAKER_00]: was I reconnect these lines, but without load on the riser. So I can use the lines for making maneuvers. Okay. So collapse lines, basically.
+
+16:28.189 --> 16:37.155
+[SPEAKER_01]: Yeah. It's like a folding line, but this is not a folding line because you cannot remove it. You need it for takeoff. And this guy shifted the AA
+
+16:37.195 --> 16:49.262
+[SPEAKER_00]: points more far behind than on the C liner on the market. So they will hold more supported and you get even the nose automatism more effective.
+
+16:50.720 --> 17:01.204
+[SPEAKER_00]: Wire, C-liner, it's more safe. Two-liner is more safe than a three-liner. This is a very simple issue. If I can explain it well. You
+
+17:01.224 --> 17:11.607
+[SPEAKER_00]: have the whole area from the nose to the first attachment point on the load. This area is supported by the pressure of the air and by the, let's
+
+17:11.647 --> 17:20.728
+[SPEAKER_00]: say, all the things what you have inside, diagonal ribs a little bit and all this stuff. Okay. Correct. Normal flight, when you put 1G, it means
+
+17:20.808 --> 17:30.614
+[SPEAKER_00]: your load to this wing. What happens? The nose is going a little bit banded up, but not much. I have less than 1G. For example, if you have a big
+
+17:30.634 --> 17:40.539
+[SPEAKER_00]: turbulence and you jump out of a thermal, you lose load on the A-lines. What happens? The part from the loop to the nose, which is banded a little
+
+17:40.579 --> 17:51.285
+[SPEAKER_00]: bit abnormally, comes back down to the normal position. So what happens? The ring accelerates a little bit by itself. If you put more
+
+17:51.345 --> 18:02.268
+[SPEAKER_00]: load, this part is bended up more, change the profile shape and slow it down. Okay? So for example, if you make a star and release it, you have a
+
+18:02.288 --> 18:12.086
+[SPEAKER_00]: lot of load because you are accelerating, means you have 2G normally in exit, and the nose is bended up and slower the glider down. Then when you
+
+18:12.146 --> 18:21.332
+[SPEAKER_00]: come back to your normal load, it's in the original position. So you're saying the nose is pitching? It's pitching in all directions,
+
+18:22.994 --> 18:33.041
+[SPEAKER_00]: depending on the load. So the longer the distance between the nose and the first loaded attachment point, the more effective this automatism
+
+18:33.101 --> 18:41.822
+[SPEAKER_00]: is. So basically, this is the behavior of the structure. That is how it is designed. It's an aerofoil kind of a thing behaving in a certain way when
+
+18:41.842 --> 18:51.987
+[SPEAKER_01]: you anchor it at some point. Exactly. This is, I will say, the most important key of the two-liner concept, that you have the parts to the
+
+18:52.027 --> 19:03.461
+[SPEAKER_00]: first attachment point, what is making a very well job in turbulences, in maneuvers, and so on. And this is why a C-liner is more stable. Because
+
+19:04.042 --> 19:16.329
+[SPEAKER_00]: the more I move the A-lines to front, the more dynamic will be the glider because they cannot compensate the load differences or with the
+
+19:16.369 --> 19:25.993
+[SPEAKER_00]: bending of the profile. Did you understand this? It's not easy. Yeah. yeah it's not easy but i'm trying to figure out if we can find a real life
+
+19:26.053 --> 19:34.299
+[SPEAKER_00]: example so that the audiences who are listening to us can picture that in their mind in this moment which is the whole system it's just upward then
+
+19:34.399 --> 19:45.108
+[SPEAKER_00]: when you go in it loses a little bit load because you are not more lifted and they can accelerate and this automatism this effect help you to fly
+
+19:45.148 --> 19:56.893
+[SPEAKER_00]: safe because when it's corrected up the profile is very stable if you lose wait for a moment it means that you are not loaded well you gather you
+
+19:56.913 --> 20:06.078
+[SPEAKER_00]: need to accelerate and then you split it down and accelerate the guide automatically this is a very funny concept because it works really well
+
+20:06.893 --> 20:16.498
+[SPEAKER_01]: The angle of attack reduces and it accelerates by itself. It's not angle of attack, Karsten. It's only the part, let's say, you see, this is the
+
+20:16.578 --> 20:24.361
+[SPEAKER_00]: nose. Oh, the one from the first attachment point to the nose. That's the only one. It's moving the part in front. It means you deform the airfoil.
+
+20:25.382 --> 20:34.666
+[SPEAKER_01]: Wow. Okay. Then why does this make two-liner safer than a three-liner? What is the concept, if you could explain? Easy, because you can use only
+
+20:35.066 --> 20:47.409
+[SPEAKER_00]: two main lines. You need to shift the front lines, the double A, as fast you can, as far you can behind. Because otherwise the distance between
+
+20:47.429 --> 20:57.534
+[SPEAKER_00]: the first and second group is too much. So this shifting the double A points far behind give you a longer section in front. It's kind of
+
+20:57.554 --> 21:06.768
+[SPEAKER_00]: pitching. You understand? So you're saying that because the system can absorb more energy to a three liner, that is why it's safer. Absorbing
+
+21:06.828 --> 21:15.092
+[SPEAKER_01]: energy means wasting it, right? Because energy should be converted into speed. So we are focusing on making as rigid profiles as possible.
+
+21:15.592 --> 21:25.956
+[SPEAKER_01]: Gliders which retain their shape as much as they can with respect to blowing or some sort of wrinkling. So why does making front portion more
+
+21:26.016 --> 21:38.598
+[SPEAKER_01]: flexible make performance better? This is based on a very old theory of airfile in paragliding, but this is not correct. I guess you remember
+
+21:38.618 --> 21:47.722
+[SPEAKER_00]: when you made your class, when you learned paragliding, they showed you the graphics where your airfile is making a lift. You mean, what is that?
+
+21:48.042 --> 21:55.504
+[SPEAKER_00]: I'm forgetting the name of that one. I know what you're speaking about. But the thing is, on a paraglider, this is working a lot different than on
+
+21:55.524 --> 22:05.363
+[SPEAKER_00]: a normal airplane. The airfoil is not only making lift upward, but also is pulling you to the front. Yeah, because of the gravity component. Not
+
+22:05.443 --> 22:14.527
+[SPEAKER_00]: only the gravity component, but the pressure area on the nose, on the paragliding profile, begins on the nose. You have the profile here.
+
+22:15.167 --> 22:24.311
+[SPEAKER_00]: It's pulling you forward. Wow. And that's why we cannot use, for example, laminar airfoils on a paraglider, because on the laminar
+
+22:24.351 --> 22:33.318
+[SPEAKER_00]: airfoil, this effect you don't have. We need profiles with the maximum height very close to the leading edge. And this means the whole game is
+
+22:33.358 --> 22:44.261
+[SPEAKER_00]: playing in the first 25%. If you make this area stable and working well, you have a lot of performance. So you're saying the pressure point in two
+
+22:44.301 --> 22:53.820
+[SPEAKER_01]: liners because of the position of attachment points is the key, which makes them better, safer and more fun to be than three liners. The thing
+
+22:53.900 --> 23:06.070
+[SPEAKER_00]: is, if I want to make a competition ring more safe and more stable, I can, in theory, move the first points further behind. The problem is that you
+
+23:06.090 --> 23:14.397
+[SPEAKER_00]: cannot take off anymore. And that's why we have a limit to shift it behind. But this limit, for example, on the Lilo X, I don't have because I
+
+23:14.417 --> 23:24.452
+[SPEAKER_00]: have for takeoff and maneuvers, the external lines are in the normal old position of the original Lilo. That was so cool, man. What an invention.
+
+23:26.833 --> 23:38.055
+[SPEAKER_01]: Creativity, basically. Yeah, just trying out and... Yeah, I flew in two years now and I'm really happy with this because I flew in very bad
+
+23:38.095 --> 23:47.526
+[SPEAKER_00]: conditions and I never had problems. The only problem that I have at the moment is when I go to fly with my classes and I normally fly us first to
+
+23:47.606 --> 23:57.212
+[SPEAKER_00]: check the conditions. It's for other pilots. But that's the only thing. Interesting. Okay, so this attachment point theory that you said is
+
+23:57.252 --> 24:05.238
+[SPEAKER_01]: very interesting to me because let's say first 25% is the place where most of the aerodynamics come into play and the whole story is
+
+24:05.278 --> 24:16.066
+[SPEAKER_01]: happening. So basically anything behind that part, let's say the second half of the glider, is just like a fairing designed to let the
+
+24:16.246 --> 24:27.532
+[SPEAKER_01]: airflow detach smoothly, just like we have pod harnesses. Yes, for the view of aerodynamics, it's just to avoid vortexes, turbulences after
+
+24:27.572 --> 24:37.280
+[SPEAKER_00]: the main pressure area. But for paragliding, you need it also to have the surface and to have the brakes working and all these things. I'm just
+
+24:37.340 --> 24:44.946
+[SPEAKER_01]: curious from the point of pure hike and fly, not competing, because competing you need glide and everything else. But if a person just wants
+
+24:44.986 --> 24:53.881
+[SPEAKER_01]: to go up a mountain and fly down, The length of the cord can be reduced considerably because the lift is anyways being generated at tops.
+
+24:54.141 --> 25:05.167
+[SPEAKER_00]: Yeah, you can't. Maybe you remember years ago, Marcus Grintamoff from Wings of Change made a wing with 13 of aspect ratio. That's blade. God
+
+25:05.227 --> 25:14.532
+[SPEAKER_00]: damn it. And the trick there was very simple. The profile was coming down very fast. And it works. Let's say it's not very safe, but the
+
+25:14.772 --> 25:26.179
+[SPEAKER_00]: performance, it's okay. God damn. Have you tried that thing? Yeah, of course. I made the first. I designed it also. Are you kidding me? That's
+
+25:26.219 --> 25:35.906
+[SPEAKER_00]: so cool, Michael. What was your motivation to do that? Was it like, let's just go out and build something completely wacky and surprise the world
+
+25:35.986 --> 25:46.133
+[SPEAKER_01]: and ourselves with it? Yeah, Mark was a very good friend of mine. It was the first prototype we made together. We call it PsyCo. What do you call
+
+25:46.153 --> 25:56.197
+[SPEAKER_00]: it? Psycho. Psycho. Yeah. Because it was very crazy to fly. Of course, we were scared in the beginning, but then step by step, we see that it works
+
+25:56.237 --> 26:08.025
+[SPEAKER_00]: well. And then we made one with aspect ratio 9. From then, Markus tried step by step to improve it till 13 of aspect ratio. And it flew. But I have
+
+26:08.065 --> 26:18.789
+[SPEAKER_00]: to say that over 11, the performance is decreasing. So it makes no sense to make extremely high aspect ratio paragliders. That's interesting,
+
+26:19.109 --> 26:26.313
+[SPEAKER_01]: because I was thinking we were going towards thinner and thinner wings. But as you said, this was just so fun because you never can go to
+
+26:26.333 --> 26:34.678
+[SPEAKER_00]: homologation. They will say, forget it, I will fly. Imagine the homologation guys trying to launch it and spending a lifetime. Yeah.
+
+26:38.522 --> 26:45.166
+[SPEAKER_01]: what's up with those wings now do you guys still take them out do you guys still fly them we don't fly i don't fly it anymore since long time marcus
+
+26:45.446 --> 26:53.490
+[SPEAKER_01]: sometimes in the winter time he tried to make a flight avoiding thermals and turbulences have you had any collapses on those wings like bad ones
+
+26:53.510 --> 27:05.524
+[SPEAKER_01]: where you just deployed no thanks so deathblade has not made anybody deploy a reserve until now since the production of course not That's a
+
+27:05.584 --> 27:12.728
+[SPEAKER_01]: very responsible way of flying, Michael. I must tell you that. Yeah, we like to do that. The reason why I remember it so well is because when I was
+
+27:12.748 --> 27:19.492
+[SPEAKER_01]: taking my beginners course, we were looking for YouTube videos to get inspired and everything. And then suddenly Deathblade comes along and
+
+27:19.572 --> 27:30.698
+[SPEAKER_01]: our instructor is so mad at us. Stop looking at these stupid people. They have been flying for years. You are just starting in the game. No, it's
+
+27:30.738 --> 27:41.620
+[SPEAKER_00]: just to experiment what is possible and what not. no 100 i think it was very brave to invest there was a more even more crazy being about 25 years
+
+27:41.700 --> 27:54.626
+[SPEAKER_00]: ago i made the ring with the inflatable tube inside with aspect ratio 14 it's flight on the stool training hill but we never made a flight with
+
+27:54.686 --> 28:04.506
+[SPEAKER_00]: high altitude because it was too dangerous Okay, this is the tube concept comes to my mind so many times because let's say any of these
+
+28:04.626 --> 28:13.568
+[SPEAKER_01]: ones, the kite foiling or what's it called? Water kiting? I'm forgetting the name. Yeah, kite foiling. Wind kite surfing. But
+
+28:13.648 --> 28:23.590
+[SPEAKER_01]: anyways, thank you for the help. That sport is very... Interesting to me because they have inflated leading edges, which are almost not
+
+28:23.630 --> 28:34.057
+[SPEAKER_01]: collapsible, but still a bit flexible. So they do absorb energies. They retain their shape much better than any flexible non pressurized
+
+28:34.637 --> 28:45.281
+[SPEAKER_01]: profile. So what happens when we introduce that concept in parallel lighting? Yeah, there are several problems. The first thing we never
+
+28:45.361 --> 28:55.203
+[SPEAKER_00]: should forget, gliding is so extremely safe because your glider cannot break. If you put in strong turbo lenses, they will collapse because he
+
+28:55.243 --> 29:05.305
+[SPEAKER_00]: is more clever than the pilot at this moment. And he opens again when the turbo lenses are gone. This is one of the... I'd say the most important
+
+29:05.345 --> 29:13.567
+[SPEAKER_00]: thing is that the paraglider can collapse. If you fly a paraglider that can't collapse, it's extremely dangerous because of strong
+
+29:13.607 --> 29:21.929
+[SPEAKER_00]: turbulences. This energy has to do something. And mainly, if you remember when we flew 13 years ago with wings with valves in the front,
+
+29:22.549 --> 29:31.704
+[SPEAKER_00]: where the air cannot go out, Sophia, mast, thin air, three layers, and all these wings, but I also flew. If you get a strong turbulence with a
+
+29:31.724 --> 29:42.947
+[SPEAKER_00]: collapse, you in the most of the cases, you have a canopy contact with the body. They flew collapse and they flew to you. And if you. Yeah.
+
+29:44.987 --> 29:54.042
+[SPEAKER_00]: Tumbling. Yeah. And they tumble over you. If you are lucky and you have not so much luck, you fall in the lights or in the canopy. And then the
+
+29:54.082 --> 30:03.690
+[SPEAKER_00]: first 20 years, a lot of people have canopy contact in turbulences because we flew wings with valves. Then we find out that it's better that
+
+30:03.710 --> 30:14.978
+[SPEAKER_00]: the canopy deflates in case of turbulences and reopens very fast. That's why our wing cannot collapse. The second problem is tube crisis,
+
+30:15.098 --> 30:25.838
+[SPEAKER_00]: a tube in a paraglider. When you change altitude, let's say you start at 1,000 meters, you pump it with a 1.2 bar. The pressure, if you go to 5,500
+
+30:25.898 --> 30:35.283
+[SPEAKER_00]: meters, you have a bump. It will explode. So what happens if the difference, if you go 3,000 meters for takeoff, you make 1.2 bar and you
+
+30:35.303 --> 30:44.688
+[SPEAKER_00]: fly down to sea level, you have a floppy. So you would need a system, an electronic-based system with a pump, but it's always keeping the
+
+30:44.708 --> 30:53.252
+[SPEAKER_00]: pressure inside stable. This is not possible at the moment. AI is coming in with huge advancements in transport, so I wouldn't be surprised.
+
+30:54.613 --> 31:05.898
+[SPEAKER_00]: Yeah, but we have to keep the possibility that you can deflate the glider. Right. So let's say when we add on these things called tubes,
+
+31:06.159 --> 31:16.203
+[SPEAKER_01]: rigid tubes, like metal rods, which help retain nitinol rods or plastic rods, do they have to be of certain stiffness or is it just to make the
+
+31:16.304 --> 31:24.871
+[SPEAKER_01]: glider a bit more structured? How is this material chosen and what is the R&D that goes behind it? Because it is about making it tight, but not
+
+31:24.971 --> 31:33.033
+[SPEAKER_01]: tight enough that it becomes a danger. How does that look from a designer's perspective? Yeah, about the rods, it's the same game
+
+31:33.173 --> 31:43.255
+[SPEAKER_00]: always with the attachment points. Let's say, for example, on the Lilo X, I don't have neaten oil. I have the neaten oil rods only in the front and
+
+31:43.315 --> 31:55.495
+[SPEAKER_00]: no sticks and no rods on the backside. Even upper and lower panels don't have any rigid material inside. The problem is that I nearly have to try
+
+31:55.675 --> 32:04.499
+[SPEAKER_00]: out, by flying experimentally, the right position of each attachment point. Because if you shift it only two or three centimeters, it can be
+
+32:04.579 --> 32:15.164
+[SPEAKER_00]: enough to change the behavior of the wing and deform the airfoil shape on these attachment points too much. So in the moment when someone doesn't
+
+32:15.224 --> 32:25.915
+[SPEAKER_00]: want to invest a lot of time and money to find the correct position of each attachment point, the easiest way is to put dots everywhere. It's
+
+32:25.935 --> 32:35.843
+[SPEAKER_00]: simple because you get a load distribution. And then if you are five centimeters far behind or too much in front, it doesn't matter. So it's
+
+32:35.943 --> 32:47.869
+[SPEAKER_00]: easier. The second point is if you have a point to support the distance between the first A line group and the B lines, if you put dots In this
+
+32:47.889 --> 32:56.336
+[SPEAKER_00]: distance, it's more stable. This is a little bit hard to visualize just by talking, but I think I do get the whole crux of the matter. Let's go back
+
+32:56.376 --> 33:01.801
+[SPEAKER_01]: to the concept of two-liners, Michael, because this is very interesting for me. I have recently transitioned to two-liners, not
+
+33:01.841 --> 33:14.091
+[SPEAKER_01]: that long ago. Loved them, got addicted to them, wanted them as the only thing that I have. But then, downgrading to a two-and-a-half-liner...
+
+33:14.468 --> 33:24.591
+[SPEAKER_01]: because i was flying arctic before and then i switched to from up i don't know michael there was something mesmerizing about the two and a half
+
+33:24.871 --> 33:34.315
+[SPEAKER_01]: concept the sense of security it gave me mentally now i know this could have been marketing but why does a three-liner feel safer than a
+
+33:34.335 --> 33:45.998
+[SPEAKER_01]: two-liner or is it just a mental thing no it's not the main thing you know i mean I keep a lot of trainings. I've come from safety training last week.
+
+33:46.759 --> 33:56.147
+[SPEAKER_00]: The most dangerous viewing are the two and a half line. From my experience, all the people who are coming to our classes with two and a
+
+33:56.167 --> 34:04.474
+[SPEAKER_00]: half line are the biggest problems in maneuver, stability, and so on. I'm forgetting the word. Did you say people who are coming in with two
+
+34:04.494 --> 34:16.439
+[SPEAKER_01]: liners? No, with two and a half liners. The one stuck in the middle. With them we had the biggest problems. In my opinion, two and a half liners is
+
+34:16.479 --> 34:28.307
+[SPEAKER_00]: not two liners, it's not three liners. It's a marketing trick. They tried to remove one line, one main line on the outside. But in change, you
+
+34:28.347 --> 34:39.329
+[SPEAKER_00]: get a lot of problems you don't need. The two-line concept is different because there we have to shift the A behind as we talked before. But on the
+
+34:39.349 --> 34:50.234
+[SPEAKER_00]: two-and-a-half liner, that doesn't shift the A far behind. They only take away the B lines. That's all. And that's the outside one because in
+
+34:50.254 --> 34:59.978
+[SPEAKER_01]: the central canopies, it's three. Exactly. If you take the two, there are only two attachment points on the profiles. A and B. Not double A and
+
+35:00.018 --> 35:12.250
+[SPEAKER_00]: double B. and this is in some cases is very unstable if it's a big risk to get it covered and also it's difficult to make nice big ears don't forget
+
+35:12.470 --> 35:21.716
+[SPEAKER_00]: it is not the lancome concept alone what is defining the behavior of a glider it's the completely canopy and all the stuff inside and outside
+
+35:22.917 --> 35:32.227
+[SPEAKER_00]: of course you're the expert here so i will agree with your point of view but i was able to use full speed bar with much more confidence on a two and a
+
+35:32.267 --> 35:42.201
+[SPEAKER_01]: half than I could with two, because the whole system vibrated a lot less. In a two liner, as soon as I go full bar, like the vibrations that I feel
+
+35:42.322 --> 35:52.010
+[SPEAKER_01]: through B handles is a lot more scary or a bit more, makes me more anxious than the ones that I feel with two and a half liner where I'm like, yeah,
+
+35:52.070 --> 36:01.241
+[SPEAKER_01]: just go full bar, no worries. This is, of course, can be. The problem is not the line system, the geometry, it's the canopy. All right. At the
+
+36:01.261 --> 36:10.025
+[SPEAKER_00]: beginning, if normal people, paragliders, are speaking about two-liners, the concept is coming from the competition wing. True. Of
+
+36:10.105 --> 36:19.689
+[SPEAKER_00]: course. And the C-wing now, it's two-liners. But we have to check also the canopy. What is inside of the canopy? How is it made inside? What kind
+
+36:19.749 --> 36:28.811
+[SPEAKER_00]: of airfoil we are using? And you can only compare it if you use the same canopy with three-liner and two-liner. And this step, of course, I
+
+36:28.831 --> 36:36.899
+[SPEAKER_00]: tried also two and a half liner on the Lilo. For me, it was the worst solution because if you make strong and bad exits, you always have
+
+36:36.939 --> 36:47.068
+[SPEAKER_00]: clavats. And the two liner, it's the best solution at the moment for me, but not without the maneuver lines. Because if you don't have these
+
+36:47.789 --> 36:56.989
+[SPEAKER_00]: maneuver lines, I call it, What is not on the load in the flag, but you need it for maneuvers. Without this, the concept is missing the possibility
+
+36:57.049 --> 37:07.651
+[SPEAKER_00]: to take off and make collapses. But the funny thing is, just to give you an idea how big is the difference, the normal lilo and homologation have, I
+
+37:07.691 --> 37:21.351
+[SPEAKER_00]: guess, the laugh size 5 or 6B. The rest is... The Lilo X and the homologation have only 2B. One is the ears. But it's not open alone. The
+
+37:21.451 --> 37:31.916
+[SPEAKER_00]: one is at a lower weight and take off because you have to break it a bit. But collapses, all maneuvers are all like a school wing. And this shows that
+
+37:32.016 --> 37:40.337
+[SPEAKER_00]: it's working very well. That's interesting because two- liners were just meant for racing and now two-liners are meant to have fun as well.
+
+37:40.457 --> 37:48.483
+[SPEAKER_01]: But what I'm wondering is, let's talk a little bit about homologation before I go into the lower categories of E and AN. How does DHV or EN, I
+
+37:48.503 --> 37:54.628
+[SPEAKER_01]: think they're pretty much on par with respect to requirements. What's the concept between having collapsed lines and then making it a
+
+37:54.668 --> 38:01.012
+[SPEAKER_01]: two-liner category? Or why can't we have two-liner without collapsed lines? Tell us a little bit about the homologation process. How does it
+
+38:01.032 --> 38:11.652
+[SPEAKER_01]: work? we have to define there are several systems for homologation no if you are using folding lines you can put these folding lines close to the
+
+38:11.672 --> 38:21.975
+[SPEAKER_00]: events let's go to the veins to the leading edge correct yeah as you go and these folding lines are a very nice trick to pass gliders but they
+
+38:22.035 --> 38:34.073
+[SPEAKER_00]: normally have problems and collapses because what happens if you pull down the folding lines you make a big step where you pull down at the rest
+
+38:34.133 --> 38:48.396
+[SPEAKER_00]: of the wing. It means you fold it like this is the profile, okay? Then you make like this. You just pull down the nose. What happens? The wing makes
+
+38:48.456 --> 38:57.858
+[SPEAKER_00]: not a depression area on bottom because the wind is coming from up, but they are just collapsing and squeezing. The dynamic of collapse is very
+
+38:57.898 --> 39:06.992
+[SPEAKER_00]: low. So with folding line, it's a very nice trick to pass with wings, because normally it would never pass. That's the bad side of the folding
+
+39:07.032 --> 39:19.058
+[SPEAKER_00]: lines. If you get an ANC wing with two lines and you put the folding lines on 10% of the airfoil deepness, means the original position of the tree
+
+39:19.078 --> 39:29.041
+[SPEAKER_00]: liner, you make the maneuver with this, you never would pass. The folding lines doesn't make the real collapses. The 49s help you to make
+
+39:29.182 --> 39:39.610
+[SPEAKER_00]: the show for the homologist, but it's not what happens in real activity. That's such a dilemma with homologation and collapses in general,
+
+39:39.670 --> 39:50.356
+[SPEAKER_01]: because real turbulence is a whole different world with respect to calm over the lake. So if I use the maneuver lines, they are the same position,
+
+39:50.416 --> 40:01.544
+[SPEAKER_00]: 10% for the nose. And if you make the collapses with this, it's exactly the same behavior as when you use the tree liner. And that's why it was
+
+40:01.624 --> 40:11.811
+[SPEAKER_00]: quite easy to convince the pilots of DHV to fly it because I said, look, it's the same position. I led you the old lines for the old Lilo on the same
+
+40:11.851 --> 40:21.276
+[SPEAKER_00]: position that you can do every maneuver you want. They make a few flags and they find it very good and they like it. So it was fine. Just out of
+
+40:21.296 --> 40:30.784
+[SPEAKER_01]: curiosity, how was it dealing with DHV in this regard? What did the communication look like? You have to know I worked with DHV since nearly
+
+40:30.824 --> 40:43.090
+[SPEAKER_00]: 35 years. They are also good friends. I like the DHV pilot. Because we have a good connection. They say to me, for example, sometimes when I
+
+40:43.130 --> 40:53.116
+[SPEAKER_00]: made wings for other companies, you can pass with this wing, but I would do it. And I say, why? Maybe this and this is not so good for the normal
+
+40:53.156 --> 41:03.762
+[SPEAKER_00]: pilots. But it's your decision. So I like this because I decide then to make it again with a better wing. Because I don't need to pass
+
+41:03.782 --> 41:13.686
+[SPEAKER_00]: homologation and have the problems afterwards. I need just a real clear meaning of the pilots. And when they say you can pass, but it's not good, I
+
+41:13.726 --> 41:21.993
+[SPEAKER_00]: would say, okay, we need to make some changes and come back again. It's very easy to work with them and I like it very much. I'm glad because
+
+41:22.073 --> 41:28.578
+[SPEAKER_01]: usually whenever there's a new technology, the industry is very skeptical, especially the ones who are certifying it because it's on
+
+41:28.618 --> 41:35.724
+[SPEAKER_01]: them to accept and bring it into the whole foray and show it to the people. So I'm glad they were supportive enough and I'm glad you were able to make
+
+41:35.764 --> 41:45.266
+[SPEAKER_01]: it happen. One of the biggest points to discuss was mathematically for the load test, you have to do... Oh yeah, of course, yeah. And there is a
+
+41:45.326 --> 41:53.572
+[SPEAKER_00]: minimum load that you have to reach with your lines. And I say, for my opinion, I don't have to insert the maneuver lines to these
+
+41:53.612 --> 42:05.218
+[SPEAKER_00]: calculations. I want bigger A lines and bigger B lines to get the minimum load that is requested. And they say, maybe you are right because the
+
+42:05.758 --> 42:13.905
+[SPEAKER_00]: maneuver lines are not under load. They are very thin. So we don't need to add it to the calculation. What means does all the rest have to be
+
+42:13.945 --> 42:23.513
+[SPEAKER_00]: stronger? But in theory, if somebody wants to cheat, they say, yeah, we use the maneuver lines also for the load calculation. And then this is
+
+42:23.573 --> 42:34.264
+[SPEAKER_00]: wrong because in the real, their use doesn't help. Okay. Anyways, let's go back to the consumer perspective for a bit. You are a new pilot on the
+
+42:34.304 --> 42:46.007
+[SPEAKER_01]: market who is out there looking for their first wing. A lot of pilots are very tempted to go for a high B instead of a low A or a low B. This has become
+
+42:46.027 --> 42:56.791
+[SPEAKER_01]: the norm of the industry and I will talk about it because this is a reality in a lot of people's lives. What happens if you go on Lilo X straight after
+
+42:56.811 --> 43:05.531
+[SPEAKER_01]: school? This is a really good question. What happens and what the people means, what happens are two different things, of course. Frankly said,
+
+43:05.731 --> 43:17.855
+[SPEAKER_00]: the difference for the request to the pilot, for the skills to the pilot between Lilo 2 and Lilo X, it's clear that the Lilo X is much easier to fly
+
+43:18.295 --> 43:28.123
+[SPEAKER_00]: and much safer. Of course, when you go to the Lilo X, you have to learn how to use the maneuver lights. If you try to take off with the A-lines, you
+
+43:28.143 --> 43:35.168
+[SPEAKER_00]: can forget it. You can't put it off and it will happen. So you just use the maneuver lines and then the takeoff is very easy. Even easier with
+
+43:35.328 --> 43:46.014
+[SPEAKER_00]: overshoot. It's coming up very slowly, very linear. That's the good thing. The problem is that the people with all these discussions and
+
+43:46.034 --> 43:59.218
+[SPEAKER_00]: high-performance gliders in the two-line system think that two lines are dangerous or difficult. So we have to speak with the pilots what
+
+43:59.238 --> 44:07.441
+[SPEAKER_00]: they're interested in to fly the Little X. A lot about that it's not the two-line system what is defining the wing, but the whole concept. And
+
+44:07.601 --> 44:17.244
+[SPEAKER_00]: all the people what had the possibility today, still today, to fly the Little X, like two weeks ago also, on the Lake of Garda, they say it's
+
+44:17.684 --> 44:27.586
+[SPEAKER_00]: easier than the normal Little and safer. But on the other side, when you have small landing places, of course, with more performance, you have
+
+44:27.626 --> 44:38.337
+[SPEAKER_00]: to deal with it. So this is a point that can be a little bit difficult for people who are coming from the ANA grader to try to land on small landing
+
+44:38.457 --> 44:48.101
+[SPEAKER_00]: areas. How does the stall point look like comparatively? How do you mean? The stall point, like, do the brakes reach their stall point
+
+44:48.221 --> 44:56.142
+[SPEAKER_01]: earlier compared to the three-liner concept, or is it more or less the same, the pressure and everything? No, later. You have longer brake
+
+44:56.182 --> 45:08.125
+[SPEAKER_00]: range, you can pull it down deeper, and the stall is even softer. How is that possible? Because the nose automatic, the pitching, what we spoke
+
+45:08.145 --> 45:17.799
+[SPEAKER_00]: before, helps a lot in this case. Surprising because I went from three liner Akuma to two liner Arctic R and Arctic R stalled much quicker than
+
+45:17.879 --> 45:30.369
+[SPEAKER_01]: Akuma. But as I told you, it's not the two line system, it's the canopy. Oh, geez. Wow. This is so interesting. I guess I must say it's made for
+
+45:30.929 --> 45:42.034
+[SPEAKER_00]: basically for friends and people which we know. And we don't try to sell it in big numbers. It's just a nice, small project to have friends and
+
+45:42.114 --> 45:52.782
+[SPEAKER_00]: good gliders for us. And that's why we don't have ALA or ANC gliders. We just have the Lilo, and that's enough. But my original thinking, after
+
+45:52.822 --> 46:03.205
+[SPEAKER_00]: flying two years with the two-liner Lilo, was the best solution for the people to learn would be a two-liner glider. Because you have a lot of
+
+46:03.285 --> 46:17.049
+[SPEAKER_00]: advantages. If you have a pilot, which is not very clever, let's say, and begins to pull around the risers in air, with the air, if they pull the
+
+46:17.069 --> 46:28.191
+[SPEAKER_00]: maneuver lines, it doesn't make big damage. You collapse a little bit the front, but that's all, if you don't pull them very hard. If you pull
+
+46:28.551 --> 46:38.753
+[SPEAKER_00]: with the full weight of the main A-lines, the glider accelerate but doesn't collapse let's take oh it's quite impossible for a school ring
+
+46:38.833 --> 46:48.339
+[SPEAKER_00]: if it's made like a two-liner like the little x to make maneuvers what can be dangerous and in change you have a very long brake net too this is
+
+46:48.359 --> 46:58.162
+[SPEAKER_00]: magical we don't have the market to sell a-lines any gliders and it's i don't want to deal with schools or other companies but No, but I was
+
+46:58.202 --> 47:06.376
+[SPEAKER_01]: thinking about from a consumer's perspective, let's say you are somebody who loves getting in the air. Don't want to like you're a
+
+47:06.416 --> 47:17.955
+[SPEAKER_01]: weekend warrior. You fly 20, 30 hours a year maximum. Is a two-liner ENA, because paragliding is all about managing risk versus reward, which is
+
+47:17.995 --> 47:31.165
+[SPEAKER_01]: managing fun while still trying to be safe. So is a two- liner ENA concept supposedly the most fun wing a weekend warrior can invest in, if it comes
+
+47:31.205 --> 47:42.976
+[SPEAKER_01]: to that? Okay, we are speaking about dream of mine. I would say a paraglider what is flying 30 hours in the air don't need a B-ring. Yeah.
+
+47:43.096 --> 47:50.301
+[SPEAKER_00]: If they are flying just for fun, they need an A-ring, but an A-ring what you can accelerate. This is one of the main problems of the A-ring at the
+
+47:50.341 --> 47:59.048
+[SPEAKER_00]: moment. Their concept is three-liner and on top four-liner. When you accelerate them, you lose performance incredibly much. They become
+
+47:59.088 --> 48:07.306
+[SPEAKER_01]: like skydiving canopies, like the glide ratio just goes away. With the two-liner concept, you don't have this problem. It means I can design an
+
+48:07.426 --> 48:17.751
+[SPEAKER_00]: A-wing that is very safe, very easy to fly, and you can accelerate it very fast without losing a lot of glide ratio. This is one of my thinking. The
+
+48:18.111 --> 48:29.117
+[SPEAKER_00]: possibility to accelerate with a good performance, it's also a part of security, of safety. Because if you need to accelerate, I want to go
+
+48:29.177 --> 48:38.461
+[SPEAKER_00]: forward, but not down like a skydiving canopy. Yeah. I would say it would be a good idea to make it. Right. That's what I was thinking because
+
+48:39.422 --> 48:47.828
+[SPEAKER_01]: Delta, the latest offering from Ozone, has made it clear that they are not interested in three-liner ENCs anymore. Nope. And probably if a
+
+48:47.969 --> 48:58.333
+[SPEAKER_01]: brand is not interested, that means the market is not investing money in three-liners ENCs anyways. Sure. The pilots want two liners. The
+
+48:58.413 --> 49:06.758
+[SPEAKER_01]: industry is offering two liners. I think three liners are soon, very soon going to be a thing of history, especially if they get started
+
+49:06.798 --> 49:16.184
+[SPEAKER_01]: introducing in E and A class. And then we are going to have to redefine the safety trainings, which was long overdue. Why hasn't the safety
+
+49:16.224 --> 49:22.836
+[SPEAKER_01]: trainings been updated? But three-liner safety training versus two-liner safety training is a whole different ball game and from what i
+
+49:22.896 --> 49:30.942
+[SPEAKER_00]: see is i think within the next five years probably by 2030 or something we are looking at three liners being completely obsolete what do you think
+
+49:30.982 --> 49:39.588
+[SPEAKER_00]: about that yeah always the same game it depends on the canopy for example with the little x or safety training it's totally simple because they do
+
+49:39.608 --> 49:49.686
+[SPEAKER_00]: the same things like before with the maneuver lines you can do everything it's a little bit easier to do it because you have less power
+
+49:49.766 --> 50:00.128
+[SPEAKER_00]: on the lines. And of course, if you get a CNC ring without folding lines and go to safety training, it's extremely difficult because to make a
+
+50:00.148 --> 50:09.731
+[SPEAKER_00]: collapse without the folding lines, it's, let's say, or you make it and you fall down, or you don't make it well and you have nothing. And that's
+
+50:09.751 --> 50:20.019
+[SPEAKER_00]: the main problem. You cannot simulate frontal collapse and the side collapse without folding lines. or maneuver that. Yeah. And this is
+
+50:20.059 --> 50:28.933
+[SPEAKER_00]: difficult. I mean, it's just about simulating, right? But let's say real world flying condition. I think it's little cloud. the brand which
+
+50:29.053 --> 50:39.376
+[SPEAKER_01]: doesn't certify except the load testing. All these parakites are just load tested. So I see a lot of manufacturers going away from the usual EN
+
+50:39.436 --> 50:47.758
+[SPEAKER_01]: or DHB testing simply because of the fact that the real world collapses are very different. So let's forget the requirements for a moment and
+
+50:47.798 --> 50:57.560
+[SPEAKER_01]: let's just focus on the actual fun and safety that these wings give us. In that regard, I think ENB two-liner is a catch and an ENA two-liner is a
+
+50:57.600 --> 51:10.586
+[SPEAKER_01]: steal deal. Don't you think so? I think, and this is just my personal opinion, there are a lot of companies, they see the homologation, the
+
+51:10.626 --> 51:21.171
+[SPEAKER_00]: tests, just as a point for marketing. And they're using it for this. It means if they pass or not, they use some tricks to pass it, and if they
+
+51:21.191 --> 51:31.639
+[SPEAKER_00]: pass, it's everything fine, and they can sell it also in Germany. for my opinion you can use the version service from dhv at am also as the last
+
+51:31.699 --> 51:40.728
+[SPEAKER_00]: final check if your wing is ready for the market or what And you get two opinions for each glider, minimum and maximum, for two different
+
+51:40.788 --> 51:48.232
+[SPEAKER_00]: pilots. But they're very experienced pilots and they know nearly every wing on the market. They flew it before because they made
+
+51:48.252 --> 51:57.518
+[SPEAKER_00]: thermologizations before. So they can give you a lot of information if you want and if you can discuss with them. And it helps you to be safe that
+
+51:57.558 --> 52:06.946
+[SPEAKER_00]: your product will work on the market. On the other side, you can go there and say, I make the homologation in some way. We don't discuss if they say
+
+52:07.006 --> 52:19.309
+[SPEAKER_00]: it's a bad thing, but you can pass even. Why not? Or we can let away the test flights, also possible. But then you have not only missing the, how you
+
+52:19.329 --> 52:28.708
+[SPEAKER_00]: say, expert information, but you are missing in some countries also the legal side. Yeah, the insurance thing, I understand. No, it's not the
+
+52:28.728 --> 52:36.770
+[SPEAKER_00]: insurance thing. For example, in Italy, by law, US pilots are responsible that you are flying in the right condition the right way.
+
+52:37.831 --> 52:49.574
+[SPEAKER_00]: This is a bad thing because if you are coming from ANA after you're getting the license to buy your ANC two-liner and it's written on that
+
+52:49.594 --> 53:00.174
+[SPEAKER_00]: this is for experts only and you have to make down safety training and so on. and you don't have to fall down, you will get in trouble a lot in Italy
+
+53:00.954 --> 53:12.296
+[SPEAKER_00]: because you try to kill yourself. That's subjective, no? The court is not subjective. I made a few, how you say, documentation for the court in
+
+53:12.336 --> 53:24.276
+[SPEAKER_00]: Italy, for the tribunal, where they asked me, what do you think about this pilot who was flying this guy off? i have to say we have to follow the
+
+53:24.296 --> 53:34.464
+[SPEAKER_00]: classes you cannot fly after getting the license one more once later or a cv it's not made for you because they are missing the experience they are
+
+53:34.484 --> 53:44.952
+[SPEAKER_00]: missing the safety trainings they are missing the skills for this kind of wings so what happens if you don't have homologation it happens that
+
+53:45.032 --> 53:57.817
+[SPEAKER_00]: you have to describe as producer exactly How is the behavior of this wing? Who can fly it? Okay. When you sell this wing to some pilot, you have
+
+53:57.857 --> 54:07.022
+[SPEAKER_00]: to ask him, do you have the skills for flying this wing? And if you say yes or not, he has to prove it. But if you don't ask him, you sell them a wing and
+
+54:07.062 --> 54:15.567
+[SPEAKER_00]: he kills them by themselves without homologation, they can come to you and say, why did you sell the wing to this pilot? And then you have a big
+
+54:15.647 --> 54:24.156
+[SPEAKER_00]: trouble. And how does the speed wing market work? Or parakeets, for that example? Yeah, this is cool. And speed wing are exactly the problem.
+
+54:24.996 --> 54:36.561
+[SPEAKER_00]: Because let's say, you say gliders without any improvement that they are flying, like, the problem is it. Speed wing is in the, most of the
+
+54:36.621 --> 54:45.325
+[SPEAKER_00]: countries are a black thing. Nobody cares about. They say you can fly, but it's your problem. If you kill yourself, it's your problem. And
+
+54:45.385 --> 54:53.955
+[SPEAKER_00]: that's not regulated. Because they suppose that somebody that is flying a speed wing or an aquaguider, they know what they do. And then
+
+54:53.995 --> 55:03.943
+[SPEAKER_00]: most of the time it is like this. They know what they are doing. I hope. I mean, yeah. You cannot extract from a family father that after the
+
+55:03.983 --> 55:16.152
+[SPEAKER_00]: license, he gets the license to know which wing is the best way. They need some indication what kind of wing should be flying. So it's not an easy
+
+55:16.192 --> 55:25.215
+[SPEAKER_00]: discussion. No, and it's an endless one. And I'm so glad I'm speaking to you because you are, I was just looking at your website. It says you're an
+
+55:25.295 --> 55:33.397
+[SPEAKER_01]: author. You're one of the most sought after trainers and a speaker. And of course you have this sensational new like invention in our sports.
+
+55:33.457 --> 55:38.399
+[SPEAKER_01]: Can you tell our listeners a little bit about you? And I know I should have asked this question to you in the beginning of the podcast, but still
+
+55:38.919 --> 55:49.343
+[SPEAKER_01]: while we are at this topic, who are you and how did you become so awesome in life? You mean my personal story? Yeah, like paragliding. Because I'm
+
+55:49.483 --> 55:58.867
+[SPEAKER_01]: very inspired by the way you said you have described the coaching section on your website, which says you use a bit of hypnosis and NLP and
+
+55:58.907 --> 56:05.370
+[SPEAKER_01]: communication and all of that. So it's like loads of things that I want to dive deep into, but very limited time that we have. A little bit of
+
+56:05.390 --> 56:14.424
+[SPEAKER_01]: introduction and then we'll go into the philosophical side of your existence. Yeah, I'll begin. Originally, I was a programmer for a
+
+56:14.484 --> 56:24.009
+[SPEAKER_00]: computer, for a system. Computer systems means operating systems and all this stuff. And about 30 years ago, I see in the television flying
+
+56:24.049 --> 56:32.013
+[SPEAKER_00]: somebody with parachutes from the mountain in France, in Meuse. And I said, this is the solution because I like to climb up the mountain, but I
+
+56:32.053 --> 56:41.516
+[SPEAKER_00]: don't like to climb it down. And I need one of these things. And I was calling by phone Jean-Marc Beauvoir, very famous paraglider at this
+
+56:41.556 --> 56:53.565
+[SPEAKER_00]: time. And he was producing the first skydiving wing modified for jumping down. And he sold me this glider, sent it here. And it begins
+
+56:53.705 --> 57:05.631
+[SPEAKER_00]: together with my wife at this time to try to take off what was quite difficult and so on. But we fly. The next step was that I go to buy a better
+
+57:05.651 --> 57:18.798
+[SPEAKER_00]: wing one year later in Germany by Bichler. And when I was there, I checked how they made the gyros. They were using the wooden panels to get a
+
+57:19.258 --> 57:29.302
+[SPEAKER_00]: three-dimensional real size model. to be able to get the panels on top and bottom. I said to them, hey, I can make you a program that makes it by
+
+57:29.562 --> 57:39.971
+[SPEAKER_00]: calculation, so you don't need this three-dimensional, one- to-one scale object. That's fancy, man. So I began to write the first program to
+
+57:40.031 --> 57:50.583
+[SPEAKER_00]: make the paraglider design. And I would say the first 20 years, nearly 90% of the producers were using this software. It was quite complex to
+
+57:50.743 --> 58:01.972
+[SPEAKER_00]: use it. So glider plane from Aberdeen today is much more easy. Everybody can use it. But yeah, this was, of course, I'd like to teach paragliding.
+
+58:03.132 --> 58:09.797
+[SPEAKER_00]: So I was, I am instructor since 87, 88 in Italy and in the 90s in Austria and Germany.
+
+58:12.787 --> 58:24.651
+[SPEAKER_00]: And yeah, so step by step, we tried with my company to improve it. And we learned NLP technique. I learned hypnosis. Also my wife, who is the boss
+
+58:24.691 --> 58:36.195
+[SPEAKER_00]: of the company. She is- Most of the house and the company, I think I'll correct you there. Yeah. Yeah, that's it. And my target is always to be a
+
+58:36.255 --> 58:46.322
+[SPEAKER_00]: pilot and not to be a salesman. so cool to hear that i think most because i i was talking to somebody in front of mine and i was like there are two ways
+
+58:46.342 --> 58:54.044
+[SPEAKER_01]: to do a business one is to make a lot of profit and keep on running behind the numbers and the other one is to try and bring some value to your life in
+
+58:54.104 --> 59:02.620
+[SPEAKER_01]: general while chasing the business which is definitely less profitable so you and more stressful because there's less money you
+
+59:02.640 --> 59:11.929
+[SPEAKER_00]: have a business to run but somehow this the second part is the most enriching and most exciting part if you're able to do it right yeah i must
+
+59:11.949 --> 59:20.717
+[SPEAKER_00]: say when i meet the pilots what are flying canopies what i designed that they are happy and they say hey i like this flight with this and i see the
+
+59:20.737 --> 59:31.701
+[SPEAKER_00]: happy faces this is much more important than every money wow must be such a cool feeling from designing softwares to giving the industry the
+
+59:31.741 --> 59:39.522
+[SPEAKER_01]: thing that they work on for 20 years and then bringing out all of these awesomeness yeah man inspiring thank you thank you for being on the show
+
+59:42.583 --> 59:53.045
+[SPEAKER_01]: good okay let's talk a little bit about hypnosis and nlp hypnosis no nothing big but nlp never heard about that so what are these and how do you
+
+59:53.205 --> 01:00:02.110
+[SPEAKER_01]: use them to teach Did you know a little bit about it or not? Nothing. Nothing. And I'm pretty sure there are multiple audience members who
+
+01:00:02.130 --> 01:00:10.376
+[SPEAKER_01]: are listening to us also in the same position. I'll explain it very fast. NLP, neuro-linguistic programming, it's a collection of different
+
+01:00:10.496 --> 01:00:14.219
+[SPEAKER_00]: techniques for mental teaching.
+
+01:00:16.767 --> 01:00:28.736
+[SPEAKER_00]: And the difference from NLP and psychoanalysis or psychologists is NLP works only if you want to change something. So if a pilot comes to me and I
+
+01:00:28.776 --> 01:00:39.383
+[SPEAKER_00]: say, I'm scared about the altitude, the first question is, do you really want to change this or not? And then if he says yes, if he is convinced, we
+
+01:00:39.403 --> 01:00:47.986
+[SPEAKER_00]: can work with NLP. This kind of technique is based on the thing that everybody has different channels where he can learn fast or slow.
+
+01:00:48.686 --> 01:00:57.272
+[SPEAKER_00]: Somebody is learning very fast when he looks what he is doing. The other one, you have to explain it. It's auditive. It means you have to explain
+
+01:00:57.332 --> 01:01:05.597
+[SPEAKER_00]: it step by step that he can hear it. The other one is kinesthetic. It means you have to move together with him the hands, for example, to learn the
+
+01:01:05.617 --> 01:01:18.164
+[SPEAKER_00]: takeoff. With all these techniques, Let's say if you coach a pilot, it's completely individual. The first step is to find out what is the channel
+
+01:01:18.204 --> 01:01:31.887
+[SPEAKER_00]: where I can teach him very fast and direct. Then the next step is what he can bring from his normal life to this situation. Like relatability,
+
+01:01:31.987 --> 01:01:40.033
+[SPEAKER_01]: basically relating to something. A classical sample is you come there, you want to take off a French style. It means face together to inflate it.
+
+01:01:41.054 --> 01:01:51.722
+[SPEAKER_00]: And then he made some experience that was not so good. And he said to me, yeah, I would like to take off like this, but I cannot do it. I don't have
+
+01:01:51.882 --> 01:02:03.884
+[SPEAKER_00]: the feeling for it. And then he begins to check if he has other situations where he has a very good feeling, for example, in his work, whatever. And
+
+01:02:04.004 --> 01:02:14.987
+[SPEAKER_00]: I say, try to bring this feeling inside you to this situation. You mean visualizing? Visualizing also, but visualizing is only the movement.
+
+01:02:15.207 --> 01:02:26.683
+[SPEAKER_00]: I want also the emotions. And in the moment when you bring good, positive emotions into the situations, everything is working better. Wow. One
+
+01:02:26.703 --> 01:02:35.806
+[SPEAKER_00]: of the classical words, in English it's ut, in German, Italian language it's difficult because it's meaning the same things. We work a lot with
+
+01:02:35.846 --> 01:02:44.707
+[SPEAKER_00]: feelings and emotions. Do you know, emotions are coming from something that was in the past. Your feelings are now in the reality, this moment.
+
+01:02:45.407 --> 01:02:55.794
+[SPEAKER_00]: For example, if you are flying, your glider is shaking and everything, you get a feeling. It can be fear, it can be something else. Then you have
+
+01:02:55.834 --> 01:03:05.340
+[SPEAKER_00]: to check this fear is coming from a real situation or is coming from an invention or something what you have seen in the past in a similar
+
+01:03:05.400 --> 01:03:15.285
+[SPEAKER_00]: situation. And at the moment when you begin to bring you back in the here and now, In this moment, you are able to work correctly, to fly
+
+01:03:15.325 --> 01:03:26.249
+[SPEAKER_00]: correctly. But if you are dealing with your emotion, for example, I have seen a YouTube video where the same flight on the same area, somebody get
+
+01:03:26.289 --> 01:03:34.812
+[SPEAKER_00]: the collapse with spiral cover and need a rescue. And my guide is shaking a little bit, but nothing happens. And I remember this what I have seen on
+
+01:03:34.832 --> 01:03:44.795
+[SPEAKER_00]: the video on the YouTube. I am out of the situation. I am not in the here and now. I am in the things that can be possible, but it doesn't at the moment.
+
+01:03:45.736 --> 01:03:56.103
+[SPEAKER_00]: You understand? It's not so easy, but this is working very well. I can imagine. And this is so deep and interesting that this definitely needs
+
+01:03:56.143 --> 01:04:07.289
+[SPEAKER_01]: a whole different episode to be dealt upon. Because I think a lot of times we do have enough or not enough by any means but we do have a lot of focus on
+
+01:04:07.349 --> 01:04:14.997
+[SPEAKER_01]: how to teach people paragliding or how to make instructors and there's a lot of material around it but we do not have a lot of material on how to
+
+01:04:15.217 --> 01:04:23.825
+[SPEAKER_01]: teach instructors on how to teach people like the instructor training isn't that robust or that that strong so this is definitely a very
+
+01:04:23.845 --> 01:04:31.946
+[SPEAKER_01]: interesting topic that needs to be dived into in future But at the moment, I must say there is changing a lot. For example, we are teaching
+
+01:04:31.966 --> 01:04:43.690
+[SPEAKER_00]: the new instructor for Austria. And since this year, they included also psychological training for the instructors. And they are also
+
+01:04:43.810 --> 01:04:54.534
+[SPEAKER_00]: speaking about or thinking about to make a psychology entry test for future instructors and turn the pilots. Makes sense, because if you
+
+01:04:54.554 --> 01:05:02.917
+[SPEAKER_00]: have a crazy acro pilot who is scared by nothing and they want to make a structure, maybe it's not the right person. So they have to slow down.
+
+01:05:04.718 --> 01:05:12.321
+[SPEAKER_00]: Yeah, but I think step by step, the responsible check, the psychological part of paragliding is more important than the
+
+01:05:12.381 --> 01:05:23.663
+[SPEAKER_00]: technical one. They begin to insert it in the structure process, too. That's great. And the hypnosis part, is that only pre-flight on ground?
+
+01:05:23.683 --> 01:05:30.286
+[SPEAKER_01]: Is there a specific time or can it be at any given point of time as long as there is two-way communication, which is even if it's on radio on the
+
+01:05:30.326 --> 01:05:40.107
+[SPEAKER_01]: flight? No, we are using the hypnosis especially for, let's say, a clear situation. Let's say somebody has problems with the takeoff. So he can
+
+01:05:40.147 --> 01:05:51.632
+[SPEAKER_00]: now learn to visualize his perfect takeoff. It's possible. But then also we can make hypnosis. How is the perfect takeoff for him? And this
+
+01:05:51.652 --> 01:06:02.797
+[SPEAKER_00]: kind of hypnosis, we give him our MP3 file so he can hear it when he is not flying. Then he goes to the takeoff and his subconscious will do the
+
+01:06:02.817 --> 01:06:11.770
+[SPEAKER_00]: right things. So you have an MP3 file where you are telling pilot that visualize you're getting into the harness, you're closing the
+
+01:06:11.810 --> 01:06:21.797
+[SPEAKER_01]: buckles, you're attaching your risers, the wind is coming in. But always in the perfect spot. Wow, man. Why is this technique not famous
+
+01:06:21.837 --> 01:06:33.986
+[SPEAKER_01]: yet? It's cool. There was also a very funny situation last year. I have a pilot would say, I like flying so much. I like thermal, everything. But
+
+01:06:34.086 --> 01:06:45.228
+[SPEAKER_00]: after 25, 30 minutes, I go in sick. And a lot of people try to give him to this and nothing helps. And then we say, easy. Okay. Now, do you take off?
+
+01:06:45.768 --> 01:06:53.670
+[SPEAKER_00]: It's a very good day. You can fly hours and hours. Thermal is very strong. But you have only five minutes to go in sick. Try to go sick as fast as you
+
+01:06:53.690 --> 01:07:01.652
+[SPEAKER_00]: can. Do you know what? One more time. You have only five minutes too? I say to him, before takeoff, you have five minutes to go in sick. You have to
+
+01:07:01.712 --> 01:07:08.836
+[SPEAKER_00]: accelerate the sickness. Please try everything to go sick immediately. Do you know what? He flew two and a half hours without going
+
+01:07:08.876 --> 01:07:09.076
+[SPEAKER_00]: sick.
+
+01:07:12.238 --> 01:07:21.523
+[SPEAKER_00]: All right. This is the classical NLP situation. It looks funny and simple, but it works very well. But it works for this pilot. For the next
+
+01:07:21.583 --> 01:07:30.277
+[SPEAKER_00]: pilot, maybe it doesn't work. You have to find it out. You know what, Michael, let's connect regarding this on a different episode and I'll
+
+01:07:30.297 --> 01:07:37.339
+[SPEAKER_01]: structure that one. Let's exchange some emails and some thoughts around this because this needs to go out to a wider audience and people,
+
+01:07:37.859 --> 01:07:45.300
+[SPEAKER_01]: not just pilots, like instructors need to get inspired by this and incorporate that in their teaching. Unless you're planning to
+
+01:07:45.340 --> 01:07:55.435
+[SPEAKER_01]: copyright it. In that case, we can... No, no. Are you planning to copyright the Lilo X invention as well? Copyright. No, I guess they're
+
+01:07:55.895 --> 01:07:56.356
+[SPEAKER_00]: really fast.
+
+01:07:59.577 --> 01:08:10.827
+[SPEAKER_00]: But it's good for one of the things that maybe I made a mistake in the past. The last system that I made for our swing is with the patent and it's very
+
+01:08:10.907 --> 01:08:22.337
+[SPEAKER_00]: closed for other companies. And for my opinion, it was a big mistake because the safety, what you can gain with this, it's so important that
+
+01:08:22.377 --> 01:08:31.966
+[SPEAKER_00]: should be open to every company. Thank you for saying that, Michael. You're such a good person, man. No, but it's a good thing for everybody if
+
+01:08:31.986 --> 01:08:43.309
+[SPEAKER_00]: we're flying safer all together. And I think business is the second step. Safety and happy pilots must be always the first step. Are you the
+
+01:08:43.329 --> 01:08:51.911
+[SPEAKER_00]: designer for Swing? Are you the one who made it? I was the designer for Swing. I invented the Rust. I'm an inventor, the registered inventor,
+
+01:08:51.931 --> 01:09:02.805
+[SPEAKER_00]: but the rights are on Swing. So I cannot do anything to give it free. But for my opinion, we had to give it free for everybody from the beginning.
+
+01:09:03.965 --> 01:09:14.152
+[SPEAKER_01]: Blows my mind. It's almost like Sharknose. Sharknose was a big step when it came out, increasing safety. And it was very kind of Ozone to provide
+
+01:09:14.453 --> 01:09:22.775
+[SPEAKER_01]: that technology and leave it open source. And that's what I was thinking as well. But of course, money matters as well, up to a point. But is the
+
+01:09:22.895 --> 01:09:33.357
+[SPEAKER_01]: wave leading edge, do you see that as a big invention, or is that just a normal thing? I must say, personally, I don't see a big invention, but if
+
+01:09:33.457 --> 01:09:43.319
+[SPEAKER_00]: it works on competition wings, why not? Okay. Everybody should try every possibility what we can get. But like Rust works on every level of
+
+01:09:43.339 --> 01:09:49.381
+[SPEAKER_01]: wings, and that improves it substantially, so it's a whole different league in its own. Yeah. Wow.
+
+01:09:52.424 --> 01:10:02.711
+[SPEAKER_01]: Okay. Yeah, okay. Can't you invent something similar looking and navigate the patent around it? Do you know how much I'm thinking about?
+
+01:10:02.771 --> 01:10:15.039
+[SPEAKER_00]: Because I want to find a way to make it free for everybody with the same behavior, with the same effect. But we'll see. The legal, what made the
+
+01:10:15.079 --> 01:10:26.601
+[SPEAKER_00]: description for the patent was so clever that there is no way to go around it. That's what I'm sorry about. Is it expensive for any other brand to
+
+01:10:26.661 --> 01:10:33.685
+[SPEAKER_01]: incorporate it? Do they have to lose shitloads of money, which is not making sense? Or why is the industry staying away from it if it's so good?
+
+01:10:34.905 --> 01:10:44.110
+[SPEAKER_00]: Let's say if you want to buy the license from Swing to use the last in your wings, there are many problems. First, you have to give money to a
+
+01:10:44.170 --> 01:10:58.092
+[SPEAKER_00]: concomitant. to a competitor, competition company. Nobody likes to do this. Second is the next problem. You say the personal image of a
+
+01:10:58.432 --> 01:11:07.518
+[SPEAKER_00]: designer would have to buy a solution for another one. Of course, they don't like it. And the moment when you begin to change, to put the ass on
+
+01:11:07.678 --> 01:11:20.769
+[SPEAKER_00]: one wing in your product line, you have to do it on all wings. And at the moment, the market situation is so bad for the producers that they don't
+
+01:11:20.789 --> 01:11:31.492
+[SPEAKER_00]: have the money to do this, to re-homologate five, six, seven different models with rust. It's too expensive and not possible. Wow, that's
+
+01:11:31.532 --> 01:11:41.314
+[SPEAKER_01]: interesting. But I think the patent way or securing all of this is the way forward because I recently had a SkyMate designer, the AI harness. My
+
+01:11:41.354 --> 01:11:50.156
+[SPEAKER_01]: spinning out harness. Sounds so fancy. But he spoke about patenting things as well and securing it. So I think we are just moving towards a
+
+01:11:50.196 --> 01:11:58.038
+[SPEAKER_01]: more censored world in general, not just in paragliding. And the free market is soon becoming a thing of the past, which is sad, man. I hope I'm
+
+01:11:58.078 --> 01:11:59.618
+[SPEAKER_01]: wrong. You're right.
+
+01:12:02.883 --> 01:12:15.221
+[SPEAKER_00]: We should never forget that paragliding is a hobby. It's just for fun. So to bring in hard business makes no sense. yeah and you like the market is
+
+01:12:15.421 --> 01:12:22.744
+[SPEAKER_01]: yeah people who are doing it will have their own opinion so this is a never-ending discussion yeah but on that note mike what's next ena
+
+01:12:22.784 --> 01:12:31.467
+[SPEAKER_01]: two-liner or just en yeah what you are a super interesting person and i can ask this question in 20 different dimensions to you but when it comes
+
+01:12:31.507 --> 01:12:43.149
+[SPEAKER_01]: to flying how are you planning to increase the fun factor in the air personally i am on the point where i think about to leave the paragliding
+
+01:12:43.189 --> 01:12:55.258
+[SPEAKER_00]: construction. I would say Lilo X is one of the last steps what I will do in this direction. Don't say that, Michael. Why not? Because I would like
+
+01:12:55.298 --> 01:13:04.585
+[SPEAKER_00]: to go into fly more, to teach more. And I guess the Lilo X will work for the next three, four years quite well. Maybe we make some small
+
+01:13:04.605 --> 01:13:14.284
+[SPEAKER_00]: improvement, but I don't know what at the moment. And that's it. And after that, I tried to do different things like it. Yes. Love it. Love it.
+
+01:13:14.344 --> 01:13:26.006
+[SPEAKER_01]: As long as there's hope and plans, I think. One of the dreams for me and my wife would be to make a flying center in the south or center of Italy where
+
+01:13:26.026 --> 01:13:35.768
+[SPEAKER_00]: you can fly very well and where the people can live for one, two, three months as they want to learn and flying a lot. Also for the whole time.
+
+01:13:37.032 --> 01:13:45.860
+[SPEAKER_00]: Yeah, but it's a far project. Maybe in a few years we can realize it. I believe in it and you can make it happen, Michael. And I think a lot of
+
+01:13:45.920 --> 01:13:56.410
+[SPEAKER_01]: paragliders do share this dream because spreading the joy, sharing the dreams with other pilots is so fulfilling, man. I kid you not. That adds
+
+01:13:56.430 --> 01:14:04.104
+[SPEAKER_01]: so much value. And it reminds me of a good friend from Bulgaria, Nikolai Yotov. You must have heard about him. He's your age. No? Okay, yeah. He's
+
+01:14:04.144 --> 01:14:13.346
+[SPEAKER_01]: not a big comp pilot, but still a similar guy, super amazing flyer. And he has this home, which is called his nest, for real, because it's like a
+
+01:14:13.426 --> 01:14:22.428
+[SPEAKER_01]: nest holding the pilots. And he's living the dream in the Balkan mountains in Sopot, where he just lives below the ski lift and has his
+
+01:14:22.468 --> 01:14:30.330
+[SPEAKER_01]: little setup, teaches the people. Amazingly beautiful house that he took over like 10 years to construct, a little bit by himself and a little
+
+01:14:30.350 --> 01:14:40.299
+[SPEAKER_01]: bit by others' help. And yeah, so I think a lot of us are sharing common passions and common dreams. Yeah, the paragliding communities. Good.
+
+01:14:41.159 --> 01:14:50.062
+[SPEAKER_01]: That's the fun ones. All right. So then, oh, sorry. One last question I forgot to ask you about Lilo X. How many hours do, yeah, who can fly Lilo X?
+
+01:14:50.262 --> 01:15:01.661
+[SPEAKER_01]: Who is it targeted for? I forgot before we wrapped up. Everybody what is thinking about flying mid B, low B can fly the Lilo X. Except the problem
+
+01:15:01.801 --> 01:15:13.727
+[SPEAKER_00]: of small landing areas. That sounds fun. Yeah. Extra glide ratio, extra speed. Imagine the bragging rights you get when you're flying on an E and
+
+01:15:13.767 --> 01:15:26.453
+[SPEAKER_01]: B and smoking the competition. Who is at your level? Yeah. Cool. All right, Michael. Anything else that we need to touch upon before I wrap up
+
+01:15:26.793 --> 01:15:36.914
+[SPEAKER_01]: for now? For now, maybe not. All right. Great. Then I think we'll save everything else with NLP and hypnosis because I will get in touch with
+
+01:15:36.934 --> 01:15:43.016
+[SPEAKER_01]: you for that via emails. We will kind of structure that. And please promise me you'll be back on the show for that one to share your
+
+01:15:43.076 --> 01:15:54.148
+[SPEAKER_01]: awesomeness with our audiences. Cool. Very nice. That's the only way I'll let you go if you make that promise. Okay. So I go to fly now. All
+
+01:15:54.188 --> 01:16:01.150
+[SPEAKER_01]: right, Michael, thank you so much for your time. It was an absolute honor. And what a great invention, man. I hope you keep on bringing the
+
+01:16:01.190 --> 01:16:09.172
+[SPEAKER_01]: awesomeness to the audiences like you do. And until next time, it's been really nice. Thank you. And I would like to go to fly together with you
+
+01:16:09.212 --> 01:16:18.293
+[SPEAKER_00]: sometime. I think we have a plan in the making. Best flying Lilo X and sharing the joy in the air. Let's do it. Not only this, you are always
+
+01:16:18.333 --> 01:16:27.478
+[SPEAKER_00]: welcome in the Dolomites. I live here near the landing place. I have the cable car in front of the house. So if you want to come, just do it. I think
+
+01:16:27.498 --> 01:16:35.863
+[SPEAKER_01]: we'll put out a public service announcement to anybody who's listening to this show. We will put your website, which is profly2org, if I'm not
+
+01:16:35.943 --> 01:16:44.525
+[SPEAKER_01]: wrong. And to all our audiences who are listening to Michael, he has a website which is specifically catering to his production of the
+
+01:16:44.565 --> 01:16:52.230
+[SPEAKER_01]: gliders and everything. And then I don't know how to speak this word because there's another website which is called Uberflyer. Do you want
+
+01:16:52.270 --> 01:17:03.356
+[SPEAKER_01]: to correct that? Yeah, it's the online academy where we try to give away all the information and techniques where we have not had time to make so
+
+01:17:03.396 --> 01:17:15.372
+[SPEAKER_00]: many real classes. And so we give it to the people who don't have the time to come to us. Yeah. So whether or not you and which place in Dolomites are
+
+01:17:15.412 --> 01:17:24.977
+[SPEAKER_01]: you based out? Which city are we talking about? There is no city. It's close to the Passo Carezza. It's not the Fasar side, not the Italian
+
+01:17:24.997 --> 01:17:31.300
+[SPEAKER_00]: side. It's the South Tyrol side. That's why we can fly the whole year. We don't have to have in Fasar.
+
+01:17:34.432 --> 01:17:41.903
+[SPEAKER_00]: I said, you have a good day, you take off here, you make the mountain behind us here, pass to Fossa over the valley, go to the Marmolada and fly
+
+01:17:41.923 --> 01:17:52.669
+[SPEAKER_00]: back and land at the cable car here again. It's easy. You're living the dream, aren't you? Yeah. all right so anyways to all our people who are
+
+01:17:52.689 --> 01:18:00.472
+[SPEAKER_01]: listening the show notes will be the links will be in the show notes below and believe me these websites are a gem of a production to dive into you
+
+01:18:00.512 --> 01:18:07.815
+[SPEAKER_01]: will basically have all the information that michael does with training and the new technologies that he's coming out with so make sure
+
+01:18:07.835 --> 01:18:17.460
+[SPEAKER_01]: you touch make sure you check that out and next episode is all going to be about how to transfer knowledge in the most efficient manner and make
+
+01:18:17.500 --> 01:18:24.813
+[SPEAKER_01]: sure the pilot who you are teaching becomes one of the safest and the most responsible ones in the air. Hey, cool. Super. I like this.

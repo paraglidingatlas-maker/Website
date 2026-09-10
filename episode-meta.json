@@ -1,97 +1,3408 @@
 [
   {
-    "slug": "carabiner-fatigue",
-    "title": "Carabiner Fatigue: What Finsterwalder and Charly's Research Paper Tells Us",
+    "slug": "alain-zoller-the-science-of-en-certifications-how-work",
+    "title": "Alain Zoller: The Science of EN Certifications : How Work Group 6 Shaped Paragliding Testing, Inn...",
+    "video_id": "CBxyezZ-UOw",
+    "series": "Flight Mechanics",
+    "series_slug": "Flight%20Mechanics",
+    "epno": "",
+    "guest": "",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "96 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Guest"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Look for when choosing a reserve?",
+        "at": "00:00:46"
+      },
+      {
+        "title": "Somebody who has tested endless amounts of wings. Do you have a…",
+        "at": "00:05:19"
+      },
+      {
+        "title": "Rules for the sake of the sport. I do not understand that. Could…",
+        "at": "00:15:12"
+      },
+      {
+        "title": "That you guys are just the go-to test house for anyone who wants to…",
+        "at": "00:24:41"
+      },
+      {
+        "title": "The major differences between AFNOR and LTF?",
+        "at": "00:28:25"
+      },
+      {
+        "title": "Community where even the top of the line pilots are paying the…",
+        "at": "00:39:47"
+      },
+      {
+        "title": "Because I never see CCC test reports out there. Have I missed…",
+        "at": "00:43:50"
+      },
+      {
+        "title": "Either shrunk a little bit or elongated a little bit as per the use?",
+        "at": "00:47:58"
+      },
+      {
+        "title": "Trying to choose a glider and they are going through the test…",
+        "at": "00:52:36"
+      },
+      {
+        "title": "The point and paperwork is just an excuse that we are making right…",
+        "at": "01:01:56"
+      },
+      {
+        "title": "Tests. As a customer, it's unlikely that you will impact in the…",
+        "at": "01:06:17"
+      },
+      {
+        "title": "Does that make a difference or is it just marketing?",
+        "at": "01:15:50"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Urs Haari: The Real Truth About Reserve Parachutes",
+        "url": "https://www.youtube.com/watch?v=EttlenmzWHM"
+      },
+      {
+        "label": "Risk Vs Reward 5",
+        "url": "https://www.youtube.com/watch?v=DmyYSA6NeMw"
+      },
+      {
+        "label": "New Technologies 2",
+        "url": "https://www.youtube.com/watch?v=MxwM1lJEVIU"
+      }
+    ],
+    "tags": [
+      "Flight Mechanics"
+    ]
+  },
+  {
+    "slug": "aljaz-valic-777-paraglidings-slovenian-mavericks",
+    "title": "Aljaž Valič : 777 : Paragliding’s Slovenian Mavericks Redefining the EN B Class And Elevating Fre...",
+    "video_id": "78PaTvxRWJ0",
+    "series": "Flight Mechanics",
+    "series_slug": "Flight%20Mechanics",
+    "epno": "",
+    "guest": "Anindya Singh",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "94 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Anindya Singh"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "One question that I've been wanting to ask you guys for ages. Why…",
+        "at": "00:00:17"
+      },
+      {
+        "title": "Like in the sport of paragliding?",
+        "at": "00:06:56"
+      },
+      {
+        "title": "Help us understand the design from the drawing board to actually…",
+        "at": "00:13:11"
+      },
+      {
+        "title": "Maybe even three. Most selling two-liner C classes are Photon…",
+        "at": "00:26:23"
+      },
+      {
+        "title": "What's your personal opinion on this?",
+        "at": "00:30:08"
+      },
+      {
+        "title": "Gambit get banned at one point of time by Civil?",
+        "at": "00:38:14"
+      },
+      {
+        "title": "Internal structure is all about distributing air and maintaining…",
+        "at": "00:45:17"
+      },
+      {
+        "title": "Things that you will tell them before they choose a wing from a…",
+        "at": "00:51:38"
+      },
+      {
+        "title": "Difference when it comes to enhancing performance?",
+        "at": "00:55:37"
+      },
+      {
+        "title": "Art of flight that brings them their life?",
+        "at": "00:59:42"
+      },
+      {
+        "title": "The final customer. Like who in this supply chain is making the…",
+        "at": "01:04:54"
+      },
+      {
+        "title": "This really helping the industry or is this actually taking us…",
+        "at": "01:11:45"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "New Technologies 5",
+        "url": "https://www.youtube.com/watch?v=vmnrTFbu6vg"
+      },
+      {
+        "label": "New Technologies 2",
+        "url": "https://www.youtube.com/watch?v=MxwM1lJEVIU"
+      }
+    ],
+    "tags": [
+      "Flight Mechanics"
+    ]
+  },
+  {
+    "slug": "ashutosh-chopra-identifying-passion-vs-obsession-an",
+    "title": "​Ashutosh Chopra: Identifying Passion Vs Obsession: An Aviator’s Approach to Overcoming Adversity...",
+    "video_id": "jMVTzRFPWNw",
+    "series": "Resources, Tools and Tips",
+    "series_slug": "Resources%2C%20Tools%20and%20Tips",
+    "epno": "",
+    "guest": "Identifying Passion Vs Obsession",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "64 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Identifying Passion Vs Obsession"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Mind. There is no option but that's the only option. Now what?",
+        "at": "00:00:25"
+      },
+      {
+        "title": "Are you reasonable with the amount of time you give to your support…",
+        "at": "00:29:22"
+      },
+      {
+        "title": "Lighting technique is not good. You're flaring high. But can…",
+        "at": "00:38:35"
+      },
+      {
+        "title": "Something like this has happened?",
+        "at": "00:49:15"
+      },
+      {
+        "title": "Sure, handling fear is very individual. The only thing I can say…",
+        "at": "00:54:21"
+      },
+      {
+        "title": "Hugging the ground. I think that's where the most excitement is…",
+        "at": "00:58:42"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Consequence Over Probability: Will Gadd on Why True Safety Lies in Cla",
+        "url": "https://www.youtube.com/watch?v=VqkYy6YhXcY"
+      },
+      {
+        "label": "Risk Vs Reward 3",
+        "url": "https://www.youtube.com/watch?v=njoPDwe457w"
+      },
+      {
+        "label": "The Silent Mind In Screaming Winds",
+        "url": "https://www.youtube.com/watch?v=N4OGIzYNnl0"
+      }
+    ],
+    "tags": [
+      "Resources, Tools and Tips"
+    ]
+  },
+  {
+    "slug": "brand-stories-neo-eric-roussel",
+    "title": "Brand Stories : Neo : Eric Roussel",
+    "video_id": "9GfZcM3P3jY",
+    "series": "Brand Stories",
+    "series_slug": "Brand%20Stories",
+    "epno": "",
+    "guest": "Eric Roussel",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "63 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Eric Roussel"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Vendre. C'est aussi ce que je veux faire avec le produit. Qui va…",
+        "at": "00:21:23"
+      },
+      {
+        "title": "Il y a un Choroïd, pourquoi ne pas aller chez eux ?",
+        "at": "00:28:00"
+      },
+      {
+        "title": "Tombait avec un mousse... Qu'est-ce que c'est un mousse ?",
+        "at": "00:33:41"
+      },
+      {
+        "title": "C'est ce que vous dites ?",
+        "at": "00:40:19"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "New Technologies 5",
+        "url": "https://www.youtube.com/watch?v=vmnrTFbu6vg"
+      },
+      {
+        "label": "New Technologies 2",
+        "url": "https://www.youtube.com/watch?v=MxwM1lJEVIU"
+      },
+      {
+        "label": "Alain Zoller: The Science of EN Certifications",
+        "url": "https://www.youtube.com/watch?v=CBxyezZ-UOw"
+      }
+    ],
+    "tags": [
+      "Brand Stories"
+    ]
+  },
+  {
+    "slug": "carabiner-fatigue-finsterwalder-charly",
+    "title": "Carabiner Fatigue : Finsterwalder & Charly (whitepaper)",
     "video_id": "QPkIlI2qG5A",
     "series": "Know Your Equipment",
     "series_slug": "Know%20Your%20Equipment",
     "epno": "",
-    "guest": "Aninder Singh",
-    "guest_role": "Solo episode, working from a research paper shared by Finsterwalder and Charly",
+    "guest": "Finsterwalder & Charly",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
     "published": "",
     "published_label": "",
     "duration_label": "17 min",
     "speakers": {
       "0": "Aninder"
     },
-    "_summary_source": "** review: written from the transcript, not from the show notes",
-    "summary": "A solo episode on the one piece of equipment almost nobody inspects properly. Thomas Finsterwalder could not join the show, so he sent over a research paper on material fatigue instead. This episode works through what fatigue is, why a carabiner can fail while looking perfectly fine, what the manufacturer guidelines actually ask of you, and what to do about it this week.",
-    "_chapters_source": "** review: this episode's show notes have no bullet list, so chapter titles were derived from the sections the host announces out loud. Each cue is a phrase actually spoken, so the timings are real.",
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
     "chapters": [
       {
-        "title": "Why carabiners deserve a closer look",
-        "at": "00:00"
+        "title": "Introduction",
+        "at": "00:00:00"
       },
       {
-        "title": "Failures in the community",
-        "cue": "there have been some incidents in our community where carabiner failures"
+        "title": "Let's begin this episode by acknowledging that there have been some…",
+        "at": "00:02:14"
       },
       {
-        "title": "What material fatigue actually is",
-        "cue": "So what exactly is material fatigue and why is it so crucial"
+        "title": "Finally, the storage also matters up to a certain point, although…",
+        "at": "00:08:24"
       },
       {
-        "title": "Static strength versus dynamic loads",
-        "cue": "Let's talk about static strength"
-      },
-      {
-        "title": "Service life, inspection and storage",
-        "cue": "manufacturers of paragliding equipment such as Petzl and Edelrid provide guidelines"
-      },
-      {
-        "title": "Salt, sand and humid air",
-        "cue": "detail about environmental factors and their impact on our equipment"
-      },
-      {
-        "title": "Three misconceptions that breed complacency",
-        "cue": "address some common misconceptions that can often lead to complacency"
-      },
-      {
-        "title": "What to do about it",
-        "cue": "let's get on to some actionable steps that we all can take"
-      },
-      {
-        "title": "Where carabiner technology is heading",
-        "cue": "advancement in carabiner technologies"
-      },
-      {
-        "title": "Final thoughts",
-        "cue": "final thoughts to wrap this up"
+        "title": "To wrap up this episode, I would like to talk a little bit about…",
+        "at": "00:13:18"
       }
     ],
-    "guest_links": [
-      {
-        "label": "Finsterwalder and Charly",
-        "url": "https://www.finsterwalder-charly.de/"
-      }
-    ],
-    "resources": [
-      {
-        "label": "Petzl equipment service life guidance",
-        "url": "https://www.petzl.com/INT/en/Sport/Lifetime---Guarantee"
-      },
-      {
-        "label": "Edelrid care and maintenance",
-        "url": "https://edelrid.com/eu-en/knowledge/care-maintenance"
-      }
-    ],
+    "guest_links": [],
+    "resources": [],
     "related": [
       {
-        "label": "Watch this Before you Buy a Paragliding Harness",
-        "url": "https://www.youtube.com/watch?v=tRPZuUCbnBM"
+        "label": "Risk Vs Reward 5",
+        "url": "https://www.youtube.com/watch?v=DmyYSA6NeMw"
       },
       {
-        "label": "Helmet Safety with ICARO 2000",
-        "url": "https://www.youtube.com/watch?v=EAFqCUvvT4c"
+        "label": "Urs Haari: The Real Truth About Reserve Parachutes",
+        "url": "https://www.youtube.com/watch?v=EttlenmzWHM"
+      },
+      {
+        "label": "The Resilience Equation: Erlend Ukvitne’s Unrelenting Path to X-Alps a",
+        "url": "https://www.youtube.com/watch?v=rFC56EjtXCY"
       }
     ],
     "tags": [
-      "carabiner",
-      "material fatigue",
-      "equipment",
-      "maintenance",
-      "safety",
-      "solo episode"
+      "Know Your Equipment"
+    ]
+  },
+  {
+    "slug": "what-is-civlresign-with-julien-garcia",
+    "title": "What is #CIVLRESIGN with Julien Garcia",
+    "video_id": "jSfQYxxbaWk",
+    "series": "The Dark Side",
+    "series_slug": "The%20Dark%20Side",
+    "epno": "",
+    "guest": "",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "29 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Guest"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Lot of people are talking about it and supporting it. So to begin…",
+        "at": "00:01:21"
+      },
+      {
+        "title": "Connection between the ones who are calling the shots and the ones…",
+        "at": "00:09:07"
+      },
+      {
+        "title": "Got reprimanded for in the posts?",
+        "at": "00:21:50"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Insights From The Gaggle with Tilen Ceglar & Stan Radzikowski",
+        "url": "https://www.youtube.com/watch?v=jdiYdzJ9U5w"
+      },
+      {
+        "label": "Pal Takats on Challenges, Change & The Future of Paragliding ",
+        "url": "https://www.youtube.com/watch?v=FvIZpqydhyo"
+      },
+      {
+        "label": "PWCA: Goran Dimiskovski",
+        "url": "https://www.youtube.com/watch?v=l1gmplS02FI"
+      }
+    ],
+    "tags": [
+      "The Dark Side"
+    ]
+  },
+  {
+    "slug": "consequence-over-probability-will-gadd-on-why-true-safety",
+    "title": "Consequence Over Probability: Will Gadd on Why True Safety Lies in Clarity",
+    "video_id": "VqkYy6YhXcY",
+    "series": "Risk vs Reward",
+    "series_slug": "Risk%20vs%20Reward",
+    "epno": "",
+    "guest": "",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "63 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Guest"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "To get out there and you got to listen. Like, what's the world…",
+        "at": "00:00:40"
+      },
+      {
+        "title": "Think it is for anybody else. But that basic question is, what's…",
+        "at": "00:04:50"
+      },
+      {
+        "title": "How do you deal with that?",
+        "at": "00:09:22"
+      },
+      {
+        "title": "Top because I was so afraid to run the drop, right?",
+        "at": "00:15:31"
+      },
+      {
+        "title": "The things that you don't know to fear yet, you know?",
+        "at": "00:19:36"
+      },
+      {
+        "title": "Windsock, a temporary one, or hold up a string or something, right?",
+        "at": "00:23:57"
+      },
+      {
+        "title": "Like, when did it switch?",
+        "at": "00:27:43"
+      },
+      {
+        "title": "Honesty with yourself. It's like, why did this happen?",
+        "at": "00:38:28"
+      },
+      {
+        "title": "Engage here. Okay, so how am I going to make that work?",
+        "at": "00:43:13"
+      },
+      {
+        "title": "Have to learn. Like, why didn't they respond well to what you were…",
+        "at": "00:46:53"
+      },
+      {
+        "title": "Like, all right, what's got any issues here?",
+        "at": "00:50:41"
+      },
+      {
+        "title": "Like that'll kill you. And what am I going to do about it?",
+        "at": "00:55:22"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "​Ashutosh Chopra: Identifying Passion Vs Obsession: An Aviator’s Appro",
+        "url": "https://www.youtube.com/watch?v=jMVTzRFPWNw"
+      },
+      {
+        "label": "The Silent Mind In Screaming Winds",
+        "url": "https://www.youtube.com/watch?v=N4OGIzYNnl0"
+      }
+    ],
+    "tags": [
+      "Risk vs Reward"
+    ]
+  },
+  {
+    "slug": "eddie-colfox-storytime-chasing-adventure-with-the-real-og",
+    "title": "Eddie Colfox : Storytime : Chasing Adventure With the Real OG John Silvester & 3 Decades of Makin...",
+    "video_id": "ebwdsVgopnU",
+    "series": "Storytellers",
+    "series_slug": "Storytellers",
+    "epno": "",
+    "guest": "In",
+    "guest_role": "Most efficient way we can force the algorithms to bring this awesomeness of all things paraglid",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "64 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "In"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Tell us a little bit about what our audiences are in for and what…",
+        "at": "00:03:00"
+      },
+      {
+        "title": "Or did people have to really dig in and find the right person and…",
+        "at": "00:06:38"
+      },
+      {
+        "title": "With can inspire the next generation with your stories. But take me…",
+        "at": "00:11:22"
+      },
+      {
+        "title": "Is it just the age or nature or is it actually something more to it?",
+        "at": "00:16:04"
+      },
+      {
+        "title": "How was the availability of trustworthy gear?",
+        "at": "00:25:00"
+      },
+      {
+        "title": "Others come back in the day?",
+        "at": "00:29:43"
+      },
+      {
+        "title": "Guys must have been the first ones to offer tours in that region…",
+        "at": "00:35:02"
+      },
+      {
+        "title": "Any obstacles, be it mentally or physically, that he found…",
+        "at": "00:39:07"
+      },
+      {
+        "title": "Some of the biggest technical revolutions have happened in your…",
+        "at": "00:43:09"
+      },
+      {
+        "title": "Started paragliding, or were they before you got in the sport?",
+        "at": "00:48:23"
+      },
+      {
+        "title": "Bara Bengal flight to our audiences last time around as well. Yeah.…",
+        "at": "00:52:33"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Navigating India: Eddie Colfox",
+        "url": "https://www.youtube.com/watch?v=TO6gW69d7YE"
+      },
+      {
+        "label": "Navigating Australia",
+        "url": "https://www.youtube.com/watch?v=xXSGK8oB4Oc"
+      },
+      {
+        "label": "Risk Vs Reward 1",
+        "url": "https://www.youtube.com/watch?v=md9ls8OtBiA"
+      }
+    ],
+    "tags": [
+      "Storytellers"
+    ]
+  },
+  {
+    "slug": "flying-filming-1-benjamin-jordan",
+    "title": "Flying & Filming 1 : Benjamin Jordan",
+    "video_id": "L2MrAoec24I",
+    "series": "Resources, Tools and Tips",
+    "series_slug": "Resources%2C%20Tools%20and%20Tips",
+    "epno": "",
+    "guest": "Benjamin Jordan",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "49 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Benjamin Jordan"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "From Mexico to Canada. That sounds cool. And so let's just do this…",
+        "at": "00:01:01"
+      },
+      {
+        "title": "As many people as possible, I really shouldn't dive into, what's…",
+        "at": "00:14:13"
+      },
+      {
+        "title": "What kind of shots to get this shot?",
+        "at": "00:20:18"
+      },
+      {
+        "title": "Who else is giving to summer camp right now?",
+        "at": "00:24:40"
+      },
+      {
+        "title": "Having my hands on my toggles and be completely in the game as far…",
+        "at": "00:34:21"
+      },
+      {
+        "title": "To ask yourself, why is someone going to care?",
+        "at": "00:47:52"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Living The Dream",
+        "url": "https://www.youtube.com/watch?v=bDJ1zRG90cs"
+      },
+      {
+        "label": "Flying & Filming 2",
+        "url": "https://www.youtube.com/watch?v=OiertfSq-6o"
+      },
+      {
+        "label": "Flying & Filming 3",
+        "url": "https://www.youtube.com/watch?v=yUsfGCfI_30"
+      }
+    ],
+    "tags": [
+      "Resources, Tools and Tips"
+    ]
+  },
+  {
+    "slug": "flying-filming-2-benjamin-kellet",
+    "title": "Flying & Filming 2 : Benjamin Kellet",
+    "video_id": "OiertfSq-6o",
+    "series": "Resources, Tools and Tips",
+    "series_slug": "Resources%2C%20Tools%20and%20Tips",
+    "epno": "",
+    "guest": "Benjamin Kellet",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "63 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Benjamin Kellet"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "I'm saying. No, I love it, man. On that note, Benjamin, how does…",
+        "at": "01:00:24"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Flying & Filming 1",
+        "url": "https://www.youtube.com/watch?v=L2MrAoec24I"
+      },
+      {
+        "label": "Flying & Filming 3",
+        "url": "https://www.youtube.com/watch?v=yUsfGCfI_30"
+      },
+      {
+        "label": "Eddie Colfox",
+        "url": "https://www.youtube.com/watch?v=ebwdsVgopnU"
+      }
+    ],
+    "tags": [
+      "Resources, Tools and Tips"
+    ]
+  },
+  {
+    "slug": "flying-filming-3-andreas-lattner",
+    "title": "Flying & Filming 3 : Andreas Lattner (hochzwei.media)",
+    "video_id": "yUsfGCfI_30",
+    "series": "Resources, Tools and Tips",
+    "series_slug": "Resources%2C%20Tools%20and%20Tips",
+    "epno": "",
+    "guest": "Andreas Lattner",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "76 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Andreas Lattner"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Dream life in a van. Now you're talking about moving to a permanent…",
+        "at": "00:03:31"
+      },
+      {
+        "title": "Or what's your heritage because of the language that you transfer…",
+        "at": "00:09:25"
+      },
+      {
+        "title": "One in front of the camera or behind the scenes as well affect…",
+        "at": "00:14:56"
+      },
+      {
+        "title": "People with all your equipment and toys. Tell us about House on…",
+        "at": "00:21:35"
+      },
+      {
+        "title": "Living of Auschwitz media. Okay, one more time. Tell me, how do I…",
+        "at": "00:26:53"
+      },
+      {
+        "title": "Is there a hint of a rockstar lifestyle in this kind of paragliding…",
+        "at": "00:30:49"
+      },
+      {
+        "title": "Team up with paragliding brands?",
+        "at": "00:40:55"
+      },
+      {
+        "title": "People who have big dreams and the will also look at getting a…",
+        "at": "00:47:24"
+      },
+      {
+        "title": "Beginner episodes. You'll see Antoine sharing all his wisdom. He…",
+        "at": "00:54:39"
+      },
+      {
+        "title": "Name correctly. Man, the cinematic brilliance that guy brings to…",
+        "at": "01:01:52"
+      },
+      {
+        "title": "Up very quick. What does it take to, first of all, dream about it…",
+        "at": "01:06:04"
+      },
+      {
+        "title": "Just out of curiosity, you must be using glacier shoes, right?",
+        "at": "01:09:47"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Flying & Filming 2",
+        "url": "https://www.youtube.com/watch?v=OiertfSq-6o"
+      },
+      {
+        "label": "Flying & Filming 1",
+        "url": "https://www.youtube.com/watch?v=L2MrAoec24I"
+      },
+      {
+        "label": "Sky Gods",
+        "url": "https://www.youtube.com/watch?v=Q2oTFoQcrGw"
+      }
+    ],
+    "tags": [
+      "Resources, Tools and Tips"
+    ]
+  },
+  {
+    "slug": "the-silent-mind-in-screaming-winds-unlocking-peak-focus-to",
+    "title": "The Silent Mind In Screaming Winds : Unlocking Peak Focus To Attain Flow State In Paragliding",
+    "video_id": "N4OGIzYNnl0",
+    "series": "Resources, Tools and Tips",
+    "series_slug": "Resources%2C%20Tools%20and%20Tips",
+    "epno": "",
+    "guest": "Humble",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "102 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Humble"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Like this where there's less noise, to say the least, the easiest…",
+        "at": "00:10:01"
+      },
+      {
+        "title": "Because you're in the moment?",
+        "at": "00:17:07"
+      },
+      {
+        "title": "It's the same want. and how you control that one versus how you get…",
+        "at": "00:24:25"
+      },
+      {
+        "title": "You do make the end goal, then it's a bonus. Yeah, who doesn't like…",
+        "at": "00:28:44"
+      },
+      {
+        "title": "That started giving me launch anxiety. And of course, if you start…",
+        "at": "00:39:19"
+      },
+      {
+        "title": "Usually, what are the ways or the rituals of some sort?",
+        "at": "00:47:49"
+      },
+      {
+        "title": "You. So just do yoga and you're set for an epic flight. How simple…",
+        "at": "00:53:16"
+      },
+      {
+        "title": "Conditions, then back off. How hard can it be?",
+        "at": "01:08:50"
+      },
+      {
+        "title": "Are uncomfortable What is the easiest way to bring yourself back in…",
+        "at": "01:17:10"
+      },
+      {
+        "title": "More than that, like why aren't you famous yet?",
+        "at": "01:23:06"
+      },
+      {
+        "title": "Solution to all the world's problems?",
+        "at": "01:37:33"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Consequence Over Probability: Will Gadd on Why True Safety Lies in Cla",
+        "url": "https://www.youtube.com/watch?v=VqkYy6YhXcY"
+      }
+    ],
+    "tags": [
+      "Resources, Tools and Tips"
+    ]
+  },
+  {
+    "slug": "helmet-safety-christian-ciech-icaro-2000",
+    "title": "Helmet Safety : Christian Ciech : ICARO 2000",
+    "video_id": "EAFqCUvvT4c",
+    "series": "Know Your Equipment",
+    "series_slug": "Know%20Your%20Equipment",
+    "epno": "",
+    "guest": "Christian Ciech",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "47 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Christian Ciech"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "What's up pilots across the world?",
+        "at": "00:00:06"
+      },
+      {
+        "title": "People try to venture into it?",
+        "at": "00:04:18"
+      },
+      {
+        "title": "Norms and what exactly is the certification today?",
+        "at": "00:09:34"
+      },
+      {
+        "title": "If they offer more protection, why can't we just simply use them in…",
+        "at": "00:13:13"
+      },
+      {
+        "title": "Is that a lot less safer than the usual free flight helmets that…",
+        "at": "00:16:55"
+      },
+      {
+        "title": "Paragliding is an expensive sport. What should you prioritize…",
+        "at": "00:22:13"
+      },
+      {
+        "title": "Smarter in time to come as well?",
+        "at": "00:27:46"
+      },
+      {
+        "title": "Now is the time to change?",
+        "at": "00:33:22"
+      },
+      {
+        "title": "Can paraglider pilots also try a Procopter helmet?",
+        "at": "00:37:34"
+      },
+      {
+        "title": "You tell us about what is so great about this helmet and how did…",
+        "at": "00:42:29"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Flying & Filming 2",
+        "url": "https://www.youtube.com/watch?v=OiertfSq-6o"
+      },
+      {
+        "label": "New Technologies 4",
+        "url": "https://www.youtube.com/watch?v=zEnjmp9hrlE"
+      },
+      {
+        "label": "Alain Zoller: The Science of EN Certifications",
+        "url": "https://www.youtube.com/watch?v=CBxyezZ-UOw"
+      }
+    ],
+    "tags": [
+      "Know Your Equipment"
+    ]
+  },
+  {
+    "slug": "helmut-schrempf-modernizing-siv-courses-how-this-new",
+    "title": "Helmut Schrempf : Modernizing SIV Courses: How This New Training Method Can Help You Master Glide...",
+    "video_id": "wTfS5kv1t9M",
+    "series": "Flight Mechanics",
+    "series_slug": "Flight%20Mechanics",
+    "epno": "",
+    "guest": "Modernizing SIV Courses",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "80 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Modernizing SIV Courses"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Just let our audiences know. What is safety pilot coaching all…",
+        "at": "00:04:54"
+      },
+      {
+        "title": "Was it physically impossible to prevent that kind of force?",
+        "at": "00:10:55"
+      },
+      {
+        "title": "Possible position to have an ideal reaction or close to ideal…",
+        "at": "00:31:52"
+      },
+      {
+        "title": "Brake line for optimal flying performance?",
+        "at": "00:35:59"
+      },
+      {
+        "title": "Technologies. Why did this happen?",
+        "at": "00:40:09"
+      },
+      {
+        "title": "Safety pilot coaching is teaching us to control ourselves and the…",
+        "at": "00:49:18"
+      },
+      {
+        "title": "People follow so they can become a safer pilot overall?",
+        "at": "01:02:33"
+      },
+      {
+        "title": "While getting into this new style of coaching. When it comes down…",
+        "at": "01:11:25"
+      },
+      {
+        "title": "Show. Any closing thoughts before we say goodbye for now?",
+        "at": "01:17:12"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Why Paragliding’s Safety Future Looks Different: RAST Inventor Michael",
+        "url": "https://www.youtube.com/watch?v=YGU7-ctBYYE"
+      },
+      {
+        "label": "Sky Gods",
+        "url": "https://www.youtube.com/watch?v=QmprO-5qkR8"
+      },
+      {
+        "label": "Alain Zoller: The Science of EN Certifications",
+        "url": "https://www.youtube.com/watch?v=CBxyezZ-UOw"
+      }
+    ],
+    "tags": [
+      "Flight Mechanics"
+    ]
+  },
+  {
+    "slug": "insights-from-the-gaggle-with-tilen-ceglar-stan",
+    "title": "Insights From The Gaggle with Tilen Ceglar & Stan Radzikowski",
+    "video_id": "jdiYdzJ9U5w",
+    "series": "The Dark Side",
+    "series_slug": "The%20Dark%20Side",
+    "epno": "",
+    "guest": "Aninha Singh",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "90 min",
+    "speakers": {
+      "0": "Aninder Singh",
+      "1": "Stan",
+      "2": "Tilen"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Fair enough. Stan. Stan, I believe you have been in the competition…",
+        "at": "00:01:38"
+      },
+      {
+        "title": "I, I just want to put it out in the public portal. What happened in…",
+        "at": "00:07:07"
+      },
+      {
+        "title": "Uh, I have a question. Uh, is it it by rule, uh, by regulations…",
+        "at": "00:22:39"
+      },
+      {
+        "title": "You mean the user manual guidelines were being inherently exploited?",
+        "at": "00:28:54"
+      },
+      {
+        "title": "That is deep. That is deep stop. Dylan, [00:33:00] when did the…",
+        "at": "00:32:53"
+      },
+      {
+        "title": "A selected set of people rather than keeping it anonymous?",
+        "at": "00:40:38"
+      },
+      {
+        "title": "That's a shame of a century. My man. What the fuck?",
+        "at": "00:51:25"
+      },
+      {
+        "title": "Talking about money, I wanna clarify this because a lot of people…",
+        "at": "00:57:06"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "What is #CIVLRESIGN with Julien Garcia",
+        "url": "https://www.youtube.com/watch?v=jSfQYxxbaWk"
+      },
+      {
+        "label": "Pal Takats on Challenges, Change & The Future of Paragliding ",
+        "url": "https://www.youtube.com/watch?v=FvIZpqydhyo"
+      },
+      {
+        "label": "PWCA: Goran Dimiskovski",
+        "url": "https://www.youtube.com/watch?v=l1gmplS02FI"
+      }
+    ],
+    "tags": [
+      "The Dark Side"
+    ]
+  },
+  {
+    "slug": "living-the-dream-benjamin-jordan",
+    "title": "Living The Dream : Benjamin Jordan",
+    "video_id": "bDJ1zRG90cs",
+    "series": "Living the Dream",
+    "series_slug": "Living%20the%20Dream",
+    "epno": "",
+    "guest": "Benjamin Jordan",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "49 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Benjamin Jordan"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Oh, that's a good question. I don't think, not too many. And world…",
+        "at": "00:03:37"
+      },
+      {
+        "title": "Curious, and I'm sure some of our audiences can also resonate with…",
+        "at": "00:08:26"
+      },
+      {
+        "title": "Podcast project that I'm working on, and of course there are…",
+        "at": "00:20:25"
+      },
+      {
+        "title": "Much it gives back to you. But are there any downsides to it that…",
+        "at": "00:35:53"
+      },
+      {
+        "title": "Just out of curiosity, not divulging into any other topic, but just…",
+        "at": "00:42:35"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Flying & Filming 1",
+        "url": "https://www.youtube.com/watch?v=L2MrAoec24I"
+      },
+      {
+        "label": "Flying & Filming 2",
+        "url": "https://www.youtube.com/watch?v=OiertfSq-6o"
+      },
+      {
+        "label": "The Silent Mind In Screaming Winds",
+        "url": "https://www.youtube.com/watch?v=N4OGIzYNnl0"
+      }
+    ],
+    "tags": [
+      "Living the Dream"
+    ]
+  },
+  {
+    "slug": "meteorology-101-a-beginners-guide-to-understanding-weather",
+    "title": "Meteorology 101 A beginner’s Guide to Understanding Weather Apps and Decoding Endless Forecasting...",
+    "video_id": "DIHf30B2NoY",
+    "series": "Weather Patterns",
+    "series_slug": "Weather%20Patterns",
+    "epno": "",
+    "guest": "So",
+    "guest_role": "Head over to the Kenya episode that we recorded with Nikolai Yotov",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "71 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "So"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Have you here. How is life?",
+        "at": "00:00:02"
+      },
+      {
+        "title": "Why do we have five of them available on an app which is basically…",
+        "at": "00:04:47"
+      },
+      {
+        "title": "Who is running the show behind these companies?",
+        "at": "00:08:25"
+      },
+      {
+        "title": "Long-term and which one is most accurate for short-term forecasting?",
+        "at": "00:12:54"
+      },
+      {
+        "title": "To try and do something like Perlon?",
+        "at": "00:19:23"
+      },
+      {
+        "title": "Your mind when you look at a photo like this?",
+        "at": "00:28:47"
+      },
+      {
+        "title": "He's just unlocked a lifelong mystery, man. I used to keep on…",
+        "at": "00:39:21"
+      },
+      {
+        "title": "Wait a second. How did the 23 degrees thing come?",
+        "at": "00:49:23"
+      },
+      {
+        "title": "Going to the left and coming back, which is forming a conical…",
+        "at": "00:54:48"
+      },
+      {
+        "title": "I'll be thankful if you can explain the color mapping. What does…",
+        "at": "01:00:05"
+      },
+      {
+        "title": "The question mark around local knowledge?",
+        "at": "01:04:06"
+      },
+      {
+        "title": "So on. Is there a mantra which you use to become such a good…",
+        "at": "01:09:32"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Navigating Australia",
+        "url": "https://www.youtube.com/watch?v=xXSGK8oB4Oc"
+      },
+      {
+        "label": "Navigating Panchgani (Pre PWC India)",
+        "url": "https://www.youtube.com/watch?v=0VPg7TZ9hK0"
+      },
+      {
+        "label": "Navigating India: Eddie Colfox",
+        "url": "https://www.youtube.com/watch?v=TO6gW69d7YE"
+      }
+    ],
+    "tags": [
+      "Weather Patterns"
+    ]
+  },
+  {
+    "slug": "navigating-australia-godfrey-wenness",
+    "title": "Navigating Australia : Godfrey Wenness",
+    "video_id": "xXSGK8oB4Oc",
+    "series": "Navigators",
+    "series_slug": "Navigators",
+    "epno": "",
+    "guest": "Godfrey Wenness",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "82 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Godfrey Wenness"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Every one of us dreams of turning it into a way of life. I mean…",
+        "at": "00:01:13"
+      },
+      {
+        "title": "Godfrey, what does Australia look like for paragliding?",
+        "at": "00:04:55"
+      },
+      {
+        "title": "The best places or websites to look for the forecast?",
+        "at": "00:12:30"
+      },
+      {
+        "title": "Can launch 20 gliders in a row, man. Is there any other place in…",
+        "at": "00:19:37"
+      },
+      {
+        "title": "Wow, what else do you need in paragliding?",
+        "at": "00:26:25"
+      },
+      {
+        "title": "Cross-country flying look like visually?",
+        "at": "00:32:11"
+      },
+      {
+        "title": "It's like, okay, if I don't save myself, then a bomb out is coming…",
+        "at": "00:36:49"
+      },
+      {
+        "title": "Similar or because the dust is so fine, so it filters out…",
+        "at": "00:51:25"
+      },
+      {
+        "title": "The heads up, Godfrey. But, you know, quick, I wanted to touch this…",
+        "at": "00:58:55"
+      },
+      {
+        "title": "To our audiences in every single episode. How many accidents and…",
+        "at": "01:06:06"
+      },
+      {
+        "title": "Point, that is storyline. I wanted to know what are the options to…",
+        "at": "01:12:23"
+      },
+      {
+        "title": "Know what Manila has been all about so far?",
+        "at": "01:17:46"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Navigating Panchgani (Pre PWC India)",
+        "url": "https://www.youtube.com/watch?v=0VPg7TZ9hK0"
+      },
+      {
+        "label": "Meteorology 101 A beginner’s Guide to Understanding Weather Apps and D",
+        "url": "https://www.youtube.com/watch?v=DIHf30B2NoY"
+      },
+      {
+        "label": "Pre PWC Kenya: Nikolay Yotov",
+        "url": "https://www.youtube.com/watch?v=UVLF8l0qFlA"
+      }
+    ],
+    "tags": [
+      "Navigators"
+    ]
+  },
+  {
+    "slug": "navigating-colombia-pal-takats",
+    "title": "Navigating Colombia: Pal Takats",
+    "video_id": "kOgDYSvfUuo",
+    "series": "Navigators",
+    "series_slug": "Navigators",
+    "epno": "",
+    "guest": "Pal Takats",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "73 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Pal Takats"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Place your home, how did this come into your life and what…",
+        "at": "00:05:36"
+      },
+      {
+        "title": "Better does life get than that?",
+        "at": "00:13:43"
+      },
+      {
+        "title": "Saying that flying down to my neighbor's house for tea or breakfast…",
+        "at": "00:17:51"
+      },
+      {
+        "title": "Can you give our listeners a bit of an idea?",
+        "at": "00:21:21"
+      },
+      {
+        "title": "Fly in Colombia for a while. How do you get there?",
+        "at": "00:29:56"
+      },
+      {
+        "title": "Exactly. Yeah, it's around seven o'clock, so which is another thing…",
+        "at": "00:33:51"
+      },
+      {
+        "title": "Yeah. So basically outlanding and sticking out from the crowd. Can…",
+        "at": "00:40:36"
+      },
+      {
+        "title": "Security, is it kind of similar?",
+        "at": "00:47:07"
+      },
+      {
+        "title": "If you abide by them, you still might be breaking them unknowingly?",
+        "at": "00:52:09"
+      },
+      {
+        "title": "The perfect day of flying in this place that we are talking about.…",
+        "at": "00:55:58"
+      },
+      {
+        "title": "At an average, such a beautiful day gives you 100, 150…",
+        "at": "01:00:54"
+      },
+      {
+        "title": "Tuckers into this conversation. Because, right?",
+        "at": "01:11:22"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Navigating Panchgani (Pre PWC India)",
+        "url": "https://www.youtube.com/watch?v=0VPg7TZ9hK0"
+      },
+      {
+        "label": "Navigating India: Jigish Gohil (Bonus Ep)",
+        "url": "https://www.youtube.com/watch?v=_apo1PNabZI"
+      },
+      {
+        "label": "Navigating Australia",
+        "url": "https://www.youtube.com/watch?v=xXSGK8oB4Oc"
+      }
+    ],
+    "tags": [
+      "Navigators"
+    ]
+  },
+  {
+    "slug": "navigating-india-eddie-colfox",
+    "title": "Navigating India: Eddie Colfox",
+    "video_id": "TO6gW69d7YE",
+    "series": "Navigators",
+    "series_slug": "Navigators",
+    "epno": "",
+    "guest": "Eddie Colfox",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "52 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Eddie Colfox"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Jim Mallinson, Mike Blubb, Mike Langle, Manny Langle, Antoine…",
+        "at": "00:00:46"
+      },
+      {
+        "title": "See. You know, it was just about opening our eyes and knowing what…",
+        "at": "00:12:09"
+      },
+      {
+        "title": "Beer, you know, it's a short season, isn't it?",
+        "at": "00:16:49"
+      },
+      {
+        "title": "It does come back to the same sort of balance, doesn't it?",
+        "at": "00:36:49"
+      },
+      {
+        "title": "Likely to then occur where you are going?",
+        "at": "00:42:19"
+      },
+      {
+        "title": "Very good pilots, Jim Mallinson, Mike Blubb, Mike Langle, Manny…",
+        "at": "00:47:44"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Eddie Colfox",
+        "url": "https://www.youtube.com/watch?v=ebwdsVgopnU"
+      },
+      {
+        "label": "Navigating Australia",
+        "url": "https://www.youtube.com/watch?v=xXSGK8oB4Oc"
+      },
+      {
+        "label": "Navigating India: Jigish Gohil (Bonus Ep)",
+        "url": "https://www.youtube.com/watch?v=_apo1PNabZI"
+      }
+    ],
+    "tags": [
+      "Navigators"
+    ]
+  },
+  {
+    "slug": "navigating-india-jigish-gohil",
+    "title": "Navigating India: Jigish Gohil (Bonus Ep)",
+    "video_id": "_apo1PNabZI",
+    "series": "Navigators",
+    "series_slug": "Navigators",
+    "epno": "",
+    "guest": "Jigish Gohil",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "36 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Jigish Gohil"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "What is up, pilots around the world?",
+        "at": "00:01:04"
+      },
+      {
+        "title": "What can they expect if they get their hands on a copy?",
+        "at": "00:06:03"
+      },
+      {
+        "title": "Why do the strength increase by eight times than what it is in…",
+        "at": "00:10:26"
+      },
+      {
+        "title": "Beer. And, you know, how do you find your tribe?",
+        "at": "00:14:13"
+      },
+      {
+        "title": "The flight. Now, let's say you're standing on the takeoff. What is…",
+        "at": "00:20:05"
+      },
+      {
+        "title": "That before you come you check with your insurance provider that if…",
+        "at": "00:29:13"
+      },
+      {
+        "title": "Website, paraguide.in. Is that correct, Jagish?",
+        "at": "00:34:18"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Navigating Panchgani (Pre PWC India)",
+        "url": "https://www.youtube.com/watch?v=0VPg7TZ9hK0"
+      },
+      {
+        "label": "Navigating Colombia: Pal Takats",
+        "url": "https://www.youtube.com/watch?v=kOgDYSvfUuo"
+      },
+      {
+        "label": "Navigating Australia",
+        "url": "https://www.youtube.com/watch?v=xXSGK8oB4Oc"
+      }
+    ],
+    "tags": [
+      "Navigators"
+    ]
+  },
+  {
+    "slug": "navigating-panchgani-vistasp-kharas",
+    "title": "Navigating Panchgani (Pre PWC India) : Vistasp Kharas",
+    "video_id": "0VPg7TZ9hK0",
+    "series": "Navigators",
+    "series_slug": "Navigators",
+    "epno": "",
+    "guest": "Vistasp Kharas",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "54 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Vistasp Kharas"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Panchgani, I've heard. Is there more to flying paragliders in India…",
+        "at": "00:03:50"
+      },
+      {
+        "title": "Pre-World Cup that is happening in this volcanic plateau, as you…",
+        "at": "00:08:30"
+      },
+      {
+        "title": "South Africa. What's the AGL that we are talking about?",
+        "at": "00:12:55"
+      },
+      {
+        "title": "Pilot navigate it compared to an expert one who anyways know their…",
+        "at": "00:17:34"
+      },
+      {
+        "title": "See a foreign or a visiting pilot make?",
+        "at": "00:24:38"
+      },
+      {
+        "title": "Equipment is recommended to fly here?",
+        "at": "00:28:59"
+      },
+      {
+        "title": "Stuck my mind. You talked a lot about wind shear and the wind…",
+        "at": "00:33:12"
+      },
+      {
+        "title": "Does the visual clues change?",
+        "at": "00:37:44"
+      },
+      {
+        "title": "Like, what are the hazards that you need to take care of once…",
+        "at": "00:41:53"
+      },
+      {
+        "title": "Solo female pilot landing in?",
+        "at": "00:45:46"
+      },
+      {
+        "title": "I forgot to bring in this point. How does airspace look in this…",
+        "at": "00:49:18"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Navigating Australia",
+        "url": "https://www.youtube.com/watch?v=xXSGK8oB4Oc"
+      },
+      {
+        "label": "Pre PWC Kenya: Nikolay Yotov",
+        "url": "https://www.youtube.com/watch?v=UVLF8l0qFlA"
+      },
+      {
+        "label": "Navigating India: Jigish Gohil (Bonus Ep)",
+        "url": "https://www.youtube.com/watch?v=_apo1PNabZI"
+      }
+    ],
+    "tags": [
+      "Navigators"
+    ]
+  },
+  {
+    "slug": "new-technologies-1-beni-kalin",
+    "title": "New Technologies 1 : Beni Kälin (speedflyingschool.com)",
+    "video_id": "aFO5Uk5BX9s",
+    "series": "New Technologies",
+    "series_slug": "New%20Technologies",
+    "epno": "",
+    "guest": "Beni Kälin",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "86 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Beni Kälin"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "If I have to begin, you know, on some note, speed flying school…",
+        "at": "00:03:39"
+      },
+      {
+        "title": "You try to give as much as you can, even though it's very early…",
+        "at": "00:08:52"
+      },
+      {
+        "title": "Is in conventional sports. You're becoming better of other people…",
+        "at": "00:12:52"
+      },
+      {
+        "title": "Was your setup when you were having fun. Exactly, yeah. Wow. Do…",
+        "at": "00:17:38"
+      },
+      {
+        "title": "Like, where do you start?",
+        "at": "00:22:56"
+      },
+      {
+        "title": "Have YouTube videos where they're teaching you skills?",
+        "at": "00:27:23"
+      },
+      {
+        "title": "The worst that That can happen. Like, how does shitting your pants…",
+        "at": "00:32:36"
+      },
+      {
+        "title": "How would an SIV look under a moustache compared to a regular…",
+        "at": "00:36:08"
+      },
+      {
+        "title": "Talk to non-flyers, you know, when I talk to my friends who don't…",
+        "at": "00:41:11"
+      },
+      {
+        "title": "Gets after graduating is, should I buy an A wing or should I buy a…",
+        "at": "00:45:22"
+      },
+      {
+        "title": "Maybe, are they the foil?",
+        "at": "00:49:03"
+      },
+      {
+        "title": "Or do you guys fly the commercial ones as well?",
+        "at": "00:57:23"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Alain Zoller: The Science of EN Certifications",
+        "url": "https://www.youtube.com/watch?v=CBxyezZ-UOw"
+      },
+      {
+        "label": "Risk Vs Reward 5",
+        "url": "https://www.youtube.com/watch?v=DmyYSA6NeMw"
+      }
+    ],
+    "tags": [
+      "New Technologies"
+    ]
+  },
+  {
+    "slug": "new-technologies-2-guillem-batlle-adria-grau",
+    "title": "New Technologies 2 : Guillem Batlle & Adrià Grau (Niviuk Paragliders)",
+    "video_id": "MxwM1lJEVIU",
+    "series": "New Technologies",
+    "series_slug": "New%20Technologies",
+    "epno": "",
+    "guest": "New Technologies",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "82 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "New Technologies"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Does a podcast host need to know when we touch upon the topic of…",
+        "at": "00:03:14"
+      },
+      {
+        "title": "Do you see more people kind of getting into the sport or what's…",
+        "at": "00:11:49"
+      },
+      {
+        "title": "Of view, how do you see the R&D changing in two, three seasons?",
+        "at": "00:17:00"
+      },
+      {
+        "title": "Prototypes which do not pass the thing?",
+        "at": "00:24:45"
+      },
+      {
+        "title": "It's like, should I buy a low A?",
+        "at": "00:31:44"
+      },
+      {
+        "title": "Paragliding. Can target be a wing that gives you enough fun as well…",
+        "at": "00:35:59"
+      },
+      {
+        "title": "Something, peace of mind for performance?",
+        "at": "00:41:41"
+      },
+      {
+        "title": "Holding back some bit of your performance enhancement products?",
+        "at": "00:45:11"
+      },
+      {
+        "title": "Reinventing something that was already there?",
+        "at": "00:51:37"
+      },
+      {
+        "title": "I'm forgetting the name of the other kind of... Choriode, yes.…",
+        "at": "01:00:45"
+      },
+      {
+        "title": "Sorry, European norms have only one LTF. But what I'm wondering is…",
+        "at": "01:04:17"
+      },
+      {
+        "title": "Have placed their trust on foam time and again. So are we seeing…",
+        "at": "01:08:49"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Aljaž Valič",
+        "url": "https://www.youtube.com/watch?v=78PaTvxRWJ0"
+      },
+      {
+        "label": "New Technologies 5",
+        "url": "https://www.youtube.com/watch?v=vmnrTFbu6vg"
+      },
+      {
+        "label": "Alain Zoller: The Science of EN Certifications",
+        "url": "https://www.youtube.com/watch?v=CBxyezZ-UOw"
+      }
+    ],
+    "tags": [
+      "New Technologies"
+    ]
+  },
+  {
+    "slug": "new-technologies-5-frantisek-pavlousek",
+    "title": "New Technologies 5 : Frantisek Pavlousek (UP Paragliders)",
+    "video_id": "vmnrTFbu6vg",
+    "series": "New Technologies",
+    "series_slug": "New%20Technologies",
+    "epno": "",
+    "guest": "Frantisek Pavlousek",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "82 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Frantisek Pavlousek"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Stefan Zeigler, thank you so much for coming on Paragliding Atlas…",
+        "at": "00:02:50"
+      },
+      {
+        "title": "Screen and try to have a nine to five in your life, I mean, kind…",
+        "at": "00:15:18"
+      },
+      {
+        "title": "Technology of two-liner Cs. So what has been the philosophy of the…",
+        "at": "00:19:11"
+      },
+      {
+        "title": "Can have different behavior in different settings, right?",
+        "at": "00:25:28"
+      },
+      {
+        "title": "E and A wing to an E and B wing?",
+        "at": "00:32:29"
+      },
+      {
+        "title": "Notch higher as frequently as the bottom ones?",
+        "at": "00:43:58"
+      },
+      {
+        "title": "The designer just gotten lazy because he doesn't want to put in the…",
+        "at": "00:51:18"
+      },
+      {
+        "title": "Are winglets and why are they in paragliding and what difference…",
+        "at": "01:07:09"
+      },
+      {
+        "title": "Regardless of how many trimmings I do. So what have I done…",
+        "at": "01:13:58"
+      },
+      {
+        "title": "Over your flying career, which will be of some value, be it…",
+        "at": "01:20:26"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Aljaž Valič",
+        "url": "https://www.youtube.com/watch?v=78PaTvxRWJ0"
+      },
+      {
+        "label": "Ziad Bassil",
+        "url": "https://www.youtube.com/watch?v=i-QoHo0ZaPU"
+      },
+      {
+        "label": "New Technologies 5",
+        "url": "https://www.youtube.com/watch?v=vmnrTFbu6vg"
+      }
+    ],
+    "tags": [
+      "New Technologies"
+    ]
+  },
+  {
+    "slug": "new-technologies-4-veselin-ovcharov",
+    "title": "New Technologies 4 : Veselin Ovcharov (Fly The Earth)",
+    "video_id": "zEnjmp9hrlE",
+    "series": "New Technologies",
+    "series_slug": "New%20Technologies",
+    "epno": "",
+    "guest": "Veselin Ovcharov",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "59 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Veselin Ovcharov"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "This. How is life treating you these days?",
+        "at": "00:03:06"
+      },
+      {
+        "title": "Wondering what comprises of your team and who are these people who…",
+        "at": "00:14:01"
+      },
+      {
+        "title": "Such a high cost where you're having to deal with so many stresses?",
+        "at": "00:21:34"
+      },
+      {
+        "title": "Everything, can you just tell our audiences a little bit about Fly…",
+        "at": "00:25:23"
+      },
+      {
+        "title": "Deeply into all of this process, just help our listeners…",
+        "at": "00:29:34"
+      },
+      {
+        "title": "What is the expedition all about?",
+        "at": "00:34:19"
+      },
+      {
+        "title": "Market for Acro versus cross-country?",
+        "at": "00:39:40"
+      },
+      {
+        "title": "What is it all about?",
+        "at": "00:45:17"
+      },
+      {
+        "title": "Have more pluses than minuses or is it the other way around?",
+        "at": "00:49:52"
+      },
+      {
+        "title": "Courage to bring out complete transparency. But to sum up this…",
+        "at": "00:53:29"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Risk Vs Reward 5",
+        "url": "https://www.youtube.com/watch?v=DmyYSA6NeMw"
+      },
+      {
+        "label": "Alain Zoller: The Science of EN Certifications",
+        "url": "https://www.youtube.com/watch?v=CBxyezZ-UOw"
+      },
+      {
+        "label": "New Technologies 2",
+        "url": "https://www.youtube.com/watch?v=MxwM1lJEVIU"
+      }
+    ],
+    "tags": [
+      "New Technologies"
+    ]
+  },
+  {
+    "slug": "new-technologies-5-frantisek-pavlousek-2",
+    "title": "New Technologies 5 : Frantisek Pavlousek (UP Paragliders)",
+    "video_id": "vmnrTFbu6vg",
+    "series": "New Technologies",
+    "series_slug": "New%20Technologies",
+    "epno": "",
+    "guest": "Frantisek Pavlousek",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "93 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Frantisek Pavlousek"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Ziad Bassil",
+        "url": "https://www.youtube.com/watch?v=i-QoHo0ZaPU"
+      },
+      {
+        "label": "New Technologies 5",
+        "url": "https://www.youtube.com/watch?v=vmnrTFbu6vg"
+      }
+    ],
+    "tags": [
+      "New Technologies"
+    ]
+  },
+  {
+    "slug": "pal-takats-on-challenges-change-the-future-of-paragliding",
+    "title": "Pal Takats on Challenges, Change & The Future of Paragliding ",
+    "video_id": "FvIZpqydhyo",
+    "series": "Brand Stories",
+    "series_slug": "Brand%20Stories",
+    "epno": "",
+    "guest": "",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "68 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Guest"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Censor reality, even from the professional levels?",
+        "at": "00:00:34"
+      },
+      {
+        "title": "Community are going down this path where we are kind of reaching…",
+        "at": "00:04:23"
+      },
+      {
+        "title": "What are we chasing as a community?",
+        "at": "00:15:37"
+      },
+      {
+        "title": "Question to you is that this moment to say a sort of which Julian…",
+        "at": "00:19:47"
+      },
+      {
+        "title": "Says, hey, how do you feel right now?",
+        "at": "00:32:57"
+      },
+      {
+        "title": "Politics usually is involved where there's money involved, right?",
+        "at": "00:38:07"
+      },
+      {
+        "title": "Innovation of the change is going in one way. Is this deep down…",
+        "at": "00:41:44"
+      },
+      {
+        "title": "Everything, what is your message to people out there as friars and…",
+        "at": "00:53:25"
+      },
+      {
+        "title": "Tell our listeners a bit about that?",
+        "at": "01:04:57"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Insights From The Gaggle with Tilen Ceglar & Stan Radzikowski",
+        "url": "https://www.youtube.com/watch?v=jdiYdzJ9U5w"
+      },
+      {
+        "label": "What is #CIVLRESIGN with Julien Garcia",
+        "url": "https://www.youtube.com/watch?v=jSfQYxxbaWk"
+      },
+      {
+        "label": "PWCA: Goran Dimiskovski",
+        "url": "https://www.youtube.com/watch?v=l1gmplS02FI"
+      }
+    ],
+    "tags": [
+      "Brand Stories"
+    ]
+  },
+  {
+    "slug": "pre-pwc-kenya-nikolay-yotov",
+    "title": "Pre PWC Kenya: Nikolay Yotov",
+    "video_id": "UVLF8l0qFlA",
+    "series": "Navigators",
+    "series_slug": "Navigators",
+    "epno": "",
+    "guest": "Nikolay Yotov",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "52 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Nikolay Yotov"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Navigating Australia",
+        "url": "https://www.youtube.com/watch?v=xXSGK8oB4Oc"
+      },
+      {
+        "label": "Navigating Panchgani (Pre PWC India)",
+        "url": "https://www.youtube.com/watch?v=0VPg7TZ9hK0"
+      },
+      {
+        "label": "Navigating Colombia: Pal Takats",
+        "url": "https://www.youtube.com/watch?v=kOgDYSvfUuo"
+      }
+    ],
+    "tags": [
+      "Navigators"
+    ]
+  },
+  {
+    "slug": "pwc-lifestyle-klaudia-bulgakow",
+    "title": "PWC Lifestyle: Klaudia Bulgakow",
+    "video_id": "ZjSojM_Ao0U",
+    "series": "World Cups",
+    "series_slug": "World%20Cups",
+    "epno": "",
+    "guest": "Klaudia Bulgakow",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "72 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Klaudia Bulgakow"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Sky Gods",
+        "url": "https://www.youtube.com/watch?v=QmprO-5qkR8"
+      },
+      {
+        "label": "PWCA: Goran Dimiskovski",
+        "url": "https://www.youtube.com/watch?v=l1gmplS02FI"
+      }
+    ],
+    "tags": [
+      "World Cups"
+    ]
+  },
+  {
+    "slug": "pwca-goran-dimiskovski",
+    "title": "PWCA: Goran Dimiskovski",
+    "video_id": "l1gmplS02FI",
+    "series": "World Cups",
+    "series_slug": "World%20Cups",
+    "epno": "",
+    "guest": "Goran Dimiskovski",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "97 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Goran Dimiskovski"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Because we see that you are one of the longest serving presidents…",
+        "at": "00:05:11"
+      },
+      {
+        "title": "Performance focused rather than adding on to the glamour and all of…",
+        "at": "00:09:18"
+      },
+      {
+        "title": "Why did we, a lot of pilots who really wanted to push, felt like…",
+        "at": "00:13:53"
+      },
+      {
+        "title": "Or is it basically kind of heading as per where the money is…",
+        "at": "00:22:41"
+      },
+      {
+        "title": "Explain us what are the options to go out and chase racing?",
+        "at": "00:30:43"
+      },
+      {
+        "title": "Are all of these things and how do you understand what they are?",
+        "at": "00:38:34"
+      },
+      {
+        "title": "About category two, is there, the civil is still defining the…",
+        "at": "00:47:11"
+      },
+      {
+        "title": "Course you know takes away a little bit of fun but having a…",
+        "at": "01:00:22"
+      },
+      {
+        "title": "Guys that I am good enough to be a World Cup pilot?",
+        "at": "01:08:45"
+      },
+      {
+        "title": "Am I pushing the bar enough or like basically going out and putting…",
+        "at": "01:17:40"
+      },
+      {
+        "title": "Ever going to look at standardization of equipment to a point where…",
+        "at": "01:23:34"
+      },
+      {
+        "title": "What's next, what is the future of PWCA?",
+        "at": "01:33:32"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Insights From The Gaggle with Tilen Ceglar & Stan Radzikowski",
+        "url": "https://www.youtube.com/watch?v=jdiYdzJ9U5w"
+      },
+      {
+        "label": "Pal Takats on Challenges, Change & The Future of Paragliding ",
+        "url": "https://www.youtube.com/watch?v=FvIZpqydhyo"
+      },
+      {
+        "label": "What is #CIVLRESIGN with Julien Garcia",
+        "url": "https://www.youtube.com/watch?v=jSfQYxxbaWk"
+      }
+    ],
+    "tags": [
+      "World Cups"
+    ]
+  },
+  {
+    "slug": "risk-vs-reward-1-philipp-zellner",
+    "title": "Risk Vs Reward 1 : Philipp Zellner",
+    "video_id": "md9ls8OtBiA",
+    "series": "Risk vs Reward",
+    "series_slug": "Risk%20vs%20Reward",
+    "epno": "",
+    "guest": "Philipp Zellner",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "65 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Philipp Zellner"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "The Resilience Equation: Erlend Ukvitne’s Unrelenting Path to X-Alps a",
+        "url": "https://www.youtube.com/watch?v=rFC56EjtXCY"
+      },
+      {
+        "label": "Shane Tighe’s Road to X-Alps",
+        "url": "https://www.youtube.com/watch?v=cnizMhvNQrM"
+      },
+      {
+        "label": "Risk Vs Reward 2",
+        "url": "https://www.youtube.com/watch?v=J8visA4lxys"
+      }
+    ],
+    "tags": [
+      "Risk vs Reward"
+    ]
+  },
+  {
+    "slug": "risk-vs-reward-2-subir-sidhu",
+    "title": "Risk Vs Reward 2 : Subir Sidhu",
+    "video_id": "J8visA4lxys",
+    "series": "Risk vs Reward",
+    "series_slug": "Risk%20vs%20Reward",
+    "epno": "",
+    "guest": "Subir Sidhu",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "56 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Subir Sidhu"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Risk Vs Reward 1",
+        "url": "https://www.youtube.com/watch?v=md9ls8OtBiA"
+      },
+      {
+        "label": "PWC Lifestyle: Klaudia Bulgakow",
+        "url": "https://www.youtube.com/watch?v=ZjSojM_Ao0U"
+      },
+      {
+        "label": "New Technologies 1",
+        "url": "https://www.youtube.com/watch?v=aFO5Uk5BX9s"
+      }
+    ],
+    "tags": [
+      "Risk vs Reward"
+    ]
+  },
+  {
+    "slug": "risk-vs-reward-3-manfred-ruhmer",
+    "title": "Risk Vs Reward 3 : Manfred Ruhmer",
+    "video_id": "njoPDwe457w",
+    "series": "Risk vs Reward",
+    "series_slug": "Risk%20vs%20Reward",
+    "epno": "",
+    "guest": "Manfred Ruhmer",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "59 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Manfred Ruhmer"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "To see. And it's an absolute pleasure having you just before the…",
+        "at": "00:02:02"
+      },
+      {
+        "title": "Aspire to reach that stage can. But the first thing that comes to…",
+        "at": "00:05:34"
+      },
+      {
+        "title": "All kinds of dynamics going around in that era. How do you usually…",
+        "at": "00:10:41"
+      },
+      {
+        "title": "The aircraft, like what conditions can the aircraft fly in?",
+        "at": "00:17:56"
+      },
+      {
+        "title": "Mentally or physically when you're navigating high risk, high…",
+        "at": "00:26:05"
+      },
+      {
+        "title": "A bad advice giver or somebody who just likes to brag?",
+        "at": "00:34:32"
+      },
+      {
+        "title": "Flying and not about money or not about filling the nine to five…",
+        "at": "00:38:28"
+      },
+      {
+        "title": "Try and have their state of mind. Visualizing is absolutely not…",
+        "at": "00:48:01"
+      },
+      {
+        "title": "You who have seen the technology evolve since the beginning?",
+        "at": "00:52:45"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "​Ashutosh Chopra: Identifying Passion Vs Obsession: An Aviator’s Appro",
+        "url": "https://www.youtube.com/watch?v=jMVTzRFPWNw"
+      },
+      {
+        "label": "New Technologies 1",
+        "url": "https://www.youtube.com/watch?v=aFO5Uk5BX9s"
+      }
+    ],
+    "tags": [
+      "Risk vs Reward"
+    ]
+  },
+  {
+    "slug": "risk-vs-reward-4-raul-rodriguez",
+    "title": "Risk Vs Reward 4 : Raúl Rodríguez",
+    "video_id": "MFYb9KmT15s",
+    "series": "Risk vs Reward",
+    "series_slug": "Risk%20vs%20Reward",
+    "epno": "",
+    "guest": "Raúl Rodríguez",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "57 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Raúl Rodríguez"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Because even now I can keep a tumbling like a bit lateral three…",
+        "at": "00:12:14"
+      },
+      {
+        "title": "Goes on the lines, so maybe two rescues to have two opportunities.…",
+        "at": "00:21:26"
+      },
+      {
+        "title": "To try everything. Do you have any sort of mental preparation that…",
+        "at": "00:28:30"
+      },
+      {
+        "title": "Like... Is this the same one that you're talking about?",
+        "at": "00:33:59"
+      },
+      {
+        "title": "I'm saying, were you a very impatient child when you were young?",
+        "at": "00:38:01"
+      },
+      {
+        "title": "There are a lot of really beautiful combinations I need to try. Is…",
+        "at": "00:42:26"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Helmut Schrempf",
+        "url": "https://www.youtube.com/watch?v=wTfS5kv1t9M"
+      },
+      {
+        "label": "Risk Vs Reward 1",
+        "url": "https://www.youtube.com/watch?v=md9ls8OtBiA"
+      },
+      {
+        "label": "Sky Gods",
+        "url": "https://www.youtube.com/watch?v=QmprO-5qkR8"
+      }
+    ],
+    "tags": [
+      "Risk vs Reward"
+    ]
+  },
+  {
+    "slug": "risk-vs-reward-5-gabriel-orsini",
+    "title": "Risk Vs Reward 5 : Gabriel Orsini (partytillimpact)",
+    "video_id": "DmyYSA6NeMw",
+    "series": "Risk vs Reward",
+    "series_slug": "Risk%20vs%20Reward",
+    "epno": "",
+    "guest": "Gabriel Orsini",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "101 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Gabriel Orsini"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Your name of your creating handle, which is Party Deal Impact. What…",
+        "at": "00:02:22"
+      },
+      {
+        "title": "Curiosity stems from the fact that I think a couple of decades ago…",
+        "at": "00:06:54"
+      },
+      {
+        "title": "That in any reserve deployment scenarios?",
+        "at": "00:12:15"
+      },
+      {
+        "title": "Included in our SIV training so that a person at least has a feel…",
+        "at": "00:18:16"
+      },
+      {
+        "title": "Is that what you're saying?",
+        "at": "00:22:31"
+      },
+      {
+        "title": "Freshwater, but are taking the precautions and packing it well and…",
+        "at": "00:28:01"
+      },
+      {
+        "title": "Innovation from the position of shoulder straps. So this attachment…",
+        "at": "00:31:57"
+      },
+      {
+        "title": "Experimenting. So is this somewhere where it's the more fragile I…",
+        "at": "00:43:07"
+      },
+      {
+        "title": "Think people should look for something like that as well while…",
+        "at": "00:49:09"
+      },
+      {
+        "title": "Find the courage to question that, hey, how much do you love what…",
+        "at": "00:55:21"
+      },
+      {
+        "title": "We can make in time to come. But for now, enlighten us, Gabe. How…",
+        "at": "01:00:03"
+      },
+      {
+        "title": "Kind of Ethics of business, you can say. So has there been some…",
+        "at": "01:15:22"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Urs Haari: The Real Truth About Reserve Parachutes",
+        "url": "https://www.youtube.com/watch?v=EttlenmzWHM"
+      },
+      {
+        "label": "Storytellers",
+        "url": "https://www.youtube.com/watch?v=T1pR130Umkk"
+      },
+      {
+        "label": "New Technologies 4",
+        "url": "https://www.youtube.com/watch?v=zEnjmp9hrlE"
+      }
+    ],
+    "tags": [
+      "Risk vs Reward"
+    ]
+  },
+  {
+    "slug": "sandrine-roy-vol-biv-freedom-unfiltered-a-human-powered",
+    "title": "Sandrine Roy : Vol Biv & Freedom Unfiltered : A Human-Powered Odyssey By Paragliding, Biking & Sa...",
+    "video_id": "qZRa_Ozz0Hg",
+    "series": "Living the Dream",
+    "series_slug": "Living%20the%20Dream",
+    "epno": "",
+    "guest": "",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "43 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Guest"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Once you are flying, the volcano El Fuego is erupting. You mean you…",
+        "at": "00:12:16"
+      },
+      {
+        "title": "Everything fits in one cycling bag of 24 liters. Shoes included…",
+        "at": "00:16:38"
+      },
+      {
+        "title": "Quarry slope for volcanic rocks. You know, it's rice fields. I see.…",
+        "at": "00:20:55"
+      },
+      {
+        "title": "Hiking. How do you call that?",
+        "at": "00:31:10"
+      },
+      {
+        "title": "Nice to have a home. In a long time, no home. Yeah. But maybe a…",
+        "at": "00:37:12"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Shane Tighe’s Road to X-Alps",
+        "url": "https://www.youtube.com/watch?v=cnizMhvNQrM"
+      },
+      {
+        "label": "Risk Vs Reward 1",
+        "url": "https://www.youtube.com/watch?v=md9ls8OtBiA"
+      },
+      {
+        "label": "Sky Gods",
+        "url": "https://www.youtube.com/watch?v=Q2oTFoQcrGw"
+      }
+    ],
+    "tags": [
+      "Living the Dream"
+    ]
+  },
+  {
+    "slug": "shane-tighes-road-to-x-alps-engineering-conquests-in-the",
+    "title": "Shane Tighe’s Road to X-Alps : Engineering Conquests In The Sky from Australia’s Flatlands to the...",
+    "video_id": "cnizMhvNQrM",
+    "series": "World Cups",
+    "series_slug": "World%20Cups",
+    "epno": "",
+    "guest": "",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "53 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Guest"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Not to have an expectation. They say in paragliding, you need a…",
+        "at": "00:00:13"
+      },
+      {
+        "title": "Which is you go land at the pub so you can get a beer. And it's…",
+        "at": "00:16:34"
+      },
+      {
+        "title": "Pressure, I don't enjoy it as much. Okay, let me reframe my…",
+        "at": "00:30:24"
+      },
+      {
+        "title": "Helps in this sport. Shane, as a supporter versus competitor…",
+        "at": "00:34:32"
+      },
+      {
+        "title": "Discipline And there's a lot of media coverage and attention that…",
+        "at": "00:41:21"
+      },
+      {
+        "title": "Seemed close, but it was still a four-hour flight. What are you…",
+        "at": "00:48:47"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "The Resilience Equation: Erlend Ukvitne’s Unrelenting Path to X-Alps a",
+        "url": "https://www.youtube.com/watch?v=rFC56EjtXCY"
+      },
+      {
+        "label": "Navigating Australia",
+        "url": "https://www.youtube.com/watch?v=xXSGK8oB4Oc"
+      }
+    ],
+    "tags": [
+      "World Cups"
+    ]
+  },
+  {
+    "slug": "sky-gods-flying-8000ers-antoine-girard",
+    "title": "Sky Gods : Flying 8000ers : Antoine Girard",
+    "video_id": "Q2oTFoQcrGw",
+    "series": "Sky Gods",
+    "series_slug": "Sky%20Gods",
+    "epno": "",
+    "guest": "Antoine Girard",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "67 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Antoine Girard"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Great. So shall we begin?",
+        "at": "00:04:40"
+      },
+      {
+        "title": "If yes, can you help our listeners get a little bit of a…",
+        "at": "00:08:54"
+      },
+      {
+        "title": "Like, what's the reason behind going solo and not finding a team?",
+        "at": "00:12:45"
+      },
+      {
+        "title": "Been to 5,000 meters in Ethiopia. Where did that come from?",
+        "at": "00:17:10"
+      },
+      {
+        "title": "This is my location, this is what I'm going to do, is there a…",
+        "at": "00:21:13"
+      },
+      {
+        "title": "Like how do you acclimatize yourself?",
+        "at": "00:24:59"
+      },
+      {
+        "title": "Basically, where does the air start feeling different?",
+        "at": "00:29:37"
+      },
+      {
+        "title": "Do they go all the way or does it become hard after a while?",
+        "at": "00:34:53"
+      },
+      {
+        "title": "Like that... That seems scary. Can equipment failure happen when it…",
+        "at": "00:38:45"
+      },
+      {
+        "title": "Basically collapsing and still getting sucked by the cloud?",
+        "at": "00:43:19"
+      },
+      {
+        "title": "Somebody who is interested in joining this, what kind of background…",
+        "at": "00:47:40"
+      },
+      {
+        "title": "In Pakistan. Because I think currently Aaron is the one who's…",
+        "at": "00:52:43"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Flying & Filming 3",
+        "url": "https://www.youtube.com/watch?v=yUsfGCfI_30"
+      },
+      {
+        "label": "Sandrine Roy",
+        "url": "https://www.youtube.com/watch?v=qZRa_Ozz0Hg"
+      }
+    ],
+    "tags": [
+      "Sky Gods"
+    ]
+  },
+  {
+    "slug": "sky-gods-flying-to-win-honorin-hamard",
+    "title": "Sky Gods : Flying to Win : Honorin Hamard",
+    "video_id": "QmprO-5qkR8",
+    "series": "Sky Gods",
+    "series_slug": "Sky%20Gods",
+    "epno": "",
+    "guest": "Honorin Hamard",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "108 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Honorin Hamard"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "PWC Lifestyle: Klaudia Bulgakow",
+        "url": "https://www.youtube.com/watch?v=ZjSojM_Ao0U"
+      }
+    ],
+    "tags": [
+      "Sky Gods"
+    ]
+  },
+  {
+    "slug": "storytellers-marko-milutinovic",
+    "title": "Storytellers : Marko Milutinovic (Mid-Air Collision)",
+    "video_id": "T1pR130Umkk",
+    "series": "Storytellers",
+    "series_slug": "Storytellers",
+    "epno": "",
+    "guest": "Marko Milutinovic",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "56 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Marko Milutinovic"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Choice. No, you're happy. You're happy after a couple hours, right?",
+        "at": "00:52:24"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Urs Haari: The Real Truth About Reserve Parachutes",
+        "url": "https://www.youtube.com/watch?v=EttlenmzWHM"
+      },
+      {
+        "label": "Risk Vs Reward 5",
+        "url": "https://www.youtube.com/watch?v=DmyYSA6NeMw"
+      },
+      {
+        "label": "Sky Gods",
+        "url": "https://www.youtube.com/watch?v=QmprO-5qkR8"
+      }
+    ],
+    "tags": [
+      "Storytellers"
+    ]
+  },
+  {
+    "slug": "the-resilience-equation-erlend-ukvitnes-unrelenting-path",
+    "title": "The Resilience Equation: Erlend Ukvitne’s Unrelenting Path to X-Alps and the Brink of a World Record",
+    "video_id": "rFC56EjtXCY",
+    "series": "World Cups",
+    "series_slug": "World%20Cups",
+    "epno": "",
+    "guest": "",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "40 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Guest"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Like this, I guess. Definitely. I think it shows on your face. But…",
+        "at": "00:02:32"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Shane Tighe’s Road to X-Alps",
+        "url": "https://www.youtube.com/watch?v=cnizMhvNQrM"
+      }
+    ],
+    "tags": [
+      "World Cups"
+    ]
+  },
+  {
+    "slug": "understanding-skymate-paragliding-worlds-first-ai-driven",
+    "title": "Understanding Skymate: Paragliding Worlds First AI Driven Smart Harness System with Roman Barthelemy",
+    "video_id": "S2wiY4DO_TU",
+    "series": "New Technologies",
+    "series_slug": "New%20Technologies",
+    "epno": "",
+    "guest": "",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "72 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Guest"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "How is the accuracy of these things right now in your simulations…",
+        "at": "00:00:28"
+      },
+      {
+        "title": "Roman Barthelmy. Is that how I say your name, man?",
+        "at": "00:04:13"
+      },
+      {
+        "title": "What does a person have to do when they have to start designing…",
+        "at": "00:08:01"
+      },
+      {
+        "title": "Increase your knowledge for internal structure, how do you start…",
+        "at": "00:12:19"
+      },
+      {
+        "title": "There such a big difference in people investing in the R&D?",
+        "at": "00:17:15"
+      },
+      {
+        "title": "Because of course, the fins are going to disturb that, right?",
+        "at": "00:23:57"
+      },
+      {
+        "title": "The technologies now in our flying wings. There is RAST from Swing…",
+        "at": "00:28:16"
+      },
+      {
+        "title": "Like the AADs in skydiving, you know, the automated activation…",
+        "at": "00:33:31"
+      },
+      {
+        "title": "Years. Five years. Holy freaking moly. When did ChatGPT come out?",
+        "at": "00:37:04"
+      },
+      {
+        "title": "Know, we can limit them and there is various safeguards around it.…",
+        "at": "00:41:44"
+      },
+      {
+        "title": "Phone or something. Do you guys have a number?",
+        "at": "00:46:29"
+      },
+      {
+        "title": "Ready to be in the deployment mode if needed?",
+        "at": "00:52:02"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "New Technologies 4",
+        "url": "https://www.youtube.com/watch?v=zEnjmp9hrlE"
+      },
+      {
+        "label": "New Technologies 2",
+        "url": "https://www.youtube.com/watch?v=MxwM1lJEVIU"
+      },
+      {
+        "label": "Aljaž Valič",
+        "url": "https://www.youtube.com/watch?v=78PaTvxRWJ0"
+      }
+    ],
+    "tags": [
+      "New Technologies"
+    ]
+  },
+  {
+    "slug": "urs-haari-the-real-truth-about-reserve-parachutes-a",
+    "title": "Urs Haari: The Real Truth About Reserve Parachutes : A Paragliding Survival Guide",
+    "video_id": "EttlenmzWHM",
+    "series": "Know Your Equipment",
+    "series_slug": "Know%20Your%20Equipment",
+    "epno": "",
+    "guest": "",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "166 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Guest"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "I can do to get out of this situation?",
+        "at": "00:15:12"
+      },
+      {
+        "title": "All the time new things you fly to the wrong place and when you…",
+        "at": "00:18:47"
+      },
+      {
+        "title": "Safety, reserve parachutes. Is Beemer that you offer any different…",
+        "at": "00:25:40"
+      },
+      {
+        "title": "Unconscious. That is important. This brings me to a point, Urs.…",
+        "at": "00:33:43"
+      },
+      {
+        "title": "Skydive on the base. We were in front of the plane and the guys…",
+        "at": "00:38:55"
+      },
+      {
+        "title": "It, it was windy like hell. It was thermic. And how was your…",
+        "at": "00:46:17"
+      },
+      {
+        "title": "Endurance to chance, train this, even more game changer. Why did…",
+        "at": "00:52:46"
+      },
+      {
+        "title": "Dive and didn't activate his base system. I asked him, Daniel, why?",
+        "at": "01:00:00"
+      },
+      {
+        "title": "Square, round, triangle, I'm talking about unsteerable, they glide…",
+        "at": "01:08:39"
+      },
+      {
+        "title": "Was 50 kilometers an hour under the reserve parachute. What the…",
+        "at": "01:12:46"
+      },
+      {
+        "title": "Meters per second sink rate as a maximum. So maybe this was tested…",
+        "at": "01:31:27"
+      },
+      {
+        "title": "To come into the game and tell us we need certain rules to make the…",
+        "at": "01:42:20"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Storytellers",
+        "url": "https://www.youtube.com/watch?v=T1pR130Umkk"
+      },
+      {
+        "label": "Risk Vs Reward 5",
+        "url": "https://www.youtube.com/watch?v=DmyYSA6NeMw"
+      },
+      {
+        "label": "Alain Zoller: The Science of EN Certifications",
+        "url": "https://www.youtube.com/watch?v=CBxyezZ-UOw"
+      }
+    ],
+    "tags": [
+      "Know Your Equipment"
+    ]
+  },
+  {
+    "slug": "why-paraglidings-safety-future-looks-different-rast",
+    "title": "Why Paragliding’s Safety Future Looks Different: RAST Inventor Michael Nesler & the LeelooX Effect",
+    "video_id": "YGU7-ctBYYE",
+    "series": "New Technologies",
+    "series_slug": "New%20Technologies",
+    "epno": "",
+    "guest": "",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "78 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "Guest"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Number of lines. But especially the line resistance, it's not the…",
+        "at": "00:03:03"
+      },
+      {
+        "title": "Two-liner with double B attachment points on top. Is this the…",
+        "at": "00:06:39"
+      },
+      {
+        "title": "Handling also was better. How can I bring it in the B- class?",
+        "at": "00:15:08"
+      },
+      {
+        "title": "Bending of the profile. Did you understand this?",
+        "at": "00:19:16"
+      },
+      {
+        "title": "Yeah, of course. I made the first. I designed it also. Are you…",
+        "at": "00:25:14"
+      },
+      {
+        "title": "Course. And the C-wing now, it's two-liners. But we have to check…",
+        "at": "00:36:10"
+      },
+      {
+        "title": "Made wings for other companies, you can pass with this wing, but I…",
+        "at": "00:40:43"
+      },
+      {
+        "title": "Areas. How does the stall point look like comparatively?",
+        "at": "00:44:38"
+      },
+      {
+        "title": "Difficult. I mean, it's just about simulating, right?",
+        "at": "00:50:20"
+      },
+      {
+        "title": "To ask him, do you have the skills for flying this wing?",
+        "at": "00:53:57"
+      },
+      {
+        "title": "Say, I'm scared about the altitude, the first question is, do you…",
+        "at": "01:00:28"
+      },
+      {
+        "title": "Technical one. They begin to insert it in the structure process…",
+        "at": "01:05:12"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "Aljaž Valič",
+        "url": "https://www.youtube.com/watch?v=78PaTvxRWJ0"
+      },
+      {
+        "label": "Helmut Schrempf",
+        "url": "https://www.youtube.com/watch?v=wTfS5kv1t9M"
+      },
+      {
+        "label": "New Technologies 2",
+        "url": "https://www.youtube.com/watch?v=MxwM1lJEVIU"
+      }
+    ],
+    "tags": [
+      "New Technologies"
+    ]
+  },
+  {
+    "slug": "ziad-bassil-finest-paragliding-reviews-superpower-of",
+    "title": "Ziad Bassil : Finest Paragliding Reviews & Superpower of Changing Wings as A Human",
+    "video_id": "i-QoHo0ZaPU",
+    "series": "Resources, Tools and Tips",
+    "series_slug": "Resources%2C%20Tools%20and%20Tips",
+    "epno": "",
+    "guest": "My",
+    "guest_role": "",
+    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "published": "",
+    "published_label": "",
+    "duration_label": "51 min",
+    "speakers": {
+      "0": "Aninder",
+      "1": "My"
+    },
+    "summary": "",
+    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "chapters": [
+      {
+        "title": "Introduction",
+        "at": "00:00:00"
+      },
+      {
+        "title": "Your views, has it happened that some manufacturers are not happy…",
+        "at": "00:00:52"
+      },
+      {
+        "title": "What are the possibilities that your country offers for exploring…",
+        "at": "00:04:36"
+      },
+      {
+        "title": "You eventually start testing them?",
+        "at": "00:12:21"
+      },
+      {
+        "title": "700 kilograms, if I'm not wrong?",
+        "at": "00:16:22"
+      },
+      {
+        "title": "Have you seen any specific trend while reviewing the two- liner…",
+        "at": "00:20:14"
+      },
+      {
+        "title": "Seeing which are having the market focus a bit more on one class…",
+        "at": "00:26:00"
+      },
+      {
+        "title": "What is the most fun wing that you've ever flown until today?",
+        "at": "00:31:25"
+      },
+      {
+        "title": "Reflex in Diva. Does that help with trimming or less of trimming…",
+        "at": "00:35:58"
+      },
+      {
+        "title": "Oh my God, I stopped counting just because, I don't know, a lot. A…",
+        "at": "00:42:16"
+      },
+      {
+        "title": "Views, has it happened that some manufacturers are not happy and…",
+        "at": "00:46:13"
+      }
+    ],
+    "guest_links": [],
+    "resources": [],
+    "related": [
+      {
+        "label": "New Technologies 5",
+        "url": "https://www.youtube.com/watch?v=vmnrTFbu6vg"
+      },
+      {
+        "label": "New Technologies 5",
+        "url": "https://www.youtube.com/watch?v=vmnrTFbu6vg"
+      },
+      {
+        "label": "Aljaž Valič",
+        "url": "https://www.youtube.com/watch?v=78PaTvxRWJ0"
+      }
+    ],
+    "tags": [
+      "Resources, Tools and Tips"
     ]
   }
 ]

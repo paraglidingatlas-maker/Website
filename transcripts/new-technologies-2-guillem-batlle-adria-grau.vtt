@@ -1,0 +1,1621 @@
+WEBVTT
+
+00:03.067 --> 00:07.529
+[SPEAKER_00]: [Automatic captions by Autotekst using OpenAI Whisper V3. May contain recognition errors.] Alright everyone, welcome back to the second installment of New Technologies.
+
+00:08.290 --> 00:15.333
+[SPEAKER_00]: Apologies, this one took a little bit longer than expected, I mean way too longer than expected and mostly, you know, it's springtime,
+
+00:15.494 --> 00:23.978
+[SPEAKER_00]: everyone is out there flying and so have I been trying to chase as much airtime as I can and it's a little bit difficult with finding the dates
+
+00:24.018 --> 00:31.402
+[SPEAKER_00]: and finding the guests for the show and everything. But regardless, all this waiting has not been in vain. That means we have collected a lot of
+
+00:31.442 --> 00:40.567
+[SPEAKER_00]: material and we have been working behind the scenes as hard as ever. So regardless to say, a lot of value will come your way in coming days. So
+
+00:40.587 --> 00:48.391
+[SPEAKER_00]: stay tuned, stay excited, as I always say. And this time around, we have two of the most leading and most qualified designers in our sport of
+
+00:48.451 --> 00:58.597
+[SPEAKER_00]: paragliding from one of the most established brand in the sport called Neviuk. So we have Adria Grau and Guilhem Butler. I hope I'm not saying
+
+00:58.617 --> 01:07.523
+[SPEAKER_00]: their names wrong. But anyways, Guilhem is an aerospace engineer. He's looking behind the New York R&D department and Adria is a mechanical
+
+01:07.563 --> 01:16.268
+[SPEAKER_00]: engineer. So both of them have come on board to talk and let us know what really goes on behind the scenes in designing a product, in coming out
+
+01:16.308 --> 01:24.014
+[SPEAKER_00]: with a new technology and eventually making it accessible to the consumers. so without further ado i think this is one of the most
+
+01:24.074 --> 01:32.863
+[SPEAKER_00]: knowledgeable episodes we have had so far loads of technicalities have been discussed and their prized product which they came out with the
+
+01:33.003 --> 01:41.652
+[SPEAKER_00]: orikami back protector has been explained very well by both of them so dive right in enjoy the show and stay tuned for the new ones coming in
+
+01:47.987 --> 01:54.653
+[SPEAKER_00]: Hello guys, welcome to Paragliding Atlas. Thank you so much for doing this. Super nice to see you guys. A little bit of an introduction and then
+
+01:54.693 --> 02:03.281
+[SPEAKER_00]: let's get this going. Yeah, thanks a lot for inviting us in the podcast. And yeah, we are happy to talk with you about the new things that are
+
+02:03.741 --> 02:13.369
+[SPEAKER_02]: interesting to people in the industry. A big presentation of us. I'm Adria. I'm part of the R&D and I also take part in Production Connection.
+
+02:14.410 --> 02:23.694
+[SPEAKER_02]: And then in the office here, we give technical support to the different departments like marketing, commercial, workshop and service. So we
+
+02:23.755 --> 02:32.999
+[SPEAKER_02]: are a bit experienced in we use the products. Some people in the other departments don't have the so much use of the products in real life. So we
+
+02:33.039 --> 02:42.564
+[SPEAKER_02]: fly and we can give this perspective to the other departments that sometimes it's helpful. And I do this kind of things every day. And I'm
+
+02:42.884 --> 02:51.293
+[SPEAKER_01]: Guillem and I'm aerospace engineer also contributing to NIBIUX research and development team. And my main task is to analyze new
+
+02:51.473 --> 02:58.761
+[SPEAKER_01]: possible technologies to apply to the new developments and to discover if those solutions are feasible from the point of view of simulations
+
+02:58.801 --> 03:07.148
+[SPEAKER_01]: and also from empirical testing. So that's my main goal here in NIBIUX. You know, I feel like I've stuck on a gold mine, like just the amount of
+
+03:07.168 --> 03:14.635
+[SPEAKER_00]: knowledge that both of you guys have, like an aerospace engineer. And on the other hand, you, Adria, a mechanical engineer, like, wow, what else
+
+03:14.755 --> 03:22.558
+[SPEAKER_00]: does a podcast host need to know when we touch upon the topic of new technologies? So super thankful, you know, lots of questions coming to
+
+03:22.578 --> 03:32.004
+[SPEAKER_00]: my mind. But to start with, how does, because I was looking at your LinkedIn profile, Gulliam, I mean, please tell me how to pronounce your
+
+03:32.044 --> 03:40.191
+[SPEAKER_00]: name correctly. Is that Gulliam? It's in Catalan, it's Gulliam. But it's the same man in English as William. So no problem if you can call me
+
+03:40.231 --> 03:49.021
+[SPEAKER_01]: William. No, I'll try and stick to it. But I apologize in advance if I mess it up because my name is a bit tricky and people butcher it often. But
+
+03:49.401 --> 03:58.130
+[SPEAKER_00]: fingers crossed. Anyways, Gideon, I'll start with you. I was just going through your LinkedIn profile and you said it says that you have... been
+
+03:58.190 --> 04:09.780
+[SPEAKER_00]: studying aerodynamic and aeroelastic performance of wide- body commercial aircraft. That sounds super fancy, but how did a humble
+
+04:09.840 --> 04:16.325
+[SPEAKER_00]: collapsible wing of a paraglider come into your life from a wide-body commercial aircraft with all those fancy terms which I've never really
+
+04:16.365 --> 04:24.001
+[SPEAKER_00]: heard while just gliding a few meters or a few thousand meters above the ground? Yeah, so of course it's different taking into account a wide
+
+04:24.021 --> 04:30.368
+[SPEAKER_01]: body commercial aircraft or comparing to a paraglider in terms of materials, in terms of weight and in terms of also the application,
+
+04:30.388 --> 04:39.610
+[SPEAKER_01]: because one is for pleasure and fun and the other one is for commercial issues. But of course, when it turns out to look for the physics behind
+
+04:39.670 --> 04:48.015
+[SPEAKER_01]: and also the aerodynamics and the elastics, which is the structural part, it's similar. So the theory is the same, I would say, but the
+
+04:48.075 --> 04:56.599
+[SPEAKER_01]: applicability is different. So of course, there's a relation in between researching a wing or researching a paraglider, how it
+
+04:56.619 --> 05:05.872
+[SPEAKER_01]: deforms, how it's adapted during the flight. And the theory behind is the same for both applications. Sounds exciting. I mean, the fun behind
+
+05:06.152 --> 05:13.316
+[SPEAKER_00]: an aerofoil is regardless the same for humans, you know, we get the art of flight. So I can imagine it must be super interesting, yet very
+
+05:13.376 --> 05:22.442
+[SPEAKER_00]: different. But Gulliam, if I have to touch upon you a little bit, you said you kind of, you know, navigate the whole R&D between your multiple
+
+05:22.482 --> 05:33.166
+[SPEAKER_00]: countries in Vietnam and in Spain and in Switzerland. Like, When I go to Neviuc's website, I see such a massive team. I don't think there's any
+
+05:33.326 --> 05:41.288
+[SPEAKER_00]: other brand out there, and I don't mind taking names as well. No other brand, first of all, is so transparent with the amount of team they have.
+
+05:41.828 --> 05:51.291
+[SPEAKER_00]: And secondly, I don't think any other brand invests so many resources in bringing in such big knowledge and big brains into this. So if you can
+
+05:51.311 --> 06:00.065
+[SPEAKER_00]: just help us, you know, get an idea, like what does a typical day of R&D or kind of, you know, what does behind the scene looks like at Nemuc office?
+
+06:00.626 --> 06:06.967
+[SPEAKER_01]: Okay, so like talking about the team, of course, you've seen it throughout our website. We are eight people that are exclusively
+
+06:07.007 --> 06:17.429
+[SPEAKER_01]: dedicated to R&D. And that comes from the philosophy of Nivio. So we are not just a brand. We are a commitment to innovation. So being innovation
+
+06:17.469 --> 06:23.590
+[SPEAKER_01]: our main philosophy, that's why we're eight people that are exclusively dedicated on that and developing new products and also
+
+06:23.610 --> 06:33.493
+[SPEAKER_01]: researching the theory behind the development of these new products. And on a conventional working day, of course, it's different for all the
+
+06:33.593 --> 06:41.337
+[SPEAKER_01]: team members because all of them and also myself have different skills and different backgrounds. So, for instance, we have pilots that
+
+06:41.497 --> 06:50.502
+[SPEAKER_01]: provide us with a really good feedback in terms of the wings that they fly also the harnesses and they develop this stuff and the engineers
+
+06:50.582 --> 06:59.148
+[SPEAKER_01]: provide the mathematical view of an engineering view of the the product so there's an explanation for the wing to behave like that so we tend to
+
+06:59.248 --> 07:09.555
+[SPEAKER_01]: correlate or try to correlate the feedback from the pilots to the numerical or the experiment the results that we that we have So for me,
+
+07:09.615 --> 07:19.259
+[SPEAKER_01]: for instance, a conventional day is taking a model and analyzing it throughout CFD, so preparing the model, then meshing it, analyzing if
+
+07:19.299 --> 07:27.143
+[SPEAKER_01]: the mesh is correct enough for the results or not, and also playing some kind of hypothesis in order to decrease the computational cost of the
+
+07:27.263 --> 07:35.928
+[SPEAKER_01]: simulations. So afterwards I do the simulations and I analyze the results and share all the results with the team to again find the
+
+07:36.248 --> 07:43.973
+[SPEAKER_01]: relation between the feedback from the pilots and also from Olivier, who is the chief designer, and the results that we get from the
+
+07:44.054 --> 07:53.440
+[SPEAKER_01]: simulations or from the wind tunnel testing campaigns that we do. Wow, that sounds like a lot of work, to be honest. I mean, you know, as an
+
+07:53.500 --> 08:02.783
+[SPEAKER_00]: outsider, I mean, as someone who's not involved in behind the scenes, I thought anybody who's wearing a Neviac t-shirt is basically going out
+
+08:02.963 --> 08:09.586
+[SPEAKER_00]: to have fun all the time and is living the dream. But I see there's a lot of numbers and there's a lot of work which goes on behind the scenes as well.
+
+08:09.726 --> 08:17.767
+[SPEAKER_00]: Adria, I want to quickly bring you in the show. To complement a little bit, just to see that the topic thing that people have in mind that
+
+08:18.108 --> 08:27.817
+[SPEAKER_02]: paragliders are easy to design or it's a simple thing, but actually when you go to the background and all the things that come together to to bring
+
+08:27.857 --> 08:38.349
+[SPEAKER_02]: this this product in the air it's quite complex if you study everything material structure aerodynamics inertias so that's why we have so a big
+
+08:38.369 --> 08:47.198
+[SPEAKER_02]: team and everyone is specialized in in some parts because we complement each other and then we can take out the the best things of all the the areas
+
+08:48.194 --> 08:55.283
+[SPEAKER_00]: No, I can totally agree. And there's a reason why you guys are the market leaders, probably because of all of these R&D. But Adria, just to bring
+
+08:55.363 --> 09:05.574
+[SPEAKER_00]: up, my last question was actually directed to you, but I messed up your names. So I just wanted to get an idea, what is the kind of... between
+
+09:05.614 --> 09:11.917
+[SPEAKER_00]: these multiple offices, because I see Nivea just does not operate out of the headquarters in Spain. You guys have a dedicated production
+
+09:11.957 --> 09:20.299
+[SPEAKER_00]: facility and then you have a dedicated R&D thing. So when it comes to navigating the coordination between these multiple teams, if you can
+
+09:20.360 --> 09:26.682
+[SPEAKER_00]: just briefly touch upon that, what is behind the scenes working, if you're comfortable, if you're not letting out any secrets. It's
+
+09:26.762 --> 09:34.926
+[SPEAKER_02]: usually no problem. We are happy to explain all the... the complex thing that we have and to achieve this kind of product that we make. It's
+
+09:34.966 --> 09:43.819
+[SPEAKER_02]: because of this to make a good work of all the things together. So in terms of development, we have four people in Switzerland, as we already know.
+
+09:45.067 --> 09:53.313
+[SPEAKER_02]: Some part is there. And then we have four people here in Spain in the office, in the headquarters. These teams are basically on the line of
+
+09:53.353 --> 10:02.701
+[SPEAKER_02]: development and research. One part is more for the physical testing and flying the wings and the products in Switzerland is where we make it. And
+
+10:02.761 --> 10:11.268
+[SPEAKER_02]: here in Spain, the part of the team of R&D, it's more for, as Guillaume said, for the simulation and studies and research of new lines and
+
+10:11.308 --> 10:22.785
+[SPEAKER_02]: tendencies. This is in terms of the development team. For sure, we are every day on contact. We have the projects online and we have to advance
+
+10:22.825 --> 10:32.110
+[SPEAKER_02]: in the same line. So we have direct contact usually and we go in the same direction. And then for the other departments here in the office in
+
+10:32.811 --> 10:40.795
+[SPEAKER_02]: Spain, it's where we have all the marketing, the commercial, the logistics. So all the other departments that you can imagine that
+
+10:40.875 --> 10:52.143
+[SPEAKER_02]: conforms a company are here in Spain. and then as you said the production we have it in vietnam it's our own factory facilities so we we control
+
+10:52.303 --> 11:00.389
+[SPEAKER_02]: this is the good point also an important point to have these products that you that you see it's the relation with the factory and the everyday
+
+11:00.429 --> 11:09.676
+[SPEAKER_02]: that it's part of my my everyday work it's the contact with them so that we design following their necessities and also they produce for
+
+11:09.796 --> 11:22.501
+[SPEAKER_02]: following what we really need and this is a daily work that we need to make to make it in the line of products and the position that we design and
+
+11:22.521 --> 11:32.223
+[SPEAKER_02]: produce. And connecting all these parts, it's the tricky thing that we manage every day, but it's working. 100% you know and I have to give it to
+
+11:32.283 --> 11:39.107
+[SPEAKER_00]: you guys you guys are doing something amazingly right and bringing out such awesome products to the market day after day and time after time but
+
+11:39.187 --> 11:49.333
+[SPEAKER_00]: you know guys I have to ask you something paragliding as as a sport is kind of is it growing from a manufacturer's perspective do you see it growing
+
+11:49.373 --> 11:58.192
+[SPEAKER_00]: do you see more people kind of getting into the sport or what's your take on that one? Well, it was in Italy. It was growing up. We had the boom in
+
+11:58.252 --> 12:08.896
+[SPEAKER_02]: the, in the COVID sessions. So yeah, well, it happened the same for all the outdoors sports around running a bicycle. We have a boom on this. And
+
+12:08.956 --> 12:19.401
+[SPEAKER_02]: the question was if it would be stable or going up like this after the COVID or it would be more stable at like we are used to it. The reality is
+
+12:19.441 --> 12:29.630
+[SPEAKER_02]: that we had one step up. So after this point, it was For sure, new people getting to be in sport and it was maintaining the sport. I mean, it's not,
+
+12:29.710 --> 12:37.913
+[SPEAKER_02]: was not just for one year that they tested. And it's what we feel now that we are increasing production. We are increasing the number of products
+
+12:38.013 --> 12:46.417
+[SPEAKER_02]: and increasing the team here in the, in the office. So yeah, everything is going up in our case, for example, it's, it's in this tendency for
+
+12:46.457 --> 12:54.463
+[SPEAKER_02]: sure. So nice to hear that. And I think all of us can agree that art of flight is pretty addictive once you give it a shot. It's so hard to give it
+
+12:54.523 --> 13:02.989
+[SPEAKER_00]: out. But the reason, the curiosity behind asking this question is, often we see new brands coming up, these one-man armies, designers
+
+13:03.089 --> 13:09.974
+[SPEAKER_00]: breaking away and saying that, hey, I've had enough of this. I'm going to go out there with my own ideology, put in my money and resources, get the
+
+13:10.014 --> 13:18.242
+[SPEAKER_00]: funding. And they bring out their own brands as a single person brand kind of a thing. They're There's a minimum order quantity, which you go
+
+13:18.282 --> 13:25.696
+[SPEAKER_00]: to the factory and it's like, hey, this much money, this is the design, go make it. And we put a bit of a marketing team on the website, and then
+
+13:25.736 --> 13:34.143
+[SPEAKER_00]: you're out there selling a product to the consumers. It baffles my mind when I go out there as a buyer. Let's say, currently, I'm trying to
+
+13:34.243 --> 13:44.251
+[SPEAKER_00]: upgrade from a high B to a two-liner C, or the C-class. And when I go out there, the websites, every single brand says, trust mine. Every single
+
+13:44.291 --> 13:53.299
+[SPEAKER_00]: brand says that I have put in so much energy and effort. But obviously, when a brand like yours, who is holistically doing this very
+
+13:53.359 --> 14:03.102
+[SPEAKER_00]: professionally... It's bringing in so much value. How do a consumer differentiate between a brand with a big team versus a brand with a
+
+14:03.202 --> 14:13.385
+[SPEAKER_00]: one-man army? How do we make a decision that which one should be trusted more? Because websites can be made by just a really good designer. A web
+
+14:13.405 --> 14:19.128
+[SPEAKER_00]: designer, you know. So if you can touch upon that, I'll be super thankful. And I understand this is a bit of a gray area question, you
+
+14:19.148 --> 14:26.311
+[SPEAKER_00]: know, but I mean, if you guys as one of the industry leaders can bring in your perspective, I'll be super thankful because I think audiences
+
+14:26.371 --> 14:36.652
+[SPEAKER_00]: want to know that. Sure. Actually, yeah, there are many brands, as you said, that are a bit smaller that they start They could do a lot of
+
+14:37.012 --> 14:45.517
+[SPEAKER_02]: marketing and it would be very nice in website, but actually the difference, you need to see it on the product. If you put all the
+
+14:45.717 --> 14:56.302
+[SPEAKER_02]: investment that we put on everyday project, this represents that we are on the top leading, pushing the new tendencies, researching, and at the
+
+14:56.322 --> 15:04.045
+[SPEAKER_02]: end you will have the new things on the products. a part of the service and all the other things that complement a good image of a brand. But the
+
+15:04.065 --> 15:12.271
+[SPEAKER_02]: product, it's what makes the difference between one company and another. And the ones that invest on development are the ones that will
+
+15:12.291 --> 15:22.800
+[SPEAKER_02]: have the best line of products in all the catalog, not just in one model specifically. Maybe you designed something that is special and you can
+
+15:22.840 --> 15:30.763
+[SPEAKER_02]: focus on this, but In general, if you have all the other catalog products not on the same line, people will not have the confidence on all your
+
+15:30.783 --> 15:40.367
+[SPEAKER_02]: brand. And if they have confidence in one model, you just need to wait two seasons. So it's the life of two, three seasons. It's the life of one
+
+15:40.407 --> 15:51.431
+[SPEAKER_02]: product. If a brand is not able to invest and develop and improve the product, it will be stuck on this point. That's why we always are pushing
+
+15:52.411 --> 16:02.336
+[SPEAKER_02]: and going far away. Because if you stop, you are decelerating and the other brands will eat you. So it's what makes Evolve and people.
+
+16:03.116 --> 16:12.020
+[SPEAKER_02]: Sometimes it's difficult or sad to make it easy to understand because yeah, you see the good marketing and the nice pictures and they just
+
+16:12.080 --> 16:22.691
+[SPEAKER_02]: focus on this. But actually you need to see a bit more. to have a general view of all the brand, the story, the comments, the image, we have
+
+16:22.831 --> 16:33.854
+[SPEAKER_02]: visible all these investments that we, in our case, we make on development. Sometimes it's difficult to express and make it clear for
+
+16:33.934 --> 16:43.422
+[SPEAKER_02]: customer. That's why we put now in the last year, we put so much investment also on marketing. to make this visible and share all this
+
+16:43.643 --> 16:52.696
+[SPEAKER_02]: technology background that sometimes is not so easy to see. Gilliam, I want to bring you, get your perspective on this, because as Adria said, a
+
+16:52.736 --> 17:00.198
+[SPEAKER_00]: couple of seasons or three seasons are more than enough for the market to gauge how the brand is performing. Looking at it from a designer's point
+
+17:00.258 --> 17:10.601
+[SPEAKER_00]: of view, how do you see the R&D changing in two, three seasons? Of course, you guys, even before you bring out a product to certification, there's
+
+17:10.661 --> 17:19.066
+[SPEAKER_00]: a lot of protos that you make and a lot of test flying that you guys do. So when you bring out a product and launch it to the market, you have already
+
+17:19.346 --> 17:31.075
+[SPEAKER_00]: kind of maxed out your abilities. You put your best foot forward. So how does that best change and how do you strive to make it even better after a
+
+17:31.115 --> 17:37.054
+[SPEAKER_00]: couple of seasons or three seasons when you get the feedbacks? Like if you can just run through that one. Well, since Paraglider is made up of
+
+17:37.114 --> 17:43.218
+[SPEAKER_01]: many pieces, you have many, both also material science, for instance, there are the manufacturers that provide you new materials. So
+
+17:43.418 --> 17:52.104
+[SPEAKER_01]: materials is one of maybe most advanced in terms of modification from one prototype or one model to the other. But also we invest many
+
+17:52.144 --> 17:59.470
+[SPEAKER_01]: resources on looking for best solutions for the stability, for the structural stability of the canopy, for instance, also for the
+
+17:59.510 --> 18:09.461
+[SPEAKER_01]: inflation to make the inflation easier for the pilot. so yeah when you release a model you put all your effort on making it as best as possible
+
+18:09.802 --> 18:20.255
+[SPEAKER_01]: but of course since science and also researching is always going forward the same happens with the products so You can start with the
+
+18:20.275 --> 18:28.259
+[SPEAKER_01]: product that you release and start trying to find problems of this prototype from the feedback from the customers, also from the feedback
+
+18:28.279 --> 18:37.684
+[SPEAKER_01]: from pilots, and then try to solve those issues and try to improve the performance. That is always the cherry on the cake. And also the
+
+18:37.744 --> 18:45.768
+[SPEAKER_01]: handling or the stability and the feedback that we receive from the pilots is really useful for us to try to go for best products in the
+
+18:45.808 --> 18:55.013
+[SPEAKER_01]: future. So basically, if I try to understand, you said you work a lot with tech. So more data points means more things to analyze and more
+
+18:55.073 --> 19:04.242
+[SPEAKER_00]: customers means more data points, right? So once you have all of that in a season or two, basically you combine all of that and then strive to make a
+
+19:04.382 --> 19:11.468
+[SPEAKER_00]: better version of the product. Is that where we're getting? Exactly. But it's not only from the feedback from pilots, it's also from our
+
+19:11.548 --> 19:21.191
+[SPEAKER_01]: engineering team. view that we try or we analyze some other solutions that can be feasible for the future so it's not only developing products
+
+19:21.271 --> 19:28.413
+[SPEAKER_01]: it's researching for solutions for the future that maybe no are not releasing products this year or not in the following years but maybe
+
+19:28.553 --> 19:37.232
+[SPEAKER_01]: from five years from now or release some research projects that we are doing nowadays actually tangible on the products So that's kind of the
+
+19:37.252 --> 19:46.555
+[SPEAKER_01]: way we work. Actually, that was where I was getting to. My next curiosity was that when you as designers sit together, when you brainstorm, when,
+
+19:46.875 --> 19:54.818
+[SPEAKER_00]: let's say, Oliver, your chief designer, comes across and says that, hey, guys, brand new project. We've got to make it. How does the concept
+
+19:54.858 --> 20:01.805
+[SPEAKER_00]: development look like? Like, I mean, let's say for one-man army, it's like, you know, this guy, this person, whosoever is planning, he just
+
+20:02.685 --> 20:09.351
+[SPEAKER_00]: inculcates that idea in his mind, and then he spends his time on the software, and then he kind of puts it to action. But for a team like yours,
+
+20:09.431 --> 20:17.300
+[SPEAKER_00]: where you have all these big brains sitting around... How do you go from drawing boat to factory? And I mean, you don't have to get into the super
+
+20:17.340 --> 20:24.788
+[SPEAKER_00]: long details because of the limitation of time, but just if you can just run through concept development, steps involved until the prototype
+
+20:24.808 --> 20:35.011
+[SPEAKER_00]: production, how does that work in a brand like yours? well in taking a bit back what you said when we start to design something it's that we take the
+
+20:35.051 --> 20:43.214
+[SPEAKER_02]: feedback from pilots for solving the issues that we may have in the previous version of product but as guillem said we have a line of
+
+20:43.394 --> 20:51.797
+[SPEAKER_02]: research that it goes independently from the catalog product let's say so we test things that they could work or not but we we have a big
+
+20:51.837 --> 21:02.022
+[SPEAKER_02]: investment also in searching for new lines or new concepts that it might be possible to apply or not so the first thing is when we have a they are
+
+21:02.282 --> 21:09.967
+[SPEAKER_02]: like these two lines so one is research and trying to find new concepts and things that are not applying products and the other one is evolving
+
+21:10.207 --> 21:18.252
+[SPEAKER_02]: and improving the current products that we have in catalog that it's where we get the feedback from pilots and we work on these two lines at the
+
+21:18.292 --> 21:29.118
+[SPEAKER_02]: same time for sure when we have a new a new or one update of model. We take back our ideas of the next generation of version, for example, the new
+
+21:29.418 --> 21:39.380
+[SPEAKER_02]: version of Hook or Arctic or whatever. We think what we want to apply on this new model. We take back the feedback from the customer, so in case
+
+21:39.420 --> 21:49.107
+[SPEAKER_02]: there are some comments that are useful for our line of designing, and then if we have some research concepts that are possible to apply on this
+
+21:49.167 --> 21:59.954
+[SPEAKER_02]: model, and they are useful and we can give good points to it, we apply them. But as Guillem said, we research thinking in a few years. We don't
+
+21:59.994 --> 22:11.741
+[SPEAKER_02]: apply all the points in one model. So we have a bit of margins of sometimes if you sell everything in the model that you make today, then you have to
+
+22:11.921 --> 22:22.247
+[SPEAKER_02]: invest more to get this. And you have to know this point a bit in detail. So precisely where you are comparing to the competence or your previous
+
+22:22.307 --> 22:32.017
+[SPEAKER_02]: model, if it's the reference that you want to improve. And then passing all this to the production, as your question was. Yeah, the process is
+
+22:32.077 --> 22:41.623
+[SPEAKER_02]: that we put these ideas or options that we are thinking in prototypes. We simulate them previously to see if the concepts are on the put
+
+22:41.664 --> 22:51.289
+[SPEAKER_02]: application point on the sample or not. We produce the sample in our facilities in Vietnam. Everything that we produce, samples and serial
+
+22:51.309 --> 23:01.693
+[SPEAKER_02]: production wings are in the same factory. So we don't produce the wings here in Spain or Switzerland. everything comes from the factory. And
+
+23:01.733 --> 23:11.263
+[SPEAKER_02]: then we start the development process of checking samples, complementing with more simulation, knowing where we are going, and if
+
+23:11.323 --> 23:21.214
+[SPEAKER_02]: this line is what we want to follow and achieve our objective, or we need to change something on the process. But this is our main way of working
+
+23:21.294 --> 23:29.722
+[SPEAKER_02]: until you arrive to a concept that you think that you achieve your initial objectives, and you are in the position that you want to be,
+
+23:30.163 --> 23:40.799
+[SPEAKER_02]: comparing to competence or your previous version, if it is what we want to beat, let's say. Indeed, indeed. And I think it's so fascinating the
+
+23:40.839 --> 23:50.742
+[SPEAKER_00]: amount of effort that a brand like yours put in. Because I remember I was reading a catalog or something about BuySkin2, the single skin tandem
+
+23:50.762 --> 24:00.823
+[SPEAKER_00]: that you have. And it was written that you made 40 prototypes before you finally put that wing out on the market. First, some models require more
+
+24:00.863 --> 24:08.968
+[SPEAKER_02]: prototypes than others. Sometimes we are not happy with the results that we are getting, and it means that we need to make more simulation or
+
+24:09.008 --> 24:17.013
+[SPEAKER_02]: more prototypes. Now having simulation on the table, it's a tool that it's producing quite a lot, the number of prototypes, depending which
+
+24:17.053 --> 24:27.400
+[SPEAKER_02]: model, it's quite less number than the one you said we can give to a model. This was like a new concept on that time. Since it was an innovation, we
+
+24:27.440 --> 24:36.648
+[SPEAKER_01]: need to put more effort on that in terms of prototyping. Other models that are more in the line don't require so much investment and research.
+
+24:37.546 --> 24:45.470
+[SPEAKER_00]: Now, of course, we need to stop the wastage and increase sustainability in our efforts. But what comes to my mind is what happens to those
+
+24:45.530 --> 24:53.294
+[SPEAKER_00]: prototypes which do not pass the thing? Do you have pilots who are absolutely going nuts about it, that, hey, it does not matter how wild
+
+24:53.314 --> 25:00.958
+[SPEAKER_00]: this thing is, I will still go out and push it, I will still pay you the money, or do you actually just destroy it? What's the vibe like of the
+
+25:01.079 --> 25:09.279
+[SPEAKER_00]: ones which are not out there for commercial usage? No, the prototype that actually all the bunch of prototype that we produce that are out of
+
+25:09.339 --> 25:18.763
+[SPEAKER_02]: the, of the final product, let's say, we destroy them. We give them to recycling companies that they use it for making clothes or whatever.
+
+25:19.463 --> 25:29.188
+[SPEAKER_02]: But yeah, they are not sell for everyone for sure. Not because it could be dangerous, but it's not the product that you are releasing at the end so
+
+25:29.248 --> 25:41.300
+[SPEAKER_02]: it's yeah it could be bad and it's not our it's not the player we will not win anything having uh 10 prototypes out covering 10 pilots so it's
+
+25:41.380 --> 25:50.946
+[SPEAKER_02]: better to destroy them make jackets or wallets or wherever and everyone is happy with them breaks my heart. I want my hand on one of them if you guys
+
+25:50.986 --> 25:58.453
+[SPEAKER_00]: destroy them. Please, paragliders are so expensive. Don't destroy them like that. But no, as you said, with the simulations, the wastage is
+
+25:58.493 --> 26:07.099
+[SPEAKER_00]: going less. So I trust you're putting your resources in the right one. But guys, I want to come to this brand new concept of yours. This E&A
+
+26:07.159 --> 26:16.321
+[SPEAKER_00]: concept is not what a lot of brands target because it's a very beginner market. And accuracy is something that I somehow feel does not get as
+
+26:16.361 --> 26:25.463
+[SPEAKER_00]: much glamour as acro and cross-country in our sport. But I think until you guys, there was only one brand, DaVinci, which was doing their own
+
+26:25.563 --> 26:37.386
+[SPEAKER_00]: accuracy thing with the point. And finally, you guys have come up with a dedicated accuracy glider called Target. So what is this concept all
+
+26:37.446 --> 26:46.889
+[SPEAKER_00]: about? Because until now, people have been winning and kind of happy with just regular ENA wings and flapping them or just pushing them to the
+
+26:46.929 --> 26:57.533
+[SPEAKER_00]: limits to land pinpoint. So first of all, super brave of you guys. Thank you for finally investing into such a niche market. But just talk us
+
+26:57.553 --> 27:05.043
+[SPEAKER_00]: through, what is Target and what is it all about and how did this happen, basically? Well, target appear as you said about the accuracy
+
+27:05.263 --> 27:16.427
+[SPEAKER_02]: discipline that it came to the industry, to the market. Always when you have new things like a bit more on one side of the main volume of pilots,
+
+27:16.807 --> 27:25.970
+[SPEAKER_02]: you need to consider if it's worth it or not to make investment on checking this kind of product. But as the accuracy is getting bigger and
+
+27:26.210 --> 27:38.195
+[SPEAKER_02]: in some parts of the world, it's taking quite big a big point, Asia, and we have quite a lot of people practicing it. East Europe also, they are
+
+27:38.815 --> 27:50.761
+[SPEAKER_02]: making quite a number of competitions of accuracy. So we decided to go for it and see what was the point that pilots making accuracy were
+
+27:50.801 --> 27:59.729
+[SPEAKER_02]: looking for. And we developed, yeah. The simulation, again, the same development process that we do with a normal or different model, but we
+
+28:00.129 --> 28:08.579
+[SPEAKER_02]: focus on the objectives that we need to have this wing for this kind of competition. And the improvements from, let's say, an NA... Actually,
+
+28:08.599 --> 28:19.091
+[SPEAKER_02]: it's an NA wing. But the points that... I'm not a pilot that makes accuracy every day, so I cannot give my experience on this, but for sure I
+
+28:19.131 --> 28:29.553
+[SPEAKER_02]: land every flight I do, so I know what you need to do for landing, precisely in one point. And people want to fly slow, have handling on
+
+28:29.613 --> 28:39.815
+[SPEAKER_02]: slow speeds, and the wing have a really late stall point, so you can brake a lot, and even descending parachutal configuration, let's say,
+
+28:40.316 --> 28:51.180
+[SPEAKER_02]: without stalling the wing and kicking your back with the ground. So these were the points that we focus a lot on the target development. Diem
+
+28:51.220 --> 28:59.603
+[SPEAKER_02]: can give a bit of simulation. Those were the objective on the development. So we look for low speed profiles and we investigated
+
+28:59.723 --> 29:07.965
+[SPEAKER_01]: several different airfalls to maintain a good stability and also handling of the of the paraglider, the target in that case. So that was
+
+29:08.005 --> 29:16.594
+[SPEAKER_01]: the main innovation, I would say, or research in our site for the airfoil development and also then for the canopy and for the brake installation
+
+29:16.694 --> 29:28.362
+[SPEAKER_01]: to have good handling and also brake control. Comparing to the Coyote, for example, the school wing, for sure you want a really stable easy wing
+
+29:28.762 --> 29:38.584
+[SPEAKER_02]: for the accuracy normally the pilots have more experience if they are not learning to fly so you can have you can handle a wing that it's a bit
+
+29:38.644 --> 29:51.140
+[SPEAKER_02]: more more directive but you can you can break the handle it's better in slow speeds so in case you arrive to the to the point in a good position
+
+29:51.200 --> 29:59.506
+[SPEAKER_02]: everything goes well but if it's you need to react on the last two meters in really slow speeds you need a wing that reacts to this this input in the
+
+29:59.526 --> 30:09.673
+[SPEAKER_02]: brake so that's why we play a lot in this handling on slow speeds and the profile achieves this configuration easily and also on the brake as
+
+30:09.713 --> 30:19.339
+[SPEAKER_02]: guillem said we play making tension on on the different parts that we want to break before and this is related to the configuration of stall
+
+30:19.399 --> 30:30.046
+[SPEAKER_02]: point of If you brake more with wind tips, it will stall for the wind tips. It's different methods that you can achieve this way of braking and
+
+30:30.066 --> 30:37.691
+[SPEAKER_02]: slowing down for one precise landing. You know, I was looking at this from a beginner's perspective. Let's say you're somebody, I mean, we
+
+30:37.751 --> 30:45.614
+[SPEAKER_00]: all remember the time when we started flying, you know, when we started the sport. And of course, first and foremost is we want to have fun. But
+
+30:45.694 --> 30:52.637
+[SPEAKER_00]: before that, it's like if we have to be safe, you know, we have to kind of, you know, make sure that we are doing this within the flight envelope and
+
+30:52.677 --> 31:01.262
+[SPEAKER_00]: within the capacities of a pilot as a beginner. So when as a beginner you go out on the market and you're like, okay, I finally saved up this much
+
+31:01.282 --> 31:08.828
+[SPEAKER_00]: money for the course and I finally saved up this much money for the equipment, you want to get the best value out of it. That's a human trait.
+
+31:08.848 --> 31:16.429
+[SPEAKER_00]: You don't want to waste anything. Instructors, friends, marketing tactics, they are like, hey, man, there's a low A, there's a mid A,
+
+31:16.449 --> 31:26.432
+[SPEAKER_00]: there's a super high A, and there's a low B, there's a mid B. The options are endless and confusing. Because I remember my time, I spent hours and
+
+31:26.473 --> 31:36.131
+[SPEAKER_00]: hours looking at websites, reading the manuals, going through texts and all of that. Now, if you are a pilot who is excited by the art of flight
+
+31:36.191 --> 31:44.157
+[SPEAKER_00]: and you've decided that, okay, this is what I want to do for the rest of my life, how do you navigate the risk versus reward spectrum when you buy
+
+31:44.177 --> 31:51.342
+[SPEAKER_00]: the first wing? It's like, should I buy a low A? Should I buy a high A? Should I buy a low B? Or should I buy an accuracy one? Because it's the
+
+31:51.362 --> 31:59.127
+[SPEAKER_00]: latest technology and it kind of promises to be more reactive and all of that. Like, I know there's no correct answer for this and everybody kind
+
+31:59.167 --> 32:06.632
+[SPEAKER_00]: of has to answer this for themselves, like what they really want to. But you guys are the experts, like at the forefront of this. How would you
+
+32:06.672 --> 32:15.597
+[SPEAKER_00]: suggest that a person navigates between the spectrum low A to low B and now this brand new offering in the market? Because I think if you guys are
+
+32:15.617 --> 32:24.039
+[SPEAKER_00]: bringing out an accuracy wing, other brands will be excited to follow the same stream pretty soon. So... yeah so yeah for sure the the market
+
+32:24.079 --> 32:35.385
+[SPEAKER_02]: has evolved to to divide every sector every section of of homologation in different parts so minus medium and high in soon in everything some
+
+32:35.405 --> 32:46.308
+[SPEAKER_02]: brands even have more more steps in the in one one category and this is the reality so at the end it's Customers need to navigate through this bunch
+
+32:46.469 --> 32:57.355
+[SPEAKER_02]: of options. Sometimes it could be tricky and it could be quite difficult to select. The natural direction would be to start from the A wing for
+
+32:57.415 --> 33:09.048
+[SPEAKER_02]: school. For sure, some brands recommend changing to or passing to a high A out of the school. Yeah, in my experience for taking, not from
+
+33:09.108 --> 33:22.481
+[SPEAKER_02]: companies, but every day flying and how I learned to fly. Yeah, you start with the A. And then depending on the time that you put on the sport also
+
+33:22.661 --> 33:33.906
+[SPEAKER_02]: and the evolution that you make, yeah, you could jump some of these steps, but I would not recommend it if you are flying really small
+
+33:33.946 --> 33:46.432
+[SPEAKER_02]: flights a year or you need to follow each step depending on the concept. Some brands, they sell one mid-A that has better handling, or some other
+
+33:46.452 --> 33:55.175
+[SPEAKER_02]: brands say that the top A would be enough for starting gross country. There are many marketing things, actually, and it's difficult
+
+33:55.215 --> 34:04.539
+[SPEAKER_02]: sometimes to select. But I would not jump fast from one A to high B or something like this, that it's what happens sometimes. And then pilots
+
+34:04.639 --> 34:13.884
+[SPEAKER_02]: get scared and need to go back. So if you're really You said it's difficult to answer this question, but you need to assess your
+
+34:13.984 --> 34:24.171
+[SPEAKER_02]: capacities and your time that you are putting in this port. And this could give you a line of how to treat this navigation. But I would not jump
+
+34:24.471 --> 34:35.764
+[SPEAKER_02]: from low A to high B or something quite big. Also, the homologation gives some range. So imagine that's why we have options for two or three steps
+
+34:35.885 --> 34:47.056
+[SPEAKER_02]: in one A level or B level, because it's quite a big margin of movement inside this same certification. This is the point that people still
+
+34:47.736 --> 35:00.380
+[SPEAKER_02]: sometimes they don't focus much the certification level. You can have a C wing that it has just one C maneuver in the list of certification
+
+35:01.040 --> 35:11.484
+[SPEAKER_02]: testing, and then another C that it has almost all the maneuvers. So sometimes people just refer to the title of it's an NC, but actually
+
+35:11.524 --> 35:22.307
+[SPEAKER_02]: inside there are more things. The omulation is not able to divide this. Maybe in the future, I don't know. We will have a real certification, a
+
+35:22.607 --> 35:33.930
+[SPEAKER_02]: minus, a medium, a plus. But nowadays it's not the case. So yeah, we can understand that it could be tricky, but also the industry and the
+
+35:33.950 --> 35:43.273
+[SPEAKER_02]: brands, the market has evolved to this kind of select sections of different levels. We need to follow also this tendency in the future.
+
+35:44.068 --> 35:52.071
+[SPEAKER_00]: No, I agree. I mean, it has to make monetary sense for any business to go out there and put the R&D. So you have to stick to that one. But what I'm
+
+35:52.091 --> 35:59.614
+[SPEAKER_00]: wondering is, as a new beginner straight out of the school, you know, you want to, as I said, you want to go ahead and build your career in
+
+35:59.634 --> 36:10.758
+[SPEAKER_00]: paragliding. Can target be a wing that gives you enough fun as well as the safety or is target for people who are like wanting to compete out there?
+
+36:11.488 --> 36:20.070
+[SPEAKER_02]: For starting to fly, it's not the objective of this model. We have the coyote that it's the wing that it's developed for school, and I would not
+
+36:20.150 --> 36:30.913
+[SPEAKER_02]: start flying with target. Even if it's an NA, it would be an NA medium in the range. But yeah, it has the good capacity of the NA. But we have the
+
+36:30.933 --> 36:41.844
+[SPEAKER_02]: coyote that it's specially designed and the real objective for school. And the good point of this wing is for this reason. and someone that we
+
+36:42.184 --> 36:50.472
+[SPEAKER_00]: would like to compete in accuracy for sure target would be the option yeah makes sense thank you for your clear answer because it just makes it
+
+36:50.512 --> 36:59.541
+[SPEAKER_00]: so much easier for the audiences to figure out where this sits in their in their zone but you know like coming talking about this whole tech of kind
+
+36:59.561 --> 37:09.807
+[SPEAKER_00]: of developing wings we see the market is shifting from three liners to two liners and Of course, the CCC class was dominated by Enzo for a super
+
+37:09.847 --> 37:18.509
+[SPEAKER_00]: long time until you guys came out with a revolutionary product coming out and people started placing trust in X1. And finally, that is a worthy
+
+37:18.549 --> 37:28.211
+[SPEAKER_00]: competitor, which is not only just matching it, but even exceeding the performance at times. And now we see that tech finally coming down to
+
+37:28.331 --> 37:39.473
+[SPEAKER_00]: Arctic R and all of that. The question that I'm trying to get to is, when we look at higher-end technologies coming down to lower-end wings, can a
+
+37:39.513 --> 37:50.415
+[SPEAKER_00]: pilot from the lower homologation absorb them as they are? Or should we still, from a designer's perspective, be on the safe side to make sure
+
+37:50.755 --> 37:59.221
+[SPEAKER_00]: you do not stop having fun? Should you put your... trust in conventional technologies that have been there for seasons together or for such
+
+37:59.241 --> 38:06.369
+[SPEAKER_00]: technologies which have just kind of come up and are you know exciting they are winning out they're out there winning the things and they're
+
+38:06.389 --> 38:13.717
+[SPEAKER_00]: out there making people happy like how do you navigate the risk versus reward spectrum when when so much information is thrown at your face and
+
+38:13.958 --> 38:24.441
+[SPEAKER_00]: all of it promises to be fun Well, maybe we can check the good points of the two-liners going down. Maybe Guillaume can give you comments of drag
+
+38:24.681 --> 38:34.062
+[SPEAKER_02]: and simulation. But yeah, for sure there are... points of high aspect, high performance wing that are going down, because also we are
+
+38:34.322 --> 38:44.306
+[SPEAKER_02]: achieving good behaviors of safety in the other. It's compensating also. So for sure, it's also related, I think, to the division of these
+
+38:44.726 --> 38:57.876
+[SPEAKER_02]: sections of every level. So in C class, now you can have a C three-liner, C two-liner and maybe in the next year the two-liner high also inside C. So
+
+38:57.976 --> 39:06.464
+[SPEAKER_02]: it's what we said on the previous question. You need to decide. It's difficult to have it clear, but you need to decide where to be. For sure,
+
+39:06.805 --> 39:17.552
+[SPEAKER_02]: some of these two-liner things or other concepts that will go down, it doesn't need to be related to safety. So people are scared sometimes of
+
+39:17.832 --> 39:29.220
+[SPEAKER_02]: applying things that are used on higher models. And actually, it's not the main thing that makes the wing difficult to apply or dangerous.
+
+39:29.521 --> 39:39.474
+[SPEAKER_02]: There are many other points that you can work and you can compensate maybe the behavior that it's giving some parts of this concept. But in
+
+39:39.514 --> 39:50.869
+[SPEAKER_02]: terms of a two-liner, for sure, it's not a low C wing that you need to jump when you are flying a B. Yeah. But yeah, then you need to take the position
+
+39:51.089 --> 40:00.276
+[SPEAKER_02]: if you are flying a lot of hours and you can get this new piloting method that it's the most different thing that you will get getting a two liner,
+
+40:00.637 --> 40:11.000
+[SPEAKER_02]: getting used to the pilot using the V lines, the risers, and this is the thing that maybe takes more time for the pilot that comes from a
+
+40:11.020 --> 40:19.822
+[SPEAKER_02]: three-liner to understand. In terms of safety, for sure, the stall behavior when you're making a two-liner stalling, there is a little bit
+
+40:19.882 --> 40:27.924
+[SPEAKER_02]: technique different that you need to apply. If not, the wing will have a different shape than what you're used to making stalls on a three-liner
+
+40:27.964 --> 40:39.211
+[SPEAKER_02]: or four-liner. But actually, the compactness, the rigidness of the wing, it's really higher on this two-liner, and it's a good point for the
+
+40:39.231 --> 40:48.438
+[SPEAKER_02]: peripheral also. So all these concepts, you need to understand that some are related directly to safety, but actually, it's not the real
+
+40:48.478 --> 40:58.383
+[SPEAKER_02]: case. And you can work on other things to have the final concept in the level that you want. even if it's a two-liner, three-liner, or
+
+40:58.423 --> 41:06.567
+[SPEAKER_02]: whatever. There are three-liners that are more dangerous or complicated to apply than a two-liner, for sure. Wow. I could not have
+
+41:06.767 --> 41:16.710
+[SPEAKER_00]: guessed that. The point that I'm trying to get to is because even B are going from three liners to 2.5, and everybody's getting more and more
+
+41:16.750 --> 41:22.592
+[SPEAKER_00]: excited about it. Let's say, as a consumer, whenever new technology hits you, you are like, okay, new technology promises to be more
+
+41:22.632 --> 41:31.859
+[SPEAKER_00]: exciting, more research and development has gone in, it's going to be safer, even though it's more expensive. So when we see the drag being the
+
+41:31.899 --> 41:40.850
+[SPEAKER_00]: main coefficient that designers are trying to reduce to improve the performance, are we sacrificing safety or are we sacrificing
+
+41:41.290 --> 41:49.019
+[SPEAKER_00]: something, peace of mind for performance? For more performance? Or is this like, it is becoming a norm, which is covering up all the safety
+
+41:49.119 --> 41:56.627
+[SPEAKER_00]: aspects, even in lower classes, not just in triple C, not just in D, not just in C, but eventually even Bs are going to come to two liners. And
+
+41:56.667 --> 42:03.254
+[SPEAKER_00]: maybe one day we see school wings coming down to two liners because it is something like that. But it blows my mind, man, the amount of things you
+
+42:03.274 --> 42:10.678
+[SPEAKER_00]: guys keep on bringing out, you know? Yeah. Yeah, well, in terms of drag, maybe... Yeah, in terms of drag, for sure, it's better to reduce the area
+
+42:10.718 --> 42:20.183
+[SPEAKER_01]: that is exposed to the wind. So two liners are there for that reason. But when it turns out to safety, I think that in our side, we maintain or even
+
+42:20.243 --> 42:28.728
+[SPEAKER_01]: improve the safety. So safety and security for pilots is compromised from our side and is mandatory for each product and project to maintain
+
+42:28.828 --> 42:38.752
+[SPEAKER_01]: or even improve the same level of safety on each of our products. So I don't think that going to a two-liner, especially in our case, is more
+
+42:38.792 --> 42:48.935
+[SPEAKER_01]: dangerous than using a two-liner. If we arrive to the A school wings, it's two-liner. If we arrive, I don't know. But then we will have to see if
+
+42:49.115 --> 42:58.279
+[SPEAKER_02]: all the other points have evolved so much to compensate this. For sure, two-liner will have one behavior that it's not... going on the line of
+
+42:58.319 --> 43:08.565
+[SPEAKER_00]: school so i don't think so but we will see we never know the the future that sounds exciting sounds very exciting but you know i mean before we move
+
+43:08.585 --> 43:17.110
+[SPEAKER_00]: on to the next topic like how do you as because the triple c class is pretty much at the performance plateau from what i can see you know the the big
+
+43:17.130 --> 43:25.653
+[SPEAKER_00]: manufacturer your biggest competitor ozone has had its wing out there been there for ages and it's like, we cannot make it better. It is there
+
+43:25.773 --> 43:33.394
+[SPEAKER_00]: and deal with whatever we have. And now we see the first version of your wing came out and performing well enough that there does not seem to be a
+
+43:33.574 --> 43:40.535
+[SPEAKER_00]: need from the customers to say that, hey, give us a better one. I don't know how the World Cup pilots react to that, but the market seems to be
+
+43:40.575 --> 43:50.197
+[SPEAKER_00]: pretty happy with what's there on the out for sale. So as a designer, when it comes to improving the technology at the highest level, at making it
+
+43:50.897 --> 43:58.982
+[SPEAKER_00]: safe yet racier. How do you navigate the plateaus that the technology hits when it comes to actually converting it into production and
+
+43:59.022 --> 44:08.748
+[SPEAKER_00]: bringing out the product out to the market? So we apply the same procedure for all the other products, but in that case, we mainly focus
+
+44:08.828 --> 44:16.172
+[SPEAKER_01]: on aerodynamic performance. And now we're relaying new technologies, for instance, aerodynamic shape optimization and also aeroelastic
+
+44:16.192 --> 44:24.675
+[SPEAKER_01]: shape optimization. That was the first question that you asked me. And doing this kind of simulations, we end up with an optimal shape. And
+
+44:25.335 --> 44:36.478
+[SPEAKER_01]: going to that direction, I think that will give paragliding new tools for this CCC level and it won't stop at the plateau that you mentioned. So
+
+44:36.758 --> 44:45.221
+[SPEAKER_01]: I think that the solution is to invest more in that kind of resources and rely on more on computer science and also in engineering to find a
+
+44:45.281 --> 44:55.699
+[SPEAKER_01]: solution that is easy to fly, not dangerous, but with remarkable high level of performance. You know, what I'm wondering is that do you guys as
+
+44:55.739 --> 45:01.565
+[SPEAKER_00]: designers sometimes feel frustrated with the homologation? Because of course, that is the only thing that is holding you back, right?
+
+45:01.985 --> 45:11.134
+[SPEAKER_00]: Because when you play with your creativity and all the knowledge, there are endless racier wings that you can make with. Is the certification
+
+45:11.294 --> 45:19.780
+[SPEAKER_00]: holding back some bit of your performance enhancement products? Because I've had that vibe from some people in the market and it's not
+
+45:19.820 --> 45:26.603
+[SPEAKER_00]: very openly talked, but I mean, you guys have been honest enough. So I thought like, you know, why not touch upon this one? What do you guys
+
+45:26.623 --> 45:32.626
+[SPEAKER_00]: think about homologation when it comes at the absolute top level where people are putting in the work, where people are kind of, you know,
+
+45:32.826 --> 45:40.550
+[SPEAKER_00]: knowing how to navigate the risk versus reward themselves, yet are not having a chance to get the product because of the paperwork that is
+
+45:40.570 --> 45:49.602
+[SPEAKER_00]: required to keep it within those guidelines? Yes, certification is one limit that we all have, but one rule that we need to follow, so I don't
+
+45:49.662 --> 45:58.585
+[SPEAKER_02]: think it's frustrating to not be able to continue developing just because one point on certification. In this high CCC class, for
+
+45:58.645 --> 46:08.668
+[SPEAKER_02]: example, the differential between speed system A and B is limited, so it's there, you need to find other points to get the... It's not just
+
+46:08.768 --> 46:18.493
+[SPEAKER_02]: speed. As PM said, there are many ways to improve the product. They are materials. They are structurally aerodynamic. We have the stability
+
+46:18.513 --> 46:27.418
+[SPEAKER_02]: of the wing. So we analyze a lot the dynamics of the wing, how it moves through the air in turbulent, in calm air. So there are many points that
+
+46:27.478 --> 46:39.865
+[SPEAKER_02]: you can work on, not just because they limited the aspect ratio or they limit the differential between A and B riser. So yeah, maybe someone
+
+46:39.985 --> 46:51.286
+[SPEAKER_02]: feels a bit frustrated. In our case, I think we just follow the points that we need to have in mind, and then we search other things to
+
+46:51.426 --> 46:59.490
+[SPEAKER_02]: compensate this limitation, for example. The problem is when you arrive to these high points that every new step is costing more
+
+46:59.570 --> 47:10.052
+[SPEAKER_02]: investment, so you need to work a lot to get new things. We could have some release of some restriction, Yeah, sometimes in one line would be
+
+47:10.112 --> 47:21.264
+[SPEAKER_02]: easier, but it doesn't make everything easy to have a win that is playing better or going faster. There are many points on the on the equation.
+
+47:21.984 --> 47:29.261
+[SPEAKER_01]: Yeah. And actually, I don't think that the regulations or the homologation is restricting our innovation because the same happens
+
+47:29.341 --> 47:36.122
+[SPEAKER_01]: in aerospace industry for planes, for instance, that are really tough regulations and certifications and procedures, but always brands are
+
+47:36.202 --> 47:43.644
+[SPEAKER_01]: innovating and showing new products that are within the range of the homologation. So the same applies to us. We are able to find a solution
+
+47:43.664 --> 47:51.057
+[SPEAKER_01]: that is within the homologation range, but give a lot more performance compared to the products from nowadays. Right. Makes sense, you know,
+
+47:51.137 --> 47:58.879
+[SPEAKER_00]: and I was going to come to, since you said that it's not just the wings or just the aerofoil structure which can be improved, I see you guys have
+
+47:58.899 --> 48:06.800
+[SPEAKER_00]: been coming out with really amazing harnesses that have been received pretty well by the market, and Arrow is one of them. But I believe Cocoon,
+
+48:07.100 --> 48:16.044
+[SPEAKER_00]: you know, I mean, this is a concept that has been out in the market, discarded, coming back, and then being adopted again. What are your
+
+48:16.084 --> 48:25.275
+[SPEAKER_00]: thoughts on this brand new design, which was already there and coming back again and saying that this is adding so much value to the
+
+48:25.295 --> 48:31.523
+[SPEAKER_00]: performance announcing? If you guys can touch a little bit on the cocoon concept, because I think Currently, only two manufacturers are
+
+48:31.543 --> 48:38.792
+[SPEAKER_00]: hitting it. People seem to be accepting it really well and pretty sure you guys are going to follow that trend very soon because obviously, why
+
+48:38.852 --> 48:45.982
+[SPEAKER_00]: not? So what are your thoughts on Cocoon and how does it help increase and how much really does it even matter if you have a Cocoon versus a normal
+
+48:46.042 --> 48:55.435
+[SPEAKER_00]: flare harness? Well, when it turns out to analyze the performance, of course, the drag that is held by the boat itself, it's really high. So you
+
+48:55.615 --> 49:04.002
+[SPEAKER_01]: need to find solutions to decrease this drag. One solution is to use a boat or to use a fully closed harness or a hybrid solution. For instance,
+
+49:04.042 --> 49:11.288
+[SPEAKER_01]: in our case, the Drifter 2, which is not fully pressurized. We have a cocoon that is not pressurized, but the tail that covers all the back of
+
+49:11.308 --> 49:20.618
+[SPEAKER_01]: the pilot that is pressurized. And it's a way to streamline the flow. So the more streamlined is the flow, the lower is the drag that is yielded by
+
+49:20.658 --> 49:28.927
+[SPEAKER_01]: the pilot. And since performance is very important for, in this case, CCC competitions and also for cross-country leisure flights, it's
+
+49:29.127 --> 49:37.112
+[SPEAKER_01]: really... good approach i'd say to improve this performance because in terms of percentage when you analyze the percentage of the drag if you do
+
+49:37.152 --> 49:46.938
+[SPEAKER_01]: not cover the pilot is it represents maybe half of the drag of the all the system so if you add the drag from the canopy and also the drag from lines
+
+49:46.978 --> 49:57.747
+[SPEAKER_01]: and the pilot the pilot itself represents more or less half of all the all the drag of the system So using this kind of harnesses, yeah, it's an
+
+49:57.787 --> 50:06.998
+[SPEAKER_01]: important amount. So using this kind of harnesses helps to reduce it considerably. And so that's the point that helps to improve the
+
+50:07.038 --> 50:16.086
+[SPEAKER_01]: performance. Yeah, when we started with cocoon harnesses back, I cannot rely on how many years ago, but actually it was a change for sure.
+
+50:16.607 --> 50:24.658
+[SPEAKER_02]: But I think the big improvement in performance is when we started putting tails on the harnesses. Because for sure, Guillaume could give
+
+50:24.778 --> 50:34.548
+[SPEAKER_02]: more information about this, but when When you have the turbulence that the generator after the pilot covered or in the streamline correctly
+
+50:35.148 --> 50:45.117
+[SPEAKER_02]: done, it's quite more efficient than having just a cocoon versus a normal harness. Actually, you have the frontal area with a cocoon
+
+50:45.137 --> 50:55.765
+[SPEAKER_02]: always the legs out will be different for sure. But if you don't cover this turbulence behind the pilot, it's really... Yeah, the thing is
+
+50:55.825 --> 51:02.568
+[SPEAKER_01]: that the wake is generated there downstream the pilot, so there's a difference in pressure between the back and the head of the pilot so that
+
+51:02.668 --> 51:12.133
+[SPEAKER_01]: it creates a force that is drag. The higher is the strength of the wake, the higher is the drag yielded. So installing a tail there dampens these
+
+51:12.213 --> 51:21.514
+[SPEAKER_01]: wakes and so the drag can be decreased as well. So that's the idea behind using tails and cocoons. Makes sense. You know, I was just curious, like
+
+51:21.774 --> 51:29.718
+[SPEAKER_00]: cocoon is just one example, but like winglets, closed cells, like all of these technologies have existed and been discarded by the industry
+
+51:29.858 --> 51:37.821
+[SPEAKER_00]: only to be brought back and ask the audiences to be excited. So what's, like from a designer's point of view, like what's the ideology behind
+
+51:37.922 --> 51:45.846
+[SPEAKER_00]: reinventing something that was already there? Is it that... They were way too early for their time and people were like, oh my God, this is
+
+51:45.866 --> 51:53.851
+[SPEAKER_00]: outside my comfort zone. This looks way too funny. This looks way too fancy for me to put my money in. And now finally when big brands like, what
+
+51:54.191 --> 52:03.497
+[SPEAKER_00]: does your talk look like when you're sitting around? I'll circle back to that Oliver Neff drawing table and brainstorming. So when all of you
+
+52:03.577 --> 52:11.322
+[SPEAKER_00]: guys are sitting together and talking about these technologies that somebody has put in the effort, how do you guys navigate that question
+
+52:11.362 --> 52:18.347
+[SPEAKER_00]: that this technology is worth bringing back? And are we going to see more of that coming in, just refinement of previous technologies in coming
+
+52:18.367 --> 52:27.658
+[SPEAKER_00]: years? Well, in terms of this kind of new concepts that we develop, as we said before, we search a lot, we make a lot of simulation and testing
+
+52:27.678 --> 52:36.146
+[SPEAKER_02]: before applying something in one wing. For sure, there are concepts, as Guillem said at the beginning, the theory of aerodynamics, it's the
+
+52:36.186 --> 52:45.174
+[SPEAKER_02]: same, but all these new things or concepts that are applied, for example, in planes, if you want to move them back to wings, The
+
+52:45.214 --> 52:54.376
+[SPEAKER_02]: application needs to be redesigned, so it's not just taking one thing in one plane and you put it on your wing and it will make the same effect. The
+
+52:54.396 --> 53:03.318
+[SPEAKER_02]: theory and the technique behind it is the same, but you need to apply it correctly. It's not related that you apply something and
+
+53:03.998 --> 53:12.961
+[SPEAKER_02]: automatically you have one wing that is flying better. Yeah. Well, that idea of releasing a new idea in the market and then removing it from the
+
+53:12.981 --> 53:21.048
+[SPEAKER_01]: market and introducing it, it's common in all the industry, I'd say. So normally the explanation is because there are not enough technologies
+
+53:21.148 --> 53:30.152
+[SPEAKER_01]: to develop correctly this technology or this idea. And of course, research is always going forward. But innovation that is moving this
+
+53:30.192 --> 53:38.755
+[SPEAKER_01]: research into the market is not always moving forward at the same time. So I think that your question can be answered in that way. So always you
+
+53:38.775 --> 53:47.349
+[SPEAKER_01]: can have different solutions, but they are not applied to the market. So innovation is not there at the same time. I mean, I think to conclude,
+
+53:47.749 --> 53:55.815
+[SPEAKER_00]: designers have a tougher job than it looks like for us as consumers. You know, there's loads of things that you guys have to think about before
+
+53:55.876 --> 54:03.542
+[SPEAKER_00]: putting the company's money into our resources. But, you know, guys, you guys have been at the forefront of all of these things. And I want to
+
+54:03.582 --> 54:11.748
+[SPEAKER_00]: come down to this latest new toy that you brought out in the market that everybody's talking about. Origami. I mean, when I Google up origami,
+
+54:11.808 --> 54:19.652
+[SPEAKER_00]: it says it's a Japanese paper art. It looks really fancy. I'm not going to deny that. It got me really hooked, and I started reading about it, and it
+
+54:19.692 --> 54:27.416
+[SPEAKER_00]: looks super fancy. So, I mean, I just don't want to know about the technology, but I want to know how did this concept, like who planted
+
+54:27.456 --> 54:36.901
+[SPEAKER_00]: this seed? And please talk us through the beginning of this concept until the drawing board, until the protos, until making the final
+
+54:36.941 --> 54:44.386
+[SPEAKER_00]: product. And we have enough time, so please... go ahead as detailed as you want to, because this is so exciting, man. I think audiences want to
+
+54:44.426 --> 54:54.393
+[SPEAKER_00]: know about this. OK, so origami arises from an idea of going to harnesses that provide more performance. And to provide more performance, as
+
+54:54.493 --> 55:03.161
+[SPEAKER_01]: I've explained before, the idea is to reduce wake strength downstream the pilot, but also another approach is to reduce the cross-section
+
+55:03.281 --> 55:12.887
+[SPEAKER_01]: area. So if you fly with your legs straight, it's better in terms of aerodynamics than flying with your legs tilted. So, following these
+
+55:12.927 --> 55:22.353
+[SPEAKER_01]: two approaches for Drifter 2, what we did is to optimize the aerodynamic shape using simulations and aerodynamic shape optimizations. And the
+
+55:22.393 --> 55:31.598
+[SPEAKER_01]: other approach was to try to reduce this cross-section area as much as possible. Of course, you have several restrictions there because the
+
+55:31.638 --> 55:41.514
+[SPEAKER_01]: pilot is sitting in a fixed position. You cannot reduce the volume that the pilot assumes. Also you have to install the rescues if you install
+
+55:41.534 --> 55:49.921
+[SPEAKER_01]: them on the back and there's the protector. And of course the unique option there to reduce this cross-section area was to reduce the
+
+55:50.222 --> 55:59.669
+[SPEAKER_01]: thickness of the protector. So that was our motivation and taking this idea into account to end up with a Drifter 2 that is a really performant
+
+55:59.689 --> 56:08.416
+[SPEAKER_01]: harness that is comparable to full inflated harness in terms of performance. We decided to go to this really thin protector that
+
+56:08.476 --> 56:16.662
+[SPEAKER_01]: provides the same or even higher level of protection compared to conventional foams, but the thickness can be reduced more than 60%
+
+56:17.183 --> 56:27.530
+[SPEAKER_01]: compared to the foams that are used nowadays for these cross-country harnesses. and so that was our motivation so we put a lot of efforts from
+
+56:27.630 --> 56:36.416
+[SPEAKER_01]: our research and development department to try to investigate a solution that was really efficient in terms of protective behavior.
+
+56:36.936 --> 56:48.002
+[SPEAKER_01]: Efficient in the sense that it provides the same level of protection but with really lean profile. So with this idea in mind, what we did was to
+
+56:48.102 --> 56:55.185
+[SPEAKER_01]: look for the state of the art and the conventional technologies that are used nowadays, especially in the aerospace industry. There are
+
+56:55.285 --> 57:03.588
+[SPEAKER_01]: several different solutions, especially for helicopters, energy absorbers. If there's a crash in a helicopter, they are using honeycomb
+
+57:03.668 --> 57:14.551
+[SPEAKER_01]: structures made up of aluminum. So the idea was to research... You mean for the whole cage of the aircraft, the honeycomb is like basically the
+
+57:14.571 --> 57:23.033
+[SPEAKER_00]: skeleton of the chopper? Well, for aircraft they use it for the wings or so on, but in helicopters they use it as an energy absorbing device. So if
+
+57:23.213 --> 57:32.355
+[SPEAKER_01]: the helicopter, the engine fails and the helicopter starts to fall, they have these devices to absorb the energy from the impact and protect
+
+57:33.035 --> 57:40.558
+[SPEAKER_01]: the pilot and the occupants inside the cabin. So there's an application on this kind of observers in the aerospace industry and what we did was to
+
+57:40.598 --> 57:49.302
+[SPEAKER_01]: look for the state of the art and find or make a combination of the existing solutions and end up with this product, which is Oricami. That
+
+57:49.402 --> 57:58.305
+[SPEAKER_01]: is, I would say, really innovative product for the public lighting industry. And that's why we decided to make a patent application. So we
+
+57:58.385 --> 58:06.827
+[SPEAKER_01]: will, it will be approved soon and we will release all the information, technical aspects and so on because it's patented. And well, with these
+
+58:06.927 --> 58:16.378
+[SPEAKER_01]: different technologies that exist, we research for both the shapes and all the parameters that guide the design of origami and also the
+
+58:16.398 --> 58:28.741
+[SPEAKER_01]: materials that it is made of. Okay, so with all these combination of parameters and materials, what we achieve is a really effective and
+
+58:28.781 --> 58:40.132
+[SPEAKER_01]: efficient protective device or a protector because different physical phenomena The first one is the energy absorbing mechanism
+
+58:40.172 --> 58:48.103
+[SPEAKER_01]: that we use. We rely on our energy absorbing mechanism is elastic buckling deformation rather than plastic deformation. So what it
+
+58:48.343 --> 58:57.234
+[SPEAKER_01]: gives us is that it is suitable for several successive impacts without being damaged. Wow. That is revolutionary because earlier, I think any
+
+58:57.295 --> 59:04.883
+[SPEAKER_00]: protector, even the helmets, it's like if they take one impact, then they're discarded for use. But this one, you're saying that it can take
+
+59:04.963 --> 59:14.889
+[SPEAKER_00]: hits and still maintain the safety aspect of it. Exactly. And I can prove it because we follow the conventional homologation procedure that is
+
+59:15.169 --> 59:22.976
+[SPEAKER_01]: followed for each single piece of paragliding equipment that is sold in the European Union. There are two different certification
+
+59:23.016 --> 59:32.705
+[SPEAKER_01]: procedures. The difference between them is that EN, you only need to drop test the protector once. In LTF, you need to drop test the protector
+
+59:32.805 --> 59:40.333
+[SPEAKER_01]: twice. So you drop test it once. you take the same protector and drop test it again. And if the two values are within the homologation range, you
+
+59:40.353 --> 59:48.822
+[SPEAKER_01]: can approve this harness with this protector. In our case, what we did is to follow the homologation procedure and a straightforward process.
+
+59:48.862 --> 59:59.210
+[SPEAKER_01]: So we started with the same protector for EN, we drop tested it, Once we take it, we drop tested it again because you need to switch in between the
+
+59:59.430 --> 01:00:08.317
+[SPEAKER_01]: rescue parachute installed and without. And we did the same for LTF, always with the same protector. So at least we followed six high energy
+
+01:00:08.417 --> 01:00:17.445
+[SPEAKER_01]: drop tests and all these six consecutive drop tests show that the results were within the range of the homologation. so that's why we can
+
+01:00:17.966 --> 01:00:26.954
+[SPEAKER_01]: prove that orikami give protection for at least six high energy impacts but of course since safety is our main concern and it should be the same
+
+01:00:26.994 --> 01:00:35.603
+[SPEAKER_01]: for the pilots we recommend all the pilots to check the protector if they have a crash just to be sure that there's any broken part or so on but of
+
+01:00:35.663 --> 01:00:45.563
+[SPEAKER_01]: course during the emulation we prove that it sustains at least six high energy impacts You know, this product is kind of so interesting because
+
+01:00:45.583 --> 01:00:54.126
+[SPEAKER_00]: I'm forgetting the name of the other kind of... Choriode, yes. Choriode Protector. What is Choriode Protector? Because from what I
+
+01:00:54.186 --> 01:01:04.550
+[SPEAKER_00]: understand, it hardens when it faces stress. Otherwise, it's kind of a bit of a jelly-like structure. But of course, we have seen some crashes
+
+01:01:04.590 --> 01:01:14.514
+[SPEAKER_00]: where pilots have unfortunately paid very dearly for it because it twists and it doesn't stay in the protector. What baffles my mind is that
+
+01:01:14.674 --> 01:01:25.182
+[SPEAKER_00]: how can a protector like that go out after the certification, out to the end product, and actually cause undesirable circumstances in the use
+
+01:01:25.222 --> 01:01:34.871
+[SPEAKER_00]: case scenario. What is Corihood and what went wrong with Corihood? I really want to know that. Well, I prefer not to talk about the concurrent
+
+01:01:34.931 --> 01:01:42.398
+[SPEAKER_01]: products, but I can explain to you why this is homologated and it actually is not protected in different scenarios that are not covered
+
+01:01:42.418 --> 01:01:50.563
+[SPEAKER_01]: by the homologation. It's because in demologation you only drop test it in a vertical direction, and if the direction is not correctly
+
+01:01:50.643 --> 01:01:59.688
+[SPEAKER_01]: vertical, the species can rotate or not be correctly fixed inside the slots of the phone. In our case, and it's another important aspect, is
+
+01:01:59.728 --> 01:02:08.553
+[SPEAKER_01]: that we did this drop test in different orientations and inclinations of the harness just to be sure that the pieces of origami state correctly
+
+01:02:08.593 --> 01:02:17.118
+[SPEAKER_01]: fix it inside the four matrix and we prove that the values of the maximum g's and also the time that in between all these two ranges of the
+
+01:02:17.138 --> 01:02:24.703
+[SPEAKER_01]: homologation are always the same depend and are independent of this orientation during the fall so that's an important aspect from our side
+
+01:02:24.823 --> 01:02:34.512
+[SPEAKER_01]: and also We designed Orikami to stay securely fixed inside these foam slots because we increased the out-of-plane stiffness. So, for
+
+01:02:34.552 --> 01:02:42.220
+[SPEAKER_01]: instance, if you take the piece of Orikami and you press it from the sides, it's not deforming or it's almost not deforming. And that's the
+
+01:02:42.240 --> 01:02:51.229
+[SPEAKER_01]: reason that explains that it stays correctly fixed inside this slot inside the foam. Yeah. Now, what I'm wondering is when you say putting
+
+01:02:51.369 --> 01:02:59.696
+[SPEAKER_00]: pieces of origami under there, and of course, the other protectors are the foam one or the airbag or the one which kind of form the whole
+
+01:02:59.856 --> 01:03:08.624
+[SPEAKER_00]: structure of the harness. Having a whole structure of the protector of origami, is that too expensive? Is that too financially unviable? Why
+
+01:03:08.644 --> 01:03:17.333
+[SPEAKER_00]: do we have to only put pieces of it and then worry about them being twisted or turned depending upon the direction of impact? Well, I think that the
+
+01:03:17.433 --> 01:03:25.779
+[SPEAKER_01]: explanation is not economic. Of course, there's an economic point there because it would be more expensive. But the explanation is that
+
+01:03:26.039 --> 01:03:38.907
+[SPEAKER_01]: when you have a crash, normally the parts that crash are the pelvis and are the bones. Andrea, so with Oricami also we investigated the most
+
+01:03:38.967 --> 01:03:48.050
+[SPEAKER_01]: potential places where the impact starts. So we place Oricami wisely in that positions just to be sure that they are there to absorb the energy
+
+01:03:48.110 --> 01:03:56.213
+[SPEAKER_01]: just at the beginning of the crash and absorb the or maximize the absorbing capacity of this Oricami piece. So that explains also this
+
+01:03:56.353 --> 01:04:05.913
+[SPEAKER_01]: positioning inside the foam and explains why not to use a full Oricami protector. I see. But, you know, as a customer, you go out and you're
+
+01:04:05.933 --> 01:04:16.079
+[SPEAKER_00]: trying to look out for a harness. Now, this just came to like, I never knew that LTF had multiple drop tests requirement and ENA has only one.
+
+01:04:17.139 --> 01:04:26.790
+[SPEAKER_00]: Sorry, European norms have only one LTF. But what I'm wondering is, where can a customer put their research? Because in the links, you know
+
+01:04:26.830 --> 01:04:34.260
+[SPEAKER_00]: that you can see multiple letters and multiple maneuvers. And then you can see, okay, this glider has one letter, which is crossing over to the
+
+01:04:34.300 --> 01:04:40.826
+[SPEAKER_00]: next homologation, but all the other ones are here. When you take your research for the harness, except from the aesthetical appeal and the
+
+01:04:40.886 --> 01:04:49.912
+[SPEAKER_00]: marketing that is being put out, where can a customer actually go out and put their resources and look for? How do you decide this harness is worth
+
+01:04:50.032 --> 01:04:58.133
+[SPEAKER_00]: spending money on? Well, in terms of this protector, of course, the laboratory that goes throughout the homologation makes everything
+
+01:04:58.253 --> 01:05:06.979
+[SPEAKER_01]: public. So you can look for the reports on the test. You can analyze the maximum value of the cheese. Also, the time that it stays above a certain
+
+01:05:07.019 --> 01:05:16.406
+[SPEAKER_01]: limit. And also, you can see normally the plot of the rebound. So if you are looking for a protector that is quite less, maybe you can choose an
+
+01:05:16.446 --> 01:05:24.110
+[SPEAKER_01]: inflatable protector. But if you look for the... plot, time plot, deceleration versus time that is published in the homologation, you
+
+01:05:24.130 --> 01:05:31.313
+[SPEAKER_01]: will see that there are several secondary rebounds using this kind of protector. If you want to avoid these rebounds, of course, you can look,
+
+01:05:31.373 --> 01:05:39.237
+[SPEAKER_01]: for instance, for a foam or for origami to prevent these rebounds. So the customers who are looking for a protector, they can check the results
+
+01:05:39.277 --> 01:05:47.041
+[SPEAKER_01]: because they are public. It's mandatory for each manufacturer to make them public. And also the laboratory needs to publish them in their
+
+01:05:47.101 --> 01:05:54.523
+[SPEAKER_01]: website. So I would advise the customers to look for more kind of technical information to discover if a protector is actually
+
+01:05:54.603 --> 01:06:02.085
+[SPEAKER_01]: protecting them or not, if it's protecting them for several impacts or not. That's why there are some protectors that are homologated only
+
+01:06:02.285 --> 01:06:10.668
+[SPEAKER_01]: following EN, because they only protect a single impact. And there are some others that are homologated following these two standards that
+
+01:06:10.828 --> 01:06:19.868
+[SPEAKER_01]: are EN and LTF, because some can sustain more than one impact. So I would advise to go to more technical information when it comes to decide
+
+01:06:19.948 --> 01:06:28.632
+[SPEAKER_01]: whether a protector is useful or not for them. Yeah, for Wingy it's easier because you have the level, as you said, ABCD, CCC. Inside each
+
+01:06:28.692 --> 01:06:37.008
+[SPEAKER_02]: level, as we said before, there are many margins that you can analyze also it's not just because you have one sea level it's sea you need to
+
+01:06:37.028 --> 01:06:45.156
+[SPEAKER_02]: analyze but for it's clear that for harnesses it's less visible and not so easy to find this information and even if you find it you need some
+
+01:06:45.357 --> 01:06:54.729
+[SPEAKER_02]: background or explanation of what you need to look for so that's why we're also investing and and trying to explain better this uh and with
+
+01:06:54.749 --> 01:07:04.744
+[SPEAKER_02]: this example of orikami it's the the good opportunity to make this uh explanation of maximum g is the timing on the on between this a certain
+
+01:07:04.764 --> 01:07:14.391
+[SPEAKER_02]: limit yeah above the limit of cheese the rebound so if you have a lot of rebounds all this if you are new in the in the market or in the sport for
+
+01:07:14.431 --> 01:07:23.658
+[SPEAKER_02]: sure it's not something that maybe you get easily from school training so you need to get it by your own and that's why it's not so easy to to
+
+01:07:23.718 --> 01:07:34.190
+[SPEAKER_02]: analyze safety of harnesses But they are the tools and you just need to understand maximum Gs, rebounds, timings, all these need to be
+
+01:07:34.210 --> 01:07:43.139
+[SPEAKER_02]: explained correctly. Another option is if someone wants to buy some protectors from Nebuke to ask our sales department and we will be really
+
+01:07:43.179 --> 01:07:50.766
+[SPEAKER_01]: glad to give the explanations and all the feedback about these technical aspects on the protector, the behavior of any protector that
+
+01:07:50.786 --> 01:07:59.211
+[SPEAKER_01]: we've got. No, for sure. I think that is a point that I want to emphasize with your brand, that it's very hard to come across a brand so
+
+01:07:59.271 --> 01:08:04.733
+[SPEAKER_00]: transparent and so honest about whatever they're bringing in, because a lot of brands are not comfortable talking about their
+
+01:08:05.373 --> 01:08:13.675
+[SPEAKER_00]: behind-the-scenes process. So definitely massive thanks to you guys for being so unfiltered while explaining your ideas. But you know,
+
+01:08:13.695 --> 01:08:24.259
+[SPEAKER_00]: guys, before I close this, I want to touch upon foam versus Oricami, or foam versus any other new technology. Because foam has been a trusted
+
+01:08:24.380 --> 01:08:32.366
+[SPEAKER_00]: partner in paragliding hardness-protected technology for years, for as long as we know it. Regardless of the amount of impacts, regardless of
+
+01:08:32.386 --> 01:08:41.914
+[SPEAKER_00]: whatever's there, it's like, hey, this is not going to burn a hole in your pocket. It is one of the most widely used forms of protection. Even the
+
+01:08:41.954 --> 01:08:49.180
+[SPEAKER_00]: top pilots in the world have been flying for it. The World Cup winners, the Super Final winners, the... the ones in the absolutely top league,
+
+01:08:49.621 --> 01:08:58.851
+[SPEAKER_00]: have placed their trust on foam time and again. So are we seeing like a revolutionary shift as we are seeing from three-liners to two-liners?
+
+01:08:59.231 --> 01:09:07.464
+[SPEAKER_00]: Is that what Arikami promises to bring in the market? Well, of course it depends on the requirements from the customer. The objective is to look
+
+01:09:07.484 --> 01:09:15.087
+[SPEAKER_01]: for performance, as I've said at the beginning of the talk, is to reduce the cross-section area of the harness, in that case for Brifter 2. If
+
+01:09:15.127 --> 01:09:23.610
+[SPEAKER_01]: they are looking for this specific application for CCC competitions and also for high-level cross-country flights, they would choose a
+
+01:09:23.670 --> 01:09:34.610
+[SPEAKER_01]: really low or slim profile protector. So Orikami is there to fill the gap of thin protectors in the market because If you are looking for a foam
+
+01:09:34.650 --> 01:09:43.013
+[SPEAKER_01]: that gives you the same protective behavior, the thickness is increased by more than 60%. So the performance is not at the same level in
+
+01:09:43.093 --> 01:09:51.337
+[SPEAKER_01]: terms of aerodynamics. So I think that Oricami will stay there for this kind of harnesses or applications that are all looking mainly for
+
+01:09:51.397 --> 01:10:03.876
+[SPEAKER_01]: performance. Got it. And other than that, I think when we talk about protectors in the harness, is that basically you make a decision with
+
+01:10:04.036 --> 01:10:12.784
+[SPEAKER_00]: airbag and foam and autochamber based on performance? Or is there a way that, hey, if I spend more money, I will get more safety? Because
+
+01:10:13.124 --> 01:10:23.331
+[SPEAKER_00]: obviously, we as humans do not want to trade monetary gains for safety. Like you tell someone that you give me 100 euros extra and I'll make your
+
+01:10:23.371 --> 01:10:31.916
+[SPEAKER_00]: life safer, he'll happily pay that. So what I'm wondering is, is the market eventually transitioning towards the point where money means
+
+01:10:32.056 --> 01:10:41.842
+[SPEAKER_00]: more safety? Or is it that, no, you just have to look at your use case scenario and safety can be accessible to even people who do not have big
+
+01:10:41.902 --> 01:10:52.518
+[SPEAKER_00]: bucks in the bank? Well, in terms of investment in research is what gives these kind of things up, like Oricami. If you relate this to safety, for
+
+01:10:52.578 --> 01:11:01.200
+[SPEAKER_02]: sure, brand that is able to invest a lot of money in research and inside foam, not just with Oricami technologies, but foams are a wide range.
+
+01:11:01.360 --> 01:11:13.447
+[SPEAKER_02]: range of materials that you can analyze, test and study. So a brand that is able to put this effort and time and investment on checking foams, for
+
+01:11:13.527 --> 01:11:25.415
+[SPEAKER_02]: sure you can get more safety or a better performance protector. That is what we did with this technology, focusing our objective of reducing
+
+01:11:25.455 --> 01:11:35.899
+[SPEAKER_02]: the frontal area of thruster. But yeah, for sure you can get more technology out of this. Yeah, and for the customer, you'd say that they
+
+01:11:35.939 --> 01:11:44.346
+[SPEAKER_01]: have to decide their application and their requirements. You cannot conceive high compliance hardness with the protector that you're
+
+01:11:44.366 --> 01:11:52.573
+[SPEAKER_01]: looking for low thin profile, but this may be a bit heavier compared to an inflatable protector. So always customers have to take this into
+
+01:11:52.613 --> 01:12:02.380
+[SPEAKER_01]: account when deciding whether to choose a product or another. And also, to give more view to people and to explain everything, I would recommend
+
+01:12:02.500 --> 01:12:10.971
+[SPEAKER_01]: to go inside Nebuke's Oricami webpage, so Nebuke and search for Oricami, and have a look into the technical report, because it gives a
+
+01:12:11.031 --> 01:12:18.198
+[SPEAKER_01]: really wide view of what is this technology and also to give more information about homologation procedure that all the harnesses
+
+01:12:18.238 --> 01:12:27.384
+[SPEAKER_01]: follow and to it also compares the families of the protectors that exist nowadays in the market and give you comparing the maximum value of
+
+01:12:27.444 --> 01:12:34.489
+[SPEAKER_01]: cheese and also things so i would recommend it the lecture of this technical document because it's really easy to understand and it's
+
+01:12:34.649 --> 01:12:42.894
+[SPEAKER_01]: helpful for everybody to know this information there are some visual graphs that are making the thing a bit simple to understand for everyone
+
+01:12:43.094 --> 01:12:53.316
+[SPEAKER_01]: so yeah If they have a look, they will have a general view of why we use this. You know, I have to bring in, your web designer is doing such an
+
+01:12:53.356 --> 01:13:02.340
+[SPEAKER_00]: amazing job, man. It's so nice to navigate on Nivea's website, like the amount of graphics, the amount of kind of information that is out there.
+
+01:13:02.840 --> 01:13:09.743
+[SPEAKER_00]: So you're not just making amazing links, you're definitely making amazing website as well. It's also a big theme of marketing here in the
+
+01:13:09.803 --> 01:13:19.827
+[SPEAKER_02]: office. It's making the video the the renders the all the image all the manuals and explanation it's not an easy thing so we have a big team here
+
+01:13:19.907 --> 01:13:26.609
+[SPEAKER_01]: in the office every day working for that yeah and we think that uh communication is as much as important as researching and development
+
+01:13:26.629 --> 01:13:33.892
+[SPEAKER_01]: so that's why we have this website with all the information being transparent explaining all the details from our products that's our
+
+01:13:33.952 --> 01:13:41.513
+[SPEAKER_01]: philosophy and we will maintain it for the years to come also A hundred percent. And I think just the amount of UX designers or the amount of
+
+01:13:41.593 --> 01:13:49.940
+[SPEAKER_00]: brain that your UX designer puts, because every time you bring out a glider on your website, I want to buy that. It is so damn inspiring. I've
+
+01:13:49.960 --> 01:13:57.807
+[SPEAKER_00]: been flying Ikuma 2 for about 300 hours now and I'm like, oh my God, I want to buy Ikuma 3 first and then buy the Arctic R. But anyways. Ikuma 3, you
+
+01:13:57.827 --> 01:14:11.832
+[SPEAKER_00]: didn't test it? No, maybe if you sponsor me. No, not yet. But I think, of course, your brand is so inspiring. I will get my hands on better and more
+
+01:14:11.932 --> 01:14:18.994
+[SPEAKER_00]: fancier wings eventually in time to come from Ikuma. But I mean, I am sold. You don't have to convince me. I love Ikuma and Niviuk anyways.
+
+01:14:19.674 --> 01:14:28.024
+[SPEAKER_02]: Step by step. You don't go fast. Just step by step on the progression and... If you go too fast, as we said before, if you jump some steps, it's
+
+01:14:28.044 --> 01:14:38.669
+[SPEAKER_02]: when people sometimes don't find a way of evolving inside this port. No, no, no. I'm in no rush. I want to enjoy every single Neve product to its max
+
+01:14:38.709 --> 01:14:47.373
+[SPEAKER_00]: before I upgrade to a better one. I mean, since you guys have been so honest, I want to ask you one last question before closing. Who decides
+
+01:14:47.413 --> 01:14:58.530
+[SPEAKER_00]: your names, man? How do you come up with such epic names of the products? It's so exciting. Well, this is a bit of playing between marketing and
+
+01:14:58.590 --> 01:15:08.914
+[SPEAKER_02]: designing. Sometimes we also receive feedbacks or suggestions, but normally it's marketing with designing that we appear with these
+
+01:15:09.094 --> 01:15:21.179
+[SPEAKER_02]: names. We start developing, for example, if it's already modeled in the catalog, it's clear that we need to follow the line, but for a new concept
+
+01:15:21.359 --> 01:15:29.493
+[SPEAKER_02]: or model, the designers They have their own ideas and they make proposals. Sometimes they are in the good line and we follow them and
+
+01:15:29.613 --> 01:15:41.477
+[SPEAKER_02]: sometimes we need to play a bit. But yeah, it's a funny thing also. Is this the brainchild of Dominic or is this like Oliver's fantasy world?
+
+01:15:41.518 --> 01:15:51.644
+[SPEAKER_00]: Because right from Coyote to Ikuma, R-Tape, everything just sounds so racy. Everything sounds so fancy, even the brand name, Niveox. I really
+
+01:15:51.664 --> 01:15:58.548
+[SPEAKER_00]: want to get a concrete answer to that. Who is the person who got this fascination going so well out there in the market?
+
+01:16:01.369 --> 01:16:09.206
+[SPEAKER_02]: It's a bit of part of everyone. Dominic, Olivier and all the other members of the team. The case on the names maybe make a raised effect
+
+01:16:09.286 --> 01:16:20.653
+[SPEAKER_02]: also. It's more strong names, like a bit of historic tendency that we follow. But everyone has a little bit of part on the names, more design
+
+01:16:20.833 --> 01:16:31.768
+[SPEAKER_02]: department and also the heads of the Nibiu company. I think I just have to bring your design department on the show one day, man. The way they
+
+01:16:31.808 --> 01:16:40.974
+[SPEAKER_00]: design the wings, and of course, you went from the trademark horn design to the brand new design. And I don't know, I've written to your export
+
+01:16:41.034 --> 01:16:51.582
+[SPEAKER_00]: manager multiple times that you guys design wings the way they fly. They just look so racier. Just by looking at the wing, you're like, yeah, that
+
+01:16:51.622 --> 01:17:00.488
+[SPEAKER_00]: looks like it's going to fly fast. Yeah. We also focus a lot in the handling and safety. That's a compromise that we are looking for all the
+
+01:17:00.548 --> 01:17:08.594
+[SPEAKER_02]: range of products in the catalog. You can have the best or quite high on the top performance, but if you are not complementing it with a good
+
+01:17:08.634 --> 01:17:21.163
+[SPEAKER_02]: handling or safety, depending on each concept. All the points are important. And handling, it's one of the feelings that you get or the
+
+01:17:21.183 --> 01:17:30.390
+[SPEAKER_02]: wing transmits to you. It's what makes you stay with this wing. If you test one wing one day, and you feel it just natural to you, and so this will
+
+01:17:30.430 --> 01:17:40.718
+[SPEAKER_02]: get you. And this is the handling. Now, you know, my Akuma made me deploy on my ninth flight with it. But regardless of that deployment, I mean,
+
+01:17:40.858 --> 01:17:48.785
+[SPEAKER_00]: that's thankfully the only deployment I've had, and I hope the only deployment I have in life, but that wing has kept me going for 300 hours,
+
+01:17:48.925 --> 01:17:55.992
+[SPEAKER_00]: even beyond that ninth flight, simply because of the way it handles and the way it does. I mean, although it requires a bit of a trimming pretty
+
+01:17:56.012 --> 01:18:03.720
+[SPEAKER_00]: often. Do you guys want to quickly touch upon that? Why do Niviuk wings require trimming so often? Is it because of the uncheated line and the
+
+01:18:03.760 --> 01:18:11.598
+[SPEAKER_00]: drag coefficient that you guys are trying to manage? Actually, if you see the materials that are used in industry, in paragliding industry,
+
+01:18:12.119 --> 01:18:19.827
+[SPEAKER_02]: there are not big difference between lines, manufacturers and fabrics. This could be a good, actually it's a bad point because we don't
+
+01:18:19.847 --> 01:18:27.675
+[SPEAKER_02]: have many options, but actually the material used on lines, for example, the trimming, It's in high aspect rings, let's say. The
+
+01:18:27.775 --> 01:18:38.684
+[SPEAKER_02]: non-covered lines are the same in the top brands. So the trimming, the behavior of the lines are not changing much. For sure, you can improve
+
+01:18:38.765 --> 01:18:51.095
+[SPEAKER_02]: this with production manufacturing processes. So there is also quite a lot of research and studies of how we construct the sewing of the lines,
+
+01:18:51.135 --> 01:19:01.981
+[SPEAKER_02]: the loops. But for sure, the material, I would not say that you need more trimming on one ebuke comparing to other wings. In general, let's say,
+
+01:19:02.021 --> 01:19:10.628
+[SPEAKER_02]: for sure, if you look at some cases, maybe people had bad experience or something very detailed. But in general, using the same materials, I
+
+01:19:10.668 --> 01:19:20.116
+[SPEAKER_02]: would not expect to have, in general, all right now well on that note guys i think you guys have been some one of the most transparent team on the on
+
+01:19:20.136 --> 01:19:27.842
+[SPEAKER_00]: the show and i honestly love your you know love your perspective massive thanks for that but before i let you go and before my audience lets you go
+
+01:19:28.442 --> 01:19:36.749
+[SPEAKER_00]: what is the plan what's what's what's coming i'm super excited and so is my audience so please a little bit of a sneak peek no secrets but still
+
+01:19:36.969 --> 01:19:45.374
+[SPEAKER_00]: whatever you can Well, in terms of developing, we are always pushing. This will not stop for sure. And we are making more simulation and
+
+01:19:46.275 --> 01:19:54.621
+[SPEAKER_02]: improving better the products and all these points will never stop. Yeah, and looking for new processes on simulation and also on these
+
+01:19:54.661 --> 01:20:02.988
+[SPEAKER_01]: researching projects that we've got just to be more efficient or to work faster in terms of development. That's also another important point
+
+01:20:03.008 --> 01:20:12.062
+[SPEAKER_01]: for us, but we can continue from there. In terms of products here, we are having some actually new harnesses presented now that are the tandem
+
+01:20:12.222 --> 01:20:20.870
+[SPEAKER_02]: harnesses that we present lately on the website that are the Sherlock and the Watson 2. These are the pilot and passenger harnesses that will
+
+01:20:21.350 --> 01:20:31.374
+[SPEAKER_02]: be on stock soon. So this will appear in the middle season. So these are the two main products out of the drifter that was presented with the
+
+01:20:31.394 --> 01:20:39.237
+[SPEAKER_02]: Oricami. So it's also the new product that we have these three harnesses. In terms of developing, we have a few more harnesses that
+
+01:20:39.277 --> 01:20:49.382
+[SPEAKER_02]: will be presented on the CUPICAR of this year. And in terms of wings, we are also going to present a quite long range of new wings that I cannot
+
+01:20:49.502 --> 01:21:02.686
+[SPEAKER_02]: spoil the names and not take out the effect of the CUPICAR thing. But yeah, we are working on eight models at the moment. Six will be presented
+
+01:21:02.786 --> 01:21:15.235
+[SPEAKER_02]: on the Cupica. So in harness also, we will present two, three new models this year. So it will be a quite interesting season. Hell yeah. I mean,
+
+01:21:15.255 --> 01:21:22.121
+[SPEAKER_00]: you know, considering the amount of team and resources that you guys have, I think I have only one request. Just don't patent every single
+
+01:21:22.161 --> 01:21:28.863
+[SPEAKER_00]: technology. Leave out something for the other manufacturers. We need a level playing field in here. What we said, if you don't push and you don't
+
+01:21:28.903 --> 01:21:37.930
+[SPEAKER_02]: run, you stay back. So it's not the option for New York. Agreed, agreed. I think on that note, guys, you know, we have pretty much covered
+
+01:21:38.050 --> 01:21:46.797
+[SPEAKER_00]: everything that we had time for. And needless to say, super exciting, super informative. And I don't see any reason why, you know, me or my
+
+01:21:46.837 --> 01:21:54.342
+[SPEAKER_00]: audience shouldn't place trust in your brand. Massive thanks, Paragliding Atlas. We'll definitely want your attention again. But
+
+01:21:54.483 --> 01:22:03.009
+[SPEAKER_00]: until then, this rocks our world hard enough. Thank you so much. Thanks a lot for your time and the opportunity to be in this show that we are not so
+
+01:22:03.049 --> 01:22:11.655
+[SPEAKER_02]: often doing these kind of things and we are happy to be part of it also and have the opportunity to explain all these not so easy things to
+
+01:22:11.675 --> 01:22:15.918
+[SPEAKER_02]: understand maybe. We always find a good point to share.

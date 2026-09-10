@@ -1,0 +1,1387 @@
+WEBVTT
+
+00:02.210 --> 00:05.012
+[SPEAKER_01]: [Automatic captions by Autotekst using OpenAI Whisper V3. May contain recognition errors.] how many data points are you collecting at any given point of time at any
+
+00:05.032 --> 00:17.099
+[SPEAKER_01]: given second during the flight i think it's 100 i think so for for now but it's for development later i think we will reduce them uh maybe by 10 10 by
+
+00:17.159 --> 00:28.202
+[SPEAKER_01]: seconds it will be enough 100 data points per second jeez that's so interesting i can i can see every movement of the wing at 18 at any time But
+
+00:28.262 --> 00:36.489
+[SPEAKER_00]: how is the accuracy of these things right now in your simulations and in the field tests that you guys have done? We have conducted a lot of tests
+
+00:36.509 --> 00:46.637
+[SPEAKER_00]: for autorotation. We have a very good discrimination between an autorotation and anything else. So we now have very, very good data that
+
+00:46.717 --> 00:52.302
+[SPEAKER_01]: led us to see that we will have a strong link between our sensor and the autorotation.
+
+01:01.157 --> 01:08.743
+[SPEAKER_00]: Until a few years ago, the only things that we needed to remember to charge up before leaving our houses were our phones and laptops. And
+
+01:08.803 --> 01:17.310
+[SPEAKER_00]: then came the era of electric mobility. We had electric cars, electric bikes, and suddenly keeping them up to charge became another item on our
+
+01:17.370 --> 01:28.136
+[SPEAKER_00]: daily checklist. But what if I told you that very soon, every time you go out and fly, you might also want to check up how much battery percentage
+
+01:28.156 --> 01:37.141
+[SPEAKER_00]: you have on your harness. And I know this might sound strange at first, but it's actually a sign of something super exciting. And for the very
+
+01:37.201 --> 01:46.066
+[SPEAKER_00]: first time, the technologies that were once exclusive to the automotive world, like smart sensors, the onboard processors, and the
+
+01:46.086 --> 01:54.340
+[SPEAKER_00]: real-time data analysis, are finally starting to make their way into our sport of paragliding. And this kind of changes everything because
+
+01:54.520 --> 02:03.930
+[SPEAKER_00]: we are no longer talking about harnesses which are just stitched with fabrics and webbings. We are finally entering an era of something that
+
+02:03.970 --> 02:14.718
+[SPEAKER_00]: we can proudly call as smart harnesses and this is the equipment that can not only sense and anticipate but most importantly it can even react as
+
+02:14.798 --> 02:22.783
+[SPEAKER_00]: and when needed to help us practice the art of flight in a more safer manner. If this is a red-letter day or something for the sport of
+
+02:22.823 --> 02:32.068
+[SPEAKER_00]: paragliding, only time will tell. But for now, you can imagine flying with a harness that understands what you're doing, that anticipates
+
+02:32.108 --> 02:42.442
+[SPEAKER_00]: what's coming, and most importantly, has the built-in capacity to assist in real-time when and if shit hits the fan. The thing is that
+
+02:42.903 --> 02:49.826
+[SPEAKER_00]: artificial intelligence and machine learning algorithms have been transforming quite a lot of industries in the recent past. So it was only
+
+02:49.866 --> 02:57.010
+[SPEAKER_00]: a matter of time before they were going to get adopted in our simple, yet one of the most beautiful forms of aviation that we all call as
+
+02:57.050 --> 03:06.494
+[SPEAKER_00]: paragliding. So in today's episode, I sit with the lead harness designer at the brand Sapir, which also happened to be the first ones in
+
+03:06.534 --> 03:14.518
+[SPEAKER_00]: the world of paragliding to not only explore this idea, but to be actually brave enough to put it into serial production. And most
+
+03:14.598 --> 03:22.161
+[SPEAKER_00]: importantly, they are on track to becoming the first company in the history to release a harness that is not just designed for comfort and
+
+03:22.181 --> 03:30.405
+[SPEAKER_00]: convenience, but instead for an entirely new level of safety and automation. Ladies and gentlemen, boys and girls and everyone along
+
+03:30.425 --> 03:36.851
+[SPEAKER_00]: with them, welcome back to your weekly dose of awesomeness here at Paragliding Atlas Podcast. I'm your host Anindya Singh and in case you
+
+03:36.871 --> 03:43.137
+[SPEAKER_00]: haven't already done so, go do me a favor and smash that like and subscribe button and drop in a rating wherever possible. As mentioned
+
+03:43.177 --> 03:50.043
+[SPEAKER_00]: multiple times, these tiny acts of kindness from your end help us go a long way in reaching out to more pilots out there and thus making our
+
+03:50.083 --> 03:57.807
+[SPEAKER_00]: sport a safer and more fun place to be. And today, just like you, even I can't wait to dive deep into this conversation with a pioneer of some
+
+03:57.827 --> 04:08.510
+[SPEAKER_00]: sorts to say the least, none other than the designer himself, Roman Barthelemy. So without further ado, let's tune in and I hope you like it.
+
+04:13.006 --> 04:24.792
+[SPEAKER_00]: Roman Barthelmy. Is that how I say your name, man? Barthelmy. Romer Barthelmy. I hope. Romer Barthelmy. That's it. Thank you. I mean, there
+
+04:24.872 --> 04:32.656
+[SPEAKER_01]: are things. That's it. Yeah, that's easy. Yeah, there you go. You nailed it. It's better. Yeah, I think you're the smarter one here. So you only
+
+04:32.696 --> 04:41.900
+[SPEAKER_00]: take one try. I had to rehearse this four or five times and I still messed it up. I don't pretend it. Thank you for joining us on the show. How are you
+
+04:41.980 --> 04:51.323
+[SPEAKER_00]: and where are you? Where are you joining us from? I'm fine. And I'm living in France in a beautiful place called Valouise. This is where I'm living
+
+04:51.443 --> 05:00.969
+[SPEAKER_01]: and working for Super, the famous paragliding company. And I think your background tells me that this is more or less your brain, what is it
+
+05:01.009 --> 05:09.575
+[SPEAKER_00]: called, brainchild workshop or something like that? Is this where you keep all your toys that you play with? That's it. My office is full of a lot
+
+05:09.635 --> 05:20.458
+[SPEAKER_01]: of tech things. I'm a tech enthusiast, so I like to build machines. I don't know. So interesting, man, because usually I think anybody, I
+
+05:20.878 --> 05:28.040
+[SPEAKER_00]: mean, of course, creativity can go in any direction, but paragliders are those kind of people that are not really into numbers and stuff like
+
+05:28.060 --> 05:35.321
+[SPEAKER_00]: that. And they're just like more outdoorsy people who just want to go out and chase the nature and everything. Of course, once in a while, there
+
+05:35.361 --> 05:42.683
+[SPEAKER_00]: are some people of your kind as well. So tell our listeners a little bit about you. Who are you and how did you become where you are at this time in
+
+05:42.723 --> 05:55.107
+[SPEAKER_00]: life? Well, where to start? In Super, I'm leading the office called Innovation. So working transversally in many, many aspects in Super. I
+
+05:55.227 --> 06:06.532
+[SPEAKER_01]: used to work for production. I used to work for bench, torture bench for some materials. And some time ago, I started to work for the project
+
+06:06.592 --> 06:17.396
+[SPEAKER_01]: called SkyMet. So I came in Super seven years ago. We are working for SkyMet maybe five years or four years. And before that, I came from the
+
+06:17.896 --> 06:26.420
+[SPEAKER_01]: Internet of Things company and drone manufacturing company. So I'm a lot in, how to say, software development, embedded software
+
+06:26.440 --> 06:35.405
+[SPEAKER_01]: development, electronic and all stuff like that. So you're a coder who likes to fly, basically. Yeah, I'm a coder. I do, like I said, it's very
+
+06:35.786 --> 06:45.312
+[SPEAKER_01]: transversal. So I'm doing a lot of things that has to go with the computer and also with electronic and also with sewing and also with mechanics.
+
+06:45.472 --> 06:54.177
+[SPEAKER_01]: Every part of tech work, I'm interested in. That sounds like a lot, man. Must be a hectic lifestyle, no? Sorry? I'm saying that sounds like a lot
+
+06:54.217 --> 07:04.262
+[SPEAKER_00]: of hats that you wear. It must be a hectic lifestyle. Yes. yes yes but you know i think in paragliding we we have we do a lot of such things you know
+
+07:04.322 --> 07:14.026
+[SPEAKER_01]: you are at the sewing machine and also at the at the designing machine you do a lot of things in paraglider there is no separated how to say i don't i
+
+07:14.046 --> 07:21.130
+[SPEAKER_01]: don't know how to express this but You're talking about a standalone role. There's not one single role. You have to be an overall person kind
+
+07:21.150 --> 07:29.915
+[SPEAKER_00]: of thing. That's it. Yes, exactly. It's quite a tricky market from what I see. And of course, the manufacturers, when I look at it from a business
+
+07:29.955 --> 07:36.938
+[SPEAKER_00]: side and they go out to hire someone, they can't hire people for specialized roles. They have to find somebody who fills in multiple
+
+07:37.519 --> 07:44.505
+[SPEAKER_00]: spaces and then, of course, keep it. more streamlined like that. So I think that is where you're coming from. Yeah. And of course, there is no
+
+07:44.545 --> 07:53.614
+[SPEAKER_01]: school to learn how to design paragliders. For me, for example, I started building my own paraglider and kites. So this is maybe why I'm
+
+07:53.714 --> 08:01.222
+[SPEAKER_01]: working for Super now. Because before that, I know how to assemble kites and how to assemble paragliders. Okay, so tell me, how does that start?
+
+08:01.382 --> 08:09.050
+[SPEAKER_00]: What does a person have to do when they have to start designing something? Is it just like take a pen and paper, start drawing, and
+
+08:09.090 --> 08:16.639
+[SPEAKER_00]: that's how the visualization starts? Or is it mostly AutoCAD? Or what are the steps that you take to become a designer? Okay. In fact, a lot of
+
+08:16.659 --> 08:27.286
+[SPEAKER_01]: people think that it is impossible because when you start to think about what is a paraglider, you have to say it's mainly made of materials. And
+
+08:27.666 --> 08:36.632
+[SPEAKER_01]: when you start, you have to start somewhere. You have to begin a project. For example, you start a paraglider. You say, well, I want to do a certain
+
+08:36.652 --> 08:46.899
+[SPEAKER_01]: paraglider with, I don't know. For me, I start with I can fly machine. So I say, I want a small wing because I don't want to buy one. I like to build by
+
+08:46.939 --> 08:59.228
+[SPEAKER_01]: myself. So I start and say, well, what could I build for the first machine to fly and to learn how to do this? So I start to pick a profile. and put it on
+
+08:59.248 --> 09:10.815
+[SPEAKER_01]: a specialized software I was working on with a friend that were called L2B Design. And so you put your profile, you start building the sail, and
+
+09:10.855 --> 09:20.300
+[SPEAKER_01]: you do the export. With the printer, you print everything on the raw materials. You cut it, you sew it, and you put it in the trash bin because
+
+09:20.440 --> 09:30.765
+[SPEAKER_01]: it's not flying and it's... yeah yeah i mean it's scary you know i think no yeah the first one always goes to the to the trash bin it's the same for
+
+09:30.785 --> 09:39.910
+[SPEAKER_01]: kite it's the same for but you learn a lot of things you learn that the point where no we are not at this as a good at the good position you learn
+
+09:39.930 --> 09:51.136
+[SPEAKER_01]: that the same tension is not the good one so you start another one and the second one is flying far better and This is where it leads you. So after
+
+09:51.176 --> 09:59.421
+[SPEAKER_01]: that, you start a third one, a fourth one, and that's it. That's how I do it. Yeah, yeah. I mean, a hit and try is the way to move forward in life, you
+
+09:59.461 --> 10:06.006
+[SPEAKER_00]: know? You don't learn until you try hard. What I'm wondering is, does this help you make a better pilot out of yourself? I think so. I think so
+
+10:06.026 --> 10:14.993
+[SPEAKER_01]: because I know from the inside how it is made. When I see a production paraglider, I can see clearly how strong is it. Because when I did it by
+
+10:15.033 --> 10:24.981
+[SPEAKER_01]: myself, I know that what I was doing was not maybe sometimes strong enough, but enough to do some test flight. And I know how it is made and why
+
+10:25.021 --> 10:35.029
+[SPEAKER_01]: it is as good and why I can fly it and feel it in the air. Wow. And that you can only learn if you start designing your own wings. You can't read a book or
+
+10:35.469 --> 10:42.995
+[SPEAKER_00]: talk or listen to a podcast like this and get some visualization of it. It's just by going out and giving it a shot. I think you can. I think it's
+
+10:43.055 --> 10:46.878
+[SPEAKER_01]: going faster this way. Of course, you can learn by flying. There is a lot of...
+
+10:50.881 --> 11:03.509
+[SPEAKER_01]: There are a lot of ways to learn how to fly. If you can fly a lot of ground, a lot of paragliders, a lot of different things, I think you learn faster.
+
+11:03.709 --> 11:11.814
+[SPEAKER_01]: By coming from the inside, you will learn different things, I think. Interesting. I think internal structure is something that we all as
+
+11:11.854 --> 11:20.578
+[SPEAKER_00]: consumers completely ignore. The deepest things that we go in is the arc shape and the line attachment points and the material usage because
+
+11:20.638 --> 11:27.942
+[SPEAKER_00]: that's what is being marketed by the manufacturers. But internal structure is something that nobody even thinks about before choosing a
+
+11:27.982 --> 11:37.625
+[SPEAKER_00]: wing or trying to get into that aspect of flying. Yeah, but I think it's the main aspect of a paraglider is how it is made inside because it does a
+
+11:37.645 --> 11:46.528
+[SPEAKER_01]: lot. The internal structure is what is maintaining the sail tension, is what's maintaining the wing in all these aspects. And especially when
+
+11:46.548 --> 11:57.611
+[SPEAKER_01]: it comes to, how to say, jet maneuvers or something like that, it is what makes the wing behave like it behaves. It's not only the profile or not
+
+11:57.651 --> 12:06.237
+[SPEAKER_01]: only... In fact, it's a wall. There is a lot of things for the line, the line is a point attachment, but the inside structure is very, very
+
+12:06.257 --> 12:18.964
+[SPEAKER_01]: important. I heard Luc Armand state that it's all about the internal structure. So when you go out as a pilot to choose a new wing and you want to
+
+12:19.084 --> 12:25.987
+[SPEAKER_00]: increase your knowledge for internal structure, how do you start reading it? For example, let me compare it to line attachment points.
+
+12:26.167 --> 12:34.871
+[SPEAKER_00]: You know how the difference in behavior will be if the points are closer to the opening cells or if they're further. And same for the arc shape.
+
+12:35.311 --> 12:43.253
+[SPEAKER_00]: That tells you a little bit about its behavior in glide and the spiral behavior and those kind of things. But internal structure is something
+
+12:43.313 --> 12:52.376
+[SPEAKER_00]: that is not even talked about pretty often. And I think this becomes the topic for one of the future podcasts. But how do you learn and grow your
+
+12:52.476 --> 12:58.618
+[SPEAKER_00]: knowledge about internal structure so that you can make constructive decisions next time you are going out there and spending your money? For
+
+12:58.658 --> 13:08.181
+[SPEAKER_01]: me, in Super, I'm not designing the wing for now. This is Pierre-Yves Valois that is doing the wing in Super. But I try to help especially on
+
+13:08.221 --> 13:18.189
+[SPEAKER_01]: this aspect. And I'm doing it in a general way. So I take every element in, how do you say in English, computer-aided programs that can take the
+
+13:18.209 --> 13:27.615
+[SPEAKER_01]: tension and say, with this kind of attachments, you will have this kind of deformation of the wing, the whirlwind, you know, to see how the The
+
+13:27.655 --> 13:38.939
+[SPEAKER_01]: internal structure is working in which direction and how the sail tension is moving from the center to the tips of the wing. For me, a good
+
+13:38.999 --> 13:49.242
+[SPEAKER_01]: wing is a wing that you design in 3D and is the same in real life. So it's handling the same way in real life. The tension is equally respected.
+
+13:49.262 --> 13:59.546
+[SPEAKER_01]: The tension is in the good way. And there is no shrinking or expanding of the tension so that the wing is in every aspect the same as the one you
+
+13:59.566 --> 14:08.570
+[SPEAKER_01]: design on the computer. Okay, so you're telling me the manufacturing part should match the visualization in the graphics or in the software.
+
+14:08.790 --> 14:14.693
+[SPEAKER_00]: This is so interesting that I just want to keep on coming back with questions, but I think we'll miss our topic of harness today. I'm
+
+14:14.733 --> 14:23.999
+[SPEAKER_01]: looking at other companies what they are doing and I was very impressed by what was doing Tom Lolis and Cabana and BGD because they were further
+
+14:24.180 --> 14:33.606
+[SPEAKER_01]: and far away from what I'm doing because they were going to the raw material to simulate the raw material and I tried to do it but in a simple
+
+14:33.667 --> 14:43.759
+[SPEAKER_01]: way I tried to have a simple elements simple beam structure to see how it behaves with attention but i'm always looking at what the others are
+
+14:43.800 --> 14:54.746
+[SPEAKER_01]: doing and i think it's a good way to do but Paraglider is not only science and not only computer-aided software. There is a lot of agreement. The
+
+14:54.786 --> 15:05.714
+[SPEAKER_01]: wing has to be good to fly. It has to be nice to fly. And you can build a wing with a very high aspect ratio that could fly at, I don't know, 20 of
+
+15:06.714 --> 15:17.597
+[SPEAKER_01]: gliding ratio. But it won't be terrible because... It will, I don't know, collapse very easy or stop very easy. There is a lot of room for
+
+15:17.777 --> 15:26.681
+[SPEAKER_01]: empiricism and manual development in paraglider. And it's a good thing, I think. Indeed, indeed. It reminds me of this YouTube video that
+
+15:26.861 --> 15:34.444
+[SPEAKER_00]: I don't know if you have seen it or not. It goes by the name of Death Blade with this crazy aspect ratio wing. Yeah, have you seen it? Yeah, yeah, of
+
+15:34.504 --> 15:47.233
+[SPEAKER_01]: course. Yeah, it's another one. I think it's 2007. It's very old. I think this is why we are working as a team because we have a lot of test pilots.
+
+15:47.814 --> 15:58.202
+[SPEAKER_01]: When the first wing came out of the computer software, it is not as you would like to have it. You have to work on it manually every time. I think
+
+15:58.302 --> 16:06.429
+[SPEAKER_00]: one of my mentors told me that designing a wing is, of course, a whole different mountain to climb, but even trimming a wing needs a lot of
+
+16:06.489 --> 16:13.395
+[SPEAKER_00]: visualization of the profile and understanding it. And that itself is quite an art, which you have to learn by experience and, you know, by
+
+16:13.475 --> 16:20.500
+[SPEAKER_00]: being around the right people and trying and understanding. That's it. Yeah. Wow. It seems like a lot of hard work that goes on in our industry
+
+16:20.520 --> 16:27.806
+[SPEAKER_00]: that we don't even know about as users. You know, we just go out there, browse through the website page and just spend the money and start
+
+16:27.826 --> 16:42.110
+[SPEAKER_00]: flying it. for sure and it's kind of secret it's normal you know the resource there is not a lot of designer it's a small world you have to keep
+
+16:42.170 --> 16:52.015
+[SPEAKER_01]: it secret because it's very competitive yeah 100% talking about keeping it straight I think let's get this episode back on track for the
+
+16:52.255 --> 16:59.518
+[SPEAKER_01]: reason why we have joined because I don't know I love going on a tangent in such kind of topics but Of course, you know, we are here for your
+
+16:59.958 --> 17:07.143
+[SPEAKER_00]: absolutely magical product that you have. But before we dive deep into SkyMate Romain, one simple question that comes to my mind is so many
+
+17:07.503 --> 17:15.288
+[SPEAKER_00]: paragliding manufacturers, like manufacturers out there who manufacture the gliders, but handful of harness manufacturers. Why is
+
+17:15.408 --> 17:24.675
+[SPEAKER_00]: there such a big difference in people investing in the R&D? when it comes to wing but only very few getting into harnesses yeah it's not simple
+
+17:24.715 --> 17:34.583
+[SPEAKER_01]: question i think it's it's because the harness is not the piece that do the performance the the main performance came from the wing and and i
+
+17:34.643 --> 17:45.369
+[SPEAKER_01]: think the harness is just the appendix of a paraglider and that's all because Well, in fact, not really, because with the submarines, we came
+
+17:45.489 --> 17:54.331
+[SPEAKER_01]: with a really increasing performance. In fact, I don't know. In fact, I don't know. I have no idea. What's the kilometer per advantage that you
+
+17:54.351 --> 18:03.972
+[SPEAKER_00]: get from the submarine style versus the normal pod with the fairing style? From the measurement we made on computer, it's nearly one point
+
+18:04.092 --> 18:15.077
+[SPEAKER_01]: of gliding ratio. But in real life, we are near zero. half point of gliding ratio, something like that. Starting from a good harness, from
+
+18:15.117 --> 18:23.442
+[SPEAKER_01]: a foil harness already. One more time, what did you say? Yeah, starting from, if you compare between a foil harness like, I don't know, the
+
+18:23.462 --> 18:34.451
+[SPEAKER_01]: Delight 4 Sport and the Halp, for example, you gain half a point of gliding ratio. So basically a normal pod harness with fairing compared
+
+18:34.731 --> 18:43.462
+[SPEAKER_00]: to the submarine style harness, it's half a 0.5 glide ratio increase. And what's the speed increase? Like, do you like, if you're, let's say
+
+18:43.682 --> 18:51.009
+[SPEAKER_00]: you're trimming at like 38, how much are you trimming at with the submarine style? don't remember sorry uh you we can do the math no i was
+
+18:51.049 --> 18:57.473
+[SPEAKER_01]: just like approximate like does it does it make a substantial difference or is it very negligible i don't i don't want to i don't want to
+
+18:57.493 --> 19:07.499
+[SPEAKER_01]: answer because i i don't know exactly but uh it's a it's half point you know you know we we measure it in fact we measure it in term of of charge of
+
+19:07.599 --> 19:19.808
+[SPEAKER_01]: of drag you know uh between a normal harness we have nearly 12 newton of drags on on the darkness Do you mean chair harnesses? Like a foil
+
+19:19.828 --> 19:30.558
+[SPEAKER_01]: harness. Okay, the one with the fairing. For example. With a chair harness, we are nearly like 23 newtons, I think. So you cut it by half.
+
+19:30.718 --> 19:43.610
+[SPEAKER_01]: Yeah, and with a half harness, for example, we are nearly like 8 newtons. So we gain a third of it. Interesting, interesting. Yeah. It used to
+
+19:43.670 --> 19:50.594
+[SPEAKER_00]: baffle my mind, you know, because I'll tell you why. I started comparing this with the cars and how the shape of normal automobiles have evolved
+
+19:50.714 --> 19:57.998
+[SPEAKER_00]: over the years. If you look at the designs that the manufacturers were coming out in 70s and 80s, you saw the cars were a lot more fatter. They
+
+19:58.018 --> 20:06.022
+[SPEAKER_00]: were a lot more round and they were just like a bit bulkier. Fast forward to today, you see the cars a lot more streamlined with these, you know,
+
+20:06.162 --> 20:13.749
+[SPEAKER_00]: like sleek looks and like channelizing the airflow and stuff like that. My curiosity stemmed from the fact that we look at any fairing harness,
+
+20:13.789 --> 20:22.961
+[SPEAKER_00]: like be it XR7 or be it Delight or be it any of those, those have a much less surface area exposed to the wind, you know? The cross-section is what
+
+20:22.981 --> 20:32.553
+[SPEAKER_00]: I'm talking about. If you look at it from the front... The cross-section is nearly the same, but... you have the drag coefficient. So because the
+
+20:32.593 --> 20:42.403
+[SPEAKER_01]: drag coefficient is less than on RTR harness, you have less drag. You know, it's just aerodynamics. It has better aerodynamics. I think the
+
+20:42.603 --> 20:51.550
+[SPEAKER_01]: Alp has a bigger cross-section than the Delight 4. Yeah, that's what I'm wondering. That if it is having a bigger cross section and the point
+
+20:51.670 --> 20:59.954
+[SPEAKER_00]: where the fluid, in this case air, is making contact with the fabric is a lot more, then of course, you know, we are trying to reduce the contact
+
+21:00.174 --> 21:07.738
+[SPEAKER_00]: of, like we're trying to pass through the medium with least amount of contact so that the drag reduces. So then how is, like, this doesn't
+
+21:07.778 --> 21:15.161
+[SPEAKER_00]: make... logical sense to me that a bigger cross-section area is having less drag coefficient like can you please explain that to me because of
+
+21:15.201 --> 21:24.746
+[SPEAKER_01]: the shape of the of the harness because the flow is going smoother on the on the shape of the harness you you gain a drag coefficient so the drag
+
+21:24.766 --> 21:37.254
+[SPEAKER_01]: coefficient is a representation of the good aerodynamics of the harness so if your harness has a a longer shape, for example, it will have
+
+21:37.434 --> 21:45.563
+[SPEAKER_01]: a better drag coefficient because the flow is going smoothly on it. If you have a straight curve, just a flat curve at the back of your harness,
+
+21:46.024 --> 21:56.707
+[SPEAKER_01]: there will be turbulence and this is dragging. a lot. Fair enough. Help me understand the design of Formula 1 cars. Formula car is a car is a there
+
+21:56.767 --> 22:09.674
+[SPEAKER_01]: is two aspects in Formula car or car in general way. There is a aerodynamic of the car so it will drag less but there is also the pressure
+
+22:10.014 --> 22:20.221
+[SPEAKER_01]: you put on the car to put it on the ground to have a better adherence during driving. So it's not only the aerodynamics. In paragliding, for
+
+22:20.241 --> 22:29.947
+[SPEAKER_01]: example, you only work on aerodynamics because this is what you want to reduce. You want to reduce the drag coefficient. That's it. Right. On a
+
+22:29.967 --> 22:38.893
+[SPEAKER_01]: car, you want to reduce the drag coefficient, but you want also to have strong force on the wheel to be able to drive fast in curves. Wow, this
+
+22:38.933 --> 22:47.838
+[SPEAKER_00]: makes a lot of sense. And I think that is why, let's say, commercial airliners are designed with a more round look rather than fighter jets.
+
+22:48.198 --> 23:01.264
+[SPEAKER_01]: And for now, when I see modern Formula One cars, there is a lot of wings and winglets that came from everywhere to be able to stream the line, to
+
+23:01.304 --> 23:12.338
+[SPEAKER_01]: stream the current. on the car at specific points. You have to cool the engine, you have to put this weight on the car to put. So there is a lot of
+
+23:12.418 --> 23:23.209
+[SPEAKER_01]: appendices that are coming from everywhere to help the car be faster and to be stronger on the road. This is what was baffling my mind when I
+
+23:23.449 --> 23:31.452
+[SPEAKER_00]: started looking at the designs of these submarine-style harnesses. Because let's say Subair's Alp is a very clean, no-nonsense kind of a
+
+23:31.492 --> 23:41.936
+[SPEAKER_00]: harness, just pure kind of balloon shape without any protruding parts. And then you have Ozone having a fin under the fairing. And then you have
+
+23:42.036 --> 23:47.998
+[SPEAKER_00]: Neveo coming in with two fins, one on the top, one on the bottom. And then of course, Woody Valley is doing their own thing. And you know, some
+
+23:48.018 --> 23:57.223
+[SPEAKER_00]: other brands are having their different fins at different places. So how is having fins in this shape helping when we are trying to just make
+
+23:57.263 --> 24:03.726
+[SPEAKER_00]: sure the flow is completely uniform? Because of course, the fins are going to disturb that, right? Yes and no. In fact, the fins are
+
+24:04.046 --> 24:12.728
+[SPEAKER_01]: disturbing, but also they are making a motion that will help to have a better track coefficient. The fin, for me, on the submarine, the
+
+24:12.808 --> 24:22.131
+[SPEAKER_01]: original submarine of Ozone, I think is made for high-speed stability because this submarine is made for competition. So when you are coming
+
+24:22.211 --> 24:34.317
+[SPEAKER_01]: at high speed, you will start to have some instability that occurs on the submarine. And I think it's meant, I'm not sure, this is my thought. For
+
+24:34.457 --> 24:46.065
+[SPEAKER_01]: us on the Alps, as it is a high-speed harness, we don't want it to be flown like a high-speed harness. It is for increasing performance on the
+
+24:46.125 --> 24:58.173
+[SPEAKER_01]: whole speed range of the high-speed wing. So we want it light and it is not meant to be at high speed every time. And the submarine is different for
+
+24:58.213 --> 25:06.278
+[SPEAKER_01]: me in this kind of. Wow, that's so interesting, man, because what we see, I mean, of course, these are all behind the scenes that you as a designer
+
+25:06.318 --> 25:16.723
+[SPEAKER_00]: see so easily. But as a consumer, it's just it's not it's not easy because we have to think. of what the others are thinking. Because, like you, we
+
+25:16.763 --> 25:26.466
+[SPEAKER_01]: were wondering, what is this? Why? Why putting such thing, such embeddings on the harness? And we thought that this was for stability.
+
+25:26.806 --> 25:40.973
+[SPEAKER_01]: Because we tried it, we made a lot of prototypes, we made this, and we said we will need it for high speed. For example, we have a version of the X- ALP
+
+25:41.434 --> 25:54.283
+[SPEAKER_01]: and it has a fin because for the X-ALP, we have to reduce the size of the fairing because it has to stay in certain lengths. So we add it to be able
+
+25:54.323 --> 26:02.730
+[SPEAKER_01]: to have a better drag coefficient on the small size of a sublight, for example. This was another question that I wanted to ask is when it comes
+
+26:02.750 --> 26:11.278
+[SPEAKER_00]: to fairing, is the longer the better? I think so. I think there is an optimum, but because if it's longer, I think it will be wider. And after
+
+26:11.318 --> 26:21.569
+[SPEAKER_01]: that, you will have something that is not very, very easy to take off with. But fairing, At some time, you won't gain enough to have something
+
+26:21.609 --> 26:29.578
+[SPEAKER_01]: very long that will don't need anything. But I think so. I think the longer, the cooler for sure, you know, because it looks better. Like the
+
+26:29.598 --> 26:38.807
+[SPEAKER_00]: harnesses just look sexier when they have a longer tail behind them. They're good for the photographs. Yeah. But we were also working on
+
+26:38.987 --> 26:51.153
+[SPEAKER_01]: some, how to say, drag limiter for the arm, for example. Because the arm are doing a lot of drag during flight, so do the riser. So we were looking
+
+26:51.313 --> 27:02.278
+[SPEAKER_01]: at doing some appendix to reduce the drag again on the riser and on the arm. Because this is maybe the last thing we can work on it to reduce drag.
+
+27:02.538 --> 27:11.563
+[SPEAKER_01]: Before being in a walled canopy, completely closed. I was literally going to say that I think five to 10 years from now, let's say, you know,
+
+27:11.643 --> 27:17.986
+[SPEAKER_00]: 2030 or early 20s, we are definitely looking at closed canopies in paragliding. I think that's where the industry is going. Yeah, I think
+
+27:18.006 --> 27:27.731
+[SPEAKER_01]: so. But, you know, it has to stay daylight and it's paragliding. Paragliding is not only performance. For me, I enjoy vol bivouac or
+
+27:27.851 --> 27:36.616
+[SPEAKER_01]: something like b-flight and something like that. So the paraglider is not only competition. I mean, look at how we have come, Romain. You know,
+
+27:36.676 --> 27:46.101
+[SPEAKER_00]: we started from these skydiving-looking ram air canopies, which were just gliding down at 3 to 1 or 5 to 1. and of course back then also there must
+
+27:46.141 --> 27:52.385
+[SPEAKER_00]: have been a school of thought saying that hey it's not performance we just want to enjoy the freedom of soaring around or roaming in thermals
+
+27:52.605 --> 28:00.150
+[SPEAKER_00]: and today we are chasing you know distance with triple c's and coming out with innovations for increasing half a point of glide ratio as you said
+
+28:00.250 --> 28:08.475
+[SPEAKER_00]: so i think somehow industry will go where the money is and the money will go where the comfort is because audience eventually pays for the
+
+28:08.495 --> 28:16.476
+[SPEAKER_00]: comfort right and if Closed canopies and pressurized systems and those kind of things are increasing the comfort because, you know, you look at
+
+28:16.496 --> 28:24.324
+[SPEAKER_00]: the technologies now in our flying wings. There is RAST from Swing, which is making it easier to fly a wing. There is, what did the Diva have?
+
+28:24.484 --> 28:33.756
+[SPEAKER_00]: The Reflex, which is making it easier to fly. Yeah, yeah. you know there are what was that thing with the gen the wave leading edge which is making
+
+28:33.776 --> 28:42.108
+[SPEAKER_00]: it more collapse resistant so the industry is subconsciously or knowingly going towards making it easier to fly the sport of
+
+28:42.148 --> 28:50.535
+[SPEAKER_00]: paragliding and if paragliding having a windshield or a closed canopy is much easier to the pilots then majority will eventually go towards
+
+28:50.555 --> 28:57.841
+[SPEAKER_00]: there and then the industry will follow because that is where the money is kind of a thing yeah yeah for sure for sure but uh for me i'm thinking
+
+28:57.901 --> 29:10.068
+[SPEAKER_00]: that please it's always A run forward, you know, you're always running for more aspect ratio, higher aspect ratio, and new safety features,
+
+29:10.228 --> 29:21.333
+[SPEAKER_01]: passive safety features on the wing. But we are missing the ability to extract 100% of what a wing can do. This is one of the things we...
+
+29:25.615 --> 29:40.306
+[SPEAKER_01]: We try to make with SkyMet because we are trying to get the maximum of B, ENB glider in terms of performance by helping the pilots to go further
+
+29:40.427 --> 29:51.535
+[SPEAKER_01]: with such level of performance. We are trying to reach an ENC glider with an ENB glider. Wow. So it is making flying easier or is it making flying
+
+29:51.775 --> 30:02.246
+[SPEAKER_00]: more efficient? Easier. Easier, better. In fact, we are trying to have a high level of safety. By using an ENV, we are trying to have a high level of
+
+30:02.266 --> 30:10.275
+[SPEAKER_01]: safety. And by helping the pilots, we are trying to make it fly better. Okay, amazing. Well, thank you for mentioning SkyMate. I'm so glad to
+
+30:10.295 --> 30:18.222
+[SPEAKER_00]: come back to this topic that we joined here for like half an hour into this talk. Yes. No, you're such an interesting guy. I can bring you on for like
+
+30:18.322 --> 30:27.948
+[SPEAKER_00]: five, six episodes, I think. We should do a series on the brain behind. All right. Before we dive into this, Romain, I was reading the brochure
+
+30:28.088 --> 30:35.794
+[SPEAKER_00]: that you guys put on, and there was a very interesting thing over there, which I mentioned. The European Commission has a project called Perf
+
+30:36.034 --> 30:44.661
+[SPEAKER_00]: AI, P-E-R-F AI, which is basically focusing on applying machine learning tech to the flight data. Could you please tell our listeners a
+
+30:44.681 --> 30:51.908
+[SPEAKER_00]: little bit about this project and what is it all about? To be frank, I don't know this project, but in fact, to say this is the way, because with
+
+30:51.928 --> 31:02.797
+[SPEAKER_01]: SkyMet, we will have access to a lot of data. Because we will collect and this is what we want to do. We want to extract which information from all
+
+31:02.817 --> 31:15.149
+[SPEAKER_01]: this data. And we want them to be, how to say, I don't know if it's a good term, to be able to help pilots to fly better and fly safer, especially
+
+31:15.189 --> 31:23.435
+[SPEAKER_01]: safer. So let's say, how did this concept start? Like, you know, tell our listeners a little bit about the history of how did the origin of SkyMate
+
+31:23.475 --> 31:32.141
+[SPEAKER_00]: look like? Spoiler alert, it was not intended to be such a big thing with artificial intelligence or something like that. When we started
+
+31:32.161 --> 31:41.048
+[SPEAKER_01]: SkyMet with Laurent, it was an idea of Laurent that asked me to think about a project. Laurent is your CEO. He's the boss of all things at
+
+31:41.069 --> 31:53.379
+[SPEAKER_00]: SkyMet. That's it. Laurent Chabot, CEO of Super. And he asked me to think of a project to have better safety in paragliding. And because we came
+
+31:53.760 --> 32:07.269
+[SPEAKER_01]: with data that was given by the federal French aviation. And they say there were a lot of accidents. And sometimes there were accidents where
+
+32:07.389 --> 32:18.615
+[SPEAKER_01]: the pilots didn't do anything. For example, autorotation, we had in, when we started, it was, I don't know, 16. There were eight people that
+
+32:18.916 --> 32:28.581
+[SPEAKER_01]: were into an autorotation and were to the ground without doing anything. And he said, what can we do to avoid this situation. What can we
+
+32:28.621 --> 32:39.208
+[SPEAKER_01]: do to prevent or to do something for the pilot not to go down after an autorotation? So we started to experiment. We made a lot of
+
+32:39.288 --> 32:49.494
+[SPEAKER_01]: experiments. We tried first a passive system approach. So we didn't want to put electronics at the first time on the paraglider. We wanted to
+
+32:49.534 --> 32:59.921
+[SPEAKER_01]: have a system that is passive. So maybe the pilot could pull it when something is going wrong. very quickly we came to we very quickly we see
+
+32:59.941 --> 33:11.390
+[SPEAKER_01]: that if the pilot is fighting during the rotation collapsing or i don't know what man driving system won't work because he won't pull it or or he
+
+33:11.470 --> 33:21.757
+[SPEAKER_01]: would have pulled the reserve instead of going down so i said to laurent we have to put electronics we have to measure we have to act when the pilot
+
+33:21.818 --> 33:31.850
+[SPEAKER_01]: is not active And when we opened this box, it was a huge thing because we have to do a lot, lot, lot, lot of this. I think this reminds me a little bit
+
+33:31.890 --> 33:38.258
+[SPEAKER_00]: like the AADs in skydiving, you know, the automated activation devices. Is this like inspired from that kind of thought process? Yeah,
+
+33:38.298 --> 33:48.564
+[SPEAKER_00]: of course. Of course, of course. Yeah, exactly. Yeah, exactly. That's it. So we wanted to see what we need to have it. And so I started to look at
+
+33:48.784 --> 34:00.329
+[SPEAKER_01]: some devices to measure G-meters, to measure autorotation. So we start to make autorotation. We start to do a lot, lot of tests to see what is
+
+34:00.410 --> 34:11.296
+[SPEAKER_01]: necessary on such device to be doable. And after that, we see that we need a strong link between It's a different sensor because we will have a lot
+
+34:11.336 --> 34:21.184
+[SPEAKER_01]: of sensors that are in different parts of the harness and the wing. So it's making the thing harder because when you have a different sensor in
+
+34:21.224 --> 34:29.291
+[SPEAKER_01]: different way, you have to power them and you have to do data link communication between them. And this is where the fun begins. You have
+
+34:29.311 --> 34:39.016
+[SPEAKER_01]: to do something that is simple, simple enough so that the pilots don't need to work everything up. We want it to be very, very simple. Puts its
+
+34:39.036 --> 34:46.159
+[SPEAKER_01]: harness, he closes the speed bag and everything is running. Yeah, yeah. I mean, just making life easier in the air for all of us. That's what
+
+34:46.320 --> 34:51.922
+[SPEAKER_00]: machine learning is all about, no? Or that's what they tell us. Yeah, yeah, a little bit. There is a lot of different layers in machine
+
+34:51.942 --> 35:01.847
+[SPEAKER_01]: learning, you know. I... Artificial intelligence is very wide. That comes from very simple algorithms to very sophisticated, different
+
+35:02.347 --> 35:10.051
+[SPEAKER_01]: layers of machine learning. When you say artificial intelligence, it covers a lot of things. What we did, we started with something simple,
+
+35:10.291 --> 35:20.775
+[SPEAKER_01]: but very upgradable. So we are thinking of starting with basic detection. And after that, when we will have collected enough data, we
+
+35:20.815 --> 35:31.759
+[SPEAKER_01]: will add the system is able to handle higher level of artificial intelligence. What I'm wondering is that did you guys have to make all
+
+35:31.799 --> 35:38.421
+[SPEAKER_00]: the data points to collect them for research in the beginning? Or was there some reference point already existing in the market from other
+
+35:38.461 --> 35:44.583
+[SPEAKER_00]: industries like automobile aviation and stuff like that, where you could just buy that data and implement it into the system so that there
+
+35:44.603 --> 35:53.989
+[SPEAKER_00]: could be some kind of algorithms designed around it, which could help you start the development? No, I didn't find any data on the market. We
+
+35:54.009 --> 36:04.880
+[SPEAKER_01]: have to collect them because they're specific. For example, I started with some data collected on the Federal Cup of Distance in France to be
+
+36:04.940 --> 36:15.166
+[SPEAKER_01]: able to have some Some first point to do some tests, especially because, for example, in SkyMate, the system knows where it is at every moment, at
+
+36:15.287 --> 36:27.813
+[SPEAKER_01]: which altitude it is above the ground. So I have to try with already recorded traveling to see if I have trouble in my detection and if it's
+
+36:27.893 --> 36:39.838
+[SPEAKER_01]: going to work. on the system without doing a lot, lot, lot of flight because it's very consuming for the pilots to fly for nothing. It's just
+
+36:39.898 --> 36:51.403
+[SPEAKER_01]: fly and see if the data is good. It's not a very easy task. So we used already data that has already been recorded. I'm wondering, this must
+
+36:51.423 --> 36:58.428
+[SPEAKER_00]: be quite a humongous task because this is just one aspect that we're speaking about. What's the timeline from the drawing board to final
+
+36:58.489 --> 37:04.353
+[SPEAKER_00]: first proto-production kind of a thing? How many months, years or whatever, if you're comfortable talking about it? Yeah, it's five
+
+37:04.393 --> 37:12.436
+[SPEAKER_00]: years. Five years. Holy freaking moly. When did ChatGPT come out? Because we as consumers only knew about AI after ChatGPT, right? Like
+
+37:12.476 --> 37:21.822
+[SPEAKER_00]: before that, it was just like looking in behind the scenes. It was never given to the end user. No, but it was already there before. It's not
+
+37:21.862 --> 37:34.853
+[SPEAKER_01]: something new. ChatGPT came and it put in the foreground something that is new, but it has already been here before. so now it's five years of you
+
+37:34.873 --> 37:46.988
+[SPEAKER_01]: know the artificial intelligence is a big stuff but we keep it for further work because it's for further work for the future for now we are
+
+37:47.088 --> 37:59.176
+[SPEAKER_01]: using a very basic AI detection model because We want the electronic and the system to be extremely strong. After that, we work on artificial
+
+37:59.196 --> 38:07.980
+[SPEAKER_01]: intelligence. The priority is to have something that is durable, that's something that is repairable. So the pilot is easy. That is what I
+
+38:08.020 --> 38:17.346
+[SPEAKER_00]: was coming to next point as well, because... you know, tech of today is rarely repairable up to a point where it can be used again. We are in an
+
+38:17.426 --> 38:25.652
+[SPEAKER_00]: economy where it's like use and throw and not repair and reuse kind of a thing. But in paragliding, which takes so much money and investment
+
+38:25.692 --> 38:35.539
+[SPEAKER_00]: from a pilot, what does the reusability of a hardness like this look like? And how does repair possibility of such a sophisticated product
+
+38:35.559 --> 38:45.543
+[SPEAKER_00]: look like on the market? For this product, we want to have a, how to say, it's like premium. This is the first product. It costs a lot. For the
+
+38:45.563 --> 38:57.147
+[SPEAKER_01]: start, we want to have a maintenance, a year of maintenance, for example, and everything will be repaired like a premium car or like
+
+38:57.207 --> 39:06.612
+[SPEAKER_01]: premium things. Further, we will decline SkyMet technology on the mainstream harnesses. But for a start, everything will be repayable,
+
+39:06.632 --> 39:16.282
+[SPEAKER_01]: replaceable. The whole harness will be repayable. And so does the wing. I'll tell you what scares me, man. Imagine somebody finds enough money.
+
+39:16.302 --> 39:22.804
+[SPEAKER_00]: I mean, because the moment this product is going to come on the market, everybody's going to want it because of all the... like things that is
+
+39:22.824 --> 39:30.866
+[SPEAKER_00]: going to like all the noise it's going to create. And then like, I hope so, because five years of an R&D, man, you guys deserve that kind of
+
+39:30.886 --> 39:39.129
+[SPEAKER_00]: response, at least, I think. But what I'm curious is somebody buys this, and then for some reason, they have to get the repair done. And they're
+
+39:39.169 --> 39:45.030
+[SPEAKER_00]: like, no, I can fix this myself. Like that is the technology. That is usually the mindset that we have for a lot of other products where we want
+
+39:45.050 --> 39:50.772
+[SPEAKER_00]: to save money. And if there's somebody who kind of knows a little bit about soldering and playing around with the motherboards and stuff
+
+39:50.792 --> 39:58.254
+[SPEAKER_00]: like that tries to repair it messes it up unfortunately unknowingly is there a possibility that this could go rogue that you know there are
+
+39:58.414 --> 40:06.756
+[SPEAKER_00]: accidental deployments and like false detections and like something from the iRobot movie where if you play around with the robot then the
+
+40:06.776 --> 40:17.844
+[SPEAKER_00]: robot tries to kill you or something and I won't laugh at this. I don't think you can't have access to the electronics. If you try to repair by
+
+40:17.884 --> 40:29.850
+[SPEAKER_01]: yourself, it will be seen. It's like any other thing. If you try to fix your car by putting some duct tape on the tire, you will see it and... The
+
+40:29.910 --> 40:38.398
+[SPEAKER_01]: insurance won't work for this. I kid you not, man. Somebody is going to try it. That's how it works. People are curious and they want to dive deep
+
+40:38.478 --> 40:47.446
+[SPEAKER_00]: into it. Yeah, I'm pretty sure that there will be men that will open it and will look in it to see how it is done. It's okay. I think the first will be
+
+40:47.466 --> 40:55.175
+[SPEAKER_00]: the competitors, you know? Buying a harness and ripping it off and doing reverse engineering. Yeah, of course. But I am the first to do this. I'm
+
+40:55.215 --> 41:05.048
+[SPEAKER_01]: the first to look inside and see what's in it and how it works. So for me, it's not a problem. But if somebody is trying to change something in it,
+
+41:05.068 --> 41:13.277
+[SPEAKER_01]: then it is his responsibility. It's void, the warranty. I was curious. you're doing your part by giving out a finished product and then it's up
+
+41:13.297 --> 41:21.385
+[SPEAKER_00]: to the user how they want to use it or abuse it you know what i was curious is like let's say the boeing algorithm with the with the 737 shit that went
+
+41:21.445 --> 41:28.512
+[SPEAKER_00]: down but what was mcas or something where it was just a software software update which they didn't provide or some training and those kind of
+
+41:28.552 --> 41:35.534
+[SPEAKER_00]: things So what I'm saying is when you write a code, there are endless amounts of glitches that can come in, in the beginning, maybe during the
+
+41:35.654 --> 41:44.696
+[SPEAKER_00]: use, kind of use case scenario or whatever. So the moment we are giving that aspect of safety to machine, the possibilities, of course, you
+
+41:44.716 --> 41:54.558
+[SPEAKER_00]: know, we can limit them and there is various safeguards around it. But do you see even the tiniest bit of risk factor? What is your take on that?
+
+41:54.658 --> 42:04.863
+[SPEAKER_00]: Like, what is your take on things having an undesirable outcome because it is machine The only thing we can do is we conduct a lot of unit tests on
+
+42:05.023 --> 42:18.331
+[SPEAKER_01]: every aspect of the software, of course. We put a lot of redundancy on the system so that when you have to act, it will act and something like that.
+
+42:18.371 --> 42:27.497
+[SPEAKER_01]: For example, the automatic parachute, if you want to pull the parachute, we have two systems that will pull the parachute. Like in
+
+42:27.877 --> 42:38.265
+[SPEAKER_01]: skydiving, you know, there is a rescue handle and there is a side press that will open the parachute on the system. The only thing we can do is
+
+42:38.285 --> 42:49.409
+[SPEAKER_01]: test, test, test, test, test, test, test. And what we are doing also is conducting tests on the data we have already recorded. And for the
+
+42:49.569 --> 43:00.572
+[SPEAKER_01]: first, let's say, years of using the SkyMet, we will collect the data and we will replay all this data to the system, to a bench system, to see if
+
+43:00.592 --> 43:08.614
+[SPEAKER_01]: there is a corner in the data. So we will replay, replay, replay, and we will update our system on the data we have collected. That's so
+
+43:08.654 --> 43:15.782
+[SPEAKER_00]: interesting, man, because usually this kind of R&D was only in high tech aviation or F1 or those kind of performance. But seeing it come to
+
+43:15.802 --> 43:23.851
+[SPEAKER_00]: paragliding kind of blows my mind already. In fact, it's coming in a lot of different sports, you know, it's coming in biking, it's coming in a
+
+43:23.991 --> 43:32.480
+[SPEAKER_01]: lot of things like that. So, yeah, you know, it's a way it's coming for every sport. And we have to start somewhere. You know, maybe I'm just
+
+43:32.500 --> 43:39.485
+[SPEAKER_00]: thinking about this. Maybe if sensors like this become the norm in next five, ten years, you know, there are more people like you out there
+
+43:39.565 --> 43:46.990
+[SPEAKER_00]: developing things. I think we could actually try and improve the performance of athlete by looking at how their behavior is while
+
+43:47.070 --> 43:54.896
+[SPEAKER_00]: turning or pouring or choosing the lines or gliding and, you know, usage of pitch control and usage of B handles and those kind of things. This is
+
+43:54.956 --> 44:01.601
+[SPEAKER_00]: very interesting. This is a whole new tech side of things. which is going to redefine the performance in paragliding, I believe. Yeah, I think
+
+44:01.641 --> 44:11.650
+[SPEAKER_01]: so. This is something we have in head. We are thinking of such thing. But first, after, we will talk about performance, but first safety. 100%,
+
+44:12.271 --> 44:20.138
+[SPEAKER_00]: man. You know, let's talk a little bit about the product itself, because I'm looking at the diagram on your brochure here, and you have a lot of
+
+44:20.198 --> 44:29.485
+[SPEAKER_00]: sensors at various attachment points. Are these the same sensors that iPhones and the latest mobile phones or similar sensors which are being
+
+44:29.605 --> 44:35.809
+[SPEAKER_00]: used to do crash detection and those kind of which are like basically detecting a difference in altitude, pressure and those kind of things?
+
+44:36.010 --> 44:48.419
+[SPEAKER_01]: Yeah, it's MEMS. We have a, how to say, we have an attitude sensor. So it's It's a mix of different sensors like accelerometers, gyroscopes,
+
+44:49.120 --> 45:00.670
+[SPEAKER_01]: magnetometers. So, for example, there is one in the harness and one in the wing because it's needed to be able to have a through A real detection
+
+45:00.730 --> 45:11.293
+[SPEAKER_01]: for autorotation. Only one sensor is not working. We conduct a lot of tests with only one sensor and we are not able to make the difference
+
+45:11.373 --> 45:22.817
+[SPEAKER_01]: between some kind of 360 and autorotation. So we had to use two sensors. We have a barometer for the altitude and because we have all the sensors,
+
+45:22.857 --> 45:33.107
+[SPEAKER_01]: we can combine them to feed the different instruments and the different safety box for example we wanted to have we don't want to have multi
+
+45:33.227 --> 45:46.001
+[SPEAKER_01]: bricks you know like for example when you are flying in competition you have two GPS maybe three you have sometimes a variometer on your helmet
+
+45:46.041 --> 45:55.964
+[SPEAKER_01]: also so we want it we want the data to go to all the systems and all the system will take the data and have them as a world so they can pick the gps
+
+45:56.004 --> 46:07.769
+[SPEAKER_01]: coordinate to to feed the variometer or to feed the altitude sensor that is given to the safety box for example Everything is mixed. So you're
+
+46:07.789 --> 46:13.951
+[SPEAKER_00]: basically collecting all of these data points and aggregating them and then processing them and then coming out with a conclusion. That's it.
+
+46:14.071 --> 46:23.294
+[SPEAKER_01]: That's it. And every part of the Skymates have access to all the data. Wow. Okay. A question comes to my mind. Let's say, this is an article that
+
+46:23.314 --> 46:29.756
+[SPEAKER_00]: I read that Google collects, I don't know how many thousand data points on you when you're browsing their website or just scrolling on their
+
+46:29.856 --> 46:36.759
+[SPEAKER_00]: phone or something. Do you guys have a number? You don't have to let out any secrets. Of course, this is pre-release of the product. But how many
+
+46:36.799 --> 46:46.126
+[SPEAKER_00]: data points are you collecting at any given point of time, at any given second during the flight? I think it's 100. I think so. Wow. For now, but
+
+46:46.246 --> 46:55.913
+[SPEAKER_01]: it's for development. Later, I think we will reduce them maybe by 10 bytes a second. It will be enough. 100 data points per second. Jeez,
+
+46:56.133 --> 47:07.376
+[SPEAKER_00]: that's so interesting. I can see every movement of the wing at any time. It's pretty interesting. You have some data that are very, very nice.
+
+47:07.416 --> 47:15.518
+[SPEAKER_00]: You're having a goldmine of data in paragliding with you right now, aren't you? Imagine selling this to the market. This is worth millions,
+
+47:15.658 --> 47:24.621
+[SPEAKER_00]: I think so. I don't know. I'm not thinking like that. Okay. So is it just like few sensors or do you have multiple sensors in the wing? In the wing,
+
+47:24.661 --> 47:32.824
+[SPEAKER_01]: there is only one sensor. It's an attitude sensor. So we have, in fact, it's a bunch of sensors. So we have accelerometer, gyrometer,
+
+47:32.844 --> 47:43.048
+[SPEAKER_01]: magnetometers, and attitude sensor that comes with, I was about to say, it's a solution in terms of positioning. So we know exactly how the wing
+
+47:43.108 --> 47:53.898
+[SPEAKER_01]: is gliding. And is this like a system which is compatible with any wing in the market, or does it have to be Super Wings? No, for now, it's only for
+
+47:54.078 --> 48:06.191
+[SPEAKER_01]: Super Wings. It's a question that has been asked a lot for me. Can I take my wing and have it to fly? I say no, because we need to know the behavior of a
+
+48:06.211 --> 48:16.825
+[SPEAKER_01]: wing. So maybe later we will put some sensor on other wings, but we will have to conduct a lot of tests to know how the wing behaves. Because it's
+
+48:16.885 --> 48:25.753
+[SPEAKER_01]: not just... See how the wing is going into auto-rotation, see how it behaves to have the better performance of it. What's it called? I mean,
+
+48:25.773 --> 48:35.280
+[SPEAKER_00]: you guys have copyrighted... No, it's not copyrighted. What's the thing which makes it exclusive to you without even... What is your
+
+48:35.420 --> 48:40.964
+[SPEAKER_01]: question? I'm forgetting the name. It seems like you guys have copyrighted this technology without even actually putting a
+
+48:41.004 --> 48:47.028
+[SPEAKER_00]: copyright to it because, of course, it works only in a system. This is like Apple. You buy an Apple iPhone, then you have to get in the whole
+
+48:47.108 --> 48:55.853
+[SPEAKER_00]: ecosystem to get the most out of it. So I think it's kind of similar. You buy a SkyMate, then you have to buy a Sapphire Wing to make sure you get the
+
+48:55.873 --> 49:08.884
+[SPEAKER_00]: maximum performance out of it. Yeah, for now, it's a pack. The harness comes with a wing and it's not separable for now. We have in mind to open
+
+49:08.904 --> 49:19.092
+[SPEAKER_01]: the protocol for SkyMet to be able to add other sensors because it will come in time. We will need, I don't know, a pitot tube or something like
+
+49:19.112 --> 49:31.560
+[SPEAKER_01]: that on the harness. And we want to be able to be expandable. We want to... The system is working on only one battery. So everything is powered by
+
+49:31.680 --> 49:43.283
+[SPEAKER_01]: only a unique battery. So you can expand on the, we call it a bus, it's data link on the bus. You can put another sensor on the bus and have a
+
+49:43.643 --> 49:51.366
+[SPEAKER_01]: communication with another sensor that is on the bus. So you can add, I don't know what you can add, maybe a... camera or something else. You can
+
+49:51.446 --> 50:03.213
+[SPEAKER_01]: take pictures of the collapse when it comes. But for now, it's prioritari. That's it. That's the term. Prioritari? No, I don't know.
+
+50:03.293 --> 50:09.097
+[SPEAKER_00]: One more time, slowly a bit. Prioritari. Okay, something pre-protocol. I'm sorry, man. It's just like your French accent of
+
+50:09.177 --> 50:14.840
+[SPEAKER_00]: rolling the English word, making it hard for me to understand. But everything else in the show has been clear so far. It's been a long time
+
+50:14.860 --> 50:22.622
+[SPEAKER_00]: and I didn't speak English, sorry. You're being amazing, man. No, but like what matters is, I think this reminds me of a conversation with
+
+50:22.642 --> 50:28.864
+[SPEAKER_00]: Honorent. He was one of our first guests in the show and he said, I'm sorry, my English is not good. I'm like, forget it, dude. You fly better.
+
+50:28.964 --> 50:37.008
+[SPEAKER_00]: That's what matters. English language doesn't really... I do face this dilemma a lot of times while bringing Frenchies and Germans and stuff
+
+50:37.028 --> 50:43.653
+[SPEAKER_00]: like that on the show, because of course, you guys are the hub of paragliding R&D in a lot of ways, where most of the research and
+
+50:43.673 --> 50:50.017
+[SPEAKER_00]: development is happening in this region. But getting it out of the guests is always a bit of a catch-22 when it comes to speaking. But no
+
+50:50.037 --> 50:57.642
+[SPEAKER_00]: worries. One thing I forgot to ask is, of course, this is something that improves with time. And as you said, data and the more people that use
+
+50:57.662 --> 51:06.165
+[SPEAKER_00]: data, the system the better it will get because it'll have more feedback to work on but how how is the accuracy of these things right now in your
+
+51:06.225 --> 51:13.307
+[SPEAKER_00]: simulations and in the field tests that you guys have done uh we are connecting a lot of tests for for example i will just take an example for
+
+51:13.327 --> 51:23.893
+[SPEAKER_00]: the auto rotation we are conducting a lot of tests for the rotation We have a very good discrimination between an autorotation and anything
+
+51:23.973 --> 51:36.861
+[SPEAKER_01]: else, you know, because it's not only 360 or SAT or anything else. If the man is walking with the harness on it and the parachute goes out, it's not
+
+51:36.921 --> 51:53.453
+[SPEAKER_01]: working for us. So we now have very, very good data that led us to see that we will have a strong link between our sensor and the autorotation. And
+
+51:53.553 --> 52:02.382
+[SPEAKER_00]: is autorotation the main kind of collapse that it looks to detect or asymmetrics and stuff like that also activated to a point where it gets
+
+52:02.502 --> 52:13.592
+[SPEAKER_00]: ready to be in the deployment mode if needed? No. For now, The deployment mode is only on autorotation and maybe twist. We will see later what we
+
+52:13.612 --> 52:21.198
+[SPEAKER_01]: will do with twist, for example, because we are able to see twist in the air. But for example, for the autorotation, as we have a collapse
+
+52:21.218 --> 52:30.544
+[SPEAKER_01]: sensor, we can know before the rotation occurs if the wing is is going to autorotation or not. In fact, we will be ready. If we see a collapse, we
+
+52:30.584 --> 52:40.292
+[SPEAKER_01]: will be ready if the wing is going to autorotation fast before the pilot knows. Because in autorotation, the main issue is that there is a cravat
+
+52:40.392 --> 52:50.018
+[SPEAKER_01]: and the cravat is going to an autorotation. So if we see a collapse and we see nothing and the wing starts to spin, we are ready. And we are ready to
+
+52:50.138 --> 53:01.144
+[SPEAKER_01]: send a safety notice to a rescue team. We have a company that will be working for us. And they receive a safety notice that says it may have an
+
+53:01.184 --> 53:08.888
+[SPEAKER_01]: autorotation here at this point. Send rescue at any time. At the first time, when we see a collapse and the wing starts spinning, we send a
+
+53:09.188 --> 53:16.852
+[SPEAKER_01]: rescue notice. If the pilots get out of the autorotation, we can send this notice. But if not, the rescue team is going out. Mind-blowing.
+
+53:17.492 --> 53:25.315
+[SPEAKER_01]: Because we want to send the rescue notice as we have connection. If you are high, you have connection. If you are low, maybe you lost your
+
+53:25.355 --> 53:33.738
+[SPEAKER_01]: connection and won't be able to send the rescue team a notice. And it's better to call the rescue team. The connection is the phone, like the
+
+53:33.778 --> 53:45.446
+[SPEAKER_00]: GPRS, like 3G, 4G, 5G. Yeah, it's 4G. It's a 3 and 4G connection. And it's a worldwide connection, and it's taking the best network on the
+
+53:45.466 --> 53:55.054
+[SPEAKER_01]: connection. So we have an agreement with, I don't know how many countries, but it's nearly the world. So we will send a notice in the
+
+53:55.094 --> 54:03.138
+[SPEAKER_01]: world, and the rescue team will come if you are in trouble. Okay, but the only limitation that I see is that if you're having high mountain, big
+
+54:03.198 --> 54:10.340
+[SPEAKER_00]: mountain flying, let's say in India, we're building the MLAs or the Karakorams or, you know, places which are a bit blackout for mobile
+
+54:10.380 --> 54:16.462
+[SPEAKER_00]: networks, then it could be a bit of an issue. Or do you have something like Garmin which connects directly to the satellite and then provides
+
+54:16.502 --> 54:26.485
+[SPEAKER_00]: something? We didn't went to the satellite for now, for example, because there is some corner case also in satellite connection because
+
+54:27.065 --> 54:41.394
+[SPEAKER_01]: The antenna has to be on the top, has to see the sky, and the costs are very, very expensive for such device. But this is something we plan on adding
+
+54:41.434 --> 54:48.118
+[SPEAKER_01]: later. Yeah, I think that's what I was saying. Maybe you come out with SkyMate Pro Max or something. Yeah, this is something we want to try. You
+
+54:48.278 --> 54:57.583
+[SPEAKER_01]: know, the first try I made, I said, ah, it's very expensive and it has its own limitation. And if we already have a strong PG connection because we
+
+54:57.703 --> 55:06.248
+[SPEAKER_01]: are operating on the better network we can find anywhere in the world, it's already a huge safety feature. You know, in the Alps, for example,
+
+55:06.748 --> 55:17.373
+[SPEAKER_01]: you have a coverage maybe anywhere if you are... Almost everywhere in Europe. Yeah, almost everywhere. And we are able also to switch one of
+
+55:17.433 --> 55:29.317
+[SPEAKER_01]: the transceivers that is used for flame, for example, into LoRa mode and send LoRa feature or LoRa beacon on the network. So if there is a LoRa
+
+55:29.377 --> 55:41.905
+[SPEAKER_01]: gateway, you know LoRa? I'm sorry. Please enlighten us a little bit. So LoRa is a radio communication device that can send LoRa transmission at
+
+55:42.045 --> 55:55.316
+[SPEAKER_01]: a very low bandwidth, so a very small package, but very, very far. It's been known to be able to have 500... kilometers of transmission length
+
+55:55.436 --> 56:10.186
+[SPEAKER_01]: in the air. And in the Alps, we have a lot of projects that are working on this to make safety beacons and safety rescue. So when we have an
+
+56:10.226 --> 56:18.433
+[SPEAKER_01]: incident, it will switch to RAR and try to reach a gateway that is close to you. Wow. Very interesting. Yeah. You know, another thing that I was
+
+56:18.513 --> 56:26.906
+[SPEAKER_00]: curious is because, of course, your harness said that it has an automatic startup. Automatic what? Sorry? Automatic startup.
+
+56:27.426 --> 56:33.875
+[SPEAKER_00]: Because it says under the heading optimized flight experience. So what does automatic startup look like in a paragliding harness? We wanted
+
+56:34.015 --> 56:43.900
+[SPEAKER_01]: the system to be extremely simple. We don't want the pilot to dive into setup, configuration or anything else. Once the pilot puts his
+
+56:43.940 --> 56:51.183
+[SPEAKER_01]: harness, when he closes the speed bag, the system starts. It's ready. That's all. Nothing to do. Reprogrammed all the steps that are needed to
+
+56:51.343 --> 57:00.570
+[SPEAKER_00]: take out any redundancies. Like just buckle up and then you're ready to take off. That's it. That's it. And when you start, he's checking that
+
+57:00.770 --> 57:09.500
+[SPEAKER_01]: your harness is closed, that everything is okay, and you are ready to fly. That was fancy, bro. I kid you not. So I want to review this harness
+
+57:09.560 --> 57:16.828
+[SPEAKER_00]: already, you know, like as soon as it comes out. I would love to bring out the awesomeness behind it, out to the audiences across the world. the
+
+57:16.848 --> 57:24.915
+[SPEAKER_00]: globe but yeah you want to talk a little bit about the main board because i think that is the only thing that is left right now is like is that
+
+57:24.955 --> 57:31.261
+[SPEAKER_00]: basically a motherboard that you said which is connected to a battery and that is where it processes every information so the system is made of
+
+57:31.461 --> 57:41.431
+[SPEAKER_00]: four boards there is four electronic boards in the in the wall they are designated different way because we tried to make it in only one or two
+
+57:41.771 --> 57:53.082
+[SPEAKER_01]: one in the wing and one on the cockpit but it made the cockpit very easy so it was not very easy to fly with it because it was too easy so we split it
+
+57:53.562 --> 58:05.812
+[SPEAKER_01]: into four board we have Main, we call it safety board. It's the main processor. It has all what is needed to calculate all the safety
+
+58:05.832 --> 58:17.721
+[SPEAKER_01]: features. So it aggregates the data. It is speaking to the other board and it is operating the other board. Say, you do this, you do that, and
+
+58:18.202 --> 58:24.266
+[SPEAKER_01]: everything is going like that. Just the boss of all things on the harness, basically. Yes, it's the main board. It's really the main
+
+58:24.306 --> 58:34.654
+[SPEAKER_01]: board that is directing all the other boards. On the other board, we have a cockpit. We have also a display that is connected to the battery and
+
+58:34.774 --> 58:46.182
+[SPEAKER_01]: doing the, how to say, the alimentation calculations to deploy the airbag, to deploy the automatic parachute. And the last one is a small
+
+58:46.222 --> 58:55.370
+[SPEAKER_01]: sensor board that is in the wing. Yeah, bro. This is so, so much tech. That was like unheard of in paragliding. You guys are motherboards in four
+
+58:55.410 --> 59:07.621
+[SPEAKER_01]: places. Everything is connected together on a special data link. PowerAid and data link are on the same wires. Like Corioid? The
+
+59:07.661 --> 59:16.427
+[SPEAKER_01]: protector Corioid? What did you say? Corioid? No, not Corioid. Everything is connected on the same wire. There is only two wires that
+
+59:16.507 --> 59:24.633
+[SPEAKER_01]: are doing the powering systems and data. Okay. And is there a wire going from the harness to the wing as well? Because obviously I think the
+
+59:24.713 --> 59:32.559
+[SPEAKER_00]: risers... Okay. Yeah. So basically there is one tiny wire going along with the risers from the wing to the harness. Yeah. Okay. Okay, one
+
+59:32.579 --> 59:40.044
+[SPEAKER_00]: thing, honestly, if you can't answer. What are the chances of breaking one of these boards if you have a hard landing? No, in fact, they are well
+
+59:40.084 --> 59:50.131
+[SPEAKER_01]: protected. The main board, they are in a case, in a plastic case. So the main board, I don't think you can break it. The board that could break is
+
+59:50.692 --> 01:00:01.720
+[SPEAKER_01]: the one that is under the seat. If you do a very, very hard landing... But it's over the moose bag, so I don't think you could break it. Because it is
+
+01:00:01.800 --> 01:00:10.947
+[SPEAKER_01]: in a plastic case, it is well protected. We try to make it water-resistant also, because maybe there will be some pilots that
+
+01:00:10.967 --> 01:00:22.656
+[SPEAKER_01]: will do some SIV stuff to test. So we try to have it more water-resistant and weather-resistant. Yeah, that was my next question, actually,
+
+01:00:22.896 --> 01:00:29.701
+[SPEAKER_00]: because let's say if you fly in clouds, one thing we have seen that the digital compasses fail quite often because of the static charges that
+
+01:00:29.721 --> 01:00:38.489
+[SPEAKER_00]: are there in clouds. So how does this system, although, I mean, of course, it's all wired up, so it's a lot more robust than the usual videos
+
+01:00:38.509 --> 01:00:44.534
+[SPEAKER_00]: that we have, which are just running softwares. But how does the accuracy of the system look like when there is charge in a cloud all
+
+01:00:44.574 --> 01:00:52.237
+[SPEAKER_00]: around you? Yeah, this is some tests we are conducting right now, but the sensor we are using uses a combination of different sensors, you know,
+
+01:00:52.797 --> 01:01:03.100
+[SPEAKER_01]: and it's not taking only the magnetic magnetometer, for example, for having the cap. So if the magnetometer is failing, the sensor will stay
+
+01:01:03.240 --> 01:01:15.365
+[SPEAKER_01]: for a certain amount of time at a good direction for a certain amount of time. But it's not something that is used, I would say, in our detection.
+
+01:01:15.565 --> 01:01:24.968
+[SPEAKER_01]: In autorotation, we don't really need the magnetic north to detect the autorotation. Interesting. I think it comes with an inbuilt, like as
+
+01:01:24.988 --> 01:01:32.651
+[SPEAKER_00]: you said, GPS and stuff. So does it have its own screen which displays all the flight parameters, like glide above ground and speed and
+
+01:01:32.671 --> 01:01:42.120
+[SPEAKER_00]: everything, those kind of things? Yes, that's it. In fact, the system has everything you need to fly. You don't need to put your barometer, you
+
+01:01:42.140 --> 01:01:50.348
+[SPEAKER_01]: don't need to put your instrument. Everything is displayed on a small screen on the cockpit. And there is a connectivity with your
+
+01:01:50.388 --> 01:01:59.236
+[SPEAKER_01]: smartphone, so you can use it. Isn't that all that a pilot needs anyways? Love it, man. I think I'm running out of questions now because you've
+
+01:01:59.296 --> 01:02:08.502
+[SPEAKER_00]: answered all of them so honestly. So thank you so much for that. It's very hard to come across people in today's world that are able to share
+
+01:02:08.662 --> 01:02:15.644
+[SPEAKER_00]: unfiltered and Transparent opinion. So, you know, you guys at Sapir have been kind enough to do that. So massive thanks. Yeah, you're
+
+01:02:15.664 --> 01:02:24.629
+[SPEAKER_00]: welcome. The thing that I'm curious is that, in fact, I don't know, maybe two years ago, I wouldn't have done this. But now we have protected
+
+01:02:24.809 --> 01:02:33.837
+[SPEAKER_01]: everything with a patent. So it's far easier to do it now. Yeah, patenting was the word that I was looking for that we were having the chat
+
+01:02:33.877 --> 01:02:40.184
+[SPEAKER_00]: of connecting it with a wing. So I was like, you have patented your technology even without, you know, because it's only compatible with
+
+01:02:40.224 --> 01:02:46.470
+[SPEAKER_00]: software systems. Anyways, to cut a shot, it's like if somebody wants to get a whole package, just buy this harness and the wing that comes with
+
+01:02:46.550 --> 01:02:56.039
+[SPEAKER_00]: it. And that's all you need to fly better. At least in the B class for now, I would say. yeah and we will try to to extract the better performance of
+
+01:02:56.079 --> 01:03:05.167
+[SPEAKER_00]: this ENB yeah yeah I cannot wait to see this I think probably civil or FAI will have to come out with some guidelines with this being implemented
+
+01:03:05.207 --> 01:03:13.330
+[SPEAKER_00]: in triple C classes but damn dude the amount of tech that is going to go into racing paragliders is like that's mind-blowing already yeah we
+
+01:03:13.390 --> 01:03:22.992
+[SPEAKER_01]: are we are we are planning on uh doing some some try with uh our new y2 for example to see to see what we can expect from this wing also for now we are
+
+01:03:23.032 --> 01:03:33.255
+[SPEAKER_01]: working on the on the different uh class in in our product range but after that we will see I think in the competition it will be a great thing you
+
+01:03:33.295 --> 01:03:46.282
+[SPEAKER_01]: know because like you said before we will we know how is the wing at every time you know we know what is handling and maybe we can help the pilot to to
+
+01:03:46.462 --> 01:03:55.807
+[SPEAKER_01]: to drive it better at every moment of his flight to be able to maximize the performance for example I'm just looking at your website man like
+
+01:03:55.847 --> 01:04:03.731
+[SPEAKER_01]: you're like the wild too and that combination with Alp that looks like straight out of a sci-fi movie like kudos to your designers they have
+
+01:04:04.012 --> 01:04:11.396
+[SPEAKER_00]: made such a cool looking wing with the harness combination and stuff you know yeah it's very nice I think you guys recently refreshed your design
+
+01:04:11.416 --> 01:04:18.020
+[SPEAKER_00]: on the wings two years ago or last year I don't remember they just look more sexier and racier now for sure thanks one thing that i forgot to ask
+
+01:04:18.100 --> 01:04:25.483
+[SPEAKER_00]: is we are reaching a point in our daily lives where everything is battery based you know and of course that needs charging you know your phone
+
+01:04:25.523 --> 01:04:33.526
+[SPEAKER_00]: needs charging your car needs charging and freaking hell now even the harness needs charging as well it's like do you have to plug in your
+
+01:04:33.546 --> 01:04:38.427
+[SPEAKER_00]: harness before you go fly next day
+
+01:04:38.447 --> 01:04:49.271
+[SPEAKER_00]: in fact the battery we we will have two battery in the system and um we have super super capacity on the energy So when the battery is depleted, the
+
+01:04:49.311 --> 01:04:57.256
+[SPEAKER_01]: system is still working for maybe half or an hour. So you are safe for half an hour. So you can change your battery in flight and it's
+
+01:04:57.356 --> 01:05:04.900
+[SPEAKER_01]: outstripeable. So you remove the battery, you put a new one and it's like nothing happened. Yeah, that's it. It's kind of power bank, but it's
+
+01:05:09.519 --> 01:05:18.644
+[SPEAKER_01]: It's going for maybe 10 years, 10 hours. We are planning to have it to be able to fly for 10 hours so long without charging. And we have two
+
+01:05:18.684 --> 01:05:28.449
+[SPEAKER_01]: batteries, so you can charge one and after use the other one and that's it. It's hot swappable. I think you guys should put a system which forces
+
+01:05:28.469 --> 01:05:36.695
+[SPEAKER_00]: a user to charge their harness because I kid you not, there will be instances where people forget to charge their harness and then they
+
+01:05:36.735 --> 01:05:43.239
+[SPEAKER_00]: reach a point on takeover. They're like, oh, I forgot to plug it in. And now I have to fly without any of this. So I think there should be a system
+
+01:05:43.259 --> 01:05:51.862
+[SPEAKER_00]: which forces them that if no charge, then no takeoff kind of a thing, like in some cars. Yeah. After all, it's paragliding. You don't need battery
+
+01:05:51.902 --> 01:06:02.648
+[SPEAKER_01]: to fly a paraglider. If he wants to take the risk to fly without all the safety assistance, It still can fly. And there is a manual rescue, so it
+
+01:06:02.709 --> 01:06:11.516
+[SPEAKER_01]: is always in safety. We have the maximum safety features on this harness. So there is two parachutes. One is automatic, one is manual. So
+
+01:06:11.596 --> 01:06:19.302
+[SPEAKER_01]: even if the harness is not charged, it can fly. And how does the cold weather protection look like? Because all these GoPros and early
+
+01:06:19.362 --> 01:06:25.907
+[SPEAKER_00]: action cameras that came, the moment we used to take them higher up in the mountains, their charge used to run out within 5, 10, 15 minutes. So how
+
+01:06:26.007 --> 01:06:38.316
+[SPEAKER_00]: is the cold weather endurance of your batteries doing? I have trouble in the start because the battery was stopping because of the heat. The
+
+01:06:38.356 --> 01:06:51.719
+[SPEAKER_01]: system is made so that the sun cannot reach the battery itself. So it won't warm too much inside the cockpit. So for the cold, you know, it is
+
+01:06:51.899 --> 01:07:01.802
+[SPEAKER_01]: packaged. It's not in the wind. We tested in minus 10 degrees. It wasn't an issue. It wasn't an issue for now. But we have a lot of more tests to
+
+01:07:01.842 --> 01:07:09.744
+[SPEAKER_01]: conduct. Now we are doing it. Always in photo mode. I think that is how paragliding looks like, you know. consistently wanting to improve
+
+01:07:09.965 --> 01:07:16.830
+[SPEAKER_00]: that's it nice nice wow man i think i have exhausted everything that i was curious about is there anything that you feel like we might have missed
+
+01:07:16.890 --> 01:07:23.755
+[SPEAKER_00]: out on bringing out this awesomeness to the audiences that are tuning in to know more about this i think we covered the whole thing that's all is
+
+01:07:23.775 --> 01:07:30.080
+[SPEAKER_00]: there is there any target about how much money you guys are planning to make of this amazing product it's like a whole package
+
+01:07:32.923 --> 01:07:41.493
+[SPEAKER_01]: You will have the harness, you will have the wing, you will have the services for around $50,000. $15,000. Sorry, $15,000, not $15,000.
+
+01:07:41.793 --> 01:07:52.822
+[SPEAKER_00]: Oh, shoot. How many Mercedes can come in $50,000? That's desirable, I think. That's not too bad. Yeah. I can't say much on the price. We will try
+
+01:07:52.922 --> 01:08:00.410
+[SPEAKER_01]: to reduce it at max we can. I mean, nobody is in paragliding business for the sake of money, but of course we all need money to survive. Nobody can
+
+01:08:00.450 --> 01:08:08.158
+[SPEAKER_00]: work for free as well. And I think anybody who is willing enough to put five years of hard work in a place like yours where I can see the amount of
+
+01:08:08.498 --> 01:08:17.182
+[SPEAKER_00]: toys that you have on the back is like That's a lot of brain work. You do deserve all the reward that you can get for it. Fingers crossed, man. I
+
+01:08:17.222 --> 01:08:23.944
+[SPEAKER_00]: hope everybody listening to this episode is also having similar feelings. Yeah, thank you very much. It was nice. You know, I think
+
+01:08:24.104 --> 01:08:31.427
+[SPEAKER_00]: before I let you go, Romain, I usually have this tradition of asking my guests questions. to share one flight from the carrier. But I mean, here
+
+01:08:31.467 --> 01:08:39.591
+[SPEAKER_00]: we are talking about a specific product. So can you share one flight from the test testing times, the test phase that was interesting enough for
+
+01:08:39.631 --> 01:08:45.275
+[SPEAKER_00]: you where you learned a lot or where you were like kind of, you know, whatever that you remember, which is the most important flight from the
+
+01:08:45.315 --> 01:08:53.322
+[SPEAKER_00]: testing phase. I think the most important flight that came from the testing phase was when we were conducting test flights for
+
+01:08:53.482 --> 01:09:02.210
+[SPEAKER_01]: autorotation, collecting data. And it was a day, a very cloudy day, rainy day. We were at takeoff. There were nobody else. We were there.
+
+01:09:02.890 --> 01:09:16.457
+[SPEAKER_01]: under the rain, waiting for a small amount of time to take off. And when we came back at the landing, I took off the SD card from the system and saw
+
+01:09:16.477 --> 01:09:26.381
+[SPEAKER_01]: that I have a great line of data that was showing me that we could discriminate autorotation against 360. It was a great time. It was
+
+01:09:26.461 --> 01:09:41.593
+[SPEAKER_01]: amazing. Like a little sun that came out of the cloud. And I said, wow, it was not a bad day at all, finally. Because it was already around. We
+
+01:09:41.613 --> 01:09:50.176
+[SPEAKER_01]: didn't come here for nothing. What was the reading that you said? The red line of data? I did not understand that part. It was, we could
+
+01:09:50.216 --> 01:10:00.919
+[SPEAKER_01]: discriminate. Differentiate. The difference between autorotation and 360, it was a really, really good time this first time. Yeah, I think
+
+01:10:00.980 --> 01:10:08.742
+[SPEAKER_00]: those are like Eureka moments in every inventor's, you know, you just want to run out naked saying that, yes, I found it. Yeah, exactly.
+
+01:10:08.942 --> 01:10:16.264
+[SPEAKER_00]: Finally. You could have done that. You were alone on the takeoff, no? Yeah, but it was very cool to see that at the landing, you know, you take
+
+01:10:16.284 --> 01:10:24.550
+[SPEAKER_01]: your computer with you as the card, say, I don't want to put it to crash it. Did that work? Yes, yes, it worked. Were there any low phases in this
+
+01:10:24.590 --> 01:10:31.859
+[SPEAKER_00]: development where you just felt like giving up? Yeah, there was a lot. When you are conducting tests, especially stress tests, because the
+
+01:10:31.879 --> 01:10:40.527
+[SPEAKER_01]: system, you don't want it to break, so you break it. Especially, you're going hard on the test and And you say, oh, no, another break line. You
+
+01:10:40.567 --> 01:10:50.672
+[SPEAKER_01]: have to dismantle the whole wing to put another one, to try another one, to try another thing. And you say, oh, no, another one. This one is not
+
+01:10:50.692 --> 01:10:59.737
+[SPEAKER_01]: good enough. And this is very, very difficult because you do it a lot of time, a lot of time, a lot of time. And yeah. they need that but this is how
+
+01:10:59.757 --> 01:11:09.119
+[SPEAKER_00]: you learn and this is how it is going to to be better indeed my man that's how you grow in life in general so i think on that note we will come to a
+
+01:11:09.199 --> 01:11:17.501
+[SPEAKER_00]: close for this episode for now but any final advice you want to give to listeners out there who want to get their hands on it how and when can they
+
+01:11:17.521 --> 01:11:28.286
+[SPEAKER_00]: expect this awesomeness in their lives normally we are hoping to release it this summer but well that's it we are maybe on the final final
+
+01:11:28.306 --> 01:11:36.870
+[SPEAKER_01]: sprint it is taking a lot lot of time please be patient that's all I say we are doing our best love it man love it thank you thank you so much Romain
+
+01:11:36.910 --> 01:11:44.634
+[SPEAKER_01]: this talk has been very enriching let's have you back on the show once this once this revolution of yours hits the market and we have more data
+
+01:11:44.814 --> 01:11:48.876
+[SPEAKER_01]: to talk on that's it thank you very much it was nice cool to see you yeah
