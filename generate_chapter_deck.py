@@ -169,7 +169,19 @@ def esc(t):
 
 
 def render_transcript(paras, chapters, speakers):
-    """Group paragraphs under their chapter, so the rail can scrollspy them."""
+    """Group paragraphs under their chapter so the rail can scrollspy them.
+
+    Block structure matches the agreed prototype exactly:
+        <div class="cd-block" id="cN">
+          <h2>Chapter title</h2>
+          <p class="cd-block-time">MM:SS</p>
+          <div class="cd-line">
+            <span class="cd-ts">MM:SS</span>
+            <p><span class="cd-spk">Name:</span> text</p>
+          </div>
+        </div>
+    .cd-line is a two column grid, so both cells are always emitted.
+    """
     blocks, out = [], []
     if not chapters:
         chapters = [{"title": "Transcript", "at": 0.0}]
@@ -182,16 +194,19 @@ def render_transcript(paras, chapters, speakers):
         lines, last = [], object()
         for p in inside:
             who = speakers.get(str(p["speaker"]), speakers.get("default", ""))
-            show = who and p["speaker"] != last
-            spk = '<span class="cd-spk">%s:</span> ' % esc(who) if show else ""
+            spk = ('<span class="cd-spk">%s:</span> ' % esc(who)
+                   if who and p["speaker"] != last else "")
             last = p["speaker"]
-            lines.append('        <p class="cd-line">%s%s</p>' % (spk, esc(p["text"])))
+            lines.append(
+                '        <div class="cd-line">\n'
+                '          <span class="cd-ts">%s</span>\n'
+                '          <p>%s%s</p>\n'
+                '        </div>' % (clock(p["start"]), spk, esc(p["text"])))
         out.append(
             '      <div class="cd-block" id="c%d">\n'
-            '        <p class="cd-block-time">%s</p>\n'
-            '        <h3>%s</h3>\n%s\n      </div>'
-            % (cid, clock(ch["at"]), esc(ch["title"]), "\n".join(lines))
-        )
+            '        <h2>%s</h2>\n'
+            '        <p class="cd-block-time">%s</p>\n%s\n      </div>'
+            % (cid, esc(ch["title"]), clock(ch["at"]), "\n".join(lines)))
     return "\n".join(out)
 
 

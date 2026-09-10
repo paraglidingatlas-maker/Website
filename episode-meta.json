@@ -6,41 +6,92 @@
     "series": "Know Your Equipment",
     "series_slug": "Know%20Your%20Equipment",
     "epno": "",
-    "guest": "Solo episode",
-    "guest_role": "Based on research shared by Finsterwalder and Charly",
+    "guest": "Aninder Singh",
+    "guest_role": "Solo episode, working from a research paper shared by Finsterwalder and Charly",
     "published": "",
     "published_label": "",
     "duration_label": "17 min",
-    "speakers": { "0": "Aninder" },
-
+    "speakers": {
+      "0": "Aninder"
+    },
     "_summary_source": "** review: written from the transcript, not from the show notes",
     "summary": "A solo episode on the one piece of equipment almost nobody inspects properly. Thomas Finsterwalder could not join the show, so he sent over a research paper on material fatigue instead. This episode works through what fatigue is, why a carabiner can fail while looking perfectly fine, what the manufacturer guidelines actually ask of you, and what to do about it this week.",
-
     "_chapters_source": "** review: this episode's show notes have no bullet list, so chapter titles were derived from the sections the host announces out loud. Each cue is a phrase actually spoken, so the timings are real.",
     "chapters": [
-      { "title": "Why carabiners deserve a closer look", "at": "00:00" },
-      { "title": "Failures in the community", "cue": "there have been some incidents in our community where carabiner failures" },
-      { "title": "What material fatigue actually is", "cue": "So what exactly is material fatigue and why is it so crucial" },
-      { "title": "Static strength versus dynamic loads", "cue": "Let's talk about static strength" },
-      { "title": "Service life, inspection and storage", "cue": "manufacturers of paragliding equipment such as Petzl and Edelrid provide guidelines" },
-      { "title": "Salt, sand and humid air", "cue": "detail about environmental factors and their impact on our equipment" },
-      { "title": "Three misconceptions that breed complacency", "cue": "address some common misconceptions that can often lead to complacency" },
-      { "title": "What to do about it", "cue": "let's get on to some actionable steps that we all can take" },
-      { "title": "Where carabiner technology is heading", "cue": "advancement in carabiner technologies" },
-      { "title": "Final thoughts", "cue": "final thoughts to wrap this up" }
+      {
+        "title": "Why carabiners deserve a closer look",
+        "at": "00:00"
+      },
+      {
+        "title": "Failures in the community",
+        "cue": "there have been some incidents in our community where carabiner failures"
+      },
+      {
+        "title": "What material fatigue actually is",
+        "cue": "So what exactly is material fatigue and why is it so crucial"
+      },
+      {
+        "title": "Static strength versus dynamic loads",
+        "cue": "Let's talk about static strength"
+      },
+      {
+        "title": "Service life, inspection and storage",
+        "cue": "manufacturers of paragliding equipment such as Petzl and Edelrid provide guidelines"
+      },
+      {
+        "title": "Salt, sand and humid air",
+        "cue": "detail about environmental factors and their impact on our equipment"
+      },
+      {
+        "title": "Three misconceptions that breed complacency",
+        "cue": "address some common misconceptions that can often lead to complacency"
+      },
+      {
+        "title": "What to do about it",
+        "cue": "let's get on to some actionable steps that we all can take"
+      },
+      {
+        "title": "Where carabiner technology is heading",
+        "cue": "advancement in carabiner technologies"
+      },
+      {
+        "title": "Final thoughts",
+        "cue": "final thoughts to wrap this up"
+      }
     ],
-
     "guest_links": [
-      { "label": "Finsterwalder and Charly", "url": "https://www.finsterwalder-charly.de/" }
+      {
+        "label": "Finsterwalder and Charly",
+        "url": "https://www.finsterwalder-charly.de/"
+      }
     ],
     "resources": [
-      { "label": "Petzl equipment service life guidance", "url": "https://www.petzl.com/INT/en/Sport/Lifetime---Guarantee" },
-      { "label": "Edelrid care and maintenance", "url": "https://edelrid.com/eu-en/knowledge/care-maintenance" }
+      {
+        "label": "Petzl equipment service life guidance",
+        "url": "https://www.petzl.com/INT/en/Sport/Lifetime---Guarantee"
+      },
+      {
+        "label": "Edelrid care and maintenance",
+        "url": "https://edelrid.com/eu-en/knowledge/care-maintenance"
+      }
     ],
     "related": [
-      { "label": "Watch this Before you Buy a Paragliding Harness", "url": "https://www.youtube.com/watch?v=tRPZuUCbnBM" },
-      { "label": "Helmet Safety with ICARO 2000", "url": "https://www.youtube.com/watch?v=EAFqCUvvT4c" }
+      {
+        "label": "Watch this Before you Buy a Paragliding Harness",
+        "url": "https://www.youtube.com/watch?v=tRPZuUCbnBM"
+      },
+      {
+        "label": "Helmet Safety with ICARO 2000",
+        "url": "https://www.youtube.com/watch?v=EAFqCUvvT4c"
+      }
     ],
-    "tags": ["carabiner", "material fatigue", "equipment", "maintenance", "safety", "solo episode"]
+    "tags": [
+      "carabiner",
+      "material fatigue",
+      "equipment",
+      "maintenance",
+      "safety",
+      "solo episode"
+    ]
   }
 ]
