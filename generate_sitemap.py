@@ -113,6 +113,10 @@ GRAPH = json.dumps({"nodes": nodes, "links": links}, ensure_ascii=False)
 tmpl = open(os.path.join(ROOT, 'templates', 'sitemap-template.html')).read()
 out = tmpl.replace('{{TREE}}', "\n".join(rows))
 out = out.replace('{{GRAPH}}', GRAPH)
+# cache bust the script so a browser can never serve a stale copy
+import hashlib
+_v = hashlib.md5(open(os.path.join(ROOT, 'sitemap-graph.js'), 'rb').read()).hexdigest()[:8]
+out = out.replace('src="sitemap-graph.js"', 'src="sitemap-graph.js?v=%s"' % _v)
 out = out.replace('{{EPCOUNT}}', str(len(EPS)))
 out = out.replace('{{PAGECOUNT}}', str(sum(1 for e in EPS if e["id"] in PAGE)))
 out = out.replace('{{SERIESCOUNT}}', str(len(TOPICS)))
