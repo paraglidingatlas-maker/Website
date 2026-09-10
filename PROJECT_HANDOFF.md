@@ -744,6 +744,20 @@ Open, roughly in order of value:
    `episode-meta.json`, and rerun the generator. **Scan any new batch of
    transcripts for language before publishing them.**
 
+   The user asked whether the French could simply be translated back. It can,
+   but the French is ALREADY a translation of English speech, so translating it
+   back produces paraphrase, not a transcript, attributed to a named real person
+   who did not say those words. That matters here because he is a gear designer
+   discussing materials, where a term drifting changes the meaning. Options, in
+   order of preference:
+   a) re-run the audio with the language forced to English (the only route to a
+      real transcript);
+   b) back-translate and label the page clearly as a translation, not a
+      transcript, so nobody quotes it as his words;
+   c) leave the page with the player and no transcript, which is where it is now.
+   If (b) is chosen it needs its own session: 12,809 words is too much to do
+   carefully at the tail end of a long chat.
+
 4. **Transcripts for the remaining 40 episodes.** No transcript exists for them.
    The 52 that do exist came from the user's Drive folder. Anything new needs
    the same treatment (see the transcripts section above).
