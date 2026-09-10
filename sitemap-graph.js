@@ -23,8 +23,8 @@
   data.nodes.forEach(function (n) {
     byId[n.id] = n;
     n.x = 0; n.y = 0; n.vx = 0; n.vy = 0;
-    n.open = n.depth < 2;          // home, sections and categories visible at first
-    n.shown = n.depth <= 2;
+    n.open = n.depth < 1;          // start as the nav bar and nothing else
+    n.shown = n.depth <= 1;
   });
 
   function recompute() {
@@ -110,7 +110,7 @@
     var defs = document.createElementNS(NS, "defs");
     defs.innerHTML =
       '<marker id="arw" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">' +
-      '<path d="M0 0 L8 4 L0 8 z" fill="rgba(255,117,23,0.5)"/></marker>';
+      '<path d="M0 0 L8 4 L0 8 z" fill="rgba(180,180,180,0.32)"/></marker>';
     svg.appendChild(defs);
 
     var g = document.createElementNS(NS, "g");
@@ -130,11 +130,41 @@
       g.appendChild(ln);
     });
 
+
+    /* feeble lines radiating from anything still folded away, so you can see
+       there is more without being shown all of it */
+    data.nodes.forEach(function (n) {
+      var has = (kids[n.id] || []).length;
+      if (!n.shown || !has || n.open) return;
+      var p = (parents[n.id] || [])[0];
+      var pn = p && byId[p];
+      var base = pn ? Math.atan2(n.y - pn.y, n.x - pn.x) : -Math.PI / 2;
+      var count = Math.min(has, 5);
+      var spread = Math.PI * 0.66;
+      for (var i = 0; i < count; i++) {
+        var a = base + (count === 1 ? 0 : (i / (count - 1) - 0.5) * spread);
+        var r0 = R[n.kind] + 3;
+        var len = 15 + Math.min(has, 12) * 1.1;
+        var x1 = n.x + Math.cos(a) * r0, y1 = n.y + Math.sin(a) * r0;
+        var x2 = n.x + Math.cos(a) * (r0 + len), y2 = n.y + Math.sin(a) * (r0 + len);
+        var ln = document.createElementNS(NS, "line");
+        ln.setAttribute("x1", x1); ln.setAttribute("y1", y1);
+        ln.setAttribute("x2", x2); ln.setAttribute("y2", y2);
+        ln.setAttribute("class", "sm-stub");
+        g.appendChild(ln);
+        var d = document.createElementNS(NS, "circle");
+        d.setAttribute("cx", x2); d.setAttribute("cy", y2);
+        d.setAttribute("r", 1.6);
+        d.setAttribute("class", "sm-stub-dot");
+        g.appendChild(d);
+      }
+    });
+
     data.nodes.forEach(function (n) {
       if (!n.shown) return;
       var has = (kids[n.id] || []).length;
       var grp = document.createElementNS(NS, "g");
-      grp.setAttribute("class", "sm-node sm-" + n.kind + (has && !n.open ? " sm-closed" : ""));
+      grp.setAttribute("class", "sm-node sm-" + n.kind + (has && n.open ? " sm-open" : ""));
       grp.setAttribute("transform", "translate(" + n.x + "," + n.y + ")");
       grp.setAttribute("tabindex", "0");
       grp.setAttribute("role", "button");
@@ -143,14 +173,6 @@
       var c = document.createElementNS(NS, "circle");
       c.setAttribute("r", R[n.kind]);
       grp.appendChild(c);
-
-      if (has && !n.open) {
-        var plus = document.createElementNS(NS, "text");
-        plus.setAttribute("class", "sm-plus");
-        plus.setAttribute("dy", "0.35em");
-        plus.textContent = "+";
-        grp.appendChild(plus);
-      }
 
       if (n.kind !== "episode" || n.open) {
         var t = document.createElementNS(NS, "text");
@@ -223,7 +245,7 @@
   var expandAll = document.getElementById("sm-expand");
   if (expandAll) expandAll.addEventListener("click", function () {
     var all = data.nodes.every(function (n) { return !(kids[n.id] || []).length || n.open; });
-    data.nodes.forEach(function (n) { n.open = all ? n.depth < 2 : true; });
+    data.nodes.forEach(function (n) { n.open = all ? n.depth < 1 : true; });
     expandAll.textContent = all ? "Expand everything" : "Collapse back down";
     recompute(); seed(); tick(reduce ? 500 : 400); fit(); draw();
   });

@@ -18,22 +18,6 @@
 .sm-stat{color:var(--gray);font-size:0.85rem;margin-top:0.9rem;}
 
 /* the five places you can go */
-.sm-top{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:1rem;margin:2.6rem 0 3.6rem;}
-.sm-card{position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.14);
-  padding:1.2rem 1.2rem 1.3rem;transition:border-color 0.18s ease;}
-.sm-card:hover{border-color:var(--orange);}
-.sm-card::before,.sm-card::after{content:"";position:absolute;width:9px;height:9px;
-  border-color:var(--orange);}
-.sm-card::before{top:7px;left:7px;border-left:1.5px solid;border-top:1.5px solid;}
-.sm-card::after{bottom:7px;right:7px;border-right:1.5px solid;border-bottom:1.5px solid;}
-.sm-card h3{font-family:var(--font-display);font-weight:600;font-size:1rem;margin-bottom:0.35rem;}
-.sm-card:hover h3{color:var(--orange);}
-.sm-card p{color:var(--gray-light);font-size:0.85rem;line-height:1.55;}
-
-h2.sm-h{font-family:var(--font-display);font-weight:700;font-size:1.35rem;
-  letter-spacing:-0.02em;margin-bottom:0.5rem;}
-.sm-sub{color:var(--gray-light);font-size:0.92rem;max-width:60ch;margin-bottom:2rem;}
 
 .sm-cat{margin-bottom:2.4rem;}
 .sm-cat h2{font-family:var(--font-display);font-weight:700;font-size:0.78rem;
@@ -65,41 +49,43 @@ h2.sm-h{font-family:var(--font-display);font-weight:700;font-size:1.35rem;
 .sm-eps a.sm-out::after{content:" \2197";color:var(--gray);font-size:0.78rem;}
 
 /* network graph */
-.sm-graph{position:relative;background:#101116;border:1px solid rgba(180,180,180,0.14);
-  margin:2.4rem 0 1rem;overflow:hidden;}
+.sm-graph{position:relative;background:#101116;border:1px solid rgba(180,180,180,0.12);
+  margin:2.2rem 0 1rem;overflow:hidden;}
 .sm-graph::before,.sm-graph::after{content:"";position:absolute;width:11px;height:11px;
-  border-color:var(--orange);z-index:3;pointer-events:none;}
+  border-color:rgba(255,117,23,0.55);z-index:3;pointer-events:none;}
 .sm-graph::before{top:8px;left:8px;border-left:1.5px solid;border-top:1.5px solid;}
 .sm-graph::after{bottom:8px;right:8px;border-right:1.5px solid;border-bottom:1.5px solid;}
-#sm-svg{display:block;width:100%;height:620px;cursor:grab;touch-action:none;}
+#sm-svg{display:block;width:100%;height:640px;cursor:grab;touch-action:none;}
 #sm-svg:active{cursor:grabbing;}
-.sm-edge{stroke:rgba(180,180,180,0.22);stroke-width:1;}
-.sm-edge-series{stroke:rgba(255,117,23,0.22);}
-.sm-edge-episode{stroke:rgba(180,180,180,0.14);}
+
+/* real edges, quiet */
+.sm-edge{stroke:rgba(180,180,180,0.26);stroke-width:1;}
+/* the feeble lines that hint at what is still folded away */
+.sm-stub{stroke:rgba(180,180,180,0.13);stroke-width:1;}
+.sm-stub-dot{fill:rgba(180,180,180,0.16);}
+.sm-node:hover ~ .sm-stub{stroke:rgba(180,180,180,0.3);}
+
 .sm-node{cursor:pointer;}
-.sm-node circle{fill:#20222a;stroke:rgba(180,180,180,0.4);stroke-width:1.4;
-  transition:fill 0.15s ease,stroke 0.15s ease;}
-.sm-node:hover circle,.sm-node:focus circle{fill:var(--orange);stroke:var(--orange);}
+.sm-node circle{fill:#191b21;stroke:rgba(180,180,180,0.45);stroke-width:1.3;
+  transition:fill 0.16s ease,stroke 0.16s ease;}
+.sm-node:hover circle,.sm-node:focus circle{stroke:var(--orange);fill:#20222a;}
 .sm-node:focus{outline:none;}
-.sm-root circle{fill:var(--orange);stroke:var(--orange);}
-.sm-section circle{stroke:var(--orange);stroke-width:2;}
-.sm-category circle{stroke:rgba(255,117,23,0.7);}
-.sm-closed circle{fill:#2a2c35;}
-.sm-plus{fill:var(--orange);font-family:var(--font-body);font-size:10px;
-  text-anchor:middle;pointer-events:none;font-weight:700;}
-.sm-node:hover .sm-plus{fill:#141519;}
-.sm-label{fill:var(--gray-light);font-family:var(--font-body);font-size:11px;pointer-events:none;}
-.sm-root .sm-label,.sm-section .sm-label{fill:var(--white);font-weight:600;font-size:12.5px;}
-.sm-node:hover .sm-label{fill:var(--orange);}
-.sm-bar{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;
-  margin-bottom:2.6rem;}
+.sm-root circle{fill:#22242c;stroke:rgba(246,244,244,0.65);stroke-width:1.6;}
+.sm-open circle{fill:#101116;stroke:rgba(180,180,180,0.3);}
+
+.sm-label{fill:var(--gray);font-family:var(--font-body);font-size:11px;pointer-events:none;
+  transition:fill 0.16s ease;}
+.sm-root .sm-label,.sm-section .sm-label{fill:var(--gray-light);font-weight:600;font-size:12.5px;}
+.sm-node:hover .sm-label,.sm-node:focus .sm-label{fill:var(--orange);}
+
+.sm-bar{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;}
 #sm-info{color:var(--gray);font-size:0.83rem;}
-#sm-info strong{color:var(--white);font-weight:600;margin-right:0.5rem;}
-#sm-expand{background:none;border:1px solid rgba(180,180,180,0.28);color:var(--gray-light);
+#sm-info strong{color:var(--gray-light);font-weight:600;margin-right:0.5rem;}
+#sm-expand{background:none;border:1px solid rgba(180,180,180,0.24);color:var(--gray);
   font-family:var(--font-body);font-size:0.8rem;padding:0.42rem 1rem;cursor:pointer;
   transition:all 0.16s ease;}
-#sm-expand:hover{color:var(--white);border-color:var(--orange);}
-@media (max-width:720px){#sm-svg{height:440px;}}
+#sm-expand:hover{color:var(--gray-light);border-color:rgba(180,180,180,0.45);}
+@media (max-width:720px){#sm-svg{height:460px;}}
 </style>
 </head>
 <body>
@@ -127,40 +113,19 @@ h2.sm-h{font-family:var(--font-display);font-weight:700;font-size:1.35rem;
 <div class="sm-wrap">
 
   <h1>How to find your way around</h1>
-  <p class="sm-lede">Everything we have published, laid out in one place. If you are looking for a particular conversation, or you want to work through a subject properly, start here.</p>
+  <p class="sm-lede">The whole site as a map. Start at the centre and open each branch to see what sits under it.</p>
   <p class="sm-stat">13 series &middot; 79 episodes &middot; 45 with full transcripts</p>
-
-  <div class="sm-top">
-    <a class="sm-card" href="library.html">
-      <h3>Episode Library</h3>
-      <p>Browse by series. Open one and filter by length or work through it newest first.</p>
-    </a>
-    <a class="sm-card" href="knowledge-base.html">
-      <h3>Knowledge Base</h3>
-      <p>The same material organised as a course rather than a feed, five categories deep.</p>
-    </a>
-    <a class="sm-card" href="podcast.html">
-      <h3>Podcast</h3>
-      <p>The latest episodes as they land, and where to subscribe on Spotify, Apple or YouTube.</p>
-    </a>
-    <a class="sm-card" href="about.html">
-      <h3>About Us</h3>
-      <p>Who makes this, why it exists, and the trips we run.</p>
-    </a>
-  </div>
 
   <div class="sm-graph">
     <svg id="sm-svg" viewBox="0 0 900 620" preserveAspectRatio="xMidYMid meet"
          role="img" aria-label="Network graph of the site structure. A full text index follows below."></svg>
   </div>
   <div class="sm-bar">
-    <p id="sm-info"><strong>Drag to move, scroll to zoom.</strong><span>Click a ringed node to open what is under it.</span></p>
+    <p id="sm-info"><strong>Click a node to open it out.</strong><span>Drag to move, scroll to zoom.</span></p>
     <button id="sm-expand" type="button">Expand everything</button>
   </div>
 
-  <h2 class="sm-h">Every series, every episode</h2>
-  <p class="sm-sub">Open a series to see what is in it. Titles that link to a full page have a transcript with chapters you can jump through. The rest open on YouTube.</p>
-
+  <noscript>
 <section class="sm-cat">
   <h2>Core series</h2>
   <details class="sm-series">
@@ -267,6 +232,7 @@ h2.sm-h{font-family:var(--font-display);font-weight:700;font-size:1.35rem;
     </div>
   </details>
 </section>
+  </noscript>
 
 </div>
 
