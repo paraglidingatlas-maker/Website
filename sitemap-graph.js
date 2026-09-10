@@ -303,7 +303,10 @@
   }
 
   /* one dot plus four smaller ones behind it, all on the same path */
-  var TRAIL = [0, 4.5, 9.5, 15.5, 22.5, 30];
+  /* Variant B: the tail is a drawn line exactly as thick as the grey connector,
+     fading along its length, so it can never out-weigh the line it runs on.
+     TAIL is the full length behind the head, in the same units as the layout. */
+  var TAIL = 62, TAIL_STEPS = 26;
   function paintSignal() {
     if (!SIG) return;
     while (SIG.firstChild) SIG.removeChild(SIG.firstChild);
@@ -316,14 +319,26 @@
       SIG.appendChild(ring);
     }
     if (!sigAt) return;
-    for (var i = TRAIL.length - 1; i >= 0; i--) {
-      var pt = sigAt.at(TRAIL[i]);
-      if (!pt) continue;
+
+    var step = TAIL / TAIL_STEPS, pts = [], i, pt;
+    for (i = 0; i <= TAIL_STEPS; i++) {
+      pt = sigAt.at(i * step);
+      if (pt) pts.push(pt); else break;
+    }
+    for (i = 0; i < pts.length - 1; i++) {
+      var ln = document.createElementNS(NS, "line");
+      ln.setAttribute("x1", pts[i][0]); ln.setAttribute("y1", pts[i][1]);
+      ln.setAttribute("x2", pts[i + 1][0]); ln.setAttribute("y2", pts[i + 1][1]);
+      ln.setAttribute("class", "sm-sig-tail");
+      ln.setAttribute("opacity", (0.55 * (1 - i / TAIL_STEPS)).toFixed(3));
+      SIG.appendChild(ln);
+    }
+    var head = sigAt.at(0);
+    if (head) {
       var c = document.createElementNS(NS, "circle");
-      c.setAttribute("cx", pt[0]); c.setAttribute("cy", pt[1]);
-      c.setAttribute("r", (1.5 - i * 0.22).toFixed(2));
-      c.setAttribute("class", "sm-sig" + (i ? " sm-sig-t" : ""));
-      c.setAttribute("opacity", (1 - i * 0.17).toFixed(2));
+      c.setAttribute("cx", head[0]); c.setAttribute("cy", head[1]);
+      c.setAttribute("r", 1.4);
+      c.setAttribute("class", "sm-sig");
       SIG.appendChild(c);
     }
   }
@@ -351,7 +366,7 @@
     if (sigAnim) { cancelAnimationFrame(sigAnim); sigAnim = null; }
     arriveAt = null;
     var t0 = performance.now();
-    var dur = Math.max(430, Math.min(1150, L.total * 1.95));
+    var dur = Math.max(575, Math.min(1530, L.total * 2.6));
     (function step(now) {
       var q = Math.min(1, (now - t0) / dur);
       var e = q * q * (3 - 2 * q);            /* ease in and out, no overshoot */
