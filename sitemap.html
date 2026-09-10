@@ -86,6 +86,10 @@
 .sm-root .sm-label,.sm-section .sm-label{fill:var(--gray-light);font-weight:600;
   font-size:12px;letter-spacing:0.04em;}
 .sm-node:hover .sm-label,.sm-node:focus .sm-label{fill:var(--orange);}
+/* a node with nothing under it is a destination, so mark it as one */
+.sm-node:hover .sm-hit,.sm-node:focus .sm-hit{fill:rgba(255,117,23,0.05);}
+.sm-episode:hover .sm-label,.sm-episode:focus .sm-label{text-decoration:underline;
+  text-underline-offset:3px;}
 
 .sm-bar{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;}
 #sm-info{color:var(--gray);font-size:0.82rem;}
