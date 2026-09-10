@@ -12,7 +12,6 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-#sm-svg{--mono:"JetBrains Mono",ui-monospace,monospace;}
 .sm-wrap{max-width:1140px;margin:0 auto;padding:clamp(2.5rem,5.5vw,4rem) clamp(1.25rem,4vw,3rem) 5rem;}
 .sm-wrap h1{font-family:var(--font-display);font-weight:800;
   font-size:clamp(2rem,4.4vw,3rem);letter-spacing:-0.025em;line-height:1.08;}
@@ -50,34 +49,56 @@
 .sm-eps a:hover{color:var(--orange);}
 .sm-eps a.sm-out::after{content:" \2197";color:var(--gray);font-size:0.78rem;}
 
-/* the landscape */
-.sm-graph{position:relative;background:#0a0c11;border:1px solid rgba(180,180,180,0.1);
-  margin:2.2rem 0 1rem;overflow:hidden;}
-.sm-graph::before,.sm-graph::after{content:"";position:absolute;width:12px;height:12px;
-  border-color:rgba(255,117,23,0.4);z-index:5;pointer-events:none;}
-.sm-graph::before{top:9px;left:9px;border-left:1px solid;border-top:1px solid;}
-.sm-graph::after{bottom:9px;right:9px;border-right:1px solid;border-bottom:1px solid;}
-#sm-svg{display:block;width:100%;height:660px;cursor:grab;touch-action:pan-y;}
-#sm-svg:active{cursor:grabbing;}
-/* orange only on hover, the way the rest of the site works */
-#sm-svg .sm-marker{cursor:pointer;}
-#sm-svg .sm-marker .sm-glyph,#sm-svg .sm-marker .sm-lbl{transition:stroke .16s ease,fill .16s ease;}
-#sm-svg .sm-marker:hover .sm-glyph,#sm-svg .sm-marker:focus-visible .sm-glyph{stroke:var(--orange);}
-#sm-svg .sm-marker:hover .sm-lbl,#sm-svg .sm-marker:focus-visible .sm-lbl{fill:var(--orange);}
-#sm-svg .sm-marker:focus{outline:none;}
+/* top to bottom flow */
+.sm-flow{margin:2.2rem 0 1.2rem;}
+.sm-lvl{padding-left:calc(var(--d) * clamp(0.9rem, 2.6vw, 2rem));}
 
-.sm-bar{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;}
-#sm-info{color:var(--gray);font-size:0.82rem;display:flex;flex-wrap:wrap;
-  align-items:baseline;gap:0.15rem 0.55rem;min-height:1.5rem;max-width:64ch;}
-#sm-info strong{color:var(--gray-light);font-weight:600;margin-right:0.55rem;}
-.sm-go{color:var(--orange);text-decoration:underline;text-underline-offset:3px;
-  font-size:0.8rem;white-space:nowrap;}
+.sm-row{position:relative;display:flex;align-items:stretch;gap:0.6rem;
+  border-bottom:1px solid rgba(180,180,180,0.08);}
+.sm-row:hover{background:rgba(255,255,255,0.014);}
+.sm-rail{position:absolute;left:-0.95rem;top:0;bottom:0;width:1px;
+  background:rgba(180,180,180,0.16);}
+.sm-lvl[style*="--d:0"] .sm-rail{display:none;}
+
+.sm-hit{flex:1;display:flex;align-items:flex-start;gap:0.8rem;text-align:left;
+  background:none;border:none;cursor:pointer;font-family:var(--font-body);
+  padding:0.85rem 0.2rem;color:inherit;min-width:0;}
+.sm-mark{width:20px;height:22px;flex-shrink:0;margin-top:0.1rem;fill:none;
+  stroke:rgba(180,180,180,0.65);stroke-width:1.5;stroke-linecap:round;
+  stroke-linejoin:round;transition:stroke .16s ease;}
+.sm-text{min-width:0;flex:1;}
+.sm-label{display:block;color:var(--gray-light);font-size:0.96rem;line-height:1.4;
+  transition:color .16s ease;
+  overflow-wrap:anywhere;word-break:break-word;}   /* never truncate a title */
+.sm-meta{display:block;color:var(--gray);font-size:0.75rem;letter-spacing:0.04em;
+  margin-top:0.12rem;}
+.sm-n{flex-shrink:0;align-self:center;color:var(--gray);font-size:0.76rem;
+  border:1px solid rgba(180,180,180,0.2);padding:0.06rem 0.44rem;
+  font-variant-numeric:tabular-nums;}
+
+.sm-root .sm-label,.sm-section .sm-label{font-family:var(--font-display);
+  font-weight:600;font-size:1.06rem;color:var(--white);}
+.sm-category .sm-label{font-weight:600;color:var(--white);}
+.sm-episode .sm-label{font-size:0.9rem;}
+
+.sm-hit:hover .sm-mark,.sm-hit:focus-visible .sm-mark{stroke:var(--orange);}
+.sm-hit:hover .sm-label,.sm-hit:focus-visible .sm-label{color:var(--orange);}
+.sm-hit:focus{outline:none;}
+.sm-hit:focus-visible{outline:1px solid rgba(255,117,23,0.5);outline-offset:-2px;}
+.is-open > .sm-hit > .sm-mark{stroke:rgba(246,244,244,0.85);}
+
+.sm-open{flex-shrink:0;align-self:center;color:var(--gray);font-size:0.78rem;
+  padding:0.3rem 0.7rem;white-space:nowrap;transition:color .16s ease;}
+.sm-open:hover{color:var(--orange);}
+.sm-arrow{margin-left:0.3rem;}
+
+.sm-bar{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;
+  justify-content:space-between;}
 .sm-ctrl{display:flex;gap:0.4rem;}
 .sm-ctrl button{background:none;border:1px solid rgba(180,180,180,0.2);color:var(--gray);
-  font-family:var(--font-body);font-size:0.78rem;padding:0.34rem 0.8rem;cursor:pointer;
-  min-width:2.1rem;transition:all 0.16s ease;}
+  font-family:var(--font-body);font-size:0.78rem;padding:0.34rem 0.9rem;cursor:pointer;
+  transition:all 0.16s ease;}
 .sm-ctrl button:hover{color:var(--gray-light);border-color:rgba(180,180,180,0.42);}
-@media (max-width:720px){#sm-svg{height:440px;}}
 </style>
 </head>
 <body>
@@ -105,19 +126,14 @@
 <div class="sm-wrap">
 
   <h1>How to find your way around</h1>
-  <p class="sm-lede">The whole site laid out as ground you can fly across. Start at Home and follow each line to see what lies further out. Clicking only travels and opens, so you can explore the shape of things without losing your place.</p>
+  <p class="sm-lede">Everything on the site, flowing top to bottom. Open a branch to see what sits under it. Nothing here takes you off this page unless you choose to open a page.</p>
   <p class="sm-stat">{{SERIESCOUNT}} series &middot; {{EPCOUNT}} episodes &middot; {{PAGECOUNT}} with full transcripts</p>
 
-  <div class="sm-graph">
-    <svg id="sm-svg" viewBox="0 0 1180 660" preserveAspectRatio="xMidYMid meet"
-         role="img" aria-label="The site drawn as a landscape you can fly across. A full text index follows below."></svg>
-  </div>
+  <div class="sm-flow" id="sm-flow"></div>
   <div class="sm-bar">
-    <p id="sm-info"><strong>Drag to fly across it.</strong><span>Click a marker to travel there and open what lies ahead. Nothing takes you off this page unless you ask it to.</span></p>
     <div class="sm-ctrl">
-      <button id="sm-out" type="button" aria-label="Raise the camera">&uarr;</button>
-      <button id="sm-in" type="button" aria-label="Lower the camera">&darr;</button>
-      <button id="sm-reset" type="button">Reset</button>
+      <button id="sm-expandall" type="button">Open everything</button>
+      <button id="sm-reset" type="button">Close it back down</button>
     </div>
   </div>
 
