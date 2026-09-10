@@ -271,8 +271,69 @@
       "1": "Eric Roussel"
     },
     "summary": "Eric Roussel explains why Neo designs and manufactures in France rather than Asia, from the cost arithmetic that forces them into higher quality and more innovation, to the reason the brand is named after stepping outside the trend. He also covers the Koroyd protection partnership, why he published the patent on their stand up rescue system, and the carabiner fatigue testing that led them to build their own.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
-    "chapters": [],
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages.",
+    "chapters": [
+      {
+        "title": "What Neo is, and where the name came from",
+        "at": "00:00:42",
+        "src": "claude"
+      },
+      {
+        "title": "Competing with Asian manufacturing from France",
+        "at": "00:04:24",
+        "src": "claude"
+      },
+      {
+        "title": "Setting your own rules and sticking to them",
+        "at": "00:07:57",
+        "src": "claude"
+      },
+      {
+        "title": "Why brands rise and then disappear",
+        "at": "00:12:52",
+        "src": "claude"
+      },
+      {
+        "title": "How to choose gear, and what to look for",
+        "at": "00:19:35",
+        "src": "claude"
+      },
+      {
+        "title": "Diversifying into backpacks, helmets and protectors",
+        "at": "00:24:10",
+        "src": "claude"
+      },
+      {
+        "title": "How Koroyd works, and why the blocks twist",
+        "at": "00:29:48",
+        "src": "claude"
+      },
+      {
+        "title": "Foam, sponge, and what you cannot see after a crash",
+        "at": "00:33:40",
+        "src": "claude"
+      },
+      {
+        "title": "Origami compared with Koroyd",
+        "at": "00:38:04",
+        "src": "claude"
+      },
+      {
+        "title": "Reducing drag, and the submarine harnesses",
+        "at": "00:44:29",
+        "src": "claude"
+      },
+      {
+        "title": "Designing the pro harness with Maxime Pinot",
+        "at": "00:47:52",
+        "src": "claude"
+      },
+      {
+        "title": "The stand up rescue, and opening the patent",
+        "at": "00:51:49",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [
@@ -3587,7 +3648,33 @@
     "speakers": {},
     "summary": "Luc Armant explains that a paraglider's pitch stability comes entirely from its profile shape, because the wing has no tail, and that the profile's moment coefficient decides where the lift sits and how much speed the bar can actually deliver. He argues the CCC rule capping speed system travel at 14 centimetres pushes any wing built to win towards the low end of pitch stability, which is the core of the Enzo 3 certification debate.",
     "_no_transcript": "No transcript available for this episode yet; the page carries the player, the series and related episodes only.",
-    "chapters": [],
+    "chapters": [
+      {
+        "title": "Pitch stability without a tail",
+        "at": "00:00:36",
+        "src": "claude"
+      },
+      {
+        "title": "The document, and why it needs reading",
+        "at": "00:06:21",
+        "src": "claude"
+      },
+      {
+        "title": "What the lines actually stabilise",
+        "at": "00:08:12",
+        "src": "claude"
+      },
+      {
+        "title": "Why people are angry about trimming",
+        "at": "00:11:52",
+        "src": "claude"
+      },
+      {
+        "title": "What is holding the rule change up",
+        "at": "00:18:55",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [
@@ -3607,7 +3694,8 @@
     "tags": [
       "Flight Mechanics"
     ],
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
+    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages."
   },
   {
     "slug": "srs-piedrahita-bgd-edition-task-1-highlights",
@@ -4270,7 +4358,68 @@
     "speakers": {},
     "summary": "Dr Matt Wilkes shares research on where pilots actually reach for a reserve handle under rotation, which follows the skeleton rather than the harness layout: the hip bone when rotating forwards, further down the thigh when rotating back. He also makes the case for pausing before acting in an emergency, and for understanding afterwards why something happened, which makes the experience far less likely to be traumatic.",
     "_no_transcript": "No transcript available for this episode yet; the page carries the player, the series and related episodes only.",
-    "chapters": [],
+    "chapters": [
+      {
+        "title": "How physical is paragliding really",
+        "at": "00:01:24",
+        "src": "claude"
+      },
+      {
+        "title": "What makes flying cognitively heavy",
+        "at": "00:07:28",
+        "src": "claude"
+      },
+      {
+        "title": "Body type, training and fuelling",
+        "at": "00:13:18",
+        "src": "claude"
+      },
+      {
+        "title": "Weight limits, and the meme that followed",
+        "at": "00:18:05",
+        "src": "claude"
+      },
+      {
+        "title": "Where competition and risk meet",
+        "at": "00:22:27",
+        "src": "claude"
+      },
+      {
+        "title": "Managing a heavy cognitive load in the air",
+        "at": "00:27:23",
+        "src": "claude"
+      },
+      {
+        "title": "Giving yourself the most margin",
+        "at": "00:34:36",
+        "src": "claude"
+      },
+      {
+        "title": "The research, and why data is hard to come by",
+        "at": "00:40:08",
+        "src": "claude"
+      },
+      {
+        "title": "Viagra at 5,000 metres",
+        "at": "00:44:53",
+        "src": "claude"
+      },
+      {
+        "title": "Why pilots do not throw the reserve",
+        "at": "00:50:38",
+        "src": "claude"
+      },
+      {
+        "title": "Whether switching equipment is worth the risk",
+        "at": "00:55:28",
+        "src": "claude"
+      },
+      {
+        "title": "First aid, and what to carry",
+        "at": "1:00:15",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [
@@ -4291,7 +4440,8 @@
       "Risk vs Reward"
     ],
     "_transcript_source": "Spotify's own auto-generated transcript, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. Spotify carries no speaker diarisation, so this page has no per line speaker attribution. Machine transcription, so vocabulary can drift.",
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
+    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages."
   },
   {
     "slug": "if-you-fly-in-the-himalayas-alps-or-above-3000-mtrs-this",
@@ -4378,7 +4528,23 @@
     "speakers": {},
     "summary": "A short extract in which Beni Kalin and Heli Schrempf discuss how flying constantly can breed overconfidence rather than guard against it, particularly in speed flying where the air is smooth and the ground is close. They suggest a break of a few months is often useful, because coming back and finding it fast again is what keeps the risk visible.",
     "_no_transcript": "No transcript available for this episode yet; the page carries the player, the series and related episodes only.",
-    "chapters": [],
+    "chapters": [
+      {
+        "title": "How much SIV training is enough",
+        "at": "00:02:29",
+        "src": "claude"
+      },
+      {
+        "title": "Repeating it until it actually works",
+        "at": "00:04:05",
+        "src": "claude"
+      },
+      {
+        "title": "Flying without collapses, and using your potential",
+        "at": "00:05:24",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [
@@ -4399,7 +4565,8 @@
       "Risk vs Reward"
     ],
     "_transcript_source": "Spotify's own auto-generated transcript, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. Spotify carries no speaker diarisation, so this page has no per line speaker attribution. Machine transcription, so vocabulary can drift.",
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
+    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages."
   },
   {
     "slug": "sports-psychology-for-paragliding-train-your-mind-to-fly",
@@ -4606,7 +4773,58 @@
     "speakers": {},
     "summary": "Shams flies with his dog Ouka, and this is the practical version of how that works: the training, the equipment, and how to judge whether the dog actually wants to be there. He took the idea from friends who had been flying with dogs for years, and is clear that size and temperament decide whether it is possible at all.",
     "_no_transcript": "No transcript available for this episode yet; the page carries the player, the series and related episodes only.",
-    "chapters": [],
+    "chapters": [
+      {
+        "title": "Where the idea of flying with a dog came from",
+        "at": "00:00:05",
+        "src": "claude"
+      },
+      {
+        "title": "What an average flight with Ouka looks like",
+        "at": "00:03:27",
+        "src": "claude"
+      },
+      {
+        "title": "Setting the harness up correctly",
+        "at": "00:07:15",
+        "src": "claude"
+      },
+      {
+        "title": "What the dog actually looks at up there",
+        "at": "00:11:35",
+        "src": "claude"
+      },
+      {
+        "title": "Knowing when he has had enough",
+        "at": "00:16:30",
+        "src": "claude"
+      },
+      {
+        "title": "How it differs from flying a passenger",
+        "at": "00:19:35",
+        "src": "claude"
+      },
+      {
+        "title": "Desire, exploration, and why you go at all",
+        "at": "00:23:52",
+        "src": "claude"
+      },
+      {
+        "title": "Starting Ouka's account",
+        "at": "00:28:32",
+        "src": "claude"
+      },
+      {
+        "title": "Staying off the usual platforms",
+        "at": "00:32:58",
+        "src": "claude"
+      },
+      {
+        "title": "The demand that followed, and a new harness",
+        "at": "00:39:59",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [
@@ -4627,7 +4845,8 @@
       "Living the Dream"
     ],
     "_transcript_source": "Spotify's own auto-generated transcript, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. Spotify carries no speaker diarisation, so this page has no per line speaker attribution. Machine transcription, so vocabulary can drift.",
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
+    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages."
   },
   {
     "slug": "survived-15-years-of-flying-then-a-rescue-helicopter",
@@ -4644,7 +4863,58 @@
     "speakers": {},
     "summary": "Nick Neynens spent fifteen years flying at the top of the sport, in places most pilots only read about, before a rescue helicopter changed the course of it. He talks about that turn and what he has built since, including the outlook behind the name he posts under, borrowed from an old mountaineering book about sharing your joys.",
     "_no_transcript": "No transcript available for this episode yet; the page carries the player, the series and related episodes only.",
-    "chapters": [],
+    "chapters": [
+      {
+        "title": "Where 'share my joys' came from",
+        "at": "00:00:39",
+        "src": "claude"
+      },
+      {
+        "title": "Cameras, and filming properly",
+        "at": "00:07:00",
+        "src": "claude"
+      },
+      {
+        "title": "EN ratings against what the manufacturer says",
+        "at": "00:14:45",
+        "src": "claude"
+      },
+      {
+        "title": "What tetraplegia actually means",
+        "at": "00:22:40",
+        "src": "claude"
+      },
+      {
+        "title": "The first week in hospital",
+        "at": "00:27:39",
+        "src": "claude"
+      },
+      {
+        "title": "What can be done to make things better",
+        "at": "00:32:15",
+        "src": "claude"
+      },
+      {
+        "title": "Flying in France, living in Spain",
+        "at": "00:37:46",
+        "src": "claude"
+      },
+      {
+        "title": "Insurance, and what actually gets paid",
+        "at": "00:43:39",
+        "src": "claude"
+      },
+      {
+        "title": "Being told what he can no longer do",
+        "at": "00:51:50",
+        "src": "claude"
+      },
+      {
+        "title": "Whether that is simply how the system is",
+        "at": "00:58:47",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [
@@ -4665,7 +4935,8 @@
       "The Dark Side"
     ],
     "_transcript_source": "Spotify's own auto-generated transcript, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. Spotify carries no speaker diarisation, so this page has no per line speaker attribution. Machine transcription, so vocabulary can drift.",
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
+    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages."
   },
   {
     "slug": "from-tents-to-trophies-understanding-acro-champion-s",
@@ -4777,7 +5048,68 @@
     "speakers": {},
     "summary": "Tom Lolies traces his route from a student project bringing proper modelling and scientific method into paraglider design, through seven years designing at BGD, to running a three person research group building simulation software for flexible wings. He is candid that after eight years he still meets prototypes that behave in ways he did not predict, and treats that as the interesting part of the job.",
     "_no_transcript": "No transcript available for this episode yet; the page carries the player, the series and related episodes only.",
-    "chapters": [],
+    "chapters": [
+      {
+        "title": "What a designer's day actually looks like",
+        "at": "00:01:42",
+        "src": "claude"
+      },
+      {
+        "title": "What optimisation taught them",
+        "at": "00:07:22",
+        "src": "claude"
+      },
+      {
+        "title": "Whether a glider behaves like a living thing",
+        "at": "00:13:06",
+        "src": "claude"
+      },
+      {
+        "title": "Brake pressure, and the approach to a stall",
+        "at": "00:17:57",
+        "src": "claude"
+      },
+      {
+        "title": "The green flags to look for in a wing",
+        "at": "00:24:33",
+        "src": "claude"
+      },
+      {
+        "title": "Reading a test report properly",
+        "at": "00:29:50",
+        "src": "claude"
+      },
+      {
+        "title": "Judging how collapse resistant your glider is",
+        "at": "00:35:16",
+        "src": "claude"
+      },
+      {
+        "title": "Flat aspect ratio, and what it means in the air",
+        "at": "00:40:39",
+        "src": "claude"
+      },
+      {
+        "title": "Whether to change category or stay put",
+        "at": "00:46:29",
+        "src": "claude"
+      },
+      {
+        "title": "The changes you notice moving up",
+        "at": "00:51:45",
+        "src": "claude"
+      },
+      {
+        "title": "Does brake input prevent collapses",
+        "at": "00:57:45",
+        "src": "claude"
+      },
+      {
+        "title": "Can every collapse be caught on the B line",
+        "at": "1:02:45",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [
@@ -4798,7 +5130,8 @@
       "Flight Mechanics"
     ],
     "_transcript_source": "Spotify's own auto-generated transcript, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. Spotify carries no speaker diarisation, so this page has no per line speaker attribution. Machine transcription, so vocabulary can drift.",
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
+    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages."
   },
   {
     "slug": "the-art-of-capturing-human-flight-jake-holland-s-guide-to",
@@ -4815,7 +5148,58 @@
     "speakers": {},
     "summary": "Jake Holland describes what filming flying actually involves, which he likens to herding pigeons: toplanding on a snowy peak and getting a drone airborne before your friends have climbed out of their harnesses. He argues for showing the reality rather than only the good side, on the grounds that a trip where everything goes perfectly rarely makes a story worth watching.",
     "_no_transcript": "No transcript available for this episode yet; the page carries the player, the series and related episodes only.",
-    "chapters": [],
+    "chapters": [
+      {
+        "title": "Why sharing the reality matters more",
+        "at": "00:00:39",
+        "src": "claude"
+      },
+      {
+        "title": "Magic of Freedom, and shooting in the Karakoram",
+        "at": "00:05:22",
+        "src": "claude"
+      },
+      {
+        "title": "Making flight feel immersive on screen",
+        "at": "00:11:56",
+        "src": "claude"
+      },
+      {
+        "title": "What holds the creatives back",
+        "at": "00:16:01",
+        "src": "claude"
+      },
+      {
+        "title": "Whether the audience is even there",
+        "at": "00:22:17",
+        "src": "claude"
+      },
+      {
+        "title": "Drones, batteries, and what it costs",
+        "at": "00:30:53",
+        "src": "claude"
+      },
+      {
+        "title": "Life on location, and the small comforts",
+        "at": "00:42:07",
+        "src": "claude"
+      },
+      {
+        "title": "The project itself",
+        "at": "00:48:06",
+        "src": "claude"
+      },
+      {
+        "title": "Freezing nights, and what a trip demands",
+        "at": "00:53:01",
+        "src": "claude"
+      },
+      {
+        "title": "Should pilots be showing the reality",
+        "at": "00:59:08",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [
@@ -4836,7 +5220,8 @@
       "Resources, Tools and Tips"
     ],
     "_transcript_source": "Spotify's own auto-generated transcript, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. Spotify carries no speaker diarisation, so this page has no per line speaker attribution. Machine transcription, so vocabulary can drift.",
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
+    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages."
   },
   {
     "slug": "scoring-in-paragliding-competitions-a-new-pilot-s-guide-to",
@@ -4989,7 +5374,68 @@
     "speakers": {},
     "summary": "Zsolt Ero argues that harness certification tests the wrong thing, because a perfect vertical drop does not represent a real impact, and the standard coming next leaves the weight limit, the spine protection and the horizontal component untouched. He describes the argument for measuring jerk rather than peak G, and why he thinks the current test misleads light and heavy pilots alike.",
     "_no_transcript": "No transcript available for this episode yet; the page carries the player, the series and related episodes only.",
-    "chapters": [],
+    "chapters": [
+      {
+        "title": "How Zsolt ended up studying harnesses",
+        "at": "00:02:29",
+        "src": "claude"
+      },
+      {
+        "title": "Foam, and choosing a protector responsibly",
+        "at": "00:13:46",
+        "src": "claude"
+      },
+      {
+        "title": "Where Origami came from",
+        "at": "00:19:22",
+        "src": "claude"
+      },
+      {
+        "title": "How Origami rates against the alternatives",
+        "at": "00:24:08",
+        "src": "claude"
+      },
+      {
+        "title": "Volunteers, norms, and who writes the standard",
+        "at": "00:29:05",
+        "src": "claude"
+      },
+      {
+        "title": "How decisions get made in a niche sport",
+        "at": "00:33:10",
+        "src": "claude"
+      },
+      {
+        "title": "How the standard ended up where it did",
+        "at": "00:38:05",
+        "src": "claude"
+      },
+      {
+        "title": "Jerk value, and the fight over the next draft",
+        "at": "00:41:40",
+        "src": "claude"
+      },
+      {
+        "title": "Why a smooth stop matters more than a strong one",
+        "at": "00:46:53",
+        "src": "claude"
+      },
+      {
+        "title": "Reading a harness test report",
+        "at": "00:52:03",
+        "src": "claude"
+      },
+      {
+        "title": "Feedback on protectors since they arrived",
+        "at": "00:58:15",
+        "src": "claude"
+      },
+      {
+        "title": "Flying with more peace of mind",
+        "at": "1:01:49",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [
@@ -5010,7 +5456,8 @@
       "Know Your Equipment"
     ],
     "_transcript_source": "Spotify's own auto-generated transcript, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. Spotify carries no speaker diarisation, so this page has no per line speaker attribution. Machine transcription, so vocabulary can drift.",
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
+    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages."
   },
   {
     "slug": "the-inside-story-of-sports-racing-series-by-brett-janaway",
@@ -5027,7 +5474,58 @@
     "speakers": {},
     "summary": "Brett Janaway tells how the Sports Racing Series began around 2012 with a few organisers agreeing over a beer to link their events into one series, and why he is careful that what happens inside competition does not damage the wider sport. He also gets into the splitting of the B category into low B and high B, and why two liners collapse less often than pilots assume.",
     "_no_transcript": "No transcript available for this episode yet; the page carries the player, the series and related episodes only.",
-    "chapters": [],
+    "chapters": [
+      {
+        "title": "Racing wings against cross country wings",
+        "at": "00:00:35",
+        "src": "claude"
+      },
+      {
+        "title": "How the SRS started, and early adoption",
+        "at": "00:06:58",
+        "src": "claude"
+      },
+      {
+        "title": "Setting a task nobody is frightened by",
+        "at": "00:13:31",
+        "src": "claude"
+      },
+      {
+        "title": "Motivation at different ages",
+        "at": "00:19:44",
+        "src": "claude"
+      },
+      {
+        "title": "Lines, and what actually changes",
+        "at": "00:26:07",
+        "src": "claude"
+      },
+      {
+        "title": "Trying to create a safe CCC wing",
+        "at": "00:33:02",
+        "src": "claude"
+      },
+      {
+        "title": "Test reports, and reading the manual",
+        "at": "00:39:47",
+        "src": "claude"
+      },
+      {
+        "title": "The cost of validation in racing",
+        "at": "00:45:14",
+        "src": "claude"
+      },
+      {
+        "title": "Learn trimming outside racing first",
+        "at": "00:50:09",
+        "src": "claude"
+      },
+      {
+        "title": "How many races are on the calendar",
+        "at": "00:58:49",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [
@@ -5048,7 +5546,8 @@
       "World Cups"
     ],
     "_transcript_source": "Spotify's own auto-generated transcript, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. Spotify carries no speaker diarisation, so this page has no per line speaker attribution. Machine transcription, so vocabulary can drift.",
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
+    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages."
   },
   {
     "slug": "the-unfiltered-truth-about-paragliding-governance-with",
@@ -5065,7 +5564,58 @@
     "speakers": {},
     "summary": "Bill Hughes and Goran Dimiskovski answer claims made elsewhere about how competition paragliding is governed, disputing the framing of a widely quoted remark and the accusations made over proxy voting, and noting there were more proxy votes at the last meeting than members present in the room. Their argument is that the real constraint is money, and that staffing and broadcasting the sport properly is what would make it visible enough to attract sponsors.",
     "_no_transcript": "No transcript available for this episode yet; the page carries the player, the series and related episodes only.",
-    "chapters": [],
+    "chapters": [
+      {
+        "title": "Proxies, and who is actually using them",
+        "at": "00:00:38",
+        "src": "claude"
+      },
+      {
+        "title": "What happened on the task itself",
+        "at": "00:07:24",
+        "src": "claude"
+      },
+      {
+        "title": "In what way is it a dictatorship",
+        "at": "00:13:47",
+        "src": "claude"
+      },
+      {
+        "title": "Why there is pressure to change",
+        "at": "00:19:44",
+        "src": "claude"
+      },
+      {
+        "title": "Whether the federations can bridge this",
+        "at": "00:27:50",
+        "src": "claude"
+      },
+      {
+        "title": "How the outcome became a disaster",
+        "at": "00:33:34",
+        "src": "claude"
+      },
+      {
+        "title": "What would actually be added",
+        "at": "00:39:25",
+        "src": "claude"
+      },
+      {
+        "title": "What a solution looks like from here",
+        "at": "00:46:06",
+        "src": "claude"
+      },
+      {
+        "title": "The Instagram movement, and what it generated",
+        "at": "00:51:53",
+        "src": "claude"
+      },
+      {
+        "title": "The proposals on the table",
+        "at": "00:57:45",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [
@@ -5086,7 +5636,8 @@
       "The Dark Side"
     ],
     "_transcript_source": "Spotify's own auto-generated transcript, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. Spotify carries no speaker diarisation, so this page has no per line speaker attribution. Machine transcription, so vocabulary can drift.",
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
+    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages."
   },
   {
     "slug": "bill-belcourt-the-uncomfortable-truth-no-one-is-talking",
@@ -5103,7 +5654,58 @@
     "speakers": {},
     "summary": "Bill Belcourt's answer to reducing fatalities is training, ahead of everything else, and he is direct that some pilots are racing who are not ready to be racing. His wider point is that the freedom of the sport is inseparable from owning the consequences of it, and that the buck stops with the pilot.",
     "_no_transcript": "No transcript available for this episode yet; the page carries the player, the series and related episodes only.",
-    "chapters": [],
+    "chapters": [
+      {
+        "title": "First thoughts on what is going on",
+        "at": "00:01:56",
+        "src": "claude"
+      },
+      {
+        "title": "The decisions are ours, and should be",
+        "at": "00:06:52",
+        "src": "claude"
+      },
+      {
+        "title": "Is survival of the fittest the only way",
+        "at": "00:12:47",
+        "src": "claude"
+      },
+      {
+        "title": "Stepping back: what are we actually flying",
+        "at": "00:17:42",
+        "src": "claude"
+      },
+      {
+        "title": "Is glider stability behind these accidents",
+        "at": "00:24:47",
+        "src": "claude"
+      },
+      {
+        "title": "At what cost, and is it even possible",
+        "at": "00:32:47",
+        "src": "claude"
+      },
+      {
+        "title": "What happened in 2011 with open class",
+        "at": "00:40:19",
+        "src": "claude"
+      },
+      {
+        "title": "Did it ruin everything or only slow it down",
+        "at": "00:49:17",
+        "src": "claude"
+      },
+      {
+        "title": "Are we in denial about what we do",
+        "at": "1:00:09",
+        "src": "claude"
+      },
+      {
+        "title": "The freedom of the sport, and where the buck stops",
+        "at": "1:06:56",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [
@@ -5124,7 +5726,8 @@
       "The Dark Side"
     ],
     "_transcript_source": "Spotify's own auto-generated transcript, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. Spotify carries no speaker diarisation, so this page has no per line speaker attribution. Machine transcription, so vocabulary can drift.",
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
+    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages."
   },
   {
     "slug": "bruce-goldsmith-explains-mrt-scoring-system-and-its-impact",
@@ -5141,7 +5744,43 @@
     "speakers": {},
     "summary": "Bruce Goldsmith proposes multi radius turnpoints, giving lighter pilots a larger turnpoint cylinder to cancel out the performance advantage that heavier pilots carry. He argues the current format has narrowed the decisions available inside a task, producing huge gaggles racing fast along ridges, and that drag reducing measures only ever address a narrow band of pilot weights.",
     "_no_transcript": "No transcript available for this episode yet; the page carries the player, the series and related episodes only.",
-    "chapters": [],
+    "chapters": [
+      {
+        "title": "How the goalposts have moved in four decades",
+        "at": "00:02:05",
+        "src": "claude"
+      },
+      {
+        "title": "What multi radius turnpoints actually are",
+        "at": "00:06:25",
+        "src": "claude"
+      },
+      {
+        "title": "Is there a way forward that suits anyone",
+        "at": "00:12:43",
+        "src": "claude"
+      },
+      {
+        "title": "How it changes tactics and line choice",
+        "at": "00:17:17",
+        "src": "claude"
+      },
+      {
+        "title": "Where this has been tried already",
+        "at": "00:19:51",
+        "src": "claude"
+      },
+      {
+        "title": "Adapting it into other competition formats",
+        "at": "00:22:03",
+        "src": "claude"
+      },
+      {
+        "title": "Can the field ever really be equalised",
+        "at": "00:24:44",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [
@@ -5162,7 +5801,8 @@
       "World Cups"
     ],
     "_transcript_source": "Spotify's own auto-generated transcript, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. Spotify carries no speaker diarisation, so this page has no per line speaker attribution. Machine transcription, so vocabulary can drift.",
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
+    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages."
   },
   {
     "slug": "luc-armant-talks-about-debunking-the-myths-and-upgrading",
@@ -5179,7 +5819,48 @@
     "speakers": {},
     "summary": "Luc Armant explains how competition rules and the scoring system shape what designers build, and warns that forcing racing into a lower class would simply produce competition wings inside that class rather than making anything safer. On the Enzo, he says Ozone has been working on the next one for years and will only release it if it is genuinely a step forward.",
     "_no_transcript": "No transcript available for this episode yet; the page carries the player, the series and related episodes only.",
-    "chapters": [],
+    "chapters": [
+      {
+        "title": "Is this different, or has it happened before",
+        "at": "00:02:01",
+        "src": "claude"
+      },
+      {
+        "title": "Why nobody wants to do the boring part",
+        "at": "00:08:06",
+        "src": "claude"
+      },
+      {
+        "title": "Ozone's structure, and getting the right people in",
+        "at": "00:11:55",
+        "src": "claude"
+      },
+      {
+        "title": "Prototyping a new wing",
+        "at": "00:15:56",
+        "src": "claude"
+      },
+      {
+        "title": "Would racing on ENC actually be safer",
+        "at": "00:22:26",
+        "src": "claude"
+      },
+      {
+        "title": "A two liner ENC after 50 to 70 hours",
+        "at": "00:28:31",
+        "src": "claude"
+      },
+      {
+        "title": "What to look at instead of a single result",
+        "at": "00:32:52",
+        "src": "claude"
+      },
+      {
+        "title": "Why a competition pilot discards the old",
+        "at": "00:36:48",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [
@@ -5200,7 +5881,8 @@
       "Flight Mechanics"
     ],
     "_transcript_source": "Spotify's own auto-generated transcript, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. Spotify carries no speaker diarisation, so this page has no per line speaker attribution. Machine transcription, so vocabulary can drift.",
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
+    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages."
   },
   {
     "slug": "kinga-masztalerz-building-a-healthy-relationship-with-the",
@@ -5217,7 +5899,68 @@
     "speakers": {},
     "summary": "Kinga Masztalerz points out that everyone calls paragliding a mental game, yet very few pilots train the mind the way they train ground handling or thermalling. She makes the case for being honest with yourself about what you actually want from flying rather than measuring it against the pilots around you, drawing on a vol biv in Bolivia she flew without having downloaded the maps.",
     "_no_transcript": "No transcript available for this episode yet; the page carries the player, the series and related episodes only.",
-    "chapters": [],
+    "chapters": [
+      {
+        "title": "Everyone calls it a mental game, but who trains it",
+        "at": "00:00:04",
+        "src": "claude"
+      },
+      {
+        "title": "Why some flying destinations never take off",
+        "at": "00:05:34",
+        "src": "claude"
+      },
+      {
+        "title": "From China to Peru, the journey so far",
+        "at": "00:12:53",
+        "src": "claude"
+      },
+      {
+        "title": "Asking whether something actually helps your flying",
+        "at": "00:22:27",
+        "src": "claude"
+      },
+      {
+        "title": "Living with uncertainty",
+        "at": "00:29:59",
+        "src": "claude"
+      },
+      {
+        "title": "Admitting what you are not good at",
+        "at": "00:36:44",
+        "src": "claude"
+      },
+      {
+        "title": "When enjoying your flying stops being enough",
+        "at": "00:45:49",
+        "src": "claude"
+      },
+      {
+        "title": "Why climb higher if you can fall further",
+        "at": "00:54:53",
+        "src": "claude"
+      },
+      {
+        "title": "Being honest about doing it poorly",
+        "at": "1:01:37",
+        "src": "claude"
+      },
+      {
+        "title": "Finding your own reasons for flying",
+        "at": "1:12:02",
+        "src": "claude"
+      },
+      {
+        "title": "The honest opinion, asked for directly",
+        "at": "1:18:00",
+        "src": "claude"
+      },
+      {
+        "title": "Community or competition, and what that costs",
+        "at": "1:24:37",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [
@@ -5238,7 +5981,8 @@
       "Risk vs Reward"
     ],
     "_transcript_source": "Spotify's own auto-generated transcript, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. Spotify carries no speaker diarisation, so this page has no per line speaker attribution. Machine transcription, so vocabulary can drift.",
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
+    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages."
   },
   {
     "slug": "ama-1",
@@ -5314,7 +6058,23 @@
     "speakers": {},
     "summary": "A short opening to 2025 in which the host thanks listeners for the first stretch of the show and sets out what is planned for the year ahead. It closes with an invitation to make a pact about prioritising safety, both your own and that of the pilots around you.",
     "_not_an_episode": "A short thank you to the community. Kept as a page because it is linked from the Knowledge Base.",
-    "chapters": [],
+    "chapters": [
+      {
+        "title": "A simple shift, and what it changed",
+        "at": "00:02:54",
+        "src": "claude"
+      },
+      {
+        "title": "Tripling up for the year ahead",
+        "at": "00:04:53",
+        "src": "claude"
+      },
+      {
+        "title": "The doubts about whether it could be done",
+        "at": "00:05:55",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [],
@@ -5322,7 +6082,8 @@
       "Know Your Equipment"
     ],
     "_transcript_source": "Spotify's own auto-generated transcript, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. Spotify carries no speaker diarisation, so this page has no per line speaker attribution. Machine transcription, so vocabulary can drift.",
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
+    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages."
   },
   {
     "slug": "art-of-flight-in-norwegian-skies",

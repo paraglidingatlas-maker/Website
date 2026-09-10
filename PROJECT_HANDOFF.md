@@ -893,11 +893,28 @@ Open, roughly in order of value:
    from the 2023 to 2024 era before Spotify transcription existed, so they may
    have nothing in the app either.
 
-5. **FAQ block on episode pages.** `.cd-faq` exists in the CSS and the prototype
+5. **Chapters. DONE for all 26 episodes that had a summary and a transcript but
+   no chapters.** 259 chapters written, 27 of them the user's own words from
+   show note topic lists, 232 written from the transcript and marked
+   `src: "claude"` with `_chapters_source` explaining it. Every chapter records
+   which it is, so provenance is visible in the data.
+   **Placement method, this is the part that matters.** Matching a topic phrase
+   against the transcript by keyword was tried first and FAILED: on the Robbie
+   Whittall episode only one of eight show note topics placed with confidence,
+   and the acro episode put "the hard truth on drugs and performance" onto a
+   passage about reserve handles. That is why the generator had left these empty.
+   `tools/chapter_candidates.py` instead extracts real boundaries from the
+   transcript: the subject changes when the HOST speaks, so it takes host turns
+   where speaker labels exist and question shaped cues where they do not. Every
+   candidate carries the timestamp of the cue it came from, so a chapter cannot
+   drift. Verified afterwards that no chapter timestamp falls past the end of its
+   transcript and that no title is a fragment.
+
+6. **FAQ block on episode pages.** `.cd-faq` exists in the CSS and the prototype
    but is deliberately unbuilt. The user has a specific plan for it and wants it
    done before the project wraps. DO NOT invent FAQ content.
 
-6. **Guest roles.** Only 2 of 46 could be extracted from transcripts. Either the
+7. **Guest roles.** Only 2 of 46 could be extracted from transcripts. Either the
    user supplies one line per guest, or the field is dropped from the design.
 
 7. **Six podcast-only episodes have no page** because they are not in the
@@ -986,6 +1003,22 @@ and `transcript-files.spotifycdn.com` is reachable too. Measured, not assumed:
     **Layout is not a risk here, this was checked:** labels go into a popup via
     `popupTitle.textContent`, and swapping to real titles moves the average label
     from 70 to 71 characters and the longest from 144 to 143.
+
+## 12. CHAPTER TITLES ON 38 EPISODES ARE RAW TRANSCRIPT FRAGMENTS. NEXT JOB.
+Found while writing chapters for the 26 that had none. 45 episodes carry
+chapters; **38 of them have titles that are cut off mid sentence**, generated
+from host questions without being rewritten. Live now. Examples:
+"Look for when choosing a reserve?", "Community where even the top of the line
+pilots are paying the…", "Somebody who has tested endless amounts of wings. Do
+you have a…". Around 160 chapters affected.
+**This is worse than a missing chapter**, because it reads as broken rather than
+absent, and those titles are the navigation rail on the site's longest pages.
+**The fix is cheap and the timestamps are already correct.** They were derived
+from real host questions, so only the titles need rewriting. For each existing
+chapter, pull about 50 words of transcript at its timestamp and write a proper
+title. That is roughly 650 words of reading per episode, far less than the 26
+just done, which needed boundaries chosen as well.
+Run `python3 tools/chapter_candidates.py <slug>` to see the same boundaries.
 
 ## DONE (do not redo)
 - **Nine truncated titles, recovered properly (eighth update).** They now live in
