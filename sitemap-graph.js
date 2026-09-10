@@ -140,14 +140,17 @@
     defs.innerHTML =
       '<linearGradient id="sm-sky" x1="0" y1="0" x2="0" y2="1">' +
         '<stop offset="0" stop-color="#0e0f13"/><stop offset="62%" stop-color="#141519"/>' +
-        '<stop offset="100%" stop-color="#1c1d24"/></linearGradient>' +
+        '<stop offset="88%" stop-color="#15161c"/>' +
+      '<stop offset="100%" stop-color="#101116"/></linearGradient>' +
       '<linearGradient id="sm-hg" x1="0" y1="0" x2="0" y2="1">' +
         '<stop offset="0" stop-color="rgba(180,180,180,0)"/>' +
         '<stop offset="72%" stop-color="rgba(180,180,180,0.09)"/>' +
-        '<stop offset="100%" stop-color="rgba(180,180,180,0.16)"/></linearGradient>' +
+        '<stop offset="92%" stop-color="rgba(180,180,180,0.09)"/>' +
+      '<stop offset="100%" stop-color="rgba(180,180,180,0)"/></linearGradient>' +
       '<linearGradient id="sm-fog" x1="0" y1="0" x2="0" y2="1">' +
-        '<stop offset="0" stop-color="rgba(16,17,22,0.96)"/>' +
-        '<stop offset="60%" stop-color="rgba(16,17,22,0.6)"/>' +
+        '<stop offset="0" stop-color="rgba(16,17,22,0)"/>' +
+      '<stop offset="26%" stop-color="rgba(16,17,22,0.72)"/>' +
+        '<stop offset="62%" stop-color="rgba(16,17,22,0.45)"/>' +
         '<stop offset="100%" stop-color="rgba(16,17,22,0)"/></linearGradient>' +
       '<radialGradient id="sm-vig" cx="50%" cy="52%" r="74%">' +
         '<stop offset="58%" stop-color="rgba(14,15,19,0)"/>' +
@@ -285,7 +288,7 @@
       });
     });
 
-    el(svg, "rect", { x: 0, y: HOR - 46, width: W, height: 205,
+    el(svg, "rect", { x: 0, y: HOR - H * 0.07, width: W, height: H * 0.36,
       fill: "url(#sm-fog)", "pointer-events": "none" });
     el(svg, "rect", { width: W, height: H, fill: "url(#sm-vig)", "pointer-events": "none" });
   }
