@@ -7,6 +7,12 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://paraglidingatlas-maker.github.io/Website/cookie-policy.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://paraglidingatlas-maker.github.io/Website/destinations/kenya.html</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -661,9 +667,21 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://paraglidingatlas-maker.github.io/Website/privacy-policy.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://paraglidingatlas-maker.github.io/Website/sitemap.html</loc>
     <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://paraglidingatlas-maker.github.io/Website/terms.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
