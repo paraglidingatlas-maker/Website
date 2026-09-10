@@ -139,7 +139,13 @@ TERMS = """
 
 <h2 id="booking">3. Booking and payment</h2>
 <p>A booking is made when we confirm your place in writing and you have paid the deposit. That confirmation, together with these terms and the trip description on this site, forms the contract between us.</p>
-<p>The deposit amount, the date the balance is due, and the price of your trip are set out in your booking confirmation. If the balance is not received by the due date we may treat the booking as cancelled by you, and the cancellation terms in section 5 apply.</p>
+<p>Unless your trip page or confirmation says otherwise:</p>
+<ul>
+  <li>A deposit of <strong>25 per cent</strong> of the trip price secures your place.</li>
+  <li>The <strong>balance is due 60 days</strong> before departure.</li>
+  <li>Bookings made inside 60 days of departure are payable in full at the time of booking.</li>
+</ul>
+<p>If the balance is not received by the due date we may treat the booking as cancelled by you, and the cancellation charges in section 5 apply.</p>
 <p>Please check your confirmation carefully as soon as you receive it and tell us straight away if anything is wrong, particularly the spelling of names, which must match your passport.</p>
 
 <h2 id="price">4. What the price includes</h2>
@@ -147,7 +153,17 @@ TERMS = """
 <p>We may increase the price after booking only for the reasons the Package Travel Act allows, such as changes to fuel costs, taxes or exchange rates, and never in the twenty days before departure. If an increase exceeds eight per cent of the trip price you may accept it, accept a substitute trip if we offer one, or cancel and receive a full refund. If the same costs fall, you are entitled to a corresponding reduction.</p>
 
 <h2 id="cancel-you">5. If you change or cancel</h2>
-<p>Tell us in writing as soon as you know. Cancellation charges apply from the date we receive your notice, and the scale that applies to your trip is set out in your booking confirmation. Charges exist because we commit to guides, accommodation, permits and transport well in advance and cannot recover those costs late in the day.</p>
+<p>Tell us in writing as soon as you know. Cancellation charges apply from the date we receive your notice. They exist because we commit to guides, accommodation, permits and transport well in advance and cannot recover those costs late in the day.</p>
+<div class="pol-tablewrap">
+<table>
+<tr><th>Notice we receive before departure</th><th>Charge</th></tr>
+<tr><td>More than 90 days</td><td>Deposit only</td></tr>
+<tr><td>60 to 89 days</td><td>50 per cent of the trip price</td></tr>
+<tr><td>30 to 59 days</td><td>75 per cent of the trip price</td></tr>
+<tr><td>Fewer than 30 days, or no show</td><td>100 per cent of the trip price</td></tr>
+</table>
+</div>
+<p>If we are able to resell your place we will refund what we recover, less an administration fee. This is why we ask you to hold cancellation insurance: a policy that covers you for illness, injury or a change in circumstances will normally meet these charges where we cannot.</p>
 <p>You may transfer your booking to another person who meets the pilot requirements in section 7, provided you tell us with reasonable notice and pay any costs the transfer causes.</p>
 <div class="pol-note">
 <p><strong>There is no fourteen day cooling off period.</strong> Under Article 16(l) of the Consumer Rights Directive, the right of withdrawal that normally applies to distance contracts does not apply to leisure services provided on a specific date. This is normal for guided trips and it is why insurance matters.</p>
@@ -170,6 +186,7 @@ TERMS = """
   <li>Other pilots, both in our group and outside it, may make mistakes that affect you.</li>
 </ul>
 <p>You are responsible for holding a valid licence, for flying within the limits of your own experience and current fitness, for the airworthiness of your own equipment, and for complying with the air law of the country you are flying in.</p>
+<p>Before departure we will ask you to complete our <a href="participant-agreement.html">Participant Agreement</a>, which records your licence, experience, insurance, emergency contact and any medical information relevant to flying. Participation is conditional on it.</p>
 <p><strong>Minimum requirement.</strong> Unless the trip page states otherwise, you need an IPPI 2, APPI or equivalent national rating, and you must be able to launch yourself and land out on your own. Tell us honestly about your experience, recency and fitness when you book. We may refuse or end participation if we judge, at our sole discretion, that a participant is not safe to fly with the group, is unfit, or is affecting the safety or enjoyment of others. Where we do that for good reason, no refund is due.</p>
 
 <h2 id="insurance">8. Insurance is mandatory</h2>
@@ -321,11 +338,69 @@ COOKIES = """
 </div>
 """
 
+AGREEMENT = """
+<div class="pol-note">
+<p>This is the form every participant completes before a trip. It is published here so you can read it in full before you book, rather than meeting it for the first time a week before departure.</p>
+<p><strong>It is not a waiver of our responsibility to you.</strong> Norwegian and EU law does not allow an operator to contract out of liability for death or personal injury caused by its own negligence, and we do not ask you to try. What this document does is record what you understand, what you are qualified to do, and how we reach someone if things go wrong.</p>
+</div>
+
+<h2 id="risk">1. What I am acknowledging</h2>
+<p>I understand that paragliding is an air sport with risks that cannot be designed out, and that those risks include serious injury and death. I have read the trip page and section 7 of the <a href="terms.html">booking terms</a>, and I am choosing to take part with that understanding.</p>
+<p>I understand specifically that:</p>
+<ul>
+  <li>Mountain and altitude conditions change faster than forecasts, and a day that begins calm may not stay that way.</li>
+  <li>Sites may be remote. Road access, mobile coverage and medical help may be hours away.</li>
+  <li>Rescue may need a helicopter, may be delayed by weather or darkness, and is expensive.</li>
+  <li>Other pilots, in the group and outside it, can make mistakes that affect me.</li>
+</ul>
+
+<h2 id="command">2. I fly as pilot in command</h2>
+<p>I understand that every decision to launch, to continue, to push on or to land is mine. Guides brief, advise, and set the plan for the day, and I am expected to listen to them. But a briefing is not an instruction to fly, and a forecast is not a guarantee. If I am not happy with a launch, the conditions, or my own state on the day, I will not fly, and nobody on this trip will think less of me for it.</p>
+
+<h2 id="qualified">3. My licence and experience</h2>
+<p>I confirm that I hold a current IPPI 2, APPI or equivalent national rating, or the rating stated on the trip page, and that I can launch myself and land out unassisted.</p>
+<p>I confirm that what I have told Paragliding Atlas about my hours, recency, wing class and recent flying is accurate. I understand that overstating my experience puts the whole group at risk, and that participation may be refused or ended if what I described does not match what I can do.</p>
+<p><em>To complete: licence type and number, issuing body, total airtime, hours in the last 12 months, wing make, model and EN class, year of manufacture, date of last inspection.</em></p>
+
+<h2 id="equipment">4. My equipment</h2>
+<p>I confirm that my wing, harness and reserve are airworthy, within their service life, and inspected and repacked in line with the manufacturer's guidance. I understand that my equipment is my responsibility throughout the trip, and that I am responsible for anything Paragliding Atlas lends me beyond fair wear and tear.</p>
+<p>I will carry a 2m radio on the frequencies the trip uses, and I understand that a radio is for coordination and not a substitute for my own judgement.</p>
+
+<h2 id="insurance">5. My insurance</h2>
+<p>I confirm that I hold travel and accident insurance valid for paragliding, at the altitudes flown on this trip, covering search and rescue including helicopter, mountain rescue, medical treatment and repatriation.</p>
+<p>I understand that a policy covering "adventure sports" often excludes air sports, that I have checked the wording rather than assumed, and that I remain responsible for any rescue or medical cost my policy does not meet.</p>
+<p><em>To complete: insurer, policy number, 24 hour emergency number, confirmation that paragliding is covered.</em></p>
+
+<h2 id="health">6. Health and emergency contact</h2>
+<p>I have told Paragliding Atlas about any medical condition, medication, allergy or injury that could affect me in the air, at altitude, or in a rescue. I understand this information is held only for the duration of the trip, shared only with the people running it, and deleted afterwards unless I ask otherwise, as set out in the <a href="privacy-policy.html">Privacy Policy</a>.</p>
+<p>I consent to Paragliding Atlas arranging emergency medical treatment or evacuation on my behalf if I am unable to consent at the time, and I understand I am responsible for the cost.</p>
+<p><em>To complete: emergency contact name, relationship, phone number reachable during the trip, and any relevant medical information.</em></p>
+
+<h2 id="conduct">7. Conduct</h2>
+<p>I will not fly under the influence of alcohol or drugs, and I understand this ends my participation immediately and without refund. I will respect local rules, landowners, airspace and other site users, and I understand that behaviour endangering or seriously disrupting others has the same consequence.</p>
+
+<h2 id="images">8. Photographs and film</h2>
+<p>Paragliding Atlas often films and photographs its trips and may use those images in marketing, on the website, in the podcast or on social media.</p>
+<p><em>Tick one: I agree to images of me being used / I would prefer images in which I am identifiable not to be used.</em></p>
+<p>Either choice is fine, no reason is needed, and it can be changed at any time before or after the trip by emailing us.</p>
+
+<h2 id="sign">9. Signature</h2>
+<p>I confirm that I have read this agreement and the booking terms, that I have had the chance to ask questions, and that everything I have stated is true.</p>
+<p><em>Name, date, signature. For a participant under 18, a parent or guardian signs, gives the emergency contact and medical information, and consents to emergency treatment.</em></p>
+
+<div class="pol-contact">
+  <h3>Before you sign</h3>
+  <p>If anything here is unclear, or if you are unsure whether your experience or insurance is sufficient, email <a href="mailto:aninder@paraglidingatlas.com">aninder@paraglidingatlas.com</a> and ask. It is a much better conversation to have now than on a launch.</p>
+</div>
+"""
+
 PAGES = [
     ("terms.html", "Terms &amp; Conditions", "Booking Terms",
      "Booking terms for Paragliding Atlas guided trips, including package travel rights, cancellation, insurance requirements and the risks of the activity.", TERMS),
     ("privacy-policy.html", "Privacy Policy", "Your Data",
      "What Paragliding Atlas collects, why, how long we keep it, and your rights under the GDPR. This site has no analytics and no tracking.", PRIVACY),
+    ("participant-agreement.html", "Participant Agreement", "Before You Fly",
+     "The form every participant completes before a Paragliding Atlas trip: risk acknowledgement, licence and experience, equipment, insurance, health and emergency contact.", AGREEMENT),
     ("cookie-policy.html", "Cookie Policy", "Cookies",
      "This site sets no cookies of its own and shows no cookie banner. What that means, and what the few third party requests do.", COOKIES),
 ]

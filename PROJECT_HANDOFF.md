@@ -1075,15 +1075,30 @@ personal injury caused by negligence cannot be excluded by agreement. The terms
 therefore use assumption of inherent risk plus participant responsibilities,
 which is enforceable, and say plainly that no negligence waiver is being sought.
 
-**NEEDED FROM THE USER, both currently vague on purpose rather than invented:**
-1. The cancellation charge scale and the deposit amount and balance due date. The
-   terms currently point to the booking confirmation for these. They are
-   commercial decisions and must not be guessed.
-2. Confirmation of whether the trips are packages under the Package Travel Act.
-   If they are, Norwegian law requires insolvency protection, in practice
-   registration with Reisegarantifondet, and the standard information form must
-   be given before booking. The terms describe the rights correctly but do not
-   claim a guarantee the business may not hold.
+**Commercial terms are now filled with defaults, and they are LIVE.** The user
+asked for a decision rather than another question, so the terms now carry a 25
+per cent deposit, balance at 60 days, and a 90/60/30 day cancellation scale.
+That is the standard shape for small group adventure operators. It is binding on
+new bookings from publication, so if the operator disagrees it must be changed
+rather than merely noted.
+
+**A fourth document was added: participant-agreement.html.** This is the
+equivalent of the Trek waiver, rewritten for the EEA. It records risk
+acknowledgement, pilot in command, licence and experience, equipment, insurance,
+health and emergency contact, conduct and image consent. It is published rather
+than kept private so a pilot reads it before booking instead of a week before
+departure. Sections 3 to 6 and 8 carry italic "to complete" lines, because the
+page doubles as the form.
+
+**STILL NEEDS AN ANSWER: is this a package under the Package Travel Act?** If so,
+Norwegian law requires insolvency protection, in practice Reisegarantifondet
+registration, and the prescribed standard information form must be given before
+booking. This is the only open item with a consequence for trading legally.
+
+**LEGAL-REVIEW.md in the repo root is a brief for a lawyer.** It states what was
+drafted, the five decisions already taken and why, and the six questions actually
+worth paying for. It exists so a review costs one focused hour rather than
+several exploratory ones. Hand it over with the four URLs.
 
 **Also flagged:** Google Fonts loads from Google on every page, which transfers
 the visitor IP to a US company. Self hosting the two font files removes that
