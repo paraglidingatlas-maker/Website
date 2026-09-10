@@ -40,6 +40,13 @@ CUE = re.compile(
 )
 SPK = re.compile(r"^\[?SPEAKER[ _]?(?P<n>\d+)\]?\s*:\s*", re.I)
 NOISE = re.compile(r"^\[.*(automatic caption|whisper|recognition error).*\]$", re.I)
+# Autotekst writes its disclaimer INSIDE the first cue's text on 32 of the 52
+# transcripts, so NOISE never matched it (NOISE only catches a cue that is
+# nothing but the note) and it was being served mid sentence. It is a machine
+# annotation, not speech, so it is stripped here and re-emitted once per page as
+# a proper element by note_html(), which also covers the 20 files that never
+# carried it and the transcripts sourced from Spotify.
+NOTE_INLINE = re.compile(r"\[\s*Automatic captions[^\]]*\]\s*", re.I)
 
 
 # ---------------------------------------------------------------- parsing
@@ -89,6 +96,8 @@ def parse_vtt(path):
         pending["text"] = (pending["text"] + " " + extra).strip()
     if pending:
         cues.append(pending)
+    for c in cues:
+        c["text"] = NOTE_INLINE.sub("", c["text"]).strip()
     return [c for c in cues if c["text"] and not NOISE.match(c["text"])]
 
 
@@ -231,7 +240,27 @@ def render_list(items, cls="cd-link"):
     )
 
 
-def wrap_transcript(html_body, words, has_transcript):
+def note_html(meta):
+    """One provenance line per transcript, outside the clip so it is never
+    hidden by the Continue reading toggle.
+
+    Every transcript on this site is machine produced, so every page says so.
+    Without this the pages with the WEAKEST sourcing read as the most
+    authoritative, because only some of the Autotekst files happened to carry
+    the disclaimer in their own text. Wording follows the note Autotekst already
+    writes, so this is not new phrasing.
+    """
+    src = (meta.get("_transcript_source") or "")
+    if "Spotify" in src:
+        text = ("Automatic captions from Spotify. No speaker labels, and may "
+                "contain recognition errors.")
+    else:
+        text = ("Automatic captions by Autotekst using OpenAI Whisper V3. May "
+                "contain recognition errors.")
+    return '      <p class="cd-tnote">%s</p>\n' % esc(text)
+
+
+def wrap_transcript(html_body, words, has_transcript, meta=None):
     """Clip the transcript visually. Every word stays in the HTML.
 
     This matters: search engines render JavaScript, but most AI crawlers do not.
@@ -243,7 +272,8 @@ def wrap_transcript(html_body, words, has_transcript):
         return html_body
     mins = max(1, round(words / 150))
     return (
-        '      <div class="cd-clip" id="transcript-body">\n'
+        (note_html(meta) if meta is not None else '')
+        + '      <div class="cd-clip" id="transcript-body">\n'
         + html_body + '\n'
         '      </div>\n'
         '      <button class="cd-more" type="button" aria-expanded="false"\n'
@@ -294,7 +324,7 @@ def build(meta, cues, chapters):
         rail=render_rail(chapters),
         summary=esc(meta.get("summary", "")),
         transcript=wrap_transcript(render_transcript(paras, chapters, meta.get("speakers", {})),
-                                   words, bool(paras)),
+                                   words, bool(paras), meta),
         guest_name=esc(meta.get("guest", "")),
         guest_role=esc(meta.get("guest_role", "")),
         guest_links=render_list(meta.get("guest_links", [])),

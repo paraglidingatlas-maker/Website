@@ -102,6 +102,10 @@
 
 .cd-rail-none{color:var(--gray);font-size:0.8rem;line-height:1.5;}
 
+/* Provenance line above every transcript. Sits OUTSIDE .cd-clip so the
+   Continue reading toggle can never hide it. */
+.cd-tnote{color:var(--gray);font-size:0.78rem;line-height:1.5;margin:0 0 14px;}
+
 /* Transcript clip. The full text is always present in the HTML; this only
    limits the visible height, so crawlers that do not run scripts still read
    every word. Never swap this for display:none. */
