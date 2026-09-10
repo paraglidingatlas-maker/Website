@@ -80,6 +80,13 @@
 
   /* ---------- helpers ---------- */
   var $ = function (id) { return document.getElementById(id); };
+
+  /* every reference to an episode across the site resolves to one page */
+  function episodeHref(id) {
+    var pages = window.EPISODE_PAGES || {};
+    return pages[id] ? "episodes/" + pages[id] + ".html"
+                     : "https://www.youtube.com/watch?v=" + id;
+  }
   function esc(t) {
     return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;")
       .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -154,7 +161,7 @@
   function card(e) {
     var meta = e.secs ? hhmm(e.secs) : LIB_TOPICS[e.topic];
     return '<a class="ep" href="' + (e.page ? 'episodes/' + e.page + '.html'
-      : 'https://www.youtube.com/watch?v=' + e.id) + '"' +
+      : episodeHref(e.id)) + '"' +
       (e.page ? '' : ' target="_blank" rel="noopener"') + '>' +
       '<div class="th"><img loading="lazy" src="https://i.ytimg.com/vi/' + e.id +
       '/hqdefault.jpg" alt=""></div>' +

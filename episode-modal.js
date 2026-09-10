@@ -36,6 +36,13 @@
   const readMoreEl = document.getElementById('epModalReadMore');
   const closeBtn = document.getElementById('epModalClose');
 
+  // Prefer this site's own episode page over an outside link, so the same
+  // episode always lands in the same place wherever it is referenced.
+  function pageFor(ytId) {
+    const pages = window.EPISODE_PAGES || {};
+    return ytId && pages[ytId] ? '../episodes/' + pages[ytId] + '.html' : null;
+  }
+
   function closeModal() {
     overlay.classList.remove('active');
     iframe.src = '';
@@ -50,7 +57,8 @@
     const desc = tile.dataset.desc || 'Full episode details and show notes coming soon.';
     const ytId = tile.dataset.ytId || '';
     const spotify = tile.dataset.spotify || '';
-    const readMore = tile.dataset.readmore || '../podcast.html';
+    const ownPage = pageFor(ytId);
+    const readMore = ownPage || tile.dataset.readmore || '../podcast.html';
     const thumbSrc = ytId
       ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`
       : tile.dataset.thumb || '';
@@ -59,6 +67,9 @@
     guestEl.textContent = guest;
     descEl.textContent = desc;
     readMoreEl.href = readMore;
+    readMoreEl.textContent = ownPage ? 'Open the episode page \u2192' : 'Read More \u2192';
+    if (ownPage) readMoreEl.removeAttribute('target');
+    else readMoreEl.setAttribute('target', '_blank');
     thumb.src = thumbSrc;
     thumb.style.display = 'block';
     playBtn.style.display = 'flex';
