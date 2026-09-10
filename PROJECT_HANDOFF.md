@@ -786,8 +786,18 @@ Open, roughly in order of value:
    ~90 pages, and has since before any of this work. A dead button site wide.
    Needs a real page written, not invented copy.
 
-2. **Episode summaries. NOW EASIER: 65 episodes have a transcript, not 46.**
-   The 19 added in the ninth update can be summarised from their real content. The `summary` field is empty on nearly every page. Two
+2. **Episode summaries. STARTED: 6 of 86 written, 71 episodes now have a
+   transcript to work from.**
+   Done: How to Thermal Like a Pro, Luc Armant, Robbie Whittall, Brett Janaway's
+   Technical Masterclass, Russell Ogden, Metacognition. Each was written from the
+   episode's OWN transcript, cross checked against the show notes in the feed,
+   and carries `_summary_source` recording that. Two sentences each, no em-dashes.
+   The summary feeds both the on page `.cd-summary` and the `<meta name=
+   "description">`, which is the part answer engines actually read, so this is
+   the highest value remaining work on the site.
+   65 to go. Batch 8 to 10 per session; context is the constraint, not difficulty.
+   For the 15 pages with no transcript, use the show notes from the feed or leave
+   the summary empty. NEVER write one from the title alone. The `summary` field is empty on nearly every page. Two
    good sentences per episode does more for being cited by answer engines than
    the whole transcript does. Rules agreed with the user:
    - NEVER summarise from a title alone. That produces plausible, subtly wrong
@@ -830,7 +840,7 @@ Open, roughly in order of value:
    **Standing instruction unchanged: scan any new batch of transcripts for
    language before publishing them.**
 
-4. **Transcripts: 66 of 86 pages now have one, up from 46 (ninth update).**
+4. **Transcripts: 71 of 86 pages now have one, up from 46 (ninth update).**
    19 were pulled from Spotify's own `podcast:transcript` tags in the RSS feed,
    converted from SRT, and verified before writing: English by stopword count,
    plausible length, and for the three fuzzy title matches the pairing was
@@ -863,10 +873,17 @@ Open, roughly in order of value:
    There is a two month publishing gap between those dates. If that is fixed at
    source it back-fills six episodes and every future one automatically.
 
-   **The manual route works and is cheap.** The user downloaded Robbie Whittall's
-   transcript from the Spotify app and uploaded the .srt; it converted, verified
-   and generated in one pass (1,695 cues, 16,953 words). Any of the remaining
-   seven can be done the same way.
+   **The manual route works and is cheap, and has now cleared six of the eight.**
+   The user downloaded them from the Spotify app and uploaded the .srt files.
+   Done this way: Robbie Whittall, Russell Ogden, Metacognition, Brett Janaway's
+   Technical Masterclass, Luc Armant, How to Thermal Like a Pro. Each was matched
+   to its page by title overlap (five at 1.00, Russell Ogden at 0.83 because the
+   feed title differs), then language checked and length checked before writing.
+   Every one ends within seconds of the duration the feed states, so none are
+   truncated: Luc Armant's really is a 20 minute episode.
+   **Only two of the eight remain: AMA #1 and Touch The Sky With Glory**, both
+   from the 2023 to 2024 era before Spotify transcription existed, so they may
+   have nothing in the app either.
 
 5. **FAQ block on episode pages.** `.cd-faq` exists in the CSS and the prototype
    but is deliberately unbuilt. The user has a specific plan for it and wants it
