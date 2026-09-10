@@ -857,21 +857,11 @@ Open, roughly in order of value:
 
 ## NEW OPEN ITEMS (eighth update, 2026-09-10) — read these before picking work
 
-A. **`library.html` is invisible to AI crawlers. This is the biggest GEO gap on
-   the site.** It serves 614 characters of text and ZERO episode titles. There
-   is no `<noscript>` index and every tile is injected by JavaScript, so GPTBot,
-   ClaudeBot and PerplexityBot see an empty page where an 86 episode archive
-   should be. This is the same failure the sitemap already guards against
-   (lesson 20) and the same reasoning as the transcript clipping rule. The fix
-   is a `<noscript>` index mirroring the sitemap's. NOT DONE: the page was
-   designed over five rounds and the user should approve adding markup to it.
+A. **`library.html` has no content of its own for crawlers.** See PENDING item
+   10 below for the full write up and the decision waiting on the user.
 
-B. **`globe.js` holds 32 titles punctuated with em-dashes**, against the design
-   system's standing no-em-dash rule. This is where the prettified variants of
-   the nine titles originally came from. Both YouTube and the RSS feed use
-   colons, so the em-dashes are not the user's own punctuation. Fixing the nine
-   cleared all 7 from `episode-meta.json`; `globe.js` was left alone because it
-   is a wider change. Ask before sweeping it.
+B. **`globe.js` pin labels are rewritten, not the user's titles.** See PENDING
+   item 11 below. Ready to run, just needs a go ahead.
 
 C. **Doc versus behaviour mismatch on the sitemap.** This file says twice that
    "clicking NEVER navigates", but `sitemap-graph.js` line 553 navigates on leaf
@@ -897,6 +887,45 @@ and `transcript-files.spotifycdn.com` is reachable too. Measured, not assumed:
   answers the open question from an earlier handoff. The Chapter Deck design
   shows "Aninder:" / "Zsolt:" per line; transcripts sourced from Spotify cannot
   fill that field, only the Autotekst ones can.
+
+10. **`library.html` serves no episode content to crawlers. DECISION NEEDED: A or
+    B.** The page serves 614 characters of text and zero episode titles. There is
+    no `<noscript>` block and every tile is injected by JavaScript, so a crawler
+    that does not run scripts sees an empty page.
+    **Do not overstate this.** The episodes are NOT undiscoverable: `sitemap.html`
+    already lists all 79 episodes and 13 series in its own `<noscript>` index, so
+    every episode page is reachable. The narrower and real problem is that the
+    library page itself has no content, so it cannot rank or be cited despite
+    being the main archive.
+    Measured: 79 episodes across 13 series in `library-data.js`, and all 79 have
+    a local episode page, so every row in an index can link internally.
+    - **Option A, a `<noscript>` index.** Same pattern the sitemap already uses
+      and that lesson 20 calls essential. Generated from `library-data.js` by a
+      script writing between markers so it cannot drift. Zero visual change for
+      anyone with JavaScript. **This is the recommendation.**
+    - **Option B, render the tiles as real HTML** and let JS enhance them. Search
+      engines weight real markup above `<noscript>`, but it is a restructure of a
+      page that took five prototype rounds to settle and risks the stone slab
+      rendering. Do not do this without the user asking for it by name.
+
+11. **`globe.js` pin labels were rewritten by an earlier session and carry
+    invented em-dashes.** Ready to run, needs only a go ahead.
+    Measured, not assumed: 73 pins, **25 labels contain an em-dash, and ZERO of
+    the 25 match the real episode title.** The user's own titles use `|` as the
+    separator and the rewrite replaced it. The same rewrite altered the user's
+    capitalisation ("If you fly in the Himalayas" became "If You Fly in the
+    Himalayas") and misspelled a guest: the globe says "Dr Matt Wikes" where the
+    real title says "Wilkes".
+    **The user's rule on dashes, given this session: a dash is fine if it came
+    from them or from source text that was picked up. A dash in anything newly
+    written is not.** These are newly written, so they go.
+    **Fix:** every pin already carries its episode page URL, so the real title
+    can be read out of `episode-meta.json` by slug. No matching heuristic and no
+    guessing. Three pins have no local page; two of those carry em-dashes and
+    their real titles should come from the RSS feed instead.
+    **Layout is not a risk here, this was checked:** labels go into a popup via
+    `popupTitle.textContent`, and swapping to real titles moves the average label
+    from 70 to 71 characters and the longest from 144 to 143.
 
 ## DONE (do not redo)
 - **Nine truncated titles, recovered properly (eighth update).** They now live in
