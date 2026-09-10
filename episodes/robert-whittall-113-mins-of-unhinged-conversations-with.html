@@ -169,6 +169,18 @@
 </footer>
 
 <script>
+/* The transcript is clipped by CSS only. Every word is already in the HTML
+   above, so a crawler that does not run scripts still reads all of it. */
+(function () {
+  var btn = document.querySelector('.cd-more');
+  var body = document.getElementById('transcript-body');
+  if (!btn || !body) return;
+  btn.addEventListener('click', function () {
+    var open = body.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (!open) body.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  });
+})();
 /* Scrollspy: highlight the chapter you are currently reading. */
 (function () {
   var chaps = [].slice.call(document.querySelectorAll('.cd-chap'));

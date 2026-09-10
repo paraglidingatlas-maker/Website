@@ -231,6 +231,29 @@ def render_list(items, cls="cd-link"):
     )
 
 
+def wrap_transcript(html_body, words, has_transcript):
+    """Clip the transcript visually. Every word stays in the HTML.
+
+    This matters: search engines render JavaScript, but most AI crawlers do not.
+    If the text were fetched on click they would never see it. So the full
+    transcript is always in the page and the button only changes a max-height.
+    display:none is avoided for the same reason.
+    """
+    if not has_transcript:
+        return html_body
+    mins = max(1, round(words / 150))
+    return (
+        '      <div class="cd-clip" id="transcript-body">\n'
+        + html_body + '\n'
+        '      </div>\n'
+        '      <button class="cd-more" type="button" aria-expanded="false"\n'
+        '              aria-controls="transcript-body">\n'
+        '        <span class="cd-more-open">Continue reading, about %d more minutes</span>\n'
+        '        <span class="cd-more-shut">Collapse the transcript</span>\n'
+        '      </button>' % mins
+    )
+
+
 def build(meta, cues, chapters):
     paras = paragraphs(cues)
     words = sum(len(p["text"].split()) for p in paras)
@@ -270,7 +293,8 @@ def build(meta, cues, chapters):
         video_id=esc(vid),
         rail=render_rail(chapters),
         summary=esc(meta.get("summary", "")),
-        transcript=render_transcript(paras, chapters, meta.get("speakers", {})),
+        transcript=wrap_transcript(render_transcript(paras, chapters, meta.get("speakers", {})),
+                                   words, bool(paras)),
         guest_name=esc(meta.get("guest", "")),
         guest_role=esc(meta.get("guest_role", "")),
         guest_links=render_list(meta.get("guest_links", [])),

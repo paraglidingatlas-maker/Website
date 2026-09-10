@@ -101,3 +101,26 @@
   }
 
 .cd-rail-none{color:var(--gray);font-size:0.8rem;line-height:1.5;}
+
+/* Transcript clip. The full text is always present in the HTML; this only
+   limits the visible height, so crawlers that do not run scripts still read
+   every word. Never swap this for display:none. */
+.cd-clip{position:relative;max-height:620px;overflow:hidden;
+  transition:max-height .35s ease;}
+.cd-clip::after{content:"";position:absolute;left:0;right:0;bottom:0;height:190px;
+  pointer-events:none;background:linear-gradient(180deg,rgba(20,21,25,0) 0%,
+  rgba(20,21,25,0.82) 62%,rgba(20,21,25,1) 100%);transition:opacity .3s ease;}
+.cd-clip.is-open{max-height:none;}
+.cd-clip.is-open::after{opacity:0;}
+.cd-more{display:inline-block;margin-top:1.4rem;padding:0.62rem 1.5rem;
+  background:none;border:1px solid rgba(180,180,180,0.28);color:var(--gray-light);
+  font-family:var(--font-body);font-size:0.84rem;cursor:pointer;
+  transition:color .16s ease,border-color .16s ease;}
+.cd-more:hover{color:var(--white);border-color:var(--orange);}
+.cd-more .cd-more-shut{display:none;}
+.cd-more[aria-expanded="true"] .cd-more-open{display:none;}
+.cd-more[aria-expanded="true"] .cd-more-shut{display:inline;}
+/* without scripts the clip must not trap the text */
+.no-js .cd-clip{max-height:none;}
+.no-js .cd-clip::after,.no-js .cd-more{display:none;}
+@media (prefers-reduced-motion:reduce){.cd-clip{transition:none;}}

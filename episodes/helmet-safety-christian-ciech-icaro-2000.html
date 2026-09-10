@@ -102,6 +102,7 @@
       <p class="cd-summary"></p>
 
       <p class="cd-sec-head">Full Transcript</p>
+      <div class="cd-clip" id="transcript-body">
       <div class="cd-block" id="c2">
         <h2>What&#x27;s up pilots across the world?</h2>
         <p class="cd-block-time">00:06</p>
@@ -498,6 +499,12 @@
           <p><span class="cd-spk">Aninder:</span> can imagine sharing the art of flight with loved ones is priceless. Sharing the art of flight in the sky with the original flyers is also priceless. So I think needless to say, you seem to have had a pretty amazing life chasing your passion. The way you&#x27;re adding value to the community is quite heartwarming. So please keep it up. Keep on making the magic at iCargo 2000. On that note, Christian, it&#x27;s been an absolute honor and a pleasure to have you on the show, man. Thank you so much. Thank you to you for the invitation and hope to see you around.</p>
         </div>
       </div>
+      </div>
+      <button class="cd-more" type="button" aria-expanded="false"
+              aria-controls="transcript-body">
+        <span class="cd-more-open">Continue reading, about 50 more minutes</span>
+        <span class="cd-more-shut">Collapse the transcript</span>
+      </button>
 
     </main>
 
@@ -579,6 +586,18 @@
 </footer>
 
 <script>
+/* The transcript is clipped by CSS only. Every word is already in the HTML
+   above, so a crawler that does not run scripts still reads all of it. */
+(function () {
+  var btn = document.querySelector('.cd-more');
+  var body = document.getElementById('transcript-body');
+  if (!btn || !body) return;
+  btn.addEventListener('click', function () {
+    var open = body.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (!open) body.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  });
+})();
 /* Scrollspy: highlight the chapter you are currently reading. */
 (function () {
   var chaps = [].slice.call(document.querySelectorAll('.cd-chap'));

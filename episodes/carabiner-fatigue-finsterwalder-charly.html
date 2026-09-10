@@ -95,6 +95,7 @@
       <p class="cd-summary"></p>
 
       <p class="cd-sec-head">Full Transcript</p>
+      <div class="cd-clip" id="transcript-body">
       <div class="cd-block" id="c1">
         <h2>Introduction</h2>
         <p class="cd-block-time">00:00</p>
@@ -203,6 +204,12 @@
           <p>share, please feel free to reach out to me at aninder at the rate paraglidingatlas.com To spell it, I&#x27;d say it&#x27;s A-N-I-N-D-E-R at the rate paraglidingatlas.com and also all my social media links are available in the show notes below. And needless to say, your insights enrich the community and help us all fly safer.</p>
         </div>
       </div>
+      </div>
+      <button class="cd-more" type="button" aria-expanded="false"
+              aria-controls="transcript-body">
+        <span class="cd-more-open">Continue reading, about 18 more minutes</span>
+        <span class="cd-more-shut">Collapse the transcript</span>
+      </button>
 
     </main>
 
@@ -284,6 +291,18 @@
 </footer>
 
 <script>
+/* The transcript is clipped by CSS only. Every word is already in the HTML
+   above, so a crawler that does not run scripts still reads all of it. */
+(function () {
+  var btn = document.querySelector('.cd-more');
+  var body = document.getElementById('transcript-body');
+  if (!btn || !body) return;
+  btn.addEventListener('click', function () {
+    var open = body.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (!open) body.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  });
+})();
 /* Scrollspy: highlight the chapter you are currently reading. */
 (function () {
   var chaps = [].slice.call(document.querySelectorAll('.cd-chap'));

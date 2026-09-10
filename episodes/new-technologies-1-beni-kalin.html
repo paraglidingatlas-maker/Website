@@ -104,6 +104,7 @@
       <p class="cd-summary"></p>
 
       <p class="cd-sec-head">Full Transcript</p>
+      <div class="cd-clip" id="transcript-body">
       <div class="cd-block" id="c1">
         <h2>Introduction</h2>
         <p class="cd-block-time">00:00</p>
@@ -792,6 +793,12 @@
           <p><span class="cd-spk">Aninder:</span> from the brand of it. But Benny Collins, thank you for such an honest and, you know, absolute pure of an interview from the bottom of your heart. I think we have successfully managed to put across to our audiences why they should stay excited and like what&#x27;s coming and basically more fun. in in our sports of paragliding and speed flying so fingers crossed keep up the good work you seem to be willing at life by making money out of this full time so definitely there&#x27;s something right i&#x27;m kind of wait to see what&#x27;s what what comes from go flare global thank you very much thanks for inviting me and i hope to meet you someday somewhere and i hope to see your smile one day when you flew a line likewise for sure</p>
         </div>
       </div>
+      </div>
+      <button class="cd-more" type="button" aria-expanded="false"
+              aria-controls="transcript-body">
+        <span class="cd-more-open">Continue reading, about 102 more minutes</span>
+        <span class="cd-more-shut">Collapse the transcript</span>
+      </button>
 
     </main>
 
@@ -872,6 +879,18 @@
 </footer>
 
 <script>
+/* The transcript is clipped by CSS only. Every word is already in the HTML
+   above, so a crawler that does not run scripts still reads all of it. */
+(function () {
+  var btn = document.querySelector('.cd-more');
+  var body = document.getElementById('transcript-body');
+  if (!btn || !body) return;
+  btn.addEventListener('click', function () {
+    var open = body.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (!open) body.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  });
+})();
 /* Scrollspy: highlight the chapter you are currently reading. */
 (function () {
   var chaps = [].slice.call(document.querySelectorAll('.cd-chap'));

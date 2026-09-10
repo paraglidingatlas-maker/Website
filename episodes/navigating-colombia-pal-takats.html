@@ -104,6 +104,7 @@
       <p class="cd-summary"></p>
 
       <p class="cd-sec-head">Full Transcript</p>
+      <div class="cd-clip" id="transcript-body">
       <div class="cd-block" id="c1">
         <h2>Introduction</h2>
         <p class="cd-block-time">00:00</p>
@@ -656,6 +657,12 @@
           <p>your flying days. Keep rocking. You are a great inspiration. Yeah, let&#x27;s get some air time. Yeah!</p>
         </div>
       </div>
+      </div>
+      <button class="cd-more" type="button" aria-expanded="false"
+              aria-controls="transcript-body">
+        <span class="cd-more-open">Continue reading, about 71 more minutes</span>
+        <span class="cd-more-shut">Collapse the transcript</span>
+      </button>
 
     </main>
 
@@ -737,6 +744,18 @@
 </footer>
 
 <script>
+/* The transcript is clipped by CSS only. Every word is already in the HTML
+   above, so a crawler that does not run scripts still reads all of it. */
+(function () {
+  var btn = document.querySelector('.cd-more');
+  var body = document.getElementById('transcript-body');
+  if (!btn || !body) return;
+  btn.addEventListener('click', function () {
+    var open = body.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (!open) body.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  });
+})();
 /* Scrollspy: highlight the chapter you are currently reading. */
 (function () {
   var chaps = [].slice.call(document.querySelectorAll('.cd-chap'));

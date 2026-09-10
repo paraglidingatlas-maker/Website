@@ -104,6 +104,7 @@
       <p class="cd-summary"></p>
 
       <p class="cd-sec-head">Full Transcript</p>
+      <div class="cd-clip" id="transcript-body">
       <div class="cd-block" id="c1">
         <h2>Introduction</h2>
         <p class="cd-block-time">00:00</p>
@@ -740,6 +741,12 @@
           <p><span class="cd-spk">Aninder:</span> Goran, I love your honesty. And basically, I mean, I know I keep on saying this, but long story short, the professionalism you have, the drive you have, it explains why you have been at the forefront of this for 30 years. And I wish you all the luck. And to be honest, the question&#x27;s endless, which means we will bring you, we would love to bring you back for another episode, hopefully sometime very soon. Keep rocking. You&#x27;re an inspiration. Thank you so much. You&#x27;re welcome, anything.</p>
         </div>
       </div>
+      </div>
+      <button class="cd-more" type="button" aria-expanded="false"
+              aria-controls="transcript-body">
+        <span class="cd-more-open">Continue reading, about 103 more minutes</span>
+        <span class="cd-more-shut">Collapse the transcript</span>
+      </button>
 
     </main>
 
@@ -821,6 +828,18 @@
 </footer>
 
 <script>
+/* The transcript is clipped by CSS only. Every word is already in the HTML
+   above, so a crawler that does not run scripts still reads all of it. */
+(function () {
+  var btn = document.querySelector('.cd-more');
+  var body = document.getElementById('transcript-body');
+  if (!btn || !body) return;
+  btn.addEventListener('click', function () {
+    var open = body.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (!open) body.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  });
+})();
 /* Scrollspy: highlight the chapter you are currently reading. */
 (function () {
   var chaps = [].slice.call(document.querySelectorAll('.cd-chap'));

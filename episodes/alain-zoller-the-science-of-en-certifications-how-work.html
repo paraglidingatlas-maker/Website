@@ -100,6 +100,7 @@
       <p class="cd-summary"></p>
 
       <p class="cd-sec-head">Full Transcript</p>
+      <div class="cd-clip" id="transcript-body">
       <div class="cd-block" id="c1">
         <h2>Introduction</h2>
         <p class="cd-block-time">00:00</p>
@@ -864,6 +865,12 @@
           <p><span class="cd-spk">Aninder:</span> shared nothing but value. There&#x27;s no single podcast that can do justice to your four decades of experience in paragliding. I think that&#x27;s all we had time for this time around. More than happy to bring you back when the Work Group 6 brings out a new edition. Keep up the hard work, sir. Make the sport safer and more fun place to be. But it&#x27;s been an absolute pleasure this time. We must not forget the fun also. That is the line to live by. Do not forget the fun. Thank you, Alain. It&#x27;s been a pleasure. You&#x27;re welcome, Alain. It was a pleasure to share that with you.</p>
         </div>
       </div>
+      </div>
+      <button class="cd-more" type="button" aria-expanded="false"
+              aria-controls="transcript-body">
+        <span class="cd-more-open">Continue reading, about 106 more minutes</span>
+        <span class="cd-more-shut">Collapse the transcript</span>
+      </button>
 
     </main>
 
@@ -945,6 +952,18 @@
 </footer>
 
 <script>
+/* The transcript is clipped by CSS only. Every word is already in the HTML
+   above, so a crawler that does not run scripts still reads all of it. */
+(function () {
+  var btn = document.querySelector('.cd-more');
+  var body = document.getElementById('transcript-body');
+  if (!btn || !body) return;
+  btn.addEventListener('click', function () {
+    var open = body.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (!open) body.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  });
+})();
 /* Scrollspy: highlight the chapter you are currently reading. */
 (function () {
   var chaps = [].slice.call(document.querySelectorAll('.cd-chap'));
