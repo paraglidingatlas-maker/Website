@@ -90,6 +90,10 @@
 .sm-bar{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;}
 #sm-info{color:var(--gray);font-size:0.82rem;}
 #sm-info strong{color:var(--gray-light);font-weight:600;margin-right:0.55rem;}
+#sm-info{display:flex;flex-wrap:wrap;align-items:baseline;gap:0.15rem 0.55rem;
+  min-height:1.5rem;max-width:64ch;}
+.sm-go{color:var(--orange);text-decoration:underline;text-underline-offset:3px;
+  font-size:0.8rem;white-space:nowrap;}
 .sm-ctrl{display:flex;gap:0.4rem;}
 .sm-ctrl button{background:none;border:1px solid rgba(180,180,180,0.2);color:var(--gray);
   font-family:var(--font-body);font-size:0.78rem;padding:0.34rem 0.8rem;cursor:pointer;
@@ -123,7 +127,7 @@
 <div class="sm-wrap">
 
   <h1>How to find your way around</h1>
-  <p class="sm-lede">The whole site as a map. Start at the centre and open each branch to see what sits under it.</p>
+  <p class="sm-lede">The whole site as a map. Start at the centre and open each branch to see what sits under it. Clicking only opens a branch, so you can explore the shape of things without losing your place.</p>
   <p class="sm-stat">13 series &middot; 79 episodes &middot; 45 with full transcripts</p>
 
   <div class="sm-graph">
@@ -131,7 +135,7 @@
          role="img" aria-label="Network graph of the site structure. A full text index follows below."></svg>
   </div>
   <div class="sm-bar">
-    <p id="sm-info"><strong>Click a node to open it out.</strong><span>Drag to move the map.</span></p>
+    <p id="sm-info"><strong>Click a node to open it out.</strong><span>Nothing here takes you away from this page unless you ask it to.</span></p>
     <div class="sm-ctrl">
       <button id="sm-out" type="button" aria-label="Zoom out">&minus;</button>
       <button id="sm-in" type="button" aria-label="Zoom in">+</button>

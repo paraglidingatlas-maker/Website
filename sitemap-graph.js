@@ -232,7 +232,7 @@
       grp.setAttribute("tabindex", "0");
       grp.setAttribute("role", "button");
       grp.setAttribute("aria-label",
-        n.label + (has ? ", " + has + " below" : ", opens the page"));
+        n.label + (has ? ", " + has + " below" : ""));
       shape(n, grp);
 
       if (n.kind !== "episode" || t[n.id] === 0) {
@@ -250,11 +250,11 @@
         grp.appendChild(tx);
       }
 
-      grp.addEventListener("click", function (ev) { hit(n, ev); });
+      grp.addEventListener("click", function () { hit(n); });
       grp.addEventListener("keydown", function (ev) {
-        if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); hit(n, ev); }
+        if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); hit(n); }
       });
-      grp.addEventListener("mouseenter", function () { info(n); });
+      
       g.appendChild(grp);
     });
 
@@ -266,26 +266,34 @@
   }
 
   var panel = document.getElementById("sm-info");
+  var WHAT = {
+    root: "the front page", section: "a main section",
+    category: "a group of series", series: "a series",
+    episode: "an episode"
+  };
   function info(n) {
     if (!panel) return;
     var has = (kids[n.id] || []).length;
-    panel.innerHTML = "<strong>" + n.label + "</strong><span>" +
-      (has ? has + " below, click to " + (n.open ? "fold away" : "open out")
-           : "click to open the page") + "</span>";
+    var where = (parents[n.id] || []).map(function (p) { return byId[p].label; }).join(" and ");
+    var line = WHAT[n.kind] || "";
+    if (where) line += ", under " + where;
+    if (has) line += ". " + has + (n.open ? " below, click to fold away" : " below, click to open out");
+    var link = n.url
+      ? ' <a class="sm-go" href="' + n.url + '"' +
+        (/^https?:/.test(n.url) ? ' target="_blank" rel="noopener"' : '') + '>Open this page</a>'
+      : "";
+    panel.innerHTML = "<strong>" + n.label + "</strong><span>" + line + "</span>" + link;
   }
 
-  function hit(n, ev) {
+  function hit(n) {
     var has = (kids[n.id] || []).length;
-    if (has && !(ev && (ev.metaKey || ev.ctrlKey))) {
+    focus = n.id;
+    if (has) {
       n.open = !n.open;
-      focus = n.open ? n.id : ((parents[n.id] || [])[0] || "home");
-      recompute(); seed(); tick(reduce ? 300 : 230); fit(); draw(); info(n);
-      return;
+      recompute(); seed(); tick(reduce ? 300 : 230); fit();
     }
-    if (n.url) {
-      if (/^https?:/.test(n.url)) window.open(n.url, "_blank", "noopener");
-      else window.location.href = n.url;
-    }
+    draw();
+    info(n);
   }
 
   var drag = null;
@@ -305,15 +313,27 @@
   });
 
   function zoom(mult) {
-    view.k = Math.max(0.3, Math.min(2.6, view.k * mult));
+    view.k = Math.max(0.45, Math.min(2.6, view.k * mult));
     draw();
   }
-  /* only zoom on a deliberate gesture. A plain wheel is left alone so the
-     page scrolls the way it should. */
+  /* Wheel zooms while the pointer is over the map, the way the globe on the
+     home page does. The difference: once you are fully zoomed out and keep
+     scrolling out, the event is left alone so the page scrolls on past instead
+     of trapping you inside the graph. Same at full zoom in. */
+  var MINK = 0.45, MAXK = 2.6;
   svg.addEventListener("wheel", function (e) {
-    if (!e.ctrlKey && !e.metaKey) return;
+    var out = e.deltaY > 0;
+    if ((out && view.k <= MINK + 0.001) || (!out && view.k >= MAXK - 0.001)) return;
     e.preventDefault();
-    zoom(e.deltaY < 0 ? 1.1 : 0.91);
+    var before = view.k;
+    view.k = Math.max(MINK, Math.min(MAXK, view.k * (out ? 0.92 : 1.087)));
+    /* keep the point under the cursor roughly still */
+    var r = svg.getBoundingClientRect();
+    var cx = (e.clientX - r.left) * (W / r.width);
+    var cy = (e.clientY - r.top) * (H / r.height);
+    view.x = cx - (cx - view.x) * (view.k / before);
+    view.y = cy - (cy - view.y) * (view.k / before);
+    draw();
   }, { passive: false });
 
   function bind(id, fn) {
