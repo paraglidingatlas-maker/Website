@@ -321,11 +321,13 @@
         tx.setAttribute("class", "sm-label");
         tx.setAttribute("x", pad + 4);
         tx.setAttribute("dy", "0.34em");
+        /* the group is already translated to the node, so everything in here
+           is RELATIVE to it. Absolute coordinates get the offset applied twice. */
         var ls = li.lines, lh = li.fs * 1.22;
-        tx.setAttribute("y", n.y - (ls.length - 1) * lh / 2);
+        tx.setAttribute("y", -(ls.length - 1) * lh / 2);
         ls.forEach(function (line, i) {
           var sp = document.createElementNS(NS, "tspan");
-          sp.setAttribute("x", n.x + li.pad + 4);
+          sp.setAttribute("x", pad + 4);
           if (i) sp.setAttribute("dy", lh);
           sp.textContent = line;
           tx.appendChild(sp);
