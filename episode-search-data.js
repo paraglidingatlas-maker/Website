@@ -162,7 +162,7 @@ const EPISODE_SEARCH_DATA = [
     "video_id": "N4OGIzYNnl0", "page": "the-silent-mind-in-screaming-winds-unlocking-peak-focus-to"
   },
   {
-    "title": "Meteorology 101 A beginner’s Guide to Understanding Weather Apps and Decoding Endless Forecasting...",
+    "title": "Meteorology 101: A beginner\u2019s Guide to Understanding Weather Apps and Decoding Endless Forecasting Options",
     "video_id": "DIHf30B2NoY", "page": "meteorology-101-a-beginners-guide-to-understanding-weather"
   },
   {
@@ -170,19 +170,19 @@ const EPISODE_SEARCH_DATA = [
     "video_id": "EttlenmzWHM", "page": "urs-haari-the-real-truth-about-reserve-parachutes-a"
   },
   {
-    "title": "Shane Tighe’s Road to X-Alps : Engineering Conquests In The Sky from Australia’s Flatlands to the...",
+    "title": "Shane Tighe\u2019s Road to X-Alps : Engineering Conquests In The Sky from Australia\u2019s Flatlands to the Pinnacle of Hike and Fly",
     "video_id": "cnizMhvNQrM", "page": "shane-tighes-road-to-x-alps-engineering-conquests-in-the"
   },
   {
-    "title": "Aljaž Valič : 777 : Paragliding’s Slovenian Mavericks Redefining the EN B Class And Elevating Fre...",
+    "title": "Alja\u017e Vali\u010d : 777 : Paragliding\u2019s Slovenian Mavericks Redefining the EN B Class And Elevating Free Flight Performance",
     "video_id": "78PaTvxRWJ0", "page": "aljaz-valic-777-paraglidings-slovenian-mavericks"
   },
   {
-    "title": "Sandrine Roy : Vol Biv & Freedom Unfiltered : A Human-Powered Odyssey By Paragliding, Biking & Sa...",
+    "title": "Sandrine Roy : Vol Biv & Freedom Unfiltered : A Human-Powered Odyssey By Paragliding, Biking & Sailing Around The Globe",
     "video_id": "qZRa_Ozz0Hg", "page": "sandrine-roy-vol-biv-freedom-unfiltered-a-human-powered"
   },
   {
-    "title": "Alain Zoller: The Science of EN Certifications : How Work Group 6 Shaped Paragliding Testing, Inn...",
+    "title": "Alain Zoller: The Science of EN Certifications : How Work Group 6 Shaped Paragliding Testing, Innovation & Safety",
     "video_id": "CBxyezZ-UOw", "page": "alain-zoller-the-science-of-en-certifications-how-work"
   },
   {
@@ -190,19 +190,19 @@ const EPISODE_SEARCH_DATA = [
     "video_id": "i-QoHo0ZaPU", "page": "ziad-bassil-finest-paragliding-reviews-superpower-of"
   },
   {
-    "title": "Eddie Colfox : Storytime : Chasing Adventure With the Real OG John Silvester & 3 Decades of Makin...",
+    "title": "Eddie Colfox : Storytime : Chasing Adventure With the Real OG John Silvester & 3 Decades of Making Memories Across The Globe",
     "video_id": "ebwdsVgopnU", "page": "eddie-colfox-storytime-chasing-adventure-with-the-real-og"
   },
   {
-    "title": "​Ashutosh Chopra: Identifying Passion Vs Obsession: An Aviator’s Approach to Overcoming Adversity...",
+    "title": "Ashutosh Chopra: Identifying Passion Vs Obsession: An Aviator\u2019s Approach to Overcoming Adversity, Rebuilding Trust and Finding Joy in the Skies",
     "video_id": "jMVTzRFPWNw", "page": "ashutosh-chopra-identifying-passion-vs-obsession-an"
   },
   {
-    "title": "Kinga Masztalerz: Building a Healthy Relationship with the Skies: How to Master Fear, Build Resil...",
+    "title": "Kinga Masztalerz: Building a Healthy Relationship with the Skies: How to Master Fear, Build Resilience & Find Joy Through Paragliding",
     "video_id": "pFxe7oZTH2E", "page": "kinga-masztalerz-building-a-healthy-relationship-with-the"
   },
   {
-    "title": "Helmut Schrempf : Modernizing SIV Courses: How This New Training Method Can Help You Master Glide...",
+    "title": "Helmut Schrempf : Modernizing SIV Courses: How This New Training Method Can Help You Master Glider Control and Improve Paragliding Safety",
     "video_id": "wTfS5kv1t9M", "page": "helmut-schrempf-modernizing-siv-courses-how-this-new"
   },
   {

@@ -39,33 +39,15 @@ def kb_slug(series):
     return None
 
 # Nine titles arrive from the YouTube export already cut at YouTube's own 100
-# character limit, ending in a literal "...". The full text exists on Spotify
-# and in the RSS feed. Add the real title here, keyed by the truncated one, and
-# it will be used everywhere on the sitemap.
-TITLE_FIX = {
-    "Meteorology 101 A beginner’s Guide to Understanding Weather Apps and Decoding Endless Forecasting...":
-        "Meteorology 101: A Beginner's Guide to Understanding Weather Apps and Decoding Endless Forecasting Options",
-    "Shane Tighe’s Road to X-Alps : Engineering Conquests In The Sky from Australia’s Flatlands to the...":
-        "Shane Tighe's Road to X-Alps: Engineering Conquests In The Sky from Australia's Flatlands to the Pinnacle of Hike and Fly",
-    "Aljaž Valič : 777 : Paragliding’s Slovenian Mavericks Redefining the EN B Class And Elevating Fre...":
-        "Aljaž Valič: 777 — Paragliding's Slovenian Mavericks Redefining the EN B Class And Elevating Free Flight Performance",
-    "Sandrine Roy : Vol Biv & Freedom Unfiltered : A Human-Powered Odyssey By Paragliding, Biking & Sa...":
-        "Sandrine Roy: Vol Biv & Freedom Unfiltered — A Human-Powered Odyssey By Paragliding, Biking & Sailing Around The Globe",
-    "Alain Zoller: The Science of EN Certifications : How Work Group 6 Shaped Paragliding Testing, Inn...":
-        "Alain Zoller: The Science of EN Certifications — How Work Group 6 Shaped Paragliding Testing, Innovation & Safety",
-    "Eddie Colfox : Storytime : Chasing Adventure With the Real OG John Silvester & 3 Decades of Makin...":
-        "Eddie Colfox: Storytime — Chasing Adventure With the Real OG John Silvester & 3 Decades of Making Memories Across The Globe",
-    "​Ashutosh Chopra: Identifying Passion Vs Obsession: An Aviator’s Approach to Overcoming Adversity...":
-        "Ashutosh Chopra: Identifying Passion Vs Obsession — An Aviator's Approach to Overcoming Adversity, Rebuilding Trust and Finding Joy in the Skies",
-    "Kinga Masztalerz: Building a Healthy Relationship with the Skies: How to Master Fear, Build Resil...":
-        "Kinga Masztalerz: Building a Healthy Relationship with the Skies — How to Master Fear, Build Resilience & Find Joy Through Paragliding",
-    "Helmut Schrempf : Modernizing SIV Courses: How This New Training Method Can Help You Master Glide...":
-        "Helmut Schrempf: Modernizing SIV Courses — How This New Training Method Can Help You Master Glider Control and Improve Paragliding Safety",
-}
+# character limit, ending in a literal "...". The untruncated titles live in
+# episode-titles.json, taken verbatim from the show's RSS feed, which has no
+# such limit. That file is the single source of truth and is keyed by video ID,
+# not by the truncated string, so a title changing by one character cannot
+# silently reintroduce the cut. Do not hard code title corrections here again.
+TITLES = json.load(open("episode-titles.json", encoding="utf-8"))["titles"]
 
-def fix_title(t):
-    t = t.strip()
-    return TITLE_FIX.get(t, t)
+def fix_title(vid, t):
+    return TITLES.get(vid, (t or "").strip())
 
 def esc(t): return html.escape(str(t), quote=True)
 
@@ -87,10 +69,10 @@ for cat, series_list in CATS:
             m = PAGE.get(e["id"])
             if m:
                 links.append('<li><a href="episodes/%s.html">%s</a></li>'
-                             % (m["slug"], esc(fix_title(e["title"].split("[")[0]))))
+                             % (m["slug"], esc(fix_title(e["id"], e["title"].split("[")[0]))))
             else:
                 links.append('<li><a href="https://www.youtube.com/watch?v=%s" target="_blank" rel="noopener" class="sm-out">%s</a></li>'
-                             % (e["id"], esc(fix_title(e["title"].split("[")[0]))))
+                             % (e["id"], esc(fix_title(e["id"], e["title"].split("[")[0]))))
         withpage = sum(1 for e in eps if e["id"] in PAGE)
         cards.append(
             '  <details class="sm-series">\n'
@@ -140,7 +122,7 @@ for cat, series_list in CATS:
         for e in sorted([x for x in EPS if x["topic"] == sname], key=lambda x: x["order"]):
             m = PAGE.get(e["id"])
             eid = "ep:" + e["id"]
-            node(eid, fix_title(e["title"].split("[")[0]), "episode",
+            node(eid, fix_title(e["id"], e["title"].split("[")[0]), "episode",
                  ("episodes/%s.html" % m["slug"]) if m else ("https://www.youtube.com/watch?v=%s" % e["id"]), 4)
             link(sid, eid)
 

@@ -1,0 +1,16 @@
+{
+  "_note": "Canonical full episode titles. YouTube caps titles at 100 characters, so these nine are stored truncated with a literal '...' in youtube_video_ids.json. These are the untruncated titles taken verbatim from the show's own RSS feed, which has no such limit. Keyed by YouTube video ID so a title string changing by one character cannot silently break the lookup. Generators look up by ID and fall back to the export title.",
+  "_source": "https://anchor.fm/s/ed1344d8/podcast/rss",
+  "_generated": "2026-09-10",
+  "titles": {
+    "DIHf30B2NoY": "Meteorology 101: A beginner’s Guide to Understanding Weather Apps and Decoding Endless Forecasting Options",
+    "cnizMhvNQrM": "Shane Tighe’s Road to X-Alps : Engineering Conquests In The Sky from Australia’s Flatlands to the Pinnacle of Hike and Fly",
+    "78PaTvxRWJ0": "Aljaž Valič : 777 : Paragliding’s Slovenian Mavericks Redefining the EN B Class And Elevating Free Flight Performance",
+    "qZRa_Ozz0Hg": "Sandrine Roy : Vol Biv & Freedom Unfiltered : A Human-Powered Odyssey By Paragliding, Biking & Sailing Around The Globe",
+    "CBxyezZ-UOw": "Alain Zoller: The Science of EN Certifications : How Work Group 6 Shaped Paragliding Testing, Innovation & Safety",
+    "ebwdsVgopnU": "Eddie Colfox : Storytime : Chasing Adventure With the Real OG John Silvester & 3 Decades of Making Memories Across The Globe",
+    "jMVTzRFPWNw": "Ashutosh Chopra: Identifying Passion Vs Obsession: An Aviator’s Approach to Overcoming Adversity, Rebuilding Trust and Finding Joy in the Skies",
+    "pFxe7oZTH2E": "Kinga Masztalerz: Building a Healthy Relationship with the Skies: How to Master Fear, Build Resilience & Find Joy Through Paragliding",
+    "wTfS5kv1t9M": "Helmut Schrempf : Modernizing SIV Courses: How This New Training Method Can Help You Master Glider Control and Improve Paragliding Safety"
+  }
+}
