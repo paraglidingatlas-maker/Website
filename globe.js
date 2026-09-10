@@ -55,6 +55,7 @@
   const episodeData = [
     ['Luc Armant talks about The Moment Coefficient, Enzo 3 Certification Debate & Physics of Stability', 'episodes/luc-armant-talks-about-the-moment-coefficient-enzo-3.html', -3.66, 37.68],
     ["Technical Masterclass by Brett Janaway | Science of Paraglider Trimming,Performance & New Legalities", 'episodes/technical-masterclass-by-brett-janaway-science-of.html', -5.28, 40.46],
+    ["How to Thermal Like a Pro: Find, Center & Climb | Paragliding Tutorial with Brett Janaway", 'episodes/how-to-thermal-like-a-pro-find-center-climb-paragliding.html', -5.28, 40.46],
     ["Robert (Robbie) Whittall: 113 mins of Unhinged conversations with The Man Behind Ozone Paragliders", 'episodes/robert-whittall-113-mins-of-unhinged-conversations-with.html', 6.13, 45.9],
     ["Metacognition: Paragliding's Hidden Psychology with Beni Kalin & Heli Schrempf", 'episodes/metacognition-paragliding-s-hidden-psychology-with-beni.html', 13.4, 47.3],
     ["The Russell Ogden Interview: Decoding Paragliding Mastery Protocols: Progression, Fear & Competition", 'episodes/the-russell-ogden-interview-decoding-paragliding-mastery.html', -1.9, 52.5],
@@ -87,7 +88,7 @@
     ['Science Backed Pre Flight Rituals to Unlock Laser Sharp Paragliding Clarity: On Demand', showUrl, 10.75, 59.91],
     ["The Resilience Equation: Erlend Ukvitne’s Unrelenting Path to X-Alps and the Brink of a World Record", 'episodes/the-resilience-equation-erlend-ukvitnes-unrelenting-path.html', 8.5, 60.5],
     ['Mastering the Unknown: Neuroscience of Crisis Management & Neuroplasticity Training', showUrl, 10.75, 59.91],
-    ["Consequence Over Probability: Will Gadd's Field Protocols for Rewiring Risk Intuition and Why True Safety Lies in Clarity", 'https://creators.spotify.com/pod/profile/paragliding-atlas/episodes/Consequence-Over-Probability-Will-Gadds-Field-Protocols-for-Rewiring-Risk-Intuition-and-Why-True-Safety-Lies-in-Clarity-e34pp65/a-ac15phs', -106, 56],
+    ["Consequence Over Probability: Will Gadd's Field Protocols for Rewiring Risk Intuition and Why True Safety Lies in Clarity", 'episodes/consequence-over-probability-will-gadd-on-why-true-safety.html', -106, 56],
     ["Why Paragliding’s Safety Future Looks Different: RAST Inventor Michael Nesler & the LeelooX Effect", 'episodes/why-paraglidings-safety-future-looks-different-rast.html', 10.4, 51.2],
     ["The Silent Mind In Screaming Winds : Unlocking Peak Focus To Attain Flow State In Paragliding", 'episodes/the-silent-mind-in-screaming-winds-unlocking-peak-focus-to.html', -1.9, 52.5],
     ["Meteorology 101: A beginner’s Guide to Understanding Weather Apps and Decoding Endless Forecasting Options", 'episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html', 10.75, 59.91],
@@ -125,12 +126,12 @@
     ['Pre PWC Kenya: Nikolay Yotov', 'episodes/pre-pwc-kenya-nikolay-yotov.html', 36.8, -1.3],
     ["Navigating Panchgani (Pre PWC India) : Vistasp Kharas", 'episodes/navigating-panchgani-vistasp-kharas.html', 73.8, 17.9],
     ['AMA #1', 'episodes/ama-1.html', 10.75, 59.91],
-    ["Navigating Australia : Godfrey Wenness", 'episodes/navigating-australia-godfrey-wenness.html', 133.8, -25.3],
+    ["Navigating Australia : Godfrey Wenness", 'episodes/navigating-australia-godfrey-wenness.html', 150.72, -30.72],
     ["Sky Gods : Flying to Win : Honorin Hamard", 'episodes/sky-gods-flying-to-win-honorin-hamard.html', 6.13, 45.9],
     ["Sky Gods : Flying 8000ers : Antoine Girard", 'episodes/sky-gods-flying-8000ers-antoine-girard.html', 86.9, 27.98],
-    ['Navigating India: Jigish Gohil (Bonus Ep)', 'episodes/navigating-india-jigish-gohil.html', 78.9, 20.6],
-    ['Navigating India: Eddie Colfox', 'episodes/navigating-india-eddie-colfox.html', 78.9, 20.6],
-    ['Navigating Colombia: Pal Takats', 'episodes/navigating-colombia-pal-takats.html', -74.3, 4.6],
+    ['Navigating India: Jigish Gohil (Bonus Ep)', 'episodes/navigating-india-jigish-gohil.html', 76.72, 32.04],
+    ['Navigating India: Eddie Colfox', 'episodes/navigating-india-eddie-colfox.html', 76.72, 32.04],
+    ['Navigating Colombia: Pal Takats', 'episodes/navigating-colombia-pal-takats.html', -76.15, 4.41],
     ['Touch The Sky With Glory', 'episodes/touch-the-sky-with-glory.html', 10.75, 59.91]
   ];
 
