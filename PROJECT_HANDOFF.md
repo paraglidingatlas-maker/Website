@@ -1,3 +1,67 @@
+# PARAGLIDING ATLAS — PROJECT HANDOFF
+
+> **READ THIS PAGE FIRST, THEN THE TO DO LIST AT THE BOTTOM OF THIS FILE.**
+> Everything else in this document is background you can read as it becomes
+> relevant. Do not start work until the two setup steps below are done.
+
+## Setup, before anything else
+
+1. **Ask the user for a GitHub personal access token** if one was not supplied.
+   Push access never carries over between chats. Fine-grained, Contents = read
+   and write, scoped to the `Website` repo only. Then:
+   `git remote set-url origin https://x-access-token:TOKEN@github.com/paraglidingatlas-maker/Website.git`
+   Commit as `Atlas Site Build <build@paraglidingatlas.com>` to match history.
+
+2. **Test network egress.** The user has already allowlisted `anchor.fm` and
+   `transcript-files.spotifycdn.com` at claude.ai/settings/capabilities, but a
+   sandbox only picks that up if it was created AFTER the change.
+   `curl -sS -o /dev/null -w "%{http_code}\n" https://anchor.fm/s/ed1344d8/podcast/rss`
+   200 means the RSS feed is reachable, which unlocks show notes and full
+   episode titles. 403 means it is not; say so rather than working around it.
+
+## How this project is verified. Do not skip this.
+
+Three checks exist because three separate runtime bugs reached the live site
+while narrower checks passed. Run them before every push that touches
+`sitemap-graph.js`:
+- `node --check` on the script (syntax only, catches very little).
+- A static scan asserting nothing inside the translated node group uses absolute
+  `n.x` / `n.y`. The group is already translated; absolute coordinates apply the
+  offset twice and throw labels off screen.
+- A headless render that stubs the DOM, actually runs `draw()`, and asserts it
+  does not throw and that no `x` attribute inside a node exceeds 200.
+
+**Verify the DEPLOYED page, not the pushed commit.** This sandbox can check the
+repo and the Pages build; it cannot see what the user sees.
+`GET /repos/paraglidingatlas-maker/Website/pages/builds/latest` must report
+`status: built` with a matching commit sha. Then say "this should be fixed, tell
+me what you see" rather than "this is fixed". Claiming otherwise cost real trust
+in the previous session. If the user reports no change, suspect the browser
+cache and tell them to add `?x=1` to the URL.
+
+## The three rules that must not be broken
+
+1. **Transcripts are clipped by CSS only.** The full text is always in the served
+   HTML; the button toggles a `max-height`. Search engines run JavaScript, most
+   AI crawlers do not. Turning this into a lazy fetch would silently destroy the
+   site's visibility to answer engines. `display:none` is deliberately avoided.
+2. **Never invent a URL, an ID, or content.** A fabricated YouTube id once
+   shipped as a real episode's embed. Every id is validated against
+   `youtube_video_ids.json`.
+3. **Never summarise an episode from its title alone**, and never write FAQ
+   content. Both produce plausible, subtly wrong text under a real person's name.
+
+## Working style
+
+The user tests on the live GitHub Pages site in their own browser. Edit, commit,
+push. Build downloadable prototypes to `/mnt/user-data/outputs` for design
+decisions rather than in-chat previews. Feedback comes as small iterative
+corrections; that is normal. When an instruction could mean "adjust this" or
+"replace this", ASK. Reading "make it top to bottom" as "replace the graph with
+a list" cost two rounds and deleted working design.
+
+---
+
 # Paragliding Atlas Website — Project Handoff
 
 Last updated: 2026-09-10 (third update)
