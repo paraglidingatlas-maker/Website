@@ -1376,59 +1376,72 @@
       "1": "So"
     },
     "summary": "Ivelin Kalushkov of Sky Nomad in central Bulgaria walks through how he actually reads weather apps, and how to cut through the number of forecasting options a pilot is faced with. The episode works a real example end to end, forecasting for Manilla in Australia, which had the best conditions going at the time of recording.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "Have you here. How is life?",
-        "at": "00:00:02"
+        "title": "Welcome, and how life is",
+        "at": "00:00:02",
+        "src": "claude"
       },
       {
-        "title": "Why do we have five of them available on an app which is basically…",
-        "at": "00:04:47"
+        "title": "Why five forecast models on one app",
+        "at": "00:04:47",
+        "src": "claude"
       },
       {
-        "title": "Who is running the show behind these companies?",
-        "at": "00:08:25"
+        "title": "Who runs these models",
+        "at": "00:08:25",
+        "src": "claude"
       },
       {
-        "title": "Long-term and which one is most accurate for short-term forecasting?",
-        "at": "00:12:54"
+        "title": "Which is best long term, which short",
+        "at": "00:12:54",
+        "src": "claude"
       },
       {
-        "title": "To try and do something like Perlon?",
-        "at": "00:19:23"
+        "title": "Reading weather from a distance",
+        "at": "00:19:23",
+        "src": "claude"
       },
       {
-        "title": "Your mind when you look at a photo like this?",
-        "at": "00:28:47"
+        "title": "What to look at in a chart",
+        "at": "00:28:47",
+        "src": "claude"
       },
       {
-        "title": "He's just unlocked a lifelong mystery, man. I used to keep on…",
-        "at": "00:39:21"
+        "title": "Millibars, and a thousand metres",
+        "at": "00:39:21",
+        "src": "claude"
       },
       {
-        "title": "Wait a second. How did the 23 degrees thing come?",
-        "at": "00:49:23"
+        "title": "Inversions, and the 23 degree question",
+        "at": "00:49:23",
+        "src": "claude"
       },
       {
-        "title": "Going to the left and coming back, which is forming a conical…",
-        "at": "00:54:48"
+        "title": "Conical flow, and what it means",
+        "at": "00:54:48",
+        "src": "claude"
       },
       {
-        "title": "I'll be thankful if you can explain the color mapping. What does…",
-        "at": "01:00:05"
+        "title": "Reading the colour mapping",
+        "at": "01:00:05",
+        "src": "claude"
       },
       {
-        "title": "The question mark around local knowledge?",
-        "at": "01:04:06"
+        "title": "Where local knowledge still wins",
+        "at": "01:04:06",
+        "src": "claude"
       },
       {
-        "title": "So on. Is there a mantra which you use to become such a good…",
-        "at": "01:09:32"
+        "title": "Staying hungry for knowledge",
+        "at": "01:09:32",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -1470,59 +1483,72 @@
       "1": "Godfrey Wenness"
     },
     "summary": "Godfrey Wenness talks through flying at Manilla in New South Wales, where violent dust devil style climbs build on super adiabatic days but the air is still less punishing than big alpine conditions. He also tells the stories the site has collected over the years, including the glider that ended up chasing a kangaroo across a paddock.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "Every one of us dreams of turning it into a way of life. I mean…",
-        "at": "00:01:13"
+        "title": "Turning flying into a way of life",
+        "at": "00:01:13",
+        "src": "claude"
       },
       {
-        "title": "Godfrey, what does Australia look like for paragliding?",
-        "at": "00:04:55"
+        "title": "What Australia offers a paraglider",
+        "at": "00:04:55",
+        "src": "claude"
       },
       {
-        "title": "The best places or websites to look for the forecast?",
-        "at": "00:12:30"
+        "title": "Where to look for the forecast",
+        "at": "00:12:30",
+        "src": "claude"
       },
       {
-        "title": "Can launch 20 gliders in a row, man. Is there any other place in…",
-        "at": "00:19:37"
+        "title": "Launching twenty gliders in a row",
+        "at": "00:19:37",
+        "src": "claude"
       },
       {
-        "title": "Wow, what else do you need in paragliding?",
-        "at": "00:26:25"
+        "title": "What more do you actually need",
+        "at": "00:26:25",
+        "src": "claude"
       },
       {
-        "title": "Cross-country flying look like visually?",
-        "at": "00:32:11"
+        "title": "What cross country there looks like",
+        "at": "00:32:11",
+        "src": "claude"
       },
       {
-        "title": "It's like, okay, if I don't save myself, then a bomb out is coming…",
-        "at": "00:36:49"
+        "title": "Deciding thirty kilometres ahead",
+        "at": "00:36:49",
+        "src": "claude"
       },
       {
-        "title": "Similar or because the dust is so fine, so it filters out…",
-        "at": "00:51:25"
+        "title": "Dust, and what it does to a glider",
+        "at": "00:51:25",
+        "src": "claude"
       },
       {
-        "title": "The heads up, Godfrey. But, you know, quick, I wanted to touch this…",
-        "at": "00:58:55"
+        "title": "Getting a lift, and local hospitality",
+        "at": "00:58:55",
+        "src": "claude"
       },
       {
-        "title": "To our audiences in every single episode. How many accidents and…",
-        "at": "01:06:06"
+        "title": "How many accidents there actually are",
+        "at": "01:06:06",
+        "src": "claude"
       },
       {
-        "title": "Point, that is storyline. I wanted to know what are the options to…",
-        "at": "01:12:23"
+        "title": "Options once you have arrived",
+        "at": "01:12:23",
+        "src": "claude"
       },
       {
-        "title": "Know what Manila has been all about so far?",
-        "at": "01:17:46"
+        "title": "What Manilla has been about so far",
+        "at": "01:17:46",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -1564,59 +1590,72 @@
       "1": "Pal Takats"
     },
     "summary": "In the show's very first episode, Pal Takats maps out flying in Colombia, from the sites of the Valle del Cauca and their airspace to what a European should expect from the pace of life on the ground. He rode 3,500 kilometres across the country by motorbike in 2011, and makes the case that Colombia long ago outgrew the reputation it is still saddled with.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "Place your home, how did this come into your life and what…",
-        "at": "00:05:36"
+        "title": "Choosing to make Colombia home",
+        "at": "00:05:36",
+        "src": "claude"
       },
       {
-        "title": "Better does life get than that?",
-        "at": "00:13:43"
+        "title": "Their own takeoff and top landing",
+        "at": "00:13:43",
+        "src": "claude"
       },
       {
-        "title": "Saying that flying down to my neighbor's house for tea or breakfast…",
-        "at": "00:17:51"
+        "title": "Flying to a neighbour's house for tea",
+        "at": "00:17:51",
+        "src": "claude"
       },
       {
-        "title": "Can you give our listeners a bit of an idea?",
-        "at": "00:21:21"
+        "title": "What an average pilot should expect",
+        "at": "00:21:21",
+        "src": "claude"
       },
       {
-        "title": "Fly in Colombia for a while. How do you get there?",
-        "at": "00:29:56"
+        "title": "Getting there from Europe",
+        "at": "00:29:56",
+        "src": "claude"
       },
       {
-        "title": "Exactly. Yeah, it's around seven o'clock, so which is another thing…",
-        "at": "00:33:51"
+        "title": "Why the day starts so early",
+        "at": "00:33:51",
+        "src": "claude"
       },
       {
-        "title": "Yeah. So basically outlanding and sticking out from the crowd. Can…",
-        "at": "00:40:36"
+        "title": "Outlanding, and standing out",
+        "at": "00:40:36",
+        "src": "claude"
       },
       {
-        "title": "Security, is it kind of similar?",
-        "at": "00:47:07"
+        "title": "Security, and how it compares",
+        "at": "00:47:07",
+        "src": "claude"
       },
       {
-        "title": "If you abide by them, you still might be breaking them unknowingly?",
-        "at": "00:52:09"
+        "title": "Rules you might break without knowing",
+        "at": "00:52:09",
+        "src": "claude"
       },
       {
-        "title": "The perfect day of flying in this place that we are talking about.…",
-        "at": "00:55:58"
+        "title": "The perfect day of flying there",
+        "at": "00:55:58",
+        "src": "claude"
       },
       {
-        "title": "At an average, such a beautiful day gives you 100, 150…",
-        "at": "01:00:54"
+        "title": "What a good day gives you",
+        "at": "01:00:54",
+        "src": "claude"
       },
       {
-        "title": "Tuckers into this conversation. Because, right?",
-        "at": "01:11:22"
+        "title": "Wrapping up",
+        "at": "01:11:22",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -3059,59 +3098,72 @@
       "1": "Antoine Girard"
     },
     "summary": "Antoine Girard was told that flying at 8,000 metres was not possible, so in 2016 he went and did it, and now talks about 9,000 as a way of showing there is no ceiling at all. He describes reaching that altitude with his glasses and his instrument screen frozen solid, navigating by the one thing he could still make out, sunlight on a summit at the edge of the cloud.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "Great. So shall we begin?",
-        "at": "00:04:40"
+        "title": "Getting started",
+        "at": "00:04:40",
+        "src": "claude"
       },
       {
-        "title": "If yes, can you help our listeners get a little bit of a…",
-        "at": "00:08:54"
+        "title": "The first 8,000 metre attempt",
+        "at": "00:08:54",
+        "src": "claude"
       },
       {
-        "title": "Like, what's the reason behind going solo and not finding a team?",
-        "at": "00:12:45"
+        "title": "Why he goes solo",
+        "at": "00:12:45",
+        "src": "claude"
       },
       {
-        "title": "Been to 5,000 meters in Ethiopia. Where did that come from?",
-        "at": "00:17:10"
+        "title": "Five thousand metres in Ethiopia",
+        "at": "00:17:10",
+        "src": "claude"
       },
       {
-        "title": "This is my location, this is what I'm going to do, is there a…",
-        "at": "00:21:13"
+        "title": "Mental preparation, and telling people the plan",
+        "at": "00:21:13",
+        "src": "claude"
       },
       {
-        "title": "Like how do you acclimatize yourself?",
-        "at": "00:24:59"
+        "title": "How he acclimatises",
+        "at": "00:24:59",
+        "src": "claude"
       },
       {
-        "title": "Basically, where does the air start feeling different?",
-        "at": "00:29:37"
+        "title": "Where the air starts feeling different",
+        "at": "00:29:37",
+        "src": "claude"
       },
       {
-        "title": "Do they go all the way or does it become hard after a while?",
-        "at": "00:34:53"
+        "title": "Do thermals stop above a certain height",
+        "at": "00:34:53",
+        "src": "claude"
       },
       {
-        "title": "Like that... That seems scary. Can equipment failure happen when it…",
-        "at": "00:38:45"
+        "title": "Sucked into cloud at 8,000 metres",
+        "at": "00:38:45",
+        "src": "claude"
       },
       {
-        "title": "Basically collapsing and still getting sucked by the cloud?",
-        "at": "00:43:19"
+        "title": "Collapsing, and still climbing",
+        "at": "00:43:19",
+        "src": "claude"
       },
       {
-        "title": "Somebody who is interested in joining this, what kind of background…",
-        "at": "00:47:40"
+        "title": "What background you need to join him",
+        "at": "00:47:40",
+        "src": "claude"
       },
       {
-        "title": "In Pakistan. Because I think currently Aaron is the one who's…",
-        "at": "00:52:43"
+        "title": "Pakistan, and the next expedition",
+        "at": "00:52:43",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -3480,59 +3532,72 @@
       "1": "Guest"
     },
     "summary": "Michael Nesler invented RAST, the system used in Swing wings that limits how far a collapse can travel across the canopy, and has since built his own two liner in the EN B class. The episode covers both, and why he believes the safety picture for ordinary pilots is about to look quite different.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "Number of lines. But especially the line resistance, it's not the…",
-        "at": "00:03:03"
+        "title": "Line resistance, and attachment points",
+        "at": "00:03:03",
+        "src": "claude"
       },
       {
-        "title": "Two-liner with double B attachment points on top. Is this the…",
-        "at": "00:06:39"
+        "title": "Two liners with double B attachments",
+        "at": "00:06:39",
+        "src": "claude"
       },
       {
-        "title": "Handling also was better. How can I bring it in the B- class?",
-        "at": "00:15:08"
+        "title": "Bringing it into the B class",
+        "at": "00:15:08",
+        "src": "claude"
       },
       {
-        "title": "Bending of the profile. Did you understand this?",
-        "at": "00:19:16"
+        "title": "Moving the A lines, and how dynamic it gets",
+        "at": "00:19:16",
+        "src": "claude"
       },
       {
-        "title": "Yeah, of course. I made the first. I designed it also. Are you…",
-        "at": "00:25:14"
+        "title": "Designing the first one",
+        "at": "00:25:14",
+        "src": "claude"
       },
       {
-        "title": "Course. And the C-wing now, it's two-liners. But we have to check…",
-        "at": "00:36:10"
+        "title": "Where the two liner concept came from",
+        "at": "00:36:10",
+        "src": "claude"
       },
       {
-        "title": "Made wings for other companies, you can pass with this wing, but I…",
-        "at": "00:40:43"
+        "title": "Making wings for other companies",
+        "at": "00:40:43",
+        "src": "claude"
       },
       {
-        "title": "Areas. How does the stall point look like comparatively?",
-        "at": "00:44:38"
+        "title": "How the stall point compares",
+        "at": "00:44:38",
+        "src": "claude"
       },
       {
-        "title": "Difficult. I mean, it's just about simulating, right?",
-        "at": "00:50:20"
+        "title": "What you can and cannot simulate",
+        "at": "00:50:20",
+        "src": "claude"
       },
       {
-        "title": "To ask him, do you have the skills for flying this wing?",
-        "at": "00:53:57"
+        "title": "Describing who a wing is for",
+        "at": "00:53:57",
+        "src": "claude"
       },
       {
-        "title": "Say, I'm scared about the altitude, the first question is, do you…",
-        "at": "01:00:28"
+        "title": "NLP, and working on fear",
+        "at": "01:00:28",
+        "src": "claude"
       },
       {
-        "title": "Technical one. They begin to insert it in the structure process…",
-        "at": "01:05:12"
+        "title": "Building the psychological part into training",
+        "at": "01:05:12",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -3574,51 +3639,62 @@
       "1": "My"
     },
     "summary": "Ziad Bassil test flies more wings than almost anyone in the sport and writes them all up, working from the thought that birds cannot swap wings but humans can. He is generous about the field, saying the good brands are all genuinely good and the small ones deliver fine gliders, and says manufacturers have not pushed back on what he publishes.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
         "title": "Introduction",
-        "at": "00:00:00"
+        "at": "00:00:00",
+        "src": "claude"
       },
       {
-        "title": "Your views, has it happened that some manufacturers are not happy…",
-        "at": "00:00:52"
+        "title": "Success is not the glider alone",
+        "at": "00:00:52",
+        "src": "claude"
       },
       {
-        "title": "What are the possibilities that your country offers for exploring…",
-        "at": "00:04:36"
+        "title": "Flying in Lebanon",
+        "at": "00:04:36",
+        "src": "claude"
       },
       {
-        "title": "You eventually start testing them?",
-        "at": "00:12:21"
+        "title": "What he looks for when reviewing a wing",
+        "at": "00:12:21",
+        "src": "claude"
       },
       {
-        "title": "700 kilograms, if I'm not wrong?",
-        "at": "00:16:22"
+        "title": "Flying at the bottom of the weight range",
+        "at": "00:16:22",
+        "src": "claude"
       },
       {
-        "title": "Have you seen any specific trend while reviewing the two- liner…",
-        "at": "00:20:14"
+        "title": "Trends across the two liners",
+        "at": "00:20:14",
+        "src": "claude"
       },
       {
-        "title": "Seeing which are having the market focus a bit more on one class…",
-        "at": "00:26:00"
+        "title": "Why everyone builds EN B wings",
+        "at": "00:26:00",
+        "src": "claude"
       },
       {
-        "title": "What is the most fun wing that you've ever flown until today?",
-        "at": "00:31:25"
+        "title": "The most fun wing he has flown",
+        "at": "00:31:25",
+        "src": "claude"
       },
       {
-        "title": "Reflex in Diva. Does that help with trimming or less of trimming…",
-        "at": "00:35:58"
+        "title": "Reflex profiles, and trimming",
+        "at": "00:35:58",
+        "src": "claude"
       },
       {
-        "title": "Oh my God, I stopped counting just because, I don't know, a lot. A…",
-        "at": "00:42:16"
+        "title": "His personal preference",
+        "at": "00:42:16",
+        "src": "claude"
       },
       {
-        "title": "Views, has it happened that some manufacturers are not happy and…",
-        "at": "00:46:13"
+        "title": "Pleasing manufacturers while staying honest",
+        "at": "00:46:13",
+        "src": "claude"
       }
     ],
     "guest_links": [],

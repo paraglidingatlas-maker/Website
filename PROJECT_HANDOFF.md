@@ -1004,21 +1004,36 @@ and `transcript-files.spotifycdn.com` is reachable too. Measured, not assumed:
     `popupTitle.textContent`, and swapping to real titles moves the average label
     from 70 to 71 characters and the longest from 144 to 143.
 
-## 12. CHAPTER TITLES ON 38 EPISODES ARE RAW TRANSCRIPT FRAGMENTS. NEXT JOB.
-Found while writing chapters for the 26 that had none. 45 episodes carry
-chapters; **38 of them have titles that are cut off mid sentence**, generated
-from host questions without being rewritten. Live now. Examples:
+## 12. CHAPTER TITLES: 18 OF 38 REWRITTEN, 20 STILL TO GO
+45 episodes carry chapters, and 38 of them had titles cut off mid sentence,
+generated from host questions and never rewritten. Examples of what was there:
 "Look for when choosing a reserve?", "Community where even the top of the line
-pilots are paying the…", "Somebody who has tested endless amounts of wings. Do
-you have a…". Around 160 chapters affected.
-**This is worse than a missing chapter**, because it reads as broken rather than
-absent, and those titles are the navigation rail on the site's longest pages.
-**The fix is cheap and the timestamps are already correct.** They were derived
-from real host questions, so only the titles need rewriting. For each existing
-chapter, pull about 50 words of transcript at its timestamp and write a proper
-title. That is roughly 650 words of reading per episode, far less than the 26
-just done, which needed boundaries chosen as well.
-Run `python3 tools/chapter_candidates.py <slug>` to see the same boundaries.
+pilots are paying the…". They are the navigation rail on the site's longest
+pages, so they read as broken rather than merely absent.
+
+**The timestamps were already correct**, taken from real host questions, so only
+the titles need work. `python3 tools/chapter_context.py <slug> [words]` prints
+the transcript at each existing chapter mark, which turns rewriting a title into
+reading about fifty words rather than re-choosing a boundary. Roughly six
+episodes per batch is comfortable.
+
+**Done (18):** Urs Haari, Gabriel Orsini, Andreas Lattner, Alain Zoller, Aljaz
+Valic, Goran Dimiskovski, Beni Kalin, Will Gadd, Eddie Colfox (Storytime), The
+Silent Mind, Christian Ciech, Helmut Schrempf, Godfrey Wenness, Pal Takats
+(Colombia), Meteorology 101, Antoine Girard, Michael Nesler (RAST), Ziad Bassil.
+
+**Still to do (20):** ashutosh-chopra, carabiner-fatigue-finsterwalder-charly,
+what-is-civlresign-with-julien-garcia, flying-filming-1-benjamin-jordan,
+flying-filming-2-benjamin-kellet, insights-from-the-gaggle-with-tilen-ceglar-stan,
+living-the-dream-benjamin-jordan, navigating-india-eddie-colfox,
+navigating-india-jigish-gohil, navigating-panchgani-vistasp-kharas,
+new-technologies-2-guillem-batlle-adria-grau, new-technologies-5-frantisek-pavlousek,
+new-technologies-4-veselin-ovcharov, pal-takats-on-challenges-change-the-future,
+risk-vs-reward-3-manfred-ruhmer, risk-vs-reward-4-raul-rodriguez,
+sandrine-roy-vol-biv, shane-tighes-road-to-x-alps,
+the-resilience-equation-erlend-ukvitnes, understanding-skymate.
+A one line check finds them: any chapter title ending in an ellipsis or starting
+with a lower case letter.
 
 ## DONE (do not redo)
 - **Nine truncated titles, recovered properly (eighth update).** They now live in
