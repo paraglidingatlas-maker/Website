@@ -630,3 +630,83 @@ thing deliberately removed several updates earlier. Two rounds were lost.
 20. **Keep the `<noscript>` index on the sitemap.** A canvas or a graph is
     invisible to search engines. That block is the only thing making 79 episodes
     and 13 series crawlable from this page.
+
+## Sitemap: current state (seventh update, 2026-09-10) — DONE, do not redesign
+2D left to right tree. Settled after a long detour through a 3D landscape that
+was tried and rejected (see the previous update). Live, build green.
+
+**Marker pack, chosen by the user from `blade-marker-variations.html`:**
+- root and section -> `warden()`, hexagonal shield around a blade, in its two
+  lighter treatments (the lighter one drops alternate walls of the shield)
+- category, series, episode -> `interceptor()`, swept delta with a spine cut,
+  in its three fuller treatments (outriggers, then nose spark, shed by level)
+- Detail is fixed PER TIER, not by size, so a category always reads as a
+  category. This was a deliberate change from the prototype.
+
+**Spacing:** "Roomier". `COLW = 268`, `ROWH = 62`.
+
+**Labels:** never shortened. `wrap()` breaks at `MAXCH = 44` on word boundaries,
+splitting inside a word only when a single word exceeds the limit. Each line is a
+`<tspan>`; the block is centred on its marker. Longest label needs three lines.
+
+**Hit area:** a rect spanning the marker AND the whole wrapped label, so hovering
+or clicking anywhere on the row works and lights marker plus text orange.
+
+**Edges** start beyond the parent's label (`labelInfo().end + 10`), otherwise the
+connector draws straight through the parent's own text.
+
+### Nine titles are cut in the SOURCE DATA, not by the page
+`youtube_video_ids.json` holds them already truncated at exactly 100 characters
+ending in a literal "...", because that is YouTube's own title limit. Affected:
+Sandrine Roy, Shane Tighe, Kinga Masztalerz, Ashutosh Chopra, Meteorology 101,
+Eddie Colfox, Aljaž Valič, Alain Zoller, Helmut Schrempf.
+**Fix:** `TITLE_FIX` at the top of `generate_sitemap.py` maps a truncated title to
+the real one. It is empty with a worked example commented out. The full titles are
+in the RSS feed, which has no such limit, so a session with `anchor.fm` reachable
+can fill all nine automatically. That domain is already on the user's allowlist;
+it only needs a session created after that change.
+
+### Checks that now run before any sitemap push. KEEP THESE.
+1. `node --check` on the script (syntax only, catches little).
+2. **Static scan**: assert nothing inside the translated node group uses absolute
+   `n.x` / `n.y`. The group is already translated, so absolute coordinates apply
+   the offset twice and fling labels off screen.
+3. **Headless render**: stub the DOM, actually run `draw()`, assert it does not
+   throw and that no `x` attribute inside a node exceeds 200 (an absolute
+   coordinate would).
+These exist because three separate runtime bugs reached the live page while
+narrower checks passed.
+
+## Lessons learned, added this session
+21. **Syntax checks prove almost nothing.** A missing helper, a lost guard and a
+    wrong coordinate space all passed `node --check` and all broke the live page.
+    Run the code, do not just parse it.
+22. **`git checkout <old-sha> -- <files>` silently reverts unrelated fixes.** A 60
+    character title cap that had already been removed came back this way and cut
+    titles again. After any partial restore, re-check the fixes that file carried.
+23. **Cache-bust the HTML, not only the scripts.** The graph data lives in
+    `sitemap.html`; versioning `sitemap-graph.js` alone meant a fresh script
+    rendering stale data. Appending `?x=1` to the page URL is the quickest way for
+    the user to rule cache in or out.
+24. **Say "this should be fixed, tell me what you see."** This sandbox can verify
+    the repo and the Pages build status. It cannot see the rendered page. Claiming
+    something is fixed on the strength of a repo check burned real trust here.
+
+## Where the project actually stands
+Done: library page, 46 episode pages from real transcripts, sitemap, nav link on
+all 72 pages, Pages build fixed and green.
+Open, roughly in order of value:
+1. **`enquire.html` does not exist** but every page's nav CTA points at it, on all
+   72 pages, and has since before this work started. A dead button site wide.
+2. **The FAQ block** on episode pages is deliberately unbuilt. The user has a plan
+   for it and wants it done before the project wraps.
+3. **Six transcripts have no page** because those episodes are not in the YouTube
+   export: Damien Lacaze, Gin Seok Song, Maxime Pinot, the parakites episode,
+   Mastering the Unknown, the pre-flight rituals one. They need a series and a
+   video id, or podcast-only handling.
+4. **Guest roles**: 2 of 46 could be extracted from transcripts. Either the user
+   supplies a line per guest or the field is dropped from the design.
+5. **The nine titles** above.
+6. **Library and Knowledge Base still link episodes to YouTube**, not to the new
+   episode pages. Pointing them at the local pages is a small change.
+7. Thin series: Weather Patterns has 1 episode, Storytellers 2, Sky Gods 3.
