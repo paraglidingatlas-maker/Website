@@ -1,0 +1,11 @@
+# Paragliding Atlas
+# Every crawler is welcome, including answer engines. The episode
+# transcripts are deliberately served in full in the HTML rather than
+# fetched on click, precisely so crawlers that do not run JavaScript
+# can read them. Do not add Disallow rules for GPTBot, ClaudeBot,
+# PerplexityBot or similar without understanding that trade off.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://paraglidingatlas-maker.github.io/Website/sitemap.xml

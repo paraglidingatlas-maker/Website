@@ -1,0 +1,49 @@
+"""Generate robots.txt and sitemap.xml for the whole site.
+
+The site had neither. sitemap.html is a human facing graph; crawlers need the
+XML. Run after adding or removing pages:  python3 generate_robots_sitemap.py
+"""
+import datetime, glob, os
+
+BASE = "https://paraglidingatlas-maker.github.io/Website/"
+SKIP = ("prototypes/", "templates/")
+
+def priority(p):
+    if p == "index.html": return "1.0"
+    if p in ("podcast.html", "knowledge-base.html", "library.html", "about.html"): return "0.9"
+    if p.startswith("knowledge-base/"): return "0.7"
+    if p == "sitemap.html": return "0.4"
+    return "0.6"                       # episode pages
+
+def freq(p):
+    return "weekly" if p in ("index.html", "podcast.html", "library.html") else "monthly"
+
+pages = sorted(p.replace(os.sep, "/") for p in glob.glob("**/*.html", recursive=True)
+               if not p.replace(os.sep, "/").startswith(SKIP))
+
+rows = []
+for p in pages:
+    ts = datetime.date.fromtimestamp(os.path.getmtime(p)).isoformat()
+    rows.append("  <url>\n    <loc>%s%s</loc>\n    <lastmod>%s</lastmod>\n"
+                "    <changefreq>%s</changefreq>\n    <priority>%s</priority>\n  </url>"
+                % (BASE, p, ts, freq(p), priority(p)))
+
+with open("sitemap.xml", "w", encoding="utf-8") as f:
+    f.write('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            + "\n".join(rows) + "\n</urlset>\n")
+
+with open("robots.txt", "w", encoding="utf-8") as f:
+    f.write(
+        "# Paragliding Atlas\n"
+        "# Every crawler is welcome, including answer engines. The episode\n"
+        "# transcripts are deliberately served in full in the HTML rather than\n"
+        "# fetched on click, precisely so crawlers that do not run JavaScript\n"
+        "# can read them. Do not add Disallow rules for GPTBot, ClaudeBot,\n"
+        "# PerplexityBot or similar without understanding that trade off.\n\n"
+        "User-agent: *\n"
+        "Allow: /\n\n"
+        "Sitemap: %ssitemap.xml\n" % BASE)
+
+print("sitemap.xml: %d urls" % len(rows))
+print("robots.txt written")
