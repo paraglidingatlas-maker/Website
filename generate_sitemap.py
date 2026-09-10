@@ -43,8 +43,24 @@ def kb_slug(series):
 # and in the RSS feed. Add the real title here, keyed by the truncated one, and
 # it will be used everywhere on the sitemap.
 TITLE_FIX = {
-    # "Eddie Colfox : Storytime : Chasing Adventure With the Real OG John Silvester & 3 Decades of Makin...":
-    #     "Eddie Colfox : Storytime : Chasing Adventure With the Real OG John Silvester & 3 Decades of Making ...",
+    "Meteorology 101 A beginner’s Guide to Understanding Weather Apps and Decoding Endless Forecasting...":
+        "Meteorology 101: A Beginner's Guide to Understanding Weather Apps and Decoding Endless Forecasting Options",
+    "Shane Tighe’s Road to X-Alps : Engineering Conquests In The Sky from Australia’s Flatlands to the...":
+        "Shane Tighe's Road to X-Alps: Engineering Conquests In The Sky from Australia's Flatlands to the Pinnacle of Hike and Fly",
+    "Aljaž Valič : 777 : Paragliding’s Slovenian Mavericks Redefining the EN B Class And Elevating Fre...":
+        "Aljaž Valič: 777 — Paragliding's Slovenian Mavericks Redefining the EN B Class And Elevating Free Flight Performance",
+    "Sandrine Roy : Vol Biv & Freedom Unfiltered : A Human-Powered Odyssey By Paragliding, Biking & Sa...":
+        "Sandrine Roy: Vol Biv & Freedom Unfiltered — A Human-Powered Odyssey By Paragliding, Biking & Sailing Around The Globe",
+    "Alain Zoller: The Science of EN Certifications : How Work Group 6 Shaped Paragliding Testing, Inn...":
+        "Alain Zoller: The Science of EN Certifications — How Work Group 6 Shaped Paragliding Testing, Innovation & Safety",
+    "Eddie Colfox : Storytime : Chasing Adventure With the Real OG John Silvester & 3 Decades of Makin...":
+        "Eddie Colfox: Storytime — Chasing Adventure With the Real OG John Silvester & 3 Decades of Making Memories Across The Globe",
+    "​Ashutosh Chopra: Identifying Passion Vs Obsession: An Aviator’s Approach to Overcoming Adversity...":
+        "Ashutosh Chopra: Identifying Passion Vs Obsession — An Aviator's Approach to Overcoming Adversity, Rebuilding Trust and Finding Joy in the Skies",
+    "Kinga Masztalerz: Building a Healthy Relationship with the Skies: How to Master Fear, Build Resil...":
+        "Kinga Masztalerz: Building a Healthy Relationship with the Skies — How to Master Fear, Build Resilience & Find Joy Through Paragliding",
+    "Helmut Schrempf : Modernizing SIV Courses: How This New Training Method Can Help You Master Glide...":
+        "Helmut Schrempf: Modernizing SIV Courses — How This New Training Method Can Help You Master Glider Control and Improve Paragliding Safety",
 }
 
 def fix_title(t):
