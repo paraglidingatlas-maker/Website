@@ -286,7 +286,7 @@
     "tags": [
       "Brand Stories"
     ],
-    "_needs_retranscription": "Whisper misdetected the language and produced a French transcript for an English episode. The raw file is kept in transcripts/_needs-retranscription/ pending a re-run with the language forced to English. Until then this page carries the player without a transcript."
+    "_transcript_source": "Spotify's own auto-generated transcript for this episode, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. This is a transcript of the real English audio, not a translation of the French Whisper output. It carries real timestamps but NO speaker diarisation, unlike the Autotekst transcripts, so this page has no per line speaker attribution. Machine transcription, so technical vocabulary can drift."
   },
   {
     "slug": "carabiner-fatigue-finsterwalder-charly",
