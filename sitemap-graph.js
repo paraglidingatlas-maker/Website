@@ -12,6 +12,14 @@
   var NS = "http://www.w3.org/2000/svg";
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var W = 1180, H = 660;
+  function resize() {
+    var r = svg.getBoundingClientRect();
+    if (r.width < 40 || r.height < 40) return;
+    W = Math.round(r.width);
+    H = Math.round(r.height);
+    HOR = H * 0.30;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+  }
 
   var kids = {}, parents = {}, byId = {};
   data.links.forEach(function (l) {
@@ -100,13 +108,14 @@
   }
 
   var cam = { x: 0, z: 0 };
-  var FOCAL = 900, EYE = 820, HOR = H * 0.11, NEAR = 430;
+  var FOCAL = 900, EYE = 820, HOR = H * 0.30, NEAR = 430;
+  var panX = 0, panY = 0;
 
   function project(gx, gz, alt) {
     var rz = (gz - cam.z) + NEAR;
     if (rz < 70) rz = 70;
     var s = FOCAL / rz;
-    return { x: W / 2 + (gx - cam.x) * s, y: HOR + (EYE - (alt || 0)) * s, s: s,
+    return { x: W / 2 + (gx - cam.x) * s + panX, y: HOR + (EYE - (alt || 0)) * s + panY, s: s,
              fog: Math.max(0, Math.min(1, (s - 0.30) / 0.95)) };
   }
   function el(p, t, a) {
@@ -282,16 +291,20 @@
   }
 
   var anim = null;
-  function fly(tx, tz, ms) {
+  function fly(tx, tz, ms, px, py) {
     if (anim) cancelAnimationFrame(anim);
     var x0 = cam.x, z0 = cam.z, t0 = performance.now();
-    if (reduce) { cam.x = tx; cam.z = tz; draw(); return; }
+    var p0 = panX, q0 = panY;
+    if (px === undefined) { px = panX; py = panY; }
+    if (reduce) { cam.x = tx; cam.z = tz; panX = px; panY = py; draw(); return; }
     moving = true;
     (function step(now) {
       var q = Math.min(1, (now - t0) / ms);
       var e = q < 0.5 ? 4 * q * q * q : 1 - Math.pow(-2 * q + 2, 3) / 2;
       cam.x = x0 + (tx - x0) * e;
       cam.z = z0 + (tz - z0) * e;
+      panX = p0 + (px - p0) * e;
+      panY = q0 + (py - q0) * e;
       if (q < 1) { draw(); anim = requestAnimationFrame(step); }
       else { anim = null; moving = false; draw(); }   /* full detail once still */
     })(t0);
@@ -342,25 +355,40 @@
     var cz = (Math.min.apply(null, zs) + Math.max.apply(null, zs)) / 2;
     var spread = Math.max.apply(null, zs) - Math.min.apply(null, zs);
     var wide = Math.max.apply(null, xs) - Math.min.apply(null, xs);
-    var back = 260 + spread * 0.55 + wide * 0.18;
-    if (ms) fly(cx, cz - back, ms); else { cam.x = cx; cam.z = cz - back; }
+    var back = 300 + spread * 0.30 + wide * 0.10;
+    var tx = cx, tz = cz - back;
+
+    /* work out where that group would land, then offset the view so it sits
+       squarely in the middle of the frame rather than drifting into a corner */
+    var sx = cam.x, sz = cam.z, sp = panX, sq = panY;
+    cam.x = tx; cam.z = tz; panX = 0; panY = 0;
+    var lo = { x: 1e9, y: 1e9 }, hi = { x: -1e9, y: -1e9 };
+    grp.forEach(function (n) {
+      var q = project(n.gx, n.gz, ter(n.gx, n.gz) + 118 + n.hover);
+      lo.x = Math.min(lo.x, q.x); hi.x = Math.max(hi.x, q.x);
+      lo.y = Math.min(lo.y, q.y); hi.y = Math.max(hi.y, q.y);
+    });
+    var wantX = W * 0.5 - (lo.x + hi.x) / 2;
+    var wantY = H * 0.54 - (lo.y + hi.y) / 2;
+    cam.x = sx; cam.z = sz; panX = sp; panY = sq;
+
+    if (!ms) { cam.x = tx; cam.z = tz; panX = wantX; panY = wantY; return; }
+    fly(tx, tz, ms, wantX, wantY);
   }
 
   var drag = null;
   svg.addEventListener("pointerdown", function (e) {
     /* capturing the pointer here would steal the click from the marker */
     if (e.target.closest && e.target.closest(".sm-marker")) return;
-    drag = { x: e.clientX, y: e.clientY, cx: cam.x, cz: cam.z };
+    drag = { x: e.clientX, y: e.clientY, px: panX, py: panY };
     svg.setPointerCapture(e.pointerId);
   });
   svg.addEventListener("pointermove", function (e) {
     if (!drag) return;
     if (anim) { cancelAnimationFrame(anim); anim = null; }
     moving = true;
-    var r = svg.getBoundingClientRect();
-    var k = 1 / Math.min(r.width / W, r.height / H);
-    cam.x = drag.cx - (e.clientX - drag.x) * k * 1.5;
-    cam.z = drag.cz + (e.clientY - drag.y) * k * 2.2;
+    panX = drag.px + (e.clientX - drag.x);
+    panY = drag.py + (e.clientY - drag.y);
     draw();
   });
   ["pointerup", "pointercancel"].forEach(function (t) {
@@ -382,8 +410,14 @@
     info(byId.home);
   });
 
+  resize();
   layout();
   frame(0);
   draw();
+  var rt;
+  window.addEventListener("resize", function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { resize(); frame(0); draw(); }, 150);
+  });
   info(byId.home);
 })();

@@ -51,13 +51,13 @@
 .sm-eps a.sm-out::after{content:" \2197";color:var(--gray);font-size:0.78rem;}
 
 /* the landscape */
-.sm-graph{position:relative;background:#0a0c11;border:1px solid rgba(180,180,180,0.1);
+.sm-graph{position:relative;background:#0a0c11;width:100%;border:1px solid rgba(180,180,180,0.1);
   margin:2.2rem 0 1rem;overflow:hidden;}
 .sm-graph::before,.sm-graph::after{content:"";position:absolute;width:12px;height:12px;
   border-color:rgba(255,117,23,0.4);z-index:5;pointer-events:none;}
 .sm-graph::before{top:9px;left:9px;border-left:1px solid;border-top:1px solid;}
 .sm-graph::after{bottom:9px;right:9px;border-right:1px solid;border-bottom:1px solid;}
-#sm-svg{display:block;width:100%;height:660px;cursor:grab;touch-action:pan-y;}
+#sm-svg{display:block;width:100%;height:min(78vh,820px);cursor:grab;touch-action:pan-y;}
 #sm-svg:active{cursor:grabbing;}
 /* orange only on hover, the way the rest of the site works */
 #sm-svg .sm-marker{cursor:pointer;}
@@ -77,7 +77,7 @@
   font-family:var(--font-body);font-size:0.78rem;padding:0.34rem 0.8rem;cursor:pointer;
   min-width:2.1rem;transition:all 0.16s ease;}
 .sm-ctrl button:hover{color:var(--gray-light);border-color:rgba(180,180,180,0.42);}
-@media (max-width:720px){#sm-svg{height:440px;}}
+@media (max-width:720px){#sm-svg{height:min(64vh,480px);}}
 </style>
 </head>
 <body>
@@ -109,7 +109,7 @@
   <p class="sm-stat">{{SERIESCOUNT}} series &middot; {{EPCOUNT}} episodes &middot; {{PAGECOUNT}} with full transcripts</p>
 
   <div class="sm-graph">
-    <svg id="sm-svg" viewBox="0 0 1180 660" preserveAspectRatio="xMidYMid meet"
+    <svg id="sm-svg" viewBox="0 0 1180 660" preserveAspectRatio="none"
          role="img" aria-label="The site drawn as a landscape you can fly across. A full text index follows below."></svg>
   </div>
   <div class="sm-bar">
