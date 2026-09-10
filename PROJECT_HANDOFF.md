@@ -1,6 +1,10 @@
 # Paragliding Atlas Website — Project Handoff
 
-Last updated: 2026-09-10 (mid-session handoff, second update)
+Last updated: 2026-09-10 (third update)
+
+**If you are a new chat, jump to "START HERE IF THIS IS A NEW CHAT" near the
+bottom of this file first.** It covers the two setup steps needed before any
+work can continue, and the current state of the library and episode pages.
 
 This document exists so a new Claude conversation (or anyone else picking up
 this project) can get full context quickly, without having to re-explain
@@ -305,125 +309,116 @@ explicit feedback was to never repeat the same animation everywhere)
   than getting it exactly right in one shot — that's the normal working
   style here, not a sign something went wrong.
 
+## ⚠️ START HERE IF THIS IS A NEW CHAT (written 2026-09-10, third update)
+Two things must happen before work continues:
+1. **Ask the user for a fresh GitHub personal access token.** Push access never
+   carries over. Fine-grained token, Contents = read and write, scoped to the
+   `Website` repo only. Then set it as the remote:
+   `git remote set-url origin https://x-access-token:TOKEN@github.com/paraglidingatlas-maker/Website.git`
+   Commit as `Atlas Site Build <build@paraglidingatlas.com>` to match history.
+2. **Verify network egress.** The user has already added
+   `transcript-files.spotifycdn.com` and `anchor.fm` to the account-level
+   allowlist at claude.ai/settings/capabilities (Code execution and file
+   creation → Allow network egress → package managers plus specific domains).
+   The previous chat's sandbox could not pick this up because its permissions
+   were issued at session start, which is the ONLY reason this handoff exists.
+   Test it immediately:
+   `curl -sS -o /dev/null -w "%{http_code}\n" https://anchor.fm/s/ed1344d8/podcast/rss`
+   200 means everything below is unblocked. 403 with `x-deny-reason:
+   host_not_allowed` means it still has not propagated.
 
-## Knowledge Base structure (3-level hierarchy, NOT one long page)
-```
-knowledge-base.html (portal: 5 category cards)
-  └─ knowledge-base/core-series.html
-       ├─ navigators.html
-       ├─ sky-gods.html
-       └─ living-the-dream.html
-  └─ knowledge-base/competitions.html
-       ├─ world-cups.html
-       ├─ risk-vs-reward.html
-       └─ resources-tools-tips.html
-  └─ knowledge-base/meteorology.html
-       └─ weather-patterns.html
-  └─ knowledge-base/industry.html
-       ├─ brand-stories.html
-       ├─ storytellers.html
-       └─ the-dark-side.html
-  └─ knowledge-base/technical.html
-       ├─ flight-mechanics.html
-       ├─ new-technologies.html
-       └─ know-your-equipment.html
-```
-Episode tiles on sub-series pages open a popup modal (episode-modal.js) —
-NOT a direct link out. The modal shows a video/thumbnail, description, and
-a Read More button. Clicking play either embeds real YouTube video (if a
-confirmed video ID exists), opens a real Spotify link (if one was found), or
-falls back to the general show page (honest fallback, not a guess).
+## Library page: REBUILT (this session, live)
+`library.html` is no longer the A-to-Z functional pass. It is now a topic-first
+page in a "stone portal" style, arrived at over five prototype rounds.
 
-## Live feed infrastructure (podcast page)
-Both the podcast RSS feed and the YouTube channel feed need a CORS proxy
-since browsers can't fetch cross-origin XML directly. History:
-1. Started with `allorigins.win` — free, no uptime SLA, started failing.
-2. Switched to `corsproxy.io` — also free, also started failing at certain
-   times of day (rate limiting on the shared free tier, confirmed via
-   research — this is a known pattern with free shared proxies).
-3. **Current solution:** a dedicated Cloudflare Worker the user deployed
-   themselves (`https://restless-king-e534.aninder.workers.dev/`), running
-   `cloudflare-worker.js`. This is NOT shared with other sites, so no more
-   time-of-day rate limiting. Both `rss-feed.js` and `youtube-feed.js` point
-   to this Worker now.
+**Files:** `library.html` (markup and page CSS), `library.js` (behaviour, glyph
+drawing, RSS enrichment), `library-data.js` (episode to series mapping).
 
-**`rss-feed.js` is marked as confirmed-working and isolated in its own file
-on purpose** — it took several failed attempts to get right. Don't modify
-it casually; if it needs changes, be deliberate.
+**How it works:**
+- Landing page shows the 13 Knowledge Base series as carved granite slabs, 3
+  featured large and 10 smaller. No episode thumbnails on the landing page.
+- Each slab is generated in the browser: two `feTurbulence` + `feDiffuseLighting`
+  filters make the granite grain, and each series has its own embossed
+  instrument glyph (compass rose for Navigators, balance beam for Risk vs
+  Reward, iris for Storytellers, eclipse for The Dark Side, isobars for Weather
+  Patterns, wing section for Flight Mechanics, carabiner for Know Your
+  Equipment, and so on). No image files at all.
+- Emboss = three stacked copies of each glyph: dark cut offset down-right,
+  light catch offset up-left, stone face on top.
+- Hover leaks orange light in from different edges per tile, cycling through
+  four patterns (`edge-lb`, `edge-tr`, `edge-b`, `edge-l`) so the grid does not
+  pulse in unison. Glyph warms to orange with a soft bloom.
+- Click runs a portal: the slab grows to fill the viewport, a seam of light
+  cracks across the middle, the two halves part like doors, and the episode
+  grid rises behind. ~1.2s, skipped entirely under prefers-reduced-motion.
+- Inside a series: filter pills (length, sort) plus a thumbnail grid.
+- Routing is hash based (`#s=Risk%20vs%20Reward`, `#all`) so a series is
+  linkable and survives refresh. **These should eventually become real pages**
+  (`library/risk-vs-reward.html`) for search traffic; hash routes were the cheap
+  way to test the idea.
 
-## Lessons learned (avoid repeating these mistakes)
-1. **GitHub Pages hosts project repos under a subfolder**, not the domain
-   root. Absolute links like `/about.html` break — always use relative
-   paths (`about.html`, `../about.html` from subfolders).
-2. **`skewX()` transform-origin bug:** the horizontal component of
-   `transform-origin` does NOT affect skew shear at all — only the vertical
-   component does. To keep a skewed button's top-left corner flush with
-   adjacent elements, use `transform-origin: left top`, not `left center`.
-3. **`scroll-snap-type: mandatory` conflicts with continuous JS
-   auto-scroll** — the browser fights the script trying to snap back,
-   causing visible shaking. Don't combine them.
-4. **A full page redesign was attempted once (podcast page) and reverted**
-   — the user found it didn't match their vision despite "improving"
-   consistency/typography. Lesson: make small, reviewable, one-thing-at-a-
-   time changes rather than large restructures, especially after the
-   design direction has already been approved once.
-5. **Lenis smooth-scroll was tried and removed** — caused uneven scroll
-   feel (possibly WebGL hero competing for frame budget, possibly the
-   easing curve) that couldn't be fixed blind after two attempts. Removed
-   rather than keep guessing. The WebGL pause-when-offscreen fix from that
-   attempt was kept since it's a good optimization on its own.
-6. **Kinetic typography:** give each major headline its OWN distinct
-   animation treatment, not the same one repeated everywhere — that was
-   explicit feedback. Hero = mask/wipe reveal on load. Pull-quote = word
-   cascade on scroll. "Fly Better" = scale-in overshoot bounce on scroll.
-7. **I have no way to take real screenshots** — tried Puppeteer (blocked,
-   can't download Chrome), tried installing Chromium via apt (needs snapd,
-   unavailable), tried the old wkhtmltoimage tool (renders but has real
-   layout bugs with modern CSS). For before/after comparisons, the reliable
-   method is publishing both versions live and having the user compare in
-   their own browser.
-8. **Background color alternation:** sections should alternate `--bg` and
-   `--card`, using smooth full-height gradients (not flat-color-then-
-   sudden-fade) to avoid hard visible bands, especially on mobile where
-   sections are shorter.
+**Data sourcing, deliberately robust:**
+- Episode thumbnails come from YouTube (`i.ytimg.com/vi/ID/hqdefault.jpg`), so
+  the grid never depends on the Cloudflare Worker being up.
+- Durations are enriched at runtime from the podcast RSS through the existing
+  Worker, matched to YouTube titles by normalised exact match then by word
+  overlap at a 0.7 threshold. If that fetch fails the length filter simply does
+  not render and the page still works.
 
-## Known pending items
-- **Safety Information & Disclosure Statements section is MISSING.** It
-  existed on the original single-page Knowledge Base draft but was dropped
-  when the page was restructured into the portal → category → sub-series
-  hierarchy. Needs to be re-added somewhere (probably the portal page).
-- **7 episode tiles still lack a specific real link** (fall back to the
-  general show page): Anatomy of a Dream, Demystifying Parakites, Legacy
-  and Lifetimes, Mastering the Unknown, New Technologies 3, PWCA, Science
-  Backed Pre Flight Rituals.
-- **Individual SEO episode pages** (the `/episodes/` folder with
-  transcripts, JSON-LD structured data, keywords) — only 1 of ~79 episodes
-  has one built (Zsolt Ero's harness episode). Scaling this needs real
-  transcripts, which requires a bulk export via Claude Code + yt-dlp (the
-  workflow was set up once for a different purpose but transcript data was
-  never actually delivered back).
-- **Destination pages** (Kenya/Himalayas/Peru/Kazakhstan individual pages)
-  don't exist — only homepage teaser sections.
-- **Real trip facts** (duration, group size, season) on homepage
-  destinations are still placeholder text.
-- **Host photo** on podcast page uses a real photo now (fixed), but About
-  Us page still has no founder photo.
-- Icons used throughout Knowledge Base cards are Claude's own
-  interpretation of appropriate icons per topic — NOT a pixel-perfect
-  match to the original Canva source icons (those were too small/blurry to
-  read precisely when checked).
+**Placement provenance (important):** 61 of 79 episodes take the series they
+already sit on in the Knowledge Base pages, read directly out of those pages'
+`data-yt-id` attributes. Only the 18 that appear on NO Knowledge Base page were
+newly assigned, each against that series' own stated description, and every one
+is marked `// ** review` in `library-data.js`. Six items are excluded as
+non-episodes (show trailer, "A Note of Thanks", four cinematic Oslo/Norway
+reels), listed with reasons at the top of the file.
 
-## Workflow notes
-- The user tests almost everything by checking the live GitHub Pages site
-  directly in their own browser — NOT by reviewing in-chat previews. This
-  is genuinely more efficient (zero token cost, and in-chat previews can't
-  even test real multi-page navigation properly). Default to editing +
-  committing + pushing directly without building an in-chat preview first,
-  unless there's a specific reason to sanity-check something before it
-  goes live (e.g. presenting multiple design options to choose between).
-- "Nothing changed" after a push is very often a browser/CDN caching issue,
-  not a code bug — verify the code is actually correct in the pushed commit
-  first before assuming something is broken, then suggest a hard refresh.
-- The user has a Cloudflare account and has successfully deployed a Worker
-  before (see live feed infrastructure above) — comfortable with basic
-  copy-paste deployment steps when given clear instructions.
+**Rejected prototypes, do not resurrect:** shelves/carousel rows; a light
+background variant; and a version where the slabs protrude with a 3D edge,
+cursor tilt and haptic vibration. The user explicitly chose the flat v4 stone
+look over the protruding v5 one.
+
+## Episode pages: AGREED APPROACH, not yet built
+Format is `prototypes/episode-page-chapter-deck-FINAL.html` ("Chapter Deck":
+sticky chapter rail, player, scrollspy, full transcript, FAQ, guest box,
+resources, related episodes, tags). Note the ONE existing page,
+`episodes/watch-this-before-you-buy-a-paragliding-harness.html`, uses the OLD
+`ep-*` layout, not this format, and its transcript is a "coming soon"
+placeholder. There is no real transcript text anywhere on the site yet.
+
+**Chapters, decision made this session:** Spotify's auto-chapters are not in the
+RSS feed and are not reachable by any tool. The user chose NOT to export them
+manually. Instead: **derive chapter titles from the user's own show notes**
+(most episode descriptions already contain their own bullet list of topics
+covered, e.g. "We talk about:", "In This Episode You'll Learn:"), then find each
+chapter's timestamp by matching those phrases against the transcript. The
+chapter titles are therefore the user's words, not invented.
+
+**Transcripts:** `<podcast:transcript>` tags in the RSS point at real `.srt`
+files on `transcript-files.spotifycdn.com`, present for most but not all
+episodes. With the allowlist now in place these can be curled and parsed
+directly in the sandbox. Unknown until one is actually read: whether the `.srt`
+carries speaker labels. The Chapter Deck design shows "Aninder:" / "Zsolt:" per
+line, and subtitle files usually have no speaker attribution, so that part of
+the design may need to change once the real data is seen.
+
+**Still needs the user's input:** the FAQ block content, guest roles (the feed
+has guest links but no structured role), whether related episodes are automatic
+by series or hand picked, and whether the primary player is YouTube or Spotify.
+
+## Lessons learned, added this session
+11. **Do not make content decisions to make a page look finished.** The library
+    was shipped with all 83 episodes assigned to series by guessing at titles,
+    flagged only as "needs review" in a code comment. The user pushed back, and
+    correctly: the design was agreed, the placement was not. Worse, 61 correct
+    placements already existed in the Knowledge Base pages, so several guesses
+    contradicted decisions the user had already made. **Before assigning,
+    categorising or labelling the user's own content, look for where they have
+    already done it, and ask when they have not.**
+12. **Prototype in downloadable files, not in-chat previews.** Five rounds of
+    library design were done as standalone HTML files written to outputs and
+    opened in the user's own browser. This worked well and matches how they
+    test everything else.
+13. **The sandbox allowlist is fixed at session start.** Adding domains at
+    claude.ai/settings/capabilities does not affect a conversation already in
+    progress. A new chat is required.
