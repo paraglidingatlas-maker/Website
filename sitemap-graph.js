@@ -51,7 +51,7 @@
   }
 
   var W = 900, H = 640, view = { x: 0, y: 0, k: 1 };
-  var COLW = 215, ROWH = 34;
+  var COLW = 268, ROWH = 48;
 
   /* Primary parent, so the two-parent series still form a clean tree.
      The second edge is drawn as a cross link on top of it. */
@@ -135,56 +135,55 @@
   }
 
   /* ---------------- shapes: instrument rather than dot ---------------- */
-  function poly(sides, r, rot) {
-    var pts = [];
-    for (var i = 0; i < sides; i++) {
-      var a = rot + i * 2 * Math.PI / sides;
-      pts.push((Math.cos(a) * r).toFixed(1) + "," + (Math.sin(a) * r).toFixed(1));
+  /* Marker pack, chosen from the blade studies:
+       root and section  -> Warden, its two lightest treatments
+       category, series,
+       episode           -> Interceptor, its three fullest treatments
+     Detail level is fixed per tier; only the radius changes with depth. */
+  function warden(g, r, light) {
+    var h = [], i, a;
+    for (i = 0; i < 6; i++) {
+      a = Math.PI / 6 + i * Math.PI / 3;
+      h.push([Math.cos(a) * r * 1.25, Math.sin(a) * r * 1.25]);
     }
-    return pts.join(" ");
+    for (i = 0; i < 6; i++) {
+      if (light && i % 2) continue;            /* the lighter one drops alternate walls */
+      var A = h[i], B = h[(i + 1) % 6];
+      el(g, "path", { d: "M" + (A[0] + (B[0] - A[0]) * 0.14).toFixed(1) + " " +
+        (A[1] + (B[1] - A[1]) * 0.14).toFixed(1) + " L" +
+        (A[0] + (B[0] - A[0]) * 0.86).toFixed(1) + " " +
+        (A[1] + (B[1] - A[1]) * 0.86).toFixed(1),
+        "class": "sm-glyph", fill: "none" });
+    }
+    el(g, "path", { d: "M" + (r * 0.72) + " 0 L" + (-r * 0.5) + " " + (-r * 0.55) +
+      " L" + (-r * 0.24) + " 0 L" + (-r * 0.5) + " " + (r * 0.55) + " Z",
+      "class": "sm-glyph", fill: light ? "none" : "#171921" });
+  }
+
+  function interceptor(g, r, level) {
+    el(g, "path", { d: "M" + (r * 1.15) + " 0 L" + (-r * 0.72) + " " + (-r * 0.95) +
+      " L" + (-r * 0.34) + " 0 L" + (-r * 0.72) + " " + (r * 0.95) + " Z",
+      "class": "sm-glyph", fill: "#171921" });
+    el(g, "line", { x1: -r * 0.34, y1: 0, x2: r * 0.7, y2: 0,
+      stroke: "#101116", "stroke-width": 1.5 });
+    if (level < 2) {
+      el(g, "path", { d: "M" + (-r * 0.6) + " " + (-r * 0.62) + " L" + (-r * 1.12) + " " + (-r * 0.9),
+        "class": "sm-glyph", fill: "none" });
+      el(g, "path", { d: "M" + (-r * 0.6) + " " + (r * 0.62) + " L" + (-r * 1.12) + " " + (r * 0.9),
+        "class": "sm-glyph", fill: "none" });
+    }
+    if (level < 1) el(g, "circle", { cx: r * 0.6, cy: 0, r: r * 0.13,
+      fill: "rgba(246,244,244,0.85)" });
   }
 
   function shape(n, into) {
-    var r = SIZE[n.kind], el;
-    if (n.kind === "root") {
-      var hit = document.createElementNS(NS, "circle");
-      hit.setAttribute("r", r + 4);
-      hit.setAttribute("class", "sm-hit");
-      into.appendChild(hit);
-      [[r, "sm-ring"], [r * 0.5, "sm-core"]].forEach(function (p) {
-        var c = document.createElementNS(NS, "circle");
-        c.setAttribute("r", p[0]);
-        c.setAttribute("class", p[1]);
-        into.appendChild(c);
-      });
-      [[-r - 6, 0, -r - 2, 0], [r + 2, 0, r + 6, 0],
-       [0, -r - 6, 0, -r - 2], [0, r + 2, 0, r + 6]].forEach(function (t) {
-        var l = document.createElementNS(NS, "line");
-        l.setAttribute("x1", t[0]); l.setAttribute("y1", t[1]);
-        l.setAttribute("x2", t[2]); l.setAttribute("y2", t[3]);
-        l.setAttribute("class", "sm-cross");
-        into.appendChild(l);
-      });
-      return;
-    }
-    if (n.kind === "section") {
-      el = document.createElementNS(NS, "polygon");
-      el.setAttribute("points", poly(6, r, Math.PI / 6));
-    } else if (n.kind === "category") {
-      el = document.createElementNS(NS, "polygon");
-      el.setAttribute("points", poly(4, r, 0));
-    } else if (n.kind === "series") {
-      el = document.createElementNS(NS, "rect");
-      el.setAttribute("x", -r); el.setAttribute("y", -r * 0.7);
-      el.setAttribute("width", r * 2); el.setAttribute("height", r * 1.4);
-    } else {
-      el = document.createElementNS(NS, "rect");
-      el.setAttribute("x", -r * 0.62); el.setAttribute("y", -r * 0.62);
-      el.setAttribute("width", r * 1.24); el.setAttribute("height", r * 1.24);
-      el.setAttribute("transform", "rotate(45)");
-    }
-    el.setAttribute("class", "sm-glyph");
-    into.appendChild(el);
+    var r = SIZE[n.kind];
+    el(into, "circle", { r: r + 6, "class": "sm-hit", fill: "transparent" });
+    if (n.kind === "root")          warden(into, r, false);
+    else if (n.kind === "section")  warden(into, r, true);
+    else if (n.kind === "category") interceptor(into, r, 0);
+    else if (n.kind === "series")   interceptor(into, r, 1);
+    else                            interceptor(into, r, 2);
   }
 
   function draw() {
@@ -264,7 +263,7 @@
       shape(n, grp);
 
       if (n.kind !== "episode" || t[n.id] === 0) {
-        var pad = SIZE[n.kind] + 7;
+        var pad = SIZE[n.kind] * 1.35 + 8;
         var lead = document.createElementNS(NS, "line");
         lead.setAttribute("x1", pad - 5); lead.setAttribute("y1", 0);
         lead.setAttribute("x2", pad); lead.setAttribute("y2", 0);
