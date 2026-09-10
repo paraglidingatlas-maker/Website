@@ -303,7 +303,7 @@
   }
 
   /* one dot plus four smaller ones behind it, all on the same path */
-  var TRAIL = [0, 5, 10, 16, 23];
+  var TRAIL = [0, 4.5, 9.5, 15.5, 22.5, 30];
   function paintSignal() {
     if (!SIG) return;
     while (SIG.firstChild) SIG.removeChild(SIG.firstChild);
@@ -321,9 +321,9 @@
       if (!pt) continue;
       var c = document.createElementNS(NS, "circle");
       c.setAttribute("cx", pt[0]); c.setAttribute("cy", pt[1]);
-      c.setAttribute("r", (1.5 - i * 0.26).toFixed(2));
+      c.setAttribute("r", (1.5 - i * 0.22).toFixed(2));
       c.setAttribute("class", "sm-sig" + (i ? " sm-sig-t" : ""));
-      c.setAttribute("opacity", (1 - i * 0.21).toFixed(2));
+      c.setAttribute("opacity", (1 - i * 0.17).toFixed(2));
       SIG.appendChild(c);
     }
   }
@@ -334,7 +334,14 @@
     activeId = id;
     if (!from || from === id) { arriveAt = id; paintSignal(); return; }
 
-    var pts = polyline(route(from, id));
+    /* The signal starts from the hovered node's own parent rather than
+       retracing the whole route back to where it last settled. Once it is
+       absorbed by a node, the next run simply begins one edge upstream. */
+    var par = byId[id].via || (parents[id] || [])[0];
+    if (!par || !byId[par] || !byId[par].shown) {
+      arriveAt = id; sigAt = null; paintSignal(); return;
+    }
+    var pts = polyline([par, id]);
     if (pts.length < 2) { arriveAt = id; sigAt = null; paintSignal(); return; }
     var L = lengths(pts);
     if (!L.total) { arriveAt = id; sigAt = null; paintSignal(); return; }
@@ -344,7 +351,7 @@
     if (sigAnim) { cancelAnimationFrame(sigAnim); sigAnim = null; }
     arriveAt = null;
     var t0 = performance.now();
-    var dur = Math.max(260, Math.min(900, L.total * 1.15));
+    var dur = Math.max(430, Math.min(1150, L.total * 1.95));
     (function step(now) {
       var q = Math.min(1, (now - t0) / dur);
       var e = q * q * (3 - 2 * q);            /* ease in and out, no overshoot */
