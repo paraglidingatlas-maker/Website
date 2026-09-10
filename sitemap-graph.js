@@ -184,14 +184,25 @@
       fill: "rgba(246,244,244,0.85)" });
   }
 
-  function shape(n, into) {
+  function shape(n, into, reach) {
     var r = SIZE[n.kind];
-    el(into, "circle", { r: r + 6, "class": "sm-hit", fill: "transparent" });
+    var x0 = -(r * 1.35 + 8);
+    el(into, "rect", { x: x0, y: -(r + 9), width: (reach || r * 1.35 + 8) - x0,
+      height: (r + 9) * 2, "class": "sm-hit", fill: "transparent" });
     if (n.kind === "root")          warden(into, r, false);
     else if (n.kind === "section")  warden(into, r, true);
     else if (n.kind === "category") interceptor(into, r, 0);
     else if (n.kind === "series")   interceptor(into, r, 1);
     else                            interceptor(into, r, 2);
+  }
+
+  /* approximate text width: the body face runs about 0.55em per character */
+  function labelInfo(n, t) {
+    var pad = SIZE[n.kind] * 1.35 + 8;
+    var showing = (n.kind !== "episode" || t === 0);
+    if (!showing) return { pad: pad, end: pad, showing: false };
+    var fs = n.depth < 2 ? 12 : 11;
+    return { pad: pad, end: pad + 4 + n.label.length * fs * 0.55, showing: true };
   }
 
   function draw() {
@@ -221,11 +232,12 @@
     data.links.forEach(function (l) {
       var a = byId[l.s], b = byId[l.t];
       if (!a.shown || !b.shown) return;
+      var aInfo = labelInfo(a, t[a.id]);
       var dx = b.x - a.x, dy = b.y - a.y, d = Math.sqrt(dx * dx + dy * dy) || 1;
       var pad = SIZE[b.kind] + 5;
       var tier = Math.max(t[a.id], t[b.id]);
       var ln = document.createElementNS(NS, "line");
-      ln.setAttribute("x1", a.x); ln.setAttribute("y1", a.y);
+      ln.setAttribute("x1", a.x + aInfo.end + 10); ln.setAttribute("y1", a.y);
       ln.setAttribute("x2", b.x - dx / d * pad);
       ln.setAttribute("y2", b.y - dy / d * pad);
       ln.setAttribute("class", "sm-edge t" + tier);
@@ -268,10 +280,11 @@
       grp.setAttribute("role", "button");
       grp.setAttribute("aria-label",
         n.label + (has ? ", " + has + " below" : ""));
-      shape(n, grp);
+      var li = labelInfo(n, t[n.id]);
+      shape(n, grp, li.end + 6);
 
       if (n.kind !== "episode" || t[n.id] === 0) {
-        var pad = SIZE[n.kind] * 1.35 + 8;
+        var pad = li.pad;
         var lead = document.createElementNS(NS, "line");
         lead.setAttribute("x1", pad - 5); lead.setAttribute("y1", 0);
         lead.setAttribute("x2", pad); lead.setAttribute("y2", 0);
@@ -281,7 +294,7 @@
         tx.setAttribute("class", "sm-label");
         tx.setAttribute("x", pad + 4);
         tx.setAttribute("dy", "0.34em");
-        tx.textContent = n.label.length > 32 ? n.label.slice(0, 31) + "\u2026" : n.label;
+        tx.textContent = n.label;
         grp.appendChild(tx);
       }
 
