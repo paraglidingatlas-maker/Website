@@ -244,7 +244,7 @@
   /* ---------------- travelling signal ----------------
      A very small orange dot that moves node to node along the existing grey
      lines. It never follows the cursor; it follows the network. */
-  var SIG = null, sigAnim = null, sigAt = null, activeId = null, arriveAt = null;
+  var SIG = null, sigAnim = null, sigAt = null, activeId = null;
 
   function ancestry(id) {
     var out = [], up = id, g = 0;
@@ -310,16 +310,7 @@
   function paintSignal() {
     if (!SIG) return;
     while (SIG.firstChild) SIG.removeChild(SIG.firstChild);
-    if (arriveAt && byId[arriveAt] && byId[arriveAt].shown) {
-      var n = byId[arriveAt];
-      var ring = document.createElementNS(NS, "circle");
-      ring.setAttribute("cx", n.x); ring.setAttribute("cy", n.y);
-      ring.setAttribute("r", SIZE[n.kind] + 4);
-      ring.setAttribute("class", "sm-arrive");
-      SIG.appendChild(ring);
-    }
     if (!sigAt) return;
-
     var step = TAIL / TAIL_STEPS, pts = [], i, pt;
     for (i = 0; i <= TAIL_STEPS; i++) {
       pt = sigAt.at(i * step);
@@ -330,41 +321,44 @@
       ln.setAttribute("x1", pts[i][0]); ln.setAttribute("y1", pts[i][1]);
       ln.setAttribute("x2", pts[i + 1][0]); ln.setAttribute("y2", pts[i + 1][1]);
       ln.setAttribute("class", "sm-sig-tail");
-      ln.setAttribute("opacity", (0.55 * (1 - i / TAIL_STEPS)).toFixed(3));
+      ln.setAttribute("opacity", (0.6 * (1 - i / TAIL_STEPS)).toFixed(3));
       SIG.appendChild(ln);
     }
-    var head = sigAt.at(0);
-    if (head) {
-      var c = document.createElementNS(NS, "circle");
-      c.setAttribute("cx", head[0]); c.setAttribute("cy", head[1]);
-      c.setAttribute("r", 1.4);
-      c.setAttribute("class", "sm-sig");
-      SIG.appendChild(c);
-    }
+  }
+
+  /* Arrival is the node itself briefly warming and settling back, rather than a
+     ring drawn on top of it. */
+  var NODEG = {};
+  function activate(id) {
+    var g = NODEG[id];
+    if (!g) return;
+    g.classList.remove("sm-activated");
+    void g.getBoundingClientRect();
+    g.classList.add("sm-activated");
+    setTimeout(function () { if (g) g.classList.remove("sm-activated"); }, 1300);
   }
 
   function signalTo(id) {
     if (id === activeId && !sigAnim) return;
     var from = activeId;
     activeId = id;
-    if (!from || from === id) { arriveAt = id; paintSignal(); return; }
+    if (!from || from === id) { activate(id); return; }
 
     /* The signal starts from the hovered node's own parent rather than
        retracing the whole route back to where it last settled. Once it is
        absorbed by a node, the next run simply begins one edge upstream. */
     var par = byId[id].via || (parents[id] || [])[0];
     if (!par || !byId[par] || !byId[par].shown) {
-      arriveAt = id; sigAt = null; paintSignal(); return;
+      sigAt = null; paintSignal(); activate(id); return;
     }
     var pts = polyline([par, id]);
-    if (pts.length < 2) { arriveAt = id; sigAt = null; paintSignal(); return; }
+    if (pts.length < 2) { sigAt = null; paintSignal(); activate(id); return; }
     var L = lengths(pts);
-    if (!L.total) { arriveAt = id; sigAt = null; paintSignal(); return; }
+    if (!L.total) { sigAt = null; paintSignal(); activate(id); return; }
 
-    if (reduce) { arriveAt = id; sigAt = null; paintSignal(); return; }
+    if (reduce) { sigAt = null; paintSignal(); activate(id); return; }
 
     if (sigAnim) { cancelAnimationFrame(sigAnim); sigAnim = null; }
-    arriveAt = null;
     var t0 = performance.now();
     var dur = Math.max(575, Math.min(1530, L.total * 2.6));
     (function step(now) {
@@ -378,7 +372,7 @@
       paintSignal();
       if (q < 1) sigAnim = requestAnimationFrame(step);
       else {
-        sigAnim = null; sigAt = null; arriveAt = id; paintSignal();
+        sigAnim = null; sigAt = null; paintSignal(); activate(id);
       }
     })(t0);
   }
@@ -496,6 +490,7 @@
         signalTo(n.id);
       });
 
+      NODEG[n.id] = grp;
       g.appendChild(grp);
     });
 

@@ -92,17 +92,8 @@
 .sm-signal{pointer-events:none;}
 .sm-sig{fill:var(--orange);}
 .sm-sig-tail{stroke:var(--orange);stroke-width:1;stroke-linecap:round;fill:none;}
-.sm-arrive{fill:none;stroke:var(--orange);stroke-width:1;opacity:0.5;
-  animation:smSettle 900ms ease-out forwards;}
-@keyframes smSettle{
-  0%{opacity:0.55;transform:scale(0.94);}
-  35%{opacity:0.4;}
-  100%{opacity:0.16;transform:scale(1);}
-}
-.sm-arrive{transform-box:fill-box;transform-origin:center;}
 @media (prefers-reduced-motion:reduce){
-  .sm-arrive{animation:none;opacity:0.3;}
-}
+  }
 /* a node with nothing under it is a destination, so mark it as one */
 .sm-node:hover .sm-hit,.sm-node:focus .sm-hit{fill:rgba(255,117,23,0.05);}
 .sm-episode:hover .sm-label,.sm-episode:focus .sm-label{text-decoration:underline;
