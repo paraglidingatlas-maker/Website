@@ -1035,6 +1035,19 @@ the-resilience-equation-erlend-ukvitnes, understanding-skymate.
 A one line check finds them: any chapter title ending in an ellipsis or starting
 with a lower case letter.
 
+## 13. SMALL REMAINING GLITCH IN THE LIBRARY SEARCH
+The library search was badly broken and is fixed: the only box lived inside
+#landing, which show() hides, and the handler cleared the value on every
+keystroke, so a query could never exceed one character. There are now two boxes,
+one per view, kept in sync. The user reports a SMALL remaining glitch, not yet
+described. Get the specifics before changing anything.
+**Note honestly:** that fix was verified by reading the code and by static checks,
+NOT by execution. A headless harness was attempted and abandoned, because top
+level `const` in separate `vm` scripts does not share a lexical scope the way two
+script tags do in a browser, and stubbing around it grew past what the fix was
+worth. If this is revisited, build the harness by concatenating library-data.js
+and library.js into ONE script, which is what actually made the data visible.
+
 ## DONE (do not redo)
 - **Nine truncated titles, recovered properly (eighth update).** They now live in
   `episode-titles.json`, verbatim from the RSS feed and **keyed by YouTube video

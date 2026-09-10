@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kenya: Paragliding in the Cradle of Humankind | Paragliding Atlas</title>
+<meta name="description" content="A 12 day guided paragliding tour based in Kerio Valley, Kenya. Thermals to 6 m/s, 1,500m AGL, and flights of two to seven hours over the Rift Valley.">
+<link rel="canonical" href="https://paraglidingatlas-maker.github.io/Website/destinations/kenya.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kenya: Paragliding in the Cradle of Humankind">
+<meta property="og:description" content="A 12 day guided paragliding tour based in Kerio Valley, Kenya. Thermals to 6 m/s, 1,500m AGL, and flights of two to seven hours over the Rift Valley.">
+<meta property="og:image" content="https://paraglidingatlas-maker.github.io/Website/assets/images/kenya-3.jpg">
+<meta property="og:url" content="https://paraglidingatlas-maker.github.io/Website/destinations/kenya.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TouristTrip","name":"Kenya Paragliding Tour","touristType":"Paraglider pilots rated IPPI 2 or equivalent","description":"A 12 day guided paragliding tour based in Kerio Valley, Kenya.","itinerary":{"@type":"ItemList","name":"Kenya flying sites","itemListElement":["Kerio Valley","Rift Valley National Park","Kijabe Hill","Mount Longonot Crater","Machakos Hills","Chyulu Hills"]},"provider":{"@type":"Organization","name":"Paragliding Atlas","url":"https://paraglidingatlas-maker.github.io/Website/"}}
+</script>
+<link rel="icon" type="image/png" href="../assets/logo/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+/* ---------------------------------------------------------------
+   Kenya destination page.
+   Tokens, fonts and shared chrome all come from styles.css. Only the
+   page-specific blocks live here, the same way library.html scopes its own.
+   The organising idea is a flight briefing: the hero carries all the drama,
+   everything below it is disciplined data a pilot can actually act on.
+   --------------------------------------------------------------- */
+
+.dst{--rule:#2b2c33;}
+
+/* ---------- hero ---------- */
+.dst-hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;
+  padding:0 clamp(1.2rem,5vw,5.5rem) clamp(2.6rem,6vw,5rem);overflow:hidden;}
+.dst-hero-media{position:absolute;inset:0;z-index:0;}
+.dst-hero-media img{width:100%;height:100%;object-fit:cover;}
+.dst-hero-media::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(20,21,25,.55) 0%,rgba(20,21,25,.35) 38%,rgba(20,21,25,.96) 100%);}
+.dst-hero-copy{position:relative;z-index:2;max-width:60rem;}
+.dst-country{font-family:var(--font-display);font-weight:800;color:var(--white);
+  font-size:clamp(3.4rem,13vw,9.5rem);line-height:.88;letter-spacing:-.03em;margin:.6rem 0 0;}
+.dst-tag{font-family:var(--font-body);color:var(--white);font-size:clamp(1rem,2.1vw,1.45rem);
+  line-height:1.5;margin:1.1rem 0 0;max-width:34ch;}
+.dst-swahili{margin:1.9rem 0 0;padding-left:1rem;border-left:2px solid var(--orange);}
+.dst-swahili i{display:block;font-style:italic;color:var(--white);font-size:1.05rem;}
+.dst-swahili span{display:block;color:var(--gray-light);font-size:.92rem;margin-top:.25rem;}
+.dst-hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.1rem;}
+
+/* ---------- section scaffolding ---------- */
+.dst-sec{padding:clamp(3.4rem,7vw,6.2rem) clamp(1.2rem,5vw,5.5rem);}
+.dst-sec + .dst-sec{border-top:1px solid var(--rule);}
+.dst-head{max-width:62rem;margin:0 0 2.6rem;}
+.dst-head h2{font-family:var(--font-display);font-weight:700;color:var(--white);
+  font-size:clamp(1.5rem,3.4vw,2.4rem);line-height:1.15;margin:.5rem 0 0;letter-spacing:-.01em;}
+.dst-head p{color:var(--gray-light);line-height:1.75;margin:1rem 0 0;max-width:68ch;}
+.dst-lede{color:var(--white);font-size:clamp(1.02rem,1.7vw,1.2rem);line-height:1.8;max-width:70ch;}
+.dst-pull{font-family:var(--font-display);font-weight:600;color:var(--orange);
+  font-size:clamp(1.15rem,2.4vw,1.65rem);line-height:1.35;max-width:24ch;margin:2.4rem 0 0;}
+
+/* ---------- data blocks ---------- */
+.dst-grid{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);}
+.dst-grid.two{grid-template-columns:repeat(auto-fit,minmax(19rem,1fr));}
+.dst-grid.three{grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));}
+.dst-cell{background:var(--bg);padding:1.7rem 1.6rem;}
+.dst-cell h3{font-family:var(--font-display);font-weight:600;color:var(--white);
+  font-size:1.02rem;margin:0 0 .6rem;}
+.dst-cell p{color:var(--gray-light);font-size:.93rem;line-height:1.7;margin:0;}
+.dst-cell .n{display:block;font-family:var(--font-display);font-weight:700;color:var(--orange);
+  font-size:1.55rem;line-height:1;margin-bottom:.5rem;}
+
+/* ---------- sites ---------- */
+.dst-sites{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.2rem;}
+.dst-site{background:var(--card);border:1px solid var(--rule);padding:1.5rem 1.4rem;}
+.dst-site h3{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.05rem;margin:0;}
+.dst-site .c{display:block;color:var(--gray);font-size:.78rem;margin-top:.45rem;letter-spacing:.02em;}
+.dst-site p{color:var(--gray-light);font-size:.9rem;line-height:1.7;margin:.85rem 0 0;}
+
+/* ---------- season dates ---------- */
+.dst-dates{border:1px solid var(--rule);}
+.dst-date{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;align-items:baseline;justify-content:space-between;
+  padding:1.25rem 1.5rem;}
+.dst-date + .dst-date{border-top:1px solid var(--rule);}
+.dst-date b{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1rem;}
+.dst-date span{color:var(--gray-light);font-size:.95rem;}
+
+/* ---------- requirements ---------- */
+.dst-reqs{list-style:none;padding:0;margin:0;max-width:70ch;}
+.dst-reqs li{position:relative;padding-left:1.5rem;margin:0 0 1rem;color:var(--gray-light);
+  line-height:1.75;font-size:.97rem;}
+.dst-reqs li::before{content:"";position:absolute;left:0;top:.62em;width:.5rem;height:1px;background:var(--orange);}
+
+/* ---------- three-up prose ---------- */
+.dst-why{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:2.2rem;}
+.dst-why h3{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.08rem;margin:0 0 .7rem;}
+.dst-why p{color:var(--gray-light);font-size:.94rem;line-height:1.8;margin:0;}
+.dst-note{color:var(--gray-light);line-height:1.75;margin:2rem 0 0;max-width:64ch;font-size:.95rem;}
+
+@media (max-width:640px){
+  .dst-hero{min-height:70vh;}
+  .dst-date{flex-direction:column;gap:.25rem;}
+}
+</style>
+</head>
+<body class="dst">
+
+<div class="page-wrap">
+
+<nav>
+  <span class="nav-corner-l"></span>
+  <span class="nav-corner-r"></span>
+  <span class="nav-coords">0.7167°N · 35.6500°E</span>
+  <a href="../index.html" class="wordmark"><img src="../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></a>
+  <div class="nav-links">
+    <a href="../about.html">About Us</a>
+    <span class="nav-sep">|</span>
+    <a href="../knowledge-base.html">Knowledge Base</a>
+    <span class="nav-sep">|</span>
+    <a href="../podcast.html">Podcast</a>
+    <span class="nav-sep">|</span>
+    <a href="../sitemap.html">Sitemap</a>
+  </div>
+  <a href="../enquire.html" class="nav-cta" data-hover><span>Enquire Now</span></a>
+</nav>
+<div class="nav-chevron"></div>
+
+<header class="dst-hero">
+  <div class="dst-hero-media">
+    <img src="../assets/images/kenya-3.jpg" alt="Paraglider high above the Kerio Valley escarpment in Kenya">
+  </div>
+  <div class="dst-hero-copy">
+    <span class="kicker">Kerio Valley · Rift Valley</span>
+    <h1 class="dst-country">Kenya</h1>
+    <p class="dst-tag">Fly where humankind first walked. Rift Valley's endless skies await.</p>
+    <div class="dst-swahili">
+      <i>Ona Kenya kama Miungu walivyoiona</i>
+      <span>See Kenya as the Gods saw it.</span>
+    </div>
+    <div class="dst-hero-cta">
+      <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" class="btn-solid" data-hover><span>Book a Call</span></a>
+      <a href="#essentials" class="listen-btn" data-hover><span>Trip essentials</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="dst-sec">
+  <div class="dst-head">
+    <span class="kicker">Overview</span>
+    <h2>A flight of human genesis</h2>
+  </div>
+  <p class="dst-lede">Globally known as a hotbed of archaeological discoveries contributing to the story of human evolution, Kenya offers much more than just world class safaris. Flying a paraglider in the cradle of humankind lets you soar over majestic landscapes with rich culture and awe inspiring scenery. Chase the world speed records in Kerio Valley, or endless adventures while crossing the equator from above. This tropical paradise delivers like no other flying destination known to humankind.</p>
+  <p class="dst-pull">Let East African skies awaken your inner explorer, and leave you forever inspired.</p>
+</section>
+
+<section class="dst-sec">
+  <div class="dst-head">
+    <span class="kicker">General Info</span>
+    <h2>What the air actually does here</h2>
+  </div>
+  <div class="dst-grid two">
+    <div class="dst-cell">
+      <h3>Thermal strength</h3>
+      <p>Variometer readings run from 1 to 2 m/s in the weak early morning and late afternoon, up to 4 to 6 m/s at the midday peaks, with rare surges to 7 m/s. Cores vary from narrow and turbulent to wide and smooth, and the type ranges from classic bubble thermals to dynamic triggers depending on where you are flying.</p>
+    </div>
+    <div class="dst-cell">
+      <h3>Flying season</h3>
+      <p>Kenya's weather is set by its tropical location and the oscillating Inter-tropical Convergence Zone, which travels back and forth across equatorial Africa each year and gives the country two rainy seasons. Flying peaks in this equatorial paradise from December to March, which is when our tours run.</p>
+    </div>
+  </div>
+</section>
+
+<section class="dst-sec">
+  <div class="dst-head">
+    <span class="kicker">Where You Will Fly</span>
+    <h2>Six sites, one valley system</h2>
+    <p>Kerio Valley is the base. Everything else is within reach of it, and the tour moves with the conditions rather than a fixed schedule.</p>
+  </div>
+  <div class="dst-sites">
+    <div class="dst-site"><h3>Kerio Valley</h3><span class="c">0.72°N · 35.65°E</span><p>The base for the tour, and the site where the world speed records are chased.</p></div>
+    <div class="dst-site"><h3>Rift Valley National Park</h3><span class="c">0.90°S · 36.30°E</span><p>Flying over the floor of the Great Rift, the geological scar that runs the length of the country.</p></div>
+    <div class="dst-site"><h3>Kijabe Hill</h3><span class="c">0.93°S · 36.58°E</span><p>An escarpment site on the eastern wall of the Rift, north west of Nairobi.</p></div>
+    <div class="dst-site"><h3>Mount Longonot Crater</h3><span class="c">0.91°S · 36.45°E</span><p>A dormant stratovolcano with an intact crater rim, and one of the more photographed flights of the trip.</p></div>
+    <div class="dst-site"><h3>Machakos Hills</h3><span class="c">1.52°S · 37.26°E</span><p>Rolling hills south east of Nairobi, and a change of character from the Rift walls.</p></div>
+    <div class="dst-site"><h3>Chyulu Hills</h3><span class="c">2.68°S · 37.88°E</span><p>A young volcanic range between Tsavo and Amboseli, with Kilimanjaro on the horizon.</p></div>
+  </div>
+</section>
+
+<section class="dst-sec" id="essentials">
+  <div class="dst-head">
+    <span class="kicker">Trip Essentials</span>
+    <h2>What this trip asks of you</h2>
+  </div>
+  <div class="trip-facts">
+    <div class="fact"><span class="fact-label">Base Location</span><span class="fact-value">Kerio Valley</span></div>
+    <div class="fact"><span class="fact-label">Adventure Span</span><span class="fact-value">12 Days</span></div>
+    <div class="fact"><span class="fact-label">Pilot Rating</span><span class="fact-value">IPPI 2 or equivalent</span></div>
+    <div class="fact"><span class="fact-label">Avg. Altitude</span><span class="fact-value">1,500m AGL</span></div>
+    <div class="fact"><span class="fact-label">Expected Airtime</span><span class="fact-value">2 to 7 hrs / flight</span></div>
+    <div class="fact"><span class="fact-label">Skill Level</span><div class="skill-meter"><span class="skill-seg filled"></span><span class="skill-seg filled"></span><span class="skill-seg"></span><span class="skill-seg"></span><span class="skill-seg"></span></div></div>
+  </div>
+  <p class="dst-note">An IPPI 2, APPI or equivalent national licence is the minimum. You need to be able to self launch and to land out on your own.</p>
+</section>
+
+<section class="dst-sec">
+  <div class="dst-head">
+    <span class="kicker">Know Before You Go</span>
+    <h2>The practical country</h2>
+  </div>
+  <div class="dst-grid three">
+    <div class="dst-cell"><h3>Capital</h3><p>Nairobi. Founded 1899, elevation 1,795m.</p></div>
+    <div class="dst-cell"><h3>Population</h3><p>57.7 million, the 7th most populous country in Africa and 27th globally. Area 569,140 km².</p></div>
+    <div class="dst-cell"><h3>Currency</h3><p>Kenyan Shilling (KES). Cash is used widely, ATMs are common in big towns only, and Mpesa is the preferred digital payment method.</p></div>
+    <div class="dst-cell"><h3>Language</h3><p>Swahili and English. Kenya has over 60 further ethnic languages.</p></div>
+    <div class="dst-cell"><h3>Visa</h3><p>Check the requirements for your own nationality before you travel.</p></div>
+    <div class="dst-cell"><h3>Power</h3><p>240 volts at 50 Hertz, plug type G, the UK socket.</p></div>
+  </div>
+</section>
+
+<section class="dst-sec">
+  <div class="dst-head">
+    <span class="kicker">Requirements</span>
+    <h2>Before you fly</h2>
+  </div>
+  <ul class="dst-reqs">
+    <li>Takeoffs sit between 1,000 and 2,000m, and you can expect to climb to 4,000m, where it is cold.</li>
+    <li>Kenyan conditions are stronger than most home sites. Bring gear you trust.</li>
+    <li>A 2m radio on 144 to 146 MHz from a quality brand. Avoid Baofeng.</li>
+    <li>No mandatory vaccines for travellers from Europe or the US. Malaria risk is low in the dry season, January and February, above 2,000m.</li>
+    <li>Helicopter rescue and good healthcare are both available.</li>
+  </ul>
+</section>
+
+<section class="dst-sec">
+  <div class="dst-head">
+    <span class="kicker">Season Packages</span>
+    <h2>Three departures</h2>
+    <p>Each departure runs 12 days from Kerio Valley.</p>
+  </div>
+  <div class="dst-dates">
+    <div class="dst-date"><b>Adventure Tour 1</b><span>19 Jan to 1 Feb 2027</span></div>
+    <div class="dst-date"><b>Adventure Tour 2</b><span>3 Feb to 15 Feb 2027</span></div>
+    <div class="dst-date"><b>Adventure Tour 3</b><span>18 Feb to 1 Mar 2027</span></div>
+  </div>
+</section>
+
+<section class="dst-sec">
+  <div class="dst-head">
+    <span class="kicker">Why Fly With Us</span>
+    <h2>What makes Paragliding Atlas different</h2>
+    <p>Experience intimate, expert led flying in world class destinations. Skip the crowds with small group tours in iconic skies over untamed terrain, fully guided from launch to landing and beyond.</p>
+  </div>
+  <div class="dst-why">
+    <div>
+      <h3>Flight safety, first and always</h3>
+      <p>In aviation there is a saying: if it is controllable, then control it. We don't leave things to chance, because when the air is perfect flying feels effortless, and when turbulence hits Paragliding Atlas has your back. On-site fixes, weather mastery and rescue readiness mean we master every detail beforehand, so you stay safe aloft and soar worry free.</p>
+    </div>
+    <div>
+      <h3>Because we care to share</h3>
+      <p>Sharing our passion for the art of flight isn't just meaningful, it is our purpose. We go the extra mile because your breakthroughs, safety and joy in the skies matter to us. That goodwill soars beyond the skies too: by flying with us you help uplift local communities through welfare, training and opportunities for the next generation.</p>
+    </div>
+    <div>
+      <h3>Exclusive journeys</h3>
+      <p>We are a group of like minded pilots who craft each trip with passion, creativity and teamwork. We handcraft every tour with obsessive precision, so Paragliding Atlas delivers flights that feel like they were dreamed up just for your soul.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="cta-card">
+  <span class="cta-hud-tag">Booking Open</span>
+  <p class="cta-eyebrow">Ready To Touch The Sky With Glory?</p>
+  <h2>Book a free 30-minute, no obligation virtual call</h2>
+  <div class="cta-buttons">
+    <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" class="btn-solid" data-hover><span>Book a Call</span></a>
+    <a href="https://wa.me/4796757456" target="_blank" rel="noopener" class="listen-btn" data-hover>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.4-4.1A7.9 7.9 0 1 1 8.7 19L4 20Z"/><path d="M8.5 9.5c.3-.8 1-.7 1.5-.5.3.1.5.6.7 1 .2.4.1.6-.1.9-.2.3-.4.4-.2.8.2.4 1 1.5 2.3 2 .3.1.5.1.7-.1.2-.3.6-.8.9-1 .3-.2.5-.1.8 0 .3.1 1.6.7 1.9.9.2.1.4.2.4.5 0 .8-.3 1.6-1.4 1.9-1 .3-1.8.2-3.2-.3-2.6-1-4.3-3.5-4.5-3.8-.1-.2-1-1.3-1-2.5 0-1.1.6-1.6.8-1.8Z" fill="currentColor" stroke="none"/></svg>
+        WhatsApp
+      </span>
+    </a>
+  </div>
+  <p class="cta-body">Whether you're a 10 hour pilot eyeing your first 50 or a longtime sky veteran chasing your next world record, we specialize in turning ambition into airtime. This relaxed no-expectations intro call helps you cut through the unknowns with straight talk.</p>
+  <p class="cta-breakdown-label">We'll break down:</p>
+  <ol class="cta-list">
+    <li>Ideal tour match for your skill and dreams (Kenya, India, or Peru)</li>
+    <li>Fitness and wing experience required</li>
+    <li>Gear list, dates, and costs</li>
+    <li>What you'll get in end-to-end guidance from Paragliding Atlas</li>
+  </ol>
+  </div>
+</section>
+
+</div><!-- /.page-wrap -->
+
+<footer>
+  <div class="footer-content">
+  <div class="footer-top">
+    <div class="footer-col">
+      <span class="wordmark"><img src="../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></span>
+      <p>Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>Oslo, Norway</p>
+    </div>
+    <div class="footer-col">
+      <h4>Enquiries</h4>
+      <a href="#">General</a>
+      <a href="../index.html#destinations">Trips</a>
+      <a href="#">FAQs</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="../library.html">All Episodes</a>
+      <a href="../index.html#destinations">Kenya Tour</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Links</h4>
+      <a href="../knowledge-base.html">Knowledge Base</a>
+      <a href="#">Passion</a>
+      <a href="#">Mission Statement</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Terms &amp; Conditions</span>
+    <span>Privacy Policy</span>
+    <span>Cookie Policy</span>
+    <span>Paragliding Atlas 2026</span>
+  </div>
+  </div>
+  <div class="footer-graphic">
+    <img src="../assets/footer/mountains.png" alt="Paragliding Atlas — Touch the Sky with Glory">
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
