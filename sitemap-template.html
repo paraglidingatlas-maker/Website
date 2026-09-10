@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sitemap: Paragliding Atlas</title>
+<meta name="description" content="Everything on Paragliding Atlas in one place. Every series, every episode, and where to find the trips, the Knowledge Base and the podcast.">
+<link rel="icon" type="image/png" href="assets/logo/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.sm-wrap{max-width:1140px;margin:0 auto;padding:clamp(2.5rem,5.5vw,4rem) clamp(1.25rem,4vw,3rem) 5rem;}
+.sm-wrap h1{font-family:var(--font-display);font-weight:800;
+  font-size:clamp(2rem,4.4vw,3rem);letter-spacing:-0.025em;line-height:1.08;}
+.sm-lede{color:var(--gray-light);font-size:1rem;margin-top:0.7rem;max-width:56ch;}
+.sm-stat{color:var(--gray);font-size:0.85rem;margin-top:0.9rem;}
+
+/* the five places you can go */
+.sm-top{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:1rem;margin:2.6rem 0 3.6rem;}
+.sm-card{position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.14);
+  padding:1.2rem 1.2rem 1.3rem;transition:border-color 0.18s ease;}
+.sm-card:hover{border-color:var(--orange);}
+.sm-card::before,.sm-card::after{content:"";position:absolute;width:9px;height:9px;
+  border-color:var(--orange);}
+.sm-card::before{top:7px;left:7px;border-left:1.5px solid;border-top:1.5px solid;}
+.sm-card::after{bottom:7px;right:7px;border-right:1.5px solid;border-bottom:1.5px solid;}
+.sm-card h3{font-family:var(--font-display);font-weight:600;font-size:1rem;margin-bottom:0.35rem;}
+.sm-card:hover h3{color:var(--orange);}
+.sm-card p{color:var(--gray-light);font-size:0.85rem;line-height:1.55;}
+
+h2.sm-h{font-family:var(--font-display);font-weight:700;font-size:1.35rem;
+  letter-spacing:-0.02em;margin-bottom:0.5rem;}
+.sm-sub{color:var(--gray-light);font-size:0.92rem;max-width:60ch;margin-bottom:2rem;}
+
+.sm-cat{margin-bottom:2.4rem;}
+.sm-cat h2{font-family:var(--font-display);font-weight:700;font-size:0.78rem;
+  color:var(--orange);text-transform:uppercase;letter-spacing:0.14em;
+  padding-bottom:0.5rem;border-bottom:1px solid rgba(180,180,180,0.16);margin-bottom:0.2rem;}
+
+.sm-series{border-bottom:1px solid rgba(180,180,180,0.1);}
+.sm-series summary{list-style:none;cursor:pointer;padding:0.95rem 0.2rem;
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:0.35rem 1rem;
+  transition:color 0.15s ease;}
+.sm-series summary::-webkit-details-marker{display:none;}
+.sm-series summary::before{content:"+";color:var(--orange);font-weight:700;
+  width:1rem;flex-shrink:0;}
+.sm-series[open] summary::before{content:"\2212";}
+.sm-series summary:hover .sm-name{color:var(--orange);}
+.sm-name{font-family:var(--font-display);font-weight:600;font-size:1rem;
+  transition:color 0.15s ease;}
+.sm-count{color:var(--gray);font-size:0.8rem;}
+.sm-body{padding:0 0 1.3rem 1rem;}
+.sm-jump{margin-bottom:0.8rem;display:flex;flex-wrap:wrap;gap:1.2rem;}
+.sm-jump a{color:var(--orange);font-size:0.82rem;text-decoration:underline;
+  text-underline-offset:3px;}
+.sm-eps{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));
+  gap:0.15rem 1.6rem;}
+.sm-eps li{padding:0.28rem 0;}
+.sm-eps a{color:var(--gray-light);font-size:0.88rem;line-height:1.45;
+  transition:color 0.15s ease;}
+.sm-eps a:hover{color:var(--orange);}
+.sm-eps a.sm-out::after{content:" \2197";color:var(--gray);font-size:0.78rem;}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+<nav>
+  <span class="nav-corner-l"></span>
+  <span class="nav-corner-r"></span>
+  <span class="nav-coords">59.9139&deg;N &middot; 10.7522&deg;E</span>
+  <a href="index.html" class="wordmark"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></a>
+  <div class="nav-links">
+    <a href="about.html">About Us</a>
+    <span class="nav-sep">|</span>
+    <a href="knowledge-base.html">Knowledge Base</a>
+    <span class="nav-sep">|</span>
+    <a href="podcast.html">Podcast</a>
+    <span class="nav-sep">|</span>
+    <a href="sitemap.html">Sitemap</a>
+  </div>
+  <a href="enquire.html" class="nav-cta" data-hover><span>Enquire Now</span></a>
+</nav>
+<div class="nav-chevron"></div>
+
+<div class="sm-wrap">
+
+  <h1>How to find your way around</h1>
+  <p class="sm-lede">Everything we have published, laid out in one place. If you are looking for a particular conversation, or you want to work through a subject properly, start here.</p>
+  <p class="sm-stat">{{SERIESCOUNT}} series &middot; {{EPCOUNT}} episodes &middot; {{PAGECOUNT}} with full transcripts</p>
+
+  <div class="sm-top">
+    <a class="sm-card" href="library.html">
+      <h3>Episode Library</h3>
+      <p>Browse by series. Open one and filter by length or work through it newest first.</p>
+    </a>
+    <a class="sm-card" href="knowledge-base.html">
+      <h3>Knowledge Base</h3>
+      <p>The same material organised as a course rather than a feed, five categories deep.</p>
+    </a>
+    <a class="sm-card" href="podcast.html">
+      <h3>Podcast</h3>
+      <p>The latest episodes as they land, and where to subscribe on Spotify, Apple or YouTube.</p>
+    </a>
+    <a class="sm-card" href="about.html">
+      <h3>About Us</h3>
+      <p>Who makes this, why it exists, and the trips we run.</p>
+    </a>
+  </div>
+
+  <h2 class="sm-h">Every series, every episode</h2>
+  <p class="sm-sub">Open a series to see what is in it. Titles that link to a full page have a transcript with chapters you can jump through. The rest open on YouTube.</p>
+
+{{TREE}}
+
+</div>
+
+</div><!-- /.page-wrap -->
+
+<footer>
+  <div class="footer-content">
+  <div class="footer-top">
+    <div class="footer-col">
+      <span class="wordmark"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></span>
+      <p>Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>Oslo, Norway</p>
+    </div>
+    <div class="footer-col">
+      <h4>Enquiries</h4>
+      <a href="#">General</a>
+      <a href="#">Trips</a>
+      <a href="#">FAQs</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="library.html">All Episodes</a>
+      <a href="sitemap.html">Sitemap</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Links</h4>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="#">Passion</a>
+      <a href="#">Mission Statement</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Terms &amp; Conditions</span>
+    <span>Privacy Policy</span>
+    <span>Cookie Policy</span>
+    <span>Paragliding Atlas 2026</span>
+  </div>
+  </div>
+  <div class="footer-graphic">
+    <img src="assets/footer/mountains.png" alt="Paragliding Atlas, touch the sky with glory">
+  </div>
+</footer>
+
+</body>
+</html>

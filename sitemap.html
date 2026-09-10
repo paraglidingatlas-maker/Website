@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sitemap: Paragliding Atlas</title>
+<meta name="description" content="Everything on Paragliding Atlas in one place. Every series, every episode, and where to find the trips, the Knowledge Base and the podcast.">
+<link rel="icon" type="image/png" href="assets/logo/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.sm-wrap{max-width:1140px;margin:0 auto;padding:clamp(2.5rem,5.5vw,4rem) clamp(1.25rem,4vw,3rem) 5rem;}
+.sm-wrap h1{font-family:var(--font-display);font-weight:800;
+  font-size:clamp(2rem,4.4vw,3rem);letter-spacing:-0.025em;line-height:1.08;}
+.sm-lede{color:var(--gray-light);font-size:1rem;margin-top:0.7rem;max-width:56ch;}
+.sm-stat{color:var(--gray);font-size:0.85rem;margin-top:0.9rem;}
+
+/* the five places you can go */
+.sm-top{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:1rem;margin:2.6rem 0 3.6rem;}
+.sm-card{position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.14);
+  padding:1.2rem 1.2rem 1.3rem;transition:border-color 0.18s ease;}
+.sm-card:hover{border-color:var(--orange);}
+.sm-card::before,.sm-card::after{content:"";position:absolute;width:9px;height:9px;
+  border-color:var(--orange);}
+.sm-card::before{top:7px;left:7px;border-left:1.5px solid;border-top:1.5px solid;}
+.sm-card::after{bottom:7px;right:7px;border-right:1.5px solid;border-bottom:1.5px solid;}
+.sm-card h3{font-family:var(--font-display);font-weight:600;font-size:1rem;margin-bottom:0.35rem;}
+.sm-card:hover h3{color:var(--orange);}
+.sm-card p{color:var(--gray-light);font-size:0.85rem;line-height:1.55;}
+
+h2.sm-h{font-family:var(--font-display);font-weight:700;font-size:1.35rem;
+  letter-spacing:-0.02em;margin-bottom:0.5rem;}
+.sm-sub{color:var(--gray-light);font-size:0.92rem;max-width:60ch;margin-bottom:2rem;}
+
+.sm-cat{margin-bottom:2.4rem;}
+.sm-cat h2{font-family:var(--font-display);font-weight:700;font-size:0.78rem;
+  color:var(--orange);text-transform:uppercase;letter-spacing:0.14em;
+  padding-bottom:0.5rem;border-bottom:1px solid rgba(180,180,180,0.16);margin-bottom:0.2rem;}
+
+.sm-series{border-bottom:1px solid rgba(180,180,180,0.1);}
+.sm-series summary{list-style:none;cursor:pointer;padding:0.95rem 0.2rem;
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:0.35rem 1rem;
+  transition:color 0.15s ease;}
+.sm-series summary::-webkit-details-marker{display:none;}
+.sm-series summary::before{content:"+";color:var(--orange);font-weight:700;
+  width:1rem;flex-shrink:0;}
+.sm-series[open] summary::before{content:"\2212";}
+.sm-series summary:hover .sm-name{color:var(--orange);}
+.sm-name{font-family:var(--font-display);font-weight:600;font-size:1rem;
+  transition:color 0.15s ease;}
+.sm-count{color:var(--gray);font-size:0.8rem;}
+.sm-body{padding:0 0 1.3rem 1rem;}
+.sm-jump{margin-bottom:0.8rem;display:flex;flex-wrap:wrap;gap:1.2rem;}
+.sm-jump a{color:var(--orange);font-size:0.82rem;text-decoration:underline;
+  text-underline-offset:3px;}
+.sm-eps{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));
+  gap:0.15rem 1.6rem;}
+.sm-eps li{padding:0.28rem 0;}
+.sm-eps a{color:var(--gray-light);font-size:0.88rem;line-height:1.45;
+  transition:color 0.15s ease;}
+.sm-eps a:hover{color:var(--orange);}
+.sm-eps a.sm-out::after{content:" \2197";color:var(--gray);font-size:0.78rem;}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+<nav>
+  <span class="nav-corner-l"></span>
+  <span class="nav-corner-r"></span>
+  <span class="nav-coords">59.9139&deg;N &middot; 10.7522&deg;E</span>
+  <a href="index.html" class="wordmark"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></a>
+  <div class="nav-links">
+    <a href="about.html">About Us</a>
+    <span class="nav-sep">|</span>
+    <a href="knowledge-base.html">Knowledge Base</a>
+    <span class="nav-sep">|</span>
+    <a href="podcast.html">Podcast</a>
+    <span class="nav-sep">|</span>
+    <a href="sitemap.html">Sitemap</a>
+  </div>
+  <a href="enquire.html" class="nav-cta" data-hover><span>Enquire Now</span></a>
+</nav>
+<div class="nav-chevron"></div>
+
+<div class="sm-wrap">
+
+  <h1>How to find your way around</h1>
+  <p class="sm-lede">Everything we have published, laid out in one place. If you are looking for a particular conversation, or you want to work through a subject properly, start here.</p>
+  <p class="sm-stat">13 series &middot; 79 episodes &middot; 45 with full transcripts</p>
+
+  <div class="sm-top">
+    <a class="sm-card" href="library.html">
+      <h3>Episode Library</h3>
+      <p>Browse by series. Open one and filter by length or work through it newest first.</p>
+    </a>
+    <a class="sm-card" href="knowledge-base.html">
+      <h3>Knowledge Base</h3>
+      <p>The same material organised as a course rather than a feed, five categories deep.</p>
+    </a>
+    <a class="sm-card" href="podcast.html">
+      <h3>Podcast</h3>
+      <p>The latest episodes as they land, and where to subscribe on Spotify, Apple or YouTube.</p>
+    </a>
+    <a class="sm-card" href="about.html">
+      <h3>About Us</h3>
+      <p>Who makes this, why it exists, and the trips we run.</p>
+    </a>
+  </div>
+
+  <h2 class="sm-h">Every series, every episode</h2>
+  <p class="sm-sub">Open a series to see what is in it. Titles that link to a full page have a transcript with chapters you can jump through. The rest open on YouTube.</p>
+
+<section class="sm-cat">
+  <h2>Core series</h2>
+  <details class="sm-series">
+    <summary><span class="sm-name">Navigators</span><span class="sm-count">6 episodes, 6 with full transcripts</span></summary>
+    <div class="sm-body">
+      <p class="sm-jump"><a href="knowledge-base/navigators.html">Series guide</a><a href="library.html#s=Navigators">Open in the library</a></p>
+      <ul class="sm-eps"><li><a href="episodes/pre-pwc-kenya-nikolay-yotov.html">Pre PWC Kenya: Nikolay Yotov</a></li><li><a href="episodes/navigating-panchgani-vistasp-kharas.html">Navigating Panchgani (Pre PWC India) : Vistasp Kharas</a></li><li><a href="episodes/navigating-australia-godfrey-wenness.html">Navigating Australia : Godfrey Wenness</a></li><li><a href="episodes/navigating-india-jigish-gohil.html">Navigating India: Jigish Gohil (Bonus Ep)</a></li><li><a href="episodes/navigating-india-eddie-colfox.html">Navigating India: Eddie Colfox</a></li><li><a href="episodes/navigating-colombia-pal-takats.html">Navigating Colombia: Pal Takats</a></li></ul>
+    </div>
+  </details>
+  <details class="sm-series">
+    <summary><span class="sm-name">Sky Gods</span><span class="sm-count">3 episodes, 2 with full transcripts</span></summary>
+    <div class="sm-body">
+      <p class="sm-jump"><a href="knowledge-base/sky-gods.html">Series guide</a><a href="library.html#s=Sky%20Gods">Open in the library</a></p>
+      <ul class="sm-eps"><li><a href="https://www.youtube.com/watch?v=itpkNQwV438" target="_blank" rel="noopener" class="sm-out">The Russell Ogden Interview: Decoding Paragliding Mastery Protocols: Progression, Fear &amp; Competition</a></li><li><a href="episodes/sky-gods-flying-to-win-honorin-hamard.html">Sky Gods : Flying to Win : Honorin Hamard</a></li><li><a href="episodes/sky-gods-flying-8000ers-antoine-girard.html">Sky Gods : Flying 8000ers : Antoine Girard</a></li></ul>
+    </div>
+  </details>
+  <details class="sm-series">
+    <summary><span class="sm-name">Living the Dream</span><span class="sm-count">4 episodes, 2 with full transcripts</span></summary>
+    <div class="sm-body">
+      <p class="sm-jump"><a href="knowledge-base/living-the-dream.html">Series guide</a><a href="library.html#s=Living%20the%20Dream">Open in the library</a></p>
+      <ul class="sm-eps"><li><a href="https://www.youtube.com/watch?v=ylj8CZgqLyM" target="_blank" rel="noopener" class="sm-out">From Cuba to Socotra: Inside the World’s Most Unique Paragliding Tours</a></li><li><a href="https://www.youtube.com/watch?v=yNNqjTpQkRQ" target="_blank" rel="noopener" class="sm-out">How to Fly With Your Dog | Explained by Shams</a></li><li><a href="episodes/sandrine-roy-vol-biv-freedom-unfiltered-a-human-powered.html">Sandrine Roy : Vol Biv &amp; Freedom Unfiltered : A Human-Powered Odyssey By Paragliding, Biking &amp; Sa...</a></li><li><a href="episodes/living-the-dream-benjamin-jordan.html">Living The Dream : Benjamin Jordan</a></li></ul>
+    </div>
+  </details>
+</section>
+<section class="sm-cat">
+  <h2>Competitions</h2>
+  <details class="sm-series">
+    <summary><span class="sm-name">World Cups</span><span class="sm-count">16 episodes, 4 with full transcripts</span></summary>
+    <div class="sm-body">
+      <p class="sm-jump"><a href="knowledge-base/world-cups.html">Series guide</a><a href="library.html#s=World%20Cups">Open in the library</a></p>
+      <ul class="sm-eps"><li><a href="https://www.youtube.com/watch?v=NXUEyPQ3V4E" target="_blank" rel="noopener" class="sm-out">SRS Piedrahita BGD Edition Task 2 Highlights</a></li><li><a href="https://www.youtube.com/watch?v=uCEfssE40u8" target="_blank" rel="noopener" class="sm-out">SRS Piedrahita BGD Edition Task 1 Highlights</a></li><li><a href="https://www.youtube.com/watch?v=cuGs7Lk6Dt4" target="_blank" rel="noopener" class="sm-out">SRS BGD Edition 2026 | Day 1: Registration, Pilots &amp; Peñas de Piedrahíta🎉</a></li><li><a href="https://www.youtube.com/watch?v=vPnIYYKcvEg" target="_blank" rel="noopener" class="sm-out">Task 5 Highlights | 15th Paragliding World Cup Super Final Pegalajar 2026</a></li><li><a href="https://www.youtube.com/watch?v=op1-O01xkH4" target="_blank" rel="noopener" class="sm-out">Task 4 Highlights | 15th Paragliding World Cup Super Final Pegalajar 2026</a></li><li><a href="https://www.youtube.com/watch?v=7il6yV1vdIc" target="_blank" rel="noopener" class="sm-out">Task 2 Highlights | 15th Paragliding World Cup Super Final Pegalajar 2026</a></li><li><a href="https://www.youtube.com/watch?v=BRAX1XMU390" target="_blank" rel="noopener" class="sm-out">Task 1 Highlights | 15th Paragliding World Cup Super Final Pegalajar 2026</a></li><li><a href="https://www.youtube.com/watch?v=FOuAWMeoxs4" target="_blank" rel="noopener" class="sm-out">Highlights Day 1 - PWCA Superfinal 2026</a></li><li><a href="https://www.youtube.com/watch?v=Kdd1R8x36vU" target="_blank" rel="noopener" class="sm-out">From Tents to Trophies: Understanding Acro Champion&#x27;s Mindset on Ego, Glory &amp; Drugs | Luke De Weert</a></li><li><a href="https://www.youtube.com/watch?v=CYVrlWuls6o" target="_blank" rel="noopener" class="sm-out">Scoring in Paragliding Competitions: A New Pilot&#x27;s Guide to the GAP Formula &amp; Strategy | Joerg Ewald</a></li><li><a href="https://www.youtube.com/watch?v=i9z4MyL6KgQ" target="_blank" rel="noopener" class="sm-out">The Inside Story of Sports Racing Series (SRS) by Brett Janaway</a></li><li><a href="https://www.youtube.com/watch?v=nlgbMKLNNk4" target="_blank" rel="noopener" class="sm-out">Bruce Goldsmith explains MRT scoring system and its impact on Paragliding Competitions</a></li><li><a href="episodes/the-resilience-equation-erlend-ukvitnes-unrelenting-path.html">The Resilience Equation: Erlend Ukvitne’s Unrelenting Path to X-Alps and the Brink of a World Record</a></li><li><a href="episodes/shane-tighes-road-to-x-alps-engineering-conquests-in-the.html">Shane Tighe’s Road to X-Alps : Engineering Conquests In The Sky from Australia’s Flatlands to the...</a></li><li><a href="episodes/pwc-lifestyle-klaudia-bulgakow.html">PWC Lifestyle: Klaudia Bulgakow</a></li><li><a href="episodes/pwca-goran-dimiskovski.html">PWCA: Goran Dimiskovski</a></li></ul>
+    </div>
+  </details>
+  <details class="sm-series">
+    <summary><span class="sm-name">Risk vs Reward</span><span class="sm-count">11 episodes, 6 with full transcripts</span></summary>
+    <div class="sm-body">
+      <p class="sm-jump"><a href="knowledge-base/risk-vs-reward.html">Series guide</a><a href="library.html#s=Risk%20vs%20Reward">Open in the library</a></p>
+      <ul class="sm-eps"><li><a href="https://www.youtube.com/watch?v=J5j3Hk_HcFQ" target="_blank" rel="noopener" class="sm-out">Metacognition: Paragliding&#x27;s Hidden Psychology with Beni Kalin &amp; Heli Schrempf</a></li><li><a href="https://www.youtube.com/watch?v=_k2uxEkrN7s" target="_blank" rel="noopener" class="sm-out">Paragliding Physiology &amp; Safety Protocols | Dr Matt Wilkes Explains: Biophysics in the Art of Flight</a></li><li><a href="https://www.youtube.com/watch?v=AvSCngFI7R0" target="_blank" rel="noopener" class="sm-out">If you fly in the Himalayas, Alps, or above 3000 mtrs, this episode is for you - ft. Dr Matt Wilkes</a></li><li><a href="https://www.youtube.com/watch?v=p_HpeN5x7dE" target="_blank" rel="noopener" class="sm-out">Cognitive Bias of Dunning Kruger Effect in Paragliding | Explained by Beni Kalin &amp; Heli Schrempf</a></li><li><a href="episodes/consequence-over-probability-will-gadd-on-why-true-safety.html">Consequence Over Probability: Will Gadd on Why True Safety Lies in Clarity</a></li><li><a href="https://www.youtube.com/watch?v=pFxe7oZTH2E" target="_blank" rel="noopener" class="sm-out">Kinga Masztalerz: Building a Healthy Relationship with the Skies: How to Master Fear, Build Resil...</a></li><li><a href="episodes/risk-vs-reward-5-gabriel-orsini.html">Risk Vs Reward 5 : Gabriel Orsini (partytillimpact)</a></li><li><a href="episodes/risk-vs-reward-4-raul-rodriguez.html">Risk Vs Reward 4 : Raúl Rodríguez</a></li><li><a href="episodes/risk-vs-reward-3-manfred-ruhmer.html">Risk Vs Reward 3 : Manfred Ruhmer</a></li><li><a href="episodes/risk-vs-reward-2-subir-sidhu.html">Risk Vs Reward 2 : Subir Sidhu</a></li><li><a href="episodes/risk-vs-reward-1-philipp-zellner.html">Risk Vs Reward 1 : Philipp Zellner</a></li></ul>
+    </div>
+  </details>
+  <details class="sm-series">
+    <summary><span class="sm-name">Resources, Tools and Tips</span><span class="sm-count">9 episodes, 6 with full transcripts</span></summary>
+    <div class="sm-body">
+      <p class="sm-jump"><a href="knowledge-base/resources-tools-tips.html">Series guide</a><a href="library.html#s=Resources%2C%20Tools%20and%20Tips">Open in the library</a></p>
+      <ul class="sm-eps"><li><a href="https://www.youtube.com/watch?v=mYG80ZiHIyo" target="_blank" rel="noopener" class="sm-out">Sports Psychology for Paragliding: Train Your Mind to Fly Better with Yvonne Dathe</a></li><li><a href="https://www.youtube.com/watch?v=3ZySapU_YLI" target="_blank" rel="noopener" class="sm-out">The Art of Capturing Human Flight | Jake Holland&#x27;s Guide to Filming Passion Projects in Paragliding</a></li><li><a href="episodes/the-silent-mind-in-screaming-winds-unlocking-peak-focus-to.html">The Silent Mind In Screaming Winds : Unlocking Peak Focus To Attain Flow State In Paragliding</a></li><li><a href="episodes/ziad-bassil-finest-paragliding-reviews-superpower-of.html">Ziad Bassil : Finest Paragliding Reviews &amp; Superpower of Changing Wings as A Human</a></li><li><a href="episodes/ashutosh-chopra-identifying-passion-vs-obsession-an.html">​Ashutosh Chopra: Identifying Passion Vs Obsession: An Aviator’s Approach to Overcoming Adversity...</a></li><li><a href="episodes/flying-filming-3-andreas-lattner.html">Flying &amp; Filming 3 : Andreas Lattner (hochzwei.media)</a></li><li><a href="episodes/flying-filming-2-benjamin-kellet.html">Flying &amp; Filming 2 : Benjamin Kellet</a></li><li><a href="episodes/flying-filming-1-benjamin-jordan.html">Flying &amp; Filming 1 : Benjamin Jordan</a></li><li><a href="https://www.youtube.com/watch?v=zKabIDewXn0" target="_blank" rel="noopener" class="sm-out">AMA #1</a></li></ul>
+    </div>
+  </details>
+</section>
+<section class="sm-cat">
+  <h2>Meteorology</h2>
+  <details class="sm-series">
+    <summary><span class="sm-name">Weather Patterns</span><span class="sm-count">1 episode, 1 with full transcripts</span></summary>
+    <div class="sm-body">
+      <p class="sm-jump"><a href="knowledge-base/weather-patterns.html">Series guide</a><a href="library.html#s=Weather%20Patterns">Open in the library</a></p>
+      <ul class="sm-eps"><li><a href="episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html">Meteorology 101 A beginner’s Guide to Understanding Weather Apps and Decoding Endless Forecasting...</a></li></ul>
+    </div>
+  </details>
+</section>
+<section class="sm-cat">
+  <h2>Industry</h2>
+  <details class="sm-series">
+    <summary><span class="sm-name">Brand Stories</span><span class="sm-count">3 episodes, 2 with full transcripts</span></summary>
+    <div class="sm-body">
+      <p class="sm-jump"><a href="knowledge-base/brand-stories.html">Series guide</a><a href="library.html#s=Brand%20Stories">Open in the library</a></p>
+      <ul class="sm-eps"><li><a href="https://www.youtube.com/watch?v=aGiisCcG5v8" target="_blank" rel="noopener" class="sm-out">Robert (Robbie) Whittall: 113 mins of Unhinged conversations with The Man Behind Ozone Paragliders</a></li><li><a href="episodes/pal-takats-on-challenges-change-the-future-of-paragliding.html">Pal Takats on Challenges, Change &amp; The Future of Paragliding</a></li><li><a href="episodes/brand-stories-neo-eric-roussel.html">Brand Stories : Neo : Eric Roussel</a></li></ul>
+    </div>
+  </details>
+  <details class="sm-series">
+    <summary><span class="sm-name">Storytellers</span><span class="sm-count">2 episodes, 2 with full transcripts</span></summary>
+    <div class="sm-body">
+      <p class="sm-jump"><a href="knowledge-base/storytellers.html">Series guide</a><a href="library.html#s=Storytellers">Open in the library</a></p>
+      <ul class="sm-eps"><li><a href="episodes/eddie-colfox-storytime-chasing-adventure-with-the-real-og.html">Eddie Colfox : Storytime : Chasing Adventure With the Real OG John Silvester &amp; 3 Decades of Makin...</a></li><li><a href="episodes/storytellers-marko-milutinovic.html">Storytellers : Marko Milutinovic (Mid-Air Collision)</a></li></ul>
+    </div>
+  </details>
+  <details class="sm-series">
+    <summary><span class="sm-name">The Dark Side</span><span class="sm-count">5 episodes, 2 with full transcripts</span></summary>
+    <div class="sm-body">
+      <p class="sm-jump"><a href="knowledge-base/the-dark-side.html">Series guide</a><a href="library.html#s=The%20Dark%20Side">Open in the library</a></p>
+      <ul class="sm-eps"><li><a href="https://www.youtube.com/watch?v=BceEzHgylwo" target="_blank" rel="noopener" class="sm-out">Survived 15 Years of Flying Then a Rescue Helicopter Changed Everything | A Talk With Nick Neynes</a></li><li><a href="https://www.youtube.com/watch?v=VmaPERBK-lo" target="_blank" rel="noopener" class="sm-out">The Unfiltered Truth About Paragliding Governance: with Bill Hughes &amp; Goran Dimiskovski</a></li><li><a href="https://www.youtube.com/watch?v=YyGdTDXC1Lc" target="_blank" rel="noopener" class="sm-out">Bill Belcourt: The Uncomfortable Truth No One is Talking about in the Current Safety Paradox</a></li><li><a href="episodes/insights-from-the-gaggle-with-tilen-ceglar-stan.html">Insights From The Gaggle with Tilen Ceglar &amp; Stan Radzikowski</a></li><li><a href="episodes/what-is-civlresign-with-julien-garcia.html">What is #CIVLRESIGN with Julien Garcia</a></li></ul>
+    </div>
+  </details>
+</section>
+<section class="sm-cat">
+  <h2>Technical</h2>
+  <details class="sm-series">
+    <summary><span class="sm-name">Flight Mechanics</span><span class="sm-count">7 episodes, 3 with full transcripts</span></summary>
+    <div class="sm-body">
+      <p class="sm-jump"><a href="knowledge-base/flight-mechanics.html">Series guide</a><a href="library.html#s=Flight%20Mechanics">Open in the library</a></p>
+      <ul class="sm-eps"><li><a href="https://www.youtube.com/watch?v=G-gqUxq0C6Q" target="_blank" rel="noopener" class="sm-out">How to Thermal Like a Pro: Find, Center &amp; Climb | Paragliding Tutorial with Brett Janaway</a></li><li><a href="https://www.youtube.com/watch?v=pYzuw5bTIe8" target="_blank" rel="noopener" class="sm-out">Luc Armant talks about The Moment Coefficient, Enzo 3 Certification Debate &amp; Physics of Stability</a></li><li><a href="https://www.youtube.com/watch?v=iurDFHlgJjI" target="_blank" rel="noopener" class="sm-out">Tom Lolies Explains The Science Of Wing Design and Evolution from ENC to  CSC</a></li><li><a href="https://www.youtube.com/watch?v=xNMHk_8qbzo" target="_blank" rel="noopener" class="sm-out">Luc Armant talks about Debunking the Myths and Upgrading Enzo 3</a></li><li><a href="episodes/aljaz-valic-777-paraglidings-slovenian-mavericks.html">Aljaž Valič : 777 : Paragliding’s Slovenian Mavericks Redefining the EN B Class And Elevating Fre...</a></li><li><a href="episodes/alain-zoller-the-science-of-en-certifications-how-work.html">Alain Zoller: The Science of EN Certifications : How Work Group 6 Shaped Paragliding Testing, Inn...</a></li><li><a href="episodes/helmut-schrempf-modernizing-siv-courses-how-this-new.html">Helmut Schrempf : Modernizing SIV Courses: How This New Training Method Can Help You Master Glide...</a></li></ul>
+    </div>
+  </details>
+  <details class="sm-series">
+    <summary><span class="sm-name">New Technologies</span><span class="sm-count">6 episodes, 6 with full transcripts</span></summary>
+    <div class="sm-body">
+      <p class="sm-jump"><a href="knowledge-base/new-technologies.html">Series guide</a><a href="library.html#s=New%20Technologies">Open in the library</a></p>
+      <ul class="sm-eps"><li><a href="episodes/understanding-skymate-paragliding-worlds-first-ai-driven.html">Understanding Skymate: Paragliding Worlds First AI Driven Smart Harness System with Roman Barthelemy</a></li><li><a href="episodes/why-paraglidings-safety-future-looks-different-rast.html">Why Paragliding’s Safety Future Looks Different: RAST Inventor Michael Nesler &amp; the LeelooX Effect</a></li><li><a href="episodes/new-technologies-5-frantisek-pavlousek-2.html">New Technologies 5 : Frantisek Pavlousek (UP Paragliders)</a></li><li><a href="episodes/new-technologies-4-veselin-ovcharov.html">New Technologies 4 : Veselin Ovcharov (Fly The Earth)</a></li><li><a href="episodes/new-technologies-2-guillem-batlle-adria-grau.html">New Technologies 2 : Guillem Batlle &amp; Adrià Grau (Niviuk Paragliders)</a></li><li><a href="episodes/new-technologies-1-beni-kalin.html">New Technologies 1 : Beni Kälin (speedflyingschool.com)</a></li></ul>
+    </div>
+  </details>
+  <details class="sm-series">
+    <summary><span class="sm-name">Know Your Equipment</span><span class="sm-count">6 episodes, 3 with full transcripts</span></summary>
+    <div class="sm-body">
+      <p class="sm-jump"><a href="knowledge-base/know-your-equipment.html">Series guide</a><a href="library.html#s=Know%20Your%20Equipment">Open in the library</a></p>
+      <ul class="sm-eps"><li><a href="https://www.youtube.com/watch?v=zzcktKfMcUI" target="_blank" rel="noopener" class="sm-out">Technical Masterclass by Brett Janaway | Science of Paraglider Trimming,Performance &amp; New Legalities</a></li><li><a href="https://www.youtube.com/watch?v=wvJWd8lVZzc" target="_blank" rel="noopener" class="sm-out">Can we Steer a Round Reserve Parachute? Urs Haari Answers!</a></li><li><a href="https://www.youtube.com/watch?v=kSoFk23TuX0" target="_blank" rel="noopener" class="sm-out">Watch this Before you Buy a Paragliding Harness | A Talk with Zsolt Ero</a></li><li><a href="episodes/urs-haari-the-real-truth-about-reserve-parachutes-a.html">Urs Haari: The Real Truth About Reserve Parachutes : A Paragliding Survival Guide</a></li><li><a href="episodes/helmet-safety-christian-ciech-icaro-2000.html">Helmet Safety : Christian Ciech : ICARO 2000</a></li><li><a href="episodes/carabiner-fatigue-finsterwalder-charly.html">Carabiner Fatigue : Finsterwalder &amp; Charly (whitepaper)</a></li></ul>
+    </div>
+  </details>
+</section>
+
+</div>
+
+</div><!-- /.page-wrap -->
+
+<footer>
+  <div class="footer-content">
+  <div class="footer-top">
+    <div class="footer-col">
+      <span class="wordmark"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></span>
+      <p>Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>Oslo, Norway</p>
+    </div>
+    <div class="footer-col">
+      <h4>Enquiries</h4>
+      <a href="#">General</a>
+      <a href="#">Trips</a>
+      <a href="#">FAQs</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="library.html">All Episodes</a>
+      <a href="sitemap.html">Sitemap</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Links</h4>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="#">Passion</a>
+      <a href="#">Mission Statement</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Terms &amp; Conditions</span>
+    <span>Privacy Policy</span>
+    <span>Cookie Policy</span>
+    <span>Paragliding Atlas 2026</span>
+  </div>
+  </div>
+  <div class="footer-graphic">
+    <img src="assets/footer/mountains.png" alt="Paragliding Atlas, touch the sky with glory">
+  </div>
+</footer>
+
+</body>
+</html>
