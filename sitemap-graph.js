@@ -56,6 +56,8 @@
   /* Primary parent, so the two-parent series still form a clean tree.
      The second edge is drawn as a cross link on top of it. */
   function primary(id) {
+    var n = byId[id];
+    if (n && n.via && byId[n.via] && byId[n.via].shown && byId[n.via].open) return n.via;
     var ps = parents[id] || [];
     for (var i = 0; i < ps.length; i++) if (byId[ps[i]].shown) return ps[i];
     return ps[0];
@@ -318,7 +320,14 @@
       /* Opening carries you forward to the new branch. Folding away pulls back
          to the parent, so you land where you came from with this node and its
          siblings in view rather than sitting on a node with nothing under it. */
-      focus = n.open ? n.id : ((parents[n.id] || [])[0] || "home");
+      if (n.open) {
+        /* remember the way in, so folding away retraces the path you took
+           rather than the first parent in the data */
+        (kids[n.id] || []).forEach(function (k) { byId[k].via = n.id; });
+        focus = n.id;
+      } else {
+        focus = n.via || (parents[n.id] || [])[0] || "home";
+      }
       recompute(); layout(); settle();
     } else {
       focus = n.id;
