@@ -17,15 +17,15 @@ NAV_FOOTER = """
     </div>
     <div class="footer-col">
       <h4>Enquiries</h4>
-      <a href="#">General</a>
-      <a href="#">Trips</a>
+      <a href="../enquire.html">General</a>
+      <a href="../index.html#destinations">Trips</a>
       <a href="#">FAQs</a>
     </div>
     <div class="footer-col">
       <h4>Quick Links</h4>
-      <a href="#">All Episodes</a>
-      <a href="#">Kenya Tour</a>
-      <a href="#">Contact Us</a>
+      <a href="../library.html">All Episodes</a>
+      <a href="../index.html#destinations">Kenya Tour</a>
+      <a href="../enquire.html">Contact Us</a>
     </div>
     <div class="footer-col">
       <h4>Links</h4>
@@ -58,8 +58,7 @@ NAV_HEADER = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} — Knowledge Base: Paragliding Atlas</title>
 <link rel="icon" type="image/png" href="../assets/logo/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../fonts.css">
 <link rel="stylesheet" href="../styles.css">
 <style>
 {css}

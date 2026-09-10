@@ -1104,6 +1104,31 @@ several exploratory ones. Hand it over with the four URLs.
 the visitor IP to a US company. Self hosting the two font files removes that
 entirely and is the cleanest GDPR improvement available on this site.
 
+## 15. FONTS ARE SELF HOSTED NOW. DO NOT REINTRODUCE GOOGLE FONTS.
+Poppins and DM Sans were loaded from fonts.googleapis.com on every page, which
+sent every visitor's IP to Google before a word was read. The ten weights the
+site uses are now in `assets/fonts/` (124 KB total, latin subset, woff2) and
+declared in `fonts.css` at the root. Zero references to Google Fonts remain.
+`fonts.css` lives at the root next to `assets/`, so its relative `url()` calls
+resolve correctly from any page depth. Pages at depth link `../fonts.css`.
+**Five generators and two templates also had the Google link and were patched.**
+If a new page is added, link `fonts.css`, never the Google stylesheet.
+
+## 16. enquire.html EXISTS. The site-wide dead CTA is gone.
+It has no backend and no form service: submitting composes a message and hands it
+to the visitor's own mail client, so nothing is posted anywhere and no processor
+sits between a pilot and the inbox, which is exactly what the privacy policy
+promises. If a real backend is ever wanted, that is a decision with a data
+processing consequence and the privacy policy must be updated with it.
+General and Contact Us in the footer now point here too.
+
+**Path lesson worth keeping.** Patching footers across templates and generators
+introduced THREE separate depth bugs in one pass: the episode template renders
+into `episodes/` and needs `../`, the kb generator renders into `knowledge-base/`
+and needs `../`, and the sitemap template renders to the ROOT and must not have
+`../` at all. Each was caught only by auditing every relative href and src, not
+just the .html ones. When touching shared chrome, always re-run that audit.
+
 ## DONE (do not redo)
 - **Nine truncated titles, recovered properly (eighth update).** They now live in
   `episode-titles.json`, verbatim from the RSS feed and **keyed by YouTube video

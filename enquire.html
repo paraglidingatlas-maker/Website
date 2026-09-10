@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enquire | Paragliding Atlas</title>
+<meta name="description" content="Ask about a Paragliding Atlas trip. Book a free 30 minute call, message on WhatsApp, or send the details of your flying and what you are after.">
+<link rel="canonical" href="https://paraglidingatlas-maker.github.io/Website/enquire.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Enquire">
+<meta property="og:description" content="Ask about a Paragliding Atlas trip. Book a free 30 minute call, message on WhatsApp, or send the details of your flying and what you are after.">
+<meta property="og:image" content="https://paraglidingatlas-maker.github.io/Website/assets/images/hero.jpg">
+<meta property="og:url" content="https://paraglidingatlas-maker.github.io/Website/enquire.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ContactPage","name":"Enquire","url":"https://paraglidingatlas-maker.github.io/Website/enquire.html","isPartOf":{"@type":"WebSite","name":"Paragliding Atlas","url":"https://paraglidingatlas-maker.github.io/Website/"}}
+</script>
+<link rel="icon" type="image/png" href="assets/logo/favicon.png">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* Enquiry page. Tokens and chrome come from styles.css.
+   The form deliberately has no backend and no third party form service: it
+   composes a message and hands it to the visitor's own email client. Nothing is
+   posted anywhere, so no processor sits between a pilot and an inbox, which is
+   what the privacy policy promises. */
+.enq{--rule:#2b2c33;}
+.enq-hero{padding:clamp(2.8rem,6vw,4.6rem) clamp(1.2rem,5vw,5.5rem) clamp(1.8rem,3vw,2.6rem);}
+.enq-hero h1{font-family:var(--font-display);font-weight:700;color:var(--white);
+  font-size:clamp(2rem,5vw,3.2rem);line-height:1.08;margin:.5rem 0 0;letter-spacing:-.02em;}
+.enq-hero p{color:var(--gray-light);line-height:1.8;margin:1.1rem 0 0;max-width:60ch;}
+
+.enq-wrap{display:grid;grid-template-columns:minmax(0,1fr);gap:2.6rem;
+  padding:0 clamp(1.2rem,5vw,5.5rem) clamp(3rem,7vw,5rem);}
+@media (min-width:62rem){.enq-wrap{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:4rem;align-items:start;}}
+
+.enq-quick{border:1px solid var(--rule);padding:1.6rem;}
+.enq-quick h2{font-family:var(--font-display);font-weight:600;color:var(--white);
+  font-size:1.05rem;margin:0 0 .5rem;}
+.enq-quick p{color:var(--gray-light);font-size:.93rem;line-height:1.75;margin:0 0 1.2rem;}
+.enq-quick .row{display:flex;flex-wrap:wrap;gap:.7rem;}
+.enq-aside{border-left:2px solid var(--rule);padding-left:1.3rem;}
+.enq-aside h3{font-family:var(--font-display);font-weight:600;color:var(--white);
+  font-size:.98rem;margin:0 0 .6rem;}
+.enq-aside p{color:var(--gray-light);font-size:.9rem;line-height:1.75;margin:0 0 1.4rem;}
+.enq-aside a{color:var(--orange);}
+
+fieldset{border:none;padding:0;margin:0 0 2rem;}
+legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.02rem;
+  padding:0;margin:0 0 .3rem;}
+.enq-legend-note{color:var(--gray);font-size:.86rem;line-height:1.6;margin:0 0 1.2rem;}
+.enq-field{margin:0 0 1.1rem;}
+.enq-field label{display:block;color:var(--gray-light);font-size:.88rem;margin:0 0 .4rem;}
+.enq-field .opt{color:var(--gray);}
+.enq-field input,.enq-field select,.enq-field textarea{
+  width:100%;background:var(--card);color:var(--white);border:1px solid var(--rule);
+  font-family:var(--font-body);font-size:.95rem;padding:.7rem .8rem;border-radius:0;}
+.enq-field textarea{min-height:8rem;resize:vertical;line-height:1.7;}
+.enq-field input:focus,.enq-field select:focus,.enq-field textarea:focus{
+  outline:none;border-color:var(--orange);}
+.enq-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:0 1.1rem;}
+
+.enq-consent{display:flex;gap:.75rem;align-items:flex-start;border:1px solid var(--rule);
+  padding:1.1rem 1.2rem;margin:0 0 1.5rem;}
+.enq-consent input{margin-top:.25rem;flex:0 0 auto;width:1rem;height:1rem;accent-color:var(--orange);}
+.enq-consent label{color:var(--gray-light);font-size:.88rem;line-height:1.7;}
+.enq-consent a{color:var(--orange);}
+.enq-status{color:var(--gray-light);font-size:.9rem;line-height:1.7;margin:1rem 0 0;min-height:1.2rem;}
+.enq-status.bad{color:var(--orange);}
+</style>
+</head>
+<body class="enq">
+
+<div class="page-wrap">
+
+<nav>
+  <span class="nav-corner-l"></span>
+  <span class="nav-corner-r"></span>
+  <span class="nav-coords">59.9139&deg;N &middot; 10.7522&deg;E</span>
+  <a href="index.html" class="wordmark"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></a>
+  <div class="nav-links">
+    <a href="about.html">About Us</a>
+    <span class="nav-sep">|</span>
+    <a href="knowledge-base.html">Knowledge Base</a>
+    <span class="nav-sep">|</span>
+    <a href="podcast.html">Podcast</a>
+    <span class="nav-sep">|</span>
+    <a href="sitemap.html">Sitemap</a>
+  </div>
+  <a href="enquire.html" class="nav-cta" data-hover><span>Enquire Now</span></a>
+</nav>
+<div class="nav-chevron"></div>
+
+<header class="enq-hero">
+  <span class="kicker">Get In Touch</span>
+  <h1>Tell us about your flying</h1>
+  <p>The more you tell us about where you are as a pilot, the more useful our answer will be. There are no wrong answers here, and telling us you are less current than you would like is genuinely more helpful than telling us you are fine.</p>
+</header>
+
+<div class="enq-wrap">
+  <div>
+    <div class="enq-quick">
+      <h2>If you would rather just talk</h2>
+      <p>A 30 minute call, no obligation and nothing to prepare, is usually faster than any form. So is a message.</p>
+      <div class="row">
+        <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" class="btn-solid" data-hover><span>Book a Call</span></a>
+        <a href="https://wa.me/4796757456" target="_blank" rel="noopener" class="listen-btn" data-hover><span>WhatsApp</span></a>
+      </div>
+    </div>
+
+    <form id="enqForm" style="margin-top:2.4rem;">
+      <fieldset>
+        <legend>About you</legend>
+        <p class="enq-legend-note">So we know who we are replying to.</p>
+        <div class="enq-row">
+          <div class="enq-field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+          </div>
+          <div class="enq-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="enq-field">
+          <label for="country">Where you are based <span class="opt">(optional)</span></label>
+          <input type="text" id="country" name="country" autocomplete="country-name">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Which trip</legend>
+        <p class="enq-legend-note">Not sure yet is a perfectly good answer, and often the right one.</p>
+        <div class="enq-field">
+          <label for="trip">Destination</label>
+          <select id="trip" name="trip">
+            <option>Not sure yet, help me choose</option>
+            <option>Kenya</option>
+            <option>Himalayas</option>
+            <option>Peru</option>
+            <option>Kazakhstan</option>
+          </select>
+        </div>
+        <div class="enq-field">
+          <label for="when">When you are hoping to travel <span class="opt">(optional)</span></label>
+          <input type="text" id="when" name="when" placeholder="A season or a rough window is fine">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Your flying</legend>
+        <p class="enq-legend-note">This is the part that decides whether a trip is right for you, so please be straight with us. It is used to answer your enquiry, nothing else.</p>
+        <div class="enq-row">
+          <div class="enq-field">
+            <label for="rating">Licence or rating</label>
+            <input type="text" id="rating" name="rating" placeholder="IPPI 2, APPI, national licence" required>
+          </div>
+          <div class="enq-field">
+            <label for="total">Total airtime</label>
+            <input type="text" id="total" name="total" placeholder="Hours, roughly" required>
+          </div>
+        </div>
+        <div class="enq-row">
+          <div class="enq-field">
+            <label for="recent">Hours in the last 12 months</label>
+            <input type="text" id="recent" name="recent" required>
+          </div>
+          <div class="enq-field">
+            <label for="wing">Wing you fly</label>
+            <input type="text" id="wing" name="wing" placeholder="Make, model, EN class">
+          </div>
+        </div>
+        <div class="enq-field">
+          <label for="xc">Cross country and SIV experience <span class="opt">(optional)</span></label>
+          <input type="text" id="xc" name="xc" placeholder="Longest flight, any SIV courses, thermalling comfort">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>What you want from it</legend>
+        <p class="enq-legend-note">Anything you would like us to know, and anything you would like to ask.</p>
+        <div class="enq-field">
+          <label for="message">Your message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+      </fieldset>
+
+      <div class="enq-consent">
+        <input type="checkbox" id="consent" name="consent" required>
+        <label for="consent">I am happy for Paragliding Atlas to use these details to answer my enquiry. I understand they are kept for up to 24 months if this does not become a booking, that they are not sold or shared for marketing, and that I can ask for them to be deleted at any time. See the <a href="privacy-policy.html">Privacy Policy</a>.</label>
+      </div>
+
+      <button type="submit" class="btn-solid" data-hover><span>Send enquiry</span></button>
+      <p class="enq-status" id="enqStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+
+  <aside class="enq-aside">
+    <h3>What happens to this</h3>
+    <p>This form has no database behind it. Pressing send opens your own email app with the message written out, and you send it yourself. Nothing is posted to us or to any form service on the way, so there is no third party holding your details.</p>
+    <p>If your device has no email app set up, the button will tell you, and you can copy the text or use WhatsApp instead.</p>
+
+    <h3>What we do with it</h3>
+    <p>We read it and reply, usually within a couple of days. We do not add you to a mailing list from an enquiry, and we do not pass your details to anyone. The full detail is in the <a href="privacy-policy.html">Privacy Policy</a>.</p>
+
+    <h3>Before you book</h3>
+    <p>Worth reading either way: the <a href="terms.html">booking terms</a>, and the <a href="participant-agreement.html">participant agreement</a> that every pilot completes before a trip. Both are published in full rather than sprung on you later.</p>
+
+    <h3>Not ready to enquire?</h3>
+    <p>The <a href="library.html">episode library</a> has 71 conversations with pilots, designers and instructors, transcripts included. <a href="destinations/kenya.html">Kenya</a> is the trip page with the most detail on it.</p>
+  </aside>
+</div>
+
+</div><!-- /.page-wrap -->
+
+<footer>
+  <div class="footer-content">
+  <div class="footer-top">
+    <div class="footer-col">
+      <span class="wordmark"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></span>
+      <p>Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>Oslo, Norway</p>
+    </div>
+    <div class="footer-col">
+      <h4>Enquiries</h4>
+      <a href="enquire.html">General</a>
+      <a href="index.html#destinations">Trips</a>
+      <a href="#">FAQs</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="library.html">All Episodes</a>
+      <a href="index.html#destinations">Kenya Tour</a>
+      <a href="enquire.html">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Links</h4>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="#">Passion</a>
+      <a href="#">Mission Statement</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <a href="terms.html">Terms &amp; Conditions</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="cookie-policy.html">Cookie Policy</a>
+    <span>Paragliding Atlas 2026</span>
+  </div>
+  </div>
+  <div class="footer-graphic">
+    <img src="assets/footer/mountains.png" alt="Paragliding Atlas &mdash; Touch the Sky with Glory">
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+/* Compose the enquiry and hand it to the visitor's own mail client.
+   No fetch, no form service, no data leaving the browser except through the
+   email the person sends themselves. */
+(function () {
+  var form = document.getElementById('enqForm');
+  if (!form) return;
+  var status = document.getElementById('enqStatus');
+  var TO = 'aninder@paraglidingatlas.com';
+
+  function val(id) {
+    var el = document.getElementById(id);
+    return el && el.value ? el.value.trim() : '';
+  }
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    var lines = [
+      'Name: ' + val('name'),
+      'Email: ' + val('email'),
+      'Based in: ' + (val('country') || 'not given'),
+      '',
+      'Trip: ' + val('trip'),
+      'Timing: ' + (val('when') || 'not given'),
+      '',
+      'Licence or rating: ' + val('rating'),
+      'Total airtime: ' + val('total'),
+      'Hours last 12 months: ' + val('recent'),
+      'Wing: ' + (val('wing') || 'not given'),
+      'XC and SIV: ' + (val('xc') || 'not given'),
+      '',
+      'Message:',
+      val('message'),
+      '',
+      'Consent given to use these details to answer this enquiry.'
+    ];
+
+    var subject = 'Trip enquiry: ' + val('trip') + ' — ' + val('name');
+    var href = 'mailto:' + TO
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(lines.join('\n'));
+
+    if (href.length > 1900) {
+      status.className = 'enq-status bad';
+      status.textContent = 'That message is a little long for an email link. Please shorten it, or send it straight to ' + TO + '.';
+      return;
+    }
+
+    status.className = 'enq-status';
+    status.textContent = 'Opening your email app. If nothing happens, your device may have no mail client set up: email ' + TO + ' or use WhatsApp above.';
+    window.location.href = href;
+  });
+})();
+</script>
+</body>
+</html>

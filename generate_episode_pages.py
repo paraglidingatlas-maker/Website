@@ -68,8 +68,7 @@ TEMPLATE = """<!DOCTYPE html>
 </script>
 
 <link rel="icon" type="image/png" href="../assets/logo/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../fonts.css">
 <link rel="stylesheet" href="../styles.css">
 <style>
   .ep-hero{{padding:clamp(3rem,7vw,4.5rem) clamp(1.5rem,5vw,4rem) 0;background:var(--bg);}}

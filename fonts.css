@@ -1,0 +1,34 @@
+/* Self hosted webfonts.
+   These were loaded from fonts.googleapis.com on every page, which sent every
+   visitor's IP address to Google before a single word was read. Serving them
+   from our own origin removes that transfer entirely, and is also faster:
+   no extra DNS lookup, no extra TLS handshake, no render-blocking round trip
+   to a third party.
+
+   Only the weights the site actually uses are included. Latin subset only.
+   To change a weight, add the file from @fontsource and add a block here.
+   font-display:swap so text is readable immediately rather than invisible. */
+
+/* Poppins, the display face: 400 500 600 700 800 */
+@font-face{font-family:"Poppins";font-style:normal;font-weight:400;font-display:swap;
+  src:url("assets/fonts/poppins-latin-400-normal.woff2") format("woff2");}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;
+  src:url("assets/fonts/poppins-latin-500-normal.woff2") format("woff2");}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;
+  src:url("assets/fonts/poppins-latin-600-normal.woff2") format("woff2");}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:700;font-display:swap;
+  src:url("assets/fonts/poppins-latin-700-normal.woff2") format("woff2");}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:800;font-display:swap;
+  src:url("assets/fonts/poppins-latin-800-normal.woff2") format("woff2");}
+
+/* DM Sans, the body face: 300 400 500 600 700 */
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:300;font-display:swap;
+  src:url("assets/fonts/dm-sans-latin-300-normal.woff2") format("woff2");}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:400;font-display:swap;
+  src:url("assets/fonts/dm-sans-latin-400-normal.woff2") format("woff2");}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:500;font-display:swap;
+  src:url("assets/fonts/dm-sans-latin-500-normal.woff2") format("woff2");}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:600;font-display:swap;
+  src:url("assets/fonts/dm-sans-latin-600-normal.woff2") format("woff2");}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:700;font-display:swap;
+  src:url("assets/fonts/dm-sans-latin-700-normal.woff2") format("woff2");}

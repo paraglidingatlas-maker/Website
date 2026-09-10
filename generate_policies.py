@@ -41,9 +41,7 @@ HEAD = """<!DOCTYPE html>
 {{"@context":"https://schema.org","@type":"WebPage","name":"{title}","url":"{base}{slug}","description":"{desc}","isPartOf":{{"@type":"WebSite","name":"Paragliding Atlas","url":"{base}"}}}}
 </script>
 <link rel="icon" type="image/png" href="assets/logo/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="policies.css">
 </head>
@@ -94,7 +92,7 @@ HEAD = """<!DOCTYPE html>
     </div>
     <div class="footer-col">
       <h4>Enquiries</h4>
-      <a href="#">General</a>
+      <a href="enquire.html">General</a>
       <a href="index.html#destinations">Trips</a>
       <a href="#">FAQs</a>
     </div>
@@ -102,7 +100,7 @@ HEAD = """<!DOCTYPE html>
       <h4>Quick Links</h4>
       <a href="library.html">All Episodes</a>
       <a href="index.html#destinations">Kenya Tour</a>
-      <a href="#">Contact Us</a>
+      <a href="enquire.html">Contact Us</a>
     </div>
     <div class="footer-col">
       <h4>Links</h4>
