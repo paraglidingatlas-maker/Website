@@ -830,7 +830,7 @@ Open, roughly in order of value:
    **Standing instruction unchanged: scan any new batch of transcripts for
    language before publishing them.**
 
-4. **Transcripts: 65 of 86 pages now have one, up from 46 (ninth update).**
+4. **Transcripts: 66 of 86 pages now have one, up from 46 (ninth update).**
    19 were pulled from Spotify's own `podcast:transcript` tags in the RSS feed,
    converted from SRT, and verified before writing: English by stopword count,
    plausible length, and for the three fuzzy title matches the pairing was
@@ -845,6 +845,28 @@ Open, roughly in order of value:
      the Oslo cinematics) rather than podcast episodes.
    The only routes left for those are Autotekst, or leaving them as player-only
    pages, which is a perfectly good outcome for a cinematic reel.
+
+   **DO NOT retry the Spotify CDN trick on the missing ones. It was tested and it
+   fails.** The transcript URL is
+   `transcript-files.spotifycdn.com/{showID}/{publicEpisodeID}/transcript.srt`,
+   the show ID is `16jBM3RfjVERukNHJrIRec`, and the episode segment is confirmed
+   to be the public Spotify episode ID. Even so, an episode with no
+   `podcast:transcript` tag in the RSS has NO public file: Robbie Whittall's real
+   episode ID was tested against seven path variants with a known-good control
+   alongside it, and every one returned 404 while the control returned 200.
+   Spotify only writes a public copy when it also writes the RSS tag. The
+   in-app transcript comes from an authenticated endpoint that is not reachable.
+   This is the same wall as the auto-chapters.
+
+   **Why syndication stopped is worth chasing with Spotify.** Every episode up to
+   27 Apr 2026 published a transcript tag; nothing from 29 Jun 2026 onwards has.
+   There is a two month publishing gap between those dates. If that is fixed at
+   source it back-fills six episodes and every future one automatically.
+
+   **The manual route works and is cheap.** The user downloaded Robbie Whittall's
+   transcript from the Spotify app and uploaded the .srt; it converted, verified
+   and generated in one pass (1,695 cues, 16,953 words). Any of the remaining
+   seven can be done the same way.
 
 5. **FAQ block on episode pages.** `.cd-faq` exists in the CSS and the prototype
    but is deliberately unbuilt. The user has a specific plan for it and wants it
