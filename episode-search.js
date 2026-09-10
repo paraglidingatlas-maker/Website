@@ -26,7 +26,7 @@
       resultsBox.innerHTML = matches
         .map(
           (ep) =>
-            `<a class="ep-search-result" href="https://www.youtube.com/watch?v=${ep.video_id}" target="_blank" rel="noopener">${ep.title}</a>`
+            `<a class="ep-search-result" href="${ep.page ? "episodes/" + ep.page + ".html" : "https://www.youtube.com/watch?v=" + ep.video_id}"${ep.page ? "" : ` target="_blank" rel="noopener"`}>${ep.title}</a>`
         )
         .join('');
     }

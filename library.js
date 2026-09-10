@@ -153,8 +153,9 @@
 
   function card(e) {
     var meta = e.secs ? hhmm(e.secs) : LIB_TOPICS[e.topic];
-    return '<a class="ep" href="https://www.youtube.com/watch?v=' + e.id +
-      '" target="_blank" rel="noopener">' +
+    return '<a class="ep" href="' + (e.page ? 'episodes/' + e.page + '.html'
+      : 'https://www.youtube.com/watch?v=' + e.id) + '"' +
+      (e.page ? '' : ' target="_blank" rel="noopener"') + '>' +
       '<div class="th"><img loading="lazy" src="https://i.ytimg.com/vi/' + e.id +
       '/hqdefault.jpg" alt=""></div>' +
       "<h4>" + esc(e.title) + "</h4>" +
