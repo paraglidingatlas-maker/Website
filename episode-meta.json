@@ -263,7 +263,10 @@
     "published": "",
     "published_label": "",
     "duration_label": "63 min",
-    "speakers": {},
+    "speakers": {
+      "0": "Aninder",
+      "1": "Eric Roussel"
+    },
     "summary": "",
     "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
     "chapters": [],
@@ -286,7 +289,8 @@
     "tags": [
       "Brand Stories"
     ],
-    "_transcript_source": "Spotify's own auto-generated transcript for this episode, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. This is a transcript of the real English audio, not a translation of the French Whisper output. It carries real timestamps but NO speaker diarisation, unlike the Autotekst transcripts, so this page has no per line speaker attribution. Machine transcription, so technical vocabulary can drift."
+    "_transcript_source": "Spotify's own auto-generated transcript for this episode, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. This is a transcript of the real English audio, not a translation of the French Whisper output. Spotify carries no speaker diarisation, so the speaker labels on this page were INFERRED from the text of a two person interview by tools/infer_speakers_eric.py, not taken from the audio. The page says so. Machine transcription, so technical vocabulary can drift.",
+    "_speakers_inferred": true
   },
   {
     "slug": "carabiner-fatigue-finsterwalder-charly",

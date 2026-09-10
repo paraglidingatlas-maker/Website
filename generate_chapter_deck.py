@@ -252,8 +252,14 @@ def note_html(meta):
     """
     src = (meta.get("_transcript_source") or "")
     if "Spotify" in src:
-        text = ("Automatic captions from Spotify. No speaker labels, and may "
-                "contain recognition errors.")
+        text = ("Automatic captions from Spotify. May contain recognition errors.")
+        if meta.get("_speakers_inferred"):
+            # Say it plainly. These labels look identical to the diarised ones on
+            # every other page, so without this line a reader cannot tell which
+            # pages carry real speaker data and which carry a reading of the text.
+            text += (" Spotify provides no speaker labels, so who is speaking has "
+                     "been inferred from the conversation rather than taken from "
+                     "the audio, and may be wrong in places.")
     else:
         text = ("Automatic captions by Autotekst using OpenAI Whisper V3. May "
                 "contain recognition errors.")

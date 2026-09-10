@@ -816,6 +816,16 @@ Open, roughly in order of value:
    currently reads as MORE authoritative than the pages that are actually
    better sourced. Decide where provenance should live: in the VTT, or emitted
    by the generator for every page.**
+   **Speaker labels on this page are INFERRED, not diarised (ninth update).**
+   The user asked for them and agreed the page must say so. Spotify supplies no
+   diarisation, so `tools/infer_speakers_eric.py` anchors 58 turn boundaries to
+   exact phrases where the speaker changes, read off the text of a two person
+   interview, and splits cues at those points. A missing anchor is a hard error,
+   never a silent mislabel. Result: 59 turns, 25 percent host and 75 percent
+   guest by word count, and the transcript word count is unchanged at 11,919.
+   The page's provenance note says the speakers were inferred and may be wrong.
+   **If a real Autotekst transcript is ever produced for this episode it should
+   replace all of this**, since that carries diarisation from the audio.
    **Standing instruction unchanged: scan any new batch of transcripts for
    language before publishing them.**
 
