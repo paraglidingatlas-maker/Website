@@ -1114,6 +1114,17 @@ resolve correctly from any page depth. Pages at depth link `../fonts.css`.
 **Five generators and two templates also had the Google link and were patched.**
 If a new page is added, link `fonts.css`, never the Google stylesheet.
 
+**BOTH subsets are shipped, and that was a bug on the first attempt.** Google's
+stylesheet served latin AND latin-ext, each with a `unicode-range`, so a browser
+fetched latin-ext only on pages that needed it. The first self hosting pass
+shipped latin only, which silently broke real guest names: Aljaz Valic, Frantisek
+Pavlousek and Goran Dimiskovski carry carons and an acute that live in latin-ext,
+and those letters would have dropped to a fallback face mid word. 23 occurrences
+across the site. `fonts.css` now declares both subsets with the same
+unicode-ranges Google used, so the behaviour matches the old setup and latin-ext
+is still only downloaded when required. Total 204 KB for 20 files.
+**If a weight is ever added, add BOTH the latin and the latin-ext file.**
+
 ## 16. enquire.html EXISTS. The site-wide dead CTA is gone.
 It has no backend and no form service: submitting composes a message and hands it
 to the visitor's own mail client, so nothing is posted anywhere and no processor
