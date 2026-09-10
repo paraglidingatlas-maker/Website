@@ -15,6 +15,14 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var SIZE = { root: 17, section: 13, category: 10, series: 8.5, episode: 5 };
 
+  /* small helper the marker drawing relies on */
+  function el(parent, tag, attrs) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    parent.appendChild(e);
+    return e;
+  }
+
   var kids = {}, parents = {}, byId = {};
   data.links.forEach(function (l) {
     (kids[l.s] = kids[l.s] || []).push(l.t);
