@@ -313,11 +313,15 @@
 
   function hit(n) {
     var has = (kids[n.id] || []).length;
-    focus = n.id;
     if (has) {
       n.open = !n.open;
+      /* Opening carries you forward to the new branch. Folding away pulls back
+         to the parent, so you land where you came from with this node and its
+         siblings in view rather than sitting on a node with nothing under it. */
+      focus = n.open ? n.id : ((parents[n.id] || [])[0] || "home");
       recompute(); layout(); settle();
     } else {
+      focus = n.id;
       settle();          /* no children: just travel to it */
     }
     info(n);
