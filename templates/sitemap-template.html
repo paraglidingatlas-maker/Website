@@ -92,6 +92,18 @@
 .sm-signal{pointer-events:none;}
 .sm-sig{fill:var(--orange);}
 .sm-sig-tail{stroke:var(--orange);stroke-width:1;stroke-linecap:round;fill:none;}
+
+/* Arrival: the destination node itself warms and settles back. Nothing is
+   drawn over it, and the label keeps its own hover colour separately. */
+.sm-activated .sm-glyph{animation:smWake 1250ms cubic-bezier(.2,.7,.2,1) both;}
+@keyframes smWake{
+  0%{stroke:rgba(180,180,180,0.5);}
+  18%{stroke:var(--orange);}
+  100%{stroke:rgba(180,180,180,0.5);}
+}
+@media (prefers-reduced-motion:reduce){
+  .sm-activated .sm-glyph{animation:none;}
+}
 @media (prefers-reduced-motion:reduce){
   }
 /* a node with nothing under it is a destination, so mark it as one */
