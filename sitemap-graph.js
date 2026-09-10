@@ -59,7 +59,7 @@
   }
 
   var W = 900, H = 640, view = { x: 0, y: 0, k: 1 };
-  var COLW = 268, ROWH = 48;
+  var COLW = 268, ROWH = 62;
 
   /* Primary parent, so the two-parent series still form a clean tree.
      The second edge is drawn as a cross link on top of it. */
@@ -184,11 +184,13 @@
       fill: "rgba(246,244,244,0.85)" });
   }
 
-  function shape(n, into, reach) {
+  function shape(n, into, reach, extra) {
     var r = SIZE[n.kind];
     var x0 = -(r * 1.35 + 8);
-    el(into, "rect", { x: x0, y: -(r + 9), width: (reach || r * 1.35 + 8) - x0,
-      height: (r + 9) * 2, "class": "sm-hit", fill: "transparent" });
+    var h = (r + 9) * 2 + (extra || 0);
+    el(into, "rect", { x: x0, y: -(r + 9) - (extra || 0) / 2,
+      width: (reach || r * 1.35 + 8) - x0, height: h,
+      "class": "sm-hit", fill: "transparent" });
     if (n.kind === "root")          warden(into, r, false);
     else if (n.kind === "section")  warden(into, r, true);
     else if (n.kind === "category") interceptor(into, r, 0);
@@ -197,12 +199,35 @@
   }
 
   /* approximate text width: the body face runs about 0.55em per character */
+  var MAXCH = 44;          /* wrap past this, never shorten */
+
+  function wrap(text) {
+    if (text.length <= MAXCH) return [text];
+    var words = text.split(" "), lines = [], cur = "";
+    words.forEach(function (w) {
+      if (!cur.length) { cur = w; return; }
+      if ((cur + " " + w).length <= MAXCH) cur += " " + w;
+      else { lines.push(cur); cur = w; }
+    });
+    if (cur.length) lines.push(cur);
+    /* a single word longer than the limit still has to break somewhere */
+    var out = [];
+    lines.forEach(function (l) {
+      while (l.length > MAXCH) { out.push(l.slice(0, MAXCH)); l = l.slice(MAXCH); }
+      out.push(l);
+    });
+    return out;
+  }
+
   function labelInfo(n, t) {
     var pad = SIZE[n.kind] * 1.35 + 8;
     var showing = (n.kind !== "episode" || t === 0);
-    if (!showing) return { pad: pad, end: pad, showing: false };
+    if (!showing) return { pad: pad, end: pad, showing: false, lines: [] };
     var fs = n.depth < 2 ? 12 : 11;
-    return { pad: pad, end: pad + 4 + n.label.length * fs * 0.55, showing: true };
+    var lines = wrap(n.label);
+    var widest = lines.reduce(function (a, b) { return b.length > a.length ? b : a; }, "");
+    return { pad: pad, end: pad + 4 + widest.length * fs * 0.55,
+             showing: true, lines: lines, fs: fs };
   }
 
   function draw() {
@@ -281,7 +306,9 @@
       grp.setAttribute("aria-label",
         n.label + (has ? ", " + has + " below" : ""));
       var li = labelInfo(n, t[n.id]);
-      shape(n, grp, li.end + 6);
+      var lh0 = (li.lines && li.lines.length > 1)
+        ? (li.lines.length - 1) * li.fs * 1.22 : 0;
+      shape(n, grp, li.end + 6, lh0);
 
       if (n.kind !== "episode" || t[n.id] === 0) {
         var pad = li.pad;
@@ -294,7 +321,15 @@
         tx.setAttribute("class", "sm-label");
         tx.setAttribute("x", pad + 4);
         tx.setAttribute("dy", "0.34em");
-        tx.textContent = n.label;
+        var ls = li.lines, lh = li.fs * 1.22;
+        tx.setAttribute("y", n.y - (ls.length - 1) * lh / 2);
+        ls.forEach(function (line, i) {
+          var sp = document.createElementNS(NS, "tspan");
+          sp.setAttribute("x", n.x + li.pad + 4);
+          if (i) sp.setAttribute("dy", lh);
+          sp.textContent = line;
+          tx.appendChild(sp);
+        });
         grp.appendChild(tx);
       }
 
