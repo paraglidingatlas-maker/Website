@@ -734,26 +734,36 @@ Open, roughly in order of value:
      Batch 8 to 10 episodes per session.
    - No model upgrade needed; this is not a hard reasoning task.
 
-3. **Transcripts for the remaining 40 episodes.** No transcript exists for them.
+3. **Eric Roussel transcript is in French.** Whisper V3 misdetected the language
+   on an English episode and produced a full French transcript, 12,809 words of
+   it. All 52 transcripts were scanned; this is the only one affected. The file
+   is quarantined in `transcripts/_needs-retranscription/` and the page now
+   carries the player with no transcript. Fix: re-run that episode through
+   Autotekst with the language forced to English, drop the result into
+   `transcripts/brand-stories-neo-eric-roussel.vtt`, restore its chapters in
+   `episode-meta.json`, and rerun the generator. **Scan any new batch of
+   transcripts for language before publishing them.**
+
+4. **Transcripts for the remaining 40 episodes.** No transcript exists for them.
    The 52 that do exist came from the user's Drive folder. Anything new needs
    the same treatment (see the transcripts section above).
 
-4. **FAQ block on episode pages.** `.cd-faq` exists in the CSS and the prototype
+5. **FAQ block on episode pages.** `.cd-faq` exists in the CSS and the prototype
    but is deliberately unbuilt. The user has a specific plan for it and wants it
    done before the project wraps. DO NOT invent FAQ content.
 
-5. **Guest roles.** Only 2 of 46 could be extracted from transcripts. Either the
+6. **Guest roles.** Only 2 of 46 could be extracted from transcripts. Either the
    user supplies one line per guest, or the field is dropped from the design.
 
-6. **Six podcast-only episodes have no page** because they are not in the
+7. **Six podcast-only episodes have no page** because they are not in the
    YouTube export: Damien Lacaze, Gin Seok Song, Maxime Pinot, the parakites
    episode, Mastering the Unknown, the pre-flight rituals one. Nine globe pins
    also still point at the generic Spotify show link for the same reason.
 
-7. **Thin series.** Weather Patterns has 1 episode, Storytellers 2, Sky Gods 3.
+8. **Thin series.** Weather Patterns has 1 episode, Storytellers 2, Sky Gods 3.
    Opening one of those on the sitemap or library feels empty.
 
-8. **Site-wide chrome treatment.** Three full page mockups were produced:
+9. **Site-wide chrome treatment.** Three full page mockups were produced:
    `full-page-treatment-comparison.html` (A rounded soft, B machined HUD,
    C flat HUD as live). The recommendation was B: the same tactile depth as A
    but expressed in the site's existing square-cornered bracket language, so the

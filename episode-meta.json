@@ -263,34 +263,10 @@
     "published": "",
     "published_label": "",
     "duration_label": "63 min",
-    "speakers": {
-      "0": "Aninder",
-      "1": "Eric Roussel"
-    },
+    "speakers": {},
     "summary": "",
     "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "at": "00:00:00"
-      },
-      {
-        "title": "Vendre. C'est aussi ce que je veux faire avec le produit. Qui va…",
-        "at": "00:21:23"
-      },
-      {
-        "title": "Il y a un Choroïd, pourquoi ne pas aller chez eux ?",
-        "at": "00:28:00"
-      },
-      {
-        "title": "Tombait avec un mousse... Qu'est-ce que c'est un mousse ?",
-        "at": "00:33:41"
-      },
-      {
-        "title": "C'est ce que vous dites ?",
-        "at": "00:40:19"
-      }
-    ],
+    "chapters": [],
     "guest_links": [],
     "resources": [],
     "related": [
@@ -309,7 +285,8 @@
     ],
     "tags": [
       "Brand Stories"
-    ]
+    ],
+    "_needs_retranscription": "Whisper misdetected the language and produced a French transcript for an English episode. The raw file is kept in transcripts/_needs-retranscription/ pending a re-run with the language forced to English. Until then this page carries the player without a transcript."
   },
   {
     "slug": "carabiner-fatigue-finsterwalder-charly",
