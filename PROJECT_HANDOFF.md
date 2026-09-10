@@ -770,7 +770,7 @@ Open, roughly in order of value:
    video id, or podcast-only handling.
 4. **Guest roles**: 2 of 46 could be extracted from transcripts. Either the user
    supplies a line per guest or the field is dropped from the design.
-5. **The nine titles** above.
+5. **The nine titles** above. DONE, see the eighth update.
 6. **Library and Knowledge Base still link episodes to YouTube**, not to the new
    episode pages. Pointing them at the local pages is a small change.
 7. Thin series: Weather Patterns has 1 episode, Storytellers 2, Sky Gods 3.
@@ -798,29 +798,26 @@ Open, roughly in order of value:
      Batch 8 to 10 episodes per session.
    - No model upgrade needed; this is not a hard reasoning task.
 
-3. **Eric Roussel transcript is in French.** Whisper V3 misdetected the language
-   on an English episode and produced a full French transcript, 12,809 words of
-   it. All 52 transcripts were scanned; this is the only one affected. The file
-   is quarantined in `transcripts/_needs-retranscription/` and the page now
-   carries the player with no transcript. Fix: re-run that episode through
-   Autotekst with the language forced to English, drop the result into
-   `transcripts/brand-stories-neo-eric-roussel.vtt`, restore its chapters in
-   `episode-meta.json`, and rerun the generator. **Scan any new batch of
-   transcripts for language before publishing them.**
-
-   The user asked whether the French could simply be translated back. It can,
-   but the French is ALREADY a translation of English speech, so translating it
-   back produces paraphrase, not a transcript, attributed to a named real person
-   who did not say those words. That matters here because he is a gear designer
-   discussing materials, where a term drifting changes the meaning. Options, in
-   order of preference:
-   a) re-run the audio with the language forced to English (the only route to a
-      real transcript);
-   b) back-translate and label the page clearly as a translation, not a
-      transcript, so nobody quotes it as his words;
-   c) leave the page with the player and no transcript, which is where it is now.
-   If (b) is chosen it needs its own session: 12,809 words is too much to do
-   carefully at the tail end of a long chat.
+3. **Eric Roussel transcript. DONE (eighth update), by a route that was not on
+   this list.** With `anchor.fm` reachable, the RSS turned out to carry a
+   `podcast:transcript` `.srt` for this episode on Spotify's CDN. It was checked
+   before use (1,374 English stopwords, zero French), so it is a transcript of
+   the real English audio, not a back-translation. Converted to WebVTT, 1,197
+   cues, 11,918 words, at `transcripts/brand-stories-neo-eric-roussel.vtt`. The
+   French file is removed. Chapters left empty: this episode's show notes are
+   prose with no topic list, so there was nothing to derive them from.
+   **Two caveats recorded in `episode-meta.json` under `_transcript_source`:**
+   Spotify transcripts carry NO speaker diarisation, so this page has no per
+   line speaker attribution where the other 46 do; and machine transcription
+   drifts on technical vocabulary (the opening line reads "with the choroid"
+   where the word is almost certainly "shroud"). **Still open: the other 46
+   pages carry an inline "[Automatic captions by Autotekst...]" note that comes
+   from inside the Autotekst VTT itself. This page has no such note, so it
+   currently reads as MORE authoritative than the pages that are actually
+   better sourced. Decide where provenance should live: in the VTT, or emitted
+   by the generator for every page.**
+   **Standing instruction unchanged: scan any new batch of transcripts for
+   language before publishing them.**
 
 4. **Transcripts for the remaining 40 episodes.** No transcript exists for them.
    The 52 that do exist came from the user's Drive folder. Anything new needs
@@ -848,7 +845,65 @@ Open, roughly in order of value:
    site does not end up with a fourth visual dialect. NOT YET APPLIED. Would be
    nav bar first, then buttons and pills, content surfaces left flat.
 
+## NEW OPEN ITEMS (eighth update, 2026-09-10) — read these before picking work
+
+A. **`library.html` is invisible to AI crawlers. This is the biggest GEO gap on
+   the site.** It serves 614 characters of text and ZERO episode titles. There
+   is no `<noscript>` index and every tile is injected by JavaScript, so GPTBot,
+   ClaudeBot and PerplexityBot see an empty page where an 86 episode archive
+   should be. This is the same failure the sitemap already guards against
+   (lesson 20) and the same reasoning as the transcript clipping rule. The fix
+   is a `<noscript>` index mirroring the sitemap's. NOT DONE: the page was
+   designed over five rounds and the user should approve adding markup to it.
+
+B. **`globe.js` holds 32 titles punctuated with em-dashes**, against the design
+   system's standing no-em-dash rule. This is where the prettified variants of
+   the nine titles originally came from. Both YouTube and the RSS feed use
+   colons, so the em-dashes are not the user's own punctuation. Fixing the nine
+   cleared all 7 from `episode-meta.json`; `globe.js` was left alone because it
+   is a wider change. Ask before sweeping it.
+
+C. **Doc versus behaviour mismatch on the sitemap.** This file says twice that
+   "clicking NEVER navigates", but `sitemap-graph.js` line 553 navigates on leaf
+   nodes that carry a url (`window.location.href = n.url`, or `window.open` for
+   external). Either the behaviour changed deliberately and the doc was not
+   updated, or the guard was lost. Confirm which before touching it.
+
+D. **Episode numbering (`epno`) is now unblocked and still empty.** The feed's
+   oldest `pubDate` is confirmed as Wed 15 Nov 2023, so chronological numbering
+   from 1 is computable. `published` / `published_label` are also empty on at
+   least some entries and the feed has real dates for all 80.
+
+## What the RSS feed actually gives you (verified, eighth update)
+`curl https://anchor.fm/s/ed1344d8/podcast/rss` returned **200** in this session,
+and `transcript-files.spotifycdn.com` is reachable too. Measured, not assumed:
+- **80 episodes**, all 80 with non-empty show notes, a per-episode image and a
+  duration. Oldest pubDate Wed 15 Nov 2023, newest Tue 08 Sep 2026.
+- **63 carry a `<podcast:transcript>` `.srt`.** All six podcast-only episodes
+  that have no page, and the Eric Roussel episode, are among them.
+- **15 titles exceed YouTube's 100 character cap**, which is why the export cuts
+  nine of them.
+- **Spotify's `.srt` files carry real timestamps but NO speaker labels.** This
+  answers the open question from an earlier handoff. The Chapter Deck design
+  shows "Aninder:" / "Zsolt:" per line; transcripts sourced from Spotify cannot
+  fill that field, only the Autotekst ones can.
+
 ## DONE (do not redo)
+- **Nine truncated titles, recovered properly (eighth update).** They now live in
+  `episode-titles.json`, verbatim from the RSS feed and **keyed by YouTube video
+  ID**, and are applied to the sitemap, `library-data.js`,
+  `episode-search-data.js` and `episode-meta.json`. The old `TITLE_FIX` map in
+  `generate_sitemap.py` is gone: it only protected the sitemap, and keying on the
+  exact truncated string meant one character of drift would silently restore the
+  cut. `youtube_video_ids.json` is deliberately NOT rewritten; it is the raw
+  export and the file every video ID is validated against.
+  Side effect worth watching: `wrap()` breaks at 44 characters, so three sitemap
+  labels now need FOUR lines where the longest previously needed three. At font
+  size 11 that is about 51px against a `ROWH` of 62, so rows do not collide, but
+  the deliberately roomier spacing is tighter for those three.
+- **The three mandated sitemap checks are now real scripts**, run together by
+  `./tools/check_sitemap.sh`. See lesson 25 for why two of them were worthless
+  as originally written.
 - Library page rebuilt (stone slab tiles, topic first).
 - 86 episode pages, one for every video on the channel, transcript or not.
 - Sitemap: 2D tree, Warden + Interceptor marker pack, Roomier spacing.
@@ -859,6 +914,34 @@ Open, roughly in order of value:
   the globe's Spotify titles.
 - GitHub Pages build fixed (.nojekyll) after failing silently for many commits.
 - Transcript clipping, see below.
+
+## Lessons learned, added this session
+25. **A check that runs but exercises nothing is worse than no check, because it
+    buys false confidence.** Both of the non-syntax sitemap checks were written
+    out properly this session and both were initially useless. The static scan
+    for absolute `n.x`/`n.y` flagged sixteen false positives when written as a
+    whole-file grep, because edges, the camera and the layout all use absolute
+    coordinates legitimately; it has to read only the block between the node
+    group's `translate` and its `appendChild`. The headless render was worse: it
+    stubbed the DOM, ran the script, passed, and had rendered nothing but the
+    four collapsed nav nodes, because episode labels only draw when their branch
+    is the focused one. It now renders three times, collapsed, fully expanded,
+    and focused on the series holding the longest title, and it FAILS if the
+    expanded pass produces too few node groups or no multi line label, so it
+    cannot go quiet again.
+26. **Check where a fix actually surfaces before calling it an SEO fix.** The
+    nine truncated titles reached ZERO served HTML: episode pages already
+    carried full titles and the sitemap `<noscript>` was already clean. The fix
+    was still worth doing for correctness and to stop future generators
+    reintroducing the cut, but it moved crawler visibility by nothing. The thing
+    that would actually move it is item A above.
+27. **A "recovered" value is not automatically the user's own.** The nine full
+    titles already in `TITLE_FIX` had been quietly prettified at some earlier
+    point: colons swapped for em-dashes, curly apostrophes straightened,
+    capitalisation altered. Seven of those em-dashes had reached
+    `episode-meta.json` and were being served in episode titles, h1s and JSON-LD,
+    against a design rule stated at the top of this file. Always diff a
+    "recovered" string against the authoritative source rather than trusting it.
 
 ## Transcript clipping: THE RULE THAT MUST NOT BE BROKEN
 Episode transcripts are clipped to 620px with a fade and a "Continue reading"
