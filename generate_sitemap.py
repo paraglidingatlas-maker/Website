@@ -104,7 +104,7 @@ for cat, series_list in CATS:
         for e in sorted([x for x in EPS if x["topic"] == sname], key=lambda x: x["order"]):
             m = PAGE.get(e["id"])
             eid = "ep:" + e["id"]
-            node(eid, e["title"].split("[")[0].strip(), "episode",
+            node(eid, e["title"].split("[")[0].strip()[:60], "episode",
                  ("episodes/%s.html" % m["slug"]) if m else ("https://www.youtube.com/watch?v=%s" % e["id"]), 4)
             link(sid, eid)
 
