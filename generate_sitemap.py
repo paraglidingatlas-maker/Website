@@ -31,6 +31,19 @@ def kb_slug(series):
         if cand in KB_PAGE: return cand
     return None
 
+# Nine titles arrive from the YouTube export already cut at YouTube's own 100
+# character limit, ending in a literal "...". The full text exists on Spotify
+# and in the RSS feed. Add the real title here, keyed by the truncated one, and
+# it will be used everywhere on the sitemap.
+TITLE_FIX = {
+    # "Eddie Colfox : Storytime : Chasing Adventure With the Real OG John Silvester & 3 Decades of Makin...":
+    #     "Eddie Colfox : Storytime : Chasing Adventure With the Real OG John Silvester & 3 Decades of Making ...",
+}
+
+def fix_title(t):
+    t = t.strip()
+    return TITLE_FIX.get(t, t)
+
 def esc(t): return html.escape(str(t), quote=True)
 
 CATS = []
@@ -51,10 +64,10 @@ for cat, series_list in CATS:
             m = PAGE.get(e["id"])
             if m:
                 links.append('<li><a href="episodes/%s.html">%s</a></li>'
-                             % (m["slug"], esc(e["title"].split('[')[0].strip())))
+                             % (m["slug"], esc(fix_title(e["title"].split("[")[0]))))
             else:
                 links.append('<li><a href="https://www.youtube.com/watch?v=%s" target="_blank" rel="noopener" class="sm-out">%s</a></li>'
-                             % (e["id"], esc(e["title"].split('[')[0].strip())))
+                             % (e["id"], esc(fix_title(e["title"].split("[")[0]))))
         withpage = sum(1 for e in eps if e["id"] in PAGE)
         cards.append(
             '  <details class="sm-series">\n'
@@ -104,7 +117,7 @@ for cat, series_list in CATS:
         for e in sorted([x for x in EPS if x["topic"] == sname], key=lambda x: x["order"]):
             m = PAGE.get(e["id"])
             eid = "ep:" + e["id"]
-            node(eid, e["title"].split("[")[0].strip(), "episode",
+            node(eid, fix_title(e["title"].split("[")[0]), "episode",
                  ("episodes/%s.html" % m["slug"]) if m else ("https://www.youtube.com/watch?v=%s" % e["id"]), 4)
             link(sid, eid)
 
