@@ -110,7 +110,7 @@ for cat, series_list in CATS:
 
 GRAPH = json.dumps({"nodes": nodes, "links": links}, ensure_ascii=False)
 
-tmpl = open(os.path.join(ROOT, 'sitemap-template.html')).read()
+tmpl = open(os.path.join(ROOT, 'templates', 'sitemap-template.html')).read()
 out = tmpl.replace('{{TREE}}', "\n".join(rows))
 out = out.replace('{{GRAPH}}', GRAPH)
 out = out.replace('{{EPCOUNT}}', str(len(EPS)))

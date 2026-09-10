@@ -229,7 +229,7 @@ def build(meta, cues, chapters):
     paras = paragraphs(cues)
     words = sum(len(p["text"].split()) for p in paras)
     vid = meta.get("video_id", "")
-    tmpl = open(os.path.join(ROOT, "episode-template.html"), encoding="utf-8").read()
+    tmpl = open(os.path.join(ROOT, "templates", "episode-template.html"), encoding="utf-8").read()
 
     jsonld = {
         "@context": "https://schema.org",
