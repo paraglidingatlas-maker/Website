@@ -77,7 +77,7 @@
   }
 
   /* ---------------- ground layout ---------------- */
-  var DEPTHZ = 430, SIBX = 300;
+  var COLX = 340, ROWZ = 150;
   function layout() {
     var row = 0;
     (function place(id) {
@@ -85,12 +85,12 @@
       var ch = (kids[id] || []).filter(function (k) {
         return byId[k].open !== undefined && primaryRaw(k) === id && shown(byId[k]);
       });
-      n.gz = n.depth * DEPTHZ;
-      if (!ch.length || !n.open) { n.gx = row * SIBX; row++; return; }
+      n.gx = n.depth * COLX;
+      if (!ch.length || !n.open) { n.gz = row * ROWZ; row++; return; }
       var first = row;
       ch.forEach(place);
-      if (row === first) { n.gx = row * SIBX; row++; }
-      else n.gx = (byId[ch[0]].gx + byId[ch[ch.length - 1]].gx) / 2;
+      if (row === first) { n.gz = row * ROWZ; row++; }
+      else n.gz = (byId[ch[0]].gz + byId[ch[ch.length - 1]].gz) / 2;
     })("home");
   }
 
@@ -240,12 +240,12 @@
         fill: "rgba(180,180,180,0.2)" });
 
       var p = byId[primaryRaw(n.id)];
-      var ang = (p && p.pr) ? Math.atan2(q.y - p.pr.y, q.x - p.pr.x) * 180 / Math.PI : 90;
+      var ang = (p && p.pr) ? Math.atan2(q.y - p.pr.y, q.x - p.pr.x) * 180 / Math.PI : 0;
       var sc = q.s * (n.kind === "root" ? 1.9 : n.depth < 3 ? 1.35 : 0.95);
 
       /* a generous transparent target, since a stroked chevron is a thin thing to hit */
-      var pw = 210 * Math.max(q.s, 0.34), ph = 54 * Math.max(q.s, 0.4);
-      el(g, "rect", { x: q.x - pw / 2, y: q.y - ph * 0.78, width: pw, height: ph,
+      el(g, "rect", { x: q.x - 26 * Math.max(q.s, 0.5), y: q.y - 15 * Math.max(q.s, 0.5),
+        width: 190 * Math.max(q.s, 0.34), height: 30 * Math.max(q.s, 0.5),
         fill: "transparent", "class": "sm-pad" });
 
       /* thin stroked chevron rather than a solid delta */
@@ -258,13 +258,13 @@
 
       if (q.s > 0.2 && (tr < 2 || n.depth < 3) && !(moving && tr === 2)) {
         var fs = Math.max(7.5, Math.min(13, 11 * q.s));
-        var tx = el(g, "text", { x: q.x, y: q.y - 20 * q.s, "text-anchor": "middle",
+        var tx = el(g, "text", { x: q.x + 20 * q.s, y: q.y + fs * 0.35,
           fill: tr === 0 ? "rgba(246,244,244,0.92)" : "rgba(180,180,180,0.68)",
           "class": "sm-lbl", "font-family": "var(--mono, monospace)", "font-size": fs,
           "letter-spacing": "0.08em" });
-        tx.textContent = n.label.toUpperCase();
+        tx.textContent = trunc(n.label.toUpperCase(), n.depth > 2 ? 42 : 34);
         if ((kids[n.id] || []).length && !n.open) {
-          var pl = el(g, "text", { x: q.x, y: q.y - 20 * q.s - fs * 1.15, "text-anchor": "middle",
+          var pl = el(g, "text", { x: q.x + 20 * q.s, y: q.y + fs * 1.6,
             fill: "rgba(115,115,115,0.85)", "class": "sm-lbl2", "font-family": "var(--mono, monospace)",
             "font-size": fs * 0.78, "letter-spacing": "0.12em" });
           pl.textContent = "+ " + kids[n.id].length;
@@ -322,9 +322,28 @@
       focus = n.id;
     }
     layout();
-    var f = byId[focus];
-    fly(f.gx, f.gz - DEPTHZ * 0.55, 950);
+    frame(950);
     info(n);
+  }
+
+  /* Centre on the focused node and its visible children, and pull back far
+     enough that the whole group sits inside the frame. */
+  function frame(ms) {
+    var f = byId[focus];
+    if (!f || f.gx === undefined) return;
+    var grp = [f];
+    (kids[focus] || []).forEach(function (k) {
+      var c = byId[k];
+      if (c && c.gx !== undefined && shown(c)) grp.push(c);
+    });
+    var xs = grp.map(function (n) { return n.gx; });
+    var zs = grp.map(function (n) { return n.gz; });
+    var cx = (Math.min.apply(null, xs) + Math.max.apply(null, xs)) / 2;
+    var cz = (Math.min.apply(null, zs) + Math.max.apply(null, zs)) / 2;
+    var spread = Math.max.apply(null, zs) - Math.min.apply(null, zs);
+    var wide = Math.max.apply(null, xs) - Math.min.apply(null, xs);
+    var back = 260 + spread * 0.55 + wide * 0.18;
+    if (ms) fly(cx, cz - back, ms); else { cam.x = cx; cam.z = cz - back; }
   }
 
   var drag = null;
@@ -340,8 +359,8 @@
     moving = true;
     var r = svg.getBoundingClientRect();
     var k = 1 / Math.min(r.width / W, r.height / H);
-    cam.x = drag.cx - (e.clientX - drag.x) * k * 1.4;
-    cam.z = drag.cz - (e.clientY - drag.y) * k * 2.2;
+    cam.x = drag.cx - (e.clientX - drag.x) * k * 1.5;
+    cam.z = drag.cz + (e.clientY - drag.y) * k * 2.2;
     draw();
   });
   ["pointerup", "pointercancel"].forEach(function (t) {
@@ -359,13 +378,12 @@
   bind("sm-reset", function () {
     data.nodes.forEach(function (n) { n.open = n.depth < 1; n.via = null; });
     focus = "home"; EYE = 820; layout();
-    fly(byId.home.gx, byId.home.gz - DEPTHZ * 0.55, 1000);
+    frame(1000);
     info(byId.home);
   });
 
   layout();
-  cam.x = byId.home.gx;
-  cam.z = byId.home.gz - DEPTHZ * 0.55;
+  frame(0);
   draw();
   info(byId.home);
 })();
