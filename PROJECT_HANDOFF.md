@@ -553,3 +553,80 @@ This is a design piece, not a bug fix. Ask what they want before building.
     "related episodes" link in the first prototype survived into generated
     metadata and shipped as a real episode's embed. Every id is now validated
     against `youtube_video_ids.json`.
+
+## Sitemap: FINAL STATE and the 3D detour (sixth update, 2026-09-10)
+
+### Where it landed
+`sitemap.html` is the **2D left to right tidy tree**, restored from commit
+`ea26925` after a long experiment with a 3D landscape was abandoned. Live and
+building green. Files: `sitemap.html` (generated), `generate_sitemap.py`,
+`templates/sitemap-template.html`, `sitemap-graph.js`.
+
+What it does, all of it decided with the user over many rounds:
+- Opens as exactly the nav bar: Home, About Us, Knowledge Base, Podcast.
+  Episode Library is depth 2 because it sits under Podcast.
+- Column per depth (215px), leaves take the next free row, parents centre on
+  their children. Generations can never overlap, which a radial layout could not
+  guarantee.
+- Three tiers of dimming: what just opened and its children at full strength,
+  the path back to home at 50 percent, everything else at 20.
+- Camera pans at **constant zoom**, keeping the focused node a third in from the
+  left. Zoom never changes by itself; that was what made it lurch.
+- Collapsing retraces the route you actually took. Series have two parents (a KB
+  category and the Library), so each node stores `via`, the parent that revealed
+  it. Falling back to `parents[0]` sends people somewhere they have never been.
+- Wheel zooms over the map but **releases at either zoom limit** so the page
+  scrolls on past instead of trapping the reader. Buttons for minus, plus, reset.
+- Clicking NEVER navigates. It opens or folds a branch and describes the node in
+  the bar below, which offers the page as an explicit link.
+- Nodes are instrument glyphs: root a ringed reticle with crosshair ticks,
+  sections hexagons, categories diamonds, series chips, episodes small rotated
+  squares, on a faint grid with a vignette.
+- Orange only on the frame brackets, the hovered node and the "Open this page"
+  link. Everything else greys.
+- Collapsed branches trail faint hint lines, one per child up to five.
+- The text index survives inside `<noscript>` for crawlers. Do not remove it.
+
+### The 3D landscape, tried and rejected. DO NOT REBUILD WITHOUT ASKING.
+Between `d9c050f` and `59d57a4` the map was a true ground plane projection: real
+perspective, undulating terrain height field, horizon, parallaxing star field and
+ridgeline, drifting dust, distance haze, depth of field blur, markers standing on
+tethers above the ground, and a camera that flew between branches. It looked
+genuinely good in the prototype (`formation-landscape-v2.html`) and the user
+liked the look. It failed in use, and every fix surfaced another problem:
+- `setPointerCapture` on the svg for dragging **stole the click** from markers,
+  so nothing was clickable. A guard for exactly this existed in the 2D version
+  and was lost in the rewrite.
+- Drag converted cursor pixels through a world scale that stopped matching once
+  the canvas cropped rather than fitted, so dragging drifted.
+- The camera parked a fixed offset from the focused node, so wide branches ran
+  off the frame. Fixed by framing the whole focused group, then it was too small.
+- The canvas was a fixed 1180x660 letterboxed inside a much wider frame, leaving
+  most of the screen dead.
+- A hard horizontal seam appeared at the horizon once it was raised, because the
+  sky gradient resolved lighter than the ground fill.
+- Redrawing terrain polylines plus a Gaussian blur every animation frame was
+  jerky; a coarse pass while moving helped but did not solve it.
+The prototypes are worth keeping for reference:
+`sitemap-visual-treatments.html` (four treatments: survey map, formation,
+schematic, depth field) and `formation-landscape-v2.html`. The user chose
+Formation, then asked for the landscape, then reverted to 2D.
+
+### A misread worth not repeating
+The user said "make this a top to bottom navigation". That meant **rotate the
+travel direction**, not replace the graph with a list. It was read as the latter,
+the whole visual was deleted and rebuilt as an indented accordion, which was the
+thing deliberately removed several updates earlier. Two rounds were lost.
+**When an instruction could mean "adjust" or "replace", ask.**
+
+## Lessons learned, added this session
+18. **Never remove a working visual to fix an interaction bug.** The clicks and
+    drag were broken by the camera, not by the graph. Diagnose the actual
+    component at fault.
+19. **A prototype that feels good is not proof the interaction works.** The
+    landscape prototype was convincing; the same design on the live page needed
+    six rounds of fixes and still was not dependable. Prototype the interaction
+    on the real page before committing to a direction.
+20. **Keep the `<noscript>` index on the sitemap.** A canvas or a graph is
+    invisible to search engines. That block is the only thing making 79 episodes
+    and 13 series crawlable from this page.
