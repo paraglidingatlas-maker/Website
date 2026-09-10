@@ -59,8 +59,12 @@
 .sm-graph::after{bottom:9px;right:9px;border-right:1px solid;border-bottom:1px solid;}
 #sm-svg{display:block;width:100%;height:660px;cursor:grab;touch-action:pan-y;}
 #sm-svg:active{cursor:grabbing;}
-#sm-svg g[role="button"]:focus{outline:none;}
-#sm-svg g[role="button"]:focus-visible{outline:1px solid var(--orange);}
+/* orange only on hover, the way the rest of the site works */
+#sm-svg .sm-marker{cursor:pointer;}
+#sm-svg .sm-marker .sm-glyph,#sm-svg .sm-marker .sm-lbl{transition:stroke .16s ease,fill .16s ease;}
+#sm-svg .sm-marker:hover .sm-glyph,#sm-svg .sm-marker:focus-visible .sm-glyph{stroke:var(--orange);}
+#sm-svg .sm-marker:hover .sm-lbl,#sm-svg .sm-marker:focus-visible .sm-lbl{fill:var(--orange);}
+#sm-svg .sm-marker:focus{outline:none;}
 
 .sm-bar{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;}
 #sm-info{color:var(--gray);font-size:0.82rem;display:flex;flex-wrap:wrap;
@@ -105,7 +109,7 @@
   <p class="sm-stat">{{SERIESCOUNT}} series &middot; {{EPCOUNT}} episodes &middot; {{PAGECOUNT}} with full transcripts</p>
 
   <div class="sm-graph">
-    <svg id="sm-svg" viewBox="0 0 1180 660" preserveAspectRatio="xMidYMid slice"
+    <svg id="sm-svg" viewBox="0 0 1180 660" preserveAspectRatio="xMidYMid meet"
          role="img" aria-label="The site drawn as a landscape you can fly across. A full text index follows below."></svg>
   </div>
   <div class="sm-bar">

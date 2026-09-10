@@ -128,33 +128,30 @@
     var defs = el(svg, "defs", {});
     defs.innerHTML =
       '<linearGradient id="sm-sky" x1="0" y1="0" x2="0" y2="1">' +
-        '<stop offset="0" stop-color="#07080b"/><stop offset="62%" stop-color="#0d1017"/>' +
-        '<stop offset="100%" stop-color="#161b26"/></linearGradient>' +
+        '<stop offset="0" stop-color="#0e0f13"/><stop offset="62%" stop-color="#141519"/>' +
+        '<stop offset="100%" stop-color="#1c1d24"/></linearGradient>' +
       '<linearGradient id="sm-hg" x1="0" y1="0" x2="0" y2="1">' +
-        '<stop offset="0" stop-color="rgba(120,150,195,0)"/>' +
-        '<stop offset="72%" stop-color="rgba(126,156,200,0.14)"/>' +
-        '<stop offset="100%" stop-color="rgba(150,180,225,0.28)"/></linearGradient>' +
+        '<stop offset="0" stop-color="rgba(180,180,180,0)"/>' +
+        '<stop offset="72%" stop-color="rgba(180,180,180,0.09)"/>' +
+        '<stop offset="100%" stop-color="rgba(180,180,180,0.16)"/></linearGradient>' +
       '<linearGradient id="sm-fog" x1="0" y1="0" x2="0" y2="1">' +
-        '<stop offset="0" stop-color="rgba(14,17,24,0.96)"/>' +
-        '<stop offset="60%" stop-color="rgba(14,17,24,0.6)"/>' +
-        '<stop offset="100%" stop-color="rgba(14,17,24,0)"/></linearGradient>' +
+        '<stop offset="0" stop-color="rgba(16,17,22,0.96)"/>' +
+        '<stop offset="60%" stop-color="rgba(16,17,22,0.6)"/>' +
+        '<stop offset="100%" stop-color="rgba(16,17,22,0)"/></linearGradient>' +
       '<radialGradient id="sm-vig" cx="50%" cy="52%" r="74%">' +
-        '<stop offset="58%" stop-color="rgba(6,7,10,0)"/>' +
-        '<stop offset="100%" stop-color="rgba(6,7,10,0.86)"/></radialGradient>' +
-      '<radialGradient id="sm-hot"><stop offset="0" stop-color="rgba(255,196,120,0.4)"/>' +
-        '<stop offset="55%" stop-color="rgba(255,150,50,0.1)"/>' +
-        '<stop offset="100%" stop-color="rgba(255,150,50,0)"/></radialGradient>' +
+        '<stop offset="58%" stop-color="rgba(14,15,19,0)"/>' +
+        '<stop offset="100%" stop-color="rgba(14,15,19,0.86)"/></radialGradient>' +
       '<filter id="sm-far" x="-40%" y="-40%" width="180%" height="180%">' +
         '<feGaussianBlur stdDeviation="1.3"/></filter>';
 
-    el(svg, "rect", { width: W, height: H, fill: "#0a0c11" });
+    el(svg, "rect", { width: W, height: H, fill: "#101116" });
     el(svg, "rect", { width: W, height: HOR + 3, fill: "url(#sm-sky)" });
 
     var sky = el(svg, "g", {});
     STARS.forEach(function (st) {
       var x = ((st.x - cam.x * 0.012) % 1600 + 1600) % 1600 - 200;
       el(sky, "circle", { cx: x, cy: st.y, r: st.r,
-        fill: "rgba(198,214,240,0.55)", opacity: 0.15 + 0.38 * (st.y / HOR) });
+        fill: "rgba(246,244,244,0.5)", opacity: 0.15 + 0.38 * (st.y / HOR) });
     });
     el(svg, "rect", { width: W, height: HOR + 3, fill: "url(#sm-hg)" });
 
@@ -165,7 +162,7 @@
       rp += " L" + x + " " + (HOR - 16 - h);
     }
     el(svg, "path", { d: rp + " L" + (W + 60) + " " + (HOR + 3) + " Z",
-      fill: "#0b0e15", stroke: "rgba(150,175,215,0.18)", "stroke-width": 1 });
+      fill: "#16171d", stroke: "rgba(180,180,180,0.18)", "stroke-width": 1 });
 
     var grid = el(svg, "g", {}), gz, gx, pts, q;
     var z0 = Math.floor((cam.z - NEAR) / 150) * 150;
@@ -178,7 +175,7 @@
       if (pts.length < 2) continue;
       q = project(0, gz, 0);
       el(grid, "polyline", { points: pts.join(" "), fill: "none",
-        stroke: "rgba(158,182,220,0.85)", "stroke-width": Math.max(0.4, q.s * 0.85),
+        stroke: "rgba(180,180,180,0.8)", "stroke-width": Math.max(0.4, q.s * 0.85),
         opacity: 0.07 + q.fog * 0.25 });
     }
     var x0 = Math.floor((cam.x - 2700) / 180) * 180;
@@ -190,7 +187,7 @@
       }
       if (pts.length > 1)
         el(grid, "polyline", { points: pts.join(" "), fill: "none",
-          stroke: "rgba(158,182,220,0.7)", "stroke-width": 0.7, opacity: 0.09 });
+          stroke: "rgba(180,180,180,0.62)", "stroke-width": 0.7, opacity: 0.09 });
     }
 
     var dust = el(svg, "g", {});
@@ -198,7 +195,7 @@
       var p = project(m.gx, m.gz, m.alt);
       if (p.s < 0.07 || p.x < -50 || p.x > W + 50) return;
       el(dust, "circle", { cx: p.x, cy: p.y, r: m.r * p.s * 1.7,
-        fill: "rgba(206,220,244,0.6)", opacity: 0.04 + p.fog * 0.14 });
+        fill: "rgba(246,244,244,0.5)", opacity: 0.04 + p.fog * 0.14 });
     });
 
     var vis = data.nodes.filter(function (n) { return n.gx !== undefined && shown(n); });
@@ -217,7 +214,7 @@
       if (!p || !p.pr) return;
       var tr = Math.max(tier(n), tier(p));
       el(bucket(n), "line", { x1: p.pr.x, y1: p.pr.y, x2: n.pr.x, y2: n.pr.y,
-        stroke: tr === 0 ? "rgba(255,206,150,1)" : "rgba(226,234,246,1)",
+        stroke: "rgba(246,244,244,1)",
         "stroke-width": Math.max(0.5, n.pr.s * 1.1),
         "stroke-dasharray": (4 * n.pr.s).toFixed(1) + " " + (6 * n.pr.s).toFixed(1),
         opacity: (tr === 0 ? 0.46 : tr === 1 ? 0.22 : 0.09) * (0.3 + n.pr.fog * 0.7) });
@@ -227,41 +224,43 @@
       var tr = tier(n), q = n.pr;
       if (q.s < 0.045) return;
       var op = (tr === 0 ? 1 : tr === 1 ? 0.5 : 0.2) * (0.28 + q.fog * 0.72);
-      var g = el(bucket(n), "g", { opacity: op, style: "cursor:pointer",
+      var g = el(bucket(n), "g", { opacity: op, "class": "sm-marker",
         tabindex: "0", role: "button" });
       g.setAttribute("aria-label", n.label);
 
       el(g, "line", { x1: q.x, y1: q.y, x2: n.gr.x, y2: n.gr.y,
-        stroke: "rgba(200,216,242,0.55)", "stroke-width": Math.max(0.4, q.s * 0.5),
+        stroke: "rgba(180,180,180,0.5)", "stroke-width": Math.max(0.4, q.s * 0.5),
         opacity: 0.24 });
       el(g, "ellipse", { cx: n.gr.x, cy: n.gr.y, rx: 8 * q.s, ry: 2.6 * q.s,
-        fill: "rgba(170,190,220,0.22)" });
+        fill: "rgba(180,180,180,0.2)" });
 
       var p = byId[primaryRaw(n.id)];
       var ang = (p && p.pr) ? Math.atan2(q.y - p.pr.y, q.x - p.pr.x) * 180 / Math.PI : 0;
       var sc = q.s * (n.kind === "root" ? 1.9 : n.depth < 3 ? 1.35 : 0.95);
 
-      if (tr === 0) el(g, "circle", { cx: q.x, cy: q.y,
-        r: 42 * Math.max(q.s, 0.35), fill: "url(#sm-hot)" });
+      /* a generous transparent target, since a stroked chevron is a thin thing to hit */
+      el(g, "rect", { x: q.x - 26 * Math.max(q.s, 0.5), y: q.y - 15 * Math.max(q.s, 0.5),
+        width: 190 * Math.max(q.s, 0.34), height: 30 * Math.max(q.s, 0.5),
+        fill: "transparent", "class": "sm-pad" });
 
       /* thin stroked chevron rather than a solid delta */
       el(g, "path", { d: GLYPH[glyphIndex(n)],
         transform: "translate(" + q.x + "," + q.y + ") rotate(" + ang + ") scale(" + sc + ")",
-        fill: "none",
-        stroke: tr === 0 ? "rgba(232,238,248,0.92)" : "rgba(198,210,230,0.6)",
+        fill: "none", "class": "sm-glyph",
+        stroke: tr === 0 ? "rgba(246,244,244,0.9)" : "rgba(180,180,180,0.62)",
         "stroke-width": Math.max(0.9, 1.5 / Math.max(sc, 0.25)),
         "stroke-linecap": "round", "stroke-linejoin": "round" });
 
       if (q.s > 0.2 && (tr < 2 || n.depth < 3)) {
         var fs = Math.max(7.5, Math.min(13, 11 * q.s));
         var tx = el(g, "text", { x: q.x + 20 * q.s, y: q.y + fs * 0.35,
-          fill: tr === 0 ? "rgba(255,205,145,0.95)" : "rgba(222,230,244,0.7)",
-          "font-family": "var(--mono, monospace)", "font-size": fs,
+          fill: tr === 0 ? "rgba(246,244,244,0.92)" : "rgba(180,180,180,0.68)",
+          "class": "sm-lbl", "font-family": "var(--mono, monospace)", "font-size": fs,
           "letter-spacing": "0.08em" });
         tx.textContent = trunc(n.label.toUpperCase(), n.depth > 2 ? 20 : 22);
         if ((kids[n.id] || []).length && !n.open) {
           var pl = el(g, "text", { x: q.x + 20 * q.s, y: q.y + fs * 1.6,
-            fill: "rgba(222,230,244,0.34)", "font-family": "var(--mono, monospace)",
+            fill: "rgba(115,115,115,0.85)", "class": "sm-lbl2", "font-family": "var(--mono, monospace)",
             "font-size": fs * 0.78, "letter-spacing": "0.12em" });
           pl.textContent = "+ " + kids[n.id].length;
         }
@@ -324,15 +323,18 @@
 
   var drag = null;
   svg.addEventListener("pointerdown", function (e) {
+    /* capturing the pointer here would steal the click from the marker */
+    if (e.target.closest && e.target.closest(".sm-marker")) return;
     drag = { x: e.clientX, y: e.clientY, cx: cam.x, cz: cam.z };
     svg.setPointerCapture(e.pointerId);
   });
   svg.addEventListener("pointermove", function (e) {
     if (!drag) return;
     if (anim) { cancelAnimationFrame(anim); anim = null; }
-    var r = svg.getBoundingClientRect(), k = W / r.width;
-    cam.x = drag.cx - (e.clientX - drag.x) * k * 1.6;
-    cam.z = drag.cz + (e.clientY - drag.y) * k * 2.6;
+    var r = svg.getBoundingClientRect();
+    var k = 1 / Math.min(r.width / W, r.height / H);
+    cam.x = drag.cx - (e.clientX - drag.x) * k * 1.5;
+    cam.z = drag.cz + (e.clientY - drag.y) * k * 2.2;
     draw();
   });
   ["pointerup", "pointercancel"].forEach(function (t) {
