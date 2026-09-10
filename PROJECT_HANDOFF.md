@@ -786,37 +786,36 @@ Open, roughly in order of value:
    ~90 pages, and has since before any of this work. A dead button site wide.
    Needs a real page written, not invented copy.
 
-2. **Episode summaries. IN PROGRESS: 16 of 86 written, 71 episodes have a
-   transcript to work from.**
-   Batch 1: How to Thermal Like a Pro, Luc Armant, Robbie Whittall, Brett
-   Janaway's Technical Masterclass, Russell Ogden, Metacognition.
-   Batch 2, the ten longest remaining transcripts: Urs Haari on reserves, The
-   Silent Mind In Screaming Winds, Kinga Masztalerz, Godfrey Wenness, Gabriel
-   Orsini, Honorin Hamard, Alain Zoller, Tom Lolies, Goran Dimiskovski, Beni
-   Kalin on New Technologies 1.
-   **Method that works, reuse it:** take the longest transcripts first, read each
-   episode's own opening (roughly 300 to 400 words, where the host almost always
-   states the topic) alongside the show notes from the feed with the boilerplate
-   links stripped out, then write two sentences. That is enough grounding to be
-   accurate and cheap enough to do ten in a batch. Each was written from the
-   episode's OWN transcript, cross checked against the show notes in the feed,
-   and carries `_summary_source` recording that. Two sentences each, no em-dashes.
-   The summary feeds both the on page `.cd-summary` and the `<meta name=
-   "description">`, which is the part answer engines actually read, so this is
-   the highest value remaining work on the site.
-   70 to go. Batch 8 to 10 per session; context is the constraint, not difficulty.
-   For the 15 pages with no transcript, use the show notes from the feed or leave
-   the summary empty. NEVER write one from the title alone. The `summary` field is empty on nearly every page. Two
-   good sentences per episode does more for being cited by answer engines than
-   the whole transcript does. Rules agreed with the user:
-   - NEVER summarise from a title alone. That produces plausible, subtly wrong
-     text, which is worse than no summary.
-   - 46 episodes have transcripts, so those can be summarised accurately.
-   - 40 have no transcript. Either pull the show notes from the RSS feed (the
-     user's own descriptions, genuinely usable) or leave the summary empty.
-   - Context is the constraint, not model capability. ~600k words of transcript.
-     Batch 8 to 10 episodes per session.
-   - No model upgrade needed; this is not a hard reasoning task.
+2. **Episode summaries. COMPLETE for every episode that has a transcript.
+   71 of 86 written; the remaining 15 have no transcript and mostly should not
+   have a summary at all.**
+   Written across seven batches, all in one session. Every one came from the
+   episode's OWN transcript, read directly, cross checked against the show notes
+   in the feed. None from a title. Two sentences each, no em-dashes, and every
+   entry carries `_summary_source`.
+   **Why this mattered more than its size:** the summary populates the page's
+   `<meta name="description">` as well as the visible `.cd-summary` block, and
+   that description is what answer engines read when deciding whether an episode
+   answers a question. The field was empty on all 86 pages before this session.
+
+   **Method, reuse it if more transcripts arrive:** take the longest transcripts
+   first, read each episode's own opening (roughly 200 to 400 words, where the
+   host almost always states the topic outright) alongside the feed's show notes
+   with the boilerplate links stripped, then write two sentences carrying at
+   least one specific, checkable detail rather than generic praise. Ten per batch
+   is comfortable. Verify afterwards that every page renders `.cd-summary`, has a
+   populated meta description, keeps the transcript clip with no `display:none`,
+   and uses no undefined classes.
+
+   **The 15 without summaries, and what they are.** Do NOT write summaries for
+   these from titles. 12 are not really episodes: 8 competition highlight reels
+   (SRS Piedrahita, PWC Super Final tasks), and 4 Oslo and Norway cinematics.
+   They have little or no speech and are fine as player-only pages.
+   The other 3 could be summarised if a transcript ever appears: `ama-1`,
+   `touch-the-sky-with-glory` and
+   `can-we-steer-a-round-reserve-parachute-urs-haari-answers`. The first two are
+   the last of the eight Spotify episodes with no RSS transcript tag; the third
+   is YouTube only and has real content, so it is the one worth transcribing.
 
 3. **Eric Roussel transcript. DONE (eighth update), by a route that was not on
    this list.** With `anchor.fm` reachable, the RSS turned out to carry a
