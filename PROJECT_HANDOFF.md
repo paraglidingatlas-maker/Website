@@ -710,3 +710,78 @@ Open, roughly in order of value:
 6. **Library and Knowledge Base still link episodes to YouTube**, not to the new
    episode pages. Pointing them at the local pages is a small change.
 7. Thin series: Weather Patterns has 1 episode, Storytellers 2, Sky Gods 3.
+
+# ============================================================
+# TO DO LIST — carry this into every new chat, keep it updated
+# ============================================================
+# Mark items DONE rather than deleting them, so nothing gets redone.
+
+## PENDING, in rough priority order
+
+1. **enquire.html does not exist.** Every page's nav CTA points at it, on all
+   ~90 pages, and has since before any of this work. A dead button site wide.
+   Needs a real page written, not invented copy.
+
+2. **Episode summaries.** The `summary` field is empty on nearly every page. Two
+   good sentences per episode does more for being cited by answer engines than
+   the whole transcript does. Rules agreed with the user:
+   - NEVER summarise from a title alone. That produces plausible, subtly wrong
+     text, which is worse than no summary.
+   - 46 episodes have transcripts, so those can be summarised accurately.
+   - 40 have no transcript. Either pull the show notes from the RSS feed (the
+     user's own descriptions, genuinely usable) or leave the summary empty.
+   - Context is the constraint, not model capability. ~600k words of transcript.
+     Batch 8 to 10 episodes per session.
+   - No model upgrade needed; this is not a hard reasoning task.
+
+3. **Transcripts for the remaining 40 episodes.** No transcript exists for them.
+   The 52 that do exist came from the user's Drive folder. Anything new needs
+   the same treatment (see the transcripts section above).
+
+4. **FAQ block on episode pages.** `.cd-faq` exists in the CSS and the prototype
+   but is deliberately unbuilt. The user has a specific plan for it and wants it
+   done before the project wraps. DO NOT invent FAQ content.
+
+5. **Guest roles.** Only 2 of 46 could be extracted from transcripts. Either the
+   user supplies one line per guest, or the field is dropped from the design.
+
+6. **Six podcast-only episodes have no page** because they are not in the
+   YouTube export: Damien Lacaze, Gin Seok Song, Maxime Pinot, the parakites
+   episode, Mastering the Unknown, the pre-flight rituals one. Nine globe pins
+   also still point at the generic Spotify show link for the same reason.
+
+7. **Thin series.** Weather Patterns has 1 episode, Storytellers 2, Sky Gods 3.
+   Opening one of those on the sitemap or library feels empty.
+
+8. **Site-wide chrome treatment.** Three full page mockups were produced:
+   `full-page-treatment-comparison.html` (A rounded soft, B machined HUD,
+   C flat HUD as live). The recommendation was B: the same tactile depth as A
+   but expressed in the site's existing square-cornered bracket language, so the
+   site does not end up with a fourth visual dialect. NOT YET APPLIED. Would be
+   nav bar first, then buttons and pills, content surfaces left flat.
+
+## DONE (do not redo)
+- Library page rebuilt (stone slab tiles, topic first).
+- 86 episode pages, one for every video on the channel, transcript or not.
+- Sitemap: 2D tree, Warden + Interceptor marker pack, Roomier spacing.
+- Sitemap signal interaction: tail only, no head, node warms on arrival.
+- Cross linking: every reference to a video anywhere on the site resolves to the
+  same page. Library, Knowledge Base modal, related links, globe pins, sitemap.
+- Nine titles truncated by YouTube's 100 character limit recovered in full from
+  the globe's Spotify titles.
+- GitHub Pages build fixed (.nojekyll) after failing silently for many commits.
+- Transcript clipping, see below.
+
+## Transcript clipping: THE RULE THAT MUST NOT BE BROKEN
+Episode transcripts are clipped to 620px with a fade and a "Continue reading"
+button. **The full text is always in the served HTML.** The button only toggles
+a `max-height`. This is deliberate and non-negotiable:
+- Search engines render JavaScript. **Most AI crawlers do not** (GPTBot,
+  ClaudeBot, PerplexityBot read the HTML they are served).
+- If the transcript were fetched on click, those crawlers would see an empty
+  page and the episodes would stop being answerable. That is the GEO risk and it
+  is larger than the SEO one.
+- `display:none` is deliberately avoided; a height clip is used instead.
+- A `.no-js` class removes the clip entirely so text is never trapped.
+If anyone later "optimises" this into a lazy-loaded fetch, it will silently
+destroy the site's visibility to answer engines.
