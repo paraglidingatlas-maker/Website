@@ -49,43 +49,53 @@
 .sm-eps a.sm-out::after{content:" \2197";color:var(--gray);font-size:0.78rem;}
 
 /* network graph */
-.sm-graph{position:relative;background:#101116;border:1px solid rgba(180,180,180,0.12);
+.sm-graph{position:relative;background:#101116;border:1px solid rgba(180,180,180,0.1);
   margin:2.2rem 0 1rem;overflow:hidden;}
-.sm-graph::before,.sm-graph::after{content:"";position:absolute;width:11px;height:11px;
-  border-color:rgba(255,117,23,0.55);z-index:3;pointer-events:none;}
-.sm-graph::before{top:8px;left:8px;border-left:1.5px solid;border-top:1.5px solid;}
-.sm-graph::after{bottom:8px;right:8px;border-right:1.5px solid;border-bottom:1.5px solid;}
-#sm-svg{display:block;width:100%;height:640px;cursor:grab;touch-action:none;}
+.sm-graph::before,.sm-graph::after{content:"";position:absolute;width:12px;height:12px;
+  border-color:rgba(255,117,23,0.4);z-index:3;pointer-events:none;}
+.sm-graph::before{top:9px;left:9px;border-left:1px solid;border-top:1px solid;}
+.sm-graph::after{bottom:9px;right:9px;border-right:1px solid;border-bottom:1px solid;}
+#sm-svg{display:block;width:100%;height:640px;cursor:grab;touch-action:pan-y;}
 #sm-svg:active{cursor:grabbing;}
 
-/* real edges, quiet */
-.sm-edge{stroke:rgba(180,180,180,0.26);stroke-width:1;}
-/* the feeble lines that hint at what is still folded away */
-.sm-stub{stroke:rgba(180,180,180,0.13);stroke-width:1;}
-.sm-stub-dot{fill:rgba(180,180,180,0.16);}
-.sm-node:hover ~ .sm-stub{stroke:rgba(180,180,180,0.3);}
+/* three tiers of attention: what just opened, the path back, everything else */
+.t0{opacity:1;}
+.t1{opacity:0.46;}
+.t2{opacity:0.17;}
+.sm-node,.sm-edge,.sm-flow,.sm-stub{transition:opacity 0.32s ease;}
+
+.sm-edge{stroke:rgba(180,180,180,0.34);stroke-width:1;}
+.sm-flow{fill:rgba(180,180,180,0.4);}
+.sm-stub{stroke:rgba(180,180,180,0.2);stroke-width:1;}
 
 .sm-node{cursor:pointer;}
-.sm-node circle{fill:#191b21;stroke:rgba(180,180,180,0.45);stroke-width:1.3;
+.sm-hit{fill:transparent;}
+.sm-glyph{fill:#171921;stroke:rgba(180,180,180,0.5);stroke-width:1.2;
   transition:fill 0.16s ease,stroke 0.16s ease;}
-.sm-node:hover circle,.sm-node:focus circle{stroke:var(--orange);fill:#20222a;}
+.sm-ring{fill:none;stroke:rgba(246,244,244,0.5);stroke-width:1.2;}
+.sm-core{fill:rgba(246,244,244,0.72);}
+.sm-cross{stroke:rgba(246,244,244,0.34);stroke-width:1;}
+.sm-open .sm-glyph{fill:#101116;stroke:rgba(180,180,180,0.32);}
+.sm-node:hover .sm-glyph,.sm-node:focus .sm-glyph{stroke:var(--orange);fill:#1d1f27;}
+.sm-focus .sm-glyph{stroke:rgba(246,244,244,0.85);}
 .sm-node:focus{outline:none;}
-.sm-root circle{fill:#22242c;stroke:rgba(246,244,244,0.65);stroke-width:1.6;}
-.sm-open circle{fill:#101116;stroke:rgba(180,180,180,0.3);}
 
-.sm-label{fill:var(--gray);font-family:var(--font-body);font-size:11px;pointer-events:none;
-  transition:fill 0.16s ease;}
-.sm-root .sm-label,.sm-section .sm-label{fill:var(--gray-light);font-weight:600;font-size:12.5px;}
+.sm-lead{stroke:rgba(180,180,180,0.35);stroke-width:1;}
+.sm-label{fill:var(--gray);font-family:var(--font-body);font-size:11px;
+  pointer-events:none;transition:fill 0.16s ease;}
+.sm-root .sm-label,.sm-section .sm-label{fill:var(--gray-light);font-weight:600;
+  font-size:12px;letter-spacing:0.04em;}
 .sm-node:hover .sm-label,.sm-node:focus .sm-label{fill:var(--orange);}
 
 .sm-bar{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;}
-#sm-info{color:var(--gray);font-size:0.83rem;}
-#sm-info strong{color:var(--gray-light);font-weight:600;margin-right:0.5rem;}
-#sm-expand{background:none;border:1px solid rgba(180,180,180,0.24);color:var(--gray);
-  font-family:var(--font-body);font-size:0.8rem;padding:0.42rem 1rem;cursor:pointer;
-  transition:all 0.16s ease;}
-#sm-expand:hover{color:var(--gray-light);border-color:rgba(180,180,180,0.45);}
-@media (max-width:720px){#sm-svg{height:460px;}}
+#sm-info{color:var(--gray);font-size:0.82rem;}
+#sm-info strong{color:var(--gray-light);font-weight:600;margin-right:0.55rem;}
+.sm-ctrl{display:flex;gap:0.4rem;}
+.sm-ctrl button{background:none;border:1px solid rgba(180,180,180,0.2);color:var(--gray);
+  font-family:var(--font-body);font-size:0.78rem;padding:0.34rem 0.8rem;cursor:pointer;
+  min-width:2.1rem;transition:all 0.16s ease;}
+.sm-ctrl button:hover{color:var(--gray-light);border-color:rgba(180,180,180,0.42);}
+@media (max-width:720px){#sm-svg{height:440px;}}
 </style>
 </head>
 <body>
@@ -121,8 +131,12 @@
          role="img" aria-label="Network graph of the site structure. A full text index follows below."></svg>
   </div>
   <div class="sm-bar">
-    <p id="sm-info"><strong>Click a node to open it out.</strong><span>Drag to move, scroll to zoom.</span></p>
-    <button id="sm-expand" type="button">Expand everything</button>
+    <p id="sm-info"><strong>Click a node to open it out.</strong><span>Drag to move the map.</span></p>
+    <div class="sm-ctrl">
+      <button id="sm-out" type="button" aria-label="Zoom out">&minus;</button>
+      <button id="sm-in" type="button" aria-label="Zoom in">+</button>
+      <button id="sm-reset" type="button">Reset</button>
+    </div>
   </div>
 
   <noscript>
