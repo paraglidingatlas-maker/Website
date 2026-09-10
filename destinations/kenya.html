@@ -97,6 +97,38 @@
 .dst-why p{color:var(--gray-light);font-size:.94rem;line-height:1.8;margin:0;}
 .dst-note{color:var(--gray-light);line-height:1.75;margin:2rem 0 0;max-width:64ch;font-size:.95rem;}
 
+/* ---------- sticky section bar ---------- */
+.dst-jump{position:sticky;top:0;z-index:15;background:rgba(20,21,25,.94);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);}
+.dst-jump-in{display:flex;align-items:center;gap:.2rem;overflow-x:auto;
+  padding:0 clamp(1.2rem,5vw,5.5rem);-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.dst-jump-in::-webkit-scrollbar{display:none;}
+.dst-jump a{white-space:nowrap;color:var(--gray-light);text-decoration:none;font-size:.86rem;
+  padding:1rem .95rem;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
+.dst-jump a:hover,.dst-jump a:focus-visible{color:var(--white);border-bottom-color:var(--orange);}
+.dst-jump a.last{margin-left:auto;color:var(--orange);font-weight:600;}
+
+/* ---------- spec strip, straight under the hero ---------- */
+.dst-spec{background:var(--card);border-bottom:1px solid var(--rule);
+  padding:clamp(1.6rem,3vw,2.3rem) clamp(1.2rem,5vw,5.5rem);}
+.dst-spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));gap:1.6rem 2rem;}
+.dst-spec-item .l{display:block;color:var(--gray);font-size:.74rem;letter-spacing:.06em;
+  text-transform:uppercase;margin-bottom:.4rem;}
+.dst-spec-item .v{display:block;font-family:var(--font-display);font-weight:600;color:var(--white);
+  font-size:1.02rem;line-height:1.3;}
+.dst-spec-foot{display:flex;flex-wrap:wrap;gap:.6rem 2rem;align-items:baseline;
+  margin-top:1.7rem;padding-top:1.4rem;border-top:1px solid var(--rule);}
+.dst-spec-foot p{margin:0;color:var(--gray-light);font-size:.93rem;line-height:1.7;max-width:62ch;}
+
+/* ---------- related episode ---------- */
+.dst-rel{display:flex;flex-wrap:wrap;gap:1.6rem;align-items:center;
+  background:var(--card);border:1px solid var(--rule);padding:1.6rem;}
+.dst-rel-body{flex:1 1 20rem;}
+.dst-rel-body span{display:block;color:var(--gray);font-size:.78rem;margin-bottom:.45rem;}
+.dst-rel-body h3{font-family:var(--font-display);font-weight:600;color:var(--white);
+  font-size:1.1rem;margin:0 0 .6rem;}
+.dst-rel-body p{color:var(--gray-light);font-size:.93rem;line-height:1.7;margin:0;}
+
 @media (max-width:640px){
   .dst-hero{min-height:70vh;}
   .dst-date{flex-direction:column;gap:.25rem;}
@@ -139,12 +171,39 @@
     </div>
     <div class="dst-hero-cta">
       <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" class="btn-solid" data-hover><span>Book a Call</span></a>
-      <a href="#essentials" class="listen-btn" data-hover><span>Trip essentials</span></a>
+      <a href="#overview" class="listen-btn" data-hover><span>See the trip</span></a>
     </div>
   </div>
 </header>
 
-<section class="dst-sec">
+<div class="dst-jump">
+  <div class="dst-jump-in">
+    <a href="#overview">Overview</a>
+    <a href="#conditions">Conditions</a>
+    <a href="#sites">Sites</a>
+    <a href="#practical">Practical Info</a>
+    <a href="#dates">Dates</a>
+    <a href="#enquire" class="last">Enquire</a>
+  </div>
+</div>
+
+<section class="dst-spec">
+  <div class="dst-spec-grid">
+    <div class="dst-spec-item"><span class="l">Country</span><span class="v">Kenya</span></div>
+    <div class="dst-spec-item"><span class="l">Base</span><span class="v">Kerio Valley</span></div>
+    <div class="dst-spec-item"><span class="l">Duration</span><span class="v">12 days</span></div>
+    <div class="dst-spec-item"><span class="l">Pilot rating</span><span class="v">IPPI 2 or equivalent</span></div>
+    <div class="dst-spec-item"><span class="l">Avg. altitude</span><span class="v">1,500m AGL</span></div>
+    <div class="dst-spec-item"><span class="l">Airtime</span><span class="v">2 to 7 hrs / flight</span></div>
+    <div class="dst-spec-item"><span class="l">Season</span><span class="v">December to March</span></div>
+    <div class="dst-spec-item"><span class="l">Next departure</span><span class="v">19 Jan 2027</span></div>
+  </div>
+  <div class="dst-spec-foot">
+    <p>An IPPI 2, APPI or equivalent national licence is the minimum. You need to be able to self launch and to land out on your own. Kenyan conditions are stronger than most home sites.</p>
+  </div>
+</section>
+
+<section class="dst-sec" id="overview">
   <div class="dst-head">
     <span class="kicker">Overview</span>
     <h2>A flight of human genesis</h2>
@@ -153,7 +212,7 @@
   <p class="dst-pull">Let East African skies awaken your inner explorer, and leave you forever inspired.</p>
 </section>
 
-<section class="dst-sec">
+<section class="dst-sec" id="conditions">
   <div class="dst-head">
     <span class="kicker">General Info</span>
     <h2>What the air actually does here</h2>
@@ -170,7 +229,7 @@
   </div>
 </section>
 
-<section class="dst-sec">
+<section class="dst-sec" id="sites">
   <div class="dst-head">
     <span class="kicker">Where You Will Fly</span>
     <h2>Six sites, one valley system</h2>
@@ -186,23 +245,7 @@
   </div>
 </section>
 
-<section class="dst-sec" id="essentials">
-  <div class="dst-head">
-    <span class="kicker">Trip Essentials</span>
-    <h2>What this trip asks of you</h2>
-  </div>
-  <div class="trip-facts">
-    <div class="fact"><span class="fact-label">Base Location</span><span class="fact-value">Kerio Valley</span></div>
-    <div class="fact"><span class="fact-label">Adventure Span</span><span class="fact-value">12 Days</span></div>
-    <div class="fact"><span class="fact-label">Pilot Rating</span><span class="fact-value">IPPI 2 or equivalent</span></div>
-    <div class="fact"><span class="fact-label">Avg. Altitude</span><span class="fact-value">1,500m AGL</span></div>
-    <div class="fact"><span class="fact-label">Expected Airtime</span><span class="fact-value">2 to 7 hrs / flight</span></div>
-    <div class="fact"><span class="fact-label">Skill Level</span><div class="skill-meter"><span class="skill-seg filled"></span><span class="skill-seg filled"></span><span class="skill-seg"></span><span class="skill-seg"></span><span class="skill-seg"></span></div></div>
-  </div>
-  <p class="dst-note">An IPPI 2, APPI or equivalent national licence is the minimum. You need to be able to self launch and to land out on your own.</p>
-</section>
-
-<section class="dst-sec">
+<section class="dst-sec" id="practical">
   <div class="dst-head">
     <span class="kicker">Know Before You Go</span>
     <h2>The practical country</h2>
@@ -231,7 +274,7 @@
   </ul>
 </section>
 
-<section class="dst-sec">
+<section class="dst-sec" id="dates">
   <div class="dst-head">
     <span class="kicker">Season Packages</span>
     <h2>Three departures</h2>
@@ -241,6 +284,7 @@
     <div class="dst-date"><b>Adventure Tour 1</b><span>19 Jan to 1 Feb 2027</span></div>
     <div class="dst-date"><b>Adventure Tour 2</b><span>3 Feb to 15 Feb 2027</span></div>
     <div class="dst-date"><b>Adventure Tour 3</b><span>18 Feb to 1 Mar 2027</span></div>
+    <div class="dst-date"><b>Starting from</b><span>Enquire for prices</span></div>
   </div>
 </section>
 
@@ -266,7 +310,21 @@
   </div>
 </section>
 
-<section class="cta-band">
+<section class="dst-sec">
+  <div class="dst-head">
+    <span class="kicker">Before You Come</span>
+    <h2>Hear the site from someone who flies it</h2>
+  </div>
+  <a class="dst-rel" href="../episodes/pre-pwc-kenya-nikolay-yotov.html">
+    <div class="dst-rel-body">
+      <span>Podcast · Episode 10 · 52 min</span>
+      <h3>Pre PWC Kenya: Nikolay Yotov</h3>
+      <p>Nikolay Yotov of Skynomad takes the show to Africa for the first time, on flying in Kenya ahead of the pre World Cup held there. It covers what the sites are actually like and what it means to share that airspace with the wildlife below.</p>
+    </div>
+  </a>
+</section>
+
+<section class="cta-band" id="enquire">
   <div class="cta-card">
   <span class="cta-hud-tag">Booking Open</span>
   <p class="cta-eyebrow">Ready To Touch The Sky With Glory?</p>
