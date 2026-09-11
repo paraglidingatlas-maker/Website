@@ -1946,3 +1946,43 @@ cfg.FOUNDER else "The Guest"`. Compared against `site_config.FOUNDER`, not a
 literal or a list of slugs, so a sixth solo episode needs no code change and the
 two can never drift. User's call, 2026-09-11.
 Current split: 76 "The Guest", 5 "The Host", 12 with no box at all.
+
+## 31. GUEST NAMES FINALISED BY THE USER. THESE ARE HIS SPELLINGS. DO NOT "FIX".
+
+**This section exists to stop a future session tidying these back.**
+
+The user was asked whether three normalised spellings should match his own
+episode titles instead. He said yes. All three were reverted to the title
+wording verbatim:
+- `Beni Kälin & Helmut Schrempf` -> **`Beni Kalin & Heli Schrempf`** on both
+  the Metacognition and the Dunning Kruger episodes.
+- `Robert Whittall` -> **`Robert (Robbie) Whittall`**.
+- Shams -> **`Shams & Ouka`**. **Ouka is the DOG**, which is the subject of
+  that episode. The transcript spells her "Uka" throughout, which is Whisper,
+  so the user's spelling is the authority. Not a second human guest.
+
+**This overrides the section 27 precedent**, where the site's "Dr Matt Wilkes"
+beat the user's "Wikes". That was a typo. These are his preferred forms, which
+is a different thing. `_guest_source` on all four records that the user
+instructed it.
+
+**The `MONONYMS` allowlist in `check_guest_names()` is now EMPTY.** It was added
+for Shams and removed the moment a full value arrived, which is how it should
+be used. Do not add to it to make the audit green.
+
+### THE COST, MEASURED, SO IT IS A KNOWN TRADE AND NOT A SURPRISE
+The same two people now appear under two spellings across the site:
+```
+Beni Kalin      17 pages        Beni Kälin        8 pages
+Heli Schrempf   10 pages        Helmut Schrempf  14 pages
+```
+Each page matches its OWN episode title, so nothing is internally wrong. But
+`generate_tag_pages.py` writes a "Guests include ..." sentence from these
+values, so `tags/fear.html` says "Beni Kalin & Heli Schrempf" while
+`tags/certification.html` can say "Helmut Schrempf", and both are in JSON-LD.
+
+**Why that is a real, if small, cost.** Entity resolution is how an answer
+engine decides two mentions are one person. Two spellings halve the evidence for
+each. It is not a bug and it was the user's explicit call, so **leave it**. If
+he ever asks why one guest looks like two, this is the reason, and the fix is to
+pick one spelling per person rather than per title.

@@ -798,16 +798,14 @@ def check_guest_names():
     """
     STOP = {"new", "technologies", "modernizing", "humble", "in", "my", "so", "the",
             "risk", "reward", "flying", "filming", "storytellers", "navigating"}
-    # Single-word guest values are rejected by default, because that is the shape
-    # "Humble", "In", "My" and "So" arrived in. A real person can still have one
-    # name, so reviewed exceptions go here with the evidence, ONE AT A TIME.
-    # Never add to this list to make the audit green. Each entry means somebody
+    # Single-word guest values are rejected, because that is the shape "Humble",
+    # "In", "My" and "So" arrived in. A real person can still have one name, so
+    # reviewed exceptions go in MONONYMS with the evidence beside them, ONE AT A
+    # TIME. Never add to it to make the audit green; each entry means somebody
     # opened the transcript and confirmed the person is addressed that way.
-    #   Shams: the host addresses him directly as "Shams" in the transcript
-    #   ("Shams, when did the idea of flying with your furry companion..."), and
-    #   the user's own episode title reads "Explained by Shams". A surname has
-    #   been asked for and is not yet supplied; replace this when it arrives.
-    MONONYMS = {"Shams"}
+    # "Shams" lived here briefly and has been removed: the user supplied
+    # "Shams & Ouka", so the value is no longer a mononym and needs no exception.
+    MONONYMS = set()
     bad = []
     for e in META:
         g = (e.get("guest") or "").strip()

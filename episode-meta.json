@@ -4953,7 +4953,7 @@
     "series": "Brand Stories",
     "series_slug": "Brand%20Stories",
     "epno": "Episode 77",
-    "guest": "Robert Whittall",
+    "guest": "Robert (Robbie) Whittall",
     "guest_role": "",
     "published": "2026-08-19",
     "published_label": "19 August 2026",
@@ -5045,7 +5045,7 @@
     "_chapters_source": "Chapter titles marked src=notes are the user's own words, taken from the topic list in that episode's show notes. Titles marked src=claude were written from the transcript at that point and are ** review. EVERY timestamp is real: it is the start of a cue in the transcript, chosen from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages.",
     "quote": "You need to have a sort of love and a passion for whatever it is that you're involved in, but you also need a single minded kind of dedication.",
     "_quote_source": "Chosen from the episode's own transcript, in the pattern of the user's spreadsheet: a core message or pivotal insight, wording preserved.",
-    "_guest_source": "from the episode title, which is the user's own wording; name also spoken in the transcript"
+    "_guest_source": "from the episode title verbatim, at the user's instruction"
   },
   {
     "slug": "metacognition-paragliding-s-hidden-psychology-with-beni",
@@ -5054,7 +5054,7 @@
     "series": "Risk vs Reward",
     "series_slug": "Risk%20vs%20Reward",
     "epno": "Episode 76",
-    "guest": "Beni Kälin & Helmut Schrempf",
+    "guest": "Beni Kalin & Heli Schrempf",
     "guest_role": "",
     "published": "2026-08-09",
     "published_label": "9 August 2026",
@@ -5158,7 +5158,7 @@
     "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages.",
     "quote": "You have to do something wrong to get experience out of it and to get a learning process starting.",
     "_quote_source": "Chosen from the episode's own transcript, in the pattern of the user's spreadsheet: a core message or pivotal insight, wording preserved.",
-    "_guest_source": "from the episode title, which is the user's own wording; title reads \"Beni Kalin & Heli Schrempf\", normalised to the spelling used on the other pages"
+    "_guest_source": "from the episode title verbatim, at the user's instruction"
   },
   {
     "slug": "the-russell-ogden-interview-decoding-paragliding-mastery",
@@ -5655,7 +5655,7 @@
     "series": "Risk vs Reward",
     "series_slug": "Risk%20vs%20Reward",
     "epno": "Episode 72",
-    "guest": "Beni Kälin & Helmut Schrempf",
+    "guest": "Beni Kalin & Heli Schrempf",
     "guest_role": "",
     "published": "2026-04-10",
     "published_label": "10 April 2026",
@@ -5711,7 +5711,7 @@
     "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages.",
     "quote": "Turbulence is scary and we all have fear up there sometimes. Some acknowledge that, and some say they're never scared, which I never believe.",
     "_quote_source": "Chosen from the episode's own transcript, in the pattern of the user's spreadsheet.",
-    "_guest_source": "from the episode title, which is the user's own wording; title reads \"Beni Kalin & Heli Schrempf\", normalised to the spelling used on the other pages"
+    "_guest_source": "from the episode title verbatim, at the user's instruction"
   },
   {
     "slug": "sports-psychology-for-paragliding-train-your-mind-to-fly",
@@ -5930,7 +5930,7 @@
     "series": "Living the Dream",
     "series_slug": "Living%20the%20Dream",
     "epno": "Episode 69",
-    "guest": "Shams",
+    "guest": "Shams & Ouka",
     "guest_role": "",
     "published": "2026-03-15",
     "published_label": "15 March 2026",
@@ -6021,7 +6021,7 @@
     "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages.",
     "quote": "It's not that common with a big dog, so you have to check if it's possible or not. I never take him for a long distance flight, or for a long time.",
     "_quote_source": "Chosen from the episode's own transcript, in the pattern of the user's spreadsheet.",
-    "_guest_source": "from the episode title, which is the user's own wording; name also spoken in the transcript"
+    "_guest_source": "supplied by the user. Ouka is the dog the episode is about; the transcript spells her Uka throughout, which is Whisper, so the user's spelling is authoritative."
   },
   {
     "slug": "survived-15-years-of-flying-then-a-rescue-helicopter",
