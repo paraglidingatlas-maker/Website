@@ -1,6 +1,17 @@
 # Moving to paraglidingatlas.com
 
-**Status: prepared, not activated. Do not flip anything here until the DNS is live.**
+**Status: prepared and TESTED, not activated. Do not flip anything until DNS is live.**
+
+The switch has been run end to end in a dry run and reverted. First attempt moved
+2,304 URLs and left **986 behind**, because canonical and og:url were written by
+six generators and by hand in the static pages, not from config. That is fixed:
+every generator now reads `site_config.BASE`, and the schema injector normalises
+any absolute self-reference it still finds, including on noindex pages. The
+second dry run moved **every URL in the site, sitemap.xml, robots.txt and
+llms.txt, with zero left behind**, and reverted just as cleanly.
+
+So "change one line and rebuild" is now literally true. It was not before it was
+tested, which is the only reason this note exists.
 
 ## Why this matters more than anything else on the site
 
@@ -44,7 +55,9 @@ That split costs three things at once:
    once the certificate has issued. This can take up to an hour. Do not proceed
    while it is still provisioning.
 4. **In `site_config.py`**, set `DOMAIN = "paraglidingatlas.com"` and `PATH = "/"`.
-5. **`./build.sh`** and check a handful of canonicals by hand.
+   Those two lines are the whole change. Nothing else needs editing.
+5. **`./build.sh`**. It fails loudly if sitemap.xml, robots.txt or llms.txt still
+   carry a stale address, so a partial move cannot ship quietly.
 6. **`python3 tools/audit.py --drift`** must pass before pushing.
 7. **Google Search Console and Bing Webmaster Tools**: add the new property,
    submit `sitemap.xml`. Bing matters more than it used to, because ChatGPT

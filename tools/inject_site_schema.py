@@ -44,6 +44,30 @@ SKIP = ("prototypes/", "templates/", "node_modules/", ".git/")
 MARK_OPEN = "<!-- site-schema -->"
 MARK_CLOSE = "<!-- /site-schema -->"
 
+# Every address this site has ever advertised. Whichever one appears in a page,
+# it is normalised to whatever site_config currently says.
+#
+# This exists because "change one line in site_config" turned out to be false
+# when it was actually tested: 986 absolute URLs did not move, because canonical
+# and og:url are written by six different generators and by hand in the static
+# pages. Rewriting them here means the claim is now true, and it is true for
+# pages nothing generates as well.
+KNOWN_BASES = [
+    "https://paraglidingatlas-maker.github.io/Website/",
+    "https://paraglidingatlas.com/",
+    "https://www.paraglidingatlas.com/",
+]
+
+
+def normalise_urls(h):
+    """Point every absolute self-reference at the configured base."""
+    n = 0
+    for b in KNOWN_BASES:
+        if b != cfg.BASE and b in h:
+            n += h.count(b)
+            h = h.replace(b, cfg.BASE)
+    return h, n
+
 
 def pages():
     out = []
@@ -145,9 +169,15 @@ def build_block(page, h):
 
 def main():
     n = faqs = crumbs = 0
+    rewritten = [0]
     for p in pages():
         h = open(p, encoding="utf-8", errors="replace").read()
         if "noindex" in h:
+            # No schema for a noindex page, but its canonical still has to move.
+            h2, moved = normalise_urls(h)
+            if moved:
+                open(p, "w", encoding="utf-8").write(h2)
+                rewritten[0] += moved
             continue
         h = re.sub(re.escape(MARK_OPEN) + r".*?" + re.escape(MARK_CLOSE) + r"\n?", "", h, flags=re.S)
         block = build_block(p, h)
@@ -158,10 +188,14 @@ def main():
         if "</head>" not in h:
             continue
         h = h.replace("</head>", block + "</head>", 1)
+        h, moved = normalise_urls(h)
+        rewritten[0] += moved
         open(p, "w", encoding="utf-8").write(h)
         n += 1
     print("site schema injected on %d pages  (%d with a breadcrumb trail, %d as FAQPage)"
           % (n, crumbs, faqs))
+    if rewritten[0]:
+        print("absolute URLs repointed at %s : %d" % (cfg.BASE, rewritten[0]))
 
 
 if __name__ == "__main__":

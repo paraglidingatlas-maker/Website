@@ -1,3 +1,8 @@
+import os
+import sys
+_R = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, _R)
+import site_config as _cfg  # single source of truth for the site address
 #!/usr/bin/env python3
 """Build the three policy pages: terms, privacy, cookies.
 
@@ -21,7 +26,7 @@ import os
 import re
 
 UPDATED = "11 September 2026"
-BASE = "https://paraglidingatlas-maker.github.io/Website/"
+BASE = _cfg.BASE   # see site_config.py and MIGRATION.md
 
 HEAD = """<!DOCTYPE html>
 <html lang="en">

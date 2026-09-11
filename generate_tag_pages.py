@@ -1,3 +1,8 @@
+import os
+import sys
+_R = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, _R)
+import site_config as _cfg  # single source of truth for the site address
 #!/usr/bin/env python3
 """Build /tags.html and one hub page per tag.
 
@@ -21,7 +26,7 @@ import shutil
 from collections import Counter, defaultdict
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-BASE = "https://paraglidingatlas-maker.github.io/Website/"
+BASE = _cfg.BASE   # see site_config.py and MIGRATION.md
 THRESHOLD = 3
 OUT = os.path.join(ROOT, "tags")
 

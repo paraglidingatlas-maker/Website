@@ -6,9 +6,14 @@ Two generators writing one file is how that file ends up depending on run order.
 The site had neither. sitemap.html is a human facing graph; crawlers need the
 XML. Run after adding or removing pages:  python3 generate_robots_sitemap.py
 """
+import os
+import sys
+_R = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, _R)
+import site_config as _cfg  # single source of truth for the site address
 import datetime, glob, os
 
-BASE = "https://paraglidingatlas-maker.github.io/Website/"
+BASE = _cfg.BASE   # see site_config.py and MIGRATION.md
 SKIP = ("prototypes/", "templates/")
 
 def priority(p):
