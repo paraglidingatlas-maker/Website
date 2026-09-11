@@ -66,18 +66,28 @@ unpkg, and the operator's own Cloudflare Worker.
 
 ## The six questions worth paying for
 
-**1. Does a blanket no-refund policy survive the Package Travel Act?**
-This is now the sharpest question on the page. The operator's policy is no
-refunds at all. The Package Travel Act gives a consumer the right to terminate
-before departure against a **reasonable and justifiable** termination fee, and to
-terminate **free of charge** where unavoidable and extraordinary circumstances at
-the destination significantly affect the trip. A term removing both is likely
-unenforceable against an EEA consumer, and an unenforceable term is worse than a
-softer one because it invites a dispute the operator would lose. The page
-currently states the policy and then says statutory rights cannot be contracted
-away, which is honest but leaves the two in visible tension. Ask what a
-defensible termination fee scale would look like for a trip of this cost and
-lead time, given the permits and local arrangements committed 120 days out.
+**1. Is the termination fee mechanism the right call, and is the deposit
+defensible?**
+The operator's own document says no refunds at all. That was published, then
+redrafted, because Article 23 of Directive (EU) 2015/2302 makes a term waiving
+the traveller's rights non-binding: the clause would simply fail, and take the
+credibility of the rest of the document with it. An unenforceable term protects
+nobody.
+
+The page now uses the statutory mechanism from Article 12(1) instead of a
+percentage scale: the termination fee is the trip price, less genuine cost
+savings, less income from reselling the place, with the calculation shown on
+request. Where costs really are committed and the place cannot be resold that
+approaches the full price, so the commercial protection is largely preserved
+while the term stays enforceable. No percentages were invented to achieve it.
+
+Questions for review: is a non-refundable deposit defensible as an appropriate
+and justifiable fee at the moment of booking, and would the operator prefer a
+published standardised scale, which Article 12(1) also permits and which is
+easier for a customer to understand, over the case-by-case calculation used here?
+Also confirm the weather carve-out holds: the page says the traveller is buying
+guiding and access rather than a guaranteed number of flights, so weather is not
+a failure to perform and triggers no price reduction under Articles 13 and 14.
 
 **2. Is this a package, and is insolvency protection in place?**
 The trips are guided, multi day, and may be sold with accommodation and transfers.

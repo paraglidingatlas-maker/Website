@@ -159,15 +159,22 @@ TERMS = """
 <p>We may increase the price after booking only for the reasons the Package Travel Act allows, such as changes to fuel costs, taxes or exchange rates, and never in the twenty days before departure. If an increase exceeds eight per cent of the trip price you may accept it, accept a substitute trip if we offer one, or cancel and receive a full refund. If the same costs fall, you are entitled to a corresponding reduction.</p>
 
 <h2 id="cancel-you">5. If you change or cancel</h2>
-<p>Tell us in writing as soon as you know.</p>
+<p>Tell us in writing as soon as you know. Your booking ends on the day that notice reaches us.</p>
 <div class="pol-note">
-<p><strong>Our trips operate on a no refund basis.</strong> Deposits and balance payments are not refunded. That is a stringent policy and we would rather you met it here than in an email, because the permits, logistics and local arrangements behind a trip are committed and paid for long before you arrive.</p>
+<p><strong>A termination fee applies, and on a trip like this it is usually most of the price.</strong> The permits, guiding, vehicles, park entry and local arrangements behind a Kenya departure are committed and paid for long before anyone arrives, and a place given up close to departure rarely finds another pilot.</p>
 </div>
-<p>Specifically, no refund is due where a tour ends without reaching or making progress towards a flight objective, for example a planned cross country goal or a summit flight, because of weather, route or airspace conditions, insufficient manpower or logistics, or any other factor outside our control. Participants who choose to leave an active tour for any reason are not entitled to a refund either.</p>
+<p>The fee is worked out the way the Package Travel Act requires, so you can check it rather than take it on trust. It is the price of your trip, less what we genuinely save by you not coming, less anything we recover by selling your place to someone else. If we cannot save or recover anything, the fee is the full price. <strong>If you ask, we will show you the calculation.</strong></p>
+<p>Your deposit is not refunded. It is set to reflect the costs we commit at the moment you book.</p>
+<h3>Where no fee is due</h3>
+<p>You may terminate <strong>free of charge, with a full refund</strong>, where unavoidable and extraordinary circumstances at the destination or its immediate vicinity significantly affect the trip or your carriage to it. War, a serious security situation, a natural disaster or an outbreak of disease at the destination are the usual examples. Weather that stops flying is not one of them, for the reason set out below.</p>
+<p>Any refund due under this section is paid within <strong>14 days</strong>.</p>
+<h3>Weather, and what you are actually buying</h3>
+<p>You are buying guiding, logistics, local expertise and access, not a guaranteed number of flights or a particular cross country goal. A tour that ends without meeting a flight objective because of weather, route or airspace conditions, or anything else outside our control, is not a failure to perform, and no refund or price reduction is due for it.</p>
 <p>The expedition leader has the final say on when a tour concludes, and will make every effort towards the objectives within our margin of safety.</p>
-<p><strong>This is why we ask you to hold trip cancellation insurance.</strong> A policy covering illness, injury or a change in your circumstances will normally meet what we cannot, and for a trip of this cost it is the difference between a bad month and a lost year.</p>
+<h3>Leaving early</h3>
+<p>If you choose to leave an active tour, no refund is due for the days you do not use. That is different from us failing to provide something we promised, where the Package Travel Act gives you a price reduction, and this paragraph does not touch that.</p>
 <div class="pol-note">
-<p><strong>Your statutory rights are not affected by the paragraphs above.</strong> Where your booking is a package under the Package Travel Act, you keep the right to terminate the contract before departure against a reasonable and justifiable termination fee, and the right to terminate without any fee where unavoidable and extraordinary circumstances at the destination significantly affect the trip. Those rights exist by law and we cannot contract out of them, whatever this page says.</p>
+<p><strong>This is why we ask you to hold trip cancellation insurance.</strong> A policy covering illness, injury or a change in your circumstances will meet what a termination fee leaves you out of pocket for, and on a trip of this cost that is the difference between a bad month and a lost year.</p>
 </div>
 <p>You may transfer your booking to another person who meets the pilot requirements in section 7, provided you tell us with reasonable notice and pay any costs the transfer causes.</p>
 <div class="pol-note">
@@ -176,7 +183,7 @@ TERMS = """
 
 <h2 id="cancel-us">6. If we change or cancel</h2>
 <p>Flying trips depend on weather, airspace and ground conditions, and the daily plan will change to suit them. That is not a change to your contract, it is the trip working as intended. Where we have to make a significant change to a main feature of the trip before departure, we will tell you without delay and you may accept it, accept a substitute we offer, or cancel and receive a full refund.</p>
-<p>We may cancel a trip if too few people book, provided we tell you within the periods the Package Travel Act sets, or if we are prevented by unavoidable and extraordinary circumstances. In either case you receive a full refund of everything you have paid us. We are not liable for costs you have incurred separately, such as flights booked independently, which is another reason to insure.</p>
+<p>We may cancel a trip if too few people book, provided we tell you at least 20 days before departure for a trip of more than six days, or if we are prevented by unavoidable and extraordinary circumstances. In either case you receive a full refund of everything you have paid us, <strong>within 14 days</strong>. We are not liable for costs you have incurred separately, such as flights booked independently, which is another reason to insure.</p>
 
 <h2 id="risk">7. The nature of the activity, and what you take on</h2>
 <div class="pol-note">
