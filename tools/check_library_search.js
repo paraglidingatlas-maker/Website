@@ -14,7 +14,19 @@
  */
 const fs = require("fs");
 const path = require("path");
-const { JSDOM } = require("jsdom");
+let JSDOM;
+try {
+  ({ JSDOM } = require("jsdom"));
+} catch (e) {
+  console.error(
+    "jsdom is not installed.\n" +
+    "  npm install jsdom\n" +
+    "It is a dev dependency only and must NOT be committed. A node_modules\n" +
+    "symlink was once committed by accident and GitHub Pages rejected it,\n" +
+    "failing two deploys while main looked correct. See .gitignore."
+  );
+  process.exit(2);
+}
 
 const ROOT = path.join(__dirname, "..");
 const read = (f) => fs.readFileSync(path.join(ROOT, f), "utf8");
