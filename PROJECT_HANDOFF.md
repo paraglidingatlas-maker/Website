@@ -1154,6 +1154,31 @@ and needs `../`, and the sitemap template renders to the ROOT and must not have
 `../` at all. Each was caught only by auditing every relative href and src, not
 just the .html ones. When touching shared chrome, always re-run that audit.
 
+## 17. PERFORMANCE: WHAT WAS DONE, AND WHAT IS LEFT
+**Images.** Every photo was resized to how it is actually used, allowing for a 2x
+display, and re-encoded. WebP versions sit alongside the JPEGs and every photo
+`<img>` is wrapped in a `<picture>` with a WebP `<source>`. The `<img>` is kept
+untouched as the fallback, so existing CSS that targets `img` still applies and
+nothing breaks without WebP support.
+**The two biggest wins were site chrome, not photographs.** The logo was a 800px
+wide 90 KB PNG, now 480px and 8 KB. The footer mountain graphic was 243 KB, now
+31 KB. Both load on EVERY page, so that alone is about 294 KB off every single
+page view. If either is ever re-exported, re-quantise it: `Image.quantize(256,
+method=Image.FASTOCTREE)` for anything with alpha, MEDIANCUT fails on RGBA.
+**Preconnects** were added per page, only to origins that page actually uses.
+Do not make this a blanket list: each preconnect costs a connection and a
+site-wide list would make pages slower.
+
+**STILL OPEN, and the next real win: three.js on the homepage.**
+The homepage loads d3, topojson, three.js, gsap and ScrollTrigger, all from three
+different CDNs. They are all at the END of body so they do NOT block first paint,
+which is why this is not urgent. But three.js is used by one file, hero-canvas.js,
+for the hero effect alone, and it is by far the heaviest dependency on the site.
+Two questions for the user, in order: is the hero effect worth it, and if yes,
+can it be done with plain canvas instead. Self hosting all five from npm is the
+fallback option, which removes three DNS and TLS handshakes and matches the no
+third party stance taken everywhere else, but does not reduce bytes.
+
 ## DONE (do not redo)
 - **Nine truncated titles, recovered properly (eighth update).** They now live in
   `episode-titles.json`, verbatim from the RSS feed and **keyed by YouTube video
