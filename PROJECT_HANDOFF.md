@@ -2189,3 +2189,37 @@ destination. **That is the settled answer; the grey version is in git history at
 
 Which tags are links was already correct in the markup and never changed across
 any of this. Only `tags.css` and `episodes/episode.css` were ever edited.
+
+## 38. TAG PULSE IS LIVE ON ALL 93 EPISODE PAGES
+
+A very subtle breathing of the border on CLICKABLE tags only. Trialled on one
+page, softened once at the user's request, then rolled out.
+
+**Switch: `TAG_PULSE_ON` in `generate_chapter_deck.py`.** Takes `"all"`, a set of
+slugs, or an empty set. Currently `"all"`. Turning it off everywhere is one word.
+Styling is `.cd-tags.tag-pulse a.cd-tag` in `tags.css`.
+
+**Final values, both softened from the first attempt:** 5.5s cycle, peak 0.42
+alpha against a 0.25 resting border. The first version was 4s and 0.62 and the
+user asked for subtler. **Slowing it mattered as much as dimming it:** the same
+brightness on a fast cycle reads as an alert, on a slow one as breathing.
+
+Deliberate, and each one is a thing that would have made it worse:
+- **border-color only.** No transform, no box-shadow, no text opacity. These are
+  0.7rem uppercase, the smallest type on the page.
+- **Staggered** so a row never pulses in unison, same as the library tiles.
+- **Hover and focus kill the animation**, so hover stays a distinct stronger
+  state instead of competing with it.
+- **Off under `prefers-reduced-motion`.**
+- **Unlinked tags never pulse.** The pulse makes the same promise the border
+  does, and a `<span>` has no destination. See section 37.
+
+92 of 93 episode pages have at least one linked tag and will show it. Bruce
+Goldsmith's has tags but none used by 3+ episodes, so nothing pulses there, which
+is correct rather than a bug. The 94th file in `episodes/` is the Frantisek
+redirect stub from section 18 and has no tags at all.
+
+**A diff touching every episode page is now NORMAL and not alarming.** Any change
+to a shared stylesheet moves its content hash, so `version_assets.py` rewrites
+the link on all 178 pages. Check what actually changed before worrying: on a
+rollout like this, 92 pages changed only by the hash.

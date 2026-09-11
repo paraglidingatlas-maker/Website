@@ -39,13 +39,13 @@ import site_config as cfg
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
-# TRIAL of a subtle pulse on clickable tags. The user asked to see it on ONE
-# page before deciding whether to roll it out, 2026-09-11.
+# Subtle pulse on clickable tags. Trialled on one page and rolled out site wide
+# by the user on 2026-09-11, after being softened once.
 #   set to "all"      -> every episode page
 #   set to a set()    -> just those slugs
 #   set to an empty set -> off everywhere, and the CSS becomes dead weight
 # The styling lives in tags.css under .cd-tags.tag-pulse.
-TAG_PULSE_ON = {"the-russell-ogden-interview-decoding-paragliding-mastery"}
+TAG_PULSE_ON = "all"
 TX = os.path.join(ROOT, "transcripts")
 OUT = os.path.join(ROOT, "episodes")
 
