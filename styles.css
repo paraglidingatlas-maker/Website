@@ -275,6 +275,27 @@ img{max-width:100%;display:block;}
 .ep-card:hover{border-color:rgba(255,117,23,0.4);transform:translateY(-3px);}
 .ep-photo{aspect-ratio:3/4;overflow:hidden;}
 .ep-photo img{width:100%;height:100%;object-fit:cover;}
+/* Cards for episodes with no guest photo yet. Deliberately NOT a YouTube
+   thumbnail: the homepage contacts no third-party origin and a thumbnail would
+   reintroduce one. Deliberately NOT initials either, those were tried on the
+   podcast page and removed on request. Reuses the waveform already in this
+   section, drawn in CSS with no new colours, fonts or image files. Give a card
+   a real <picture> and this rule stops applying to it. */
+.ep-photo-fallback{
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,rgba(255,117,23,0.05),rgba(32,33,39,0) 70%);
+  border-bottom:1px solid rgba(180,180,180,0.12);
+  color:rgba(180,180,180,0.30);
+  position:relative;
+}
+.ep-photo-fallback svg{width:66%;height:auto;}
+.ep-photo-fallback::before,.ep-photo-fallback::after{
+  content:"";position:absolute;width:10px;height:10px;
+  border:1px solid rgba(255,117,23,0.35);
+}
+.ep-photo-fallback::before{top:8px;left:8px;border-right:0;border-bottom:0;}
+.ep-photo-fallback::after{bottom:8px;right:8px;border-left:0;border-top:0;}
+.ep-card:hover .ep-photo-fallback{color:rgba(255,117,23,0.55);}
 .ep-title{font-family:var(--font-display);font-weight:700;font-size:0.95rem;color:var(--white);padding:1rem 1rem 0.4rem;line-height:1.35;}
 .ep-name{color:var(--gray-light);font-size:0.82rem;padding:0 1rem;margin-bottom:0.8rem;}
 .ep-link{color:var(--orange);font-size:0.82rem;font-weight:600;padding:0 1rem 1rem;margin-top:auto;}
