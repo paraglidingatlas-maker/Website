@@ -96,17 +96,53 @@ def _tag_page(tag):
             if os.path.exists(os.path.join(ROOT, "tags", slug + ".html")) else None)
 
 
+def _norm(s):
+    """Loose form of a title for comparison: case, punctuation and & folded."""
+    s = (s or "").lower().replace("&", " and ")
+    return " ".join(re.sub(r"[^a-z0-9]+", " ", s).split())
+
+
 def resolve(tile_title, tile_guest, series_name=None):
-    """The episode behind a tile, or None if it cannot be identified."""
+    """The episode behind a tile, or None if it cannot be identified.
+
+    Four attempts, each one only accepted when it is UNAMBIGUOUS. A tile that
+    matches two episodes is left unresolved on purpose: a plain tile is better
+    than a card describing the wrong conversation.
+    """
+    # 1. The mapping file. Exact, and covers 61 of the 71 tiles.
     ep = _by_video().get(_load("kb_yt_mapping.json").get(tile_title))
-    if ep is None and (tile_guest or "").strip():
-        want = tile_guest.strip().lower()
-        hits = [e for e in _meta()
+    if ep is not None:
+        return ep
+
+    want = (tile_guest or "").strip().lower()
+    meta = _meta()
+
+    # 2. Guest within this series. Tight, so it is tried before guest alone.
+    if want:
+        hits = [e for e in meta
                 if (e.get("guest") or "").strip().lower() == want
                 and (series_name is None or (e.get("series") or "") == series_name)]
         if len(hits) == 1:
-            ep = hits[0]
-    return ep
+            return hits[0]
+
+    # 3. Guest anywhere on the site, if that guest appears exactly once. Catches
+    #    tiles filed under a different series name from the episode's own.
+    if want:
+        hits = [e for e in meta if (e.get("guest") or "").strip().lower() == want]
+        if len(hits) == 1:
+            return hits[0]
+
+    # 4. The KB title is usually a shortened form of the episode title, so a
+    #    unique containment match recovers the rest. "New Technologies 3" sits
+    #    inside "New Technologies 3 : Stephan Stiegler (AirDesign Paragliders)".
+    #    Unique only: "PWCA" appears in two episode titles and stays unresolved.
+    n = _norm(tile_title)
+    if n:
+        hits = [e for e in meta if n in _norm(e.get("title", ""))]
+        if len(hits) == 1:
+            return hits[0]
+
+    return None
 
 
 def modal_data(tile_title, tile_guest, series_name, series_page):

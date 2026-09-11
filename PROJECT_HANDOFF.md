@@ -2602,9 +2602,12 @@ Net positive and small. Worth recording so it is not re-litigated:
 ## 46. THE KNOWLEDGE BASE POPUP IS REAL, PILOTED ON sky-gods.html
 
 **Switch: `RICH_MODAL_ON` in `generate_kb_pages.py`.** Takes `"all"` or a set of
-slugs. Currently `{"sky-gods"}`. **Rolling out to the other 16 pages is one
-word.** Every page not in the set keeps the old card, so nothing regressed while
-this is reviewed.
+slugs. **Now `"all"`**, after the user approved the sky-gods pilot the same day.
+**All 71 tiles across all 13 series pages carry real data. None say "coming
+soon". None show a broken thumbnail. None point at podcast.html.**
+
+Before: 0 crawlable links from the knowledge base to the episode pages.
+After: **71**.
 
 ### THE BIGGEST CHANGE IS NOT THE DESIGN
 **The tiles were `<div>`. They are now `<a href>`.** Before this, all 17
@@ -2679,3 +2682,39 @@ selectors.
 - **Sky Gods has 4 episodes in the data but only 3 tiles on the page.** The
   Russell Ogden interview is in the series and is not listed. Adding it is a
   content decision.
+
+
+## 47. ROLLED OUT TO ALL 71 TILES. THE MATCHER IS THE PART TO UNDERSTAND.
+
+Flipping the switch left 9 tiles unresolved, so `resolve()` in
+`tools/kb_modal_data.py` gained two more attempts. It now tries four things and
+**accepts an answer only when it is UNAMBIGUOUS**:
+
+1. `kb_yt_mapping.json`, exact, 61 of 71.
+2. Guest within this series.
+3. **Guest anywhere on the site, if that guest appears exactly once.** Catches
+   tiles filed under a different series name from the episode's own. Recovered
+   Damien Lacaze, Gin Seok Song and Bryan Van Ostheim.
+4. **Unique containment of the normalised KB title inside an episode title.**
+   KB titles are usually shortened: "New Technologies 3" sits inside
+   "New Technologies 3 : Stephan Stiegler (AirDesign Paragliders)". Recovered
+   that plus #CIVLRESIGN, the Snippet, and two Aninder solo episodes.
+
+**UNIQUE IS THE WHOLE SAFEGUARD.** "PWCA" is contained in two episode titles, so
+attempt 4 refuses it; it resolves by guest at attempt 3 instead. If a future
+tile matches two episodes and no other attempt settles it, it stays unresolved
+and keeps the old card. **A card describing the wrong conversation is worse than
+a plain tile, and it would look completely fine.**
+
+**All 71 resolutions were reviewed by eye before shipping**, printed side by side
+as tile title against resolved episode title. Do that again after adding tiles.
+
+### Reach, before and after
+```
+                        before        after
+tiles with real data        0            71
+"coming soon" cards        71             0
+broken thumbnails          70             0
+KB -> episode links         0            71
+```
+187 pages, 92 checks, 0 FAIL, 9 warn.

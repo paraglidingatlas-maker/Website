@@ -75,8 +75,9 @@ NAV_FOOTER = """
 # guest / description one, so nothing regresses while this is reviewed.
 #   set to "all"  -> every series page
 #   set to a set() -> just those slugs
-# Piloted on sky-gods first at the user's request, 2026-09-11.
-RICH_MODAL_ON = {"sky-gods"}
+# Piloted on sky-gods, then rolled out to every series page after the user
+# approved it, 2026-09-11.
+RICH_MODAL_ON = "all"
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "tools"))
 import kb_modal_data as KBD
