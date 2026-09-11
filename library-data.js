@@ -112,4 +112,12 @@ const LIB_EPISODES = [
   { order: 81, id: "_apo1PNabZI", page: "navigating-india-jigish-gohil", topic: "Navigators", title: "Navigating India: Jigish Gohil (Bonus Ep)" },
   { order: 82, id: "TO6gW69d7YE", page: "navigating-india-eddie-colfox", topic: "Navigators", title: "Navigating India: Eddie Colfox" },
   { order: 83, id: "kOgDYSvfUuo", page: "navigating-colombia-pal-takats", topic: "Navigators", title: "Navigating Colombia: Pal Takats" },
+  { order: 84, id: "", page: "snippet-a-reserve-parachute-trick-every-pilot-should-know", topic: "Know Your Equipment", title: "Snippet: A Reserve Parachute Trick Every Pilot Should Know, by Urs Haari" },
+  { order: 85, id: "", page: "anatomy-of-a-dream-with-damien-lacaze", topic: "Living the Dream", title: "Anatomy of a Dream with Damien Lacaze: A Lifestyle Full of Grit, Grace and Vertical Freedom" },
+  { order: 86, id: "", page: "demystifying-the-science-behind-parakites-bryan-van-ostheim", topic: "New Technologies", title: "Demystifying The Science Behind Endless Fun Factor of Parakites With Bryan Van Ostheim" },
+  { order: 87, id: "", page: "legacy-and-lifetimes-of-gin-seok-song", topic: "Brand Stories", title: "Legacy and Lifetimes of Gin Seok Song: 5 Decades of Pioneering the Art of Free Flight" },
+  { order: 88, id: "", page: "maxime-pinot-the-journey-within", topic: "Sky Gods", title: "Maxime Pinot : The Journey Within : Mapping our Quest to Touch The Sky With Glory" },
+  { order: 89, id: "", page: "science-backed-pre-flight-rituals", topic: "Resources, Tools and Tips", title: "Science Backed Pre Flight Rituals to Unlock Laser Sharp Paragliding Clarity: On Demand" },
+  { order: 90, id: "", page: "mastering-the-unknown-neuroscience-of-crisis-management", topic: "Resources, Tools and Tips", title: "Mastering the Unknown: Neuroscience of Crisis Management & Neuroplasticity Training" },
+  { order: 91, id: "", page: "new-technologies-3-stephan-stiegler", topic: "New Technologies", title: "New Technologies 3 : Stephan Stiegler (AirDesign Paragliders)" },
 ];

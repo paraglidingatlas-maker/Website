@@ -339,5 +339,13 @@ const EPISODE_SEARCH_DATA = [
   {
     "title": "Touch The Sky With Glory",
     "video_id": "MLNGvJHrWQY"
-  }
+  },
+  {"title": "Snippet: A Reserve Parachute Trick Every Pilot Should Know, by Urs Haari", "video_id": "", "page": "episodes/snippet-a-reserve-parachute-trick-every-pilot-should-know.html", "series": "Know Your Equipment"},
+  {"title": "Anatomy of a Dream with Damien Lacaze: A Lifestyle Full of Grit, Grace and Vertical Freedom", "video_id": "", "page": "episodes/anatomy-of-a-dream-with-damien-lacaze.html", "series": "Living the Dream"},
+  {"title": "Demystifying The Science Behind Endless Fun Factor of Parakites With Bryan Van Ostheim", "video_id": "", "page": "episodes/demystifying-the-science-behind-parakites-bryan-van-ostheim.html", "series": "New Technologies"},
+  {"title": "Legacy and Lifetimes of Gin Seok Song: 5 Decades of Pioneering the Art of Free Flight", "video_id": "", "page": "episodes/legacy-and-lifetimes-of-gin-seok-song.html", "series": "Brand Stories"},
+  {"title": "Maxime Pinot : The Journey Within : Mapping our Quest to Touch The Sky With Glory", "video_id": "", "page": "episodes/maxime-pinot-the-journey-within.html", "series": "Sky Gods"},
+  {"title": "Science Backed Pre Flight Rituals to Unlock Laser Sharp Paragliding Clarity: On Demand", "video_id": "", "page": "episodes/science-backed-pre-flight-rituals.html", "series": "Resources, Tools and Tips"},
+  {"title": "Mastering the Unknown: Neuroscience of Crisis Management & Neuroplasticity Training", "video_id": "", "page": "episodes/mastering-the-unknown-neuroscience-of-crisis-management.html", "series": "Resources, Tools and Tips"},
+  {"title": "New Technologies 3 : Stephan Stiegler (AirDesign Paragliders)", "video_id": "", "page": "episodes/new-technologies-3-stephan-stiegler.html", "series": "New Technologies"},
 ];

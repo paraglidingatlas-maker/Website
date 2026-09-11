@@ -19,14 +19,19 @@ TITLE_RE = re.compile(r'title:\s*("(?:\\.|[^"\\])*")')
 EPS = []
 for _row in re.findall(r"\{([^{}]*)\}", lib.rsplit("LIB_EPISODES", 1)[-1]):
     _o = re.search(r"order:\s*(\d+)", _row)
-    _i = re.search(r'id:\s*"([^"]+)"', _row)
+    _i = re.search(r'id:\s*"([^"]*)"', _row)      # may be empty: audio-only episodes
+    _p = re.search(r'page:\s*"([^"]+)"', _row)
     _t = re.search(r'topic:\s*"([^"]+)"', _row)
     _ti = re.search(TITLE_RE, _row)
     if _o and _i and _t and _ti:
         EPS.append({"order": int(_o.group(1)), "id": _i.group(1),
+                    "page": _p.group(1) if _p else "",
                     "topic": _t.group(1), "title": json.loads(_ti.group(1))})
 META = json.load(open(os.path.join(ROOT, 'episode-meta.json')))
 PAGE = {m["video_id"]: m for m in META if m.get("video_id")}
+# Audio-only episodes have no YouTube id, so they can never match on one. Fall
+# back to the page slug, which library-data.js carries for every episode.
+BYSLUG = {m["slug"]: m for m in META}
 
 KB_PAGE = {}
 for f in glob.glob(os.path.join(ROOT, 'knowledge-base', '*.html')):
@@ -66,14 +71,14 @@ for cat, series_list in CATS:
         kb = kb_slug(s)
         links = []
         for e in eps:
-            m = PAGE.get(e["id"])
+            m = PAGE.get(e["id"]) or BYSLUG.get(e.get("page", ""))
             if m:
                 links.append('<li><a href="episodes/%s.html">%s</a></li>'
                              % (m["slug"], esc(fix_title(e["id"], e["title"].split("[")[0]))))
             else:
                 links.append('<li><a href="https://www.youtube.com/watch?v=%s" target="_blank" rel="noopener" class="sm-out">%s</a></li>'
                              % (e["id"], esc(fix_title(e["id"], e["title"].split("[")[0]))))
-        withpage = sum(1 for e in eps if e["id"] in PAGE)
+        withpage = sum(1 for e in eps if e["id"] in PAGE or e.get("page") in BYSLUG)
         cards.append(
             '  <details class="sm-series">\n'
             '    <summary><span class="sm-name">%s</span>'
@@ -120,7 +125,7 @@ for cat, series_list in CATS:
         link(cid, sid)
         link("lib", sid)          # the same series is reachable from the library too
         for e in sorted([x for x in EPS if x["topic"] == sname], key=lambda x: x["order"]):
-            m = PAGE.get(e["id"])
+            m = PAGE.get(e["id"]) or BYSLUG.get(e.get("page", ""))
             eid = "ep:" + e["id"]
             node(eid, fix_title(e["id"], e["title"].split("[")[0]), "episode",
                  ("episodes/%s.html" % m["slug"]) if m else ("https://www.youtube.com/watch?v=%s" % e["id"]), 4)
@@ -136,8 +141,8 @@ import hashlib
 _v = hashlib.md5(open(os.path.join(ROOT, 'sitemap-graph.js'), 'rb').read()).hexdigest()[:8]
 out = out.replace('src="sitemap-graph.js"', 'src="sitemap-graph.js?v=%s"' % _v)
 out = out.replace('{{EPCOUNT}}', str(len(EPS)))
-out = out.replace('{{PAGECOUNT}}', str(sum(1 for e in EPS if e["id"] in PAGE)))
+out = out.replace('{{PAGECOUNT}}', str(sum(1 for e in EPS if e["id"] in PAGE or e.get("page") in BYSLUG)))
 out = out.replace('{{SERIESCOUNT}}', str(len(TOPICS)))
 open(os.path.join(ROOT, 'sitemap.html'), 'w').write(out)
 print("sitemap.html built: %d series, %d episodes, %d with pages"
-      % (len(TOPICS), len(EPS), sum(1 for e in EPS if e["id"] in PAGE)))
+      % (len(TOPICS), len(EPS), sum(1 for e in EPS if e["id"] in PAGE or e.get("page") in BYSLUG)))

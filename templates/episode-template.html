@@ -10,7 +10,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{seo_desc}">
-<meta property="og:image" content="https://i.ytimg.com/vi/{video_id}/maxresdefault.jpg">
+<meta property="og:image" content="{og_image}">
 <link rel="preload" href="../assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -62,19 +62,7 @@
 
     <main class="cd-center">
 
-      <div class="cd-player">
-        <span class="cd-player-corner cd-pc-tl"></span>
-        <span class="cd-player-corner cd-pc-br"></span>
-        <iframe src="https://www.youtube-nocookie.com/embed/{video_id}" title="{title}"
-          loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-
-      <div class="cd-listen">
-        <a class="cd-lbtn" href="https://www.youtube.com/watch?v={video_id}" target="_blank" rel="noopener">Watch on YouTube</a>
-        <a class="cd-lbtn" href="{spotify}" target="_blank" rel="noopener">Listen on Spotify</a>
-        <a class="cd-lbtn" href="https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803" target="_blank" rel="noopener">Listen on Apple</a>
-      </div>
+{player}
 
       <p class="cd-summary">{summary}</p>
 

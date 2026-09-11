@@ -294,6 +294,45 @@ def wrap_transcript(html_body, words, has_transcript, meta=None):
     )
 
 
+def player_html(meta):
+    """The media block.
+
+    Most episodes are on YouTube and get the nocookie iframe. Six are podcast
+    only: they exist in the feed but were never filmed, so there is no video id
+    and an iframe would render an empty player. Those get the episode artwork
+    and the listen buttons instead, which is what a listener actually wants.
+    """
+    vid = (meta.get("video_id") or "").strip()
+    spotify = meta.get("spotify") or "https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec"
+    apple = ("https://podcasts.apple.com/us/podcast/"
+             "paragliding-atlas-by-aninder-singh/id1735782803")
+    if vid:
+        media = (
+            '      <div class="cd-player">\n'
+            '        <span class="cd-player-corner cd-pc-tl"></span>\n'
+            '        <span class="cd-player-corner cd-pc-br"></span>\n'
+            '        <iframe src="https://www.youtube-nocookie.com/embed/%s" title="%s"\n'
+            '          loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"\n'
+            '          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>\n'
+            '      </div>\n' % (esc(vid), esc(meta["title"])))
+        listen = '        <a class="cd-lbtn" href="https://www.youtube.com/watch?v=%s" target="_blank" rel="noopener">Watch on YouTube</a>\n' % esc(vid)
+    else:
+        art = meta.get("artwork") or "../assets/images/hero.jpg"
+        media = (
+            '      <div class="cd-player cd-player-audio">\n'
+            '        <span class="cd-player-corner cd-pc-tl"></span>\n'
+            '        <span class="cd-player-corner cd-pc-br"></span>\n'
+            '        <img src="%s" alt="%s" loading="lazy">\n'
+            '        <p class="cd-audio-note">Audio episode. This one was never filmed, so there is no video to watch.</p>\n'
+            '      </div>\n' % (esc(art), esc(meta["title"])))
+        listen = ""
+    return (media
+            + '\n      <div class="cd-listen">\n' + listen
+            + '        <a class="cd-lbtn" href="%s" target="_blank" rel="noopener">Listen on Spotify</a>\n' % esc(spotify)
+            + '        <a class="cd-lbtn" href="%s" target="_blank" rel="noopener">Listen on Apple</a>\n' % esc(apple)
+            + '      </div>\n')
+
+
 def build(meta, cues, chapters):
     paras = paragraphs(cues)
     words = sum(len(p["text"].split()) for p in paras)
@@ -331,6 +370,10 @@ def build(meta, cues, chapters):
         epno=esc(meta.get("epno", "")),
         submeta=submeta_html,
         video_id=esc(vid),
+        player=player_html(meta),
+        og_image=esc(meta.get("artwork") or
+                     ("https://i.ytimg.com/vi/%s/maxresdefault.jpg" % vid if vid
+                      else "https://paraglidingatlas-maker.github.io/Website/assets/images/hero.jpg")),
         rail=render_rail(chapters),
         summary=esc(meta.get("summary", "")),
         transcript=wrap_transcript(render_transcript(paras, chapters, meta.get("speakers", {})),
