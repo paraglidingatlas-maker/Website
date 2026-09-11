@@ -53,6 +53,39 @@
 .cd-tags .cd-tag::before{content:"#";color:var(--orange);margin-right:.1rem;}
 .cd-tags a.cd-tag:hover,.cd-tags a.cd-tag:focus-visible{color:var(--orange);border-color:var(--orange);}
 
+/* TRIAL, not site wide. A very subtle breathing of the border on CLICKABLE tags
+   only, so the eye picks up that some of these go somewhere. Enabled per page by
+   the generator adding .tag-pulse to .cd-tags; see TAG_PULSE_ON in
+   generate_chapter_deck.py. One line there turns it on everywhere.
+
+   Deliberate choices, each one a thing that would have made it worse:
+   - border-color ONLY. No transform, no box-shadow, no opacity on the text.
+     Anything that moves or dims the words makes them harder to read, and these
+     are 0.7rem uppercase, which is already the smallest type on the page.
+   - 4s. Slow enough to read as breathing rather than blinking. At 1 to 2s it
+     reads as an alert and pulls attention off the transcript.
+   - Peak 0.62 alpha against a 0.25 resting state. Visible if you look at it,
+     ignorable if you are reading.
+   - Staggered so a row never pulses in unison, the same reasoning as the
+     library tiles.
+   - Hover and focus KILL the animation, so hover remains a distinct, stronger
+     state rather than competing with it.
+   - Off entirely under prefers-reduced-motion. */
+@keyframes cd-tag-breathe{
+  0%,100%{border-color:rgba(255,117,23,0.25);}
+  50%{border-color:rgba(255,117,23,0.62);}
+}
+.cd-tags.tag-pulse a.cd-tag{animation:cd-tag-breathe 4s ease-in-out infinite;}
+.cd-tags.tag-pulse a.cd-tag:nth-of-type(5n+2){animation-delay:.8s;}
+.cd-tags.tag-pulse a.cd-tag:nth-of-type(5n+3){animation-delay:1.6s;}
+.cd-tags.tag-pulse a.cd-tag:nth-of-type(5n+4){animation-delay:2.4s;}
+.cd-tags.tag-pulse a.cd-tag:nth-of-type(5n+5){animation-delay:3.2s;}
+.cd-tags.tag-pulse a.cd-tag:hover,
+.cd-tags.tag-pulse a.cd-tag:focus-visible{animation:none;}
+@media(prefers-reduced-motion:reduce){
+  .cd-tags.tag-pulse a.cd-tag{animation:none;}
+}
+
 /* The extractable answer paragraph. Deliberately plain prose: research on AI
    citation is consistent that a blockquote or callout box is lifted less often
    than an ordinary paragraph sitting directly under the heading. */

@@ -38,6 +38,14 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import site_config as cfg
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
+
+# TRIAL of a subtle pulse on clickable tags. The user asked to see it on ONE
+# page before deciding whether to roll it out, 2026-09-11.
+#   set to "all"      -> every episode page
+#   set to a set()    -> just those slugs
+#   set to an empty set -> off everywhere, and the CSS becomes dead weight
+# The styling lives in tags.css under .cd-tags.tag-pulse.
+TAG_PULSE_ON = {"the-russell-ogden-interview-decoding-paragliding-mastery"}
 TX = os.path.join(ROOT, "transcripts")
 OUT = os.path.join(ROOT, "episodes")
 
@@ -626,6 +634,9 @@ def build(meta, cues, chapters):
             wrap_transcript(render_transcript(paras, chapters_with_content(paras, chapters),
                                               meta.get("speakers", {})),
                             words, bool(paras), meta)),
+        tag_pulse=(" tag-pulse"
+                   if TAG_PULSE_ON == "all" or meta["slug"] in TAG_PULSE_ON
+                   else ""),
         guest_box=guest_box_html(meta),
         resources=render_list(meta.get("resources", [])),
         related=render_list(meta.get("related", [])),
