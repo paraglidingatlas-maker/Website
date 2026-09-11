@@ -476,7 +476,15 @@ img{max-width:100%;display:block;}
   width:100%;
   background-color:var(--bg);
 }
-.footer-content{padding:clamp(3rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem) 1.8rem;}
+/* The footer sits OUTSIDE .page-wrap and its five column grid stretches to fill
+   whatever width it is given. Every section above it has the same horizontal
+   padding, but their contents are capped (760px, 640px, 560px), so nothing ever
+   reaches the edge. The footer had no cap, so on a wide monitor the outer
+   columns sat hard against the padding and the whole thing looked pushed to the
+   walls. 1400px is the width already used by .cd-wrap on episode pages and by
+   .ep-map, so it is the site's existing content width rather than a new number. */
+.footer-content{max-width:1400px;margin:0 auto;
+  padding:clamp(3rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem) 1.8rem;}
 .footer-graphic{width:100%;line-height:0;}
 .footer-graphic img{width:100%;height:auto;display:block;}
 

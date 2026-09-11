@@ -369,7 +369,7 @@ COOKIES = """
 """
 
 MISSION = """
-<p class="pol-lede">Touch the Sky With Glory is not a tagline we workshopped. It is the motto of the Indian Air Force, and it is older than that by a very long way.</p>
+<p class="pol-lede">Touch The Sky With Glory is not a tagline we workshopped. It is the motto of the Indian Air Force, and it is older than that by a very long way.</p>
 
 <h2 id="origin">Where it comes from</h2>
 <p>The line is taken from the eleventh chapter of the Bhagavad Gita, the discourse given by Lord Krishna to Arjuna on the battlefield of Kurukshetra during the great war of the Mahabharata. Krishna is showing Arjuna his supreme divine form, and that form reaches the sky with glory, overwhelming Arjuna and emptying him of self-control.</p>
@@ -548,7 +548,7 @@ PAGES = [
      "What Paragliding Atlas collects, why, how long we keep it, and your rights under the GDPR. This site has no analytics and no tracking.", PRIVACY),
     ("participant-agreement.html", "Participant Agreement", "Before You Fly",
      "The form every participant completes before a trip: risk, licence and experience, equipment, insurance and health.", AGREEMENT),
-    ("mission.html", "Touch the Sky With Glory", "What We Are For",
+    ("mission.html", "Touch The Sky With Glory", "What We Are For",
      "Where our name comes from, what we are trying to build, and the part most brands leave out.", MISSION),
     ("corrections.html", "Corrections", "Keep Us Honest",
      "Spotted something out of date in an episode or article? Tell us and we review it within 48 hours.", CORRECTIONS),

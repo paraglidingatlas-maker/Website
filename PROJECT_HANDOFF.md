@@ -2364,3 +2364,40 @@ The footer now uses his capitalisation. **The other two spellings are untouched
 and still live elsewhere.** Raised with him rather than silently normalised,
 because one of them is an episode title and changing titles has consequences
 across `episode-titles.json`, `library-data.js` and the tag pages.
+
+## 40. FOOTER WIDTH FIXED, AND THE TAGLINE IS SETTLED
+
+### The footer was not badly padded, it was uncapped
+The user reported the footer being "pushed to the walls" while the prototype had
+looked fine. The padding was never the problem: `.footer-content` carries
+`clamp(1.5rem,5vw,4rem)`, identical to every section on the site.
+
+**The real cause: the footer sits OUTSIDE `.page-wrap` and had no max-width.**
+Every section above it caps its own contents (760px, 640px, 560px), so nothing
+ever reaches the edge. The footer's five column grid stretches to fill whatever
+it is given, so on a wide monitor the outer columns sat hard against the padding.
+
+`.footer-content` is now `max-width:1400px; margin:0 auto`. **1400px is not a new
+number**: it is already the width of `.cd-wrap` on every episode page and of
+`.ep-map`. Using the site's existing content width rather than inventing one.
+
+**Worth remembering as a class of bug:** "it looks cramped" is often a missing
+max-width rather than missing padding, and the two are fixed in different places.
+
+### THE TAGLINE IS "Touch The Sky With Glory". EVERYWHERE. PERMANENTLY.
+The user's instruction, 2026-09-11: this capitalisation, no full stop, on the
+whole site and in anything written from now on. **Do not vary it.**
+
+It is now consistent across every shipped file. Earlier counts in section 39 (32
+/ 193 / 86) were inflated by the old footer tagline appearing on every page; once
+that was replaced, only `generate_policies.py` still differed, which fed
+`mission.html`. Two occurrences, now corrected. Only `PROJECT_HANDOFF.md` still
+contains the old spellings, deliberately, because those lines are history
+describing what the strings used to be.
+
+**ONE THING RAISED WITH THE USER AND NOT SILENTLY DECIDED.** `mission.html`
+explains that the phrase is the motto of the Indian Air Force. The conventional
+English rendering of that motto is "Touch the sky with glory", lower case. The
+page now uses the brand capitalisation in that sentence too, on the user's
+instruction. If he wants the motto quoted conventionally while the brand keeps
+its own capitalisation, that is one sentence in `generate_policies.py`.
