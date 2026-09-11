@@ -15,9 +15,13 @@
  * ---------------------------------------------------------------------------
  * SETUP, in order. Steps 1 to 3 are in the Cloudflare dashboard.
  *
- * 1. Email Routing must be enabled on a domain in your Cloudflare account.
- *    READ THE WARNING AT THE BOTTOM OF THIS FILE FIRST. Enabling it changes
- *    that domain's MX records and can break existing email on it.
+ * 1. Onboard `send.paraglidingatlas.com` under
+ *    Compute > Email Service > Email Sending > Onboard Domain.
+ *    Choose the SUBDOMAIN, not the apex. Cloudflare writes its cf-bounce MX,
+ *    SPF, DKIM and DMARC records onto that subdomain only, so the apex MX,
+ *    which points at Google Workspace, is never touched and your email cannot
+ *    break. Verified in DNS 2026-09-11: apex MX is Google, apex SPF ends in
+ *    `-all`, and `send.` is unused.
  *
  * 2. Verify your destination address:
  *    Compute > Email Service > Email Routing > Destination Addresses
@@ -41,12 +45,24 @@
 
 import { EmailMessage } from "cloudflare:email";
 
-/** Must be an address on the domain that has Email Routing enabled.
- *  It does not need to be a real mailbox: it is the envelope sender. */
-const FROM = "corrections@paraglidingatlas.com";
+/** Must be an address on the SENDING SUBDOMAIN, never on the apex.
+ *
+ *  Two reasons, both checked in DNS rather than assumed:
+ *  1. The apex SPF record is `v=spf1 include:_spf.google.com -all`. The `-all`
+ *     is a hard fail, so anything sent as @paraglidingatlas.com from somewhere
+ *     that is not Google gets rejected, quite possibly silently.
+ *  2. Onboarding a SUBDOMAIN for sending puts Cloudflare's records on the
+ *     subdomain and leaves the apex MX untouched, so Google Workspace mail
+ *     keeps working exactly as it does now.
+ *
+ *  `mail.paraglidingatlas.com` is already in use, pointing at Cloudflare.
+ *  `send.` was confirmed free. It does not need to be a real mailbox: nobody
+ *  replies to it, because Reply-To is set to whoever submitted the form. */
+const FROM = "corrections@send.paraglidingatlas.com";
 const FROM_NAME = "Paragliding Atlas corrections form";
 
-/** Must match the verified destination address exactly. */
+/** Must match the verified destination address exactly. The user uses one
+ *  address for all communication, which is a deliberate choice on his part. */
 const TO = "aninder@paraglidingatlas.com";
 
 /** Only these origins may post here. Add the custom domain when DNS moves.
@@ -207,7 +223,24 @@ export default {
 };
 
 /* ---------------------------------------------------------------------------
- * WARNING, READ BEFORE ENABLING EMAIL ROUTING
+ * DMARC NOTE, FOR WHOEVER TIGHTENS THE POLICY LATER
+ *
+ * paraglidingatlas.com published a DMARC record on 2026-09-11:
+ *   v=DMARC1; p=none; rua=mailto:aninder@paraglidingatlas.com; fo=1
+ * There is no `sp=` tag, so that policy applies to subdomains too, including
+ * send.paraglidingatlas.com. At p=none nothing is affected either way.
+ *
+ * **When the policy is tightened to quarantine or reject, this Worker's mail
+ * must still align.** Cloudflare's Email Sending onboarding writes SPF and DKIM
+ * onto the sending subdomain, which is what makes it align, so this should be
+ * fine. But confirm it before tightening: send a test through the form, open it
+ * in Gmail, Show original, and check DMARC passes. Tightening while this fails
+ * would silently drop every correction anyone submits.
+ * ---------------------------------------------------------------------------
+ */
+
+/* ---------------------------------------------------------------------------
+ * WHY A SUBDOMAIN, AND WHAT WOULD GO WRONG WITHOUT ONE
  *
  * Enabling Email Routing on a domain sets Cloudflare's own MX records on it.
  * If aninder@paraglidingatlas.com currently receives mail through Google
