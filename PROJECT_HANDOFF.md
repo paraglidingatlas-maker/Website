@@ -2911,3 +2911,38 @@ tiles that fail to resolve           0
 cards disagreeing with their page    0
 ```
 187 pages, 92 checks, 0 FAIL, 9 warn.
+
+## 52. STRAY LINKS IN THE KNOWLEDGE BASE BREADCRUMBS, INCLUDING IN THE SCHEMA
+
+Every knowledge base breadcrumb read:
+```
+Knowledge Base Safety & Disclosure Corrections / Competitions & Performance / Risk vs. Reward
+```
+Two links to `safety-and-disclosure.html` and `corrections.html` sat inside the
+`<p class="breadcrumb">`, with no separators, on **18 pages**. Almost certainly a
+find-and-replace that was meant for the nav or footer and caught the breadcrumb
+as well.
+
+### IT WAS NOT JUST COSMETIC
+`inject_site_schema.py` builds the `BreadcrumbList` **from the visible
+breadcrumb**, so search engines were being told the site hierarchy is
+`Home > Knowledge Base > Safety & Disclosure > Corrections > Competitions >
+Risk vs. Reward`. Six levels, two of them nonsense, on every knowledge base page.
+Fixing the markup fixed the structured data on the next build, because the
+injector reads one and writes the other.
+
+**Worth remembering: the visible breadcrumb IS the structured data on this
+site.** Anything wrong in one is wrong in both, and only one of them is visible.
+
+Both pages remain linked from the footer on 179 pages each, so nothing became an
+orphan. The audit's orphan check confirms it.
+
+### AND core-series.html AGAIN
+17 of the 18 came from two templates in `generate_kb_pages.py`. The eighteenth,
+`knowledge-base/core-series.html`, is **hand maintained** and had to be edited
+directly. **That is the third time in one day** this file has been missed by a
+fix that covered every generated page: the nav in section 29, the footer in
+section 39, and now this.
+
+**If a change touches knowledge base pages, `core-series.html` needs doing by
+hand. It is not generated and no amount of rebuilding will reach it.**

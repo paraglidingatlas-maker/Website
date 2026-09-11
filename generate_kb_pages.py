@@ -249,9 +249,7 @@ def category_page(slug, title, intro, series_list):
       <span class="series-arrow">View Episodes →</span>
     </a>"""
     body = f"""<header class="cat-hero">
-  <p class="breadcrumb"><a href="../knowledge-base.html">Knowledge Base</a>
-      <a href="../safety-and-disclosure.html">Safety &amp; Disclosure</a>
-      <a href="../corrections.html">Corrections</a> / {title}</p>
+  <p class="breadcrumb"><a href="../knowledge-base.html">Knowledge Base</a> / {title}</p>
   <h1>{title}</h1>
   <p>{intro}</p>
 </header>
@@ -299,9 +297,7 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
         ep_html = '<div class="ep-empty">Episodes for this series are coming soon. Check back shortly, or explore the <a href="../podcast.html" style="color:var(--orange);">full podcast archive</a> in the meantime.</div>'
 
     body = f"""<header class="cat-hero">
-  <p class="breadcrumb"><a href="../knowledge-base.html">Knowledge Base</a>
-      <a href="../safety-and-disclosure.html">Safety &amp; Disclosure</a>
-      <a href="../corrections.html">Corrections</a> / <a href="{category_slug}.html">{category_title}</a> / {title}</p>
+  <p class="breadcrumb"><a href="../knowledge-base.html">Knowledge Base</a> / <a href="{category_slug}.html">{category_title}</a> / {title}</p>
   <h1>{title}</h1>
   <p>{intro}</p>
   <div class="point-row">{point_html}</div>
