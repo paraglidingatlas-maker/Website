@@ -114,6 +114,7 @@ TEMPLATE = """<!DOCTYPE html>
     <a href="../about.html">About Us</a>
     <span class="nav-sep">|</span>
     <a href="../knowledge-base.html">Knowledge Base</a>
+      <a href="../safety-and-disclosure.html">Safety &amp; Disclosure</a>
     <span class="nav-sep">|</span>
     <a href="../podcast.html">Podcast</a>
   </div>

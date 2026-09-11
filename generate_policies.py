@@ -65,6 +65,7 @@ HEAD = """<!DOCTYPE html>
     <a href="about.html">About Us</a>
     <span class="nav-sep">|</span>
     <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="safety-and-disclosure.html">Safety &amp; Disclosure</a>
     <span class="nav-sep">|</span>
     <a href="podcast.html">Podcast</a>
     <span class="nav-sep">|</span>
@@ -101,7 +102,7 @@ HEAD = """<!DOCTYPE html>
       <h2>Enquiries</h2>
       <a href="enquire.html">General</a>
       <a href="index.html#destinations">Trips</a>
-      <a href="safety-and-disclosure.html">Safety &amp; Disclosure</a>
+      <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener">Book a Call</a>
     </div>
     <div class="footer-col">
       <h2>Quick Links</h2>
@@ -112,7 +113,7 @@ HEAD = """<!DOCTYPE html>
     <div class="footer-col">
       <h2>Links</h2>
       <a href="knowledge-base.html">Knowledge Base</a>
-      <a href="#">Passion</a>
+      <a href="safety-and-disclosure.html">Safety &amp; Disclosure</a>
       <a href="#">Mission Statement</a>
     </div>
   </div>
