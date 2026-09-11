@@ -2002,11 +2002,23 @@ TRUE, so a new episode behaves normally without anyone remembering this exists.
 `generate_chapter_deck.py` do the work; the template now carries `{rail_block}`
 and `{transcript_block}` where the markup used to be hardcoded.
 
-**The grid needed a matching change.** `.cd-main` is
-`250px minmax(0,1fr) 290px`. Removing the rail without touching it left an empty
-250px first column, so the player sat 250px right of where it does on every other
-page. `.cd-main-norail` drops it to two columns, with a matching rule at the
-1150px breakpoint.
+**THE GRID MUST NOT BE COLLAPSED. This was got wrong first and corrected.**
+`.cd-main` is `250px minmax(0,1fr) 290px` and grid children are auto placed in
+document order, so removing the rail `<aside>` does not leave a gap. It promotes
+the player into column one and shifts every element below it. A
+`.cd-main-norail` two column variant was added to "fix" that, which was worse:
+it changed the page layout on 13 pages when the user had asked only for two
+sections to go.
+
+**The user was explicit: remove the sections, leave the blank space, move
+nothing.** So `rail_block_html()` returns an EMPTY `<aside class="cd-rail">`
+rather than an empty string. The column stays open, every other element keeps
+its exact position, and `episode.css` is unchanged apart from a comment.
+
+**Verified by diffing all 93 pages against the commit before this work:** the 13
+differ ONLY by the rail innards and the transcript heading and placeholder, and
+the other 80 are byte identical. That comparison is the check that should have
+been run the first time.
 
 ### THE TWO THAT ARE DELIBERATELY NOT FLAGGED
 `ama-1` and `can-we-steer-a-round-reserve-parachute-urs-haari-answers` have no
@@ -2037,3 +2049,30 @@ transcript absent on exactly the 13, present on the other 80.
 The "Mentioned in this episode" and "Related episodes" boxes render EMPTY on the
 reels, the same pattern the guest box had before section 30. Not raised with the
 user yet.
+
+## 33. LESSON: "REMOVE THE SECTION" DID NOT MEAN "CHANGE THE LAYOUT"
+
+Section 32's first attempt collapsed `.cd-main` from three columns to two on 13
+pages. The user's reaction: "the whole page layout is gone for these videos, it
+is a completely different looking page now". They were right.
+
+The instruction was to remove two sections and **leave the blank space**. Nothing
+in it licensed moving the player, the summary or the sidebar. The reasoning that
+led to it was internally sound (an empty grid column looks like a mistake) and
+was applied to a question the user had not asked. That is the same failure as
+lesson 11 and the "top to bottom" misread in the sixth update: **an instruction
+that can be read as "adjust" or as "replace" must be asked about, and a tidy-up
+nobody requested is a change nobody reviewed.**
+
+**The check that would have caught it in seconds**, and which is now the routine
+for any change to shared page furniture:
+```
+diff <(git show <sha-before>:episodes/<slug>.html) episodes/<slug>.html
+```
+If the diff contains anything beyond what was asked for, stop. Run it across
+every affected page, not one sample. Doing that after the correction showed the
+13 differ only by the removed markup and the other 80 are byte identical, which
+is exactly the evidence that should have accompanied the first push.
+
+**Do not collapse the grid on those pages.** `rail_block_html()` returns an
+empty `<aside class="cd-rail">` on purpose, to hold the column open.

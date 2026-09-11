@@ -283,9 +283,20 @@ def transcript_expected(meta):
 
 
 def rail_block_html(meta, chapters):
-    """The sticky Chapters rail, or nothing."""
+    """The sticky Chapters rail. Rendered EMPTY, never removed.
+
+    `.cd-main` is a three column grid, 250px / 1fr / 290px, and grid children
+    are auto placed in document order. Removing this aside therefore does not
+    leave a gap: it promotes the player into column one and shifts every element
+    on the page. That was shipped on 2026-09-11 and was wrong.
+
+    The user asked for the SECTIONS to go and the space to stay. So on reels and
+    cinematics this returns the same empty <aside>, holding its column open, with
+    no heading and no list inside it. Every other element keeps its exact
+    position. Do not "tidy" this into a return of "".
+    """
     if not transcript_expected(meta):
-        return ""
+        return '    <aside class="cd-rail"></aside>\n'
     return ('    <aside class="cd-rail" aria-label="Episode chapters">\n'
             '      <p class="cd-rail-title">Chapters</p>\n'
             '%s\n'
@@ -604,7 +615,6 @@ def build(meta, cues, chapters):
         og_image=esc(meta.get("artwork") or
                      ("https://i.ytimg.com/vi/%s/maxresdefault.jpg" % vid if vid
                       else "https://paraglidingatlas-maker.github.io/Website/assets/images/hero.jpg")),
-        main_mod=("" if transcript_expected(meta) else " cd-main-norail"),
         rail_block=rail_block_html(meta, chapters_with_content(paras, chapters)),
         summary=esc(meta.get("summary", "")),
         transcript_block=transcript_block_html(
