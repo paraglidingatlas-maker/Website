@@ -89,13 +89,65 @@ Also confirm the weather carve-out holds: the page says the traveller is buying
 guiding and access rather than a guaranteed number of flights, so weather is not
 a failure to perform and triggers no price reduction under Articles 13 and 14.
 
-**2. Is this a package, and is insolvency protection in place?**
-The trips are guided, multi day, and may be sold with accommodation and transfers.
-If they are packages under the Package Travel Act, Norwegian law requires
-insolvency protection, in practice registration with Reisegarantifondet, and the
-standard information form must be given to the customer before booking. This is
-the only item in this brief with a regulatory consequence for trading, and it
-should be answered first.
+**2. Is this a package, and is insolvency protection required? ANSWER THIS FIRST.**
+This is the only item in this brief with a consequence for trading legally. The
+question is framed below against the statute and against what the trip actually
+consists of, so it can be answered rather than investigated.
+
+*The governing text.* Lov om pakkereiser og reisegaranti mv. of 15 June 2018
+(pakkereiseloven), in force 1 July 2018, implementing Directive (EU) 2015/2302.
+The definition of "pakkereise" is in § 6. Supervision sits with Forbrukertilsynet.
+Not the 1995 Act, which is superseded and still surfaces first in some searches.
+
+*The test, as we read it.* A package is a combination of at least two different
+types of travel service sold for the same trip. **It does not need to include
+transport.** Industry guidance from NHO Reiseliv states that accommodation
+combined with any other tourist service is a package in the meaning of the Act,
+and lists guided tours and guided walking trips among the tourist services that
+count, provided the tourist service represents a significant proportion of the
+combination's value. Anyone arranging packages, or linked travel arrangements
+("sammensatte reisearrangementer"), must register with Reisegarantifondet,
+provide a travel guarantee, and pay the annual fee.
+
+*What the trip appears to consist of.* Taken from the operator's own published
+Kenya page, confirmed by the operator as current: twelve days, based in Kerio
+Valley, three dated departures, minimum pilot rating IPPI 2 or equivalent, fully
+guided flying from launch to landing, day one described as arrival in Nairobi and
+transfer to the hotel. Payment is a deposit at registration with the balance due
+120 days before departure. Customers are mostly EEA and UK consumers.
+
+*Facts the operator must confirm before the reviewer relies on them.* These are
+NOT established and should not be assumed:
+  - Is accommodation included in the trip price, or booked separately by the
+    traveller? The published itinerary implies hotel nights but the "What's
+    Included" section is not filled in.
+  - Are ground transfers included and provided or arranged by the operator?
+  - Are international flights ever sold or arranged by the operator, or always
+    booked by the traveller themselves?
+  - Roughly what share of the price is guiding, versus accommodation and
+    transport? This goes directly to the "significant proportion of value" test.
+  - Is the trip sold under the operator's own name and one total price, or are
+    components invoiced separately by different suppliers?
+
+*What we would like answered.*
+  a. On those facts, is this a pakkereise under § 6, a sammensatt
+     reisearrangement, or neither?
+  b. If either, confirm the Reisegarantifondet registration and guarantee
+     obligation, the size of guarantee likely required at this turnover, and
+     whether trading has already occurred without it and what follows from that.
+  c. Does any exemption apply? In particular the narrow exemption for packages
+     offered occasionally, on a not-for-profit basis and to a limited group.
+     We assume it does not, since these are sold commercially to the public.
+  d. If registration is required, the prescribed standard information form must
+     be given to the customer before booking. Confirm which form applies and
+     where it has to sit relative to the booking step.
+  e. Does the answer change for trips outside the EEA, as Kenya is, where the
+     operator is established in Norway?
+
+*Note on how this section was prepared.* The statutory references above were
+gathered from Lovdata and Norwegian industry guidance by a non-lawyer, to make
+this question cheaper to answer. They are a starting point for the reviewer to
+verify, not a legal opinion, and nothing here should be relied on as one.
 
 **3. Are the payment deadlines enforceable as drafted?**
 Under Norwegian and EU consumer law a cancellation charge must reflect a genuine
