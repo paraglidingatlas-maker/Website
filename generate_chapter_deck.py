@@ -10,8 +10,12 @@ library-data.js          Reused for the series each episode belongs to.
 
 Output
 ------
-episodes/<slug>.html     Uses episodes/episode.css, which is lifted verbatim from
-                         prototypes/episode-page-chapter-deck-FINAL.html.
+episodes/<slug>.html     Uses episodes/episode.css. That file was lifted verbatim
+                         from prototypes/episode-page-chapter-deck-FINAL.html,
+                         which was deleted on 2026-09-11 along with the rest of
+                         prototypes/ (six unaudited, crawlable orphan pages).
+                         episode.css is now the single source for this design;
+                         the old prototype is in git history before that commit.
 
 Chapters
 --------

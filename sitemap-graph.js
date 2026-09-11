@@ -546,11 +546,15 @@
       info(n);
       return;
     }
-    /* A node with nothing under it is a destination, so go there. Episodes with
-       a page of their own open in this tab; the rest fall back to YouTube. */
+    /* A node with nothing under it is a destination, so go there. EVERYTHING
+       opens in a new tab, local episode pages included (user's decision,
+       2026-09-11). The map holds a lot of state: which branches you opened and
+       the route you took to get here. Navigating in this tab threw all of that
+       away and the back button dropped you on a collapsed tree. A new tab keeps
+       your place. Relative urls resolve against sitemap.html, which sits at the
+       site root, so no leading path is needed or wanted here. */
     if (n.url) {
-      if (/^https?:/.test(n.url)) window.open(n.url, "_blank", "noopener");
-      else window.location.href = n.url;
+      window.open(n.url, "_blank", "noopener");
       return;
     }
     focus = n.id;

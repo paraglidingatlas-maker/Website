@@ -12,6 +12,7 @@ python3 generate_sitemap.py         >/dev/null
 python3 generate_robots_sitemap.py  >/dev/null
 python3 generate_llms_txt.py        >/dev/null
 python3 tools/generate_redirects.py >/dev/null
+python3 tools/generate_library_index.py >/dev/null
 python3 tools/inject_site_schema.py
 python3 - <<'EOF'
 # non-HTML outputs are generated from site_config already, this just proves it

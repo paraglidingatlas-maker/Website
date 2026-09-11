@@ -946,7 +946,11 @@ C. **Doc versus behaviour mismatch on the sitemap.** This file says twice that
    external). Either the behaviour changed deliberately and the doc was not
    updated, or the guard was lost. Confirm which before touching it.
 
-D. **Episode numbering (`epno`) is now unblocked and still empty.** The feed's
+D. **Episode numbering (`epno`): DONE (verified 2026-09-11).** Populated on 80
+   of 93, which is every episode carrying a feed date. The other 13 are
+   YouTube-only and correctly have none. `published` is populated on the same
+   80. Nothing to do here. Original note follows.
+   ~~Episode numbering (`epno`) is now unblocked and still empty.~~ The feed's
    oldest `pubDate` is confirmed as Wed 15 Nov 2023, so chronological numbering
    from 1 is computable. `published` / `published_label` are also empty on at
    least some entries and the feed has real dates for all 80.
@@ -965,8 +969,11 @@ and `transcript-files.spotifycdn.com` is reachable too. Measured, not assumed:
   shows "Aninder:" / "Zsolt:" per line; transcripts sourced from Spotify cannot
   fill that field, only the Autotekst ones can.
 
-10. **`library.html` serves no episode content to crawlers. DECISION NEEDED: A or
-    B.** The page serves 614 characters of text and zero episode titles. There is
+10. **`library.html` crawler content: DONE 2026-09-11, Option A, user approved.**
+    See section 28. Served text went from 117 words to 1,150 and from zero
+    episode titles to 86 linked ones. Option B (real HTML tiles) was NOT done
+    and still needs asking for by name. Original write-up follows.
+    ~~DECISION NEEDED: A or B.~~ The page serves 614 characters of text and zero episode titles. There is
     no `<noscript>` block and every tile is injected by JavaScript, so a crawler
     that does not run scripts sees an empty page.
     **Do not overstate this.** The episodes are NOT undiscoverable: `sitemap.html`
@@ -985,8 +992,9 @@ and `transcript-files.spotifycdn.com` is reachable too. Measured, not assumed:
       page that took five prototype rounds to settle and risks the stone slab
       rendering. Do not do this without the user asking for it by name.
 
-11. **`globe.js` pin labels were rewritten by an earlier session and carry
-    invented em-dashes.** Ready to run, needs only a go ahead.
+11. **`globe.js` pin labels: DONE (verified 2026-09-11).** The audit check
+    `copy / em-dashes in globe pin labels` returns 0. Do not re-raise.
+    ~~Ready to run, needs only a go ahead.~~
     Measured, not assumed: 73 pins, **25 labels contain an em-dash, and ZERO of
     the 25 match the real episode title.** The user's own titles use `|` as the
     separator and the rewrite replaced it. The same rewrite altered the user's
@@ -1004,7 +1012,13 @@ and `transcript-files.spotifycdn.com` is reachable too. Measured, not assumed:
     `popupTitle.textContent`, and swapping to real titles moves the average label
     from 70 to 71 characters and the longest from 144 to 143.
 
-## 12. CHAPTER TITLES: 18 OF 38 REWRITTEN, 20 STILL TO GO
+## 12. CHAPTER TITLES: DONE (verified 2026-09-11). ALL 38 REWRITTEN.
+**Do not redo.** The check named at the bottom of this section (any chapter
+title ending in an ellipsis or starting lower case) returns ZERO across all 93
+episodes. The "still to do" list of 20 below is historical; every one is done.
+Kept for the method, which is reusable if new chapters are ever generated.
+
+### Original note, 18 of 38 at the time of writing
 45 episodes carry chapters, and 38 of them had titles cut off mid sentence,
 generated from host questions and never rewritten. Examples of what was there:
 "Look for when choosing a reserve?", "Community where even the top of the line
@@ -1662,3 +1676,122 @@ Also dropped: the destination skill level meters.
   consequence for trading legally.**
 - The hero particle field has still never been executed in a harness. The
   library search half of that work is done.
+
+## 28. SESSION OF 2026-09-11 (second session that day). READ WITH 27.
+
+**State: 187 pages, 91 checks, 0 FAIL, 9 warn. Unchanged from section 27.**
+The page count did not move because `tools/audit.py` skips `prototypes/`, and
+the six pages deleted this session were all in there.
+
+### A LIVE CONTENT BUG, now fixed
+Two episode pages were serving a "The Guest" box with an EMPTY name and a
+fragment of show-notes boilerplate in the role line. `eddie-colfox-storytime`
+read "Most efficient way we can force the algorithms to bring this awesomeness
+of all things paraglid", cut mid-word. `meteorology-101` read "Head over to the
+Kenya episode that we recorded with Nikolai Yotov". Both were live.
+
+These were the "2 of 46 guest roles successfully extracted" that earlier
+handoffs recorded as a small win. They were not a win. This is lesson 20's
+failure mode (naive extraction from show notes) except it shipped and sat there.
+**When a past session records a low extraction yield, check the few that
+succeeded rather than assuming they are the good ones.**
+
+The user supplied both names. Each was corroborated before writing:
+- **Eddie Colfox**, surname appears in that episode's own transcript.
+- **Ivelin Kalushkov**, whose surname appears exactly once, in the opening line
+  "Emilin Kalushkov, greetings and welcome to Paragliding Atlas". Whisper
+  mangled the first name; the user's spelling is authoritative and the surname
+  match confirms the pairing.
+`_guest_source` records this on both. `guest_role` is now empty on both, as it
+is on the other 29 named guests.
+
+### `prototypes/` IS DELETED. All six files.
+```
+episode-page-chapter-deck-FINAL.html (485 KB), episode-page-concepts.html,
+glimpse-layouts.html, nav-concepts.html, question-form-concepts.html,
+widget-concepts.html
+```
+**Why this mattered more than tidiness.** All six were publicly served with no
+`noindex`, absent from `sitemap.xml`, and `robots.txt` says `Allow: /` to every
+crawler with no Disallow for that folder. Meanwhile `audit.py`, the schema
+injector and `generate_robots_sitemap.py` ALL skip `prototypes/`, so none of the
+91 checks had ever looked at them. Six unaudited crawlable orphans on a site
+where every other page has a canonical and a checked heading structure.
+**The SKIP_DIRS list in those three tools is now the only thing standing between
+a new folder and this same blind spot. If a folder is skipped by the audit it
+must not be served.** Nothing depended on them: `episodes/episode.css` is
+standalone and no generator reads a prototype. They are in git history before
+this commit. The comment in `generate_chapter_deck.py` was updated.
+
+### Three tracked `.pyc` files untracked
+`__pycache__/site_config`, `__pycache__/generate_chapter_deck` and
+`tools/__pycache__/sheet_data` were tracked from before `.gitignore` listed the
+folder, and adding the rule does not untrack what is already tracked.
+`site_config.pyc` is rewritten by EVERY `./build.sh`, so the repo permanently
+showed an uncommitted change. Given section 27's rule that `git add -A` is
+unsafe here, a permanently dirty file is exactly how something unwanted gets
+swept in. `git rm --cached` on all three. They regenerate automatically.
+
+### Sitemap leaf nodes now open in a NEW TAB
+Resolves open item C, which had flagged that `sitemap-graph.js` navigated on
+leaf nodes while this document claimed twice that clicking never navigates.
+**The code was right and the doc was stale**: the navigation carried a comment
+explaining it was deliberate. The user's decision is that navigation stays but
+goes to a new tab, local episode pages included, because the map holds a lot of
+state (which branches are open, and `via`, the route you took) and navigating in
+the same tab threw all of it away, with the back button landing you on a
+collapsed tree. All three mandated sitemap checks re-run and pass.
+**Update this document's two "clicking NEVER navigates" claims if they are ever
+read literally again. They describe a design that was superseded.**
+
+### `library.html` no-JS index. Option A, built.
+Resolves PENDING item 10. `tools/generate_library_index.py` writes a `<noscript>`
+index between markers in `library.html`, wired into `build.sh` BEFORE the schema
+injector like every other generator.
+- **Served text went from 117 words to 1,150, and from zero episode titles to 86
+  linked ones.** Anyone with JavaScript sees no pixel of difference; the stone
+  slabs are untouched.
+- It reads `library-data.js`, the same source the page's own tiles use, so the
+  index cannot disagree with what the page renders.
+- **It fails loudly** on a missing marker, a topic LIB_TOPICS does not define, or
+  a row linking to an episode page that does not exist. It refuses to write an
+  empty index.
+- **86 is the correct count, not 92.** `order` runs 0 to 91 with six gaps (51,
+  53, 54, 62, 66, 69) which are exactly the six non-episodes excluded at the top
+  of `library-data.js`. The gaps preserve the original YouTube export index.
+  This was checked rather than assumed, because a parser silently dropping rows
+  would look identical.
+- Categories are `h2` and series `h3`, so the page's `h1` is not skipped over.
+- Option B, rendering the tiles as real HTML, was NOT done and still needs the
+  user to ask for it by name.
+
+### CORRECTION TO SECTION 27's STILL OPEN LIST
+The user has closed these. **Do not re-raise any of them:**
+- The hero particle field harness. Not needed.
+- The five unconfirmed facts in LEGAL-REVIEW.md question 2. The user says the
+  legal documents are fine as they are. **Noted once and dropped: this was the
+  only open item with a consequence for trading legally, and it is unanswered
+  rather than resolved.** That is the user's call to make.
+- Trip facts for Himalayas, Peru and Kazakhstan. The nine `Placeholder` strings
+  stay in `index.html`, which is why that audit warning stays too.
+- The Kenya page.
+- **Guest photos (Set A, ten homepage scroller cards) and episode artwork
+  (Set B, eight audio-only pages). Explicitly dropped.** The `?` placeholders
+  stay.
+
+### STILL GENUINELY OPEN
+- **The FAQ block.** Blocked on the user supplying the questions and answers, or
+  pointing at a source. Three decisions also outstanding: how many per episode,
+  whether all 93 pages or only the 78 with transcripts, and whether questions are
+  per-episode or shared. DO NOT invent FAQ content. Note the prototype that
+  showed the intended layout is deleted; the CSS in `episodes/episode.css` lines
+  67 to 74 is now the only specification of it.
+- **Guest roles.** 30 named guests, ZERO with a role now that the two bad ones
+  are cleared. Needs one line per guest from the user, or the field gets dropped
+  from the design. The user has not chosen.
+- **Set C, never previously flagged.** `.cd-guest-row img` is styled as a 54px
+  circular avatar with an orange border, but `templates/episode-template.html`
+  emits no `<img>` there at all. Dead CSS on all 93 episode pages. Needs a
+  template change plus a photo per guest if it is ever wanted.
+- Thin series, site-wide chrome treatment (mockup B), and the lateral-scroll
+  sitemap design request are all untouched from earlier sections.
