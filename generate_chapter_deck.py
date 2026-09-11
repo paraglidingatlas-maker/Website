@@ -198,7 +198,13 @@ def render_transcript(paras, chapters, speakers):
                 'The full conversation is in the player above.</p></p></div>')
     if not chapters:
         chapters = [{"title": "Transcript", "at": 0.0}]
+    # The first chapter's boundary is clamped to zero. Authored chapter times
+    # are rounded to the nearest second, so a first chapter at 00:04 used to
+    # exclude every paragraph starting before 4.0s, and those paragraphs were
+    # dropped from the page entirely rather than appearing anywhere. The rail
+    # still linked to the block that was never emitted, leaving a dead #c1.
     bounds = [c["at"] for c in chapters] + [float("inf")]
+    bounds[0] = 0.0
     for n, ch in enumerate(chapters):
         inside = [p for p in paras if bounds[n] <= p["start"] < bounds[n + 1]]
         if inside:
@@ -221,6 +227,23 @@ def render_transcript(paras, chapters, speakers):
             '        <p class="cd-block-time">%s</p>\n%s\n      </div>'
             % (cid, esc(ch["title"]), clock(ch["at"]), "\n".join(lines)))
     return "\n".join(out)
+
+
+def chapters_with_content(paras, chapters):
+    """Chapters that will actually render a block.
+
+    The rail and the transcript must agree, or the rail links to an id that was
+    never emitted. Anything empty is dropped from both rather than left dangling.
+    """
+    if not paras or not chapters:
+        return list(chapters)
+    bounds = [c["at"] for c in chapters] + [float("inf")]
+    bounds[0] = 0.0
+    keep = []
+    for n, ch in enumerate(chapters):
+        if any(bounds[n] <= p["start"] < bounds[n + 1] for p in paras):
+            keep.append(ch)
+    return keep
 
 
 def render_rail(chapters):
@@ -374,9 +397,9 @@ def build(meta, cues, chapters):
         og_image=esc(meta.get("artwork") or
                      ("https://i.ytimg.com/vi/%s/maxresdefault.jpg" % vid if vid
                       else "https://paraglidingatlas-maker.github.io/Website/assets/images/hero.jpg")),
-        rail=render_rail(chapters),
+        rail=render_rail(chapters_with_content(paras, chapters)),
         summary=esc(meta.get("summary", "")),
-        transcript=wrap_transcript(render_transcript(paras, chapters, meta.get("speakers", {})),
+        transcript=wrap_transcript(render_transcript(paras, chapters_with_content(paras, chapters), meta.get("speakers", {})),
                                    words, bool(paras), meta),
         guest_name=esc(meta.get("guest", "")),
         guest_role=esc(meta.get("guest_role", "")),

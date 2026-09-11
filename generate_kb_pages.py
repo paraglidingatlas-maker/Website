@@ -1,3 +1,4 @@
+import re
 #!/usr/bin/env python3
 """Generates remaining Knowledge Base category and sub-series pages."""
 import os
@@ -51,12 +52,20 @@ NAV_FOOTER = """
 </html>
 """
 
+def _seo(text, title):
+    """Description from the page's own intro paragraph, trimmed. Never invented."""
+    t = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", text or "")).strip()
+    if len(t) < 40:
+        t = "%s on the Paragliding Atlas Knowledge Base." % title
+    return (t[:152].rsplit(" ", 1)[0] + "...") if len(t) > 155 else t
+
+
 NAV_HEADER = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{title} — Knowledge Base: Paragliding Atlas</title>
+<title>{title} — Knowledge Base: Paragliding Atlas</title>\n<meta name="description" content="{seo_desc}">\n<link rel="canonical" href="https://paraglidingatlas-maker.github.io/Website/knowledge-base/{slug}.html">\n<meta property="og:type" content="website">\n<meta property="og:title" content="{title}">\n<meta property="og:description" content="{seo_desc}">\n<meta property="og:image" content="https://paraglidingatlas-maker.github.io/Website/assets/images/hero.jpg">\n<meta property="og:url" content="https://paraglidingatlas-maker.github.io/Website/knowledge-base/{slug}.html">\n<meta name="twitter:card" content="summary_large_image">\n<script type="application/ld+json">\n{{"@context":"https://schema.org","@type":"CollectionPage","name":"{title}","url":"https://paraglidingatlas-maker.github.io/Website/knowledge-base/{slug}.html","description":"{seo_desc}","isPartOf":{{"@type":"WebSite","name":"Paragliding Atlas","url":"https://paraglidingatlas-maker.github.io/Website/"}}}}\n</script>
 <link rel="icon" type="image/png" href="../assets/logo/favicon.png">
 <link rel="preload" href="../assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -178,7 +187,8 @@ def category_page(slug, title, intro, series_list):
   <div class="series-grid">{cards}
   </div>
 </div>"""
-    html = NAV_HEADER.format(title=title, css=CATEGORY_CSS, body=body) + NAV_FOOTER
+    html = NAV_HEADER.format(title=title, slug=slug, seo_desc=_seo(intro, title),
+                             css=CATEGORY_CSS, body=body) + NAV_FOOTER
     write(f"{slug}.html", html)
 
 
@@ -210,7 +220,8 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
 <div class="ep-body">
   {ep_html}
 </div>"""
-    html = NAV_HEADER.format(title=title, css=SUBSERIES_CSS, body=body)
+    html = NAV_HEADER.format(title=title, slug=slug, seo_desc=_seo(intro, title),
+                             css=SUBSERIES_CSS, body=body)
     html = html.replace(
         '<script src="../script.js"></script>\n</body>',
         '<script src="../script.js"></script>\n<script src="../episode-modal.js"></script>\n</body>'

@@ -6908,7 +6908,10 @@
     "published": "2025-08-30",
     "published_label": "30 August 2025",
     "duration_label": "63 min",
-    "speakers": {},
+    "speakers": {
+      "1": "Aninder",
+      "0": "Damien Lacaze"
+    },
     "summary": "An episode uncovering alchemy of adventure. I talk with Red Bull X-Alps athlete and vol biv pilot Damien Lacaze, as he opens up about his journey in paragliding, stories from the mountains, and the mindset needed to endure long days in the air.",
     "_summary_source": "Taken from the episode's own show notes in the RSS feed, the user's words.",
     "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue, taken from the host's own turns or question cues rather than by matching a phrase.",
@@ -6975,7 +6978,7 @@
     "tags": [],
     "artwork": "../assets/images/hero.jpg",
     "spotify": "https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Anatomy-of-a-Dream-with-Damien-Lacaze-A-Lifestyle-Full-of-Grit--Grace-and-Vertical-Freedom-e37h6pl",
-    "_transcript_source": "Spotify's own auto-generated transcript, from the podcast:transcript tag in the RSS feed. Spotify carries no speaker diarisation, so this page has no per line speaker attribution."
+    "_transcript_source": "Autotekst transcript using OpenAI Whisper V3, WITH speaker diarisation. This file was already on disk under a long auto-generated filename that matched no episode, so it was invisible to every generator. A weaker Spotify caption file was fetched and used before it was found. This one has more words and real speaker attribution, so it replaces it."
   },
   {
     "slug": "demystifying-the-science-behind-parakites-bryan-van-ostheim",
@@ -6990,7 +6993,10 @@
     "published": "2025-08-23",
     "published_label": "23 August 2025",
     "duration_label": "57 min",
-    "speakers": {},
+    "speakers": {
+      "0": "Aninder",
+      "1": "Bryan Van Ostheim"
+    },
     "summary": "In this episode, I talk to Bryan Van Ostheim, the brain behind taking parakite performance to a whole new level. We talk about what lies beyond the thrill to explore the aerodynamics of freedom, the psychology of flight, and the engineering principles that turn fear into effortless fun.",
     "_summary_source": "Taken from the episode's own show notes in the RSS feed, the user's words.",
     "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue, taken from the host's own turns or question cues rather than by matching a phrase.",
@@ -7057,7 +7063,7 @@
     "tags": [],
     "artwork": "../assets/images/hero.jpg",
     "spotify": "https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Demystifying-The-Science-Behind-Endless-Fun-Factor-of-Parakites-With-Bryan-Van-Ostheim-e377lc8",
-    "_transcript_source": "Spotify's own auto-generated transcript, from the podcast:transcript tag in the RSS feed. Spotify carries no speaker diarisation, so this page has no per line speaker attribution."
+    "_transcript_source": "Autotekst transcript using OpenAI Whisper V3, WITH speaker diarisation. This file was already on disk under a long auto-generated filename that matched no episode, so it was invisible to every generator. A weaker Spotify caption file was fetched and used before it was found. This one has more words and real speaker attribution, so it replaces it."
   },
   {
     "slug": "legacy-and-lifetimes-of-gin-seok-song",
@@ -7072,7 +7078,10 @@
     "published": "2025-08-07",
     "published_label": "7 August 2025",
     "duration_label": "57 min",
-    "speakers": {},
+    "speakers": {
+      "1": "Aninder",
+      "0": "Gin Seok Song"
+    },
     "summary": "In this episode I sit with the founder of Gin Gliders, to talk about his 5 decade free flight legacy, Starting with rogallo shaped hang gliders back in the day to pioneering Boomerang competition wings and a million dollars in government funded R&D. This episode is a tell all tale in discovering how a man who ‘dared to dream big’ defied age, industry giants, and sometimes even ",
     "_summary_source": "Taken from the episode's own show notes in the RSS feed, the user's words.",
     "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue, taken from the host's own turns or question cues rather than by matching a phrase.",
@@ -7139,7 +7148,7 @@
     "tags": [],
     "artwork": "../assets/images/hero.jpg",
     "spotify": "https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Legacy-and-Lifetimes-of-Gin-Seok-Song-5-Decades-of-Pioneering-the-Art-of-Free-Flight-e36ive9",
-    "_transcript_source": "Spotify's own auto-generated transcript, from the podcast:transcript tag in the RSS feed. Spotify carries no speaker diarisation, so this page has no per line speaker attribution."
+    "_transcript_source": "Autotekst transcript using OpenAI Whisper V3, WITH speaker diarisation. This file was already on disk under a long auto-generated filename that matched no episode, so it was invisible to every generator. A weaker Spotify caption file was fetched and used before it was found. This one has more words and real speaker attribution, so it replaces it."
   },
   {
     "slug": "maxime-pinot-the-journey-within",
@@ -7154,7 +7163,10 @@
     "published": "2025-07-31",
     "published_label": "31 July 2025",
     "duration_label": "103 min",
-    "speakers": {},
+    "speakers": {
+      "5": "Aninder",
+      "4": "Maxime Pinot"
+    },
     "summary": "On the side lines of recently concluded PWC Krusevo 2025 edition I got to sit down with Maxime in a tell all tale about how we all can approach the sport of paragliding in a way that makes us want to keep taking to the skies with same excitement as we did when we first tasted the art of flight and his story of trials and triumphs that have been an integral part of the learning ",
     "_summary_source": "Taken from the episode's own show notes in the RSS feed, the user's words.",
     "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue. Solo episodes yield few boundaries because the tool finds them from question cues, so a short solo piece legitimately has only two or three.",
@@ -7221,7 +7233,7 @@
     "tags": [],
     "artwork": "../assets/images/hero.jpg",
     "spotify": "https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Maxime-Pinot--The-Journey-Within--Mapping-our-Quest-to-Touch-The-Sky-With-Glory-e369o9u",
-    "_transcript_source": "Spotify's own auto-generated transcript, from the podcast:transcript tag in the RSS feed. Spotify carries no speaker diarisation, so this page has no per line speaker attribution."
+    "_transcript_source": "Autotekst transcript using OpenAI Whisper V3, WITH speaker diarisation. This file was already on disk under a long auto-generated filename that matched no episode, so it was invisible to every generator. A weaker Spotify caption file was fetched and used before it was found. This one has more words and real speaker attribution, so it replaces it."
   },
   {
     "slug": "science-backed-pre-flight-rituals",
@@ -7236,7 +7248,9 @@
     "published": "2025-07-14",
     "published_label": "14 July 2025",
     "duration_label": "16 min",
-    "speakers": {},
+    "speakers": {
+      "0": "Aninder"
+    },
     "summary": "Want to elevate your paragliding game ? In this episode, I talk about:",
     "_summary_source": "Taken from the episode's own show notes in the RSS feed, the user's words.",
     "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue. Solo episodes yield few boundaries because the tool finds them from question cues, so a short solo piece legitimately has only two or three.",
@@ -7258,7 +7272,7 @@
     "tags": [],
     "artwork": "../assets/images/hero.jpg",
     "spotify": "https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Science-Backed-Pre-Flight-Rituals-to-Unlock-Laser-Sharp-Paragliding-Clarity-On-Demand-e35i2hb",
-    "_transcript_source": "Spotify's own auto-generated transcript, from the podcast:transcript tag in the RSS feed. Spotify carries no speaker diarisation, so this page has no per line speaker attribution."
+    "_transcript_source": "Autotekst transcript using OpenAI Whisper V3, WITH speaker diarisation. This file was already on disk under a long auto-generated filename that matched no episode, so it was invisible to every generator. A weaker Spotify caption file was fetched and used before it was found. This one has more words and real speaker attribution, so it replaces it."
   },
   {
     "slug": "mastering-the-unknown-neuroscience-of-crisis-management",
@@ -7273,7 +7287,9 @@
     "published": "2025-07-07",
     "published_label": "7 July 2025",
     "duration_label": "20 min",
-    "speakers": {},
+    "speakers": {
+      "0": "Aninder"
+    },
     "summary": "An attempt at learning the Neuroscience of crises management! Why? Because my cloud storage crashed, recordings vanished! Remember feeling that stomach dropping panic while flying sometimes?",
     "_summary_source": "Taken from the episode's own show notes in the RSS feed, the user's words.",
     "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue. Solo episodes yield few boundaries because the tool finds them from question cues, so a short solo piece legitimately has only two or three.",
@@ -7315,7 +7331,7 @@
     "tags": [],
     "artwork": "../assets/images/hero.jpg",
     "spotify": "https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Mastering-the-Unknown-Neuroscience-of-Crisis-Management--Neuroplasticity-Training-e357i5l",
-    "_transcript_source": "Spotify's own auto-generated transcript, from the podcast:transcript tag in the RSS feed. Spotify carries no speaker diarisation, so this page has no per line speaker attribution."
+    "_transcript_source": "Autotekst transcript using OpenAI Whisper V3, WITH speaker diarisation. This file was already on disk under a long auto-generated filename that matched no episode, so it was invisible to every generator. A weaker Spotify caption file was fetched and used before it was found. This one has more words and real speaker attribution, so it replaces it."
   },
   {
     "slug": "new-technologies-3-stephan-stiegler",

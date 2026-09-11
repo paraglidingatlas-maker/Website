@@ -1245,6 +1245,34 @@ by the surname being spoken were kept.
 **The field needs the user, or a per-episode read. A 40 per cent error rate puts
 invented people on pages under a real brand.**
 
+## 21. AUDIT FINDINGS, AND THE RULE THAT CAUGHT THEM
+A full re-audit after the session's changes found four real bugs. Three were
+caused by the same mistake: **editing generated HTML directly instead of the
+generator, then regenerating and wiping the edit.** It has now happened three
+times, to sitemap.html, to the thin episode descriptions, and to all 17
+knowledge-base pages, which silently lost their canonical, og tags and JSON-LD.
+**If a page is produced by a generator, edit the generator.** Nothing else.
+
+1. **Transcript content was being dropped.** `render_transcript` grouped
+   paragraphs into chapters using the chapter times as boundaries, so anything
+   starting before the FIRST chapter fell outside every bucket and never
+   rendered. A first chapter at 00:04 silently deleted the opening seconds of
+   the transcript on seven pages. The first boundary is now clamped to zero.
+2. **The rail linked to blocks that were never emitted**, leaving dead `#c1`
+   anchors. `chapters_with_content()` now filters the rail and the transcript
+   with the same rule so they cannot disagree.
+3. **A noindex redirect stub was listed in sitemap.xml**, which is a
+   contradiction. `generate_robots_sitemap.py` now skips anything carrying
+   noindex.
+4. **Six Autotekst transcripts WITH speaker diarisation were sitting unused**
+   under long auto-generated filenames that matched no slug, so every generator
+   was blind to them. Weaker Spotify caption files had been fetched for the same
+   episodes. The Autotekst files are now in place with speaker maps derived by
+   finding the speaker who asks the most questions, verified independently by
+   checking who says the welcome line.
+   **If a transcript exists but a page shows none, check for a long filename
+   before fetching a replacement.**
+
 ## DONE (do not redo)
 - **Nine truncated titles, recovered properly (eighth update).** They now live in
   `episode-titles.json`, verbatim from the RSS feed and **keyed by YouTube video

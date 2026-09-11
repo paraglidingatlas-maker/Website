@@ -18,8 +18,17 @@ def priority(p):
 def freq(p):
     return "weekly" if p in ("index.html", "podcast.html", "library.html") else "monthly"
 
+def indexable(p):
+    """Skip anything that tells crawlers not to index it. Redirect stubs carry
+    noindex, and advertising them in the sitemap is a contradiction."""
+    try:
+        h = open(p, encoding="utf-8", errors="replace").read(4000)
+    except OSError:
+        return False
+    return "noindex" not in h
+
 pages = sorted(p.replace(os.sep, "/") for p in glob.glob("**/*.html", recursive=True)
-               if not p.replace(os.sep, "/").startswith(SKIP))
+               if not p.replace(os.sep, "/").startswith(SKIP) and indexable(p))
 
 rows = []
 for p in pages:
