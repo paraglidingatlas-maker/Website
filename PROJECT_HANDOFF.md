@@ -1355,6 +1355,20 @@ which is a lawyer's question, not a writer's.
 
 **Still not read: the `Unpublished` subfolder** inside that Drive folder.
 
+**Nikolay Yotov's Africa field guide** is now the "On the Ground" section of the
+Kenya page: local perceptions, how to approach people, pricing and tipping, being
+asked for money, landing protocol, staying and moving, permissions, and the
+ambassador point. It is attributed to him and cross linked to his episode, which
+the page already carried, so the advice has a voice and a source rather than
+floating as anonymous house wisdom.
+**Two passages were deliberately rephrased rather than reproduced.** The source
+says some warrior tribes refuse physical work; the page says that in some
+communities men will not take portering work and that offering a guiding or
+security role is the respectful move. The source says avoid talking to the wife
+or daughter; the page says follow your host's lead on who it is appropriate to
+address. Same practical guidance, without inviting a reader to generalise about
+people.
+
 ## DONE (do not redo)
 - **Nine truncated titles, recovered properly (eighth update).** They now live in
   `episode-titles.json`, verbatim from the RSS feed and **keyed by YouTube video
