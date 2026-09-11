@@ -269,11 +269,41 @@
      3. THE BACK/FORWARD CACHE. Coming back to this page from history restores
         the whole document without re-running any of this, so `pageshow` with
         `persisted` is the only hook that fires. */
+  /* 4. GSAP. script.js reveals `.ep-map-section` with a ScrollTrigger, so the
+        section is transformed and ScrollTrigger recalculates every position on
+        load. A single scrollIntoView lands correctly and is then moved out from
+        under itself.
+
+     So rather than scrolling once and hoping, hold the map on screen for the
+     first second and give way the instant the visitor touches anything. */
+  let holdUntil = 0;
+  let holding = false;
+
+  function holdOnMap(ms) {
+    holdUntil = Date.now() + ms;
+    if (holding) return;
+    holding = true;
+    (function keep() {
+      if (Date.now() > holdUntil) { holding = false; return; }
+      if (window.ScrollTrigger && window.ScrollTrigger.refresh) {
+        try { window.ScrollTrigger.refresh(); } catch (e) {}
+      }
+      container.scrollIntoView({ block: 'center' });
+      requestAnimationFrame(keep);
+    })();
+  }
+
+  /* The visitor always wins. One wheel, touch or key and we stop immediately,
+     so this can never feel like the page is fighting them. */
+  ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach((evt) => {
+    window.addEventListener(evt, () => { holdUntil = 0; }, { passive: true });
+  });
+
   if (findPin(pinSlugFromHash())) {
     try { history.scrollRestoration = 'manual'; } catch (e) {}
-    container.scrollIntoView({ block: 'center' });
+    holdOnMap(1200);
     window.addEventListener('load', () => {
-      if (findPin(pinSlugFromHash())) container.scrollIntoView({ block: 'center' });
+      if (findPin(pinSlugFromHash())) holdOnMap(900);
     });
   }
 
@@ -331,7 +361,7 @@
   function openPinFromHash() {
     const d = findPin(pinSlugFromHash());
     if (!d) return;          /* unknown slug: leave the globe exactly as it was */
-    container.scrollIntoView({ block: 'center' });
+    holdOnMap(900);
     flyTo(d, !reduceMotion);
   }
 

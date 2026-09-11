@@ -2844,3 +2844,26 @@ globe fly somewhere and then show them nothing. Popup first now, sync guarded.
 **Pages also silently skipped a build during this work**, reporting `built` at
 the previous commit and never queueing one. Section 27's failure mode, second
 sighting. An empty commit nudged it. **Check the deployed sha, never the push.**
+
+### 50a. AND A FOURTH THING WAS FIGHTING IT: GSAP
+Section 50's three fixes helped and did not finish the job. The user, precisely:
+"earlier it was scrolling down like half a wheel length and then freezing at the
+top, this time maybe 2 wheel lengths and then froze." **Moving further was the
+clue: the scroll was landing and then being moved out from under itself.**
+
+`script.js` reveals `.ep-map-section` with a GSAP ScrollTrigger,
+`opacity:0, y:40`. So the map is transformed, and ScrollTrigger recalculates
+every trigger position on load. A single `scrollIntoView` computes a correct
+position and then the ground moves.
+
+**`holdOnMap(ms)` replaces the one-shot scroll.** It re-asserts the scroll every
+animation frame for about a second, calling `ScrollTrigger.refresh()` first when
+GSAP is present, so it keeps winning while the page settles.
+
+**The visitor always wins.** One wheel, touch, key or mousedown cancels the hold
+immediately. A page that fights the person scrolling it is worse than a page that
+lands in the wrong place, and this would have been exactly that.
+
+**Four independent mechanisms, all invisible in the code being read:** browser
+scroll restoration, late-arriving layout, the back/forward cache, and a
+scroll-driven animation library. Any one of them alone looks like a broken link.
