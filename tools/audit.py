@@ -150,6 +150,13 @@ def check_headings():
     skips, unbal, noh1, multih1 = [], [], [], []
     for p in PAGES:
         h = read(p)
+        # A noindex redirect stub is a signpost, not a document. It has no
+        # heading outline because it has no content, and nothing indexes it.
+        # The canonical and orphan checks already exempt noindex pages; this one
+        # did not, so adding redirect stubs raised a warning that could never be
+        # actioned. A warning nobody can act on is the cry-wolf failure again.
+        if "noindex" in h and 'http-equiv="refresh"' in h:
+            continue
         levels = [int(x) for x in re.findall(r"<h([1-6])[\s>]", h)]
         if any(b - a > 1 for a, b in zip(levels, levels[1:])):
             skips.append(p)
