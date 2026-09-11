@@ -2803,3 +2803,44 @@ before pushing, which showed removals that were not in the intended block.
 is the third time in one day that a string replacement took more than it was
 meant to (sections 41 and 43 were the others), and the only reliable defence has
 been reading the diff rather than trusting the edit.
+
+## 50. WHY THE PIN LINK "DID NOTHING": SCROLL RESTORATION
+
+The user reported the deep link doing nothing, **except on ctrl-click, where it
+worked perfectly.** That difference is the whole diagnosis, and it is worth
+keeping because it looks like a broken link and is not one.
+
+**Ctrl-click opens a new tab. A new tab has no scroll history for that URL.**
+A plain click navigates a tab that does, and the browser restores the position it
+last had for that page **after** the script runs, landing on top of our
+`scrollIntoView`. The globe was flying correctly the whole time, off screen,
+while the visitor sat at the top of the homepage.
+
+Three separate mechanisms had to be handled, none of which had ever been
+considered anywhere on this site:
+1. **`history.scrollRestoration = 'manual'`**, set only when arriving with a pin
+   hash, so the browser stops fighting the scroll. Scoped to that arrival: it is
+   a per-document property, so normal browsing is unaffected.
+2. **Re-assert on `load`.** Images above the map are still arriving when the
+   parse-time scroll runs, so the position it computes drifts.
+3. **`pageshow` with `persisted`.** Returning via the back/forward cache
+   restores the document intact and re-runs no script at all, so that event is
+   the only hook that fires.
+
+### THE LESSON, WHICH IS NOT ABOUT GLOBES
+**"It works on ctrl-click but not on click" means the browser is doing something
+to the navigation, not that the link is broken.** Scroll restoration, bfcache and
+same-document hash navigation all behave differently between a new tab and a
+reused one. None of them show up in the code being read.
+
+### A FRAGILITY FOUND THE SAME WAY
+`globe.js` was tested headless with jsdom and real d3, fed the pin URL, and
+confirmed to open the popup with the right title and link. That test showed
+`settle()` was syncing d3.zoom's transform BEFORE calling `showPopup`. The sync
+is housekeeping for the next wheel event; the popup is the point of the journey.
+Any failure in the sync would have thrown first and left the visitor watching the
+globe fly somewhere and then show them nothing. Popup first now, sync guarded.
+
+**Pages also silently skipped a build during this work**, reporting `built` at
+the previous commit and never queueing one. Section 27's failure mode, second
+sighting. An empty commit nudged it. **Check the deployed sha, never the push.**

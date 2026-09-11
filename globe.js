@@ -253,9 +253,28 @@
   /* Put the map on screen straight away, before the land has even loaded, so
      the visitor's first sight of the page is the globe rather than the top of
      the homepage. No smooth scroll here on purpose: an animated scroll followed
-     by an animated flight is the stacking that looked artificial. */
+     by an animated flight is the stacking that looked artificial.
+
+     THREE THINGS FIGHT THIS AND ALL THREE HAD TO BE HANDLED.
+
+     1. SCROLL RESTORATION. The browser restores the scroll position it last had
+        for a URL, and it does that AFTER this runs, so it lands on top of ours
+        and the visitor sits at the top of the homepage. This is exactly why
+        ctrl-clicking the link worked and plain clicking it did not: a new tab
+        has no stored position to restore. Turned off for this arrival only.
+
+     2. LAYOUT STILL MOVING. Images above the map are still arriving when this
+        runs, so the position computed here drifts. Asserted again on load.
+
+     3. THE BACK/FORWARD CACHE. Coming back to this page from history restores
+        the whole document without re-running any of this, so `pageshow` with
+        `persisted` is the only hook that fires. */
   if (findPin(pinSlugFromHash())) {
+    try { history.scrollRestoration = 'manual'; } catch (e) {}
     container.scrollIntoView({ block: 'center' });
+    window.addEventListener('load', () => {
+      if (findPin(pinSlugFromHash())) container.scrollIntoView({ block: 'center' });
+    });
   }
 
   function flyTo(d, animate) {
@@ -326,6 +345,12 @@
   /* Someone already on the page who follows another #pin link, and the back
      button moving between pins once they are shareable. */
   window.addEventListener('hashchange', openPinFromHash);
+
+  /* Restored from the back/forward cache: the document comes back intact and no
+     script re-runs, so this is the only chance to fly again. */
+  window.addEventListener('pageshow', (ev) => {
+    if (ev.persisted) openPinFromHash();
+  });
 
   d3.json('https://unpkg.com/world-atlas@2/land-110m.json').then((world) => {
     const land = topojson.feature(world, world.objects.land);
