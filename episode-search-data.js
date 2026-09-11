@@ -219,7 +219,6 @@ const EPISODE_SEARCH_DATA = [
   },
   {
     "title": "New Technologies 5 : Frantisek Pavlousek (UP Paragliders)",
-    "video_id": "vmnrTFbu6vg", "page": "new-technologies-5-frantisek-pavlousek-2"
   },
   {
     "title": "Flying & Filming 3 : Andreas Lattner (hochzwei.media)",

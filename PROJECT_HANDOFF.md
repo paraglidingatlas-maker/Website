@@ -1179,6 +1179,29 @@ can it be done with plain canvas instead. Self hosting all five from npm is the
 fallback option, which removes three DNS and TLS handshakes and matches the no
 third party stance taken everywhere else, but does not reduce bytes.
 
+## 18. THE STIEGLER / PAVLOUSEK MIX-UP IS RESOLVED, EXCEPT FOR ONE PAGE
+The user uploaded the AirDesign transcript, which turned out to be byte-for-byte
+the file already live on `new-technologies-5-frantisek-pavlousek`. The feed
+settles it: New Technologies 3 : Stephan Stiegler (AirDesign Paragliders),
+15 Aug 2024, duration 01:22:22, and that transcript runs to 01:22:11.
+
+**What was done.** The real Frantisek transcript, which was sitting on the
+duplicate `-2` page, now serves the Frantisek page. That page reads Franta five
+times and Stefan zero. Its summary and chapters were replaced, since both had
+been written against the wrong guest's words. The `-2` entry is deleted, its URL
+is a noindex redirect stub rather than a 404, and the duplicate video_id is gone.
+Stiegler's transcript is parked at
+`transcripts/_unpublished/new-technologies-3-stephan-stiegler.vtt`.
+
+**What is NOT done, and why.** Stephan Stiegler has no page. He has no YouTube
+video, so the page would be podcast-only, and `templates/episode-template.html`
+hardcodes YouTube in four places: og:image, the iframe, and the watch link. A
+video-less episode would render a broken player. Building that path also unlocks
+the five OTHER podcast-only episodes that currently have no page, so it is worth
+doing properly rather than hacking one page.
+**Being offline under his own name is better than being online under someone
+else's, which is why it was done this way round.**
+
 ## DONE (do not redo)
 - **Nine truncated titles, recovered properly (eighth update).** They now live in
   `episode-titles.json`, verbatim from the RSS feed and **keyed by YouTube video

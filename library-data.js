@@ -86,7 +86,6 @@ const LIB_EPISODES = [
   { order: 49, id: "pFxe7oZTH2E", page: "kinga-masztalerz-building-a-healthy-relationship-with-the", topic: "Risk vs Reward", title: "Kinga Masztalerz: Building a Healthy Relationship with the Skies: How to Master Fear, Build Resilience & Find Joy Through Paragliding" },
   { order: 50, id: "wTfS5kv1t9M", page: "helmut-schrempf-modernizing-siv-courses-how-this-new", topic: "Flight Mechanics", title: "Helmut Schrempf : Modernizing SIV Courses: How This New Training Method Can Help You Master Glider Control and Improve Paragliding Safety" },
   { order: 52, id: "T1pR130Umkk", page: "storytellers-marko-milutinovic", topic: "Storytellers", title: "Storytellers : Marko Milutinovic (Mid-Air Collision)" },
-  { order: 54, id: "vmnrTFbu6vg", page: "new-technologies-5-frantisek-pavlousek-2", topic: "New Technologies", title: "New Technologies 5 : Frantisek Pavlousek (UP Paragliders)" },
   { order: 55, id: "yUsfGCfI_30", page: "flying-filming-3-andreas-lattner", topic: "Resources, Tools and Tips", title: "Flying & Filming 3 : Andreas Lattner (hochzwei.media)" },
   { order: 56, id: "OiertfSq-6o", page: "flying-filming-2-benjamin-kellet", topic: "Resources, Tools and Tips", title: "Flying & Filming 2 : Benjamin Kellet" },
   { order: 57, id: "DmyYSA6NeMw", page: "risk-vs-reward-5-gabriel-orsini", topic: "Risk vs Reward", title: "Risk Vs Reward 5 : Gabriel Orsini (partytillimpact)" },

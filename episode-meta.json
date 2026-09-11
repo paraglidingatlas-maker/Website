@@ -813,16 +813,51 @@
       "1": "Benjamin Kellet"
     },
     "summary": "Benjamin Kellet is one of the most followed paraglider pilots on Instagram, and this is a straight look at how he makes short form films that actually travel. It covers the craft behind them, why he keeps making them, and what someone starting from nothing would need to do.",
-    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue, taken from the host's own turns rather than by matching a phrase.",
     "chapters": [
       {
-        "title": "Introduction",
-        "at": "00:00:00",
+        "title": "Welcome, and who this is",
+        "at": "00:00:06",
         "src": "claude"
       },
       {
-        "title": "Just get out there and fly",
-        "at": "01:00:24",
+        "title": "Motivating viewers to make their own",
+        "at": "00:06:01",
+        "src": "claude"
+      },
+      {
+        "title": "Ground suck, and posting vulnerability",
+        "at": "00:11:08",
+        "src": "claude"
+      },
+      {
+        "title": "The DMs, and what they are like",
+        "at": "00:19:33",
+        "src": "claude"
+      },
+      {
+        "title": "When to approach brand sponsorships",
+        "at": "00:26:17",
+        "src": "claude"
+      },
+      {
+        "title": "When the money starts arriving",
+        "at": "00:31:38",
+        "src": "claude"
+      },
+      {
+        "title": "Cutting five minutes into ninety seconds",
+        "at": "00:38:29",
+        "src": "claude"
+      },
+      {
+        "title": "Whether the sport can use the new tools",
+        "at": "00:45:55",
+        "src": "claude"
+      },
+      {
+        "title": "GoPro on the helmet, and why he hates it",
+        "at": "00:52:55",
         "src": "claude"
       }
     ],
@@ -2206,62 +2241,62 @@
       "0": "Aninder",
       "1": "Frantisek Pavlousek"
     },
-    "summary": "Frantisek Pavlousek of UP Paragliders brings three decades of wing design to a conversation about how the technology has changed and where he thinks it is heading next. He is candid about the awkward parts of the job, from pilots who do not want advice on handling to deciding what to do when two prototypes both test better than the wing you set out to beat.",
-    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence. NOTE: this page is mislabelled. Its transcript is Stephan Stiegler's, not Frantisek Pavlousek's. These titles are deliberately guest-neutral so they stay correct when the page is reassigned to New Technologies 3.",
+    "summary": "Frantisek Pavlousek of UP Paragliders brings three decades of wing design to a conversation about whether performance can run away from safety in a beginner wing, and how much a buyer can really decide from a test report. He goes through folding lines, the weight and inertia of a glider, and the fabrics underneath it all, which turns into a short masterclass of its own.",
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue, taken from the host's own turns rather than by matching a phrase.",
     "chapters": [
       {
-        "title": "Introduction",
-        "at": "00:00:00",
+        "title": "Welcome back, and what this one is about",
+        "at": "00:01:04",
         "src": "claude"
       },
       {
-        "title": "Welcome to the show",
-        "at": "00:02:50",
+        "title": "Can performance run away from safety in a beginner wing",
+        "at": "00:06:57",
         "src": "claude"
       },
       {
-        "title": "Leaving competitors behind on the bar",
-        "at": "00:15:18",
+        "title": "Reading an EN C test report properly",
+        "at": "00:17:21",
         "src": "claude"
       },
       {
-        "title": "The philosophy behind two liner Cs",
-        "at": "00:19:11",
+        "title": "What folding lines are actually for",
+        "at": "00:28:31",
         "src": "claude"
       },
       {
-        "title": "Different behaviour in different settings",
-        "at": "00:25:28",
+        "title": "Can a buyer decide from a test report alone",
+        "at": "00:33:50",
         "src": "claude"
       },
       {
-        "title": "Moving from an EN A to an EN B",
-        "at": "00:32:29",
+        "title": "One wrong decision, and how close the boundary is",
+        "at": "00:43:15",
         "src": "claude"
       },
       {
-        "title": "Why pilots do not step up as often",
-        "at": "00:43:58",
+        "title": "Inertia, momentum, and why weight matters",
+        "at": "00:48:51",
         "src": "claude"
       },
       {
-        "title": "The CCC philosophy from a buyer's view",
-        "at": "00:51:18",
+        "title": "Galvanor, and the fabrics behind a wing",
+        "at": "00:57:21",
         "src": "claude"
       },
       {
-        "title": "Winglets, and what difference they make",
-        "at": "01:07:09",
+        "title": "A masterclass in paragliding fabrics",
+        "at": "1:06:43",
         "src": "claude"
       },
       {
-        "title": "Spiralling right, and what went wrong",
-        "at": "01:13:58",
+        "title": "What we will have to save for next time",
+        "at": "1:14:38",
         "src": "claude"
       },
       {
-        "title": "A story from a flying career",
-        "at": "01:20:26",
+        "title": "Trimming a comp wing, and knowing when you have",
+        "at": "1:21:38",
         "src": "claude"
       }
     ],
@@ -2284,7 +2319,7 @@
     "tags": [
       "New Technologies"
     ],
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
+    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes. Replaces an earlier summary written when this page was serving the wrong guest's transcript."
   },
   {
     "slug": "new-technologies-4-veselin-ovcharov",
@@ -2376,48 +2411,6 @@
       {
         "label": "New Technologies 2",
         "url": "new-technologies-2-guillem-batlle-adria-grau.html"
-      }
-    ],
-    "tags": [
-      "New Technologies"
-    ],
-    "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title."
-  },
-  {
-    "slug": "new-technologies-5-frantisek-pavlousek-2",
-    "title": "New Technologies 5 : Frantisek Pavlousek (UP Paragliders)",
-    "video_id": "vmnrTFbu6vg",
-    "series": "New Technologies",
-    "series_slug": "New%20Technologies",
-    "epno": "Episode 29",
-    "guest": "Frantisek Pavlousek",
-    "guest_role": "",
-    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
-    "published": "2024-12-22",
-    "published_label": "22 December 2024",
-    "duration_label": "93 min",
-    "speakers": {
-      "0": "Aninder",
-      "1": "Frantisek Pavlousek"
-    },
-    "summary": "The second part of the conversation with Frantisek Pavlousek turns to safety, and his view that every glider is a compromise in which performance is bought with margin. He describes the false sense of security a smooth wing can give a pilot, and why most accidents come from several things going wrong together rather than any single cause.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
-    "chapters": [
-      {
-        "title": "Introduction",
-        "at": "00:00:00"
-      }
-    ],
-    "guest_links": [],
-    "resources": [],
-    "related": [
-      {
-        "label": "Ziad Bassil",
-        "url": "ziad-bassil-finest-paragliding-reviews-superpower-of.html"
-      },
-      {
-        "label": "New Technologies 5",
-        "url": "new-technologies-5-frantisek-pavlousek-2.html"
       }
     ],
     "tags": [
@@ -2535,11 +2528,52 @@
       "1": "Nikolay Yotov"
     },
     "summary": "Nikolay Yotov of Skynomad takes the show to Africa for the first time, on flying in Kenya ahead of the pre World Cup held there. It covers what the sites are actually like and what it means to share that airspace with the wildlife below.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue, taken from the host's own turns rather than by matching a phrase.",
     "chapters": [
       {
-        "title": "Introduction",
-        "at": "00:00:00"
+        "title": "Welcome back after a long gap",
+        "at": "00:00:06",
+        "src": "claude"
+      },
+      {
+        "title": "Sunshine, food, and the trade-offs of the place",
+        "at": "00:04:11",
+        "src": "claude"
+      },
+      {
+        "title": "Climate, seasons, and when to come",
+        "at": "00:07:55",
+        "src": "claude"
+      },
+      {
+        "title": "Zebras below the crater",
+        "at": "00:12:31",
+        "src": "claude"
+      },
+      {
+        "title": "What Kenya offers as a flying destination",
+        "at": "00:17:36",
+        "src": "claude"
+      },
+      {
+        "title": "Flying in this region",
+        "at": "00:22:06",
+        "src": "claude"
+      },
+      {
+        "title": "What you need to navigate Africa",
+        "at": "00:26:59",
+        "src": "claude"
+      },
+      {
+        "title": "Out and return",
+        "at": "00:31:03",
+        "src": "claude"
+      },
+      {
+        "title": "Experience, and what it does not cover",
+        "at": "00:35:09",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -2581,11 +2615,52 @@
       "1": "Klaudia Bulgakow"
     },
     "summary": "Klaudia Bulgakow describes what competition flying actually teaches, and why pilots who turn up expecting to learn from the back of the field come away frustrated when the real learning sits in watching others and asking questions on the ground afterwards. She is candid about arriving at the 2009 World Championship in Valle de Bravo as a confident young pilot on a competition wing, ignoring every sign that she was not yet ready for it.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue, taken from the host's own turns rather than by matching a phrase.",
     "chapters": [
       {
-        "title": "Introduction",
-        "at": "00:00:00"
+        "title": "Take it as an adventure",
+        "at": "00:00:00",
+        "src": "claude"
+      },
+      {
+        "title": "Where it started",
+        "at": "00:05:39",
+        "src": "claude"
+      },
+      {
+        "title": "Sport before flying",
+        "at": "00:10:46",
+        "src": "claude"
+      },
+      {
+        "title": "Believing in yourself, and who you listen to",
+        "at": "00:22:11",
+        "src": "claude"
+      },
+      {
+        "title": "Without a coach to tell you when you are ready",
+        "at": "00:29:13",
+        "src": "claude"
+      },
+      {
+        "title": "What people assume competition means",
+        "at": "00:35:18",
+        "src": "claude"
+      },
+      {
+        "title": "The years that made her question everything",
+        "at": "00:40:30",
+        "src": "claude"
+      },
+      {
+        "title": "Flying, and the things you do instead",
+        "at": "00:51:27",
+        "src": "claude"
+      },
+      {
+        "title": "Just one more thermal",
+        "at": "00:57:48",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -2730,11 +2805,62 @@
       "1": "Philipp Zellner"
     },
     "summary": "Philipp Zellner has spent more than a decade flying at altitude in the Himalayas, and this first Risk vs Reward episode is about how he weighs that against the consequences. He tells the story of throwing his reserve in Guatemala and then waiting most of a day and a night on the mountain for a helicopter, and talks about the mentors who shaped the way he flies.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue, taken from the host's own turns rather than by matching a phrase.",
     "chapters": [
       {
-        "title": "Introduction",
-        "at": "00:00:00"
+        "title": "A bird on a tree, and where this begins",
+        "at": "00:00:37",
+        "src": "claude"
+      },
+      {
+        "title": "How the art of flight journey started",
+        "at": "00:04:20",
+        "src": "claude"
+      },
+      {
+        "title": "Learning to launch, forward and reverse",
+        "at": "00:08:19",
+        "src": "claude"
+      },
+      {
+        "title": "Upgrading to a higher class of wing",
+        "at": "00:12:57",
+        "src": "claude"
+      },
+      {
+        "title": "At altitude, and what went wrong",
+        "at": "00:16:46",
+        "src": "claude"
+      },
+      {
+        "title": "Was it worth it",
+        "at": "00:25:18",
+        "src": "claude"
+      },
+      {
+        "title": "The special breed it takes",
+        "at": "00:29:51",
+        "src": "claude"
+      },
+      {
+        "title": "India to Nepal, 1,300 kilometres in 13 days",
+        "at": "00:34:40",
+        "src": "claude"
+      },
+      {
+        "title": "Chasing the adventures",
+        "at": "00:39:11",
+        "src": "claude"
+      },
+      {
+        "title": "Sharing risky situations, and learning from them",
+        "at": "00:44:10",
+        "src": "claude"
+      },
+      {
+        "title": "The work behind the passion project",
+        "at": "00:49:06",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -2776,11 +2902,62 @@
       "1": "Subir Sidhu"
     },
     "summary": "Subir Sidhu rose through the sport quickly, and the conversation is about how to do that without outrunning your own margin, pushing where he wanted to and holding back where he had to. He describes deliberately putting a glider into every shape and situation so that you learn to see them coming, which he treats as the training a high performance wing genuinely requires.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue, taken from the host's own turns rather than by matching a phrase.",
     "chapters": [
       {
-        "title": "Introduction",
-        "at": "00:00:00"
+        "title": "Navigating the risk and reward spectrum",
+        "at": "00:00:47",
+        "src": "claude"
+      },
+      {
+        "title": "Three and a half years, 1,500 hours",
+        "at": "00:06:15",
+        "src": "claude"
+      },
+      {
+        "title": "Not the typical IT guy",
+        "at": "00:10:49",
+        "src": "claude"
+      },
+      {
+        "title": "Trusting the place, and gathering knowledge",
+        "at": "00:16:55",
+        "src": "claude"
+      },
+      {
+        "title": "The non negotiable rules",
+        "at": "00:20:25",
+        "src": "claude"
+      },
+      {
+        "title": "Where passion starts raising the bar",
+        "at": "00:23:52",
+        "src": "claude"
+      },
+      {
+        "title": "Discipline as a way of progressing",
+        "at": "00:29:53",
+        "src": "claude"
+      },
+      {
+        "title": "Practice, and what it buys you",
+        "at": "00:36:40",
+        "src": "claude"
+      },
+      {
+        "title": "The configuration that lets you recover",
+        "at": "00:41:59",
+        "src": "claude"
+      },
+      {
+        "title": "A word for the community",
+        "at": "00:46:42",
+        "src": "claude"
+      },
+      {
+        "title": "Confidence, skill, responsibility and teamwork",
+        "at": "00:52:24",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -3342,11 +3519,62 @@
       "1": "Honorin Hamard"
     },
     "summary": "Honorin Hamard, a French competition pilot with close to 8,000 hours by his early thirties and several world records behind him, explains how he approaches a race and why he keeps flying to the last metre above the ground. The episode closes with the story of a low save he pulled off alongside Maxime Pinot.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue, taken from the host's own turns rather than by matching a phrase.",
     "chapters": [
       {
-        "title": "Introduction",
-        "at": "00:00:00"
+        "title": "What legendary actually means",
+        "at": "00:00:04",
+        "src": "claude"
+      },
+      {
+        "title": "The world record that came down to one moment",
+        "at": "00:10:50",
+        "src": "claude"
+      },
+      {
+        "title": "Where there is a will, there is a way",
+        "at": "00:18:51",
+        "src": "claude"
+      },
+      {
+        "title": "Knowing when to stop",
+        "at": "00:28:57",
+        "src": "claude"
+      },
+      {
+        "title": "A leading edge stuck, and what happens next",
+        "at": "00:36:59",
+        "src": "claude"
+      },
+      {
+        "title": "Doing the work that makes the sport safer",
+        "at": "00:44:50",
+        "src": "claude"
+      },
+      {
+        "title": "Practising spirals on only one side",
+        "at": "00:53:41",
+        "src": "claude"
+      },
+      {
+        "title": "Beer after landing, and other traditions",
+        "at": "1:00:17",
+        "src": "claude"
+      },
+      {
+        "title": "The technology behind the French team",
+        "at": "1:06:59",
+        "src": "claude"
+      },
+      {
+        "title": "Questions from someone who has never raced",
+        "at": "1:15:45",
+        "src": "claude"
+      },
+      {
+        "title": "How the setup actually works",
+        "at": "1:23:36",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -3380,15 +3608,52 @@
       "1": "Marko Milutinovic"
     },
     "summary": "Marko Milutinovic describes a competition where midairs, reserve deployments and serious injuries were happening daily, to the point that the jury wanted to stop for a day so everyone could take stock. He walks through his own collision, including how three seconds felt like ten, and what it is like to look up and see a hole in the parachute above you.",
-    "_chapters_source": "** review: derived from the host's own questions (interviews) or spoken section markers (solo episodes); timings are real",
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue, taken from the host's own turns rather than by matching a phrase.",
     "chapters": [
       {
-        "title": "Introduction",
-        "at": "00:00:00"
+        "title": "Welcome, and what this one covers",
+        "at": "00:02:04",
+        "src": "claude"
       },
       {
-        "title": "Choice. No, you're happy. You're happy after a couple hours, right?",
-        "at": "00:52:24"
+        "title": "A submarine on your top surface",
+        "at": "00:12:52",
+        "src": "claude"
+      },
+      {
+        "title": "No brake pressure, and no control",
+        "at": "00:16:52",
+        "src": "claude"
+      },
+      {
+        "title": "Canopy above you, harness flipping",
+        "at": "00:30:46",
+        "src": "claude"
+      },
+      {
+        "title": "PLF, and what happens when it matters",
+        "at": "00:34:50",
+        "src": "claude"
+      },
+      {
+        "title": "A slow descent into thick trees",
+        "at": "00:39:24",
+        "src": "claude"
+      },
+      {
+        "title": "Where you draw your own line",
+        "at": "00:43:56",
+        "src": "claude"
+      },
+      {
+        "title": "Plans for avoiding it next time",
+        "at": "00:48:29",
+        "src": "claude"
+      },
+      {
+        "title": "Going big, and the baggage it brings",
+        "at": "00:53:24",
+        "src": "claude"
       }
     ],
     "guest_links": [],
@@ -3430,16 +3695,51 @@
       "1": "Guest"
     },
     "summary": "Erlend Ukvitne talks through the route from wanting a place at the X-Alps to actually earning one, and the mindset behind his attempt at a world record. Much of it is practical advice for pilots trying to build towards hike and fly racing without a professional's resources behind them.",
-    "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue, taken from the host's own turns rather than by matching a phrase.",
     "chapters": [
       {
-        "title": "Introduction",
-        "at": "00:00:00",
+        "title": "Welcome, and who this is",
+        "at": "00:00:03",
         "src": "claude"
       },
       {
-        "title": "Seeing himself in the mirror afterwards",
-        "at": "00:02:32",
+        "title": "Starting in Trondheim in 2018",
+        "at": "00:03:36",
+        "src": "claude"
+      },
+      {
+        "title": "Vertical elevation in 24 hours",
+        "at": "00:06:59",
+        "src": "claude"
+      },
+      {
+        "title": "What the track log actually showed",
+        "at": "00:11:00",
+        "src": "claude"
+      },
+      {
+        "title": "Life at the midway point",
+        "at": "00:14:02",
+        "src": "claude"
+      },
+      {
+        "title": "When the X-Alps thought arrived",
+        "at": "00:17:21",
+        "src": "claude"
+      },
+      {
+        "title": "Chasing airtime, and his strongest card",
+        "at": "00:20:27",
+        "src": "claude"
+      },
+      {
+        "title": "A media heavy race, seen from inside",
+        "at": "00:23:14",
+        "src": "claude"
+      },
+      {
+        "title": "Getting high, and the comfort zone",
+        "at": "00:26:01",
         "src": "claude"
       }
     ],

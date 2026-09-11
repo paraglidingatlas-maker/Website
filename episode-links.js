@@ -76,7 +76,6 @@ window.EPISODE_PAGES = {
  "rFC56EjtXCY": "the-resilience-equation-erlend-ukvitnes-unrelenting-path",
  "uCEfssE40u8": "srs-piedrahita-bgd-edition-task-1-highlights",
  "vPnIYYKcvEg": "task-5-highlights-15th-paragliding-world-cup-super-final",
- "vmnrTFbu6vg": "new-technologies-5-frantisek-pavlousek-2",
  "wTfS5kv1t9M": "helmut-schrempf-modernizing-siv-courses-how-this-new",
  "wvJWd8lVZzc": "can-we-steer-a-round-reserve-parachute-urs-haari-answers",
  "xNMHk_8qbzo": "luc-armant-talks-about-debunking-the-myths-and-upgrading",
