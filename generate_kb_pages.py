@@ -1,9 +1,13 @@
-import re
 #!/usr/bin/env python3
 """Generates remaining Knowledge Base category and sub-series pages."""
+import json
 import os
+import re
+import sys
 
 BASE = os.path.dirname(__file__)
+sys.path.insert(0, os.path.abspath(BASE))
+import site_config as cfg
 OUT = os.path.join(BASE, "knowledge-base")
 
 NAV_FOOTER = """
@@ -65,6 +69,44 @@ NAV_FOOTER = """
 </body>
 </html>
 """
+
+# ── Rich episode popup ───────────────────────────────────────────────────
+# Which series pages get the full popup card. The rest keep the old title /
+# guest / description one, so nothing regresses while this is reviewed.
+#   set to "all"  -> every series page
+#   set to a set() -> just those slugs
+# Piloted on sky-gods first at the user's request, 2026-09-11.
+RICH_MODAL_ON = {"sky-gods"}
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "tools"))
+import kb_modal_data as KBD
+
+def _rich(slug, series_title, episodes):
+    """Resolve every tile on a page to its episode, or give up cleanly.
+
+    Returns (list_or_None, unresolved_titles). None means this page is not in
+    the pilot, or not one tile could be identified, and the caller falls back to
+    the old markup. A tile that cannot be resolved keeps its old behaviour
+    rather than getting a card built from guesses.
+    """
+    if RICH_MODAL_ON != "all" and slug not in RICH_MODAL_ON:
+        return None, []
+    out, missing = [], []
+    for e in episodes:
+        d = KBD.modal_data(e["title"], e.get("guest", ""), series_title, slug + ".html")
+        if d is None:
+            missing.append(e["title"])
+        else:
+            d["shareUrl"] = cfg.BASE + "episodes/" + d["slug"] + ".html"
+            d["spotify"] = ""
+            for m in KBD._meta():
+                if m["slug"] == d["slug"]:
+                    d["spotify"] = (m.get("spotify") or "").strip()
+                    d["artwork"] = (m.get("artwork") or "").strip()
+                    break
+        out.append(d)
+    return (out if any(x is not None for x in out) else None), missing
+
 
 def _seo_title(title):
     """Trim to fit a search result. Suffix is 20 characters, so content gets 50."""
@@ -224,19 +266,34 @@ def category_page(slug, title, intro, series_list):
 
 def subseries_page(slug, category_slug, category_title, title, intro, points, episodes):
     point_html = "".join(f"<span>{p}</span>" for p in points)
+    rich, unresolved = _rich(slug, title, episodes)
+    if unresolved:
+        print("  %s: could not resolve %d tile(s): %s" % (slug, len(unresolved), unresolved))
     if episodes:
-        tiles = "".join(
-            f"""
-    <div class="ep-tile" data-title="{e['title'].replace('"', '&quot;')}" data-guest="{e['guest']}" data-desc="{e.get('desc', '')}" data-readmore="{e.get('readmore', '../podcast.html')}" data-yt-id="{e.get('yt_id', '')}">
+        parts = []
+        for i, e in enumerate(episodes):
+            d = rich[i] if rich else None
+            # A real <a href>, not a <div>. Before this the knowledge base pages
+            # passed ZERO crawlable links to the episode pages. The popup is
+            # still what a person sees: episode-modal.js intercepts the click.
+            href = d["page"] if d else e.get("readmore", "../podcast.html")
+            data_idx = f' data-ep-index="{i}"' if d else ""
+            parts.append(f"""
+    <a class="ep-tile" href="{href}"{data_idx} data-title="{e['title'].replace('"', '&quot;')}" data-guest="{e['guest']}" data-desc="{e.get('desc', '')}" data-readmore="{e.get('readmore', '../podcast.html')}" data-yt-id="{e.get('yt_id', '')}">
       <div class="ep-tile-bg"></div>
       <div class="ep-tile-overlay">
         <p class="ep-tile-title">{e['title']}</p>
         <p class="ep-tile-guest">{e['guest']}</p>
       </div>
-    </div>"""
-            for e in episodes
-        )
+    </a>""")
+        tiles = "".join(parts)
         ep_html = f'<div class="ep-grid">{tiles}\n  </div>'
+        if rich:
+            # One JSON block per page rather than a wall of data- attributes:
+            # the card carries quotes, chapter titles and topic names, and
+            # escaping all of that into attributes is how quotes get mangled.
+            ep_html += ('\n  <script type="application/json" id="kbEpisodes">'
+                        + json.dumps(rich, ensure_ascii=False) + '</script>')
     else:
         ep_html = '<div class="ep-empty">Episodes for this series are coming soon. Check back shortly, or explore the <a href="../podcast.html" style="color:var(--orange);">full podcast archive</a> in the meantime.</div>'
 
@@ -510,7 +567,7 @@ subseries_page(
     ["Canopy construction and materials", "Harness systems and protection", "Reserve parachute handling", "Maintenance and care practices"],
     [
         {"title": "The Real Truth About Reserve Parachutes: A Paragliding Survival Guide", "guest": "Urs Haari"},
-        {"title": "Watch This Before You Buy a Paragliding Harness", "guest": "Zsolt Ero", "yt_id": "kSoFk23TuX0", "readmore": "../episodes/watch-this-before-you-buy-a-paragliding-harness.html"},
+        {"title": "Watch This Before You Buy a Paragliding Harness", "guest": "Zsolt Ero", "yt_id": "kSoFk23TuX0", "readmore": "../episodes/watch-this-before-you-buy-a-paragliding-harness-a-talk.html"},
         {"title": "Snippet: A Reserve Parachute Trick Every Pilot Should Know", "guest": "Urs Haari"},
         {"title": "Helmet Safety: ICARO 2000 [1st Anniversary Edition]", "guest": "Christian Ciech"},
         {"title": "Carabiner Fatigue (Whitepaper)", "guest": "Finsterwalder &amp; Charly"},

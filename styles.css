@@ -428,48 +428,152 @@ img{max-width:100%;display:block;}
 .page-wrap{}
 .footer-spacer{display:none;}
 /* ===== EPISODE POPUP MODAL (Knowledge Base episode tiles) ===== */
+/* ===== Knowledge Base episode popup =========================================
+   Written fresh rather than patched. The previous block used .ep-modal-* names
+   and a two column grid; the card is now a single column with its own kb-*
+   names, so nothing here can collide with a leftover rule.
+
+   Orange appears three times per card and no more: the corner bracket, the
+   button, and the play control on hover. Everything else is white, gray-light
+   and gray, which is what makes those three mean something.
+   ========================================================================= */
 .ep-modal-overlay{
   position:fixed;inset:0;background:rgba(10,10,12,0.85);backdrop-filter:blur(4px);
   display:none;align-items:center;justify-content:center;z-index:200;padding:1.5rem;
+  overflow-y:auto;
 }
 .ep-modal-overlay.active{display:flex;}
-.ep-modal{
-  position:relative;background:var(--card);border:1px solid rgba(255,117,23,0.3);
-  max-width:820px;width:100%;display:grid;grid-template-columns:1.2fr 1fr;
-  max-height:88vh;overflow-y:auto;
+body.kb-modal-open{overflow:hidden;}
+
+.kb-card{
+  position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.22);
+  width:100%;max-width:38rem;max-height:90vh;overflow-y:auto;outline:none;
 }
-.ep-modal-close{
-  position:absolute;top:0.8rem;right:0.8rem;width:32px;height:32px;border-radius:50%;
-  background:rgba(20,21,25,0.7);border:1px solid rgba(255,255,255,0.15);color:var(--white);
-  font-size:1.2rem;line-height:1;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center;
+/* One bracket, top left. The bottom right one was removed so the mark reads as
+   a corner tick rather than a frame, and so it cannot collide with the share
+   button sitting in that corner. */
+.kb-card::before{
+  content:"";position:absolute;top:-1px;left:-1px;width:16px;height:16px;z-index:5;
+  border-top:2px solid var(--orange);border-left:2px solid var(--orange);pointer-events:none;
 }
-.ep-modal-media{position:relative;background:#000;aspect-ratio:16/9;}
-.ep-modal-thumb{width:100%;height:100%;object-fit:cover;display:block;}
-.ep-modal-play{
+.kb-stamp{
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  padding:0.45rem 1.35rem;min-height:2.1rem;font-size:0.63rem;letter-spacing:0.11em;
+  color:var(--gray);text-transform:uppercase;font-variant-numeric:tabular-nums;
+}
+.kb-coord{display:inline-block;text-decoration:none;color:var(--gray);}
+/* The shine travels INSIDE the letterforms. A solid background-color sits under
+   the gradient so every character is painted grey wherever the highlight is: an
+   earlier version had the gradient stop short and, because the text is
+   transparent to let it through, half the coordinate became invisible rather
+   than grey. The fade uses transparent ORANGE, not `transparent`, which would
+   interpolate through transparent black and muddy the band. */
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .kb-coord{
+    background-color:var(--gray);
+    background-image:linear-gradient(118deg,
+      rgba(255,117,23,0) 34%,var(--orange) 50%,rgba(255,117,23,0) 66%);
+    background-size:260% 100%;background-position:130% 0;background-repeat:no-repeat;
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .kb-coord:hover{animation:kb-shine 1900ms ease-in-out 1;}
+  .kb-card.opening .kb-coord{animation:kb-shine 1900ms ease-in-out 2;}
+}
+@keyframes kb-shine{
+  from{background-position:130% 0;}
+  to{background-position:-30% 0;}
+}
+
+.kb-med{
+  display:block;width:100%;padding:0;border:0;border-top:1px solid rgba(180,180,180,0.16);
+  position:relative;background:#000;aspect-ratio:16/9;overflow:hidden;cursor:pointer;
+  text-align:inherit;
+}
+.kb-med img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;}
+.kb-med-audio{cursor:default;display:flex;flex-direction:column;aspect-ratio:auto;}
+.kb-med-audio img{position:static;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;}
+.kb-audio-note{margin:0;padding:0.75rem 1rem;color:var(--gray-light);font-size:0.84rem;
+  border-top:1px solid rgba(180,180,180,0.16);background:var(--card);}
+.kb-frame{width:100%;aspect-ratio:16/9;border:0;display:block;
+  border-top:1px solid rgba(180,180,180,0.16);}
+/* The play control keeps the geometry drawn in episodes/episode.css, 82 by 56
+   with a 14px radius. It turns YouTube red on hover because that is what it
+   loads: orange would promise an Atlas player and deliver someone else's. */
+.kb-play{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:82px;height:56px;border-radius:50%;background:rgba(20,21,25,0.75);
-  border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;
-  box-shadow:0 4px 18px rgba(0,0,0,0.4), inset 0 0 0 1.5px rgba(255,255,255,0.25);
-  transition:background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  width:82px;height:56px;border-radius:14px;z-index:3;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(20,21,25,0.62);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,0.22);
+  transition:background 0.2s ease,transform 0.2s ease,box-shadow 0.2s ease;
 }
-.ep-modal-play:hover{
-  background:var(--orange);transform:translate(-50%,-50%) scale(1.08);
-  box-shadow:0 6px 24px rgba(255,117,23,0.45), inset 0 0 0 1.5px rgba(255,255,255,0.3);
+.kb-play svg{width:26px;height:26px;margin-left:3px;}
+button.kb-med:hover .kb-play{
+  background:#f00;transform:translate(-50%,-50%) scale(1.08);
+  box-shadow:0 6px 26px rgba(255,0,0,0.4);
 }
-.ep-modal-play svg{width:24px;height:24px;color:var(--white);margin-left:4px;}
-.ep-modal-play:hover svg{color:#171712;}
-.ep-modal-iframe{width:100%;height:100%;border:none;display:none;}
-.ep-modal-info{padding:1.6rem;display:flex;flex-direction:column;}
-.ep-modal-info h3{font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--white);margin-bottom:0.5rem;line-height:1.3;}
-.ep-modal-guest{color:var(--orange);font-size:0.85rem;font-weight:600;margin-bottom:1rem;}
-.ep-modal-desc{color:var(--gray-light);font-size:0.88rem;line-height:1.65;margin-bottom:auto;}
-.ep-modal-readmore{
-  align-self:flex-end;margin-top:1.3rem;color:var(--orange);font-size:0.85rem;font-weight:600;
-  text-decoration:none;border:1px solid rgba(255,117,23,0.4);padding:0.55rem 1.1rem;transition:background 0.2s ease;
+
+.kb-bd{padding:1.25rem 1.35rem 1.35rem;display:flex;flex-direction:column;}
+.kb-q{border:0;padding:0;margin:0 0 0.45rem;font-family:var(--font-display);font-weight:600;
+  font-size:clamp(1rem,1.95vw,1.24rem);line-height:1.34;color:var(--white);}
+.kb-q::before{content:"\201C";}
+.kb-q::after{content:"\201D";}
+.kb-attrib{color:var(--gray-light);font-size:0.79rem;margin:0 0 0.95rem;}
+.kb-sum{color:var(--gray-light);font-size:0.86rem;line-height:1.65;margin:0 0 0.8rem;}
+.kb-bd hr{border:0;border-top:1px solid rgba(180,180,180,0.16);margin:0 0 0.95rem;width:100%;}
+.kb-bd h3{font-family:var(--font-display);font-weight:600;font-size:0.9rem;line-height:1.3;margin:0;}
+.kb-lk{color:var(--gray-light);text-decoration:none;transition:color 0.18s ease;}
+.kb-lk:hover{color:var(--white);}
+.kb-lbl{font-family:var(--font-display);font-weight:600;font-size:0.59rem;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--gray);margin:0 0 0.4rem;}
+.kb-lbl.kb-sp{margin-top:0.85rem;}
+.kb-spec{width:100%;border-collapse:collapse;}
+.kb-spec td{padding:0.3rem 0;border-bottom:1px solid rgba(180,180,180,0.16);
+  font-size:0.755rem;vertical-align:top;}
+.kb-k{color:var(--gray);text-transform:uppercase;letter-spacing:0.09em;font-size:0.585rem;
+  width:5.9rem;font-family:var(--font-display);font-weight:600;padding-top:0.42rem;}
+.kb-v{color:var(--gray-light);font-variant-numeric:tabular-nums;}
+.kb-ch{list-style:none;margin:0;padding:0;}
+.kb-ch li{font-size:0.775rem;line-height:1.35;}
+.kb-chl{display:flex;gap:0.5rem;text-decoration:none;padding:0.14rem 0.3rem;
+  margin-left:-0.3rem;transition:background 0.18s ease;}
+a.kb-chl:hover{background:rgba(255,117,23,0.07);}
+a.kb-chl:hover .kb-ct{color:var(--white);}
+a.kb-chl:hover .kb-at{color:var(--orange);}
+.kb-chl-plain{opacity:0.72;}
+.kb-at{color:var(--gray);font-variant-numeric:tabular-nums;flex:0 0 auto;}
+.kb-ct{color:var(--gray-light);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  transition:color 0.18s ease;}
+.kb-tags{display:flex;gap:0.28rem;flex-wrap:wrap;}
+.kb-tg{font-size:0.57rem;letter-spacing:0.07em;text-transform:uppercase;color:var(--gray-light);
+  border:1px solid rgba(180,180,180,0.16);padding:0.15rem 0.38rem;text-decoration:none;
+  transition:border-color 0.18s ease,color 0.18s ease;}
+a.kb-tg:hover{border-color:var(--orange);color:var(--orange);}
+.kb-tg-plain{opacity:0.72;}
+.kb-cols{display:grid;grid-template-columns:1.22fr 0.88fr;gap:1.3rem;margin-bottom:1.05rem;}
+.kb-row{display:flex;gap:0.6rem;align-items:stretch;justify-content:space-between;
+  margin-top:auto;flex-wrap:wrap;}
+.kb-actions{display:flex;gap:0.5rem;}
+.kb-cta{color:var(--orange);font-size:0.81rem;font-weight:600;text-decoration:none;
+  border:1px solid rgba(255,117,23,0.5);padding:0.48rem 1rem;transition:background 0.2s ease;
+  display:inline-flex;gap:0.4rem;align-items:center;}
+.kb-cta:hover{background:rgba(255,117,23,0.12);}
+.kb-cta span{transition:transform 0.2s ease;}
+.kb-cta:hover span{transform:translateX(3px);}
+.kb-sh,.kb-ghost{background:transparent;border:1px solid rgba(180,180,180,0.16);
+  color:var(--gray-light);cursor:pointer;font-family:var(--font-body);font-size:0.81rem;
+  text-decoration:none;transition:border-color 0.18s ease,color 0.18s ease;
+  display:inline-flex;align-items:center;gap:0.45rem;padding:0.48rem 0.9rem;}
+.kb-sh:hover,.kb-ghost:hover{border-color:rgba(180,180,180,0.45);color:var(--white);}
+.kb-sh svg{width:15px;height:15px;}
+.kb-sh.copied{color:var(--orange);border-color:rgba(255,117,23,0.5);}
+
+@media(max-width:640px){
+  .kb-cols{grid-template-columns:1fr;}
+  .ep-modal-overlay{padding:0.9rem;}
 }
-.ep-modal-readmore:hover{background:rgba(255,117,23,0.12);}
-@media(max-width:700px){
-  .ep-modal{grid-template-columns:1fr;}
+@media(prefers-reduced-motion:reduce){
+  .kb-coord:hover,.kb-card.opening .kb-coord{animation:none;}
+  button.kb-med:hover .kb-play{transform:translate(-50%,-50%);}
 }
 
 /* The `footer` selector went missing in 076ca7c, a commit titled "fix footer

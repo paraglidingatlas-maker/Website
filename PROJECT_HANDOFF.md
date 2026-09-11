@@ -2598,3 +2598,84 @@ Net positive and small. Worth recording so it is not re-litigated:
 - Accessibility: two links to one destination with different visible text. Both
   names are descriptive, `links with no accessible text` still returns 0, and a
   screen reader user gets two sensible routes rather than a mystery.
+
+## 46. THE KNOWLEDGE BASE POPUP IS REAL, PILOTED ON sky-gods.html
+
+**Switch: `RICH_MODAL_ON` in `generate_kb_pages.py`.** Takes `"all"` or a set of
+slugs. Currently `{"sky-gods"}`. **Rolling out to the other 16 pages is one
+word.** Every page not in the set keeps the old card, so nothing regressed while
+this is reviewed.
+
+### THE BIGGEST CHANGE IS NOT THE DESIGN
+**The tiles were `<div>`. They are now `<a href>`.** Before this, all 17
+knowledge base pages passed **ZERO crawlable links** to the 93 episode pages. A
+crawler landing on storytellers.html found no route onward at all. The popup is
+still what a person sees: the click is intercepted, and a modified click (ctrl,
+cmd, shift, middle) is deliberately NOT swallowed so "open in new tab" works.
+
+**That change immediately exposed a broken URL** that had been hiding in a
+`data-readmore` attribute where no check could see it:
+`../episodes/watch-this-before-you-buy-a-paragliding-harness.html` is missing
+`-a-talk`. Fixed. **Anything parked in a data attribute is invisible to the link
+checker; the moment it becomes an href, it gets audited.**
+
+### `tools/kb_modal_data.py` joins the data up
+Tiles were declared with a short title and a guest and nothing else, which is
+why every popup said "coming soon". The join, in order of confidence:
+1. `kb_yt_mapping.json`, 61 of 71 tiles, exact. **That file existed in the repo
+   and nothing read it.**
+2. Guest name plus series, which recovers tiles whose KB title is a shortened
+   form of the real episode title. This is how Maxime Pinot resolves.
+3. Give up and keep the old tile. **A wrong episode behind a tile is worse than
+   a plain tile**, so nothing is guessed.
+
+### CHAPTER ANCHORS ARE READ FROM THE BUILT PAGE, NEVER CALCULATED
+**This is the single most important thing in this section.** The episode page
+numbers transcript blocks from c1, but the FIRST chapter is c2, because c1 is
+the audio before any chapter begins. Worse, chapters with no transcript under
+them are dropped from the page entirely, and that happens on **43 of the 78**
+episodes with chapters, at the start, the middle and the end.
+
+So `chapter index + 1` is wrong nearly half the time, **and wrong in a way that
+still looks right**: the link opens the transcript, just at the wrong place.
+`_anchors()` reads the real anchors out of the generated episode page by chapter
+title. `build.sh` runs `generate_chapter_deck.py` before `generate_kb_pages.py`,
+so the pages exist. A chapter with no anchor renders as plain text, not a link.
+Two of the three Sky Gods episodes have exactly that on their first chapter.
+
+### What the card carries
+Pull quote (summary if there is none, never invented), the episode's own globe
+pin as a coordinate stamp, an uncropped 16:9 `maxresdefault` thumbnail, a play
+control in the geometry from `episode.css` that turns YouTube red because that
+is what it loads, five chapters, a spec sheet ending in position-in-series, topic
+chips, a share button and one call to action. **14 outbound links per card
+against the old one's single link.**
+
+**Audio-only episodes get no play button.** Maxime Pinot has no video, so the
+card shows the artwork and says the episode was never filmed. A control that
+cannot do what it promises is worse than no control.
+
+### Dismissal and semantics
+No close cross, by the user's decision. **Back closes it**, via `pushState` on
+open and `history.back()` on close, which is the only dismissal within thumb
+reach on a phone. Escape and click-outside also close it. The card carries
+`role="dialog"`, `aria-modal`, an `aria-label` of the episode title, takes focus
+on open and returns it to the tile on close. **This is the first `role="dialog"`
+anywhere on the site.**
+
+### The CSS was rewritten, not patched
+The old `.ep-modal-*` block is gone, replaced by `kb-*` names so no leftover rule
+can collide. **Written fresh on purpose:** the prototype's stylesheet was patched
+by string replacement across six rounds until a stray brace ended up inside a
+selector and silently killed the rule after it, which is the same failure as
+section 41. `styles.css` was parsed after this change to confirm zero malformed
+selectors.
+
+### KNOWN, NOT FIXED
+- **`mission.html` and `episodes/touch-the-sky-with-glory.html` now have the
+  same `<title>`.** Caused by section 44's tagline normalisation, not by this
+  work. Two pages competing for one title is a real SEO cost. Needs a decision
+  about which one changes.
+- **Sky Gods has 4 episodes in the data but only 3 tiles on the page.** The
+  Russell Ogden interview is in the series and is not listed. Adding it is a
+  content decision.
