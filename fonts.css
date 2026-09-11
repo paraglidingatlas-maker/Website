@@ -79,3 +79,28 @@
 @font-face{font-family:"DM Sans";font-style:normal;font-weight:700;font-display:swap;
   src:url("assets/fonts/dm-sans-latin-ext-700-normal.woff2") format("woff2");
   unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}  /* latin-ext */
+
+/* ---------------------------------------------------------------------------
+   Matched fallback faces.
+
+   Until a webfont arrives, and permanently for the small number of people who
+   never receive one (Opera Mini in extreme data saving, very old browsers, or
+   anyone who has told their browser to ignore page fonts), text is drawn in a
+   system face. Left alone that face has different vertical metrics, so the
+   whole page shifts when the real font swaps in.
+
+   These two faces borrow a local system font and override its vertical metrics
+   to match Poppins and DM Sans exactly. The percentages are computed from the
+   real font files, not estimated: Poppins is 1050/350/100 per 1000 units, DM
+   Sans is 992/310/0. Line boxes are therefore the same height before and after
+   the swap, so nothing jumps.
+
+   size-adjust is deliberately NOT set. It would need the fallback's average
+   character width, and xAvgCharWidth is defined inconsistently between fonts,
+   so a value derived from it is a guess dressed up as precision. Vertical
+   metrics fix the layout shift, which is the part that is actually visible. */
+
+@font-face{font-family:"Poppins Fallback";src:local("Arial"),local("Helvetica"),local("Roboto");
+  ascent-override:105%;descent-override:35%;line-gap-override:10%;}
+@font-face{font-family:"DM Sans Fallback";src:local("Arial"),local("Helvetica"),local("Roboto");
+  ascent-override:99.2%;descent-override:31%;line-gap-override:0%;}

@@ -1125,6 +1125,20 @@ unicode-ranges Google used, so the behaviour matches the old setup and latin-ext
 is still only downloaded when required. Total 204 KB for 20 files.
 **If a weight is ever added, add BOTH the latin and the latin-ext file.**
 
+**Four faces are preloaded on every page**: Poppins 600 and 700, DM Sans 400 and
+500, latin only. Those draw the first screen. Do NOT preload more; extra
+preloads compete for bandwidth with the fonts they are meant to accelerate.
+
+**`fonts.css` also declares two matched fallback faces**, "Poppins Fallback" and
+"DM Sans Fallback". They borrow a local system font and override its vertical
+metrics to match the real ones exactly, 105/35/10 for Poppins and 99.2/31/0 for
+DM Sans, computed from the font files rather than estimated. This means the line
+boxes are the same height before and after the swap, so the page does not jump.
+The stacks in `styles.css` are Poppins then Poppins Fallback then Arial.
+`size-adjust` is deliberately NOT set: it needs the fallback's average character
+width, and `xAvgCharWidth` is defined inconsistently between fonts, so any value
+derived from it is a guess wearing the costume of precision.
+
 ## 16. enquire.html EXISTS. The site-wide dead CTA is gone.
 It has no backend and no form service: submitting composes a message and hands it
 to the visitor's own mail client, so nothing is posted anywhere and no processor

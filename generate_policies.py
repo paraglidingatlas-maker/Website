@@ -41,6 +41,10 @@ HEAD = """<!DOCTYPE html>
 {{"@context":"https://schema.org","@type":"WebPage","name":"{title}","url":"{base}{slug}","description":"{desc}","isPartOf":{{"@type":"WebSite","name":"Paragliding Atlas","url":"{base}"}}}}
 </script>
 <link rel="icon" type="image/png" href="assets/logo/favicon.png">
+<link rel="preload" href="assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="policies.css">
