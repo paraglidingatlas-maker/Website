@@ -264,14 +264,12 @@ PRIVACY = """
 <table>
 <tr><th>Service</th><th>What it does</th><th>What reaches them</th></tr>
 <tr><td>GitHub Pages (Microsoft)</td><td>Hosts the site</td><td>IP address and request details, in server logs</td></tr>
-<tr><td>Google Fonts</td><td>Serves the two typefaces the site uses</td><td>IP address, when a page loads</td></tr>
 <tr><td>YouTube, in privacy enhanced mode</td><td>Episode video players</td><td>IP address for the thumbnail. Nothing further unless you press play</td></tr>
-<tr><td>cdnjs and unpkg</td><td>Serve two animation and graphics libraries</td><td>IP address, when a page loads</td></tr>
 <tr><td>Cloudflare Workers</td><td>Fetches the podcast feed so the episode library can show durations</td><td>IP address of the request</td></tr>
 <tr><td>Google Calendar and WhatsApp</td><td>Only if you click "Book a Call" or the WhatsApp link</td><td>Whatever those services collect once you arrive there</td></tr>
 </table>
 </div>
-<p>We do not use Google Analytics, an advertising network, a payment processor on this site, or a customer database that follows you around.</p>
+<p>We do not use Google Analytics, an advertising network, a payment processor on this site, or a customer database that follows you around. The typefaces and the animation libraries are served from our own site rather than from a content network, so no third party sees you arrive.</p>
 
 <h2 id="retention">5. How long we keep it</h2>
 <ul>
@@ -316,13 +314,11 @@ COOKIES = """
 <p>None. You can confirm this yourself: open your browser's developer tools, look at the storage or application tab, and load any page on this site.</p>
 
 <h2 id="third">3. Third party requests, and when a cookie could appear</h2>
-<p>Although we set nothing, pages do load some things from other companies, and those requests reveal your IP address to them in the same way visiting their site would. One of them can set a cookie, but only if you choose to interact with it.</p>
+<p>Although we set nothing, a couple of pages load something from another company, and those requests reveal your IP address to them in the same way visiting their site would. One of them can set a cookie, but only if you choose to interact with it. The typefaces and the animation libraries used to come from content networks and are now served from this site, so they are no longer on this list.</p>
 <div class="pol-tablewrap">
 <table>
 <tr><th>Service</th><th>Why it is there</th><th>Does it set a cookie?</th></tr>
-<tr><td>Google Fonts</td><td>The two typefaces the site is set in</td><td>No. Fonts are served without cookies</td></tr>
 <tr><td>YouTube, privacy enhanced mode</td><td>The video player on episode pages</td><td>Not on page load. The players use youtube-nocookie.com, so YouTube stores nothing until you actually press play</td></tr>
-<tr><td>cdnjs and unpkg</td><td>Two animation and graphics libraries</td><td>No</td></tr>
 <tr><td>Cloudflare Workers</td><td>Fetches the podcast feed for episode durations</td><td>No</td></tr>
 </table>
 </div>
