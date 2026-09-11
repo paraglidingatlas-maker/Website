@@ -239,12 +239,21 @@
      place the popup correctly. */
 
   const FLY_MS = 1900;        /* long enough to read as travel, short enough to sit through */
-  const FLY_ZOOM = 3.2;       /* within the wheel zoom's own 1 to 40 range.
-                                 Raised from 2.4 so the pin arrives closer. This
-                                 is the only knob: the sphere radius and the
+  const FLY_ZOOM = 14;       /* within the wheel zoom's own 1 to 40 range.
+                                 Set from a screenshot of the framing the user
+                                 wanted, not by eye. The map is 1400 by 600 and
+                                 baseScale is min(w,h)/2.2 = 272.7, so the arc
+                                 visible across the width is
+                                 2*asin(700 / (272.7*k)) degrees:
+                                   k=3.2 -> 107 deg arc, ~150 deg of longitude
+                                   k=6   ->  51 deg arc,  ~73 deg
+                                   k=10  ->  30 deg arc,  ~43 deg
+                                   k=14  ->  21 deg arc,  ~31 deg   <- this
+                                 Counting graticule lines in the screenshot gave
+                                 25 to 30 degrees of longitude across the frame.
+                                 This is the only knob: the sphere radius and the
                                  projection scale both follow it, and the popup
-                                 sits at the centre of the container whatever it
-                                 is set to, so it can be changed on its own. */
+                                 sits at the centre whatever it is set to. */
 
   function pinSlugFromHash() {
     const m = /^#pin=(.+)$/.exec(location.hash || '');
