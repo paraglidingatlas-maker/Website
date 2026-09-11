@@ -1355,6 +1355,17 @@ which is a lawyer's question, not a writer's.
 
 **Still not read: the `Unpublished` subfolder** inside that Drive folder.
 
+**The Trek Travel "Know Before You Go" document is mostly not usable.** Roughly
+three quarters of it is Trek's own cycling copy for Scandinavia, the Netherlands
+and Istria, pasted in as a reference. The valuable part is one long already
+Kenya-specific passage on how the guided tour actually runs, which is now the
+"What this trip is actually like" section on the Kenya page.
+**Two headings in that draft are EMPTY and were deliberately not filled:
+"Launch Site Accessibility" and "Flying Skills".** The second trails off mid
+sentence at "We can often expect". Those need the user.
+It also contains a trip name, **Explore the Cradle**, which appears nowhere else
+on the site. It is used once in that section. Confirm whether it is current.
+
 **Nikolay Yotov's Africa field guide** is now the "On the Ground" section of the
 Kenya page: local perceptions, how to approach people, pricing and tipping, being
 asked for money, landing protocol, staying and moving, permissions, and the
