@@ -12,29 +12,31 @@ NAV_FOOTER = """
 <footer>
   <div class="footer-content">
   <div class="footer-top">
-    <div class="footer-col">
-      <span class="wordmark"><img src="../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></span>
-      <p>Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>Oslo, Norway</p>
+    <div class="footer-col footer-brand">
+      <span class="wordmark"><img src="../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" loading="lazy"></span>
+      <p>Conversations, transcripts and guided flying.<br>Touch the Sky With Glory.</p>
+      <p class="footer-addr">Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>Oslo, Norway</p>
     </div>
     <div class="footer-col">
-      <h2>Enquiries</h2>
-      <a href="../enquire.html">General</a>
-      <a href="../index.html#destinations">Trips</a>
+      <h2>Listen</h2>
+      <a href="../library.html">All Episodes</a>
+      <a href="../tags.html">Topics</a>
+      <a href="../knowledge-base.html">Knowledge Base</a>
+      <a href="../podcast.html">Podcast</a>
+    </div>
+    <div class="footer-col">
+      <h2>Fly With Us</h2>
+      <a href="../index.html#destinations">Destinations</a>
+      <a href="../destinations/kenya.html">Kenya Tour</a>
+      <a href="../enquire.html">Enquire</a>
       <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener">Book a Call</a>
     </div>
     <div class="footer-col">
-      <h2>Quick Links</h2>
-      <a href="../library.html">All Episodes</a>
-      <a href="../tags.html">Topics</a>
-      <a href="../index.html#destinations">Kenya Tour</a>
-      <a href="../enquire.html">Contact Us</a>
-    </div>
-    <div class="footer-col">
-      <h2>Links</h2>
-      <a href="../knowledge-base.html">Knowledge Base</a>
+      <h2>About</h2>
+      <a href="../about.html">About Us</a>
+      <a href="../mission.html">Mission Statement</a>
       <a href="../safety-and-disclosure.html">Safety &amp; Disclosure</a>
       <a href="../corrections.html">Corrections</a>
-      <a href="../mission.html">Mission Statement</a>
     </div>
   </div>
   <div class="footer-bottom">
