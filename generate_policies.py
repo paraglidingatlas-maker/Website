@@ -286,8 +286,10 @@ PRIVACY = """
 <tr><td>YouTube, in privacy enhanced mode</td><td>Episode video players</td><td>IP address for the thumbnail. Nothing further unless you press play</td></tr>
 <tr><td>Cloudflare Workers</td><td>Fetches the podcast feed so the episode library can show durations</td><td>IP address of the request</td></tr>
 <tr><td>Google Calendar and WhatsApp</td><td>Only if you click "Book a Call" or the WhatsApp link</td><td>Whatever those services collect once you arrive there</td></tr>
+<tr><td>Typeform</td><td>Runs the correction report form, and only if you click "Report it here" on the Corrections page</td><td>Whatever you type into that form, plus your IP address and request details</td></tr>
 </table>
 </div>
+<p>The correction form is not part of this site. It is hosted by Typeform, which contracts through TYPEFORM, S.L. in Barcelona, Spain. Its data processing terms also name affiliated companies in the United States, the United Kingdom and Germany, so we will not tell you that a correction you submit stays inside the EEA, because we have not verified that it does. If you would rather not use it, email the correction to us instead and it reaches the same person.</p>
 <p>We do not use Google Analytics, an advertising network, a payment processor on this site, or a customer database that follows you around. The typefaces and the animation libraries are served from our own site rather than from a content network, so no third party sees you arrive.</p>
 
 <h2 id="retention">5. How long we keep it</h2>

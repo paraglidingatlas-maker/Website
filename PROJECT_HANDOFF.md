@@ -782,16 +782,41 @@ Open, roughly in order of value:
 
 ## PENDING, in rough priority order
 
-0. **CORRECTIONS FORM: built, NOT wired up. Paused by the user, pick up later.**
+0. **CORRECTIONS FORM: PARKED BY THE USER. Typeform STAYS.**
+   Decision 2026-09-11: of four routes offered, the user chose "leave Typeform,
+   fix only the privacy policy". **That is done. Nothing further is required.**
+   Do not build the form without being asked again.
+
+   **Why the Cloudflare plan was abandoned, so it is not re-researched.**
+   Sending to a verified destination address is free on any plan, but only via
+   **Email Routing**, which publishes Cloudflare's MX records on the zone and
+   would therefore replace Google Workspace's and cut the user's email. The
+   safe route, onboarding `send.paraglidingatlas.com` under **Email Sending**,
+   requires the **Workers Paid** plan. So on this account the free option and
+   the safe option are different options, and the user declined to pay $5/mo
+   for a corrections form. That is a reasonable call.
+
+   `corrections-worker.js` remains in the repo root, complete and correct, if
+   this is ever revisited. It needs only a Workers Paid plan.
+
+   Original write-up follows.
    The corrections page currently sends people to a **Typeform**, off site.
    The user wants the form on the page, posting straight to his inbox.
 
-   **A REAL GDPR GAP, FOUND ON THE WAY, AND IT EXISTS RIGHT NOW.** Typeform is
-   named NOWHERE in the privacy policy, the cookie policy or the terms. It
-   receives a reporter's name, email and message. That is an undisclosed
-   processor today, independent of whether this work ever happens.
-   **Either name it or remove it.** Do not let this sit because the replacement
-   is paused.
+   **THE GDPR GAP IS CLOSED (2026-09-11).** Typeform was named NOWHERE in any
+   policy while receiving reporters' names, emails and messages. It is now
+   disclosed in the privacy policy's section 4 table, in
+   `generate_policies.py`, NOT in `privacy-policy.html`, which is generated.
+
+   Two accuracy decisions in that wording, both deliberate:
+   - **It is NOT in the cookie policy.** That table lists requests the site
+     makes on page load, and Typeform is a plain `<a href>`, not an embed, so
+     it makes none. The site still issues zero third-party requests on load.
+   - **The policy does NOT claim EEA-only storage.** TYPEFORM, S.L. is Spanish,
+     but its DPA also names affiliates in the US, UK and Germany. Saying the
+     data stays in the EEA would be the exact failure mode lesson 8 exists for:
+     a sensible-looking guess in a binding document. The policy says plainly
+     that this has not been verified, and offers email as an alternative.
 
    **Route chosen: Cloudflare Workers native `send_email` binding.** No email
    provider, no API key, no SPF or DKIM. Cloudflare's docs confirm a Worker may
