@@ -2170,13 +2170,22 @@ moved, suspect the cache FIRST, before re-reading the code.** Telling them to ad
 this tool. Font preloads are deliberately not versioned, since woff2 filenames
 already change with the font.
 
-## 37. ORANGE NOW MEANS CLICKABLE ON TAGS, INCLUDING THE HASH
+## 37. TAGS: THE OUTLINE MEANS CLICKABLE, THE HASH DOES NOT. SETTLED.
 
-Completes section 35. The outline came off non-linked tags there; the orange `#`
-did not, because `.cd-tags .cd-tag::before` set it for both. Now split:
-`a.cd-tag::before` is orange, `span.cd-tag::before` is `color:inherit` so it
-matches its own text. Non-linked tags have no outline, no orange and no hover
-response, so nothing about them invites a click that cannot happen.
+**Final state, chosen by the user. Do not change without asking:**
+- `a.cd-tag` gets the orange border and the orange hover. It goes somewhere.
+- `span.cd-tag` gets NO border and no hover, but keeps the orange `#` and keeps
+  its padding.
 
-Which tags are links was already correct in the markup and did not change. Only
-`tags.css` and `episodes/episode.css` were edited across both sections.
+The padding is deliberate: a plain tag sits on the same baseline as a boxed one
+rather than riding a pixel higher in the flex row.
+
+**A greyed-out `#` on non-linked tags was built and reverted.** The reasoning for
+it was that orange should mean clickable and nothing else, which is coherent but
+was not what the user wanted. His view: the `#` marks the thing as a topic, which
+is true whether or not that topic has earned a page. Only the border promises a
+destination. **That is the settled answer; the grey version is in git history at
+`117b651` if it is ever revisited.**
+
+Which tags are links was already correct in the markup and never changed across
+any of this. Only `tags.css` and `episodes/episode.css` were ever edited.

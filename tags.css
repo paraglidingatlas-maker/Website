@@ -39,15 +39,18 @@
 
 /* The tag list on an episode page.
 
-   ORANGE MEANS CLICKABLE, and nothing else. A tag used by fewer than three
-   episodes has no page of its own, so the generator emits a <span> rather than
-   an <a> (see section 25 for why the threshold is 3). Those spans get no
-   outline, a # in the same colour as their own text, and no hover response at
-   all, so nothing about them invites a click that cannot happen.
-   The outline itself lives on a.cd-tag in episodes/episode.css. */
+   THE OUTLINE means clickable. THE # does not: it marks the thing as a topic,
+   which is true whether or not that topic has earned a page of its own. So the
+   # stays orange on both, and only the border distinguishes them. The border
+   lives on a.cd-tag in episodes/episode.css.
+
+   A greyed-out # was tried on 2026-09-11 and the user preferred it orange on
+   both. Do not "correct" this back without asking.
+
+   Padding stays on the spans too, deliberately, so a plain tag sits on the same
+   baseline as a boxed one rather than riding a pixel higher in the flex row. */
 .cd-tags a.cd-tag{text-decoration:none;}
-.cd-tags a.cd-tag::before{content:"#";color:var(--orange);margin-right:.1rem;}
-.cd-tags span.cd-tag::before{content:"#";color:inherit;margin-right:.1rem;}
+.cd-tags .cd-tag::before{content:"#";color:var(--orange);margin-right:.1rem;}
 .cd-tags a.cd-tag:hover,.cd-tags a.cd-tag:focus-visible{color:var(--orange);border-color:var(--orange);}
 
 /* The extractable answer paragraph. Deliberately plain prose: research on AI
