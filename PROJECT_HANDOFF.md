@@ -2136,3 +2136,47 @@ distinction the markup already made.
 
 Worth keeping in mind for anything similar: `a.cd-tag` is scoped by class, so the
 `css-scope` audit check still passes. A bare `a{...}` would not.
+
+## 36. STYLESHEETS ARE CACHE BUSTED NOW. THIS WAS A REAL BLIND SPOT.
+
+**No stylesheet on this site was ever cache busted.** Lesson 16 says "cache bust
+any script that changes" and `generate_sitemap.py` does exactly that for
+`sitemap-graph.js`. It was never applied to CSS. Every stylesheet was linked
+bare: `<link rel="stylesheet" href="episode.css">`.
+
+**How it surfaced.** Two CSS-only changes to the episode tag styling were built,
+audited, pushed and deployed green, and the user reported seeing no difference on
+any page. Nothing was wrong with either change. Their browser simply never
+refetched `episode.css`. **A change that cannot be seen is indistinguishable from
+a change that was never made**, and both rounds were spent hunting a bug that did
+not exist.
+
+`tools/version_assets.py` now appends `?v=<8 hex of sha256>` to every local
+stylesheet link, resolving each href against the page's own location so the file
+hashed is the file the browser loads. Wired into `build.sh` before the schema
+injector.
+
+Verified: idempotent on a second run (0 pages touched, no accumulating query
+strings), the hash changes when the file changes and returns to its old value
+when the change is reverted, and all three href shapes in use resolve correctly:
+`episode.css`, `../styles.css`, and `/Website/styles.css` on 404.html.
+
+It **raises** if a stylesheet link does not resolve to a file, since that means
+the page is 404ing for CSS on the live site.
+
+**Standing rule from here: when a change is CSS-only and the user says nothing
+moved, suspect the cache FIRST, before re-reading the code.** Telling them to add
+`?x=1` is a workaround for a returning visitor's cache, not a fix; the fix is
+this tool. Font preloads are deliberately not versioned, since woff2 filenames
+already change with the font.
+
+## 37. ORANGE NOW MEANS CLICKABLE ON TAGS, INCLUDING THE HASH
+
+Completes section 35. The outline came off non-linked tags there; the orange `#`
+did not, because `.cd-tags .cd-tag::before` set it for both. Now split:
+`a.cd-tag::before` is orange, `span.cd-tag::before` is `color:inherit` so it
+matches its own text. Non-linked tags have no outline, no orange and no hover
+response, so nothing about them invites a click that cannot happen.
+
+Which tags are links was already correct in the markup and did not change. Only
+`tags.css` and `episodes/episode.css` were edited across both sections.

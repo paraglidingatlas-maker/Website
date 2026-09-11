@@ -37,9 +37,17 @@
 .tg-back{padding:2rem clamp(1.2rem,5vw,5.5rem) clamp(3rem,6vw,4rem);color:var(--gray);font-size:.9rem;}
 .tg-back a{color:var(--orange);}
 
-/* the tag list on an episode page */
+/* The tag list on an episode page.
+
+   ORANGE MEANS CLICKABLE, and nothing else. A tag used by fewer than three
+   episodes has no page of its own, so the generator emits a <span> rather than
+   an <a> (see section 25 for why the threshold is 3). Those spans get no
+   outline, a # in the same colour as their own text, and no hover response at
+   all, so nothing about them invites a click that cannot happen.
+   The outline itself lives on a.cd-tag in episodes/episode.css. */
 .cd-tags a.cd-tag{text-decoration:none;}
-.cd-tags .cd-tag::before{content:"#";color:var(--orange);margin-right:.1rem;}
+.cd-tags a.cd-tag::before{content:"#";color:var(--orange);margin-right:.1rem;}
+.cd-tags span.cd-tag::before{content:"#";color:inherit;margin-right:.1rem;}
 .cd-tags a.cd-tag:hover,.cd-tags a.cd-tag:focus-visible{color:var(--orange);border-color:var(--orange);}
 
 /* The extractable answer paragraph. Deliberately plain prose: research on AI
