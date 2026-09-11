@@ -517,7 +517,11 @@ footer{
    mechanism: it absorbs the fraction of a pixel that kerning moves, so the two
    edges line up on every browser rather than nearly lining up. White to match
    the logo. */
-.footer-tagline{
+/* Scoped to .footer-brand deliberately. A bare .footer-tagline is specificity
+   0,1,0 and loses to `.footer-brand p` below at 0,1,1, which sets
+   color:var(--gray-light). That is why an earlier attempt to make this white
+   did nothing at all. 0,2,0 wins. */
+.footer-brand .footer-tagline{
   width:12.86rem;
   font-family:var(--font-display);font-weight:700;font-size:0.9926rem;
   color:var(--white);line-height:1.25;

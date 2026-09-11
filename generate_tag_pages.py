@@ -136,7 +136,7 @@ HEAD = """<!DOCTYPE html>
     <div class="footer-col footer-brand">
       <span class="wordmark"><img src="{root}assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" loading="lazy"></span>
       <p class="footer-tagline">Touch The Sky With Glory</p>
-      <p class="footer-addr">Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>Oslo, Norway<br>0864</p>
+      <p class="footer-addr">Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>0864, Oslo<br>Norway</p>
     </div>
     <div class="footer-col">
       <h2>Listen</h2>

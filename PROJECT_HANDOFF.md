@@ -2490,3 +2490,32 @@ which should be stripped:**
 - The enquiry page flow.
 
 187 pages, 92 checks, 0 FAIL, 9 warn.
+
+## 43. THE TAGLINE WAS NEVER WHITE. SPECIFICITY, NOT A TYPO.
+
+Section 42 set `color:var(--white)` on `.footer-tagline` and it did nothing,
+because the tagline is a `<p>` inside `.footer-brand` and the rule below it is:
+```
+.footer-tagline{color:var(--white);}   /* 0,1,0 */
+.footer-brand p{color:var(--gray-light);}  /* 0,1,1  <- wins */
+```
+Selector is now `.footer-brand .footer-tagline`, specificity 0,2,0. Verified by
+computing both specificities rather than looking at the page.
+
+**Second time in two hours that a correct-looking CSS change did nothing.** First
+the missing `footer` selector deleted a whole rule, now a more specific selector
+quietly beat one. The order of suspicion for "my CSS did nothing" is now:
+**is it parsed, is it cache busted, is it out-specified.** All three have bitten
+this project on the same day, and none is visible in the source you are editing.
+
+### Address block reordered, 183 files
+```
+Organisasjonsnummer: 937116934
+Olav Troviks Vei M 46
+0864, Oslo
+Norway
+```
+Postcode and city on one line, country beneath, which is the Norwegian
+convention. The JSON-LD `PostalAddress` fields are separate and were NOT touched.
+
+187 pages, 92 checks, 0 FAIL, 9 warn.
