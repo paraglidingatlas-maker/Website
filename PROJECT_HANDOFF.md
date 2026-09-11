@@ -1273,6 +1273,32 @@ knowledge-base pages, which silently lost their canonical, og tags and JSON-LD.
    **If a transcript exists but a page shows none, check for a long filename
    before fetching a replacement.**
 
+## 22. SECOND-PASS AUDIT: THE CATEGORIES THE FIRST ONE NEVER LOOKED AT
+The first audit was structural. A second pass over the things it never checked
+found six more real gaps, all now fixed.
+- **`404.html` did not exist.** GitHub Pages serves it for a missing URL at ANY
+  depth, so it uses ABSOLUTE `/Website/...` paths throughout. A relative path
+  there resolves against the missing URL and breaks. Do not "tidy" them.
+- **No `<link rel="alternate" type="application/rss+xml">` anywhere.** On a
+  podcast site that is a genuine discovery gap; feed readers and crawlers look
+  for it. Now on all 124 indexable pages.
+- **No `apple-touch-icon` and no `theme-color`.** Both added; the touch icon is
+  flattened onto the site background because iOS ignores transparency.
+- **Placeholder text was doing the job of a label** on podcast.html. Placeholders
+  are not reliably announced and vanish on typing. `aria-label` added.
+- **38 pages skipped a heading level.** Footer columns were `h4` under an `h2`,
+  knowledge-base series cards and episode sidebars were `h3` under an `h1`.
+  Footer columns are now `h2`, series cards `h2`, episode sidebar sections `h2`.
+  CSS selectors were widened rather than swapped, so old and new both style.
+- **`knowledge-base/core-series.html` is NOT generated.** It is hand maintained
+  and was missed by every generator patch this session. Check it by hand.
+
+**Two checker flaws worth knowing, both of which produced false alarms:**
+`grep -r --include=*.html . | grep -v prototypes` does NOT exclude prototypes,
+because the filtered lines are bare URLs. And a link checker must resolve
+`/Website/...` against the repo root, since the site is served from that path;
+otherwise every absolute link on 404.html looks broken.
+
 ## DONE (do not redo)
 - **Nine truncated titles, recovered properly (eighth update).** They now live in
   `episode-titles.json`, verbatim from the RSS feed and **keyed by YouTube video

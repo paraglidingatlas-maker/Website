@@ -17,19 +17,19 @@ NAV_FOOTER = """
       <p>Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>Oslo, Norway</p>
     </div>
     <div class="footer-col">
-      <h4>Enquiries</h4>
+      <h2>Enquiries</h2>
       <a href="../enquire.html">General</a>
       <a href="../index.html#destinations">Trips</a>
       <a href="#">FAQs</a>
     </div>
     <div class="footer-col">
-      <h4>Quick Links</h4>
+      <h2>Quick Links</h2>
       <a href="../library.html">All Episodes</a>
       <a href="../index.html#destinations">Kenya Tour</a>
       <a href="../enquire.html">Contact Us</a>
     </div>
     <div class="footer-col">
-      <h4>Links</h4>
+      <h2>Links</h2>
       <a href="../knowledge-base.html">Knowledge Base</a>
       <a href="#">Passion</a>
       <a href="#">Mission Statement</a>
@@ -67,6 +67,9 @@ NAV_HEADER = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} — Knowledge Base: Paragliding Atlas</title>\n<meta name="description" content="{seo_desc}">\n<link rel="canonical" href="https://paraglidingatlas-maker.github.io/Website/knowledge-base/{slug}.html">\n<meta property="og:type" content="website">\n<meta property="og:title" content="{title}">\n<meta property="og:description" content="{seo_desc}">\n<meta property="og:image" content="https://paraglidingatlas-maker.github.io/Website/assets/images/hero.jpg">\n<meta property="og:url" content="https://paraglidingatlas-maker.github.io/Website/knowledge-base/{slug}.html">\n<meta name="twitter:card" content="summary_large_image">\n<script type="application/ld+json">\n{{"@context":"https://schema.org","@type":"CollectionPage","name":"{title}","url":"https://paraglidingatlas-maker.github.io/Website/knowledge-base/{slug}.html","description":"{seo_desc}","isPartOf":{{"@type":"WebSite","name":"Paragliding Atlas","url":"https://paraglidingatlas-maker.github.io/Website/"}}}}\n</script>
 <link rel="icon" type="image/png" href="../assets/logo/favicon.png">
+<link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon.png">
+<meta name="theme-color" content="#141519">
+<link rel="alternate" type="application/rss+xml" title="Paragliding Atlas Podcast" href="https://anchor.fm/s/ed1344d8/podcast/rss">
 <link rel="preload" href="../assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -122,7 +125,7 @@ CATEGORY_CSS = """
   }
   .series-icon svg{width:20px;height:20px;color:#171712;}
   .series-card:hover .series-icon{box-shadow:0 0 18px 3px rgba(255,117,23,0.6);transform:scale(1.08);}
-  .series-card h3{font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--white);margin-bottom:0.9rem;}
+  .series-card h2, .series-card h3{font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--white);margin-bottom:0.9rem;}
   .series-card p{color:var(--gray-light);font-size:0.9rem;line-height:1.65;margin-bottom:1.2rem;}
   .series-points{list-style:none;margin-bottom:auto;}
   .series-points li{color:var(--gray-light);font-size:0.84rem;padding:0.4rem 0 0.4rem 1.2rem;position:relative;border-top:1px solid rgba(180,180,180,0.08);}
@@ -172,7 +175,7 @@ def category_page(slug, title, intro, series_list):
         cards += f"""
     <a class="series-card" href="{s['slug']}.html">
       <div class="series-icon">{s['icon']}</div>
-      <h3>{s['name']}</h3>
+      <h2>{s['name']}</h2>
       <p>{s['desc']}</p>
       <ul class="series-points">{points}</ul>
       <span class="series-arrow">View Episodes →</span>

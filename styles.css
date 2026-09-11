@@ -478,7 +478,7 @@ nav::before{
 .footer-graphic{width:100%;line-height:0;}
 .footer-graphic img{width:100%;height:auto;display:block;}
 .footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2.5rem;margin-bottom:2.5rem;}
-.footer-col h4{color:var(--orange);font-size:0.95rem;margin-bottom:0.9rem;}
+.footer-col h2, .footer-col h3, .footer-col h4{color:var(--orange);font-size:0.95rem;margin-bottom:0.9rem;}
 .footer-col a, .footer-col p{display:block;color:var(--gray-light);font-size:0.9rem;line-height:2;}
 .footer-links{display:flex;gap:1.8rem;font-size:0.92rem;color:var(--gray-light);}
 .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;font-size:0.85rem;color:var(--gray);padding-top:1.5rem;border-top:1px solid rgba(180,180,180,0.15);}

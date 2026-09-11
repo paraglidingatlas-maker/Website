@@ -76,7 +76,7 @@
   /* SIDEBAR */
   .cd-side{position:sticky;top:1.5rem;}
   .cd-box{background:var(--card);border:1px solid rgba(180,180,180,0.12);padding:1.3rem;margin-bottom:1.1rem;position:relative;}
-  .cd-box h3{font-family:var(--font-display);font-weight:700;font-size:0.72rem;color:var(--orange);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.9rem;}
+  .cd-box h2, .cd-box h3{font-family:var(--font-display);font-weight:700;font-size:0.72rem;color:var(--orange);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.9rem;}
   .cd-box p{color:var(--gray-light);font-size:0.87rem;line-height:1.65;}
   .cd-guest-row{display:flex;gap:0.9rem;align-items:center;margin-bottom:0.9rem;}
   .cd-guest-row img{width:54px;height:54px;object-fit:cover;border-radius:50%;flex-shrink:0;border:1px solid rgba(255,117,23,0.35);}
