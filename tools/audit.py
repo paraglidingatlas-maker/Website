@@ -837,7 +837,13 @@ def check_selector_scope():
             "textarea", "cite", "from", "to", "li", "ul", "ol", "strong", "em",
             "h1", "h2", "h3", "h4", "h5", "h6", "iframe", "video", "audio",
             "figure", "figcaption", "blockquote", "table", "th", "td", "tr", "hr",
-            "code", "pre", "span", "div", "label", "fieldset", "legend", "time"}
+            "code", "pre", "span", "div", "label", "fieldset", "legend", "time",
+            # Structural landmarks. `footer` is here because styles.css sets its
+            # width and background, which is layout rather than content styling,
+            # exactly like the `body` and `div` entries above. It was missing
+            # only because the `footer` selector had been absent from the file
+            # since 076ca7c, so the check had never had to consider it.
+            "footer", "header", "main", "nav", "section", "aside"}
     bad = []
     for f in ("styles.css", "policies.css", "tags.css", "episodes/episode.css"):
         if not os.path.exists(f):
@@ -852,12 +858,65 @@ def check_selector_scope():
                               "unscoped element selectors that can hit content: %s" % (bad[:4] or 0))
 
 
+def check_css_parses():
+    """Catch a rule whose SELECTOR is missing, which silently deletes the rule
+    after it.
+
+    This is here because it happened and cost a round of "why is nothing
+    changing". In 076ca7c, a commit titled "fix footer bugs", the `footer`
+    selector was lost, leaving:
+
+        }
+
+          width:100%;
+          background-color:var(--bg);
+        }
+        .footer-content{padding: ...}
+
+    CSS error recovery consumes a malformed prelude up to the NEXT `{`, so the
+    browser read the selector as `width:100%; ... } .footer-content` and
+    DISCARDED the whole thing. The footer therefore had no horizontal padding
+    for months, and the symptom, content jammed against the window edge, looks
+    like a design choice rather than a parse failure. Nothing in the audit
+    noticed, because every other check reads the HTML.
+
+    No dependency: walk the file at brace depth 0 and look at what sits between
+    the end of one rule and the start of the next. That text is a selector, and
+    a selector may not contain `;` or `}`.
+    """
+    bad = []
+    for f in ("styles.css", "policies.css", "tags.css", "episodes/episode.css"):
+        if not os.path.exists(f):
+            continue
+        css = re.sub(r"/\*.*?\*/", "", read(f), flags=re.S)
+        depth = 0
+        start = 0
+        for i, ch in enumerate(css):
+            if ch == "{":
+                if depth == 0:
+                    sel = css[start:i]
+                    # an at-rule block such as @media may legally contain both
+                    if not sel.lstrip().startswith("@") and (";" in sel or "}" in sel):
+                        bad.append("%s: %s" % (f, " ".join(sel.split())[:70]))
+                depth += 1
+            elif ch == "}":
+                depth -= 1
+                if depth == 0:
+                    start = i + 1
+                elif depth < 0:
+                    bad.append("%s: unbalanced closing brace" % f)
+                    depth = 0
+                    start = i + 1
+    (ok if not bad else fail)("css-parse",
+                              "rules with a malformed or missing selector: %s" % (bad[:3] or 0))
+
+
 def main():
     check_links(); check_headings(); check_seo(); check_crawler()
     check_a11y(); check_third_party(); check_data(); check_content()
     check_assets(); check_js()
     check_structure(); check_canonical_paths()
-    check_css(); check_orphans(); check_lengths()
+    check_css(); check_css_parses(); check_orphans(); check_lengths()
     check_rail_parity(); check_jsonld_fields(); check_robots()
     check_tags(); check_selector_scope(); check_guest_names()
     check_transcripts(); check_cross_data(); check_copy()

@@ -472,7 +472,13 @@ img{max-width:100%;display:block;}
   .ep-modal{grid-template-columns:1fr;}
 }
 
-
+/* The `footer` selector went missing in 076ca7c, a commit titled "fix footer
+   bugs". Without it these two declarations formed a rule with no selector, and
+   CSS error recovery consumes a malformed prelude up to the NEXT `{`. That
+   swallowed `.footer-content` into the broken selector, so the .footer-content
+   rule was DISCARDED ENTIRELY and the footer has had no horizontal padding at
+   all since then. Verified with a CSS parser, not by eye. */
+footer{
   width:100%;
   background-color:var(--bg);
 }

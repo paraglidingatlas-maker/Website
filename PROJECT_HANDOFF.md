@@ -2401,3 +2401,60 @@ English rendering of that motto is "Touch the sky with glory", lower case. The
 page now uses the brand capitalisation in that sentence too, on the user's
 instruction. If he wants the motto quoted conventionally while the brand keeps
 its own capitalisation, that is one sentence in `generate_policies.py`.
+
+## 41. THE FOOTER NEVER HAD PADDING. A MISSING SELECTOR WAS DELETING THE RULE.
+
+**BASELINE HAS CHANGED: it is now 187 pages, 92 checks, 0 FAIL, 9 warn.**
+A check was added. See below.
+
+### The bug
+The user reported the footer jammed against the window edges, and was right.
+Section 40 blamed a missing `max-width` and added one. **That fix was correct
+and still did nothing**, because the rule it was written into was never being
+applied at all.
+
+In `styles.css`, commit `076ca7c` (titled, of all things, "fix footer bugs") lost
+the `footer` selector, leaving this:
+```
+@media(max-width:700px){ .ep-modal{grid-template-columns:1fr;} }
+
+  width:100%;
+  background-color:var(--bg);
+}
+.footer-content{padding: ...}
+```
+**CSS error recovery consumes a malformed prelude up to the NEXT `{`.** So the
+browser read the selector as `width:100%; background-color:var(--bg); }
+.footer-content` and threw the entire rule away. Confirmed with a real CSS
+parser rather than by reading it: `valid '.footer-content' rules the browser will
+apply: NONE`.
+
+So the footer has had **no horizontal padding since that commit**. It looked like
+a design choice, which is why it survived months of looking at the site.
+
+### THE LESSON, AND IT IS A GENERAL ONE
+**When a CSS change has no visible effect, check the rule is being PARSED before
+checking anything else.** A browser drops a malformed rule silently, and it drops
+the rule AFTER it too. Nothing warns you. This cost a full round of "there's no
+change" plus an incorrect diagnosis in section 40, and it was invisible to all 91
+existing checks because every one of them reads HTML.
+
+Order of suspicion for "my CSS did nothing": is it parsed, is it cache busted,
+is it overridden. This project has now been bitten by the first two in one day.
+
+### THE CHECK THAT WOULD HAVE CAUGHT IT
+`check_css_parses()` in `tools/audit.py`, **check number 92**. It walks each
+stylesheet at brace depth 0 and inspects the text between one rule's end and the
+next `{`, which must be a selector and therefore may not contain `;` or `}`.
+**No dependency**, deliberately: the audit must keep running with plain python3.
+It was verified by reintroducing the original bug and watching it FAIL.
+
+`footer`, `header`, `main`, `nav`, `section` and `aside` were also added to the
+`SAFE` list in `check_css_scope()`. They are structural landmarks, like the
+`body` and `div` entries already there. `footer` was missing only because the
+selector had been absent from the file since `076ca7c`, so the check had never
+had to consider it.
+
+### Section 40's max-width is still correct and is still there
+`.footer-content{max-width:1400px;margin:0 auto}` now actually applies, along
+with the padding that was always meant to.
