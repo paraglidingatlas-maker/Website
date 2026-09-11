@@ -135,8 +135,9 @@ HEAD = """<!DOCTYPE html>
   <div class="footer-top">
     <div class="footer-col footer-brand">
       <span class="wordmark"><img src="{root}assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" loading="lazy"></span>
-      <p class="footer-tagline">Touch the Sky With Glory.</p>
+      <p class="footer-tagline">Touch The Sky With Glory</p>
       <p class="footer-addr">Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>Oslo, Norway<br>0864</p>
+      <p class="footer-addr"><a href="mailto:aninder@paraglidingatlas.com">aninder@paraglidingatlas.com</a></p>
     </div>
     <div class="footer-col">
       <h2>Listen</h2>
@@ -144,6 +145,7 @@ HEAD = """<!DOCTYPE html>
       <a href="{root}tags.html">Topics</a>
       <a href="{root}knowledge-base.html">Knowledge Base</a>
       <a href="{root}podcast.html">Podcast</a>
+      <a href="{root}sitemap.html">Sitemap</a>
     </div>
     <div class="footer-col">
       <h2>Fly With Us</h2>
@@ -159,16 +161,25 @@ HEAD = """<!DOCTYPE html>
       <a href="{root}safety-and-disclosure.html">Safety &amp; Disclosure</a>
       <a href="{root}corrections.html">Corrections</a>
     </div>
+    <div class="footer-col">
+      <h2>Legal</h2>
+      <a href="{root}terms.html">Terms &amp; Conditions</a>
+      <a href="{root}privacy-policy.html">Privacy Policy</a>
+      <a href="{root}cookie-policy.html">Cookie Policy</a>
+      <a href="{root}participant-agreement.html">Participant Agreement</a>
+    </div>
   </div>
   <div class="footer-bottom">
-    <a href="{root}terms.html">Terms &amp; Conditions</a>
-    <a href="{root}privacy-policy.html">Privacy Policy</a>
-    <a href="{root}cookie-policy.html">Cookie Policy</a>
+    <span class="footer-listen-label">Listen on</span>
+    <a href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803" target="_blank" rel="noopener">Apple Podcasts</a>
+    <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">Spotify</a>
+    <a href="https://castbox.fm/channel/Paragliding-Atlas-by-Aninder-Singh-id6075445" target="_blank" rel="noopener">Castbox</a>
+    <a href="https://www.podbean.com/podcast-detail/tb6yq-2f5cd4/Paragliding-Atlas-by-Aninder-Singh-Podcast" target="_blank" rel="noopener">Podbean</a>
+    <a href="https://www.patreon.com/cw/ParaglidingAtlas" target="_blank" rel="noopener">Patreon</a>
+    <a href="https://www.instagram.com/anindersingh13" target="_blank" rel="noopener">Instagram</a>
     <span>Paragliding Atlas 2026</span>
   </div>
-  </div>
-  <div class="footer-graphic">
-    <img src="{root}assets/footer/mountains.png" alt="Paragliding Atlas &mdash; Touch the Sky with Glory">
   </div>
 </footer>
 

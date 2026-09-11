@@ -483,7 +483,9 @@ img{max-width:100%;display:block;}
 /* A grid, not space-between. Flex with space-between sized each column to its
    longest link, which is why the gaps used to look arbitrary. Three equal link
    columns sit to the right of a wider brand column. */
-.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;
+/* Five columns since 2026-09-11: brand, Listen, Fly With Us, About, Legal.
+   The user picked the "Mega" layout from footer-layouts.html. */
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;
   gap:clamp(1.8rem,4vw,3.5rem);margin-bottom:2.6rem;align-items:start;}
 .footer-brand{max-width:22rem;}
 /* Logo width is measured, not guessed. "Organisasjonsnummer: 937116934" renders
@@ -516,9 +518,19 @@ img{max-width:100%;display:block;}
 .footer-bottom a{color:var(--gray);text-decoration:none;transition:color 0.18s ease;}
 .footer-bottom a:hover,.footer-bottom a:focus-visible{color:var(--orange);}
 .footer-bottom span:last-child{margin-left:auto;color:var(--gray);}
+/* The platform strip shares the bottom bar with the copyright: platforms on the
+   left, "Paragliding Atlas 2026" pushed right by the margin-left:auto above.
+   Those seven links are the only place on the site where the connection between
+   the site, the channel and the podcast is a real link rather than invisible
+   structured data, which is what an answer engine needs to treat them as one
+   organisation. */
+.footer-listen-label{color:var(--gray);text-transform:uppercase;letter-spacing:0.12em;
+  font-family:var(--font-display);font-weight:600;font-size:0.72rem;margin-right:0.2rem;}
 
 @media(max-width:980px){
   .footer-top{grid-template-columns:1fr 1fr;gap:2.2rem;}
+  /* Five columns do not fit here. The brand spans the row, the other four pair
+     up, which is what the four-column version already did. */
   .footer-brand{grid-column:1 / -1;max-width:none;}
 }
 @media(max-width:560px){

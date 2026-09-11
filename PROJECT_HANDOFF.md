@@ -2311,3 +2311,56 @@ redirect stub from section 18 and has no tags at all.
 to a shared stylesheet moves its content hash, so `version_assets.py` rewrites
 the link on all 178 pages. Check what actually changed before worrying: on a
 rollout like this, 92 pages changed only by the hash.
+
+## 39. FOOTER: "MEGA" LAYOUT, NO GRAPHIC. ONE FOOTER ON ALL 178 PAGES.
+
+The user chose layout 8 from `footer-layouts.html` and specified three changes.
+All applied. **This is settled; do not redesign without being asked.**
+
+### What it is now
+Five columns: brand, Listen, Fly With Us, About, **Legal**. Then ONE bottom bar
+holding the seven platform links on the left and "Paragliding Atlas 2026" pushed
+right, which is the second screenshot the user sent. 25 links per page.
+
+Three things the user specified exactly:
+1. **No mountain graphic.** The `<div class="footer-graphic">` block is gone.
+2. **Tagline "Touch The Sky With Glory" under the logo, NO full stop.** His
+   capitalisation and his punctuation. Do not "correct" either.
+3. **Platform strip and copyright share one bar**, rather than sitting in two.
+
+### It had already drifted, same as the nav
+161 pages carried 15 links; the **17 knowledge-base pages were missing Terms,
+Privacy Policy and Cookie Policy entirely.** Nobody had noticed, because no check
+compares footers between pages. Normalising fixed that as a side effect.
+**There is still no check that the footer is identical across pages.** Worth
+adding to `audit.py` alongside the same gap for the nav (section 29).
+
+### Things that improved without being asked for, all verifiable
+- **`participant-agreement.html` is now linked from 180 pages.** It was published
+  and reachable but absent from the footer, which is where a pilot would look.
+- **`sitemap.html` is in the footer** on all 180 for the first time.
+- **The last em-dash on the site is gone.** It lived in the mountain graphic's
+  alt text, "Paragliding Atlas — Touch the Sky with Glory", on 23 pages, and left
+  with the graphic. That was a standing violation of the rule at the top of this
+  document.
+
+### The nine redirect stubs correctly have NO footer
+They are noindex meta-refresh shims, not pages. **Do not give them one.**
+
+### KNOWN AND ACCEPTED
+`assets/footer/mountains.png` is now unreferenced, so the "asset files never
+referenced" warning lists 2 files rather than 1. **The warning COUNT is still 9,
+so the baseline is unchanged.** The file was deliberately NOT deleted: the user
+may want it elsewhere, and deleting an asset is his call.
+
+### THE TAGLINE IS SPELLED THREE WAYS ACROSS THE SITE
+Counted, not guessed:
+```
+"Touch The Sky With Glory"   32   <- the user's choice, now in the footer
+"Touch the Sky With Glory"  193
+"Touch the Sky with Glory"   86
+```
+The footer now uses his capitalisation. **The other two spellings are untouched
+and still live elsewhere.** Raised with him rather than silently normalised,
+because one of them is an episode title and changing titles has consequences
+across `episode-titles.json`, `library-data.js` and the tag pages.
