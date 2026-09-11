@@ -97,8 +97,13 @@ def _tag_page(tag):
 
 
 def _norm(s):
-    """Loose form of a title for comparison: case, punctuation and & folded."""
-    s = (s or "").lower().replace("&", " and ")
+    """Loose form of a title for comparison: case, punctuation and & folded.
+
+    `&amp;` is unescaped first. A tile title written with the HTML entity would
+    otherwise normalise to "amp" and quietly fail to match, which is exactly what
+    happened when the Dr Matt Wilkes tiles were added.
+    """
+    s = (s or "").lower().replace("&amp;", " and ").replace("&", " and ")
     return " ".join(re.sub(r"[^a-z0-9]+", " ", s).split())
 
 

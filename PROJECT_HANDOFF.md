@@ -2867,3 +2867,47 @@ lands in the wrong place, and this would have been exactly that.
 **Four independent mechanisms, all invisible in the code being read:** browser
 scroll restoration, late-arriving layout, the back/forward cache, and a
 scroll-driven animation library. Any one of them alone looks like a broken link.
+
+## 51. EVERY CONVERSATION IS NOW ON A KNOWLEDGE BASE PAGE
+
+**81 of 93 episodes are placed. The only 12 left off are the reels and
+cinematics, which the user decided do not belong there.** Before this, 22 were
+missing, 10 of them real conversations including the longest episode on the site.
+
+### A series swap, done in BOTH files
+| Episode | Was | Now |
+|---|---|---|
+| Robbie Whittall | Brand Stories | **Sky Gods** |
+| Russell Ogden | Sky Gods | **Risk vs Reward** |
+
+The user's rule, which is a better one than the episode-content rule I had been
+using: **sort by what the pilot IS, not what the episode covers.** Whittall flies
+like a Sky God. Ogden is a test pilot, and his episode is about limits and fear.
+
+**`series` lives in TWO places and both had to change.** `episode-meta.json`
+drives the episode page breadcrumb and the popup card; `library-data.js` carries
+a duplicate `topic` per row that drives the library filter. Changing one would
+have put the episode in two different series depending on where you looked, and
+**nothing in the audit checks that they agree.** Worth adding.
+
+### Tile titles must RESOLVE, not just read well
+Several of these guests already had a tile on the same page: three Urs Haari on
+Know Your Equipment, two Luc Armant on Flight Mechanics, two Dr Matt Wilkes and
+two Beni Kalin on Risk vs Reward. Guest matching is ambiguous for all of those,
+so each new title had to be a unique containment match. **All ten were tested
+against `resolve()` before a single line was written into the generator.**
+
+One failed that test and is worth remembering: `Paragliding Physiology &amp;
+Safety Protocols`. The file's own convention for these lists is a **raw** `&`,
+and the entity normalised to "amp" and silently matched nothing. Fixed in the
+source, and `_norm()` now unescapes `&amp;` as well, so the same mistake cannot
+bite twice.
+
+### Where things stand
+```
+episodes on a knowledge base page   81 of 93
+still off, all reels or cinematics  12
+tiles that fail to resolve           0
+cards disagreeing with their page    0
+```
+187 pages, 92 checks, 0 FAIL, 9 warn.

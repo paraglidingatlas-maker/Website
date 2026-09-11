@@ -360,6 +360,7 @@ subseries_page(
         {"title": "Sky Gods: Flying To Win", "guest": "Honorin Hamard", "readmore": "../podcast.html"},
         {"title": "Sky Gods: Flying 8000ers", "guest": "Antoine Girard"},
         {"title": "The Journey Within: Mapping Our Quest to Touch The Sky With Glory", "guest": "Maxime Pinot"},
+        {"title": "113 mins of Unhinged conversations with The Man Behind Ozone Paragliders", "guest": "Robert (Robbie) Whittall"},
     ],
 )
 
@@ -422,6 +423,11 @@ subseries_page(
         {"title": "Risk Vs Reward 5", "guest": "Gabriel Orsini (partytillimpact)"},
         {"title": "Consequence Over Probability: Will Gadd's Field Protocols for Rewiring Risk Intuition and Why True Safety Lies in Clarity", "guest": "Will Gadd"},
         {"title": "Building a Healthy Relationship with the Skies: How to Master Fear, Build Resilience & Find Joy Through Paragliding", "guest": "Kinga Masztalerz"},
+        {"title": "Decoding Paragliding Mastery Protocols: Progression, Fear & Competition", "guest": "Russell Ogden"},
+        {"title": "Metacognition: Paragliding's Hidden Psychology", "guest": "Beni Kalin & Heli Schrempf"},
+        {"title": "Cognitive Bias of Dunning Kruger Effect in Paragliding", "guest": "Beni Kalin & Heli Schrempf"},
+        {"title": "Paragliding Physiology & Safety Protocols", "guest": "Dr Matt Wilkes"},
+        {"title": "If you fly in the Himalayas, Alps, or above 3000 mtrs", "guest": "Dr Matt Wilkes"},
     ],
 )
 
@@ -544,6 +550,8 @@ subseries_page(
         {"title": "Demystifying The Science Behind the Endless Fun Factor of Parakites", "guest": "Bryan Van Ostheim"},
         {"title": "Debunking the Myths and Upgrading Enzo 3", "guest": "Luc Armant"},
         {"title": "777: Paragliding's Slovenian Mavericks Redefining the EN B Class And Elevating Free Flight Performance", "guest": "Aljaž Valič"},
+        {"title": "How to Thermal Like a Pro: Find, Center & Climb", "guest": "Brett Janaway"},
+        {"title": "The Moment Coefficient, Enzo 3 Certification", "guest": "Luc Armant"},
     ],
 )
 
@@ -573,6 +581,8 @@ subseries_page(
         {"title": "Helmet Safety: ICARO 2000 [1st Anniversary Edition]", "guest": "Christian Ciech"},
         {"title": "Carabiner Fatigue (Whitepaper)", "guest": "Finsterwalder &amp; Charly"},
         {"title": "A Note of Thanks", "guest": ""},
+        {"title": "Technical Masterclass: Science of Paragliding", "guest": "Brett Janaway"},
+        {"title": "Can we Steer a Round Reserve Parachute?", "guest": "Urs Haari"},
     ],
 )
 
