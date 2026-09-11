@@ -6,9 +6,9 @@
     "series": "Flight Mechanics",
     "series_slug": "Flight%20Mechanics",
     "epno": "Episode 37",
-    "guest": "",
+    "guest": "Alain Zoller",
     "guest_role": "",
-    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "_guest_source": "Taken from the episode title and confirmed by the surname appearing in that episode's own transcript.",
     "published": "2025-03-10",
     "published_label": "10 March 2025",
     "duration_label": "96 min",
@@ -458,9 +458,9 @@
     "series": "The Dark Side",
     "series_slug": "The%20Dark%20Side",
     "epno": "Episode 54",
-    "guest": "",
+    "guest": "Julien Garcia",
     "guest_role": "",
-    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "_guest_source": "Taken from the episode title and confirmed by the surname appearing in that episode's own transcript.",
     "published": "2025-09-26",
     "published_label": "26 September 2025",
     "duration_label": "29 min",
@@ -522,7 +522,7 @@
     "epno": "",
     "guest": "",
     "guest_role": "",
-    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "_guest_source": "",
     "published": "",
     "published_label": "",
     "duration_label": "63 min",
@@ -3765,7 +3765,7 @@
     "epno": "Episode 49",
     "guest": "",
     "guest_role": "",
-    "_guest_source": "** review: name from the episode title or the host's introduction; role from how the host describes them",
+    "_guest_source": "",
     "published": "2025-07-17",
     "published_label": "17 July 2025",
     "duration_label": "72 min",
@@ -6879,8 +6879,14 @@
     "speakers": {},
     "summary": "There is much more to reserve parachutes than just getting them repacked periodically and in a correct way! This talk is a snippet from one of our most replayed moments from an episode where we ended up revealing The Real Truth about Reserve Parachutes. for more cool stuff about Paragliding, It's free",
     "_summary_source": "Taken from the episode's own show notes in the RSS feed, the user's words.",
-    "_chapters_source": "",
-    "chapters": [],
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue. Solo episodes yield few boundaries because the tool finds them from question cues, so a short solo piece legitimately has only two or three.",
+    "chapters": [
+      {
+        "title": "Why lucky, and whether there is a sure way",
+        "at": "00:03:53",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [],
@@ -6896,17 +6902,73 @@
     "series": "Living the Dream",
     "series_slug": "Living%20the%20Dream",
     "epno": "Episode 53",
-    "guest": "",
+    "guest": "Damien Lacaze",
     "guest_role": "",
-    "_guest_source": "",
+    "_guest_source": "Taken from the episode title and confirmed by the surname appearing in that episode's own transcript.",
     "published": "2025-08-30",
     "published_label": "30 August 2025",
     "duration_label": "63 min",
     "speakers": {},
     "summary": "An episode uncovering alchemy of adventure. I talk with Red Bull X-Alps athlete and vol biv pilot Damien Lacaze, as he opens up about his journey in paragliding, stories from the mountains, and the mindset needed to endure long days in the air.",
     "_summary_source": "Taken from the episode's own show notes in the RSS feed, the user's words.",
-    "_chapters_source": "",
-    "chapters": [],
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue, taken from the host's own turns or question cues rather than by matching a phrase.",
+    "chapters": [
+      {
+        "title": "Welcome, and who this is",
+        "at": "00:00:28",
+        "src": "claude"
+      },
+      {
+        "title": "Long term goals, and the road to the X-Alps",
+        "at": "00:05:37",
+        "src": "claude"
+      },
+      {
+        "title": "Paragliders as a descent tool for climbers",
+        "at": "00:09:13",
+        "src": "claude"
+      },
+      {
+        "title": "A word that only works in French",
+        "at": "00:16:31",
+        "src": "claude"
+      },
+      {
+        "title": "Planning an adventure, and how he trains",
+        "at": "00:20:41",
+        "src": "claude"
+      },
+      {
+        "title": "Nutrition, or the absence of a plan",
+        "at": "00:25:41",
+        "src": "claude"
+      },
+      {
+        "title": "Debriefing, and rebuilding confidence",
+        "at": "00:29:42",
+        "src": "claude"
+      },
+      {
+        "title": "Finding your tribe, and who to trust",
+        "at": "00:33:36",
+        "src": "claude"
+      },
+      {
+        "title": "Coordinating on the move",
+        "at": "00:38:06",
+        "src": "claude"
+      },
+      {
+        "title": "The incident, and what happened",
+        "at": "00:43:13",
+        "src": "claude"
+      },
+      {
+        "title": "Weight, and why people do not use it",
+        "at": "00:49:34",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [],
@@ -6931,8 +6993,64 @@
     "speakers": {},
     "summary": "In this episode, I talk to Bryan Van Ostheim, the brain behind taking parakite performance to a whole new level. We talk about what lies beyond the thrill to explore the aerodynamics of freedom, the psychology of flight, and the engineering principles that turn fear into effortless fun.",
     "_summary_source": "Taken from the episode's own show notes in the RSS feed, the user's words.",
-    "_chapters_source": "",
-    "chapters": [],
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue, taken from the host's own turns or question cues rather than by matching a phrase.",
+    "chapters": [
+      {
+        "title": "Where neural networks come into it",
+        "at": "00:00:24",
+        "src": "claude"
+      },
+      {
+        "title": "Trim speed, and how fast a parakite is",
+        "at": "00:04:29",
+        "src": "claude"
+      },
+      {
+        "title": "Why that happens, against paraglider intuition",
+        "at": "00:07:53",
+        "src": "claude"
+      },
+      {
+        "title": "Ground handling, and building the instinct",
+        "at": "00:11:36",
+        "src": "claude"
+      },
+      {
+        "title": "The learning curve in this sport",
+        "at": "00:17:13",
+        "src": "claude"
+      },
+      {
+        "title": "Flying both, or keeping them separate",
+        "at": "00:20:39",
+        "src": "claude"
+      },
+      {
+        "title": "Why chair harnesses and not pods",
+        "at": "00:24:16",
+        "src": "claude"
+      },
+      {
+        "title": "Putting parakite risers on a paraglider",
+        "at": "00:27:35",
+        "src": "claude"
+      },
+      {
+        "title": "Roll, dive, and how it answers the brakes",
+        "at": "00:31:10",
+        "src": "claude"
+      },
+      {
+        "title": "The materials, and whether they are new",
+        "at": "00:36:29",
+        "src": "claude"
+      },
+      {
+        "title": "Starting a brand for the first time",
+        "at": "00:41:59",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [],
@@ -6957,8 +7075,64 @@
     "speakers": {},
     "summary": "In this episode I sit with the founder of Gin Gliders, to talk about his 5 decade free flight legacy, Starting with rogallo shaped hang gliders back in the day to pioneering Boomerang competition wings and a million dollars in government funded R&D. This episode is a tell all tale in discovering how a man who ‘dared to dream big’ defied age, industry giants, and sometimes even ",
     "_summary_source": "Taken from the episode's own show notes in the RSS feed, the user's words.",
-    "_chapters_source": "",
-    "chapters": [],
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue, taken from the host's own turns or question cues rather than by matching a phrase.",
+    "chapters": [
+      {
+        "title": "The relationship with Ozone",
+        "at": "00:00:15",
+        "src": "claude"
+      },
+      {
+        "title": "Old and bold, and the habit of flying long",
+        "at": "00:03:32",
+        "src": "claude"
+      },
+      {
+        "title": "The origins of the brand",
+        "at": "00:08:57",
+        "src": "claude"
+      },
+      {
+        "title": "The competition of that generation",
+        "at": "00:12:37",
+        "src": "claude"
+      },
+      {
+        "title": "Setting up research and development",
+        "at": "00:16:38",
+        "src": "claude"
+      },
+      {
+        "title": "The wind tunnel, and who else has one",
+        "at": "00:21:14",
+        "src": "claude"
+      },
+      {
+        "title": "Relations with the other brands",
+        "at": "00:24:46",
+        "src": "claude"
+      },
+      {
+        "title": "Whether harnesses benefit too",
+        "at": "00:28:43",
+        "src": "claude"
+      },
+      {
+        "title": "What actually defines safety",
+        "at": "00:32:43",
+        "src": "claude"
+      },
+      {
+        "title": "Is it safer now than it was",
+        "at": "00:36:11",
+        "src": "claude"
+      },
+      {
+        "title": "Munjin, and where it came from",
+        "at": "00:40:36",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [],
@@ -6983,8 +7157,64 @@
     "speakers": {},
     "summary": "On the side lines of recently concluded PWC Krusevo 2025 edition I got to sit down with Maxime in a tell all tale about how we all can approach the sport of paragliding in a way that makes us want to keep taking to the skies with same excitement as we did when we first tasted the art of flight and his story of trials and triumphs that have been an integral part of the learning ",
     "_summary_source": "Taken from the episode's own show notes in the RSS feed, the user's words.",
-    "_chapters_source": "",
-    "chapters": [],
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue. Solo episodes yield few boundaries because the tool finds them from question cues, so a short solo piece legitimately has only two or three.",
+    "chapters": [
+      {
+        "title": "Throwing helmets, and how that changed",
+        "at": "00:00:29",
+        "src": "claude"
+      },
+      {
+        "title": "Choosing the disciplines to commit to",
+        "at": "00:06:44",
+        "src": "claude"
+      },
+      {
+        "title": "Airtime, and whether anything replaces it",
+        "at": "00:12:50",
+        "src": "claude"
+      },
+      {
+        "title": "Soaring, thermalling, and keeping them separate",
+        "at": "00:20:19",
+        "src": "claude"
+      },
+      {
+        "title": "Gliding, the least stressful time in the air",
+        "at": "00:26:29",
+        "src": "claude"
+      },
+      {
+        "title": "The cultural assumption about flying seriously",
+        "at": "00:33:40",
+        "src": "claude"
+      },
+      {
+        "title": "Am I willing to die for it",
+        "at": "00:40:39",
+        "src": "claude"
+      },
+      {
+        "title": "What athletes owe the people watching",
+        "at": "00:48:34",
+        "src": "claude"
+      },
+      {
+        "title": "The ups, and the quieter parts",
+        "at": "00:54:47",
+        "src": "claude"
+      },
+      {
+        "title": "What it costs when it does not work",
+        "at": "1:00:41",
+        "src": "claude"
+      },
+      {
+        "title": "What can I do differently",
+        "at": "1:07:03",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [],
@@ -7009,8 +7239,19 @@
     "speakers": {},
     "summary": "Want to elevate your paragliding game ? In this episode, I talk about:",
     "_summary_source": "Taken from the episode's own show notes in the RSS feed, the user's words.",
-    "_chapters_source": "",
-    "chapters": [],
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue. Solo episodes yield few boundaries because the tool finds them from question cues, so a short solo piece legitimately has only two or three.",
+    "chapters": [
+      {
+        "title": "Welcome, and the question behind this one",
+        "at": "00:00:04",
+        "src": "claude"
+      },
+      {
+        "title": "Replicating that state of mind before you fly",
+        "at": "00:01:30",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [],
@@ -7035,8 +7276,39 @@
     "speakers": {},
     "summary": "An attempt at learning the Neuroscience of crises management! Why? Because my cloud storage crashed, recordings vanished! Remember feeling that stomach dropping panic while flying sometimes?",
     "_summary_source": "Taken from the episode's own show notes in the RSS feed, the user's words.",
-    "_chapters_source": "",
-    "chapters": [],
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue. Solo episodes yield few boundaries because the tool finds them from question cues, so a short solo piece legitimately has only two or three.",
+    "chapters": [
+      {
+        "title": "Welcome, and what actually happened",
+        "at": "00:00:03",
+        "src": "claude"
+      },
+      {
+        "title": "Do I have to do all of it again",
+        "at": "00:01:38",
+        "src": "claude"
+      },
+      {
+        "title": "Being aware of yourself",
+        "at": "00:04:26",
+        "src": "claude"
+      },
+      {
+        "title": "Just another day, or taking it seriously",
+        "at": "00:08:04",
+        "src": "claude"
+      },
+      {
+        "title": "Making sense of what is going on",
+        "at": "00:10:46",
+        "src": "claude"
+      },
+      {
+        "title": "Where did the gravity go",
+        "at": "00:12:59",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [],
@@ -7061,8 +7333,64 @@
     "speakers": {},
     "summary": "In this episode of Paragliding Atlas, we have an exciting conversation with Stephan Stiegler, the innovative designer from . Stephan has spearheaded the technological change in the paragliding world by being the first to launch the 2-liner EN-C category wings followed by its second more improved version as well.",
     "_summary_source": "Taken from the episode's own show notes in the RSS feed, the user's words.",
-    "_chapters_source": "",
-    "chapters": [],
+    "_chapters_source": "Chapter titles written from the transcript at each timestamp and marked ** review. Timestamps are real: each is the start of a cue, taken from the host's own turns or question cues rather than by matching a phrase.",
+    "chapters": [
+      {
+        "title": "The pilot who only flies on Sundays",
+        "at": "00:00:00",
+        "src": "claude"
+      },
+      {
+        "title": "Running out of time, and getting into competition",
+        "at": "00:05:00",
+        "src": "claude"
+      },
+      {
+        "title": "When goals and accidents collide",
+        "at": "00:14:17",
+        "src": "claude"
+      },
+      {
+        "title": "Gliders that were genuinely dangerous",
+        "at": "00:20:20",
+        "src": "claude"
+      },
+      {
+        "title": "What the EN norm actually rates",
+        "at": "00:26:33",
+        "src": "claude"
+      },
+      {
+        "title": "Moving from the glider to the pilot's ability",
+        "at": "00:34:12",
+        "src": "claude"
+      },
+      {
+        "title": "The proposal to abolish the categories",
+        "at": "00:40:01",
+        "src": "claude"
+      },
+      {
+        "title": "Why the categories have levelled out",
+        "at": "00:51:53",
+        "src": "claude"
+      },
+      {
+        "title": "Trying a glider in the shop, and what that tells you",
+        "at": "00:57:18",
+        "src": "claude"
+      },
+      {
+        "title": "Inside the design process",
+        "at": "1:07:28",
+        "src": "claude"
+      },
+      {
+        "title": "Entering a spiral, and losing control",
+        "at": "1:12:17",
+        "src": "claude"
+      }
+    ],
     "guest_links": [],
     "resources": [],
     "related": [],

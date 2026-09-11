@@ -1202,6 +1202,40 @@ doing properly rather than hacking one page.
 **Being offline under his own name is better than being online under someone
 else's, which is why it was done this way round.**
 
+## 19. AUDIO-ONLY EPISODES ARE SUPPORTED. EIGHT NEW PAGES EXIST.
+`templates/episode-template.html` hardcoded YouTube in four places, so an episode
+without a video rendered an empty iframe. The player and og:image are now built
+by `player_html()` in `generate_chapter_deck.py`. Video episodes are unchanged.
+Episodes with no `video_id` get the artwork slot, a line saying it was never
+filmed, and the listen buttons, styled by `.cd-player-audio` in episode.css.
+
+Built on that: Stephan Stiegler, Damien Lacaze, Bryan Van Ostheim, Gin Seok Song,
+Maxime Pinot, the pre flight rituals episode, Mastering the Unknown, and the Urs
+Haari snippet. Seven had a transcript sitting in the RSS feed that nothing had
+fetched. All eight are wired into library-data.js, episode-search-data.js and
+globe.js, where **zero pins now use showUrl**.
+
+**Artwork is a local placeholder on those eight.** Real episode art is on a
+Spotify CDN unreachable from the sandbox, and linking it would add a third party
+request to pages the rest of this work removed third parties from. If the user
+supplies images, set `artwork` in episode-meta.
+
+**Two generator bugs, same root cause: the assumption that every episode has a
+YouTube id.** `generate_sitemap.py` required a non-empty `id` in library-data
+rows and silently dropped rows without one, and keyed page lookup on video id.
+Both now fall back to the page slug. If another id-keyed lookup is ever added,
+give it the same fallback.
+
+## 20. GUEST NAME EXTRACTION WAS TRIED AND MOSTLY ABANDONED. DO NOT RETRY NAIVELY.
+`guest` is empty on most entries. Pulling the name from the episode title looks
+easy and is not: matching capitalised words before a colon produced "Consequence
+Over Probability" and "Understanding Skymate" as people, two wrong out of five,
+even with a stop word list and a check that the surname appears in the
+transcript. Those were reverted. Only names confirmed both by title pattern AND
+by the surname being spoken were kept.
+**The field needs the user, or a per-episode read. A 40 per cent error rate puts
+invented people on pages under a real brand.**
+
 ## DONE (do not redo)
 - **Nine truncated titles, recovered properly (eighth update).** They now live in
   `episode-titles.json`, verbatim from the RSS feed and **keyed by YouTube video
