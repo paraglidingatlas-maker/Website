@@ -2718,3 +2718,47 @@ broken thumbnails          70             0
 KB -> episode links         0            71
 ```
 187 pages, 92 checks, 0 FAIL, 9 warn.
+
+## 48. GLOBE PINS ARE DEEP LINKABLE, AND SCRIPTS ARE CACHE BUSTED AT LAST
+
+### `index.html#pin=<episode-slug>` opens that pin
+`openPinFromHash()` in `globe.js` rotates the globe to the episode, opens its
+popup and scrolls the map into view. The knowledge base card's coordinate stamp
+links here, so a reader goes from a conversation to the place it came from.
+**All 69 coordinate links were checked against the 79 pins in globe.js: zero
+dead.**
+
+Two details that are not obvious and should not be "tidied":
+- **It is called after the first render, never at script end.** The land data
+  arrives asynchronously and the projection must have drawn once before
+  `showPopup` can place the popup correctly. Hence the call inside both the
+  `.then()` and the `.catch()`.
+- **`resetIdleTimer()` is deliberately NOT called.** Clicking a pin normally
+  starts a 5 second timer that hides the popup and resumes the spin, which is
+  right for browsing. Somebody who followed a link to one specific episode
+  should not have it vanish while they read it, so the globe holds still until
+  they touch it. Their first drag resumes normal behaviour.
+
+An unknown slug does nothing at all, leaving the globe as it was.
+
+### SCRIPTS WERE NEVER CACHE BUSTED. ONLY 2 OF 14.
+Section 36 fixed this for stylesheets and **stopped there**, which was a mistake.
+`sitemap-graph.js` and `tags-sort.js` were hand-versioned by their own
+generators. The other twelve, including `globe.js`, `script.js` and
+`episode-modal.js`, were linked bare.
+
+**`episode-modal.js` was rewritten from top to bottom today. A returning visitor
+would have kept the old popup indefinitely and seen none of it.** Caught only
+because the globe change prompted a check of whether it would actually load.
+
+`tools/version_assets.py` now versions `<script src>` as well as
+`<link href>`. Verified idempotent, and the drift check passes.
+
+**The md5 line in `generate_sitemap.py` that versions `sitemap-graph.js` is now
+redundant.** It is harmless, because version_assets runs after it and strips any
+existing `?v=`, and the pipeline is deterministic. It could be deleted.
+
+**Standing rule, now twice learned: when a change has no visible effect, the
+order of suspicion is is it parsed, is it cache busted, is it out-specified.**
+All three have bitten this project, and the middle one has bitten it twice
+because the first fix was scoped to half the problem.

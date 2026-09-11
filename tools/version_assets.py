@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Append a content hash to every local stylesheet link, so a CSS change actually
-reaches a returning visitor.
+Append a content hash to every local stylesheet AND script link, so a change
+actually reaches a returning visitor.
 
 WHY THIS EXISTS
 Lesson 16 in the handoff says "cache bust any script that changes", and the
@@ -17,9 +17,21 @@ page, because their browser never refetched episode.css. A change that cannot be
 seen is indistinguishable from a change that was never made, and it cost a round
 of "did this work" either way.
 
+SCRIPTS WERE ADDED LATER, AND FOR THE SAME REASON.
+The first version of this tool covered CSS only. Two of the fourteen scripts on
+the site were hand-versioned by their own generators and the other twelve,
+including globe.js, script.js and episode-modal.js, were linked bare. The
+episode popup was then rewritten from top to bottom, which a returning visitor
+would never have seen. Same failure, same fix.
+
+Any ?v= already present is stripped and replaced, so this tool is the single
+mechanism. The md5 line in generate_sitemap.py that versions sitemap-graph.js
+is now redundant; it is harmless because this runs after it and the pipeline is
+deterministic, but it could go.
+
 WHAT IT DOES
-Rewrites href="foo.css" to href="foo.css?v=<8 hex chars of sha256>" on every
-page, resolving each href against that page's own location so the file being
+Rewrites href="foo.css" and src="foo.js" to carry ?v=<8 hex of sha256> on every
+page, resolving each path against that page's own location so the file being
 hashed is the file the browser will actually load.
 
 Idempotent: any existing ?v= is stripped before the new one is appended, so the
@@ -43,6 +55,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKIP_DIRS = ("templates/", "node_modules/", ".git/", "__pycache__/")
 LINK = re.compile(r'(<link[^>]*\shref=")([^"]+\.css)(\?v=[0-9a-f]+)?(")',
                   re.IGNORECASE)
+SCRIPT = re.compile(r'(<script[^>]*\ssrc=")([^"]+\.js)(\?v=[0-9a-f]+)?(")',
+                    re.IGNORECASE)
 
 _cache = {}
 
@@ -102,17 +116,17 @@ def main():
                 return head + href + tail
             return "%s%s?v=%s%s" % (head, href, digest(target), tail)
 
-        out = LINK.sub(sub, src)
+        out = SCRIPT.sub(sub, LINK.sub(sub, src))
         if out != src:
             open(full, "w", encoding="utf-8").write(out)
             touched += 1
 
     if missing:
         raise SystemExit(
-            "version_assets: these stylesheet links do not resolve to a file, "
-            "which means they are 404ing on the live site: %s" % missing[:5])
+            "version_assets: these asset links do not resolve to a file, which "
+            "means they are 404ing on the live site: %s" % missing[:5])
 
-    print("stylesheet links versioned on %d pages" % touched)
+    print("asset links versioned on %d pages" % touched)
 
 
 if __name__ == "__main__":

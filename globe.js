@@ -225,13 +225,49 @@
       .style('display', d => isVisible(d.lon, d.lat) ? null : 'none');
   }
 
+  /* Deep link: index.html#pin=<episode-slug> rotates the globe to that episode
+     and opens its popup. The knowledge base popup links here from the
+     coordinate stamp, so a reader can go from a conversation to the place it
+     came from.
+
+     Called after the first render, never before: the land data arrives
+     asynchronously and the projection has to have drawn once for showPopup to
+     place the popup correctly.
+
+     resetIdleTimer() is deliberately NOT called. Clicking a pin normally starts
+     a 5 second timer that hides the popup and resumes the spin, which is right
+     for someone browsing. Someone who followed a link to one specific episode
+     should not have it vanish while they read it, so the globe stays put until
+     they touch it. Their first drag or click resumes the normal behaviour. */
+  function openPinFromHash() {
+    const m = /^#pin=(.+)$/.exec(location.hash || '');
+    if (!m) return;
+    const slug = decodeURIComponent(m[1]);
+    const d = episodes.find((e) => e.href === 'episodes/' + slug + '.html');
+    if (!d) return;          /* unknown slug: leave the globe exactly as it was */
+    stopAutoRotate();
+    projection.rotate([-d.lon, -d.lat]);
+    render();
+    showPopup(d);
+    container.scrollIntoView({
+      behavior: reduceMotion ? 'auto' : 'smooth',
+      block: 'center'
+    });
+  }
+
   d3.json('https://unpkg.com/world-atlas@2/land-110m.json').then((world) => {
     const land = topojson.feature(world, world.objects.land);
     landPath.datum(land);
     render();
+    openPinFromHash();
   }).catch(() => {
     render();
+    openPinFromHash();
   });
+
+  /* Someone already on the page who follows another #pin link, and the back
+     button moving between pins once they are shareable. */
+  window.addEventListener('hashchange', openPinFromHash);
 
   // Drag to rotate — degrees-per-pixel scaled to the globe's actual radius
   let dragStart = null;
