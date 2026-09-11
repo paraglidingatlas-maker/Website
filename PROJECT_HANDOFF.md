@@ -806,18 +806,38 @@ Open, roughly in order of value:
    on every header value (without which a newline in the name field injects
    recipients), a honeypot, a time trap, and length caps.
 
-   **THE BLOCKER, and it is the one thing here that can break something the user
-   relies on daily.** Enabling Email Routing on a domain replaces its MX
-   records. If `aninder@paraglidingatlas.com` is hosted on Google Workspace,
-   Microsoft 365 or a registrar, **inbound mail to that domain stops.**
-   Two questions were put to the user and are UNANSWERED:
-   1. Where does `aninder@paraglidingatlas.com` actually receive mail?
-   2. Is `paraglidingatlas.com` DNS managed by Cloudflare at all?
-   If its mail lives elsewhere, that is fine and nothing is lost: the SENDING
-   domain need not be the same one. Route any other domain or subdomain on the
-   account and still deliver to his address, which only has to be verified.
+   **THE BLOCKER IS SOLVED. Send from a SUBDOMAIN.**
+   The original worry was real: enabling Email Routing on an apex domain
+   replaces its MX records, so if `aninder@paraglidingatlas.com` is hosted on
+   Google Workspace, Microsoft 365 or a registrar, inbound mail to the domain
+   would stop. **That risk disappears entirely when the sending identity is a
+   subdomain.** Cloudflare's Email Sending onboarding puts the cf-bounce MX,
+   SPF, DKIM and DMARC records **on the subdomain**, so the apex MX is never
+   touched and existing email cannot break.
 
-   **Remaining steps once he answers:** he deploys the Worker and sends the URL,
+   So: send from something like `corrections@mail.paraglidingatlas.com`, and
+   deliver to whichever inbox the user prefers. **The two DNS questions that
+   were blocking this no longer need answering.**
+
+   **Destination is the easy half and always was.** Any address, including a
+   plain Gmail one, becomes usable by clicking a verification link Cloudflare
+   emails to it. No DNS on the destination side at all. The user asked whether
+   pointing it at Gmail would make this easier: it helps, because it removes any
+   dependence on the brand mailbox, but the subdomain is what removes the
+   danger, and that works with either address.
+
+   **Trade-off if Gmail is chosen, so it is a decision and not a default:**
+   corrections land in a personal inbox mixed with everything else, and replies
+   come from the Gmail address rather than the brand one unless send-as is
+   configured in Gmail. Delivery into Gmail from a brand new sending subdomain
+   can also land in spam for the first few messages. **Not yet decided.**
+
+   **`corrections-worker.js` needs one edit before deploying:** `FROM` is
+   currently `corrections@paraglidingatlas.com` and should become an address on
+   whichever sending subdomain is onboarded. `TO` becomes whichever inbox is
+   chosen. Nothing else in it changes.
+
+   **Remaining steps:** he picks an inbox and a subdomain, deploys the Worker and sends the URL,
    then the form gets built into `generate_policies.py` (CORRECTIONS section,
    NOT corrections.html, which is generated), and `generate_policies.py` also
    gets the privacy policy change in the SAME push: Typeform out, Cloudflare in.
