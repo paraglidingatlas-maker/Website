@@ -260,6 +260,48 @@ def render_rail(chapters):
     )
 
 
+def guest_box_html(meta):
+    """The sidebar "The Guest" card, or nothing at all.
+
+    60 of 93 episode pages used to render this card with an EMPTY name and an
+    empty role: a bordered box with a heading and nothing inside it. Competition
+    highlight reels, the Oslo cinematics and the solo host episodes have no
+    guest, so there was never anything to put there.
+
+    The user's decision (2026-09-11): name the guest wherever one exists, credit
+    Aninder Singh as himself on the five solo episodes, and DROP THE WHOLE BOX
+    on the remaining 12 rather than show an empty one.
+
+    Checked before this was written: none of those 12 carry guest_links or a
+    guest_role, so hiding the box loses nothing. If an episode ever has links
+    but no name, the links would vanish silently, so that case raises instead.
+    """
+    name = (meta.get("guest") or "").strip()
+    role = (meta.get("guest_role") or "").strip()
+    links = meta.get("guest_links") or []
+
+    if not name:
+        if links or role:
+            raise SystemExit(
+                "guest_box_html: %s has guest_links or a guest_role but no "
+                "guest name. Hiding the box would silently drop them. Give it "
+                "a name, or clear the links." % meta.get("slug", "?"))
+        return ""
+
+    return (
+        '      <div class="cd-box">\n'
+        '        <h2>The Guest</h2>\n'
+        '        <div class="cd-guest-row">\n'
+        '          <div>\n'
+        '            <p class="cd-guest-name">%s</p>\n'
+        '            <p class="cd-guest-role">%s</p>\n'
+        '          </div>\n'
+        '        </div>\n'
+        '%s\n'
+        '      </div>\n' % (esc(name), esc(role), render_list(links))
+    )
+
+
 def render_list(items, cls="cd-link"):
     return "\n".join(
         '        <a class="%s" href="%s" target="_blank" rel="noopener">%s</a>'
@@ -508,9 +550,7 @@ def build(meta, cues, chapters):
         summary=esc(meta.get("summary", "")),
         transcript=wrap_transcript(render_transcript(paras, chapters_with_content(paras, chapters), meta.get("speakers", {})),
                                    words, bool(paras), meta),
-        guest_name=esc(meta.get("guest", "")),
-        guest_role=esc(meta.get("guest_role", "")),
-        guest_links=render_list(meta.get("guest_links", [])),
+        guest_box=guest_box_html(meta),
         resources=render_list(meta.get("resources", [])),
         related=render_list(meta.get("related", [])),
         tags=render_tags(meta.get("tags")),

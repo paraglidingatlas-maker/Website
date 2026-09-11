@@ -1897,3 +1897,45 @@ The user has decided there will be no FAQ section on episode pages. Sections 14,
 26 and earlier all list it as pending; it is not. `.cd-faq` in
 `episodes/episode.css` lines 67 to 74 is now dead CSS and could be removed.
 The prototype that showed the intended layout was deleted in section 28.
+
+## 30. GUEST BOX RESOLVED. 81 NAMED, 12 BOXES REMOVED.
+
+**Guest names are DONE. Do not reopen unless the user asks.**
+81 of 93 episodes carry a guest name. The other 12 have no guest box at all.
+
+### The user named the five solo episodes as himself
+`AMA #1`, `Science Backed Pre Flight Rituals`, `Mastering the Unknown`,
+`Touch The Sky With Glory` and `A Note of Thanks` now carry **Aninder Singh**.
+He is the host, not a guest, and the box heading still reads "The Guest".
+That was not raised as a problem; if it ever is, the fix is a conditional
+heading in `guest_box_html()`, not a data change.
+
+**IMPORTANT, this reverses an earlier finding.** Section 26 records that eight
+guest values "were not people", and two of them were misspellings of the host's
+own name. Those were genuine errors of extraction. The five above are the
+opposite: the user has deliberately credited himself. **`check_guest_names()`
+does not flag them and must not be changed to.** If a future session sees the
+host's name in a guest field, check `_guest_source` before assuming it is the
+old bug.
+
+### The remaining 12 render NO guest box
+`guest_box_html()` in `generate_chapter_deck.py` now builds the whole card, and
+returns an empty string when there is no name. `templates/episode-template.html`
+carries a single `{guest_box}` placeholder where the hardcoded markup used to be.
+The 12 are the 8 competition highlight reels and the 4 Oslo and Norway
+cinematics.
+
+**It has a guard, and the guard was tested by sabotage.** If an episode ever has
+`guest_links` or a `guest_role` but no name, hiding the box would silently drop
+that content, so the generator raises instead of writing the page. Verified by
+adding a link to a nameless episode and watching the build stop. All 12 were
+checked for links and roles before this was written; none had either.
+
+Verified after the build: all 81 named episodes render the box, all 12 unnamed
+render none. 187 pages, 91 checks, 0 FAIL, 9 warn, warning set unchanged.
+
+### What this closes
+- The empty-guest-box problem from section 29 is closed.
+- `.cd-guest-row img`, the 54px circular avatar, is STILL dead CSS. The template
+  never emitted an `<img>` and `guest_box_html()` does not either. That is
+  unchanged and still needs a photo per guest if it is ever wanted.

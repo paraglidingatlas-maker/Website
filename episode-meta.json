@@ -7283,7 +7283,7 @@
     "series": "Resources, Tools and Tips",
     "series_slug": "Resources%2C%20Tools%20and%20Tips",
     "epno": "Episode 8",
-    "guest": "",
+    "guest": "Aninder Singh",
     "guest_role": "",
     "published": "2024-01-03",
     "published_label": "3 January 2024",
@@ -7314,7 +7314,8 @@
       "Paragliding",
       "Community"
     ],
-    "_summary_source": "Taken from the episode's own show notes in the RSS feed. The user's words, not a summary of the audio."
+    "_summary_source": "Taken from the episode's own show notes in the RSS feed. The user's words, not a summary of the audio.",
+    "_guest_source": "the host, named by the user. These are solo episodes with no guest: confirmed by reading them, one speaker throughout."
   },
   {
     "slug": "touch-the-sky-with-glory",
@@ -7323,7 +7324,7 @@
     "series": "Living the Dream",
     "series_slug": "Living%20the%20Dream",
     "epno": "Episode 1",
-    "guest": "",
+    "guest": "Aninder Singh",
     "guest_role": "",
     "published": "2023-11-15",
     "published_label": "15 November 2023",
@@ -7340,7 +7341,8 @@
       "First Episode",
       "Free Flight",
       "Podcast"
-    ]
+    ],
+    "_guest_source": "the host, named by the user. These are solo episodes with no guest: confirmed by reading them, one speaker throughout."
   },
   {
     "slug": "a-note-of-thanks",
@@ -7349,7 +7351,7 @@
     "series": "Know Your Equipment",
     "series_slug": "Know%20Your%20Equipment",
     "epno": "Episode 31",
-    "guest": "",
+    "guest": "Aninder Singh",
     "guest_role": "",
     "published": "2025-01-05",
     "published_label": "5 January 2025",
@@ -7386,7 +7388,8 @@
     ],
     "_transcript_source": "Spotify's own auto-generated transcript, pulled from the podcast:transcript tag in the RSS feed and converted from SRT. Spotify carries no speaker diarisation, so this page has no per line speaker attribution. Machine transcription, so vocabulary can drift.",
     "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
-    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages."
+    "_chapters_source": "Chapter titles written from the transcript at that point and marked ** review. EVERY timestamp is real: it is the start of a cue in the transcript, taken from the host's own questions rather than by matching a topic phrase, which was tried and placed most topics on unrelated passages.",
+    "_guest_source": "the host, named by the user. These are solo episodes with no guest: confirmed by reading them, one speaker throughout."
   },
   {
     "slug": "art-of-flight-in-norwegian-skies",
@@ -7928,9 +7931,9 @@
     "series": "Resources, Tools and Tips",
     "series_slug": "Resources%2C%20Tools%20and%20Tips",
     "epno": "Episode 48",
-    "guest": "",
+    "guest": "Aninder Singh",
     "guest_role": "",
-    "_guest_source": "",
+    "_guest_source": "the host, named by the user. These are solo episodes with no guest: confirmed by reading them, one speaker throughout.",
     "published": "2025-07-14",
     "published_label": "14 July 2025",
     "duration_label": "16 min",
@@ -7976,9 +7979,9 @@
     "series": "Resources, Tools and Tips",
     "series_slug": "Resources%2C%20Tools%20and%20Tips",
     "epno": "Episode 46",
-    "guest": "",
+    "guest": "Aninder Singh",
     "guest_role": "",
-    "_guest_source": "",
+    "_guest_source": "the host, named by the user. These are solo episodes with no guest: confirmed by reading them, one speaker throughout.",
     "published": "2025-07-07",
     "published_label": "7 July 2025",
     "duration_label": "20 min",
