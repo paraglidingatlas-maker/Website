@@ -270,10 +270,20 @@
     const s1 = baseScale * FLY_ZOOM;
 
     function settle() {
-      /* Keep d3.zoom's own transform in step, or the next wheel event would
-         snap back to wherever it thinks the scale is. */
-      svg.call(zoom.transform, d3.zoomIdentity.scale(FLY_ZOOM));
+      /* The popup FIRST. Syncing d3.zoom's transform is housekeeping for the
+         next wheel event; opening the popup is the entire point of the journey.
+         Had these been the other way round, any failure in the zoom sync would
+         have thrown before the popup appeared, and the visitor would have
+         watched the globe fly somewhere and then show them nothing. */
       showPopup(d);
+      try {
+        /* Keep d3.zoom's own transform in step, or the next wheel event would
+           snap back to wherever it thinks the scale is. */
+        svg.call(zoom.transform, d3.zoomIdentity.scale(FLY_ZOOM));
+      } catch (e) {
+        /* Worst case the next wheel event jumps once. Not worth losing the
+           popup over. */
+      }
     }
 
     if (!animate) {
