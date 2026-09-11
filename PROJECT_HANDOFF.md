@@ -1986,3 +1986,54 @@ engine decides two mentions are one person. Two spellings halve the evidence for
 each. It is not a bug and it was the user's explicit call, so **leave it**. If
 he ever asks why one guest looks like two, this is the reason, and the fix is to
 pick one spelling per person rather than per title.
+
+## 32. CHAPTERS RAIL AND TRANSCRIPT SECTION REMOVED FROM 13 NON-CONVERSATIONS
+
+The 8 competition highlight reels, the 4 Oslo and Norway cinematics and the show
+trailer no longer render a Chapters rail or a Full Transcript section. They have
+nothing to transcribe, so both were furniture advertising an absence: an empty
+rail reading "No transcript for this episode yet" and a heading over a
+placeholder line.
+
+**Driven by data, not a slug list.** `transcript_expected: false` on those 13 in
+`episode-meta.json`, with `_transcript_expected_source` recording why. Default is
+TRUE, so a new episode behaves normally without anyone remembering this exists.
+`transcript_expected()`, `rail_block_html()` and `transcript_block_html()` in
+`generate_chapter_deck.py` do the work; the template now carries `{rail_block}`
+and `{transcript_block}` where the markup used to be hardcoded.
+
+**The grid needed a matching change.** `.cd-main` is
+`250px minmax(0,1fr) 290px`. Removing the rail without touching it left an empty
+250px first column, so the player sat 250px right of where it does on every other
+page. `.cd-main-norail` drops it to two columns, with a matching rule at the
+1150px breakpoint.
+
+### THE TWO THAT ARE DELIBERATELY NOT FLAGGED
+`ama-1` and `can-we-steer-a-round-reserve-parachute-urs-haari-answers` have no
+transcript either, and KEEP both sections. They are real conversations still
+waiting on Autotekst, so the "not produced yet" line is honest rather than
+decorative. **Do not flag them without asking.**
+
+### A NEAR MISS WORTH RECORDING
+**`A Note of Thanks` was very nearly flagged and must never be.** It reads like
+housekeeping and it was listed under "cinematics and housekeeping" in a summary
+written for the user, which is where the error entered: the underlying data
+output had correctly excluded it, the prose summary had not, and the user
+approved the prose. **It carries a real 1,289 word transcript and 3 chapters.**
+Flagging it would have silently deleted a transcript from a live page.
+
+Two lessons:
+1. **A grouping written for a human to read is not a data source.** Re-derive the
+   list from the data before acting on it, even when the user has just approved
+   the prose version. The user was approving what they were shown.
+2. `transcript_block_html()` now **raises** if a flagged episode has a VTT file or
+   chapters, so this specific mistake cannot be made silently again. Verified by
+   flagging `a-note-of-thanks` and watching the build refuse.
+
+187 pages, 91 checks, 0 FAIL, 9 warn. Verified after building: rail and
+transcript absent on exactly the 13, present on the other 80.
+
+### STILL PRESENT AND UNTOUCHED ON THOSE PAGES
+The "Mentioned in this episode" and "Related episodes" boxes render EMPTY on the
+reels, the same pattern the guest box had before section 30. Not raised with the
+user yet.

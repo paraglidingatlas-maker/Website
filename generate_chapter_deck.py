@@ -263,6 +263,56 @@ def render_rail(chapters):
     )
 
 
+def transcript_expected(meta):
+    """Whether this page should carry a Chapters rail and a Transcript section.
+
+    Default TRUE. An episode with no transcript yet still shows both, with a
+    "not produced yet" line, because one may arrive: AMA #1 and the Urs Haari
+    reserve question are both real conversations still waiting on Autotekst.
+
+    FALSE is set per episode in episode-meta.json on the 13 pages that are not
+    conversations at all: 8 competition highlight reels and 5 Oslo and Norway
+    cinematics plus the show trailer. There is nothing to transcribe, so an
+    empty Chapters rail and a "no transcript" line were furniture advertising an
+    absence. User's instruction, 2026-09-11.
+
+    Note "A Note of Thanks" is deliberately NOT in that set. It looks like
+    housekeeping but carries a real 1,289 word transcript and 3 chapters.
+    """
+    return meta.get("transcript_expected", True) is not False
+
+
+def rail_block_html(meta, chapters):
+    """The sticky Chapters rail, or nothing."""
+    if not transcript_expected(meta):
+        return ""
+    return ('    <aside class="cd-rail" aria-label="Episode chapters">\n'
+            '      <p class="cd-rail-title">Chapters</p>\n'
+            '%s\n'
+            '    </aside>\n' % render_rail(chapters))
+
+
+def transcript_block_html(meta, transcript_html):
+    """The Full Transcript heading and body, or nothing.
+
+    Guarded: if an episode is flagged as having no transcript expected but a
+    VTT actually exists for it, that is a data mistake and dropping the section
+    would hide real content, so the build stops instead. This guard exists
+    because "A Note of Thanks" was nearly flagged by mistake and it holds 1,289
+    words.
+    """
+    if not transcript_expected(meta):
+        vtt = os.path.join(ROOT, "transcripts", "%s.vtt" % meta.get("slug", ""))
+        if os.path.exists(vtt) or (meta.get("chapters") or []):
+            raise SystemExit(
+                "transcript_block_html: %s is flagged transcript_expected=false "
+                "but has a transcript file or chapters. Dropping the section "
+                "would hide real content. Remove the flag." % meta.get("slug", "?"))
+        return ""
+    return ('      <p class="cd-sec-head">Full Transcript</p>\n'
+            '%s\n' % transcript_html)
+
+
 def guest_box_html(meta):
     """The sidebar "The Guest" card, or nothing at all.
 
@@ -554,10 +604,14 @@ def build(meta, cues, chapters):
         og_image=esc(meta.get("artwork") or
                      ("https://i.ytimg.com/vi/%s/maxresdefault.jpg" % vid if vid
                       else "https://paraglidingatlas-maker.github.io/Website/assets/images/hero.jpg")),
-        rail=render_rail(chapters_with_content(paras, chapters)),
+        main_mod=("" if transcript_expected(meta) else " cd-main-norail"),
+        rail_block=rail_block_html(meta, chapters_with_content(paras, chapters)),
         summary=esc(meta.get("summary", "")),
-        transcript=wrap_transcript(render_transcript(paras, chapters_with_content(paras, chapters), meta.get("speakers", {})),
-                                   words, bool(paras), meta),
+        transcript_block=transcript_block_html(
+            meta,
+            wrap_transcript(render_transcript(paras, chapters_with_content(paras, chapters),
+                                              meta.get("speakers", {})),
+                            words, bool(paras), meta)),
         guest_box=guest_box_html(meta),
         resources=render_list(meta.get("resources", [])),
         related=render_list(meta.get("related", [])),

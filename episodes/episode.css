@@ -18,6 +18,10 @@
 
   /* MAIN GRID */
   .cd-main{display:grid;grid-template-columns:250px minmax(0,1fr) 290px;gap:clamp(1.5rem,3vw,2.5rem);padding-bottom:clamp(4rem,8vw,6rem);align-items:start;}
+  /* Competition reels and cinematics have no Chapters rail, because there is
+     nothing to transcribe. Without this the empty first column left the player
+     pushed 250px to the right of where it sits on every other episode page. */
+  .cd-main-norail{grid-template-columns:minmax(0,1fr) 290px;}
 
   /* CHAPTER RAIL */
   .cd-rail{position:sticky;top:1.5rem;}
@@ -90,6 +94,7 @@
 
   @media(max-width:1150px){
     .cd-main{grid-template-columns:220px minmax(0,1fr);}
+    .cd-main-norail{grid-template-columns:minmax(0,1fr);}
     .cd-side{grid-column:1/-1;position:static;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem;}
     .cd-box{margin-bottom:0;}
   }
