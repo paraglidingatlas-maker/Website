@@ -90,7 +90,13 @@
   .cd-link:last-child{border-bottom:none;}
   .cd-link:hover{color:var(--orange);}
   .cd-tags{display:flex;flex-wrap:wrap;gap:0.45rem;}
-  .cd-tag{border:1px solid rgba(255,117,23,0.25);color:var(--gray-light);font-size:0.7rem;padding:0.28rem 0.6rem;text-transform:uppercase;letter-spacing:0.04em;}
+  /* The outline means "this goes somewhere". A tag used by fewer than three
+     episodes has no page of its own and renders as a <span>, so it keeps the
+     type and the orange # but loses the box. Before this, a dead label was
+     dressed identically to a link. Padding is deliberately kept on both so the
+     two sit on the same baseline in the flex row. User's call, 2026-09-11. */
+  .cd-tag{color:var(--gray-light);font-size:0.7rem;padding:0.28rem 0.6rem;text-transform:uppercase;letter-spacing:0.04em;}
+  a.cd-tag{border:1px solid rgba(255,117,23,0.25);}
 
   @media(max-width:1150px){
     .cd-main{grid-template-columns:220px minmax(0,1fr);}

@@ -2114,3 +2114,25 @@ only when the user looked at the page. **A feature is rendered in more places
 than the obvious one. Grep the generator for every mention of the thing being
 removed before claiming it is gone**, rather than removing the block that first
 comes to mind.
+
+## 35. THE TAG OUTLINE NOW MEANS "THIS IS A LINK"
+
+`.cd-tag` carried `border:1px solid rgba(255,117,23,0.25)` regardless of whether
+the tag was an `<a>` or a `<span>`, so a dead label was dressed exactly like a
+link. The border moved to `a.cd-tag`. **379 tags keep the outline, 226 across 76
+pages lose it.**
+
+Both keep the padding on purpose, so linked and unlinked tags sit on the same
+baseline in the flex row rather than the plain ones riding 1px higher. Both keep
+the orange `#` from `tags.css`, which still reads as "this is a topic" without
+promising a destination. The user asked for the outline only; the `#` was not
+raised.
+
+**No markup changed, only `episodes/episode.css`.** Which tags are links was
+already correct: `render_tags()` emits an `<a>` only for tags in `PAGED_TAGS`,
+the ones used by 3 or more episodes, and a `<span>` otherwise. See section 25 for
+why the threshold is 3. This was purely a case of the styling not reflecting a
+distinction the markup already made.
+
+Worth keeping in mind for anything similar: `a.cd-tag` is scoped by class, so the
+`css-scope` audit check still passes. A bare `a{...}` would not.
