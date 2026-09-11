@@ -32,7 +32,8 @@ NAV_FOOTER = """
       <h2>Links</h2>
       <a href="../knowledge-base.html">Knowledge Base</a>
       <a href="../safety-and-disclosure.html">Safety &amp; Disclosure</a>
-      <a href="#">Mission Statement</a>
+      <a href="../corrections.html">Corrections</a>
+      <a href="../mission.html">Mission Statement</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -94,6 +95,7 @@ NAV_HEADER = """<!DOCTYPE html>
     <span class="nav-sep">|</span>
     <a href="../knowledge-base.html">Knowledge Base</a>
       <a href="../safety-and-disclosure.html">Safety &amp; Disclosure</a>
+      <a href="../corrections.html">Corrections</a>
     <span class="nav-sep">|</span>
     <a href="../podcast.html">Podcast</a>
   </div>
@@ -183,7 +185,8 @@ def category_page(slug, title, intro, series_list):
     </a>"""
     body = f"""<header class="cat-hero">
   <p class="breadcrumb"><a href="../knowledge-base.html">Knowledge Base</a>
-      <a href="../safety-and-disclosure.html">Safety &amp; Disclosure</a> / {title}</p>
+      <a href="../safety-and-disclosure.html">Safety &amp; Disclosure</a>
+      <a href="../corrections.html">Corrections</a> / {title}</p>
   <h1>{title}</h1>
   <p>{intro}</p>
 </header>
@@ -217,7 +220,8 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
 
     body = f"""<header class="cat-hero">
   <p class="breadcrumb"><a href="../knowledge-base.html">Knowledge Base</a>
-      <a href="../safety-and-disclosure.html">Safety &amp; Disclosure</a> / <a href="{category_slug}.html">{category_title}</a> / {title}</p>
+      <a href="../safety-and-disclosure.html">Safety &amp; Disclosure</a>
+      <a href="../corrections.html">Corrections</a> / <a href="{category_slug}.html">{category_title}</a> / {title}</p>
   <h1>{title}</h1>
   <p>{intro}</p>
   <div class="point-row">{point_html}</div>

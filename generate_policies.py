@@ -66,6 +66,7 @@ HEAD = """<!DOCTYPE html>
     <span class="nav-sep">|</span>
     <a href="knowledge-base.html">Knowledge Base</a>
       <a href="safety-and-disclosure.html">Safety &amp; Disclosure</a>
+      <a href="corrections.html">Corrections</a>
     <span class="nav-sep">|</span>
     <a href="podcast.html">Podcast</a>
     <span class="nav-sep">|</span>
@@ -114,7 +115,8 @@ HEAD = """<!DOCTYPE html>
       <h2>Links</h2>
       <a href="knowledge-base.html">Knowledge Base</a>
       <a href="safety-and-disclosure.html">Safety &amp; Disclosure</a>
-      <a href="#">Mission Statement</a>
+      <a href="corrections.html">Corrections</a>
+      <a href="mission.html">Mission Statement</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -347,6 +349,70 @@ COOKIES = """
 </div>
 """
 
+MISSION = """
+<p class="pol-lede">Touch the Sky With Glory is not a tagline we workshopped. It is the motto of the Indian Air Force, and it is older than that by a very long way.</p>
+
+<h2 id="origin">Where it comes from</h2>
+<p>The line is taken from the eleventh chapter of the Bhagavad Gita, the discourse given by Lord Krishna to Arjuna on the battlefield of Kurukshetra during the great war of the Mahabharata. Krishna is showing Arjuna his supreme divine form, and that form reaches the sky with glory, overwhelming Arjuna and emptying him of self-control.</p>
+<blockquote class="pol-verse" lang="sa">
+  <p>नभ:स्पृशं दीप्तमनेकवर्णं व्यात्ताननं दीप्तविशालनेत्रम् ।</p>
+  <p>दृष्ट्वा हि त्वां प्रव्यथितान्तरात्मा धृतिं न विन्दामि शमं च विष्णो ।।</p>
+</blockquote>
+<p class="pol-verse-en">Lord, seeing your form touching the sky with glory, effulgent, multi-coloured, its mouth wide open and possessing large flaming eyes, I, with my innermost self frightened, have lost self-control and find no peace.</p>
+<p>The Indian Air Force took the phrase to describe overwhelming an adversary through the application of air power. We took it for a quieter reason, and we want to be clear that we claim no affiliation with them.</p>
+
+<h2 id="why">Why we fly under it</h2>
+<p>Anyone who has climbed out of a valley in strong lift and looked down at the ground falling away knows the feeling the verse is describing. Not triumph. Something closer to being frightened and unable to look away. Paragliding is one of the few things left that puts an ordinary person in that position, with nothing between them and the sky but a wing they packed themselves.</p>
+<p>That is what the name is for. Not conquering anything. Being small in a very large place, on purpose, and coming home changed by it.</p>
+
+<h2 id="stand">What we are trying to build</h2>
+<p>Two things, and they hold each other up.</p>
+<p><strong>A record of the sport in the words of the people making it.</strong> Ninety three conversations with designers, test pilots, instructors, record holders and the people who write the rules, published in full with transcripts so anyone can read them, search them and quote them accurately. Free, without a paywall, and without a login.</p>
+<p><strong>Trips for pilots who want to fly somewhere that asks something of them.</strong> Small groups, flown by people who know the sites, with the difficult parts described honestly before anyone books rather than discovered on arrival.</p>
+
+<h2 id="honest">The part most brands leave out</h2>
+<p>Paragliding kills people. Not often, and not randomly, but it does, and a media brand that talks only about the good days is lying by omission. So we publish the uncomfortable conversations too: the accident analyses, the arguments about certification, the people saying the sport is getting less safe and explaining why they think so.</p>
+<p>If you want to know what we actually believe, it is this. Better information makes better pilots, better pilots come home, and that matters more than whether an episode is comfortable to listen to.</p>
+
+<div class="pol-contact">
+  <h3>Say hello</h3>
+  <p>Email <a href="mailto:aninder@paraglidingatlas.com">aninder@paraglidingatlas.com</a>, or start with the <a href="library.html">episode library</a>. Ninety three conversations is a lot of ground; the <a href="knowledge-base.html">knowledge base</a> sorts them by subject.</p>
+</div>
+"""
+
+CORRECTIONS = """
+<div class="pol-note">
+<p><strong>Spotted something out of date? Tell us and we will look at it within 48 hours.</strong></p>
+<p><a href="https://t7nlvycupqd.typeform.com/to/UKRWFIo8" target="_blank" rel="noopener">Report it here</a></p>
+</div>
+
+<h2 id="why">Why this page exists</h2>
+<p>We cover gear reviews, safety notes, site regulations and technology deep dives, and this sport moves fast. What was true last season may already be shifting: the tech inside the wings, what the market is doing, what the regulations say.</p>
+<p>We are a small team running on passion and a certain amount of adrenaline. We work to keep things current and we do not catch every update in real time. You often will, because you are flying the thing we were talking about.</p>
+
+<h2 id="what">What is worth reporting</h2>
+<ul>
+  <li>A regulation or airspace rule that has changed since we recorded</li>
+  <li>Gear that has been superseded, recalled, recertified or discontinued</li>
+  <li>A site that has closed, changed hands or changed its access rules</li>
+  <li>A technical claim you believe is wrong, including one a guest made</li>
+  <li>A name, title or affiliation we have got wrong</li>
+</ul>
+<p>You do not need to be certain. A reasonable doubt is worth sending, and we would rather check ten things and change two than leave one wrong thing sitting there being read.</p>
+
+<h2 id="how">What we do with it</h2>
+<p>We review every report within 48 hours. If something needs changing we change it, and where the correction is material we say on the page what changed and when, rather than quietly editing and hoping nobody noticed.</p>
+<p>Transcripts are a separate case. We do not alter what a guest actually said, because the transcript is a record. Where a guest said something that later turned out to be wrong or has since changed, we note it around the transcript instead of editing their words.</p>
+
+<h2 id="credit">Credit</h2>
+<p>If you would like to be credited for a correction, say so and we will name you. If you would rather not, we will not. Neither affects how seriously we take it.</p>
+
+<div class="pol-contact">
+  <h3>Prefer email?</h3>
+  <p>The form is faster for us to track, but <a href="mailto:aninder@paraglidingatlas.com">aninder@paraglidingatlas.com</a> reaches the same person. See also our <a href="safety-and-disclosure.html">safety information and disclosures</a>.</p>
+</div>
+"""
+
 SAFETY = """
 <div class="pol-note">
 <p><strong>Nothing on this site or in the podcast is a substitute for training.</strong> Everything here is educational. If you are deciding whether to do something in the air, the people to ask are your instructor and your national association, not a podcast.</p>
@@ -463,6 +529,10 @@ PAGES = [
      "What Paragliding Atlas collects, why, how long we keep it, and your rights under the GDPR. This site has no analytics and no tracking.", PRIVACY),
     ("participant-agreement.html", "Participant Agreement", "Before You Fly",
      "The form every participant completes before a Paragliding Atlas trip: risk acknowledgement, licence and experience, equipment, insurance, health and emergency contact.", AGREEMENT),
+    ("mission.html", "Touch the Sky With Glory", "What We Are For",
+     "Where our name comes from, what we are trying to build, and the part most brands leave out. Paragliding Atlas is a podcast, a knowledge base and a small set of trips.", MISSION),
+    ("corrections.html", "Corrections", "Keep Us Honest",
+     "Spotted something out of date in an episode or article? Tell us and we will review it within 48 hours. What we correct, how, and why transcripts are treated differently.", CORRECTIONS),
     ("safety-and-disclosure.html", "Safety Information &amp; Disclosure Statements", "Safety &amp; Disclosure",
      "Paragliding carries inherent risk and nothing in our podcast replaces training. Our safety position, affiliate and sponsorship disclosures, and review policy.", SAFETY),
     ("cookie-policy.html", "Cookie Policy", "Cookies",
