@@ -1330,6 +1330,31 @@ Oslo cinematics are unlinked; 67 episode titles are longer than a search result
 shows; 13 YouTube-only videos have no publish date because they are not in the
 podcast feed; one unused favicon source file; one 402 KB image.
 
+## 24. THE DRIVE FOLDER THE USER POINTED AT HAD MOST OF WHAT WAS "MISSING"
+Folder `1y9QWZa6gZ3SBOT20zqqFTxFWomnUtJ41` holds the Kenya tour's real FAQ,
+Cancellation, Insurance, Requirements and packing list, Payment terms, and the
+"A Flight of Human Genesis" marketing copy. A separate doc holds the Safety
+Information and Disclosure Statements. **Check Drive before concluding content
+does not exist.** Several items sat on the "needs the user" list for this whole
+project while the answers were already written.
+
+**A correction that matters.** The terms briefly carried INVENTED commercial
+defaults: 25 per cent deposit, balance at 60 days, a 90/60/30 sliding refund
+scale. The real policy is deposit with registration, **balance 120 days before
+departure, and NO refunds at all**, including where the tour misses its flight
+objectives and including pilots who leave early. Wrong, binding terms were live
+for part of a day. Filling a commercial gap with a sensible-looking guess is not
+a neutral act, and the lesson is to leave the gap visible instead.
+
+**The legal tension is now question 1 in LEGAL-REVIEW.md.** A blanket no-refund
+term sits badly against the Package Travel Act, which gives a right to terminate
+against a *reasonable* fee and to terminate free of charge for unavoidable and
+extraordinary circumstances. The page states the policy then says statutory
+rights cannot be contracted away. Both are true and they are in visible tension,
+which is a lawyer's question, not a writer's.
+
+**Still not read: the `Unpublished` subfolder** inside that Drive folder.
+
 ## DONE (do not redo)
 - **Nine truncated titles, recovered properly (eighth update).** They now live in
   `episode-titles.json`, verbatim from the RSS feed and **keyed by YouTube video

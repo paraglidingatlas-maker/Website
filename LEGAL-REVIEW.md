@@ -47,11 +47,12 @@ under Directive (EU) 2015/2302 and the Norwegian Package Travel Act, but does
 NOT claim the business holds insolvency protection, because that was unconfirmed
 at the time of writing. See question 1 below.
 
-**4. Commercial terms are defaults, not instructions from the client.** 25 per
-cent deposit, balance at 60 days, and a 90/60/30 day cancellation scale. These
-are the standard shape for small group adventure operators and were inserted so
-the document is complete and usable. **They are live and binding on new bookings
-from the date of publication.** The operator should confirm or overrule them.
+**4. Commercial terms are now the operator's own, not defaults.** An earlier
+draft carried invented defaults (25 per cent deposit, balance at 60 days, a
+90/60/30 sliding scale). Those were wrong and have been replaced from the
+operator's own documents: deposit with registration, full balance 120 days
+before departure, and NO refunds on deposit or balance, including where the tour
+does not meet its flight objectives and including participants who leave early.
 
 **5. Privacy and cookie notices were rewritten against the code, not the drafts.**
 The supplied drafts described Klarna, GoDaddy, Cookiebot, Google Analytics 4 and
@@ -65,7 +66,20 @@ unpkg, and the operator's own Cloudflare Worker.
 
 ## The six questions worth paying for
 
-**1. Is this a package, and is insolvency protection in place?**
+**1. Does a blanket no-refund policy survive the Package Travel Act?**
+This is now the sharpest question on the page. The operator's policy is no
+refunds at all. The Package Travel Act gives a consumer the right to terminate
+before departure against a **reasonable and justifiable** termination fee, and to
+terminate **free of charge** where unavoidable and extraordinary circumstances at
+the destination significantly affect the trip. A term removing both is likely
+unenforceable against an EEA consumer, and an unenforceable term is worse than a
+softer one because it invites a dispute the operator would lose. The page
+currently states the policy and then says statutory rights cannot be contracted
+away, which is honest but leaves the two in visible tension. Ask what a
+defensible termination fee scale would look like for a trip of this cost and
+lead time, given the permits and local arrangements committed 120 days out.
+
+**2. Is this a package, and is insolvency protection in place?**
 The trips are guided, multi day, and may be sold with accommodation and transfers.
 If they are packages under the Package Travel Act, Norwegian law requires
 insolvency protection, in practice registration with Reisegarantifondet, and the
@@ -73,14 +87,14 @@ standard information form must be given to the customer before booking. This is
 the only item in this brief with a regulatory consequence for trading, and it
 should be answered first.
 
-**2. Are the cancellation charges enforceable as drafted?**
+**3. Are the payment deadlines enforceable as drafted?**
 Under Norwegian and EU consumer law a cancellation charge must reflect a genuine
 estimate of the cost the operator cannot recover, not act as a penalty. Does the
 90/60/30 scale survive that test for a trip of this cost and lead time, and is
 the "we will refund what we recover if we resell your place" clause enough to
 support it?
 
-**3. Does the risk framing hold up if it is ever tested?**
+**4. Does the risk framing hold up if it is ever tested?**
 Assumption of inherent risk is the mechanism used throughout. Is it drafted
 strongly enough to be meaningful, while staying clearly on the right side of the
 prohibition on excluding liability for personal injury caused by negligence?
@@ -123,4 +137,4 @@ excluded outright, which would simplify several clauses?
 ---
 
 *Prepared alongside the drafting of the four documents. Last updated with the
-site at commit `fe62bf2`.*
+site at commit `2444a6f` and later.*
