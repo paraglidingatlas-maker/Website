@@ -101,7 +101,7 @@ HEAD = """<!DOCTYPE html>
       <h2>Enquiries</h2>
       <a href="enquire.html">General</a>
       <a href="index.html#destinations">Trips</a>
-      <a href="#">FAQs</a>
+      <a href="safety-and-disclosure.html">Safety &amp; Disclosure</a>
     </div>
     <div class="footer-col">
       <h2>Quick Links</h2>
@@ -146,11 +146,12 @@ TERMS = """
 <p>A booking is made when we confirm your place in writing and you have paid the deposit. That confirmation, together with these terms and the trip description on this site, forms the contract between us.</p>
 <p>Unless your trip page or confirmation says otherwise:</p>
 <ul>
-  <li>A deposit of <strong>25 per cent</strong> of the trip price secures your place.</li>
-  <li>The <strong>balance is due 60 days</strong> before departure.</li>
-  <li>Bookings made inside 60 days of departure are payable in full at the time of booking.</li>
+  <li>A <strong>deposit is due with your registration materials</strong> and secures your place.</li>
+  <li>The <strong>full balance is due 120 days before departure</strong>.</li>
+  <li>If the balance has not reached us by that 120 day deadline, you risk forfeiting your funds and your place on the tour.</li>
 </ul>
-<p>If the balance is not received by the due date we may treat the booking as cancelled by you, and the cancellation charges in section 5 apply.</p>
+<p>You may pay by any lawful means. If you send money by electronic bank transfer you are responsible for the transfer fees, so that we receive the full amount shown on your invoice, in the currency shown on your invoice.</p>
+
 <p>Please check your confirmation carefully as soon as you receive it and tell us straight away if anything is wrong, particularly the spelling of names, which must match your passport.</p>
 
 <h2 id="price">4. What the price includes</h2>
@@ -158,17 +159,16 @@ TERMS = """
 <p>We may increase the price after booking only for the reasons the Package Travel Act allows, such as changes to fuel costs, taxes or exchange rates, and never in the twenty days before departure. If an increase exceeds eight per cent of the trip price you may accept it, accept a substitute trip if we offer one, or cancel and receive a full refund. If the same costs fall, you are entitled to a corresponding reduction.</p>
 
 <h2 id="cancel-you">5. If you change or cancel</h2>
-<p>Tell us in writing as soon as you know. Cancellation charges apply from the date we receive your notice. They exist because we commit to guides, accommodation, permits and transport well in advance and cannot recover those costs late in the day.</p>
-<div class="pol-tablewrap">
-<table>
-<tr><th>Notice we receive before departure</th><th>Charge</th></tr>
-<tr><td>More than 90 days</td><td>Deposit only</td></tr>
-<tr><td>60 to 89 days</td><td>50 per cent of the trip price</td></tr>
-<tr><td>30 to 59 days</td><td>75 per cent of the trip price</td></tr>
-<tr><td>Fewer than 30 days, or no show</td><td>100 per cent of the trip price</td></tr>
-</table>
+<p>Tell us in writing as soon as you know.</p>
+<div class="pol-note">
+<p><strong>Our trips operate on a no refund basis.</strong> Deposits and balance payments are not refunded. That is a stringent policy and we would rather you met it here than in an email, because the permits, logistics and local arrangements behind a trip are committed and paid for long before you arrive.</p>
 </div>
-<p>If we are able to resell your place we will refund what we recover, less an administration fee. This is why we ask you to hold cancellation insurance: a policy that covers you for illness, injury or a change in circumstances will normally meet these charges where we cannot.</p>
+<p>Specifically, no refund is due where a tour ends without reaching or making progress towards a flight objective, for example a planned cross country goal or a summit flight, because of weather, route or airspace conditions, insufficient manpower or logistics, or any other factor outside our control. Participants who choose to leave an active tour for any reason are not entitled to a refund either.</p>
+<p>The expedition leader has the final say on when a tour concludes, and will make every effort towards the objectives within our margin of safety.</p>
+<p><strong>This is why we ask you to hold trip cancellation insurance.</strong> A policy covering illness, injury or a change in your circumstances will normally meet what we cannot, and for a trip of this cost it is the difference between a bad month and a lost year.</p>
+<div class="pol-note">
+<p><strong>Your statutory rights are not affected by the paragraphs above.</strong> Where your booking is a package under the Package Travel Act, you keep the right to terminate the contract before departure against a reasonable and justifiable termination fee, and the right to terminate without any fee where unavoidable and extraordinary circumstances at the destination significantly affect the trip. Those rights exist by law and we cannot contract out of them, whatever this page says.</p>
+</div>
 <p>You may transfer your booking to another person who meets the pilot requirements in section 7, provided you tell us with reasonable notice and pay any costs the transfer causes.</p>
 <div class="pol-note">
 <p><strong>There is no fourteen day cooling off period.</strong> Under Article 16(l) of the Consumer Rights Directive, the right of withdrawal that normally applies to distance contracts does not apply to leisure services provided on a specific date. This is normal for guided trips and it is why insurance matters.</p>
@@ -339,6 +339,59 @@ COOKIES = """
 </div>
 """
 
+SAFETY = """
+<div class="pol-note">
+<p><strong>Nothing on this site or in the podcast is a substitute for training.</strong> Everything here is educational. If you are deciding whether to do something in the air, the people to ask are your instructor and your national association, not a podcast.</p>
+</div>
+
+<h2 id="danger">1. Is paragliding dangerous?</h2>
+<p>Paragliding carries inherent risks, as any aerial sport does. Following proper safety protocols, getting certified training and using appropriate equipment reduces those risks significantly. Our discussions are for informational purposes only and do not replace proper training.</p>
+
+<h2 id="techniques">2. Should I try the techniques discussed in the podcast?</h2>
+<p>Never attempt any technique discussed in the podcast without proper training and supervision from certified instructors. Everything shared is for educational purposes.</p>
+
+<h2 id="guidelines">3. Are your recommendations official safety guidelines?</h2>
+<p>No. We work hard to be accurate, but nothing here should be treated as official guidance. Always refer to your local paragliding association, certified instructors and equipment manufacturers.</p>
+
+<h2 id="liability">4. Do you accept liability for podcast information?</h2>
+<p>No. The information in our podcast is for entertainment and educational purposes. We do not accept liability for actions taken on the basis of podcast content. Seek professional instruction and follow your local regulations.</p>
+
+<h2 id="verify">5. How do I verify safety information?</h2>
+<p>Check anything that matters against:</p>
+<ul>
+  <li>Your certified paragliding instructor</li>
+  <li>Your local paragliding association</li>
+  <li>The equipment manufacturer</li>
+  <li>The official aviation authority in your region</li>
+</ul>
+
+<h2 id="affiliate">6. What are your affiliate relationships?</h2>
+<p>We may use affiliate links when recommending products or services, which means we could earn a commission if you buy through them, at no additional cost to you. All affiliate relationships are disclosed in the episode description.</p>
+
+<h2 id="sponsored">7. Do you accept sponsored content?</h2>
+<p>Yes, occasionally. Sponsored episodes or segments are clearly marked and disclosed at the start of the episode. We only partner with brands and products we believe in and that align with our values.</p>
+
+<h2 id="reviews">8. How do you handle product reviews?</h2>
+<p>When we review a product:</p>
+<ul>
+  <li>We state clearly if it was provided free</li>
+  <li>We keep editorial independence</li>
+  <li>We give honest, unbiased opinions</li>
+  <li>We disclose any relationship with the manufacturer</li>
+</ul>
+
+<h2 id="content">9. What is your content policy?</h2>
+<p>Our content is original, based on personal experience, expert interviews and research. We aim for accuracy, but the opinions expressed are our own and are not professional advice.</p>
+
+<h2 id="privacy">10. How do you handle listener privacy?</h2>
+<p>We respect listener privacy and follow the GDPR. Data collected through this site or our social platforms is handled according to our <a href="privacy-policy.html">Privacy Policy</a>. We do not share personal information with third parties without consent.</p>
+
+<div class="pol-contact">
+  <h3>Something here unclear?</h3>
+  <p>Email <a href="mailto:aninder@paraglidingatlas.com">aninder@paraglidingatlas.com</a>. If it is a question about your own flying, ask your instructor first; we would rather be second in that queue.</p>
+</div>
+"""
+
 AGREEMENT = """
 <div class="pol-note">
 <p>This is the form every participant completes before a trip. It is published here so you can read it in full before you book, rather than meeting it for the first time a week before departure.</p>
@@ -402,6 +455,8 @@ PAGES = [
      "What Paragliding Atlas collects, why, how long we keep it, and your rights under the GDPR. This site has no analytics and no tracking.", PRIVACY),
     ("participant-agreement.html", "Participant Agreement", "Before You Fly",
      "The form every participant completes before a Paragliding Atlas trip: risk acknowledgement, licence and experience, equipment, insurance, health and emergency contact.", AGREEMENT),
+    ("safety-and-disclosure.html", "Safety Information &amp; Disclosure Statements", "Safety &amp; Disclosure",
+     "Paragliding carries inherent risk and nothing in our podcast replaces training. Our safety position, affiliate and sponsorship disclosures, and review policy.", SAFETY),
     ("cookie-policy.html", "Cookie Policy", "Cookies",
      "This site sets no cookies of its own and shows no cookie banner. What that means, and what the few third party requests do.", COOKIES),
 ]
