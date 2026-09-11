@@ -2556,3 +2556,45 @@ An unscoped `.footer-tagline` is 0,1,0, so **the measured font size was being
 overridden too, not just the colour.** The tagline was rendering at 0.9rem and
 never spanned the logo at all. Scoping to `.footer-brand .footer-tagline` fixed
 both at once. See section 43.
+
+## 45. THE FOOTER TAGLINE LINKS TO mission.html
+
+The user asked for "Touch The Sky With Glory" in the footer to be clickable,
+pointing at the page that explains where the phrase comes from. Done on 183
+files. **Every page now carries TWO links to mission.html**, this one and
+"Mission Statement" in the About column. That is intentional.
+
+**Found by checking Drive first, per the rule at the top of this document.** The
+user asked whether a "passion page" existed. There is no such page and no such
+tag, but a Google Doc titled **"Passion"** (Nov 2024) holds the Bhagavad Gita
+origin of the motto, and **that content is already published as mission.html**,
+which goes further than the doc does. Nothing needed writing. **Ten seconds of
+searching Drive replaced an hour of writing a page that already existed.**
+
+### The CSS is scoped for two specific reasons, do not simplify it
+`.footer-brand` also carries the class `footer-col`, so the generic
+`.footer-col a` rules apply to this anchor:
+- `.footer-col a{font-size:0.9rem}` would have silently resized the tagline and
+  **broken the measured end-to-end alignment with the logo.** `font:inherit`
+  prevents it.
+- `.footer-col a:hover{transform:translateX(3px)}` would have shunted the
+  tagline 3px out of line with the logo on every mouseover. `transform:none`
+  cancels it.
+
+Hover goes to `var(--white)`, which is the only state change.
+
+### ON SEO AND ANSWER ENGINES, WHICH THE USER ASKED ABOUT
+Net positive and small. Worth recording so it is not re-litigated:
+- An extra internal link helps `mission.html` get crawled and understood. It was
+  previously reachable only from the footer's About column.
+- The anchor text is the brand tagline pointing at the page that defines it,
+  which is exactly the association an answer engine needs to connect the phrase
+  to the organisation.
+- **Two links to one page from one page is not a penalty.** Search engines have
+  handled repeated internal links for decades; historically only the first
+  link's anchor text carries weight, so the worst case is that this one is
+  ignored, not that it costs anything.
+- Footer link count goes from 24 to 25. Irrelevant at that scale.
+- Accessibility: two links to one destination with different visible text. Both
+  names are descriptive, `links with no accessible text` still returns 0, and a
+  screen reader user gets two sensible routes rather than a mystery.
