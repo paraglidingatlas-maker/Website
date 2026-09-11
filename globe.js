@@ -239,7 +239,12 @@
      place the popup correctly. */
 
   const FLY_MS = 1900;        /* long enough to read as travel, short enough to sit through */
-  const FLY_ZOOM = 2.4;       /* within the wheel zoom's own 1 to 40 range */
+  const FLY_ZOOM = 3.2;       /* within the wheel zoom's own 1 to 40 range.
+                                 Raised from 2.4 so the pin arrives closer. This
+                                 is the only knob: the sphere radius and the
+                                 projection scale both follow it, and the popup
+                                 sits at the centre of the container whatever it
+                                 is set to, so it can be changed on its own. */
 
   function pinSlugFromHash() {
     const m = /^#pin=(.+)$/.exec(location.hash || '');
