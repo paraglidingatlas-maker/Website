@@ -34,6 +34,9 @@ import os
 import re
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import site_config as cfg
+
 ROOT = os.path.dirname(os.path.abspath(__file__))
 TX = os.path.join(ROOT, "transcripts")
 OUT = os.path.join(ROOT, "episodes")
@@ -288,9 +291,14 @@ def guest_box_html(meta):
                 "a name, or clear the links." % meta.get("slug", "?"))
         return ""
 
+    # The user credited himself on the five solo episodes, where "The Guest" is
+    # simply wrong. Compared against site_config.FOUNDER rather than a literal
+    # string here, so the two can never drift apart. User's call, 2026-09-11.
+    heading = "The Host" if name == cfg.FOUNDER else "The Guest"
+
     return (
         '      <div class="cd-box">\n'
-        '        <h2>The Guest</h2>\n'
+        '        <h2>%s</h2>\n'
         '        <div class="cd-guest-row">\n'
         '          <div>\n'
         '            <p class="cd-guest-name">%s</p>\n'
@@ -298,7 +306,7 @@ def guest_box_html(meta):
         '          </div>\n'
         '        </div>\n'
         '%s\n'
-        '      </div>\n' % (esc(name), esc(role), render_list(links))
+        '      </div>\n' % (heading, esc(name), esc(role), render_list(links))
     )
 
 
