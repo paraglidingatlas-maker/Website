@@ -1299,6 +1299,37 @@ because the filtered lines are bare URLs. And a link checker must resolve
 `/Website/...` against the repo root, since the site is served from that path;
 otherwise every absolute link on 404.html looks broken.
 
+## 23. RUN `python3 tools/audit.py --drift` BEFORE EVERY PUSH. IT REPLACES THE
+## MANUAL AUDITS.
+Four hand-run audits each found a category the previous one had not thought of.
+Relying on remembering to look was the actual bug. **80 checks now run from one
+command**, and every one of them is a fault class that already bit this project.
+
+`python3 tools/audit.py` report, `--quiet` failures only, `--drift` also verifies
+generated files are in sync. Non-zero exit on any FAIL, so it can gate a push.
+
+**`--drift` is the most valuable flag.** It regenerates everything and fails if a
+generated file changes, which catches somebody editing generated HTML by hand.
+That exact mistake silently reverted work THREE times in one session, including
+all 17 knowledge-base pages losing their canonical and JSON-LD.
+
+**When the audit reports something, suspect the audit first.** On its first deep
+runs, five of the eight findings were faults in the checker, not the site:
+a redirect stub legitimately canonicalises to its destination; title comparison
+tripped over an emoji surrogate pair and over a bracketed suffix the generators
+strip by design; the drift check flagged any uncommitted file including itself;
+and `.left` and `.right` on podcast.html are JavaScript hooks with no CSS, which
+is correct. **A check that cries wolf is worse than no check, because it teaches
+people to skip it.** Fix the tool, never edit the data to silence it.
+
+**The 11 remaining warnings are all known and mostly need the user**, so a clean
+run means 0 FAIL and roughly 11 warn, not 0 warn:
+FAQs/Passion/Mission Statement pages do not exist; two episodes have no honest
+description source; the homepage still says Placeholder for trip facts; four
+Oslo cinematics are unlinked; 67 episode titles are longer than a search result
+shows; 13 YouTube-only videos have no publish date because they are not in the
+podcast feed; one unused favicon source file; one 402 KB image.
+
 ## DONE (do not redo)
 - **Nine truncated titles, recovered properly (eighth update).** They now live in
   `episode-titles.json`, verbatim from the RSS feed and **keyed by YouTube video

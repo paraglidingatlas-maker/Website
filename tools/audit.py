@@ -570,11 +570,133 @@ def check_copy():
     (ok if not emg else fail)("copy", "em-dashes in globe pin labels: %s" % (emg[:3] or 0))
 
 
+# ------------------------------------------------------------------ css ----
+def check_css():
+    """Classes used in markup that no stylesheet defines.
+
+    Caught real bugs by hand several times: a page referencing a class that was
+    never written renders unstyled and nothing errors.
+    """
+    css = ""
+    for f in ("styles.css", "policies.css", "fonts.css", "episodes/episode.css"):
+        if os.path.exists(f):
+            css += read(f)
+    defined = set(re.findall(r"\.([a-zA-Z][\w-]*)", css))
+    # A class can be a JavaScript hook rather than a style hook. podcast.html uses
+    # .left and .right purely as carousel selectors, with no CSS at all, and
+    # flagging those as broken would be wrong.
+    jsrefs = set()
+    for f in [f for f in os.listdir(".") if f.endswith(".js")]:
+        jsrefs |= set(re.findall(r"""["'.]([a-zA-Z][\w-]{2,})["']""", read(f)))
+    defined |= jsrefs
+    missing = defaultdict(set)
+    for p in PAGES:
+        h = read(p)
+        page_css = " ".join(re.findall(r"<style>(.*?)</style>", h, re.S))
+        local = defined | set(re.findall(r"\.([a-zA-Z][\w-]*)", page_css))
+        for m in re.finditer(r'class="([^"]+)"', h):
+            for c in m.group(1).split():
+                if c not in local:
+                    missing[c].add(p)
+    if missing:
+        warn("css", "%d classes with no CSS rule and no JS reference: %s"
+             % (len(missing), {k: sorted(v)[0] for k, v in list(missing.items())[:4]}))
+    else:
+        ok("css", "every class used in markup is defined somewhere")
+
+
+def check_orphans():
+    """Pages nothing links to. A page nobody can reach may as well not exist."""
+    linked = set()
+    for p in PAGES + [f for f in os.listdir(".") if f.endswith(".js")]:
+        h = read(p)
+        base = os.path.dirname(p) if p in PAGES else ""
+        for u in re.findall(r'["\'(]([^"\'()\s]+\.html)', h):
+            if u.startswith("http"):
+                continue
+            t = resolve(p if p in PAGES else "index.html", u)
+            if t:
+                linked.add(t)
+        for slug in re.findall(r'page:\s*"([a-z0-9\-]+)"', h):
+            linked.add("episodes/%s.html" % slug)
+    roots = {"index.html", "404.html"}
+    orphans = sorted(p for p in PAGES if p not in linked and p not in roots
+                     and "noindex" not in read(p))
+    (ok if not orphans else warn)("orphans", "pages nothing links to: %s" % (orphans[:5] or 0))
+
+
+def check_lengths():
+    """Titles and descriptions that will be cut off in a search result."""
+    longt, shortd, longd = [], [], []
+    for p in PAGES:
+        h = read(p)
+        if "noindex" in h:
+            continue
+        m = re.search(r"<title>(.*?)</title>", h, re.S)
+        if m and len(m.group(1).strip()) > 70:
+            longt.append(p)
+        d = re.search(r'name="description" content="([^"]*)"', h)
+        if d and d.group(1).strip():
+            n = len(d.group(1))
+            if n < 70:
+                shortd.append(p)
+            if n > 165:
+                longd.append(p)
+    (ok if not longt else warn)("lengths", "%d titles over 70 chars, they truncate in results" % len(longt))
+    (ok if not shortd else warn)("lengths", "%d descriptions under 70 chars" % len(shortd))
+    (ok if not longd else warn)("lengths", "%d descriptions over 165 chars" % len(longd))
+
+
+def check_rail_parity():
+    """Every rail link must have a transcript block, and vice versa."""
+    bad = []
+    for e in META:
+        f = "episodes/%s.html" % e["slug"]
+        if not os.path.exists(f):
+            continue
+        h = read(f)
+        rail = len(re.findall(r'class="cd-chap[^"]*" href="#c(\d+)"', h))
+        blocks = len(re.findall(r'<div class="cd-block" id="c(\d+)"', h))
+        if rail != blocks:
+            bad.append((e["slug"], rail, blocks))
+    (ok if not bad else fail)("rail", "rail links and transcript blocks disagree: %s" % (bad[:3] or 0))
+
+
+def check_jsonld_fields():
+    """Structured data that parses but says nothing is not worth having."""
+    thin = []
+    for e in META:
+        f = "episodes/%s.html" % e["slug"]
+        if not os.path.exists(f):
+            continue
+        for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', read(f), re.S):
+            try:
+                d = json.loads(m.group(1))
+            except Exception:
+                continue
+            if d.get("@type") == "PodcastEpisode":
+                if not d.get("datePublished") or not d.get("description"):
+                    thin.append(e["slug"])
+    (ok if not thin else warn)("jsonld", "%d PodcastEpisode blocks missing date or description: %s"
+                               % (len(thin), thin[:3]))
+
+
+def check_robots():
+    if not os.path.exists("robots.txt"):
+        return
+    r = read("robots.txt")
+    want = "https://paraglidingatlas-maker.github.io" + BASE_PATH + "sitemap.xml"
+    (ok if want in r else fail)("crawler", "robots.txt does not point at the real sitemap URL")
+    (ok if "Disallow: /" not in r.replace("Disallow: /\n", "") else fail)("crawler", "robots.txt disallows crawling")
+
+
 def main():
     check_links(); check_headings(); check_seo(); check_crawler()
     check_a11y(); check_third_party(); check_data(); check_content()
     check_assets(); check_js()
     check_structure(); check_canonical_paths()
+    check_css(); check_orphans(); check_lengths()
+    check_rail_parity(); check_jsonld_fields(); check_robots()
     check_transcripts(); check_cross_data(); check_copy()
     if DRIFT:
         check_drift()
