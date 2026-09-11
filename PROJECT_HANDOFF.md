@@ -1521,3 +1521,144 @@ a `max-height`. This is deliberate and non-negotiable:
 - A `.no-js` class removes the clip entirely so text is never trapped.
 If anyone later "optimises" this into a lazy-loaded fetch, it will silently
 destroy the site's visibility to answer engines.
+
+## 27. SESSION OF 2026-09-11. READ THIS AND SECTION 26 BEFORE PICKING WORK.
+
+**State: 187 pages, 91 checks, 0 FAIL, 9 warn. Live and green.**
+The count went UP from 179 because eight redirect stubs were added. Nothing was
+removed. The nine warnings are unchanged from the list in section 23.
+
+### THE BIGGEST FINDING: paraglidingatlas.com IS ALREADY A LIVE, DIFFERENT SITE
+MIGRATION.md was written assuming an unpointed domain. It is not. The domain
+currently serves a complete separate website (Next.js shaped) with its own
+homepage, About, Knowledge Base, Podcast and a detailed `/atlas/kenya` trip
+page. Pointing the apex A records at GitHub Pages takes that site down the
+moment DNS propagates.
+
+**The user has confirmed the new site is meant to REPLACE it entirely**, but
+only after the build is finished, which was "a few days away" as of this
+session. Do not activate anything until they say DNS is pointed.
+
+Neither site ranks for the brand: a search returns only Podbean, Apple,
+Amazon, Castbox, Spotify for Creators and YouTube. So there is very little
+search equity to protect, which supports the move but should be confirmed in
+Search Console, which this sandbox cannot see.
+
+**Content already written on the OLD site that this one was "waiting on".**
+The Kenya page there carries real trip facts, confirmed current by the user:
+Kerio Valley, 12 days, IPPI 2 or equivalent, 1500m AGL, 2 to 7 hours airtime,
+self launch and outlanding required, December to March, three dated 2027
+departures. Those are now on the homepage. It also carries marketing copy for
+the Himalayas, Peru and Kazakhstan, but that copy is garbled in places, its
+twelve day itinerary is one placeholder line repeated, and a "2026 Season
+Packages" heading sits above 2027 dates. **Do not copy it across without the
+user resolving those.** `/trips`, `/faqs`, `/passion` and `/unsubscribe` on the
+old site either 404 or have no equivalent here.
+
+### TWO TRAPS THAT COST TIME THIS SESSION
+1. **NEVER symlink or commit `node_modules`.** A symlink was created so a jsdom
+   harness could resolve its dependency and swept in by `git add -A`. GitHub
+   Pages REJECTS symlinks pointing outside the repo, so two deploys errored
+   with a bare "Page build failed" while `main` looked perfectly correct and
+   the live site sat frozen on an older commit. This is lesson 15 arriving from
+   a new direction. `node_modules/` and `__pycache__/` are now in `.gitignore`.
+   Run harnesses with `NODE_PATH=/path/to/node_modules node tools/...`.
+   **`git add -A` is not safe in this repo while a dev dependency is present.**
+2. **Pages sometimes does not queue a build at all after a push.** It happened
+   once here: the commit was on origin, no build was ever created, and
+   `POST /repos/.../pages/builds` returns 403 because a fine grained Contents
+   token cannot trigger one. An empty commit is the only nudge available.
+   **Always read the build STATUS and its sha, never just assume a push built.**
+
+### AUDIT TOOL CHANGES. Both were fixing the checker, not the data.
+- **The drift check now hashes files before and after `build.sh`** instead of
+  reading `git status`. It was answering "is anything uncommitted", which is a
+  different question. `index.html`, `about.html`, `podcast.html`, `library.html`,
+  `enquire.html` and `404.html` are HAND MAINTAINED and only post-processed by
+  the schema injector, so legitimately editing one and auditing before
+  committing raised a FAIL every time. Verified in both directions: a hand edit
+  to a generated episode page still fails, an uncommitted edit to index.html no
+  longer does.
+- **The heading check now skips noindex redirect stubs.** They have no h1
+  because they have no content. The canonical and orphan checks already
+  exempted noindex pages; this makes the three consistent.
+
+### WHAT WAS BUILT
+- **Homepage scroller: 15 cards.** Every card previously pointed at the SAME
+  episode page (Honorin Hamard); only his own card was right. Nine hrefs fixed.
+  Ten episodes then added from the user's own Spotify for Creators figures.
+  Their list spelled a guest "Dr Matt Wikes"; the site correctly has "Wilkes"
+  and the site won.
+- **Library search focus bug, FIXED and this time actually executed.** `#q`
+  lives inside `#landing` and the first keystroke calls `show()`, which hides
+  it. A hidden input cannot hold focus, so the caret was dropped and the query
+  never got past one character. Adding a second box (previous session) was
+  necessary but not sufficient; nothing moved the caret. `keepCaret()` now does.
+  `tools/check_library_search.js` runs the real page in jsdom and types
+  character by character. **Two things its first draft got wrong are the lesson
+  25 failure mode exactly**: jsdom has no `matchMedia`, so the page threw on
+  load, no handlers attached, and every check passed against a dead page; and
+  results render into `#eps`, not `#grid`. It now fails loudly if the script
+  throws or the data never becomes visible, and was confirmed to FAIL with the
+  fix commented out.
+- **Sorting on all 50 topic pages.** Newest, Oldest, A to Z, Z to A.
+  **It REORDERS nodes already in the served HTML, it never renders the list.**
+  Same reasoning as the transcript clipping rule. The control is injected by
+  the script so with JS off there is no bar rather than dead buttons.
+  **No duration option, deliberately: `duration` is empty on all 93 entries.**
+  Dates exist on 80 of 93; the other 13 are YouTube-only and are grouped at the
+  end on date sorts with a visible note saying so. Sort keys come from the
+  generator as data attributes so the browser and the generator cannot drift.
+  `tools/check_tag_sort.js` verifies it, and the check that matters is that no
+  episode is ever dropped. **Two sabotage attempts did NOT trip that check and
+  it was the test being wrong, not the check: `appendChild` moves nodes, so
+  both skipping an item and detaching one silently put it back.**
+- **Eight redirect stubs** from old site URLs, generated by
+  `tools/generate_redirects.py`, wired into `build.sh` before the schema
+  injector. Directory indexes with noindex, canonical at the destination, and
+  an instant meta refresh. Not a 301: Pages serves static files and cannot
+  issue one. **NOT ACTIVATED, they simply sit ready.**
+- **Question mark placeholders.** Ten scroller cards and the eight audio-only
+  episode pages now show a generated "?" image rather than borrowing the hero
+  photo, which made unfinished pages look finished.
+- **LEGAL-REVIEW.md question on packages rewritten** with the statute
+  (pakkereiseloven of 15 June 2018, definition in section 6, Forbrukertilsynet
+  supervises; the superseded 1995 Act still surfaces first in searches), the
+  key point that **a package needs no transport at all**, and five facts listed
+  as UNCONFIRMED rather than assumed, including whether accommodation is even
+  in the price.
+- **Footer**: first tagline line removed, logo set to 12.86rem which is the
+  measured width of the Organisasjonsnummer line in DM Sans at 0.82rem computed
+  from the real woff2 advance widths, tagline centred on the logo, postcode
+  0864 added visibly and as `postalCode` in `site_config.ORG_ADDRESS`.
+
+### DECISIONS MADE, DO NOT REOPEN WITHOUT ASKING
+- **The hero particle field STAYS on 2D canvas.** The user said the old three.js
+  version looked better, then asked for the call to be made on the site's
+  behalf. Reverting means 654 KB of library to draw decorative dots and undoes
+  the work that removed every third party request from the homepage. Reversible
+  from git history if that judgement is ever overturned.
+- **Org number is 937116934**, confirmed by the user. The old live site's footer
+  shows 927118594; that one is wrong. Street address is "Olav Troviks Vei M 46";
+  the old site's "Drav Troviks Vei M 46" is wrong.
+- **Knowledge base series pages were deliberately NOT given sorting.** Their
+  episodes are numbered installments in meaningful order and carry no dates.
+- **0864 sits below "Oslo, Norway"** because the user asked for it that way.
+  Norwegian convention is "0864 Oslo" on one line. Flagged, not silently fixed.
+
+### DROPPED BY THE USER, DO NOT RE-RAISE
+The 62 published episode descriptions carrying four misspelled variants of the
+host's email (`paraglidlingatlas.com`, `paragidingatlas.com`,
+`paragidlingatlas.com`, and one prefixed with invisible U+2060 word joiners).
+It is feed side only, in Spotify for Creators, and the user said to forget it.
+Also dropped: the destination skill level meters.
+
+### STILL OPEN
+- Ten guest photos and artwork for eight audio-only episodes.
+- Trip facts for Himalayas, Peru, Kazakhstan. Nine "Placeholder" strings remain
+  in `index.html`; Kenya is filled.
+- The five unconfirmed facts in LEGAL-REVIEW.md question 2, which the user must
+  answer before a lawyer can act on it. **This is the only item with a
+  consequence for trading legally.**
+- The hero particle field has still never been executed in a harness. The
+  library search half of that work is done.
