@@ -31,6 +31,7 @@ ORG_NUMBER = "937116934"
 ORG_EMAIL = "aninder@paraglidingatlas.com"
 ORG_ADDRESS = {
     "streetAddress": "Olav Troviks Vei M 46",
+    "postalCode": "0864",
     "addressLocality": "Oslo",
     "addressCountry": "NO",
 }

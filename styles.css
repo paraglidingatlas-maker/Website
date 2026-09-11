@@ -486,7 +486,17 @@ img{max-width:100%;display:block;}
 .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;
   gap:clamp(1.8rem,4vw,3.5rem);margin-bottom:2.6rem;align-items:start;}
 .footer-brand{max-width:22rem;}
-.footer-brand .logo-img{margin-bottom:1.1rem;}
+/* Logo width is measured, not guessed. "Organisasjonsnummer: 937116934" renders
+   at 205.8px in DM Sans 400 at the .footer-addr size of 0.82rem, computed from
+   the actual woff2 advance widths rather than eyeballed. 12.86rem is that value,
+   in rem so the logo and the address line scale together if the root size
+   changes. The tagline shares the width and centres inside it, so it reads as
+   centred under the logo rather than under the whole column. */
+.footer-brand .logo-img{width:12.86rem;height:auto;margin-bottom:0.85rem;}
+.footer-tagline{
+  width:12.86rem;text-align:center;
+  color:var(--gray-light);font-size:0.9rem;line-height:1.75;margin:0 0 1.15rem;
+}
 .footer-brand p{color:var(--gray-light);font-size:0.9rem;line-height:1.75;margin:0 0 1rem;}
 .footer-addr{color:var(--gray);font-size:0.82rem;line-height:1.7;}
 
