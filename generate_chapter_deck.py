@@ -317,6 +317,53 @@ def wrap_transcript(html_body, words, has_transcript, meta=None):
     )
 
 
+BRAND_SUFFIX = " | Paragliding Atlas"
+TITLE_BUDGET = 70 - len(BRAND_SUFFIX)
+_DANGLING = {"with", "and", "the", "a", "an", "of", "for", "to", "in", "on", "from",
+             "how", "why", "what", "his", "her", "their", "its", "by", "at", "as", "or"}
+
+
+def seo_title(title):
+    """A short <title> for the search result. The h1 and og:title keep the full one.
+
+    Podcast titles are written for a feed, where length costs nothing. A search
+    result cuts at roughly 70 characters, so a 143 character title shows a
+    fragment and wastes the words that would have earned the click. Nothing is
+    invented here: whole colon-separated segments are kept while they fit, then
+    the remaining budget is filled with real words from the next segment.
+    """
+    t = re.sub(r"\s+", " ", title).strip().rstrip(" |")
+    if len(t) <= TITLE_BUDGET:
+        return t + BRAND_SUFFIX
+    segs = [x.strip() for x in re.split(r"\s*[::]\s*", t) if x.strip()]
+    out, used = "", 0
+    for i, seg in enumerate(segs):
+        cand = (out + ": " + seg) if out else seg
+        if len(cand) <= TITLE_BUDGET:
+            out, used = cand, i + 1
+        else:
+            break
+    if not out:
+        out = t[:TITLE_BUDGET].rsplit(" ", 1)[0]
+    else:
+        rest = " ".join(segs[used:])
+        if rest and TITLE_BUDGET - len(out) > 14:
+            room = TITLE_BUDGET - len(out) - 2
+            words = []
+            for w in rest.split():
+                if len(" ".join(words + [w])) > room:
+                    break
+                words.append(w)
+            while words and words[-1].lower().strip(",.&-") in _DANGLING:
+                words.pop()
+            if len(words) >= 2:
+                out = out + ": " + " ".join(words)
+    out = out.rstrip(" ,&-:|").strip()
+    while out.split() and out.split()[-1].lower() in _DANGLING:
+        out = " ".join(out.split()[:-1]).rstrip(" ,&-:|")
+    return out + BRAND_SUFFIX
+
+
 def player_html(meta):
     """The media block.
 
@@ -441,6 +488,7 @@ def build(meta, cues, chapters):
 
     return tmpl.format(
         title=esc(meta["title"]),
+        seo_title=esc(seo_title(meta["title"])),
         seo_desc=esc(meta.get("summary", "")[:155]),
         slug=meta["slug"],
         series=esc(meta.get("series", "")),

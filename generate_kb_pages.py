@@ -56,6 +56,15 @@ NAV_FOOTER = """
 </html>
 """
 
+def _seo_title(title):
+    """Trim to fit a search result. Suffix is 20 characters, so content gets 50."""
+    brand = " | Paragliding Atlas"
+    t = re.sub(r"\s+", " ", title).strip()
+    if len(t) > 70 - len(brand):
+        t = t[:70 - len(brand)].rsplit(" ", 1)[0].rstrip(" ,&-:")
+    return t + brand
+
+
 def _seo(text, title):
     """Description from the page's own intro paragraph, trimmed. Never invented."""
     t = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", text or "")).strip()
@@ -69,7 +78,7 @@ NAV_HEADER = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{title} — Knowledge Base: Paragliding Atlas</title>\n<meta name="description" content="{seo_desc}">\n<link rel="canonical" href="https://paraglidingatlas-maker.github.io/Website/knowledge-base/{slug}.html">\n<meta property="og:type" content="website">\n<meta property="og:title" content="{title}">\n<meta property="og:description" content="{seo_desc}">\n<meta property="og:image" content="https://paraglidingatlas-maker.github.io/Website/assets/images/hero.jpg">\n<meta property="og:url" content="https://paraglidingatlas-maker.github.io/Website/knowledge-base/{slug}.html">\n<meta name="twitter:card" content="summary_large_image">\n<script type="application/ld+json">\n{{"@context":"https://schema.org","@type":"CollectionPage","name":"{title}","url":"https://paraglidingatlas-maker.github.io/Website/knowledge-base/{slug}.html","description":"{seo_desc}","isPartOf":{{"@type":"WebSite","name":"Paragliding Atlas","url":"https://paraglidingatlas-maker.github.io/Website/"}}}}\n</script>
+<title>{seo_title}</title>\n<meta name="description" content="{seo_desc}">\n<link rel="canonical" href="https://paraglidingatlas-maker.github.io/Website/knowledge-base/{slug}.html">\n<meta property="og:type" content="website">\n<meta property="og:title" content="{title}">\n<meta property="og:description" content="{seo_desc}">\n<meta property="og:image" content="https://paraglidingatlas-maker.github.io/Website/assets/images/hero.jpg">\n<meta property="og:url" content="https://paraglidingatlas-maker.github.io/Website/knowledge-base/{slug}.html">\n<meta name="twitter:card" content="summary_large_image">\n<script type="application/ld+json">\n{{"@context":"https://schema.org","@type":"CollectionPage","name":"{title}","url":"https://paraglidingatlas-maker.github.io/Website/knowledge-base/{slug}.html","description":"{seo_desc}","isPartOf":{{"@type":"WebSite","name":"Paragliding Atlas","url":"https://paraglidingatlas-maker.github.io/Website/"}}}}\n</script>
 <link rel="icon" type="image/png" href="../assets/logo/favicon.png">
 <link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon.png">
 <meta name="theme-color" content="#141519">
@@ -198,7 +207,7 @@ def category_page(slug, title, intro, series_list):
   <div class="series-grid">{cards}
   </div>
 </div>"""
-    html = NAV_HEADER.format(title=title, slug=slug, seo_desc=_seo(intro, title),
+    html = NAV_HEADER.format(title=title, seo_title=_seo_title(title), slug=slug, seo_desc=_seo(intro, title),
                              css=CATEGORY_CSS, body=body) + NAV_FOOTER
     write(f"{slug}.html", html)
 
@@ -233,7 +242,7 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
 <div class="ep-body">
   {ep_html}
 </div>"""
-    html = NAV_HEADER.format(title=title, slug=slug, seo_desc=_seo(intro, title),
+    html = NAV_HEADER.format(title=title, seo_title=_seo_title(title), slug=slug, seo_desc=_seo(intro, title),
                              css=SUBSERIES_CSS, body=body)
     html = html.replace(
         '<script src="../script.js"></script>\n</body>',

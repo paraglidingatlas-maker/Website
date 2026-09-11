@@ -41,3 +41,9 @@
 .cd-tags a.cd-tag{text-decoration:none;}
 .cd-tags .cd-tag::before{content:"#";color:var(--orange);margin-right:.1rem;}
 .cd-tags a.cd-tag:hover,.cd-tags a.cd-tag:focus-visible{color:var(--orange);border-color:var(--orange);}
+
+/* The extractable answer paragraph. Deliberately plain prose: research on AI
+   citation is consistent that a blockquote or callout box is lifted less often
+   than an ordinary paragraph sitting directly under the heading. */
+.tg-answer{color:var(--gray-light);font-size:1rem;line-height:1.8;max-width:76ch;
+  margin:0 clamp(1.2rem,5vw,5.5rem) 2.2rem;}

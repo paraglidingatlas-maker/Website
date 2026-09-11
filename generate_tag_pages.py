@@ -137,6 +137,43 @@ HEAD = """<!DOCTYPE html>
 """
 
 
+def answer_block(tag, eps):
+    """A 40-60 word paragraph that directly answers "what does this site have on X".
+
+    Research on AI citation is consistent that a short, self-contained paragraph
+    placed immediately after the heading, written as ordinary prose rather than a
+    blockquote or callout, is the shape answer engines lift most often.
+
+    Every fact in it is counted from the data: the number of conversations, the
+    named people, the adjacent subjects. Nothing is a definition of the topic,
+    because writing definitions of paragliding concepts would mean inventing
+    claims this site cannot stand behind.
+    """
+    named = [e.get("guest", "").strip() for e in eps if (e.get("guest") or "").strip()]
+    seen, people = set(), []
+    for n in named:
+        if n.lower() not in seen:
+            seen.add(n.lower())
+            people.append(n)
+    near = Counter(t for e in eps for t in (e.get("tags") or []) if t != tag)
+    adjacent = [t for t, _ in near.most_common(4)]
+    withT = sum(1 for e in eps if os.path.exists(os.path.join(ROOT, "transcripts",
+                                                              e["slug"] + ".vtt")))
+    bits = ["Paragliding Atlas has %d conversations tagged %s, %d of them with a complete "
+            "transcript you can read and search on the page."
+            % (len(eps), tag.lower(), withT)]
+    if len(people) >= 2:
+        picked = people[:4]
+        bits.append("Guests include %s and %s." % (", ".join(picked[:-1]), picked[-1]))
+    if adjacent:
+        bits.append("The subject runs alongside %s." % ", ".join(a.lower() for a in adjacent[:3]))
+    text = " ".join(bits)
+    words = text.split()
+    if len(words) > 62:
+        text = " ".join(words[:60]).rstrip(",.") + "."
+    return text
+
+
 def build():
     meta = json.load(open(os.path.join(ROOT, "episode-meta.json"), encoding="utf-8"))
     counts = Counter(t for e in meta for t in (e.get("tags") or []))
@@ -193,10 +230,12 @@ def build():
             '  <h1><span class="tg-hash">#</span>%s</h1>\n'
             '  <p class="tg-count">%d conversation%s, every one with a full transcript.</p>\n'
             '</header>\n\n'
+            '<p class="tg-answer">%s</p>\n\n'
             '<ul class="tg-list">\n%s\n</ul>\n\n'
             '<p class="tg-back"><a href="../tags.html">All topics</a> &middot; '
             '<a href="../library.html">Full episode library</a></p>\n'
-            % (esc(tag), esc(tag), len(eps), "" if len(eps) == 1 else "s", "\n".join(rows)))
+            % (esc(tag), esc(tag), len(eps), "" if len(eps) == 1 else "s",
+               esc(answer_block(tag, eps)), "\n".join(rows)))
         open(os.path.join(OUT, s + ".html"), "w", encoding="utf-8").write(
             HEAD.format(title=esc("%s | Paragliding Atlas episodes" % tag), desc=esc(desc),
                         ogtitle=esc(tag), base=BASE, path="tags/%s.html" % s,

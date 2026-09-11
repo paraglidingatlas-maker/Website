@@ -1,11 +1,69 @@
 # Paragliding Atlas
-# Every crawler is welcome, including answer engines. The episode
-# transcripts are deliberately served in full in the HTML rather than
-# fetched on click, precisely so crawlers that do not run JavaScript
-# can read them. Do not add Disallow rules for GPTBot, ClaudeBot,
-# PerplexityBot or similar without understanding that trade off.
+#
+# Everything is open, deliberately. The episode transcripts are served in
+# full in the HTML rather than fetched on click, precisely so crawlers that
+# do not execute JavaScript can read them.
+#
+# Before adding any Disallow rule, understand the split below. The two
+# groups look identical in a server log and do completely different jobs.
 
 User-agent: *
+Allow: /
+
+# --- retrieval crawlers -------------------------------------------------
+# These fetch pages to answer a question a real person just asked. Blocking
+# any of them removes this site from that assistant's answers. OpenAI states
+# plainly that sites blocking OAI-SearchBot will not appear in ChatGPT
+# search results. This is the group you almost never want to block.
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# --- training crawlers --------------------------------------------------
+# These collect data that shapes what models know in a year or two. Allowing
+# them is a choice about the long term rather than about today's traffic.
+# They are allowed here: this archive exists to be read.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
 Allow: /
 
 Sitemap: https://paraglidingatlas-maker.github.io/Website/sitemap.xml

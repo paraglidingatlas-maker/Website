@@ -1,4 +1,7 @@
-"""Generate robots.txt and sitemap.xml for the whole site.
+"""Generate sitemap.xml for the whole site.
+
+robots.txt is written by generate_llms_txt.py, which owns it alongside llms.txt.
+Two generators writing one file is how that file ends up depending on run order.
 
 The site had neither. sitemap.html is a human facing graph; crawlers need the
 XML. Run after adding or removing pages:  python3 generate_robots_sitemap.py
@@ -42,17 +45,3 @@ with open("sitemap.xml", "w", encoding="utf-8") as f:
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
             + "\n".join(rows) + "\n</urlset>\n")
 
-with open("robots.txt", "w", encoding="utf-8") as f:
-    f.write(
-        "# Paragliding Atlas\n"
-        "# Every crawler is welcome, including answer engines. The episode\n"
-        "# transcripts are deliberately served in full in the HTML rather than\n"
-        "# fetched on click, precisely so crawlers that do not run JavaScript\n"
-        "# can read them. Do not add Disallow rules for GPTBot, ClaudeBot,\n"
-        "# PerplexityBot or similar without understanding that trade off.\n\n"
-        "User-agent: *\n"
-        "Allow: /\n\n"
-        "Sitemap: %ssitemap.xml\n" % BASE)
-
-print("sitemap.xml: %d urls" % len(rows))
-print("robots.txt written")

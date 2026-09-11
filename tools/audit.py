@@ -22,6 +22,7 @@ TWO TRAPS BAKED IN, BOTH OF WHICH PRODUCED FALSE ALARMS BEFORE
      /Website/styles.css must resolve against the repo root. Otherwise every
      link on 404.html looks broken.
 """
+import html
 import json
 import os
 import re
@@ -418,20 +419,23 @@ def check_drift():
     sitemap.html, the thin episode descriptions, and all 17 knowledge base pages
     losing their canonical and JSON-LD.
     """
-    gens = ["generate_chapter_deck.py", "generate_sitemap.py", "generate_policies.py",
-            "generate_kb_pages.py", "generate_robots_sitemap.py"]
-    for g in gens:
-        if os.path.exists(g):
-            subprocess.run([sys.executable, g], capture_output=True)
+    # build.sh, not individual generators: the schema injector must run last and
+    # only build.sh knows the order. Running generators piecemeal would leave the
+    # injected structured data stripped and report a false drift.
+    subprocess.run(["bash", "build.sh"], capture_output=True)
     r = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
     # Only generated output matters here. An uncommitted edit to a source file or
     # to this script is not drift, and flagging it would train people to ignore
     # this check, which is the one failure mode it cannot afford.
     def is_generated(path):
         return (path.startswith(("episodes/", "knowledge-base/"))
-                or path in ("sitemap.html", "sitemap.xml", "robots.txt", "terms.html",
+                or path in ("sitemap.html", "sitemap.xml", "robots.txt", "llms.txt", "terms.html",
                             "privacy-policy.html", "cookie-policy.html",
-                            "participant-agreement.html"))
+                            "participant-agreement.html", "mission.html", "corrections.html",
+                            "safety-and-disclosure.html", "index.html", "about.html",
+                            "library.html", "podcast.html", "enquire.html", "404.html",
+                            "cookie-policy.html", "tags.html")
+                or path.startswith("tags/"))
     changed = []
     for line in r.stdout.strip().split("\n"):
         if not line.strip():
@@ -633,11 +637,12 @@ def check_lengths():
         if "noindex" in h:
             continue
         m = re.search(r"<title>(.*?)</title>", h, re.S)
-        if m and len(m.group(1).strip()) > 70:
+        # measure the unescaped string: &amp; is one character to a search engine
+        if m and len(html.unescape(m.group(1)).strip()) > 70:
             longt.append(p)
         d = re.search(r'name="description" content="([^"]*)"', h)
         if d and d.group(1).strip():
-            n = len(d.group(1))
+            n = len(html.unescape(d.group(1)))
             if n < 70:
                 shortd.append(p)
             if n > 165:
@@ -751,6 +756,32 @@ def check_tags():
     (ok if not bad else fail)("tags", "quotes missing from their page: %s" % (bad[:3] or 0))
 
 
+def check_guest_names():
+    """A guest value must look like a person.
+
+    Eight values had survived on the site that were not people: two misspellings
+    of the host's own name, a series title, a fragment of an episode title, and
+    the words Humble, In, My and So. They reached pages, JSON-LD actor fields and
+    tag-page summaries. An earlier check tested whether the surname appeared in
+    the transcript, which is useless because Whisper mangles surnames constantly.
+    """
+    STOP = {"new", "technologies", "modernizing", "humble", "in", "my", "so", "the",
+            "risk", "reward", "flying", "filming", "storytellers", "navigating"}
+    bad = []
+    for e in META:
+        g = (e.get("guest") or "").strip()
+        if not g:
+            continue
+        words = [w for w in re.split(r"[\s&]+", g) if w]
+        if len(words) < 2 or len(words) > 4:
+            if "&" not in g:
+                bad.append((e["slug"], g))
+                continue
+        if any(w.lower() in STOP for w in words):
+            bad.append((e["slug"], g))
+    (ok if not bad else fail)("guests", "guest values that are not names: %s" % (bad[:4] or 0))
+
+
 def check_selector_scope():
     """Bare element selectors that can hit markup they were never meant for.
 
@@ -789,7 +820,7 @@ def main():
     check_structure(); check_canonical_paths()
     check_css(); check_orphans(); check_lengths()
     check_rail_parity(); check_jsonld_fields(); check_robots()
-    check_tags(); check_selector_scope()
+    check_tags(); check_selector_scope(); check_guest_names()
     check_transcripts(); check_cross_data(); check_copy()
     if DRIFT:
         check_drift()
