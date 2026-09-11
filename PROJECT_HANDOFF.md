@@ -1795,3 +1795,105 @@ The user has closed these. **Do not re-raise any of them:**
   template change plus a photo per guest if it is ever wanted.
 - Thin series, site-wide chrome treatment (mockup B), and the lateral-scroll
   sitemap design request are all untouched from earlier sections.
+
+## 29. NAV NORMALISED, 43 GUEST NAMES FILLED (2026-09-11, same day, third pass)
+
+### THE NAV WAS IN FOUR DIFFERENT STATES AND NOBODY HAD NOTICED
+The user sent a screenshot to ask for three items to be removed. The screenshot
+showed **Corrections twice**, which is what exposed the real problem: the nav
+was written out by hand in **18 separate places** (2 templates, 4 generators, 12
+hand maintained pages) and had drifted into four versions:
+```
+ 94 pages  About | KB | Safety & Disclosure | Corrections | Corrections |
+           Book a Call | Podcast | Sitemap      <- DUPLICATE, from the templates
+ 51 pages  About | KB | Podcast | Sitemap
+ 17 pages  About | KB | Safety & Disclosure | Corrections | Podcast   <- no Sitemap
+ 16 pages  About | KB | Safety & Disclosure | Corrections | Podcast | Sitemap
+```
+Removing the three items the user asked for collapses all four onto the same
+four links, so it was done as a normalisation rather than three deletions.
+**All 178 pages now carry one identical nav: About Us | Knowledge Base |
+Podcast | Sitemap.**
+
+**Safety & Disclosure and Corrections still EXIST as pages** and are still
+linked from the footer on 179 pages each, so neither is orphaned. Only the nav
+entry went. Book a Call was an external Google Calendar link; it also survives
+in the homepage CTA band and the footer.
+
+**Two traps this hit, both already in this document and both hit anyway:**
+1. **`knowledge-base/core-series.html` and `destinations/kenya.html` are hand
+   maintained and live in SUBDIRECTORIES.** The first pass globbed only the repo
+   root and both were missed, which is section 22's exact warning arriving
+   again. **Any site-wide chrome change must sweep subdirectories, not just the
+   root.**
+2. **`404.html` legitimately uses absolute `/Website/` paths** and must keep
+   them. The normaliser read each file's own prefix off its existing About Us
+   href rather than assuming, so 404.html kept its absolute paths and
+   `episodes/`, `knowledge-base/` and `destinations/` kept their `../`.
+
+**`generate_episode_pages.py` is DEAD CODE.** It is not in `build.sh`; episode
+pages come from `generate_chapter_deck.py` via `templates/episode-template.html`.
+It was patched anyway so it cannot reintroduce the old nav if anyone runs it,
+but it should probably be deleted. Ask before doing so.
+
+**There is still no check that the nav is identical across pages.** That is how
+this drifted for so long. Worth adding to `audit.py`.
+
+### GUEST NAMES: 33 -> 76 OF 93
+The user asked for every episode page to carry a guest name, to fill as many as
+possible and to ask about the rest.
+
+**Method, and why it is not the one section 20 warns about.** Section 20 records
+that a REGEX over titles produced "Consequence Over Probability" and
+"Understanding Skymate" as people. Here the candidate for each episode was read
+off the title BY EYE, and only the verification was automated: each name's
+tokens were checked, accent-insensitively, against that episode's own
+transcript. 30 of 43 matched. `_guest_source` on every entry records which
+route it took.
+
+- **30 verified**: name in the user's own title AND spoken in the transcript.
+- **11 title only**: those transcripts cold-open mid conversation, so the host's
+  introduction is not in the audio at all. Checked individually by reading each
+  opening rather than assumed. The title is the user's own wording, so it is a
+  source in its own right.
+- **2 read from the transcript**, with no name in the title:
+  **Grant Smith** (The Silent Mind), welcomed by name on air; and
+  **Chris Garcia** (From Cuba to Socotra), where the host says the name and then
+  asks "I hope I got your name correct" and the guest confirms it.
+
+**Two spellings were normalised, and this is flagged rather than hidden.** Two
+titles read "Beni Kalin & Heli Schrempf"; the site elsewhere uses **Beni Kälin**
+and **Helmut Schrempf**, so those were used. This follows the precedent in
+section 27 where the user's own list said "Dr Matt Wikes" and the site's
+"Wilkes" won. "Robert (Robbie) Whittall" was written as **Robert Whittall**.
+**If the user prefers the title spellings, change the data, not the rule.**
+
+**The audit caught a real edge case: `Shams` is a mononym.**
+`check_guest_names()` rejects single-word values because that is the shape
+"Humble", "In", "My" and "So" arrived in. Shams is real: the host addresses him
+as "Shams" on air and the user's title reads "Explained by Shams". A narrow
+`MONONYMS` allowlist was added to the CHECKER with the evidence written beside
+it, rather than bending the data. **It was then proven the check still FAILS on
+a sabotaged value.** A surname has been requested. **Do not grow that allowlist
+to make the audit green.**
+
+### THE 17 WITH NO GUEST, AND WHY
+These are not interviews, so there is nobody to name. **Do not invent one.**
+- **8 competition highlight reels**: SRS Piedrahita Tasks 1 and 2, SRS BGD Day 1,
+  PWC Super Final Tasks 1, 2, 4 and 5, PWCA Superfinal Day 1.
+- **4 Oslo and Norway cinematics**, plus the show trailer (Touch The Sky With
+  Glory) and A Note of Thanks.
+- **3 solo host episodes**: AMA #1 (no transcript), Science Backed Pre Flight
+  Rituals and Mastering the Unknown. The last two were confirmed as monologues
+  by reading them: one speaker, roughly 3,000 words each, no second voice.
+
+**Still open: those 17 pages render an EMPTY "The Guest" box**, a card with a
+heading and nothing in it. The user has been asked whether to hide the box when
+there is no name, or to credit Aninder Singh as host on the three solo episodes.
+**No decision yet.**
+
+### FAQ SECTION: DROPPED BY THE USER. DO NOT BUILD IT.
+The user has decided there will be no FAQ section on episode pages. Sections 14,
+26 and earlier all list it as pending; it is not. `.cd-faq` in
+`episodes/episode.css` lines 67 to 74 is now dead CSS and could be removed.
+The prototype that showed the intended layout was deleted in section 28.
