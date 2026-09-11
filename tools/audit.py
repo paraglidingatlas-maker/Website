@@ -578,7 +578,7 @@ def check_css():
     never written renders unstyled and nothing errors.
     """
     css = ""
-    for f in ("styles.css", "policies.css", "fonts.css", "episodes/episode.css"):
+    for f in ("styles.css", "policies.css", "fonts.css", "tags.css", "episodes/episode.css"):
         if os.path.exists(f):
             css += read(f)
     defined = set(re.findall(r"\.([a-zA-Z][\w-]*)", css))
@@ -690,6 +690,67 @@ def check_robots():
     (ok if "Disallow: /" not in r.replace("Disallow: /\n", "") else fail)("crawler", "robots.txt disallows crawling")
 
 
+# ------------------------------------------------------------------ tags ----
+def check_tags():
+    """Tags, quotes and the hub pages behind them.
+
+    The failure this guards against is a tag that renders as a link to a page
+    that was never built, or a page listing episodes that no longer carry the
+    tag. Both happen the moment episode-meta and the tag generator drift.
+    """
+    tagdir = os.path.join(ROOT, "tags")
+    pages = {f[:-5] for f in os.listdir(tagdir)} if os.path.isdir(tagdir) else set()
+    def tslug(n):
+        return re.sub(r"-+", "-", re.sub(r"[^a-z0-9]+", "-", n.lower())).strip("-")
+
+    counts = Counter(t for e in META for t in (e.get("tags") or []))
+    notag = [e["slug"] for e in META if not (e.get("tags") or [])]
+    (ok if not notag else fail)("tags", "episodes with no tags: %s" % (notag[:3] or 0))
+
+    # every tag that qualifies for a page must have one, and vice versa
+    should = {tslug(t) for t, n in counts.items() if n >= 3}
+    missing = sorted(should - pages)
+    extra = sorted(pages - should)
+    (ok if not missing else fail)("tags", "tags on 3+ episodes with no page: %s" % (missing[:4] or 0))
+    (ok if not extra else fail)("tags", "tag pages no longer earned by 3+ episodes: %s" % (extra[:4] or 0))
+
+    # every tag link on an episode page must resolve
+    bad = []
+    for e in META:
+        f = "episodes/%s.html" % e["slug"]
+        if not os.path.exists(f):
+            continue
+        for u in re.findall(r'<a class="cd-tag" href="([^"]+)"', read(f)):
+            if not os.path.exists(os.path.normpath(os.path.join("episodes", u))):
+                bad.append((e["slug"], u))
+    (ok if not bad else fail)("tags", "tag links pointing at a missing page: %s" % (bad[:3] or 0))
+
+    # no tag page may be empty, and each must list what it claims
+    thin = []
+    for f in sorted(pages):
+        h = read(os.path.join("tags", f + ".html"))
+        n = h.count('class="tg-ep-link"')
+        if n < 3:
+            thin.append((f, n))
+    (ok if not thin else fail)("tags", "tag pages listing fewer than 3 episodes: %s" % (thin[:3] or 0))
+
+    # quotes
+    q = [e for e in META if (e.get("quote") or "").strip()]
+    withT = [e for e in META if os.path.exists("transcripts/%s.vtt" % e["slug"])]
+    noq = [e["slug"] for e in withT if not (e.get("quote") or "").strip()]
+    ok("tags", "quotes: %d of %d episodes (%d of %d with a transcript)"
+       % (len(q), len(META), len(withT) - len(noq), len(withT)))
+    (ok if len(noq) <= 3 else warn)("tags", "transcript episodes with no quote: %s" % (noq or 0))
+
+    # a quote must actually appear on its page, and be marked up as a quotation
+    bad = []
+    for e in q:
+        f = "episodes/%s.html" % e["slug"]
+        if os.path.exists(f) and "cd-quote" not in read(f):
+            bad.append(e["slug"])
+    (ok if not bad else fail)("tags", "quotes missing from their page: %s" % (bad[:3] or 0))
+
+
 def main():
     check_links(); check_headings(); check_seo(); check_crawler()
     check_a11y(); check_third_party(); check_data(); check_content()
@@ -697,6 +758,7 @@ def main():
     check_structure(); check_canonical_paths()
     check_css(); check_orphans(); check_lengths()
     check_rail_parity(); check_jsonld_fields(); check_robots()
+    check_tags()
     check_transcripts(); check_cross_data(); check_copy()
     if DRIFT:
         check_drift()

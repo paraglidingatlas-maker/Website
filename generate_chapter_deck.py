@@ -356,6 +356,57 @@ def player_html(meta):
             + '      </div>\n')
 
 
+def tag_slug(name):
+    return re.sub(r"-+", "-", re.sub(r"[^a-z0-9]+", "-", name.lower())).strip("-")
+
+
+def _paged_tags():
+    """Tags with their own hub page. Built from the same threshold the tag
+    generator uses, by simply looking at which pages exist, so the two can never
+    disagree about what is linkable."""
+    d = os.path.join(ROOT, "tags")
+    if not os.path.isdir(d):
+        return set()
+    return {f[:-5] for f in os.listdir(d) if f.endswith(".html")}
+
+
+PAGED_TAGS = _paged_tags()
+
+
+def render_tags(tags):
+    """A tag with a page becomes a link; one without stays plain text.
+
+    The leading # is drawn by CSS, never written into the markup, so the anchor
+    text a crawler reads is "Safety" rather than "#Safety". Hashes are a social
+    convention and make poor anchor text.
+    """
+    out = []
+    for t in tags or []:
+        s = tag_slug(t)
+        if s in PAGED_TAGS:
+            out.append('        <a class="cd-tag" href="../tags/%s.html">%s</a>' % (s, esc(t)))
+        else:
+            out.append('        <span class="cd-tag">%s</span>' % esc(t))
+    return "\n".join(out)
+
+
+def render_quote(meta):
+    """The pull quote, beside the title.
+
+    Marked up as a blockquote with a cite so it reads as a quotation to a
+    crawler and to an answer engine, which is the shape those systems lift.
+    """
+    q = (meta.get("quote") or "").strip()
+    if not q:
+        return ""
+    who = (meta.get("guest") or "").strip()
+    cite = '<cite>%s</cite>' % esc(who) if who else ""
+    return ('      <figure class="cd-quote">\n'
+            '        <blockquote><p>%s</p></blockquote>\n'
+            '        %s\n'
+            '      </figure>' % (esc(q), cite))
+
+
 def build(meta, cues, chapters):
     paras = paragraphs(cues)
     words = sum(len(p["text"].split()) for p in paras)
@@ -373,6 +424,10 @@ def build(meta, cues, chapters):
     }
     if meta.get("guest"):
         jsonld["actor"] = {"@type": "Person", "name": meta["guest"]}
+    if (meta.get("quote") or "").strip():
+        jsonld["abstract"] = meta["quote"].strip()
+    if meta.get("tags"):
+        jsonld["keywords"] = ", ".join(meta["tags"])
 
     submeta = []
     if meta.get("guest"):
@@ -406,7 +461,8 @@ def build(meta, cues, chapters):
         guest_links=render_list(meta.get("guest_links", [])),
         resources=render_list(meta.get("resources", [])),
         related=render_list(meta.get("related", [])),
-        tags="\n".join('        <span class="cd-tag">%s</span>' % esc(t) for t in meta.get("tags", [])),
+        tags=render_tags(meta.get("tags")),
+        quote=render_quote(meta),
         spotify=esc(meta.get("spotify", "https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec")),
         jsonld=json.dumps(jsonld, ensure_ascii=False, indent=2),
         words="{:,}".format(words),

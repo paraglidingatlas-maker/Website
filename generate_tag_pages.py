@@ -1,0 +1,238 @@
+#!/usr/bin/env python3
+"""Build /tags.html and one hub page per tag.
+
+Why pages rather than a JavaScript filter: a filter is invisible to a crawler and
+to an answer engine. A tag page is a real URL with a real heading, a real list of
+episodes and its own structured data, so "paragliding reserve parachutes" can
+land somebody on a page that is actually about that, holding seven conversations
+on it.
+
+THRESHOLD is 3. A page listing two episodes is thin content: it splits link
+equity and gives a visitor almost nothing. Tags below the threshold still render
+on the episode page, just as plain text rather than a link.
+
+Run: python3 generate_tag_pages.py
+"""
+import html
+import json
+import os
+import re
+import shutil
+from collections import Counter, defaultdict
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+BASE = "https://paraglidingatlas-maker.github.io/Website/"
+THRESHOLD = 3
+OUT = os.path.join(ROOT, "tags")
+
+
+def slug(name):
+    return re.sub(r"-+", "-", re.sub(r"[^a-z0-9]+", "-", name.lower())).strip("-")
+
+
+def esc(s):
+    return html.escape(str(s or ""), quote=True)
+
+
+HEAD = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{title}</title>
+<meta name="description" content="{desc}">
+<link rel="canonical" href="{base}{path}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{ogtitle}">
+<meta property="og:description" content="{desc}">
+<meta property="og:image" content="{base}assets/images/hero.jpg">
+<meta property="og:url" content="{base}{path}">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{jsonld}
+</script>
+<link rel="icon" type="image/png" href="{root}assets/logo/favicon.png">
+<link rel="apple-touch-icon" href="{root}assets/logo/apple-touch-icon.png">
+<meta name="theme-color" content="#141519">
+<link rel="alternate" type="application/rss+xml" title="Paragliding Atlas Podcast" href="https://anchor.fm/s/ed1344d8/podcast/rss">
+<link rel="preload" href="{root}assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{root}assets/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{root}assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{root}assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{root}fonts.css">
+<link rel="stylesheet" href="{root}styles.css">
+<link rel="stylesheet" href="{root}tags.css">
+</head>
+<body>
+
+<div class="page-wrap">
+
+<nav>
+  <span class="nav-corner-l"></span>
+  <span class="nav-corner-r"></span>
+  <span class="nav-coords">59.9139&deg;N &middot; 10.7522&deg;E</span>
+  <a href="{root}index.html" class="wordmark"><img src="{root}assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></a>
+  <div class="nav-links">
+    <a href="{root}about.html">About Us</a>
+    <span class="nav-sep">|</span>
+    <a href="{root}knowledge-base.html">Knowledge Base</a>
+    <span class="nav-sep">|</span>
+    <a href="{root}podcast.html">Podcast</a>
+    <span class="nav-sep">|</span>
+    <a href="{root}sitemap.html">Sitemap</a>
+  </div>
+  <a href="{root}enquire.html" class="nav-cta" data-hover><span>Enquire Now</span></a>
+</nav>
+<div class="nav-chevron"></div>
+
+{body}
+
+</div><!-- /.page-wrap -->
+
+<footer>
+  <div class="footer-content">
+  <div class="footer-top">
+    <div class="footer-col">
+      <span class="wordmark"><img src="{root}assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></span>
+      <p>Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>Oslo, Norway</p>
+    </div>
+    <div class="footer-col">
+      <h2>Enquiries</h2>
+      <a href="{root}enquire.html">General</a>
+      <a href="{root}index.html#destinations">Trips</a>
+      <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener">Book a Call</a>
+    </div>
+    <div class="footer-col">
+      <h2>Quick Links</h2>
+      <a href="{root}library.html">All Episodes</a>
+      <a href="{root}tags.html">Topics</a>
+      <a href="{root}index.html#destinations">Kenya Tour</a>
+      <a href="{root}enquire.html">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h2>Links</h2>
+      <a href="{root}knowledge-base.html">Knowledge Base</a>
+      <a href="{root}safety-and-disclosure.html">Safety &amp; Disclosure</a>
+      <a href="{root}corrections.html">Corrections</a>
+      <a href="{root}mission.html">Mission Statement</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <a href="{root}terms.html">Terms &amp; Conditions</a>
+    <a href="{root}privacy-policy.html">Privacy Policy</a>
+    <a href="{root}cookie-policy.html">Cookie Policy</a>
+    <span>Paragliding Atlas 2026</span>
+  </div>
+  </div>
+  <div class="footer-graphic">
+    <img src="{root}assets/footer/mountains.png" alt="Paragliding Atlas &mdash; Touch the Sky with Glory">
+  </div>
+</footer>
+
+<script src="{root}script.js"></script>
+</body>
+</html>
+"""
+
+
+def build():
+    meta = json.load(open(os.path.join(ROOT, "episode-meta.json"), encoding="utf-8"))
+    counts = Counter(t for e in meta for t in (e.get("tags") or []))
+    paged = {t for t, n in counts.items() if n >= THRESHOLD}
+    by_tag = defaultdict(list)
+    for e in meta:
+        for t in (e.get("tags") or []):
+            if t in paged:
+                by_tag[t].append(e)
+
+    if os.path.isdir(OUT):
+        shutil.rmtree(OUT)
+    os.makedirs(OUT)
+
+    # ---- one page per tag ----
+    for tag in sorted(by_tag):
+        eps = sorted(by_tag[tag], key=lambda e: (e.get("published") or "", e["title"]), reverse=True)
+        s = slug(tag)
+        desc = "%d Paragliding Atlas conversations about %s, each with a full transcript." % (
+            len(eps), tag.lower())
+        if len(desc) > 158:
+            desc = desc[:155].rsplit(" ", 1)[0] + "..."
+        rows = []
+        for e in eps:
+            others = [x for x in (e.get("tags") or []) if x != tag][:4]
+            chips = "".join('<a class="tg-chip" href="%s.html">%s</a>' % (slug(o), esc(o))
+                            for o in others if o in paged)
+            rows.append(
+                '    <li class="tg-ep">\n'
+                '      <a class="tg-ep-link" href="../episodes/%s.html">\n'
+                '        <span class="tg-ep-series">%s</span>\n'
+                '        <h2>%s</h2>\n'
+                '        <p>%s</p>\n'
+                '      </a>\n'
+                '      <div class="tg-chips">%s</div>\n'
+                '    </li>'
+                % (e["slug"], esc(e.get("series", "")), esc(e["title"]),
+                   esc((e.get("summary") or "")[:190]), chips))
+        jsonld = json.dumps({
+            "@context": "https://schema.org", "@type": "CollectionPage",
+            "name": "%s episodes" % tag, "url": BASE + "tags/%s.html" % s,
+            "description": desc,
+            "isPartOf": {"@type": "WebSite", "name": "Paragliding Atlas", "url": BASE},
+            "mainEntity": {"@type": "ItemList", "numberOfItems": len(eps),
+                           "itemListElement": [
+                               {"@type": "ListItem", "position": i + 1, "name": e["title"],
+                                "url": BASE + "episodes/%s.html" % e["slug"]}
+                               for i, e in enumerate(eps)]},
+        }, ensure_ascii=False)
+        body = (
+            '<header class="tg-hero">\n'
+            '  <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../tags.html">Topics</a> / %s</p>\n'
+            '  <span class="kicker">Topic</span>\n'
+            '  <h1><span class="tg-hash">#</span>%s</h1>\n'
+            '  <p class="tg-count">%d conversation%s, every one with a full transcript.</p>\n'
+            '</header>\n\n'
+            '<ul class="tg-list">\n%s\n</ul>\n\n'
+            '<p class="tg-back"><a href="../tags.html">All topics</a> &middot; '
+            '<a href="../library.html">Full episode library</a></p>\n'
+            % (esc(tag), esc(tag), len(eps), "" if len(eps) == 1 else "s", "\n".join(rows)))
+        open(os.path.join(OUT, s + ".html"), "w", encoding="utf-8").write(
+            HEAD.format(title=esc("%s | Paragliding Atlas episodes" % tag), desc=esc(desc),
+                        ogtitle=esc(tag), base=BASE, path="tags/%s.html" % s,
+                        jsonld=jsonld, root="../", body=body))
+
+    # ---- the index ----
+    groups = defaultdict(list)
+    for t in sorted(by_tag, key=lambda x: -len(by_tag[x])):
+        groups["all"].append(t)
+    cards = "".join(
+        '  <a class="tg-tile" href="tags/%s.html"><span class="tg-hash">#</span>%s<em>%d</em></a>\n'
+        % (slug(t), esc(t), len(by_tag[t])) for t in groups["all"])
+    desc = ("Every subject the Paragliding Atlas podcast has covered, from safety and certification "
+            "to cross country, acro and the arguments about where the sport is going.")
+    jsonld = json.dumps({
+        "@context": "https://schema.org", "@type": "CollectionPage", "name": "Topics",
+        "url": BASE + "tags.html", "description": desc,
+        "isPartOf": {"@type": "WebSite", "name": "Paragliding Atlas", "url": BASE},
+    }, ensure_ascii=False)
+    body = ('<header class="tg-hero">\n'
+            '  <p class="breadcrumb"><a href="index.html">Home</a> / Topics</p>\n'
+            '  <span class="kicker">Browse By Subject</span>\n'
+            '  <h1>Topics</h1>\n'
+            '  <p class="tg-count">%d subjects across %d conversations. '
+            'Every episode carries a full transcript.</p>\n'
+            '</header>\n\n<div class="tg-cloud">\n%s</div>\n\n'
+            '<p class="tg-back"><a href="library.html">Full episode library</a> &middot; '
+            '<a href="knowledge-base.html">Knowledge base</a></p>\n'
+            % (len(by_tag), len(meta), cards))
+    open(os.path.join(ROOT, "tags.html"), "w", encoding="utf-8").write(
+        HEAD.format(title="Topics | Paragliding Atlas", desc=esc(desc), ogtitle="Topics",
+                    base=BASE, path="tags.html", jsonld=jsonld, root="", body=body))
+
+    print("tag pages built : %d  (threshold %d+ episodes)" % (len(by_tag), THRESHOLD))
+    print("tags index      : tags.html, %d subjects" % len(by_tag))
+    print("tags below cut  : %d, rendered as plain text on the episode page"
+          % sum(1 for t, n in counts.items() if n < THRESHOLD))
+
+
+if __name__ == "__main__":
+    build()

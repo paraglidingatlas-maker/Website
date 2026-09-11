@@ -135,3 +135,20 @@
 .cd-player-audio img{width:100%;height:auto;display:block;aspect-ratio:1/1;object-fit:cover;}
 .cd-audio-note{margin:0;padding:.85rem 1rem;color:var(--gray-light);font-size:.88rem;line-height:1.6;
   border-top:1px solid #2b2c33;}
+
+/* Title block and the pull quote beside it.
+   The h1 is capped at 20ch, which left the right-hand side of the header empty.
+   The quote fills it on wide screens and stacks underneath on narrow ones. */
+.cd-headgrid{display:grid;grid-template-columns:1fr;gap:1.6rem;align-items:start;}
+@media (min-width:62rem){
+  .cd-headgrid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(2rem,4vw,3.5rem);}
+}
+.cd-quote{margin:0;border-left:2px solid var(--orange);padding:.2rem 0 .2rem 1.3rem;}
+.cd-quote blockquote{margin:0;}
+.cd-quote blockquote p{margin:0;color:var(--white);font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1.02rem,1.7vw,1.22rem);line-height:1.55;letter-spacing:-.005em;}
+.cd-quote blockquote p::before{content:"\201C";color:var(--orange);}
+.cd-quote blockquote p::after{content:"\201D";color:var(--orange);}
+.cd-quote cite{display:block;margin-top:.8rem;color:var(--gray);font-style:normal;font-size:.84rem;
+  letter-spacing:.04em;text-transform:uppercase;}
+.cd-quote cite::before{content:"\2014 ";}

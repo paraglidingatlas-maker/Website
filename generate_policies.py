@@ -108,6 +108,7 @@ HEAD = """<!DOCTYPE html>
     <div class="footer-col">
       <h2>Quick Links</h2>
       <a href="library.html">All Episodes</a>
+      <a href="tags.html">Topics</a>
       <a href="index.html#destinations">Kenya Tour</a>
       <a href="enquire.html">Contact Us</a>
     </div>
@@ -528,11 +529,11 @@ PAGES = [
     ("privacy-policy.html", "Privacy Policy", "Your Data",
      "What Paragliding Atlas collects, why, how long we keep it, and your rights under the GDPR. This site has no analytics and no tracking.", PRIVACY),
     ("participant-agreement.html", "Participant Agreement", "Before You Fly",
-     "The form every participant completes before a Paragliding Atlas trip: risk acknowledgement, licence and experience, equipment, insurance, health and emergency contact.", AGREEMENT),
+     "The form every participant completes before a trip: risk, licence and experience, equipment, insurance and health.", AGREEMENT),
     ("mission.html", "Touch the Sky With Glory", "What We Are For",
-     "Where our name comes from, what we are trying to build, and the part most brands leave out. Paragliding Atlas is a podcast, a knowledge base and a small set of trips.", MISSION),
+     "Where our name comes from, what we are trying to build, and the part most brands leave out.", MISSION),
     ("corrections.html", "Corrections", "Keep Us Honest",
-     "Spotted something out of date in an episode or article? Tell us and we will review it within 48 hours. What we correct, how, and why transcripts are treated differently.", CORRECTIONS),
+     "Spotted something out of date in an episode or article? Tell us and we review it within 48 hours.", CORRECTIONS),
     ("safety-and-disclosure.html", "Safety Information &amp; Disclosure Statements", "Safety &amp; Disclosure",
      "Paragliding carries inherent risk and nothing in our podcast replaces training. Our safety position, affiliate and sponsorship disclosures, and review policy.", SAFETY),
     ("cookie-policy.html", "Cookie Policy", "Cookies",

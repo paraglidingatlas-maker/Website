@@ -1380,6 +1380,40 @@ or daughter; the page says follow your host's lead on who it is appropriate to
 address. Same practical guidance, without inviting a reader to generalise about
 people.
 
+## 25. TAGS AND PULL QUOTES: 50 TOPIC HUB PAGES, 76 QUOTES
+Episode tags are now real topics with their own pages, and each episode carries a
+pull quote beside its title.
+
+**Data.** `episode-meta.json` gained `tags` (a canonical list) and `quote` on
+every episode that has something quotable. 53 episodes came from the user's
+spreadsheet, transcribed into `tools/sheet_data.py`; the other 40 were written
+from their transcripts in the same pattern. `_quote_source` records which is
+which on every entry.
+
+**Taxonomy.** The raw keywords were 395 distinct strings with five spellings of
+"two-liner". `tools/normalise_tags.py` folds them to 251 canonical names using an
+explicit SYNONYMS map, which is the editorial part; everything after it is
+mechanical. **Edit SYNONYMS and re-run with --write, never hand edit tags.**
+
+**Pages.** `generate_tag_pages.py` builds `/tags.html` and one page per tag used
+by **3 or more** episodes: 50 pages. The threshold is deliberate. Two episodes is
+thin content, which splits link equity and gives a visitor nothing. Tags below the
+cut still render on the episode page, as plain text rather than a link.
+
+**The # is drawn in CSS, never in the markup.** Anchor text reads "Safety", not
+"#Safety". Hashes are a social convention and make poor anchor text. Do not move
+them into the HTML for convenience.
+
+**Quote placement.** Beside the `h1`, which was capped at 20ch and left the right
+of the header empty. The summary stayed where it was: it feeds the meta
+description and is the first prose a crawler meets, so moving it would have cost
+real visibility. The quote is marked up as `blockquote` + `cite` and is also in
+the episode's JSON-LD as `abstract`, which is the shape answer engines lift.
+
+**The audit covers all of this now**: every tag link resolves, every tag on 3+
+episodes has a page, no page exists that is no longer earned, no page lists fewer
+than three episodes, and every quote appears on its page.
+
 ## DONE (do not redo)
 - **Nine truncated titles, recovered properly (eighth update).** They now live in
   `episode-titles.json`, verbatim from the RSS feed and **keyed by YouTube video

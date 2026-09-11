@@ -1,0 +1,43 @@
+/* Topic pages. Tokens come from styles.css; only the tag-specific layout lives
+   here. The leading # is drawn in CSS, never in the markup, so the text a
+   crawler reads as anchor text is "Safety" and not "#Safety". */
+
+.tg-hero{padding:clamp(2.6rem,6vw,4.4rem) clamp(1.2rem,5vw,5.5rem) clamp(1.4rem,3vw,2rem);}
+.tg-hero h1{font-family:var(--font-display);font-weight:800;color:var(--white);
+  font-size:clamp(2rem,5.5vw,3.4rem);line-height:1.05;margin:.5rem 0 0;letter-spacing:-.02em;}
+.tg-hash{color:var(--orange);}
+.tg-count{color:var(--gray-light);margin:.9rem 0 0;font-size:.98rem;}
+.breadcrumb{color:var(--gray);font-size:.8rem;margin-bottom:.9rem;}
+.breadcrumb a{color:var(--gray-light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--orange);}
+
+.tg-list{list-style:none;margin:0;padding:0 clamp(1.2rem,5vw,5.5rem) clamp(3rem,7vw,5rem);
+  display:grid;gap:1px;background:#2b2c33;border-top:1px solid #2b2c33;border-bottom:1px solid #2b2c33;}
+.tg-ep{background:var(--bg);padding:1.5rem clamp(1rem,2vw,1.6rem);}
+.tg-ep-link{display:block;text-decoration:none;}
+.tg-ep-series{display:block;color:var(--gray);font-size:.75rem;letter-spacing:.06em;
+  text-transform:uppercase;margin-bottom:.5rem;}
+.tg-ep h2{font-family:var(--font-display);font-weight:600;color:var(--white);
+  font-size:1.08rem;line-height:1.35;margin:0 0 .55rem;}
+.tg-ep-link:hover h2,.tg-ep-link:focus-visible h2{color:var(--orange);}
+.tg-ep p{color:var(--gray-light);font-size:.93rem;line-height:1.7;margin:0;max-width:78ch;}
+.tg-chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.9rem;}
+.tg-chip{color:var(--gray-light);background:var(--card);border:1px solid #2b2c33;
+  font-size:.76rem;padding:.28rem .6rem;text-decoration:none;transition:color .18s,border-color .18s;}
+.tg-chip::before{content:"#";color:var(--orange);margin-right:.12rem;}
+.tg-chip:hover,.tg-chip:focus-visible{color:var(--white);border-color:var(--orange);}
+
+.tg-cloud{display:grid;grid-template-columns:repeat(auto-fill,minmax(13rem,1fr));gap:1px;
+  background:#2b2c33;border:1px solid #2b2c33;margin:0 clamp(1.2rem,5vw,5.5rem);}
+.tg-tile{background:var(--bg);padding:1.1rem 1.2rem;text-decoration:none;color:var(--white);
+  font-family:var(--font-display);font-weight:600;font-size:1rem;display:flex;align-items:baseline;
+  gap:.3rem;transition:background .18s;}
+.tg-tile:hover,.tg-tile:focus-visible{background:var(--card);color:var(--orange);}
+.tg-tile em{margin-left:auto;font-style:normal;color:var(--gray);font-size:.82rem;font-weight:400;}
+.tg-back{padding:2rem clamp(1.2rem,5vw,5.5rem) clamp(3rem,6vw,4rem);color:var(--gray);font-size:.9rem;}
+.tg-back a{color:var(--orange);}
+
+/* the tag list on an episode page */
+.cd-tags a.cd-tag{text-decoration:none;}
+.cd-tags .cd-tag::before{content:"#";color:var(--orange);margin-right:.1rem;}
+.cd-tags a.cd-tag:hover,.cd-tags a.cd-tag:focus-visible{color:var(--orange);border-color:var(--orange);}
