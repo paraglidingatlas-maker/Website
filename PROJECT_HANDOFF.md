@@ -782,6 +782,49 @@ Open, roughly in order of value:
 
 ## PENDING, in rough priority order
 
+0. **CORRECTIONS FORM: built, NOT wired up. Paused by the user, pick up later.**
+   The corrections page currently sends people to a **Typeform**, off site.
+   The user wants the form on the page, posting straight to his inbox.
+
+   **A REAL GDPR GAP, FOUND ON THE WAY, AND IT EXISTS RIGHT NOW.** Typeform is
+   named NOWHERE in the privacy policy, the cookie policy or the terms. It
+   receives a reporter's name, email and message. That is an undisclosed
+   processor today, independent of whether this work ever happens.
+   **Either name it or remove it.** Do not let this sit because the replacement
+   is paused.
+
+   **Route chosen: Cloudflare Workers native `send_email` binding.** No email
+   provider, no API key, no SPF or DKIM. Cloudflare's docs confirm a Worker may
+   send to a **verified destination address** free on any plan, and such sends
+   do not count against any quota. That fits exactly, because it only ever
+   emails Aninder. An earlier plan involving MailChannels was dropped: their
+   free Workers service ended 31 Aug 2024 and now needs an account.
+
+   **`corrections-worker.js` is in the repo root, ready to paste in.** Deploy it
+   as a SEPARATE Worker, never merged into `cloudflare-worker.js`, which is the
+   confirmed-working CORS proxy. It carries an origin allowlist, CRLF stripping
+   on every header value (without which a newline in the name field injects
+   recipients), a honeypot, a time trap, and length caps.
+
+   **THE BLOCKER, and it is the one thing here that can break something the user
+   relies on daily.** Enabling Email Routing on a domain replaces its MX
+   records. If `aninder@paraglidingatlas.com` is hosted on Google Workspace,
+   Microsoft 365 or a registrar, **inbound mail to that domain stops.**
+   Two questions were put to the user and are UNANSWERED:
+   1. Where does `aninder@paraglidingatlas.com` actually receive mail?
+   2. Is `paraglidingatlas.com` DNS managed by Cloudflare at all?
+   If its mail lives elsewhere, that is fine and nothing is lost: the SENDING
+   domain need not be the same one. Route any other domain or subdomain on the
+   account and still deliver to his address, which only has to be verified.
+
+   **Remaining steps once he answers:** he deploys the Worker and sends the URL,
+   then the form gets built into `generate_policies.py` (CORRECTIONS section,
+   NOT corrections.html, which is generated), and `generate_policies.py` also
+   gets the privacy policy change in the SAME push: Typeform out, Cloudflare in.
+   **Leave the Typeform link live until the Worker is confirmed working**, or he
+   is left with no way to receive corrections at all if the Cloudflare side
+   needs another round.
+
 1. **enquire.html does not exist.** Every page's nav CTA points at it, on all
    ~90 pages, and has since before any of this work. A dead button site wide.
    Needs a real page written, not invented copy.
