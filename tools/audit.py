@@ -22,6 +22,7 @@ TWO TRAPS BAKED IN, BOTH OF WHICH PRODUCED FALSE ALARMS BEFORE
      /Website/styles.css must resolve against the repo root. Otherwise every
      link on 404.html looks broken.
 """
+import hashlib
 import html
 import json
 import os
@@ -422,11 +423,17 @@ def check_drift():
     # build.sh, not individual generators: the schema injector must run last and
     # only build.sh knows the order. Running generators piecemeal would leave the
     # injected structured data stripped and report a false drift.
-    subprocess.run(["bash", "build.sh"], capture_output=True)
-    r = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
-    # Only generated output matters here. An uncommitted edit to a source file or
-    # to this script is not drift, and flagging it would train people to ignore
-    # this check, which is the one failure mode it cannot afford.
+    #
+    # WHY THIS READS FILE CONTENTS AND NOT `git status`. Drift means "the build
+    # overwrites what is on disk". `git status` answers a different question,
+    # "is anything uncommitted", and the two only coincide when the working tree
+    # is clean. Several pages in the list below (index.html, about.html,
+    # podcast.html, library.html, enquire.html, 404.html) are HAND MAINTAINED and
+    # merely post-processed by the schema injector. Editing one of those legitimately
+    # and then running the audit before committing flagged a FAIL every time, which
+    # is precisely the cry-wolf failure lesson 25 warns about. Hashing each file
+    # before and after the build compares the build against itself, so an
+    # uncommitted edit is invisible to it and a genuine overwrite still fails.
     def is_generated(path):
         return (path.startswith(("episodes/", "knowledge-base/"))
                 or path in ("sitemap.html", "sitemap.xml", "robots.txt", "llms.txt", "terms.html",
@@ -436,15 +443,32 @@ def check_drift():
                             "library.html", "podcast.html", "enquire.html", "404.html",
                             "cookie-policy.html", "tags.html")
                 or path.startswith("tags/"))
-    changed = []
-    for line in r.stdout.strip().split("\n"):
-        if not line.strip():
-            continue
-        path = line.split(None, 1)[1].strip().strip('"') if " " in line.strip() else ""
-        if path and is_generated(path):
-            changed.append(path)
+    def snapshot():
+        """Hash every generated file currently on disk, keyed by repo-relative path."""
+        seen = {}
+        for dirpath, dirnames, filenames in os.walk("."):
+            dirnames[:] = [d for d in dirnames
+                           if d not in (".git", "__pycache__", "prototypes", "node_modules")]
+            for name in filenames:
+                full = os.path.normpath(os.path.join(dirpath, name))
+                rel = full[2:] if full.startswith("./") else full
+                if not is_generated(rel):
+                    continue
+                try:
+                    with open(full, "rb") as fh:
+                        seen[rel] = hashlib.sha256(fh.read()).hexdigest()
+                except OSError:
+                    pass
+        return seen
+
+    before = snapshot()
+    subprocess.run(["bash", "build.sh"], capture_output=True)
+    after = snapshot()
+
+    changed = sorted(p for p in set(before) | set(after)
+                     if before.get(p) != after.get(p))
     if changed:
-        fail("drift", "regenerating changed %d file(s), so hand edits are about to be lost: %s"
+        fail("drift", "the build rewrote %d file(s), so hand edits are about to be lost: %s"
              % (len(changed), changed[:6]))
     else:
         ok("drift", "generated files are in sync with their generators")
