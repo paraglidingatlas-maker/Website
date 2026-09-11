@@ -18,6 +18,7 @@ on the episode page, just as plain text rather than a link.
 
 Run: python3 generate_tag_pages.py
 """
+import hashlib
 import html
 import json
 import os
@@ -29,6 +30,41 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 BASE = _cfg.BASE   # see site_config.py and MIGRATION.md
 THRESHOLD = 3
 OUT = os.path.join(ROOT, "tags")
+
+
+def _sortver():
+    """Content hash of tags-sort.js, appended to its src.
+
+    Lesson 16 on this project: a script that changes behind a stale browser
+    cache looks exactly like a script that is broken, and cost two rounds of
+    confusion before. Keying on the file's own contents means the URL changes
+    if and only if the behaviour does.
+    """
+    p = os.path.join(ROOT, "tags-sort.js")
+    if not os.path.exists(p):
+        return "0"
+    with open(p, "rb") as fh:
+        return hashlib.sha256(fh.read()).hexdigest()[:8]
+
+
+def sort_key(title):
+    """Title reduced to what a reader would actually alphabetise by.
+
+    Episode titles here open with punctuation, quotes, series numbers and
+    accented guest names. Sorting the raw string puts anything starting with a
+    quote or a digit in its own clump at one end, which reads as broken rather
+    than as ordered. This strips leading articles and non-alphanumerics and
+    folds case, so "The Russell Ogden Interview" files under R.
+
+    Emitted as data-title so the browser sorts on the same value the generator
+    chose, rather than re-deriving it in two places and drifting.
+    """
+    t = (title or "").lower()
+    t = t.replace("\u2019", "'").replace("\u201c", '"').replace("\u201d", '"')
+    t = re.sub(r"[^a-z0-9 ]+", " ", t)
+    t = re.sub(r"\s+", " ", t).strip()
+    t = re.sub(r"^(the|a|an) ", "", t)
+    return t
 
 
 def slug(name):
@@ -137,6 +173,7 @@ HEAD = """<!DOCTYPE html>
 </footer>
 
 <script src="{root}script.js"></script>
+<script src="{root}tags-sort.js?v={sortver}" defer></script>
 </body>
 </html>
 """
@@ -207,7 +244,7 @@ def build():
             chips = "".join('<a class="tg-chip" href="%s.html">%s</a>' % (slug(o), esc(o))
                             for o in others if o in paged)
             rows.append(
-                '    <li class="tg-ep">\n'
+                '    <li class="tg-ep" data-date="%s" data-title="%s" data-series="%s">\n'
                 '      <a class="tg-ep-link" href="../episodes/%s.html">\n'
                 '        <span class="tg-ep-series">%s</span>\n'
                 '        <h2>%s</h2>\n'
@@ -215,7 +252,10 @@ def build():
                 '      </a>\n'
                 '      <div class="tg-chips">%s</div>\n'
                 '    </li>'
-                % (e["slug"], esc(e.get("series", "")), esc(e["title"]),
+                % (esc(e.get("published") or ""),
+                   esc(sort_key(e["title"])),
+                   esc(e.get("series", "")),
+                   e["slug"], esc(e.get("series", "")), esc(e["title"]),
                    esc((e.get("summary") or "")[:190]), chips))
         jsonld = json.dumps({
             "@context": "https://schema.org", "@type": "CollectionPage",
@@ -244,7 +284,7 @@ def build():
         open(os.path.join(OUT, s + ".html"), "w", encoding="utf-8").write(
             HEAD.format(title=esc("%s | Paragliding Atlas episodes" % tag), desc=esc(desc),
                         ogtitle=esc(tag), base=BASE, path="tags/%s.html" % s,
-                        jsonld=jsonld, root="../", body=body))
+                        jsonld=jsonld, root="../", body=body, sortver=_sortver()))
 
     # ---- the index ----
     groups = defaultdict(list)
@@ -272,7 +312,7 @@ def build():
             % (len(by_tag), len(meta), cards))
     open(os.path.join(ROOT, "tags.html"), "w", encoding="utf-8").write(
         HEAD.format(title="Topics | Paragliding Atlas", desc=esc(desc), ogtitle="Topics",
-                    base=BASE, path="tags.html", jsonld=jsonld, root="", body=body))
+                    base=BASE, path="tags.html", jsonld=jsonld, root="", body=body, sortver=_sortver()))
 
     print("tag pages built : %d  (threshold %d+ episodes)" % (len(by_tag), THRESHOLD))
     print("tags index      : tags.html, %d subjects" % len(by_tag))
