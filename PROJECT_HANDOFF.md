@@ -2762,3 +2762,44 @@ existing `?v=`, and the pipeline is deterministic. It could be deleted.
 order of suspicion is is it parsed, is it cache busted, is it out-specified.**
 All three have bitten this project, and the middle one has bitten it twice
 because the first fix was scoped to half the problem.
+
+## 49. THE PIN DEEP LINK IS NOW ONE MOVEMENT, NOT THREE
+
+Section 48's version worked and looked wrong. The user: "it's starting at the top
+of homepage which is giving it a very artificial look". Correct. It was three
+separate events in a row: page at the top, then a scroll, then a globe already
+rotated. A page assembling itself rather than a camera moving.
+
+### What changed
+- **The map is put on screen before anything is drawn.** `scrollIntoView` now
+  runs at script parse time when the hash is a pin, not after the land data
+  arrives, so the visitor's first sight of the page is the globe.
+- **No smooth scroll.** An animated scroll followed by an animated flight was
+  the stacking that read as artificial. The scroll is instant; the movement the
+  visitor sees is the globe's.
+- **`flyTo()` interpolates rotation AND scale together** over 1900ms with
+  `easeCubicInOut`, pushing in to 2.4x, then opens the popup as it settles.
+
+### Three things in `flyTo()` that are not decoration
+1. **Shortest way round.** A plain interpolation between longitudes can send the
+   globe 300 degrees east to travel 60 west. The longitude delta is normalised
+   into -180..180 first.
+2. **The sphere radius is animated alongside the projection scale.** They are
+   separate: `sphere` is a plain SVG circle. Scaling one without the other puts
+   the land outside its own globe.
+3. **`svg.call(zoom.transform, d3.zoomIdentity.scale(FLY_ZOOM))` on settle.**
+   Without it d3.zoom still believes the scale is 1, and the visitor's next
+   wheel event snaps the globe back.
+
+Off under `prefers-reduced-motion`: the final state is set directly, no flight.
+
+### A NEAR MISS WORTH RECORDING
+Rewriting this block **deleted the `d3.json` land loader**, because the span
+being replaced ran past the end of the new code and swallowed it. The globe
+would have rendered with no continents. Caught by `git diff` on the one file
+before pushing, which showed removals that were not in the intended block.
+
+**Diff the file before committing, even for a change inside one function.** This
+is the third time in one day that a string replacement took more than it was
+meant to (sections 41 and 43 were the others), and the only reliable defence has
+been reading the diff rather than trusting the edit.

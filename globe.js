@@ -225,35 +225,97 @@
       .style('display', d => isVisible(d.lon, d.lat) ? null : 'none');
   }
 
-  /* Deep link: index.html#pin=<episode-slug> rotates the globe to that episode
-     and opens its popup. The knowledge base popup links here from the
-     coordinate stamp, so a reader can go from a conversation to the place it
-     came from.
+  /* Deep link: index.html#pin=<episode-slug> flies the globe to that episode.
 
-     Called after the first render, never before: the land data arrives
-     asynchronously and the projection has to have drawn once for showPopup to
-     place the popup correctly.
+     THE POINT IS THAT IT IS ONE MOVEMENT, NOT THREE.
+     The first version jumped: page at the top, then a scroll, then a globe
+     already rotated. Three separate events that read as a page assembling
+     itself. Now the map is put on screen before anything is drawn, and the
+     globe turns and pushes in as a single continuous shot, with the popup
+     arriving as it settles.
 
-     resetIdleTimer() is deliberately NOT called. Clicking a pin normally starts
-     a 5 second timer that hides the popup and resumes the spin, which is right
-     for someone browsing. Someone who followed a link to one specific episode
-     should not have it vanish while they read it, so the globe stays put until
-     they touch it. Their first drag or click resumes the normal behaviour. */
-  function openPinFromHash() {
+     Called after the first render, never at script end: the land data arrives
+     asynchronously and the projection must have drawn once before showPopup can
+     place the popup correctly. */
+
+  const FLY_MS = 1900;        /* long enough to read as travel, short enough to sit through */
+  const FLY_ZOOM = 2.4;       /* within the wheel zoom's own 1 to 40 range */
+
+  function pinSlugFromHash() {
     const m = /^#pin=(.+)$/.exec(location.hash || '');
-    if (!m) return;
-    const slug = decodeURIComponent(m[1]);
-    const d = episodes.find((e) => e.href === 'episodes/' + slug + '.html');
-    if (!d) return;          /* unknown slug: leave the globe exactly as it was */
-    stopAutoRotate();
-    projection.rotate([-d.lon, -d.lat]);
-    render();
-    showPopup(d);
-    container.scrollIntoView({
-      behavior: reduceMotion ? 'auto' : 'smooth',
-      block: 'center'
-    });
+    return m ? decodeURIComponent(m[1]) : null;
   }
+
+  function findPin(slug) {
+    return slug ? episodes.find((e) => e.href === 'episodes/' + slug + '.html') : null;
+  }
+
+  /* Put the map on screen straight away, before the land has even loaded, so
+     the visitor's first sight of the page is the globe rather than the top of
+     the homepage. No smooth scroll here on purpose: an animated scroll followed
+     by an animated flight is the stacking that looked artificial. */
+  if (findPin(pinSlugFromHash())) {
+    container.scrollIntoView({ block: 'center' });
+  }
+
+  function flyTo(d, animate) {
+    stopAutoRotate();
+
+    const r0 = projection.rotate();
+    /* Shortest way round. A plain interpolation between longitudes can send the
+       globe the long way, 300 degrees east to travel 60 degrees west. */
+    const dLon = (((-d.lon) - r0[0] + 540) % 360) - 180;
+    const r1 = [r0[0] + dLon, -d.lat, r0[2] || 0];
+    const s0 = projection.scale();
+    const s1 = baseScale * FLY_ZOOM;
+
+    function settle() {
+      /* Keep d3.zoom's own transform in step, or the next wheel event would
+         snap back to wherever it thinks the scale is. */
+      svg.call(zoom.transform, d3.zoomIdentity.scale(FLY_ZOOM));
+      showPopup(d);
+    }
+
+    if (!animate) {
+      projection.rotate(r1).scale(s1);
+      sphere.attr('r', s1);
+      render();
+      settle();
+      return;
+    }
+
+    d3.transition()
+      .duration(FLY_MS)
+      .ease(d3.easeCubicInOut)
+      .tween('flyTo', () => {
+        const ri = d3.interpolate(r0, r1);
+        const si = d3.interpolate(s0, s1);
+        return (k) => {
+          projection.rotate(ri(k)).scale(si(k));
+          sphere.attr('r', si(k));
+          render();
+        };
+      })
+      .on('end', settle);
+  }
+
+  function openPinFromHash() {
+    const d = findPin(pinSlugFromHash());
+    if (!d) return;          /* unknown slug: leave the globe exactly as it was */
+    container.scrollIntoView({ block: 'center' });
+    flyTo(d, !reduceMotion);
+  }
+
+  /* resetIdleTimer() is deliberately NOT called anywhere in here. Clicking a pin
+     normally starts a 5 second timer that hides the popup and resumes the spin,
+     which is right for browsing. Someone who followed a link to one specific
+     episode should not have it vanish while they read it, so the globe holds
+     still until they touch it. Their first drag or wheel resumes the normal
+     behaviour. */
+
+  /* Someone already on the page who follows another #pin link, and the back
+     button moving between pins once they are shareable. */
+  window.addEventListener('hashchange', openPinFromHash);
 
   d3.json('https://unpkg.com/world-atlas@2/land-110m.json').then((world) => {
     const land = topojson.feature(world, world.objects.land);
@@ -264,10 +326,6 @@
     render();
     openPinFromHash();
   });
-
-  /* Someone already on the page who follows another #pin link, and the back
-     button moving between pins once they are shareable. */
-  window.addEventListener('hashchange', openPinFromHash);
 
   // Drag to rotate — degrees-per-pixel scaled to the globe's actual radius
   let dragStart = null;
