@@ -1414,6 +1414,45 @@ the episode's JSON-LD as `abstract`, which is the shape answer engines lift.
 episodes has a page, no page exists that is no longer earned, no page lists fewer
 than three episodes, and every quote appears on its page.
 
+## 26. SEO/GEO PASS. READ MIGRATION.md BEFORE ANYTHING ELSE.
+**The website does not appear in search results for its own brand.** Two searches
+returned Podbean, Apple, Spotify, Amazon, Castbox, Castro, Podcast Republic and
+YouTube, and the site in neither. The brand's identity lives on
+**paraglidingatlas.com** (the email in every episode description, the Patreon);
+the site lives on a shared github.io domain in a subdirectory. MIGRATION.md has
+the step-by-step. CNAME.example is ready. **Nothing is activated**, because
+canonicals pointing at a domain that does not resolve are worse than the problem.
+
+**ARCHITECTURE CHANGED. Use `./build.sh`, never individual generators.**
+`tools/inject_site_schema.py` runs LAST and post-processes every page; running a
+generator on its own strips the injected structured data. The drift check now
+runs build.sh for this reason. `site_config.py` holds the address and entity data
+in one place, which is what makes the domain move a one-line change.
+
+**What the schema injector adds:** Organization + WebSite with sameAs across
+seven platforms, dateModified from git history (not a build timestamp, which
+would falsely claim every page changed on every deploy), BreadcrumbList from each
+page's own visible trail, and FAQPage only where headings are literally questions.
+
+**Titles:** the full title stays as the h1 and og:title; only `<title>` is
+shortened, by keeping whole colon-separated segments and filling the remainder
+with real words. Nothing invented. `seo_title()` in generate_chapter_deck.py.
+
+**robots.txt has ONE owner: generate_llms_txt.py.** It names 15 AI user agents
+and documents the split that matters: blocking OAI-SearchBot, Claude-SearchBot or
+PerplexityBot removes the site from AI answers entirely, and they look identical
+to training crawlers in a log.
+
+**Eight guest values were not people** (two misspellings of the host's own name,
+a series title, and the bare words Humble, In, My, So). The old check tested
+whether the surname appeared in the transcript, which is useless because
+transcription mangles surnames. `check_guest_names()` now tests the shape.
+
+**Not doable from here:** Search Console data, Lighthouse, rendered views.
+**Worth fixing at source:** several published episode descriptions carry
+`aninder@paragidingatlas.com` and `aninder@paraglidlingatlas.com`, both
+misspelled, so listeners writing in reach nothing.
+
 ## DONE (do not redo)
 - **Nine truncated titles, recovered properly (eighth update).** They now live in
   `episode-titles.json`, verbatim from the RSS feed and **keyed by YouTube video
