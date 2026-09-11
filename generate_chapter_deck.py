@@ -598,7 +598,11 @@ def build(meta, cues, chapters):
         submeta.append("<span>%s</span>" % esc(meta["published_label"]))
     if meta.get("duration_label"):
         submeta.append("<span>%s</span>" % esc(meta["duration_label"]))
-    submeta.append("<span>Full transcript</span>")
+    # "Full transcript" is a claim about the page. On the 13 reels and
+    # cinematics there is no transcript and no rail, so the label was left over
+    # describing something that is not there. User asked for it gone, 2026-09-11.
+    if transcript_expected(meta):
+        submeta.append("<span>Full transcript</span>")
     submeta_html = '<span class="cd-dot"></span>'.join(submeta)
 
     return tmpl.format(

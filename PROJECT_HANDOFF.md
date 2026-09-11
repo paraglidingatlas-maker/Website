@@ -2076,3 +2076,41 @@ is exactly the evidence that should have accompanied the first push.
 
 **Do not collapse the grid on those pages.** `rail_block_html()` returns an
 empty `<aside class="cd-rail">` on purpose, to hold the column open.
+
+## 34. THE "Full transcript" LABEL IS ALSO GONE FROM THOSE 13
+
+A third piece of transcript furniture survived sections 32 and 33: the header
+meta line, `.cd-submeta`, appended `<span>Full transcript</span>` on EVERY
+episode page unconditionally. So the reels still announced a transcript directly
+under the h1 while carrying none. Now gated on `transcript_expected(meta)`.
+
+On 12 of the 13 that label was the only thing in the line, so those pages now
+render `<div class="cd-submeta"></div>`. **The empty div is left on purpose**:
+it holds its 1rem top margin, so the space stays and nothing below it jumps.
+Removing it is a layout change nobody asked for, which is section 33's lesson.
+`touch-the-sky-with-glory` keeps its real name, date and duration and loses only
+the false claim.
+
+Verified by diffing all 93 pages against the previous commit: the 13 differ only
+inside `cd-submeta`, the other 80 are byte identical.
+
+### UNRESOLVED AND VISIBLE: TWO PAGES CONTRADICT THEMSELVES
+`ama-1` and `can-we-steer-a-round-reserve-parachute-urs-haari-answers` have no
+transcript but are deliberately NOT flagged, because they are real conversations
+awaiting Autotekst. So they keep the rail and the transcript section, and they
+also keep the "Full transcript" label. **Their header says "Full transcript"
+while the body says "A transcript for this episode has not been produced yet."**
+
+That is a factual contradiction on a live page. The accurate rule would be to
+show the label only when a transcript actually exists, which is `bool(paras)`
+rather than `transcript_expected`. **This was NOT done, because the user asked
+about 13 specific pages and changing two more without asking is exactly the
+overreach section 33 records.** Raised with the user, awaiting an answer.
+
+### THE PATTERN WORTH NAMING
+Three separate pieces of the same feature were removed in three rounds: the rail
+and transcript body, then the layout correction, then this label. Each was found
+only when the user looked at the page. **A feature is rendered in more places
+than the obvious one. Grep the generator for every mention of the thing being
+removed before claiming it is gone**, rather than removing the block that first
+comes to mind.
