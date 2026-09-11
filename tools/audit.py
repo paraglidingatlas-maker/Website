@@ -424,7 +424,21 @@ def check_drift():
         if os.path.exists(g):
             subprocess.run([sys.executable, g], capture_output=True)
     r = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True)
-    changed = [l[3:] for l in r.stdout.strip().split("\n") if l.strip()]
+    # Only generated output matters here. An uncommitted edit to a source file or
+    # to this script is not drift, and flagging it would train people to ignore
+    # this check, which is the one failure mode it cannot afford.
+    def is_generated(path):
+        return (path.startswith(("episodes/", "knowledge-base/"))
+                or path in ("sitemap.html", "sitemap.xml", "robots.txt", "terms.html",
+                            "privacy-policy.html", "cookie-policy.html",
+                            "participant-agreement.html"))
+    changed = []
+    for line in r.stdout.strip().split("\n"):
+        if not line.strip():
+            continue
+        path = line.split(None, 1)[1].strip().strip('"') if " " in line.strip() else ""
+        if path and is_generated(path):
+            changed.append(path)
     if changed:
         fail("drift", "regenerating changed %d file(s), so hand edits are about to be lost: %s"
              % (len(changed), changed[:6]))
@@ -432,10 +446,136 @@ def check_drift():
         ok("drift", "generated files are in sync with their generators")
 
 
+# ------------------------------------------------------------ structure ----
+def check_structure():
+    """Nesting, duplicate ids, and the small markup faults a browser hides."""
+    unbal, dupid, noopener, emptyhref, emptyanchor = [], [], [], [], []
+    for p in PAGES:
+        h = read(p)
+        stripped = re.sub(r"<(script|style)\b.*?</\1>", "", h, flags=re.S)
+        stripped = re.sub(r"<!--.*?-->", "", stripped, flags=re.S)
+        for tag in ("div", "section", "main", "nav", "footer", "header", "ul", "ol", "form", "picture"):
+            o = len(re.findall(r"<%s\b" % tag, stripped))
+            c = len(re.findall(r"</%s>" % tag, stripped))
+            if o != c:
+                unbal.append("%s <%s> %d open %d close" % (p, tag, o, c))
+                break
+        ids = Counter(re.findall(r'id="([^"]+)"', h))
+        d = {k: v for k, v in ids.items() if v > 1}
+        if d:
+            dupid.append((p, d))
+        for m in re.finditer(r"<a\b[^>]*>", h):
+            t = m.group(0)
+            if 'target="_blank"' in t and "noopener" not in t:
+                noopener.append(p)
+            if re.search(r'href=""', t):
+                emptyhref.append(p)
+        for m in re.finditer(r"<a\b[^>]*>(.*?)</a>", h, re.S):
+            txt = re.sub(r"<[^>]+>", "", m.group(1)).strip()
+            if not txt and "aria-label" not in m.group(0) and "<img" not in m.group(1) and "<svg" not in m.group(1):
+                emptyanchor.append(p)
+    (ok if not unbal else fail)("structure", "unbalanced block tags: %s" % (unbal[:3] or 0))
+    (ok if not dupid else fail)("structure", "duplicate id attributes: %s" % (dupid[:3] or 0))
+    (ok if not noopener else fail)("structure", "target=_blank without noopener: %s" % (sorted(set(noopener))[:3] or 0))
+    (ok if not emptyhref else fail)("structure", "empty href: %s" % (sorted(set(emptyhref))[:3] or 0))
+    (ok if not emptyanchor else warn)("structure", "links with no accessible text: %s" % (sorted(set(emptyanchor))[:3] or 0))
+
+
+def check_canonical_paths():
+    """A canonical that does not match the page's own URL is worse than none."""
+    bad, ogmismatch = [], []
+    for p in PAGES:
+        h = read(p)
+        m = re.search(r'rel="canonical" href="([^"]+)"', h)
+        if not m or "noindex" in h:
+            continue          # a redirect stub points at its destination, correctly
+        want = "https://paraglidingatlas-maker.github.io" + BASE_PATH + p
+        if m.group(1) != want:
+            bad.append((p, m.group(1)))
+        om = re.search(r'property="og:url" content="([^"]+)"', h)
+        if om and om.group(1) != m.group(1):
+            ogmismatch.append(p)
+    (ok if not bad else fail)("canonical", "canonical does not match its own path: %s" % (bad[:3] or 0))
+    (ok if not ogmismatch else fail)("canonical", "og:url disagrees with canonical: %s" % (ogmismatch[:3] or 0))
+
+
+def check_transcripts():
+    """VTT sanity: parses, timestamps ascend, nothing zero length."""
+    badparse, unordered, empty = [], [], []
+    for e in META:
+        f = "transcripts/%s.vtt" % e["slug"]
+        if not os.path.exists(f):
+            continue
+        t = read(f)
+        if not t.lstrip().startswith("WEBVTT"):
+            badparse.append(e["slug"])
+            continue
+        times = []
+        for m in re.finditer(r"([\d:.]+)\s*-->\s*([\d:.]+)", t):
+            try:
+                a, b = secs(m.group(1)), secs(m.group(2))
+            except ValueError:
+                badparse.append(e["slug"]); break
+            if b < a:
+                unordered.append(e["slug"]); break
+            times.append(a)
+        if times != sorted(times):
+            unordered.append(e["slug"])
+        if len(t.split()) < 50:
+            empty.append(e["slug"])
+    (ok if not badparse else fail)("transcripts", "VTT files that do not parse: %s" % (sorted(set(badparse))[:3] or 0))
+    (ok if not unordered else fail)("transcripts", "VTT timestamps out of order: %s" % (sorted(set(unordered))[:3] or 0))
+    (ok if not empty else fail)("transcripts", "VTT files with almost no content: %s" % (empty or 0))
+    outoforder = [e["slug"] for e in META
+                  if [secs(c["at"]) for c in (e.get("chapters") or []) if c.get("at")]
+                  != sorted(secs(c["at"]) for c in (e.get("chapters") or []) if c.get("at"))]
+    (ok if not outoforder else fail)("transcripts", "chapters not in ascending order: %s" % (outoforder or 0))
+
+
+def check_cross_data():
+    """library-data.js and episode-search-data.js must agree with episode-meta."""
+    lib = read("library-data.js") if os.path.exists("library-data.js") else ""
+    mismatch, orphan = [], []
+    for m in re.finditer(r'page:\s*"([a-z0-9\-]+)"[^}]*?title:\s*"((?:[^"\\]|\\.)*)"', lib):
+        slug = m.group(1)
+        title = m.group(2).encode("utf-8").decode("unicode_escape", "surrogatepass")
+        try:
+            title = title.encode("utf-16", "surrogatepass").decode("utf-16")
+        except UnicodeError:
+            pass
+        if slug not in BY_SLUG:
+            orphan.append(slug)
+        elif BY_SLUG[slug]["title"].split("[")[0].strip() != title.split("[")[0].strip():
+            mismatch.append(slug)
+    (ok if not orphan else fail)("cross-data", "library-data rows with no episode: %s" % (orphan[:3] or 0))
+    (ok if not mismatch else warn)("cross-data", "library-data titles disagreeing with meta: %s" % (mismatch[:3] or 0))
+    valid = set(re.findall(r'"([^"]+)":\s*"(?:Core series|[^"]+)"', lib[:2500]))
+    bad = sorted({e["series"] for e in META if valid and e.get("series") and e["series"] not in valid})
+    (ok if not bad else warn)("cross-data", "episodes in a series the library does not define: %s" % (bad or 0))
+
+
+def check_copy():
+    """House style: no em-dashes in copy, no stray double spaces in prose."""
+    em = []
+    for e in META:
+        for field in ("title", "summary"):
+            if "\u2014" in (e.get(field) or ""):
+                em.append((e["slug"], field))
+        for c in (e.get("chapters") or []):
+            if "\u2014" in c["title"]:
+                em.append((e["slug"], "chapter"))
+    (ok if not em else fail)("copy", "em-dashes in episode copy: %s" % (em[:4] or 0))
+    g = read("globe.js") if os.path.exists("globe.js") else ""
+    emg = [l.strip()[:40] for l in g.split("\n") if "\u2014" in l and l.strip().startswith("[")]
+    (ok if not emg else fail)("copy", "em-dashes in globe pin labels: %s" % (emg[:3] or 0))
+
+
 def main():
     check_links(); check_headings(); check_seo(); check_crawler()
     check_a11y(); check_third_party(); check_data(); check_content()
     check_assets(); check_js()
+    check_structure(); check_canonical_paths()
+    check_transcripts(); check_cross_data(); check_copy()
     if DRIFT:
         check_drift()
 
