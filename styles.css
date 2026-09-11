@@ -508,10 +508,21 @@ footer{
    in rem so the logo and the address line scale together if the root size
    changes. The tagline shares the width and centres inside it, so it reads as
    centred under the logo rather than under the whole column. */
-.footer-brand .logo-img{width:12.86rem;height:auto;margin-bottom:0.85rem;}
+.footer-brand .logo-img{width:12.86rem;height:auto;margin-bottom:0.28rem;}
+/* The tagline sits directly under the logo and spans exactly its width, which
+   is how the brand lockup is drawn. Both numbers are measured, not eyeballed:
+   "Touch The Sky With Glory" is 12.9560 em wide in Poppins 700, read from the
+   woff2 advance widths, so 12.86 / 12.9560 = 0.9926rem makes it exactly as wide
+   as the 12.86rem logo. text-align-last:justify is a safety net, not the
+   mechanism: it absorbs the fraction of a pixel that kerning moves, so the two
+   edges line up on every browser rather than nearly lining up. White to match
+   the logo. */
 .footer-tagline{
-  width:12.86rem;text-align:center;
-  color:var(--gray-light);font-size:0.9rem;line-height:1.75;margin:0 0 1.15rem;
+  width:12.86rem;
+  font-family:var(--font-display);font-weight:700;font-size:0.9926rem;
+  color:var(--white);line-height:1.25;
+  text-align:justify;text-align-last:justify;
+  margin:0 0 1.35rem;
 }
 .footer-brand p{color:var(--gray-light);font-size:0.9rem;line-height:1.75;margin:0 0 1rem;}
 .footer-addr{color:var(--gray);font-size:0.82rem;line-height:1.7;}

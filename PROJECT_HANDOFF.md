@@ -2458,3 +2458,35 @@ had to consider it.
 ### Section 40's max-width is still correct and is still there
 `.footer-content{max-width:1400px;margin:0 auto}` now actually applies, along
 with the padding that was always meant to.
+
+## 42. FOOTER TAGLINE STYLED AS THE BRAND LOCKUP, EMAIL REMOVED
+
+The user sent the brand lockup image and asked for the footer tagline to match
+it: same colour as the logo, spanning the logo end to end, and sitting closer.
+
+**Both numbers are measured, not eyeballed**, which is how the 12.86rem logo
+width was derived in the first place. "Touch The Sky With Glory" is **12.9560 em**
+wide in Poppins 700, read from the woff2 advance widths with fontTools. So
+`12.86 / 12.9560 = 0.9926rem` makes the text exactly as wide as the logo.
+
+`text-align-last:justify` is a **safety net, not the mechanism**. The font size
+does the work; justify absorbs the fraction of a pixel that kerning shifts, so
+the two edges line up on every browser rather than nearly lining up. If the
+tagline wording ever changes, **re-measure and change the font-size**; do not
+lean on justify to stretch a different string, because it would spread the word
+gaps instead.
+
+Logo bottom margin 0.85rem to 0.28rem, white, line-height 1.25.
+
+### The email is out of the footer, and ONLY out of the footer
+Removed from 183 files. **Deliberately still present in three places, none of
+which should be stripped:**
+- **8 policy and content pages** where it is the contact route in the prose:
+  privacy policy, cookie policy, terms, participant agreement, safety and
+  disclosure, corrections, mission, podcast. **The privacy policy one is a GDPR
+  requirement.** Do not remove these when tidying.
+- **JSON-LD on 177 pages** as the organisation's contact point. That is what an
+  answer engine reads to know how to reach the business.
+- The enquiry page flow.
+
+187 pages, 92 checks, 0 FAIL, 9 warn.
