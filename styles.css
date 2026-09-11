@@ -511,9 +511,12 @@ footer{
 .footer-brand .logo-img{width:12.86rem;height:auto;margin-bottom:0.28rem;}
 /* The tagline sits directly under the logo and spans exactly its width, which
    is how the brand lockup is drawn. Both numbers are measured, not eyeballed:
-   "Touch The Sky With Glory" is 12.9560 em wide in Poppins 700, read from the
-   woff2 advance widths, so 12.86 / 12.9560 = 0.9926rem makes it exactly as wide
-   as the 12.86rem logo. text-align-last:justify is a safety net, not the
+   "Touch The Sky With Glory" is 12.7880 em wide in Poppins 600, read from the
+   woff2 advance widths with fontTools, so 12.86 / 12.7880 = 1.0056rem makes it
+   exactly as wide as the 12.86rem logo. THE SIZE BELONGS TO THE WEIGHT: a
+   heavier face is wider at the same size, so changing font-weight without
+   re-measuring breaks the alignment. The five measured pairs are
+   400/1.0348, 500/1.0178, 600/1.0056, 700/0.9926, 800/0.9813. text-align-last:justify is a safety net, not the
    mechanism: it absorbs the fraction of a pixel that kerning moves, so the two
    edges line up on every browser rather than nearly lining up. White to match
    the logo. */
@@ -523,8 +526,8 @@ footer{
    did nothing at all. 0,2,0 wins. */
 .footer-brand .footer-tagline{
   width:12.86rem;
-  font-family:var(--font-display);font-weight:700;font-size:0.9926rem;
-  color:var(--white);line-height:1.25;
+  font-family:var(--font-display);font-weight:600;font-size:1.0056rem;
+  color:var(--gray-light);line-height:1.25;
   text-align:justify;text-align-last:justify;
   margin:0 0 1.35rem;
 }

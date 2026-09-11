@@ -2519,3 +2519,40 @@ Postcode and city on one line, country beneath, which is the Norwegian
 convention. The JSON-LD `PostalAddress` fields are separate and were NOT touched.
 
 187 pages, 92 checks, 0 FAIL, 9 warn.
+
+## 44. FOOTER TAGLINE SETTLED: POPPINS 600, 1.0056rem, --gray-light
+
+Chosen by the user from `tagline-options.html`, a 25 cell grid of five weights
+against five shades. **This is the final answer; do not restyle it.**
+```
+.footer-brand .footer-tagline{
+  font-family:var(--font-display); font-weight:600; font-size:1.0056rem;
+  color:var(--gray-light);
+}
+```
+The shade he picked was `#b4b4b4`, which IS `var(--gray-light)`, so the token is
+used rather than the hex. He arrived at an existing design token by eye, which is
+a good sign the palette is doing its job.
+
+### THE SIZE BELONGS TO THE WEIGHT. THIS IS THE THING TO REMEMBER.
+A heavier face is physically wider at the same size, so every weight needs its
+own size to span the 12.86rem logo. All five measured from the woff2 advance
+widths with fontTools:
+```
+400 -> 1.0348rem    500 -> 1.0178rem    600 -> 1.0056rem
+700 -> 0.9926rem    800 -> 0.9813rem
+```
+**Changing `font-weight` without changing `font-size` breaks the alignment**, and
+it breaks it subtly enough to look like a rendering quirk. At 600/1.0056rem the
+text is 12.8596rem against a 12.8600rem logo: **0.006px out**, which
+`text-align-last:justify` absorbs.
+
+Same applies if the wording ever changes: re-measure, do not let justify stretch
+a different string, because it would spread the word gaps instead of scaling.
+
+### A NOTE ON WHY THE EARLIER ATTEMPTS FAILED
+`.footer-brand p` sets BOTH `color` and `font-size:0.9rem` at specificity 0,1,1.
+An unscoped `.footer-tagline` is 0,1,0, so **the measured font size was being
+overridden too, not just the colour.** The tagline was rendering at 0.9rem and
+never spanned the logo at all. Scoping to `.footer-brand .footer-tagline` fixed
+both at once. See section 43.
