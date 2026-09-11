@@ -266,12 +266,30 @@
       if (el && el !== from && el.value !== v) el.value = v;
     });
   }
+  /* Keeping the two boxes in sync was not enough. #q lives inside #landing, and
+     the first keystroke calls show(), which hides #landing. A hidden input
+     cannot hold focus, so the browser dropped the caret and the reader had to
+     click into the other box to type a second character. That is the "it
+     searches after one letter and then I have to click again" report. Whenever
+     the box being typed into has just been hidden by a view swap, hand the caret
+     to its visible twin and put it back at the end of the text. */
+  function keepCaret(from) {
+    if (!from) return;
+    if (from.offsetParent !== null) return;        /* still on screen, nothing to do */
+    var twin = $(from.id === "q" ? "q2" : "q");
+    if (!twin || twin.offsetParent === null) return;
+    twin.focus();
+    var end = twin.value.length;
+    try { twin.setSelectionRange(end, end); } catch (e) { /* older browsers */ }
+  }
   ["q", "q2"].forEach(function (id) {
     var el = $(id);
     if (!el) return;
     el.addEventListener("input", function (ev) {
-      syncBoxes(ev.target, ev.target.value);
-      onSearch(ev.target.value);
+      var typing = ev.target;
+      syncBoxes(typing, typing.value);
+      onSearch(typing.value);
+      keepCaret(typing);
     });
   });
 
