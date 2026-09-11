@@ -24,14 +24,16 @@ img{max-width:100%;display:block;}
 
 /* Custom cursor removed for now, back to default browser cursor */
 
-nav{
+/* Scoped deliberately. A bare nav{} selector also hits the table of contents
+   on the policy pages, which is correctly marked up as a <nav>. */
+.page-wrap > nav{
   position:relative;z-index:20;
   padding:1.5rem clamp(2rem,5vw,4rem);
   display:flex;align-items:center;justify-content:space-between;
   background:linear-gradient(180deg, #2a2c33 0%, #1a1b20 55%, #0f1013 100%);
   clip-path:polygon(24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0 24px);
 }
-nav::before{
+.page-wrap > nav::before{
   content:"";position:absolute;top:0;left:24px;right:24px;height:1px;
   background:linear-gradient(90deg, transparent, var(--orange), transparent);
   opacity:0.8;

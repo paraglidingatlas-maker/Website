@@ -751,6 +751,37 @@ def check_tags():
     (ok if not bad else fail)("tags", "quotes missing from their page: %s" % (bad[:3] or 0))
 
 
+def check_selector_scope():
+    """Bare element selectors that can hit markup they were never meant for.
+
+    This is not theoretical. `nav{...}` in styles.css styled the site header with
+    flex, a gradient and a clip-path, and also silently applied all of it to the
+    table of contents on seven policy pages, which is correctly marked up as a
+    <nav>. The result looked like a corrupted graphic. Scoping the rule fixed it.
+
+    Any element used in page content needs its selector scoped to a class or a
+    parent. Elements listed in SAFE are structural or are styled identically
+    everywhere on purpose.
+    """
+    SAFE = {"html", "body", "a", "p", "img", "svg", "input", "button", "select",
+            "textarea", "cite", "from", "to", "li", "ul", "ol", "strong", "em",
+            "h1", "h2", "h3", "h4", "h5", "h6", "iframe", "video", "audio",
+            "figure", "figcaption", "blockquote", "table", "th", "td", "tr", "hr",
+            "code", "pre", "span", "div", "label", "fieldset", "legend", "time"}
+    bad = []
+    for f in ("styles.css", "policies.css", "tags.css", "episodes/episode.css"):
+        if not os.path.exists(f):
+            continue
+        css = read(f)
+        for m in re.finditer(r"^([a-z][a-z0-9]*)((?:::?[a-z-]+)?)\s*[,{]", css, re.M):
+            tag = m.group(1)
+            if tag in SAFE:
+                continue
+            bad.append("%s: %s" % (f, m.group(0).strip()))
+    (ok if not bad else fail)("css-scope",
+                              "unscoped element selectors that can hit content: %s" % (bad[:4] or 0))
+
+
 def main():
     check_links(); check_headings(); check_seo(); check_crawler()
     check_a11y(); check_third_party(); check_data(); check_content()
@@ -758,7 +789,7 @@ def main():
     check_structure(); check_canonical_paths()
     check_css(); check_orphans(); check_lengths()
     check_rail_parity(); check_jsonld_fields(); check_robots()
-    check_tags()
+    check_tags(); check_selector_scope()
     check_transcripts(); check_cross_data(); check_copy()
     if DRIFT:
         check_drift()

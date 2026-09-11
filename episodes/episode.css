@@ -132,7 +132,7 @@
 /* Audio-only episodes: no video exists, so the player slot shows the episode
    artwork and says so plainly rather than rendering an empty iframe. */
 .cd-player-audio{display:flex;flex-direction:column;align-items:stretch;background:var(--card);}
-.cd-player-audio img{width:100%;height:auto;display:block;aspect-ratio:1/1;object-fit:cover;}
+.cd-player-audio img{width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;}
 .cd-audio-note{margin:0;padding:.85rem 1rem;color:var(--gray-light);font-size:.88rem;line-height:1.6;
   border-top:1px solid #2b2c33;}
 
