@@ -1169,15 +1169,24 @@ method=Image.FASTOCTREE)` for anything with alpha, MEDIANCUT fails on RGBA.
 Do not make this a blanket list: each preconnect costs a connection and a
 site-wide list would make pages slower.
 
-**STILL OPEN, and the next real win: three.js on the homepage.**
-The homepage loads d3, topojson, three.js, gsap and ScrollTrigger, all from three
-different CDNs. They are all at the END of body so they do NOT block first paint,
-which is why this is not urgent. But three.js is used by one file, hero-canvas.js,
-for the hero effect alone, and it is by far the heaviest dependency on the site.
-Two questions for the user, in order: is the hero effect worth it, and if yes,
-can it be done with plain canvas instead. Self hosting all five from npm is the
-fallback option, which removes three DNS and TLS handshakes and matches the no
-third party stance taken everywhere else, but does not reduce bytes.
+**three.js is GONE. Do not reintroduce it for the hero.**
+`hero-canvas.js` used exactly nine three.js symbols to draw a field of soft
+glowing dots: WebGLRenderer, Scene, PerspectiveCamera, BufferGeometry,
+BufferAttribute, Points, PointsMaterial, CanvasTexture and AdditiveBlending. The
+library cost 654 KB, nearly all of it WebGLRenderer pulling in three's shader and
+material system. A tree-shaken bundle of just those nine still came to 454 KB,
+which is what made the decision obvious.
+It is now plain 2D canvas with no dependency, and **every constant was carried
+across unchanged**: 500 particles under 700px wide and 1200 above, a 24 x 14 x 16
+box, rise speed 0.15 to 0.35 scaled by 0.008 a frame, wrap from y > 7 to -7, the
+same white to ember gradient sprite, 0.55 opacity, a 55 degree field of view from
+z = 12, and a 0.04 lerp toward a cursor target scaled by 1.4. Additive blending is
+the `lighter` composite operation. The IntersectionObserver pause is kept, and it
+matters: without it the loop competes with the page's scroll smoothing and makes
+scrolling feel heavy further down.
+The old WebGL version is in git history if the look ever needs comparing.
+d3, topojson, gsap and ScrollTrigger are still needed, and are self hosted in
+`assets/js/`. **The homepage now contacts no third party origin at all.**
 
 ## 18. THE STIEGLER / PAVLOUSEK MIX-UP IS RESOLVED, EXCEPT FOR ONE PAGE
 The user uploaded the AirDesign transcript, which turned out to be byte-for-byte
