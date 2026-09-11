@@ -1939,3 +1939,10 @@ render none. 187 pages, 91 checks, 0 FAIL, 9 warn, warning set unchanged.
 - `.cd-guest-row img`, the 54px circular avatar, is STILL dead CSS. The template
   never emitted an `<img>` and `guest_box_html()` does not either. That is
   unchanged and still needs a photo per guest if it is ever wanted.
+
+### Addendum to section 30: solo episodes say "The Host"
+`guest_box_html()` picks the heading from the data: `"The Host" if name ==
+cfg.FOUNDER else "The Guest"`. Compared against `site_config.FOUNDER`, not a
+literal or a list of slugs, so a sixth solo episode needs no code change and the
+two can never drift. User's call, 2026-09-11.
+Current split: 76 "The Guest", 5 "The Host", 12 with no box at all.
