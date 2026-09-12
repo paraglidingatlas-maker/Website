@@ -20,7 +20,7 @@
 <link rel="preload" href="assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css?v=1f73ef11">
-<link rel="stylesheet" href="styles.css?v=e297274a">
+<link rel="stylesheet" href="styles.css?v=a83ff92e">
 <link rel="icon" type="image/png" href="assets/logo/favicon.png">
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
 <meta name="theme-color" content="#141519">
@@ -504,10 +504,19 @@
   <h2 class="map-heading">Click A Pin, Hear The Story</h2>
   <div class="ep-map" id="epMap">
     <div class="map-popup" id="mapPopup">
-      <p class="popup-guest"></p>
-      <p class="popup-title"></p>
-      <a class="popup-link" href="#" data-hover>Read Episode →</a>
-    </div>
+        <span class="mp-tick tl"></span><span class="mp-tick br"></span>
+        <div class="mp-strip">
+          <span class="mp-co"></span><span class="mp-rng dim"></span><span class="mp-brg dim"></span>
+        </div>
+        <div class="mp-th"><img alt="" loading="lazy"><span class="mp-scan"></span></div>
+        <div class="mp-bd">
+          <p class="mp-kick"></p>
+          <p class="popup-title"></p>
+          <p class="mp-guest"></p>
+          <div class="mp-rd"><span class="mp-ch"></span><span class="mp-dur"></span></div>
+          <a class="popup-link" href="#" data-hover>Open the episode <i>&rarr;</i></a>
+        </div>
+      </div>
   </div>
   <p class="map-caption">Drag to rotate. Click a pin to see the episode.</p>
 </section>
@@ -595,7 +604,8 @@
 <script src="assets/js/gsap.min.js?v=28033e44"></script>
 <script src="assets/js/ScrollTrigger.min.js?v=ad33c2df"></script>
 <script src="script.js?v=44d793b6"></script>
-<script src="globe.js?v=f587abde"></script>
+<script src="globe-episodes.js?v=5ed6afaf"></script>
+<script src="globe.js?v=60c3f7da"></script>
 <script src="hero-canvas.js?v=ce0df431"></script>
 <script src="episode-search-data.js?v=2faf2ee2"></script>
 <script src="episode-search.js?v=f1ae6169"></script>

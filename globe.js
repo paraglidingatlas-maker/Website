@@ -152,9 +152,49 @@
   function showPopup(d) {
     const pos = projection([d.lon, d.lat]);
     if (!pos) return;
-    popupGuest.textContent = 'Paragliding Atlas Podcast';
-    popupTitle.textContent = d.title;
+
+    /* Everything below comes from globe-episodes.js. The popup used to show a
+       hardcoded line, the title and a link, while the range, bearing, episode
+       number, runtime, chapter count and still were all sitting in the site's
+       own data unused.
+
+       Range and bearing are real: great circle distance and initial bearing
+       from the Oslo coordinate printed in the site nav. Six episodes are pinned
+       at the studio itself, where "0 km on 196 degrees" is a rounding artefact
+       rather than a fact, so those say where they are instead. */
+    const slug = d.href.split('/').pop().replace('.html', '');
+    const x = (window.GLOBE_EP || {})[slug] || null;
+    const set = (sel, text) => {
+      const el = popup.querySelector(sel);
+      if (el) el.textContent = text || '';
+    };
+    popupTitle.textContent = (x && x.title) || d.title;
     popupLink.href = d.href;
+    if (x) {
+      const ns = x.lat >= 0 ? 'N' : 'S', ew = x.lon >= 0 ? 'E' : 'W';
+      set('.mp-co', Math.abs(x.lat).toFixed(4) + '\u00B0' + ns + ' ' +
+                    Math.abs(x.lon).toFixed(4) + '\u00B0' + ew);
+      set('.mp-rng', x.home ? 'Oslo studio' : x.km.toLocaleString('en-GB') + ' km');
+      set('.mp-brg', x.home ? '' : String(x.brg).padStart(3, '0') + '\u00B0 ' + x.card);
+      set('.mp-kick', [x.series, x.epno].filter(Boolean).join(' \u00B7 ').toUpperCase());
+      set('.mp-guest', x.guest);
+      set('.mp-ch', x.nch === 1 ? '1 chapter' : (x.nch ? x.nch + ' chapters' : ''));
+      set('.mp-dur', x.dur);
+      const img = popup.querySelector('.mp-th img');
+      const th = popup.querySelector('.mp-th');
+      if (img && th) {
+        if (x.video) {
+          img.src = 'https://i.ytimg.com/vi/' + x.video + '/maxresdefault.jpg';
+          img.onerror = function () {
+            this.onerror = null;
+            this.src = 'https://i.ytimg.com/vi/' + x.video + '/mqdefault.jpg';
+          };
+          th.style.display = '';
+        } else {
+          th.style.display = 'none';   /* audio only: no still to show */
+        }
+      }
+    }
     popup.style.left = pos[0] + 'px';
     popup.style.top = pos[1] + 'px';
     popup.classList.add('visible');
@@ -176,9 +216,15 @@
       .style('cursor', 'pointer')
       .on('click', (event, d) => {
         event.stopPropagation();
-        showPopup(d);
-        stopAutoRotate();
-        resetIdleTimer();
+        /* Turn the pin to the middle before opening the card. The old popup was
+           three lines and could sit anywhere; this one is a full card and would
+           hang off the rim for any pin near the edge. Centring first means it
+           always opens in the same place with room around it, and it reads as
+           the globe answering rather than a box appearing.
+
+           No zoom change: this is a browsing click, not an arrival from a link,
+           so the view should not jump scale under the person's hands. */
+        flyTo(d, !reduceMotion, { zoom: null, ms: 650, thenIdle: true });
       });
 
     // Generous invisible hit area — makes clicking far more forgiving than the visible dot alone
@@ -321,7 +367,8 @@
     });
   }
 
-  function flyTo(d, animate) {
+  function flyTo(d, animate, opts) {
+    opts = opts || {};
     stopAutoRotate();
 
     const r0 = projection.rotate();
@@ -330,7 +377,9 @@
     const dLon = (((-d.lon) - r0[0] + 540) % 360) - 180;
     const r1 = [r0[0] + dLon, -d.lat, r0[2] || 0];
     const s0 = projection.scale();
-    const s1 = baseScale * FLY_ZOOM;
+    /* zoom:null keeps the scale exactly as it is, for a click on a pin. The
+       deep link wants the push in; somebody clicking around does not. */
+    const s1 = (opts.zoom === null) ? s0 : baseScale * (opts.zoom || FLY_ZOOM);
 
     function settle() {
       /* The popup FIRST. Syncing d3.zoom's transform is housekeeping for the
@@ -339,10 +388,12 @@
          have thrown before the popup appeared, and the visitor would have
          watched the globe fly somewhere and then show them nothing. */
       showPopup(d);
+      if (opts.thenIdle) resetIdleTimer(11000);
+      if (opts.zoom === null) return;      /* scale untouched, nothing to sync */
       try {
         /* Keep d3.zoom's own transform in step, or the next wheel event would
            snap back to wherever it thinks the scale is. */
-        svg.call(zoom.transform, d3.zoomIdentity.scale(FLY_ZOOM));
+        svg.call(zoom.transform, d3.zoomIdentity.scale(opts.zoom || FLY_ZOOM));
       } catch (e) {
         /* Worst case the next wheel event jumps once. Not worth losing the
            popup over. */
@@ -358,7 +409,7 @@
     }
 
     d3.transition()
-      .duration(FLY_MS)
+      .duration(opts.ms || FLY_MS)
       .ease(d3.easeCubicInOut)
       .tween('flyTo', () => {
         const ri = d3.interpolate(r0, r1);
@@ -480,12 +531,17 @@
 
   // Resume gentle auto-rotation 5s after the last drag/zoom/click interaction
   let idleTimer = null;
-  function resetIdleTimer() {
+  /* 5 seconds was right for a popup of three lines. The card that replaced it
+     carries a coordinate, a range, a still, a title, a guest, a chapter count
+     and a runtime, and 5 seconds is not long enough to read it before the globe
+     takes it away. A click gets 11; a drag, where nothing is open to read,
+     keeps the original 5. */
+  function resetIdleTimer(ms) {
     if (idleTimer) clearTimeout(idleTimer);
     idleTimer = setTimeout(() => {
       hidePopup();
       if (!reduceMotion) startAutoRotate();
-    }, 5000);
+    }, ms || 5000);
   }
   if (!reduceMotion) startAutoRotate();
 })();

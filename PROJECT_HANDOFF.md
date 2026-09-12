@@ -3222,3 +3222,49 @@ library   episode episodes/... | series knowledge-base/... | topic tags/...
 knowledge ../episodes/...      | ../tags/...               | ../index.html#pin=
 ```
 Shared code, both depths correct.
+
+## 59. THE GLOBE POPUP IS A HUD READOUT NOW
+
+The homepage popup showed a hardcoded line, the title and a link. The range, the
+bearing, the episode number, the runtime, the chapter count and the still were
+all in the site's data already and none of it was used.
+
+### RANGE AND BEARING ARE REAL, WHICH IS THE WHOLE POINT
+`tools/generate_globe_episodes.py` computes great circle distance and initial
+bearing from **the Oslo coordinate printed in the site's own navigation**, using
+each pin's own longitude and latitude. Cuba is 7,987 km out on 282 degrees.
+Colombia is 9,411 km due west.
+
+**A readout that looks like an instrument and prints invented numbers is a
+costume**, and anyone who checked one against a map would find out. Everything on
+that card is either measured or computed.
+
+**Six episodes are pinned at the studio.** For those, "0 km on a bearing of 196
+degrees" is a rounding artefact rather than a fact, so the strip says "Oslo
+studio" and leaves the bearing blank.
+
+### CLICKING A PIN TURNS IT TO THE MIDDLE FIRST
+The old popup was three lines and could sit anywhere. This is a full card and
+would hang off the rim for any pin near the edge. Clicking now calls the same
+`flyTo()` the deep links use, so the globe rotates the pin to centre over 650ms
+and the card always opens in the same place with room around it. It also reads as
+the globe answering rather than a box appearing.
+
+**`zoom: null` on that call.** The deep link pushes in to 14x because it is an
+arrival; a browsing click must not jump scale under the person's hands. The
+option also skips the d3.zoom transform sync, which would otherwise force a
+scale that was never applied.
+
+### The 5 second auto-hide had to change
+`resetIdleTimer()` hid the popup after 5 seconds, which was right for three lines
+and is **not long enough to read a card carrying a coordinate, a range, a still,
+a title, a guest, a chapter count and a runtime**. A pin click now gets 11
+seconds. A drag, where nothing is open to read, keeps the original 5.
+
+### Colour
+The coordinate keeps the orange; the range and bearing beside it drop to the same
+grey as the chapter count below. One bright thing in the strip, and it is the one
+that answers "where in the world is this".
+
+Verified headless with jsdom and real d3: 80 pins render, a click opens the card,
+and every field is populated from the generated data.
