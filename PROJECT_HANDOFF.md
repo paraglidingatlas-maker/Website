@@ -3572,3 +3572,13 @@ and full orange while dragged. Arrow buttons removed. Firefox reads
 **Quietened, not hidden.** A scrollbar nobody can see is a scrollbar nobody knows
 to use. The one exception is the globe popup, which hides its bar because it is
 verified never to need one, and that override is declared after these.
+
+### 62a. THE SMUDGE UNDER THE NAV WAS `.nav-chevron`
+A 6px strip below the bar: `rgba(255,117,23,0.12)` fading to transparent, with a
+clip-path cutting a notch out of the centre so it pointed down.
+
+Under the old dark panel that read as a tail hanging off the bar. **Under the new
+light one it is a warm smudge sitting beside a grey line**, because the nav now
+has its own `border-bottom` doing that job. Two separators, one of them tinted.
+
+Hidden rather than deleted, since the div is in 180 pages. One rule to restore.
