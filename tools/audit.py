@@ -24,6 +24,7 @@ TWO TRAPS BAKED IN, BOTH OF WHICH PRODUCED FALSE ALARMS BEFORE
 """
 import hashlib
 import html
+import glob
 import json
 import os
 import re
@@ -628,6 +629,44 @@ def check_copy():
                                     "em-dashes in visible page copy: %s" % (bad_pages[:3] or 0))
 
 
+# ------------------------------------------------------------------ audio ----
+def check_audio_downloads():
+    """The download links, and whether the map still lines up with the episodes.
+
+    Nothing is hosted here: `mp3-map.json` records addresses on the podcast
+    host's CDN. What CAN go wrong is the map naming a slug that no longer
+    exists, or the format label disagreeing with the file it points at, and
+    neither would be visible on the page.
+    """
+    path = "mp3-map.json"
+    if not os.path.exists(path):
+        warn("audio", "no mp3-map.json; run tools/build_mp3_map.py")
+        return
+    m = json.loads(read(path))
+    slugs = {e["slug"] for e in json.loads(read("episode-meta.json"))}
+    ghosts = sorted(set(m) - slugs)
+    (ok if not ghosts else fail)("audio",
+                                 "mp3-map entries with no episode: %s" % (ghosts[:3] or 0))
+
+    # the label on the page must match the file extension it links to
+    from urllib.parse import unquote as _unq
+    wrong = []
+    for f in glob.glob("episodes/*.html"):
+        html = read(f)
+        hit = re.search(r'href="([^"]+)" download>\s*<span class="cd-dl-v">([A-Z0-9]+),', html)
+        if not hit:
+            continue
+        ext = re.search(r"\.([a-z0-9]{2,4})(?:\?|$)", _unq(hit.group(1)))
+        if ext and ext.group(1).upper() != hit.group(2):
+            wrong.append(os.path.basename(f))
+    (ok if not wrong else fail)("audio",
+                                "pages whose format label disagrees with the file: %s"
+                                % (wrong[:3] or 0))
+
+    have = sum(1 for f in glob.glob("episodes/*.html") if "cd-dl" in read(f))
+    ok("audio", "episode pages offering a download: %d of %d" % (have, len(glob.glob("episodes/*.html"))))
+
+
 # ------------------------------------------------------------------ css ----
 def check_css():
     """Classes used in markup that no stylesheet defines.
@@ -942,7 +981,7 @@ def main():
     check_css(); check_css_parses(); check_orphans(); check_lengths()
     check_rail_parity(); check_jsonld_fields(); check_robots()
     check_tags(); check_selector_scope(); check_guest_names()
-    check_transcripts(); check_cross_data(); check_copy()
+    check_transcripts(); check_cross_data(); check_copy(); check_audio_downloads()
     if DRIFT:
         check_drift()
 

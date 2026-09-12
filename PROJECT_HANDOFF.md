@@ -3074,3 +3074,66 @@ attention to the thin ones: Weather Patterns reads `1 conversation`.
 - Tiles are still real `<a href>`; the popup intercepts the click.
 
 187 pages, 93 checks, 0 FAIL, 9 warn.
+
+## 56. OFFLINE AUDIO DOWNLOADS
+
+**BASELINE CHANGES: 187 pages, 96 checks, 0 FAIL, 9 warn.**
+
+Every episode with audio now offers it for download, on the episode page and in
+the knowledge base popup.
+
+### NOTHING IS HOSTED HERE, AND THAT IS THE WHOLE POINT
+The user's worry was storage and speed. Neither moves. **4.67 GB of audio sits on
+the podcast host's CDN**, where it already is and already serves every podcast
+app. The site records an address, not a copy.
+```
+repo before / after      21 MB / 21 MB
+HTML added               ~170 bytes per page, 15 KB across the site
+requests on page load    0
+bandwidth through site   0, the transfer is CDN to visitor
+```
+A link that is never clicked costs the bytes of its own text.
+
+### `mp3-map.json` IS A CACHE, DELIBERATELY
+`tools/build_mp3_map.py` fetches the feed and writes the map. **`build.sh` never
+touches the network.** If the feed were fetched at build time, an outage would
+silently strip the download link from every page and nothing would notice. Run
+the tool deliberately when episodes are added; `--check` reports staleness
+without writing.
+
+### The matcher, and why it needed a third rule
+Exact title, then unique containment, then **word overlap with a decisive
+margin**: at least 8 shared words and 1.5x the runner up. Seven episodes need
+that last one, because the podcast title and the site title have drifted:
+- the feed says **"Dr Matt Wikes"**, a typo, for Wilkes. **Worth fixing at the
+  source: that is what Spotify and Apple show today.**
+- several episodes were renamed on the site after publication.
+
+**All 80 mappings were printed side by side and read before shipping**, not just
+counted.
+
+### 52 ARE .m4a, NOT .mp3
+The feed declares `audio/mpeg` throughout, but the files are **52 .m4a and 28
+.mp3**. Labelling everything MP3 would have been wrong on two thirds of the
+archive, and wrong in a way somebody only discovers after downloading. The label
+is read from the actual file extension, and **check 95 fails if a page's label
+disagrees with the file it links to** (verified by breaking one on purpose).
+
+### The rail box it replaced was a bug
+"Mentioned in this episode" was a heading with **nothing underneath it on all 93
+pages**, because `resources` is empty on every episode. Related episodes was the
+same on 14. Both are now rendered only when they have content.
+
+**Removing a box here is safe in a way it was not in section 33.** The chapters
+rail is a COLUMN of a three column grid, so removing it collapses the layout.
+These are boxes stacked in normal flow inside one column, so removing one closes
+the gap. Different structure, different rule. Verified before building.
+
+13 episodes have no audio: twelve reels and cinematics that were never audio, and
+one snippet. They get no box and Related moves up.
+
+### Also
+- The card footer glyph is now **expand**, not a right arrow. The arrow promised
+  "this takes you somewhere"; it opens a panel over the page.
+- The heading and the link do not both say "Download audio". The heading names
+  the thing, the link states what you get: "M4A, 51 MB".

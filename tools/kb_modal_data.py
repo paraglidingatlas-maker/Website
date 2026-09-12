@@ -34,6 +34,7 @@ back without anchors and the popup renders them as plain text.
 import json
 import os
 import re
+from urllib.parse import unquote
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -227,7 +228,23 @@ def modal_data(tile_title, tile_guest, series_name, series_page):
 
     lonlat = _pins().get(slug)
 
+    # The audio file, if the podcast feed has one. Address only: the file lives
+    # on the podcast host's CDN and nothing is copied here.
+    audio = None
+    try:
+        with open(os.path.join(ROOT, "mp3-map.json"), encoding="utf-8") as fh:
+            hit = json.load(fh).get(slug)
+        if hit:
+            ext = re.search(r"\.([a-z0-9]{2,4})(?:\?|$)", unquote(hit["url"]))
+            audio = {"url": hit["url"],
+                     "mb": int(round(hit["bytes"] / 1048576)),
+                     "fmt": {"m4a": "M4A", "mp3": "MP3"}.get(
+                         ext.group(1).lower() if ext else "", "Audio")}
+    except (OSError, ValueError):
+        audio = None
+
     return {
+        "audio": audio,
         "slug": slug,
         "page": "../episodes/%s.html" % slug,
         "title": ep.get("title", ""),

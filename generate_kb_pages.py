@@ -82,6 +82,15 @@ RICH_MODAL_ON = "all"
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "tools"))
 import kb_modal_data as KBD
 
+# The footer used a right arrow, which promises "this takes you somewhere". It
+# does not: it opens a panel over the page. This says "expand" instead, which is
+# what actually happens.
+EXPAND_ICON = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" '
+               'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+               '<path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/>'
+               '<path d="M20 20l-6-6"/></svg>')
+
+
 def html_escape(s):
     return (str(s).replace("&", "&amp;").replace("<", "&lt;")
             .replace(">", "&gt;").replace('"', "&quot;"))
@@ -258,8 +267,9 @@ SUBSERIES_CSS = """
   .ep-foot{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 1rem 0.8rem;
     color:var(--gray);font-size:0.72rem;margin-top:auto;}
   .ep-foot .dim{opacity:0.55;}
-  .ep-foot i{font-style:normal;color:var(--orange);display:inline-block;transition:transform 0.18s ease;}
-  .ep-tile:hover .ep-foot i{transform:translateX(3px);}
+  .ep-foot i{font-style:normal;color:var(--orange);display:inline-flex;transition:transform 0.18s ease;}
+  .ep-foot i svg{width:14px;height:14px;}
+  .ep-tile:hover .ep-foot i{transform:scale(1.15);}
   .ep-empty{background:var(--card);border:1px solid rgba(255,117,23,0.2);border-left:3px solid var(--orange);padding:2rem;max-width:1300px;margin:0 auto;color:var(--gray-light);font-size:0.92rem;}
 """
 
@@ -360,7 +370,7 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
                 inner = (stamp + media
                          + '<span class="ep-tile-body"><span class="ep-tile-title">%s</span>%s</span>'
                            % (html_escape(shown_title), guest_line)
-                         + '<span class="ep-foot">%s<i>&rarr;</i></span>' % chapters)
+                         + '<span class="ep-foot">%s<i>%s</i></span>' % (chapters, EXPAND_ICON))
             else:
                 # Not resolved to an episode: keep a plain tile rather than
                 # inventing a card for a conversation we cannot identify.

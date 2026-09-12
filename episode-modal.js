@@ -63,6 +63,10 @@
   }
 
   var PLAY_SVG = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7Z"/></svg>';
+  var DL_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' +
+    '<path d="M4 15v4a1 1 0 001 1h14a1 1 0 001-1v-4"/><path d="M12 4v11"/>' +
+    '<path d="M8 11l4 4 4-4"/></svg>';
   var SHARE_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
     'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' +
     '<path d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7"/><path d="M12 3v13"/>' +
@@ -150,6 +154,15 @@
       ? '<a class="kb-ghost" href="' + esc(d.spotify) + '" target="_blank" rel="noopener">Listen</a>'
       : '';
 
+    /* The audio file, when the podcast feed has one. 13 episodes do not: twelve
+       competition reels that were never audio, and one snippet. They simply get
+       no button rather than a dead one. The size is stated because these run
+       from 1 MB to 153 MB and nobody should start the big one by accident. */
+    var dl = d.audio
+      ? '<a class="kb-sh" href="' + esc(d.audio.url) + '" download>' + DL_SVG +
+        '<span>' + esc(d.audio.fmt) + ' (' + d.audio.mb + ' MB)</span></a>'
+      : '';
+
     return '<div class="kb-card" role="dialog" aria-modal="true" aria-label="' +
       esc(d.title) + '" tabindex="-1">' +
       '<div class="kb-stamp"><a class="kb-coord" href="../index.html#pin=' + esc(d.slug) +
@@ -164,7 +177,7 @@
         '</div>' +
         '<div class="kb-row">' +
           '<a class="kb-cta" href="' + esc(d.page) + '">Open the episode<span>&rarr;</span></a>' +
-          '<span class="kb-actions">' + listen +
+          '<span class="kb-actions">' + listen + dl +
           '<button class="kb-sh" type="button" data-url="' + esc(d.shareUrl || d.page) +
             '" data-title="' + esc(d.title) + '" aria-label="Share this episode">' + SHARE_SVG +
             '<span class="kb-lab">Share</span></button></span>' +

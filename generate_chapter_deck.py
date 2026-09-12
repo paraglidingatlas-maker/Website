@@ -31,6 +31,7 @@ Run: python3 generate_chapter_deck.py [slug ...]
 import html
 import json
 import os
+from urllib.parse import unquote
 import re
 import sys
 
@@ -487,6 +488,84 @@ def seo_title(title):
     return out + BRAND_SUFFIX
 
 
+_MP3_MAP = None
+
+
+def mp3_for(slug):
+    """The episode's MP3 in the podcast feed, or None.
+
+    Read from `mp3-map.json`, which `tools/build_mp3_map.py` writes. The build
+    never touches the network: if the feed were fetched here, an outage would
+    silently strip the download link from every page and nothing would notice.
+
+    NOTHING IS HOSTED HERE. The audio sits on the podcast host's CDN, where it
+    already is and already serves every podcast app. This is an address, not a
+    copy. 4.67 GB of audio, 0 bytes added to the repo, no bandwidth through the
+    site when somebody downloads.
+    """
+    global _MP3_MAP
+    if _MP3_MAP is None:
+        path = os.path.join(ROOT, "mp3-map.json")
+        try:
+            with open(path, encoding="utf-8") as fh:
+                _MP3_MAP = json.load(fh)
+        except (OSError, ValueError):
+            _MP3_MAP = {}
+    return _MP3_MAP.get(slug)
+
+
+def download_box_html(meta):
+    """Offer the MP3, or render nothing at all.
+
+    This replaced a "Mentioned in this episode" box that was a heading with
+    NOTHING underneath it on all 93 pages, because `resources` is empty on every
+    episode. A box promising content and delivering none is worse than no box.
+
+    13 episodes have no MP3: twelve competition reels and cinematics that were
+    never audio, and one snippet. They get no box, and Related episodes moves up
+    to fill the space. That is safe here in a way it was not for the chapters
+    rail in section 33: these are boxes stacked in normal flow inside one
+    column, not columns of a grid, so removing one closes the gap rather than
+    collapsing the layout.
+
+    The heading and the link deliberately do NOT both say "Download audio". The
+    heading names the thing, the link states what you get.
+    """
+    m = mp3_for(meta.get("slug", ""))
+    if not m:
+        return ""
+    mb = int(round(m["bytes"] / 1048576))
+    # The label states the ACTUAL format. The feed is 52 .m4a and 28 .mp3, so
+    # calling everything MP3 would be wrong on two thirds of the archive, and
+    # wrong in a way somebody would only discover after downloading.
+    ext = re.search(r"\.([a-z0-9]{2,4})(?:\?|$)", unquote(m["url"]))
+    label = {"m4a": "M4A", "mp3": "MP3"}.get(ext.group(1).lower() if ext else "", "Audio")
+    return (
+        '      <div class="cd-box">\n'
+        '        <h2>Download audio</h2>\n'
+        '        <a class="cd-dl" href="%s" download>\n'
+        '          <span class="cd-dl-v">%s, %d MB</span>\n'
+        '          <span class="cd-dl-s">Listen offline</span>\n'
+        '        </a>\n'
+        '      </div>\n' % (esc(m["url"]), label, mb)
+    )
+
+
+def related_box_html(meta):
+    """The Related episodes box, or nothing when there are none.
+
+    Empty on 14 episodes. Same reasoning as the download box: a heading over
+    nothing is a bug, not a layout.
+    """
+    inner = render_list(meta.get("related", []))
+    if not inner.strip():
+        return ""
+    return ('      <div class="cd-box">\n'
+            '        <h2>Related episodes</h2>\n'
+            '%s\n'
+            '      </div>\n' % inner)
+
+
 def player_html(meta):
     """The media block.
 
@@ -638,8 +717,8 @@ def build(meta, cues, chapters):
                    if TAG_PULSE_ON == "all" or meta["slug"] in TAG_PULSE_ON
                    else ""),
         guest_box=guest_box_html(meta),
-        resources=render_list(meta.get("resources", [])),
-        related=render_list(meta.get("related", [])),
+        download_box=download_box_html(meta),
+        related_box=related_box_html(meta),
         tags=render_tags(meta.get("tags")),
         quote=render_quote(meta),
         spotify=esc(meta.get("spotify", "https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec")),
