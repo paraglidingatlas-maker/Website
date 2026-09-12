@@ -99,10 +99,12 @@
      the two do not repeat each other. The size is shown so nobody starts a
      100 MB download on mobile data by accident: these run from 1 to 153 MB. */
   .cd-dl{display:block;text-decoration:none;}
-  .cd-dl-v{display:block;color:var(--orange);font-family:var(--font-display);font-weight:600;
+  .cd-dl-v{display:block;color:var(--white);font-family:var(--font-display);font-weight:600;
     font-size:0.95rem;font-variant-numeric:tabular-nums;transition:color 0.18s ease;}
   .cd-dl-s{display:block;color:var(--gray);font-size:0.78rem;margin-top:0.25rem;}
-  .cd-dl:hover .cd-dl-v{color:var(--white);}
+  /* White at rest, orange on hover. The heading above it is already orange, so
+     two orange lines in one small box was one too many. */
+  .cd-dl:hover .cd-dl-v{color:var(--orange);}
 
   .cd-tag{color:var(--gray-light);font-size:0.7rem;padding:0.28rem 0.6rem;text-transform:uppercase;letter-spacing:0.04em;}
   a.cd-tag{border:1px solid rgba(255,117,23,0.25);}
