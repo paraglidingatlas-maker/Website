@@ -636,6 +636,47 @@ def check_copy():
                                     "em-dashes in visible page copy: %s" % (bad_pages[:3] or 0))
 
 
+# ------------------------------------------------------------------ tokens ----
+def _check_tokens_resolve():
+    """Every custom property must resolve to a real value.
+
+    WHY THIS EXISTS. A global find and replace that swapped #2b2c33 for
+    var(--rule) also hit the line DEFINING it, producing `--rule:var(--rule);`.
+    Three tokens became circular. The browser cannot resolve them, so every rule
+    using them fell back to nothing: the Enquire Now button lost its orange
+    gradient and turned grey with dark text on it, and the whole site went
+    noticeably slow while the engine tried and failed to resolve them on every
+    style recalculation.
+
+    One broken line, two symptoms that look unrelated, and nothing in the CSS is
+    invalid enough for a parser to complain about.
+    """
+    css = read("styles.css")
+    m = re.search(r":root\{(.*?)\n\}", css, re.S)
+    if not m:
+        fail("tokens", "no :root block in styles.css")
+        return
+    defs = dict(re.findall(r"(--[a-z-]+)\s*:\s*([^;]+);", m.group(1)))
+
+    circular = [k for k, v in defs.items() if ("var(%s)" % k) in v]
+    (ok if not circular else fail)("tokens",
+                                   "tokens that refer to themselves: %s" % (circular or 0))
+
+    # every var() used anywhere must be defined here
+    used = set()
+    for f in (["styles.css", "episodes/episode.css", "policies.css", "tags.css"]
+              + glob.glob("*.html") + glob.glob("templates/*.html")):
+        if os.path.exists(f):
+            used.update(re.findall(r"var\((--[a-z-]+)", read(f)))
+    # a handful are defined locally on a page rather than in :root
+    local = set()
+    for f in glob.glob("*.html") + glob.glob("templates/*.html"):
+        local.update(re.findall(r"(--[a-z-]+)\s*:", read(f)))
+    missing = sorted(used - set(defs) - local)
+    (ok if not missing else fail)("tokens",
+                                  "var() used but never defined: %s" % (missing[:4] or 0))
+
+
 # ------------------------------------------------------------------ design ----
 def _check_design_tokens():
     """Borders must use a token, and buttons must all be the same shape.
@@ -717,6 +758,7 @@ def check_audio_downloads():
                                 "pages whose format label disagrees with the file: %s"
                                 % (wrong[:3] or 0))
 
+    _check_tokens_resolve()
     _check_design_tokens()
     have = sum(1 for f in glob.glob("episodes/*.html") if "cd-dl" in read(f))
     ok("audio", "episode pages offering a download: %d of %d" % (have, len(glob.glob("episodes/*.html"))))

@@ -3387,3 +3387,33 @@ two days a new check has been wrong before the site was.
 Six borders there survived two passes because the fix was applied to the output
 and `build.sh` overwrote it. **`templates/sitemap-template.html` is the source.**
 Same trap as `core-series.html` in section 53, different file.
+
+### 60a. I BROKE THE SITE AND THE CAUSE WAS ONE LINE
+The user, within minutes: "the site had gotten incredibly slow, and the enquire
+button in the nav has gone grey and unreadable".
+
+**Both symptoms, one cause.** The global find and replace that swapped `#2b2c33`
+for `var(--rule)` also hit the line DEFINING it:
+```
+--rule:var(--rule);
+--ink:var(--ink);
+--orange-lite:var(--orange-lite);
+```
+Three tokens referring to themselves. A browser cannot resolve that, so every
+rule using them fell back to nothing. `.nav-cta`'s background is
+`linear-gradient(180deg, var(--orange-lite), var(--orange))`: with one stop
+unresolvable the whole gradient is invalid, the button lost its orange and kept
+its dark text. **And the site went slow because the engine was failing to resolve
+those three on every style recalculation, on every page.**
+
+Nothing about it is invalid CSS. A parser sees a well formed declaration. The
+`check_css_parses` check added in section 41 passes it happily.
+
+**Checks 101 and 102** now catch it: `tokens that refer to themselves` and
+`var() used but never defined`, both FAIL. Verified by reintroducing the exact
+bug and watching it fail.
+
+**THE LESSON: never run a global replace over a file that also contains the
+definitions.** Replace the usages, then write the definition separately, or
+exclude the `:root` block. This is the fourth time in two days a find and replace
+has taken more than intended, and the first time it reached a visitor.

@@ -31,13 +31,13 @@
      whatever is behind rather than a line. Used 15 times, and already aliased
      as --rule by hand on two pages. Named rather than converted, so no pixel
      moves. */
-  --rule:var(--rule);
+  --rule:#2b2c33;
 
   /* Ink on an orange button, written by hand six times. */
-  --ink:var(--ink);
+  --ink:#171712;
   /* The light stop of the button and progress gradients. A gradient needs two
      values, so this is a real colour rather than drift. */
-  --orange-lite:var(--orange-lite);
+  --orange-lite:#ff8a3d;
 
   --font-display:"Poppins", "Poppins Fallback", Arial, Helvetica, sans-serif;
   --font-body:"DM Sans", "DM Sans Fallback", Arial, Helvetica, sans-serif;
