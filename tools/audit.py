@@ -636,6 +636,55 @@ def check_copy():
                                     "em-dashes in visible page copy: %s" % (bad_pages[:3] or 0))
 
 
+# -------------------------------------------------------------------- type ----
+def _check_card_type_fits():
+    """No homepage card's text may overflow its box.
+
+    A guest's name is whatever length it is. In Poppins 700, "Will Gadd" is
+    5.47 em wide and "Ivelin Kalushkov" is 9.48. At a single font size the
+    second runs past the edge of the plate, which it did. Each card therefore
+    carries its own --hf and --nf, computed from the real advance widths in the
+    woff2 rather than estimated.
+
+    This recomputes the fit from the font and fails if any card's declared size
+    would overflow, so a long name added later cannot quietly break the strip.
+    """
+    try:
+        from fontTools.ttLib import TTFont
+    except ImportError:
+        warn("type", "fontTools not installed, card fit not checked")
+        return
+    data = os.path.join(ROOT, "homepage-cards.json") if "ROOT" in globals() else "homepage-cards.json"
+    if not os.path.exists(data):
+        warn("type", "homepage-cards.json missing")
+        return
+    f = TTFont(os.path.join("assets", "fonts", "poppins-latin-700-normal.woff2"))
+    upm = f["head"].unitsPerEm
+    cmap, hmtx = f.getBestCmap(), f["hmtx"]
+    wid = {chr(c): hmtx[g][0] / upm for c, g in cmap.items()}
+    em = lambda s: sum(wid.get(c, 0.6) for c in s.upper())
+
+    html = read("index.html")
+    bad = []
+    for m in re.finditer(r'--hf:([\d.]+)cqw;--nf:([\d.]+)cqw"(.*?)</a>', html, re.S):
+        hf, nf = float(m.group(1)), float(m.group(2))
+        blk = m.group(3)
+        hook = re.search(r'class="ep-hook">(.*?)</span>', blk, re.S)
+        name = re.search(r'class="ep-name">(.*?)</span>', blk, re.S)
+        if name and em(html_unescape(name.group(1))) * nf > 88.5:
+            bad.append(name.group(1) + " (name)")
+        if hook:
+            longest = max((em(w) for w in html_unescape(hook.group(1)).split()), default=0)
+            if longest * hf > 82.5:
+                bad.append(hook.group(1)[:22] + " (hook word)")
+    (ok if not bad else fail)("type", "card text that would overflow: %s" % (bad[:3] or 0))
+
+
+def html_unescape(s):
+    import html as _h
+    return _h.unescape(s)
+
+
 # ------------------------------------------------------------------ tokens ----
 def _check_tokens_resolve():
     """Every custom property must resolve to a real value.
@@ -758,6 +807,7 @@ def check_audio_downloads():
                                 "pages whose format label disagrees with the file: %s"
                                 % (wrong[:3] or 0))
 
+    _check_card_type_fits()
     _check_tokens_resolve()
     _check_design_tokens()
     have = sum(1 for f in glob.glob("episodes/*.html") if "cd-dl" in read(f))

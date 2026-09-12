@@ -3417,3 +3417,60 @@ bug and watching it fail.
 definitions.** Replace the usages, then write the definition separately, or
 exclude the `:root` block. This is the fourth time in two days a find and replace
 has taken more than intended, and the first time it reached a visitor.
+
+## 61. THE HOMEPAGE GUEST CARDS
+
+**BASELINE CHANGES: 187 pages, 103 checks, 0 FAIL, 9 warn.**
+
+Thirteen real portraits replace the placeholder. **Ten of the fifteen cards were
+showing `photo-needed.png`** and had been for some time; nobody noticed because
+the strip was written by hand and nobody reads fifteen near-identical blocks of
+markup. It is generated now.
+
+### The card
+Portrait, with the supplied plate over it: compass, the episode hook, the two
+rules with PARAGLIDING ATLAS PODCAST between them, and the guest's name. **Hover
+fades the whole plate as ONE object** and brings the portrait up bright with the
+episode detail in its place.
+
+### THE TYPE IS FITTED FROM REAL FONT METRICS
+Each card carries its own `--hf` and `--nf`, computed by
+`tools/generate_homepage_cards.py` from the advance widths in the woff2:
+```
+Poppins 700 cap height          0.7050 em
+artwork sets hook cap at        4.50% of frame height
+artwork sets name cap at        5.45%
+frame is                        1.414x as tall as wide
+  => design sizes are 9.03% and 10.93% of card WIDTH
+```
+Those are ceilings. **"Will Gadd" is 5.47 em wide and "Ivelin Kalushkov" is
+9.48**, so at one size the second overflows, which it did. Seven of the fifteen
+names are scaled down to fit. The hook never runs past two lines, and no single
+word may exceed one line.
+
+**The first version capped the hook at 1rem**, which held it near 16px where 21px
+was correct, and it was hard to read. Sizes are computed now, not chosen.
+
+### Fourteen of fifteen hooks are the user's own
+Only **Gabriel Orsini** was invented, because his existing card title was
+"Risk Vs Reward 5", the series name rather than a title. Everything else is the
+wording that was already on the homepage.
+
+### Check 103
+`card text that would overflow` recomputes the fit from the font and FAILS if any
+declared size would run past its box, so a long name added later cannot quietly
+break the strip. Proved by widening one and watching it fail.
+
+### Two mistakes worth recording
+1. **I had the two supplied files the wrong way round.** `1.png` is the finished
+   Maxime Pinot card and `2.png` is the blank template. Building on the finished
+   one baked his name into all thirteen cards, which is exactly what the user
+   reported. **Check which file is the template before using it.**
+2. **The generator raised "markers not found" on its second run**, because it
+   tested whether the output had changed rather than whether the markers existed.
+   An idempotent generator produces an identical file. Test the marker.
+
+### Still open
+**Dr Matt Wilkes and Helmut Schrempf have no portrait** and still show the
+placeholder. The portraits also sit on a pure red, about #F00001, against the
+site orange #ff7517.

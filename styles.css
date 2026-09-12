@@ -303,18 +303,68 @@ img{max-width:100%;display:block;}
 @media(prefers-reduced-motion: reduce){
   .ep-track{animation:none;overflow-x:auto;}
 }
+/* ===== Homepage guest card ==================================================
+   A portrait with the plate over it: compass, the episode hook, two rules with
+   PARAGLIDING ATLAS PODCAST between them, and the guest's name. Hovering fades
+   the whole plate as ONE object and brings the portrait up bright with the
+   episode detail in its place.
+
+   THE TWO TEXT SIZES COME FROM THE MARKUP, not from here. Each card carries its
+   own --hf and --nf, worked out by tools/generate_homepage_cards.py from the
+   real advance widths in the woff2. A name is whatever length it is: "Will Gadd"
+   is 5.47 em in Poppins 700 and "Ivelin Kalushkov" is 9.48, so one size cannot
+   serve both and the longer one overflowed its box. Seven of the fifteen are
+   scaled down to fit.
+   ========================================================================= */
 .ep-card{
-  flex:0 0 220px;
-  background:var(--card);border:1px solid var(--line);
-  padding:0;transition:border-color 0.2s ease, transform 0.2s ease;
-  display:flex;flex-direction:column;
+  flex:0 0 232px;position:relative;display:block;text-decoration:none;
+  background:var(--card);border:1px solid var(--edge);
+  transition:border-color 0.25s ease, transform 0.25s ease;
 }
-.ep-card:hover{border-color:var(--live);transform:translateY(-3px);}
-.ep-photo{aspect-ratio:3/4;overflow:hidden;}
-.ep-photo img{width:100%;height:100%;object-fit:cover;}
-.ep-title{font-family:var(--font-display);font-weight:700;font-size:0.95rem;color:var(--white);padding:1rem 1rem 0.4rem;line-height:1.35;}
-.ep-name{color:var(--gray-light);font-size:0.82rem;padding:0 1rem;margin-bottom:0.8rem;}
-.ep-link{color:var(--orange);font-size:0.82rem;font-weight:600;padding:0 1rem 1rem;margin-top:auto;}
+.ep-card:hover{border-color:var(--live);transform:translateY(-4px);}
+.ep-card::before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;z-index:9;
+  border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+.ep-stamp{display:flex;justify-content:space-between;padding:0.45rem 0.8rem;font-size:0.55rem;
+  letter-spacing:0.13em;text-transform:uppercase;color:var(--gray);border-bottom:1px solid var(--line);}
+.ep-stamp i{font-style:normal;}
+.ep-art{display:block;position:relative;aspect-ratio:1414/2000;overflow:hidden;background:#000;
+  container-type:inline-size;}
+.ep-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  transition:filter 0.4s ease, transform 0.6s ease;}
+.ep-plate{position:absolute;inset:0;z-index:3;transition:opacity 0.4s ease;
+  background:url("assets/podcast/plate.webp") center/cover no-repeat;}
+/* The rules are baked into the plate at 81.0% and 87.6% of its height, measured
+   from the file, so the hook sits above the first and the name below the second. */
+.ep-hook{position:absolute;left:9%;right:9%;top:63.5%;height:17%;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  font-family:var(--font-display);font-weight:700;font-size:var(--hf);line-height:1.08;
+  letter-spacing:-0.015em;text-transform:uppercase;color:var(--white);
+  text-shadow:0 2px 10px rgba(0,0,0,0.45);}
+.ep-name{position:absolute;left:6%;right:6%;top:88.4%;height:9.4%;
+  display:flex;align-items:center;justify-content:center;white-space:nowrap;
+  font-family:var(--font-display);font-weight:700;font-size:var(--nf);line-height:1;
+  letter-spacing:-0.025em;text-transform:uppercase;color:var(--white);
+  text-shadow:0 2px 10px rgba(0,0,0,0.45);}
+.ep-card:hover .ep-plate{opacity:0;}
+.ep-card:hover .ep-art img{filter:saturate(1.14) brightness(1.12);transform:scale(1.03);}
+.ep-open{position:absolute;z-index:4;left:0;right:0;bottom:0;padding:2.6rem 0.85rem 0.95rem;
+  background:linear-gradient(0deg,rgba(12,13,16,0.9) 30%,rgba(12,13,16,0.35) 66%,transparent);
+  opacity:0;transform:translateY(10px);
+  transition:opacity 0.35s ease 0.08s, transform 0.35s ease 0.08s;}
+.ep-card:hover .ep-open{opacity:1;transform:none;}
+.ep-open .s{display:block;font-size:0.52rem;letter-spacing:0.17em;color:var(--orange);}
+.ep-open .n{display:block;font-family:var(--font-display);font-weight:700;font-size:1rem;
+  color:var(--white);margin:0.25rem 0 0.3rem;line-height:1.15;}
+.ep-open .m{display:block;font-size:0.66rem;color:var(--gray-light);font-variant-numeric:tabular-nums;}
+.ep-open .g{display:inline-block;margin-top:0.5rem;color:var(--orange);font-size:0.72rem;font-weight:600;}
+.ep-foot{display:flex;justify-content:space-between;align-items:center;padding:0.55rem 0.8rem 0.7rem;
+  border-top:1px solid var(--line);color:var(--gray);font-size:0.68rem;font-variant-numeric:tabular-nums;}
+.ep-foot s{text-decoration:none;opacity:0.45;padding:0 0.35rem;}
+.ep-foot i{font-style:normal;color:var(--orange);display:inline-flex;}
+.ep-foot i svg{width:12px;height:12px;}
+@media(prefers-reduced-motion:reduce){
+  .ep-card,.ep-art img,.ep-plate,.ep-open{transition:none;}
+}
 .listen-bar{display:flex;flex-direction:column;gap:1.2rem;}
 .listen-label{color:var(--gray-light);font-size:1rem;}
 .listen-buttons{display:flex;flex-wrap:wrap;gap:0.9rem;}
