@@ -123,7 +123,12 @@
 @media (prefers-reduced-motion:reduce){
   }
 /* a node with nothing under it is a destination, so mark it as one */
-.sm-node:hover .sm-hit,.sm-node:focus .sm-hit{fill:rgba(255,117,23,0.05);}
+/* The hit rectangle stays invisible. It used to fill with orange on hover, which
+   drew a block behind the node rather than highlighting the node: the glyph and
+   the label already turn orange, and that IS the highlight. Keyboard focus still
+   needs a visible mark, so it gets an outline on the node itself. */
+.sm-node:focus-visible .sm-glyph{stroke:var(--orange);}
+.sm-node:focus-visible .sm-hit{fill:none;stroke:var(--live);stroke-width:1;}
 .sm-episode:hover .sm-label,.sm-episode:focus .sm-label{text-decoration:underline;
   text-underline-offset:3px;}
 

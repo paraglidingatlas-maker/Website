@@ -39,7 +39,11 @@
     try { DATA = JSON.parse(holder.textContent); } catch (e) { DATA = null; }
   }
   var BY_SLUG = window.LIB_MODAL || null;
-  if (!DATA && !BY_SLUG && !document.querySelector('.ep-tile')) return;
+  /* What counts as a tile is now the DATA, not the class name. The knowledge
+     base and library use .ep-tile; the homepage guest cards are .ep-card and a
+     quite different shape. Both carry the attribute the popup actually needs. */
+  var SEL = '[data-ep-slug],[data-ep-index]';
+  if (!DATA && !BY_SLUG && !document.querySelector(SEL)) return;
 
   function dataFor(tile) {
     if (BY_SLUG && tile.dataset.epSlug) return BY_SLUG[tile.dataset.epSlug] || null;
@@ -288,7 +292,7 @@
      would be thrown away with them and the popup would stop opening after the
      first click on a chip. */
   document.addEventListener('click', function (ev) {
-    var tile = ev.target.closest ? ev.target.closest('.ep-tile') : null;
+    var tile = ev.target.closest ? ev.target.closest(SEL) : null;
     if (!tile) return;
     if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button !== 0) return;
     ev.preventDefault();

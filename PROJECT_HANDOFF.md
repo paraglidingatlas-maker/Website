@@ -3474,3 +3474,27 @@ break the strip. Proved by widening one and watching it fail.
 **Dr Matt Wilkes and Helmut Schrempf have no portrait** and still show the
 placeholder. The portraits also sit on a pure red, about #F00001, against the
 site orange #ff7517.
+
+### 61a. THE POPUP ON THE HOMEPAGE, AND THE SITEMAP HOVER BLOCK
+
+**The homepage cards open the same popup** the knowledge base and library open,
+so a click shows the episode before committing to the page.
+
+**`episode-modal.js` no longer keys on a class name.** It matched `.ep-tile`,
+which the homepage guest cards are not: they are `.ep-card` and a different shape
+entirely. It now matches `[data-ep-slug],[data-ep-index]`, which is what the
+popup actually needs. **Selecting on the data rather than the styling means a
+fourth caller needs no change here at all.**
+
+**`home-episodes.js` is 29KB for fifteen episodes**, generated alongside the
+cards so the two cannot drift apart. It deliberately does NOT reuse
+`library-episodes.js`, which is 163KB for all 86.
+
+**The sitemap hover block was `.sm-node:hover .sm-hit`**, filling the invisible
+hit rectangle with 5% orange. That draws a block BEHIND the node rather than
+highlighting the node. The glyph already turns orange and so does the label, and
+that is the highlight. Removed. Keyboard focus keeps a visible mark, as an
+outline on the node rather than a fill.
+
+Verified headless: the popup opens from a guest card, every link resolves from
+the site root, and ctrl-click still navigates instead of opening it.
