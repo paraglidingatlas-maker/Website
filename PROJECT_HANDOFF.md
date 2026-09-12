@@ -3512,3 +3512,27 @@ exemption is declared after the rule that would otherwise inherit down to it.
 
 This is the sort of thing that never appears in a code review and is obvious
 within five seconds of using the page.
+
+### 61c. THE SITEMAP OPENS ZOOMED IN
+It opened at k=1, which suited the whole expanded tree rather than the three
+nodes actually on screen, so Home and its children floated in a lot of empty
+space. **`START_K` is now 1.37.** The reset button uses the same constant, so
+reset returns to where the page opened.
+
+**The camera anchor had to move with it.** It held the focused node at a third of
+the way in, which is right at k=1, but the child column sits COLW to the right
+and its label runs on from there, and both scale with the zoom. At 1.9, which was
+the first attempt, the depth-1 labels ran off the right edge.
+```
+k     anchor   the child label ends at   frame is 900
+0.45  297      502
+1.0   297      752      unchanged, no regression
+1.37  236      859      the new default
+2.2    40     1041      pan needed, but that is a deliberate zoom
+```
+`anchorX()` slides the focus left as the zoom rises by exactly enough to keep the
+widest child label in frame, and returns `W*0.33` at k=1.
+
+**Checked arithmetically, because jsdom will not render this graph.** The layout
+constants are in the file (COLW 268, W 900) so the sums are exact, but nothing
+here was confirmed against a real browser.

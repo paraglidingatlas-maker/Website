@@ -58,7 +58,13 @@
     return t;
   }
 
-  var W = 900, H = 640, view = { x: 0, y: 0, k: 1 };
+  /* START_K is the zoom the map opens at. At 1 the first view was Home and its
+     three children floating in a lot of empty space, because the scale suited
+     the whole expanded tree rather than the three nodes actually on screen.
+     1.37 fills the frame with what is there. The range is unchanged: 0.45 out
+     to 2.2 in, from the buttons or the wheel. */
+  var START_K = 1.37;
+  var W = 900, H = 640, view = { x: 0, y: 0, k: START_K };
   var COLW = 268, ROWH = 62;
 
   /* Primary parent, so the two-parent series still form a clean tree.
@@ -98,10 +104,20 @@
      the way in from the left, so the columns you came through stay behind you
      and the new branch has clear space ahead. Zoom never changes by itself,
      which is what stops the whole thing lurching. */
+  /* How far from the left the focused node sits. A third of the way in is right
+     at k=1, but the child column is COLW to the right and its label runs on from
+     there, and both of those scale with the zoom: hold the focus at a third and
+     zooming in pushes the children off the right edge. So the anchor slides left
+     as the zoom rises, by exactly enough to keep the widest child label in
+     frame. At k=1 this returns W*0.33 and nothing changes. */
+  var CHILD_REACH = 470;      // COLW plus a long label, in graph units
+  function anchorX() {
+    return Math.max(40, Math.min(W * 0.33, W - CHILD_REACH * view.k - 20));
+  }
   function camera() {
     var f = byId[focus] || byId.home;
     if (f.tx === undefined) return;
-    view.x = W * 0.33 - f.tx * view.k;
+    view.x = anchorX() - f.tx * view.k;
     view.y = H * 0.5 - f.ty * view.k;
   }
 
@@ -583,7 +599,7 @@
     var before = view.k;
     view.k = Math.max(0.45, Math.min(2.2, view.k * mult));
     if (f.tx !== undefined) {          /* zoom about the node you are on */
-      view.x = W * 0.33 - f.tx * view.k;
+      view.x = anchorX() - f.tx * view.k;
       view.y = H * 0.5 - f.ty * view.k;
     } else {
       view.x = W / 2 - (W / 2 - view.x) * (view.k / before);
@@ -620,7 +636,7 @@
   bind("sm-reset", function () {
     data.nodes.forEach(function (n) { n.open = n.depth < 1; });
     focus = "home";
-    recompute(); layout(); view.k = 1; settle();
+    recompute(); layout(); view.k = START_K; settle();
   });
 
   recompute(); layout(); settle(true);
