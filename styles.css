@@ -415,17 +415,25 @@ img{max-width:100%;display:block;}
      arithmetic, this caps it against the map itself, which is the parent, and
      lets the inside scroll on the rare occasion it needs to. Clipping is now
      impossible rather than merely unlikely. */
-  max-height:calc(100% - 20px);overflow-y:auto;overscroll-behavior:contain;
+  max-height:calc(100% - 20px);overflow:auto;overscroll-behavior:contain;
+  /* The safety net must not announce itself. The card fits at every width from
+     320 to 1400, checked, so this never actually scrolls; hiding the bars stops
+     the browser drawing chrome for a scroll that will not happen. */
+  scrollbar-width:none;-ms-overflow-style:none;
   z-index:5;pointer-events:none;
   /* No transform: globe.js positions the top left corner directly, beside
      the pin and clamped inside the map. It used to be pulled above the pin
      with translate(-50%,-100%), which cannot work for a card taller than
      the space above a centred pin. */
 }
+.map-popup::-webkit-scrollbar{display:none;}
 .map-popup.visible{display:block;pointer-events:auto;}
 .mp-tick{position:absolute;width:14px;height:14px;pointer-events:none;z-index:6;}
-.mp-tick.tl{top:-1px;left:-1px;border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
-.mp-tick.br{bottom:-1px;right:-1px;border-bottom:2px solid var(--orange);border-right:2px solid var(--orange);}
+/* Flush with the border, not one pixel outside it. At -1px they sat OUTSIDE the
+   box, and once the card gained overflow:auto the browser counted that as
+   scrollable area and drew a scrollbar on both edges for the sake of one pixel. */
+.mp-tick.tl{top:0;left:0;border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+.mp-tick.br{bottom:0;right:0;border-bottom:2px solid var(--orange);border-right:2px solid var(--orange);}
 .mp-strip{
   display:flex;justify-content:space-between;gap:0.6rem;padding:0.5rem 0.9rem;
   border-bottom:1px solid rgba(255,117,23,0.28);font-size:0.6rem;letter-spacing:0.1em;

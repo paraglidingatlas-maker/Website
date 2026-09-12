@@ -3320,3 +3320,20 @@ nowhere.
 
 **The lesson: three attempts were spent computing where a box would fit. The
 answer was to cap the box against its container and let the browser do it.**
+
+### 59c. THE SCROLLBARS CAME FROM THE CORNER TICKS
+Capping the card with `overflow:auto` produced a scrollbar on both edges, on a
+card that fits with 130px to spare.
+
+**The cause was `.mp-tick`, positioned at `top:-1px; left:-1px` and
+`bottom:-1px; right:-1px`.** Those decorative corner marks sit ONE PIXEL OUTSIDE
+the box, which is invisible under `overflow:visible` and becomes scrollable area
+the moment the element gains `overflow:auto`. The browser was drawing scroll
+chrome on two axes for the sake of one pixel of decoration.
+
+Ticks moved flush to the border, which looks identical, and the scrollbars are
+hidden as well since the card is verified to fit at every width.
+
+**Worth remembering: adding `overflow:auto` to a container makes every negative
+offset inside it suddenly count.** Corner brackets, focus rings and shadows
+placed just outside a box are all common, all harmless until that moment.
