@@ -401,7 +401,10 @@ img{max-width:100%;display:block;}
 }
 .cta-card{
   position:relative;overflow:hidden;background:#101116;
-  padding:clamp(2.2rem,4vw,3.4rem);border-left:3px solid var(--orange);
+  /* No orange bar down the left. The card already announces itself with the
+     recess, the sheen and the corner bracket, and the bar was a fourth signal
+     doing the same job louder. */
+  padding:clamp(2.2rem,4vw,3.4rem);
   display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start;
 }
 .cta-card::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
