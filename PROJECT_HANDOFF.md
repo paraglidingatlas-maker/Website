@@ -3680,3 +3680,52 @@ column rules between the three cards, nothing across the top
 across the glow again, which is what the previous section fixed. Fading out at
 both edges avoids it, and it is the same device already running along the top of
 the header.
+
+## 65. THE BOOKING CARD
+
+### The stretched WhatsApp button was a borrowed rule
+It used `.listen-btn`, which is built for the podcast page where **seven of them
+share a row** and each takes a quarter. On this card it was the only flexible
+item beside a fixed one, so it took every remaining pixel and its label floated
+in the middle of nothing. **It has its own `.cta-wa` now**; `.listen-btn` is
+untouched and the podcast page still has all seven.
+
+### Two columns, and the actions moved
+Pitch and heading left, what the call covers right, buttons at the foot of the
+list. **A reader decides while reading the four points, not while reading the
+heading**, so the action belongs where they finish. Everything was capped at 560
+to 640px inside a card twice that wide, which is why the right half was empty.
+
+### RECESSED, NOT RAISED
+The card is `#101116`, **darker than the page**, so it reads as a well cut into
+the surface rather than a slab resting on it. A thin sheen along the top edge is
+how a dark panel catches light, and it is the whole trick: you register that the
+card has weight without seeing why.
+
+Tried and rejected: a lit diagonal gradient (what every SaaS page does, and going
+lighter pushes the card toward the page rather than away), and a warm bleed off
+the orange rule (puts orange behind the body copy, which is the one place
+contrast matters). Also tried four generated SVG backgrounds, including a real
+topographic map with an orange index contour every fourth ring. **All rejected in
+favour of nothing**, which costs no bytes and cannot date.
+
+### The two additions that earn their place
+- **The status tag.** "Booking Open" as flat grey is a label; with the globe
+  popup's pulsing dot and the coordinate it is a status, and a status implies
+  somebody is at the other end.
+- **The 30 set large.** The most persuasive fact about this offer is that it costs
+  half an hour and nothing else, and it was buried mid-heading.
+
+### THE SEAM
+`.why`, `.cta-band` and `.podcast` are all `var(--bg)` and were separated by
+hairlines, which put the card in its own compartment. **Both borders around the
+band are gone**, so the page runs continuously and the card is the only object in
+it.
+
+### A selector bug worth remembering
+The prototype used `.cta-card > *:not(.contour-bg)` to lift the columns above the
+background. That is specificity 0,2,1 against `.cta-hud-tag`'s 0,1,0, so **it
+overrode the tag's `position:absolute` back to relative**, the tag joined the grid
+as item one, and every column shifted a cell: tag top left, heading right, list
+bottom left. Fixed by naming the two columns. **A blanket child selector will beat
+the specific rules inside it.**
