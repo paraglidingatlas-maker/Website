@@ -4,7 +4,7 @@
    heading hierarchy and tables that survive a phone. Nothing decorative. */
 
 .pol-hero{padding:clamp(2.8rem,6vw,4.6rem) clamp(1.2rem,5vw,5.5rem) clamp(1.6rem,3vw,2.4rem);
-  border-bottom:1px solid #2b2c33;}
+  border-bottom:1px solid var(--rule);}
 .pol-hero h1{font-family:var(--font-display);font-weight:700;color:var(--white);
   font-size:clamp(1.9rem,4.6vw,3rem);line-height:1.1;margin:.5rem 0 0;letter-spacing:-.01em;}
 .pol-meta{color:var(--gray);font-size:.86rem;margin:1rem 0 0;}
@@ -16,7 +16,7 @@
   .pol-toc{position:sticky;top:1.5rem;}
 }
 
-.pol-toc{border-left:2px solid #2b2c33;padding-left:1.1rem;margin-bottom:2.4rem;}
+.pol-toc{border-left:2px solid var(--rule);padding-left:1.1rem;margin-bottom:2.4rem;}
 .pol-toc h2{font-family:var(--font-display);font-weight:600;color:var(--gray);
   font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;margin:0 0 .9rem;}
 .pol-toc a{display:block;color:var(--gray-light);text-decoration:none;font-size:.86rem;
@@ -26,7 +26,7 @@
 .pol-body{max-width:74ch;}
 .pol-body h2{font-family:var(--font-display);font-weight:600;color:var(--white);
   font-size:clamp(1.15rem,2.3vw,1.45rem);line-height:1.3;margin:2.8rem 0 .9rem;
-  padding-top:1.6rem;border-top:1px solid #2b2c33;}
+  padding-top:1.6rem;border-top:1px solid var(--rule);}
 .pol-body h2:first-child{margin-top:0;padding-top:0;border-top:none;}
 .pol-body h3{font-family:var(--font-display);font-weight:600;color:var(--white);
   font-size:1.02rem;margin:1.8rem 0 .6rem;}
@@ -47,11 +47,11 @@
 .pol-tablewrap{overflow-x:auto;margin:0 0 1.5rem;-webkit-overflow-scrolling:touch;}
 .pol-body table{border-collapse:collapse;width:100%;min-width:34rem;font-size:.9rem;}
 .pol-body th,.pol-body td{text-align:left;vertical-align:top;padding:.75rem .9rem;
-  border:1px solid #2b2c33;color:var(--gray-light);line-height:1.6;}
+  border:1px solid var(--rule);color:var(--gray-light);line-height:1.6;}
 .pol-body th{color:var(--white);font-family:var(--font-display);font-weight:600;
   background:var(--card);font-size:.86rem;}
 
-.pol-contact{border:1px solid #2b2c33;padding:1.4rem 1.5rem;margin:2.4rem 0 0;}
+.pol-contact{border:1px solid var(--rule);padding:1.4rem 1.5rem;margin:2.4rem 0 0;}
 .pol-contact h3{margin-top:0;}
 .pol-contact p{margin:0;}
 

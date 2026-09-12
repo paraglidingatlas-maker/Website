@@ -193,7 +193,11 @@
           '<div>' + specHTML(d) + tagsHTML(d) + '</div>' +
         '</div>' +
         '<div class="kb-row">' +
-          '<a class="kb-cta" href="' + esc(d.page) + '">Open the episode<span>&rarr;</span></a>' +
+          /* The label is wrapped so the counter skew can reach it. A bare text
+             node inside a skewed button comes out italic, because
+             `.kb-cta > *` only selects elements. */
+          '<a class="kb-cta" href="' + esc(d.page) + '"><span>Open the episode</span>' +
+            '<span>&rarr;</span></a>' +
           '<span class="kb-actions">' + listen + dl +
           '<button class="kb-sh" type="button" data-url="' + esc(d.shareUrl || d.page) +
             '" data-title="' + esc(d.title) + '" aria-label="Share this episode">' + SHARE_SVG +
@@ -220,7 +224,7 @@
       (guest ? '<p class="kb-attrib">' + esc(guest) + '</p>' : '') +
       '<p class="kb-sum">' + esc(desc) + '</p>' +
       '<div class="kb-row"><a class="kb-cta" href="' + esc(href) +
-      '">Open the episode<span>&rarr;</span></a></div></div></div>';
+      '"><span>Open the episode</span><span>&rarr;</span></a></div></div></div>';
   }
 
   function openModal(tile) {

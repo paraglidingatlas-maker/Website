@@ -24,6 +24,7 @@ TWO TRAPS BAKED IN, BOTH OF WHICH PRODUCED FALSE ALARMS BEFORE
 """
 import hashlib
 import html
+import collections
 import glob
 import json
 import os
@@ -635,6 +636,53 @@ def check_copy():
                                     "em-dashes in visible page copy: %s" % (bad_pages[:3] or 0))
 
 
+# ------------------------------------------------------------------ design ----
+def _check_design_tokens():
+    """Borders must use a token, and buttons must all be the same shape.
+
+    The site had drifted to TWENTY border greys and TWENTY THREE orange alphas
+    across 145 uses, none of them chosen: each rule wrote its own and nobody
+    could see the accumulation. Tokens fix it once; this stops it returning.
+
+    Deliberately BORDERS ONLY. A glow and a gradient stop are not edges and keep
+    their own values, so this looks at border and outline declarations alone.
+    """
+    files = (["styles.css", "episodes/episode.css", "policies.css", "tags.css"]
+             + glob.glob("*.html"))
+    raw = []
+    for f in files:
+        if not os.path.exists(f):
+            continue
+        body = re.sub(r"/\*.*?\*/", "", read(f), flags=re.S)
+        for m in re.finditer(r"(?:border|outline)[a-z-]*\s*:[^;}]*"
+                             r"rgba\((?:180,\s*180,\s*180|255,\s*117,\s*23),\s*[0-9.]+\)", body):
+            raw.append("%s: %s" % (f, m.group(0)[:44]))
+    (ok if not raw else warn)("design",
+                              "borders not using a token: %d %s" % (len(raw), raw[:2] or ""))
+
+    # One button shape. A skewed button whose label is a bare text node renders
+    # the label italic, which is how three episode page buttons read for months.
+    css = read("styles.css") + "\n" + read("episodes/episode.css")
+    # Anchored at a line start so a value like ".8rem" inside a declaration is
+    # not mistaken for a selector, which is what the first version did.
+    skewed = set(re.findall(r"(?m)^\s*(\.[a-zA-Z][a-zA-Z0-9_-]*)[^{\n]*\{[^}]*skewX\(-10deg\)", css))
+    missing = [s for s in skewed
+               if not re.search(re.escape(s) + r"[ >*a-zA-Z0-9_.,:()-]*\{[^}]*skewX\(10deg\)", css)]
+    (ok if not missing else fail)("design",
+                                  "skewed buttons with no counter skew: %s" % (missing[:3] or 0))
+
+    radii = collections.Counter()
+    for f in files:
+        if not os.path.exists(f):
+            continue
+        for m in re.findall(r"border-radius:\s*([^;}]+)",
+                            re.sub(r"/\*.*?\*/", "", read(f), flags=re.S)):
+            radii[m.strip()] += 1
+    # 50% is a circle, 14px is the play button, 0 is a reset. Anything else is drift.
+    strays = {k: v for k, v in radii.items() if k not in ("50%", "14px", "0")}
+    (ok if not strays else warn)("design", "unexpected border radii: %s" % (strays or 0))
+
+
 # ------------------------------------------------------------------ audio ----
 def check_audio_downloads():
     """The download links, and whether the map still lines up with the episodes.
@@ -669,6 +717,7 @@ def check_audio_downloads():
                                 "pages whose format label disagrees with the file: %s"
                                 % (wrong[:3] or 0))
 
+    _check_design_tokens()
     have = sum(1 for f in glob.glob("episodes/*.html") if "cd-dl" in read(f))
     ok("audio", "episode pages offering a download: %d of %d" % (have, len(glob.glob("episodes/*.html"))))
 

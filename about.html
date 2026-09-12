@@ -24,7 +24,7 @@
 <link rel="preload" href="assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css?v=1f73ef11">
-<link rel="stylesheet" href="styles.css?v=5a267aec">
+<link rel="stylesheet" href="styles.css?v=9cfd19dc">
 <style>
   .about-hero{position:relative;min-height:70vh;display:flex;align-items:flex-end;}
   .about-hero-media{position:absolute;inset:0;z-index:-2;}
@@ -34,7 +34,7 @@
   .about-hero-copy h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.08;color:var(--white);margin-bottom:1rem;}
   .about-hero-copy p{color:var(--gray-light);font-size:1.1rem;max-width:640px;}
 
-  .credential-ticker{overflow:hidden;background:var(--card);border-top:1px solid rgba(180,180,180,0.15);border-bottom:1px solid rgba(180,180,180,0.15);padding:0.9rem 0;position:relative;}
+  .credential-ticker{overflow:hidden;background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:0.9rem 0;position:relative;}
   .credential-ticker::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg, rgba(255,117,23,0.15) 0 1px, transparent 1px 40px);pointer-events:none;}
   .credential-track{display:flex;gap:2.5rem;width:max-content;animation:cred-scroll 26s linear infinite;white-space:nowrap;color:var(--gray-light);font-size:0.9rem;position:relative;}
   .credential-track span.dot{color:var(--orange);}
@@ -42,7 +42,7 @@
   @media(prefers-reduced-motion: reduce){.credential-track{animation:none;overflow-x:auto;}}
 
   /* ===== FLIGHT LOG / MISSION DOSSIER ===== */
-  .dossier{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:var(--bg);border-bottom:1px solid rgba(180,180,180,0.15);}
+  .dossier{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:var(--bg);border-bottom:1px solid var(--line);}
   .dossier-head{margin-bottom:3rem;max-width:700px;}
   .dossier-tag{display:inline-flex;align-items:center;gap:0.5rem;color:var(--orange);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:1rem;}
   .dossier-tag .pulse{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:blip 1.8s ease-in-out infinite;}
@@ -59,7 +59,7 @@
   .log-entry p{color:var(--gray-light);font-size:0.88rem;line-height:1.6;}
 
   .transmission{
-    position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.15);
+    position:relative;background:var(--card);border:1px solid var(--line);
     padding:clamp(1.8rem,4vw,2.8rem);
   }
   .transmission::before,.transmission::after{
@@ -71,7 +71,7 @@
   .transmission p:last-child{margin-bottom:0;}
 
   /* ===== INSTRUMENT STRIP (pillars) ===== */
-  .instrument-strip{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:var(--card);border-bottom:1px solid rgba(180,180,180,0.15);}
+  .instrument-strip{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:var(--card);border-bottom:1px solid var(--line);}
   .instrument-head{max-width:640px;margin:0 auto 3.5rem;text-align:center;}
   .instrument-head .kicker{color:var(--orange);font-size:0.95rem;font-weight:500;margin-bottom:0.8rem;}
   .instrument-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--white);margin-bottom:1rem;}
@@ -92,7 +92,7 @@
   /* ===== FLIGHT CHECKLIST (Navigate/Aviate/Communicate) ===== */
   .checklist-row{
     max-width:800px;margin:3.5rem auto 0;padding:1.4rem 2rem;
-    border:1px dashed rgba(255,117,23,0.35);border-radius:8px;
+    border:1px dashed var(--live);
     display:flex;justify-content:space-around;flex-wrap:wrap;gap:1.2rem;
   }
   .checklist-item{display:flex;align-items:center;gap:0.6rem;}
@@ -120,12 +120,12 @@
   /* ===== MISSION CONTROL PANEL ===== */
   .mission-control{
     position:relative;padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);
-    background:var(--bg);border-bottom:1px solid rgba(180,180,180,0.15);
+    background:var(--bg);border-bottom:1px solid var(--line);
     overflow:hidden;
   }
   .mission-control::before{
     content:"";position:absolute;top:50%;left:50%;width:640px;height:640px;
-    max-width:140vw;border-radius:50%;border:1px solid rgba(255,117,23,0.08);
+    max-width:140vw;border-radius:50%;border:1px solid var(--wash);
     transform:translate(-50%,-50%);
   }
   .mission-title{position:relative;text-align:center;margin-bottom:3rem;}
@@ -137,7 +137,7 @@
   .mc-col.right{align-items:flex-end;}
   .mc-tab{
     display:flex;align-items:center;gap:0.7rem;
-    background:var(--card);border:1px solid rgba(255,117,23,0.25);
+    background:var(--card);border:1px solid var(--live);
     padding:0.8rem 1.6rem;color:var(--gray-light);font-size:0.92rem;font-weight:500;
     width:100%;max-width:280px;transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
@@ -164,7 +164,7 @@
     .dossier-grid{grid-template-columns:1fr;}
     .instrument-row{grid-template-columns:1fr 1fr;gap:2.5rem 1rem;}
     .instrument-row::before{display:none;}
-    .checklist-row{border-radius:16px;justify-content:center;}
+    .checklist-row{justify-content:center;}
   }
   @media(max-width:560px){
     .instrument-row{grid-template-columns:1fr;}

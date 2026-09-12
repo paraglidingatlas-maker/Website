@@ -600,7 +600,7 @@ def player_html(meta):
             '          loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"\n'
             '          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>\n'
             '      </div>\n' % (esc(vid), esc(meta["title"])))
-        listen = '        <a class="cd-lbtn" href="https://www.youtube.com/watch?v=%s" target="_blank" rel="noopener">Watch on YouTube</a>\n' % esc(vid)
+        listen = '        <a class="cd-lbtn" href="https://www.youtube.com/watch?v=%s" target="_blank" rel="noopener"><span>Watch on YouTube</span></a>\n' % esc(vid)
     else:
         art = meta.get("artwork") or "../assets/images/hero.jpg"
         media = (
@@ -613,8 +613,12 @@ def player_html(meta):
         listen = ""
     return (media
             + '\n      <div class="cd-listen">\n' + listen
-            + '        <a class="cd-lbtn" href="%s" target="_blank" rel="noopener">Listen on Spotify</a>\n' % esc(spotify)
-            + '        <a class="cd-lbtn" href="%s" target="_blank" rel="noopener">Listen on Apple</a>\n' % esc(apple)
+            # The label is wrapped so .cd-lbtn span can counter skew it. The
+            # button is skewed 10 degrees and a bare text node inside it comes
+            # out italic: these three have been reading that way all along, and
+            # it only became obvious once every button on the site was skewed.
+            + '        <a class="cd-lbtn" href="%s" target="_blank" rel="noopener"><span>Listen on Spotify</span></a>\n' % esc(spotify)
+            + '        <a class="cd-lbtn" href="%s" target="_blank" rel="noopener"><span>Listen on Apple</span></a>\n' % esc(apple)
             + '      </div>\n')
 
 

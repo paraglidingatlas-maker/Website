@@ -3337,3 +3337,53 @@ hidden as well since the card is verified to fit at every width.
 **Worth remembering: adding `overflow:auto` to a container makes every negative
 offset inside it suddenly count.** Corner brackets, focus rings and shadows
 placed just outside a box are all common, all harmless until that moment.
+
+## 60. DESIGN TOKENS FOR EDGES, AND ONE BUTTON SHAPE
+
+**BASELINE CHANGES: 187 pages, 100 checks, 0 FAIL, 9 warn.**
+
+```
+border greys    20 values, 85 uses   ->  --line --edge --edge-hi
+orange alphas   23 values, 60+ uses  ->  --live --wash
+solid hairline  15 hand written      ->  --rule
+ink on orange   6 hand written       ->  --ink
+button shapes   4                    ->  1, skewed 10 degrees
+stray radii     8px 16px 20px        ->  none
+```
+135 token uses across the site.
+
+### The hex colours were mostly NOT the problem
+The first audit flagged eighteen off palette colours. Reading each one in
+context, **fifteen were doing a job a token cannot do**: gradient stops, SVG
+`lighting-color` and `fill` attributes, which cannot take a CSS variable at all.
+**The real drift was invisible**: there was no border token, so every rule wrote
+its own and the site accumulated twenty greys nobody had chosen.
+
+### TOKENS ARE FOR BORDERS ONLY, AND THAT HAD TO BE LEARNED TWICE
+The first pass replaced every matching `rgba()` anywhere and **put `var(--live)`
+inside fifteen box-shadows and gradients**, where it means nothing. A glow is not
+an edge. The work was reverted and redone against border and outline declarations
+only. **Naming a shadow after a border is how a token stops meaning anything.**
+
+### A skewed button needs its label wrapped
+`transform:skewX(-10deg)` skews the text too, so every skewed button counter
+skews an inner element back. **Three episode page buttons had a bare text node
+and have been rendering italic for months** (Watch on YouTube, Listen on Spotify,
+Listen on Apple). Nobody spotted it because they were the only skewed buttons on
+that page and there was nothing upright beside them to compare against. Wrapped
+in the generator.
+
+### Checks 98 to 100
+- `borders not using a token` (warn)
+- `skewed buttons with no counter skew` (**fail**)
+- `unexpected border radii` (warn), allowing 50% for circles, 14px for the play
+  button and 0 for resets
+
+**Its first version reported `.8rem` and `.3` as selectors**, because the regex
+matched any dot followed by characters. Anchored to a line start. Second time in
+two days a new check has been wrong before the site was.
+
+### AND sitemap.html IS GENERATED
+Six borders there survived two passes because the fix was applied to the output
+and `build.sh` overwrote it. **`templates/sitemap-template.html` is the source.**
+Same trap as `core-series.html` in section 53, different file.

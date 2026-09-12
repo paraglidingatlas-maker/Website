@@ -38,9 +38,9 @@
 .sm-cat{margin-bottom:2.4rem;}
 .sm-cat h2{font-family:var(--font-display);font-weight:700;font-size:0.78rem;
   color:var(--orange);text-transform:uppercase;letter-spacing:0.14em;
-  padding-bottom:0.5rem;border-bottom:1px solid rgba(180,180,180,0.16);margin-bottom:0.2rem;}
+  padding-bottom:0.5rem;border-bottom:1px solid var(--line);margin-bottom:0.2rem;}
 
-.sm-series{border-bottom:1px solid rgba(180,180,180,0.1);}
+.sm-series{border-bottom:1px solid var(--line);}
 .sm-series summary{list-style:none;cursor:pointer;padding:0.95rem 0.2rem;
   display:flex;flex-wrap:wrap;align-items:baseline;gap:0.35rem 1rem;
   transition:color 0.15s ease;}
@@ -65,10 +65,10 @@
 .sm-eps a.sm-out::after{content:" \2197";color:var(--gray);font-size:0.78rem;}
 
 /* network graph */
-.sm-graph{position:relative;background:#101116;border:1px solid rgba(180,180,180,0.1);
+.sm-graph{position:relative;background:#101116;border:1px solid var(--line);
   margin:2.2rem 0 1rem;overflow:hidden;}
 .sm-graph::before,.sm-graph::after{content:"";position:absolute;width:12px;height:12px;
-  border-color:rgba(255,117,23,0.4);z-index:3;pointer-events:none;}
+  border-color:var(--live);z-index:3;pointer-events:none;}
 .sm-graph::before{top:9px;left:9px;border-left:1px solid;border-top:1px solid;}
 .sm-graph::after{bottom:9px;right:9px;border-right:1px solid;border-bottom:1px solid;}
 #sm-svg{display:block;width:100%;height:640px;cursor:grab;touch-action:pan-y;}
@@ -135,10 +135,10 @@
 .sm-go{color:var(--orange);text-decoration:underline;text-underline-offset:3px;
   font-size:0.8rem;white-space:nowrap;}
 .sm-ctrl{display:flex;gap:0.4rem;}
-.sm-ctrl button{background:none;border:1px solid rgba(180,180,180,0.2);color:var(--gray);
+.sm-ctrl button{background:none;border:1px solid var(--edge);color:var(--gray);
   font-family:var(--font-body);font-size:0.78rem;padding:0.34rem 0.8rem;cursor:pointer;
   min-width:2.1rem;transition:all 0.16s ease;}
-.sm-ctrl button:hover{color:var(--gray-light);border-color:rgba(180,180,180,0.42);}
+.sm-ctrl button:hover{color:var(--gray-light);border-color:var(--edge-hi);}
 @media (max-width:720px){#sm-svg{height:440px;}}
 </style>
 </head>
