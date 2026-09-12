@@ -3659,3 +3659,24 @@ shortens to 120px of bleed.
 Worth revisiting: centred body copy in a narrow column is harder to read than
 left-aligned, because every line starts in a different place. One line to change
 if it reads badly at length.
+
+### 64a. THE BOUNDARY LINE, AND THE LID I ACCIDENTALLY DREW
+Removing the destination's border so the glow would not be cut left **112px of
+undifferentiated dark with no marker in it.** The glow is only about 2% at that
+height, so it was not yet doing the job the border used to.
+
+Meanwhile the grid had grown a `border-top`, **which reads as the lid of a box:
+exactly the thing the card borders were removed to avoid.**
+
+The line moved up. Three lines now, each doing a different job and none of them
+drawing a box:
+```
+.why-rule    at the boundary, a hairline that FADES AT BOTH ENDS
+.why-mark    short orange, under the intro, argument from evidence
+column rules between the three cards, nothing across the top
+```
+
+**The fade is the point.** A plain hairline at that boundary would cut straight
+across the glow again, which is what the previous section fixed. Fading out at
+both edges avoids it, and it is the same device already running along the top of
+the header.

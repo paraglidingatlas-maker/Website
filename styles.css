@@ -317,6 +317,25 @@ img{max-width:100%;display:block;}
 
    The destination directly above drops its border for the same reason: a
    hairline would have cut straight through it. */
+/* THE BOUNDARY LINE, FADING AT BOTH ENDS.
+   The destination above dropped its border so the glow would not be cut, which
+   left 112px of undifferentiated dark with no marker in it: the glow is only
+   about 2% at that height and was not yet doing the job the border used to.
+
+   A plain hairline here would cut straight across the glow again. One that fades
+   out at both edges does not, and it is the same device already running along
+   the top of the header. */
+.why-rule{
+  position:absolute;z-index:1;top:0;left:0;right:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg, transparent,
+    rgba(180,180,180,0.28) 22%, rgba(180,180,180,0.28) 78%, transparent);
+}
+/* The short mark separates the argument from the evidence. It does the job the
+   grid's top border was doing, without drawing the lid of a box around three
+   columns we deliberately unboxed. */
+.why-mark{
+  display:block;width:56px;height:2px;background:var(--orange);margin:2rem auto 0;
+}
 .why-glow{
   position:absolute;z-index:0;pointer-events:none;
   left:50%;transform:translateX(-50%);top:-180px;
@@ -337,8 +356,7 @@ img{max-width:100%;display:block;}
 /* Equal columns. It was 1fr 1.3fr 1fr, so the widest column held the middle
    card while the LONGEST copy sat in a narrow one: 425, 442 and 287 characters
    against widths that had nothing to do with them. */
-.why-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:0;
-  border-top:1px solid var(--line);}
+.why-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
 /* No box. The grid draws the separation with rules, the way the rest of the
    site does, and without a box there is nothing to equalise: each column ends
    where its own copy ends. */
