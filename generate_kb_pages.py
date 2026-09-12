@@ -320,6 +320,10 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
 
 # ── Icons ────────────────────────────────────────────────────────────────
 ICONS = {
+    # Only used by the Core Series page. They came over when that page was
+    # converted from hand-written to generated, and had never existed here.
+    "compass": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-6 2 2-6Z" fill="currentColor" stroke="none"/></svg>',
+    "star": '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9l-6.2 3.5 1.6-6.8-5.2-4.6 6.9-.7Z"/></svg>',
     "flag": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 20l6-11 4 6.5L16 9l5 11Z"/></svg>',
     "trophy": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4h8v4a4 4 0 0 1-8 0V4Z"/><path d="M6 5H4a2 2 0 0 0 0 4h2M18 5h2a2 2 0 0 1 0 4h-2M12 12v3M9 20h6M10 17h4v3h-4z"/></svg>',
     "scale": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 7l-3 6a3 3 0 0 0 6 0l-3-6ZM19 7l-3 6a3 3 0 0 0 6 0l-3-6ZM5 7h14M8 21h8"/></svg>',
@@ -376,6 +380,32 @@ subseries_page(
 )
 
 # ── Competitions & Performance category + sub-series ────────────────────
+# ── Core Series ──────────────────────────────────────────────────────────
+# Converted from a hand-written page on 2026-09-11. It was created in the SAME
+# commit as this generator (42382fd) but left out of it, so for two days every
+# site-wide change updated 17 knowledge base pages and silently skipped this one.
+# The nav, the footer and the breadcrumbs all had to be repaired here by hand
+# before anyone noticed the pattern. Content below is the hand-written page's
+# own wording, extracted verbatim; the generated output was diffed against it.
+category_page(
+    "core-series", "Core Series",
+    "This comprehensive collection is divided into three main sections, each designed to inspire, equip, and build your understanding of free flight from the ground up.",
+    [
+        {"slug": "navigators", "icon": ICONS["compass"], "name": "Navigators",
+         "desc": "Our flagship series covers navigation and route planning for exploring new flying sites, with insights from experts native to each area.",
+         "points": ["In-depth site breakdowns", "Local weather patterns &amp; triggers",
+                    "Airspace rules and regulations", "Proven best practices (and mistakes to avoid)"]},
+        {"slug": "sky-gods", "icon": ICONS["star"], "name": "Sky Gods",
+         "desc": "Meet the legends who have redefined chasing airtime in paragliding \u2014 true pioneers of free flight, in-depth profiles and stories.",
+         "points": ["Career journeys and milestones", "Training philosophies",
+                    "Personal rituals and mindset", "Lessons from elite performance"]},
+        {"slug": "living-the-dream", "icon": ICONS["flag"], "name": "Living The Dream",
+         "desc": "Ever wondered how to break free from the 9-5 and make a living off the art of flight? Real career paths in paragliding.",
+         "points": ["Career opportunities in paragliding", "Business and income pathways",
+                    "Lifestyle and work balance", "Long-term sustainability insights"]},
+    ],
+)
+
 category_page(
     "competitions", "Competitions & Performance",
     "Take a tour into the thrilling world of racing paragliders and learn how to push your performance boundaries safely and effectively — strategies, training techniques, and mindset from the pilots who have done it all.",

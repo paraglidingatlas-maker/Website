@@ -2946,3 +2946,45 @@ section 39, and now this.
 
 **If a change touches knowledge base pages, `core-series.html` needs doing by
 hand. It is not generated and no amount of rebuilding will reach it.**
+
+## 53. core-series.html IS GENERATED NOW. THE TRAP IS CLOSED.
+
+**18 of the 19 knowledge base pages are generated. The only hand-maintained one
+left is `index.html`, the portal**, which is genuinely one of a kind and not part
+of any series, so hand-writing it is defensible.
+
+### How the trap came to exist
+`knowledge-base/core-series.html` and `generate_kb_pages.py` were created in the
+**same commit**, 42382fd on 2026-09-09. The generator was written to build 17 of
+the 19 pages and two were hand-written alongside it. Nothing was wrong at the
+time; everything matched. The damage is all later: every site-wide change since
+updated 17 pages and silently skipped this one.
+
+**It had been repaired by hand three times in one day before the pattern was
+noticed:** the nav (section 29), the footer (section 39) and the breadcrumbs
+(section 52). Each time it looked identical to its neighbours, so nothing pointed
+at it.
+
+### How the conversion was checked
+1. **Structural comparison first.** The hand page and a generated category page
+   use exactly the same classes and the same three-card layout, so there was no
+   hidden reason for it to be special.
+2. **Content extracted verbatim** from the page itself, not rewritten.
+3. **Two icons had to be added to `ICONS`**, `compass` and `star`. They existed
+   only on this page and had never been in the generator.
+4. **The generated output was diffed against the saved original.** Visible text
+   is identical apart from one thing: the `<title>` went from
+   `Core Series — Knowledge Base: Paragliding Atlas` to
+   `Core Series | Paragliding Atlas`, which **matches the other four category
+   pages and drops an em-dash**. A fix, not a regression.
+5. **Proved by sabotage.** The generated file was edited to say "SABOTAGED",
+   `build.sh` was run, and the page came back correct. Before today that edit
+   would have survived every future build.
+
+### STILL THERE, NOT FIXED, RAISED
+- **The Sky Gods card description contains an em-dash**: "redefined chasing
+  airtime in paragliding — true pioneers of free flight". It is now in the
+  generator, carried over verbatim rather than silently reworded, because it is
+  the user's copy. **It violates the no-em-dash rule at the top of this file.**
+- **Every category page title uses an em-dash in `_seo_title`'s older form**
+  elsewhere on the site. Worth a sweep at some point.
