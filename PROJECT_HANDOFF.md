@@ -3582,3 +3582,33 @@ light one it is a warm smudge sitting beside a grey line**, because the nav now
 has its own `border-bottom` doing that job. Two separators, one of them tinted.
 
 Hidden rather than deleted, since the div is in 180 pages. One rule to restore.
+
+## 63. THE DESTINATION SECTIONS: TWO CAPS REMOVED
+
+The gap under each destination was different, and two caps were causing it.
+
+**`.dest-copy` had `max-width:560px`** inside a cell 812px wide at 1920. That put
+**252px of empty space to the right of every heading**, growing on a wider screen.
+
+**`.dest-media img` had `max-height:520px`** while the copy runs to about 550.
+Whichever was shorter left a band of background under it, and because the copy
+length differs by section, so did the band. **That is why no two gaps matched.**
+
+Both gone. The image is now exactly as tall as the words beside it.
+
+### THE PARAGRAPH LIMIT STAYS, AND THAT IS THE POINT
+`.dest-copy p` keeps `max-width:46ch`. Past roughly 75 characters a line the eye
+loses its place on the return sweep, which is a real effect and worth designing
+around. **A heading is read in a glance rather than scanned line by line, so it
+has no such problem** and gains from the width: "The Majestic Himalayas: A
+Paraglider's Ultimate Frontier" was breaking to three lines and reading as a
+stack rather than a sentence.
+
+### Checked before shipping
+All four photographs are 1600x1200. At the cell width they render 754px tall
+naturally against the roughly 550px the copy needs, so **every image is cropped
+LESS than before and none can be stretched.** The mobile breakpoint is one column,
+where nothing sits side by side, so its `min-height:320px` floor is unaffected.
+
+**A section with much longer copy would make a taller image.** The four are within
+about 60px of each other so it does not show today.

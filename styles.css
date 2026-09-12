@@ -252,10 +252,26 @@ img{max-width:100%;display:block;}
 .destination.reverse .dest-media{order:2;}
 .destination.reverse .dest-copy{order:1;}
 .dest-media{overflow:hidden;}
-.dest-media img{width:100%;height:100%;min-height:400px;max-height:520px;object-fit:cover;}
+/* NO max-height. It was 520px while the copy beside it runs to about 550, so
+   whichever was shorter left a band of background under it, and because the copy
+   length differs by section, so did the band. That is why no two gaps matched.
+   The picture is now exactly as tall as the words next to it.
+
+   Safe on every photo here: all four are 1600x1200, which at this cell width
+   renders 754px tall naturally against the roughly 550px the copy needs. They
+   are cropped LESS than before, never stretched. */
+.dest-media img{width:100%;height:100%;min-height:400px;object-fit:cover;}
+/* NO max-width. The cap was 560px inside a cell 812px wide at 1920, leaving
+   252px empty to the right of every heading, growing on a wider screen.
+
+   The PARAGRAPH keeps its own limit below, and that is the one that matters: past
+   about 75 characters a line the eye loses its place on the return sweep. A
+   heading is read in a glance, not scanned line by line, so it has no such
+   problem and reads better wide. "The Majestic Himalayas: A Paraglider's Ultimate
+   Frontier" was breaking to three lines and reading as a stack. */
 .dest-copy{
   display:flex;flex-direction:column;justify-content:center;gap:1rem;
-  padding:clamp(1.8rem,4vw,3.2rem);max-width:560px;
+  padding:clamp(1.8rem,4vw,3.2rem);
 }
 .kicker{color:var(--orange);font-size:0.95rem;font-weight:500;}
 .dest-copy h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--white);}
