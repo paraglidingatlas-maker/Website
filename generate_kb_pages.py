@@ -82,6 +82,11 @@ RICH_MODAL_ON = "all"
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "tools"))
 import kb_modal_data as KBD
 
+def html_escape(s):
+    return (str(s).replace("&", "&amp;").replace("<", "&lt;")
+            .replace(">", "&gt;").replace('"', "&quot;"))
+
+
 def _rich(slug, series_title, episodes):
     """Resolve every tile on a page to its episode, or give up cleanly.
 
@@ -213,18 +218,48 @@ SUBSERIES_CSS = """
   .point-row span{color:var(--gray-light);font-size:0.82rem;position:relative;padding-left:1rem;}
   .point-row span::before{content:"▸";position:absolute;left:0;color:var(--orange);}
   .ep-body{padding:0 clamp(1.5rem,5vw,4rem) clamp(4rem,9vw,6rem);background:var(--bg);}
-  .ep-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:1.3rem;max-width:1300px;margin:0 auto;}
+  /* Series page figures. Real counts, computed at build time from the episodes
+     actually on the page, so they cannot drift from what is shown below them. */
+  .ep-stats{display:flex;gap:2rem;flex-wrap:wrap;padding:0.85rem 0;margin:0 0 1.2rem;
+    border-top:1px solid rgba(180,180,180,0.16);border-bottom:1px solid rgba(180,180,180,0.16);}
+  .ep-stats span{color:var(--gray);font-size:0.78rem;}
+  .ep-stats b{color:var(--white);font-family:var(--font-display);font-weight:600;
+    font-size:0.95rem;margin-right:0.35rem;font-variant-numeric:tabular-nums;}
+
+  /* The tile. It replaced a flat #8a1c1c gradient box that carried a title and a
+     guest and nothing else, while the data behind it held a still, a runtime and
+     a chapter count. The red was not in the palette either. */
+  .ep-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(278px, 1fr));gap:1.3rem;max-width:1300px;margin:0 auto;}
   .ep-tile{
-    cursor:pointer;
-    position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.15);
-    text-decoration:none;overflow:hidden;aspect-ratio:16/10;display:flex;align-items:flex-end;
-    transition:border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    display:flex;flex-direction:column;position:relative;cursor:pointer;text-decoration:none;
+    background:var(--card);border:1px solid rgba(180,180,180,0.22);
+    transition:border-color 0.2s ease, transform 0.2s ease;
   }
-  .ep-tile:hover{border-color:rgba(255,117,23,0.45);box-shadow:0 0 24px rgba(255,117,23,0.18);transform:translateY(-3px);}
-  .ep-tile-bg{position:absolute;inset:0;background:linear-gradient(135deg,#3a1010,#8a1c1c);}
-  .ep-tile-overlay{position:relative;padding:1.2rem;background:linear-gradient(0deg, rgba(10,10,12,0.9), transparent 70%);width:100%;}
-  .ep-tile-title{font-family:var(--font-display);font-weight:700;font-size:0.98rem;color:var(--white);margin-bottom:0.3rem;line-height:1.3;}
-  .ep-tile-guest{color:var(--orange);font-size:0.8rem;font-weight:600;}
+  .ep-tile:hover{border-color:rgba(255,117,23,0.45);transform:translateY(-3px);}
+  .ep-tile::before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;z-index:4;
+    border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+  .ep-stamp{display:flex;justify-content:space-between;padding:0.42rem 1rem;font-size:0.6rem;
+    letter-spacing:0.11em;text-transform:uppercase;color:var(--gray);font-variant-numeric:tabular-nums;}
+  .ep-stamp i{font-style:normal;}
+  .ep-th{display:block;position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;
+    border-top:1px solid rgba(180,180,180,0.16);border-bottom:1px solid rgba(180,180,180,0.16);}
+  .ep-th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  /* Eight episodes were never filmed and carry the placeholder artwork. Labelling
+     them stops that placeholder reading as an image that failed to load. */
+  .ep-audio{position:absolute;z-index:3;top:0.6rem;right:0.6rem;font-size:0.55rem;letter-spacing:0.11em;
+    text-transform:uppercase;color:var(--gray-light);background:rgba(12,13,16,0.8);
+    border:1px solid rgba(180,180,180,0.16);padding:0.16rem 0.4rem;}
+  .ep-tile-body{display:block;padding:0.85rem 1rem 0.7rem;flex:1;}
+  /* Clamped to two lines: titles on this site run from 30 to 133 characters, and
+     without this one card in a row is twice the height of its neighbour. */
+  .ep-tile-title{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+    font-family:var(--font-display);font-weight:600;font-size:0.88rem;color:var(--white);line-height:1.32;}
+  .ep-tile-guest{display:block;color:var(--gray-light);font-size:0.78rem;margin-top:0.3rem;}
+  .ep-foot{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 1rem 0.8rem;
+    color:var(--gray);font-size:0.72rem;margin-top:auto;}
+  .ep-foot .dim{opacity:0.55;}
+  .ep-foot i{font-style:normal;color:var(--orange);display:inline-block;transition:transform 0.18s ease;}
+  .ep-tile:hover .ep-foot i{transform:translateX(3px);}
   .ep-empty{background:var(--card);border:1px solid rgba(255,117,23,0.2);border-left:3px solid var(--orange);padding:2rem;max-width:1300px;margin:0 auto;color:var(--gray-light);font-size:0.92rem;}
 """
 
@@ -268,6 +303,25 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
     rich, unresolved = _rich(slug, title, episodes)
     if unresolved:
         print("  %s: could not resolve %d tile(s): %s" % (slug, len(unresolved), unresolved))
+
+    # Figures for the header, counted from the episodes actually on this page so
+    # they can never disagree with the grid underneath them. A series where none
+    # of this is known gets no stats line rather than a row of zeros.
+    stats_html = ""
+    if rich:
+        got = [d for d in rich if d]
+        mins = sum(int(re.sub(r"\D", "", d["dur"]) or 0) for d in got)
+        chaps = sum(d["nchapters"] for d in got)
+        words = sum(KBD.transcript_words(d["slug"]) for d in got)
+        bits = ["<span><b>%d</b> conversation%s</span>" % (len(got), "" if len(got) == 1 else "s")]
+        if mins:
+            bits.append("<span><b>%dh %02dm</b></span>" % (mins // 60, mins % 60)
+                        if mins >= 60 else "<span><b>%d min</b></span>" % mins)
+        if chaps:
+            bits.append("<span><b>%d</b> chapters</span>" % chaps)
+        if words:
+            bits.append("<span><b>{:,}</b> words transcribed</span>".format(words))
+        stats_html = '<div class="ep-stats">%s</div>' % "".join(bits)
     if episodes:
         parts = []
         for i, e in enumerate(episodes):
@@ -277,14 +331,45 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
             # still what a person sees: episode-modal.js intercepts the click.
             href = d["page"] if d else e.get("readmore", "../podcast.html")
             data_idx = f' data-ep-index="{i}"' if d else ""
+
+            if d:
+                # The guest is in the title on almost every episode, and often in
+                # the artwork too, so printing both says it twice or three times.
+                shown_title, shown_guest = KBD.display_title(d["title"], d["guest"])
+                if d["video"]:
+                    src = "https://i.ytimg.com/vi/%s/maxresdefault.jpg" % d["video"]
+                    onerr = (' onerror="this.onerror=null;this.src=&#39;'
+                             "https://i.ytimg.com/vi/%s/mqdefault.jpg&#39;\"" % d["video"])
+                    badge = ""
+                else:
+                    src = d.get("artwork") or "../assets/images/artwork-needed.png"
+                    onerr = ""
+                    badge = '<span class="ep-audio">Audio only</span>'
+                n = d["nchapters"]
+                # "1 chapters" and "0 chapters" both read as a bug. Four episodes
+                # have none at all and one has exactly one.
+                chapters = ("%d chapters" % n if n > 1 else
+                            "1 chapter" if n == 1 else
+                            '<span class="dim">No chapters yet</span>')
+                media = ('<span class="ep-th"><img loading="lazy" src="%s" alt=""%s>%s</span>'
+                         % (src, onerr, badge))
+                stamp = ('<span class="ep-stamp">%s<i>%s</i></span>'
+                         % (d["epno"] or "&nbsp;", d["dur"] or ""))
+                guest_line = ('<span class="ep-tile-guest">%s</span>' % html_escape(shown_guest)
+                              if shown_guest else "")
+                inner = (stamp + media
+                         + '<span class="ep-tile-body"><span class="ep-tile-title">%s</span>%s</span>'
+                           % (html_escape(shown_title), guest_line)
+                         + '<span class="ep-foot">%s<i>&rarr;</i></span>' % chapters)
+            else:
+                # Not resolved to an episode: keep a plain tile rather than
+                # inventing a card for a conversation we cannot identify.
+                inner = ('<span class="ep-tile-body"><span class="ep-tile-title">%s</span>'
+                         '<span class="ep-tile-guest">%s</span></span>'
+                         % (e['title'], e['guest']))
+
             parts.append(f"""
-    <a class="ep-tile" href="{href}"{data_idx} data-title="{e['title'].replace('"', '&quot;')}" data-guest="{e['guest']}" data-desc="{e.get('desc', '')}" data-readmore="{e.get('readmore', '../podcast.html')}" data-yt-id="{e.get('yt_id', '')}">
-      <div class="ep-tile-bg"></div>
-      <div class="ep-tile-overlay">
-        <p class="ep-tile-title">{e['title']}</p>
-        <p class="ep-tile-guest">{e['guest']}</p>
-      </div>
-    </a>""")
+    <a class="ep-tile" href="{href}"{data_idx} data-title="{e['title'].replace('"', '&quot;')}" data-guest="{e['guest']}" data-desc="{e.get('desc', '')}" data-readmore="{e.get('readmore', '../podcast.html')}" data-yt-id="{e.get('yt_id', '')}">{inner}</a>""")
         tiles = "".join(parts)
         ep_html = f'<div class="ep-grid">{tiles}\n  </div>'
         if rich:
@@ -300,6 +385,7 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
   <p class="breadcrumb"><a href="../knowledge-base.html">Knowledge Base</a> / <a href="{category_slug}.html">{category_title}</a> / {title}</p>
   <h1>{title}</h1>
   <p>{intro}</p>
+  {stats_html}
   <div class="point-row">{point_html}</div>
 </header>
 

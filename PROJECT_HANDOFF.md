@@ -3022,3 +3022,55 @@ One such comment remains in `podcast.html` and is correctly ignored.
 
 Verified by putting an em-dash back into `knowledge-base.html` and watching the
 check FAIL with the page name and the surrounding words, then removing it again.
+
+## 55. THE SERIES PAGE CARD, BUILT
+
+The flat red tile is gone. All **81 tiles across 13 series pages** are now the
+card designed over several rounds of prototypes:
+
+corner bracket, a stamp bar with **episode number and runtime**, the still full
+width, the title clamped to two lines, the guest underneath **only where the
+title was just their name**, and a footer reading **"N chapters"**.
+
+**Nothing else was added to the footer, deliberately.** Runtime was considered
+and rejected because it is already in the stamp bar two centimetres away.
+Position in series, published date, topic count and transcript words were all
+measured for coverage and all rejected: chapters is the only figure on the card
+that hints at STRUCTURE rather than size, and it is the thing the popup then
+delivers by listing them.
+
+### The old tile was worse than it looked
+`.ep-tile-bg` was `linear-gradient(135deg,#3a1010,#8a1c1c)`. **That red is not in
+the palette at all.** Every tile on every series page was a flat red box carrying
+a title and a guest, while the data behind it already held a still, a runtime and
+a chapter count.
+
+### Three things in the data, not the styling
+1. **The guest is in the title on almost every episode**, and often in the artwork
+   too, so the old tile said it twice and the artwork made it three times.
+   `display_title()` in `tools/kb_modal_data.py` removes a title segment **only
+   when it is essentially just the name**. A looser rule cut "Metacognition:
+   Paragliding's Hidden Psychology with Beni Kalin" down to "Metacognition".
+   **39 of 81 tiles now show no guest line because the title already carries it.**
+2. **Titles run from 30 to 133 characters.** Clamped to two lines with the footer
+   pinned, or one card in a row is twice the height of its neighbour.
+3. **"1 chapters" and "0 chapters".** One episode has exactly one chapter and four
+   have none. They read "1 chapter" and "No chapters yet". The same
+   pluralisation bug was live in the popup's spec sheet and is fixed there too.
+
+### Header figures
+Each series page now carries real counts computed from **the episodes actually on
+that page**, so they cannot drift from the grid below: conversations, total
+runtime, total chapters, words transcribed. Risk vs Reward reads
+`12 conversations / 14h 04m / 123 chapters / 144,711 words transcribed`.
+
+**It cuts both ways and that was raised.** It sells the big series and draws
+attention to the thin ones: Weather Patterns reads `1 conversation`.
+
+### Held
+- **81 crawlable links** from knowledge base to episode pages, unchanged.
+- **8 audio-only episodes** carry an "Audio only" badge, so the placeholder
+  artwork does not read as an image that failed to load.
+- Tiles are still real `<a href>`; the popup intercepts the click.
+
+187 pages, 93 checks, 0 FAIL, 9 warn.

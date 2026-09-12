@@ -90,6 +90,57 @@ def _anchors(slug):
     return out
 
 
+def transcript_words(slug):
+    """Words in an episode's transcript, or 0 if it has none.
+
+    Used for the figure in the series page header. Counted from the VTT rather
+    than stored, so it can never drift from the file it describes. The timestamp
+    lines, the WEBVTT header and the speaker labels are stripped first, or the
+    count would be inflated by roughly a third.
+    """
+    path = os.path.join(ROOT, "transcripts", slug + ".vtt")
+    if not os.path.exists(path):
+        return 0
+    text = open(path, encoding="utf-8").read()
+    text = re.sub(r"[\d:.]+ --> [\d:.]+", "", text)
+    text = re.sub(r"WEBVTT|\[SPEAKER_\d+\]:|\[Automatic captions[^\]]*\]", "", text)
+    return len(" ".join(text.split()).split())
+
+
+def display_title(title, guest):
+    """The title with the guest's name taken out, plus the name, when it is safe.
+
+    Almost every episode title on this site already contains the guest, so a card
+    showing the title AND the guest says it twice, and the artwork often says it a
+    third time.
+
+    A title segment is only dropped when it is ESSENTIALLY JUST THE NAME. A looser
+    rule, dropping any segment that mentions the guest, cut "Metacognition:
+    Paragliding's Hidden Psychology with Beni Kalin & Heli Schrempf" down to
+    "Metacognition" and threw the subject away. Returns (title, guest_or_None):
+    None means the name is still in the title and should not be printed again.
+    """
+    g = (guest or "").strip()
+    if not g:
+        return title, None
+    names = [n.strip() for n in re.split(r"\s*&\s*", g) if n.strip()]
+
+    def just_a_name(part):
+        rest = part
+        for n in names:
+            rest = re.sub(re.escape(n), "", rest, flags=re.I)
+        rest = re.sub(r"[^A-Za-z0-9]+", " ", rest).strip()
+        return len(rest) <= max(3, len(part) * 0.25)
+
+    for sep in (" | ", " : ", ": ", " - "):
+        if sep in title:
+            parts = [p.strip() for p in title.split(sep)]
+            keep = [p for p in parts if not just_a_name(p)]
+            if keep and len(keep) < len(parts):
+                return sep.join(keep), g
+    return title, (None if any(n.lower() in title.lower() for n in names) else g)
+
+
 def _tag_page(tag):
     slug = tag.lower().replace(" ", "-")
     return ("tags/%s.html" % slug

@@ -37,18 +37,48 @@
   .point-row span{color:var(--gray-light);font-size:0.82rem;position:relative;padding-left:1rem;}
   .point-row span::before{content:"▸";position:absolute;left:0;color:var(--orange);}
   .ep-body{padding:0 clamp(1.5rem,5vw,4rem) clamp(4rem,9vw,6rem);background:var(--bg);}
-  .ep-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:1.3rem;max-width:1300px;margin:0 auto;}
+  /* Series page figures. Real counts, computed at build time from the episodes
+     actually on the page, so they cannot drift from what is shown below them. */
+  .ep-stats{display:flex;gap:2rem;flex-wrap:wrap;padding:0.85rem 0;margin:0 0 1.2rem;
+    border-top:1px solid rgba(180,180,180,0.16);border-bottom:1px solid rgba(180,180,180,0.16);}
+  .ep-stats span{color:var(--gray);font-size:0.78rem;}
+  .ep-stats b{color:var(--white);font-family:var(--font-display);font-weight:600;
+    font-size:0.95rem;margin-right:0.35rem;font-variant-numeric:tabular-nums;}
+
+  /* The tile. It replaced a flat #8a1c1c gradient box that carried a title and a
+     guest and nothing else, while the data behind it held a still, a runtime and
+     a chapter count. The red was not in the palette either. */
+  .ep-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(278px, 1fr));gap:1.3rem;max-width:1300px;margin:0 auto;}
   .ep-tile{
-    cursor:pointer;
-    position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.15);
-    text-decoration:none;overflow:hidden;aspect-ratio:16/10;display:flex;align-items:flex-end;
-    transition:border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    display:flex;flex-direction:column;position:relative;cursor:pointer;text-decoration:none;
+    background:var(--card);border:1px solid rgba(180,180,180,0.22);
+    transition:border-color 0.2s ease, transform 0.2s ease;
   }
-  .ep-tile:hover{border-color:rgba(255,117,23,0.45);box-shadow:0 0 24px rgba(255,117,23,0.18);transform:translateY(-3px);}
-  .ep-tile-bg{position:absolute;inset:0;background:linear-gradient(135deg,#3a1010,#8a1c1c);}
-  .ep-tile-overlay{position:relative;padding:1.2rem;background:linear-gradient(0deg, rgba(10,10,12,0.9), transparent 70%);width:100%;}
-  .ep-tile-title{font-family:var(--font-display);font-weight:700;font-size:0.98rem;color:var(--white);margin-bottom:0.3rem;line-height:1.3;}
-  .ep-tile-guest{color:var(--orange);font-size:0.8rem;font-weight:600;}
+  .ep-tile:hover{border-color:rgba(255,117,23,0.45);transform:translateY(-3px);}
+  .ep-tile::before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;z-index:4;
+    border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+  .ep-stamp{display:flex;justify-content:space-between;padding:0.42rem 1rem;font-size:0.6rem;
+    letter-spacing:0.11em;text-transform:uppercase;color:var(--gray);font-variant-numeric:tabular-nums;}
+  .ep-stamp i{font-style:normal;}
+  .ep-th{display:block;position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;
+    border-top:1px solid rgba(180,180,180,0.16);border-bottom:1px solid rgba(180,180,180,0.16);}
+  .ep-th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  /* Eight episodes were never filmed and carry the placeholder artwork. Labelling
+     them stops that placeholder reading as an image that failed to load. */
+  .ep-audio{position:absolute;z-index:3;top:0.6rem;right:0.6rem;font-size:0.55rem;letter-spacing:0.11em;
+    text-transform:uppercase;color:var(--gray-light);background:rgba(12,13,16,0.8);
+    border:1px solid rgba(180,180,180,0.16);padding:0.16rem 0.4rem;}
+  .ep-tile-body{display:block;padding:0.85rem 1rem 0.7rem;flex:1;}
+  /* Clamped to two lines: titles on this site run from 30 to 133 characters, and
+     without this one card in a row is twice the height of its neighbour. */
+  .ep-tile-title{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+    font-family:var(--font-display);font-weight:600;font-size:0.88rem;color:var(--white);line-height:1.32;}
+  .ep-tile-guest{display:block;color:var(--gray-light);font-size:0.78rem;margin-top:0.3rem;}
+  .ep-foot{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 1rem 0.8rem;
+    color:var(--gray);font-size:0.72rem;margin-top:auto;}
+  .ep-foot .dim{opacity:0.55;}
+  .ep-foot i{font-style:normal;color:var(--orange);display:inline-block;transition:transform 0.18s ease;}
+  .ep-tile:hover .ep-foot i{transform:translateX(3px);}
   .ep-empty{background:var(--card);border:1px solid rgba(255,117,23,0.2);border-left:3px solid var(--orange);padding:2rem;max-width:1300px;margin:0 auto;color:var(--gray-light);font-size:0.92rem;}
 
 </style>
@@ -174,46 +204,17 @@
   <p class="breadcrumb"><a href="../knowledge-base.html">Knowledge Base</a> / <a href="industry.html">Industry & Community</a> / The Dark Side: Learning from Incidents</p>
   <h1>The Dark Side: Learning from Incidents</h1>
   <p>Understand accidents and incidents through detailed analysis to improve awareness and safety.</p>
+  <div class="ep-stats"><span><b>5</b> conversations</span><span><b>5h 54m</b></span><span><b>43</b> chapters</span><span><b>58,204</b> words transcribed</span></div>
   <div class="point-row"><span>Incident case studies</span><span>Root cause analysis</span><span>Contributing factors</span><span>Preventive lessons and insights</span></div>
 </header>
 
 <div class="ep-body">
   <div class="ep-grid">
-    <a class="ep-tile" href="../episodes/bill-belcourt-the-uncomfortable-truth-no-one-is-talking.html" data-ep-index="0" data-title="The Uncomfortable Truth No One is Talking About in the Current Safety Paradox" data-guest="Bill Belcourt" data-desc="" data-readmore="../podcast.html" data-yt-id="">
-      <div class="ep-tile-bg"></div>
-      <div class="ep-tile-overlay">
-        <p class="ep-tile-title">The Uncomfortable Truth No One is Talking About in the Current Safety Paradox</p>
-        <p class="ep-tile-guest">Bill Belcourt</p>
-      </div>
-    </a>
-    <a class="ep-tile" href="../episodes/survived-15-years-of-flying-then-a-rescue-helicopter.html" data-ep-index="1" data-title="Survived 15 Years of Flying, Then a Rescue Helicopter Changed Everything" data-guest="Nick Neynes" data-desc="" data-readmore="../podcast.html" data-yt-id="">
-      <div class="ep-tile-bg"></div>
-      <div class="ep-tile-overlay">
-        <p class="ep-tile-title">Survived 15 Years of Flying, Then a Rescue Helicopter Changed Everything</p>
-        <p class="ep-tile-guest">Nick Neynes</p>
-      </div>
-    </a>
-    <a class="ep-tile" href="../episodes/the-unfiltered-truth-about-paragliding-governance-with.html" data-ep-index="2" data-title="The Unfiltered Truth About Paragliding Governance" data-guest="Bill Hughes &amp; Goran Dimiskovski" data-desc="" data-readmore="../podcast.html" data-yt-id="">
-      <div class="ep-tile-bg"></div>
-      <div class="ep-tile-overlay">
-        <p class="ep-tile-title">The Unfiltered Truth About Paragliding Governance</p>
-        <p class="ep-tile-guest">Bill Hughes &amp; Goran Dimiskovski</p>
-      </div>
-    </a>
-    <a class="ep-tile" href="../episodes/insights-from-the-gaggle-with-tilen-ceglar-stan.html" data-ep-index="3" data-title="Insights From The Gaggle" data-guest="Tilen Ceglar &amp; Stan Radzikowski" data-desc="" data-readmore="../podcast.html" data-yt-id="">
-      <div class="ep-tile-bg"></div>
-      <div class="ep-tile-overlay">
-        <p class="ep-tile-title">Insights From The Gaggle</p>
-        <p class="ep-tile-guest">Tilen Ceglar &amp; Stan Radzikowski</p>
-      </div>
-    </a>
-    <a class="ep-tile" href="../episodes/what-is-civlresign-with-julien-garcia.html" data-ep-index="4" data-title="#CIVLRESIGN" data-guest="Julien Garcia" data-desc="" data-readmore="../podcast.html" data-yt-id="">
-      <div class="ep-tile-bg"></div>
-      <div class="ep-tile-overlay">
-        <p class="ep-tile-title">#CIVLRESIGN</p>
-        <p class="ep-tile-guest">Julien Garcia</p>
-      </div>
-    </a>
+    <a class="ep-tile" href="../episodes/bill-belcourt-the-uncomfortable-truth-no-one-is-talking.html" data-ep-index="0" data-title="The Uncomfortable Truth No One is Talking About in the Current Safety Paradox" data-guest="Bill Belcourt" data-desc="" data-readmore="../podcast.html" data-yt-id=""><span class="ep-stamp">Episode 59<i>76 min</i></span><span class="ep-th"><img loading="lazy" src="https://i.ytimg.com/vi/YyGdTDXC1Lc/maxresdefault.jpg" alt="" onerror="this.onerror=null;this.src=&#39;https://i.ytimg.com/vi/YyGdTDXC1Lc/mqdefault.jpg&#39;"></span><span class="ep-tile-body"><span class="ep-tile-title">The Uncomfortable Truth No One is Talking about in the Current Safety Paradox</span><span class="ep-tile-guest">Bill Belcourt</span></span><span class="ep-foot">10 chapters<i>&rarr;</i></span></a>
+    <a class="ep-tile" href="../episodes/survived-15-years-of-flying-then-a-rescue-helicopter.html" data-ep-index="1" data-title="Survived 15 Years of Flying, Then a Rescue Helicopter Changed Everything" data-guest="Nick Neynes" data-desc="" data-readmore="../podcast.html" data-yt-id=""><span class="ep-stamp">Episode 68<i>73 min</i></span><span class="ep-th"><img loading="lazy" src="https://i.ytimg.com/vi/BceEzHgylwo/maxresdefault.jpg" alt="" onerror="this.onerror=null;this.src=&#39;https://i.ytimg.com/vi/BceEzHgylwo/mqdefault.jpg&#39;"></span><span class="ep-tile-body"><span class="ep-tile-title">Survived 15 Years of Flying Then a Rescue Helicopter Changed Everything | A Talk With Nick Neynes</span></span><span class="ep-foot">10 chapters<i>&rarr;</i></span></a>
+    <a class="ep-tile" href="../episodes/the-unfiltered-truth-about-paragliding-governance-with.html" data-ep-index="2" data-title="The Unfiltered Truth About Paragliding Governance" data-guest="Bill Hughes &amp; Goran Dimiskovski" data-desc="" data-readmore="../podcast.html" data-yt-id=""><span class="ep-stamp">Episode 60<i>86 min</i></span><span class="ep-th"><img loading="lazy" src="https://i.ytimg.com/vi/VmaPERBK-lo/maxresdefault.jpg" alt="" onerror="this.onerror=null;this.src=&#39;https://i.ytimg.com/vi/VmaPERBK-lo/mqdefault.jpg&#39;"></span><span class="ep-tile-body"><span class="ep-tile-title">The Unfiltered Truth About Paragliding Governance</span><span class="ep-tile-guest">Bill Hughes &amp; Goran Dimiskovski</span></span><span class="ep-foot">10 chapters<i>&rarr;</i></span></a>
+    <a class="ep-tile" href="../episodes/insights-from-the-gaggle-with-tilen-ceglar-stan.html" data-ep-index="3" data-title="Insights From The Gaggle" data-guest="Tilen Ceglar &amp; Stan Radzikowski" data-desc="" data-readmore="../podcast.html" data-yt-id=""><span class="ep-stamp">Episode 56<i>90 min</i></span><span class="ep-th"><img loading="lazy" src="https://i.ytimg.com/vi/jdiYdzJ9U5w/maxresdefault.jpg" alt="" onerror="this.onerror=null;this.src=&#39;https://i.ytimg.com/vi/jdiYdzJ9U5w/mqdefault.jpg&#39;"></span><span class="ep-tile-body"><span class="ep-tile-title">Insights From The Gaggle with Tilen Ceglar &amp; Stan Radzikowski</span></span><span class="ep-foot">9 chapters<i>&rarr;</i></span></a>
+    <a class="ep-tile" href="../episodes/what-is-civlresign-with-julien-garcia.html" data-ep-index="4" data-title="#CIVLRESIGN" data-guest="Julien Garcia" data-desc="" data-readmore="../podcast.html" data-yt-id=""><span class="ep-stamp">Episode 54<i>29 min</i></span><span class="ep-th"><img loading="lazy" src="https://i.ytimg.com/vi/jSfQYxxbaWk/maxresdefault.jpg" alt="" onerror="this.onerror=null;this.src=&#39;https://i.ytimg.com/vi/jSfQYxxbaWk/mqdefault.jpg&#39;"></span><span class="ep-tile-body"><span class="ep-tile-title">What is #CIVLRESIGN with Julien Garcia</span></span><span class="ep-foot">4 chapters<i>&rarr;</i></span></a>
   </div>
   <script type="application/json" id="kbEpisodes">[{"slug": "bill-belcourt-the-uncomfortable-truth-no-one-is-talking", "page": "../episodes/bill-belcourt-the-uncomfortable-truth-no-one-is-talking.html", "title": "Bill Belcourt: The Uncomfortable Truth No One is Talking about in the Current Safety Paradox", "guest": "Bill Belcourt", "quote": "If you're saying you want less fatalities, I would say the number one thing is training.", "summary": "Bill Belcourt's answer to reducing fatalities is training, ahead of everything else, and he is direct that some pilots are racing who are not ready to be racing. His wider point is that the freedom of the sport is inseparable from owning the consequences of it, and that the buck stops with the pilot.", "video": "YyGdTDXC1Lc", "epno": "Episode 59", "date": "29 October 2025", "dur": "76 min", "series": "The Dark Side", "seriesPage": "the-dark-side.html", "pos": 3, "nser": 5, "nchapters": 10, "chapters": [{"at": "00:01:56", "title": "First thoughts on what is going on", "anchor": "c2"}, {"at": "00:06:52", "title": "The decisions are ours, and should be", "anchor": "c3"}, {"at": "00:12:47", "title": "Is survival of the fittest the only way", "anchor": "c4"}, {"at": "00:17:42", "title": "Stepping back: what are we actually flying", "anchor": "c5"}, {"at": "00:24:47", "title": "Is glider stability behind these accidents", "anchor": "c6"}], "tags": [{"name": "Paragliding", "page": "tags/paragliding.html"}, {"name": "Safety", "page": "tags/safety.html"}, {"name": "Training", "page": "tags/training.html"}, {"name": "Accidents", "page": "tags/accidents.html"}, {"name": "Competition", "page": "tags/competition.html"}, {"name": "Open Class", "page": "tags/open-class.html"}], "lon": -111.6, "lat": 40.6, "shareUrl": "https://paraglidingatlas-maker.github.io/Website/episodes/bill-belcourt-the-uncomfortable-truth-no-one-is-talking.html", "spotify": "", "artwork": ""}, {"slug": "survived-15-years-of-flying-then-a-rescue-helicopter", "page": "../episodes/survived-15-years-of-flying-then-a-rescue-helicopter.html", "title": "Survived 15 Years of Flying Then a Rescue Helicopter Changed Everything | A Talk With Nick Neynes", "guest": "Nick Neynes", "quote": "Right now everybody is able to operate GoPros because they're so easy to operate, but almost 95% of them don't know what to do with the footage.", "summary": "Nick Neynens spent fifteen years flying at the top of the sport, in places most pilots only read about, before a rescue helicopter changed the course of it. He talks about that turn and what he has built since, including the outlook behind the name he posts under, borrowed from an old mountaineering book about sharing your joys.", "video": "BceEzHgylwo", "epno": "Episode 68", "date": "5 March 2026", "dur": "73 min", "series": "The Dark Side", "seriesPage": "the-dark-side.html", "pos": 5, "nser": 5, "nchapters": 10, "chapters": [{"at": "00:00:39", "title": "Where 'share my joys' came from", "anchor": null}, {"at": "00:07:00", "title": "Cameras, and filming properly", "anchor": "c3"}, {"at": "00:14:45", "title": "EN ratings against what the manufacturer says", "anchor": "c4"}, {"at": "00:22:40", "title": "What tetraplegia actually means", "anchor": "c5"}, {"at": "00:27:39", "title": "The first week in hospital", "anchor": "c6"}], "tags": [{"name": "Accidents", "page": "tags/accidents.html"}, {"name": "Tetraplegia", "page": null}, {"name": "Insurance", "page": null}, {"name": "Recovery", "page": null}, {"name": "Storytelling", "page": "tags/storytelling.html"}, {"name": "Certification", "page": "tags/certification.html"}], "lon": 4.35, "lat": 50.85, "shareUrl": "https://paraglidingatlas-maker.github.io/Website/episodes/survived-15-years-of-flying-then-a-rescue-helicopter.html", "spotify": "", "artwork": ""}, {"slug": "the-unfiltered-truth-about-paragliding-governance-with", "page": "../episodes/the-unfiltered-truth-about-paragliding-governance-with.html", "title": "The Unfiltered Truth About Paragliding Governance: with Bill Hughes & Goran Dimiskovski", "guest": "Bill Hughes & Goran Dimiskovski", "quote": "You need to make it more accessible, but it can't be the F1 where you only bring the 20 best wing handlers in the world to race.", "summary": "Bill Hughes and Goran Dimiskovski answer claims made elsewhere about how competition paragliding is governed, disputing the framing of a widely quoted remark and the accusations made over proxy voting, and noting there were more proxy votes at the last meeting than members present in the room. Their argument is that the real constraint is money, and that staffing and broadcasting the sport properly is what would make it visible enough to attract sponsors.", "video": "VmaPERBK-lo", "epno": "Episode 60", "date": "11 November 2025", "dur": "86 min", "series": "The Dark Side", "seriesPage": "the-dark-side.html", "pos": 4, "nser": 5, "nchapters": 10, "chapters": [{"at": "00:00:38", "title": "Proxies, and who is actually using them", "anchor": "c2"}, {"at": "00:07:24", "title": "What happened on the task itself", "anchor": "c3"}, {"at": "00:13:47", "title": "In what way is it a dictatorship", "anchor": "c4"}, {"at": "00:19:44", "title": "Why there is pressure to change", "anchor": "c5"}, {"at": "00:27:50", "title": "Whether the federations can bridge this", "anchor": "c6"}], "tags": [{"name": "Governance", "page": "tags/governance.html"}, {"name": "Competition", "page": "tags/competition.html"}, {"name": "Funding", "page": null}, {"name": "Sponsorship", "page": null}, {"name": "Accessibility", "page": null}], "lon": 21.7, "lat": 41.6, "shareUrl": "https://paraglidingatlas-maker.github.io/Website/episodes/the-unfiltered-truth-about-paragliding-governance-with.html", "spotify": "", "artwork": ""}, {"slug": "insights-from-the-gaggle-with-tilen-ceglar-stan", "page": "../episodes/insights-from-the-gaggle-with-tilen-ceglar-stan.html", "title": "Insights From The Gaggle with Tilen Ceglar & Stan Radzikowski", "guest": "Tilen Ceglar & Stan Radzikowski", "quote": "It's not one single mistake that leads to a catastrophe. It is a series of combination of errors", "summary": "Tilen Ceglar and Stan Radzikowski give the view from inside the World Cup gaggle on the debate that had been running across the community. Their case is that competition flying has spent years maintaining the status quo instead of developing, and that things escalated only because the problems had been accumulating for a long time.", "video": "jdiYdzJ9U5w", "epno": "Episode 56", "date": "10 October 2025", "dur": "90 min", "series": "The Dark Side", "seriesPage": "the-dark-side.html", "pos": 2, "nser": 5, "nchapters": 9, "chapters": [{"at": "00:00:00", "title": "Introduction", "anchor": null}, {"at": "00:01:38", "title": "Stan's years in the competition scene", "anchor": null}, {"at": "00:07:07", "title": "Putting what happened on the public record", "anchor": "c3"}, {"at": "00:22:39", "title": "Is it actually in the regulations", "anchor": "c4"}, {"at": "00:28:54", "title": "Were the manual guidelines being exploited", "anchor": "c5"}], "tags": [{"name": "Paragliding", "page": "tags/paragliding.html"}, {"name": "Safety", "page": "tags/safety.html"}, {"name": "Governance", "page": "tags/governance.html"}, {"name": "Accidents", "page": "tags/accidents.html"}, {"name": "Competition", "page": "tags/competition.html"}, {"name": "Community", "page": "tags/community.html"}], "lon": 14.8, "lat": 46.1, "shareUrl": "https://paraglidingatlas-maker.github.io/Website/episodes/insights-from-the-gaggle-with-tilen-ceglar-stan.html", "spotify": "", "artwork": ""}, {"slug": "what-is-civlresign-with-julien-garcia", "page": "../episodes/what-is-civlresign-with-julien-garcia.html", "title": "What is #CIVLRESIGN with Julien Garcia", "guest": "Julien Garcia", "quote": "Resignation doesn't mean you quit forever. It's acknowledging and being responsible when things go wrong", "summary": "Julien Garcia explains what the CIVLRESIGN movement is actually asking for, which he frames as an institution acknowledging a systemic failure rather than any attack on individuals. His central argument is that an organiser should always communicate what happened at a competition, whatever the questions of liability around it.", "video": "jSfQYxxbaWk", "epno": "Episode 54", "date": "26 September 2025", "dur": "29 min", "series": "The Dark Side", "seriesPage": "the-dark-side.html", "pos": 1, "nser": 5, "nchapters": 4, "chapters": [{"at": "00:00:00", "title": "Introduction", "anchor": null}, {"at": "00:01:21", "title": "What CIVLRESIGN is, and who is behind it", "anchor": "c2"}, {"at": "00:09:07", "title": "The gap between those calling the shots and the pilots", "anchor": "c3"}, {"at": "00:21:50", "title": "Being reprimanded for a post", "anchor": "c4"}], "tags": [{"name": "Governance", "page": "tags/governance.html"}, {"name": "Safety", "page": "tags/safety.html"}, {"name": "Accidents", "page": "tags/accidents.html"}, {"name": "Pilot", "page": null}, {"name": "Paragliding", "page": "tags/paragliding.html"}], "lon": 2.35, "lat": 48.85, "shareUrl": "https://paraglidingatlas-maker.github.io/Website/episodes/what-is-civlresign-with-julien-garcia.html", "spotify": "", "artwork": ""}]</script>
 </div>
@@ -273,6 +274,6 @@
 </footer>
 
 <script src="../script.js?v=44d793b6"></script>
-<script src="../episode-modal.js?v=f1e8e516"></script>
+<script src="../episode-modal.js?v=2cfe7a37"></script>
 </body>
 </html>

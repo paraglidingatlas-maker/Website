@@ -121,7 +121,11 @@
     }
     if (d.epno) rows.push(['Episode', esc(d.epno)]);
     if (d.dur) rows.push(['Runtime', esc(d.dur)]);
-    if (d.nchapters) rows.push(['Chapters', String(d.nchapters)]);
+    /* The row is omitted at zero rather than saying "Chapters 0", and reads
+       "1 chapter" for the one episode that has exactly one. */
+    if (d.nchapters) {
+      rows.push(['Chapters', d.nchapters === 1 ? '1 chapter' : String(d.nchapters)]);
+    }
     if (d.pos && d.nser) {
       rows.push(['In series', '<a class="kb-lk" href="../library.html#s=' +
         encodeURIComponent(d.series) + '">' + d.pos + ' of ' + d.nser + '</a>']);
