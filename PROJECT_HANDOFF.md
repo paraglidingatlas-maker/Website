@@ -3498,3 +3498,17 @@ outline on the node rather than a fill.
 
 Verified headless: the popup opens from a guest card, every link resolves from
 the site root, and ctrl-click still navigates instead of opening it.
+
+### 61b. TEXT SELECTION ON THE SITEMAP AND THE GLOBE
+One click on the sitemap started a selection that highlighted labels right across
+the diagram and stayed until you clicked somewhere else on purpose. Dragging the
+globe did the same to whatever it passed over.
+
+**An SVG label in a diagram is a picture of a word, not something anyone wants to
+copy.** `.sm-graph` and `.ep-map` are now `user-select:none`.
+
+**`.map-popup` is exempt**, because a coordinate IS worth copying, and the
+exemption is declared after the rule that would otherwise inherit down to it.
+
+This is the sort of thing that never appears in a code review and is obvious
+within five seconds of using the page.

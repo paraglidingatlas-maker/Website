@@ -84,6 +84,11 @@
 .sm-flow{fill:rgba(180,180,180,0.4);}
 .sm-stub{stroke:rgba(180,180,180,0.2);stroke-width:1;}
 
+/* Nothing in the graph is selectable text. One click used to start a selection
+   that highlighted labels across the whole diagram and stayed until you clicked
+   somewhere else on purpose. An SVG label is a picture of a word here, not
+   something anyone wants to copy. */
+.sm-graph{user-select:none;-webkit-user-select:none;}
 .sm-node{cursor:pointer;}
 .sm-hit{fill:transparent;}
 .sm-glyph{fill:#171921;stroke:rgba(180,180,180,0.5);stroke-width:1.2;

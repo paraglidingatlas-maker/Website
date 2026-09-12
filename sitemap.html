@@ -25,7 +25,7 @@
 <link rel="preload" href="assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css?v=1f73ef11">
-<link rel="stylesheet" href="styles.css?v=d0f4305a">
+<link rel="stylesheet" href="styles.css?v=db1b51d5">
 <style>
 .sm-wrap{max-width:1140px;margin:0 auto;padding:clamp(2.5rem,5.5vw,4rem) clamp(1.25rem,4vw,3rem) 5rem;}
 .sm-wrap h1{font-family:var(--font-display);font-weight:800;
@@ -84,6 +84,11 @@
 .sm-flow{fill:rgba(180,180,180,0.4);}
 .sm-stub{stroke:rgba(180,180,180,0.2);stroke-width:1;}
 
+/* Nothing in the graph is selectable text. One click used to start a selection
+   that highlighted labels across the whole diagram and stayed until you clicked
+   somewhere else on purpose. An SVG label is a picture of a word here, not
+   something anyone wants to copy. */
+.sm-graph{user-select:none;-webkit-user-select:none;}
 .sm-node{cursor:pointer;}
 .sm-hit{fill:transparent;}
 .sm-glyph{fill:#171921;stroke:rgba(180,180,180,0.5);stroke-width:1.2;

@@ -473,7 +473,12 @@ img{max-width:100%;display:block;}
 .ep-map{
   position:relative;width:100%;max-width:1400px;aspect-ratio:21/9;margin:0 auto;
   overflow:hidden;
+  /* Dragging the globe used to select whatever text it passed over, and the
+     selection stayed until you clicked away on purpose. The popup is exempt
+     below, because a coordinate is worth copying. */
+  user-select:none;-webkit-user-select:none;
 }
+.map-popup{user-select:text;-webkit-user-select:text;}
 /* 21/9 was the only shape at every width, so on a 380px phone the map was 163px
    tall. That is a very small globe, and it is 200px shorter than the episode
    card, which therefore could not be shown at all. Taller on narrow screens
