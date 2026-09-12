@@ -293,26 +293,71 @@ img{max-width:100%;display:block;}
 }
 
 /* WHY */
-.why{padding:clamp(4rem,10vw,7rem) clamp(1.5rem,5vw,4rem);background:var(--bg);border-bottom:1px solid var(--line);}
-.why-head{display:flex;gap:1.8rem;margin-bottom:3.5rem;}
-.why-bar{width:2px;background:var(--orange);flex-shrink:0;margin-top:0.3rem;}
-.why-label{color:var(--white);font-weight:700;font-family:var(--font-display);font-size:clamp(1.4rem,2.5vw,1.9rem);margin-bottom:1rem;}
-.why-intro{color:var(--gray-light);max-width:640px;font-size:1.02rem;line-height:1.7;}
-.why-grid{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:1.5rem;}
-.why-card{
-  position:relative;background:var(--card);padding:2.2rem 2rem;
-  border:1px solid var(--line);
-  transition:transform 0.2s ease, border-color 0.2s ease;
+/* ===== Why choose us =======================================================
+   Centred, because the four sections above it are all the same 50/50 split and
+   a fifth left-anchored block continues a pattern that has already run long
+   enough. The change of shape is what makes a reader stop, not the colour.
+
+   Hairline grid, no card boxes. Everything else on the site separates with
+   rules rather than borders, and boxes were forcing three columns of very
+   different copy lengths to the same height, which left a well of air in the
+   short ones.
+   ========================================================================= */
+.why{
+  position:relative;
+  padding:clamp(4rem,10vw,7rem) clamp(1.5rem,5vw,4rem);
+  background:var(--bg);border-bottom:1px solid var(--line);
 }
+/* THE GLOW BLEEDS UPWARD ON PURPOSE.
+   Clipped to the section it drew a hard horizontal line at the boundary and the
+   warmth arrived all at once. It starts 180px above instead, and its own falloff
+   does the blending: the centre sits 205px INSIDE the section, so where it
+   crosses into the photograph above the alpha is about 0.015. No edge, and
+   nothing visible on the picture.
+
+   The destination directly above drops its border for the same reason: a
+   hairline would have cut straight through it. */
+.why-glow{
+  position:absolute;z-index:0;pointer-events:none;
+  left:50%;transform:translateX(-50%);top:-180px;
+  width:min(1200px,130%);height:700px;
+  background:radial-gradient(ellipse 60% 50% at 50% 55%,
+    rgba(255,117,23,0.09), rgba(255,117,23,0.03) 45%, transparent 72%);
+}
+.destination.last-dest{border-bottom:none;}
+.why-head{
+  position:relative;z-index:1;
+  text-align:center;max-width:66ch;margin:0 auto 3.4rem;
+}
+.why-kicker{color:var(--orange);font-size:0.62rem;letter-spacing:0.22em;
+  text-transform:uppercase;margin:0 0 0.9rem;}
+.why-bar{display:none;width:2px;background:var(--orange);flex-shrink:0;margin-top:0.3rem;}
+.why-label{color:var(--white);font-weight:700;font-family:var(--font-display);font-size:clamp(1.4rem,2.5vw,1.9rem);margin-bottom:1rem;}
+.why-intro{color:var(--gray-light);font-size:1.02rem;line-height:1.7;margin:0;}
+/* Equal columns. It was 1fr 1.3fr 1fr, so the widest column held the middle
+   card while the LONGEST copy sat in a narrow one: 425, 442 and 287 characters
+   against widths that had nothing to do with them. */
+.why-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+  border-top:1px solid var(--line);}
+/* No box. The grid draws the separation with rules, the way the rest of the
+   site does, and without a box there is nothing to equalise: each column ends
+   where its own copy ends. */
+.why-card{
+  position:relative;background:transparent;padding:2.6rem 2rem;text-align:center;
+  border:none;border-left:1px solid var(--line);
+  transition:background 0.25s ease;
+}
+.why-card:last-child{border-right:1px solid var(--line);}
+.why-card:hover{background:rgba(255,117,23,0.03);transform:none;}
 .why-card::before, .why-card::after{
   content:"";position:absolute;width:14px;height:14px;
   border:1.5px solid var(--orange);opacity:0;transition:opacity 0.2s ease;
 }
 .why-card::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
 .why-card::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
-.why-card:hover{transform:translateY(-3px);border-color:var(--live);}
+
 .why-card:hover::before, .why-card:hover::after{opacity:1;}
-.why-icon{width:34px;height:34px;color:var(--orange);margin-bottom:1.3rem;}
+.why-icon{width:34px;height:34px;color:var(--orange);margin:0 auto 1.3rem;display:block;}
 .why-card h3{font-family:var(--font-display);font-weight:700;font-size:1.15rem;margin-bottom:0.9rem;color:var(--white);}
 .why-card p{color:var(--gray-light);font-size:0.96rem;line-height:1.7;}
 .why-grid .why-card:first-child{grid-row:span 1;}
@@ -928,9 +973,13 @@ footer{
   .destination, .destination.reverse{grid-template-columns:1fr;}
   .destination.reverse .dest-media, .destination.reverse .dest-copy{order:initial;}
   .dest-media img{min-height:320px;}
-  .why-grid{grid-template-columns:1fr;gap:1.2rem;}
-  .why-head{flex-direction:column;gap:1rem;}
-  .why-bar{width:100%;height:2px;}
+  /* Stacked, so a LEFT border between columns becomes a stray vertical line
+     down one edge. The separator turns horizontal and the gap goes, or the
+     rules float away from what they separate. */
+  .why-grid{grid-template-columns:1fr;gap:0;}
+  .why-card{border-left:none;border-bottom:1px solid var(--line);padding:2.2rem 0;}
+  .why-card:last-child{border-right:none;border-bottom:none;}
+  .why-glow{top:-120px;height:520px;}
   .podcast-desc-grid{grid-template-columns:1fr;gap:1.2rem;}
   .listen-buttons{flex-direction:column;}
   .newsletter{grid-template-columns:1fr;gap:2rem;}

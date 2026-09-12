@@ -3612,3 +3612,50 @@ where nothing sits side by side, so its `min-height:320px` floor is unaffected.
 
 **A section with much longer copy would make a taller image.** The four are within
 about 60px of each other so it does not show today.
+
+## 64. THE WHY SECTION: CENTRED, UNBOXED, AND A GLOW THAT BLEEDS UPWARD
+
+### Why centred
+The four sections above it are all the same 50/50 split. The alternating image
+side is a variation within one pattern, not a different pattern. **A fifth
+left-anchored block continues something that has already run long enough**, and a
+change of shape is what makes a reader stop, not the colour.
+
+**This is a compositional argument, not a measured one.** If the destinations
+above ever become a grid, the answer flips and the asymmetric version is right.
+
+### Why the boxes went
+`.why-grid` was `1fr 1.3fr 1fr`, so the widest column held the middle card while
+**the longest copy sat in a narrow one: 425, 442 and 287 characters against widths
+that had nothing to do with them.** Boxed and stretched to a common height, the
+short one left a well of air.
+
+Equal columns, hairlines instead of borders, no box. **Without a box there is
+nothing to equalise**: each column ends where its own copy ends. Every other part
+of the site already separates with rules.
+
+### THE GLOW BLEEDS 180px ABOVE THE SECTION
+Clipped to the section it drew a hard horizontal line at the boundary and the
+warmth arrived all at once. Now:
+```
+element        700px tall, starting 180px ABOVE the boundary
+centre         55% down it, so 205px INSIDE the section
+vertical radius 350px, so the boundary is at 0.59 of it
+stops          0.09 centre, 0.03 at 45%, transparent at 72%
+=> alpha where it crosses the photograph above: about 0.015
+```
+**No edge, and nothing visible on the picture.** The falloff does the blending
+rather than a mask.
+
+**`.destination.last-dest` drops its border-bottom**, because a hairline would
+have cut straight through the glow. That class is on the one section above.
+
+### Mobile
+Stacked, a LEFT border between columns becomes a stray vertical line down one
+edge, so the separator turns horizontal and the gap goes to zero. The glow
+shortens to 120px of bleed.
+
+### Card copy is CENTRED, matching the prototype
+Worth revisiting: centred body copy in a narrow column is harder to read than
+left-aligned, because every line starts in a different place. One line to change
+if it reads badly at length.
