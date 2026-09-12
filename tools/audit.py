@@ -370,6 +370,12 @@ def check_assets():
     scan = PAGES + [f for f in os.listdir(".") if f.endswith((".js", ".css"))]
     for p in scan:
         for u in re.findall(r"[\"'(\s]((?:\.\./)*(?:/Website/)?assets/[^\"')\s]+)", read(p)):
+            # Drop the cache-busting query. tools/version_assets.py appends
+            # ?v=<hash> to stylesheets and scripts, and once that covered
+            # assets/js this check started reporting four files it could plainly
+            # see as never referenced. The reference was there; the comparison
+            # was matching the hash as part of the filename.
+            u = u.split("?")[0].split("#")[0]
             refs.add(os.path.normpath(u.replace("../", "").replace(BASE_PATH, "")))
     allf = set()
     for dp, _, fn in os.walk("assets"):
