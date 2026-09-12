@@ -27,13 +27,24 @@
 (function () {
   'use strict';
 
-  var tiles = document.querySelectorAll('.ep-tile');
-  if (!tiles.length) return;
-
+  /* Two callers with different shapes.
+     Knowledge base pages ship an inline array and their tiles carry an index,
+     which is safe because those tiles are generated once and never move.
+     The library ships `library-episodes.js` keyed by slug and its tiles carry
+     the slug, because that grid re-renders on every filter and sort: an index
+     would point at the wrong episode the moment somebody sorted by length. */
   var DATA = null;
   var holder = document.getElementById('kbEpisodes');
   if (holder) {
     try { DATA = JSON.parse(holder.textContent); } catch (e) { DATA = null; }
+  }
+  var BY_SLUG = window.LIB_MODAL || null;
+  if (!DATA && !BY_SLUG && !document.querySelector('.ep-tile')) return;
+
+  function dataFor(tile) {
+    if (BY_SLUG && tile.dataset.epSlug) return BY_SLUG[tile.dataset.epSlug] || null;
+    if (DATA && tile.dataset.epIndex != null) return DATA[Number(tile.dataset.epIndex)] || null;
+    return null;
   }
 
   var overlay = document.createElement('div');
@@ -106,11 +117,13 @@
     return '<p class="kb-lbl">// Inside</p><ul class="kb-ch">' + items + '</ul>';
   }
 
+  var UP = '../';
+
   function tagsHTML(d) {
     if (!d.tags || !d.tags.length) return '';
     var chips = d.tags.map(function (t) {
       return t.page
-        ? '<a class="kb-tg" href="../' + esc(t.page) + '">' + esc(t.name) + '</a>'
+        ? '<a class="kb-tg" href="' + UP + esc(t.page) + '">' + esc(t.name) + '</a>'
         : '<span class="kb-tg kb-tg-plain">' + esc(t.name) + '</span>';
     }).join('');
     return '<p class="kb-lbl kb-sp">// Topics</p><div class="kb-tags">' + chips + '</div>';
@@ -131,7 +144,7 @@
       rows.push(['Chapters', d.nchapters === 1 ? '1 chapter' : String(d.nchapters)]);
     }
     if (d.pos && d.nser) {
-      rows.push(['In series', '<a class="kb-lk" href="../library.html#s=' +
+      rows.push(['In series', '<a class="kb-lk" href="' + UP + 'library.html#s=' +
         encodeURIComponent(d.series) + '">' + d.pos + ' of ' + d.nser + '</a>']);
     }
     if (!rows.length) return '';
@@ -141,6 +154,10 @@
   }
 
   function richHTML(d) {
+    /* Knowledge base pages are in /knowledge-base/, the library is at the root,
+       and the same payload is rendered on both. */
+    var up = d.libRoot ? '' : '../';
+    UP = up;
     var opening = d.quote
       ? '<blockquote class="kb-q">' + esc(d.quote) + '</blockquote>' +
         (d.guest ? '<p class="kb-attrib">' + esc(d.guest) + '</p>' : '')
@@ -165,7 +182,7 @@
 
     return '<div class="kb-card" role="dialog" aria-modal="true" aria-label="' +
       esc(d.title) + '" tabindex="-1">' +
-      '<div class="kb-stamp"><a class="kb-coord" href="../index.html#pin=' + esc(d.slug) +
+      '<div class="kb-stamp"><a class="kb-coord" href="' + up + 'index.html#pin=' + esc(d.slug) +
         '" title="Open this episode on the globe">' + coordText(d) + '</a>' +
         '<span class="kb-dt">' + esc(String(d.date || '').toUpperCase()) + '</span></div>' +
       mediaHTML(d) +
@@ -208,8 +225,7 @@
 
   function openModal(tile) {
     lastFocus = tile;
-    var idx = tile.dataset.epIndex;
-    var d = (DATA && idx != null) ? DATA[Number(idx)] : null;
+    var d = dataFor(tile);
     overlay.innerHTML = d ? richHTML(d) : plainHTML(tile);
     overlay.classList.add('active');
     document.body.classList.add('kb-modal-open');
@@ -263,12 +279,16 @@
     }
   }
 
-  Array.prototype.forEach.call(tiles, function (tile) {
-    tile.addEventListener('click', function (ev) {
-      if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button !== 0) return;
-      ev.preventDefault();
-      openModal(tile);
-    });
+  /* Delegated, not bound per tile. The library rebuilds its whole grid every
+     time a filter or sort changes, so handlers attached to the original tiles
+     would be thrown away with them and the popup would stop opening after the
+     first click on a chip. */
+  document.addEventListener('click', function (ev) {
+    var tile = ev.target.closest ? ev.target.closest('.ep-tile') : null;
+    if (!tile) return;
+    if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button !== 0) return;
+    ev.preventDefault();
+    openModal(tile);
   });
 
   overlay.addEventListener('click', function (ev) {

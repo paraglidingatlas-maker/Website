@@ -158,15 +158,38 @@
     });
   }
 
+  var EXPAND = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg>';
+
   function card(e) {
-    var meta = e.secs ? hhmm(e.secs) : LIB_TOPICS[e.topic];
-    return '<a class="ep" href="' + (e.page ? 'episodes/' + e.page + '.html'
-      : episodeHref(e.id)) + '"' +
-      (e.page ? '' : ' target="_blank" rel="noopener"') + '>' +
-      '<div class="th"><img loading="lazy" src="https://i.ytimg.com/vi/' + e.id +
-      '/hqdefault.jpg" alt=""></div>' +
-      "<h4>" + esc(e.title) + "</h4>" +
-      '<div class="m">' + esc(meta) + "</div></a>";
+    /* The same card the knowledge base series pages use. This page used to draw
+       a bare image with text under it, which is why it read as belonging to a
+       different site.
+
+       The still is maxresdefault, a true 16:9 frame. It asked for hqdefault,
+       which is 480x360: a 4:3 frame with black bars baked in, then cropped to
+       16:10, so real picture was being cut out of the middle of every tile.
+       This was the last place on the site still doing that. */
+    var d = (window.LIB_MODAL || {})[e.page] || null;
+    var href = e.page ? 'episodes/' + e.page + '.html' : episodeHref(e.id);
+    var dur = e.secs ? hhmm(e.secs) : '';
+    var epno = d && d.epno ? d.epno : '';
+    var guest = d && d.shownGuest ? d.shownGuest : '';
+    var title = d && d.shownTitle ? d.shownTitle : e.title;
+    var chapters = d && d.nchapters
+      ? (d.nchapters === 1 ? '1 chapter' : d.nchapters + ' chapters')
+      : '<span class="dim">No chapters yet</span>';
+    var audio = (d && !d.video) ? '<span class="ep-audio">Audio only</span>' : '';
+    return '<a class="ep-tile" href="' + href + '"' +
+      (e.page ? ' data-ep-slug="' + esc(e.page) + '"' : ' target="_blank" rel="noopener"') + '>' +
+      '<span class="ep-stamp">' + esc(epno) + '<i>' + esc(dur) + '</i></span>' +
+      '<span class="ep-th"><img loading="lazy" src="https://i.ytimg.com/vi/' + e.id +
+      '/maxresdefault.jpg" alt="" onerror="this.onerror=null;this.src=' +
+      "'https://i.ytimg.com/vi/" + e.id + "/mqdefault.jpg'" + '">' + audio + '</span>' +
+      '<span class="ep-tile-body"><span class="ep-tile-title">' + esc(title) + '</span>' +
+      (guest ? '<span class="ep-tile-guest">' + esc(guest) + '</span>' : '') + '</span>' +
+      '<span class="ep-foot">' + chapters + '<i>' + EXPAND + '</i></span></a>';
   }
 
   function draw() {
@@ -209,7 +232,10 @@
     var h = decodeURIComponent(location.hash.replace(/^#/, ""));
     if (h.indexOf("s=") === 0) {
       var k = h.slice(2);
-      if (LIB_TOPICS[k]) { reset(); show(k, k, LIB_TOPICS[k] + " series"); return; }
+      // LIB_TOPICS holds the CATEGORY a series sits in, not a label, so
+      // appending "series" produced "Core series series" on every filtered
+      // view. The category is what the subtitle should say, on its own.
+      if (LIB_TOPICS[k]) { reset(); show(k, k, LIB_TOPICS[k]); return; }
     }
     if (h === "all") { reset(); show(null, "All episodes", "Everything published, newest first."); return; }
     home();

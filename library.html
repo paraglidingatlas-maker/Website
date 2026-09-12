@@ -116,16 +116,34 @@
 .lib-count{color:var(--gray);font-size:0.88rem;margin:2rem 0 1.2rem;}
 
 .eps{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:1.9rem 1.4rem;}
-.ep .th{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--card);
-  border:1px solid rgba(180,180,180,0.14);}
-.ep .th img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s cubic-bezier(.2,.6,.2,1);}
-.ep:hover .th img{transform:scale(1.05);}
-.ep:hover .th{border-color:var(--orange);}
-.ep h4{font-family:var(--font-display);font-weight:500;font-size:0.93rem;line-height:1.32;
-  margin-top:0.8rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
-  overflow:hidden;transition:color 0.18s ease;}
-.ep:hover h4{color:var(--orange);}
-.ep .m{color:var(--gray);font-size:0.81rem;margin-top:0.25rem;}
+/* The episode card, identical to the knowledge base series pages. This page
+   used to draw a bare image with a title under it, which is the main reason it
+   read as belonging to a different site. */
+.ep-tile{display:flex;flex-direction:column;position:relative;text-decoration:none;
+  background:var(--card);border:1px solid rgba(180,180,180,0.22);cursor:pointer;
+  transition:border-color 0.2s ease, transform 0.2s ease;}
+.ep-tile:hover{border-color:rgba(255,117,23,0.45);transform:translateY(-3px);}
+.ep-tile::before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;z-index:4;
+  border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+.ep-stamp{display:flex;justify-content:space-between;padding:0.42rem 1rem;font-size:0.6rem;
+  letter-spacing:0.11em;text-transform:uppercase;color:var(--gray);font-variant-numeric:tabular-nums;}
+.ep-stamp i{font-style:normal;}
+.ep-th{display:block;position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;
+  border-top:1px solid rgba(180,180,180,0.16);border-bottom:1px solid rgba(180,180,180,0.16);}
+.ep-th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.ep-audio{position:absolute;z-index:3;top:0.6rem;right:0.6rem;font-size:0.55rem;letter-spacing:0.11em;
+  text-transform:uppercase;color:var(--gray-light);background:rgba(12,13,16,0.8);
+  border:1px solid rgba(180,180,180,0.16);padding:0.16rem 0.4rem;}
+.ep-tile-body{display:block;padding:0.85rem 1rem 0.7rem;flex:1;}
+.ep-tile-title{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  font-family:var(--font-display);font-weight:600;font-size:0.88rem;color:var(--white);line-height:1.32;}
+.ep-tile-guest{display:block;color:var(--gray-light);font-size:0.78rem;margin-top:0.3rem;}
+.ep-foot{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 1rem 0.8rem;
+  color:var(--gray);font-size:0.72rem;margin-top:auto;}
+.ep-foot .dim{opacity:0.55;}
+.ep-foot i{font-style:normal;color:var(--orange);display:inline-flex;transition:transform 0.18s ease;}
+.ep-foot i svg{width:14px;height:14px;}
+.ep-tile:hover .ep-foot i{transform:scale(1.15);}
 .lib-none{color:var(--gray-light);font-size:0.95rem;padding:3rem 0;}
 .lib-none button{background:none;border:none;color:var(--orange);text-decoration:underline;
   font-family:var(--font-body);font-size:inherit;cursor:pointer;padding:0;}
@@ -506,6 +524,8 @@
 
 <script src="episode-links.js?v=8d5a04bd"></script>
 <script src="library-data.js?v=8361661e"></script>
-<script src="library.js?v=16c7c0dd"></script>
+<script src="library-episodes.js?v=ba9113f8"></script>
+<script src="episode-modal.js?v=42f239e0"></script>
+<script src="library.js?v=bbe66e15"></script>
 </body>
 </html>

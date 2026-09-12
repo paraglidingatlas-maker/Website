@@ -3175,3 +3175,50 @@ right.** Apple URLs carry `&uo=4`, which is correctly written `&amp;` in HTML,
 and the check compared the raw string. **When a new check fails on almost
 everything, suspect the check before the site.** Corrected, then verified by
 reverting one page's Spotify link on purpose and watching it fail.
+
+## 58. THE LIBRARY NOW USES THE SAME CARD, AND THE SAME POPUP
+
+The library looked like a different site. Three reasons, only one of them
+styling:
+
+1. **"Core series series".** `LIB_TOPICS` holds the CATEGORY a series sits in,
+   not a label, and `library.js` appended the word "series" to it. Every
+   filtered view said it. One line.
+2. **Cropped thumbnails.** It asked for `hqdefault`, 480x360, a 4:3 frame with
+   black bars baked in, then cropped it to 16:10, so real picture was cut out of
+   the middle of every tile. **This was the last place on the site still doing
+   that**; the popup and the series cards were fixed earlier.
+3. **No card edge.** A bare image with a title under it, where every other
+   episode on the site is a bordered card with a stamp bar.
+
+All three fixed. The library card is now byte-for-byte the knowledge base card:
+corner bracket, stamp with episode number and runtime, uncropped still, title
+clamped to two lines, guest, chapter count, expand glyph.
+
+### The popup works there too, and two things had to change for it
+**`tools/generate_library_episodes.py` writes `library-episodes.js`**, 163 KB, a
+separate cached file rather than inline: the knowledge base pages carry six or
+twelve episodes each, the library carries all 86 on one page.
+
+**KEYED BY SLUG, NOT INDEX.** Knowledge base tiles are generated once and never
+move, so an index is safe. **The library rebuilds its entire grid on every filter
+and sort**, so an index would open the wrong episode the moment somebody chose
+"Longest first".
+
+**The click handler is DELEGATED on `document`**, not bound per tile, for the
+same reason: handlers attached to the original tiles are thrown away with them
+when the grid re-renders, and the popup would have stopped opening after the
+first chip click.
+
+**Paths differ by page depth.** The knowledge base is one level down and the
+library is at the root, and the same payload renders on both, so the payload
+carries `libRoot` and the renderer prefixes `../` only when it is absent.
+
+### Verified headless, both callers
+Run against jsdom with the real generated payload:
+```
+library   episode episodes/... | series knowledge-base/... | topic tags/...
+          pin index.html#pin=  | in-series library.html#s= | chapter ...#c2
+knowledge ../episodes/...      | ../tags/...               | ../index.html#pin=
+```
+Shared code, both depths correct.

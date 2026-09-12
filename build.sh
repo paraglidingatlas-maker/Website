@@ -12,6 +12,7 @@ python3 generate_sitemap.py         >/dev/null
 python3 generate_robots_sitemap.py  >/dev/null
 python3 generate_llms_txt.py        >/dev/null
 python3 tools/generate_redirects.py >/dev/null
+python3 tools/generate_library_episodes.py >/dev/null
 python3 tools/generate_library_index.py >/dev/null
 python3 tools/version_assets.py
 python3 tools/inject_site_schema.py
