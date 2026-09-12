@@ -2988,3 +2988,37 @@ at it.
   the user's copy. **It violates the no-em-dash rule at the top of this file.**
 - **Every category page title uses an em-dash in `_seo_title`'s older form**
   elsewhere on the site. Worth a sweep at some point.
+
+## 54. EVERY EM-DASH IS OUT OF VISIBLE COPY, AND THERE IS NOW A CHECK
+
+**BASELINE CHANGES AGAIN: 187 pages, 93 checks, 0 FAIL, 9 warn.**
+
+The user asked for one em-dash to be removed, in the Sky Gods card description.
+A sweep of the rendered HTML found **five in visible copy**, not one:
+```
+knowledge-base/core-series.html   Sky Gods card description
+knowledge-base.html               "Navigators, Sky Gods, and Living The Dream — where to start."
+knowledge-base/competitions.html  category intro
+knowledge-base/meteorology.html   category intro
+knowledge-base/technical.html     category intro
+podcast.html                      newsletter status message
+```
+All replaced with a full stop and a capital, so the **wording is untouched** and
+only the punctuation changed. These are the user's sentences, not ours.
+
+Four came from `generate_kb_pages.py`. Two, `knowledge-base.html` and
+`podcast.html`, are hand maintained and had to be edited directly.
+
+### Why they survived so long
+`check_copy()` looked at **episode metadata and globe pin labels only**. Both of
+those are data files. **Nothing read the rendered HTML**, so anything written
+directly into a page or a generator's prose was invisible to the audit, and the
+rule at the top of this document was being enforced on about a third of the site.
+
+`em-dashes in visible page copy` is **check 93**. It strips `<head>`, `<script>`
+and `<style>` first, so **a CSS or JS comment containing one is not a finding**:
+the rule is about what a reader sees, not what a developer wrote to themselves.
+One such comment remains in `podcast.html` and is correctly ignored.
+
+Verified by putting an em-dash back into `knowledge-base.html` and watching the
+check FAIL with the page name and the surrounding words, then removing it again.

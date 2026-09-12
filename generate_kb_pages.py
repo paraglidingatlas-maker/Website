@@ -396,7 +396,7 @@ category_page(
          "points": ["In-depth site breakdowns", "Local weather patterns &amp; triggers",
                     "Airspace rules and regulations", "Proven best practices (and mistakes to avoid)"]},
         {"slug": "sky-gods", "icon": ICONS["star"], "name": "Sky Gods",
-         "desc": "Meet the legends who have redefined chasing airtime in paragliding \u2014 true pioneers of free flight, in-depth profiles and stories.",
+         "desc": "Meet the legends who have redefined chasing airtime in paragliding. True pioneers of free flight, in-depth profiles and stories.",
          "points": ["Career journeys and milestones", "Training philosophies",
                     "Personal rituals and mindset", "Lessons from elite performance"]},
         {"slug": "living-the-dream", "icon": ICONS["flag"], "name": "Living The Dream",
@@ -408,7 +408,7 @@ category_page(
 
 category_page(
     "competitions", "Competitions & Performance",
-    "Take a tour into the thrilling world of racing paragliders and learn how to push your performance boundaries safely and effectively — strategies, training techniques, and mindset from the pilots who have done it all.",
+    "Take a tour into the thrilling world of racing paragliders and learn how to push your performance boundaries safely and effectively. Strategies, training techniques, and mindset from the pilots who have done it all.",
     [
         {"slug": "world-cups", "name": "World Cups, Racing and Competing", "icon": ICONS["trophy"],
          "desc": "A clear view of modern race formats and evolving rules, with insights from experienced competitors and organizers.",
@@ -479,7 +479,7 @@ subseries_page(
 # ── Meteorology & Weather Analysis category + sub-series ────────────────
 category_page(
     "meteorology", "Meteorology & Weather Analysis",
-    "Understanding weather patterns and atmospheric conditions is crucial for safe paragliding — this section exists to help you build exactly that.",
+    "Understanding weather patterns and atmospheric conditions is crucial for safe paragliding. This section exists to help you build exactly that.",
     [
         {"slug": "weather-patterns", "name": "Weather Patterns and Forecasting", "icon": ICONS["cloud"],
          "desc": "Build a solid foundation in understanding weather systems and how they influence flying conditions.",
@@ -551,7 +551,7 @@ subseries_page(
 # ── Technical Focus & Flight Safety category + sub-series ────────────────
 category_page(
     "technical", "Technical Focus & Flight Safety",
-    "A deep dive into the technical aspects of free flight — comprehensive knowledge about the mechanics, equipment, and technological advances in paragliding.",
+    "A deep dive into the technical aspects of free flight. Comprehensive knowledge about the mechanics, equipment, and technological advances in paragliding.",
     [
         {"slug": "flight-mechanics", "name": "Flight Mechanics", "icon": ICONS["gear"],
          "desc": "Build a deeper understanding of the forces and principles that govern safe and efficient flight.",

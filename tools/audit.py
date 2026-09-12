@@ -604,6 +604,29 @@ def check_copy():
     emg = [l.strip()[:40] for l in g.split("\n") if "\u2014" in l and l.strip().startswith("[")]
     (ok if not emg else fail)("copy", "em-dashes in globe pin labels: %s" % (emg[:3] or 0))
 
+    # The two checks above cover episode metadata and globe pin labels, which is
+    # where em-dashes had turned up before. They missed four sitting in plain
+    # body copy on the knowledge base pages for weeks, because nothing read the
+    # rendered HTML. This does.
+    #
+    # Deliberately VISIBLE text only: <script> and <style> are stripped first,
+    # so a CSS or JS comment containing one is not a finding. The rule is about
+    # what a reader sees, not what a developer wrote to themselves.
+    bad_pages = []
+    for f in PAGES:
+        body = read(f)
+        head_end = body.find("</head>")
+        if head_end != -1:
+            body = body[head_end:]
+        body = re.sub(r"<script.*?</script>", "", body, flags=re.S)
+        body = re.sub(r"<style.*?</style>", "", body, flags=re.S)
+        text = re.sub(r"<[^>]+>", " ", body)
+        if "\u2014" in text:
+            snippet = re.search(r".{0,30}\u2014.{0,30}", text)
+            bad_pages.append("%s: %s" % (f, " ".join(snippet.group(0).split()) if snippet else ""))
+    (ok if not bad_pages else fail)("copy",
+                                    "em-dashes in visible page copy: %s" % (bad_pages[:3] or 0))
+
 
 # ------------------------------------------------------------------ css ----
 def check_css():
