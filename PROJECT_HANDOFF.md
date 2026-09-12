@@ -3536,3 +3536,39 @@ widest child label in frame, and returns `W*0.33` at k=1.
 **Checked arithmetically, because jsdom will not render this graph.** The layout
 constants are in the file (COLW 268, W 900) so the sums are exact, but nothing
 here was confirmed against a real browser.
+
+## 62. THE HEADER, AND THE SCROLLBARS
+
+### The header
+```
+was    full gradient from #2a2c33, a corner clipped off BOTH ends at 24px,
+       two bracket marks at 8px, coordinate floating in the top left
+now    a whisper of a panel, square corners, ONE bracket top right,
+       coordinate on the baseline before the button
+```
+**The orange rule stays and now runs the full width**, because it is the only
+part of the header that speaks the site's own language. The panel behind it was
+just weight.
+
+**The bar used to make three separate claims about where its edge was**: a
+gradient, a clip at 24px, and brackets at 8px. Now it makes one.
+
+**REORDERED WITH FLEX `order`, NOT IN THE MARKUP.** The nav is written into 180
+files and emitted by four generators and two templates. Moving the coordinate
+after the links in the HTML would have meant touching all of them. `.wordmark`
+1, `.nav-links` 2, `.nav-coords` 3, `.nav-cta` 4, in one rule. The left bracket
+is hidden the same way rather than deleted from 180 pages.
+
+### The scrollbars
+Every scrollable area was drawing the operating system's default: a light grey
+track with arrow buttons, on a page that is almost black. It showed in the
+episode search results, the card rails, the testimonials, the policy tables and
+the page itself.
+
+Track transparent, thumb the same grey as a card edge, warming to orange on hover
+and full orange while dragged. Arrow buttons removed. Firefox reads
+`scrollbar-color`, everything else reads the `::-webkit-` rules.
+
+**Quietened, not hidden.** A scrollbar nobody can see is a scrollbar nobody knows
+to use. The one exception is the globe popup, which hides its bar because it is
+verified never to need one, and that override is declared after these.

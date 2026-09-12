@@ -44,6 +44,34 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
+
+/* ===== Scrollbars ==========================================================
+   Every scrollable area on the site was drawing the operating system's default
+   bar: a light grey track with arrow buttons at each end, on a page that is
+   almost black. It appears in the episode search results, the card rails, the
+   testimonials, the policy tables and the page itself.
+
+   These match the site instead. The track is the background, the thumb is the
+   same grey as a card edge, and it warms to orange when you take hold of it.
+   Firefox gets the two-value `scrollbar-color`; everything else gets the
+   ::-webkit- rules, which are also what Chrome, Edge and Safari read.
+
+   NOT hidden, only quietened. A scrollbar that cannot be seen is a scrollbar
+   nobody knows to use.
+   ========================================================================= */
+html{scrollbar-width:thin;scrollbar-color:rgba(180,180,180,0.22) transparent;}
+*{scrollbar-width:thin;scrollbar-color:rgba(180,180,180,0.22) transparent;}
+::-webkit-scrollbar{width:10px;height:10px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-corner{background:transparent;}
+::-webkit-scrollbar-thumb{
+  background:rgba(180,180,180,0.22);
+  border:2px solid transparent;background-clip:padding-box;border-radius:0;
+}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,117,23,0.5);background-clip:padding-box;}
+::-webkit-scrollbar-thumb:active{background:var(--orange);background-clip:padding-box;}
+/* the arrow buttons at each end are the most dated part of the default bar */
+::-webkit-scrollbar-button{display:none;height:0;width:0;}
 html{scroll-behavior:smooth;}
 body{
   background:var(--bg);
@@ -63,22 +91,43 @@ img{max-width:100%;display:block;}
 .page-wrap > nav{
   position:relative;z-index:20;
   padding:1.5rem clamp(2rem,5vw,4rem);
-  display:flex;align-items:center;justify-content:space-between;
-  background:linear-gradient(180deg, #2a2c33 0%, #1a1b20 55%, #0f1013 100%);
-  clip-path:polygon(24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0 24px);
+  display:flex;align-items:center;justify-content:flex-start;gap:1.3rem;
+  /* A whisper of a panel, not a slab. The old bar was a full gradient from
+     #2a2c33 with a corner clipped off both ends; between them they made three
+     different claims about where the header's edge was. This lifts the surface
+     just enough to separate it from the page. */
+  background:linear-gradient(180deg,
+    rgba(180,180,180,0.038) 0%, rgba(180,180,180,0.016) 55%, transparent 100%);
+  border-bottom:1px solid var(--line);
 }
+/* The orange rule is the one thing the old panel was really contributing: it is
+   the only part of the header that speaks the site's own language. It runs the
+   full width now that the corners are square. */
 .page-wrap > nav::before{
-  content:"";position:absolute;top:0;left:24px;right:24px;height:1px;
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
   background:linear-gradient(90deg, transparent, var(--orange), transparent);
   opacity:0.8;
 }
-.nav-corner-l, .nav-corner-r{
-  position:absolute;top:8px;width:14px;height:14px;
-  border:1.5px solid var(--orange);
+/* One mark, top right, beside Enquire. Two of them read as a frame and the bar
+   is no longer framed; one reads as the site's signature, the same bracket the
+   cards carry. The left one is hidden here rather than removed from 180 pages. */
+.nav-corner-l{display:none;}
+.nav-corner-r{
+  position:absolute;top:8px;right:8px;width:14px;height:14px;
+  border:1.5px solid var(--orange);border-left:none;border-bottom:none;
 }
-.nav-corner-l{left:8px;border-right:none;border-bottom:none;}
-.nav-corner-r{right:8px;border-left:none;border-bottom:none;}
-.nav-coords{position:relative;z-index:1;color:var(--gray);font-size:0.72rem;letter-spacing:0.06em;}
+/* ORDERED HERE, NOT IN THE MARKUP. The nav is written into 180 files and
+   emitted by four generators; moving the coordinate after the links in the HTML
+   would mean touching all of them. Flex order does it in one rule. */
+.wordmark{order:1;}
+.nav-links{order:2;margin-left:auto;}
+.nav-coords{order:3;}
+.nav-cta{order:4;}
+.nav-coords{
+  position:relative;z-index:1;color:var(--gray);font-size:0.68rem;letter-spacing:0.08em;
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+  padding-left:1.3rem;border-left:1px solid var(--line);
+}
 .wordmark{position:relative;z-index:1;display:inline-block;}
 .logo-img{height:32px;width:auto;display:block;}
 .nav-links{position:relative;z-index:1;display:flex;align-items:center;gap:1.6rem;font-size:0.92rem;}
