@@ -391,7 +391,7 @@ img{max-width:100%;display:block;}
    tall. That is a very small globe, and it is 200px shorter than the episode
    card, which therefore could not be shown at all. Taller on narrow screens
    fixes both: the globe gets bigger and the card has somewhere to go. */
-@media(max-width:900px){ .ep-map{aspect-ratio:4/3;} }
+@media(max-width:1050px){ .ep-map{aspect-ratio:4/3;} }
 @media(max-width:600px){ .ep-map{aspect-ratio:4/5;} }
 /* ===== The globe popup ======================================================
    A readout strip, the still, then the episode. Clicking a pin turns it to the
@@ -408,6 +408,14 @@ img{max-width:100%;display:block;}
   position:absolute;display:none;width:21rem;max-width:calc(100vw - 2rem);
   background:rgba(20,21,25,0.95);border:1px solid rgba(255,117,23,0.5);
   backdrop-filter:blur(3px);padding:0;
+  /* THE CARD CAN NEVER BE TALLER THAN THE MAP.
+     Positioning alone kept failing because the card's height is not fixed: a
+     three line title makes it 80px taller than a one line title, and the map's
+     own height changes with the viewport. Rather than keep chasing that with
+     arithmetic, this caps it against the map itself, which is the parent, and
+     lets the inside scroll on the rare occasion it needs to. Clipping is now
+     impossible rather than merely unlikely. */
+  max-height:calc(100% - 20px);overflow-y:auto;overscroll-behavior:contain;
   z-index:5;pointer-events:none;
   /* No transform: globe.js positions the top left corner directly, beside
      the pin and clamped inside the map. It used to be pulled above the pin
@@ -434,8 +442,11 @@ img{max-width:100%;display:block;}
 @keyframes mp-scan{from{transform:translateY(-100%);}to{transform:translateY(100%);}}
 .mp-bd{padding:0.85rem 1.1rem 1.1rem;}
 .mp-kick{font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray);margin:0 0 0.3rem;}
+/* Two lines, like every other card on the site. Ziad Bassil's title runs to
+   three here and made the card 80px taller than its neighbours. */
 .popup-title{color:var(--white);font-family:var(--font-display);font-weight:700;
-  font-size:1rem;line-height:1.3;margin:0 0 0.25rem;}
+  font-size:1rem;line-height:1.3;margin:0 0 0.25rem;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 .mp-guest{color:var(--orange);font-size:0.82rem;margin:0 0 0.8rem;}
 .mp-rd{display:flex;gap:1rem;flex-wrap:wrap;font-size:0.66rem;letter-spacing:0.08em;
   color:var(--gray);text-transform:uppercase;margin-bottom:0.9rem;font-variant-numeric:tabular-nums;}

@@ -3299,3 +3299,24 @@ dimensions.
 Placement checked arithmetically at 320, 380, 480, 600, 700, 760, 900, 1100 and
 1400px: the card is fully inside the map at every one. Then checked headless with
 real geometry at 1400x600.
+
+### 59b. STILL CLIPPED. THE FIX WAS TO STOP RELYING ON ARITHMETIC.
+Positioning beside the pin and clamping was correct and still not enough, because
+**the card's height is not a constant**. Ziad Bassil's title wraps to three lines
+and makes the card 80px taller than its neighbours, and the map's height changes
+with the viewport, so any figure worked out in advance is wrong somewhere.
+
+Two changes make clipping impossible rather than unlikely:
+1. **`max-height:calc(100% - 20px)` on the popup**, measured against the map,
+   which is its positioned parent, with `overflow-y:auto`. Whatever the card
+   contains and whatever size the map is, it cannot exceed it.
+2. **The title clamps to two lines**, as every other card on the site already
+   does. That fixes the card at about 390px regardless of the episode.
+
+The `.ep-map` breakpoint also moved from 900px to **1050px**, because between
+roughly 950 and 1050 the 21/9 map is 407 to 450px tall and a 390px card only just
+fits. Checked at fourteen widths from 320 to 1400: room everywhere, scrolling
+nowhere.
+
+**The lesson: three attempts were spent computing where a box would fit. The
+answer was to cap the box against its container and let the browser do it.**
