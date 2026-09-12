@@ -387,6 +387,12 @@ img{max-width:100%;display:block;}
   position:relative;width:100%;max-width:1400px;aspect-ratio:21/9;margin:0 auto;
   overflow:hidden;
 }
+/* 21/9 was the only shape at every width, so on a 380px phone the map was 163px
+   tall. That is a very small globe, and it is 200px shorter than the episode
+   card, which therefore could not be shown at all. Taller on narrow screens
+   fixes both: the globe gets bigger and the card has somewhere to go. */
+@media(max-width:900px){ .ep-map{aspect-ratio:4/3;} }
+@media(max-width:600px){ .ep-map{aspect-ratio:4/5;} }
 /* ===== The globe popup ======================================================
    A readout strip, the still, then the episode. Clicking a pin turns it to the
    middle of the globe first, so this always opens in the same place with room
@@ -402,7 +408,11 @@ img{max-width:100%;display:block;}
   position:absolute;display:none;width:21rem;max-width:calc(100vw - 2rem);
   background:rgba(20,21,25,0.95);border:1px solid rgba(255,117,23,0.5);
   backdrop-filter:blur(3px);padding:0;
-  z-index:5;transform:translate(-50%, calc(-100% - 18px));pointer-events:none;
+  z-index:5;pointer-events:none;
+  /* No transform: globe.js positions the top left corner directly, beside
+     the pin and clamped inside the map. It used to be pulled above the pin
+     with translate(-50%,-100%), which cannot work for a card taller than
+     the space above a centred pin. */
 }
 .map-popup.visible{display:block;pointer-events:auto;}
 .mp-tick{position:absolute;width:14px;height:14px;pointer-events:none;z-index:6;}

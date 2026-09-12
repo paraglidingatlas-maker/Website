@@ -3268,3 +3268,34 @@ that answers "where in the world is this".
 
 Verified headless with jsdom and real d3: 80 pins render, a click opens the card,
 and every field is populated from the generated data.
+
+### 59a. THE CARD WAS STILL BEING CHOPPED, AND CENTRING THE PIN COULD NOT FIX IT
+Centring solved left and right. The card was still clipped at the TOP, because
+it sat ABOVE the pin and **it is taller than the space above a centred pin**:
+```
+map              1400 x 600      pin centred at y=300
+card             336 x ~368      plus an 18px offset = 386px needed above
+clipped by       ~86px           which is exactly what the screenshot showed
+```
+No amount of nudging fixes a card that does not fit in the space it is being put.
+
+**It now sits BESIDE the pin**, vertically centred on it, flipping to the other
+side when there is no room and clamped inside the map either way. The
+`translate(-50%, calc(-100% - 18px))` that pulled it above the pin is gone;
+globe.js positions the top left corner directly.
+
+**It is made visible BEFORE it is measured.** It is `display:none` until then and
+an undisplayed element measures zero, which would have clamped everything to the
+top left corner.
+
+### AND THE MAP HAD NO RESPONSIVE HEIGHT AT ALL
+`.ep-map` was `aspect-ratio:21/9` at every width, so on a 380px phone it was
+**163px tall**. That is a very small globe, and it is 200px shorter than the
+card, so no positioning could ever have worked there. Now `4/3` below 900px and
+`4/5` below 600px. **The globe also gets substantially bigger on a phone as a
+side effect**, since its radius is derived from the smaller of the two
+dimensions.
+
+Placement checked arithmetically at 320, 380, 480, 600, 700, 760, 900, 1100 and
+1400px: the card is fully inside the map at every one. Then checked headless with
+real geometry at 1400x600.

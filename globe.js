@@ -195,9 +195,34 @@
         }
       }
     }
-    popup.style.left = pos[0] + 'px';
-    popup.style.top = pos[1] + 'px';
+    /* POSITIONING. The old popup was three lines and sat above the pin. This
+       card is about 370px tall and the map is 600px, so with the pin centred
+       there are only 300px above it: it can NEVER fit there and was being
+       clipped by the map's own overflow:hidden.
+
+       So it sits BESIDE the pin instead, vertically centred on it, and flips to
+       the other side when there is no room. Everything is then clamped inside
+       the map, which also covers a pin still near the rim because somebody
+       dragged rather than clicked.
+
+       Made visible first: it is display:none until then, and an element that is
+       not displayed measures zero. */
     popup.classList.add('visible');
+    const cw = container.clientWidth;
+    const ch = container.clientHeight;
+    const pw = popup.offsetWidth || 336;
+    const ph = popup.offsetHeight || 370;
+    const GAP = 22;
+    const EDGE = 10;
+
+    let left = pos[0] + GAP;
+    if (left + pw > cw - EDGE) left = pos[0] - GAP - pw;   /* flip to the left */
+    if (left < EDGE) left = Math.max(EDGE, (cw - pw) / 2);  /* narrow screen: centre it */
+    let top = pos[1] - ph / 2;
+    top = Math.min(Math.max(EDGE, top), Math.max(EDGE, ch - ph - EDGE));
+
+    popup.style.left = left + 'px';
+    popup.style.top = top + 'px';
   }
 
   function hidePopup() {
