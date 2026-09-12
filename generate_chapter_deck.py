@@ -575,9 +575,22 @@ def player_html(meta):
     and the listen buttons instead, which is what a listener actually wants.
     """
     vid = (meta.get("video_id") or "").strip()
-    spotify = meta.get("spotify") or "https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec"
-    apple = ("https://podcasts.apple.com/us/podcast/"
-             "paragliding-atlas-by-aninder-singh/id1735782803")
+    # THESE USED TO BE THE SHOW, ON EVERY EPISODE PAGE.
+    # Whichever conversation you were reading, "Listen on Spotify" and "Listen on
+    # Apple" sent you to the front of the podcast, not to that episode. The
+    # Spotify address was in the RSS feed all along and simply never read; the
+    # Apple one needs Apple's own episode id, which is not in the feed at all and
+    # comes from apple-episodes.json. See tools/build_mp3_map.py.
+    #
+    # The show is kept as the fallback: 13 episodes are reels and cinematics that
+    # were never published as audio, so the front of the podcast is the only
+    # honest destination for them.
+    links = mp3_for(meta.get("slug", "")) or {}
+    spotify = (links.get("spotify") or meta.get("spotify")
+               or "https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec")
+    apple = (links.get("apple")
+             or "https://podcasts.apple.com/us/podcast/"
+                "paragliding-atlas-by-aninder-singh/id1735782803")
     if vid:
         media = (
             '      <div class="cd-player">\n'

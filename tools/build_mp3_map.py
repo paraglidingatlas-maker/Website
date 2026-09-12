@@ -57,11 +57,43 @@ def parse(xml):
     for item in re.findall(r"<item>(.*?)</item>", xml, re.S):
         t = re.search(r"<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</title>", item, re.S)
         e = re.search(r'<enclosure[^>]*url="([^"]+)"[^>]*length="(\d+)"', item)
+        # The per-episode page on the podcast host. The episode pages used to
+        # send everyone to the SHOW on Spotify regardless of which episode they
+        # were reading, which is in the feed and was simply never used.
+        lk = re.search(r"<link>(.*?)</link>", item, re.S)
         if t and e:
             out.append({"title": html.unescape(t.group(1)).strip(),
                         "url": html.unescape(e.group(1)),
-                        "bytes": int(e.group(2))})
+                        "bytes": int(e.group(2)),
+                        "spotify": html.unescape(lk.group(1)).strip() if lk else None})
     return out
+
+
+def apple_by_audio():
+    """Apple episode URLs, keyed by the audio file they point at.
+
+    Apple episode links need Apple's own episode id, which is NOT in the RSS
+    feed. They come from Apple's public lookup endpoint:
+
+      https://itunes.apple.com/lookup?id=1735782803&entity=podcastEpisode&limit=200
+
+    That host is not reachable from the build environment, so the response is
+    saved to `apple-episodes.json` and committed. Re-run the lookup and replace
+    that file when episodes are added.
+
+    MATCHED ON THE AUDIO URL, NOT THE TITLE. Apple's own record carries the same
+    enclosure address as the feed, so this is an exact join with no guessing.
+    All 80 matched on the first attempt.
+    """
+    path = os.path.join(ROOT, "apple-episodes.json")
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding="utf-8") as fh:
+        eps = json.load(fh)
+    return {e["episodeUrl"]: e["trackViewUrl"] for e in eps if e.get("episodeUrl")}
+
+
+APPLE = {}
 
 
 def match(feed, meta):
@@ -87,7 +119,9 @@ def match(feed, meta):
             unmatched.append(f["title"])
         else:
             mapping[ep["slug"]] = {"url": f["url"], "bytes": f["bytes"],
-                                   "feed_title": f["title"], "matched_by": how}
+                                   "feed_title": f["title"], "matched_by": how,
+                                   "spotify": f.get("spotify"),
+                                   "apple": APPLE.get(f["url"])}
     return mapping, unmatched
 
 
@@ -100,8 +134,13 @@ def main():
         print("the cached mp3-map.json is unchanged, and the build does not need the feed")
         return 0
     feed = parse(xml)
+    global APPLE
+    APPLE = apple_by_audio()
     mapping, unmatched = match(feed, meta)
     print("feed items: %d | mapped: %d | unmatched: %d" % (len(feed), len(mapping), len(unmatched)))
+    print("with a Spotify episode link: %d | with an Apple episode link: %d"
+          % (sum(1 for v in mapping.values() if v.get("spotify")),
+             sum(1 for v in mapping.values() if v.get("apple"))))
     for u in unmatched:
         print("   unmatched: %s" % u[:70])
     fuzzy = {k: v for k, v in mapping.items() if v["matched_by"].startswith("overlap")}

@@ -3137,3 +3137,41 @@ one snippet. They get no box and Related moves up.
   "this takes you somewhere"; it opens a panel over the page.
 - The heading and the link do not both say "Download audio". The heading names
   the thing, the link states what you get: "M4A, 51 MB".
+
+## 57. THE LISTEN BUTTONS NOW GO TO THE EPISODE, NOT THE SHOW
+
+**BASELINE CHANGES: 187 pages, 97 checks, 0 FAIL, 9 warn.**
+
+Every episode page had three buttons: Watch on YouTube, Listen on Spotify, Listen
+on Apple. **YouTube was per-episode. The other two sent every reader to the front
+of the podcast**, whichever conversation they were on, on all 93 pages. Nothing
+on the page looked wrong.
+
+**80 of 93 now go to the episode.** The 13 that still point at the show are the
+reels and cinematics, which were never published as audio, so the front of the
+podcast is the only honest destination for them.
+
+### Where the addresses came from
+- **Spotify was in the RSS feed the whole time.** Each `<item>` carries a
+  `<link>` to that episode's page. It was simply never read.
+- **Apple is not in the feed at all.** Apple episode URLs need Apple's own
+  episode id, which only exists in their catalogue. It comes from
+  `https://itunes.apple.com/lookup?id=1735782803&entity=podcastEpisode&limit=200`.
+  **That host is not reachable from the build environment**, so the user fetched
+  it and the trimmed response is committed as `apple-episodes.json`, 32 KB.
+  **Re-run that lookup and replace the file when episodes are added.**
+
+### The Apple join is exact, not fuzzy
+Apple's record carries **the same enclosure URL as the feed**, so episodes are
+matched on the audio address rather than the title. **All 80 matched on the first
+attempt**, with none of the word-overlap guessing the download map needed.
+
+### Check 97, and a lesson about writing checks
+`episodes not using their own listen link` fails if a page stops using the
+address the map holds for it.
+
+**Its first version reported every Apple link as broken, and the pages were
+right.** Apple URLs carry `&uo=4`, which is correctly written `&amp;` in HTML,
+and the check compared the raw string. **When a new check fails on almost
+everything, suspect the check before the site.** Corrected, then verified by
+reverting one page's Spotify link on purpose and watching it fail.

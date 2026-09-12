@@ -666,6 +666,28 @@ def check_audio_downloads():
     have = sum(1 for f in glob.glob("episodes/*.html") if "cd-dl" in read(f))
     ok("audio", "episode pages offering a download: %d of %d" % (have, len(glob.glob("episodes/*.html"))))
 
+    # Every episode that HAS a Spotify or Apple address in the map must use it.
+    # These three buttons used to send every reader to the front of the podcast
+    # whichever episode they were on, and nothing on the page looked wrong.
+    stale = []
+    for slug, v in m.items():
+        f = os.path.join("episodes", slug + ".html")
+        if not os.path.exists(f):
+            continue
+        html = read(f)
+        # Compare against the ESCAPED form. Apple URLs carry "&uo=4", which is
+        # correctly written as &amp; in HTML, and comparing the raw string
+        # against the page reported every Apple link as missing. The pages were
+        # right and the first version of this check was wrong.
+        def present(u):
+            return u.replace("&", "&amp;") in html or u in html
+        if v.get("spotify") and not present(v["spotify"]):
+            stale.append(slug + " (spotify)")
+        if v.get("apple") and not present(v["apple"]):
+            stale.append(slug + " (apple)")
+    (ok if not stale else fail)("audio",
+                                "episodes not using their own listen link: %s" % (stale[:3] or 0))
+
 
 # ------------------------------------------------------------------ css ----
 def check_css():
