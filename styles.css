@@ -572,7 +572,12 @@ img{max-width:100%;display:block;}
 @media(prefers-reduced-motion:reduce){
   .ep-card,.ep-art img,.ep-plate,.ep-open{transition:none;}
 }
-.listen-bar{display:flex;flex-direction:column;gap:1.2rem;}
+/* Same 2.5rem as the gap above the rail. The listen bar sat directly against
+   the card bottoms with nothing between them, so the rail read as running into
+   the label rather than ending. Putting it on the bar rather than on
+   .episodes-viewport keeps every layout property of the marquee viewport in one
+   place. Everything below moves down by 2.5rem as a result, which is intended. */
+.listen-bar{display:flex;flex-direction:column;gap:1.2rem;margin-top:2.5rem;}
 .listen-label{color:var(--gray-light);font-size:1rem;}
 .listen-buttons{display:flex;flex-wrap:wrap;gap:0.9rem;}
 .listen-btn{
