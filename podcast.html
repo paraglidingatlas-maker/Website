@@ -71,7 +71,9 @@
   .host-bands{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;}
   .host-bands path{fill:none;stroke-width:1.5;vector-effect:non-scaling-stroke;}
   .host-bands .hb-grey{stroke:var(--edge-hi);}
-  .host-bands .hb-orange{stroke:var(--orange);opacity:0.9;}
+  .host-bands .hb-orange{stroke:url(#hostOrangeFade);opacity:0.9;}
+  .hb-stop-out{stop-color:var(--orange);stop-opacity:0;}
+  .hb-stop-in{stop-color:var(--orange);stop-opacity:1;}
 
   /* The surname, penned into a band that stops above the platform buttons so it
      cannot collide with them however the copy reflows. */
@@ -790,9 +792,19 @@
 
 <section class="host">
   <svg class="host-bands" viewBox="0 0 1600 1000" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <!-- The orange rule starts hard against x=0. Rather than letting it butt
+           into the window edge it fades in across the first 360 units, which is
+           22.5 percent of the section width at any size, because the gradient
+           is in user space and stretches with the viewBox exactly as the path
+           does. -->
+      <linearGradient id="hostOrangeFade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="360" y2="0">
+        <stop class="hb-stop-out" offset="0"/>
+        <stop class="hb-stop-in" offset="1"/>
+      </linearGradient>
+    </defs>
     <path class="hb-grey" d="M 230 705 L 450 705 L 526 643 L 1600 643"/>
-    <path class="hb-orange" id="hostOrange" d="M 0 595 L 450 595 L 526 533 L 1600 533"
-          data-v1="M 0 595 L 450 595 L 526 533 L 1600 533" data-v2="M 0 1000 L 450 1000 L 526 938 L 1600 938"/>
+    <path class="hb-orange" d="M 0 1000 L 450 1000 L 526 938 L 1600 938"/>
   </svg>
   <div class="host-plateband" aria-hidden="true"><span class="host-plate">SINGH</span></div>
   <div class="host-photo"><picture><source srcset="assets/podcast/host-aninder-soft.webp" type="image/webp"><img src="assets/podcast/host-aninder-soft.png" width="1094" height="1100" loading="lazy" alt="Aninder Singh, host of the Paragliding Atlas podcast"></picture></div>
@@ -1280,18 +1292,6 @@
     }, {passive: true});
     window.addEventListener('resize', frame, {passive: true});
     frame();
-  })();
-</script>
-<script>
-  // Two line versions were asked for at once. Rather than putting two host
-  // sections on the page, which would duplicate the heading, the copy and the
-  // portrait, the only thing that differs between them is the orange rule's
-  // height. Version 1 is what everyone gets; ?lines=2 swaps in the other.
-  // Delete the data-v2 attribute and this block once one of them wins.
-  (function () {
-    if (new URLSearchParams(location.search).get('lines') !== '2') return;
-    var p = document.getElementById('hostOrange');
-    if (p && p.dataset.v2) p.setAttribute('d', p.dataset.v2);
   })();
 </script>
 </body>
