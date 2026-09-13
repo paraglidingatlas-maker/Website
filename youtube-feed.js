@@ -56,16 +56,25 @@
   //   the watch link      ?v=XXX
   // If all three fail the card keeps its href and the browser opens YouTube,
   // which is a worse outcome than the lightbox but not a dead click.
+  // TEMPORARY: which route each id came from, reported in the status line.
+  // I have shipped two candidate fixes for a dead click without being able to
+  // see a browser, and guessing again is worse than measuring once. Remove
+  // idRoutes and the suffix on the status line as soon as the cause is known.
+  const idRoutes = { videoId: 0, atom: 0, link: 0, none: 0 };
+
   function videoIdOf(entry, link) {
     const direct = entry.getElementsByTagNameNS('*', 'videoId')[0]?.textContent;
-    if (direct && direct.trim()) return direct.trim();
+    if (direct && direct.trim()) { idRoutes.videoId++; return direct.trim(); }
 
     const atom = entry.getElementsByTagNameNS('*', 'id')[0]?.textContent || '';
     const m = atom.match(/yt:video:([\w-]+)/);
-    if (m) return m[1];
+    if (m) { idRoutes.atom++; return m[1]; }
 
     const q = String(link).match(/[?&]v=([\w-]+)/);
-    return q ? q[1] : '';
+    if (q) { idRoutes.link++; return q[1]; }
+
+    idRoutes.none++;
+    return '';
   }
 
   function esc(s) {
@@ -276,7 +285,13 @@
       });
 
       trackEl.innerHTML = videos.map(card).join('');
-      if (statusEl) statusEl.textContent = `Live from YouTube. Showing the ${videos.length} most recent videos.`;
+      if (statusEl) {
+        // TEMPORARY diagnostic suffix, remove once the click is understood
+        const r = idRoutes;
+        const via = `ids ${r.videoId}/${r.atom}/${r.link}/${r.none}`;
+        statusEl.textContent =
+          `Live from YouTube. Showing the ${videos.length} most recent videos. [${via}]`;
+      }
       startRail();
     })
     .catch(function (err) {
