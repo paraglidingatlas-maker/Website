@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Kenya: Paragliding in the Cradle of Humankind">
 <meta property="og:description" content="A 12 day guided paragliding tour based in Kerio Valley, Kenya. Thermals to 6 m/s, 1,500m AGL, and flights of two to seven hours over the Rift Valley.">
-<meta property="og:image" content="https://paraglidingatlas-maker.github.io/Website/assets/images/kenya-3.jpg">
+<meta property="og:image" content="https://paraglidingatlas-maker.github.io/Website/assets/images/kenya-hero.jpg">
 <meta property="og:url" content="https://paraglidingatlas-maker.github.io/Website/destinations/kenya.html">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
@@ -138,6 +138,99 @@
   .dst-hero{min-height:70vh;}
   .dst-date{flex-direction:column;gap:.25rem;}
 }
+
+/* ---------- RESTRUCTURE: figures, sticky rail, accordions, mobile bar ------
+   Added after the Drive photographs arrived. The page was 3,186 words, 55
+   headings and one photograph, which is a document rather than a page. No copy
+   changed. The long reference material moved into details elements so it stays in the
+   served HTML for crawlers while leaving the scroll path, which is the same
+   reasoning as the transcript clipping rule.
+   -------------------------------------------------------------------------- */
+
+/* ---------- figures ---------- */
+.dst-figure{margin:2.4rem 0 0;border:1px solid var(--rule);}
+.dst-figure img{width:100%;height:auto;display:block;}
+.dst-figure.half{max-width:34rem;}
+.dst-figure.wide{max-width:none;}
+
+/* ---------- shell: content column plus a rail that follows the scroll ------
+   Fourteen minutes of reading with the enquiry only at the bottom is the whole
+   conversion problem on this page. The rail keeps the dates and the CTA in
+   view the entire way down. Under 1080px it drops inline, and under 820px a
+   bar takes over at the foot of the screen instead.
+   -------------------------------------------------------------------------- */
+.dst-shell{display:grid;grid-template-columns:minmax(0,1fr) 21rem;
+  gap:clamp(1.5rem,3vw,3rem);align-items:start;
+  padding-right:clamp(1.2rem,5vw,5.5rem);}
+.dst-main{min-width:0;}
+.dst-shell .dst-sec{padding-right:0;}
+.dst-rail{position:sticky;top:1.5rem;padding-top:clamp(3.4rem,7vw,6.2rem);}
+.dst-rail-card{background:var(--card);border:1px solid var(--rule);padding:1.5rem 1.4rem;position:relative;}
+.dst-rail-card::before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;
+  border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+.dst-rail-kicker{display:block;color:var(--orange);font-size:.68rem;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:600;margin-bottom:.7rem;}
+.dst-rail-len{font-family:var(--font-display);font-size:1.05rem;color:var(--gray-light);margin:0 0 1.2rem;}
+.dst-rail-len b{color:var(--white);font-weight:700;}
+.dst-rail-deps{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.2rem;}
+.dst-dep{display:block;text-decoration:none;border:1px solid var(--rule);padding:.7rem .8rem;
+  transition:border-color .18s ease,background .18s ease;}
+.dst-dep:hover{border-color:var(--orange);background:var(--wash);}
+.dst-dep .n{display:block;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);}
+.dst-dep .w{display:block;font-family:var(--font-display);font-weight:600;
+  font-size:.92rem;color:var(--white);margin-top:.2rem;}
+.dst-rail-price{display:flex;justify-content:space-between;align-items:baseline;gap:.8rem;
+  padding:.9rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:1.1rem;}
+.dst-rail-price .l{color:var(--gray);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;}
+.dst-rail-price .v{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:.92rem;}
+.dst-rail-cta{width:100%;}
+.dst-rail-note{margin:1rem 0 0;color:var(--gray);font-size:.76rem;line-height:1.6;}
+
+/* ---------- reference accordions ----------
+   The four reference sections are about 1,500 of the page's 3,186 words. They
+   are what somebody wants AFTER they are interested, not before. The text is
+   still in the HTML, only folded.
+   -------------------------------------------------------------------------- */
+.dst-accs{border-top:1px solid var(--rule);}
+.dst-acc{border-bottom:1px solid var(--rule);}
+.dst-acc summary{cursor:pointer;list-style:none;padding:1rem 2rem 1rem 0;
+  font-family:var(--font-display);font-weight:600;font-size:.98rem;color:var(--white);
+  position:relative;transition:color .18s ease;}
+.dst-acc summary::-webkit-details-marker{display:none;}
+.dst-acc summary h3{display:inline;font-family:inherit;font-weight:inherit;
+  font-size:inherit;color:inherit;margin:0;}
+.dst-acc summary::after{content:"+";position:absolute;right:.3rem;top:.9rem;
+  color:var(--orange);font-size:1.15rem;line-height:1;}
+.dst-acc[open] summary::after{content:"\2212";}
+.dst-acc summary:hover{color:var(--orange);}
+.dst-acc summary:focus-visible{outline:2px solid var(--orange);outline-offset:3px;}
+.dst-acc-body{padding:0 0 1.2rem;}
+.dst-acc-body p{color:var(--gray-light);font-size:.93rem;line-height:1.75;margin:0 0 .8rem;}
+.dst-acc-body p:last-child{margin-bottom:0;}
+
+/* ---------- mobile booking bar ---------- */
+.dst-mobar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;
+  align-items:center;justify-content:space-between;gap:1rem;
+  background:var(--card);border-top:1px solid var(--live);
+  padding:.75rem 1.1rem;transform:translateY(110%);transition:transform .25s ease;}
+.dst-mobar.show{transform:none;}
+.dst-mobar-l .n{display:block;font-family:var(--font-display);font-weight:700;
+  color:var(--white);font-size:.95rem;line-height:1.2;}
+.dst-mobar-l .w{display:block;color:var(--gray-light);font-size:.75rem;}
+
+@media (max-width:1080px){
+  .dst-shell{grid-template-columns:1fr;padding-right:0;}
+  .dst-shell .dst-sec{padding-right:clamp(1.2rem,5vw,5.5rem);}
+  .dst-rail{position:static;padding:0 clamp(1.2rem,5vw,5.5rem) clamp(3rem,6vw,4rem);}
+}
+@media (max-width:820px){
+  .dst-mobar{display:flex;}
+  .dst-figure.half{max-width:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  .dst-mobar,.dst-dep{transition:none;}
+}
+
 </style>
 <!-- site-schema -->
 <script type="application/ld+json">
@@ -283,7 +376,7 @@
 
 <header class="dst-hero">
   <div class="dst-hero-media">
-    <picture><source srcset="../assets/images/kenya-3.webp" type="image/webp"><img src="../assets/images/kenya-3.jpg" alt="Paraglider high above the Kerio Valley escarpment in Kenya"></picture>
+    <picture><source srcset="../assets/images/kenya-hero.webp" type="image/webp"><img src="../assets/images/kenya-hero.jpg" width="2000" height="1125" fetchpriority="high" alt="A red and yellow paraglider banking above a steep green ridge in Kenya"></picture>
   </div>
   <div class="dst-hero-copy">
     <span class="kicker">Kerio Valley · Rift Valley</span>
@@ -331,6 +424,8 @@
   </div>
 </section>
 
+<div class="dst-shell">
+<div class="dst-main">
 <section class="dst-sec" id="overview">
   <div class="dst-head">
     <span class="kicker">Overview</span>
@@ -341,6 +436,7 @@
   <p class="dst-lede">We take off from the heart of the Great Rift Valley with direct access from our home base. You launch from the lush green takeoffs in Kerio, chase thermals over the Mau Mau Caves, and set your sights on the distant shores of Lake Naivasha. The itinerary is built around the best flying windows rather than a fixed schedule, with authentic cultural experiences for when your feet are back on the ground.</p>
   <p class="dst-lede">Our guides have extensive experience running retrieves from remote locations, with detailed flight plans and multiple communication systems in place for a swift pickup no matter where the sky takes you. We cannot control the weather. We can promise you are in the safest possible hands both in the air and on the ground.</p>
   <p class="dst-lede">We do not see our clients as clients. We see them as friends and fellow dreamers, pilots who like us have made exploring new horizons a priority. We know why you fly, because we feel the same way.</p>
+  <figure class="dst-figure wide"><picture><source srcset="../assets/images/kenya-ridge.webp" type="image/webp"><img src="../assets/images/kenya-ridge.jpg" width="1800" height="771" loading="lazy" alt="Four paragliders spread out along a green escarpment ridge above terraced farmland"></picture></figure>
   <p class="dst-pull">Let East African skies awaken your inner explorer, and leave you forever inspired.</p>
 </section>
 
@@ -349,6 +445,7 @@
     <span class="kicker">General Info</span>
     <h2>What the air actually does here</h2>
   </div>
+  <figure class="dst-figure half"><picture><source srcset="../assets/images/kenya-high.webp" type="image/webp"><img src="../assets/images/kenya-high.jpg" width="1400" height="933" loading="lazy" alt="A single paraglider high above a hazy valley of farmland and scattered homesteads"></picture></figure>
   <div class="dst-grid two">
     <div class="dst-cell">
       <h3>Thermal strength</h3>
@@ -368,6 +465,7 @@
     <h2>What this trip is actually like</h2>
     <p>We would rather you read this and decide it is not for you than arrive and find that out. Explore the Cradle is built for independent pilots with strong glider handling and an appetite for the unfamiliar. We put flight safety first, because that is what keeps the fun factor intact.</p>
   </div>
+  <figure class="dst-figure"><picture><source srcset="../assets/images/kenya-launch.webp" type="image/webp"><img src="../assets/images/kenya-launch.jpg" width="1400" height="933" loading="lazy" alt="Pilots and a laid out wing on an open rock launch, with cattle grazing below"></picture></figure>
   <p class="dst-lede">Every flight is a good flight, but chasing airtime comes with bumpy air, variable thermal strength and conditions more demanding than you expected. That is part of it. Come willing to push your limits and you leave with a renewed understanding of flying in new terrain.</p>
   <div class="dst-grid two">
     <div class="dst-cell">
@@ -423,13 +521,13 @@
     <span class="kicker">Know Before You Go</span>
     <h2>The practical country</h2>
   </div>
-  <div class="dst-grid three">
-    <div class="dst-cell"><h3>Capital</h3><p>Nairobi. Founded 1899, elevation 1,795m.</p></div>
-    <div class="dst-cell"><h3>Population</h3><p>57.7 million, the 7th most populous country in Africa and 27th globally. Area 569,140 km².</p></div>
-    <div class="dst-cell"><h3>Currency</h3><p>Kenyan Shilling (KES). Cash is used widely, ATMs are common in big towns only, and Mpesa is the preferred digital payment method.</p></div>
-    <div class="dst-cell"><h3>Language</h3><p>Swahili and English. Kenya has over 60 further ethnic languages.</p></div>
-    <div class="dst-cell"><h3>Visa</h3><p>Check the requirements for your own nationality before you travel.</p></div>
-    <div class="dst-cell"><h3>Power</h3><p>240 volts at 50 Hertz, plug type G, the UK socket.</p></div>
+  <div class="dst-accs">
+    <details class="dst-acc"><summary><h3>Capital</h3></summary><div class="dst-acc-body"><p>Nairobi. Founded 1899, elevation 1,795m.</p></div></details>
+    <details class="dst-acc"><summary><h3>Population</h3></summary><div class="dst-acc-body"><p>57.7 million, the 7th most populous country in Africa and 27th globally. Area 569,140 km².</p></div></details>
+    <details class="dst-acc"><summary><h3>Currency</h3></summary><div class="dst-acc-body"><p>Kenyan Shilling (KES). Cash is used widely, ATMs are common in big towns only, and Mpesa is the preferred digital payment method.</p></div></details>
+    <details class="dst-acc"><summary><h3>Language</h3></summary><div class="dst-acc-body"><p>Swahili and English. Kenya has over 60 further ethnic languages.</p></div></details>
+    <details class="dst-acc"><summary><h3>Visa</h3></summary><div class="dst-acc-body"><p>Check the requirements for your own nationality before you travel.</p></div></details>
+    <details class="dst-acc"><summary><h3>Power</h3></summary><div class="dst-acc-body"><p>240 volts at 50 Hertz, plug type G, the UK socket.</p></div></details>
   </div>
 </section>
 
@@ -441,34 +539,16 @@
     <span class="kicker">Questions</span>
     <h2>What pilots ask before booking</h2>
   </div>
-  <div class="dst-grid two">
-    <div class="dst-cell">
-      <h3>What skill and fitness level is required?</h3>
-      <p>This is an XC adventure tour for autonomous pilots. The minimum is being able to manage your own takeoffs and outlandings, with strong thermalling and ridge soaring skills recommended. An SIV course is highly desirable for handling collapses and turbulence.</p>
-      <p>Fitness: good condition for hikes to launch at moderate elevation, gear handling, and four to six hour active flying days in heat. You should be able to trek uneven terrain with a 10 to 15 kg pack.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>What equipment is provided?</h3>
-      <p>We provide certified rental wings only, for a fixed fee on request, and that is first come first served, so tell us in good time. Group safety items including first aid and retrieve support are covered.</p>
-      <p>You bring your own EN or LTF certified wing, harness, reserve, helmet and vario or GPS. Hiking boots and thermal layers are recommended.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Will I get my own guide?</h3>
-      <p>No, there are no dedicated one to one guides on this tour. Pilots are led by one or two expert instructors at a maximum ratio of one to three. Personalised XC guidance, weather briefings and retrieve help are provided to the group, focused on collective safety and maximising flights.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Does the price include travel?</h3>
-      <p>The base price covers local transport by 4WD van, guiding, park entry for flying activities, takeoff fees, and Paragliding Association of Kenya membership. Transfers from the airport to the meetup point in Nairobi can be arranged on request.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>What insurance do I need?</h3>
-      <p>Travel insurance covering paragliding at altitudes up to 4,000m. It must include helicopter rescue for retrieves from remote regions, and medical evacuation and treatment covering local hospitals plus international repatriation.</p>
-      <p>Standard travel insurance often excludes adventure sports, so read the wording rather than assuming.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>What is the cancellation policy?</h3>
-      <p>The deposit is not refunded, and if you cancel there is a termination fee that on a trip like this is usually most of the price, because permits, guiding and local arrangements are committed months ahead. It is calculated as the price less what we save and less anything we recover by reselling your place, and we will show you the working. The balance is due 120 days before departure. This is exactly why we push trip cancellation insurance so hard. Full detail in the <a href="../terms.html#cancel-you">booking terms</a>.</p>
-    </div>
+  <div class="dst-accs">
+    <details class="dst-acc"><summary><h3>What skill and fitness level is required?</h3></summary><div class="dst-acc-body"><p>This is an XC adventure tour for autonomous pilots. The minimum is being able to manage your own takeoffs and outlandings, with strong thermalling and ridge soaring skills recommended. An SIV course is highly desirable for handling collapses and turbulence.</p>
+      <p>Fitness: good condition for hikes to launch at moderate elevation, gear handling, and four to six hour active flying days in heat. You should be able to trek uneven terrain with a 10 to 15 kg pack.</p></div></details>
+    <details class="dst-acc"><summary><h3>What equipment is provided?</h3></summary><div class="dst-acc-body"><p>We provide certified rental wings only, for a fixed fee on request, and that is first come first served, so tell us in good time. Group safety items including first aid and retrieve support are covered.</p>
+      <p>You bring your own EN or LTF certified wing, harness, reserve, helmet and vario or GPS. Hiking boots and thermal layers are recommended.</p></div></details>
+    <details class="dst-acc"><summary><h3>Will I get my own guide?</h3></summary><div class="dst-acc-body"><p>No, there are no dedicated one to one guides on this tour. Pilots are led by one or two expert instructors at a maximum ratio of one to three. Personalised XC guidance, weather briefings and retrieve help are provided to the group, focused on collective safety and maximising flights.</p></div></details>
+    <details class="dst-acc"><summary><h3>Does the price include travel?</h3></summary><div class="dst-acc-body"><p>The base price covers local transport by 4WD van, guiding, park entry for flying activities, takeoff fees, and Paragliding Association of Kenya membership. Transfers from the airport to the meetup point in Nairobi can be arranged on request.</p></div></details>
+    <details class="dst-acc"><summary><h3>What insurance do I need?</h3></summary><div class="dst-acc-body"><p>Travel insurance covering paragliding at altitudes up to 4,000m. It must include helicopter rescue for retrieves from remote regions, and medical evacuation and treatment covering local hospitals plus international repatriation.</p>
+      <p>Standard travel insurance often excludes adventure sports, so read the wording rather than assuming.</p></div></details>
+    <details class="dst-acc"><summary><h3>What is the cancellation policy?</h3></summary><div class="dst-acc-body"><p>The deposit is not refunded, and if you cancel there is a termination fee that on a trip like this is usually most of the price, because permits, guiding and local arrangements are committed months ahead. It is calculated as the price less what we save and less anything we recover by reselling your place, and we will show you the working. The balance is due 120 days before departure. This is exactly why we push trip cancellation insurance so hard. Full detail in the <a href="../terms.html#cancel-you">booking terms</a>.</p></div></details>
   </div>
 </section>
 
@@ -483,23 +563,11 @@
     <li>Kenyan conditions are stronger than most home sites. Bring gear you trust.</li>
     <li>Helicopter rescue and good healthcare are both available.</li>
   </ul>
-  <div class="dst-grid two">
-    <div class="dst-cell">
-      <h3>Clothing</h3>
-      <p>Long trousers and long sleeves against thorns, sunburn and mosquitoes. Comfortable hiking shoes. Two pairs each of socks, underwear and t-shirts. Flying gloves, because it gets cold at 4,000m. Sunscreen and sunglasses. A warm flying jacket. A buff for the dusty roads. Ear plugs for noisy hotels.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Equipment</h3>
-      <p>A wing you know well and a harness with sufficient back or airbag protection. Spare lines and ripstop tape, because takeoffs and landings can be bushy and thorny. A 2m radio on 144 to 146 MHz from Yaesu, Icom or Kenwood; avoid Baofeng, because reliable communication can save your life. Powerbank and cables, a headlamp, pepper spray against dogs or wild animals, and a pocket knife.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Health</h3>
-      <p>No mandatory vaccines for travellers from Europe or America. Malaria risk is low in the dry season of January and February, especially in the highlands above 2,000m; prevention is best, with shoes, high socks, long trousers and long sleeves, and pre-medication can be bought locally. Bring DEET repellent. Hotel beds usually have nets.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Stomach and healthcare</h3>
-      <p>Local food can upset tender Western stomachs. FloraNorm, a Saccharomyces boulardii probiotic, is available locally. Kenya has good healthcare and helicopter rescue is available.</p>
-    </div>
+  <div class="dst-accs">
+    <details class="dst-acc"><summary><h3>Clothing</h3></summary><div class="dst-acc-body"><p>Long trousers and long sleeves against thorns, sunburn and mosquitoes. Comfortable hiking shoes. Two pairs each of socks, underwear and t-shirts. Flying gloves, because it gets cold at 4,000m. Sunscreen and sunglasses. A warm flying jacket. A buff for the dusty roads. Ear plugs for noisy hotels.</p></div></details>
+    <details class="dst-acc"><summary><h3>Equipment</h3></summary><div class="dst-acc-body"><p>A wing you know well and a harness with sufficient back or airbag protection. Spare lines and ripstop tape, because takeoffs and landings can be bushy and thorny. A 2m radio on 144 to 146 MHz from Yaesu, Icom or Kenwood; avoid Baofeng, because reliable communication can save your life. Powerbank and cables, a headlamp, pepper spray against dogs or wild animals, and a pocket knife.</p></div></details>
+    <details class="dst-acc"><summary><h3>Health</h3></summary><div class="dst-acc-body"><p>No mandatory vaccines for travellers from Europe or America. Malaria risk is low in the dry season of January and February, especially in the highlands above 2,000m; prevention is best, with shoes, high socks, long trousers and long sleeves, and pre-medication can be bought locally. Bring DEET repellent. Hotel beds usually have nets.</p></div></details>
+    <details class="dst-acc"><summary><h3>Stomach and healthcare</h3></summary><div class="dst-acc-body"><p>Local food can upset tender Western stomachs. FloraNorm, a Saccharomyces boulardii probiotic, is available locally. Kenya has good healthcare and helicopter rescue is available.</p></div></details>
   </div>
 </section>
 
@@ -509,45 +577,21 @@
     <h2>Flying in Africa, and how to do it well</h2>
     <p>Paragliding is still new across much of the continent, and how visiting pilots behave shapes what the next ones are allowed to do. This is distilled from thirteen years of Nikolay Yotov's exploration in Ethiopia and Kenya. He is also the guest on the <a href="../episodes/pre-pwc-kenya-nikolay-yotov.html">Kenya episode</a>, if you would rather hear it in his own words.</p>
   </div>
-  <div class="dst-grid two">
-    <div class="dst-cell">
-      <h3>How you are read</h3>
-      <p>You may be seen as progress, as wealth, or with suspicion: spying, drones, something military. None of that is unreasonable given the history. Read up on the communities, the security picture and the recent past of anywhere you are heading before you get there.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>The approach that works</h3>
-      <p>Be open, enthusiastic and positive, and greet everyone, including the unsmiling ones. Ask locally about security, wild animals and access, because that knowledge is not in any guidebook. Explain your plan clearly: misunderstandings about where you intend to take off are the single most common problem.</p>
-      <p>Hiring porters is usually welcome. In some communities men will not take portering work, and offering a guiding or security role instead is the respectful move rather than pressing the point.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Prices and tipping</h3>
-      <p>Agree a price in advance, even when someone waves it off. Numbers get misheard, and 15, 50 and 500 are easy to confuse in a second language on a windy hillside.</p>
-      <p>Tip 20 to 50 per cent for good work, and nothing extra for a rip off. Fairness runs both ways. Pay for the things you cannot see, like a path an ancestor cut or the fact that nothing with teeth came near you. Hire from the community closest to the site, or you create jealousy you will not be around to resolve.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>When you are asked for money</h3>
-      <p>Giving cash directly tends to make things worse for the pilot behind you. Share food or buy someone a meal instead. Saying plainly that it would not be fair to give to one person and not the rest is usually understood and accepted.</p>
-      <p>Better still, give work as a porter or guide, or donate to a local organisation. Avoid handing out your phone number or email, because it turns into requests for money later.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Landing protocol</h3>
-      <p>Avoid schools, markets and crowds. Land somewhere remote but reachable by a vehicle. Pack fast with a quick pack sack, then deal with yourself and send your location; repack properly later.</p>
-      <p>People will arrive, and quickly. Greet the children with enthusiasm, find the elders or the leader, and ask them to help keep a clear space. Fly with live tracking and a driver you trust.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Staying and moving</h3>
-      <p>In remote areas you will camp or stay in somebody's house. Take your shoes off, wash your feet, compliment the food, and follow your host's lead on who it is appropriate to address. Pay discreetly, often to the woman running the household, and expect around half the price of a standard hotel.</p>
-      <p>Public transport is crowded and good fun, and your glider bag may double the fare, which is fair. Hitching, offer close to the bus fare and do not haggle below it; going lower is taken as an insult, not a bargain. A hired driver who negotiates, handles gear, keeps crowds back and will drive at night to fetch you is worth 50 to 100 dollars at the end of the trip. Avoid driving at night yourself. If you land a long way out, sleep where you landed.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Permissions and officials</h3>
-      <p>The old rule is that it is better to say sorry than to ask permission, and paragliding is not explicitly illegal where the law does not describe it at all. That logic runs out in tense regions, where being arrested is a real outcome and official permission saves a great deal of time.</p>
-      <p><strong>Kenya is the easy case.</strong> The tourism sector is used to foreigners and no special permits are needed for what we do on this tour.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>You are the precedent</h3>
-      <p>There are few enough of us flying here that you are not an anonymous tourist. You are the paraglider pilot that community has met, and possibly the only one they will meet this year. What you do sets the terms for everyone who comes next.</p>
-    </div>
+  <div class="dst-accs">
+    <details class="dst-acc"><summary><h3>How you are read</h3></summary><div class="dst-acc-body"><p>You may be seen as progress, as wealth, or with suspicion: spying, drones, something military. None of that is unreasonable given the history. Read up on the communities, the security picture and the recent past of anywhere you are heading before you get there.</p></div></details>
+    <details class="dst-acc"><summary><h3>The approach that works</h3></summary><div class="dst-acc-body"><p>Be open, enthusiastic and positive, and greet everyone, including the unsmiling ones. Ask locally about security, wild animals and access, because that knowledge is not in any guidebook. Explain your plan clearly: misunderstandings about where you intend to take off are the single most common problem.</p>
+      <p>Hiring porters is usually welcome. In some communities men will not take portering work, and offering a guiding or security role instead is the respectful move rather than pressing the point.</p></div></details>
+    <details class="dst-acc"><summary><h3>Prices and tipping</h3></summary><div class="dst-acc-body"><p>Agree a price in advance, even when someone waves it off. Numbers get misheard, and 15, 50 and 500 are easy to confuse in a second language on a windy hillside.</p>
+      <p>Tip 20 to 50 per cent for good work, and nothing extra for a rip off. Fairness runs both ways. Pay for the things you cannot see, like a path an ancestor cut or the fact that nothing with teeth came near you. Hire from the community closest to the site, or you create jealousy you will not be around to resolve.</p></div></details>
+    <details class="dst-acc"><summary><h3>When you are asked for money</h3></summary><div class="dst-acc-body"><p>Giving cash directly tends to make things worse for the pilot behind you. Share food or buy someone a meal instead. Saying plainly that it would not be fair to give to one person and not the rest is usually understood and accepted.</p>
+      <p>Better still, give work as a porter or guide, or donate to a local organisation. Avoid handing out your phone number or email, because it turns into requests for money later.</p></div></details>
+    <details class="dst-acc"><summary><h3>Landing protocol</h3></summary><div class="dst-acc-body"><p>Avoid schools, markets and crowds. Land somewhere remote but reachable by a vehicle. Pack fast with a quick pack sack, then deal with yourself and send your location; repack properly later.</p>
+      <p>People will arrive, and quickly. Greet the children with enthusiasm, find the elders or the leader, and ask them to help keep a clear space. Fly with live tracking and a driver you trust.</p></div></details>
+    <details class="dst-acc"><summary><h3>Staying and moving</h3></summary><div class="dst-acc-body"><p>In remote areas you will camp or stay in somebody's house. Take your shoes off, wash your feet, compliment the food, and follow your host's lead on who it is appropriate to address. Pay discreetly, often to the woman running the household, and expect around half the price of a standard hotel.</p>
+      <p>Public transport is crowded and good fun, and your glider bag may double the fare, which is fair. Hitching, offer close to the bus fare and do not haggle below it; going lower is taken as an insult, not a bargain. A hired driver who negotiates, handles gear, keeps crowds back and will drive at night to fetch you is worth 50 to 100 dollars at the end of the trip. Avoid driving at night yourself. If you land a long way out, sleep where you landed.</p></div></details>
+    <details class="dst-acc"><summary><h3>Permissions and officials</h3></summary><div class="dst-acc-body"><p>The old rule is that it is better to say sorry than to ask permission, and paragliding is not explicitly illegal where the law does not describe it at all. That logic runs out in tense regions, where being arrested is a real outcome and official permission saves a great deal of time.</p>
+      <p><strong>Kenya is the easy case.</strong> The tourism sector is used to foreigners and no special permits are needed for what we do on this tour.</p></div></details>
+    <details class="dst-acc"><summary><h3>You are the precedent</h3></summary><div class="dst-acc-body"><p>There are few enough of us flying here that you are not an anonymous tourist. You are the paraglider pilot that community has met, and possibly the only one they will meet this year. What you do sets the terms for everyone who comes next.</p></div></details>
   </div>
 </section>
 
@@ -557,6 +601,7 @@
     <h2>Three departures</h2>
     <p>Each departure runs 12 days from Kerio Valley.</p>
   </div>
+  <figure class="dst-figure half"><picture><source srcset="../assets/images/kenya-slope.webp" type="image/webp"><img src="../assets/images/kenya-slope.jpg" width="1400" height="933" loading="lazy" alt="A paraglider soaring low along a grass slope dotted with flat topped trees"></picture></figure>
   <div class="dst-dates">
     <div class="dst-date"><b>Adventure Tour 1</b><span>19 Jan to 1 Feb 2027</span></div>
     <div class="dst-date"><b>Adventure Tour 2</b><span>3 Feb to 15 Feb 2027</span></div>
@@ -604,6 +649,25 @@
   </a>
 </section>
 
+</div>
+
+<aside class="dst-rail">
+  <div class="dst-rail-card">
+    <span class="dst-rail-kicker">Explore The Cradle</span>
+    <p class="dst-rail-len"><b>12 days</b> from Kerio Valley</p>
+    <div class="dst-rail-deps">
+      <a class="dst-dep" href="#dates"><span class="n">Adventure Tour 1</span><span class="w">19 Jan to 1 Feb 2027</span></a>
+      <a class="dst-dep" href="#dates"><span class="n">Adventure Tour 2</span><span class="w">3 Feb to 15 Feb 2027</span></a>
+      <a class="dst-dep" href="#dates"><span class="n">Adventure Tour 3</span><span class="w">18 Feb to 1 Mar 2027</span></a>
+    </div>
+    <div class="dst-rail-price">
+      <span class="l">Starting from</span><span class="v">Enquire for prices</span>
+    </div>
+    <a class="btn-solid dst-rail-cta" href="#enquire" data-hover><span>Enquire about this trip</span></a>
+    <p class="dst-rail-note">IPPI 2 or equivalent. You need to self launch and land out on your own.</p>
+  </div>
+</aside>
+</div>
 <section class="cta-band" id="enquire">
   <div class="cta-card">
   <span class="cta-hud-tag">Booking Open</span>
@@ -628,6 +692,12 @@
   </ol>
   </div>
 </section>
+
+
+<div class="dst-mobar" id="dstMobar">
+  <div class="dst-mobar-l"><span class="n">12 days</span><span class="w">Next departure 19 Jan 2027</span></div>
+  <a class="btn-solid" href="#enquire" data-hover><span>Enquire</span></a>
+</div>
 
 </div><!-- /.page-wrap -->
 
@@ -684,5 +754,15 @@
 </footer>
 
 <script src="../script.js?v=44d793b6"></script>
+
+<script>
+(function(){
+  var bar=document.getElementById('dstMobar'), hero=document.querySelector('.dst-hero');
+  if(!bar||!hero||!('IntersectionObserver' in window))return;
+  new IntersectionObserver(function(e){
+    bar.classList.toggle('show', !e[0].isIntersecting);
+  },{threshold:0}).observe(hero);
+})();
+</script>
 </body>
 </html>
