@@ -76,6 +76,16 @@
   let box = null;
   let lastFocus = null;
   let draggedAt = 0;        // shared with the rail's click swallower
+  // WHICH CARD WAS PRESSED, recorded at pointerdown.
+  // The click handler used to find the card with e.target.closest('.yt-card'),
+  // and that stopped working the moment the rail got pointer capture:
+  // setPointerCapture retargets the compatibility mouse events, click included,
+  // to the capturing element, so e.target became the rail and closest() found
+  // nothing. The handler returned early and the lightbox never opened.
+  // homepage-motion.js has the same capture and never showed the fault, because
+  // its cards are plain links that navigate by default and it never reads
+  // e.target. Recording the card on pointerdown is immune to the retarget.
+  let pressedCard = null;
 
   function closeBox() {
     if (!box) return;
@@ -113,7 +123,7 @@
   }
 
   trackEl.addEventListener('click', function (e) {
-    const a = e.target.closest('.yt-card');
+    const a = (e.target.closest && e.target.closest('.yt-card')) || pressedCard;
     if (!a) return;
     // leave modified clicks alone so "open in new tab" still works
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
@@ -181,6 +191,7 @@
 
     railEl.addEventListener('pointerdown', function (e) {
       if (e.button !== undefined && e.button !== 0) return;
+      pressedCard = e.target.closest ? e.target.closest('.yt-card') : null;
       dragging = true; moved = 0; startX = e.clientX; startPos = x;
       railEl.classList.add('is-dragging');
       try { railEl.setPointerCapture(e.pointerId); } catch (err) {}

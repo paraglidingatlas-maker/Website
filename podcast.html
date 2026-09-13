@@ -222,8 +222,15 @@
 
      14px is one of the three radii tools/audit.py allows, and its comment names
      it as the play button, so this is the value the rule was written for. */
+  /* SCALED, not resized. 82 by 56 is the geometry the library popup uses, on a
+     media panel far wider than a rail card: unscaled it came out at 34% of the
+     card's width and 41% of the thumbnail's height, which is what looked
+     absurd. YouTube's own button is about 14% of its thumbnail's width.
+     A transform keeps the 82:56 ratio and the 14px radius in proportion, which
+     resizing the box would not: 14px on a shorter box reads as a pill. */
   .yt-play{position:absolute;top:50%;left:50%;z-index:2;
-    transform:translate(-50%,-50%);
+    --ps:0.52;                            /* 43 x 29, so 13-18% of card width */
+    transform:translate(-50%,-50%) scale(var(--ps));
     width:82px;height:56px;border-radius:14px;
     display:flex;align-items:center;justify-content:center;
     background:rgba(20,21,25,0.62);color:#fff;
@@ -235,7 +242,7 @@
      optically centred. */
   .yt-play svg{width:100%;height:100%;display:block;}
   .yt-card:hover .yt-play{background:#f00;
-    transform:translate(-50%,-50%) scale(1.08);
+    transform:translate(-50%,-50%) scale(calc(var(--ps) * 1.08));
     box-shadow:0 6px 26px rgba(255,0,0,0.4);}
   .yt-title{display:block;padding:0.85rem 0.95rem 0;font-family:var(--font-display);
     font-weight:600;font-size:0.85rem;line-height:1.35;color:var(--white);
@@ -252,7 +259,10 @@
   @media(prefers-reduced-motion: reduce){
     .yt-track{transform:none !important;}
     .yt-rail{overflow-x:auto;cursor:auto;}
-    .yt-play,.yt-card:hover .yt-play{transform:translate(-50%,-50%) !important;}
+    /* suppress the hover LIFT, not the base scale: dropping the transform
+       outright snapped the button back to its unscaled 82x56 */
+    .yt-play,.yt-card:hover .yt-play{
+      transform:translate(-50%,-50%) scale(var(--ps)) !important;}
   }
 
   /* ===== LIGHTBOX =====
@@ -277,10 +287,9 @@
     /* The rail keeps drifting on a phone: it is horizontal by nature, so a
        narrow column costs it nothing. */
     .yt-card{width:clamp(13rem,66vw,17rem);}
-    /* scaled rather than resized, so the 82:56 proportion and the corner radius
-       stay in step on a narrower card */
-    .yt-play{transform:translate(-50%,-50%) scale(0.76);}
-    .yt-card:hover .yt-play{transform:translate(-50%,-50%) scale(0.82);}
+    /* a narrower card wants a smaller button; only the ratio changes, and the
+       hover lift follows from it */
+    .yt-play{--ps:0.46;}
     /* Two columns at 1.5fr 1fr leaves the figures column too narrow for
        "Countries Reached" beside a number, so stack and move the divider
        to the top edge, keeping the same hairline. */
@@ -1295,7 +1304,7 @@
   })();
 </script>
 <script src="rss-feed.js?v=d98c27db"></script>
-<script src="youtube-feed.js?v=a32d6b95"></script>
+<script src="youtube-feed.js?v=8346ebfd"></script>
 <script>
   // Generate equalizer bars with randomized timing so they bounce organically
   // rather than in mechanical unison
