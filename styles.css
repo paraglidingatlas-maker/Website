@@ -485,6 +485,10 @@ img{max-width:100%;display:block;}
    as motion. A mask fades them into the page instead. */
 .episodes-viewport{
   position:relative;overflow:hidden;cursor:grab;
+  /* Without this a horizontal swipe on a phone is claimed by the page's own
+     vertical scrolling and the strip never sees it. pan-y keeps the page
+     scrollable up and down while the strip takes sideways. */
+  touch-action:pan-y;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
 }
@@ -636,39 +640,36 @@ img{max-width:100%;display:block;}
   from{background-position:130% 0;}
   to{background-position:-130% 0;}
 }
-/* the dotted rule, and the glints that travel along it */
-.ep-search-library-sparkle{
-  position:absolute;top:50%;width:16px;height:5px;transform:translateY(-50%);
-  pointer-events:none;background:radial-gradient(ellipse at center,
-    rgba(255,117,23,0.85), transparent 70%);
-  opacity:0;animation:library-glint 5.5s ease-in-out infinite;
-}
+/* An L at the TOP RIGHT, fading in and out.
+
+   THE GLOW USES filter:drop-shadow, NOT box-shadow. A 10px square with only
+   border-top and border-right still HAS a 10px box, and box-shadow casts from
+   the box rather than from the painted pixels: you get a soft rectangle behind
+   an L, faint on the empty corner and strong where the strokes are. drop-shadow
+   follows the strokes and nothing else.
+
+   The two spare sparkle spans in the markup are switched off rather than removed,
+   because the markup is hand written in index.html and one of them carries the
+   mark. */
 .ep-search-library-link::after{
-  content:"";position:absolute;left:0;right:0;bottom:-0.02em;height:5px;pointer-events:none;
-  background-image:radial-gradient(circle, var(--orange) 0.9px, transparent 1.1px);
-  background-size:7px 5px;background-repeat:repeat-x;background-position:0 50%;
+  content:"";position:absolute;top:-0.16em;right:-0.24em;
+  width:11px;height:11px;pointer-events:none;
+  border-top:2px solid var(--orange);border-right:2px solid var(--orange);
+  filter:drop-shadow(0 0 3px rgba(255,117,23,0.55));
   opacity:0;transition:opacity 0.7s ease;
 }
-.ep-search-library-link.is-lit::after{opacity:0.5;}
-.ep-search-library-link .ep-search-library-sparkle{
-  top:auto;bottom:-0.02em;transform:none;
+.ep-search-library-link.is-lit::after{
+  animation:library-mark 3.6s ease-in-out infinite;
 }
-.ep-search-library-link.is-lit .ep-search-library-sparkle:nth-child(1){animation-delay:0.4s;}
-.ep-search-library-link.is-lit .ep-search-library-sparkle:nth-child(2){animation-delay:2.3s;}
-.ep-search-library-link.is-lit .ep-search-library-sparkle:nth-child(3){animation-delay:4.1s;}
-.ep-search-library-link:not(.is-lit) .ep-search-library-sparkle{animation:none;opacity:0;}
-@keyframes library-glint{
-  0%{left:-6%;opacity:0;}
-  12%{opacity:0.9;}
-  50%{opacity:0.9;}
-  62%{opacity:0;}
-  100%{left:102%;opacity:0;}
+@keyframes library-mark{
+  0%,100%{opacity:0.25;}
+  50%{opacity:1;}
 }
+.ep-search-library-sparkle{display:none;}
 @media(prefers-reduced-motion: reduce){
   .ep-search-library-link{-webkit-text-fill-color:var(--white);color:var(--white);animation:none;}
   .ep-search-library-link:hover{animation:none;}
-  .ep-search-library-link::after{opacity:0.5;}
-  .ep-search-library-sparkle{animation:none;opacity:0;}
+  .ep-search-library-link::after{opacity:1;animation:none;}
 }
 .ep-search-bar{
   position:relative;display:flex;gap:0.8rem;max-width:700px;margin:0 auto;

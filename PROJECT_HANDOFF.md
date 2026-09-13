@@ -3779,3 +3779,32 @@ Removing `@keyframes ep-scroll` with `re.sub` took the closing brace of the bloc
 after it, and the Library replacement left one spare. Both caught by the tinycss2
 check before the build. **String surgery on CSS needs the parser run afterwards,
 every time.**
+
+### 66a. THE DRAG WAS GLITCHY FOR FOUR REASONS
+1. **The cards are `<a>` elements and browsers natively drag links.** A pointer
+   drag was starting a ghost-image link drag at the same time. `dragstart` is
+   prevented now, and that was the main one.
+2. **The click swallower was removed on `setTimeout(0)`.** On touch the synthetic
+   click arrives AFTER that, so on a phone a swipe opened an episode. Replaced
+   with a timestamp: one permanent capture listener that refuses any click within
+   350ms of a real drag ending.
+3. **No `touch-action`.** A horizontal swipe was being claimed by the page's own
+   vertical scrolling, so the strip never saw it. `pan-y` keeps the page
+   scrollable while the strip takes sideways.
+4. **`half` was measured before the portraits decoded.** A wrong half makes the
+   loop jump. A ResizeObserver on the track catches every change rather than
+   guessing at `load`.
+
+Right-click also no longer starts a drag.
+
+### 66b. THE MARK OVER LIBRARY, AND WHY THE GLOW WAS A BOX
+The dotted rule is replaced by an L at the top right, fading in and out.
+
+**The glow uses `filter:drop-shadow`, not `box-shadow`.** A 11px square with only
+`border-top` and `border-right` still HAS an 11px box, and **box-shadow casts from
+the box rather than from the painted pixels**: a soft rectangle behind an L, faint
+on the empty corner and strong where the strokes are. That is exactly what was
+reported. `drop-shadow` follows the strokes and nothing else.
+
+The three sparkle spans are hidden rather than deleted, because the markup is hand
+written in index.html.

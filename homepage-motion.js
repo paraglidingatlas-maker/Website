@@ -50,15 +50,24 @@
 
     measure();
     window.addEventListener('resize', measure);
-    /* images change the track width as they arrive */
+    /* The track width changes as images arrive, and a wrong `half` makes the
+       loop jump. ResizeObserver catches every change rather than guessing at
+       load, which can fire before the last portrait decodes. */
     window.addEventListener('load', measure);
+    if ('ResizeObserver' in window) new ResizeObserver(measure).observe(trk);
     requestAnimationFrame(tick);
 
     /* pointing at the strip stops it, so a card can be read and clicked */
     vp.addEventListener('mouseenter', function () { paused = true; });
     vp.addEventListener('mouseleave', function () { if (!dragging) paused = false; });
 
+    /* THE CARDS ARE LINKS, AND BROWSERS NATIVELY DRAG LINKS. Without this a
+       pointer drag starts a ghost-image link drag at the same time, which is
+       what made it feel glitchy. */
+    vp.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
     vp.addEventListener('pointerdown', function (e) {
+      if (e.button !== undefined && e.button !== 0) return;   /* left or touch only */
       dragging = true; moved = 0; startX = e.clientX; startPos = x;
       vp.classList.add('is-dragging');
       try { vp.setPointerCapture(e.pointerId); } catch (err) {}
@@ -72,18 +81,23 @@
       x = startPos + dx; wrap(); paint();
     });
 
+    /* A DRAG MUST NOT OPEN THE CARD UNDER YOUR FINGER.
+       The first version added a click swallower and removed it on a
+       setTimeout(0). On touch the synthetic click arrives AFTER that timeout,
+       so the swallow missed and a swipe opened an episode. This uses a
+       timestamp instead: one permanent capture listener, which refuses any
+       click within 350ms of a real drag ending. */
+    var draggedAt = 0;
+    vp.addEventListener('click', function (ev) {
+      if (Date.now() - draggedAt < 350) { ev.preventDefault(); ev.stopPropagation(); }
+    }, true);
+
     function release(e) {
       if (!dragging) return;
       dragging = false;
       vp.classList.remove('is-dragging');
       try { vp.releasePointerCapture(e.pointerId); } catch (err) {}
-      /* A DRAG MUST NOT OPEN THE CARD UNDER YOUR FINGER. Anything past a few
-         pixels is a drag, and the click that follows it is swallowed once. */
-      if (moved > 6) {
-        var kill = function (ev) { ev.preventDefault(); ev.stopPropagation(); };
-        vp.addEventListener('click', kill, true);
-        setTimeout(function () { vp.removeEventListener('click', kill, true); }, 0);
-      }
+      if (moved > 6) draggedAt = Date.now();
       resumeTimer = setTimeout(function () { paused = false; }, 900);
     }
     vp.addEventListener('pointerup', release);
