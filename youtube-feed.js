@@ -84,7 +84,7 @@
 
       renderFeatured(videos[0]);
       renderPlaylist(videos, 0);
-      if (statusEl) statusEl.textContent = `Live from YouTube — showing ${videos.length} most recent videos.`;
+      if (statusEl) statusEl.textContent = `Live from YouTube. Showing the ${videos.length} most recent videos.`;
     })
     .catch((err) => {
       if (statusEl) statusEl.textContent = 'Could not reach the YouTube feed right now.';

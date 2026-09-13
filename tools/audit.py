@@ -635,6 +635,26 @@ def check_copy():
     (ok if not bad_pages else fail)("copy",
                                     "em-dashes in visible page copy: %s" % (bad_pages[:3] or 0))
 
+    # The check above strips <script> before reading, which is right for a
+    # developer comment inside a page but blind to the other half of the
+    # problem: strings that a separate .js file writes INTO the page at runtime.
+    # Three were live that way and none of the checks above could see them, one
+    # in the YouTube feed's status line and two in the RSS feed's. They are copy
+    # a reader sees, so they are in scope.
+    #
+    # Only assignments to the DOM count. An em-dash in a code comment is a
+    # developer talking to themselves, same reasoning as above.
+    injected = []
+    for f in sorted(glob.glob("*.js")):
+        for n, line in enumerate(read(f).split("\n"), 1):
+            if "\u2014" not in line:
+                continue
+            if any(k in line for k in ("textContent", "innerHTML", "innerText")):
+                injected.append("%s:%d" % (f, n))
+    (ok if not injected else fail)("copy",
+                                   "em-dashes injected into the page by script: %s"
+                                   % (injected[:3] or 0))
+
 
 # -------------------------------------------------------------------- type ----
 def _check_card_type_fits():

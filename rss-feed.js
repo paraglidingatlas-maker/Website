@@ -141,10 +141,10 @@
 
         renderNextBatch();
         liveFeedFooter.style.display = 'flex';
-        statusEl.textContent = `Pulled live from your RSS feed just now — ${allItems.length} episodes available via the feed.`;
+        statusEl.textContent = `Pulled live from your RSS feed just now. ${allItems.length} episodes available via the feed.`;
       })
       .catch((err) => {
-        statusEl.textContent = 'Could not reach the live feed right now — showing the saved archive below instead.';
+        statusEl.textContent = 'Could not reach the live feed right now, so the saved archive is below instead.';
         gridEl.innerHTML = '';
         console.warn('RSS live feed error:', err);
       });
