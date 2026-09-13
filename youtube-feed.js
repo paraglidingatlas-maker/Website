@@ -157,9 +157,35 @@
     box.querySelector('.yt-lb-close').focus();
   }
 
+  // BOUND DIRECTLY TO EACH CARD, not only delegated.
+  //
+  // Three of my theories about the dead click all live in the gap between the
+  // card and the listener: delegation reading e.target, pointer capture
+  // retargeting that e.target, and the drag's capture-phase swallower calling
+  // stopPropagation on the way down. Binding the same handler to every card
+  // removes all three from the path at once. The delegated one stays as a
+  // backstop for anything the direct binding misses.
+  function openFromCard(a, e) {
+    if (!a) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    if (Date.now() - draggedAt < 350) return;   // a swipe must not open a video
+    const id = a.dataset.yt;
+    if (!id) return;
+    e.preventDefault();
+    openBox(id, a.dataset.title);
+  }
+
+  function bindCards() {
+    trackEl.querySelectorAll('.yt-card').forEach(function (a) {
+      if (a.dataset.bound) return;
+      a.dataset.bound = '1';
+      a.addEventListener('click', function (e) { openFromCard(a, e); });
+    });
+  }
+
   trackEl.addEventListener('click', function (e) {
     const a = (e.target.closest && e.target.closest('.yt-card')) || pressedCard;
-    if (!a) return;
+    if (!a || a.dataset.bound) return;          // the direct binding already had it
     // leave modified clicks alone so "open in new tab" still works
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     if (Date.now() - draggedAt < 350) return;   // a swipe must not open a video
@@ -189,6 +215,7 @@
       c.setAttribute('tabindex', '-1');
       trackEl.appendChild(c);
     });
+    bindCards();                          // the clones need it too
 
     let x = 0, half = 0;
     const speed = 0.35;
@@ -285,10 +312,13 @@
       });
 
       trackEl.innerHTML = videos.map(card).join('');
+      bindCards();
       if (statusEl) {
         // TEMPORARY diagnostic suffix, remove once the click is understood
         const r = idRoutes;
-        const via = `ids ${r.videoId}/${r.atom}/${r.link}/${r.none}`;
+        const bound = trackEl.querySelectorAll('.yt-card[data-bound]').length;
+        const cards = trackEl.querySelectorAll('.yt-card').length;
+        const via = `ids ${r.videoId}/${r.atom}/${r.link}/${r.none} · bound ${bound}/${cards}`;
         statusEl.textContent =
           `Live from YouTube. Showing the ${videos.length} most recent videos. [${via}]`;
       }
