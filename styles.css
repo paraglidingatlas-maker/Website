@@ -478,7 +478,13 @@ img{max-width:100%;display:block;}
 }
 .podcast-title .accent{color:var(--orange);}
 .waveform{width:100%;max-width:520px;height:34px;color:rgba(180,180,180,0.35);display:block;margin-bottom:2.5rem;}
-.podcast-desc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;border-top:1px solid var(--line);padding-top:2rem;}
+/* The margin-bottom is the gap above the card rail, and it was missing: this
+   grid had no bottom margin and .episodes-viewport has no top margin, so the
+   left column's third line sat directly on the card tops. Every other step in
+   this section is deliberate (1.5rem, 2rem, 2.5rem) and then it dropped to
+   zero. 2.5rem is the waveform's margin-bottom, not a new number. Applies at
+   both widths: stacked under 820px the second paragraph collided the same way. */
+.podcast-desc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;border-top:1px solid var(--line);padding-top:2rem;margin-bottom:2.5rem;}
 .podcast-desc-grid p{color:var(--gray-light);line-height:1.7;font-size:1rem;}
 /* No box. The strip is an infinite marquee, so cards are MEANT to run past the
    edge, but a 1px border slicing a portrait in half reads as broken rather than
