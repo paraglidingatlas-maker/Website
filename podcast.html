@@ -1353,38 +1353,7 @@
                             ' L ' + x2.toFixed(1) + ' ' + (y + step) +
                             ' L ' + end + ' ' + (y + step));
       });
-      balanceCopy(w, hgt);
     }
-
-    // Balance the copy against the two rules.
-    //
-    // The grey rule crosses BETWEEN the name and the body text, so the block a
-    // reader compares is the paragraph and the buttons, not the whole column.
-    // Measuring the whole column and centring it was wrong: the column is taller
-    // than the 29.5 percent band between the rules, so it could not be centred
-    // without overflowing, and clamping it just pinned it to the floor.
-    //
-    // So measure the two gaps that are actually visible, the paragraph's top
-    // against the grey rule and the buttons' bottom against the orange one, and
-    // move the block by half their difference. A transform, so nothing inside
-    // shifts: the gap between the paragraph and the buttons is exactly as it was.
-    var copy  = sec.querySelector('.host-copy');
-    var para  = sec.querySelector('.host-copy p');
-    var links = sec.querySelector('.host-platforms');
-    function balanceCopy(w, hgt) {
-      if (!copy) return;
-      copy.style.transform = '';
-      if (w <= 820 || !para || !links) return;
-      var top = sec.getBoundingClientRect().top;
-      var grey = (643 / VB_H) * hgt, orange = (938 / VB_H) * hgt;
-      var above = (para.getBoundingClientRect().top - top) - grey;
-      var below = orange - (links.getBoundingClientRect().bottom - top);
-      var shift = (below - above) / 2;
-      var room = hgt - (links.getBoundingClientRect().bottom - top);
-      if (shift > room) shift = room;
-      copy.style.transform = 'translateY(' + shift.toFixed(1) + 'px)';
-    }
-
     var pending = false;
     addEventListener('resize', function () {
       if (pending) return;
