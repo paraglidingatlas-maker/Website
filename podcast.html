@@ -368,6 +368,12 @@
   /* ===== rose ===== */
   .xp-rose{filter:url(#xpLiftD);}
   .xp-msvg .xp-rose{filter:url(#xpLiftM);}
+  /* Mobile has no elbowed leader lines, because the markers sit radially rather
+     than in fixed left and right columns. A straight radial run from the rim to
+     each marker is the same idea in a round layout, and it lets the markers keep
+     their spread: pulling them in against the rose would have removed the
+     annotation, which is the whole point of the device. */
+  .xp-mlead{stroke-linecap:round;}
   .xp-ring{fill:none;stroke:var(--rule);stroke-width:1.4;}
   .xp-ring.thin{stroke:rgba(180,180,180,.10);}
   .xp-outer{stroke-width:1.4;}
@@ -874,7 +880,7 @@
 <polygon points="260.0,170 251.0,260.0 269.0,260.0" class="xp-ndl-n"/>
 <polygon points="260.0,333 253.0,260.0 267.0,260.0" class="xp-ndl-s"/></g>
 <circle cx="260.0" cy="260.0" r="11" class="xp-hub"/>
-<circle cx="260.0" cy="260.0" r="4" class="xp-hub-in"/></g><g><g class="xp-mk" data-xp="dest" tabindex="0" role="button" aria-label="Global Destinations, bearing 315 degrees"><circle cx="158.2" cy="158.2" r="26" class="xp-mk-c"/><text x="158.2" y="164.2" class="xp-mk-t">I</text></g><g class="xp-mk" data-xp="expert" tabindex="0" role="button" aria-label="Expert Insights, bearing 45 degrees"><circle cx="361.8" cy="158.2" r="26" class="xp-mk-c"/><text x="361.8" y="164.2" class="xp-mk-t">II</text></g><g class="xp-mk" data-xp="safety" tabindex="0" role="button" aria-label="Safety First, bearing 225 degrees"><circle cx="158.2" cy="361.8" r="26" class="xp-mk-c"/><text x="158.2" y="367.8" class="xp-mk-t">III</text></g><g class="xp-mk" data-xp="culture" tabindex="0" role="button" aria-label="Cultural Immersion, bearing 135 degrees"><circle cx="361.8" cy="361.8" r="26" class="xp-mk-c"/><text x="361.8" y="367.8" class="xp-mk-t">IV</text></g><g class="xp-mk" data-xp="series" tabindex="0" role="button" aria-label="Thematic Mini-Series, bearing 180 degrees"><circle cx="260.0" cy="404.0" r="26" class="xp-mk-c"/><text x="260.0" y="410.0" class="xp-mk-t">V</text></g></g>
+<circle cx="260.0" cy="260.0" r="4" class="xp-hub-in"/></g><g class="xp-mleads"><line x1="176.3" y1="176.3" x2="129.2" y2="129.2" class="xp-lead xp-mlead" data-xp="dest"/><line x1="343.7" y1="176.3" x2="390.8" y2="129.2" class="xp-lead xp-mlead" data-xp="expert"/><line x1="176.3" y1="343.7" x2="129.2" y2="390.8" class="xp-lead xp-mlead" data-xp="safety"/><line x1="343.7" y1="343.7" x2="390.8" y2="390.8" class="xp-lead xp-mlead" data-xp="culture"/><line x1="260.0" y1="378.3" x2="260.0" y2="445.0" class="xp-lead xp-mlead" data-xp="series"/></g><g><g class="xp-mk" data-xp="dest" tabindex="0" role="button" aria-label="dest"><circle cx="108.0" cy="108.0" r="26" class="xp-mk-c"/><text x="108.0" y="114.0" class="xp-mk-t">I</text></g><g class="xp-mk" data-xp="expert" tabindex="0" role="button" aria-label="expert"><circle cx="412.0" cy="108.0" r="26" class="xp-mk-c"/><text x="412.0" y="114.0" class="xp-mk-t">II</text></g><g class="xp-mk" data-xp="safety" tabindex="0" role="button" aria-label="safety"><circle cx="108.0" cy="412.0" r="26" class="xp-mk-c"/><text x="108.0" y="418.0" class="xp-mk-t">III</text></g><g class="xp-mk" data-xp="culture" tabindex="0" role="button" aria-label="culture"><circle cx="412.0" cy="412.0" r="26" class="xp-mk-c"/><text x="412.0" y="418.0" class="xp-mk-t">IV</text></g><g class="xp-mk" data-xp="series" tabindex="0" role="button" aria-label="series"><circle cx="260.0" cy="475.0" r="26" class="xp-mk-c"/><text x="260.0" y="481.0" class="xp-mk-t">V</text></g></g>
       </svg>
     </div>
     <div class="xp-nodes">
@@ -1347,7 +1353,38 @@
                             ' L ' + x2.toFixed(1) + ' ' + (y + step) +
                             ' L ' + end + ' ' + (y + step));
       });
+      balanceCopy(w, hgt);
     }
+
+    // Balance the copy against the two rules.
+    //
+    // The grey rule crosses BETWEEN the name and the body text, so the block a
+    // reader compares is the paragraph and the buttons, not the whole column.
+    // Measuring the whole column and centring it was wrong: the column is taller
+    // than the 29.5 percent band between the rules, so it could not be centred
+    // without overflowing, and clamping it just pinned it to the floor.
+    //
+    // So measure the two gaps that are actually visible, the paragraph's top
+    // against the grey rule and the buttons' bottom against the orange one, and
+    // move the block by half their difference. A transform, so nothing inside
+    // shifts: the gap between the paragraph and the buttons is exactly as it was.
+    var copy  = sec.querySelector('.host-copy');
+    var para  = sec.querySelector('.host-copy p');
+    var links = sec.querySelector('.host-platforms');
+    function balanceCopy(w, hgt) {
+      if (!copy) return;
+      copy.style.transform = '';
+      if (w <= 820 || !para || !links) return;
+      var top = sec.getBoundingClientRect().top;
+      var grey = (643 / VB_H) * hgt, orange = (938 / VB_H) * hgt;
+      var above = (para.getBoundingClientRect().top - top) - grey;
+      var below = orange - (links.getBoundingClientRect().bottom - top);
+      var shift = (below - above) / 2;
+      var room = hgt - (links.getBoundingClientRect().bottom - top);
+      if (shift > room) shift = room;
+      copy.style.transform = 'translateY(' + shift.toFixed(1) + 'px)';
+    }
+
     var pending = false;
     addEventListener('resize', function () {
       if (pending) return;
