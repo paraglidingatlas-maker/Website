@@ -810,9 +810,12 @@
       </linearGradient>
       <!-- The grey rule starts at x=230, behind his shoulder, so it appeared to
            begin abruptly out of the portrait. Same treatment: it fades in over
-           the 200 units after its start, finishing well before the kink at 450.
-           Also user space, so it holds its proportion at any width. -->
-      <linearGradient id="hostGreyFade" gradientUnits="userSpaceOnUse" x1="230" y1="0" x2="430" y2="0">
+           the 280 units after its start, which is 5 percent of the grid further
+           than the first attempt, so it is still ramping as it turns the kink at
+           450 and reaches full strength just past it. That is deliberate: the
+           dimmest part of the line is now the part that crosses his cap.
+           User space, so it holds its proportion at any width. -->
+      <linearGradient id="hostGreyFade" gradientUnits="userSpaceOnUse" x1="230" y1="0" x2="510" y2="0">
         <stop class="hb-stop-grey-out" offset="0"/>
         <stop class="hb-stop-grey-in" offset="1"/>
       </linearGradient>
