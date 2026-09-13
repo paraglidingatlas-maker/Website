@@ -55,7 +55,16 @@
         <span class="yt-shot">
           <img src="${esc(v.thumb)}" alt="" loading="lazy">
           <span class="yt-play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7Z"/></svg>
+            <!-- YouTube's own triangle geometry, not the generic one used
+                 elsewhere on the site. In a 68 by 48 box the triangle runs
+                 x 27-45, y 14-34: 26% of the width and 42% of the height. The
+                 generic M8 5v14l11-7Z in a 24 box works out at 15% and 27%,
+                 which is why it read as a small arrow rather than a play
+                 button. The apex sits at 45 of 68 rather than dead centre,
+                 which is how YouTube optically centres a triangle. -->
+            <svg viewBox="0 0 68 48" fill="currentColor" aria-hidden="true">
+              <path d="M45 24 27 14 27 34Z"/>
+            </svg>
           </span>
         </span>
         <span class="yt-title">${esc(v.title)}</span>
