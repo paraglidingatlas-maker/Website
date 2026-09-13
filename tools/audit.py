@@ -1114,12 +1114,29 @@ def check_css_parses():
     No dependency: walk the file at brace depth 0 and look at what sits between
     the end of one rule and the start of the next. That text is a selector, and
     a selector may not contain `;` or `}`.
+
+    Scope note. For its first life this read only the four standalone
+    stylesheets, which meant it could not see the page-level `<style>` blocks,
+    and those hold most of the site's CSS: podcast.html alone carries about 290
+    rules. The exact bug this check exists to catch then happened again, in
+    podcast.html, and the check reported ok. `.eq-bars` had lost its selector,
+    which also swallowed `.eq-bars span`, so the 48 equaliser bars behind the
+    newsletter panel had no styling at all. Found by counting braces by hand,
+    which is precisely the work this function is supposed to remove. It now
+    reads the style blocks too.
     """
+    def sources():
+        for f in ("styles.css", "policies.css", "tags.css", "episodes/episode.css"):
+            if os.path.exists(f):
+                yield f, read(f)
+        for f in sorted(glob.glob("*.html")) + sorted(glob.glob("destinations/*.html")):
+            body = read(f)
+            for n, block in enumerate(re.findall(r"<style[^>]*>(.*?)</style>", body, re.S)):
+                yield "%s <style> %d" % (f, n + 1), block
+
     bad = []
-    for f in ("styles.css", "policies.css", "tags.css", "episodes/episode.css"):
-        if not os.path.exists(f):
-            continue
-        css = re.sub(r"/\*.*?\*/", "", read(f), flags=re.S)
+    for f, raw in sources():
+        css = re.sub(r"/\*.*?\*/", "", raw, flags=re.S)
         depth = 0
         start = 0
         for i, ch in enumerate(css):
