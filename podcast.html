@@ -803,8 +803,10 @@
         <stop class="hb-stop-in" offset="1"/>
       </linearGradient>
     </defs>
-    <path class="hb-grey" d="M 230 705 L 450 705 L 526 643 L 1600 643"/>
-    <path class="hb-orange" d="M 0 1000 L 450 1000 L 526 938 L 1600 938"/>
+    <path class="hb-grey" id="hbGrey" data-start="230" data-y="705" data-kink="450" data-step="-62" data-end="1600"
+          d="M 230 705 L 450 705 L 527 643 L 1600 643"/>
+    <path class="hb-orange" id="hbOrange" data-start="0" data-y="1000" data-kink="450" data-step="-62" data-end="1600"
+          d="M 0 1000 L 450 1000 L 527 938 L 1600 938"/>
   </svg>
   <div class="host-plateband" aria-hidden="true"><span class="host-plate">SINGH</span></div>
   <div class="host-photo"><picture><source srcset="assets/podcast/host-aninder-soft.webp" type="image/webp"><img src="assets/podcast/host-aninder-soft.png" width="1094" height="1100" loading="lazy" alt="Aninder Singh, host of the Paragliding Atlas podcast"></picture></div>
@@ -1292,6 +1294,51 @@
     }, {passive: true});
     window.addEventListener('resize', frame, {passive: true});
     frame();
+  })();
+</script>
+<script>
+  // Hold the host doglegs at the same angle as the compass elbows below them.
+  //
+  // The compass SVG keeps its aspect ratio, so its elbows are a fixed 59.0
+  // degrees from vertical at every window size. The host band SVG uses
+  // preserveAspectRatio="none", so its two axes stretch by different amounts and
+  // the same path renders at 55.6 degrees at 1280px and 67.3 at 2560. Editing
+  // the numbers would only have matched at one width.
+  //
+  // So the run is recomputed from the section's real pixel size instead:
+  //   run = step * (sy/sx) * tan(59deg)
+  // which cancels the uneven stretch and pins the rendered angle. The static d
+  // in the markup is the value that is correct near 1440px, so this degrading
+  // to nothing still looks right.
+  (function () {
+    var TARGET = 59, VB_W = 1600, VB_H = 1000;
+    var sec = document.querySelector('.host');
+    var paths = sec ? sec.querySelectorAll('.host-bands path[data-kink]') : [];
+    if (!paths.length) return;
+    var t = Math.tan(TARGET * Math.PI / 180);
+
+    function redraw() {
+      var w = sec.clientWidth, hgt = sec.clientHeight;
+      if (!w || !hgt) return;
+      var ratio = (hgt / VB_H) / (w / VB_W);
+      paths.forEach(function (p) {
+        var d = p.dataset;
+        var start = +d.start, y = +d.y, kink = +d.kink, step = +d.step, end = +d.end;
+        var run = Math.abs(step) * ratio * t;
+        var x2 = Math.min(kink + run, end);
+        p.setAttribute('d', 'M ' + start + ' ' + y + ' L ' + kink + ' ' + y +
+                            ' L ' + x2.toFixed(1) + ' ' + (y + step) +
+                            ' L ' + end + ' ' + (y + step));
+      });
+    }
+    var pending = false;
+    addEventListener('resize', function () {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(function () { redraw(); pending = false; });
+    }, {passive: true});
+    if (window.ResizeObserver) new ResizeObserver(redraw).observe(sec);
+    redraw();
   })();
 </script>
 </body>
