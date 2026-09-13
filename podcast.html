@@ -44,9 +44,31 @@
   }
   .pod-hero-copy p{color:var(--gray-light);font-size:1.05rem;max-width:600px;}
 
-  .host{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:linear-gradient(180deg, var(--card) 0%, var(--bg) 100%);display:grid;grid-template-columns:280px 1fr;gap:3rem;align-items:start;}
-  .host-photo{width:100%;aspect-ratio:1/1;background:var(--card);border:1px solid var(--live);overflow:hidden;}
-  .host-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  /* ===== MEET YOUR HOST =====
+     The old treatment put a 280px square, bordered, in a fixed pixel column:
+     a CV headshot beside a paragraph, and the only fixed-pixel column on the
+     page. Worse, the photograph was an indoor snapshot, pine window frames and
+     a beige wall, the one image on a site of wings and valleys that did not
+     belong to it.
+
+     The replacement is a cut-out with a real alpha channel, so there is no
+     background to clash. He wears a dark cap and a dark jacket, which means the
+     silhouette merges into var(--bg) and only the face carries. So: no frame,
+     no border, no box. He stands on the floor of the section and the section
+     ends at his shoulders. A radial glow sits behind the head, because dark on
+     dark needs something to separate it. */
+  .host{position:relative;overflow:hidden;
+    padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem) 0;
+    background:linear-gradient(180deg, var(--card) 0%, var(--bg) 100%);
+    display:grid;grid-template-columns:minmax(0,clamp(15rem,26vw,23rem)) 1fr;
+    gap:clamp(1.5rem,4vw,3.5rem);align-items:end;}
+  .host-photo{position:relative;align-self:end;line-height:0;}
+  .host-photo::before{content:"";position:absolute;left:50%;top:34%;
+    width:130%;aspect-ratio:1/1;transform:translate(-50%,-50%);pointer-events:none;
+    background:radial-gradient(circle at 50% 50%,rgba(255,117,23,0.16) 0%,
+      rgba(255,117,23,0.05) 38%,rgba(255,117,23,0) 66%);}
+  .host-photo img{position:relative;width:100%;height:auto;display:block;}
+  .host-copy{padding-bottom:clamp(4rem,9vw,6.5rem);}
   .host-copy .kicker{color:var(--orange);font-size:0.95rem;font-weight:500;margin-bottom:0.6rem;}
   .host-copy h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--white);margin-bottom:1.1rem;}
   .host-copy p{color:var(--gray-light);line-height:1.75;margin-bottom:1.1rem;max-width:62ch;}
@@ -599,8 +621,11 @@
   .live-counter{color:var(--gray);font-size:0.78rem;border:1px solid var(--edge);padding:0.3rem 0.8rem;}
 
   @media(max-width:820px){
-    .host{grid-template-columns:1fr;}
-    .host-photo{max-width:220px;}
+    .host{grid-template-columns:1fr;padding-bottom:0;align-items:start;}
+    /* Stacked, the portrait goes last and stays on the floor, so the section
+       still ends at his shoulders rather than at a gap under a thumbnail. */
+    .host-photo{order:2;max-width:min(72vw,20rem);margin:2.5rem auto 0;}
+    .host-copy{order:1;padding-bottom:0;}
   }
 </style>
 <!-- site-schema -->
@@ -716,7 +741,7 @@
 </section>
 
 <section class="host">
-  <div class="host-photo"><picture><source srcset="assets/podcast/host-aninder.webp" type="image/webp"><img src="assets/podcast/host-aninder.jpg" alt="Aninder Singh"></picture></div>
+  <div class="host-photo"><picture><source srcset="assets/podcast/host-aninder-cut.webp" type="image/webp"><img src="assets/podcast/host-aninder-cut.png" width="1094" height="1100" loading="lazy" alt="Aninder Singh, host of the Paragliding Atlas podcast"></picture></div>
   <div class="host-copy">
     <p class="kicker">Meet Your Host</p>
     <h2>Aninder Singh</h2>
