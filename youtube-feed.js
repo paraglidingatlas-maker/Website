@@ -42,6 +42,32 @@
   const proxyUrl = `https://restless-king-e534.aninder.workers.dev/?url=${encodeURIComponent(feedUrl)}`;
   const COUNT = 10;
 
+  // THE VIDEO ID, from three sources rather than one.
+  //
+  // This was `getElementsByTagNameNS('*','videoId')` alone. If that returns
+  // nothing the id is an empty string, the card gets data-yt="", and the click
+  // handler hits `if (!id) return;` and bails without a sound. Every click,
+  // every card, no error in the console. The version before this rewrite never
+  // read videoId at all, so the dependency is entirely mine.
+  //
+  // Three sources, in order of how much I trust them:
+  //   yt:videoId          the proper field
+  //   <id>yt:video:XXX    the Atom id, same value with a prefix
+  //   the watch link      ?v=XXX
+  // If all three fail the card keeps its href and the browser opens YouTube,
+  // which is a worse outcome than the lightbox but not a dead click.
+  function videoIdOf(entry, link) {
+    const direct = entry.getElementsByTagNameNS('*', 'videoId')[0]?.textContent;
+    if (direct && direct.trim()) return direct.trim();
+
+    const atom = entry.getElementsByTagNameNS('*', 'id')[0]?.textContent || '';
+    const m = atom.match(/yt:video:([\w-]+)/);
+    if (m) return m[1];
+
+    const q = String(link).match(/[?&]v=([\w-]+)/);
+    return q ? q[1] : '';
+  }
+
   function esc(s) {
     return String(s).replace(/[&<>"']/g, (c) => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -241,7 +267,7 @@
         const title = entry.getElementsByTagNameNS('*', 'title')[0]?.textContent || 'Untitled';
         const link = entry.getElementsByTagNameNS('*', 'link')[0]?.getAttribute('href') || '#';
         const thumb = entry.getElementsByTagNameNS('*', 'thumbnail')[0]?.getAttribute('url') || '';
-        const id = entry.getElementsByTagNameNS('*', 'videoId')[0]?.textContent || '';
+        const id = videoIdOf(entry, link);
         const published = entry.getElementsByTagNameNS('*', 'published')[0]?.textContent || '';
         const date = published
           ? new Date(published).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
