@@ -198,12 +198,6 @@
   .yt-rail.is-dragging{cursor:grabbing;}
   .yt-track{display:flex;gap:1rem;width:max-content;will-change:transform;}
 
-  @media(prefers-reduced-motion: reduce){
-    /* the script returns before it starts, so this is left a plain scroller,
-       exactly as the homepage strip does it */
-    .yt-track{transform:none !important;}
-    .yt-rail{overflow-x:auto;cursor:auto;}
-  }
 
   .yt-card{position:relative;display:block;width:clamp(15rem,22vw,20rem);flex-shrink:0;
     background:var(--card);border:1px solid var(--rule);padding-bottom:0.9rem;
@@ -216,19 +210,46 @@
      six sat stacked in a static column competing at once; in motion behind an
      edge mask they read as a filmstrip and the worry does not carry over. */
   .yt-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--card);}
+  /* The same play control as the episode library popup: 82 by 56 with a 14px
+     radius, the geometry drawn in episodes/episode.css, a translucent dark fill
+     and a hairline inset ring instead of a border.
+
+     It turns YouTube red on hover, not orange. That reasoning is already
+     recorded on .kb-play in styles.css: red is what it actually loads, and
+     orange would promise an Atlas player and deliver someone else's. My first
+     version of this button went orange, which contradicted a decision that had
+     already been made and written down.
+
+     14px is one of the three radii tools/audit.py allows, and its comment names
+     it as the play button, so this is the value the rule was written for. */
   .yt-play{position:absolute;top:50%;left:50%;z-index:2;
-    transform:translate(-50%,-50%) skewX(-10deg);
-    width:56px;height:38px;display:flex;align-items:center;justify-content:center;
-    background:rgba(20,21,25,0.62);border:1px solid var(--edge-hi);
-    transition:background .2s ease,border-color .2s ease;}
-  .yt-play svg{width:15px;height:15px;color:var(--white);margin-left:2px;
-    transform:skewX(10deg);transition:color .2s ease;}
-  .yt-card:hover .yt-play{background:var(--orange);border-color:var(--orange);}
-  .yt-card:hover .yt-play svg{color:var(--ink);}
+    transform:translate(-50%,-50%);
+    width:82px;height:56px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(20,21,25,0.62);color:#fff;
+    box-shadow:inset 0 0 0 1.5px rgba(255,255,255,0.22);
+    transition:background .2s ease,transform .2s ease,box-shadow .2s ease;}
+  .yt-play svg{width:26px;height:26px;margin-left:3px;}
+  .yt-card:hover .yt-play{background:#f00;
+    transform:translate(-50%,-50%) scale(1.08);
+    box-shadow:0 6px 26px rgba(255,0,0,0.4);}
   .yt-title{display:block;padding:0.85rem 0.95rem 0;font-family:var(--font-display);
     font-weight:600;font-size:0.85rem;line-height:1.35;color:var(--white);
     display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
   .yt-date{display:block;padding:0.4rem 0.95rem 0;font-size:0.72rem;color:var(--gray);}
+
+  /* This sat ABOVE .yt-play at first, and `.yt-card:hover .yt-play` has
+     identical specificity in both places, so the later normal rule won and
+     reduced motion never actually suppressed the hover scale. Moving it down
+     fixed the desktop case but not the 820px one, whose scale rules come later
+     still. So it is !important, which is order-independent and is the pattern
+     the homepage already uses for the same problem: .ep-track carries
+     transform:none !important for exactly this reason. */
+  @media(prefers-reduced-motion: reduce){
+    .yt-track{transform:none !important;}
+    .yt-rail{overflow-x:auto;cursor:auto;}
+    .yt-play,.yt-card:hover .yt-play{transform:translate(-50%,-50%) !important;}
+  }
 
   /* ===== LIGHTBOX =====
      Built on click, never on load, so YouTube is not contacted until somebody
@@ -252,6 +273,10 @@
     /* The rail keeps drifting on a phone: it is horizontal by nature, so a
        narrow column costs it nothing. */
     .yt-card{width:clamp(13rem,66vw,17rem);}
+    /* scaled rather than resized, so the 82:56 proportion and the corner radius
+       stay in step on a narrower card */
+    .yt-play{transform:translate(-50%,-50%) scale(0.76);}
+    .yt-card:hover .yt-play{transform:translate(-50%,-50%) scale(0.82);}
     /* Two columns at 1.5fr 1fr leaves the figures column too narrow for
        "Countries Reached" beside a number, so stack and move the divider
        to the top edge, keeping the same hairline. */
