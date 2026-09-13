@@ -191,12 +191,19 @@
      system. The track carries the list twice and the animation translates by
      exactly -50%, which lands copy two where copy one began: no seam. Hover
      pauses it so a card can actually be read. */
-  .yt-rail{overflow:hidden;
+  .yt-rail{position:relative;overflow:hidden;cursor:grab;
+    touch-action:pan-y;                 /* a vertical swipe still scrolls the page */
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
             mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);}
-  .yt-track{display:flex;gap:1rem;width:max-content;animation:ytDrift 80s linear infinite;}
-  .yt-rail:hover .yt-track,.yt-rail:focus-within .yt-track{animation-play-state:paused;}
-  @keyframes ytDrift{to{transform:translateX(-50%);}}
+  .yt-rail.is-dragging{cursor:grabbing;}
+  .yt-track{display:flex;gap:1rem;width:max-content;will-change:transform;}
+
+  @media(prefers-reduced-motion: reduce){
+    /* the script returns before it starts, so this is left a plain scroller,
+       exactly as the homepage strip does it */
+    .yt-track{transform:none !important;}
+    .yt-rail{overflow-x:auto;cursor:auto;}
+  }
 
   .yt-card{position:relative;display:block;width:clamp(15rem,22vw,20rem);flex-shrink:0;
     background:var(--card);border:1px solid var(--rule);padding-bottom:0.9rem;
@@ -1259,7 +1266,7 @@
   })();
 </script>
 <script src="rss-feed.js?v=d98c27db"></script>
-<script src="youtube-feed.js?v=b5180da5"></script>
+<script src="youtube-feed.js?v=ed66dd53"></script>
 <script>
   // Generate equalizer bars with randomized timing so they bounce organically
   // rather than in mechanical unison
