@@ -66,8 +66,9 @@
   /* Two stepped rules, both behind him. The grid is 1600 by 1000 stretched over
      the whole section, so the y values are absolute within it however wide the
      window gets. Positions were chosen on a slider rather than by me guessing.
-     Both doglegs are 50.8 degrees from vertical: NOT the buttons' 10 degree
-     skew, which I wrongly claimed once. They are what looked right. */
+     The dogleg angle is locked in script to 51.71 degrees, matching the
+     compass arms below, whose run is 76 against a step of 60. It is NOT the
+     buttons' 10 degree skew, which I wrongly claimed once. */
   .host-bands{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;}
   .host-bands path{fill:none;stroke-width:1.5;vector-effect:non-scaling-stroke;}
   .host-bands .hb-grey{stroke:var(--edge-hi);}
@@ -804,9 +805,9 @@
       </linearGradient>
     </defs>
     <path class="hb-grey" id="hbGrey" data-start="230" data-y="705" data-kink="450" data-step="-62" data-end="1600"
-          d="M 230 705 L 450 705 L 527 643 L 1600 643"/>
+          d="M 230 705 L 450 705 L 509 643 L 1600 643"/>
     <path class="hb-orange" id="hbOrange" data-start="0" data-y="1000" data-kink="450" data-step="-62" data-end="1600"
-          d="M 0 1000 L 450 1000 L 527 938 L 1600 938"/>
+          d="M 0 1000 L 450 1000 L 509 938 L 1600 938"/>
   </svg>
   <div class="host-plateband" aria-hidden="true"><span class="host-plate">SINGH</span></div>
   <div class="host-photo"><picture><source srcset="assets/podcast/host-aninder-soft.webp" type="image/webp"><img src="assets/podcast/host-aninder-soft.png" width="1094" height="1100" loading="lazy" alt="Aninder Singh, host of the Paragliding Atlas podcast"></picture></div>
@@ -843,7 +844,7 @@
 <polygon points="800,554 793,430 807,430" class="xp-ndl-s"/></g>
 <circle cx="800" cy="430" r="11" class="xp-hub"/>
 <circle cx="800" cy="430" r="4" class="xp-hub-in"/></g></g>
-      <g class="xp-plx-lead"><path d="M 90 236 L 566 236 L 666 296" class="xp-lead" data-xp="dest"/><path d="M 1510 236 L 1034 236 L 934 296" class="xp-lead" data-xp="expert"/><path d="M 90 624 L 566 624 L 666 564" class="xp-lead" data-xp="safety"/><path d="M 1510 624 L 1034 624 L 934 564" class="xp-lead" data-xp="culture"/><path d="M 800 620 L 800 845" class="xp-lead" data-xp="series"/><g class="xp-mk" data-xp="dest" tabindex="0" role="button" aria-label="Global Destinations, bearing 315 degrees"><circle cx="90" cy="236" r="25" class="xp-mk-c"/><text x="90" y="242" class="xp-mk-t">I</text></g><g class="xp-mk" data-xp="expert" tabindex="0" role="button" aria-label="Expert Insights, bearing 45 degrees"><circle cx="1510" cy="236" r="25" class="xp-mk-c"/><text x="1510" y="242" class="xp-mk-t">II</text></g><g class="xp-mk" data-xp="safety" tabindex="0" role="button" aria-label="Safety First, bearing 225 degrees"><circle cx="90" cy="624" r="25" class="xp-mk-c"/><text x="90" y="630" class="xp-mk-t">III</text></g><g class="xp-mk" data-xp="culture" tabindex="0" role="button" aria-label="Cultural Immersion, bearing 135 degrees"><circle cx="1510" cy="624" r="25" class="xp-mk-c"/><text x="1510" y="630" class="xp-mk-t">IV</text></g><g class="xp-mk" data-xp="series" tabindex="0" role="button" aria-label="Thematic Mini-Series, bearing 180 degrees"><circle cx="800" cy="880" r="25" class="xp-mk-c"/><text x="800" y="886" class="xp-mk-t">V</text></g></g>
+      <g class="xp-plx-lead"><path d="M 90 236 L 590 236 L 666 296" class="xp-lead" data-xp="dest"/><path d="M 1510 236 L 1010 236 L 934 296" class="xp-lead" data-xp="expert"/><path d="M 90 624 L 590 624 L 666 564" class="xp-lead" data-xp="safety"/><path d="M 1510 624 L 1010 624 L 934 564" class="xp-lead" data-xp="culture"/><path d="M 800 620 L 800 845" class="xp-lead" data-xp="series"/><g class="xp-mk" data-xp="dest" tabindex="0" role="button" aria-label="Global Destinations, bearing 315 degrees"><circle cx="90" cy="236" r="25" class="xp-mk-c"/><text x="90" y="242" class="xp-mk-t">I</text></g><g class="xp-mk" data-xp="expert" tabindex="0" role="button" aria-label="Expert Insights, bearing 45 degrees"><circle cx="1510" cy="236" r="25" class="xp-mk-c"/><text x="1510" y="242" class="xp-mk-t">II</text></g><g class="xp-mk" data-xp="safety" tabindex="0" role="button" aria-label="Safety First, bearing 225 degrees"><circle cx="90" cy="624" r="25" class="xp-mk-c"/><text x="90" y="630" class="xp-mk-t">III</text></g><g class="xp-mk" data-xp="culture" tabindex="0" role="button" aria-label="Cultural Immersion, bearing 135 degrees"><circle cx="1510" cy="624" r="25" class="xp-mk-c"/><text x="1510" y="630" class="xp-mk-t">IV</text></g><g class="xp-mk" data-xp="series" tabindex="0" role="button" aria-label="Thematic Mini-Series, bearing 180 degrees"><circle cx="800" cy="880" r="25" class="xp-mk-c"/><text x="800" y="886" class="xp-mk-t">V</text></g></g>
     </svg>
     <div class="xp-mdial">
       <svg class="xp-msvg" viewBox="0 0 520 520" aria-hidden="true"><defs><radialGradient id="xpGlowM" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(255,117,23,.20)"/><stop offset="45%" stop-color="rgba(255,117,23,.07)"/><stop offset="100%" stop-color="rgba(255,117,23,0)"/></radialGradient><filter id="xpLiftM" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000" flood-opacity=".55"/></filter></defs>
@@ -1299,19 +1300,19 @@
 <script>
   // Hold the host doglegs at the same angle as the compass elbows below them.
   //
-  // The compass SVG keeps its aspect ratio, so its elbows are a fixed 59.0
+  // The compass SVG keeps its aspect ratio, so its elbows are a fixed 51.7
   // degrees from vertical at every window size. The host band SVG uses
   // preserveAspectRatio="none", so its two axes stretch by different amounts and
   // the same path renders at 55.6 degrees at 1280px and 67.3 at 2560. Editing
   // the numbers would only have matched at one width.
   //
   // So the run is recomputed from the section's real pixel size instead:
-  //   run = step * (sy/sx) * tan(59deg)
+  //   run = step * (sy/sx) * tan(51.71deg)
   // which cancels the uneven stretch and pins the rendered angle. The static d
   // in the markup is the value that is correct near 1440px, so this degrading
   // to nothing still looks right.
   (function () {
-    var TARGET = 59, VB_W = 1600, VB_H = 1000;
+    var TARGET = 51.71, VB_W = 1600, VB_H = 1000;
     var sec = document.querySelector('.host');
     var paths = sec ? sec.querySelectorAll('.host-bands path[data-kink]') : [];
     if (!paths.length) return;
