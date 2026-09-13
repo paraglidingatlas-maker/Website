@@ -464,7 +464,7 @@ img{max-width:100%;display:block;}
 .cta-wa:hover{border-color:var(--orange);color:var(--orange);}
 
 /* PODCAST */
-.podcast{padding:clamp(4rem,10vw,6rem) clamp(1.5rem,5vw,4rem);background:var(--bg);border-bottom:1px solid var(--line);}
+.podcast{padding:clamp(4rem,10vw,6rem) clamp(1.5rem,5vw,4rem) clamp(2rem,4vw,3rem);background:var(--bg);border-bottom:1px solid var(--line);}
 .podcast-top{display:flex;align-items:center;gap:0.7rem;margin-bottom:1.5rem;}
 .live-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);animation:pulse-dot 1.8s ease-in-out infinite;}
 @keyframes pulse-dot{
@@ -480,20 +480,25 @@ img{max-width:100%;display:block;}
 .waveform{width:100%;max-width:520px;height:34px;color:rgba(180,180,180,0.35);display:block;margin-bottom:2.5rem;}
 .podcast-desc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;border-top:1px solid var(--line);padding-top:2rem;}
 .podcast-desc-grid p{color:var(--gray-light);line-height:1.7;font-size:1rem;}
+/* No box. The strip is an infinite marquee, so cards are MEANT to run past the
+   edge, but a 1px border slicing a portrait in half reads as broken rather than
+   as motion. A mask fades them into the page instead. */
 .episodes-viewport{
-  overflow:hidden;border:1px solid var(--line);padding:1.2rem;
+  position:relative;overflow:hidden;cursor:grab;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
 }
+.episodes-viewport.is-dragging{cursor:grabbing;}
+/* NOT a CSS animation any more. A CSS animation cannot be nudged by a finger,
+   and the strip now takes drag and swipe. homepage-cards.js drives the same
+   transform for both the drift and the drag, so they cannot fight each other. */
 .ep-track{
-  display:flex;gap:1.2rem;width:max-content;
-  animation:ep-scroll 32s linear infinite;
+  display:flex;gap:1.2rem;width:max-content;will-change:transform;
 }
-.ep-track:hover{animation-play-state:paused;}
-@keyframes ep-scroll{
-  from{transform:translateX(0);}
-  to{transform:translateX(-50%);}
-}
+/* Pausing is handled in script now, along with the drift itself. */
 @media(prefers-reduced-motion: reduce){
-  .ep-track{animation:none;overflow-x:auto;}
+  .ep-track{transform:none !important;}
+  .episodes-viewport{overflow-x:auto;cursor:auto;}
 }
 /* ===== Homepage guest card ==================================================
    A portrait with the plate over it: compass, the episode hook, two rules with
@@ -508,7 +513,7 @@ img{max-width:100%;display:block;}
    serve both and the longer one overflowed its box. Seven of the fifteen are
    scaled down to fit.
    ========================================================================= */
-.ep-card{
+.ep-card{-webkit-user-select:none;user-select:none;
   flex:0 0 232px;position:relative;display:block;text-decoration:none;
   background:var(--card);border:1px solid var(--edge);
   transition:border-color 0.25s ease, transform 0.25s ease;
@@ -572,14 +577,22 @@ img{max-width:100%;display:block;}
   color:var(--white);font-weight:600;font-size:0.92rem;white-space:nowrap;
 }
 .listen-btn svg{width:20px;height:20px;flex-shrink:0;}
-.listen-btn:hover{background:var(--orange);border-color:var(--orange);}
+/* Hollow to filled. The fill was already here; the LABEL was not changing, so
+   white text sat on orange at about 2.2:1. */
+.listen-btn:hover{background:var(--orange);border-color:var(--orange);color:var(--ink);}
+.listen-btn:hover svg{color:var(--ink);}
 .listen-btn:hover span{color:var(--bg);}
 
 /* EPISODE MAP */
 /* ===== EPISODE SEARCH ===== */
+/* The lighter band STAYS. It is the only change of surface on the whole page and
+   it lands exactly where somebody should stop scrolling and type something, so it
+   is an accent rather than a drift. The hairline announces it, and the top
+   padding comes down from 96px because 96 here plus 96 above was 192px of
+   nothing between the platform buttons and this heading. */
 .ep-search-section{
-  padding:clamp(4rem,10vw,6rem) clamp(1.5rem,5vw,4rem);
-  background:var(--card);border-bottom:1px solid var(--line);
+  padding:clamp(2.5rem,5vw,3.5rem) clamp(1.5rem,5vw,4rem) clamp(4rem,10vw,6rem);
+  background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
   text-align:center;
 }
 .ep-search-section .kicker{display:block;margin-bottom:0.8rem;}
@@ -588,36 +601,73 @@ img{max-width:100%;display:block;}
   font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:0.8rem;line-height:1.1;
 }
 .ep-search-sub{color:var(--gray-light);font-size:1rem;margin-bottom:2.5rem;}
+/* ===== Library: the shine, then the dots ===================================
+   The same shine as the coordinate stamp in the episode popup: it travels INSIDE
+   the letterforms, with a solid background-color underneath so every character
+   stays painted wherever the highlight is not. The fade uses transparent ORANGE
+   rather than `transparent`, which would interpolate through transparent black
+   and muddy the band.
+
+   THE DOTS ARE HELD BACK until the shine has finished travelling, so the two
+   read as one gesture rather than as two things happening at once. Script adds
+   .lit at 1750ms, just before the 1900ms shine ends.
+
+   This replaces the corner brackets and three floating sparkles that were here:
+   brackets around a word inside a heading were competing with the heading, and
+   the sparkles sat over the letters rather than pointing at the link.
+   ========================================================================= */
 .ep-search-library-link{
-  color:var(--white);text-decoration:none;
-  transition:opacity 0.2s ease;position:relative;display:inline-block;
-  padding:0.15em 0.15em;
+  position:relative;display:inline-block;color:var(--white);text-decoration:none;
+  padding-bottom:0.18em;
 }
-.ep-search-library-link:hover{opacity:0.75;}
-.ep-search-library-link::before, .ep-search-library-link::after{
-  content:"";position:absolute;width:10px;height:10px;border:1.5px solid var(--orange);
-  animation:library-bracket-pulse 3.5s ease-in-out infinite;
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .ep-search-library-link{
+    background-color:var(--white);
+    background-image:linear-gradient(118deg,
+      rgba(255,117,23,0) 34%, var(--orange) 50%, rgba(255,117,23,0) 66%);
+    background-size:260% 100%;background-position:130% 0;background-repeat:no-repeat;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+  }
+  .ep-search-library-link.is-shining,
+  .ep-search-library-link:hover{animation:library-shine 1900ms ease-in-out 1;}
 }
-.ep-search-library-link::before{top:-4px;left:-4px;border-right:none;border-bottom:none;}
-.ep-search-library-link::after{bottom:-4px;right:-4px;border-left:none;border-top:none;}
+@keyframes library-shine{
+  from{background-position:130% 0;}
+  to{background-position:-130% 0;}
+}
+/* the dotted rule, and the glints that travel along it */
 .ep-search-library-sparkle{
-  position:absolute;border-radius:50%;background:var(--orange);pointer-events:none;
-  box-shadow:0 0 6px 1px rgba(255,117,23,0.5);
-  animation:library-sparkle-float 4s ease-in-out infinite;
+  position:absolute;top:50%;width:16px;height:5px;transform:translateY(-50%);
+  pointer-events:none;background:radial-gradient(ellipse at center,
+    rgba(255,117,23,0.85), transparent 70%);
+  opacity:0;animation:library-glint 5.5s ease-in-out infinite;
 }
-.ep-search-library-sparkle:nth-child(1){width:3px;height:3px;top:10%;left:15%;animation-delay:0s;}
-.ep-search-library-sparkle:nth-child(2){width:2px;height:2px;top:70%;left:80%;animation-delay:1.3s;}
-.ep-search-library-sparkle:nth-child(3){width:2.5px;height:2.5px;top:40%;left:50%;animation-delay:2.6s;}
-@keyframes library-sparkle-float{
-  0%, 100%{opacity:0;transform:translateY(0);}
-  50%{opacity:0.7;transform:translateY(-4px);}
+.ep-search-library-link::after{
+  content:"";position:absolute;left:0;right:0;bottom:-0.02em;height:5px;pointer-events:none;
+  background-image:radial-gradient(circle, var(--orange) 0.9px, transparent 1.1px);
+  background-size:7px 5px;background-repeat:repeat-x;background-position:0 50%;
+  opacity:0;transition:opacity 0.7s ease;
 }
-@keyframes library-bracket-pulse{
-  0%, 100%{opacity:0.5;}
-  50%{opacity:1;box-shadow:0 0 8px rgba(255,117,23,0.7);}
+.ep-search-library-link.is-lit::after{opacity:0.5;}
+.ep-search-library-link .ep-search-library-sparkle{
+  top:auto;bottom:-0.02em;transform:none;
+}
+.ep-search-library-link.is-lit .ep-search-library-sparkle:nth-child(1){animation-delay:0.4s;}
+.ep-search-library-link.is-lit .ep-search-library-sparkle:nth-child(2){animation-delay:2.3s;}
+.ep-search-library-link.is-lit .ep-search-library-sparkle:nth-child(3){animation-delay:4.1s;}
+.ep-search-library-link:not(.is-lit) .ep-search-library-sparkle{animation:none;opacity:0;}
+@keyframes library-glint{
+  0%{left:-6%;opacity:0;}
+  12%{opacity:0.9;}
+  50%{opacity:0.9;}
+  62%{opacity:0;}
+  100%{left:102%;opacity:0;}
 }
 @media(prefers-reduced-motion: reduce){
-  .ep-search-library-link::before, .ep-search-library-link::after{animation:none;opacity:1;}
+  .ep-search-library-link{-webkit-text-fill-color:var(--white);color:var(--white);animation:none;}
+  .ep-search-library-link:hover{animation:none;}
+  .ep-search-library-link::after{opacity:0.5;}
   .ep-search-library-sparkle{animation:none;opacity:0;}
 }
 .ep-search-bar{

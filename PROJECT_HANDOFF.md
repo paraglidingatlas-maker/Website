@@ -3729,3 +3729,53 @@ overrode the tag's `position:absolute` back to relative**, the tag joined the gr
 as item one, and every column shifted a cell: tag top left, heading right, list
 bottom left. Fixed by naming the two columns. **A blanket child selector will beat
 the specific rules inside it.**
+
+## 66. THE PODCAST SECTION AND THE SEARCH BAND
+
+### THE MARQUEE IS NO LONGER A CSS ANIMATION
+It was `animation:ep-scroll 32s linear infinite`. **A CSS animation cannot be
+nudged by a finger**: it owns the transform, and a drag would fight it. One rAF
+loop in `homepage-motion.js` now drives the drift AND the drag, so they cannot
+disagree.
+
+**The cards are cloned in script, not in the generator.** The loop wraps at half
+the track width, which needs two identical halves, but the generator is the
+source of fifteen episodes and should not emit thirty. The clones are
+`aria-hidden` and `tabindex="-1"`, so a screen reader and the keyboard see the
+strip once.
+
+**A drag must not open the card under your finger.** Past 6px of movement the
+following click is swallowed once, on capture.
+
+Pointing at the strip pauses it; letting go of a drag resumes after 900ms.
+
+### The box became a fade
+A 1px border was slicing portraits in half. The strip is an infinite marquee, so
+cards are MEANT to run past the edge; a mask fades them into the page instead.
+
+### The platform buttons
+Kept at their current width, as asked. **The fill on hover was already there and
+the LABEL was not changing**, so white text sat on orange at about 2.2:1. Now the
+ink goes dark with it.
+
+### THE LIGHTER SEARCH BAND STAYS, DELIBERATELY
+It is the only change of surface on the whole page and it lands exactly where
+somebody should stop scrolling and type something. A hairline at the top
+announces it, and the padding came down: **96px below the buttons plus 96px above
+the heading was 192px of nothing.**
+
+### Library: shine, then dots
+The same shine as the coordinate stamp: inside the letterforms, solid
+`background-color` underneath, transparent ORANGE in the fade rather than
+`transparent`. **The dots are held back to 1750ms**, just before the 1900ms shine
+ends, so the two read as one gesture. Three glints travel the dotted rule.
+
+**This replaced corner brackets and three floating sparkles.** Brackets around a
+word inside a heading were competing with the heading, and the sparkles sat over
+the letters rather than pointing at the link.
+
+### A regex that ate a brace, twice
+Removing `@keyframes ep-scroll` with `re.sub` took the closing brace of the block
+after it, and the Library replacement left one spare. Both caught by the tinycss2
+check before the build. **String surgery on CSS needs the parser run afterwards,
+every time.**
