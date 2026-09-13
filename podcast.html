@@ -71,7 +71,9 @@
      buttons' 10 degree skew, which I wrongly claimed once. */
   .host-bands{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;}
   .host-bands path{fill:none;stroke-width:1.5;vector-effect:non-scaling-stroke;}
-  .host-bands .hb-grey{stroke:var(--edge-hi);}
+  .host-bands .hb-grey{stroke:url(#hostGreyFade);}
+  .hb-stop-grey-out{stop-color:var(--edge-hi);stop-opacity:0;}
+  .hb-stop-grey-in{stop-color:var(--edge-hi);stop-opacity:1;}
   .host-bands .hb-orange{stroke:url(#hostOrangeFade);opacity:0.9;}
   .hb-stop-out{stop-color:var(--orange);stop-opacity:0;}
   .hb-stop-in{stop-color:var(--orange);stop-opacity:1;}
@@ -668,9 +670,12 @@
 
   @media(max-width:820px){
     .host{grid-template-columns:1fr;padding-bottom:0;align-items:start;min-height:0;}
-    /* The rules need width to read as a dogleg, so they step aside rather than
-       being squeezed into a phone column. */
-    .host-bands{display:none;}
+    /* The rules stay on a phone. They were hidden because a dogleg squeezed
+       into a narrow column reads as a stray kink, but the angle lock solves
+       that: it recomputes the run from the section's real size, so at 390px
+       wide the run grows to about 245 units and the diagonal still renders at
+       51.71 degrees, the same as everywhere else. It stays well inside the
+       line's end at 1600. */
     .host-plateband{height:32%;}
     .host-plate{right:-3%;bottom:auto;top:0;font-size:clamp(3.4rem,23vw,7rem);}
     /* Stacked, the portrait goes last and stays on the floor, so the section
@@ -802,6 +807,14 @@
       <linearGradient id="hostOrangeFade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="360" y2="0">
         <stop class="hb-stop-out" offset="0"/>
         <stop class="hb-stop-in" offset="1"/>
+      </linearGradient>
+      <!-- The grey rule starts at x=230, behind his shoulder, so it appeared to
+           begin abruptly out of the portrait. Same treatment: it fades in over
+           the 200 units after its start, finishing well before the kink at 450.
+           Also user space, so it holds its proportion at any width. -->
+      <linearGradient id="hostGreyFade" gradientUnits="userSpaceOnUse" x1="230" y1="0" x2="430" y2="0">
+        <stop class="hb-stop-grey-out" offset="0"/>
+        <stop class="hb-stop-grey-in" offset="1"/>
       </linearGradient>
     </defs>
     <path class="hb-grey" id="hbGrey" data-start="230" data-y="705" data-kink="450" data-step="-62" data-end="1600"
