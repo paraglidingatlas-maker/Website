@@ -60,17 +60,60 @@
   .host{position:relative;overflow:hidden;
     padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem) 0;
     background:linear-gradient(180deg, var(--card) 0%, var(--bg) 100%);
-    display:grid;grid-template-columns:minmax(0,clamp(15rem,26vw,23rem)) 1fr;
-    gap:clamp(1.5rem,4vw,3.5rem);align-items:end;}
-  .host-photo{position:relative;align-self:end;line-height:0;}
+    display:grid;grid-template-columns:minmax(0,clamp(15rem,25vw,22rem)) 1fr;
+    gap:clamp(1.5rem,4vw,3.5rem);align-items:end;min-height:42rem;}
+
+  /* Two stepped rules, both behind him. The grid is 1600 by 1000 stretched over
+     the whole section, so the y values are absolute within it however wide the
+     window gets. Positions were chosen on a slider rather than by me guessing.
+     Both doglegs are 50.8 degrees from vertical: NOT the buttons' 10 degree
+     skew, which I wrongly claimed once. They are what looked right. */
+  .host-bands{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;}
+  .host-bands path{fill:none;stroke-width:1.5;vector-effect:non-scaling-stroke;}
+  .host-bands .hb-grey{stroke:var(--edge-hi);}
+  .host-bands .hb-orange{stroke:var(--orange);opacity:0.9;}
+
+  /* The surname, penned into a band that stops above the platform buttons so it
+     cannot collide with them however the copy reflows. */
+  .host-plateband{position:absolute;left:0;right:0;top:0;height:64%;z-index:1;
+    pointer-events:none;overflow:hidden;}
+  .host-plate{position:absolute;right:3%;bottom:-8%;
+    font-family:var(--font-display);font-weight:800;
+    font-size:clamp(5rem,19vw,17rem);line-height:0.78;letter-spacing:-0.04em;
+    white-space:nowrap;color:transparent;
+    -webkit-text-stroke:1px rgba(180,180,180,0.17);}
+
+  .host-photo{position:relative;z-index:3;align-self:end;line-height:0;}
   .host-photo::before{content:"";position:absolute;left:50%;top:34%;
     width:130%;aspect-ratio:1/1;transform:translate(-50%,-50%);pointer-events:none;
     background:radial-gradient(circle at 50% 50%,rgba(255,117,23,0.16) 0%,
       rgba(255,117,23,0.05) 38%,rgba(255,117,23,0) 66%);}
-  .host-photo img{position:relative;width:100%;height:auto;display:block;}
-  .host-copy{padding-bottom:clamp(4rem,9vw,6.5rem);}
-  .host-copy .kicker{color:var(--orange);font-size:0.95rem;font-weight:500;margin-bottom:0.6rem;}
-  .host-copy h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--white);margin-bottom:1.1rem;}
+  /* The dissolve is on top of a repaired cut-out, not instead of one. The
+     previous file had a 2px alpha ramp and a pale fringe of leftover white
+     background bled into the boundary, 13.9 luminance brighter than the pixels
+     just inside it, which on a dark page traced a hard outline round him.
+     host-aninder-soft is eroded 2px, feathered and de-fringed: now +1.7. */
+  .host-photo img{position:relative;width:100%;height:auto;display:block;
+    -webkit-mask-image:
+      linear-gradient(180deg,#000 0%,#000 60%,rgba(0,0,0,0.5) 84%,transparent 100%),
+      radial-gradient(ellipse 76% 82% at 52% 40%,#000 42%,rgba(0,0,0,0.62) 74%,rgba(0,0,0,0.15) 96%);
+    -webkit-mask-composite:source-in;
+            mask-image:
+      linear-gradient(180deg,#000 0%,#000 60%,rgba(0,0,0,0.5) 84%,transparent 100%),
+      radial-gradient(ellipse 76% 82% at 52% 40%,#000 42%,rgba(0,0,0,0.62) 74%,rgba(0,0,0,0.15) 96%);
+            mask-composite:intersect;}
+  .host-copy{position:relative;z-index:4;padding-bottom:clamp(4rem,9vw,6.5rem);}
+  .host-copy .kicker{color:var(--orange);font-weight:600;
+    font-size:clamp(1.05rem,1.5vw,1.3rem);margin-bottom:0.7rem;}
+  .host-copy h2{font-family:var(--font-display);font-weight:700;
+    font-size:clamp(2.1rem,4.4vw,3.4rem);color:var(--white);line-height:1.05;
+    letter-spacing:-0.02em;margin-bottom:1.2rem;}
+  /* The surname shows as the big outline plate, which is decorative and sits in
+     an aria-hidden container. Without this the heading would read as "Aninder"
+     alone to a screen reader or a crawler, and the host's full name would exist
+     on the page only in the portrait's alt text. */
+  .host-surname{position:absolute;width:1px;height:1px;overflow:hidden;
+    clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;}
   .host-copy p{color:var(--gray-light);line-height:1.75;margin-bottom:1.1rem;max-width:62ch;}
   .host-platforms{display:flex;gap:0.9rem;flex-wrap:wrap;margin-top:1.5rem;}
 
@@ -621,7 +664,12 @@
   .live-counter{color:var(--gray);font-size:0.78rem;border:1px solid var(--edge);padding:0.3rem 0.8rem;}
 
   @media(max-width:820px){
-    .host{grid-template-columns:1fr;padding-bottom:0;align-items:start;}
+    .host{grid-template-columns:1fr;padding-bottom:0;align-items:start;min-height:0;}
+    /* The rules need width to read as a dogleg, so they step aside rather than
+       being squeezed into a phone column. */
+    .host-bands{display:none;}
+    .host-plateband{height:32%;}
+    .host-plate{right:-3%;bottom:auto;top:0;font-size:clamp(3.4rem,23vw,7rem);}
     /* Stacked, the portrait goes last and stays on the floor, so the section
        still ends at his shoulders rather than at a gap under a thumbnail. */
     .host-photo{order:2;max-width:min(72vw,20rem);margin:2.5rem auto 0;}
@@ -741,10 +789,16 @@
 </section>
 
 <section class="host">
-  <div class="host-photo"><picture><source srcset="assets/podcast/host-aninder-cut.webp" type="image/webp"><img src="assets/podcast/host-aninder-cut.png" width="1094" height="1100" loading="lazy" alt="Aninder Singh, host of the Paragliding Atlas podcast"></picture></div>
+  <svg class="host-bands" viewBox="0 0 1600 1000" preserveAspectRatio="none" aria-hidden="true">
+    <path class="hb-grey" d="M 230 705 L 450 705 L 526 643 L 1600 643"/>
+    <path class="hb-orange" id="hostOrange" d="M 0 595 L 450 595 L 526 533 L 1600 533"
+          data-v1="M 0 595 L 450 595 L 526 533 L 1600 533" data-v2="M 0 1000 L 450 1000 L 526 938 L 1600 938"/>
+  </svg>
+  <div class="host-plateband" aria-hidden="true"><span class="host-plate">SINGH</span></div>
+  <div class="host-photo"><picture><source srcset="assets/podcast/host-aninder-soft.webp" type="image/webp"><img src="assets/podcast/host-aninder-soft.png" width="1094" height="1100" loading="lazy" alt="Aninder Singh, host of the Paragliding Atlas podcast"></picture></div>
   <div class="host-copy">
     <p class="kicker">Meet Your Host</p>
-    <h2>Aninder Singh</h2>
+    <h2>Aninder<span class="host-surname"> Singh</span></h2>
     <p>Every week, Aninder dives deep into all things paragliding with some of the most forward-thinking, paradigm-busting minds in the sport.</p>
     <div class="host-platforms">
       <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="listen-btn" data-hover><span>Spotify</span></a>
@@ -1226,6 +1280,18 @@
     }, {passive: true});
     window.addEventListener('resize', frame, {passive: true});
     frame();
+  })();
+</script>
+<script>
+  // Two line versions were asked for at once. Rather than putting two host
+  // sections on the page, which would duplicate the heading, the copy and the
+  // portrait, the only thing that differs between them is the orange rule's
+  // height. Version 1 is what everyone gets; ?lines=2 swaps in the other.
+  // Delete the data-v2 attribute and this block once one of them wins.
+  (function () {
+    if (new URLSearchParams(location.search).get('lines') !== '2') return;
+    var p = document.getElementById('hostOrange');
+    if (p && p.dataset.v2) p.setAttribute('d', p.dataset.v2);
   })();
 </script>
 </body>
