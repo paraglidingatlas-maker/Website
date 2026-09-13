@@ -40,6 +40,10 @@
     const seeMoreBtn = document.getElementById('seeMoreBtn');
     const liveCounter = document.getElementById('liveCounter');
     const liveFeedFooter = document.getElementById('liveFeedFooter');
+    // Seven on open, fifteen per press after that. renderNextBatch serves both
+    // the first render and every later one, so the size has to depend on
+    // whether anything has been rendered yet rather than being one constant.
+    const FIRST_BATCH = 7;
     const BATCH_SIZE = 15;
     let allItems = [];
     let renderedCount = 0;
@@ -112,7 +116,8 @@
     }
 
     function renderNextBatch() {
-      const nextItems = allItems.slice(renderedCount, renderedCount + BATCH_SIZE);
+      const size = renderedCount === 0 ? FIRST_BATCH : BATCH_SIZE;
+      const nextItems = allItems.slice(renderedCount, renderedCount + size);
       const html = nextItems.map((item, idx) => buildRowHtml(item, renderedCount + idx)).join('');
       gridEl.insertAdjacentHTML('beforeend', html);
 
