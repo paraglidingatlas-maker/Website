@@ -306,6 +306,16 @@
   }
 
 
+  /* The `.eq-bars` selector and its opening brace were missing here, so these
+     declarations sat at the top level of the stylesheet with no rule around
+     them. That does not just lose this rule. The CSS parser reads everything up
+     to the next `{` as a prelude, so it swallowed `.eq-bars span` into an
+     invalid selector and dropped that rule too. Both were dead: the 48 bars the
+     script builds behind the newsletter panel had no layout, no gradient and no
+     animation, and only the reduced-motion override still matched anything.
+     Same failure as the footer selector lost in 076ca7c. Found by a brace count
+     of 222 open against 223 close. */
+  .eq-bars{
     position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-between;
     padding:0;gap:2px;opacity:0.35;
   }
