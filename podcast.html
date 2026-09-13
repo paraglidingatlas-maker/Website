@@ -233,27 +233,170 @@
     padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);
   }
   /* ===== WHAT YOU CAN EXPECT ===== */
-  .expect-section{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);background:var(--bg);}
-  .expect-head{max-width:700px;margin-bottom:3rem;}
+  /* ===== WHAT YOU CAN EXPECT: THE COMPASS =====
+     Five icons in circles with a heading and a paragraph is the most
+     template-recognisable block on the web, so this stops being that shape.
+     Four pillars sit on the intercardinals, two a side. The fifth sits alone
+     on due south with a straight drop and no elbow: it is on the rose's own
+     cardinal, and the bearing under every node says so, which is what makes
+     the odd one out read as chosen rather than left over.
+
+     Every leader line meets the rose at exactly its stated bearing. Verified
+     by computing the angle back from the geometry, because an instrument that
+     lies about its own numbers is only decoration.
+
+     Only one node opens at a time. Five paragraphs ringing a central object
+     do not fit at any width, and the constraint is what turns the rose into
+     something you operate. */
+  .expect-section{position:relative;overflow:hidden;--xp-p:.5;
+    padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem);
+    background:radial-gradient(ellipse at 50% 30%,#1c1d23 0%,var(--bg) 55%,var(--card) 100%);}
+  .expect-head{max-width:700px;margin-bottom:3rem;position:relative;z-index:2;}
   .expect-head .kicker{margin-bottom:0.6rem;}
   .expect-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--white);}
-  .expect-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;max-width:1400px;margin:0 auto;}
-  .expect-item{text-align:left;}
-  .expect-icon{
-    width:52px;height:52px;border-radius:50%;background:var(--card);border:1.5px solid var(--orange);
-    display:flex;align-items:center;justify-content:center;margin:0 0 1.2rem;
-    transition:box-shadow 0.25s ease, transform 0.25s ease;
-  }
-  .expect-item:hover .expect-icon{box-shadow:0 0 16px 2px rgba(255,117,23,0.5);transform:scale(1.08);}
-  .expect-icon svg{width:22px;height:22px;color:var(--orange);}
-  .expect-item h3{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--white);margin-bottom:0.8rem;}
-  .expect-item p{color:var(--gray-light);font-size:0.85rem;line-height:1.65;}
 
-  @media(max-width:1000px){
-    .expect-grid{grid-template-columns:repeat(2,1fr);}
+  /* the bed of light, and a vignette to close the edges down */
+  .xp-glowbed{position:absolute;left:50%;top:38%;width:min(120%,1500px);aspect-ratio:1/1;
+    transform:translate(-50%,-50%);pointer-events:none;
+    background:radial-gradient(circle at 50% 50%,rgba(255,117,23,.13) 0%,
+      rgba(255,117,23,.05) 32%,rgba(255,117,23,0) 62%);}
+  .xp-vignette{position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse at 50% 42%,rgba(0,0,0,0) 42%,
+      rgba(0,0,0,.28) 78%,rgba(0,0,0,.55) 100%);}
+
+  /* ===== BREATHING =====
+     One 7s clock, two elements, counter-phase. As the bed of light sinks the
+     rim and its ticks come up orange, then they trade back. One cycle rather
+     than two loops that happen to coincide, so it reads as a single thing
+     inhaling instead of two effects running side by side. */
+  @keyframes xpBedBreathe{0%,100%{opacity:.8;}50%{opacity:.14;}}
+  @keyframes xpRimBreathe{
+    0%,100%{stroke:rgba(180,180,180,.30);filter:none;}
+    50%{stroke:var(--orange);
+        filter:drop-shadow(0 0 9px rgba(255,117,23,.75)) drop-shadow(0 0 22px rgba(255,117,23,.35));}}
+  @keyframes xpTickBreathe{0%,100%{stroke:rgba(180,180,180,.30);}50%{stroke:rgba(255,117,23,.70);}}
+  .xp-glowbed{animation:xpBedBreathe 7s ease-in-out infinite;}
+  .xp-outer{animation:xpRimBreathe 7s ease-in-out infinite;}
+  .xp-tick{animation:xpTickBreathe 7s ease-in-out infinite;}
+
+  /* ===== PARALLAX =====
+     --xp-p runs 0 to 1 as the section crosses the viewport, written once per
+     frame from a rAF-throttled passive scroll listener. The layers move at
+     different rates and the heading moves against them, so the separation is
+     legible rather than merely present. */
+  .xp-plx-rose{transform:translateY(calc((var(--xp-p) - .5) * -150px));}
+  .xp-plx-lead{transform:translateY(calc((var(--xp-p) - .5) * -54px));}
+  .expect-head{transform:translateY(calc((var(--xp-p) - .5) * 70px));}
+  .xp-glowbed{transform:translate(-50%,-50%) translateY(calc((var(--xp-p) - .5) * -210px));}
+
+  /* ===== stage ===== */
+  .xp-stage{position:relative;z-index:2;width:100%;max-width:1500px;margin:0 auto;
+    aspect-ratio:1600/1060;}
+  .xp-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+  .xp-mdial{display:none;}
+
+  /* ===== rose ===== */
+  .xp-rose{filter:url(#xpLiftD);}
+  .xp-msvg .xp-rose{filter:url(#xpLiftM);}
+  .xp-ring{fill:none;stroke:var(--rule);stroke-width:1.4;}
+  .xp-ring.thin{stroke:rgba(180,180,180,.10);}
+  .xp-outer{stroke-width:1.4;}
+  .xp-tick{stroke-width:1.2;}
+  .xp-spike{fill:#33343d;}
+  .xp-spike.dim{fill:#26272e;}
+  .xp-spike.maj{fill:#474854;}
+  .xp-spike.maj.dim{fill:#2c2d36;}
+  .xp-card{fill:var(--gray);font-family:"Poppins",sans-serif;font-size:19px;font-weight:600;
+    text-anchor:middle;letter-spacing:.08em;}
+  .xp-ndl-n{fill:var(--orange);}
+  .xp-ndl-s{fill:#4a4b56;}
+  .xp-hub{fill:var(--bg);stroke:var(--orange);stroke-width:2;}
+  .xp-hub-in{fill:var(--orange);}
+
+  /* ===== the needle =====
+     Duration is set per swing in script, because a 90 degree turn should not
+     take as long as a 180. The curve overshoots slightly and settles, which is
+     what a real needle does. See xp.js for why the angle is accumulated. */
+  .xp-needle{transition:transform .8s cubic-bezier(.22,1.18,.36,1);}
+
+  .xp-lead{fill:none;stroke:var(--rule);stroke-width:1.5;transition:stroke .3s ease;}
+  .xp-lead.on{stroke:var(--orange);}
+  .xp-mk{cursor:pointer;}
+  .xp-mk-c{fill:var(--bg);stroke:var(--edge);stroke-width:1.5;
+    transition:stroke .3s ease,fill .3s ease;}
+  .xp-mk-t{fill:var(--gray);font-family:"Poppins",sans-serif;font-size:17px;font-weight:600;
+    text-anchor:middle;transition:fill .3s ease;}
+  .xp-mk.on .xp-mk-c{stroke:var(--orange);fill:var(--wash);}
+  .xp-mk.on .xp-mk-t{fill:var(--orange);}
+  .xp-mk:hover .xp-mk-c{stroke:var(--edge-hi);}
+  .xp-mk:focus-visible{outline:none;}
+  .xp-mk:focus-visible .xp-mk-c{stroke:var(--orange);stroke-width:2.5;}
+
+  /* ===== nodes ===== */
+  /* Positions live in CSS, not inline styles, so the mobile query can undo
+     them without !important. Percentages map 1:1 onto the 1600x1060 viewBox
+     the leader lines are drawn in, because the stage holds that aspect ratio. */
+  .xp-nodes{position:absolute;inset:0;pointer-events:none;}
+  .xp-node{position:absolute;pointer-events:auto;}
+  .xp-node[data-xp="dest"]{left:5.6%;width:25.0%;bottom:80.19%;}
+  .xp-node[data-xp="expert"]{left:69.4%;width:25.0%;bottom:80.19%;}
+  .xp-node[data-xp="safety"]{left:5.6%;width:25.0%;top:61.32%;}
+  .xp-node[data-xp="culture"]{left:69.4%;width:25.0%;top:61.32%;}
+  .xp-node[data-xp="series"]{left:33.0%;width:34.0%;top:85.40%;text-align:center;}
+  .xp-btn{display:block;text-align:inherit;width:100%;padding:0;background:none;
+    border:none;color:inherit;cursor:pointer;font-family:inherit;}
+  .xp-brg{display:block;font-family:var(--font-body);font-size:0.66rem;letter-spacing:0.2em;
+    color:var(--gray);font-variant-numeric:tabular-nums;margin-bottom:0.3rem;
+    transition:color .3s ease;}
+  .xp-ttl{display:block;font-family:var(--font-display);font-weight:700;
+    font-size:clamp(0.95rem,1.25vw,1.2rem);color:var(--gray-light);line-height:1.2;
+    transition:color .3s ease;}
+  .xp-btn:hover .xp-ttl{color:var(--white);}
+  .xp-node[data-active] .xp-ttl{color:var(--white);}
+  .xp-node[data-active] .xp-brg{color:var(--orange);}
+  .xp-btn:focus-visible{outline:2px solid var(--orange);outline-offset:4px;}
+  .xp-body{max-height:0;opacity:0;overflow:hidden;
+    transition:max-height .5s cubic-bezier(.16,1,.3,1),opacity .35s ease,margin-top .5s ease;}
+  .xp-node[data-active] .xp-body{max-height:24rem;opacity:1;margin-top:0.7rem;}
+  .xp-body p{color:var(--gray-light);font-size:clamp(0.78rem,0.92vw,0.9rem);line-height:1.65;}
+
+  /* ===== mobile: the compass stays =====
+     The first pass replaced it with a list, which meant the thing worth looking
+     at existed only on desktop. The rose is kept, the markers move onto the rim
+     at their true bearings, the leader lines go because there is nowhere for
+     them to run, and the copy sits under the dial. 1100 rather than 900:
+     between those widths the columns sit at 25% of the stage while the type
+     stays at its clamp floor, and five paragraphs round a rose cramp badly. */
+  @media(max-width:1100px){
+    /* Same nodes, restacked. The copy is written once and lives in one place in
+       the DOM: duplicating it for a phone layout would put five paragraphs in
+       the page twice, read twice by a screen reader and crawled twice. */
+    .xp-stage{aspect-ratio:auto;}
+    .xp-svg{display:none;}
+    .xp-mdial{display:block;max-width:min(88vw,420px);margin:0 auto;
+      transform:translateY(calc((var(--xp-p) - .5) * -30px));}
+    .xp-msvg{width:100%;height:auto;display:block;overflow:visible;}
+    .xp-nodes{position:relative;inset:auto;margin-top:1.6rem;
+      border-top:1px solid var(--rule);padding-top:1.4rem;min-height:15rem;}
+    .xp-node,
+    .xp-node[data-xp="dest"],.xp-node[data-xp="expert"],.xp-node[data-xp="safety"],
+    .xp-node[data-xp="culture"],.xp-node[data-xp="series"]{
+      position:absolute;left:0;right:auto;top:1.4rem;bottom:auto;width:100%;
+      text-align:left;opacity:0;visibility:hidden;transform:translateY(8px);
+      transition:opacity .35s ease,transform .35s ease,visibility .35s;}
+    .xp-node[data-active]{position:relative;top:auto;opacity:1;visibility:visible;
+      transform:none;}
+    .xp-ttl{font-size:1.25rem;}
+    .xp-body{max-height:none;opacity:1;margin-top:0.7rem;}
+    .xp-body p{font-size:0.92rem;}
   }
-  @media(max-width:560px){
-    .expect-grid{grid-template-columns:1fr;}
+
+  @media(prefers-reduced-motion: reduce){
+    .xp-glowbed,.xp-outer,.xp-tick{animation:none;}
+    .xp-needle,.xp-body,.xp-lead,.xp-mk-c,.xp-mk-t,.xp-mpanel{transition:none;}
+    .xp-plx-rose,.xp-plx-lead,.expect-head,.xp-mdial{transform:none;}
+    .xp-node{transition:none;}
+    .xp-glowbed{transform:translate(-50%,-50%);}
   }
 
 
@@ -573,35 +716,49 @@
 </section>
 
 <section class="expect-section">
+  <div class="xp-glowbed" aria-hidden="true"></div>
+  <div class="xp-vignette" aria-hidden="true"></div>
   <div class="expect-head">
     <p class="kicker">What The Show Is About</p>
     <h2>What You Can Expect</h2>
   </div>
-  <div class="expect-grid">
-    <div class="expect-item">
-      <div class="expect-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-6 2 2-6Z" fill="currentColor" stroke="none"/></svg></div>
-      <h3>Global Destinations</h3>
-      <p>From the towering peaks of the Himalayas to the serene landscapes of the African Highlands, join us as we explore the world's premier paragliding spots</p>
+
+  <div class="xp-stage">
+    <svg class="xp-svg" viewBox="0 0 1600 1060" aria-hidden="true"><defs><radialGradient id="xpGlowD" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(255,117,23,.20)"/><stop offset="45%" stop-color="rgba(255,117,23,.07)"/><stop offset="100%" stop-color="rgba(255,117,23,0)"/></radialGradient><filter id="xpLiftD" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000" flood-opacity=".55"/></filter></defs>
+      <g class="xp-plx-rose"><circle cx="800" cy="430" r="285" fill="url(#xpGlowD)"/>
+<g class="xp-rose">
+<circle cx="800" cy="430" r="190" class="xp-ring xp-outer"/>
+<circle cx="800" cy="430" r="160" class="xp-ring thin"/>
+<circle cx="800" cy="430" r="96" class="xp-ring thin"/>
+<line x1="800.0" y1="254.0" x2="800.0" y2="240.0" class="xp-tick"/><line x1="847.1" y1="254.2" x2="849.2" y2="246.5" class="xp-tick"/><line x1="891.0" y1="272.4" x2="895.0" y2="265.5" class="xp-tick"/><line x1="924.5" y1="305.5" x2="934.4" y2="295.6" class="xp-tick"/><line x1="957.6" y1="339.0" x2="964.5" y2="335.0" class="xp-tick"/><line x1="975.8" y1="382.9" x2="983.5" y2="380.8" class="xp-tick"/><line x1="976.0" y1="430.0" x2="990.0" y2="430.0" class="xp-tick"/><line x1="975.8" y1="477.1" x2="983.5" y2="479.2" class="xp-tick"/><line x1="957.6" y1="521.0" x2="964.5" y2="525.0" class="xp-tick"/><line x1="924.5" y1="554.5" x2="934.4" y2="564.4" class="xp-tick"/><line x1="891.0" y1="587.6" x2="895.0" y2="594.5" class="xp-tick"/><line x1="847.1" y1="605.8" x2="849.2" y2="613.5" class="xp-tick"/><line x1="800.0" y1="606.0" x2="800.0" y2="620.0" class="xp-tick"/><line x1="752.9" y1="605.8" x2="750.8" y2="613.5" class="xp-tick"/><line x1="709.0" y1="587.6" x2="705.0" y2="594.5" class="xp-tick"/><line x1="675.5" y1="554.5" x2="665.6" y2="564.4" class="xp-tick"/><line x1="642.4" y1="521.0" x2="635.5" y2="525.0" class="xp-tick"/><line x1="624.2" y1="477.1" x2="616.5" y2="479.2" class="xp-tick"/><line x1="624.0" y1="430.0" x2="610.0" y2="430.0" class="xp-tick"/><line x1="624.2" y1="382.9" x2="616.5" y2="380.8" class="xp-tick"/><line x1="642.4" y1="339.0" x2="635.5" y2="335.0" class="xp-tick"/><line x1="675.5" y1="305.5" x2="665.6" y2="295.6" class="xp-tick"/><line x1="709.0" y1="272.4" x2="705.0" y2="265.5" class="xp-tick"/><line x1="752.9" y1="254.2" x2="750.8" y2="246.5" class="xp-tick"/><polygon class="xp-spike maj" points="800.0,430.0 800.0,289.4 810.0,406.0"/><polygon class="xp-spike dim maj" points="800.0,430.0 800.0,289.4 790.0,406.0"/><polygon class="xp-spike" points="800.0,430.0 867.8,362.2 824.0,420.0"/><polygon class="xp-spike dim" points="800.0,430.0 867.8,362.2 810.0,406.0"/><polygon class="xp-spike maj" points="800.0,430.0 940.6,430.0 824.0,440.0"/><polygon class="xp-spike dim maj" points="800.0,430.0 940.6,430.0 824.0,420.0"/><polygon class="xp-spike" points="800.0,430.0 867.8,497.8 810.0,454.0"/><polygon class="xp-spike dim" points="800.0,430.0 867.8,497.8 824.0,440.0"/><polygon class="xp-spike maj" points="800.0,430.0 800.0,570.6 790.0,454.0"/><polygon class="xp-spike dim maj" points="800.0,430.0 800.0,570.6 810.0,454.0"/><polygon class="xp-spike" points="800.0,430.0 732.2,497.8 776.0,440.0"/><polygon class="xp-spike dim" points="800.0,430.0 732.2,497.8 790.0,454.0"/><polygon class="xp-spike maj" points="800.0,430.0 659.4,430.0 776.0,420.0"/><polygon class="xp-spike dim maj" points="800.0,430.0 659.4,430.0 776.0,440.0"/><polygon class="xp-spike" points="800.0,430.0 732.2,362.2 790.0,406.0"/><polygon class="xp-spike dim" points="800.0,430.0 732.2,362.2 776.0,420.0"/><text x="800.0" y="271.1" class="xp-card">N</text><text x="964.9" y="436.0" class="xp-card">E</text><text x="800.0" y="600.9" class="xp-card">S</text><text x="635.1" y="436.0" class="xp-card">W</text>
+<g class="xp-needle" style="transform-origin:800px 430px">
+<polygon points="800,278 791,430 809,430" class="xp-ndl-n"/>
+<polygon points="800,554 793,430 807,430" class="xp-ndl-s"/></g>
+<circle cx="800" cy="430" r="11" class="xp-hub"/>
+<circle cx="800" cy="430" r="4" class="xp-hub-in"/></g></g>
+      <g class="xp-plx-lead"><path d="M 90 236 L 566 236 L 666 296" class="xp-lead" data-xp="dest"/><path d="M 1510 236 L 1034 236 L 934 296" class="xp-lead" data-xp="expert"/><path d="M 90 624 L 566 624 L 666 564" class="xp-lead" data-xp="safety"/><path d="M 1510 624 L 1034 624 L 934 564" class="xp-lead" data-xp="culture"/><path d="M 800 620 L 800 845" class="xp-lead" data-xp="series"/><g class="xp-mk" data-xp="dest" tabindex="0" role="button" aria-label="Global Destinations, bearing 315 degrees"><circle cx="90" cy="236" r="25" class="xp-mk-c"/><text x="90" y="242" class="xp-mk-t">I</text></g><g class="xp-mk" data-xp="expert" tabindex="0" role="button" aria-label="Expert Insights, bearing 45 degrees"><circle cx="1510" cy="236" r="25" class="xp-mk-c"/><text x="1510" y="242" class="xp-mk-t">II</text></g><g class="xp-mk" data-xp="safety" tabindex="0" role="button" aria-label="Safety First, bearing 225 degrees"><circle cx="90" cy="624" r="25" class="xp-mk-c"/><text x="90" y="630" class="xp-mk-t">III</text></g><g class="xp-mk" data-xp="culture" tabindex="0" role="button" aria-label="Cultural Immersion, bearing 135 degrees"><circle cx="1510" cy="624" r="25" class="xp-mk-c"/><text x="1510" y="630" class="xp-mk-t">IV</text></g><g class="xp-mk" data-xp="series" tabindex="0" role="button" aria-label="Thematic Mini-Series, bearing 180 degrees"><circle cx="800" cy="880" r="25" class="xp-mk-c"/><text x="800" y="886" class="xp-mk-t">V</text></g></g>
+    </svg>
+    <div class="xp-mdial">
+      <svg class="xp-msvg" viewBox="0 0 520 520" aria-hidden="true"><defs><radialGradient id="xpGlowM" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(255,117,23,.20)"/><stop offset="45%" stop-color="rgba(255,117,23,.07)"/><stop offset="100%" stop-color="rgba(255,117,23,0)"/></radialGradient><filter id="xpLiftM" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#000" flood-opacity=".55"/></filter></defs>
+        <circle cx="260.0" cy="260.0" r="168" fill="url(#xpGlowM)"/>
+<g class="xp-rose">
+<circle cx="260.0" cy="260.0" r="112.32000000000001" class="xp-ring xp-outer"/>
+<circle cx="260.0" cy="260.0" r="82" class="xp-ring thin"/>
+<circle cx="260.0" cy="260.0" r="57" class="xp-ring thin"/>
+<line x1="260.0" y1="161.7" x2="260.0" y2="147.7" class="xp-tick"/><line x1="287.0" y1="159.2" x2="289.1" y2="151.5" class="xp-tick"/><line x1="312.2" y1="169.7" x2="316.2" y2="162.7" class="xp-tick"/><line x1="329.5" y1="190.5" x2="339.4" y2="180.6" class="xp-tick"/><line x1="350.3" y1="207.8" x2="357.3" y2="203.8" class="xp-tick"/><line x1="360.8" y1="233.0" x2="368.5" y2="230.9" class="xp-tick"/><line x1="358.3" y1="260.0" x2="372.3" y2="260.0" class="xp-tick"/><line x1="360.8" y1="287.0" x2="368.5" y2="289.1" class="xp-tick"/><line x1="350.3" y1="312.2" x2="357.3" y2="316.2" class="xp-tick"/><line x1="329.5" y1="329.5" x2="339.4" y2="339.4" class="xp-tick"/><line x1="312.2" y1="350.3" x2="316.2" y2="357.3" class="xp-tick"/><line x1="287.0" y1="360.8" x2="289.1" y2="368.5" class="xp-tick"/><line x1="260.0" y1="358.3" x2="260.0" y2="372.3" class="xp-tick"/><line x1="233.0" y1="360.8" x2="230.9" y2="368.5" class="xp-tick"/><line x1="207.8" y1="350.3" x2="203.8" y2="357.3" class="xp-tick"/><line x1="190.5" y1="329.5" x2="180.6" y2="339.4" class="xp-tick"/><line x1="169.7" y1="312.2" x2="162.7" y2="316.2" class="xp-tick"/><line x1="159.2" y1="287.0" x2="151.5" y2="289.1" class="xp-tick"/><line x1="161.7" y1="260.0" x2="147.7" y2="260.0" class="xp-tick"/><line x1="159.2" y1="233.0" x2="151.5" y2="230.9" class="xp-tick"/><line x1="169.7" y1="207.8" x2="162.7" y2="203.8" class="xp-tick"/><line x1="190.5" y1="190.5" x2="180.6" y2="180.6" class="xp-tick"/><line x1="207.8" y1="169.7" x2="203.8" y2="162.7" class="xp-tick"/><line x1="233.0" y1="159.2" x2="230.9" y2="151.5" class="xp-tick"/><polygon class="xp-spike maj" points="260.0,260.0 260.0,176.9 265.9,245.8"/><polygon class="xp-spike dim maj" points="260.0,260.0 260.0,176.9 254.1,245.8"/><polygon class="xp-spike" points="260.0,260.0 300.1,219.9 274.2,254.1"/><polygon class="xp-spike dim" points="260.0,260.0 300.1,219.9 265.9,245.8"/><polygon class="xp-spike maj" points="260.0,260.0 343.1,260.0 274.2,265.9"/><polygon class="xp-spike dim maj" points="260.0,260.0 343.1,260.0 274.2,254.1"/><polygon class="xp-spike" points="260.0,260.0 300.1,300.1 265.9,274.2"/><polygon class="xp-spike dim" points="260.0,260.0 300.1,300.1 274.2,265.9"/><polygon class="xp-spike maj" points="260.0,260.0 260.0,343.1 254.1,274.2"/><polygon class="xp-spike dim maj" points="260.0,260.0 260.0,343.1 265.9,274.2"/><polygon class="xp-spike" points="260.0,260.0 219.9,300.1 245.8,265.9"/><polygon class="xp-spike dim" points="260.0,260.0 219.9,300.1 254.1,274.2"/><polygon class="xp-spike maj" points="260.0,260.0 176.9,260.0 245.8,254.1"/><polygon class="xp-spike dim maj" points="260.0,260.0 176.9,260.0 245.8,265.9"/><polygon class="xp-spike" points="260.0,260.0 219.9,219.9 254.1,245.8"/><polygon class="xp-spike dim" points="260.0,260.0 219.9,219.9 245.8,254.1"/><text x="260.0" y="168.5" class="xp-card">N</text><text x="357.5" y="266.0" class="xp-card">E</text><text x="260.0" y="363.5" class="xp-card">S</text><text x="162.5" y="266.0" class="xp-card">W</text>
+<g class="xp-needle" style="transform-origin:260.0px 260.0px">
+<polygon points="260.0,170 251.0,260.0 269.0,260.0" class="xp-ndl-n"/>
+<polygon points="260.0,333 253.0,260.0 267.0,260.0" class="xp-ndl-s"/></g>
+<circle cx="260.0" cy="260.0" r="11" class="xp-hub"/>
+<circle cx="260.0" cy="260.0" r="4" class="xp-hub-in"/></g><g><g class="xp-mk" data-xp="dest" tabindex="0" role="button" aria-label="Global Destinations, bearing 315 degrees"><circle cx="158.2" cy="158.2" r="26" class="xp-mk-c"/><text x="158.2" y="164.2" class="xp-mk-t">I</text></g><g class="xp-mk" data-xp="expert" tabindex="0" role="button" aria-label="Expert Insights, bearing 45 degrees"><circle cx="361.8" cy="158.2" r="26" class="xp-mk-c"/><text x="361.8" y="164.2" class="xp-mk-t">II</text></g><g class="xp-mk" data-xp="safety" tabindex="0" role="button" aria-label="Safety First, bearing 225 degrees"><circle cx="158.2" cy="361.8" r="26" class="xp-mk-c"/><text x="158.2" y="367.8" class="xp-mk-t">III</text></g><g class="xp-mk" data-xp="culture" tabindex="0" role="button" aria-label="Cultural Immersion, bearing 135 degrees"><circle cx="361.8" cy="361.8" r="26" class="xp-mk-c"/><text x="361.8" y="367.8" class="xp-mk-t">IV</text></g><g class="xp-mk" data-xp="series" tabindex="0" role="button" aria-label="Thematic Mini-Series, bearing 180 degrees"><circle cx="260.0" cy="404.0" r="26" class="xp-mk-c"/><text x="260.0" y="410.0" class="xp-mk-t">V</text></g></g>
+      </svg>
     </div>
-    <div class="expect-item">
-      <div class="expect-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
-      <h3>Expert Insights</h3>
-      <p>Learn the ins and outs of paragliding with advice from professionals who live and breathe the sport. Discover the best seasons for flying, understand complex topographies, and get a sneak peek into local flying cultures.</p>
-    </div>
-    <div class="expect-item">
-      <div class="expect-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6l7-3Z"/></svg></div>
-      <h3>Safety First</h3>
-      <p>Navigating the skies is thrilling, but safety is paramount. Gain knowledge about airspace regulations, weather considerations, and equipment must-haves to ensure each flight is not just exhilarating but also secure.</p>
-    </div>
-    <div class="expect-item">
-      <div class="expect-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 12.6 12 21.2 2.8 12 4 4l8-1.2 8.6 8.8Z"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
-      <h3>Cultural Immersion</h3>
-      <p>Paragliding is more than just taking off; it's about immersing yourself in new cultures. Learn about the customs, traditions, and local delicacies that make each destination unique.</p>
-    </div>
-    <div class="expect-item">
-      <div class="expect-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></div>
-      <h3>Thematic Mini-Series</h3>
-      <p>Dive deeper with our thematic mini-series, where we zoom in on specific topics, hosting a lineup of industry professionals to share their stories, challenges, and the joy of flying.</p>
+    <div class="xp-nodes">
+      <div class="xp-node" data-xp="dest" data-active><button class="xp-btn" type="button" aria-expanded="true"><span class="xp-brg">I &middot; 315&deg;</span><span class="xp-ttl">Global Destinations</span></button><div class="xp-body"><p>From the towering peaks of the Himalayas to the serene landscapes of the African Highlands, join us as we explore the world's premier paragliding spots</p></div></div>
+      <div class="xp-node" data-xp="expert"><button class="xp-btn" type="button" aria-expanded="false"><span class="xp-brg">II &middot; 045&deg;</span><span class="xp-ttl">Expert Insights</span></button><div class="xp-body"><p>Learn the ins and outs of paragliding with advice from professionals who live and breathe the sport. Discover the best seasons for flying, understand complex topographies, and get a sneak peek into local flying cultures.</p></div></div>
+      <div class="xp-node" data-xp="safety"><button class="xp-btn" type="button" aria-expanded="false"><span class="xp-brg">III &middot; 225&deg;</span><span class="xp-ttl">Safety First</span></button><div class="xp-body"><p>Navigating the skies is thrilling, but safety is paramount. Gain knowledge about airspace regulations, weather considerations, and equipment must-haves to ensure each flight is not just exhilarating but also secure.</p></div></div>
+      <div class="xp-node" data-xp="culture"><button class="xp-btn" type="button" aria-expanded="false"><span class="xp-brg">IV &middot; 135&deg;</span><span class="xp-ttl">Cultural Immersion</span></button><div class="xp-body"><p>Paragliding is more than just taking off; it's about immersing yourself in new cultures. Learn about the customs, traditions, and local delicacies that make each destination unique.</p></div></div>
+      <div class="xp-node" data-xp="series"><button class="xp-btn" type="button" aria-expanded="false"><span class="xp-brg">V &middot; 180&deg;</span><span class="xp-ttl">Thematic Mini-Series</span></button><div class="xp-body"><p>Dive deeper with our thematic mini-series, where we zoom in on specific topics, hosting a lineup of industry professionals to share their stories, challenges, and the joy of flying.</p></div></div>
     </div>
   </div>
 </section>
@@ -954,6 +1111,83 @@
       eqBars.appendChild(bar);
     }
   }
+</script>
+<script>
+  // The compass in "What You Can Expect".
+  //
+  // The needle is the part worth reading. CSS interpolates rotate() as a plain
+  // number, so going from 315deg to 45deg travelled -270 degrees, nearly a full
+  // turn backwards, when the honest move is +90 forwards. That backwards spin is
+  // what read as cheap; the easing was never the problem. So the angle is
+  // accumulated as an unbounded value and each swing takes the shortest signed
+  // path, the duration scales with how far it actually has to go, and the curve
+  // carries a small overshoot so it settles like a needle instead of sliding to
+  // a halt.
+  (function () {
+    var sec = document.querySelector('.expect-section');
+    if (!sec) return;
+
+    var BEARING = {dest: 315, expert: 45, safety: 225, culture: 135, series: 180};
+    var FIRST = 'dest';
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var needles = sec.querySelectorAll('.xp-needle');
+    var heading = BEARING[FIRST];      // unbounded, keeps winding rather than wrapping
+
+    function swing(target) {
+      var delta = ((target - heading + 540) % 360) - 180;   // shortest signed path
+      heading += delta;
+      var ms = reduced ? 0 : Math.min(1150, 430 + Math.abs(delta) * 3.4);
+      for (var i = 0; i < needles.length; i++) {
+        needles[i].style.transitionDuration = ms + 'ms';
+        needles[i].style.transform = 'rotate(' + heading + 'deg)';
+      }
+    }
+
+    function select(key) {
+      if (!(key in BEARING)) return;
+      sec.querySelectorAll('.xp-node').forEach(function (n) {
+        var on = n.dataset.xp === key;
+        n.toggleAttribute('data-active', on);
+        n.querySelector('.xp-btn').setAttribute('aria-expanded', String(on));
+      });
+      sec.querySelectorAll('.xp-lead, .xp-mk').forEach(function (e) {
+        e.classList.toggle('on', e.dataset.xp === key);
+      });
+      swing(BEARING[key]);
+    }
+
+    sec.querySelectorAll('.xp-btn').forEach(function (b) {
+      b.addEventListener('click', function () { select(b.closest('.xp-node').dataset.xp); });
+    });
+    sec.querySelectorAll('.xp-mk').forEach(function (m) {
+      m.addEventListener('click', function () { select(m.dataset.xp); });
+      m.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(m.dataset.xp); }
+      });
+    });
+    select(FIRST);
+
+    // Parallax. One custom property, written once per frame, only while the
+    // section is on screen. Nothing runs when it is scrolled past.
+    if (reduced || !('IntersectionObserver' in window)) return;
+    var live = false, ticking = false;
+    function frame() {
+      var r = sec.getBoundingClientRect();
+      var p = (window.innerHeight - r.top) / (window.innerHeight + r.height);
+      sec.style.setProperty('--xp-p', Math.max(0, Math.min(1, p)).toFixed(4));
+    }
+    new IntersectionObserver(function (e) {
+      live = e[0].isIntersecting;
+      if (live) frame();
+    }, {threshold: 0}).observe(sec);
+    window.addEventListener('scroll', function () {
+      if (!live || ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { frame(); ticking = false; });
+    }, {passive: true});
+    window.addEventListener('resize', frame, {passive: true});
+    frame();
+  })();
 </script>
 </body>
 </html>
