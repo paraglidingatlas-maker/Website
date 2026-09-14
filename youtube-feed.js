@@ -110,17 +110,6 @@
   // ---------------------------------------------------------------- lightbox
   let box = null;
   let lastFocus = null;
-  let draggedAt = 0;        // shared with the rail's click swallower
-  // WHICH CARD WAS PRESSED, recorded at pointerdown.
-  // The click handler used to find the card with e.target.closest('.yt-card'),
-  // and that stopped working the moment the rail got pointer capture:
-  // setPointerCapture retargets the compatibility mouse events, click included,
-  // to the capturing element, so e.target became the rail and closest() found
-  // nothing. The handler returned early and the lightbox never opened.
-  // homepage-motion.js has the same capture and never showed the fault, because
-  // its cards are plain links that navigate by default and it never reads
-  // e.target. Recording the card on pointerdown is immune to the retarget.
-  let pressedCard = null;
 
   function closeBox() {
     if (!box) return;
@@ -157,46 +146,44 @@
     box.querySelector('.yt-lb-close').focus();
   }
 
-  // BOUND DIRECTLY TO EACH CARD, not only delegated.
+  // ACTIVATION HAPPENS ON POINTERUP, NOT CLICK.
   //
-  // Three of my theories about the dead click all live in the gap between the
-  // card and the listener: delegation reading e.target, pointer capture
-  // retargeting that e.target, and the drag's capture-phase swallower calling
-  // stopPropagation on the way down. Binding the same handler to every card
-  // removes all three from the path at once. The delegated one stays as a
-  // backstop for anything the direct binding misses.
-  function openFromCard(a, e) {
-    if (!a) return;
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-    if (Date.now() - draggedAt < 350) return;   // a swipe must not open a video
-    const id = a.dataset.yt;
-    if (!id) return;
-    e.preventDefault();
-    openBox(id, a.dataset.title);
-  }
+  // The test bench settled this. Its B card calls the very same openBox and
+  // works; the rail cards, with the same handler, did not. The difference is
+  // everything the rail adds: a click needs pointerdown and pointerup on the
+  // same element and can be suppressed outright when that element has moved,
+  // which on a strip that is animating and draggable is not a rare case. And
+  // pointer capture retargets the compatibility mouse events, click among them.
+  //
+  // So the rail no longer depends on click for activation at all. pointerup
+  // fires on the card itself before it bubbles to the drag handler, and a
+  // distance check tells a tap from a swipe. click is still bound, purely to
+  // stop the anchor navigating when we have handled it.
+  let dragDistance = 0;
 
   function bindCards() {
     trackEl.querySelectorAll('.yt-card').forEach(function (a) {
       if (a.dataset.bound) return;
       a.dataset.bound = '1';
-      a.addEventListener('click', function (e) { openFromCard(a, e); });
+
+      a.addEventListener('pointerup', function (e) {
+        if (e.button !== undefined && e.button !== 0) return;
+        if (dragDistance > 6) return;                       // that was a swipe
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        const id = a.dataset.yt;
+        if (!id) return;
+        e.preventDefault();
+        openBox(id, a.dataset.title);
+      });
+
+      // the anchor keeps its href for crawlers and for cmd or middle click,
+      // but must not navigate on a plain click we have already answered
+      a.addEventListener('click', function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+      });
     });
   }
-
-  trackEl.addEventListener('click', function (e) {
-    const a = (e.target.closest && e.target.closest('.yt-card')) || pressedCard;
-    // Was `if (a.dataset.bound) return`, which is what made the clones
-    // unreachable from here too. defaultPrevented asks the real question: has
-    // something already handled this click?
-    if (!a || e.defaultPrevented) return;
-    // leave modified clicks alone so "open in new tab" still works
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-    if (Date.now() - draggedAt < 350) return;   // a swipe must not open a video
-    const id = a.dataset.yt;
-    if (!id) return;
-    e.preventDefault();
-    openBox(id, a.dataset.title);
-  });
 
   // ================= TEMPORARY TEST BENCH =================
   // Delete this block with the markup and CSS it drives.
@@ -256,7 +243,7 @@
     let x = 0, half = 0;
     const speed = 0.35;
     let paused = false, dragging = false;
-    let startX = 0, startPos = 0, moved = 0, resumeTimer = null;
+    let startX = 0, startPos = 0, resumeTimer = null;
 
     function measure() { half = trackEl.scrollWidth / 2; }
     function wrap() {
@@ -287,39 +274,37 @@
     // the cards are links and browsers natively drag links
     railEl.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
-    railEl.addEventListener('pointerdown', function (e) {
-      if (e.button !== undefined && e.button !== 0) return;
-      pressedCard = e.target.closest ? e.target.closest('.yt-card') : null;
-      dragging = true; moved = 0; startX = e.clientX; startPos = x;
-      railEl.classList.add('is-dragging');
-      try { railEl.setPointerCapture(e.pointerId); } catch (err) {}
-      if (resumeTimer) { clearTimeout(resumeTimer); resumeTimer = null; }
-    });
-
-    railEl.addEventListener('pointermove', function (e) {
+    // NO setPointerCapture. It was retargeting the compatibility mouse events
+    // to the rail, which is what put e.target out of reach. Listening on the
+    // window for the duration of a drag gives the same "keep tracking outside
+    // the element" behaviour with none of the retargeting.
+    function onMove(e) {
       if (!dragging) return;
       const dx = e.clientX - startX;
-      if (Math.abs(dx) > moved) moved = Math.abs(dx);
+      if (Math.abs(dx) > dragDistance) dragDistance = Math.abs(dx);
       x = startPos + dx; wrap(); paint();
-    });
-
-    // A drag must not open the card under your finger. A timestamp, not a
-    // setTimeout: on touch the synthetic click arrives after a 0ms timeout, so
-    // a swallower removed that way misses and a swipe opens a video.
-    railEl.addEventListener('click', function (ev) {
-      if (Date.now() - draggedAt < 350) { ev.preventDefault(); ev.stopPropagation(); }
-    }, true);
-
-    function release(e) {
+    }
+    function onUp() {
       if (!dragging) return;
       dragging = false;
       railEl.classList.remove('is-dragging');
-      try { railEl.releasePointerCapture(e.pointerId); } catch (err) {}
-      if (moved > 6) draggedAt = Date.now();
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('pointercancel', onUp);
+      if (resumeTimer) clearTimeout(resumeTimer);
       resumeTimer = setTimeout(function () { paused = false; }, 900);
     }
-    railEl.addEventListener('pointerup', release);
-    railEl.addEventListener('pointercancel', release);
+    railEl.addEventListener('pointerdown', function (e) {
+      if (e.button !== undefined && e.button !== 0) return;
+      dragging = true;
+      dragDistance = 0;              // read by the card's pointerup, which fires first
+      startX = e.clientX; startPos = x;
+      railEl.classList.add('is-dragging');
+      window.addEventListener('pointermove', onMove);
+      window.addEventListener('pointerup', onUp);
+      window.addEventListener('pointercancel', onUp);
+      if (resumeTimer) { clearTimeout(resumeTimer); resumeTimer = null; }
+    });
   }
 
   // ---------------------------------------------------------------- fetch
