@@ -128,7 +128,13 @@ img{max-width:100%;display:block;}
   font-variant-numeric:tabular-nums;white-space:nowrap;
   padding-left:1.3rem;border-left:1px solid var(--line);
 }
-.wordmark{position:relative;z-index:1;display:inline-block;}
+/* flex-shrink:0 because the logo was the only item in the bar willing to give
+   way. On a phone the row ran out of room and squeezed this instead of the
+   coordinate or the button, so the wordmark rendered 154px wide at 560, 57 at
+   414, 33 at 390, 3 at 360 and 0 at 320: not cropped, horizontally crushed,
+   because width:auto on the image resolved against a squashed parent. It holds
+   its width now and the narrow sizes are set deliberately below. */
+.wordmark{position:relative;z-index:1;display:inline-block;flex-shrink:0;}
 .logo-img{height:32px;width:auto;display:block;}
 .nav-links{position:relative;z-index:1;display:flex;align-items:center;gap:1.6rem;font-size:0.92rem;}
 .nav-links a{color:var(--gray-light);position:relative;padding-bottom:4px;}
@@ -143,12 +149,45 @@ img{max-width:100%;display:block;}
   position:relative;z-index:1;margin-left:0.6rem;
   background:linear-gradient(180deg, var(--orange-lite), var(--orange));
   color:var(--bg);font-weight:700;font-size:0.85rem;padding:0.65rem 1.4rem;
+  /* Never wrap, never shrink. Once the logo stopped absorbing the shortfall the
+     button became the next thing to give, and at 600 it squeezed to 128px and
+     broke the label onto two lines, which made the whole bar 20px taller. */
+  white-space:nowrap;flex-shrink:0;
   /* One button shape on the site: skewed 10 degrees with the label counter
      skewed so it stays upright. This used a clip-path cut corner instead, which
      was a second idea doing the same job in the most visible place on the site. */
   transform:skewX(-10deg);
   box-shadow:0 2px 10px rgba(255,117,23,0.3);
 }
+/* THE MENU BUTTON.
+   Not skewed. The skew is the site's button signature and belongs to the one
+   button that asks for something; a utility control borrowing it would spend
+   that signature on opening a drawer. Square, quiet, and it sits to the right of
+   Enquire so the paid action keeps the stronger position.
+
+   The element is built by nav-menu.js, so it is absent until that runs. It is
+   display:none above 820 regardless, which is where .nav-links is still visible
+   and there is nothing for it to do. */
+.nav-toggle{
+  display:none;order:5;position:relative;z-index:1;
+  width:44px;height:44px;flex-shrink:0;
+  align-items:center;justify-content:center;
+  background:none;border:1px solid var(--edge);border-radius:0;
+  cursor:pointer;padding:0;margin-left:0.2rem;
+}
+.nav-toggle:hover{border-color:var(--live);}
+.nav-toggle-bars{display:block;width:20px;height:14px;position:relative;}
+.nav-toggle-bars i{
+  position:absolute;left:0;width:100%;height:2px;background:var(--white);
+  transition:transform .22s ease, opacity .16s ease, top .22s ease;
+}
+.nav-toggle-bars i:nth-child(1){top:0;}
+.nav-toggle-bars i:nth-child(2){top:6px;}
+.nav-toggle-bars i:nth-child(3){top:12px;}
+/* Open: the outer bars meet in the middle and cross, the middle one goes. */
+.is-open .nav-toggle-bars i:nth-child(1){top:6px;transform:rotate(45deg);}
+.is-open .nav-toggle-bars i:nth-child(2){opacity:0;}
+.is-open .nav-toggle-bars i:nth-child(3){top:6px;transform:rotate(-45deg);}
 .nav-cta span{display:inline-block;transform:skewX(10deg);}
 /* A 6px strip with an orange fade and a notch clipped out of the centre. Under
    the old dark panel it read as a tail hanging off the bar. Under the new light
@@ -1114,10 +1153,82 @@ footer{
      up, which is what the four-column version already did. */
   .footer-brand{grid-column:1 / -1;max-width:none;}
 }
+/* WHERE THE BAR COLLAPSES: 940, not 820.
+   The links used to hide at 820 and the bar still fitted, but only because the
+   logo was being crushed to absorb the shortfall. With the logo holding its
+   width the full row measures about 960px, and it genuinely overflows the
+   viewport all the way up to 901. 820 was never the real threshold, it was just
+   where the damage stopped being visible. Measured, not guessed: overflow is
+   84px at 821, 27px at 881, 8px at 901 and gone at 911. 940 leaves headroom for
+   a fallback font rendering the links wider than Poppins does.
+
+   Kept above the 560 block below, so the phone padding override there wins. */
+/* THE COORDINATE IS WHAT GOES WHEN THE ROW IS TIGHT.
+   It is the only decorative item in the bar; everything else is navigation or
+   the call to action. Hiding it is always cheaper than hiding a link or letting
+   the brand distort.
+
+   1100 because that is where the links stop fitting on one line. Between 941 and
+   1099 the bar was already breaking into two rows before any of this work, 113px
+   tall instead of 92; the squashed logo was not enough to save it. With the
+   coordinate out of the way the row is one line and 92px tall from 941 all the
+   way up, and the coordinate returns above 1100 where there is room for both. */
+@media(max-width:1100px){
+  .nav-coords{display:none;}
+}
+@media(max-width:940px){
+  .nav-links{display:none;}
+  .nav-toggle{display:inline-flex;}
+  /* Reachable again: About Us, Knowledge Base, Podcast and Sitemap had no route
+     in at all on a phone, because the links were hidden and nothing replaced
+     them. The panel drops under the bar rather than covering the page; it is
+     four links, not a destination. */
+  .page-wrap > nav.is-open .nav-links{
+    display:flex;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;
+    margin:0;padding:0.4rem 0;
+    background:var(--card);
+    border-bottom:1px solid var(--edge);
+    box-shadow:0 14px 30px rgba(0,0,0,0.45);
+  }
+  .page-wrap > nav.is-open .nav-links a{
+    display:flex;align-items:center;min-height:48px;
+    padding:0 clamp(2rem,5vw,4rem);
+    color:var(--gray-light);font-size:0.98rem;
+  }
+  .page-wrap > nav.is-open .nav-links a:hover{color:var(--white);background:var(--wash);}
+  /* The underline sweep is a pointer affordance for a horizontal bar. Stacked,
+     it draws a line under every row and the list reads as a table. */
+  .page-wrap > nav.is-open .nav-links a::after{display:none;}
+  .page-wrap > nav.is-open .nav-sep{display:none;}
+}
 @media(max-width:560px){
   .footer-top{grid-template-columns:1fr;gap:1.9rem;}
   .footer-bottom{justify-content:flex-start;}
   .footer-bottom span:last-child{margin-left:0;width:100%;padding-top:.4rem;}
+  /* PHONE HEADER BUDGET.
+     Logo, Enquire and the menu button have to share the row. The coordinate is
+     the one element here that is decoration rather than navigation, so it is
+     what goes. Everything else is tightened rather than dropped, and the logo
+     is scaled down as a whole so it stays in proportion. */
+  .page-wrap > nav{
+    padding-left:clamp(1rem,4vw,1.25rem);padding-right:clamp(1rem,4vw,1.25rem);
+    gap:clamp(0.5rem,2.4vw,0.7rem);
+  }
+  /* Scaled rather than stepped at another breakpoint. Between 320 and 560 the
+     row has three fixed things in it and only the logo can afford to move, so
+     it shrinks with the viewport and settles at 26px once there is room. */
+  .logo-img{height:clamp(22px,6.4vw,26px);}
+  /* nowrap and flex-shrink:0 together. Without them the button was the next
+     thing to give after the logo stopped giving: at 320 it squeezed to 96px and
+     broke "Enquire Now" onto two lines, which made the bar taller and read as an
+     accident. It holds its shape now and the logo absorbs the difference. */
+  .nav-cta{
+    margin-left:0;padding:0.6rem clamp(0.7rem,3.4vw,1.05rem);
+    font-size:clamp(0.74rem,3vw,0.8rem);
+    white-space:nowrap;flex-shrink:0;
+  }
+  .page-wrap > nav.is-open .nav-links a{padding:0 1.25rem;}
 }
 
 @media(max-width:820px){
@@ -1140,11 +1251,14 @@ footer{
   .podcast-desc-grid{grid-template-columns:1fr;gap:1.2rem;}
   .listen-buttons{flex-direction:column;}
   .newsletter{grid-template-columns:1fr;gap:2rem;}
-  .nav-links{display:none;}
 }
 
 @media(prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
+  /* !important because .nav-toggle-bars i carries its own transition and the
+     two rules have equal specificity, so without it the later one wins. The
+     open state still shows the cross, it just arrives instantly. */
+  .nav-toggle-bars i{transition:none!important;}
 }
 
 /* Scroll reveal: subtle fade + rise, one-time per element */

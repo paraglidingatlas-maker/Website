@@ -17,6 +17,7 @@ python3 tools/generate_homepage_cards.py >/dev/null
 python3 tools/generate_globe_episodes.py >/dev/null
 python3 tools/generate_library_episodes.py >/dev/null
 python3 tools/generate_library_index.py >/dev/null
+python3 tools/inject_nav_menu.py
 python3 tools/version_assets.py
 python3 tools/inject_site_schema.py
 python3 - <<'EOF'
