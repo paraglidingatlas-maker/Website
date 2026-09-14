@@ -300,6 +300,55 @@ img{max-width:100%;display:block;}
    renders 754px tall naturally against the roughly 550px the copy needs. They
    are cropped LESS than before, never stretched. */
 .dest-media img{width:100%;height:100%;min-height:400px;object-fit:cover;}
+/* THE HEADINGS RESERVE THREE LINES, SO THE FOUR SECTIONS MATCH.
+   The picture is exactly as tall as the words beside it, which is deliberate and
+   explained above. The consequence is that anything changing the height of the
+   words changes the height of the photograph, and what changes it is the heading
+   wrapping. Measured across widths, the four sections came out:
+
+     1024   619 / 595 / 644 / 693
+     1280   580 / 519 / 605 / 629
+     1440   567 / 567 / 605 / 568
+     1920   755 / 755 / 755 / 754
+
+   Never the same, never wrong in the same direction, and Kenya the short one at
+   the two widths a laptop is most likely to be. Reserving three lines on every
+   heading makes the words a fixed height, so the pictures match. 4.8em is three
+   times the 1.6 line height.
+
+   Equalised UP rather than down on purpose: the photograph is what sells a trip,
+   and at 1920 the picture is already the taller element, so this costs nothing
+   there at all. */
+@media(min-width:821px){
+  /* Three lines of heading, six of paragraph. Both are 1.6 line height, so
+     4.8em and 9.6em. Measured at 1280 and 1440, the four copy columns broke down
+     identically except for one thing:
+
+       kicker 25  heading 184  facts 73  link 30   on all four
+       paragraph 100 / 100 / 125 / 151
+
+     Four lines, four, five and six. That was the whole difference, and since the
+     picture is exactly as tall as the words, it was the whole difference in the
+     pictures too. The intros run 236, 255, 283 and 402 characters.
+
+     Equalised UP, to the longest. The photograph is what sells a trip, and at
+     1600 and above the picture is already the taller element so this costs
+     nothing there. Below that it buys a little space under the two shorter
+     intros, which reads as breathing room rather than as a mistake.
+
+     The cheaper fix is a shorter Kazakhstan intro, about 150 characters off. That
+     is copy, so it is Aninder's to write, not this stylesheet's to fake. */
+  .dest-copy h2{min-height:4.8em;}
+  .dest-copy > p:not(.kicker){min-height:9.6em;}
+}
+/* Narrower than 1280 the longest intro wraps further, so six lines stops being
+   enough: it needs 7 by 1200, 8 by 1024, 9 by 900 and 10 by 821. One more band
+   covers the common laptop window sizes. Below that it is left alone rather than
+   hard-coding five breakpoints around the length of today's copy, which would
+   quietly break the first time a paragraph is edited. */
+@media(min-width:1100px) and (max-width:1279px){
+  .dest-copy > p:not(.kicker){min-height:11.2em;}
+}
 /* NO max-width. The cap was 560px inside a cell 812px wide at 1920, leaving
    252px empty to the right of every heading, growing on a wider screen.
 
