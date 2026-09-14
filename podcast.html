@@ -61,7 +61,7 @@
     padding:clamp(2.75rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem) 0;
     background:linear-gradient(180deg, var(--card) 0%, var(--bg) 100%);
     display:grid;grid-template-columns:minmax(0,clamp(15rem,25vw,22rem)) 1fr;
-    gap:clamp(1.5rem,4vw,3.5rem);align-items:end;min-height:42rem;}
+    gap:clamp(1.5rem,4vw,3.5rem);align-items:end;}
 
   /* Two stepped rules, both behind him. The grid is 1600 by 1000 stretched over
      the whole section, so the y values are absolute within it however wide the
@@ -80,11 +80,15 @@
 
   /* The surname, penned into a band that stops above the platform buttons so it
      cannot collide with them however the copy reflows. */
-  .host-plateband{position:absolute;left:0;right:0;top:0;height:64%;z-index:1;
+  /* 64% of a 672px section put the plate above the copy. At 426 it put the
+     plate straight through the paragraph, a 56px overlap. Both the band and the
+     type are now sized to the shorter section, so the plate sits behind the
+     kicker and the name and stops above the body text. */
+  .host-plateband{position:absolute;left:0;right:0;top:0;height:43%;z-index:1;
     pointer-events:none;overflow:hidden;}
   .host-plate{position:absolute;right:3%;bottom:-8%;
     font-family:var(--font-display);font-weight:800;
-    font-size:clamp(5rem,19vw,17rem);line-height:0.78;letter-spacing:-0.04em;
+    font-size:clamp(3.5rem,15vw,13rem);line-height:0.78;letter-spacing:-0.04em;
     white-space:nowrap;color:transparent;
     -webkit-text-stroke:1px rgba(180,180,180,0.17);}
 
@@ -916,8 +920,8 @@
         <stop class="hb-stop-grey-in" offset="1"/>
       </linearGradient>
     </defs>
-    <path class="hb-grey" id="hbGrey" data-start="230" data-y="705" data-kink="450" data-step="-62" data-end="1600"
-          d="M 230 705 L 450 705 L 509 643 L 1600 643"/>
+    <path class="hb-grey" id="hbGrey" data-start="230" data-y="535" data-kink="450" data-step="-62" data-end="1600"
+          d="M 230 535 L 450 535 L 509 473 L 1600 473"/>
     <path class="hb-orange" id="hbOrange" data-start="0" data-y="1000" data-kink="450" data-step="-62" data-end="1600"
           d="M 0 1000 L 450 1000 L 509 938 L 1600 938"/>
   </svg>
