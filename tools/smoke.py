@@ -141,6 +141,24 @@ def player(pg, base):
     check(d["chaps"] > 0, "player", "chapter marks are rendered", d["chaps"])
     check(d["inRange"], "player", "every chapter mark sits inside the episode")
 
+    # NOT "is it positioned correctly" but "can a person see and press it". The
+    # player once laid out perfectly, reported the right size and position, and
+    # was clipped out of sight by an ancestor's overflow:hidden. Geometry checks
+    # all passed. A hit test at the button's own centre is what catches that.
+    for vw in (1280, 390):
+        pg.set_viewport_size({"width": vw, "height": 900})
+        pg.evaluate("document.querySelector('.cd-player-audio').scrollIntoView({block:'center'})")
+        pg.wait_for_timeout(400)
+        hit = pg.evaluate("""()=>{const el=document.querySelector('.ep-au-play');
+          if(!el) return false;
+          const r=el.getBoundingClientRect();
+          if(r.width<1||r.height<1) return false;
+          const h=document.elementFromPoint(Math.round(r.left+r.width/2),
+                                            Math.round(r.top+r.height/2));
+          return !!(h && (h===el || el.contains(h)));}""")
+        check(hit, "player", "the play button is actually clickable at %dpx" % vw)
+    pg.set_viewport_size({"width": 1280, "height": 900})
+
 
 def overflow(pg, base):
     """Sideways scroll. The homepage had 59px of it at 390 until today."""

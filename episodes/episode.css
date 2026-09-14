@@ -181,7 +181,11 @@
    The waveform is drawn only when real peaks exist in waveforms.json. A
    plausible looking squiggle would be invented data. Without peaks the bar is
    a plain track and everything else behaves identically. */
-.cd-player-audio{position:relative;}
+/* The video slot is locked to 16/9 with overflow:hidden, which is right for an
+   iframe. For an audio episode the box now holds artwork AND a control strip, so
+   it has to grow. Without this the player laid out correctly, reported the right
+   position, and was clipped out of sight: it was measured and never seen. */
+.cd-player-audio{position:relative;aspect-ratio:auto;overflow:visible;}
 /* UNDER the artwork, not over it. Overlaid, the gradient landed exactly on the
    guest name printed at the foot of the template and cut it in half. The
    artwork is the identity of these eight episodes; the player is a control
