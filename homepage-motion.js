@@ -70,11 +70,23 @@
       if (e.button !== undefined && e.button !== 0) return;   /* left or touch only */
       dragging = true; moved = 0; startX = e.clientX; startPos = x;
       vp.classList.add('is-dragging');
-      try { vp.setPointerCapture(e.pointerId); } catch (err) {}
+      /* NO setPointerCapture. It retargets every later event for this pointer to
+         the viewport, so pointerup landed on .episodes-viewport instead of the
+         card. The browser then derives the click target from where the press
+         went down and came up, got the viewport, and fired click there. The
+         popup listens for a click on a card, saw the viewport, found no episode
+         data on it and did nothing: one tap on a card did nothing at all.
+         Traced with a listener on every pointer and mouse event, which showed
+         pointerdown on SPAN.ep-plate and pointerup on DIV.episodes-viewport.
+
+         The capture was there so a drag that leaves the strip keeps tracking.
+         window listeners below do that job without touching the click target. */
       if (resumeTimer) { clearTimeout(resumeTimer); resumeTimer = null; }
     });
 
-    vp.addEventListener('pointermove', function (e) {
+    /* On window, not on the viewport, so a drag that wanders off the strip still
+       moves and still releases. This is what the pointer capture was buying. */
+    window.addEventListener('pointermove', function (e) {
       if (!dragging) return;
       var dx = e.clientX - startX;
       if (Math.abs(dx) > moved) moved = Math.abs(dx);
@@ -92,16 +104,17 @@
       if (Date.now() - draggedAt < 350) { ev.preventDefault(); ev.stopPropagation(); }
     }, true);
 
-    function release(e) {
+    function release() {
       if (!dragging) return;
       dragging = false;
       vp.classList.remove('is-dragging');
-      try { vp.releasePointerCapture(e.pointerId); } catch (err) {}
       if (moved > 6) draggedAt = Date.now();
       resumeTimer = setTimeout(function () { paused = false; }, 900);
     }
-    vp.addEventListener('pointerup', release);
-    vp.addEventListener('pointercancel', release);
+    /* Also on window: a press released off the strip has to end the drag too,
+       or the strip stays frozen and the next click is eaten by the guard. */
+    window.addEventListener('pointerup', release);
+    window.addEventListener('pointercancel', release);
   })();
 
   /* ---------------------------------------------------------------- Library */
