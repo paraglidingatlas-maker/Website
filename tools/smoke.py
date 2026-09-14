@@ -260,6 +260,90 @@ def touch_gestures(browser, base):
         ctx.close()
 
 
+def library(pg, base):
+    """The library opens on a landing screen, not a grid.
+
+    Worth stating because it looks broken otherwise: #eps is empty and hidden on
+    load, and only fills once you choose All or a series. That is by design, and
+    checking it here means nobody has to rediscover it."""
+    pg.set_viewport_size({"width": 1280, "height": 900})
+    pg.goto(base + "/library.html", wait_until="load")
+    pg.wait_for_timeout(2500)
+    btn = pg.query_selector("#allBtn")
+    check(bool(btn) and btn.is_visible(), "library", "the landing screen offers a way in")
+    if not btn:
+        return
+    btn.click()
+    pg.wait_for_timeout(1800)
+    n = pg.evaluate("(document.getElementById('eps')||{children:[]}).children.length")
+    check(n > 50, "library", "choosing All fills the grid", "%s rows" % n)
+    card = pg.query_selector("#eps a")
+    if card:
+        card.click()
+        pg.wait_for_timeout(1200)
+        check(pg.evaluate("()=>{const o=document.getElementById('epModalOverlay');"
+                          "return !!o&&o.className.includes('active');}"),
+              "library", "a library card opens the popup")
+    else:
+        check(False, "library", "a library card opens the popup", "no card rendered")
+
+
+def search(pg, base):
+    """The homepage episode search, including what it says when it finds nothing."""
+    pg.goto(base + "/index.html", wait_until="load")
+    pg.wait_for_timeout(2500)
+    pg.fill("#epSearchInput", "reserve")
+    pg.click("#epSearchBtn")
+    pg.wait_for_timeout(1200)
+    n = pg.evaluate("document.getElementById('epSearchResults').children.length")
+    check(n > 0, "search", "a real query returns results", "%s results" % n)
+    pg.fill("#epSearchInput", "zzzqqqxyz")
+    pg.click("#epSearchBtn")
+    pg.wait_for_timeout(1000)
+    txt = pg.evaluate("document.getElementById('epSearchResults').textContent.trim()")
+    check(len(txt) > 0, "search", "a query with no matches says so, rather than going blank")
+
+
+def kenya(pg, base):
+    """24 accordions carry most of the copy on the longest page on the site."""
+    pg.goto(base + "/destinations/kenya.html", wait_until="load")
+    pg.wait_for_timeout(1500)
+    n = pg.evaluate("document.querySelectorAll('details').length")
+    check(n > 10, "kenya", "the accordions are present", n)
+    if not n:
+        return
+    pg.evaluate("document.querySelector('details').open=false")
+    pg.wait_for_timeout(200)
+    h0 = pg.evaluate("document.querySelector('details').getBoundingClientRect().height")
+    pg.click("details summary")
+    pg.wait_for_timeout(400)
+    h1 = pg.evaluate("document.querySelector('details').getBoundingClientRect().height")
+    check(h1 > h0 + 10, "kenya", "clicking one opens it", "%d -> %d px" % (h0, h1))
+
+
+def enquire(pg, base):
+    """The enquiry form is the only page that asks for something back.
+
+    It has no action and no method: submitting builds a mailto. That is
+    deliberate, there being no backend, and it says so on screen if no mail app
+    picks it up. What must not break is the validation and the labelling."""
+    pg.goto(base + "/enquire.html", wait_until="load")
+    pg.wait_for_timeout(1200)
+    d = pg.evaluate("""()=>{const f=document.getElementById('enqForm');
+      if(!f) return null;
+      const fields=[...f.querySelectorAll('input,select,textarea')];
+      return {fields:fields.length, required:fields.filter(x=>x.required).length,
+              unlabelled:fields.filter(x=>!x.id||!f.querySelector('label[for="'+x.id+'"]')).length,
+              blocksEmpty:!f.checkValidity()};}""")
+    check(bool(d), "enquire", "the form is on the page")
+    if not d:
+        return
+    check(d["unlabelled"] == 0, "enquire", "every field has a label",
+          "%s unlabelled" % d["unlabelled"])
+    check(d["required"] > 0 and d["blocksEmpty"], "enquire",
+          "an empty form will not submit")
+
+
 def overflow(pg, base):
     """Sideways scroll. The homepage had 59px of it at 390 until today."""
     pages = ["index.html", "about.html", "podcast.html", "destinations/kenya.html",
@@ -306,7 +390,7 @@ def main():
                 return 0
             pg = browser.new_page(viewport={"width": 1280, "height": 900},
                                   reduced_motion="no-preference")
-            for fn in (rail, nav, player, overflow):
+            for fn in (rail, nav, player, library, search, kenya, enquire, overflow):
                 fn(pg, base)
             pg.close()
             pg2 = browser.new_page(viewport={"width": 1280, "height": 900},

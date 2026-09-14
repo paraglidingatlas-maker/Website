@@ -16,12 +16,10 @@ than left to rot, or this file stops being trusted.
       and Klarna were discussed and deferred.
 - [ ] **India, Peru and Kazakhstan destination pages not built.** Old site copy
       is garbled; do not copy it without asking.
-- [ ] **Verify library.html renders its episode list in a real browser.** It
-      renders nothing in the sandbox: all 86 episodes load into LIB_EPISODES and
-      LIB_MODAL, no page errors, but no grid appears. Could be the blocked
-      Cloudflare worker, except the fetch has a catch and the page is written to
-      work without it. If it is blank on the live site, this is a whole page of
-      the archive down and jumps to the top of this list.
+- [x] **library.html was never broken.** It opens on a landing screen by design:
+      #eps is empty and hidden until you choose All or a series, and then it
+      fills with all 86. Clicking a card opens the popup. Now covered by
+      smoke.py so nobody rediscovers this as a bug.
 
 ## Process
 
@@ -38,6 +36,12 @@ than left to rot, or this file stops being trusted.
       build failure stops everything, a JS syntax error fails at the audit, and a
       silently broken pinch passes the audit with 0 FAIL and fails at the smoke
       stage, which is the whole reason the smoke stage exists.
+- [ ] **Widen smoke.py further.** 31 checks now, covering the rail, the phone
+      menu, the audio player, the globe and its gestures, the library, the
+      homepage search, the Kenya accordions, the enquiry form and sideways
+      scroll. Still nothing on the podcast page, the knowledge base indexes, the
+      tag pages or the episode transcript clipping. The rule that has worked:
+      when something reaches Aninder that this missed, add a check for it.
 
 ## Content and SEO
 
