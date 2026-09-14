@@ -649,11 +649,17 @@
   .wwu-card .wwu-contact{color:var(--white);font-weight:600;margin-bottom:1.5rem;}
   .wwu-card .wwu-contact a{color:var(--orange);text-decoration:none;}
   .wwu-card .wwu-contact a:hover{text-decoration:underline;}
+  /* Inverted: outline rather than fill. Matches .kb-cta in styles.css, which is
+     already the site's orange-outline button, so this is not a second way of
+     drawing the same thing. Same border token, same hover wash, same skew. */
   .wwu-btn{
-    align-self:flex-start;margin-top:auto;background:var(--orange);color:var(--ink);border:none;
+    align-self:flex-start;margin-top:auto;
+    background:none;color:var(--orange);border:1px solid var(--live);
     padding:0.85rem 1.8rem;font-weight:700;font-size:0.9rem;cursor:pointer;text-decoration:none;
     transform:skewX(-10deg);transform-origin:left top;
+    transition:background 0.2s ease,border-color 0.2s ease;
   }
+  .wwu-btn:hover,.wwu-btn:focus-visible{background:rgba(255,117,23,0.12);border-color:var(--orange);}
   .wwu-btn span{display:inline-block;transform:skewX(10deg);}
 
   @media(max-width:820px){
