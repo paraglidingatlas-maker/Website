@@ -344,48 +344,79 @@ def enquire(pg, base):
           "an empty form will not submit")
 
 
-def kenya_slider(pg, base):
-    """The route slider at the top of the Kenya page.
+def kenya_hero(pg, base):
+    """The full bleed hero on the Kenya page.
 
     The swipe is the part worth guarding: an image is draggable by default, so a
     swipe across one starts a native drag and the browser sends pointercancel
     instead of pointerup. The gesture died on the way out and the slide never
-    moved. draggable=false plus preventDefault fixed it, and nothing about that
-    is obvious from reading the code."""
+    moved. Three separate things now stop it and any one of them is sufficient,
+    so this only goes red when all three are gone. That is the real broken
+    state, and it is what this was verified against.
+
+    Full bleed is checked as a measurement, not an assumption. The hero is
+    pulled up under a 92px transparent nav by a hard coded negative margin: if
+    the nav ever changes height, the seam shows here first."""
     pg.set_viewport_size({"width": 1280, "height": 900})
     pg.goto(base + "/destinations/kenya.html", wait_until="load")
     pg.wait_for_timeout(1800)
-    pg.evaluate("document.querySelector('.ksl').scrollIntoView({block:'center'})")
-    pg.wait_for_timeout(700)
-    cur = lambda: pg.evaluate("[...document.querySelectorAll('.ksl-slide')]"
+    cur = lambda: pg.evaluate("[...document.querySelectorAll('.khero-slide')]"
                               ".findIndex(s=>s.classList.contains('is-on'))")
-    n = pg.evaluate("document.querySelectorAll('.ksl-slide').length")
-    check(n == 5, "slider", "all five slides are on the page", n)
-    check(pg.evaluate("[...document.querySelectorAll('.ksl-slide')]"
+
+    n = pg.evaluate("document.querySelectorAll('.khero-slide').length")
+    check(n == 5, "hero", "all five photographs are on the page", n)
+    check(pg.evaluate("[...document.querySelectorAll('.khero-slide')]"
                       ".filter(s=>getComputedStyle(s).visibility!=='hidden').length") == 1,
-          "slider", "exactly one slide is visible at a time")
+          "hero", "exactly one photograph is visible at a time")
+
+    box = pg.evaluate("()=>{const r=document.querySelector('.khero').getBoundingClientRect();"
+                      "return {t:Math.round(r.top),h:Math.round(r.height),w:Math.round(r.width),"
+                      "vh:innerHeight,vw:innerWidth};}")
+    check(box["t"] <= 0, "hero", "the photograph reaches the top of the screen", box["t"])
+    check(box["h"] >= box["vh"] * 0.95, "hero", "the hero fills the viewport height",
+          f"{box['h']} of {box['vh']}")
+    check(box["w"] >= box["vw"], "hero", "the hero is full bleed", f"{box['w']} of {box['vw']}")
+
+    # Autoplay. Silent to a reader and invisible in a screenshot, so it gets a
+    # real wait rather than a check that the timer was merely armed.
+    check(pg.evaluate("!!document.querySelector('.khero-tab.is-timing')"),
+          "hero", "autoplay arms on load")
     a = cur()
-    pg.click(".ksl-next")
-    pg.wait_for_timeout(600)
-    check(cur() != a, "slider", "the next arrow changes slide")
-    pg.evaluate("document.querySelectorAll('.ksl-dot')[3].click()")
-    pg.wait_for_timeout(600)
-    check(cur() == 3, "slider", "a dot jumps to its slide", cur())
-    box = pg.evaluate("()=>{const r=document.querySelector('.ksl-stage').getBoundingClientRect();"
-                      "return {x:Math.round(r.left+r.width/2),y:Math.round(r.top+r.height/2)};}")
+    pg.wait_for_timeout(7600)
+    check(cur() != a, "hero", "autoplay advances on its own", f"{a} then {cur()}")
+
+    pg.evaluate("document.querySelectorAll('.khero-tab')[3].click()")
+    pg.wait_for_timeout(700)
+    check(cur() == 3, "hero", "a rail label jumps to its photograph", cur())
+    check(not pg.evaluate("!!document.querySelector('.khero-tab.is-timing')"),
+          "hero", "autoplay stops for good once a choice is made")
+    check(pg.eval_on_selector(".khero-copy .kicker", "e=>e.textContent").strip() ==
+          pg.eval_on_selector(".khero-tab.is-on", "e=>e.textContent").strip(),
+          "hero", "the kicker names the photograph on screen")
+
     before = cur()
-    # ONE fast movement, not a stepped drag. This matters: the native image drag
-    # only kicks in on a quick flick, and a stepped move does not reproduce it.
-    # A stepped version of this check passed against a build with both fixes
-    # removed, so it was guarding nothing.
-    pg.mouse.move(box["x"], box["y"])
+    # The start point has to be ON the image. The first version of this swiped
+    # at 640,700, which is the CTA block: no image under the pointer means no
+    # native drag, so it passed against a build with all three fixes stripped
+    # out and was guarding nothing. Assert the target rather than trust the
+    # coordinate, because the layout will move again.
+    tgt = pg.evaluate("()=>{const e=document.elementFromPoint(1100,700);"
+                      "return e ? e.tagName : 'none';}")
+    check(tgt == "IMG", "hero", "the swipe test starts on the photograph itself", tgt)
+    # ONE fast movement, not a stepped drag. The native image drag only kicks in
+    # on a quick flick, and a stepped move does not reproduce it at all.
+    pg.mouse.move(1100, 700)
     pg.mouse.down()
-    pg.mouse.move(box["x"] - 150, box["y"])
+    pg.mouse.move(950, 700)
     pg.mouse.up()
-    pg.wait_for_timeout(600)
-    check(cur() != before, "slider", "a quick swipe across the photo changes slide")
-    cap = pg.evaluate("(document.querySelector('.ksl-slide.is-on figcaption')||{}).innerText||''")
-    check(len(cap.strip()) > 0, "slider", "the visible slide has a real text caption")
+    pg.wait_for_timeout(700)
+    check(cur() != before, "hero", "a quick swipe across the photograph changes it")
+
+    pg.evaluate("window.scrollTo(0,400)")
+    pg.wait_for_timeout(400)
+    check(pg.evaluate("getComputedStyle(document.querySelector('.khero-par')).transform")
+          not in ("none", "matrix(1, 0, 0, 1, 0, 0)"),
+          "hero", "the photograph drifts against the scroll")
 
 
 def overflow(pg, base):
@@ -434,7 +465,7 @@ def main():
                 return 0
             pg = browser.new_page(viewport={"width": 1280, "height": 900},
                                   reduced_motion="no-preference")
-            for fn in (rail, nav, player, library, search, kenya, kenya_slider, enquire, overflow):
+            for fn in (rail, nav, player, library, search, kenya, kenya_hero, enquire, overflow):
                 fn(pg, base)
             pg.close()
             pg2 = browser.new_page(viewport={"width": 1280, "height": 900},

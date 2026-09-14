@@ -36,14 +36,82 @@
 
 
 
-/* ---------- hero ---------- */
-.dst-hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;
-  padding:0 clamp(1.2rem,5vw,5.5rem) clamp(2.6rem,6vw,5rem);overflow:hidden;}
-.dst-hero-media{position:absolute;inset:0;z-index:0;}
-.dst-hero-media img{width:100%;height:100%;object-fit:cover;}
-.dst-hero-media::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(20,21,25,.55) 0%,rgba(20,21,25,.35) 38%,rgba(20,21,25,.96) 100%);}
-.dst-hero-copy{position:relative;z-index:2;max-width:60rem;}
+/* ---------- HERO =========================================================
+   Full bleed, full viewport, five photographs, and the page opens with them
+   because they are the thing worth seeing first.
+
+   Pulled up under the navigation. The nav is transparent and measures 92px at
+   every width we support, so a negative margin of exactly that puts the
+   photograph against the top edge of the screen with the links floating on it.
+
+   Measured before building. Across the bottom left, where the headline sits,
+   the five frames read 23, 35, 44, 63 and 69 luminance, so white type carries
+   on all of them and none needs a panel behind it. Across the top, where the
+   nav links sit, kerio-valley reads 181, which white type does not survive:
+   hence the upper band of the scrim.
+
+   The parallax layer is inset beyond the frame on both sides so the lag never
+   exposes an edge. It translates at 0.3 of scroll, and since 0.3s is always
+   less than s the top edge can never catch up with the viewport. */
+
+.khero{position:relative;min-height:100vh;min-height:100svh;margin-top:-92px;
+  padding:calc(92px + clamp(1.4rem,4vw,2.6rem)) clamp(1.2rem,5vw,5.5rem) clamp(2.2rem,5vw,3.4rem);
+  display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+
+.khero-stage{position:absolute;inset:0;z-index:0;}
+/* No inset. The layer translates down at 0.3 of scroll while the page moves up
+   at 1.0, so relative to the viewport it still travels upward, just slower: the
+   top edge sits at -0.7y and the bottom at heroH-0.7y, which is always at or
+   below the heroH-y the viewport needs. Bleeding the layer beyond the frame
+   would guard against nothing and cost real crop, because a taller layer makes
+   object-fit:cover scale to height instead of width. At 1440 the insets were
+   pushing a 1153px photograph to 1.41x. */
+.khero-par{position:absolute;inset:0;will-change:transform;}
+.khero-slide{position:absolute;inset:0;opacity:0;visibility:hidden;
+  transition:opacity 1.2s ease,visibility 0s linear 1.2s;}
+.khero-slide.is-on{opacity:1;visibility:visible;transition:opacity 1.2s ease;}
+.khero-slide picture,.khero-slide img{display:block;width:100%;height:100%;object-fit:cover;}
+/* The drift is deliberately small. These are 1152px wide and a 1440 viewport
+   already asks 1.25x of them; every point of scale on top is upscale on the
+   first thing anyone sees. 1.00 to 1.05 reads as movement without costing
+   much. Worth raising once the 2x exports land. */
+.khero-slide img{-webkit-user-drag:none;user-select:none;transform:scale(1);}
+.khero-slide.is-on img{transform:scale(1.05);transition:transform 11s linear;}
+/* .listen-btn is flex:1 globally, which is right in the podcast rail and wrong
+   here, where it stretched the button to 780px. */
+.khero .dst-hero-cta .listen-btn{flex:0 0 auto;}
+
+.khero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+  linear-gradient(180deg,rgba(20,21,25,.72) 0,rgba(20,21,25,.18) 16%,rgba(20,21,25,0) 32%,
+    rgba(20,21,25,.48) 74%,rgba(20,21,25,.9) 100%),
+  linear-gradient(90deg,rgba(20,21,25,.6) 0,rgba(20,21,25,.14) 44%,rgba(20,21,25,0) 70%);}
+
+.khero-copy{position:relative;z-index:3;max-width:60rem;}
+
+.khero-rail{position:relative;z-index:3;display:flex;flex-wrap:wrap;
+  gap:clamp(.9rem,3vw,2.4rem);margin-top:clamp(1.8rem,4vw,3rem);padding-top:1rem;
+  border-top:1px solid rgba(255,255,255,.17);}
+.khero-tab{position:relative;background:none;border:0;padding:.45rem 0;cursor:pointer;
+  font-family:var(--font-body);font-size:clamp(.66rem,1.6vw,.78rem);letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(255,255,255,.52);transition:color .3s ease;}
+.khero-tab:hover{color:var(--white);}
+.khero-tab.is-on{color:var(--white);}
+.khero-tab:focus-visible{outline:2px solid var(--live);outline-offset:3px;}
+.khero-tab::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
+  background:var(--orange);}
+.khero-tab.is-on::after{width:100%;}
+@keyframes khero-fill{from{width:0;}to{width:100%;}}
+.khero-tab.is-timing::after{animation:khero-fill var(--khero-dwell,6500ms) linear;}
+
+.khero-cue{position:absolute;right:clamp(1.2rem,5vw,5.5rem);bottom:clamp(2.2rem,5vw,3.4rem);
+  z-index:3;display:flex;flex-direction:column;align-items:center;gap:.7rem;
+  color:rgba(255,255,255,.62);text-decoration:none;font-size:.68rem;letter-spacing:.2em;
+  text-transform:uppercase;writing-mode:vertical-rl;}
+.khero-cue:hover{color:var(--white);}
+.khero-cue i{display:block;width:1px;height:46px;
+  background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,0));}
+@media (max-width:1000px){.khero-cue{display:none;}}
+
 .dst-country{font-family:var(--font-display);font-weight:800;color:var(--white);
   font-size:clamp(3.4rem,13vw,9.5rem);line-height:.88;letter-spacing:-.03em;margin:.6rem 0 0;}
 .dst-tag{font-family:var(--font-body);color:var(--white);font-size:clamp(1rem,2.1vw,1.45rem);
@@ -53,75 +121,18 @@
 .dst-swahili span{display:block;color:var(--gray-light);font-size:.92rem;margin-top:.25rem;}
 .dst-hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.1rem;}
 
+@media(prefers-reduced-motion: reduce){
+  /* !important because .khero-slide carries its own transition at equal
+     specificity and would win on source order. The picture still changes, it
+     just arrives without the fade, the drift or the scale. */
+  .khero-slide{transition:none!important;}
+  .khero-slide.is-on img{transform:none!important;transition:none!important;}
+  .khero-tab.is-timing::after{animation:none;}
+}
+
 /* ---------- section scaffolding ---------- */
 .dst-sec{padding:clamp(3.4rem,7vw,6.2rem) clamp(1.2rem,5vw,5.5rem);}
 .dst-sec + .dst-sec{border-top:1px solid var(--rule);}
-
-/* ===== ROUTE SLIDER ========================================================
-   Five tiles, each carrying the same route map baked into the photograph. That
-   repetition is the point: the map holds still while the terrain changes behind
-   it, so these crossfade rather than slide.
-
-   NOT the hero. The hero photograph is 2000x1125 and its headline is real HTML
-   text; these are 1152x768 with the words flattened into pixels. Full bleed at
-   1920 they would be stretched 1.67x and visibly soft, on the first thing a
-   visitor sees, and the headline would stop being readable on a phone and stop
-   being indexed. At content width they display near native and stay crisp.
-
-   Sized 3:2 to match the crop, so nothing is cut off at any width. */
-.ksl{position:relative;max-width:1152px;margin:0 auto;}
-.ksl-stage{position:relative;aspect-ratio:3 / 2;overflow:hidden;
-  border:1px solid var(--edge);background:var(--card);}
-.ksl-slide{position:absolute;inset:0;margin:0;opacity:0;visibility:hidden;
-  transition:opacity .55s ease;}
-.ksl-slide.is-on{opacity:1;visibility:visible;}
-.ksl-slide picture,.ksl-slide img{display:block;width:100%;height:100%;object-fit:cover;}
-/* An image is draggable by default, so a swipe across one starts a native drag
-   and the browser sends pointercancel instead of pointerup. The gesture died on
-   the way out and the slide never changed. Traced it: pointerdown on IMG
-   arrived, pointerup never did. */
-.ksl-slide img{-webkit-user-drag:none;user-select:none;}
-.ksl-slide figcaption{
-  position:absolute;left:0;right:0;bottom:0;
-  display:flex;flex-direction:column;gap:0.15rem;
-  padding:2.6rem clamp(1rem,3vw,1.6rem) clamp(0.9rem,2.4vw,1.3rem);
-  background:linear-gradient(180deg,rgba(20,21,25,0) 0%,rgba(20,21,25,0.82) 60%,rgba(20,21,25,0.94) 100%);
-}
-/* The caption is real text, so it scales, it is readable on a phone and a
-   search engine can see it. The words baked into the tiles are not. */
-.ksl-slide figcaption strong{font-family:var(--font-display);font-weight:700;
-  color:var(--white);font-size:clamp(0.95rem,2.4vw,1.15rem);letter-spacing:0.01em;}
-.ksl-slide figcaption span{color:var(--gray-light);font-size:clamp(0.76rem,1.9vw,0.88rem);}
-
-.ksl-arrow{
-  position:absolute;top:50%;transform:translateY(-50%);z-index:2;
-  width:44px;height:44px;border:1px solid var(--edge);border-radius:50%;
-  background:rgba(20,21,25,0.66);cursor:pointer;padding:0;
-  transition:border-color .18s ease,background .18s ease;
-}
-.ksl-arrow:hover{border-color:var(--orange);background:var(--wash);}
-.ksl-arrow:focus-visible{outline:2px solid var(--live);outline-offset:3px;}
-.ksl-arrow::before{content:"";position:absolute;top:50%;left:50%;width:9px;height:9px;
-  border-top:2px solid var(--white);border-right:2px solid var(--white);}
-.ksl-prev{left:clamp(0.5rem,2vw,1rem);}
-.ksl-next{right:clamp(0.5rem,2vw,1rem);}
-.ksl-prev::before{transform:translate(-30%,-50%) rotate(-135deg);}
-.ksl-next::before{transform:translate(-70%,-50%) rotate(45deg);}
-
-.ksl-dots{display:flex;justify-content:center;gap:0.55rem;margin-top:1rem;}
-.ksl-dot{width:11px;height:11px;padding:0;border:1px solid var(--edge-hi);
-  border-radius:50%;background:none;cursor:pointer;
-  transition:background .18s ease,border-color .18s ease;}
-.ksl-dot.is-on{background:var(--orange);border-color:var(--orange);}
-.ksl-dot:hover{border-color:var(--orange);}
-.ksl-dot:focus-visible{outline:2px solid var(--live);outline-offset:3px;}
-
-@media(prefers-reduced-motion: reduce){
-  /* !important because .ksl-slide carries its own transition at equal
-     specificity and would otherwise win on source order. The slide still
-     changes, it just arrives without the fade. */
-  .ksl-slide{transition:none!important;}
-}
 .dst-head{max-width:62rem;margin:0 0 2.6rem;}
 .dst-head h2{font-family:var(--font-display);font-weight:700;color:var(--white);
   font-size:clamp(1.5rem,3.4vw,2.4rem);line-height:1.15;margin:.5rem 0 0;letter-spacing:-.01em;}
@@ -201,7 +212,7 @@
 .dst-rel-body p{color:var(--gray-light);font-size:.93rem;line-height:1.7;margin:0;}
 
 @media (max-width:640px){
-  .dst-hero{min-height:70vh;}
+  .khero{min-height:100svh;}
   .dst-date{flex-direction:column;gap:.25rem;}
 }
 
@@ -440,12 +451,49 @@
 </nav>
 <div class="nav-chevron"></div>
 
-<header class="dst-hero">
-  <div class="dst-hero-media">
-    <picture><source srcset="../assets/images/kenya-hero.webp" type="image/webp"><img src="../assets/images/kenya-hero.jpg" width="2000" height="1125" fetchpriority="high" alt="A red and yellow paraglider banking above a steep green ridge in Kenya"></picture>
+<header class="khero">
+  <div class="khero-stage">
+    <div class="khero-par">
+      <div class="khero-slide is-on">
+        <picture>
+          <source srcset="../assets/destinations/kenya/hero/longonot.webp" type="image/webp">
+          <img style="object-position:52% 58%" src="../assets/destinations/kenya/hero/longonot.jpg" width="1153" height="768"
+            draggable="false" fetchpriority="high" alt="A pink and yellow paraglider turning above the deep green crater of Mount Longonot">
+        </picture>
+      </div>
+      <div class="khero-slide">
+        <picture>
+          <source srcset="../assets/destinations/kenya/hero/kerio-valley.webp" type="image/webp">
+          <img style="object-position:62% 52%" src="../assets/destinations/kenya/hero/kerio-valley.jpg" width="1152" height="768"
+            draggable="false" loading="lazy" decoding="async" alt="Three paragliders soaring along a hazy green ridge above terraced fields in the Kerio Valley">
+        </picture>
+      </div>
+      <div class="khero-slide">
+        <picture>
+          <source srcset="../assets/destinations/kenya/hero/equator.webp" type="image/webp">
+          <img style="object-position:58% 56%" src="../assets/destinations/kenya/hero/equator.jpg" width="1152" height="768"
+            draggable="false" loading="lazy" decoding="async" alt="A yellow paraglider on a long glide over arid rock outcrops in low golden light">
+        </picture>
+      </div>
+      <div class="khero-slide">
+        <picture>
+          <source srcset="../assets/destinations/kenya/hero/north-kenya.webp" type="image/webp">
+          <img style="object-position:54% 52%" src="../assets/destinations/kenya/hero/north-kenya.jpg" width="1233" height="768"
+            draggable="false" loading="lazy" decoding="async" alt="A red and yellow paraglider high above a steep green ridge with plains stretching to the horizon">
+        </picture>
+      </div>
+      <div class="khero-slide">
+        <picture>
+          <source srcset="../assets/destinations/kenya/hero/chyulu-hills.webp" type="image/webp">
+          <img style="object-position:50% 46%" src="../assets/destinations/kenya/hero/chyulu-hills.jpg" width="1122" height="768"
+            draggable="false" loading="lazy" decoding="async" alt="Two paragliders over flat dark bush under a stormy sky in the Chyulu Hills">
+        </picture>
+      </div>
+    </div>
   </div>
-  <div class="dst-hero-copy">
-    <span class="kicker">Kerio Valley · Rift Valley</span>
+  <div class="khero-scrim" aria-hidden="true"></div>
+  <div class="khero-copy">
+    <span class="kicker">Mount Longonot</span>
     <h1 class="dst-country">Kenya</h1>
     <p class="dst-tag">Fly where humankind first walked. Rift Valley's endless skies await.</p>
     <div class="dst-swahili">
@@ -457,72 +505,15 @@
       <a href="#overview" class="listen-btn" data-hover><span>See the trip</span></a>
     </div>
   </div>
+  <div class="khero-rail" role="group" aria-label="Choose a photograph">
+    <button type="button" class="khero-tab is-on" aria-current="true">Mount Longonot</button>
+    <button type="button" class="khero-tab">Kerio Valley</button>
+    <button type="button" class="khero-tab">The Equator</button>
+    <button type="button" class="khero-tab">Northern Kenya</button>
+    <button type="button" class="khero-tab">Chyulu Hills</button>
+  </div>
+  <a class="khero-cue" href="#overview"><span>Scroll</span><i></i></a>
 </header>
-
-<section class="dst-sec ksl-sec" aria-labelledby="ksl-h">
-  <div class="dst-head">
-    <span class="kicker">The route</span>
-    <h2 id="ksl-h">One line across the Rift, five different skies</h2>
-  </div>
-  <div class="ksl" role="region" aria-roledescription="carousel" aria-label="Kenya route">
-    <div class="ksl-stage">
-      <figure class="ksl-slide is-on" role="group" aria-roledescription="slide"
-        aria-label="1 of 5: Kerio Valley">
-        <picture>
-          <source srcset="../assets/destinations/kenya/kenya-slide-1.webp" type="image/webp">
-          <img src="../assets/destinations/kenya/kenya-slide-1.jpg" width="1152" height="768" draggable="false"
-            fetchpriority="high" alt="Three paragliders soaring along a green ridge above the Kerio Valley escarpment">
-        </picture>
-        <figcaption><strong>Kerio Valley</strong><span>Fly where humankind first walked</span></figcaption>
-      </figure>
-      <figure class="ksl-slide" role="group" aria-roledescription="slide"
-        aria-label="2 of 5: Equator crossing">
-        <picture>
-          <source srcset="../assets/destinations/kenya/kenya-slide-2.webp" type="image/webp">
-          <img src="../assets/destinations/kenya/kenya-slide-2.jpg" width="1152" height="768" draggable="false"
-            loading="lazy" decoding="async" alt="A red and yellow paraglider high over the plains near the equator, storm light behind">
-        </picture>
-        <figcaption><strong>Equator crossing</strong><span>Feel the Coriolis twist over the equator</span></figcaption>
-      </figure>
-      <figure class="ksl-slide" role="group" aria-roledescription="slide"
-        aria-label="3 of 5: Mount Longonot">
-        <picture>
-          <source srcset="../assets/destinations/kenya/kenya-slide-3.webp" type="image/webp">
-          <img src="../assets/destinations/kenya/kenya-slide-3.jpg" width="1152" height="768" draggable="false"
-            loading="lazy" decoding="async" alt="A pink and yellow paraglider turning above the crater rim of Mount Longonot">
-        </picture>
-        <figcaption><strong>Mount Longonot</strong><span>Carve the skies above a prehistoric sentinel</span></figcaption>
-      </figure>
-      <figure class="ksl-slide" role="group" aria-roledescription="slide"
-        aria-label="4 of 5: Chyulu Hills">
-        <picture>
-          <source srcset="../assets/destinations/kenya/kenya-slide-4.webp" type="image/webp">
-          <img src="../assets/destinations/kenya/kenya-slide-4.jpg" width="1152" height="768" draggable="false"
-            loading="lazy" decoding="async" alt="A yellow paraglider on a long glide over arid hills and rock outcrops">
-        </picture>
-        <figcaption><strong>Chyulu Hills</strong><span>Endless glides, endless smiles</span></figcaption>
-      </figure>
-      <figure class="ksl-slide" role="group" aria-roledescription="slide"
-        aria-label="5 of 5: Machakos Hills">
-        <picture>
-          <source srcset="../assets/destinations/kenya/kenya-slide-5.webp" type="image/webp">
-          <img src="../assets/destinations/kenya/kenya-slide-5.jpg" width="1152" height="768" draggable="false"
-            loading="lazy" decoding="async" alt="Two paragliders low over dense forest canopy in the Chyulu and Machakos hills">
-        </picture>
-        <figcaption><strong>Machakos Hills</strong><span>Thermal hunting over primal habitat</span></figcaption>
-      </figure>
-    </div>
-    <button type="button" class="ksl-arrow ksl-prev" aria-label="Previous slide"></button>
-    <button type="button" class="ksl-arrow ksl-next" aria-label="Next slide"></button>
-    <div class="ksl-dots" role="group" aria-label="Choose a slide">
-        <button type="button" class="ksl-dot is-on" aria-label="Show slide 1, Kerio Valley" aria-current="true"></button>
-        <button type="button" class="ksl-dot" aria-label="Show slide 2, Equator crossing"></button>
-        <button type="button" class="ksl-dot" aria-label="Show slide 3, Mount Longonot"></button>
-        <button type="button" class="ksl-dot" aria-label="Show slide 4, Chyulu Hills"></button>
-        <button type="button" class="ksl-dot" aria-label="Show slide 5, Machakos Hills"></button>
-    </div>
-  </div>
-</section>
 
 <div class="dst-jump">
   <div class="dst-jump-in">
@@ -896,56 +887,111 @@
 })();
 </script>
 <script>
-/* Route slider. Crossfade, because every tile carries the same map: it holds
-   still while the terrain changes behind it.
+/* Hero. Five photographs, crossfaded, drifting.
  *
- * No autoplay. Carousels that advance on their own get ignored, and this one
- * sits above the trip detail rather than in place of it, so nothing is hidden
- * behind a slide a visitor never sees.
+ * Autoplay is on, which it is not on a content carousel, because nothing is
+ * hidden behind these slides. They are five views of one trip rather than five
+ * pieces of information, so a visitor who never advances has missed nothing.
+ * Any deliberate choice stops it permanently.
  *
- * No setPointerCapture on the swipe. That is what retargeted the click and
- * broke the homepage rail; this tracks on window instead. */
+ * No setPointerCapture anywhere near this. It is in the gotcha notes and it is
+ * what broke the homepage rail: capture retargets every later pointer event to
+ * the captured element, so a pointerup outside never arrives where expected.
+ *
+ * The images carry draggable="false", pointerdown calls preventDefault and the
+ * CSS sets -webkit-user-drag:none. Any one of those alone stops a fast flick
+ * turning into a native image drag, which would fire pointercancel instead of
+ * pointerup and swallow the swipe. All three are kept because the smoke check
+ * only reproduces the fault with every one of them removed. */
 (function () {
-  var root = document.querySelector('.ksl');
-  if (!root) return;
-  var slides = [].slice.call(root.querySelectorAll('.ksl-slide'));
-  var dots = [].slice.call(root.querySelectorAll('.ksl-dot'));
-  if (slides.length < 2) return;
-  var at = 0;
+  var hero = document.querySelector('.khero');
+  if (!hero) return;
+  var slides = [].slice.call(hero.querySelectorAll('.khero-slide'));
+  var tabs   = [].slice.call(hero.querySelectorAll('.khero-tab'));
+  var par    = hero.querySelector('.khero-par');
+  var place  = hero.querySelector('.khero-copy .kicker');
+  if (slides.length < 2 || tabs.length !== slides.length) return;
 
-  function show(n) {
-    at = (n + slides.length) % slides.length;
-    slides.forEach(function (s, i) { s.classList.toggle('is-on', i === at); });
-    dots.forEach(function (d, i) {
-      d.classList.toggle('is-on', i === at);
-      if (i === at) { d.setAttribute('aria-current', 'true'); }
-      else { d.removeAttribute('aria-current'); }
-    });
+  var calm  = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var DWELL = 6500;
+  var at = 0, timer = null, stopped = false;
+  hero.style.setProperty('--khero-dwell', DWELL + 'ms');
+
+  function arm() {
+    clearTimeout(timer);
+    var t = tabs[at];
+    t.classList.remove('is-timing');
+    if (stopped || calm.matches || document.hidden) return;
+    void t.offsetWidth;                 /* reflow, so the fill restarts */
+    t.classList.add('is-timing');
+    timer = setTimeout(function () { show(at + 1); }, DWELL);
   }
 
-  root.querySelector('.ksl-prev').addEventListener('click', function () { show(at - 1); });
-  root.querySelector('.ksl-next').addEventListener('click', function () { show(at + 1); });
-  dots.forEach(function (d, i) { d.addEventListener('click', function () { show(i); }); });
+  function show(n) {
+    n = (n + slides.length) % slides.length;
+    if (n === at) return;
+    slides[at].classList.remove('is-on');
+    tabs[at].classList.remove('is-on', 'is-timing');
+    tabs[at].removeAttribute('aria-current');
+    at = n;
+    if (place) place.textContent = tabs[n].textContent;
+    slides[at].classList.add('is-on');
+    tabs[at].classList.add('is-on');
+    tabs[at].setAttribute('aria-current', 'true');
+    arm();
+  }
 
-  root.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowLeft') { show(at - 1); e.preventDefault(); }
-    else if (e.key === 'ArrowRight') { show(at + 1); e.preventDefault(); }
+  function halt() {
+    stopped = true;
+    clearTimeout(timer);
+    tabs[at].classList.remove('is-timing');
+  }
+
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { halt(); show(i); });
+  });
+
+  hero.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight')     { halt(); show(at + 1); }
+    else if (e.key === 'ArrowLeft') { halt(); show(at - 1); }
+    else return;
+    e.preventDefault();
   });
 
   var x0 = null;
-  root.addEventListener('pointerdown', function (e) {
-    /* Not on the buttons: preventDefault there would swallow their click. */
-    if (e.target.closest('button')) return;
-    e.preventDefault();
+  hero.addEventListener('pointerdown', function (e) {
+    if (e.target.closest('a, button')) return;
     x0 = e.clientX;
+    e.preventDefault();
   });
   window.addEventListener('pointerup', function (e) {
     if (x0 === null) return;
     var dx = e.clientX - x0;
     x0 = null;
-    if (Math.abs(dx) > 40) { show(dx < 0 ? at + 1 : at - 1); }
+    if (Math.abs(dx) > 40) { halt(); show(dx < 0 ? at + 1 : at - 1); }
   });
   window.addEventListener('pointercancel', function () { x0 = null; });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) { clearTimeout(timer); tabs[at].classList.remove('is-timing'); }
+    else arm();
+  });
+
+  if (par && !calm.matches) {
+    var ticking = false;
+    var run = function () {
+      ticking = false;
+      var y = window.scrollY;
+      if (y > window.innerHeight * 1.3) return;
+      par.style.transform = 'translate3d(0,' + (y * 0.3).toFixed(1) + 'px,0)';
+    };
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(run); }
+    }, { passive: true });
+    run();
+  }
+
+  arm();
 })();
 </script>
 <!-- nav-menu -->
