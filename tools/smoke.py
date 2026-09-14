@@ -344,6 +344,50 @@ def enquire(pg, base):
           "an empty form will not submit")
 
 
+def kenya_slider(pg, base):
+    """The route slider at the top of the Kenya page.
+
+    The swipe is the part worth guarding: an image is draggable by default, so a
+    swipe across one starts a native drag and the browser sends pointercancel
+    instead of pointerup. The gesture died on the way out and the slide never
+    moved. draggable=false plus preventDefault fixed it, and nothing about that
+    is obvious from reading the code."""
+    pg.set_viewport_size({"width": 1280, "height": 900})
+    pg.goto(base + "/destinations/kenya.html", wait_until="load")
+    pg.wait_for_timeout(1800)
+    pg.evaluate("document.querySelector('.ksl').scrollIntoView({block:'center'})")
+    pg.wait_for_timeout(700)
+    cur = lambda: pg.evaluate("[...document.querySelectorAll('.ksl-slide')]"
+                              ".findIndex(s=>s.classList.contains('is-on'))")
+    n = pg.evaluate("document.querySelectorAll('.ksl-slide').length")
+    check(n == 5, "slider", "all five slides are on the page", n)
+    check(pg.evaluate("[...document.querySelectorAll('.ksl-slide')]"
+                      ".filter(s=>getComputedStyle(s).visibility!=='hidden').length") == 1,
+          "slider", "exactly one slide is visible at a time")
+    a = cur()
+    pg.click(".ksl-next")
+    pg.wait_for_timeout(600)
+    check(cur() != a, "slider", "the next arrow changes slide")
+    pg.evaluate("document.querySelectorAll('.ksl-dot')[3].click()")
+    pg.wait_for_timeout(600)
+    check(cur() == 3, "slider", "a dot jumps to its slide", cur())
+    box = pg.evaluate("()=>{const r=document.querySelector('.ksl-stage').getBoundingClientRect();"
+                      "return {x:Math.round(r.left+r.width/2),y:Math.round(r.top+r.height/2)};}")
+    before = cur()
+    # ONE fast movement, not a stepped drag. This matters: the native image drag
+    # only kicks in on a quick flick, and a stepped move does not reproduce it.
+    # A stepped version of this check passed against a build with both fixes
+    # removed, so it was guarding nothing.
+    pg.mouse.move(box["x"], box["y"])
+    pg.mouse.down()
+    pg.mouse.move(box["x"] - 150, box["y"])
+    pg.mouse.up()
+    pg.wait_for_timeout(600)
+    check(cur() != before, "slider", "a quick swipe across the photo changes slide")
+    cap = pg.evaluate("(document.querySelector('.ksl-slide.is-on figcaption')||{}).innerText||''")
+    check(len(cap.strip()) > 0, "slider", "the visible slide has a real text caption")
+
+
 def overflow(pg, base):
     """Sideways scroll. The homepage had 59px of it at 390 until today."""
     pages = ["index.html", "about.html", "podcast.html", "destinations/kenya.html",
@@ -390,7 +434,7 @@ def main():
                 return 0
             pg = browser.new_page(viewport={"width": 1280, "height": 900},
                                   reduced_motion="no-preference")
-            for fn in (rail, nav, player, library, search, kenya, enquire, overflow):
+            for fn in (rail, nav, player, library, search, kenya, kenya_slider, enquire, overflow):
                 fn(pg, base)
             pg.close()
             pg2 = browser.new_page(viewport={"width": 1280, "height": 900},

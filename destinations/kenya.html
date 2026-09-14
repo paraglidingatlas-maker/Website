@@ -56,6 +56,72 @@
 /* ---------- section scaffolding ---------- */
 .dst-sec{padding:clamp(3.4rem,7vw,6.2rem) clamp(1.2rem,5vw,5.5rem);}
 .dst-sec + .dst-sec{border-top:1px solid var(--rule);}
+
+/* ===== ROUTE SLIDER ========================================================
+   Five tiles, each carrying the same route map baked into the photograph. That
+   repetition is the point: the map holds still while the terrain changes behind
+   it, so these crossfade rather than slide.
+
+   NOT the hero. The hero photograph is 2000x1125 and its headline is real HTML
+   text; these are 1152x768 with the words flattened into pixels. Full bleed at
+   1920 they would be stretched 1.67x and visibly soft, on the first thing a
+   visitor sees, and the headline would stop being readable on a phone and stop
+   being indexed. At content width they display near native and stay crisp.
+
+   Sized 3:2 to match the crop, so nothing is cut off at any width. */
+.ksl{position:relative;max-width:1152px;margin:0 auto;}
+.ksl-stage{position:relative;aspect-ratio:3 / 2;overflow:hidden;
+  border:1px solid var(--edge);background:var(--card);}
+.ksl-slide{position:absolute;inset:0;margin:0;opacity:0;visibility:hidden;
+  transition:opacity .55s ease;}
+.ksl-slide.is-on{opacity:1;visibility:visible;}
+.ksl-slide picture,.ksl-slide img{display:block;width:100%;height:100%;object-fit:cover;}
+/* An image is draggable by default, so a swipe across one starts a native drag
+   and the browser sends pointercancel instead of pointerup. The gesture died on
+   the way out and the slide never changed. Traced it: pointerdown on IMG
+   arrived, pointerup never did. */
+.ksl-slide img{-webkit-user-drag:none;user-select:none;}
+.ksl-slide figcaption{
+  position:absolute;left:0;right:0;bottom:0;
+  display:flex;flex-direction:column;gap:0.15rem;
+  padding:2.6rem clamp(1rem,3vw,1.6rem) clamp(0.9rem,2.4vw,1.3rem);
+  background:linear-gradient(180deg,rgba(20,21,25,0) 0%,rgba(20,21,25,0.82) 60%,rgba(20,21,25,0.94) 100%);
+}
+/* The caption is real text, so it scales, it is readable on a phone and a
+   search engine can see it. The words baked into the tiles are not. */
+.ksl-slide figcaption strong{font-family:var(--font-display);font-weight:700;
+  color:var(--white);font-size:clamp(0.95rem,2.4vw,1.15rem);letter-spacing:0.01em;}
+.ksl-slide figcaption span{color:var(--gray-light);font-size:clamp(0.76rem,1.9vw,0.88rem);}
+
+.ksl-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:2;
+  width:44px;height:44px;border:1px solid var(--edge);border-radius:50%;
+  background:rgba(20,21,25,0.66);cursor:pointer;padding:0;
+  transition:border-color .18s ease,background .18s ease;
+}
+.ksl-arrow:hover{border-color:var(--orange);background:var(--wash);}
+.ksl-arrow:focus-visible{outline:2px solid var(--live);outline-offset:3px;}
+.ksl-arrow::before{content:"";position:absolute;top:50%;left:50%;width:9px;height:9px;
+  border-top:2px solid var(--white);border-right:2px solid var(--white);}
+.ksl-prev{left:clamp(0.5rem,2vw,1rem);}
+.ksl-next{right:clamp(0.5rem,2vw,1rem);}
+.ksl-prev::before{transform:translate(-30%,-50%) rotate(-135deg);}
+.ksl-next::before{transform:translate(-70%,-50%) rotate(45deg);}
+
+.ksl-dots{display:flex;justify-content:center;gap:0.55rem;margin-top:1rem;}
+.ksl-dot{width:11px;height:11px;padding:0;border:1px solid var(--edge-hi);
+  border-radius:50%;background:none;cursor:pointer;
+  transition:background .18s ease,border-color .18s ease;}
+.ksl-dot.is-on{background:var(--orange);border-color:var(--orange);}
+.ksl-dot:hover{border-color:var(--orange);}
+.ksl-dot:focus-visible{outline:2px solid var(--live);outline-offset:3px;}
+
+@media(prefers-reduced-motion: reduce){
+  /* !important because .ksl-slide carries its own transition at equal
+     specificity and would otherwise win on source order. The slide still
+     changes, it just arrives without the fade. */
+  .ksl-slide{transition:none!important;}
+}
 .dst-head{max-width:62rem;margin:0 0 2.6rem;}
 .dst-head h2{font-family:var(--font-display);font-weight:700;color:var(--white);
   font-size:clamp(1.5rem,3.4vw,2.4rem);line-height:1.15;margin:.5rem 0 0;letter-spacing:-.01em;}
@@ -392,6 +458,71 @@
     </div>
   </div>
 </header>
+
+<section class="dst-sec ksl-sec" aria-labelledby="ksl-h">
+  <div class="dst-head">
+    <span class="kicker">The route</span>
+    <h2 id="ksl-h">One line across the Rift, five different skies</h2>
+  </div>
+  <div class="ksl" role="region" aria-roledescription="carousel" aria-label="Kenya route">
+    <div class="ksl-stage">
+      <figure class="ksl-slide is-on" role="group" aria-roledescription="slide"
+        aria-label="1 of 5: Kerio Valley">
+        <picture>
+          <source srcset="../assets/destinations/kenya/kenya-slide-1.webp" type="image/webp">
+          <img src="../assets/destinations/kenya/kenya-slide-1.jpg" width="1152" height="768" draggable="false"
+            fetchpriority="high" alt="Three paragliders soaring along a green ridge above the Kerio Valley escarpment">
+        </picture>
+        <figcaption><strong>Kerio Valley</strong><span>Fly where humankind first walked</span></figcaption>
+      </figure>
+      <figure class="ksl-slide" role="group" aria-roledescription="slide"
+        aria-label="2 of 5: Equator crossing">
+        <picture>
+          <source srcset="../assets/destinations/kenya/kenya-slide-2.webp" type="image/webp">
+          <img src="../assets/destinations/kenya/kenya-slide-2.jpg" width="1152" height="768" draggable="false"
+            loading="lazy" decoding="async" alt="A red and yellow paraglider high over the plains near the equator, storm light behind">
+        </picture>
+        <figcaption><strong>Equator crossing</strong><span>Feel the Coriolis twist over the equator</span></figcaption>
+      </figure>
+      <figure class="ksl-slide" role="group" aria-roledescription="slide"
+        aria-label="3 of 5: Mount Longonot">
+        <picture>
+          <source srcset="../assets/destinations/kenya/kenya-slide-3.webp" type="image/webp">
+          <img src="../assets/destinations/kenya/kenya-slide-3.jpg" width="1152" height="768" draggable="false"
+            loading="lazy" decoding="async" alt="A pink and yellow paraglider turning above the crater rim of Mount Longonot">
+        </picture>
+        <figcaption><strong>Mount Longonot</strong><span>Carve the skies above a prehistoric sentinel</span></figcaption>
+      </figure>
+      <figure class="ksl-slide" role="group" aria-roledescription="slide"
+        aria-label="4 of 5: Chyulu Hills">
+        <picture>
+          <source srcset="../assets/destinations/kenya/kenya-slide-4.webp" type="image/webp">
+          <img src="../assets/destinations/kenya/kenya-slide-4.jpg" width="1152" height="768" draggable="false"
+            loading="lazy" decoding="async" alt="A yellow paraglider on a long glide over arid hills and rock outcrops">
+        </picture>
+        <figcaption><strong>Chyulu Hills</strong><span>Endless glides, endless smiles</span></figcaption>
+      </figure>
+      <figure class="ksl-slide" role="group" aria-roledescription="slide"
+        aria-label="5 of 5: Machakos Hills">
+        <picture>
+          <source srcset="../assets/destinations/kenya/kenya-slide-5.webp" type="image/webp">
+          <img src="../assets/destinations/kenya/kenya-slide-5.jpg" width="1152" height="768" draggable="false"
+            loading="lazy" decoding="async" alt="Two paragliders low over dense forest canopy in the Chyulu and Machakos hills">
+        </picture>
+        <figcaption><strong>Machakos Hills</strong><span>Thermal hunting over primal habitat</span></figcaption>
+      </figure>
+    </div>
+    <button type="button" class="ksl-arrow ksl-prev" aria-label="Previous slide"></button>
+    <button type="button" class="ksl-arrow ksl-next" aria-label="Next slide"></button>
+    <div class="ksl-dots" role="group" aria-label="Choose a slide">
+        <button type="button" class="ksl-dot is-on" aria-label="Show slide 1, Kerio Valley" aria-current="true"></button>
+        <button type="button" class="ksl-dot" aria-label="Show slide 2, Equator crossing"></button>
+        <button type="button" class="ksl-dot" aria-label="Show slide 3, Mount Longonot"></button>
+        <button type="button" class="ksl-dot" aria-label="Show slide 4, Chyulu Hills"></button>
+        <button type="button" class="ksl-dot" aria-label="Show slide 5, Machakos Hills"></button>
+    </div>
+  </div>
+</section>
 
 <div class="dst-jump">
   <div class="dst-jump-in">
@@ -762,6 +893,59 @@
   new IntersectionObserver(function(e){
     bar.classList.toggle('show', !e[0].isIntersecting);
   },{threshold:0}).observe(hero);
+})();
+</script>
+<script>
+/* Route slider. Crossfade, because every tile carries the same map: it holds
+   still while the terrain changes behind it.
+ *
+ * No autoplay. Carousels that advance on their own get ignored, and this one
+ * sits above the trip detail rather than in place of it, so nothing is hidden
+ * behind a slide a visitor never sees.
+ *
+ * No setPointerCapture on the swipe. That is what retargeted the click and
+ * broke the homepage rail; this tracks on window instead. */
+(function () {
+  var root = document.querySelector('.ksl');
+  if (!root) return;
+  var slides = [].slice.call(root.querySelectorAll('.ksl-slide'));
+  var dots = [].slice.call(root.querySelectorAll('.ksl-dot'));
+  if (slides.length < 2) return;
+  var at = 0;
+
+  function show(n) {
+    at = (n + slides.length) % slides.length;
+    slides.forEach(function (s, i) { s.classList.toggle('is-on', i === at); });
+    dots.forEach(function (d, i) {
+      d.classList.toggle('is-on', i === at);
+      if (i === at) { d.setAttribute('aria-current', 'true'); }
+      else { d.removeAttribute('aria-current'); }
+    });
+  }
+
+  root.querySelector('.ksl-prev').addEventListener('click', function () { show(at - 1); });
+  root.querySelector('.ksl-next').addEventListener('click', function () { show(at + 1); });
+  dots.forEach(function (d, i) { d.addEventListener('click', function () { show(i); }); });
+
+  root.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { show(at - 1); e.preventDefault(); }
+    else if (e.key === 'ArrowRight') { show(at + 1); e.preventDefault(); }
+  });
+
+  var x0 = null;
+  root.addEventListener('pointerdown', function (e) {
+    /* Not on the buttons: preventDefault there would swallow their click. */
+    if (e.target.closest('button')) return;
+    e.preventDefault();
+    x0 = e.clientX;
+  });
+  window.addEventListener('pointerup', function (e) {
+    if (x0 === null) return;
+    var dx = e.clientX - x0;
+    x0 = null;
+    if (Math.abs(dx) > 40) { show(dx < 0 ? at + 1 : at - 1); }
+  });
+  window.addEventListener('pointercancel', function () { x0 = null; });
 })();
 </script>
 <!-- nav-menu -->
