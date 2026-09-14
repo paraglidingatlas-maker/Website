@@ -50,31 +50,26 @@
   // every card, no error in the console. The version before this rewrite never
   // read videoId at all, so the dependency is entirely mine.
   //
+  // In the event yt:videoId resolved all ten every time, so the fallbacks have
+  // never fired. They stay because the cost is nothing and a feed format is not
+  // mine to depend on.
+  //
   // Three sources, in order of how much I trust them:
   //   yt:videoId          the proper field
   //   <id>yt:video:XXX    the Atom id, same value with a prefix
   //   the watch link      ?v=XXX
   // If all three fail the card keeps its href and the browser opens YouTube,
   // which is a worse outcome than the lightbox but not a dead click.
-  // TEMPORARY: which route each id came from, reported in the status line.
-  // I have shipped two candidate fixes for a dead click without being able to
-  // see a browser, and guessing again is worse than measuring once. Remove
-  // idRoutes and the suffix on the status line as soon as the cause is known.
-  const idRoutes = { videoId: 0, atom: 0, link: 0, none: 0 };
-
   function videoIdOf(entry, link) {
     const direct = entry.getElementsByTagNameNS('*', 'videoId')[0]?.textContent;
-    if (direct && direct.trim()) { idRoutes.videoId++; return direct.trim(); }
+    if (direct && direct.trim()) return direct.trim();
 
     const atom = entry.getElementsByTagNameNS('*', 'id')[0]?.textContent || '';
     const m = atom.match(/yt:video:([\w-]+)/);
-    if (m) { idRoutes.atom++; return m[1]; }
+    if (m) return m[1];
 
     const q = String(link).match(/[?&]v=([\w-]+)/);
-    if (q) { idRoutes.link++; return q[1]; }
-
-    idRoutes.none++;
-    return '';
+    return q ? q[1] : '';
   }
 
   function esc(s) {
@@ -184,33 +179,6 @@
       });
     });
   }
-
-  // ================= TEMPORARY TEST BENCH =================
-  // Delete this block with the markup and CSS it drives.
-  //
-  // Three columns, each removing a different suspect. A swaps the thumbnail for
-  // an iframe in place, so it exercises the click and the embed but not the
-  // lightbox. B calls the very same openBox the rail calls. C is a plain anchor
-  // with no script on it at all. Whichever of the three do nothing is where the
-  // fault lives, which beats another theory from me.
-  (function bench() {
-    const row = document.querySelector('.yt-bench-row');
-    if (!row) return;
-    row.querySelectorAll('.yt-bench-card[data-mode]').forEach(function (b) {
-      b.addEventListener('click', function (e) {
-        e.preventDefault();
-        const id = b.dataset.yt;
-        if (b.dataset.mode === 'lightbox') { openBox(id, 'Test B'); return; }
-        const f = document.createElement('iframe');
-        f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?autoplay=1';
-        f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture';
-        f.setAttribute('allowfullscreen', '');
-        f.setAttribute('title', 'Test A');
-        const img = b.querySelector('img');
-        if (img) img.parentNode.replaceChild(f, img);
-      });
-    });
-  })();
 
   // ---------------------------------------------------------------- motion
   // Ported from homepage-motion.js rather than written again. Every awkward
@@ -336,13 +304,8 @@
       bindCards();
       startRail();
       if (statusEl) {
-        // TEMPORARY diagnostic suffix, remove once the click is understood
-        const r = idRoutes;
-        const bound = trackEl.querySelectorAll('.yt-card[data-bound]').length;
-        const cards = trackEl.querySelectorAll('.yt-card').length;
-        const via = `ids ${r.videoId}/${r.atom}/${r.link}/${r.none} · bound ${bound}/${cards}`;
         statusEl.textContent =
-          `Live from YouTube. Showing the ${videos.length} most recent videos. [${via}]`;
+          `Live from YouTube. Showing the ${videos.length} most recent videos.`;
       }
     })
     .catch(function (err) {

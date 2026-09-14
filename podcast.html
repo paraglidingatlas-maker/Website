@@ -265,18 +265,6 @@
       transform:translate(-50%,-50%) scale(var(--ps)) !important;}
   }
 
-  /* ===== TEMPORARY TEST BENCH, delete with its markup and script ===== */
-  .yt-bench{margin-top:2rem;padding-top:1.4rem;border-top:1px dashed var(--live);}
-  .yt-bench-note{color:var(--gray-light);font-size:0.8rem;margin-bottom:0.9rem;}
-  .yt-bench-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;max-width:52rem;}
-  .yt-bench-card{display:block;width:100%;text-align:left;padding:0;cursor:pointer;
-    background:var(--card);border:1px solid var(--rule);color:inherit;
-    font-family:var(--font-body);text-decoration:none;}
-  .yt-bench-card:hover{border-color:var(--orange);}
-  .yt-bench-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
-  .yt-bench-card > span{display:block;padding:0.6rem 0.7rem;font-size:0.76rem;color:var(--gray-light);}
-  .yt-bench-card iframe{width:100%;aspect-ratio:16/9;border:0;display:block;}
-
   /* ===== LIGHTBOX =====
      Built on click, never on load, so YouTube is not contacted until somebody
      chooses to watch. Closing empties the container, which removes the iframe
@@ -998,30 +986,6 @@
   </div>
   <div class="yt-rail"><div class="yt-track" id="ytTrack"></div></div>
 
-  <!-- ===== TEMPORARY TEST BENCH, delete with its script and CSS =====
-       Three cards, hardcoded ids, no feed, no drag, no pointer capture, no
-       clones, no delegation and no edge mask. Each column removes a different
-       suspect, so whichever ones work tells us where the fault is rather than
-       leaving us to guess. -->
-  <div class="yt-bench">
-    <p class="yt-bench-note">Temporary test row. A opens an iframe in place, B calls the same
-      lightbox the rail uses, C is a plain link. Tell me which of the three do anything.</p>
-    <div class="yt-bench-row">
-      <button class="yt-bench-card" data-mode="inline" data-yt="G-gqUxq0C6Q">
-        <img src="https://i.ytimg.com/vi/G-gqUxq0C6Q/mqdefault.jpg" alt="">
-        <span>A &mdash; iframe in place, no lightbox</span>
-      </button>
-      <button class="yt-bench-card" data-mode="lightbox" data-yt="NXUEyPQ3V4E">
-        <img src="https://i.ytimg.com/vi/NXUEyPQ3V4E/mqdefault.jpg" alt="">
-        <span>B &mdash; the rail's own lightbox</span>
-      </button>
-      <a class="yt-bench-card" href="https://www.youtube.com/watch?v=pYzuw5bTIe8"
-         target="_blank" rel="noopener">
-        <img src="https://i.ytimg.com/vi/pYzuw5bTIe8/mqdefault.jpg" alt="">
-        <span>C &mdash; plain link, no script at all</span>
-      </a>
-    </div>
-  </div>
 </section>
 
 <section class="archive">
@@ -1341,7 +1305,7 @@
   })();
 </script>
 <script src="rss-feed.js?v=3c3f7e55"></script>
-<script src="youtube-feed.js?v=a8b6e709"></script>
+<script src="youtube-feed.js?v=5972a63a"></script>
 <script>
   // Generate equalizer bars with randomized timing so they bounce organically
   // rather than in mechanical unison
