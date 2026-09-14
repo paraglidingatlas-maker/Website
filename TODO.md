@@ -4,11 +4,31 @@ Findings from the site health review on 14 September 2026. Ordered by what costs
 most to leave alone. Anything fixed should be struck out or deleted here rather
 than left to rot, or this file stops being trusted.
 
+## Parked, revisit after 21 September
+
+- [ ] **Google Search Console and Bing Webmaster Tools.** Add
+      `paraglidingatlas.com` as a Domain property in Search Console, verify by
+      TXT in Cloudflare, submit `https://paraglidingatlas.com/sitemap.xml`. Then
+      Bing Webmaster Tools offers "Import from Google Search Console", which
+      carries the property and verification across and skips doing the DNS step
+      twice. Bing matters because ChatGPT search and Copilot run on its index.
+      Note: a `google-site-verification` TXT record already exists on the domain,
+      so a Search Console property may already be there. Check the property
+      dropdown before adding a new one.
+- [ ] **Cancel the old cPanel hosting.** Nothing serves the main site from it
+      any more. Still pointing at it: blog, staging, mail, admin, cpanel, whm and
+      webdisk subdomains. Open blog and staging first and confirm nothing there
+      is wanted, and check no mail client is configured against
+      mail.paraglidingatlas.com, since Google Workspace uses imap.gmail.com and
+      smtp.gmail.com. Take a backup before cancelling.
+
 ## Blocked on Aninder
 
-- [ ] **index.html says "Placeholder" nine times** in the Himalayas, Peru and
-      Kazakhstan fact blocks. Needs real figures. Most damaging thing on the site:
-      it is the homepage and every visitor sees it.
+- [ ] **Real figures for Himalayas, Peru and Kazakhstan.** Duration, Group Size
+      and Best Season, nine values across the three homepage fact blocks. They
+      now read "Coming soon" instead of "Placeholder", which is honest rather
+      than unfinished, but they are still not numbers. Skill Level is already set
+      on all three and does not need anything.
 - [ ] **Six Kenya site cards are text only.** Kerio Valley, Rift Valley NP,
       Kijabe Hill, Mount Longonot, Machakos Hills, Chyulu Hills. Photos exist but
       nobody has identified which frame is which site. Ask before assigning any.
