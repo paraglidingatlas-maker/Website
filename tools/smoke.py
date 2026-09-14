@@ -473,13 +473,117 @@ def kenya_map(pg, base):
     check(not pg.evaluate("document.querySelector('.kmap-stage').classList.contains('is-sheet')"),
           "map", "escape returns to the overview")
 
-    # a phone cannot read the chart, so it is never offered one
-    pg.set_viewport_size({"width": 390, "height": 844})
-    pg.wait_for_timeout(600)
-    check(pg.evaluate("document.querySelector('.kmap-zoom').hidden"),
-          "map", "the chart is not offered on a phone")
-    check(pg.evaluate("getComputedStyle(document.querySelector('.kmap-sheet')).display") == "none",
-          "map", "the chart stays out of the way on a phone")
+    # ---- pan and zoom ----------------------------------------------------
+    tf = lambda: pg.evaluate("getComputedStyle(document.querySelector('.kmap-view')).transform")
+    scale = lambda: pg.evaluate(
+        "()=>{const m=getComputedStyle(document.querySelector('.kmap-view'))"
+        ".transform.match(/matrix\\(([\\d.]+)/);return m?+m[1]:1}")
+    check(abs(scale() - 1) < 0.01, "map", "the map starts unzoomed", scale())
+    pg.evaluate("document.querySelector('[data-z=\"in\"]').click()")
+    pg.wait_for_timeout(500)
+    check(scale() > 1.3, "map", "the zoom control zooms in", scale())
+
+    # Markers ride the zoom surface. Without the counter-scale a 44px target
+    # becomes 300px and the labels swamp the map, which looks fine in a
+    # screenshot and is unusable.
+    pk = pg.evaluate("()=>{const m=getComputedStyle(document.querySelector('.kmap-pin'))"
+                     ".transform.match(/matrix\\(([\\d.]+)/);return m?+m[1]:1}")
+    check(abs(pk * scale() - 1) < 0.02, "map",
+          "markers hold their size as the map zooms", f"pin {pk} x view {scale()}")
+
+    before = tf()
+    box = pg.evaluate("()=>{const r=document.querySelector('.kmap-stage').getBoundingClientRect();"
+                      "return {x:Math.round(r.left+r.width/2),y:Math.round(r.top+r.height/2)};}")
+    pg.mouse.move(box["x"], box["y"])
+    pg.mouse.down()
+    for i in range(1, 7):
+        pg.mouse.move(box["x"] - 18 * i, box["y"] - 11 * i)
+    pg.mouse.up()
+    pg.wait_for_timeout(400)
+    check(tf() != before, "map", "dragging pans the map when it is zoomed in")
+
+    pg.evaluate("document.querySelector('[data-z=\"reset\"]').click()")
+    pg.wait_for_timeout(500)
+    check(abs(scale() - 1) < 0.01, "map", "reset returns the map to its full view", scale())
+
+    # a pan must not register as choosing whichever marker it ended on
+    pg.evaluate("document.querySelector('[data-z=\"in\"]').click()")
+    pg.wait_for_timeout(400)
+    chosen = pg.evaluate("[...document.querySelectorAll('.kmap-row')]"
+                         ".findIndex(r=>r.classList.contains('is-on'))")
+    pin = pg.evaluate("()=>{const r=document.querySelectorAll('.kmap-pin')[0]"
+                      ".getBoundingClientRect();"
+                      "return {x:Math.round(r.left+r.width/2),y:Math.round(r.top+r.height/2)};}")
+    pg.mouse.move(pin["x"] + 90, pin["y"] + 60)
+    pg.mouse.down()
+    for i in range(1, 7):
+        pg.mouse.move(pin["x"] + 90 - 15 * i, pin["y"] + 60 - 10 * i)
+    pg.mouse.up()
+    pg.wait_for_timeout(400)
+    check(pg.evaluate("[...document.querySelectorAll('.kmap-row')]"
+                      ".findIndex(r=>r.classList.contains('is-on'))") == chosen,
+          "map", "a pan that ends on a marker does not select it")
+    pg.evaluate("document.querySelector('[data-z=\"reset\"]').click()")
+    pg.wait_for_timeout(300)
+
+
+def kenya_pinch(browser, base):
+    """Two fingers on the map.
+
+    This is why the chart is now offered on a phone at all. Its smallest type
+    lands under 3px at 390px wide, so it was withheld; pinch turns it into a
+    detail view you open rather than one you squint at.
+
+    Synthetic mouse events cannot reproduce this. It needs real touch points
+    through CDP, and it has to run in a touch context."""
+    ctx = browser.new_context(viewport={"width": 390, "height": 844},
+                              has_touch=True, is_mobile=True)
+    pg = ctx.new_page()
+    pg.goto(base + "/destinations/kenya.html", wait_until="load")
+    pg.wait_for_timeout(1500)
+    pg.evaluate("document.querySelector('.kmap-stage').scrollIntoView({block:'center'})")
+    pg.wait_for_timeout(700)
+
+    check(not pg.evaluate("document.querySelector('.kmap-zoom').hidden"),
+          "pinch", "the chart is offered on a phone now that it can be zoomed")
+    check(pg.evaluate("document.querySelector('.kmap-stage').style.touchAction") == "pan-y",
+          "pinch", "an unzoomed map still lets the page scroll past it")
+
+    cdp = ctx.new_cdp_session(pg)
+    r = pg.evaluate("()=>{const b=document.querySelector('.kmap-stage').getBoundingClientRect();"
+                    "return {x:b.left,y:b.top,w:b.width,h:b.height};}")
+    cx, cy = r["x"] + r["w"] / 2, r["y"] + r["h"] / 2
+    scale = lambda: pg.evaluate(
+        "()=>{const m=getComputedStyle(document.querySelector('.kmap-view'))"
+        ".transform.match(/matrix\\(([\\d.]+)/);return m?+m[1]:1}")
+
+    def touch(kind, pts):
+        cdp.send("Input.dispatchTouchEvent", {
+            "type": kind,
+            "touchPoints": [{"x": x, "y": y, "id": i} for i, (x, y) in enumerate(pts)]})
+
+    touch("touchStart", [(cx - 30, cy), (cx + 30, cy)])
+    for d in (50, 80, 120, 160):
+        touch("touchMove", [(cx - d, cy), (cx + d, cy)])
+        pg.wait_for_timeout(45)
+    touch("touchEnd", [])
+    pg.wait_for_timeout(400)
+    check(scale() > 2, "pinch", "two fingers zoom the map in", scale())
+    check(pg.evaluate("document.querySelector('.kmap-stage').style.touchAction") == "none",
+          "pinch", "a zoomed map takes the gesture instead of the page")
+
+    peak = scale()
+    touch("touchStart", [(cx - 150, cy), (cx + 150, cy)])
+    for d in (110, 70, 40, 20):
+        touch("touchMove", [(cx - d, cy), (cx + d, cy)])
+        pg.wait_for_timeout(45)
+    touch("touchEnd", [])
+    pg.wait_for_timeout(400)
+    # measured against the peak, not against a constant. "< 2" passed against a
+    # build where pinch never fired at all, because the scale had never left 1.
+    check(scale() < peak - 0.5, "pinch", "two fingers zoom it back out",
+          f"{peak:.2f} then {scale():.2f}")
+    ctx.close()
 
 
 def overflow(pg, base):
@@ -535,6 +639,7 @@ def main():
                                    reduced_motion="reduce")
             globe(pg2, base)
             touch_gestures(browser, base)
+            kenya_pinch(browser, base)
             errors(pg2, base)
             pg2.close()
             browser.close()

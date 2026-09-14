@@ -166,7 +166,23 @@
   filter:brightness(1.35);}
 
 .kmap-pins{position:absolute;inset:0;}
-.kmap-pin{position:absolute;transform:translate(-50%,-50%);
+.kmap-view{position:absolute;inset:0;transform-origin:0 0;--kz:1;will-change:transform;}
+.kmap-stage{touch-action:pan-y;cursor:grab;}
+.kmap-stage.is-zoomed{cursor:grab;}
+.kmap-stage.is-zoomed:active{cursor:grabbing;}
+/* Counter-scale, so a marker keeps its 44px target and its label keeps its
+   size however far the surface is zoomed in. */
+.kmap-pin{transform:translate(-50%,-50%) scale(var(--kz));}
+.kmap-ctl{position:absolute;right:.7rem;bottom:.7rem;z-index:4;display:flex;gap:.35rem;}
+.kmap-btn{width:34px;height:34px;padding:0;background:rgba(20,21,25,.86);
+  border:1px solid var(--edge-hi);color:var(--white);font-family:var(--font-body);
+  font-size:1rem;line-height:1;cursor:pointer;transition:border-color .2s ease,opacity .2s ease;}
+.kmap-btn.kmap-reset{width:auto;padding:0 .7rem;font-size:.72rem;letter-spacing:.09em;}
+.kmap-btn:hover:not(:disabled){border-color:var(--orange);}
+.kmap-btn:disabled{opacity:.35;cursor:default;}
+.kmap-btn:focus-visible{outline:2px solid var(--live);outline-offset:2px;}
+
+.kmap-pin{position:absolute;
   transition:left 1050ms cubic-bezier(.66,.02,.2,1),top 1050ms cubic-bezier(.66,.02,.2,1);
   width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer;
   display:flex;align-items:center;justify-content:center;}
@@ -218,9 +234,10 @@
 
 @media (max-width:820px){
   .kmap-grid{grid-template-columns:1fr;}
-  /* The sheet never opens here. Its smallest type lands under 3px on a phone,
-     which is not a detail view. The bearings it carries are in the panel. */
-  .kmap-sheet{display:none;}
+  /* The chart used to be withheld here because its smallest type lands under
+     3px on a phone. Pinch to zoom answers that: it is a detail view you open
+     rather than one you squint at. */
+  .kmap-ctl{right:.5rem;bottom:.5rem;}
   .kmap-pin{width:40px;height:40px;}
   .kmap-pin-name{font-size:.66rem;left:22px;}
 }
@@ -732,6 +749,7 @@
   <div class="kmap-grid">
     <div class="kmap-figure">
       <div class="kmap-stage">
+        <div class="kmap-view">
         <div class="kmap-layer kmap-sheet" data-src="../assets/destinations/kenya/map/kenya-sheet.svg" aria-hidden="true"></div>
         <div class="kmap-layer kmap-plate"><svg viewBox="0 0 1900 1500" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans, sans-serif" role="img" aria-label="Map of Kenya showing the six flying sites and the route between them">
 <defs><clipPath id="plate"><path d="M584.5,250.8 579.5,258.3 602.6,260.5 596.1,272.6 607.8,288.3 619.6,291.3 621.1,284.2 630.0,282.6 630.3,288.3 648.8,288.3 651.3,299.2 664.7,305.5 778.5,308.2 938.3,386.9 982.1,387.7 990.4,382.9 1041.4,396.3 1096.9,398.2 1126.0,406.9 1131.1,397.9 1156.1,379.5 1167.2,361.8 1288.0,321.0 1340.7,354.4 1436.0,351.0 1364.4,426.8 1314.6,464.7 1316.5,824.6 1388.2,893.2 1389.8,905.2 1356.5,931.8 1348.1,927.3 1343.7,933.9 1333.6,932.7 1320.9,939.0 1316.5,935.4 1320.0,925.3 1315.3,928.0 1312.0,942.0 1300.9,931.3 1307.6,953.6 1316.5,958.5 1311.9,965.1 1301.1,957.5 1289.4,962.2 1295.0,973.8 1273.1,987.6 1252.0,986.5 1217.8,1000.2 1210.3,1009.4 1208.7,1026.2 1212.4,1031.4 1217.9,1030.8 1208.8,1039.1 1203.4,1058.7 1185.8,1069.0 1186.1,1062.6 1182.7,1064.0 1182.6,1071.6 1169.5,1092.8 1158.3,1087.9 1160.8,1094.6 1168.7,1094.4 1169.6,1100.5 1159.0,1122.2 1145.5,1122.2 1153.6,1127.2 1147.5,1135.0 1142.4,1127.4 1135.2,1127.3 1139.1,1131.9 1129.2,1134.1 1130.1,1138.2 1141.0,1137.1 1143.1,1141.2 1126.5,1172.3 1122.0,1173.0 1114.7,1187.1 1113.8,1181.0 1106.9,1186.0 1107.5,1191.7 1094.9,1188.4 1080.4,1196.4 893.0,1096.6 884.7,1084.1 870.3,1082.7 868.5,1072.9 883.6,1063.3 876.3,1037.1 395.2,837.5 382.6,837.5 381.3,804.3 389.1,754.6 381.2,728.8 406.4,705.6 405.2,698.3 414.9,680.6 428.5,675.6 434.6,665.4 446.4,659.8 459.5,633.8 500.5,619.2 498.0,603.9 523.6,577.9 528.1,552.3 509.5,510.2 517.1,497.6 510.8,486.4 503.3,485.8 491.6,460.9 479.7,460.2 472.4,453.5 465.7,434.9 452.5,428.7 445.5,399.9 452.6,395.1 453.2,381.3 439.7,374.7 432.0,377.2 427.0,370.0 415.3,370.7 418.8,368.7 414.9,366.1 422.3,361.1 406.4,360.8 409.7,354.3 403.3,348.1 404.3,340.2 392.2,327.4 445.5,288.2 559.6,252.9 562.0,256.2 581.5,248.2 584.5,250.8Z"/></clipPath><filter id="sh" x="-30%" y="-30%" width="180%" height="180%"><feGaussianBlur stdDeviation="26"/></filter></defs>
@@ -1613,8 +1631,10 @@
 <path d="M584.5,250.8 579.5,258.3 602.6,260.5 596.1,272.6 607.8,288.3 619.6,291.3 621.1,284.2 630.0,282.6 630.3,288.3 648.8,288.3 651.3,299.2 664.7,305.5 778.5,308.2 938.3,386.9 982.1,387.7 990.4,382.9 1041.4,396.3 1096.9,398.2 1126.0,406.9 1131.1,397.9 1156.1,379.5 1167.2,361.8 1288.0,321.0 1340.7,354.4 1436.0,351.0 1364.4,426.8 1314.6,464.7 1316.5,824.6 1388.2,893.2 1389.8,905.2 1356.5,931.8 1348.1,927.3 1343.7,933.9 1333.6,932.7 1320.9,939.0 1316.5,935.4 1320.0,925.3 1315.3,928.0 1312.0,942.0 1300.9,931.3 1307.6,953.6 1316.5,958.5 1311.9,965.1 1301.1,957.5 1289.4,962.2 1295.0,973.8 1273.1,987.6 1252.0,986.5 1217.8,1000.2 1210.3,1009.4 1208.7,1026.2 1212.4,1031.4 1217.9,1030.8 1208.8,1039.1 1203.4,1058.7 1185.8,1069.0 1186.1,1062.6 1182.7,1064.0 1182.6,1071.6 1169.5,1092.8 1158.3,1087.9 1160.8,1094.6 1168.7,1094.4 1169.6,1100.5 1159.0,1122.2 1145.5,1122.2 1153.6,1127.2 1147.5,1135.0 1142.4,1127.4 1135.2,1127.3 1139.1,1131.9 1129.2,1134.1 1130.1,1138.2 1141.0,1137.1 1143.1,1141.2 1126.5,1172.3 1122.0,1173.0 1114.7,1187.1 1113.8,1181.0 1106.9,1186.0 1107.5,1191.7 1094.9,1188.4 1080.4,1196.4 893.0,1096.6 884.7,1084.1 870.3,1082.7 868.5,1072.9 883.6,1063.3 876.3,1037.1 395.2,837.5 382.6,837.5 381.3,804.3 389.1,754.6 381.2,728.8 406.4,705.6 405.2,698.3 414.9,680.6 428.5,675.6 434.6,665.4 446.4,659.8 459.5,633.8 500.5,619.2 498.0,603.9 523.6,577.9 528.1,552.3 509.5,510.2 517.1,497.6 510.8,486.4 503.3,485.8 491.6,460.9 479.7,460.2 472.4,453.5 465.7,434.9 452.5,428.7 445.5,399.9 452.6,395.1 453.2,381.3 439.7,374.7 432.0,377.2 427.0,370.0 415.3,370.7 418.8,368.7 414.9,366.1 422.3,361.1 406.4,360.8 409.7,354.3 403.3,348.1 404.3,340.2 392.2,327.4 445.5,288.2 559.6,252.9 562.0,256.2 581.5,248.2 584.5,250.8Z" fill="none" stroke="#565a66" stroke-width="2"/>
 </svg></div>
         <div class="kmap-pins"><button type="button" class="kmap-pin is-on" aria-pressed="true" data-plate='{"x":32.263,"y":44.614}' data-sheet='{"x":30.833,"y":18.333}'><span class="kmap-pin-dot"></span><span class="kmap-pin-name">Kerio Valley</span></button><button type="button" class="kmap-pin" aria-pressed="false" data-plate='{"x":36.779,"y":55.163}' data-sheet='{"x":41.667,"y":52.083}'><span class="kmap-pin-dot"></span><span class="kmap-pin-name">Rift Valley National Park</span></button><button type="button" class="kmap-pin" aria-pressed="false" data-plate='{"x":37.821,"y":55.228}' data-sheet='{"x":44.167,"y":52.292}'><span class="kmap-pin-dot"></span><span class="kmap-pin-name">Mount Longonot Crater</span></button><button type="button" class="kmap-pin" aria-pressed="false" data-plate='{"x":38.724,"y":55.359}' data-sheet='{"x":46.333,"y":52.708}'><span class="kmap-pin-dot"></span><span class="kmap-pin-name">Kijabe Hill</span></button><button type="button" class="kmap-pin" aria-pressed="false" data-plate='{"x":43.448,"y":59.201}' data-sheet='{"x":57.667,"y":65.0}'><span class="kmap-pin-dot"></span><span class="kmap-pin-name">Machakos Hills</span></button><button type="button" class="kmap-pin" aria-pressed="false" data-plate='{"x":47.756,"y":66.755}' data-sheet='{"x":68.0,"y":89.167}'><span class="kmap-pin-dot"></span><span class="kmap-pin-name">Chyulu Hills</span></button></div>
+        </div>
+        <div class="kmap-ctl"><button type="button" class="kmap-btn" data-z="in" aria-label="Zoom in">+</button><button type="button" class="kmap-btn" data-z="out" aria-label="Zoom out">&#8722;</button><button type="button" class="kmap-btn kmap-reset" data-z="reset" aria-label="Reset the view">Reset</button></div>
       </div>
-      <button type="button" class="kmap-zoom" aria-pressed="false" hidden>Open the chart</button>
+      <button type="button" class="kmap-zoom" aria-pressed="false">Open the chart</button>
     </div>
     <div class="kmap-side">
       <div class="kmap-list" role="group" aria-label="Choose a site"><button type="button" class="kmap-row is-on" aria-pressed="true" data-panel="&lt;picture&gt;&lt;source srcset=&quot;../assets/destinations/kenya/hero/kerio-valley.webp&quot; type=&quot;image/webp&quot;&gt;&lt;img src=&quot;../assets/destinations/kenya/hero/kerio-valley.jpg&quot; width=&quot;1152&quot; height=&quot;768&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; alt=&quot;Paragliding at Kerio Valley, Kenya&quot;&gt;&lt;/picture&gt;&lt;div class=&quot;kmap-panel-txt&quot;&gt;&lt;h3&gt;Kerio Valley&lt;/h3&gt;&lt;p class=&quot;kmap-coord&quot;&gt;0.72°N · 35.65°E&lt;/p&gt;&lt;p&gt;The base for the tour, and the site where the world speed records are chased.&lt;/p&gt;&lt;/div&gt;"><span class="kmap-row-name">Kerio Valley</span><span class="kmap-row-co">0.72°N · 35.65°E</span></button><button type="button" class="kmap-row" aria-pressed="false" data-panel="&lt;div class=&quot;kmap-panel-txt&quot;&gt;&lt;h3&gt;Rift Valley National Park&lt;/h3&gt;&lt;p class=&quot;kmap-coord&quot;&gt;0.90°S · 36.30°E&lt;/p&gt;&lt;p&gt;Flying over the floor of the Great Rift, the geological scar that runs the length of the country.&lt;/p&gt;&lt;p class=&quot;kmap-leg&quot;&gt;158°T · 194 km from Kerio Valley&lt;/p&gt;&lt;/div&gt;"><span class="kmap-row-name">Rift Valley National Park</span><span class="kmap-row-co">0.90°S · 36.30°E</span></button><button type="button" class="kmap-row" aria-pressed="false" data-panel="&lt;picture&gt;&lt;source srcset=&quot;../assets/destinations/kenya/hero/longonot.webp&quot; type=&quot;image/webp&quot;&gt;&lt;img src=&quot;../assets/destinations/kenya/hero/longonot.jpg&quot; width=&quot;1152&quot; height=&quot;768&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; alt=&quot;Paragliding at Mount Longonot Crater, Kenya&quot;&gt;&lt;/picture&gt;&lt;div class=&quot;kmap-panel-txt&quot;&gt;&lt;h3&gt;Mount Longonot Crater&lt;/h3&gt;&lt;p class=&quot;kmap-coord&quot;&gt;0.91°S · 36.45°E&lt;/p&gt;&lt;p&gt;A dormant stratovolcano with an intact crater rim, and one of the more photographed flights of the trip.&lt;/p&gt;&lt;p class=&quot;kmap-leg&quot;&gt;094°T · 17 km from Rift Valley NP&lt;/p&gt;&lt;/div&gt;"><span class="kmap-row-name">Mount Longonot Crater</span><span class="kmap-row-co">0.91°S · 36.45°E</span></button><button type="button" class="kmap-row" aria-pressed="false" data-panel="&lt;div class=&quot;kmap-panel-txt&quot;&gt;&lt;h3&gt;Kijabe Hill&lt;/h3&gt;&lt;p class=&quot;kmap-coord&quot;&gt;0.93°S · 36.58°E&lt;/p&gt;&lt;p&gt;An escarpment site on the eastern wall of the Rift, north west of Nairobi.&lt;/p&gt;&lt;p class=&quot;kmap-leg&quot;&gt;099°T · 15 km from Mount Longonot&lt;/p&gt;&lt;/div&gt;"><span class="kmap-row-name">Kijabe Hill</span><span class="kmap-row-co">0.93°S · 36.58°E</span></button><button type="button" class="kmap-row" aria-pressed="false" data-panel="&lt;div class=&quot;kmap-panel-txt&quot;&gt;&lt;h3&gt;Machakos Hills&lt;/h3&gt;&lt;p class=&quot;kmap-coord&quot;&gt;1.52°S · 37.26°E&lt;/p&gt;&lt;p&gt;Rolling hills south east of Nairobi, and a change of character from the Rift walls.&lt;/p&gt;&lt;p class=&quot;kmap-leg&quot;&gt;131°T · 100 km from Kijabe Hill&lt;/p&gt;&lt;/div&gt;"><span class="kmap-row-name">Machakos Hills</span><span class="kmap-row-co">1.52°S · 37.26°E</span></button><button type="button" class="kmap-row" aria-pressed="false" data-panel="&lt;picture&gt;&lt;source srcset=&quot;../assets/destinations/kenya/hero/chyulu-hills.webp&quot; type=&quot;image/webp&quot;&gt;&lt;img src=&quot;../assets/destinations/kenya/hero/chyulu-hills.jpg&quot; width=&quot;1152&quot; height=&quot;768&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; alt=&quot;Paragliding at Chyulu Hills, Kenya&quot;&gt;&lt;/picture&gt;&lt;div class=&quot;kmap-panel-txt&quot;&gt;&lt;h3&gt;Chyulu Hills&lt;/h3&gt;&lt;p class=&quot;kmap-coord&quot;&gt;2.68°S · 37.88°E&lt;/p&gt;&lt;p&gt;A young volcanic range between Tsavo and Amboseli, with Kilimanjaro on the horizon.&lt;/p&gt;&lt;p class=&quot;kmap-leg&quot;&gt;152°T · 146 km from Machakos Hills&lt;/p&gt;&lt;/div&gt;"><span class="kmap-row-name">Chyulu Hills</span><span class="kmap-row-co">2.68°S · 37.88°E</span></button></div>
@@ -1995,7 +2015,7 @@
   arm();
 })();
 </script>
-<script defer src="../kenya-map.js?v=05634914"></script>
+<script defer src="../kenya-map.js?v=a843ba02"></script>
 <!-- nav-menu -->
 <script defer src="../nav-menu.js?v=001fbbf6"></script>
 <!-- /nav-menu -->
