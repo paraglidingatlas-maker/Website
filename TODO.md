@@ -24,6 +24,21 @@ than left to rot, or this file stops being trusted.
 
 ## Blocked on Aninder
 
+- [ ] **Canva export at 2x.** The single thing gating how good the Kenya page
+      can look. In Canva's download panel, next to the file type, there is a
+      size multiplier: setting it to 2x gives 2732x1536 and 3x gives 4098x2304,
+      against the 1366x768 we have been getting. The photographs underneath are
+      already bigger than the canvas, measured: detail density across the five
+      new tiles ran 204, 297, 473, 836 and 1449, which is what a clean downscale
+      looks like rather than an upscale. So 2x is real extra detail, not
+      interpolation.
+      Why it matters: the hero photograph is currently stretched 1.31x at a
+      1440 screen and 1.75x at 1920. With a 2x export, 1920 becomes a 0.87x
+      downscale, which is genuinely sharp. It would also allow dedicated
+      portrait crops for phones, where a landscape frame currently has to be
+      cropped hard to fill a 9:19.5 screen.
+      Swapping the files is a five minute job once they exist.
+
 - [ ] **Real figures for Himalayas, Peru and Kazakhstan.** Duration, Group Size
       and Best Season, nine values across the three homepage fact blocks. They
       now read "Coming soon" instead of "Placeholder", which is honest rather
@@ -78,6 +93,12 @@ than left to rot, or this file stops being trusted.
 - [ ] One description under 70 characters.
 
 ## Layout and housekeeping
+
+- [ ] **audit.py does not count absolute URLs in meta tags as references.**
+      `assets/images/kenya-hero.jpg` is reported as never referenced, but it is
+      the page's `og:image`, written as a full `https://paraglidingatlas.com/...`
+      URL. Do not delete anything from that warning list without grepping for
+      the bare filename first. Same trap applies to any future social image.
 
 - [ ] **Three content widths on wide screens.** 1300px is used 35 times, one page
       uses 1500, some pages have no cap at all and run to the gutters. Three
