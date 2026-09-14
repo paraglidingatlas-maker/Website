@@ -569,4 +569,57 @@
     }, ms || 5000);
   }
   if (!reduceMotion) startAutoRotate();
+
+  /* THE GLOBE WAS MEASURED ONCE AND NEVER AGAIN.
+     width and height are read from the container at the top of this file and
+     baked into the projection scale, the translate, the svg attributes and the
+     sphere radius. Nothing listened for resize, which produced two separate
+     faults on a phone.
+
+     Nothing at all on a normal mobile load: .ep-map is aspect-ratio 4/5 below
+     600px, and if this ran before that height resolved, clientHeight was 0,
+     scale became min(width,0)/2.2 = 0, and the globe drew at zero size inside a
+     container that still took up its full height. Heading and caption present,
+     empty black between them.
+
+     A giant clipped globe after changing width: rotating the phone, zooming, or
+     switching a desktop window to a narrow one kept the geometry from the width
+     the page first loaded at, so it overflowed the container and the parts you
+     could see did not line up with where the pins thought they were, which is
+     why that area did not respond to taps.
+
+     Both are the same missing thing. */
+  function resize() {
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    if (!w || !h) return false;
+    projection.scale(Math.min(w, h) / 2.2).translate([w / 2, h / 2]);
+    svg.attr('width', w).attr('height', h);
+    sphere.attr('cx', w / 2).attr('cy', h / 2).attr('r', projection.scale());
+    render();
+    return true;
+  }
+
+  /* If the height was not resolved when this first ran, the globe is currently
+     drawn at zero size. Catch it as soon as the box has one. */
+  if (!container.clientHeight || !container.clientWidth) {
+    if (window.ResizeObserver) {
+      const ro = new ResizeObserver(() => { if (resize()) ro.disconnect(); });
+      ro.observe(container);
+    } else {
+      window.addEventListener('load', resize);
+    }
+  }
+
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resize, 120);
+  });
+  /* orientationchange fires before the new dimensions settle on some phones, so
+     the same debounce is used rather than measuring immediately. */
+  window.addEventListener('orientationchange', () => {
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resize, 260);
+  });
 })();

@@ -160,6 +160,48 @@ def player(pg, base):
     pg.set_viewport_size({"width": 1280, "height": 900})
 
 
+def globe(pg, base):
+    """The globe was measured once, at the width the page first loaded at.
+
+    Nothing listened for resize, so rotating a phone or narrowing a window left
+    the projection at the old size: the sphere overflowed its container and the
+    pins sat outside the screen, which is why that area stopped responding to
+    taps. Loading wide and then narrowing is the case that caught it.
+
+    Runs under reduced motion on purpose. The globe auto-rotates otherwise, so a
+    pin measured and then clicked has moved in between and the check fails at
+    random. The question here is geometry, which rotation does not affect."""
+    pg.set_viewport_size({"width": 1280, "height": 900})
+    pg.goto(base + "/index.html", wait_until="load")
+    pg.wait_for_timeout(2500)
+    pg.set_viewport_size({"width": 390, "height": 844})
+    pg.wait_for_timeout(1200)
+    pg.evaluate("document.getElementById('epMap').scrollIntoView({block:'center'})")
+    pg.wait_for_timeout(700)
+    d = pg.evaluate("""()=>{const m=document.getElementById('epMap');
+      if(!m) return null;
+      const c=m.querySelector('circle'), r=m.getBoundingClientRect();
+      if(!c) return {fits:false, pin:null};
+      const rad=+c.getAttribute('r');
+      const pins=[...m.querySelectorAll('g.pin')];
+      let pin=null;
+      for(const p of pins){const b=p.getBoundingClientRect();
+        if(b.width>0&&b.top>0&&b.bottom<innerHeight&&b.left>0&&b.right<innerWidth){
+          pin=[Math.round(b.left+b.width/2),Math.round(b.top+b.height/2)];break;}}
+      return {fits: rad>4 && rad*2<=Math.min(r.width,r.height)+2, pin:pin};}""")
+    check(bool(d) and d["fits"], "globe",
+          "the sphere still fits its container after a width change")
+    if d and d["pin"]:
+        pg.mouse.click(d["pin"][0], d["pin"][1])
+        pg.wait_for_timeout(900)
+        check(pg.evaluate("document.getElementById('mapPopup').classList.contains('visible')"),
+              "globe", "a pin is clickable after a width change")
+    else:
+        check(False, "globe", "a pin is clickable after a width change",
+              "no pin landed on screen")
+    pg.set_viewport_size({"width": 1280, "height": 900})
+
+
 def overflow(pg, base):
     """Sideways scroll. The homepage had 59px of it at 390 until today."""
     pages = ["index.html", "about.html", "podcast.html", "destinations/kenya.html",
@@ -211,6 +253,7 @@ def main():
             pg.close()
             pg2 = browser.new_page(viewport={"width": 1280, "height": 900},
                                    reduced_motion="reduce")
+            globe(pg2, base)
             errors(pg2, base)
             pg2.close()
             browser.close()
