@@ -486,11 +486,25 @@
   let dragStart = null;
   let rotateStart = projection.rotate();
 
+  /* A pinch is two fingers. Without this the first finger is already mid drag
+     when the second lands, so the globe rotated while it zoomed and the gesture
+     felt like it was fighting itself. The flag is set from the raw touch events
+     because d3 sees each finger as its own gesture. */
+  let pinching = false;
+  svg.node().addEventListener('touchstart', (e) => {
+    if (e.touches.length > 1) pinching = true;
+  }, { passive: true });
+  svg.node().addEventListener('touchend', (e) => {
+    if (e.touches.length < 2) pinching = false;
+  }, { passive: true });
+  svg.node().addEventListener('touchcancel', () => { pinching = false; }, { passive: true });
+
   const drag = d3.drag()
     .filter((event) => {
       // Don't let a click/drag on a pin (or its hit area) start rotating the globe —
       // this was the cause of clicks feeling unreliable.
       const t = event.target;
+      if (event.touches && event.touches.length > 1) return false;
       return !(t.classList && (t.classList.contains('pin-hit') || t.classList.contains('pin-ring') || t.classList.contains('pin-core')));
     })
     .on('start', (event) => {
@@ -501,6 +515,7 @@
       resetIdleTimer();
     })
     .on('drag', (event) => {
+      if (pinching) return;
       const dx = event.x - dragStart[0];
       const dy = event.y - dragStart[1];
       const degPerPixel = 180 / (Math.PI * projection.scale());
@@ -520,9 +535,16 @@
   // Scroll-to-zoom — only active while the cursor is over the globe itself.
   // d3.zoom's wheel handler calls preventDefault() only for wheel events that
   // land on this svg element, so page scroll is completely unaffected elsewhere.
-  const baseScale = projection.scale();
+  /* let, not const: resize() recomputes the fit scale, and a stale base here
+     would make the next pinch or wheel jump back to the old size. */
+  let baseScale = projection.scale();
   const zoom = d3.zoom()
     .scaleExtent([1, 40])
+    /* Wheel only, as before. d3.zoom cannot be given touch here: letting it see
+       a one finger touchstart makes it start a single finger pan that fights the
+       drag that rotates the globe, and refusing that first touch means it only
+       ever receives the second finger and has nothing to measure against. The
+       pinch is handled directly below instead. */
     .filter((event) => event.type === 'wheel')
     .on('zoom', (event) => {
       const k = event.transform.k;
@@ -534,6 +556,57 @@
     });
 
   svg.call(zoom);
+
+  /* PINCH TO ZOOM, done by hand.
+     Two fingers, the ratio of the distance between them against the distance
+     they started at, applied to the scale the gesture started from. Clamped to
+     the same 1x..40x that the wheel uses.
+
+     __zoom is kept in step so a wheel afterwards, or a resize, carries on from
+     where the pinch left off rather than snapping back. */
+  const ZOOM_MIN = 1, ZOOM_MAX = 40;
+  let pinchStartDist = 0, pinchStartScale = 0;
+
+  function touchDist(t) {
+    const dx = t[0].clientX - t[1].clientX;
+    const dy = t[0].clientY - t[1].clientY;
+    return Math.hypot(dx, dy);
+  }
+
+  /* CAPTURE PHASE, and this matters. d3-drag's touchmove handler calls
+     stopImmediatePropagation as soon as it has a gesture for that finger, so a
+     listener registered after it on the same element is never reached. The first
+     finger of a pinch always starts a drag, so that is exactly what happens
+     here: the events arrive at window in capture, then die on the svg. Going
+     first is the only way this handler runs at all. */
+  svg.node().addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 2) return;
+    pinchStartDist = touchDist(e.touches);
+    pinchStartScale = projection.scale();
+    stopAutoRotate();
+    resetIdleTimer();
+  }, { passive: true, capture: true });
+
+  svg.node().addEventListener('touchmove', (e) => {
+    if (e.touches.length !== 2 || !pinchStartDist) return;
+    e.preventDefault();
+    const k = touchDist(e.touches) / pinchStartDist;
+    let sc = pinchStartScale * k;
+    sc = Math.max(baseScale * ZOOM_MIN, Math.min(baseScale * ZOOM_MAX, sc));
+    projection.scale(sc);
+    sphere.attr('r', sc);
+    const zt = svg.property('__zoom');
+    if (zt) zt.k = sc / baseScale;
+    render();
+    hidePopup();
+    resetIdleTimer();
+  }, { passive: false, capture: true });
+
+  svg.node().addEventListener('touchend', (e) => {
+    if (e.touches.length < 2) pinchStartDist = 0;
+  }, { passive: true, capture: true });
+  svg.node().addEventListener('touchcancel', () => { pinchStartDist = 0; },
+                              { passive: true, capture: true });
 
   document.addEventListener('click', hidePopup);
   popup.addEventListener('click', (e) => e.stopPropagation());
@@ -593,9 +666,14 @@
     const w = container.clientWidth;
     const h = container.clientHeight;
     if (!w || !h) return false;
-    projection.scale(Math.min(w, h) / 2.2).translate([w / 2, h / 2]);
+    /* Keep whatever zoom the visitor applied. Recomputing the fit scale and
+       throwing k away would snap them back out on every orientation change. */
+    const zt = svg.property('__zoom');
+    const k = zt && zt.k ? zt.k : 1;
+    baseScale = Math.min(w, h) / 2.2;
+    projection.scale(baseScale * k).translate([w / 2, h / 2]);
     svg.attr('width', w).attr('height', h);
-    sphere.attr('cx', w / 2).attr('cy', h / 2).attr('r', projection.scale());
+    sphere.attr('cx', w / 2).attr('cy', h / 2).attr('r', baseScale * k);
     render();
     return true;
   }

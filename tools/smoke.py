@@ -18,6 +18,7 @@ import socket
 import socketserver
 import sys
 import threading
+import time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.environ.setdefault("PLAYWRIGHT_BROWSERS_PATH", "/opt/pw-browsers")
@@ -202,6 +203,63 @@ def globe(pg, base):
     pg.set_viewport_size({"width": 1280, "height": 900})
 
 
+def touch_gestures(browser, base):
+    """One finger rotates, two fingers zoom, and neither does the other's job.
+
+    Real touch events through the browser input pipeline, not synthetic ones in
+    JS, because the thing that broke this was event ordering: d3-drag calls
+    stopImmediatePropagation on touchmove, so the pinch handler has to run in the
+    capture phase to be reached at all. A JS-dispatched event would not exercise
+    that."""
+    ctx = browser.new_context(viewport={"width": 390, "height": 844},
+                              has_touch=True, is_mobile=True,
+                              reduced_motion="reduce")
+    pg = ctx.new_page()
+    cdp = ctx.new_cdp_session(pg)
+    try:
+        pg.goto(base + "/index.html", wait_until="load")
+        pg.wait_for_timeout(2800)
+        pg.evaluate("document.getElementById('epMap').scrollIntoView({block:'center'})")
+        pg.wait_for_timeout(800)
+        c = pg.evaluate("""()=>{const r=document.getElementById('epMap').getBoundingClientRect();
+            return {x:Math.round(r.left+r.width/2),y:Math.round(r.top+r.height/2)};}""")
+        rad = lambda: pg.evaluate("+document.querySelector('#epMap circle').getAttribute('r')")
+        rot = lambda: pg.evaluate(
+            "document.querySelectorAll('#epMap path')[0].getAttribute('d').slice(0,80)")
+
+        r0, a0 = rad(), rot()
+        cdp.send("Input.dispatchTouchEvent", {"type": "touchStart",
+                 "touchPoints": [{"x": c["x"], "y": c["y"], "id": 1}]})
+        for i in range(1, 10):
+            cdp.send("Input.dispatchTouchEvent", {"type": "touchMove",
+                     "touchPoints": [{"x": c["x"] + i * 11, "y": c["y"], "id": 1}]})
+            time.sleep(0.02)
+        cdp.send("Input.dispatchTouchEvent", {"type": "touchEnd", "touchPoints": []})
+        pg.wait_for_timeout(600)
+        check(rot() != a0, "touch", "one finger rotates the globe")
+        check(abs(rad() - r0) < 1, "touch", "one finger does not zoom it")
+
+        r1 = rad()
+        cdp.send("Input.dispatchTouchEvent", {"type": "touchStart",
+                 "touchPoints": [{"x": c["x"] - 30, "y": c["y"], "id": 1}]})
+        time.sleep(0.04)
+        cdp.send("Input.dispatchTouchEvent", {"type": "touchStart", "touchPoints": [
+                 {"x": c["x"] - 30, "y": c["y"], "id": 1},
+                 {"x": c["x"] + 30, "y": c["y"], "id": 2}]})
+        for i in range(1, 9):
+            g = 30 + i * 14
+            cdp.send("Input.dispatchTouchEvent", {"type": "touchMove", "touchPoints": [
+                     {"x": c["x"] - g, "y": c["y"], "id": 1},
+                     {"x": c["x"] + g, "y": c["y"], "id": 2}]})
+            time.sleep(0.03)
+        cdp.send("Input.dispatchTouchEvent", {"type": "touchEnd", "touchPoints": []})
+        pg.wait_for_timeout(700)
+        check(rad() > r1 * 1.05, "touch", "two fingers pinch to zoom in",
+              "%d -> %d" % (r1, rad()))
+    finally:
+        ctx.close()
+
+
 def overflow(pg, base):
     """Sideways scroll. The homepage had 59px of it at 390 until today."""
     pages = ["index.html", "about.html", "podcast.html", "destinations/kenya.html",
@@ -254,6 +312,7 @@ def main():
             pg2 = browser.new_page(viewport={"width": 1280, "height": 900},
                                    reduced_motion="reduce")
             globe(pg2, base)
+            touch_gestures(browser, base)
             errors(pg2, base)
             pg2.close()
             browser.close()
