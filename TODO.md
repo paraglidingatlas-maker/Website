@@ -23,18 +23,20 @@ than left to rot, or this file stops being trusted.
       work without it. If it is blank on the live site, this is a whole page of
       the archive down and jumps to the top of this list.
 
-## Process, highest leverage
+## Process
 
-- [ ] **The audit never clicks anything.** 104 checks, all of them reading files.
-      That is why the rail popup bug survived since f2a5381 and needed a user to
-      report it. A smoke test that opens the homepage, clicks a tile, asserts the
-      popup opened, opens the phone menu, asserts four links are reachable, would
-      have caught it the day it shipped. Roughly 40 lines with Playwright.
+- [x] **The audit never clicks anything.** Done: `python3 tools/smoke.py` drives a
+      real browser over the rail popup, the phone menu, the audio player,
+      sideways scroll at 390px and uncaught script errors. 14 checks. It was
+      validated by putting the setPointerCapture bug back, which made it fail and
+      exit 1, then taking it out again. Run it alongside `audit.py --drift`
+      before pushing. It skips cleanly where Playwright is not installed.
 
 ## Content and SEO
 
-- [ ] **Dead link.** "Open the episode &rarr;" points at `href="#"`. Users click
-      it and nothing happens.
+- [x] **Dead link.** Was the globe popup's empty template state; globe.js sets a
+      real href when a pin is clicked. The placeholder href is gone, so the
+      keyboard cannot land on a link to nowhere while the popup is empty.
 - [ ] **Two episode pages have an empty description:**
       `can-we-steer-a-round-reserve-parachute-urs-haari-answers`,
       `touch-the-sky-with-glory`.
@@ -56,12 +58,26 @@ than left to rot, or this file stops being trusted.
       sections. The CSS already styles h2, h3 and h4 identically, so moving to h3
       changes nothing visually.
 - [ ] **Eight unreferenced asset files**, including `assets/footer/mountains.png`
-      and `assets/podcast/guest-urs-haari.jpg`.
+      and `assets/podcast/guest-urs-haari.jpg`. Not deleted: `atlas-favicon-source.png`
+      reads like a source file worth keeping, and the guest-urs-haari pair may be
+      waiting to be used. Needs a yes or no rather than a guess.
 - [ ] **Two classes with no CSS rule and no JS reference:** `dst` on
       destinations/kenya.html, `enq` on enquire.html.
-- [ ] `assets/images/himalayas-1.jpg` is 402KB, 2KB over the ceiling.
+- [ ] `assets/images/himalayas-1.jpg` is 402KB, 2KB over the ceiling. Left alone
+      on purpose: re-encoding at quality 80 came out at 417KB, so the file is
+      already efficient at 1600x1200, and most visitors get the 374KB webp
+      instead. Either widen the ceiling by a few KB or accept the warning.
 - [ ] **404.html has 17px links.** Genuinely small tap targets, but it is a page
       nobody spends time on. Low priority.
+
+## Also known
+
+- [ ] **`generate_episode_pages.py` emits a stray duplicate**,
+      `episodes/watch-this-before-you-buy-a-paragliding-harness.html`, alongside
+      the committed `-a-talk` version. Running the generator otherwise changes
+      nothing, so this is a slug mismatch rather than drift. The stray file is
+      deleted rather than committed each time, which will keep happening until
+      the slug is reconciled.
 
 ## Known and deliberate, not bugs
 

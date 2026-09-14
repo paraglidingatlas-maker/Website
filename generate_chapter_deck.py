@@ -626,7 +626,7 @@ def player_html(meta):
                 '      <div class="cd-player cd-player-audio">\n'
                 '        <span class="cd-player-corner cd-pc-tl"></span>\n'
                 '        <span class="cd-player-corner cd-pc-br"></span>\n'
-                '        <img src="%s" alt="%s" loading="lazy">\n'
+                '        %s\n'
                 '        <div class="ep-au" data-slug="%s" data-duration="%d">\n'
                 '          <audio preload="none" src="%s"></audio>\n'
                 '          <button type="button" class="ep-au-play" aria-label="Play">\n'
@@ -644,7 +644,7 @@ def player_html(meta):
                 '          <span class="ep-au-dur">%s</span>\n'
                 '        </div>\n'
                 '      </div>\n'
-                % (esc(art), esc(meta["title"]), esc(meta["slug"]), au["seconds"],
+                % (_art_tag(art, meta["title"]), esc(meta["slug"]), au["seconds"],
                    esc(au["url"]), chaps, esc(au["label"])))
         else:
             media = (
@@ -667,6 +667,23 @@ def player_html(meta):
 
 
 _MP3 = None
+
+
+def _art_tag(art, title):
+    """A picture element when a webp exists beside the jpg, else a plain img.
+
+    The webp is about half the size of the jpg for this artwork, 54KB against
+    101KB, and shipping only the jpg left eight webp files in the repo that
+    nothing referenced."""
+    webp = art.rsplit(".", 1)[0] + ".webp" if "." in art else None
+    disk = os.path.join(ROOT, "episodes", webp) if webp else None
+    if webp and disk and os.path.isfile(os.path.normpath(disk)):
+        return ('<picture><source srcset="%s" type="image/webp">'
+                '<img src="%s" alt="%s" loading="lazy"></picture>'
+                % (esc(webp), esc(art), esc(title)))
+    return '<img src="%s" alt="%s" loading="lazy">' % (esc(art), esc(title))
+
+
 
 
 def _audio_for(meta):

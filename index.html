@@ -474,7 +474,10 @@
           <p class="popup-title"></p>
           <p class="mp-guest"></p>
           <div class="mp-rd"><span class="mp-ch"></span><span class="mp-dur"></span></div>
-          <a class="popup-link" href="#" data-hover>Open the episode <i>&rarr;</i></a>
+          <!-- No href until a pin is clicked. globe.js sets .href from the pin data;
+           an anchor without one is not focusable, so the keyboard cannot land
+           on a link that goes nowhere while the popup is still empty. -->
+          <a class="popup-link" data-hover>Open the episode <i>&rarr;</i></a>
         </div>
       </div>
   </div>
