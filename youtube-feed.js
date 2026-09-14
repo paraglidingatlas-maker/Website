@@ -185,7 +185,10 @@
 
   trackEl.addEventListener('click', function (e) {
     const a = (e.target.closest && e.target.closest('.yt-card')) || pressedCard;
-    if (!a || a.dataset.bound) return;          // the direct binding already had it
+    // Was `if (a.dataset.bound) return`, which is what made the clones
+    // unreachable from here too. defaultPrevented asks the real question: has
+    // something already handled this click?
+    if (!a || e.defaultPrevented) return;
     // leave modified clicks alone so "open in new tab" still works
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     if (Date.now() - draggedAt < 350) return;   // a swipe must not open a video
@@ -213,6 +216,12 @@
       const c = el.cloneNode(true);
       c.setAttribute('aria-hidden', 'true');
       c.setAttribute('tabindex', '-1');
+      // cloneNode copies attributes but NOT listeners, so the clone arrived
+      // carrying data-bound="1" with nothing attached to it. bindCards then
+      // skipped it as already done and the delegated backstop refused it for
+      // the same reason, leaving every clone completely dead. The rail drifts,
+      // so half the cards on screen at any moment were the dead ones.
+      c.removeAttribute('data-bound');
       trackEl.appendChild(c);
     });
     bindCards();                          // the clones need it too
@@ -313,6 +322,7 @@
 
       trackEl.innerHTML = videos.map(card).join('');
       bindCards();
+      startRail();
       if (statusEl) {
         // TEMPORARY diagnostic suffix, remove once the click is understood
         const r = idRoutes;
@@ -322,7 +332,6 @@
         statusEl.textContent =
           `Live from YouTube. Showing the ${videos.length} most recent videos. [${via}]`;
       }
-      startRail();
     })
     .catch(function (err) {
       if (statusEl) statusEl.textContent = 'Could not reach the YouTube feed right now.';
