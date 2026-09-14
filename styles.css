@@ -342,12 +342,33 @@ img{max-width:100%;display:block;}
   .dest-copy > p:not(.kicker){min-height:9.6em;}
 }
 /* Narrower than 1280 the longest intro wraps further, so six lines stops being
-   enough: it needs 7 by 1200, 8 by 1024, 9 by 900 and 10 by 821. One more band
-   covers the common laptop window sizes. Below that it is left alone rather than
-   hard-coding five breakpoints around the length of today's copy, which would
-   quietly break the first time a paragraph is edited. */
+   enough. Measured, the lines the longest intro needs:
+
+     821   10 lines, heading 4      1000   8 lines, heading 3
+     900    9 lines, heading 4      1100   7 lines, heading 3
+
+   One band each, so the pictures stay the same size as each other all the way
+   down to where the layout goes single column at 820.
+
+   These numbers describe the copy as it stands. Change an intro and the bands
+   want remeasuring; the pictures would go uneven again rather than break, and
+   the comment above says where the measurement came from. The alternative was
+   a fixed tall crop on the media, which at 900 would render a 495px wide
+   landscape photograph 720px tall. Reserved space costs whitespace; that costs
+   the photograph. */
 @media(min-width:1100px) and (max-width:1279px){
   .dest-copy > p:not(.kicker){min-height:11.2em;}
+}
+@media(min-width:1000px) and (max-width:1099px){
+  .dest-copy > p:not(.kicker){min-height:12.8em;}
+}
+@media(min-width:900px) and (max-width:999px){
+  .dest-copy h2{min-height:6.4em;}
+  .dest-copy > p:not(.kicker){min-height:14.4em;}
+}
+@media(min-width:821px) and (max-width:899px){
+  .dest-copy h2{min-height:6.4em;}
+  .dest-copy > p:not(.kicker){min-height:16em;}
 }
 /* NO max-width. The cap was 560px inside a cell 812px wide at 1920, leaving
    252px empty to the right of every heading, growing on a wider screen.
