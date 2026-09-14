@@ -5,7 +5,7 @@
 set -e
 cd "$(dirname "$0")"
 python3 generate_chapter_deck.py    >/dev/null
-python3 generate_kb_pages.py        >/dev/null 2>&1 || true
+python3 generate_kb_pages.py        >/dev/null
 python3 generate_policies.py        >/dev/null
 python3 generate_tag_pages.py       >/dev/null
 python3 generate_sitemap.py         >/dev/null
