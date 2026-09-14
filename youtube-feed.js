@@ -198,6 +198,33 @@
     openBox(id, a.dataset.title);
   });
 
+  // ================= TEMPORARY TEST BENCH =================
+  // Delete this block with the markup and CSS it drives.
+  //
+  // Three columns, each removing a different suspect. A swaps the thumbnail for
+  // an iframe in place, so it exercises the click and the embed but not the
+  // lightbox. B calls the very same openBox the rail calls. C is a plain anchor
+  // with no script on it at all. Whichever of the three do nothing is where the
+  // fault lives, which beats another theory from me.
+  (function bench() {
+    const row = document.querySelector('.yt-bench-row');
+    if (!row) return;
+    row.querySelectorAll('.yt-bench-card[data-mode]').forEach(function (b) {
+      b.addEventListener('click', function (e) {
+        e.preventDefault();
+        const id = b.dataset.yt;
+        if (b.dataset.mode === 'lightbox') { openBox(id, 'Test B'); return; }
+        const f = document.createElement('iframe');
+        f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?autoplay=1';
+        f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture';
+        f.setAttribute('allowfullscreen', '');
+        f.setAttribute('title', 'Test A');
+        const img = b.querySelector('img');
+        if (img) img.parentNode.replaceChild(f, img);
+      });
+    });
+  })();
+
   // ---------------------------------------------------------------- motion
   // Ported from homepage-motion.js rather than written again. Every awkward
   // detail below was found and fixed there once already: the native link drag,
