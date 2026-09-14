@@ -305,6 +305,17 @@ img{max-width:100%;display:block;}
    ========================================================================= */
 .why{
   position:relative;
+  /* The glow below is 130% of this section, so it hung off both sides and made
+     the whole document wider than the viewport: the homepage scrolled sideways
+     on every phone, by 59px at 390 and 115px at 768.
+
+     clip, not hidden. hidden on either axis forces the other axis to scroll and
+     would cut the glow's deliberate upward bleed, which is the exact thing the
+     note below says was tried and rejected. overflow-x:clip leaves overflow-y
+     computed as visible, so the bleed survives. Measured identical, pixel for
+     pixel, at 360, 390, 414, 768, 1440 and 1920. Safari 15 and earlier drop the
+     declaration and simply keep today's behaviour. */
+  overflow-x:clip;
   padding:clamp(4rem,10vw,7rem) clamp(1.5rem,5vw,4rem);
   background:var(--bg);
   /* NO border-bottom. The booking card below is recessed into the same var(--bg)
