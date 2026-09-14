@@ -419,6 +419,69 @@ def kenya_hero(pg, base):
           "hero", "the photograph drifts against the scroll")
 
 
+def kenya_map(pg, base):
+    """The two state route map.
+
+    The lazy load is the part worth guarding. The sheet is fetched on first
+    open, so a wrong path or a rename fails silently: the button does nothing
+    and the page looks fine. Nothing else on the page would notice.
+
+    Marker positions are also checked for movement between the two states,
+    because both sets are generated from the projections in tools/ and baked
+    into data-plate and data-sheet. If a regeneration ever emits one set for
+    both, the pins would sit still and still look plausible."""
+    pg.set_viewport_size({"width": 1400, "height": 900})
+    pg.goto(base + "/destinations/kenya.html", wait_until="load")
+    pg.wait_for_timeout(1500)
+    pg.evaluate("document.querySelector('.kmap').scrollIntoView({block:'start'})")
+    pg.wait_for_timeout(900)
+
+    n = pg.evaluate("document.querySelectorAll('.kmap-pin').length")
+    check(n == 6, "map", "all six sites are markers on the map", n)
+    check(pg.evaluate("document.querySelectorAll('.kmap-row').length") == 6,
+          "map", "all six sites are in the list")
+    check(pg.evaluate("!!document.querySelector('.kmap-pin').style.left"),
+          "map", "markers are positioned from their coordinates")
+    check(pg.evaluate("[...document.querySelectorAll('.kmap-pin-name')]"
+                      ".filter(e=>getComputedStyle(e).opacity!=='0').length") == 1,
+          "map", "exactly one marker label shows at a time")
+
+    pg.evaluate("document.querySelectorAll('.kmap-row')[4].click()")
+    pg.wait_for_timeout(400)
+    txt = pg.eval_on_selector(".kmap-panel", "e=>e.innerText")
+    check("Machakos" in txt, "map", "choosing a site fills the panel", txt[:40])
+    check(pg.evaluate("document.querySelectorAll('.kmap-pin')[4]"
+                      ".classList.contains('is-on')"),
+          "map", "the list and the map stay in step")
+
+    # the chart must not be in the document until it is asked for
+    check(pg.evaluate("document.querySelector('.kmap-sheet').children.length") == 0,
+          "map", "the chart is not loaded until it is opened")
+    before = pg.evaluate("document.querySelector('.kmap-pin').style.left")
+    pg.click(".kmap-zoom")
+    pg.wait_for_timeout(2600)
+    check(pg.evaluate("document.querySelector('.kmap-sheet').querySelectorAll('svg').length") > 0,
+          "map", "the chart loads when opened")
+    check(pg.evaluate("document.querySelector('.kmap-stage').classList.contains('is-sheet')"),
+          "map", "opening the chart switches the map state")
+    after = pg.evaluate("document.querySelector('.kmap-pin').style.left")
+    check(before != after, "map", "markers move to their position on the chart",
+          f"{before} then {after}")
+
+    pg.keyboard.press("Escape")
+    pg.wait_for_timeout(900)
+    check(not pg.evaluate("document.querySelector('.kmap-stage').classList.contains('is-sheet')"),
+          "map", "escape returns to the overview")
+
+    # a phone cannot read the chart, so it is never offered one
+    pg.set_viewport_size({"width": 390, "height": 844})
+    pg.wait_for_timeout(600)
+    check(pg.evaluate("document.querySelector('.kmap-zoom').hidden"),
+          "map", "the chart is not offered on a phone")
+    check(pg.evaluate("getComputedStyle(document.querySelector('.kmap-sheet')).display") == "none",
+          "map", "the chart stays out of the way on a phone")
+
+
 def overflow(pg, base):
     """Sideways scroll. The homepage had 59px of it at 390 until today."""
     pages = ["index.html", "about.html", "podcast.html", "destinations/kenya.html",
@@ -465,7 +528,7 @@ def main():
                 return 0
             pg = browser.new_page(viewport={"width": 1280, "height": 900},
                                   reduced_motion="no-preference")
-            for fn in (rail, nav, player, library, search, kenya, kenya_hero, enquire, overflow):
+            for fn in (rail, nav, player, library, search, kenya, kenya_hero, kenya_map, enquire, overflow):
                 fn(pg, base)
             pg.close()
             pg2 = browser.new_page(viewport={"width": 1280, "height": 900},
