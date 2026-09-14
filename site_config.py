@@ -14,8 +14,8 @@ are far worse than canonicals pointing at a github.io subpath.
 
 # ---------------------------------------------------------------- address ----
 # Switch these two together, and only when DNS is live. See MIGRATION.md.
-DOMAIN = "paraglidingatlas-maker.github.io"
-PATH = "/Website/"
+DOMAIN = "paraglidingatlas.com"
+PATH = "/"
 BASE = "https://%s%s" % (DOMAIN, PATH)
 
 # ----------------------------------------------------------------- entity ----

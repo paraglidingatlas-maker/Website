@@ -384,14 +384,24 @@ def check_assets():
     refs = set()
     scan = PAGES + [f for f in os.listdir(".") if f.endswith((".js", ".css"))]
     for p in scan:
-        for u in re.findall(r"[\"'(\s]((?:\.\./)*(?:/Website/)?assets/[^\"')\s]+)", read(p)):
+        for u in re.findall(r"[\"'(\s]((?:\.\./)*(?:%s)?/?assets/[^\"')\s]+)"
+                             % re.escape(BASE_PATH.strip("/")), read(p)):
             # Drop the cache-busting query. tools/version_assets.py appends
             # ?v=<hash> to stylesheets and scripts, and once that covered
             # assets/js this check started reporting four files it could plainly
             # see as never referenced. The reference was there; the comparison
             # was matching the hash as part of the filename.
             u = u.split("?")[0].split("#")[0]
-            refs.add(os.path.normpath(u.replace("../", "").replace(BASE_PATH, "")))
+            # Strip a LEADING base path only. This used to be a bare replace of
+            # BASE_PATH, which was harmless while it was "/Website/" but becomes
+            # destructive the moment the site moves to the domain root: BASE_PATH
+            # is then "/", and replacing it everywhere turned
+            # assets/fonts/x.woff2 into assetsfontsx.woff2, so every font looked
+            # unreferenced. 105 false warnings, from a site that was correct.
+            u = u.replace("../", "")
+            if BASE_PATH != "/" and u.startswith(BASE_PATH):
+                u = u[len(BASE_PATH):]
+            refs.add(os.path.normpath(u.lstrip("/")))
     allf = set()
     for dp, _, fn in os.walk("assets"):
         for f in fn:
