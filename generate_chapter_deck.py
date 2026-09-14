@@ -603,13 +603,57 @@ def player_html(meta):
         listen = '        <a class="cd-lbtn" href="https://www.youtube.com/watch?v=%s" target="_blank" rel="noopener"><span>Watch on YouTube</span></a>\n' % esc(vid)
     else:
         art = meta.get("artwork") or "../assets/images/hero.jpg"
-        media = (
-            '      <div class="cd-player cd-player-audio">\n'
-            '        <span class="cd-player-corner cd-pc-tl"></span>\n'
-            '        <span class="cd-player-corner cd-pc-br"></span>\n'
-            '        <img src="%s" alt="%s" loading="lazy">\n'
-            '        <p class="cd-audio-note">Audio episode. This one was never filmed, so there is no video to watch.</p>\n'
-            '      </div>\n' % (esc(art), esc(meta["title"])))
+        # AUDIO EPISODES NOW PLAY HERE.
+        # The page used to be a still and two links out. The audio streams from
+        # the same anchor.fm URL the feed uses, so the browser range-requests it
+        # and a 95MB episode starts in about a second, and plays still count in
+        # the podcast stats rather than being invisible.
+        au = _audio_for(meta)
+        if au:
+            chaps = ""
+            for c in (meta.get("chapters") or []):
+                secs = _hms(c.get("at") or "")
+                if secs is None or not au["seconds"]:
+                    continue
+                pct = 100.0 * secs / au["seconds"]
+                if pct <= 0 or pct >= 100:
+                    continue
+                chaps += ('          <button type="button" class="ep-au-chap" '
+                          'style="left:%.3f%%" data-at="%d" title="%s">'
+                          '<span class="ep-au-sr">%s</span></button>\n'
+                          % (pct, secs, esc(c.get("title") or ""), esc(c.get("title") or "")))
+            media = (
+                '      <div class="cd-player cd-player-audio">\n'
+                '        <span class="cd-player-corner cd-pc-tl"></span>\n'
+                '        <span class="cd-player-corner cd-pc-br"></span>\n'
+                '        <img src="%s" alt="%s" loading="lazy">\n'
+                '        <div class="ep-au" data-slug="%s" data-duration="%d">\n'
+                '          <audio preload="none" src="%s"></audio>\n'
+                '          <button type="button" class="ep-au-play" aria-label="Play">\n'
+                '            <span class="ep-au-tri" aria-hidden="true"></span>\n'
+                '            <span class="ep-au-pause" aria-hidden="true"></span>\n'
+                '          </button>\n'
+                '          <span class="ep-au-cur">0:00</span>\n'
+                '          <div class="ep-au-bar" role="slider" tabindex="0"\n'
+                '            aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">\n'
+                '            <span class="ep-au-track"></span>\n'
+                '            <span class="ep-au-fill"></span>\n'
+                '%s'
+                '            <span class="ep-au-head"></span>\n'
+                '          </div>\n'
+                '          <span class="ep-au-dur">%s</span>\n'
+                '        </div>\n'
+                '      </div>\n'
+                % (esc(art), esc(meta["title"]), esc(meta["slug"]), au["seconds"],
+                   esc(au["url"]), chaps, esc(au["label"])))
+        else:
+            media = (
+                '      <div class="cd-player cd-player-audio">\n'
+                '        <span class="cd-player-corner cd-pc-tl"></span>\n'
+                '        <span class="cd-player-corner cd-pc-br"></span>\n'
+                '        <img src="%s" alt="%s" loading="lazy">\n'
+                '        <p class="cd-audio-note">Audio episode. This one was never filmed, so there is no video to watch.</p>\n'
+                '      </div>\n' % (esc(art), esc(meta["title"])))
         listen = ""
     return (media
             + '\n      <div class="cd-listen">\n' + listen
@@ -620,6 +664,54 @@ def player_html(meta):
             + '        <a class="cd-lbtn" href="%s" target="_blank" rel="noopener"><span>Listen on Spotify</span></a>\n' % esc(spotify)
             + '        <a class="cd-lbtn" href="%s" target="_blank" rel="noopener"><span>Listen on Apple</span></a>\n' % esc(apple)
             + '      </div>\n')
+
+
+_MP3 = None
+
+
+def _audio_for(meta):
+    """Audio URL and length for an episode, from mp3-map.json.
+
+    Duration comes from the episode's own duration_label rather than the byte
+    count, because the byte count only gives a bitrate estimate and the chapter
+    marks have to land in the right place.
+    """
+    global _MP3
+    if _MP3 is None:
+        try:
+            _MP3 = json.load(open(os.path.join(ROOT, "mp3-map.json"), encoding="utf-8"))
+        except Exception:
+            _MP3 = {}
+    e = _MP3.get(meta.get("slug"))
+    if not e or not e.get("url"):
+        return None
+    secs = _label_seconds(meta.get("duration_label") or "")
+    if not secs:
+        return None
+    return {"url": e["url"], "seconds": secs, "label": _clock(secs)}
+
+
+def _label_seconds(label):
+    m = re.search(r"(\d+)\s*min", label or "")
+    return int(m.group(1)) * 60 if m else 0
+
+
+def _clock(secs):
+    h, m = divmod(int(secs) // 60, 60)
+    return ("%d:%02d:00" % (h, m)) if h else ("%d:00" % m)
+
+
+def _hms(at):
+    """'00:04:40' or '4:40' to seconds. Returns None if it is not a timestamp."""
+    if not at:
+        return None
+    parts = at.strip().split(":")
+    if not all(p.isdigit() for p in parts) or not 2 <= len(parts) <= 3:
+        return None
+    parts = [int(p) for p in parts]
+    while len(parts) < 3:
+        parts.insert(0, 0)
+    return parts[0] * 3600 + parts[1] * 60 + parts[2]
 
 
 def tag_slug(name):

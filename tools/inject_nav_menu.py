@@ -24,6 +24,15 @@ MARK_OPEN = "<!-- nav-menu -->"
 MARK_CLOSE = "<!-- /nav-menu -->"
 ASSET = "nav-menu.js"
 
+# A second pair, for the audio player. Same mechanism, same reasoning: the tag
+# would otherwise have to be written into four generators and three templates.
+# Only pages that actually carry a player get it, so 178 pages do not pay for a
+# script eight of them use.
+AUDIO_OPEN = "<!-- episode-audio -->"
+AUDIO_CLOSE = "<!-- /episode-audio -->"
+AUDIO_ASSETS = ("waveforms.js", "episode-audio.js")
+AUDIO_NEEDLE = 'class="ep-au"' 
+
 # 404.html is served for any URL at any depth, so a relative src resolves
 # differently for /x.html than for /episodes/y.html. It uses root-absolute paths
 # for everything else for that reason, and the prefix comes from site_config so
@@ -54,7 +63,7 @@ def prefix(page):
 
 
 def main():
-    n = skipped = 0
+    n = skipped = audio = 0
     for p in pages():
         h = open(p, encoding="utf-8", errors="replace").read()
         # Only pages that actually carry the header nav.
@@ -69,9 +78,21 @@ def main():
         tag = '%s\n<script defer src="%s%s"></script>\n%s\n' % (
             MARK_OPEN, prefix(p), ASSET, MARK_CLOSE)
         h = h.replace("</body>", tag + "</body>", 1)
+
+        h = re.sub(re.escape(AUDIO_OPEN) + r".*?" + re.escape(AUDIO_CLOSE) + r"\n?",
+                   "", h, flags=re.S)
+        if AUDIO_NEEDLE in h:
+            block = AUDIO_OPEN + "\n"
+            for a in AUDIO_ASSETS:
+                block += '<script defer src="%s%s"></script>\n' % (prefix(p), a)
+            block += AUDIO_CLOSE + "\n"
+            h = h.replace("</body>", block + "</body>", 1)
+            audio += 1
+
         open(p, "w", encoding="utf-8").write(h)
         n += 1
     print("nav menu script on %d pages  (%d pages have no header nav)" % (n, skipped))
+    print("audio player script on %d pages" % audio)
     if n == 0:
         raise SystemExit("inject_nav_menu matched no pages, which cannot be right")
 

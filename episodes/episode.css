@@ -173,3 +173,82 @@
 .cd-quote cite{display:block;margin-top:.8rem;color:var(--gray);font-style:normal;font-size:.84rem;
   letter-spacing:.04em;text-transform:uppercase;}
 .cd-quote cite::before{content:"\2014 ";}
+
+/* ===== AUDIO PLAYER =========================================================
+   Eight episodes were never filmed. They had a still and two links out, and
+   nothing played on the page. This sits over the artwork inside .cd-player.
+
+   The waveform is drawn only when real peaks exist in waveforms.json. A
+   plausible looking squiggle would be invented data. Without peaks the bar is
+   a plain track and everything else behaves identically. */
+.cd-player-audio{position:relative;}
+/* UNDER the artwork, not over it. Overlaid, the gradient landed exactly on the
+   guest name printed at the foot of the template and cut it in half. The
+   artwork is the identity of these eight episodes; the player is a control
+   strip and can have its own band. */
+.ep-au{
+  position:relative;z-index:2;
+  display:flex;align-items:center;gap:0.85rem;
+  padding:0.8rem clamp(0.9rem,3vw,1.4rem);
+  background:var(--card);border-top:1px solid var(--edge);
+}
+.ep-au-play{
+  flex-shrink:0;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--live);background:rgba(20,21,25,0.72);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;
+  transition:border-color .18s ease, background .18s ease;
+}
+.ep-au-play:hover{border-color:var(--orange);background:var(--wash);}
+/* A triangle, not a glyph: a character would inherit the button skew rules and
+   sit off centre optically. 2px of left padding does the optical centring. */
+.ep-au-tri{
+  width:0;height:0;margin-left:3px;
+  border-top:9px solid transparent;border-bottom:9px solid transparent;
+  border-left:15px solid var(--orange);
+}
+.ep-au-pause{display:none;width:14px;height:16px;
+  border-left:4px solid var(--orange);border-right:4px solid var(--orange);}
+.ep-au.is-playing .ep-au-tri{display:none;}
+.ep-au.is-playing .ep-au-pause{display:block;}
+.ep-au-cur,.ep-au-dur{
+  flex-shrink:0;font-size:0.76rem;color:var(--gray-light);
+  font-variant-numeric:tabular-nums;min-width:3.2em;
+}
+.ep-au-dur{text-align:right;}
+.ep-au-bar{
+  position:relative;flex:1;height:38px;cursor:pointer;
+  display:flex;align-items:center;touch-action:none;
+}
+.ep-au-bar:focus-visible{outline:2px solid var(--live);outline-offset:3px;}
+.ep-au-track{position:absolute;left:0;right:0;height:3px;background:var(--edge);}
+.ep-au-fill{position:absolute;left:0;height:3px;width:0;background:var(--orange);}
+/* With peaks the flat track gives way to the shape. The fill becomes the
+   coloured overlay clipped to the played width, so the waveform is drawn once. */
+.ep-au.has-wave .ep-au-track,.ep-au.has-wave .ep-au-fill{height:100%;top:0;}
+.ep-au.has-wave .ep-au-track{background:none;}
+.ep-au.has-wave .ep-au-fill{background:none;overflow:hidden;}
+.ep-au-wave{position:absolute;left:0;top:0;width:100%;height:100%;}
+.ep-au.has-wave .ep-au-fill .ep-au-wave{max-width:none;}
+.ep-au-wave path{fill:var(--edge-hi);}
+.ep-au.has-wave .ep-au-fill .ep-au-wave path{fill:var(--orange);}
+.ep-au-head{
+  position:absolute;top:50%;width:2px;height:16px;margin-top:-8px;margin-left:-1px;
+  background:var(--white);pointer-events:none;
+}
+/* Chapter marks are real data, straight off the episode's own chapter list. */
+.ep-au-chap{
+  position:absolute;top:50%;width:11px;height:11px;margin-top:-5px;margin-left:-5px;
+  padding:0;border:none;border-radius:50%;background:var(--edge-hi);
+  cursor:pointer;transition:background .16s ease, transform .16s ease;
+}
+.ep-au-chap:hover{background:var(--orange);transform:scale(1.35);}
+.ep-au-chap:focus-visible{outline:2px solid var(--live);outline-offset:2px;}
+.ep-au-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+@media(max-width:560px){
+  .ep-au{gap:0.55rem;padding:0.7rem 0.8rem;}
+  .ep-au-play{width:40px;height:40px;}
+  .ep-au-cur,.ep-au-dur{font-size:0.7rem;min-width:2.9em;}
+}
+@media(prefers-reduced-motion: reduce){
+  .ep-au-chap{transition:none!important;}
+}
