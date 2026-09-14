@@ -145,7 +145,7 @@ NAV_HEADER = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{seo_title}</title>\n<meta name="description" content="{seo_desc}">\n<link rel="canonical" href="https://paraglidingatlas-maker.github.io/Website/knowledge-base/{slug}.html">\n<meta property="og:type" content="website">\n<meta property="og:title" content="{title}">\n<meta property="og:description" content="{seo_desc}">\n<meta property="og:image" content="https://paraglidingatlas-maker.github.io/Website/assets/images/hero.jpg">\n<meta property="og:url" content="https://paraglidingatlas-maker.github.io/Website/knowledge-base/{slug}.html">\n<meta name="twitter:card" content="summary_large_image">\n<script type="application/ld+json">\n{{"@context":"https://schema.org","@type":"CollectionPage","name":"{title}","url":"https://paraglidingatlas-maker.github.io/Website/knowledge-base/{slug}.html","description":"{seo_desc}","isPartOf":{{"@type":"WebSite","name":"Paragliding Atlas","url":"https://paraglidingatlas-maker.github.io/Website/"}}}}\n</script>
+<title>{seo_title}</title>\n<meta name="description" content="{seo_desc}">\n<link rel="canonical" href="{BASE}knowledge-base/{slug}.html">\n<meta property="og:type" content="website">\n<meta property="og:title" content="{title}">\n<meta property="og:description" content="{seo_desc}">\n<meta property="og:image" content="{BASE}assets/images/hero.jpg">\n<meta property="og:url" content="{BASE}knowledge-base/{slug}.html">\n<meta name="twitter:card" content="summary_large_image">\n<script type="application/ld+json">\n{{"@context":"https://schema.org","@type":"CollectionPage","name":"{title}","url":"{BASE}knowledge-base/{slug}.html","description":"{seo_desc}","isPartOf":{{"@type":"WebSite","name":"Paragliding Atlas","url":"{BASE}"}}}}\n</script>
 <link rel="icon" type="image/png" href="../assets/logo/favicon.png">
 <link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon.png">
 <meta name="theme-color" content="#141519">
@@ -303,7 +303,7 @@ def category_page(slug, title, intro, series_list):
   <div class="series-grid">{cards}
   </div>
 </div>"""
-    html = NAV_HEADER.format(title=title, seo_title=_seo_title(title), slug=slug, seo_desc=_seo(intro, title),
+    html = NAV_HEADER.format(BASE=cfg.BASE, title=title, seo_title=_seo_title(title), slug=slug, seo_desc=_seo(intro, title),
                              css=CATEGORY_CSS, body=body) + NAV_FOOTER
     write(f"{slug}.html", html)
 
@@ -402,7 +402,7 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
 <div class="ep-body">
   {ep_html}
 </div>"""
-    html = NAV_HEADER.format(title=title, seo_title=_seo_title(title), slug=slug, seo_desc=_seo(intro, title),
+    html = NAV_HEADER.format(BASE=cfg.BASE, title=title, seo_title=_seo_title(title), slug=slug, seo_desc=_seo(intro, title),
                              css=SUBSERIES_CSS, body=body)
     html = html.replace(
         '<script src="../script.js"></script>\n</body>',

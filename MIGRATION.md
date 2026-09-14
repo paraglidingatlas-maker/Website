@@ -46,22 +46,61 @@ That split costs three things at once:
 
 ## The switch, in order
 
-1. **DNS.** Point the apex `paraglidingatlas.com` at GitHub Pages with four A
-   records: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`,
-   `185.199.111.153`. Add a CNAME for `www` pointing at
-   `paraglidingatlas-maker.github.io`. Verify propagation before continuing.
-2. **`git mv CNAME.example CNAME`** and commit. GitHub Pages reads this file.
-3. **Repository settings → Pages → Custom domain**, then tick **Enforce HTTPS**
-   once the certificate has issued. This can take up to an hour. Do not proceed
-   while it is still provisioning.
-4. **In `site_config.py`**, set `DOMAIN = "paraglidingatlas.com"` and `PATH = "/"`.
-   Those two lines are the whole change. Nothing else needs editing.
-5. **`./build.sh`**. It fails loudly if sitemap.xml, robots.txt or llms.txt still
-   carry a stale address, so a partial move cannot ship quietly.
-6. **`python3 tools/audit.py --drift`** must pass before pushing.
-7. **Google Search Console and Bing Webmaster Tools**: add the new property,
+**The order below is not the order this file gave before.** GitHub's own docs say
+to add the domain in the repository settings BEFORE pointing DNS at it, because
+configuring DNS first can let someone else claim a subdomain of it in the window
+between. This file had DNS first. Corrected.
+
+1. **Verify the domain first.** Repository (or account) **Settings → Pages →
+   Add a domain**. GitHub gives you a `_github-pages-challenge-...` TXT record to
+   add at the registrar. This is the step that prevents a takeover, and it is
+   optional only in the sense that nothing stops you skipping it.
+2. **Add the custom domain in Settings → Pages → Custom domain**, and Save. Do
+   this before touching the A records.
+3. **DNS at the registrar.** Four A records on the apex `paraglidingatlas.com`:
+   `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`.
+   Four AAAA records for IPv6: `2606:50c0:8000::153`, `2606:50c0:8001::153`,
+   `2606:50c0:8002::153`, `2606:50c0:8003::153`. A CNAME for `www` pointing at
+   `paraglidingatlas-maker.github.io`. Remove any default A record the registrar
+   put there, and do not use a wildcard record.
+4. **`git mv CNAME.example CNAME`** and commit. GitHub Pages reads this file.
+   Note that setting the domain in Settings usually writes this file for you, so
+   check before committing a second one.
+5. **Wait for the certificate**, then tick **Enforce HTTPS**. Up to an hour, and
+   occasionally longer. Do not proceed while it still says provisioning.
+6. **In `site_config.py`**, set `DOMAIN = "paraglidingatlas.com"` and `PATH = "/"`.
+   Those two lines are the whole change.
+7. **`./build.sh`**. It fails loudly if sitemap.xml, robots.txt or llms.txt still
+   carry a stale address.
+8. **`python3 tools/audit.py --drift`** must pass before pushing. It reads the
+   base from `site_config` now, so it validates against wherever you just
+   pointed the site rather than against a hard-coded address.
+9. **Google Search Console and Bing Webmaster Tools**: add the new property and
    submit `sitemap.xml`. Bing matters more than it used to, because ChatGPT
    search leans on its index.
+
+## What the dry run actually found
+
+The claim above that this is a one-line change was tested again, properly, and
+it was not true. Flipping `site_config` and rebuilding produced:
+
+- **3 FAILs from `tools/audit.py` itself**, which hard-coded the old address in
+  three places including a literal `/Website/` in the sitemap check. The audit
+  would have failed step 8 against a site that was entirely correct, and anyone
+  following this file would have concluded the site was broken.
+- **35 broken links and 2 missing preloads, all in `404.html`.** It uses
+  root-absolute paths, correctly, because a 404 is served for any URL at any
+  depth and a relative path would resolve differently depending how deep the
+  missing URL was. But nothing rewrote them, so they all still said `/Website/`.
+- **Five generators and two templates** still writing the old address into pages
+  and being rescued only because the schema injector runs afterwards and
+  normalises them. Fragile, and invisible until the injector missed one.
+
+All fixed. `404.html` is now generated from `templates/404-template.html` by
+`tools/generate_404.py`, the audit reads `site_config`, and the generators and
+templates take the base from config. Re-run end to end after the fixes:
+**0 FAIL, 0 occurrences of the old address, 0 root-absolute `/Website/` paths**,
+and reverting is equally clean.
 
 ## The one thing that will go wrong if rushed
 

@@ -134,7 +134,11 @@ for cat, series_list in CATS:
 GRAPH = json.dumps({"nodes": nodes, "links": links}, ensure_ascii=False)
 
 tmpl = open(os.path.join(ROOT, 'templates', 'sitemap-template.html')).read()
-out = tmpl.replace('{{TREE}}', "\n".join(rows))
+import sys as _sys, os as _os
+_sys.path.insert(0, ROOT)
+import site_config as _cfg
+out = tmpl.replace('{{BASE}}', _cfg.BASE)
+out = out.replace('{{TREE}}', "\n".join(rows))
 out = out.replace('{{GRAPH}}', GRAPH)
 # cache bust the script so a browser can never serve a stale copy
 import hashlib

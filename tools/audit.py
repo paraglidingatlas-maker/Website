@@ -36,7 +36,15 @@ from collections import Counter, defaultdict
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 SKIP_DIRS = ("prototypes/", "templates/", "node_modules/", ".git/")
-BASE_PATH = "/Website/"
+# The address comes from site_config, the same place every generator reads it.
+# It used to be hard-coded here, and that made the audit fail the migration it
+# is supposed to guard: flipping site_config to the custom domain produced three
+# FAILs against a site that was entirely correct, because the audit was still
+# comparing everything to the old address.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import site_config as cfg
+BASE_PATH = cfg.PATH
+SITE_BASE = cfg.BASE
 
 QUIET = "--quiet" in sys.argv
 DRIFT = "--drift" in sys.argv
@@ -237,7 +245,13 @@ def check_crawler():
     if not os.path.exists("sitemap.xml"):
         return
     sm = read("sitemap.xml")
-    listed = set(re.findall(r"<loc>[^<]*/Website/([^<]+)</loc>", sm))
+    # strip the configured base rather than matching a literal /Website/, which
+    # would find nothing once PATH becomes "/" and report every page missing
+    listed = set()
+    for m in re.finditer(r"<loc>([^<]+)</loc>", sm):
+        u = m.group(1)
+        if u.startswith(cfg.BASE):
+            listed.add(u[len(cfg.BASE):])
     indexable = {p for p in PAGES if "noindex" not in read(p)}
     missing = sorted(indexable - listed)
     extra = sorted(listed - {p for p in PAGES})
@@ -532,7 +546,7 @@ def check_canonical_paths():
         m = re.search(r'rel="canonical" href="([^"]+)"', h)
         if not m or "noindex" in h:
             continue          # a redirect stub points at its destination, correctly
-        want = "https://paraglidingatlas-maker.github.io" + BASE_PATH + p
+        want = SITE_BASE + p
         if m.group(1) != want:
             bad.append((p, m.group(1)))
         om = re.search(r'property="og:url" content="([^"]+)"', h)
@@ -972,7 +986,7 @@ def check_robots():
     if not os.path.exists("robots.txt"):
         return
     r = read("robots.txt")
-    want = "https://paraglidingatlas-maker.github.io" + BASE_PATH + "sitemap.xml"
+    want = SITE_BASE + "sitemap.xml"
     (ok if want in r else fail)("crawler", "robots.txt does not point at the real sitemap URL")
     (ok if "Disallow: /" not in r.replace("Disallow: /\n", "") else fail)("crawler", "robots.txt disallows crawling")
 

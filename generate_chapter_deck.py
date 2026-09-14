@@ -686,7 +686,7 @@ def build(meta, cues, chapters):
         "datePublished": meta.get("published", ""),
         "description": meta.get("summary", "")[:280],
         "partOfSeries": {"@type": "PodcastSeries", "name": "Paragliding Atlas"},
-        "url": "https://paraglidingatlas-maker.github.io/Website/episodes/%s.html" % meta["slug"],
+        "url": cfg.url("episodes/%s.html" % meta["slug"]),
     }
     if meta.get("guest"):
         jsonld["actor"] = {"@type": "Person", "name": meta["guest"]}
@@ -710,6 +710,7 @@ def build(meta, cues, chapters):
     submeta_html = '<span class="cd-dot"></span>'.join(submeta)
 
     return tmpl.format(
+        BASE=cfg.BASE,
         title=esc(meta["title"]),
         seo_title=esc(seo_title(meta["title"])),
         seo_desc=esc(meta.get("summary", "")[:155]),
@@ -722,7 +723,7 @@ def build(meta, cues, chapters):
         player=player_html(meta),
         og_image=esc(meta.get("artwork") or
                      ("https://i.ytimg.com/vi/%s/maxresdefault.jpg" % vid if vid
-                      else "https://paraglidingatlas-maker.github.io/Website/assets/images/hero.jpg")),
+                      else cfg.url("assets/images/hero.jpg"))),
         rail_block=rail_block_html(meta, chapters_with_content(paras, chapters)),
         summary=esc(meta.get("summary", "")),
         transcript_block=transcript_block_html(
