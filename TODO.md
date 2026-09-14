@@ -29,8 +29,15 @@ than left to rot, or this file stops being trusted.
       real browser over the rail popup, the phone menu, the audio player,
       sideways scroll at 390px and uncaught script errors. 14 checks. It was
       validated by putting the setPointerCapture bug back, which made it fail and
-      exit 1, then taking it out again. Run it alongside `audit.py --drift`
-      before pushing. It skips cleanly where Playwright is not installed.
+      exit 1, then taking it out again. It skips cleanly where Playwright is not
+      installed.
+- [x] **One command before pushing: `./check.sh`.** Runs build, then
+      `audit.py --drift`, then `smoke.py`, stops at the first real failure and
+      exits non-zero. Prints the warnings, and the real diff with the
+      dateModified churn filtered out. Verified against three failure modes: a
+      build failure stops everything, a JS syntax error fails at the audit, and a
+      silently broken pinch passes the audit with 0 FAIL and fails at the smoke
+      stage, which is the whole reason the smoke stage exists.
 
 ## Content and SEO
 
