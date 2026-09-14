@@ -659,7 +659,14 @@
     transform:skewX(-10deg);transform-origin:left top;
     transition:background 0.2s ease,border-color 0.2s ease;
   }
-  .wwu-btn:hover,.wwu-btn:focus-visible{background:rgba(255,117,23,0.12);border-color:var(--orange);}
+  /* Outline at rest, solid fill on hover. Same behaviour as .listen-btn in
+     styles.css, which is the site's existing outline-to-fill button, and the
+     same values: the fill is --orange and the text flips to --ink so it stays
+     legible on it. The span carries its own colour, so it has to flip too or
+     the label stays white on orange. */
+  .wwu-btn:hover,.wwu-btn:focus-visible{
+    background:var(--orange);border-color:var(--orange);color:var(--ink);}
+  .wwu-btn:hover span,.wwu-btn:focus-visible span{color:var(--ink);}
   .wwu-btn span{display:inline-block;transform:skewX(10deg);}
 
   @media(max-width:820px){
