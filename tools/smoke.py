@@ -870,37 +870,65 @@ def kenya_gallery(pg, base):
 
     # In front of everything except the photograph you are looking at: a third
     # mask layer opens a hole over the card at the front.
+    #
+    # Checked narrow as well as wide, because the card is not the same fraction
+    # of the frame at both: 38%-62% at 1400, 27%-73% at 390. A hole sized for
+    # the desktop card left cloud sitting on both edges of the mobile one and
+    # the desktop check saw none of it.
     import tempfile as _t
     from PIL import Image as _I
-    pg.evaluate("document.querySelector('.cfl').scrollIntoView({block:'center'})")
-    pg.wait_for_timeout(1200)
-    on = os.path.join(_t.gettempdir(), "cfl-on.png")
-    off = os.path.join(_t.gettempdir(), "cfl-off.png")
-    try:
-        pg.locator(".cfl-wrap").screenshot(path=on)
-        pg.evaluate("document.querySelector('.cfl-atmos').style.visibility='hidden'")
-        pg.wait_for_timeout(350)
-        pg.locator(".cfl-wrap").screenshot(path=off)
-        pg.evaluate("document.querySelector('.cfl-atmos').style.visibility=''")
-        box = pg.evaluate("""()=>{const w=document.querySelector('.cfl-wrap').getBoundingClientRect();
-          const c=document.querySelectorAll('.cfl-card')[0].getBoundingClientRect();
-          return [Math.round(c.left-w.left),Math.round(c.top-w.top),
-                  Math.round(c.width),Math.round(c.height)];}""")
-        A, B = _I.open(on).convert("L"), _I.open(off).convert("L")
-        pa, pb, wd = list(A.getdata()), list(B.getdata()), A.size[0]
-        x, y, cw, ch = box
-        hits = tot = 0
-        for row in range(y + 10, min(A.size[1], y + ch - 10)):
-            for colx in range(x + 10, min(wd, x + cw - 10)):
-                i = row * wd + colx
-                tot += 1
-                if abs(pa[i] - pb[i]) > 4:
-                    hits += 1
-        pct = hits / max(1, tot) * 100
-        check(pct < 3, "gallery", "the card at the front stays clear of cloud",
-              f"{pct:.1f}% of it covered")
-    except Exception as e:
-        check(False, "gallery", "the card at the front stays clear of cloud", str(e)[:50])
+    for vw in (1400, 390):
+        pg.set_viewport_size({"width": vw, "height": 900})
+        pg.wait_for_timeout(500)
+        pg.evaluate("document.querySelector('.cfl').scrollIntoView({block:'center'})")
+        pg.wait_for_timeout(1300)
+        on = os.path.join(_t.gettempdir(), f"cfl-on-{vw}.png")
+        off = os.path.join(_t.gettempdir(), f"cfl-off-{vw}.png")
+        try:
+            box = pg.evaluate("""()=>{const w=document.querySelector('.cfl-wrap').getBoundingClientRect();
+              const c=document.querySelectorAll('.cfl-card')[0].getBoundingClientRect();
+              return [Math.round(c.left-w.left),Math.round(c.top-w.top),
+                      Math.round(c.width),Math.round(c.height)];}""")
+            pg.locator(".cfl-wrap").screenshot(path=on)
+            pg.evaluate("document.querySelector('.cfl-atmos').style.visibility='hidden'")
+            pg.wait_for_timeout(350)
+            pg.locator(".cfl-wrap").screenshot(path=off)
+            pg.evaluate("document.querySelector('.cfl-atmos').style.visibility=''")
+            A, B = _I.open(on).convert("L"), _I.open(off).convert("L")
+            if A.size != B.size:
+                raise RuntimeError(f"frames differ in size, {A.size} vs {B.size}")
+            pa, pb, wd = list(A.getdata()), list(B.getdata()), A.size[0]
+            x, y, cw, ch = box
+            hits = tot = 0
+            for row in range(max(0, y + 6), min(A.size[1], y + ch - 6)):
+                for colx in range(max(0, x + 6), min(wd, x + cw - 6)):
+                    i = row * wd + colx
+                    tot += 1
+                    if abs(pa[i] - pb[i]) > 4:
+                        hits += 1
+            pct = hits / max(1, tot) * 100
+            check(pct < 4, "gallery",
+                  f"the card at the front stays clear of cloud at {vw}px",
+                  f"{pct:.1f}% of it covered")
+
+            # and the band just above it: the complaint was cloud crowding the
+            # top edge, which is outside the card and so invisible to the check
+            # above.
+            bh = bt = 0
+            for row in range(max(0, y - 70), max(0, y)):
+                for colx in range(max(0, x), min(wd, x + cw)):
+                    i = row * wd + colx
+                    bt += 1
+                    if abs(pa[i] - pb[i]) > 4:
+                        bh += 1
+            bpct = bh / max(1, bt) * 100
+            check(bpct < 6, "gallery",
+                  f"the space just above the front card is clear too at {vw}px",
+                  f"{bpct:.1f}% of it covered")
+        except Exception as e:
+            check(False, "gallery",
+                  f"the card at the front stays clear of cloud at {vw}px", str(e)[:60])
+    pg.set_viewport_size({"width": 1400, "height": 900})
 
 
 def overflow(pg, base):
