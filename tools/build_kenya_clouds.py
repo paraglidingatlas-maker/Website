@@ -32,6 +32,11 @@ LAYERS = [(3,  0.54,  5.59, 0.92, 1000),
           (23, 0.65,  2.25, 0.55,  760),
           (41, 0.57,  4.32, 0.80,  920)]
 WIDTH = 2400
+# Right edge blurred this much more than the left. Solved, not guessed: a
+# radius 30% larger only removed 5% of the measured detail, because the noise is
+# band-limited and most of a bigger radius does nothing. These multipliers give
+# 30% less detail at the right edge on every layer.
+RIGHT_BLUR = [2.56, 4.50, 4.46, 3.30]
 
 
 def fbm(h, w, octaves, seed):
@@ -55,13 +60,24 @@ if __name__ == "__main__":
         a = np.clip((n - cut) / (1 - cut), 0, 1) ** 1.2
         yy = np.linspace(0, 1, H)[:, None]
         a *= np.sin(yy * np.pi) ** 0.75          # reaches zero at both edges
-        a = ndimage.gaussian_filter(a, blur) * alpha
+        # Blur increases across the width: BLUR on the left, BLUR * RIGHT_BLUR
+        # on the right, blended with a horizontal ramp. Two passes rather than a
+        # true spatially varying kernel, which is far more expensive and would
+        # not look any different at these radii.
+        soft = ndimage.gaussian_filter(a, blur)
+        softer = ndimage.gaussian_filter(a, blur * RIGHT_BLUR[i - 1])
+        ramp = np.linspace(0, 1, WIDTH)[None, :] ** 1.25
+        a = (soft * (1 - ramp) + softer * ramp) * alpha
         rgb = np.dstack([np.full((H, WIDTH), 218, np.uint8),
                          np.full((H, WIDTH), 223, np.uint8),
                          np.full((H, WIDTH), 232, np.uint8),
                          (np.clip(a, 0, 1) * 255).astype(np.uint8)])
         path = f"{OUT}/cloud-{i}.webp"
         Image.fromarray(rgb, "RGBA").save(path, "WEBP", quality=76, method=6)
-        detail = np.abs(np.diff(a, axis=1)).mean() * 1000
-        print(f"  cloud-{i}  blur {blur:4.1f}  detail {detail:5.2f}  "
-              f"{os.path.getsize(path)//1024}KB")
+        half = WIDTH // 2
+        dl = np.abs(np.diff(a[:, :half], axis=1)).mean() * 1000
+        dr = np.abs(np.diff(a[:, half:], axis=1)).mean() * 1000
+        q = int(WIDTH * 0.78)
+        dq = np.abs(np.diff(a[:, q:], axis=1)).mean() * 1000
+        print(f"  cloud-{i}  blur {blur:4.2f} to {blur*RIGHT_BLUR[i-1]:5.2f}  "
+              f"detail left {dl:5.2f}  far right {dq:5.2f}  {os.path.getsize(path)//1024}KB")
