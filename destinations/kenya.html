@@ -255,10 +255,48 @@
 .dst-head{max-width:62rem;margin:0 0 2.6rem;}
 .dst-head h2{font-family:var(--font-display);font-weight:700;color:var(--white);
   font-size:clamp(1.5rem,3.4vw,2.4rem);line-height:1.15;margin:.5rem 0 0;letter-spacing:-.01em;}
-.dst-head p{color:var(--gray-light);line-height:1.75;margin:1rem 0 0;max-width:68ch;}
-.dst-lede{color:var(--white);font-size:clamp(1.02rem,1.7vw,1.2rem);line-height:1.8;max-width:70ch;}
+.dst-head p{color:var(--gray-light);line-height:1.75;margin:1rem 0 0;max-width:30rem;}
+.dst-lede{color:var(--white);font-size:clamp(1.02rem,1.7vw,1.2rem);line-height:1.8;max-width:37rem;}
 .dst-pull{font-family:var(--font-display);font-weight:600;color:var(--orange);
   font-size:clamp(1.15rem,2.4vw,1.65rem);line-height:1.35;max-width:24ch;margin:2.4rem 0 0;}
+
+
+/* ---------- RHYTHM ========================================================
+   Every section on this page opened the same way: orange kicker, white heading
+   at one size, body at one width, then a grid of equal cards, rule, repeat. Ten
+   screens of that reads as a well organised document rather than as a designed
+   page, which is the note that prompted this.
+
+   Three changes, all structural rather than decorative.
+
+   One image runs edge to edge of the column with no padding and no text, which
+   is the only place on the page where nothing is being explained.
+
+   The narrative sections and the reference sections stop looking alike. Overview,
+   conditions, before you book, route, sites, on the ground and dates carry the
+   argument, so their headings grow. Practical, FAQ and packing are things you
+   consult rather than read, so they shrink and their kickers go quiet. Same
+   content, different weight.
+
+   And the pull quote becomes an actual statement instead of slightly larger body
+   text. It was 1.65rem at most, which made the loudest line on the page smaller
+   than the headings around it. */
+
+.dst-band{padding:0;border-top:1px solid var(--rule);}
+.dst-band picture,.dst-band img{display:block;width:100%;}
+.dst-band img{height:clamp(14rem,34vw,26rem);object-fit:cover;object-position:50% 55%;}
+
+.dst-sec.is-quiet .dst-head h2{font-size:clamp(1.24rem,2.3vw,1.62rem);letter-spacing:0;}
+.dst-sec.is-quiet .kicker{color:var(--gray);}
+.dst-sec.is-quiet .dst-head{margin-bottom:1.8rem;}
+.dst-sec.is-quiet .dst-head p{font-size:.9rem;}
+
+.dst-sec.is-loud .dst-head h2{font-size:clamp(1.9rem,4.6vw,3.25rem);line-height:1.04;
+  letter-spacing:-.02em;max-width:18ch;}
+.dst-sec.is-loud .dst-head{margin-bottom:3rem;}
+
+.dst-pull{font-size:clamp(1.6rem,4.4vw,3rem);line-height:1.14;max-width:16ch;
+  margin:3.2rem 0 0;letter-spacing:-.015em;}
 
 /* ---------- data blocks ---------- */
 .dst-grid{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);}
@@ -668,7 +706,7 @@
 
 <div class="dst-shell">
 <div class="dst-main">
-<section class="dst-sec" id="overview">
+<section class="dst-sec is-loud" id="overview">
   <div class="dst-head">
     <span class="kicker">Overview</span>
     <h2>A flight of human genesis</h2>
@@ -682,7 +720,7 @@
   <p class="dst-pull">Let East African skies awaken your inner explorer, and leave you forever inspired.</p>
 </section>
 
-<section class="dst-sec" id="conditions">
+<section class="dst-sec is-loud" id="conditions">
   <div class="dst-head">
     <span class="kicker">General Info</span>
     <h2>What the air actually does here</h2>
@@ -701,7 +739,7 @@
 </section>
 
 
-<section class="dst-sec" id="reality">
+<section class="dst-sec is-loud" id="reality">
   <div class="dst-head">
     <span class="kicker">Before You Book</span>
     <h2>What this trip is actually like</h2>
@@ -742,7 +780,16 @@
   </div>
 </section>
 
-<section class="dst-sec kmap" id="route" aria-labelledby="route-h">
+<section class="dst-band">
+  <picture>
+    <source srcset="../assets/destinations/kenya/kenya-band.webp" type="image/webp">
+    <img src="../assets/destinations/kenya/kenya-band.jpg" width="1152" height="493"
+      loading="lazy" decoding="async"
+      alt="A paraglider on a long glide over arid rock outcrops near the equator in low golden light">
+  </picture>
+</section>
+
+<section class="dst-sec kmap is-loud" id="route" aria-labelledby="route-h">
   <div class="dst-head">
     <span class="kicker">The route</span>
     <h2 id="route-h">Six sites down the Rift, 451 km end to end</h2>
@@ -1647,7 +1694,7 @@
   </div>
 </section>
 
-<section class="dst-sec" id="sites">
+<section class="dst-sec is-loud" id="sites">
   <div class="dst-head">
     <span class="kicker">Where You Will Fly</span>
     <h2>Six sites, one valley system</h2>
@@ -1663,7 +1710,7 @@
   </div>
 </section>
 
-<section class="dst-sec" id="practical">
+<section class="dst-sec is-quiet" id="practical">
   <div class="dst-head">
     <span class="kicker">Know Before You Go</span>
     <h2>The practical country</h2>
@@ -1681,7 +1728,7 @@
 
 
 
-<section class="dst-sec" id="faq">
+<section class="dst-sec is-quiet" id="faq">
   <div class="dst-head">
     <span class="kicker">Questions</span>
     <h2>What pilots ask before booking</h2>
@@ -1699,7 +1746,7 @@
   </div>
 </section>
 
-<section class="dst-sec" id="packing">
+<section class="dst-sec is-quiet" id="packing">
   <div class="dst-head">
     <span class="kicker">Requirements &amp; Packing</span>
     <h2>Before you fly, and what to bring</h2>
@@ -1718,7 +1765,7 @@
   </div>
 </section>
 
-<section class="dst-sec" id="ground">
+<section class="dst-sec is-loud" id="ground">
   <div class="dst-head">
     <span class="kicker">On The Ground</span>
     <h2>Flying in Africa, and how to do it well</h2>
@@ -1742,7 +1789,7 @@
   </div>
 </section>
 
-<section class="dst-sec" id="dates">
+<section class="dst-sec is-loud" id="dates">
   <div class="dst-head">
     <span class="kicker">Season Packages</span>
     <h2>Three departures</h2>
