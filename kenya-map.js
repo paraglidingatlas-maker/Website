@@ -300,6 +300,14 @@
     } catch (err) { /* getTotalLength throws on a detached node */ }
   }
 
+  /* A window resize is not the only thing that changes this stage's size. An
+     image loading further up the page reflows it without any resize event, and
+     the markers are positioned in px from that width, so they end up stale:
+     measured 11.4px out at 6.6x zoom after the gallery was added above. Watch
+     the element, not the window. */
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(function () { apply(false); }).observe(stage);
+  }
   window.addEventListener('resize', function () { apply(false); });
   apply(false);
   place();

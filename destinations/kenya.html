@@ -282,9 +282,6 @@
    text. It was 1.65rem at most, which made the loudest line on the page smaller
    than the headings around it. */
 
-.dst-band{padding:0;}
-.dst-band picture,.dst-band img{display:block;width:100%;}
-.dst-band img{height:clamp(14rem,34vw,26rem);object-fit:cover;object-position:50% 55%;}
 
 .dst-sec.is-quiet .dst-head h2{font-size:clamp(1.24rem,2.3vw,1.62rem);letter-spacing:0;}
 .dst-sec.is-quiet .kicker{color:var(--gray);}
@@ -434,14 +431,13 @@
 /* Photographs bleed; the map does not. The plate carries empty margin inside
    its own viewBox and nothing draws beyond Kenya, so bleeding it produced a
    1440x1137 band with a small country floating in the middle of it. */
-.dst-band,.cfl-frame{width:100vw;margin-left:calc(50% - 50vw);}
+.cfl-frame{width:100vw;margin-left:calc(50% - 50vw);}
 .kmap-figure{max-width:76rem;}
 .kmap-stage{aspect-ratio:auto;height:clamp(26rem,64vh,40rem);}
-/* No rules anywhere near the gallery. A 1px line across the page is exactly
-   the hard edge the dissolve exists to remove, and the photograph below it
-   was arriving behind one too. */
-.dst-band{border:0;}
-.dst-sec.cfl,.cfl + .dst-band,.dst-band + .dst-sec{border-top:0;}
+/* No rule above the gallery or below it. A 1px line across the page is exactly
+   the hard edge the dissolve exists to remove. Beating .dst-sec + .dst-sec
+   needs two classes: .cfl alone lost the cascade silently. */
+.dst-sec.cfl,.cfl + .dst-sec{border-top:0;}
 .cfl-frame{border-left:0;border-right:0;}
 
 .cfl-dots{margin-left:clamp(1.2rem,5vw,5.5rem);}
@@ -956,15 +952,6 @@
     <button type="button" class="cfl-lb-nav cfl-lb-next" aria-label="Next">&#10095;</button>
     <p class="cfl-lb-cap"></p>
   </div>
-</section>
-
-<section class="dst-band">
-  <picture>
-    <source srcset="../assets/destinations/kenya/kenya-band.webp" type="image/webp">
-    <img src="../assets/destinations/kenya/kenya-band.jpg" width="1152" height="493"
-      loading="lazy" decoding="async"
-      alt="A paraglider on a long glide over arid rock outcrops near the equator in low golden light">
-  </picture>
 </section>
 
 <section class="dst-sec kmap is-loud" id="route" aria-labelledby="route-h">
@@ -2228,7 +2215,7 @@
   arm();
 })();
 </script>
-<script defer src="../kenya-map.js?v=b2dce7ea"></script>
+<script defer src="../kenya-map.js?v=b619d07f"></script>
 <script defer src="../kenya-gallery.js?v=68007c98"></script>
 <!-- nav-menu -->
 <script defer src="../nav-menu.js?v=001fbbf6"></script>
