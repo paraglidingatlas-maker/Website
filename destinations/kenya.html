@@ -152,6 +152,21 @@
 .kmap-figure{min-width:0;}
 .kmap-stage{position:relative;width:100%;aspect-ratio:19 / 15;overflow:hidden;
   background:var(--bg);border:1px solid var(--rule);}
+/* Weather in the empty part of the stage. Both maps paint an opaque ground
+   across their whole viewBox, and preserveAspectRatio letterboxes them inside
+   it: 727px of chart in a 1216px box leaves 243px of grey each side. Putting
+   the clouds UNDER the map layers means the map hides them by itself and they
+   show only in that grey. No mask needed, and it stays right if the stage ever
+   changes shape. */
+.kmap-weather{position:absolute;inset:-14% -8%;z-index:0;pointer-events:none;overflow:hidden;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 16%,#000 84%,transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0,#000 16%,#000 84%,transparent 100%);}
+.kmap-cloud{position:absolute;left:-10%;width:120%;max-width:none;height:auto;
+  will-change:transform;mix-blend-mode:screen;opacity:.62;}
+.kmap-cloud:nth-child(1){top:-12%;}
+.kmap-cloud:nth-child(2){top:20%;opacity:.5;}
+.kmap-cloud:nth-child(3){top:48%;opacity:.46;}
+.kmap-cloud:nth-child(4){top:72%;opacity:.4;}
 .kmap-layer{position:absolute;inset:0;}
 .kmap-layer svg{display:block;width:100%;height:100%;}
 
@@ -165,8 +180,8 @@
 .kmap-stage.is-sheet .kmap-plate{transform:translate(64.24%,60.41%) scale(.2225);
   filter:brightness(1.35);}
 
-.kmap-pins{position:absolute;inset:0;}
-.kmap-view{position:absolute;inset:0;transform-origin:0 0;}
+.kmap-pins{position:absolute;inset:0;z-index:2;}
+.kmap-view{position:absolute;inset:0;transform-origin:0 0;z-index:1;}
 .kmap-stage{touch-action:pan-y;cursor:grab;}
 .kmap-stage.is-zoomed{cursor:grab;}
 .kmap-stage.is-zoomed:active{cursor:grabbing;}
@@ -1028,6 +1043,7 @@
   <div class="kmap-grid">
     <div class="kmap-figure">
       <div class="kmap-stage">
+        <div class="kmap-weather" aria-hidden="true"><img class="kmap-cloud" data-sp="-0.14" src="../assets/destinations/kenya/clouds/cloud-1.webp" alt="" loading="lazy" decoding="async"><img class="kmap-cloud" data-sp="0.09" src="../assets/destinations/kenya/clouds/cloud-2.webp" alt="" loading="lazy" decoding="async"><img class="kmap-cloud" data-sp="-0.26" src="../assets/destinations/kenya/clouds/cloud-3.webp" alt="" loading="lazy" decoding="async"><img class="kmap-cloud" data-sp="0.18" src="../assets/destinations/kenya/clouds/cloud-4.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="kmap-view">
         <div class="kmap-layer kmap-sheet" data-src="../assets/destinations/kenya/map/kenya-sheet.svg" aria-hidden="true"></div>
         <div class="kmap-layer kmap-plate"><svg viewBox="0 0 1900 1500" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans, sans-serif" role="img" aria-label="Map of Kenya showing the six flying sites and the route between them">
@@ -2279,7 +2295,7 @@
   arm();
 })();
 </script>
-<script defer src="../kenya-map.js?v=5a17215f"></script>
+<script defer src="../kenya-map.js?v=29cefe35"></script>
 <script defer src="../kenya-gallery.js?v=dd56d50d"></script>
 <!-- nav-menu -->
 <script defer src="../nav-menu.js?v=001fbbf6"></script>

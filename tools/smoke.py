@@ -541,11 +541,9 @@ def kenya_map(pg, base):
     for steps in (0, 2, 4):
         pg.goto(base + "/destinations/kenya.html", wait_until="load")
         pg.wait_for_timeout(1300)
-        pg.evaluate("document.querySelector('.kmap').scrollIntoView({block:'start'})")
-        # Settle before measuring geometry. This page carries enough lazy images
-        # above the map that they were still loading and reflowing the stage
-        # while the measurement ran: 7px of apparent error against 0.05px once
-        # the layout stops moving.
+        # Instant, because scroll-behavior is smooth site-wide.
+        pg.evaluate("""()=>{const r=document.querySelector('.kmap').getBoundingClientRect();
+          window.scrollTo({top:Math.round(r.top+scrollY),behavior:'instant'});}""")
         try:
             pg.wait_for_function(
                 "()=>[...document.images].filter(i=>i.getBoundingClientRect().top<innerHeight*3)"
@@ -553,7 +551,17 @@ def kenya_map(pg, base):
         except Exception:
             pass
         pg.wait_for_timeout(900)
+        # Poll until the reading stops moving instead of guessing a delay. At
+        # 1.5s this measured 225px, 51px and 620px on three consecutive runs and
+        # 0.05px on all three at 4s: it is settling, not drifting, and a fixed
+        # wait only decides how often the check lies.
         d = pg.evaluate(reg, steps)
+        for _ in range(12):
+            pg.wait_for_timeout(400)
+            again = pg.evaluate(reg, 0)
+            if abs(again["worst"] - d["worst"]) < 0.2:
+                break
+            d = again
         check(d["worst"] < 3, "map",
               "markers sit on the map at %.1fx zoom" % d["k"],
               "worst %.2f px" % d["worst"])
@@ -649,6 +657,58 @@ def kenya_rolls(pg, base):
     pg.wait_for_timeout(1300)
     check(not sheet() and not lifted(), "rolls",
           "going back to the overview clears both")
+
+    # Weather fills the empty part of the stage and never the map itself. It
+    # sits UNDER the map layers, and both maps paint an opaque ground across
+    # their whole viewBox, so the map hides it without any mask. If that ever
+    # stops being true this goes red rather than quietly drifting over a chart.
+    import tempfile as _t
+    from PIL import Image as _I
+    for state in ("overview", "chart"):
+        if state == "chart":
+            pg.evaluate("document.querySelector('.kmap-zoom').click()")
+            pg.wait_for_timeout(2000)
+        box = pg.evaluate("""()=>{const st=document.querySelector('.kmap-stage').getBoundingClientRect();
+          const on=document.querySelector('.kmap-stage').classList.contains('is-sheet');
+          const svg=document.querySelector(on?'.kmap-sheet svg':'.kmap-plate svg');
+          if(!svg) return null;
+          const v=svg.getBoundingClientRect(), vb=svg.viewBox.baseVal;
+          const sc=Math.min(v.width/vb.width, v.height/vb.height);
+          const w=vb.width*sc, h=vb.height*sc;
+          return [Math.round(v.left+(v.width-w)/2-st.left),
+                  Math.round(v.top+(v.height-h)/2-st.top),
+                  Math.round(w), Math.round(h)];}""")
+        on = os.path.join(_t.gettempdir(), f"kw-on-{state}.png")
+        off = os.path.join(_t.gettempdir(), f"kw-off-{state}.png")
+        try:
+            pg.locator(".kmap-stage").screenshot(path=on)
+            pg.evaluate("document.querySelector('.kmap-weather').style.visibility='hidden'")
+            pg.wait_for_timeout(400)
+            pg.locator(".kmap-stage").screenshot(path=off)
+            pg.evaluate("document.querySelector('.kmap-weather').style.visibility=''")
+            A, B = _I.open(on).convert("L"), _I.open(off).convert("L")
+            pa, pb, wd = list(A.getdata()), list(B.getdata()), A.size[0]
+            x, y, mw, mh = box
+            onmap = onmapt = grey = greyt = 0
+            for row in range(A.size[1]):
+                for colx in range(wd):
+                    i = row * wd + colx
+                    inside = (x <= colx < x + mw) and (y <= row < y + mh)
+                    hit = abs(pa[i] - pb[i]) > 4
+                    if inside:
+                        onmapt += 1
+                        onmap += hit
+                    else:
+                        greyt += 1
+                        grey += hit
+            onpct = onmap / max(1, onmapt) * 100
+            gpct = grey / max(1, greyt) * 100
+            check(onpct < 1.5, "rolls",
+                  f"no weather over the {state} map itself", f"{onpct:.1f}% of it")
+            check(gpct > 4, "rolls",
+                  f"weather fills the empty stage around the {state} map", f"{gpct:.1f}%")
+        except Exception as e:
+            check(False, "rolls", f"weather sits around the {state} map, not on it", str(e)[:50])
 
 
 def kenya_pinch(browser, base):

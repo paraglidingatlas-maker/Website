@@ -30,6 +30,7 @@
   var ctl = root.querySelector('.kmap-ctl');
   if (!stage || !view || !pins.length) return;
 
+  var clouds = [].slice.call(root.querySelectorAll('.kmap-cloud'));
   var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
   var MINK = 1, MAXK = 7;
   var at = -1, sheetOn = false, loading = false, loaded = false;
@@ -354,6 +355,27 @@
   if ('ResizeObserver' in window) {
     new ResizeObserver(function () { apply(false); }).observe(stage);
   }
+  /* The weather drifts against the scroll, like the gallery's. Tied to the
+     section's own position in the viewport rather than to raw scrollY, so it
+     reads the same wherever the map sits on the page. */
+  var drifting = false;
+  function drift() {
+    drifting = false;
+    var r = root.getBoundingClientRect();
+    var p = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
+    clouds.forEach(function (c) {
+      var sp = parseFloat(c.getAttribute('data-sp')) || 0;
+      c.style.transform = 'translate3d(' + (p * sp * 70).toFixed(1) + 'px,' +
+        (p * sp * 420).toFixed(1) + 'px,0)';
+    });
+  }
+  if (clouds.length && !calm.matches) {
+    window.addEventListener('scroll', function () {
+      if (!drifting) { drifting = true; requestAnimationFrame(drift); }
+    }, { passive: true });
+    drift();
+  }
+
   window.addEventListener('resize', function () { apply(false); });
   apply(false);
   place();
