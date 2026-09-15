@@ -865,13 +865,27 @@ def kenya_gallery(pg, base):
       return {frame:z('.cfl-frame'),
               clouds:z('.cfl-atmos:not(.cfl-atmos-back)'),
               cloudsBack:z('.cfl-atmos-back'),
-              caps:z('.cfl-caps'),arrows:z('.cfl-arrow')};}""")
+              arrows:z('.cfl-arrow')};}""")
     check(order["clouds"] > order["frame"], "gallery",
           "the clouds sit in front of the photographs", str(order))
     check(order["cloudsBack"] < order["frame"], "gallery",
           "the middle of the weather passes behind the gallery", str(order))
-    check(order["caps"] > order["clouds"] and order["arrows"] > order["clouds"],
-          "gallery", "the caption and arrows stay in front of the clouds", str(order))
+    check(order["arrows"] > order["clouds"],
+          "gallery", "the arrows stay in front of the clouds", str(order))
+
+    # The caption lives on the card now, not on a floating layer sized
+    # independently of it, so it cannot run off the edges of the photograph.
+    cap = pg.evaluate("""()=>{const f=document.querySelector('.cfl-card.is-front');
+      if(!f) return null;
+      const c=f.querySelector('.cfl-card-cap'); if(!c) return null;
+      const a=f.getBoundingClientRect(), b=c.getBoundingClientRect();
+      return {over:Math.round(Math.max(a.left-b.left, b.right-a.right)),
+              text:c.textContent.trim(), shown:getComputedStyle(c).opacity};}""")
+    check(cap is not None, "gallery", "the front card carries its own caption")
+    if cap:
+        check(cap["over"] <= 0, "gallery",
+              "the caption cannot overflow the photograph", f"{cap['over']}px over the edge")
+        check(cap["shown"] == "1", "gallery", "the caption is visible on the front card")
 
     # In front of everything except the photograph you are looking at: a third
     # mask layer opens a hole over the card at the front.

@@ -24,7 +24,7 @@
   var stage = root.querySelector('.cfl-stage');
   var tiltEl = root.querySelector('.cfl-tilt');
   var cards = [].slice.call(root.querySelectorAll('.cfl-card'));
-  var caps = [].slice.call(root.querySelectorAll('.cfl-cap'));
+  var live = root.querySelector('.cfl-live');
   var dots = [].slice.call(root.querySelectorAll('.cfl-dot'));
   var bgs = [].slice.call(root.querySelectorAll('.cfl-bg'));
   var clouds = [].slice.call(root.querySelectorAll('.cfl-cloud'));
@@ -61,7 +61,8 @@
       c.setAttribute('aria-hidden', hidden ? 'true' : 'false');
       c.tabIndex = d === 0 ? 0 : -1;
     });
-    caps.forEach(function (e, i) { e.classList.toggle('is-on', i === at); });
+    cards.forEach(function (c, i) { c.classList.toggle('is-front', ring(i) === 0); });
+    if (live) live.textContent = cards[at].getAttribute('data-title') || '';
     dots.forEach(function (e, i) {
       e.classList.toggle('is-on', i === at);
       e.setAttribute('aria-current', i === at);
