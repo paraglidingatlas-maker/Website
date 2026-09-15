@@ -151,16 +151,29 @@
 .kmap-grid{display:grid;gap:clamp(1.2rem,2.5vw,1.8rem);}
 .kmap-figure{min-width:0;}
 .kmap-stage{position:relative;width:100%;aspect-ratio:19 / 15;overflow:hidden;
-  background:var(--bg);border:1px solid var(--rule);}
+  background:transparent;border:1px solid var(--rule);}
 /* Weather in the empty part of the stage. Both maps paint an opaque ground
    across their whole viewBox, and preserveAspectRatio letterboxes them inside
    it: 727px of chart in a 1216px box leaves 243px of grey each side. Putting
    the clouds UNDER the map layers means the map hides them by itself and they
    show only in that grey. No mask needed, and it stays right if the stage ever
    changes shape. */
-.kmap-weather{position:absolute;inset:-14% -8%;z-index:0;pointer-events:none;overflow:hidden;
-  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 16%,#000 84%,transparent 100%);
-  mask-image:linear-gradient(to bottom,transparent 0,#000 16%,#000 84%,transparent 100%);}
+/* One field across the whole section, not one inside the stage and another
+   outside it. Clipped to the stage it drew a hard rectangle: two cloud fields
+   of almost identical weight, 6.7% and 6.1% of the viewport, meeting at a
+   border. The stage background is transparent so this shows through the grey,
+   and both maps paint their own opaque ground, so the map still hides it
+   without any mask. */
+.kmap{position:relative;}
+.kmap-weather{position:absolute;left:calc(50% - 50vw);width:100vw;top:-8%;bottom:-8%;
+  z-index:0;pointer-events:none;overflow:hidden;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%),
+    linear-gradient(to right,transparent 0,#000 10%,#000 90%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%),
+    linear-gradient(to right,transparent 0,#000 10%,#000 90%,transparent 100%);
+  mask-composite:intersect;}
+.kmap .dst-head,.kmap-figure{position:relative;z-index:1;}
 .kmap-cloud{position:absolute;left:-10%;width:120%;max-width:none;height:auto;
   will-change:transform;mix-blend-mode:screen;opacity:.62;}
 .kmap-cloud:nth-child(1){top:-12%;}
@@ -344,15 +357,15 @@
 .cfl-atmos-back{
   -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%),
     linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),
-    radial-gradient(ellipse 30% 34% at 50% 31%,#000 0 62%,transparent 100%);
+    radial-gradient(ellipse 25% 38% at 50% 51%,#000 0 62%,transparent 100%);
   -webkit-mask-composite:source-in;
   mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%),
     linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),
-    radial-gradient(ellipse 30% 34% at 50% 31%,#000 0 62%,transparent 100%);
+    radial-gradient(ellipse 25% 38% at 50% 51%,#000 0 62%,transparent 100%);
   mask-composite:intersect;}
 
 .cfl-atmos{position:absolute;left:calc(50% - 50vw);width:100vw;
-  top:-46vh;bottom:-126vh;z-index:2;pointer-events:none;overflow:hidden;
+  top:-46vh;bottom:-34vh;z-index:2;pointer-events:none;overflow:hidden;
   /* The centre of the weather goes behind the gallery instead of in front of
      it. Two copies of the same layers: the back one shows only the middle, the
      front one has that middle cut out. Together they read as one continuous sky
@@ -367,11 +380,11 @@
      cloud sitting on both edges of the mobile one, so the radii change too. */
   -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%),
     linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),
-    radial-gradient(ellipse 30% 34% at 50% 31%,transparent 0 62%,#000 100%);
+    radial-gradient(ellipse 25% 38% at 50% 51%,transparent 0 62%,#000 100%);
   -webkit-mask-composite:source-in;
   mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%),
     linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),
-    radial-gradient(ellipse 30% 34% at 50% 31%,transparent 0 62%,#000 100%);
+    radial-gradient(ellipse 25% 38% at 50% 51%,transparent 0 62%,#000 100%);
   mask-composite:intersect;}
 /* One positioning context holding the frame, the weather, the caption and the
    arrows. The frame is a stacking context of its own, so anything that needs to
@@ -473,6 +486,26 @@
   color:var(--gray-light);font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;}
 
 @media (max-width:820px){
+  /* The card is 46% of the frame here against 24% at desktop, so it needs a
+     wider, shallower hole. No check proves this: no cloud reaches that card at
+     390px whatever the mask says, so the mobile check passes either way. It is
+     here because it is correct, not because it is verified. */
+  .cfl-atmos:not(.cfl-atmos-back){
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%),
+      linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%),
+      radial-gradient(ellipse 44% 26% at 50% 51%,transparent 0 62%,#000 100%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%),
+      linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%),
+      radial-gradient(ellipse 44% 26% at 50% 51%,transparent 0 62%,#000 100%);
+  }
+  .cfl-atmos-back{
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%),
+      linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%),
+      radial-gradient(ellipse 44% 26% at 50% 51%,#000 0 62%,transparent 100%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%),
+      linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%),
+      radial-gradient(ellipse 44% 26% at 50% 51%,#000 0 62%,transparent 100%);
+  }
   .cfl-frame{height:clamp(26rem,66vh,34rem);}
   .cfl-card{width:min(46%,15rem);}
   .cfl-arrow{width:40px;height:40px;}
@@ -1034,6 +1067,7 @@
 </section>
 
 <section class="dst-sec kmap is-loud" id="route" aria-labelledby="route-h">
+  <div class="kmap-weather" aria-hidden="true"><img class="kmap-cloud" data-sp="-0.14" src="../assets/destinations/kenya/clouds/cloud-1.webp" alt="" loading="lazy" decoding="async"><img class="kmap-cloud" data-sp="0.09" src="../assets/destinations/kenya/clouds/cloud-2.webp" alt="" loading="lazy" decoding="async"><img class="kmap-cloud" data-sp="-0.26" src="../assets/destinations/kenya/clouds/cloud-3.webp" alt="" loading="lazy" decoding="async"><img class="kmap-cloud" data-sp="0.18" src="../assets/destinations/kenya/clouds/cloud-4.webp" alt="" loading="lazy" decoding="async"></div>
   <div class="dst-head">
     <span class="kicker">The route</span>
     <h2 id="route-h">Six sites down the Rift, 451 km end to end</h2>
@@ -1043,7 +1077,6 @@
   <div class="kmap-grid">
     <div class="kmap-figure">
       <div class="kmap-stage">
-        <div class="kmap-weather" aria-hidden="true"><img class="kmap-cloud" data-sp="-0.14" src="../assets/destinations/kenya/clouds/cloud-1.webp" alt="" loading="lazy" decoding="async"><img class="kmap-cloud" data-sp="0.09" src="../assets/destinations/kenya/clouds/cloud-2.webp" alt="" loading="lazy" decoding="async"><img class="kmap-cloud" data-sp="-0.26" src="../assets/destinations/kenya/clouds/cloud-3.webp" alt="" loading="lazy" decoding="async"><img class="kmap-cloud" data-sp="0.18" src="../assets/destinations/kenya/clouds/cloud-4.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="kmap-view">
         <div class="kmap-layer kmap-sheet" data-src="../assets/destinations/kenya/map/kenya-sheet.svg" aria-hidden="true"></div>
         <div class="kmap-layer kmap-plate"><svg viewBox="0 0 1900 1500" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans, sans-serif" role="img" aria-label="Map of Kenya showing the six flying sites and the route between them">
