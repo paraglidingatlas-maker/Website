@@ -773,10 +773,10 @@ def kenya_gallery(pg, base):
         # chasing a fault that did not exist. Around the frame, which is where
         # the clouds are meant to read, it is a stable 11%.
         pg.locator(".cfl").screenshot(path=a)
-        pg.evaluate("document.querySelector('.cfl-atmos').style.visibility='hidden'")
+        pg.evaluate("document.querySelectorAll('.cfl-atmos').forEach(e=>e.style.visibility='hidden')")
         pg.wait_for_timeout(400)
         pg.locator(".cfl").screenshot(path=c)
-        pg.evaluate("document.querySelector('.cfl-atmos').style.visibility=''")
+        pg.evaluate("document.querySelectorAll('.cfl-atmos').forEach(e=>e.style.visibility='')")
         A = Image.open(a).convert("L"); C = Image.open(c).convert("L")
         pa, pc = list(A.getdata()), list(C.getdata())
         diff = [abs(x - y) for x, y in zip(pa, pc)]
@@ -839,7 +839,7 @@ def kenya_gallery(pg, base):
 
     # the cloud layer is faded on the horizontal axis too, or it ends in a
     # straight vertical edge down the side of the page
-    mask = pg.evaluate("()=>{const cs=getComputedStyle(document.querySelector('.cfl-atmos'));"
+    mask = pg.evaluate("()=>{const cs=getComputedStyle(document.querySelector('.cfl-atmos:not(.cfl-atmos-back)'));"
                        "return (cs.maskImage||cs.webkitMaskImage||'');}")
     check(mask.count("gradient") >= 2, "gallery",
           "the clouds fade out sideways as well as vertically",
@@ -850,7 +850,7 @@ def kenya_gallery(pg, base):
     # viewport actually stopped at 92.6% and left a hard vertical edge just
     # inside where the fade begins. The mask looked right and the edge was
     # still there, so check the geometry, not the declaration.
-    reach = pg.evaluate("""()=>{const c=document.querySelector('.cfl-cloud').getBoundingClientRect();
+    reach = pg.evaluate("""()=>{const c=document.querySelector('.cfl-atmos:not(.cfl-atmos-back) .cfl-cloud').getBoundingClientRect();
       return {left:Math.round(-c.left), right:Math.round(c.right-innerWidth)};}""")
     check(reach["left"] > 60 and reach["right"] > 20, "gallery",
           "the cloud layers run past both sides of the screen",
@@ -862,9 +862,14 @@ def kenya_gallery(pg, base):
     # caption and arrows were moved out for exactly this reason.
     order = pg.evaluate("""()=>{const z=s=>{const e=document.querySelector(s);
       return e?parseInt(getComputedStyle(e).zIndex||0,10):null;};
-      return {frame:z('.cfl-frame'),clouds:z('.cfl-atmos'),caps:z('.cfl-caps'),arrows:z('.cfl-arrow')};}""")
+      return {frame:z('.cfl-frame'),
+              clouds:z('.cfl-atmos:not(.cfl-atmos-back)'),
+              cloudsBack:z('.cfl-atmos-back'),
+              caps:z('.cfl-caps'),arrows:z('.cfl-arrow')};}""")
     check(order["clouds"] > order["frame"], "gallery",
           "the clouds sit in front of the photographs", str(order))
+    check(order["cloudsBack"] < order["frame"], "gallery",
+          "the middle of the weather passes behind the gallery", str(order))
     check(order["caps"] > order["clouds"] and order["arrows"] > order["clouds"],
           "gallery", "the caption and arrows stay in front of the clouds", str(order))
 
@@ -890,10 +895,10 @@ def kenya_gallery(pg, base):
               return [Math.round(c.left-w.left),Math.round(c.top-w.top),
                       Math.round(c.width),Math.round(c.height)];}""")
             pg.locator(".cfl-wrap").screenshot(path=on)
-            pg.evaluate("document.querySelector('.cfl-atmos').style.visibility='hidden'")
+            pg.evaluate("document.querySelectorAll('.cfl-atmos').forEach(e=>e.style.visibility='hidden')")
             pg.wait_for_timeout(350)
             pg.locator(".cfl-wrap").screenshot(path=off)
-            pg.evaluate("document.querySelector('.cfl-atmos').style.visibility=''")
+            pg.evaluate("document.querySelectorAll('.cfl-atmos').forEach(e=>e.style.visibility='')")
             A, B = _I.open(on).convert("L"), _I.open(off).convert("L")
             if A.size != B.size:
                 raise RuntimeError(f"frames differ in size, {A.size} vs {B.size}")
