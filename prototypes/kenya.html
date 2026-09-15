@@ -776,6 +776,15 @@
    dissolves the seam; a 1px line across it is the hard edge that dissolve
    exists to remove. Two classes, to beat .dst-sec + .dst-sec on source order. */
 .dst-sec.kmap{border-top:0;}
+/* No frame around the map either. The plate floats in its weather; a box
+   around it made it a picture of a map rather than the map. The marker
+   maths measures the inner box, so a zero border is exact. */
+.kmap .kmap-stage{border:0;}
+/* The plate paints a page-coloured ground across its viewBox, and the clouds
+   under it stopped dead at that rectangle's edge. With the frame gone the
+   edge read as a glitch. Off, so the weather passes behind the country,
+   whose own fill is opaque. */
+.kmap .kmap-plate svg > rect:first-of-type{display:none;}
 
 /* ---- the pinned sequence ---- */
 .kfly{position:relative;width:100vw;margin-left:calc(50% - 50vw);}
