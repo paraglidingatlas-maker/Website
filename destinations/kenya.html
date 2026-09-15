@@ -556,18 +556,28 @@
    in the site's own orange rather than an off-palette hex. */
 /* Three across, so six facts make two full rows. auto-fit gave five and one,
    which leaves an orphan and reads like a mistake. */
+/* It sits directly under the spec strip now, so it has to read as the second
+   half of the same datasheet rather than as a new section. The section padding
+   comes in from 99px to about half, the labels take the strip's own type, and
+   the icon moves beside the text instead of above it: stacked, it alone cost
+   42px of every row and the six cells ran 392px tall at 1440. */
+.dst-sec.is-datasheet{padding-top:clamp(2.2rem,4.2vw,3.2rem);padding-bottom:clamp(2.6rem,5vw,4rem);}
+.dst-sec.is-datasheet .dst-head{margin-bottom:1.4rem;}
 .fact-grid{display:grid;grid-template-columns:repeat(3,1fr);
   border-top:1px solid var(--rule);}
-.fact{padding:1.7rem 1.6rem 1.8rem;border-bottom:1px solid var(--rule);
+.fact{display:grid;grid-template-columns:26px minmax(0,1fr);column-gap:1rem;
+  align-content:start;padding:1.3rem 1.5rem 1.4rem;border-bottom:1px solid var(--rule);
   border-right:1px solid var(--rule);}
 .fact:nth-child(3n){border-right:0;}
 .fact:nth-last-child(-n+3){border-bottom:0;}
-.fact-i{width:26px;height:26px;display:block;color:var(--orange);margin-bottom:1rem;}
-.fact-l{display:block;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--gray);margin-bottom:.45rem;}
-.fact-v{margin:0 0 .5rem;font-family:var(--font-display);font-weight:600;
-  font-size:1.02rem;line-height:1.25;color:var(--white);}
-.fact-d{margin:0;font-size:.82rem;line-height:1.65;color:var(--gray-light);max-width:24rem;}
+/* Spans the three text rows and sits level with the value line rather than
+   the label above it, which is where the eye lands. */
+.fact-i{width:26px;height:26px;display:block;color:var(--orange);grid-row:1/4;margin-top:.55rem;}
+.fact-l{display:block;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--gray);margin-bottom:.35rem;}
+.fact-v{margin:0 0 .3rem;font-family:var(--font-display);font-weight:600;
+  font-size:1.02rem;line-height:1.3;color:var(--white);}
+.fact-d{margin:0;font-size:.82rem;line-height:1.55;color:var(--gray-light);max-width:26rem;}
 @media (max-width:940px){
   .fact-grid{grid-template-columns:repeat(2,1fr);}
   .fact:nth-child(3n){border-right:1px solid var(--rule);}
@@ -577,7 +587,7 @@
 }
 @media (max-width:560px){
   .fact-grid{grid-template-columns:1fr;}
-  .fact{padding:1.35rem 0 1.45rem;border-right:0!important;
+  .fact{padding:1.1rem 0 1.2rem;border-right:0!important;
     border-bottom:1px solid var(--rule)!important;}
   .fact:last-child{border-bottom:0!important;}
   .fact-d{font-size:.8rem;}
@@ -952,8 +962,8 @@
 
 <div class="dst-jump">
   <div class="dst-jump-in">
-    <a href="#overview">Overview</a>
     <a href="#practical">Practical Info</a>
+    <a href="#overview">Overview</a>
     <a href="#conditions">Conditions</a>
     <a href="#reality">Before You Book</a>
     <a href="#route">Route</a>
@@ -981,7 +991,7 @@
 
 <div class="dst-shell">
 <div class="dst-main">
-<section class="dst-sec is-quiet" id="practical">
+<section class="dst-sec is-quiet is-datasheet" id="practical">
   <div class="dst-head">
     <span class="kicker">Know Before You Go</span>
     <h2>The practical country</h2>
@@ -999,7 +1009,7 @@
         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.6A5 5 0 0 1 21 19.4"/></svg>
       <span class="fact-l">Population</span>
       <p class="fact-v">57.7 million</p>
-      <p class="fact-d">7th most populous in Africa, 27th globally. Area 569,140 km².</p>
+      <p class="fact-d">7th most populous in Africa, 27th globally. Area 569,140&nbsp;km².</p>
     </div>
     <div class="fact">
       <svg class="fact-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
