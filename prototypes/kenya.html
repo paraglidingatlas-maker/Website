@@ -890,15 +890,17 @@
    style thrash. Words start lit when the browser cannot do color-mix or JS
    never runs, so the fallback is the old always-orange line. */
 .kov-close{margin-top:clamp(3rem,6vw,5rem);text-align:center;}
-.kov-close p{color:var(--gray-light);line-height:1.8;margin:0 auto 1.15rem;max-width:66rem;font-size:clamp(1rem,1.25vw,1.12rem);}
+.kov-close p{color:var(--gray-light);line-height:1.8;margin:0 auto 1.15rem;max-width:none;font-size:clamp(1rem,1.2vw,1.08rem);}
+.kov-close .kov-why,.dst-sec.kov .kov-glory{text-wrap:balance;}
 .kov-close .kov-why{margin-bottom:clamp(2.4rem,5vw,3.6rem);}
 .dst-sec.kov .kov-glory{font-family:var(--font-display);font-weight:700;
   font-size:clamp(1.5rem,3.4vw,3rem);line-height:1.16;letter-spacing:-.02em;
-  margin:0 auto;max-width:40ch;color:var(--orange);}
+  margin:0 auto;max-width:40ch;color:var(--white);}
 .kov-w{display:inline;color:var(--orange);}
+/* only the five words light; the rest of the line stays white */
 @supports (color:color-mix(in srgb,red 50%,blue)){
   .kov-w{color:color-mix(in srgb,var(--orange) calc(var(--t,1) * 100%),
-    var(--gray-light) calc((1 - var(--t,1)) * 100%));}
+    var(--white) calc((1 - var(--t,1)) * 100%));}
 }
 .kov-cta{margin-top:clamp(2rem,4vw,3rem);}
 
@@ -1300,33 +1302,15 @@
   </div>
 
   <div class="kov-close">
-    <p class="kov-friends">We don’t see our clients as clients, we see them as friends and fellow dreamers. Pilots, who, like us, have made exploring new horizons a priority.</p>
-    <p class="kov-why">We know why you fly because we feel the same way. That means we’ll leave no thermal unchecked in our quest to help you achieve a personal best or simply experience the flight of a lifetime.</p>
-    <p class="kov-glory" id="kovGlory">
-        <span class="kov-w">We</span>
-        <span class="kov-w">know</span>
-        <span class="kov-w">how</span>
-        <span class="kov-w">it</span>
-        <span class="kov-w">feels</span>
-        <span class="kov-w">to</span>
+    <p class="kov-friends">We don’t see our clients as clients, we see them as friends and fellow dreamers. Pilots, who, like us, have made exploring new horizons a priority</p>
+    <p class="kov-why">We know why you fly because we feel the same way. That means we’ll leave no thermal unchecked in our quest to help you achieve a personal best or simply experience the flight of a lifetime</p>
+    <p class="kov-glory" id="kovGlory">We know how it feels to
         <span class="kov-w">Touch</span>
         <span class="kov-w">The</span>
         <span class="kov-w">Sky</span>
         <span class="kov-w">With</span>
         <span class="kov-w">Glory</span>
-        <span class="kov-w">and</span>
-        <span class="kov-w">It’s</span>
-        <span class="kov-w">our</span>
-        <span class="kov-w">dream</span>
-        <span class="kov-w">to</span>
-        <span class="kov-w">be</span>
-        <span class="kov-w">able</span>
-        <span class="kov-w">to</span>
-        <span class="kov-w">share</span>
-        <span class="kov-w">that</span>
-        <span class="kov-w">with</span>
-        <span class="kov-w">you.</span>
-    </p>
+        and It’s our dream to be able to share that with you</p>
     <div class="kov-cta"><a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" class="btn-solid" data-hover><span>Book a Call</span></a></div>
   </div>
 
