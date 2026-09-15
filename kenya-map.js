@@ -37,10 +37,16 @@
 
   function size() { return stage.getBoundingClientRect(); }
 
+  /* The stage has a 1px border. getBoundingClientRect measures the border box,
+     but .kmap-view and .kmap-pins are both inset:0, so they span the padding
+     box inside it. Mixing the two leaves a constant offset that gets multiplied
+     by the zoom: 2px of error at 1x became 40px at 6.5x. */
+  function inner() { return { w: stage.clientWidth, h: stage.clientHeight }; }
+
   function clamp() {
-    var r = size();
-    tx = Math.min(0, Math.max(r.width * (1 - k), tx));
-    ty = Math.min(0, Math.max(r.height * (1 - k), ty));
+    var b = inner();
+    tx = Math.min(0, Math.max(b.w * (1 - k), tx));
+    ty = Math.min(0, Math.max(b.h * (1 - k), ty));
   }
 
   function apply(animate) {
@@ -49,9 +55,13 @@
       ? 'transform 260ms cubic-bezier(.4,0,.2,1)' : 'none';
     view.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) +
       'px) scale(' + k.toFixed(4) + ')';
-    /* Markers ride the surface but must not grow with it, or a 44px target
-       becomes 300px and the labels swamp the map. */
-    view.style.setProperty('--kz', (1 / k).toFixed(4));
+    /* Markers live outside this surface, so they are repositioned here rather
+       than carried along. This call is the whole registration between map and
+       markers: without it they sit still while the map moves under them. */
+    place();
+    /* will-change only while a gesture is running. Left on permanently it pins
+       the layer to a single rasterisation and everything blurs as it scales. */
+    view.style.willChange = live.size ? 'transform' : 'auto';
     stage.classList.toggle('is-zoomed', k > 1.001);
     /* At rest a finger crossing the map must still scroll the page. Once
        zoomed, the gesture belongs to the map. */
@@ -77,7 +87,8 @@
 
   function local(e) {
     var r = size();
-    return { x: e.clientX - r.left, y: e.clientY - r.top };
+    return { x: e.clientX - r.left - stage.clientLeft,
+             y: e.clientY - r.top - stage.clientTop };
   }
 
   function pair() {
@@ -154,19 +165,40 @@
     ctl.addEventListener('click', function (e) {
       var b = e.target.closest('[data-z]');
       if (!b) return;
-      var r = size();
-      if (b.dataset.z === 'in') zoomAt(k * 1.6, r.width / 2, r.height / 2, true);
-      else if (b.dataset.z === 'out') zoomAt(k / 1.6, r.width / 2, r.height / 2, true);
+      var c = inner();
+      if (b.dataset.z === 'in') zoomAt(k * 1.6, c.w / 2, c.h / 2, true);
+      else if (b.dataset.z === 'out') zoomAt(k / 1.6, c.w / 2, c.h / 2, true);
       else reset(true);
     });
   }
 
+  /* Markers live outside the transform surface, so their position is computed
+     from the same translate and scale the surface uses.
+     
+     An SVG does not fill its box. preserveAspectRatio defaults to xMidYMid
+     meet, so it scales by min(w/vbW, h/vbH) and centres the slack. Here the
+     stage is a hair wider than 1900:1500, so the map fits by height and sits
+     0.27px in from the left. Assuming it filled the box put every marker out by
+     a fraction that the zoom then multiplied.
+     
+     The two maps have different viewBoxes, so this reads the live one rather
+     than hardcoding either. smoke.py checks the result against the browser's
+     own getScreenCTM, which is independent of this arithmetic. */
   function place() {
+    var b = inner();
     var key = sheetOn ? 'sheet' : 'plate';
+    var svg = root.querySelector(sheetOn ? '.kmap-sheet svg' : '.kmap-plate svg');
+    if (!svg) return;
+    var vb = svg.viewBox.baseVal;
+    var s = Math.min(b.w / vb.width, b.h / vb.height);
+    var ox = (b.w - vb.width * s) / 2;
+    var oy = (b.h - vb.height * s) / 2;
     pins.forEach(function (p) {
       var d = JSON.parse(p.getAttribute('data-' + key));
-      p.style.left = d.x + '%';
-      p.style.top = d.y + '%';
+      var vx = (d.x / 100) * vb.width;
+      var vy = (d.y / 100) * vb.height;
+      p.style.left = (tx + (ox + vx * s) * k).toFixed(2) + 'px';
+      p.style.top = (ty + (oy + vy * s) * k).toFixed(2) + 'px';
     });
   }
 
@@ -240,9 +272,9 @@
       return;
     }
     if (!stage.contains(document.activeElement)) return;
-    var r = size(), step = 40;
-    if (e.key === '+' || e.key === '=') zoomAt(k * 1.5, r.width / 2, r.height / 2, true);
-    else if (e.key === '-') zoomAt(k / 1.5, r.width / 2, r.height / 2, true);
+    var c = inner(), step = 40;
+    if (e.key === '+' || e.key === '=') zoomAt(k * 1.5, c.w / 2, c.h / 2, true);
+    else if (e.key === '-') zoomAt(k / 1.5, c.w / 2, c.h / 2, true);
     else if (e.key === 'ArrowLeft' && k > 1.001) { tx += step; apply(true); }
     else if (e.key === 'ArrowRight' && k > 1.001) { tx -= step; apply(true); }
     else if (e.key === 'ArrowUp' && k > 1.001) { ty += step; apply(true); }

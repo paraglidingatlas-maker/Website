@@ -511,6 +511,52 @@ def kenya_map(pg, base):
     except Exception as e:
         check(False, "map", "marker labels stay crisp when the map is zoomed", str(e)[:60])
 
+    # ---- registration ----------------------------------------------------
+    # The check that would have caught all of it. Markers are positioned by
+    # arithmetic in kenya-map.js; this asks the browser where the same point in
+    # the SVG actually lands, via getScreenCTM, and compares. Independent of the
+    # code under test, which is the whole point.
+    #
+    # Three bugs hid from every other check here. Markers that never moved at
+    # all, because place() was not being called on zoom. A constant offset from
+    # measuring the border box while the map spans the padding box. And the
+    # assumption that an SVG fills its box, when preserveAspectRatio centres the
+    # slack instead. All three looked perfectly fine at 1x.
+    reg = """(steps)=>{
+      for(let i=0;i<steps;i++) document.querySelector('[data-z="in"]').click();
+      return new Promise(r=>setTimeout(()=>{
+        const svg=document.querySelector('.kmap-plate svg'), ctm=svg.getScreenCTM();
+        const vb=svg.viewBox.baseVal;
+        const errs=[...document.querySelectorAll('.kmap-pin')].map(p=>{
+          const d=JSON.parse(p.getAttribute('data-plate'));
+          const pt=svg.createSVGPoint();
+          pt.x=d.x/100*vb.width; pt.y=d.y/100*vb.height;
+          const t=pt.matrixTransform(ctm), b=p.getBoundingClientRect();
+          return Math.hypot(b.left+b.width/2-t.x, b.top+b.height/2-t.y);
+        });
+        r({k:+getComputedStyle(document.querySelector('.kmap-view'))
+             .transform.match(/matrix\\(([\\d.]+)/)[1], worst:Math.max(...errs)});
+      },1400));
+    }"""
+    for steps in (0, 2, 4):
+        pg.goto(base + "/destinations/kenya.html", wait_until="load")
+        pg.wait_for_timeout(1300)
+        pg.evaluate("document.querySelector('.kmap').scrollIntoView({block:'start'})")
+        pg.wait_for_timeout(600)
+        d = pg.evaluate(reg, steps)
+        check(d["worst"] < 3, "map",
+              "markers sit on the map at %.1fx zoom" % d["k"],
+              "worst %.2f px" % d["worst"])
+
+    pg.goto(base + "/destinations/kenya.html", wait_until="load")
+    pg.wait_for_timeout(1300)
+    pg.evaluate("document.querySelector('.kmap').scrollIntoView({block:'start'})")
+    pg.wait_for_timeout(600)
+    # the registration block reloaded the page, and a drag only pans a zoomed map
+    pg.evaluate("document.querySelector('[data-z=\"in\"]').click()")
+    pg.wait_for_timeout(600)
+
+    tf = lambda: pg.evaluate("getComputedStyle(document.querySelector('.kmap-view')).transform")
     before = tf()
     box = pg.evaluate("()=>{const r=document.querySelector('.kmap-stage').getBoundingClientRect();"
                       "return {x:Math.round(r.left+r.width/2),y:Math.round(r.top+r.height/2)};}")
