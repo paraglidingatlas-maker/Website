@@ -749,6 +749,191 @@
   .dst-mobar,.dst-dep{transition:none;}
 }
 
+
+/* ---------- OVERVIEW (prototype) ===========================================
+   The copy is the owner's, verbatim. One peak: the Rift Valley passage runs
+   as a pinned sequence, three photographs behind three beats of the same
+   paragraph, and the reader scrolls the words across them. The stage is
+   position:sticky inside a wrapper three screens tall. No scroll hijack, so
+   without JS it degrades to three stacked frames with the first photograph.
+   Everything around the sequence is deliberately quiet so it has something to
+   be loud against: the instruments are the only other place anything moves.
+
+   Two-class selectors throughout. .dst-sec.is-loud .dst-head is three classes
+   deep and wins over anything shorter regardless of source order. */
+
+.dst-sec.kov{padding-bottom:clamp(3.4rem,7vw,6.2rem);}
+.dst-sec.kov .dst-head{max-width:none;margin-bottom:0;}
+.kov-open{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+  gap:clamp(1.6rem,4vw,4rem);align-items:end;padding-bottom:clamp(2.8rem,5.5vw,4.4rem);}
+.dst-sec.kov .kov-sub{color:var(--gray-light);font-size:clamp(.95rem,1.5vw,1.12rem);
+  letter-spacing:.01em;line-height:1.5;margin:1rem 0 0;max-width:30rem;}
+.kov-open .dst-lede{max-width:34rem;margin:0;}
+@media (max-width:820px){.kov-open{grid-template-columns:1fr;align-items:start;}}
+
+/* No rule between the Overview and the route. The map's weather already
+   dissolves the seam; a 1px line across it is the hard edge that dissolve
+   exists to remove. Two classes, to beat .dst-sec + .dst-sec on source order. */
+.dst-sec.kmap{border-top:0;}
+/* No frame around the map either. The plate floats in its weather; a box
+   around it made it a picture of a map rather than the map. The marker
+   maths measures the inner box, so a zero border is exact. */
+.kmap .kmap-stage{border:0;}
+/* The plate paints a page-coloured ground across its viewBox, and the clouds
+   under it stopped dead at that rectangle's edge. With the frame gone the
+   edge read as a glitch. Off, so the weather passes behind the country,
+   whose own fill is opaque. */
+.kmap .kmap-plate svg > rect:first-of-type{display:none;}
+
+/* ---- the pinned sequence ---- */
+.kfly{position:relative;width:100vw;margin-left:calc(50% - 50vw);}
+.kfly-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#0d0e11;}
+.kfly-slide{position:absolute;inset:0;opacity:0;visibility:hidden;
+  transition:opacity 1.1s ease,visibility 0s linear 1.1s;}
+.kfly-slide.is-on{opacity:1;visibility:visible;transition:opacity 1.1s ease;}
+.kfly-slide picture,.kfly-slide img{display:block;width:100%;height:100%;object-fit:cover;}
+.kfly-slide img{-webkit-user-drag:none;user-select:none;transform:scale(1);}
+.kfly-slide.is-on img{transform:scale(1.06);transition:transform 9s linear;}
+/* Scrim measured the same way as the hero's: the lower third carries the
+   words, the left edge carries the label, the top band keeps the sticky
+   section bar legible over a bright sky. */
+.kfly-scrim{position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(180deg,rgba(20,21,25,.42) 0,rgba(20,21,25,0) 26%,rgba(20,21,25,0) 44%,
+    rgba(20,21,25,.6) 72%,rgba(20,21,25,.93) 100%),
+  linear-gradient(90deg,rgba(20,21,25,.5) 0,rgba(20,21,25,.1) 48%,rgba(20,21,25,0) 74%);}
+.kfly-marks{position:absolute;right:clamp(1.2rem,5vw,5.5rem);bottom:clamp(2.2rem,5vw,3.4rem);
+  z-index:2;display:flex;gap:8px;}
+.kfly-marks i{display:block;width:28px;height:2px;background:rgba(255,255,255,.26);
+  transition:background .4s ease;}
+.kfly-marks i.is-on{background:var(--orange);}
+@media (max-width:820px){.kfly-marks{top:4.4rem;bottom:auto;}}
+.kfly-steps{position:relative;z-index:2;margin-top:-100vh;margin-top:-100svh;}
+.kfly-step{min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;
+  padding:0 clamp(1.2rem,5vw,5.5rem) clamp(2.2rem,5vw,3.4rem);}
+.kfly-copy{max-width:38rem;opacity:0;transform:translateY(28px);
+  transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);}
+.kfly-step.is-on .kfly-copy{opacity:1;transform:none;}
+.kfly-n{display:block;color:var(--orange);font-size:.72rem;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;margin-bottom:.9rem;}
+.kfly-lead,.kfly-tail{color:rgba(246,244,244,.86);font-size:clamp(.95rem,1.4vw,1.08rem);
+  line-height:1.75;margin:0 0 .9rem;max-width:34rem;}
+.kfly-tail{margin:1rem 0 0;}
+.kfly-big{font-family:var(--font-display);font-weight:700;color:var(--white);
+  font-size:clamp(1.7rem,4.1vw,3.4rem);line-height:1.06;letter-spacing:-.02em;margin:0;}
+
+/* ---- the air: two instruments ---- */
+.kair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--rule);
+  margin-top:clamp(3rem,6vw,5rem);}
+.kair-cell{display:grid;grid-template-columns:minmax(12rem,16.5rem) minmax(0,1fr);
+  gap:clamp(1.2rem,2.6vw,2.4rem);align-items:center;
+  padding:clamp(1.8rem,3.4vw,2.8rem) clamp(1.2rem,2.6vw,2.4rem) clamp(1.8rem,3.4vw,2.8rem) 0;
+  border-right:1px solid var(--rule);}
+.kair-cell + .kair-cell{border-right:0;padding-left:clamp(1.2rem,2.6vw,2.4rem);padding-right:0;}
+.kair-inst svg{display:block;width:100%;height:auto;}
+.kair-inst .kseason{max-width:15.5rem;margin:0 auto;}
+.kair-cell h3{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.1rem;margin:0 0 .9rem;}
+.kair-cell p{color:var(--gray-light);font-size:.93rem;line-height:1.72;margin:0;}
+.kair-ranges{display:flex;flex-wrap:wrap;gap:.8rem 1.6rem;margin:1rem 0 0;padding:0;list-style:none;}
+.kair-ranges li{display:block;}
+.kair-ranges b{display:block;font-family:var(--font-display);font-weight:700;color:var(--white);
+  font-size:1.4rem;line-height:1;letter-spacing:-.01em;}
+.kair-ranges b small{font-size:.7rem;color:var(--gray);font-weight:500;letter-spacing:.08em;margin-left:.25rem;}
+.kair-ranges span{display:block;color:var(--gray);font-size:.7rem;letter-spacing:.06em;
+  text-transform:uppercase;margin-top:.35rem;}
+@media (max-width:1000px){
+  .kair{grid-template-columns:1fr;}
+  .kair-cell,.kair-cell + .kair-cell{border-right:0;padding-left:0;padding-right:0;border-bottom:1px solid var(--rule);}
+  .kair-cell:last-child{border-bottom:0;}
+}
+@media (max-width:560px){
+  .kair-cell{grid-template-columns:1fr;gap:1rem;}
+  .kair-inst{max-width:17rem;}
+}
+
+/* vario */
+.kvario .track{fill:none;stroke:var(--rule);stroke-width:10;}
+.kvario .band{fill:none;stroke:var(--orange);stroke-width:10;}
+.kvario .band.weak{opacity:.4;}
+.kvario .band.rare{stroke-dasharray:3 4;opacity:.75;}
+.kvario .tick{stroke:var(--gray);stroke-width:1;}
+.kvario .tick.maj{stroke:var(--gray-light);stroke-width:1.4;}
+.kvario text{font-family:var(--font-body);font-size:10px;fill:var(--gray);letter-spacing:.06em;}
+.kvario .needle{stroke:var(--white);stroke-width:2.2;stroke-linecap:round;
+  transform-origin:120px 120px;transform:rotate(0deg);}
+.kvario .pivot{fill:var(--bg);stroke:var(--white);stroke-width:2;}
+.kvario .read{font-family:var(--font-display);font-weight:700;font-size:30px;fill:var(--white);
+  text-anchor:middle;letter-spacing:-.02em;}
+.kvario .unit{font-size:9px;fill:var(--gray);text-anchor:middle;letter-spacing:.16em;}
+
+/* season ring: the four lit months draw themselves in, Dec first */
+.kseason .seg{fill:none;stroke:var(--rule);stroke-width:13;}
+.kseason .seg.on{stroke:var(--orange);stroke-dasharray:var(--seg);stroke-dashoffset:var(--seg);
+  transition:stroke-dashoffset .7s cubic-bezier(.3,.6,.2,1) calc(var(--i) * .16s);}
+.kseason.is-on .seg.on{stroke-dashoffset:0;}
+.kseason .mo{font-family:var(--font-body);font-size:10px;fill:var(--gray);letter-spacing:.06em;}
+.kseason .mo.on{fill:var(--white);}
+.kseason .big{font-family:var(--font-display);font-weight:600;font-size:19px;fill:var(--white);letter-spacing:-.01em;}
+.kseason .small{font-family:var(--font-body);font-size:9px;fill:var(--gray);letter-spacing:.16em;}
+
+/* ---- the quiet part: team and safety, four short reads ---- */
+.kov-quiet{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--rule);
+  margin-top:clamp(3rem,6vw,5rem);}
+.kov-q{padding:clamp(1.6rem,3vw,2.4rem) clamp(1.2rem,2.6vw,2.4rem) clamp(1.6rem,3vw,2.4rem) 0;
+  border-bottom:1px solid var(--rule);}
+.kov-q:nth-child(2n){padding-left:clamp(1.2rem,2.6vw,2.4rem);padding-right:0;border-left:1px solid var(--rule);}
+.kov-q:nth-last-child(-n+2){border-bottom:0;}
+.kov-q h3{font-family:var(--font-body);font-weight:500;font-size:.74rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--gray);margin:0 0 .75rem;}
+.kov-q p{color:var(--gray-light);font-size:.94rem;line-height:1.78;margin:0;max-width:34rem;}
+@media (max-width:820px){
+  .kov-quiet{grid-template-columns:1fr;}
+  .kov-q,.kov-q:nth-child(2n){padding-left:0;padding-right:0;border-left:0;border-bottom:1px solid var(--rule);}
+  .kov-q:last-child{border-bottom:0;}
+}
+
+/* ---- the close ----
+   Centred and stacked. As two bottom-aligned columns the paragraphs sat low
+   with dead space above them and the last line ran short against the column
+   rule. One column, centred, gives the sign-off the full measure.
+
+   The last line lights word by word on scroll rather than arriving fully
+   orange, which was the whole line shouting at once. Each word interpolates
+   from the body grey to the orange across a window of scroll: --t is written
+   per word by JS, and the colour mix is pure CSS so there is no per-word
+   style thrash. Words start lit when the browser cannot do color-mix or JS
+   never runs, so the fallback is the old always-orange line. */
+.kov-close{margin-top:clamp(3rem,6vw,5rem);text-align:center;}
+.kov-close p{color:var(--gray-light);line-height:1.8;margin:0 auto 1.15rem;max-width:none;font-size:clamp(1rem,1.2vw,1.08rem);}
+.kov-close .kov-friends,.dst-sec.kov .kov-glory{text-wrap:balance;}
+.kov-close .kov-friends{margin-bottom:clamp(3.6rem,7.5vw,6rem);}
+.dst-sec.kov .kov-glory{font-family:var(--font-display);font-weight:700;
+  font-size:clamp(1.5rem,3.4vw,3rem);line-height:1.16;letter-spacing:-.02em;
+  margin:0 auto;max-width:40ch;color:var(--white);}
+.kov-w{display:inline;color:var(--orange);}
+/* only the five words light; the rest of the line stays white */
+@supports (color:color-mix(in srgb,red 50%,blue)){
+  .kov-w{color:color-mix(in srgb,var(--orange) calc(var(--t,1) * 100%),
+    var(--white) calc((1 - var(--t,1)) * 100%));}
+}
+/* the same distance the sign-off keeps from the paragraph above it */
+.kov-cta{margin-top:clamp(3.6rem,7.5vw,6rem);}
+/* Outlined at rest, filled on hover, focus and press. The same parallelogram
+   as .btn-solid so the two read as one family. */
+.dst-sec.kov .kov-cta .btn-solid{background:transparent;color:var(--orange);
+  box-shadow:inset 0 0 0 1px var(--orange);
+  transition:transform .2s ease,background .2s ease,color .2s ease;}
+.dst-sec.kov .kov-cta .btn-solid:hover,.dst-sec.kov .kov-cta .btn-solid:focus-visible,
+.dst-sec.kov .kov-cta .btn-solid:active{background:var(--orange);color:var(--bg);}
+.dst-sec.kov .kov-cta .btn-solid:focus-visible{outline:2px solid var(--live);outline-offset:3px;}
+
+@media (prefers-reduced-motion: reduce){
+  .kfly-slide{transition:none!important;}
+  .kfly-slide.is-on img{transform:none!important;transition:none!important;}
+  .kfly-copy{transition:none!important;}
+  .kseason .seg.on{transition:none!important;}
+  .kov-w{color:var(--orange)!important;}
+}
+
 </style>
 <!-- site-schema -->
 <script type="application/ld+json">
@@ -959,14 +1144,14 @@
 <div class="dst-jump">
   <div class="dst-jump-in">
     <a href="#practical">Practical Info</a>
-    <a href="#reality">Before You Book</a>
+    <a href="#overview">Overview</a>
     <a href="#route">Route</a>
-    <a href="#sites">Sites</a>
     <a href="#gallery">Gallery</a>
+    <a href="#dates">Dates</a>
+    <a href="#reality">Before You Book</a>
     <a href="#faq">FAQ</a>
     <a href="#packing">Packing</a>
     <a href="#ground">On the Ground</a>
-    <a href="#dates">Dates</a>
     <a href="#enquire" class="last">Enquire</a>
   </div>
 </div>
@@ -1035,87 +1220,120 @@
     </div>
   </div></section>
 
-<section class="dst-sec is-loud" id="reality">
-  <div class="dst-head">
-    <span class="kicker">Before You Book</span>
-    <h2>What this trip is actually like</h2>
-    <p>We would rather you read this and decide it is not for you than arrive and find that out. Explore the Cradle is built for independent pilots with strong glider handling and an appetite for the unfamiliar. We put flight safety first, because that is what keeps the fun factor intact.</p>
+<section class="dst-sec is-loud kov" id="overview">
+  <div class="kov-open">
+    <div class="dst-head">
+      <span class="kicker">Overview</span>
+      <h2>A Flight of Human Genesis</h2>
+      <p class="kov-sub">Glide Over Lands Where Humanity Took It’s First Steps</p>
+    </div>
+    <p class="dst-lede">Globally known as a hotbed of archaeological discoveries contributing to the story of human evolution, Kenya offers much more than just world class safaris, Flying a paraglider in cradle of humankind allows you to soar over majestic landscapes with rich culture and awe inspiring scenery, Chase the World Speed Records in Kerio Valley or endless adventures while crossing the equator from above. This tropical paradise delivers like no other flying destination known to humankind</p>
   </div>
-  <figure class="dst-figure"><picture><source srcset="../assets/images/kenya-launch.webp" type="image/webp"><img src="../assets/images/kenya-launch.jpg" width="1400" height="933" loading="lazy" alt="Pilots and a laid out wing on an open rock launch, with cattle grazing below"></picture></figure>
-  <p class="dst-lede">Every flight is a good flight, but chasing airtime comes with bumpy air, variable thermal strength and conditions more demanding than you expected. That is part of it. Come willing to push your limits and you leave with a renewed understanding of flying in new terrain.</p>
-  <div class="dst-grid two">
-    <div class="dst-cell">
-      <h3>How a day runs</h3>
-      <p>Your guide proposes the day's plan to maximise flying, and briefs you on the forecast, the site and the conditions. He suggests cross country directions and where a retrieve is realistic. He launches first to check the air, or last to help with an awkward takeoff. Then we fly the route together, or improvise over the radio when the day has other ideas.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Why you have to be autonomous</h3>
-      <p>Most of Kenya sits under moderate easterly winds, so waiting for each other in the air is often simply not possible. You need to take off, fly, decide and land on your own. That is not a formality on this trip, it is the thing that makes the trip work at all.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Flying conditions, honestly</h3>
-      <p>Some of what we fly is quiet and picturesque. The XC sites, Kerio and Machakos among them, can be rough through sections of a flight, and near the escarpments you can meet heavier turbulence than you were expecting. You will hit bumpy airmass and some genuinely awkward transitions. That is the adventure rather than a failure of planning.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Retrieve is a two way job</h3>
-      <p>The retrieve driver is radio equipped, understands live tracking and cross country flying, and is briefed before each flight on the likely routes. After you land, though, you are the one who activates and directs him, because the others may still be in the air. Kenya's generous conditions produce long flights, and a long flight means a long retrieve.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Getting yourself out</h3>
-      <p>Speeding up your own retrieve helps everyone. A landing in Kenya almost always attracts someone on a motorbike, a boda, offering you a lift. Practise your negotiating, get to the nearest tarmac, shop or restaurant, and put a little money into the local economy and a good impression of paraglider pilots along with it. From the tarmac the matatu vans will take you on, crowded and cheerful.</p>
-      <p>Do not drive at night. If you land a long way out, sleep locally and rejoin the group in the morning.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>This is not a comfort tour</h3>
-      <p>If you expect polished service and comfort, this is the wrong trip. Kenya is a young destination with cross country routes still being worked out, and it asks for improvisation, flexibility and tolerance in return for what it gives you.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>You are sharing a sky and a bill</h3>
-      <p>Pilots on the same tour share the same transport costs, whether they flew 20 kilometres or 120. Some days that is a test of how you take other people's good fortune. Most days it is the pleasure of being genuinely glad someone else got the flight of their life.</p>
-    </div>
-  </div>
-</section>
 
-<section class="dst-sec is-loud cfl" id="gallery" aria-labelledby="gallery-h">
-  <div class="dst-head">
-    <span class="kicker">The pictures</span>
-    <h2 id="gallery-h">Eleven frames from the Rift</h2>
-  </div>
-  
-  <div class="cfl-wrap">
-    <p class="cfl-live" aria-live="polite"></p>
-    <div class="cfl-frame">
-    <div class="cfl-bgs" aria-hidden="true"><img class="cfl-bg is-on" src="../assets/destinations/kenya/gallery/longonot.jpg" alt="" aria-hidden="true" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/kerio-valley.jpg" alt="" aria-hidden="true" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/equator.jpg" alt="" aria-hidden="true" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/north-kenya.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/chyulu-hills.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/kenya-hero.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/kenya-high.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/kenya-launch.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/kenya-ridge.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/kenya-slope.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/kenya-3.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
-    <div class="cfl-scrim" aria-hidden="true"></div>
-    <div class="cfl-stage">
-      <div class="cfl-tilt"><button type="button" class="cfl-card" data-title="Mount Longonot" aria-label="Mount Longonot, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/longonot.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/longonot.jpg" width="1153" height="768" decoding="async" draggable="false" alt="Mount Longonot" style="object-position:28.0% 18.2%"></picture><span class="cfl-card-cap">Mount Longonot</span></button><button type="button" class="cfl-card" data-title="Kerio Valley" aria-label="Kerio Valley, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/kerio-valley.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kerio-valley.jpg" width="1152" height="768" decoding="async" draggable="false" alt="Kerio Valley" style="object-position:70.5% 58.2%"></picture><span class="cfl-card-cap">Kerio Valley</span></button><button type="button" class="cfl-card" data-title="The Equator" aria-label="The Equator, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/equator.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/equator.jpg" width="1152" height="768" decoding="async" draggable="false" alt="The Equator" style="object-position:57.5% 46.4%"></picture><span class="cfl-card-cap">The Equator</span></button><button type="button" class="cfl-card" data-title="Northern Kenya" aria-label="Northern Kenya, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/north-kenya.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/north-kenya.jpg" width="1233" height="768" decoding="async" draggable="false" alt="Northern Kenya" style="object-position:64.9% 15%"></picture><span class="cfl-card-cap">Northern Kenya</span></button><button type="button" class="cfl-card" data-title="Chyulu Hills" aria-label="Chyulu Hills, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/chyulu-hills.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/chyulu-hills.jpg" width="1122" height="768" decoding="async" draggable="false" alt="Chyulu Hills" style="object-position:60.5% 40.8%"></picture><span class="cfl-card-cap">Chyulu Hills</span></button><button type="button" class="cfl-card" data-title="" aria-label="Paragliding in Kenya, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/kenya-hero.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-hero.jpg" width="1400" height="788" decoding="async" draggable="false" alt="Paragliding in Kenya" style="object-position:51.8% 56.4%"></picture></button><button type="button" class="cfl-card" data-title="" aria-label="Paragliding in Kenya, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/kenya-high.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-high.jpg" width="1400" height="933" decoding="async" draggable="false" alt="Paragliding in Kenya" style="object-position:46.2% 63.9%"></picture></button><button type="button" class="cfl-card" data-title="" aria-label="Paragliding in Kenya, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/kenya-launch.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-launch.jpg" width="1400" height="933" decoding="async" draggable="false" alt="Paragliding in Kenya" style="object-position:68.6% 66.5%"></picture></button><button type="button" class="cfl-card" data-title="" aria-label="Paragliding in Kenya, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/kenya-ridge.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-ridge.jpg" width="1400" height="600" decoding="async" draggable="false" alt="Paragliding in Kenya" style="object-position:72.4% 61.7%"></picture></button><button type="button" class="cfl-card" data-title="" aria-label="Paragliding in Kenya, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/kenya-slope.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-slope.jpg" width="1400" height="933" decoding="async" draggable="false" alt="Paragliding in Kenya" style="object-position:72.7% 41.6%"></picture></button><button type="button" class="cfl-card" data-title="" aria-label="Paragliding in Kenya, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/kenya-3.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-3.jpg" width="1400" height="1050" decoding="async" draggable="false" alt="Paragliding in Kenya" style="object-position:34.6% 26.7%"></picture></button></div>
+  <div class="kfly" id="kfly">
+    <div class="kfly-stage">
+      <div class="kfly-slide is-on"><picture><source srcset="../assets/images/kenya-slope.webp" type="image/webp"><img src="../assets/images/kenya-slope.jpg" width="1400" height="933" loading="lazy" draggable="false" alt="A wing lifting off a green grass slope dotted with acacia trees"></picture></div>
+      <div class="kfly-slide"><picture><source srcset="../assets/images/kenya-high.webp" type="image/webp"><img src="../assets/images/kenya-high.jpg" width="1400" height="933" loading="lazy" draggable="false" alt="A paraglider high above farmland, the flatlands hazy to the horizon"></picture></div>
+      <div class="kfly-slide"><picture><source srcset="../assets/images/kenya-ridge.webp" type="image/webp"><img src="../assets/images/kenya-ridge.jpg" width="1800" height="771" loading="lazy" draggable="false" alt="Three wings crossing a green ridgeline toward distant hills"></picture></div>
+      <div class="kfly-scrim" aria-hidden="true"></div>
+      <div class="kfly-marks" aria-hidden="true"><i class="is-on"></i><i></i><i></i></div>
     </div>
-    
+    <div class="kfly-steps">
+      <div class="kfly-step is-on">
+        <div class="kfly-copy">
+          <span class="kfly-n">01 &middot; The launch</span>
+          <p class="kfly-lead">We take to the air from the heart of the Great Rift Valley with direct access from our home base, logistical arrangements are seamless and the adventure takes you into the very fabric of the Kenyan wilderness, as you</p>
+          <p class="kfly-big">launch from the lush green takeoffs in Kerio,</p>
+        </div>
+      </div>
+      <div class="kfly-step">
+        <div class="kfly-copy">
+          <span class="kfly-n">02 &middot; The thermals</span>
+          <p class="kfly-big">chase thermals over the flatlands,</p>
+        </div>
+      </div>
+      <div class="kfly-step">
+        <div class="kfly-copy">
+          <span class="kfly-n">03 &middot; The horizon</span>
+          <p class="kfly-big">and set your sights on the distant shores of Lake Naivasha.</p>
+          <p class="kfly-tail">The itinerary is designed with ample flexibility, built around the best flying windows and integrated with authentic cultural experiences for when your feet are back on the ground.</p>
+        </div>
+      </div>
+    </div>
   </div>
-    <div class="cfl-atmos cfl-atmos-back" aria-hidden="true"><div class="cfl-clouds" aria-hidden="true">
-      <img class="cfl-cloud" data-sp="-0.16" src="../assets/destinations/kenya/clouds/cloud-1.webp" alt="" loading="lazy" decoding="async">
-      <img class="cfl-cloud" data-sp="0.10" src="../assets/destinations/kenya/clouds/cloud-2.webp" alt="" loading="lazy" decoding="async">
-      <img class="cfl-cloud" data-sp="-0.30" src="../assets/destinations/kenya/clouds/cloud-3.webp" alt="" loading="lazy" decoding="async">
-      <img class="cfl-cloud" data-sp="0.21" src="../assets/destinations/kenya/clouds/cloud-4.webp" alt="" loading="lazy" decoding="async">
-    </div></div>
-    <div class="cfl-atmos" aria-hidden="true"><div class="cfl-clouds" aria-hidden="true">
-      <img class="cfl-cloud" data-sp="-0.16" src="../assets/destinations/kenya/clouds/cloud-1.webp" alt="" loading="lazy" decoding="async">
-      <img class="cfl-cloud" data-sp="0.10" src="../assets/destinations/kenya/clouds/cloud-2.webp" alt="" loading="lazy" decoding="async">
-      <img class="cfl-cloud" data-sp="-0.30" src="../assets/destinations/kenya/clouds/cloud-3.webp" alt="" loading="lazy" decoding="async">
-      <img class="cfl-cloud" data-sp="0.21" src="../assets/destinations/kenya/clouds/cloud-4.webp" alt="" loading="lazy" decoding="async">
-    </div></div>
-    <button type="button" class="cfl-arrow cfl-prev" aria-label="Previous photograph">&#10094;</button>
-    <button type="button" class="cfl-arrow cfl-next" aria-label="Next photograph">&#10095;</button>
-  </div>
-  <div class="cfl-dots" role="group" aria-label="Choose a photograph"><button type="button" class="cfl-dot is-on" aria-label="Photograph 1 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 2 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 3 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 4 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 5 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 6 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 7 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 8 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 9 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 10 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 11 of 11"></button></div>
 
-  <div class="cfl-lb" hidden role="dialog" aria-modal="true" aria-label="Photograph, full size">
-    <button type="button" class="cfl-lb-x" aria-label="Close">&#10005;</button>
-    <button type="button" class="cfl-lb-nav cfl-lb-prev" aria-label="Previous">&#10094;</button>
-    <div class="cfl-lb-stage"><picture class="cfl-full is-on"><source srcset="../assets/destinations/kenya/gallery/longonot.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/longonot.jpg" width="1153" height="768" loading="lazy" decoding="async" alt="Mount Longonot"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/kerio-valley.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kerio-valley.jpg" width="1152" height="768" loading="lazy" decoding="async" alt="Kerio Valley"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/equator.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/equator.jpg" width="1152" height="768" loading="lazy" decoding="async" alt="The Equator"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/north-kenya.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/north-kenya.jpg" width="1233" height="768" loading="lazy" decoding="async" alt="Northern Kenya"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/chyulu-hills.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/chyulu-hills.jpg" width="1122" height="768" loading="lazy" decoding="async" alt="Chyulu Hills"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/kenya-hero.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-hero.jpg" width="1400" height="788" loading="lazy" decoding="async" alt="Paragliding in Kenya"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/kenya-high.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-high.jpg" width="1400" height="933" loading="lazy" decoding="async" alt="Paragliding in Kenya"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/kenya-launch.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-launch.jpg" width="1400" height="933" loading="lazy" decoding="async" alt="Paragliding in Kenya"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/kenya-ridge.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-ridge.jpg" width="1400" height="600" loading="lazy" decoding="async" alt="Paragliding in Kenya"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/kenya-slope.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-slope.jpg" width="1400" height="933" loading="lazy" decoding="async" alt="Paragliding in Kenya"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/kenya-3.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-3.jpg" width="1400" height="1050" loading="lazy" decoding="async" alt="Paragliding in Kenya"></picture></div>
-    <button type="button" class="cfl-lb-nav cfl-lb-next" aria-label="Next">&#10095;</button>
-    <p class="cfl-lb-cap"></p>
+  <div class="kair">
+    <div class="kair-cell">
+      <div class="kair-inst">
+        <svg class="kvario" viewBox="-8 -14 256 196" aria-hidden="true" focusable="false">
+  <path class="track" d="M20.00 120.00A100 100 0 0 1 220.00 120.00"/>
+  <path class="band weak" d="M27.61 81.73A100 100 0 0 1 49.29 49.29"/>
+  <path class="band" d="M120.00 20.00A100 100 0 0 1 190.71 49.29"/>
+  <path class="band rare" d="M190.71 49.29A100 100 0 0 1 212.39 81.73"/>
+  <line class="tick maj" x1="29.0" y1="120.0" x2="11.0" y2="120.0"/><line class="tick" x1="35.9" y1="85.2" x2="23.0" y2="79.8"/><line class="tick maj" x1="55.7" y1="55.7" x2="42.9" y2="42.9"/><line class="tick" x1="85.2" y1="35.9" x2="79.8" y2="23.0"/><line class="tick maj" x1="120.0" y1="29.0" x2="120.0" y2="11.0"/><line class="tick" x1="154.8" y1="35.9" x2="160.2" y2="23.0"/><line class="tick maj" x1="184.3" y1="55.7" x2="197.1" y2="42.9"/><line class="tick" x1="204.1" y1="85.2" x2="217.0" y2="79.8"/><line class="tick maj" x1="211.0" y1="120.0" x2="229.0" y2="120.0"/>
+  <text x="-1.0" y="123.5" text-anchor="middle">0</text><text x="34.4" y="37.9" text-anchor="middle">2</text><text x="120.0" y="2.5" text-anchor="middle">4</text><text x="205.6" y="37.9" text-anchor="middle">6</text><text x="241.0" y="123.5" text-anchor="middle">8</text>
+  <line class="needle" x1="120" y1="120" x2="32.0" y2="120.0"/>
+  <circle class="pivot" cx="120" cy="120" r="5"/>
+  <text class="read" x="120" y="160">0.0</text>
+  <text class="unit" x="120" y="174">M/S</text>
+</svg>
+        <ul class="kair-ranges">
+          <li><b>1-2<small>M/S</small></b><span>weak, early and late</span></li>
+          <li><b>4-6<small>M/S</small></b><span>strong, midday peaks</span></li>
+          <li><b>6-7<small>M/S</small></b><span>rare surges</span></li>
+        </ul>
+      </div>
+      <div class="kair-txt">
+        <h3>Thermal Strength</h3>
+        <p>The variometer readings vary from 1-2 m/s (weak, early morning/late afternoon) to 4-6 m/s (strong, midday peaks), with rare surges to 6-7 m/s. Variations include narrow, turbulent cores and wide, smooth ones as well, types range from classic bubble thermals to dynamic triggers depending on the location of flight</p>
+      </div>
+    </div>
+    <div class="kair-cell">
+      <div class="kair-inst">
+        <svg class="kseason" viewBox="0 0 240 240" aria-hidden="true" focusable="false" style="--seg:41.7">
+  <path class="seg on" d="M99.30 30.36A92 92 0 0 1 140.70 30.36" style="--i:1"/><text class="mo on" x="120.0" y="9.5" text-anchor="middle">J</text><path class="seg on" d="M146.90 32.02A92 92 0 0 1 182.74 52.72" style="--i:2"/><text class="mo on" x="177.0" y="24.8" text-anchor="middle">F</text><path class="seg on" d="M187.28 57.26A92 92 0 0 1 207.98 93.10" style="--i:3"/><text class="mo on" x="218.7" y="66.5" text-anchor="middle">M</text><path class="seg" d="M209.64 99.30A92 92 0 0 1 209.64 140.70"/><text class="mo" x="234.0" y="123.5" text-anchor="middle">A</text><path class="seg" d="M207.98 146.90A92 92 0 0 1 187.28 182.74"/><text class="mo" x="218.7" y="180.5" text-anchor="middle">M</text><path class="seg" d="M182.74 187.28A92 92 0 0 1 146.90 207.98"/><text class="mo" x="177.0" y="222.2" text-anchor="middle">J</text><path class="seg" d="M140.70 209.64A92 92 0 0 1 99.30 209.64"/><text class="mo" x="120.0" y="237.5" text-anchor="middle">J</text><path class="seg" d="M93.10 207.98A92 92 0 0 1 57.26 187.28"/><text class="mo" x="63.0" y="222.2" text-anchor="middle">A</text><path class="seg" d="M52.72 182.74A92 92 0 0 1 32.02 146.90"/><text class="mo" x="21.3" y="180.5" text-anchor="middle">S</text><path class="seg" d="M30.36 140.70A92 92 0 0 1 30.36 99.30"/><text class="mo" x="6.0" y="123.5" text-anchor="middle">O</text><path class="seg" d="M32.02 93.10A92 92 0 0 1 52.72 57.26"/><text class="mo" x="21.3" y="66.5" text-anchor="middle">N</text><path class="seg on" d="M57.26 52.72A92 92 0 0 1 93.10 32.02" style="--i:0"/><text class="mo on" x="63.0" y="24.8" text-anchor="middle">D</text>
+  <text class="big" x="120" y="126" text-anchor="middle">Dec to Mar</text>
+  <text class="small" x="120" y="146" text-anchor="middle">PEAK SEASON</text>
+</svg>
+      </div>
+      <div class="kair-txt">
+        <h3>Flying Season</h3>
+        <p>The weather in Kenya is determined by its tropical location and the oscillating effects of the Inter-tropical Convergence Zone (ITCZ), which annually travels back and forth across equatorial Africa, providing Kenya with a bimodal annual rainfall pattern. Flying season peaks in this equatorial paradise from December to March, Ideal for joining our Kenya tour.</p>
+      </div>
+    </div>
   </div>
+
+  <div class="kov-quiet">
+    <div class="kov-q">
+      <h3>Local knowledge</h3>
+      <p>Paragliding Atlas offers a tailored paragliding cross-country adventure based on the intimate local knowledge that allows our lead pilots: the founding team, to consistently find the best lines, unlock remote landing zones, and safely share the skies of this unparalleled landscape.</p>
+    </div>
+    <div class="kov-q">
+      <h3>The team</h3>
+      <p>Our expertise in East African flying has been accumulated over long years of exploring the region’s weather patterns and hidden gems. Our handpicked team of experienced local and international pilots have logged countless airtime over the savannah, giving us an industry-leading opportunity to fly in conditions that range from gentle soaring to potentially epic world record breaking XC flights.</p>
+    </div>
+    <div class="kov-q">
+      <h3>Ground crew</h3>
+      <p>We oversee every step of our ground crew logistics and meet the very highest safety standards. Our team's Kenyan roots and ability to bridge the gap between global flying standards and local realities allows us to run every aspect of the operation smoothly, from retrieve drives to campsite coordination.</p>
+    </div>
+    <div class="kov-q">
+      <h3>Retrieves</h3>
+      <p>Our lead guides also have extensive experience in conducting retrieves from remote locations. We have detailed flight plans and multiple communication systems in place to ensure a swift pickup, no matter where the sky takes you. While we can’t control the weather, we can guarantee that you will be in the safest possible hands both in the air and on the ground should the unexpected happen.</p>
+    </div>
+  </div>
+
+  <div class="kov-close">
+    <p class="kov-friends">We don’t see our clients as clients, we see them as friends and fellow dreamers. Pilots, who, like us, have made exploring new horizons a priority. That means we’ll leave no thermal unchecked in our quest to help you achieve a personal best or simply experience the flight of a lifetime</p>
+    <p class="kov-glory" id="kovGlory">We know how it feels to
+        <span class="kov-w">Touch</span>
+        <span class="kov-w">The</span>
+        <span class="kov-w">Sky</span>
+        <span class="kov-w">With</span>
+        <span class="kov-w">Glory</span>
+        and It’s our dream to be able to share that with you</p>
+    <div class="kov-cta"><a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" class="btn-solid" data-hover><span>Book a Call</span></a></div>
+  </div>
+
 </section>
 
 <section class="dst-sec kmap is-loud" id="route" aria-labelledby="route-h">
@@ -2023,24 +2241,115 @@
   </div>
 </section>
 
-<section class="dst-sec is-loud" id="sites">
+<section class="dst-sec is-loud cfl" id="gallery" aria-labelledby="gallery-h">
   <div class="dst-head">
-    <span class="kicker">Where You Will Fly</span>
-    <h2>Six sites, one valley system</h2>
-    <p>Kerio Valley is the base. Everything else is within reach of it, and the tour moves with the conditions rather than a fixed schedule.</p>
+    <span class="kicker">The pictures</span>
+    <h2 id="gallery-h">Eleven frames from the Rift</h2>
   </div>
-  <div class="dst-sites">
-    <div class="dst-site"><h3>Kerio Valley</h3><span class="c">0.72°N · 35.65°E</span><p>The base for the tour, and the site where the world speed records are chased.</p></div>
-    <div class="dst-site"><h3>Rift Valley National Park</h3><span class="c">0.90°S · 36.30°E</span><p>Flying over the floor of the Great Rift, the geological scar that runs the length of the country.</p></div>
-    <div class="dst-site"><h3>Kijabe Hill</h3><span class="c">0.93°S · 36.58°E</span><p>An escarpment site on the eastern wall of the Rift, north west of Nairobi.</p></div>
-    <div class="dst-site"><h3>Mount Longonot Crater</h3><span class="c">0.91°S · 36.45°E</span><p>A dormant stratovolcano with an intact crater rim, and one of the more photographed flights of the trip.</p></div>
-    <div class="dst-site"><h3>Machakos Hills</h3><span class="c">1.52°S · 37.26°E</span><p>Rolling hills south east of Nairobi, and a change of character from the Rift walls.</p></div>
-    <div class="dst-site"><h3>Chyulu Hills</h3><span class="c">2.68°S · 37.88°E</span><p>A young volcanic range between Tsavo and Amboseli, with Kilimanjaro on the horizon.</p></div>
+  
+  <div class="cfl-wrap">
+    <p class="cfl-live" aria-live="polite"></p>
+    <div class="cfl-frame">
+    <div class="cfl-bgs" aria-hidden="true"><img class="cfl-bg is-on" src="../assets/destinations/kenya/gallery/longonot.jpg" alt="" aria-hidden="true" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/kerio-valley.jpg" alt="" aria-hidden="true" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/equator.jpg" alt="" aria-hidden="true" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/north-kenya.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/chyulu-hills.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/kenya-hero.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/kenya-high.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/kenya-launch.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/kenya-ridge.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/kenya-slope.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="cfl-bg" src="../assets/destinations/kenya/gallery/kenya-3.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
+    <div class="cfl-scrim" aria-hidden="true"></div>
+    <div class="cfl-stage">
+      <div class="cfl-tilt"><button type="button" class="cfl-card" data-title="Mount Longonot" aria-label="Mount Longonot, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/longonot.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/longonot.jpg" width="1153" height="768" decoding="async" draggable="false" alt="Mount Longonot" style="object-position:28.0% 18.2%"></picture><span class="cfl-card-cap">Mount Longonot</span></button><button type="button" class="cfl-card" data-title="Kerio Valley" aria-label="Kerio Valley, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/kerio-valley.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kerio-valley.jpg" width="1152" height="768" decoding="async" draggable="false" alt="Kerio Valley" style="object-position:70.5% 58.2%"></picture><span class="cfl-card-cap">Kerio Valley</span></button><button type="button" class="cfl-card" data-title="The Equator" aria-label="The Equator, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/equator.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/equator.jpg" width="1152" height="768" decoding="async" draggable="false" alt="The Equator" style="object-position:57.5% 46.4%"></picture><span class="cfl-card-cap">The Equator</span></button><button type="button" class="cfl-card" data-title="Northern Kenya" aria-label="Northern Kenya, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/north-kenya.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/north-kenya.jpg" width="1233" height="768" decoding="async" draggable="false" alt="Northern Kenya" style="object-position:64.9% 15%"></picture><span class="cfl-card-cap">Northern Kenya</span></button><button type="button" class="cfl-card" data-title="Chyulu Hills" aria-label="Chyulu Hills, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/chyulu-hills.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/chyulu-hills.jpg" width="1122" height="768" decoding="async" draggable="false" alt="Chyulu Hills" style="object-position:60.5% 40.8%"></picture><span class="cfl-card-cap">Chyulu Hills</span></button><button type="button" class="cfl-card" data-title="" aria-label="Paragliding in Kenya, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/kenya-hero.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-hero.jpg" width="1400" height="788" decoding="async" draggable="false" alt="Paragliding in Kenya" style="object-position:51.8% 56.4%"></picture></button><button type="button" class="cfl-card" data-title="" aria-label="Paragliding in Kenya, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/kenya-high.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-high.jpg" width="1400" height="933" decoding="async" draggable="false" alt="Paragliding in Kenya" style="object-position:46.2% 63.9%"></picture></button><button type="button" class="cfl-card" data-title="" aria-label="Paragliding in Kenya, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/kenya-launch.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-launch.jpg" width="1400" height="933" decoding="async" draggable="false" alt="Paragliding in Kenya" style="object-position:68.6% 66.5%"></picture></button><button type="button" class="cfl-card" data-title="" aria-label="Paragliding in Kenya, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/kenya-ridge.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-ridge.jpg" width="1400" height="600" decoding="async" draggable="false" alt="Paragliding in Kenya" style="object-position:72.4% 61.7%"></picture></button><button type="button" class="cfl-card" data-title="" aria-label="Paragliding in Kenya, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/kenya-slope.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-slope.jpg" width="1400" height="933" decoding="async" draggable="false" alt="Paragliding in Kenya" style="object-position:72.7% 41.6%"></picture></button><button type="button" class="cfl-card" data-title="" aria-label="Paragliding in Kenya, open full size"><picture><source srcset="../assets/destinations/kenya/gallery/kenya-3.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-3.jpg" width="1400" height="1050" decoding="async" draggable="false" alt="Paragliding in Kenya" style="object-position:34.6% 26.7%"></picture></button></div>
+    </div>
+    
+  </div>
+    <div class="cfl-atmos cfl-atmos-back" aria-hidden="true"><div class="cfl-clouds" aria-hidden="true">
+      <img class="cfl-cloud" data-sp="-0.16" src="../assets/destinations/kenya/clouds/cloud-1.webp" alt="" loading="lazy" decoding="async">
+      <img class="cfl-cloud" data-sp="0.10" src="../assets/destinations/kenya/clouds/cloud-2.webp" alt="" loading="lazy" decoding="async">
+      <img class="cfl-cloud" data-sp="-0.30" src="../assets/destinations/kenya/clouds/cloud-3.webp" alt="" loading="lazy" decoding="async">
+      <img class="cfl-cloud" data-sp="0.21" src="../assets/destinations/kenya/clouds/cloud-4.webp" alt="" loading="lazy" decoding="async">
+    </div></div>
+    <div class="cfl-atmos" aria-hidden="true"><div class="cfl-clouds" aria-hidden="true">
+      <img class="cfl-cloud" data-sp="-0.16" src="../assets/destinations/kenya/clouds/cloud-1.webp" alt="" loading="lazy" decoding="async">
+      <img class="cfl-cloud" data-sp="0.10" src="../assets/destinations/kenya/clouds/cloud-2.webp" alt="" loading="lazy" decoding="async">
+      <img class="cfl-cloud" data-sp="-0.30" src="../assets/destinations/kenya/clouds/cloud-3.webp" alt="" loading="lazy" decoding="async">
+      <img class="cfl-cloud" data-sp="0.21" src="../assets/destinations/kenya/clouds/cloud-4.webp" alt="" loading="lazy" decoding="async">
+    </div></div>
+    <button type="button" class="cfl-arrow cfl-prev" aria-label="Previous photograph">&#10094;</button>
+    <button type="button" class="cfl-arrow cfl-next" aria-label="Next photograph">&#10095;</button>
+  </div>
+  <div class="cfl-dots" role="group" aria-label="Choose a photograph"><button type="button" class="cfl-dot is-on" aria-label="Photograph 1 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 2 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 3 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 4 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 5 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 6 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 7 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 8 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 9 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 10 of 11"></button><button type="button" class="cfl-dot" aria-label="Photograph 11 of 11"></button></div>
+
+  <div class="cfl-lb" hidden role="dialog" aria-modal="true" aria-label="Photograph, full size">
+    <button type="button" class="cfl-lb-x" aria-label="Close">&#10005;</button>
+    <button type="button" class="cfl-lb-nav cfl-lb-prev" aria-label="Previous">&#10094;</button>
+    <div class="cfl-lb-stage"><picture class="cfl-full is-on"><source srcset="../assets/destinations/kenya/gallery/longonot.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/longonot.jpg" width="1153" height="768" loading="lazy" decoding="async" alt="Mount Longonot"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/kerio-valley.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kerio-valley.jpg" width="1152" height="768" loading="lazy" decoding="async" alt="Kerio Valley"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/equator.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/equator.jpg" width="1152" height="768" loading="lazy" decoding="async" alt="The Equator"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/north-kenya.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/north-kenya.jpg" width="1233" height="768" loading="lazy" decoding="async" alt="Northern Kenya"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/chyulu-hills.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/chyulu-hills.jpg" width="1122" height="768" loading="lazy" decoding="async" alt="Chyulu Hills"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/kenya-hero.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-hero.jpg" width="1400" height="788" loading="lazy" decoding="async" alt="Paragliding in Kenya"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/kenya-high.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-high.jpg" width="1400" height="933" loading="lazy" decoding="async" alt="Paragliding in Kenya"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/kenya-launch.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-launch.jpg" width="1400" height="933" loading="lazy" decoding="async" alt="Paragliding in Kenya"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/kenya-ridge.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-ridge.jpg" width="1400" height="600" loading="lazy" decoding="async" alt="Paragliding in Kenya"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/kenya-slope.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-slope.jpg" width="1400" height="933" loading="lazy" decoding="async" alt="Paragliding in Kenya"></picture><picture class="cfl-full"><source srcset="../assets/destinations/kenya/gallery/kenya-3.webp" type="image/webp"><img src="../assets/destinations/kenya/gallery/kenya-3.jpg" width="1400" height="1050" loading="lazy" decoding="async" alt="Paragliding in Kenya"></picture></div>
+    <button type="button" class="cfl-lb-nav cfl-lb-next" aria-label="Next">&#10095;</button>
+    <p class="cfl-lb-cap"></p>
   </div>
 </section>
 
+<section class="dst-sec is-loud" id="dates">
+  <div class="dst-head">
+    <span class="kicker">Season Packages</span>
+    <h2>Three departures</h2>
+    <p>Each departure runs 12 days from Kerio Valley.</p>
+  </div>
+  <div class="dst-dates">
+    <div class="dst-date"><b>Adventure Tour 1</b><span>19 Jan to 1 Feb 2027</span></div>
+    <div class="dst-date"><b>Adventure Tour 2</b><span>3 Feb to 15 Feb 2027</span></div>
+    <div class="dst-date"><b>Adventure Tour 3</b><span>18 Feb to 1 Mar 2027</span></div>
+    <div class="dst-date"><b>Starting from</b><span>Enquire for prices</span></div>
+  </div>
+</section>
 
+<section class="dst-sec is-loud" id="reality">
+  <div class="dst-head">
+    <span class="kicker">Before You Book</span>
+    <h2>What this trip is actually like</h2>
+    <p>We would rather you read this and decide it is not for you than arrive and find that out. Explore the Cradle is built for independent pilots with strong glider handling and an appetite for the unfamiliar. We put flight safety first, because that is what keeps the fun factor intact.</p>
+  </div>
+  <p class="dst-lede">Every flight is a good flight, but chasing airtime comes with bumpy air, variable thermal strength and conditions more demanding than you expected. That is part of it. Come willing to push your limits and you leave with a renewed understanding of flying in new terrain.</p>
+  <div class="dst-grid two">
+    <div class="dst-cell">
+      <h3>How a day runs</h3>
+      <p>Your guide proposes the day's plan to maximise flying, and briefs you on the forecast, the site and the conditions. He suggests cross country directions and where a retrieve is realistic. He launches first to check the air, or last to help with an awkward takeoff. Then we fly the route together, or improvise over the radio when the day has other ideas.</p>
+    </div>
+    <div class="dst-cell">
+      <h3>Why you have to be autonomous</h3>
+      <p>Most of Kenya sits under moderate easterly winds, so waiting for each other in the air is often simply not possible. You need to take off, fly, decide and land on your own. That is not a formality on this trip, it is the thing that makes the trip work at all.</p>
+    </div>
+    <div class="dst-cell">
+      <h3>Flying conditions, honestly</h3>
+      <p>Some of what we fly is quiet and picturesque. The XC sites, Kerio and Machakos among them, can be rough through sections of a flight, and near the escarpments you can meet heavier turbulence than you were expecting. You will hit bumpy airmass and some genuinely awkward transitions. That is the adventure rather than a failure of planning.</p>
+    </div>
+    <div class="dst-cell">
+      <h3>Retrieve is a two way job</h3>
+      <p>After you land, you are the one who activates and directs the retrieve driver, because the others may still be in the air. Kenya's generous conditions produce long flights, and a long flight means a long retrieve.</p>
+    </div>
+    <div class="dst-cell">
+      <h3>Getting yourself out</h3>
+      <p>Speeding up your own retrieve helps everyone. A landing in Kenya almost always attracts someone on a motorbike, a boda, offering you a lift. Practise your negotiating, get to the nearest tarmac, shop or restaurant, and put a little money into the local economy and a good impression of paraglider pilots along with it. From the tarmac the matatu vans will take you on, crowded and cheerful.</p>
+      <p>Do not drive at night. If you land a long way out, sleep locally and rejoin the group in the morning.</p>
+    </div>
+    <div class="dst-cell">
+      <h3>This is not a comfort tour</h3>
+      <p>If you expect polished service and comfort, this is the wrong trip. Kenya is a young destination with cross country routes still being worked out, and it asks for improvisation, flexibility and tolerance in return for what it gives you.</p>
+    </div>
+    <div class="dst-cell">
+      <h3>You are sharing a sky and a bill</h3>
+      <p>Pilots on the same tour share the same transport costs, whether they flew 20 kilometres or 120. Some days that is a test of how you take other people's good fortune. Most days it is the pleasure of being genuinely glad someone else got the flight of their life.</p>
+    </div>
+  </div>
+</section>
 
+<section class="dst-sec">
+  <div class="dst-head">
+    <span class="kicker">Before You Come</span>
+    <h2>Hear the site from someone who flies it</h2>
+  </div>
+  <a class="dst-rel" href="../episodes/pre-pwc-kenya-nikolay-yotov.html">
+    <div class="dst-rel-body">
+      <span>Podcast · Episode 10 · 52 min</span>
+      <h3>Pre PWC Kenya: Nikolay Yotov</h3>
+      <p>Nikolay Yotov of Skynomad takes the show to Africa for the first time, on flying in Kenya ahead of the pre World Cup held there. It covers what the sites are actually like and what it means to share that airspace with the wildlife below.</p>
+    </div>
+  </a>
+</section>
 
 <section class="dst-sec is-quiet" id="faq">
   <div class="dst-head">
@@ -2101,60 +2410,6 @@
       <p><strong>Kenya is the easy case.</strong> The tourism sector is used to foreigners and no special permits are needed for what we do on this tour.</p></div></details>
     <details class="dst-acc"><summary><h3>You are the precedent</h3></summary><div class="dst-acc-body"><p>There are few enough of us flying here that you are not an anonymous tourist. You are the paraglider pilot that community has met, and possibly the only one they will meet this year. What you do sets the terms for everyone who comes next.</p></div></details>
   </div>
-</section>
-
-<section class="dst-sec is-loud" id="dates">
-  <div class="dst-head">
-    <span class="kicker">Season Packages</span>
-    <h2>Three departures</h2>
-    <p>Each departure runs 12 days from Kerio Valley.</p>
-  </div>
-  <figure class="dst-figure half"><picture><source srcset="../assets/images/kenya-slope.webp" type="image/webp"><img src="../assets/images/kenya-slope.jpg" width="1400" height="933" loading="lazy" alt="A paraglider soaring low along a grass slope dotted with flat topped trees"></picture></figure>
-  <div class="dst-dates">
-    <div class="dst-date"><b>Adventure Tour 1</b><span>19 Jan to 1 Feb 2027</span></div>
-    <div class="dst-date"><b>Adventure Tour 2</b><span>3 Feb to 15 Feb 2027</span></div>
-    <div class="dst-date"><b>Adventure Tour 3</b><span>18 Feb to 1 Mar 2027</span></div>
-    <div class="dst-date"><b>Starting from</b><span>Enquire for prices</span></div>
-  </div>
-</section>
-
-
-
-
-<section class="dst-sec">
-  <div class="dst-head">
-    <span class="kicker">Why Fly With Us</span>
-    <h2>What makes Paragliding Atlas different</h2>
-    <p>Experience intimate, expert led flying in world class destinations. Skip the crowds with small group tours in iconic skies over untamed terrain, fully guided from launch to landing and beyond.</p>
-  </div>
-  <div class="dst-why">
-    <div>
-      <h3>Flight safety, first and always</h3>
-      <p>In aviation there is a saying: if it is controllable, then control it. We don't leave things to chance, because when the air is perfect flying feels effortless, and when turbulence hits Paragliding Atlas has your back. On-site fixes, weather mastery and rescue readiness mean we master every detail beforehand, so you stay safe aloft and soar worry free.</p>
-    </div>
-    <div>
-      <h3>Because we care to share</h3>
-      <p>Sharing our passion for the art of flight isn't just meaningful, it is our purpose. We go the extra mile because your breakthroughs, safety and joy in the skies matter to us. That goodwill soars beyond the skies too: by flying with us you help uplift local communities through welfare, training and opportunities for the next generation.</p>
-    </div>
-    <div>
-      <h3>Exclusive journeys</h3>
-      <p>We are a group of like minded pilots who craft each trip with passion, creativity and teamwork. We handcraft every tour with obsessive precision, so Paragliding Atlas delivers flights that feel like they were dreamed up just for your soul.</p>
-    </div>
-  </div>
-</section>
-
-<section class="dst-sec">
-  <div class="dst-head">
-    <span class="kicker">Before You Come</span>
-    <h2>Hear the site from someone who flies it</h2>
-  </div>
-  <a class="dst-rel" href="../episodes/pre-pwc-kenya-nikolay-yotov.html">
-    <div class="dst-rel-body">
-      <span>Podcast · Episode 10 · 52 min</span>
-      <h3>Pre PWC Kenya: Nikolay Yotov</h3>
-      <p>Nikolay Yotov of Skynomad takes the show to Africa for the first time, on flying in Kenya ahead of the pre World Cup held there. It covers what the sites are actually like and what it means to share that airspace with the wildlife below.</p>
-    </div>
-  </a>
 </section>
 
 </div>
@@ -2366,6 +2621,124 @@
 </script>
 <script defer src="../kenya-map.js?v=70d0ca7b"></script>
 <script defer src="../kenya-gallery.js?v=dd56d50d"></script>
+<script>
+/* Overview prototype.
+ *
+ * Pinned sequence. The stage is CSS sticky; all this does is decide which of
+ * the three beats owns the middle of the viewport and swap the photograph to
+ * match. An observer with the root shrunk to a line across the centre fires
+ * exactly once per beat crossing, in either direction, and costs nothing
+ * between crossings. No scroll listener, no scroll hijack.
+ *
+ * Instruments. The vario sweeps to the midday figure when it comes into view
+ * and then drifts the way a real one does in lift; it stops drifting the
+ * moment it leaves the screen. The season ring only needs a class, the arcs
+ * draw themselves in CSS. Reduced motion gets the final state of both. */
+(function () {
+  var fly = document.getElementById('kfly');
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (fly && 'IntersectionObserver' in window) {
+    var steps  = [].slice.call(fly.querySelectorAll('.kfly-step'));
+    var slides = [].slice.call(fly.querySelectorAll('.kfly-slide'));
+    var marks  = [].slice.call(fly.querySelectorAll('.kfly-marks i'));
+    if (steps.length === slides.length) {
+      var at = 0;
+      var go = function (n) {
+        if (n === at) return;
+        slides[at].classList.remove('is-on'); steps[at].classList.remove('is-on');
+        at = n;
+        slides[at].classList.add('is-on'); steps[at].classList.add('is-on');
+        marks.forEach(function (m, i) { m.classList.toggle('is-on', i <= at); });
+      };
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) go(steps.indexOf(e.target)); });
+      }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+      steps.forEach(function (s) { io.observe(s); });
+    }
+  }
+
+  var vario = document.querySelector('.kvario');
+  if (vario && 'IntersectionObserver' in window) {
+    var needle = vario.querySelector('.needle'), read = vario.querySelector('.read');
+    var set = function (x) {
+      needle.style.transform = 'rotate(' + (x * 22.5).toFixed(2) + 'deg)';
+      read.textContent = x.toFixed(1);
+    };
+    var REST = 5.0, swept = false, live = false, raf = 0, t0 = 0;
+    var back = function (t) { var c = 1.70158; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); };
+    var drift = function (now) {
+      if (!live) return;
+      var t = (now - t0) / 1000;
+      set(REST + 0.5 * Math.sin(t * 1.05) + 0.22 * Math.sin(t * 2.7 + 1.3));
+      raf = requestAnimationFrame(drift);
+    };
+    var sweep = function (now) {
+      var t = Math.min(1, (now - t0) / 1700);
+      set(REST * back(t));
+      if (t < 1) { raf = requestAnimationFrame(sweep); return; }
+      swept = true; live = true; t0 = performance.now(); raf = requestAnimationFrame(drift);
+    };
+    new IntersectionObserver(function (es) {
+      var on = es[0].isIntersecting;
+      if (calm) { set(REST); return; }
+      if (on && !swept) { t0 = performance.now(); raf = requestAnimationFrame(sweep); }
+      else if (on && swept && !live) { live = true; t0 = performance.now(); raf = requestAnimationFrame(drift); }
+      else if (!on && live) { live = false; cancelAnimationFrame(raf); }
+    }, { threshold: 0.35 }).observe(vario);
+  }
+
+  /* The sign-off lights word by word as it crosses the screen. Each word gets
+   * its own slice of one scroll window, with the slices overlapping so the
+   * colour runs along the line rather than stepping word to word. The window
+   * is measured from the line's own position: fully grey when its top reaches
+   * 82% of the viewport, fully orange by the time it passes 38%, which is a
+   * little under one screen of scrolling for the whole sentence.
+   *
+   * Only --t is written, and only when it has actually moved by a hundredth,
+   * so a fast scroll does not thrash style on 23 elements. One passive
+   * listener, rAF throttled, and an observer parks it when the line is off
+   * screen. Reduced motion never starts it and CSS leaves the words lit. */
+  var glory = document.getElementById('kovGlory');
+  if (glory && 'IntersectionObserver' in window && !calm) {
+    var ws = [].slice.call(glory.querySelectorAll('.kov-w'));
+    var last = new Array(ws.length).fill(-1);
+    var SPREAD = 0.55;                 /* how much of the window one word takes */
+    var paint = function () {
+      var r = glory.getBoundingClientRect(), vh = window.innerHeight || 1;
+      var p = (0.82 * vh - r.top) / (0.44 * vh);
+      if (p < 0) p = 0; else if (p > 1) p = 1;
+      for (var i = 0; i < ws.length; i++) {
+        var s = (i / ws.length) * (1 - SPREAD);
+        var t = (p - s) / SPREAD;
+        t = t < 0 ? 0 : t > 1 ? 1 : t;
+        var q = Math.round(t * 100) / 100;
+        if (q !== last[i]) { ws[i].style.setProperty('--t', q); last[i] = q; }
+      }
+    };
+    var tick = false, on = false;
+    var onScroll = function () {
+      if (tick || !on) return;
+      tick = true;
+      requestAnimationFrame(function () { tick = false; paint(); });
+    };
+    new IntersectionObserver(function (es) {
+      on = es[0].isIntersecting;
+      if (on) paint();
+    }, { threshold: 0 }).observe(glory);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    paint();
+  }
+
+  var ring = document.querySelector('.kseason');
+  if (ring && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (es, o) {
+      if (!es[0].isIntersecting) return;
+      ring.classList.add('is-on'); o.disconnect();
+    }, { threshold: 0.35 }).observe(ring);
+  } else if (ring) { ring.classList.add('is-on'); }
+})();
+</script>
 <!-- nav-menu -->
 <script defer src="../nav-menu.js?v=001fbbf6"></script>
 <!-- /nav-menu -->

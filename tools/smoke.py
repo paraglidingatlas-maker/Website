@@ -658,6 +658,75 @@ def kenya_facts(pg, base):
     pg.set_viewport_size({"width": 1400, "height": 900})
 
 
+def kenya_overview(pg, base):
+    """The Overview: a pinned sequence, two instruments, and a sign-off that
+    lights word by word.
+
+    The stage is position:sticky inside a wrapper three screens tall, so it
+    has to sit at exactly 0 through every beat and release afterwards. An
+    ancestor with overflow:hidden would break that silently (overflow:clip on
+    .page-wrap does not), which is why the pin is measured rather than assumed.
+    Scrolling is behavior:'instant' because scroll-behavior is smooth site-wide."""
+    pg.set_viewport_size({"width": 1440, "height": 900})
+    pg.goto(base + "/destinations/kenya.html", wait_until="load")
+    pg.wait_for_function("()=>document.fonts.status==='loaded'")
+    top = lambda s: pg.evaluate("s=>document.querySelector(s).getBoundingClientRect().top+scrollY", s)
+    go = lambda y: (pg.evaluate("y=>window.scrollTo({top:y,behavior:'instant'})", y),
+                    pg.wait_for_function("y=>Math.abs(window.scrollY-y)<2", arg=y))
+
+    fly = round(top('#kfly'))
+    pins, tracks = [], []
+    for k in range(3):
+        go(fly + k * 900)
+        pg.wait_for_timeout(500)
+        st = pg.evaluate("""()=>{const s=document.querySelector('.kfly-stage').getBoundingClientRect();
+          const on=[...document.querySelectorAll('.kfly-slide')].findIndex(e=>e.classList.contains('is-on'));
+          const so=[...document.querySelectorAll('.kfly-step')].findIndex(e=>e.classList.contains('is-on'));
+          return {top:Math.round(s.top),slide:on,step:so};}""")
+        pins.append(st["top"]); tracks.append((st["slide"], st["step"], k))
+    check(all(p == 0 for p in pins), "overview", "the stage pins at the top through all three beats", pins)
+    check(all(a == b == c for a, b, c in tracks), "overview",
+          "the photograph, the words and the scroll position agree on which beat this is", tracks)
+    go(fly + 3 * 900 + 300); pg.wait_for_timeout(200)
+    after = pg.evaluate("()=>Math.round(document.querySelector('.kfly-stage').getBoundingClientRect().top)")
+    check(after < -200, "overview", "and releases once the sequence is over", after)
+    # every beat's words are the owner's and every photograph has a real alt
+    check(pg.evaluate("[...document.querySelectorAll('.kfly-slide img')].every(i=>i.alt.length>10)"),
+          "overview", "every slide has an alt text")
+
+    # the instruments: the vario has to sweep off zero when it comes into view
+    go(round(top('.kair')) - 120); pg.wait_for_timeout(2400)
+    read = pg.evaluate("parseFloat(document.querySelector('.kvario .read').textContent)")
+    check(4.0 < read < 6.0, "overview", "the vario reads in the midday band once in view", read)
+    check(pg.evaluate("document.querySelector('.kseason').classList.contains('is-on')"),
+          "overview", "the season ring lights when it comes into view")
+    lit = pg.evaluate("[...document.querySelectorAll('.kseason .seg.on')].length")
+    check(lit == 4, "overview", "four months are lit, December to March", lit)
+
+    # the sign-off: only the five words carry the reveal, and it runs left to right
+    words = pg.evaluate("[...document.querySelectorAll('.kov-w')].map(w=>w.textContent.trim()).join(' ')")
+    check(words == "Touch The Sky With Glory", "overview", "only Touch The Sky With Glory lights", words)
+    gy = round(top('#kovGlory'))
+    go(gy - int(0.62 * 900)); pg.wait_for_timeout(300)
+    t = pg.evaluate("[...document.querySelectorAll('.kov-w')].map(w=>parseFloat(getComputedStyle(w).getPropertyValue('--t')||1))")
+    check(t[0] > t[-1] + 0.2, "overview", "mid-scroll the first word is further lit than the last", t)
+    go(gy - int(0.35 * 900)); pg.wait_for_timeout(300)
+    t = pg.evaluate("[...document.querySelectorAll('.kov-w')].map(w=>parseFloat(getComputedStyle(w).getPropertyValue('--t')||1))")
+    check(min(t) > 0.95, "overview", "and the whole phrase is orange by the time it reaches the middle", t)
+
+    # no rule and no frame around the map: two-class selectors, verified not assumed
+    edges = pg.evaluate("""()=>({route:getComputedStyle(document.querySelector('#route')).borderTopWidth,
+      stage:getComputedStyle(document.querySelector('.kmap-stage')).borderTopWidth})""")
+    check(all(v == "0px" for v in edges.values()), "overview", "no rule above the route and no frame around the map", str(edges))
+
+    pg.set_viewport_size({"width": 390, "height": 844})
+    pg.wait_for_timeout(500)
+    fly = round(top('#kfly')); go(fly + 844); pg.wait_for_timeout(500)
+    mob = pg.evaluate("()=>Math.round(document.querySelector('.kfly-stage').getBoundingClientRect().top)")
+    check(mob == 0, "overview", "the stage pins on a phone too", mob)
+    pg.set_viewport_size({"width": 1400, "height": 900})
+
+
 def kenya_rolls(pg, base):
     """Wheel rolls on the map earn their way forward: two lift it above the
     weather drifting down from the gallery, four open the chart.
@@ -716,9 +785,12 @@ def kenya_rolls(pg, base):
           "going back to the overview clears both")
 
     # Weather fills the empty part of the stage and never the map itself. It
-    # sits UNDER the map layers, and both maps paint an opaque ground across
-    # their whole viewBox, so the map hides it without any mask. If that ever
-    # stops being true this goes red rather than quietly drifting over a chart.
+    # sits UNDER the map layers. The chart paints an opaque ground across its
+    # whole viewBox, so nothing may change inside that rectangle. The plate no
+    # longer has a ground (its clouds pass behind the country now, since a
+    # frameless map with a hidden rectangle read as a glitch), so for the plate
+    # "the map itself" is the country's flat top face, TOP in the generator.
+    # If a cloud is ever painted over it, this goes red.
     import tempfile as _t
     from PIL import Image as _I
     for state in ("overview", "chart"):
@@ -747,10 +819,15 @@ def kenya_rolls(pg, base):
             pa, pb, wd = list(A.getdata()), list(B.getdata()), A.size[0]
             x, y, mw, mh = box
             onmap = onmapt = grey = greyt = 0
+            if state == "overview":
+                # TOP = "#272a33" in tools/build_kenya_plate.py, as luminance
+                face = round(0.299 * 0x27 + 0.587 * 0x2a + 0.114 * 0x33)
             for row in range(A.size[1]):
                 for colx in range(wd):
                     i = row * wd + colx
                     inside = (x <= colx < x + mw) and (y <= row < y + mh)
+                    if state == "overview":
+                        inside = inside and abs(pb[i] - face) <= 2
                     hit = abs(pa[i] - pb[i]) > 4
                     if inside:
                         onmapt += 1
@@ -1247,7 +1324,7 @@ def main():
                 return 0
             pg = browser.new_page(viewport={"width": 1280, "height": 900},
                                   reduced_motion="no-preference")
-            for fn in (rail, nav, player, library, search, kenya, kenya_hero, kenya_map, kenya_gallery, kenya_facts, kenya_rolls, enquire, overflow):
+            for fn in (rail, nav, player, library, search, kenya, kenya_hero, kenya_map, kenya_gallery, kenya_facts, kenya_overview, kenya_rolls, enquire, overflow):
                 fn(pg, base)
             pg.close()
             pg2 = browser.new_page(viewport={"width": 1280, "height": 900},
