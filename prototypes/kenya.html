@@ -903,6 +903,14 @@
     var(--white) calc((1 - var(--t,1)) * 100%));}
 }
 .kov-cta{margin-top:clamp(2rem,4vw,3rem);}
+/* Outlined at rest, filled on hover, focus and press. The same parallelogram
+   as .btn-solid so the two read as one family. */
+.dst-sec.kov .kov-cta .btn-solid{background:transparent;color:var(--orange);
+  box-shadow:inset 0 0 0 1px var(--orange);
+  transition:transform .2s ease,background .2s ease,color .2s ease;}
+.dst-sec.kov .kov-cta .btn-solid:hover,.dst-sec.kov .kov-cta .btn-solid:focus-visible,
+.dst-sec.kov .kov-cta .btn-solid:active{background:var(--orange);color:var(--bg);}
+.dst-sec.kov .kov-cta .btn-solid:focus-visible{outline:2px solid var(--live);outline-offset:3px;}
 
 @media (prefers-reduced-motion: reduce){
   .kfly-slide{transition:none!important;}
