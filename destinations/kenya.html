@@ -282,7 +282,7 @@
    text. It was 1.65rem at most, which made the loudest line on the page smaller
    than the headings around it. */
 
-.dst-band{padding:0;border-top:1px solid var(--rule);}
+.dst-band{padding:0;}
 .dst-band picture,.dst-band img{display:block;width:100%;}
 .dst-band img{height:clamp(14rem,34vw,26rem);object-fit:cover;object-position:50% 55%;}
 
@@ -328,14 +328,21 @@
    gallery read as floating in weather rather than sitting in a container. */
 .cfl{position:relative;}
 .cfl-atmos{position:absolute;left:calc(50% - 50vw);width:100vw;
-  top:-38vh;bottom:-38vh;z-index:0;pointer-events:none;overflow:hidden;
-  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22%,#000 78%,transparent 100%);
-  mask-image:linear-gradient(to bottom,transparent 0,#000 22%,#000 78%,transparent 100%);}
+  top:-46vh;bottom:-58vh;z-index:0;pointer-events:none;overflow:hidden;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 20%,#000 80%,transparent 100%),
+    linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to bottom,transparent 0,#000 20%,#000 80%,transparent 100%),
+    linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%);
+  mask-composite:intersect;}
 .cfl-frame,.cfl-dots,.cfl .dst-head{position:relative;z-index:1;}
 .cfl-bgs{position:absolute;inset:-10%;z-index:0;}
 .cfl-scrim{mix-blend-mode:normal;}
 .cfl-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
-  transform:scale(1.12);filter:blur(44px) saturate(1.2) brightness(.5);
+  transform:scale(1.12);/* The backdrop was carrying the active photograph's colour across the whole
+   section, so a blue frame turned the page blue. Desaturated almost out: it
+   is there for depth, not for hue. */
+  filter:blur(46px) saturate(.18) brightness(.34);
   transition:opacity 900ms ease;}
 .cfl-bg.is-on{opacity:1;}
 
@@ -430,7 +437,11 @@
 .dst-band,.cfl-frame{width:100vw;margin-left:calc(50% - 50vw);}
 .kmap-figure{max-width:76rem;}
 .kmap-stage{aspect-ratio:auto;height:clamp(26rem,64vh,40rem);}
-.dst-band{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+/* No rules anywhere near the gallery. A 1px line across the page is exactly
+   the hard edge the dissolve exists to remove, and the photograph below it
+   was arriving behind one too. */
+.dst-band{border:0;}
+.dst-sec.cfl,.cfl + .dst-band,.dst-band + .dst-sec{border-top:0;}
 .cfl-frame{border-left:0;border-right:0;}
 
 .cfl-dots{margin-left:clamp(1.2rem,5vw,5.5rem);}

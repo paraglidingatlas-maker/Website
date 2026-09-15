@@ -609,6 +609,18 @@ def kenya_pinch(browser, base):
     pg.wait_for_timeout(1500)
     pg.evaluate("document.querySelector('.kmap-stage').scrollIntoView({block:'center'})")
     pg.wait_for_timeout(700)
+    # The gallery now sits above the map with eleven lazy images in it. They
+    # load after the scroll, reflow the page, and move the map out from under
+    # the touch points, so the gesture lands on nothing and the scale never
+    # changes. Settle first, then take the coordinates.
+    try:
+        pg.wait_for_function(
+            "()=>[...document.images].filter(i=>i.loading!=='lazy'||i.getBoundingClientRect().top<innerHeight*2)"
+            ".every(i=>i.complete)", timeout=12000)
+    except Exception:
+        pass
+    pg.evaluate("document.querySelector('.kmap-stage').scrollIntoView({block:'center'})")
+    pg.wait_for_timeout(900)
 
     check(not pg.evaluate("document.querySelector('.kmap-zoom').hidden"),
           "pinch", "the chart is offered on a phone now that it can be zoomed")
@@ -619,6 +631,11 @@ def kenya_pinch(browser, base):
     r = pg.evaluate("()=>{const b=document.querySelector('.kmap-stage').getBoundingClientRect();"
                     "return {x:b.left,y:b.top,w:b.width,h:b.height};}")
     cx, cy = r["x"] + r["w"] / 2, r["y"] + r["h"] / 2
+    # assert the gesture will actually land on the map, rather than discovering
+    # afterwards that the scale did not change and guessing why
+    on = pg.evaluate(f"()=>{{const e=document.elementFromPoint({cx:.0f},{cy:.0f});"
+                     "return e ? !!e.closest('.kmap-stage') : false;}")
+    check(on, "pinch", "the gesture lands on the map", f"centre at {cx:.0f},{cy:.0f}")
     scale = lambda: pg.evaluate(
         "()=>{const m=getComputedStyle(document.querySelector('.kmap-view'))"
         ".transform.match(/matrix\\(([\\d.]+)/);return m?+m[1]:1}")
@@ -789,6 +806,25 @@ def kenya_gallery(pg, base):
     check(over["above"] > 100 and over["below"] > 100, "gallery",
           "the clouds carry beyond the gallery into the sections either side",
           f"{over['above']}px above, {over['below']}px below")
+
+    # No rules anywhere near the gallery. .dst-sec + .dst-sec draws one between
+    # every pair of sections, and beating it needs two classes, not one: the
+    # first attempt at removing it used .cfl and silently lost the cascade.
+    rules = pg.evaluate("""()=>{const g=document.querySelector('.cfl');
+      const b=document.querySelector('.dst-band');
+      return {gallery:getComputedStyle(g).borderTopWidth,
+              bandTop:getComputedStyle(b).borderTopWidth,
+              bandBottom:getComputedStyle(b).borderBottomWidth};}""")
+    check(all(v == "0px" for v in rules.values()), "gallery",
+          "no rule is drawn across the gallery or the photograph below it", str(rules))
+
+    # the cloud layer is faded on the horizontal axis too, or it ends in a
+    # straight vertical edge down the side of the page
+    mask = pg.evaluate("()=>{const cs=getComputedStyle(document.querySelector('.cfl-atmos'));"
+                       "return (cs.maskImage||cs.webkitMaskImage||'');}")
+    check(mask.count("gradient") >= 2, "gallery",
+          "the clouds fade out sideways as well as vertically",
+          f"{mask.count('gradient')} gradients in the mask")
 
 
 def overflow(pg, base):
