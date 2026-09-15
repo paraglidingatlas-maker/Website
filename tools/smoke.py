@@ -786,12 +786,22 @@ def kenya_gallery(pg, base):
     except Exception as e:
         check(False, "gallery", "the clouds are actually visible, not just present", str(e)[:50])
 
-    # clouds drift as the page scrolls
-    t0 = pg.evaluate("getComputedStyle(document.querySelector('.cfl-cloud')).transform")
-    pg.evaluate("window.scrollBy(0,500)")
-    pg.wait_for_timeout(500)
-    check(t0 != pg.evaluate("getComputedStyle(document.querySelector('.cfl-cloud')).transform"),
-          "gallery", "the clouds drift against the page scroll")
+    # Clouds drift as the page scrolls, and by enough to notice. The site sets
+    # scroll-behavior: smooth, so window.scrollTo animates and a measurement
+    # taken 400ms later lands somewhere in the middle of the journey: readings
+    # that looked like the parallax clamping were the scroll still moving.
+    # behavior:'instant' or this measures nothing real.
+    gy = pg.evaluate("Math.round(document.querySelector('.cfl').getBoundingClientRect().top+scrollY)")
+    seen = []
+    for off in (-900, -300, 300, 900, 1500):
+        pg.evaluate(f"window.scrollTo({{top:{gy + off},behavior:'instant'}})")
+        pg.wait_for_timeout(380)
+        seen.append(pg.evaluate(
+            "()=>Math.round(new DOMMatrix(getComputedStyle("
+            "document.querySelectorAll('.cfl-cloud')[2]).transform).f)"))
+    travel = max(seen) - min(seen)
+    check(travel > 250, "gallery",
+          "the clouds move vertically as the page scrolls", f"{travel}px of travel")
 
     # The gallery has to dissolve into the page rather than arrive as a box, and
     # the weather has to carry past it into the sections either side. Both were
@@ -857,6 +867,40 @@ def kenya_gallery(pg, base):
           "the clouds sit in front of the photographs", str(order))
     check(order["caps"] > order["clouds"] and order["arrows"] > order["clouds"],
           "gallery", "the caption and arrows stay in front of the clouds", str(order))
+
+    # In front of everything except the photograph you are looking at: a third
+    # mask layer opens a hole over the card at the front.
+    import tempfile as _t
+    from PIL import Image as _I
+    pg.evaluate("document.querySelector('.cfl').scrollIntoView({block:'center'})")
+    pg.wait_for_timeout(1200)
+    on = os.path.join(_t.gettempdir(), "cfl-on.png")
+    off = os.path.join(_t.gettempdir(), "cfl-off.png")
+    try:
+        pg.locator(".cfl-wrap").screenshot(path=on)
+        pg.evaluate("document.querySelector('.cfl-atmos').style.visibility='hidden'")
+        pg.wait_for_timeout(350)
+        pg.locator(".cfl-wrap").screenshot(path=off)
+        pg.evaluate("document.querySelector('.cfl-atmos').style.visibility=''")
+        box = pg.evaluate("""()=>{const w=document.querySelector('.cfl-wrap').getBoundingClientRect();
+          const c=document.querySelectorAll('.cfl-card')[0].getBoundingClientRect();
+          return [Math.round(c.left-w.left),Math.round(c.top-w.top),
+                  Math.round(c.width),Math.round(c.height)];}""")
+        A, B = _I.open(on).convert("L"), _I.open(off).convert("L")
+        pa, pb, wd = list(A.getdata()), list(B.getdata()), A.size[0]
+        x, y, cw, ch = box
+        hits = tot = 0
+        for row in range(y + 10, min(A.size[1], y + ch - 10)):
+            for colx in range(x + 10, min(wd, x + cw - 10)):
+                i = row * wd + colx
+                tot += 1
+                if abs(pa[i] - pb[i]) > 4:
+                    hits += 1
+        pct = hits / max(1, tot) * 100
+        check(pct < 3, "gallery", "the card at the front stays clear of cloud",
+              f"{pct:.1f}% of it covered")
+    except Exception as e:
+        check(False, "gallery", "the card at the front stays clear of cloud", str(e)[:50])
 
 
 def overflow(pg, base):

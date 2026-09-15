@@ -159,8 +159,10 @@
     var p = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
     clouds.forEach(function (c) {
       var sp = parseFloat(c.getAttribute('data-sp')) || 0;
-      c.style.transform = 'translate3d(' + (p * sp * 110).toFixed(1) + 'px,' +
-        (p * sp * 210).toFixed(1) + 'px,0)';
+      /* 210 gave 344px of vertical travel across the whole page, which is
+         real and not noticeable. 760 gives 576px across the gallery alone. */
+      c.style.transform = 'translate3d(' + (p * sp * 90).toFixed(1) + 'px,' +
+        (p * sp * 760).toFixed(1) + 'px,0)';
     });
   }
   window.addEventListener('scroll', function () {
