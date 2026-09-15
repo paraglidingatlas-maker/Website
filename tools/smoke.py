@@ -16,6 +16,7 @@ import http.server
 import os
 import socket
 import socketserver
+import tempfile
 import sys
 import threading
 import time
@@ -479,17 +480,36 @@ def kenya_map(pg, base):
         "()=>{const m=getComputedStyle(document.querySelector('.kmap-view'))"
         ".transform.match(/matrix\\(([\\d.]+)/);return m?+m[1]:1}")
     check(abs(scale() - 1) < 0.01, "map", "the map starts unzoomed", scale())
+    # Markers sit outside the transform surface and are positioned in px. Put
+    # them back inside it and a counter-scale is needed, which lays the label
+    # out at 12px, rasterises the glyphs at under 2px and lets the parent blow
+    # that bitmap back up.
+    #
+    # getBoundingClientRect cannot see this: it returns the final composited
+    # size, 115x22 either way, so a box comparison passes against the broken
+    # build. The damage is in the pixels, so the pixels are what get measured.
     pg.evaluate("document.querySelector('[data-z=\"in\"]').click()")
     pg.wait_for_timeout(500)
     check(scale() > 1.3, "map", "the zoom control zooms in", scale())
 
-    # Markers ride the zoom surface. Without the counter-scale a 44px target
-    # becomes 300px and the labels swamp the map, which looks fine in a
-    # screenshot and is unusable.
-    pk = pg.evaluate("()=>{const m=getComputedStyle(document.querySelector('.kmap-pin'))"
+    sc = pg.evaluate("()=>{const m=getComputedStyle(document.querySelector('.kmap-pin'))"
                      ".transform.match(/matrix\\(([\\d.]+)/);return m?+m[1]:1}")
-    check(abs(pk * scale() - 1) < 0.02, "map",
-          "markers hold their size as the map zooms", f"pin {pk} x view {scale()}")
+    check(abs(sc - 1) < 0.01, "map", "markers are never scaled themselves", sc)
+
+    shot = os.path.join(tempfile.gettempdir(), "kmap-label.png")
+    try:
+        pg.locator(".kmap-pin.is-on .kmap-pin-name").screenshot(path=shot)
+        from PIL import Image
+        im = Image.open(shot).convert("L")
+        px = list(im.getdata())
+        w, h = im.size
+        # mean absolute difference between neighbouring pixels: crisp glyph edges
+        # give a high number, an upscaled 2px raster gives a low one
+        edges = sum(abs(px[i] - px[i - 1]) for i in range(1, len(px)) if i % w) / max(1, len(px))
+        check(edges > 6, "map", "marker labels stay crisp when the map is zoomed",
+              f"edge energy {edges:.1f} over {w}x{h}")
+    except Exception as e:
+        check(False, "map", "marker labels stay crisp when the map is zoomed", str(e)[:60])
 
     before = tf()
     box = pg.evaluate("()=>{const r=document.querySelector('.kmap-stage').getBoundingClientRect();"

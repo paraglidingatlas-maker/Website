@@ -96,7 +96,7 @@ def _simplify(pts, tol):
     return [p for p, k in zip(pts, keep) if k]
 
 
-def path(ringlist, tol=3.0):
+def path(ringlist, tol=0.4):
     """Coordinates go out at one decimal and rings are simplified first. The
     source is 10m Natural Earth, which at this display size carries detail far
     below a pixel: unsimplified the plate was 195KB of path data alone."""
