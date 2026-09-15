@@ -713,6 +713,20 @@ def kenya_pinch(browser, base):
     check(pg.evaluate("document.querySelector('.kmap-stage').style.touchAction") == "none",
           "pinch", "a zoomed map takes the gesture instead of the page")
 
+    # The two stages have to be reachable on a phone as well. They were not:
+    # they counted wheel events, and a phone has no wheel, so a touch user
+    # could never lift the map or reach the chart however hard they pinched.
+    check(pg.evaluate("document.querySelector('.kmap').classList.contains('is-lifted')"),
+          "pinch", "a pinch lifts the map above the weather")
+    for d in (60, 110, 170, 230, 300):
+        touch("touchStart", [(cx - 30, cy), (cx + 30, cy)]) if d == 60 else None
+        touch("touchMove", [(cx - d, cy), (cx + d, cy)])
+        pg.wait_for_timeout(60)
+    touch("touchEnd", [])
+    pg.wait_for_timeout(1600)
+    check(pg.evaluate("document.querySelector('.kmap-stage').classList.contains('is-sheet')"),
+          "pinch", "pinching further opens the chart on a phone")
+
     peak = scale()
     touch("touchStart", [(cx - 150, cy), (cx + 150, cy)])
     for d in (110, 70, 40, 20):

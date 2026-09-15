@@ -94,16 +94,36 @@
     apply(animate);
   }
 
+  /* Two stages, driven by however the person is zooming. Lift above the
+     weather at two, open the chart at four.
+
+     A phone has no wheel, so counting wheel events left both stages
+     unreachable on touch.
+
+     Converting pinch scale through the wheel's own step does not work: four
+     rolls is only 1.69x, and an ordinary pinch passes that in one gesture, so
+     the chart opened on the first small pinch. Touch gets its own thresholds,
+     chosen so a normal pinch lifts the map and opening the chart takes a
+     deliberate second one. */
+  var LIFT_SCALE = 1.5, SHEET_SCALE = 3.5;
+
+  function applyStages(n) {
+    rolls = Math.max(0, n);
+    /* unconditional once the chart is open: recomputing from the count alone
+       dropped it back under the weather on the next roll after the switch */
+    root.classList.toggle('is-lifted', rolls >= 2 || sheetOn);
+    if (rolls >= 4 && !sheetOn && !loading) setSheet(true);
+  }
+
   function countRoll(zoomingOut) {
     var now = (window.performance && performance.now) ? performance.now() : Date.now();
-    if (now - lastRoll > 150) { rolls = Math.max(0, rolls + (zoomingOut ? -1 : 1)); }
+    /* a burst of trackpad events inside 150ms is one roll */
+    if (now - lastRoll > 150) applyStages(rolls + (zoomingOut ? -1 : 1));
     lastRoll = now;
-    /* above the clouds at two, and unconditionally once the chart is open:
-       recomputing from the roll count alone dropped it back under the weather
-       on the next roll after the switch */
-    root.classList.toggle('is-lifted', rolls >= 2 || sheetOn);
-    /* and into the chart at four, once */
-    if (rolls >= 4 && !sheetOn && !loading) setSheet(true);
+  }
+
+  function stagesFromScale() {
+    applyStages(k >= SHEET_SCALE ? 4 : (k >= LIFT_SCALE ? 2 : 0));
   }
 
   var live = new Map(), startK = 1, startD = 0, startMid = null, moved = 0;
@@ -151,6 +171,7 @@
       ty += mid.y - startMid.y;
       startMid = mid;
       apply(false);
+      stagesFromScale();
       return;
     }
     if (live.size === 1 && k > 1.001) {
