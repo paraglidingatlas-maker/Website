@@ -327,10 +327,10 @@
 .cfl-atmos{position:absolute;left:calc(50% - 50vw);width:100vw;
   top:-46vh;bottom:-58vh;z-index:0;pointer-events:none;overflow:hidden;
   -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 20%,#000 80%,transparent 100%),
-    linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%);
+    linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%);
   -webkit-mask-composite:source-in;
   mask-image:linear-gradient(to bottom,transparent 0,#000 20%,#000 80%,transparent 100%),
-    linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%);
+    linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%);
   mask-composite:intersect;}
 .cfl-frame,.cfl-dots,.cfl .dst-head{position:relative;z-index:1;}
 .cfl-bgs{position:absolute;inset:-10%;z-index:0;}
@@ -344,8 +344,11 @@
 .cfl-bg.is-on{opacity:1;}
 
 .cfl-clouds{position:absolute;inset:0;pointer-events:none;}
-.cfl-cloud{position:absolute;left:-7%;width:114%;height:auto;will-change:transform;
-  mix-blend-mode:screen;}
+/* max-width:100% from the global image rules was capping these at the width of
+   the section, so a layer set to 114% actually stopped at 92.6% and left a hard
+   vertical edge just inside where the mask starts to fade. */
+.cfl-cloud{position:absolute;left:-12%;width:124%;max-width:none;height:auto;
+  will-change:transform;mix-blend-mode:screen;}
 @media (max-width:820px){.cfl-cloud{opacity:.55!important;}}
 .cfl-cloud:nth-child(1){top:-14%;opacity:1;}
 .cfl-cloud:nth-child(2){top:20%;opacity:.9;}

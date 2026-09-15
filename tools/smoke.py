@@ -542,7 +542,17 @@ def kenya_map(pg, base):
         pg.goto(base + "/destinations/kenya.html", wait_until="load")
         pg.wait_for_timeout(1300)
         pg.evaluate("document.querySelector('.kmap').scrollIntoView({block:'start'})")
-        pg.wait_for_timeout(600)
+        # Settle before measuring geometry. This page carries enough lazy images
+        # above the map that they were still loading and reflowing the stage
+        # while the measurement ran: 7px of apparent error against 0.05px once
+        # the layout stops moving.
+        try:
+            pg.wait_for_function(
+                "()=>[...document.images].filter(i=>i.getBoundingClientRect().top<innerHeight*3)"
+                ".every(i=>i.complete)", timeout=12000)
+        except Exception:
+            pass
+        pg.wait_for_timeout(900)
         d = pg.evaluate(reg, steps)
         check(d["worst"] < 3, "map",
               "markers sit on the map at %.1fx zoom" % d["k"],
@@ -811,12 +821,11 @@ def kenya_gallery(pg, base):
     # every pair of sections, and beating it needs two classes, not one: the
     # first attempt at removing it used .cfl and silently lost the cascade.
     rules = pg.evaluate("""()=>{const g=document.querySelector('.cfl');
-      const b=document.querySelector('.dst-band');
+      const n=g.nextElementSibling;
       return {gallery:getComputedStyle(g).borderTopWidth,
-              bandTop:getComputedStyle(b).borderTopWidth,
-              bandBottom:getComputedStyle(b).borderBottomWidth};}""")
+              next:n?getComputedStyle(n).borderTopWidth:'0px'};}""")
     check(all(v == "0px" for v in rules.values()), "gallery",
-          "no rule is drawn across the gallery or the photograph below it", str(rules))
+          "no rule is drawn above the gallery or below it", str(rules))
 
     # the cloud layer is faded on the horizontal axis too, or it ends in a
     # straight vertical edge down the side of the page
@@ -825,6 +834,17 @@ def kenya_gallery(pg, base):
     check(mask.count("gradient") >= 2, "gallery",
           "the clouds fade out sideways as well as vertically",
           f"{mask.count('gradient')} gradients in the mask")
+
+    # A mask only fades what reaches it. img{max-width:100%} was capping the
+    # cloud layers at the width of the section, so a layer set wider than the
+    # viewport actually stopped at 92.6% and left a hard vertical edge just
+    # inside where the fade begins. The mask looked right and the edge was
+    # still there, so check the geometry, not the declaration.
+    reach = pg.evaluate("""()=>{const c=document.querySelector('.cfl-cloud').getBoundingClientRect();
+      return {left:Math.round(-c.left), right:Math.round(c.right-innerWidth)};}""")
+    check(reach["left"] > 60 and reach["right"] > 20, "gallery",
+          "the cloud layers run past both sides of the screen",
+          f"{reach['left']}px past the left, {reach['right']}px past the right")
 
 
 def overflow(pg, base):
