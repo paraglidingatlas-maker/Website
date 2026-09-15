@@ -618,6 +618,41 @@ def kenya_map(pg, base):
     pg.wait_for_timeout(300)
 
 
+def kenya_facts(pg, base):
+    """The practical facts read at a glance instead of behind six clicks.
+
+    An accordion is for content long enough to be worth collapsing. Every
+    answer here was one line, so six of them cost six clicks to learn that the
+    capital is Nairobi."""
+    pg.set_viewport_size({"width": 1400, "height": 900})
+    pg.goto(base + "/destinations/kenya.html", wait_until="load")
+    pg.wait_for_timeout(1300)
+    n = pg.evaluate("document.querySelectorAll('#practical .fact').length")
+    check(n == 6, "facts", "every fact has its own cell", n)
+    check(pg.evaluate("document.querySelectorAll('#practical details').length") == 0,
+          "facts", "nothing is hidden behind a click any more")
+    check(pg.evaluate("document.querySelectorAll('#practical .fact-i').length") == 6,
+          "facts", "every fact carries an icon")
+    # the icons inherit colour, so a hardcoded fill would break the palette
+    check(pg.evaluate("[...document.querySelectorAll('#practical .fact-i')]"
+                      ".every(i=>i.getAttribute('stroke')==='currentColor')"),
+          "facts", "icons take their colour from the stylesheet, not the markup")
+    # three across means six facts fill two rows with no orphan
+    cols = pg.evaluate("getComputedStyle(document.querySelector('.fact-grid'))"
+                       ".gridTemplateColumns.split(' ').length")
+    check(cols == 3, "facts", "three across, so the six make two full rows", cols)
+    # the values have to be readable, not decorative
+    vis = pg.evaluate("""()=>[...document.querySelectorAll('#practical .fact-v')]
+      .every(e=>e.textContent.trim().length>2 && +getComputedStyle(e).opacity===1)""")
+    check(vis, "facts", "every value is present and visible")
+    pg.set_viewport_size({"width": 390, "height": 844})
+    pg.wait_for_timeout(600)
+    one = pg.evaluate("getComputedStyle(document.querySelector('.fact-grid'))"
+                      ".gridTemplateColumns.split(' ').length")
+    check(one == 1, "facts", "one column on a phone", one)
+    pg.set_viewport_size({"width": 1400, "height": 900})
+
+
 def kenya_rolls(pg, base):
     """Wheel rolls on the map earn their way forward: two lift it above the
     weather drifting down from the gallery, four open the chart.
@@ -1207,7 +1242,7 @@ def main():
                 return 0
             pg = browser.new_page(viewport={"width": 1280, "height": 900},
                                   reduced_motion="no-preference")
-            for fn in (rail, nav, player, library, search, kenya, kenya_hero, kenya_map, kenya_gallery, kenya_rolls, enquire, overflow):
+            for fn in (rail, nav, player, library, search, kenya, kenya_hero, kenya_map, kenya_gallery, kenya_facts, kenya_rolls, enquire, overflow):
                 fn(pg, base)
             pg.close()
             pg2 = browser.new_page(viewport={"width": 1280, "height": 900},
