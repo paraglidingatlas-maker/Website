@@ -772,6 +772,11 @@
 .kov-open .dst-lede{max-width:34rem;margin:0;}
 @media (max-width:820px){.kov-open{grid-template-columns:1fr;align-items:start;}}
 
+/* No rule between the Overview and the route. The map's weather already
+   dissolves the seam; a 1px line across it is the hard edge that dissolve
+   exists to remove. Two classes, to beat .dst-sec + .dst-sec on source order. */
+.dst-sec.kmap{border-top:0;}
+
 /* ---- the pinned sequence ---- */
 .kfly{position:relative;width:100vw;margin-left:calc(50% - 50vw);}
 .kfly-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#0d0e11;}
