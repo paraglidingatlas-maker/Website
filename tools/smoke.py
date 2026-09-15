@@ -637,6 +637,11 @@ def kenya_facts(pg, base):
     check(pg.evaluate("[...document.querySelectorAll('#practical .fact-i')]"
                       ".every(i=>i.getAttribute('stroke')==='currentColor')"),
           "facts", "icons take their colour from the stylesheet, not the markup")
+    # and the stylesheet gives them a palette token, not a one-off hex
+    icol = pg.evaluate("getComputedStyle(document.querySelector('#practical .fact-i')).color")
+    ocol = pg.evaluate("getComputedStyle(document.documentElement).getPropertyValue('--orange').trim()")
+    want = "rgb(255, 117, 23)"
+    check(icol == want, "facts", "the icons use the site orange", f"{icol} against {ocol}")
     # three across means six facts fill two rows with no orphan
     cols = pg.evaluate("getComputedStyle(document.querySelector('.fact-grid'))"
                        ".gridTemplateColumns.split(' ').length")
