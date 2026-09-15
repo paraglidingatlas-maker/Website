@@ -208,7 +208,12 @@
 .kmap-btn{width:34px;height:34px;padding:0;background:rgba(20,21,25,.86);
   border:1px solid var(--edge-hi);color:var(--white);font-family:var(--font-body);
   font-size:1rem;line-height:1;cursor:pointer;transition:border-color .2s ease,opacity .2s ease;}
-.kmap-btn.kmap-reset{width:auto;padding:0 .7rem;font-size:.72rem;letter-spacing:.09em;}
+/* The third control opens and closes the chart. It used to reset the view,
+   with a separate button below the map for the chart, which put two related
+   actions in two unrelated places. Switching state resets the view anyway, and
+   escape and double click still reset zoom on their own. */
+.kmap-btn.kmap-swap{width:auto;padding:0 .8rem;font-size:.72rem;letter-spacing:.09em;}
+.kmap-btn.kmap-swap[aria-pressed="true"]{border-color:var(--orange);color:var(--orange);}
 .kmap-btn:hover:not(:disabled){border-color:var(--orange);}
 .kmap-btn:disabled{opacity:.35;cursor:default;}
 .kmap-btn:focus-visible{outline:2px solid var(--live);outline-offset:2px;}
@@ -232,12 +237,6 @@
 .kmap-pin.is-on .kmap-pin-name,.kmap-pin:hover .kmap-pin-name{opacity:1;}
 .kmap-stage.is-sheet .kmap-pin-name{font-size:.7rem;}
 
-.kmap-zoom{margin-top:.9rem;background:none;border:1px solid var(--edge-hi);
-  color:var(--white);padding:.62rem 1.1rem;font-family:var(--font-body);
-  font-size:.82rem;letter-spacing:.1em;cursor:pointer;transition:border-color .2s ease;}
-.kmap-zoom:hover{border-color:var(--orange);}
-.kmap-zoom:focus-visible{outline:2px solid var(--live);outline-offset:3px;}
-.kmap-zoom[aria-pressed="true"]{border-color:var(--orange);color:var(--orange);}
 
 .kmap-side{min-width:0;}
 .kmap-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));
@@ -1961,9 +1960,8 @@
         
         </div>
         <div class="kmap-pins"><button type="button" class="kmap-pin is-on" aria-pressed="true" data-plate='{"x":32.263,"y":44.614}' data-sheet='{"x":30.833,"y":18.333}'><span class="kmap-pin-dot"></span><span class="kmap-pin-name">Kerio Valley</span></button><button type="button" class="kmap-pin" aria-pressed="false" data-plate='{"x":36.779,"y":55.163}' data-sheet='{"x":41.667,"y":52.083}'><span class="kmap-pin-dot"></span><span class="kmap-pin-name">Rift Valley National Park</span></button><button type="button" class="kmap-pin" aria-pressed="false" data-plate='{"x":37.821,"y":55.228}' data-sheet='{"x":44.167,"y":52.292}'><span class="kmap-pin-dot"></span><span class="kmap-pin-name">Mount Longonot Crater</span></button><button type="button" class="kmap-pin" aria-pressed="false" data-plate='{"x":38.724,"y":55.359}' data-sheet='{"x":46.333,"y":52.708}'><span class="kmap-pin-dot"></span><span class="kmap-pin-name">Kijabe Hill</span></button><button type="button" class="kmap-pin" aria-pressed="false" data-plate='{"x":43.448,"y":59.201}' data-sheet='{"x":57.667,"y":65.0}'><span class="kmap-pin-dot"></span><span class="kmap-pin-name">Machakos Hills</span></button><button type="button" class="kmap-pin" aria-pressed="false" data-plate='{"x":47.756,"y":66.755}' data-sheet='{"x":68.0,"y":89.167}'><span class="kmap-pin-dot"></span><span class="kmap-pin-name">Chyulu Hills</span></button></div>
-        <div class="kmap-ctl"><button type="button" class="kmap-btn" data-z="in" aria-label="Zoom in">+</button><button type="button" class="kmap-btn" data-z="out" aria-label="Zoom out">&#8722;</button><button type="button" class="kmap-btn kmap-reset" data-z="reset" aria-label="Reset the view">Reset</button></div>
+        <div class="kmap-ctl"><button type="button" class="kmap-btn" data-z="in" aria-label="Zoom in">+</button><button type="button" class="kmap-btn" data-z="out" aria-label="Zoom out">&#8722;</button><button type="button" class="kmap-btn kmap-swap" aria-pressed="false">Open the chart</button></div>
       </div>
-      <button type="button" class="kmap-zoom" aria-pressed="false">Open the chart</button>
     </div>
     <div class="kmap-side">
       <div class="kmap-list" role="group" aria-label="Choose a site"><button type="button" class="kmap-row is-on" aria-pressed="true" data-panel="&lt;picture&gt;&lt;source srcset=&quot;../assets/destinations/kenya/hero/kerio-valley.webp&quot; type=&quot;image/webp&quot;&gt;&lt;img src=&quot;../assets/destinations/kenya/hero/kerio-valley.jpg&quot; width=&quot;1152&quot; height=&quot;768&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; alt=&quot;Paragliding at Kerio Valley, Kenya&quot;&gt;&lt;/picture&gt;&lt;div class=&quot;kmap-panel-txt&quot;&gt;&lt;h3&gt;Kerio Valley&lt;/h3&gt;&lt;p class=&quot;kmap-coord&quot;&gt;0.72°N · 35.65°E&lt;/p&gt;&lt;p&gt;The base for the tour, and the site where the world speed records are chased.&lt;/p&gt;&lt;/div&gt;"><span class="kmap-row-name">Kerio Valley</span><span class="kmap-row-co">0.72°N · 35.65°E</span></button><button type="button" class="kmap-row" aria-pressed="false" data-panel="&lt;div class=&quot;kmap-panel-txt&quot;&gt;&lt;h3&gt;Rift Valley National Park&lt;/h3&gt;&lt;p class=&quot;kmap-coord&quot;&gt;0.90°S · 36.30°E&lt;/p&gt;&lt;p&gt;Flying over the floor of the Great Rift, the geological scar that runs the length of the country.&lt;/p&gt;&lt;p class=&quot;kmap-leg&quot;&gt;158°T · 194 km from Kerio Valley&lt;/p&gt;&lt;/div&gt;"><span class="kmap-row-name">Rift Valley National Park</span><span class="kmap-row-co">0.90°S · 36.30°E</span></button><button type="button" class="kmap-row" aria-pressed="false" data-panel="&lt;picture&gt;&lt;source srcset=&quot;../assets/destinations/kenya/hero/longonot.webp&quot; type=&quot;image/webp&quot;&gt;&lt;img src=&quot;../assets/destinations/kenya/hero/longonot.jpg&quot; width=&quot;1152&quot; height=&quot;768&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; alt=&quot;Paragliding at Mount Longonot Crater, Kenya&quot;&gt;&lt;/picture&gt;&lt;div class=&quot;kmap-panel-txt&quot;&gt;&lt;h3&gt;Mount Longonot Crater&lt;/h3&gt;&lt;p class=&quot;kmap-coord&quot;&gt;0.91°S · 36.45°E&lt;/p&gt;&lt;p&gt;A dormant stratovolcano with an intact crater rim, and one of the more photographed flights of the trip.&lt;/p&gt;&lt;p class=&quot;kmap-leg&quot;&gt;094°T · 17 km from Rift Valley NP&lt;/p&gt;&lt;/div&gt;"><span class="kmap-row-name">Mount Longonot Crater</span><span class="kmap-row-co">0.91°S · 36.45°E</span></button><button type="button" class="kmap-row" aria-pressed="false" data-panel="&lt;div class=&quot;kmap-panel-txt&quot;&gt;&lt;h3&gt;Kijabe Hill&lt;/h3&gt;&lt;p class=&quot;kmap-coord&quot;&gt;0.93°S · 36.58°E&lt;/p&gt;&lt;p&gt;An escarpment site on the eastern wall of the Rift, north west of Nairobi.&lt;/p&gt;&lt;p class=&quot;kmap-leg&quot;&gt;099°T · 15 km from Mount Longonot&lt;/p&gt;&lt;/div&gt;"><span class="kmap-row-name">Kijabe Hill</span><span class="kmap-row-co">0.93°S · 36.58°E</span></button><button type="button" class="kmap-row" aria-pressed="false" data-panel="&lt;div class=&quot;kmap-panel-txt&quot;&gt;&lt;h3&gt;Machakos Hills&lt;/h3&gt;&lt;p class=&quot;kmap-coord&quot;&gt;1.52°S · 37.26°E&lt;/p&gt;&lt;p&gt;Rolling hills south east of Nairobi, and a change of character from the Rift walls.&lt;/p&gt;&lt;p class=&quot;kmap-leg&quot;&gt;131°T · 100 km from Kijabe Hill&lt;/p&gt;&lt;/div&gt;"><span class="kmap-row-name">Machakos Hills</span><span class="kmap-row-co">1.52°S · 37.26°E</span></button><button type="button" class="kmap-row" aria-pressed="false" data-panel="&lt;picture&gt;&lt;source srcset=&quot;../assets/destinations/kenya/hero/chyulu-hills.webp&quot; type=&quot;image/webp&quot;&gt;&lt;img src=&quot;../assets/destinations/kenya/hero/chyulu-hills.jpg&quot; width=&quot;1152&quot; height=&quot;768&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; alt=&quot;Paragliding at Chyulu Hills, Kenya&quot;&gt;&lt;/picture&gt;&lt;div class=&quot;kmap-panel-txt&quot;&gt;&lt;h3&gt;Chyulu Hills&lt;/h3&gt;&lt;p class=&quot;kmap-coord&quot;&gt;2.68°S · 37.88°E&lt;/p&gt;&lt;p&gt;A young volcanic range between Tsavo and Amboseli, with Kilimanjaro on the horizon.&lt;/p&gt;&lt;p class=&quot;kmap-leg&quot;&gt;152°T · 146 km from Machakos Hills&lt;/p&gt;&lt;/div&gt;"><span class="kmap-row-name">Chyulu Hills</span><span class="kmap-row-co">2.68°S · 37.88°E</span></button></div>
@@ -2328,7 +2326,7 @@
   arm();
 })();
 </script>
-<script defer src="../kenya-map.js?v=29cefe35"></script>
+<script defer src="../kenya-map.js?v=70d0ca7b"></script>
 <script defer src="../kenya-gallery.js?v=dd56d50d"></script>
 <!-- nav-menu -->
 <script defer src="../nav-menu.js?v=001fbbf6"></script>

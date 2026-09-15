@@ -459,7 +459,7 @@ def kenya_map(pg, base):
     check(pg.evaluate("document.querySelector('.kmap-sheet').children.length") == 0,
           "map", "the chart is not loaded until it is opened")
     before = pg.evaluate("document.querySelector('.kmap-pin').style.left")
-    pg.click(".kmap-zoom")
+    pg.click(".kmap-swap")
     pg.wait_for_timeout(2600)
     check(pg.evaluate("document.querySelector('.kmap-sheet').querySelectorAll('svg').length") > 0,
           "map", "the chart loads when opened")
@@ -586,9 +586,16 @@ def kenya_map(pg, base):
     pg.wait_for_timeout(400)
     check(tf() != before, "map", "dragging pans the map when it is zoomed in")
 
-    pg.evaluate("document.querySelector('[data-z=\"reset\"]').click()")
-    pg.wait_for_timeout(500)
-    check(abs(scale() - 1) < 0.01, "map", "reset returns the map to its full view", scale())
+    # The reset button became the chart toggle, so the ways back to the full
+    # view are a double click and escape. Double click is used here because
+    # escape needs focus inside the map and a drag does not give it that,
+    # which is worth knowing: the keyboard route is not reachable by mouse
+    # alone. Losing the labelled button is the cost of putting the two related
+    # actions in one place.
+    pg.mouse.dblclick(box["x"], box["y"])
+    pg.wait_for_timeout(700)
+    check(abs(scale() - 1) < 0.01, "map",
+          "a double click returns the map to its full view", scale())
 
     # a pan must not register as choosing whichever marker it ended on
     pg.evaluate("document.querySelector('[data-z=\"in\"]').click()")
@@ -607,7 +614,7 @@ def kenya_map(pg, base):
     check(pg.evaluate("[...document.querySelectorAll('.kmap-row')]"
                       ".findIndex(r=>r.classList.contains('is-on'))") == chosen,
           "map", "a pan that ends on a marker does not select it")
-    pg.evaluate("document.querySelector('[data-z=\"reset\"]').click()")
+    pg.mouse.dblclick(box["x"], box["y"])
     pg.wait_for_timeout(300)
 
 
@@ -641,6 +648,16 @@ def kenya_rolls(pg, base):
     sheet = lambda: pg.evaluate("document.querySelector('.kmap-stage').classList.contains('is-sheet')")
 
     check(not lifted() and not sheet(), "rolls", "the map starts flat and in the overview")
+
+    # One control, not two. Opening the chart used to be a separate button
+    # below the map while the view controls sat inside it, which put two
+    # related actions in two unrelated places.
+    ctl = pg.evaluate("""()=>({old:!!document.querySelector('.kmap-zoom'),
+      buttons:[...document.querySelectorAll('.kmap-ctl button')].map(b=>b.textContent.trim()),
+      label:document.querySelector('.kmap-swap').textContent.trim()});""")
+    check(not ctl["old"], "rolls", "the separate chart button is gone")
+    check(len(ctl["buttons"]) == 3 and ctl["label"] == "Open the chart", "rolls",
+          "the chart opens from the map's own controls", str(ctl["buttons"]))
     pg.mouse.wheel(0, -300); pg.wait_for_timeout(420)
     check(not lifted(), "rolls", "one roll only zooms")
     pg.mouse.wheel(0, -300); pg.wait_for_timeout(420)
@@ -653,7 +670,7 @@ def kenya_rolls(pg, base):
     pg.mouse.wheel(0, -300); pg.wait_for_timeout(500)
     check(lifted(), "rolls", "the chart stays above the weather once open")
 
-    pg.evaluate("document.querySelector('.kmap-zoom').click()")
+    pg.evaluate("document.querySelector('.kmap-swap').click()")
     pg.wait_for_timeout(1300)
     check(not sheet() and not lifted(), "rolls",
           "going back to the overview clears both")
@@ -666,7 +683,7 @@ def kenya_rolls(pg, base):
     from PIL import Image as _I
     for state in ("overview", "chart"):
         if state == "chart":
-            pg.evaluate("document.querySelector('.kmap-zoom').click()")
+            pg.evaluate("document.querySelector('.kmap-swap').click()")
             pg.wait_for_timeout(2000)
         box = pg.evaluate("""()=>{const st=document.querySelector('.kmap-stage').getBoundingClientRect();
           const on=document.querySelector('.kmap-stage').classList.contains('is-sheet');
@@ -740,7 +757,7 @@ def kenya_pinch(browser, base):
     pg.evaluate("document.querySelector('.kmap-stage').scrollIntoView({block:'center'})")
     pg.wait_for_timeout(900)
 
-    check(not pg.evaluate("document.querySelector('.kmap-zoom').hidden"),
+    check(not pg.evaluate("document.querySelector('.kmap-swap').hidden"),
           "pinch", "the chart is offered on a phone now that it can be zoomed")
     check(pg.evaluate("document.querySelector('.kmap-stage').style.touchAction") == "pan-y",
           "pinch", "an unzoomed map still lets the page scroll past it")

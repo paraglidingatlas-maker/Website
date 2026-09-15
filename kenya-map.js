@@ -26,7 +26,7 @@
   var pins = [].slice.call(root.querySelectorAll('.kmap-pin'));
   var rows = [].slice.call(root.querySelectorAll('.kmap-row'));
   var panel = root.querySelector('.kmap-panel');
-  var zoom = root.querySelector('.kmap-zoom');
+  var zoom = root.querySelector('.kmap-swap');
   var ctl = root.querySelector('.kmap-ctl');
   if (!stage || !view || !pins.length) return;
 
@@ -142,7 +142,7 @@
   }
 
   stage.addEventListener('pointerdown', function (e) {
-    if (e.target.closest('.kmap-ctl, .kmap-zoom')) return;
+    if (e.target.closest('.kmap-ctl')) return;
     live.set(e.pointerId, local(e));
     moved = 0;
     if (live.size === 2) {
@@ -202,7 +202,7 @@
   }, { passive: false });
 
   stage.addEventListener('dblclick', function (e) {
-    if (e.target.closest('.kmap-ctl, .kmap-zoom')) return;
+    if (e.target.closest('.kmap-ctl')) return;
     var p = local(e);
     if (k > 1.001) reset(true); else zoomAt(2.6, p.x, p.y, true);
   });
