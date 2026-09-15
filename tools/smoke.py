@@ -846,6 +846,18 @@ def kenya_gallery(pg, base):
           "the cloud layers run past both sides of the screen",
           f"{reach['left']}px past the left, {reach['right']}px past the right")
 
+    # The clouds belong in front of the photographs and behind the words. The
+    # frame is its own stacking context, so anything that has to sit above the
+    # cards must be a sibling of the frame rather than a child of it: the
+    # caption and arrows were moved out for exactly this reason.
+    order = pg.evaluate("""()=>{const z=s=>{const e=document.querySelector(s);
+      return e?parseInt(getComputedStyle(e).zIndex||0,10):null;};
+      return {frame:z('.cfl-frame'),clouds:z('.cfl-atmos'),caps:z('.cfl-caps'),arrows:z('.cfl-arrow')};}""")
+    check(order["clouds"] > order["frame"], "gallery",
+          "the clouds sit in front of the photographs", str(order))
+    check(order["caps"] > order["clouds"] and order["arrows"] > order["clouds"],
+          "gallery", "the caption and arrows stay in front of the clouds", str(order))
+
 
 def overflow(pg, base):
     """Sideways scroll. The homepage had 59px of it at 390 until today."""
