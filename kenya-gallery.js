@@ -36,15 +36,22 @@
   var N = cards.length, VIS = Math.min(5, Math.floor(N / 2));
   var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
   var at = 0, moved = 0;
+  /* pos is the carousel position as a real number, not an index. During a drag
+     it takes fractional values so the stack follows the pointer instead of
+     waiting for release and jumping a whole card. */
+  var pos = 0, dragging = false;
 
-  function ring(i) {
-    var d = ((i - at) % N + N) % N;
+  function ring(i, centre) {
+    var d = ((i - (centre === undefined ? pos : centre)) % N + N) % N;
     return d > N / 2 ? d - N : d;
   }
+
+  function step() { return stage.getBoundingClientRect().width * 0.30 * 0.42; }
 
   function layout() {
     var unit = stage.getBoundingClientRect().width * 0.30;
     var gap = 0.42, rot = 32, fall = 0.085, depth = 150;
+    at = ((Math.round(pos) % N) + N) % N;
     cards.forEach(function (c, i) {
       var d = ring(i), a = Math.abs(d), hidden = a >= VIS;
       c.style.transform = 'translate(-50%,-50%) translateX(' + (d * unit * gap).toFixed(1) +
@@ -57,11 +64,13 @@
       c.style.pointerEvents = hidden ? 'none' : 'auto';
       /* a card only crosses the ring while invisible; leaving the transition on
          would send it flying the width of the section to get home */
-      c.style.transitionProperty = hidden ? 'none' : 'transform,filter,opacity';
+      /* no transition while a finger is down, or every frame of the drag
+         would be chasing a 780ms animation and the stack would lag behind */
+      c.style.transitionProperty = (hidden || dragging) ? 'none' : 'transform,filter,opacity';
       c.setAttribute('aria-hidden', hidden ? 'true' : 'false');
       c.tabIndex = d === 0 ? 0 : -1;
     });
-    cards.forEach(function (c, i) { c.classList.toggle('is-front', ring(i) === 0); });
+    cards.forEach(function (c, i) { c.classList.toggle('is-front', ring(i, at) === 0); });
     if (live) live.textContent = cards[at].getAttribute('data-title') || '';
     dots.forEach(function (e, i) {
       e.classList.toggle('is-on', i === at);
@@ -70,12 +79,12 @@
     bgs.forEach(function (e, i) { e.classList.toggle('is-on', i === at); });
   }
 
-  function go(n) { at = ((n % N) + N) % N; layout(); }
+  function go(n) { pos = ((n % N) + N) % N; layout(); }
 
   cards.forEach(function (c, i) {
     c.addEventListener('click', function () {
       if (Math.abs(moved) > 6) return;          /* that was a drag */
-      var d = ring(i);
+      var d = ring(i, at);
       if (d === 0) openLb(i); else go(at + d);
     });
   });
@@ -128,21 +137,46 @@
   });
 
   /* ---- drag ------------------------------------------------------------ */
-  var x0 = null;
+  /* ---- drag ------------------------------------------------------------
+     The stack follows the pointer. A card is worth step() pixels, so the drag
+     distance converts straight into carousel position and releases onto the
+     nearest card.
+
+     No setPointerCapture. It is in the gotcha notes and it is what broke the
+     homepage rail: capture retargets later events to the captured element, so
+     a pointerup outside never arrives where it is expected. */
+  var x0 = null, posAtStart = 0;
+
   stage.addEventListener('pointerdown', function (e) {
-    if (e.target.closest('button')) return;
-    x0 = e.clientX; moved = 0;
+    if (e.target.closest('button:not(.cfl-card)')) return;
+    x0 = e.clientX;
+    moved = 0;
+    posAtStart = pos;
+    dragging = true;
+    stage.classList.add('is-dragging');
     if (e.pointerType !== 'touch') e.preventDefault();
   });
+
   window.addEventListener('pointermove', function (e) {
-    if (x0 !== null) moved = e.clientX - x0;
-  }, { passive: true });
-  window.addEventListener('pointerup', function () {
     if (x0 === null) return;
-    if (Math.abs(moved) > 45) go(at + (moved < 0 ? 1 : -1));
+    moved = e.clientX - x0;
+    pos = posAtStart - moved / step();
+    layout();
+  }, { passive: true });
+
+  function release() {
+    if (x0 === null) return;
     x0 = null;
-  });
-  window.addEventListener('pointercancel', function () { x0 = null; });
+    dragging = false;
+    stage.classList.remove('is-dragging');
+    /* a flick shorter than a third of a card still counts as a flick */
+    var target = Math.abs(moved) > step() * 0.18
+      ? (moved < 0 ? Math.ceil(pos) : Math.floor(pos))
+      : Math.round(pos);
+    go(target);
+  }
+  window.addEventListener('pointerup', release);
+  window.addEventListener('pointercancel', release);
 
   /* ---- cursor lean ----------------------------------------------------- */
   var wantX = 0, wantY = 0, haveX = 0, haveY = 0, running = false;

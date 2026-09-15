@@ -394,10 +394,13 @@
 .cfl-scrim{position:absolute;inset:0;z-index:2;pointer-events:none;
   background:radial-gradient(130% 95% at 50% 45%,rgba(15,16,19,0) 0,rgba(15,16,19,.5) 85%);}
 
-.cfl-stage{position:absolute;inset:0;z-index:3;
+.cfl-stage{position:absolute;inset:0;z-index:3;cursor:grab;
+  /* the page keeps vertical scrolling, the gallery takes the horizontal drag */
+  touch-action:pan-y;
   perspective:1400px;perspective-origin:var(--px,50%) var(--py,50%);}
+.cfl-stage.is-dragging{cursor:grabbing;}
 .cfl-tilt{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform;}
-.cfl-card{position:absolute;left:50%;top:50%;padding:0;border:0;background:#0d0e11;
+.cfl-card{position:absolute;left:50%;top:50%;padding:0;border:0;background:#0d0e11;cursor:inherit;
   width:min(24%,23rem);aspect-ratio:2/3;overflow:hidden;cursor:pointer;
   box-shadow:0 30px 70px rgba(0,0,0,.55);will-change:transform;
   transition:transform 780ms cubic-bezier(.4,.02,.16,1),filter 780ms ease,opacity 600ms ease;}
@@ -2270,7 +2273,7 @@
 })();
 </script>
 <script defer src="../kenya-map.js?v=b619d07f"></script>
-<script defer src="../kenya-gallery.js?v=d6a5a9aa"></script>
+<script defer src="../kenya-gallery.js?v=dd56d50d"></script>
 <!-- nav-menu -->
 <script defer src="../nav-menu.js?v=001fbbf6"></script>
 <!-- /nav-menu -->

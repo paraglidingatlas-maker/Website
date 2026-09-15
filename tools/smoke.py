@@ -887,6 +887,52 @@ def kenya_gallery(pg, base):
               "the caption cannot overflow the photograph", f"{cap['over']}px over the edge")
         check(cap["shown"] == "1", "gallery", "the caption is visible on the front card")
 
+    # ---- drag ------------------------------------------------------------
+    # The stack has to follow the pointer, not wait for release and jump. A
+    # check that only compares before and after cannot tell the two apart, so
+    # this samples the transform mid-gesture and requires it to change on every
+    # step.
+    #
+    # The page is scrolled with behavior:'instant' first. scroll-behavior is
+    # smooth site-wide, and a rect read mid-animation put the press coordinates
+    # off screen entirely, where elementFromPoint returns null and nothing fires.
+    pg.evaluate("window.scrollTo(0,document.body.scrollHeight)")
+    pg.wait_for_timeout(1200)
+    pg.evaluate("""()=>{const r=document.querySelector('.cfl-stage').getBoundingClientRect();
+      window.scrollTo({top:Math.round(r.top+scrollY-(innerHeight-r.height)/2),behavior:'instant'});}""")
+    pg.wait_for_timeout(1000)
+    mid = pg.evaluate("""()=>{const b=document.querySelector('.cfl-stage').getBoundingClientRect();
+      return {x:Math.round(b.left+b.width/2),y:Math.round(b.top+b.height/2)};}""")
+    check(pg.evaluate(f"()=>{{const e=document.elementFromPoint({mid['x']},{mid['y']});"
+                      "return e ? !!e.closest('.cfl-stage') : false;}"),
+          "gallery", "the drag test presses on the gallery itself")
+
+    before = pg.evaluate("[...document.querySelectorAll('.cfl-card')]"
+                         ".findIndex(c=>c.classList.contains('is-front'))")
+    pg.mouse.move(mid["x"], mid["y"])
+    pg.mouse.down()
+    frames = []
+    for i in range(1, 7):
+        pg.mouse.move(mid["x"] - 45 * i, mid["y"])
+        pg.wait_for_timeout(70)
+        frames.append(pg.evaluate(
+            "getComputedStyle(document.querySelectorAll('.cfl-card')[0]).transform"))
+    check(len(set(frames)) == len(frames), "gallery",
+          "the tiles follow the pointer while dragging",
+          f"{len(set(frames))} distinct positions over 6 steps")
+    check(pg.evaluate("document.querySelector('.cfl-stage').classList.contains('is-dragging')"),
+          "gallery", "the map knows a drag is in progress")
+    pg.mouse.up()
+    pg.wait_for_timeout(900)
+    after = pg.evaluate("[...document.querySelectorAll('.cfl-card')]"
+                        ".findIndex(c=>c.classList.contains('is-front'))")
+    check(after != before, "gallery", "releasing lands on a different photograph",
+          f"{before} then {after}")
+    check(not pg.evaluate("document.querySelector('.cfl-stage').classList.contains('is-dragging')"),
+          "gallery", "the drag state clears on release")
+    check(pg.evaluate("getComputedStyle(document.querySelector('.cfl-stage')).touchAction") == "pan-y",
+          "gallery", "a finger can still scroll the page past the gallery")
+
     # In front of everything except the photograph you are looking at: a third
     # mask layer opens a hole over the card at the front.
     #
@@ -899,20 +945,46 @@ def kenya_gallery(pg, base):
     for vw in (1400, 390):
         pg.set_viewport_size({"width": vw, "height": 900})
         pg.wait_for_timeout(500)
-        pg.evaluate("document.querySelector('.cfl').scrollIntoView({block:'center'})")
+        # Instant, and settle. scroll-behavior is smooth site-wide, so
+        # scrollIntoView animates: the two screenshots below were being taken at
+        # different scroll offsets and the difference between them was the page
+        # moving, not weather. It read as 12.4% cloud on a card that measures
+        # 0.0% when the page is still.
+        pg.evaluate("""()=>{const r=document.querySelector('.cfl-wrap').getBoundingClientRect();
+          window.scrollTo({top:Math.round(r.top+scrollY-(innerHeight-r.height)/2),
+                           behavior:'instant'});}""")
         pg.wait_for_timeout(1300)
-        on = os.path.join(_t.gettempdir(), f"cfl-on-{vw}.png")
-        off = os.path.join(_t.gettempdir(), f"cfl-off-{vw}.png")
+        on = f"/tmp/suite-on-{vw}.png"
+        off = f"/tmp/suite-off-{vw}.png"
         try:
+            # the card at the FRONT, not the first in the document. Earlier
+            # tests leave the carousel on a different index, and measuring
+            # card[0] meant measuring an off-centre card that never carries
+            # cloud, so this passed without testing anything.
             box = pg.evaluate("""()=>{const w=document.querySelector('.cfl-wrap').getBoundingClientRect();
-              const c=document.querySelectorAll('.cfl-card')[0].getBoundingClientRect();
+              const f=document.querySelector('.cfl-card.is-front')
+                    ||document.querySelectorAll('.cfl-card')[0];
+              const c=f.getBoundingClientRect();
               return [Math.round(c.left-w.left),Math.round(c.top-w.top),
                       Math.round(c.width),Math.round(c.height)];}""")
+            # Freeze the cursor lean first. It lerps on requestAnimationFrame
+            # forever, so it drifts between two captures taken 400ms apart and
+            # shifts the whole scene by a fraction of a pixel. The difference
+            # then shows the outline of every card, wing and letter, and reads
+            # as 17% cloud when the real figure is zero.
+            pg.add_style_tag(content=".cfl-tilt{transform:none!important}")
+            pg.wait_for_timeout(500)
             pg.locator(".cfl-wrap").screenshot(path=on)
-            pg.evaluate("document.querySelectorAll('.cfl-atmos').forEach(e=>e.style.visibility='hidden')")
+            # Only the FRONT weather is forbidden over the card. The back copy
+            # is meant to pass behind the gallery and shows faintly at the
+            # card's top and bottom, where the frame's mask fades out. Hiding
+            # both copies counted that as a fault.
+            pg.evaluate("document.querySelector('.cfl-atmos:not(.cfl-atmos-back)')"
+                        ".style.visibility='hidden'")
             pg.wait_for_timeout(350)
             pg.locator(".cfl-wrap").screenshot(path=off)
-            pg.evaluate("document.querySelectorAll('.cfl-atmos').forEach(e=>e.style.visibility='')")
+            pg.evaluate("document.querySelector('.cfl-atmos:not(.cfl-atmos-back)')"
+                        ".style.visibility=''")
             A, B = _I.open(on).convert("L"), _I.open(off).convert("L")
             if A.size != B.size:
                 raise RuntimeError(f"frames differ in size, {A.size} vs {B.size}")
