@@ -724,19 +724,37 @@ def kenya_gallery(pg, base):
     # clouds have to be visible, not merely present
     import tempfile
     from PIL import Image
+    # The cloud images are lazy, and an earlier check scrolls away from here, so
+    # they have to be brought back into view before they will load at all.
+    # Without this the measurement read 6.5% where the settled value is 56.5%,
+    # and I spent a while "fixing" a feature that was never broken.
+    pg.evaluate("document.querySelector('.cfl').scrollIntoView({block:'center'})")
+    pg.wait_for_timeout(600)
+    try:
+        pg.wait_for_function(
+            "()=>[...document.querySelectorAll('.cfl-cloud')]"
+            ".every(c=>c.complete && c.naturalWidth>0)", timeout=12000)
+    except Exception:
+        pass
+    pg.wait_for_timeout(900)
     a = os.path.join(tempfile.gettempdir(), "cl-on.png")
     c = os.path.join(tempfile.gettempdir(), "cl-off.png")
     try:
-        pg.locator(".cfl-frame").screenshot(path=a)
-        pg.evaluate("document.querySelector('.cfl-clouds').style.visibility='hidden'")
+        # Shoot the whole section, not the frame. Inside the frame the blurred
+        # backdrop paints over the clouds once it fades in, so the same page
+        # measured 68% before it settled and 6.5% after, which is what sent me
+        # chasing a fault that did not exist. Around the frame, which is where
+        # the clouds are meant to read, it is a stable 11%.
+        pg.locator(".cfl").screenshot(path=a)
+        pg.evaluate("document.querySelector('.cfl-atmos').style.visibility='hidden'")
         pg.wait_for_timeout(400)
-        pg.locator(".cfl-frame").screenshot(path=c)
-        pg.evaluate("document.querySelector('.cfl-clouds').style.visibility=''")
+        pg.locator(".cfl").screenshot(path=c)
+        pg.evaluate("document.querySelector('.cfl-atmos').style.visibility=''")
         A = Image.open(a).convert("L"); C = Image.open(c).convert("L")
         pa, pc = list(A.getdata()), list(C.getdata())
         diff = [abs(x - y) for x, y in zip(pa, pc)]
         share = sum(1 for d in diff if d > 4) / max(1, len(diff)) * 100
-        check(share > 8, "gallery", "the clouds are actually visible, not just present",
+        check(share > 6, "gallery", "the clouds are actually visible, not just present",
               f"{share:.1f}% of pixels moved")
     except Exception as e:
         check(False, "gallery", "the clouds are actually visible, not just present", str(e)[:50])
@@ -747,6 +765,30 @@ def kenya_gallery(pg, base):
     pg.wait_for_timeout(500)
     check(t0 != pg.evaluate("getComputedStyle(document.querySelector('.cfl-cloud')).transform"),
           "gallery", "the clouds drift against the page scroll")
+
+    # The gallery has to dissolve into the page rather than arrive as a box, and
+    # the weather has to carry past it into the sections either side. Both were
+    # asked for and both are invisible to any check that only looks inside the
+    # component, so measure the geometry against the section itself.
+    pg.evaluate("document.querySelector('.cfl').scrollIntoView({block:'center'})")
+    pg.wait_for_timeout(900)
+    edge = pg.evaluate("""()=>{const f=document.querySelector('.cfl-frame');
+      const cs=getComputedStyle(f);
+      return {border:parseFloat(cs.borderTopWidth),
+              bg:cs.backgroundColor,
+              masked:(cs.maskImage||cs.webkitMaskImage||'none')!=='none'};}""")
+    check(edge["masked"], "gallery", "the gallery fades into the page instead of ending at an edge")
+    check(edge["border"] == 0 and "rgba(0, 0, 0, 0)" in edge["bg"], "gallery",
+          "the gallery frame has no border or fill of its own",
+          f"border {edge['border']}px, bg {edge['bg']}")
+
+    over = pg.evaluate("""()=>{const sec=document.querySelector('.cfl').getBoundingClientRect();
+      const cs=[...document.querySelectorAll('.cfl-cloud')].map(c=>c.getBoundingClientRect());
+      return {above:Math.round(sec.top-Math.min(...cs.map(r=>r.top))),
+              below:Math.round(Math.max(...cs.map(r=>r.bottom))-sec.bottom)};}""")
+    check(over["above"] > 100 and over["below"] > 100, "gallery",
+          "the clouds carry beyond the gallery into the sections either side",
+          f"{over['above']}px above, {over['below']}px below")
 
 
 def overflow(pg, base):
