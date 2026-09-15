@@ -33,6 +33,11 @@
   var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
   var MINK = 1, MAXK = 7;
   var at = -1, sheetOn = false, loading = false, loaded = false;
+  /* Wheel rolls, counted so the map can earn its way forward. Two lifts it
+     above the weather drifting down from the gallery, four opens the chart.
+     A burst of trackpad events inside 150ms is one roll, or a single flick
+     would count as a dozen and skip both stages at once. */
+  var rolls = 0, lastRoll = 0;
   var k = 1, tx = 0, ty = 0;
 
   function size() { return stage.getBoundingClientRect(); }
@@ -81,7 +86,25 @@
     apply(animate);
   }
 
-  function reset(animate) { k = 1; tx = 0; ty = 0; apply(animate); }
+  function reset(animate) {
+    k = 1; tx = 0; ty = 0; rolls = 0;
+    /* the chart stays above the weather: dropping back under it at the exact
+       moment it opens is the opposite of what the lift is for */
+    if (!sheetOn) root.classList.remove('is-lifted');
+    apply(animate);
+  }
+
+  function countRoll(zoomingOut) {
+    var now = (window.performance && performance.now) ? performance.now() : Date.now();
+    if (now - lastRoll > 150) { rolls = Math.max(0, rolls + (zoomingOut ? -1 : 1)); }
+    lastRoll = now;
+    /* above the clouds at two, and unconditionally once the chart is open:
+       recomputing from the roll count alone dropped it back under the weather
+       on the next roll after the switch */
+    root.classList.toggle('is-lifted', rolls >= 2 || sheetOn);
+    /* and into the chart at four, once */
+    if (rolls >= 4 && !sheetOn && !loading) setSheet(true);
+  }
 
   var live = new Map(), startK = 1, startD = 0, startMid = null, moved = 0;
 
@@ -153,6 +176,7 @@
     e.preventDefault();
     var p = local(e);
     zoomAt(k * (out ? 0.88 : 1.14), p.x, p.y, false);
+    countRoll(out);
   }, { passive: false });
 
   stage.addEventListener('dblclick', function (e) {
@@ -255,6 +279,7 @@
     if (on && !loaded) { loadSheet(function () { setSheet(true); }); return; }
     sheetOn = on;
     stage.classList.toggle('is-sheet', on);
+    root.classList.toggle('is-lifted', on);
     reset(false);
     place();
     if (zoom) {

@@ -479,7 +479,14 @@
    its own viewBox and nothing draws beyond Kenya, so bleeding it produced a
    1440x1137 band with a small country floating in the middle of it. */
 .cfl-frame{width:100vw;margin-left:calc(50% - 50vw);}
-.kmap-figure{max-width:76rem;}
+/* The weather from the gallery drifts down over this whole section: measured
+   at 42% of the map's pixels. Two wheel rolls lift the map out from under it,
+   which is also the point at which someone is clearly looking rather than
+   scrolling past. */
+.kmap-figure{max-width:76rem;position:relative;z-index:1;
+  transition:z-index 0s linear .35s;}
+.kmap.is-lifted .kmap-figure{z-index:6;transition:none;}
+.kmap.is-lifted .kmap-stage{box-shadow:0 30px 90px rgba(0,0,0,.55);}
 .kmap-stage{aspect-ratio:auto;height:clamp(26rem,64vh,40rem);}
 /* No rule above the gallery or below it. A 1px line across the page is exactly
    the hard edge the dissolve exists to remove. Beating .dst-sec + .dst-sec
@@ -2272,7 +2279,7 @@
   arm();
 })();
 </script>
-<script defer src="../kenya-map.js?v=b619d07f"></script>
+<script defer src="../kenya-map.js?v=b77f742d"></script>
 <script defer src="../kenya-gallery.js?v=dd56d50d"></script>
 <!-- nav-menu -->
 <script defer src="../nav-menu.js?v=001fbbf6"></script>

@@ -603,6 +603,54 @@ def kenya_map(pg, base):
     pg.wait_for_timeout(300)
 
 
+def kenya_rolls(pg, base):
+    """Wheel rolls on the map earn their way forward: two lift it above the
+    weather drifting down from the gallery, four open the chart.
+
+    A burst of trackpad events inside 150ms counts as one roll, or a single
+    flick would skip both stages at once, so the check waits between rolls.
+
+    The page is scrolled with behavior:'instant'. scroll-behavior is smooth
+    site-wide and a rect read mid-animation puts the pointer off screen, where
+    the wheel lands on nothing."""
+    pg.set_viewport_size({"width": 1400, "height": 900})
+    pg.goto(base + "/destinations/kenya.html", wait_until="load")
+    pg.wait_for_timeout(1500)
+    pg.evaluate("window.scrollTo(0,document.body.scrollHeight)")
+    pg.wait_for_timeout(1800)
+    pg.evaluate("""()=>{const r=document.querySelector('.kmap-stage').getBoundingClientRect();
+      window.scrollTo({top:Math.round(r.top+scrollY-(innerHeight-r.height)/2),
+                       behavior:'instant'});}""")
+    pg.wait_for_timeout(1100)
+    mid = pg.evaluate("""()=>{const b=document.querySelector('.kmap-stage').getBoundingClientRect();
+      return {x:Math.round(b.left+b.width/2),y:Math.round(b.top+b.height/2)};}""")
+    check(pg.evaluate(f"()=>{{const e=document.elementFromPoint({mid['x']},{mid['y']});"
+                      "return e ? !!e.closest('.kmap-stage') : false;}"),
+          "rolls", "the wheel lands on the map")
+    pg.mouse.move(mid["x"], mid["y"])
+
+    lifted = lambda: pg.evaluate("document.querySelector('.kmap').classList.contains('is-lifted')")
+    sheet = lambda: pg.evaluate("document.querySelector('.kmap-stage').classList.contains('is-sheet')")
+
+    check(not lifted() and not sheet(), "rolls", "the map starts flat and in the overview")
+    pg.mouse.wheel(0, -300); pg.wait_for_timeout(420)
+    check(not lifted(), "rolls", "one roll only zooms")
+    pg.mouse.wheel(0, -300); pg.wait_for_timeout(420)
+    check(lifted(), "rolls", "two rolls lift the map above the weather")
+    check(not sheet(), "rolls", "two rolls do not open the chart")
+    pg.mouse.wheel(0, -300); pg.wait_for_timeout(420)
+    check(not sheet(), "rolls", "three rolls still do not open the chart")
+    pg.mouse.wheel(0, -300); pg.wait_for_timeout(1400)
+    check(sheet(), "rolls", "four rolls open the chart")
+    pg.mouse.wheel(0, -300); pg.wait_for_timeout(500)
+    check(lifted(), "rolls", "the chart stays above the weather once open")
+
+    pg.evaluate("document.querySelector('.kmap-zoom').click()")
+    pg.wait_for_timeout(1300)
+    check(not sheet() and not lifted(), "rolls",
+          "going back to the overview clears both")
+
+
 def kenya_pinch(browser, base):
     """Two fingers on the map.
 
@@ -1068,7 +1116,7 @@ def main():
                 return 0
             pg = browser.new_page(viewport={"width": 1280, "height": 900},
                                   reduced_motion="no-preference")
-            for fn in (rail, nav, player, library, search, kenya, kenya_hero, kenya_map, kenya_gallery, enquire, overflow):
+            for fn in (rail, nav, player, library, search, kenya, kenya_hero, kenya_map, kenya_gallery, kenya_rolls, enquire, overflow):
                 fn(pg, base)
             pg.close()
             pg2 = browser.new_page(viewport={"width": 1280, "height": 900},
