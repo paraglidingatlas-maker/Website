@@ -652,6 +652,103 @@ def kenya_pinch(browser, base):
     ctx.close()
 
 
+def kenya_gallery(pg, base):
+    """The photograph carousel.
+
+    Three of these guard specific things that were reported broken and looked
+    fine in a screenshot: the indicator sitting on top of the front card, a
+    lightbox translucent enough to show the carousel behind the photograph, and
+    clouds too faint to notice.
+
+    The clouds one measures pixels. Opacity and load state were both correct
+    while the layer contributed almost nothing to the image, so the only honest
+    test is to render with and without and difference the two."""
+    pg.set_viewport_size({"width": 1400, "height": 900})
+    pg.goto(base + "/destinations/kenya.html", wait_until="load")
+    pg.wait_for_timeout(1800)
+    pg.evaluate("document.querySelector('.cfl').scrollIntoView({block:'center'})")
+    pg.wait_for_timeout(1600)
+
+    n = pg.evaluate("document.querySelectorAll('.cfl-card').length")
+    check(n == 11, "gallery", "every photograph is a card", n)
+    check(pg.evaluate("[...document.querySelectorAll('.cfl-card')]"
+                      ".every(c=>c.querySelector('img').complete && c.querySelector('img').naturalWidth>0)"),
+          "gallery", "every photograph actually loads")
+
+    # crops are centred on the canopy, not on the middle of the frame
+    off = pg.evaluate("[...document.querySelectorAll('.cfl-card img')]"
+                      ".filter(i=>getComputedStyle(i).objectPosition!=='50% 50%').length")
+    check(off >= 9, "gallery", "crops are centred on the wing, not the frame", off)
+
+    # the indicator must sit clear of the cards
+    gap = pg.evaluate("()=>{const f=document.querySelector('.cfl-frame').getBoundingClientRect();"
+                      "const d=document.querySelector('.cfl-dots').getBoundingClientRect();"
+                      "return Math.round(d.top-f.bottom);}")
+    check(gap > 0, "gallery", "the indicator sits below the frame, not over the photograph",
+          f"{gap}px clear")
+
+    # it is a ring: stepping past the last card returns to the first
+    first = pg.evaluate("[...document.querySelectorAll('.cfl-dot')].findIndex(d=>d.classList.contains('is-on'))")
+    for _ in range(n):
+        pg.evaluate("document.querySelector('.cfl-next').click()")
+        pg.wait_for_timeout(90)
+    pg.wait_for_timeout(900)
+    check(pg.evaluate("[...document.querySelectorAll('.cfl-dot')]"
+                      ".findIndex(d=>d.classList.contains('is-on'))") == first,
+          "gallery", "the carousel loops instead of stopping at the end")
+    check(pg.evaluate("[...document.querySelectorAll('.cfl-card')]"
+                      ".filter(c=>+getComputedStyle(c).opacity>0.05).length") >= 7,
+          "gallery", "cards flank both sides at every position")
+
+    # full size shows one photograph and nothing behind it
+    pg.evaluate("document.querySelectorAll('.cfl-card')[0].click()")
+    pg.wait_for_timeout(800)
+    check(not pg.evaluate("document.querySelector('.cfl-lb').hidden"),
+          "gallery", "the front card opens full size")
+    check(pg.evaluate("document.querySelectorAll('.cfl-full.is-on').length") == 1,
+          "gallery", "exactly one photograph shows at full size")
+    bg = pg.evaluate("getComputedStyle(document.querySelector('.cfl-lb')).backgroundColor")
+    check("rgba" not in bg, "gallery",
+          "the full size view is opaque, so nothing ghosts through behind it", bg)
+    pg.evaluate("document.querySelector('.cfl-lb-next').click()")
+    pg.wait_for_timeout(600)
+    check(pg.evaluate("document.querySelectorAll('.cfl-full.is-on').length") == 1,
+          "gallery", "stepping on keeps it to one photograph")
+    pg.keyboard.press("Escape")
+    pg.wait_for_timeout(500)
+    check(pg.evaluate("document.querySelector('.cfl-lb').hidden"),
+          "gallery", "escape closes the full size view")
+    check(pg.evaluate("document.body.style.overflow") == "",
+          "gallery", "closing gives the page its scroll back")
+
+    # clouds have to be visible, not merely present
+    import tempfile
+    from PIL import Image
+    a = os.path.join(tempfile.gettempdir(), "cl-on.png")
+    c = os.path.join(tempfile.gettempdir(), "cl-off.png")
+    try:
+        pg.locator(".cfl-frame").screenshot(path=a)
+        pg.evaluate("document.querySelector('.cfl-clouds').style.visibility='hidden'")
+        pg.wait_for_timeout(400)
+        pg.locator(".cfl-frame").screenshot(path=c)
+        pg.evaluate("document.querySelector('.cfl-clouds').style.visibility=''")
+        A = Image.open(a).convert("L"); C = Image.open(c).convert("L")
+        pa, pc = list(A.getdata()), list(C.getdata())
+        diff = [abs(x - y) for x, y in zip(pa, pc)]
+        share = sum(1 for d in diff if d > 4) / max(1, len(diff)) * 100
+        check(share > 8, "gallery", "the clouds are actually visible, not just present",
+              f"{share:.1f}% of pixels moved")
+    except Exception as e:
+        check(False, "gallery", "the clouds are actually visible, not just present", str(e)[:50])
+
+    # clouds drift as the page scrolls
+    t0 = pg.evaluate("getComputedStyle(document.querySelector('.cfl-cloud')).transform")
+    pg.evaluate("window.scrollBy(0,500)")
+    pg.wait_for_timeout(500)
+    check(t0 != pg.evaluate("getComputedStyle(document.querySelector('.cfl-cloud')).transform"),
+          "gallery", "the clouds drift against the page scroll")
+
+
 def overflow(pg, base):
     """Sideways scroll. The homepage had 59px of it at 390 until today."""
     pages = ["index.html", "about.html", "podcast.html", "destinations/kenya.html",
@@ -698,7 +795,7 @@ def main():
                 return 0
             pg = browser.new_page(viewport={"width": 1280, "height": 900},
                                   reduced_motion="no-preference")
-            for fn in (rail, nav, player, library, search, kenya, kenya_hero, kenya_map, enquire, overflow):
+            for fn in (rail, nav, player, library, search, kenya, kenya_hero, kenya_map, kenya_gallery, enquire, overflow):
                 fn(pg, base)
             pg.close()
             pg2 = browser.new_page(viewport={"width": 1280, "height": 900},
