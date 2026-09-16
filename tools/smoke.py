@@ -306,11 +306,25 @@ def search(pg, base):
 
 
 def kenya(pg, base):
-    """24 accordions carry most of the copy on the longest page on the site."""
+    """The FAQ still uses accordions; packing and etiquette no longer do."""
     pg.goto(base + "/destinations/kenya.html", wait_until="load")
     pg.wait_for_timeout(1500)
     n = pg.evaluate("document.querySelectorAll('details').length")
-    check(n > 10, "kenya", "the accordions are present", n)
+    check(n >= 6, "kenya", "the FAQ accordions are present", n)
+
+    kit = pg.evaluate("document.querySelectorAll('.kkit-item').length")
+    check(kit >= 30, "kenya", "the packing kit is present", kit)
+    if kit:
+        pg.click(".kkit-item")
+        pg.wait_for_timeout(250)
+        done = pg.evaluate("document.getElementById('kkitDone').textContent")
+        pressed = pg.evaluate("document.querySelector('.kkit-item').getAttribute('aria-pressed')")
+        check(done == "1" and pressed == "true", "kenya",
+              "ticking an item counts it", "%s packed" % done)
+
+    rules = pg.evaluate("document.querySelectorAll('.etq-card').length")
+    check(rules == 8, "kenya", "the eight etiquette rules are present", rules)
+
     if not n:
         return
     pg.evaluate("document.querySelector('details').open=false")

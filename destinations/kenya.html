@@ -621,6 +621,112 @@
   line-height:1.75;font-size:.97rem;}
 .dst-reqs li::before{content:"";position:absolute;left:0;top:.62em;width:.5rem;height:1px;background:var(--orange);}
 
+/* ---- KIT ---------------------------------------------------------------
+ * Packing was four accordions of prose. It is the one part of the page
+ * someone uses as a tool, the week before they fly, so it is laid out flat
+ * as a kit: every item is a tile you can tick, state kept in localStorage
+ * per item so a later addition does not invalidate what is already ticked.
+ * The three suitability lines are pulled out above as their own block,
+ * because they decide whether the trip is for you at all and were reading
+ * as preamble to a packing list.
+ * ---------------------------------------------------------------------- */
+.kkit-gate{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);margin:0 0 3.2rem;}
+.kkit-gate div{background:var(--bg);padding:1.35rem 1.4rem;}
+.kkit-gate b{display:block;font-family:var(--font-display);font-weight:600;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin:0 0 .5rem;}
+.kkit-gate p{margin:0;color:var(--gray-light);font-size:.95rem;line-height:1.7;}
+
+.kkit-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  gap:.8rem 1.2rem;margin:0 0 1.4rem;}
+.kkit-count{font-family:var(--font-display);font-size:.8rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gray);}
+.kkit-count b{color:var(--orange);font-weight:600;}
+.kkit-reset{background:none;border:0;padding:.5rem 0;min-height:44px;cursor:pointer;
+  font-family:var(--font-body);font-size:.82rem;color:var(--gray);
+  border-bottom:1px solid transparent;transition:color .2s ease,border-color .2s ease;}
+.kkit-reset:hover{color:var(--white);border-color:var(--edge-hi);}
+.kkit-actions{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;}
+.kkit-dl{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;
+  font-family:var(--font-body);font-size:.82rem;color:var(--gray-light);text-decoration:none;
+  transition:color .2s ease;}
+.kkit-dl:hover{color:var(--orange);}
+.kkit-dl:hover small{color:color-mix(in srgb, var(--orange) 60%, var(--gray));}
+.kkit-dl svg{flex:0 0 auto;width:13px;height:13px;stroke:currentColor;fill:none;
+  stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+.kkit-dl small{color:var(--gray);font-size:.74rem;}
+
+.kkit-groups{columns:2;column-gap:2.4rem;}
+@media (min-width:1100px){ .kkit-groups{columns:3;} }
+.kkit-group{break-inside:avoid;-webkit-column-break-inside:avoid;margin:0 0 2.4rem;}
+.kkit-ghead{display:flex;align-items:center;gap:.6rem;width:100%;min-height:44px;
+  padding:.35rem 0;margin:0 0 .25rem;background:none;border:0;cursor:pointer;text-align:left;
+  border-bottom:1px solid var(--rule);}
+.kkit-ghead:focus-visible{outline:2px solid var(--orange);outline-offset:3px;}
+.kkit-gname{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.02rem;}
+.kkit-gtally{font-family:var(--font-body);color:var(--gray);font-size:.8rem;margin-right:auto;}
+.kkit-gtally b{font-weight:500;color:var(--gray);transition:color .2s ease;}
+.kkit-group.is-done .kkit-gtally b{color:var(--orange);}
+.kkit-group.is-done .kkit-gname{color:var(--gray-light);}
+.kkit-gchev{position:relative;flex:0 0 auto;width:11px;height:11px;}
+.kkit-gchev::before,.kkit-gchev::after{content:"";position:absolute;top:50%;width:7px;height:1.5px;
+  background:var(--gray);border-radius:1px;transition:transform .25s ease,background .2s ease;}
+.kkit-gchev::before{left:0;transform:rotate(45deg);}
+.kkit-gchev::after{right:0;transform:rotate(-45deg);}
+.kkit-ghead:hover .kkit-gchev::before,.kkit-ghead:hover .kkit-gchev::after{background:var(--white);}
+.kkit-ghead[aria-expanded="false"] .kkit-gchev::before{transform:rotate(-45deg);}
+.kkit-ghead[aria-expanded="false"] .kkit-gchev::after{transform:rotate(45deg);}
+.kkit-gbody{overflow:hidden;transition:height .3s ease;}
+.kkit-gblurb{color:var(--gray);font-size:.88rem;line-height:1.65;margin:.6rem 0 1rem;}
+
+.kkit-hide{background:none;border:0;padding:.5rem 0;min-height:44px;cursor:pointer;
+  font-family:var(--font-body);font-size:.82rem;color:var(--gray);
+  transition:color .2s ease;}
+.kkit-hide:hover{color:var(--white);}
+.kkit-hide[aria-pressed="true"]{color:var(--orange);}
+.kkit-hide[hidden]{display:none;}
+.kkit-items{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.4rem;}
+
+.kkit-item{display:flex;align-items:flex-start;gap:.75rem;width:100%;text-align:left;
+  min-height:44px;padding:.62rem .85rem;cursor:pointer;
+  background:var(--card);border:1px solid var(--edge);border-radius:10px;
+  font-family:var(--font-body);font-size:.93rem;line-height:1.5;color:var(--gray-light);
+  transition:border-color .2s ease,color .2s ease,background .2s ease;}
+.kkit-item:hover{border-color:var(--edge-hi);color:var(--white);}
+.kkit-item:focus-visible{outline:2px solid var(--orange);outline-offset:2px;}
+.kkit-box{flex:0 0 auto;position:relative;width:16px;height:16px;margin-top:.18em;
+  border:1px solid var(--gray);border-radius:4px;transition:border-color .2s ease,background .2s ease;}
+.kkit-box::after{content:"";position:absolute;left:4px;top:.5px;width:5px;height:9px;
+  border:solid var(--bg);border-width:0 1.5px 1.5px 0;transform:rotate(45deg) scale(0);
+  transform-origin:center;transition:transform .18s ease;}
+.kkit-item[aria-pressed="true"]{border-color:color-mix(in srgb, var(--orange) 30%, var(--edge));}
+.kkit-item[aria-pressed="true"] .kkit-box{background:var(--orange);border-color:var(--orange);}
+.kkit-item[aria-pressed="true"] .kkit-box::after{transform:rotate(45deg) scale(1);}
+.kkit-item[aria-pressed="true"] .kkit-txt{color:var(--gray);text-decoration:line-through;
+  text-decoration-color:color-mix(in srgb, var(--gray) 60%, transparent);}
+.kkit-note{display:block;color:var(--gray);font-size:.82rem;line-height:1.5;margin-top:.15rem;}
+.kkit-ess{display:inline-block;margin-left:.5rem;vertical-align:.06em;
+  font-family:var(--font-body);font-size:.6rem;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--orange);text-decoration:none;
+  border:1px solid color-mix(in srgb, var(--orange) 38%, transparent);
+  border-radius:2px;padding:.1rem .32rem;}
+.kkit-item.is-ess{border-color:color-mix(in srgb, var(--orange) 24%, var(--edge));}
+.kkit-item.is-ess:hover{border-color:color-mix(in srgb, var(--orange) 55%, var(--edge));}
+.kkit-item.is-ess[aria-pressed="true"] .kkit-ess{opacity:.4;}
+
+.kkit-tail{color:var(--gray-light);font-size:.95rem;line-height:1.8;margin:2.6rem 0 0;max-width:62ch;}
+.kkit-tail b{color:var(--white);font-weight:500;}
+
+@media (max-width:640px){
+  .kkit-groups{columns:1;}
+  .kkit-group{margin-bottom:2rem;}
+  .kkit-gate{margin-bottom:2.4rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  .kkit-item,.kkit-box,.kkit-box::after,.kkit-gbody,.kkit-gchev::before,.kkit-gchev::after{transition:none;}
+}
+
+
 /* ---------- three-up prose ---------- */
 .dst-why{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:2.2rem;}
 .dst-why h3{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.08rem;margin:0 0 .7rem;}
@@ -731,6 +837,84 @@
 .dst-acc-body{padding:0 0 1.2rem;}
 .dst-acc-body p{color:var(--gray-light);font-size:.93rem;line-height:1.75;margin:0 0 .8rem;}
 .dst-acc-body p:last-child{margin-bottom:0;}
+/* ---- FAQ -------------------------------------------------------------
+ * Was a hairline rule and a plus sign, which read as a pile of text.
+ * Now: sticky rail on the left, cards on the right, numbered.
+ * The three questions that carry money or risk (skill, insurance,
+ * cancellation) get an orange spine, so the eye lands on those first
+ * instead of on whichever happens to be top.
+ * Background is the page background, no wash. Orange is confined to the
+ * numbers, the marks and the three spines.
+ * Heights animate in JS because <details> cannot transition from
+ * display:none. No JS means no animation, content still opens.
+ * -------------------------------------------------------------------- */
+.kfaq.dst-sec{position:relative;}
+.kfaq .kfaq-wrap{position:relative;z-index:1;display:grid;
+  grid-template-columns:minmax(0,19rem) minmax(0,1fr);
+  gap:clamp(2rem,5vw,4.5rem);align-items:start;}
+
+.kfaq .kfaq-rail{position:sticky;top:7.5rem;}
+.kfaq .kfaq-rail h2{margin:.55rem 0 1rem;}
+.kfaq .kfaq-note{color:var(--gray);font-size:.95rem;line-height:1.75;margin:0 0 1.5rem;max-width:27ch;}
+.kfaq .kfaq-cta{display:inline-flex;align-items:center;min-height:44px;
+  font-family:'Poppins',sans-serif;font-size:.82rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--orange);text-decoration:none;
+  border-bottom:1px solid color-mix(in srgb, var(--orange) 45%, transparent);
+  transition:color .2s ease,border-color .2s ease;}
+.kfaq .kfaq-cta:hover{color:var(--orange-lite);border-color:var(--orange-lite);}
+
+.kfaq .kfaq-list{display:flex;flex-direction:column;gap:.65rem;}
+.kfaq .kfaq-item{position:relative;border:1px solid var(--edge);border-radius:14px;overflow:hidden;
+  background:var(--card);
+  transition:transform .25s ease,border-color .25s ease,background .25s ease;}
+.kfaq .kfaq-item:hover{transform:translateY(-2px);
+  border-color:color-mix(in srgb, var(--orange) 38%, var(--edge));}
+.kfaq .kfaq-item[open]{background:color-mix(in srgb, var(--card) 94%, var(--white) 3%);
+  border-color:color-mix(in srgb, var(--orange) 28%, var(--edge));}
+.kfaq .kfaq-item.is-key::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;z-index:2;
+  background:linear-gradient(180deg, var(--orange),
+    color-mix(in srgb, var(--orange) 12%, transparent));}
+
+.kfaq .kfaq-item summary{list-style:none;cursor:pointer;display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:1rem;
+  min-height:56px;padding:1.05rem 1.3rem;}
+.kfaq .kfaq-item summary::-webkit-details-marker{display:none;}
+.kfaq .kfaq-item summary:focus-visible{outline:2px solid var(--orange);outline-offset:-3px;}
+.kfaq .kfaq-n{font-family:'Poppins',sans-serif;font-size:1.45rem;font-weight:600;line-height:1;
+  letter-spacing:-.02em;transition:color .25s ease;
+  color:color-mix(in srgb, var(--orange) 34%, transparent);}
+.kfaq .kfaq-item:hover .kfaq-n,.kfaq .kfaq-item[open] .kfaq-n{color:var(--orange);}
+.kfaq .kfaq-item summary h3{margin:0;font-family:'Poppins',sans-serif;font-size:1.06rem;
+  font-weight:500;line-height:1.45;letter-spacing:-.01em;color:var(--white);}
+.kfaq .kfaq-mark{position:relative;width:20px;height:20px;}
+.kfaq .kfaq-mark::before,.kfaq .kfaq-mark::after{content:"";position:absolute;left:50%;top:50%;
+  background:var(--gray-light);transition:transform .3s ease,background .25s ease;}
+.kfaq .kfaq-mark::before{width:14px;height:1.5px;transform:translate(-50%,-50%);}
+.kfaq .kfaq-mark::after{width:1.5px;height:14px;transform:translate(-50%,-50%);}
+.kfaq .kfaq-item[open] .kfaq-mark::after{transform:translate(-50%,-50%) rotate(90deg);}
+.kfaq .kfaq-item[open] .kfaq-mark::before,
+.kfaq .kfaq-item[open] .kfaq-mark::after{background:var(--orange);}
+
+.kfaq .kfaq-body{overflow:hidden;}
+.kfaq .kfaq-inner{padding:0 1.3rem 1.35rem calc(1.3rem + 1.45rem + 1rem);}
+.kfaq .kfaq-inner p{color:var(--gray-light);font-size:.95rem;line-height:1.8;margin:0 0 .85rem;}
+.kfaq .kfaq-inner p:last-child{margin-bottom:0;}
+.kfaq .kfaq-inner a{color:var(--orange);}
+
+@media (max-width:900px){
+  .kfaq .kfaq-wrap{grid-template-columns:1fr;gap:2.1rem;}
+  .kfaq .kfaq-rail{position:static;}
+  .kfaq .kfaq-note{max-width:none;}
+  .kfaq .kfaq-item summary{padding:1rem 1.1rem;gap:.85rem;}
+  .kfaq .kfaq-n{font-size:1.25rem;}
+  .kfaq .kfaq-item summary h3{font-size:1rem;}
+  .kfaq .kfaq-inner{padding:0 1.1rem 1.2rem 1.1rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  .kfaq .kfaq-item,.kfaq .kfaq-mark::before,.kfaq .kfaq-mark::after{transition:none;}
+  .kfaq .kfaq-item:hover{transform:none;}
+}
+
 
 /* ---------- mobile booking bar ---------- */
 .dst-mobar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;
@@ -1050,6 +1234,161 @@
   .kday-line{width:100%;} .kday-dot{background:var(--orange);}
 }
 
+
+/* ---------- BEFORE YOU BOOK: the opening argues =============================
+   Two narrow stacked columns left most of the width empty and buried the
+   best sentence in the section as grey body text. The opening is two
+   columns now, the same shape the Overview opens with, and the line that
+   states the section's whole purpose is set large opposite the heading.
+   Every word is the owner's and none has moved out of the section. */
+.kreal-open{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);
+  gap:clamp(1.6rem,4vw,4.5rem);align-items:start;}
+.dst-sec.is-loud .kreal-open .dst-head{margin-bottom:0;}
+.kreal-said{font-family:var(--font-display);font-weight:700;color:var(--white);
+  font-size:clamp(1.35rem,2.6vw,2.15rem);line-height:1.22;letter-spacing:-.02em;margin:0;}
+.kreal-said em{font-style:normal;color:var(--orange);}
+.kreal-open .dst-lede{max-width:34rem;margin:1.6rem 0 0;}
+.kreal-rest{color:var(--gray-light);line-height:1.8;margin:1.4rem 0 0;max-width:34rem;}
+@media (max-width:820px){.kreal-open{grid-template-columns:1fr;}}
+
+
+/* Flying Etiquette: pinned sideways sequence, field-notes skin */
+.etq.dst-sec{padding-bottom:0;}
+.etq .etq-open{max-width:var(--wrap,none);}
+
+.etq .etq-split{display:grid;grid-template-columns:1fr 1px 1fr;align-items:center;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:0 0 3.2rem;}
+.etq .etq-half{padding:2.4rem 2rem;}
+.etq .etq-lab{display:block;font-family:var(--font-body);font-size:.64rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gray);margin:0 0 .8rem;}
+.etq .etq-half p{margin:0;font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1.02rem,1.9vw,1.44rem);line-height:1.38;color:var(--gray-light);max-width:26ch;}
+.etq .etq-a{text-align:right;}
+.etq .etq-a p{margin-left:auto;}
+.etq .etq-b .etq-lab{color:var(--orange);}
+.etq .etq-b p{color:var(--white);}
+.etq .etq-seam{align-self:stretch;
+  background:linear-gradient(to bottom,transparent,var(--rule) 20%,var(--rule) 80%,transparent);}
+.etq .etq-half{opacity:0;transform:translateX(0);
+  transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);}
+.etq .etq-a{transform:translateX(22px);}
+.etq .etq-b{transform:translateX(-22px);}
+.etq .etq-split.is-in .etq-half{opacity:1;transform:translateX(0);}
+
+.etq .etq-pin{position:relative;height:calc(var(--n) * 76vh);}
+.etq .etq-stage{position:sticky;top:0;height:100vh;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;}
+.etq .etq-stage::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+  transition:opacity .6s ease;
+  background-image:repeating-linear-gradient(to bottom,transparent 0 47px,var(--line) 47px 48px);
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 80%,transparent);
+  mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 80%,transparent);}
+.etq .etq-pin.is-live .etq-stage::before{opacity:1;}
+
+.etq .etq-bar{position:absolute;left:0;right:0;top:clamp(1.4rem,7vh,3.6rem);
+  display:flex;align-items:center;gap:1.4rem;padding:0 clamp(1.2rem,5vw,4rem);}
+.etq .etq-count{font-family:var(--font-display);font-size:.82rem;color:var(--gray);flex:0 0 auto;}
+.etq .etq-count b{font-weight:600;color:var(--orange);}
+.etq .etq-count i{font-style:normal;}
+.etq .etq-dots{display:flex;gap:7px;flex:1;}
+.etq .etq-dot{flex:1;min-height:44px;display:flex;align-items:center;
+  background:none;border:0;padding:0;cursor:pointer;}
+.etq .etq-dot span{display:block;width:100%;height:2px;background:var(--rule);
+  transition:background .35s ease;}
+.etq .etq-dot.is-past span{background:color-mix(in srgb, var(--orange) 45%, var(--rule));}
+.etq .etq-dot.is-on span{background:var(--orange);}
+.etq .etq-dot:focus-visible{outline:2px solid var(--orange);outline-offset:3px;}
+.etq .etq-hint{flex:0 0 auto;font-family:var(--font-body);font-size:.64rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gray);transition:opacity .4s ease;}
+.etq .etq-hint.is-gone{opacity:0;}
+
+.etq .etq-track{display:flex;width:100%;will-change:transform;}
+.etq .etq-card{flex:0 0 100%;display:grid;grid-template-columns:auto minmax(0,1fr);
+  gap:clamp(1rem,4vw,3.2rem);align-items:start;padding:0 clamp(1.2rem,5vw,4rem);
+  opacity:.16;transition:opacity .5s ease;}
+.etq .etq-card.is-on{opacity:1;}
+.etq .etq-num{font-family:var(--font-display);font-weight:700;line-height:.78;
+  font-size:clamp(3rem,9vw,7.6rem);color:transparent;-webkit-text-stroke:1px var(--edge-hi);
+  letter-spacing:-.02em;}
+.etq .etq-tab{display:block;font-family:var(--font-body);font-size:.64rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--orange);margin:.5rem 0 .7rem;}
+.etq .etq-cbody h3.etq-rule{font-family:var(--font-display);font-weight:600;
+  font-size:clamp(1.8rem,4.2vw,3.4rem);line-height:1.05;color:var(--white);
+  margin:0 0 1.2rem;max-width:19ch;letter-spacing:-.015em;}
+.etq .etq-cbody p{margin:0 0 .85rem;font-family:var(--font-body);font-size:.97rem;line-height:1.8;
+  color:var(--gray-light);max-width:58ch;}
+.etq .etq-cbody p strong{color:var(--white);font-weight:500;}
+.etq .etq-quote{margin:1.5rem 0 0;padding-left:1.1rem;border-left:2px solid var(--orange);
+  max-width:50ch;}
+.etq .etq-quote blockquote{margin:0;font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1rem,1.5vw,1.2rem);line-height:1.5;color:var(--white);}
+.etq .etq-quote figcaption{margin:.6rem 0 0;font-family:var(--font-body);font-size:.78rem;
+  color:var(--gray);}
+.etq .etq-quote figcaption a{color:var(--gray);text-decoration:none;
+  border-bottom:1px solid var(--rule);margin-left:.4rem;}
+.etq .etq-quote figcaption a:hover{color:var(--orange);border-bottom-color:var(--live);}
+.etq .etq-card.is-last{grid-template-columns:1fr;justify-items:center;text-align:center;}
+.etq .etq-card.is-last .etq-cbody{max-width:46rem;}
+.etq .etq-card.is-last h3.etq-rule{font-size:clamp(2rem,4.6vw,3.9rem);max-width:none;
+  text-wrap:balance;}
+.etq .etq-card.is-last p{max-width:40ch;margin-left:auto;margin-right:auto;}
+
+@media (max-width:860px){
+  .etq .etq-split{grid-template-columns:1fr;}
+  .etq .etq-a{text-align:left;}
+  .etq .etq-a p{margin-left:0;}
+  .etq .etq-seam{height:1px;
+    background:linear-gradient(to right,transparent,var(--rule) 20%,var(--rule) 80%,transparent);}
+  .etq .etq-half{padding:1.8rem 0;transform:none;}
+  .etq .etq-pin{height:auto;}
+  .etq .etq-stage{position:static;height:auto;overflow:visible;}
+  .etq .etq-stage::before{display:none;}
+  .etq .etq-bar{display:none;}
+  .etq .etq-track{display:block;transform:none !important;}
+  .etq .etq-card{opacity:1;padding:2.2rem 0 2.4rem;border-top:1px solid var(--rule);
+    grid-template-columns:auto 1fr;gap:1rem;scroll-margin-top:4rem;}
+  .etq .etq-card.is-last{grid-template-columns:1fr;text-align:left;justify-items:start;}
+  .etq .etq-num{font-size:2.6rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  .etq .etq-pin{height:auto;}
+  .etq .etq-stage{position:static;height:auto;overflow:visible;}
+  .etq .etq-bar{display:none;}
+  .etq .etq-track{display:block;transform:none !important;}
+  .etq .etq-card{opacity:1;padding:2.2rem 0;border-top:1px solid var(--rule);}
+  .etq .etq-half{transition:none;opacity:1;transform:none;}
+}
+
+
+/* the line planted high up, pointing down to Flying Etiquette */
+.kplant{display:flex;align-items:center;gap:clamp(.9rem,3vw,2.2rem);
+  min-height:64px;padding:1.05rem clamp(1.2rem,5vw,4rem);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  text-decoration:none;color:inherit;
+  transition:background .3s ease,border-color .3s ease;}
+.kplant:hover{background:var(--wash);border-color:var(--live);}
+.kplant:focus-visible{outline:2px solid var(--orange);outline-offset:-4px;}
+.kplant-k{flex:0 0 auto;font-family:var(--font-body);font-size:.64rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--orange);}
+.kplant-l{flex:1 1 auto;font-family:var(--font-display);font-weight:500;
+  font-size:clamp(.94rem,1.5vw,1.14rem);line-height:1.45;color:var(--gray-light);
+  transition:color .3s ease;}
+.kplant:hover .kplant-l{color:var(--white);}
+.kplant-go{flex:0 0 auto;display:flex;}
+.kplant-go svg{width:18px;height:18px;stroke:var(--gray);fill:none;stroke-width:1.5;
+  stroke-linecap:round;stroke-linejoin:round;
+  transition:stroke .3s ease,transform .3s cubic-bezier(.2,.7,.2,1);}
+.kplant:hover .kplant-go svg{stroke:var(--orange);transform:translateY(3px);}
+@media (max-width:640px){
+  .kplant{flex-wrap:wrap;gap:.5rem 1rem;padding:1.1rem 1.2rem;}
+  .kplant-l{flex:1 1 100%;order:3;}
+  .kplant-go{margin-left:auto;}
+}
+@media (prefers-reduced-motion:reduce){
+  .kplant,.kplant-l,.kplant-go svg{transition:none;}
+  .kplant:hover .kplant-go svg{transform:none;}
+}
+
 </style>
 <!-- site-schema -->
 <script type="application/ld+json">
@@ -1267,7 +1606,7 @@
     <a href="#reality">Before You Book</a>
     <a href="#faq">FAQ</a>
     <a href="#packing">Packing</a>
-    <a href="#ground">On the Ground</a>
+    <a href="#ground">Flying Etiquette</a>
     <a href="#enquire" class="last">Enquire</a>
   </div>
 </div>
@@ -1283,6 +1622,12 @@
     <div class="dst-spec-item"><span class="l">Season</span><span class="v">December to March</span></div>
   </div>
 </section>
+
+<a class="kplant" href="#ground">
+  <span class="kplant-k">Flying Etiquette</span>
+  <span class="kplant-l">How you behave on the ground decides what the next pilot is allowed to do. Eight rules, at the foot of this page.</span>
+  <span class="kplant-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v15m0 0 5-5m-5 5-5-5"/></svg></span>
+</a>
 
 <div class="dst-shell">
 <div class="dst-main">
@@ -2445,12 +2790,17 @@
 </section>
 
 <section class="dst-sec is-loud" id="reality">
-  <div class="dst-head">
-    <span class="kicker">Before You Book</span>
-    <h2>What this trip is actually like</h2>
-    <p>We would rather you read this and decide it is not for you than arrive and find that out. Explore the Cradle is built for independent pilots with strong glider handling and an appetite for the unfamiliar. We put flight safety first, because that is what keeps the fun factor intact.</p>
+  <div class="kreal-open">
+    <div class="dst-head">
+      <span class="kicker">Before You Book</span>
+      <h2>What this trip is actually like</h2>
+      <p class="dst-lede">Every flight is a good flight, but chasing airtime comes with bumpy air, variable thermal strength and conditions more demanding than you expected. That is part of it. Come willing to push your limits and you leave with a renewed understanding of flying in new terrain.</p>
+    </div>
+    <div>
+      <p class="kreal-said">We would rather you read this and <em>decide it is not for you</em> than arrive and find that out.</p>
+      <p class="kreal-rest">Explore the Cradle is built for independent pilots with strong glider handling and an appetite for the unfamiliar. We put flight safety first, because that is what keeps the fun factor intact.</p>
+    </div>
   </div>
-  <p class="dst-lede">Every flight is a good flight, but chasing airtime comes with bumpy air, variable thermal strength and conditions more demanding than you expected. That is part of it. Come willing to push your limits and you leave with a renewed understanding of flying in new terrain.</p>
     <div class="kday" id="kday">
     <p class="kday-kicker">How a day runs</p>
     <ol class="kday-track">
@@ -2509,21 +2859,80 @@
   </a>
 </section>
 
-<section class="dst-sec is-quiet" id="faq">
-  <div class="dst-head">
-    <span class="kicker">Questions</span>
-    <h2>What pilots ask before booking</h2>
-  </div>
-  <div class="dst-accs">
-    <details class="dst-acc"><summary><h3>What skill and fitness level is required?</h3></summary><div class="dst-acc-body"><p>This is an XC adventure tour for autonomous pilots. The minimum is being able to manage your own takeoffs and outlandings, with strong thermalling and ridge soaring skills recommended. An SIV course is highly desirable for handling collapses and turbulence.</p>
-      <p>Fitness: good condition for hikes to launch at moderate elevation, gear handling, and four to six hour active flying days in heat. You should be able to trek uneven terrain with a 10 to 15 kg pack.</p></div></details>
-    <details class="dst-acc"><summary><h3>What equipment is provided?</h3></summary><div class="dst-acc-body"><p>We provide certified rental wings only, for a fixed fee on request, and that is first come first served, so tell us in good time. Group safety items including first aid and retrieve support are covered.</p>
-      <p>You bring your own EN or LTF certified wing, harness, reserve, helmet and vario or GPS. Hiking boots and thermal layers are recommended.</p></div></details>
-    <details class="dst-acc"><summary><h3>Will I get my own guide?</h3></summary><div class="dst-acc-body"><p>No, there are no dedicated one to one guides on this tour. Pilots are led by one or two expert instructors at a maximum ratio of one to three. Personalised XC guidance, weather briefings and retrieve help are provided to the group, focused on collective safety and maximising flights.</p></div></details>
-    <details class="dst-acc"><summary><h3>Does the price include travel?</h3></summary><div class="dst-acc-body"><p>The base price covers local transport by 4WD van, guiding, park entry for flying activities, takeoff fees, and Paragliding Association of Kenya membership. Transfers from the airport to the meetup point in Nairobi can be arranged on request.</p></div></details>
-    <details class="dst-acc"><summary><h3>What insurance do I need?</h3></summary><div class="dst-acc-body"><p>Travel insurance covering paragliding at altitudes up to 4,000m. It must include helicopter rescue for retrieves from remote regions, and medical evacuation and treatment covering local hospitals plus international repatriation.</p>
-      <p>Standard travel insurance often excludes adventure sports, so read the wording rather than assuming.</p></div></details>
-    <details class="dst-acc"><summary><h3>What is the cancellation policy?</h3></summary><div class="dst-acc-body"><p>The deposit is not refunded, and if you cancel there is a termination fee that on a trip like this is usually most of the price, because permits, guiding and local arrangements are committed months ahead. It is calculated as the price less what we save and less anything we recover by reselling your place, and we will show you the working. The balance is due 120 days before departure. This is exactly why we push trip cancellation insurance so hard. Full detail in the <a href="../terms.html#cancel-you">booking terms</a>.</p></div></details>
+<div class="kref">
+<section class="dst-sec is-quiet kfaq" id="faq">
+  <div class="kfaq-wrap">
+    <div class="kfaq-rail">
+      <span class="kicker">Questions</span>
+      <h2>What pilots ask before booking</h2>
+      <p class="kfaq-note">The six that come up every time. If yours is not here, ask it on the call.</p>
+      <a class="kfaq-cta" href="#enquire">Book a call</a>
+    </div>
+    <div class="kfaq-list">
+      <details class="kfaq-item is-key">
+        <summary>
+          <span class="kfaq-n">01</span>
+          <h3>What skill and fitness level is required?</h3>
+          <span class="kfaq-mark" aria-hidden="true"></span>
+        </summary>
+        <div class="kfaq-body"><div class="kfaq-inner">
+        <p>This is an XC adventure tour for autonomous pilots. The minimum is being able to manage your own takeoffs and outlandings, with strong thermalling and ridge soaring skills recommended. An SIV course is highly desirable for handling collapses and turbulence.</p>
+        <p>Fitness: good condition for hikes to launch at moderate elevation, gear handling, and four to six hour active flying days in heat. You should be able to trek uneven terrain with a 10 to 15 kg pack.</p>
+        </div></div>
+      </details>
+      <details class="kfaq-item">
+        <summary>
+          <span class="kfaq-n">02</span>
+          <h3>What equipment is provided?</h3>
+          <span class="kfaq-mark" aria-hidden="true"></span>
+        </summary>
+        <div class="kfaq-body"><div class="kfaq-inner">
+        <p>We provide certified rental wings only, for a fixed fee on request, and that is first come first served, so tell us in good time. Group safety items including first aid and retrieve support are covered.</p>
+        <p>You bring your own EN or LTF certified wing, harness, reserve, helmet and vario or GPS. Hiking boots and thermal layers are recommended.</p>
+        </div></div>
+      </details>
+      <details class="kfaq-item">
+        <summary>
+          <span class="kfaq-n">03</span>
+          <h3>Will I get my own guide?</h3>
+          <span class="kfaq-mark" aria-hidden="true"></span>
+        </summary>
+        <div class="kfaq-body"><div class="kfaq-inner">
+        <p>No, there are no dedicated one to one guides on this tour. Pilots are led by one or two expert instructors at a maximum ratio of one to three. Personalised XC guidance, weather briefings and retrieve help are provided to the group, focused on collective safety and maximising flights.</p>
+        </div></div>
+      </details>
+      <details class="kfaq-item">
+        <summary>
+          <span class="kfaq-n">04</span>
+          <h3>Does the price include travel?</h3>
+          <span class="kfaq-mark" aria-hidden="true"></span>
+        </summary>
+        <div class="kfaq-body"><div class="kfaq-inner">
+        <p>The base price covers local transport by 4WD van, guiding, park entry for flying activities, takeoff fees, and Paragliding Association of Kenya membership. Transfers from the airport to the meetup point in Nairobi can be arranged on request.</p>
+        </div></div>
+      </details>
+      <details class="kfaq-item is-key">
+        <summary>
+          <span class="kfaq-n">05</span>
+          <h3>What insurance do I need?</h3>
+          <span class="kfaq-mark" aria-hidden="true"></span>
+        </summary>
+        <div class="kfaq-body"><div class="kfaq-inner">
+        <p>Travel insurance covering paragliding at altitudes up to 4,000m. It must include helicopter rescue for retrieves from remote regions, and medical evacuation and treatment covering local hospitals plus international repatriation.</p>
+        <p>Standard travel insurance often excludes adventure sports, so read the wording rather than assuming.</p>
+        </div></div>
+      </details>
+      <details class="kfaq-item is-key">
+        <summary>
+          <span class="kfaq-n">06</span>
+          <h3>What is the cancellation policy?</h3>
+          <span class="kfaq-mark" aria-hidden="true"></span>
+        </summary>
+        <div class="kfaq-body"><div class="kfaq-inner">
+        <p>The deposit is not refunded, and if you cancel there is a termination fee that on a trip like this is usually most of the price, because permits, guiding and local arrangements are committed months ahead. It is calculated as the price less what we save and less anything we recover by reselling your place, and we will show you the working. The balance is due 120 days before departure. This is exactly why we push trip cancellation insurance so hard. Full detail in the <a href="../terms.html#cancel-you">booking terms</a>.</p>
+        </div></div>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -2531,45 +2940,344 @@
   <div class="dst-head">
     <span class="kicker">Requirements &amp; Packing</span>
     <h2>Before you fly, and what to bring</h2>
-    <p>Terrain runs from 1,000 to 2,000m. It can be hot in the lowlands and cold at height, so pack for both.</p>
+    <p>Terrain runs from 1,000 to 2,000m. It can be hot in the lowlands and cold at height, so pack for both. Six items are marked essential. Do not travel without them.</p>
   </div>
-  <ul class="dst-reqs">
-    <li>Takeoffs sit between 1,000 and 2,000m, and you can expect to climb to 4,000m, where it is cold.</li>
-    <li>Kenyan conditions are stronger than most home sites. Bring gear you trust.</li>
-    <li>Helicopter rescue and good healthcare are both available.</li>
-  </ul>
-  <div class="dst-accs">
-    <details class="dst-acc"><summary><h3>Clothing</h3></summary><div class="dst-acc-body"><p>Long trousers and long sleeves against thorns, sunburn and mosquitoes. Comfortable hiking shoes. Two pairs each of socks, underwear and t-shirts. Flying gloves, because it gets cold at 4,000m. Sunscreen and sunglasses. A warm flying jacket. A buff for the dusty roads. Ear plugs for noisy hotels.</p></div></details>
-    <details class="dst-acc"><summary><h3>Equipment</h3></summary><div class="dst-acc-body"><p>A wing you know well and a harness with sufficient back or airbag protection. Spare lines and ripstop tape, because takeoffs and landings can be bushy and thorny. A 2m radio on 144 to 146 MHz from Yaesu, Icom or Kenwood; avoid Baofeng, because reliable communication can save your life. Powerbank and cables, a headlamp, pepper spray against dogs or wild animals, and a pocket knife.</p></div></details>
-    <details class="dst-acc"><summary><h3>Health</h3></summary><div class="dst-acc-body"><p>No mandatory vaccines for travellers from Europe or America. Malaria risk is low in the dry season of January and February, especially in the highlands above 2,000m; prevention is best, with shoes, high socks, long trousers and long sleeves, and pre-medication can be bought locally. Bring DEET repellent. Hotel beds usually have nets.</p></div></details>
-    <details class="dst-acc"><summary><h3>Stomach and healthcare</h3></summary><div class="dst-acc-body"><p>Local food can upset tender Western stomachs. FloraNorm, a Saccharomyces boulardii probiotic, is available locally. Kenya has good healthcare and helicopter rescue is available.</p></div></details>
+
+  <div class="kkit-gate">
+    <div><b>Altitude</b><p>Takeoffs sit between 1,000 and 2,000m, and you can expect to climb to 4,000m, where it is cold.</p></div>
+    <div><b>Conditions</b><p>Kenyan conditions are stronger than most home sites. Bring gear you trust.</p></div>
+    <div><b>If it goes wrong</b><p>Helicopter rescue and good healthcare are both available.</p></div>
+  </div>
+
+  <div class="kkit-bar">
+    <span class="kkit-count"><b id="kkitDone">0</b> of 33 packed</span>
+    <span class="kkit-actions">
+      <button type="button" class="kkit-hide" id="kkitHide" aria-pressed="false">Hide what is packed</button>
+      <a class="kkit-dl" href="../assets/destinations/kenya/kenya-packing-checklist.pdf" download>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+        Editable PDF <small>33 items, tick or print</small>
+      </a>
+      <button type="button" class="kkit-reset" id="kkitReset">Clear the list</button>
+    </span>
+  </div>
+
+  <div class="kkit-groups">
+      <div class="kkit-group" data-group="0">
+        <button type="button" class="kkit-ghead" aria-expanded="true" aria-controls="kkitg0">
+          <span class="kkit-gname">Documents and money</span>
+          <span class="kkit-gtally"><b>0</b>/5</span>
+          <span class="kkit-gchev" aria-hidden="true"></span>
+        </button>
+        <div class="kkit-gbody" id="kkitg0">
+          <p class="kkit-gblurb">The paperwork is the part you cannot buy locally on the morning you need it.</p>
+          <ul class="kkit-items">
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i0">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Passport, and a photo of it on your phone</span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i1">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">IPPI 2 card or national licence<span class="kkit-note">This is a tour for autonomous pilots</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item is-ess" aria-pressed="false" data-kit="g0i2">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Insurance covering paragliding to 4,000m<span class="kkit-ess">Essential</span><span class="kkit-note">It must include helicopter rescue and medical evacuation</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item is-ess" aria-pressed="false" data-kit="g0i3">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Policy number and rescue hotline, saved offline<span class="kkit-ess">Essential</span><span class="kkit-note">You will want these at the moment you have no signal</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i4">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Cash in small notes<span class="kkit-note">For tips and porters. Agree the price first</span></span>
+          </button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="kkit-group" data-group="1">
+        <button type="button" class="kkit-ghead" aria-expanded="true" aria-controls="kkitg1">
+          <span class="kkit-gname">Clothing</span>
+          <span class="kkit-gtally"><b>0</b>/8</span>
+          <span class="kkit-gchev" aria-hidden="true"></span>
+        </button>
+        <div class="kkit-gbody" id="kkitg1">
+          <p class="kkit-gblurb">Thorns, sun and mosquitoes at the bottom, cold at the top. These are the ones people forget, the ordinary clothes for twelve days go without saying.</p>
+          <ul class="kkit-items">
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i0">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Long trousers<span class="kkit-note">Against thorns, sunburn and mosquitoes</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i1">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Long sleeved shirts</span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i2">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Hiking shoes<span class="kkit-note">Comfortable, already broken in</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i3">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Flying gloves<span class="kkit-note">It is cold at 4,000m</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i4">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Warm flying jacket</span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i5">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Sunscreen and sunglasses</span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i6">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Buff<span class="kkit-note">For the dusty roads</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i7">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Ear plugs<span class="kkit-note">Hotels can be noisy</span></span>
+          </button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="kkit-group" data-group="2">
+        <button type="button" class="kkit-ghead" aria-expanded="true" aria-controls="kkitg2">
+          <span class="kkit-gname">Flying gear</span>
+          <span class="kkit-gtally"><b>0</b>/9</span>
+          <span class="kkit-gchev" aria-hidden="true"></span>
+        </button>
+        <div class="kkit-gbody" id="kkitg2">
+          <p class="kkit-gblurb">Conditions here are stronger than most home sites. Bring gear you trust.</p>
+          <ul class="kkit-items">
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i0">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Wing you know well<span class="kkit-note">EN or LTF certified</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item is-ess" aria-pressed="false" data-kit="g2i1">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Harness with back or airbag protection<span class="kkit-ess">Essential</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item is-ess" aria-pressed="false" data-kit="g2i2">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Reserve<span class="kkit-ess">Essential</span><span class="kkit-note">Repacked and in date</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item is-ess" aria-pressed="false" data-kit="g2i3">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Helmet<span class="kkit-ess">Essential</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i4">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Vario or GPS<span class="kkit-note">Load the airspace file before you travel</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item is-ess" aria-pressed="false" data-kit="g2i5">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">2m radio, 144 to 146 MHz<span class="kkit-ess">Essential</span><span class="kkit-note">Yaesu, Icom or Kenwood. Avoid Baofeng, reliable communication can save your life</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i6">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Tracker or a live tracking app<span class="kkit-note">So retrieve knows where you came down</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i7">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Spare lines</span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i8">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Ripstop tape<span class="kkit-note">Takeoffs and landings can be bushy and thorny</span></span>
+          </button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="kkit-group" data-group="3">
+        <button type="button" class="kkit-ghead" aria-expanded="true" aria-controls="kkitg3">
+          <span class="kkit-gname">On you</span>
+          <span class="kkit-gtally"><b>0</b>/5</span>
+          <span class="kkit-gchev" aria-hidden="true"></span>
+        </button>
+        <div class="kkit-gbody" id="kkitg3">
+          <p class="kkit-gblurb">The small things that matter once you are away from the van.</p>
+          <ul class="kkit-items">
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g3i0">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Offline maps on your phone<span class="kkit-note">Download the region before you fly out</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g3i1">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Powerbank and cables</span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g3i2">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Headlamp</span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g3i3">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Pepper spray<span class="kkit-note">Against dogs or wild animals</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g3i4">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Pocket knife</span>
+          </button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="kkit-group" data-group="4">
+        <button type="button" class="kkit-ghead" aria-expanded="true" aria-controls="kkitg4">
+          <span class="kkit-gname">Health and stomach</span>
+          <span class="kkit-gtally"><b>0</b>/6</span>
+          <span class="kkit-gchev" aria-hidden="true"></span>
+        </button>
+        <div class="kkit-gbody" id="kkitg4">
+          <p class="kkit-gblurb">No mandatory vaccines for travellers from Europe or America. Local food can upset tender Western stomachs.</p>
+          <ul class="kkit-items">
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g4i0">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">DEET repellent</span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g4i1">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Malaria pre-medication<span class="kkit-note">Low risk in the dry season above 2,000m. Can be bought locally</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g4i2">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">High socks and long layers<span class="kkit-note">Prevention beats treatment</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g4i3">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Mosquito net<span class="kkit-note">Hotel beds usually have one</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g4i4">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">FloraNorm probiotic<span class="kkit-note">Saccharomyces boulardii, available locally</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g4i5">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Rehydration salts</span>
+          </button></li>
+          </ul>
+        </div>
+      </div>
+  </div>
+
+  <p class="kkit-tail">Ticking is saved on this device, so you can come back to it the night before you fly. <b>Nothing here is sent anywhere.</b></p>
+</section>
+
+<section class="dst-sec etq" id="ground">
+  <div class="etq-open">
+    <div class="etq-split" aria-hidden="true">
+      <div class="etq-half etq-a"><span class="etq-lab">What you see</span><p>A green field, a clean wind line, somewhere safe to put it down.</p></div>
+      <div class="etq-seam"></div>
+      <div class="etq-half etq-b"><span class="etq-lab">What they see</span><p>A stranger dropping out of the sky onto their land, unannounced.</p></div>
+    </div>
+    <div class="dst-head etq-head">
+      <span class="kicker">Flying Etiquette</span>
+      <h2>Flying in Africa, and how to do it well</h2>
+      <p>Paragliding is still new across much of the continent, and how visiting pilots behave shapes what the next ones are allowed to do. This is distilled from thirteen years of Nikolay Yotov's exploration in Ethiopia and Kenya. He is also the guest on the <a href="../episodes/pre-pwc-kenya-nikolay-yotov.html">Kenya episode</a>, if you would rather hear it in his own words.</p>
+    </div>
+  </div>
+
+  <div class="etq-pin" id="etqPin" style="--n:8">
+    <div class="etq-stage">
+      <div class="etq-bar">
+        <span class="etq-count"><b id="etqNow">01</b><i>/08</i></span>
+        <div class="etq-dots" id="etqDots">
+        <button type="button" class="etq-dot" data-go="0" aria-label="Rule 01, How you are read"><span></span></button>
+        <button type="button" class="etq-dot" data-go="1" aria-label="Rule 02, The approach that works"><span></span></button>
+        <button type="button" class="etq-dot" data-go="2" aria-label="Rule 03, Prices and tipping"><span></span></button>
+        <button type="button" class="etq-dot" data-go="3" aria-label="Rule 04, When you are asked for money"><span></span></button>
+        <button type="button" class="etq-dot" data-go="4" aria-label="Rule 05, Landing protocol"><span></span></button>
+        <button type="button" class="etq-dot" data-go="5" aria-label="Rule 06, Staying and moving"><span></span></button>
+        <button type="button" class="etq-dot" data-go="6" aria-label="Rule 07, Permissions and officials"><span></span></button>
+        <button type="button" class="etq-dot" data-go="7" aria-label="Rule 08, You are the precedent"><span></span></button>
+        </div>
+        <span class="etq-hint" id="etqHint">Keep scrolling</span>
+      </div>
+      <div class="etq-track" id="etqTrack">
+      <article class="etq-card" data-i="0" aria-label="How you are read">
+        <span class="etq-num" aria-hidden="true">01</span>
+        <div class="etq-cbody">
+          <span class="etq-tab">How you are read</span>
+          <h3 class="etq-rule">Read the place before you fly it</h3>
+          <p>You may be seen as progress, as wealth, or with suspicion: spying, drones, something military. None of that is unreasonable given the history. Read up on the communities, the security picture and the recent past of anywhere you are heading before you get there.</p>
+          <figure class="etq-quote">
+            <blockquote>Last year, we got arrested by 100 people with spears and stones.</blockquote>
+            <figcaption>Nikolay Yotov <a href="../episodes/pre-pwc-kenya-nikolay-yotov.html#c2">Kenya episode, 04:21</a></figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="etq-card" data-i="1" aria-label="The approach that works">
+        <span class="etq-num" aria-hidden="true">02</span>
+        <div class="etq-cbody">
+          <span class="etq-tab">The approach that works</span>
+          <h3 class="etq-rule">Greet everyone, explain everything</h3>
+          <p>Be open, enthusiastic and positive, and greet everyone, including the unsmiling ones. Ask locally about security, wild animals and access, because that knowledge is not in any guidebook. Explain your plan clearly: misunderstandings about where you intend to take off are the single most common problem.</p>
+          <p>Hiring porters is usually welcome. In some communities men will not take portering work, and offering a guiding or security role instead is the respectful move rather than pressing the point.</p>
+        </div>
+      </article>
+      <article class="etq-card" data-i="2" aria-label="Prices and tipping">
+        <span class="etq-num" aria-hidden="true">03</span>
+        <div class="etq-cbody">
+          <span class="etq-tab">Prices and tipping</span>
+          <h3 class="etq-rule">Agree the price first</h3>
+          <p>Agree a price in advance, even when someone waves it off. Numbers get misheard, and 15, 50 and 500 are easy to confuse in a second language on a windy hillside.</p>
+          <p>Tip 20 to 50 per cent for good work, and nothing extra for a rip off. Fairness runs both ways. Pay for the things you cannot see, like a path an ancestor cut or the fact that nothing with teeth came near you. Hire from the community closest to the site, or you create jealousy you will not be around to resolve.</p>
+        </div>
+      </article>
+      <article class="etq-card" data-i="3" aria-label="When you are asked for money">
+        <span class="etq-num" aria-hidden="true">04</span>
+        <div class="etq-cbody">
+          <span class="etq-tab">When you are asked for money</span>
+          <h3 class="etq-rule">Give work, not cash</h3>
+          <p>Giving cash directly tends to make things worse for the pilot behind you. Share food or buy someone a meal instead. Saying plainly that it would not be fair to give to one person and not the rest is usually understood and accepted.</p>
+          <p>Better still, give work as a porter or guide, or donate to a local organisation. Avoid handing out your phone number or email, because it turns into requests for money later.</p>
+          <figure class="etq-quote">
+            <blockquote>Wherever you land, some guy with motorbike comes and offers you lift. We want people to benefit from this, to earn some money from this.</blockquote>
+            <figcaption>Nikolay Yotov <a href="../episodes/pre-pwc-kenya-nikolay-yotov.html#c9">Kenya episode, 36:23</a></figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="etq-card" data-i="4" aria-label="Landing protocol">
+        <span class="etq-num" aria-hidden="true">05</span>
+        <div class="etq-cbody">
+          <span class="etq-tab">Landing protocol</span>
+          <h3 class="etq-rule">Land away from crowds</h3>
+          <p>Avoid schools, markets and crowds. Land somewhere remote but reachable by a vehicle. Pack fast with a quick pack sack, then deal with yourself and send your location; repack properly later.</p>
+          <p>People will arrive, and quickly. Greet the children with enthusiasm, find the elders or the leader, and ask them to help keep a clear space. Fly with live tracking and a driver you trust.</p>
+          <figure class="etq-quote">
+            <blockquote>The motorbike crashed the lady. And then who is guilty? The paragliding pilot is guilty.</blockquote>
+            <figcaption>Nikolay Yotov <a href="../episodes/pre-pwc-kenya-nikolay-yotov.html#c9">Kenya episode, 46:06</a></figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="etq-card" data-i="5" aria-label="Staying and moving">
+        <span class="etq-num" aria-hidden="true">06</span>
+        <div class="etq-cbody">
+          <span class="etq-tab">Staying and moving</span>
+          <h3 class="etq-rule">Follow your host's lead</h3>
+          <p>In remote areas you will camp or stay in somebody's house. Take your shoes off, wash your feet, compliment the food, and follow your host's lead on who it is appropriate to address. Pay discreetly, often to the woman running the household, and expect around half the price of a standard hotel.</p>
+          <p>Public transport is crowded and good fun, and your glider bag may double the fare, which is fair. Hitching, offer close to the bus fare and do not haggle below it; going lower is taken as an insult, not a bargain. A hired driver who negotiates, handles gear, keeps crowds back and will drive at night to fetch you is worth 50 to 100 dollars at the end of the trip. Avoid driving at night yourself. If you land a long way out, sleep where you landed.</p>
+        </div>
+      </article>
+      <article class="etq-card" data-i="6" aria-label="Permissions and officials">
+        <span class="etq-num" aria-hidden="true">07</span>
+        <div class="etq-cbody">
+          <span class="etq-tab">Permissions and officials</span>
+          <h3 class="etq-rule">Ask when it matters</h3>
+          <p>The old rule is that it is better to say sorry than to ask permission, and paragliding is not explicitly illegal where the law does not describe it at all. That logic runs out in tense regions, where being arrested is a real outcome and official permission saves a great deal of time.</p>
+          <p><strong>Kenya is the easy case.</strong> The tourism sector is used to foreigners and no special permits are needed for what we do on this tour.</p>
+        </div>
+      </article>
+      <article class="etq-card is-last" data-i="7" aria-label="You are the precedent">
+        <span class="etq-num" aria-hidden="true">08</span>
+        <div class="etq-cbody">
+          <span class="etq-tab">You are the precedent</span>
+          <h3 class="etq-rule">You are the precedent</h3>
+          <p>There are few enough of us flying here that you are not an anonymous tourist. You are the paraglider pilot that community has met, and possibly the only one they will meet this year. What you do sets the terms for everyone who comes next.</p>
+        </div>
+      </article>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="dst-sec is-loud" id="ground">
-  <div class="dst-head">
-    <span class="kicker">On The Ground</span>
-    <h2>Flying in Africa, and how to do it well</h2>
-    <p>Paragliding is still new across much of the continent, and how visiting pilots behave shapes what the next ones are allowed to do. This is distilled from thirteen years of Nikolay Yotov's exploration in Ethiopia and Kenya. He is also the guest on the <a href="../episodes/pre-pwc-kenya-nikolay-yotov.html">Kenya episode</a>, if you would rather hear it in his own words.</p>
-  </div>
-  <div class="dst-accs">
-    <details class="dst-acc"><summary><h3>How you are read</h3></summary><div class="dst-acc-body"><p>You may be seen as progress, as wealth, or with suspicion: spying, drones, something military. None of that is unreasonable given the history. Read up on the communities, the security picture and the recent past of anywhere you are heading before you get there.</p></div></details>
-    <details class="dst-acc"><summary><h3>The approach that works</h3></summary><div class="dst-acc-body"><p>Be open, enthusiastic and positive, and greet everyone, including the unsmiling ones. Ask locally about security, wild animals and access, because that knowledge is not in any guidebook. Explain your plan clearly: misunderstandings about where you intend to take off are the single most common problem.</p>
-      <p>Hiring porters is usually welcome. In some communities men will not take portering work, and offering a guiding or security role instead is the respectful move rather than pressing the point.</p></div></details>
-    <details class="dst-acc"><summary><h3>Prices and tipping</h3></summary><div class="dst-acc-body"><p>Agree a price in advance, even when someone waves it off. Numbers get misheard, and 15, 50 and 500 are easy to confuse in a second language on a windy hillside.</p>
-      <p>Tip 20 to 50 per cent for good work, and nothing extra for a rip off. Fairness runs both ways. Pay for the things you cannot see, like a path an ancestor cut or the fact that nothing with teeth came near you. Hire from the community closest to the site, or you create jealousy you will not be around to resolve.</p></div></details>
-    <details class="dst-acc"><summary><h3>When you are asked for money</h3></summary><div class="dst-acc-body"><p>Giving cash directly tends to make things worse for the pilot behind you. Share food or buy someone a meal instead. Saying plainly that it would not be fair to give to one person and not the rest is usually understood and accepted.</p>
-      <p>Better still, give work as a porter or guide, or donate to a local organisation. Avoid handing out your phone number or email, because it turns into requests for money later.</p></div></details>
-    <details class="dst-acc"><summary><h3>Landing protocol</h3></summary><div class="dst-acc-body"><p>Avoid schools, markets and crowds. Land somewhere remote but reachable by a vehicle. Pack fast with a quick pack sack, then deal with yourself and send your location; repack properly later.</p>
-      <p>People will arrive, and quickly. Greet the children with enthusiasm, find the elders or the leader, and ask them to help keep a clear space. Fly with live tracking and a driver you trust.</p></div></details>
-    <details class="dst-acc"><summary><h3>Staying and moving</h3></summary><div class="dst-acc-body"><p>In remote areas you will camp or stay in somebody's house. Take your shoes off, wash your feet, compliment the food, and follow your host's lead on who it is appropriate to address. Pay discreetly, often to the woman running the household, and expect around half the price of a standard hotel.</p>
-      <p>Public transport is crowded and good fun, and your glider bag may double the fare, which is fair. Hitching, offer close to the bus fare and do not haggle below it; going lower is taken as an insult, not a bargain. A hired driver who negotiates, handles gear, keeps crowds back and will drive at night to fetch you is worth 50 to 100 dollars at the end of the trip. Avoid driving at night yourself. If you land a long way out, sleep where you landed.</p></div></details>
-    <details class="dst-acc"><summary><h3>Permissions and officials</h3></summary><div class="dst-acc-body"><p>The old rule is that it is better to say sorry than to ask permission, and paragliding is not explicitly illegal where the law does not describe it at all. That logic runs out in tense regions, where being arrested is a real outcome and official permission saves a great deal of time.</p>
-      <p><strong>Kenya is the easy case.</strong> The tourism sector is used to foreigners and no special permits are needed for what we do on this tour.</p></div></details>
-    <details class="dst-acc"><summary><h3>You are the precedent</h3></summary><div class="dst-acc-body"><p>There are few enough of us flying here that you are not an anonymous tourist. You are the paraglider pilot that community has met, and possibly the only one they will meet this year. What you do sets the terms for everyone who comes next.</p></div></details>
-  </div>
-</section>
-
+</div>
 </div>
 
 </div>
@@ -2911,6 +3619,217 @@
       ring.classList.add('is-on'); o.disconnect();
     }, { threshold: 0.35 }).observe(ring);
   } else if (ring) { ring.classList.add('is-on'); }
+})();
+</script>
+
+<script>
+/* FAQ heights. <details> cannot transition out of display:none, so the panel
+ * is opened first, measured, then animated. Without JS the cards still open,
+ * they just snap. */
+(function(){
+  var items=document.querySelectorAll('.kfaq .kfaq-item');
+  if(!items.length) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  items.forEach(function(d){
+    var sum=d.querySelector('summary'), body=d.querySelector('.kfaq-body');
+    if(!sum||!body) return;
+    sum.addEventListener('click', function(e){
+      e.preventDefault();
+      if(reduce){ d.open=!d.open; return; }
+      if(d.open){
+        body.style.height=body.scrollHeight+'px';
+        requestAnimationFrame(function(){
+          body.style.transition='height .32s ease';
+          body.style.height='0px';
+        });
+        body.addEventListener('transitionend', function h(){
+          d.open=false; body.style.transition=''; body.style.height='';
+          body.removeEventListener('transitionend',h);
+        });
+      } else {
+        d.open=true;
+        body.style.height='0px';
+        requestAnimationFrame(function(){
+          body.style.transition='height .32s ease';
+          body.style.height=body.scrollHeight+'px';
+        });
+        body.addEventListener('transitionend', function h(){
+          body.style.height='auto'; body.style.transition='';
+          body.removeEventListener('transitionend',h);
+        });
+      }
+    });
+  });
+})();
+</script>
+
+<script>
+/* Packing kit: ticks, and groups that fold themselves up once finished.
+ *
+ * The rule is deliberate. Nothing is hidden until it has been dealt with:
+ * a group only collapses when every item in it is ticked, so the list gets
+ * shorter as you pack rather than starting as four closed labels. Opening
+ * a finished group by hand keeps it open until it is emptied and refilled.
+ *
+ * Heights are animated in JS because a div cannot transition from auto.
+ * Storage is wrapped because Safari private mode throws on setItem; without
+ * it everything still works for the session. */
+(function(){
+  var items = document.querySelectorAll('.kkit-item');
+  if(!items.length) return;
+
+  var groups = [].slice.call(document.querySelectorAll('.kkit-group')),
+      out    = document.getElementById('kkitDone'),
+      reset  = document.getElementById('kkitReset'),
+      hide   = document.getElementById('kkitHide'),
+      KEY    = 'pga.kenya.kit.v2',
+      store  = null;
+  try{ localStorage.setItem('pga.t','1'); localStorage.removeItem('pga.t'); store = localStorage; }catch(e){}
+  function load(){ if(!store) return {}; try{ return JSON.parse(store.getItem(KEY) || '{}'); }catch(e){ return {}; } }
+  function save(){ if(!store) return; try{ store.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+  var state = load(), held = {};   // held: groups the reader opened by hand
+
+  function tiles(g){ return [].slice.call(g.querySelectorAll('.kkit-item')); }
+  function packed(g){ return tiles(g).filter(function(b){ return b.getAttribute('aria-pressed') === 'true'; }).length; }
+
+  function setOpen(g, open, animate){
+    var head = g.querySelector('.kkit-ghead'), body = g.querySelector('.kkit-gbody');
+    head.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if(!animate){ body.style.height = open ? 'auto' : '0px'; return; }
+    var from = body.getBoundingClientRect().height;
+    body.style.height = from + 'px';
+    body.offsetHeight;
+    if(open){
+      body.style.height = 'auto';
+      var to = body.getBoundingClientRect().height;
+      body.style.height = from + 'px';
+      body.offsetHeight;
+      body.style.height = to + 'px';
+      window.setTimeout(function(){ if(head.getAttribute('aria-expanded') === 'true') body.style.height = 'auto'; }, 320);
+    } else {
+      body.style.height = '0px';
+    }
+  }
+  function isOpen(g){ return g.querySelector('.kkit-ghead').getAttribute('aria-expanded') === 'true'; }
+
+  function paint(animate){
+    var done = 0;
+    groups.forEach(function(g, i){
+      var n = packed(g), all = tiles(g).length, full = n === all;
+      g.querySelector('.kkit-gtally b').textContent = n;
+      g.classList.toggle('is-done', full);
+      done += n;
+      var want = !(full && !held[i]);
+      if(want !== isOpen(g)) setOpen(g, want, animate);
+      if(!full) held[i] = false;
+    });
+    if(out) out.textContent = done;
+    if(hide){
+      var anyFull = groups.some(function(g){ return packed(g) === tiles(g).length; });
+      hide.hidden = !anyFull;
+      var anyHeldOpen = groups.some(function(g,i){ return packed(g) === tiles(g).length && held[i]; });
+      hide.setAttribute('aria-pressed', anyHeldOpen ? 'false' : 'true');
+      hide.textContent = anyHeldOpen ? 'Hide what is packed' : 'Show what is packed';
+    }
+  }
+
+  [].forEach.call(items, function(b){
+    var id = b.getAttribute('data-kit');
+    if(state[id]) b.setAttribute('aria-pressed','true');
+    b.addEventListener('click', function(){
+      var on = b.getAttribute('aria-pressed') === 'true';
+      b.setAttribute('aria-pressed', on ? 'false' : 'true');
+      if(on){ delete state[id]; } else { state[id] = 1; }
+      save(); paint(true);
+    });
+  });
+
+  groups.forEach(function(g, i){
+    g.querySelector('.kkit-ghead').addEventListener('click', function(){
+      var open = isOpen(g);
+      held[i] = !open;
+      setOpen(g, !open, true);
+      if(hide) hide.setAttribute('aria-pressed', 'false');
+    });
+  });
+
+  if(reset) reset.addEventListener('click', function(){
+    [].forEach.call(items, function(b){ b.setAttribute('aria-pressed','false'); });
+    state = {}; held = {}; save(); paint(true);
+  });
+
+  if(hide) hide.addEventListener('click', function(){
+    var collapse = hide.getAttribute('aria-pressed') !== 'true';
+    groups.forEach(function(g, i){ if(packed(g) === tiles(g).length) held[i] = !collapse; });
+    paint(true);
+  });
+
+  paint(false);
+})();
+</script>
+
+<script>
+/* Flying Etiquette: vertical scroll drives the sideways run of rules. */
+(function(){
+  var pin = document.getElementById('etqPin');
+  if(!pin) return;
+  var track = document.getElementById('etqTrack'),
+      cards = [].slice.call(track.querySelectorAll('.etq-card')),
+      dots  = [].slice.call(document.querySelectorAll('#etqDots .etq-dot')),
+      now   = document.getElementById('etqNow'),
+      hint  = document.getElementById('etqHint'),
+      split = document.querySelector('.etq-split'),
+      n     = cards.length,
+      flat  = window.matchMedia('(max-width:860px),(prefers-reduced-motion:reduce)'),
+      cur   = -1, ticking = false;
+
+  function paint(i){
+    if(i === cur) return;
+    cur = i;
+    cards.forEach(function(c,k){ c.classList.toggle('is-on', k === i); });
+    dots.forEach(function(d,k){
+      d.classList.toggle('is-on', k === i);
+      d.classList.toggle('is-past', k < i);
+    });
+    if(now) now.textContent = ('0' + (i+1)).slice(-2);
+    if(hint) hint.classList.toggle('is-gone', i > 0);
+  }
+
+  function frame(){
+    ticking = false;
+    if(flat.matches){ track.style.transform = ''; return; }
+    var r = pin.getBoundingClientRect(),
+        travel = pin.offsetHeight - window.innerHeight,
+        p = travel > 0 ? Math.min(1, Math.max(0, -r.top / travel)) : 0,
+        live = r.top <= 0 && r.bottom >= window.innerHeight;
+    pin.classList.toggle('is-live', live);
+    track.style.transform = 'translate3d(' + (-p * (n-1) * 100) + '%,0,0)';
+    paint(Math.round(p * (n-1)));
+  }
+
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(frame); } }
+
+  addEventListener('scroll', onScroll, {passive:true});
+  addEventListener('resize', onScroll);
+  if(flat.addEventListener) flat.addEventListener('change', onScroll);
+
+  dots.forEach(function(d){
+    d.addEventListener('click', function(){
+      var i = +d.dataset.go;
+      if(flat.matches){ cards[i].scrollIntoView({behavior:'smooth', block:'start'}); return; }
+      var travel = pin.offsetHeight - window.innerHeight,
+          top = pin.getBoundingClientRect().top + scrollY + (i/(n-1)) * travel;
+      scrollTo({top: Math.round(top), behavior:'smooth'});
+    });
+  });
+
+  if(split && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es,o){
+      es.forEach(function(e){ if(e.isIntersecting){ split.classList.add('is-in'); o.disconnect(); } });
+    },{threshold:.35}).observe(split);
+  } else if(split){ split.classList.add('is-in'); }
+
+  paint(0); frame();
 })();
 </script>
 <!-- nav-menu -->
