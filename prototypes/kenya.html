@@ -650,8 +650,9 @@
 .kkit-actions{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;}
 .kkit-dl{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;
   font-family:var(--font-body);font-size:.82rem;color:var(--gray-light);text-decoration:none;
-  border-bottom:1px solid transparent;transition:color .2s ease,border-color .2s ease;}
-.kkit-dl:hover{color:var(--orange);border-color:color-mix(in srgb, var(--orange) 45%, transparent);}
+  transition:color .2s ease;}
+.kkit-dl:hover{color:var(--orange);}
+.kkit-dl:hover small{color:color-mix(in srgb, var(--orange) 60%, var(--gray));}
 .kkit-dl svg{flex:0 0 auto;width:13px;height:13px;stroke:currentColor;fill:none;
   stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
 .kkit-dl small{color:var(--gray);font-size:.74rem;}
