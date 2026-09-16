@@ -1086,11 +1086,11 @@
    this opacity hairlines are invisible at any size. Alpha is quantised to a
    few levels, which is invisible under a wash and halves the file.
 
-   Stretched to the block exactly rather than fitted, so the baked fade always
-   lands on the block's own top and bottom at every viewport. Keeping the
-   aspect ratio instead would either run the mask out before the block ends on
-   a phone or crop the fade away on a wide screen. The forms are abstract, so
-   the horizontal squeeze costs nothing.
+   The mask covers rather than stretches, so the contours keep their shape at
+   every viewport and are cropped instead of squashed. That means the fade
+   cannot be baked into the file, because cover crops it away, so ::after
+   carries it as a gradient in the page colour, painted over the contours and
+   under the content.
 
    Guarded by @supports: without mask support the block never paints, rather
    than filling the section with a white rectangle. */
@@ -1102,9 +1102,13 @@
     background:var(--white);opacity:.12;
     -webkit-mask-image:url(../assets/destinations/kenya/contours.webp);
     mask-image:url(../assets/destinations/kenya/contours.webp);
-    -webkit-mask-size:100% 100%;mask-size:100% 100%;
+    -webkit-mask-size:cover;mask-size:cover;
     -webkit-mask-position:center top;mask-position:center top;
     -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;}
+  .kref::after{content:"";position:absolute;z-index:0;top:0;bottom:0;
+    left:calc(50% - 50vw);width:100vw;pointer-events:none;
+    background:linear-gradient(180deg,var(--bg) 0,rgba(20,21,25,0) 14%,
+      rgba(20,21,25,0) 84%,var(--bg) 100%);}
 }
 
 </style>
