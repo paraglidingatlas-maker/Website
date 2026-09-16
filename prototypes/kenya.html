@@ -732,6 +732,88 @@
 .dst-acc-body{padding:0 0 1.2rem;}
 .dst-acc-body p{color:var(--gray-light);font-size:.93rem;line-height:1.75;margin:0 0 .8rem;}
 .dst-acc-body p:last-child{margin-bottom:0;}
+/* ---- FAQ -------------------------------------------------------------
+ * Was a hairline rule and a plus sign, which read as a pile of text.
+ * Now: sticky rail on the left, cards on the right, numbered.
+ * The three questions that carry money or risk (skill, insurance,
+ * cancellation) get an orange spine, so the eye lands on those first
+ * instead of on whichever happens to be top.
+ * Palette runs one step warmer than the rest of the page. Agreed with the
+ * owner: the FAQ is a room of its own, not the site's personality.
+ * Heights animate in JS because <details> cannot transition from
+ * display:none. No JS means no animation, content still opens.
+ * -------------------------------------------------------------------- */
+.kfaq.dst-sec{position:relative;}
+.kfaq.dst-sec::before{content:"";position:absolute;inset:0;left:calc(50% - 50vw);width:100vw;
+  background:radial-gradient(110% 70% at 72% 0%,
+    color-mix(in srgb, var(--orange) 7%, transparent) 0%, transparent 60%);
+  pointer-events:none;z-index:0;}
+.kfaq .kfaq-wrap{position:relative;z-index:1;display:grid;
+  grid-template-columns:minmax(0,19rem) minmax(0,1fr);
+  gap:clamp(2rem,5vw,4.5rem);align-items:start;}
+
+.kfaq .kfaq-rail{position:sticky;top:7.5rem;}
+.kfaq .kfaq-rail h2{margin:.55rem 0 1rem;}
+.kfaq .kfaq-note{color:var(--gray);font-size:.95rem;line-height:1.75;margin:0 0 1.5rem;max-width:27ch;}
+.kfaq .kfaq-cta{display:inline-flex;align-items:center;min-height:44px;
+  font-family:'Poppins',sans-serif;font-size:.82rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--orange);text-decoration:none;
+  border-bottom:1px solid color-mix(in srgb, var(--orange) 45%, transparent);
+  transition:color .2s ease,border-color .2s ease;}
+.kfaq .kfaq-cta:hover{color:var(--orange-lite);border-color:var(--orange-lite);}
+
+.kfaq .kfaq-list{display:flex;flex-direction:column;gap:.65rem;}
+.kfaq .kfaq-item{position:relative;border:1px solid var(--edge);border-radius:14px;overflow:hidden;
+  background:color-mix(in srgb, var(--card) 94%, var(--orange) 2%);
+  transition:transform .25s ease,border-color .25s ease,background .25s ease;}
+.kfaq .kfaq-item:hover{transform:translateY(-2px);
+  border-color:color-mix(in srgb, var(--orange) 38%, var(--edge));}
+.kfaq .kfaq-item[open]{background:color-mix(in srgb, var(--card) 88%, var(--orange) 4%);
+  border-color:color-mix(in srgb, var(--orange) 28%, var(--edge));}
+.kfaq .kfaq-item.is-key::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;z-index:2;
+  background:linear-gradient(180deg, var(--orange),
+    color-mix(in srgb, var(--orange) 12%, transparent));}
+
+.kfaq .kfaq-item summary{list-style:none;cursor:pointer;display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:1rem;
+  min-height:56px;padding:1.05rem 1.3rem;}
+.kfaq .kfaq-item summary::-webkit-details-marker{display:none;}
+.kfaq .kfaq-item summary:focus-visible{outline:2px solid var(--orange);outline-offset:-3px;}
+.kfaq .kfaq-n{font-family:'Poppins',sans-serif;font-size:1.45rem;font-weight:600;line-height:1;
+  letter-spacing:-.02em;transition:color .25s ease;
+  color:color-mix(in srgb, var(--orange) 34%, transparent);}
+.kfaq .kfaq-item:hover .kfaq-n,.kfaq .kfaq-item[open] .kfaq-n{color:var(--orange);}
+.kfaq .kfaq-item summary h3{margin:0;font-family:'Poppins',sans-serif;font-size:1.06rem;
+  font-weight:500;line-height:1.45;letter-spacing:-.01em;color:var(--white);}
+.kfaq .kfaq-mark{position:relative;width:20px;height:20px;}
+.kfaq .kfaq-mark::before,.kfaq .kfaq-mark::after{content:"";position:absolute;left:50%;top:50%;
+  background:var(--gray-light);transition:transform .3s ease,background .25s ease;}
+.kfaq .kfaq-mark::before{width:14px;height:1.5px;transform:translate(-50%,-50%);}
+.kfaq .kfaq-mark::after{width:1.5px;height:14px;transform:translate(-50%,-50%);}
+.kfaq .kfaq-item[open] .kfaq-mark::after{transform:translate(-50%,-50%) rotate(90deg);}
+.kfaq .kfaq-item[open] .kfaq-mark::before,
+.kfaq .kfaq-item[open] .kfaq-mark::after{background:var(--orange);}
+
+.kfaq .kfaq-body{overflow:hidden;}
+.kfaq .kfaq-inner{padding:0 1.3rem 1.35rem calc(1.3rem + 1.45rem + 1rem);}
+.kfaq .kfaq-inner p{color:var(--gray-light);font-size:.95rem;line-height:1.8;margin:0 0 .85rem;}
+.kfaq .kfaq-inner p:last-child{margin-bottom:0;}
+.kfaq .kfaq-inner a{color:var(--orange);}
+
+@media (max-width:900px){
+  .kfaq .kfaq-wrap{grid-template-columns:1fr;gap:2.1rem;}
+  .kfaq .kfaq-rail{position:static;}
+  .kfaq .kfaq-note{max-width:none;}
+  .kfaq .kfaq-item summary{padding:1rem 1.1rem;gap:.85rem;}
+  .kfaq .kfaq-n{font-size:1.25rem;}
+  .kfaq .kfaq-item summary h3{font-size:1rem;}
+  .kfaq .kfaq-inner{padding:0 1.1rem 1.2rem 1.1rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  .kfaq .kfaq-item,.kfaq .kfaq-mark::before,.kfaq .kfaq-mark::after{transition:none;}
+  .kfaq .kfaq-item:hover{transform:none;}
+}
+
 
 /* ---------- mobile booking bar ---------- */
 .dst-mobar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;
@@ -2576,21 +2658,79 @@
 </section>
 
 <div class="kref">
-<section class="dst-sec is-quiet" id="faq">
-  <div class="dst-head">
-    <span class="kicker">Questions</span>
-    <h2>What pilots ask before booking</h2>
-  </div>
-  <div class="dst-accs">
-    <details class="dst-acc"><summary><h3>What skill and fitness level is required?</h3></summary><div class="dst-acc-body"><p>This is an XC adventure tour for autonomous pilots. The minimum is being able to manage your own takeoffs and outlandings, with strong thermalling and ridge soaring skills recommended. An SIV course is highly desirable for handling collapses and turbulence.</p>
-      <p>Fitness: good condition for hikes to launch at moderate elevation, gear handling, and four to six hour active flying days in heat. You should be able to trek uneven terrain with a 10 to 15 kg pack.</p></div></details>
-    <details class="dst-acc"><summary><h3>What equipment is provided?</h3></summary><div class="dst-acc-body"><p>We provide certified rental wings only, for a fixed fee on request, and that is first come first served, so tell us in good time. Group safety items including first aid and retrieve support are covered.</p>
-      <p>You bring your own EN or LTF certified wing, harness, reserve, helmet and vario or GPS. Hiking boots and thermal layers are recommended.</p></div></details>
-    <details class="dst-acc"><summary><h3>Will I get my own guide?</h3></summary><div class="dst-acc-body"><p>No, there are no dedicated one to one guides on this tour. Pilots are led by one or two expert instructors at a maximum ratio of one to three. Personalised XC guidance, weather briefings and retrieve help are provided to the group, focused on collective safety and maximising flights.</p></div></details>
-    <details class="dst-acc"><summary><h3>Does the price include travel?</h3></summary><div class="dst-acc-body"><p>The base price covers local transport by 4WD van, guiding, park entry for flying activities, takeoff fees, and Paragliding Association of Kenya membership. Transfers from the airport to the meetup point in Nairobi can be arranged on request.</p></div></details>
-    <details class="dst-acc"><summary><h3>What insurance do I need?</h3></summary><div class="dst-acc-body"><p>Travel insurance covering paragliding at altitudes up to 4,000m. It must include helicopter rescue for retrieves from remote regions, and medical evacuation and treatment covering local hospitals plus international repatriation.</p>
-      <p>Standard travel insurance often excludes adventure sports, so read the wording rather than assuming.</p></div></details>
-    <details class="dst-acc"><summary><h3>What is the cancellation policy?</h3></summary><div class="dst-acc-body"><p>The deposit is not refunded, and if you cancel there is a termination fee that on a trip like this is usually most of the price, because permits, guiding and local arrangements are committed months ahead. It is calculated as the price less what we save and less anything we recover by reselling your place, and we will show you the working. The balance is due 120 days before departure. This is exactly why we push trip cancellation insurance so hard. Full detail in the <a href="../terms.html#cancel-you">booking terms</a>.</p></div></details>
+<section class="dst-sec is-quiet kfaq" id="faq">
+  <div class="kfaq-wrap">
+    <div class="kfaq-rail">
+      <span class="kicker">Questions</span>
+      <h2>What pilots ask before booking</h2>
+      <p class="kfaq-note">The six that come up every time. If yours is not here, ask it on the call.</p>
+      <a class="kfaq-cta" href="#enquire">Book a call</a>
+    </div>
+    <div class="kfaq-list">
+      <details class="kfaq-item is-key">
+        <summary>
+          <span class="kfaq-n">01</span>
+          <h3>What skill and fitness level is required?</h3>
+          <span class="kfaq-mark" aria-hidden="true"></span>
+        </summary>
+        <div class="kfaq-body"><div class="kfaq-inner">
+        <p>This is an XC adventure tour for autonomous pilots. The minimum is being able to manage your own takeoffs and outlandings, with strong thermalling and ridge soaring skills recommended. An SIV course is highly desirable for handling collapses and turbulence.</p>
+        <p>Fitness: good condition for hikes to launch at moderate elevation, gear handling, and four to six hour active flying days in heat. You should be able to trek uneven terrain with a 10 to 15 kg pack.</p>
+        </div></div>
+      </details>
+      <details class="kfaq-item">
+        <summary>
+          <span class="kfaq-n">02</span>
+          <h3>What equipment is provided?</h3>
+          <span class="kfaq-mark" aria-hidden="true"></span>
+        </summary>
+        <div class="kfaq-body"><div class="kfaq-inner">
+        <p>We provide certified rental wings only, for a fixed fee on request, and that is first come first served, so tell us in good time. Group safety items including first aid and retrieve support are covered.</p>
+        <p>You bring your own EN or LTF certified wing, harness, reserve, helmet and vario or GPS. Hiking boots and thermal layers are recommended.</p>
+        </div></div>
+      </details>
+      <details class="kfaq-item">
+        <summary>
+          <span class="kfaq-n">03</span>
+          <h3>Will I get my own guide?</h3>
+          <span class="kfaq-mark" aria-hidden="true"></span>
+        </summary>
+        <div class="kfaq-body"><div class="kfaq-inner">
+        <p>No, there are no dedicated one to one guides on this tour. Pilots are led by one or two expert instructors at a maximum ratio of one to three. Personalised XC guidance, weather briefings and retrieve help are provided to the group, focused on collective safety and maximising flights.</p>
+        </div></div>
+      </details>
+      <details class="kfaq-item">
+        <summary>
+          <span class="kfaq-n">04</span>
+          <h3>Does the price include travel?</h3>
+          <span class="kfaq-mark" aria-hidden="true"></span>
+        </summary>
+        <div class="kfaq-body"><div class="kfaq-inner">
+        <p>The base price covers local transport by 4WD van, guiding, park entry for flying activities, takeoff fees, and Paragliding Association of Kenya membership. Transfers from the airport to the meetup point in Nairobi can be arranged on request.</p>
+        </div></div>
+      </details>
+      <details class="kfaq-item is-key">
+        <summary>
+          <span class="kfaq-n">05</span>
+          <h3>What insurance do I need?</h3>
+          <span class="kfaq-mark" aria-hidden="true"></span>
+        </summary>
+        <div class="kfaq-body"><div class="kfaq-inner">
+        <p>Travel insurance covering paragliding at altitudes up to 4,000m. It must include helicopter rescue for retrieves from remote regions, and medical evacuation and treatment covering local hospitals plus international repatriation.</p>
+        <p>Standard travel insurance often excludes adventure sports, so read the wording rather than assuming.</p>
+        </div></div>
+      </details>
+      <details class="kfaq-item is-key">
+        <summary>
+          <span class="kfaq-n">06</span>
+          <h3>What is the cancellation policy?</h3>
+          <span class="kfaq-mark" aria-hidden="true"></span>
+        </summary>
+        <div class="kfaq-body"><div class="kfaq-inner">
+        <p>The deposit is not refunded, and if you cancel there is a termination fee that on a trip like this is usually most of the price, because permits, guiding and local arrangements are committed months ahead. It is calculated as the price less what we save and less anything we recover by reselling your place, and we will show you the working. The balance is due 120 days before departure. This is exactly why we push trip cancellation insurance so hard. Full detail in the <a href="../terms.html#cancel-you">booking terms</a>.</p>
+        </div></div>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -2984,5 +3124,46 @@
 <!-- nav-menu -->
 <script defer src="../nav-menu.js?v=001fbbf6"></script>
 <!-- /nav-menu -->
+
+<script>
+/* FAQ heights. <details> cannot transition out of display:none, so the panel
+ * is opened first, measured, then animated. Without JS the cards still open,
+ * they just snap. */
+(function(){
+  var items=document.querySelectorAll('.kfaq .kfaq-item');
+  if(!items.length) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  items.forEach(function(d){
+    var sum=d.querySelector('summary'), body=d.querySelector('.kfaq-body');
+    if(!sum||!body) return;
+    sum.addEventListener('click', function(e){
+      e.preventDefault();
+      if(reduce){ d.open=!d.open; return; }
+      if(d.open){
+        body.style.height=body.scrollHeight+'px';
+        requestAnimationFrame(function(){
+          body.style.transition='height .32s ease';
+          body.style.height='0px';
+        });
+        body.addEventListener('transitionend', function h(){
+          d.open=false; body.style.transition=''; body.style.height='';
+          body.removeEventListener('transitionend',h);
+        });
+      } else {
+        d.open=true;
+        body.style.height='0px';
+        requestAnimationFrame(function(){
+          body.style.transition='height .32s ease';
+          body.style.height=body.scrollHeight+'px';
+        });
+        body.addEventListener('transitionend', function h(){
+          body.style.height='auto'; body.style.transition='';
+          body.removeEventListener('transitionend',h);
+        });
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>
