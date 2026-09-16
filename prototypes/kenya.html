@@ -1252,6 +1252,114 @@
 .kreal-rest{color:var(--gray-light);line-height:1.8;margin:1.4rem 0 0;max-width:34rem;}
 @media (max-width:820px){.kreal-open{grid-template-columns:1fr;}}
 
+
+/* Flying Etiquette: pinned sideways sequence, field-notes skin */
+.etq.dst-sec{padding-bottom:0;}
+.etq .etq-open{max-width:var(--wrap,none);}
+
+.etq .etq-split{display:grid;grid-template-columns:1fr 1px 1fr;align-items:center;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:0 0 3.2rem;}
+.etq .etq-half{padding:2.4rem 2rem;}
+.etq .etq-lab{display:block;font-family:var(--font-body);font-size:.64rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gray);margin:0 0 .8rem;}
+.etq .etq-half p{margin:0;font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1.02rem,1.9vw,1.44rem);line-height:1.38;color:var(--gray-light);max-width:26ch;}
+.etq .etq-a{text-align:right;}
+.etq .etq-a p{margin-left:auto;}
+.etq .etq-b .etq-lab{color:var(--orange);}
+.etq .etq-b p{color:var(--white);}
+.etq .etq-seam{align-self:stretch;
+  background:linear-gradient(to bottom,transparent,var(--rule) 20%,var(--rule) 80%,transparent);}
+.etq .etq-half{opacity:0;transform:translateX(0);
+  transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);}
+.etq .etq-a{transform:translateX(22px);}
+.etq .etq-b{transform:translateX(-22px);}
+.etq .etq-split.is-in .etq-half{opacity:1;transform:translateX(0);}
+
+.etq .etq-pin{position:relative;height:calc(var(--n) * 76vh);}
+.etq .etq-stage{position:sticky;top:0;height:100vh;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;}
+.etq .etq-stage::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+  transition:opacity .6s ease;
+  background-image:repeating-linear-gradient(to bottom,transparent 0 47px,var(--line) 47px 48px);
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 80%,transparent);
+  mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 80%,transparent);}
+.etq .etq-pin.is-live .etq-stage::before{opacity:1;}
+
+.etq .etq-bar{position:absolute;left:0;right:0;top:clamp(1.4rem,7vh,3.6rem);
+  display:flex;align-items:center;gap:1.4rem;padding:0 clamp(1.2rem,5vw,4rem);}
+.etq .etq-count{font-family:var(--font-display);font-size:.82rem;color:var(--gray);flex:0 0 auto;}
+.etq .etq-count b{font-weight:600;color:var(--orange);}
+.etq .etq-count i{font-style:normal;}
+.etq .etq-dots{display:flex;gap:7px;flex:1;}
+.etq .etq-dot{flex:1;min-height:44px;display:flex;align-items:center;
+  background:none;border:0;padding:0;cursor:pointer;}
+.etq .etq-dot span{display:block;width:100%;height:2px;background:var(--rule);
+  transition:background .35s ease;}
+.etq .etq-dot.is-past span{background:color-mix(in srgb, var(--orange) 45%, var(--rule));}
+.etq .etq-dot.is-on span{background:var(--orange);}
+.etq .etq-dot:focus-visible{outline:2px solid var(--orange);outline-offset:3px;}
+.etq .etq-hint{flex:0 0 auto;font-family:var(--font-body);font-size:.64rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gray);transition:opacity .4s ease;}
+.etq .etq-hint.is-gone{opacity:0;}
+
+.etq .etq-track{display:flex;width:100%;will-change:transform;}
+.etq .etq-card{flex:0 0 100%;display:grid;grid-template-columns:auto minmax(0,1fr);
+  gap:clamp(1rem,4vw,3.2rem);align-items:start;padding:0 clamp(1.2rem,5vw,4rem);
+  opacity:.16;transition:opacity .5s ease;}
+.etq .etq-card.is-on{opacity:1;}
+.etq .etq-num{font-family:var(--font-display);font-weight:700;line-height:.78;
+  font-size:clamp(3rem,9vw,7.6rem);color:transparent;-webkit-text-stroke:1px var(--edge-hi);
+  letter-spacing:-.02em;}
+.etq .etq-tab{display:block;font-family:var(--font-body);font-size:.64rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--orange);margin:.5rem 0 .7rem;}
+.etq .etq-cbody h3.etq-rule{font-family:var(--font-display);font-weight:600;
+  font-size:clamp(1.8rem,4.2vw,3.4rem);line-height:1.05;color:var(--white);
+  margin:0 0 1.2rem;max-width:19ch;letter-spacing:-.015em;}
+.etq .etq-cbody p{margin:0 0 .85rem;font-family:var(--font-body);font-size:.97rem;line-height:1.8;
+  color:var(--gray-light);max-width:58ch;}
+.etq .etq-cbody p strong{color:var(--white);font-weight:500;}
+.etq .etq-quote{margin:1.5rem 0 0;padding-left:1.1rem;border-left:2px solid var(--orange);
+  max-width:50ch;}
+.etq .etq-quote blockquote{margin:0;font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1rem,1.5vw,1.2rem);line-height:1.5;color:var(--white);}
+.etq .etq-quote figcaption{margin:.6rem 0 0;font-family:var(--font-body);font-size:.78rem;
+  color:var(--gray);}
+.etq .etq-quote figcaption a{color:var(--gray);text-decoration:none;
+  border-bottom:1px solid var(--rule);margin-left:.4rem;}
+.etq .etq-quote figcaption a:hover{color:var(--orange);border-bottom-color:var(--live);}
+.etq .etq-card.is-last{grid-template-columns:1fr;justify-items:center;text-align:center;}
+.etq .etq-card.is-last .etq-cbody{max-width:46rem;}
+.etq .etq-card.is-last h3.etq-rule{font-size:clamp(2rem,4.6vw,3.9rem);max-width:none;
+  text-wrap:balance;}
+.etq .etq-card.is-last p{max-width:40ch;margin-left:auto;margin-right:auto;}
+
+@media (max-width:860px){
+  .etq .etq-split{grid-template-columns:1fr;}
+  .etq .etq-a{text-align:left;}
+  .etq .etq-a p{margin-left:0;}
+  .etq .etq-seam{height:1px;
+    background:linear-gradient(to right,transparent,var(--rule) 20%,var(--rule) 80%,transparent);}
+  .etq .etq-half{padding:1.8rem 0;transform:none;}
+  .etq .etq-pin{height:auto;}
+  .etq .etq-stage{position:static;height:auto;overflow:visible;}
+  .etq .etq-stage::before{display:none;}
+  .etq .etq-bar{display:none;}
+  .etq .etq-track{display:block;transform:none !important;}
+  .etq .etq-card{opacity:1;padding:2.2rem 0 2.4rem;border-top:1px solid var(--rule);
+    grid-template-columns:auto 1fr;gap:1rem;scroll-margin-top:4rem;}
+  .etq .etq-card.is-last{grid-template-columns:1fr;text-align:left;justify-items:start;}
+  .etq .etq-num{font-size:2.6rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  .etq .etq-pin{height:auto;}
+  .etq .etq-stage{position:static;height:auto;overflow:visible;}
+  .etq .etq-bar{display:none;}
+  .etq .etq-track{display:block;transform:none !important;}
+  .etq .etq-card{opacity:1;padding:2.2rem 0;border-top:1px solid var(--rule);}
+  .etq .etq-half{transition:none;opacity:1;transform:none;}
+}
+
 </style>
 <!-- site-schema -->
 <script type="application/ld+json">
@@ -1469,7 +1577,7 @@
     <a href="#reality">Before You Book</a>
     <a href="#faq">FAQ</a>
     <a href="#packing">Packing</a>
-    <a href="#ground">On the Ground</a>
+    <a href="#ground">Flying Etiquette</a>
     <a href="#enquire" class="last">Enquire</a>
   </div>
 </div>
@@ -3016,27 +3124,121 @@
   <p class="kkit-tail">Ticking is saved on this device, so you can come back to it the night before you fly. <b>Nothing here is sent anywhere.</b></p>
 </section>
 
-<section class="dst-sec is-loud" id="ground">
-  <div class="dst-head">
-    <span class="kicker">On The Ground</span>
-    <h2>Flying in Africa, and how to do it well</h2>
-    <p>Paragliding is still new across much of the continent, and how visiting pilots behave shapes what the next ones are allowed to do. This is distilled from thirteen years of Nikolay Yotov's exploration in Ethiopia and Kenya. He is also the guest on the <a href="../episodes/pre-pwc-kenya-nikolay-yotov.html">Kenya episode</a>, if you would rather hear it in his own words.</p>
+<section class="dst-sec etq" id="ground">
+  <div class="etq-open">
+    <div class="etq-split" aria-hidden="true">
+      <div class="etq-half etq-a"><span class="etq-lab">What you see</span><p>A green field, a clean wind line, somewhere safe to put it down.</p></div>
+      <div class="etq-seam"></div>
+      <div class="etq-half etq-b"><span class="etq-lab">What they see</span><p>A stranger dropping out of the sky onto their land, unannounced.</p></div>
+    </div>
+    <div class="dst-head etq-head">
+      <span class="kicker">Flying Etiquette</span>
+      <h2>Flying in Africa, and how to do it well</h2>
+      <p>Paragliding is still new across much of the continent, and how visiting pilots behave shapes what the next ones are allowed to do. This is distilled from thirteen years of Nikolay Yotov's exploration in Ethiopia and Kenya. He is also the guest on the <a href="../episodes/pre-pwc-kenya-nikolay-yotov.html">Kenya episode</a>, if you would rather hear it in his own words.</p>
+    </div>
   </div>
-  <div class="dst-accs">
-    <details class="dst-acc"><summary><h3>How you are read</h3></summary><div class="dst-acc-body"><p>You may be seen as progress, as wealth, or with suspicion: spying, drones, something military. None of that is unreasonable given the history. Read up on the communities, the security picture and the recent past of anywhere you are heading before you get there.</p></div></details>
-    <details class="dst-acc"><summary><h3>The approach that works</h3></summary><div class="dst-acc-body"><p>Be open, enthusiastic and positive, and greet everyone, including the unsmiling ones. Ask locally about security, wild animals and access, because that knowledge is not in any guidebook. Explain your plan clearly: misunderstandings about where you intend to take off are the single most common problem.</p>
-      <p>Hiring porters is usually welcome. In some communities men will not take portering work, and offering a guiding or security role instead is the respectful move rather than pressing the point.</p></div></details>
-    <details class="dst-acc"><summary><h3>Prices and tipping</h3></summary><div class="dst-acc-body"><p>Agree a price in advance, even when someone waves it off. Numbers get misheard, and 15, 50 and 500 are easy to confuse in a second language on a windy hillside.</p>
-      <p>Tip 20 to 50 per cent for good work, and nothing extra for a rip off. Fairness runs both ways. Pay for the things you cannot see, like a path an ancestor cut or the fact that nothing with teeth came near you. Hire from the community closest to the site, or you create jealousy you will not be around to resolve.</p></div></details>
-    <details class="dst-acc"><summary><h3>When you are asked for money</h3></summary><div class="dst-acc-body"><p>Giving cash directly tends to make things worse for the pilot behind you. Share food or buy someone a meal instead. Saying plainly that it would not be fair to give to one person and not the rest is usually understood and accepted.</p>
-      <p>Better still, give work as a porter or guide, or donate to a local organisation. Avoid handing out your phone number or email, because it turns into requests for money later.</p></div></details>
-    <details class="dst-acc"><summary><h3>Landing protocol</h3></summary><div class="dst-acc-body"><p>Avoid schools, markets and crowds. Land somewhere remote but reachable by a vehicle. Pack fast with a quick pack sack, then deal with yourself and send your location; repack properly later.</p>
-      <p>People will arrive, and quickly. Greet the children with enthusiasm, find the elders or the leader, and ask them to help keep a clear space. Fly with live tracking and a driver you trust.</p></div></details>
-    <details class="dst-acc"><summary><h3>Staying and moving</h3></summary><div class="dst-acc-body"><p>In remote areas you will camp or stay in somebody's house. Take your shoes off, wash your feet, compliment the food, and follow your host's lead on who it is appropriate to address. Pay discreetly, often to the woman running the household, and expect around half the price of a standard hotel.</p>
-      <p>Public transport is crowded and good fun, and your glider bag may double the fare, which is fair. Hitching, offer close to the bus fare and do not haggle below it; going lower is taken as an insult, not a bargain. A hired driver who negotiates, handles gear, keeps crowds back and will drive at night to fetch you is worth 50 to 100 dollars at the end of the trip. Avoid driving at night yourself. If you land a long way out, sleep where you landed.</p></div></details>
-    <details class="dst-acc"><summary><h3>Permissions and officials</h3></summary><div class="dst-acc-body"><p>The old rule is that it is better to say sorry than to ask permission, and paragliding is not explicitly illegal where the law does not describe it at all. That logic runs out in tense regions, where being arrested is a real outcome and official permission saves a great deal of time.</p>
-      <p><strong>Kenya is the easy case.</strong> The tourism sector is used to foreigners and no special permits are needed for what we do on this tour.</p></div></details>
-    <details class="dst-acc"><summary><h3>You are the precedent</h3></summary><div class="dst-acc-body"><p>There are few enough of us flying here that you are not an anonymous tourist. You are the paraglider pilot that community has met, and possibly the only one they will meet this year. What you do sets the terms for everyone who comes next.</p></div></details>
+
+  <div class="etq-pin" id="etqPin" style="--n:8">
+    <div class="etq-stage">
+      <div class="etq-bar">
+        <span class="etq-count"><b id="etqNow">01</b><i>/08</i></span>
+        <div class="etq-dots" id="etqDots">
+        <button type="button" class="etq-dot" data-go="0" aria-label="Rule 01, How you are read"><span></span></button>
+        <button type="button" class="etq-dot" data-go="1" aria-label="Rule 02, The approach that works"><span></span></button>
+        <button type="button" class="etq-dot" data-go="2" aria-label="Rule 03, Prices and tipping"><span></span></button>
+        <button type="button" class="etq-dot" data-go="3" aria-label="Rule 04, When you are asked for money"><span></span></button>
+        <button type="button" class="etq-dot" data-go="4" aria-label="Rule 05, Landing protocol"><span></span></button>
+        <button type="button" class="etq-dot" data-go="5" aria-label="Rule 06, Staying and moving"><span></span></button>
+        <button type="button" class="etq-dot" data-go="6" aria-label="Rule 07, Permissions and officials"><span></span></button>
+        <button type="button" class="etq-dot" data-go="7" aria-label="Rule 08, You are the precedent"><span></span></button>
+        </div>
+        <span class="etq-hint" id="etqHint">Keep scrolling</span>
+      </div>
+      <div class="etq-track" id="etqTrack">
+      <article class="etq-card" data-i="0" aria-label="How you are read">
+        <span class="etq-num" aria-hidden="true">01</span>
+        <div class="etq-cbody">
+          <span class="etq-tab">How you are read</span>
+          <h3 class="etq-rule">Read the place before you fly it</h3>
+          <p>You may be seen as progress, as wealth, or with suspicion: spying, drones, something military. None of that is unreasonable given the history. Read up on the communities, the security picture and the recent past of anywhere you are heading before you get there.</p>
+          <figure class="etq-quote">
+            <blockquote>Last year, we got arrested by 100 people with spears and stones.</blockquote>
+            <figcaption>Nikolay Yotov <a href="../episodes/pre-pwc-kenya-nikolay-yotov.html#c2">Kenya episode, 04:21</a></figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="etq-card" data-i="1" aria-label="The approach that works">
+        <span class="etq-num" aria-hidden="true">02</span>
+        <div class="etq-cbody">
+          <span class="etq-tab">The approach that works</span>
+          <h3 class="etq-rule">Greet everyone, explain everything</h3>
+          <p>Be open, enthusiastic and positive, and greet everyone, including the unsmiling ones. Ask locally about security, wild animals and access, because that knowledge is not in any guidebook. Explain your plan clearly: misunderstandings about where you intend to take off are the single most common problem.</p>
+          <p>Hiring porters is usually welcome. In some communities men will not take portering work, and offering a guiding or security role instead is the respectful move rather than pressing the point.</p>
+        </div>
+      </article>
+      <article class="etq-card" data-i="2" aria-label="Prices and tipping">
+        <span class="etq-num" aria-hidden="true">03</span>
+        <div class="etq-cbody">
+          <span class="etq-tab">Prices and tipping</span>
+          <h3 class="etq-rule">Agree the price first</h3>
+          <p>Agree a price in advance, even when someone waves it off. Numbers get misheard, and 15, 50 and 500 are easy to confuse in a second language on a windy hillside.</p>
+          <p>Tip 20 to 50 per cent for good work, and nothing extra for a rip off. Fairness runs both ways. Pay for the things you cannot see, like a path an ancestor cut or the fact that nothing with teeth came near you. Hire from the community closest to the site, or you create jealousy you will not be around to resolve.</p>
+        </div>
+      </article>
+      <article class="etq-card" data-i="3" aria-label="When you are asked for money">
+        <span class="etq-num" aria-hidden="true">04</span>
+        <div class="etq-cbody">
+          <span class="etq-tab">When you are asked for money</span>
+          <h3 class="etq-rule">Give work, not cash</h3>
+          <p>Giving cash directly tends to make things worse for the pilot behind you. Share food or buy someone a meal instead. Saying plainly that it would not be fair to give to one person and not the rest is usually understood and accepted.</p>
+          <p>Better still, give work as a porter or guide, or donate to a local organisation. Avoid handing out your phone number or email, because it turns into requests for money later.</p>
+          <figure class="etq-quote">
+            <blockquote>Wherever you land, some guy with motorbike comes and offers you lift. We want people to benefit from this, to earn some money from this.</blockquote>
+            <figcaption>Nikolay Yotov <a href="../episodes/pre-pwc-kenya-nikolay-yotov.html#c9">Kenya episode, 36:23</a></figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="etq-card" data-i="4" aria-label="Landing protocol">
+        <span class="etq-num" aria-hidden="true">05</span>
+        <div class="etq-cbody">
+          <span class="etq-tab">Landing protocol</span>
+          <h3 class="etq-rule">Land away from crowds</h3>
+          <p>Avoid schools, markets and crowds. Land somewhere remote but reachable by a vehicle. Pack fast with a quick pack sack, then deal with yourself and send your location; repack properly later.</p>
+          <p>People will arrive, and quickly. Greet the children with enthusiasm, find the elders or the leader, and ask them to help keep a clear space. Fly with live tracking and a driver you trust.</p>
+          <figure class="etq-quote">
+            <blockquote>The motorbike crashed the lady. And then who is guilty? The paragliding pilot is guilty.</blockquote>
+            <figcaption>Nikolay Yotov <a href="../episodes/pre-pwc-kenya-nikolay-yotov.html#c9">Kenya episode, 46:06</a></figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="etq-card" data-i="5" aria-label="Staying and moving">
+        <span class="etq-num" aria-hidden="true">06</span>
+        <div class="etq-cbody">
+          <span class="etq-tab">Staying and moving</span>
+          <h3 class="etq-rule">Follow your host's lead</h3>
+          <p>In remote areas you will camp or stay in somebody's house. Take your shoes off, wash your feet, compliment the food, and follow your host's lead on who it is appropriate to address. Pay discreetly, often to the woman running the household, and expect around half the price of a standard hotel.</p>
+          <p>Public transport is crowded and good fun, and your glider bag may double the fare, which is fair. Hitching, offer close to the bus fare and do not haggle below it; going lower is taken as an insult, not a bargain. A hired driver who negotiates, handles gear, keeps crowds back and will drive at night to fetch you is worth 50 to 100 dollars at the end of the trip. Avoid driving at night yourself. If you land a long way out, sleep where you landed.</p>
+        </div>
+      </article>
+      <article class="etq-card" data-i="6" aria-label="Permissions and officials">
+        <span class="etq-num" aria-hidden="true">07</span>
+        <div class="etq-cbody">
+          <span class="etq-tab">Permissions and officials</span>
+          <h3 class="etq-rule">Ask when it matters</h3>
+          <p>The old rule is that it is better to say sorry than to ask permission, and paragliding is not explicitly illegal where the law does not describe it at all. That logic runs out in tense regions, where being arrested is a real outcome and official permission saves a great deal of time.</p>
+          <p><strong>Kenya is the easy case.</strong> The tourism sector is used to foreigners and no special permits are needed for what we do on this tour.</p>
+        </div>
+      </article>
+      <article class="etq-card is-last" data-i="7" aria-label="You are the precedent">
+        <span class="etq-num" aria-hidden="true">08</span>
+        <div class="etq-cbody">
+          <span class="etq-tab">You are the precedent</span>
+          <h3 class="etq-rule">You are the precedent</h3>
+          <p>There are few enough of us flying here that you are not an anonymous tourist. You are the paraglider pilot that community has met, and possibly the only one they will meet this year. What you do sets the terms for everyone who comes next.</p>
+        </div>
+      </article>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -3531,6 +3733,71 @@
   });
 
   paint(false);
+})();
+</script>
+
+<script>
+/* Flying Etiquette: vertical scroll drives the sideways run of rules. */
+(function(){
+  var pin = document.getElementById('etqPin');
+  if(!pin) return;
+  var track = document.getElementById('etqTrack'),
+      cards = [].slice.call(track.querySelectorAll('.etq-card')),
+      dots  = [].slice.call(document.querySelectorAll('#etqDots .etq-dot')),
+      now   = document.getElementById('etqNow'),
+      hint  = document.getElementById('etqHint'),
+      split = document.querySelector('.etq-split'),
+      n     = cards.length,
+      flat  = window.matchMedia('(max-width:860px),(prefers-reduced-motion:reduce)'),
+      cur   = -1, ticking = false;
+
+  function paint(i){
+    if(i === cur) return;
+    cur = i;
+    cards.forEach(function(c,k){ c.classList.toggle('is-on', k === i); });
+    dots.forEach(function(d,k){
+      d.classList.toggle('is-on', k === i);
+      d.classList.toggle('is-past', k < i);
+    });
+    if(now) now.textContent = ('0' + (i+1)).slice(-2);
+    if(hint) hint.classList.toggle('is-gone', i > 0);
+  }
+
+  function frame(){
+    ticking = false;
+    if(flat.matches){ track.style.transform = ''; return; }
+    var r = pin.getBoundingClientRect(),
+        travel = pin.offsetHeight - window.innerHeight,
+        p = travel > 0 ? Math.min(1, Math.max(0, -r.top / travel)) : 0,
+        live = r.top <= 0 && r.bottom >= window.innerHeight;
+    pin.classList.toggle('is-live', live);
+    track.style.transform = 'translate3d(' + (-p * (n-1) * 100) + '%,0,0)';
+    paint(Math.round(p * (n-1)));
+  }
+
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(frame); } }
+
+  addEventListener('scroll', onScroll, {passive:true});
+  addEventListener('resize', onScroll);
+  if(flat.addEventListener) flat.addEventListener('change', onScroll);
+
+  dots.forEach(function(d){
+    d.addEventListener('click', function(){
+      var i = +d.dataset.go;
+      if(flat.matches){ cards[i].scrollIntoView({behavior:'smooth', block:'start'}); return; }
+      var travel = pin.offsetHeight - window.innerHeight,
+          top = pin.getBoundingClientRect().top + scrollY + (i/(n-1)) * travel;
+      scrollTo({top: Math.round(top), behavior:'smooth'});
+    });
+  });
+
+  if(split && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es,o){
+      es.forEach(function(e){ if(e.isIntersecting){ split.classList.add('is-in'); o.disconnect(); } });
+    },{threshold:.35}).observe(split);
+  } else if(split){ split.classList.add('is-in'); }
+
+  paint(0); frame();
 })();
 </script>
 </body>
