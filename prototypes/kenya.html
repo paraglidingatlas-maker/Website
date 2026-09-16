@@ -647,6 +647,14 @@
   font-family:var(--font-body);font-size:.82rem;color:var(--gray);
   border-bottom:1px solid transparent;transition:color .2s ease,border-color .2s ease;}
 .kkit-reset:hover{color:var(--white);border-color:var(--edge-hi);}
+.kkit-actions{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;}
+.kkit-dl{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;
+  font-family:var(--font-body);font-size:.82rem;color:var(--gray-light);text-decoration:none;
+  border-bottom:1px solid transparent;transition:color .2s ease,border-color .2s ease;}
+.kkit-dl:hover{color:var(--orange);border-color:color-mix(in srgb, var(--orange) 45%, transparent);}
+.kkit-dl svg{flex:0 0 auto;width:13px;height:13px;stroke:currentColor;fill:none;
+  stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+.kkit-dl small{color:var(--gray);font-size:.74rem;}
 
 .kkit-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));
   gap:2.4rem 2rem;}
@@ -2767,7 +2775,13 @@
 
   <div class="kkit-bar">
     <span class="kkit-count"><b id="kkitDone">0</b> of 26 packed</span>
-    <button type="button" class="kkit-reset" id="kkitReset">Clear the list</button>
+    <span class="kkit-actions">
+      <a class="kkit-dl" href="../assets/destinations/kenya/kenya-packing-checklist.pdf" download>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+        Editable PDF <small>26 items, tick or print</small>
+      </a>
+      <button type="button" class="kkit-reset" id="kkitReset">Clear the list</button>
+    </span>
   </div>
 
   <div class="kkit-groups">
