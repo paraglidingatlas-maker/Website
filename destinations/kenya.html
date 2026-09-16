@@ -674,8 +674,8 @@
 .kkit-gchev::before{left:0;transform:rotate(45deg);}
 .kkit-gchev::after{right:0;transform:rotate(-45deg);}
 .kkit-ghead:hover .kkit-gchev::before,.kkit-ghead:hover .kkit-gchev::after{background:var(--white);}
-.kkit-ghead[aria-expanded="false"] .kkit-gchev::before{transform:rotate(-45deg);}
-.kkit-ghead[aria-expanded="false"] .kkit-gchev::after{transform:rotate(45deg);}
+.kkit-ghead[aria-expanded="true"] .kkit-gchev::before{transform:rotate(-45deg);}
+.kkit-ghead[aria-expanded="true"] .kkit-gchev::after{transform:rotate(45deg);}
 .kkit-gbody{overflow:hidden;transition:height .3s ease;}
 .kkit-gblurb{color:var(--gray);font-size:.88rem;line-height:1.65;margin:.6rem 0 1rem;}
 
@@ -1360,34 +1360,27 @@
 }
 
 
-/* the line planted high up, pointing down to Flying Etiquette */
-.kplant{display:flex;align-items:center;gap:clamp(.9rem,3vw,2.2rem);
-  min-height:64px;padding:1.05rem clamp(1.2rem,5vw,4rem);
-  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
-  text-decoration:none;color:inherit;
-  transition:background .3s ease,border-color .3s ease;}
-.kplant:hover{background:var(--wash);border-color:var(--live);}
-.kplant:focus-visible{outline:2px solid var(--orange);outline-offset:-4px;}
-.kplant-k{flex:0 0 auto;font-family:var(--font-body);font-size:.64rem;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--orange);}
-.kplant-l{flex:1 1 auto;font-family:var(--font-display);font-weight:500;
-  font-size:clamp(.94rem,1.5vw,1.14rem);line-height:1.45;color:var(--gray-light);
-  transition:color .3s ease;}
-.kplant:hover .kplant-l{color:var(--white);}
-.kplant-go{flex:0 0 auto;display:flex;}
-.kplant-go svg{width:18px;height:18px;stroke:var(--gray);fill:none;stroke-width:1.5;
-  stroke-linecap:round;stroke-linejoin:round;
-  transition:stroke .3s ease,transform .3s cubic-bezier(.2,.7,.2,1);}
-.kplant:hover .kplant-go svg{stroke:var(--orange);transform:translateY(3px);}
-@media (max-width:640px){
-  .kplant{flex-wrap:wrap;gap:.5rem 1rem;padding:1.1rem 1.2rem;}
-  .kplant-l{flex:1 1 100%;order:3;}
-  .kplant-go{margin-left:auto;}
-}
-@media (prefers-reduced-motion:reduce){
-  .kplant,.kplant-l,.kplant-go svg{transition:none;}
-  .kplant:hover .kplant-go svg{transform:none;}
-}
+
+
+.etq .etq-body[hidden]{display:none;}
+.etq .etq-diy{display:inline-block;vertical-align:.32em;margin-left:.6rem;
+  font-family:var(--font-body);font-size:.58rem;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--orange);
+  border:1px solid color-mix(in srgb, var(--orange) 40%, transparent);
+  border-radius:2px;padding:.18rem .4rem;}
+.etq .etq-diy-note{max-width:60ch;}
+.etq .etq-toggle{display:inline-flex;align-items:center;gap:.7rem;min-height:44px;
+  margin:.6rem 0 0;padding:.6rem 1.15rem;cursor:pointer;
+  background:none;border:1px solid var(--edge);border-radius:999px;
+  font-family:var(--font-body);font-size:.88rem;color:var(--gray-light);
+  transition:border-color .25s ease,color .25s ease,background .25s ease;}
+.etq .etq-toggle:hover{border-color:var(--live);color:var(--white);background:var(--wash);}
+.etq .etq-toggle:focus-visible{outline:2px solid var(--orange);outline-offset:3px;}
+.etq .etq-toggle-chev{width:7px;height:7px;border-right:1.5px solid var(--orange);
+  border-bottom:1.5px solid var(--orange);transform:rotate(45deg) translate(-2px,-2px);
+  transition:transform .25s ease;}
+.etq .etq-toggle[aria-expanded="true"] .etq-toggle-chev{transform:rotate(225deg) translate(-2px,-2px);}
+@media (prefers-reduced-motion:reduce){ .etq .etq-toggle,.etq .etq-toggle-chev{transition:none;} }
 
 </style>
 <!-- site-schema -->
@@ -1623,11 +1616,6 @@
   </div>
 </section>
 
-<a class="kplant" href="#ground">
-  <span class="kplant-k">Flying Etiquette</span>
-  <span class="kplant-l">How you behave on the ground decides what the next pilot is allowed to do. Eight rules, at the foot of this page.</span>
-  <span class="kplant-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v15m0 0 5-5m-5 5-5-5"/></svg></span>
-</a>
 
 <div class="dst-shell">
 <div class="dst-main">
@@ -3161,17 +3149,25 @@
 
 <section class="dst-sec etq" id="ground">
   <div class="etq-open">
+    <div class="dst-head etq-head">
+      <span class="kicker">Flying Etiquette</span>
+      <h2>Flying in Africa, and how to do it well <span class="etq-diy">DIY</span></h2>
+      <p class="etq-diy-note">For pilots going out there under their own steam rather than on our tour. None of it is
+         specific to us, and all of it is worth reading before you book anything, with anyone.</p>
+      <p>Paragliding is still new across much of the continent, and how visiting pilots behave shapes what the next ones are allowed to do. This is distilled from thirteen years of Nikolay Yotov's exploration in Ethiopia and Kenya. He is also the guest on the <a href="../episodes/pre-pwc-kenya-nikolay-yotov.html">Kenya episode</a>, if you would rather hear it in his own words.</p>
+    </div>
+    <button type="button" class="etq-toggle" id="etqToggle" aria-expanded="false" aria-controls="etqBody">
+      <span class="etq-toggle-txt">Read the eight rules</span>
+      <span class="etq-toggle-chev" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="etq-body" id="etqBody" hidden>
     <div class="etq-split" aria-hidden="true">
       <div class="etq-half etq-a"><span class="etq-lab">What you see</span><p>A green field, a clean wind line, somewhere safe to put it down.</p></div>
       <div class="etq-seam"></div>
       <div class="etq-half etq-b"><span class="etq-lab">What they see</span><p>A stranger dropping out of the sky onto their land, unannounced.</p></div>
     </div>
-    <div class="dst-head etq-head">
-      <span class="kicker">Flying Etiquette</span>
-      <h2>Flying in Africa, and how to do it well</h2>
-      <p>Paragliding is still new across much of the continent, and how visiting pilots behave shapes what the next ones are allowed to do. This is distilled from thirteen years of Nikolay Yotov's exploration in Ethiopia and Kenya. He is also the guest on the <a href="../episodes/pre-pwc-kenya-nikolay-yotov.html">Kenya episode</a>, if you would rather hear it in his own words.</p>
-    </div>
-  </div>
 
   <div class="etq-pin" id="etqPin" style="--n:8">
     <div class="etq-stage">
@@ -3274,6 +3270,7 @@
       </article>
       </div>
     </div>
+  </div>
   </div>
 </section>
 
@@ -3664,12 +3661,11 @@
 </script>
 
 <script>
-/* Packing kit: ticks, and groups that fold themselves up once finished.
+/* Packing kit: ticks, and groups that open on demand.
  *
- * The rule is deliberate. Nothing is hidden until it has been dealt with:
- * a group only collapses when every item in it is ticked, so the list gets
- * shorter as you pack rather than starting as four closed labels. Opening
- * a finished group by hand keeps it open until it is emptied and refilled.
+ * Groups start closed so the section reads as five headings rather than a
+ * wall of tiles. Open one to work through it; finish it and it folds itself
+ * back up, so the list shortens as you pack.
  *
  * Heights are animated in JS because a div cannot transition from auto.
  * Storage is wrapped because Safari private mode throws on setItem; without
@@ -3687,7 +3683,7 @@
   try{ localStorage.setItem('pga.t','1'); localStorage.removeItem('pga.t'); store = localStorage; }catch(e){}
   function load(){ if(!store) return {}; try{ return JSON.parse(store.getItem(KEY) || '{}'); }catch(e){ return {}; } }
   function save(){ if(!store) return; try{ store.setItem(KEY, JSON.stringify(state)); }catch(e){} }
-  var state = load(), held = {};   // held: groups the reader opened by hand
+  var state = load(), shown = {}, wasFull = {};   // shown: groups the reader has opened
 
   function tiles(g){ return [].slice.call(g.querySelectorAll('.kkit-item')); }
   function packed(g){ return tiles(g).filter(function(b){ return b.getAttribute('aria-pressed') === 'true'; }).length; }
@@ -3719,17 +3715,17 @@
       g.querySelector('.kkit-gtally b').textContent = n;
       g.classList.toggle('is-done', full);
       done += n;
-      var want = !(full && !held[i]);
-      if(want !== isOpen(g)) setOpen(g, want, animate);
-      if(!full) held[i] = false;
+      if(full && !wasFull[i] && shown[i]) shown[i] = false;   // folds itself once finished
+      wasFull[i] = full;
+      if(!!shown[i] !== isOpen(g)) setOpen(g, !!shown[i], animate);
     });
     if(out) out.textContent = done;
     if(hide){
       var anyFull = groups.some(function(g){ return packed(g) === tiles(g).length; });
       hide.hidden = !anyFull;
-      var anyHeldOpen = groups.some(function(g,i){ return packed(g) === tiles(g).length && held[i]; });
-      hide.setAttribute('aria-pressed', anyHeldOpen ? 'false' : 'true');
-      hide.textContent = anyHeldOpen ? 'Hide what is packed' : 'Show what is packed';
+      var anyFullOpen = groups.some(function(g,i){ return packed(g) === tiles(g).length && shown[i]; });
+      hide.setAttribute('aria-pressed', anyFullOpen ? 'false' : 'true');
+      hide.textContent = anyFullOpen ? 'Hide what is packed' : 'Show what is packed';
     }
   }
 
@@ -3746,21 +3742,19 @@
 
   groups.forEach(function(g, i){
     g.querySelector('.kkit-ghead').addEventListener('click', function(){
-      var open = isOpen(g);
-      held[i] = !open;
-      setOpen(g, !open, true);
-      if(hide) hide.setAttribute('aria-pressed', 'false');
+      shown[i] = !isOpen(g);
+      paint(true);
     });
   });
 
   if(reset) reset.addEventListener('click', function(){
     [].forEach.call(items, function(b){ b.setAttribute('aria-pressed','false'); });
-    state = {}; held = {}; save(); paint(true);
+    state = {}; shown = {}; wasFull = {}; save(); paint(true);
   });
 
   if(hide) hide.addEventListener('click', function(){
     var collapse = hide.getAttribute('aria-pressed') !== 'true';
-    groups.forEach(function(g, i){ if(packed(g) === tiles(g).length) held[i] = !collapse; });
+    groups.forEach(function(g, i){ if(packed(g) === tiles(g).length) shown[i] = !collapse; });
     paint(true);
   });
 
@@ -3828,6 +3822,19 @@
       es.forEach(function(e){ if(e.isIntersecting){ split.classList.add('is-in'); o.disconnect(); } });
     },{threshold:.35}).observe(split);
   } else if(split){ split.classList.add('is-in'); }
+
+  var toggle = document.getElementById('etqToggle'),
+      body   = document.getElementById('etqBody'),
+      txt    = toggle && toggle.querySelector('.etq-toggle-txt');
+  if(toggle && body){
+    toggle.addEventListener('click', function(){
+      var open = body.hidden;
+      body.hidden = !open;
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if(txt) txt.textContent = open ? 'Hide the rules' : 'Read the eight rules';
+      if(open){ paint(0); onScroll(); }
+    });
+  }
 
   paint(0); frame();
 })();
