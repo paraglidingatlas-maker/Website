@@ -738,16 +738,12 @@
  * The three questions that carry money or risk (skill, insurance,
  * cancellation) get an orange spine, so the eye lands on those first
  * instead of on whichever happens to be top.
- * Palette runs one step warmer than the rest of the page. Agreed with the
- * owner: the FAQ is a room of its own, not the site's personality.
+ * Background is the page background, no wash. Orange is confined to the
+ * numbers, the marks and the three spines.
  * Heights animate in JS because <details> cannot transition from
  * display:none. No JS means no animation, content still opens.
  * -------------------------------------------------------------------- */
 .kfaq.dst-sec{position:relative;}
-.kfaq.dst-sec::before{content:"";position:absolute;inset:0;left:calc(50% - 50vw);width:100vw;
-  background:radial-gradient(110% 70% at 72% 0%,
-    color-mix(in srgb, var(--orange) 7%, transparent) 0%, transparent 60%);
-  pointer-events:none;z-index:0;}
 .kfaq .kfaq-wrap{position:relative;z-index:1;display:grid;
   grid-template-columns:minmax(0,19rem) minmax(0,1fr);
   gap:clamp(2rem,5vw,4.5rem);align-items:start;}
@@ -764,11 +760,11 @@
 
 .kfaq .kfaq-list{display:flex;flex-direction:column;gap:.65rem;}
 .kfaq .kfaq-item{position:relative;border:1px solid var(--edge);border-radius:14px;overflow:hidden;
-  background:color-mix(in srgb, var(--card) 94%, var(--orange) 2%);
+  background:var(--card);
   transition:transform .25s ease,border-color .25s ease,background .25s ease;}
 .kfaq .kfaq-item:hover{transform:translateY(-2px);
   border-color:color-mix(in srgb, var(--orange) 38%, var(--edge));}
-.kfaq .kfaq-item[open]{background:color-mix(in srgb, var(--card) 88%, var(--orange) 4%);
+.kfaq .kfaq-item[open]{background:color-mix(in srgb, var(--card) 94%, var(--white) 3%);
   border-color:color-mix(in srgb, var(--orange) 28%, var(--edge));}
 .kfaq .kfaq-item.is-key::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;z-index:2;
   background:linear-gradient(180deg, var(--orange),
@@ -1149,49 +1145,6 @@
 .kreal-open .dst-lede{max-width:34rem;margin:1.6rem 0 0;}
 .kreal-rest{color:var(--gray-light);line-height:1.8;margin:1.4rem 0 0;max-width:34rem;}
 @media (max-width:820px){.kreal-open{grid-template-columns:1fr;}}
-
-
-/* ---------- CONTOURS UNDER THE REFERENCE SECTIONS ==========================
-   The bottom third of the page, FAQ through On the Ground, sat on flat
-   background while everything above it had weather or photographs. Contour
-   lines are the one piece of the owner's icon sheet that speaks the page's
-   own language: cartographic, line based, a sibling of the map plate and the
-   graticule rather than safari decoration.
-
-   Delivered as a mask so the colour comes from the token and can never drift
-   from the palette. A mask reads the ALPHA channel, so the file carries its
-   shape in alpha, not in grey: a greyscale file has no alpha, masks nothing
-   and paints a solid rectangle. The fade in and out is baked into the file,
-   so no mask compositing is needed.
-
-   The bold contour forms are used rather than the fine hatching, because at
-   this opacity hairlines are invisible at any size. Alpha is quantised to a
-   few levels, which is invisible under a wash and halves the file.
-
-   The mask covers rather than stretches, so the contours keep their shape at
-   every viewport and are cropped instead of squashed. That means the fade
-   cannot be baked into the file, because cover crops it away, so ::after
-   carries it as a gradient in the page colour, painted over the contours and
-   under the content.
-
-   Guarded by @supports: without mask support the block never paints, rather
-   than filling the section with a white rectangle. */
-.kref{position:relative;}
-.kref > *{position:relative;z-index:1;}
-@supports ((-webkit-mask-image:url(x)) or (mask-image:url(x))){
-  .kref::before{content:"";position:absolute;z-index:0;top:0;bottom:0;
-    left:calc(50% - 50vw);width:100vw;pointer-events:none;
-    background:var(--white);opacity:.12;
-    -webkit-mask-image:url(../assets/destinations/kenya/contours.webp);
-    mask-image:url(../assets/destinations/kenya/contours.webp);
-    -webkit-mask-size:cover;mask-size:cover;
-    -webkit-mask-position:center top;mask-position:center top;
-    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;}
-  .kref::after{content:"";position:absolute;z-index:0;top:0;bottom:0;
-    left:calc(50% - 50vw);width:100vw;pointer-events:none;
-    background:linear-gradient(180deg,var(--bg) 0,rgba(20,21,25,0) 14%,
-      rgba(20,21,25,0) 84%,var(--bg) 100%);}
-}
 
 </style>
 <!-- site-schema -->
