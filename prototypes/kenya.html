@@ -622,6 +622,71 @@
   line-height:1.75;font-size:.97rem;}
 .dst-reqs li::before{content:"";position:absolute;left:0;top:.62em;width:.5rem;height:1px;background:var(--orange);}
 
+/* ---- KIT ---------------------------------------------------------------
+ * Packing was four accordions of prose. It is the one part of the page
+ * someone uses as a tool, the week before they fly, so it is laid out flat
+ * as a kit: every item is a tile you can tick, state kept in localStorage
+ * per item so a later addition does not invalidate what is already ticked.
+ * The three suitability lines are pulled out above as their own block,
+ * because they decide whether the trip is for you at all and were reading
+ * as preamble to a packing list.
+ * ---------------------------------------------------------------------- */
+.kkit-gate{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);margin:0 0 3.2rem;}
+.kkit-gate div{background:var(--bg);padding:1.35rem 1.4rem;}
+.kkit-gate b{display:block;font-family:var(--font-display);font-weight:600;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin:0 0 .5rem;}
+.kkit-gate p{margin:0;color:var(--gray-light);font-size:.95rem;line-height:1.7;}
+
+.kkit-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  gap:.8rem 1.2rem;margin:0 0 1.4rem;}
+.kkit-count{font-family:var(--font-display);font-size:.8rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gray);}
+.kkit-count b{color:var(--orange);font-weight:600;}
+.kkit-reset{background:none;border:0;padding:.5rem 0;min-height:44px;cursor:pointer;
+  font-family:var(--font-body);font-size:.82rem;color:var(--gray);
+  border-bottom:1px solid transparent;transition:color .2s ease,border-color .2s ease;}
+.kkit-reset:hover{color:var(--white);border-color:var(--edge-hi);}
+
+.kkit-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));
+  gap:2.4rem 2rem;}
+.kkit-group h3{font-family:var(--font-display);font-weight:600;color:var(--white);
+  font-size:1.02rem;margin:0 0 .25rem;}
+.kkit-group h3 span{color:var(--gray);font-weight:400;font-size:.8rem;margin-left:.5rem;}
+.kkit-group > p{color:var(--gray);font-size:.88rem;line-height:1.65;margin:0 0 1rem;}
+.kkit-items{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.4rem;}
+
+.kkit-item{display:flex;align-items:flex-start;gap:.75rem;width:100%;text-align:left;
+  min-height:44px;padding:.62rem .85rem;cursor:pointer;
+  background:var(--card);border:1px solid var(--edge);border-radius:10px;
+  font-family:var(--font-body);font-size:.93rem;line-height:1.5;color:var(--gray-light);
+  transition:border-color .2s ease,color .2s ease,background .2s ease;}
+.kkit-item:hover{border-color:var(--edge-hi);color:var(--white);}
+.kkit-item:focus-visible{outline:2px solid var(--orange);outline-offset:2px;}
+.kkit-box{flex:0 0 auto;position:relative;width:16px;height:16px;margin-top:.18em;
+  border:1px solid var(--gray);border-radius:4px;transition:border-color .2s ease,background .2s ease;}
+.kkit-box::after{content:"";position:absolute;left:4px;top:.5px;width:5px;height:9px;
+  border:solid var(--bg);border-width:0 1.5px 1.5px 0;transform:rotate(45deg) scale(0);
+  transform-origin:center;transition:transform .18s ease;}
+.kkit-item[aria-pressed="true"]{border-color:color-mix(in srgb, var(--orange) 30%, var(--edge));}
+.kkit-item[aria-pressed="true"] .kkit-box{background:var(--orange);border-color:var(--orange);}
+.kkit-item[aria-pressed="true"] .kkit-box::after{transform:rotate(45deg) scale(1);}
+.kkit-item[aria-pressed="true"] .kkit-txt{color:var(--gray);text-decoration:line-through;
+  text-decoration-color:color-mix(in srgb, var(--gray) 60%, transparent);}
+.kkit-note{display:block;color:var(--gray);font-size:.82rem;line-height:1.5;margin-top:.15rem;}
+
+.kkit-tail{color:var(--gray-light);font-size:.95rem;line-height:1.8;margin:2.6rem 0 0;max-width:62ch;}
+.kkit-tail b{color:var(--white);font-weight:500;}
+
+@media (max-width:640px){
+  .kkit-groups{grid-template-columns:1fr;gap:2rem;}
+  .kkit-gate{margin-bottom:2.4rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  .kkit-item,.kkit-box,.kkit-box::after{transition:none;}
+}
+
+
 /* ---------- three-up prose ---------- */
 .dst-why{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:2.2rem;}
 .dst-why h3{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.08rem;margin:0 0 .7rem;}
@@ -2693,17 +2758,150 @@
     <h2>Before you fly, and what to bring</h2>
     <p>Terrain runs from 1,000 to 2,000m. It can be hot in the lowlands and cold at height, so pack for both.</p>
   </div>
-  <ul class="dst-reqs">
-    <li>Takeoffs sit between 1,000 and 2,000m, and you can expect to climb to 4,000m, where it is cold.</li>
-    <li>Kenyan conditions are stronger than most home sites. Bring gear you trust.</li>
-    <li>Helicopter rescue and good healthcare are both available.</li>
-  </ul>
-  <div class="dst-accs">
-    <details class="dst-acc"><summary><h3>Clothing</h3></summary><div class="dst-acc-body"><p>Long trousers and long sleeves against thorns, sunburn and mosquitoes. Comfortable hiking shoes. Two pairs each of socks, underwear and t-shirts. Flying gloves, because it gets cold at 4,000m. Sunscreen and sunglasses. A warm flying jacket. A buff for the dusty roads. Ear plugs for noisy hotels.</p></div></details>
-    <details class="dst-acc"><summary><h3>Equipment</h3></summary><div class="dst-acc-body"><p>A wing you know well and a harness with sufficient back or airbag protection. Spare lines and ripstop tape, because takeoffs and landings can be bushy and thorny. A 2m radio on 144 to 146 MHz from Yaesu, Icom or Kenwood; avoid Baofeng, because reliable communication can save your life. Powerbank and cables, a headlamp, pepper spray against dogs or wild animals, and a pocket knife.</p></div></details>
-    <details class="dst-acc"><summary><h3>Health</h3></summary><div class="dst-acc-body"><p>No mandatory vaccines for travellers from Europe or America. Malaria risk is low in the dry season of January and February, especially in the highlands above 2,000m; prevention is best, with shoes, high socks, long trousers and long sleeves, and pre-medication can be bought locally. Bring DEET repellent. Hotel beds usually have nets.</p></div></details>
-    <details class="dst-acc"><summary><h3>Stomach and healthcare</h3></summary><div class="dst-acc-body"><p>Local food can upset tender Western stomachs. FloraNorm, a Saccharomyces boulardii probiotic, is available locally. Kenya has good healthcare and helicopter rescue is available.</p></div></details>
+
+  <div class="kkit-gate">
+    <div><b>Altitude</b><p>Takeoffs sit between 1,000 and 2,000m, and you can expect to climb to 4,000m, where it is cold.</p></div>
+    <div><b>Conditions</b><p>Kenyan conditions are stronger than most home sites. Bring gear you trust.</p></div>
+    <div><b>If it goes wrong</b><p>Helicopter rescue and good healthcare are both available.</p></div>
   </div>
+
+  <div class="kkit-bar">
+    <span class="kkit-count"><b id="kkitDone">0</b> of 26 packed</span>
+    <button type="button" class="kkit-reset" id="kkitReset">Clear the list</button>
+  </div>
+
+  <div class="kkit-groups">
+      <div class="kkit-group">
+        <h3>Clothing <span>11</span></h3>
+        <p>Thorns, sun and mosquitoes at the bottom, cold at the top.</p>
+        <ul class="kkit-items">
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i0">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Long trousers<span class="kkit-note">Against thorns, sunburn and mosquitoes</span></span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i1">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Long sleeved shirts</span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i2">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Hiking shoes<span class="kkit-note">Comfortable, already broken in</span></span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i3">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Socks, two pairs</span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i4">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Underwear, two pairs</span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i5">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">T-shirts, two</span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i6">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Flying gloves<span class="kkit-note">It is cold at 4,000m</span></span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i7">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Warm flying jacket</span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i8">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Sunscreen and sunglasses</span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i9">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Buff<span class="kkit-note">For the dusty roads</span></span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i10">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Ear plugs<span class="kkit-note">Hotels can be noisy</span></span>
+        </button></li>
+        </ul>
+      </div>
+      <div class="kkit-group">
+        <h3>Equipment <span>9</span></h3>
+        <p>Conditions here are stronger than most home sites. Bring gear you trust.</p>
+        <ul class="kkit-items">
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i0">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Wing you know well</span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i1">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Harness with back or airbag protection</span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i2">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Spare lines</span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i3">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Ripstop tape<span class="kkit-note">Takeoffs and landings can be bushy and thorny</span></span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i4">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">2m radio, 144 to 146 MHz<span class="kkit-note">Yaesu, Icom or Kenwood. Avoid Baofeng, reliable communication can save your life</span></span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i5">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Powerbank and cables</span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i6">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Headlamp</span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i7">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Pepper spray<span class="kkit-note">Against dogs or wild animals</span></span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i8">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Pocket knife</span>
+        </button></li>
+        </ul>
+      </div>
+      <div class="kkit-group">
+        <h3>Health <span>4</span></h3>
+        <p>No mandatory vaccines for travellers from Europe or America.</p>
+        <ul class="kkit-items">
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i0">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">DEET repellent</span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i1">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Malaria pre-medication<span class="kkit-note">Low risk in the dry season above 2,000m. Can be bought locally</span></span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i2">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">High socks and long layers<span class="kkit-note">Prevention beats treatment</span></span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i3">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Mosquito net<span class="kkit-note">Hotel beds usually have one</span></span>
+        </button></li>
+        </ul>
+      </div>
+      <div class="kkit-group">
+        <h3>Stomach <span>2</span></h3>
+        <p>Local food can upset tender Western stomachs.</p>
+        <ul class="kkit-items">
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g3i0">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">FloraNorm probiotic<span class="kkit-note">Saccharomyces boulardii, available locally</span></span>
+        </button></li>
+        <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g3i1">
+          <span class="kkit-box" aria-hidden="true"></span>
+          <span class="kkit-txt">Rehydration salts</span>
+        </button></li>
+        </ul>
+      </div>
+  </div>
+
+  <p class="kkit-tail">Ticking is saved on this device, so you can come back to it the night before you fly. <b>Nothing here is sent anywhere.</b></p>
 </section>
 
 <section class="dst-sec is-loud" id="ground">
@@ -3116,6 +3314,45 @@
       }
     });
   });
+})();
+</script>
+
+<script>
+/* Packing list ticks. Stored per item id under one key, so adding an item
+ * later does not invalidate what somebody has already ticked. Storage is
+ * wrapped because Safari private mode throws on setItem: if it is not
+ * available the tiles still toggle for the session. */
+(function(){
+  var items = document.querySelectorAll('.kkit-item');
+  if(!items.length) return;
+  var out   = document.getElementById('kkitDone'),
+      reset = document.getElementById('kkitReset'),
+      KEY   = 'pga.kenya.kit',
+      store = null;
+  try{ localStorage.setItem('pga.t','1'); localStorage.removeItem('pga.t'); store = localStorage; }catch(e){}
+  function load(){ if(!store) return {}; try{ return JSON.parse(store.getItem(KEY) || '{}'); }catch(e){ return {}; } }
+  function save(){ if(!store) return; try{ store.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+  var state = load();
+  function count(){
+    var n = 0, i;
+    for(i=0;i<items.length;i++){ if(items[i].getAttribute('aria-pressed') === 'true') n++; }
+    if(out) out.textContent = n;
+  }
+  Array.prototype.forEach.call(items, function(b){
+    var id = b.getAttribute('data-kit');
+    if(state[id]) b.setAttribute('aria-pressed','true');
+    b.addEventListener('click', function(){
+      var on = b.getAttribute('aria-pressed') === 'true';
+      b.setAttribute('aria-pressed', on ? 'false' : 'true');
+      if(on){ delete state[id]; } else { state[id] = 1; }
+      save(); count();
+    });
+  });
+  if(reset) reset.addEventListener('click', function(){
+    Array.prototype.forEach.call(items, function(b){ b.setAttribute('aria-pressed','false'); });
+    state = {}; save(); count();
+  });
+  count();
 })();
 </script>
 </body>
