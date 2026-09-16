@@ -727,6 +727,62 @@ def kenya_overview(pg, base):
     pg.set_viewport_size({"width": 1400, "height": 900})
 
 
+def kenya_dates(pg, base):
+    """Season packages and Before You Book.
+
+    The band places the two tours by percentage of a 121 day window from
+    1 December, so the bars must land where the arithmetic says and not
+    merely somewhere orange. 18 Jan is day 48 of that window and 1 Feb is
+    day 62, both twelve days long. The day timeline and the bars animate on
+    an observer, so this also proves they are not left in their zero state."""
+    pg.set_viewport_size({"width": 1440, "height": 900})
+    pg.goto(base + "/destinations/kenya.html", wait_until="load")
+    pg.wait_for_function("()=>document.fonts.status==='loaded'")
+    top = lambda s: pg.evaluate("s=>document.querySelector(s).getBoundingClientRect().top+scrollY", s)
+    go = lambda y: (pg.evaluate("y=>window.scrollTo({top:y,behavior:'instant'})", y),
+                    pg.wait_for_function("y=>Math.abs(window.scrollY-y)<2", arg=y))
+
+    go(round(top('#dates')) - 90)
+    pg.wait_for_timeout(1800)
+    check(pg.evaluate("document.querySelector('.kdates').classList.contains('is-on')"),
+          "dates", "the season band lights when it scrolls in")
+    bars = pg.evaluate("""()=>[...document.querySelectorAll('.kdates-tour')].map(e=>{
+      const r=e.getBoundingClientRect(), k=e.parentElement.getBoundingClientRect();
+      return [Math.round((r.left-k.left)/k.width*1000)/10, Math.round(r.width/k.width*1000)/10];})""")
+    want = [(39.7, 9.9), (51.2, 9.9)]
+    ok = len(bars) == 2 and all(abs(a - w[0]) < 1 and abs(b - w[1]) < 1 for (a, b), w in zip(bars, want))
+    check(ok, "dates", "both tours sit where the calendar puts them, twelve days wide", bars)
+    for txt in ("18 to 29 January", "1 to 12 February"):
+        check(pg.evaluate("t=>document.querySelector('#dates').textContent.includes(t)", txt),
+              "dates", "the dates block says " + txt)
+    check(pg.evaluate("document.querySelectorAll('#dates .btn-solid.is-outline').length") == 2,
+          "dates", "each departure has its own outlined Book a Call")
+    rest = pg.evaluate("getComputedStyle(document.querySelector('#dates .btn-solid.is-outline')).backgroundColor")
+    check("rgba(0, 0, 0, 0)" == rest, "dates", "and it is unfilled until hovered", rest)
+
+    go(round(top('#kday')) - 90)
+    pg.wait_for_timeout(2200)
+    day = pg.evaluate("""()=>{const l=document.querySelector('.kday-line').getBoundingClientRect();
+      const t=document.querySelector('.kday-track').getBoundingClientRect();
+      return {on:document.getElementById('kday').classList.contains('is-on'),
+              frac:Math.round(l.width/t.width*100), stops:document.querySelectorAll('.kday-stop').length};}""")
+    check(day["on"] and day["frac"] > 95, "dates", "the day timeline draws itself in", day)
+    check(day["stops"] == 5, "dates", "briefing, launch, fly, land, retrieve", day["stops"])
+    fit = pg.evaluate("""()=>({yes:document.querySelectorAll('.kfit-yes li').length,
+      no:document.querySelectorAll('.kfit-no li').length})""")
+    check(fit["yes"] >= 3 and fit["no"] >= 3, "dates", "the verdict argues both sides", fit)
+
+    # the timeline turns and runs down the left on a phone
+    pg.set_viewport_size({"width": 390, "height": 844})
+    pg.wait_for_timeout(400)
+    go(round(top('#kday')) - 60)
+    pg.wait_for_timeout(2200)
+    vert = pg.evaluate("""()=>{const l=document.querySelector('.kday-line').getBoundingClientRect();
+      return Math.round(l.height) > Math.round(l.width);}""")
+    check(vert, "dates", "and stands up on a phone")
+    pg.set_viewport_size({"width": 1400, "height": 900})
+
+
 def kenya_rolls(pg, base):
     """Wheel rolls on the map earn their way forward: two lift it above the
     weather drifting down from the gallery, four open the chart.
@@ -1324,7 +1380,7 @@ def main():
                 return 0
             pg = browser.new_page(viewport={"width": 1280, "height": 900},
                                   reduced_motion="no-preference")
-            for fn in (rail, nav, player, library, search, kenya, kenya_hero, kenya_map, kenya_gallery, kenya_facts, kenya_overview, kenya_rolls, enquire, overflow):
+            for fn in (rail, nav, player, library, search, kenya, kenya_hero, kenya_map, kenya_gallery, kenya_facts, kenya_overview, kenya_dates, kenya_rolls, enquire, overflow):
                 fn(pg, base)
             pg.close()
             pg2 = browser.new_page(viewport={"width": 1280, "height": 900},
