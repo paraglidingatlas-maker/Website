@@ -920,12 +920,7 @@
 .kov-cta{margin-top:clamp(3.6rem,7.5vw,6rem);}
 /* Outlined at rest, filled on hover, focus and press. The same parallelogram
    as .btn-solid so the two read as one family. */
-.dst-sec.kov .kov-cta .btn-solid{background:transparent;color:var(--orange);
-  box-shadow:inset 0 0 0 1px var(--orange);
-  transition:transform .2s ease,background .2s ease,color .2s ease;}
-.dst-sec.kov .kov-cta .btn-solid:hover,.dst-sec.kov .kov-cta .btn-solid:focus-visible,
-.dst-sec.kov .kov-cta .btn-solid:active{background:var(--orange);color:var(--bg);}
-.dst-sec.kov .kov-cta .btn-solid:focus-visible{outline:2px solid var(--live);outline-offset:3px;}
+
 
 @media (prefers-reduced-motion: reduce){
   .kfly-slide{transition:none!important;}
@@ -933,6 +928,81 @@
   .kfly-copy{transition:none!important;}
   .kseason .seg.on{transition:none!important;}
   .kov-w{color:var(--orange)!important;}
+}
+
+
+/* ---------- outlined button ================================================
+   The same parallelogram as .btn-solid, orange line and orange text at rest,
+   filled on hover, focus and press. Used at the close of the Overview and on
+   the departure cards, so it lives here once rather than scoped twice. */
+.btn-solid.is-outline{background:transparent;color:var(--orange);
+  box-shadow:inset 0 0 0 1px var(--orange);
+  transition:transform .2s ease,background .2s ease,color .2s ease;}
+.btn-solid.is-outline:hover,.btn-solid.is-outline:focus-visible,.btn-solid.is-outline:active{
+  background:var(--orange);color:var(--bg);}
+.btn-solid.is-outline:focus-visible{outline:2px solid var(--live);outline-offset:3px;}
+
+/* ---------- SEASON PACKAGES: departures on the season itself ==============
+   Four rows in a box said when and nothing else. The band draws the same
+   December to March window the ring in the Overview lights, and puts the two
+   twelve-day tours on it to scale, so the decision reads at a glance: both
+   in the heart of the peak, two days apart. Positions are percentages of a
+   121 day band from 1 Dec, computed, not placed. The cards below carry the
+   words and the ask. */
+.kdates-band{margin:1.6rem 0 clamp(2rem,4vw,3rem);}
+.kdates-months{position:relative;height:1.3rem;margin-top:.45rem;}
+.kdates-months span{position:absolute;left:calc(var(--p) * 1%);font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gray);}
+.kdates-track{position:relative;height:38px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.kdates-tick{position:absolute;top:0;bottom:0;left:calc(var(--p) * 1%);width:1px;background:var(--rule);}
+.kdates-tour{position:absolute;top:9px;height:18px;left:calc(var(--a) * 1%);width:calc(var(--w) * 1%);
+  background:var(--orange);transform:scaleX(0);transform-origin:0 50%;
+  transition:transform .7s cubic-bezier(.3,.7,.2,1) calc(.15s + var(--i) * .22s);}
+.kdates.is-on .kdates-tour{transform:none;}
+.kdates-tour b{position:absolute;left:0;top:-1.55rem;font-family:var(--font-display);font-weight:700;
+  font-size:.72rem;letter-spacing:.14em;color:var(--orange);opacity:0;transition:opacity .4s ease calc(.6s + var(--i) * .22s);}
+.kdates.is-on .kdates-tour b{opacity:1;}
+.kdates-legend{margin:.5rem 0 0;color:var(--gray);font-size:.82rem;letter-spacing:.02em;}
+
+.kdates-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--rule);
+  border:1px solid var(--rule);max-width:64rem;}
+.kdates-card{position:relative;background:var(--bg);padding:clamp(1.5rem,3vw,2.2rem) clamp(1.3rem,2.6vw,2rem);
+  display:flex;flex-direction:column;align-items:flex-start;}
+.kdates-n{font-family:var(--font-display);font-weight:700;font-size:.72rem;letter-spacing:.14em;color:var(--orange);
+  margin-bottom:.9rem;}
+.kdates-card h3{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.15rem;margin:0 0 .5rem;}
+.kdates-when{font-family:var(--font-display);font-weight:700;color:var(--white);
+  font-size:clamp(1.35rem,2.2vw,1.8rem);line-height:1.15;letter-spacing:-.01em;margin:0 0 .5rem;}
+.kdates-meta{color:var(--gray-light);font-size:.9rem;margin:0 0 1.2rem;}
+.kdates-price{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;width:100%;
+  padding:.85rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:0 0 1.4rem;}
+.kdates-price span{color:var(--gray);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;}
+.kdates-price b{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:.95rem;}
+@media (max-width:820px){
+  .kdates-grid{grid-template-columns:1fr;}
+  .kdates-tour b{top:-1.4rem;}
+}
+@media (prefers-reduced-motion: reduce){
+  .kdates-tour,.kdates-tour b{transition:none!important;transform:none!important;opacity:1!important;}
+}
+
+/* ---------- BEFORE YOU BOOK: a ledger, not a grid ==========================
+   Seven equal boxes was the "grid of equal cards" this page stopped doing
+   everywhere else. One column now, each point numbered on a hairline rule,
+   heading in white and body in grey, so it runs down like a pre-flight
+   checklist rather than laying out like a brochure. Deliberately quiet: the
+   Overview above is where the page is loud. */
+.kledger{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule);max-width:64rem;}
+.kledger-row{display:grid;grid-template-columns:4.5rem minmax(0,1fr);gap:0 1rem;
+  padding:clamp(1.3rem,2.4vw,1.8rem) 0;border-bottom:1px solid var(--rule);}
+.kledger-n{font-family:var(--font-display);font-weight:700;font-size:.72rem;letter-spacing:.14em;
+  color:var(--orange);padding-top:.35rem;}
+.kledger h3{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.08rem;margin:0 0 .5rem;}
+.kledger p{color:var(--gray-light);font-size:.95rem;line-height:1.75;margin:0;max-width:60ch;}
+.kledger p + p{margin-top:.6rem;}
+@media (max-width:560px){
+  .kledger-row{grid-template-columns:1fr;gap:.3rem;}
+  .kledger-n{padding-top:0;}
 }
 
 </style>
@@ -1332,7 +1402,7 @@
         <span class="kov-w">With</span>
         <span class="kov-w">Glory</span>
         and It’s our dream to be able to share that with you</p>
-    <div class="kov-cta"><a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" class="btn-solid" data-hover><span>Book a Call</span></a></div>
+    <div class="kov-cta"><a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" class="btn-solid is-outline" data-hover><span>Book a Call</span></a></div>
   </div>
 
 </section>
@@ -2284,17 +2354,40 @@
   </div>
 </section>
 
-<section class="dst-sec is-loud" id="dates">
+<section class="dst-sec is-loud kdates" id="dates">
   <div class="dst-head">
     <span class="kicker">Season Packages</span>
-    <h2>Three departures</h2>
-    <p>Each departure runs 12 days from Kerio Valley.</p>
+    <h2>Two departures, back to back</h2>
+    <p>Each runs 12 days from Kerio Valley.</p>
   </div>
-  <div class="dst-dates">
-    <div class="dst-date"><b>Adventure Tour 1</b><span>19 Jan to 1 Feb 2027</span></div>
-    <div class="dst-date"><b>Adventure Tour 2</b><span>3 Feb to 15 Feb 2027</span></div>
-    <div class="dst-date"><b>Adventure Tour 3</b><span>18 Feb to 1 Mar 2027</span></div>
-    <div class="dst-date"><b>Starting from</b><span>Enquire for prices</span></div>
+  <div class="kdates-band" aria-hidden="true">
+    <div class="kdates-track">
+      <i class="kdates-tick" style="--p:25.62"></i><i class="kdates-tick" style="--p:51.24"></i><i class="kdates-tick" style="--p:74.38"></i>
+      <i class="kdates-tour" style="--a:39.67;--w:9.92;--i:0"><b>01</b></i>
+      <i class="kdates-tour" style="--a:51.24;--w:9.92;--i:1"><b>02</b></i>
+    </div>
+    <div class="kdates-months">
+      <span style="--p:0">Dec</span><span style="--p:25.62">Jan</span><span style="--p:51.24">Feb</span><span style="--p:74.38">Mar</span>
+    </div>
+    <p class="kdates-legend">Peak season, December to March. The two tours sit in the middle of it, two days apart.</p>
+  </div>
+  <div class="kdates-grid">
+    <article class="kdates-card">
+      <span class="kdates-n">01</span>
+      <h3>Kenya Tour 1</h3>
+      <p class="kdates-when"><time datetime="2027-01-18">18</time> to <time datetime="2027-01-29">29 January</time> 2027</p>
+      <p class="kdates-meta">12 days &middot; from Kerio Valley</p>
+      <p class="kdates-price"><span>Starting from</span><b>Enquire for prices</b></p>
+      <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" class="btn-solid is-outline" data-hover><span>Book a Call</span></a>
+    </article>
+    <article class="kdates-card">
+      <span class="kdates-n">02</span>
+      <h3>Kenya Tour 2</h3>
+      <p class="kdates-when"><time datetime="2027-02-01">1</time> to <time datetime="2027-02-12">12 February</time> 2027</p>
+      <p class="kdates-meta">12 days &middot; from Kerio Valley</p>
+      <p class="kdates-price"><span>Starting from</span><b>Enquire for prices</b></p>
+      <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" class="btn-solid is-outline" data-hover><span>Book a Call</span></a>
+    </article>
   </div>
 </section>
 
@@ -2305,37 +2398,18 @@
     <p>We would rather you read this and decide it is not for you than arrive and find that out. Explore the Cradle is built for independent pilots with strong glider handling and an appetite for the unfamiliar. We put flight safety first, because that is what keeps the fun factor intact.</p>
   </div>
   <p class="dst-lede">Every flight is a good flight, but chasing airtime comes with bumpy air, variable thermal strength and conditions more demanding than you expected. That is part of it. Come willing to push your limits and you leave with a renewed understanding of flying in new terrain.</p>
-  <div class="dst-grid two">
-    <div class="dst-cell">
-      <h3>How a day runs</h3>
-      <p>Your guide proposes the day's plan to maximise flying, and briefs you on the forecast, the site and the conditions. He suggests cross country directions and where a retrieve is realistic. He launches first to check the air, or last to help with an awkward takeoff. Then we fly the route together, or improvise over the radio when the day has other ideas.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Why you have to be autonomous</h3>
-      <p>Most of Kenya sits under moderate easterly winds, so waiting for each other in the air is often simply not possible. You need to take off, fly, decide and land on your own. That is not a formality on this trip, it is the thing that makes the trip work at all.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Flying conditions, honestly</h3>
-      <p>Some of what we fly is quiet and picturesque. The XC sites, Kerio and Machakos among them, can be rough through sections of a flight, and near the escarpments you can meet heavier turbulence than you were expecting. You will hit bumpy airmass and some genuinely awkward transitions. That is the adventure rather than a failure of planning.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Retrieve is a two way job</h3>
-      <p>After you land, you are the one who activates and directs the retrieve driver, because the others may still be in the air. Kenya's generous conditions produce long flights, and a long flight means a long retrieve.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>Getting yourself out</h3>
-      <p>Speeding up your own retrieve helps everyone. A landing in Kenya almost always attracts someone on a motorbike, a boda, offering you a lift. Practise your negotiating, get to the nearest tarmac, shop or restaurant, and put a little money into the local economy and a good impression of paraglider pilots along with it. From the tarmac the matatu vans will take you on, crowded and cheerful.</p>
-      <p>Do not drive at night. If you land a long way out, sleep locally and rejoin the group in the morning.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>This is not a comfort tour</h3>
-      <p>If you expect polished service and comfort, this is the wrong trip. Kenya is a young destination with cross country routes still being worked out, and it asks for improvisation, flexibility and tolerance in return for what it gives you.</p>
-    </div>
-    <div class="dst-cell">
-      <h3>You are sharing a sky and a bill</h3>
-      <p>Pilots on the same tour share the same transport costs, whether they flew 20 kilometres or 120. Some days that is a test of how you take other people's good fortune. Most days it is the pleasure of being genuinely glad someone else got the flight of their life.</p>
-    </div>
-  </div>
+  <ol class="kledger">
+    <li class="kledger-row"><span class="kledger-n">01</span><div><h3>How a day runs</h3>      <p>Your guide proposes the day's plan to maximise flying, and briefs you on the forecast, the site and the conditions. He suggests cross country directions and where a retrieve is realistic. He launches first to check the air, or last to help with an awkward takeoff. Then we fly the route together, or improvise over the radio when the day has other ideas.</p>
+    </div></li>
+    <li class="kledger-row"><span class="kledger-n">02</span><div><h3>Why you have to be autonomous</h3>      <p>Most of Kenya sits under moderate easterly winds, so waiting for each other in the air is often simply not possible. You need to take off, fly, decide and land on your own. That is not a formality on this trip, it is the thing that makes the trip work at all.</p>
+    </div></li>
+    <li class="kledger-row"><span class="kledger-n">03</span><div><h3>Flying conditions, honestly</h3>      <p>Some of what we fly is quiet and picturesque. The XC sites, Kerio and Machakos among them, can be rough through sections of a flight, and near the escarpments you can meet heavier turbulence than you were expecting. You will hit bumpy airmass and some genuinely awkward transitions. That is the adventure rather than a failure of planning.</p>
+    </div></li>
+    <li class="kledger-row"><span class="kledger-n">04</span><div><h3>Retrieve is a two way job</h3>      <p>After you land, you are the one who activates and directs the retrieve driver, because the others may still be in the air. Kenya's generous conditions produce long flights, and a long flight means a long retrieve.</p>
+    </div></li>
+    <li class="kledger-row"><span class="kledger-n">05</span><div><h3>This is not a comfort tour</h3>      <p>If you expect polished service and comfort, this is the wrong trip. Kenya is a young destination with cross country routes still being worked out, and it asks for improvisation, flexibility and tolerance in return for what it gives you.</p>
+    </div></li>
+  </ol>
 </section>
 
 <section class="dst-sec">
@@ -2443,7 +2517,7 @@
 
 
 <div class="dst-mobar" id="dstMobar">
-  <div class="dst-mobar-l"><span class="n">12 days</span><span class="w">Next departure 19 Jan 2027</span></div>
+  <div class="dst-mobar-l"><span class="n">12 days</span><span class="w">Next departure 18 Jan 2027</span></div>
   <a class="btn-solid" href="#enquire" data-hover><span>Enquire</span></a>
 </div>
 
@@ -2730,6 +2804,14 @@
     window.addEventListener('resize', onScroll, { passive: true });
     paint();
   }
+
+  var kd = document.querySelector('.kdates');
+  if (kd && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (es, o) {
+      if (!es[0].isIntersecting) return;
+      kd.classList.add('is-on'); o.disconnect();
+    }, { threshold: 0.3 }).observe(kd.querySelector('.kdates-band'));
+  } else if (kd) { kd.classList.add('is-on'); }
 
   var ring = document.querySelector('.kseason');
   if (ring && 'IntersectionObserver' in window) {
