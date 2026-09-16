@@ -657,8 +657,9 @@
   stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
 .kkit-dl small{color:var(--gray);font-size:.74rem;}
 
-.kkit-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));
-  gap:2.4rem 2rem;}
+.kkit-groups{columns:2;column-gap:2.4rem;}
+@media (min-width:1100px){ .kkit-groups{columns:3;} }
+.kkit-group{break-inside:avoid;-webkit-column-break-inside:avoid;margin:0 0 2.4rem;}
 .kkit-ghead{display:flex;align-items:center;gap:.6rem;width:100%;min-height:44px;
   padding:.35rem 0;margin:0 0 .25rem;background:none;border:0;cursor:pointer;text-align:left;
   border-bottom:1px solid var(--rule);}
@@ -705,12 +706,21 @@
 .kkit-item[aria-pressed="true"] .kkit-txt{color:var(--gray);text-decoration:line-through;
   text-decoration-color:color-mix(in srgb, var(--gray) 60%, transparent);}
 .kkit-note{display:block;color:var(--gray);font-size:.82rem;line-height:1.5;margin-top:.15rem;}
+.kkit-ess{display:inline-block;margin-left:.5rem;vertical-align:.06em;
+  font-family:var(--font-body);font-size:.6rem;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--orange);text-decoration:none;
+  border:1px solid color-mix(in srgb, var(--orange) 38%, transparent);
+  border-radius:2px;padding:.1rem .32rem;}
+.kkit-item.is-ess{border-color:color-mix(in srgb, var(--orange) 24%, var(--edge));}
+.kkit-item.is-ess:hover{border-color:color-mix(in srgb, var(--orange) 55%, var(--edge));}
+.kkit-item.is-ess[aria-pressed="true"] .kkit-ess{opacity:.4;}
 
 .kkit-tail{color:var(--gray-light);font-size:.95rem;line-height:1.8;margin:2.6rem 0 0;max-width:62ch;}
 .kkit-tail b{color:var(--white);font-weight:500;}
 
 @media (max-width:640px){
-  .kkit-groups{grid-template-columns:1fr;gap:2rem;}
+  .kkit-groups{columns:1;}
+  .kkit-group{margin-bottom:2rem;}
   .kkit-gate{margin-bottom:2.4rem;}
 }
 @media (prefers-reduced-motion:reduce){
@@ -2787,7 +2797,7 @@
   <div class="dst-head">
     <span class="kicker">Requirements &amp; Packing</span>
     <h2>Before you fly, and what to bring</h2>
-    <p>Terrain runs from 1,000 to 2,000m. It can be hot in the lowlands and cold at height, so pack for both.</p>
+    <p>Terrain runs from 1,000 to 2,000m. It can be hot in the lowlands and cold at height, so pack for both. Six items are marked essential. Do not travel without them.</p>
   </div>
 
   <div class="kkit-gate">
@@ -2797,12 +2807,12 @@
   </div>
 
   <div class="kkit-bar">
-    <span class="kkit-count"><b id="kkitDone">0</b> of 26 packed</span>
+    <span class="kkit-count"><b id="kkitDone">0</b> of 33 packed</span>
     <span class="kkit-actions">
       <button type="button" class="kkit-hide" id="kkitHide" aria-pressed="false">Hide what is packed</button>
       <a class="kkit-dl" href="../assets/destinations/kenya/kenya-packing-checklist.pdf" download>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-        Editable PDF <small>26 items, tick or print</small>
+        Editable PDF <small>33 items, tick or print</small>
       </a>
       <button type="button" class="kkit-reset" id="kkitReset">Clear the list</button>
     </span>
@@ -2811,150 +2821,190 @@
   <div class="kkit-groups">
       <div class="kkit-group" data-group="0">
         <button type="button" class="kkit-ghead" aria-expanded="true" aria-controls="kkitg0">
-          <span class="kkit-gname">Clothing</span>
-          <span class="kkit-gtally"><b>0</b>/11</span>
+          <span class="kkit-gname">Documents and money</span>
+          <span class="kkit-gtally"><b>0</b>/5</span>
           <span class="kkit-gchev" aria-hidden="true"></span>
         </button>
         <div class="kkit-gbody" id="kkitg0">
-          <p class="kkit-gblurb">Thorns, sun and mosquitoes at the bottom, cold at the top.</p>
+          <p class="kkit-gblurb">The paperwork is the part you cannot buy locally on the morning you need it.</p>
           <ul class="kkit-items">
           <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i0">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Long trousers<span class="kkit-note">Against thorns, sunburn and mosquitoes</span></span>
+            <span class="kkit-txt">Passport, and a photo of it on your phone</span>
           </button></li>
           <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i1">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Long sleeved shirts</span>
+            <span class="kkit-txt">IPPI 2 card or national licence<span class="kkit-note">This is a tour for autonomous pilots</span></span>
           </button></li>
-          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i2">
+          <li><button type="button" class="kkit-item is-ess" aria-pressed="false" data-kit="g0i2">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Hiking shoes<span class="kkit-note">Comfortable, already broken in</span></span>
+            <span class="kkit-txt">Insurance covering paragliding to 4,000m<span class="kkit-ess">Essential</span><span class="kkit-note">It must include helicopter rescue and medical evacuation</span></span>
           </button></li>
-          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i3">
+          <li><button type="button" class="kkit-item is-ess" aria-pressed="false" data-kit="g0i3">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Socks, two pairs</span>
+            <span class="kkit-txt">Policy number and rescue hotline, saved offline<span class="kkit-ess">Essential</span><span class="kkit-note">You will want these at the moment you have no signal</span></span>
           </button></li>
           <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i4">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Underwear, two pairs</span>
-          </button></li>
-          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i5">
-            <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">T-shirts, two</span>
-          </button></li>
-          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i6">
-            <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Flying gloves<span class="kkit-note">It is cold at 4,000m</span></span>
-          </button></li>
-          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i7">
-            <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Warm flying jacket</span>
-          </button></li>
-          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i8">
-            <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Sunscreen and sunglasses</span>
-          </button></li>
-          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i9">
-            <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Buff<span class="kkit-note">For the dusty roads</span></span>
-          </button></li>
-          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g0i10">
-            <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Ear plugs<span class="kkit-note">Hotels can be noisy</span></span>
+            <span class="kkit-txt">Cash in small notes<span class="kkit-note">For tips and porters. Agree the price first</span></span>
           </button></li>
           </ul>
         </div>
       </div>
       <div class="kkit-group" data-group="1">
         <button type="button" class="kkit-ghead" aria-expanded="true" aria-controls="kkitg1">
-          <span class="kkit-gname">Equipment</span>
-          <span class="kkit-gtally"><b>0</b>/9</span>
+          <span class="kkit-gname">Clothing</span>
+          <span class="kkit-gtally"><b>0</b>/8</span>
           <span class="kkit-gchev" aria-hidden="true"></span>
         </button>
         <div class="kkit-gbody" id="kkitg1">
-          <p class="kkit-gblurb">Conditions here are stronger than most home sites. Bring gear you trust.</p>
+          <p class="kkit-gblurb">Thorns, sun and mosquitoes at the bottom, cold at the top. These are the ones people forget, the ordinary clothes for twelve days go without saying.</p>
           <ul class="kkit-items">
           <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i0">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Wing you know well</span>
+            <span class="kkit-txt">Long trousers<span class="kkit-note">Against thorns, sunburn and mosquitoes</span></span>
           </button></li>
           <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i1">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Harness with back or airbag protection</span>
+            <span class="kkit-txt">Long sleeved shirts</span>
           </button></li>
           <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i2">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Spare lines</span>
+            <span class="kkit-txt">Hiking shoes<span class="kkit-note">Comfortable, already broken in</span></span>
           </button></li>
           <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i3">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Ripstop tape<span class="kkit-note">Takeoffs and landings can be bushy and thorny</span></span>
+            <span class="kkit-txt">Flying gloves<span class="kkit-note">It is cold at 4,000m</span></span>
           </button></li>
           <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i4">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">2m radio, 144 to 146 MHz<span class="kkit-note">Yaesu, Icom or Kenwood. Avoid Baofeng, reliable communication can save your life</span></span>
+            <span class="kkit-txt">Warm flying jacket</span>
           </button></li>
           <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i5">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Powerbank and cables</span>
+            <span class="kkit-txt">Sunscreen and sunglasses</span>
           </button></li>
           <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i6">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Headlamp</span>
+            <span class="kkit-txt">Buff<span class="kkit-note">For the dusty roads</span></span>
           </button></li>
           <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i7">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Pepper spray<span class="kkit-note">Against dogs or wild animals</span></span>
-          </button></li>
-          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g1i8">
-            <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Pocket knife</span>
+            <span class="kkit-txt">Ear plugs<span class="kkit-note">Hotels can be noisy</span></span>
           </button></li>
           </ul>
         </div>
       </div>
       <div class="kkit-group" data-group="2">
         <button type="button" class="kkit-ghead" aria-expanded="true" aria-controls="kkitg2">
-          <span class="kkit-gname">Health</span>
-          <span class="kkit-gtally"><b>0</b>/4</span>
+          <span class="kkit-gname">Flying gear</span>
+          <span class="kkit-gtally"><b>0</b>/9</span>
           <span class="kkit-gchev" aria-hidden="true"></span>
         </button>
         <div class="kkit-gbody" id="kkitg2">
-          <p class="kkit-gblurb">No mandatory vaccines for travellers from Europe or America.</p>
+          <p class="kkit-gblurb">Conditions here are stronger than most home sites. Bring gear you trust.</p>
           <ul class="kkit-items">
           <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i0">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">DEET repellent</span>
+            <span class="kkit-txt">Wing you know well<span class="kkit-note">EN or LTF certified</span></span>
           </button></li>
-          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i1">
+          <li><button type="button" class="kkit-item is-ess" aria-pressed="false" data-kit="g2i1">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Malaria pre-medication<span class="kkit-note">Low risk in the dry season above 2,000m. Can be bought locally</span></span>
+            <span class="kkit-txt">Harness with back or airbag protection<span class="kkit-ess">Essential</span></span>
           </button></li>
-          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i2">
+          <li><button type="button" class="kkit-item is-ess" aria-pressed="false" data-kit="g2i2">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">High socks and long layers<span class="kkit-note">Prevention beats treatment</span></span>
+            <span class="kkit-txt">Reserve<span class="kkit-ess">Essential</span><span class="kkit-note">Repacked and in date</span></span>
           </button></li>
-          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i3">
+          <li><button type="button" class="kkit-item is-ess" aria-pressed="false" data-kit="g2i3">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">Mosquito net<span class="kkit-note">Hotel beds usually have one</span></span>
+            <span class="kkit-txt">Helmet<span class="kkit-ess">Essential</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i4">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Vario or GPS<span class="kkit-note">Load the airspace file before you travel</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item is-ess" aria-pressed="false" data-kit="g2i5">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">2m radio, 144 to 146 MHz<span class="kkit-ess">Essential</span><span class="kkit-note">Yaesu, Icom or Kenwood. Avoid Baofeng, reliable communication can save your life</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i6">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Tracker or a live tracking app<span class="kkit-note">So retrieve knows where you came down</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i7">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Spare lines</span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g2i8">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Ripstop tape<span class="kkit-note">Takeoffs and landings can be bushy and thorny</span></span>
           </button></li>
           </ul>
         </div>
       </div>
       <div class="kkit-group" data-group="3">
         <button type="button" class="kkit-ghead" aria-expanded="true" aria-controls="kkitg3">
-          <span class="kkit-gname">Stomach</span>
-          <span class="kkit-gtally"><b>0</b>/2</span>
+          <span class="kkit-gname">On you</span>
+          <span class="kkit-gtally"><b>0</b>/5</span>
           <span class="kkit-gchev" aria-hidden="true"></span>
         </button>
         <div class="kkit-gbody" id="kkitg3">
-          <p class="kkit-gblurb">Local food can upset tender Western stomachs.</p>
+          <p class="kkit-gblurb">The small things that matter once you are away from the van.</p>
           <ul class="kkit-items">
           <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g3i0">
             <span class="kkit-box" aria-hidden="true"></span>
-            <span class="kkit-txt">FloraNorm probiotic<span class="kkit-note">Saccharomyces boulardii, available locally</span></span>
+            <span class="kkit-txt">Offline maps on your phone<span class="kkit-note">Download the region before you fly out</span></span>
           </button></li>
           <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g3i1">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Powerbank and cables</span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g3i2">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Headlamp</span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g3i3">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Pepper spray<span class="kkit-note">Against dogs or wild animals</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g3i4">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Pocket knife</span>
+          </button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="kkit-group" data-group="4">
+        <button type="button" class="kkit-ghead" aria-expanded="true" aria-controls="kkitg4">
+          <span class="kkit-gname">Health and stomach</span>
+          <span class="kkit-gtally"><b>0</b>/6</span>
+          <span class="kkit-gchev" aria-hidden="true"></span>
+        </button>
+        <div class="kkit-gbody" id="kkitg4">
+          <p class="kkit-gblurb">No mandatory vaccines for travellers from Europe or America. Local food can upset tender Western stomachs.</p>
+          <ul class="kkit-items">
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g4i0">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">DEET repellent</span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g4i1">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Malaria pre-medication<span class="kkit-note">Low risk in the dry season above 2,000m. Can be bought locally</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g4i2">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">High socks and long layers<span class="kkit-note">Prevention beats treatment</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g4i3">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">Mosquito net<span class="kkit-note">Hotel beds usually have one</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g4i4">
+            <span class="kkit-box" aria-hidden="true"></span>
+            <span class="kkit-txt">FloraNorm probiotic<span class="kkit-note">Saccharomyces boulardii, available locally</span></span>
+          </button></li>
+          <li><button type="button" class="kkit-item" aria-pressed="false" data-kit="g4i5">
             <span class="kkit-box" aria-hidden="true"></span>
             <span class="kkit-txt">Rehydration salts</span>
           </button></li>
@@ -3398,7 +3448,7 @@
       out    = document.getElementById('kkitDone'),
       reset  = document.getElementById('kkitReset'),
       hide   = document.getElementById('kkitHide'),
-      KEY    = 'pga.kenya.kit',
+      KEY    = 'pga.kenya.kit.v2',
       store  = null;
   try{ localStorage.setItem('pga.t','1'); localStorage.removeItem('pga.t'); store = localStorage; }catch(e){}
   function load(){ if(!store) return {}; try{ return JSON.parse(store.getItem(KEY) || '{}'); }catch(e){ return {}; } }
