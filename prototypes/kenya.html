@@ -1051,6 +1051,23 @@
   .kday-line{width:100%;} .kday-dot{background:var(--orange);}
 }
 
+
+/* ---------- BEFORE YOU BOOK: the opening argues =============================
+   Two narrow stacked columns left most of the width empty and buried the
+   best sentence in the section as grey body text. The opening is two
+   columns now, the same shape the Overview opens with, and the line that
+   states the section's whole purpose is set large opposite the heading.
+   Every word is the owner's and none has moved out of the section. */
+.kreal-open{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);
+  gap:clamp(1.6rem,4vw,4.5rem);align-items:start;}
+.dst-sec.is-loud .kreal-open .dst-head{margin-bottom:0;}
+.kreal-said{font-family:var(--font-display);font-weight:700;color:var(--white);
+  font-size:clamp(1.35rem,2.6vw,2.15rem);line-height:1.22;letter-spacing:-.02em;margin:0;}
+.kreal-said em{font-style:normal;color:var(--orange);}
+.kreal-open .dst-lede{max-width:34rem;margin:1.6rem 0 0;}
+.kreal-rest{color:var(--gray-light);line-height:1.8;margin:1.4rem 0 0;max-width:34rem;}
+@media (max-width:820px){.kreal-open{grid-template-columns:1fr;}}
+
 </style>
 <!-- site-schema -->
 <script type="application/ld+json">
@@ -2446,12 +2463,17 @@
 </section>
 
 <section class="dst-sec is-loud" id="reality">
-  <div class="dst-head">
-    <span class="kicker">Before You Book</span>
-    <h2>What this trip is actually like</h2>
-    <p>We would rather you read this and decide it is not for you than arrive and find that out. Explore the Cradle is built for independent pilots with strong glider handling and an appetite for the unfamiliar. We put flight safety first, because that is what keeps the fun factor intact.</p>
+  <div class="kreal-open">
+    <div class="dst-head">
+      <span class="kicker">Before You Book</span>
+      <h2>What this trip is actually like</h2>
+      <p class="dst-lede">Every flight is a good flight, but chasing airtime comes with bumpy air, variable thermal strength and conditions more demanding than you expected. That is part of it. Come willing to push your limits and you leave with a renewed understanding of flying in new terrain.</p>
+    </div>
+    <div>
+      <p class="kreal-said">We would rather you read this and <em>decide it is not for you</em> than arrive and find that out.</p>
+      <p class="kreal-rest">Explore the Cradle is built for independent pilots with strong glider handling and an appetite for the unfamiliar. We put flight safety first, because that is what keeps the fun factor intact.</p>
+    </div>
   </div>
-  <p class="dst-lede">Every flight is a good flight, but chasing airtime comes with bumpy air, variable thermal strength and conditions more demanding than you expected. That is part of it. Come willing to push your limits and you leave with a renewed understanding of flying in new terrain.</p>
     <div class="kday" id="kday">
     <p class="kday-kicker">How a day runs</p>
     <ol class="kday-track">
