@@ -196,6 +196,58 @@
   .clb-wall{transform:none;}
 }
 
+
+/* The door. An overlay over the real page, shown once a session. */
+@property --r{syntax:"<length>";inherits:true;initial-value:0px;}
+.prt{display:none;}
+.prt-armed .prt{display:block;position:fixed;inset:0;z-index:90;--r:23vmin;--x:50%;--y:50%;}
+.prt-armed body{overflow:hidden;}
+.prt-shade{position:absolute;inset:0;background:#05070c;
+  -webkit-mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),transparent 98%,#000 100%);
+  mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),transparent 98%,#000 100%);
+  transition:--r 1s cubic-bezier(.66,0,.28,1);}
+.prt-ring{position:absolute;left:50%;top:50%;width:46vmin;height:46vmin;margin:-23vmin 0 0 -23vmin;
+  border-radius:50%;border:1px solid color-mix(in srgb,var(--orange) 45%,transparent);
+  box-shadow:0 0 0 1px rgba(5,7,12,.6), 0 0 60px rgba(255,117,23,.14) inset;
+  pointer-events:none;animation:prtBreathe 5.5s ease-in-out infinite;
+  transition:opacity .45s ease,transform .8s cubic-bezier(.66,0,.28,1);}
+@keyframes prtBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.022)}}
+.prt-copy{position:absolute;left:0;right:0;bottom:calc(50% + 23vmin + clamp(1.8rem,4vh,3rem));
+  text-align:center;padding:0 1.4rem;transition:opacity .4s ease;}
+/* through the hole you should see the archive, not a sentence cut in half */
+.prt-armed .clb-hero-in{opacity:0;}
+.clb-hero-in{transition:opacity .6s ease .15s;}
+.prt-armed .clb-tile img{filter:grayscale(1) contrast(.95) brightness(1);}
+.prt-armed .clb-scrim{opacity:.25;}
+.clb-scrim{transition:opacity .7s ease;}
+.prt-armed .clb-wall{animation:prtFloat 26s ease-in-out infinite alternate;}
+@keyframes prtFloat{from{transform:scale(1.04) translate3d(0,0,0)}to{transform:scale(1.1) translate3d(-1.5%,-2%,0)}}
+.prt-copy .kicker{display:block;margin-bottom:.7rem;}
+.prt-copy p{margin:0 auto;max-width:30ch;font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1rem,1.9vw,1.35rem);line-height:1.45;color:var(--white);}
+.prt-hit{position:absolute;left:50%;top:50%;width:46vmin;height:46vmin;margin:-23vmin 0 0 -23vmin;
+  border-radius:50%;background:none;border:0;cursor:pointer;display:flex;align-items:flex-end;
+  justify-content:center;padding-bottom:calc(23vmin - 2.6rem);}
+.prt-hit-txt{font-family:var(--font-body);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--white);opacity:.75;transition:opacity .3s ease,letter-spacing .4s ease;}
+.prt-hit:hover .prt-hit-txt{opacity:1;letter-spacing:.3em;}
+.prt-hit:focus-visible{outline:2px solid var(--orange);outline-offset:6px;}
+.prt-skip{position:absolute;right:clamp(1rem,3vw,2.2rem);bottom:clamp(1rem,3vh,2rem);
+  min-height:44px;padding:.5rem 1rem;background:none;border:0;cursor:pointer;
+  font-family:var(--font-body);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gray);transition:color .25s ease;}
+.prt-skip:hover{color:var(--white);}
+.prt.is-open .prt-shade{--r:165vmax;}
+.prt.is-open .prt-ring{opacity:0;transform:scale(2.4);}
+.prt.is-open .prt-copy,.prt.is-open .prt-hit-txt,.prt.is-open .prt-skip{opacity:0;}
+.prt.is-open .prt-hit,.prt.is-open .prt-skip{pointer-events:none;}
+@media (max-width:620px){
+  .prt-armed .prt{--r:32vmin;}
+  .prt-ring,.prt-hit{width:64vmin;height:64vmin;margin:-32vmin 0 0 -32vmin;}
+  .prt-hit{padding-bottom:calc(32vmin - 2.4rem);}
+  .prt-copy{bottom:calc(50% + 32vmin + clamp(1.4rem,3vh,2.2rem));top:auto;}
+}
+
 </style>
 <!-- site-schema -->
 <script type="application/ld+json">
@@ -263,7 +315,18 @@
  ]
 }
 </script>
-<!-- /site-schema --></head>
+<!-- /site-schema --><script>
+/* Decide before paint whether the door is shown at all. */
+(function(){
+  try{
+    var deep = location.hash && location.hash.length > 1,
+        seen = sessionStorage.getItem('pga.kb.portal') === '1',
+        calm = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    if(!deep && !seen && !calm) document.documentElement.classList.add('prt-armed');
+  }catch(e){}
+})();
+</script>
+</head>
 <body>
 
 <div class="page-wrap">
@@ -285,6 +348,19 @@
   <a href="../enquire.html" class="nav-cta" data-hover><span>Enquire Now</span></a>
 </nav>
 <div class="nav-chevron"></div>
+
+<div class="prt" id="prt" role="dialog" aria-modal="true" aria-labelledby="prtTitle">
+  <div class="prt-shade" id="prtShade"></div>
+  <div class="prt-ring" aria-hidden="true"></div>
+  <div class="prt-copy">
+    <span class="kicker" id="prtTitle">Knowledge Base</span>
+    <p>Eighty one conversations. Nine years. Everything the sport told us.</p>
+  </div>
+  <button type="button" class="prt-hit" id="prtHit">
+    <span class="prt-hit-txt">Come inside</span>
+  </button>
+  <button type="button" class="prt-skip" id="prtSkip">Skip</button>
+</div>
 
 <div class="clb" id="clb">
   <div class="clb-sky" aria-hidden="true"></div>
@@ -700,6 +776,49 @@
   [].forEach.call(document.images, function(img){
     img.addEventListener('error', function(){ img.style.visibility = 'hidden'; });
   });
+})();
+</script>
+
+<script>
+/* Open the door: the hole grows from wherever you clicked until it is the page. */
+(function(){
+  var prt = document.getElementById('prt');
+  if(!prt || !document.documentElement.classList.contains('prt-armed')) return;
+  var hit = document.getElementById('prtHit'),
+      skip = document.getElementById('prtSkip'),
+      done = false;
+
+  if(hit) hit.focus({preventScroll:true});
+
+  function remember(){ try{ sessionStorage.setItem('pga.kb.portal','1'); }catch(e){} }
+  function finish(){
+    document.documentElement.classList.remove('prt-armed');
+    prt.parentNode && prt.parentNode.removeChild(prt);
+  }
+  function open(e){
+    if(done) return;
+    done = true;
+    remember();
+    if(e && e.clientX){
+      prt.style.setProperty('--x', e.clientX + 'px');
+      prt.style.setProperty('--y', e.clientY + 'px');
+    }
+    prt.classList.add('is-open');
+    var shade = document.getElementById('prtShade'), ended = false;
+    function after(){ if(!ended){ ended = true; finish(); } }
+    shade.addEventListener('transitionend', after);
+    setTimeout(after, 1400);            // never leave the page stuck behind the door
+  }
+  function straightThrough(){ if(done) return; done = true; remember(); finish(); }
+
+  hit && hit.addEventListener('click', open);
+  skip && skip.addEventListener('click', straightThrough);
+  addEventListener('keydown', function(e){
+    if(e.key === 'Escape') straightThrough();
+    if((e.key === 'Enter' || e.key === ' ') && document.activeElement === hit) open();
+  });
+  // if anything above failed to run, the door is not allowed to trap anyone
+  setTimeout(function(){ if(!done && !prt.classList.contains('is-open')) prt.style.pointerEvents = 'auto'; }, 50);
 })();
 </script>
 </body>
