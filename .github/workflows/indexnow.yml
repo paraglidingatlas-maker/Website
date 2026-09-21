@@ -1,0 +1,29 @@
+name: IndexNow
+# After every push to main, wait for GitHub Pages to publish, then tell Bing
+# (and the other IndexNow engines) exactly which pages changed.
+# Run manually from the Actions tab with "all = true" to resubmit the whole sitemap.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      all:
+        description: "Submit every URL in sitemap.xml"
+        type: boolean
+        default: false
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Wait for Pages deploy
+        if: github.event_name == 'push'
+        run: sleep 120
+      - name: Submit changed URLs
+        if: github.event_name == 'push'
+        run: python3 tools/indexnow.py "${{ github.event.before }}" "${{ github.sha }}"
+      - name: Submit whole sitemap
+        if: github.event_name == 'workflow_dispatch'
+        run: python3 tools/indexnow.py --all
