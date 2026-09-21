@@ -147,8 +147,8 @@ def faq(h):
 def build_block(page, h):
     graph = [cfg.organization(), cfg.website()]
     d = git_modified(page)
-    web = {"@type": "WebPage", "@id": cfg.url(page) + "#webpage",
-           "url": cfg.url(page), "isPartOf": {"@id": cfg.SITE_ID},
+    web = {"@type": "WebPage", "@id": cfg.public_url(page) + "#webpage",
+           "url": cfg.public_url(page), "isPartOf": {"@id": cfg.SITE_ID},
            "publisher": {"@id": cfg.ORG_ID}, "inLanguage": "en"}
     if d:
         web["dateModified"] = d

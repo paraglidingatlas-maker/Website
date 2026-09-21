@@ -251,7 +251,7 @@ def check_crawler():
     for m in re.finditer(r"<loc>([^<]+)</loc>", sm):
         u = m.group(1)
         if u.startswith(cfg.BASE):
-            listed.add(u[len(cfg.BASE):])
+            listed.add(u[len(cfg.BASE):] or "index.html")
     indexable = {p for p in PAGES if "noindex" not in read(p)}
     missing = sorted(indexable - listed)
     extra = sorted(listed - {p for p in PAGES})
@@ -556,7 +556,7 @@ def check_canonical_paths():
         m = re.search(r'rel="canonical" href="([^"]+)"', h)
         if not m or "noindex" in h:
             continue          # a redirect stub points at its destination, correctly
-        want = SITE_BASE + p
+        want = cfg.public_url(p)
         if m.group(1) != want:
             bad.append((p, m.group(1)))
         om = re.search(r'property="og:url" content="([^"]+)"', h)

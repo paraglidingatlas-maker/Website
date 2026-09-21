@@ -41,9 +41,9 @@ pages = sorted(p.replace(os.sep, "/") for p in glob.glob("**/*.html", recursive=
 rows = []
 for p in pages:
     ts = datetime.date.fromtimestamp(os.path.getmtime(p)).isoformat()
-    rows.append("  <url>\n    <loc>%s%s</loc>\n    <lastmod>%s</lastmod>\n"
+    rows.append("  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n"
                 "    <changefreq>%s</changefreq>\n    <priority>%s</priority>\n  </url>"
-                % (BASE, p, ts, freq(p), priority(p)))
+                % (_cfg.public_url(p), ts, freq(p), priority(p)))
 
 with open("sitemap.xml", "w", encoding="utf-8") as f:
     f.write('<?xml version="1.0" encoding="UTF-8"?>\n'

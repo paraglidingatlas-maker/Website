@@ -17,6 +17,20 @@ pointed somewhere plausible: /passion, /faqs and /unsubscribe. Sending a reader
 to a page that does not answer why they clicked is worse than a clean 404, and
 404.html is a real page with the way back on it.
 
+OLD KNOWLEDGE BASE PATHS. The old site nested each series under its category,
+`/knowledge-base/<category>/<series>`. Search Console showed twelve of those
+still earning impressions and returning 404, two crawled as recently as
+19 Sept 2026. The old site used the same five categories as this one, so every
+old path has an exact equivalent. Confirmed from Search Console:
+technical-focus and its three series, meteorology, core-series/sky-gods,
+industry, industry/brand-stories, industry/learning-from-incidents,
+competitions, competitions/resources-tools-tips, safety-disclosure. The rest
+follow the same pattern and are inferred; a stub for a path that never existed
+costs nothing, because every stub is noindex and none is in the sitemap.
+Several of these folders sit beside a same-named page (knowledge-base/industry/
+next to knowledge-base/industry.html). The folder only serves /industry and
+/industry/; the .html file is untouched, the same as mission/ beside mission.html.
+
 HOW THE REDIRECT WORKS
 Each stub is a directory index, so `/about` and `/about/` both resolve without
 relying on the server guessing an extension. It carries, in order:
@@ -52,6 +66,28 @@ REDIRECTS = {
     "mission":       "mission.html",
     "privacy":       "privacy-policy.html",
     "trips":         "index.html#destinations",
+
+    # The old site nested series under their category. Search Console shows
+    # these still earning impressions and returning 404; see the docstring.
+    "knowledge-base/core-series":                          "knowledge-base/core-series.html",
+    "knowledge-base/core-series/navigators":               "knowledge-base/navigators.html",
+    "knowledge-base/core-series/sky-gods":                 "knowledge-base/sky-gods.html",
+    "knowledge-base/core-series/living-the-dream":         "knowledge-base/living-the-dream.html",
+    "knowledge-base/competitions":                         "knowledge-base/competitions.html",
+    "knowledge-base/competitions/world-cups":              "knowledge-base/world-cups.html",
+    "knowledge-base/competitions/risk-vs-reward":          "knowledge-base/risk-vs-reward.html",
+    "knowledge-base/competitions/resources-tools-tips":    "knowledge-base/resources-tools-tips.html",
+    "knowledge-base/meteorology":                          "knowledge-base/meteorology.html",
+    "knowledge-base/meteorology/weather-patterns":         "knowledge-base/weather-patterns.html",
+    "knowledge-base/industry":                             "knowledge-base/industry.html",
+    "knowledge-base/industry/brand-stories":               "knowledge-base/brand-stories.html",
+    "knowledge-base/industry/storytellers":                "knowledge-base/storytellers.html",
+    "knowledge-base/industry/learning-from-incidents":     "knowledge-base/the-dark-side.html",
+    "knowledge-base/technical-focus":                      "knowledge-base/technical.html",
+    "knowledge-base/technical-focus/flight-mechanics":     "knowledge-base/flight-mechanics.html",
+    "knowledge-base/technical-focus/new-technologies":     "knowledge-base/new-technologies.html",
+    "knowledge-base/technical-focus/know-your-equipment":  "knowledge-base/know-your-equipment.html",
+    "knowledge-base/safety-disclosure":                    "safety-and-disclosure.html",
 }
 
 TEMPLATE = """<!DOCTYPE html>
@@ -82,9 +118,7 @@ def build():
     for old, target in sorted(REDIRECTS.items()):
         depth = old.count("/") + 1          # /about -> about/index.html is one level down
         rel = "../" * depth + target
-        canonical = cfg.BASE + target.split("#")[0]
-        if "#" in target:
-            canonical = cfg.BASE + target.split("#")[0]
+        canonical = cfg.public_url(target.split("#")[0])
         title = target.split("/")[-1].replace(".html", "").replace("-", " ").title()
         out = os.path.join(old, "index.html")
         os.makedirs(os.path.dirname(out), exist_ok=True)

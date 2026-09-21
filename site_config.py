@@ -59,6 +59,18 @@ def url(path=""):
     return BASE + path.lstrip("/")
 
 
+def public_url(path=""):
+    """The address a page is ADVERTISED at: canonical, og:url, sitemap, schema.
+
+    Identical to url() for every page except the homepage, which is advertised
+    as the bare root. Everyone who links to this site links to
+    paraglidingatlas.com/, never to /index.html. Internal links may still say
+    index.html; the canonical is what consolidates them.
+    """
+    p = path.lstrip("/")
+    return BASE if p == "index.html" else BASE + p
+
+
 def organization():
     return {
         "@type": "Organization",
