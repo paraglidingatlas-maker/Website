@@ -18,6 +18,11 @@ DOMAIN = "paraglidingatlas.com"
 PATH = "/"
 BASE = "https://%s%s" % (DOMAIN, PATH)
 
+# --------------------------------------------------------------- indexnow ----
+# Bing Webmaster Tools > IndexNow. The key file <KEY>.txt at the site root is
+# written by tools/indexnow.py; the workflow pings the engines after each push.
+INDEXNOW_KEY = "67de95af5892432fbe35c572ea0058b3"
+
 # ----------------------------------------------------------------- entity ----
 # Every place this brand demonstrably exists. These become sameAs, which is how
 # an answer engine works out that the website, the YouTube channel and the Apple
