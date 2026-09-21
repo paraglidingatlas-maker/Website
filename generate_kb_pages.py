@@ -96,6 +96,22 @@ def html_escape(s):
             .replace(">", "&gt;").replace('"', "&quot;"))
 
 
+
+def _short(text, cap=220):
+    """First sentence(s) of a summary, under cap characters, HTML-attribute safe."""
+    import re as _re
+    text = " ".join(text.split())
+    out = ""
+    for sent in _re.split(r"(?<=[.!?])\s+", text):
+        if out and len(out) + len(sent) + 1 > cap:
+            break
+        out = (out + " " + sent).strip()
+        if len(out) >= cap * 0.6:
+            break
+    if len(out) > cap:
+        out = out[:cap].rsplit(" ", 1)[0] + "\u2026"
+    return out.replace("&", "&amp;").replace('"', "&quot;")
+
 def _rich(slug, series_title, episodes):
     """Resolve every tile on a page to its episode, or give up cleanly.
 
@@ -341,6 +357,14 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
             # still what a person sees: episode-modal.js intercepts the click.
             href = d["page"] if d else e.get("readmore", "../podcast.html")
             data_idx = f' data-ep-index="{i}"' if d else ""
+            # data-desc was empty on every tile. Fill it from the episode
+            # summary so the category page carries crawlable text about each
+            # episode, not just its title. First sentence or two, capped.
+            if d and not e.get("desc"):
+                for m in KBD._meta():
+                    if m["slug"] == d["slug"] and m.get("summary"):
+                        e["desc"] = _short(m["summary"])
+                        break
 
             if d:
                 # The guest is in the title on almost every episode, and often in

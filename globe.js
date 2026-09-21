@@ -184,6 +184,7 @@
       const th = popup.querySelector('.mp-th');
       if (img && th) {
         if (x.video) {
+          img.alt = x.title ? 'Episode thumbnail: ' + x.title : 'Episode thumbnail';
           img.src = 'https://i.ytimg.com/vi/' + x.video + '/maxresdefault.jpg';
           img.onerror = function () {
             this.onerror = null;

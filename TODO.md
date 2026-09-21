@@ -80,6 +80,57 @@ than left to rot, or this file stops being trusted.
 
 ## Content and SEO
 
+### Knowledge base: SEO/GEO (audit 22 Sept 2026)
+
+Category pages are link hubs: nav, a one-line intro and episode tile titles.
+Nothing on them answers a question, so nothing on them can rank or be cited.
+The evidence is all in the transcripts one level down.
+
+- [ ] **Editorial per category.** 400-800 words on each of the 20 category
+      pages: what the category covers, 5-8 key takeaways pulled from the
+      transcripts, each linked to the episode and chapter. Flight Mechanics
+      first, reviewed by Aninder before the pattern is copied.
+- [ ] **"Questions answered in this category" block.** 6-10 Q&As per page,
+      answers 40-80 words, FAQPage schema, each answer linked to the
+      timestamped chapter that backs it.
+- [ ] **Rename opaque categories in title and H1 to query language.** Keep
+      the series name as a kicker and keep the URL. Sky Gods, The Dark Side,
+      Living The Dream, Navigators, Core Series, Storytellers all need this.
+- [ ] **KB landing H1** is "Elevate Your Knowledge Of The Blue Yonder", 227
+      body words, no keywords. Rewrite H1 and add an intro that names topics.
+- [x] **ep-tile data-desc was empty on every tile.** Now filled from the
+      episode summary in generate_kb_pages.py.
+- [ ] **Standalone answer pages** (later). 30-50 most-searched questions in
+      the sport, 600-1,000 words each, citing own transcripts. KB categories
+      become the index into these.
+- [ ] **Keyword research before writing.** Search Console queries, autocomplete
+      and the forums; no volume data exists yet, the target phrases are guesses.
+- [ ] **Tag pages** duplicate the KB episode lists with no editorial. Either
+      give them the same treatment or noindex them.
+
+### Site-wide SEO (audit 22 Sept 2026)
+
+- [x] Homepage title, description and og:title carry keywords; hero tagline is
+      "Touch The Sky With Glory" with a keyword kicker above it.
+- [x] podcast.html and library.html titled as "the Paragliding Atlas podcast";
+      PodcastSeries schema on podcast.html with webFeed and sameAs.
+- [x] Matt Wilkes and Helmut Schrempf cards now have photos.
+- [x] Globe popup thumbnail gets an alt from the episode title.
+- [x] Google Search Console, Bing Webmaster Tools and IndexNow live.
+- [ ] **No destination pages except Kenya.** India, Peru, Kazakhstan link to
+      the enquiry form. India page is the top priority; Peru and Kazakhstan
+      need at least a "planned for 2027, register interest" page each.
+- [ ] **TouristTrip schema on tour pages** with dates and price.
+- [ ] **About page should name the guides** so E-E-A-T attaches to real
+      people. Person schema on each.
+- [ ] **Core Web Vitals** on homepage, one KB page, one episode page.
+- [ ] **Bing Site Scan report** and Search Console Pages/Performance once
+      data arrives; act on what they show.
+- [ ] **Ask guests to link their episode page** from their own sites.
+- [ ] **Regenerate llms.txt in build.sh** so counts stay true; add IndexNow
+      and FAQ pages to it once they exist.
+- [ ] Hero coordinates are Oslo on every page. Deliberate, leave them.
+
 - [x] **Dead link.** Was the globe popup's empty template state; globe.js sets a
       real href when a pin is clicked. The placeholder href is gone, so the
       keyboard cannot land on a link to nowhere while the popup is empty.
