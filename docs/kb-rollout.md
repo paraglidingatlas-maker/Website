@@ -26,8 +26,8 @@ is a citable article that ranks on its own and links down into the episodes.
 | the-dark-side | 5 | done |
 | world-cups | 7 | done |
 | resources-tools-tips | 11 | done |
-| brand-stories | 4 | next |
-| navigators | 6 | narrative, see below |
+| brand-stories | 4 | done |
+| navigators | 6 | next (narrative, see below) |
 | sky-gods | 4 | narrative |
 | living-the-dream | 6 | narrative |
 | storytellers | 2 | narrative, thin: consider merging copy with another |
