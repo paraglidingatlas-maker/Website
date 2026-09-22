@@ -57,7 +57,7 @@
   5. Coming down: power lines, terraces, crops, fences and water; retrieves and security in each region.
 - Hero: world map from Natural Earth 1:110m (public domain). The usual map CDNs are blocked here, so `tools/kbfig/nav_land.py` reads the copy bundled in the geopandas 0.14.4 wheel (fetched with pip on first use). Places marked: only those named in the episodes.
 - Editorial calls to check:
-  - Left out entirely: every death mentioned (a fatal accident at Mount Borah, a fatal crash at the 2019 Panchgani pre-World Cup, fatal accidents mentioned in Colombia and Bir, a Pakistani pilot who died), and everything about John Silvester's own flying decisions, including the Barabangal story; only Eddie Colfox's lesson from it is kept, and not on the page. Also left out: Vistasp Kharas deliberately climbing through a cloud, Godfrey's account of deliberately flying in a dust devil, Nikolay Yotov's arrests, the Isiolo incident and his marriage story, and remarks about crime in named countries.
+  - Left out entirely: every death mentioned (a fatal accident at Mount Borah, a fatal crash at the 2019 Panchgani pre-World Cup, fatal accidents mentioned in Colombia and Bir), and everything about John Silvester's own flying decisions, including the Barabangal story; only Eddie Colfox's lesson from it is kept, and not on the page. Also left out: Vistasp Kharas deliberately climbing through a cloud, Godfrey's account of deliberately flying in a dust devil, Nikolay Yotov's arrests, the Isiolo incident and his marriage story, and remarks about crime in named countries.
   - Jigish Gohil's statistics (deaths per season in Bir) are not on the page; his pilot numbers are ("about 800 solo pilots in autumn 2023, about 200 when he arrived").
   - Godfrey Wenness is called a former world record holder and an Advance test pilot only by the host. The page uses what Godfrey says himself: the world record in November 1998, landing in Queensland 335 km from Manilla.
   - Speaker labels are wrong in many places in the Eddie Colfox and Nikolay Yotov transcripts (host and guest swapped). Judged by content. "Many accidents happen because of the cloud" turned out to be the host's line, so it is not attributed to Eddie; the page only credits him with "be very careful of cloud, and don't follow others into it". "Don't spoil the system" on retrieve fares is labelled as the host but reads as the end of Vistasp Kharas' answer (the labels lag by a few words there); credited to Kharas.
@@ -65,3 +65,21 @@
   - Guest names checked against episode-meta.json: captions say "Paul Tuckerts", "Godfrey Venice/Willis", "Jagish", "Nikolai"; kept Pal Takats, Godfrey Wenness, Jigish Gohil, Nikolay Yotov as in the metadata.
   - The Cauca Valley figure puts Roldanillo and Piedechinche on one cross-section; they are about 100 km apart. Marked schematic in the figure and its source line.
   - FAQ "Is it safe to land out in Colombia" and the security lines are Pal Takats' own experience, stated as such.
+
+## Sky Gods
+
+- Commit a7fdffe, deploy: pages build and deployment success (build, deploy jobs success).
+- H1: How Do the Best Paragliding Pilots Train and Think?
+- Bands:
+  1. Beginnings: Maxime Pinot's early start and the Pyrenees school; Honorin Hamard's father and his first 200-hour years; Antoine Girard from climbing's 8,000 metre peaks; Robbie Whittall from hang gliding to Ozone.
+  2. Volume: ground handling and hours (figure: hours a year).
+  3. Moving up: Hamard's too-early jump to a demanding wing; keeping a wing longer; stepping down a class for expeditions.
+  4. Limits: flying at altitude (figure: trim speed at 2,000 to 8,000 m) and Girard's Peru cloud; Hamard stopping a record attempt (quote band); Pinot on the X-Alps and fatigue; Whittall over Zanskar.
+  5. Race craft: Hamard's and Pinot's competition habits and rules; Whittall on leaving the gaggle.
+- Editorial calls to check:
+  - Titles: the host calls Honorin Hamard the world number one and a multiple record holder; the page only uses what the guests say themselves (both Hamard and Pinot say "when I was world champion"; Girard describes his 2016 flight as the first above 8,000 m, which the page does not repeat as a claim).
+  - Antoine Girard says a normal reserve would descend at 11 to 13 m/s at 5,000 m. That looks wrong (thin air raises a 5.5 m/s descent to roughly 7), so the numbers are left out; the page only says a reserve was not an option in that storm. His airspeed figures (about 40, 50 and 60 km/h at 2,000, mid and 8,000 m) do match the true-airspeed change and are used.
+  - Maxime Pinot says the 2023 X-Alps left him with something that "looks a lot like post-traumatic stress" and that he works with psychologists. The page says only that he has felt fear where he had none and works on it with a psychologist; no diagnosis wording. The falling-asleep flight could be 2021 or 2023 (he is not sure), so the page does not date it.
+  - Robbie Whittall: left out his views on vaccines, the food and pharmaceutical industries, one meal a day, football, wars and technology, his parting with a named co-founder, and every mention of John Silvester. Ozone partners spelled "Mike Cavanagh" (captions: Kavanagh) and "Dave Pilkington". The Zanskar flight's launch point is unclear in the transcript, so the page says only "over Zanskar".
+  - Left out: the fatal accident of a local pilot in Karimabad, Maxime Pinot's criticism of beer at goal in official races, the storm incident of another X-Alps pilot, product names and product-behaviour claims (e.g. about specific two-liner models), and Honorin Hamard's name for the pilot who broke his triangle record.
+  - Speaker labels in the Honorin Hamard transcript are largely swapped (his label is mostly the host). Judged by content.
