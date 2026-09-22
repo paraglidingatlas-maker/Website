@@ -29,8 +29,8 @@ is a citable article that ranks on its own and links down into the episodes.
 | brand-stories | 4 | done |
 | navigators | 6 | done |
 | sky-gods | 4 | done |
-| living-the-dream | 6 | next (narrative) |
-| storytellers | 2 | narrative, thin: consider merging copy with another |
+| living-the-dream | 6 | done |
+| storytellers | 2 | next (narrative, short page) |
 | weather-patterns | 1 | thin: one episode, a short page is fine |
 
 The five category landing pages (`core-series`, `competitions`, `meteorology`,
