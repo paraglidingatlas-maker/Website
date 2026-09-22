@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flight Mechanics | Paragliding Atlas</title>
-<meta name="description" content="Build a deeper understanding of the forces and principles that govern safe and efficient flight.">
+<title>Paragliding Flight Mechanics: Stability & Control | Paragliding Atlas</title>
+<meta name="description" content="Why a paraglider with no tail stays stable, what makes it collapse, what an EN letter really tells you, and how to read the air. Eight designers and test pilots.">
 <link rel="canonical" href="https://paraglidingatlas.com/knowledge-base/flight-mechanics.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Flight Mechanics">
-<meta property="og:description" content="Build a deeper understanding of the forces and principles that govern safe and efficient flight.">
+<meta property="og:title" content="How a Paraglider Flies: Stability, Collapses, Certification and Control">
+<meta property="og:description" content="Why a paraglider with no tail stays stable, what makes it collapse, what an EN letter really tells you, and how to read the air. Eight designers and test pilots.">
 <meta property="og:image" content="https://paraglidingatlas.com/assets/images/hero.jpg">
 <meta property="og:url" content="https://paraglidingatlas.com/knowledge-base/flight-mechanics.html">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"CollectionPage","name":"Flight Mechanics","url":"https://paraglidingatlas.com/knowledge-base/flight-mechanics.html","description":"Build a deeper understanding of the forces and principles that govern safe and efficient flight.","isPartOf":{"@type":"WebSite","name":"Paragliding Atlas","url":"https://paraglidingatlas.com/"}}
+{"@context":"https://schema.org","@type":"CollectionPage","name":"How a Paraglider Flies: Stability, Collapses, Certification and Control","url":"https://paraglidingatlas.com/knowledge-base/flight-mechanics.html","description":"Why a paraglider with no tail stays stable, what makes it collapse, what an EN letter really tells you, and how to read the air. Eight designers and test pilots.","isPartOf":{"@type":"WebSite","name":"Paragliding Atlas","url":"https://paraglidingatlas.com/"}}
 </script>
 <link rel="icon" type="image/png" href="../assets/logo/favicon.png">
 <link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon.png">
@@ -82,6 +82,32 @@
   .ep-tile:hover .ep-foot i{transform:scale(1.15);}
   .ep-empty{background:var(--card);border:1px solid rgba(255,117,23,0.2);border-left:3px solid var(--orange);padding:2rem;max-width:1300px;margin:0 auto;color:var(--gray-light);font-size:0.92rem;}
 
+  .cat-hero .kicker{display:block;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.9rem;}
+  .kb-ed,.kb-take,.kb-faq{padding:0 clamp(1.5rem,5vw,4rem);background:var(--bg);}
+  .kb-ed{padding-bottom:clamp(2rem,5vw,3rem);}
+  .kb-ed h2,.kb-take h2,.kb-faq h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.25rem,2.4vw,1.6rem);
+    color:var(--white);max-width:760px;margin:0 0 1rem;}
+  .kb-ed p{color:var(--gray-light);line-height:1.75;font-size:0.98rem;max-width:760px;margin:0 0 1.1rem;}
+  .kb-take{padding-bottom:clamp(3rem,7vw,4.5rem);}
+  .kb-take ol{list-style:none;counter-reset:take;max-width:760px;margin:0;padding:0;}
+  .kb-take li{counter-increment:take;position:relative;padding:1rem 0 1rem 3rem;border-top:1px solid var(--line);}
+  .kb-take li:last-child{border-bottom:1px solid var(--line);}
+  .kb-take li::before{content:counter(take,decimal-leading-zero);position:absolute;left:0;top:1.05rem;
+    font-family:var(--font-display);font-weight:600;font-size:0.8rem;color:var(--orange);font-variant-numeric:tabular-nums;}
+  .kb-take li p{color:var(--gray-light);line-height:1.65;font-size:0.95rem;margin:0 0 0.45rem;}
+  .kb-src{display:inline-block;color:var(--gray);font-size:0.78rem;text-decoration:none;}
+  .kb-src span{color:var(--orange);}
+  .kb-src span::before{content:"\2192  ";}
+  .kb-src:hover span{text-decoration:underline;}
+  .kb-faq{padding-top:clamp(3rem,7vw,4.5rem);padding-bottom:clamp(4rem,9vw,6rem);}
+  .kb-faq h2{margin-bottom:1.5rem;}
+  .kb-qa{max-width:760px;margin:0;padding:1.1rem 0 1.2rem;border-top:1px solid var(--line);}
+  .kb-qa:last-child{border-bottom:1px solid var(--line);}
+  .kb-qa h3{font-family:var(--font-display);font-weight:600;font-size:1.02rem;color:var(--white);margin:0 0 0.5rem;}
+  .kb-qa p{color:var(--gray-light);line-height:1.7;font-size:0.95rem;margin:0 0 0.45rem;}
+  .ep-body .kb-grid-head{max-width:1300px;margin:0 auto 1rem;font-family:var(--font-display);font-weight:700;
+    font-size:clamp(1.25rem,2.4vw,1.6rem);color:var(--white);}
+
 </style>
 <!-- site-schema -->
 <script type="application/ld+json">
@@ -143,8 +169,8 @@
     "@id": "https://paraglidingatlas.com/#organization"
    },
    "inLanguage": "en",
-   "dateModified": "2026-09-14",
-   "name": "Flight Mechanics | Paragliding Atlas"
+   "dateModified": "2026-09-21",
+   "name": "Paragliding Flight Mechanics: Stability & Control | Paragliding Atlas"
   },
   {
    "@type": "BreadcrumbList",
@@ -172,6 +198,91 @@
      "position": 4,
      "name": "Flight Mechanics",
      "item": "https://paraglidingatlas.com/knowledge-base/flight-mechanics.html"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Why is a paraglider stable in pitch when it has no tail?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Because the stability is built into the profile. Luc Armant explains that a profile has a moment coefficient: on a stable one, as the angle of attack falls the lift resultant moves forward, which pulls the nose back up. A profile with a low moment coefficient carries its lift further back and is easier to accelerate, but resists collapse less."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is pitch-up tendency in a paraglider?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tom Lolies describes it as an airfoil that, when the angle of attack drops, moves its centre of lift towards or beyond the nose, so the wing wants to pitch against a collapse rather than with it. The pilot feels a loss of tension before anything folds and has time to react. Older profiles tended the other way and collapsed completely and quickly."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does EN certification tell me how likely a wing is to collapse?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Alain Zoller, who runs a test house, says the induced collapses are not representative of what the air does. Tom Lolies adds that the standard has roughly twenty tests for behaviour after a collapse and no accepted test for collapse resistance; the only one, brake application at full speed, is itself debated."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How should I read a paraglider test report before buying?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Do not use it to rank wings. Luc Armant says to ignore any single result and read who the manufacturer says the wing is for. Alain Zoller adds that the brake range is worth a look, because a clean report with a very short range means little margin before the stall, and that nothing replaces test-flying two or three candidates yourself."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Why is a small amount of brake a problem on a modern two-liner?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tom Lolies explains that a slight brake deflection is enough to cancel the profile's pitch-up tendency, and so its collapse resistance, without creating enough drag to slow the wing. On some high-level wings, touching the brakes at full speed makes them faster, not slower. Fly on the B risers, or use plenty of brake, but avoid the small amount in between."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is it better to fly on the B risers than on the brakes?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "In ordinary air, both Helmut Schrempf and Tom Lolies fly on the B risers to keep the profile intact and the wing efficient. But the B risers are not brakes: Helmut says to switch to the brakes when a collapse happens, and the pendulum gives you time to do it. On three-liners, C steering needs the B-C bridge the manufacturer specifies."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How do I check my brake line length?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Tom Lolies gives two checks. From hands fully up to the first feeling of tension there should be at least 7 cm of travel, and at full speed bar there should be no tension in the brakes. Brake lines made of Dyneema shrink over time, so this is worth checking regularly rather than once."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Which way should I turn when I hit a thermal?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Into wind, unless you have better information. Brett Janaway explains that the core sits on the upwind side, so turning into wind either finds it or, if you have overshot the front, drops you back into it. Turning downwind at the back leaves you sinking and flying upwind to reach a core that is now above and ahead of you."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Why do two Enzo 3s from the same batch feel different?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Because the wing is built at the edge of pitch stability to stay competitive under the 14 cm speed-bar limit. Luc Armant says the cloth shrinks and the rods tighten with use, and a difference of about 5 mm on a rod over two metres long is enough to move one wing from fast towards collapsing. Everyday EN wings carry far more margin."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Should I move up a glider class?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Only if there is nothing left to learn on the one you fly. Tom Lolies, who can fly any wing he likes, still steps back to a low B after a break to rebuild currency, and says stepping down should carry no stigma. Alain Zoller's version: know your glider at 100 percent before you change it, and avoid the highest class you think you can handle."
+     }
     }
    ]
   }
@@ -203,13 +314,37 @@
 
 <header class="cat-hero">
   <p class="breadcrumb"><a href="../knowledge-base.html">Knowledge Base</a> / <a href="technical.html">Technical Focus & Flight Safety</a> / Flight Mechanics</p>
-  <h1>Flight Mechanics</h1>
-  <p>Build a deeper understanding of the forces and principles that govern safe and efficient flight.</p>
+  <p class="kicker">Flight Mechanics</p>
+  <h1>How a Paraglider Flies: Stability, Collapses, Certification and Control</h1>
+  <p>Why a wing with no tail stays stable, what actually makes it collapse, what a certification letter does and does not tell you, and how to read the air you are climbing in. Eight conversations with the people who design, test and teach it.</p>
   <div class="ep-stats"><span><b>8</b> conversations</span><span><b>9h 13m</b></span><span><b>85</b> chapters</span><span><b>89,404</b> words transcribed</span></div>
   <div class="point-row"><span>Aerodynamic fundamentals</span><span>AOA and airspeed</span><span>Wing behavior in different phases</span><span>Control inputs and their effects</span></div>
 </header>
 
+<section class="kb-ed">
+  <h2>What these eight conversations add up to</h2>
+  <p>A paraglider has no tail, so every bit of its pitch stability comes from the shape of the profile. Luc Armant of Ozone explains it through the moment coefficient: on a stable profile, as the angle of attack drops the lift resultant moves forward and resists the pitch-down, while a profile with a lower moment coefficient carries its lift further back, gives more speed for a given amount of speed-bar travel, and gives up resistance to collapse in exchange. Tom Lolies, designing for Skywalk, describes the same physics from the bench as pitch-up tendency: the newer airfoils that, when the lines go slack in a gust, want to pitch against the collapse rather than with it, so the pilot feels the tension drop and has time to react instead of getting the whole thing at once.</p>
+  <p>That is why a certification report is a narrower document than most buyers assume. Alain Zoller, who runs the Air Turquoise test house and sits on the Work Group 6 that writes the standard, says a class does not make one wing better than another, only better matched to a pilot, and that the collapses induced in testing are not representative of what turbulence does. Tom Lolies goes further: the standard has around twenty tests for how a wing behaves once it has collapsed and effectively none for how hard it is to collapse, so a page of A results can mean a beautifully behaved wing, or one that folds so easily that nothing dramatic ever happens. Luc Armant's buying advice is the same from Ozone's side: ignore any single letter and read who the manufacturer says the wing is for.</p>
+  <p>On the control side, Tom Lolies and the SIV coach Helmut Schrempf arrive at the same warning about the modern, more stable profiles: a small amount of brake is the worst input you can give them, because it deflects the trailing edge enough to kill the pitch-up tendency without adding enough drag to slow the wing. Fly hands-up on the B risers or the C steering, or use a lot of brake when you need it, but not a little. Bryan Van Ostheim describes the extreme version on a reflex parakite, where a light brake input during a surge removes the reflex and the whole wing can fold. Helmut's coaching method starts with the pilot's body before any manoeuvre: tension in the harness, and releasing that tension into a dropping side rather than pressing into it.</p>
+  <p>Brett Janaway covers the air itself. Thermals need contrast and triggers more than heat, which is why Slovenia works in December and a desert often does not; the strongest air sits at the upwind front of the bubble because it rises more vertically for the same drift; and with no other information you turn into wind. Aljaž Valič of 777 and Luc Armant close the loop on why wings look the way they do: internal structure and laser-cut ribs, the aspect-ratio and cell-count arguments inside the C class, and competition rules that push racing profiles to the edge of stability.</p>
+</section>
+<section class="kb-take">
+  <h2>Nine things worth remembering</h2>
+  <ol>
+    <li><p>Pitch stability comes only from the profile. The moment coefficient decides where the lift sits and how much speed the bar can deliver, and a rule that caps speed-bar travel at 14 cm pushes any wing built to win towards the unstable end.</p><a class="kb-src" href="../episodes/luc-armant-talks-about-the-moment-coefficient-enzo-3.html#c2">Luc Armant <span>Pitch stability without a tail</span></a></li>
+    <li><p>Check your brake length before anything else. From hands-up to first tension there should be at least 7 cm, and at full bar there should be no tension in the brakes at all. Dyneema brake lines shrink, pilots adapt without noticing, and shortened brakes are a cofactor in accidents.</p><a class="kb-src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c12">Tom Lolies <span>Does brake input prevent collapses</span></a></li>
+    <li><p>One green flag for a collapse-resistant airfoil: at full speed the B lines go light or slack, because the centre of lift has moved forward onto the A lines. Not a rule, but one signal among several.</p><a class="kb-src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c6">Tom Lolies <span>The green flags to look for in a wing</span></a></li>
+    <li><p>Counting A results on a test report is not a safety grade. The report shows how collapses went, never how easy they were to provoke, and a pitch-unstable wing can score well precisely because it collapses so readily.</p><a class="kb-src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c7">Tom Lolies <span>Reading a test report properly</span></a></li>
+    <li><p>Stalling from the B risers comes sooner and with less warning than from the brakes. If turbulence means you need to slow down a lot, let go of the Bs, use a deep brake input, and go back to the Bs as soon as you can.</p><a class="kb-src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c13">Tom Lolies <span>Can every collapse be caught on the B line</span></a></li>
+    <li><p>When a side drops, release the tension in your body on that side and let the wing take what it needs. Pressing in actively usually gives it the wrong amount, which is where the rolling and pitching on speed bar comes from.</p><a class="kb-src" href="../episodes/helmut-schrempf-modernizing-siv-courses-how-this-new.html#c4">Helmut Schrempf <span>Anticipating collapses on a stable wing</span></a></li>
+    <li><p>A wing drifts out of trim with use and generally gets a little slower; spiralling always the same way shrinks one side differently. Get it checked and trimmed, and keep the logbook, because a missed check can also void the warranty.</p><a class="kb-src" href="../episodes/alain-zoller-the-science-of-en-certifications-how-work.html#c9">Alain Zoller <span>Can certification change once the trim drifts</span></a></li>
+    <li><p>With no other information, turn into wind when you hit lift. Get it wrong at the front and you fall back into the core; get it wrong at the back and you are sinking and flying upwind to a core that is now further away.</p><a class="kb-src" href="../episodes/how-to-thermal-like-a-pro-find-center-climb-paragliding.html#c7">Brett Janaway <span>Which way to turn with no information</span></a></li>
+    <li><p>Stepping down a class is not a failure and stepping up is not a required step. Match the wing to what you want from flying and how current you are, and decouple the choice from ego.</p><a class="kb-src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c10">Tom Lolies <span>Whether to change category or stay put</span></a></li>
+  </ol>
+</section>
+
 <div class="ep-body">
+  <h2 class="kb-grid-head">The 8 conversations</h2>
   <div class="ep-grid">
     <a class="ep-tile" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html" data-ep-index="0" data-title="The Science Of Wing Design and Evolution from ENC to CSC" data-guest="Tom Lolies" data-desc="Tom Lolies traces his route from a student project bringing proper modelling and scientific method into paraglider design, through seven years designing at BGD, to running a three person research group building…" data-readmore="../podcast.html" data-yt-id=""><span class="ep-stamp">Episode 66<i>92 min</i></span><span class="ep-th"><img loading="lazy" src="https://i.ytimg.com/vi/iurDFHlgJjI/maxresdefault.jpg" alt="" onerror="this.onerror=null;this.src=&#39;https://i.ytimg.com/vi/iurDFHlgJjI/mqdefault.jpg&#39;"></span><span class="ep-tile-body"><span class="ep-tile-title">Tom Lolies Explains The Science Of Wing Design and Evolution from ENC to  CSC</span></span><span class="ep-foot">12 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
     <a class="ep-tile" href="../episodes/helmut-schrempf-modernizing-siv-courses-how-this-new.html" data-ep-index="1" data-title="Modernizing SIV Courses: How This New Training Method Can Help You Master Glider Control and Improve Paragliding Safety" data-guest="Helmut Schrempf" data-desc="Helmut Schrempf sets out a modernised way of running SIV courses, built around teaching deliberate control of the wing rather than working through a fixed list of manoeuvres." data-readmore="../podcast.html" data-yt-id=""><span class="ep-stamp">Episode 32<i>80 min</i></span><span class="ep-th"><img loading="lazy" src="https://i.ytimg.com/vi/wTfS5kv1t9M/maxresdefault.jpg" alt="" onerror="this.onerror=null;this.src=&#39;https://i.ytimg.com/vi/wTfS5kv1t9M/mqdefault.jpg&#39;"></span><span class="ep-tile-body"><span class="ep-tile-title">Modernizing SIV Courses: How This New Training Method Can Help You Master Glider Control and Improve Paragliding Safety</span><span class="ep-tile-guest">Helmut Schrempf</span></span><span class="ep-foot">10 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
@@ -222,6 +357,61 @@
   </div>
   <script type="application/json" id="kbEpisodes">[{"audio": {"url": "https://anchor.fm/s/ed1344d8/podcast/play/113632311/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-0-7%2F415661857-44100-2-a926ae04e9166.mp3", "mb": 85, "fmt": "MP3"}, "slug": "tom-lolies-explains-the-science-of-wing-design-and", "page": "../episodes/tom-lolies-explains-the-science-of-wing-design-and.html", "title": "Tom Lolies Explains The Science Of Wing Design and Evolution from ENC to  CSC", "guest": "Tom Lolies", "quote": "You can spend a lifetime doing this job and you'll never get bored of it, because it's just endless.", "summary": "Tom Lolies traces his route from a student project bringing proper modelling and scientific method into paraglider design, through seven years designing at BGD, to running a three person research group building simulation software for flexible wings. He is candid that after eight years he still meets prototypes that behave in ways he did not predict, and treats that as the interesting part of the job.", "video": "iurDFHlgJjI", "epno": "Episode 66", "date": "7 January 2026", "dur": "92 min", "series": "Flight Mechanics", "seriesPage": "flight-mechanics.html", "pos": 5, "nser": 7, "nchapters": 12, "chapters": [{"at": "00:01:42", "title": "What a designer's day actually looks like", "anchor": null}, {"at": "00:07:22", "title": "What optimisation taught them", "anchor": "c3"}, {"at": "00:13:06", "title": "Whether a glider behaves like a living thing", "anchor": "c4"}, {"at": "00:17:57", "title": "Brake pressure, and the approach to a stall", "anchor": "c5"}, {"at": "00:24:33", "title": "The green flags to look for in a wing", "anchor": "c6"}], "tags": [{"name": "Wing Design", "page": "tags/wing-design.html"}, {"name": "Simulation", "page": null}, {"name": "Aspect Ratio", "page": null}, {"name": "Two Liners", "page": "tags/two-liners.html"}, {"name": "Certification", "page": "tags/certification.html"}, {"name": "Test Reports", "page": null}], "lon": 4.35, "lat": 50.85, "shareUrl": "https://paraglidingatlas.com/episodes/tom-lolies-explains-the-science-of-wing-design-and.html", "spotify": "", "artwork": ""}, {"audio": {"url": "https://anchor.fm/s/ed1344d8/podcast/play/96858512/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-0-10%2F392837920-44100-2-d4c193e566ad6.m4a", "mb": 74, "fmt": "M4A"}, "slug": "helmut-schrempf-modernizing-siv-courses-how-this-new", "page": "../episodes/helmut-schrempf-modernizing-siv-courses-how-this-new.html", "title": "Helmut Schrempf : Modernizing SIV Courses: How This New Training Method Can Help You Master Glider Control and Improve Paragliding Safety", "guest": "Helmut Schrempf", "quote": "The wing doesn't have to learn it, the wing already knows. It's more the connection from the pilot to the harness. This is the basic of safety pilot coaching", "summary": "Helmut Schrempf sets out a modernised way of running SIV courses, built around teaching deliberate control of the wing rather than working through a fixed list of manoeuvres. His case is that this is how pilots genuinely build confidence in the air, and that it raises the safety bar rather than trading it away.", "video": "wTfS5kv1t9M", "epno": "Episode 32", "date": "10 January 2025", "dur": "80 min", "series": "Flight Mechanics", "seriesPage": "flight-mechanics.html", "pos": 1, "nser": 7, "nchapters": 10, "chapters": [{"at": "00:00:00", "title": "Introduction", "anchor": null}, {"at": "00:04:54", "title": "What safety pilot coaching actually is", "anchor": "c2"}, {"at": "00:10:55", "title": "Was that force impossible to prevent", "anchor": "c3"}, {"at": "00:31:52", "title": "Anticipating collapses on a stable wing", "anchor": "c4"}, {"at": "00:35:59", "title": "Brake line position and performance", "anchor": "c5"}], "tags": [{"name": "Paragliding", "page": "tags/paragliding.html"}, {"name": "SIV", "page": "tags/siv.html"}, {"name": "Training", "page": "tags/training.html"}, {"name": "Safety Training", "page": "tags/safety-training.html"}, {"name": "Collapses", "page": "tags/collapses.html"}, {"name": "Harnesses", "page": "tags/harnesses.html"}], "lon": 13.4, "lat": 47.3, "shareUrl": "https://paraglidingatlas.com/episodes/helmut-schrempf-modernizing-siv-courses-how-this-new.html", "spotify": "", "artwork": ""}, {"audio": {"url": "https://anchor.fm/s/ed1344d8/podcast/play/99656676/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-2-10%2F396323533-44100-2-fe230dda57d9b.m4a", "mb": 89, "fmt": "M4A"}, "slug": "alain-zoller-the-science-of-en-certifications-how-work", "page": "../episodes/alain-zoller-the-science-of-en-certifications-how-work.html", "title": "Alain Zoller: The Science of EN Certifications : How Work Group 6 Shaped Paragliding Testing, Innovation & Safety", "guest": "Alain Zoller", "quote": "We don't focus too much on the collapses because when you collapse the glider, it is absolutely not representative of what you will get in air", "summary": "Alain Zoller of Air Turquoise explains who actually decides that a wing is safe to fly, walking through the CEN technical committees and the Work Group 6 that writes paragliding's test standards. He argues a certification class does not make one wing better than another, only better matched to what a pilot wants, and that collapse testing is not representative of what the air really does.", "video": "CBxyezZ-UOw", "epno": "Episode 37", "date": "10 March 2025", "dur": "96 min", "series": "Flight Mechanics", "seriesPage": "flight-mechanics.html", "pos": 2, "nser": 7, "nchapters": 13, "chapters": [{"at": "00:00:00", "title": "Introduction", "anchor": null}, {"at": "00:00:46", "title": "How reserve certification works, and ideal descent speed", "anchor": "c2"}, {"at": "00:05:19", "title": "Air Turquoise, and what a test house actually does", "anchor": "c3"}, {"at": "00:15:12", "title": "Rules written for security, and where they went", "anchor": "c4"}, {"at": "00:24:41", "title": "What sets Air Turquoise apart", "anchor": "c5"}], "tags": [{"name": "Certification", "page": "tags/certification.html"}, {"name": "Paragliding", "page": "tags/paragliding.html"}, {"name": "Safety", "page": "tags/safety.html"}, {"name": "Collapses", "page": "tags/collapses.html"}, {"name": "Harnesses", "page": "tags/harnesses.html"}, {"name": "Reserves", "page": "tags/reserves.html"}], "lon": 8.2, "lat": 46.8, "shareUrl": "https://paraglidingatlas.com/episodes/alain-zoller-the-science-of-en-certifications-how-work.html", "spotify": "", "artwork": ""}, {"audio": {"url": "https://anchor.fm/s/ed1344d8/podcast/play/107254600/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-7-23%2F406163510-44100-2-efc2945224f2b.m4a", "mb": 53, "fmt": "M4A"}, "slug": "demystifying-the-science-behind-parakites-bryan-van-ostheim", "page": "../episodes/demystifying-the-science-behind-parakites-bryan-van-ostheim.html", "title": "Demystifying The Science Behind Endless Fun Factor of Parakites With Bryan Van Ostheim", "guest": "Bryan Van Ostheim", "quote": "I think the biggest problem in parakiting is that people can get so confident that they think they can always fly in all kinds of conditions and start to push the limits. And then at some point, yeah, there is a limit and then it gets really nasty", "summary": "In this episode, I talk to Bryan Van Ostheim, the brain behind taking parakite performance to a whole new level. We talk about what lies beyond the thrill to explore the aerodynamics of freedom, the psychology of flight, and the engineering principles that turn fear into effortless fun.", "video": "", "epno": "Episode 52", "date": "23 August 2025", "dur": "57 min", "series": "New Technologies", "seriesPage": "flight-mechanics.html", "pos": 8, "nser": 8, "nchapters": 11, "chapters": [{"at": "00:00:24", "title": "Where neural networks come into it", "anchor": "c2"}, {"at": "00:04:29", "title": "Trim speed, and how fast a parakite is", "anchor": "c3"}, {"at": "00:07:53", "title": "Why that happens, against paraglider intuition", "anchor": "c4"}, {"at": "00:11:36", "title": "Ground handling, and building the instinct", "anchor": "c5"}, {"at": "00:17:13", "title": "The learning curve in this sport", "anchor": "c6"}], "tags": [{"name": "Parakites", "page": null}, {"name": "Paragliders", "page": null}, {"name": "Reflex", "page": null}, {"name": "Collapses", "page": "tags/collapses.html"}, {"name": "Speed", "page": null}, {"name": "Glide", "page": null}], "lon": 4.35, "lat": 50.85, "shareUrl": "https://paraglidingatlas.com/episodes/demystifying-the-science-behind-parakites-bryan-van-ostheim.html", "spotify": "https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Demystifying-The-Science-Behind-Endless-Fun-Factor-of-Parakites-With-Bryan-Van-Ostheim-e377lc8", "artwork": "../assets/podcast/artwork/demystifying-the-science-behind-parakites-bryan-van-ostheim.jpg"}, {"audio": {"url": "https://anchor.fm/s/ed1344d8/podcast/play/109886940/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-9-19%2F409543110-44100-2-f86576804c8c1.mp3", "mb": 37, "fmt": "MP3"}, "slug": "luc-armant-talks-about-debunking-the-myths-and-upgrading", "page": "../episodes/luc-armant-talks-about-debunking-the-myths-and-upgrading.html", "title": "Luc Armant talks about Debunking the Myths and Upgrading Enzo 3", "guest": "Luc Armant", "quote": "It's always the story of rules and the side effect of rules.", "summary": "Luc Armant explains how competition rules and the scoring system shape what designers build, and warns that forcing racing into a lower class would simply produce competition wings inside that class rather than making anything safer. On the Enzo, he says Ozone has been working on the next one for years and will only release it if it is genuinely a step forward.", "video": "xNMHk_8qbzo", "epno": "Episode 57", "date": "19 October 2025", "dur": "40 min", "series": "Flight Mechanics", "seriesPage": "flight-mechanics.html", "pos": 4, "nser": 7, "nchapters": 8, "chapters": [{"at": "00:02:01", "title": "Is this different, or has it happened before", "anchor": "c2"}, {"at": "00:08:06", "title": "Why nobody wants to do the boring part", "anchor": "c3"}, {"at": "00:11:55", "title": "Ozone's structure, and getting the right people in", "anchor": null}, {"at": "00:15:56", "title": "Prototyping a new wing", "anchor": "c5"}, {"at": "00:22:26", "title": "Would racing on ENC actually be safer", "anchor": "c6"}], "tags": [{"name": "Enzo", "page": null}, {"name": "Ccc", "page": "tags/ccc.html"}, {"name": "Certification", "page": "tags/certification.html"}, {"name": "Open Class", "page": "tags/open-class.html"}, {"name": "Rules", "page": null}, {"name": "Prototypes", "page": null}], "lon": 6.13, "lat": 45.9, "shareUrl": "https://paraglidingatlas.com/episodes/luc-armant-talks-about-debunking-the-myths-and-upgrading.html", "spotify": "", "artwork": ""}, {"audio": {"url": "https://anchor.fm/s/ed1344d8/podcast/play/101154252/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-3-11%2F398224435-44100-2-b487ec3b98797.m4a", "mb": 87, "fmt": "M4A"}, "slug": "aljaz-valic-777-paraglidings-slovenian-mavericks", "page": "../episodes/aljaz-valic-777-paraglidings-slovenian-mavericks.html", "title": "Aljaž Valič : 777 : Paragliding’s Slovenian Mavericks Redefining the EN B Class And Elevating Free Flight Performance", "guest": "Aljaž Valič", "quote": "It's not about the wing, it's about the pilot. The best technology won't save you if you don't have the skills to handle it.", "summary": "Aljaz Valic, co-founder of the Slovenian brand 777, sets out the design thinking behind their EN B wings and why he believes development stalls once a class becomes effectively one single type and results come down to pilot skill alone. He also revisits the old story of the Spectra and the Gambit being banned, and what that did to the Gambit's chances.", "video": "78PaTvxRWJ0", "epno": "Episode 39", "date": "11 April 2025", "dur": "94 min", "series": "Flight Mechanics", "seriesPage": "flight-mechanics.html", "pos": 3, "nser": 7, "nchapters": 13, "chapters": [{"at": "00:00:00", "title": "Introduction", "anchor": null}, {"at": "00:00:17", "title": "Why the Spectra and Gambit were banned", "anchor": "c2"}, {"at": "00:06:56", "title": "From pilot to designer", "anchor": "c3"}, {"at": "00:13:11", "title": "From the drawing board to a wing you can fly", "anchor": "c4"}, {"at": "00:26:23", "title": "The most popular two liner C class wings", "anchor": "c5"}], "tags": [{"name": "Paragliding", "page": "tags/paragliding.html"}, {"name": "Wing Design", "page": "tags/wing-design.html"}, {"name": "Competition", "page": "tags/competition.html"}, {"name": "Certification", "page": "tags/certification.html"}, {"name": "Innovation", "page": "tags/innovation.html"}, {"name": "Performance", "page": null}], "lon": 14.8, "lat": 46.1, "shareUrl": "https://paraglidingatlas.com/episodes/aljaz-valic-777-paraglidings-slovenian-mavericks.html", "spotify": "", "artwork": ""}, {"audio": {"url": "https://anchor.fm/s/ed1344d8/podcast/play/125350751/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-8-7%2F431383101-44100-2-9e42111930dac.mp3", "mb": 67, "fmt": "MP3"}, "slug": "how-to-thermal-like-a-pro-find-center-climb-paragliding", "page": "../episodes/how-to-thermal-like-a-pro-find-center-climb-paragliding.html", "title": "How to Thermal Like a Pro: Find, Center & Climb | Paragliding Tutorial with Brett Janaway", "guest": "Brett Janaway", "quote": "When you're flying, you need to be looking at that terrain in front of you.", "summary": "Brett Janaway works backwards from the ground to build a mental picture of what a thermal actually looks like, rather than the version in the textbook, then covers finding it, centring the core and climbing efficiently. He gives the talk from experience rather than notes, and says it tends to make sense only once you have met the situation in the air yourself.", "video": "G-gqUxq0C6Q", "epno": "Episode 80", "date": "8 September 2026", "dur": "73 min", "series": "Flight Mechanics", "seriesPage": "flight-mechanics.html", "pos": 7, "nser": 7, "nchapters": 13, "chapters": [{"at": "00:02:44", "title": "What has to exist before a thermal can", "anchor": "c2"}, {"at": "00:06:35", "title": "Where the sun heats the terrain best", "anchor": "c3"}, {"at": "00:10:51", "title": "Triggers beyond the obvious ones", "anchor": "c4"}, {"at": "00:17:15", "title": "Redrawing the basics of a thermal bubble", "anchor": "c5"}, {"at": "00:22:00", "title": "Why the strong core is not as easy as it sounds", "anchor": "c6"}], "tags": [{"name": "Weather", "page": "tags/weather.html"}, {"name": "Centring", "page": null}, {"name": "Climbing", "page": null}, {"name": "Triggers", "page": null}, {"name": "Terrain Reading", "page": null}, {"name": "Cross Country", "page": "tags/cross-country.html"}], "lon": -5.28, "lat": 40.46, "shareUrl": "https://paraglidingatlas.com/episodes/how-to-thermal-like-a-pro-find-center-climb-paragliding.html", "spotify": "", "artwork": ""}, {"audio": {"url": "https://anchor.fm/s/ed1344d8/podcast/play/125052709/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-8-1%2F430984051-44100-2-4df36e9fcc568.mp3", "mb": 19, "fmt": "MP3"}, "slug": "luc-armant-talks-about-the-moment-coefficient-enzo-3", "page": "../episodes/luc-armant-talks-about-the-moment-coefficient-enzo-3.html", "title": "Luc Armant talks about The Moment Coefficient, Enzo 3 Certification Debate & Physics of Stability", "guest": "Luc Armant", "quote": "When you go competing with a wing which will never collapse on the bar because it's very stable, you won't be able to compete properly, because on final glide you will be slow.", "summary": "Luc Armant explains that a paraglider's pitch stability comes entirely from its profile shape, because the wing has no tail, and that the profile's moment coefficient decides where the lift sits and how much speed the bar can actually deliver. He argues the CCC rule capping speed system travel at 14 centimetres pushes any wing built to win towards the low end of pitch stability, which is the core of the Enzo 3 certification debate.", "video": "pYzuw5bTIe8", "epno": "Episode 79", "date": "1 September 2026", "dur": "21 min", "series": "Flight Mechanics", "seriesPage": "flight-mechanics.html", "pos": 6, "nser": 7, "nchapters": 5, "chapters": [{"at": "00:00:36", "title": "Pitch stability without a tail", "anchor": "c2"}, {"at": "00:06:21", "title": "The document, and why it needs reading", "anchor": "c3"}, {"at": "00:08:12", "title": "What the lines actually stabilise", "anchor": "c4"}, {"at": "00:11:52", "title": "Why people are angry about trimming", "anchor": "c5"}, {"at": "00:18:55", "title": "What is holding the rule change up", "anchor": "c6"}], "tags": [{"name": "Moment Coefficient", "page": null}, {"name": "Pitch Stability", "page": null}, {"name": "Ccc", "page": "tags/ccc.html"}, {"name": "Enzo 3", "page": null}, {"name": "Certification", "page": "tags/certification.html"}, {"name": "Speed System", "page": null}], "lon": -3.66, "lat": 37.68, "shareUrl": "https://paraglidingatlas.com/episodes/luc-armant-talks-about-the-moment-coefficient-enzo-3.html", "spotify": "", "artwork": ""}]</script>
 </div>
+
+<section class="kb-faq">
+  <h2>Questions these conversations answer</h2>
+  <div class="kb-qa">
+    <h3>Why is a paraglider stable in pitch when it has no tail?</h3>
+    <p>Because the stability is built into the profile. Luc Armant explains that a profile has a moment coefficient: on a stable one, as the angle of attack falls the lift resultant moves forward, which pulls the nose back up. A profile with a low moment coefficient carries its lift further back and is easier to accelerate, but resists collapse less.</p>
+    <a class="kb-src" href="../episodes/luc-armant-talks-about-the-moment-coefficient-enzo-3.html#c2">Luc Armant <span>Pitch stability without a tail</span></a>
+  </div>
+  <div class="kb-qa">
+    <h3>What is pitch-up tendency in a paraglider?</h3>
+    <p>Tom Lolies describes it as an airfoil that, when the angle of attack drops, moves its centre of lift towards or beyond the nose, so the wing wants to pitch against a collapse rather than with it. The pilot feels a loss of tension before anything folds and has time to react. Older profiles tended the other way and collapsed completely and quickly.</p>
+    <a class="kb-src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c5">Tom Lolies <span>Brake pressure, and the approach to a stall</span></a>
+  </div>
+  <div class="kb-qa">
+    <h3>Does EN certification tell me how likely a wing is to collapse?</h3>
+    <p>No. Alain Zoller, who runs a test house, says the induced collapses are not representative of what the air does. Tom Lolies adds that the standard has roughly twenty tests for behaviour after a collapse and no accepted test for collapse resistance; the only one, brake application at full speed, is itself debated.</p>
+    <a class="kb-src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c6">Tom Lolies and Alain Zoller <span>The green flags to look for in a wing</span></a>
+  </div>
+  <div class="kb-qa">
+    <h3>How should I read a paraglider test report before buying?</h3>
+    <p>Do not use it to rank wings. Luc Armant says to ignore any single result and read who the manufacturer says the wing is for. Alain Zoller adds that the brake range is worth a look, because a clean report with a very short range means little margin before the stall, and that nothing replaces test-flying two or three candidates yourself.</p>
+    <a class="kb-src" href="../episodes/luc-armant-talks-about-debunking-the-myths-and-upgrading.html#c8">Luc Armant and Alain Zoller <span>What to look at instead of a single result</span></a>
+  </div>
+  <div class="kb-qa">
+    <h3>Why is a small amount of brake a problem on a modern two-liner?</h3>
+    <p>Tom Lolies explains that a slight brake deflection is enough to cancel the profile's pitch-up tendency, and so its collapse resistance, without creating enough drag to slow the wing. On some high-level wings, touching the brakes at full speed makes them faster, not slower. Fly on the B risers, or use plenty of brake, but avoid the small amount in between.</p>
+    <a class="kb-src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c12">Tom Lolies <span>Does brake input prevent collapses</span></a>
+  </div>
+  <div class="kb-qa">
+    <h3>Is it better to fly on the B risers than on the brakes?</h3>
+    <p>In ordinary air, both Helmut Schrempf and Tom Lolies fly on the B risers to keep the profile intact and the wing efficient. But the B risers are not brakes: Helmut says to switch to the brakes when a collapse happens, and the pendulum gives you time to do it. On three-liners, C steering needs the B-C bridge the manufacturer specifies.</p>
+    <a class="kb-src" href="../episodes/helmut-schrempf-modernizing-siv-courses-how-this-new.html#c5">Helmut Schrempf <span>Brake line position and performance</span></a>
+  </div>
+  <div class="kb-qa">
+    <h3>How do I check my brake line length?</h3>
+    <p>Tom Lolies gives two checks. From hands fully up to the first feeling of tension there should be at least 7 cm of travel, and at full speed bar there should be no tension in the brakes. Brake lines made of Dyneema shrink over time, so this is worth checking regularly rather than once.</p>
+    <a class="kb-src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c12">Tom Lolies <span>Does brake input prevent collapses</span></a>
+  </div>
+  <div class="kb-qa">
+    <h3>Which way should I turn when I hit a thermal?</h3>
+    <p>Into wind, unless you have better information. Brett Janaway explains that the core sits on the upwind side, so turning into wind either finds it or, if you have overshot the front, drops you back into it. Turning downwind at the back leaves you sinking and flying upwind to reach a core that is now above and ahead of you.</p>
+    <a class="kb-src" href="../episodes/how-to-thermal-like-a-pro-find-center-climb-paragliding.html#c7">Brett Janaway <span>Which way to turn with no information</span></a>
+  </div>
+  <div class="kb-qa">
+    <h3>Why do two Enzo 3s from the same batch feel different?</h3>
+    <p>Because the wing is built at the edge of pitch stability to stay competitive under the 14 cm speed-bar limit. Luc Armant says the cloth shrinks and the rods tighten with use, and a difference of about 5 mm on a rod over two metres long is enough to move one wing from fast towards collapsing. Everyday EN wings carry far more margin.</p>
+    <a class="kb-src" href="../episodes/luc-armant-talks-about-the-moment-coefficient-enzo-3.html#c4">Luc Armant <span>What the lines actually stabilise</span></a>
+  </div>
+  <div class="kb-qa">
+    <h3>Should I move up a glider class?</h3>
+    <p>Only if there is nothing left to learn on the one you fly. Tom Lolies, who can fly any wing he likes, still steps back to a low B after a break to rebuild currency, and says stepping down should carry no stigma. Alain Zoller's version: know your glider at 100 percent before you change it, and avoid the highest class you think you can handle.</p>
+    <a class="kb-src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c10">Tom Lolies and Alain Zoller <span>Whether to change category or stay put</span></a>
+  </div>
+</section>
+
 
 </div><!-- /.page-wrap -->
 

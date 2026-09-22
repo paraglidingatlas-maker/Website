@@ -8,6 +8,9 @@ import sys
 BASE = os.path.dirname(__file__)
 sys.path.insert(0, os.path.abspath(BASE))
 import site_config as cfg
+from kb_editorial import EDITORIAL
+import html as html_lib
+ROOT = os.path.abspath(BASE)
 OUT = os.path.join(BASE, "knowledge-base")
 
 NAV_FOOTER = """
@@ -324,6 +327,102 @@ def category_page(slug, title, intro, series_list):
     write(f"{slug}.html", html)
 
 
+_CHAPTER_CACHE = {}
+
+
+def _chapter_title(ep_slug, cid):
+    """Title of chapter cid on an episode page, so a link can say where it lands."""
+    key = (ep_slug, cid)
+    if key not in _CHAPTER_CACHE:
+        title = ""
+        try:
+            page = open(os.path.join(ROOT, "episodes", ep_slug + ".html"), encoding="utf-8").read()
+            m = re.search(r'<div class="cd-block" id="%s">\s*<h2>(.*?)</h2>' % re.escape(cid), page, re.S)
+            if m:
+                title = html_lib.unescape(re.sub(r"<[^>]+>", "", m.group(1))).strip()
+        except OSError:
+            pass
+        _CHAPTER_CACHE[key] = title
+    return _CHAPTER_CACHE[key]
+
+
+def _src_link(item):
+    """The 'hear it' link under a takeaway or answer: guest, chapter title."""
+    ep, ch = item["ep"], item["ch"]
+    if not os.path.exists(os.path.join(ROOT, "episodes", ep + ".html")):
+        raise SystemExit("kb_editorial: no episode page for %s" % ep)
+    if not _chapter_title(ep, ch):
+        raise SystemExit("kb_editorial: no chapter %s on %s" % (ch, ep))
+    label = html_escape(item["who"])
+    title = html_escape(_chapter_title(ep, ch))
+    return ('<a class="kb-src" href="../episodes/%s.html#%s">%s <span>%s</span></a>'
+            % (ep, ch, label, title))
+
+
+def editorial_html(ed):
+    """The article part of a category page: sections, then takeaways."""
+    out = []
+    for sec in ed.get("sections", []):
+        out.append('<section class="kb-ed">\n  <h2>%s</h2>\n' % html_escape(sec["heading"]))
+        for para in sec["paras"]:
+            out.append("  <p>%s</p>\n" % html_escape(para))
+        out.append("</section>\n")
+    if ed.get("takeaways"):
+        out.append('<section class="kb-take">\n  <h2>%s</h2>\n  <ol>\n'
+                   % html_escape(ed.get("takeaways_heading", "Worth remembering")))
+        for t in ed["takeaways"]:
+            out.append("    <li><p>%s</p>%s</li>\n" % (html_escape(t["text"]), _src_link(t)))
+        out.append("  </ol>\n</section>\n")
+    return "".join(out)
+
+
+def faq_html(ed):
+    """Question headings with prose answers: the shape inject_site_schema.py
+    reads as FAQPage. The source link sits outside the <p> so it stays out of
+    the schema answer text."""
+    if not ed.get("faq"):
+        return ""
+    out = ['<section class="kb-faq">\n  <h2>%s</h2>\n'
+           % html_escape(ed.get("faq_heading", "Questions answered here"))]
+    for f in ed["faq"]:
+        q = f["q"].strip()
+        if not q.endswith("?"):
+            raise SystemExit("kb_editorial: FAQ question must end with ?: %s" % q)
+        out.append('  <div class="kb-qa">\n    <h3>%s</h3>\n    <p>%s</p>\n    %s\n  </div>\n'
+                   % (html_escape(q), html_escape(f["a"]), _src_link(f)))
+    out.append("</section>\n")
+    return "".join(out)
+
+
+EDITORIAL_CSS = """
+  .cat-hero .kicker{display:block;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.9rem;}
+  .kb-ed,.kb-take,.kb-faq{padding:0 clamp(1.5rem,5vw,4rem);background:var(--bg);}
+  .kb-ed{padding-bottom:clamp(2rem,5vw,3rem);}
+  .kb-ed h2,.kb-take h2,.kb-faq h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.25rem,2.4vw,1.6rem);
+    color:var(--white);max-width:760px;margin:0 0 1rem;}
+  .kb-ed p{color:var(--gray-light);line-height:1.75;font-size:0.98rem;max-width:760px;margin:0 0 1.1rem;}
+  .kb-take{padding-bottom:clamp(3rem,7vw,4.5rem);}
+  .kb-take ol{list-style:none;counter-reset:take;max-width:760px;margin:0;padding:0;}
+  .kb-take li{counter-increment:take;position:relative;padding:1rem 0 1rem 3rem;border-top:1px solid var(--line);}
+  .kb-take li:last-child{border-bottom:1px solid var(--line);}
+  .kb-take li::before{content:counter(take,decimal-leading-zero);position:absolute;left:0;top:1.05rem;
+    font-family:var(--font-display);font-weight:600;font-size:0.8rem;color:var(--orange);font-variant-numeric:tabular-nums;}
+  .kb-take li p{color:var(--gray-light);line-height:1.65;font-size:0.95rem;margin:0 0 0.45rem;}
+  .kb-src{display:inline-block;color:var(--gray);font-size:0.78rem;text-decoration:none;}
+  .kb-src span{color:var(--orange);}
+  .kb-src span::before{content:"\\2192  ";}
+  .kb-src:hover span{text-decoration:underline;}
+  .kb-faq{padding-top:clamp(3rem,7vw,4.5rem);padding-bottom:clamp(4rem,9vw,6rem);}
+  .kb-faq h2{margin-bottom:1.5rem;}
+  .kb-qa{max-width:760px;margin:0;padding:1.1rem 0 1.2rem;border-top:1px solid var(--line);}
+  .kb-qa:last-child{border-bottom:1px solid var(--line);}
+  .kb-qa h3{font-family:var(--font-display);font-weight:600;font-size:1.02rem;color:var(--white);margin:0 0 0.5rem;}
+  .kb-qa p{color:var(--gray-light);line-height:1.7;font-size:0.95rem;margin:0 0 0.45rem;}
+  .ep-body .kb-grid-head{max-width:1300px;margin:0 auto 1rem;font-family:var(--font-display);font-weight:700;
+    font-size:clamp(1.25rem,2.4vw,1.6rem);color:var(--white);}
+"""
+
+
 def subseries_page(slug, category_slug, category_title, title, intro, points, episodes):
     point_html = "".join(f"<span>{p}</span>" for p in points)
     rich, unresolved = _rich(slug, title, episodes)
@@ -415,19 +514,40 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
     else:
         ep_html = '<div class="ep-empty">Episodes for this series are coming soon. Check back shortly, or explore the <a href="../podcast.html" style="color:var(--orange);">full podcast archive</a> in the meantime.</div>'
 
+    ed = EDITORIAL.get(slug)
+    series_title = title
+    kicker_html = ""
+    css = SUBSERIES_CSS
+    ed_html = faq = grid_head = ""
+    seo_title = _seo_title(title)
+    seo_desc = _seo(intro, title)
+    if ed:
+        # The series name stays as the kicker and in the breadcrumb; the H1
+        # becomes the question a pilot would type. URL and slug never change.
+        kicker_html = '<p class="kicker">%s</p>\n  ' % html_escape(ed.get("kicker", title))
+        title = ed["h1"]
+        intro = ed.get("intro", intro)
+        seo_title = ed.get("seo_title", _seo_title(title))
+        seo_desc = ed.get("seo_desc", _seo(intro, title))
+        css = SUBSERIES_CSS + EDITORIAL_CSS
+        ed_html = "\n" + editorial_html(ed)
+        faq = "\n" + faq_html(ed)
+        grid_head = '<h2 class="kb-grid-head">The %d conversations</h2>\n  ' % len(episodes)
+
     body = f"""<header class="cat-hero">
-  <p class="breadcrumb"><a href="../knowledge-base.html">Knowledge Base</a> / <a href="{category_slug}.html">{category_title}</a> / {title}</p>
-  <h1>{title}</h1>
+  <p class="breadcrumb"><a href="../knowledge-base.html">Knowledge Base</a> / <a href="{category_slug}.html">{category_title}</a> / {series_title}</p>
+  {kicker_html}<h1>{title}</h1>
   <p>{intro}</p>
   {stats_html}
   <div class="point-row">{point_html}</div>
 </header>
-
+{ed_html}
 <div class="ep-body">
-  {ep_html}
-</div>"""
-    html = NAV_HEADER.format(BASE=cfg.BASE, title=title, seo_title=_seo_title(title), slug=slug, seo_desc=_seo(intro, title),
-                             css=SUBSERIES_CSS, body=body)
+  {grid_head}{ep_html}
+</div>
+{faq}"""
+    html = NAV_HEADER.format(BASE=cfg.BASE, title=title, seo_title=seo_title, slug=slug, seo_desc=seo_desc,
+                             css=css, body=body)
     html = html.replace(
         '<script src="../script.js"></script>\n</body>',
         '<script src="../script.js"></script>\n<script src="../episode-modal.js"></script>\n</body>'
