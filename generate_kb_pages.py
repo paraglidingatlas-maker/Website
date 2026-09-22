@@ -164,7 +164,7 @@ NAV_HEADER = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{seo_title}</title>\n<meta name="description" content="{seo_desc}">\n<link rel="canonical" href="{BASE}knowledge-base/{slug}.html">\n<meta property="og:type" content="website">\n<meta property="og:title" content="{title}">\n<meta property="og:description" content="{seo_desc}">\n<meta property="og:image" content="{BASE}assets/images/hero.jpg">\n<meta property="og:url" content="{BASE}knowledge-base/{slug}.html">\n<meta name="twitter:card" content="summary_large_image">\n<script type="application/ld+json">\n{{"@context":"https://schema.org","@type":"CollectionPage","name":"{title}","url":"{BASE}knowledge-base/{slug}.html","description":"{seo_desc}","isPartOf":{{"@type":"WebSite","name":"Paragliding Atlas","url":"{BASE}"}}}}\n</script>
+<title>{seo_title}</title>\n<meta name="description" content="{seo_desc}">\n<link rel="canonical" href="{BASE}knowledge-base/{slug}.html">\n<meta property="og:type" content="website">\n<meta property="og:title" content="{title}">\n<meta property="og:description" content="{seo_desc}">\n<meta property="og:image" content="{og_image}">\n<meta property="og:url" content="{BASE}knowledge-base/{slug}.html">\n<meta name="twitter:card" content="summary_large_image">\n<script type="application/ld+json">\n{{"@context":"https://schema.org","@type":"CollectionPage","name":"{title}","url":"{BASE}knowledge-base/{slug}.html","description":"{seo_desc}","image":"{og_image}","isPartOf":{{"@type":"WebSite","name":"Paragliding Atlas","url":"{BASE}"}}{main_entity}}}\n</script>
 <link rel="icon" type="image/png" href="../assets/logo/favicon.png">
 <link rel="apple-touch-icon" href="../assets/logo/apple-touch-icon.png">
 <meta name="theme-color" content="#141519">
@@ -322,12 +322,34 @@ def category_page(slug, title, intro, series_list):
   <div class="series-grid">{cards}
   </div>
 </div>"""
-    html = NAV_HEADER.format(BASE=cfg.BASE, title=title, seo_title=_seo_title(title), slug=slug, seo_desc=_seo(intro, title),
+    html = NAV_HEADER.format(og_image=_og_image(slug), main_entity=_main_entity(locals().get("rich")), BASE=cfg.BASE, title=title, seo_title=_seo_title(title), slug=slug, seo_desc=_seo(intro, title),
                              css=CATEGORY_CSS, body=body) + NAV_FOOTER
     write(f"{slug}.html", html)
 
 
 _CHAPTER_CACHE = {}
+
+
+def _og_image(slug):
+    """The category's own drawing when one exists, else the site hero."""
+    for ext in ("jpg",):
+        if os.path.exists(os.path.join(ROOT, "assets", "images", "kb-%s.%s" % (slug, ext))):
+            return cfg.BASE + "assets/images/kb-%s.%s" % (slug, ext)
+    return cfg.BASE + "assets/images/hero.jpg"
+
+
+def _main_entity(rich):
+    """An ItemList of the episode pages on this category, so the collection
+    page says what it collects. Empty when the tiles were not resolved."""
+    if not rich:
+        return ""
+    items = [d for d in rich if d]
+    if not items:
+        return ""
+    lst = {"@type": "ItemList", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "url": cfg.BASE + "episodes/" + d["slug"] + ".html", "name": d["title"]}
+        for i, d in enumerate(items)]}
+    return ',"mainEntity":' + json.dumps(lst, ensure_ascii=False)
 
 
 def _chapter_title(ep_slug, cid):
@@ -484,8 +506,10 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
                 chapters = ("%d chapters" % n if n > 1 else
                             "1 chapter" if n == 1 else
                             '<span class="dim">No chapters yet</span>')
-                media = ('<span class="ep-th"><img loading="lazy" src="%s" alt=""%s>%s</span>'
-                         % (src, onerr, badge))
+                # Dimensions stop the grid shifting while stills load; the alt
+                # names the episode so the still is not a blank image to a crawler.
+                media = ('<span class="ep-th"><img loading="lazy" width="1280" height="720" src="%s" alt="%s"%s>%s</span>'
+                         % (src, html_escape("Episode still: " + shown_title), onerr, badge))
                 stamp = ('<span class="ep-stamp">%s<i>%s</i></span>'
                          % (d["epno"] or "&nbsp;", d["dur"] or ""))
                 guest_line = ('<span class="ep-tile-guest">%s</span>' % html_escape(shown_guest)
@@ -546,7 +570,7 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
   {grid_head}{ep_html}
 </div>
 {faq}"""
-    html = NAV_HEADER.format(BASE=cfg.BASE, title=title, seo_title=seo_title, slug=slug, seo_desc=seo_desc,
+    html = NAV_HEADER.format(og_image=_og_image(slug), main_entity=_main_entity(locals().get("rich")), BASE=cfg.BASE, title=title, seo_title=seo_title, slug=slug, seo_desc=seo_desc,
                              css=css, body=body)
     # A hand-built layout in templates/kb/<slug>.html replaces the generated
     # body and style; head, nav, footer and the live episode grid stay generated.
