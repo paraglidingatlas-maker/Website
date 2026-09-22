@@ -91,8 +91,8 @@
 - Bands:
   1. Beginnings: Benjamin Jordan's 2003 goal boiled down to a skateboard trip, then a powered flight, then Mexico to Canada (figure: one idea, three projects); Sandrine Roy's ten-year-old idea; Damien Lacaze's eBay wing and competition "revelation"; Chris Garcia's Cuba roots and first tour.
   2. What it costs: Jordan's school-bus decade and "adjust the lock"; Roy's five years of saving; Lacaze training 10 to 12 hours a week around a family and a job; Shams working as little as possible for his family.
-  3. Travelling light: Roy's human-powered route and under-3 kg kit (figure: kit weights); Lacaze's X-Alps second place and 7,960 m in Pakistan. Quote band: Jordan's "awkward lines" (drawing: a ski slope and a gap in birch trees).
-  4. Who you fly with: Lacaze's team of nine (figure); Garcia's local pilots in Cuba and village permission in Socotra; Shams training Ouka to fly.
+  3. Travelling light: Roy's human-powered route and under-3 kg kit (figure: kit weights); Lacaze's X-Alps second place and 7,960 m in Pakistan.
+  4. Who you fly with: Lacaze's team of nine (figure); Garcia's local pilots in Cuba and village permission in Socotra; Shams training Ouka to fly. Quote band after this band: Jordan's "awkward lines" (drawing: a ski slope and a gap in birch trees).
   5. Highs and lows: Jordan's lows after each high and "at least one"; Roy's "avance"; Lacaze on risk, focus and landing too late in a storm; Garcia's bigger margins in remote places.
 - Hero: Sandrine Roy's route as a Pacific-centred world map (seam in the Atlantic, where she sailed). Only the countries she names are used, in her order; the planned leg home is dashed. The route points inside each country (and the exact US and China points) are schematic.
 - Editorial calls to check:
@@ -103,3 +103,22 @@
   - Benjamin Jordan says the Mexico to Canada flight "still stands" as a free-flying vol-biv world record; the page attributes that to him. He gives both 2008 and 2009 for the powered flight across Canada, so it is not dated.
   - Sandrine Roy's wing, harness and reserve models are left out (caption spellings unreliable), and so is the pilot who told her flying at Rinjani was forbidden. The Pakistan leg of her planned route comes from chapter 5.
   - The "Touch The Sky With Glory" tile has no transcript and is not quoted. The From Cuba to Socotra tile still shows no guest name (the generator's tile data leaves it blank); not changed.
+
+## Storytellers
+
+- Commit c36cfd8, deploy: pages build and deployment success (build, deploy jobs success).
+- H1: What Can Pilots Learn From Other Pilots' Close Calls?
+- A short page, as the brief asked: four bands instead of five, two figures, ten FAQ answers.
+- Bands:
+  1. Then and now: Eddie Colfox's first flight and the early 1990s against today (figure: then and now); Marko Milutinovic on 140-pilot gaggles, pod harness reserve pockets and score discards.
+  2. Collisions: Milutinovic's two mid-airs, France 2023 and Spain 2024 (figure: both on one height scale), and steering a reserve with the wing in his lap.
+  3. Decisions: Colfox's launch into a gust front and "one bad decision, then two or three more"; his 2001 Hunza flight racing the dusk. Quote band after this band (drawing: sunlit heights, shadowed valleys, a landing short of the beach).
+  4. Why keep going: Milutinovic weighing smaller competitions and joy; Colfox on guiding, tandems, the Bir season and tandem rescue.
+- Hero: a map from England to India with the places named in both stories. The French Alps marker is schematic; the transcript says only that the 2023 World Championship was in the Alps in France.
+- Editorial calls to check:
+  - Everything about John Silvester is left out (he has died), including his flights, his launch habits and chapter 9 as a whole, apart from Eddie Colfox's own view in that chapter on risk management and abandoning the goal. Also left out: Colfox's cousin's death, Milutinovic's account of a pilot who died wanting to stay in a race, other pilots' injuries and fundraising, and a named team-mate's back injury.
+  - The two pilots who hit Milutinovic are not named or described; his remark that one was flying aggressively and that some pilots dip in and out of cloud is left out. His view that that year's new pod harness fairings limited visibility is kept, as his own assumption ("no forensics"), with no brand named.
+  - It is unclear from the transcript whether Milutinovic threw his reserve in France. The page says only that his wing kept flying without brake pressure and that he went down to land. He says he had never thrown a reserve before that first collision.
+  - His explanation of score discards (FTV) gives numbers that do not add up (25% per day, "one full and three quarters" days over ten), so the page describes it without numbers.
+  - Colfox's numbers are his own memory and flagged as such: first flight 1991 or 1992, glide ratios of 6.5 to 7, the Hunza flight "in 2001, I think". His claim to have run the first genuine flying safaris is attributed as "what he believes". Brand names (sponsors, wing models, Ozone's founding) are left out.
+  - Speaker labels in the Milutinovic transcript lag; his speech is mostly labelled SPK03/SPK04 and the host's under his name. Judged by content.
