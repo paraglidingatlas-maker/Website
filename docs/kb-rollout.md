@@ -23,8 +23,8 @@ is a citable article that ranks on its own and links down into the episodes.
 | risk-vs-reward | 12 | done |
 | know-your-equipment | 8 | done |
 | new-technologies | 7 | done |
-| the-dark-side | 5 | next |
-| world-cups | 7 | |
+| the-dark-side | 5 | done |
+| world-cups | 7 | next |
 | resources-tools-tips | 11 | |
 | brand-stories | 4 | |
 | navigators | 6 | narrative, see below |
