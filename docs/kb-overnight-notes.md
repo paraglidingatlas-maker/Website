@@ -122,3 +122,21 @@
   - His explanation of score discards (FTV) gives numbers that do not add up (25% per day, "one full and three quarters" days over ten), so the page describes it without numbers.
   - Colfox's numbers are his own memory and flagged as such: first flight 1991 or 1992, glide ratios of 6.5 to 7, the Hunza flight "in 2001, I think". His claim to have run the first genuine flying safaris is attributed as "what he believes". Brand names (sponsors, wing models, Ozone's founding) are left out.
   - Speaker labels in the Milutinovic transcript lag; his speech is mostly labelled SPK03/SPK04 and the host's under his name. Judged by content.
+
+## Weather Patterns
+
+- Commit 63c9eee, deploy: pages build and deployment success (build, deploy jobs success).
+- H1: How Do You Read a Weather Forecast for Paragliding?
+- A short page for a single episode: four bands, two figures, ten FAQ answers. It is a technique page, so the drawings are technical rather than a map: the hero is a schematic sounding.
+- Bands:
+  1. Models: why apps disagree, resolution (figure: 22, 9 and 4 km circles), the 72-hour limit, update times, the multimodel average, paid services.
+  2. Wind: wind at flying height, the millibar rule (figure), wind barbs, windgrams, shear.
+  3. The sounding: inversions, the kink where climbs stop, dew point spread and cloud base, dry layers. Quote band after this band: the Keepit blue hole (drawing: a schematic plan of Lake Keepit, Manilla and the Mount Borah launch).
+  4. Local knowledge: the Keepit blue hole and Sopot in a northerly; live radar, convergence lines, and keep learning.
+- Callout: what rain radar colours mean for pilots (12 and about 48 mm an hour).
+- Editorial calls to check:
+  - Model details are given as his figures and flagged as such: GFS about 22 km, ECMWF about 9, NEMS down to 4. He was unsure about several agency details (which agency runs ICON, whether GFS support has stopped), so those are left out, as is his aside that Windy acquired part of Meteoblue (a company claim he was unsure of). SkySight's founder is not named; the page says only that it was built for gliding.
+  - Left out as wrong or unverifiable: the claim that the Perlan sailplane reached "almost 40 km" (the real record is about 23 km), and the cost of running a model ("$40,000").
+  - The millibar rule (900, 800 and 700 mb at about 1,000, 2,000 and 3,000 m) checks out against the standard atmosphere (about 990, 1,950 and 3,010 m), so it is used as given.
+  - On a sounding he says a vertical temperature line means "no temperature difference between the thermal and the surrounding air". That is a simplification; the page paraphrases it as a thermal gaining nothing on the air around it.
+  - Spellings: Ivelin Kalushkov (from the episode metadata; the host calls him Ivo), Sky Nomad (as on the episode page; captions: Kainomat, Scanomat), Manilla, Mount Borah, Lake Keepit (captions: Kipit), Sopot.
