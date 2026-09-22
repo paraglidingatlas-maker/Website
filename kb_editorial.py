@@ -24,10 +24,10 @@ RULES FOR WRITING ONE
 EDITORIAL = {
     "flight-mechanics": {
         "kicker": "Flight Mechanics",
-        "h1": "How a Paraglider Flies: Stability, Collapses, Certification and Control",
+        "h1": "How a Paraglider Actually Flies",
         "seo_title": "Paragliding Flight Mechanics: Stability & Control | Paragliding Atlas",
         "seo_desc": "Why a paraglider with no tail stays stable, what makes it collapse, what an EN letter really tells you, and how to read the air. Eight designers and test pilots.",
-        "intro": "Why a wing with no tail stays stable, what actually makes it collapse, what a certification letter does and does not tell you, and how to read the air you are climbing in. Eight conversations with the people who design, test and teach it.",
+        "intro": "Stability, collapses, certification and control, explained by the people who design, test and teach it.",
         "sections": [
             {
                 "heading": "What these eight conversations add up to",

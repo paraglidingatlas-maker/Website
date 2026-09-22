@@ -1,4 +1,4 @@
-# Knowledge base figure generator (Flight Mechanics). Usage: python3 tools/make_kb_brakes.py <out.jpg> [background hex]. The page uses per-panel crops (kb-fm-*-N) so each panel can carry its own caption and stack on phones.
+# Knowledge base figure generator (Flight Mechanics). Usage: python3 tools/make_kb_brakes.py <out.jpg> [background hex]
 """Knowledge base figure: the small-brake problem. One profile, three brake
 positions. Orange arrow = where the lift acts; curved arrow = what the profile
 does in a gust; grey arrow = drag. 2400x640, three equal panels, no text (the
@@ -69,7 +69,7 @@ for i, pnl in enumerate(panels):
     if pnl["pitch"] == +1: curl(x[0] + 30, cy - 12, 58, 110, 200, OR)
     elif pnl["pitch"] == -1: curl(x[0] + 30, cy - 12, 58, 200, 110, GR, a=0.8)
     # panel divider
-    pass
+    if i < 2: ax.plot([800*(i + 1)]*2, [70, H - 70], color=GR, lw=0.6, alpha=0.12)
 fig.savefig("/tmp/brakes_raw.png", facecolor=BG); plt.close(fig)
 img = np.asarray(Image.open("/tmp/brakes_raw.png").convert("RGB").resize((W, H))).astype(np.float32)/255
 o = np.clip((img[..., 0] - img[..., 2])*1.8, 0, 1)

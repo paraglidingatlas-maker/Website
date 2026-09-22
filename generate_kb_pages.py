@@ -548,6 +548,20 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
 {faq}"""
     html = NAV_HEADER.format(BASE=cfg.BASE, title=title, seo_title=seo_title, slug=slug, seo_desc=seo_desc,
                              css=css, body=body)
+    # A hand-built layout in templates/kb/<slug>.html replaces the generated
+    # body and style; head, nav, footer and the live episode grid stay generated.
+    tpl_path = os.path.join(ROOT, "templates", "kb", slug + ".html")
+    if os.path.exists(tpl_path):
+        tpl = open(tpl_path, encoding="utf-8").read()
+        t_style = tpl[tpl.index("<style>") + 7:tpl.index("</style>")]
+        t_body = tpl[tpl.index("</style>") + 8:].strip()
+        g0 = t_body.index('<div class="ep-grid">')
+        g1 = t_body.index("</script>", t_body.index('id="kbEpisodes"')) + len("</script>")
+        t_body = t_body[:g0] + ep_html + t_body[g1:]
+        h0 = html.index("<style>") + 7; h1 = html.index("</style>")
+        html = html[:h0] + t_style + html[h1:]
+        b0 = html.index('<header class="cat-hero">')
+        html = html[:b0] + t_body + "\n"
     html = html.replace(
         '<script src="../script.js"></script>\n</body>',
         '<script src="../script.js"></script>\n<script src="../episode-modal.js"></script>\n</body>'

@@ -1,4 +1,4 @@
-# Knowledge base figure generator (Flight Mechanics). Usage: python3 tools/make_kb_thermal.py <out.jpg> [background hex]. The page uses per-panel crops (kb-fm-*-N) so each panel can carry its own caption and stack on phones.
+# Knowledge base figure generator (Flight Mechanics). Usage: python3 tools/make_kb_thermal.py <out.jpg> [background hex]
 """Knowledge base figure: reading a thermal (Brett Janaway). Left, from above:
 the core sits upwind; turning into wind finds it, turning downwind falls out
 the back. Right, from the side: the column leans downwind, strongest air at the
@@ -75,7 +75,7 @@ glider(back[22] + np.array([60, 70]), 20, GR, 14)
 arrow(back[22] + np.array([40, 40]), back[22] + np.array([100, 110]), GR, lw=1.4, hl=11, hw=5, a=0.55, ls=(0, (4, 3)))
 for y in (110, 155):
     arrow(np.array([1300., y]), np.array([1430., y]), GR, lw=1.4, hl=12, hw=5, a=0.55)
-pass
+ax.plot([1200, 1200], [60, H - 60], color=GR, lw=0.6, alpha=0.12)
 fig.savefig("/tmp/thermal_raw.png", facecolor=BG); plt.close(fig)
 
 img = np.asarray(Image.open("/tmp/thermal_raw.png").convert("RGB").resize((W, H))).astype(np.float32)/255
