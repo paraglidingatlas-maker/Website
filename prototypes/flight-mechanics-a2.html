@@ -166,15 +166,15 @@
 
   .band-fig{position:relative;margin:0;background:var(--bg);border-top:1px solid var(--rule);overflow:hidden;}
   .bf-media{position:relative;aspect-ratio:12/5;max-height:640px;width:100%;}
-  .bf-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left center;}
-  .bf-q{position:absolute;right:clamp(1.5rem,5vw,4rem);top:50%;transform:translateY(-50%);width:min(34%,440px);}
+  .bf-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;}
+  .bf-q{position:absolute;left:clamp(1.5rem,5vw,4rem);top:50%;transform:translateY(-50%);width:min(34%,440px);}
   .bf-q .kicker{display:block;color:var(--orange);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:1rem;}
   .bf-q .qt{font-family:var(--font-display);font-weight:600;font-size:clamp(1.15rem,1.9vw,1.6rem);line-height:1.32;color:var(--white);margin:0 0 1rem;}
   .bf-q .qt::before{content:"\201C";color:var(--orange);margin-right:.08em;} .bf-q .qt::after{content:"\201D";color:var(--orange);margin-left:.04em;}
   .bf-q .who{color:var(--gray-light);font-size:.85rem;margin:0 0 1.2rem;} .bf-q .who a{color:var(--orange);text-decoration:none;display:block;margin-top:.2rem;font-size:.78rem;}
   .bf-q .who a:hover{text-decoration:underline;}
   .bf-q .cap{color:var(--gray);font-size:.74rem;line-height:1.55;border-top:1px solid var(--line);padding-top:.8rem;margin:0;}
-  @media(max-width:900px){.bf-media{aspect-ratio:auto;height:62vw;} .bf-media img{object-fit:cover;object-position:18% center;} .bf-q{position:static;transform:none;width:auto;padding:1.4rem clamp(1.5rem,5vw,4rem) 2.4rem;}}
+  @media(max-width:900px){.bf-media{aspect-ratio:auto;height:62vw;} .bf-media img{object-fit:cover;object-position:80% center;} .bf-q{position:static;transform:none;width:auto;padding:1.4rem clamp(1.5rem,5vw,4rem) 2.4rem;}}
 .k-hero{min-height:clamp(470px,37.5vw,680px);align-items:center;}
  .k-hero-media{background:var(--bg);} .k-hero-media img{object-fit:contain;object-position:right center;}
  .k-hero-copy{padding-top:2rem;padding-bottom:2rem;max-width:640px;} .k-hero-copy p.lead,.k-hero-copy .sub{max-width:470px;}

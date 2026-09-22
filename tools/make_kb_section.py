@@ -30,7 +30,7 @@ def vel(z):
 
 # section frame -> pixels (flight to the left: flip x so leading edge is on the left)
 xmin, xmax = zf.real.min(), zf.real.max(); CH = xmax - xmin
-SC = 980/CH; X0, Y0 = 230, 430
+SC = 980/CH; X0, Y0 = 1260, 430
 def P(x, y): return np.c_[X0 + (xmax - np.asarray(x) - 0)*SC*0 + (np.asarray(x) - xmin)*SC, Y0 - np.asarray(y)*SC]
 # x as-is puts LE (Joukowski LE is at x=-2) on the left; flow comes from the left
 sec = P(zf.real, zf.imag)
