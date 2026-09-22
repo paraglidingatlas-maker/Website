@@ -27,8 +27,8 @@ is a citable article that ranks on its own and links down into the episodes.
 | world-cups | 7 | done |
 | resources-tools-tips | 11 | done |
 | brand-stories | 4 | done |
-| navigators | 6 | next (narrative, see below) |
-| sky-gods | 4 | narrative |
+| navigators | 6 | done |
+| sky-gods | 4 | next (narrative) |
 | living-the-dream | 6 | narrative |
 | storytellers | 2 | narrative, thin: consider merging copy with another |
 | weather-patterns | 1 | thin: one episode, a short page is fine |
