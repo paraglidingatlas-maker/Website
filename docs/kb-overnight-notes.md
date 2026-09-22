@@ -83,3 +83,23 @@
   - Robbie Whittall: left out his views on vaccines, the food and pharmaceutical industries, one meal a day, football, wars and technology, his parting with a named co-founder, and every mention of John Silvester. Ozone partners spelled "Mike Cavanagh" (captions: Kavanagh) and "Dave Pilkington". The Zanskar flight's launch point is unclear in the transcript, so the page says only "over Zanskar".
   - Left out: the fatal accident of a local pilot in Karimabad, Maxime Pinot's criticism of beer at goal in official races, the storm incident of another X-Alps pilot, product names and product-behaviour claims (e.g. about specific two-liner models), and Honorin Hamard's name for the pilot who broke his triangle record.
   - Speaker labels in the Honorin Hamard transcript are largely swapped (his label is mostly the host). Judged by content.
+
+## Living The Dream
+
+- Commit fdc1ded, deploy: pages build and deployment success (build, deploy jobs success).
+- H1: How Do Pilots Build a Life Around Paragliding?
+- Bands:
+  1. Beginnings: Benjamin Jordan's 2003 goal boiled down to a skateboard trip, then a powered flight, then Mexico to Canada (figure: one idea, three projects); Sandrine Roy's ten-year-old idea; Damien Lacaze's eBay wing and competition "revelation"; Chris Garcia's Cuba roots and first tour.
+  2. What it costs: Jordan's school-bus decade and "adjust the lock"; Roy's five years of saving; Lacaze training 10 to 12 hours a week around a family and a job; Shams working as little as possible for his family.
+  3. Travelling light: Roy's human-powered route and under-3 kg kit (figure: kit weights); Lacaze's X-Alps second place and 7,960 m in Pakistan. Quote band: Jordan's "awkward lines" (drawing: a ski slope and a gap in birch trees).
+  4. Who you fly with: Lacaze's team of nine (figure); Garcia's local pilots in Cuba and village permission in Socotra; Shams training Ouka to fly.
+  5. Highs and lows: Jordan's lows after each high and "at least one"; Roy's "avance"; Lacaze on risk, focus and landing too late in a storm; Garcia's bigger margins in remote places.
+- Hero: Sandrine Roy's route as a Pacific-centred world map (seam in the Atlantic, where she sailed). Only the countries she names are used, in her order; the planned leg home is dashed. The route points inside each country (and the exact US and China points) are schematic.
+- Editorial calls to check:
+  - Personal detail kept to what serves the page: Sandrine Roy's family losses, Benjamin Jordan's drinking and sobriety, and Shams's depression are all stated by the guests themselves but left out; the page says only that Jordan had long low periods, and that Roy's mantra on hard days is avance.
+  - Chris Garcia runs a tour company, so the page uses only what he says about his own tours. Left out: all Cuban and US politics, fuel and regime talk, the Emirati and Saudi influence on Socotra, his account of why other countries closed their airspace, another operator's opinion of helicopters, the unplanned landing after a Cuban flight restriction, and the claimed Cuban distance record by a third pilot. His company is not named on the page.
+  - Shams: the dog's name is spelled Ouka, as on the episode page (captions: Hookah, Uka, Luca). Left out: the harness maker and designer names (unclear in captions), the glider model, the Dean Potter story, another pilot flying acro with a dog, and castration. The "Samoyed" comes from his mention that a friend's dog was the same breed.
+  - Damien Lacaze: the other X-Alps pilot's storm incident (chapter 11) is left out; only Lacaze's general point about storms is used. Rivals who train 20 to 25 hours a week are not named. The 7,960 m flight is by GPS; he says the barometer read 7,700. Its year is not stated, so it is not dated. "Sherpa" is his word for the supporter who walks with him.
+  - Benjamin Jordan says the Mexico to Canada flight "still stands" as a free-flying vol-biv world record; the page attributes that to him. He gives both 2008 and 2009 for the powered flight across Canada, so it is not dated.
+  - Sandrine Roy's wing, harness and reserve models are left out (caption spellings unreliable), and so is the pilot who told her flying at Rinjani was forbidden. The Pakistan leg of her planned route comes from chapter 5.
+  - The "Touch The Sky With Glory" tile has no transcript and is not quoted. The From Cuba to Socotra tile still shows no guest name (the generator's tile data leaves it blank); not changed.
