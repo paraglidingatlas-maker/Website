@@ -30,8 +30,8 @@ is a citable article that ranks on its own and links down into the episodes.
 | navigators | 6 | done |
 | sky-gods | 4 | done |
 | living-the-dream | 6 | done |
-| storytellers | 2 | next (narrative, short page) |
-| weather-patterns | 1 | thin: one episode, a short page is fine |
+| storytellers | 2 | done |
+| weather-patterns | 1 | next (one episode, short page) |
 
 The five category landing pages (`core-series`, `competitions`, `meteorology`,
 `industry`, `technical`) use a different generator (`category_page()` in
