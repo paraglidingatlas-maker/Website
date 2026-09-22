@@ -31,7 +31,7 @@ is a citable article that ranks on its own and links down into the episodes.
 | sky-gods | 4 | done |
 | living-the-dream | 6 | done |
 | storytellers | 2 | done |
-| weather-patterns | 1 | next (one episode, short page) |
+| weather-patterns | 1 | done |
 
 The five category landing pages (`core-series`, `competitions`, `meteorology`,
 `industry`, `technical`) use a different generator (`category_page()` in
