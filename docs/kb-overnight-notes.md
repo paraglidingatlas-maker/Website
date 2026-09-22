@@ -44,3 +44,24 @@
   - Speaker labels are wrong in places: Gin's "flying since 1977" and Pal's "started flying at 16" are labelled as the host. Judged by content.
   - Carabiner test: captions are garbled ("85,000 times after 880 * 1000 cycles"), so the page says "tens of thousands of load cycles".
   - FAQ "Do I need a licence to fly in the Paragliding World Cup?" is framed "at the time of this conversation" (February 2024); rules may have changed.
+
+## Navigators
+
+- Commit 6fde74e, deploy: pages build and deployment success (build, deploy jobs success).
+- H1: What Should I Know Before a Paragliding Trip Abroad?
+- Bands:
+  1. Putting down roots: Pal Takats buying a hill with a takeoff in Colombia; Godfrey Wenness building Mount Borah; Eddie Colfox and Jigish Gohil in Bir.
+  2. When to go: seasons in Colombia, Bir, Panchgani and East Africa; Australia's unreliable months and the synoptic pattern; two guests' impression that seasons run later.
+  3. The local air: Roldanillo versus Piedechinche and the Pacific breeze (figure: Cauca Valley section); Panchgani's sea wind and shear layers; Bir's back ranges; Kijabe's afternoon easterlies.
+  4. Launch and climb: leaving Mount Borah for the flats (quote band: schematic plateau with four launches); Bir's nil-wind launch; Kijabe's cone; Godfrey's glide in thirds (figure).
+  5. Coming down: power lines, terraces, crops, fences and water; retrieves and security in each region.
+- Hero: world map from Natural Earth 1:110m (public domain). The usual map CDNs are blocked here, so `tools/kbfig/nav_land.py` reads the copy bundled in the geopandas 0.14.4 wheel (fetched with pip on first use). Places marked: only those named in the episodes.
+- Editorial calls to check:
+  - Left out entirely: every death mentioned (a fatal accident at Mount Borah, a fatal crash at the 2019 Panchgani pre-World Cup, fatal accidents mentioned in Colombia and Bir, a Pakistani pilot who died), and everything about John Silvester's own flying decisions, including the Barabangal story; only Eddie Colfox's lesson from it is kept, and not on the page. Also left out: Vistasp Kharas deliberately climbing through a cloud, Godfrey's account of deliberately flying in a dust devil, Nikolay Yotov's arrests, the Isiolo incident and his marriage story, and remarks about crime in named countries.
+  - Jigish Gohil's statistics (deaths per season in Bir) are not on the page; his pilot numbers are ("about 800 solo pilots in autumn 2023, about 200 when he arrived").
+  - Godfrey Wenness is called a former world record holder and an Advance test pilot only by the host. The page uses what Godfrey says himself: the world record in November 1998, landing in Queensland 335 km from Manilla.
+  - Speaker labels are wrong in many places in the Eddie Colfox and Nikolay Yotov transcripts (host and guest swapped). Judged by content. "Many accidents happen because of the cloud" turned out to be the host's line, so it is not attributed to Eddie; the page only credits him with "be very careful of cloud, and don't follow others into it". "Don't spoil the system" on retrieve fares is labelled as the host but reads as the end of Vistasp Kharas' answer (the labels lag by a few words there); credited to Kharas.
+  - Place spellings: "Piedechinche" (the episode page and captions say "Pidecinche"; the village in Valle del Cauca is Piedechinche). "Mount Borah" (captions: Bora, Borat) and "Manilla" (captions: Manila). "Aberdares" (captions: Abardere, Bardere). "Kerio Valley" (captions: Kereo). "Rohtang" (captions: Rotang). Please confirm Piedechinche in particular, since it differs from the episode page.
+  - Guest names checked against episode-meta.json: captions say "Paul Tuckerts", "Godfrey Venice/Willis", "Jagish", "Nikolai"; kept Pal Takats, Godfrey Wenness, Jigish Gohil, Nikolay Yotov as in the metadata.
+  - The Cauca Valley figure puts Roldanillo and Piedechinche on one cross-section; they are about 100 km apart. Marked schematic in the figure and its source line.
+  - FAQ "Is it safe to land out in Colombia" and the security lines are Pal Takats' own experience, stated as such.
