@@ -223,6 +223,57 @@
  .k-hero::after{background:linear-gradient(90deg,rgba(20,21,25,.95) 0%,rgba(20,21,25,.75) 30%,rgba(20,21,25,0) 46%),linear-gradient(180deg,rgba(20,21,25,0) 80%,rgba(20,21,25,1) 100%);}
  @media(max-width:980px){.k-hero{align-items:flex-end;min-height:78vh;} .k-hero-media img{object-fit:cover;object-position:62% center;} .k-hero::after{background:linear-gradient(180deg,rgba(20,21,25,.5) 0%,rgba(20,21,25,.82) 45%,rgba(20,21,25,1) 100%);}}
   summary h3{font:inherit;color:inherit;margin:0;display:inline;}
+
+  /* ===================== immersive pass ===================== */
+  /* One continuous canvas: no section switches colour; depth comes from a fixed
+     blueprint grid and slow ambient light that drift as you read. */
+  .kb-atmos{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;}
+  .kb-atmos::before{content:"";position:absolute;inset:-60px;
+    background-image:linear-gradient(rgba(180,180,180,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(180,180,180,.045) 1px,transparent 1px);
+    background-size:60px 60px;transform:translate3d(0,var(--gy,0px),0);
+    -webkit-mask-image:radial-gradient(ellipse 80% 75% at 62% 45%,#000 15%,transparent 78%);mask-image:radial-gradient(ellipse 80% 75% at 62% 45%,#000 15%,transparent 78%);}
+  .kb-atmos i{position:absolute;border-radius:50%;will-change:transform;}
+  .kb-atmos .g1{width:80vmax;height:80vmax;left:-38vmax;top:18vh;background:radial-gradient(circle,rgba(255,117,23,.11) 0%,rgba(255,117,23,.03) 35%,rgba(255,117,23,0) 62%);transform:translate3d(0,var(--g1,0px),0);}
+  .kb-atmos .g2{width:70vmax;height:70vmax;right:-34vmax;top:-10vh;background:radial-gradient(circle,rgba(255,154,82,.07) 0%,rgba(255,154,82,0) 60%);transform:translate3d(0,var(--g2,0px),0);}
+  .kb-atmos .g3{width:60vmax;height:60vmax;left:35vw;top:55vh;background:radial-gradient(circle,rgba(170,185,210,.045) 0%,rgba(170,185,210,0) 60%);transform:translate3d(var(--g3,0px),0,0);}
+  .k-sec,.k-sec.bg,.k-sec.card,.band-fig{background:transparent!important;border-top:0!important;}
+  .k-sec{position:relative;}
+  .k-sec.card::before{background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(255,255,255,.022) 0%,rgba(255,255,255,0) 72%)!important;}
+  .k-sec.card .cardx{background:var(--card);}
+  /* sections are separated by a soft hairline that fades out at both ends */
+  .k-sec + .k-sec::after,.band-fig + .k-sec::after,.k-sec + .band-fig::after{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:min(1100px,86%);height:1px;background:linear-gradient(90deg,rgba(180,180,180,0),rgba(180,180,180,.13) 50%,rgba(180,180,180,0));pointer-events:none;}
+  /* the hero hands off into the canvas instead of ending on an edge */
+  #episodes{position:relative;}
+  #episodes::before{content:"";position:absolute;left:0;right:0;top:0;height:240px;background:linear-gradient(180deg,var(--bg) 0%,rgba(20,21,25,0) 100%);pointer-events:none;}
+  #episodes > *{position:relative;}
+  .k-next{position:relative;}
+  .k-next::before{content:"";position:absolute;left:0;right:0;bottom:0;height:220px;background:linear-gradient(0deg,var(--bg) 0%,rgba(20,21,25,0) 100%);pointer-events:none;}
+  .k-next .nx{position:relative;}
+  /* diagrams dissolve into the canvas: the grid shows through their background */
+  .bf-media img,.band-draw img{mix-blend-mode:lighten;}
+  .bf-media{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%);}
+  /* reading progress */
+  .kb-progress{position:fixed;top:0;left:0;right:0;height:2px;transform-origin:0 50%;transform:scaleX(var(--p,0));z-index:9999;pointer-events:none;
+    background:linear-gradient(90deg,var(--orange),var(--orange-lite));box-shadow:0 0 12px rgba(255,117,23,.55);}
+  /* reveal on scroll (only when JS is running, so nothing is hidden without it) */
+  .kr-on .kr{opacity:0;transform:translate3d(0,26px,0);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s);}
+  .kr-on .kr.in{opacity:1;transform:none;}
+  .kr-on .kr-wipe img{clip-path:inset(0 100% 0 0);transition:clip-path 1.8s cubic-bezier(.65,0,.2,1) .15s;}
+  .kr-on .kr-wipe.in img{clip-path:inset(0 0 0 0);}
+  .band .l .kicker::before{content:"";display:inline-block;vertical-align:middle;height:1px;width:22px;margin-right:.6rem;background:var(--orange);transition:width .8s ease .35s,margin .8s ease .35s;}
+  .kr-on .band .l.kr:not(.in) .kicker::before{width:0;margin-right:0;}
+  /* depth: ghost numerals and the hero drawing move at their own pace */
+  .band .num{transform:translate3d(0,var(--py,0px),0);will-change:transform;}
+  .k-hero{overflow:hidden;}
+  .k-hero-media img{transform:translate3d(0,var(--hy,0px),0) scale(var(--hs,1));transform-origin:70% 50%;will-change:transform;}
+  /* a soft light follows the pointer across cards */
+  .cardx,.nx a,.check{background-image:radial-gradient(280px circle at var(--mx,50%) var(--my,-60%),rgba(255,117,23,.10),rgba(255,117,23,0) 65%);}
+  .check{background-image:radial-gradient(360px circle at var(--mx,20%) var(--my,-60%),rgba(255,117,23,.12),rgba(255,117,23,0) 65%),linear-gradient(120deg,rgba(255,117,23,.12) 0%,rgba(255,117,23,.03) 55%,rgba(255,117,23,0) 100%);}
+  @media(prefers-reduced-motion:reduce){
+    .kr-on .kr{opacity:1;transform:none;transition:none;} .kr-on .kr-wipe img{clip-path:none;transition:none;}
+    .band .num,.k-hero-media img,.kb-atmos::before,.kb-atmos i{transform:none!important;}
+  }
 </style>
 <header class="k-hero">
   <div class="k-hero-media"><img src="../assets/images/kb-flight-mechanics.jpg" alt=""></div>
@@ -251,4 +302,63 @@
 <section class="k-sec bg" id="takeaways"><div class="k-head"><h2>Worth remembering</h2><span class="kicker">Each one links to the chapter where it is said</span></div><div class="check"><div class="ck-l"><span class="kicker">Before your next flight</span><h3>Check your brake length</h3><p>Dyneema brake lines shrink, pilots adapt without noticing, and brakes that end up too short are a cofactor in accidents. Measure them regularly, and have the wing checked if you have any doubt.</p><a class="src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c12">Tom Lolies <span>Does brake input prevent collapses</span></a></div><div class="ck-n"><div><b>7<small>cm</small></b><span>at least, from hands fully up to the first tension</span></div><div><b>0</b><span>tension in the brakes at full speed bar</span></div></div></div><div class="tk-row"><div class="tk-lab"><span class="kicker">01</span><h3>The wing</h3></div><div class="cards"><div class="cardx"><span class="n">01</span><h3>The profile does the stabilising</h3><p>A paraglider has no tail. The moment coefficient sets where the lift sits, and a 14 cm speed-bar cap pushes race wings toward instability.</p><a class="src" href="../episodes/luc-armant-talks-about-the-moment-coefficient-enzo-3.html#c2">Luc Armant <span>Pitch stability without a tail</span></a></div><div class="cardx"><span class="n">02</span><h3>Slack B lines at full speed</h3><p>The lift has moved forward onto the A lines, a sign of a collapse-resistant airfoil. One green flag among several, not a rule.</p><a class="src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c6">Tom Lolies <span>The green flags to look for in a wing</span></a></div><div class="cardx"><span class="n">03</span><h3>A results are not a safety score</h3><p>Reports show how collapses went, never how easily they happen. A pitch-unstable wing can score well because it folds so readily.</p><a class="src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c7">Tom Lolies <span>Reading a test report properly</span></a></div></div></div><div class="tk-row"><div class="tk-lab"><span class="kicker">02</span><h3>Your inputs</h3></div><div class="cards"><div class="cardx"><span class="n">04</span><h3>The B risers stall sooner</h3><p>With less pressure and less warning than the brakes. To slow down hard in turbulence, go to deep brake, then back to the Bs.</p><a class="src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c13">Tom Lolies <span>Can every collapse be caught on the B line</span></a></div><div class="cardx"><span class="n">05</span><h3>Release into the drop</h3><p>When a side drops, let the tension out of your hip on that side. Pressing in gives the wing the wrong amount and starts the rolling.</p><a class="src" href="../episodes/helmut-schrempf-modernizing-siv-courses-how-this-new.html#c4">Helmut Schrempf <span>Anticipating collapses on a stable wing</span></a></div><div class="cardx"><span class="n">06</span><h3>Turn into wind</h3><p>The core sits upwind. Wrong at the front and you fall back into it; wrong at the back and you are sinking and chasing it.</p><a class="src" href="../episodes/how-to-thermal-like-a-pro-find-center-climb-paragliding.html#c7">Brett Janaway <span>Which way to turn with no information</span></a></div></div></div><div class="tk-row"><div class="tk-lab"><span class="kicker">03</span><h3>Your choices</h3></div><div class="cards"><div class="cardx"><span class="n">07</span><h3>Wings drift out of trim</h3><p>Usually slower, and unevenly if you always spiral one way. Regular checks keep it safe, and a missed one can void the warranty.</p><a class="src" href="../episodes/alain-zoller-the-science-of-en-certifications-how-work.html#c9">Alain Zoller <span>Can certification change once the trim drifts</span></a></div><div class="cardx"><span class="n">08</span><h3>Stepping down is fine</h3><p>Match the wing to how much and how often you fly. Even a Skywalk designer goes back to a low B after a break.</p><a class="src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c10">Tom Lolies <span>Whether to change category or stay put</span></a></div></div></div></section>
 <section class="k-sec card" id="questions"><div class="faq"><div class="faq-l"><div class="fq-in"><span class="kicker">FAQ</span><h2>Questions these conversations answer</h2><p>Each answer links to the chapter of the episode where the guest says it.</p><div class="fq-n"><div><b>10</b><span>questions</span></div><div><b>8</b><span>episodes</span></div></div></div></div><div class="faq-r"><details open><summary><h3>Why is a paraglider stable in pitch when it has no tail?</h3></summary><p>Because the stability is built into the profile. Luc Armant explains that a profile has a moment coefficient: on a stable one, as the angle of attack falls the lift resultant moves forward, which pulls the nose back up. A profile with a low moment coefficient carries its lift further back and is easier to accelerate, but resists collapse less.</p><a class="src" href="../episodes/luc-armant-talks-about-the-moment-coefficient-enzo-3.html#c2">Luc Armant <span>Pitch stability without a tail</span></a></details><details><summary><h3>What is pitch-up tendency in a paraglider?</h3></summary><p>Tom Lolies describes it as an airfoil that, when the angle of attack drops, moves its centre of lift towards or beyond the nose, so the wing wants to pitch against a collapse rather than with it. The pilot feels a loss of tension before anything folds and has time to react. Older profiles tended the other way and collapsed completely and quickly.</p><a class="src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c5">Tom Lolies <span>Brake pressure, and the approach to a stall</span></a></details><details><summary><h3>Does EN certification tell me how likely a wing is to collapse?</h3></summary><p>No. Alain Zoller, who runs a test house, says the induced collapses are not representative of what the air does. Tom Lolies adds that the standard has roughly twenty tests for behaviour after a collapse and no accepted test for collapse resistance; the only one, brake application at full speed, is itself debated.</p><a class="src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c6">Tom Lolies and Alain Zoller <span>The green flags to look for in a wing</span></a></details><details><summary><h3>How should I read a paraglider test report before buying?</h3></summary><p>Do not use it to rank wings. Luc Armant says to ignore any single result and read who the manufacturer says the wing is for. Alain Zoller adds that the brake range is worth a look, because a clean report with a very short range means little margin before the stall, and that nothing replaces test-flying two or three candidates yourself.</p><a class="src" href="../episodes/luc-armant-talks-about-debunking-the-myths-and-upgrading.html#c8">Luc Armant and Alain Zoller <span>What to look at instead of a single result</span></a></details><details><summary><h3>Why is a small amount of brake a problem on a modern two-liner?</h3></summary><p>Tom Lolies explains that a slight brake deflection is enough to cancel the profile&#x27;s pitch-up tendency, and so its collapse resistance, without creating enough drag to slow the wing. On some high-level wings, touching the brakes at full speed makes them faster, not slower. Fly on the B risers, or use plenty of brake, but avoid the small amount in between.</p><a class="src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c12">Tom Lolies <span>Does brake input prevent collapses</span></a></details><details><summary><h3>Is it better to fly on the B risers than on the brakes?</h3></summary><p>In ordinary air, both Helmut Schrempf and Tom Lolies fly on the B risers to keep the profile intact and the wing efficient. But the B risers are not brakes: Helmut says to switch to the brakes when a collapse happens, and the pendulum gives you time to do it. On three-liners, C steering needs the B-C bridge the manufacturer specifies.</p><a class="src" href="../episodes/helmut-schrempf-modernizing-siv-courses-how-this-new.html#c5">Helmut Schrempf <span>Brake line position and performance</span></a></details><details><summary><h3>How do I check my brake line length?</h3></summary><p>Tom Lolies gives two checks. From hands fully up to the first feeling of tension there should be at least 7 cm of travel, and at full speed bar there should be no tension in the brakes. Brake lines made of Dyneema shrink over time, so this is worth checking regularly rather than once.</p><a class="src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c12">Tom Lolies <span>Does brake input prevent collapses</span></a></details><details><summary><h3>Which way should I turn when I hit a thermal?</h3></summary><p>Into wind, unless you have better information. Brett Janaway explains that the core sits on the upwind side, so turning into wind either finds it or, if you have overshot the front, drops you back into it. Turning downwind at the back leaves you sinking and flying upwind to reach a core that is now above and ahead of you.</p><a class="src" href="../episodes/how-to-thermal-like-a-pro-find-center-climb-paragliding.html#c7">Brett Janaway <span>Which way to turn with no information</span></a></details><details><summary><h3>Why do two Enzo 3s from the same batch feel different?</h3></summary><p>Because the wing is built at the edge of pitch stability to stay competitive under the 14 cm speed-bar limit. Luc Armant says the cloth shrinks and the rods tighten with use, and a difference of about 5 mm on a rod over two metres long is enough to move one wing from fast towards collapsing. Everyday EN wings carry far more margin.</p><a class="src" href="../episodes/luc-armant-talks-about-the-moment-coefficient-enzo-3.html#c4">Luc Armant <span>What the lines actually stabilise</span></a></details><details><summary><h3>Should I move up a glider class?</h3></summary><p>Only if there is nothing left to learn on the one you fly. Tom Lolies, who can fly any wing he likes, still steps back to a low B after a break to rebuild currency, and says stepping down should carry no stigma. Alain Zoller&#x27;s version: know your glider at 100 percent before you change it, and avoid the highest class you think you can handle.</p><a class="src" href="../episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c10">Tom Lolies and Alain Zoller <span>Whether to change category or stay put</span></a></details></div></div></section>
 <section class="k-sec bg k-next"><div class="nx"><a class="nx-main" href="risk-vs-reward.html"><span class="kicker">Next in the Knowledge Base</span><strong>Risk vs Reward</strong><em>How pilots make calculated decisions that balance competitive advantage with safety.</em><i>Read it &rarr;</i></a><a class="nx-card" href="../library.html#s=Flight%20Mechanics"><span class="kicker">Listen</span><strong>The full Flight Mechanics series</strong><em>8 episodes, 9h 13m, every one transcribed</em></a><a class="nx-card" href="mailto:aninder@paraglidingatlas.com?subject=Flight%20Mechanics%20question"><span class="kicker">Ask</span><strong>A question we did not answer?</strong><em>Send it in for the next AMA episode</em></a></div></section>
+<script>
+/* Flight Mechanics: immersive layer. Ambient canvas, reading progress, reveal on
+   scroll, gentle parallax and a pointer light. Transform and opacity only, one
+   rAF per scroll, and it all stands down for prefers-reduced-motion. */
+(function () {
+  var d = document, root = d.documentElement;
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var atm = d.createElement("div"); atm.className = "kb-atmos"; atm.setAttribute("aria-hidden", "true");
+  atm.innerHTML = '<i class="g1"></i><i class="g2"></i><i class="g3"></i>'; d.body.insertBefore(atm, d.body.firstChild);
+  var bar = d.createElement("div"); bar.className = "kb-progress"; bar.setAttribute("aria-hidden", "true"); d.body.appendChild(bar);
+
+  if ("IntersectionObserver" in window && !reduce) {
+    root.classList.add("kr-on");
+    var groups = [".k-head", ".band .l", ".band .r", ".bf-q", ".band-draw", ".check", ".tk-lab", ".tk-row .cardx",
+                  ".faq-l", ".faq-r details", ".nx a", "#episodes .ep-tile"];
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el = e.target; el.classList.add("in"); io.unobserve(el);
+        /* hand the element back to its own hover transforms once it has arrived */
+        setTimeout(function () { el.classList.remove("kr"); el.style.removeProperty("--d"); }, 1900);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    groups.forEach(function (sel) {
+      var list = d.querySelectorAll(sel), parents = [];
+      Array.prototype.forEach.call(list, function (el) {
+        var p = el.parentNode, i = parents.indexOf(p); if (i < 0) { parents.push(p); p._kri = 0; }
+        el.classList.add("kr"); el.style.setProperty("--d", Math.min(p._kri++ * 0.07, 0.42) + "s"); io.observe(el);
+      });
+    });
+    Array.prototype.forEach.call(d.querySelectorAll(".bf-media, .band-draw"), function (el) { el.classList.add("kr-wipe"); if (!el.classList.contains("kr")) { el.classList.add("kr"); io.observe(el); } });
+  }
+
+  var nums = Array.prototype.slice.call(d.querySelectorAll(".band .num")), ticking = false;
+  function frame() {
+    ticking = false;
+    var y = window.scrollY || root.scrollTop, vh = window.innerHeight, h = root.scrollHeight - vh;
+    root.style.setProperty("--p", h > 0 ? Math.min(1, y / h).toFixed(4) : 0);
+    if (reduce) return;
+    atm.style.setProperty("--gy", (-(y * 0.08) % 60).toFixed(1) + "px");
+    atm.style.setProperty("--g1", (Math.sin(y / 1300) * 22 * vh / 100).toFixed(1) + "px");
+    atm.style.setProperty("--g2", (Math.cos(y / 1700) * 18 * vh / 100 + y * 0.02 % 1).toFixed(1) + "px");
+    atm.style.setProperty("--g3", (Math.sin(y / 2100) * 12 * window.innerWidth / 100).toFixed(1) + "px");
+    if (y < vh * 1.2) { root.style.setProperty("--hy", (y * 0.16).toFixed(1) + "px"); root.style.setProperty("--hs", (1 + y * 0.00007).toFixed(4)); }
+    for (var i = 0; i < nums.length; i++) {
+      var r = nums[i].parentNode.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > vh + 200) continue;
+      nums[i].style.setProperty("--py", ((r.top - vh * 0.5) * -0.09).toFixed(1) + "px");
+    }
+  }
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, { passive: true });
+  window.addEventListener("resize", frame, { passive: true }); frame();
+
+  d.addEventListener("pointermove", function (e) {
+    var c = e.target.closest && e.target.closest(".cardx, .nx a, .check"); if (!c) return;
+    var r = c.getBoundingClientRect(); c.style.setProperty("--mx", (e.clientX - r.left) + "px"); c.style.setProperty("--my", (e.clientY - r.top) + "px");
+  }, { passive: true });
+})();
+</script>
 
