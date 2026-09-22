@@ -24,8 +24,8 @@ is a citable article that ranks on its own and links down into the episodes.
 | know-your-equipment | 8 | done |
 | new-technologies | 7 | done |
 | the-dark-side | 5 | done |
-| world-cups | 7 | next |
-| resources-tools-tips | 11 | |
+| world-cups | 7 | done |
+| resources-tools-tips | 11 | next |
 | brand-stories | 4 | |
 | navigators | 6 | narrative, see below |
 | sky-gods | 4 | narrative |
