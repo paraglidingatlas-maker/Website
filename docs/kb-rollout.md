@@ -25,8 +25,8 @@ is a citable article that ranks on its own and links down into the episodes.
 | new-technologies | 7 | done |
 | the-dark-side | 5 | done |
 | world-cups | 7 | done |
-| resources-tools-tips | 11 | next |
-| brand-stories | 4 | |
+| resources-tools-tips | 11 | done |
+| brand-stories | 4 | next |
 | navigators | 6 | narrative, see below |
 | sky-gods | 4 | narrative |
 | living-the-dream | 6 | narrative |
@@ -103,7 +103,8 @@ are reading, images and long outputs. Keep all three small.
   episode makes it unclear who said something, credit both or leave it out.
   Do not upgrade a claim (e.g. calling someone a world champion when the
   transcript does not say so).
-- FAQ: questions end in `?`, answers 55 to 70 words, phrased the way a pilot
+- FAQ: questions end in `?` (and takeaway titles must not, or the schema
+  picks them up as extra questions), answers 55 to 70 words, phrased the way a pilot
   would search.
 - `seo_title` 70 characters or fewer; `seo_desc` 70 to 165.
 - No em-dashes anywhere. Orange accents stay as designed.

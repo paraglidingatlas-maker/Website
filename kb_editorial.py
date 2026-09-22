@@ -70,6 +70,15 @@ LUKE = "from-tents-to-trophies-understanding-acro-champion-s"
 SHANE = "shane-tighes-road-to-x-alps-engineering-conquests-in-the"
 ERLEND = "the-resilience-equation-erlend-ukvitnes-unrelenting-path"
 
+YVONNE = "sports-psychology-for-paragliding-train-your-mind-to-fly"
+GRANT = "the-silent-mind-in-screaming-winds-unlocking-peak-focus-to"
+ASHU = "ashutosh-chopra-identifying-passion-vs-obsession-an"
+ZIAD = "ziad-bassil-finest-paragliding-reviews-superpower-of"
+JORDAN = "flying-filming-1-benjamin-jordan"
+KELLET = "flying-filming-2-benjamin-kellet"
+ANDREAS = "flying-filming-3-andreas-lattner"
+JAKE = "the-art-of-capturing-human-flight-jake-holland-s-guide-to"
+
 EDITORIAL = {
     "flight-mechanics": {'layout': 2,
      'kicker': 'Flight Mechanics',
@@ -998,5 +1007,124 @@ EDITORIAL = {
                        ("Related", "new-technologies.html", "New Technologies", "What the certification letter does and does not tell you"),
                        ("Related", "flight-mechanics.html", "Flight Mechanics", "Why a heavier wing flies faster, and what trim does"),
                        ("Ask", "mailto:aninder@paraglidingatlas.com?subject=Competition%20question", "A question we did not answer?", "Send it in for the next AMA episode")]},
+    },
+    "resources-tools-tips": {
+    "layout": 2,
+    "kicker": "Resources, Tools & Tips",
+    "h1": "How Do I Stay Calm and Focused When Paragliding?",
+    "lead": "The mental side of flying from a sports psychologist and pilots who have worked on it, then the practical tools around the sport: how to read a wing review, how pilots film, and how a few make a living from it.",
+    "sub": "Eleven episodes. A sports psychologist on breathing and unhelpful thoughts, a pilot on flow and pre-flight rituals, an aviator on passion, obsession and fear, the most prolific wing reviewer, and four filmmakers from Instagram shorts to expedition films.",
+    "seo_title": "Paragliding Mindset, Filming and Reviews | Paragliding Atlas",
+    "seo_desc": "Stay calm and focused when paragliding: breathing, handling unhelpful thoughts and pre-flight routines, plus reading wing reviews and filming your flights.",
+    "hero_alt": "An orange breathing trace with short rises and longer falls, slowing and settling from left to right, with a small paraglider silhouette above its calm end",
+    "bands": [
+        {"num": "01", "kicker": "In the air", "heading": "You cannot switch off a thought, only the fight with it",
+         "short": "Pushing an unhelpful thought away makes it louder. Sports psychologist Yvonne Dathe teaches pilots to notice it, let it be there, and use the breath to get the thinking brain back.",
+         "paras": [
+             "Yvonne Dathe works with pilots on stressful moments in the air, and prefers mental flexibility to mental strength: strength fixes on one point, while flying keeps changing the situation. Her central point is about thoughts. She once taught pilots to shout stop at an unhelpful thought and replace it with a positive one, and found it works only for small ones. Try to suppress a thought or feeling that matters and it grows and gains power. You cannot switch the thought off, but you can switch off the struggle with it, notice it, and bring attention back to the next waypoint or the next climb. Outside distractions are different: prepare them away before launch, starting with the sounds on your phone.",
+             "Breathing is the tool she comes back to. Under stress the rational part of the brain works poorly, because deciding carefully is not what survival needs. A deep breath into the belly activates the parasympathetic system that counters the stress reaction, and an out-breath longer than the in-breath relaxes further. That buys time, and with it better decisions. The simplest version needs no technique: focus on the breath, and feel it at the nose, in the lungs, at the shoulders. On goals, she warns that visualising only success can make the brain feel it has already arrived. Visualise the obstacles too, and what you will do about each."],
+         "bold": ["mental flexibility", "grows and gains power", "switch off the struggle", "sounds on your phone", "into the belly", "out-breath longer than the in-breath", "Visualise the obstacles too"],
+         "chips": [("Yvonne Dathe", YVONNE)],
+         "figure": None},
+        {"num": "02", "kicker": "Before you fly", "heading": "A routine, a reason, and an honest read of the fear",
+         "short": "A consistent pre-flight routine quiets the mind before launch. Knowing why you fly keeps ego out of the decisions. And a fear is either rational, and tells you something, or it is not.",
+         "paras": [
+             "Grant Smith compares a pilot's pre-flight routine to the fixed ritual a rugby kicker goes through before a big kick: practised until it tells the body it is time. Paragliding already has safety checks; his point is that the routine can start the night before, with the forecast and the kit. Arrive with a picture of what the day will do and everything packed, and you are not distracted by a missing radio, so the mind is still at launch. He is just as clear about motivation. Competition and glory can be a fine driver, but he would find a serious accident in an ego battle meaningless in a way one in meaningful flying would not be, so self-awareness about why you are pushing matters. Some of his best memories, he adds, are landing with friends.",
+             "Ashutosh Chopra, an aviator by profession, works through where passion becomes obsession in a sport with no biological retirement age, and the need to give it a reasonable share of your life. His test for fear is practical: ask whether it is grounded. A rational fear, like flying a wing with broken lines, reflects a real rise in risk; an irrational one means the mind needs straightening out. He also separates skill from teaching: a good pilot is not necessarily a good instructor, and a student who is not learning from a teacher can and should find another. Yvonne Dathe adds a modern trap: scrolling other pilots' progress while you are stuck at work makes you frustrated, and frustration can mean training less."],
+         "bold": ["pre-flight routine", "the night before", "still at launch", "self-awareness", "no biological retirement age", "whether it is grounded", "not necessarily a good instructor", "scrolling"],
+         "chips": [("Grant Smith", GRANT), ("Ashutosh Chopra", ASHU), ("Yvonne Dathe", YVONNE)],
+         "figure": None},
+        {"num": "03", "kicker": "Reviews", "heading": "How to read a wing review",
+         "short": "The most prolific reviewer in the sport tests in rough air, low down, not on the best days. He sees little performance difference across the B class, and does not publish wings he scores below five.",
+         "paras": [
+             "Ziad Bassil test flies more wings than almost anyone and writes them up. The useful tests, he says, are not in the strongest conditions but in turbulent air when you are low and have to push on and turn: that is where a high aspect ratio wing will not turn on a dime and the differences between wings show. Across two years of B wings he found no real performance difference; the difference comes from the pilot. In the D class he thinks designers have reached a limit, with the same cloths and the same Dyneema and Kevlar lines, and he expects little change unless the certification box changes.",
+             "Two details are worth knowing when you read any review. Reflex, he explains, makes a profile harder to collapse and has nothing to do with trimming; trimming is about the lines, and the thin unsheathed lines on modern wings need it, while the thick sheathed lines of paramotor wings, with trimmers, forgive more. And on honesty, he is open about how he handles a bad wing: after early complaints from manufacturers, a glider he scores below 5 out of 10 goes into his personal notes rather than a published review, because he does not want to sink a small company's product on one pilot's experience. The implication for readers is plain: an absent review can say something too."],
+         "bold": ["turbulent air when you are low", "no real performance difference", "reached a limit", "nothing to do with trimming", "below 5 out of 10", "an absent review"],
+         "chips": [("Ziad Bassil", ZIAD)],
+         "figure": None},
+        {"num": "04", "kicker": "Filming", "heading": "Decide the story before you press record",
+         "short": "The filmmakers here agree on more than gear: a flight becomes a film when a story is chosen early, and most of that story happens on the ground.",
+         "paras": [
+             "Benjamin Jordan describes three ways to build a flying film: record everything and look for a story afterwards; write it first like a screenplay and tick off the scenes; or, his preference, start from a real inspiration, in his case the monarch butterfly's migration, and let the journey shape it. His kit is modest. A Sony RX100 compact on a tripod shoots about three quarters of his ground footage; in the air it is mostly GoPro, with drone shots flown by his wife. Jake Holland, who films expeditions, carries a Sony full frame body with a wide 16 to 35 and a 24 to 105, plus action and 360 cameras to put the viewer on the pilot, and calls this a golden age for what consumer kit can do.",
+             "Benjamin Kellet, one of the most followed paraglider pilots on Instagram, edits on his phone: the GoPro's microSD card goes straight into a USB-C reader and the footage is on the phone in about a minute. He has flown with a helmet camera for years and is relaxed about the snag risk, pointing out you can always drop the chin strap, while acknowledging a line round it could affect how the wing flies. Holland adds a caution about what gets shared: feeds fill with highlights and some accidents, and filter out the ordinary middle that is most of flying."],
+         "bold": ["three ways", "real inspiration", "three quarters of his ground footage", "golden age", "edits on his phone", "drop the chin strap", "the ordinary middle"],
+         "chips": [("Benjamin Jordan", JORDAN), ("Jake Holland", JAKE), ("Benjamin Kellet", KELLET)],
+         "figure": {"img": "kb-resources-tools-tips-cameras", "w": 2400, "h": 620,
+                    "alt": "A pilot under a wing with four camera positions marked: a helmet mount, a stick or gimbal, a drone flown by someone else, and a compact camera on a tripod on the ground",
+                    "captions": [("Helmet and stick", "The pilot's view and the pilot in frame. A helmet mount is easy, but a line can catch it."),
+                                 ("Drone and tripod", "Someone else's drone for the big picture; a compact on a tripod for most of the ground story.")],
+                    "source_html": 'After Benjamin Jordan, <a href="../episodes/flying-filming-1-benjamin-jordan.html#c6">Episode 21, chapter 6</a>, and Benjamin Kellet, <a href="../episodes/flying-filming-2-benjamin-kellet.html#c9">Episode 27, chapter 9</a>. Schematic.'}},
+        {"num": "05", "kicker": "Making a living", "heading": "Brands, views and free wings",
+         "short": "Nobody here needed a follower count to start. What they needed was to be someone the community respects, to pitch projects that fit a sponsor's existing plans, and to be honest about the wing they fly.",
+         "paras": [
+             "Kellet puts no benchmark on followers before approaching brands: what matters is being a respected, likeable member of the community whose videos are interesting and whom people listen to. When the money does come from platforms, he explains, it depends on how often people click the thumbnail, what share of the video they watch, and the total hours watched. Jordan's sponsorship method is to study what a company already spends on, then design the project to fit its existing branding, so the sponsor is buying more of what it already does. That, he says, is the path of least resistance.",
+             "Andreas Lattner and his partner Marlies built hochzwei.media from that kind of fit: she was a newspaper journalist, he took the photos, and partners liked getting story and images together. On free or discounted wings he is direct: a brand expects marketing value in return, and the only good version of the deal is flying a wing you are genuinely convinced by and saying so honestly. He also cautions against telling audiences about fine distinctions they cannot see, the way a climber's talk about grade 10 against 11 means nothing to a room of non-climbers."],
+         "bold": ["no benchmark on followers", "respected, likeable", "total hours watched", "fit its existing branding", "path of least resistance", "marketing value", "genuinely convinced"],
+         "chips": [("Benjamin Kellet", KELLET), ("Benjamin Jordan", JORDAN), ("Andreas Lattner", ANDREAS)],
+         "figure": None},
+    ],
+    "quote_band": {"after_band": 0, "img": "kb-resources-tools-tips-section",
+                   "alt": "Two curves of how loud an unhelpful thought gets during a flight: a white one, pushed against, rising steadily, and an orange one, noticed and allowed, rising and then fading",
+                   "kicker": "Unhelpful thoughts",
+                   "quote": "Thoughts and feelings will come in the air, and you cannot simply switch them off. What you can switch off is the struggle with them.",
+                   "who": "Yvonne Dathe, sports psychologist", "cite_ep": YVONNE, "cite_ch": "c4", "cite_label": "Episode 71, paraphrased",
+                   "caption": "Schematic: a thought you fight tends to grow; one you notice and let be tends to pass."},
+    "callout": {"kicker": "When it gets tense", "heading": "Breathe into the belly, and out for longer",
+                "text": "Under stress the thinking part of the brain works poorly. Yvonne Dathe's fix is the breath: a deep breath into the belly calms the stress reaction, and an out-breath longer than the in-breath relaxes further. It buys time, and time brings back good decisions. If that is too much, just notice the breath at your nose and in your lungs.",
+                "ep": YVONNE, "ch": "c6", "who": "Yvonne Dathe",
+                "numbers": [("2", "", "levers: breathe deep into the belly, and make the out-breath longer than the in-breath")]},
+    "takeaways_heading": "Worth remembering",
+    "groups": [
+        ("Mind", [
+            ("Stop fighting the thought", "Suppressing a thought that matters makes it louder. Notice it, let it be, fly the next climb.", YVONNE, "c5", "Yvonne Dathe"),
+            ("Visualise the obstacles", "Picturing only success can make the brain feel it has arrived. Plan for what is in the way.", YVONNE, "c3", "Yvonne Dathe"),
+            ("Put the phone away", "Scrolling other pilots' progress breeds frustration, and frustration can mean training less.", YVONNE, "c10", "Yvonne Dathe")]),
+        ("Preparation", [
+            ("Start the routine the night before", "Forecast and kit sorted, so nothing at launch distracts a still mind.", GRANT, "c7", "Grant Smith"),
+            ("Know why you are pushing", "Glory is a fine driver. An accident in an ego battle is a meaningless one.", GRANT, "c9", "Grant Smith"),
+            ("Check whether the fear is grounded", "A rational fear reflects real risk. An irrational one is the mind that needs work.", ASHU, "c6", "Ashutosh Chopra")]),
+        ("Tools", [
+            ("Test wings where it is hard", "Low, in turbulence, trying to turn. Not on the best day.", ZIAD, "c4", "Ziad Bassil"),
+            ("Reflex is not about trim", "Reflex resists collapse. Trim is about the lines, and thin lines drift.", ZIAD, "c9", "Ziad Bassil"),
+            ("Choose the story early", "Start from a real inspiration and let the journey shape it, rather than hunting for a story later.", JORDAN, "c2", "Benjamin Jordan")]),
+    ],
+    "faq_heading": "Questions these conversations answer",
+    "faq": [
+        {"q": "How do I stay calm when I get scared while paragliding?",
+         "a": "Use your breath. Sports psychologist Yvonne Dathe explains that under stress the rational part of the brain works poorly, so decisions suffer. A deep breath into the belly activates the system that counters the stress reaction, and an out-breath longer than the in-breath relaxes you further. That buys time and lets the thinking brain come back. Simply noticing the breath works too.",
+         "ep": YVONNE, "ch": "c6", "who": "Yvonne Dathe"},
+        {"q": "How do I stop negative thoughts while flying?",
+         "a": "Stop trying to stop them. Yvonne Dathe used to teach pilots to shout stop and switch to a positive thought, and found it only works for minor thoughts. Suppressing one that matters makes it grow. Instead, accept that it is there, drop the struggle with it, and bring your attention back to the next waypoint or climb. Prepare outside distractions, like phone sounds, before launch.",
+         "ep": YVONNE, "ch": "c5", "who": "Yvonne Dathe"},
+        {"q": "Does visualisation help paragliding pilots?",
+         "a": "Yes, if you do it properly. Yvonne Dathe warns that visualising only the goal can activate the brain's reward system as if you had already achieved it, which reduces the drive to act. Visualise the goal, then the obstacles on the way and the plan for each. She also suggests rehearsing how you will handle a distraction in the air, such as putting the phone away.",
+         "ep": YVONNE, "ch": "c3", "who": "Yvonne Dathe"},
+        {"q": "What is a good pre-flight routine for paragliding?",
+         "a": "One you repeat every time, says Grant Smith, the way a rugby kicker does before a big kick. It can start the night before: study the forecast so you arrive with a picture of the day, and pack your kit so nothing is missing at launch. The safety checks are part of it, but the real value is arriving with a still, undistracted mind.",
+         "ep": GRANT, "ch": "c7", "who": "Grant Smith"},
+        {"q": "How do I know if my fear of flying is rational?",
+         "a": "Ask whether it is grounded, says Ashutosh Chopra. A rational fear reflects a real increase in risk: his example is flying a wing with broken lines, where the chance of something going wrong has genuinely gone up. An irrational fear, where nothing about the situation justifies it, means your mind needs straightening out before you fly. Each calls for a different response.",
+         "ep": ASHU, "ch": "c6", "who": "Ashutosh Chopra"},
+        {"q": "Should I change paragliding instructors?",
+         "a": "If you are not learning, you can. Ashutosh Chopra points out that being a good pilot does not make someone a good instructor, and that a good teacher and a good student can still be a bad match, for example a quiet student with a shouting teacher. Nothing stops you from finding someone you learn better with. Question your instructors and weigh their answers.",
+         "ep": ASHU, "ch": "c4", "who": "Ashutosh Chopra"},
+        {"q": "Are there real performance differences between EN B paragliders?",
+         "a": "Very little, according to reviewer Ziad Bassil, who flies more wings than almost anyone. Over two years of testing B wings he found no real performance difference; the difference came from the pilot. He sees more variation in how wings handle turbulence and turning, which is why he tests low in rough air rather than on the strongest days.",
+         "ep": ZIAD, "ch": "c7", "who": "Ziad Bassil"},
+        {"q": "Do paraglider reviews ever publish bad scores?",
+         "a": "Ziad Bassil is open about his own practice. After manufacturers objected to critical reviews early on, he decided that a wing he rates below 5 out of 10 goes into his personal notes rather than being published, because one pilot's experience could sink a small company's product. So when a wing is missing from a reviewer's list, that absence may be telling you something.",
+         "ep": ZIAD, "ch": "c11", "who": "Ziad Bassil"},
+        {"q": "What camera do paragliding filmmakers use?",
+         "a": "Less than you might think. Benjamin Jordan shoots about three quarters of his ground footage on a Sony RX100 compact on a tripod, with GoPros in the air and drone shots flown by his wife. Jake Holland carries a Sony full frame body with 16 to 35 and 24 to 105 lenses, plus action and 360 cameras to put the viewer beside the pilot.",
+         "ep": JORDAN, "ch": "c6", "who": "Benjamin Jordan and Jake Holland"},
+        {"q": "How many followers do I need to get a paragliding sponsor?",
+         "a": "There is no number, says Benjamin Kellet, one of the most followed paraglider pilots on Instagram. He would not tell anyone to wait for 10,000 followers. What brands respond to is a respected, likeable member of the community who makes interesting videos and gets on well with people. Benjamin Jordan's advice is to pitch projects that fit what a sponsor already spends on.",
+         "ep": KELLET, "ch": "c5", "who": "Benjamin Kellet"},
+    ],
+    "next": {"main": ("know-your-equipment.html", "Know Your Equipment", "Reserves, harness protectors, helmets and carabiners, from the people who design, test and repack them."),
+             "cards": [("Listen", "../library.html#s=Resources%2C%20Tools%20and%20Tips", "The full Resources, Tools & Tips series", "11 episodes, 9h 49m"),
+                       ("Related", "risk-vs-reward.html", "Risk vs Reward", "Deciding what a flight is worth, and when to back off"),
+                       ("Related", "world-cups.html", "World Cups", "How competitions work, and what they teach"),
+                       ("Ask", "mailto:aninder@paraglidingatlas.com?subject=Tips%20question", "A question we did not answer?", "Send it in for the next AMA episode")]},
     },
 }
