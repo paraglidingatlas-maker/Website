@@ -572,20 +572,25 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
 {faq}"""
     html = NAV_HEADER.format(og_image=_og_image(slug), main_entity=_main_entity(locals().get("rich")), BASE=cfg.BASE, title=title, seo_title=seo_title, slug=slug, seo_desc=seo_desc,
                              css=css, body=body)
-    # A hand-built layout in templates/kb/<slug>.html replaces the generated
-    # body and style; head, nav, footer and the live episode grid stay generated.
-    tpl_path = os.path.join(ROOT, "templates", "kb", slug + ".html")
-    if os.path.exists(tpl_path):
-        tpl = open(tpl_path, encoding="utf-8").read()
-        t_style = tpl[tpl.index("<style>") + 7:tpl.index("</style>")]
-        t_body = tpl[tpl.index("</style>") + 8:].strip()
-        g0 = t_body.index('<div class="ep-grid">')
-        g1 = t_body.index("</script>", t_body.index('id="kbEpisodes"')) + len("</script>")
-        t_body = t_body[:g0] + ep_html + t_body[g1:]
+    if ed and ed.get("layout") == 2:
+        import kb_layout
+        ed = dict(ed, _cat_slug=category_slug, _cat_title=category_title)
+        got = [d for d in (rich or []) if d]
+        stats = [(len(got), "conversation" + ("" if len(got) == 1 else "s"))]
+        mins = sum(int(re.sub(r"\D", "", d["dur"]) or 0) for d in got)
+        if mins:
+            stats.append(("%dh %02dm" % (mins // 60, mins % 60) if mins >= 60 else "%d min" % mins, ""))
+        chaps = sum(d["nchapters"] for d in got)
+        if chaps:
+            stats.append((chaps, "chapters"))
+        words = sum(KBD.transcript_words(d["slug"]) for d in got)
+        if words:
+            stats.append(("{:,}".format(words), "words transcribed"))
+        l_css, l_body, l_js = kb_layout.render(slug, ed, ep_html, len(got), stats)
         h0 = html.index("<style>") + 7; h1 = html.index("</style>")
-        html = html[:h0] + t_style + html[h1:]
+        html = html[:h0] + l_css + html[h1:]
         b0 = html.index('<header class="cat-hero">')
-        html = html[:b0] + t_body + "\n"
+        html = html[:b0] + l_body + "\n" + l_js + "\n"
     html = html.replace(
         '<script src="../script.js"></script>\n</body>',
         '<script src="../script.js"></script>\n<script src="../episode-modal.js"></script>\n</body>'
