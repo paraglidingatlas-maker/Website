@@ -62,22 +62,23 @@ for p_, l_, o_ in [(K, "K", (-20, -2)), (P, "P", (14, -22)), (B, "B", (22, -16))
 g0 = np.array([1290., 520.]); AR(g0, (-55, 0), WH, r"$x_I$", (-14, -16), lw=1.1, fs=17, a=0.7); AR(g0, (0, 60), WH, r"$z_I$", (18, 6), lw=1.1, fs=17, a=0.7)
 
 # ================= FRONT VIEW =================
-O = np.array([1660., 490.]); R1, R2 = 305, 277; TM = 64
-def arcpt(t, r): t = np.radians(t); return O + r*np.array([np.sin(t), -np.cos(t)])
-ts = np.linspace(-TM, TM, 200)
-outer = [arcpt(t, R1) for t in ts]; inner = [arcpt(t, R2) for t in ts[::-1]]
-ax.add_patch(Polygon(outer + inner, closed=True, fc=FILL, ec=GR, lw=1.3, alpha=0.95, zorder=3))
-for t in np.linspace(-TM + 3, TM - 3, 45): L([arcpt(t, R2 + 2), arcpt(t, R1 - 2)], lw=0.5, a=0.28, z=4)
-for sgn in (-1, 1):   # stabilo curl at the tips
-    a0 = arcpt(sgn*TM, R1); a1 = arcpt(sgn*TM, R2)
-    L([a0, a0 + np.array([sgn*6, 26]), a1 + np.array([sgn*2, 22]), a1], lw=1.2, a=0.9, z=4)
+O = np.array([1660., 470.]); EA, EB, TM, T0 = 335, 262, 80, 30   # elliptical arc, not circular
+def mid(t): t = np.radians(t); return O + np.array([EA*np.sin(t), -EB*np.cos(t)])
+def nrm(t):
+    t = np.radians(t); v = np.array([EB*np.sin(t), -EA*np.cos(t)]); return v/np.linalg.norm(v)
+def thk(t): return T0*np.clip(1 - (t/TM)**2, 0, 1)**0.38 + 0.6   # thins to a rounded, near-sharp tip
+def arcpt(t, side): return mid(t) + nrm(t)*side*thk(t)/2          # side +1 outer, -1 inner
+ts = np.linspace(-TM, TM, 400)
+outer = [arcpt(t, 1) for t in ts]; inner = [arcpt(t, -1) for t in ts[::-1]]
+ax.add_patch(Polygon(outer + inner, closed=True, fc=FILL, ec=GR, lw=1.3, alpha=0.95, zorder=3, joinstyle="round"))
+for t in np.linspace(-TM + 4, TM - 4, 47): L([arcpt(t, -0.85), arcpt(t, 0.85)], lw=0.5, a=0.28, z=4)
 rs = {-1: np.array([1640., 712.]), 1: np.array([1680., 712.])}
-att = np.linspace(-TM + 4, TM - 4, 27)
+att = np.linspace(-TM + 7, TM - 7, 27)
 for g in range(0, 27, 3):
     grp = att[g:g+3]; sd = 1 if grp.mean() > 0 else -1
-    pts = [arcpt(t, R2) for t in grp]; mid = rs[sd] + (np.mean(pts, 0) - rs[sd])*0.66
-    for p_ in pts: L([p_, mid], lw=0.7, a=0.5)
-    L([mid, rs[sd]], lw=0.85, a=0.6)
+    pts = [arcpt(t, -1) for t in grp]; mnode = rs[sd] + (np.mean(pts, 0) - rs[sd])*0.66
+    for p_ in pts: L([p_, mnode], lw=0.7, a=0.5)
+    L([mnode, rs[sd]], lw=0.85, a=0.6)
 Cf = np.array([1660., 718.]); Hf = np.array([1660., 755.])
 ax.add_patch(Circle(Hf, 32, fc=FILL, ec=GR, lw=1.2, zorder=3)); ax.add_patch(Circle(Cf + np.array([0, -12]), 11, fc=FILL, ec=GR, lw=1.1, zorder=3))
 for sd in (-1, 1): L([rs[sd], Cf + np.array([sd*12, 2])], lw=1.0, a=0.8)
@@ -85,13 +86,13 @@ Bf = np.array([1660., 505.]); PHI = 9
 AR(Bf, (-130, 0), WH, None, lw=1.3, a=0.75); AR(Bf, (0, 150), WH, None, lw=1.3, a=0.75)
 AR(Bf, rot((-130, 0), -PHI), OR, r"$y_b$", (-22, -8)); AR(Bf, rot((0, 150), -PHI), OR, r"$z_b$", (20, 4))
 ANG(Bf, 92, 180, 180 + PHI, OR, r"$\phi_b$", 26)
-top = arcpt(0, R1 + 4); AR(top, (0, -120), GR, r"$z_k$", (20, 6)); AR(top, (-120, 0), GR, r"$y_k$", (0, -18))
-AR(arcpt(0, R2), (0, 120), OR, r"$z_c$", (20, 4), lw=1.3)
+top = arcpt(0, 1) + np.array([0, -4]); AR(top, (0, -120), GR, r"$z_k$", (20, 6)); AR(top, (-120, 0), GR, r"$y_k$", (0, -18))
+AR(arcpt(0, -1), (0, 120), OR, r"$z_c$", (20, 4), lw=1.3)
 AR(Hf, (-105, 18), OR, r"$y_h$", (-16, -14), lw=1.3); AR(Hf, (14, 105), OR, r"$z_h$", (22, 2), lw=1.3)
 for p_, l_, o_ in [(Bf, "B", (22, -16)), (Cf, "C", (24, -10)), (Hf, "H", (22, -18))]: DOT(p_, l_, o_)
 
 # ================= TOP VIEW =================
-Q = np.array([2190., 450.]); HS = 360; CMX = 160
+Q = np.array([2190., 450.]); HS = 360; CMX = 120
 ys = np.linspace(-1, 1, 400)
 cy = CMX*np.clip(1 - ys**2, 0, 1)**0.42; le = Q[0] - 0.42*cy - 26*ys**2
 tev = le + cy; yy = Q[1] + HS*ys
