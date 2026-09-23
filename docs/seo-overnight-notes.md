@@ -12,7 +12,7 @@ Summary goes here at the end of the job (F1).
 - [x] 7.6 Images and speed: done, 6352f5f, deploy success
 - [x] 7.7 Crawl hygiene: done, c18fe95, deploy success
 - [x] 7.8 Report (docs/seo-baseline.md): done
-- [ ] 7.9 Episode summary fixes (progress: batch 6 of 7 published)
+- [ ] 7.9 Episode summary fixes (progress: batch 7 of 7 published)
 - [ ] 7.10 Headings and accessibility
 - [ ] 7.11 Related episodes (progress: none yet)
 
@@ -290,3 +290,13 @@ Batches are the 70 episodes in episode-meta.json order, 10 at a time.
 - Fixed `from-tents-to-trophies-understanding-acro-champion-s`: "An acro world champion talks" became "An Acro World Tour champion talks". The title he names is the Acro World Tour: 'I would like to become a World Tour champion. And that's what I did in 2023' [02:22]-[02:27]; 'world champion' is never said.
 - Left for you, `from-tents-to-trophies-understanding-acro-champion-s`: 'ego' is not discussed in the transcript; it is in the episode title (your wording), so left.
 - Left for you, `survived-15-years-of-flying-then-a-rescue-helicopter`: The guest field says 'Nick Neynes', the summary says 'Nick Neynens'. The captions cannot settle it. Guest field not touched (your wording); please pick one.
+
+**Batch 7** (the-art-of-capturing-human-flight-jake-holland-s-guide-to, scoring-in-paragliding-competitions-a-new-pilot-s-guide-to, watch-this-before-you-buy-a-paragliding-harness-a-talk, the-inside-story-of-sports-racing-series-by-brett-janaway, the-unfiltered-truth-about-paragliding-governance-with, bill-belcourt-the-uncomfortable-truth-no-one-is-talking, bruce-goldsmith-explains-mrt-scoring-system-and-its-impact, luc-armant-talks-about-debunking-the-myths-and-upgrading, kinga-masztalerz-building-a-healthy-relationship-with-the, a-note-of-thanks)
+
+- Fixed `watch-this-before-you-buy-a-paragliding-harness-a-talk`: "measuring jerk rather than peak G" became "measuring jerk as well as peak G". He wants both: 'They can check for both the G and the jerk values' [48:29]; 'jerk value is just as important and it should be equally shown' [48:41]-[48:44].
+- Fixed `the-inside-story-of-sports-racing-series-by-brett-janaway`: "Brett Janaway tells how the Sports Racing Series began around 2012 with a few organisers agreeing over a beer to link their events into one series," became "Brett Janaway tells how the idea for the Sports Racing Series came up around 2012, with a few organisers over a beer talking about linking their events into one series,". The concept came up in 2012 over a beer [27:49]-[28:01], but 'the conclusion at the end was... it might put too much pressure on the sport'; the series launched only once two liners were released [28:04]-[28:24].
+- Fixed `bruce-goldsmith-explains-mrt-scoring-system-and-its-impact`: "and that drag reducing measures only ever address a narrow band of pilot weights." became "and that drag noodles only ever address a narrow band of pilot weights.". The point is about drag noodles [07:20], [07:52]-[07:59] ('only talking about the weight range of 100 to 125'), which add drag rather than reduce it.
+- Fixed `a-note-of-thanks`: "It closes with an invitation to make a pact" became "It also carries an invitation to make a pact". The pact comes at [01:03] of a 7.5 minute episode; it ends with 'Stay tuned, stay excited...' [07:28].
+- Left for you, `the-inside-story-of-sports-racing-series-by-brett-janaway`: 'why two liners collapse less often than pilots assume': he says two liners 'just collapse less' [25:12], nothing about what pilots assume. Left.
+- Left for you, `the-unfiltered-truth-about-paragliding-governance-with`: 'answer claims made elsewhere': the claims were made on this podcast a few weeks earlier [01:46]-[02:13]. Left.
+- Left for you, `the-art-of-capturing-human-flight-jake-holland-s-guide-to`: The top-landing/drone line follows the caption literally [35:47]-[35:59]; worth checking against the audio.
