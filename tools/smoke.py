@@ -355,7 +355,7 @@ def india(pg, base):
     pg.reload(wait_until="load")
     pg.wait_for_timeout(1500)
     n = pg.evaluate("document.querySelectorAll('.kfaq details').length")
-    check(n == 8, "india", "the eight FAQ cards are present", n)
+    check(n == 9, "india", "the nine FAQ cards are present", n)
     kit = pg.evaluate("document.querySelectorAll('.kkit-item').length")
     check(kit >= 30, "india", "the packing kit is present", kit)
     if kit:
@@ -371,7 +371,7 @@ def india(pg, base):
               "the kit saves under its own key, not Kenya's", keys)
         pg.click("#kkitReset")
     rules = pg.evaluate("document.querySelectorAll('.etq-card').length")
-    check(rules == 8, "india", "the eight etiquette rules are present", rules)
+    check(rules == 9, "india", "the nine etiquette rules are present", rules)
     quotes = pg.evaluate("document.querySelectorAll('.etq blockquote').length")
     check(quotes == 0, "india", "etiquette paraphrases, never quotes the captions", quotes)
     pg.set_viewport_size({"width": 390, "height": 844})
