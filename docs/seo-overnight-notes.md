@@ -12,7 +12,7 @@ Summary goes here at the end of the job (F1).
 - [x] 7.6 Images and speed: done, 6352f5f, deploy success
 - [x] 7.7 Crawl hygiene: done, c18fe95, deploy success
 - [x] 7.8 Report (docs/seo-baseline.md): done
-- [ ] 7.9 Episode summary fixes (progress: batch 3 of 7 published)
+- [ ] 7.9 Episode summary fixes (progress: batch 4 of 7 published)
 - [ ] 7.10 Headings and accessibility
 - [ ] 7.11 Related episodes (progress: none yet)
 
@@ -266,3 +266,13 @@ Batches are the 70 episodes in episode-meta.json order, 10 at a time.
 - Left for you, `navigating-india-jigish-gohil`: The landing-out stories [28:16]-[28:36] answer when a pilot is ready for the back range, not why he insists on the Fly Safely briefing [20:23]. Framing rather than a factual error, so left. Suggested: '...and the landing out stories behind his advice to be ready to sleep out before flying into the back range.'
 - Left for you, `new-technologies-2-guillem-batlle-adria-grau`: Orikami is described in the transcript as a performance idea: a back protector up to 60% thinner with the same or higher protection [54:44]-[55:59]. 'What it is meant to change for pilot safety' is emphasis rather than an error, so left.
 - Left for you, `pal-takats-on-challenges-change-the-future-of-paragliding`: The censorship question is put by the host [33:37]; Pal answers 'Yeah, that's also my question'. 'Asks' is defensible, so left; 'and shares the question of why...' would be exact.
+
+**Batch 4** (risk-vs-reward-1-philipp-zellner, risk-vs-reward-2-subir-sidhu, risk-vs-reward-3-manfred-ruhmer, risk-vs-reward-4-raul-rodriguez, risk-vs-reward-5-gabriel-orsini, sandrine-roy-vol-biv-freedom-unfiltered-a-human-powered, shane-tighes-road-to-x-alps-engineering-conquests-in-the, sky-gods-flying-8000ers-antoine-girard, sky-gods-flying-to-win-honorin-hamard, storytellers-marko-milutinovic)
+
+- Fixed `risk-vs-reward-1-philipp-zellner`: "He tells the story of throwing his reserve in Guatemala and then waiting most of a day and a night on the mountain for a helicopter," became "He tells the story of throwing his reserve in Guatemala, and of waiting a day and a night on the mountain for a helicopter after a friend crashed,". Two separate stories joined by the cold-open trailer. Guatemala: he opened his rescue and was on the ground [58:02]. The 24 to 28 hour wait for the chopper came after a friend crashed on Big Face [01:01:51]-[01:02:19].
+- Fixed `risk-vs-reward-3-manfred-ruhmer`: "said he would not be flying, and never flew again." became "said he would not be flying, and never flew a competition outside his club and region again.". The full sentence is 'He never flew again a competition outside of his club competition, this region competition' [27:41]-[27:53]; the trailer cuts it after 'never flew again'. He was 'still a good pilot' [28:13].
+- Fixed `sky-gods-flying-8000ers-antoine-girard`: "He describes reaching that altitude with his glasses" became "He describes reaching about 7,800 metres in Peru with his glasses". 'That altitude' followed '9,000', which he has not reached. The frozen glasses and screen were at 'around 7,800 meters' in Peru [41:59]-[42:11], [38:58].
+- Fixed `storytellers-marko-milutinovic`: "He walks through his own collision," became "He walks through his own two collisions,". Two mid-air collisions: the 2023 World Championship in France [07:03] and the 2024 European Championship at Pegalajar [22:45]; the host introduces 'not just one, but two' [06:19].
+- Left for you, `risk-vs-reward-2-subir-sidhu`: Putting the glider into every shape and situation is his mentor Evan's advice about learning acro, which Subir passes on and acts on [41:06]-[41:42]. Left; 'He describes a mentor's advice to...' would be exact.
+- Left for you, `storytellers-marko-milutinovic`: 'look up and see a hole in the parachute above you' is his own cartoon comparison; the holes were in his wing [27:49]-[28:24]. Left, since 'what it is like' frames it as the comparison.
+- Left for you, `sky-gods-flying-to-win-honorin-hamard`: The surname 'Pinot' (Maxime Pinot) is never said in the transcript, only 'Maxime'. Left; almost certainly right.
