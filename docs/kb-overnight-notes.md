@@ -163,3 +163,10 @@
 - H1: How Do You Race, Judge Risk and Keep a Clear Head in Paragliding?
 - FAQ: racing in your first competitions (Joerg Ewald, Manfred Ruhmer); SIV or active flying (Subir Sidhu, Beni Kälin); knowing when you are pushing too hard (Grant Smith, Beni Kälin); how a review should test a wing (Ziad Bassil); learning from a flight that went wrong (Subir Sidhu, Will Gadd).
 - Editorial calls: Beni Kälin is spelled with the umlaut here and on New Technologies, but "Beni Kalin" on the Risk vs Reward page (not changed; one of them should be made consistent). Answers keep to the wording already published on World Cups, Risk vs Reward and Resources, Tools & Tips.
+
+## Meteorology & Weather Analysis (landing)
+
+- Commit 746cee1, deploy: pages build and deployment success (build, deploy jobs success).
+- H1: What Do Paragliding Pilots Need to Know About Weather?
+- FAQ: can a cloud suck you in (Will Gadd, Eddie Colfox); spotting overdevelopment (Eddie Colfox, Ivelin Kalushkov); gust fronts (Eddie Colfox, Ivelin Kalushkov); when the wind is strongest (Ivelin Kalushkov, Pal Takats); why locals read the weather better than a forecast (Ivelin Kalushkov).
+- Editorial calls: this category has one series, so four of the five answers draw on weather advice published in other series (Risk vs Reward, Navigators, Storytellers). The single series card stretches across the grid on desktop, as it did on the old page.
