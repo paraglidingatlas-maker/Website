@@ -12,7 +12,7 @@ Summary goes here at the end of the job (F1).
 - [x] 7.6 Images and speed: done, 6352f5f, deploy success
 - [x] 7.7 Crawl hygiene: done, c18fe95, deploy success
 - [x] 7.8 Report (docs/seo-baseline.md): done
-- [ ] 7.9 Episode summary fixes (progress: none yet)
+- [ ] 7.9 Episode summary fixes (progress: batch 1 of 7 published)
 - [ ] 7.10 Headings and accessibility
 - [ ] 7.11 Related episodes (progress: none yet)
 
@@ -230,3 +230,27 @@ and are listed by domain; paraglidingatlas.com appeared in none of 20 web
 searches for questions the knowledge base answers, while the podcast's own
 Spotify and YouTube listings did rank for two; suggestions for the Kenya and
 enquire pages only, nothing changed on them.
+
+### 7.9 Episode summary fixes
+
+Scope: the 70 summaries whose source note says they were written from the
+transcript, each checked claim by claim against its transcript (names,
+places, titles, numbers, injuries, who said what). Not checked or changed: the
+9 summaries in your own words from the show notes, the 12 footage
+descriptors, the 2 empty ones, every `quote` field, and the guest names (all
+come from your titles or were supplied by you; every guest name matched the
+transcript introduction apart from caption spelling). `guest_role` is empty
+on all 93 episodes, so there was nothing to check. Transcripts are automatic
+captions, so a caption spelling was never treated as evidence against a name.
+Each fix below is recorded on the episode as `_summary_corrected`, with the
+timestamps. The corrected text also flows into the KB pages' episode pop-up
+data and the homepage and library episode lists, which is expected.
+
+Batches are the 70 episodes in episode-meta.json order, 10 at a time.
+
+**Batch 1** (alain-zoller-the-science-of-en-certifications-how-work, aljaz-valic-777-paraglidings-slovenian-mavericks, ashutosh-chopra-identifying-passion-vs-obsession-an, brand-stories-neo-eric-roussel, carabiner-fatigue-finsterwalder-charly, what-is-civlresign-with-julien-garcia, consequence-over-probability-will-gadd-on-why-true-safety, eddie-colfox-storytime-chasing-adventure-with-the-real-og, flying-filming-1-benjamin-jordan, flying-filming-2-benjamin-kellet)
+
+- Fixed `alain-zoller-the-science-of-en-certifications-how-work`: "He argues a certification class does not make one wing better than another, only better matched to what a pilot wants," became "He argues that no certified harness protection is better than another, only better matched to what a pilot wants,". In the transcript 'what is certified is not one better than the other one... it's just about the choice' is said about harness protection (impact pad, foam, airbag) in answer to a question on harness certification [01:03:31]-[01:04:58], not about wing certification classes.
+- Fixed `flying-filming-1-benjamin-jordan`: "projects like his Menorca flight" became "projects like his Fly Monarca flight". 'Menorca' is a caption mishearing carried into the summary: the project is his monarch butterfly migration film, named in the transcript as 'fly monarca' [10:19] and 'Fly Monarcha' [34:46]; the butterflies are found in Mexico [02:45]. Nothing is about the island of Menorca.
+- Left for you, `eddie-colfox-storytime-chasing-adventure-with-the-real-og`: 'Temple in the Clouds' is not mentioned anywhere in the transcript (films named: From Nowhere to the Middle of Nowhere, Birdman of the Karakoram, Stone Monkey). It may come from the RSS show notes, which the summary was cross checked against and which I could not reach, so it was left. If it is not in the show notes, drop 'and Temple in the Clouds'.
+- Left for you, `alain-zoller-the-science-of-en-certifications-how-work`: Minor: the CEN technical committee explanation is mostly the host's introduction [01:45]-[02:38]; Alain covers the history of WG6 (first meeting 1989, Monaco). Left as is.

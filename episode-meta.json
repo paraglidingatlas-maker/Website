@@ -16,7 +16,7 @@
       "0": "Aninder",
       "1": "Guest"
     },
-    "summary": "Alain Zoller of Air Turquoise explains who actually decides that a wing is safe to fly, walking through the CEN technical committees and the Work Group 6 that writes paragliding's test standards. He argues a certification class does not make one wing better than another, only better matched to what a pilot wants, and that collapse testing is not representative of what the air really does.",
+    "summary": "Alain Zoller of Air Turquoise explains who actually decides that a wing is safe to fly, walking through the CEN technical committees and the Work Group 6 that writes paragliding's test standards. He argues that no certified harness protection is better than another, only better matched to what a pilot wants, and that collapse testing is not representative of what the air really does.",
     "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
@@ -111,7 +111,8 @@
     ],
     "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
     "quote": "We don't focus too much on the collapses because when you collapse the glider, it is absolutely not representative of what you will get in air",
-    "_quote_source": "Selected by the user, supplied in the tags and quotes spreadsheet."
+    "_quote_source": "Selected by the user, supplied in the tags and quotes spreadsheet.",
+    "_summary_corrected": "2026-09-23, overnight SEO job (7.9), checked against the transcript: 'He argues a certification class does not make one wing better than another, only better matched to what a pilot wants,' became 'He argues that no certified harness protection is better than another, only better matched to what a pilot wants,'. In the transcript 'what is certified is not one better than the other one... it's just about the choice' is said about harness protection (impact pad, foam, airbag) in answer to a question on harness certification [01:03:31]-[01:04:58], not about wing certification classes."
   },
   {
     "slug": "aljaz-valic-777-paraglidings-slovenian-mavericks",
@@ -796,7 +797,7 @@
       "0": "Aninder",
       "1": "Benjamin Jordan"
     },
-    "summary": "The second half of the conversation with Benjamin Jordan turns to storytelling, and how a narrative gets built around a flight rather than bolted onto it afterwards. He walks through the approaches open to a filmmaker, from going out, doing the thing and finding the story on the editing floor, to projects like his Menorca flight where the meaning, in that case the migration of butterflies, was there from the start.",
+    "summary": "The second half of the conversation with Benjamin Jordan turns to storytelling, and how a narrative gets built around a flight rather than bolted onto it afterwards. He walks through the approaches open to a filmmaker, from going out, doing the thing and finding the story on the editing floor, to projects like his Fly Monarca flight where the meaning, in that case the migration of butterflies, was there from the start.",
     "_chapters_source": "Chapter titles rewritten from the transcript at each timestamp and marked ** review. The timestamps were already correct, taken from the host's own questions; only the titles needed work, because they had been left as raw transcript fragments cut off mid sentence.",
     "chapters": [
       {
@@ -859,7 +860,8 @@
     ],
     "_summary_source": "Written from the episode's own transcript, cross checked against the show notes in the RSS feed. Not derived from the title.",
     "quote": "I feel like the key to so many of the things that I've done being as successful as they were is that somehow finding a way to really make people care about it",
-    "_quote_source": "Selected by the user, supplied in the tags and quotes spreadsheet."
+    "_quote_source": "Selected by the user, supplied in the tags and quotes spreadsheet.",
+    "_summary_corrected": "2026-09-23, overnight SEO job (7.9), checked against the transcript: 'projects like his Menorca flight' became 'projects like his Fly Monarca flight'. 'Menorca' is a caption mishearing carried into the summary: the project is his monarch butterfly migration film, named in the transcript as 'fly monarca' [10:19] and 'Fly Monarcha' [34:46]; the butterflies are found in Mexico [02:45]. Nothing is about the island of Menorca."
   },
   {
     "slug": "flying-filming-2-benjamin-kellet",
