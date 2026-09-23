@@ -170,3 +170,10 @@
 - H1: What Do Paragliding Pilots Need to Know About Weather?
 - FAQ: can a cloud suck you in (Will Gadd, Eddie Colfox); spotting overdevelopment (Eddie Colfox, Ivelin Kalushkov); gust fronts (Eddie Colfox, Ivelin Kalushkov); when the wind is strongest (Ivelin Kalushkov, Pal Takats); why locals read the weather better than a forecast (Ivelin Kalushkov).
 - Editorial calls: this category has one series, so four of the five answers draw on weather advice published in other series (Risk vs Reward, Navigators, Storytellers). The single series card stretches across the grid on desktop, as it did on the old page.
+
+## Industry & Community (landing)
+
+- Commit 5fdadd4, deploy: pages build and deployment success (build, deploy jobs success).
+- H1: What Happens Behind the Scenes of Paragliding?
+- FAQ: choosing a competition (Pal Takats, Marko Milutinovic, Stan Radzikowski); how high reserves are thrown (Eric Roussel, Marko Milutinovic); starting a brand (Eric Roussel, Gin Seok Song); why share accident stories (Julien Garcia, Bill Hughes, Eddie Colfox); what makes a competition safer (Goran Dimiskovski, Stan Radzikowski, Bill Belcourt).
+- Editorial calls: brand facts are only what the guests say about their own companies (Neo's reserve system, Gin's fabric), as on Brand Stories. The Dark Side FAQ on reducing fatalities already covers Bill Belcourt's "training comes first", so this page uses his other point instead (pilots who own their decisions).
