@@ -8,8 +8,8 @@ Summary goes here at the end of the job (F1).
 - [x] 7.2 Episode to series links: done, f56e9b4, deploy success
 - [x] 7.3 Structured data: done, 9ccfadb, deploy success
 - [x] 7.4 Titles and meta descriptions: done, 4c85528, deploy success
-- [x] 7.5 Social preview tags: done, see log
-- [ ] 7.6 Images and speed
+- [x] 7.5 Social preview tags: done, 914062a, deploy success
+- [x] 7.6 Images and speed: done, see log
 - [ ] 7.7 Crawl hygiene
 - [ ] 7.8 Report (docs/seo-baseline.md)
 - [ ] 7.9 Episode summary fixes (progress: none yet)
@@ -135,7 +135,7 @@ How: two new optional fields in `episode-meta.json`, `seo_title` and
 `<title>`, meta description and og:description only. H1, og:title and the
 visible summary are unchanged. Knowledge base pages were not touched.
 
-### 7.5 Social preview tags
+### 7.5 Social preview tags: done (914062a, deploy run 435 success)
 
 Every indexable page (177) already had og:title, og:description and og:image.
 The 93 episode pages had no og:url and no twitter:card; every other page had
@@ -148,3 +148,54 @@ on the other pages. Head tags only.
 Not verified: episode og:image points at YouTube's `maxresdefault.jpg`, which
 YouTube does not generate for every upload (it serves a small grey
 placeholder instead). I could not fetch i.ytimg.com from here to check which.
+
+### 7.6 Images and speed
+
+Lighthouse 12, mobile, performance and SEO only, run against a local server of
+the built site (so no CDN, compression or third-party embeds; compare the two
+columns with each other, not with the live site). Median of three runs each.
+
+| Page | Perf before | Perf after | SEO before | SEO after | CLS before | CLS after |
+|---|---|---|---|---|---|---|
+| index.html | 75 | 78 | 92 | 92 | 0.006 | 0.014 |
+| episodes/maxime-pinot-the-journey-within.html | 79 | 84 | 100 | 100 | 0.225 | 0.155 |
+| knowledge-base/sky-gods.html | 93 | 92 | 100 | 100 | 0.006 | 0.006 |
+| tags/accidents.html | 96 | 96 | 100 | 100 | 0.066 | 0.066 |
+| destinations/kenya.html | 68 | 68 | 100 | 100 | 0.007 | 0.007 |
+
+The home, KB, tag and Kenya changes are run-to-run noise (index.html and
+kenya.html were not changed at all). Screenshots of all five pages at 390 and
+1440 wide, full page, before and after: **pixel-identical** (0.000% of pixels
+differ on all ten). Two before runs were also identical, so the comparison is
+exact, not within a tolerance.
+
+Audit first: every `<img>` on the site already has an alt attribute (580
+images), so no alt text was needed. Changed:
+
+- Logo width="480" height="100" (its real size) on the header and footer logo
+  in every generator and template: episodes, tags, KB, policies, sitemap, 404.
+  The CSS always fixes one dimension and sets the other to auto, so the size
+  on screen is unchanged. 172 pages.
+- Episode artwork (the 8 audio-only episodes): width and height read from the
+  file. The CSS already fixes its box at 16:9.
+- KB episode tiles for those 8 audio-only episodes served the artwork .jpg
+  (about 100 KB) although a .webp (about half) sits beside it: now a
+  `<picture>` with the webp, as the episode page already does.
+- loading="lazy": every image below the first screen on generated pages was
+  already lazy; nothing to add there.
+
+Not changed, left for you (hand-maintained pages, which this job does not edit
+by hand, or pages the brief said not to touch):
+
+- The logo on the seven hand-maintained pages (index, about, podcast, library,
+  enquire, knowledge-base.html, destinations/kenya.html) still has no
+  width/height; same one-line change as above if you want it.
+- index.html: `assets/podcast/plate.webp` is below the first screen and not
+  lazy (Lighthouse: 89 KiB). himalayas-1.webp (302 KB) is served far larger
+  than it displays.
+- destinations/kenya.html: LCP 11.3s on the simulated phone; three gallery
+  images (longonot, equator, kerio-valley) are served as .jpg although .webp
+  versions exist (about 135 KiB).
+- Home SEO 92: Lighthouse "Links are not crawlable" (an anchor without a real
+  href on the homepage).
+- The remaining episode layout shift (0.15, `.cd-main`) is not from images.

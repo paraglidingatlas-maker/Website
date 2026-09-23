@@ -21,7 +21,7 @@ NAV_FOOTER = """
   <div class="footer-content">
   <div class="footer-top">
     <div class="footer-col footer-brand">
-      <a href="../index.html" class="wordmark" aria-label="Paragliding Atlas, home"><img src="../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" loading="lazy"></a>
+      <a href="../index.html" class="wordmark" aria-label="Paragliding Atlas, home"><img src="../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100" loading="lazy"></a>
       <p class="footer-tagline"><a href="../mission.html">Touch The Sky With Glory</a></p>
       <p class="footer-addr">Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>0864, Oslo<br>Norway</p>
     </div>
@@ -188,7 +188,7 @@ NAV_HEADER = """<!DOCTYPE html>
   <span class="nav-corner-l"></span>
   <span class="nav-corner-r"></span>
   <span class="nav-coords">59.9139°N · 10.7522°E</span>
-  <a href="../index.html" class="wordmark"><img src="../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></a>
+  <a href="../index.html" class="wordmark"><img src="../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100"></a>
   <div class="nav-links">
     <a href="../about.html">About Us</a>
     <span class="nav-sep">|</span>
@@ -551,6 +551,13 @@ def subseries_page(slug, category_slug, category_title, title, intro, points, ep
                 # names the episode so the still is not a blank image to a crawler.
                 media = ('<span class="ep-th"><img loading="lazy" width="1280" height="720" src="%s" alt="%s"%s>%s</span>'
                          % (src, html_escape("Episode still: " + shown_title), onerr, badge))
+                # Artwork ships a webp beside the jpg at about half the size.
+                # Offer it the same way the episode page does; the img inside
+                # the picture keeps every class and rule it had.
+                webp = src.rsplit(".", 1)[0] + ".webp" if src.endswith(".jpg") and not src.startswith("http") else ""
+                if webp and os.path.isfile(os.path.normpath(os.path.join(OUT, webp))):
+                    media = media.replace('<img ', '<picture><source srcset="%s" type="image/webp"><img ' % webp, 1)
+                    media = media.replace('>%s</span>' % badge, '></picture>%s</span>' % badge, 1)
                 stamp = ('<span class="ep-stamp">%s<i>%s</i></span>'
                          % (d["epno"] or "&nbsp;", d["dur"] or ""))
                 guest_line = ('<span class="ep-tile-guest">%s</span>' % html_escape(shown_guest)

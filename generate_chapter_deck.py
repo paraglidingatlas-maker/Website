@@ -697,11 +697,26 @@ def _art_tag(art, title):
     nothing referenced."""
     webp = art.rsplit(".", 1)[0] + ".webp" if "." in art else None
     disk = os.path.join(ROOT, "episodes", webp) if webp else None
+    dims = _img_dims(os.path.join(ROOT, "episodes", art))
     if webp and disk and os.path.isfile(os.path.normpath(disk)):
         return ('<picture><source srcset="%s" type="image/webp">'
-                '<img src="%s" alt="%s" loading="lazy"></picture>'
-                % (esc(webp), esc(art), esc(title)))
-    return '<img src="%s" alt="%s" loading="lazy">' % (esc(art), esc(title))
+                '<img src="%s" alt="%s"%s loading="lazy"></picture>'
+                % (esc(webp), esc(art), esc(title), dims))
+    return '<img src="%s" alt="%s"%s loading="lazy">' % (esc(art), esc(title), dims)
+
+
+def _img_dims(path):
+    """' width="W" height="H"' read from the image file, or '' if it cannot be.
+
+    The CSS sizes the artwork (width 100%, 16:9), so these only let the browser
+    reserve the box before the file arrives; they do not change how it looks.
+    """
+    try:
+        from PIL import Image
+        with Image.open(os.path.normpath(path)) as im:
+            return ' width="%d" height="%d"' % im.size
+    except Exception:
+        return ""
 
 
 
