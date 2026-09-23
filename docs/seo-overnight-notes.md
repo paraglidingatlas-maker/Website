@@ -12,7 +12,7 @@ Summary goes here at the end of the job (F1).
 - [x] 7.6 Images and speed: done, 6352f5f, deploy success
 - [x] 7.7 Crawl hygiene: done, c18fe95, deploy success
 - [x] 7.8 Report (docs/seo-baseline.md): done
-- [ ] 7.9 Episode summary fixes (progress: batch 2 of 7 published)
+- [ ] 7.9 Episode summary fixes (progress: batch 3 of 7 published)
 - [ ] 7.10 Headings and accessibility
 - [ ] 7.11 Related episodes (progress: none yet)
 
@@ -259,3 +259,10 @@ Batches are the 70 episodes in episode-meta.json order, 10 at a time.
 
 - Fixed `meteorology-101-a-beginners-guide-to-understanding-weather`: "forecasting for Manilla in Australia, which had the best conditions going at the time of recording." became "forecasting for Manilla in Australia, one of his favourite sites to fly.". The transcript gives the reason for picking Manilla as 'one of my favorite sites to fly' [21:04]; nothing says it had the best conditions at the time (the only mention of current conditions is that Europe was rainy [00:02]).
 - Left for you, `navigating-india-eddie-colfox`: Summary: 'the first landing at Barabangal, flown with a group that included Jim Mallinson and John Silvester'. In the transcript the group set off together but only John Silvester got over the inversion and landed [48:29]-[49:20]; the others camped elsewhere. Not wrong as written, but it can be read as the group landing. Suggested: '...the first landing at Barabangal, made by John Silvester on a flight with a group that included Jim Mallinson.'
+
+**Batch 3** (navigating-india-jigish-gohil, navigating-panchgani-vistasp-kharas, new-technologies-1-beni-kalin, new-technologies-2-guillem-batlle-adria-grau, new-technologies-5-frantisek-pavlousek, new-technologies-4-veselin-ovcharov, pal-takats-on-challenges-change-the-future-of-paragliding, pre-pwc-kenya-nikolay-yotov, pwc-lifestyle-klaudia-bulgakow, pwca-goran-dimiskovski)
+
+- No factual errors found.
+- Left for you, `navigating-india-jigish-gohil`: The landing-out stories [28:16]-[28:36] answer when a pilot is ready for the back range, not why he insists on the Fly Safely briefing [20:23]. Framing rather than a factual error, so left. Suggested: '...and the landing out stories behind his advice to be ready to sleep out before flying into the back range.'
+- Left for you, `new-technologies-2-guillem-batlle-adria-grau`: Orikami is described in the transcript as a performance idea: a back protector up to 60% thinner with the same or higher protection [54:44]-[55:59]. 'What it is meant to change for pilot safety' is emphasis rather than an error, so left.
+- Left for you, `pal-takats-on-challenges-change-the-future-of-paragliding`: The censorship question is put by the host [33:37]; Pal answers 'Yeah, that's also my question'. 'Asks' is defensible, so left; 'and shares the question of why...' would be exact.
