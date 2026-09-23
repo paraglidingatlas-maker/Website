@@ -37,8 +37,8 @@ is a citable article that ranks on its own and links down into the episodes.
 |---|---|---|
 | core-series | 3 | done |
 | competitions | 3 | done |
-| meteorology | 1 | next (landing layout) |
-| industry | 3 | to do (landing layout) |
+| meteorology | 1 | done |
+| industry | 3 | next (landing layout) |
 | technical | 3 | to do (landing layout) |
 
 The five category landing pages use the lighter landing layout described under
