@@ -12,7 +12,7 @@ Summary goes here at the end of the job (F1).
 - [x] 7.6 Images and speed: done, 6352f5f, deploy success
 - [x] 7.7 Crawl hygiene: done, c18fe95, deploy success
 - [x] 7.8 Report (docs/seo-baseline.md): done
-- [ ] 7.9 Episode summary fixes (progress: batch 5 of 7 published)
+- [ ] 7.9 Episode summary fixes (progress: batch 6 of 7 published)
 - [ ] 7.10 Headings and accessibility
 - [ ] 7.11 Related episodes (progress: none yet)
 
@@ -284,3 +284,9 @@ Batches are the 70 episodes in episode-meta.json order, 10 at a time.
 - Left for you, `why-paraglidings-safety-future-looks-different-rast`: 'limits how far a collapse can travel across the canopy' is not in the transcript, which only calls RAST 'the revolutionary system which prevents collapses, used in Swing paragliders' [00:54]. It is a technical description that may well be right, so left.
 - Left for you, `technical-masterclass-by-brett-janaway-science-of`: 'Recorded on a non flying day at SRS Piedrahita' is not in the transcript (it only shows an SRS event in progress). May come from the show notes, so left.
 - Left for you, `robert-whittall-113-mins-of-unhinged-conversations-with`: 'how three pilots started Ozone': the transcript also mentions his brother and Bruce Goldsmith at the start before 'me, Mike and Dave just got stuck into it' [01:10:06]-[01:11:03]. Left.
+
+**Batch 6** (the-russell-ogden-interview-decoding-paragliding-mastery, paragliding-physiology-safety-protocols-dr-matt-wilkes, if-you-fly-in-the-himalayas-alps-or-above-3000-mtrs-this, cognitive-bias-of-dunning-kruger-effect-in-paragliding, sports-psychology-for-paragliding-train-your-mind-to-fly, from-cuba-to-socotra-inside-the-worlds-most-unique, how-to-fly-with-your-dog-explained-by-shams, survived-15-years-of-flying-then-a-rescue-helicopter, from-tents-to-trophies-understanding-acro-champion-s, tom-lolies-explains-the-science-of-wing-design-and)
+
+- Fixed `from-tents-to-trophies-understanding-acro-champion-s`: "An acro world champion talks" became "An Acro World Tour champion talks". The title he names is the Acro World Tour: 'I would like to become a World Tour champion. And that's what I did in 2023' [02:22]-[02:27]; 'world champion' is never said.
+- Left for you, `from-tents-to-trophies-understanding-acro-champion-s`: 'ego' is not discussed in the transcript; it is in the episode title (your wording), so left.
+- Left for you, `survived-15-years-of-flying-then-a-rescue-helicopter`: The guest field says 'Nick Neynes', the summary says 'Nick Neynens'. The captions cannot settle it. Guest field not touched (your wording); please pick one.
