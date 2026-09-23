@@ -109,7 +109,7 @@
   <span class="nav-corner-l"></span>
   <span class="nav-corner-r"></span>
   <span class="nav-coords">59.9139°N · 10.7522°E</span>
-  <a href="index.html" class="wordmark"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></a>
+  <a href="index.html" class="wordmark"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100"></a>
   <div class="nav-links">
     <a href="about.html">About Us</a>
     <span class="nav-sep">|</span>
@@ -463,7 +463,7 @@
   <h2>Search The Whole Episode <a href="library.html" target="_blank" rel="noopener" class="ep-search-library-link">Library<span class="ep-search-library-sparkle"></span><span class="ep-search-library-sparkle"></span><span class="ep-search-library-sparkle"></span></a></h2>
   <p class="ep-search-sub">Search by title, guest, or topic across every episode we've published.</p>
   <div class="ep-search-bar">
-    <input type="text" class="ep-search-input" id="epSearchInput" placeholder="What are you looking for?" autocomplete="off">
+    <input type="text" class="ep-search-input" id="epSearchInput" placeholder="What are you looking for?" aria-label="Search episodes" autocomplete="off">
     <button class="ep-search-btn" id="epSearchBtn"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Search</span></button>
   </div>
   <div class="ep-search-results" id="epSearchResults"></div>
@@ -484,10 +484,11 @@
           <p class="popup-title"></p>
           <p class="mp-guest"></p>
           <div class="mp-rd"><span class="mp-ch"></span><span class="mp-dur"></span></div>
-          <!-- No href until a pin is clicked. globe.js sets .href from the pin data;
-           an anchor without one is not focusable, so the keyboard cannot land
-           on a link that goes nowhere while the popup is still empty. -->
-          <a class="popup-link" data-hover>Open the episode <i>&rarr;</i></a>
+          <!-- globe.js replaces this href with the pin's episode when a pin is
+           clicked. The default is a real page so crawlers see a working link;
+           the popup is display:none until then, so the keyboard still cannot
+           land on it while it is empty. -->
+          <a class="popup-link" href="library.html" data-hover>Open the episode <i>&rarr;</i></a>
         </div>
       </div>
   </div>
@@ -524,7 +525,7 @@
   <div class="footer-content">
   <div class="footer-top">
     <div class="footer-col footer-brand">
-      <a href="index.html" class="wordmark" aria-label="Paragliding Atlas, home"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" loading="lazy"></a>
+      <a href="index.html" class="wordmark" aria-label="Paragliding Atlas, home"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100" loading="lazy"></a>
       <p class="footer-tagline"><a href="mission.html">Touch The Sky With Glory</a></p>
       <p class="footer-addr">Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>0864, Oslo<br>Norway</p>
     </div>
