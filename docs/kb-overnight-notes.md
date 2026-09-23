@@ -156,3 +156,10 @@
 - H1: How Do Experienced Pilots Travel, Train and Live for Flying?
 - FAQ: hiring a local guide abroad (Eddie Colfox, Chris Garcia); oxygen at altitude, where the guests differ (Antoine Girard, Damien Lacaze); hours a year (Maxime Pinot, Honorin Hamard); making a living (Hamard, Benjamin Jordan, Shams, Chris Garcia); deciding not to fly (Pinot, Hamard, Lacaze).
 - Editorial calls: the old intro sentence is kept as the sub line. The oxygen answer presents both views rather than choosing. Every fact is one already on the Navigators, Sky Gods or Living The Dream page, with the same chapters.
+
+## Competitions & Performance (landing)
+
+- Commit 56c9460, deploy: pages build and deployment success (build, deploy jobs success).
+- H1: How Do You Race, Judge Risk and Keep a Clear Head in Paragliding?
+- FAQ: racing in your first competitions (Joerg Ewald, Manfred Ruhmer); SIV or active flying (Subir Sidhu, Beni Kälin); knowing when you are pushing too hard (Grant Smith, Beni Kälin); how a review should test a wing (Ziad Bassil); learning from a flight that went wrong (Subir Sidhu, Will Gadd).
+- Editorial calls: Beni Kälin is spelled with the umlaut here and on New Technologies, but "Beni Kalin" on the Risk vs Reward page (not changed; one of them should be made consistent). Answers keep to the wording already published on World Cups, Risk vs Reward and Resources, Tools & Tips.
