@@ -12,7 +12,7 @@ Summary goes here at the end of the job (F1).
 - [x] 7.6 Images and speed: done, 6352f5f, deploy success
 - [x] 7.7 Crawl hygiene: done, c18fe95, deploy success
 - [x] 7.8 Report (docs/seo-baseline.md): done
-- [ ] 7.9 Episode summary fixes (progress: batch 4 of 7 published)
+- [ ] 7.9 Episode summary fixes (progress: batch 5 of 7 published)
 - [ ] 7.10 Headings and accessibility
 - [ ] 7.11 Related episodes (progress: none yet)
 
@@ -276,3 +276,11 @@ Batches are the 70 episodes in episode-meta.json order, 10 at a time.
 - Left for you, `risk-vs-reward-2-subir-sidhu`: Putting the glider into every shape and situation is his mentor Evan's advice about learning acro, which Subir passes on and acts on [41:06]-[41:42]. Left; 'He describes a mentor's advice to...' would be exact.
 - Left for you, `storytellers-marko-milutinovic`: 'look up and see a hole in the parachute above you' is his own cartoon comparison; the holes were in his wing [27:49]-[28:24]. Left, since 'what it is like' frames it as the comparison.
 - Left for you, `sky-gods-flying-to-win-honorin-hamard`: The surname 'Pinot' (Maxime Pinot) is never said in the transcript, only 'Maxime'. Left; almost certainly right.
+
+**Batch 5** (the-resilience-equation-erlend-ukvitnes-unrelenting-path, understanding-skymate-paragliding-worlds-first-ai-driven, urs-haari-the-real-truth-about-reserve-parachutes-a, why-paraglidings-safety-future-looks-different-rast, ziad-bassil-finest-paragliding-reviews-superpower-of, how-to-thermal-like-a-pro-find-center-climb-paragliding, luc-armant-talks-about-the-moment-coefficient-enzo-3, technical-masterclass-by-brett-janaway-science-of, robert-whittall-113-mins-of-unhinged-conversations-with, metacognition-paragliding-s-hidden-psychology-with-beni)
+
+- Fixed `ziad-bassil-finest-paragliding-reviews-superpower-of`: "and writes them all up," became "and writes most of them up,". He says gliders he rates poorly he keeps for his personal notes and does not publish [46:47]-[47:44].
+- Fixed `ziad-bassil-finest-paragliding-reviews-superpower-of`: "and says manufacturers have not pushed back on what he publishes." became "and says some manufacturers do get upset with what he publishes.". Asked whether manufacturers push back: 'Lots of manufacturers sometimes get upset when I write this and write that' [46:20]-[46:30]. The trailer [00:52]-[01:00] cuts the question straight to 'No. Thank you very much for having me'.
+- Left for you, `why-paraglidings-safety-future-looks-different-rast`: 'limits how far a collapse can travel across the canopy' is not in the transcript, which only calls RAST 'the revolutionary system which prevents collapses, used in Swing paragliders' [00:54]. It is a technical description that may well be right, so left.
+- Left for you, `technical-masterclass-by-brett-janaway-science-of`: 'Recorded on a non flying day at SRS Piedrahita' is not in the transcript (it only shows an SRS event in progress). May come from the show notes, so left.
+- Left for you, `robert-whittall-113-mins-of-unhinged-conversations-with`: 'how three pilots started Ozone': the transcript also mentions his brother and Bruce Goldsmith at the start before 'me, Mike and Dave just got stuck into it' [01:10:06]-[01:11:03]. Left.
