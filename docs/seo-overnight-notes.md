@@ -10,8 +10,8 @@ Summary goes here at the end of the job (F1).
 - [x] 7.4 Titles and meta descriptions: done, 4c85528, deploy success
 - [x] 7.5 Social preview tags: done, 914062a, deploy success
 - [x] 7.6 Images and speed: done, 6352f5f, deploy success
-- [x] 7.7 Crawl hygiene: done, see log
-- [ ] 7.8 Report (docs/seo-baseline.md)
+- [x] 7.7 Crawl hygiene: done, c18fe95, deploy success
+- [x] 7.8 Report (docs/seo-baseline.md): done
 - [ ] 7.9 Episode summary fixes (progress: none yet)
 - [ ] 7.10 Headings and accessibility
 - [ ] 7.11 Related episodes (progress: none yet)
@@ -200,7 +200,7 @@ by hand, or pages the brief said not to touch):
   href on the homepage).
 - The remaining episode layout shift (0.15, `.cd-main`) is not from images.
 
-### 7.7 Crawl hygiene
+### 7.7 Crawl hygiene: done (c18fe95)
 
 Checked all 234 HTML files: 177 indexable, 28 redirect stubs (noindex,
 meta refresh), 404.html noindex.
@@ -221,3 +221,12 @@ meta refresh), 404.html noindex.
 Judgement calls, not changed, listed in docs/seo-baseline.md: sitemap lastmod
 dates, thin tag pages, and two odd related entries (Ziad Bassil lists New
 Technologies 5 twice; New Technologies 5 lists itself).
+
+### 7.8 Report: done
+
+`docs/seo-baseline.md`. Headlines: no broken internal links and no missing
+images; the 337 external links could not be tested from here (network policy)
+and are listed by domain; paraglidingatlas.com appeared in none of 20 web
+searches for questions the knowledge base answers, while the podcast's own
+Spotify and YouTube listings did rank for two; suggestions for the Kenya and
+enquire pages only, nothing changed on them.
