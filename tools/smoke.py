@@ -342,6 +342,49 @@ def kenya(pg, base):
     check(h1 > h0 + 10, "kenya", "clicking one opens it", "%d -> %d px" % (h0, h1))
 
 
+# The India page is reviewed as a prototype first. When it moves to
+# destinations/, change this one line and every India check follows it.
+INDIA = "prototypes/india.html"
+
+
+def india(pg, base):
+    """The India page is built on Kenya's blocks, so it gets Kenya's checks, plus
+    the two things only it has: its own kit key, and the routes sheet."""
+    pg.goto(base + "/" + INDIA, wait_until="load")
+    pg.evaluate("localStorage.clear()")      # the Kenya check ran first, same origin
+    pg.reload(wait_until="load")
+    pg.wait_for_timeout(1500)
+    n = pg.evaluate("document.querySelectorAll('.kfaq details').length")
+    check(n == 8, "india", "the eight FAQ cards are present", n)
+    kit = pg.evaluate("document.querySelectorAll('.kkit-item').length")
+    check(kit >= 30, "india", "the packing kit is present", kit)
+    if kit:
+        pg.click(".kkit-ghead")
+        pg.wait_for_timeout(500)
+        pg.click(".kkit-item")
+        pg.wait_for_timeout(250)
+        done = pg.evaluate("document.getElementById('kkitDone').textContent")
+        check(done == "1", "india", "ticking an item counts it", "%s packed" % done)
+        # Same origin as Kenya: a shared storage key would tick Kenya's list too.
+        keys = pg.evaluate("Object.keys(localStorage).filter(function(k){return k.indexOf('kit')>-1})")
+        check(any("india" in k for k in keys) and not any("kenya" in k for k in keys), "india",
+              "the kit saves under its own key, not Kenya's", keys)
+        pg.click("#kkitReset")
+    rules = pg.evaluate("document.querySelectorAll('.etq-card').length")
+    check(rules == 8, "india", "the eight etiquette rules are present", rules)
+    quotes = pg.evaluate("document.querySelectorAll('.etq blockquote').length")
+    check(quotes == 0, "india", "etiquette paraphrases, never quotes the captions", quotes)
+    pg.set_viewport_size({"width": 390, "height": 844})
+    pg.goto(base + "/" + INDIA, wait_until="load")
+    pg.wait_for_timeout(600)
+    r = pg.evaluate("""(function(){var s=document.querySelector('.iroute-scroll');
+      var d=document.querySelector('.iroute-svg .ir-home').getBoundingClientRect(),b=s.getBoundingClientRect();
+      return [Math.round(d.left-b.left), Math.round(b.width)];})()""")
+    check(0 < r[0] < r[1], "india", "the routes sheet opens with the launch on screen at 390px",
+          "launch at %dpx of %dpx" % tuple(r))
+    pg.set_viewport_size({"width": 1280, "height": 900})
+
+
 def enquire(pg, base):
     """The enquiry form is the only page that asks for something back.
 
@@ -1367,7 +1410,7 @@ def overflow(pg, base):
     pages = ["index.html", "about.html", "podcast.html", "destinations/kenya.html",
              "enquire.html", "library.html", "tags.html",
              "episodes/maxime-pinot-the-journey-within.html",
-             "knowledge-base/sky-gods.html", "terms.html"]
+             "knowledge-base/sky-gods.html", "terms.html", INDIA]
     pg.set_viewport_size({"width": 390, "height": 844})
     bad = []
     for p in pages:
@@ -1422,7 +1465,7 @@ def main():
                 return 0
             pg = browser.new_page(viewport={"width": 1280, "height": 900},
                                   reduced_motion="no-preference")
-            for fn in (rail, nav, player, library, search, kenya, kenya_hero, kenya_map, kenya_gallery, kenya_facts, kenya_overview, kenya_dates, kenya_rolls, enquire, overflow):
+            for fn in (rail, nav, player, library, search, kenya, kenya_hero, kenya_map, kenya_gallery, kenya_facts, kenya_overview, kenya_dates, kenya_rolls, india, enquire, overflow):
                 guarded(fn, pg, base)
             pg.close()
             pg2 = browser.new_page(viewport={"width": 1280, "height": 900},
