@@ -1,6 +1,52 @@
 # SEO and GEO overnight notes
 
-Summary goes here at the end of the job (F1).
+## Summary (run 1, 01:01 to 03:10 UTC, 23 September 2026)
+
+**All eleven tasks done, none failed, nothing reverted.** Every change passed
+`./check.sh` ("All three gates clean"), a full run of all 154 browser checks,
+a JSON-LD parse of every page and the 390px width check on home, an episode,
+a KB page and a tag page, and was diffed against a before-build so only the
+intended pages changed.
+
+| Task | Commit | Deploy ("pages build and deployment") |
+|---|---|---|
+| 7.1 llms.txt lists every KB page | 4baf0d9 | run 431 success |
+| 7.2 Episode to KB series link | f56e9b4 | run 432 success |
+| 7.3 Structured data | 9ccfadb | run 433 success |
+| 7.4 Titles and descriptions | 4c85528 | run 434 success |
+| 7.5 og:url and twitter:card | 914062a | run 435 success |
+| 7.6 Image sizes and webp | 6352f5f | run 436 success |
+| 7.7 Related links past a redirect | c18fe95 | run 437 success |
+| 7.8 Report, docs/seo-baseline.md | b39dfd6 | run 438 success |
+| 7.9 Summary fixes, 7 batches | 22b3bb9, 54f2f34, c3f7723, fd7224a, 0957359, 9246a72, a7815c4 | runs 439, 441 to 445 success; 440 (batch 2) cancelled by GitHub as superseded, its change went live with 441 |
+| 7.10 Accessibility audit | 96265b4 | run 446 success |
+| 7.11 Related episodes | 228dcc2 | run 447 success |
+
+**Top five things to check this morning**
+
+1. **Look at the live site.** This machine could not reach paraglidingatlas.com
+   (network policy), so live 200 checks were replaced by the deploy runs
+   above. Open the home page, one episode (the new "Knowledge base" box and
+   the related episodes in the sidebar) and one KB page.
+2. **The 14 summary corrections and 17 open items in 7.9** (below). The
+   corrections are all backed by transcript timestamps; the open items need
+   you, e.g. "Temple in the Clouds" in the Eddie Colfox summary is not in the
+   transcript, and the guest field "Nick Neynes" disagrees with the summary's
+   "Nick Neynens".
+3. **paraglidingatlas.com did not appear in any of 20 searches** for questions
+   the KB answers (docs/seo-baseline.md part c). Check in Search Console that
+   the KB pages are indexed.
+4. **Quick wins on hand-maintained pages I did not edit:** an aria-label on
+   the homepage search box, lazy-loading `plate.webp` on the home page, the
+   Kenya gallery using its existing .webp files, and a real href on the
+   homepage `popup-link` (the one Lighthouse SEO failure).
+5. **The check gate can say clean while skipping tests:** `tools/smoke.py`
+   crashes on the collapsed Kenya packing kit (since 16 Sep) and every browser
+   check after it silently does not run. Also `sitemap.xml` lastmod comes from
+   file times, so it changes on every fresh build.
+
+Setup notes: this machine needed `pip install fonttools` for the build and
+playwright pinned to 1.56 to match its Chromium; no repo change.
 
 ## Checklist
 
@@ -14,7 +60,7 @@ Summary goes here at the end of the job (F1).
 - [x] 7.8 Report (docs/seo-baseline.md): done
 - [x] 7.9 Episode summary fixes: done, all 7 batches published (22b3bb9, 54f2f34, c3f7723, fd7224a, 0957359, 9246a72, a7815c4); 14 corrections on 13 episodes, 17 items left for you
 - [x] 7.10 Headings and accessibility: done, audit only, no site change needed
-- [x] 7.11 Related episodes: done, all 20 eligible episodes finished, see log
+- [x] 7.11 Related episodes: done, 228dcc2, deploy success; all 20 eligible episodes finished
 
 ## Run log
 
