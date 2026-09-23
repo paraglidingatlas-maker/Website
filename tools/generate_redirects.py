@@ -65,6 +65,8 @@ REDIRECTS = {
     "contact":       "enquire.html",
     "mission":       "mission.html",
     "privacy":       "privacy-policy.html",
+    # The old terms page. Search Console listed it as a 404 on 23 Sept 2026.
+    "terms-condition": "terms.html",
     "trips":         "index.html#destinations",
 
     # The old site nested series under their category. Search Console shows
