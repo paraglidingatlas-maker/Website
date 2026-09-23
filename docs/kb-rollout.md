@@ -39,7 +39,7 @@ is a citable article that ranks on its own and links down into the episodes.
 | competitions | 3 | done |
 | meteorology | 1 | done |
 | industry | 3 | done |
-| technical | 3 | next (landing layout) |
+| technical | 3 | done |
 
 The five category landing pages use the lighter landing layout described under
 "Landing pages" below. Update these tables when a page ships.

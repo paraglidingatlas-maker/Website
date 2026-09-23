@@ -14,6 +14,10 @@ Chapter links are validated at build time, like the series pages.
 """
 from kb_editorial import *  # noqa: F401,F403  (episode slug constants)
 
+# Two episodes the Flight Mechanics entry cites by literal slug.
+TOM = "tom-lolies-explains-the-science-of-wing-design-and"
+HELMUT = "helmut-schrempf-modernizing-siv-courses-how-this-new"
+
 LANDING = {
     "core-series": {
         "kicker": "Core Series",
@@ -129,6 +133,35 @@ LANDING = {
             {"q": "What makes a paragliding competition safer?",
              "a": "The pilots, in the view of Goran Dimiskovski of the PWCA: pilot quality is the safety system, which is why World Cup places are given on results alone. Stan Radzikowski expects a championship's official landing fields to be proven at earlier events, not checked on the morning of the task. And Bill Belcourt saw pilots who made their own decisions come through a hard event better than a managed field.",
              "src": [(PWCA, "c10", "Goran Dimiskovski"), (GAGGLE, "c3", "Stan Radzikowski"), (BELC, "c11", "Bill Belcourt")]},
+        ],
+    },
+    "technical": {
+        "kicker": "Technical Focus & Flight Safety",
+        "h1": "What Should Every Pilot Understand About Wings and Gear?",
+        "lead": "Three series on the equipment: how a paraglider actually flies and why it collapses, what new technology does and does not change, and what reserves, harnesses, helmets and lines can and cannot do, from the people who design, test and repack them.",
+        "sub": "A deep dive into the technical aspects of free flight. Comprehensive knowledge about the mechanics, equipment, and technological advances in paragliding.",
+        "seo_title": "Wings and Gear Explained: Technical Focus | Paragliding Atlas",
+        "seo_desc": "How a paraglider flies and collapses, what new technology really changes, and what reserves, harnesses and helmets can and cannot do: Technical Focus.",
+        "hero_alt": "An abstract drawing: an aerofoil section with streamlines flowing around it and orange arrows showing the lift along its upper surface",
+        "series_heading": "The three series",
+        "series_kicker": "Built from the episodes",
+        "faq_heading": "Questions across these series",
+        "faq": [
+            {"q": "Will a more advanced wing make you a better pilot?",
+             "a": "Not on its own. Frantisek Pavlousek's view is that safety and performance both follow the weakest point of the chain, so a C wing flown by a B pilot gives neither. Stephan Stiegler sets a threshold from the middle of the B class: be ready to stop the pitch, then learn to feel it coming, and you fly the wing rather than the other way round.",
+             "src": [(UPF, "c6", "Frantisek Pavlousek"), (STIEG, "c6", "Stephan Stiegler")]},
+            {"q": "What should you do when your paraglider collapses?",
+             "a": "It depends on the collapse. For a side that drops, SIV coach Helmut Schrempf says to release the tension from your hip on that side; pressing in gives the wing the wrong input and starts it rolling. After a collapse at full speed, Beni Kälin points out that the wing has little pressure inside and reopens slowly hands-up, so countersteer and pump the closed side.",
+             "src": [(HELMUT, "c4", "Helmut Schrempf"), (BENI, "c9", "Beni Kälin")]},
+            {"q": "Should you practise throwing your reserve?",
+             "a": "Yes. In Urs Haari's clinics pilots hang in a simulator the night before and throw, and three in ten cannot get the reserve out of their harness. He calls that the cheapest and most decisive equipment test in the sport, and the one almost nobody does. Then, if you can, throw it for real over water, which Will Gadd recommends too.",
+             "src": [(URS, "c7", "Urs Haari"), (WILL, "c13", "Will Gadd")]},
+            {"q": "When is the best time to buy a new paraglider model?",
+             "a": "Frantisek Pavlousek's long-time flying friends wait until a wing has been on the market for about a year, so that people know how it behaves. When you do choose, Stephan Stiegler suggests reading the designer's description of who the wing is for rather than tallying certification grades, because a low B can fly much like an A in the air.",
+             "src": [(UPF, "c10", "Frantisek Pavlousek"), (STIEG, "c7", "Stephan Stiegler")]},
+            {"q": "How can you tell whether a wing resists collapses?",
+             "a": "Not from the test report alone, says Tom Lolies: reports show how collapses went, never how easily they happen, and a pitch-unstable wing can even score well because it folds so readily. One sign he looks for is slack B lines at full speed, which means the lift has moved forward onto the A lines. It is a green flag among several, not a rule.",
+             "src": [(TOM, "c7", "Tom Lolies"), (TOM, "c6", "Tom Lolies")]},
         ],
     },
 }
