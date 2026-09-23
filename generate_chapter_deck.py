@@ -877,8 +877,13 @@ def build(meta, cues, chapters):
     return tmpl.format(
         BASE=cfg.BASE,
         title=esc(meta["title"]),
-        seo_title=esc(seo_title(meta["title"])),
-        seo_desc=esc(meta.get("summary", "")[:155]),
+        # seo_title / seo_desc in episode-meta.json are per-episode overrides
+        # for the search result only, used where the rule above cannot work
+        # (duplicate titles, an empty or too short summary). Each carries a
+        # _source note saying why. The h1, og:title and summary are untouched.
+        seo_title=esc((meta["seo_title"] + BRAND_SUFFIX) if meta.get("seo_title")
+                      else seo_title(meta["title"])),
+        seo_desc=esc(meta.get("seo_desc") or meta.get("summary", "")[:155]),
         slug=meta["slug"],
         series=esc(meta.get("series", "")),
         series_slug=meta.get("series_slug", ""),

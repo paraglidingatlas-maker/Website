@@ -5,9 +5,9 @@ Summary goes here at the end of the job (F1).
 ## Checklist
 
 - [x] 7.1 AI index file (llms.txt): done, 4baf0d9, deploy success
-- [x] 7.2 Episode to series links: done, see log
-- [ ] 7.3 Structured data
-- [ ] 7.4 Titles and meta descriptions
+- [x] 7.2 Episode to series links: done, f56e9b4, deploy success
+- [x] 7.3 Structured data: done, 9ccfadb, deploy success
+- [x] 7.4 Titles and meta descriptions: done, see log
 - [ ] 7.5 Social preview tags
 - [ ] 7.6 Images and speed
 - [ ] 7.7 Crawl hygiene
@@ -60,3 +60,77 @@ from `kb_landing.LANDING` and `kb_editorial.EDITORIAL` (read only), the same
 data the pages render from, so it cannot drift; which series sits under which
 landing page is read from the built landing page's links. Verified all 18
 entries match the built pages' H1 and lead exactly. Only llms.txt changed.
+
+### 7.2 Episode to series links: done (f56e9b4, deploy run 432 success)
+
+No episode page linked to its knowledge base series page. Each of the 93
+episode pages now has a "Knowledge base" box in the sidebar, directly under
+Related episodes, built from the existing `cd-box` and `cd-link` classes, with
+the series page's H1 as the link text (read from `kb_editorial.EDITORIAL`).
+The episode's `series` field maps to the series slug; all 13 series resolve.
+
+**Deviation from the brief, on purpose:** the brief said to add it in
+`generate_episode_pages.py`, but that file is dead code (PROJECT_HANDOFF.md
+says so, and `build.sh` never runs it). The live episode pages come from
+`generate_chapter_deck.py` and `templates/episode-template.html`, so the change
+is there. The only page without the box is
+`episodes/new-technologies-5-frantisek-pavlousek-2.html`, which is a noindex
+redirect stub, not an episode.
+
+### 7.3 Structured data: done (9ccfadb, deploy run 433 success)
+
+What was already right: every indexable page has Organization and WebSite
+(from `tools/inject_site_schema.py`); every episode has PodcastEpisode with
+name, description, datePublished, partOfSeries and url, and the guest as a
+Person (`actor`). 404.html has no schema, which is correct for a noindex page.
+
+Changed, JSON-LD only (checked: no page differs outside its JSON-LD blocks):
+
+- Episodes: `duration` added (PT96M style, from the feed's `duration_label`,
+  80 episodes). A nested `video` VideoObject on the 85 episodes whose id is in
+  `youtube_video_ids.json` (name, description, thumbnailUrl, embedUrl, url).
+  **No `uploadDate` on the VideoObject**: the only dates stored are the podcast
+  feed's, and the YouTube upload date may differ. Google's video rich results
+  want uploadDate, so Search Console may flag these as missing it; add the
+  real upload dates to the data if you want those results.
+- Episodes: description is now the full summary; it was cut at 280 characters,
+  mid-word. Empty `datePublished` (13 reels) and empty `description` (2) are
+  now omitted instead of written as "".
+- Duplicates: 84 pages declared their own page node (tag and KB
+  CollectionPages, policy and About WebPages, the enquire ContactPage) with no
+  `@id`, and the injector then added a second WebPage for the same address;
+  the homepage had two WebSite nodes. The injector now gives the page's own
+  node the shared `#webpage` (or `#website`) id and the site facts, and skips
+  its extra WebPage there. After: no page has two entities of the same type,
+  and no shared `@id` has two types. Hand-maintained pages (index, about,
+  podcast, library, enquire, knowledge-base.html) had their own JSON-LD block
+  rewritten once by the injector; later builds leave them alone (verified: a
+  second build changes nothing).
+
+Left for you: episodes with two guests carry one Person named "A & B"
+(7 entries, e.g. "Tilen Ceglar & Stan Radzikowski"). Two of those are not
+two people ("Finsterwalder & Charly", "Shams & Ouka"), so I did not split them
+automatically. Also: the summary-based meta description (7.4) is still cut at
+155 characters mid-word on most episodes; I left that alone because it was
+outside the brief, but cutting at a word boundary would read better.
+
+### 7.4 Titles and meta descriptions
+
+Audit of all 177 indexable pages: no missing title or description, no title
+over 70 characters. Problems found, all on episode pages:
+
+- Duplicate title: `episodes/touch-the-sky-with-glory.html` had the same title
+  as `mission.html`. Now "Touch The Sky With Glory: Channel Trailer".
+- Duplicate title: Oslo part 2 lost ": Part 2" when shortened, so it matched
+  part 1. Now "Bird's-Eye View of Oslo: Part 2".
+- Empty description: touch-the-sky-with-glory and
+  can-we-steer-a-round-reserve-parachute-urs-haari-answers (both have no
+  summary). Descriptions written only from each entry's own title, guest,
+  series and notes.
+- Description under 70: art-of-flight-in-norwegian-skies (65). Added
+  ", a cinematic clip", from its own `_not_an_episode` note.
+
+How: two new optional fields in `episode-meta.json`, `seo_title` and
+`seo_desc`, each with a `_source` note, used by `generate_chapter_deck.py` for
+`<title>`, meta description and og:description only. H1, og:title and the
+visible summary are unchanged. Knowledge base pages were not touched.

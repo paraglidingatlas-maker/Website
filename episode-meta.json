@@ -6601,7 +6601,9 @@
       "Safety",
       "Equipment"
     ],
-    "_guest_source": "from the episode title, which is the user's own wording; this episode has no transcript"
+    "_guest_source": "from the episode title, which is the user's own wording; this episode has no transcript",
+    "seo_desc": "Urs Haari answers whether a round reserve parachute can be steered. A Know Your Equipment video from Paragliding Atlas.",
+    "_seo_desc_source": "Added 2026-09-23 by the overnight SEO job (task 7.4). Used only for the <title> and meta/og description, never shown on the page. The summary is empty, so the description was empty. A restatement of this entry's title, guest and series only."
   },
   {
     "slug": "watch-this-before-you-buy-a-paragliding-harness-a-talk",
@@ -7362,7 +7364,11 @@
     ],
     "_guest_source": "the host, named by the user. These are solo episodes with no guest: confirmed by reading them, one speaker throughout.",
     "transcript_expected": false,
-    "_transcript_expected_source": "User's instruction 2026-09-11: this is a competition reel, a cinematic or housekeeping, not a conversation, so the Chapters rail and the Full Transcript section are not rendered at all rather than shown empty."
+    "_transcript_expected_source": "User's instruction 2026-09-11: this is a competition reel, a cinematic or housekeeping, not a conversation, so the Chapters rail and the Full Transcript section are not rendered at all rather than shown empty.",
+    "seo_title": "Touch The Sky With Glory: Channel Trailer",
+    "_seo_title_source": "Added 2026-09-23 by the overnight SEO job (task 7.4). Used only for the <title> and meta/og description, never shown on the page. The page title was identical to mission.html's; 'Channel Trailer' is from this entry's own _not_an_episode note.",
+    "seo_desc": "Touch The Sky With Glory, the Paragliding Atlas channel trailer, featuring Aninder Singh.",
+    "_seo_desc_source": "Added 2026-09-23 by the overnight SEO job (task 7.4). Used only for the <title> and meta/og description, never shown on the page. The summary is empty, so the description was empty. Built only from this entry's title, guest and _not_an_episode note."
   },
   {
     "slug": "a-note-of-thanks",
@@ -7439,7 +7445,9 @@
     ],
     "_summary_source": "Factual descriptor only. This is footage with little or no speech, so nothing is claimed about spoken content. NOT a summary.",
     "transcript_expected": false,
-    "_transcript_expected_source": "User's instruction 2026-09-11: this is a competition reel, a cinematic or housekeeping, not a conversation, so the Chapters rail and the Full Transcript section are not rendered at all rather than shown empty."
+    "_transcript_expected_source": "User's instruction 2026-09-11: this is a competition reel, a cinematic or housekeeping, not a conversation, so the Chapters rail and the Full Transcript section are not rendered at all rather than shown empty.",
+    "seo_desc": "Footage from Paragliding Atlas: Art Of Flight in Norwegian Skies, a cinematic clip.",
+    "_seo_desc_source": "Added 2026-09-23 by the overnight SEO job (task 7.4). Used only for the <title> and meta/og description, never shown on the page. The summary (65 characters) was under the 70 character minimum. 'A cinematic clip' is from this entry's own _not_an_episode note."
   },
   {
     "slug": "birds-eye-view-of-oslo-stunning-nordic-cityscape-part-2",
@@ -7469,7 +7477,9 @@
     ],
     "_summary_source": "Factual descriptor only. This is footage with little or no speech, so nothing is claimed about spoken content. NOT a summary.",
     "transcript_expected": false,
-    "_transcript_expected_source": "User's instruction 2026-09-11: this is a competition reel, a cinematic or housekeeping, not a conversation, so the Chapters rail and the Full Transcript section are not rendered at all rather than shown empty."
+    "_transcript_expected_source": "User's instruction 2026-09-11: this is a competition reel, a cinematic or housekeeping, not a conversation, so the Chapters rail and the Full Transcript section are not rendered at all rather than shown empty.",
+    "seo_title": "Bird’s-Eye View of Oslo: Part 2",
+    "_seo_title_source": "Added 2026-09-23 by the overnight SEO job (task 7.4). Used only for the <title> and meta/og description, never shown on the page. The shortened title dropped ': Part 2', so it was identical to part 1's. Whole segments of this entry's own title."
   },
   {
     "slug": "just-another-day-in-paradise-oslo-paragliding-norway",
