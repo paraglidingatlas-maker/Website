@@ -33,11 +33,40 @@ is a citable article that ranks on its own and links down into the episodes.
 | storytellers | 2 | done |
 | weather-patterns | 1 | done |
 
-The five category landing pages (`core-series`, `competitions`, `meteorology`,
-`industry`, `technical`) use a different generator (`category_page()` in
-`generate_kb_pages.py`) and are not in this layout yet. Do them after the
-series pages, with a lighter treatment: hero, intro, the series cards, a short
-FAQ. Update this table when a page ships.
+| Landing page | Series | Status |
+|---|---|---|
+| core-series | 3 | done |
+| competitions | 3 | next (landing layout) |
+| meteorology | 1 | to do (landing layout) |
+| industry | 3 | to do (landing layout) |
+| technical | 3 | to do (landing layout) |
+
+The five category landing pages use the lighter landing layout described under
+"Landing pages" below. Update these tables when a page ships.
+
+## Landing pages
+
+The five category pages (`core-series`, `competitions`, `meteorology`,
+`industry`, `technical`) are built by `category_page()` in
+`generate_kb_pages.py`. When the slug has an entry in `kb_landing.py`, it hands
+over to `landing_page()`, which renders `kb_layout.landing()`: a hero (kicker,
+H1, lead, sub, series count), the series cards (each showing the H1 of its
+series page), and a five-question FAQ. The stylesheet and script are the same
+`templates/kb/category.css` and `category.js` as the series pages; the only extra
+CSS is the card rules taken from `CATEGORY_CSS`. A slug without an entry keeps
+the old plain card page.
+
+- Content: `kb_landing.py`, one entry per category. Everything comes from the
+  published series pages and the chapters they cite; no FAQ question repeats a
+  series page FAQ. Answers may cite several chapters (`src` is a list), and the
+  links are validated at build time.
+- Hero: `assets/images/kb-<slug>.jpg` (2400x900) plus `.webp`, drawn by
+  `tools/kbfig/landing_hero.py <slug> <out>`: an abstract motif per category.
+  The image also becomes the page's og:image, so add it only when the page
+  itself switches over.
+- Checks: as for a series page, with 5 JSON-LD questions and the series card
+  count. The change must leave every other knowledge base and episode page
+  byte-identical apart from `dateModified`: snapshot them before, diff after.
 
 ## Where things live
 

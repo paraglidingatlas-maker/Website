@@ -183,3 +183,39 @@ def render(slug, ed, ep_html, n_eps, stats):
 def _words(n):
     return {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine",
             10: "ten", 11: "eleven", 12: "twelve"}.get(n, str(n))
+
+
+def landing(slug, ld, cards_html, n_series):
+    """Body for a category landing page: the lighter treatment. A hero, the series
+    cards, and a short FAQ whose answers draw on the series pages and link to the
+    chapters those pages already cite. Same stylesheet and script as the series
+    pages; generate_kb_pages.py adds the card rules and wraps it in head and nav."""
+    img = "kb-" + slug
+    has_img = os.path.exists(os.path.join(ROOT, "assets", "images", img + ".jpg"))
+    media = ('<div class="k-hero-media">%s</div>' % pic(img, ld.get("hero_alt", ""), 2400, 900,
+             ' fetchpriority="high" decoding="async"')) if has_img else ""
+    sub = '<p class="sub">%s</p>' % E(ld["sub"]) if ld.get("sub") else ""
+    hero = ('<header class="k-hero">%s<div class="k-hero-copy">'
+            '<p class="breadcrumb"><a href="../knowledge-base.html">Knowledge Base</a> / %s</p>'
+            '<span class="kicker">%s</span><h1>%s</h1><p class="lead">%s</p>%s'
+            '<div class="k-stats"><span><b>%d</b>series</span><span><b>%d</b>questions below</span></div></div></header>'
+            % (media, E(ld["kicker"]), E(ld["kicker"]), E(ld["h1"]), E(ld["lead"]), sub, n_series, len(ld["faq"])))
+    series = ('<section class="k-sec bg" id="series"><div class="k-head"><h2>%s</h2><span class="kicker">%s</span></div>'
+              '<div class="series-grid">%s\n  </div></section>'
+              % (E(ld.get("series_heading", "The series")),
+                 E(ld.get("series_kicker", "Built from the episodes")), cards_html))
+    items = ""
+    for i, f in enumerate(ld["faq"]):
+        if not f["q"].strip().endswith("?"):
+            raise SystemExit("kb_layout: FAQ question must end with ?: " + f["q"])
+        items += ('<details%s><summary><h3>%s</h3></summary><p>%s</p>%s</details>'
+                  % (" open" if i == 0 else "", E(f["q"]), E(f["a"]),
+                     "".join(src(ep, ch, who) for ep, ch, who in f["src"])))
+    n_eps = len({ep for f in ld["faq"] for ep, _, _ in f["src"]})
+    faq_html = ('<section class="k-sec card" id="questions"><div class="faq"><div class="faq-l"><div class="fq-in">'
+                '<span class="kicker">FAQ</span><h2>%s</h2>'
+                '<p>Each answer draws on the series pages and links to the chapters where the guests say it.</p>'
+                '<div class="fq-n"><div><b>%d</b><span>questions</span></div><div><b>%d</b><span>episodes</span></div></div>'
+                '</div></div><div class="faq-r">%s</div></div></section>'
+                % (E(ld.get("faq_heading", "Questions across these series")), len(ld["faq"]), n_eps, items))
+    return CSS, hero + series + faq_html, JS

@@ -9,6 +9,7 @@ BASE = os.path.dirname(__file__)
 sys.path.insert(0, os.path.abspath(BASE))
 import site_config as cfg
 from kb_editorial import EDITORIAL
+from kb_landing import LANDING
 import html as html_lib
 ROOT = os.path.abspath(BASE)
 OUT = os.path.join(BASE, "knowledge-base")
@@ -301,6 +302,10 @@ def write(path, content):
 
 
 def category_page(slug, title, intro, series_list):
+    # A category with an entry in kb_landing.py gets the landing layout below;
+    # the rest keep this plain card page until they have one.
+    if slug in LANDING:
+        return landing_page(slug, series_list, LANDING[slug])
     cards = ""
     for s in series_list:
         points = "".join(f"<li>{p}</li>" for p in s["points"])
@@ -325,6 +330,42 @@ def category_page(slug, title, intro, series_list):
     html = NAV_HEADER.format(og_image=_og_image(slug), main_entity=_main_entity(locals().get("rich")), BASE=cfg.BASE, title=title, seo_title=_seo_title(title), slug=slug, seo_desc=_seo(intro, title),
                              css=CATEGORY_CSS, body=body) + NAV_FOOTER
     write(f"{slug}.html", html)
+
+
+# The card rules from CATEGORY_CSS without its hero rules: on a landing page
+# templates/kb/category.css supplies the hero, the sections and the FAQ, exactly
+# as it does on the series pages, so nothing there is forked.
+LANDING_CSS = CATEGORY_CSS[CATEGORY_CSS.index("  .series-grid"):] + """
+  #series .series-grid{margin:0;}
+  .series-q{color:var(--white);font-family:var(--font-display);font-weight:600;font-size:.95rem;line-height:1.45;margin:-.2rem 0 .9rem;}
+  details .src + .src{margin-left:1.2rem;}
+"""
+
+
+def landing_page(slug, series_list, ld):
+    """Category landing page, the lighter treatment of the series layout: hero,
+    intro, the series cards, and a five-question FAQ. Content lives in
+    kb_landing.py and draws only on the published series pages."""
+    import kb_layout
+    cards = ""
+    for s in series_list:
+        points = "".join(f"<li>{p}</li>" for p in s["points"])
+        ed = EDITORIAL.get(s["slug"])
+        # The question the series page answers, from its own H1.
+        q = '<p class="series-q">%s</p>\n      ' % html_escape(ed["h1"]) if ed and ed.get("h1") else ""
+        cards += f"""
+    <a class="series-card" href="{s['slug']}.html">
+      <div class="series-icon">{s['icon']}</div>
+      <h3>{s['name']}</h3>
+      {q}<p>{s['desc']}</p>
+      <ul class="series-points">{points}</ul>
+      <span class="series-arrow">Read the series →</span>
+    </a>"""
+    l_css, l_body, l_js = kb_layout.landing(slug, ld, cards, len(series_list))
+    html = NAV_HEADER.format(og_image=_og_image(slug), main_entity=_main_entity(None), BASE=cfg.BASE, title=ld["h1"],
+                             seo_title=ld["seo_title"], slug=slug, seo_desc=ld["seo_desc"],
+                             css=l_css + LANDING_CSS, body=l_body + "\n" + l_js + "\n")
+    write(f"{slug}.html", html + NAV_FOOTER)
 
 
 _CHAPTER_CACHE = {}
