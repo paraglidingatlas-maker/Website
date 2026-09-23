@@ -355,7 +355,7 @@ def india(pg, base):
     pg.reload(wait_until="load")
     pg.wait_for_timeout(1500)
     n = pg.evaluate("document.querySelectorAll('.kfaq details').length")
-    check(n == 9, "india", "the nine FAQ cards are present", n)
+    check(n == 10, "india", "the ten FAQ cards are present", n)
     kit = pg.evaluate("document.querySelectorAll('.kkit-item').length")
     check(kit >= 30, "india", "the packing kit is present", kit)
     if kit:
