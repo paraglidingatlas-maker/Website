@@ -38,9 +38,38 @@ def indexable(p):
 pages = sorted(p.replace(os.sep, "/") for p in glob.glob("**/*.html", recursive=True)
                if not p.replace(os.sep, "/").startswith(SKIP) and indexable(p))
 
+# lastmod is the date of the last real change, not the file's mtime. The mtime
+# changed on every build and every fresh checkout, so all 177 dates said "today"
+# and sitemap.xml churned daily; search engines discount a lastmod like that.
+# Source: the page's last commit, as for dateModified in inject_site_schema.py,
+# so the two agree. A page with uncommitted changes (dateModified lines ignored,
+# since those are build churn, not content) or with no history yet is dated
+# today: that is the date it will carry once committed, so a rebuild after the
+# commit writes the same file.
+import subprocess
+
+def _git(*args):
+    try:
+        r = subprocess.run(["git", *args], capture_output=True, text=True, check=True)
+        return r.stdout
+    except (OSError, subprocess.CalledProcessError):
+        return None
+
+_TODAY = datetime.date.today().isoformat()
+_dirty = _git("diff", "--name-only", "-I", '"dateModified"', "HEAD", "--")
+_dirty = set(_dirty.split()) if _dirty is not None else None
+
+def lastmod(p):
+    if _dirty is None:                      # not a git checkout: old behaviour
+        return datetime.date.fromtimestamp(os.path.getmtime(p)).isoformat()
+    if p in _dirty:
+        return _TODAY
+    d = (_git("log", "-1", "--format=%cs", "--", p) or "").strip()
+    return d or _TODAY                      # untracked: new page, dated today
+
 rows = []
 for p in pages:
-    ts = datetime.date.fromtimestamp(os.path.getmtime(p)).isoformat()
+    ts = lastmod(p)
     rows.append("  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n"
                 "    <changefreq>%s</changefreq>\n    <priority>%s</priority>\n  </url>"
                 % (_cfg.public_url(p), ts, freq(p), priority(p)))
