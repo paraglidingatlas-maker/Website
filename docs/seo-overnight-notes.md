@@ -12,7 +12,7 @@ Summary goes here at the end of the job (F1).
 - [x] 7.6 Images and speed: done, 6352f5f, deploy success
 - [x] 7.7 Crawl hygiene: done, c18fe95, deploy success
 - [x] 7.8 Report (docs/seo-baseline.md): done
-- [ ] 7.9 Episode summary fixes (progress: batch 1 of 7 published)
+- [ ] 7.9 Episode summary fixes (progress: batch 2 of 7 published)
 - [ ] 7.10 Headings and accessibility
 - [ ] 7.11 Related episodes (progress: none yet)
 
@@ -254,3 +254,8 @@ Batches are the 70 episodes in episode-meta.json order, 10 at a time.
 - Fixed `flying-filming-1-benjamin-jordan`: "projects like his Menorca flight" became "projects like his Fly Monarca flight". 'Menorca' is a caption mishearing carried into the summary: the project is his monarch butterfly migration film, named in the transcript as 'fly monarca' [10:19] and 'Fly Monarcha' [34:46]; the butterflies are found in Mexico [02:45]. Nothing is about the island of Menorca.
 - Left for you, `eddie-colfox-storytime-chasing-adventure-with-the-real-og`: 'Temple in the Clouds' is not mentioned anywhere in the transcript (films named: From Nowhere to the Middle of Nowhere, Birdman of the Karakoram, Stone Monkey). It may come from the RSS show notes, which the summary was cross checked against and which I could not reach, so it was left. If it is not in the show notes, drop 'and Temple in the Clouds'.
 - Left for you, `alain-zoller-the-science-of-en-certifications-how-work`: Minor: the CEN technical committee explanation is mostly the host's introduction [01:45]-[02:38]; Alain covers the history of WG6 (first meeting 1989, Monaco). Left as is.
+
+**Batch 2** (flying-filming-3-andreas-lattner, the-silent-mind-in-screaming-winds-unlocking-peak-focus-to, helmet-safety-christian-ciech-icaro-2000, helmut-schrempf-modernizing-siv-courses-how-this-new, insights-from-the-gaggle-with-tilen-ceglar-stan, living-the-dream-benjamin-jordan, meteorology-101-a-beginners-guide-to-understanding-weather, navigating-australia-godfrey-wenness, navigating-colombia-pal-takats, navigating-india-eddie-colfox)
+
+- Fixed `meteorology-101-a-beginners-guide-to-understanding-weather`: "forecasting for Manilla in Australia, which had the best conditions going at the time of recording." became "forecasting for Manilla in Australia, one of his favourite sites to fly.". The transcript gives the reason for picking Manilla as 'one of my favorite sites to fly' [21:04]; nothing says it had the best conditions at the time (the only mention of current conditions is that Europe was rainy [00:02]).
+- Left for you, `navigating-india-eddie-colfox`: Summary: 'the first landing at Barabangal, flown with a group that included Jim Mallinson and John Silvester'. In the transcript the group set off together but only John Silvester got over the inversion and landed [48:29]-[49:20]; the others camped elsewhere. Not wrong as written, but it can be read as the group landing. Suggested: '...the first landing at Barabangal, made by John Silvester on a flight with a group that included Jim Mallinson.'
