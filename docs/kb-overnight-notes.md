@@ -140,3 +140,19 @@
   - The millibar rule (900, 800 and 700 mb at about 1,000, 2,000 and 3,000 m) checks out against the standard atmosphere (about 990, 1,950 and 3,010 m), so it is used as given.
   - On a sounding he says a vertical temperature line means "no temperature difference between the thermal and the surrounding air". That is a simplification; the page paraphrases it as a thermal gaining nothing on the air around it.
   - Spellings: Ivelin Kalushkov (from the episode metadata; the host calls him Ivo), Sky Nomad (as on the episode page; captions: Kainomat, Scanomat), Manilla, Mount Borah, Lake Keepit (captions: Kipit), Sopot.
+
+## Landing pages: how they are built (code changes)
+
+- `generate_kb_pages.py`: `category_page()` now checks `LANDING` (from the new `kb_landing.py`). A slug with an entry goes to the new `landing_page()`; a slug without one renders exactly as before. `landing_page()` builds the series cards (the existing card markup, now with the series page's H1 under each name) and wraps `kb_layout.landing()` in the usual head, nav and footer. `LANDING_CSS` is the card part of the existing `CATEGORY_CSS` plus three small rules. Nothing in `templates/kb/` was changed or forked.
+- `kb_layout.py`: new `landing()` renders the hero, the series section and a five-question FAQ, reusing `pic()` and `src()` (so every chapter link is validated at build time, as on the series pages). FAQ answers can cite several chapters.
+- `kb_landing.py`: one entry per category, with the rules in its docstring.
+- `tools/kbfig/landing_hero.py`: one abstract hero per category (contours and a thermal track; task cylinders; isobars and a cold front; a wing and its lines; an aerofoil with streamlines).
+- Byte-identical guard: before the change, every `knowledge-base/*.html` and `episodes/*.html` was built and saved; after each landing page, each file was diffed ignoring `dateModified`. Only the landing page being shipped differed. One catch: a hero image also becomes the page's og:image, so the other four heroes were held back until their own page shipped.
+- `docs/kb-rollout.md` now has a "Landing pages" section and a status table for them.
+
+## Core Series (landing)
+
+- Commit 81e717f (with the code above), deploy: pages build and deployment success (build, deploy jobs success).
+- H1: How Do Experienced Pilots Travel, Train and Live for Flying?
+- FAQ: hiring a local guide abroad (Eddie Colfox, Chris Garcia); oxygen at altitude, where the guests differ (Antoine Girard, Damien Lacaze); hours a year (Maxime Pinot, Honorin Hamard); making a living (Hamard, Benjamin Jordan, Shams, Chris Garcia); deciding not to fly (Pinot, Hamard, Lacaze).
+- Editorial calls: the old intro sentence is kept as the sub line. The oxygen answer presents both views rather than choosing. Every fact is one already on the Navigators, Sky Gods or Living The Dream page, with the same chapters.
