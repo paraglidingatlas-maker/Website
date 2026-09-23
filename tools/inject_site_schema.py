@@ -144,7 +144,81 @@ def faq(h):
     return {"@type": "FAQPage", "mainEntity": qa} if len(qa) >= 2 else None
 
 
-def build_block(page, h):
+# Page types a generator or a hand-made page may already declare for itself.
+PAGE_TYPES = ("WebPage", "CollectionPage", "AboutPage", "ContactPage", "ItemPage")
+LD = re.compile(r'(<script type="application/ld\+json">)(.*?)(</script>)', re.S)
+
+
+def link_own_nodes(page, h):
+    """Join a page's own structured data to the site graph instead of repeating it.
+
+    Most pages already describe themselves (a CollectionPage from the tag
+    generator, a WebPage on the policies, a WebSite on the homepage) without an
+    @id. The block below then added a second WebPage for the same address, so
+    an engine saw two unrelated page entities, and on the homepage two
+    WebSites. Here the page's own node takes the shared @id and the site facts
+    (publisher, language, dateModified), and build_block() stops adding its own
+    WebPage. Only a node whose url is this page (or the site root, for WebSite)
+    is touched, and a block is rewritten only if something in it changed, so a
+    hand-made block is rewritten once and then left alone.
+
+    Returns the new html and whether the page had its own page node.
+    """
+    me = {cfg.public_url(page), cfg.url(page)}
+    dmod = git_modified(page)
+    found = [False]
+
+    def fix(node):
+        changed = False
+        if not isinstance(node, dict):
+            return False
+        t = node.get("@type")
+        if t in PAGE_TYPES and node.get("url") in me:
+            found[0] = True
+            want = {"@id": cfg.public_url(page) + "#webpage", "isPartOf": {"@id": cfg.SITE_ID},
+                    "publisher": {"@id": cfg.ORG_ID}, "inLanguage": node.get("inLanguage", "en")}
+            if dmod:
+                want["dateModified"] = dmod
+            ip = node.get("isPartOf")
+            if ip not in (None, {"@id": cfg.SITE_ID}) and not (
+                    isinstance(ip, dict) and ip.get("@type") == "WebSite" and ip.get("url") == cfg.BASE):
+                del want["isPartOf"]          # it is part of something else; leave it
+            for k, v in want.items():
+                if node.get(k) != v:
+                    node[k] = v
+                    changed = True
+        elif t == "WebSite" and node.get("url") == cfg.BASE:
+            if node.get("@id") != cfg.SITE_ID:
+                node["@id"] = cfg.SITE_ID
+                changed = True
+            pub = node.get("publisher")
+            if isinstance(pub, dict) and pub.get("@type") == "Organization" and pub.get("url") == cfg.BASE:
+                node["publisher"] = {"@id": cfg.ORG_ID}
+                changed = True
+        return changed
+
+    def sub(m):
+        try:
+            d = json.loads(m.group(2))
+        except ValueError:
+            return m.group(0)
+        nodes = d.get("@graph", [d]) if isinstance(d, dict) else d
+        if not isinstance(nodes, list):
+            return m.group(0)
+        changed = False
+        for n in nodes:
+            changed = fix(n) or changed
+        if not changed:
+            return m.group(0)
+        if isinstance(d, dict) and "@id" in d and "@graph" not in d:
+            # keep @context first and @id right after @type, as people write it
+            d = {k: d[k] for k in ["@context", "@type", "@id"] if k in d} | d
+        return m.group(1) + "\n" + json.dumps(d, ensure_ascii=False, indent=2) + "\n" + m.group(3)
+
+    return LD.sub(sub, h), found[0]
+
+
+def build_block(page, h, own_page=False):
     graph = [cfg.organization(), cfg.website()]
     d = git_modified(page)
     web = {"@type": "WebPage", "@id": cfg.public_url(page) + "#webpage",
@@ -155,7 +229,8 @@ def build_block(page, h):
     t = re.search(r"<title>(.*?)</title>", h, re.S)
     if t:
         web["name"] = html.unescape(re.sub(r"\s+", " ", t.group(1))).strip()
-    graph.append(web)
+    if not own_page:
+        graph.append(web)
     b = breadcrumb(page, h)
     if b:
         graph.append(b)
@@ -180,7 +255,8 @@ def main():
                 rewritten[0] += moved
             continue
         h = re.sub(re.escape(MARK_OPEN) + r".*?" + re.escape(MARK_CLOSE) + r"\n?", "", h, flags=re.S)
-        block = build_block(p, h)
+        h, own_page = link_own_nodes(p, h)
+        block = build_block(p, h, own_page)
         if "FAQPage" in block:
             faqs += 1
         if "BreadcrumbList" in block:

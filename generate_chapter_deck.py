@@ -802,6 +802,22 @@ def render_quote(meta):
             '      </figure>' % (esc(q), cite))
 
 
+_YT = None
+
+
+def youtube_ids():
+    """Video ids listed in youtube_video_ids.json, the channel's own export."""
+    global _YT
+    if _YT is None:
+        try:
+            _YT = {v["video_id"] for v in json.load(
+                open(os.path.join(ROOT, "youtube_video_ids.json"), encoding="utf-8"))
+                if v.get("video_id")}
+        except Exception:
+            _YT = set()
+    return _YT
+
+
 def build(meta, cues, chapters):
     paras = paragraphs(cues)
     words = sum(len(p["text"].split()) for p in paras)
@@ -813,10 +829,30 @@ def build(meta, cues, chapters):
         "@type": "PodcastEpisode",
         "name": meta["title"],
         "datePublished": meta.get("published", ""),
-        "description": meta.get("summary", "")[:280],
+        "description": meta.get("summary", ""),
         "partOfSeries": {"@type": "PodcastSeries", "name": "Paragliding Atlas"},
         "url": cfg.url("episodes/%s.html" % meta["slug"]),
     }
+    # An empty string is not a date or a description; say nothing instead.
+    # 13 YouTube-only reels have no feed date and two episodes no summary.
+    for k in ("datePublished", "description"):
+        if not (jsonld[k] or "").strip():
+            del jsonld[k]
+    # The feed's own running time for the audio, as ISO 8601.
+    secs = _label_seconds(meta.get("duration_label") or "")
+    if secs:
+        jsonld["duration"] = "PT%dM" % (secs // 60)
+    if vid and vid in youtube_ids():
+        # The video on this page. No uploadDate or duration: the dates and
+        # running times in episode-meta.json are the podcast feed's, and the
+        # YouTube upload may differ, so neither is claimed for the video.
+        video = {"@type": "VideoObject", "name": meta["title"]}
+        if (meta.get("summary") or "").strip():
+            video["description"] = meta["summary"]
+        video["thumbnailUrl"] = "https://i.ytimg.com/vi/%s/maxresdefault.jpg" % vid
+        video["embedUrl"] = "https://www.youtube-nocookie.com/embed/%s" % vid
+        video["url"] = "https://www.youtube.com/watch?v=%s" % vid
+        jsonld["video"] = video
     if meta.get("guest"):
         jsonld["actor"] = {"@type": "Person", "name": meta["guest"]}
     if (meta.get("quote") or "").strip():
