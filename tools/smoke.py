@@ -1055,8 +1055,16 @@ def kenya_gallery(pg, base):
     check(pg.evaluate("[...document.querySelectorAll('.cfl-dot')]"
                       ".findIndex(d=>d.classList.contains('is-on'))") == first,
           "gallery", "the carousel loops instead of stopping at the end")
-    check(pg.evaluate("[...document.querySelectorAll('.cfl-card')]"
-                      ".filter(c=>+getComputedStyle(c).opacity>0.05).length") >= 7,
+    # Read the flanking cards once the carousel has settled, not at a fixed
+    # moment: after a burst of clicks the cards can still be fading in at
+    # 900 ms (0 visible, then 9 a moment later), which failed this at random.
+    flank = ("[...document.querySelectorAll('.cfl-card')]"
+             ".filter(c=>+getComputedStyle(c).opacity>0.05).length")
+    try:
+        pg.wait_for_function("() => %s >= 7" % flank, timeout=4000)
+    except Exception:
+        pass
+    check(pg.evaluate(flank) >= 7,
           "gallery", "cards flank both sides at every position")
 
     # full size shows one photograph and nothing behind it
