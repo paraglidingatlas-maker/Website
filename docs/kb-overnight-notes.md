@@ -1,6 +1,25 @@
 # Knowledge base overnight run: notes
 
-<!-- SUMMARY: written at the end of the run -->
+## Summary
+
+**Pages done: 11 of 11. Failed: none. Reverted: none.**
+
+- Series pages: Brand Stories (8797eac), Navigators (6fde74e), Sky Gods (a7fdffe), Living The Dream (fdc1ded), Storytellers (c36cfd8, a short page), Weather Patterns (63c9eee, a short page).
+- Landing pages, in a new lighter layout: Core Series (81e717f, with the layout code), Competitions & Performance (56c9460), Meteorology & Weather Analysis (746cee1), Industry & Community (5fdadd4), Technical Focus & Flight Safety (221ddb7). Every other knowledge base and episode page stayed byte-identical (apart from dateModified) each time.
+- Deploy status: the "pages build and deployment" run for every page commit concluded success, with its build and deploy jobs both successful. Notes and lock commits: 188bc8b, 0993c0f, 12818f9, eec65b1, f523f73, bb07fdb, 4d32cce, 460b901, 9b1abad and 0c05375 deployed successfully. f8a8f75 was cancelled because the next push (12818f9, success) superseded it. 40f841a, 01172e9, 8c514e7 and e0dfea7 had no run of their own because they went up in the same push as the next commit, which succeeded. The commit that adds this summary and releases the lock was checked the same way after pushing.
+- `docs/kb-rollout.md` now has both status tables complete and a "Landing pages" section. The rollout lock is released.
+
+**Top five things to check**
+
+1. The live pages themselves. This environment could not reach the live site, so each deploy was confirmed through the GitHub Actions jobs and the committed files, not by looking at the pages. Please open the 11 pages, especially on a phone.
+2. A pre-existing hole in the checks: `tools/smoke.py` crashes in `kenya()`, and `check.sh` still reports "All three gates clean". I ran the checks after the crash point separately for every page (133 checks, 0 failures). The smoke test or `check.sh` needs fixing.
+3. Sensitive editorial calls. John Silvester is left out entirely. So are other people's deaths and injuries and guests' own personal detail: Sandrine Roy's family losses, Benjamin Jordan's drinking and Shams's depression. Marko Milutinovic's France collision is written so as not to say whether he threw his reserve, because the transcript is unclear.
+4. Names and spellings: Ouka (captions: Hookah); Ivelin Kalushkov and Sky Nomad; Piedechinche (the episode page says Pidecinche); Myeongjin; Mike Cavanagh. Beni Kälin is also spelled "Kalin" on the Risk vs Reward page.
+5. Small data issues I did not change:
+   - The From Cuba to Socotra tile on Living The Dream shows no guest name.
+   - The PWCA episode is filed under World Cups in episode-meta.json but is a Brand Stories tile.
+   - Storytellers' reserve-steering FAQ is close to one on Know Your Equipment.
+   - When the date rolled over, the build changed sitemap.xml lastmod values; that churn was not committed.
 
 ## Start of run
 
@@ -177,3 +196,10 @@
 - H1: What Happens Behind the Scenes of Paragliding?
 - FAQ: choosing a competition (Pal Takats, Marko Milutinovic, Stan Radzikowski); how high reserves are thrown (Eric Roussel, Marko Milutinovic); starting a brand (Eric Roussel, Gin Seok Song); why share accident stories (Julien Garcia, Bill Hughes, Eddie Colfox); what makes a competition safer (Goran Dimiskovski, Stan Radzikowski, Bill Belcourt).
 - Editorial calls: brand facts are only what the guests say about their own companies (Neo's reserve system, Gin's fabric), as on Brand Stories. The Dark Side FAQ on reducing fatalities already covers Bill Belcourt's "training comes first", so this page uses his other point instead (pilots who own their decisions).
+
+## Technical Focus & Flight Safety (landing)
+
+- Commit 221ddb7, deploy: pages build and deployment success (build, deploy jobs success).
+- H1: What Should Every Pilot Understand About Wings and Gear?
+- FAQ: whether a more advanced wing makes you better (Frantisek Pavlousek, Stephan Stiegler); what to do in a collapse (Helmut Schrempf, Beni Kälin); practising a reserve throw (Urs Haari, Will Gadd); when to buy a new model (Pavlousek, Stiegler); telling whether a wing resists collapses (Tom Lolies).
+- Editorial calls: the collapse question overlaps in subject with Flight Mechanics' certification FAQ, but draws on different points (test reports show how a collapse went, not how easily it happens; slack B lines at full speed). Tom Lolies and Helmut Schrempf are cited by literal slug in kb_editorial.py, so kb_landing.py defines constants for them.
