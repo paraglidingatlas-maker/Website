@@ -12,8 +12,8 @@ Summary goes here at the end of the job (F1).
 - [x] 7.6 Images and speed: done, 6352f5f, deploy success
 - [x] 7.7 Crawl hygiene: done, c18fe95, deploy success
 - [x] 7.8 Report (docs/seo-baseline.md): done
-- [ ] 7.9 Episode summary fixes (progress: batch 7 of 7 published)
-- [ ] 7.10 Headings and accessibility
+- [x] 7.9 Episode summary fixes: done, all 7 batches published (22b3bb9, 54f2f34, c3f7723, fd7224a, 0957359, 9246a72, a7815c4); 14 corrections on 13 episodes, 17 items left for you
+- [x] 7.10 Headings and accessibility: done, audit only, no site change needed
 - [ ] 7.11 Related episodes (progress: none yet)
 
 ## Run log
@@ -231,7 +231,7 @@ searches for questions the knowledge base answers, while the podcast's own
 Spotify and YouTube listings did rank for two; suggestions for the Kenya and
 enquire pages only, nothing changed on them.
 
-### 7.9 Episode summary fixes
+### 7.9 Episode summary fixes: done
 
 Scope: the 70 summaries whose source note says they were written from the
 transcript, each checked claim by claim against its transcript (names,
@@ -300,3 +300,41 @@ Batches are the 70 episodes in episode-meta.json order, 10 at a time.
 - Left for you, `the-inside-story-of-sports-racing-series-by-brett-janaway`: 'why two liners collapse less often than pilots assume': he says two liners 'just collapse less' [25:12], nothing about what pilots assume. Left.
 - Left for you, `the-unfiltered-truth-about-paragliding-governance-with`: 'answer claims made elsewhere': the claims were made on this podcast a few weeks earlier [01:46]-[02:13]. Left.
 - Left for you, `the-art-of-capturing-human-flight-jake-holland-s-guide-to`: The top-landing/drone line follows the caption literally [35:47]-[35:59]; worth checking against the audio.
+
+Deploys for 7.9: runs 439 (batch 1), 441 (batch 3, which also carried batch 2:
+batch 2's own run 440 was cancelled by GitHub because batch 3 was pushed seven
+seconds later), 442, 443, 444 all success; batch 7 checked below.
+
+### 7.10 Headings and accessibility: done, no change needed
+
+Checked every built page statically and, for one page of each template
+(home, about, podcast, library, enquire, KB hub, a KB series and a KB landing
+page, two episodes, a tag page, the tag index, a policy page, mission,
+sitemap, 404, Kenya), with axe-core 4 in Chromium at 1280 and 390 wide.
+
+- Exactly one H1 on every page, and no skipped heading level anywhere
+  (all 206 non-stub pages). Nothing to change.
+- Buttons and icon-only links: every one has visible text or an aria-label
+  (axe button-name and link-name: no violations).
+- Images: every img has alt text (580); none missing.
+- Form fields: one without a label, the homepage search box
+  (`#epSearchInput` in index.html, placeholder only). index.html is
+  hand-maintained, so not edited: adding `aria-label="Search episodes"` to
+  that input fixes it.
+
+Colour contrast failures (axe, WCAG AA 4.5:1 for body text), not changed:
+
+- `--gray` #737373 on the page background #141519: 3.84:1, 277 elements on
+  all 17 pages checked (footer labels, breadcrumbs, counts, reset buttons).
+- #737373 on the card background #202127: 3.38:1, 65 elements on 5 pages
+  (episode tile stamps and footers, download box sub-label, Kenya spec labels).
+- #6c3e22 on #202127: 1.79:1, the Kenya FAQ numbers (`.kfaq-n`), 6 elements.
+  Raising `--gray` to about #8e8e8e would clear the first two everywhere.
+
+Other axe findings, for information: the episode audio player puts chapter
+buttons inside the `role="slider"` seek bar (nested-interactive); the
+sitemap's SVG graph has focusable nodes inside `role="img"`; podcast.html has
+a focusable element inside an `aria-hidden` SVG; most pages have no `<main>`
+landmark; some in-text links are distinguished by colour only. None of these
+were in the brief, and each needs markup changes that could affect layout or
+the player's behaviour, so none were changed.
