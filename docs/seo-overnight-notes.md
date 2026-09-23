@@ -9,8 +9,8 @@ Summary goes here at the end of the job (F1).
 - [x] 7.3 Structured data: done, 9ccfadb, deploy success
 - [x] 7.4 Titles and meta descriptions: done, 4c85528, deploy success
 - [x] 7.5 Social preview tags: done, 914062a, deploy success
-- [x] 7.6 Images and speed: done, see log
-- [ ] 7.7 Crawl hygiene
+- [x] 7.6 Images and speed: done, 6352f5f, deploy success
+- [x] 7.7 Crawl hygiene: done, see log
 - [ ] 7.8 Report (docs/seo-baseline.md)
 - [ ] 7.9 Episode summary fixes (progress: none yet)
 - [ ] 7.10 Headings and accessibility
@@ -149,7 +149,7 @@ Not verified: episode og:image points at YouTube's `maxresdefault.jpg`, which
 YouTube does not generate for every upload (it serves a small grey
 placeholder instead). I could not fetch i.ytimg.com from here to check which.
 
-### 7.6 Images and speed
+### 7.6 Images and speed: done (6352f5f, deploy run 436 success)
 
 Lighthouse 12, mobile, performance and SEO only, run against a local server of
 the built site (so no CDN, compression or third-party embeds; compare the two
@@ -199,3 +199,25 @@ by hand, or pages the brief said not to touch):
 - Home SEO 92: Lighthouse "Links are not crawlable" (an anchor without a real
   href on the homepage).
 - The remaining episode layout shift (0.15, `.cd-main`) is not from images.
+
+### 7.7 Crawl hygiene
+
+Checked all 234 HTML files: 177 indexable, 28 redirect stubs (noindex,
+meta refresh), 404.html noindex.
+
+- Canonicals: every indexable page has exactly one canonical and it is its own
+  public address. Nothing to fix.
+- Internal links: no link to a missing page. Six "Related episodes" links on
+  five episode pages pointed at `new-technologies-5-frantisek-pavlousek-2.html`,
+  a noindex redirect stub, instead of the page it redirects to. Fixed in
+  `generate_chapter_deck.py`: a related link into a moved-page stub is written
+  as the page the stub points to. `episode-meta.json` is unchanged, because
+  7.11 says existing related entries must not be edited.
+- sitemap.xml: exactly the 177 indexable pages, no duplicates, nothing noindex
+  or redirected in it.
+- robots.txt: no Disallow at all; AI retrieval and training crawlers are
+  explicitly allowed. Nothing blocked.
+
+Judgement calls, not changed, listed in docs/seo-baseline.md: sitemap lastmod
+dates, thin tag pages, and two odd related entries (Ziad Bassil lists New
+Technologies 5 twice; New Technologies 5 lists itself).

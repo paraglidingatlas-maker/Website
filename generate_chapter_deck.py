@@ -551,13 +551,31 @@ def download_box_html(meta):
     )
 
 
+def _moved(url):
+    """Where a related link really goes, when it points at a page that moved.
+
+    A moved episode leaves a noindex stub that meta-refreshes to the new page.
+    A link into the stub still arrives, but through an extra hop and a page
+    search engines are told to drop. The data keeps what was entered; the link
+    is written to the page the stub points at.
+    """
+    if "/" in url or ":" in url or not url.endswith(".html"):
+        return url
+    try:
+        h = open(os.path.join(OUT, url), encoding="utf-8").read(4000)
+    except OSError:
+        return url
+    m = re.search(r'http-equiv="refresh" content="0; url=([a-z0-9-]+\.html)"', h)
+    return m.group(1) if m and os.path.exists(os.path.join(OUT, m.group(1))) else url
+
+
 def related_box_html(meta):
     """The Related episodes box, or nothing when there are none.
 
     Empty on 14 episodes. Same reasoning as the download box: a heading over
     nothing is a bug, not a layout.
     """
-    inner = render_list(meta.get("related", []))
+    inner = render_list([dict(r, url=_moved(r.get("url", ""))) for r in meta.get("related", [])])
     if not inner.strip():
         return ""
     return ('      <div class="cd-box">\n'
