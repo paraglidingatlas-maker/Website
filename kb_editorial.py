@@ -39,7 +39,7 @@ META = "metacognition-paragliding-s-hidden-psychology-with-beni"
 DK = "cognitive-bias-of-dunning-kruger-effect-in-paragliding"
 MATT = "paragliding-physiology-safety-protocols-dr-matt-wilkes"
 ALT = "if-you-fly-in-the-himalayas-alps-or-above-3000-mtrs-this"
-BH = "Beni Kalin and Heli Schrempf"
+BH = "Beni Kälin and Heli Schrempf"
 
 URS = "urs-haari-the-real-truth-about-reserve-parachutes-a"
 URS2 = "snippet-a-reserve-parachute-trick-every-pilot-should-know"
@@ -434,7 +434,7 @@ EDITORIAL = {
          "short": "You can only recover from a configuration you have already seen. Capacity is what you have when the probability call goes wrong anyway.",
          "paras": [
              "Gadd's second tool is capacity: develop it so that when you still get it wrong, the outcome is a bruise rather than a funeral. He learned to roll a kayak with a friend holding the boat upside down and hitting him on the head, and for paragliding he went to a gymnastics gym, put on his harness, and jumped off a three-metre bar into mats until he knew how to turn a vertical fall into a slide. Subir Sidhu, who logged 1,500 hours in his first three and a half years without skipping a class, puts the same idea in flying terms: you can reliably recover a glider only from a shape you have put it in before, so an SIV belongs in the first 50 to 100 hours of anyone who thermals, because a thermal is turbulence you went looking for.",
-             "The coaches sharpen where the capacity should go. Beni Kalin argues that keeping the wing open matters more than any manoeuvre: a stall you rehearsed a hundred times over a lake does nothing for a big collapse ten metres off the deck, so active flying is the skill, and SIV is what you do for the rest. Russell Ogden adds a limit most pilots never measure: G tolerance varies from person to person and day to day, so learn yours early, and throw the reserve before your vision goes, because a couple of seconds after it goes, you are unconscious. When he tests spirals he only ever spirals to the right, so that if he loses vision he knows the exit is always left."],
+             "The coaches sharpen where the capacity should go. Beni Kälin argues that keeping the wing open matters more than any manoeuvre: a stall you rehearsed a hundred times over a lake does nothing for a big collapse ten metres off the deck, so active flying is the skill, and SIV is what you do for the rest. Russell Ogden adds a limit most pilots never measure: G tolerance varies from person to person and day to day, so learn yours early, and throw the reserve before your vision goes, because a couple of seconds after it goes, you are unconscious. When he tests spirals he only ever spirals to the right, so that if he loses vision he knows the exit is always left."],
          "bold": ["capacity", "reliably recover a glider only from a shape you have put it in before", "keeping the wing open matters more than any manoeuvre", "G tolerance"],
          "chips": [("Will Gadd", WILL), ("Subir Sidhu", SUBIR), (BH, META), ("Russell Ogden", RUSSELL)],
          "figure": None},
@@ -449,8 +449,8 @@ EDITORIAL = {
         {"num": "04", "kicker": "Progression", "heading": "Step up on evidence, not appetite",
          "short": "Every class flies about the same at trim. The difference is on the bar, so the test is whether you are comfortable across the whole speed range of the wing you already fly.",
          "paras": [
-             "Subir Sidhu's rule for cross-country pilots: a low B and a CCC both trim at 38 to 40 km/h, so the performance you pay for lives on the speed bar. If you are not comfortable from minimum sink to full bar on your current wing, in the air you actually fly in, the next class gives you nothing you can use. He proved it on himself: 700 hours on a Xeno, then a CCC on which he was not confident on full bar in the same air, and his mentor's answer was neither more hours on the D nor calmer days on the Enzo, but acro, to learn wing control. Beni Kalin's threshold is blunter: fly 200 km in a day without a collapse, then think about moving up.",
-             "The counterintuitive part is that flying more can make you less safe. Kalin sees it most in speed flying, where the air is smooth, the ground is close, and daily flying breeds overconfidence; a few months off is useful because the sport feels fast again when you come back. Russell Ogden, who flies around 500 hours a year as a test pilot, says the biggest danger to him and his colleagues is themselves and the days they decide to fly. His numbers for the rest of us: 100 hours a year, three or four competitions, and about fifteen years before you reach your best. And when you are new, Manfred Ruhmer says, listen to the pilots who fly a lot and never get hurt, not the ones who talk a lot."],
+             "Subir Sidhu's rule for cross-country pilots: a low B and a CCC both trim at 38 to 40 km/h, so the performance you pay for lives on the speed bar. If you are not comfortable from minimum sink to full bar on your current wing, in the air you actually fly in, the next class gives you nothing you can use. He proved it on himself: 700 hours on a Xeno, then a CCC on which he was not confident on full bar in the same air, and his mentor's answer was neither more hours on the D nor calmer days on the Enzo, but acro, to learn wing control. Beni Kälin's threshold is blunter: fly 200 km in a day without a collapse, then think about moving up.",
+             "The counterintuitive part is that flying more can make you less safe. Kälin sees it most in speed flying, where the air is smooth, the ground is close, and daily flying breeds overconfidence; a few months off is useful because the sport feels fast again when you come back. Russell Ogden, who flies around 500 hours a year as a test pilot, says the biggest danger to him and his colleagues is themselves and the days they decide to fly. His numbers for the rest of us: 100 hours a year, three or four competitions, and about fifteen years before you reach your best. And when you are new, Manfred Ruhmer says, listen to the pilots who fly a lot and never get hurt, not the ones who talk a lot."],
          "bold": ["38 to 40 km/h", "acro, to learn wing control", "200 km in a day without a collapse", "flying more can make you less safe", "fly a lot and never get hurt"],
          "chips": [("Subir Sidhu", SUBIR), (BH, DK), ("Russell Ogden", RUSSELL), ("Manfred Ruhmer", MANFRED)],
          "figure": {"img": "kb-risk-vs-reward-stepup", "w": 2400, "h": 520,
@@ -458,7 +458,7 @@ EDITORIAL = {
                     "captions": [("Min sink to trim", "This is where most pilots live, and where every class feels much the same. Comfort here proves little."),
                                  ("The speed bar", "Half bar to full bar in real air is where the class shows and where collapses come from. Comfort here is the test."),
                                  ("The rule", "Ready to move up when the whole bar is comfortable on the wing you have. Not before.")],
-                    "source_html": 'After Subir Sidhu, <a href="../episodes/risk-vs-reward-2-subir-sidhu.html#c9">Episode 18, chapter 9</a>, and Beni Kalin, <a href="../episodes/cognitive-bias-of-dunning-kruger-effect-in-paragliding.html#c3">Episode 72</a>.'}},
+                    "source_html": 'After Subir Sidhu, <a href="../episodes/risk-vs-reward-2-subir-sidhu.html#c9">Episode 18, chapter 9</a>, and Beni Kälin, <a href="../episodes/cognitive-bias-of-dunning-kruger-effect-in-paragliding.html#c3">Episode 72</a>.'}},
         {"num": "05", "kicker": "The body", "heading": "Your body sets limits before your skill does",
          "short": "Above about 3,000 metres you are impaired before you notice. Cold multiplies the problem, and the effects outlast the altitude.",
          "paras": [
@@ -492,12 +492,12 @@ EDITORIAL = {
             ("Nobody gets sucked in", "You flew into the cloud. Own it, then leave earlier and check the radar next time.", WILL, "c13", "Will Gadd")]),
         ("Training", [
             ("Recover only what you have seen", "A shape your glider has never been in is one you will not fix. That is what SIV is for, early.", SUBIR, "c8", "Subir Sidhu"),
-            ("Keep it open first", "A rehearsed stall does nothing for a big collapse ten metres up. Active flying is the skill.", META, "c9", "Beni Kalin"),
+            ("Keep it open first", "A rehearsed stall does nothing for a big collapse ten metres up. Active flying is the skill.", META, "c9", "Beni Kälin"),
             ("Know your G tolerance", "It varies by person and by day. Throw before your vision goes; a few seconds later you are out.", RUSSELL, "c4", "Russell Ogden")]),
         ("Yourself", [
             ("Fear is a signal", "If you feel it, back up and find out why. If you did the work and are still terrified, do more work.", WILL, "c5", "Will Gadd"),
             ("The outcome is not the lesson", "Got away with a bad launch? An incident still happened. Ask what, why, and whether you knew.", SUBIR, "c8", "Subir Sidhu"),
-            ("More flying is not more safety", "Daily smooth-air flying breeds overconfidence. A break makes it feel fast again, which is the point.", DK, "c1", "Beni Kalin")]),
+            ("More flying is not more safety", "Daily smooth-air flying breeds overconfidence. A break makes it feel fast again, which is the point.", DK, "c1", "Beni Kälin")]),
     ],
     "faq_heading": "Questions these conversations answer",
     "faq": [
@@ -511,8 +511,8 @@ EDITORIAL = {
          "a": "Subir Sidhu recommends within the first 50 to 100 hours for anyone who flies thermals, because a thermal is turbulence you went looking for, and turbulence will eventually put the glider somewhere new. For pilots who only soar smooth coastal air it matters less. Expect the first one to be somewhere between fun and terrifying, and expect to learn what you do under panic.",
          "ep": SUBIR, "ch": "c8", "who": "Subir Sidhu"},
         {"q": "When am I ready to move up a glider class?",
-         "a": "Two tests from two pilots. Subir Sidhu: when you are comfortable across the entire speed range of your current wing, minimum sink to full bar, in the air you actually fly in, because every class trims at about the same speed and the difference lives on the bar. Beni Kalin: when you can fly 200 km in a day without a collapse.",
-         "ep": SUBIR, "ch": "c9", "who": "Subir Sidhu and Beni Kalin"},
+         "a": "Two tests from two pilots. Subir Sidhu: when you are comfortable across the entire speed range of your current wing, minimum sink to full bar, in the air you actually fly in, because every class trims at about the same speed and the difference lives on the bar. Beni Kälin: when you can fly 200 km in a day without a collapse.",
+         "ep": SUBIR, "ch": "c9", "who": "Subir Sidhu and Beni Kälin"},
         {"q": "Is it normal to feel afraid before flying?",
          "a": "Yes, and Will Gadd says you would be an idiot not to in some conditions. The point is what you do with it: listen, back up, find the reason, and progress when the fear is gone rather than trying to override it. If you have prepared properly and are still terrified on launch, the preparation is not finished and the answer is to stand down or fly last and easy.",
          "ep": WILL, "ch": "c5", "who": "Will Gadd"},
@@ -529,8 +529,8 @@ EDITORIAL = {
          "a": "Manfred Ruhmer: the pilots who fly a lot, fly cross-country regularly and never get hurt, not the ones who talk a lot. A pilot who breaks a bone every couple of seasons is not the one to ask. Gabriel Orsini adds that sponsored pilots are contractually biased about gear, and that the honest instructor's answer may sound worse than the salesman's.",
          "ep": MANFRED, "ch": "c6", "who": "Manfred Ruhmer and Gabriel Orsini"},
         {"q": "What is intermediate syndrome in paragliding?",
-         "a": "The stage where a pilot's confidence outruns their judgement, usually after a fast early progression. Kinga Masztalerz describes hers: 200 hours of gentle winter flying in Bassano, then the Swiss Alps in April, a tree inside two weeks, and two years of mistrusting her own decisions. Beni Kalin and Heli Schrempf see it in pilots who skip steps and reflect only after the crash.",
-         "ep": KINGA, "ch": "c5", "who": "Kinga Masztalerz, Beni Kalin and Heli Schrempf"},
+         "a": "The stage where a pilot's confidence outruns their judgement, usually after a fast early progression. Kinga Masztalerz describes hers: 200 hours of gentle winter flying in Bassano, then the Swiss Alps in April, a tree inside two weeks, and two years of mistrusting her own decisions. Beni Kälin and Heli Schrempf see it in pilots who skip steps and reflect only after the crash.",
+         "ep": KINGA, "ch": "c5", "who": "Kinga Masztalerz, Beni Kälin and Heli Schrempf"},
     ],
     "next": {"main": ("know-your-equipment.html", "Know Your Equipment", "Harnesses, reserves, lines, helmets, and what the people who design and test them wish pilots knew."),
              "cards": [("Listen", "../library.html#s=Risk%20vs%20Reward", "The full Risk vs Reward series", "12 episodes, 14h 04m, every one transcribed"),
@@ -1688,7 +1688,7 @@ EDITORIAL = {
                     "alt": "Two collisions on one height scale. France 2023: hit at about 600 m above the ground, the wing open but with no brake pressure, and a descent to land. Spain 2024: hit at more than 1,000 m, tangled and spinning with a slow backflip, the reserve thrown between 400 and 600 m, and a landing between two olive trees",
                     "captions": [("France, 2023", "Hit at about 600 m. The wing flew on without brake pressure, and he went down to land."),
                                  ("Spain, 2024", "Hit above 1,000 m. Reserve at 400 to 600 m, then a landing between olive trees.")],
-                    "source_html": 'After Marko Milutinovic, <a href="../episodes/storytellers-marko-milutinovic.html#c4">Episode 30, chapters 4</a> and <a href="../episodes/storytellers-marko-milutinovic.html#c5">5</a>. Heights as he gives them, above the ground.'}},
+                    "source_html": 'After Marko Milutinovic, <a href="../episodes/storytellers-marko-milutinovic.html#c2">Episode 30, chapters 2</a>, <a href="../episodes/storytellers-marko-milutinovic.html#c4">4</a> and <a href="../episodes/storytellers-marko-milutinovic.html#c5">5</a>. Heights as he gives them, above the ground.'}},
         {"num": "03", "kicker": "Decisions", "heading": "One bad decision, then two or three more",
          "short": "Eddie Colfox's one serious accident came from ignoring the weather and an older pilot's warning. Thirty years on he says the lesson is psychology: skill is useless if your decisions are bad, and you should always know your way out.",
          "paras": [
