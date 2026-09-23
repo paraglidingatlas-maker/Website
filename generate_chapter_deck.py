@@ -566,6 +566,26 @@ def related_box_html(meta):
             '      </div>\n' % inner)
 
 
+def kb_series_box_html(meta):
+    """A link from the episode to its knowledge base series page.
+
+    The series pages are written from these transcripts and link down into
+    them; this is the link back up. The link text is the series page's own H1,
+    read from kb_editorial.EDITORIAL so it follows the page when that changes.
+    Nothing is rendered if the series has no knowledge base page.
+    """
+    from kb_editorial import EDITORIAL
+    series = (meta.get("series") or "").lower().replace(",", "").replace(" and ", " ")
+    slug = re.sub(r"[^a-z0-9]+", "-", series).strip("-")
+    ed = EDITORIAL.get(slug)
+    if not ed:
+        return ""
+    return ('      <div class="cd-box">\n'
+            '        <h2>Knowledge base</h2>\n'
+            '        <a class="cd-link" href="../knowledge-base/%s.html">%s</a>\n'
+            '      </div>\n' % (slug, esc(ed["h1"])))
+
+
 def player_html(meta):
     """The media block.
 
@@ -846,6 +866,7 @@ def build(meta, cues, chapters):
         guest_box=guest_box_html(meta),
         download_box=download_box_html(meta),
         related_box=related_box_html(meta),
+        kb_box=kb_series_box_html(meta),
         tags=render_tags(meta.get("tags")),
         quote=render_quote(meta),
         spotify=esc(meta.get("spotify", "https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec")),

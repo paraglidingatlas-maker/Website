@@ -4,8 +4,8 @@ Summary goes here at the end of the job (F1).
 
 ## Checklist
 
-- [ ] 7.1 AI index file (llms.txt)
-- [ ] 7.2 Episode to series links
+- [x] 7.1 AI index file (llms.txt): done, 4baf0d9, deploy success
+- [x] 7.2 Episode to series links: done, see log
 - [ ] 7.3 Structured data
 - [ ] 7.4 Titles and meta descriptions
 - [ ] 7.5 Social preview tags
@@ -42,3 +42,21 @@ Setup, before any site change:
   whose files carry different mtimes than the last build drifts on the first
   build and settles on the second. Seen once during the health check; the
   second run was clean. Not changed (judgement call, see 7.8 report).
+
+**Live checks (C7) could not be run from this machine.** The network policy
+here blocks paraglidingatlas.com and paraglidingatlas-maker.github.io (curl and
+WebFetch both refused), and the Pages artifact download is blocked too. For
+every commit I instead confirmed the "pages build and deployment" run for that
+exact commit concluded success, on top of the full local gate. Please open the
+home page, one episode page and one knowledge base page in the morning.
+
+### 7.1 AI index file: done (4baf0d9, deploy run 431 success)
+
+llms.txt had no knowledge base entries at all: no series page and no landing
+page was listed. `generate_llms_txt.py` now writes a "Knowledge base" section:
+the five landing pages, each followed by its series pages, every entry with the
+page's own H1 as link text and its lead as the description. The text is read
+from `kb_landing.LANDING` and `kb_editorial.EDITORIAL` (read only), the same
+data the pages render from, so it cannot drift; which series sits under which
+landing page is read from the built landing page's links. Verified all 18
+entries match the built pages' H1 and lead exactly. Only llms.txt changed.
