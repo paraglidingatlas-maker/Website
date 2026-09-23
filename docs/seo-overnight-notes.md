@@ -7,8 +7,8 @@ Summary goes here at the end of the job (F1).
 - [x] 7.1 AI index file (llms.txt): done, 4baf0d9, deploy success
 - [x] 7.2 Episode to series links: done, f56e9b4, deploy success
 - [x] 7.3 Structured data: done, 9ccfadb, deploy success
-- [x] 7.4 Titles and meta descriptions: done, see log
-- [ ] 7.5 Social preview tags
+- [x] 7.4 Titles and meta descriptions: done, 4c85528, deploy success
+- [x] 7.5 Social preview tags: done, see log
 - [ ] 7.6 Images and speed
 - [ ] 7.7 Crawl hygiene
 - [ ] 7.8 Report (docs/seo-baseline.md)
@@ -114,7 +114,7 @@ automatically. Also: the summary-based meta description (7.4) is still cut at
 155 characters mid-word on most episodes; I left that alone because it was
 outside the brief, but cutting at a word boundary would read better.
 
-### 7.4 Titles and meta descriptions
+### 7.4 Titles and meta descriptions: done (4c85528, deploy run 434 success)
 
 Audit of all 177 indexable pages: no missing title or description, no title
 over 70 characters. Problems found, all on episode pages:
@@ -134,3 +134,17 @@ How: two new optional fields in `episode-meta.json`, `seo_title` and
 `seo_desc`, each with a `_source` note, used by `generate_chapter_deck.py` for
 `<title>`, meta description and og:description only. H1, og:title and the
 visible summary are unchanged. Knowledge base pages were not touched.
+
+### 7.5 Social preview tags
+
+Every indexable page (177) already had og:title, og:description and og:image.
+The 93 episode pages had no og:url and no twitter:card; every other page had
+both. Added to `templates/episode-template.html`: og:url (the same address as
+the page's canonical, checked on all 93) and
+`twitter:card = summary_large_image`, the value every other page uses. Twitter
+falls back to the og tags for title, description and image, as it already does
+on the other pages. Head tags only.
+
+Not verified: episode og:image points at YouTube's `maxresdefault.jpg`, which
+YouTube does not generate for every upload (it serves a small grey
+placeholder instead). I could not fetch i.ytimg.com from here to check which.
