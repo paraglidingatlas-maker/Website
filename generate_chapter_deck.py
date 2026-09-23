@@ -447,6 +447,25 @@ _DANGLING = {"with", "and", "the", "a", "an", "of", "for", "to", "in", "on", "fr
              "how", "why", "what", "his", "her", "their", "its", "by", "at", "as", "or"}
 
 
+def meta_desc(summary, limit=155):
+    """The summary as a meta description: whole words only, at most `limit`.
+
+    It used to be summary[:155], which cut most episodes mid-word ("...the
+    first lan"). Now the cut falls on the last space that fits, trailing
+    commas and the like are dropped, and an ellipsis (inside the limit) shows
+    the sentence goes on. A summary that already fits is used as it is.
+    """
+    s = " ".join((summary or "").split())
+    if len(s) <= limit:
+        return s
+    cut = s[:limit].rsplit(" ", 1)[0] if " " in s[:limit] else s[:limit - 1]
+    # Leave room for the ellipsis and never end on a dangling separator.
+    while len(cut) > limit - 1 and " " in cut:
+        cut = cut.rsplit(" ", 1)[0]
+    cut = cut.rstrip(" ,;:-\u2013")
+    return cut + "\u2026"
+
+
 def seo_title(title):
     """A short <title> for the search result. The h1 and og:title keep the full one.
 
@@ -916,7 +935,7 @@ def build(meta, cues, chapters):
         # _source note saying why. The h1, og:title and summary are untouched.
         seo_title=esc((meta["seo_title"] + BRAND_SUFFIX) if meta.get("seo_title")
                       else seo_title(meta["title"])),
-        seo_desc=esc(meta.get("seo_desc") or meta.get("summary", "")[:155]),
+        seo_desc=esc(meta.get("seo_desc") or meta_desc(meta.get("summary", ""))),
         slug=meta["slug"],
         series=esc(meta.get("series", "")),
         series_slug=meta.get("series_slug", ""),
