@@ -315,6 +315,12 @@ def kenya(pg, base):
     kit = pg.evaluate("document.querySelectorAll('.kkit-item').length")
     check(kit >= 30, "kenya", "the packing kit is present", kit)
     if kit:
+        # The groups load collapsed (since 16 Sep), so the first item cannot
+        # be clicked until its group is opened, the way a reader would.
+        pg.click(".kkit-ghead")
+        pg.wait_for_timeout(500)
+        opened = pg.evaluate("document.querySelector('.kkit-ghead').getAttribute('aria-expanded')")
+        check(opened == "true", "kenya", "clicking a kit group header opens it", opened)
         pg.click(".kkit-item")
         pg.wait_for_timeout(250)
         done = pg.evaluate("document.getElementById('kkitDone').textContent")
@@ -1377,6 +1383,20 @@ def errors(pg, base):
     check(not seen, "scripts", "no uncaught errors on the interactive pages", seen[:3])
 
 
+def guarded(fn, *args):
+    """Run one check function. A crash is recorded as a FAIL and the run goes on.
+
+    Before this, one exception (the Kenya kit click, from 16 Sep) ended the run
+    with a traceback and no FAIL line, so check.sh still said clean while every
+    check after it silently did not run."""
+    try:
+        fn(*args)
+    except Exception as e:
+        first = (str(e).strip().splitlines() or [""])[0]
+        check(False, fn.__name__, "ran to the end without crashing",
+              "%s: %s" % (type(e).__name__, first[:120]))
+
+
 def main():
     try:
         from playwright.sync_api import sync_playwright
@@ -1395,14 +1415,14 @@ def main():
             pg = browser.new_page(viewport={"width": 1280, "height": 900},
                                   reduced_motion="no-preference")
             for fn in (rail, nav, player, library, search, kenya, kenya_hero, kenya_map, kenya_gallery, kenya_facts, kenya_overview, kenya_dates, kenya_rolls, enquire, overflow):
-                fn(pg, base)
+                guarded(fn, pg, base)
             pg.close()
             pg2 = browser.new_page(viewport={"width": 1280, "height": 900},
                                    reduced_motion="reduce")
-            globe(pg2, base)
-            touch_gestures(browser, base)
-            kenya_pinch(browser, base)
-            errors(pg2, base)
+            guarded(globe, pg2, base)
+            guarded(touch_gestures, browser, base)
+            guarded(kenya_pinch, browser, base)
+            guarded(errors, pg2, base)
             pg2.close()
             browser.close()
     finally:

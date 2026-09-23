@@ -58,12 +58,18 @@ fi
 
 step "3/3  smoke: does the site actually work in a browser"
 python3 tools/smoke.py > /tmp/atlas-smoke.log 2>&1
+smoke_rc=$?
 grep -E "^FAIL" /tmp/atlas-smoke.log | sed 's/^/      /'
 if grep -qE "^FAIL" /tmp/atlas-smoke.log; then
   bad "$(tail -1 /tmp/atlas-smoke.log)"
 elif grep -q "skipping interaction checks" /tmp/atlas-smoke.log; then
   printf "%s    skipped: %s%s\n" "$DIM" "$(grep 'skipping' /tmp/atlas-smoke.log)" "$OFF"
   printf "%s    nothing here was verified in a browser on this machine.%s\n" "$DIM" "$OFF"
+elif [ "$smoke_rc" -ne 0 ] || ! grep -qE "^[0-9]+ interaction checks \| 0 FAIL$" /tmp/atlas-smoke.log; then
+  # A crash leaves a traceback and no FAIL line. Before this branch that read
+  # as clean, and every check after the crash silently did not run.
+  bad "smoke.py did not finish (exit $smoke_rc). Last lines:"
+  tail -6 /tmp/atlas-smoke.log | sed 's/^/      /'
 else
   good "$(tail -1 /tmp/atlas-smoke.log)"
 fi
