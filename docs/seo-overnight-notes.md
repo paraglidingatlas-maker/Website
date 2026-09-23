@@ -14,7 +14,7 @@ Summary goes here at the end of the job (F1).
 - [x] 7.8 Report (docs/seo-baseline.md): done
 - [x] 7.9 Episode summary fixes: done, all 7 batches published (22b3bb9, 54f2f34, c3f7723, fd7224a, 0957359, 9246a72, a7815c4); 14 corrections on 13 episodes, 17 items left for you
 - [x] 7.10 Headings and accessibility: done, audit only, no site change needed
-- [ ] 7.11 Related episodes (progress: none yet)
+- [x] 7.11 Related episodes: done, all 20 eligible episodes finished, see log
 
 ## Run log
 
@@ -338,3 +338,42 @@ a focusable element inside an `aria-hidden` SVG; most pages have no `<main>`
 landmark; some in-text links are distinguished by colour only. None of these
 were in the brief, and each needs markup changes that could affect layout or
 the player's behaviour, so none were changed.
+
+### 7.11 Related episodes
+
+26 episodes had fewer than 3 related entries. 20 now have exactly 3 (39
+entries added, appended after the existing ones, which were not changed or
+reordered). Candidates were ranked by number of shared tags, then same
+series, then most recent; never the episode itself, never one already listed
+(a link into the New Technologies 5 redirect stub counted as New Technologies
+5). Labels follow the existing rule (the title up to the first " : ",
+at most 70 characters, cut here at a whole word). Every new link was checked
+to resolve to an existing episode page.
+
+Not given related episodes: the six entries marked `_not_an_episode` (the
+channel trailer, A Note of Thanks and four Oslo/Norway cinematic clips).
+They are not episodes, and adding a box would change pages the brief was
+not about. Say if you want them included.
+
+Added (episode: new entries, shared tags):
+
+- `aljaz-valic-777-paraglidings-slovenian-mavericks`: new-technologies-3-stephan-stiegler (Certification, Innovation, Paragliding, Performance, Safety, Wing Design)
+- `consequence-over-probability-will-gadd-on-why-true-safety`: risk-vs-reward-3-manfred-ruhmer (Paragliding, Risk Management, Safety)
+- `the-silent-mind-in-screaming-winds-unlocking-peak-focus-to`: sports-psychology-for-paragliding-train-your-mind-to-fly (Breathing, Mental Game); science-backed-pre-flight-rituals (Mental Game)
+- `new-technologies-1-beni-kalin`: new-technologies-3-stephan-stiegler (Certification, Innovation, Paragliding)
+- `pwc-lifestyle-klaudia-bulgakow`: insights-from-the-gaggle-with-tilen-ceglar-stan (Competition, Paragliding, Risk Management, Safety)
+- `risk-vs-reward-3-manfred-ruhmer`: risk-vs-reward-4-raul-rodriguez (Competition, Innovation, Risk Management, Safety)
+- `shane-tighes-road-to-x-alps-engineering-conquests-in-the`: sandrine-roy-vol-biv-freedom-unfiltered-a-human-powered (Adventure, Hike and Fly, Paragliding, Vol Biv)
+- `sky-gods-flying-8000ers-antoine-girard`: shane-tighes-road-to-x-alps-engineering-conquests-in-the (Adventure, Himalayas, Paragliding)
+- `sky-gods-flying-to-win-honorin-hamard`: navigating-australia-godfrey-wenness (Cross Country, Paragliding, Weather, World Record); maxime-pinot-the-journey-within (Competition, Paragliding, Training)
+- `the-resilience-equation-erlend-ukvitnes-unrelenting-path`: risk-vs-reward-4-raul-rodriguez (Acro, Mental Game, Safety); metacognition-paragliding-s-hidden-psychology-with-beni (Mental Game, SIV)
+- `robert-whittall-113-mins-of-unhinged-conversations-with`: shane-tighes-road-to-x-alps-engineering-conquests-in-the (Himalayas, Mental Game)
+- `the-russell-ogden-interview-decoding-paragliding-mastery`: bill-belcourt-the-uncomfortable-truth-no-one-is-talking (Competition, Open Class, Training)
+- `snippet-a-reserve-parachute-trick-every-pilot-should-know`: urs-haari-the-real-truth-about-reserve-parachutes-a (Muscle Memory, Reserves); risk-vs-reward-5-gabriel-orsini (Reserves, Training); can-we-steer-a-round-reserve-parachute-urs-haari-answers (Reserves)
+- `anatomy-of-a-dream-with-damien-lacaze`: risk-vs-reward-3-manfred-ruhmer (Competition, Paragliding, Risk Management, Training); bill-belcourt-the-uncomfortable-truth-no-one-is-talking (Competition, Paragliding, Training); insights-from-the-gaggle-with-tilen-ceglar-stan (Competition, Paragliding, Risk Management)
+- `demystifying-the-science-behind-parakites-bryan-van-ostheim`: new-technologies-1-beni-kalin (Collapses, Parakites); why-paraglidings-safety-future-looks-different-rast (Collapses); new-technologies-5-frantisek-pavlousek (Collapses)
+- `legacy-and-lifetimes-of-gin-seok-song`: the-inside-story-of-sports-racing-series-by-brett-janaway (Competition, Safety, Two Liners); pal-takats-on-challenges-change-the-future-of-paragliding (Competition, Safety); brand-stories-neo-eric-roussel (Manufacturing, Safety)
+- `maxime-pinot-the-journey-within`: sky-gods-flying-to-win-honorin-hamard (Competition, Paragliding, Training); bill-belcourt-the-uncomfortable-truth-no-one-is-talking (Competition, Paragliding, Training); anatomy-of-a-dream-with-damien-lacaze (Competition, Paragliding, Training)
+- `science-backed-pre-flight-rituals`: living-the-dream-benjamin-jordan (Mental Game, Paragliding, Visualization); mastering-the-unknown-neuroscience-of-crisis-management (Mental Game, Visualization); ashutosh-chopra-identifying-passion-vs-obsession-an (Paragliding, Physiology)
+- `mastering-the-unknown-neuroscience-of-crisis-management`: science-backed-pre-flight-rituals (Mental Game, Visualization); metacognition-paragliding-s-hidden-psychology-with-beni (Mental Game, Training); anatomy-of-a-dream-with-damien-lacaze (Mental Game, Training)
+- `new-technologies-3-stephan-stiegler`: aljaz-valic-777-paraglidings-slovenian-mavericks (Certification, Innovation, Paragliding, Performance, Safety, Wing Design); new-technologies-2-guillem-batlle-adria-grau (Certification, Innovation, Paragliding, Safety, Wing Design); brand-stories-neo-eric-roussel (Innovation, Paragliding, Safety, Wing Design)
