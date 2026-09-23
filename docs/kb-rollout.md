@@ -36,8 +36,8 @@ is a citable article that ranks on its own and links down into the episodes.
 | Landing page | Series | Status |
 |---|---|---|
 | core-series | 3 | done |
-| competitions | 3 | next (landing layout) |
-| meteorology | 1 | to do (landing layout) |
+| competitions | 3 | done |
+| meteorology | 1 | next (landing layout) |
 | industry | 3 | to do (landing layout) |
 | technical | 3 | to do (landing layout) |
 
