@@ -65,6 +65,45 @@ def robots():
     return len(RETRIEVAL) + len(TRAINING)
 
 
+def knowledge_base(u):
+    """Every knowledge base landing and series page, with its own H1 and lead.
+
+    Read from the same data the pages are rendered from (kb_landing.LANDING and
+    kb_editorial.EDITORIAL), so this cannot show old text once a page changes.
+    Which series sit under which landing page is read off the built landing
+    page's links, in their order, because generate_kb_pages.py runs first and
+    that grouping is only written down there. A series no landing page links to
+    is still listed, at the end, so none can silently drop out.
+    """
+    import re
+    from kb_editorial import EDITORIAL
+    from kb_landing import LANDING
+
+    def entry(slug, d, name=None):
+        label = "%s: %s" % (name, d["h1"]) if name else d["h1"]
+        return "- [%s](%s): %s" % (label, u("knowledge-base/%s.html" % slug), " ".join(d["lead"].split()))
+
+    L = ["## Knowledge base", "",
+         "Five subject areas, each with a landing page and the series pages under it. "
+         "Each entry gives the page's own heading and opening paragraph.", ""]
+    placed = set()
+    for slug, ld in LANDING.items():
+        L += ["### %s" % ld["kicker"], "", entry(slug, ld)]
+        try:
+            html = open("knowledge-base/%s.html" % slug, encoding="utf-8").read()
+        except OSError:
+            html = ""
+        for s in re.findall(r'href="(?:\.\./knowledge-base/)?([a-z-]+)\.html"', html):
+            if s in EDITORIAL and s not in placed:
+                placed.add(s)
+                L.append(entry(s, EDITORIAL[s], EDITORIAL[s]["kicker"]))
+        L.append("")
+    rest = [s for s in EDITORIAL if s not in placed]
+    if rest:
+        L += ["### Other series", ""] + [entry(s, EDITORIAL[s], EDITORIAL[s]["kicker"]) for s in rest] + [""]
+    return L
+
+
 def llms():
     meta = json.load(open("episode-meta.json", encoding="utf-8"))
     withT = [e for e in meta if os.path.exists("transcripts/%s.vtt" % e["slug"])]
@@ -101,8 +140,9 @@ def llms():
          "- [Topics](%s): %d subjects, each a hub of related conversations"
          % (u("tags.html"), len(tagpages)),
          "- [Knowledge base](%s): the sport organised by subject" % u("knowledge-base.html"),
-         "- [Sitemap](%s): every page" % u("sitemap.html"), "",
-         "## Subject hubs", ""]
+         "- [Sitemap](%s): every page" % u("sitemap.html"), ""]
+    L += knowledge_base(u)
+    L += ["## Subject hubs", ""]
     for t, n in counts.most_common():
         s = t.lower().replace(" ", "-").replace("/", "-")
         if s in tagpages:
