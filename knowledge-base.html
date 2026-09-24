@@ -305,7 +305,9 @@
 .clb-how summary:hover,.clb-how[open] summary{color:var(--white);border-color:var(--orange);}
 .clb-how[open] summary::after{transform:rotate(-135deg) translateY(-1px);}
 .clb-how summary:focus-visible{outline:2px solid var(--orange);outline-offset:2px;}
-.clb-how-bub{position:absolute;left:0;top:calc(100% + 12px);width:min(30rem,calc(100vw - 3rem));
+/* In the flow, not floating: the hero clips its wall of faces with overflow:hidden,
+   so a floating bubble was cut off at the hero's bottom edge on desktop. */
+.clb-how-bub{position:relative;margin-top:12px;width:min(30rem,calc(100vw - 3rem));
   background:var(--card);border:1px solid var(--edge);border-left:3px solid var(--orange);
   padding:1.3rem 1.5rem 1.2rem;box-shadow:0 22px 60px rgba(0,0,0,.55);animation:clbHow .28s cubic-bezier(.2,.7,.2,1);}
 .clb-how-bub::before{content:"";position:absolute;top:-7px;left:1.3rem;width:12px;height:12px;background:var(--card);
