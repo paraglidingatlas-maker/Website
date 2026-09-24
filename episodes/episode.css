@@ -256,3 +256,56 @@
 @media(prefers-reduced-motion: reduce){
   .ep-au-chap{transition:none!important;}
 }
+
+/* =====================================================================
+   v2: episode page redesign (site visual plan, Phase 3).
+   Everything below is scoped to .cd-v2, which generate_chapter_deck.py
+   sets only for slugs in V2_ON. Pages outside the rollout are untouched.
+   Sizes come from the type scale in styles.css.
+   ===================================================================== */
+
+/* Header band: the episode art, blurred and darkened, behind title and quote */
+.cd-v2 .cd-head{position:relative;isolation:isolate;padding:clamp(2.4rem,6vw,4.2rem) 0 clamp(2rem,4vw,3rem);margin-bottom:clamp(1.5rem,3vw,2.5rem);}
+.cd-v2 .cd-head::before{content:"";position:absolute;z-index:-2;top:0;bottom:0;left:calc(-1 * clamp(1.5rem,4vw,3rem));right:calc(-1 * clamp(1.5rem,4vw,3rem));
+  background:var(--cd-art,none) center 35%/cover no-repeat;filter:blur(28px) saturate(1.1);opacity:.55;transform:scale(1.08);}
+.cd-v2 .cd-head::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:calc(-1 * clamp(1.5rem,4vw,3rem));right:calc(-1 * clamp(1.5rem,4vw,3rem));
+  background:linear-gradient(90deg,rgba(20,21,25,.92) 0%,rgba(20,21,25,.7) 55%,rgba(20,21,25,.5) 100%),
+             linear-gradient(180deg,rgba(20,21,25,0) 55%,var(--bg) 100%);border-bottom:1px solid var(--rule);}
+.cd-v2 .cd-wrap,.cd-wrap.cd-v2{overflow-x:clip;}
+.cd-v2 .cd-epno{font-size:var(--fs-micro);}
+.cd-v2 .cd-head h1{font-size:clamp(1.9rem,4vw,3rem);max-width:22ch;}
+.cd-v2 .cd-quote{background:rgba(20,21,25,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+
+/* Summary as a designed band rather than a grey box */
+.cd-v2 .cd-summary{background:linear-gradient(120deg,rgba(255,117,23,.10) 0%,rgba(255,117,23,0) 60%),var(--card);
+  border:1px solid var(--edge);border-left:3px solid var(--orange);padding:1.6rem 1.7rem;
+  color:var(--white);font-size:var(--fs-lead);line-height:1.7;}
+.cd-v2 .cd-summary::before{content:"In short";display:block;color:var(--orange);font-size:var(--fs-micro);font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:.7rem;}
+
+/* Transcript: a comfortable reading measure and size */
+.cd-v2 .cd-line{max-width:46rem;}
+.cd-v2 .cd-line p{font-size:var(--fs-body);line-height:1.8;}
+
+/* Phones: player first, then a swipeable chapter strip, then the rest.
+   .cd-center is dissolved into the grid so its children can be ordered
+   around the chapter rail. The rail's links and ids are unchanged, so the
+   scrollspy and every #c anchor keep working. */
+@media(max-width:820px){
+  .cd-v2 .cd-main{gap:1.2rem;}
+  .cd-v2 .cd-center{display:contents;}
+  .cd-v2 .cd-center > *{order:4;min-width:0;}
+  .cd-v2 .cd-player{order:1;margin-bottom:0;}
+  .cd-v2 .cd-listen{order:2;margin-bottom:0;}
+  .cd-v2 .cd-rail{order:3;display:flex;gap:.6rem;overflow-x:auto;scroll-snap-type:x proximity;
+    background:none;padding:0 0 .4rem;margin:0 calc(-1 * clamp(1.5rem,4vw,3rem));padding-left:clamp(1.5rem,4vw,3rem);padding-right:clamp(1.5rem,4vw,3rem);
+    scroll-padding-inline:clamp(1.5rem,4vw,3rem);scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .cd-v2 .cd-rail::-webkit-scrollbar{display:none;}
+  .cd-v2 .cd-rail-title{flex:0 0 auto;align-self:center;margin:0 .1rem 0 0;padding:0;scroll-snap-align:start;}
+  .cd-v2 .cd-chap{flex:0 0 auto;width:min(68vw,15rem);scroll-snap-align:start;background:var(--card);
+    border:1px solid var(--edge);border-left:2px solid var(--line);padding:.8rem .9rem;min-height:44px;}
+  .cd-v2 .cd-chap.active{border-left-color:var(--orange);}
+  .cd-v2 .cd-rail:empty,.cd-v2 .cd-rail:not(:has(.cd-chap)){display:none;}
+  .cd-v2 .cd-summary{font-size:var(--fs-body);}
+  .cd-v2 .cd-side{order:5;}
+}

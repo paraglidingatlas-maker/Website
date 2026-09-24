@@ -227,6 +227,46 @@ def answer_block(tag, eps):
     return text
 
 
+# Topic page redesign (site visual plan, Phase 3): one page first for review,
+# then "all". Pages outside the rollout are generated exactly as before.
+V2_ON = {"Safety"}
+
+_YT = None
+def youtube_ids():
+    """Video ids in youtube_video_ids.json. A thumbnail is only ever drawn for
+    an id listed there, never for one taken on trust from elsewhere."""
+    global _YT
+    if _YT is None:
+        _YT = {v["video_id"] for v in json.load(
+            open(os.path.join(ROOT, "youtube_video_ids.json"), encoding="utf-8"))
+            if v.get("video_id")}
+    return _YT
+
+
+def excerpt(text, limit=200):
+    """Whole sentences up to about `limit` characters, so a card never stops
+    mid-word. A first sentence longer than that is cut at a word and marked."""
+    text = (text or "").strip()
+    if len(text) <= limit:
+        return text
+    out = ""
+    for sent in re.split(r"(?<=[.!?])\s+", text):
+        if len(out) + len(sent) + 1 > limit:
+            break
+        out = (out + " " + sent).strip()
+    if not out:
+        out = text[:limit].rsplit(" ", 1)[0].rstrip(",;:") + "\u2026"
+    return out
+
+
+def thumb(e):
+    vid = e.get("video_id") or ""
+    if vid in youtube_ids():
+        return ('<span class="tg-thumb"><img src="https://i.ytimg.com/vi/%s/mqdefault.jpg" '
+                'width="320" height="180" loading="lazy" decoding="async" alt=""></span>' % esc(vid))
+    return '<span class="tg-thumb tg-thumb-none" aria-hidden="true"><i>%s</i></span>' % esc(e.get("series", ""))
+
+
 def build():
     meta = json.load(open(os.path.join(ROOT, "episode-meta.json"), encoding="utf-8"))
     counts = Counter(t for e in meta for t in (e.get("tags") or []))
@@ -250,13 +290,15 @@ def build():
         if len(desc) > 158:
             desc = desc[:155].rsplit(" ", 1)[0] + "..."
         rows = []
+        v2 = V2_ON == "all" or tag in V2_ON
         for e in eps:
-            others = [x for x in (e.get("tags") or []) if x != tag][:4]
+            others = [x for x in (e.get("tags") or []) if x != tag][:3 if v2 else 4]
             chips = "".join('<a class="tg-chip" href="%s.html">%s</a>' % (slug(o), esc(o))
                             for o in others if o in paged)
             rows.append(
                 '    <li class="tg-ep" data-date="%s" data-title="%s" data-series="%s">\n'
                 '      <a class="tg-ep-link" href="../episodes/%s.html">\n'
+                '%s'
                 '        <span class="tg-ep-series">%s</span>\n'
                 '        <h2>%s</h2>\n'
                 '        <p>%s</p>\n'
@@ -266,8 +308,9 @@ def build():
                 % (esc(e.get("published") or ""),
                    esc(sort_key(e["title"])),
                    esc(e.get("series", "")),
-                   e["slug"], esc(e.get("series", "")), esc(e["title"]),
-                   esc((e.get("summary") or "")[:190]), chips))
+                   e["slug"], ("        %s\n" % thumb(e)) if v2 else "",
+                   esc(e.get("series", "")), esc(e["title"]),
+                   esc(excerpt(e.get("summary")) if v2 else (e.get("summary") or "")[:190]), chips))
         jsonld = json.dumps({
             "@context": "https://schema.org", "@type": "CollectionPage",
             "name": "%s episodes" % tag, "url": BASE + "tags/%s.html" % s,
@@ -287,11 +330,11 @@ def build():
             '  <p class="tg-count">%d conversation%s, every one with a full transcript.</p>\n'
             '</header>\n\n'
             '<p class="tg-answer">%s</p>\n\n'
-            '<ul class="tg-list">\n%s\n</ul>\n\n'
+            '<ul class="tg-list%s">\n%s\n</ul>\n\n'
             '<p class="tg-back"><a href="../tags.html">All topics</a> &middot; '
             '<a href="../library.html">Full episode library</a></p>\n'
             % (esc(tag), esc(tag), len(eps), "" if len(eps) == 1 else "s",
-               esc(answer_block(tag, eps)), "\n".join(rows)))
+               esc(answer_block(tag, eps)), " tg-v2" if v2 else "", "\n".join(rows)))
         open(os.path.join(OUT, s + ".html"), "w", encoding="utf-8").write(
             HEAD.format(title=esc("%s | Paragliding Atlas episodes" % tag), desc=esc(desc),
                         ogtitle=esc(tag), base=BASE, path="tags/%s.html" % s,

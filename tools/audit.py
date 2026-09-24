@@ -749,7 +749,7 @@ def _check_tokens_resolve():
     if not m:
         fail("tokens", "no :root block in styles.css")
         return
-    defs = dict(re.findall(r"(--[a-z-]+)\s*:\s*([^;]+);", m.group(1)))
+    defs = dict(re.findall(r"(--[a-z0-9-]+)\s*:\s*([^;]+);", m.group(1)))
 
     circular = [k for k, v in defs.items() if ("var(%s)" % k) in v]
     (ok if not circular else fail)("tokens",
@@ -760,18 +760,18 @@ def _check_tokens_resolve():
     for f in (["styles.css", "episodes/episode.css", "policies.css", "tags.css", "destinations.css"]
               + glob.glob("*.html") + glob.glob("templates/*.html")):
         if os.path.exists(f):
-            used.update(re.findall(r"var\((--[a-z-]+)", read(f)))
+            used.update(re.findall(r"var\((--[a-z0-9-]+)", read(f)))
     # a handful are defined locally on a page rather than in :root
     local = set()
     for f in glob.glob("*.html") + glob.glob("templates/*.html"):
-        local.update(re.findall(r"(--[a-z-]+)\s*:", read(f)))
+        local.update(re.findall(r"(--[a-z0-9-]+)\s*:", read(f)))
     # destinations.css reads custom properties that each destination page sets
     # in a style attribute or from its script (style="--i:3", setProperty).
-    for f in glob.glob("destinations/*.html"):
-        local.update(re.findall(r"(--[a-z-]+)\s*:", read(f)))
-        local.update(re.findall(r"setProperty\(\s*['\"](--[a-z-]+)", read(f)))
+    for f in glob.glob("destinations/*.html") + glob.glob("episodes/*.html"):
+        local.update(re.findall(r"(--[a-z0-9-]+)\s*:", read(f)))
+        local.update(re.findall(r"setProperty\(\s*['\"](--[a-z0-9-]+)", read(f)))
     for f in glob.glob("*.js"):
-        local.update(re.findall(r"setProperty\(\s*['\"](--[a-z-]+)", read(f)))
+        local.update(re.findall(r"setProperty\(\s*['\"](--[a-z0-9-]+)", read(f)))
     missing = sorted(used - set(defs) - local)
     (ok if not missing else fail)("tokens",
                                   "var() used but never defined: %s" % (missing[:4] or 0))

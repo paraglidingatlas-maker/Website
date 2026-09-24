@@ -47,6 +47,11 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 #   set to an empty set -> off everywhere, and the CSS becomes dead weight
 # The styling lives in tags.css under .cd-tags.tag-pulse.
 TAG_PULSE_ON = "all"
+
+# Episode page redesign (site visual plan, Phase 3). Rolled out the same way as
+# the tag pulse: one page first for review, then "all". The v2 look is purely
+# additive CSS under .cd-v2 in episode.css, so switching back is a one-word edit.
+V2_ON = {"urs-haari-the-real-truth-about-reserve-parachutes-a"}
 TX = os.path.join(ROOT, "transcripts")
 OUT = os.path.join(ROOT, "episodes")
 
@@ -870,6 +875,18 @@ def youtube_ids():
     return _YT
 
 
+def head_style(meta, vid):
+    """Backdrop for the v2 header: the episode's own artwork, else its YouTube
+    thumbnail. Only a validated video id is used (house rule 2), and nothing is
+    emitted for a page outside the rollout, so those pages stay byte-identical."""
+    if not (V2_ON == "all" or meta["slug"] in V2_ON):
+        return ""
+    art = meta.get("artwork") or ""
+    if not art and vid and vid in youtube_ids():
+        art = "https://i.ytimg.com/vi/%s/hqdefault.jpg" % vid
+    return (' style="--cd-art:url(\'%s\')"' % esc(art)) if art else ""
+
+
 def build(meta, cues, chapters):
     paras = paragraphs(cues)
     words = sum(len(p["text"].split()) for p in paras)
@@ -961,6 +978,8 @@ def build(meta, cues, chapters):
         related_box=related_box_html(meta),
         kb_box=kb_series_box_html(meta),
         tags=render_tags(meta.get("tags")),
+        wrap_class=(" cd-v2" if V2_ON == "all" or meta["slug"] in V2_ON else ""),
+        head_style=head_style(meta, vid),
         quote=render_quote(meta),
         spotify=esc(meta.get("spotify", "https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec")),
         jsonld=json.dumps(jsonld, ensure_ascii=False, indent=2),
