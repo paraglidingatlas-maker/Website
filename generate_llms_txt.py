@@ -157,6 +157,9 @@ def llms():
           "- [Kenya](%s): a 12 day cross country tour based in Kerio Valley, with the "
           "conditions, requirements and cancellation terms stated in full"
           % u("destinations/kenya.html"),
+          "- [India, Bir Billing](%s): a 10 day guided tour flying the Dhauladhar front range "
+          "from Billing, two autumn departures, with conditions, requirements and cancellation "
+          "terms stated in full" % u("destinations/india.html"),
           "- [Booking terms](%s) and [participant agreement](%s)"
           % (u("terms.html"), u("participant-agreement.html")), "",
           "## Attribution", "",

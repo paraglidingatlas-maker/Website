@@ -8,7 +8,7 @@ unpacked to TTF for ReportLab. The checkboxes are real form fields, so the PDF
 can be ticked in any reader and saved, or printed.
 
 Run: python3 tools/build_india_packing_pdf.py [page]
-     (default page: prototypes/india.html; destinations/india.html once live)
+     (default page: destinations/india.html)
 
 Needs: pip install reportlab fonttools brotli
 """
@@ -26,7 +26,7 @@ from reportlab.pdfbase.ttfonts import TTFont as RLFont
 from reportlab.pdfgen import canvas
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGE = sys.argv[1] if len(sys.argv) > 1 else "prototypes/india.html"
+PAGE = sys.argv[1] if len(sys.argv) > 1 else "destinations/india.html"
 OUT = os.path.join(ROOT, "assets/destinations/india/india-packing-checklist.pdf")
 URL = "paraglidingatlas.com/destinations/india"
 

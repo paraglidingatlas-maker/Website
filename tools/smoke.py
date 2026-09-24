@@ -342,9 +342,8 @@ def kenya(pg, base):
     check(h1 > h0 + 10, "kenya", "clicking one opens it", "%d -> %d px" % (h0, h1))
 
 
-# The India page is reviewed as a prototype first. When it moves to
-# destinations/, change this one line and every India check follows it.
-INDIA = "prototypes/india.html"
+# Every India check follows this one path.
+INDIA = "destinations/india.html"
 
 
 def india(pg, base):

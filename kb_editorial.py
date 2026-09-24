@@ -1401,6 +1401,7 @@ EDITORIAL = {
              "cards": [("Listen", "../library.html#s=Navigators", "The full Navigators series", "6 episodes, every one transcribed"),
                        ("Related", "world-cups.html", "World Cups", "How competitions work, and what they teach"),
                        ("Related", "the-dark-side.html", "The Dark Side", "What your insurance should cover when you fly abroad"),
+                       ("Fly it with us", "../destinations/india.html", "Bir Billing tour", "Ten days on the Dhauladhar, autumn 2026"),
                        ("Ask", "mailto:aninder@paraglidingatlas.com?subject=Site%20question", "A question we did not answer?", "Send it in for the next AMA episode")]},
     },
     "sky-gods": {
