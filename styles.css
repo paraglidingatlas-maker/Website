@@ -41,6 +41,33 @@
 
   --font-display:"Poppins", "Poppins Fallback", Arial, Helvetica, sans-serif;
   --font-body:"DM Sans", "DM Sans Fallback", Arial, Helvetica, sans-serif;
+
+  /* TYPE SCALE. The site had drifted to 161 different font sizes, 61 on the
+     Kenya page alone, so headings and body never quite matched between pages.
+     These ten steps are taken from what Kenya, India and the knowledge base
+     already use most. New rules use these; old rules move onto them page by
+     page, each move reviewed, because snapping a size is a visible change. */
+  --fs-micro:.72rem;      /* kickers, labels, stat captions */
+  --fs-small:.82rem;      /* meta lines, captions, chips */
+  --fs-body-s:.93rem;     /* card and secondary copy */
+  --fs-body:1rem;         /* running text */
+  --fs-lead:1.08rem;      /* intro paragraphs */
+  --fs-h4:1.1rem;         /* card titles */
+  --fs-h3:clamp(1.25rem,2.2vw,1.6rem);
+  --fs-h2:clamp(1.5rem,3vw,2.2rem);
+  --fs-h1:clamp(2.2rem,5vw,3.8rem);
+  --fs-display:clamp(2.6rem,6vw,4.6rem);
+
+  /* SPACING. Section rhythm and gutters, from the same pages. */
+  --sp-1:.5rem; --sp-2:1rem; --sp-3:1.5rem; --sp-4:2rem; --sp-5:3rem;
+  --sp-section:clamp(3rem,7vw,5rem);   /* vertical padding of a band */
+  --gutter:clamp(1.5rem,5vw,4rem);     /* side padding of a band */
+  --measure:1300px;                    /* widest content column */
+
+  /* BREAKPOINTS cannot be custom properties inside @media, so they are fixed
+     here in words: 560px (small phone), 820px (phone to tablet, where every
+     two-column layout stacks), 1100px (tablet to desktop). The site had drifted
+     to about 17 different widths; new rules use these three only. */
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}

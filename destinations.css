@@ -1,0 +1,1362 @@
+/* Destination pages (Kenya, India, and any future tour page).
+   Extracted verbatim from the inline block Kenya and India each carried, so a
+   change here lands on every destination at once. Page-only additions stay
+   inline on that page, after this file, so the cascade is unchanged. */
+/* ---------------------------------------------------------------
+   Kenya destination page.
+   Tokens, fonts and shared chrome all come from styles.css. Only the
+   page-specific blocks live here, the same way library.html scopes its own.
+   The organising idea is a flight briefing: the hero carries all the drama,
+   everything below it is disciplined data a pilot can actually act on.
+   --------------------------------------------------------------- */
+
+
+
+/* ---------- HERO =========================================================
+   Full bleed, full viewport, five photographs, and the page opens with them
+   because they are the thing worth seeing first.
+
+   Pulled up under the navigation. The nav is transparent and measures 92px at
+   every width we support, so a negative margin of exactly that puts the
+   photograph against the top edge of the screen with the links floating on it.
+
+   Measured before building. Across the bottom left, where the headline sits,
+   the five frames read 23, 35, 44, 63 and 69 luminance, so white type carries
+   on all of them and none needs a panel behind it. Across the top, where the
+   nav links sit, kerio-valley reads 181, which white type does not survive:
+   hence the upper band of the scrim.
+
+   The parallax layer is inset beyond the frame on both sides so the lag never
+   exposes an edge. It translates at 0.3 of scroll, and since 0.3s is always
+   less than s the top edge can never catch up with the viewport. */
+
+.khero{position:relative;min-height:100vh;min-height:100svh;margin-top:-92px;
+  padding:calc(92px + clamp(1.4rem,4vw,2.6rem)) clamp(1.2rem,5vw,5.5rem) clamp(2.2rem,5vw,3.4rem);
+  display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+
+.khero-stage{position:absolute;inset:0;z-index:0;}
+/* No inset. The layer translates down at 0.3 of scroll while the page moves up
+   at 1.0, so relative to the viewport it still travels upward, just slower: the
+   top edge sits at -0.7y and the bottom at heroH-0.7y, which is always at or
+   below the heroH-y the viewport needs. Bleeding the layer beyond the frame
+   would guard against nothing and cost real crop, because a taller layer makes
+   object-fit:cover scale to height instead of width. At 1440 the insets were
+   pushing a 1153px photograph to 1.41x. */
+.khero-par{position:absolute;inset:0;will-change:transform;}
+.khero-slide{position:absolute;inset:0;opacity:0;visibility:hidden;
+  transition:opacity 1.2s ease,visibility 0s linear 1.2s;}
+.khero-slide.is-on{opacity:1;visibility:visible;transition:opacity 1.2s ease;}
+/* Slides after the first stay out of layout until the page has loaded, so their
+   lazy images do not compete with the first paint on a phone. */
+.khero-par:not(.is-warm) .khero-slide:not(.is-on){display:none;}
+.khero-slide picture,.khero-slide img{display:block;width:100%;height:100%;object-fit:cover;}
+/* The drift is deliberately small. These are 1152px wide and a 1440 viewport
+   already asks 1.25x of them; every point of scale on top is upscale on the
+   first thing anyone sees. 1.00 to 1.05 reads as movement without costing
+   much. Worth raising once the 2x exports land. */
+.khero-slide img{-webkit-user-drag:none;user-select:none;transform:scale(1);}
+.khero-slide.is-on img{transform:scale(1.05);transition:transform 11s linear;}
+/* .listen-btn is flex:1 globally, which is right in the podcast rail and wrong
+   here, where it stretched the button to 780px. */
+.khero .dst-hero-cta .listen-btn{flex:0 0 auto;}
+
+.khero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+  linear-gradient(180deg,rgba(20,21,25,.72) 0,rgba(20,21,25,.18) 16%,rgba(20,21,25,0) 32%,
+    rgba(20,21,25,.48) 74%,rgba(20,21,25,.9) 100%),
+  linear-gradient(90deg,rgba(20,21,25,.6) 0,rgba(20,21,25,.14) 44%,rgba(20,21,25,0) 70%);}
+
+.khero-copy{position:relative;z-index:3;max-width:60rem;}
+
+.khero-rail{position:relative;z-index:3;display:flex;flex-wrap:wrap;
+  gap:clamp(.9rem,3vw,2.4rem);margin-top:clamp(1.8rem,4vw,3rem);padding-top:1rem;
+  border-top:1px solid rgba(255,255,255,.17);}
+.khero-tab{position:relative;background:none;border:0;padding:.45rem 0;cursor:pointer;
+  font-family:var(--font-body);font-size:clamp(.66rem,1.6vw,.78rem);letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(255,255,255,.52);transition:color .3s ease;}
+.khero-tab:hover{color:var(--white);}
+.khero-tab.is-on{color:var(--white);}
+.khero-tab:focus-visible{outline:2px solid var(--live);outline-offset:3px;}
+.khero-tab::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
+  background:var(--orange);}
+.khero-tab.is-on::after{width:100%;}
+@keyframes khero-fill{from{width:0;}to{width:100%;}}
+.khero-tab.is-timing::after{animation:khero-fill var(--khero-dwell,6500ms) linear;}
+
+.khero-cue{position:absolute;right:clamp(1.2rem,5vw,5.5rem);bottom:clamp(2.2rem,5vw,3.4rem);
+  z-index:3;display:flex;flex-direction:column;align-items:center;gap:.7rem;
+  color:rgba(255,255,255,.62);text-decoration:none;font-size:.68rem;letter-spacing:.2em;
+  text-transform:uppercase;writing-mode:vertical-rl;}
+.khero-cue:hover{color:var(--white);}
+.khero-cue i{display:block;width:1px;height:46px;
+  background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,0));}
+@media (max-width:1000px){.khero-cue{display:none;}}
+
+.dst-country{font-family:var(--font-display);font-weight:800;color:var(--white);
+  font-size:clamp(3.4rem,13vw,9.5rem);line-height:.88;letter-spacing:-.03em;margin:.6rem 0 0;}
+.dst-tag{font-family:var(--font-body);color:var(--white);font-size:clamp(1rem,2.1vw,1.45rem);
+  line-height:1.5;margin:1.1rem 0 0;max-width:34ch;}
+.dst-swahili{margin:1.9rem 0 0;padding-left:1rem;border-left:2px solid var(--orange);}
+.dst-swahili i{display:block;font-style:italic;color:var(--white);font-size:1.05rem;}
+.dst-swahili span{display:block;color:var(--gray-light);font-size:.92rem;margin-top:.25rem;}
+.dst-hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.1rem;}
+
+@media(prefers-reduced-motion: reduce){
+  /* !important because .khero-slide carries its own transition at equal
+     specificity and would win on source order. The picture still changes, it
+     just arrives without the fade, the drift or the scale. */
+  .khero-slide{transition:none!important;}
+  .khero-slide.is-on img{transform:none!important;transition:none!important;}
+  .khero-tab.is-timing::after{animation:none;}
+}
+
+
+/* ---------- ROUTE MAP ======================================================
+   Two states over one set of sites. The plate is the whole country, which is
+   recognisable but at 132 px per degree has no room for detail. The sheet is
+   the chart cropped to the corridor, which carries towns, graticule and per-leg
+   bearings but cannot say where in Kenya any of it is. So the plate does not
+   get replaced, it travels to the corner and becomes the locator.
+
+   The sheet expands out of the exact rectangle it covers on the plate, which is
+   why the scale below is not uniform: 0.417 across against 0.313 down, because
+   the plate is foreshortened by 0.74. That stretch during the move is the
+   projection changing, and it is what makes it read as a descent rather than a
+   crossfade.
+
+   Markers are HTML buttons rather than SVG, so they get a real hit target, real
+   focus and text a crawler can read. Their positions in both projections are
+   computed by the generators in tools/, never placed by eye. */
+
+.kmap-grid{display:grid;gap:clamp(1.2rem,2.5vw,1.8rem);}
+.kmap-figure{min-width:0;}
+.kmap-stage{position:relative;width:100%;aspect-ratio:19 / 15;overflow:hidden;
+  background:transparent;border:1px solid var(--rule);}
+/* Weather in the empty part of the stage. Both maps paint an opaque ground
+   across their whole viewBox, and preserveAspectRatio letterboxes them inside
+   it: 727px of chart in a 1216px box leaves 243px of grey each side. Putting
+   the clouds UNDER the map layers means the map hides them by itself and they
+   show only in that grey. No mask needed, and it stays right if the stage ever
+   changes shape. */
+/* One field across the whole section, not one inside the stage and another
+   outside it. Clipped to the stage it drew a hard rectangle: two cloud fields
+   of almost identical weight, 6.7% and 6.1% of the viewport, meeting at a
+   border. The stage background is transparent so this shows through the grey,
+   and both maps paint their own opaque ground, so the map still hides it
+   without any mask. */
+.kmap{position:relative;}
+.kmap-weather{position:absolute;left:calc(50% - 50vw);width:100vw;top:-8%;bottom:-8%;
+  z-index:0;pointer-events:none;overflow:hidden;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%),
+    linear-gradient(to right,transparent 0,#000 10%,#000 90%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%),
+    linear-gradient(to right,transparent 0,#000 10%,#000 90%,transparent 100%);
+  mask-composite:intersect;}
+.kmap .dst-head,.kmap-figure{position:relative;z-index:1;}
+.kmap-cloud{position:absolute;left:-10%;width:120%;max-width:none;height:auto;
+  will-change:transform;mix-blend-mode:screen;opacity:.62;}
+.kmap-cloud:nth-child(1){top:-12%;}
+.kmap-cloud:nth-child(2){top:20%;opacity:.5;}
+.kmap-cloud:nth-child(3){top:48%;opacity:.46;}
+.kmap-cloud:nth-child(4){top:72%;opacity:.4;}
+.kmap-layer{position:absolute;inset:0;}
+.kmap-layer svg{display:block;width:100%;height:100%;}
+
+.kmap-sheet{opacity:0;transform-origin:0 0;pointer-events:none;
+  transform:translate(19.412%,38.880%) scale(0.4169,0.3126);
+  transition:opacity 620ms ease-out,transform 1050ms cubic-bezier(.66,.02,.2,1);}
+.kmap-stage.is-sheet .kmap-sheet{opacity:1;transform:none;pointer-events:auto;}
+
+.kmap-plate{transform-origin:0 0;
+  transition:transform 1050ms cubic-bezier(.66,.02,.2,1) 70ms,filter 1050ms ease;}
+.kmap-stage.is-sheet .kmap-plate{transform:translate(64.24%,60.41%) scale(.2225);
+  filter:brightness(1.35);}
+
+.kmap-pins{position:absolute;inset:0;z-index:2;}
+.kmap-view{position:absolute;inset:0;transform-origin:0 0;z-index:1;}
+.kmap-stage{touch-action:pan-y;cursor:grab;}
+.kmap-stage.is-zoomed{cursor:grab;}
+.kmap-stage.is-zoomed:active{cursor:grabbing;}
+/* Counter-scale, so a marker keeps its 44px target and its label keeps its
+   size however far the surface is zoomed in. */
+/* Markers sit OUTSIDE .kmap-view and are positioned in px by JS. Inside it,
+   a counter-scale laid the label out at 12px, rasterised it at under 2px and
+   let the parent blow that bitmap back up. That was the "distortion". */
+.kmap-pin{transform:translate(-50%,-50%);}
+.kmap-ctl{position:absolute;right:.7rem;bottom:.7rem;z-index:4;display:flex;gap:.35rem;}
+.kmap-btn{width:34px;height:34px;padding:0;background:rgba(20,21,25,.86);
+  border:1px solid var(--edge-hi);color:var(--white);font-family:var(--font-body);
+  font-size:1rem;line-height:1;cursor:pointer;transition:border-color .2s ease,opacity .2s ease;}
+/* The third control opens and closes the chart. It used to reset the view,
+   with a separate button below the map for the chart, which put two related
+   actions in two unrelated places. Switching state resets the view anyway, and
+   escape and double click still reset zoom on their own. */
+.kmap-btn.kmap-swap{width:auto;padding:0 .8rem;font-size:.72rem;letter-spacing:.09em;}
+.kmap-btn.kmap-swap[aria-pressed="true"]{border-color:var(--orange);color:var(--orange);}
+.kmap-btn:hover:not(:disabled){border-color:var(--orange);}
+.kmap-btn:disabled{opacity:.35;cursor:default;}
+.kmap-btn:focus-visible{outline:2px solid var(--live);outline-offset:2px;}
+
+.kmap-pin{position:absolute;
+  transition:left 1050ms cubic-bezier(.66,.02,.2,1),top 1050ms cubic-bezier(.66,.02,.2,1);
+  width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;}
+.kmap-pin-dot{width:13px;height:13px;border-radius:50%;background:var(--bg);
+  border:2px solid var(--orange);transition:transform .25s ease,background .25s ease;}
+.kmap-pin:hover .kmap-pin-dot{transform:scale(1.35);}
+.kmap-pin.is-on .kmap-pin-dot{background:var(--orange);transform:scale(1.35);}
+.kmap-pin:focus-visible{outline:2px solid var(--live);outline-offset:2px;}
+.kmap-pin-name{position:absolute;left:26px;top:50%;transform:translateY(-50%);
+  white-space:nowrap;font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--white);background:rgba(20,21,25,.86);padding:.24rem .5rem;
+  opacity:0;pointer-events:none;transition:opacity .25s ease;}
+/* One label at a time. Kijabe, Longonot and Rift Valley NP are 15 to 31 km
+   apart, which is a knot at this scale; showing only the active one dissolves
+   it without moving anything off its true position. */
+.kmap-pin.is-on .kmap-pin-name,.kmap-pin:hover .kmap-pin-name{opacity:1;}
+.kmap-stage.is-sheet .kmap-pin-name{font-size:.7rem;}
+
+
+.kmap-side{min-width:0;}
+.kmap-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);}
+.kmap-row{display:flex;flex-direction:column;gap:.2rem;align-items:flex-start;
+  background:var(--bg);border:0;padding:.85rem 1rem;cursor:pointer;text-align:left;
+  font-family:var(--font-body);transition:background .2s ease;}
+.kmap-row:hover{background:var(--card);}
+.kmap-row.is-on{background:var(--card);box-shadow:inset 3px 0 0 var(--orange);}
+.kmap-row:focus-visible{outline:2px solid var(--live);outline-offset:-2px;}
+.kmap-row-name{color:var(--white);font-weight:600;font-size:.95rem;}
+.kmap-row-co{color:var(--gray);font-size:.78rem;letter-spacing:.06em;}
+
+.kmap-panel{border:1px solid var(--rule);background:var(--card);display:flex;align-items:stretch;}
+.kmap-panel picture{flex:0 0 clamp(11rem,26%,17rem);display:block;}
+.kmap-panel img{width:100%;height:100%;object-fit:cover;}
+.kmap-panel-txt{padding:1.1rem 1.2rem;min-width:0;}
+@media (max-width:640px){.kmap-panel{flex-direction:column;}.kmap-panel picture{flex:none;}}
+.kmap-panel img{display:block;width:100%;height:auto;}
+.kmap-panel h3{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.05rem;margin:0 0 .35rem;}
+.kmap-panel p{color:var(--gray-light);font-size:.92rem;line-height:1.7;margin:0 0 .7rem;}
+.kmap-panel .kmap-coord{color:var(--orange);font-size:.78rem;letter-spacing:.08em;}
+.kmap-panel .kmap-leg{color:var(--gray);font-size:.78rem;letter-spacing:.04em;
+  border-top:1px solid var(--rule);padding-top:.7rem;margin:0;}
+
+@media (max-width:820px){
+  .kmap-grid{grid-template-columns:1fr;}
+  /* The chart used to be withheld here because its smallest type lands under
+     3px on a phone. Pinch to zoom answers that: it is a detail view you open
+     rather than one you squint at. */
+  .kmap-ctl{right:.5rem;bottom:.5rem;}
+  .kmap-pin{width:40px;height:40px;}
+  .kmap-pin-name{font-size:.66rem;left:22px;}
+}
+@media (prefers-reduced-motion: reduce){
+  .kmap-sheet,.kmap-plate,.kmap-pin{transition:none!important;}
+  .kmap-sheet{transform:none;}
+}
+
+/* ---------- section scaffolding ---------- */
+.dst-sec{padding:clamp(3.4rem,7vw,6.2rem) clamp(1.2rem,5vw,5.5rem);}
+.dst-sec + .dst-sec{border-top:1px solid var(--rule);}
+.dst-head{max-width:62rem;margin:0 0 2.6rem;}
+.dst-head h2{font-family:var(--font-display);font-weight:700;color:var(--white);
+  font-size:clamp(1.5rem,3.4vw,2.4rem);line-height:1.15;margin:.5rem 0 0;letter-spacing:-.01em;}
+.dst-head p{color:var(--gray-light);line-height:1.75;margin:1rem 0 0;max-width:30rem;}
+.dst-lede{color:var(--white);font-size:clamp(1.02rem,1.7vw,1.2rem);line-height:1.8;max-width:37rem;}
+
+
+/* ---------- RHYTHM ========================================================
+   Every section on this page opened the same way: orange kicker, white heading
+   at one size, body at one width, then a grid of equal cards, rule, repeat. Ten
+   screens of that reads as a well organised document rather than as a designed
+   page, which is the note that prompted this.
+
+   Three changes, all structural rather than decorative.
+
+   One image runs edge to edge of the column with no padding and no text, which
+   is the only place on the page where nothing is being explained.
+
+   The narrative sections and the reference sections stop looking alike. Overview,
+   conditions, before you book, route, sites, on the ground and dates carry the
+   argument, so their headings grow. Practical, FAQ and packing are things you
+   consult rather than read, so they shrink and their kickers go quiet. Same
+   content, different weight.
+
+   And the pull quote becomes an actual statement instead of slightly larger body
+   text. It was 1.65rem at most, which made the loudest line on the page smaller
+   than the headings around it. */
+
+
+.dst-sec.is-quiet .dst-head h2{font-size:clamp(1.24rem,2.3vw,1.62rem);letter-spacing:0;}
+.dst-sec.is-quiet .kicker{color:var(--gray);}
+.dst-sec.is-quiet .dst-head{margin-bottom:1.8rem;}
+.dst-sec.is-quiet .dst-head p{font-size:.9rem;}
+
+.dst-sec.is-loud .dst-head h2{font-size:clamp(1.9rem,4.6vw,3.25rem);line-height:1.04;
+  letter-spacing:-.02em;max-width:18ch;}
+.dst-sec.is-loud .dst-head{margin-bottom:3rem;}
+
+
+
+/* ---------- PHOTOGRAPH CAROUSEL ==========================================
+   A ring rather than a row, so there is no end to hit in either direction.
+
+   Cards are 2:3 portrait against 3:2 photographs, which keeps 44% of each
+   frame. That is only acceptable because the crop is centred on the canopy
+   rather than on the middle of the picture: object-position per card, from
+   wing positions found by saturation in tools/build_kenya_gallery.py.
+
+   The indicator sits under the frame, not over it. Above the cards it landed
+   on the top edge of the front photograph.
+
+   Clouds are three generated transparent layers at different rates, driven by
+   the section's position in the viewport so they drift with the page rather
+   than only inside the component. Transform only, one passive listener. */
+
+/* The frame had a hard edge and a solid fill, so the section arrived as a box
+   dropped onto the page. It dissolves now: no border, no fill, and a mask that
+   takes the top and bottom edges to nothing so the blurred backdrop bleeds into
+   the page instead of stopping against it. */
+.cfl-frame{position:relative;width:100%;height:clamp(30rem,74vh,50rem);
+  overflow:hidden;isolation:isolate;border:0;background:transparent;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 84%,transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 84%,transparent 100%);}
+
+/* Clouds live out here rather than inside the frame, so they carry past the
+   gallery into the sections above and below. That overrun is what makes the
+   gallery read as floating in weather rather than sitting in a container. */
+.cfl{position:relative;}
+/* the back copy: only the middle, and behind the frame rather than over it */
+.cfl-atmos-back{z-index:0!important;}
+.cfl-atmos-back{
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%),
+    linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),
+    radial-gradient(ellipse 25% 38% at 50% 51%,#000 0 62%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%),
+    linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),
+    radial-gradient(ellipse 25% 38% at 50% 51%,#000 0 62%,transparent 100%);
+  mask-composite:intersect;}
+
+.cfl-atmos{position:absolute;left:calc(50% - 50vw);width:100vw;
+  top:-46vh;bottom:-34vh;z-index:2;pointer-events:none;overflow:hidden;
+  /* The centre of the weather goes behind the gallery instead of in front of
+     it. Two copies of the same layers: the back one shows only the middle, the
+     front one has that middle cut out. Together they read as one continuous sky
+     with the part over the cards passing behind them. */
+  /* Third mask layer opens a hole over the card in front, so the weather
+     crosses everything except the photograph you are actually looking at.
+     Centred at 34% because the box runs far below the gallery.
+
+     The card is not the same fraction of the frame at every width: it spans
+     38% to 62% at 1440 but 27% to 73% at 390, because it switches to
+     min(46%,15rem) on narrow screens. A hole sized for the desktop card left
+     cloud sitting on both edges of the mobile one, so the radii change too. */
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%),
+    linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),
+    radial-gradient(ellipse 25% 38% at 50% 51%,transparent 0 62%,#000 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%),
+    linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),
+    radial-gradient(ellipse 25% 38% at 50% 51%,transparent 0 62%,#000 100%);
+  mask-composite:intersect;}
+/* One positioning context holding the frame, the weather, the caption and the
+   arrows. The frame is a stacking context of its own, so anything that needs to
+   sit above the photographs has to be a sibling of it, not a child. Order:
+   frame, then clouds in front of the cards, then the words in front of both. */
+/* More air above the gallery, less below it. The section inherited the same
+   99px top and bottom as every other section; the photographs want room to
+   arrive and then want the next section to follow without a long pause. */
+.dst-sec.cfl{padding-top:clamp(4.6rem,9vw,8.2rem);padding-bottom:clamp(2rem,4vw,4rem);}
+.cfl-wrap{position:relative;z-index:1;}
+.cfl-frame{position:relative;z-index:1;}
+.cfl-dots,.cfl .dst-head{position:relative;z-index:1;}
+.cfl-bgs{position:absolute;inset:-10%;z-index:0;}
+.cfl-scrim{mix-blend-mode:normal;}
+.cfl-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
+  transform:scale(1.12);/* The backdrop was carrying the active photograph's colour across the whole
+   section, so a blue frame turned the page blue. Desaturated almost out: it
+   is there for depth, not for hue. */
+  filter:blur(46px) saturate(.18) brightness(.34);
+  transition:opacity 900ms ease;}
+.cfl-bg.is-on{opacity:1;}
+
+.cfl-clouds{position:absolute;inset:0;pointer-events:none;}
+/* max-width:100% from the global image rules was capping these at the width of
+   the section, so a layer set to 114% actually stopped at 92.6% and left a hard
+   vertical edge just inside where the mask starts to fade. */
+.cfl-cloud{position:absolute;left:-12%;width:124%;max-width:none;height:auto;
+  will-change:transform;mix-blend-mode:screen;}
+@media (max-width:820px){.cfl-cloud{opacity:.55!important;}}
+.cfl-cloud:nth-child(1){top:-10%;opacity:.78;}
+.cfl-cloud:nth-child(2){top:16%;opacity:.62;}
+.cfl-cloud:nth-child(3){top:44%;opacity:.58;}
+.cfl-cloud:nth-child(4){top:70%;opacity:.55;}
+
+.cfl-scrim{position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:radial-gradient(130% 95% at 50% 45%,rgba(15,16,19,0) 0,rgba(15,16,19,.5) 85%);}
+
+.cfl-stage{position:absolute;inset:0;z-index:3;cursor:grab;
+  /* the page keeps vertical scrolling, the gallery takes the horizontal drag */
+  touch-action:pan-y;
+  perspective:1400px;perspective-origin:var(--px,50%) var(--py,50%);}
+.cfl-stage.is-dragging{cursor:grabbing;}
+.cfl-tilt{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform;}
+.cfl-card{position:absolute;left:50%;top:50%;padding:0;border:0;background:#0d0e11;cursor:inherit;
+  width:min(24%,23rem);aspect-ratio:2/3;overflow:hidden;cursor:pointer;
+  box-shadow:0 30px 70px rgba(0,0,0,.55);will-change:transform;
+  transition:transform 780ms cubic-bezier(.4,.02,.16,1),filter 780ms ease,opacity 600ms ease;}
+.cfl-card picture,.cfl-card img{display:block;width:100%;height:100%;object-fit:cover;}
+.cfl-card img{-webkit-user-drag:none;user-select:none;}
+.cfl-card:focus-visible{outline:2px solid var(--live);outline-offset:3px;}
+
+/* The caption sits on the photograph rather than over it. As a free floating
+   layer it was sized independently of the card and had no way to know how wide
+   the picture underneath it was, so long names ran off both edges. Inside the
+   card it is bounded by construction and wraps instead of overflowing. */
+.cfl-card-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:2.6rem .9rem .85rem;text-align:center;
+  font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(.78rem,1.45vw,1.12rem);letter-spacing:.055em;line-height:1.16;
+  color:var(--white);opacity:0;transition:opacity 420ms ease;
+  background:linear-gradient(to top,rgba(10,11,13,.9) 0,rgba(10,11,13,.55) 45%,rgba(10,11,13,0) 100%);}
+.cfl-card.is-front .cfl-card-cap{opacity:1;}
+.cfl-live{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);}
+
+.cfl-arrow{position:absolute;z-index:4;top:50%;transform:translateY(-50%);
+  width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);
+  background:rgba(15,16,19,.4);color:var(--white);cursor:pointer;
+  display:grid;place-items:center;transition:border-color .2s ease,background .2s ease;}
+.cfl-arrow:hover{border-color:var(--orange);background:rgba(15,16,19,.75);}
+.cfl-arrow:focus-visible{outline:2px solid var(--live);outline-offset:2px;}
+.cfl-prev{left:clamp(.5rem,2vw,1.6rem);} .cfl-next{right:clamp(.5rem,2vw,1.6rem);}
+
+.cfl-dots{display:flex;gap:9px;justify-content:center;margin-top:.85rem;flex-wrap:wrap;}
+.cfl-dot{width:26px;height:2px;border:0;padding:0;cursor:pointer;
+  background:rgba(255,255,255,.26);transition:background .3s ease;}
+.cfl-dot.is-on{background:var(--orange);}
+.cfl-dot:focus-visible{outline:2px solid var(--live);outline-offset:4px;}
+
+/* Full size. Opaque, because at 94% the carousel ghosted through underneath and
+   you could see the edge of the next photograph behind the one you opened. */
+.cfl-lb{position:fixed;inset:0;z-index:70;background:#0b0c0e;
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;
+  gap:clamp(.5rem,2vw,1.5rem);padding:clamp(1rem,4vw,3rem);}
+.cfl-lb[hidden]{display:none;}
+.cfl-lb-stage{position:relative;display:grid;place-items:center;
+  width:100%;height:100%;min-width:0;}
+.cfl-full{display:none;max-width:100%;max-height:100%;}
+.cfl-full.is-on{display:block;}
+.cfl-full img{display:block;max-width:100%;max-height:82vh;width:auto;height:auto;
+  object-fit:contain;}
+.cfl-lb-nav{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);
+  background:none;color:var(--white);cursor:pointer;display:grid;place-items:center;}
+.cfl-lb-nav:hover{border-color:var(--orange);}
+.cfl-lb-x{position:absolute;top:1rem;right:1.2rem;width:44px;height:44px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.32);background:none;color:var(--white);cursor:pointer;z-index:2;}
+.cfl-lb-x:hover{border-color:var(--orange);}
+.cfl-lb-nav:focus-visible,.cfl-lb-x:focus-visible{outline:2px solid var(--live);outline-offset:2px;}
+.cfl-lb-cap{position:absolute;left:0;right:0;bottom:1.2rem;margin:0;text-align:center;
+  color:var(--gray-light);font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;}
+
+@media (max-width:820px){
+  /* The card is 46% of the frame here against 24% at desktop, so it needs a
+     wider, shallower hole. No check proves this: no cloud reaches that card at
+     390px whatever the mask says, so the mobile check passes either way. It is
+     here because it is correct, not because it is verified. */
+  .cfl-atmos:not(.cfl-atmos-back){
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%),
+      linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%),
+      radial-gradient(ellipse 44% 26% at 50% 51%,transparent 0 62%,#000 100%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%),
+      linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%),
+      radial-gradient(ellipse 44% 26% at 50% 51%,transparent 0 62%,#000 100%);
+  }
+  .cfl-atmos-back{
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%),
+      linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%),
+      radial-gradient(ellipse 44% 26% at 50% 51%,#000 0 62%,transparent 100%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%),
+      linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%),
+      radial-gradient(ellipse 44% 26% at 50% 51%,#000 0 62%,transparent 100%);
+  }
+  .cfl-frame{height:clamp(26rem,66vh,34rem);}
+  .cfl-card{width:min(46%,15rem);}
+  .cfl-arrow{width:40px;height:40px;}
+  .cfl-lb{grid-template-columns:1fr;}
+  .cfl-lb-nav{position:absolute;bottom:3.4rem;}
+  .cfl-lb-prev{left:1.2rem;} .cfl-lb-next{right:1.2rem;}
+}
+@media (prefers-reduced-motion: reduce){
+  .cfl-card,.cfl-cap,.cfl-bg,.cfl-cloud,.cfl-tilt{transition:none!important;}
+}
+
+/* ---------- FULL BLEED ====================================================
+   100vw includes the scrollbar, so these overhang by its width. The page wrap
+   clips rather than scrolls, which is the same trick .why uses on the homepage.
+   Chosen over a margin because the photographs are the argument and a framed
+   photograph is a smaller argument. */
+.page-wrap{overflow-x:clip;}
+/* Photographs bleed; the map does not. The plate carries empty margin inside
+   its own viewBox and nothing draws beyond Kenya, so bleeding it produced a
+   1440x1137 band with a small country floating in the middle of it. */
+.cfl-frame{width:100vw;margin-left:calc(50% - 50vw);}
+/* The weather from the gallery drifts down over this whole section: measured
+   at 42% of the map's pixels. Two wheel rolls lift the map out from under it,
+   which is also the point at which someone is clearly looking rather than
+   scrolling past. */
+.kmap-figure{max-width:76rem;position:relative;z-index:1;
+  transition:z-index 0s linear .35s;}
+.kmap.is-lifted .kmap-figure{z-index:6;transition:none;}
+.kmap.is-lifted .kmap-stage{box-shadow:0 30px 90px rgba(0,0,0,.55);}
+.kmap-stage{aspect-ratio:auto;height:clamp(26rem,64vh,40rem);}
+/* No rule above the gallery or below it. A 1px line across the page is exactly
+   the hard edge the dissolve exists to remove. Beating .dst-sec + .dst-sec
+   needs two classes: .cfl alone lost the cascade silently. */
+.dst-sec.cfl,.cfl + .dst-sec{border-top:0;}
+.cfl-frame{border-left:0;border-right:0;}
+
+.cfl-dots{margin-left:clamp(1.2rem,5vw,5.5rem);}
+.cfl-dots{justify-content:flex-start;}
+
+
+/* ---------- PRACTICAL: a datasheet, not an accordion ======================
+   Six one-line answers were hidden behind six clicks. An accordion is for
+   content long enough to be worth collapsing; "Nairobi" is not. They read at
+   a glance now.
+
+   Laid out as an instrument panel rather than as cards: hairline rules, no
+   boxes, label above value, detail beneath. The icons are drawn inline at
+   1.4 stroke so they inherit colour and stay crisp at any size, and they sit
+   in the site's own orange rather than an off-palette hex. */
+/* Three across, so six facts make two full rows. auto-fit gave five and one,
+   which leaves an orphan and reads like a mistake. */
+/* It sits directly under the spec strip now, so it has to read as the second
+   half of the same datasheet rather than as a new section. The section padding
+   comes in from 99px to about half, the labels take the strip's own type, and
+   the icon moves beside the text instead of above it: stacked, it alone cost
+   42px of every row and the six cells ran 392px tall at 1440. */
+.dst-sec.is-datasheet{padding-top:clamp(2.2rem,4.2vw,3.2rem);padding-bottom:clamp(2.6rem,5vw,4rem);}
+.dst-sec.is-datasheet .dst-head{margin-bottom:1.4rem;}
+.fact-grid{display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--rule);}
+.fact{display:grid;grid-template-columns:26px minmax(0,1fr);column-gap:1rem;
+  align-content:start;padding:1.3rem 1.5rem 1.4rem;border-bottom:1px solid var(--rule);
+  border-right:1px solid var(--rule);}
+.fact:nth-child(3n){border-right:0;}
+.fact:nth-last-child(-n+3){border-bottom:0;}
+/* Spans the three text rows and sits level with the value line rather than
+   the label above it, which is where the eye lands. */
+.fact-i{width:26px;height:26px;display:block;color:var(--orange);grid-row:1/4;margin-top:.55rem;}
+.fact-l{display:block;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--gray);margin-bottom:.35rem;}
+.fact-v{margin:0 0 .3rem;font-family:var(--font-display);font-weight:600;
+  font-size:1.02rem;line-height:1.3;color:var(--white);}
+.fact-d{margin:0;font-size:.82rem;line-height:1.55;color:var(--gray-light);max-width:26rem;}
+@media (max-width:940px){
+  .fact-grid{grid-template-columns:repeat(2,1fr);}
+  .fact:nth-child(3n){border-right:1px solid var(--rule);}
+  .fact:nth-child(2n){border-right:0;}
+  .fact:nth-last-child(-n+3){border-bottom:1px solid var(--rule);}
+  .fact:nth-last-child(-n+2){border-bottom:0;}
+}
+@media (max-width:560px){
+  .fact-grid{grid-template-columns:1fr;}
+  .fact{padding:1.1rem 0 1.2rem;border-right:0!important;
+    border-bottom:1px solid var(--rule)!important;}
+  .fact:last-child{border-bottom:0!important;}
+  .fact-d{font-size:.8rem;}
+}
+
+/* ---------- data blocks ---------- */
+.dst-grid{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);}
+.dst-grid.two{grid-template-columns:repeat(auto-fit,minmax(19rem,1fr));}
+.dst-grid.three{grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));}
+.dst-cell{background:var(--bg);padding:1.7rem 1.6rem;}
+.dst-cell h3{font-family:var(--font-display);font-weight:600;color:var(--white);
+  font-size:1.02rem;margin:0 0 .6rem;}
+.dst-cell p{color:var(--gray-light);font-size:.93rem;line-height:1.7;margin:0;}
+.dst-cell .n{display:block;font-family:var(--font-display);font-weight:700;color:var(--orange);
+  font-size:1.55rem;line-height:1;margin-bottom:.5rem;}
+
+/* ---------- sites ---------- */
+.dst-sites{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.2rem;}
+.dst-site{background:var(--card);border:1px solid var(--rule);padding:1.5rem 1.4rem;}
+.dst-site h3{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.05rem;margin:0;}
+.dst-site .c{display:block;color:var(--gray);font-size:.78rem;margin-top:.45rem;letter-spacing:.02em;}
+.dst-site p{color:var(--gray-light);font-size:.9rem;line-height:1.7;margin:.85rem 0 0;}
+
+/* ---------- season dates ---------- */
+.dst-dates{border:1px solid var(--rule);}
+.dst-date{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;align-items:baseline;justify-content:space-between;
+  padding:1.25rem 1.5rem;}
+.dst-date + .dst-date{border-top:1px solid var(--rule);}
+.dst-date b{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1rem;}
+.dst-date span{color:var(--gray-light);font-size:.95rem;}
+
+/* ---------- requirements ---------- */
+.dst-reqs{list-style:none;padding:0;margin:0;max-width:70ch;}
+.dst-reqs li{position:relative;padding-left:1.5rem;margin:0 0 1rem;color:var(--gray-light);
+  line-height:1.75;font-size:.97rem;}
+.dst-reqs li::before{content:"";position:absolute;left:0;top:.62em;width:.5rem;height:1px;background:var(--orange);}
+
+/* ---- KIT ---------------------------------------------------------------
+ * Packing was four accordions of prose. It is the one part of the page
+ * someone uses as a tool, the week before they fly, so it is laid out flat
+ * as a kit: every item is a tile you can tick, state kept in localStorage
+ * per item so a later addition does not invalidate what is already ticked.
+ * The three suitability lines are pulled out above as their own block,
+ * because they decide whether the trip is for you at all and were reading
+ * as preamble to a packing list.
+ * ---------------------------------------------------------------------- */
+.kkit-gate{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);margin:0 0 3.2rem;}
+.kkit-gate div{background:var(--bg);padding:1.35rem 1.4rem;}
+.kkit-gate b{display:block;font-family:var(--font-display);font-weight:600;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin:0 0 .5rem;}
+.kkit-gate p{margin:0;color:var(--gray-light);font-size:.95rem;line-height:1.7;}
+
+.kkit-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  gap:.8rem 1.2rem;margin:0 0 1.4rem;}
+.kkit-count{font-family:var(--font-display);font-size:.8rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gray);}
+.kkit-count b{color:var(--orange);font-weight:600;}
+.kkit-reset{background:none;border:0;padding:.5rem 0;min-height:44px;cursor:pointer;
+  font-family:var(--font-body);font-size:.82rem;color:var(--gray);
+  border-bottom:1px solid transparent;transition:color .2s ease,border-color .2s ease;}
+.kkit-reset:hover{color:var(--white);border-color:var(--edge-hi);}
+.kkit-actions{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;}
+.kkit-dl{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;
+  font-family:var(--font-body);font-size:.82rem;color:var(--gray-light);text-decoration:none;
+  transition:color .2s ease;}
+.kkit-dl:hover{color:var(--orange);}
+.kkit-dl:hover small{color:color-mix(in srgb, var(--orange) 60%, var(--gray));}
+.kkit-dl svg{flex:0 0 auto;width:13px;height:13px;stroke:currentColor;fill:none;
+  stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+.kkit-dl small{color:var(--gray);font-size:.74rem;}
+
+.kkit-groups{columns:2;column-gap:2.4rem;}
+@media (min-width:1100px){ .kkit-groups{columns:3;} }
+.kkit-group{break-inside:avoid;-webkit-column-break-inside:avoid;margin:0 0 2.4rem;}
+.kkit-ghead{display:flex;align-items:center;gap:.6rem;width:100%;min-height:44px;
+  padding:.35rem 0;margin:0 0 .25rem;background:none;border:0;cursor:pointer;text-align:left;
+  border-bottom:1px solid var(--rule);}
+.kkit-ghead:focus-visible{outline:2px solid var(--orange);outline-offset:3px;}
+.kkit-gname{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.02rem;}
+.kkit-gtally{font-family:var(--font-body);color:var(--gray);font-size:.8rem;margin-right:auto;}
+.kkit-gtally b{font-weight:500;color:var(--gray);transition:color .2s ease;}
+.kkit-group.is-done .kkit-gtally b{color:var(--orange);}
+.kkit-group.is-done .kkit-gname{color:var(--gray-light);}
+.kkit-gchev{position:relative;flex:0 0 auto;width:11px;height:11px;}
+.kkit-gchev::before,.kkit-gchev::after{content:"";position:absolute;top:50%;width:7px;height:1.5px;
+  background:var(--gray);border-radius:1px;transition:transform .25s ease,background .2s ease;}
+.kkit-gchev::before{left:0;transform:rotate(45deg);}
+.kkit-gchev::after{right:0;transform:rotate(-45deg);}
+.kkit-ghead:hover .kkit-gchev::before,.kkit-ghead:hover .kkit-gchev::after{background:var(--white);}
+.kkit-ghead[aria-expanded="true"] .kkit-gchev::before{transform:rotate(-45deg);}
+.kkit-ghead[aria-expanded="true"] .kkit-gchev::after{transform:rotate(45deg);}
+.kkit-gbody{overflow:hidden;transition:height .3s ease;}
+.kkit-gblurb{color:var(--gray);font-size:.88rem;line-height:1.65;margin:.6rem 0 1rem;}
+
+.kkit-hide{background:none;border:0;padding:.5rem 0;min-height:44px;cursor:pointer;
+  font-family:var(--font-body);font-size:.82rem;color:var(--gray);
+  transition:color .2s ease;}
+.kkit-hide:hover{color:var(--white);}
+.kkit-hide[aria-pressed="true"]{color:var(--orange);}
+.kkit-hide[hidden]{display:none;}
+.kkit-items{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.4rem;}
+
+.kkit-item{display:flex;align-items:flex-start;gap:.75rem;width:100%;text-align:left;
+  min-height:44px;padding:.62rem .85rem;cursor:pointer;
+  background:var(--card);border:1px solid var(--edge);border-radius:10px;
+  font-family:var(--font-body);font-size:.93rem;line-height:1.5;color:var(--gray-light);
+  transition:border-color .2s ease,color .2s ease,background .2s ease;}
+.kkit-item:hover{border-color:var(--edge-hi);color:var(--white);}
+.kkit-item:focus-visible{outline:2px solid var(--orange);outline-offset:2px;}
+.kkit-box{flex:0 0 auto;position:relative;width:16px;height:16px;margin-top:.18em;
+  border:1px solid var(--gray);border-radius:4px;transition:border-color .2s ease,background .2s ease;}
+.kkit-box::after{content:"";position:absolute;left:4px;top:.5px;width:5px;height:9px;
+  border:solid var(--bg);border-width:0 1.5px 1.5px 0;transform:rotate(45deg) scale(0);
+  transform-origin:center;transition:transform .18s ease;}
+.kkit-item[aria-pressed="true"]{border-color:color-mix(in srgb, var(--orange) 30%, var(--edge));}
+.kkit-item[aria-pressed="true"] .kkit-box{background:var(--orange);border-color:var(--orange);}
+.kkit-item[aria-pressed="true"] .kkit-box::after{transform:rotate(45deg) scale(1);}
+.kkit-item[aria-pressed="true"] .kkit-txt{color:var(--gray);text-decoration:line-through;
+  text-decoration-color:color-mix(in srgb, var(--gray) 60%, transparent);}
+.kkit-note{display:block;color:var(--gray);font-size:.82rem;line-height:1.5;margin-top:.15rem;}
+.kkit-ess{display:inline-block;margin-left:.5rem;vertical-align:.06em;
+  font-family:var(--font-body);font-size:.6rem;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--orange);text-decoration:none;
+  border:1px solid color-mix(in srgb, var(--orange) 38%, transparent);
+  border-radius:2px;padding:.1rem .32rem;}
+.kkit-item.is-ess{border-color:color-mix(in srgb, var(--orange) 24%, var(--edge));}
+.kkit-item.is-ess:hover{border-color:color-mix(in srgb, var(--orange) 55%, var(--edge));}
+.kkit-item.is-ess[aria-pressed="true"] .kkit-ess{opacity:.4;}
+
+.kkit-tail{color:var(--gray-light);font-size:.95rem;line-height:1.8;margin:2.6rem 0 0;max-width:62ch;}
+.kkit-tail b{color:var(--white);font-weight:500;}
+
+@media (max-width:640px){
+  .kkit-groups{columns:1;}
+  .kkit-group{margin-bottom:2rem;}
+  .kkit-gate{margin-bottom:2.4rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  .kkit-item,.kkit-box,.kkit-box::after,.kkit-gbody,.kkit-gchev::before,.kkit-gchev::after{transition:none;}
+}
+
+
+/* ---------- three-up prose ---------- */
+.dst-why{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:2.2rem;}
+.dst-why h3{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.08rem;margin:0 0 .7rem;}
+.dst-why p{color:var(--gray-light);font-size:.94rem;line-height:1.8;margin:0;}
+.dst-note{color:var(--gray-light);line-height:1.75;margin:2rem 0 0;max-width:64ch;font-size:.95rem;}
+
+/* ---------- sticky section bar ---------- */
+.dst-jump{position:sticky;top:0;z-index:15;background:rgba(20,21,25,.94);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);}
+.dst-jump-in{display:flex;align-items:center;gap:.2rem;overflow-x:auto;
+  padding:0 clamp(1.2rem,5vw,5.5rem);-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.dst-jump-in::-webkit-scrollbar{display:none;}
+.dst-jump a{white-space:nowrap;color:var(--gray-light);text-decoration:none;font-size:.86rem;
+  padding:1rem .95rem;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
+.dst-jump a:hover,.dst-jump a:focus-visible{color:var(--white);border-bottom-color:var(--orange);}
+.dst-jump a.last{margin-left:auto;color:var(--orange);font-weight:600;}
+
+/* ---------- spec strip, straight under the hero ---------- */
+.dst-spec{background:var(--card);border-bottom:1px solid var(--rule);
+  padding:clamp(1.6rem,3vw,2.3rem) clamp(1.2rem,5vw,5.5rem);}
+.dst-spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));gap:1.6rem 2rem;}
+.dst-spec-item .l{display:block;color:var(--gray);font-size:.74rem;letter-spacing:.06em;
+  text-transform:uppercase;margin-bottom:.4rem;}
+.dst-spec-item .v{display:block;font-family:var(--font-display);font-weight:600;color:var(--white);
+  font-size:1.02rem;line-height:1.3;}
+
+/* ---------- related episode ---------- */
+.dst-rel{display:flex;flex-wrap:wrap;gap:1.6rem;align-items:center;
+  background:var(--card);border:1px solid var(--rule);padding:1.6rem;}
+.dst-rel-body{flex:1 1 20rem;}
+.dst-rel-body span{display:block;color:var(--gray);font-size:.78rem;margin-bottom:.45rem;}
+.dst-rel-body h3{font-family:var(--font-display);font-weight:600;color:var(--white);
+  font-size:1.1rem;margin:0 0 .6rem;}
+.dst-rel-body p{color:var(--gray-light);font-size:.93rem;line-height:1.7;margin:0;}
+
+@media (max-width:640px){
+  .khero{min-height:100svh;}
+  .dst-date{flex-direction:column;gap:.25rem;}
+}
+
+/* ---------- RESTRUCTURE: figures, sticky rail, accordions, mobile bar ------
+   Added after the Drive photographs arrived. The page was 3,186 words, 55
+   headings and one photograph, which is a document rather than a page. No copy
+   changed. The long reference material moved into details elements so it stays in the
+   served HTML for crawlers while leaving the scroll path, which is the same
+   reasoning as the transcript clipping rule.
+   -------------------------------------------------------------------------- */
+
+/* ---------- figures ---------- */
+.dst-figure{margin:2.4rem 0 0;border:1px solid var(--rule);}
+.dst-figure img{width:100%;height:auto;display:block;}
+.dst-figure.half{max-width:34rem;}
+.dst-figure.wide{max-width:none;}
+
+/* ---------- shell: content column plus a rail that follows the scroll ------
+   Fourteen minutes of reading with the enquiry only at the bottom is the whole
+   conversion problem on this page. The rail keeps the dates and the CTA in
+   view the entire way down. Under 1080px it drops inline, and under 820px a
+   bar takes over at the foot of the screen instead.
+   -------------------------------------------------------------------------- */
+/* The rail used to be a 336px column running the whole 16 screens of this
+   page, which left every section between 61% and 71% of the screen. The
+   enquiry still has to stay in reach the whole way down, but a bar does that
+   without costing width, and it is what the page already did on phones. */
+.dst-shell{display:block;}
+.dst-main{min-width:0;}
+
+.dst-rail{position:sticky;top:1.5rem;padding-top:clamp(3.4rem,7vw,6.2rem);}
+.dst-rail-card{background:var(--card);border:1px solid var(--rule);padding:1.5rem 1.4rem;position:relative;}
+.dst-rail-card::before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;
+  border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+.dst-rail-kicker{display:block;color:var(--orange);font-size:.68rem;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:600;margin-bottom:.7rem;}
+.dst-rail-len{font-family:var(--font-display);font-size:1.05rem;color:var(--gray-light);margin:0 0 1.2rem;}
+.dst-rail-len b{color:var(--white);font-weight:700;}
+.dst-rail-deps{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.2rem;}
+.dst-dep{display:block;text-decoration:none;border:1px solid var(--rule);padding:.7rem .8rem;
+  transition:border-color .18s ease,background .18s ease;}
+.dst-dep:hover{border-color:var(--orange);background:var(--wash);}
+.dst-dep .n{display:block;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);}
+.dst-dep .w{display:block;font-family:var(--font-display);font-weight:600;
+  font-size:.92rem;color:var(--white);margin-top:.2rem;}
+.dst-rail-price{display:flex;justify-content:space-between;align-items:baseline;gap:.8rem;
+  padding:.9rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:1.1rem;}
+.dst-rail-price .l{color:var(--gray);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;}
+.dst-rail-price .v{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:.92rem;}
+.dst-rail-cta{width:100%;}
+.dst-rail-note{margin:1rem 0 0;color:var(--gray);font-size:.76rem;line-height:1.6;}
+
+/* ---------- reference accordions ----------
+   The four reference sections are about 1,500 of the page's 3,186 words. They
+   are what somebody wants AFTER they are interested, not before. The text is
+   still in the HTML, only folded.
+   -------------------------------------------------------------------------- */
+.dst-accs{border-top:1px solid var(--rule);}
+.dst-acc{border-bottom:1px solid var(--rule);}
+.dst-acc summary{cursor:pointer;list-style:none;padding:1rem 2rem 1rem 0;
+  font-family:var(--font-display);font-weight:600;font-size:.98rem;color:var(--white);
+  position:relative;transition:color .18s ease;}
+.dst-acc summary::-webkit-details-marker{display:none;}
+.dst-acc summary h3{display:inline;font-family:inherit;font-weight:inherit;
+  font-size:inherit;color:inherit;margin:0;}
+.dst-acc summary::after{content:"+";position:absolute;right:.3rem;top:.9rem;
+  color:var(--orange);font-size:1.15rem;line-height:1;}
+.dst-acc[open] summary::after{content:"\2212";}
+.dst-acc summary:hover{color:var(--orange);}
+.dst-acc summary:focus-visible{outline:2px solid var(--orange);outline-offset:3px;}
+.dst-acc-body{padding:0 0 1.2rem;}
+.dst-acc-body p{color:var(--gray-light);font-size:.93rem;line-height:1.75;margin:0 0 .8rem;}
+.dst-acc-body p:last-child{margin-bottom:0;}
+/* ---- FAQ -------------------------------------------------------------
+ * Was a hairline rule and a plus sign, which read as a pile of text.
+ * Now: sticky rail on the left, cards on the right, numbered.
+ * The three questions that carry money or risk (skill, insurance,
+ * cancellation) get an orange spine, so the eye lands on those first
+ * instead of on whichever happens to be top.
+ * Background is the page background, no wash. Orange is confined to the
+ * numbers, the marks and the three spines.
+ * Heights animate in JS because <details> cannot transition from
+ * display:none. No JS means no animation, content still opens.
+ * -------------------------------------------------------------------- */
+.kfaq.dst-sec{position:relative;}
+.kfaq .kfaq-wrap{position:relative;z-index:1;display:grid;
+  grid-template-columns:minmax(0,19rem) minmax(0,1fr);
+  gap:clamp(2rem,5vw,4.5rem);align-items:start;}
+
+.kfaq .kfaq-rail{position:sticky;top:7.5rem;}
+.kfaq .kfaq-rail h2{margin:.55rem 0 1rem;}
+.kfaq .kfaq-note{color:var(--gray);font-size:.95rem;line-height:1.75;margin:0 0 1.5rem;max-width:27ch;}
+.kfaq .kfaq-cta{display:inline-flex;align-items:center;min-height:44px;
+  font-family:'Poppins',sans-serif;font-size:.82rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--orange);text-decoration:none;
+  border-bottom:1px solid color-mix(in srgb, var(--orange) 45%, transparent);
+  transition:color .2s ease,border-color .2s ease;}
+.kfaq .kfaq-cta:hover{color:var(--orange-lite);border-color:var(--orange-lite);}
+
+.kfaq .kfaq-list{display:flex;flex-direction:column;gap:.65rem;}
+.kfaq .kfaq-item{position:relative;border:1px solid var(--edge);border-radius:14px;overflow:hidden;
+  background:var(--card);
+  transition:transform .25s ease,border-color .25s ease,background .25s ease;}
+.kfaq .kfaq-item:hover{transform:translateY(-2px);
+  border-color:color-mix(in srgb, var(--orange) 38%, var(--edge));}
+.kfaq .kfaq-item[open]{background:color-mix(in srgb, var(--card) 94%, var(--white) 3%);
+  border-color:color-mix(in srgb, var(--orange) 28%, var(--edge));}
+.kfaq .kfaq-item.is-key::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;z-index:2;
+  background:linear-gradient(180deg, var(--orange),
+    color-mix(in srgb, var(--orange) 12%, transparent));}
+
+.kfaq .kfaq-item summary{list-style:none;cursor:pointer;display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:1rem;
+  min-height:56px;padding:1.05rem 1.3rem;}
+.kfaq .kfaq-item summary::-webkit-details-marker{display:none;}
+.kfaq .kfaq-item summary:focus-visible{outline:2px solid var(--orange);outline-offset:-3px;}
+.kfaq .kfaq-n{font-family:'Poppins',sans-serif;font-size:1.45rem;font-weight:600;line-height:1;
+  letter-spacing:-.02em;transition:color .25s ease;
+  color:color-mix(in srgb, var(--orange) 34%, transparent);}
+.kfaq .kfaq-item:hover .kfaq-n,.kfaq .kfaq-item[open] .kfaq-n{color:var(--orange);}
+.kfaq .kfaq-item summary h3{margin:0;font-family:'Poppins',sans-serif;font-size:1.06rem;
+  font-weight:500;line-height:1.45;letter-spacing:-.01em;color:var(--white);}
+.kfaq .kfaq-mark{position:relative;width:20px;height:20px;}
+.kfaq .kfaq-mark::before,.kfaq .kfaq-mark::after{content:"";position:absolute;left:50%;top:50%;
+  background:var(--gray-light);transition:transform .3s ease,background .25s ease;}
+.kfaq .kfaq-mark::before{width:14px;height:1.5px;transform:translate(-50%,-50%);}
+.kfaq .kfaq-mark::after{width:1.5px;height:14px;transform:translate(-50%,-50%);}
+.kfaq .kfaq-item[open] .kfaq-mark::after{transform:translate(-50%,-50%) rotate(90deg);}
+.kfaq .kfaq-item[open] .kfaq-mark::before,
+.kfaq .kfaq-item[open] .kfaq-mark::after{background:var(--orange);}
+
+.kfaq .kfaq-body{overflow:hidden;}
+.kfaq .kfaq-inner{padding:0 1.3rem 1.35rem calc(1.3rem + 1.45rem + 1rem);}
+.kfaq .kfaq-inner p{color:var(--gray-light);font-size:.95rem;line-height:1.8;margin:0 0 .85rem;}
+.kfaq .kfaq-inner p:last-child{margin-bottom:0;}
+.kfaq .kfaq-inner a{color:var(--orange);}
+
+@media (max-width:900px){
+  .kfaq .kfaq-wrap{grid-template-columns:1fr;gap:2.1rem;}
+  .kfaq .kfaq-rail{position:static;}
+  .kfaq .kfaq-note{max-width:none;}
+  .kfaq .kfaq-item summary{padding:1rem 1.1rem;gap:.85rem;}
+  .kfaq .kfaq-n{font-size:1.25rem;}
+  .kfaq .kfaq-item summary h3{font-size:1rem;}
+  .kfaq .kfaq-inner{padding:0 1.1rem 1.2rem 1.1rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  .kfaq .kfaq-item,.kfaq .kfaq-mark::before,.kfaq .kfaq-mark::after{transition:none;}
+  .kfaq .kfaq-item:hover{transform:none;}
+}
+
+
+/* ---------- mobile booking bar ---------- */
+.dst-mobar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;
+  align-items:center;justify-content:space-between;gap:1rem;
+  background:var(--card);border-top:1px solid var(--live);
+  padding:.75rem 1.1rem;transform:translateY(110%);transition:transform .25s ease;}
+.dst-mobar.show{transform:none;}
+.dst-mobar-l .n{display:block;font-family:var(--font-display);font-weight:700;
+  color:var(--white);font-size:.95rem;line-height:1.2;}
+.dst-mobar-l .w{display:block;color:var(--gray-light);font-size:.75rem;}
+
+@media (max-width:820px){
+  .dst-figure.half{max-width:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  .dst-mobar,.dst-dep{transition:none;}
+}
+
+
+/* ---------- OVERVIEW (prototype) ===========================================
+   The copy is the owner's, verbatim. One peak: the Rift Valley passage runs
+   as a pinned sequence, three photographs behind three beats of the same
+   paragraph, and the reader scrolls the words across them. The stage is
+   position:sticky inside a wrapper three screens tall. No scroll hijack, so
+   without JS it degrades to three stacked frames with the first photograph.
+   Everything around the sequence is deliberately quiet so it has something to
+   be loud against: the instruments are the only other place anything moves.
+
+   Two-class selectors throughout. .dst-sec.is-loud .dst-head is three classes
+   deep and wins over anything shorter regardless of source order. */
+
+.dst-sec.kov{padding-bottom:clamp(3.4rem,7vw,6.2rem);}
+.dst-sec.kov .dst-head{max-width:none;margin-bottom:0;}
+.kov-open{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+  gap:clamp(1.6rem,4vw,4rem);align-items:end;padding-bottom:clamp(2.8rem,5.5vw,4.4rem);}
+.dst-sec.kov .kov-sub{color:var(--gray-light);font-size:clamp(.95rem,1.5vw,1.12rem);
+  letter-spacing:.01em;line-height:1.5;margin:1rem 0 0;max-width:30rem;}
+.kov-open .dst-lede{max-width:34rem;margin:0;}
+@media (max-width:820px){.kov-open{grid-template-columns:1fr;align-items:start;}}
+
+/* No rule between the Overview and the route. The map's weather already
+   dissolves the seam; a 1px line across it is the hard edge that dissolve
+   exists to remove. Two classes, to beat .dst-sec + .dst-sec on source order. */
+.dst-sec.kmap{border-top:0;}
+/* No frame around the map either. The plate floats in its weather; a box
+   around it made it a picture of a map rather than the map. The marker
+   maths measures the inner box, so a zero border is exact. */
+.kmap .kmap-stage{border:0;}
+/* The plate paints a page-coloured ground across its viewBox, and the clouds
+   under it stopped dead at that rectangle's edge. With the frame gone the
+   edge read as a glitch. Off, so the weather passes behind the country,
+   whose own fill is opaque. */
+.kmap .kmap-plate svg > rect:first-of-type{display:none;}
+
+/* ---- the pinned sequence ---- */
+.kfly{position:relative;width:100vw;margin-left:calc(50% - 50vw);}
+.kfly-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#0d0e11;}
+.kfly-slide{position:absolute;inset:0;opacity:0;visibility:hidden;
+  transition:opacity 1.1s ease,visibility 0s linear 1.1s;}
+.kfly-slide.is-on{opacity:1;visibility:visible;transition:opacity 1.1s ease;}
+.kfly-slide picture,.kfly-slide img{display:block;width:100%;height:100%;object-fit:cover;}
+.kfly-slide img{-webkit-user-drag:none;user-select:none;transform:scale(1);}
+.kfly-slide.is-on img{transform:scale(1.06);transition:transform 9s linear;}
+/* Scrim measured the same way as the hero's: the lower third carries the
+   words, the left edge carries the label, the top band keeps the sticky
+   section bar legible over a bright sky. */
+.kfly-scrim{position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(180deg,rgba(20,21,25,.42) 0,rgba(20,21,25,0) 26%,rgba(20,21,25,0) 44%,
+    rgba(20,21,25,.6) 72%,rgba(20,21,25,.93) 100%),
+  linear-gradient(90deg,rgba(20,21,25,.5) 0,rgba(20,21,25,.1) 48%,rgba(20,21,25,0) 74%);}
+.kfly-marks{position:absolute;right:clamp(1.2rem,5vw,5.5rem);bottom:clamp(2.2rem,5vw,3.4rem);
+  z-index:2;display:flex;gap:8px;}
+.kfly-marks i{display:block;width:28px;height:2px;background:rgba(255,255,255,.26);
+  transition:background .4s ease;}
+.kfly-marks i.is-on{background:var(--orange);}
+@media (max-width:820px){.kfly-marks{top:4.4rem;bottom:auto;}}
+.kfly-steps{position:relative;z-index:2;margin-top:-100vh;margin-top:-100svh;}
+.kfly-step{min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;
+  padding:0 clamp(1.2rem,5vw,5.5rem) clamp(2.2rem,5vw,3.4rem);}
+.kfly-copy{max-width:38rem;opacity:0;transform:translateY(28px);
+  transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);}
+.kfly-step.is-on .kfly-copy{opacity:1;transform:none;}
+.kfly-n{display:block;color:var(--orange);font-size:.72rem;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;margin-bottom:.9rem;}
+.kfly-lead,.kfly-tail{color:rgba(246,244,244,.86);font-size:clamp(.95rem,1.4vw,1.08rem);
+  line-height:1.75;margin:0 0 .9rem;max-width:34rem;}
+.kfly-tail{margin:1rem 0 0;}
+.kfly-big{font-family:var(--font-display);font-weight:700;color:var(--white);
+  font-size:clamp(1.7rem,4.1vw,3.4rem);line-height:1.06;letter-spacing:-.02em;margin:0;}
+
+/* ---- the air: two instruments ---- */
+.kair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--rule);
+  margin-top:clamp(3rem,6vw,5rem);}
+.kair-cell{display:grid;grid-template-columns:minmax(12rem,16.5rem) minmax(0,1fr);
+  gap:clamp(1.2rem,2.6vw,2.4rem);align-items:center;
+  padding:clamp(1.8rem,3.4vw,2.8rem) clamp(1.2rem,2.6vw,2.4rem) clamp(1.8rem,3.4vw,2.8rem) 0;
+  border-right:1px solid var(--rule);}
+.kair-cell + .kair-cell{border-right:0;padding-left:clamp(1.2rem,2.6vw,2.4rem);padding-right:0;}
+.kair-inst svg{display:block;width:100%;height:auto;}
+.kair-inst .kseason{max-width:15.5rem;margin:0 auto;}
+.kair-cell h3{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.1rem;margin:0 0 .9rem;}
+.kair-cell p{color:var(--gray-light);font-size:.93rem;line-height:1.72;margin:0;}
+.kair-ranges{display:flex;flex-wrap:wrap;gap:.8rem 1.6rem;margin:1rem 0 0;padding:0;list-style:none;}
+.kair-ranges li{display:block;}
+.kair-ranges b{display:block;font-family:var(--font-display);font-weight:700;color:var(--white);
+  font-size:1.4rem;line-height:1;letter-spacing:-.01em;}
+.kair-ranges b small{font-size:.7rem;color:var(--gray);font-weight:500;letter-spacing:.08em;margin-left:.25rem;}
+.kair-ranges span{display:block;color:var(--gray);font-size:.7rem;letter-spacing:.06em;
+  text-transform:uppercase;margin-top:.35rem;}
+@media (max-width:1000px){
+  .kair{grid-template-columns:1fr;}
+  .kair-cell,.kair-cell + .kair-cell{border-right:0;padding-left:0;padding-right:0;border-bottom:1px solid var(--rule);}
+  .kair-cell:last-child{border-bottom:0;}
+}
+@media (max-width:560px){
+  .kair-cell{grid-template-columns:1fr;gap:1rem;}
+  .kair-inst{max-width:17rem;}
+}
+
+/* vario */
+.kvario .track{fill:none;stroke:var(--rule);stroke-width:10;}
+.kvario .band{fill:none;stroke:var(--orange);stroke-width:10;}
+.kvario .band.weak{opacity:.4;}
+.kvario .band.rare{stroke-dasharray:3 4;opacity:.75;}
+.kvario .tick{stroke:var(--gray);stroke-width:1;}
+.kvario .tick.maj{stroke:var(--gray-light);stroke-width:1.4;}
+.kvario text{font-family:var(--font-body);font-size:10px;fill:var(--gray);letter-spacing:.06em;}
+.kvario .needle{stroke:var(--white);stroke-width:2.2;stroke-linecap:round;
+  transform-origin:120px 120px;transform:rotate(0deg);}
+.kvario .pivot{fill:var(--bg);stroke:var(--white);stroke-width:2;}
+.kvario .read{font-family:var(--font-display);font-weight:700;font-size:30px;fill:var(--white);
+  text-anchor:middle;letter-spacing:-.02em;}
+.kvario .unit{font-size:9px;fill:var(--gray);text-anchor:middle;letter-spacing:.16em;}
+
+/* season ring: the four lit months draw themselves in, Dec first */
+.kseason .seg{fill:none;stroke:var(--rule);stroke-width:13;}
+.kseason .seg.on{stroke:var(--orange);stroke-dasharray:var(--seg);stroke-dashoffset:var(--seg);
+  transition:stroke-dashoffset .7s cubic-bezier(.3,.6,.2,1) calc(var(--i) * .16s);}
+.kseason.is-on .seg.on{stroke-dashoffset:0;}
+.kseason .mo{font-family:var(--font-body);font-size:10px;fill:var(--gray);letter-spacing:.06em;}
+.kseason .mo.on{fill:var(--white);}
+.kseason .big{font-family:var(--font-display);font-weight:600;font-size:19px;fill:var(--white);letter-spacing:-.01em;}
+.kseason .small{font-family:var(--font-body);font-size:9px;fill:var(--gray);letter-spacing:.16em;}
+
+/* ---- the quiet part: team and safety, four short reads ---- */
+.kov-quiet{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--rule);
+  margin-top:clamp(3rem,6vw,5rem);}
+.kov-q{padding:clamp(1.6rem,3vw,2.4rem) clamp(1.2rem,2.6vw,2.4rem) clamp(1.6rem,3vw,2.4rem) 0;
+  border-bottom:1px solid var(--rule);}
+.kov-q:nth-child(2n){padding-left:clamp(1.2rem,2.6vw,2.4rem);padding-right:0;border-left:1px solid var(--rule);}
+.kov-q:nth-last-child(-n+2){border-bottom:0;}
+.kov-q h3{font-family:var(--font-body);font-weight:500;font-size:.74rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--gray);margin:0 0 .75rem;}
+.kov-q p{color:var(--gray-light);font-size:.94rem;line-height:1.78;margin:0;max-width:34rem;}
+@media (max-width:820px){
+  .kov-quiet{grid-template-columns:1fr;}
+  .kov-q,.kov-q:nth-child(2n){padding-left:0;padding-right:0;border-left:0;border-bottom:1px solid var(--rule);}
+  .kov-q:last-child{border-bottom:0;}
+}
+
+/* ---- the close ----
+   Centred and stacked. As two bottom-aligned columns the paragraphs sat low
+   with dead space above them and the last line ran short against the column
+   rule. One column, centred, gives the sign-off the full measure.
+
+   The last line lights word by word on scroll rather than arriving fully
+   orange, which was the whole line shouting at once. Each word interpolates
+   from the body grey to the orange across a window of scroll: --t is written
+   per word by JS, and the colour mix is pure CSS so there is no per-word
+   style thrash. Words start lit when the browser cannot do color-mix or JS
+   never runs, so the fallback is the old always-orange line. */
+.kov-close{margin-top:clamp(3rem,6vw,5rem);text-align:center;}
+.kov-close p{color:var(--gray-light);line-height:1.8;margin:0 auto 1.15rem;max-width:none;font-size:clamp(1rem,1.2vw,1.08rem);}
+.kov-close .kov-friends,.dst-sec.kov .kov-glory{text-wrap:balance;}
+.kov-close .kov-friends{margin-bottom:clamp(3.6rem,7.5vw,6rem);}
+.dst-sec.kov .kov-glory{font-family:var(--font-display);font-weight:700;
+  font-size:clamp(1.5rem,3.4vw,3rem);line-height:1.16;letter-spacing:-.02em;
+  margin:0 auto;max-width:40ch;color:var(--white);}
+.kov-w{display:inline;color:var(--orange);}
+/* only the five words light; the rest of the line stays white */
+@supports (color:color-mix(in srgb,red 50%,blue)){
+  .kov-w{color:color-mix(in srgb,var(--orange) calc(var(--t,1) * 100%),
+    var(--white) calc((1 - var(--t,1)) * 100%));}
+}
+/* the same distance the sign-off keeps from the paragraph above it */
+.kov-cta{margin-top:clamp(3.6rem,7.5vw,6rem);}
+/* Outlined at rest, filled on hover, focus and press. The same parallelogram
+   as .btn-solid so the two read as one family. */
+
+
+@media (prefers-reduced-motion: reduce){
+  .kfly-slide{transition:none!important;}
+  .kfly-slide.is-on img{transform:none!important;transition:none!important;}
+  .kfly-copy{transition:none!important;}
+  .kseason .seg.on{transition:none!important;}
+  .kov-w{color:var(--orange)!important;}
+}
+
+
+/* ---------- outlined button ================================================
+   The same parallelogram as .btn-solid, orange line and orange text at rest,
+   filled on hover, focus and press. Used at the close of the Overview and on
+   the departure cards, so it lives here once rather than scoped twice. */
+.btn-solid.is-outline{background:transparent;color:var(--orange);
+  box-shadow:inset 0 0 0 1px var(--orange);
+  transition:transform .2s ease,background .2s ease,color .2s ease;}
+.btn-solid.is-outline:hover,.btn-solid.is-outline:focus-visible,.btn-solid.is-outline:active{
+  background:var(--orange);color:var(--bg);}
+.btn-solid.is-outline:focus-visible{outline:2px solid var(--live);outline-offset:3px;}
+
+/* ---------- SEASON PACKAGES: departures on the season itself ==============
+   Four rows in a box said when and nothing else. The band draws the same
+   December to March window the ring in the Overview lights, and puts the two
+   twelve-day tours on it to scale, so the decision reads at a glance: both
+   in the heart of the peak, two days apart. Positions are percentages of a
+   121 day band from 1 Dec, computed, not placed. The cards below carry the
+   words and the ask. */
+.kdates-band{margin:1.6rem 0 clamp(2rem,4vw,3rem);}
+.kdates-months{position:relative;height:1.3rem;margin-top:.45rem;}
+.kdates-months span{position:absolute;left:calc(var(--p) * 1%);font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gray);}
+.kdates-track{position:relative;height:38px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.kdates-tick{position:absolute;top:0;bottom:0;left:calc(var(--p) * 1%);width:1px;background:var(--rule);}
+.kdates-tour{position:absolute;top:9px;height:18px;left:calc(var(--a) * 1%);width:calc(var(--w) * 1%);
+  background:var(--orange);transform:scaleX(0);transform-origin:0 50%;
+  transition:transform .7s cubic-bezier(.3,.7,.2,1) calc(.15s + var(--i) * .22s);}
+.kdates.is-on .kdates-tour{transform:none;}
+.kdates-tour b{position:absolute;left:0;top:-1.55rem;font-family:var(--font-display);font-weight:700;
+  font-size:.72rem;letter-spacing:.14em;color:var(--orange);opacity:0;transition:opacity .4s ease calc(.6s + var(--i) * .22s);}
+.kdates.is-on .kdates-tour b{opacity:1;}
+.kdates-legend{margin:.5rem 0 0;color:var(--gray);font-size:.82rem;letter-spacing:.02em;}
+
+.kdates-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--rule);
+  border:1px solid var(--rule);}
+/* Each card is one row: what and when on the left, the price and the ask on
+   the right, so the pair runs the full width of the band above and sits
+   shorter than it is wide. */
+.kdates-card{background:var(--bg);padding:clamp(1.3rem,2.4vw,1.8rem) clamp(1.3rem,2.6vw,2rem);
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem clamp(1.2rem,3vw,2.6rem);align-items:end;}
+.kdates-n{display:block;font-family:var(--font-display);font-weight:700;font-size:.72rem;letter-spacing:.14em;color:var(--orange);
+  margin-bottom:.7rem;}
+.kdates-card h3{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.05rem;margin:0 0 .35rem;}
+.kdates-when{font-family:var(--font-display);font-weight:700;color:var(--white);
+  font-size:clamp(1.3rem,2vw,1.7rem);line-height:1.15;letter-spacing:-.01em;margin:0 0 .4rem;}
+.kdates-meta{color:var(--gray-light);font-size:.9rem;margin:0;}
+.kdates-card-r{display:flex;flex-direction:column;align-items:flex-end;gap:1rem;}
+.kdates-price{display:flex;flex-direction:column;align-items:flex-end;gap:.25rem;margin:0;}
+.kdates-price span{color:var(--gray);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;}
+.kdates-price b{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:.95rem;white-space:nowrap;}
+@media (max-width:1000px){
+  .kdates-grid{grid-template-columns:1fr;}
+}
+@media (max-width:820px){
+  .kdates-tour b{top:-1.4rem;}
+}
+@media (max-width:480px){
+  .kdates-card{grid-template-columns:1fr;align-items:start;}
+  .kdates-card-r,.kdates-price{align-items:flex-start;}
+}
+@media (prefers-reduced-motion: reduce){
+  .kdates-tour,.kdates-tour b{transition:none!important;transform:none!important;opacity:1!important;}
+}
+
+/* ---------- BEFORE YOU BOOK: a day, then a verdict ========================
+   Seven equal boxes was the "grid of equal cards" this page stopped doing
+   everywhere else, and a numbered ledger was still a list. Two moves now.
+
+   How a day runs is a timeline: five stops on one line, drawn in left to
+   right when it scrolls into view, because a day has an order and a list
+   does not show one. On a phone the line turns and runs down the left.
+
+   The rest is a verdict: for you if, not for you if. It is the one shape a
+   qualifying section actually has, and a visitor reads it in ten seconds.
+   The words are condensed from the paragraphs they replace. */
+.kday{margin:clamp(2.6rem,5vw,3.8rem) 0 0;}
+.kday-kicker{margin:0 0 1.4rem;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gray);}
+.kday-track{position:relative;list-style:none;margin:0;padding:2.1rem 0 0;
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 clamp(1rem,2.2vw,2rem);}
+.kday-track::before{content:"";position:absolute;left:0;right:0;top:.5rem;height:1px;background:var(--rule);}
+.kday-line{position:absolute;left:0;top:.5rem;height:1px;width:0;background:var(--orange);
+  transition:width 1.6s cubic-bezier(.3,.6,.2,1) .1s;}
+.kday.is-on .kday-line{width:100%;}
+.kday-stop{position:relative;min-width:0;}
+.kday-dot{position:absolute;left:0;top:calc(.5rem - 2.1rem - 5px);width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--orange);box-sizing:border-box;
+  transition:background .3s ease calc(.25s + var(--i) * .3s);}
+.kday.is-on .kday-dot{background:var(--orange);}
+.kday-n{display:block;font-family:var(--font-display);font-weight:700;font-size:.72rem;letter-spacing:.14em;
+  color:var(--orange);margin-bottom:.5rem;}
+.kday-stop h3{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.05rem;margin:0 0 .5rem;}
+.kday-stop p{color:var(--gray-light);font-size:.9rem;line-height:1.7;margin:0;}
+@media (max-width:820px){
+  .kday-track{grid-template-columns:1fr;gap:1.6rem 0;padding:0 0 0 2rem;}
+  .kday-track::before{left:.3rem;right:auto;top:0;bottom:0;width:1px;height:auto;}
+  .kday-line{left:.3rem;top:0;width:1px;height:0;transition:height 1.6s cubic-bezier(.3,.6,.2,1) .1s;}
+  .kday.is-on .kday-line{width:1px;height:100%;}
+  .kday-dot{left:calc(.3rem - 2rem - 5px);top:.15rem;}
+}
+
+.kfit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--rule);
+  margin-top:clamp(2.6rem,5vw,3.8rem);}
+.kfit-col{padding:clamp(1.6rem,3vw,2.4rem) clamp(1.2rem,2.6vw,2.4rem) 0 0;}
+.kfit-col + .kfit-col{border-left:1px solid var(--rule);padding-left:clamp(1.2rem,2.6vw,2.4rem);padding-right:0;}
+.kfit h3{font-family:var(--font-display);font-weight:700;color:var(--white);font-size:clamp(1.15rem,1.8vw,1.4rem);
+  letter-spacing:-.01em;margin:0 0 .4rem;}
+.kfit ul{list-style:none;margin:0;padding:0;}
+.kfit li{position:relative;padding-left:1.6rem;margin:1rem 0 0;color:var(--gray-light);font-size:.95rem;line-height:1.7;max-width:34rem;}
+.kfit li::before{content:"";position:absolute;left:0;top:.75em;width:.7rem;height:1px;background:var(--orange);}
+.kfit-no li::before{background:var(--gray);}
+.kfit-no h3{color:var(--gray-light);}
+@media (max-width:820px){
+  .kfit{grid-template-columns:1fr;}
+  .kfit-col + .kfit-col{border-left:0;border-top:1px solid var(--rule);padding-left:0;margin-top:1.8rem;}
+}
+@media (prefers-reduced-motion: reduce){
+  .kday-line,.kday-dot{transition:none!important;}
+  .kday-line{width:100%;} .kday-dot{background:var(--orange);}
+}
+
+
+/* ---------- BEFORE YOU BOOK: the opening argues =============================
+   Two narrow stacked columns left most of the width empty and buried the
+   best sentence in the section as grey body text. The opening is two
+   columns now, the same shape the Overview opens with, and the line that
+   states the section's whole purpose is set large opposite the heading.
+   Every word is the owner's and none has moved out of the section. */
+.kreal-open{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);
+  gap:clamp(1.6rem,4vw,4.5rem);align-items:start;}
+.dst-sec.is-loud .kreal-open .dst-head{margin-bottom:0;}
+.kreal-said{font-family:var(--font-display);font-weight:700;color:var(--white);
+  font-size:clamp(1.35rem,2.6vw,2.15rem);line-height:1.22;letter-spacing:-.02em;margin:0;}
+.kreal-said em{font-style:normal;color:var(--orange);}
+.kreal-open .dst-lede{max-width:34rem;margin:1.6rem 0 0;}
+.kreal-rest{color:var(--gray-light);line-height:1.8;margin:1.4rem 0 0;max-width:34rem;}
+@media (max-width:820px){.kreal-open{grid-template-columns:1fr;}}
+
+
+/* Flying Etiquette: pinned sideways sequence, field-notes skin */
+.etq.dst-sec{padding-bottom:0;}
+.etq .etq-open{max-width:none;}
+
+.etq .etq-split{display:grid;grid-template-columns:1fr 1px 1fr;align-items:center;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:0 0 3.2rem;}
+.etq .etq-half{padding:2.4rem 2rem;}
+.etq .etq-lab{display:block;font-family:var(--font-body);font-size:.64rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gray);margin:0 0 .8rem;}
+.etq .etq-half p{margin:0;font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1.02rem,1.9vw,1.44rem);line-height:1.38;color:var(--gray-light);max-width:26ch;}
+.etq .etq-a{text-align:right;}
+.etq .etq-a p{margin-left:auto;}
+.etq .etq-b .etq-lab{color:var(--orange);}
+.etq .etq-b p{color:var(--white);}
+.etq .etq-seam{align-self:stretch;
+  background:linear-gradient(to bottom,transparent,var(--rule) 20%,var(--rule) 80%,transparent);}
+.etq .etq-half{opacity:0;transform:translateX(0);
+  transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);}
+.etq .etq-a{transform:translateX(22px);}
+.etq .etq-b{transform:translateX(-22px);}
+.etq .etq-split.is-in .etq-half{opacity:1;transform:translateX(0);}
+
+.etq .etq-pin{position:relative;height:calc(var(--n) * 76vh);}
+.etq .etq-stage{position:sticky;top:0;height:100vh;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;}
+.etq .etq-stage::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+  transition:opacity .6s ease;
+  background-image:repeating-linear-gradient(to bottom,transparent 0 47px,var(--line) 47px 48px);
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 80%,transparent);
+  mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 80%,transparent);}
+.etq .etq-pin.is-live .etq-stage::before{opacity:1;}
+
+.etq .etq-bar{position:absolute;left:0;right:0;top:clamp(1.4rem,7vh,3.6rem);
+  display:flex;align-items:center;gap:1.4rem;padding:0 clamp(1.2rem,5vw,4rem);}
+.etq .etq-count{font-family:var(--font-display);font-size:.82rem;color:var(--gray);flex:0 0 auto;}
+.etq .etq-count b{font-weight:600;color:var(--orange);}
+.etq .etq-count i{font-style:normal;}
+.etq .etq-dots{display:flex;gap:7px;flex:1;}
+.etq .etq-dot{flex:1;min-height:44px;display:flex;align-items:center;
+  background:none;border:0;padding:0;cursor:pointer;}
+.etq .etq-dot span{display:block;width:100%;height:2px;background:var(--rule);
+  transition:background .35s ease;}
+.etq .etq-dot.is-past span{background:color-mix(in srgb, var(--orange) 45%, var(--rule));}
+.etq .etq-dot.is-on span{background:var(--orange);}
+.etq .etq-dot:focus-visible{outline:2px solid var(--orange);outline-offset:3px;}
+.etq .etq-hint{flex:0 0 auto;font-family:var(--font-body);font-size:.64rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gray);transition:opacity .4s ease;}
+.etq .etq-hint.is-gone{opacity:0;}
+
+.etq .etq-track{display:flex;width:100%;will-change:transform;}
+.etq .etq-card{flex:0 0 100%;display:grid;grid-template-columns:auto minmax(0,1fr);
+  gap:clamp(1rem,4vw,3.2rem);align-items:start;padding:0 clamp(1.2rem,5vw,4rem);
+  opacity:.16;transition:opacity .5s ease;}
+.etq .etq-card.is-on{opacity:1;}
+.etq .etq-num{font-family:var(--font-display);font-weight:700;line-height:.78;
+  font-size:clamp(3rem,9vw,7.6rem);color:transparent;-webkit-text-stroke:1px var(--edge-hi);
+  letter-spacing:-.02em;}
+.etq .etq-tab{display:block;font-family:var(--font-body);font-size:.64rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--orange);margin:.5rem 0 .7rem;}
+.etq .etq-cbody h3.etq-rule{font-family:var(--font-display);font-weight:600;
+  font-size:clamp(1.8rem,4.2vw,3.4rem);line-height:1.05;color:var(--white);
+  margin:0 0 1.2rem;max-width:19ch;letter-spacing:-.015em;}
+.etq .etq-cbody p{margin:0 0 .85rem;font-family:var(--font-body);font-size:.97rem;line-height:1.8;
+  color:var(--gray-light);max-width:58ch;}
+.etq .etq-cbody p strong{color:var(--white);font-weight:500;}
+.etq .etq-quote{margin:1.5rem 0 0;padding-left:1.1rem;border-left:2px solid var(--orange);
+  max-width:50ch;}
+.etq .etq-quote blockquote{margin:0;font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1rem,1.5vw,1.2rem);line-height:1.5;color:var(--white);}
+.etq .etq-quote figcaption{margin:.6rem 0 0;font-family:var(--font-body);font-size:.78rem;
+  color:var(--gray);}
+.etq .etq-quote figcaption a{color:var(--gray);text-decoration:none;
+  border-bottom:1px solid var(--rule);margin-left:.4rem;}
+.etq .etq-quote figcaption a:hover{color:var(--orange);border-bottom-color:var(--live);}
+.etq .etq-card.is-last{grid-template-columns:1fr;justify-items:center;text-align:center;}
+.etq .etq-card.is-last .etq-cbody{max-width:46rem;}
+.etq .etq-card.is-last h3.etq-rule{font-size:clamp(2rem,4.6vw,3.9rem);max-width:none;
+  text-wrap:balance;}
+.etq .etq-card.is-last p{max-width:40ch;margin-left:auto;margin-right:auto;}
+
+@media (max-width:860px){
+  .etq .etq-split{grid-template-columns:1fr;}
+  .etq .etq-a{text-align:left;}
+  .etq .etq-a p{margin-left:0;}
+  .etq .etq-seam{height:1px;
+    background:linear-gradient(to right,transparent,var(--rule) 20%,var(--rule) 80%,transparent);}
+  .etq .etq-half{padding:1.8rem 0;transform:none;}
+  .etq .etq-pin{height:auto;}
+  .etq .etq-stage{position:static;height:auto;overflow:visible;}
+  .etq .etq-stage::before{display:none;}
+  .etq .etq-bar{display:none;}
+  .etq .etq-track{display:block;transform:none !important;}
+  .etq .etq-card{opacity:1;padding:2.2rem 0 2.4rem;border-top:1px solid var(--rule);
+    grid-template-columns:auto 1fr;gap:1rem;scroll-margin-top:4rem;}
+  .etq .etq-card.is-last{grid-template-columns:1fr;text-align:left;justify-items:start;}
+  .etq .etq-num{font-size:2.6rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  .etq .etq-pin{height:auto;}
+  .etq .etq-stage{position:static;height:auto;overflow:visible;}
+  .etq .etq-bar{display:none;}
+  .etq .etq-track{display:block;transform:none !important;}
+  .etq .etq-card{opacity:1;padding:2.2rem 0;border-top:1px solid var(--rule);}
+  .etq .etq-half{transition:none;opacity:1;transform:none;}
+}
+
+
+
+
+.etq .etq-body[hidden]{display:none;}
+.etq .etq-diy{display:inline-block;vertical-align:.32em;margin-left:.6rem;
+  font-family:var(--font-body);font-size:.58rem;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--orange);
+  border:1px solid color-mix(in srgb, var(--orange) 40%, transparent);
+  border-radius:2px;padding:.18rem .4rem;}
+.etq .etq-diy-note{max-width:60ch;}
+.etq .etq-toggle{display:inline-flex;align-items:center;gap:.7rem;min-height:44px;
+  margin:.6rem 0 0;padding:.6rem 1.15rem;cursor:pointer;
+  background:none;border:1px solid var(--edge);border-radius:999px;
+  font-family:var(--font-body);font-size:.88rem;color:var(--gray-light);
+  transition:border-color .25s ease,color .25s ease,background .25s ease;}
+.etq .etq-toggle:hover{border-color:var(--live);color:var(--white);background:var(--wash);}
+.etq .etq-toggle:focus-visible{outline:2px solid var(--orange);outline-offset:3px;}
+.etq .etq-toggle-chev{width:7px;height:7px;border-right:1.5px solid var(--orange);
+  border-bottom:1.5px solid var(--orange);transform:rotate(45deg) translate(-2px,-2px);
+  transition:transform .25s ease;}
+.etq .etq-toggle[aria-expanded="true"] .etq-toggle-chev{transform:rotate(225deg) translate(-2px,-2px);}
+@media (prefers-reduced-motion:reduce){ .etq .etq-toggle,.etq .etq-toggle-chev{transition:none;} }

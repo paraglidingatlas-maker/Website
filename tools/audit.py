@@ -757,7 +757,7 @@ def _check_tokens_resolve():
 
     # every var() used anywhere must be defined here
     used = set()
-    for f in (["styles.css", "episodes/episode.css", "policies.css", "tags.css"]
+    for f in (["styles.css", "episodes/episode.css", "policies.css", "tags.css", "destinations.css"]
               + glob.glob("*.html") + glob.glob("templates/*.html")):
         if os.path.exists(f):
             used.update(re.findall(r"var\((--[a-z-]+)", read(f)))
@@ -765,6 +765,13 @@ def _check_tokens_resolve():
     local = set()
     for f in glob.glob("*.html") + glob.glob("templates/*.html"):
         local.update(re.findall(r"(--[a-z-]+)\s*:", read(f)))
+    # destinations.css reads custom properties that each destination page sets
+    # in a style attribute or from its script (style="--i:3", setProperty).
+    for f in glob.glob("destinations/*.html"):
+        local.update(re.findall(r"(--[a-z-]+)\s*:", read(f)))
+        local.update(re.findall(r"setProperty\(\s*['\"](--[a-z-]+)", read(f)))
+    for f in glob.glob("*.js"):
+        local.update(re.findall(r"setProperty\(\s*['\"](--[a-z-]+)", read(f)))
     missing = sorted(used - set(defs) - local)
     (ok if not missing else fail)("tokens",
                                   "var() used but never defined: %s" % (missing[:4] or 0))
@@ -781,7 +788,7 @@ def _check_design_tokens():
     Deliberately BORDERS ONLY. A glow and a gradient stop are not edges and keep
     their own values, so this looks at border and outline declarations alone.
     """
-    files = (["styles.css", "episodes/episode.css", "policies.css", "tags.css"]
+    files = (["styles.css", "episodes/episode.css", "policies.css", "tags.css", "destinations.css"]
              + glob.glob("*.html"))
     raw = []
     for f in files:
@@ -888,7 +895,7 @@ def check_css():
     never written renders unstyled and nothing errors.
     """
     css = ""
-    for f in ("styles.css", "policies.css", "fonts.css", "tags.css", "episodes/episode.css"):
+    for f in ("styles.css", "policies.css", "fonts.css", "tags.css", "episodes/episode.css", "destinations.css"):
         if os.path.exists(f):
             css += read(f)
     defined = set(re.findall(r"\.([a-zA-Z][\w-]*)", css))
