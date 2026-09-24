@@ -180,7 +180,7 @@
   .k-head{display:flex;align-items:baseline;justify-content:space-between;gap:2rem;max-width:1300px;margin:0 auto 1.6rem;}
   .k-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.3rem,2.4vw,1.7rem);color:var(--white);margin:0;}
   .k-head .kicker{color:var(--gray);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;}
-  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.2rem;max-width:1300px;margin:0 auto;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));gap:1.2rem;max-width:1300px;margin:0 auto;}
   .cardx{position:relative;background:var(--card);border:1px solid var(--edge);padding:1.5rem 1.4rem 1.3rem;display:flex;flex-direction:column;}
   .k-sec.card .cardx{background:var(--bg);}
   .cardx::before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
@@ -196,7 +196,7 @@
   details p{color:var(--gray-light);line-height:1.7;font-size:.95rem;margin:0 0 .3rem;} details .src{margin:0 0 1.1rem;}
   @media(max-width:820px){.faq{grid-template-columns:1fr;gap:1rem;} .faq-l h2{position:static;}}
 
-  .band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(2rem,6vw,5rem);max-width:1300px;margin:0 auto;align-items:start;}
+  .band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:clamp(2rem,6vw,5rem);max-width:1300px;margin:0 auto;align-items:start;}
   .band .kicker{display:block;color:var(--orange);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:.8rem;}
   .band h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.15;color:var(--white);margin:0;}
   .band p{color:var(--gray-light);line-height:1.78;font-size:1rem;margin:0;}
@@ -213,7 +213,7 @@
   .k-sec.card{position:relative;overflow:hidden;}
   .k-sec.card::before{content:"";position:absolute;inset:0;pointer-events:none;
     background:radial-gradient(50% 60% at 100% 0%,rgba(255,117,23,.07) 0%,rgba(255,117,23,0) 70%);}
-  .band{position:relative;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);}
+  .band{position:relative;}
   .band .num{position:absolute;left:-.1em;top:-.55em;font-family:var(--font-display);font-weight:800;font-size:7rem;line-height:1;
     color:transparent;-webkit-text-stroke:1px rgba(180,180,180,.13);pointer-events:none;user-select:none;}
   .band .l{position:relative;padding-top:1.6rem;}

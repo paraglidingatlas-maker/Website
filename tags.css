@@ -100,7 +100,7 @@
    two different-looking controls for the same job would read as two features. */
 .tg-sort{
   display:flex;align-items:center;flex-wrap:wrap;gap:0.5rem;
-  margin:0 0 1.6rem;
+  margin:0 0 1.6rem;padding:0 clamp(1.2rem,5vw,5.5rem);
 }
 .tg-sort-label{
   color:var(--gray);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;
