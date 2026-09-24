@@ -150,6 +150,7 @@ HEAD = """<!DOCTYPE html>
       <h2>Fly With Us</h2>
       <a href="{root}index.html#destinations">Destinations</a>
       <a href="{root}destinations/kenya.html">Kenya Tour</a>
+      <a href="{root}destinations/india.html">India Tour</a>
       <a href="{root}enquire.html">Enquire</a>
       <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener">Book a Call</a>
     </div>
