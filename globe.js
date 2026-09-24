@@ -70,7 +70,7 @@
     ["Tom Lolies Explains The Science Of Wing Design and Evolution from ENC to  CSC", 'episodes/tom-lolies-explains-the-science-of-wing-design-and.html', 4.35, 50.85],
     ["The Art of Capturing Human Flight | Jake Holland's Guide to Filming Passion Projects in Paragliding", 'episodes/the-art-of-capturing-human-flight-jake-holland-s-guide-to.html', -2.5, 53.4],
     ["Scoring in Paragliding Competitions: A New Pilot's Guide to the GAP Formula & Strategy | Joerg Ewald", 'episodes/scoring-in-paragliding-competitions-a-new-pilot-s-guide-to.html', 10.4, 51.2],
-    ['Snippet: A Reserve Parachute Trick Every Pilot Should Know, by Urs Haari', 'https://podcasters.spotify.com/pod/show/paragliding-atlas/episodes/Snippet-A-Reserve-Parachute-Trick-Every-Pilot-Should-Know--by-Urs-Haari-e3c6unr', 8.2, 46.8],
+    ['Snippet: A Reserve Parachute Trick Every Pilot Should Know, by Urs Haari', 'https://creators.spotify.com/pod/profile/paragliding-atlas/episodes/Snippet-A-Reserve-Parachute-Trick-Every-Pilot-Should-Know--by-Urs-Haari-e3c6unr', 8.2, 46.8],
     ["Watch this Before you Buy a Paragliding Harness | A Talk with Zsolt Ero", 'episodes/watch-this-before-you-buy-a-paragliding-harness-a-talk.html', 19.0, 47.5],
     ['The Inside Story of Sports Racing Series (SRS) by Brett Janaway', 'episodes/the-inside-story-of-sports-racing-series-by-brett-janaway.html', -1.9, 52.5],
     ["The Unfiltered Truth About Paragliding Governance: with Bill Hughes & Goran Dimiskovski", 'episodes/the-unfiltered-truth-about-paragliding-governance-with.html', 21.7, 41.6],
