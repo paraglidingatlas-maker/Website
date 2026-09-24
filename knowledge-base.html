@@ -85,7 +85,259 @@
     .kb-cat-grid{grid-template-columns:1fr;}
     .kb-howto-grid{grid-template-columns:1fr;}
   }
+
+
+/* Knowledge Base: the climb. Scroll is altitude; the archive is the texture. */
+.clb{position:relative;--p:0;}
+.clb-sky{position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(120% 70% at 50% calc(100% + 6vh), rgba(255,117,23,calc(.16 * (1 - var(--p)))) 0%, transparent 62%),
+    linear-gradient(to bottom,
+      color-mix(in srgb, #05070c calc(var(--p) * 100%), #1b1d24) 0%,
+      color-mix(in srgb, #090c14 calc(var(--p) * 100%), #23252d) 55%,
+      var(--bg) 100%);}
+
+.clb-rail{position:fixed;left:clamp(.7rem,2.2vw,1.9rem);top:0;bottom:0;width:2px;z-index:3;
+  display:flex;justify-content:center;pointer-events:none;opacity:0;transition:opacity .5s ease;}
+.clb.is-climbing .clb-rail{opacity:1;}
+.clb-rail-line{position:absolute;top:18vh;bottom:18vh;width:1px;background:var(--rule);}
+.clb-rail-line::after{content:"";position:absolute;left:0;top:0;width:1px;
+  height:calc(var(--p) * 100%);background:linear-gradient(to bottom,var(--orange),var(--orange-lite));}
+.clb-rail-now{position:absolute;top:calc(18vh + var(--p) * 64vh);left:10px;display:flex;align-items:baseline;gap:.15rem;
+  font-family:var(--font-display);transform:translateY(-50%);}
+.clb-rail-now b{font-size:.92rem;font-weight:600;color:var(--orange);font-variant-numeric:tabular-nums;}
+.clb-rail-now i{font-style:normal;font-size:.6rem;color:var(--gray);}
+
+.clb-hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;}
+.clb-wall{position:absolute;inset:-6% -2%;display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(136px,1fr));gap:6px;
+  transform:translateY(calc(var(--p) * -14vh)) scale(1.04);}
+.clb-tile{display:block;aspect-ratio:16/9;overflow:hidden;border-radius:3px;background:#1a1c22;
+  opacity:0;transform:scale(.94);
+  animation:clbIn .7s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,0ms);}
+.clb-tile img{width:100%;height:100%;object-fit:cover;display:block;
+  filter:grayscale(1) contrast(.92) brightness(.8);}
+@keyframes clbIn{to{opacity:.88;transform:scale(1);}}
+.clb-scrim{position:absolute;inset:0;
+  background:
+    linear-gradient(to right, rgba(20,21,25,.97) 2%, rgba(20,21,25,.88) 30%, rgba(20,21,25,.34) 62%, rgba(20,21,25,.5) 100%),
+    linear-gradient(to bottom, rgba(20,21,25,.8), transparent 26%, transparent 58%, var(--bg));}
+.clb-hero-in{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;
+  padding:0 clamp(1.2rem,5vw,4rem) 0 clamp(2.6rem,7vw,5rem);}
+.clb-hero-in .kicker{display:block;margin-bottom:1.1rem;
+  opacity:0;animation:clbUp .9s .5s cubic-bezier(.2,.7,.2,1) forwards;}
+.clb-hero h1{font-family:var(--font-display);font-weight:700;letter-spacing:-.025em;
+  font-size:clamp(2.1rem,5.6vw,4.4rem);line-height:1.03;color:var(--white);margin:0 0 1.2rem;
+  opacity:0;animation:clbUp 1s .62s cubic-bezier(.2,.7,.2,1) forwards;}
+.clb-hero > .clb-hero-in > p{font-family:var(--font-body);font-size:clamp(.96rem,1.5vw,1.08rem);
+  line-height:1.75;color:var(--gray-light);max-width:46ch;margin:0 0 2rem;
+  opacity:0;animation:clbUp 1s .74s cubic-bezier(.2,.7,.2,1) forwards;}
+@keyframes clbUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.clb-stats{display:flex;flex-wrap:wrap;gap:clamp(1.5rem,5vw,3.4rem);margin:0 0 2.2rem;
+  opacity:0;animation:clbUp 1s .86s cubic-bezier(.2,.7,.2,1) forwards;}
+.clb-stats span{display:flex;flex-direction:column;gap:.2rem;}
+.clb-stats b{font-family:var(--font-display);font-weight:600;font-size:clamp(1.8rem,3.6vw,2.7rem);
+  line-height:1;color:var(--orange);font-variant-numeric:tabular-nums;}
+.clb-stats i{font-style:normal;font-family:var(--font-body);font-size:.66rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gray);}
+.clb-cue{display:inline-block;font-family:var(--font-body);font-size:.64rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gray);opacity:0;
+  animation:clbUp 1s 1.05s cubic-bezier(.2,.7,.2,1) forwards, clbBob 2.6s 2s ease-in-out infinite;}
+@keyframes clbBob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+.clb-stations{position:relative;max-width:1320px;margin:0 auto;
+  padding:clamp(3rem,9vh,6rem) clamp(1.2rem,5vw,4rem) clamp(4rem,10vh,7rem)
+          clamp(2.6rem,7vw,5rem);}
+.clb-station{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);
+  gap:clamp(1.2rem,4vw,3rem);padding:clamp(2.6rem,7vh,4.6rem) 0;
+  border-top:1px solid var(--rule);
+  opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);}
+.clb-station.is-in{opacity:1;transform:none;}
+.clb-station:first-child{border-top:0;}
+.clb-alt{display:flex;align-items:baseline;gap:.15rem;padding-top:.35rem;}
+.clb-alt b{font-family:var(--font-display);font-weight:600;font-size:clamp(.95rem,1.7vw,1.2rem);
+  color:var(--gray-light);font-variant-numeric:tabular-nums;}
+.clb-alt i{font-style:normal;font-size:.68rem;color:var(--gray);}
+.clb-idx{display:block;font-family:var(--font-display);font-weight:700;
+  font-size:clamp(2.4rem,6vw,4.4rem);line-height:.9;color:transparent;
+  -webkit-text-stroke:1px var(--edge-hi);margin-bottom:.9rem;}
+.clb-tag{display:block;font-family:var(--font-body);font-size:.62rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--orange);margin-bottom:.5rem;}
+.clb-body h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.018em;
+  font-size:clamp(1.7rem,3.6vw,2.9rem);line-height:1.08;margin:0 0 .8rem;}
+.clb-body h2 a{color:var(--white);text-decoration:none;
+  background-image:linear-gradient(var(--orange),var(--orange));
+  background-size:0 1px;background-repeat:no-repeat;background-position:0 100%;
+  transition:background-size .35s cubic-bezier(.2,.7,.2,1);}
+.clb-body h2 a:hover{background-size:100% 1px;}
+.clb-body > p{font-family:var(--font-body);font-size:.96rem;line-height:1.75;color:var(--gray-light);
+  max-width:52ch;margin:0 0 1.6rem;}
+.clb-topics{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.7rem;}
+.clb-topic{display:inline-flex;align-items:center;gap:.6rem;min-height:40px;padding:.45rem .95rem;
+  border:1px solid var(--edge);border-radius:999px;text-decoration:none;
+  font-family:var(--font-body);font-size:.86rem;color:var(--gray-light);
+  transition:border-color .25s ease,color .25s ease,background .25s ease;}
+.clb-topic:hover{border-color:var(--live);color:var(--white);background:var(--wash);}
+.clb-topic b{font-family:var(--font-display);font-size:.74rem;color:var(--orange);
+  font-variant-numeric:tabular-nums;}
+.clb-strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(128px,1fr);gap:.6rem;
+  overflow-x:auto;scrollbar-width:none;padding-bottom:.3rem;margin-bottom:1.1rem;}
+.clb-strip::-webkit-scrollbar{display:none;}
+.clb-face{position:relative;display:block;aspect-ratio:16/9;border-radius:6px;overflow:hidden;
+  background:#1a1c22;border:1px solid var(--edge);text-decoration:none;}
+.clb-face img{width:100%;height:100%;object-fit:cover;display:block;
+  filter:grayscale(1) brightness(.62);transition:filter .35s ease,transform .5s cubic-bezier(.2,.7,.2,1);}
+.clb-face:hover img{filter:none;transform:scale(1.05);}
+.clb-face-t{position:absolute;left:0;right:0;bottom:0;padding:1.6rem .55rem .5rem;
+  font-family:var(--font-body);font-size:.68rem;line-height:1.35;color:var(--white);
+  background:linear-gradient(to top,rgba(5,7,12,.92),transparent);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.clb-total{font-family:var(--font-body);font-size:.76rem;color:var(--gray);}
+.clb-total b{font-family:var(--font-display);color:var(--white);font-size:.95rem;}
+
+@media (max-width:760px){
+  .clb-wall{grid-template-columns:repeat(auto-fill,minmax(104px,1fr));}
+  .clb-station{grid-template-columns:1fr;gap:.4rem;}
+  .clb-alt{padding-top:0;}
+  .clb-rail{display:none;}
+  .clb-stations{padding-left:1.2rem;}
+  .clb-hero-in{padding-left:1.2rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  .clb-tile{opacity:.88;transform:none;animation:none;}
+  .clb-hero-in .kicker,.clb-hero h1,.clb-hero > .clb-hero-in > p,.clb-stats,.clb-cue{opacity:1;animation:none;}
+  .clb-station{opacity:1;transform:none;transition:none;}
+  .clb-wall{transform:none;}
+}
+
+
+/* The door. An overlay over the real page, shown once a session. */
+@property --r{syntax:"<length>";inherits:true;initial-value:0px;}
+.prt{display:none;}
+.prt-armed .prt{display:block;position:fixed;inset:0;z-index:90;--r:23vmin;--x:50%;--y:50%;}
+.prt-armed body{overflow:hidden;}
+.prt-shade{position:absolute;inset:0;background:#05070c;
+  -webkit-mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),transparent 98%,#000 100%);
+  mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),transparent 98%,#000 100%);
+  transition:--r 1s cubic-bezier(.66,0,.28,1);}
+.prt-ring{position:absolute;left:50%;top:50%;width:46vmin;height:46vmin;margin:-23vmin 0 0 -23vmin;
+  border-radius:50%;border:1px solid color-mix(in srgb,var(--orange) 45%,transparent);
+  box-shadow:0 0 0 1px rgba(5,7,12,.6), 0 0 60px rgba(255,117,23,.14) inset;
+  pointer-events:none;animation:prtBreathe 5.5s ease-in-out infinite;
+  transition:opacity .45s ease,transform .8s cubic-bezier(.66,0,.28,1);}
+@keyframes prtBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.022)}}
+.prt-copy{position:absolute;left:0;right:0;bottom:calc(50% + 23vmin + clamp(1.8rem,4vh,3rem));
+  text-align:center;padding:0 1.4rem;transition:opacity .4s ease;}
+/* through the hole you should see the archive, not a sentence cut in half */
+.prt-armed .clb-hero-in{opacity:0;}
+.clb-hero-in{transition:opacity .6s ease .15s;}
+.prt-armed .clb-tile img{filter:grayscale(1) contrast(.95) brightness(1);}
+.prt-armed .clb-scrim{opacity:.25;}
+.clb-scrim{transition:opacity .7s ease;}
+.prt-armed .clb-wall{animation:prtFloat 26s ease-in-out infinite alternate;}
+@keyframes prtFloat{from{transform:scale(1.04) translate3d(0,0,0)}to{transform:scale(1.1) translate3d(-1.5%,-2%,0)}}
+.prt-copy .kicker{display:block;margin-bottom:.7rem;}
+.prt-copy p{margin:0 auto;max-width:30ch;font-family:var(--font-display);font-weight:500;
+  font-size:clamp(1rem,1.9vw,1.35rem);line-height:1.45;color:var(--white);}
+.prt-hit{position:absolute;left:50%;top:50%;width:46vmin;height:46vmin;margin:-23vmin 0 0 -23vmin;
+  border-radius:50%;background:none;border:0;cursor:pointer;display:flex;align-items:flex-end;
+  justify-content:center;padding-bottom:calc(23vmin - 2.6rem);}
+.prt-hit-txt{font-family:var(--font-body);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--white);opacity:.75;transition:opacity .3s ease,letter-spacing .4s ease;}
+.prt-hit:hover .prt-hit-txt{opacity:1;letter-spacing:.3em;}
+.prt-hit:focus-visible{outline:2px solid var(--orange);outline-offset:6px;}
+.prt-skip{position:absolute;right:clamp(1rem,3vw,2.2rem);bottom:clamp(1rem,3vh,2rem);
+  min-height:44px;padding:.5rem 1rem;background:none;border:0;cursor:pointer;
+  font-family:var(--font-body);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gray);transition:color .25s ease;}
+.prt-skip:hover{color:var(--white);}
+.prt.is-open .prt-shade{--r:165vmax;}
+.prt.is-open .prt-ring{opacity:0;transform:scale(2.4);}
+.prt.is-open .prt-copy,.prt.is-open .prt-hit-txt,.prt.is-open .prt-skip{opacity:0;}
+.prt.is-open .prt-hit,.prt.is-open .prt-skip{pointer-events:none;}
+@media (max-width:620px){
+  .prt-armed .prt{--r:32vmin;}
+  .prt-ring,.prt-hit{width:64vmin;height:64vmin;margin:-32vmin 0 0 -32vmin;}
+  .prt-hit{padding-bottom:calc(32vmin - 2.4rem);}
+  .prt-copy{bottom:calc(50% + 32vmin + clamp(1.4rem,3vh,2.2rem));top:auto;}
+}
+
+
+
+/* ---- live build additions (2026-09-24) --------------------------------- */
+/* The category drawings, shaded, behind each level. */
+.clb-station{isolation:isolate;}
+.clb-station::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;right:0;width:min(72%,980px);pointer-events:none;
+  background:var(--art,none) right center/cover no-repeat;opacity:.34;
+  -webkit-mask-image:radial-gradient(ellipse 75% 85% at 72% 50%,#000 25%,transparent 78%);
+          mask-image:radial-gradient(ellipse 75% 85% at 72% 50%,#000 25%,transparent 78%);
+  transition:opacity 1.2s ease;}
+.clb-station:not(.is-in)::before{opacity:0;}
+.clb-station:hover::before{opacity:.46;}
+@media (max-width:760px){
+  .clb-station::before{width:100%;opacity:.22;background-position:70% 30%;
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.6) 45%,transparent 85%);
+            mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.6) 45%,transparent 85%);}
+}
+
+/* The prototype's phone rule gave the level a plain 1fr column, whose minimum is
+   its content, so the swipeable strip of faces pushed the whole page to 1110px
+   wide on a phone. minmax(0,1fr) lets the strip scroll inside its own width. */
+.clb-body{min-width:0;}
+/* A level with a single episode (Meteorology) kept one face stretched across the
+   whole row; it stays the size of a face in a full row instead. */
+.clb-strip{grid-auto-columns:minmax(128px,160px);}
+@media (min-width:1100px){ .clb-strip{grid-auto-columns:minmax(128px,1fr);} .clb-strip:has(> .clb-face:only-child){grid-auto-columns:minmax(128px,190px);} }
+@media (max-width:760px){ .clb-station{grid-template-columns:minmax(0,1fr);} }
+
+/* How To Use This Resource: a quiet button that opens a text bubble. */
+.clb-how{position:relative;display:block;width:max-content;max-width:100%;margin:0 0 2.2rem;z-index:3;opacity:0;animation:clbUp 1s .98s cubic-bezier(.2,.7,.2,1) forwards;}
+.clb-how summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.6rem;min-height:40px;
+  padding:.5rem .95rem .5rem .6rem;border:1px solid var(--edge);background:rgba(20,21,25,.55);
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+  color:var(--gray-light);font-family:var(--font-body);font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;
+  transition:color .2s,border-color .2s;}
+.clb-how summary::-webkit-details-marker{display:none;}
+.clb-how summary::before{content:"?";display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
+  border:1px solid var(--orange);border-radius:50%;color:var(--orange);font-weight:700;letter-spacing:0;font-size:.72rem;}
+.clb-how summary::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg) translateY(-2px);transition:transform .25s ease;margin-left:.1rem;}
+.clb-how summary:hover,.clb-how[open] summary{color:var(--white);border-color:var(--orange);}
+.clb-how[open] summary::after{transform:rotate(-135deg) translateY(-1px);}
+.clb-how summary:focus-visible{outline:2px solid var(--orange);outline-offset:2px;}
+.clb-how-bub{position:absolute;left:0;top:calc(100% + 12px);width:min(30rem,calc(100vw - 3rem));
+  background:var(--card);border:1px solid var(--edge);border-left:3px solid var(--orange);
+  padding:1.3rem 1.5rem 1.2rem;box-shadow:0 22px 60px rgba(0,0,0,.55);animation:clbHow .28s cubic-bezier(.2,.7,.2,1);}
+.clb-how-bub::before{content:"";position:absolute;top:-7px;left:1.3rem;width:12px;height:12px;background:var(--card);
+  border-top:1px solid var(--edge);border-left:1px solid var(--edge);transform:rotate(45deg);}
+.clb-how-bub h2{font-family:var(--font-display);font-weight:700;font-size:var(--fs-h4);color:var(--white);margin:0 0 .9rem;}
+.clb-how-bub ol{list-style:none;margin:0;padding:0;counter-reset:how;}
+.clb-how-bub li{counter-increment:how;display:grid;grid-template-columns:1.8rem minmax(0,1fr);gap:.4rem;align-items:baseline;
+  color:var(--gray-light);font-size:var(--fs-body-s);line-height:1.55;padding:.5rem 0;border-top:1px solid var(--line);}
+.clb-how-bub li:first-child{border-top:0;padding-top:0;}
+.clb-how-bub li::before{content:counter(how,decimal-leading-zero);color:var(--orange);font-family:var(--font-display);font-weight:600;font-size:var(--fs-micro);letter-spacing:.08em;}
+@keyframes clbHow{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (max-width:620px){
+  .clb-how{display:block;}
+  .clb-how-bub{position:relative;top:auto;margin-top:12px;width:auto;}
+}
+@media (prefers-reduced-motion:reduce){
+  .clb-how{opacity:1;animation:none;} .clb-how-bub{animation:none;}
+  .clb-station::before{transition:none;}
+}
+
 </style>
+<script>
+/* Decide before paint whether the door is shown at all. */
+(function(){
+  try{
+    var deep = location.hash && location.hash.length > 1,
+        seen = sessionStorage.getItem('pga.kb.portal') === '1',
+        calm = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    if(!deep && !seen && !calm) document.documentElement.classList.add('prt-armed');
+  }catch(e){}
+})();
+</script>
 <!-- site-schema -->
 <script type="application/ld+json">
 {
@@ -161,75 +413,250 @@
 </nav>
 <div class="nav-chevron"></div>
 
-<header class="kb-hero">
-  <span class="kicker">Knowledge Base</span>
-  <h1>The Paragliding Knowledge Base</h1>
-  <p>Twenty topics, built from 90+ long-form interviews with designers, test pilots, instructors and champions: how a wing flies, how pilots manage risk, what gear does and does not do, how to read weather, how competitions work and how people make a life in the sport. Every page links to the chapter of the episode where the guest says it.</p>
-</header>
+<div class="prt" id="prt" role="dialog" aria-modal="true" aria-labelledby="prtTitle">
+  <div class="prt-shade" id="prtShade"></div>
+  <div class="prt-ring" aria-hidden="true"></div>
+  <div class="prt-copy">
+    <span class="kicker" id="prtTitle">Knowledge Base</span>
+    <p>The Paragliding Knowledge Base</p>
+  </div>
+  <button type="button" class="prt-hit" id="prtHit">
+    <span class="prt-hit-txt">Come inside</span>
+  </button>
+  <button type="button" class="prt-skip" id="prtSkip">Skip</button>
+</div>
 
-<section class="kb-howto">
-  <div class="kb-howto-head">
-    <span class="kicker">How To Use This Resource</span>
-    <h2>Get the most out of the archive</h2>
+<div class="clb" id="clb">
+  <div class="clb-sky" aria-hidden="true"></div>
+  <div class="clb-rail" aria-hidden="true">
+    <div class="clb-rail-line"></div>
+    <div class="clb-rail-now"><b id="clbAlt">0</b><i>m</i></div>
   </div>
-  <div class="kb-howto-grid">
-    <div class="kb-howto-item">
-      <div class="kb-howto-badge">1</div>
-      <p>Navigate content based on your skill level and goals</p>
-    </div>
-    <div class="kb-howto-item">
-      <div class="kb-howto-badge">2</div>
-      <p>Study site guides before flying new locations</p>
-    </div>
-    <div class="kb-howto-item">
-      <div class="kb-howto-badge">3</div>
-      <p>Learn from experienced pilots and real-world scenarios</p>
-    </div>
-    <div class="kb-howto-item">
-      <div class="kb-howto-badge">4</div>
-      <p>Explore pathways to build a career in paragliding</p>
-    </div>
-  </div>
-</section>
 
-<section class="kb-portal">
-  <div class="kb-portal-head">
-    <span class="kicker">Explore Categories</span>
-    <h2>Five ways into the archive</h2>
+  <section class="clb-hero">
+    <div class="clb-wall" id="clbWall">
+      <a class="clb-tile" style="--d:0ms" href="episodes/scoring-in-paragliding-competitions-a-new-pilot-s-guide-to.html" title="Scoring in Paragliding Competitions: A New Pilot's" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/CYVrlWuls6o/maxresdefault.jpg" alt="" loading="eager" decoding="async"></a>
+      <a class="clb-tile" style="--d:22ms" href="episodes/sports-psychology-for-paragliding-train-your-mind-to-fly.html" title="Sports Psychology for Paragliding: Train Your Mind" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/mYG80ZiHIyo/maxresdefault.jpg" alt="" loading="eager" decoding="async"></a>
+      <a class="clb-tile" style="--d:44ms" href="episodes/why-paraglidings-safety-future-looks-different-rast.html" title="Why Paragliding’s Safety Future Looks Different" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/YGU7-ctBYYE/maxresdefault.jpg" alt="" loading="eager" decoding="async"></a>
+      <a class="clb-tile" style="--d:66ms" href="episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html" title="Meteorology 101: A beginner’s Guide" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/DIHf30B2NoY/maxresdefault.jpg" alt="" loading="eager" decoding="async"></a>
+      <a class="clb-tile" style="--d:88ms" href="episodes/the-russell-ogden-interview-decoding-paragliding-mastery.html" title="The Russell Ogden Interview: Decoding Paragliding" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/itpkNQwV438/maxresdefault.jpg" alt="" loading="eager" decoding="async"></a>
+      <a class="clb-tile" style="--d:110ms" href="episodes/new-technologies-5-frantisek-pavlousek.html" title="New Technologies 5: Frantisek Pavlousek (UP" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/vmnrTFbu6vg/maxresdefault.jpg" alt="" loading="eager" decoding="async"></a>
+      <a class="clb-tile" style="--d:132ms" href="episodes/the-inside-story-of-sports-racing-series-by-brett-janaway.html" title="The Inside Story of Sports Racing Series (SRS)" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/i9z4MyL6KgQ/maxresdefault.jpg" alt="" loading="eager" decoding="async"></a>
+      <a class="clb-tile" style="--d:154ms" href="episodes/if-you-fly-in-the-himalayas-alps-or-above-3000-mtrs-this.html" title="If you fly in the Himalayas, Alps, or above 3000" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/AvSCngFI7R0/maxresdefault.jpg" alt="" loading="eager" decoding="async"></a>
+      <a class="clb-tile" style="--d:176ms" href="episodes/technical-masterclass-by-brett-janaway-science-of.html" title="Technical Masterclass by Brett Janaway" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/zzcktKfMcUI/maxresdefault.jpg" alt="" loading="eager" decoding="async"></a>
+      <a class="clb-tile" style="--d:198ms" href="episodes/can-we-steer-a-round-reserve-parachute-urs-haari-answers.html" title="Can we Steer a Round Reserve Parachute? Urs Haari" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/wvJWd8lVZzc/maxresdefault.jpg" alt="" loading="eager" decoding="async"></a>
+      <a class="clb-tile" style="--d:220ms" href="episodes/the-art-of-capturing-human-flight-jake-holland-s-guide-to.html" title="The Art of Capturing Human Flight" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/3ZySapU_YLI/maxresdefault.jpg" alt="" loading="eager" decoding="async"></a>
+      <a class="clb-tile" style="--d:242ms" href="episodes/ziad-bassil-finest-paragliding-reviews-superpower-of.html" title="Ziad Bassil: Finest Paragliding Reviews" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/i-QoHo0ZaPU/maxresdefault.jpg" alt="" loading="eager" decoding="async"></a>
+      <a class="clb-tile" style="--d:264ms" href="episodes/maxime-pinot-the-journey-within.html" title="Maxime Pinot: The Journey Within: Mapping our" tabindex="-1" aria-hidden="true"><img src="assets/podcast/artwork/maxime-pinot-the-journey-within.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:286ms" href="episodes/eddie-colfox-storytime-chasing-adventure-with-the-real-og.html" title="Eddie Colfox: Storytime: Chasing Adventure" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/ebwdsVgopnU/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:308ms" href="episodes/living-the-dream-benjamin-jordan.html" title="Living The Dream : Benjamin Jordan" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/bDJ1zRG90cs/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:330ms" href="episodes/risk-vs-reward-2-subir-sidhu.html" title="Risk Vs Reward 2 : Subir Sidhu" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/J8visA4lxys/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:352ms" href="episodes/mastering-the-unknown-neuroscience-of-crisis-management.html" title="Mastering the Unknown: Neuroscience of Crisis" tabindex="-1" aria-hidden="true"><img src="assets/podcast/artwork/mastering-the-unknown-neuroscience-of-crisis-management.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:374ms" href="episodes/luc-armant-talks-about-debunking-the-myths-and-upgrading.html" title="Luc Armant talks about Debunking the Myths" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/xNMHk_8qbzo/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:396ms" href="episodes/new-technologies-3-stephan-stiegler.html" title="New Technologies 3: Stephan Stiegler (AirDesign" tabindex="-1" aria-hidden="true"><img src="assets/podcast/artwork/new-technologies-3-stephan-stiegler.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:418ms" href="episodes/metacognition-paragliding-s-hidden-psychology-with-beni.html" title="Metacognition: Paragliding's Hidden Psychology" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/J5j3Hk_HcFQ/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:440ms" href="episodes/ama-1.html" title="AMA #1" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/zKabIDewXn0/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:462ms" href="episodes/sky-gods-flying-to-win-honorin-hamard.html" title="Sky Gods : Flying to Win : Honorin Hamard" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/QmprO-5qkR8/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:484ms" href="episodes/bruce-goldsmith-explains-mrt-scoring-system-and-its-impact.html" title="Bruce Goldsmith explains MRT scoring system" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/nlgbMKLNNk4/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:506ms" href="episodes/robert-whittall-113-mins-of-unhinged-conversations-with.html" title="Robert (Robbie) Whittall: 113 mins of Unhinged" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/aGiisCcG5v8/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:528ms" href="episodes/the-unfiltered-truth-about-paragliding-governance-with.html" title="The Unfiltered Truth About Paragliding Governance" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/VmaPERBK-lo/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:550ms" href="episodes/sky-gods-flying-8000ers-antoine-girard.html" title="Sky Gods : Flying 8000ers : Antoine Girard" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/Q2oTFoQcrGw/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:572ms" href="episodes/the-resilience-equation-erlend-ukvitnes-unrelenting-path.html" title="The Resilience Equation: Erlend Ukvitne’s" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/rFC56EjtXCY/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:594ms" href="episodes/pal-takats-on-challenges-change-the-future-of-paragliding.html" title="Pal Takats on Challenges, Change & The Future" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/FvIZpqydhyo/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:616ms" href="episodes/ashutosh-chopra-identifying-passion-vs-obsession-an.html" title="Ashutosh Chopra: Identifying Passion Vs Obsession" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/jMVTzRFPWNw/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:638ms" href="episodes/survived-15-years-of-flying-then-a-rescue-helicopter.html" title="Survived 15 Years of Flying Then a Rescue" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/BceEzHgylwo/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:660ms" href="episodes/risk-vs-reward-4-raul-rodriguez.html" title="Risk Vs Reward 4 : Raúl Rodríguez" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/MFYb9KmT15s/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:682ms" href="episodes/kinga-masztalerz-building-a-healthy-relationship-with-the.html" title="Kinga Masztalerz: Building a Healthy Relationship" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/pFxe7oZTH2E/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:704ms" href="episodes/from-tents-to-trophies-understanding-acro-champion-s.html" title="From Tents to Trophies: Understanding Acro" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/Kdd1R8x36vU/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:726ms" href="episodes/the-silent-mind-in-screaming-winds-unlocking-peak-focus-to.html" title="The Silent Mind In Screaming Winds: Unlocking Peak" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/N4OGIzYNnl0/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:748ms" href="episodes/luc-armant-talks-about-the-moment-coefficient-enzo-3.html" title="Luc Armant talks about The Moment Coefficient" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/pYzuw5bTIe8/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:770ms" href="episodes/insights-from-the-gaggle-with-tilen-ceglar-stan.html" title="Insights From The Gaggle with Tilen Ceglar & Stan" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/jdiYdzJ9U5w/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:792ms" href="episodes/risk-vs-reward-3-manfred-ruhmer.html" title="Risk Vs Reward 3 : Manfred Ruhmer" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/njoPDwe457w/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:814ms" href="episodes/new-technologies-1-beni-kalin.html" title="New Technologies 1: Beni Kälin" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/aFO5Uk5BX9s/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:836ms" href="episodes/sandrine-roy-vol-biv-freedom-unfiltered-a-human-powered.html" title="Sandrine Roy: Vol Biv & Freedom Unfiltered" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/qZRa_Ozz0Hg/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:858ms" href="episodes/storytellers-marko-milutinovic.html" title="Storytellers: Marko Milutinovic (Mid-Air" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/T1pR130Umkk/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:880ms" href="episodes/legacy-and-lifetimes-of-gin-seok-song.html" title="Legacy and Lifetimes of Gin Seok Song" tabindex="-1" aria-hidden="true"><img src="assets/podcast/artwork/legacy-and-lifetimes-of-gin-seok-song.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:902ms" href="episodes/flying-filming-1-benjamin-jordan.html" title="Flying & Filming 1 : Benjamin Jordan" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/L2MrAoec24I/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:924ms" href="episodes/how-to-thermal-like-a-pro-find-center-climb-paragliding.html" title="How to Thermal Like a Pro: Find, Center & Climb" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/G-gqUxq0C6Q/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:946ms" href="episodes/shane-tighes-road-to-x-alps-engineering-conquests-in-the.html" title="Shane Tighe’s Road to X-Alps" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/cnizMhvNQrM/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:968ms" href="episodes/risk-vs-reward-1-philipp-zellner.html" title="Risk Vs Reward 1 : Philipp Zellner" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/md9ls8OtBiA/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:990ms" href="episodes/navigating-colombia-pal-takats.html" title="Navigating Colombia: Pal Takats" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/kOgDYSvfUuo/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1012ms" href="episodes/new-technologies-2-guillem-batlle-adria-grau.html" title="New Technologies 2: Guillem Batlle & Adrià Grau" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/MxwM1lJEVIU/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1034ms" href="episodes/touch-the-sky-with-glory.html" title="Touch The Sky With Glory" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/MLNGvJHrWQY/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1056ms" href="episodes/new-technologies-4-veselin-ovcharov.html" title="New Technologies 4: Veselin Ovcharov (Fly" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/zEnjmp9hrlE/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1078ms" href="episodes/navigating-india-eddie-colfox.html" title="Navigating India: Eddie Colfox" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/TO6gW69d7YE/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1100ms" href="episodes/navigating-india-jigish-gohil.html" title="Navigating India: Jigish Gohil (Bonus Ep)" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/_apo1PNabZI/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1122ms" href="episodes/navigating-panchgani-vistasp-kharas.html" title="Navigating Panchgani (Pre PWC India)" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/0VPg7TZ9hK0/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1144ms" href="episodes/risk-vs-reward-5-gabriel-orsini.html" title="Risk Vs Reward 5: Gabriel Orsini (partytillimpact)" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/DmyYSA6NeMw/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1166ms" href="episodes/bill-belcourt-the-uncomfortable-truth-no-one-is-talking.html" title="Bill Belcourt: The Uncomfortable Truth No One is" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/YyGdTDXC1Lc/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1188ms" href="episodes/navigating-australia-godfrey-wenness.html" title="Navigating Australia : Godfrey Wenness" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/xXSGK8oB4Oc/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1210ms" href="episodes/alain-zoller-the-science-of-en-certifications-how-work.html" title="Alain Zoller: The Science of EN Certifications" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/CBxyezZ-UOw/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1232ms" href="episodes/anatomy-of-a-dream-with-damien-lacaze.html" title="Anatomy of a Dream with Damien Lacaze" tabindex="-1" aria-hidden="true"><img src="assets/podcast/artwork/anatomy-of-a-dream-with-damien-lacaze.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1254ms" href="episodes/urs-haari-the-real-truth-about-reserve-parachutes-a.html" title="Urs Haari: The Real Truth About Reserve Parachutes" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/EttlenmzWHM/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1276ms" href="episodes/flying-filming-3-andreas-lattner.html" title="Flying & Filming 3: Andreas Lattner" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/yUsfGCfI_30/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1298ms" href="episodes/brand-stories-neo-eric-roussel.html" title="Brand Stories : Neo : Eric Roussel" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/9GfZcM3P3jY/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1320ms" href="episodes/science-backed-pre-flight-rituals.html" title="Science Backed Pre Flight Rituals to Unlock Laser" tabindex="-1" aria-hidden="true"><img src="assets/podcast/artwork/science-backed-pre-flight-rituals.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1342ms" href="episodes/paragliding-physiology-safety-protocols-dr-matt-wilkes.html" title="Paragliding Physiology & Safety Protocols" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/_k2uxEkrN7s/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1364ms" href="episodes/helmut-schrempf-modernizing-siv-courses-how-this-new.html" title="Helmut Schrempf: Modernizing SIV Courses" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/wTfS5kv1t9M/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1386ms" href="episodes/pwca-goran-dimiskovski.html" title="PWCA: Goran Dimiskovski" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/l1gmplS02FI/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/pre-pwc-kenya-nikolay-yotov.html" title="Pre PWC Kenya: Nikolay Yotov" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/UVLF8l0qFlA/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/from-cuba-to-socotra-inside-the-worlds-most-unique.html" title="From Cuba to Socotra: Inside the World’s Most" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/ylj8CZgqLyM/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/pwc-lifestyle-klaudia-bulgakow.html" title="PWC Lifestyle: Klaudia Bulgakow" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/ZjSojM_Ao0U/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/flying-filming-2-benjamin-kellet.html" title="Flying & Filming 2 : Benjamin Kellet" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/OiertfSq-6o/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/snippet-a-reserve-parachute-trick-every-pilot-should-know.html" title="Snippet: A Reserve Parachute Trick Every Pilot" tabindex="-1" aria-hidden="true"><img src="assets/podcast/artwork/snippet-a-reserve-parachute-trick-every-pilot-should-know.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/how-to-fly-with-your-dog-explained-by-shams.html" title="How to Fly With Your Dog" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/yNNqjTpQkRQ/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/a-note-of-thanks.html" title="A Note of Thanks" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/B9mx2zGLk0I/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/demystifying-the-science-behind-parakites-bryan-van-ostheim.html" title="Demystifying The Science Behind Endless Fun" tabindex="-1" aria-hidden="true"><img src="assets/podcast/artwork/demystifying-the-science-behind-parakites-bryan-van-ostheim.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/helmet-safety-christian-ciech-icaro-2000.html" title="Helmet Safety : Christian Ciech : ICARO 2000" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/fKWV5YR8MRE/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/cognitive-bias-of-dunning-kruger-effect-in-paragliding.html" title="Cognitive Bias of Dunning Kruger Effect" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/p_HpeN5x7dE/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/consequence-over-probability-will-gadd-on-why-true-safety.html" title="Consequence Over Probability: Will Gadd" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/VqkYy6YhXcY/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/carabiner-fatigue-finsterwalder-charly.html" title="Carabiner Fatigue: Finsterwalder & Charly" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/QPkIlI2qG5A/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/tom-lolies-explains-the-science-of-wing-design-and.html" title="Tom Lolies Explains The Science Of Wing Design" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/iurDFHlgJjI/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/watch-this-before-you-buy-a-paragliding-harness-a-talk.html" title="Watch this Before you Buy a Paragliding Harness" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/kSoFk23TuX0/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/aljaz-valic-777-paraglidings-slovenian-mavericks.html" title="Aljaž Valič: 777: Paragliding’s Slovenian" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/78PaTvxRWJ0/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/understanding-skymate-paragliding-worlds-first-ai-driven.html" title="Understanding Skymate: Paragliding Worlds First AI" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/S2wiY4DO_TU/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+      <a class="clb-tile" style="--d:1400ms" href="episodes/what-is-civlresign-with-julien-garcia.html" title="What is #CIVLRESIGN with Julien Garcia" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/jSfQYxxbaWk/maxresdefault.jpg" alt="" loading="lazy" decoding="async"></a>
+    </div>
+    <div class="clb-scrim" aria-hidden="true"></div>
+    <div class="clb-hero-in">
+      <span class="kicker">Knowledge Base</span>
+      <h1>The Paragliding Knowledge Base</h1>
+      <p>Twenty topics, built from 90+ long-form interviews with designers, test pilots, instructors and champions: how a wing flies, how pilots manage risk, what gear does and does not do, how to read weather, how competitions work and how people make a life in the sport. Every page links to the chapter of the episode where the guest says it.</p>
+      <details class="clb-how">
+        <summary>How To Use This Resource</summary>
+        <div class="clb-how-bub">
+          <h2>Get the most out of the archive</h2>
+          <ol>
+            <li>Navigate content based on your skill level and goals</li>
+            <li>Study site guides before flying new locations</li>
+            <li>Learn from experienced pilots and real-world scenarios</li>
+            <li>Explore pathways to build a career in paragliding</li>
+          </ol>
+        </div>
+      </details>
+      <span class="clb-cue" aria-hidden="true">Scroll to climb</span>
+    </div>
+  </section>
+
+  <div class="clb-stations">
+      <section class="clb-station" data-alt="600" style="--i:0;--art:url('assets/images/kb-core-series.webp')">
+        <div class="clb-alt" aria-hidden="true"><b>600</b><i>m</i></div>
+        <div class="clb-body">
+          <span class="clb-idx" aria-hidden="true">01</span>
+          <span class="clb-tag">Where to start</span>
+          <h2><a href="knowledge-base/core-series.html">Core Series</a></h2>
+          <p>The three long-running strands of the show. If you are new here, start in this row.</p>
+          <div class="clb-topics">
+            <a class="clb-topic" href="knowledge-base/navigators.html"><span>Navigators</span><b>6</b></a>
+            <a class="clb-topic" href="knowledge-base/sky-gods.html"><span>Sky Gods</span><b>4</b></a>
+            <a class="clb-topic" href="knowledge-base/living-the-dream.html"><span>Living The Dream</span><b>6</b></a>
+          </div>
+          <div class="clb-strip">
+            <a class="clb-face" href="episodes/navigating-australia-godfrey-wenness.html"><img src="https://i.ytimg.com/vi/xXSGK8oB4Oc/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Navigating Australia : Godfrey Wenness</span></a>
+            <a class="clb-face" href="episodes/navigating-colombia-pal-takats.html"><img src="https://i.ytimg.com/vi/kOgDYSvfUuo/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Navigating Colombia: Pal Takats</span></a>
+            <a class="clb-face" href="episodes/navigating-india-eddie-colfox.html"><img src="https://i.ytimg.com/vi/TO6gW69d7YE/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Navigating India: Eddie Colfox</span></a>
+            <a class="clb-face" href="episodes/navigating-india-jigish-gohil.html"><img src="https://i.ytimg.com/vi/_apo1PNabZI/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Navigating India: Jigish Gohil (Bonus Ep)</span></a>
+            <a class="clb-face" href="episodes/navigating-panchgani-vistasp-kharas.html"><img src="https://i.ytimg.com/vi/0VPg7TZ9hK0/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Navigating Panchgani (Pre PWC India)</span></a>
+            <a class="clb-face" href="episodes/pre-pwc-kenya-nikolay-yotov.html"><img src="https://i.ytimg.com/vi/UVLF8l0qFlA/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Pre PWC Kenya: Nikolay Yotov</span></a>
+            <a class="clb-face" href="episodes/maxime-pinot-the-journey-within.html"><img src="assets/podcast/artwork/maxime-pinot-the-journey-within.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Maxime Pinot: The Journey Within: Mapping our</span></a>
+            <a class="clb-face" href="episodes/robert-whittall-113-mins-of-unhinged-conversations-with.html"><img src="https://i.ytimg.com/vi/aGiisCcG5v8/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Robert (Robbie) Whittall: 113 mins of Unhinged</span></a>
+          </div>
+          <span class="clb-total"><b>16</b> episodes at this level</span>
+        </div>
+      </section>
+      <section class="clb-station" data-alt="1,400" style="--i:1;--art:url('assets/images/kb-competitions.webp')">
+        <div class="clb-alt" aria-hidden="true"><b>1,400</b><i>m</i></div>
+        <div class="clb-body">
+          <span class="clb-idx" aria-hidden="true">02</span>
+          <span class="clb-tag">Going faster</span>
+          <h2><a href="knowledge-base/competitions.html">Competitions &amp; Performance</a></h2>
+          <p>Racing, strategy, and the judgement that keeps pushing your limits survivable.</p>
+          <div class="clb-topics">
+            <a class="clb-topic" href="knowledge-base/world-cups.html"><span>World Cups, Racing and Competing</span><b>7</b></a>
+            <a class="clb-topic" href="knowledge-base/risk-vs-reward.html"><span>Risk vs. Reward</span><b>12</b></a>
+            <a class="clb-topic" href="knowledge-base/resources-tools-tips.html"><span>Resources, Tools &amp; Tips</span><b>11</b></a>
+          </div>
+          <div class="clb-strip">
+            <a class="clb-face" href="episodes/bruce-goldsmith-explains-mrt-scoring-system-and-its-impact.html"><img src="https://i.ytimg.com/vi/nlgbMKLNNk4/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Bruce Goldsmith explains MRT scoring system</span></a>
+            <a class="clb-face" href="episodes/from-tents-to-trophies-understanding-acro-champion-s.html"><img src="https://i.ytimg.com/vi/Kdd1R8x36vU/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">From Tents to Trophies: Understanding Acro</span></a>
+            <a class="clb-face" href="episodes/pwc-lifestyle-klaudia-bulgakow.html"><img src="https://i.ytimg.com/vi/ZjSojM_Ao0U/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">PWC Lifestyle: Klaudia Bulgakow</span></a>
+            <a class="clb-face" href="episodes/scoring-in-paragliding-competitions-a-new-pilot-s-guide-to.html"><img src="https://i.ytimg.com/vi/CYVrlWuls6o/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Scoring in Paragliding Competitions: A New Pilot's</span></a>
+            <a class="clb-face" href="episodes/shane-tighes-road-to-x-alps-engineering-conquests-in-the.html"><img src="https://i.ytimg.com/vi/cnizMhvNQrM/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Shane Tighe’s Road to X-Alps</span></a>
+            <a class="clb-face" href="episodes/the-inside-story-of-sports-racing-series-by-brett-janaway.html"><img src="https://i.ytimg.com/vi/i9z4MyL6KgQ/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">The Inside Story of Sports Racing Series (SRS)</span></a>
+            <a class="clb-face" href="episodes/the-resilience-equation-erlend-ukvitnes-unrelenting-path.html"><img src="https://i.ytimg.com/vi/rFC56EjtXCY/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">The Resilience Equation: Erlend Ukvitne’s</span></a>
+            <a class="clb-face" href="episodes/cognitive-bias-of-dunning-kruger-effect-in-paragliding.html"><img src="https://i.ytimg.com/vi/p_HpeN5x7dE/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Cognitive Bias of Dunning Kruger Effect</span></a>
+          </div>
+          <span class="clb-total"><b>30</b> episodes at this level</span>
+        </div>
+      </section>
+      <section class="clb-station" data-alt="2,200" style="--i:2;--art:url('assets/images/kb-meteorology.webp')">
+        <div class="clb-alt" aria-hidden="true"><b>2,200</b><i>m</i></div>
+        <div class="clb-body">
+          <span class="clb-idx" aria-hidden="true">03</span>
+          <span class="clb-tag">Reading the day</span>
+          <h2><a href="knowledge-base/meteorology.html">Meteorology &amp; Weather</a></h2>
+          <p>Forecasting, patterns, and learning to read the sky before you commit to it.</p>
+          <div class="clb-topics">
+            <a class="clb-topic" href="knowledge-base/weather-patterns.html"><span>Weather Patterns and Forecasting</span><b>1</b></a>
+          </div>
+          <div class="clb-strip">
+            <a class="clb-face" href="episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html"><img src="https://i.ytimg.com/vi/DIHf30B2NoY/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Meteorology 101: A beginner’s Guide</span></a>
+          </div>
+          <span class="clb-total"><b>1</b> episode at this level</span>
+        </div>
+      </section>
+      <section class="clb-station" data-alt="3,100" style="--i:3;--art:url('assets/images/kb-industry.webp')">
+        <div class="clb-alt" aria-hidden="true"><b>3,100</b><i>m</i></div>
+        <div class="clb-body">
+          <span class="clb-idx" aria-hidden="true">04</span>
+          <span class="clb-tag">The people</span>
+          <h2><a href="knowledge-base/industry.html">Industry &amp; Community</a></h2>
+          <p>The business behind the wings, the people who tell the stories, and the incidents we learn from.</p>
+          <div class="clb-topics">
+            <a class="clb-topic" href="knowledge-base/brand-stories.html"><span>Brand Stories &amp; Manufacturer Profiles</span><b>4</b></a>
+            <a class="clb-topic" href="knowledge-base/storytellers.html"><span>Storytellers</span><b>2</b></a>
+            <a class="clb-topic" href="knowledge-base/the-dark-side.html"><span>The Dark Side: Learning from Incidents</span><b>5</b></a>
+          </div>
+          <div class="clb-strip">
+            <a class="clb-face" href="episodes/brand-stories-neo-eric-roussel.html"><img src="https://i.ytimg.com/vi/9GfZcM3P3jY/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Brand Stories : Neo : Eric Roussel</span></a>
+            <a class="clb-face" href="episodes/legacy-and-lifetimes-of-gin-seok-song.html"><img src="assets/podcast/artwork/legacy-and-lifetimes-of-gin-seok-song.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Legacy and Lifetimes of Gin Seok Song</span></a>
+            <a class="clb-face" href="episodes/pal-takats-on-challenges-change-the-future-of-paragliding.html"><img src="https://i.ytimg.com/vi/FvIZpqydhyo/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Pal Takats on Challenges, Change & The Future</span></a>
+            <a class="clb-face" href="episodes/pwca-goran-dimiskovski.html"><img src="https://i.ytimg.com/vi/l1gmplS02FI/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">PWCA: Goran Dimiskovski</span></a>
+            <a class="clb-face" href="episodes/eddie-colfox-storytime-chasing-adventure-with-the-real-og.html"><img src="https://i.ytimg.com/vi/ebwdsVgopnU/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Eddie Colfox: Storytime: Chasing Adventure</span></a>
+            <a class="clb-face" href="episodes/storytellers-marko-milutinovic.html"><img src="https://i.ytimg.com/vi/T1pR130Umkk/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Storytellers: Marko Milutinovic (Mid-Air</span></a>
+            <a class="clb-face" href="episodes/bill-belcourt-the-uncomfortable-truth-no-one-is-talking.html"><img src="https://i.ytimg.com/vi/YyGdTDXC1Lc/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Bill Belcourt: The Uncomfortable Truth No One is</span></a>
+            <a class="clb-face" href="episodes/insights-from-the-gaggle-with-tilen-ceglar-stan.html"><img src="https://i.ytimg.com/vi/jdiYdzJ9U5w/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Insights From The Gaggle with Tilen Ceglar & Stan</span></a>
+          </div>
+          <span class="clb-total"><b>11</b> episodes at this level</span>
+        </div>
+      </section>
+      <section class="clb-station" data-alt="4,000" style="--i:4;--art:url('assets/images/kb-technical.webp')">
+        <div class="clb-alt" aria-hidden="true"><b>4,000</b><i>m</i></div>
+        <div class="clb-body">
+          <span class="clb-idx" aria-hidden="true">05</span>
+          <span class="clb-tag">How it works</span>
+          <h2><a href="knowledge-base/technical.html">Technical Focus &amp; Flight Safety</a></h2>
+          <p>From fundamental aerodynamics to certification, materials and what is coming next.</p>
+          <div class="clb-topics">
+            <a class="clb-topic" href="knowledge-base/flight-mechanics.html"><span>Flight Mechanics</span><b>8</b></a>
+            <a class="clb-topic" href="knowledge-base/new-technologies.html"><span>New Technologies</span><b>7</b></a>
+            <a class="clb-topic" href="knowledge-base/know-your-equipment.html"><span>Know Your Equipment</span><b>8</b></a>
+          </div>
+          <div class="clb-strip">
+            <a class="clb-face" href="episodes/alain-zoller-the-science-of-en-certifications-how-work.html"><img src="https://i.ytimg.com/vi/CBxyezZ-UOw/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Alain Zoller: The Science of EN Certifications</span></a>
+            <a class="clb-face" href="episodes/aljaz-valic-777-paraglidings-slovenian-mavericks.html"><img src="https://i.ytimg.com/vi/78PaTvxRWJ0/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Aljaž Valič: 777: Paragliding’s Slovenian</span></a>
+            <a class="clb-face" href="episodes/demystifying-the-science-behind-parakites-bryan-van-ostheim.html"><img src="assets/podcast/artwork/demystifying-the-science-behind-parakites-bryan-van-ostheim.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Demystifying The Science Behind Endless Fun</span></a>
+            <a class="clb-face" href="episodes/helmut-schrempf-modernizing-siv-courses-how-this-new.html"><img src="https://i.ytimg.com/vi/wTfS5kv1t9M/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Helmut Schrempf: Modernizing SIV Courses</span></a>
+            <a class="clb-face" href="episodes/how-to-thermal-like-a-pro-find-center-climb-paragliding.html"><img src="https://i.ytimg.com/vi/G-gqUxq0C6Q/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">How to Thermal Like a Pro: Find, Center & Climb</span></a>
+            <a class="clb-face" href="episodes/luc-armant-talks-about-debunking-the-myths-and-upgrading.html"><img src="https://i.ytimg.com/vi/xNMHk_8qbzo/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Luc Armant talks about Debunking the Myths</span></a>
+            <a class="clb-face" href="episodes/luc-armant-talks-about-the-moment-coefficient-enzo-3.html"><img src="https://i.ytimg.com/vi/pYzuw5bTIe8/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Luc Armant talks about The Moment Coefficient</span></a>
+            <a class="clb-face" href="episodes/tom-lolies-explains-the-science-of-wing-design-and.html"><img src="https://i.ytimg.com/vi/iurDFHlgJjI/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="clb-face-t">Tom Lolies Explains The Science Of Wing Design</span></a>
+          </div>
+          <span class="clb-total"><b>23</b> episodes at this level</span>
+        </div>
+      </section>
   </div>
-  <div class="kb-cat-grid">
-    <a class="kb-cat-card" href="knowledge-base/core-series.html">
-      <div class="kb-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></div>
-      <h3>Core Series</h3>
-      <p>Navigators, Sky Gods, and Living The Dream. Where to start.</p>
-      <span class="kb-cat-arrow">Explore →</span>
-    </a>
-    <a class="kb-cat-card" href="knowledge-base/competitions.html">
-      <div class="kb-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4h8v4a4 4 0 0 1-8 0V4Z"/><path d="M6 5H4a2 2 0 0 0 0 4h2M18 5h2a2 2 0 0 1 0 4h-2M12 12v3M9 20h6M10 17h4v3h-4z"/></svg></div>
-      <h3>Competitions &amp; Performance</h3>
-      <p>Racing, strategy, and pushing your limits safely.</p>
-      <span class="kb-cat-arrow">Explore →</span>
-    </a>
-    <a class="kb-cat-card" href="knowledge-base/meteorology.html">
-      <div class="kb-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 19a4.5 4.5 0 0 1-.5-9 5 5 0 0 1 9.6-1.5A4 4 0 0 1 17.5 16.5"/><path d="M6.5 19h11a3.5 3.5 0 0 0 0-7"/></svg></div>
-      <h3>Meteorology &amp; Weather Analysis</h3>
-      <p>Read the skies better before you fly.</p>
-      <span class="kb-cat-arrow">Explore →</span>
-    </a>
-    <a class="kb-cat-card" href="knowledge-base/industry.html">
-      <div class="kb-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 12.6 12 21.2 2.8 12 4 4l8-1.2 8.6 8.8Z"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
-      <h3>Industry &amp; Community</h3>
-      <p>The business and the people behind the sport.</p>
-      <span class="kb-cat-arrow">Explore →</span>
-    </a>
-    <a class="kb-cat-card" href="knowledge-base/technical.html">
-      <div class="kb-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
-      <h3>Technical Focus &amp; Flight Safety</h3>
-      <p>From fundamental aerodynamics to cutting-edge innovation.</p>
-      <span class="kb-cat-arrow">Explore →</span>
-    </a>
-  </div>
-</section>
+</div>
 
 </div><!-- /.page-wrap -->
 
@@ -287,6 +714,102 @@
 </footer>
 
 <script src="script.js?v=44d793b6"></script>
+<script>
+/* Scroll is altitude: it drives the sky, the rail and the readout. */
+(function(){
+  var clb = document.getElementById('clb');
+  if(!clb) return;
+  var altEl = document.getElementById('clbAlt'),
+      stations = [].slice.call(document.querySelectorAll('.clb-station')),
+      TOP = 4000, reduce = matchMedia('(prefers-reduced-motion:reduce)').matches,
+      ticking = false;
+
+  function frame(){
+    ticking = false;
+    var doc = document.documentElement,
+        max = doc.scrollHeight - innerHeight,
+        p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
+    clb.style.setProperty('--p', p.toFixed(4));
+    clb.classList.toggle('is-climbing', scrollY > innerHeight * 0.35);
+    if(altEl) altEl.textContent = Math.round(p * TOP / 10) * 10;
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(frame); } }
+  addEventListener('scroll', onScroll, {passive:true});
+  addEventListener('resize', onScroll);
+  frame();
+
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    },{threshold:.18});
+    stations.forEach(function(st){ io.observe(st); });
+  } else {
+    stations.forEach(function(st){ st.classList.add('is-in'); });
+  }
+
+  var nums = [].slice.call(document.querySelectorAll('.clb-stats b[data-to]'));
+  nums.forEach(function(n){
+    var to = +n.getAttribute('data-to');
+    if(reduce){ n.textContent = to; return; }
+    var t0 = null;
+    function step(t){
+      if(!t0) t0 = t;
+      var p = Math.min(1, (t - t0) / 1100);
+      n.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+      if(p < 1) requestAnimationFrame(step);
+    }
+    setTimeout(function(){ requestAnimationFrame(step); }, 900);
+  });
+
+  // a tile that cannot load just stays a dark square
+  [].forEach.call(document.images, function(img){
+    img.addEventListener('error', function(){ img.style.visibility = 'hidden'; });
+  });
+})();
+</script>
+
+<script>
+/* Open the door: the hole grows from wherever you clicked until it is the page. */
+(function(){
+  var prt = document.getElementById('prt');
+  if(!prt || !document.documentElement.classList.contains('prt-armed')) return;
+  var hit = document.getElementById('prtHit'),
+      skip = document.getElementById('prtSkip'),
+      done = false;
+
+  if(hit) hit.focus({preventScroll:true});
+
+  function remember(){ try{ sessionStorage.setItem('pga.kb.portal','1'); }catch(e){} }
+  function finish(){
+    document.documentElement.classList.remove('prt-armed');
+    prt.parentNode && prt.parentNode.removeChild(prt);
+  }
+  function open(e){
+    if(done) return;
+    done = true;
+    remember();
+    if(e && e.clientX){
+      prt.style.setProperty('--x', e.clientX + 'px');
+      prt.style.setProperty('--y', e.clientY + 'px');
+    }
+    prt.classList.add('is-open');
+    var shade = document.getElementById('prtShade'), ended = false;
+    function after(){ if(!ended){ ended = true; finish(); } }
+    shade.addEventListener('transitionend', after);
+    setTimeout(after, 1400);            // never leave the page stuck behind the door
+  }
+  function straightThrough(){ if(done) return; done = true; remember(); finish(); }
+
+  hit && hit.addEventListener('click', open);
+  skip && skip.addEventListener('click', straightThrough);
+  addEventListener('keydown', function(e){
+    if(e.key === 'Escape') straightThrough();
+    if((e.key === 'Enter' || e.key === ' ') && document.activeElement === hit) open();
+  });
+  // if anything above failed to run, the door is not allowed to trap anyone
+  setTimeout(function(){ if(!done && !prt.classList.contains('is-open')) prt.style.pointerEvents = 'auto'; }, 50);
+})();
+</script>
 <!-- nav-menu -->
 <script defer src="nav-menu.js?v=001fbbf6"></script>
 <!-- /nav-menu -->
