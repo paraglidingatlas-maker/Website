@@ -802,3 +802,24 @@ a.v2-dep:hover{padding-left:.5rem;} a.v2-dep:hover .v2-dep-trip b{color:var(--or
   .v2-next span:not(.v2-next-k){grid-column:1;}
   .v2-next i{grid-row:2/4;grid-column:2;}
 }
+
+/* ---- the nav on the way up (v2-immersive.js): pinned, dark glass, and the
+   sky's cool light in the top-right corner; follows the time-of-day sky ---- */
+.page-wrap > nav.v2-nav-pinned{position:fixed;top:0;left:0;right:0;z-index:60;translate:0 -110%;
+  border-bottom:1px solid;border-image:linear-gradient(90deg,transparent,var(--edge) 18%,var(--edge) 82%,transparent) 1;
+  background:
+    radial-gradient(40% 200% at 94% 0%, rgba(64,86,178,.42) 0%, var(--sky-cool) 45%, transparent 75%),
+    radial-gradient(30% 160% at 8% 0%, var(--sky-warm), transparent 70%),
+    rgba(18,19,23,.84);
+  -webkit-backdrop-filter:blur(14px) saturate(1.15);backdrop-filter:blur(14px) saturate(1.15);
+  box-shadow:0 10px 30px -18px rgba(0,0,0,.7);text-shadow:none;}
+.page-wrap > nav.v2-nav-pinned.v2-nav-shown{translate:0 0;transition:translate .38s cubic-bezier(.2,.8,.2,1);}
+.page-wrap > nav.v2-nav-pinned:not(.v2-nav-shown){transition:translate .28s ease-in;}
+.page-wrap > nav.v2-nav-pinned::before{opacity:.8;}
+.page-wrap > nav.v2-nav-pinned{padding-top:1rem;padding-bottom:1rem;}
+.page-wrap:has(> .v2-home-hero) > nav.v2-nav-pinned .nav-links a{color:var(--gray-light);}
+/* anything else that sticks to the top steps down under it */
+.v2-tools,.v2-nl{transition:top .38s cubic-bezier(.2,.8,.2,1);}
+html.v2-nav-up .v2-tools{top:var(--v2-nav-h,5rem);}
+html.v2-nav-up .v2-nl{top:calc(var(--v2-nav-h,5rem) + 1.5rem);}
+@media (prefers-reduced-motion: reduce){ .page-wrap > nav.v2-nav-pinned{transition:none!important;} }

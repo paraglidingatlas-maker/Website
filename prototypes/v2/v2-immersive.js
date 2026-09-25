@@ -325,3 +325,61 @@
     };
   }
 })();
+
+/* THE NAV COMES BACK ON THE WAY UP.
+   Past the first screen the nav rides along out of sight; the moment the
+   visitor scrolls up it slides down, pinned, on a dark glass with the sky's
+   cool light in its top-right corner, and it goes again on the next scroll
+   down. Back at the top it drops into its place in the page. Not on the trip
+   pages: their jump bar (.dst-jump) already holds the top of the screen there.
+   Scroll-driven only; no frame runs while the page is still. */
+(function () {
+  var d = document, w = window;
+  if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+  function init() {
+  var nav = d.querySelector(".page-wrap > nav");
+  if (!nav || d.querySelector(".dst-jump")) return;
+  var root = d.documentElement, spacer = null, pinned = false, shown = false, lastY = w.scrollY, queued = false;
+  function threshold() {
+    var hero = d.querySelector(".page-wrap > .kit-hero, .page-wrap > header");
+    var h = hero ? hero.getBoundingClientRect().bottom + w.scrollY : 0;
+    return Math.max(nav.offsetHeight * 3, Math.min(h, innerHeight));
+  }
+  function pin(on) {
+    if (on === pinned) return;
+    pinned = on;
+    if (on) {
+      if (getComputedStyle(nav).position === "relative" || getComputedStyle(nav).position === "static") {
+        spacer = spacer || d.createElement("div");
+        spacer.style.height = nav.offsetHeight + "px"; spacer.setAttribute("aria-hidden", "true");
+        nav.parentNode.insertBefore(spacer, nav);
+      }
+      nav.classList.add("v2-nav-pinned");
+      root.style.setProperty("--v2-nav-h", nav.offsetHeight + "px");
+    } else {
+      nav.classList.remove("v2-nav-pinned");
+      if (spacer && spacer.parentNode) spacer.parentNode.removeChild(spacer);
+    }
+  }
+  function show(on) {
+    if (on === shown) return;
+    shown = on;
+    nav.classList.toggle("v2-nav-shown", on);
+    root.classList.toggle("v2-nav-up", on);
+  }
+  function update() {
+    queued = false;
+    var y = w.scrollY, dy = y - lastY; lastY = y;
+    if (nav.classList.contains("is-open")) return;          // the phone menu is open
+    if (y <= 2) { show(false); pin(false); return; }
+    if (!pinned) { if (y > threshold()) pin(true); else return; }
+    if (dy < -4) show(true);
+    else if (dy > 4) show(false);
+  }
+  w.addEventListener("scroll", function () {
+    if (queued) return; queued = true; requestAnimationFrame(update);
+  }, { passive: true });
+  // a click inside the nav (a link, the menu) keeps it where it is
+  nav.addEventListener("focusin", function () { if (pinned) show(true); });
+  }
+})();
