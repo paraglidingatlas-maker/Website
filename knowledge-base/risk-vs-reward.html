@@ -117,7 +117,7 @@
 <link rel="preload" href="../assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../fonts.css?v=1f73ef11">
-<link rel="stylesheet" href="../styles.css?v=f61bb558">
+<link rel="stylesheet" href="../styles.css?v=71145e64">
 <style> and body,
   and replaces the episode grid with the freshly generated one so episodes stay current.
 -->
@@ -392,6 +392,21 @@
     .kr-on .kr{opacity:1;transform:none;transition:none;} .kr-on .kr-wipe img{clip-path:none;transition:none;}
     .band .num,.k-hero-media img,.kb-atmos::before,.kb-atmos i{transform:none!important;}
   }
+
+  /* ===== Horizon (PROJECT_HANDOFF.md 68, 75) ================================
+     Light is never cut, lines fade at their ends, panels are lit rather than
+     boxed. A lighter section fades in and out instead of being a grey slab
+     with two cut edges; section rules fade; cards are lit from the bracket
+     corner; the "check" box is lit from its orange edge with no drawn frame. */
+  .k-sec.card{background:linear-gradient(180deg,transparent 0%,var(--card) 16%,var(--card) 84%,transparent 100%);}
+  .k-sec + .k-sec,.band-fig{border-image:linear-gradient(90deg,transparent,var(--rule) 12%,var(--rule) 88%,transparent) 1;}
+  .kb-take li,.kb-qa,details{border-image:linear-gradient(90deg,var(--line),var(--line) 70%,transparent) 1;}
+  .cardx,.k-sec.card .cardx,.nx a{
+    background:radial-gradient(120% 120% at 0% 0%,rgba(180,180,180,.075) 0%,rgba(180,180,180,.025) 45%,transparent 78%);
+    border:0;border-top:1px solid;border-image:linear-gradient(90deg,var(--edge-hi),var(--line) 55%,transparent) 1;}
+  .nx a:hover{background:radial-gradient(120% 120% at 0% 0%,rgba(255,117,23,.09) 0%,rgba(180,180,180,.03) 45%,transparent 78%);}
+  .check{background:radial-gradient(90% 160% at 0% 50%,rgba(255,117,23,.13) 0%,rgba(255,117,23,.04) 50%,transparent 85%);
+    border:0;border-left:3px solid var(--orange);}
 </style>
 <!-- site-schema -->
 <script type="application/ld+json">

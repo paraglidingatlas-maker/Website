@@ -1690,3 +1690,10 @@ footer::after{content:"";position:absolute;z-index:-1;pointer-events:none;
   -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 35%,transparent 100%);
           mask-image:linear-gradient(180deg,#000 0%,#000 35%,transparent 100%);}
 .page-wrap:has(> .lib-wrap, > .enq-hero, > .pol-hero, > .tg-hero, > .sm-wrap, > .nf) > nav{background:none;}
+
+/* ===== Horizon on the episode popup ========================================
+   It sits over a dimmed page, so it stays solid to be read. It is lit from
+   its bracket corner and floats on a deep shadow instead of a drawn frame. */
+.kb-card{
+  background:radial-gradient(120% 55% at 0% 0%,rgba(255,117,23,.075),rgba(255,117,23,0) 70%),var(--card);
+  border-color:var(--line);box-shadow:0 30px 90px rgba(0,0,0,.6);}

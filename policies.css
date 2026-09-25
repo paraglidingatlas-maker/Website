@@ -63,3 +63,14 @@
 .pol-verse p:last-child{margin-bottom:0;}
 .pol-verse-en{color:var(--gray-light);font-style:italic;margin:0 0 1.4rem;line-height:1.8;}
 .pol-lede{color:var(--white);font-size:clamp(1.02rem,1.7vw,1.18rem);line-height:1.8;margin:0 0 1.6rem;}
+
+/* ===== Horizon (PROJECT_HANDOFF.md 68, 75) =====
+   Rules fade at their ends, the orange-edged notes glow from their edge instead
+   of sitting on a grey slab, and the contact box is a lit panel. Tables keep
+   their grid: there the lines are doing the reading work. */
+.pol-hero{border-image:linear-gradient(90deg,transparent,var(--rule) 12%,var(--rule) 88%,transparent) 1;}
+.pol-body h2{border-image:linear-gradient(90deg,var(--rule),var(--rule) 55%,transparent) 1;}
+.pol-note,.pol-verse{background:radial-gradient(90% 160% at 0% 50%,rgba(255,117,23,.09) 0%,rgba(255,117,23,.025) 50%,transparent 85%);}
+.pol-contact{border:0;border-top:1px solid;
+  border-image:linear-gradient(90deg,var(--edge-hi),var(--rule) 55%,transparent) 1;
+  background:radial-gradient(120% 130% at 0% 0%,rgba(180,180,180,.06) 0%,transparent 75%);}

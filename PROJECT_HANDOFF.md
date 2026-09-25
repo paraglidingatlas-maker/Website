@@ -4001,3 +4001,17 @@ The "Horizon, site-wide" and "Touch sizes" sections at the end of styles.css.
   1px gaps, so a transparent border alone would still show it.
 - Site cards, rail cards and the related-episode box are lit from the corner; the
   FAQ items keep their shape with a lit fill instead of a flat grey one.
+
+## 75. HORIZON SWEEP: KNOWLEDGE BASE CATEGORIES, PODCAST CARDS, EPISODE POPUP, POLICY PAGES (2026-09-25)
+
+- **Knowledge base category pages** (end of templates/kb/category.css, inlined by
+  generate_kb_pages.py into all 20): lighter sections fade in and out, section
+  and list rules fade, `.cardx` and `.nx a` cards are lit panels, the `.check`
+  box glows from its orange edge with no frame.
+- **Podcast:** testimonial and YouTube cards are lit panels. `.glassB-wrap` lost
+  its page-coloured fill, which is what made the question form read as a dark
+  box on the lighter section behind it.
+- **Episode popup** (`.kb-card`): stays solid, lit from the bracket corner, a
+  softer edge and a deep shadow.
+- **Policy pages** (end of policies.css): rules fade, notes and the Gita verse
+  glow from their orange edge, the contact box is a lit panel. Tables unchanged.

@@ -66,7 +66,7 @@
 <link rel="preload" href="assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css?v=1f73ef11">
-<link rel="stylesheet" href="styles.css?v=f61bb558">
+<link rel="stylesheet" href="styles.css?v=71145e64">
 <style>
   .pod-hero{position:relative;min-height:64vh;display:flex;align-items:flex-end;}
   .pod-hero-media{position:absolute;inset:0;z-index:-2;}
@@ -400,7 +400,7 @@
   }
   .testi-video:hover{color:var(--orange);}
 
-  .glassB-wrap{background:var(--bg);}
+  .glassB-wrap{background:none;}
   /* ===== QUESTION FORM: split, no box =====
      Three faults went with the card, all of them wrong rather than debatable:
 
@@ -889,6 +889,16 @@
     .host-photo{order:2;max-width:min(72vw,20rem);margin:2.5rem auto 0;}
     .host-copy{order:1;padding-bottom:0;}
   }
+
+  /* ===== Horizon (PROJECT_HANDOFF.md 68, 75) =====
+     Testimonial and YouTube cards are lit from the bracket corner with a top
+     rule that fades right, like every other card on the site, instead of grey
+     boxes with four drawn edges. */
+  .testi-card,.yt-card{
+    background:radial-gradient(120% 110% at 0% 0%,rgba(180,180,180,.075) 0%,rgba(180,180,180,.025) 45%,transparent 78%);
+    border:0;border-top:1px solid;border-image:linear-gradient(90deg,var(--edge-hi),var(--line) 55%,transparent) 1;}
+  .testi-card:hover,.yt-card:hover,.yt-card:focus-visible{
+    background:radial-gradient(120% 110% at 0% 0%,rgba(255,117,23,.08) 0%,rgba(180,180,180,.03) 45%,transparent 78%);}
 </style>
 <!-- site-schema -->
 <script type="application/ld+json">
