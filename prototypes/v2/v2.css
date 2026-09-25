@@ -454,3 +454,22 @@ a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
 [data-v2="kb"] .k-hero-copy h1{font-weight:700;letter-spacing:-.02em;}
 [data-v2="kb"] .k-head h2{font-size:var(--fs-h2);line-height:1.15;letter-spacing:-.015em;}
 [data-v2="kb"] .k-head{margin-bottom:var(--sp-4);}
+
+/* ===========================================================================
+   TOPICS (prototypes/v2/tags.html, tags/safety.html, <body data-v2="tg">)
+   The sky hero from the kit; the cloud, the list and the sort keep their own
+   look and move into the kit column (--measure) and gutter.
+   ========================================================================= */
+.v2-tg-hero .breadcrumb{margin:0 0 var(--sp-3);font-size:var(--fs-small);color:var(--gray);}
+.v2-tg-hero .breadcrumb a{color:var(--gray-light);}
+.v2-tg-hero h1 .tg-hash{color:var(--orange);margin-right:.05em;}
+[data-v2="tg"] .kit-hero.is-sky{padding-left:max(var(--gutter), calc((100% - var(--measure)) / 2));padding-right:max(var(--gutter), calc((100% - var(--measure)) / 2));}
+[data-v2="tg"] .tg-cloud{margin:var(--sp-3) max(var(--gutter), calc((100% - var(--measure)) / 2)) 0;}
+[data-v2="tg"] .tg-back{padding:var(--sp-4) max(var(--gutter), calc((100% - var(--measure)) / 2)) var(--sp-section);}
+[data-v2="tg"] .tg-answer{margin:0 max(var(--gutter), calc((100% - var(--measure)) / 2)) var(--sp-4);font-size:var(--fs-lead);line-height:1.75;}
+[data-v2="tg"] .tg-list{padding:0 max(var(--gutter), calc((100% - var(--measure)) / 2)) var(--sp-section);}
+[data-v2="tg"] .tg-sort{margin-left:max(var(--gutter), calc((100% - var(--measure)) / 2));margin-right:max(var(--gutter), calc((100% - var(--measure)) / 2));}
+[data-v2="tg"] .tg-tile{min-height:52px;}
+[data-v2="tg"] .tg-sort{padding-left:0;padding-right:0;}
+/* hairline grid: inner lines stay, the outer frame goes (Horizon) */
+[data-v2="tg"] .tg-cloud{border-color:transparent;background-clip:padding-box;}
