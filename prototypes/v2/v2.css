@@ -811,7 +811,6 @@ html.v2-nav-up .v2-nl{top:calc(var(--v2-nav-h,5rem) + 1.5rem);}
    let it through; small cards keep theirs, a shade lifted off the night. */
 body{background:
   linear-gradient(180deg,#17181d 0,var(--bg) 1100px,#121317 62%,#101115 100%) var(--bg);}
-body:has(.dst-jump){background:var(--bg);}   /* trip pages keep their flat ground */
 :is(.cta-band,.destination,.destination.reverse,.podcast,.ep-map-section,.newsletter,.dossier,.kb-hero,.kb-portal){background:transparent;}
 
 /* Survey-map contours (img/contours.svg, drawn by tools/v2_art.py) behind the

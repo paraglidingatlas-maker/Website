@@ -403,7 +403,6 @@
   }
   function scan(root) { (root.querySelectorAll ? root : d).querySelectorAll('img[loading="lazy"]').forEach(mark); }
   function init() {
-    if (d.querySelector(".dst-jump")) return;          // trip pages keep their own image handling
     scan(d);
     if ("MutationObserver" in window) new MutationObserver(function (list) {
       list.forEach(function (m) { m.addedNodes.forEach(function (n) {
