@@ -21,8 +21,8 @@
 <link rel="preload" href="../../assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
-<link rel="stylesheet" href="../../styles.css?v=b3f7c5d8">
-<link rel="stylesheet" href="v2.css">
+<link rel="stylesheet" href="../../styles.css?v=c8d28696">
+<link rel="stylesheet" href="v2.css?v=b973639f">
 <!-- site-schema -->
 <script type="application/ld+json">
 {
@@ -75,7 +75,7 @@
  ]
 }
 </script>
-<!-- /site-schema --><script src="v2.js"></script>
+<!-- /site-schema --><script src="v2.js?v=16cea071"></script>
 </head>
 <body>
 
@@ -208,8 +208,35 @@
   </div>
 </section>
 
+<section class="kit-band"><div class="kit-in">
+  <p class="sg-label">11 &middot; Tools: search, filters, sort (library)</p>
+  <div class="v2-tools" style="position:static">
+    <div class="v2-tools-row">
+      <label class="v2-find"><span class="v2-sr">Search</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input class="v2-find-input" type="search" placeholder="Search by title or guest"></label>
+      <label class="v2-sort"><span>Sort</span><select><option>Newest first</option><option>Oldest first</option></select></label>
+    </div>
+    <div class="v2-chips"><button class="v2-chip" type="button" aria-pressed="true">All <i>86</i></button><button class="v2-chip" type="button" aria-pressed="false">Risk vs Reward <i>12</i></button><button class="v2-chip" type="button" aria-pressed="false">Sky Gods <i>4</i></button></div>
+  </div>
+  <p class="kit-intro" style="font-size:var(--fs-body-s)">One filter pressed at a time, orange when on. Fields 48px tall and 16px text, so phones never zoom.</p>
+</div></section>
+
+<section class="kit-band"><div class="kit-in">
+  <p class="sg-label">12 &middot; Pager</p>
+  <nav class="v2-pager" style="justify-content:flex-start;margin:0"><button class="v2-pg" disabled>&larr;</button><button class="v2-pg is-on" aria-current="page">1</button><button class="v2-pg">2</button><button class="v2-pg">3</button><button class="v2-pg">&rarr;</button></nav>
+</div></section>
+
+<section class="kit-band"><div class="kit-in">
+  <p class="sg-label">13 &middot; Form field</p>
+  <form class="v2-form" onsubmit="return false"><label class="v2-field"><span>Your name</span><input type="text"></label><label class="v2-field"><span>Your email</span><input type="email"></label><label class="v2-field is-wide"><span>Your question or topic</span><textarea rows="2"></textarea></label><div class="v2-form-foot"><button class="btn-solid" type="button"><span>Submit Question</span></button></div></form>
+</div></section>
+
+<section class="kit-band"><div class="kit-in">
+  <p class="sg-label">14 &middot; Rail</p>
+  <p class="kit-intro" style="font-size:var(--fs-body-s);margin:0">A native horizontal scroller (finger, trackpad, keyboard) with snap and ends that dissolve. Arrow buttons only under a mouse and only when there is somewhere to go. Nothing moves on its own: no marquee, nothing running off screen. Used for the homepage episodes and the podcast testimonials.</p>
+</div></section>
+
 <section class="kit-band"><div class="kit-in kit-narrow">
-  <p class="sg-label">10 &middot; Rules</p>
+  <p class="sg-label">15 &middot; Rules</p>
   <ul class="sg-do">
     <li><b>Structure is shared, character is not.</b> The knowledge base door, the Kenya photo sequence, the library's stone tiles, the booking card and the globe keep their own design.</li>
     <li>Every section opens with the one section header. No other heading styles.</li>
@@ -218,6 +245,7 @@
     <li>Nothing ends in a hard edge unless it is a card; lines fade at their ends.</li>
     <li>One solid button per group. Touch targets 44px. Text never below 11px.</li>
     <li>A new pattern is added to this page first, then used.</li>
+    <li>Reduced motion: nothing moves. Save-Data and 2G/3G: no video.</li>
   </ul>
 </div></section>
 </div><!-- /.page-wrap -->
