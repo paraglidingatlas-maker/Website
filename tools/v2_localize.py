@@ -108,6 +108,8 @@ def main():
                 problems += 1
         if "v2.js" not in html:
             html = html.replace("</head>", '<script src="%sv2.js"></script>\n</head>' % up, 1)
+        if "v2-immersive.js" not in html:
+            html = html.replace("</head>", '<script src="%sv2-immersive.js"></script>\n</head>' % up, 1)
         if not re.search(r'<link rel="canonical" href="https://paraglidingatlas\.com/', html):
             print("  no live canonical:", rel)
             problems += 1
