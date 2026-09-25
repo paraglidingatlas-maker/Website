@@ -711,3 +711,24 @@ html body .clb-strip{-webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(1
 @media (hover:none){
   .v2-glimpse .ep-play-btn,.v2-glimpse .ep-row:first-child .ep-play-btn{place-self:end end;width:34px;height:34px;margin:0 -6px -6px 0;}
 }
+/* playing: one line under the title. The button on the art is the only
+   play/pause (the big second one is hidden); back and forward sit either side
+   of the progress bar; no band of empty space between the title and it. */
+.v2-glimpse .ep-row.playing .ep-row-main{padding-bottom:.35rem;}
+.v2-glimpse .ep-row.playing .ep-row-title{color:var(--white);}
+.v2-glimpse .ep-row.playing:hover .ep-row-title{color:var(--orange);}
+.v2-glimpse .ep-row.playing .ep-play-btn{background:var(--orange);border-color:var(--orange);opacity:1;}
+.v2-glimpse .ep-row.playing .ep-play-btn svg{color:var(--ink);}
+.v2-glimpse .ep-player{margin:0;padding:0 0 var(--sp-2) calc(72px + var(--sp-3));}
+.v2-glimpse .ep-row.playing .ep-player{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.6rem;}
+.v2-glimpse .ep-skip-controls{display:contents;}
+.v2-glimpse .ep-play-btn-lg{display:none;}
+.v2-glimpse .ep-skip-btn[data-skip="-15"]{grid-column:1;grid-row:1;}
+.v2-glimpse .ep-progress-row{grid-column:2;grid-row:1;gap:.7rem;}
+.v2-glimpse .ep-skip-btn[data-skip="15"]{grid-column:3;grid-row:1;}
+.v2-glimpse .ep-skip-btn{flex-direction:row;gap:.25rem;font-size:var(--fs-micro);color:var(--gray-light);}
+.v2-glimpse .ep-skip-btn svg{width:17px;height:17px;}
+.v2-glimpse .ep-time{font-size:var(--fs-micro);font-variant-numeric:tabular-nums;color:var(--gray-light);}
+.v2-glimpse .ep-progress-track{height:3px;border-radius:2px;}
+.v2-glimpse .ep-progress-fill{border-radius:2px;}
+@media (max-width:640px){ .v2-glimpse .ep-player,.v2-glimpse .ep-row:first-child .ep-player{padding-left:0;} }
