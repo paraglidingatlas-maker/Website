@@ -78,6 +78,49 @@ if (!reduced) {
   }
   sky(); setInterval(sky, 600000);
 
+  /* LOOPING FOOTAGE. <video data-loop="../assets/video/bir"> becomes that loop,
+   * in WebM where the browser is sure of it and MP4 otherwise (and as the
+   * fallback), 1080p or 720p by screen, or 720p always with data-loop-size.
+   * It plays only while on screen and, with data-loop-when, only while the
+   * named ancestor carries is-on (a slideshow slide). It fades in over the
+   * photograph it sits on once it is actually playing. Nobody gets it who
+   * asked for less: reduced motion, Save-Data, or a 2G/3G connection keep the
+   * photograph. The homepage hero has its own copy of this, inline, so it can
+   * start before this file loads. */
+  (function () {
+    var vids = [].slice.call(d.querySelectorAll("video[data-loop]"));
+    if (!vids.length) return;
+    var mm = function (q) { return window.matchMedia && matchMedia(q).matches; };
+    var c = navigator.connection || {};
+    if (mm("(prefers-reduced-motion: reduce)") || c.saveData || /(^|-)(2g|3g)$/.test(c.effectiveType || "")) return;
+    var small = Math.max(screen.width, screen.height) * Math.min(devicePixelRatio || 1, 2) < 1700 || mm("(max-width: 820px)");
+    vids.forEach(function (v) {
+      if (!v.play) return;
+      var base = v.getAttribute("data-loop") + "-" + (v.getAttribute("data-loop-size") || (small ? "720" : "1080"));
+      var webm = v.canPlayType && v.canPlayType('video/webm; codecs="vp9"') === "probably";
+      var host = v.getAttribute("data-loop-when") ? v.closest(v.getAttribute("data-loop-when")) : null;
+      var seen = false, loaded = false;
+      function want() { return seen && (!host || host.classList.contains("is-on")) && !d.hidden; }
+      function sync() {
+        if (!want()) { v.pause(); return; }
+        if (!loaded) {
+          loaded = true;
+          v.src = base + (webm ? ".webm" : ".mp4");
+          if (webm) v.addEventListener("error", function () { v.src = base + ".mp4"; sync(); }, { once: true });
+        }
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+      }
+      v.addEventListener("playing", function () { v.classList.add("is-playing"); });
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (en) { seen = en[0].isIntersecting; sync(); },
+                                 { rootMargin: "200px 0px" }).observe(v);
+      } else { seen = true; }
+      if (host) new MutationObserver(sync).observe(host, { attributes: true, attributeFilter: ["class"] });
+      d.addEventListener("visibilitychange", sync);
+      sync();
+    });
+  })();
+
   // iOS applies :active only while something on the page listens for
   // touchstart. Without this the pressed state never shows under a finger.
   d.addEventListener("touchstart", function () {}, { passive: true });

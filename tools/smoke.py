@@ -47,7 +47,11 @@ def serve():
     s.bind(("127.0.0.1", 0))
     port = s.getsockname()[1]
     s.close()
-    httpd = socketserver.TCPServer(("127.0.0.1", port), H)
+    # Threaded: a looping video holds its connection open while it streams,
+    # and a one-request-at-a-time server then stalls every other request on
+    # the page until the test times out. Real hosting serves them in parallel.
+    socketserver.ThreadingTCPServer.daemon_threads = True
+    httpd = socketserver.ThreadingTCPServer(("127.0.0.1", port), H)
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
     return httpd, "http://127.0.0.1:%d" % port
 

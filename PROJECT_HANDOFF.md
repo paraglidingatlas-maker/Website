@@ -4104,3 +4104,21 @@ The "Horizon, site-wide" and "Touch sizes" sections at the end of styles.css.
 - YouTube is unreachable from the build container, so this was built and is
   tested against a stand-in that speaks the same protocol (smoke.py
   `episode_sync`). Worth one real check on the live site.
+
+## 80. BIR BILLING FOOTAGE ON THE INDIA HERO AND THE HOMEPAGE HIMALAYA CARD (2026-09-25)
+
+- Clips 6 and 7 (Bir Billing, confirmed by Aninder) joined with a 0.8s crossfade
+  into a 16.9s seamless loop: assets/video/bir-1080 and bir-720, WebM and MP4.
+- **India hero:** the video sits in the first slide ("Above the snowline") over
+  its photograph, and plays only while that slide is showing.
+- **Homepage Himalaya card:** the video sits over the photo with the same mask
+  and the same scroll drift; always the 720p file.
+- **Shared loader** in script.js ("LOOPING FOOTAGE"): any `<video data-loop="base">`
+  picks WebM/MP4 and 1080/720, plays only while on screen and, with
+  `data-loop-when="selector"`, only while that ancestor has `is-on`. Fades in on
+  `playing`. Skipped for reduced motion, Save-Data and 2G/3G. It observes the
+  video itself: its parent can be `display:contents` (the homepage card's link),
+  which never intersects.
+- **smoke.py's server is threaded now.** A streaming video holds its connection,
+  and the single-threaded server stalled every other request until the booking
+  bar test timed out.
