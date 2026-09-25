@@ -233,7 +233,7 @@
       var half = function () { return rail.scrollWidth / 2; };
       var go = function () {
         raf = 0;
-        if (!seen || hold || down || d.hidden) return;
+        if (!seen || hold || down || d.hidden) return;   // down: being dragged
         if (Math.abs(rail.scrollLeft - set) > 2) x = rail.scrollLeft;   // the visitor moved it
         x += 0.45; if (x >= half()) x -= half();
         rail.scrollLeft = x; set = rail.scrollLeft;
@@ -242,7 +242,9 @@
       var wake = function () { if (!raf) raf = requestAnimationFrame(go); };
       var pause = function () { hold = 1; clearTimeout(resume); };
       var later = function () { clearTimeout(resume); resume = setTimeout(function () { hold = 0; x = rail.scrollLeft; wake(); }, 2500); };
-      rail.addEventListener("pointerenter", pause); rail.addEventListener("pointerleave", later);
+      // hovering does not stop it; grabbing or pressing it does, and it drifts on again after
+      rail.addEventListener("pointerdown", pause);
+      w.addEventListener("pointerup", function () { if (hold) later(); });
       rail.addEventListener("touchstart", pause, { passive: true }); rail.addEventListener("touchend", later);
       rail.addEventListener("focusin", pause); rail.addEventListener("focusout", later);
       rail.addEventListener("wheel", function () { pause(); later(); }, { passive: true });
