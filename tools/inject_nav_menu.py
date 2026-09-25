@@ -33,6 +33,16 @@ AUDIO_CLOSE = "<!-- /episode-audio -->"
 AUDIO_ASSETS = ("waveforms.js", "episode-audio.js")
 AUDIO_NEEDLE = 'class="ep-au"' 
 
+# A third pair, for script.js, which carries the shared feedback, the haptic tap
+# and the page transition hand-off (see the end of that file). Most pages already
+# load it from their own template; the episode pages, the library, the sitemap
+# and 404 never did. Those get it here, deferred, and a page that already has it
+# is left alone, because loading it twice would declare its constants twice.
+SHARED_OPEN = "<!-- site-script -->"
+SHARED_CLOSE = "<!-- /site-script -->"
+SHARED_ASSET = "script.js"
+SHARED_HAS = re.compile(r'<script[^>]*\ssrc="(?:[^"]*/)?script\.js(?:\?[^"]*)?"')
+
 # 404.html is served for any URL at any depth, so a relative src resolves
 # differently for /x.html than for /episodes/y.html. It uses root-absolute paths
 # for everything else for that reason, and the prefix comes from site_config so
@@ -63,7 +73,7 @@ def prefix(page):
 
 
 def main():
-    n = skipped = audio = 0
+    n = skipped = audio = shared = 0
     for p in pages():
         h = open(p, encoding="utf-8", errors="replace").read()
         # Only pages that actually carry the header nav.
@@ -75,6 +85,12 @@ def main():
             continue
         h = re.sub(re.escape(MARK_OPEN) + r".*?" + re.escape(MARK_CLOSE) + r"\n?",
                    "", h, flags=re.S)
+        h = re.sub(re.escape(SHARED_OPEN) + r".*?" + re.escape(SHARED_CLOSE) + r"\n?",
+                   "", h, flags=re.S)
+        if not SHARED_HAS.search(h):
+            h = h.replace("</body>", '%s\n<script defer src="%s%s"></script>\n%s\n' % (
+                SHARED_OPEN, prefix(p), SHARED_ASSET, SHARED_CLOSE) + "</body>", 1)
+            shared += 1
         tag = '%s\n<script defer src="%s%s"></script>\n%s\n' % (
             MARK_OPEN, prefix(p), ASSET, MARK_CLOSE)
         h = h.replace("</body>", tag + "</body>", 1)
@@ -93,6 +109,7 @@ def main():
         n += 1
     print("nav menu script on %d pages  (%d pages have no header nav)" % (n, skipped))
     print("audio player script on %d pages" % audio)
+    print("shared script added to %d pages that did not load it" % shared)
     if n == 0:
         raise SystemExit("inject_nav_menu matched no pages, which cannot be right")
 

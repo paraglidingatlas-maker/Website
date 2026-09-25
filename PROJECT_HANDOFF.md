@@ -3809,3 +3809,61 @@ reported. `drop-shadow` follows the strokes and nothing else.
 
 The three sparkle spans are hidden rather than deleted, because the markup is hand
 written in index.html.
+
+## 67. PAGE TRANSITIONS AND ONE SET OF FEEDBACK FOR EVERYTHING PRESSABLE
+
+All of it lives in two places: the **Page transitions** and **Feedback** sections
+at the end of `styles.css`, and the last block of `script.js`. The numbers are
+tokens in `:root`: `--lift`, `--press`, `--press-card`, `--ease-out`, `--t-press`,
+`--lit`.
+
+### Page transitions
+- `@view-transition{navigation:auto}` inside `prefers-reduced-motion:no-preference`.
+  Browsers without cross-document view transitions, and reduced motion, load pages
+  exactly as before.
+- The header is named `site-nav` and held still (group and images `animation:none`,
+  old image hidden). When only one side has it, it fades like the page.
+- **Not under the knowledge base door**: `.iris-on .page-wrap > nav` is unnamed, or
+  the header would be painted above the door for the length of the fade.
+- **Thumbnail to player**: each episode page writes `view-transition-name:ep-<slug>`
+  on `.cd-player` (generate_chapter_deck.py). script.js gives the clicked picture
+  the same name at the last moment, one element only (two with one name cancel the
+  whole transition). Works from the topic cards, the knowledge base hub and the
+  episode popup's still. Skipped for `#chapter` links, and on V1 pages at 820 and
+  below, where the chapter list sits above the player and the picture would fly off
+  the screen (`!important` in episode.css, because the name is inline).
+- `.cd-player` now shows the episode's mqdefault still (`--cd-poster`, validated ids
+  only) until the iframe paints, so the morph lands on a picture.
+- **pageswap cannot hit-test**: `elementFromPoint` answers `<html>` for every point by
+  then. Whether the header is covered is read at the click instead.
+
+### Feedback
+- **Buttons** press in with `scale`, never `transform`, because every button spends
+  its transform on the skew. Selector list in styles.css.
+- **Cards** rise by `--lift` on hover (inside `hover:hover`) or keyboard focus, and
+  set `--lit:1`, which their brackets read. Cards that are links also press in.
+  Hairline grids and full-width rows (`.destination`, `.kdates-card`, `.tg-tile`, V1
+  topic rows) light their brackets without rising. `.destination` draws them inset.
+- **A transition list is one property.** A component that declares its own
+  `transition` must add `var(--t-press)` to it or its press and lift snap. That is
+  why ~20 component rules carry the token.
+- **Adding a card**: put its class in the lift list (or the no-lift list) and in the
+  bracket lists; if it already has a top-left bracket at rest, it goes in the list
+  that only adds the bottom-right one. Remove any `transform:translateY` hover of its
+  own, or it rises twice.
+- **Text links** in running copy (`p`, `li`, `figcaption`, `dd`, outside nav and
+  footer, no class) draw a background underline in; the three standalone underlined
+  links on the homepage draw an orange line over their white one.
+- **Focus**: one orange 2px ring at zero specificity, so deliberate component focus
+  styles still win.
+- **Haptics**: `PGA.haptic()` in script.js, moved from the door, which now calls it.
+  Fired on Book a Call, Enquire Now and the menu, in the capture phase because the
+  menu button stops its own click. The hidden iOS label stops its click from
+  bubbling, or it would close the menu the button just opened.
+- `inject_nav_menu.py` now adds script.js (deferred, between `site-script` markers)
+  to the 96 pages that never loaded it: episodes, library, sitemap, 404.
+
+### Left alone, deliberately
+- Podcast page cards (`.yt-card`, `.testi-card`) keep their own hover: that page's
+  cleanup is its own task.
+- Footer column links keep their colour and nudge rather than an underline.

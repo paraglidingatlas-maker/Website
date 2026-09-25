@@ -654,8 +654,18 @@ def player_html(meta):
              or "https://podcasts.apple.com/us/podcast/"
                 "paragliding-atlas-by-aninder-singh/id1735782803")
     if vid:
+        # THE PLAYER IS THE OTHER END OF THE PAGE TRANSITION. It carries this
+        # episode's view-transition-name, and script.js gives the same name to
+        # the thumbnail a visitor clicked on the page before, so the browser
+        # morphs the one into the other. The still under the iframe is the same
+        # mqdefault the topic cards load, usually already in cache, so the morph
+        # lands on the picture rather than on an empty box while YouTube loads.
+        # Only a validated id gets a still (house rule 2).
+        pstyle = "view-transition-name:ep-%s" % meta["slug"]
+        if vid in youtube_ids():
+            pstyle += ";--cd-poster:url(https://i.ytimg.com/vi/%s/mqdefault.jpg)" % vid
         media = (
-            '      <div class="cd-player">\n'
+            '      <div class="cd-player" style="%s">\n' % esc(pstyle) +
             '        <span class="cd-player-corner cd-pc-tl"></span>\n'
             '        <span class="cd-player-corner cd-pc-br"></span>\n'
             '        <iframe src="https://www.youtube-nocookie.com/embed/%s" title="%s"\n'

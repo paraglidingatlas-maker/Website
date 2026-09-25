@@ -72,7 +72,7 @@
   border-top:1px solid rgba(255,255,255,.17);}
 .khero-tab{position:relative;background:none;border:0;padding:.45rem 0;cursor:pointer;
   font-family:var(--font-body);font-size:clamp(.66rem,1.6vw,.78rem);letter-spacing:.16em;
-  text-transform:uppercase;color:rgba(255,255,255,.52);transition:color .3s ease;}
+  text-transform:uppercase;color:rgba(255,255,255,.52);transition:color .3s ease,var(--t-press);}
 .khero-tab:hover{color:var(--white);}
 .khero-tab.is-on{color:var(--white);}
 .khero-tab:focus-visible{outline:2px solid var(--live);outline-offset:3px;}
@@ -186,7 +186,7 @@
 .kmap-ctl{position:absolute;right:.7rem;bottom:.7rem;z-index:4;display:flex;gap:.35rem;}
 .kmap-btn{width:34px;height:34px;padding:0;background:rgba(20,21,25,.86);
   border:1px solid var(--edge-hi);color:var(--white);font-family:var(--font-body);
-  font-size:1rem;line-height:1;cursor:pointer;transition:border-color .2s ease,opacity .2s ease;}
+  font-size:1rem;line-height:1;cursor:pointer;transition:border-color .2s ease,opacity .2s ease,var(--t-press);}
 /* The third control opens and closes the chart. It used to reset the view,
    with a separate button below the map for the chart, which put two related
    actions in two unrelated places. Switching state resets the view anyway, and
@@ -426,7 +426,7 @@
 .cfl-arrow{position:absolute;z-index:4;top:50%;transform:translateY(-50%);
   width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);
   background:rgba(15,16,19,.4);color:var(--white);cursor:pointer;
-  display:grid;place-items:center;transition:border-color .2s ease,background .2s ease;}
+  display:grid;place-items:center;transition:border-color .2s ease,background .2s ease,var(--t-press);}
 .cfl-arrow:hover{border-color:var(--orange);background:rgba(15,16,19,.75);}
 .cfl-arrow:focus-visible{outline:2px solid var(--live);outline-offset:2px;}
 .cfl-prev{left:clamp(.5rem,2vw,1.6rem);} .cfl-next{right:clamp(.5rem,2vw,1.6rem);}
@@ -623,7 +623,7 @@
 .kkit-count b{color:var(--orange);font-weight:600;}
 .kkit-reset{background:none;border:0;padding:.5rem 0;min-height:44px;cursor:pointer;
   font-family:var(--font-body);font-size:.82rem;color:var(--gray);
-  border-bottom:1px solid transparent;transition:color .2s ease,border-color .2s ease;}
+  border-bottom:1px solid transparent;transition:color .2s ease,border-color .2s ease,var(--t-press);}
 .kkit-reset:hover{color:var(--white);border-color:var(--edge-hi);}
 .kkit-actions{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;}
 .kkit-dl{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;
@@ -839,7 +839,7 @@
   font-family:'Poppins',sans-serif;font-size:.82rem;letter-spacing:.09em;text-transform:uppercase;
   color:var(--orange);text-decoration:none;
   border-bottom:1px solid color-mix(in srgb, var(--orange) 45%, transparent);
-  transition:color .2s ease,border-color .2s ease;}
+  transition:color .2s ease,border-color .2s ease,var(--t-press);}
 .kfaq .kfaq-cta:hover{color:var(--orange-lite);border-color:var(--orange-lite);}
 
 .kfaq .kfaq-list{display:flex;flex-direction:column;gap:.65rem;}
@@ -1305,7 +1305,7 @@
   color:var(--gray);}
 .etq .etq-quote figcaption a{color:var(--gray);text-decoration:none;
   border-bottom:1px solid var(--rule);margin-left:.4rem;}
-.etq .etq-quote figcaption a:hover{color:var(--orange);border-bottom-color:var(--live);}
+.etq .etq-quote figcaption a:hover{color:var(--orange);border-bottom-color:transparent;}
 .etq .etq-card.is-last{grid-template-columns:1fr;justify-items:center;text-align:center;}
 .etq .etq-card.is-last .etq-cbody{max-width:46rem;}
 .etq .etq-card.is-last h3.etq-rule{font-size:clamp(2rem,4.6vw,3.9rem);max-width:none;
@@ -1352,7 +1352,7 @@
   margin:.6rem 0 0;padding:.6rem 1.15rem;cursor:pointer;
   background:none;border:1px solid var(--edge);border-radius:999px;
   font-family:var(--font-body);font-size:.88rem;color:var(--gray-light);
-  transition:border-color .25s ease,color .25s ease,background .25s ease;}
+  transition:border-color .25s ease,color .25s ease,background .25s ease,var(--t-press);}
 .etq .etq-toggle:hover{border-color:var(--live);color:var(--white);background:var(--wash);}
 .etq .etq-toggle:focus-visible{outline:2px solid var(--orange);outline-offset:3px;}
 .etq .etq-toggle-chev{width:7px;height:7px;border-right:1.5px solid var(--orange);

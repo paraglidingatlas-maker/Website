@@ -34,7 +34,11 @@
 
   /* CENTER */
   .cd-center{min-width:0;}
-  .cd-player{position:relative;width:100%;aspect-ratio:16/9;background:var(--card);overflow:hidden;margin-bottom:1.2rem;}
+  /* --cd-poster is the episode's own still, written by the generator only for a
+     validated video id. It shows until the iframe paints over it, and it is what
+     a clicked thumbnail morphs into on the way here. */
+  .cd-player{position:relative;width:100%;aspect-ratio:16/9;background:var(--cd-poster,none) center/cover no-repeat,var(--card);overflow:hidden;margin-bottom:1.2rem;
+    view-transition-class:ep-thumb;}
   .cd-player img{width:100%;height:100%;object-fit:cover;opacity:0.55;}
 /* the prototype used a still image here; a real embed needs its own rule or it
    falls back to the default 300x150 iframe size */
@@ -119,6 +123,12 @@
     .cd-rail{position:static;order:-1;background:var(--card);padding:1.1rem;}
     .cd-rail-title{padding-left:0;}
     .cd-chap{padding-left:0.8rem;}
+    /* Stacked, the chapter list comes before the player, so the player opens
+       below the first screen and a clicked thumbnail would fly off the bottom
+       of it. The page cross-fades instead. !important because the name is
+       written on the element itself by the generator. The v2 layout puts the
+       player first and keeps the morph. */
+    .cd-wrap:not(.cd-v2) .cd-main:has(.cd-rail) .cd-player{view-transition-name:none!important;}
   }
 
 .cd-rail-none{color:var(--gray);font-size:0.8rem;line-height:1.5;}

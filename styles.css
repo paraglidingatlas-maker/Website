@@ -64,6 +64,19 @@
   --gutter:clamp(1.5rem,5vw,4rem);     /* side padding of a band */
   --measure:1300px;                    /* widest content column */
 
+  /* FEEDBACK. How everything pressable answers a pointer, a finger or a key,
+     so a card on the knowledge base and a card on the homepage move the same
+     distance at the same speed. The rules that use these are in the Feedback
+     section at the end of this file. A component that declares its own
+     transition list adds var(--t-press) to it, because a transition list is
+     one property and a shared rule cannot add to it from outside. */
+  --lift:-3px;                         /* a card rising under the pointer */
+  --press:.96;                         /* a button pressed in */
+  --press-card:.985;                   /* a card pressed in: bigger, so less */
+  --ease-out:cubic-bezier(.2,.8,.2,1);
+  --t-press:scale .16s var(--ease-out), translate .26s var(--ease-out);
+  --lit:0;                             /* 1 while a card is hovered or focused */
+
   /* BREAKPOINTS cannot be custom properties inside @media, so they are fixed
      here in words: 560px (small phone), 820px (phone to tablet, where every
      two-column layout stacks), 1100px (tablet to desktop). The site had drifted
@@ -295,7 +308,7 @@ img{max-width:100%;display:block;}
   background:var(--orange);color:var(--bg);font-weight:600;font-size:0.95rem;
   padding:0.9rem 1.8rem;
   transform:skewX(-10deg);
-  transition:transform 0.2s ease;
+  transition:transform 0.2s ease, var(--t-press);
 }
 .btn-solid span{display:inline-block;transform:skewX(10deg);}
 .btn-solid:hover{transform:skewX(-10deg) translateY(-2px);}
@@ -304,12 +317,13 @@ img{max-width:100%;display:block;}
   padding:0.6rem 0.2rem;
   border-top:1px solid var(--edge-hi);
   border-bottom:1px solid var(--edge-hi);
-  transition:transform 0.2s ease;
+  transition:transform 0.2s ease, var(--t-press);
 }
 .btn-lines:hover{transform:translateY(-2px);}
 
 /* DESTINATIONS */
 .destination{
+  position:relative;
   display:grid;grid-template-columns:1.1fr 1fr;gap:0;
   align-items:stretch;
   background:var(--bg);
@@ -606,7 +620,7 @@ img{max-width:100%;display:block;}
 .cta-wa{display:inline-flex;align-items:center;justify-content:center;
   transform:skewX(-10deg);border:1px solid var(--edge-hi);color:var(--white);
   font-weight:600;font-size:0.9rem;padding:0.75rem 1.5rem;
-  transition:border-color 0.2s ease,color 0.2s ease;}
+  transition:border-color 0.2s ease,color 0.2s ease,var(--t-press);}
 .cta-wa > span{display:inline-flex;align-items:center;gap:0.5rem;transform:skewX(10deg);}
 .cta-wa svg{width:18px;height:18px;}
 .cta-wa:hover{border-color:var(--orange);color:var(--orange);}
@@ -674,9 +688,12 @@ img{max-width:100%;display:block;}
 .ep-card{-webkit-user-select:none;user-select:none;
   flex:0 0 232px;position:relative;display:block;text-decoration:none;
   background:var(--card);border:1px solid var(--edge);
-  transition:border-color 0.25s ease, transform 0.25s ease;
+  transition:border-color 0.25s ease, var(--t-press);
 }
-.ep-card:hover{border-color:var(--live);transform:translateY(-4px);}
+/* The lift is the shared one (Feedback, end of file). It used to be a
+   transform here, which GSAP's reveal overwrote with an inline transform, so
+   after the cards arrived they never actually rose. */
+.ep-card:hover{border-color:var(--live);}
 .ep-card::before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;z-index:9;
   border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
 .ep-stamp{display:flex;justify-content:space-between;padding:0.45rem 0.8rem;font-size:0.55rem;
@@ -733,7 +750,7 @@ img{max-width:100%;display:block;}
   flex:1;min-width:150px;
   transform:skewX(-10deg);
   border:1px solid var(--edge-hi);background:transparent;
-  padding:0.85rem 1rem;transition:background 0.2s ease, border-color 0.2s ease;
+  padding:0.85rem 1rem;transition:background 0.2s ease, border-color 0.2s ease, var(--t-press);
 }
 .listen-btn span{
   display:flex;align-items:center;gap:0.6rem;transform:skewX(10deg);
@@ -1117,7 +1134,7 @@ a.kb-tg:hover{border-color:var(--orange);color:var(--orange);}
   margin-top:auto;flex-wrap:wrap;}
 .kb-actions{display:flex;gap:0.5rem;}
 .kb-cta{color:var(--orange);font-size:0.81rem;font-weight:600;text-decoration:none;
-  border:1px solid var(--live);padding:0.48rem 1rem;transition:background 0.2s ease;
+  border:1px solid var(--live);padding:0.48rem 1rem;transition:background 0.2s ease,var(--t-press);
   display:inline-flex;gap:0.4rem;align-items:center;transform:skewX(-10deg);}
 .kb-cta > *{transform:skewX(10deg);}
 .kb-cta:hover{background:rgba(255,117,23,0.12);}
@@ -1125,7 +1142,7 @@ a.kb-tg:hover{border-color:var(--orange);color:var(--orange);}
 .kb-cta:hover span{transform:translateX(3px);}
 .kb-sh,.kb-ghost{background:transparent;border:1px solid var(--line);
   color:var(--gray-light);cursor:pointer;font-family:var(--font-body);font-size:0.81rem;
-  text-decoration:none;transition:border-color 0.18s ease,color 0.18s ease;
+  text-decoration:none;transition:border-color 0.18s ease,color 0.18s ease,var(--t-press);
   display:inline-flex;align-items:center;gap:0.45rem;padding:0.48rem 0.9rem;
   transform:skewX(-10deg);}
 .kb-sh > *,.kb-ghost > *{transform:skewX(10deg);}
@@ -1370,4 +1387,199 @@ footer{
 .episodes .ep-card.reveal:nth-child(5){transition-delay:0.2s;}
 @media(prefers-reduced-motion: reduce){
   .reveal{opacity:1;transform:none;transition:none;}
+}
+
+/* ===== Page transitions =====================================================
+   Moving between pages cross-fades instead of cutting. This is the browser's
+   own cross-document view transition: both pages have to opt in, and every
+   page that loads this stylesheet does. A browser without it loads pages
+   exactly as before, and with reduced motion the rule is never switched on,
+   so nothing animates at all.
+
+   THE HEADER STAYS STILL. Named, it is lifted out of the fade and shown as the
+   new page's header from the first frame, which on a site where it is the same
+   bar everywhere reads as not moving at all. When only one side has a header
+   (the knowledge base door is up, or script.js saw it was scrolled away or
+   covered), it fades with the page like everything else.
+
+   NOT UNDER THE KNOWLEDGE BASE DOOR. The door is a fixed layer over the whole
+   page, header included, and a named header would be painted above it for the
+   length of the fade and then drop behind it. So while `iris-on` is set the
+   header is not named and the page fades straight into the door.
+
+   A THUMBNAIL BECOMES THE PLAYER. Each episode page names its player
+   ep-<slug>; script.js gives the thumbnail you clicked the same name. Both are
+   16:9, so the picture grows into place without stretching. Nothing on the
+   destination hero slideshows is named: their slides change underneath the
+   fade on their own clock and are left to it.
+   ========================================================================= */
+@media (prefers-reduced-motion: no-preference){
+  @view-transition{navigation:auto;}
+}
+::view-transition-group(*){animation-duration:.32s;}
+::view-transition-group(*.ep-thumb){animation-duration:.46s;animation-timing-function:cubic-bezier(.2,.8,.2,1);}
+
+.page-wrap > nav{view-transition-name:site-nav;}
+.iris-on .page-wrap > nav{view-transition-name:none;}
+::view-transition-group(site-nav){animation:none;}
+::view-transition-old(site-nav){animation:none;opacity:0;}
+::view-transition-new(site-nav){animation:none;}
+::view-transition-old(site-nav):only-child{opacity:1;animation:pga-vt-out .32s ease both;}
+::view-transition-new(site-nav):only-child{animation:pga-vt-in .32s ease both;}
+@keyframes pga-vt-out{to{opacity:0;}}
+@keyframes pga-vt-in{from{opacity:0;}}
+
+/* ===== Feedback =============================================================
+   Everything pressable answers the same way, defined once here. The numbers
+   are tokens in :root (--lift, --press, --press-card, --t-press, --lit).
+
+   BUTTONS press in. The shape is set by `scale`, not `transform`, because
+   every button on the site already spends its transform on the skew: `scale`
+   is a separate property that composes with it instead of replacing it.
+
+   CARDS rise by --lift under the pointer or the keyboard, and set --lit to 1,
+   which is what their orange corner brackets read. A card that is itself a
+   link also presses in. A card that sits in a hairline grid, or runs the full
+   width of the page, lights its brackets without rising: lifting it would open
+   a gap in the rules it shares with its neighbours.
+
+   TEXT LINKS draw their underline in from the left.
+
+   `:where()` keeps every rule here at zero specificity, so a component's own
+   hover colours and its own focus styling still win. Hover lives inside
+   (hover:hover) so a phone never keeps a card raised after a tap; a finger
+   gets :active instead, which iOS only applies because script.js registers a
+   touchstart listener.
+   ========================================================================= */
+
+/* ---- focus: one clear ring, orange, off the edge ---- */
+:where(a, button, summary, input, select, textarea, [tabindex]):focus-visible{
+  outline:2px solid var(--orange);outline-offset:3px;
+}
+/* The search input carries outline:none so the ring would sit inside the bar
+   and collide with the button. The bar takes the focus instead. */
+.ep-search-bar:focus-within{border-color:var(--live);}
+
+/* ---- buttons ---- */
+:where(.btn-solid, .btn-lines, .nav-cta, .nav-toggle, .listen-btn, .cta-wa,
+       .ep-search-btn, .kb-cta, .kb-sh, .kb-ghost, .cd-lbtn, .glassB-submit,
+       .wwu-btn, .lib-all, .pill, .tg-chip, .cd-tags a.cd-tag, .clb-topic,
+       .clb-face, .chips a, .kfaq-cta, .mc-tab, .khero-tab, .cfl-arrow,
+       .cfl-lb-nav, .cfl-lb-x, .kmap-btn, .etq-toggle, .kkit-reset){
+  -webkit-tap-highlight-color:transparent;
+  transition:var(--t-press);
+}
+:where(.btn-solid, .btn-lines, .nav-cta, .nav-toggle, .listen-btn, .cta-wa,
+       .ep-search-btn, .kb-cta, .kb-sh, .kb-ghost, .cd-lbtn, .glassB-submit,
+       .wwu-btn, .lib-all, .pill, .tg-chip, .cd-tags a.cd-tag, .clb-topic,
+       .clb-face, .chips a, .kfaq-cta, .mc-tab, .khero-tab, .cfl-arrow,
+       .cfl-lb-nav, .cfl-lb-x, .kmap-btn, .etq-toggle, .kkit-reset):active{
+  scale:var(--press);
+}
+/* A finger on the menu panel gets the same wash a pointer does. */
+.page-wrap > nav.is-open .nav-links a:active{color:var(--white);background:var(--wash);}
+
+/* ---- cards ---- */
+:where(.ep-card, .ep-tile, .series-card, .nx a, .cardx, .tg-v2 .tg-ep, .cd-box,
+       .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep){
+  -webkit-tap-highlight-color:transparent;
+}
+@media (hover:hover){
+  :where(.ep-card, .ep-tile, .series-card, .nx a, .cardx, .tg-v2 .tg-ep, .cd-box):hover{
+    translate:0 var(--lift);--lit:1;
+  }
+  :where(.destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep):hover{--lit:1;}
+}
+:where(.ep-card, .ep-tile, .series-card, .nx a, .cardx, .tg-v2 .tg-ep, .cd-box):is(:focus-visible, :has(:focus-visible)){
+  translate:0 var(--lift);--lit:1;
+}
+:where(.destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep):is(:focus-visible, :has(:focus-visible)){
+  --lit:1;
+}
+/* Pressed: a card that is a link sinks back most of the way and in. The :has()
+   one is a rule of its own, so a browser without :has() drops only that line. */
+:where(.ep-card, .ep-tile, .series-card, .nx a):active{
+  translate:0 calc(var(--lift) / 3);scale:var(--press-card);
+}
+:where(.tg-v2 .tg-ep):has(.tg-ep-link:active){
+  translate:0 calc(var(--lift) / 3);scale:var(--press-card);
+}
+/* The homepage strip is dragged as well as clicked; a card must not shrink
+   under a finger that is moving the whole strip sideways. */
+.episodes-viewport.is-dragging .ep-card{scale:none;}
+:where(.tg-v2 .tg-ep, .cd-box, .kdates-card, .tg-tile){
+  transition:border-color .2s ease, background-color .18s ease, color .18s ease, var(--t-press);
+}
+.tg-list:not(.tg-v2) .tg-ep, .tg-tile, .kdates-card{position:relative;}
+
+/* ---- brackets ----
+   Cards that already carry a top-left bracket at rest keep it and gain the
+   bottom-right one when lit; both glow. Cards with none show both when lit.
+   The full-width destination rows draw theirs inset, the way the header and
+   the booking card already do, because a bracket on the edge of the screen
+   is not a corner of anything. */
+:where(.ep-card, .ep-tile, .nx a, .cardx, .tg-v2 .tg-ep)::after,
+:where(.series-card, .cd-box, .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep)::before,
+:where(.series-card, .cd-box, .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep)::after{
+  content:"";position:absolute;z-index:9;width:14px;height:14px;pointer-events:none;
+  opacity:var(--lit);
+}
+:where(.series-card, .cd-box, .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep)::before{
+  top:-1px;left:-1px;border-top:2px solid var(--orange);border-left:2px solid var(--orange);
+}
+:where(.ep-card, .ep-tile, .nx a, .cardx, .tg-v2 .tg-ep, .series-card, .cd-box,
+       .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep)::after{
+  right:-1px;bottom:-1px;border-right:2px solid var(--orange);border-bottom:2px solid var(--orange);
+}
+:where(.ep-card, .ep-tile, .nx a, .cardx, .tg-v2 .tg-ep, .series-card, .cd-box,
+       .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep)::before,
+:where(.ep-card, .ep-tile, .nx a, .cardx, .tg-v2 .tg-ep, .series-card, .cd-box,
+       .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep)::after{
+  filter:drop-shadow(0 0 calc(var(--lit) * 5px) rgba(255,117,23,0.85));
+  transition:opacity .25s ease, filter .25s ease;
+}
+.destination::before{top:14px;left:14px;}
+.destination::after{right:14px;bottom:14px;}
+
+/* ---- text links ----
+   A background rather than a border or a pseudo element, so the line follows a
+   link that wraps onto a second line. Links in running copy only: the header,
+   the footer and the tables of contents are link lists with their own hover. */
+:where(p, li, figcaption, dd) a:not([class]):not(:is(nav, footer) *),
+.kb-src span, .src span{
+  background:linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition:background-size .32s var(--ease-out), color .2s ease;
+}
+:where(p, li, figcaption, dd) a:not([class]):not(:is(nav, footer) *):is(:hover, :focus-visible, :active),
+.kb-src:is(:hover, :focus-visible, :active) span, .src:is(:hover, :focus-visible, :active) span{
+  background-size:100% 1px;
+}
+/* Links that already stand on a line of their own keep it; the orange one
+   draws over it. */
+:where(.hero-link, .dest-copy a, .popup-link){position:relative;-webkit-tap-highlight-color:transparent;}
+:where(.hero-link, .dest-copy a, .popup-link)::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;pointer-events:none;
+  background:var(--orange);transform:scaleX(0);transform-origin:0 50%;
+  transition:transform .36s var(--ease-out);
+}
+:where(.hero-link, .dest-copy a, .popup-link):is(:hover, :focus-visible, :active)::after{transform:scaleX(1);}
+
+@media (prefers-reduced-motion: reduce){
+  /* Nothing moves. Feedback stays, as colour and light instead of motion. */
+  :where(.ep-card, .ep-tile, .series-card, .nx a, .cardx, .tg-v2 .tg-ep, .cd-box):is(:hover, :focus-visible, :has(:focus-visible), :active){translate:none;scale:none;}
+  :where(.tg-v2 .tg-ep):has(.tg-ep-link:active){translate:none;scale:none;}
+  :where(.btn-solid, .btn-lines, .nav-cta, .nav-toggle, .listen-btn, .cta-wa,
+         .ep-search-btn, .kb-cta, .kb-sh, .kb-ghost, .cd-lbtn, .glassB-submit,
+         .wwu-btn, .lib-all, .pill, .tg-chip, .cd-tags a.cd-tag, .clb-topic,
+         .clb-face, .chips a, .kfaq-cta, .mc-tab, .khero-tab, .cfl-arrow,
+         .cfl-lb-nav, .cfl-lb-x, .kmap-btn, .etq-toggle, .kkit-reset):active{
+    scale:none;filter:brightness(0.85);
+  }
+  :where(.ep-card, .ep-tile, .nx a, .cardx, .tg-v2 .tg-ep, .series-card, .cd-box,
+         .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep)::before,
+  :where(.ep-card, .ep-tile, .nx a, .cardx, .tg-v2 .tg-ep, .series-card, .cd-box,
+         .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep)::after,
+  :where(p, li, figcaption, dd) a:not([class]):not(:is(nav, footer) *),
+  .kb-src span, .src span,
+  :where(.hero-link, .dest-copy a, .popup-link)::after{transition:none;}
 }

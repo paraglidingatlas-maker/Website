@@ -66,7 +66,7 @@
 <link rel="preload" href="assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css?v=1f73ef11">
-<link rel="stylesheet" href="styles.css?v=dd7145a1">
+<link rel="stylesheet" href="styles.css?v=948f4393">
 <style>
   .pod-hero{position:relative;min-height:64vh;display:flex;align-items:flex-end;}
   .pod-hero-media{position:absolute;inset:0;z-index:-2;}
@@ -690,7 +690,6 @@
   .wwu-card p{color:var(--gray-light);font-size:0.92rem;line-height:1.75;margin-bottom:1rem;}
   .wwu-card .wwu-contact{color:var(--white);font-weight:600;margin-bottom:1.5rem;}
   .wwu-card .wwu-contact a{color:var(--orange);text-decoration:none;}
-  .wwu-card .wwu-contact a:hover{text-decoration:underline;}
   /* Inverted: outline rather than fill. Matches .kb-cta in styles.css, which is
      already the site's orange-outline button, so this is not a second way of
      drawing the same thing. Same border token, same hover wash, same skew. */
@@ -699,7 +698,7 @@
     background:none;color:var(--orange);border:1px solid var(--live);
     padding:0.85rem 1.8rem;font-weight:700;font-size:0.9rem;cursor:pointer;text-decoration:none;
     transform:skewX(-10deg);transform-origin:left top;
-    transition:background 0.2s ease,border-color 0.2s ease;
+    transition:background 0.2s ease,border-color 0.2s ease,var(--t-press);
   }
   /* Outline at rest, solid fill on hover. Same behaviour as .listen-btn in
      styles.css, which is the site's existing outline-to-fill button, and the
@@ -1291,7 +1290,7 @@
   </div>
 </footer>
 
-<script src="script.js?v=44d793b6"></script>
+<script src="script.js?v=93103076"></script>
 <script src="kinetic-type.js?v=36f36156"></script>
 <script>
   // Fly Better headline: scale-in overshoot bounce, distinct from the

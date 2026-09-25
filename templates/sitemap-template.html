@@ -56,6 +56,8 @@
 .sm-jump{margin-bottom:0.8rem;display:flex;flex-wrap:wrap;gap:1.2rem;}
 .sm-jump a{color:var(--orange);font-size:0.82rem;text-decoration:underline;
   text-underline-offset:3px;}
+/* The shared drawn underline (styles.css, Feedback) takes over on hover. */
+.sm-jump a:is(:hover,:focus-visible){text-decoration-color:transparent;}
 .sm-eps{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));
   gap:0.15rem 1.6rem;}
 .sm-eps li{padding:0.28rem 0;}

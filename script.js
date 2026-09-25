@@ -56,3 +56,153 @@ if (!reduced) {
     revealTargets.forEach((el) => observer.observe(el));
   }
 }
+
+/* ===== Feedback, haptics and page transitions ==============================
+ * Shared by every page. tools/inject_nav_menu.py adds this file to any page
+ * that did not already load it, so the episode pages, the library and the
+ * sitemap get it too. The visual side is the Feedback and Page transitions
+ * sections at the end of styles.css; this is only what CSS cannot do.
+ */
+(function () {
+  "use strict";
+  var d = document;
+  var PGA = window.PGA = window.PGA || {};
+
+  // iOS applies :active only while something on the page listens for
+  // touchstart. Without this the pressed state never shows under a finger.
+  d.addEventListener("touchstart", function () {}, { passive: true });
+
+  /* HAPTICS. The helper the knowledge base door introduced, moved here so the
+   * door and the key buttons share one. Android and Chrome get
+   * navigator.vibrate. iOS has no vibrate, but Safari 18 gives a tick when a
+   * <input type="checkbox" switch> is toggled, and toggling one through its
+   * label from inside a real tap counts. Hover-capable screens are left alone.
+   *
+   * The hidden label stops its own click from travelling: the menu closes on
+   * any click outside the header, so a click bubbling from a label at the end
+   * of <body> would shut the menu the moment the button opened it. */
+  var hapIOS = null;
+  PGA.haptic = function (ms) {
+    try { if (navigator.vibrate) { navigator.vibrate(ms || 12); return; } } catch (e) {}
+    try {
+      if (!window.matchMedia || !matchMedia("(hover: none)").matches) return;
+      if (!hapIOS) {
+        hapIOS = d.createElement("label");
+        hapIOS.setAttribute("aria-hidden", "true");
+        hapIOS.style.cssText = "position:fixed;left:-9999px;top:0;width:1px;height:1px;" +
+                               "overflow:hidden;opacity:0;pointer-events:none;";
+        var inp = d.createElement("input");
+        inp.type = "checkbox"; inp.setAttribute("switch", ""); inp.tabIndex = -1;
+        hapIOS.appendChild(inp);
+        hapIOS.addEventListener("click", function (e) { e.stopPropagation(); });
+        d.body.appendChild(hapIOS);
+      }
+      hapIOS.click();
+    } catch (e) {}
+  };
+
+  // The key actions: Book a Call, Enquire Now, and the menu. Capture phase,
+  // because the menu button stops its own click from bubbling.
+  var KEY = ".nav-toggle, .nav-cta, a[href*='calendar.app.google'], " +
+            "a[href$='enquire.html'], a[href='#enquire']";
+  d.addEventListener("click", function (e) {
+    var t = e.target && e.target.closest ? e.target.closest(KEY) : null;
+    if (t) PGA.haptic(10);
+  }, true);
+
+  /* PAGE TRANSITIONS. The cross-fade and the still header are pure CSS. Two
+   * things need a script.
+   *
+   * THE THUMBNAIL. Every episode page names its player ep-<slug>. Following a
+   * link to an episode gives the picture you clicked the same name, so the
+   * browser morphs one into the other. Names go on at the last moment and on
+   * one element only: two elements with one name cancel the whole transition,
+   * and every named element is captured separately, which costs on a page with
+   * ninety thumbnails. Skipped when the link has a #chapter, because the new
+   * page opens scrolled and the player may not be on screen.
+   *
+   * THE HEADER. It is held still across the fade, which only looks right when
+   * it is actually on screen at the top. Scrolled away, or under the episode
+   * popup or the knowledge base door, it fades with the page instead.
+   *
+   * Listening on window, so every handler on document has run first and a
+   * click the episode popup keeps for itself is already marked prevented. */
+  var named = null;
+  function unname() {
+    if (!named) return;
+    named.style.removeProperty("view-transition-name");
+    named.style.removeProperty("view-transition-class");
+    named = null;
+  }
+  function slugOf(u) {
+    var m = /\/episodes\/([a-z0-9-]+)\.html$/.exec(u.pathname);
+    return m ? m[1] : null;
+  }
+  function thumbFor(a) {
+    var img = a.querySelector("img");
+    if (!img) {
+      var card = a.closest(".kb-card");
+      if (card) img = card.querySelector(".kb-med img");
+    }
+    if (!img) return null;
+    var r = img.getBoundingClientRect();
+    if (r.width < 40 || r.bottom <= 0 || r.top >= innerHeight) return null;
+    return img;
+  }
+  window.addEventListener("click", function (e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || (a.target && a.target !== "_self") || a.hasAttribute("download")) return;
+    var u;
+    try { u = new URL(a.href, location.href); } catch (err) { return; }
+    if (u.origin !== location.origin || u.hash || u.pathname === location.pathname) return;
+    var slug = slugOf(u), img = slug && thumbFor(a);
+    if (!img) return;
+    unname();
+    img.style.setProperty("view-transition-name", "ep-" + slug);
+    img.style.setProperty("view-transition-class", "ep-thumb");
+    named = img;
+  });
+
+  function header() { return d.querySelector(".page-wrap > nav"); }
+  // Hit testing is already switched off when pageswap runs (every point answers
+  // <html>), so whether the header is covered is read at the click that starts
+  // the navigation. Without a recent click, the scroll position decides alone.
+  var navHidden = null, readAt = 0;
+  d.addEventListener("click", function () {
+    var nav = header();
+    if (!nav) return;
+    var r = nav.getBoundingClientRect(), hit = null;
+    if (r.bottom > 0) {
+      var top = Math.max(r.top, 0);
+      hit = d.elementFromPoint(r.left + r.width / 2, top + (r.bottom - top) / 2);
+    }
+    navHidden = !hit || !nav.contains(hit);
+    readAt = Date.now();
+  }, true);
+  window.addEventListener("pageswap", function (e) {
+    if (!e.viewTransition) return;
+    var nav = header();
+    if (nav) {
+      nav.style.removeProperty("view-transition-name");
+      var hidden = (Date.now() - readAt < 8000 && navHidden !== null)
+        ? navHidden : nav.getBoundingClientRect().bottom <= 0;
+      if (hidden) nav.style.setProperty("view-transition-name", "none");
+    }
+    // A name left on a thumbnail for somewhere else would give that thumbnail
+    // a layer of its own for nothing.
+    var to = e.activation && e.activation.entry && e.activation.entry.url;
+    if (named && to) {
+      var u = new URL(to);
+      if (u.hash || named.style.getPropertyValue("view-transition-name") !== "ep-" + slugOf(u)) unname();
+    }
+  });
+  // Coming back through the history cache the name is still on the thumbnail,
+  // which is what lets the player fly back into it. Cleared once it has.
+  window.addEventListener("pagereveal", function (e) {
+    var nav = header();
+    if (nav) nav.style.removeProperty("view-transition-name");
+    if (e.viewTransition) e.viewTransition.finished.then(unname, unname);
+    else unname();
+  });
+})();

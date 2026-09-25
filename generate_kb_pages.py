@@ -218,9 +218,10 @@ CATEGORY_CSS = """
   .series-card{
     position:relative;background:var(--card);border:1px solid rgba(180,180,180,0.12);padding:1.8rem;
     text-decoration:none;display:flex;flex-direction:column;
-    transition:border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    transition:border-color 0.25s ease, box-shadow 0.25s ease, var(--t-press);
   }
-  .series-card:hover{border-color:rgba(255,117,23,0.4);box-shadow:0 0 24px rgba(255,117,23,0.15);transform:translateY(-3px);}
+  /* The rise and the brackets are shared: see Feedback in styles.css. */
+  .series-card:hover{border-color:rgba(255,117,23,0.4);box-shadow:0 0 24px rgba(255,117,23,0.15);}
   .series-icon{
     width:44px;height:44px;border-radius:50%;background:var(--orange);
     display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;
@@ -263,9 +264,10 @@ SUBSERIES_CSS = """
   .ep-tile{
     display:flex;flex-direction:column;position:relative;cursor:pointer;text-decoration:none;
     background:var(--card);border:1px solid rgba(180,180,180,0.22);
-    transition:border-color 0.2s ease, transform 0.2s ease;
+    transition:border-color 0.2s ease, var(--t-press);
   }
-  .ep-tile:hover{border-color:rgba(255,117,23,0.45);transform:translateY(-3px);}
+  /* The rise and the brackets are shared: see Feedback in styles.css. */
+  .ep-tile:hover{border-color:rgba(255,117,23,0.45);}
   .ep-tile::before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;z-index:4;
     border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
   .ep-stamp{display:flex;justify-content:space-between;padding:0.42rem 1rem;font-size:0.6rem;
@@ -475,7 +477,6 @@ EDITORIAL_CSS = """
   .kb-src{display:inline-block;color:var(--gray);font-size:0.78rem;text-decoration:none;}
   .kb-src span{color:var(--orange);}
   .kb-src span::before{content:"\\2192  ";}
-  .kb-src:hover span{text-decoration:underline;}
   .kb-faq{padding-top:clamp(3rem,7vw,4.5rem);padding-bottom:clamp(4rem,9vw,6rem);}
   .kb-faq h2{margin-bottom:1.5rem;}
   .kb-qa{max-width:760px;margin:0;padding:1.1rem 0 1.2rem;border-top:1px solid var(--line);}
