@@ -74,6 +74,8 @@ DIRS = {
               gist="Stark and cinematic. Near black, huge condensed capitals, full-bleed footage, hard lines. Credentials up front: it sells expertise and challenge."),
     "b": dict(name="Field Journal", ref="after XOVERLAND",
               gist="Documentary and warm. A serif voice, film grain, captions like log entries. The podcast and the trips are one story told from the field."),
+    "d": dict(name="Summit + Clear Skies", ref="the chosen direction: A's look, C's tools",
+              gist="Summit's dark, cinematic look with Clear Skies' booking tools: a trip finder that filters every departure, fact-rich trip cards, a clean dates table."),
     "c": dict(name="Clear Skies", ref="after Trek Travel",
               gist="Light and clear. White and sky, a trip finder in the hero, every card with dates, days, level and price. It sells certainty: pick a date, book."),
 }
@@ -102,7 +104,7 @@ def head(d, title, canonical):
 <link rel="icon" type="image/png" href="{A}logo/favicon.png">
 <link rel="stylesheet" href="../../fonts.css">
 <link rel="stylesheet" href="v3.css">
-<link rel="stylesheet" href="{d}.css">
+{'<link rel="stylesheet" href="a.css">' if d == "d" else ""}<link rel="stylesheet" href="{d}.css">
 </head>
 <body>
 '''
@@ -166,8 +168,10 @@ def home(d):
       </a>'''
     rows = ""
     for place, tour, dates, days, places, price, status, href in DEPARTURES:
+        month = {"Oct": "2026-10", "Nov 2026": "2026-11", "Jan": "2027-01", "Feb": "2027-02", "June": "2027-06", "November 2027": "2027-11"}
+        mk = next((v for k, v in month.items() if k in dates), "")
         rows += f'''
-        <a class="dep" href="{href}"><span class="dep-place">{e(place)} <small>{e(tour)}</small></span><span class="dep-dates">{e(dates)}</span>
+        <a class="dep" href="{href}" data-place="{e(place.lower())}" data-month="{mk}"><span class="dep-place">{e(place)} <small>{e(tour)}</small></span><span class="dep-dates">{e(dates)}</span>
           <span>{mark(days)}</span><span>{mark(places)}</span><span class="dep-price">{mark(price)}</span>
           <span class="dep-status s-{status.split()[0].lower()}">{e(status)}</span><span class="dep-go" aria-hidden="true">&rarr;</span></a>'''
     guides = ""
@@ -180,13 +184,12 @@ def home(d):
         f'<a class="guest" href="../../episodes/{slug}.html" style="--i:{i}">{pic("podcast/" + img, name)}<span class="guest-name">{e(name)}</span><span class="guest-hook">{e(hook)}</span></a>'
         for i, (img, name, hook, slug) in enumerate(GUESTS))
     finder = ""
-    if d == "c":
+    if d in ("c", "d"):
         finder = '''
-      <form class="finder" action="#dates" onsubmit="return false">
-        <label><span>Where</span><select><option>Any destination</option><option>India</option><option>Kenya</option><option>Kazakhstan</option><option>Peru</option></select></label>
-        <label><span>When</span><select><option>Any month</option><option>October 2026</option><option>November 2026</option><option>January 2027</option><option>February 2027</option><option>June 2027</option><option>November 2027</option></select></label>
-        <label><span>Level</span><select><option>Any level</option><option>IPPI 2 and up</option></select></label>
-        <button class="btn btn-solid" type="button">Find a trip</button>
+      <form class="finder" action="#dates" data-finder>
+        <label><span>Where</span><select name="place"><option value="">Any destination</option><option value="india">India</option><option value="kenya">Kenya</option><option value="kazakhstan">Kazakhstan</option><option value="peru">Peru</option></select></label>
+        <label><span>When</span><select name="month"><option value="">Any month</option><option value="2026-10">October 2026</option><option value="2026-11">November 2026</option><option value="2027-01">January 2027</option><option value="2027-02">February 2027</option><option value="2027-06">June 2027</option><option value="2027-11">November 2027</option></select></label>
+        <button class="btn btn-solid" type="submit">Find a trip</button>
       </form>'''
     return head(d, "Paragliding Atlas: Guided Paragliding Expeditions | Direction " + d.upper(), "") + nav(d) + f'''
 <main>
@@ -212,6 +215,7 @@ def home(d):
   <section class="sec sec-dates" id="dates">
     <div class="sec-head"><span class="kicker">Dates &amp; prices</span><h2>Every departure</h2>
       <p>Small groups, fixed dates. Prices are per pilot.</p></div>
+    <p class="deps-found" data-found role="status" aria-live="polite"></p>
     <div class="deps">
       <div class="dep dep-h" aria-hidden="true"><span>Expedition</span><span>Dates</span><span>Length</span><span>Group</span><span>Price</span><span>Status</span><span></span></div>{rows}
     </div>
@@ -336,14 +340,15 @@ def trip(d):
 
 
 def chooser():
-    cards = "".join(f'''<article class="ch">
+    order = ["d"] + [k for k in DIRS if k != "d"]
+    cards = "".join(f'''<article class="ch{' is-chosen' if k == 'd' else ''}">
       <a class="ch-shot" href="home-{k}.html"><img src="img/shot-{k}.jpg" alt="Direction {k.upper()}, homepage" loading="lazy"></a>
       <div class="ch-body"><span class="ch-k">Direction {k.upper()} · {e(v["ref"])}</span><h2>{e(v["name"])}</h2><p>{e(v["gist"])}</p>
       <p class="ch-links"><a href="home-{k}.html">Homepage</a><a href="trip-{k}.html">Trip page (India)</a></p></div></article>'''
-                    for k, v in DIRS.items())
+                    for k, v in ((k, DIRS[k]) for k in order))
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow"><title>Three directions | Paragliding Atlas</title>
+<meta name="robots" content="noindex, nofollow"><title>Directions | Paragliding Atlas</title>
 <link rel="canonical" href="https://paraglidingatlas.com/"><link rel="stylesheet" href="../../fonts.css"><link rel="stylesheet" href="v3.css">
 <style>
 body{{background:#101114;color:#eee;font-family:"DM Sans",sans-serif;margin:0;padding:clamp(1.5rem,4vw,3.5rem)}}
@@ -353,10 +358,11 @@ h1{{font-family:Poppins,sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);margin:0 0
 .ch-body{{padding:1.4rem 1.5rem 1.6rem}} .ch-k{{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#ff7517;font-weight:600}}
 .ch h2{{font-family:Poppins,sans-serif;margin:.4rem 0 .5rem}} .ch p{{color:#b4b4b4;line-height:1.65;margin:0 0 1rem}}
 .ch-links a{{display:inline-block;margin-right:1.2rem;color:#fff;font-weight:600;padding:.6rem 0;border-bottom:1px solid #ff7517;text-decoration:none}}
+.ch.is-chosen{{border-color:#ff7517;grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}} @media(max-width:760px){{.ch.is-chosen{{grid-template-columns:1fr}}}} .ch.is-chosen .ch-body{{align-self:center;padding:2rem}}
 .note{{margin-top:2.5rem;color:#8a8a8a;font-size:.9rem;line-height:1.7;max-width:70ch}}
 </style></head><body>
-<h1>Three directions, one structure</h1>
-<p class="intro">The same bookings-first site, three ways. Same content, same order: next departure, the expeditions, every date and price, why us, who guides, a film break, the podcast, the knowledge base, a call to book. Pick the one that feels like Paragliding Atlas; the whole site is then built in it. Grey <b>[to supply]</b> marks are facts only you can give.</p>
+<h1>The chosen direction</h1>
+<p class="intro">D is A's look with C's booking tools: the dark cinematic Summit style throughout, plus a trip finder in the hero that filters the departures, fact-rich trip cards and a clean dates table. The whole site is being built in it. The three original directions stay below for comparison. Grey <b>[to supply]</b> marks are facts only you can give.</p>
 <div class="chs">{cards}</div>
 <p class="note">Kept whatever the direction: the knowledge base door, the globe, the Kenya and India photo sequences, route maps and galleries, the episode pages' Horizon look and transcript sync, the library's stone tiles, the time-of-day sky and the motion work.</p>
 </body></html>
@@ -369,7 +375,7 @@ def main():
         open(os.path.join(OUT, "home-%s.html" % d), "w", encoding="utf-8").write(home(d))
         open(os.path.join(OUT, "trip-%s.html" % d), "w", encoding="utf-8").write(trip(d))
     open(os.path.join(OUT, "index.html"), "w", encoding="utf-8").write(chooser())
-    print("v3: 3 directions, 7 pages")
+    print("v3: %d directions, %d pages" % (len(DIRS), 2 * len(DIRS) + 1))
 
 
 if __name__ == "__main__":

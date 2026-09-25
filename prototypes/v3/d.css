@@ -1,0 +1,41 @@
+/* DIRECTION D · SUMMIT + CLEAR SKIES (chosen). Loads after a.css: A's dark,
+   condensed, cinematic look; C's booking tools on top of it. */
+:root{ --card:#131417; --radius:0px; }
+
+/* C's trip finder, in A's clothes: a dark glass bar, square, hard edged */
+.finder{display:grid;grid-template-columns:repeat(2,minmax(0,1fr)) auto;gap:0;margin-top:2.2rem;max-width:44rem;
+  background:rgba(10,11,12,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.16);}
+.finder label{display:flex;flex-direction:column;justify-content:center;padding:.55rem 1.1rem;border-right:1px solid rgba(255,255,255,.12);}
+.finder label span{font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;}
+.finder select{appearance:none;-webkit-appearance:none;border:0;background:transparent;color:var(--ink);font:600 1rem var(--body);
+  padding:.25rem 1.4rem .25rem 0;min-height:34px;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,#aaa 50%),linear-gradient(135deg,#aaa 50%,transparent 50%);
+  background-position:calc(100% - 8px) 55%,calc(100% - 3px) 55%;background-size:5px 5px;background-repeat:no-repeat;}
+.finder select option{background:#111;color:#fff;}
+.finder .btn{min-height:64px;padding:0 2rem;}
+@media (max-width:700px){.finder{grid-template-columns:1fr;} .finder label{border-right:0;border-bottom:1px solid rgba(255,255,255,.12);min-height:60px;}}
+
+/* C's fact-rich cards, dark: picture above, every fact below, four across */
+.trips{grid-template-columns:repeat(4,minmax(0,1fr));}
+@media (max-width:1180px){.trips{grid-template-columns:repeat(2,minmax(0,1fr));}} @media (max-width:620px){.trips{grid-template-columns:1fr;}}
+.trip{background:var(--card);position:relative;border:1px solid var(--line);transition:border-color .25s ease,transform .25s ease;}
+.trip:hover{border-color:rgba(255,117,23,.55);transform:translateY(-4px);}
+.trip-media{aspect-ratio:4/3;}
+.trip-body{position:static;background:none;padding:1.3rem 1.3rem 1.4rem;}
+.trip-body p{color:var(--mute);font-size:.92rem;}
+.trip h3{font-size:1.85rem;}
+.trip .facts{grid-template-columns:1fr 1fr;border-top-color:var(--line);}
+.trip-status{left:.8rem;right:auto;top:.8rem;background:#fff;color:#000;}
+.trip-body .kicker{font-size:.66rem;}
+
+/* C's clean dates table, dark: one panel, rows light up, the finder filters it */
+.deps{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--accent);padding:0 1.5rem;}
+.dep:last-child{border-bottom:0;}
+.dep[hidden]{display:none;}
+.deps-found{min-height:1.4em;margin:0 0 1rem;color:var(--mute);font-size:.95rem;}
+.deps-found b{color:var(--ink);}
+.deps-found button{background:none;border:0;color:var(--accent);font:inherit;cursor:pointer;padding:0 .2rem;text-decoration:underline;}
+
+/* the next departure bar sits on the finder's glass */
+.next{background:rgba(10,11,12,.7);}
+.deps[hidden]{display:none}
