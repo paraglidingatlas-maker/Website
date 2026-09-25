@@ -160,7 +160,7 @@ HEAD = """<!DOCTYPE html>
       <a href="{root}mission.html">Mission Statement</a>
       <a href="{root}safety-and-disclosure.html">Safety &amp; Disclosure</a>
       <a href="{root}corrections.html">Corrections</a>
-      <a href="{root}partners.html">Partner With Us</a>
+      <a href="{root}partners.html">Partner With Me</a>
     </div>
     <div class="footer-col">
       <h2>Legal</h2>
