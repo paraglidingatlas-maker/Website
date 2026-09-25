@@ -368,6 +368,20 @@ body:has(.cd-v2) footer::after{content:"";position:absolute;z-index:-1;pointer-e
   }
 }
 
+/* The line under the title. On a phone it wraps, and a separator dot left
+   at the end of one line or the start of the next reads as a stray mark, so
+   below 560px the dots go and the gap does the separating. */
+.cd-v2 .cd-submeta{column-gap:1.1rem;row-gap:.4rem;}
+@media (max-width:560px){ .cd-v2 .cd-dot{display:none;} }
+
+/* A finger needs 44px. Topic tags and related links keep their compact look
+   under a mouse and grow to a full tap target on touch screens only. */
+@media (pointer:coarse){
+  .cd-v2 .cd-tag{display:inline-flex;align-items:center;min-height:44px;padding-inline:.75rem;}
+  .cd-v2 .cd-tags{gap:.55rem;}
+  .cd-v2 .cd-link{display:flex;align-items:center;min-height:44px;padding:.35rem 0;}
+}
+
 /* Transcript: a comfortable reading measure and size */
 .cd-v2 .cd-line{max-width:46rem;}
 .cd-v2 .cd-line p{font-size:var(--fs-body);line-height:1.8;}

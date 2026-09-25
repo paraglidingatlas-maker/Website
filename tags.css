@@ -150,3 +150,11 @@
   .tg-v2 .tg-ep p{grid-column:1/-1;margin-top:.7rem;}
   .tg-v2 .tg-chips{padding:.8rem 1rem 0;}
 }
+
+/* A finger needs 44px. Topic chips and the sort buttons keep their compact
+   look under a mouse and grow to a full tap target on touch screens only. */
+@media (pointer:coarse){
+  .tg-chip{display:inline-flex;align-items:center;min-height:44px;padding-inline:.75rem;}
+  .tg-chips{gap:.5rem;}
+  .tg-sort .pill,.tg-sort button{min-height:44px;}
+}

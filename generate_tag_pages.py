@@ -229,7 +229,7 @@ def answer_block(tag, eps):
 
 # Topic page redesign (site visual plan, Phase 3): one page first for review,
 # then "all". Pages outside the rollout are generated exactly as before.
-V2_ON = {"Safety"}
+V2_ON = "all"
 
 _YT = None
 def youtube_ids():

@@ -51,7 +51,7 @@ TAG_PULSE_ON = "all"
 # Episode page redesign (site visual plan, Phase 3). Rolled out the same way as
 # the tag pulse: one page first for review, then "all". The v2 look is purely
 # additive CSS under .cd-v2 in episode.css, so switching back is a one-word edit.
-V2_ON = {"urs-haari-the-real-truth-about-reserve-parachutes-a"}
+V2_ON = "all"
 TX = os.path.join(ROOT, "transcripts")
 OUT = os.path.join(ROOT, "episodes")
 

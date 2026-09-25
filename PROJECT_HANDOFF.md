@@ -3922,6 +3922,20 @@ paging) comes after it.
   shortened at a colon, bar or dash are left alone. The data is unchanged.
   Related links open in the same tab (guest links to other sites still open a
   new one).
-- **Homepage trip cards:** "Enquire Now" goes to `enquire.html?trip=...` with the
-  trip chosen (a small script on enquire.html reads `?trip=`, matched on the start
-  of the option text). The photo and title now lead to the destination page.
+- **Homepage trip cards:** the photo and title lead to the destination page. Peru
+  and Kazakhstan link to `enquire.html?trip=...` with the trip chosen (a small
+  script on enquire.html reads `?trip=`, matched on the start of the option text).
+  Himalaya and Kenya: see section 70.
+
+## 70. THE NEW EPISODE AND TOPIC LAYOUTS ARE ON EVERY PAGE (2026-09-25)
+
+`V2_ON = "all"` in generate_chapter_deck.py (93 episode pages, with Horizon) and in
+generate_tag_pages.py (50 topic pages). The old layouts' CSS is still in place and
+still used by nothing; switching back is the same one-word edit.
+
+- The line under the episode title drops its dots below 560px, so a wrapped line
+  never starts or ends on a stray dot.
+- Touch screens only (`pointer:coarse`): episode topic tags, related links, topic
+  chips and sort buttons grow to 44px. Under a mouse they keep their compact look.
+- Homepage Himalaya and Kenya cards: the link under the facts reads "Learn More"
+  and goes to the destination page (Aninder's call; it replaced "Enquire Now").
