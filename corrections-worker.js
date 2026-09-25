@@ -125,7 +125,7 @@ function buildMime({ subject, replyTo, text }) {
     "Content-Transfer-Encoding: base64",
     "",
     body,
-  ].filter(Boolean);
+  ].filter((l) => l !== null); // not filter(Boolean): that also drops the blank line before the body
   return lines.join("\r\n");
 }
 

@@ -382,3 +382,34 @@
   nav.addEventListener("focusin", function () { if (pinned) show(true); });
   }
 })();
+
+/* IMAGES ARRIVE SOFTLY. A lazy image that has not loaded yet is marked, and
+   fades up out of a blur when it lands (v2.css .v2-img-wait / .v2-img-in).
+   Images that are already there are left alone; one listener per image, and
+   nothing runs once they have all arrived. Rails are built at run time, so
+   images added later are picked up too. */
+(function () {
+  var d = document;
+  function mark(img) {
+    if (img.complete || img.dataset.v2Soft) return;
+    img.dataset.v2Soft = "1";
+    img.classList.add("v2-img-wait");
+    function done() {
+      img.classList.add("v2-img-in");
+      requestAnimationFrame(function () { img.classList.remove("v2-img-wait"); });
+    }
+    img.addEventListener("load", done, { once: true });
+    img.addEventListener("error", done, { once: true });
+  }
+  function scan(root) { (root.querySelectorAll ? root : d).querySelectorAll('img[loading="lazy"]').forEach(mark); }
+  function init() {
+    scan(d);
+    if ("MutationObserver" in window) new MutationObserver(function (list) {
+      list.forEach(function (m) { m.addedNodes.forEach(function (n) {
+        if (n.nodeType !== 1) return;
+        if (n.tagName === "IMG" && n.loading === "lazy") mark(n); else scan(n);
+      }); });
+    }).observe(d.body, { childList: true, subtree: true });
+  }
+  if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();

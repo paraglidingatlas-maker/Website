@@ -40,7 +40,7 @@
 <link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../styles.css?v=c8d28696">
-<link rel="stylesheet" href="v2.css?v=869dfecd">
+<link rel="stylesheet" href="v2.css?v=fe5af78a">
 <style>
 /* Enquiry page. Tokens and chrome come from styles.css.
    The form deliberately has no backend and no third party form service: it
@@ -170,7 +170,7 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
 }
 </script>
 <!-- /site-schema --><script src="v2.js?v=16cea071"></script>
-<script src="v2-immersive.js?v=32463e6f"></script>
+<script src="v2-immersive.js?v=f69ad80d"></script>
 </head>
 <body class="enq" data-v2="pg">
 
@@ -197,7 +197,7 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
 <header class="kit-hero is-sky v2-page-hero">
   <div class="kit-hero-copy">
     <span class="kit-kicker">Get In Touch</span>
-    <h1>Tell us about your flying</h1>
+    <h1>Tell us about <em class="v2-accent">your flying</em></h1>
     <p class="kit-intro">The more you tell us about where you are as a pilot, the more useful our answer will be. There are no wrong answers here, and telling us you are less current than you would like is genuinely more helpful than telling us you are fine.</p>
   </div>
 </header>
@@ -295,6 +295,14 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
         <label for="consent">I am happy for Paragliding Atlas to use these details to answer my enquiry. I understand they are kept for up to 24 months if this does not become a booking, that they are not sold or shared for marketing, and that I can ask for them to be deleted at any time. See the <a href="privacy-policy.html">Privacy Policy</a>.</label>
       </div>
 
+      <!-- Spam traps for the posted mode. A person never sees or fills
+           "website"; a bot fills every field. "t" is stamped by the script. -->
+      <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
+        <label for="website">Leave this empty</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <input type="hidden" id="t" name="t" value="">
+
       <button type="submit" class="btn-solid" data-hover><span>Send enquiry</span></button>
       <p class="enq-status" id="enqStatus" role="status" aria-live="polite"></p>
     </form>
@@ -302,8 +310,10 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
 
   <aside class="enq-aside">
     <h3>What happens to this</h3>
-    <p>This form has no database behind it. Pressing send opens your own email app with the message written out, and you send it yourself. Nothing is posted to us or to any form service on the way, so there is no third party holding your details.</p>
-    <p>If your device has no email app set up, the button will tell you, and you can copy the text or use WhatsApp instead.</p>
+    <p data-mode="mailto">This form has no database behind it. Pressing send opens your own email app with the message written out, and you send it yourself. Nothing is posted to us or to any form service on the way, so there is no third party holding your details.</p>
+    <p data-mode="mailto">If your device has no email app set up, the button will tell you, and you can copy the text or use WhatsApp instead.</p>
+    <p data-mode="post" hidden>This form has no database behind it. Pressing send passes your message through a small relay of our own, running on Cloudflare, which turns it into an email to us and does not store it. There is no form service or mailing list tool in between, so your details end up in our inbox and nowhere else.</p>
+    <p data-mode="post" hidden>If it cannot get through, the page will tell you and offer to open your own email app instead, or you can use WhatsApp.</p>
 
     <h3>What we do with it</h3>
     <p>We read it and reply, usually within a couple of days. We do not add you to a mailing list from an enquiry, and we do not pass your details to anyone. The full detail is in the <a href="privacy-policy.html">Privacy Policy</a>.</p>
@@ -391,24 +401,37 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
 })();
 </script>
 <script>
-/* Compose the enquiry and hand it to the visitor's own mail client.
-   No fetch, no form service, no data leaving the browser except through the
-   email the person sends themselves. */
+/* Send the enquiry. Two modes, chosen by ENDPOINT:
+   - empty: compose it and hand it to the visitor's own mail client. No fetch,
+     no form service, no data leaving the browser except through the email the
+     person sends themselves.
+   - set: post it to our own Worker (enquiry-worker.js), which emails it to us.
+     If that fails, the mail client route is offered as the fallback. */
 (function () {
+  /* Paste the deployed enquiry-worker URL here to switch posting on.
+     Leave it empty and the form stays mailto only. */
+  var ENDPOINT = "";
+
   var form = document.getElementById('enqForm');
   if (!form) return;
   var status = document.getElementById('enqStatus');
   var TO = 'aninder@paraglidingatlas.com';
+
+  /* Time trap stamp, read by the Worker. Harmless in mailto mode. */
+  var stamp = document.getElementById('t');
+  if (stamp) stamp.value = String(Date.now());
+
+  /* The privacy note has a paragraph for each mode; show the true one. */
+  var mode = ENDPOINT ? 'post' : 'mailto';
+  var notes = document.querySelectorAll('[data-mode]');
+  for (var i = 0; i < notes.length; i++) notes[i].hidden = notes[i].getAttribute('data-mode') !== mode;
 
   function val(id) {
     var el = document.getElementById(id);
     return el && el.value ? el.value.trim() : '';
   }
 
-  form.addEventListener('submit', function (ev) {
-    ev.preventDefault();
-    if (!form.checkValidity()) { form.reportValidity(); return; }
-
+  function mailtoHref() {
     var lines = [
       'Name: ' + val('name'),
       'Email: ' + val('email'),
@@ -430,9 +453,13 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
     ];
 
     var subject = 'Trip enquiry: ' + val('trip') + ' — ' + val('name');
-    var href = 'mailto:' + TO
+    return 'mailto:' + TO
       + '?subject=' + encodeURIComponent(subject)
       + '&body=' + encodeURIComponent(lines.join('\n'));
+  }
+
+  function sendByMail() {
+    var href = mailtoHref();
 
     if (href.length > 1900) {
       status.className = 'enq-status bad';
@@ -443,6 +470,61 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
     status.className = 'enq-status';
     status.textContent = 'Opening your email app. If nothing happens, your device may have no mail client set up: email ' + TO + ' or use WhatsApp above.';
     window.location.href = href;
+  }
+
+  /* Posted mode failed: say so, and offer the mail client with the same text. */
+  function showError(msg) {
+    var href = mailtoHref();
+    status.className = 'enq-status bad';
+    status.textContent = (msg || 'That did not go through.') + ' ';
+    if (href.length <= 1900) {
+      var a = document.createElement('a');
+      a.href = href;
+      a.textContent = 'Send it from your own email app instead';
+      a.style.color = 'inherit';
+      status.appendChild(a);
+      status.appendChild(document.createTextNode(', or email ' + TO + '.'));
+    } else {
+      status.appendChild(document.createTextNode('Please email it to ' + TO + ' instead.'));
+    }
+  }
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    if (!ENDPOINT) { sendByMail(); return; }
+
+    var btn = form.querySelector('button[type="submit"]');
+    var label = btn && btn.querySelector('span');
+    var was = label ? label.textContent : '';
+    if (btn) btn.disabled = true;
+    if (label) label.textContent = 'Sending…';
+    status.className = 'enq-status';
+    status.textContent = '';
+
+    fetch(ENDPOINT, { method: 'POST', body: new FormData(form) })
+      .then(function (r) {
+        return r.json().catch(function () { return { ok: false }; });
+      })
+      .then(function (res) {
+        /* Only the Worker's own wording reaches the page, never a raw
+           network error like "Failed to fetch". */
+        if (!res || !res.ok) throw { said: res && res.error };
+        /* Replace the form with the confirmation, so it cannot be sent twice. */
+        var who = val('email');
+        var done = document.createElement('p');
+        done.className = 'enq-status';
+        done.setAttribute('role', 'status');
+        done.setAttribute('tabindex', '-1');
+        done.textContent = 'Thank you, your enquiry is with us. We read every one and usually reply within a couple of days, to ' + who + '.';
+        form.parentNode.replaceChild(done, form);
+        done.focus();
+      })
+      .catch(function (err) {
+        if (btn) btn.disabled = false;
+        if (label) label.textContent = was;
+        showError(err && err.said);
+      });
   });
 })();
 </script>
