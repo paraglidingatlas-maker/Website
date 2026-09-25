@@ -473,3 +473,20 @@ a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
 [data-v2="tg"] .tg-sort{padding-left:0;padding-right:0;}
 /* hairline grid: inner lines stay, the outer frame goes (Horizon) */
 [data-v2="tg"] .tg-cloud{border-color:transparent;background-clip:padding-box;}
+
+/* ===========================================================================
+   ENQUIRE, POLICY, 404, SITEMAP (<body data-v2="pg">): the kit's sky hero on
+   top, the page's own body (form, policy text, map) in the kit column.
+   ========================================================================= */
+[data-v2="pg"] .v2-page-hero{padding-left:max(var(--gutter), calc((100% - var(--measure)) / 2));padding-right:max(var(--gutter), calc((100% - var(--measure)) / 2));}
+[data-v2="pg"] .v2-page-hero .kit-hero-copy{max-width:52rem;}
+[data-v2="pg"] .v2-meta{font-size:var(--fs-small);color:var(--gray);}
+[data-v2="pg"] :is(.enq-wrap,.pol-wrap,.sm-wrap){max-width:none;padding-left:max(var(--gutter), calc((100% - var(--measure)) / 2));padding-right:max(var(--gutter), calc((100% - var(--measure)) / 2));}
+[data-v2="pg"] .sm-wrap{padding-top:var(--sp-3);padding-bottom:var(--sp-section);}
+.v2-nf{min-height:0;padding-bottom:0;}
+.v2-nf-links{padding-top:var(--sp-4);}
+.v2-door{text-decoration:none;color:inherit;display:flex;flex-direction:column;}
+.v2-door h3{transition:color .2s ease;}
+.v2-door:hover h3{color:var(--orange);}
+.v2-door .v2-more{margin-top:auto;padding-top:.8rem;}
+[data-v2="pg"] .listen-btn{flex:0 0 auto;min-width:0;padding-left:1.6rem;padding-right:1.6rem;}
