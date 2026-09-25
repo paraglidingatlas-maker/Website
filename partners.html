@@ -134,6 +134,42 @@
   }
   @media (max-width:560px){ .pw-ways{grid-template-columns:1fr;} .pw-tag{top:6%;} }
   @media (prefers-reduced-motion:reduce){ .pw-track,.pw-portrait::after{animation:none;} .pw-way,.pw-tile img{transition:none;} }
+
+  .pw-contact{padding:var(--sp-section) var(--gutter);}
+  .pw-contact-in{position:relative;max-width:var(--measure);margin:0 auto;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(2rem,5vw,4.5rem);
+    background:linear-gradient(135deg,rgba(255,117,23,.07),rgba(255,117,23,0) 45%),var(--card);border:1px solid var(--edge);padding:clamp(1.8rem,4.5vw,3.4rem);}
+  .pw-contact-in::before,.pw-contact-in::after{content:"";position:absolute;width:18px;height:18px;}
+  .pw-contact-in::before{top:-1px;left:-1px;border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+  .pw-contact-in::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--orange);border-right:2px solid var(--orange);}
+  .pw-contact-copy .kicker{display:block;margin-bottom:.8rem;}
+  .pw-contact-copy h2{font-family:var(--font-display);font-weight:800;font-size:var(--fs-h2);line-height:1.12;color:var(--white);margin:0 0 1rem;}
+  .pw-contact-copy > p{color:var(--gray-light);font-size:var(--fs-body);line-height:1.7;margin:0;}
+  .pw-contact-copy .pw-sign{margin-top:1.6rem;}
+  .pw-direct{margin-top:1.4rem!important;font-size:var(--fs-small)!important;color:var(--gray)!important;}
+  .pw-direct a{color:var(--gray-light);}
+  .pw-form{display:flex;flex-direction:column;gap:1.1rem;}
+  .pw-row2{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+  .pw-field{display:flex;flex-direction:column;gap:.45rem;}
+  .pw-field > span{font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;color:var(--gray);}
+  .pw-field > span em{font-style:normal;letter-spacing:0;text-transform:none;color:var(--gray);opacity:.8;}
+  .pw-field input,.pw-field textarea{width:100%;font:inherit;font-size:var(--fs-body);color:var(--white);background:rgba(20,21,25,.7);border:1px solid var(--edge);
+    padding:.85rem .95rem;border-radius:0;outline:none;transition:border-color .2s ease,background .2s ease;}
+  .pw-field textarea{resize:vertical;min-height:8.5rem;line-height:1.6;}
+  .pw-field input::placeholder,.pw-field textarea::placeholder{color:var(--gray);}
+  .pw-field input:focus,.pw-field textarea:focus{border-color:var(--live);background:rgba(20,21,25,.95);}
+  .pw-interest{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem;}
+  .pw-interest legend{font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-bottom:.55rem;padding:0;}
+  .pw-interest label{position:relative;cursor:pointer;}
+  .pw-interest input{position:absolute;opacity:0;width:1px;height:1px;}
+  .pw-interest span{display:inline-flex;align-items:center;min-height:40px;padding:.45rem .9rem;border:1px solid var(--edge);color:var(--gray-light);font-size:var(--fs-small);
+    transition:border-color .2s ease,color .2s ease,background .2s ease;}
+  .pw-interest input:checked + span{border-color:var(--orange);color:var(--white);background:rgba(255,117,23,.12);}
+  .pw-interest input:focus-visible + span{outline:2px solid var(--orange);outline-offset:2px;}
+  .pw-send{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin-top:.3rem;}
+  .pw-status{margin:0;font-size:var(--fs-small);color:var(--gray-light);flex:1;min-width:12rem;}
+  .pw-status[data-state="bad"]{color:var(--orange);}
+  @media (max-width:820px){ .pw-contact-in{grid-template-columns:1fr;} }
+  @media (max-width:560px){ .pw-row2{grid-template-columns:1fr;} }
 </style>
 <!-- site-schema -->
 <script type="application/ld+json">
@@ -281,17 +317,63 @@
   </div>
 </section>
 
-<section class="cta-band">
-  <div class="cta-card">
-  <span class="cta-hud-tag">Partnerships</span>
-  <p class="cta-eyebrow">Start a conversation</p>
-  <h2>Tell me about your brand and who you want to reach</h2>
-  <div class="cta-buttons">
-    <a href="mailto:aninder@paraglidingatlas.com?subject=Sponsorship%20Enquiry" class="btn-solid" data-hover><span>Email Me</span></a>
-  </div>
-  <p class="cta-body">I will reply with current audience numbers and the formats that fit what you have in mind.</p>
+<section class="pw-contact" id="enquire">
+  <div class="pw-contact-in">
+    <div class="pw-contact-copy">
+      <span class="kicker">Start a conversation</span>
+      <h2>Tell me about your brand and who you want to reach</h2>
+      <p>Write a few lines below. I will reply with current audience numbers and the formats that fit what you have in mind.</p>
+      <div class="pw-sign"><img src="assets/podcast/host-aninder-soft.png" alt="" width="42" height="42" loading="lazy"><span>Aninder Singh<small>Replies personally</small></span></div>
+      <p class="pw-direct">Prefer your own email? <a href="mailto:aninder@paraglidingatlas.com?subject=Sponsorship%20Enquiry">aninder@paraglidingatlas.com</a></p>
+    </div>
+    <form class="pw-form" id="pwForm" novalidate>
+      <div class="pw-row2">
+        <label class="pw-field" for="pw-name"><span>Your name</span><input type="text" id="pw-name" name="name" autocomplete="name" required></label>
+        <label class="pw-field" for="pw-email"><span>Email</span><input type="email" id="pw-email" name="email" autocomplete="email" required></label>
+      </div>
+      <div class="pw-row2">
+        <label class="pw-field" for="pw-brand"><span>Brand or company</span><input type="text" id="pw-brand" name="brand" autocomplete="organization" required></label>
+        <label class="pw-field" for="pw-site"><span>Website <em>(optional)</em></span><input type="url" id="pw-site" name="site" inputmode="url" placeholder="https://"></label>
+      </div>
+      <fieldset class="pw-interest">
+        <legend>Interested in</legend>
+        <label for="pw-int-1"><input id="pw-int-1" type="checkbox" name="interest" value="Podcast"><span>Podcast</span></label>
+        <label for="pw-int-2"><input id="pw-int-2" type="checkbox" name="interest" value="Newsletter"><span>Newsletter</span></label>
+        <label for="pw-int-3"><input id="pw-int-3" type="checkbox" name="interest" value="Video"><span>Video</span></label>
+        <label for="pw-int-4"><input id="pw-int-4" type="checkbox" name="interest" value="Expeditions"><span>Expeditions</span></label>
+        <label for="pw-int-5"><input id="pw-int-5" type="checkbox" name="interest" value="Not sure yet"><span>Not sure yet</span></label>
+      </fieldset>
+      <label class="pw-field" for="pw-message"><span>Your message</span><textarea id="pw-message" name="message" rows="5" required placeholder="What you make, who you want to reach, and any timing I should know about."></textarea></label>
+      <div class="pw-send">
+        <button type="submit" class="btn-solid" data-hover><span>Send Enquiry</span></button>
+        <p class="pw-status" id="pwStatus" role="status" aria-live="polite"></p>
+      </div>
+    </form>
   </div>
 </section>
+
+<script>
+/* The enquiry opens a ready-written email to Aninder, the same way the trip enquiry
+   form works: no third-party form service, nothing stored on the site. */
+(function(){
+  var form=document.getElementById('pwForm'), status=document.getElementById('pwStatus'); if(!form) return;
+  var TO='aninder@paraglidingatlas.com';
+  function say(t,bad){ status.textContent=t; status.setAttribute('data-state',bad?'bad':'ok'); }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=form.elements, name=f.name.value.trim(), email=f.email.value.trim(), brand=f.brand.value.trim(), site=f.site.value.trim(), msg=f.message.value.trim();
+    var picks=[].slice.call(form.querySelectorAll('input[name="interest"]:checked')).map(function(x){return x.value;});
+    if(!name||!brand){ say('Please add your name and your brand or company.',true); return; }
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ say('That email address looks incomplete.',true); f.email.focus(); return; }
+    if(msg.length<10){ say('Please write a line or two about what you have in mind.',true); f.message.focus(); return; }
+    var body=['Partnership enquiry from paraglidingatlas.com','','Name: '+name,'Email: '+email,'Brand: '+brand,'Website: '+(site||'not given'),'Interested in: '+(picks.join(', ')||'not specified'),'','Message:',msg].join('\n');
+    var href='mailto:'+TO+'?subject='+encodeURIComponent('Sponsorship Enquiry: '+brand)+'&body='+encodeURIComponent(body);
+    if(href.length>1900){ say('That message is a little long for an email link. Please shorten it, or send it straight to '+TO+'.',true); return; }
+    say('Opening your email app with your enquiry ready to send. If nothing happens, email '+TO+' directly.');
+    window.location.href=href;
+  });
+})();
+</script>
 
 <script>
 /* Count the audience figures up once they come into view (still, for reduced motion). */
