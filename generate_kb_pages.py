@@ -47,6 +47,7 @@ NAV_FOOTER = """
       <a href="../mission.html">Mission Statement</a>
       <a href="../safety-and-disclosure.html">Safety &amp; Disclosure</a>
       <a href="../corrections.html">Corrections</a>
+      <a href="../partners.html">Partner With Us</a>
     </div>
     <div class="footer-col">
       <h2>Legal</h2>
