@@ -66,7 +66,7 @@
 <link rel="preload" href="assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css?v=1f73ef11">
-<link rel="stylesheet" href="styles.css?v=826393a1">
+<link rel="stylesheet" href="styles.css?v=909f1c5a">
 <style>
   .pod-hero{position:relative;min-height:64vh;display:flex;align-items:flex-end;}
   .pod-hero-media{position:absolute;inset:0;z-index:-2;}
@@ -418,6 +418,8 @@
   .glassB{
     position:relative;max-width:1300px;margin:0 auto;
     border:1px solid var(--rule);border-bottom:none;
+    /* Horizon: the side lines fade out going down instead of stopping dead. */
+    border-image:linear-gradient(180deg,var(--rule),transparent) 1;
     padding:clamp(1.8rem,4vw,2.6rem) clamp(1.8rem,4vw,2.6rem) clamp(1.4rem,3vw,2rem);
     display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);
     gap:clamp(2rem,6vw,5rem);align-items:start;
@@ -682,8 +684,12 @@
     background:linear-gradient(180deg, var(--bg) 0%, var(--card) 100%);
   }
   .wwu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:1300px;margin:0 auto;}
+  /* Lit from the top left corner, where the bracket is, and fading out, rather
+     than a box with four drawn edges. */
   .wwu-card{
-    position:relative;background:var(--card);border:1px solid var(--line);
+    position:relative;border:0;border-top:1px solid;
+    border-image:linear-gradient(90deg,var(--edge-hi),var(--line) 60%,transparent) 1;
+    background:radial-gradient(130% 120% at 0% 0%,rgba(180,180,180,.075) 0%,rgba(180,180,180,.025) 45%,transparent 75%);
     padding:2rem 2.2rem;display:flex;flex-direction:column;
   }
   .wwu-card::before, .wwu-card::after{content:"";position:absolute;width:16px;height:16px;border:1.5px solid var(--live);}
@@ -754,6 +760,7 @@
     background:none;
     border:1px solid var(--rule);
     border-bottom:none;
+    border-image:linear-gradient(180deg,var(--rule),transparent) 1;
     padding:clamp(2rem,5vw,3rem) clamp(2rem,5vw,3rem) clamp(1.5rem,4vw,2.4rem);
     display:flex;align-items:center;justify-content:space-between;gap:2.5rem;flex-wrap:wrap;
   }
@@ -1242,10 +1249,7 @@
       </div>
       <button type="submit"><span>Subscribe</span></button>
     </form>
-    <div class="pod-nl-after">
-      <p class="nl-status" data-nl-status role="status" aria-live="polite"></p>
-      <p class="fine-print">By subscribing you consent to email updates from Paragliding Atlas. Unsubscribe any time.</p>
-    </div>
+    <p class="nl-status" data-nl-status role="status" aria-live="polite"></p>
   </div>
 </section>
 

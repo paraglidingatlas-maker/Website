@@ -62,7 +62,7 @@
 
 .khero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:
   linear-gradient(180deg,rgba(20,21,25,.72) 0,rgba(20,21,25,.18) 16%,rgba(20,21,25,0) 32%,
-    rgba(20,21,25,.48) 74%,rgba(20,21,25,.9) 100%),
+    rgba(20,21,25,.48) 74%,var(--bg) 100%),
   linear-gradient(90deg,rgba(20,21,25,.6) 0,rgba(20,21,25,.14) 44%,rgba(20,21,25,0) 70%);}
 
 .khero-copy{position:relative;z-index:3;max-width:60rem;}

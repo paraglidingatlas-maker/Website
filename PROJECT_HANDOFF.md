@@ -3956,3 +3956,19 @@ The "Horizon, site-wide" and "Touch sizes" sections at the end of styles.css.
   kicker and booking card labels, library card stamps and "Audio only", knowledge
   base cue and level tags, the door's "Enter the realm", hints and Skip (also
   brighter).
+
+## 72. HORIZON ON THE HOMEPAGE, ABOUT, PODCAST AND DESTINATION PAGES (2026-09-25)
+
+- **Homepage** ("Horizon on the homepage" at the end of styles.css): the hero's
+  shading ends at `var(--bg)` and the stats band lost its grey fill, so the photo
+  dissolves into the starfield. Section rules fade at their ends. The search band
+  is a radial pool of light (radii 62% by 50%, so it reaches transparent at the
+  box edge; at 100% it was still half lit there and drew a line). Destination
+  photographs are masked to dissolve into the copy beside them, or below on phones.
+- **About:** hero ends at `var(--bg)`, the credential ticker runs between fading
+  lines with no fill, the instrument strip's lighter band fades in and out, and
+  the section rules fade.
+- **Podcast:** the question form and newsletter trays have side lines that fade
+  downwards; the Collaborate and Sponsor cards are lit from the bracket corner.
+  The testimonial and YouTube cards are still untouched (their own task).
+- **Kenya and India:** the hero scrim ends at `var(--bg)`.
