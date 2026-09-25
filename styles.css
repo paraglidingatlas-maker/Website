@@ -1602,8 +1602,11 @@ footer{
 .nl-status:empty{margin:0;min-height:0;}
 .nl-status[data-state="ok"]{color:var(--white);}
 .nl-status[data-state="bad"]{color:var(--orange);}
-.pod-newsletter-panel > .nl-status{flex-basis:100%;order:3;margin-top:-1.6rem;}
-.pod-newsletter-panel > .nl-status:empty{display:none;}
+.pod-nl-after{flex-basis:100%;margin-top:-1.4rem;}
+.pod-nl-after .nl-status:empty{display:none;}
+.pod-nl-after .fine-print{margin:.5rem 0 0;max-width:none;}
+/* wide screens: the message and consent line sit in the form's column, under the form */
+@media (min-width:701px){ .pod-nl-after{width:min(100%,33rem);flex-basis:auto;margin-left:auto;} }
 
 /* ===== Horizon, site-wide ===================================================
    The three rules the episode pages were rebuilt on (PROJECT_HANDOFF.md 68),

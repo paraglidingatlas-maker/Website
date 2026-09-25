@@ -4,8 +4,8 @@
  * Posts to the public endpoint of the "Newsletter signup" embedded form in the
  * MailerLite account (it adds people to the Newsletter group). No API key is
  * involved or exposed: this is the same endpoint MailerLite's own embed code
- * uses. Double opt-in is on for that form, so a signup only counts once the
- * person clicks the confirmation email, and the message here says so.
+ * uses. Double opt-in is off: people are added straight away, and a MailerLite
+ * automation ("Welcome to the Atlas list") sends them the welcome email.
  *
  * Wired on the homepage ("Join The Atlas List") and the podcast page
  * ("Never Miss an Episode"). Each block needs: an email input, a button and an
@@ -48,7 +48,7 @@
         .then(function (r) { return r.json().catch(function () { return { success: r.ok }; }); })
         .then(function (res) {
           if (res && res.success) {
-            say(status, 'Nearly there. Check your inbox and confirm your address to join the list.', 'ok');
+            say(status, 'You\u2019re on the list. A welcome email is on its way.', 'ok');
             input.value = '';
           } else {
             var msg = res && res.errors && res.errors.fields && res.errors.fields.email && res.errors.fields.email[0];
