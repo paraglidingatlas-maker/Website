@@ -3986,3 +3986,18 @@ The "Horizon, site-wide" and "Touch sizes" sections at the end of styles.css.
   that fades right; warmer on hover.
 - **Enquiry page:** the "rather just talk" box and the consent box are lit panels;
   the side column's rule fades downward. Form fields keep their outlines.
+
+## 74. HORIZON ON THE KENYA AND INDIA PAGES, BELOW THE HERO (2026-09-25)
+
+"Horizon on the destination pages" at the end of destinations.css.
+
+- The pinned photo sequence's scrim now starts and ends at `var(--bg)`, so it
+  fades in from and out to the page instead of starting and stopping square.
+- Section and list rules fade at their ends; the spec strip under the hero has no
+  grey fill.
+- Hairline grids (`.dst-grid`, `.kdates-grid`, `.kkit-gate`, `.kmap-list`) keep
+  their inner lines and lose the outer frame. `background-clip:padding-box` is
+  what makes that work: the lines are the grid's background showing through the
+  1px gaps, so a transparent border alone would still show it.
+- Site cards, rail cards and the related-episode box are lit from the corner; the
+  FAQ items keep their shape with a lit fill instead of a flat grey one.

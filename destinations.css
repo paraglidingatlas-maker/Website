@@ -967,8 +967,8 @@
    words, the left edge carries the label, the top band keeps the sticky
    section bar legible over a bright sky. */
 .kfly-scrim{position:absolute;inset:0;pointer-events:none;background:
-  linear-gradient(180deg,rgba(20,21,25,.42) 0,rgba(20,21,25,0) 26%,rgba(20,21,25,0) 44%,
-    rgba(20,21,25,.6) 72%,rgba(20,21,25,.93) 100%),
+  linear-gradient(180deg,var(--bg) 0,rgba(20,21,25,.42) 7%,rgba(20,21,25,0) 26%,rgba(20,21,25,0) 44%,
+    rgba(20,21,25,.6) 72%,var(--bg) 100%),
   linear-gradient(90deg,rgba(20,21,25,.5) 0,rgba(20,21,25,.1) 48%,rgba(20,21,25,0) 74%);}
 .kfly-marks{position:absolute;right:clamp(1.2rem,5vw,5.5rem);bottom:clamp(2.2rem,5vw,3.4rem);
   z-index:2;display:flex;gap:8px;}
@@ -1373,3 +1373,25 @@
   .khero-tab{min-height:44px;}
   .kmap-btn{width:44px;height:44px;}
 }
+
+/* ===== Horizon on the destination pages =====================================
+   The same three rules as the rest of the site (PROJECT_HANDOFF.md 68 and 72):
+   light is never cut, lines fade at their ends, panels are lit rather than
+   boxed. The pinned photo sequence above now fades in from and out to the page
+   at both ends of its scrim, so it no longer starts and stops on a straight
+   edge. */
+.dst-sec + .dst-sec,.dst-spec,.dst-accs,.dst-acc,.kair,.kov-quiet,.kfit,.kdates-track,.dst-dates,.dst-date + .dst-date{
+  border-image:linear-gradient(90deg,transparent,var(--rule) 12%,var(--rule) 88%,transparent) 1;}
+/* The spec strip under the hero: no grey slab, just the facts between two
+   fading lines. */
+.dst-spec{background:none;}
+/* Hairline grids keep their inner lines and lose the hard outer frame, so the
+   lines end in the page instead of at a drawn box. */
+.dst-grid,.kdates-grid,.kkit-gate,.kmap-list{border-color:transparent;background-clip:padding-box;}
+/* Cards lit from the corner. */
+.dst-site,.dst-rail-card,.dst-rel{
+  background:radial-gradient(120% 120% at 0% 0%,rgba(180,180,180,.07) 0%,rgba(180,180,180,.022) 45%,transparent 78%);
+  border:0;border-top:1px solid;border-image:linear-gradient(90deg,var(--edge-hi),var(--rule) 55%,transparent) 1;}
+.kfaq .kfaq-item{background:radial-gradient(120% 140% at 0% 0%,rgba(180,180,180,.06) 0%,transparent 72%);
+  border-color:var(--line);}
+.kfaq .kfaq-item:hover{background:radial-gradient(120% 140% at 0% 0%,rgba(255,117,23,.08) 0%,transparent 72%);}
