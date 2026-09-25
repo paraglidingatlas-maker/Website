@@ -38,7 +38,7 @@
 <link rel="preload" href="assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css?v=1f73ef11">
-<link rel="stylesheet" href="styles.css?v=909f1c5a">
+<link rel="stylesheet" href="styles.css?v=f61bb558">
 <style>
 /* Enquiry page. Tokens and chrome come from styles.css.
    The form deliberately has no backend and no third party form service: it
@@ -55,12 +55,15 @@
   padding:0 clamp(1.2rem,5vw,5.5rem) clamp(3rem,7vw,5rem);}
 @media (min-width:62rem){.enq-wrap{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:4rem;align-items:start;}}
 
-.enq-quick{border:1px solid var(--rule);padding:1.6rem;}
+.enq-quick{padding:1.6rem;border:0;border-top:1px solid;
+  /* Horizon: lit from the corner, warm because it is the shortcut to a call. */
+  border-image:linear-gradient(90deg,var(--live),var(--line) 55%,transparent) 1;
+  background:radial-gradient(120% 120% at 0% 0%,rgba(255,117,23,.09) 0%,rgba(180,180,180,.03) 45%,transparent 80%);}
 .enq-quick h2{font-family:var(--font-display);font-weight:600;color:var(--white);
   font-size:1.05rem;margin:0 0 .5rem;}
 .enq-quick p{color:var(--gray-light);font-size:.93rem;line-height:1.75;margin:0 0 1.2rem;}
 .enq-quick .row{display:flex;flex-wrap:wrap;gap:.7rem;}
-.enq-aside{border-left:2px solid var(--rule);padding-left:1.3rem;}
+.enq-aside{border-left:2px solid var(--rule);padding-left:1.3rem;border-image:linear-gradient(180deg,var(--rule),transparent) 1;}
 .enq-aside h3{font-family:var(--font-display);font-weight:600;color:var(--white);
   font-size:.98rem;margin:0 0 .6rem;}
 .enq-aside p{color:var(--gray-light);font-size:.9rem;line-height:1.75;margin:0 0 1.4rem;}
@@ -81,7 +84,9 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
   outline:none;border-color:var(--orange);}
 .enq-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:0 1.1rem;}
 
-.enq-consent{display:flex;gap:.75rem;align-items:flex-start;border:1px solid var(--rule);
+.enq-consent{display:flex;gap:.75rem;align-items:flex-start;border:0;border-top:1px solid;
+  border-image:linear-gradient(90deg,var(--rule),transparent) 1;
+  background:radial-gradient(120% 140% at 0% 0%,rgba(180,180,180,.05),transparent 75%);
   padding:1.1rem 1.2rem;margin:0 0 1.5rem;}
 .enq-consent input{margin-top:.25rem;flex:0 0 auto;width:1rem;height:1rem;accent-color:var(--orange);}
 .enq-consent label{color:var(--gray-light);font-size:.88rem;line-height:1.7;}

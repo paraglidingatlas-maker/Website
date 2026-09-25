@@ -3972,3 +3972,17 @@ The "Horizon, site-wide" and "Touch sizes" sections at the end of styles.css.
   downwards; the Collaborate and Sponsor cards are lit from the bracket corner.
   The testimonial and YouTube cards are still untouched (their own task).
 - **Kenya and India:** the hero scrim ends at `var(--bg)`.
+
+## 73. AN AMBIENT SKY FOR PAGES WITHOUT A PHOTOGRAPH; TOPIC CARDS AND THE ENQUIRY FORM LIT (2026-09-25)
+
+- **Ambient sky** (end of styles.css): the library, topic pages and topics index,
+  enquiry form, sitemap, mission, policy pages and 404 get a soft warm-left,
+  cool-right light behind the header that dissolves before the content. Selected
+  with `.page-wrap:has(> .lib-wrap, > .enq-hero, > .pol-hero, > .tg-hero,
+  > .sm-wrap, > .nf)`, so no markup changed. A new page opts in by adding its
+  first element's class to that list. partners.html has its own photo hero and is
+  not in the list.
+- **Topic cards** (tags.css, end): lit from the bracket corner with a top rule
+  that fades right; warmer on hover.
+- **Enquiry page:** the "rather just talk" box and the consent box are lit panels;
+  the side column's rule fades downward. Form fields keep their outlines.

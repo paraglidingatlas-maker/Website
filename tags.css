@@ -158,3 +158,10 @@
   .tg-chips{gap:.5rem;}
   .tg-sort .pill,.tg-sort button{min-height:44px;}
 }
+
+/* Horizon: episode cards are lit from their bracket corner and fade out, with
+   a top rule that fades to the right, rather than a filled box with four drawn
+   edges. The hover lift and the second bracket are the shared ones. */
+.tg-v2 .tg-ep{background:radial-gradient(120% 110% at 0% 0%,rgba(180,180,180,.075) 0%,rgba(180,180,180,.025) 45%,transparent 78%);
+  border:0;border-top:1px solid;border-image:linear-gradient(90deg,var(--edge-hi),var(--line) 55%,transparent) 1;}
+.tg-v2 .tg-ep:hover{background:radial-gradient(120% 110% at 0% 0%,rgba(255,117,23,.08) 0%,rgba(180,180,180,.03) 45%,transparent 78%);}
