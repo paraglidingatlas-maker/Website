@@ -4085,3 +4085,22 @@ The "Horizon, site-wide" and "Touch sizes" sections at the end of styles.css.
   the left gutter fills with orange and carries a small glider with the page's
   scroll progress. Both effects exist only where scroll-driven animations are
   supported and motion is not reduced.
+
+## 79. THE TRANSCRIPT FOLLOWS THE CONVERSATION (2026-09-25)
+
+`episodes/episode-sync.js`, loaded by every episode page (template).
+
+- Every transcript timestamp and chapter time is a control (keyboard reachable,
+  labelled "Play from 12:34"): it seeks the video there and plays.
+- While the video plays, the line being spoken is lit (white text, orange time,
+  a tick between time and words) and the chapter rail follows playback. The
+  scrollspy in the template stands down while `body.cd-playing` is set.
+- It uses the YouTube embed's own postMessage protocol (the one the iframe API
+  uses), so no YouTube script is added: the embed carries `enablejsapi=1`
+  (generate_chapter_deck.py), the page says "listening" until the player
+  answers, and reads `infoDelivery` for time and state.
+- If the player never answers, nothing changes, and a timestamp reloads the
+  embed with `start=` and autoplay instead.
+- YouTube is unreachable from the build container, so this was built and is
+  tested against a stand-in that speaks the same protocol (smoke.py
+  `episode_sync`). Worth one real check on the live site.

@@ -404,3 +404,25 @@
     linear-gradient(180deg,rgba(20,21,25,.5) 0%,rgba(20,21,25,.62) 100%),
     var(--cd-art,none) center 30%/cover no-repeat;}
 }
+
+/* ===== The transcript follows the conversation (episode-sync.js) ==========
+   Timestamps are controls: they turn orange with a small play mark under the
+   pointer. While the video plays, the line being spoken is lit: full white
+   text and an orange tick in the margin, easing in and out so the light seems
+   to move down the page with the voice. */
+.cd-seek{cursor:pointer;border-radius:2px;transition:color .18s ease;}
+.cd-seek:hover,.cd-seek:focus-visible{color:var(--orange);}
+.cd-ts.cd-seek::before{content:"\25B6";display:inline-block;font-size:.55em;margin-right:.35em;
+  opacity:0;transform:translateX(-3px);transition:opacity .18s ease,transform .18s ease;vertical-align:.15em;}
+.cd-ts.cd-seek:hover::before,.cd-ts.cd-seek:focus-visible::before,.cd-line.is-now .cd-ts::before{opacity:1;transform:none;}
+.cd-line{position:relative;transition:opacity .4s ease;}
+.cd-line p{transition:color .4s ease;}
+/* The tick sits in the gap between the time and the words: further left it
+   would be outside the transcript's clip box and never be seen. */
+.cd-line::before{content:"";position:absolute;left:calc(64px + .45rem - 1px);top:.35em;bottom:.35em;width:2px;
+  background:var(--orange);border-radius:1px;opacity:0;transform:scaleY(.4);
+  transition:opacity .35s ease,transform .35s ease;}
+.cd-line.is-now::before{opacity:1;transform:none;}
+.cd-line.is-now p{color:var(--white);}
+.cd-line.is-now .cd-ts{color:var(--orange);}
+@media (prefers-reduced-motion: reduce){.cd-line,.cd-line p,.cd-line::before,.cd-seek,.cd-ts.cd-seek::before{transition:none;}}

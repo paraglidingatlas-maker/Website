@@ -443,6 +443,41 @@ def booking_bar(pg, base):
         check(wide == "none", name, "no booking bar on a wide screen", wide)
 
 
+FAKE_YT = """<html><body><script>
+var t=0,s=-1,w=null;function i(){if(w)w.postMessage(JSON.stringify({event:"infoDelivery",
+info:{currentTime:t,playerState:s},id:1,channel:"widget"}),"*");}
+addEventListener("message",function(e){var m=JSON.parse(e.data);if(m.event==="listening"){w=e.source;i();}
+if(m.event==="command"){if(m.func==="seekTo")t=m.args[0];if(m.func==="playVideo")s=1;i();}});
+setInterval(function(){if(s===1)t+=0.25;i();},250);</script></body></html>"""
+
+
+def episode_sync(pg, base):
+    """The transcript follows the video (episodes/episode-sync.js).
+
+    YouTube cannot be reached from a test run, so the embed is answered by a
+    stand-in that speaks the same postMessage protocol: it reports its time
+    after "listening" and obeys seekTo and playVideo. What is checked is this
+    site's side: a timestamp seeks and plays, and the line being spoken is lit."""
+    pg.route("**/www.youtube-nocookie.com/embed/**",
+             lambda r: r.fulfill(body=FAKE_YT, content_type="text/html"))
+    try:
+        pg.goto(base + "/episodes/urs-haari-the-real-truth-about-reserve-parachutes-a.html",
+                wait_until="load")
+        pg.wait_for_timeout(1500)
+        armed = pg.evaluate("document.querySelectorAll('.cd-line .cd-ts.cd-seek').length")
+        check(armed > 100, "episode", "transcript timestamps are play controls", armed)
+        ts = pg.query_selector_all(".cd-line .cd-ts")[2]
+        want = ts.text_content().strip()
+        ts.click()
+        pg.wait_for_timeout(1200)
+        lit = pg.evaluate("(()=>{const n=document.querySelector('.cd-line.is-now .cd-ts');return n?n.textContent.trim():null})()")
+        playing = pg.evaluate("document.body.classList.contains('cd-playing')")
+        check(lit == want and playing, "episode", "a timestamp plays from there and lights that line",
+              "lit %s, wanted %s, playing %s" % (lit, want, playing))
+    finally:
+        pg.unroute("**/www.youtube-nocookie.com/embed/**")
+
+
 def kenya_hero(pg, base):
     """The full bleed hero on the Kenya page.
 
@@ -1500,7 +1535,7 @@ def main():
                 return 0
             pg = browser.new_page(viewport={"width": 1280, "height": 900},
                                   reduced_motion="no-preference")
-            for fn in (rail, nav, player, library, search, kenya, booking_bar, kenya_hero, kenya_map, kenya_gallery, kenya_facts, kenya_overview, kenya_dates, kenya_rolls, india, enquire, overflow):
+            for fn in (rail, nav, player, library, search, kenya, booking_bar, episode_sync, kenya_hero, kenya_map, kenya_gallery, kenya_facts, kenya_overview, kenya_dates, kenya_rolls, india, enquire, overflow):
                 guarded(fn, pg, base)
             pg.close()
             pg2 = browser.new_page(viewport={"width": 1280, "height": 900},

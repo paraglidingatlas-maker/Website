@@ -725,7 +725,9 @@ def player_html(meta):
             '      <div class="cd-player" style="%s">\n' % esc(pstyle) +
             '        <span class="cd-player-corner cd-pc-tl"></span>\n'
             '        <span class="cd-player-corner cd-pc-br"></span>\n'
-            '        <iframe src="https://www.youtube-nocookie.com/embed/%s" title="%s"\n'
+            # enablejsapi lets episode-sync.js hear the player's time, so the
+            # transcript can follow the conversation. It loads nothing extra.
+            '        <iframe src="https://www.youtube-nocookie.com/embed/%s?enablejsapi=1&amp;rel=0" title="%s"\n'
             '          loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"\n'
             '          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>\n'
             '      </div>\n' % (esc(vid), esc(meta["title"])))

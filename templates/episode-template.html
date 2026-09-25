@@ -171,7 +171,8 @@
   if (!chaps.length || !blocks.length) return;
   var io = new IntersectionObserver(function (entries) {{
     entries.forEach(function (e) {{
-      if (!e.isIntersecting) return;
+      // while the video plays, the rail follows the video (episode-sync.js)
+      if (!e.isIntersecting || document.body.classList.contains('cd-playing')) return;
       var id = e.target.id;
       chaps.forEach(function (a) {{
         a.classList.toggle('active', a.getAttribute('href') === '#' + id);
@@ -181,5 +182,6 @@
   blocks.forEach(function (b) {{ io.observe(b); }});
 }})();
 </script>
+<script defer src="episode-sync.js"></script>
 </body>
 </html>

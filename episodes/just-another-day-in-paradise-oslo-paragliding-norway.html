@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../styles.css?v=b7a4dd0c">
 <link rel="stylesheet" href="../tags.css?v=71f8244d">
-<link rel="stylesheet" href="episode.css?v=aa4b0c99">
+<link rel="stylesheet" href="episode.css?v=0df957df">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -181,7 +181,7 @@
       <div class="cd-player" style="view-transition-name:ep-just-another-day-in-paradise-oslo-paragliding-norway;--cd-poster:url(https://i.ytimg.com/vi/XHIQS658G24/mqdefault.jpg)">
         <span class="cd-player-corner cd-pc-tl"></span>
         <span class="cd-player-corner cd-pc-br"></span>
-        <iframe src="https://www.youtube-nocookie.com/embed/XHIQS658G24" title="Just another day in Paradise ✨😍 #oslo #paragliding #norway"
+        <iframe src="https://www.youtube-nocookie.com/embed/XHIQS658G24?enablejsapi=1&amp;rel=0" title="Just another day in Paradise ✨😍 #oslo #paragliding #norway"
           loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"
           referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
@@ -301,7 +301,8 @@
   if (!chaps.length || !blocks.length) return;
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
+      // while the video plays, the rail follows the video (episode-sync.js)
+      if (!e.isIntersecting || document.body.classList.contains('cd-playing')) return;
       var id = e.target.id;
       chaps.forEach(function (a) {
         a.classList.toggle('active', a.getAttribute('href') === '#' + id);
@@ -311,6 +312,7 @@
   blocks.forEach(function (b) { io.observe(b); });
 })();
 </script>
+<script defer src="episode-sync.js?v=2ab4635c"></script>
 <!-- site-script -->
 <script defer src="../script.js?v=8961c33a"></script>
 <!-- /site-script -->
