@@ -1,0 +1,28 @@
+/* DIRECTION A · SUMMIT (after Elite Exped, Bear Grylls). Near black, huge
+   condensed capitals, hard edges, credentials up front. */
+:root{
+  --bg:#0a0b0c; --bg2:#121315; --card:#121315; --ink:#f5f3ef; --mute:#9d9d9d; --faint:#666;
+  --display:"Barlow Condensed","Poppins",sans-serif; --display-w:800; --display-t:uppercase; --display-ls:.005em; --display-lh:.92;
+  --h1:clamp(3.8rem,11vw,9.5rem); --h2:clamp(2.6rem,6vw,5rem); --h3:1.55rem;
+  --line:rgba(255,255,255,.12);
+}
+.kicker{letter-spacing:.24em;}
+.hero-media::after{background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.2) 55%,transparent),linear-gradient(180deg,rgba(0,0,0,.45),transparent 30%,transparent 50%,var(--bg));}
+.btn{text-transform:uppercase;letter-spacing:.12em;font-size:.82rem;}
+.trip{background:none;position:relative;}
+.trip-media{aspect-ratio:4/5;}
+.trip-body{position:absolute;inset:auto 0 0 0;padding:2rem;background:linear-gradient(180deg,transparent,rgba(0,0,0,.88) 35%);}
+.trip-body p{color:#cfcfcf;max-width:34rem;}
+.trip h3{font-size:clamp(2rem,3.4vw,2.9rem);}
+.trip .facts{border-top-color:rgba(255,255,255,.2);}
+.trip-status{left:auto;right:1rem;background:#fff;color:#000;}
+.stats b{font-size:clamp(3.4rem,8vw,6.5rem);}
+.sec-dates{border-top:1px solid var(--line);}
+.dep-place{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:1.5rem;}
+.step-n{font-size:4.2rem;color:transparent;-webkit-text-stroke:1px var(--accent);}
+.depcard{border-top-width:4px;}
+.film-cap p{font-size:clamp(2.6rem,7vw,5.6rem);}
+.g-face img{filter:grayscale(1) contrast(1.1);}
+.guide:hover .g-face img{filter:none;}
+.cta{background:linear-gradient(180deg,var(--bg),#16100b);}
+.cta h2{font-size:clamp(3rem,8vw,6rem);}
