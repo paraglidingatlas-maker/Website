@@ -399,3 +399,31 @@ a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
 .v2-mc-ic svg{width:100%;height:100%;}
 .v2-mc .kit-meta{color:var(--orange);font-size:1.1rem;}
 .cta-band .cta-buttons .listen-btn{flex:0 0 auto;min-width:0;padding-left:1.6rem;padding-right:1.6rem;}
+
+/* ===========================================================================
+   KENYA AND INDIA (prototypes/v2/destinations/*.html, <body class="dst v2-dst">)
+   Aligned, not rebuilt: the markup is the live page's, the hero slideshow, the
+   pinned photo sequence, the map, the gallery and the booking bar keep their
+   own design. What changes is what every page shares: one section header
+   (kicker, title, intro at the kit sizes; the loud and quiet heading sizes
+   become one), the band rhythm (--sp-section, --gutter, --measure) and
+   section rules that fade at their ends.
+   ========================================================================= */
+.v2-dst .dst-sec{padding:var(--sp-section) max(var(--gutter), calc((100% - var(--measure)) / 2));}
+.v2-dst .dst-sec + .dst-sec{border-top:1px solid;
+  border-image:linear-gradient(90deg,transparent,var(--line) 15%,var(--line) 85%,transparent) 1;}
+.v2-dst .dst-sec.cfl,.v2-dst .cfl + .dst-sec{border-top:0;}
+.v2-dst .dst-head{max-width:48rem;margin:0 0 var(--sp-5);}
+.v2-dst .dst-head .kicker,
+.v2-dst .dst-sec.is-quiet .dst-head .kicker{display:block;font-family:var(--font-body);font-size:var(--fs-micro);font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin:0 0 var(--sp-2);}
+.v2-dst .dst-head h2,
+.v2-dst .dst-sec.is-loud .dst-head h2,
+.v2-dst .dst-sec.is-quiet .dst-head h2{font-family:var(--font-display);font-weight:700;font-size:var(--fs-h2);line-height:1.15;
+  letter-spacing:-.015em;color:var(--white);margin:0;max-width:none;}
+.v2-dst .dst-head p,
+.v2-dst .dst-sec.is-quiet .dst-head p{font-size:var(--fs-lead);line-height:1.7;color:var(--gray-light);margin:var(--sp-2) 0 0;max-width:60ch;}
+.v2-dst .dst-head .dst-lede{color:var(--white);}
+.v2-dst .dst-sec.is-loud .dst-head,.v2-dst .dst-sec.is-quiet .dst-head{margin-bottom:var(--sp-5);}
+.v2-dst .dst-sec.is-loud .kreal-open .dst-head{margin-bottom:0;}
+.v2-dst .dst-sec.is-datasheet .dst-head{margin-bottom:var(--sp-4);}

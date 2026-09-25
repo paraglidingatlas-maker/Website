@@ -28,9 +28,14 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V2 = os.path.join(ROOT, "prototypes", "v2")
 SKIP = re.compile(r"^(?:[a-z][a-z0-9+.-]*:|//|#|/|\{|\$|%)", re.I)
-ATTR = re.compile(r'(\s(?:href|src|poster|data-src|data-poster)=")([^"]*)(")', re.I)
+ATTR = re.compile(r'(\s(?:href|src|poster|data-src|data-poster|data-loop)=")([^"]*)(")', re.I)
 SRCSET = re.compile(r'(\s(?:srcset|data-srcset)=")([^"]*)(")', re.I)
 CSSURL = re.compile(r'(url\((["\']?))([^)"\']+)(\2\))')
+
+
+def exists(p):
+    # data-loop="../assets/video/bir" names a family of files (bir-720.webm, ...)
+    return os.path.exists(p) or os.path.exists(p + "-720.mp4")
 
 
 def fix_url(u, page_dir, live_dir, missing):
@@ -41,7 +46,7 @@ def fix_url(u, page_dir, live_dir, missing):
     if not path:
         return u
     here = os.path.normpath(os.path.join(page_dir, path))
-    if os.path.exists(here):
+    if exists(here):
         target = here
         if target.startswith(V2 + os.sep):
             return u
@@ -51,7 +56,7 @@ def fix_url(u, page_dir, live_dir, missing):
     twin = os.path.join(V2, os.path.relpath(target, ROOT))
     if target.startswith(ROOT) and not target.startswith(V2) and os.path.isfile(twin):
         target = twin
-    if os.path.exists(target) and target.startswith(ROOT):
+    if exists(target) and target.startswith(ROOT):
         rel = os.path.relpath(target, page_dir).replace(os.sep, "/")
         if path.endswith("/") and not rel.endswith("/"):
             rel += "/"
