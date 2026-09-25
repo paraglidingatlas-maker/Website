@@ -25,32 +25,21 @@
   sync();
 })();
 
-/* the trip finder: filters the departures table and takes you there */
+/* "See dates" and the next-departure card: show that trip's rows in the dates table */
 (function () {
-  var f = document.querySelector('[data-finder]'); if (!f) return;
-  var out = document.querySelector('[data-found]'), box = document.querySelector('.v2-deps');
-  var rows = [].slice.call(document.querySelectorAll('.v2-dep[data-place]'));
+  var out = document.querySelector('[data-found]'), rows = [].slice.call(document.querySelectorAll('.v2-dep[data-place]'));
+  if (!rows.length) return;
   var names = { india: 'India', kenya: 'Kenya', kazakhstan: 'Kazakhstan', peru: 'Peru' };
-  function go() {
-    var d = document.getElementById('dates');
-    if (d) d.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  function show(place) {
+    var n = 0;
+    rows.forEach(function (r) { var ok = !place || r.dataset.place === place; r.hidden = !ok; if (ok) n++; });
+    if (out) out.innerHTML = place ? '<b>' + n + (n === 1 ? ' departure' : ' departures') + '</b> for ' + names[place] + '. <button type="button" data-clear>Show all</button>' : '';
   }
-  function run(scroll) {
-    var place = f.place.value, month = f.month.value, n = 0;
-    rows.forEach(function (r) {
-      var ok = (!place || r.dataset.place === place) && (!month || r.dataset.month === month);
-      r.hidden = !ok; if (ok) n++;
-    });
-    if (box) box.hidden = !n;
-    if (out) out.innerHTML = (!place && !month) ? '' : n
-      ? '<b>' + n + (n === 1 ? ' departure' : ' departures') + '</b> match' + (place ? ' ' + names[place] : '') + (month ? ', ' + f.month.options[f.month.selectedIndex].text : '') + '. <button type="button" data-clear>Show all</button>'
-      : 'No departure matches that yet. <button type="button" data-clear>Show all</button> or <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener">book a call</a> and we will find one.';
-    if (scroll) go();
-  }
-  f.addEventListener('submit', function (e) { e.preventDefault(); run(true); });
   document.addEventListener('click', function (e) {
     var t = e.target.closest && e.target.closest('[data-clear],[data-pick]'); if (!t) return;
-    if (t.hasAttribute('data-clear')) { f.place.value = ''; f.month.value = ''; run(false); return; }
-    e.preventDefault(); f.place.value = t.dataset.pick; f.month.value = ''; run(true);
+    if (t.hasAttribute('data-clear')) { show(''); return; }
+    e.preventDefault(); show(t.dataset.pick);
+    var d = document.getElementById('dates');
+    if (d) d.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   });
 })();
