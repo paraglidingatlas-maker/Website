@@ -136,7 +136,7 @@
     paintHud();
 
     /* ------------------------------------------------------------ touch (3) */
-    var CARDS = ".kit-card, .kit-panel, .ep-card, .ep-tile, .tg-v2 .tg-ep, .v2-door, .tile, .cd-box";
+    var CARDS = ".kit-card, .kit-panel, .ep-card, .ep-tile, .tg-v2 .tg-ep, .v2-door, .tile, .cd-box, .ep2-card";
     if (!still && fine) {
       var cur = null, raf = 0, px = 0, py = 0;
       var apply = function () {
@@ -410,6 +410,35 @@
         if (n.tagName === "IMG" && n.loading === "lazy") mark(n); else scan(n);
       }); });
     }).observe(d.body, { childList: true, subtree: true });
+  }
+  if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();
+
+/* EPISODE TIMELINE (the v2 episode page). A tick plays from its chapter by
+   handing the tap to that chapter's own timestamp, which episode-sync.js has
+   already made a control; and the ticks follow the chapter rail, which the
+   sync keeps on the chapter being played. Nothing runs until one of them moves. */
+(function () {
+  var d = document;
+  function init() {
+    var ticks = [].slice.call(d.querySelectorAll(".ep2-tick"));
+    if (!ticks.length) return;
+    ticks.forEach(function (t) {
+      t.addEventListener("click", function (ev) {
+        var bt = d.querySelector("#c" + t.dataset.c + " .cd-block-time");
+        if (bt) { ev.preventDefault(); bt.click(); }
+      });
+    });
+    var chaps = [].slice.call(d.querySelectorAll(".cd-rail .cd-chap"));
+    function follow() {
+      var on = chaps.findIndex(function (c) { return c.classList.contains("active"); });
+      ticks.forEach(function (t, k) { t.classList.toggle("is-on", k === on); t.classList.toggle("is-done", k < on); });
+    }
+    follow();
+    if ("MutationObserver" in window && chaps.length) {
+      var mo = new MutationObserver(follow);
+      chaps.forEach(function (c) { mo.observe(c, { attributes: true, attributeFilter: ["class"] }); });
+    }
   }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();
