@@ -274,24 +274,99 @@
    Sizes come from the type scale in styles.css.
    ===================================================================== */
 
-/* Header band: the episode art, blurred and darkened, behind title and quote */
-.cd-v2 .cd-head{position:relative;isolation:isolate;padding:clamp(2.4rem,6vw,4.2rem) 0 clamp(2rem,4vw,3rem);margin-bottom:clamp(1.5rem,3vw,2.5rem);}
-.cd-v2 .cd-head::before{content:"";position:absolute;z-index:-2;top:0;bottom:0;left:calc(-1 * clamp(1.5rem,4vw,3rem));right:calc(-1 * clamp(1.5rem,4vw,3rem));
-  background:var(--cd-art,none) center 35%/cover no-repeat;filter:blur(28px) saturate(1.1);opacity:.55;transform:scale(1.08);}
-.cd-v2 .cd-head::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:calc(-1 * clamp(1.5rem,4vw,3rem));right:calc(-1 * clamp(1.5rem,4vw,3rem));
-  background:linear-gradient(90deg,rgba(20,21,25,.92) 0%,rgba(20,21,25,.7) 55%,rgba(20,21,25,.5) 100%),
-             linear-gradient(180deg,rgba(20,21,25,0) 55%,var(--bg) 100%);border-bottom:1px solid var(--rule);}
+/* ---- HORIZON: nothing on this page ends in a hard edge -------------------
+   Three rules, so the page reads as one sky from the header down rather than
+   a stack of boxes.
+
+   1. LIGHT IS NEVER CUT. The episode art is one layer of light behind the
+      header and the title, full bleed, and it dissolves into the page. The old
+      band blurred the art inside a box, so the blur spilled out past the box
+      and was cut off by the header line, the rule under the title and the
+      page edges: three hard seams. Here the layer is sized to the page, its
+      sides run past the screen and are clipped there, and a mask fades it out
+      towards the player, so there is no seam anywhere.
+   2. LINES ARE HORIZONS. A line that separates things fades out at its ends,
+      the way the orange rule at the top of the header already does. A line
+      that stops dead is a boundary; one that fades is a horizon.
+   3. PANELS ARE LIGHT, NOT BOXES. A panel is lit from one edge and fades
+      towards the other, so it sits in the page instead of on it. Cards keep
+      their brackets: the orange corners still arrive under a pointer.
+
+   --cd-art is written on .cd-wrap by the generator, so the header layer and
+   the glow under the player both read it. */
+.page-wrap:has(> .cd-v2){position:relative;overflow-x:clip;}
+.page-wrap:has(> .cd-v2) > nav{background:none;border-bottom:1px solid;
+  border-image:linear-gradient(90deg,transparent,var(--edge) 18%,var(--edge) 82%,transparent) 1;}
+
+.cd-v2 .cd-head{position:static;padding:clamp(2.4rem,6vw,4.2rem) 0 clamp(2.4rem,5vw,3.6rem);margin-bottom:clamp(.5rem,2vw,1.5rem);}
+/* The sky. Positioned on .page-wrap (cd-head is static), so it starts under the
+   header and is as wide as the screen whatever the content width. The legibility
+   shading is a gradient in the same background, blurred with it, so the two can
+   never disagree about where they end. */
+.cd-v2 .cd-head::before{content:"";position:absolute;z-index:-1;pointer-events:none;
+  top:0;left:-80px;right:-80px;height:clamp(980px,62vw + 300px,1180px);
+  background:
+    linear-gradient(90deg,rgba(20,21,25,.9) 0%,rgba(20,21,25,.72) 45%,rgba(20,21,25,.45) 100%),
+    var(--cd-art,none) center 30%/cover no-repeat;
+  filter:blur(42px) saturate(1.05);opacity:.8;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 38%,rgba(0,0,0,.45) 62%,transparent 100%);
+          mask-image:linear-gradient(180deg,#000 0%,#000 38%,rgba(0,0,0,.45) 62%,transparent 100%);}
+.cd-v2 .cd-head::after{content:none;}
 .cd-v2 .cd-wrap,.cd-wrap.cd-v2{overflow-x:clip;}
 .cd-v2 .cd-epno{font-size:var(--fs-micro);}
 .cd-v2 .cd-head h1{font-size:clamp(1.9rem,4vw,3rem);max-width:22ch;}
-.cd-v2 .cd-quote{background:rgba(20,21,25,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+/* The quote keeps its orange rule and loses its box. */
+.cd-v2 .cd-quote{background:none;padding:.4rem 0 .4rem 1.4rem;}
 
-/* Summary as a designed band rather than a grey box */
-.cd-v2 .cd-summary{background:linear-gradient(120deg,rgba(255,117,23,.10) 0%,rgba(255,117,23,0) 60%),var(--card);
-  border:1px solid var(--edge);border-left:3px solid var(--orange);padding:1.6rem 1.7rem;
+/* The player gives off its own light, the way a screen does in a dark room.
+   A blurred copy of the art sits under it and spreads past its edges onto the
+   page. On phones .cd-center is display:contents, so this pseudo element lands
+   in .cd-main, whose first row is the player: it lines up either way. */
+.cd-v2 .cd-main{position:relative;}
+.cd-v2 .cd-center{position:relative;}
+.cd-v2 .cd-center::before{content:"";position:absolute;z-index:-1;pointer-events:none;
+  left:0;right:0;top:0;aspect-ratio:16/9;
+  background:var(--cd-art,none) center/cover no-repeat;
+  filter:blur(64px) saturate(1.3);opacity:.38;transform:scale(1.04,1.1);}
+
+/* Summary: lit from its orange edge. The light is its own layer so it can
+   spread past the panel as an ellipse; a background would be cut square at the
+   panel's top and bottom. */
+.cd-v2 .cd-summary{position:relative;isolation:isolate;background:none;
+  border:0;border-left:3px solid var(--orange);padding:1.6rem 1.7rem;
   color:var(--white);font-size:var(--fs-lead);line-height:1.7;}
+.cd-v2 .cd-summary::after{content:"";position:absolute;z-index:-1;pointer-events:none;inset:-2.5rem -1rem -2.5rem 0;
+  background:radial-gradient(75% 60% at 0% 50%,rgba(255,117,23,.13) 0%,rgba(255,117,23,.045) 50%,rgba(255,117,23,0) 100%);}
 .cd-v2 .cd-summary::before{content:"In short";display:block;color:var(--orange);font-size:var(--fs-micro);font-weight:600;
   letter-spacing:.14em;text-transform:uppercase;margin-bottom:.7rem;}
+
+/* Horizons: the section rule fades to the right, the chapter rail's line fades
+   out below the last chapter, and the side panels are lit from their top left
+   corner, where the bracket arrives, fading out to the right and below. */
+.cd-v2 .cd-sec-head{border-bottom:1px solid;border-image:linear-gradient(90deg,var(--edge),transparent 90%) 1;}
+.cd-v2 .cd-rail .cd-chap:last-child:not(.active){border-image:linear-gradient(180deg,var(--line),transparent) 1;}
+.cd-v2 .cd-box{background:radial-gradient(130% 120% at 0% 0%,rgba(180,180,180,.07) 0%,rgba(180,180,180,.025) 45%,rgba(180,180,180,0) 75%);
+  border:0;border-top:1px solid;border-image:linear-gradient(90deg,var(--edge-hi),var(--line) 60%,transparent) 1;}
+/* The link rows inside the panels fade the same way. */
+.cd-v2 .cd-link{border-bottom:1px solid;border-image:linear-gradient(90deg,var(--line),transparent) 1;}
+.cd-v2 .cd-link:last-child{border-image:none;border-bottom:0;}
+
+/* The ground. The footer starts at a horizon with a low warm glow on it, the
+   last light of the day, so the page ends somewhere rather than just stopping. */
+body:has(.cd-v2) footer{position:relative;background:none;}
+body:has(.cd-v2) footer::before{content:"";position:absolute;inset:0 0 auto;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,117,23,.45) 50%,transparent);}
+body:has(.cd-v2) footer::after{content:"";position:absolute;z-index:-1;pointer-events:none;
+  left:0;right:0;top:-160px;height:420px;
+  background:radial-gradient(60% 55% at 50% 38%,rgba(255,117,23,.10),rgba(255,117,23,0) 70%);}
+
+/* The sky drifts a little slower than the page as you scroll away from it. */
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:scroll()){
+    .cd-v2 .cd-head::before{animation:cd-sky linear both;animation-timeline:scroll(root);animation-range:0 900px;}
+    @keyframes cd-sky{to{translate:0 180px;opacity:.55;}}
+  }
+}
 
 /* Transcript: a comfortable reading measure and size */
 .cd-v2 .cd-line{max-width:46rem;}
@@ -318,4 +393,9 @@
   .cd-v2 .cd-rail:empty,.cd-v2 .cd-rail:not(:has(.cd-chap)){display:none;}
   .cd-v2 .cd-summary{font-size:var(--fs-body);}
   .cd-v2 .cd-side{order:5;}
+  /* The title spans the whole screen here, so the shading is even across it
+     rather than dark on the left, or the sky would barely show on a phone. */
+  .cd-v2 .cd-head::before{background:
+    linear-gradient(180deg,rgba(20,21,25,.5) 0%,rgba(20,21,25,.62) 100%),
+    var(--cd-art,none) center 30%/cover no-repeat;}
 }
