@@ -427,3 +427,17 @@ a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
 .v2-dst .dst-sec.is-loud .dst-head,.v2-dst .dst-sec.is-quiet .dst-head{margin-bottom:var(--sp-5);}
 .v2-dst .dst-sec.is-loud .kreal-open .dst-head{margin-bottom:0;}
 .v2-dst .dst-sec.is-datasheet .dst-head{margin-bottom:var(--sp-4);}
+
+/* ===========================================================================
+   EPISODE PAGES (prototypes/v2/episodes/*.html, <body data-v2="ep">)
+   The Horizon look is kept whole (sky from the episode art, player glow,
+   transcript sync). Only the shared parts move onto the kit: the kicker above
+   the title and the small headings in the side column use the one kicker; the
+   page sits in the same column and gutter as every other page.
+   ========================================================================= */
+[data-v2="ep"] .cd-wrap{max-width:var(--measure);padding-left:var(--gutter);padding-right:var(--gutter);}
+[data-v2="ep"] .cd-epno,
+[data-v2="ep"] .cd-box h2,[data-v2="ep"] .cd-box h3{font-family:var(--font-body);font-size:var(--fs-micro);font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--orange);}
+[data-v2="ep"] .cd-block h2{font-family:var(--font-display);}
+[data-v2="ep"] .cd-head h1{font-weight:700;font-size:clamp(1.9rem,3.6vw,2.8rem);line-height:1.1;letter-spacing:-.02em;}

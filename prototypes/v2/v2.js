@@ -13,7 +13,7 @@
 
    V2_PAGES is the list of built pages; tools/v2_localize.py rewrites it. */
 (function () {
-  var V2_PAGES = [/*v2-pages*/"about.html","destinations/india.html","destinations/kenya.html","index.html","library.html","podcast.html","styleguide.html"/*/v2-pages*/];
+  var V2_PAGES = [/*v2-pages*/"about.html","destinations/india.html","destinations/kenya.html","episodes/anatomy-of-a-dream-with-damien-lacaze.html","episodes/urs-haari-the-real-truth-about-reserve-parachutes-a.html","index.html","library.html","podcast.html","styleguide.html"/*/v2-pages*/];
   var M = location.pathname.match(/^(.*\/prototypes\/v2\/)/);
   if (!M) return;
   var BASE = M[1];
