@@ -47,6 +47,11 @@
   .pw-hero-photo{position:absolute;inset:0 0 0 auto;width:66%;z-index:-2;overflow:hidden;
     /* the photo owns the right of the screen and fades into the dark on its left, so the words never sit on the handshake */
     -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 26%);mask-image:linear-gradient(90deg,transparent 0%,#000 26%);}
+  /* on arrival the photo fades up and slowly pushes in toward the handshake; scrolling then carries it further */
+  .pw-hero-photo picture{display:block;width:100%;height:100%;transform-origin:55% 58%;
+    animation:pwArrive 1.4s ease-out both,pwPush 16s cubic-bezier(.25,.1,.25,1) .2s both;}
+  @keyframes pwArrive{from{opacity:0;}to{opacity:1;}}
+  @keyframes pwPush{from{transform:scale(1);}to{transform:scale(1.09);}}
   .pw-hero-photo img{width:100%;height:100%;object-fit:cover;object-position:52% 40%;transform-origin:55% 55%;
     transform:scale(calc(1.02 + var(--hp,0) * .14)) translate3d(calc(var(--hp,0) * -1.5%),calc(var(--hp,0) * 2%),0);will-change:transform;}
   .pw-hero::before{content:"";position:absolute;inset:0;z-index:-1;
@@ -181,6 +186,7 @@
   @media (max-width:560px){ .pw-row2{grid-template-columns:1fr;} .pw-item{grid-template-columns:2.8rem minmax(0,1fr);} .pw-item svg{display:none;} .pw-item .n{font-size:1.8rem;} }
   @media (prefers-reduced-motion:reduce){
     .pw-hero-photo img,.pw-hero-copy,.pw-caption{transform:none!important;opacity:1!important;}
+    .pw-hero-photo picture{animation:none;}
     .pw-track{animation:none;} .pw-item,.pw-item::before,.pw-tile img{transition:none;}
   }
 </style>
