@@ -68,6 +68,16 @@ if (!reduced) {
   var d = document;
   var PGA = window.PGA = window.PGA || {};
 
+  /* THE SKY KEEPS THE VISITOR'S TIME. dawn, day, dusk or night from their own
+   * clock, read into data-sky on <html>; the colours are in styles.css. Checked
+   * again every ten minutes, so a page left open drifts from one to the next. */
+  function sky() {
+    var h = new Date().getHours();
+    d.documentElement.setAttribute("data-sky",
+      h >= 5 && h < 9 ? "dawn" : h >= 9 && h < 17 ? "day" : h >= 17 && h < 21 ? "dusk" : "night");
+  }
+  sky(); setInterval(sky, 600000);
+
   // iOS applies :active only while something on the page listens for
   // touchstart. Without this the pressed state never shows under a finger.
   d.addEventListener("touchstart", function () {}, { passive: true });

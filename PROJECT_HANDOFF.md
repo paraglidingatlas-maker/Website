@@ -4067,3 +4067,21 @@ The "Horizon, site-wide" and "Touch sizes" sections at the end of styles.css.
 - Clips 6 and 7 (ridge-line POV under blue sky, about 9s each) are not used yet:
   waiting to know where they were filmed before putting them under a
   destination.
+
+## 78. THE SKY KEEPS THE VISITOR'S TIME; DEPTH AND A FLIGHT LINE ON THE HOMEPAGE (2026-09-25)
+
+- **Time of day.** script.js sets `data-sky` on `<html>` from the visitor's clock
+  (dawn 5-8, day 9-16, dusk 17-20, night 21-4; rechecked every ten minutes).
+  Four colour tokens (`--sky-warm`, `--sky-cool`, `--sky-high`, `--sky-horizon`)
+  feed the ambient sky behind the header and the footer horizon glow. Defaults
+  (dusk, which is how the site looked before) are in the main :root, because the
+  audit reads tokens from there; the overrides and the `@property` registrations
+  that let a change blend over two seconds are at the end of styles.css.
+  Episode pages keep their art-based sky; only their footer glow changes.
+- **Depth.** Homepage destination photographs drift (translate -6% to 6%, scale
+  1.14) with a view timeline. `.dest-media` must be `overflow:clip`, not hidden:
+  hidden makes it a scroll container and the timeline then sits at 50%.
+- **Flight line.** `.flightline` in index.html: at 1180px and wider, a hairline in
+  the left gutter fills with orange and carries a small glider with the page's
+  scroll progress. Both effects exist only where scroll-driven animations are
+  supported and motion is not reduced.
