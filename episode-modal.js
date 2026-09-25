@@ -232,6 +232,7 @@
   }
 
   function openModal(tile) {
+    if (closing) finishClose();
     lastFocus = tile;
     var d = dataFor(tile);
     overlay.innerHTML = d ? richHTML(d) : plainHTML(tile);
@@ -273,10 +274,31 @@
 
   function title2(tile) { return tile.dataset.title || ''; }
 
-  function closeModal(fromPop) {
-    if (!overlay.classList.contains('active')) return;
-    overlay.classList.remove('active');
+  var closing = null;
+  function finishClose() {
+    if (closing) { clearTimeout(closing); closing = null; }
+    overlay.classList.remove('active', 'is-closing');
     overlay.innerHTML = '';
+  }
+  function closeModal(fromPop) {
+    if (!overlay.classList.contains('active') || overlay.classList.contains('is-closing')) return;
+    /* Fade out first (styles.css), then empty it. Without motion, or if the
+       animation never reports back, it closes at once. */
+    var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (still) finishClose();
+    else {
+      overlay.classList.add('is-closing');
+      // Emptied when the fade has actually finished. The timer is only a
+      // fallback: set to the fade's own length it cut the fade off part way
+      // whenever the animation started a frame or two late.
+      var done = function (ev) {
+        if (ev.target !== overlay) return;
+        overlay.removeEventListener('animationend', done);
+        finishClose();
+      };
+      overlay.addEventListener('animationend', done);
+      closing = setTimeout(function () { overlay.removeEventListener('animationend', done); finishClose(); }, 600);
+    }
     document.body.classList.remove('kb-modal-open');
     if (lastFocus) { lastFocus.focus(); lastFocus = null; }
     if (fromPop) {

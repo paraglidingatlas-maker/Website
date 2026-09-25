@@ -39,7 +39,7 @@
 <link rel="preload" href="assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css?v=1f73ef11">
-<link rel="stylesheet" href="styles.css?v=71145e64">
+<link rel="stylesheet" href="styles.css?v=b571b7f7">
 <style>
   .kb-hero{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem) clamp(3rem,7vw,4.5rem);background:var(--bg);text-align:center;}
   .kb-hero .kicker{display:block;margin-bottom:0.8rem;}
@@ -804,7 +804,7 @@
   </div>
 </footer>
 
-<script src="script.js?v=93103076"></script>
+<script src="script.js?v=4239d0e2"></script>
 <script>
 /* Scroll is altitude: it drives the sky, the rail and the readout. */
 (function(){
@@ -895,7 +895,13 @@
   // direct handling: drag turns it, pinch or scroll zooms it, and it keeps turning a little after you let go
   var ZMIN=(innerWidth<=820||innerHeight>innerWidth)?0.8:0.55,ZMAX=2.4,NOTCH=Math.exp(0.12),ZHOME=ZMIN*Math.pow(NOTCH,3),Z=ZHOME,ZT=ZHOME,   /* opens three scroll clicks in from fully out */   /* phones stop sooner so the logo stays legible */
       gVel=0,gTilt=0,pts={},npts=0,drag=null,pinch=null,spinVel=0,dPitch=0,wvx=0,wvy=0,moved=false,touched=false;
-  var GAP=2.5, MINSEC=14, INTRO=reduce?0:1600, FINE=10, fr=[], lowQ=false, fno=0;
+  // Touch screens start in the lighter version rather than finding out after
+  // sixty slow frames, which was the whole opening burst: the moment right
+  // after the click into this page, and the part that stuttered. ?q=hi forces
+  // the full version anywhere.
+  var TOUCH=!/[?&]q=hi/.test(location.search) && !!(window.matchMedia && matchMedia('(pointer:coarse)').matches);
+  var GAP=2.5, MINSEC=14, INTRO=reduce?0:1600, FINE=TOUCH?5:10, fr=[], lowQ=TOUCH, fno=0;
+  if(TOUCH) bl.style.display='none';
   // ---- the globe inside the core: land as dots, a light network around it, lit from inside ----
   // Land mask: 7000 evenly spread points on the sphere, one bit each (Natural Earth 1:110m via world-atlas).
   var GMASK='AAAABJCQEBICAkLICYk6AAdgZEDMHJEhMfNsZp3Ft732tv/+yt9ffzv/f+XtvL21tf/3Vt7Oylv5Oytj5+Wk3J2VnTNzWmZOyMu5OSE7Z+7kzJyQm3Nzem7Oy825OT03p+b23Jyak3Nzcm5Ozc2pOT0np+bm3Iyek1MzOm5Ozcm4GTUnp2ZEnIye03Mzak5GzagYGTGnJ+ZUnJyYUzNiYk5MyKkYMTGjpuREjJiYUzMyakZOyMgZMTWjJmTUjJiS0RNiakZPyKgJMSWjpuTUnJqSUxNiSk5NyakpMSWnoOTUlJKSU1JiSk5JySgpJSWnpMSUnJKSU1BKSkpJiSgpJQWnpNQUlJICU1JKCkpJoagpJQWmpNRUkJoCQ0JKKkhJoSAoJRWGhFQQkJqKQ0JqCghJoSAgNQWEoFQUEJJCQkBqCAhFISEgNIWEoBQQEIrCQkAKCghFISEgBISEoBQQEIrCQkBKKAgBJaEgJBSFgpRQFALKQkFKKAgFJaEgBBSEgJJQEAJKQkEJKggAJamoABSEgIJQEAAKQlEBKggABamgABQEogJUEAAKQlEBKApEBaggABSEogJUEIgKQEEBKAhERaCoABSAogJUUAgKQEERKCAEBaCoGBSQgiJUQAwKSEERKCAGBeCgGBWQggJQQIwKSEERKCAEBaCgEBSQogJQQAgKQEEBOCAEBaCgEBSBggJQQAiKQEERKCIFBaCAEBSFggJQQAgKQEERKAoFBaDIABSBgiJQVAKKQJERKAoFRaCIABSBIiJQFAKKQBERKAJFRKAoABWBIiJQFIqKQBERKgJFRKAoCBWBIiBQBIqIQBEQKgJFQKAIGBGBIiBUBIqAQBEQIgJFQKAIGAGBIiBUBIqAQBEwIgJFQKAIEAGBAiBEBAqAAAEgAgIEQIAAEAABAkAAAAiAAAAgAAIEQAAAEAgBAkAAAAgAAAAgAAAAgAAAEAABAEAgAACAAAAgAAAAgEAAAAAAAEAAAAAAgQAAAAAAgAAAAAAAAEAAAAAAAQAAAAAAgAAAAAACAAAAAAAAAQAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAgIAQEFICSkhIiSgpIaWntPSWltbTe35ez+/5eT/v5+f1/P7f//8=', GN=7000, gLand=[], gNodes=[], gEdges=[], gSpin=0;
@@ -967,7 +973,7 @@
   function ease(p){ return 1-Math.pow(1-p,3); }
 
   function layout(){
-    W=innerWidth; H=innerHeight; DPR=Math.min(2,devicePixelRatio||1);
+    W=innerWidth; H=innerHeight; DPR=Math.min(TOUCH?1.5:2,devicePixelRatio||1);
     cv.width=W*DPR; cv.height=H*DPR; bl.width=Math.round(W/3); bl.height=Math.round(H/3);
     portrait = W<=820 || H>W;
     CX=W/2; CY=portrait? H*0.46 : H/2;

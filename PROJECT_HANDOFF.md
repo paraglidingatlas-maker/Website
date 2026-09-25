@@ -4015,3 +4015,33 @@ The "Horizon, site-wide" and "Touch sizes" sections at the end of styles.css.
   softer edge and a deep shadow.
 - **Policy pages** (end of policies.css): rules fade, notes and the Gita verse
   glow from their orange edge, the contact box is a lit panel. Tables unchanged.
+
+## 76. WHY CLICKS FELT JERKY, AND WHAT CHANGED (2026-09-25)
+
+- **The homepage globe spun forever.** `d3.interval` redrew the whole world map
+  every 30ms from page load until the page closed, on screen or not, so every
+  click, popup and transition shared the main thread with it. It now runs only
+  while the globe is on screen (IntersectionObserver, 100px margin), no popup is
+  open (`body.kb-modal-open`, watched with a MutationObserver) and the tab is
+  visible. `startAutoRotate()` now means "wants to spin"; `syncSpin()` decides.
+  Long tasks on a 4x throttled phone load: 39-58 before, 9 after.
+- **The episode popup blinked.** display:none to fully drawn in one frame, and
+  gone the same way. It now fades in with the card rising 14px, and fades out
+  before it is emptied; `closeModal` waits for the overlay's `animationend`
+  (a fixed timer cut the fade off whenever it started late; the timer is now
+  only a 600ms fallback). Reduced motion: instant, as before.
+- **Locking the page shifted it sideways** by the scrollbar's width.
+  `html:has(body.kb-modal-open){scrollbar-gutter:stable}`. Only while locked:
+  on all the time it made the full bleed heroes 10px short (smoke caught it).
+- **The popup's full-screen blur** is off on touch screens (darker overlay
+  instead).
+- **The next page is prepared before the click lands** (speculation rules,
+  injected by script.js): hovering a link for a moment, or pressing it with a
+  finger, prerenders it in Chrome, Edge and Android, so the page transition has
+  nothing to wait for. The knowledge base is only prefetched, so its door does
+  not start playing in the background. Other browsers ignore the rules.
+- **The knowledge base door** starts in its lighter version on touch screens
+  (half the fine rays, no bloom canvas, 1.5x resolution cap) instead of finding
+  out after sixty slow frames, which was the whole opening burst. `?q=hi`
+  forces the full version. The container has no GPU, so the door's real frame
+  rate could not be measured here: most of its cost is raster work.

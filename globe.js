@@ -614,7 +614,28 @@
 
   // Gentle auto-rotate until the person interacts
   let autoRotateTimer = null;
-  function startAutoRotate() {
+  /* ONLY WHILE IT CAN BE SEEN. The spin redraws the whole world about 33
+     times a second. It used to run from page load until the page closed, off
+     screen or not, so every click, popup and page transition on the homepage
+     had to share the main thread with it, which is what made them stutter.
+     Now it runs only while the globe is on screen and no popup is open. */
+  let onScreen = false;
+  let wantSpin = false;
+  function popupOpen() { return document.body.classList.contains('kb-modal-open'); }
+  function syncSpin() {
+    const run = wantSpin && onScreen && !popupOpen() && !document.hidden;
+    if (run && !autoRotateTimer) spinTimer();
+    else if (!run && autoRotateTimer) { autoRotateTimer.stop(); autoRotateTimer = null; }
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((en) => { onScreen = en[0].isIntersecting; syncSpin(); },
+                             { rootMargin: '100px 0px' }).observe(container);
+  } else { onScreen = true; }
+  document.addEventListener('visibilitychange', syncSpin);
+  new MutationObserver(syncSpin).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+  function startAutoRotate() { wantSpin = true; syncSpin(); }
+  function spinTimer() {
     autoRotateTimer = d3.interval(() => {
       const r = projection.rotate();
       projection.rotate([r[0] + 0.12, r[1]]);
@@ -622,6 +643,7 @@
     }, 30);
   }
   function stopAutoRotate() {
+    wantSpin = false;
     if (autoRotateTimer) {
       autoRotateTimer.stop();
       autoRotateTimer = null;

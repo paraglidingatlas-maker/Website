@@ -164,6 +164,42 @@ if (!reduced) {
     named = img;
   });
 
+  /* THE NEXT PAGE IS READY BEFORE THE CLICK LANDS. A link that is hovered for
+   * a moment, or pressed by a finger, has its page prepared in the background
+   * (Chrome, Edge and Android; other browsers ignore the rules). The page
+   * transition then has nothing to wait for, which is most of what made it
+   * stutter: the fade could not start until the next page had loaded and run
+   * its scripts. Same-site pages only, never a link that opens a new tab,
+   * downloads, or only moves within the page. */
+  try {
+    if (HTMLScriptElement.supports && HTMLScriptElement.supports("speculationrules") &&
+        !d.querySelector('script[type="speculationrules"]')) {
+      var rules = d.createElement("script");
+      rules.type = "speculationrules";
+      // The knowledge base is only fetched ahead, not prepared: prepared, its
+      // door would start its opening animation before anyone arrived.
+      var skip = "[target=_blank], [download], [href^='#'], [href^='mailto:'], [href^='tel:']";
+      rules.textContent = JSON.stringify({
+        prerender: [{
+          where: { and: [
+            { href_matches: "/*" },
+            { not: { href_matches: "/knowledge-base.html" } },
+            { not: { selector_matches: skip } }
+          ] },
+          eagerness: "moderate"
+        }],
+        prefetch: [{
+          where: { and: [
+            { href_matches: "/knowledge-base.html" },
+            { not: { selector_matches: skip } }
+          ] },
+          eagerness: "moderate"
+        }]
+      });
+      d.head.appendChild(rules);
+    }
+  } catch (e) {}
+
   function header() { return d.querySelector(".page-wrap > nav"); }
   // Hit testing is already switched off when pageswap runs (every point answers
   // <html>), so whether the header is covered is read at the click that starts
