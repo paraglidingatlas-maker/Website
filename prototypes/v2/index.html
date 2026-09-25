@@ -31,7 +31,7 @@
 <link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../styles.css?v=c8d28696">
-<link rel="stylesheet" href="v2.css?v=83e17d4d">
+<link rel="stylesheet" href="v2.css?v=8c30bf37">
 <link rel="icon" type="image/png" href="../../assets/logo/favicon.png">
 <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
 <meta name="theme-color" content="#141519">
@@ -144,6 +144,11 @@
       <a href="#destinations" class="btn-solid" data-hover><span>Find your expedition</span></a>
       <a href="#listen" class="btn-lines" data-hover>Listen to the podcast</a>
     </div>
+    <form class="v2-finder" action="#dates" data-finder aria-label="Find a trip">
+      <label><span>Where</span><select name="place"><option value="">Any destination</option><option value="india">India</option><option value="kenya">Kenya</option><option value="kazakhstan">Kazakhstan</option><option value="peru">Peru</option></select></label>
+      <label><span>When</span><select name="month"><option value="">Any month</option><option value="2026-10">October 2026</option><option value="2026-11">November 2026</option><option value="2027-01">January 2027</option><option value="2027-02">February 2027</option><option value="2027-06">June 2027</option><option value="2027-11">November 2027</option></select></label>
+      <button type="submit" class="btn-solid"><span>Find a trip</span></button>
+    </form>
     <div class="kit-stats">
       <div class="kit-stat"><b>4</b><span>Continents Flown</span></div>
       <div class="kit-stat"><b>500+</b><span>Guided Flights</span></div>
@@ -171,12 +176,13 @@
         <p class="kit-intro">Our Himalayan expedition delivers an aerial experience that makes you soar over landscapes shaped by time and legend, you get to drift over ancient monasteries while exploring your limits in thin air. It's a journey that stirs the soul.</p>
       </div>
       <div class="kit-facts">
+        <div><span>Next Departure</span><b>21 to 30 Oct 2026</b></div>
         <div><span>Duration</span><b>10 Days</b></div>
         <div><span>Skill Level</span><b class="skill-meter" role="img" aria-label="Skill level 4 of 5"><i class="skill-seg filled"></i><i class="skill-seg filled"></i><i class="skill-seg filled"></i><i class="skill-seg filled"></i><i class="skill-seg"></i></b></div>
-        <div><span>Group Size</span><b>Small group</b></div>
-        <div><span>Best Season</span><b>October to November</b></div>
+        <div><span>Group Size</span><b>6 pilots</b></div>
+        <div><span>From</span><b class="v2-price">&pound;1,100</b></div>
       </div>
-      <div class="kit-actions"><a class="btn-lines" href="destinations/india.html" data-hover>Learn More</a></div>
+      <div class="kit-actions"><a class="btn-solid" href="#dates" data-hover data-pick="india"><span>See dates</span></a><a class="btn-lines" href="destinations/india.html" data-hover>Learn More</a><span class="v2-status is-go">Guaranteed to run</span></div>
     </div>
   </article>
 
@@ -189,12 +195,13 @@
         <p class="kit-intro">From chasing personal bests and world records to gliding over thousand year old baobab trees while observing zebras and giraffes in their natural habitat below, Our Kenya expedition offers an aerial exploration that is bound to make you yearning for more.</p>
       </div>
       <div class="kit-facts">
+        <div><span>Next Departure</span><b>18 to 29 Jan 2027</b></div>
         <div><span>Duration</span><b>12 Days</b></div>
         <div><span>Skill Level</span><b class="skill-meter" role="img" aria-label="Skill level 2 of 5"><i class="skill-seg filled"></i><i class="skill-seg filled"></i><i class="skill-seg"></i><i class="skill-seg"></i><i class="skill-seg"></i></b></div>
-        <div><span>Group Size</span><b>Small group</b></div>
-        <div><span>Best Season</span><b>December to March</b></div>
+        <div><span>Group Size</span><b><i class="v2-tbd">[to supply]</i></b></div>
+        <div><span>From</span><b><i class="v2-tbd">[to supply]</i></b></div>
       </div>
-      <div class="kit-actions"><a class="btn-lines" href="destinations/kenya.html" data-hover>Learn More</a></div>
+      <div class="kit-actions"><a class="btn-solid" href="#dates" data-hover data-pick="kenya"><span>See dates</span></a><a class="btn-lines" href="destinations/kenya.html" data-hover>Learn More</a><span class="v2-status">Booking open</span></div>
     </div>
   </article>
 
@@ -219,6 +226,24 @@
           <span class="v2-more">Register interest <i aria-hidden="true">&rarr;</i></span>
         </div>
       </a>
+    </div>
+  </div>
+
+  <div class="kit-in v2-dates" id="dates">
+    <div class="kit-head">
+      <span class="kit-kicker">Dates &amp; prices</span>
+      <h2 class="kit-title">Every departure</h2>
+      <p class="kit-intro">Small groups, fixed dates. Prices are per pilot.</p>
+    </div>
+    <p class="v2-found" data-found role="status" aria-live="polite"></p>
+    <div class="v2-deps kit-panel">
+      <div class="v2-dep v2-dep-head" aria-hidden="true"><span>Expedition</span><span>Dates</span><span>Length</span><span>Group</span><span>Price</span><span>Status</span><i></i></div>
+      <a class="v2-dep" href="destinations/india.html" data-place="india" data-month="2026-10"><span class="v2-dep-trip"><b>India</b> <em>Tour 1</em></span><span data-l="Dates">21 to 30 Oct 2026</span><span data-l="Length">10 days</span><span data-l="Group">6 places</span><span data-l="Price" class="v2-price">&pound;1,100</span><span class="v2-status is-go">Guaranteed to run</span><i aria-hidden="true">&rarr;</i></a>
+      <a class="v2-dep" href="destinations/india.html" data-place="india" data-month="2026-11"><span class="v2-dep-trip"><b>India</b> <em>Tour 2</em></span><span data-l="Dates">3 to 12 Nov 2026</span><span data-l="Length">10 days</span><span data-l="Group">6 places</span><span data-l="Price" class="v2-price">&pound;1,100</span><span class="v2-status is-go">Guaranteed to run</span><i aria-hidden="true">&rarr;</i></a>
+      <a class="v2-dep" href="destinations/kenya.html" data-place="kenya" data-month="2027-01"><span class="v2-dep-trip"><b>Kenya</b> <em>Tour 1</em></span><span data-l="Dates">18 to 29 Jan 2027</span><span data-l="Length">12 days</span><span data-l="Group"><i class="v2-tbd">[to supply]</i></span><span data-l="Price" class=""><i class="v2-tbd">[to supply]</i></span><span class="v2-status ">Booking open</span><i aria-hidden="true">&rarr;</i></a>
+      <a class="v2-dep" href="destinations/kenya.html" data-place="kenya" data-month="2027-02"><span class="v2-dep-trip"><b>Kenya</b> <em>Tour 2</em></span><span data-l="Dates">1 to 12 Feb 2027</span><span data-l="Length">12 days</span><span data-l="Group"><i class="v2-tbd">[to supply]</i></span><span data-l="Price" class=""><i class="v2-tbd">[to supply]</i></span><span class="v2-status ">Booking open</span><i aria-hidden="true">&rarr;</i></a>
+      <a class="v2-dep" href="enquire.html?trip=kazakhstan" data-place="kazakhstan" data-month="2027-06"><span class="v2-dep-trip"><b>Kazakhstan</b></span><span data-l="Dates">June 2027</span><span data-l="Length"><i class="v2-tbd">[to supply]</i></span><span data-l="Group"><i class="v2-tbd">[to supply]</i></span><span data-l="Price" class=""><i class="v2-tbd">[to supply]</i></span><span class="v2-status is-soon">Register interest</span><i aria-hidden="true">&rarr;</i></a>
+      <a class="v2-dep" href="enquire.html?trip=peru" data-place="peru" data-month="2027-11"><span class="v2-dep-trip"><b>Peru</b></span><span data-l="Dates">November 2027</span><span data-l="Length"><i class="v2-tbd">[to supply]</i></span><span data-l="Group"><i class="v2-tbd">[to supply]</i></span><span data-l="Price" class=""><i class="v2-tbd">[to supply]</i></span><span class="v2-status is-soon">Register interest</span><i aria-hidden="true">&rarr;</i></a>
     </div>
   </div>
 </section>
@@ -545,7 +570,7 @@
 <script src="../../episode-modal.js?v=686edaca"></script>
 <script src="../../episode-search-data.js?v=2faf2ee2"></script>
 <script src="../../episode-search.js?v=f1ae6169"></script>
-<script src="v2-home.js?v=6263cdd0"></script>
+<script src="v2-home.js?v=1243ffed"></script>
 <!-- nav-menu -->
 <script defer src="../../nav-menu.js?v=001fbbf6"></script>
 <!-- /nav-menu -->
