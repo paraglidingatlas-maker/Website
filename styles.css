@@ -1507,7 +1507,7 @@ footer{
   -webkit-tap-highlight-color:transparent;
 }
 @media (hover:hover){
-  :where(.ep-card, .ep-tile, .series-card, .nx a, .cardx, .tg-v2 .tg-ep, .cd-box):hover{
+  :where(.ep-card, .ep-tile, .series-card, .nx a, .cardx, .tg-v2 .tg-ep, .cd-box, .kit-card, .kit-panel):hover{
     translate:0 var(--lift);--lit:1;
   }
   :where(.destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep):hover{--lit:1;}
@@ -1520,7 +1520,7 @@ footer{
 }
 /* Pressed: a card that is a link sinks back most of the way and in. The :has()
    one is a rule of its own, so a browser without :has() drops only that line. */
-:where(.ep-card, .ep-tile, .series-card, .nx a):active{
+:where(.ep-card, .ep-tile, .series-card, .nx a, .kit-card):active{
   translate:0 calc(var(--lift) / 3);scale:var(--press-card);
 }
 :where(.tg-v2 .tg-ep):has(.tg-ep-link:active){
@@ -1692,9 +1692,9 @@ footer::after{content:"";position:absolute;z-index:-1;pointer-events:none;
    the time the content starts. Full width, clipped at the screen edges, never
    a box. Chosen by the element that follows the header on each page, so no
    markup changes. */
-.page-wrap:has(> .lib-wrap, > .enq-hero, > .pol-hero, > .tg-hero, > .sm-wrap, > .nf){
+.page-wrap:has(> .lib-wrap, > .enq-hero, > .pol-hero, > .tg-hero, > .sm-wrap, > .nf, > .kit-hero.is-sky){
   position:relative;overflow-x:clip;}
-.page-wrap:has(> .lib-wrap, > .enq-hero, > .pol-hero, > .tg-hero, > .sm-wrap, > .nf)::before{
+.page-wrap:has(> .lib-wrap, > .enq-hero, > .pol-hero, > .tg-hero, > .sm-wrap, > .nf, > .kit-hero.is-sky)::before{
   content:"";position:absolute;z-index:-1;pointer-events:none;
   top:0;left:0;right:0;height:clamp(640px,70vw,900px);
   background:
@@ -1703,7 +1703,7 @@ footer::after{content:"";position:absolute;z-index:-1;pointer-events:none;
     radial-gradient(70% 40% at 50% 0%, var(--sky-high), transparent 80%);
   -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 35%,transparent 100%);
           mask-image:linear-gradient(180deg,#000 0%,#000 35%,transparent 100%);}
-.page-wrap:has(> .lib-wrap, > .enq-hero, > .pol-hero, > .tg-hero, > .sm-wrap, > .nf) > nav{background:none;}
+.page-wrap:has(> .lib-wrap, > .enq-hero, > .pol-hero, > .tg-hero, > .sm-wrap, > .nf, > .kit-hero.is-sky) > nav{background:none;}
 
 /* ===== Horizon on the episode popup ========================================
    It sits over a dimmed page, so it stays solid to be read. It is lit from
@@ -1825,3 +1825,123 @@ video[data-loop].is-playing{opacity:1;}
       animation-timeline:view();animation-range:cover;}
   }
 }
+
+/* ===========================================================================
+   THE KIT
+   One set of building blocks every page is assembled from, so pages match
+   because they are made of the same parts, not because each was tuned by eye.
+   Shown together, with the rules for using them, on prototypes/styleguide.html.
+   Everything here uses the existing tokens (--fs-*, --sp-*, --gutter,
+   --measure) and the Horizon rules: light is never cut, lines fade at their
+   ends, panels are lit rather than boxed.
+
+   Structure only. The signature pieces (the knowledge base door, the Kenya
+   photo sequence, the library's stone tiles, the booking card, the globe) keep
+   their own design on purpose.
+   ========================================================================= */
+
+/* ---- band: a full-width section with the one rhythm ---- */
+.kit-band{padding:var(--sp-section) var(--gutter);position:relative;}
+.kit-band + .kit-band{border-top:1px solid;
+  border-image:linear-gradient(90deg,transparent,var(--line) 15%,var(--line) 85%,transparent) 1;}
+.kit-band.is-quiet + .kit-band,.kit-band + .kit-band.is-quiet{border-top:0;}
+.kit-in{max-width:var(--measure);margin:0 auto;}
+.kit-narrow{max-width:46rem;}
+
+/* ---- section header: kicker, title, intro. One size, one alignment ---- */
+.kit-head{margin:0 0 var(--sp-5);max-width:48rem;}
+.kit-head.is-center{margin-left:auto;margin-right:auto;text-align:center;}
+.kit-kicker{display:block;font-family:var(--font-body);font-size:var(--fs-micro);font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin:0 0 var(--sp-2);}
+.kit-title{font-family:var(--font-display);font-weight:700;font-size:var(--fs-h2);line-height:1.15;
+  letter-spacing:-.015em;color:var(--white);margin:0;}
+.kit-intro{font-size:var(--fs-lead);line-height:1.7;color:var(--gray-light);margin:var(--sp-2) 0 0;max-width:60ch;}
+.kit-head.is-center .kit-intro{margin-left:auto;margin-right:auto;}
+
+/* ---- hero: media (photo or video) ---- */
+.kit-hero{position:relative;isolation:isolate;min-height:clamp(560px,88vh,920px);display:flex;align-items:flex-end;
+  padding:0 var(--gutter) clamp(3rem,7vw,5rem);overflow:hidden;}
+.kit-hero-media{position:absolute;inset:0;z-index:-2;}
+.kit-hero-media img,.kit-hero-media video{width:100%;height:100%;object-fit:cover;display:block;}
+.kit-hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:
+  linear-gradient(90deg,rgba(20,21,25,.62) 0%,rgba(20,21,25,.18) 55%,rgba(20,21,25,0) 80%),
+  linear-gradient(180deg,rgba(20,21,25,.3) 0%,rgba(20,21,25,.55) 60%,var(--bg) 100%);}
+.kit-hero-copy{max-width:44rem;}
+.kit-hero h1{font-family:var(--font-display);font-weight:700;font-size:var(--fs-display);line-height:1.04;
+  letter-spacing:-.02em;color:var(--white);margin:0;}
+.kit-hero .kit-intro{font-size:clamp(1.02rem,1.5vw,1.18rem);color:rgba(246,244,244,.86);}
+/* hero: sky (no picture; the ambient sky from Horizon sits behind it) */
+.kit-hero.is-sky{min-height:0;align-items:flex-start;padding-top:clamp(3rem,7vw,5rem);padding-bottom:var(--sp-4);overflow:visible;}
+.kit-hero.is-sky::after{content:none;}
+.kit-hero.is-sky h1{font-size:var(--fs-h1);}
+
+/* ---- actions and stats ---- */
+.kit-actions{display:flex;flex-wrap:wrap;gap:.8rem 1rem;align-items:center;margin-top:var(--sp-4);}
+.kit-stats{display:flex;flex-wrap:wrap;gap:var(--sp-3) clamp(2rem,6vw,4rem);margin-top:var(--sp-5);}
+.kit-stat b{display:block;font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--white);line-height:1.1;}
+.kit-stat span{display:block;font-size:var(--fs-micro);letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-top:.3rem;}
+
+/* ---- grid ---- */
+.kit-grid{display:grid;gap:var(--sp-4) var(--sp-3);grid-template-columns:repeat(auto-fill,minmax(min(100%,17rem),1fr));}
+.kit-grid.is-2{grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));}
+.kit-grid.is-3{grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));}
+
+/* ---- card 1: lit panel (words only) ---- */
+.kit-panel{position:relative;padding:var(--sp-4) var(--sp-4) var(--sp-3);border-top:1px solid;
+  border-image:linear-gradient(90deg,var(--edge-hi),var(--line) 55%,transparent) 1;
+  background:radial-gradient(120% 120% at 0% 0%,rgba(180,180,180,.075) 0%,rgba(180,180,180,.025) 45%,transparent 78%);}
+.kit-panel h3{font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);color:var(--white);margin:0 0 .5rem;line-height:1.3;}
+.kit-panel p{font-size:var(--fs-body-s);line-height:1.7;color:var(--gray-light);margin:0;}
+.kit-panel .kit-kicker{margin-bottom:.6rem;}
+
+/* ---- card 2: media card (picture, then words) ---- */
+.kit-card{position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit;
+  background:radial-gradient(120% 90% at 0% 100%,rgba(180,180,180,.06) 0%,transparent 70%);
+  transition:var(--t-press);}
+.kit-card-media{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--card);}
+.kit-card-media img{width:100%;height:100%;object-fit:cover;display:block;transition:scale .6s var(--ease-out);}
+.kit-card:hover .kit-card-media img{scale:1.04;}
+.kit-card-body{padding:var(--sp-3) var(--sp-3) var(--sp-3) 0;}
+.kit-card h3{font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);line-height:1.3;color:var(--white);margin:.35rem 0 .4rem;transition:color .2s ease;}
+.kit-card:hover h3{color:var(--orange);}
+.kit-card p{font-size:var(--fs-body-s);line-height:1.65;color:var(--gray-light);margin:0;}
+.kit-meta{font-size:var(--fs-small);color:var(--gray);letter-spacing:.02em;}
+.kit-card .kit-meta{color:var(--orange);font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;}
+
+/* ---- card 3: list row (episodes, FAQs, anything read down a list) ---- */
+.kit-rows{border-top:1px solid;border-image:linear-gradient(90deg,var(--line),var(--line) 70%,transparent) 1;}
+.kit-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.3rem var(--sp-3);align-items:baseline;
+  padding:var(--sp-3) 0;text-decoration:none;color:inherit;border-bottom:1px solid;
+  border-image:linear-gradient(90deg,var(--line),var(--line) 70%,transparent) 1;transition:padding .25s var(--ease-out);}
+.kit-row h3{font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);color:var(--white);margin:0;transition:color .2s ease;}
+.kit-row p{grid-column:1/-1;font-size:var(--fs-body-s);color:var(--gray-light);line-height:1.65;margin:0;max-width:62ch;}
+a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
+
+/* ---- card 4: feature block (big picture beside the words) ---- */
+.kit-feature{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:center;gap:0;}
+.kit-feature-media{position:relative;align-self:stretch;min-height:clamp(320px,38vw,560px);overflow:clip;
+  -webkit-mask-image:linear-gradient(90deg,#000 70%,transparent 100%);mask-image:linear-gradient(90deg,#000 70%,transparent 100%);}
+.kit-feature-media img,.kit-feature-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.kit-feature-copy{padding:var(--sp-5) 0 var(--sp-5) clamp(1.5rem,4vw,3.5rem);}
+.kit-feature.is-flip{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);}
+.kit-feature.is-flip .kit-feature-media{order:2;-webkit-mask-image:linear-gradient(270deg,#000 70%,transparent 100%);mask-image:linear-gradient(270deg,#000 70%,transparent 100%);}
+.kit-feature.is-flip .kit-feature-copy{padding:var(--sp-5) clamp(1.5rem,4vw,3.5rem) var(--sp-5) 0;}
+.kit-facts{display:flex;flex-wrap:wrap;gap:var(--sp-2) var(--sp-4);margin:var(--sp-3) 0 0;padding:var(--sp-2) 0;
+  border-top:1px solid;border-bottom:1px solid;border-image:linear-gradient(90deg,var(--line),var(--line) 70%,transparent) 1;}
+.kit-facts div span{display:block;font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:600;}
+.kit-facts div b{display:block;font-weight:600;color:var(--white);font-size:var(--fs-body-s);margin-top:.2rem;}
+@media (max-width:820px){
+  .kit-feature,.kit-feature.is-flip{grid-template-columns:1fr;}
+  .kit-feature-media,.kit-feature.is-flip .kit-feature-media{order:0;min-height:0;aspect-ratio:4/3;
+    -webkit-mask-image:linear-gradient(180deg,#000 72%,transparent 100%);mask-image:linear-gradient(180deg,#000 72%,transparent 100%);}
+  .kit-feature-copy,.kit-feature.is-flip .kit-feature-copy{padding:var(--sp-3) 0 0;}
+}
+/* kit cards carry the site's brackets: both corners, lit on hover or focus */
+.kit-card::before,.kit-card::after,.kit-panel::before,.kit-panel::after{content:"";position:absolute;z-index:3;
+  width:14px;height:14px;pointer-events:none;opacity:var(--lit);
+  filter:drop-shadow(0 0 calc(var(--lit) * 5px) rgba(255,117,23,.85));transition:opacity .25s ease,filter .25s ease;}
+.kit-card::before,.kit-panel::before{top:-1px;left:-1px;border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+.kit-card::after,.kit-panel::after{right:-1px;bottom:-1px;border-right:2px solid var(--orange);border-bottom:2px solid var(--orange);}
+.kit-panel::before{opacity:max(var(--lit),.9);}
+@media (hover:hover){.kit-card:hover,.kit-panel:hover{--lit:1;}}
+.kit-card:focus-visible{--lit:1;}
