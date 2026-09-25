@@ -4122,3 +4122,20 @@ The "Horizon, site-wide" and "Touch sizes" sections at the end of styles.css.
 - **smoke.py's server is threaded now.** A streaming video holds its connection,
   and the single-threaded server stalled every other request until the booking
   bar test timed out.
+
+## 81. HERO WITHOUT PARTICLES OR CLIP 3; THE DESTINATION FADE IS BACK (2026-09-25)
+
+Aninder's calls after seeing the video live.
+- **Particles removed from the homepage hero**: the hero-canvas.js script tag is
+  gone from index.html (the file stays in the repo). They did not sit well over
+  video.
+- **Hero loop rebuilt without clip 3**: clips 1, 2, 4 and 5, 13.6s, rotated to
+  open where the peaks come through the cloud. 2.2 MB / 1.1 MB as WebM.
+- **No video on the homepage Himalaya card** for now; the photograph is back.
+  The Bir Billing loop stays on the India hero.
+- **The hard line between destination photos and their copy** came from section
+  78: the photo is scaled 1.14 for the drift, the mask was on the photo and
+  scaled with it, so its transparent end sat outside the clip. The mask is now on
+  `.dest-media`, which is never scaled.
+- **The flight line** stays hidden until the hero has been scrolled past
+  (60vh to 100vh fade in), so nothing sits over the hero video.
