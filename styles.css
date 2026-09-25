@@ -1720,3 +1720,16 @@ html:has(body.kb-modal-open){scrollbar-gutter:stable;}
 @keyframes pga-card-in{from{opacity:0;transform:translateY(14px) scale(.985);}}
 @keyframes pga-card-out{to{opacity:0;transform:translateY(8px) scale(.99);}}
 @media (pointer:coarse){ .ep-modal-overlay{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(10,10,12,.9);} }
+
+/* ===== The hero flies (index.html, the script under the hero) =============
+   The video sits over the photograph and fades in once it is playing, so the
+   swap is a dissolve rather than a cut. The first seconds are inside bright
+   cloud, so the shading is a little deeper while the video shows, to keep the
+   white headline readable. */
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.2s ease;pointer-events:none;}
+.hero.has-video .hero-video{opacity:1;}
+.hero.has-video::after{
+  background:
+    linear-gradient(90deg, rgba(20,21,25,0.55) 0%, rgba(20,21,25,0.15) 55%, rgba(20,21,25,0) 80%),
+    linear-gradient(180deg, rgba(20,21,25,0.35) 0%, rgba(20,21,25,0.62) 60%, var(--bg) 100%);}

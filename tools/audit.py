@@ -409,9 +409,13 @@ def check_assets():
     unused = sorted(allf - refs)
     (ok if not unused else warn)("assets", "%d asset files never referenced: %s"
                                  % (len(unused), unused[:4]))
-    big = sorted(((os.path.getsize(f), f) for f in allf if os.path.getsize(f) > 400 * 1024),
+    # Video has its own ceiling: a hero loop is loaded after the page paints and
+    # only one file plays, but 4 MB is still the most a phone should be asked for.
+    def ceiling(f):
+        return (4096 if f.endswith((".mp4", ".webm")) else 400) * 1024
+    big = sorted(((os.path.getsize(f), f) for f in allf if os.path.getsize(f) > ceiling(f)),
                  reverse=True)
-    (ok if not big else warn)("assets", "files over 400 KB: %s"
+    (ok if not big else warn)("assets", "files over 400 KB (4 MB for video): %s"
                               % ([("%dKB" % (s // 1024), f) for s, f in big[:4]] or 0))
     # every jpg referenced by a <picture> needs its webp sibling
     missing = []

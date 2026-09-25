@@ -4045,3 +4045,25 @@ The "Horizon, site-wide" and "Touch sizes" sections at the end of styles.css.
   out after sixty slow frames, which was the whole opening burst. `?q=hi`
   forces the full version. The container has no GPU, so the door's real frame
   rate could not be measured here: most of its cost is raster work.
+
+## 77. THE HOMEPAGE HERO IS VIDEO (2026-09-25)
+
+- A 17.4s seamless loop cut from Aninder's own clips 1 to 5 (inside cloud,
+  breaking out above snow and blue sky). Joined with 0.6s crossfades; the end
+  is crossfaded into the start, so the loop has no seam; then rotated to start
+  at 9.3s, where the peaks come through the haze, so the first thing anyone sees
+  is sky and snow rather than grey cloud.
+- Files in assets/video: hero-1080 and hero-720, each as WebM (VP9, two pass,
+  1300k / 650k) and MP4 (H.264, CRF 30, faststart). 2.8 MB and 1.4 MB as WebM.
+  The source clips and the working files are not in the repo.
+- The script sits under the hero in index.html. The photograph still loads and
+  paints first; the video fades in over it on `playing`. WebM only where
+  `canPlayType` says "probably", MP4 otherwise and as the fallback on error.
+  720p when the screen is small. Skipped entirely for reduced motion, Save-Data,
+  and 2G/3G connections. Paused while the hero is off screen.
+- While the video shows, the hero's shading is a little deeper on the left and
+  top, because the cloud section is bright behind white text.
+- The audit's size check allows 4 MB for .mp4 and .webm (400 KB for the rest).
+- Clips 6 and 7 (ridge-line POV under blue sky, about 9s each) are not used yet:
+  waiting to know where they were filmed before putting them under a
+  destination.

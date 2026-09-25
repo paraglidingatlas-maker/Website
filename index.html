@@ -29,7 +29,7 @@
 <link rel="preload" href="assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css?v=1f73ef11">
-<link rel="stylesheet" href="styles.css?v=b571b7f7">
+<link rel="stylesheet" href="styles.css?v=a6aa1930">
 <link rel="icon" type="image/png" href="assets/logo/favicon.png">
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
 <meta name="theme-color" content="#141519">
@@ -126,7 +126,36 @@
 <header class="hero">
   <div class="hero-media">
     <picture><source srcset="assets/images/hero.webp" type="image/webp"><img src="assets/images/hero.jpg" alt="Two paragliders soaring above the clouds"></picture>
+    <video class="hero-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
   </div>
+  <script>
+  /* THE HERO FLIES. A 17 second loop cut from Aninder's own footage: climbing
+     through cloud and breaking out above snow and blue sky. The photograph is
+     still what loads and paints first; the video fades in over it once it can
+     play, so it never delays the page. Phones get the 720p file. Nobody gets it
+     who asked for less: reduced motion, Save-Data or a 2G/3G connection keep
+     the photograph. It pauses while the hero is off screen. */
+  (function () {
+    var v = document.querySelector('.hero-video');
+    if (!v || !v.play) return;
+    var mm = function (q) { return window.matchMedia && matchMedia(q).matches; };
+    var c = navigator.connection || {};
+    if (mm('(prefers-reduced-motion: reduce)') || c.saveData || /(^|-)(2g|3g)$/.test(c.effectiveType || '')) return;
+    var small = Math.max(screen.width, screen.height) * Math.min(devicePixelRatio || 1, 2) < 1700 || mm('(max-width: 820px)');
+    // WebM (VP9) where the browser is sure it plays it, as it is the smaller
+    // file; MP4 (H.264) everywhere else, and as the fallback if WebM fails.
+    var base = 'assets/video/hero-' + (small ? '720' : '1080');
+    var webm = v.canPlayType && v.canPlayType('video/webm; codecs="vp9"') === 'probably';
+    v.src = base + (webm ? '.webm' : '.mp4');
+    if (webm) v.addEventListener('error', function () { v.src = base + '.mp4'; go(); }, { once: true });
+    v.addEventListener('playing', function () { v.closest('.hero').classList.add('has-video'); }, { once: true });
+    var go = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) { if (en[0].isIntersecting) go(); else v.pause(); })
+        .observe(v.closest('.hero'));
+    } else { go(); }
+  })();
+  </script>
   <div class="hero-copy">
     <p class="coords">59.9139°N · 10.7522°E</p>
     <p class="kicker hero-kicker">Paragliding podcast, knowledge base and guided expeditions</p>
