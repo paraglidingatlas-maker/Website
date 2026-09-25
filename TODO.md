@@ -80,6 +80,11 @@ than left to rot, or this file stops being trusted.
 
 ## Content and SEO
 
+- [ ] **One episode summary is only a lead-in.** `science-backed-pre-flight-rituals`
+      in episode-meta.json reads "Want to elevate your paragliding game ? In this
+      episode, I talk about:" and stops. It shows like that on four topic pages.
+      Needs a real summary from the transcript, checked by Aninder.
+
 ### Knowledge base: SEO/GEO (audit 22 Sept 2026)
 
 Category pages are link hubs: nav, a one-line intro and episode tile titles.

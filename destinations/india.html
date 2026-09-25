@@ -110,8 +110,8 @@
 <link rel="preload" href="../assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../fonts.css?v=1f73ef11">
-<link rel="stylesheet" href="../styles.css?v=d7de4481">
-<link rel="stylesheet" href="../destinations.css?v=20b530f6">
+<link rel="stylesheet" href="../styles.css?v=8ed80619">
+<link rel="stylesheet" href="../destinations.css?v=14d11e54">
 <style>
 /* ---------- INDIA additions =============================================
    Only what the India page needs beyond Kenya's blocks. Tokens only. */
@@ -1436,11 +1436,21 @@
 
 <script>
 (function(){
-  var bar=document.getElementById('dstMobar'), hero=document.querySelector('.dst-hero');
-  if(!bar||!hero||!('IntersectionObserver' in window))return;
-  new IntersectionObserver(function(e){
-    bar.classList.toggle('show', !e[0].isIntersecting);
-  },{threshold:0}).observe(hero);
+  /* The booking bar rises once the hero has scrolled away, and steps aside
+     again while the enquiry section or the footer is on screen, so it never
+     sits on top of the form it points to or the last row of footer links.
+     It looked for .dst-hero, a class these pages never had, so until
+     2026-09-25 it never appeared at all. */
+  var bar=document.getElementById('dstMobar'),
+      watch=[document.querySelector('.khero, .dst-hero'),
+             document.getElementById('enquire'),
+             document.querySelector('footer')].filter(Boolean);
+  if(!bar||!watch.length||!('IntersectionObserver' in window))return;
+  var seen=new Set(), io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
+    bar.classList.toggle('show', seen.size===0);
+  },{threshold:0});
+  watch.forEach(function(el){ io.observe(el); });
 })();
 </script>
 <script>

@@ -428,6 +428,15 @@ img{max-width:100%;display:block;}
 .dest-copy h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--white);}
 .dest-copy p{color:var(--gray-light);font-size:0.98rem;line-height:1.6;max-width:46ch;}
 .dest-copy a{font-weight:500;color:var(--white);border-bottom:1px solid var(--white);padding-bottom:0.2rem;width:fit-content;}
+/* The photo and the title lead to the destination page; the link under the
+   facts goes to the enquiry form, which is what "Enquire Now" says. The title
+   is a heading first, so it keeps the heading's look and only warms on hover. */
+.dest-copy h2 a.dest-title{font-weight:inherit;border-bottom:0;padding-bottom:0;width:auto;transition:color .2s ease;}
+.dest-copy h2 a.dest-title::after{content:none;}
+.dest-copy h2 a.dest-title:is(:hover,:focus-visible){color:var(--orange);}
+/* display:contents keeps the photo's layout exactly as it was. */
+.dest-media > a{display:contents;}
+.dest-media > a img{cursor:pointer;}
 .trip-facts{display:flex;flex-wrap:wrap;gap:1.6rem;padding:0.8rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
 .fact{display:flex;flex-direction:column;gap:0.25rem;}
 .fact-label{color:var(--orange);font-size:0.7rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;}
@@ -857,7 +866,7 @@ img{max-width:100%;display:block;}
 .ep-search-bar::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
 .ep-search-input{
   flex:1;background:none;border:none;outline:none;color:var(--white);
-  font-family:var(--font-body);font-size:0.95rem;padding:0.7rem 0;
+  font-family:var(--font-body);font-size:1rem;padding:0.7rem 0;
 }
 .ep-search-input::placeholder{color:var(--gray);}
 .ep-search-btn{
@@ -996,7 +1005,7 @@ img{max-width:100%;display:block;}
 .newsletter-label{color:var(--gray-light);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.6rem;}
 .newsletter-right input{
   width:100%;background:var(--card);border:1px solid var(--edge);
-  padding:1rem 1.2rem;font-family:var(--font-body);font-size:0.98rem;color:var(--white);
+  padding:1rem 1.2rem;font-family:var(--font-body);font-size:1rem;color:var(--white);
   margin-bottom:1.3rem;
 }
 .newsletter-right input::placeholder{color:var(--gray);}
@@ -1294,6 +1303,10 @@ footer{
 @media(max-width:940px){
   .nav-links{display:none;}
   .nav-toggle{display:inline-flex;}
+  /* The hidden link row was the only thing pushing Enquire and the menu button
+     to the right, so without it they huddled beside the logo with the rest of
+     the bar empty. */
+  .nav-cta{margin-left:auto;}
   /* Reachable again: About Us, Knowledge Base, Podcast and Sitemap had no route
      in at all on a phone, because the links were hidden and nothing replaced
      them. The panel drops under the bar rather than covering the page; it is
@@ -1339,7 +1352,7 @@ footer{
      broke "Enquire Now" onto two lines, which made the bar taller and read as an
      accident. It holds its shape now and the logo absorbs the difference. */
   .nav-cta{
-    margin-left:0;padding:0.6rem clamp(0.7rem,3.4vw,1.05rem);
+    margin-left:auto;padding:0.6rem clamp(0.7rem,3.4vw,1.05rem);
     font-size:clamp(0.74rem,3vw,0.8rem);
     white-space:nowrap;flex-shrink:0;
   }

@@ -39,7 +39,7 @@
 <link rel="preload" href="assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css?v=1f73ef11">
-<link rel="stylesheet" href="styles.css?v=d7de4481">
+<link rel="stylesheet" href="styles.css?v=8ed80619">
 <style>
   .kb-hero{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem) clamp(3rem,7vw,4.5rem);background:var(--bg);text-align:center;}
   .kb-hero .kicker{display:block;margin-bottom:0.8rem;}
@@ -188,7 +188,11 @@
 .clb-face img{width:100%;height:100%;object-fit:cover;display:block;
   filter:grayscale(1) brightness(.62);transition:filter .35s ease,transform .5s cubic-bezier(.2,.7,.2,1);}
 .clb-face:hover img{filter:none;transform:scale(1.05);}
-.clb-face-t{position:absolute;left:0;right:0;bottom:0;padding:1.6rem .55rem .5rem;
+/* The space under the text is a transparent border, not padding. overflow
+   clips at the padding edge, so with bottom padding the top of a third line
+   showed through it under the ellipsis. */
+.clb-face-t{position:absolute;left:0;right:0;bottom:0;padding:1.6rem .55rem 0;
+  border-bottom:.5rem solid transparent;
   font-family:var(--font-body);font-size:.68rem;line-height:1.35;color:var(--white);
   background:linear-gradient(to top,rgba(5,7,12,.92),transparent);
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}

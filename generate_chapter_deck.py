@@ -385,11 +385,64 @@ def guest_box_html(meta):
     )
 
 
-def render_list(items, cls="cd-link"):
+def render_list(items, cls="cd-link", new_tab=True):
+    target = ' target="_blank" rel="noopener"' if new_tab else ""
     return "\n".join(
-        '        <a class="%s" href="%s" target="_blank" rel="noopener">%s</a>'
-        % (cls, esc(i["url"]), esc(i["label"])) for i in items
+        '        <a class="%s" href="%s"%s>%s</a>'
+        % (cls, esc(i["url"]), target, esc(i["label"])) for i in items
     )
+
+
+_TITLES = None
+
+
+def _titles():
+    global _TITLES
+    if _TITLES is None:
+        _TITLES = {e["slug"]: e.get("title", "") for e in json.load(
+            open(os.path.join(ROOT, "episode-meta.json"), encoding="utf-8"))}
+    return _TITLES
+
+
+def related_label(label, url):
+    """A related episode's label, never visibly cut short.
+
+    The labels in episode-meta.json are shortened titles. Most stop where the
+    title has a break (a colon, a bar, a dash) and read as complete. About a
+    dozen were cut at a fixed length instead, some in the middle of a word
+    ("...Why True Safety Lies in Cla") and some after a dangling word ("...Fly
+    Better with"). Those are taken back to the last whole word and marked with
+    an ellipsis. The data is left as it was entered."""
+    label = label.replace("\u200b", "").strip()
+    title = _titles().get(url.rsplit("/", 1)[-1][:-5], "").replace("\u200b", "").strip()
+    if not title:
+        return label
+    # Walk the title's letters and digits alongside the label's, to find where
+    # in the real title the label stops, whatever the punctuation in between.
+    want = [c.lower() for c in label if c.isalnum()]
+    k = 0
+    for pos, c in enumerate(title):
+        if k == len(want):
+            break
+        if c.isalnum():
+            if c.lower() != want[k]:
+                return label
+            k += 1
+    else:
+        pos = len(title)
+    if k < len(want):
+        return label
+    rest = title[pos:]
+    # Nothing left but punctuation: the label is the whole title. A sentence
+    # end or a break (after any closing bracket or quote): shortened on purpose.
+    if not any(c.isalnum() for c in rest):
+        return label
+    if rest.lstrip()[:1] in "?!." or \
+            rest.lstrip(" )]}\"'\u201d\u2019")[:1] in ":|-\u2013\u2014(":
+        return label
+    if rest[:1].isalnum():
+        label = label.rsplit(" ", 1)[0]
+    return label.rstrip(" |:;,&-\u2013\u2014") + "\u2026"
 
 
 def note_html(meta):
@@ -599,7 +652,11 @@ def related_box_html(meta):
     Empty on 14 episodes. Same reasoning as the download box: a heading over
     nothing is a bug, not a layout.
     """
-    inner = render_list([dict(r, url=_moved(r.get("url", ""))) for r in meta.get("related", [])])
+    # Same tab: these are pages on this site, and a phone piled up a tab for
+    # every related episode followed.
+    inner = render_list([dict(r, url=_moved(r.get("url", "")),
+                              label=related_label(r.get("label", ""), _moved(r.get("url", ""))))
+                         for r in meta.get("related", [])], new_tab=False)
     if not inner.strip():
         return ""
     return ('      <div class="cd-box">\n'

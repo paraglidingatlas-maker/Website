@@ -405,6 +405,42 @@ def enquire(pg, base):
           "%s unlabelled" % d["unlabelled"])
     check(d["required"] > 0 and d["blocksEmpty"], "enquire",
           "an empty form will not submit")
+    # The homepage trip cards link here with ?trip=, which picks the trip.
+    pg.goto(base + "/enquire.html?trip=india", wait_until="load")
+    trip = pg.evaluate("document.getElementById('trip').value")
+    check(trip.startswith("India"), "enquire", "?trip=india arrives with India chosen", trip)
+
+
+def booking_bar(pg, base):
+    """The phone booking bar on the destination pages.
+
+    It looked for a hero class the pages never had, so it never appeared, and
+    nothing here noticed until a phone audit on 2026-09-25. It must rise once
+    the hero has gone, step aside at the enquiry section, and never show on a
+    wide screen."""
+    state = """(function(){var b=document.getElementById('dstMobar');
+      return b ? (getComputedStyle(b).display=='none' ? 'none' : (b.classList.contains('show') ? 'show' : 'hide')) : 'missing';})()"""
+    for page, name in (("destinations/kenya.html", "kenya"), (INDIA, "india")):
+        pg.set_viewport_size({"width": 390, "height": 844})
+        pg.goto(base + "/" + page, wait_until="load")
+        pg.wait_for_timeout(500)
+        top = pg.evaluate(state)
+        # instant, not smooth: the page scrolls smoothly and the form is 15,000px down
+        pg.evaluate("window.scrollTo({top: document.querySelector('.khero').offsetHeight + 1500, behavior: 'instant'})")
+        pg.wait_for_timeout(500)
+        mid = pg.evaluate(state)
+        pg.evaluate("document.getElementById('enquire').scrollIntoView({block:'start', behavior:'instant'})")
+        pg.wait_for_timeout(500)
+        at_form = pg.evaluate(state)
+        check(top == "hide" and mid == "show" and at_form == "hide", name,
+              "the phone booking bar rises after the hero and steps aside at the form",
+              "top %s, mid %s, form %s" % (top, mid, at_form))
+        pg.set_viewport_size({"width": 1280, "height": 900})
+        pg.goto(base + "/" + page, wait_until="load")
+        pg.evaluate("window.scrollTo({top: 3000, behavior: 'instant'})")
+        pg.wait_for_timeout(300)
+        wide = pg.evaluate(state)
+        check(wide == "none", name, "no booking bar on a wide screen", wide)
 
 
 def kenya_hero(pg, base):
@@ -1464,7 +1500,7 @@ def main():
                 return 0
             pg = browser.new_page(viewport={"width": 1280, "height": 900},
                                   reduced_motion="no-preference")
-            for fn in (rail, nav, player, library, search, kenya, kenya_hero, kenya_map, kenya_gallery, kenya_facts, kenya_overview, kenya_dates, kenya_rolls, india, enquire, overflow):
+            for fn in (rail, nav, player, library, search, kenya, booking_bar, kenya_hero, kenya_map, kenya_gallery, kenya_facts, kenya_overview, kenya_dates, kenya_rolls, india, enquire, overflow):
                 guarded(fn, pg, base)
             pg.close()
             pg2 = browser.new_page(viewport={"width": 1280, "height": 900},

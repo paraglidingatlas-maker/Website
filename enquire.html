@@ -38,7 +38,7 @@
 <link rel="preload" href="assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css?v=1f73ef11">
-<link rel="stylesheet" href="styles.css?v=d7de4481">
+<link rel="stylesheet" href="styles.css?v=8ed80619">
 <style>
 /* Enquiry page. Tokens and chrome come from styles.css.
    The form deliberately has no backend and no third party form service: it
@@ -75,7 +75,7 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
 .enq-field .opt{color:var(--gray);}
 .enq-field input,.enq-field select,.enq-field textarea{
   width:100%;background:var(--card);color:var(--white);border:1px solid var(--rule);
-  font-family:var(--font-body);font-size:.95rem;padding:.7rem .8rem;border-radius:0;}
+  font-family:var(--font-body);font-size:1rem;padding:.7rem .8rem;border-radius:0;}
 .enq-field textarea{min-height:8rem;resize:vertical;line-height:1.7;}
 .enq-field input:focus,.enq-field select:focus,.enq-field textarea:focus{
   outline:none;border-color:var(--orange);}
@@ -364,6 +364,20 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
 </footer>
 
 <script src="script.js?v=93103076"></script>
+<script>
+/* A link from a trip arrives as enquire.html?trip=kenya and opens with that
+   trip already chosen. Matched on the start of the option's text, so
+   "india" finds "India (Bir Billing)". Anything unknown is ignored. */
+(function () {
+  var sel = document.getElementById('trip'), want;
+  try { want = new URLSearchParams(location.search).get('trip'); } catch (e) {}
+  if (!sel || !want) return;
+  want = want.toLowerCase();
+  for (var i = 0; i < sel.options.length; i++) {
+    if (sel.options[i].text.toLowerCase().indexOf(want) === 0) { sel.selectedIndex = i; break; }
+  }
+})();
+</script>
 <script>
 /* Compose the enquiry and hand it to the visitor's own mail client.
    No fetch, no form service, no data leaving the browser except through the

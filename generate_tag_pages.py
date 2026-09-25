@@ -310,7 +310,7 @@ def build():
                    esc(e.get("series", "")),
                    e["slug"], ("        %s\n" % thumb(e)) if v2 else "",
                    esc(e.get("series", "")), esc(e["title"]),
-                   esc(excerpt(e.get("summary")) if v2 else (e.get("summary") or "")[:190]), chips))
+                   esc(excerpt(e.get("summary")) if v2 else excerpt(e.get("summary"), 190)), chips))
         jsonld = json.dumps({
             "@context": "https://schema.org", "@type": "CollectionPage",
             "name": "%s episodes" % tag, "url": BASE + "tags/%s.html" % s,

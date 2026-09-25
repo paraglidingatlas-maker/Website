@@ -3867,3 +3867,61 @@ tokens in `:root`: `--lift`, `--press`, `--press-card`, `--ease-out`, `--t-press
 - Podcast page cards (`.yt-card`, `.testi-card`) keep their own hover: that page's
   cleanup is its own task.
 - Footer column links keep their colour and nudge rather than an underline.
+
+## 68. HORIZON: THE EPISODE PAGE WITHOUT HARD EDGES (v2 only, Urs Haari)
+
+The rules are at the top of the v2 block in `episodes/episode.css`. Three of them:
+light is never cut, lines fade at their ends, panels are lit from a corner rather
+than boxed.
+
+- **Why the old header looked cut.** The art was blurred inside a box. A blur
+  spreads past its box, so it spilled up behind the header, down past the rule
+  under the title and out at the sides, and was cut off at each: three seams.
+- **The sky** is `.cd-head::before`, positioned on `.page-wrap` (cd-head is
+  static on v2), full width, sides run 80px past the screen and are clipped by
+  `.page-wrap{overflow-x:clip}`. A mask fades it out towards the player. The
+  legibility shading is a gradient in the same background, so the two cannot
+  disagree about where they end. Phones get an even shading, not left-dark.
+- **`--cd-art` moved from the header to `.cd-wrap`** in the template, so the sky
+  and the glow under the player both read it. `head_style()` still returns nothing
+  outside V2_ON, so other pages are byte-identical apart from the stylesheet hash.
+- **The player glow** is `.cd-center::before`. On phones `.cd-center` is
+  `display:contents`, so the pseudo lands in `.cd-main`, whose first row is the
+  player: it lines up either way.
+- The footer on v2 pages starts at a fading orange line with a low warm glow.
+- Tested against a stand-in image, because YouTube is blocked in the build
+  container. The strength is three numbers: the sky's `opacity:.8`, its shading
+  gradient, and the glow's `opacity:.38`.
+
+## 69. PHONE PASS, BATCH 1 (2026-09-25)
+
+From a phone and iPad audit of 14 pages. Batch 2 (tap targets, small text) is
+folded into the visual pass; batch 3 (iPad layouts, sitemap on phones, library
+paging) comes after it.
+
+- **Kenya and India booking bar never appeared.** Its script watched `.dst-hero`,
+  a class these pages never had. It now watches `.khero`, the enquiry section and
+  the footer, and shows only while none is on screen. Hidden above 820px, where
+  the jump bar already carries Enquire. Covered by `booking_bar` in smoke.py,
+  which was checked by putting the old selector back: it fails.
+- **Podcast host section:** the listen buttons are filled, so the grey rule
+  passes behind "YouTube" on a phone instead of through it. The rules stay on
+  phones, as the comment there asks.
+- **Knowledge base strips:** the space under a clamped title is a transparent
+  border, not padding. overflow clips at the padding edge, so a third line
+  showed through the padding under the ellipsis.
+- **Form fields are 16px** (enquiry form, podcast question and newsletter,
+  homepage search and newsletter). Below 16px iOS Safari zooms the page on focus.
+- **Podcast newsletter** stacks below 480px (the field was 130px wide).
+- **Header below 940px:** `.nav-cta{margin-left:auto}`. The hidden link row was
+  the only spacer, so Enquire and the menu button sat beside the logo.
+- **Topic pages** use `excerpt()` for the old layout too: summaries end on a whole
+  sentence instead of mid-word.
+- **Related episodes** (`related_label()` in generate_chapter_deck.py): labels
+  cut at a fixed length are taken back to a whole word with an ellipsis; labels
+  shortened at a colon, bar or dash are left alone. The data is unchanged.
+  Related links open in the same tab (guest links to other sites still open a
+  new one).
+- **Homepage trip cards:** "Enquire Now" goes to `enquire.html?trip=...` with the
+  trip chosen (a small script on enquire.html reads `?trip=`, matched on the start
+  of the option text). The photo and title now lead to the destination page.
