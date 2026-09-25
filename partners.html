@@ -43,29 +43,29 @@
 <style>
   /* Partner With Me. One continuous story: the Coupe Icare handshake opens it and closes it,
      a flight line runs down the page between, and nothing sits in a box it does not need. */
-  .pw-hero{--hp:0;position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;isolation:isolate;}
+  .pw-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;isolation:isolate;}
   .pw-hero-photo{position:absolute;inset:0 0 0 auto;width:66%;z-index:-2;overflow:hidden;
     /* the photo owns the right of the screen and fades into the dark on its left, so the words never sit on the handshake */
-    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 26%);mask-image:linear-gradient(90deg,transparent 0%,#000 26%);}
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 26%),linear-gradient(180deg,transparent 0%,#000 18%);-webkit-mask-composite:source-in;
+            mask-image:linear-gradient(90deg,transparent 0%,#000 26%),linear-gradient(180deg,transparent 0%,#000 18%);mask-composite:intersect;}
   /* on arrival the photo fades up and slowly pushes in toward the handshake; scrolling then carries it further */
   .pw-hero-photo picture{display:block;width:100%;height:100%;transform-origin:55% 58%;
     animation:pwArrive 1.4s ease-out both,pwPush 16s cubic-bezier(.25,.1,.25,1) .2s both;}
   @keyframes pwArrive{from{opacity:0;}to{opacity:1;}}
   @keyframes pwPush{from{transform:scale(1);}to{transform:scale(1.09);}}
-  .pw-hero-photo img{width:100%;height:100%;object-fit:cover;object-position:52% 40%;transform-origin:55% 55%;
-    transform:scale(calc(1.02 + var(--hp,0) * .14)) translate3d(calc(var(--hp,0) * -1.5%),calc(var(--hp,0) * 2%),0);will-change:transform;}
+  .pw-hero-photo img{width:100%;height:100%;object-fit:cover;object-position:52% 40%;}
   .pw-hero::before{content:"";position:absolute;inset:0;z-index:-1;
     background:radial-gradient(ellipse 60% 70% at 18% 60%,rgba(255,117,23,.10),rgba(255,117,23,0) 70%),
                linear-gradient(180deg,rgba(20,21,25,.5) 0%,rgba(20,21,25,0) 20%,rgba(20,21,25,0) 62%,var(--bg) 100%);}
   .pw-hero-copy{position:relative;max-width:var(--measure);width:100%;margin:0 auto;padding:5.5rem var(--gutter) 2.2rem;
-    opacity:calc(1 - var(--hp,0) * 1.1);transform:translate3d(0,calc(var(--hp,0) * -40px),0);}
+}
   .pw-hero-copy .kicker{display:block;margin-bottom:1rem;}
   .pw-hero-copy h1{font-family:var(--font-display);font-weight:800;font-size:var(--fs-display);line-height:1.02;color:var(--white);margin:0 0 1.2rem;max-width:11ch;letter-spacing:-.01em;}
   .pw-hero-copy h1 em{font-style:normal;color:var(--orange);}
   .pw-hero-copy p{color:var(--gray-light);font-size:var(--fs-lead);line-height:1.75;max-width:30rem;margin:0 0 .9rem;}
   .pw-hero-copy p strong{color:var(--white);font-weight:500;}
   .pw-caption{position:absolute;right:var(--gutter);bottom:calc(2.4rem + 110px);z-index:1;text-align:right;color:var(--white);font-size:var(--fs-small);
-    text-shadow:0 1px 10px rgba(0,0,0,.7);opacity:calc(1 - var(--hp,0) * 1.4);}
+    text-shadow:0 1px 10px rgba(0,0,0,.7);}
   .pw-caption span{display:block;color:var(--orange);font-size:var(--fs-micro);letter-spacing:.16em;text-transform:uppercase;margin-bottom:.25rem;}
   .pw-stats{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.12);
     background:rgba(20,21,25,.55);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);}
@@ -185,10 +185,28 @@
   }
   @media (max-width:560px){ .pw-row2{grid-template-columns:1fr;} .pw-item{grid-template-columns:2.8rem minmax(0,1fr);} .pw-item svg{display:none;} .pw-item .n{font-size:1.8rem;} }
   @media (prefers-reduced-motion:reduce){
-    .pw-hero-photo img,.pw-hero-copy,.pw-caption{transform:none!important;opacity:1!important;}
     .pw-hero-photo picture{animation:none;}
     .pw-track{animation:none;} .pw-item,.pw-item::before,.pw-tile img{transition:none;}
   }
+
+  /* in the air: a full-width band, still, with one slow push the first time it is seen */
+  .pw-air{position:relative;overflow:hidden;isolation:isolate;height:clamp(420px,72vh,780px);display:flex;align-items:flex-end;margin-top:clamp(2.5rem,6vw,4rem);}
+  .pw-air-photo{position:absolute;inset:0;z-index:-2;overflow:hidden;}
+  .pw-air-photo picture{display:block;width:100%;height:100%;transform-origin:50% 55%;}
+  .pw-air-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;}
+  .pw-air.is-seen .pw-air-photo picture{animation:pwPush 16s cubic-bezier(.25,.1,.25,1) both;}
+  .pw-air::before{content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(180deg,var(--bg) 0%,rgba(20,21,25,0) 18%,rgba(20,21,25,0) 55%,rgba(20,21,25,.85) 88%,var(--bg) 100%);}
+  .pw-air-copy{width:100%;max-width:var(--measure);margin:0 auto;padding:0 var(--gutter) clamp(1.5rem,4vw,3rem);}
+  .pw-air-copy .kicker{display:block;margin-bottom:.6rem;}
+  .pw-air-copy h2{font-family:var(--font-display);font-weight:800;font-size:var(--fs-h1);line-height:1.05;color:var(--white);margin:0 0 .7rem;text-shadow:0 2px 24px rgba(0,0,0,.45);}
+  .pw-air-copy p{color:var(--white);opacity:.85;font-size:var(--fs-lead);margin:0;max-width:34rem;text-shadow:0 1px 12px rgba(0,0,0,.6);}
+  /* the portrait under the trust statement */
+  .pw-portrait{margin:var(--sp-3) 0 0;max-width:22rem;position:relative;border:1px solid var(--edge);overflow:hidden;}
+  .pw-portrait::before{content:"";position:absolute;z-index:1;top:-1px;left:-1px;width:16px;height:16px;border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+  .pw-portrait img{display:block;width:100%;height:auto;}
+  @media (max-width:820px){ .pw-air{height:clamp(360px,62svh,560px);} .pw-air-photo img{object-position:52% 50%;} .pw-portrait{max-width:none;} }
+  @media (prefers-reduced-motion:reduce){ .pw-air.is-seen .pw-air-photo picture{animation:none;} }
 </style>
 <!-- site-schema -->
 <script type="application/ld+json">
@@ -295,6 +313,15 @@
   </div>
 </section>
 
+<section class="pw-air" aria-label="In the air">
+  <div class="pw-air-photo"><picture><source type="image/webp" srcset="assets/images/partners-in-the-air.webp"><img src="assets/images/partners-in-the-air.jpg" width="1920" height="853" loading="lazy" alt="Aninder flying a paraglider above snow-covered peaks, the Paragliding Atlas name on his harness"></picture></div>
+  <div class="pw-air-copy">
+    <span class="kicker">In the air</span>
+    <h2>The name flies with me</h2>
+    <p>Every flight carries the Paragliding Atlas name, on the harness and on camera.</p>
+  </div>
+</section>
+
 <div class="pw-journey" id="pwJourney">
   <span class="pw-fill" aria-hidden="true"></span>
 
@@ -318,6 +345,7 @@
         <span class="kicker">How I work with sponsors</span>
         <h2>The trust is the product</h2>
         <p class="pw-lead">Pilots come here because the knowledge is honest. That is what makes a mention here worth something, so I protect it in every partnership.</p>
+        <figure class="pw-portrait"><picture><source type="image/webp" srcset="assets/images/partners-aninder.webp"><img src="assets/images/partners-aninder.jpg" width="720" height="900" loading="lazy" alt="Aninder Singh standing on a green hillside in a Touch The Sky With Glory t-shirt"></picture></figure>
       </div>
       <div>
         <ol class="pw-rules">
@@ -405,21 +433,26 @@
 })();
 </script>
 <script>
-/* Scroll drives two things: the handshake photo slowly moves in as you leave the top,
-   and the flight line fills as you read, lighting each chapter's node as it arrives. */
+/* Scroll fills the flight line as you read and lights each chapter's node as it arrives.
+   Photos only ever move once, slowly, when they first come into view. */
 (function(){
-  var hero=document.getElementById('pwHero'), j=document.getElementById('pwJourney');
+  var j=document.getElementById('pwJourney');
   if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   var chapters=j?[].slice.call(j.querySelectorAll('.pw-chapter')):[], ticking=false;
   function update(){
     ticking=false;
     var vh=innerHeight;
-    if(hero){ var r=hero.getBoundingClientRect(), p=Math.max(0,Math.min(1,-r.top/(r.height*0.8))); hero.style.setProperty('--hp',p.toFixed(3)); }
     if(j){ var jr=j.getBoundingClientRect(), jp=Math.max(0,Math.min(1,(vh*0.6-jr.top)/jr.height)); j.style.setProperty('--jp',jp.toFixed(3));
       chapters.forEach(function(c){ c.classList.toggle('is-on',c.getBoundingClientRect().top<vh*0.6); }); }
   }
   addEventListener('scroll',function(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } },{passive:true});
   addEventListener('resize',update); update();
+})();
+(function(){
+  var air=document.querySelector('.pw-air'); if(!air) return;
+  if(!('IntersectionObserver' in window)){ air.classList.add('is-seen'); return; }
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ air.classList.add('is-seen'); io.disconnect(); } }); },{threshold:.35});
+  io.observe(air);
 })();
 </script>
 </div><!-- /.page-wrap -->
