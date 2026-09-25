@@ -629,3 +629,85 @@ html body .clb-station::before{
 }
 html body .clb-strip{-webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 90px),transparent 100%);
                   mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 90px),transparent 100%);}
+
+/* ===========================================================================
+   LIVE FROM THE FEED (podcast): the rows rss-feed.js writes, restyled only
+   (the script is marked do-not-modify and is untouched). No table frame:
+   rows sit on fading rules and are lit under the pointer; play sits on the
+   artwork; the newest episode leads; titles get two lines; date and length
+   stack quietly; the per-row show name (the same on every row) is dropped.
+   ========================================================================= */
+.v2-glimpse .live-feed-head{margin-bottom:.6rem;}
+.v2-glimpse .live-feed-head span:last-child{font-size:var(--fs-micro);letter-spacing:.16em;}
+.v2-glimpse .live-dot{animation:none;box-shadow:0 0 8px var(--orange);}
+.v2-glimpse .live-feed-status{font-size:var(--fs-small);margin-bottom:var(--sp-3);}
+.v2-glimpse #liveFeedGrid{border-top:1px solid;border-image:linear-gradient(90deg,var(--line),var(--line) 70%,transparent) 1;}
+.v2-glimpse .ep-row{border:0;border-bottom:1px solid;border-image:linear-gradient(90deg,var(--line),var(--line) 70%,transparent) 1;
+  background:transparent;overflow:visible;transition:background-color .25s ease;}
+.v2-glimpse .ep-row:first-child{border-top:0;}
+.v2-glimpse .ep-row::after{left:0;right:auto;width:60%;background:linear-gradient(90deg,rgba(255,117,23,.9),transparent);}
+.v2-glimpse .ep-row:hover,.v2-glimpse .ep-row.playing{
+  background:radial-gradient(90% 140% at 0% 50%,rgba(180,180,180,.07),rgba(180,180,180,.02) 45%,transparent 75%);}
+.v2-glimpse .ep-row-main{display:grid;grid-template-columns:72px minmax(0,1fr) auto auto;align-items:center;gap:0 var(--sp-3);padding:var(--sp-2) 0;}
+.v2-glimpse .ep-cover{grid-area:1/1;width:72px;height:72px;box-shadow:0 10px 24px rgba(0,0,0,.4);}
+.v2-glimpse .ep-play-btn{grid-area:1/1;place-self:center;width:40px;height:40px;background:rgba(20,21,25,.62);
+  border:1px solid rgba(255,117,23,.8);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+  opacity:.9;transition:background .2s ease,opacity .2s ease,var(--t-press);}
+.v2-glimpse .ep-row:hover .ep-play-btn{opacity:1;background:rgba(255,117,23,.2);}
+.v2-glimpse .ep-play-btn:active{scale:var(--press);}
+.v2-glimpse .ep-row-mid{grid-column:2;}
+.v2-glimpse .ep-row-title{font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);line-height:1.35;white-space:normal;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:color .2s ease;}
+.v2-glimpse .ep-row:hover .ep-row-title,.v2-glimpse .ep-row.playing .ep-row-title{color:var(--orange);}
+.v2-glimpse .ep-row-show{display:none;}
+.v2-glimpse .ep-row-meta{grid-column:3;flex-direction:column;align-items:flex-end;gap:.15rem;font-size:var(--fs-small);color:var(--gray);font-variant-numeric:tabular-nums;}
+.v2-glimpse .ep-row-meta span:first-child,.v2-glimpse .ep-row-meta span:last-child{min-width:0;text-align:right;}
+.v2-glimpse .ep-row-meta span:last-child{color:var(--gray-light);}
+.v2-glimpse .ep-row-icons{grid-column:4;gap:.2rem;opacity:.5;transition:opacity .2s ease;}
+.v2-glimpse .ep-row:hover .ep-row-icons,.v2-glimpse .ep-row:focus-within .ep-row-icons,.v2-glimpse .ep-row.playing .ep-row-icons{opacity:1;}
+.v2-glimpse .ep-icon-btn{width:44px;height:44px;}
+/* the newest episode leads */
+.v2-glimpse .ep-row:first-child .ep-row-main{grid-template-columns:112px minmax(0,1fr) auto auto;padding:var(--sp-3) 0;}
+.v2-glimpse .ep-row:first-child .ep-cover{width:112px;height:112px;}
+.v2-glimpse .ep-row:first-child .ep-play-btn{width:48px;height:48px;}
+.v2-glimpse .ep-row:first-child .ep-row-title{font-size:var(--fs-h3);line-height:1.25;}
+.v2-glimpse .ep-row:first-child .ep-row-mid::before{content:"Latest episode";display:block;margin-bottom:.45rem;
+  font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);}
+/* the player that opens under a row */
+.v2-glimpse .ep-player{margin:0 0 var(--sp-2);padding:var(--sp-2) 0 0 calc(72px + var(--sp-3));border-top:0;}
+.v2-glimpse .ep-row:first-child .ep-player{padding-left:calc(112px + var(--sp-3));}
+.v2-glimpse .ep-progress-track{height:3px;background:rgba(180,180,180,.16);}
+.v2-glimpse .ep-progress-fill{box-shadow:0 0 10px rgba(255,117,23,.6);}
+.v2-glimpse .ep-skip-controls{justify-content:flex-start;}
+.v2-glimpse .ep-skip-btn{min-width:44px;min-height:44px;justify-content:center;}
+.v2-glimpse .ep-play-btn-lg{width:44px;height:44px;}
+/* footer: the site's outlined button, and a plain count */
+.v2-glimpse .live-feed-footer{margin-top:var(--sp-4);align-items:center;}
+.v2-glimpse .see-more-btn{min-height:48px;padding:.75rem 1.6rem;color:var(--white);border:1px solid var(--edge-hi);
+  font-size:var(--fs-body-s);transition:border-color .2s ease,color .2s ease,background-color .2s ease,var(--t-press);}
+.v2-glimpse .see-more-btn:hover:not(:disabled){border-color:var(--orange);color:var(--orange);background:transparent;}
+.v2-glimpse .see-more-btn:active:not(:disabled){scale:var(--press);}
+.v2-glimpse .live-counter{border:0;padding:0;font-size:var(--fs-small);font-variant-numeric:tabular-nums;}
+@media (max-width:640px){
+  .v2-glimpse .ep-row-main,.v2-glimpse .ep-row:first-child .ep-row-main{grid-template-columns:64px minmax(0,1fr) auto;gap:.2rem var(--sp-2);}
+  .v2-glimpse .ep-cover,.v2-glimpse .ep-row:first-child .ep-cover{width:64px;height:64px;grid-row:1/3;}
+  .v2-glimpse .ep-play-btn{grid-row:1/3;}
+  .v2-glimpse .ep-row:first-child .ep-play-btn{width:40px;height:40px;}
+  .v2-glimpse .ep-row-mid{grid-column:2;grid-row:1;}
+  .v2-glimpse .ep-row-meta{grid-column:2;grid-row:2;flex-direction:row;justify-content:flex-start;gap:.8rem;align-items:center;}
+  .v2-glimpse .ep-row-icons{grid-column:3;grid-row:1/3;flex-direction:column;opacity:.8;}
+  .v2-glimpse .ep-row:first-child .ep-row-title{font-size:var(--fs-h4);}
+  .v2-glimpse .ep-player,.v2-glimpse .ep-row:first-child .ep-player{padding-left:0;}
+}
+@media (prefers-reduced-motion: reduce){ .v2-glimpse .ep-row, .v2-glimpse .ep-row-title{transition:none;} }
+/* play keeps off the guest's face: on a mouse it appears over the art with the
+   row lit; on a touch screen it sits small in the art's bottom right corner */
+@media (hover:hover){
+  .v2-glimpse .ep-play-btn{opacity:0;}
+  .v2-glimpse .ep-row:hover .ep-play-btn,.v2-glimpse .ep-row:focus-within .ep-play-btn,.v2-glimpse .ep-row.playing .ep-play-btn{opacity:1;}
+  .v2-glimpse .ep-row:hover .ep-cover{filter:brightness(.72);}
+  .v2-glimpse .ep-cover{transition:filter .25s ease;}
+}
+@media (hover:none){
+  .v2-glimpse .ep-play-btn,.v2-glimpse .ep-row:first-child .ep-play-btn{place-self:end end;width:34px;height:34px;margin:0 -6px -6px 0;}
+}
