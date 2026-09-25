@@ -915,7 +915,7 @@ img.v2-img-in{transition:opacity .7s ease,filter .9s ease;}
 .ep2-portrait::after{right:8px;bottom:8px;border-right:2px solid var(--orange);border-bottom:2px solid var(--orange);}
 .ep2-portrait picture,.ep2-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%;}
 .ep2-portrait.is-art{aspect-ratio:1;}
-.ep2-portrait.is-still img,.ep2-card-art.is-still img{mix-blend-mode:luminosity;opacity:.92;}
+.ep2-portrait.is-still img{mix-blend-mode:luminosity;opacity:.92;}
 
 /* the stage: player first and wide; quote and guest beside it */
 .ep2-stage{display:grid;grid-template-columns:minmax(0,1fr) clamp(280px,26vw,360px);gap:clamp(1.5rem,3vw,2.5rem);align-items:start;margin:0 0 clamp(2.5rem,5vw,4rem);}
@@ -966,10 +966,9 @@ img.v2-img-in{transition:opacity .7s ease,filter .9s ease;}
 .ep2-next-all:hover{color:var(--white);}
 .ep2-next-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(1rem,2vw,1.5rem);}
 .ep2-card{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--white);overflow:hidden;}
-.ep2-card-art{display:block;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(160deg,#d8221a,#7a0a08);}
-.ep2-card-art picture,.ep2-card-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 22%;transition:transform .6s cubic-bezier(.2,.8,.2,1);}
+.ep2-card-art{display:block;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(160deg,#d8221a,#7a0a08);}
+.ep2-card-art picture,.ep2-card-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transition:transform .6s cubic-bezier(.2,.8,.2,1);}
 .ep2-card:hover .ep2-card-art img{transform:scale(1.05);}
-@media (hover:hover){ .ep2-card:hover .ep2-card-art.is-still img{mix-blend-mode:normal;opacity:1;} }
 .ep2-card-body{display:flex;flex-direction:column;gap:.35rem;padding:1rem 1.1rem 1.2rem;}
 .ep2-card-k{font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:600;}
 .ep2-card-t{font-family:var(--font-display);font-weight:600;font-size:1rem;line-height:1.3;}

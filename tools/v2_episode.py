@@ -80,6 +80,17 @@ def portrait(ep):
     return None, False, ""
 
 
+def thumb(ep):
+    """An episode's own picture for a card: its video still (16:9, no bars),
+    else its artwork. Never the guest's portrait, so every card is alike."""
+    if ep.get("video_id"):
+        return "https://i.ytimg.com/vi/%s/mqdefault.jpg" % ep["video_id"], False, "is-still"
+    art = os.path.join(ROOT, "assets", "podcast", "artwork", ep["slug"] + ".jpg")
+    if os.path.exists(art):
+        return "../assets/podcast/artwork/" + ep["slug"], True, "is-art"
+    return portrait(ep)
+
+
 def pic(src, webp, alt, cls="", lazy=True):
     load = ' loading="lazy" decoding="async"' if lazy else ""
     if src is None:
@@ -192,7 +203,7 @@ def build(slug, meta):
     pool.sort(key=lambda o: abs(int(o["published"].replace("-", "")) - int(ep.get("published", "0").replace("-", "") or 0)))
     cards = []
     for o in pool[:4]:
-        oi, ow, ok = portrait(o)
+        oi, ow, ok = thumb(o)
         t, _ = split_title(o["title"], o.get("guest", ""))
         cards.append('<a class="ep2-card" href="%s.html"><span class="ep2-card-art %s">%s</span><span class="ep2-card-body"><span class="ep2-card-k">%s</span><span class="ep2-card-t">%s</span><span class="ep2-card-m">%s%s</span></span></a>'
                      % (o["slug"], ok, pic(oi, ow, ""), e(o.get("epno", "")), e(t), e(o.get("guest", "")),
