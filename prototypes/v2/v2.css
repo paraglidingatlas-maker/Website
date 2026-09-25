@@ -318,7 +318,11 @@ a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
 .v2-wwu p{margin:0 0 .8rem;}
 .v2-wwu p a{color:var(--white);}
 .v2-fly-better{margin-top:var(--sp-3);}
-.v2-expect{grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));}
+.kit-grid.v2-expect{grid-template-columns:repeat(6,minmax(0,1fr));}
+.v2-expect > *{grid-column:span 2;}
+.v2-expect > :nth-child(4),.v2-expect > :nth-child(5){grid-column:span 3;}
+@media (min-width:1280px){ .kit-grid.v2-expect{grid-template-columns:repeat(5,minmax(0,1fr));} .v2-expect > *,.v2-expect > :nth-child(n){grid-column:auto;} }
+@media (max-width:760px){ .kit-grid.v2-expect{grid-template-columns:1fr;} .v2-expect > :nth-child(n){grid-column:auto;} }
 
 /* ===========================================================================
    EPISODE LIBRARY (prototypes/v2/library.html): a browser. Series tiles (the
@@ -534,8 +538,10 @@ a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
     /* ---- fly down through the hero: the picture falls behind, cloud rises past ---- */
     .kit-hero:not(.is-sky) .kit-hero-media > *{animation:v2-hero-fall linear both;animation-timeline:scroll(root);animation-range:0 100vh;}
     @keyframes v2-hero-fall{to{transform:translateY(16%) scale(1.08);}}
-    .kit-hero:not(.is-sky)::before{content:"";position:absolute;z-index:0;left:-10%;right:-10%;bottom:-12%;height:55%;pointer-events:none;
-      background:url("../../assets/destinations/kenya/clouds/cloud-3.webp") center bottom/100% auto no-repeat;opacity:.42;
+    .kit-hero:not(.is-sky)::before{content:"";position:absolute;z-index:0;left:-10%;right:-10%;bottom:0;height:60%;pointer-events:none;
+      background:url("../../assets/destinations/kenya/clouds/cloud-3.webp") center 70%/100% auto no-repeat;opacity:.42;
+      -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 38%,#000 58%,transparent 88%);
+              mask-image:linear-gradient(180deg,transparent 0%,#000 38%,#000 58%,transparent 88%);
       animation:v2-cloud-pass linear both;animation-timeline:scroll(root);animation-range:0 100vh;}
     @keyframes v2-cloud-pass{from{transform:translate3d(0,18%,0) scale(1);} to{transform:translate3d(-4%,-62%,0) scale(1.25);opacity:.75;}}
 
@@ -556,19 +562,13 @@ a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
 }
 
 /* ---- the instrument ---- */
-.v2-hud{position:fixed;z-index:40;right:10px;top:50%;view-transition-name:v2-hud;writing-mode:vertical-rl;
-  display:flex;align-items:center;gap:.8rem;padding:.6rem 0;pointer-events:none;
-  font-family:var(--font-body);font-size:var(--fs-micro);letter-spacing:.14em;color:var(--gray-light);font-variant-numeric:tabular-nums;
-  opacity:0;translate:6px -50%;transition:opacity .5s ease,translate .5s cubic-bezier(.2,.8,.2,1);}
-.v2-hud.is-on{opacity:.9;translate:0 -50%;}
-.v2-hud::before,.v2-hud::after{content:"";width:1px;height:48px;background:linear-gradient(transparent,var(--live));}
-.v2-hud::after{background:linear-gradient(var(--live),transparent);}
-.v2-hud-row b{font-weight:600;color:var(--orange);margin-bottom:.45rem;display:inline-block;}
-.v2-hud-row em{font-style:normal;color:var(--white);display:inline-block;min-height:4.8em;}
-.v2-hud-att{position:relative;width:22px;height:22px;border-radius:50%;border:1px solid var(--edge-hi);overflow:hidden;writing-mode:horizontal-tb;
-  background:linear-gradient(180deg,rgba(90,130,190,.35) 50%,rgba(255,117,23,.18) 50%);}
-.v2-hud-att i{position:absolute;left:-4px;right:-4px;top:50%;height:1px;background:var(--orange);box-shadow:0 0 6px var(--orange);transform-origin:50% 50%;}
-@media (max-width:1279px){ .v2-hud{display:none;} }
+@media (min-width:1101px){ .page-wrap > nav .v2-hud{display:inline-flex;} }
+.page-wrap > nav .v2-hud{align-items:center;gap:.9rem;color:var(--gray-light);font-size:.68rem;letter-spacing:.1em;}
+.v2-hud-row b{font-weight:600;color:var(--orange);margin-right:.4rem;}
+.v2-hud-row em{font-style:normal;color:var(--white);display:inline-block;min-width:4.4em;}
+.v2-hud-att{position:relative;flex:0 0 auto;width:16px;height:16px;border-radius:50%;border:1px solid var(--edge-hi);overflow:hidden;
+  background:linear-gradient(180deg,rgba(90,130,190,.4) 50%,rgba(255,117,23,.2) 50%);}
+.v2-hud-att i{position:absolute;left:-3px;right:-3px;top:50%;height:1px;background:var(--orange);transform-origin:50% 50%;}
 
 /* ---- touch: a soft light under the pointer ---- */
 .v2-glint{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0;transition:opacity .35s ease;mix-blend-mode:screen;
@@ -596,3 +596,8 @@ a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
   .page-wrap > nav .v2-wind{margin-left:auto;margin-right:.6rem;}
   .page-wrap > nav .v2-wind ~ .nav-cta{margin-left:0;}
 }
+/* rails: grab with the mouse; a drifting rail has no snap (it would fight the drift) */
+.v2-rail{cursor:grab;}
+.v2-rail.is-dragging{cursor:grabbing;scroll-snap-type:none;user-select:none;}
+.v2-rail.is-dragging *{pointer-events:none;}
+.v2-rail.is-auto{scroll-snap-type:none;}

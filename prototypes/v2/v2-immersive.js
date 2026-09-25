@@ -97,20 +97,20 @@
     var hud = null, hudAlt, hudHdg, hudLine, lastY = w.scrollY, lastT = 0, bank = 0, bankRaf = 0;
     var BASE = [4200, 3100, 2200][here] || 3100;
     var HDG = (function () { var h = 0, s = location.pathname; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) % 360; return h; })();
-    if (!still && mm("(min-width: 1280px)")) {
-      hud = d.createElement("div");
-      hud.className = "v2-hud"; hud.setAttribute("aria-hidden", "true");
-      hud.innerHTML = '<span class="v2-hud-att"><i></i></span><span class="v2-hud-row"><b>ALT</b><em class="a"></em></span>' +
-                      '<span class="v2-hud-row"><b>HDG</b><em class="h"></em></span>';
-      d.body.appendChild(hud);
-      hudAlt = hud.querySelector(".a"); hudHdg = hud.querySelector(".h"); hudLine = hud.querySelector(".v2-hud-att i");
+    // docked in the header's coordinate slot, so it never sits over content
+    var slot = d.querySelector(".page-wrap > nav .nav-coords");
+    if (slot) {
+      hud = slot;
+      slot.classList.add("v2-hud");
+      slot.setAttribute("aria-hidden", "true");
+      slot.innerHTML = '<span class="v2-hud-att"><i></i></span><span class="v2-hud-row"><b>ALT</b><em class="a"></em></span>' +
+                       '<span class="v2-hud-row"><b>HDG</b><em class="h"></em></span>';
+      hudAlt = slot.querySelector(".a"); hudHdg = slot.querySelector(".h"); hudLine = slot.querySelector(".v2-hud-att i");
     }
     function pad3(n) { n = ((Math.round(n) % 360) + 360) % 360; return (n < 10 ? "00" : n < 100 ? "0" : "") + n; }
     function paintHud() {
       if (!hud) return;
       var max = Math.max(1, root.scrollHeight - innerHeight), p = Math.min(1, w.scrollY / max);
-      // appears once the hero is behind you, so it never sits on a hero's own controls
-      hud.classList.toggle("is-on", w.scrollY > innerHeight * 0.55);
       hudAlt.textContent = (Math.round((BASE - p * 900) / 10) * 10).toLocaleString("en-US") + " m";
       hudHdg.textContent = pad3(HDG + p * 24) + "°";
     }
@@ -202,6 +202,56 @@
       });
     }
 
+    // rails: drag with the mouse; data-auto rails also drift on their own,
+    // but only while on screen, untouched and unhovered, and never for reduced motion
+    d.querySelectorAll(".v2-rail").forEach(function (rail) {
+      var down = false, sx = 0, sl = 0, moved = 0, dragged = 0;
+      rail.addEventListener("dragstart", function (e) { e.preventDefault(); });
+      rail.addEventListener("pointerdown", function (e) {
+        if (e.pointerType !== "mouse" || e.button !== 0) return;
+        down = true; moved = 0; sx = e.clientX; sl = rail.scrollLeft;
+      });
+      w.addEventListener("pointermove", function (e) {
+        if (!down) return;
+        var dx = e.clientX - sx;
+        if (Math.abs(dx) > 4) { rail.classList.add("is-dragging"); moved = Math.max(moved, Math.abs(dx)); }
+        if (moved) rail.scrollLeft = sl - dx;
+      }, { passive: true });
+      var up = function () { if (!down) return; down = false; if (moved > 6) dragged = Date.now(); rail.classList.remove("is-dragging"); };
+      w.addEventListener("pointerup", up); w.addEventListener("pointercancel", up);
+      rail.addEventListener("click", function (e) { if (Date.now() - dragged < 300) { e.preventDefault(); e.stopPropagation(); } }, true);
+
+      if (!rail.hasAttribute("data-auto") || still) return;
+      var kids = [].slice.call(rail.children);
+      kids.forEach(function (k) {
+        var c = k.cloneNode(true); c.setAttribute("aria-hidden", "true"); c.setAttribute("tabindex", "-1");
+        c.querySelectorAll("a,button").forEach(function (a) { a.setAttribute("tabindex", "-1"); });
+        rail.appendChild(c);
+      });
+      rail.classList.add("is-auto");
+      var x = rail.scrollLeft, set = x, seen = false, hold = 0, raf = 0, resume = 0;
+      var half = function () { return rail.scrollWidth / 2; };
+      var go = function () {
+        raf = 0;
+        if (!seen || hold || down || d.hidden) return;
+        if (Math.abs(rail.scrollLeft - set) > 2) x = rail.scrollLeft;   // the visitor moved it
+        x += 0.45; if (x >= half()) x -= half();
+        rail.scrollLeft = x; set = rail.scrollLeft;
+        raf = requestAnimationFrame(go);
+      };
+      var wake = function () { if (!raf) raf = requestAnimationFrame(go); };
+      var pause = function () { hold = 1; clearTimeout(resume); };
+      var later = function () { clearTimeout(resume); resume = setTimeout(function () { hold = 0; x = rail.scrollLeft; wake(); }, 2500); };
+      rail.addEventListener("pointerenter", pause); rail.addEventListener("pointerleave", later);
+      rail.addEventListener("touchstart", pause, { passive: true }); rail.addEventListener("touchend", later);
+      rail.addEventListener("focusin", pause); rail.addEventListener("focusout", later);
+      rail.addEventListener("wheel", function () { pause(); later(); }, { passive: true });
+      // manual scrolling past the clones wraps too, so the strip never runs out
+      rail.addEventListener("scroll", function () { if (hold && rail.scrollLeft >= half()) rail.scrollLeft -= half(); }, { passive: true });
+      d.addEventListener("visibilitychange", wake);
+      if ("IntersectionObserver" in w) new IntersectionObserver(function (en) { seen = en[0].isIntersecting; if (seen) wake(); }).observe(rail);
+      else { seen = true; wake(); }
+    });
     wind = makeWind();
   }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", ready); else ready();
