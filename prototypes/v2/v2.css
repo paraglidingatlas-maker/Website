@@ -441,3 +441,16 @@ a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
   letter-spacing:.16em;text-transform:uppercase;color:var(--orange);}
 [data-v2="ep"] .cd-block h2{font-family:var(--font-display);}
 [data-v2="ep"] .cd-head h1{font-weight:700;font-size:clamp(1.9rem,3.6vw,2.8rem);line-height:1.1;letter-spacing:-.02em;}
+
+/* ===========================================================================
+   KNOWLEDGE BASE CATEGORY (prototypes/v2/knowledge-base/flight-mechanics.html,
+   <body data-v2="kb">). The generated page already uses the kit's rhythm; the
+   kickers become the one kicker (some were grey) and the small section titles
+   take the section size. The door (prototypes/v2/knowledge-base.html) is the
+   live page, untouched.
+   ========================================================================= */
+[data-v2="kb"] :is(.k-hero-copy, .k-head, .band, .bf-q, .check, .tk-lab, .nx) .kicker{font-family:var(--font-body);font-size:var(--fs-micro);
+  font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);}
+[data-v2="kb"] .k-hero-copy h1{font-weight:700;letter-spacing:-.02em;}
+[data-v2="kb"] .k-head h2{font-size:var(--fs-h2);line-height:1.15;letter-spacing:-.015em;}
+[data-v2="kb"] .k-head{margin-bottom:var(--sp-4);}
