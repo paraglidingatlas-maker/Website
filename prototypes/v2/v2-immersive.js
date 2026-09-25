@@ -328,9 +328,8 @@
 
 /* THE NAV COMES BACK ON THE WAY UP.
    Past the first screen the nav rides along out of sight; the moment the
-   visitor scrolls up it slides down, pinned, on a dark glass with the sky's
-   cool light in its top-right corner, and it goes again on the next scroll
-   down. Back at the top it drops into its place in the page. Not on the trip
+   visitor scrolls up it slides down, pinned, on the page's own dark glass,
+   and it goes again on the next scroll down. Back at the top it drops into its place in the page. Not on the trip
    pages: their jump bar (.dst-jump) already holds the top of the screen there.
    Scroll-driven only; no frame runs while the page is still. */
 (function () {
