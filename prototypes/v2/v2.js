@@ -13,7 +13,7 @@
 
    V2_PAGES is the list of built pages; tools/v2_localize.py rewrites it. */
 (function () {
-  var V2_PAGES = [/*v2-pages*/"index.html","podcast.html","styleguide.html"/*/v2-pages*/];
+  var V2_PAGES = [/*v2-pages*/"index.html","library.html","podcast.html","styleguide.html"/*/v2-pages*/];
   var M = location.pathname.match(/^(.*\/prototypes\/v2\/)/);
   if (!M) return;
   var BASE = M[1];
@@ -27,6 +27,8 @@
     var u; try { u = new URL(a.href, location.href); } catch (e) { return; }
     if (u.origin !== location.origin || u.pathname.indexOf(BASE) !== 0) return;
     var p = u.pathname; if (/\/$/.test(p)) p += 'index.html';
+    // the globe moved from the homepage to the podcast page in v2
+    if (p === BASE + 'index.html' && /^#pin=/.test(u.hash)) { a.href = BASE + 'podcast.html' + u.hash; a.dataset.v2 = 'pin'; return; }
     if (!have[p] && !/\.(css|js|json|xml|txt)$/.test(p)) { a.href = live(u); a.dataset.v2 = 'live'; }
   }
   ['pointerdown', 'click', 'focusin', 'auxclick', 'mouseover'].forEach(function (t) {
