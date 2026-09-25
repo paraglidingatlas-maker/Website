@@ -3939,3 +3939,20 @@ still used by nothing; switching back is the same one-word edit.
   chips and sort buttons grow to 44px. Under a mouse they keep their compact look.
 - Homepage Himalaya and Kenya cards: the link under the facts reads "Learn More"
   and goes to the destination page (Aninder's call; it replaced "Enquire Now").
+
+## 71. HORIZON ON THE SHARED PIECES, AND TOUCH SIZES (2026-09-25)
+
+The "Horizon, site-wide" and "Touch sizes" sections at the end of styles.css.
+
+- The header underline, the footer column rules and the footer's bottom rule fade
+  at their ends (border-image). Every page's footer starts at a fading orange line
+  with a low warm glow; the footer is transparent so the glow can sit behind it.
+  This moved out of episode.css, where it was v2 only.
+- Touch screens only (`pointer:coarse`): footer links 44px, popup chapter links
+  40px and popup tags 36px, Kenya/India hero tabs 44px and map zoom buttons 44px.
+- Kenya/India gallery dots: the visible bar is still 2px, the button is 24px tall
+  (the bar was the whole target).
+- Smallest text raised to about 11px: popup labels, tags and stamp, homepage why
+  kicker and booking card labels, library card stamps and "Audio only", knowledge
+  base cue and level tags, the door's "Enter the realm", hints and Skip (also
+  brighter).

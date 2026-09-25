@@ -351,15 +351,6 @@
 .cd-v2 .cd-link{border-bottom:1px solid;border-image:linear-gradient(90deg,var(--line),transparent) 1;}
 .cd-v2 .cd-link:last-child{border-image:none;border-bottom:0;}
 
-/* The ground. The footer starts at a horizon with a low warm glow on it, the
-   last light of the day, so the page ends somewhere rather than just stopping. */
-body:has(.cd-v2) footer{position:relative;background:none;}
-body:has(.cd-v2) footer::before{content:"";position:absolute;inset:0 0 auto;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(255,117,23,.45) 50%,transparent);}
-body:has(.cd-v2) footer::after{content:"";position:absolute;z-index:-1;pointer-events:none;
-  left:0;right:0;top:-160px;height:420px;
-  background:radial-gradient(60% 55% at 50% 38%,rgba(255,117,23,.10),rgba(255,117,23,0) 70%);}
-
 /* The sky drifts a little slower than the page as you scroll away from it. */
 @media (prefers-reduced-motion:no-preference){
   @supports (animation-timeline:scroll()){

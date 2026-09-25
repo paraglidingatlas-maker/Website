@@ -71,7 +71,7 @@
   gap:clamp(.9rem,3vw,2.4rem);margin-top:clamp(1.8rem,4vw,3rem);padding-top:1rem;
   border-top:1px solid rgba(255,255,255,.17);}
 .khero-tab{position:relative;background:none;border:0;padding:.45rem 0;cursor:pointer;
-  font-family:var(--font-body);font-size:clamp(.66rem,1.6vw,.78rem);letter-spacing:.16em;
+  font-family:var(--font-body);font-size:clamp(.72rem,1.6vw,.78rem);letter-spacing:.16em;
   text-transform:uppercase;color:rgba(255,255,255,.52);transition:color .3s ease,var(--t-press);}
 .khero-tab:hover{color:var(--white);}
 .khero-tab.is-on{color:var(--white);}
@@ -432,9 +432,12 @@
 .cfl-prev{left:clamp(.5rem,2vw,1.6rem);} .cfl-next{right:clamp(.5rem,2vw,1.6rem);}
 
 .cfl-dots{display:flex;gap:9px;justify-content:center;margin-top:.85rem;flex-wrap:wrap;}
-.cfl-dot{width:26px;height:2px;border:0;padding:0;cursor:pointer;
-  background:rgba(255,255,255,.26);transition:background .3s ease;}
-.cfl-dot.is-on{background:var(--orange);}
+.cfl-dot{width:26px;height:24px;border:0;padding:0;cursor:pointer;
+  background:linear-gradient(rgba(255,255,255,.26),rgba(255,255,255,.26)) center/100% 2px no-repeat;
+  transition:background .3s ease;}
+/* The bar is 2px but the button is 24px tall: the line was the whole target,
+   and a finger could not hit it. */
+.cfl-dot.is-on{background:linear-gradient(var(--orange),var(--orange)) center/100% 2px no-repeat;}
 .cfl-dot:focus-visible{outline:2px solid var(--live);outline-offset:4px;}
 
 /* Full size. Opaque, because at 94% the carousel ghosted through underneath and
@@ -1363,3 +1366,10 @@
   transition:transform .25s ease;}
 .etq .etq-toggle[aria-expanded="true"] .etq-toggle-chev{transform:rotate(225deg) translate(-2px,-2px);}
 @media (prefers-reduced-motion:reduce){ .etq .etq-toggle,.etq .etq-toggle-chev{transition:none;} }
+
+/* Touch sizes: the photograph tabs in the hero and the map's zoom buttons were
+   27px and 34px. They keep their look under a mouse. */
+@media (pointer:coarse){
+  .khero-tab{min-height:44px;}
+  .kmap-btn{width:44px;height:44px;}
+}

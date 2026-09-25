@@ -39,7 +39,7 @@
 <link rel="preload" href="assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css?v=1f73ef11">
-<link rel="stylesheet" href="styles.css?v=8ed80619">
+<link rel="stylesheet" href="styles.css?v=80fe6d6b">
 <style>
   .kb-hero{padding:clamp(4rem,9vw,6.5rem) clamp(1.5rem,5vw,4rem) clamp(3rem,7vw,4.5rem);background:var(--bg);text-align:center;}
   .kb-hero .kicker{display:block;margin-bottom:0.8rem;}
@@ -140,7 +140,7 @@
   line-height:1;color:var(--orange);font-variant-numeric:tabular-nums;}
 .clb-stats i{font-style:normal;font-family:var(--font-body);font-size:.66rem;letter-spacing:.18em;
   text-transform:uppercase;color:var(--gray);}
-.clb-cue{display:inline-block;font-family:var(--font-body);font-size:.64rem;letter-spacing:.2em;
+.clb-cue{display:inline-block;font-family:var(--font-body);font-size:.7rem;letter-spacing:.2em;
   text-transform:uppercase;color:var(--gray);opacity:0;
   animation:clbUp 1s 1.05s cubic-bezier(.2,.7,.2,1) forwards, clbBob 2.6s 2s ease-in-out infinite;}
 @keyframes clbBob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
@@ -161,7 +161,7 @@
 .clb-idx{display:block;font-family:var(--font-display);font-weight:700;
   font-size:clamp(2.4rem,6vw,4.4rem);line-height:.9;color:transparent;
   -webkit-text-stroke:1px var(--edge-hi);margin-bottom:.9rem;}
-.clb-tag{display:block;font-family:var(--font-body);font-size:.62rem;letter-spacing:.18em;
+.clb-tag{display:block;font-family:var(--font-body);font-size:.7rem;letter-spacing:.18em;
   text-transform:uppercase;color:var(--orange);margin-bottom:.5rem;}
 .clb-body h2{font-family:var(--font-display);font-weight:600;letter-spacing:-.018em;
   font-size:clamp(1.7rem,3.6vw,2.9rem);line-height:1.08;margin:0 0 .8rem;}
@@ -350,8 +350,8 @@
   box-shadow:0 0 0 calc(var(--R)*.035) #0b0c0f,0 0 calc(var(--R)*.6) rgba(0,0,0,.95) inset;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(var(--R)*.12);transform:translate(-50%,-50%);}
 .iris-core img{width:calc(var(--R)*1.45);height:auto;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .5s;}
-.iris-core .iris-tag{font-family:var(--font-body);font-size:max(.56rem,calc(var(--R)*.062));letter-spacing:.55em;text-transform:uppercase;
-  color:rgba(215,225,245,.7);padding-left:.55em;transition:color .3s,letter-spacing .4s;}
+.iris-core .iris-tag{font-family:var(--font-body);font-size:max(.72rem,calc(var(--R)*.062));letter-spacing:.55em;text-transform:uppercase;
+  color:rgba(215,225,245,.88);padding-left:.55em;transition:color .3s,letter-spacing .4s;}
 .iris-core:hover img,.iris-core:focus-visible img{transform:scale(1.06);filter:drop-shadow(0 0 14px rgba(255,140,60,.45));}
 .iris-core:hover .iris-tag,.iris-core:focus-visible .iris-tag{color:#fff;letter-spacing:.7em;}
 .iris-core:focus-visible{outline:none;}
@@ -388,7 +388,7 @@
 .iris-levels a small{font-size:.72rem;color:rgba(170,190,225,.6);}
 .iris-levels a:hover,.iris-levels a:focus-visible,.iris-levels a.is-hot{color:#fff;padding-left:.35rem;}
 .iris-skip{position:absolute;z-index:3;right:clamp(1rem,3vw,2.2rem);bottom:clamp(1rem,3vh,2rem);min-height:44px;padding:.5rem 1rem;background:none;border:0;cursor:pointer;
-  font-family:var(--font-body);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(170,190,225,.6);}
+  font-family:var(--font-body);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,212,235,.85);}
 .iris-skip:hover{color:#fff;}
 /* entrance: the rig assembles after the rays have burst */
 .iris-rig > *:not(.iris-nodes){opacity:0;}
@@ -426,7 +426,7 @@
 .iris.is-grabbing,.iris.is-grabbing *{cursor:grabbing!important;}
 .iris-core{touch-action:none;} .iris-node,.iris-skip{touch-action:manipulation;}
 .iris-hint{position:absolute;z-index:3;left:50%;bottom:clamp(1.2rem,4vh,2.4rem);transform:translateX(-50%);display:flex;gap:1.4rem;align-items:center;white-space:nowrap;
-  font-family:var(--font-body);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(215,220,228,.55);pointer-events:none;
+  font-family:var(--font-body);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(215,220,228,.78);pointer-events:none;
   opacity:0;transition:opacity .9s ease;}
 .iris.is-live .iris-hint{opacity:1;transition-delay:.6s;}
 .iris .iris-hint.gone{opacity:0;transition-delay:0s;}
