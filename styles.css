@@ -1583,3 +1583,11 @@ footer{
   .kb-src span, .src span,
   :where(.hero-link, .dest-copy a, .popup-link)::after{transition:none;}
 }
+
+/* Newsletter signup messages (newsletter.js), on the homepage and the podcast page */
+.nl-status{min-height:1.2em;margin:.7rem 0 0;font-size:var(--fs-small);line-height:1.5;color:var(--gray-light);}
+.nl-status:empty{margin:0;min-height:0;}
+.nl-status[data-state="ok"]{color:var(--white);}
+.nl-status[data-state="bad"]{color:var(--orange);}
+.pod-newsletter-panel > .nl-status{flex-basis:100%;order:3;margin-top:-1.6rem;}
+.pod-newsletter-panel > .nl-status:empty{display:none;}
