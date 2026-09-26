@@ -130,6 +130,14 @@ open into the episode (a transition), the instrument font.
   (`@media (pointer:coarse)`), with the compact look kept under a mouse.
 - Order on a phone: the words first, then the buttons, then the media.
 
+## Drawings (v4)
+Every drawing is made with the kit (`tools/v4_draw.py`): hairlines that keep
+their width at any size, the site's type, orange for what matters. The
+knowledge base figures come from their original scripts through
+`tools/v4_kbsvg.py`; placed by `tools/v4_pass.py` (inline when small or
+labelled, a lazy image when large and wordless). Keep the alt text as the
+drawing's title and never touch og:image.
+
 ## Files (v4)
 Edit the readable sources in `prototypes/v4/src/` (`v2.css`,
 `v2-immersive.js`, `v4-menu.js`), then `python3 tools/v4_min.py` writes the

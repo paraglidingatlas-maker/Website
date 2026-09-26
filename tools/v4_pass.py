@@ -22,6 +22,12 @@ What it does
            title sits under it, smaller. Every word stays in the <h1>.
   kb fold  a knowledge base section's long paragraphs fold under "Read more";
            its title, summary line and sources stay in view.
+  kb figs  the knowledge base figures, redrawn with the kit (tools/v4_kbsvg.py,
+           prototypes/v4/img/kb/), in place of the pictures: inline where
+           they are small or carry words (the site's type), a lazy <img>
+           where large and wordless; the alt text kept as the drawing's
+           title; og:image untouched. Flight Mechanics opens on the kit's
+           three-view (tools/v4_figs.py).
   globe    an episode whose place is on the site's globe opens on a globe
            turned to it (tools/v4_globe.py), with its coordinates, range and
            bearing from Oslo in the instrument font.
@@ -352,10 +358,103 @@ def nav(rel, src):
     return src[:m.start()] + new + src[m.end():]
 
 
+KBSVG = os.path.join(V4, "img", "kb")
+INLINE_MAX = 12 * 1024           # compressed bytes: a larger wordless drawing is fetched lazily instead
+PIC = re.compile(r'<picture><source srcset="[^"]*?assets/images/(kb-[a-z0-9-]+)\.webp" type="image/webp">'
+                 r'<img src="[^"]*" alt="([^"]*)" width="(\d+)" height="(\d+)"([^>]*)></picture>')
+DONE = re.compile(r'<(?:svg|img) class="kbd[^"]*" data-kb="([a-z0-9-]+)".*?<!--/kb-->', re.S)
+
+
+def kb_figure(name, alt, w, h, hero):
+    """One figure's markup (None when it has no redraw)."""
+    import gzip
+    a = html.unescape(alt)
+    if name == "kb-flight-mechanics":
+        sys.path.insert(0, os.path.join(ROOT, "tools"))
+        import v4_figs
+        svg = v4_figs.three_view("wide")
+        svg = re.sub(r'(<title id="[^"]*">).*?(</title>)', lambda m: m.group(1) + html.escape(a) + m.group(2), svg, 1)
+        return svg.replace('<svg class="dk ', '<svg data-kb="%s" class="kbd kbd-tv dk ' % name, 1).replace(
+            'class="kbd kbd-tv dk', 'class="kbd kbd-tv dk', 1) + "<!--/kb-->"
+    fp = os.path.join(KBSVG, name + ".svg")
+    if not os.path.exists(fp):
+        return None
+    src = open(fp, encoding="utf-8").read().strip()
+    body = src[src.index(">") + 1:src.rindex("</svg>")]
+    words = "<text" in body
+    if hero is not True and not words and len(gzip.compress(src.encode(), 9)) > INLINE_MAX:
+        return ('<img class="kbd" data-kb="%s" src="../img/kb/%s.svg" alt="%s" width="%s" height="%s" loading="lazy" '
+                'decoding="async"><!--/kb-->' % (name, name, alt, w, h))
+    vb = re.search(r'viewBox="([^"]+)"', src).group(1)
+    return ('<svg class="kbd%s" data-kb="%s" viewBox="%s" preserveAspectRatio="%s" role="img" aria-labelledby="%s-t" '
+            'style="aspect-ratio:%s/%s"><title id="%s-t">%s</title>%s</svg><!--/kb-->' % (
+                " kbd-hero" if hero is True else "", name, vb, {True: "xMaxYMid meet", "side": "xMaxYMid slice"}.get(hero, "xMidYMid meet"), name,
+                w, h, name, html.escape(a), body))
+
+
+def kb_figures(src):
+    """Swap each knowledge base picture (or an earlier swap) for its kit redraw."""
+    def alt_of(m):
+        t = re.search(r'<title id="[^"]*">(.*?)</title>', m.group(0)) or re.search(r'alt="([^"]*)"', m.group(0))
+        return html.escape(html.unescape(t.group(1)), quote=True)
+
+    def dims(m):
+        v = re.search(r'aspect-ratio:(\d+)/(\d+)', m.group(0)) or re.search(r'width="(\d+)" height="(\d+)"', m.group(0))
+        return v.groups() if v else ("2400", "900")
+
+    def pic(m):
+        before = src[max(0, m.start() - 60):m.start()]
+        hero = True if "k-hero-media" in before else ("side" if "bf-media" in before else False)
+        out = kb_figure(m.group(1), m.group(2), m.group(3), m.group(4), hero)
+        return out or m.group(0)
+
+    def again(m):
+        before = src[max(0, m.start() - 60):m.start()]
+        hero = True if "k-hero-media" in before else ("side" if "bf-media" in before else False)
+        w, h = dims(m)
+        return kb_figure(m.group(1), alt_of(m), w, h, hero) or m.group(0)
+    src = DONE.sub(again, src)
+    return PIC.sub(pic, src)
+
+
+def trip_paths(src):
+    """Paths inside the Kenya map's panels (HTML kept in a data attribute, so the localizer does not see them):
+    written for the live page (../assets/), they miss from prototypes/v4/destinations/. From here they reach
+    the same files; after the switch-over they still do (a path cannot climb above the site's root)."""
+    return re.sub(r'data-panel="[^"]*"', lambda m: m.group(0).replace("&quot;../assets/", "&quot;../../../assets/"), src)
+
+
+def trip_dials(src):
+    """The trips' season and vario dials, finished with the kit's hairlines: an inner ring with the month
+    boundaries on the season dial, half-step ticks on the vario. Geometry only; no new labels or values."""
+    import math
+
+    def ln(cx, cy, r0, r1, deg):
+        a = math.radians(deg)
+        return '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f"/>' % (
+            cx + r0 * math.sin(a), cy - r0 * math.cos(a), cx + r1 * math.sin(a), cy - r1 * math.cos(a))
+
+    def season(m):
+        if "v4k-h" in m.group(0):
+            return m.group(0)
+        ticks = "".join(ln(120, 120, 74, 80, 15 + 30 * i) for i in range(12))
+        add = '<g class="v4k-h"><circle cx="120" cy="120" r="74"/>%s</g>' % ticks
+        return m.group(0).replace("</svg>", add + "</svg>")
+
+    def vario(m):
+        if "v4k-h" in m.group(0):
+            return m.group(0)
+        ticks = "".join(ln(120, 120, 95, 101, -90 + 11.25 * i) for i in range(1, 16, 2))
+        add = '<g class="v4k-h"><path d="M34.00 120.00A86 86 0 0 1 206.00 120.00"/>%s</g>' % ticks
+        return m.group(0).replace('<line class="needle"', add + '<line class="needle"', 1)
+    src = re.sub(r'<svg class="kseason".*?</svg>', season, src, flags=re.S)
+    return re.sub(r'<svg class="kvario".*?</svg>', vario, src, flags=re.S)
+
+
 def main(args):
     rels = args or sorted(os.path.relpath(os.path.join(d, f), V4).replace(os.sep, "/")
                           for d, _, fs in os.walk(V4) for f in fs if f.endswith(".html"))
-    n = {"titles": 0, "kb folds": 0, "globes": 0, "topics": 0, "nav": 0}
+    n = {"titles": 0, "kb folds": 0, "globes": 0, "topics": 0, "nav": 0, "kb figures": 0}
     for rel in rels:
         fp = os.path.join(V4, rel)
         src = open(fp, encoding="utf-8").read()
@@ -366,6 +465,8 @@ def main(args):
             g = episode_globe(rel, out)
             n["globes"] += g != out
             out = episode_extras(rel, g)
+        if rel.startswith("destinations/"):
+            out = trip_dials(trip_paths(out))
         if rel.startswith("tags/"):
             t = topic_page(rel, out)
             n["topics"] += t != out
@@ -373,6 +474,9 @@ def main(args):
         if rel.startswith("knowledge-base/"):
             before = out
             out = kb_fold(out)
+            fg = kb_figures(out)
+            n["kb figures"] += fg.count("<!--/kb-->") if fg != out else 0
+            out = fg
             n["kb folds"] += out.count('class="v4-fold k-more"') if out != before else 0
         n["nav"] += 'class="nav-links v4-nav"' in out and 'class="nav-links v4-nav"' not in src
         if out != src:

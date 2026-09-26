@@ -527,3 +527,18 @@ io.observe(hero); if (foot) io.observe(foot);
 }
 if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();
+(function () {
+"use strict";
+var m = /^(.*\/)prototypes\/v\d+\//.exec(location.pathname);
+function init() {
+var sheet = document.querySelector(".kmap-sheet");
+if (!m || !sheet || !("MutationObserver" in window)) return;
+new MutationObserver(function () {
+sheet.querySelectorAll("image").forEach(function (im) {
+var h = im.getAttribute("href") || "";
+if (h.indexOf("../assets/") === 0) im.setAttribute("href", m[1] + h.slice(3));
+});
+}).observe(sheet, { childList: true });
+}
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+})();

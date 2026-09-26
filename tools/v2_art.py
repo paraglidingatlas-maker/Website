@@ -25,6 +25,10 @@ import v2_site as S  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(S.DIR, "img")
+# v4 draws its line art with the drawing kit's weights (tools/v4_draw.py): hairlines that keep their width
+# at any size; v2 stays exactly as it was.
+KIT = not S.IS_V2
+NS = ' vector-effect="non-scaling-stroke"' if KIT else ""
 
 
 def terrain(w, h, seed):
@@ -120,9 +124,10 @@ def contours():
         for line in join(march(z, w, h, step, lv)):
             if len(line) < 4:
                 continue
-            paths.append('<path d="%s"%s/>' % (smooth_path(line), ' stroke-width="1.6"' if heavy else ""))
+            paths.append('<path d="%s"%s%s/>' % (smooth_path(line), (' stroke-width="1.25"' if KIT else ' stroke-width="1.6"') if heavy else "", NS))
     svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d" preserveAspectRatio="xMidYMid slice">'
-           '<g fill="none" stroke="#b4b4b4" stroke-width=".8" stroke-linejoin="round" stroke-linecap="round">%s</g></svg>\n') % (w, h, "".join(paths))
+           '<g fill="none" stroke="#b4b4b4" stroke-width="%s" stroke-linejoin="round" stroke-linecap="round">%s</g></svg>\n') % (
+               w, h, ".75" if KIT else ".8", "".join(paths))
     open(os.path.join(OUT, "contours.svg"), "w").write(svg)
     return len(paths)
 
@@ -152,7 +157,7 @@ def ridge():
         layers.append('<path d="M0 %d L%s L%d %d Z" fill="%s"/>' % (h, line, w, h, fill))
         # a lit rim on the far ridge only, the last of the sun on it
         if n == 0:
-            layers.append('<path d="M%s" fill="none" stroke="#ff7517" stroke-opacity=".3" stroke-width="1.2"/>' % line)
+            layers.append('<path d="M%s" fill="none" stroke="#ff7517" stroke-opacity=".3" stroke-width="1.2"%s/>' % (line, NS))
     svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d" preserveAspectRatio="none">%s</svg>\n' % (w, h, "".join(layers))
     open(os.path.join(OUT, "ridge.svg"), "w").write(svg)
 

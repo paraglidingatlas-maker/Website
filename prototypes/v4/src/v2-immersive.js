@@ -635,3 +635,23 @@
   }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();
+
+/* 10. THE KENYA CHART'S RELIEF, IN THE PREVIEW. The chart (kenya-map.js) is
+      fetched and placed in the page; its relief picture is named from the
+      live page's folder (../assets/), which misses from the preview's
+      deeper folder. In the preview only, point it at the same file. */
+(function () {
+  "use strict";
+  var m = /^(.*\/)prototypes\/v\d+\//.exec(location.pathname);
+  function init() {
+    var sheet = document.querySelector(".kmap-sheet");
+    if (!m || !sheet || !("MutationObserver" in window)) return;
+    new MutationObserver(function () {
+      sheet.querySelectorAll("image").forEach(function (im) {
+        var h = im.getAttribute("href") || "";
+        if (h.indexOf("../assets/") === 0) im.setAttribute("href", m[1] + h.slice(3));
+      });
+    }).observe(sheet, { childList: true });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+})();

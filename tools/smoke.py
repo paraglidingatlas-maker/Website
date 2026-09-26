@@ -1091,11 +1091,19 @@ def kenya_pinch(browser, base):
             "touchPoints": [{"x": x, "y": y, "id": i} for i, (x, y) in enumerate(pts)]})
 
     touch("touchStart", [(cx - 30, cy), (cx + 30, cy)])
+    pg.wait_for_timeout(60)
     for d in (50, 80, 120, 160):
         touch("touchMove", [(cx - d, cy), (cx + d, cy)])
-        pg.wait_for_timeout(45)
+        pg.wait_for_timeout(90)          # a person's pace: under load 45ms moves outran the frames
     touch("touchEnd", [])
-    pg.wait_for_timeout(400)
+    # wait for the zoom to settle rather than a fixed pause: under load the map's
+    # transform and touch-action land later than 400ms, and the check read 1
+    try:
+        pg.wait_for_function(
+            "()=>{const m=getComputedStyle(document.querySelector('.kmap-view')).transform.match(/matrix\\(([\\d.]+)/);"
+            "return m&&+m[1]>2&&document.querySelector('.kmap-stage').style.touchAction==='none'}", timeout=2500)
+    except Exception:
+        pass
     check(scale() > 2, "pinch", "two fingers zoom the map in", scale())
     check(pg.evaluate("document.querySelector('.kmap-stage').style.touchAction") == "none",
           "pinch", "a zoomed map takes the gesture instead of the page")

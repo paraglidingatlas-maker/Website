@@ -17,7 +17,7 @@ marked done is the next step.
 | 4. Signature moments | done (the menu with step 5, KB figures with step 7) | 5be88a9 | all gates PASS (v4 184 pages 0 FAIL) |
 | 5. Navigation and wayfinding | done | d5546f5 | all gates PASS (v4 184 pages 0 FAIL) |
 | 6. Speed | done | 84258b8 | all gates PASS (v4 184 pages 0 FAIL; switch 0 FAIL after it learnt the deferred image attributes) |
-| 7. The remaining redraws | | | |
+| 7. The remaining redraws | done (poster frame: see notes) | (step 7 commit) | all gates PASS (v4 184 pages 0 FAIL; smoke 0 FAIL on its rerun) |
 | 8. The report | | | |
 
 ## How to build and check v4
@@ -38,6 +38,8 @@ python3 tools/v2_switch.py --site v4 --dry-run
 - **Booking.** "Hold a place" opens the enquiry (still mailto) with the trip
   and the departure's dates filled in. A deposit link per departure and the
   places left would turn it into a booking.
+- **"The poster frame"** (plan, step 7): which drawing is meant? None in the
+  site goes by that name, so it was left as it is.
 
 ## Step 0: setup
 - `prototypes/v4/` is a copy of v2 (same file names inside). Its scripts find
@@ -251,3 +253,45 @@ No page is heavier than its v2 twin; home is under 2.5 MB. How:
 - **The list of pages without a v4 twin** is written into v2.js at build
   time, not fetched.
 - **Drawings**: runs of the same stroke merged into one path.
+
+## Step 7: the remaining redraws
+- **The 57 knowledge base figures, redrawn with the kit.** `tools/v4_kbsvg.py`
+  runs each original figure script (`tools/kbfig/*.py`, `tools/make_kb_*.py`)
+  unchanged, with the kit standing in for matplotlib: the same geometry,
+  labels and numbers (all checked against the pages when they were made), now
+  vector, in the site's type, with the kit's line weights (hairlines that keep
+  their width at any size) and a soft light where the old glow was. Written to
+  `prototypes/v4/img/kb/`. Each figure was compared side by side with its
+  original.
+- **Placed in the pages** by `tools/v4_pass.py`: inline where the drawing is
+  small or carries words (the site's own fonts), a lazy `<img>` where it is
+  large and wordless (one: the Flight Mechanics cutaway). The alt text is kept
+  as the drawing's title, the captions as they were, each page's og:image
+  untouched (the rasters stay in `assets/images/` for v2 and for sharing).
+- **Flight Mechanics opens on the kit's three-view** (step 2), labelled with
+  the page's own words and the one dimension Tom Lolies gives (Ep. 66, ch. 12).
+- **Lighter**: 607 KB of drawings against 1,802 KB of pictures (compressed as
+  served); every knowledge base page weighs less on arrival than in v2
+  (Flight Mechanics -43 KB, Meteorology -49 KB, Storytellers -46 KB).
+- **Maps**: the world maps keep the original's Natural Earth 1:110m country
+  outlines (public domain), with a copy of the land outlines in `tools/data/`
+  as a fallback when the build machine is offline.
+- **The trip dials** (season and vario): finished with the kit's hairlines, an
+  inner ring with the month boundaries and half-step ticks. No new values.
+- **Contours and ridge** (`tools/v2_art.py --site v4`) and the **panel and
+  series icons**: the kit's hairline weights, constant at any size. v2's files
+  are unchanged.
+- **The Kenya chart**: already drawn as a technical sheet, kept. Fixed in the
+  preview: its relief picture and the site photos in its panels were named
+  from the live page's folder and did not load inside `prototypes/`, which
+  showed as a smeared colour layer on the chart (v2 has the same fault; v2 is
+  left as it is). Live and after the switch-over, the paths work.
+- **The smoke test's pinch check** failed twice on this run, on the live
+  Kenya map (unchanged). It failed on the already-pushed step 6 tree as well
+  (2 runs in 6): its first pinch moved every 45 ms, faster than the page's
+  frames under load, so the gesture sometimes never registered. It now moves
+  at a person's pace (90 ms) and waits for the zoom to settle; 0 failures in
+  6 runs. No check was removed or loosened.
+- **Not done: "the poster frame".** The plan names it without saying which
+  drawing it is, and none in the site is called that; listed under Needs the
+  owner.
