@@ -1887,3 +1887,12 @@ html body.v4-lib-log .v2-eps .ep-tile::after{display:block;content:attr(data-s);
 .v2-ic svg{stroke-width:1.5px;}
 .v2-ic-bezel{stroke-width:1px;}
 .series-icon svg{stroke-width:1.5px;}
+
+/* Tap targets at least 44 px on a phone (v2_check's warnings): the next
+   step, the knowledge base's category titles, the sitemap's two buttons. */
+.v4-next-a{min-height:44px;align-items:center;}
+.clb-body h2 a{display:inline-flex;align-items:center;min-height:44px;}
+html .sm-ctrl button{min-width:44px;}
+
+/* the menu's Knowledge Base tile: the kit's three-view, whole, to the right */
+.v4-mg-img.is-drawing{background-color:#141519;background-size:94% auto;background-position:center 12%;background-repeat:no-repeat;filter:none;}

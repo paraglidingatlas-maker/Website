@@ -640,6 +640,10 @@ def main(only):
         tot_raster += rb
         print("%-44s svg %6.1f KB gz   webp %6.1f KB" % (name, gz / 1024, rb / 1024))
     print("v4 kbsvg: svg %.0f KB gz against webp %.0f KB" % (tot_svg / 1024, tot_raster / 1024))
+    if not only:                    # the three-view as a file too: the menu's Knowledge Base picture
+        sys.path.insert(0, os.path.join(ROOT, "tools"))
+        import v4_figs
+        open(os.path.join(OUT, "kb-flight-mechanics.svg"), "w", encoding="utf-8").write(v4_figs.three_view("wide") + "\n")
 
 
 if __name__ == "__main__":

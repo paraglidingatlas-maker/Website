@@ -17,10 +17,11 @@
   var LIVE = m ? BASE.replace(/prototypes\/v\d+\/$/, "") : "/"; // the site's root (the assets)
   // after the switch-over the pages sit at the root and this folder's files under assets/v4/
   var IDX = m ? BASE + "search-index.js" : "/assets/v4/search-index.js";
+  var KB = m ? BASE + "img/kb/" : "/assets/v4/img/kb/";   // the kit's drawings (@kb/ in a picture's path)
   var SECTIONS = [
     ["Expeditions", "index.html#destinations", "assets/destinations/india/hero/snowline.webp", [["India", "destinations/india.html"], ["Kenya", "destinations/kenya.html"]]],
     ["Podcast", "podcast.html", "assets/images/pod-hero-gemona.webp", [["Library", "library.html"], ["Topics", "tags.html"]]],
-    ["Knowledge Base", "knowledge-base.html", "assets/images/kb-flight-mechanics.webp", []],
+    ["Knowledge Base", "knowledge-base.html", "@kb/kb-flight-mechanics.svg", []],
     ["About", "about.html", "assets/images/partners-aninder.webp", [["Mission Statement", "mission.html"], ["Partner With Me", "partners.html"]]]
   ];
   var menu = null, lastFocus = null, idx = null;
@@ -39,7 +40,7 @@
       var cur = d.querySelector('.v4-nav a.is-here');
       var on = cur && cur.textContent.trim() === s[0];
       return '<li class="v4-mg' + (on ? " is-here" : "") + '"><a class="v4-mg-a" href="' + BASE + s[1] + '"' + (on ? ' aria-current="page"' : "") + '>' +
-        '<span class="v4-mg-img" data-bg="' + LIVE + s[2] + '" aria-hidden="true"></span>' +
+        '<span class="v4-mg-img' + (s[2].indexOf("@kb/") === 0 ? " is-drawing" : "") + '" data-bg="' + (s[2].indexOf("@kb/") === 0 ? KB + s[2].slice(4) : LIVE + s[2]) + '" aria-hidden="true"></span>' +
         '<span class="v4-mg-n" aria-hidden="true">0' + (i + 1) + '</span><span class="v4-mg-t">' + s[0] + '</span></a>' +
         (s[3].length ? '<span class="v4-mg-sub">' + s[3].map(function (x) { return '<a href="' + BASE + x[1] + '">' + x[0] + '</a>'; }).join("") + '</span>' : "") +
         '</li>';

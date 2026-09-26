@@ -1363,11 +1363,18 @@ def kenya_gallery(pg, base):
     # off screen entirely, where elementFromPoint returns null and nothing fires.
     pg.evaluate("window.scrollTo(0,document.body.scrollHeight)")
     pg.wait_for_timeout(1200)
-    pg.evaluate("""()=>{const r=document.querySelector('.cfl-stage').getBoundingClientRect();
-      window.scrollTo({top:Math.round(r.top+scrollY-(innerHeight-r.height)/2),behavior:'instant'});}""")
-    pg.wait_for_timeout(1000)
-    mid = pg.evaluate("""()=>{const b=document.querySelector('.cfl-stage').getBoundingClientRect();
-      return {x:Math.round(b.left+b.width/2),y:Math.round(b.top+b.height/2)};}""")
+    # Aim, then confirm the gallery is really under the point before pressing:
+    # lazy photographs above it can finish loading after the scroll and push it
+    # down, which left the press on nothing at random. Re-aim up to five times.
+    for _ in range(5):
+        pg.evaluate("""()=>{const r=document.querySelector('.cfl-stage').getBoundingClientRect();
+          window.scrollTo({top:Math.round(r.top+scrollY-(innerHeight-r.height)/2),behavior:'instant'});}""")
+        pg.wait_for_timeout(1000)
+        mid = pg.evaluate("""()=>{const b=document.querySelector('.cfl-stage').getBoundingClientRect();
+          return {x:Math.round(b.left+b.width/2),y:Math.round(b.top+b.height/2)};}""")
+        if pg.evaluate(f"()=>{{const e=document.elementFromPoint({mid['x']},{mid['y']});"
+                       "return e ? !!e.closest('.cfl-stage') : false;}"):
+            break
     check(pg.evaluate(f"()=>{{const e=document.elementFromPoint({mid['x']},{mid['y']});"
                       "return e ? !!e.closest('.cfl-stage') : false;}"),
           "gallery", "the drag test presses on the gallery itself")

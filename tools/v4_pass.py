@@ -451,6 +451,15 @@ def trip_dials(src):
     return re.sub(r'<svg class="kvario".*?</svg>', vario, src, flags=re.S)
 
 
+def kb_index_art(src):
+    """The knowledge base index paints each category's picture faintly behind it (--art): the kit's drawing
+    in place of the old picture, where one exists."""
+    def swap(m):
+        fp = os.path.join(KBSVG, m.group(2) + ".svg")
+        return "--art:url('img/kb/%s.svg')" % m.group(2) if os.path.exists(fp) else m.group(0)
+    return re.sub(r"--art:url\('([^']*?)assets/images/(kb-[a-z0-9-]+)\.webp'\)", swap, src)
+
+
 def main(args):
     rels = args or sorted(os.path.relpath(os.path.join(d, f), V4).replace(os.sep, "/")
                           for d, _, fs in os.walk(V4) for f in fs if f.endswith(".html"))
@@ -465,6 +474,8 @@ def main(args):
             g = episode_globe(rel, out)
             n["globes"] += g != out
             out = episode_extras(rel, g)
+        if rel == "knowledge-base.html":
+            out = kb_index_art(out)
         if rel.startswith("destinations/"):
             out = trip_dials(trip_paths(out))
         if rel.startswith("tags/"):
