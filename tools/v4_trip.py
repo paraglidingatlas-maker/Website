@@ -41,6 +41,28 @@ TRUST = [
 ]
 
 
+def el(src, open_re, start=0):
+    """(start, end) of the element whose opening tag matches open_re, found by
+    counting its own tag name, so nested <div>s do not cut it short."""
+    m = re.compile(open_re, re.S).search(src, start)
+    if not m:
+        raise SystemExit("no element " + open_re)
+    tag = re.match(r"<(\w+)", m.group(0)).group(1)
+    depth, i = 0, m.start()
+    tok = re.compile(r"<(/?)%s\b[^>]*>" % tag)
+    for t in tok.finditer(src, m.start()):
+        depth += -1 if t.group(1) else 1
+        if depth == 0:
+            return m.start(), t.end()
+    raise SystemExit("unclosed " + open_re)
+
+
+def take(src, open_re):
+    """Remove an element; return (src without it, the element)."""
+    a, b = el(src, open_re)
+    return src[:a] + src[b:], src[a:b]
+
+
 def trust_strip():
     items = "".join('<li><a href="%s"><b>%s</b><span>%s</span></a></li>' % (h, a, b) for a, b, h in TRUST)
     return ('\n<aside class="v4t-trust" aria-label="Booking with us">\n  <ul>%s</ul>\n</aside>\n' % items)
@@ -85,8 +107,31 @@ def head_fold(sec_html, sec_id, extra_cls=""):
     return '%s%s>%s</section>' % (m.group(1), attrs, fold(body, '<span class="v4t-fs-t">%s</span><span class="v4t-fs-mark" aria-hidden="true"></span>' % summary, "v4t-fs"))
 
 
-def india():
-    src = open(os.path.join(SRC, "india.html"), encoding="utf-8").read()
+# Per trip: the two screens the fly-through gains (their words are the page's
+# own figures: the facts row and the instruments), and their photographs.
+TRIPS = {
+    "india": dict(
+        guides=True,
+        more="The whole overview: cloudbase, season, retrieves, traffic",
+        slides=[("ridge-cumulus", "The forested front range under building cumulus"), ("sky-of-wings", "Dozens of paragliders thermalling together under grey cloud")],
+        steps=[("04 &middot; Cloudbase", "3 to 3.6 km on the front range,",
+                [("Launch", "2.4 km"), ("Front range cloudbase", "3-3.6 km"), ("Deep in the back, mid November", "5.8 km")]),
+               ("05 &middot; The season", "October to November.",
+                [("Peak season", "Oct to Nov"), ("Guiding", "1 guide to 3 pilots")])]),
+    "kenya": dict(
+        guides=False,
+        more="The whole overview: thermals, season, the team, retrieves",
+        slides=[("kerio-valley", "Kerio Valley"), ("chyulu-hills", "Chyulu Hills")],
+        steps=[("04 &middot; Thermal strength", "4 to 6 m/s at the midday peaks,",
+                [("Weak, early and late", "1-2 m/s"), ("Strong, midday peaks", "4-6 m/s"), ("Rare surges", "6-7 m/s")]),
+               ("05 &middot; The season", "December to March.",
+                [("Season", "Dec to Mar"), ("Airtime", "2 to 7 hrs / flight"), ("Avg. altitude", "1,500m AGL")])]),
+}
+
+
+def build(trip):
+    cfg = TRIPS[trip]
+    src = open(os.path.join(SRC, trip + ".html"), encoding="utf-8").read()
 
     # ---- hero: the facts in the hero, "Hold a place" first -----------------------
     src = src.replace(
@@ -102,12 +147,11 @@ def india():
     <a href="#route">Routes</a>
     <a href="#gallery">Gallery</a>
     <a href="#dates">Dates</a>
-    <a href="#guides">Guides</a>
-    <a href="#faq">FAQ</a>
+%(guides_link)s    <a href="#faq">FAQ</a>
     <a href="#reality">Before You Book</a>
     <a href="#enquire" class="last">Enquire</a>
   </div>
-</div>''', src, count=1, flags=re.S)
+</div>''' % {"guides_link": '    <a href="#guides">Guides</a>\n' if cfg["guides"] else ""}, src, count=1, flags=re.S)
 
     # ---- the facts row, then the trust strip ------------------------------------
     b, spec, a = cut(src, '<section class="dst-spec">', '</section>')
@@ -130,48 +174,40 @@ def india():
 
     # ---- the fly-through: five screens, the photograph behind -----------------------
     ov = overview
-    lede = re.search(r'\s*<p class="dst-lede">.*?</p>', ov, re.S).group(0)
-    ov = ov.replace(lede, "", 1)
-    kair = re.search(r'\s*<div class="kair">.*?</div>\s*</div>\s*</div>\s*(?=<div class="kov-quiet">)', ov, re.S).group(0)
-    quiet = re.search(r'\s*<div class="kov-quiet">.*?</div>\s*</div>\s*(?=<div class="kov-close">)', ov, re.S).group(0)
-    close = re.search(r'\s*<div class="kov-close">.*?</div>\s*</div>', ov, re.S).group(0)
-    for x in (kair, quiet, close):
-        ov = ov.replace(x, "", 1)
-    # two more screens: cloudbase and the season, from the instruments' own figures
-    slides_add = (
-        '<div class="kfly-slide"><picture><source srcset="../../../assets/destinations/india/gallery/ridge-cumulus.webp" type="image/webp">'
-        '<img src="../../../assets/destinations/india/gallery/ridge-cumulus.jpg" width="1400" height="933" loading="lazy" draggable="false" '
-        'alt="Cumulus building over the ridge"></picture></div>'
-        '<div class="kfly-slide"><picture><source srcset="../../../assets/destinations/india/gallery/sky-of-wings.webp" type="image/webp">'
-        '<img src="../../../assets/destinations/india/gallery/sky-of-wings.jpg" width="1400" height="933" loading="lazy" draggable="false" '
-        'alt="A sky full of wings above the range"></picture></div>')
+    ov, lede = take(ov, r'<p class="dst-lede">')
+    ov, kair = take(ov, r'<div class="kair">')
+    ov, quiet = take(ov, r'<div class="kov-quiet">')
+    ov, close = take(ov, r'<div class="kov-close">')
+    ov, lead = take(ov, r'<p class="kfly-lead">')
+    ov, tail = take(ov, r'<p class="kfly-tail">')
+    # two more screens, from the page's own figures (see TRIPS)
+    slides_add = "".join(
+        '<div class="kfly-slide"><picture><source srcset="../../../assets/destinations/%s/gallery/%s.webp" type="image/webp">'
+        '<img src="../../../assets/destinations/%s/gallery/%s.jpg" width="1400" height="933" loading="lazy" draggable="false" '
+        'alt="%s"></picture></div>' % (trip, img, trip, img, alt) for img, alt in cfg["slides"])
     ov = ov.replace('<div class="kfly-scrim" aria-hidden="true"></div>', slides_add + '\n      <div class="kfly-scrim" aria-hidden="true"></div>', 1)
     ov = ov.replace('<div class="kfly-marks" aria-hidden="true"><i class="is-on"></i><i></i><i></i></div>',
                     '<div class="kfly-marks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>', 1)
-    steps_add = '''
+    steps_add = "".join("""
       <div class="kfly-step">
         <div class="kfly-copy">
-          <span class="kfly-n">04 &middot; Cloudbase</span>
-          <p class="kfly-big">3 to 3.6 km on the front range,</p>
-          <dl class="v4t-read"><div><dt>Launch</dt><dd>2.4 km</dd></div><div><dt>Front range cloudbase</dt><dd>3-3.6 km</dd></div><div><dt>Deep in the back, mid November</dt><dd>5.8 km</dd></div></dl>
+          <span class="kfly-n">%s</span>
+          <p class="kfly-big">%s</p>
+          <dl class="v4t-read">%s</dl>
         </div>
-      </div>
-      <div class="kfly-step">
-        <div class="kfly-copy">
-          <span class="kfly-n">05 &middot; The season</span>
-          <p class="kfly-big">October to November.</p>
-          <dl class="v4t-read"><div><dt>Peak season</dt><dd>Oct to Nov</dd></div><div><dt>Guiding</dt><dd>1 guide to 3 pilots</dd></div></dl>
-        </div>
-      </div>
-    </div>
-  </div>'''
-    ov = re.sub(r'(<p class="kfly-tail">.*?</p>\s*</div>\s*</div>)\s*</div>\s*</div>', lambda m: m.group(1) + steps_add, ov, count=1, flags=re.S)
-    more = fold('<div class="v4t-more-in">' + lede + kair + quiet + close + "</div>",
-                "The whole overview: cloudbase, season, retrieves, traffic", "v4-fold v4t-more")
+      </div>""" % (n, big, "".join("<div><dt>%s</dt><dd>%s</dd></div>" % r for r in reads)) for n, big, reads in cfg["steps"]) + "\n"
+    sa, sb = el(ov, r'<div class="kfly-steps">')
+    ov = ov[:sb - len("</div>")] + steps_add + "    " + ov[sb - len("</div>"):]
+    more = fold('<div class="v4t-more-in">' + lede + lead + tail + kair + quiet + close + "</div>",
+                cfg["more"], "v4-fold v4t-more")
     ov = ov.replace("\n</section>", "\n  " + more + "\n</section>")
     ov = ov.replace('class="dst-sec is-loud kov"', 'class="dst-sec is-loud kov v4t-fly"', 1)
 
     # ---- routes: the drawing and the three lines; each route's paragraph folds -------
+    if '<ul class="iroute-list">' in route:
+        intro = re.search(r'(<h2 id="route-h">.*?</h2>)\s*(<p>.*?</p>)', route, re.S)
+        route = route.replace(intro.group(0), intro.group(1), 1)
+        route = route.replace('<ul class="iroute-list">', fold(intro.group(2), "How the days go", "v4-fold v4t-rintro") + '\n  <ul class="iroute-list">', 1)
     route = re.sub(r'(<span class="iroute-km">.*?</span>)\s*(<p>.*?</p>)',
                    lambda m: m.group(1) + "\n      " + fold(m.group(2), "More", "v4-fold v4t-rfold"), route, flags=re.S)
 
@@ -183,20 +219,37 @@ def india():
     def card(m):
         c = m.group(0)
         when = re.sub(r"<[^>]+>", "", re.search(r'<p class="kdates-when">(.*?)</p>', c, re.S).group(1)).strip()
-        href = "../enquire.html?trip=india&amp;when=" + re.sub(r"\s+", "+", when)
+        href = "../enquire.html?trip=%s&amp;when=%s" % (trip, re.sub(r"\s+", "+", when))
         return re.sub(r'<a href="https://calendar\.app\.google/[^"]*" target="_blank" rel="noopener" class="btn-solid is-outline" data-hover><span>Book a Call</span></a>',
                       '<a href="%s" class="btn-solid" data-hover><span>Hold a place</span></a>' % href, c, count=1)
     dates = re.sub(r'<article class="kdates-card">.*?</article>', card, dates, flags=re.S)
-    dates = dates.replace('<p class="kdates-terms">', '<p class="kdates-terms"><span class="v4t-hold-note">Hold a place sends an enquiry for that departure.</span> ', 1)
+    note = '<span class="v4t-hold-note">Hold a place sends an enquiry for that departure.</span>'
+    if '<p class="kdates-terms">' in dates:
+        dates = dates.replace('<p class="kdates-terms">', '<p class="kdates-terms">' + note + ' ', 1)
+    else:
+        dates = dates.replace("\n</section>", '\n  <p class="kdates-terms">' + note + "</p>\n</section>", 1)
 
     # ---- who guides: out of "what it is like", into the first read -----------------
-    guides = re.search(r'\s*<div class="kguides" aria-labelledby="guides-h">.*?<p class="kguides-note">.*?</p>\s*</div>', reality, re.S).group(0)
-    reality = reality.replace(guides, "", 1)
-    g = guides.strip()
-    g = re.sub(r'(<span class="kguide-role">.*?</span>)\s*(<p>.*?</p>)', lambda m: m.group(1) + "\n        " + fold(m.group(2), "About", "v4-fold v4t-gfold"), g, flags=re.S)
-    guides_sec = ('<section class="dst-sec v4t-guides" id="guides">\n  ' + g +
-                  '\n  <div class="v4t-proof"><span class="kicker">From past pilots</span>'
-                  '<p><i class="v2-tbd">[to supply]</i></p></div>\n</section>')
+    proof = ('\n  <div class="v4t-proof"><span class="kicker">From past pilots</span>'
+             '<p><i class="v2-tbd">[to supply]</i></p></div>')
+    gm = re.search(r'\s*<div class="kguides" aria-labelledby="guides-h">.*?<p class="kguides-note">.*?</p>\s*</div>', reality, re.S)
+    if gm:
+        reality = reality.replace(gm.group(0), "", 1)
+        g = re.sub(r'(<span class="kguide-role">.*?</span>)\s*(<p>.*?</p>)', lambda m: m.group(1) + "\n        " + fold(m.group(2), "About", "v4-fold v4t-gfold"), gm.group(0).strip(), flags=re.S)
+        guides_sec = '<section class="dst-sec v4t-guides" id="guides">\n  ' + g + proof + '\n</section>'
+    else:
+        guides_sec = ""
+        dates = dates.replace("\n</section>", proof + "\n</section>", 1)
+
+    # ---- questions: five in view, five more a click away; the note folds ------------
+    items = re.findall(r'\s*<details class="kfaq-item[^"]*">.*?</details>', faq, re.S)
+    for it in items[5:]:
+        faq = faq.replace(it, "", 1)
+    if len(items) > 5:
+        more_q = "One more question" if len(items) == 6 else "%s more questions" % ("Two Three Four Five Six Seven".split()[len(items) - 7])
+        faq = faq.replace(items[4], items[4] + '\n      <details class="v4-fold v4t-faqmore"><summary>%s</summary>' % more_q + "".join(items[5:]) + "\n      </details>", 1)
+    note = re.search(r'<p class="kfaq-note">.*?</p>', faq, re.S).group(0)
+    faq = faq.replace(note, fold(note, "About these questions", "v4-fold v4t-fnote"), 1)
 
     # ---- what it is like: the head and the one line stay; the rest folds -------------
     rm = re.match(r'(<section\b[^>]*>)(.*)</section>$', reality, re.S)
@@ -260,8 +313,8 @@ def add_script(src):
 
 def main(args):
     os.makedirs(OUT, exist_ok=True)
-    for trip in args or ["india"]:
-        page = {"india": india}[trip]()
+    for trip in args or ["india", "kenya"]:
+        page = build(trip)
         open(os.path.join(OUT, trip + ".html"), "w", encoding="utf-8").write(page)
         print("v4 trip:", trip)
 

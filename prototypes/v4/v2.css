@@ -1355,3 +1355,112 @@ html body[data-v2="kb"] .k-more[open]{margin-bottom:var(--sp-3);}
   .v4-expect-item > p{padding:0 0 var(--sp-2) calc(42px + .9rem);}
 }
 .v2-wwu .v4-fold p{font-size:var(--fs-body-s);}
+
+/* ===========================================================================
+   TRIP PAGES, v4 (tools/v4_trip.py, <body class="dst v2-dst v4-trip">)
+   The fly-through style: one screen per idea with the photograph behind it,
+   facts instead of paragraphs. Every word of the v2 page is still here; what
+   the first read does not need is folded (<details>). The trip's signature
+   moment is the fly-through; everything around it is quiet.
+   ========================================================================= */
+
+/* ---- the facts row, under the hero: no box, the kit's facts ---- */
+html .v4-trip .v4t-spec{background:none;border:0;padding:var(--sp-4) max(var(--gutter), calc((100% - var(--measure)) / 2)) var(--sp-3);}
+html .v4-trip .v4t-spec .dst-spec-grid{gap:var(--sp-3) var(--sp-4);}
+html .v4-trip .v4t-spec .dst-spec-item .l{color:var(--orange);font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;}
+html .v4-trip .v4t-spec .dst-spec-item .v{font-size:var(--fs-body);margin-top:.3rem;}
+
+/* ---- the trust strip: four facts from the terms, each a link to its source ---- */
+.v4t-trust{padding:0 max(var(--gutter), calc((100% - var(--measure)) / 2)) var(--sp-4);}
+.v4t-trust ul{list-style:none;margin:0;padding:var(--sp-2) 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;
+  border-top:1px solid;border-image:linear-gradient(90deg,var(--edge-hi),var(--line) 60%,transparent) 1;}
+.v4t-trust li + li{border-left:1px solid var(--line);}
+.v4t-trust a{display:flex;flex-direction:column;justify-content:center;gap:.2rem;min-height:44px;padding:.3rem var(--sp-3) .3rem 0;text-decoration:none;}
+.v4t-trust li + li a{padding-left:var(--sp-3);}
+.v4t-trust b{position:relative;padding-left:1.1rem;font-family:var(--font-body);font-weight:600;font-size:var(--fs-small);color:var(--white);letter-spacing:.01em;}
+.v4t-trust b::before{content:"";position:absolute;left:0;top:.28em;width:.55rem;height:.3rem;border-left:1.5px solid var(--orange);border-bottom:1.5px solid var(--orange);rotate:-45deg;}
+.v4t-trust span{padding-left:1.1rem;font-size:var(--fs-micro);color:var(--gray);letter-spacing:.02em;}
+.v4t-trust a:hover b{color:var(--orange);}
+@media (max-width:820px){
+  .v4t-trust ul{grid-template-columns:1fr 1fr;row-gap:var(--sp-1);}
+  .v4t-trust li:nth-child(3){border-left:0;}
+  .v4t-trust li:nth-child(3) a{padding-left:0;}
+}
+
+/* ---- the fly-through: full screen, the facts over the photograph ---- */
+html .v4-trip .v4t-fly .kov-open{margin-bottom:var(--sp-4);}
+html .v4-trip .kfly-step{padding-bottom:clamp(4rem,12vh,8rem);}
+html .v4-trip .kfly-big{font-size:clamp(2rem,5vw,4rem);line-height:1.04;letter-spacing:-.02em;text-wrap:balance;}
+html .v4-trip .kfly-lead{max-width:34rem;}
+.v4t-read{display:flex;flex-wrap:wrap;gap:var(--sp-2) var(--sp-4);margin:var(--sp-3) 0 0;padding:var(--sp-2) 0 0;border-top:1px solid rgba(246,244,244,.22);}
+.v4t-read dt{font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-lite);
+  text-shadow:0 1px 2px rgba(0,0,0,.6);}
+.v4t-read dd{margin:.2rem 0 0;font-family:var(--font-display);font-weight:600;font-size:clamp(1.1rem,2vw,1.5rem);color:var(--white);
+  font-variant-numeric:tabular-nums;}
+html .v4-trip .kfly-marks{display:flex;gap:6px;}
+
+/* ---- "the whole overview" and the other long folds: a full-width bar ---- */
+.v4t-more{margin:var(--sp-5) auto 0;}
+.v4t-more > summary{display:flex;width:100%;justify-content:space-between;padding:var(--sp-2) 0;min-height:52px;
+  border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);color:var(--white);font-size:var(--fs-small);}
+.v4t-more > summary:hover{border-color:var(--orange);}
+.v4t-more-in{padding-top:var(--sp-4);}
+.v4t-more-in > .dst-lede{max-width:62ch;margin-bottom:var(--sp-4);}
+.v4-fold.v4t-more > :not(summary){max-width:none;}
+
+/* ---- routes: the drawing, the three lines, each opening ---- */
+.v4t-rfold,.v4t-gfold{margin-top:.4rem;}
+.v4t-rfold > summary,.v4t-gfold > summary{min-height:44px;}
+
+/* ---- departures ---- */
+.v4t-hold-note{display:block;color:var(--gray-light);margin-bottom:.4rem;}
+
+/* ---- guides, and the proof that waits for the owner ---- */
+html .v4-trip .v4t-guides .kguides{margin:0;}
+.v4t-proof{margin-top:var(--sp-4);padding-top:var(--sp-3);border-top:1px solid var(--line);display:flex;gap:var(--sp-3);align-items:baseline;flex-wrap:wrap;}
+.v4t-proof .kicker{font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);}
+.v4t-proof p{margin:0;}
+
+/* ---- the reference sections: titled folds ---- */
+.v4t-ref{padding-bottom:var(--sp-4);}
+html .v4-trip .v4t-foldsec{padding-top:0;padding-bottom:0;border-top:0;}
+.v4t-fs{border-bottom:1px solid var(--line);}
+.v4t-ref > .v4t-foldsec:first-child .v4t-fs{border-top:1px solid var(--line);}
+.v4t-fs > summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:var(--sp-3);
+  padding:var(--sp-3) 0;min-height:56px;}
+.v4t-fs > summary::-webkit-details-marker{display:none;}
+.v4t-fs-t{display:flex;flex-direction:column;gap:.35rem;}
+html .v4-trip .v4t-fs-t .kicker{display:block;font-family:var(--font-body);font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);}
+html .v4-trip .v4t-fs-t h2{margin:0;font-size:var(--fs-h3);line-height:1.2;transition:color .2s ease;}
+.v4t-fs > summary:hover h2{color:var(--orange);}
+.v4t-fs-mark{flex:none;width:2.6rem;height:2.6rem;border:1px solid var(--edge-hi);position:relative;transition:border-color .2s ease,background .2s ease;}
+.v4t-fs-mark::before,.v4t-fs-mark::after{content:"";position:absolute;left:50%;top:50%;width:.8rem;height:1.5px;background:var(--white);translate:-50% -50%;transition:rotate .25s ease;}
+.v4t-fs-mark::after{rotate:90deg;}
+.v4t-fs[open] .v4t-fs-mark::after{rotate:0deg;}
+.v4t-fs > summary:hover .v4t-fs-mark{border-color:var(--orange);}
+.v4t-fs > :not(summary){padding-bottom:var(--sp-5);}
+
+/* the call: its pitch folds, like the homepage's */
+html .v4-trip .cta-band .v4t-cfold{margin-top:var(--sp-3);}
+
+@media (prefers-reduced-motion:reduce){
+  .v4t-fs-mark::before,.v4t-fs-mark::after{transition:none;}
+}
+@media (max-width:820px){
+  /* the words of each screen clear the phone's booking bar */
+  html .v4-trip .kfly-step{padding-bottom:calc(6.5rem + env(safe-area-inset-bottom,0px));}
+  html .v4-trip .kfly-big{font-size:clamp(1.9rem,8.4vw,2.6rem);}
+  html .v4-trip .kfly-copy{text-shadow:0 1px 18px rgba(0,0,0,.45);}
+}
+/* JavaScript off: every screen of the fly-through is readable */
+@media (scripting: none){
+  html .v4-trip .kfly-copy{opacity:1;transform:none;}
+}
+@media (prefers-reduced-motion: reduce){
+  html .v4-trip .kfly-copy{opacity:1;transform:none;}
+}
+@media (max-width:820px){
+  .v4t-read{gap:.5rem 1.1rem;margin-top:var(--sp-2);}
+  .v4t-read dt{font-size:.62rem;letter-spacing:.1em;}
+  .v4t-read dd{font-size:1.05rem;}
+}

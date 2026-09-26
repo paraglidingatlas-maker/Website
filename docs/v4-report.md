@@ -12,8 +12,8 @@ marked done is the next step.
 |---|---|---|---|
 | 0. Setup: v4 copy, `--site`, v2 byte-identical | done | c649f29 | v4 check 182 pages 0 FAIL; switch v4 180 pages 0 FAIL; audit 0 FAIL; smoke 172 / 0 FAIL; v2 rerun byte-identical |
 | 1. Basics: the grammar | done | b0310c7 | all gates PASS (v4 182 pages 0 FAIL, switch 0 FAIL, smoke 0 FAIL, v2 untouched) |
-| 2. Drawing kit and the three-view | done (redraws go ahead: step 7) | (step 2 commit) | all gates PASS (v4 183 pages 0 FAIL) |
-| 3. India, then Kenya | | | |
+| 2. Drawing kit and the three-view | done (redraws go ahead: step 7) | 63d6a5e | all gates PASS (v4 183 pages 0 FAIL) |
+| 3. India, then Kenya | done | (step 3 commit) | all gates PASS (v4 183 pages 0 FAIL, parity kept on both trips) |
 | 4. Signature moments | | | |
 | 5. Navigation and wayfinding | | | |
 | 6. Speed | | | |
@@ -32,6 +32,12 @@ python3 tools/v2_switch.py --site v4 --dry-run
 
 ## Needs the owner
 (collected as the run goes; nothing here blocks the build)
+- **Proof from past clients.** The site has no quotes from trip clients (its
+  testimonials are podcast listeners), so both trip pages show "From past
+  pilots [to supply]". Send quotes and photos with permission.
+- **Booking.** "Hold a place" opens the enquiry (still mailto) with the trip
+  and the departure's dates filled in. A deposit link per departure and the
+  places left would turn it into a booking.
 
 ## Step 0: setup
 - `prototypes/v4/` is a copy of v2 (same file names inside). Its scripts find
@@ -108,3 +114,41 @@ python3 tools/v2_switch.py --site v4 --dry-run
   (vector and sharp at any size, legible on a phone, true labels, the site's
   type), so the remaining figures are redrawn in step 7; the originals stay in
   v2.
+
+## Step 3: India, then Kenya
+`tools/v4_trip.py` builds both from the v2 pages (read only). The same
+components as before, reordered, folded and restyled, so nothing a page
+script needs was rewritten.
+
+| | India | Kenya |
+|---|---|---|
+| Words, v2 page (body) | 4,214 | 3,353 |
+| Visible on first read, v2 | 2,734 | 2,179 |
+| Visible on first read, v4 | **784** | **659** |
+| Body words kept (parity) | 100%+ | 100%+ |
+
+- **The fly-through is the trip's moment**: five full screens, the
+  photograph behind, one idea each (India: the launch, the front range, the
+  way home, cloudbase, the season; Kenya: the launch, the thermals, the
+  horizon, thermal strength, the season). The two new screens use only the
+  page's own figures (India 2.4 / 3-3.6 / 5.8 km, Oct to Nov, 1 guide to 3
+  pilots; Kenya 1-2 / 4-6 / 6-7 m/s, Dec to Mar, 2 to 7 hrs per flight,
+  1,500m AGL) and photographs the site already has, with the site's own alt
+  text.
+- **Facts, then a trust strip** under the hero: registered in Norway
+  (organisasjonsnummer 937116934), package travel rights under Norwegian and
+  EU law, refunds within 14 days where due, and the participant agreement's
+  "not a waiver of our responsibility to you", each a link to the terms or
+  the agreement.
+- **"Hold a place"** in the hero, on each departure and in the phone bar;
+  it opens `enquire.html?trip=...&when=...` with the trip and dates chosen
+  (the v4 enquiry page now reads `when`). Still mailto.
+- **Folded, word for word** (`<details>`): the long overview (lede,
+  instruments, retrieves, traffic, the sign-off), each route's paragraph,
+  the guides' biographies, five of India's ten questions (one of Kenya's
+  six), how a day runs and who the trip is for, the travel essentials, the
+  packing list, the etiquette, the call's pitch. A link to an anchor inside
+  a fold opens it (`#packing`, `#faq`...). Every id other pages link to is
+  kept (`#dates`, `#route`, and every section id).
+- JavaScript off: every screen readable (`@media (scripting: none)`);
+  reduced motion: every screen shown, still.

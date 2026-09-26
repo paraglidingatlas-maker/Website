@@ -40,7 +40,7 @@
 <link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../styles.css?v=c8d28696">
-<link rel="stylesheet" href="v2.css?v=bc5bad04">
+<link rel="stylesheet" href="v2.css?v=0e7ed189">
 <style>
 /* Enquiry page. Tokens and chrome come from styles.css.
    The form deliberately has no backend and no third party form service: it
@@ -391,8 +391,11 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
    trip already chosen. Matched on the start of the option's text, so
    "india" finds "India (Bir Billing)". Anything unknown is ignored. */
 (function () {
-  var sel = document.getElementById('trip'), want;
-  try { want = new URLSearchParams(location.search).get('trip'); } catch (e) {}
+  var sel = document.getElementById('trip'), want, when;
+  try { var q = new URLSearchParams(location.search); want = q.get('trip'); when = q.get('when'); } catch (e) {}
+  /* v4: "Hold a place" on a departure also brings its dates */
+  var w = document.getElementById('when');
+  if (w && when && !w.value) w.value = when.slice(0, 80);
   if (!sel || !want) return;
   want = want.toLowerCase();
   for (var i = 0; i < sel.options.length; i++) {

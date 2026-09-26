@@ -88,7 +88,7 @@ def main():
                     if y >= h:
                         break
                     pg.evaluate("y => window.scrollTo(0, y)", y)
-                    pg.wait_for_timeout(700)
+                    pg.wait_for_timeout(1300)
                     fn = os.path.join(a.out, "%s-%02d.%s" % (stem, i, ext))
                     pg.screenshot(path=fn, **({"type": "jpeg", "quality": 78} if a.jpg else {}))
                     shot_files.append(fn)
