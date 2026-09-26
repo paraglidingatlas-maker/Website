@@ -1002,3 +1002,4 @@ img.v2-img-in{transition:opacity .7s ease,filter .9s ease;}
 .ep2-lw{font-style:normal;}
 @media (max-width:560px){ .ep2-lw{display:none;} .ep2-listen .cd-lbtn{font-size:.84rem;} }
 .ep2-hero.is-text{grid-template-columns:minmax(0,1fr);}
+.ep2-hero.is-text .ep2-h1{max-width:24ch;}

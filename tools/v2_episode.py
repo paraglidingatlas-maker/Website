@@ -62,6 +62,9 @@ def split_title(title, guest):
     main, sub = (t[:m.start()], t[m.end():]) if m else (t, "")
     if main.strip().lower() in ("snippet", "trailer", "teaser", "bonus", "short") and sub:
         main, sub = sub, ""
+    # "A Talk with Zsolt Ero" under "with Zsolt Ero" says nothing new
+    if guest and re.fullmatch(r"(?:an?\s+)?(?:talk|conversation|chat|interview)?\s*(?:with|ft\.?|feat\.?)?\s*" + re.escape(guest) + r"[.!]?", sub.strip(), re.I):
+        sub = ""
     if guest:
         main = re.sub(r"\s+(?:with|ft\.?|feat\.?)\s+" + re.escape(guest) + r"\s*$", "", main, flags=re.I)
     return main.strip(" :|"), sub.strip(" :|")
@@ -146,33 +149,35 @@ def build(slug, meta):
     head_re = re.compile(r'(<p class="cd-epno">)(.*?)(</p>)\s*<div class="cd-headgrid">.*?</header>', re.S)
     submeta = re.search(r'<div class="cd-submeta">.*?</div>', src, re.S).group(0)
     hero = (r'\1\2%s\3' % ((" &middot; " + e(series)) if series else "")
-            + '\n    <div class="ep2-hero%s">' % ("" if img and kind != "is-art" else " is-text")
+            + '\n    <div class="ep2-hero%s">' % ("" if img and kind == "is-portrait" else " is-text")
             + '\n      <div class="ep2-hero-copy">'
             + ('\n        <p class="ep2-with">with <strong>%s</strong></p>' % e(guest) if guest else "")
             + '\n        <h1><span class="ep2-h1">%s</span>%s</h1>' % (e(main_t), ' <span class="ep2-sub">%s</span>' % e(sub_t) if sub_t else "")
             + "\n        " + submeta.replace("\\", "\\\\")
             + re.sub(r"<span>(Watch on|Listen on) ", r'<span><i class="ep2-lw">\1 </i>', listen.replace("\\", "\\\\")).replace('class="cd-listen"', 'class="cd-listen ep2-listen"')
             + "\n      </div>"
-            # the artwork already fills an audio episode's player; only a face earns the hero
-            + ('\n      <figure class="ep2-portrait %s">%s</figure>' % (kind, pic(img, webp, guest or main_t, lazy=False).replace("\\", "\\\\")) if img and kind != "is-art" else "")
+            # the player already shows the artwork or the video still; only a face earns the hero
+            + ('\n      <figure class="ep2-portrait %s">%s</figure>' % (kind, pic(img, webp, guest or main_t, lazy=False).replace("\\", "\\\\")) if img and kind == "is-portrait" else "")
             + "\n    </div>\n  </header>")
     src = head_re.sub(hero, src, count=1)
 
     # ---- stage: player, timeline, quote, guest card ----
     timeline = ""
-    chs = ep.get("chapters") or []
     total = None
     dm = re.match(r"(\d+)\s*min", ep.get("duration_label", ""))
     if dm:
         total = int(dm.group(1)) * 60
-    rail_n = len(re.findall(r'class="cd-chap', src))
-    if not is_audio and total and len(chs) > 1 and rail_n == len(chs):
+    # the page's own chapter rail (it is what the transcript blocks follow)
+    rail = re.findall(r'<a class="cd-chap[^"]*" href="#c(\d+)">(.*?)<time>([^<]+)</time></a>', src)
+    if not is_audio and total and len(rail) > 1:
         ticks = []
-        for k, c in enumerate(chs):
-            a = secs(c["at"])
-            b = secs(chs[k + 1]["at"]) if k + 1 < len(chs) else total
-            ticks.append('<a class="ep2-tick" href="#c%d" data-c="%d" style="--a:%.3f;--w:%.3f"><span class="ep2-tick-t">%s</span><time>%s</time></a>'
-                         % (k + 1, k + 1, 100 * a / total, 100 * max(b - a, 1) / total, e(c["title"]), e(c["at"].lstrip("0:") or "0:00")))
+        for k, (n, title, at) in enumerate(rail):
+            a = secs(at)
+            b = secs(rail[k + 1][2]) if k + 1 < len(rail) else total
+            if a >= total:
+                continue
+            ticks.append('<a class="ep2-tick" href="#c%s" data-c="%s" style="--a:%.3f;--w:%.3f"><span class="ep2-tick-t">%s</span><time>%s</time></a>'
+                         % (n, n, 100 * a / total, 100 * max(min(b, total) - a, 1) / total, title, e(at)))
         timeline = ('\n        <nav class="ep2-timeline" aria-label="Chapters on a timeline"><div class="ep2-track">%s</div></nav>' % "".join(ticks))
 
     others = [o for o in meta.values() if guest and o.get("guest") == guest and o["slug"] != slug and o["_listed"]]
