@@ -3,6 +3,9 @@
 Read this first in a new session. It picks up the v2 redesign exactly where the
 previous session stopped.
 
+**v4 (from 27 Sep):** the next round of work happens in `prototypes/v4/`, a
+copy of v2, so v2 stays untouched. The brief is `docs/v4-plan.md`.
+
 ## Where things are
 
 - **v2 prototype**: `prototypes/v2/` (hidden, noindex, never linked from live).
@@ -12,7 +15,7 @@ previous session stopped.
 - `prototypes/v3/` holds the abandoned direction experiments (A/B/C/D). The owner
   chose to stay with v2 and borrow D's booking pieces into it. Ignore v3.
 - Branches: work on `claude/v2-prototype`; push to main with
-  `git push origin HEAD:main` (allowed by `.claude/settings.local.json`) and also
+  `git push origin HEAD:main` (pre-approved in `.claude/settings.json`) and also
   `git push -q origin HEAD:claude/v2-prototype`.
 
 ## Tools (all under `tools/`)
