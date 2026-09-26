@@ -174,12 +174,12 @@ a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
 .kit-feature h3.kit-title{font-size:var(--fs-h3);}
 .v2-title-link{color:inherit;text-decoration:none;transition:color .2s ease;}
 .v2-title-link:hover{color:var(--orange);}
-.v2-fly{padding-left:0;padding-right:0;}
+.v2-fly{padding-left:0;padding-right:0;padding-top:0;}
 .v2-fly > .kit-in{padding:0 var(--gutter);}
 /* the four expeditions, flown through: one picture held on screen while each
    trip's details pass over it; the step in the middle of the screen picks the
    picture (v2-home.js). Without the script every step shows, over India. */
-.v2-flyby{position:relative;overflow:clip;isolation:isolate;margin-top:var(--sp-4);}
+.v2-flyby{position:relative;overflow:clip;isolation:isolate;}
 .v2-fb-stage{position:sticky;top:0;height:100vh;height:100svh;margin-bottom:-100vh;margin-bottom:-100svh;overflow:hidden;}
 .v2-fb-shot{position:absolute;inset:0;opacity:0;transition:opacity 1s;}
 .v2-fb-shot.is-on{opacity:1;}
@@ -187,8 +187,9 @@ a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
 .v2-fb-shot img{scale:1.08;transition:scale 6s linear;}
 .v2-fb-shot.is-on img{scale:1;}
 .v2-fb-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,21,25,.9) 0%,rgba(20,21,25,.6) 45%,rgba(20,21,25,.15) 100%),
-  linear-gradient(180deg,var(--bg) 0%,rgba(20,21,25,0) 14%,rgba(20,21,25,0) 86%,var(--bg) 100%);}
-.v2-fb-alt{position:sticky;top:50vh;z-index:2;float:right;margin:0 var(--gutter) 0 0;padding:0;list-style:none;translate:0 -50%;display:grid;gap:1.1rem;}
+  linear-gradient(180deg,var(--bg) 0%,rgba(20,21,25,0) 8%,rgba(20,21,25,0) 86%,var(--bg) 100%);}
+.v2-fb-alt{position:absolute;top:50%;right:var(--gutter);z-index:2;margin:0;padding:0;list-style:none;translate:0 -50%;display:grid;gap:1.1rem;transition:opacity .5s;}
+.v2-flyby.at-intro .v2-fb-alt{opacity:0;}
 .v2-fb-alt li{display:flex;align-items:center;justify-content:flex-end;gap:.7rem;color:var(--gray-light);font-size:var(--fs-small);transition:color .4s;}
 .v2-fb-alt li i{display:block;width:18px;height:1px;background:var(--edge-hi);transition:width .5s var(--ease-out),background .4s;}
 .v2-fb-alt li.is-on{color:var(--white);}
@@ -199,6 +200,9 @@ a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
 .v2-fb-copy{max-width:760px;text-shadow:0 1px 12px rgba(20,21,25,.6);}
 .v2-flyby.is-live .v2-fb-copy{opacity:.2;translate:0 30px;transition:opacity .6s,translate .8s var(--ease-out);}
 .v2-flyby.is-live .v2-fb-step.is-on .v2-fb-copy{opacity:1;translate:0 0;}
+/* the opening frame: the section's own heading over the first picture */
+.v2-fb-intro{min-height:80vh;min-height:80svh;}
+.v2-fb-intro .kit-title{font-size:var(--fs-display);margin:.5rem 0 0;}
 .v2-fb-title{font-family:var(--font-display);font-weight:700;color:var(--white);font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.1;margin:.5rem 0 1.4rem;text-wrap:balance;}
 .v2-fb-facts{display:flex;flex-wrap:wrap;gap:1rem clamp(1.4rem,3vw,2.6rem);margin:0 0 1.4rem;padding:1rem 0;border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);}
 .v2-fb-facts div{display:grid;gap:.3rem;}

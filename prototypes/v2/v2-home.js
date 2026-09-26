@@ -52,14 +52,15 @@
   if (!box || !('IntersectionObserver' in window)) return;
   var shots = box.querySelectorAll('.v2-fb-shot'), alts = box.querySelectorAll('.v2-fb-alt li'),
       steps = [].slice.call(box.querySelectorAll('.v2-fb-step'));
+  // the first step is the section's heading: it keeps the first picture and no name lit
   function show(i) {
-    [shots, alts, steps].forEach(function (list) {
-      [].forEach.call(list, function (el, k) { el.classList.toggle('is-on', k === i); });
-    });
+    var on = function (list, n) { [].forEach.call(list, function (el, k) { el.classList.toggle('is-on', k === n); }); };
+    on(steps, i); on(shots, Math.max(0, i - 1)); on(alts, i - 1);
+    box.classList.toggle('at-intro', i === 0);
   }
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (en) { if (en.isIntersecting) show(steps.indexOf(en.target)); });
   }, { rootMargin: '-45% 0px -45% 0px' });
   steps.forEach(function (s) { io.observe(s); });
-  box.classList.add('is-live');
+  box.classList.add('is-live', 'at-intro');
 })();

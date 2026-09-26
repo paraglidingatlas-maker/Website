@@ -70,7 +70,9 @@ Preview: any static server at the repo root (the old one was
 0. Done: the owner picked the fly-through (option 2 on
    `prototypes/v2/fly-options.html`). It is now the v2 homepage's expedition
    block (`.v2-flyby` in index.html, v2.css, v2-home.js), replacing the India
-   and Kenya features and the Coming 2027 cards. Text kept short on purpose.
+   and Kenya features and the Coming 2027 cards. Its first frame is the section
+   heading ("See where we fly") over the India picture; the old intro line was
+   dropped. Text kept short on purpose.
 
 1. Owner to review the three v2 episode samples, then roll the design out to
    all episodes (`tools/v2_episode.py` over every slug, then fold it into
