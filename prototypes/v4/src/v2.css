@@ -1636,7 +1636,9 @@ html .v4-lib-log .v2-eps .ep-tile:is(:hover,:focus-visible){background:linear-gr
   .v4-lib-log .ep-tile .ep-tile-body,.v4-lib-log .ep-log-guest{grid-column:3;}
   .v4-lib-log .ep-tile .ep-stamp i{grid-column:4;}
   .v4-lib-log .ep-log-date{grid-column:3;grid-row:3;font-size:var(--fs-micro);}
-  .v4-lib-log .ep-log-series,.v4-lib-log .ep-tile .ep-foot{display:none;}
+  /* html + .v2-eps: v2's own .ep-foot rule is stronger, and a visible foot pinned to column 7 made empty
+     columns that squeezed the title to 74px on a phone */
+  html .v4-lib-log .v2-eps .ep-log-series,html .v4-lib-log .v2-eps .ep-tile .ep-foot{display:none;}
 }
 @media (max-width:560px){
   .v4-lib-log .ep-log-head{display:none;}

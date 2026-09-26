@@ -1,0 +1,69 @@
+# DRAFT, NOT ACTIVE. The v4 switch-over as a deploy step.
+#
+# To switch the live site to v4 (owner's go only, see docs/v4-report.md):
+#   1. copy this file to .github/workflows/deploy.yml
+#   2. GitHub repo Settings > Pages > Build and deployment > Source: "GitHub Actions"
+#   3. push to main; this workflow builds and publishes the switched site
+# To roll back: set the Pages source back to "Deploy from a branch" (main, /),
+# which publishes the repo exactly as before, and delete deploy.yml.
+#
+# The same shape as docs/v2-deploy-workflow.yml, with --site v4 and v4's own
+# steps between v2_twin and v2_localize. Checked on 26 Sep 2026: this sequence,
+# run from scratch on a clean checkout, rebuilds all 184 v4 pages byte for byte.
+# The knowledge base drawings (prototypes/v4/img/kb/) are committed; they are
+# redrawn with tools/v4_kbsvg.py only when a figure script changes (it needs
+# numpy, matplotlib, contourpy and pyshp), so this workflow does not run it.
+name: Deploy site (v4)
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install fonttools brotli pillow
+      - name: Live build (generators, sitemap, schema)
+        run: ./build.sh
+      - name: Rebuild the v4 pages from the fresh output
+        run: |
+          python3 tools/v2_episode.py --site v4 --all
+          python3 tools/v2_twin.py --site v4
+          python3 tools/v2_library_cards.py --site v4
+          python3 tools/v4_library.py
+          python3 tools/v4_trip.py
+          python3 tools/v4_pass.py
+          python3 tools/v4_search.py
+          python3 tools/v4_min.py
+          python3 tools/v2_localize.py --site v4
+          python3 tools/version_assets.py
+      - name: Gates
+        run: |
+          python3 tools/audit.py --drift
+          python3 tools/v2_check.py --site v4 --static
+          python3 tools/v2_switch.py --site v4 --dry-run
+      - name: Switch into _site
+        run: python3 tools/v2_switch.py --site v4 --apply --out _site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -318,7 +318,7 @@ No page is heavier than its v2 twin; home is under 2.5 MB. How:
   untouched (the rasters stay in `assets/images/` for v2 and for sharing).
 - **Flight Mechanics opens on the kit's three-view** (step 2), labelled with
   the page's own words and the one dimension Tom Lolies gives (Ep. 66, ch. 12).
-- **Lighter**: 607 KB of drawings against 1,802 KB of pictures (compressed as
+- **Lighter**: 245 KB of drawings against 1,802 KB of pictures (compressed as
   served); every knowledge base page weighs less on arrival than in v2
   (Flight Mechanics -43 KB, Meteorology -49 KB, Storytellers -46 KB).
 - **Maps**: the world maps keep the original's Natural Earth 1:110m country
@@ -382,3 +382,30 @@ Chromium was the only browser here. Worth a look in Safari:
 - the episode Play / Next bar and the trips' Hold a place bar above Safari's
   toolbar;
 - pinch on the Kenya map, and the chart's relief.
+
+## Follow-up (after step 8)
+Five things done without the owner, each through the gates:
+- **Tap targets.** The v4 check's warnings were almost all "tap targets under
+  40px" on a phone. Fixed where v4 made them: the next step at the end of
+  each page, the knowledge base's category titles, the sitemap's two
+  buttons. The rest (about 78) are the chapter ticks on episode timelines,
+  exactly as in v2: a ten-chapter timeline cannot give each tick 40px on a
+  phone, and every chapter is also a full-size link below it. Kept.
+- **The last old pictures.** The knowledge base index paints each category
+  with the kit's drawing, and the menu's Knowledge Base tile shows the
+  three-view (`img/kb/kb-flight-mechanics.svg`).
+- **The gallery drag check** (smoke) re-aims until the gallery is under the
+  pointer before pressing: photographs above it loading late had pushed it
+  away at random. 0 failures in 6 runs. Nothing loosened.
+- **`docs/v4-deploy-workflow.yml`**, a draft, not active: the v2 draft with
+  `--site v4` and v4's steps. Checked: the sequence rebuilds all 184 v4 pages
+  byte for byte on a clean checkout, and the switch writes 180 pages with
+  everything they load in `assets/v4/`. The readable sources (`src/`) are
+  now kept out of the published site.
+- **Every page type walked** screen by screen at 390 (touch) and 1440: home,
+  podcast, library, about, mission, partners, enquire, sitemap, terms,
+  topics, a topic, a knowledge base page, an episode with and without a
+  globe. No sideways overflow, no script errors. One fault found and fixed:
+  in the library's flight log on a phone, v2's stronger rule kept the
+  chapter count showing, which squeezed the title to 74px and printed the
+  episode number over its length.

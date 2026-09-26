@@ -74,8 +74,10 @@ def v2_assets():
     out = []
     for d, _, fs in os.walk(V2):
         for f in fs:
-            if V2_FILE.search(f):
-                out.append(os.path.relpath(os.path.join(d, f), V2).replace(os.sep, "/"))
+            rel = os.path.relpath(os.path.join(d, f), V2).replace(os.sep, "/")
+            # src/ holds v4's readable sources (tools/v4_min.py serves minified copies); never published
+            if V2_FILE.search(f) and not rel.startswith("src/"):
+                out.append(rel)
     return sorted(out)
 
 
