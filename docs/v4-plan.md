@@ -130,8 +130,9 @@ being boring. Uniformity must never flatten it.
 - Full-screen footage breathers: only footage the site has, at most one a
   page.
 - An instrument font (monospaced) for the readout, coordinates, timestamps
-  and chapter times: an OFL font, self-hosted and subset like DM Sans in
-  `assets/fonts/` (the system monospace stack if none can be fetched). A
+  and chapter times: an OFL font, self-hosted and subset like DM Sans, kept
+  inside `prototypes/v4/` (the system monospace stack if none can be
+  fetched). A
   style guide specimen first, then applied in v4. The outlined stat numerals
   stay unless the mono version is clearly better.
 - Knowledge base cards and figures in the new design (the KB stays itself).
