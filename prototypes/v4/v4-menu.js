@@ -70,13 +70,19 @@ var ol = menu.querySelector("#v4hits");
 v = v.trim().toLowerCase();
 if (!v) { ol.innerHTML = ""; return; }
 if (!idx) { loadIndex(); return; }
-var words = v.split(/\s+/);
+var words = v.split(/\s+/).filter(Boolean);
+var need = words.length <= 2 ? words.length : Math.ceil(words.length * 0.6);
+function forms(x) { return x.length > 3 && /s$/.test(x) ? [x, x.slice(0, -1)] : [x]; }
 var hits = [];
-for (var i = 0; i < idx.length && hits.length < 40; i++) {
-var e = idx[i], hay = (e.t + " " + e.d).toLowerCase(), t = e.t.toLowerCase();
-if (!words.every(function (x) { return hay.indexOf(x) !== -1; })) continue;
-var score = words.reduce(function (a, x) { return a + (t.indexOf(x) !== -1 ? 2 : 1); }, 0);
-hits.push([score, e]);
+for (var i = 0; i < idx.length; i++) {
+var e = idx[i], t = e.t.toLowerCase(), dsc = e.d.toLowerCase(), h = (e.h || "").toLowerCase();
+var found = 0, score = 0;
+words.forEach(function (x) {
+var f = forms(x), w = 0;
+f.forEach(function (y) { w = Math.max(w, t.indexOf(y) !== -1 ? 3 : dsc.indexOf(y) !== -1 ? 2 : h.indexOf(y) !== -1 ? 1 : 0); });
+if (w) { found++; score += w; }
+});
+if (found >= need) hits.push([score + found * 2, e]);
 }
 hits.sort(function (a, b) { return b[0] - a[0]; });
 ol.innerHTML = hits.length ? hits.slice(0, 8).map(function (h) {

@@ -46,7 +46,7 @@ def main():
     ap.add_argument("--screens", type=int, default=6, help="viewport shots per page and width (0: all)")
     ap.add_argument("--out", default=DEFAULT_OUT)
     ap.add_argument("--full", action="store_true")
-    ap.add_argument("--only", choices=("phone", "desktop"))
+    ap.add_argument("--only", choices=("phone", "tablet", "desktop"))
     ap.add_argument("--jpg", action="store_true")
     ap.add_argument("--reduced", action="store_true", help="prefers-reduced-motion")
     ap.add_argument("--nojs", action="store_true")
@@ -60,6 +60,8 @@ def main():
     ext = "jpg" if a.jpg else "png"
     kinds = [("phone", dict(viewport={"width": 390, "height": 844}, has_touch=True, is_mobile=True, device_scale_factor=2)),
              ("desktop", dict(viewport={"width": 1440, "height": 900}))]
+    if a.only == "tablet":          # an iPad-sized touch screen, portrait
+        kinds = [("tablet", dict(viewport={"width": 768, "height": 1024}, has_touch=True, is_mobile=True, device_scale_factor=2))]
     with sync_playwright() as p:
         b = p.chromium.launch(executable_path=CHROME) if os.path.exists(CHROME) else p.chromium.launch()
         for kind, opts in kinds:

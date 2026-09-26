@@ -473,3 +473,16 @@ screen below the opening. Fixed, then went further:
   tagged library" and "9 has no publish date"; now "in the library" and "9
   have". The library's hero now refreshes on every build (it was built once,
   so a change never reached it).
+
+### Polish, round 3: tablet and search
+- **Tablet (768 x 1024, touch)** walked on six pages (home, India, the
+  library, a knowledge base page, an episode, the podcast); `v4_shots.py
+  --only tablet`. Nothing to fix.
+- **The one search** found nothing for "price", "dates", "speed bar" or
+  "india trip cost": the index held only titles and descriptions. It now
+  also holds each page's own headings and questions (an episode's chapter
+  titles, a trip's FAQ; no new words, and not the listing pages, which only
+  repeat episode titles). A word in the title counts most, then the
+  description, then the headings; a plural finds its singular; a longer
+  question needs most of its words. The index is 33 KB compressed and still
+  loads only when the search is first used.
