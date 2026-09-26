@@ -48,6 +48,11 @@ labels), `--fs-small` (meta, chips), `--fs-body-s` (card text), `--fs-body`,
   and `.btn-lines` (outlined). A status (`.v2-status`) may sit after them.
 - **Panel:** `.kit-panel`, lit from its top-left corner, words only.
 - **Card:** `.kit-card`, a picture and words.
+- **Soft surfaces, not boxes:** cards (episode tiles, topic and knowledge base
+  cards, side boxes, Up next) have no outline and no inner rules: a faint fill
+  lit from the top. The orange corner shows only under the pointer or keyboard
+  focus. Chips and filters are soft fills; the chosen one is orange. Search
+  boxes are a soft field with a line underneath.
 - **Facts:** a row of label (micro, orange, uppercase) over value (white).
   Trips show next date, length, level, price; group size lives in the
   departures table.

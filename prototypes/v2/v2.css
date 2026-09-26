@@ -1126,3 +1126,38 @@ img.v2-img-in{transition:opacity .7s ease,filter .9s ease;}
   .v2-deps .v2-dep:nth-last-child(2):nth-child(odd){border-bottom:0;}
 }
 .v2-home-hero .kit-kicker{color:var(--orange-lite,#ff8a3d);text-shadow:0 0 2px rgba(0,0,0,.95),0 1px 4px rgba(0,0,0,.85),0 0 18px rgba(0,0,0,.55);}
+
+/* ===== Soft surfaces =======================================================
+   Cards and chips were hard boxes: a solid outline all round, a flat fill and
+   hard lines inside. Here they are surfaces instead: no outline, a faint fill
+   lit from the top, no inner rules, and the orange corner only under the
+   pointer or keyboard focus. (html-prefixed to sit above the pages' own CSS.)
+   ========================================================================= */
+html :is(.ep-tile, .ep-card, .tg-v2 .tg-ep, .cardx, .cd-box, .ep2-card, .series-card){
+  border-color:transparent;
+  background:linear-gradient(180deg,rgba(255,255,255,.045) 0%,rgba(255,255,255,.018) 60%,rgba(255,255,255,.01) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+  transition:background .3s ease,box-shadow .3s ease,var(--t-press);}
+html .k-sec.card .cardx{background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01));}
+html :is(.ep-tile, .ep-card, .tg-v2 .tg-ep, .cardx, .cd-box, .ep2-card, .series-card):is(:hover, :focus-visible, :focus-within){
+  border-color:transparent;
+  background:linear-gradient(180deg,rgba(255,255,255,.075) 0%,rgba(255,255,255,.03) 60%,rgba(255,255,255,.015) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,117,23,.35),0 18px 40px -24px rgba(0,0,0,.8);}
+/* the orange corner: only while pointed at or focused */
+html :is(.ep-tile, .ep-card, .tg-v2 .tg-ep, .cardx, .cd-box, .ep2-card)::before{opacity:0;transition:opacity .25s ease;}
+html :is(.ep-tile, .ep-card, .tg-v2 .tg-ep, .cardx, .cd-box, .ep2-card):is(:hover, :focus-visible, :focus-within)::before{opacity:1;}
+/* no hard rules inside a card; pictures sit in it with a hairline of shade */
+html .ep-tile :is(.ep-stamp, .ep-th, .ep-foot), html .ep-card :is(.ep-stamp, .ep-foot){border-color:transparent;}
+html .ep-tile .ep-th, html .ep2-card-art{background:rgba(0,0,0,.35);}
+/* chips and filters: soft fills, not outlined boxes; the chosen one stays orange */
+html :is(.v2-chip, .tg-chip, .tg-sort .pill, .tg-sort button, .chips a){
+  border-color:transparent;background:rgba(255,255,255,.05);
+  transition:background .2s ease,color .2s ease,var(--t-press);}
+html :is(.v2-chip, .tg-chip, .tg-sort .pill, .tg-sort button, .chips a):hover{background:rgba(255,255,255,.09);border-color:transparent;color:var(--white);}
+html .v2-chip[aria-pressed="true"], html .tg-sort :is(.pill, button):is(.is-on, [aria-pressed="true"], .active){background:var(--orange);color:var(--ink);}
+/* search boxes and selects: a soft field with a line underneath */
+html :is(.v2-find-input, .v2-sort select){border-color:transparent;border-bottom-color:var(--edge);background:rgba(255,255,255,.04);}
+html :is(.v2-find-input, .v2-sort select):focus{border-bottom-color:var(--orange);outline:none;}
+@media (prefers-reduced-motion:reduce){
+  html :is(.ep-tile, .ep-card, .tg-v2 .tg-ep, .cardx, .cd-box, .ep2-card, .series-card, .v2-chip, .tg-chip){transition:none;}
+}
