@@ -41,7 +41,7 @@ def registry():
     }
     for name, fn in DS.drawings_fns().items():
         reg[name] = (fn, DS.phone_fns().get(name))
-    for mod in ("v4_computed", "v4_painted", "v4_phone"):
+    for mod in ("v4_computed", "v4_phone", "v4_phone2", "v4_painted"):
         try:
             m = __import__(mod)
         except ImportError:
@@ -52,6 +52,26 @@ def registry():
 
 # a figure's key, where the page's caption describes the drawing it replaces: {page: [(old, new)]}
 LEGENDS = {
+    "knowledge-base/sky-gods.html": [
+        ("Rounded, as he gives them.",
+         "Rounded, as he gives them. The grey line: what thinner air alone does to the same wing, from the standard "
+         "atmosphere."),
+    ],
+    "knowledge-base/weather-patterns.html": [
+        ("about 1,000 to 3,000 metres.",
+         "about 1,000 to 3,000 metres. In the drawing, each pressure also lands where the standard atmosphere puts it."),
+        ("Resolutions as he gives them.",
+         "Resolutions as he gives them; each circle is that many kilometres across, all to one scale."),
+    ],
+    "knowledge-base/know-your-equipment.html": [
+        ("Schematic, not measured data.",
+         "Schematic, not measured data. Under each curve, its jerk: the rate at which G changes, worked out from it."),
+    ],
+    "knowledge-base/risk-vs-reward.html": [
+        ("let a buddy tell you when your speech changes.",
+         "let a buddy tell you when your speech changes. The orange line in the drawing: the oxygen in each breath as a "
+         "share of sea level, from the standard atmosphere."),
+    ],
     "knowledge-base/flight-mechanics.html": [
         ("Orange: where the lift acts. Grey: drag.",
          "Orange: the suction along the upper surface and where the lift acts. Grey: the airflow. Computed with a "
@@ -61,8 +81,14 @@ LEGENDS = {
 
 
 def legends(rel, src):
+    """Idempotent: a key that extends the page's sentence is added once, and a repeat is folded back."""
     for old, new in LEGENDS.get(rel, ()):
-        src = src.replace(old, new)
+        if new.startswith(old):
+            tail = new[len(old):]
+            while new + tail in src:
+                src = src.replace(new + tail, new)
+        if new not in src:
+            src = src.replace(old, new)
     return src
 
 
