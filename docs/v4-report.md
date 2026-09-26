@@ -426,10 +426,13 @@ Five things done without the owner, each through the gates:
   base pages at both widths; reduced motion on Kenya.
 - **A pass fix.** The three-view's markup names its attributes in another
   order, so the pass never refreshed it after a kit change; it does now.
-- **Known, left as is (no JavaScript):** the trips' later fly-through photos
-  load on scroll (step 6), so without JavaScript the first photo stays behind
-  every screen, and v2's route diagram stays half drawn. All the words are
-  there; visitors without JavaScript are rare.
+- **Known, left as is (no JavaScript):** the fly-through keeps its photos in
+  one pinned frame and switches them by script, so without JavaScript the
+  first photograph stays behind every screen (all the words are there).
+  Showing every photo would mean all photos first and all words after, which
+  reads worse. (The India route drawing only looks cut without JavaScript:
+  it is wider than a phone and the script centres it on the launch; it
+  scrolls sideways and is whole.)
 
 ### Polish, round 2: weight on a phone
 Step 6 measured at 1440px. Measured again as a phone (390 x 844, touch;
@@ -492,3 +495,7 @@ screen below the opening. Fixed, then went further:
   takes the full row instead of leaving half of it empty.
 - **Hold a place** checked end to end: the enquiry opens with the trip and
   the departure's dates filled in (India and Kenya).
+- **Links and images audited:** every link to a section of a v4 page lands
+  on a target that exists (the `library.html#s=Series` links are the
+  library's series filter, tested: each opens the right series); no image
+  lacks an alt attribute (the empty ones are thumbnails beside their title).
