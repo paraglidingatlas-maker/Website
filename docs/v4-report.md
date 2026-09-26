@@ -4,6 +4,43 @@ The brief is `docs/v4-plan.md`. v4 lives in `prototypes/v4/` (hidden,
 noindex), previewed at https://paraglidingatlas.com/prototypes/v4/. v2 and
 the live site are not changed. v4's rules: `docs/v4-design-rules.md`.
 
+## In short
+v4 is ready to look at: https://paraglidingatlas.com/prototypes/v4/ (hidden,
+noindex). Steps 0 to 8 of the plan are done, each pushed after every gate
+passed. Nothing live and nothing in `prototypes/v2/` changed; `rss-feed.js`
+untouched; no switch-over made.
+
+- **One grammar**: three title sizes and one weight, one section head, one
+  chip, one button pair, the Arial fix.
+- **India and Kenya as fly-throughs**: about 800 words on first read (from
+  2,734 and 2,179 measured), every word kept in folds, a trust strip from the
+  terms, "Hold a place" on each departure.
+- **Signature moments**: the library as a flight log, episodes opening on a
+  globe turned to their place, topic logs, cards that open into the page, an
+  altimeter, a footage breather, an instrument font for numbers.
+- **Navigation**: Expeditions / Podcast / Knowledge Base / About, a
+  full-screen menu with photos and one search over 179 pages, a next step at
+  the end of every page, bridges between the show and the trips.
+- **Speed**: no page heavier than in v2 (India -379 KB, Kenya -160 KB).
+- **Drawings**: all 57 knowledge base figures redrawn with the kit, the
+  three-view, dials, contours, ridge and icons in the kit's line.
+
+## Before and after
+v2 on the left, v4 on the right (`tools/v4_before_after.py`, JPG in
+`docs/v4-shots/`, 1.0 MB in all). The video frames are grey where YouTube
+is blocked on the build machine.
+
+| | |
+|---|---|
+| Home | ![home](v4-shots/home.jpg) |
+| India on a phone | ![india](v4-shots/india-phone.jpg) |
+| Kenya | ![kenya](v4-shots/kenya.jpg) |
+| Library (the flight log) | ![library](v4-shots/library.jpg) |
+| Flight Mechanics (the three-view) | ![fm](v4-shots/kb-flight-mechanics.jpg) |
+| A knowledge base figure | ![fig](v4-shots/kb-figure.jpg) |
+| An episode (the globe) | ![episode](v4-shots/episode.jpg) |
+| The menu on a phone | ![menu](v4-shots/menu-phone.jpg) |
+
 ## Progress
 A check-in reads this table to know where to resume: the first row not
 marked done is the next step.
@@ -18,7 +55,7 @@ marked done is the next step.
 | 5. Navigation and wayfinding | done | d5546f5 | all gates PASS (v4 184 pages 0 FAIL) |
 | 6. Speed | done | 84258b8 | all gates PASS (v4 184 pages 0 FAIL; switch 0 FAIL after it learnt the deferred image attributes) |
 | 7. The remaining redraws | done (poster frame: see notes) | 3ab0e89 | all gates PASS (v4 184 pages 0 FAIL; smoke 0 FAIL on its rerun) |
-| 8. The report | | | |
+| 8. The report | done | (step 8 commit) | all gates PASS (v4 184 pages 0 FAIL, smoke 0 FAIL first run) |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they
@@ -38,6 +75,17 @@ python3 tools/v2_switch.py --site v4 --dry-run
 - **Booking.** "Hold a place" opens the enquiry (still mailto) with the trip
   and the departure's dates filled in. A deposit link per departure and the
   places left would turn it into a booking.
+- **Enquiry follow-up.** An automatic reply and a reminder need a mail
+  service (free: Google Apps Script in your Workspace). The form stays mailto.
+- **Footage and data.** IGC logs of the filmed flights (the readout's ALT and
+  HDG and the flight line would then be real), 5 to 10 s clips per
+  destination, a wind or vario recording, photos from past trips.
+- **Facts.** Peru and Kazakhstan (length, group size, price); 14 episode
+  dates and 2 descriptions (list in `docs/v2-report.md`; the library shows
+  "[to supply]" for the missing dates); one episode count (pages say 71, 86,
+  93 and 90+); one currency or both (India in GBP, Kenya in USD today).
+- **The go.** An iPhone check (Safari items below), then the switch-over,
+  v2 or v4. Not done here, as agreed.
 - **"The poster frame"** (plan, step 7): which drawing is meant? None in the
   site goes by that name, so it was left as it is.
 
@@ -295,3 +343,42 @@ No page is heavier than its v2 twin; home is under 2.5 MB. How:
 - **Not done: "the poster frame".** The plan names it without saying which
   drawing it is, and none in the site is called that; listed under Needs the
   owner.
+
+## Step 8: the report
+- This report, the before and after pictures above
+  (`tools/v4_before_after.py`), sent to the owner as well.
+
+## The switch-over, if v4 is chosen
+`tools/v2_switch.py --site v4 --apply --out _site` builds the live site from
+v4 (dry run: 180 pages, 0 FAIL). It copies v4's own files to `assets/v4/`
+(v2.css, v2.js, v2-immersive.js, v4-menu.js, search-index.js, fonts, img,
+the knowledge base drawings in img/kb) and points every page at them. The
+deploy workflow draft (`docs/v2-deploy-workflow.yml`) runs the same steps
+with `--site v4`, with v4's generators between v2_twin and v2_localize:
+
+```
+python3 tools/v2_episode.py --site v4 --all
+python3 tools/v2_twin.py --site v4
+python3 tools/v2_library_cards.py --site v4 && python3 tools/v4_library.py
+python3 tools/v4_trip.py
+python3 tools/v4_kbsvg.py            # only when a figure script changes
+python3 tools/v4_pass.py
+python3 tools/v4_search.py
+python3 tools/v4_min.py
+python3 tools/v2_localize.py --site v4
+./build.sh
+```
+The Kenya chart's preview fix (step 7) switches itself off outside
+`prototypes/`.
+
+## To check on an iPhone (Safari)
+Chromium was the only browser here. Worth a look in Safari:
+- the cards opening into the page (view transitions: Safari 18.2 and later;
+  older versions navigate plainly, as intended);
+- the full-screen menu: focus, the close button, scrolling inside it;
+- the knowledge base heroes on a phone (the drawings sized with
+  `aspect-ratio`) and the wide figures' sideways scroll;
+- the instrument font's split files (unicode-range);
+- the episode Play / Next bar and the trips' Hold a place bar above Safari's
+  toolbar;
+- pinch on the Kenya map, and the chart's relief.
