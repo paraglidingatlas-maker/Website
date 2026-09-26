@@ -1,0 +1,70 @@
+{
+  "_about": "The owner's facts for v4 (given 26 Sep 2026), applied by tools/v4_pass.py (facts). The live data files are not changed; at the switch-over these carry with v4.",
+  "episode_count": {
+    "value": 80,
+    "source": "The owner: 'the correct number is what's on the RSS Spotify feed'. The feed has 80 episodes: apple-episodes.json (Apple's copy of the feed, lookup limit 200) and mp3-map.json both hold 80, refreshed 25 Sep 2026.",
+    "replace": [
+      [
+        "90+ interviews",
+        "80 interviews"
+      ],
+      [
+        "90+ long-form interviews",
+        "80 long-form interviews"
+      ],
+      [
+        "90+ conversations",
+        "80 conversations"
+      ],
+      [
+        "across 93 conversations",
+        "across 80 conversations"
+      ],
+      [
+        "there are 93 episodes",
+        "there are 80 episodes"
+      ],
+      [
+        "has 71 conversations",
+        "has 80 conversations"
+      ],
+      [
+        "<b>90+</b><span>Long-form interviews",
+        "<b>80</b><span>Long-form interviews"
+      ],
+      [
+        "90+ podcast interviews",
+        "80 podcast interviews"
+      ],
+      [
+        "<b data-count=\"90\" data-suffix=\"+\">90+</b><span>Long-form interviews",
+        "<b data-count=\"80\" data-suffix=\"\">80</b><span>Long-form interviews"
+      ]
+    ]
+  },
+  "trips": {
+    "peru": {
+      "length": "14 days",
+      "group": "Small group",
+      "price": "€1,850",
+      "names": [
+        "peru",
+        "lima and the andes"
+      ]
+    },
+    "kazakhstan": {
+      "length": "10 days",
+      "group": "Small group",
+      "price": "€2,100",
+      "names": [
+        "kazakhstan",
+        "the steppe"
+      ]
+    }
+  },
+  "episodes": {
+    "can-we-steer-a-round-reserve-parachute-urs-haari-answers": {
+      "summary": "There is much more to reserve parachutes than just getting them repacked periodically and in a correct way! This talk is a snippet from one of our most replayed moments from an episode where we ended up revealing The Real Truth about Reserve Parachutes."
+    }
+  }
+}

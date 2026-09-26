@@ -499,3 +499,28 @@ screen below the opening. Fixed, then went further:
   on a target that exists (the `library.html#s=Series` links are the
   library's series filter, tested: each opens the right series); no image
   lacks an alt attribute (the empty ones are thumbnails beside their title).
+
+## The owner's facts (26 Sep 2026)
+Kept in `tools/data/v4_facts.json` and applied by `tools/v4_pass.py`
+(facts) on every build; the live data files are not changed, so the facts
+carry with v4 at the switch-over.
+- **Episode count: 80**, "what's on the RSS Spotify feed". The feed itself is
+  blocked from the build machine; Apple's copy of it (`apple-episodes.json`,
+  lookup limit 200) and `mp3-map.json` both hold 80, refreshed 25 Sep 2026.
+  Every "90+", "93" and "71" about the show now reads 80, including three
+  pages' meta and og descriptions: the parity checks (`v2_check`,
+  `v2_switch`) accept exactly these corrections and nothing else. The
+  library's own counts ("86 episodes in 13 series") count what it lists,
+  which includes YouTube-only videos, and are left as counted.
+- **Peru**: 14 days, small group, €1,850. **Kazakhstan**: 10 days, small
+  group, €2,100. On the home page's departures and feature blocks, and the
+  options sample.
+- **Can We Steer a Round Reserve Parachute?** now has its summary, in the
+  owner's words. **Touch the Sky with Glory** left without one, as asked.
+- **Not done yet:** the 13 missing publish dates. YouTube, its mirrors and
+  the podcast feed are all blocked by this environment's network policy;
+  the dates were not guessed. Either send them, or allow `www.youtube.com`
+  (and `anchor.fm` for the feed) in the environment's network settings.
+- **Currency**: waiting on one answer (India £1,100 and Kenya US$2,100 in
+  euros: the same numbers, or converted amounts from the owner). Amounts
+  inside transcripts and guests' quotes stay as spoken.

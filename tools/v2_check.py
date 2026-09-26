@@ -52,6 +52,16 @@ LOOP = re.compile(r'\sdata-loop="([^"]*)"')      # a prefix: <prefix>-720.mp4 an
 EXEMPT = {
     "index.html": {"words": "the owner cut the homepage text on purpose; the trip details it dropped are on the destination pages"},
 }
+def owner_fixed(text):
+    """Live text with the owner's corrections of the episode count applied (v4 only; v2 has none)."""
+    fp = os.path.join(ROOT, "tools", "data", "v4_facts.json")
+    if S.IS_V2 or not os.path.exists(fp):
+        return text
+    for x, y in json.load(open(fp, encoding="utf-8"))["episode_count"]["replace"]:
+        text = text.replace(html.escape(x, quote=False), html.escape(y, quote=False)).replace(x, y)
+    return text
+
+
 FILLER = {"a", "an", "the", "with", "and", "of", "to", "in", "on", "for", "talk", "conversation", "interview", "chat", "ft", "feat"}
 SRCSET = re.compile(r'\ssrcset="([^"]*)"', re.I)
 
@@ -192,6 +202,11 @@ def check_static(rel):
         for k in ("title", "description", "canonical", "og:title", "og:description", "og:image",
                   "twitter:card", "jsonld", "episode"):
             if a[k] != b[k]:
+                # the one allowed difference: the owner's corrections of a stated fact (the episode count,
+                # tools/data/v4_facts.json) applied to the live text give exactly the page's text
+                if k in ("description", "og:description") and isinstance(a[k], str) and owner_fixed(a[k]) == b[k]:
+                    warns.append("parity: %s carries the owner's correction of the episode count" % k)
+                    continue
                 fails.append("parity: %s differs (live %r, v2 %r)" % (k, str(a[k])[:80], str(b[k])[:80]))
         # the heading may be laid out differently, but must keep every word that carries meaning
         words = lambda hs: set(w for w in re.findall(r"[\w'’-]+", " ".join(hs).lower()) if w not in FILLER)

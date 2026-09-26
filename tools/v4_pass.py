@@ -479,6 +479,55 @@ def not_found(src):
                        '<a class="btn-lines" href="sitemap.html" data-v4-search>Search the site</a></p>', 1)
 
 
+_facts = None
+
+
+def facts_data():
+    global _facts
+    if _facts is None:
+        import json
+        _facts = json.load(open(os.path.join(ROOT, "tools", "data", "v4_facts.json"), encoding="utf-8"))
+    return _facts
+
+
+def facts(rel, src):
+    """The owner's facts (tools/data/v4_facts.json): the episode count, the planned trips' length, group
+    and price, an episode's missing summary. Only what the owner gave; the rest stays [to supply]."""
+    F = facts_data()
+    for a, b in F["episode_count"]["replace"]:
+        src = src.replace(a, b)
+    tbd = '<i class="v2-tbd">[to supply]</i>'
+    for trip, t in F["trips"].items():
+        # the departures table: Length, Group, Price cells of this trip's row
+        def row(m):
+            r = m.group(0)
+            r = r.replace('<span data-l="Length">%s</span>' % tbd, '<span data-l="Length">%s</span>' % t["length"])
+            r = r.replace('<span data-l="Group">%s</span>' % tbd, '<span data-l="Group">%s</span>' % t["group"])
+            r = r.replace('<span data-l="Price" class="">%s</span>' % tbd,
+                          '<span data-l="Price" class="v2-price">%s</span>' % html.escape(t["price"]))
+            return r
+        src = re.sub(r'<a class="v2-dep" href="[^"]*trip=%s"[^>]*>.*?</a>' % trip, row, src, flags=re.S)
+    # the feature blocks: "Details" or "Length, group, price" beside the planned month; each belongs to
+    # the trip named last before it
+    lines = {k: "%s, %s, %s" % (t["length"], t["group"].lower(), html.escape(t["price"])) for k, t in F["trips"].items()}
+    def block(m):
+        before = src[max(0, m.start() - 2500):m.start()].lower()
+        pos = {k: max([before.rfind("trip=" + k)] + [before.rfind(n) for n in F["trips"][k].get("names", [k])])
+               for k in lines}
+        k = max(pos, key=pos.get)
+        return m.group(1) + lines[k] if pos[k] >= 0 else m.group(0)
+    src = re.sub(r'(<dt>(?:Details|Length, group, price)</dt><dd>)' + re.escape(tbd), block, src)
+    slug = rel[len("episodes/"):-len(".html")] if rel.startswith("episodes/") else None
+    ep = F["episodes"].get(slug) if slug else None
+    if ep and ep.get("summary"):
+        text = html.escape(ep["summary"], quote=False)
+        if '<p class="cd-summary"></p>' in src:
+            src = src.replace('<p class="cd-summary"></p>', '<p class="cd-summary">%s</p>' % text, 1)
+        elif 'class="cd-summary"' not in src:
+            src = src.replace('<main class="cd-center">', '<main class="cd-center">\n      <p class="cd-summary">%s</p>' % text, 1)
+    return src
+
+
 def main(args):
     rels = args or sorted(os.path.relpath(os.path.join(d, f), V4).replace(os.sep, "/")
                           for d, _, fs in os.walk(V4) for f in fs if f.endswith(".html"))
@@ -486,7 +535,7 @@ def main(args):
     for rel in rels:
         fp = os.path.join(V4, rel)
         src = open(fp, encoding="utf-8").read()
-        out = icon(rel, next_step(rel, nav(rel, src)))
+        out = facts(rel, icon(rel, next_step(rel, nav(rel, src))))
         if rel.startswith("episodes/"):
             out = titles(out)
             n["titles"] += out != src

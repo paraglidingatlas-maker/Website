@@ -188,6 +188,9 @@ def dry_run(stage, build=False):
         b = C.seo(s_src)
         for k in ("title", "description", "canonical", "og:title", "og:description", "og:image", "twitter:card", "jsonld", "episode"):
             if a[k] != b[k]:
+                # the owner's correction of the episode count (tools/data/v4_facts.json), the only allowed difference
+                if k in ("description", "og:description") and isinstance(a[k], str) and C.owner_fixed(a[k]) == b[k]:
+                    continue
                 fails.append("%s: %s differs" % (rel, k))
         if b["words"] < a["words"] * 0.95 and "words" not in exempt.get(rel, {}):
             fails.append("%s: body text %d words, live %d" % (rel, b["words"], a["words"]))
