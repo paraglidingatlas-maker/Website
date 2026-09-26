@@ -82,6 +82,14 @@ was followed.
 
 ## Open items / next steps
 
+-1. NEXT BIG ONE (agreed with the owner): rebuild the India and Kenya trip
+   pages in the fly-through style. They are 4,214 and 3,353 words (15 to 18
+   minutes of reading) on the pages that sell the trips. One screen per idea
+   with the photo or footage behind it, facts instead of paragraphs, every
+   word kept but folded away (FAQ, packing, practical) so SEO/GEO parity
+   holds; about 800 words on first read. India first, owner reviews, then
+   Kenya.
+
 0. Done: the owner picked the fly-through (option 2 on
    `prototypes/v2/fly-options.html`). It is now the v2 homepage's expedition
    block (`.v2-flyby` in index.html, v2.css, v2-home.js), replacing the India
