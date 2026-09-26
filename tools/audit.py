@@ -138,7 +138,8 @@ def check_links():
         h = read(p)
         ids = set(re.findall(r'id="([^"]+)"', h))
         for a in set(re.findall(r'href="#([^"]+)"', h)):
-            if a and a not in ids:
+            # "#s=Series" / "#pin=..." are page state read by a script, not anchors
+            if a and "=" not in a and a not in ids:
                 dangling[p] += 1
     if dangling:
         fail("anchors", "in-page anchors with no target: %s" % dict(dangling))

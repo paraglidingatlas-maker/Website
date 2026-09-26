@@ -1115,9 +1115,9 @@
         <p class="kit-intro">Whether it's about gear, safety, technique, or the mindset side of flying, Aninder reads every submission personally.</p>
       </div>
       <form id="questionForm" class="v2-form">
-        <label class="v2-field"><span>Your name</span><input type="text" autocomplete="name" required></label>
-        <label class="v2-field"><span>Your email</span><input type="email" autocomplete="email" required></label>
-        <label class="v2-field is-wide"><span>Your question or topic</span><textarea rows="3" required></textarea></label>
+        <label class="v2-field" for="v2qName"><span>Your name</span><input id="v2qName" type="text" autocomplete="name" required></label>
+        <label class="v2-field" for="v2qEmail"><span>Your email</span><input id="v2qEmail" type="email" autocomplete="email" required></label>
+        <label class="v2-field is-wide" for="v2qTopic"><span>Your question or topic</span><textarea id="v2qTopic" rows="3" required></textarea></label>
         <div class="v2-form-foot">
           <button type="submit" class="btn-solid" data-hover><span>Submit Question</span></button>
           <p class="qf-status" id="qfStatus"></p>

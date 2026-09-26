@@ -1,0 +1,60 @@
+# DRAFT, NOT ACTIVE. The v2 switch-over as a deploy step.
+#
+# To switch the live site to v2 (owner's go only, see docs/v2-report.md):
+#   1. copy this file to .github/workflows/deploy.yml
+#   2. GitHub repo Settings > Pages > Build and deployment > Source: "GitHub Actions"
+#   3. push to main; this workflow builds and publishes the switched site
+# To roll back: set the Pages source back to "Deploy from a branch" (main, /),
+# which publishes the repo exactly as before, and delete deploy.yml.
+#
+# The repo keeps the live-format pages as the generators' sources, so build.sh
+# works as it always has; the v2 pages are rebuilt from its fresh output and
+# laid over a copy of the site in _site, which is what gets published.
+name: Deploy site (v2)
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install fonttools brotli pillow
+      - name: Live build (generators, sitemap, schema)
+        run: ./build.sh
+      - name: Rebuild the v2 pages from the fresh output
+        run: |
+          python3 tools/v2_episode.py --all
+          python3 tools/v2_twin.py
+          python3 tools/v2_localize.py
+          python3 tools/version_assets.py
+      - name: Gates
+        run: |
+          python3 tools/audit.py --drift
+          python3 tools/v2_check.py --static
+          python3 tools/v2_switch.py --dry-run
+      - name: Switch into _site
+        run: python3 tools/v2_switch.py --apply --out _site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

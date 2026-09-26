@@ -24,6 +24,7 @@ adds the noindex, v2.css and the v2 scripts.
 
     python3 tools/v2_episode.py slug [slug ...]
     python3 tools/v2_episode.py --samples
+    python3 tools/v2_episode.py --all
 """
 import html
 import json
@@ -259,7 +260,8 @@ def main(argv):
     meta = {m["slug"]: m for m in json.load(open(os.path.join(ROOT, "episode-meta.json"), encoding="utf-8"))}
     for m in meta.values():
         m["_listed"] = m["slug"] in lib
-    slugs = SAMPLES if argv == ["--samples"] else argv
+    # --all: every episode in episode-meta.json (the redirect stubs are not in it)
+    slugs = SAMPLES if argv == ["--samples"] else sorted(meta) if argv == ["--all"] else argv
     os.makedirs(OUT, exist_ok=True)
     for slug in slugs:
         page = build(slug, meta)
