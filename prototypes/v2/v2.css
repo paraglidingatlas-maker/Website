@@ -1003,3 +1003,47 @@ img.v2-img-in{transition:opacity .7s ease,filter .9s ease;}
 @media (max-width:560px){ .ep2-lw{display:none;} .ep2-listen .cd-lbtn{font-size:.84rem;} }
 .ep2-hero.is-text{grid-template-columns:minmax(0,1fr);}
 .ep2-hero.is-text .ep2-h1{max-width:24ch;}
+
+/* ======================= ABOUT, restructured =======================
+   story (short) -> the people -> promises -> facts -> the tours -> call */
+.v2-origin-lede{font-family:var(--font-display);font-weight:600;font-size:clamp(1.25rem,2.2vw,1.6rem);line-height:1.35;color:var(--white);margin:0 0 1.2rem;letter-spacing:-.01em;}
+.v2-origin-copy p:not(.v2-origin-lede){font-size:1.02rem;line-height:1.75;color:var(--gray-light);}
+
+.v2-team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1.5rem,3vw,2.5rem);}
+.v2-person{display:grid;grid-template-columns:clamp(140px,14vw,200px) minmax(0,1fr);gap:clamp(1.2rem,2.5vw,2rem);align-items:start;}
+.v2-person-pic{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--card);}
+.v2-person-pic::before,.v2-person-pic::after{content:"";position:absolute;z-index:2;width:14px;height:14px;pointer-events:none;}
+.v2-person-pic::before{top:6px;left:6px;border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+.v2-person-pic::after{right:6px;bottom:6px;border-right:2px solid var(--orange);border-bottom:2px solid var(--orange);}
+.v2-person-pic picture,.v2-person-pic img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%;}
+.v2-person-pic.is-mono{display:grid;place-items:center;background:
+  radial-gradient(120% 90% at 30% 10%,rgba(255,117,23,.18),transparent 60%),linear-gradient(160deg,#1d1f25,#131418);}
+.v2-person-pic.is-mono span{font-family:var(--font-display);font-weight:700;font-size:clamp(2.2rem,4vw,3rem);color:rgba(255,255,255,.85);letter-spacing:.02em;}
+.v2-person h3{font-family:var(--font-display);font-weight:600;font-size:1.35rem;color:var(--white);margin:.2rem 0 .35rem;}
+.v2-person-role{display:block;font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:.9rem;line-height:1.6;}
+.v2-person p{font-size:var(--fs-body-s);line-height:1.75;color:var(--gray-light);margin:0;}
+
+.v2-trust{padding-top:0;padding-bottom:0;}
+.v2-facts{list-style:none;margin:0;padding:clamp(1.4rem,3vw,2rem) 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;
+  border-top:1px solid;border-bottom:1px solid;border-image:linear-gradient(90deg,transparent,var(--edge) 12%,var(--edge) 88%,transparent) 1;}
+.v2-facts li{display:flex;flex-direction:column;gap:.3rem;padding-left:1rem;border-left:2px solid rgba(255,117,23,.55);}
+.v2-facts b{font-family:var(--font-display);font-weight:600;font-size:1.08rem;color:var(--white);}
+.v2-facts span{font-size:.84rem;color:var(--gray-light);line-height:1.5;}
+
+.v2-tours{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(1rem,2vw,1.5rem);margin-top:clamp(2rem,4vw,3rem);}
+.v2-tour .kit-card-media{position:relative;aspect-ratio:4/3;}
+.v2-tour-tag{position:absolute;top:.8rem;left:.8rem;z-index:3;background:rgba(12,13,16,.78);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  padding:.35rem .6rem;font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--white);}
+.v2-tour-tag.is-go{color:#5fd08a;}
+.v2-tour-tag.is-soon{color:var(--gray-light);}
+.v2-tour h3{font-size:1.08rem;}
+.v2-tour-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;margin:.9rem 0 .2rem;padding-top:.8rem;border-top:1px solid var(--line);}
+.v2-tour-facts dt{font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;color:var(--gray);font-weight:600;}
+.v2-tour-facts dd{margin:.2rem 0 0;font-size:.9rem;color:var(--white);font-weight:500;}
+@media (max-width:1100px){ .v2-tours{grid-template-columns:repeat(2,minmax(0,1fr));} .v2-facts{grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media (max-width:760px){ .v2-team{grid-template-columns:minmax(0,1fr);} }
+@media (max-width:560px){
+  .v2-person{grid-template-columns:110px minmax(0,1fr);}
+  .v2-tours{grid-template-columns:minmax(0,1fr);}
+  .v2-facts{grid-template-columns:minmax(0,1fr);}
+}
