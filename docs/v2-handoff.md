@@ -100,6 +100,25 @@ was followed.
    knowledge base cards and figures in the new design; speed (home 2.5 MB on
    arrival, the podcast globe's 273 KB library); the iPhone check, then the
    switch-over.
+-3. Visual uniformity (audit, 27 Sep): the core pages are one family; drift
+   is on the trip pages (22 type sizes, 11 to 12 label styles, the only
+   rounded corners, outlined FAQ and packing boxes: solved by the rebuild),
+   Partners (61px extra-bold section titles, 56 outlined tiles), six page-
+   title sizes and two weights (make it three sizes, one weight), a third
+   button style (listen buttons) and three chip kinds, and Arial on buttons
+   and form fields (a one-line fix, saved as scratchpad/arial-fix.patch,
+   waiting for the owner's yes). Idea: an instrument font (monospaced) for the
+   ALT/HDG readout, coordinates, stats and timestamps, as a sample first.
+-4. Making it look in order (owner asked, 27 Sep): the library and topic
+   pages are plain next to the knowledge base (text-only header on empty
+   dark, a flat grid, no stats row, no drawing, no warm glow); give them the
+   knowledge base's header pattern (a drawing, the stats row), a featured row,
+   series cards with imagery, and page rhythm; one page-header treatment for
+   every page without a photo (the contour backdrop and glow), one section-
+   head pattern (kicker, title, rule, right-aligned note), one icon style
+   (the knowledge base's orange line drawings), no long empty voids before
+   the footer (library, topics), and a single grade on episode stills so the
+   varied YouTube thumbnails sit together.
 
 0. Done: the owner picked the fly-through (option 2 on
    `prototypes/v2/fly-options.html`). It is now the v2 homepage's expedition
