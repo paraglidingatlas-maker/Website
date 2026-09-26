@@ -108,11 +108,26 @@
       hudAlt = slot.querySelector(".a"); hudHdg = slot.querySelector(".h"); hudLine = slot.querySelector(".v2-hud-att i");
     }
     function pad3(n) { n = ((Math.round(n) % 360) + 360) % 360; return (n < 10 ? "00" : n < 100 ? "0" : "") + n; }
-    function paintHud() {
+    /* The numbers fly with the hero's footage, not with the scroll: while the
+       page's hero video plays, altitude climbs through its loop (the homepage
+       clip climbs through cloud and breaks out above the peaks) and heading
+       drifts like a slow turn; both start again with the loop. Scrolling leaves
+       them still. With no video playing they hold. (Decorative instrument
+       numbers, as before; not telemetry from the flight.) */
+    function paintHud(f) {
       if (!hud) return;
-      var max = Math.max(1, root.scrollHeight - innerHeight), p = Math.min(1, w.scrollY / max);
-      hudAlt.textContent = (Math.round((BASE - p * 900) / 10) * 10).toLocaleString("en-US") + " m";
-      hudHdg.textContent = pad3(HDG + p * 24) + "°";
+      f = f || 0;                                   // 0..1 through the loop
+      var climb = BASE - 450 + f * 700;             // a climb of 700 m over the clip
+      var turn = HDG + Math.sin(f * Math.PI * 2) * 9 + f * 14;
+      hudAlt.textContent = (Math.round(climb / 10) * 10).toLocaleString("en-US") + " m";
+      hudHdg.textContent = pad3(turn) + "°";
+    }
+    var heroVid = d.querySelector(".page-wrap > .kit-hero video, .page-wrap > header video, .khero video");
+    if (heroVid && hud) {
+      heroVid.addEventListener("timeupdate", function () {
+        var dur = heroVid.duration;
+        if (dur && isFinite(dur)) paintHud(heroVid.currentTime / dur);
+      });
     }
     function settleBank() {
       bank *= 0.86;
@@ -128,7 +143,6 @@
         var t = performance.now(), y = w.scrollY, v = (y - lastY) / Math.max(16, t - lastT);
         lastY = y; lastT = t;
         bank = Math.max(-14, Math.min(14, bank + v * 6));
-        paintHud();
         wind.gust(Math.min(1, Math.abs(v) / 3));
         if (!bankRaf) bankRaf = requestAnimationFrame(settleBank);
       });
