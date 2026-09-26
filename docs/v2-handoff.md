@@ -23,10 +23,16 @@ previous session stopped.
 | `v2_episode.py` | Builds a v2 episode page from the live `episodes/<slug>.html` plus `episode-meta.json`. `--samples` rebuilds the samples; or pass slugs. Then run `v2_localize.py`. |
 | `v2_art.py` | Draws `prototypes/v2/img/contours.svg` and `ridge.svg`. `python3 tools/v2_art.py icons` writes the panel icons into pages. |
 | `v2_fly_options.py` | Builds `prototypes/v2/fly-options.html`: five layouts for the homepage block between "See where we fly" and "Every departure" (wing panels, fly-through, swipe strip, departure board, mosaic). Page script: `fly-options.js`. Then run `v2_localize.py`. |
+| `v2_twin.py` | Builds the knowledge base, topic and text pages from the live files in the kit's frame. |
+| `v2_check.py` | Checks every v2 page (links, noindex, headings, alt, SEO/GEO parity with live, and in Chromium at 390/768/1440: errors, overflow, names, tap targets). 0 FAIL before any push. |
+| `v2_switch.py` | The switch-over: `--dry-run [--build]` rehearses it on a staging copy; `--apply --out _site` writes the switched site to a folder (never over the repo). Waits for the owner's go. |
 | `v3_directions.py` | Generator for the abandoned v3 directions. |
 
 Gates before every push: `./build.sh`, `python3 tools/audit.py --drift`
-(0 FAIL), `python3 tools/smoke.py` (0 FAIL; a pinch test can flake, rerun once).
+(0 FAIL), `python3 tools/smoke.py` (0 FAIL; a pinch test can flake, rerun once),
+`python3 tools/v2_check.py` (0 FAIL) and `python3 tools/v2_switch.py --dry-run`
+(0 FAIL). Python needs fonttools, brotli, pillow and playwright 1.56 (for the
+pre-installed Chromium).
 Preview: any static server at the repo root (the old one was
 `python3 /tmp/claude-0/serve.py` on 127.0.0.1:8765; recreate if needed).
 
@@ -65,6 +71,15 @@ Preview: any static server at the repo root (the old one was
   Workers, so the form stays mailto. A free alternative (Google Apps Script in
   their Workspace) was offered, not built.
 
+## Overnight run, 26 to 27 Sep (read docs/v2-report.md)
+
+v2 now covers every page (182), every episode in the chosen layout, the
+responsive / speed / accessibility / SEO-parity passes are done, the design
+rules are frozen in `docs/v2-design-rules.md`, and the switch-over is
+prepared and rehearsed but not performed (runbook in the report; it needs the
+owner to change the GitHub Pages source). `docs/v2-plan.md` is the plan that
+was followed.
+
 ## Open items / next steps
 
 0. Done: the owner picked the fly-through (option 2 on
@@ -74,14 +89,9 @@ Preview: any static server at the repo root (the old one was
    heading ("See where we fly") over the India picture; the old intro line was
    dropped. Text kept short on purpose.
 
-1. DECIDED (owner, 26 Sep): the episode layout for every episode is the
-   no-portrait one (player beside the title, quote and guest card in one row
-   below): see the Bruce Goldsmith, Zsolt Ero and Damien Lacaze samples. The
-   portrait layout (Urs Haari sample) is dropped, even for guests who have a
-   clean portrait. To do, only when the owner says go: make
-   `tools/v2_episode.py` always use the player-beside-title hero, rebuild the
-   Urs sample, then roll the design out to all episodes (`tools/v2_episode.py` over every slug, then fold it into
-   `generate_chapter_deck.py` before switch-over).
+1. DONE (overnight run): every episode is in v2 with the player-beside-title
+   layout the owner chose (`tools/v2_episode.py --all`). Folding it into the
+   live build is part of the switch-over (the deploy workflow runs it).
 2. Text trimming pass across the site (show before/after word counts).
 3. Put 136 countries and the Kenya price on the LIVE site (offered, not yet
    approved).
