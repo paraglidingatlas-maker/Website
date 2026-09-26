@@ -33,6 +33,13 @@ how to use them. The living examples are on `prototypes/v4/styleguide.html`.
 | green #5fd08a | only for "Guaranteed to run" |
 
 ## Type
+**Page titles (v4): three sizes, one weight (700).** `--fs-display` for a
+hero over a photo or film (home, podcast, about, partners, trips);
+`--fs-h1` for a hero on the sky (library, topics, text pages, the knowledge
+base door); `--fs-title-s` for long titles (episodes, knowledge base
+articles). An episode's on-screen title is its short part; the rest sits
+under it, smaller, and every word stays in the `<h1>` (`tools/v4_pass.py`).
+
 Poppins (`--font-display`) for titles and numbers, DM Sans (`--font-body`)
 for everything else. Sizes only from the scale: `--fs-micro` (kickers,
 labels), `--fs-small` (meta, chips), `--fs-body-s` (card text), `--fs-body`,
@@ -43,14 +50,24 @@ labels), `--fs-small` (meta, chips), `--fs-body-s` (card text), `--fs-body`,
 ## Space and layout
 - A section is a band: `.kit-band` (vertical `--sp-section`, sides
   `--gutter`), content in `.kit-in` (max `--measure`, 1300px).
-- Head: `.kit-head` = `.kit-kicker` + `.kit-title` + optional `.kit-intro`.
+- Head: `.kit-head` = `.kit-kicker` + `.kit-title` + optional `.kit-intro`,
+  then the rule (a hairline with a short orange lead, drawn by the head
+  itself) and, optionally, `.kit-note` on the right (a count, a link, a
+  caption; under the title on a phone). One pattern for every section head.
+- **Folded text (v4):** words the first read does not need go in a
+  `<details>` (`.v4-fold`, or a panel that is a `<details>` whose title is the
+  summary). Never loaded by a script, so search and answer engines read them.
+- **No void before the footer:** the footer's ridge is the page's ending; the
+  last band keeps a short gap.
 - Gaps only from `--sp-1` to `--sp-5`.
 - Grids: `.kit-grid` (auto-fill 17rem), `.is-2`, `.is-3`. Never three narrow
   columns on a tablet: two to a row between 561 and 1024px.
 
 ## Pieces
 - **Buttons:** two kinds only. `.btn-solid` (orange, skewed, one per group)
-  and `.btn-lines` (outlined). A status (`.v2-status`) may sit after them.
+  and `.btn-lines` (a hairline above and below). The listen buttons and the
+  episode's listen links are these two as well (v4). A status (`.v2-status`)
+  may sit after them. Buttons and fields take the page's type (the Arial fix).
 - **Panel:** `.kit-panel`, lit from its top-left corner, words only.
 - **Card:** `.kit-card`, a picture and words.
 - **Soft surfaces, not boxes:** cards (episode tiles, topic and knowledge base

@@ -1185,3 +1185,173 @@ html .mp-scan{display:none;}
 .page-wrap > nav .v2-hud{opacity:0;visibility:hidden;transition:opacity .5s ease,visibility 0s .5s;}
 .page-wrap > nav .v2-hud.is-flying{opacity:1;visibility:visible;transition:opacity .5s ease;}
 .page-wrap > nav.v2-nav-pinned .v2-hud{opacity:0;visibility:hidden;}
+
+/* ===========================================================================
+   V4 GRAMMAR (docs/v4-design-rules.md). Consistent in the grammar, distinctive
+   in the moments: one type family per job, three page-title sizes and one
+   weight, one section head, two buttons, one chip. html-prefixed where a
+   page's own <style> would otherwise win.
+   ========================================================================= */
+
+/* buttons and form fields take the page's type (browsers do not pass it down
+   on their own, so a <button> or an <input> was drawing in Arial) */
+:where(button, input, select, textarea, optgroup){font-family:inherit;}
+
+/* ---- page titles: three sizes, one weight (700) ----
+   display  a hero over a photo or film          --fs-display
+   page     a hero on the sky (no picture)       --fs-h1
+   compact  long titles: episodes, KB articles   --fs-title-s */
+:root{--fs-title-s:clamp(1.9rem,4vw,3rem);}
+html h1{font-weight:700;}
+html .pw-hero-copy h1{font-weight:700;}
+html .v2-dst .dst-country{font-size:var(--fs-display);font-weight:700;line-height:1;}
+html .clb-hero h1{font-size:var(--fs-h1);}
+html body[data-v2="kb"] .k-hero-copy h1{font-size:var(--fs-title-s);font-weight:700;}
+html body[data-v2="ep"] .cd-head h1{font-size:var(--fs-title-s);font-weight:700;}
+
+/* ---- the section head: kicker, title, a rule, and a note on the right ----
+   The rule is the site's hairline with a short orange lead; the note
+   (.kit-note: a count, a link, a caption) sits right, on the title's line. */
+.kit-head::after{content:"";display:block;height:1px;margin-top:var(--sp-3);
+  background:linear-gradient(90deg,var(--orange) 0 2.5rem,var(--edge-hi) 2.5rem,var(--line) 55%,transparent);}
+.kit-head.is-center::after{margin-left:auto;margin-right:auto;max-width:28rem;
+  background:linear-gradient(90deg,transparent,var(--line) 25%,var(--orange) calc(50% - 1.25rem),var(--orange) calc(50% + 1.25rem),var(--line) 75%,transparent);}
+.kit-head:has(> .kit-note){max-width:none;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:var(--sp-4);align-items:end;}
+.kit-head:has(> .kit-note) > :not(.kit-note){grid-column:1;max-width:48rem;}
+.kit-head:has(> .kit-note)::after{grid-column:1 / -1;}
+.kit-note{grid-column:2;grid-row:1 / span 3;align-self:end;justify-self:end;text-align:right;
+  font-size:var(--fs-small);color:var(--gray);margin:0;max-width:22rem;line-height:1.5;}
+.kit-note a{color:var(--white);text-decoration:none;border-bottom:1px solid var(--edge-hi);padding-bottom:.15rem;transition:color .2s ease,border-color .2s ease;}
+.kit-note a:hover{color:var(--orange);border-color:var(--orange);}
+@media (max-width:640px){
+  .kit-head:has(> .kit-note){display:block;}
+  .kit-note{text-align:left;margin-top:var(--sp-2);}
+}
+
+/* ---- buttons: .btn-solid and .btn-lines only ----
+   The listen buttons (podcast, home, the call panel) were a third kind, a
+   skewed outlined box; they now read as .btn-lines with their icon. On an
+   episode the first listen link is the solid one, the second the lines. */
+html .listen-btn{transform:none;border:0;border-top:1px solid var(--edge-hi);border-bottom:1px solid var(--edge-hi);
+  background:transparent;padding:.6rem .2rem;flex:0 0 auto;min-width:0;}
+html .listen-btn span{transform:none;font-weight:500;font-size:.95rem;}
+html .listen-btn:hover{background:transparent;border-color:var(--orange);transform:translateY(-2px);}
+html .listen-btn:hover span,html .listen-btn:hover svg{color:var(--orange);}
+html .listen-buttons{gap:.6rem 1.6rem;}
+html .cta-band .cta-buttons .listen-btn{padding-left:.2rem;padding-right:.2rem;}
+
+/* ---- one chip: a soft fill; the chosen one orange ---- */
+html :is(.cd-tag, .pw-interest span, .clb-tag){border-color:transparent;background:rgba(255,255,255,.05);border-radius:0;}
+html a.cd-tag:hover{background:rgba(255,255,255,.09);color:var(--white);border-color:transparent;}
+html .pw-interest input:checked + span{background:var(--orange);color:var(--ink);border-color:transparent;}
+
+/* ---- Partners, into the site's scale ----
+   Its section titles were 61px extra-bold and its tiles outlined boxes: the
+   titles take the kit's section size and weight, the kickers the kit's
+   kicker, the tiles and stats soft surfaces. Its own layout (the flight line
+   down the side, the reel, the glass form) stays: that is its moment. */
+html body[data-v2="pg"] :is(.pw-chapter, .pw-air-copy, .pw-contact-copy, .pw-trust) h2{font-size:var(--fs-h2);font-weight:700;line-height:1.15;letter-spacing:-.015em;}
+html body[data-v2="pg"] :is(.pw-hero-copy, .pw-chapter, .pw-air-copy, .pw-contact-copy, .pw-trust, .pw-node) .kicker{display:block;font-family:var(--font-body);
+  font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);}
+html body[data-v2="pg"] .pw-stat b{font-weight:700;}
+html body[data-v2="pg"] .pw-item .n{font-weight:700;}
+html .pw-tile{border-color:transparent;background:rgba(255,255,255,.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.06);}
+html .pw-field :is(input, textarea){border-color:transparent;border-bottom-color:var(--edge);background:rgba(255,255,255,.04);}
+html .pw-field :is(input, textarea):focus{border-bottom-color:var(--orange);}
+
+/* ---- folded text (.v4-fold, and a panel that is a <details>) ----
+   Words the owner wants off the first read stay in the page, in a <details>:
+   search and answer engines read them, JavaScript is not needed to open them. */
+.v4-fold{margin-top:var(--sp-2);}
+.v4-fold > summary,.v4-why-item > summary{list-style:none;cursor:pointer;}
+.v4-fold > summary::-webkit-details-marker,.v4-why-item > summary::-webkit-details-marker{display:none;}
+.v4-fold > summary{display:inline-flex;align-items:center;gap:.6rem;min-height:2.2rem;font-size:var(--fs-small);
+  font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-light);transition:color .2s ease;}
+.v4-fold > summary::after,.v4-why-item > summary::after{content:"";width:.55rem;height:.55rem;flex:none;
+  border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;rotate:45deg;translate:0 -.15rem;transition:rotate .25s ease,translate .25s ease;}
+.v4-fold[open] > summary::after,.v4-why-item[open] > summary::after{rotate:225deg;translate:0 .15rem;}
+.v4-fold > summary:hover,.v4-fold[open] > summary{color:var(--orange);}
+.v4-fold > :not(summary){max-width:62ch;}
+.v4-fold p{font-size:var(--fs-body-s);line-height:1.7;color:var(--gray-light);margin:var(--sp-1) 0 var(--sp-2);}
+.v4-fold .cta-list li{font-size:var(--fs-body-s);padding:.55rem 0;border-bottom:1px solid var(--line);}
+
+/* ---- home: the call, at the foot of the departures (it was its own band) ---- */
+.v4-call{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--sp-3) var(--sp-5);align-items:start;
+  margin-top:var(--sp-4);padding:var(--sp-4) var(--sp-4) var(--sp-3);position:relative;
+  background:radial-gradient(120% 140% at 0% 0%,rgba(255,117,23,.09) 0%,rgba(255,117,23,.02) 40%,transparent 75%);
+  border-top:1px solid;border-image:linear-gradient(90deg,var(--orange),var(--edge) 30%,transparent) 1;}
+.v4-call-title{font-family:var(--font-display);font-weight:700;font-size:var(--fs-h3);line-height:1.2;color:var(--white);margin:0;max-width:30ch;}
+.v4-call-actions{margin-top:.2rem;flex-wrap:nowrap;}
+.v4-wa{display:inline-flex;align-items:center;gap:.5rem;}
+.v4-wa svg{width:18px;height:18px;}
+@media (max-width:820px){
+  .v4-call{grid-template-columns:1fr;padding:var(--sp-3) 0 0;background:none;}
+  .v4-call-actions{flex-wrap:wrap;}
+}
+
+/* ---- home: why fly with us, each panel a title that opens ---- */
+.v2-proof .v4-why-item{display:block;padding:0;}
+.v4-why-item > summary{display:grid;grid-template-columns:3.4rem minmax(0,1fr) auto;align-items:center;column-gap:var(--sp-2);
+  padding:var(--sp-3);min-height:44px;}
+.v4-why-item > summary .v2-ic{margin:0;width:42px;height:42px;}
+.v4-why-item > summary h3{margin:0;transition:color .2s ease;}
+.v4-why-item > summary::after{color:var(--gray);margin-right:.3rem;}
+.v4-why-item > summary:hover h3,.v4-why-item[open] > summary h3{color:var(--orange);}
+.v4-why-item > p{padding:0 var(--sp-3) var(--sp-3) calc(3.4rem + var(--sp-2) + var(--sp-3));margin:0;}
+@media (max-width:640px){
+  .v4-why-item > summary{grid-template-columns:42px minmax(0,1fr) auto;column-gap:.9rem;padding:var(--sp-2) var(--sp-2) var(--sp-2) 0;}
+  .v4-why-item > p{padding:0 0 var(--sp-2) calc(42px + .9rem);}
+}
+@media (prefers-reduced-motion:reduce){
+  .v4-fold > summary::after,.v4-why-item > summary::after{transition:none;}
+}
+@media (max-width:640px){
+  /* the listen links read down a list on a phone: two to a row, one hairline between rows */
+  html .listen-buttons{display:grid;grid-template-columns:1fr 1fr;gap:0 1.2rem;border-top:1px solid var(--edge-hi);}
+  html .listen-btn{border-top:0;justify-content:flex-start;padding:.8rem .1rem;}
+  html .cta-band .cta-buttons .listen-btn{padding-left:.1rem;}
+}
+
+/* ---- no empty voids before the footer ----
+   The ridge at the top of the footer already gives the page its ending; the
+   last band before it keeps only a short gap (library, topics). */
+.kit-band:has(#pager){padding-bottom:var(--sp-4);}
+.kit-band:has(#pager) .v2-pager{margin-top:var(--sp-4);}
+html [data-v2="tg"] .tg-back{padding-bottom:var(--sp-4);}
+html [data-v2="tg"] .tg-list{padding-bottom:0;}
+footer{margin-top:0;}
+/* the topics grid: soft tiles with a small gap, so a short last row leaves
+   no grey slab where the missing tiles would be */
+html [data-v2="tg"] .tg-cloud{background:none;border:0;gap:6px;}
+html [data-v2="tg"] .tg-tile{background:rgba(255,255,255,.035);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);}
+html [data-v2="tg"] .tg-tile:is(:hover, :focus-visible){background:rgba(255,255,255,.075);box-shadow:inset 0 1px 0 rgba(255,117,23,.35);}
+
+/* ---- episode titles: the short part large, the rest under it ----
+   tools/v4_pass.py splits a long title at a natural break; every word stays in
+   the <h1>. One compact size for every episode title. */
+html .ep2-h1,html .ep2-hero.is-media .ep2-h1{font-size:var(--fs-title-s);font-weight:700;}
+.ep2-pre{display:block;color:var(--gray-light);font-family:var(--font-body);font-size:1rem;font-weight:400;line-height:1.5;letter-spacing:0;margin:0 0 .5rem;}
+.ep2-h1.is-split{text-wrap:balance;}
+/* episode listen links: the first is the solid button, the rest the lines */
+html .ep2-listen .cd-lbtn:not(:first-child){transform:none;border-left:0;border-right:0;border-color:var(--edge-hi);
+  background:none;color:var(--white);font-weight:500;}
+html .ep2-listen .cd-lbtn:not(:first-child) span{transform:none;}
+html .ep2-listen .cd-lbtn:not(:first-child):hover{background:none;color:var(--orange);border-color:var(--orange);}
+html .ep2-listen .cd-lbtn:first-child{font-weight:600;}
+/* knowledge base: with its paragraphs folded, a section's right column (Read
+   more, the sources) sits level with the foot of the summary beside it */
+html body[data-v2="kb"] .band:has(.k-more){align-items:end;}
+html body[data-v2="kb"] .k-more{margin:0 0 var(--sp-2);}
+html body[data-v2="kb"] .k-more[open]{margin-bottom:var(--sp-3);}
+/* podcast: what you can expect, five titles that open (icon above the title) */
+.v2-expect .v4-expect-item{padding:0;align-self:start;}
+.v4-expect-item > summary{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"ic ic" "t ch";row-gap:.9rem;padding:var(--sp-3);}
+.v4-expect-item > summary .v2-ic{grid-area:ic;}
+.v4-expect-item > summary h3{grid-area:t;}
+.v4-expect-item > summary::after{grid-area:ch;align-self:center;}
+.v4-expect-item > p{padding:0 var(--sp-3) var(--sp-3);}
+@media (max-width:640px){
+  .v4-expect-item > summary{grid-template-columns:42px minmax(0,1fr) auto;grid-template-areas:"ic t ch";padding:var(--sp-2) var(--sp-2) var(--sp-2) 0;}
+  .v4-expect-item > p{padding:0 0 var(--sp-2) calc(42px + .9rem);}
+}
+.v2-wwu .v4-fold p{font-size:var(--fs-body-s);}
