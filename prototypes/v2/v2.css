@@ -1047,3 +1047,29 @@ img.v2-img-in{transition:opacity .7s ease,filter .9s ease;}
   .v2-tours{grid-template-columns:minmax(0,1fr);}
   .v2-facts{grid-template-columns:minmax(0,1fr);}
 }
+
+/* ---- the contours carry the scroll (v2-immersive.js adds .v2-trails) ----
+   Laid exactly over the backdrop's centre tile (center / 1600px, 1100px on a
+   phone). Each line has a bright head and a soft tail with the same leading
+   end, driven down the line by the section's own passage through the screen. */
+.v2-topo,.enq-wrap{overflow:clip;}
+.v2-trails{position:absolute;left:50%;top:50%;width:1600px;height:1000px;translate:-50% -50%;z-index:-1;pointer-events:none;overflow:visible;
+  -webkit-mask-image:radial-gradient(60% 60% at 50% 50%,#000 35%,transparent 100%);
+          mask-image:radial-gradient(60% 60% at 50% 50%,#000 35%,transparent 100%);}
+@media (max-width:700px){ .v2-trails{width:1100px;height:687.5px;} }
+.v2-trail{fill:none;stroke:#ffa05c;stroke-linecap:round;stroke-width:2;stroke-dasharray:.05 3;stroke-dashoffset:.05;
+  filter:drop-shadow(0 0 3px rgba(255,140,60,.95)) drop-shadow(0 0 9px rgba(255,117,23,.55));opacity:.95;}
+.v2-trail-1{stroke-width:1.3;opacity:.7;}
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .v2-trail{animation:v2-trail-head linear both;animation-timeline:view();animation-range:entry 10% exit 90%;}
+    @keyframes v2-trail-head{from{stroke-dashoffset:.05;} to{stroke-dashoffset:-1;}}
+  }
+}
+.v2-trail-tail{fill:none;stroke:var(--orange);stroke-linecap:round;stroke-width:1.4;stroke-dasharray:.16 3;stroke-dashoffset:.16;opacity:.4;}
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .v2-trail-tail{animation:v2-trail-tail linear both;animation-timeline:view();animation-range:entry 10% exit 90%;}
+    @keyframes v2-trail-tail{from{stroke-dashoffset:.16;} to{stroke-dashoffset:-.89;}}
+  }
+}

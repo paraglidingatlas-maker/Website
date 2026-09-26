@@ -17,6 +17,7 @@ Deterministic (fixed seed), so re-running gives the same files.
 import math
 import os
 import random
+import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "prototypes", "v2", "img")
@@ -120,6 +121,28 @@ def contours():
            '<g fill="none" stroke="#b4b4b4" stroke-width=".8" stroke-linejoin="round" stroke-linecap="round">%s</g></svg>\n') % (w, h, "".join(paths))
     open(os.path.join(OUT, "contours.svg"), "w").write(svg)
     return len(paths)
+
+
+def trails():
+    """Two of the contour lines that run the height of the drawing (levels 7
+    and 3, one through the middle and one to the right, clear of the text),
+    drawn top to bottom. The page sends a short glow down them as it scrolls
+    (v2-immersive.js); the paths are written into that file between markers."""
+    w, h, step = 1600, 1000, 12
+    z = terrain(w, h, 7)
+    out = []
+    for n in (7, 3):
+        lv = 0.06 + n * 0.075
+        line = max(join(march(z, w, h, step, lv)), key=lambda l: max(p[1] for p in l) - min(p[1] for p in l))
+        if line[0][1] > line[-1][1]:
+            line = line[::-1]
+        out.append(smooth_path(line))
+    js = os.path.join(ROOT, "prototypes", "v2", "v2-immersive.js")
+    src = open(js, encoding="utf-8").read()
+    lst = ",".join('"%s"' % d for d in out)
+    src = re.sub(r"/\*v2-trails\*/.*?/\*/v2-trails\*/", lambda m: "/*v2-trails*/" + lst + "/*/v2-trails*/", src, flags=re.S)
+    open(js, "w", encoding="utf-8").write(src)
+    return len(out)
 
 
 def ridge():
@@ -232,4 +255,5 @@ if __name__ == "__main__":
         os.makedirs(OUT, exist_ok=True)
         n = contours()
         ridge()
-        print("v2 art: contours.svg (%d lines), ridge.svg" % n)
+        t = trails()
+        print("v2 art: contours.svg (%d lines), ridge.svg, %d glow trails" % (n, t))
