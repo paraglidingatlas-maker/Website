@@ -69,8 +69,8 @@
     d.addEventListener("click", function (e) {
       var a = e.target.closest && e.target.closest('a[href*="destinations/"]');
       if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey) return;
-      var block = a.closest(".v2-dest");
-      var img = block && block.querySelector(".kit-feature-media img");
+      var block = a.closest(".v2-flyby");
+      var img = block && block.querySelector(".v2-fb-shot.is-on img");
       if (!img) return;
       img.style.viewTransitionName = "v2-dest";
       store.set("v2-dest", "1");
@@ -85,7 +85,7 @@
       e.viewTransition.finished.then(off, off);
     });
     w.addEventListener("pageshow", function () {
-      d.querySelectorAll(".kit-feature-media img").forEach(function (i) { i.style.viewTransitionName = ""; });
+      d.querySelectorAll(".v2-fb-shot img").forEach(function (i) { i.style.viewTransitionName = ""; });
     });
   }
 

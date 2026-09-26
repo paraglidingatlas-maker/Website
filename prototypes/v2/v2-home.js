@@ -43,3 +43,23 @@
     if (d) d.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   });
 })();
+
+/* The four expeditions, flown through: the step in the middle of the screen
+   picks the picture held behind it and lights its name on the altimeter.
+   Scroll-driven only; nothing runs while the page is still. */
+(function () {
+  var box = document.querySelector('[data-flyby]');
+  if (!box || !('IntersectionObserver' in window)) return;
+  var shots = box.querySelectorAll('.v2-fb-shot'), alts = box.querySelectorAll('.v2-fb-alt li'),
+      steps = [].slice.call(box.querySelectorAll('.v2-fb-step'));
+  function show(i) {
+    [shots, alts, steps].forEach(function (list) {
+      [].forEach.call(list, function (el, k) { el.classList.toggle('is-on', k === i); });
+    });
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (en) { if (en.isIntersecting) show(steps.indexOf(en.target)); });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  steps.forEach(function (s) { io.observe(s); });
+  box.classList.add('is-live');
+})();
