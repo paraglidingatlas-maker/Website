@@ -221,7 +221,10 @@ def check_browser(rels, shots=None):
     with sync_playwright() as p:
         b = p.chromium.launch(executable_path=CHROME) if os.path.exists(CHROME) else p.chromium.launch()
         for w in WIDTHS:
-            ctx = b.new_context(viewport={"width": w, "height": 900 if w > 500 else 844})
+            # the phone width is a touch phone (pointer:coarse), as the site's touch sizes expect
+            phone = w < 500
+            ctx = b.new_context(viewport={"width": w, "height": 844 if phone else 900},
+                                has_touch=phone, is_mobile=phone, device_scale_factor=2 if phone else 1)
             pg = ctx.new_page()
             errs = []
             pg.on("pageerror", lambda e: errs.append("pageerror: " + str(e)[:140]))

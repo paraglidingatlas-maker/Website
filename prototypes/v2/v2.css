@@ -344,6 +344,8 @@ a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
 .v2-expect > :nth-child(4),.v2-expect > :nth-child(5){grid-column:span 3;}
 @media (min-width:1280px){ .kit-grid.v2-expect{grid-template-columns:repeat(5,minmax(0,1fr));} .v2-expect > *,.v2-expect > :nth-child(n){grid-column:auto;} }
 @media (max-width:760px){ .kit-grid.v2-expect{grid-template-columns:1fr;} .v2-expect > :nth-child(n){grid-column:auto;} }
+/* tablet: two to a row, the fifth across the full width, so no column gets squeezed */
+@media (min-width:761px) and (max-width:1024px){ .kit-grid.v2-expect{grid-template-columns:repeat(2,minmax(0,1fr));} .v2-expect > :nth-child(n){grid-column:auto;} .v2-expect > :nth-child(5){grid-column:1 / -1;} }
 
 /* ===========================================================================
    EPISODE LIBRARY (prototypes/v2/library.html): a browser. Series tiles (the
@@ -864,7 +866,13 @@ footer::after{top:-120px;height:360px;
 @media (hover:hover){ .kit-panel:hover .v2-ic-bezel{stroke:rgba(255,117,23,.55);transform:rotate(22deg);} }
 .v2-proof .kit-panel .v2-ic{grid-row:span 2;margin:.1rem 0 0;width:42px;height:42px;}
 .v2-proof .kit-panel{grid-template-columns:3.4rem minmax(0,1fr);}
-@media (max-width:700px){ .v2-proof .kit-panel .v2-ic{grid-row:auto;margin:0 0 .7rem;} }
+/* phone: the icon beside the heading, the words the full width under both */
+@media (max-width:700px){
+  .v2-proof .kit-panel{grid-template-columns:42px minmax(0,1fr);column-gap:.9rem;align-items:center;}
+  .v2-proof .kit-panel .v2-ic{grid-row:auto;margin:0;}
+  .v2-proof .kit-panel h3{margin:0;}
+  .v2-proof .kit-panel > :not(.v2-ic):not(h3){grid-column:1 / -1;margin-top:.8rem;}
+}
 @media (prefers-reduced-motion: reduce){ .v2-ic-bezel{transition:none;} .kit-panel:hover .v2-ic-bezel{transform:none;} }
 
 /* ======================= TYPE CONTRAST =======================
@@ -1095,3 +1103,33 @@ img.v2-img-in{transition:opacity .7s ease,filter .9s ease;}
 .v2-team.is-one .v2-person-pic{aspect-ratio:4/5;}
 .v2-team.is-one .v2-person p{font-size:1.02rem;}
 @media (max-width:560px){ .v2-team.is-one .v2-person{grid-template-columns:minmax(0,1fr);} .v2-team.is-one .v2-person-pic{max-width:260px;} }
+
+/* ===== Touch sizes, the v2 pieces =========================================
+   Same rule as the live site (styles.css): a finger needs about 44px, so on a
+   touch screen these grow to that and keep their compact look under a mouse.
+   ========================================================================= */
+@media (pointer:coarse){
+  .wordmark{display:inline-flex;align-items:center;min-height:44px;}
+  .nav-cta{min-height:44px;}
+  body[data-v2] .tg-chip{min-height:44px;}
+  .chips a,[data-v2="kb"] a.src{display:inline-flex;align-items:center;min-height:44px;}
+  [data-v2="kb"] .cardx a.src{display:flex;}
+  .kair-src{display:inline-flex;align-items:center;min-height:44px;}
+  .cfl-dot{min-height:44px;}
+  .ep2-track{height:44px;}
+  .cd-more,.ep2-next-all,[data-v2="kb"] .who a{display:inline-flex;align-items:center;min-height:44px;}
+  .pol-toc a{display:flex;align-items:center;min-height:44px;}
+  .sm-ctrl button{min-height:44px;min-width:44px;}
+  .pw-reel-h a{display:inline-flex;align-items:center;min-height:44px;}
+}
+
+/* the hero's words stay readable over the brightest frames (snow): a soft
+   dark pool behind them, no box */
+.v2-home-hero .kit-hero-copy::before{content:"";position:absolute;z-index:-1;inset:-18% -30% -22% -40%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(20,21,25,.72),rgba(20,21,25,.35) 60%,rgba(20,21,25,0));}
+/* tablet: the departure cards two to a row instead of one long column */
+@media (min-width:561px) and (max-width:820px){
+  .v2-deps.kit-panel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:2rem;}
+  .v2-deps .v2-dep:nth-last-child(2):nth-child(odd){border-bottom:0;}
+}
+.v2-home-hero .kit-kicker{color:var(--orange-lite,#ff8a3d);text-shadow:0 0 2px rgba(0,0,0,.95),0 1px 4px rgba(0,0,0,.85),0 0 18px rgba(0,0,0,.55);}
