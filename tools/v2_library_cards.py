@@ -18,9 +18,13 @@ import html
 import json
 import os
 import re
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import v2_site as S  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGE = os.path.join(ROOT, "prototypes", "v2", "library.html")
+PAGE = os.path.join(S.DIR, "library.html")
 
 EXPAND = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" '
           'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/>'

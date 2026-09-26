@@ -25,8 +25,11 @@ import os
 import re
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import v2_site as S  # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-V2 = os.path.join(ROOT, "prototypes", "v2")
+V2 = S.DIR
 SKIP = re.compile(r"^(?:[a-z][a-z0-9+.-]*:|//|#|/|\{|\$|%)", re.I)
 ATTR = re.compile(r'(\s(?:href|src|poster|data-src|data-poster|data-loop)=")([^"]*)(")', re.I)
 SRCSET = re.compile(r'(\s(?:srcset|data-srcset)=")([^"]*)(")', re.I)
@@ -125,7 +128,7 @@ def main():
     lst = ",".join('"%s"' % os.path.relpath(p, V2).replace(os.sep, "/") for p in pages)
     src = re.sub(r"/\*v2-pages\*/.*?/\*/v2-pages\*/", "/*v2-pages*/" + lst + "/*/v2-pages*/", src)
     open(js, "w", encoding="utf-8").write(src)
-    print("v2: %d pages, %d problems" % (len(pages), problems))
+    print("%s: %d pages, %d problems" % (S.NAME, len(pages), problems))
     return 1 if problems else 0
 
 

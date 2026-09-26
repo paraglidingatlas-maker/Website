@@ -26,8 +26,11 @@ import os
 import re
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import v2_site as S  # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-V2 = os.path.join(ROOT, "prototypes", "v2")
+V2 = S.DIR
 TEXT_PAGES = ["privacy-policy.html", "mission.html", "partners.html", "corrections.html",
               "safety-and-disclosure.html", "cookie-policy.html", "terms.html",
               "participant-agreement.html"]

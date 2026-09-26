@@ -18,9 +18,13 @@ import math
 import os
 import random
 import re
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import v2_site as S  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "prototypes", "v2", "img")
+OUT = os.path.join(S.DIR, "img")
 
 
 def terrain(w, h, seed):
@@ -203,7 +207,7 @@ ABOUT = (("Experience", "canopy"), ("Service", "talk"), ("Community Empowerment"
 
 def icons():
     import re
-    v2 = os.path.join(ROOT, "prototypes", "v2")
+    v2 = S.DIR
     n = 0
     for page, swaps in ICON_SWAPS.items():
         fp = os.path.join(v2, page)

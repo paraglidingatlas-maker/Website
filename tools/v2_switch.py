@@ -35,11 +35,13 @@ import shutil
 import subprocess
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import v2_site as S  # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-V2 = os.path.join(ROOT, "prototypes", "v2")
-V2_ONLY = {"styleguide.html", "fly-options.html"}
+V2 = S.DIR
 ABSOLUTE = {"404.html"}                 # GitHub Pages serves it for any missing path
-ASSET_DIR = "assets/v2"
+ASSET_DIR = S.ASSET_DIR
 NOINDEX = '<meta name="robots" content="noindex, nofollow">\n'
 SKIP = re.compile(r"^(?:[a-z][a-z0-9+.-]*:|//|#|/|\{|\$|%|data:)", re.I)
 ATTR = re.compile(r'(\s(?:href|src|poster|data-src|data-poster|data-loop)=")([^"]*)(")', re.I)
@@ -54,9 +56,18 @@ def v2_pages():
         for f in fs:
             if f.endswith(".html"):
                 rel = os.path.relpath(os.path.join(d, f), V2).replace(os.sep, "/")
-                if rel not in V2_ONLY:
+                if not S.proto_only(rel):
                     out.append(rel)
     return sorted(out)
+
+
+def all_pages():
+    out = []
+    for d, _, fs in os.walk(V2):
+        for f in fs:
+            if f.endswith(".html"):
+                out.append(os.path.relpath(os.path.join(d, f), V2).replace(os.sep, "/"))
+    return out
 
 
 def v2_assets():
@@ -117,7 +128,7 @@ def transform(rel, pages):
 
 
 def apply(root):
-    pages = set(v2_pages()) | V2_ONLY
+    pages = set(v2_pages()) | set(p for p in all_pages() if S.proto_only(p))
     for a in v2_assets():
         dst = os.path.join(root, ASSET_DIR, a)
         os.makedirs(os.path.dirname(dst), exist_ok=True)
@@ -184,8 +195,8 @@ def dry_run(stage, build=False):
         sr = re.findall(r'<meta name="robots"[^>]*>', s_src)
         if lr != sr:
             fails.append("%s: robots %s, live %s" % (rel, sr, lr))
-        if "prototypes/v2" in re.sub(r"<!--.*?-->", "", s_src, flags=re.S).replace("prototypes/v2/ only", ""):
-            notes.append("%s: still mentions prototypes/v2" % rel)
+        if "prototypes/" + S.NAME in re.sub(r"<!--.*?-->", "", s_src, flags=re.S).replace("prototypes/v2/ only", ""):
+            notes.append("%s: still mentions prototypes/%s" % (rel, S.NAME))
         # every relative link resolves inside the staging site
         here = os.path.dirname(os.path.join(stage, rel))
         refs = [m.group(2) for m in ATTR.finditer(s_src)] + [u.strip().split(" ")[0] for m in SRCSET.finditer(s_src) for u in m.group(2).split(",")]
@@ -219,7 +230,7 @@ def main():
     g = ap.add_mutually_exclusive_group(required=True)
     g.add_argument("--dry-run", action="store_true")
     g.add_argument("--apply", action="store_true")
-    ap.add_argument("--stage", default="/tmp/claude-0/v2-stage")
+    ap.add_argument("--stage", default=S.STAGE)
     ap.add_argument("--out", help="apply: write the switched site into this folder (a copy of the repo), never over the repo")
     ap.add_argument("--build", action="store_true", help="dry run: run build.sh in the stage first, as the real pipeline would")
     a = ap.parse_args()

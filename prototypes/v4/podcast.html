@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paragliding Atlas Podcast: The Art and Science of Free Flight</title>
+<meta name="description" content="The Paragliding Atlas podcast: 90+ interviews with paraglider designers, test pilots, instructors and world champions, each with chapters and a full transcript.">
+<link rel="canonical" href="https://paraglidingatlas.com/podcast.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Paragliding Atlas Podcast">
+<meta property="og:description" content="The Paragliding Atlas podcast: 90+ interviews with paraglider designers, test pilots, instructors and world champions, each with chapters and a full transcript.">
+<meta property="og:image" content="https://paraglidingatlas.com/assets/images/hero.jpg">
+<meta property="og:url" content="https://paraglidingatlas.com/podcast.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://paraglidingatlas.com/podcast.html#webpage",
+  "name": "The Paragliding Atlas Podcast",
+  "url": "https://paraglidingatlas.com/podcast.html",
+  "description": "The Paragliding Atlas podcast: 90+ interviews with paraglider designers, test pilots, instructors and world champions, each with chapters and a full transcript.",
+  "isPartOf": {
+    "@id": "https://paraglidingatlas.com/#website"
+  },
+  "publisher": {
+    "@id": "https://paraglidingatlas.com/#organization"
+  },
+  "inLanguage": "en",
+  "dateModified": "2026-09-25"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "PodcastSeries",
+ "@id": "https://paraglidingatlas.com/podcast.html#podcast",
+ "name": "Paragliding Atlas Podcast",
+ "alternateName": "Paragliding Atlas by Aninder Singh",
+ "url": "https://paraglidingatlas.com/podcast.html",
+ "description": "The Paragliding Atlas podcast: 90+ interviews with paraglider designers, test pilots, instructors and world champions, each with chapters and a full transcript.",
+ "webFeed": "https://anchor.fm/s/ed1344d8/podcast/rss",
+ "inLanguage": "en",
+ "image": "https://paraglidingatlas.com/assets/images/pod-hero-gemona.jpg",
+ "author": {
+  "@type": "Person",
+  "name": "Aninder Singh"
+ },
+ "publisher": {
+  "@id": "https://paraglidingatlas.com/#organization"
+ },
+ "sameAs": [
+  "https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803",
+  "https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec",
+  "https://castbox.fm/channel/Paragliding-Atlas-by-Aninder-Singh-id6075445",
+  "https://www.podbean.com/podcast-detail/tb6yq-2f5cd4/Paragliding-Atlas-by-Aninder-Singh-Podcast"
+ ]
+}
+</script>
+<link rel="icon" type="image/png" href="../../assets/logo/favicon.png">
+<link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+<meta name="theme-color" content="#141519">
+<link rel="alternate" type="application/rss+xml" title="Paragliding Atlas Podcast" href="https://anchor.fm/s/ed1344d8/podcast/rss">
+<link rel="preload" href="../../assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
+<link rel="stylesheet" href="../../styles.css?v=c8d28696">
+<link rel="stylesheet" href="v2.css?v=10489ed9">
+<style>
+  .pod-hero{position:relative;min-height:64vh;display:flex;align-items:flex-end;}
+  .pod-hero-media{position:absolute;inset:0;z-index:-2;}
+  /* 68% 43% chosen on the slider, previewed at three window shapes. The frame
+     is far wider than tall, so vertical does nearly all the work: it picks the
+     band with the pilots in it over the cloud above or the valley below, which
+     the scrim swallows anyway. */
+  .pod-hero-media img{width:100%;height:100%;object-fit:cover;object-position:68% 43%;}
+  .pod-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg, rgba(20,21,25,0.2) 0%, rgba(20,21,25,1) 100%);}
+  .pod-hero-copy{padding:0 clamp(1.5rem,5vw,4rem) 3rem;max-width:760px;}
+  .pod-hero-copy .kicker{color:var(--orange);font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:1rem;}
+  .pod-hero-copy h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.08;color:var(--white);margin-bottom:1rem;}
+  .hero-mask{overflow:hidden;display:block;}
+  .hero-mask span{
+    display:inline-block;transform:translateY(105%);
+    animation:hero-reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  }
+  @keyframes hero-reveal{to{transform:translateY(0);}}
+  @media(prefers-reduced-motion: reduce){
+    .hero-mask span{animation:none;transform:translateY(0);}
+  }
+  .pod-hero-copy p{color:var(--gray-light);font-size:1.05rem;max-width:600px;}
+
+  /* ===== MEET YOUR HOST =====
+     The old treatment put a 280px square, bordered, in a fixed pixel column:
+     a CV headshot beside a paragraph, and the only fixed-pixel column on the
+     page. Worse, the photograph was an indoor snapshot, pine window frames and
+     a beige wall, the one image on a site of wings and valleys that did not
+     belong to it.
+
+     The replacement is a cut-out with a real alpha channel, so there is no
+     background to clash. He wears a dark cap and a dark jacket, which means the
+     silhouette merges into var(--bg) and only the face carries. So: no frame,
+     no border, no box. He stands on the floor of the section and the section
+     ends at his shoulders. A radial glow sits behind the head, because dark on
+     dark needs something to separate it. */
+  .host{position:relative;overflow:hidden;
+    padding:clamp(2.75rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem) 0;
+    background:linear-gradient(180deg, var(--card) 0%, var(--bg) 100%);
+    display:grid;grid-template-columns:minmax(0,clamp(15rem,25vw,22rem)) 1fr;
+    gap:clamp(1.5rem,4vw,3.5rem);align-items:end;}
+
+  /* Two stepped rules, both behind him. The grid is 1600 by 1000 stretched over
+     the whole section, so the y values are absolute within it however wide the
+     window gets. Positions were chosen on a slider rather than by me guessing.
+     The dogleg angle is locked in script to 51.71 degrees, matching the
+     compass arms below, whose run is 76 against a step of 60. It is NOT the
+     buttons' 10 degree skew, which I wrongly claimed once. */
+  .host-bands{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;}
+  .host-bands path{fill:none;stroke-width:1.5;vector-effect:non-scaling-stroke;}
+  .host-bands .hb-grey{stroke:url(#hostGreyFade);}
+  .hb-stop-grey-out{stop-color:var(--edge-hi);stop-opacity:0;}
+  .hb-stop-grey-in{stop-color:var(--edge-hi);stop-opacity:1;}
+  .host-bands .hb-orange{stroke:url(#hostOrangeFade);opacity:0.9;}
+  .hb-stop-out{stop-color:var(--orange);stop-opacity:0;}
+  .hb-stop-in{stop-color:var(--orange);stop-opacity:1;}
+
+  /* The surname, penned into a band that stops above the platform buttons so it
+     cannot collide with them however the copy reflows. */
+  /* 64% of a 672px section put the plate above the copy. At 426 it put the
+     plate straight through the paragraph, a 56px overlap. Both the band and the
+     type are now sized to the shorter section, so the plate sits behind the
+     kicker and the name and stops above the body text. */
+  .host-plateband{position:absolute;left:0;right:0;top:0;height:43%;z-index:1;
+    pointer-events:none;overflow:hidden;}
+  .host-plate{position:absolute;right:3%;bottom:-8%;
+    font-family:var(--font-display);font-weight:800;
+    font-size:clamp(3.5rem,15vw,13rem);line-height:0.78;letter-spacing:-0.04em;
+    white-space:nowrap;color:transparent;
+    -webkit-text-stroke:1px rgba(180,180,180,0.17);}
+
+  .host-photo{position:relative;z-index:3;align-self:end;line-height:0;}
+  .host-photo::before{content:"";position:absolute;left:50%;top:34%;
+    width:130%;aspect-ratio:1/1;transform:translate(-50%,-50%);pointer-events:none;
+    background:radial-gradient(circle at 50% 50%,rgba(255,117,23,0.16) 0%,
+      rgba(255,117,23,0.05) 38%,rgba(255,117,23,0) 66%);}
+  /* The dissolve is on top of a repaired cut-out, not instead of one. The
+     previous file had a 2px alpha ramp and a pale fringe of leftover white
+     background bled into the boundary, 13.9 luminance brighter than the pixels
+     just inside it, which on a dark page traced a hard outline round him.
+     host-aninder-soft is eroded 2px, feathered and de-fringed: now +1.7. */
+  .host-photo img{position:relative;width:100%;height:auto;display:block;
+    -webkit-mask-image:
+      linear-gradient(180deg,#000 0%,#000 60%,rgba(0,0,0,0.5) 84%,transparent 100%),
+      radial-gradient(ellipse 76% 82% at 52% 40%,#000 42%,rgba(0,0,0,0.62) 74%,rgba(0,0,0,0.15) 96%);
+    -webkit-mask-composite:source-in;
+            mask-image:
+      linear-gradient(180deg,#000 0%,#000 60%,rgba(0,0,0,0.5) 84%,transparent 100%),
+      radial-gradient(ellipse 76% 82% at 52% 40%,#000 42%,rgba(0,0,0,0.62) 74%,rgba(0,0,0,0.15) 96%);
+            mask-composite:intersect;}
+  .host-copy{position:relative;z-index:4;padding-bottom:clamp(2.75rem,6vw,4.5rem);}
+  .host-copy .kicker{color:var(--orange);font-weight:600;
+    font-size:clamp(1.05rem,1.5vw,1.3rem);margin-bottom:0.7rem;}
+  .host-copy h2{font-family:var(--font-display);font-weight:700;
+    font-size:clamp(2.1rem,4.4vw,3.4rem);color:var(--white);line-height:1.05;
+    letter-spacing:-0.02em;margin-bottom:1.2rem;}
+  /* The surname shows as the big outline plate, which is decorative and sits in
+     an aria-hidden container. Without this the heading would read as "Aninder"
+     alone to a screen reader or a crawler, and the host's full name would exist
+     on the page only in the portrait's alt text. */
+  .host-surname{position:absolute;width:1px;height:1px;overflow:hidden;
+    clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;}
+  .host-copy p{color:var(--gray-light);line-height:1.75;margin-bottom:1.1rem;max-width:62ch;}
+  .host-platforms{display:flex;gap:0.9rem;flex-wrap:wrap;margin-top:1.5rem;}
+  /* Filled, not see-through. Stacked on a phone the grey rule runs at the
+     buttons' height and struck through "YouTube"; with a fill it passes behind
+     them instead. The fill is the section's own gradient at that height. */
+  .host-platforms .listen-btn:not(:hover){background:color-mix(in srgb, var(--card) 55%, var(--bg));}
+
+  /* ===== PULL QUOTE ===== */
+  /* Ledger split: quote left, figures stacked right on a shared baseline.
+     The gradient runs bg -> card so it meets .pod-hero, which fades to
+     rgba(20,21,25,.95), at the top and .host, which opens on --card, at the
+     bottom. Before this the block opened on --card directly under a hero
+     ending on --bg, which stepped, and the old .stat-bar underneath reversed
+     the gradient straight back again. */
+  .pull-quote{
+    position:relative;
+    padding:clamp(2.75rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem);
+    background:linear-gradient(180deg, var(--bg) 0%, var(--card) 100%);
+    display:grid;grid-template-columns:1.5fr 1fr;
+    gap:clamp(2rem,5vw,4.5rem);align-items:center;
+  }
+  .pq-copy{min-width:0;}
+  .pq-figs{border-left:1px solid var(--rule);padding-left:clamp(1.5rem,3vw,2.4rem);}
+  .quote-mark{
+    display:block;font-family:var(--font-display);font-weight:800;font-size:3rem;
+    color:var(--orange);line-height:0.62;margin-bottom:0.9rem;
+  }
+  .pull-quote p{
+    font-family:var(--font-display);font-weight:600;font-size:clamp(1.15rem,2.4vw,1.6rem);
+    color:var(--white);line-height:1.55;max-width:34ch;margin:0;
+  }
+  .kinetic-word{
+    display:inline-block;opacity:0;transform:translateY(0.4em);
+    transition:opacity 0.5s ease, transform 0.5s ease;
+  }
+  .kinetic-word.visible{opacity:1;transform:translateY(0);}
+
+  /* ===== FIGURES, LEDGER STYLE =====
+     Label and number share a baseline, number right aligned to the column edge.
+     The old rule had .num and .label as inline spans, so they rendered on one
+     line with no gap and read as "100 000+STREAMS". The text-shadow glow is
+     gone too: at 18px blur it made the orange look soft rather than bright. */
+  .stat-item{
+    display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+    padding:1rem 0;border-bottom:1px solid var(--rule);
+  }
+  .stat-item:first-child{border-top:1px solid var(--rule);}
+  .stat-item .num{
+    order:2;text-align:right;
+    font-family:var(--font-display);font-weight:700;font-size:clamp(1.4rem,2.4vw,1.95rem);
+    color:var(--orange);line-height:1;letter-spacing:-0.01em;font-variant-numeric:tabular-nums;
+  }
+  .stat-item .label{
+    order:1;color:var(--gray-light);font-size:0.7rem;
+    text-transform:uppercase;letter-spacing:0.12em;
+  }
+
+  /* ===== GLIMPSE OF THE SHOW: featured + playlist, real YouTube data ===== */
+  .glimpse{padding:clamp(2.75rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem);background:linear-gradient(180deg, var(--bg) 0%, var(--card) 100%);}
+  .glimpse-head{max-width:700px;margin-bottom:2.5rem;}
+  .glimpse-head .kicker{color:var(--orange);font-size:0.95rem;font-weight:500;margin-bottom:0.8rem;}
+  .glimpse-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.3rem);color:var(--white);line-height:1.3;}
+  .glimpse-meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:0.4rem 1.4rem;margin-top:1rem;}
+  .glimpse-status{color:var(--gray);font-size:0.8rem;}
+  /* A rail that drifts forever implies there is more but offers no way to reach
+     it, and this page had exactly one link out in the whole document. Same
+     quiet text link the live feed section already uses, in the header row, so
+     it is a route rather than another piece of furniture. */
+  .glimpse-more{color:var(--orange);font-size:0.8rem;font-weight:600;text-decoration:none;}
+  .glimpse-more:hover,.glimpse-more:focus-visible{text-decoration:underline;}
+
+  /* ===== THE RAIL =====
+     Same device as the homepage episode strip, so the two pages read as one
+     system. The track carries the list twice and the animation translates by
+     exactly -50%, which lands copy two where copy one began: no seam. Hover
+     pauses it so a card can actually be read. */
+  .yt-rail{position:relative;overflow:hidden;cursor:grab;
+    touch-action:pan-y;                 /* a vertical swipe still scrolls the page */
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);}
+  .yt-rail.is-dragging{cursor:grabbing;}
+  .yt-track{display:flex;gap:1rem;width:max-content;will-change:transform;}
+
+
+  .yt-card{position:relative;display:block;width:clamp(15rem,22vw,20rem);flex-shrink:0;
+    background:var(--card);border:1px solid var(--rule);padding-bottom:0.9rem;
+    text-decoration:none;transition:border-color .22s ease;}
+  .yt-card:hover,.yt-card:focus-visible{border-color:var(--live);}
+  .yt-card::before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;z-index:2;
+    border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+  .yt-shot{position:relative;display:block;}
+  /* Full colour, deliberately. They were held back in an earlier design where
+     six sat stacked in a static column competing at once; in motion behind an
+     edge mask they read as a filmstrip and the worry does not carry over. */
+  .yt-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--card);}
+  /* The same play control as the episode library popup: 82 by 56 with a 14px
+     radius, the geometry drawn in episodes/episode.css, a translucent dark fill
+     and a hairline inset ring instead of a border.
+
+     It turns YouTube red on hover, not orange. That reasoning is already
+     recorded on .kb-play in styles.css: red is what it actually loads, and
+     orange would promise an Atlas player and deliver someone else's. My first
+     version of this button went orange, which contradicted a decision that had
+     already been made and written down.
+
+     14px is one of the three radii tools/audit.py allows, and its comment names
+     it as the play button, so this is the value the rule was written for. */
+  /* SCALED, not resized. 82 by 56 is the geometry the library popup uses, on a
+     media panel far wider than a rail card: unscaled it came out at 34% of the
+     card's width and 41% of the thumbnail's height, which is what looked
+     absurd. YouTube's own button is about 14% of its thumbnail's width.
+     A transform keeps the 82:56 ratio and the 14px radius in proportion, which
+     resizing the box would not: 14px on a shorter box reads as a pill. */
+  .yt-play{position:absolute;top:50%;left:50%;z-index:2;
+    --ps:0.556;                           /* 46 x 31; 0.52 plus the 7% you asked for */
+    transform:translate(-50%,-50%) scale(var(--ps));
+    width:82px;height:56px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(20,21,25,0.62);color:#fff;
+    box-shadow:inset 0 0 0 1.5px rgba(255,255,255,0.22);
+    transition:background .2s ease,transform .2s ease,box-shadow .2s ease;}
+  /* The svg fills the button and its viewBox does the proportioning, so the
+     triangle lands at YouTube's 26% by 42% instead of the 15% by 27% a 26px
+     icon in an 82 by 56 box gives you. No margin-left: the path is already
+     optically centred. */
+  .yt-play svg{width:100%;height:100%;display:block;}
+  .yt-card:hover .yt-play{background:#f00;
+    transform:translate(-50%,-50%) scale(calc(var(--ps) * 1.08));
+    box-shadow:0 6px 26px rgba(255,0,0,0.4);}
+  .yt-title{display:block;padding:0.85rem 0.95rem 0;font-family:var(--font-display);
+    font-weight:600;font-size:0.85rem;line-height:1.35;color:var(--white);
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .yt-date{display:block;padding:0.4rem 0.95rem 0;font-size:0.72rem;color:var(--gray);}
+
+  /* This sat ABOVE .yt-play at first, and `.yt-card:hover .yt-play` has
+     identical specificity in both places, so the later normal rule won and
+     reduced motion never actually suppressed the hover scale. Moving it down
+     fixed the desktop case but not the 820px one, whose scale rules come later
+     still. So it is !important, which is order-independent and is the pattern
+     the homepage already uses for the same problem: .ep-track carries
+     transform:none !important for exactly this reason. */
+  @media(prefers-reduced-motion: reduce){
+    .yt-track{transform:none !important;}
+    .yt-rail{overflow-x:auto;cursor:auto;}
+    /* suppress the hover LIFT, not the base scale: dropping the transform
+       outright snapped the button back to its unscaled 82x56 */
+    .yt-play,.yt-card:hover .yt-play{
+      transform:translate(-50%,-50%) scale(var(--ps)) !important;}
+  }
+
+  /* ===== LIGHTBOX =====
+     Built on click, never on load, so YouTube is not contacted until somebody
+     chooses to watch. Closing empties the container, which removes the iframe
+     and stops playback rather than leaving it running behind an overlay. */
+  .yt-lb{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
+    background:rgba(10,11,13,0.93);padding:clamp(1rem,4vw,3rem);}
+  .yt-lb.on{display:flex;}
+  .yt-lb-inner{position:relative;width:min(100%,1100px);aspect-ratio:16/9;
+    border:1px solid var(--rule);background:#000;}
+  .yt-lb-inner::before{content:"";position:absolute;top:-1px;left:-1px;width:16px;height:16px;z-index:2;
+    border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+  .yt-lb iframe{width:100%;height:100%;border:0;display:block;}
+  .yt-lb-close{position:absolute;right:0;bottom:calc(100% + 0.6rem);
+    background:transparent;border:1px solid var(--edge-hi);color:var(--white);
+    font-family:var(--font-body);font-weight:600;font-size:0.78rem;
+    padding:0.4rem 0.9rem;cursor:pointer;transition:background .2s ease,border-color .2s ease;}
+  .yt-lb-close:hover{background:var(--orange);border-color:var(--orange);color:var(--ink);}
+
+  @media(max-width:820px){
+    /* The rail keeps drifting on a phone: it is horizontal by nature, so a
+       narrow column costs it nothing. */
+    .yt-card{width:clamp(13rem,66vw,17rem);}
+    /* a narrower card wants a smaller button; only the ratio changes, and the
+       hover lift follows from it */
+    .yt-play{--ps:0.492;}     /* 0.46 plus 7% */
+    /* Two columns at 1.5fr 1fr leaves the figures column too narrow for
+       "Countries Reached" beside a number, so stack and move the divider
+       to the top edge, keeping the same hairline. */
+    .pull-quote{grid-template-columns:1fr;gap:2rem;}
+    .pull-quote p{max-width:none;}
+    .pq-figs{border-left:none;padding-left:0;}
+  }
+
+  /* ===== FEEDBACK SECTION: testimonials + question form ===== */
+  .feedback-section{padding:clamp(2.75rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem);background:linear-gradient(180deg, var(--bg) 0%, var(--card) 100%);}
+  .testimonials-head{margin-bottom:2.5rem;}
+  .testimonials-head h2{font-family:var(--font-display);font-weight:800;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--white);line-height:1.1;}
+  .testimonials-head .kicker{color:var(--orange);font-size:0.95rem;font-weight:500;}
+  /* THE ARROWS ARE GONE and that is what fixes the width. The wrap was already
+     1300, the same as the question form below, but the two 38px arrows plus
+     their gaps ate 54px a side: the cards ran 1192 and started 54px to the
+     right of everything else on the page. Without them the track fills the
+     wrap and lines up.
+
+     It drifts and drags now instead, the same device as the episode strip and
+     the video rail, so the page has one way of moving a row sideways rather
+     than three. Same construction as those, for the same reasons: a CSS
+     animation owns the transform and would fight a drag, so one rAF loop runs
+     both, and no pointer capture because it retargets the mouse events. */
+  .testimonials-wrap{position:relative;max-width:1300px;margin:0 auto 3.5rem;
+    overflow:hidden;cursor:grab;touch-action:pan-y;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);}
+  .testimonials-wrap.is-dragging{cursor:grabbing;}
+  .testimonials-track{display:flex;gap:1.2rem;width:max-content;will-change:transform;
+    padding-bottom:0.5rem;}
+  @media(prefers-reduced-motion: reduce){
+    .testimonials-track{transform:none !important;}
+    .testimonials-wrap{overflow-x:auto;cursor:auto;}
+  }
+  .testi-card{
+    position:relative;flex:0 0 280px;scroll-snap-align:start;background:var(--card);
+    border:1px solid var(--line);padding:1.8rem 1.5rem 1.5rem;
+    display:flex;flex-direction:column;overflow:hidden;
+    transition:border-color 0.25s ease, transform 0.25s ease;
+  }
+  .testi-card:hover{border-color:var(--live);transform:translateY(-3px);}
+  .testi-card::before{
+    content:"\201C";position:absolute;top:-0.6rem;right:0.8rem;
+    font-family:var(--font-display);font-weight:800;font-size:5rem;
+    color:rgba(255,117,23,0.08);line-height:1;pointer-events:none;
+  }
+  .testi-body{color:var(--gray-light);font-size:0.86rem;line-height:1.6;margin-bottom:1rem;position:relative;}
+  .testi-by{color:var(--white);font-size:0.78rem;font-weight:600;margin-bottom:0.6rem;position:relative;}
+  .testi-video{
+    margin-top:auto;padding-top:0.7rem;border-top:1px solid var(--line);
+    color:var(--gray);font-size:0.68rem;line-height:1.4;text-decoration:none;
+    display:block;transition:color 0.2s ease;position:relative;
+  }
+  .testi-video:hover{color:var(--orange);}
+
+  .glassB-wrap{background:none;}
+  /* ===== QUESTION FORM: split, no box =====
+     Three faults went with the card, all of them wrong rather than debatable:
+
+       every field carried a rule ABOVE and below, so it read as a table row and
+       two stacked fields put two rules almost touching
+       both corner brackets sat on the right edge, where every other bracket on
+       the site is a single top-left or a diagonal pair
+       the textarea showed the browser's resize grip, the only piece of default
+       browser chrome on the page
+
+     And the copy ran to 37 percent of the panel width with the other two thirds
+     empty. Splitting it puts the form in that space and drops the section by
+     roughly a fifth. No card: a hairline across the top and down the sides,
+     open at the foot, the same treatment the newsletter now uses. */
+  .glassB{
+    position:relative;max-width:1300px;margin:0 auto;
+    border:1px solid var(--rule);border-bottom:none;
+    /* Horizon: the side lines fade out going down instead of stopping dead. */
+    border-image:linear-gradient(180deg,var(--rule),transparent) 1;
+    padding:clamp(1.8rem,4vw,2.6rem) clamp(1.8rem,4vw,2.6rem) clamp(1.4rem,3vw,2rem);
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);
+    gap:clamp(2rem,6vw,5rem);align-items:start;
+  }
+  /* the copy column: a grid child in its own right, so the two columns start
+     level rather than the left one collapsing to its text */
+  .glassB-left{min-width:0;}
+  .glassB-tag{display:inline-block;color:var(--orange);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;margin-bottom:1rem;}
+  .glassB-title{font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,2.8vw,2rem);color:var(--white);line-height:1.15;}
+  .glassB-sub{color:var(--gray-light);font-size:0.92rem;max-width:48ch;margin-top:0.8rem;line-height:1.7;}
+
+  /* One rule, underneath. The label rides up out of the field on focus rather
+     than vanishing, so the field keeps its name while it is being filled. */
+  .glassB-f{position:relative;display:block;margin-bottom:1.35rem;}
+  .glassB-f input, .glassB-f textarea{
+    width:100%;background:transparent;border:none;border-bottom:1px solid var(--edge);
+    color:var(--white);padding:0.85rem 0 0.55rem;font-family:var(--font-body);font-size:1rem;
+    outline:none;box-shadow:none;border-radius:0;-webkit-appearance:none;appearance:none;
+    resize:none;transition:border-color 0.2s ease;
+  }
+  .glassB-f span{position:absolute;left:0;top:0.85rem;color:var(--gray);font-size:1rem;
+    pointer-events:none;transform-origin:left top;
+    transition:transform 0.22s cubic-bezier(.16,1,.3,1),font-size 0.22s ease,color 0.22s ease;}
+  .glassB-f input:focus, .glassB-f textarea:focus{border-bottom-color:var(--orange);}
+  .glassB-f input:focus + span, .glassB-f textarea:focus + span,
+  .glassB-f input:not(:placeholder-shown) + span, .glassB-f textarea:not(:placeholder-shown) + span{
+    transform:translateY(-1.15rem) scale(0.76);color:var(--orange);
+  }
+  .glassB-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:0.4rem;}
+  .glassB-submit{
+    background:var(--orange);color:var(--ink);border:none;padding:0.85rem 1.8rem;
+    font-weight:700;font-size:0.9rem;cursor:pointer;
+    transform:skewX(-10deg);transform-origin:left top;
+  }
+  .glassB-submit span{display:inline-block;transform:skewX(10deg);}
+  .qf-status{color:var(--orange);font-size:0.85rem;position:relative;}
+
+  @media(max-width:700px){
+    .testi-card{flex-basis:220px;}
+  }
+
+  .archive{padding:clamp(2.75rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem);background:linear-gradient(180deg, var(--card) 0%, var(--bg) 100%);}
+
+  /* ===== NEVER MISS AN EPISODE — animated equalizer newsletter ===== */
+  .pod-newsletter{
+    position:relative;overflow:hidden;
+    /* now the last section on the page: opens where work-with-us leaves off
+       and closes on the footer's flat --bg */
+    background:linear-gradient(180deg, var(--card) 0%, var(--bg) 100%);
+    padding:clamp(2.75rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem);
+  }
+  /* ===== WHAT YOU CAN EXPECT ===== */
+  /* ===== WHAT YOU CAN EXPECT: THE COMPASS =====
+     Five icons in circles with a heading and a paragraph is the most
+     template-recognisable block on the web, so this stops being that shape.
+     Four pillars sit on the intercardinals, two a side. The fifth sits alone
+     on due south with a straight drop and no elbow: it is on the rose's own
+     cardinal, and the bearing under every node says so, which is what makes
+     the odd one out read as chosen rather than left over.
+
+     Every leader line meets the rose at exactly its stated bearing. Verified
+     by computing the angle back from the geometry, because an instrument that
+     lies about its own numbers is only decoration.
+
+     Only one node opens at a time. Five paragraphs ringing a central object
+     do not fit at any width, and the constraint is what turns the rose into
+     something you operate. */
+  .expect-section{position:relative;overflow:hidden;--xp-p:.5;
+    padding:clamp(2.75rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem);
+    background:radial-gradient(ellipse at 50% 30%,#1c1d23 0%,#17181d 48%,var(--bg) 78%);}
+  .expect-head{max-width:700px;margin-bottom:3rem;position:relative;z-index:2;}
+  .expect-head .kicker{margin-bottom:0.6rem;}
+  .expect-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--white);}
+
+  /* the bed of light, and a vignette to close the edges down */
+  .xp-glowbed{position:absolute;left:50%;top:38%;width:min(120%,1500px);aspect-ratio:1/1;
+    transform:translate(-50%,-50%);pointer-events:none;
+    background:radial-gradient(circle at 50% 50%,rgba(255,117,23,.13) 0%,
+      rgba(255,117,23,.05) 32%,rgba(255,117,23,0) 62%);}
+  .xp-vignette{position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse at 50% 42%,rgba(0,0,0,0) 42%,
+      rgba(0,0,0,.06) 78%,rgba(0,0,0,.10) 100%);}
+
+  /* ===== BREATHING =====
+     One 7s clock, two elements, counter-phase. As the bed of light sinks the
+     rim and its ticks come up orange, then they trade back. One cycle rather
+     than two loops that happen to coincide, so it reads as a single thing
+     inhaling instead of two effects running side by side. */
+  @keyframes xpBedBreathe{0%,100%{opacity:.8;}50%{opacity:.14;}}
+  @keyframes xpRimBreathe{
+    0%,100%{stroke:rgba(180,180,180,.30);filter:none;}
+    50%{stroke:var(--orange);
+        filter:drop-shadow(0 0 9px rgba(255,117,23,.75)) drop-shadow(0 0 22px rgba(255,117,23,.35));}}
+  @keyframes xpTickBreathe{0%,100%{stroke:rgba(180,180,180,.30);}50%{stroke:rgba(255,117,23,.70);}}
+  .xp-glowbed{animation:xpBedBreathe 7s ease-in-out infinite;}
+  .xp-outer{animation:xpRimBreathe 7s ease-in-out infinite;}
+  .xp-tick{animation:xpTickBreathe 7s ease-in-out infinite;}
+
+  /* ===== PARALLAX =====
+     --xp-p runs 0 to 1 as the section crosses the viewport, written once per
+     frame from a rAF-throttled passive scroll listener. The layers move at
+     different rates and the heading moves against them, so the separation is
+     legible rather than merely present. */
+  .xp-plx-rose{transform:translateY(calc((var(--xp-p) - .5) * -150px));}
+  .xp-plx-lead{transform:translateY(calc((var(--xp-p) - .5) * -54px));}
+  .expect-head{transform:translateY(calc((var(--xp-p) - .5) * 70px));}
+  .xp-glowbed{transform:translate(-50%,-50%) translateY(calc((var(--xp-p) - .5) * -210px));}
+
+  /* ===== stage ===== */
+  .xp-stage{position:relative;z-index:2;width:100%;max-width:1500px;margin:0 auto;
+    aspect-ratio:1600/1060;}
+  .xp-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+  .xp-mdial{display:none;}
+
+  /* ===== rose ===== */
+  .xp-rose{filter:url(#xpLiftD);}
+  .xp-msvg .xp-rose{filter:url(#xpLiftM);}
+  /* Mobile has no elbowed leader lines, because the markers sit radially rather
+     than in fixed left and right columns. A straight radial run from the rim to
+     each marker is the same idea in a round layout, and it lets the markers keep
+     their spread: pulling them in against the rose would have removed the
+     annotation, which is the whole point of the device. */
+  .xp-mlead{stroke-linecap:round;}
+  .xp-ring{fill:none;stroke:var(--rule);stroke-width:1.4;}
+  .xp-ring.thin{stroke:rgba(180,180,180,.10);}
+  .xp-outer{stroke-width:1.4;}
+  .xp-tick{stroke-width:1.2;}
+  .xp-spike{fill:#33343d;}
+  .xp-spike.dim{fill:#26272e;}
+  .xp-spike.maj{fill:#474854;}
+  .xp-spike.maj.dim{fill:#2c2d36;}
+  .xp-card{fill:var(--gray);font-family:"Poppins",sans-serif;font-size:19px;font-weight:600;
+    text-anchor:middle;letter-spacing:.08em;}
+  .xp-ndl-n{fill:var(--orange);}
+  .xp-ndl-s{fill:#4a4b56;}
+  .xp-hub{fill:var(--bg);stroke:var(--orange);stroke-width:2;}
+  .xp-hub-in{fill:var(--orange);}
+
+  /* ===== the needle =====
+     Duration is set per swing in script, because a 90 degree turn should not
+     take as long as a 180. The curve overshoots slightly and settles, which is
+     what a real needle does. See xp.js for why the angle is accumulated. */
+  /* ===== THE RIM TURNS =====
+     Rotating the outer circle itself would show nothing: a circle looks
+     identical at every angle. What reads as rotation is the 24 degree ticks
+     moving round it, which is what the ambient version was doing. 90s for a
+     full turn, about 4 degrees a second, slow enough to notice only once you
+     have been looking at it for a while.
+
+     transform-origin is set inline per rose because the two share this rule
+     but sit at different centres: 800,430 on the desktop stage and 260,260 in
+     the mobile square. */
+  @keyframes xpRimTurn{to{transform:rotate(360deg);}}
+  .xp-tickring{animation:xpRimTurn 90s linear infinite;}
+
+  .xp-needle{transition:transform .8s cubic-bezier(.22,1.18,.36,1);}
+
+  .xp-lead{fill:none;stroke:var(--rule);stroke-width:1.5;transition:stroke .3s ease;}
+  .xp-lead.on{stroke:var(--orange);}
+  .xp-mk{cursor:pointer;}
+  .xp-mk-c{fill:var(--bg);stroke:var(--edge);stroke-width:1.5;
+    transition:stroke .3s ease,fill .3s ease;}
+  .xp-mk-t{fill:var(--gray);font-family:"Poppins",sans-serif;font-size:17px;font-weight:600;
+    text-anchor:middle;transition:fill .3s ease;}
+  .xp-mk.on .xp-mk-c{stroke:var(--orange);fill:var(--wash);}
+  .xp-mk.on .xp-mk-t{fill:var(--orange);}
+  .xp-mk:hover .xp-mk-c{stroke:var(--edge-hi);}
+  .xp-mk:focus-visible{outline:none;}
+  .xp-mk:focus-visible .xp-mk-c{stroke:var(--orange);stroke-width:2.5;}
+
+  /* ===== nodes ===== */
+  /* Positions live in CSS, not inline styles, so the mobile query can undo
+     them without !important. Percentages map 1:1 onto the 1600x1060 viewBox
+     the leader lines are drawn in, because the stage holds that aspect ratio. */
+  .xp-nodes{position:absolute;inset:0;pointer-events:none;}
+  .xp-node{position:absolute;pointer-events:auto;}
+  .xp-node[data-xp="dest"]{left:5.6%;width:25.0%;bottom:80.19%;}
+  .xp-node[data-xp="expert"]{left:69.4%;width:25.0%;bottom:80.19%;}
+  .xp-node[data-xp="safety"]{left:5.6%;width:25.0%;top:65.52%;}
+  .xp-node[data-xp="culture"]{left:69.4%;width:25.0%;top:65.52%;}
+  .xp-node[data-xp="series"]{left:33.0%;width:34.0%;top:89.40%;text-align:center;}
+  .xp-btn{display:block;text-align:inherit;width:100%;padding:0;background:none;
+    border:none;color:inherit;cursor:pointer;font-family:inherit;}
+  .xp-brg{display:block;font-family:var(--font-body);font-size:0.66rem;letter-spacing:0.2em;
+    color:var(--gray);font-variant-numeric:tabular-nums;margin-bottom:0.3rem;
+    transition:color .3s ease;}
+  .xp-ttl{display:block;font-family:var(--font-display);font-weight:700;
+    font-size:clamp(0.95rem,1.25vw,1.2rem);color:var(--gray-light);line-height:1.2;
+    transition:color .3s ease;}
+  .xp-btn:hover .xp-ttl{color:var(--white);}
+  .xp-node[data-active] .xp-ttl{color:var(--white);}
+  .xp-node[data-active] .xp-brg{color:var(--orange);}
+  .xp-btn:focus-visible{outline:2px solid var(--orange);outline-offset:4px;}
+  .xp-body{max-height:0;opacity:0;overflow:hidden;
+    transition:max-height .5s cubic-bezier(.16,1,.3,1),opacity .35s ease,margin-top .5s ease;}
+  .xp-node[data-active] .xp-body{max-height:24rem;opacity:1;margin-top:0.7rem;}
+  .xp-body p{color:var(--gray-light);font-size:clamp(0.78rem,0.92vw,0.9rem);line-height:1.65;}
+
+  /* ===== mobile: the compass stays =====
+     The first pass replaced it with a list, which meant the thing worth looking
+     at existed only on desktop. The rose is kept, the markers move onto the rim
+     at their true bearings, the leader lines go because there is nowhere for
+     them to run, and the copy sits under the dial. 1100 rather than 900:
+     between those widths the columns sit at 25% of the stage while the type
+     stays at its clamp floor, and five paragraphs round a rose cramp badly. */
+  @media(max-width:1100px){
+    /* Same nodes, restacked. The copy is written once and lives in one place in
+       the DOM: duplicating it for a phone layout would put five paragraphs in
+       the page twice, read twice by a screen reader and crawled twice. */
+    .xp-stage{aspect-ratio:auto;}
+    .xp-svg{display:none;}
+    .xp-mdial{display:block;max-width:min(88vw,420px);margin:0 auto;
+      transform:translateY(calc((var(--xp-p) - .5) * -30px));}
+    .xp-msvg{width:100%;height:auto;display:block;overflow:visible;}
+    .xp-nodes{position:relative;inset:auto;margin-top:1.6rem;
+      border-top:1px solid var(--rule);padding-top:1.4rem;min-height:15rem;}
+    .xp-node,
+    .xp-node[data-xp="dest"],.xp-node[data-xp="expert"],.xp-node[data-xp="safety"],
+    .xp-node[data-xp="culture"],.xp-node[data-xp="series"]{
+      position:absolute;left:0;right:auto;top:1.4rem;bottom:auto;width:100%;
+      text-align:left;opacity:0;visibility:hidden;transform:translateY(8px);
+      transition:opacity .35s ease,transform .35s ease,visibility .35s;}
+    .xp-node[data-active]{position:relative;top:auto;opacity:1;visibility:visible;
+      transform:none;}
+    .xp-ttl{font-size:1.25rem;}
+    .xp-body{max-height:none;opacity:1;margin-top:0.7rem;}
+    .xp-body p{font-size:0.92rem;}
+  }
+
+  @media(prefers-reduced-motion: reduce){
+
+    .xp-glowbed,.xp-outer,.xp-tick,.xp-tickring{animation:none;}
+    .xp-needle,.xp-body,.xp-lead,.xp-mk-c,.xp-mk-t{transition:none;}
+    .xp-plx-rose,.xp-plx-lead,.expect-head,.xp-mdial{transform:none;}
+    .xp-node{transition:none;}
+    .xp-glowbed{transform:translate(-50%,-50%);}
+  }
+
+
+  /* ===== FLY BETTER / SUBSCRIBE ===== */
+  .fly-better{
+    padding:clamp(2.75rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem);text-align:center;
+    background:linear-gradient(180deg, var(--card) 0%, var(--bg) 100%);
+  }
+  .fly-better .kicker{display:block;margin-bottom:1rem;color:var(--orange);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;}
+  .fly-better h2{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,4vw,3rem);color:var(--white);margin-bottom:0.8rem;line-height:1.05;}
+  .fly-better h2{
+    opacity:0;transform:scale(0.85);
+    transition:opacity 0.6s ease, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .fly-better h2.visible{opacity:1;transform:scale(1);}
+  @media(prefers-reduced-motion: reduce){
+    .fly-better h2{opacity:1;transform:scale(1);transition:none;}
+  }
+  .fly-better-tag{color:var(--gray-light);font-size:0.95rem;margin-bottom:2.2rem;}
+  .fly-better-label{color:rgba(246,244,244,0.5);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:1.3rem;}
+  .fly-better-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:0.9rem;max-width:900px;margin:0 auto;}
+
+  .work-with-us{
+    padding:clamp(2.75rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem);
+    /* fly-better above ends on --bg */
+    background:linear-gradient(180deg, var(--bg) 0%, var(--card) 100%);
+  }
+  .wwu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:1300px;margin:0 auto;}
+  /* Lit from the top left corner, where the bracket is, and fading out, rather
+     than a box with four drawn edges. */
+  .wwu-card{
+    position:relative;border:0;border-top:1px solid;
+    border-image:linear-gradient(90deg,var(--edge-hi),var(--line) 60%,transparent) 1;
+    background:radial-gradient(130% 120% at 0% 0%,rgba(180,180,180,.075) 0%,rgba(180,180,180,.025) 45%,transparent 75%);
+    padding:2rem 2.2rem;display:flex;flex-direction:column;
+  }
+  .wwu-card::before, .wwu-card::after{content:"";position:absolute;width:16px;height:16px;border:1.5px solid var(--live);}
+  .wwu-card::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .wwu-card::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+  .wwu-card h3{font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--white);margin-bottom:1.3rem;}
+  .wwu-card h3 span{color:var(--orange);}
+  .wwu-card p{color:var(--gray-light);font-size:0.92rem;line-height:1.75;margin-bottom:1rem;}
+  .wwu-card .wwu-contact{color:var(--white);font-weight:600;margin-bottom:1.5rem;}
+  .wwu-card .wwu-contact a{color:var(--orange);text-decoration:none;}
+  /* Inverted: outline rather than fill. Matches .kb-cta in styles.css, which is
+     already the site's orange-outline button, so this is not a second way of
+     drawing the same thing. Same border token, same hover wash, same skew. */
+  .wwu-btn{
+    align-self:flex-start;margin-top:auto;
+    background:none;color:var(--orange);border:1px solid var(--live);
+    padding:0.85rem 1.8rem;font-weight:700;font-size:0.9rem;cursor:pointer;text-decoration:none;
+    transform:skewX(-10deg);transform-origin:left top;
+    transition:background 0.2s ease,border-color 0.2s ease,var(--t-press);
+  }
+  /* Outline at rest, solid fill on hover. Same behaviour as .listen-btn in
+     styles.css, which is the site's existing outline-to-fill button, and the
+     same values: the fill is --orange and the text flips to --ink so it stays
+     legible on it. The span carries its own colour, so it has to flip too or
+     the label stays white on orange. */
+  .wwu-btn:hover,.wwu-btn:focus-visible{
+    background:var(--orange);border-color:var(--orange);color:var(--ink);}
+  .wwu-btn:hover span,.wwu-btn:focus-visible span{color:var(--ink);}
+  .wwu-btn span{display:inline-block;transform:skewX(10deg);}
+
+  @media(max-width:820px){
+    .wwu-grid{grid-template-columns:1fr;}
+  }
+
+
+  /* The `.eq-bars` selector and its opening brace were missing here, so these
+     declarations sat at the top level of the stylesheet with no rule around
+     them. That does not just lose this rule. The CSS parser reads everything up
+     to the next `{` as a prelude, so it swallowed `.eq-bars span` into an
+     invalid selector and dropped that rule too. Both were dead: the 48 bars the
+     script builds behind the newsletter panel had no layout, no gradient and no
+     animation, and only the reduced-motion override still matched anything.
+     Same failure as the footer selector lost in 076ca7c. Found by a brace count
+     of 222 open against 223 close. */
+  .eq-bars{
+    position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-between;
+    padding:0;gap:2px;opacity:0.35;
+  }
+  .eq-bars span{
+    flex:1;background:linear-gradient(180deg, var(--orange), transparent);
+    animation:eq-bounce 1.4s ease-in-out infinite;
+    transform-origin:bottom;
+  }
+  @keyframes eq-bounce{
+    0%,100%{transform:scaleY(0.15);}
+    50%{transform:scaleY(1);}
+  }
+  @media(prefers-reduced-motion: reduce){
+    .eq-bars span{animation:none;transform:scaleY(0.4);}
+  }
+  /* No box. A hairline across the top and down both sides, open at the foot,
+     so the panel reads as a bracket the section sits inside rather than a card
+     floating on the page. The orange border and the frosted fill are gone with
+     it: at the very bottom of the page, immediately above the footer, a lit
+     card competed with the two calls to action above it. */
+  .pod-newsletter-panel{
+    position:relative;z-index:1;
+    background:none;
+    border:1px solid var(--rule);
+    border-bottom:none;
+    border-image:linear-gradient(180deg,var(--rule),transparent) 1;
+    padding:clamp(2rem,5vw,3rem) clamp(2rem,5vw,3rem) clamp(1.5rem,4vw,2.4rem);
+    display:flex;align-items:center;justify-content:space-between;gap:2.5rem;flex-wrap:wrap;
+  }
+  .pod-newsletter-left{display:flex;align-items:center;gap:1.3rem;}
+  .pod-newsletter-icon{
+    width:52px;height:52px;border-radius:50%;border:1.5px solid var(--orange);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    animation:live-pulse 2.4s ease-in-out infinite;
+  }
+  .pod-newsletter-icon svg{width:24px;height:24px;color:var(--orange);}
+  .pod-newsletter-left h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.4rem,2.5vw,1.9rem);color:var(--white);margin-bottom:0.4rem;}
+  .pod-newsletter-left p{color:var(--gray-light);font-size:0.92rem;max-width:38ch;}
+  .pod-newsletter-form{display:flex;gap:0;flex-shrink:0;position:relative;}
+  .pod-newsletter-input-wrap{position:relative;}
+  .pod-newsletter-form input{
+    background:transparent;border:none;
+    border-top:1px solid var(--edge-hi);
+    border-bottom:1px solid var(--edge-hi);
+    padding:0.9rem 1.4rem;color:var(--white);font-family:var(--font-body);font-size:1rem;
+    width:380px;letter-spacing:0.02em;
+    outline:none;box-shadow:none;border-radius:0;
+    -webkit-appearance:none;appearance:none;
+    transition:border-color 0.2s ease;
+  }
+  .pod-newsletter-form input:focus, .pod-newsletter-form input:focus-visible{
+    outline:none !important;box-shadow:none !important;
+    border-top-color:var(--orange);border-bottom-color:var(--orange);
+  }
+  .pod-newsletter-form input::placeholder{color:var(--gray);}
+  .pod-newsletter-form button{
+    background:var(--orange);color:var(--bg);border:none;font-weight:700;font-size:0.9rem;
+    padding:0 1.8rem;cursor:pointer;transform:skewX(-8deg);transform-origin:left top;
+    letter-spacing:0.03em;text-transform:uppercase;
+  }
+  .pod-newsletter-form button span{display:inline-block;transform:skewX(8deg);}
+
+  @media(max-width:700px){
+    .pod-newsletter-panel{flex-direction:column;align-items:flex-start;}
+    .pod-newsletter-form{width:100%;}
+    .pod-newsletter-input-wrap{flex:1;min-width:0;}
+    .pod-newsletter-form input{flex:1;min-width:0;width:100%;}
+  }
+  /* A phone has no room for the field and the button side by side: the field
+     was squeezed to 130px and the placeholder read "Enter your e". */
+  @media(max-width:480px){
+    .pod-newsletter-form{flex-direction:column;gap:.9rem;}
+    .pod-newsletter-form button{min-height:48px;}
+  }
+
+  .live-feed{}
+  .live-feed-head{display:flex;align-items:center;gap:0.6rem;margin-bottom:1.3rem;}
+  .live-dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:live-pulse 1.8s ease-in-out infinite;}
+  @keyframes live-pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+  .live-feed-head span{color:var(--orange);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;}
+  .live-feed-status{color:var(--gray);font-size:0.82rem;margin-bottom:1.2rem;}
+
+  .ep-row{position:relative;border:1px solid var(--line);border-top:none;background:var(--bg);overflow:hidden;}
+  .ep-row::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+    background:linear-gradient(90deg, transparent 0%, rgba(255,117,23,0.9) 50%, transparent 100%);
+    opacity:0;
+    box-shadow:0 0 10px 1px rgba(255,117,23,0.5);
+    transition:opacity 0.25s ease;
+  }
+  .ep-row:hover::after{opacity:1;}
+  .ep-row:first-child{border-top:1px solid var(--line);}
+  .ep-row-main{display:flex;align-items:center;gap:1rem;padding:0.9rem 1.1rem;}
+  .ep-cover{width:52px;height:52px;object-fit:cover;flex-shrink:0;background:var(--bg);}
+  .ep-play-btn{
+    width:36px;height:36px;border-radius:50%;border:1.5px solid var(--orange);background:transparent;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;transition:background .2s;
+  }
+  .ep-play-btn:hover{background:rgba(255,117,23,0.15);}
+  .ep-play-btn svg{width:13px;height:13px;color:var(--orange);}
+  .ep-row.playing .ep-play-btn{background:var(--orange);}
+  .ep-row.playing .ep-play-btn svg{color:var(--bg);}
+  .ep-row-mid{flex:1;min-width:0;}
+  .ep-row-title{font-weight:600;font-size:0.92rem;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .ep-row-show{color:var(--gray);font-size:0.78rem;}
+  .ep-row-meta{display:flex;flex-direction:row;align-items:center;gap:1rem;flex-shrink:0;font-size:0.78rem;color:var(--gray-light);}
+  .ep-row-meta span:first-child{min-width:82px;}
+  .ep-row-meta span:last-child{min-width:56px;text-align:right;}
+  .ep-row-icons{display:flex;align-items:center;gap:0.7rem;flex-shrink:0;}
+  .ep-icon-btn{width:30px;height:30px;display:flex;align-items:center;justify-content:center;color:var(--gray-light);background:none;border:none;cursor:pointer;transition:color .2s;text-decoration:none;}
+  .ep-icon-btn:hover{color:var(--orange);}
+  .ep-icon-btn svg{width:16px;height:16px;}
+
+  .ep-player{display:none;padding:0 1.1rem 1.1rem;border-top:1px solid var(--line);margin-top:0.2rem;padding-top:0.9rem;}
+  .ep-row.playing .ep-player{display:block;}
+  .ep-progress-row{display:flex;align-items:center;gap:0.8rem;}
+  .ep-time{color:var(--gray);font-size:0.72rem;min-width:36px;}
+  .ep-time.end{text-align:right;}
+  .ep-progress-track{flex:1;height:4px;background:rgba(180,180,180,0.2);position:relative;cursor:pointer;}
+  .ep-progress-fill{position:absolute;left:0;top:0;bottom:0;background:var(--orange);width:0%;}
+  .ep-progress-track:hover .ep-progress-fill{background:var(--orange-lite);}
+  .ep-skip-controls{display:flex;align-items:center;justify-content:center;gap:1.6rem;margin-top:0.8rem;}
+  .ep-skip-btn{background:none;border:none;color:var(--gray-light);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:0.2rem;font-size:0.65rem;transition:color .2s;}
+  .ep-skip-btn:hover{color:var(--orange);}
+  .ep-skip-btn svg{width:20px;height:20px;}
+  .ep-play-btn-lg{width:40px;height:40px;border-radius:50%;background:var(--orange);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+  .ep-play-btn-lg svg{width:14px;height:14px;color:var(--bg);}
+
+  .live-feed-footer{display:flex;justify-content:space-between;align-items:center;margin-top:1.2rem;}
+  .see-more-btn{
+    color:var(--orange);font-weight:600;font-size:0.88rem;background:none;
+    border:1px dashed var(--live);padding:0.6rem 1.4rem;cursor:pointer;font-family:var(--font-body);
+    transition:background 0.2s ease;
+  }
+  .see-more-btn:hover{background:rgba(255,117,23,0.1);}
+  .see-more-btn:disabled{opacity:0.4;cursor:default;}
+  .live-counter{color:var(--gray);font-size:0.78rem;border:1px solid var(--edge);padding:0.3rem 0.8rem;}
+
+  @media(max-width:820px){
+    .glassB{grid-template-columns:1fr;gap:2rem;}
+    .host{grid-template-columns:1fr;padding-bottom:0;align-items:start;min-height:0;}
+    /* The rules stay on a phone. They were hidden because a dogleg squeezed
+       into a narrow column reads as a stray kink, but the angle lock solves
+       that: it recomputes the run from the section's real size, so at 390px
+       wide the run grows to about 245 units and the diagonal still renders at
+       51.71 degrees, the same as everywhere else. It stays well inside the
+       line's end at 1600. */
+    .host-plateband{height:32%;}
+    .host-plate{right:-3%;bottom:auto;top:0;font-size:clamp(3.4rem,23vw,7rem);}
+    /* Stacked, the portrait goes last and stays on the floor, so the section
+       still ends at his shoulders rather than at a gap under a thumbnail. */
+    .host-photo{order:2;max-width:min(72vw,20rem);margin:2.5rem auto 0;}
+    .host-copy{order:1;padding-bottom:0;}
+  }
+
+  /* ===== Horizon (PROJECT_HANDOFF.md 68, 75) =====
+     Testimonial and YouTube cards are lit from the bracket corner with a top
+     rule that fades right, like every other card on the site, instead of grey
+     boxes with four drawn edges. */
+  .testi-card,.yt-card{
+    background:radial-gradient(120% 110% at 0% 0%,rgba(180,180,180,.075) 0%,rgba(180,180,180,.025) 45%,transparent 78%);
+    border:0;border-top:1px solid;border-image:linear-gradient(90deg,var(--edge-hi),var(--line) 55%,transparent) 1;}
+  .testi-card:hover,.yt-card:hover,.yt-card:focus-visible{
+    background:radial-gradient(120% 110% at 0% 0%,rgba(255,117,23,.08) 0%,rgba(180,180,180,.03) 45%,transparent 78%);}
+</style>
+<!-- site-schema -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://paraglidingatlas.com/#organization",
+   "name": "Paragliding Atlas",
+   "url": "https://paraglidingatlas.com/",
+   "description": "A talk show on the art and science of free flight. Honest conversations with designers, test pilots, instructors and record holders, published in full with transcripts, alongside small guided paragliding trips.",
+   "email": "aninder@paraglidingatlas.com",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://paraglidingatlas.com/assets/logo/atlas-logo-white.png"
+   },
+   "founder": {
+    "@type": "Person",
+    "name": "Aninder Singh"
+   },
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Olav Troviks Vei M 46",
+    "postalCode": "0864",
+    "addressLocality": "Oslo",
+    "addressCountry": "NO"
+   },
+   "identifier": "937116934",
+   "sameAs": [
+    "https://www.youtube.com/@ParaglidingAtlas",
+    "https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803",
+    "https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec",
+    "https://www.patreon.com/cw/ParaglidingAtlas",
+    "https://www.instagram.com/anindersingh13",
+    "https://castbox.fm/channel/Paragliding-Atlas-by-Aninder-Singh-id6075445",
+    "https://www.podbean.com/podcast-detail/tb6yq-2f5cd4/Paragliding-Atlas-by-Aninder-Singh-Podcast"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://paraglidingatlas.com/#website",
+   "name": "Paragliding Atlas",
+   "url": "https://paraglidingatlas.com/",
+   "description": "A talk show on the art and science of free flight. Honest conversations with designers, test pilots, instructors and record holders, published in full with transcripts, alongside small guided paragliding trips.",
+   "inLanguage": "en",
+   "publisher": {
+    "@id": "https://paraglidingatlas.com/#organization"
+   }
+  }
+ ]
+}
+</script>
+<!-- /site-schema --><script src="v2.js?v=12a215ee"></script>
+<script src="v2-immersive.js?v=eecb6907"></script>
+</head>
+<body>
+
+<div class="page-wrap">
+
+<nav>
+  <span class="nav-corner-l"></span>
+  <span class="nav-corner-r"></span>
+  <span class="nav-coords">59.9139°N · 10.7522°E</span>
+  <a href="index.html" class="wordmark"><img src="../../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100"></a>
+  <div class="nav-links">
+    <a href="about.html">About Us</a>
+    <span class="nav-sep">|</span>
+    <a href="knowledge-base.html">Knowledge Base</a>
+    <span class="nav-sep">|</span>
+    <a href="podcast.html">Podcast</a>
+    <span class="nav-sep">|</span>
+    <a href="sitemap.html">Sitemap</a>
+  </div>
+  <a href="enquire.html" class="nav-cta" data-hover><span>Enquire Now</span></a>
+</nav>
+<div class="nav-chevron"></div>
+
+<header class="kit-hero v2-pod-hero">
+  <div class="kit-hero-media">
+    <picture><source srcset="../../assets/images/pod-hero-gemona.webp" type="image/webp"><img src="../../assets/images/pod-hero-gemona.jpg" width="1920" height="1080" alt="A field of paragliders climbing through broken cloud above a valley" fetchpriority="high"></picture>
+  </div>
+  <div class="kit-hero-copy">
+    <span class="kit-kicker">Your Aerial Gateway To The Secrets Of The Skies</span>
+    <h1>The Paragliding Atlas Podcast</h1>
+    <p class="kit-intro">Long-form paragliding interviews with designers, test pilots, instructors and world champions. Stories, technical knowledge and defining moments from the people who shape free flight, every episode with a full transcript.</p>
+    <div class="kit-actions">
+      <a href="library.html" class="btn-solid" data-hover><span>See all episodes</span></a>
+      <a href="#map" class="btn-lines" data-hover>Click A Pin, Hear The Story</a>
+    </div>
+    <div class="kit-stats">
+      <div class="kit-stat"><b>100,000+</b><span>Streams</span></div>
+      <div class="kit-stat"><b>136</b><span>Countries Reached</span></div>
+      <div class="kit-stat"><b>80+</b><span>Expert Insights</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="kit-band v2-quote">
+  <div class="kit-in kit-narrow">
+    <blockquote class="v2-pull"><p>Intimate, deep and often thought provoking, these conversations are curated to stimulate, educate, inspire and empower you to touch the sky with glory every time you practice the art of flight.</p></blockquote>
+  </div>
+</section>
+
+<section class="kit-band v2-host">
+  <div class="kit-in v2-host-grid">
+    <div class="v2-host-photo"><picture><source srcset="../../assets/podcast/host-aninder-soft.webp" type="image/webp"><img src="../../assets/podcast/host-aninder-soft.png" width="1094" height="1100" loading="lazy" alt="Aninder Singh, host of the Paragliding Atlas podcast"></picture></div>
+    <div class="v2-host-copy">
+      <div class="kit-head">
+        <span class="kit-kicker">Meet Your Host</span>
+        <h2 class="kit-title">Aninder Singh</h2>
+        <p class="kit-intro">Every week, Aninder dives deep into all things paragliding with some of the most forward-thinking, paradigm-busting minds in the sport.</p>
+      </div>
+      <div class="kit-actions">
+        <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="btn-solid" data-hover><span>Spotify</span></a>
+        <a href="https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803" target="_blank" rel="noopener" class="btn-lines" data-hover>Apple Podcasts</a>
+        <a href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener" class="btn-lines" data-hover>YouTube</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kit-band v2-map" id="map">
+  <div class="kit-in">
+    <div class="kit-head is-center">
+      <span class="kit-kicker">A Map Of Every Place We've Ever Told A Story From</span>
+      <h2 class="kit-title">Click A Pin, <em class="v2-accent">Hear The Story</em></h2>
+    </div>
+  </div>
+  <div class="ep-map" id="epMap">
+    <div class="map-popup" id="mapPopup">
+        <span class="mp-tick tl"></span><span class="mp-tick br"></span>
+        <div class="mp-strip">
+          <span class="mp-co"></span><span class="mp-rng dim"></span><span class="mp-brg dim"></span>
+        </div>
+        <div class="mp-th"><img alt="" loading="lazy"><span class="mp-scan"></span></div>
+        <div class="mp-bd">
+          <p class="mp-kick"></p>
+          <p class="popup-title"></p>
+          <p class="mp-guest"></p>
+          <div class="mp-rd"><span class="mp-ch"></span><span class="mp-dur"></span></div>
+          <a class="popup-link" href="library.html" data-hover>Open the episode <i>&rarr;</i></a>
+        </div>
+      </div>
+  </div>
+  <p class="map-caption">Drag to rotate. Click a pin to see the episode.</p>
+</section>
+
+<section class="kit-band v2-glimpse">
+  <div class="kit-in">
+    <div class="kit-head">
+      <span class="kit-kicker">A Glimpse Of The Show</span>
+      <h2 class="kit-title">Conversations Drawn From The World Of Free Flight In The Blue Yonder</h2>
+      <p class="glimpse-meta">
+        <span class="glimpse-status" id="ytStatus">Connecting to YouTube feed...</span>
+        <a class="v2-link" href="library.html">See all episodes <i aria-hidden="true">&rarr;</i></a>
+      </p>
+    </div>
+  </div>
+  <div class="yt-rail"><div class="yt-track" id="ytTrack"></div></div>
+  <div class="kit-in">
+    <div class="live-feed">
+      <div class="live-feed-head">
+        <span class="live-dot"></span>
+        <span>Live From The Feed</span>
+      </div>
+      <p class="live-feed-status" id="liveFeedStatus">Connecting to RSS feed...</p>
+      <div id="liveFeedGrid"></div>
+      <div class="live-feed-footer" id="liveFeedFooter" style="display:none;">
+        <button class="see-more-btn" id="seeMoreBtn">See 15 More →</button>
+        <span class="live-counter" id="liveCounter"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kit-band v2-topo">
+  <div class="kit-in">
+    <div class="kit-head">
+      <span class="kit-kicker">What The Show Is About</span>
+      <h2 class="kit-title">What You Can Expect</h2>
+    </div>
+    <div class="kit-grid is-3 v2-expect"><div class="kit-panel"><span class="v2-ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><g class="v2-ic-bezel"><circle cx="16" cy="16" r="15"/><path d="M16 1v2.6M16 28.4V31M1 16h2.6M28.4 16H31"/></g><g class="v2-ic-glyph"><circle cx="16" cy="16" r="8"/><ellipse cx="16" cy="16" rx="3.4" ry="8"/><path d="M8 16h16M9.1 12h13.8M9.1 20h13.8"/></g></svg></span><h3>Global Destinations</h3><p>From the towering peaks of the Himalayas to the serene landscapes of the African Highlands, join us as we explore the world's premier paragliding spots</p></div><div class="kit-panel"><span class="v2-ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><g class="v2-ic-bezel"><circle cx="16" cy="16" r="15"/><path d="M16 1v2.6M16 28.4V31M1 16h2.6M28.4 16H31"/></g><g class="v2-ic-glyph"><rect x="13" y="7.5" width="6" height="10.5" rx="3"/><path d="M10 15a6 6 0 0 0 12 0M16 21v3M13 24h6"/></g></svg></span><h3>Expert Insights</h3><p>Learn the ins and outs of paragliding with advice from professionals who live and breathe the sport. Discover the best seasons for flying, understand complex topographies, and get a sneak peek into local flying cultures.</p></div><div class="kit-panel"><span class="v2-ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><g class="v2-ic-bezel"><circle cx="16" cy="16" r="15"/><path d="M16 1v2.6M16 28.4V31M1 16h2.6M28.4 16H31"/></g><g class="v2-ic-glyph"><path d="M16 7l7 3v5.2c0 4.8-3 8.3-7 9.8-4-1.5-7-5-7-9.8V10z"/><path d="M12.8 16.1l2.3 2.3 4.3-4.6"/></g></svg></span><h3>Safety First</h3><p>Navigating the skies is thrilling, but safety is paramount. Gain knowledge about airspace regulations, weather considerations, and equipment must-haves to ensure each flight is not just exhilarating but also secure.</p></div><div class="kit-panel"><span class="v2-ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><g class="v2-ic-bezel"><circle cx="16" cy="16" r="15"/><path d="M16 1v2.6M16 28.4V31M1 16h2.6M28.4 16H31"/></g><g class="v2-ic-glyph"><path d="M8 8v16.5M24 8v16.5M8 9.5Q16 16.5 24 9.5"/><path d="M9.5 11.7 h3.4 l-1.7 4.8z"/><path d="M12.7 12.9 h3.4 l-1.7 4.8z"/><path d="M15.9 12.9 h3.4 l-1.7 4.8z"/><path d="M19.1 11.7 h3.4 l-1.7 4.8z"/></g></svg></span><h3>Cultural Immersion</h3><p>Paragliding is more than just taking off; it's about immersing yourself in new cultures. Learn about the customs, traditions, and local delicacies that make each destination unique.</p></div><div class="kit-panel"><span class="v2-ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><g class="v2-ic-bezel"><circle cx="16" cy="16" r="15"/><path d="M16 1v2.6M16 28.4V31M1 16h2.6M28.4 16H31"/></g><g class="v2-ic-glyph"><path d="M13 7.5h6M11 10h10"/><rect x="9" y="12.5" width="14" height="10" rx="1.5"/><path d="M14.8 15v5l4.2-2.5z" fill="currentColor"/></g></svg></span><h3>Thematic Mini-Series</h3><p>Dive deeper with our thematic mini-series, where we zoom in on specific topics, hosting a lineup of industry professionals to share their stories, challenges, and the joy of flying.</p></div></div>
+  </div>
+</section>
+
+<section class="kit-band v2-listeners">
+  <div class="kit-in">
+    <div class="kit-head">
+      <span class="kit-kicker">Community</span>
+      <h2 class="kit-title">What Listeners Are Saying</h2>
+    </div>
+  </div>
+  <div class="v2-rail v2-testi-rail" data-auto tabindex="0" aria-label="What listeners are saying">
+    <figure class="kit-panel v2-testi"><blockquote><p>Aninder! Just want to say, wow, I didn't know about your podcast until just recently. This one with Russel is fantastic, not only because of him &amp; his honesty but also due to your style and your deep questions. Really really well done, thanks for doing this for all of us in the flying community!</p></blockquote><figcaption><span class="v2-testi-face"><picture><source srcset="../../assets/podcast/guest-russel.webp" type="image/webp"><img src="../../assets/podcast/guest-russel.jpg" alt="" loading="lazy" width="44" height="44"></picture></span><span class="kit-meta">@bdwelle43</span><a class="v2-testi-ep" href="episodes/the-russell-ogden-interview-decoding-paragliding-mastery.html">The Russell Ogden Interview: Decoding Paragliding Mastery Protocols</a></figcaption></figure>
+<figure class="kit-panel v2-testi"><blockquote><p>Thank you for getting Dr Matt Wikes on your podcast. This one has been very informative.</p></blockquote><figcaption><span class="v2-testi-face"><picture><source srcset="../../assets/podcast/guest-matt.webp" type="image/webp"><img src="../../assets/podcast/guest-matt.jpg" alt="" loading="lazy" width="44" height="44"></picture></span><span class="kit-meta">@sebass156</span></figcaption></figure>
+<figure class="kit-panel v2-testi"><blockquote><p>Excellent discussion and subject! I share your observations and analysis, but besides sharing or not, these are the kind of topics and discussions we should be having in our communities. Thanks for that!</p></blockquote><figcaption><span class="v2-testi-face is-still"><img src="https://i.ytimg.com/vi/kSoFk23TuX0/mqdefault.jpg" alt="" loading="lazy" width="44" height="44"></span><span class="kit-meta">@gblanco69</span><a class="v2-testi-ep" href="episodes/watch-this-before-you-buy-a-paragliding-harness-a-talk.html">Watch this Before you Buy a Paragliding Harness | A Talk with Zsolt Ero</a></figcaption></figure>
+<figure class="kit-panel v2-testi"><blockquote><p>another masterclass, thanks for sharing</p></blockquote><figcaption><span class="v2-testi-face is-still"><img src="https://i.ytimg.com/vi/G-gqUxq0C6Q/mqdefault.jpg" alt="" loading="lazy" width="44" height="44"></span><span class="kit-meta">@Hemersonr</span><a class="v2-testi-ep" href="episodes/how-to-thermal-like-a-pro-find-center-climb-paragliding.html">How to Thermal Like a Pro: Find, Center &amp; Climb with Brett Janaway</a></figcaption></figure>
+<figure class="kit-panel v2-testi"><blockquote><p>Thank you for the show and the huge amount of info. I'm glad that I got the confirmation that what I do seems to be right regarding the "blocked" hips subject… Happy flights!</p></blockquote><figcaption><span class="v2-testi-face is-still"><img src="https://i.ytimg.com/vi/J5j3Hk_HcFQ/mqdefault.jpg" alt="" loading="lazy" width="44" height="44"></span><span class="kit-meta">@cristianmanu2745</span><a class="v2-testi-ep" href="episodes/metacognition-paragliding-s-hidden-psychology-with-beni.html">Metacognition: Paragliding's Hidden Psychology with Beni Kalin &amp; Heli Schrempf</a></figcaption></figure>
+<figure class="kit-panel v2-testi"><blockquote><p>This is really good. I've learned a lot and it has completely changed my understanding of harness protection.</p></blockquote><figcaption><span class="v2-testi-face is-still"><img src="https://i.ytimg.com/vi/kSoFk23TuX0/mqdefault.jpg" alt="" loading="lazy" width="44" height="44"></span><span class="kit-meta">@cedarsunshine</span><a class="v2-testi-ep" href="episodes/watch-this-before-you-buy-a-paragliding-harness-a-talk.html">Watch this Before you Buy a Paragliding Harness | A Talk with Zsolt Ero</a></figcaption></figure>
+<figure class="kit-panel v2-testi"><blockquote><p>Dude this is literally the most interesting episode of your podcast (so far). Thx so much to both of you fellas!</p></blockquote><figcaption><span class="v2-testi-face"><picture><source srcset="../../assets/podcast/guest-tom.webp" type="image/webp"><img src="../../assets/podcast/guest-tom.jpg" alt="" loading="lazy" width="44" height="44"></picture></span><span class="kit-meta">@navernoe_sasha</span><a class="v2-testi-ep" href="episodes/tom-lolies-explains-the-science-of-wing-design-and.html">Tom Lolies Explains The Science Of Wing Design and Evolution from ENC to CSC</a></figcaption></figure>
+<figure class="kit-panel v2-testi"><blockquote><p>Finally a debrief of the sportive part of the event, thanks! :)</p></blockquote><figcaption><span class="v2-testi-face is-still"><img src="https://i.ytimg.com/vi/BRAX1XMU390/mqdefault.jpg" alt="" loading="lazy" width="44" height="44"></span><span class="kit-meta">@BaptisteLambert-y3k</span><a class="v2-testi-ep" href="episodes/task-1-highlights-15th-paragliding-world-cup-super-final.html">Task 1 Highlights | 15th Paragliding World Cup Super Final Pegalajar 2026</a></figcaption></figure>
+<figure class="kit-panel v2-testi"><blockquote><p>Best coverage of an XC comp so far, IMO. Really liked the part where you gave the summary of the race using tracklogs playback.</p></blockquote><figcaption><span class="v2-testi-face is-still"><img src="https://i.ytimg.com/vi/BRAX1XMU390/mqdefault.jpg" alt="" loading="lazy" width="44" height="44"></span><span class="kit-meta">@imdakshnain</span><a class="v2-testi-ep" href="episodes/task-1-highlights-15th-paragliding-world-cup-super-final.html">Task 1 Highlights | 15th Paragliding World Cup Super Final Pegalajar 2026</a></figcaption></figure>
+<figure class="kit-panel v2-testi"><blockquote><p>Super insightful, hearing the GOAT designer explaining the principles of our so wonderful equipment.</p></blockquote><figcaption><span class="v2-testi-face"><picture><source srcset="../../assets/podcast/guest-luc.webp" type="image/webp"><img src="../../assets/podcast/guest-luc.jpg" alt="" loading="lazy" width="44" height="44"></picture></span><span class="kit-meta">@lexrobe_fly</span><a class="v2-testi-ep" href="episodes/luc-armant-talks-about-the-moment-coefficient-enzo-3.html">Luc Armant talks about The Moment Coefficient, Enzo 3 Certification Debate &amp; Physics of Stability</a></figcaption></figure>
+<figure class="kit-panel v2-testi"><blockquote><p>wow another big stone in the puddle, waves a'coming, thanks for having the balls to do it</p></blockquote><figcaption><span class="v2-testi-face is-still"><img src="https://i.ytimg.com/vi/kSoFk23TuX0/mqdefault.jpg" alt="" loading="lazy" width="44" height="44"></span><span class="kit-meta">@philippebroers2838</span><a class="v2-testi-ep" href="episodes/watch-this-before-you-buy-a-paragliding-harness-a-talk.html">Watch this Before you Buy a Paragliding Harness | A Talk with Zsolt Ero</a></figcaption></figure>
+  </div>
+  <div class="kit-in">
+    <div class="v2-question" id="question">
+      <div class="kit-head">
+        <span class="kit-kicker">Line Open</span>
+        <h3 class="kit-title">Got a Question For The Show?</h3>
+        <p class="kit-intro">Whether it's about gear, safety, technique, or the mindset side of flying, Aninder reads every submission personally.</p>
+      </div>
+      <form id="questionForm" class="v2-form">
+        <label class="v2-field" for="v2qName"><span>Your name</span><input id="v2qName" type="text" autocomplete="name" required></label>
+        <label class="v2-field" for="v2qEmail"><span>Your email</span><input id="v2qEmail" type="email" autocomplete="email" required></label>
+        <label class="v2-field is-wide" for="v2qTopic"><span>Your question or topic</span><textarea id="v2qTopic" rows="3" required></textarea></label>
+        <div class="v2-form-foot">
+          <button type="submit" class="btn-solid" data-hover><span>Submit Question</span></button>
+          <p class="qf-status" id="qfStatus"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="kit-band">
+  <div class="kit-in">
+    <div class="kit-grid is-2">
+      <div class="kit-panel v2-wwu">
+        <span class="kit-kicker">Collaborate</span>
+        <h3>Collaborate with Aninder</h3>
+        <p>Are you a pilot, instructor, or weather guru with insights to share? If you've got stories about epic flights, hard-won lessons, or next-level techniques, let's get you on Paragliding Atlas.</p>
+        <p>Let's team up to help pilots across the globe fly smarter and push boundaries together.</p>
+        <p>Email me at <a href="mailto:aninder@paraglidingatlas.com">aninder@paraglidingatlas.com</a> and we'll take it from there.</p>
+        <div class="kit-actions"><a href="mailto:aninder@paraglidingatlas.com" class="btn-lines" data-hover>Get In Touch</a></div>
+      </div>
+      <div class="kit-panel v2-wwu">
+        <span class="kit-kicker">Sponsor</span>
+        <h3>Sponsor Paragliding Atlas Podcast</h3>
+        <p>Connect with the fastest growing community of pilots on the interweb. Reach out to our ever increasing audience base from 136 countries and counting.</p>
+        <p>If your brand shares our love for the skies, we'd be honored to explore how we might work together to serve this incredible sport.</p>
+        <p>Let's help more pilots fly smarter and safer, together.</p>
+        <div class="kit-actions"><a href="partners.html" class="btn-lines" data-hover>Sponsorship</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kit-band v2-join">
+  <div class="kit-in v2-join-grid">
+    <div>
+      <div class="kit-head">
+        <span class="kit-kicker">Join The Atlas</span>
+        <h2 class="kit-title">Fly Better, Every Week</h2>
+        <p class="kit-intro">Press play and start transforming your flying today. Listen, watch, or subscribe.</p>
+      </div>
+      <div class="listen-bar v2-fly-better"><div class="listen-buttons">
+    <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener" class="listen-btn" data-hover>
+      <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.3 14.4a.6.6 0 0 1-.8.2c-2.2-1.4-5-1.7-8.2-.9a.6.6 0 1 1-.3-1.2c3.5-.8 6.6-.5 9 1a.6.6 0 0 1 .3.9Zm1.2-2.7a.75.75 0 0 1-1 .3c-2.5-1.5-6.3-2-9.3-1.1a.75.75 0 1 1-.4-1.4c3.4-1 7.6-.5 10.5 1.2a.75.75 0 0 1 .2 1Zm.1-2.8c-3-1.8-8-2-10.9-1.1a.9.9 0 1 1-.5-1.7c3.3-1 8.8-.8 12.3 1.3a.9.9 0 0 1-.9 1.5Z"/></svg>Spotify</span>
+    </a>
+    <a href="https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803" target="_blank" rel="noopener" class="listen-btn" data-hover>
+      <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 3.5a3.6 3.6 0 0 1 3.6 3.6c0 1.3-.7 2.4-1.7 3.1v.1c1.2.7 2 2 2 3.5a1 1 0 1 1-2 0c0-1.2-1-2.2-2.2-2.2h-.4c-1.2 0-2.2 1-2.2 2.2a1 1 0 1 1-2 0c0-1.5.8-2.8 2-3.5v-.1c-1-.7-1.7-1.8-1.7-3.1A3.6 3.6 0 0 1 12 5.5Z"/></svg>Apple Podcasts</span>
+    </a>
+    <a href="https://music.amazon.com/podcasts/44399f7e-fef1-4db1-9a60-7c9ef74df2b4/paragliding-atlas-by-aninder-singh" target="_blank" rel="noopener" class="listen-btn" data-hover>
+      <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1.2 5.5 5 4.5-5 4.5v-9Z"/></svg>Amazon Music</span>
+    </a>
+    <a href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener" class="listen-btn" data-hover>
+      <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.1 5 12 5 12 5s-6.1 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8A26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.9 19 12 19 12 19s6.1 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3-5.2 3Z"/></svg>YouTube</span>
+    </a>
+  </div>
+</div>
+    </div>
+    <div class="v2-nl" data-nl>
+      <span class="kit-kicker">Newsletter</span>
+      <h2 class="kit-title">Never Miss an Episode</h2>
+      <p class="kit-intro">Subscribe to get the latest episodes and exclusive content delivered to your inbox.</p>
+      <label class="v2-search-label" for="podNlEmail">Email Address</label>
+      <div class="v2-nl-row">
+        <input id="podNlEmail" type="email" placeholder="Enter your email" autocomplete="email">
+        <button class="btn-solid" data-hover><span>Subscribe</span></button>
+      </div>
+      <p class="nl-status" data-nl-status role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+</div><!-- /.page-wrap -->
+
+<footer>
+  <div class="footer-content">
+  <div class="footer-top">
+    <div class="footer-col footer-brand">
+      <a href="index.html" class="wordmark" aria-label="Paragliding Atlas, home"><img src="../../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100" loading="lazy"></a>
+      <p class="footer-tagline"><a href="mission.html">Touch The Sky With Glory</a></p>
+      <p class="footer-addr">Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>0864, Oslo<br>Norway</p>
+    </div>
+    <div class="footer-col">
+      <h2>Listen</h2>
+      <a href="library.html">All Episodes</a>
+      <a href="tags.html">Topics</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="podcast.html">Podcast</a>
+      <a href="sitemap.html">Sitemap</a>
+    </div>
+    <div class="footer-col">
+      <h2>Fly With Us</h2>
+      <a href="index.html#destinations">Destinations</a>
+      <a href="destinations/kenya.html">Kenya Tour</a>
+      <a href="destinations/india.html">India Tour</a>
+      <a href="enquire.html">Enquire</a>
+      <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener">Book a Call</a>
+    </div>
+    <div class="footer-col">
+      <h2>About</h2>
+      <a href="about.html">About Us</a>
+      <a href="mission.html">Mission Statement</a>
+      <a href="safety-and-disclosure.html">Safety &amp; Disclosure</a>
+      <a href="corrections.html">Corrections</a>
+      <a href="partners.html">Partner With Me</a>
+    </div>
+    <div class="footer-col">
+      <h2>Legal</h2>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+      <a href="participant-agreement.html">Participant Agreement</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-listen-label">Listen on</span>
+    <a href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803" target="_blank" rel="noopener">Apple Podcasts</a>
+    <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">Spotify</a>
+    <a href="https://castbox.fm/channel/Paragliding-Atlas-by-Aninder-Singh-id6075445" target="_blank" rel="noopener">Castbox</a>
+    <a href="https://www.podbean.com/podcast-detail/tb6yq-2f5cd4/Paragliding-Atlas-by-Aninder-Singh-Podcast" target="_blank" rel="noopener">Podbean</a>
+    <a href="https://www.patreon.com/cw/ParaglidingAtlas" target="_blank" rel="noopener">Patreon</a>
+    <a href="https://www.instagram.com/anindersingh13" target="_blank" rel="noopener">Instagram</a>
+    <span>Paragliding Atlas 2026</span>
+  </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/d3.min.js?v=f2094bbf"></script>
+<script src="../../assets/js/topojson-client.min.js?v=25cd02ae"></script>
+<script src="../../script.js?v=1bb85db6"></script>
+<script>
+  (function () {
+    const form = document.getElementById('questionForm');
+    const status = document.getElementById('qfStatus');
+    if (!form) return;
+    const TO = 'aninder@paraglidingatlas.com';
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const inputs = form.querySelectorAll('input');
+      const name = inputs[0].value.trim(), email = inputs[1].value.trim();
+      const q = form.querySelector('textarea').value.trim();
+      if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || q.length < 5) {
+        status.textContent = 'Please add your name, a valid email and your question.';
+        return;
+      }
+      const body = ['Question for the show', '', 'From: ' + name, 'Email: ' + email, '', q].join('\n');
+      const href = 'mailto:' + TO + '?subject=' + encodeURIComponent('Question for the show: ' + name) + '&body=' + encodeURIComponent(body);
+      if (href.length > 1900) {
+        status.textContent = 'That question is a little long for an email link. Please shorten it, or send it straight to ' + TO + '.';
+        return;
+      }
+      status.textContent = 'Opening your email app with your question ready to send. If nothing happens, email ' + TO + ' directly.';
+      window.location.href = href;
+    });
+  })();
+</script>
+<script src="../../rss-feed.js?v=3c3f7e55"></script>
+<script src="../../youtube-feed.js?v=5972a63a"></script>
+<script defer src="../../newsletter.js?v=d28c01a5"></script>
+<script src="../../home-episodes.js?v=3d34434a"></script>
+<script src="../../episode-modal.js?v=686edaca"></script>
+<script src="../../globe-episodes.js?v=5ed6afaf"></script>
+<script src="../../globe.js?v=2b74cacc"></script>
+<!-- nav-menu -->
+<script defer src="../../nav-menu.js?v=001fbbf6"></script>
+<!-- /nav-menu -->
+</body>
+</html>

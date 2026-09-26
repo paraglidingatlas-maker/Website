@@ -16,9 +16,13 @@ v2 shell. Run tools/v2_localize.py afterwards.
 import html
 import os
 import re
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import v2_site as S  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-V2 = os.path.join(ROOT, "prototypes", "v2")
+V2 = S.DIR
 A = "../../assets/"
 e = html.escape
 TBD = '<i class="v2-tbd">[to supply]</i>'

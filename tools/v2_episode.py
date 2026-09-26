@@ -32,9 +32,12 @@ import os
 import re
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import v2_site as S  # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LIVE = os.path.join(ROOT, "episodes")
-OUT = os.path.join(ROOT, "prototypes", "v2", "episodes")
+OUT = os.path.join(S.DIR, "episodes")
 SAMPLES = ["urs-haari-the-real-truth-about-reserve-parachutes-a", "anatomy-of-a-dream-with-damien-lacaze"]
 
 # The next departures, as the dates table on the v2 homepage has them.

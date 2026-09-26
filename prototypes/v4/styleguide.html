@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Style guide | Paragliding Atlas</title>
+<meta name="description" content="The Atlas kit: the shared building blocks every v2 page is made from. Hidden prototype, not indexed.">
+<link rel="canonical" href="https://paraglidingatlas.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Atlas kit">
+<meta property="og:image" content="https://paraglidingatlas.com/assets/images/hero.jpg">
+<meta property="og:url" content="https://paraglidingatlas.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../../assets/logo/favicon.png">
+<link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
+<meta name="theme-color" content="#141519">
+<link rel="alternate" type="application/rss+xml" title="Paragliding Atlas Podcast" href="https://anchor.fm/s/ed1344d8/podcast/rss">
+<link rel="preload" href="../../assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
+<link rel="stylesheet" href="../../styles.css?v=c8d28696">
+<link rel="stylesheet" href="v2.css?v=10489ed9">
+<!-- site-schema -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://paraglidingatlas.com/#organization",
+   "name": "Paragliding Atlas",
+   "url": "https://paraglidingatlas.com/",
+   "description": "A talk show on the art and science of free flight. Honest conversations with designers, test pilots, instructors and record holders, published in full with transcripts, alongside small guided paragliding trips.",
+   "email": "aninder@paraglidingatlas.com",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://paraglidingatlas.com/assets/logo/atlas-logo-white.png"
+   },
+   "founder": {
+    "@type": "Person",
+    "name": "Aninder Singh"
+   },
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Olav Troviks Vei M 46",
+    "postalCode": "0864",
+    "addressLocality": "Oslo",
+    "addressCountry": "NO"
+   },
+   "identifier": "937116934",
+   "sameAs": [
+    "https://www.youtube.com/@ParaglidingAtlas",
+    "https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803",
+    "https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec",
+    "https://www.patreon.com/cw/ParaglidingAtlas",
+    "https://www.instagram.com/anindersingh13",
+    "https://castbox.fm/channel/Paragliding-Atlas-by-Aninder-Singh-id6075445",
+    "https://www.podbean.com/podcast-detail/tb6yq-2f5cd4/Paragliding-Atlas-by-Aninder-Singh-Podcast"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://paraglidingatlas.com/#website",
+   "name": "Paragliding Atlas",
+   "url": "https://paraglidingatlas.com/",
+   "description": "A talk show on the art and science of free flight. Honest conversations with designers, test pilots, instructors and record holders, published in full with transcripts, alongside small guided paragliding trips.",
+   "inLanguage": "en",
+   "publisher": {
+    "@id": "https://paraglidingatlas.com/#organization"
+   }
+  }
+ ]
+}
+</script>
+<!-- /site-schema --><script src="v2.js?v=12a215ee"></script>
+<script src="v2-immersive.js?v=eecb6907"></script>
+</head>
+<body>
+
+<div class="page-wrap">
+
+<nav>
+  <span class="nav-corner-l"></span>
+  <span class="nav-corner-r"></span>
+  <span class="nav-coords">59.9139&deg;N &middot; 10.7522&deg;E</span>
+  <a href="index.html" class="wordmark"><img src="../../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100"></a>
+  <div class="nav-links">
+    <a href="about.html">About Us</a>
+    <span class="nav-sep">|</span>
+    <a href="knowledge-base.html">Knowledge Base</a>
+    <span class="nav-sep">|</span>
+    <a href="podcast.html">Podcast</a>
+    <span class="nav-sep">|</span>
+    <a href="sitemap.html">Sitemap</a>
+  </div>
+  <a href="enquire.html" class="nav-cta" data-hover><span>Enquire Now</span></a>
+</nav>
+<div class="nav-chevron"></div>
+
+
+<style>
+/* style guide only: labels and swatches, not part of the kit */
+.sg-label{font-family:var(--font-body);font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;color:var(--gray);
+  margin:0 0 var(--sp-3);padding-bottom:.5rem;border-bottom:1px dashed rgba(180,180,180,.18);}
+.sg-sws{display:grid;grid-template-columns:repeat(auto-fill,minmax(9rem,1fr));gap:var(--sp-3);}
+.sg-sw i{display:block;height:64px;border:1px solid var(--line);margin-bottom:.5rem;}
+.sg-sw code,.sg-t code{font-size:var(--fs-small);color:var(--gray-light);}
+.sg-t{display:grid;grid-template-columns:9rem minmax(0,1fr);gap:var(--sp-2);align-items:baseline;padding:var(--sp-2) 0;border-bottom:1px solid var(--line);}
+.sg-do li{margin:.4rem 0;color:var(--gray-light);line-height:1.6;}
+.sg-hero-demo{min-height:520px;}
+</style>
+
+<header class="kit-hero is-sky">
+  <div class="kit-hero-copy">
+    <span class="kit-kicker">Paragliding Atlas &middot; not listed, not indexed</span>
+    <h1>The Atlas kit</h1>
+    <p class="kit-intro">Every page is assembled from these parts. If a page needs something that is not here, it is added here first, then used. That is the whole rule.</p>
+  </div>
+</header>
+
+<section class="kit-band"><div class="kit-in">
+  <p class="sg-label">1 &middot; Type</p>
+  <div class="sg-t"><code>--fs-display</code><span style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-display);line-height:1.05">Touch The Sky</span></div>
+  <div class="sg-t"><code>--fs-h1</code><span style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-h1);line-height:1.1">Page title</span></div>
+  <div class="sg-t"><code>--fs-h2</code><span class="kit-title">Section title</span></div>
+  <div class="sg-t"><code>--fs-h4</code><span style="font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4)">Card title</span></div>
+  <div class="sg-t"><code>--fs-lead</code><span class="kit-intro" style="margin:0">Intro paragraph, one or two sentences, never more.</span></div>
+  <div class="sg-t"><code>--fs-body</code><span style="color:var(--gray-light)">Running text. Comfortable measure, about sixty to seventy characters a line.</span></div>
+  <div class="sg-t"><code>--fs-micro</code><span class="kit-kicker" style="margin:0">Kicker &middot; always orange, always above a title</span></div>
+</div></section>
+
+<section class="kit-band"><div class="kit-in">
+  <p class="sg-label">2 &middot; Colour</p>
+  <div class="sg-sws"><div class="sg-sw"><i style="background:var(--bg)"></i><code>--bg</code></div><div class="sg-sw"><i style="background:var(--card)"></i><code>--card</code></div><div class="sg-sw"><i style="background:var(--white)"></i><code>--white</code></div><div class="sg-sw"><i style="background:var(--gray-light)"></i><code>--gray-light</code></div><div class="sg-sw"><i style="background:var(--gray)"></i><code>--gray</code></div><div class="sg-sw"><i style="background:var(--orange)"></i><code>--orange</code></div><div class="sg-sw"><i style="background:var(--sky-warm)"></i><code>--sky-warm</code></div><div class="sg-sw"><i style="background:var(--sky-cool)"></i><code>--sky-cool</code></div></div>
+  <p class="kit-intro" style="font-size:var(--fs-body-s)">Orange is the accent and appears sparingly: kickers, one button per group, brackets, the horizon. The two sky tokens change with the visitor's time of day.</p>
+</div></section>
+
+<section class="kit-band"><div class="kit-in">
+  <p class="sg-label">3 &middot; Section header (the only one)</p>
+  <div class="kit-head"><span class="kit-kicker">Expeditions</span><h2 class="kit-title">Fly where the mountains are the story</h2><p class="kit-intro">Every section opens like this: kicker, title, one intro line. Left aligned. Centred only for a single-idea section with nothing beside it.</p></div>
+  <div class="kit-head is-center"><span class="kit-kicker">Centred variant</span><h2 class="kit-title">For a single idea</h2><p class="kit-intro">Used sparingly, never twice in a row.</p></div>
+</div></section>
+
+<section class="kit-band is-quiet" style="padding:0">
+  <p class="sg-label" style="padding:var(--sp-3) var(--gutter) 0">4 &middot; Hero: media (photo or video)</p>
+  <header class="kit-hero sg-hero-demo">
+    <div class="kit-hero-media"><img src="../../assets/images/hero.jpg" alt=""></div>
+    <div class="kit-hero-copy">
+      <span class="kit-kicker">Kicker</span>
+      <h1>One line of headline</h1>
+      <p class="kit-intro">One sentence that says what this page is for.</p>
+      <div class="kit-actions"><a class="btn-solid" href="#"><span>Primary action</span></a><a class="btn-lines" href="#">Second action</a></div>
+      <div class="kit-stats"><div class="kit-stat"><b>4</b><span>Continents Flown</span></div><div class="kit-stat"><b>500+</b><span>Guided Flights</span></div><div class="kit-stat"><b>10</b><span>Years In The Air</span></div></div>
+    </div>
+  </header>
+</section>
+
+<section class="kit-band"><div class="kit-in">
+  <p class="sg-label">5 &middot; Buttons</p>
+  <div class="kit-actions" style="margin:0"><a class="btn-solid" href="#"><span>Book a Call</span></a><a class="btn-lines" href="#">Enquire Now</a></div>
+  <p class="kit-intro" style="font-size:var(--fs-body-s)">One solid button per group, at most. The outlined one is the alternative.</p>
+</div></section>
+
+<section class="kit-band"><div class="kit-in">
+  <p class="sg-label">6 &middot; Card 1: lit panel (words only)</p>
+  <div class="kit-grid is-3">
+    <div class="kit-panel"><span class="kit-kicker">01</span><h3>Small groups</h3><p>Lit from the bracket corner, a top rule that fades. No box.</p></div>
+    <div class="kit-panel"><span class="kit-kicker">02</span><h3>Named guides</h3><p>Use for reasons, promises, facts, anything that is words.</p></div>
+    <div class="kit-panel"><span class="kit-kicker">03</span><h3>Safety first</h3><p>Three or four in a row, never a single one on its own.</p></div>
+  </div>
+</div></section>
+
+<section class="kit-band"><div class="kit-in">
+  <p class="sg-label">7 &middot; Card 2: media card (picture, then words)</p>
+  <div class="kit-grid is-3"><a class="kit-card" href="#"><div class="kit-card-media"><img src="../../assets/podcast/artwork/anatomy-of-a-dream-with-damien-lacaze.jpg" alt="" loading="lazy"></div>
+<div class="kit-card-body"><span class="kit-meta">Living the dream</span><h3>Episode title sits here, two lines at most</h3><p>One or two sentences of summary, ending on a whole sentence.</p></div></a><a class="kit-card" href="#"><div class="kit-card-media"><img src="../../assets/podcast/artwork/demystifying-the-science-behind-parakites-bryan-van-ostheim.jpg" alt="" loading="lazy"></div>
+<div class="kit-card-body"><span class="kit-meta">Living the dream</span><h3>Episode title sits here, two lines at most</h3><p>One or two sentences of summary, ending on a whole sentence.</p></div></a><a class="kit-card" href="#"><div class="kit-card-media"><img src="../../assets/podcast/artwork/legacy-and-lifetimes-of-gin-seok-song.jpg" alt="" loading="lazy"></div>
+<div class="kit-card-body"><span class="kit-meta">Living the dream</span><h3>Episode title sits here, two lines at most</h3><p>One or two sentences of summary, ending on a whole sentence.</p></div></a></div>
+</div></section>
+
+<section class="kit-band"><div class="kit-in kit-narrow">
+  <p class="sg-label">8 &middot; Card 3: list row</p>
+  <div class="kit-rows">
+    <a class="kit-row" href="#"><h3>A row for episodes, FAQs, anything read down a list</h3><span class="kit-meta">96 min</span><p>Optional one line under it. Lines fade at their ends.</p></a>
+    <a class="kit-row" href="#"><h3>Second row</h3><span class="kit-meta">108 min</span><p>Hover nudges it right and warms the title.</p></a>
+    <a class="kit-row" href="#"><h3>Third row</h3><span class="kit-meta">63 min</span></a>
+  </div>
+</div></section>
+
+<section class="kit-band is-quiet" style="padding-left:0;padding-right:0">
+  <p class="sg-label" style="padding:0 var(--gutter)">9 &middot; Card 4: feature block (big picture beside the words)</p>
+  <div class="kit-feature">
+    <div class="kit-feature-media"><img src="../../assets/images/kenya-3.jpg" alt=""></div>
+    <div class="kit-feature-copy" style="padding-right:var(--gutter)">
+      <div class="kit-head" style="margin-bottom:0"><span class="kit-kicker">Kenya &middot; Kerio Valley</span><h2 class="kit-title">A journey over the cradle of humankind</h2><p class="kit-intro">The picture dissolves into the words. Flip it on the next one.</p></div>
+      <div class="kit-facts"><div><span>Duration</span><b>12 Days</b></div><div><span>Group Size</span><b>Small group</b></div><div><span>Best Season</span><b>December to March</b></div></div>
+      <div class="kit-actions"><a class="btn-lines" href="#">Learn More</a></div>
+    </div>
+  </div>
+  <div class="kit-feature is-flip">
+    <div class="kit-feature-media"><img src="../../assets/images/himalayas-1.jpg" alt=""></div>
+    <div class="kit-feature-copy" style="padding-left:var(--gutter)">
+      <div class="kit-head" style="margin-bottom:0"><span class="kit-kicker">India &middot; Bir Billing</span><h2 class="kit-title">The wall of the Himalaya above Bir</h2><p class="kit-intro">Flipped: picture on the right, fading left.</p></div>
+      <div class="kit-actions"><a class="btn-lines" href="#">Learn More</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="kit-band"><div class="kit-in">
+  <p class="sg-label">11 &middot; Tools: search, filters, sort (library)</p>
+  <div class="v2-tools" style="position:static">
+    <div class="v2-tools-row">
+      <label class="v2-find"><span class="v2-sr">Search</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input class="v2-find-input" type="search" placeholder="Search by title or guest"></label>
+      <label class="v2-sort"><span>Sort</span><select><option>Newest first</option><option>Oldest first</option></select></label>
+    </div>
+    <div class="v2-chips"><button class="v2-chip" type="button" aria-pressed="true">All <i>86</i></button><button class="v2-chip" type="button" aria-pressed="false">Risk vs Reward <i>12</i></button><button class="v2-chip" type="button" aria-pressed="false">Sky Gods <i>4</i></button></div>
+  </div>
+  <p class="kit-intro" style="font-size:var(--fs-body-s)">One filter pressed at a time, orange when on. Fields 48px tall and 16px text, so phones never zoom.</p>
+</div></section>
+
+<section class="kit-band"><div class="kit-in">
+  <p class="sg-label">12 &middot; Pager</p>
+  <nav class="v2-pager" style="justify-content:flex-start;margin:0"><button class="v2-pg" disabled>&larr;</button><button class="v2-pg is-on" aria-current="page">1</button><button class="v2-pg">2</button><button class="v2-pg">3</button><button class="v2-pg">&rarr;</button></nav>
+</div></section>
+
+<section class="kit-band"><div class="kit-in">
+  <p class="sg-label">13 &middot; Form field</p>
+  <form class="v2-form" onsubmit="return false"><label class="v2-field"><span>Your name</span><input type="text"></label><label class="v2-field"><span>Your email</span><input type="email"></label><label class="v2-field is-wide"><span>Your question or topic</span><textarea rows="2"></textarea></label><div class="v2-form-foot"><button class="btn-solid" type="button"><span>Submit Question</span></button></div></form>
+</div></section>
+
+<section class="kit-band"><div class="kit-in">
+  <p class="sg-label">14 &middot; Rail</p>
+  <p class="kit-intro" style="font-size:var(--fs-body-s);margin:0">A native horizontal scroller (finger, trackpad, keyboard) with snap and ends that dissolve. Arrow buttons only under a mouse and only when there is somewhere to go. Nothing moves on its own: no marquee, nothing running off screen. Used for the homepage episodes and the podcast testimonials.</p>
+</div></section>
+
+<section class="kit-band"><div class="kit-in kit-narrow">
+  <p class="sg-label">15 &middot; Motion: one flight across the site</p>
+  <ul class="sg-do">
+    <li><b>Altitude.</b> Homepage highest, section pages a level down, episodes, topics and categories lowest. Going deeper descends, going back climbs, same level glides.</li>
+    <li><b>Into the picture.</b> A destination's picture on the homepage grows into that destination's hero.</li>
+    <li><b>Scroll is a camera.</b> The hero falls behind you with cloud passing up through it; pictures sit deeper than words; headers are wiped in, cards surface as you reach them.</li>
+    <li><b>Touch.</b> Under a mouse, cards tilt towards the pointer and carry a soft light; the hero sky follows the pointer; rails lean with their momentum.</li>
+    <li><b>The instrument.</b> Altitude and heading in the right margin on wide screens, once the hero is behind you.</li>
+    <li><b>Wind.</b> Optional sound from the header button, off until asked for, remembered, silent in a hidden tab.</li>
+    <li><b>Rules.</b> Nothing runs on its own: every frame comes from a scroll, a pointer or a page change. Reduced motion: none of it. Save-Data and 2G/3G: no video.</li>
+  </ul>
+</div></section>
+
+<section class="kit-band"><div class="kit-in">
+  <p class="sg-label">15b &middot; Words on a photo, and the two pages built on it</p>
+  <div class="sg-photo" style="position:relative;overflow:hidden;min-height:340px;display:flex;align-items:center;padding:var(--sp-4)">
+    <picture style="position:absolute;inset:0"><source srcset="img/himalayas-1.webp" type="image/webp"><img src="../../assets/images/himalayas-1.jpg" alt="Paraglider over snow-capped Himalayan peaks" loading="lazy" style="width:100%;height:100%;object-fit:cover"></picture>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,21,25,.9) 0%,rgba(20,21,25,.6) 45%,rgba(20,21,25,.15) 100%)"></div>
+    <div class="v2-fb-copy" style="position:relative">
+      <span class="kit-kicker">India &middot; Bir Billing, Himalaya</span>
+      <p class="v2-fb-title" style="margin:.5rem 0 1.4rem">The Majestic Himalayas</p>
+      <dl class="v2-fb-facts"><div><dt>Next</dt><dd><b>21 to 30 Oct 2026</b></dd></div><div><dt>Length</dt><dd><b>10 days</b></dd></div><div><dt>From</dt><dd><b class="v2-price">&pound;1,100</b></dd></div></dl>
+    </div>
+  </div>
+  <ul class="sg-do" style="margin-top:var(--sp-3)">
+    <li><b>No box on a photo.</b> A shade behind the words, darker on their side; small orange text there uses <code>--orange-lite</code>.</li>
+    <li><b>Fly-through</b> (<a href="index.html#destinations" style="color:var(--orange)">home</a>): one picture held on screen while each trip passes over it; the section heading is its first frame.</li>
+    <li><b>Episode page</b> (<a href="episodes/bruce-goldsmith-explains-mrt-scoring-system-and-its-impact.html" style="color:var(--orange)">example</a>): the player beside the title on every episode; quote and guest card in one row below.</li>
+    <li>The full rules: <code>docs/v2-design-rules.md</code>.</li>
+  </ul>
+</div></section>
+
+<section class="kit-band"><div class="kit-in kit-narrow">
+  <p class="sg-label">16 &middot; Rules</p>
+  <ul class="sg-do">
+    <li><b>Structure is shared, character is not.</b> The knowledge base door, the Kenya photo sequence, the library's stone tiles, the booking card and the globe keep their own design.</li>
+    <li>Every section opens with the one section header. No other heading styles.</li>
+    <li>Every band has the same padding (<code>--sp-section</code>) and width (<code>--measure</code>).</li>
+    <li>Four card types and nothing else: lit panel, media card, list row, feature block.</li>
+    <li>Nothing ends in a hard edge unless it is a card; lines fade at their ends.</li>
+    <li>One solid button per group. Touch targets 44px. Text never below 11px.</li>
+    <li>A new pattern is added to this page first, then used.</li>
+    <li>Reduced motion: nothing moves. Save-Data and 2G/3G: no video.</li>
+  </ul>
+</div></section>
+</div><!-- /.page-wrap -->
+
+<footer>
+  <div class="footer-content">
+  <div class="footer-top">
+    <div class="footer-col footer-brand">
+      <a href="index.html" class="wordmark" aria-label="Paragliding Atlas, home"><img src="../../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100" loading="lazy"></a>
+      <p class="footer-tagline"><a href="mission.html">Touch The Sky With Glory</a></p>
+      <p class="footer-addr">Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>0864, Oslo<br>Norway</p>
+    </div>
+    <div class="footer-col">
+      <h2>Listen</h2>
+      <a href="library.html">All Episodes</a>
+      <a href="tags.html">Topics</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="podcast.html">Podcast</a>
+      <a href="sitemap.html">Sitemap</a>
+    </div>
+    <div class="footer-col">
+      <h2>Fly With Us</h2>
+      <a href="index.html#destinations">Destinations</a>
+      <a href="destinations/kenya.html">Kenya Tour</a>
+      <a href="destinations/india.html">India Tour</a>
+      <a href="enquire.html">Enquire</a>
+      <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener">Book a Call</a>
+    </div>
+    <div class="footer-col">
+      <h2>About</h2>
+      <a href="about.html">About Us</a>
+      <a href="mission.html">Mission Statement</a>
+      <a href="safety-and-disclosure.html">Safety &amp; Disclosure</a>
+      <a href="corrections.html">Corrections</a>
+      <a href="partners.html">Partner With Me</a>
+    </div>
+    <div class="footer-col">
+      <h2>Legal</h2>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+      <a href="participant-agreement.html">Participant Agreement</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-listen-label">Listen on</span>
+    <a href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803" target="_blank" rel="noopener">Apple Podcasts</a>
+    <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">Spotify</a>
+    <a href="https://castbox.fm/channel/Paragliding-Atlas-by-Aninder-Singh-id6075445" target="_blank" rel="noopener">Castbox</a>
+    <a href="https://www.podbean.com/podcast-detail/tb6yq-2f5cd4/Paragliding-Atlas-by-Aninder-Singh-Podcast" target="_blank" rel="noopener">Podbean</a>
+    <a href="https://www.patreon.com/cw/ParaglidingAtlas" target="_blank" rel="noopener">Patreon</a>
+    <a href="https://www.instagram.com/anindersingh13" target="_blank" rel="noopener">Instagram</a>
+    <span>Paragliding Atlas 2026</span>
+  </div>
+  </div>
+</footer>
+
+<script src="../../script.js?v=1bb85db6"></script>
+<!-- nav-menu -->
+<script defer src="../../nav-menu.js?v=001fbbf6"></script>
+<!-- /nav-menu -->
+</body>
+</html>

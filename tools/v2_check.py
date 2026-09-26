@@ -36,10 +36,12 @@ import os
 import re
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import v2_site as S  # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-V2 = os.path.join(ROOT, "prototypes", "v2")
-BASE = "http://127.0.0.1:8765/prototypes/v2/"
-V2_ONLY = {"styleguide.html", "fly-options.html"}      # no live twin
+V2 = S.DIR
+BASE = "http://127.0.0.1:8765/" + S.URL_PATH
 WIDTHS = (390, 768, 1440)
 CHROME = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
 
@@ -141,7 +143,7 @@ def check_static(rel):
     src = read(path)
     here = os.path.dirname(path)
     # links
-    missing = set()
+    missing, other = set(), set()
     refs = ATTR.findall(src) + [u.strip().split(" ")[0] for s in SRCSET.findall(src) for u in s.split(",")]
     for u in refs:
         u = html.unescape(u).strip()
@@ -155,17 +157,23 @@ def check_static(rel):
             target = os.path.join(target, "index.html")
         if not os.path.exists(target):
             missing.add(u)
+        elif target.startswith(os.path.join(ROOT, "prototypes") + os.sep) and not target.startswith(V2 + os.sep):
+            other.add(u)
     for u in LOOP.findall(src):
         if not os.path.exists(os.path.normpath(os.path.join(here, u + "-720.mp4"))):
             missing.add(u + "-720.mp4")
     if missing:
         fails.append("links: %d missing, e.g. %s" % (len(missing), sorted(missing)[:3]))
+    if other:
+        fails.append("links: %d into another prototype, e.g. %s" % (len(other), sorted(other)[:3]))
+    if not S.IS_V2 and re.search(r"prototypes/v(?!%s/)\d+/" % S.NAME[1:], re.sub(r"<!--.*?-->", "", src, flags=re.S)):
+        fails.append("links: names another prototype's folder")
     # robots
     if 'name="robots" content="noindex' not in src:
         fails.append("robots: no noindex")
     # structure
     n_h1 = len(re.findall(r"<h1\b", src))
-    if n_h1 != 1 and not rel.endswith("404.html") and rel not in V2_ONLY:
+    if n_h1 != 1 and not rel.endswith("404.html") and not S.proto_only(rel):
         fails.append("structure: %d <h1>" % n_h1)
     if not re.search(r'<html[^>]*\slang="', src):
         fails.append("structure: no lang")
@@ -174,7 +182,7 @@ def check_static(rel):
         fails.append("structure: %d <img> without alt" % no_alt)
     # parity
     live = os.path.join(ROOT, rel)
-    if rel in V2_ONLY:
+    if S.proto_only(rel):
         pass
     elif not os.path.exists(live):
         warns.append("parity: no live twin")
@@ -266,10 +274,18 @@ def main():
     report = {}
     for r in rels:
         report[r] = check_static(r)
+    if not S.IS_V2:
+        for d, _, fs in os.walk(V2):
+            for fn in fs:
+                if fn.endswith((".js", ".css")):
+                    code = re.sub(r"/\*.*?\*/", "", read(os.path.join(d, fn)), flags=re.S)
+                    if re.search(r"prototypes/v(?!%s/)\d+/" % S.NAME[1:], code):
+                        rels.append(os.path.relpath(os.path.join(d, fn), V2))
+                        report[rels[-1]] = (["links: the file names another prototype's folder"], [])
     if not a.static:
         if a.shots:
             os.makedirs(a.shots, exist_ok=True)
-        for r, (f, w) in check_browser(rels, a.shots).items():
+        for r, (f, w) in check_browser([r for r in rels if r.endswith(".html")], a.shots).items():
             report[r][0].extend(f)
             report[r][1].extend(w)
     nf = nw = 0
@@ -283,7 +299,7 @@ def main():
         nw += len(w)
         if not f and not w:
             print("  ok  %s" % r)
-    print("\n%d v2 pages checked | %d FAIL | %d warn" % (len(rels), nf, nw))
+    print("\n%d %s pages checked | %d FAIL | %d warn" % (len(rels), S.NAME, nf, nw))
     if a.json:
         with open(a.json, "w") as fh:
             json.dump({r: {"fail": report[r][0], "warn": report[r][1]} for r in rels}, fh, indent=1)
