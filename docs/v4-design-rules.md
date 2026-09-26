@@ -130,6 +130,13 @@ open into the episode (a transition), the instrument font.
   (`@media (pointer:coarse)`), with the compact look kept under a mouse.
 - Order on a phone: the words first, then the buttons, then the media.
 
+## Files (v4)
+Edit the readable sources in `prototypes/v4/src/` (`v2.css`,
+`v2-immersive.js`, `v4-menu.js`), then `python3 tools/v4_min.py` writes the
+served copies without comments. The menu's code loads on first use.
+Speed rule: no v4 page heavier on arrival than its v2 twin
+(`python3 tools/v4_weight.py`, compressed as served).
+
 ## Checks before any push
 `./build.sh`, `python3 tools/audit.py --drift`, `python3 tools/smoke.py`,
 `python3 tools/v2_check.py --site v4` (0 FAIL: links, noindex, headings, alt,

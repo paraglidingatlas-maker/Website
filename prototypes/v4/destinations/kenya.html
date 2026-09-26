@@ -26,7 +26,7 @@
 <link rel="preload" href="../../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../../styles.css?v=c8d28696">
-<link rel="stylesheet" href="../v2.css?v=6734a506">
+<link rel="stylesheet" href="../v2.css?v=d5dfffd8">
 <link rel="stylesheet" href="../../../destinations.css?v=993310a6">
 <!-- site-schema -->
 <script type="application/ld+json">
@@ -147,8 +147,8 @@
  ]
 }
 </script>
-<!-- /site-schema --><script src="../v2.js?v=1321c7f4"></script>
-<script src="../v2-immersive.js?v=82b08e58"></script>
+<!-- /site-schema --><script src="../v2.js?v=c7722c82"></script>
+<script src="../v2-immersive.js?v=49891a69"></script>
 </head>
 <body class="dst v2-dst v4-trip">
 
@@ -280,9 +280,9 @@
   <div class="kfly" id="kfly">
     <div class="kfly-stage">
       <div class="kfly-slide is-on"><picture><source srcset="../../../assets/images/kenya-slope.webp" type="image/webp"><img src="../../../assets/images/kenya-slope.jpg" width="1400" height="933" loading="lazy" draggable="false" alt="A wing lifting off a green grass slope dotted with acacia trees"></picture></div>
-      <div class="kfly-slide"><picture><source srcset="../../../assets/images/kenya-high.webp" type="image/webp"><img src="../../../assets/images/kenya-high.jpg" width="1400" height="933" loading="lazy" draggable="false" alt="A paraglider high above farmland, the flatlands hazy to the horizon"></picture></div>
-      <div class="kfly-slide"><picture><source srcset="../../../assets/images/kenya-ridge.webp" type="image/webp"><img src="../../../assets/images/kenya-ridge.jpg" width="1800" height="771" loading="lazy" draggable="false" alt="Three wings crossing a green ridgeline toward distant hills"></picture></div>
-      <div class="kfly-slide"><picture><source srcset="../../../assets/destinations/kenya/gallery/kerio-valley.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/kerio-valley.jpg" width="1400" height="933" loading="lazy" draggable="false" alt="Kerio Valley"></picture></div><div class="kfly-slide"><picture><source srcset="../../../assets/destinations/kenya/gallery/chyulu-hills.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/chyulu-hills.jpg" width="1400" height="933" loading="lazy" draggable="false" alt="Chyulu Hills"></picture></div>
+      <div class="kfly-slide"><picture><source data-v4-srcset="../../../assets/images/kenya-high.webp" type="image/webp"><img data-v4-src="../../../assets/images/kenya-high.jpg" width="1400" height="933" loading="lazy" draggable="false" alt="A paraglider high above farmland, the flatlands hazy to the horizon"></picture></div>
+      <div class="kfly-slide"><picture><source data-v4-srcset="../../../assets/images/kenya-ridge.webp" type="image/webp"><img data-v4-src="../../../assets/images/kenya-ridge.jpg" width="1800" height="771" loading="lazy" draggable="false" alt="Three wings crossing a green ridgeline toward distant hills"></picture></div>
+      <div class="kfly-slide"><picture><source data-v4-srcset="../../../assets/destinations/kenya/gallery/kerio-valley.webp" type="image/webp"><img data-v4-src="../../../assets/destinations/kenya/gallery/kerio-valley.jpg" width="1400" height="933" loading="lazy" draggable="false" alt="Kerio Valley"></picture></div><div class="kfly-slide"><picture><source data-v4-srcset="../../../assets/destinations/kenya/gallery/chyulu-hills.webp" type="image/webp"><img data-v4-src="../../../assets/destinations/kenya/gallery/chyulu-hills.jpg" width="1400" height="933" loading="lazy" draggable="false" alt="Chyulu Hills"></picture></div>
       <div class="kfly-scrim" aria-hidden="true"></div>
       <div class="kfly-marks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
     </div>
@@ -2538,6 +2538,18 @@
     if (a) openTo(a.getAttribute('href').slice(1));
   });
   go();
+  /* speed: the fly-through's later photographs load as it comes near */
+  var fly = document.getElementById('kfly');
+  function wake() {
+    fly.querySelectorAll('[data-v4-src],[data-v4-srcset]').forEach(function (el) {
+      if (el.dataset.v4Srcset) { el.srcset = el.dataset.v4Srcset; el.removeAttribute('data-v4-srcset'); }
+      if (el.dataset.v4Src) { el.src = el.dataset.v4Src; el.removeAttribute('data-v4-src'); }
+    });
+  }
+  if (fly) {
+    if (!('IntersectionObserver' in window)) wake();
+    else { var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); wake(); } }, { rootMargin: '60% 0px' }); io.observe(fly); }
+  }
 })();
 </script>
 </body>

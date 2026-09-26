@@ -1,0 +1,637 @@
+/* V2 IMMERSION (prototypes/v4/ only). One flight across the whole site.
+
+   1. DEPTH. Every page sits at an altitude: the homepage highest, the section
+      pages (podcast, library, about, Kenya, India, topics, knowledge base) a
+      level down, single episodes, topics and categories lowest. Moving to a
+      deeper page descends (the old page lifts away, the new one rises from
+      below), moving up climbs, same level glides sideways. Direction is
+      decided on pageswap, remembered for the next page, and handed to CSS as
+      a class on <html> for the length of the transition.
+   2. THE INSTRUMENT. A small altitude and heading readout (wide screens)
+      that follows the page and the scroll, and a line in it that banks with
+      scroll speed. Decorative, aria-hidden.
+   3. TOUCH. Under a fine pointer, cards tilt a little towards the pointer and
+      carry a soft light; the hero sky shifts with the pointer. The episode
+      rails lean with their own momentum.
+   4. INTO THE PICTURE. Pressing a destination's picture on the homepage grows
+      that picture into the destination's hero.
+   5. WIND. An optional wind sound, off until asked for (button in the header),
+      made in the browser (filtered noise, no file), gusting with scroll speed,
+      silent while the tab is hidden. The choice is remembered.
+
+   Nothing here runs on its own: every frame is caused by a scroll, a pointer
+   or a transition, and stops when they do. Reduced motion: 1 to 4 are off
+   (the page changes exactly as before); the wind stays available because it
+   is sound, not motion. */
+(function () {
+  "use strict";
+  var d = document, root = d.documentElement, w = window;
+  var mm = function (q) { return w.matchMedia && w.matchMedia(q).matches; };
+  var still = mm("(prefers-reduced-motion: reduce)");
+  var fine = mm("(hover: hover) and (pointer: fine)");
+  var store = { get: function (k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
+                set: function (k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} } };
+  var keep = { get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+               set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+
+  /* ---------------------------------------------------------------- depth */
+  function depthOf(path) {
+    var m = /\/prototypes\/v\d+\/(.*)$/.exec(path) || [null, path.replace(/^\//, "")];
+    var p = m[1] || "index.html";
+    if (p === "" || p === "index.html") return 0;
+    if (/^(episodes|tags|knowledge-base)\//.test(p)) return 2;
+    if (/^destinations\//.test(p)) return 1;
+    return 1;
+  }
+  var here = depthOf(location.pathname);
+  root.setAttribute("data-depth", here);
+
+  w.addEventListener("pageswap", function (e) {
+    if (!e.viewTransition || !e.activation || !e.activation.entry) return;
+    var to = depthOf(new URL(e.activation.entry.url).pathname);
+    var dir = to > here ? "descend" : to < here ? "climb" : "glide";
+    root.classList.add("vt-" + dir);
+    store.set("v2-vt", dir);
+  });
+  w.addEventListener("pagereveal", function (e) {
+    var dir = store.get("v2-vt"); store.set("v2-vt", "");
+    if (!e.viewTransition || !dir) return;
+    root.classList.add("vt-" + dir);
+    var done = function () { root.classList.remove("vt-descend", "vt-climb", "vt-glide"); };
+    e.viewTransition.finished.then(done, done);
+  });
+  // coming back with the browser's back button restores the page from cache:
+  // clear the class the swap left on it
+  w.addEventListener("pageshow", function () { root.classList.remove("vt-descend", "vt-climb", "vt-glide"); });
+
+  /* ------------------------------------------------ into the picture (4) */
+  if (!still) {
+    d.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="destinations/"]');
+      if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      var block = a.closest(".v2-flyby");
+      var img = block && block.querySelector(".v2-fb-shot.is-on img");
+      if (!img) return;
+      img.style.viewTransitionName = "v2-dest";
+      store.set("v2-dest", "1");
+    }, true);
+    w.addEventListener("pagereveal", function (e) {
+      if (store.get("v2-dest") !== "1") return;
+      store.set("v2-dest", "");
+      var img = d.querySelector(".khero-slide.is-on img, .khero-slide img");
+      if (!img || !e.viewTransition) return;
+      img.style.viewTransitionName = "v2-dest";
+      var off = function () { img.style.viewTransitionName = ""; };
+      e.viewTransition.finished.then(off, off);
+    });
+    w.addEventListener("pageshow", function () {
+      d.querySelectorAll(".v2-fb-shot img").forEach(function (i) { i.style.viewTransitionName = ""; });
+    });
+  }
+
+  /* the rest needs the page itself; this file loads in the head so that the
+     transition listeners above are in place before the first frame */
+  var wind = { gust: function () {} };
+  function ready() {
+  /* --------------------------------------------------- the instrument (2) */
+    var hud = null, hudAlt, hudHdg, hudLine, lastY = w.scrollY, lastT = 0, bank = 0, bankRaf = 0;
+    var BASE = [4200, 3100, 2200][here] || 3100;
+    var HDG = (function () { var h = 0, s = location.pathname; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) % 360; return h; })();
+    // docked in the header's coordinate slot, so it never sits over content
+    var slot = d.querySelector(".page-wrap > nav .nav-coords");
+    if (slot) {
+      hud = slot;
+      slot.classList.add("v2-hud");
+      slot.setAttribute("aria-hidden", "true");
+      slot.innerHTML = '<span class="v2-hud-att"><i></i></span><span class="v2-hud-row"><b>ALT</b><em class="a"></em></span>' +
+                       '<span class="v2-hud-row"><b>HDG</b><em class="h"></em></span>';
+      hudAlt = slot.querySelector(".a"); hudHdg = slot.querySelector(".h"); hudLine = slot.querySelector(".v2-hud-att i");
+    }
+    function pad3(n) { n = ((Math.round(n) % 360) + 360) % 360; return (n < 10 ? "00" : n < 100 ? "0" : "") + n; }
+    /* The numbers fly with the hero's footage, not with the scroll: while the
+       page's hero video plays, altitude climbs through its loop (the homepage
+       clip climbs through cloud and breaks out above the peaks) and heading
+       drifts like a slow turn; both start again with the loop. The readout is
+       shown only while that footage is moving behind it (v2.css .is-flying):
+       not on the nav that returns on the way up, not on pages without a hero
+       video. (Decorative instrument numbers; not telemetry from the flight.) */
+    function paintHud(f) {
+      if (!hud) return;
+      f = f || 0;                                   // 0..1 through the loop
+      var climb = BASE - 450 + f * 700;             // a climb of 700 m over the clip
+      var turn = HDG + Math.sin(f * Math.PI * 2) * 9 + f * 14;
+      hudAlt.textContent = (Math.round(climb / 10) * 10).toLocaleString("en-US") + " m";
+      hudHdg.textContent = pad3(turn) + "°";
+    }
+    var heroVid = d.querySelector(".page-wrap > .kit-hero video, .page-wrap > header video, .khero video");
+    if (heroVid && hud) {
+      // the readout shows only while there is flight footage moving behind it
+      var flying = function () { hud.classList.toggle("is-flying", !heroVid.paused && !heroVid.ended); };
+      ["playing", "pause", "ended", "emptied"].forEach(function (ev) { heroVid.addEventListener(ev, flying); });
+      heroVid.addEventListener("timeupdate", function () {
+        var dur = heroVid.duration;
+        if (dur && isFinite(dur)) paintHud(heroVid.currentTime / dur);
+      });
+    }
+    function settleBank() {
+      bank *= 0.86;
+      if (hudLine) hudLine.style.transform = "rotate(" + bank.toFixed(2) + "deg)";
+      root.style.setProperty("--v2-gust", Math.min(1, Math.abs(bank) / 14).toFixed(3));
+      if (Math.abs(bank) > 0.05) bankRaf = requestAnimationFrame(settleBank); else { bankRaf = 0; bank = 0; }
+    }
+    var scrollQueued = false;
+    w.addEventListener("scroll", function () {
+      if (scrollQueued) return; scrollQueued = true;
+      requestAnimationFrame(function () {
+        scrollQueued = false;
+        var t = performance.now(), y = w.scrollY, v = (y - lastY) / Math.max(16, t - lastT);
+        lastY = y; lastT = t;
+        bank = Math.max(-14, Math.min(14, bank + v * 6));
+        wind.gust(Math.min(1, Math.abs(v) / 3));
+        if (!bankRaf) bankRaf = requestAnimationFrame(settleBank);
+      });
+    }, { passive: true });
+    paintHud();
+
+    /* ------------------------------------------------------------ touch (3) */
+    var CARDS = ".kit-card, .kit-panel, .ep-card, .ep-tile, .tg-v2 .tg-ep, .v2-door, .tile, .cd-box, .ep2-card";
+    if (!still && fine) {
+      var cur = null, raf = 0, px = 0, py = 0;
+      var apply = function () {
+        raf = 0; if (!cur) return;
+        var r = cur.getBoundingClientRect(), x = (px - r.left) / r.width, y = (py - r.top) / r.height;
+        cur.style.setProperty("--mx", (x * 100).toFixed(1) + "%");
+        cur.style.setProperty("--my", (y * 100).toFixed(1) + "%");
+        cur.style.transform = "perspective(900px) rotateX(" + ((0.5 - y) * 5).toFixed(2) + "deg) rotateY(" + ((x - 0.5) * 6).toFixed(2) + "deg)";
+      };
+      var leave = function (el) {
+        // ease back to flat, then hand the transition list back to the card
+        el.style.transition = "transform .5s cubic-bezier(.2,.8,.2,1), translate .26s cubic-bezier(.2,.8,.2,1), scale .16s cubic-bezier(.2,.8,.2,1)";
+        el.style.transform = ""; el.classList.remove("v2-lit");
+        setTimeout(function () { if (el !== cur) el.style.transition = ""; }, 520);
+      };
+      d.addEventListener("pointermove", function (e) {
+        if (e.pointerType !== "mouse") return;
+        var el = e.target.closest && e.target.closest(CARDS);
+        if (el !== cur) {
+          if (cur) leave(cur);
+          cur = el;
+          if (cur) {
+            cur.style.transition = "";
+            cur.classList.add("v2-lit");
+            if (!cur.querySelector(":scope > .v2-glint")) {
+              var g = d.createElement("i"); g.className = "v2-glint"; g.setAttribute("aria-hidden", "true"); cur.appendChild(g);
+            }
+          }
+        }
+        px = e.clientX; py = e.clientY;
+        if (cur && !raf) raf = requestAnimationFrame(apply);
+      }, { passive: true });
+      d.addEventListener("pointerleave", function () { if (cur) { leave(cur); cur = null; } }, true);
+
+      // the hero sky follows the pointer a little
+      var hero = d.querySelector(".kit-hero:not(.is-sky)");
+      if (hero) {
+        var hraf = 0, hx = 0, hy = 0;
+        hero.addEventListener("pointermove", function (e) {
+          hx = e.clientX / innerWidth - 0.5; hy = e.clientY / innerHeight - 0.5;
+          if (!hraf) hraf = requestAnimationFrame(function () {
+            hraf = 0;
+            hero.style.setProperty("--hx", (hx * -18).toFixed(1) + "px");
+            hero.style.setProperty("--hy", (hy * -12).toFixed(1) + "px");
+          });
+        }, { passive: true });
+      }
+    }
+    // rails lean with their momentum (touch too: it is the scroll that drives it)
+    if (!still) {
+      d.querySelectorAll(".v2-rail").forEach(function (rail) {
+        var lx = rail.scrollLeft, lean = 0, lraf = 0;
+        var settle = function () {
+          lean *= 0.82;
+          rail.style.setProperty("--lean", lean.toFixed(2));
+          if (Math.abs(lean) > 0.05) lraf = requestAnimationFrame(settle); else { lraf = 0; rail.style.setProperty("--lean", "0"); }
+        };
+        rail.addEventListener("scroll", function () {
+          var dx = rail.scrollLeft - lx; lx = rail.scrollLeft;
+          lean = Math.max(-9, Math.min(9, lean + dx * 0.12));
+          if (!lraf) lraf = requestAnimationFrame(settle);
+        }, { passive: true });
+      });
+    }
+
+    // rails: drag with the mouse; data-auto rails also drift on their own,
+    // but only while on screen, untouched and unhovered, and never for reduced motion
+    d.querySelectorAll(".v2-rail").forEach(function (rail) {
+      var down = false, sx = 0, sl = 0, moved = 0, dragged = 0;
+      rail.addEventListener("dragstart", function (e) { e.preventDefault(); });
+      rail.addEventListener("pointerdown", function (e) {
+        if (e.pointerType !== "mouse" || e.button !== 0) return;
+        down = true; moved = 0; sx = e.clientX; sl = rail.scrollLeft;
+      });
+      w.addEventListener("pointermove", function (e) {
+        if (!down) return;
+        var dx = e.clientX - sx;
+        if (Math.abs(dx) > 4) { rail.classList.add("is-dragging"); moved = Math.max(moved, Math.abs(dx)); }
+        if (moved) rail.scrollLeft = sl - dx;
+      }, { passive: true });
+      var up = function () { if (!down) return; down = false; if (moved > 6) dragged = Date.now(); rail.classList.remove("is-dragging"); };
+      w.addEventListener("pointerup", up); w.addEventListener("pointercancel", up);
+      rail.addEventListener("click", function (e) { if (Date.now() - dragged < 300) { e.preventDefault(); e.stopPropagation(); } }, true);
+
+      if (!rail.hasAttribute("data-auto") || still) return;
+      var kids = [].slice.call(rail.children);
+      kids.forEach(function (k) {
+        var c = k.cloneNode(true); c.setAttribute("aria-hidden", "true"); c.setAttribute("tabindex", "-1");
+        c.querySelectorAll("a,button").forEach(function (a) { a.setAttribute("tabindex", "-1"); });
+        rail.appendChild(c);
+      });
+      rail.classList.add("is-auto");
+      var x = rail.scrollLeft, set = x, seen = false, hold = 0, raf = 0, resume = 0;
+      var half = function () { return rail.scrollWidth / 2; };
+      var go = function () {
+        raf = 0;
+        if (!seen || hold || down || d.hidden) return;   // down: being dragged
+        if (Math.abs(rail.scrollLeft - set) > 2) x = rail.scrollLeft;   // the visitor moved it
+        x += 0.45; if (x >= half()) x -= half();
+        rail.scrollLeft = x; set = rail.scrollLeft;
+        raf = requestAnimationFrame(go);
+      };
+      var wake = function () { if (!raf) raf = requestAnimationFrame(go); };
+      var pause = function () { hold = 1; clearTimeout(resume); };
+      var later = function () { clearTimeout(resume); resume = setTimeout(function () { hold = 0; x = rail.scrollLeft; wake(); }, 2500); };
+      // hovering does not stop it; grabbing or pressing it does, and it drifts on again after
+      rail.addEventListener("pointerdown", pause);
+      w.addEventListener("pointerup", function () { if (hold) later(); });
+      rail.addEventListener("touchstart", pause, { passive: true }); rail.addEventListener("touchend", later);
+      rail.addEventListener("focusin", pause); rail.addEventListener("focusout", later);
+      rail.addEventListener("wheel", function () { pause(); later(); }, { passive: true });
+      // manual scrolling past the clones wraps too, so the strip never runs out
+      rail.addEventListener("scroll", function () { if (hold && rail.scrollLeft >= half()) rail.scrollLeft -= half(); }, { passive: true });
+      d.addEventListener("visibilitychange", wake);
+      if ("IntersectionObserver" in w) new IntersectionObserver(function (en) { seen = en[0].isIntersecting; if (seen) wake(); }).observe(rail);
+      else { seen = true; wake(); }
+    });
+    wind = makeWind();
+  }
+  if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", ready); else ready();
+
+  /* ------------------------------------------------------------- wind (5) */
+  function makeWind() {
+    var ctx = null, gain, filt, on = keep.get("v2-wind") === "on", btn = null, target = 0;
+    function build() {
+      var AC = w.AudioContext || w.webkitAudioContext; if (!AC) return false;
+      ctx = new AC();
+      var len = ctx.sampleRate * 4, buf = ctx.createBuffer(2, len, ctx.sampleRate);
+      for (var c = 0; c < 2; c++) {             // brown noise: soft, low, like air moving
+        var data = buf.getChannelData(c), last = 0;
+        for (var i = 0; i < len; i++) { var white = Math.random() * 2 - 1; last = (last + 0.02 * white) / 1.02; data[i] = last * 3.2; }
+      }
+      var src = ctx.createBufferSource(); src.buffer = buf; src.loop = true;
+      filt = ctx.createBiquadFilter(); filt.type = "lowpass"; filt.frequency.value = 420; filt.Q.value = 0.7;
+      var lfo = ctx.createOscillator(), lfoGain = ctx.createGain();
+      lfo.frequency.value = 0.07; lfoGain.gain.value = 180; lfo.connect(lfoGain); lfoGain.connect(filt.frequency);
+      gain = ctx.createGain(); gain.gain.value = 0;
+      src.connect(filt); filt.connect(gain); gain.connect(ctx.destination);
+      src.start(); lfo.start();
+      return true;
+    }
+    function level(v, t) { if (ctx) gain.gain.setTargetAtTime(v, ctx.currentTime, t || 0.8); }
+    function start() {
+      if (!ctx && !build()) return;
+      if (ctx.state === "suspended") ctx.resume();
+      target = 0.16; level(target, 1.2);
+    }
+    function stop() { target = 0; level(0, 0.4); }
+    function set(v) {
+      on = v; keep.set("v2-wind", v ? "on" : "off");
+      if (btn) { btn.setAttribute("aria-pressed", String(v)); btn.classList.toggle("is-on", v); }
+      if (v) start(); else stop();
+    }
+    function mount() {
+      var nav = d.querySelector(".page-wrap > nav"), cta = nav && nav.querySelector(".nav-cta");
+      if (!nav || !cta) return;
+      btn = d.createElement("button");
+      btn.type = "button"; btn.className = "v2-wind"; btn.setAttribute("aria-pressed", String(on));
+      btn.setAttribute("aria-label", "Wind sound"); btn.title = "Wind sound";
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">' +
+        '<path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 14h15a3 3 0 1 1-3 3"/><path d="M3 19h7"/></svg><span class="v4-wind-l" aria-hidden="true">Wind sound</span>';
+      btn.classList.toggle("is-on", on);
+      btn.addEventListener("click", function () { set(!on); });
+      nav.insertBefore(btn, cta);
+      // remembered as on: a browser only lets sound start after the visitor
+      // touches the page, so it waits for the first press or key
+      if (on) {
+        var first = function () { d.removeEventListener("pointerdown", first, true); d.removeEventListener("keydown", first, true); if (on) start(); };
+        d.addEventListener("pointerdown", first, true); d.addEventListener("keydown", first, true);
+      }
+    }
+    d.addEventListener("visibilitychange", function () {
+      if (!ctx) return;
+      if (d.hidden) level(0, 0.2); else if (on) level(target, 0.8);
+    });
+    w.addEventListener("pagehide", function () { if (ctx) level(0, 0.1); });
+    mount();
+    return {
+      gust: function (g) {
+        if (!ctx || !on || d.hidden) return;
+        level(0.16 + g * 0.22, 0.25);
+        filt.frequency.setTargetAtTime(420 + g * 900, ctx.currentTime, 0.3);
+        clearTimeout(this._t);
+        this._t = setTimeout(function () { level(0.16, 1.4); filt.frequency.setTargetAtTime(420, ctx.currentTime, 1.4); }, 180);
+      }
+    };
+  }
+})();
+
+/* THE NAV COMES BACK ON THE WAY UP.
+   Past the first screen the nav rides along out of sight; the moment the
+   visitor scrolls up it slides down, pinned, on the page's own dark glass,
+   and it goes again on the next scroll down. Back at the top it drops into its place in the page. Not on the trip
+   pages: their jump bar (.dst-jump) already holds the top of the screen there.
+   Scroll-driven only; no frame runs while the page is still. */
+(function () {
+  var d = document, w = window;
+  if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+  function init() {
+  var nav = d.querySelector(".page-wrap > nav");
+  if (!nav || d.querySelector(".dst-jump")) return;
+  var root = d.documentElement, spacer = null, pinned = false, shown = false, lastY = w.scrollY, queued = false;
+  function threshold() {
+    var hero = d.querySelector(".page-wrap > .kit-hero, .page-wrap > header");
+    var h = hero ? hero.getBoundingClientRect().bottom + w.scrollY : 0;
+    return Math.max(nav.offsetHeight * 3, Math.min(h, innerHeight));
+  }
+  function pin(on) {
+    if (on === pinned) return;
+    pinned = on;
+    if (on) {
+      if (getComputedStyle(nav).position === "relative" || getComputedStyle(nav).position === "static") {
+        spacer = spacer || d.createElement("div");
+        spacer.style.height = nav.offsetHeight + "px"; spacer.setAttribute("aria-hidden", "true");
+        nav.parentNode.insertBefore(spacer, nav);
+      }
+      nav.classList.add("v2-nav-pinned");
+      root.style.setProperty("--v2-nav-h", nav.offsetHeight + "px");
+    } else {
+      nav.classList.remove("v2-nav-pinned");
+      if (spacer && spacer.parentNode) spacer.parentNode.removeChild(spacer);
+    }
+  }
+  function show(on) {
+    if (on === shown) return;
+    shown = on;
+    nav.classList.toggle("v2-nav-shown", on);
+    root.classList.toggle("v2-nav-up", on);
+  }
+  function update() {
+    queued = false;
+    var y = w.scrollY, dy = y - lastY; lastY = y;
+    if (nav.classList.contains("is-open")) return;          // the phone menu is open
+    if (y <= 2) { show(false); pin(false); return; }
+    if (!pinned) { if (y > threshold()) pin(true); else return; }
+    if (dy < -4 && Date.now() > hold) show(true);
+    else if (dy > 4) show(false);
+  }
+  /* A card opened over a map (the podcast globe) must never sit under the
+     nav: the nav steps aside, and if the card runs off the top or bottom of
+     the screen the page moves just enough to show all of it. That move is
+     ours, so it does not count as the visitor scrolling up. */
+  var hold = 0;
+  d.querySelectorAll(".map-popup").forEach(function (card) {
+    new MutationObserver(function () {
+      if (!card.classList.contains("visible")) return;
+      show(false); hold = Date.now() + 900;
+      requestAnimationFrame(function () {
+        var r = card.getBoundingClientRect(), pad = 16, by = 0;
+        if (r.top < pad) by = r.top - pad;
+        else if (r.bottom > innerHeight - pad) by = Math.min(r.bottom - innerHeight + pad, r.top - pad);
+        if (by) w.scrollBy({ top: by, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      });
+    }).observe(card, { attributes: true, attributeFilter: ["class"] });
+  });
+  w.addEventListener("scroll", function () {
+    if (queued) return; queued = true; requestAnimationFrame(update);
+  }, { passive: true });
+  // a click inside the nav (a link, the menu) keeps it where it is
+  nav.addEventListener("focusin", function () { if (pinned) show(true); });
+  }
+})();
+
+/* IMAGES ARRIVE SOFTLY. A lazy image that has not loaded yet is marked, and
+   fades up out of a blur when it lands (v2.css .v2-img-wait / .v2-img-in).
+   Images that are already there are left alone; one listener per image, and
+   nothing runs once they have all arrived. Rails are built at run time, so
+   images added later are picked up too. */
+(function () {
+  var d = document;
+  function mark(img) {
+    if (img.complete || img.dataset.v2Soft) return;
+    img.dataset.v2Soft = "1";
+    img.classList.add("v2-img-wait");
+    function done() {
+      img.classList.add("v2-img-in");
+      requestAnimationFrame(function () { img.classList.remove("v2-img-wait"); });
+    }
+    img.addEventListener("load", done, { once: true });
+    img.addEventListener("error", done, { once: true });
+  }
+  function scan(root) { (root.querySelectorAll ? root : d).querySelectorAll('img[loading="lazy"]').forEach(mark); }
+  function init() {
+    scan(d);
+    if ("MutationObserver" in window) new MutationObserver(function (list) {
+      list.forEach(function (m) { m.addedNodes.forEach(function (n) {
+        if (n.nodeType !== 1) return;
+        if (n.tagName === "IMG" && n.loading === "lazy") mark(n); else scan(n);
+      }); });
+    }).observe(d.body, { childList: true, subtree: true });
+  }
+  if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();
+
+/* EPISODE TIMELINE (the v2 episode page). A tick plays from its chapter by
+   handing the tap to that chapter's own timestamp, which episode-sync.js has
+   already made a control; and the ticks follow the chapter rail, which the
+   sync keeps on the chapter being played. Nothing runs until one of them moves. */
+(function () {
+  var d = document;
+  function init() {
+    var ticks = [].slice.call(d.querySelectorAll(".ep2-tick"));
+    if (!ticks.length) return;
+    ticks.forEach(function (t) {
+      t.addEventListener("click", function (ev) {
+        var bt = d.querySelector("#c" + t.dataset.c + " .cd-block-time");
+        if (bt) { ev.preventDefault(); bt.click(); }
+      });
+    });
+    var chaps = [].slice.call(d.querySelectorAll(".cd-rail .cd-chap"));
+    function follow() {
+      var on = chaps.findIndex(function (c) { return c.classList.contains("active"); });
+      ticks.forEach(function (t, k) { t.classList.toggle("is-on", k === on); t.classList.toggle("is-done", k < on); });
+    }
+    follow();
+    if ("MutationObserver" in window && chaps.length) {
+      var mo = new MutationObserver(follow);
+      chaps.forEach(function (c) { mo.observe(c, { attributes: true, attributeFilter: ["class"] }); });
+    }
+  }
+  if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();
+
+/* V4 ADDITIONS (prototypes/v4 only)
+   6. CARDS OPEN INTO THE PAGE. Pressing an episode card grows its picture into
+      the episode's player (a cross-document view transition). The card's
+      picture takes the name ep-<slug> as the page is left; the player on the
+      episode page carries the same name. Where the browser has no
+      cross-document view transitions it is an ordinary link; reduced motion
+      turns it off.
+   7. THE ALTIMETER. On long pages, a tape down the left edge: ticks, a mark
+      at each section, and the glider descending as the page is read.
+      Decoration only (aria-hidden), wide screens, off under reduced motion. */
+(function () {
+  "use strict";
+  var d = document, w = window;
+  var still = w.matchMedia && w.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var store = { get: function (k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
+                set: function (k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} } };
+  function slugOf(href) {
+    var m = /\/episodes\/([^\/?#]+)\.html/.exec(href || "");
+    return m ? m[1] : null;
+  }
+
+  /* ------------------------------------------ 6. cards open into the page */
+  if (!still) {
+    d.addEventListener("click", function (e) {
+      if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+      var a = e.target.closest && e.target.closest('a[href*="episodes/"]');
+      if (!a) return;
+      var slug = slugOf(a.href);
+      var box = a.closest(".ep-modal, [class*='ep-modal'], .map-popup");
+      var img = a.querySelector(".ep-art img, .ep-th img, .ep2-card-art img, .kit-card-media img, img") ||
+                (box && box.querySelector("img"));
+      if (!slug || !img) return;
+      d.querySelectorAll("[data-v4-vt]").forEach(function (x) { x.style.viewTransitionName = ""; x.removeAttribute("data-v4-vt"); });
+      img.style.viewTransitionName = "ep-" + slug;
+      img.setAttribute("data-v4-vt", "");
+      store.set("v4-card", slug);
+    }, true);
+    w.addEventListener("pagereveal", function (e) {
+      var slug = store.get("v4-card"); store.set("v4-card", "");
+      if (!slug || !e.viewTransition) return;
+      var p = d.querySelector(".ep2-hero-media .cd-player");
+      if (p && !p.style.viewTransitionName) {
+        p.style.viewTransitionName = "ep-" + slug;
+        var off = function () { p.style.viewTransitionName = ""; };
+        e.viewTransition.finished.then(off, off);
+      }
+    });
+    w.addEventListener("pageshow", function () {
+      d.querySelectorAll("[data-v4-vt]").forEach(function (x) { x.style.viewTransitionName = ""; x.removeAttribute("data-v4-vt"); });
+    });
+  }
+
+  /* ------------------------------------------------------- 7. the altimeter */
+  function altimeter() {
+    if (still || !w.matchMedia("(min-width: 1180px)").matches) return;
+    var H = d.documentElement.scrollHeight, vh = w.innerHeight;
+    if (H < vh * 3.5) return;
+    var fl = d.querySelector(".flightline");
+    if (fl) fl.style.display = "none";
+    var el = d.createElement("div");
+    el.className = "v4-alti";
+    el.setAttribute("aria-hidden", "true");
+    var ticks = "";
+    for (var i = 0; i <= 20; i++) ticks += '<i class="t' + (i % 5 ? "" : " is-maj") + '" style="--p:' + (i * 5) + '%"></i>';
+    el.innerHTML = '<span class="v4-alti-tape">' + ticks + '</span><span class="v4-alti-marks"></span><b class="v4-alti-g"></b>';
+    d.body.appendChild(el);
+    var marks = el.querySelector(".v4-alti-marks");
+    function place() {
+      var max = d.documentElement.scrollHeight - w.innerHeight;
+      if (max <= 0) return;
+      var html = "";
+      d.querySelectorAll("main h2, .page-wrap > section h2, .dst-main h2").forEach(function (h) {
+        if (h.closest("details:not([open]), footer, nav, [hidden]")) return;
+        var y = h.getBoundingClientRect().top + w.scrollY - w.innerHeight * .3;
+        var p = Math.max(0, Math.min(1, y / max));
+        html += '<i style="--p:' + (p * 100).toFixed(2) + '%"></i>';
+      });
+      marks.innerHTML = html;
+    }
+    place();
+    w.addEventListener("load", place);
+    w.addEventListener("resize", place, { passive: true });
+    d.addEventListener("toggle", place, true);
+  }
+  if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", altimeter); else altimeter();
+})();
+
+/* V4 MENU (prototypes/v4 only)
+   8. THE FULL-SCREEN MENU AND THE ONE SEARCH (v4-menu.js, loaded the first
+      time the menu is opened, so no page carries it on arrival). The search
+      button in the header, and on a phone the menu toggle, open it. */
+(function () {
+  "use strict";
+  var d = document, w = window;
+  var m = /^(.*\/prototypes\/v\d+\/)/.exec(location.pathname);
+  var SRC = m ? m[1] + "v4-menu.js" : "/assets/v4/v4-menu.js";
+  var loading = false;
+  function open(focusSearch) {
+    if (w.V4_MENU) { w.V4_MENU.open(focusSearch); return; }
+    if (loading) return;
+    loading = true;
+    var s = d.createElement("script");
+    s.src = SRC;
+    s.onload = function () { loading = false; if (w.V4_MENU) w.V4_MENU.open(focusSearch); };
+    s.onerror = function () { loading = false; };
+    d.head.appendChild(s);
+  }
+  function mount() {
+    var nav = d.querySelector(".page-wrap > nav");
+    if (!nav) return;
+    var cta = nav.querySelector(".nav-cta");
+    var b = d.createElement("button");
+    b.type = "button";
+    b.className = "v4-open";
+    b.setAttribute("aria-controls", "v4Menu");
+    b.setAttribute("aria-expanded", "false");
+    b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><span>Search</span>';
+    b.addEventListener("click", function () { open(true); });
+    if (cta) nav.insertBefore(b, cta); else nav.appendChild(b);
+    // the phone's menu toggle opens the full-screen menu instead of the small panel
+    d.addEventListener("click", function (e) {
+      var t = e.target.closest && e.target.closest(".nav-toggle");
+      if (!t) return;
+      e.preventDefault(); e.stopImmediatePropagation();
+      open(false);
+    }, true);
+  }
+  if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", mount); else mount();
+})();
+
+/* 9. EPISODES ON A PHONE: Play and Next in a bar at the foot of the screen,
+      once the opening has scrolled away (like the trips' booking bar). Play
+      starts the audio player, or brings the video player into view. */
+(function () {
+  "use strict";
+  var d = document;
+  function init() {
+  var bar = d.getElementById("v4Epbar");
+  if (!bar) return;
+  var hero = d.querySelector(".ep2-hero"), foot = d.querySelector("footer");
+  bar.querySelector(".v4-play").addEventListener("click", function () {
+    var au = d.querySelector(".ep-au-play");
+    var pl = d.querySelector(".ep2-hero-media .cd-player");
+    if (pl) pl.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (au) au.click();
+    else if (pl) { var f = pl.querySelector("iframe"); if (f) f.focus(); }
+  });
+  if (!("IntersectionObserver" in window) || !hero) { bar.classList.add("show"); return; }
+  var seen = new Set();
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
+    bar.classList.toggle("show", seen.size === 0);
+  }, { threshold: 0 });
+  io.observe(hero); if (foot) io.observe(foot);
+  }
+  if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();

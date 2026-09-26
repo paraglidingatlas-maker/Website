@@ -15,8 +15,8 @@ marked done is the next step.
 | 2. Drawing kit and the three-view | done (redraws go ahead: step 7) | 63d6a5e | all gates PASS (v4 183 pages 0 FAIL) |
 | 3. India, then Kenya | done | edf7a3f | all gates PASS (v4 183 pages 0 FAIL, parity kept on both trips) |
 | 4. Signature moments | done (the menu with step 5, KB figures with step 7) | 5be88a9 | all gates PASS (v4 184 pages 0 FAIL) |
-| 5. Navigation and wayfinding | done | (step 5 commit) | all gates PASS (v4 184 pages 0 FAIL) |
-| 6. Speed | | | |
+| 5. Navigation and wayfinding | done | d5546f5 | all gates PASS (v4 184 pages 0 FAIL) |
+| 6. Speed | done | (step 6 commit) | all gates PASS (v4 184 pages 0 FAIL; switch 0 FAIL after it learnt the deferred image attributes) |
 | 7. The remaining redraws | | | |
 | 8. The report | | | |
 
@@ -216,3 +216,38 @@ The rule is in `docs/v4-design-rules.md` with each page's one moment.
 - **Phone bars**: the trip pages' "Hold a place" bar (step 3); episodes get
   Play (starts the audio, or brings the video into view) and Next (the first
   of "Up next").
+
+## Step 6: speed
+Bytes on arrival (`python3 tools/v4_weight.py`: Chromium at 1440 x 900, the
+network settled, text compressed as GitHub Pages serves it, the blocked
+YouTube and feed hosts left out of both):
+
+| Page | v2 | v4 | |
+|---|---|---|---|
+| Home | 2,215 KB | 2,214 KB | -0 KB |
+| Podcast | 605 KB | 544 KB | -61 KB |
+| Library | 243 KB | 243 KB | -0 KB |
+| About | 2,053 KB | 2,053 KB | -0 KB |
+| India | 3,934 KB | 3,555 KB | -379 KB |
+| Kenya | 1,310 KB | 1,150 KB | -160 KB |
+| Knowledge base | 1,176 KB | 1,173 KB | -3 KB |
+| Flight Mechanics | 322 KB | 320 KB | -3 KB |
+| Topic: Safety | 189 KB | 187 KB | -1 KB |
+| Episode (Eddie Colfox) | 222 KB | 219 KB | -2 KB |
+| Episode (Damien Lacaze) | 373 KB | 370 KB | -2 KB |
+| Terms | 178 KB | 175 KB | -3 KB |
+
+No page is heavier than its v2 twin; home is under 2.5 MB. How:
+- **The podcast globe loads when it comes near** (d3, topojson, the pins
+  and globe.js through one observer), not on arrival.
+- **The trips' fly-through photos load when their screen comes near**
+  (`data-v4-src`), not with the page.
+- **Readable sources, served minified**: `prototypes/v4/src/` keeps the
+  commented CSS and scripts; `tools/v4_min.py` writes the served copies.
+- **The instrument font is split** (digits 2.7 KB, letters on demand by
+  unicode-range); the unused weight was removed.
+- **The menu's code loads on first use** (`v4-menu.js`); the search index
+  when the search is first used.
+- **The list of pages without a v4 twin** is written into v2.js at build
+  time, not fetched.
+- **Drawings**: runs of the same stroke merged into one path.

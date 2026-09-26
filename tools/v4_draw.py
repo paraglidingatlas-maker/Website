@@ -104,8 +104,9 @@ def lerp(a, b, t):
 
 
 class Drawing:
-    def __init__(self, w, h, ident, title="", desc="", cls="", compact=False):
+    def __init__(self, w, h, ident, title="", desc="", cls="", compact=False, inline_css=True):
         self.w, self.h, self.id = w, h, ident
+        self.inline_css = inline_css    # False: the page's style sheet carries the kit (shared_css())
         self.compact = compact          # a phone drawing: labels a size smaller
         self.title, self.desc, self.cls = title, desc, cls
         self.el = []
@@ -246,7 +247,7 @@ class Drawing:
             self.text((x + 12, yy), k, "tb")
             self.text((x + 88, yy), v, "tv")
 
-    def backdrop(self, glow=None, grid=40, glow_r=None):
+    def backdrop(self, glow=None, grid=40, glow_r=None, sheet=True):
         """The drawing sheet: a faint drafting grid that fades out towards the
         edges, and a soft orange light behind the figure's subject."""
         p = "dk-" + self.id
@@ -259,10 +260,14 @@ class Drawing:
             '<radialGradient id="{p}-glow"><stop offset="0" stop-color="#ff7517" stop-opacity=".16"/>'
             '<stop offset=".45" stop-color="#ff7517" stop-opacity=".05"/><stop offset="1" stop-color="#ff7517" stop-opacity="0"/></radialGradient>'
         ).format(p=p, g=grid)
-        self.el.insert(0, '<rect width="%s" height="%s" fill="url(#%s-grid)" mask="url(#%s-mask)"/>' % (f(self.w), f(self.h), p, p))
+        if sheet:
+            self.el.insert(0, '<rect width="%s" height="%s" fill="url(#%s-grid)" mask="url(#%s-mask)"/>' % (f(self.w), f(self.h), p, p))
+        else:
+            self.defs_extra = self.defs_extra.split('<radialGradient id="%s-glow">' % p)[0].split('<pattern id="%s-grid"' % p)[0] + \
+                '<radialGradient id="%s-glow">' % p + self.defs_extra.split('<radialGradient id="%s-glow">' % p)[1]
         if glow:
             r = glow_r or min(self.w, self.h) * .55
-            self.el.insert(1, '<circle cx="%s" cy="%s" r="%s" fill="url(#%s-glow)"/>' % (f(glow[0]), f(glow[1]), f(r), p))
+            self.el.insert(1 if sheet else 0, '<circle cx="%s" cy="%s" r="%s" fill="url(#%s-glow)"/>' % (f(glow[0]), f(glow[1]), f(r), p))
 
     def frame(self, pad=8):
         """A drawing border with corner ticks, as on a drawing sheet."""
@@ -281,5 +286,11 @@ class Drawing:
         return ('<svg class="dk %s%s" viewBox="0 0 %s %s" role="img" aria-labelledby="%s-t %s-d" '
                 'xmlns="http://www.w3.org/2000/svg">%s<style>%s</style>%s%s</svg>' % (
                     p, (" " + extra_cls) if extra_cls else "", f(self.w), f(self.h), p, p, t,
-                    " ".join((CSS.format(p=p) + (COMPACT.format(p=p) if self.compact else "")).split()),
-                    defs, "".join(self.el)))
+                    " ".join((CSS.format(p=p) + (COMPACT.format(p=p) if self.compact else "")).split()) if self.inline_css else "",
+                    defs, "".join(self.el))).replace("<style></style>", "")
+
+
+def shared_css():
+    """The kit's rules once, for a page's style sheet: drawings made with
+    inline_css=False (class "dk") use them."""
+    return CSS.format(p="dk").replace(".dk .fx{fill:url(#dk-hatch);}", "")

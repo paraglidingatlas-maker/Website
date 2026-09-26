@@ -57,7 +57,7 @@ def main(pages):
                 res.append((tot, sizes))
                 ctx.close()
             (a, sa), (c, sc) = res
-            flag = "ok " if c <= a * 1.01 else "OVER"
+            flag = "ok " if c <= a else "OVER"
             print("%s %-50s v2 %7.0f KB   v4 %7.0f KB   %+6.0f KB" % (flag, r, a / 1024, c / 1024, (c - a) / 1024))
             rows.append((r, a, c, sa, sc))
         b.close()

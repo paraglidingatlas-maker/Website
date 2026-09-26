@@ -55,7 +55,7 @@ def rot(p, lat0, lon0):
     return (y, z, x)
 
 
-def densify(ring, step=3.0):
+def densify(ring, step=4.0):
     out = []
     for (a, b) in zip(ring, ring[1:]):
         n = max(1, int(max(abs(b[0] - a[0]), abs(b[1] - a[1])) / step))
@@ -124,13 +124,13 @@ def globe(lat, lon, ident, title, desc, label="", size=420, tilt=14.0):
         vis = clip_ring(pts)
         if len(vis) < 3:
             continue
-        xy = thin([P(p) for p in vis])
+        xy = thin([P(p) for p in vis], 2.8)
         if len(xy) < 3:
             continue
         paths.append("M" + "L".join("%s,%s" % (f(x), f(y)) for x, y in xy) + "Z")
-    # graticule: every 15 degrees, only the front
+    # graticule: every 30 degrees, only the front
     grat = []
-    for la in range(-75, 90, 15):
+    for la in range(-60, 90, 30):
         seg = []
         for lo in range(-180, 181, 3):
             p = rot(xyz(la, lo), c_lat, lon)
@@ -141,7 +141,7 @@ def globe(lat, lon, ident, title, desc, label="", size=420, tilt=14.0):
                 seg = []
         if seg:
             grat.append(seg)
-    for lo in range(-180, 180, 15):
+    for lo in range(-180, 180, 30):
         seg = []
         for la in range(-90, 91, 3):
             p = rot(xyz(la, lo), c_lat, lon)
@@ -184,7 +184,6 @@ def globe(lat, lon, ident, title, desc, label="", size=420, tilt=14.0):
         '<radialGradient id="%s-glow"><stop offset="0" stop-color="#ff7517" stop-opacity=".35"/>'
         '<stop offset="1" stop-color="#ff7517" stop-opacity="0"/></radialGradient></defs>' % (p, p),
         '<circle cx="%s" cy="%s" r="%s" fill="url(#%s-sea)"/>' % (f(cx), f(cy), f(R), p),
-        '<path class="gl-grat" d="%s"/>' % gd,
         '<path class="gl-land" d="%s"/>' % "".join(paths),
         '<circle class="gl-rim" cx="%s" cy="%s" r="%s"/>' % (f(cx), f(cy), f(R)),
     ]

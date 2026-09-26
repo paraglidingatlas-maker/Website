@@ -186,11 +186,11 @@ def topic_log(name, eps, ident):
     top = max(x[1] for x in dated) or 1
     Y = lambda m: yb - (yb - yt) * m / top
     und = len(eps) - len(dated)
-    d = K.Drawing(W, H, "tg-" + ident, "The %s conversations by date and length" % name,
-                  "Each bar is one of the %d conversations tagged %s, placed by the date it was published and as tall as it "
+    d = K.Drawing(W, H, "tg-" + ident, "The %s conversations by date and length" % name, inline_css=False, desc=
+                  ("Each bar is one of the %d conversations tagged %s, placed by the date it was published and as tall as it "
                   "is long; the longest is %d minutes.%s" % (len(eps), name, top,
-                  (" %d has no publish date and is not drawn." % und) if und else ""))
-    d.backdrop(glow=((x0 + x1) / 2, yb - 70), grid=32, glow_r=200)
+                  (" %d has no publish date and is not drawn." % und) if und else "")))
+    d.backdrop(glow=((x0 + x1) / 2, yb - 70), glow_r=200, sheet=False)
     d.line((x0, yb), (x1, yb), "outline")
     y = d0.year
     while dt.date(y, 1, 1) <= d1:
@@ -204,11 +204,20 @@ def topic_log(name, eps, ident):
                 d.line((qx, yb), (qx, yb + 4), "hair")
         y += 1
     longest = max(dated, key=lambda x: x[1])
+    # every bar in one path and every top in another (a round cap on a zero
+    # length segment is a dot): the same drawing in a fraction of the bytes
+    bars, tops = [], []
     for day, m, e in sorted(dated, key=lambda x: x[0]):
+        if e is longest[2]:
+            continue
         xx = X(day)
-        w = "accent" if e is longest[2] else "detail"
-        d.line((xx, yb), (xx, Y(m)), w)
-        d.dot((xx, Y(m)), 2.2, accent=(e is longest[2]))
+        bars.append("M%s %sV%s" % (K.f(xx), K.f(yb), K.f(Y(m))))
+        tops.append("M%s %sh0" % (K.f(xx), K.f(Y(m))))
+    d.raw('<path class="d" d="%s"/>' % "".join(bars))
+    d.raw('<path d="%s" stroke="#f6f4f4" stroke-width="4.4" stroke-linecap="round" fill="none"/>' % "".join(tops))
+    lx0 = X(longest[0])
+    d.line((lx0, yb), (lx0, Y(longest[1])), "accent")
+    d.dot((lx0, Y(longest[1])), 2.2, accent=True)
     # the one dimension: the longest, in minutes
     lx = X(longest[0])
     d.line((x0 - 8, Y(longest[1])), (lx - 6, Y(longest[1])), "ghost")

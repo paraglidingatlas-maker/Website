@@ -68,7 +68,7 @@
 <link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../styles.css?v=c8d28696">
-<link rel="stylesheet" href="v2.css?v=6734a506">
+<link rel="stylesheet" href="v2.css?v=d5dfffd8">
 <style>
   .pod-hero{position:relative;min-height:64vh;display:flex;align-items:flex-end;}
   .pod-hero-media{position:absolute;inset:0;z-index:-2;}
@@ -954,8 +954,8 @@
  ]
 }
 </script>
-<!-- /site-schema --><script src="v2.js?v=1321c7f4"></script>
-<script src="v2-immersive.js?v=82b08e58"></script>
+<!-- /site-schema --><script src="v2.js?v=c7722c82"></script>
+<script src="v2-immersive.js?v=49891a69"></script>
 </head>
 <body>
 
@@ -1253,8 +1253,6 @@
   </div>
 </footer>
 
-<script src="../../assets/js/d3.min.js?v=f2094bbf"></script>
-<script src="../../assets/js/topojson-client.min.js?v=25cd02ae"></script>
 <script src="../../script.js?v=1bb85db6"></script>
 <script>
   (function () {
@@ -1287,9 +1285,32 @@
 <script defer src="../../newsletter.js?v=d28c01a5"></script>
 <script src="../../home-episodes.js?v=3d34434a"></script>
 <script src="../../episode-modal.js?v=686edaca"></script>
-<script src="../../globe-episodes.js?v=5ed6afaf"></script>
-<script src="../../globe.js?v=2b74cacc"></script>
 <!-- nav-menu -->
+<script>
+/* v4 (speed): the globe's libraries (d3, topojson, about 290 KB) and the globe
+   itself load only when the globe comes near the screen, or at once when the
+   address points at it (#map, #pin=...). */
+(function () {
+  var SRC = ["../../assets/js/d3.min.js","../../assets/js/topojson-client.min.js","../../globe-episodes.js","../../globe.js"];
+  var done = false;
+  function go() {
+    if (done) return; done = true;
+    (function next(i) {
+      if (i >= SRC.length) return;
+      var s = document.createElement("script");
+      s.src = SRC[i]; s.onload = s.onerror = function () { next(i + 1); };
+      document.body.appendChild(s);
+    })(0);
+  }
+  var map = document.getElementById("map");
+  if (!map || /^#(map|pin=)/.test(location.hash) || !("IntersectionObserver" in window)) { go(); return; }
+  var io = new IntersectionObserver(function (es) {
+    if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); go(); }
+  }, { rootMargin: "120% 0px" });
+  io.observe(map);
+  window.addEventListener("hashchange", function () { if (/^#(map|pin=)/.test(location.hash)) go(); });
+})();
+</script>
 <script defer src="../../nav-menu.js?v=001fbbf6"></script>
 <!-- /nav-menu -->
 </body>

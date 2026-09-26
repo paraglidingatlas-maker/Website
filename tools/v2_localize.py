@@ -125,7 +125,21 @@ def main():
 
     js = os.path.join(V2, "v2.js")
     src = open(js, encoding="utf-8").read()
-    lst = ",".join('"%s"' % os.path.relpath(p, V2).replace(os.sep, "/") for p in pages)
+    if S.IS_V2:
+        lst = ",".join('"%s"' % os.path.relpath(p, V2).replace(os.sep, "/") for p in pages)
+    else:
+        # after v2 every page has a twin: list the few live pages that do not
+        # (v4's v2.js reads the list the other way round), a far shorter list
+        have = set(os.path.relpath(p, V2).replace(os.sep, "/") for p in pages)
+        live = []
+        for d, dirs, fs in os.walk(ROOT):
+            dirs[:] = [x for x in dirs if x not in (".git", "prototypes", "node_modules", "__pycache__", "templates", "tools", "docs")]
+            for fn in fs:
+                if fn.endswith(".html"):
+                    r = os.path.relpath(os.path.join(d, fn), ROOT).replace(os.sep, "/")
+                    if r not in have:
+                        live.append(r)
+        lst = ",".join('"%s"' % r for r in sorted(live))
     src = re.sub(r"/\*v2-pages\*/.*?/\*/v2-pages\*/", "/*v2-pages*/" + lst + "/*/v2-pages*/", src)
     open(js, "w", encoding="utf-8").write(src)
     print("%s: %d pages, %d problems" % (S.NAME, len(pages), problems))

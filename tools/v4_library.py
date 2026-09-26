@@ -45,14 +45,13 @@ def augment(card):
     guest = e.get("guest", "")
     series = re.search(r'data-s="([^"]*)"', card).group(1)
     cols = ('<span class="ep-log-date">%s</span>' % (
-        '<time datetime="%s">%s</time>' % (date, html.escape(label)) if date else '<i class="v2-tbd">[to supply]</i>') +
-        ('' if 'class="ep-tile-guest"' in card else '<span class="ep-log-guest">%s</span>' % html.escape(guest)) +
-        '<span class="ep-log-series">%s</span>' % series)
+        html.escape(label) if date else '<i class="v2-tbd">[to supply]</i>') +
+        ('' if 'class="ep-tile-guest"' in card else '<span class="ep-log-guest">%s</span>' % html.escape(guest)))
     card = card.replace('<span class="ep-tile-body">', cols + '<span class="ep-tile-body">', 1)
     # the number and the length in their own columns (the same words)
     card = re.sub(r'<span class="ep-stamp">([^<]*)<i>', lambda m: '<span class="ep-stamp"><b class="ep-no">%s</b><i>' % m.group(1), card, count=1)
     card = re.sub(r'<span class="ep-foot">([^<]*)<i>', lambda m: '<span class="ep-foot"><b class="ep-ch">%s</b><i>' % m.group(1), card, count=1)
-    return card.replace('class="ep-tile"', 'class="ep-tile" data-d="%s"' % date, 1)
+    return card
 
 
 def library_log(eps):

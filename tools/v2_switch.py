@@ -44,8 +44,8 @@ ABSOLUTE = {"404.html"}                 # GitHub Pages serves it for any missing
 ASSET_DIR = S.ASSET_DIR
 NOINDEX = '<meta name="robots" content="noindex, nofollow">\n'
 SKIP = re.compile(r"^(?:[a-z][a-z0-9+.-]*:|//|#|/|\{|\$|%|data:)", re.I)
-ATTR = re.compile(r'(\s(?:href|src|poster|data-src|data-poster|data-loop)=")([^"]*)(")', re.I)
-SRCSET = re.compile(r'(\s(?:srcset|data-srcset)=")([^"]*)(")', re.I)
+ATTR = re.compile(r'(\s(?:href|src|poster|data-src|data-v4-src|data-poster|data-loop)=")([^"]*)(")', re.I)
+SRCSET = re.compile(r'(\s(?:srcset|data-srcset|data-v4-srcset)=")([^"]*)(")', re.I)
 CSSURL = re.compile(r'(url\((["\']?))([^)"\']+)(\2\))')
 V2_FILE = re.compile(r"\.(css|js|webp|jpg|jpeg|png|svg|gif|avif|json|woff2?)$", re.I)
 
