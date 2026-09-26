@@ -546,3 +546,26 @@ its caption). In, drawn with the kit from the page's own words
 The page's text is unchanged (it still tells Nick Neynens' story in words).
 Its og:image stays the live one (parity), so a shared link still shows the
 old opening picture until the live picture changes.
+
+## Sample: the drawings, three ways (owner said "ok", 26 Sep 2026)
+`samples/drawings-expert.html` (prototype-only, noindex, built by
+`tools/v4_expert.py`) shows three knowledge base drawings, today's version
+beside a redrawn one, one per approach. **Owner to choose a direction before
+the rest are redrawn.**
+- **Computed (mathematician and scientist):** Flight Mechanics brakes. Today's
+  profile at the same three brake positions is run through a 2D inviscid panel
+  method (Hess-Smith, 120 panels). It was checked first on NACA 0012 at 6°:
+  CL 0.60, centre of pressure at 26% of the chord. The drawing shows the
+  streamlines, the surface pressure and where the lift acts (37% → 39% → 41%
+  of the chord). It is labelled as an illustration at an assumed 6° with no
+  separation, so the heavy-brake lift (CL 3.6) is overstated. On a phone the
+  three positions stack.
+- **Painted (artist):** the Meteorology low and its cold front, using the same
+  field and front. It adds tonal bands, one light, isobars that are heavier
+  near the low, and a trough where the isobars kink at the front. Orange is
+  used only on the front.
+- **Made for a phone (visualisation):** the Navigators map on an Equal Earth
+  projection with a curved graticule and the same five places. On a phone it
+  becomes a numbered map with the names in a list.
+Nothing new is claimed in any of them. The live pages and today's v4
+drawings are unchanged until the owner picks.
