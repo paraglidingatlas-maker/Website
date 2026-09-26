@@ -52,6 +52,7 @@ PORTRAITS = {
 }
 
 e = html.escape
+HOST = "Aninder Singh"
 
 
 def split_title(title, guest):
@@ -130,6 +131,9 @@ def build(slug, meta):
     src = open(os.path.join(LIVE, slug + ".html"), encoding="utf-8").read()
     guest = ep.get("guest", "")
     main_t, sub_t = split_title(ep["title"], guest)
+    # "Snippet:", "Trailer:" and the like come off the big title but stay in the heading
+    lm = re.match(r"\s*(snippet|trailer|teaser|bonus|short)\s*[:|]", ep["title"], re.I)
+    label = lm.group(1).title() if lm else ""
     is_audio = "cd-player-audio" in src
 
     # ---- take the pieces out of the live page ----
@@ -149,14 +153,18 @@ def build(slug, meta):
     # 26 Sep 2026); the portrait layout is kept in the code but no longer used
     face = False
     series = ep.get("series", "")
-    head_re = re.compile(r'(<p class="cd-epno">)(.*?)(</p>)\s*<div class="cd-headgrid">.*?</header>', re.S)
+    head_re = re.compile(r'<p class="cd-epno">.*?</p>\s*<div class="cd-headgrid">.*?</header>', re.S)
     submeta = re.search(r'<div class="cd-submeta">.*?</div>', src, re.S).group(0)
-    hero = (r'\1\2%s\3' % ((" &middot; " + e(series)) if series else "")
+    host = guest == HOST            # the host's own episodes (AMA, notes): no "with", no guest card
+    no = re.search(r'<p class="cd-epno">(.*?)</p>', src)
+    epno = " &middot; ".join(x for x in ((no.group(1).strip() if no else ""), e(series)) if x)
+    hero = ('<p class="cd-epno">%s</p>' % epno.replace("\\", "\\\\")
             + '\n    <div class="ep2-hero%s">' % ("" if face else " is-media")
             + '\n      <div class="ep2-hero-copy">'
             # the guest's name stays inside the heading: it is in the live <h1>, and search reads it there
             + '\n        <h1>%s<span class="ep2-h1">%s</span>%s</h1>' % (
-                '<span class="ep2-with">with <strong>%s</strong></span> ' % e(guest) if guest else "",
+                '<span class="ep2-with">%s%s <strong>%s</strong></span> ' % (label + " &middot; " if label else "", "Hosted by" if host else "with", e(guest)) if guest
+                else ('<span class="ep2-with">%s</span> ' % label if label else ""),
                 e(main_t), ' <span class="ep2-sub">%s</span>' % e(sub_t) if sub_t else "")
             + "\n        " + submeta.replace("\\", "\\\\")
             + re.sub(r"<span>(Watch on|Listen on) ", r'<span><i class="ep2-lw">\1 </i>', listen.replace("\\", "\\\\")).replace('class="cd-listen"', 'class="cd-listen ep2-listen"')
@@ -185,8 +193,8 @@ def build(slug, meta):
                          % (n, n, 100 * a / total, 100 * max(min(b, total) - a, 1) / total, title, e(at)))
         timeline = ('\n        <nav class="ep2-timeline" aria-label="Chapters on a timeline"><div class="ep2-track">%s</div></nav>' % "".join(ticks))
 
-    others = [o for o in meta.values() if guest and o.get("guest") == guest and o["slug"] != slug and o["_listed"]]
-    card = ['\n        <div class="ep2-guest kit-panel">', '<span class="ep2-k">The guest</span>']
+    others = [o for o in meta.values() if guest and not host and o.get("guest") == guest and o["slug"] != slug and o["_listed"]]
+    card = ['\n        <div class="ep2-guest kit-panel">', '<span class="ep2-k">%s</span>' % ("The host" if host else "The guest")]
     if face:
         card.append('<span class="ep2-guest-face">%s</span>' % pic(img, webp, ""))
     card.append('<p class="ep2-guest-name">%s</p>' % e(guest or "Aninder Singh"))
@@ -195,6 +203,8 @@ def build(slug, meta):
         for o in sorted(others, key=lambda o: o.get("published", ""), reverse=True)[:3]:
             card.append('<a class="cd-link" href="%s.html">%s</a>' % (o["slug"], e(split_title(o["title"], guest)[0])))
     card.append("</div>")
+    if not guest:                   # race highlights and flying films: nobody to introduce
+        card = []
 
     side = quote.replace('class="cd-quote"', 'class="cd-quote ep2-quote"') + "".join(card)
     if face:
@@ -202,7 +212,8 @@ def build(slug, meta):
                  % (player.strip(), timeline, side))
     else:
         src = src.replace("<!--ep2-hero-media-->", '<div class="ep2-hero-media">\n      %s%s\n      </div>' % (player.strip(), timeline), 1)
-        stage = '\n\n  <div class="ep2-stage is-side">\n    <div class="ep2-stage-side">%s\n    </div>\n  </div>\n' % side
+        stage = ('\n\n  <div class="ep2-stage is-side%s">\n    <div class="ep2-stage-side">%s\n    </div>\n  </div>\n'
+                 % ("" if quote and card else " is-one", side)) if side.strip() else ""
     src = src.replace('\n  <div class="cd-main">', stage + '\n  <div class="cd-main">', 1)
 
     # ---- fly with us, first in the side column ----
