@@ -124,19 +124,25 @@ def contours():
 
 
 def trails():
-    """Two of the contour lines that run the height of the drawing (levels 7
-    and 3, one through the middle and one to the right, clear of the text),
-    drawn top to bottom. The page sends a short glow down them as it scrolls
-    (v2-immersive.js); the paths are written into that file between markers."""
+    """A pool of the backdrop's longer contour lines (img/contours.svg is the
+    same drawing), thinned to every third point to stay small. The page picks
+    a few at random for each section and sends a short orange glow along them
+    from a random point as it scrolls (v2-immersive.js); the paths are written
+    into that file between markers."""
     w, h, step = 1600, 1000, 12
     z = terrain(w, h, 7)
-    out = []
-    for n in (7, 3):
+    pool = []
+    for n in range(22):
         lv = 0.06 + n * 0.075
-        line = max(join(march(z, w, h, step, lv)), key=lambda l: max(p[1] for p in l) - min(p[1] for p in l))
-        if line[0][1] > line[-1][1]:
-            line = line[::-1]
-        out.append(smooth_path(line))
+        for line in join(march(z, w, h, step, lv)):
+            L = sum(math.dist(line[i], line[i + 1]) for i in range(len(line) - 1))
+            if L > 900:
+                pool.append((L, line))
+    pool.sort(key=lambda t: -t[0])
+    out = []
+    for L, line in pool[:12]:
+        pts = line[::3] + ([line[-1]] if (len(line) - 1) % 3 else [])
+        out.append(smooth_path(pts))
     js = os.path.join(ROOT, "prototypes", "v2", "v2-immersive.js")
     src = open(js, encoding="utf-8").read()
     lst = ",".join('"%s"' % d for d in out)

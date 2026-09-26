@@ -1057,19 +1057,33 @@ img.v2-img-in{transition:opacity .7s ease,filter .9s ease;}
   -webkit-mask-image:radial-gradient(60% 60% at 50% 50%,#000 35%,transparent 100%);
           mask-image:radial-gradient(60% 60% at 50% 50%,#000 35%,transparent 100%);}
 @media (max-width:700px){ .v2-trails{width:1100px;height:687.5px;} }
-.v2-trail{fill:none;stroke:#ffa05c;stroke-linecap:round;stroke-width:2;stroke-dasharray:.05 3;stroke-dashoffset:.05;
-  filter:drop-shadow(0 0 3px rgba(255,140,60,.95)) drop-shadow(0 0 9px rgba(255,117,23,.55));opacity:.95;}
-.v2-trail-1{stroke-width:1.3;opacity:.7;}
+/* each glow: a bright head and a soft tail sharing a leading end, starting at
+   its own point (--o) and travelling its own stretch (--t) over its own part
+   of the scroll (--r0 to --r1), fading in at the start and out at the end */
+.v2-trail,.v2-trail-tail{fill:none;stroke:var(--orange);stroke-linecap:round;opacity:0;}
+.v2-trail{stroke-width:2;stroke-dasharray:.05 3;stroke-dashoffset:calc(.05 - var(--o,0));
+  filter:drop-shadow(0 0 3px rgba(255,117,23,.9)) drop-shadow(0 0 8px rgba(255,117,23,.45));}
+.v2-trail-tail{stroke-width:1.3;stroke-dasharray:.16 3;stroke-dashoffset:calc(.16 - var(--o,0));}
 @supports (animation-timeline: view()){
   @media (prefers-reduced-motion: no-preference){
-    .v2-trail{animation:v2-trail-head linear both;animation-timeline:view();animation-range:entry 10% exit 90%;}
-    @keyframes v2-trail-head{from{stroke-dashoffset:.05;} to{stroke-dashoffset:-1;}}
+    .v2-trail{animation:v2-trail-head linear both;animation-timeline:view();animation-range:cover var(--r0,10%) cover var(--r1,70%);}
+    .v2-trail-tail{animation:v2-trail-tail linear both;animation-timeline:view();animation-range:cover var(--r0,10%) cover var(--r1,70%);}
+    @keyframes v2-trail-head{
+      0%{stroke-dashoffset:calc(.05 - var(--o,0));opacity:0;}
+      15%{opacity:.95;} 80%{opacity:.95;}
+      100%{stroke-dashoffset:calc(.05 - var(--o,0) - var(--t,.3));opacity:0;}}
+    @keyframes v2-trail-tail{
+      0%{stroke-dashoffset:calc(.16 - var(--o,0));opacity:0;}
+      15%{opacity:.4;} 80%{opacity:.4;}
+      100%{stroke-dashoffset:calc(.16 - var(--o,0) - var(--t,.3));opacity:0;}}
   }
 }
-.v2-trail-tail{fill:none;stroke:var(--orange);stroke-linecap:round;stroke-width:1.4;stroke-dasharray:.16 3;stroke-dashoffset:.16;opacity:.4;}
-@supports (animation-timeline: view()){
-  @media (prefers-reduced-motion: no-preference){
-    .v2-trail-tail{animation:v2-trail-tail linear both;animation-timeline:view();animation-range:entry 10% exit 90%;}
-    @keyframes v2-trail-tail{from{stroke-dashoffset:.16;} to{stroke-dashoffset:-.89;}}
-  }
-}
+
+/* three people: picture on top, words below */
+.v2-team{grid-template-columns:repeat(3,minmax(0,1fr));}
+.v2-person{grid-template-columns:minmax(0,1fr);gap:1.1rem;}
+.v2-person-pic{aspect-ratio:1;max-width:none;}
+@media (max-width:980px){ .v2-team{grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media (max-width:560px){ .v2-team{grid-template-columns:minmax(0,1fr);} .v2-person{grid-template-columns:120px minmax(0,1fr);} }
+.v2-person p a{color:var(--orange);text-decoration:underline;text-underline-offset:3px;}
+.v2-person{align-content:start;}
