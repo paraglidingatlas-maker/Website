@@ -55,7 +55,7 @@ marked done is the next step.
 | 5. Navigation and wayfinding | done | d5546f5 | all gates PASS (v4 184 pages 0 FAIL) |
 | 6. Speed | done | 84258b8 | all gates PASS (v4 184 pages 0 FAIL; switch 0 FAIL after it learnt the deferred image attributes) |
 | 7. The remaining redraws | done (poster frame: see notes) | 3ab0e89 | all gates PASS (v4 184 pages 0 FAIL; smoke 0 FAIL on its rerun) |
-| 8. The report | done | (step 8 commit) | all gates PASS (v4 184 pages 0 FAIL, smoke 0 FAIL first run) |
+| 8. The report | done | 8f43896 | all gates PASS (v4 184 pages 0 FAIL, smoke 0 FAIL first run) |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they
