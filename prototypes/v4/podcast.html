@@ -68,7 +68,7 @@
 <link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../styles.css?v=c8d28696">
-<link rel="stylesheet" href="v2.css?v=0e7ed189">
+<link rel="stylesheet" href="v2.css?v=bf7787d5">
 <style>
   .pod-hero{position:relative;min-height:64vh;display:flex;align-items:flex-end;}
   .pod-hero-media{position:absolute;inset:0;z-index:-2;}
@@ -954,8 +954,8 @@
  ]
 }
 </script>
-<!-- /site-schema --><script src="v2.js?v=b4174297"></script>
-<script src="v2-immersive.js?v=eecb6907"></script>
+<!-- /site-schema --><script src="v2.js?v=1321c7f4"></script>
+<script src="v2-immersive.js?v=132bc9ba"></script>
 </head>
 <body>
 
@@ -999,9 +999,14 @@
   </div>
 </header>
 
-<section class="kit-band v2-quote">
-  <div class="kit-in kit-narrow">
-    <blockquote class="v2-pull"><p>Intimate, deep and often thought provoking, these conversations are curated to stimulate, educate, inspire and empower you to touch the sky with glory every time you practice the art of flight.</p></blockquote>
+<!-- v4: a full-screen footage breather, the site's own hero loop (Aninder's clips), behind the line that opens the show -->
+<section class="v4-breather">
+  <div class="v4-br-media" aria-hidden="true">
+    <picture><source srcset="../../assets/images/hero.webp" type="image/webp"><img src="../../assets/images/hero.jpg" alt="" loading="lazy"></picture>
+    <video data-loop="../../assets/video/hero" data-loop-size="720" data-loop-when=".v4-breather" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+  </div>
+  <div class="v4-br-in">
+    <blockquote class="v2-pull v4-br-q"><p>Intimate, deep and often thought provoking, these conversations are curated to stimulate, educate, inspire and empower you to touch the sky with glory every time you practice the art of flight.</p></blockquote>
   </div>
 </section>
 

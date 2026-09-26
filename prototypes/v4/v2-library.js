@@ -78,7 +78,7 @@
   }
 
   var $ = function (id) { return document.getElementById(id); };
-  var PER = 12;
+  var PER = document.body.classList.contains("v4-lib-log") || document.body.classList.contains("v4-lib-wall") ? 24 : 12;
   var eps = $("eps"), cards = [].slice.call(eps.querySelectorAll(".ep-tile"));
   var chips = [].slice.call(document.querySelectorAll(".v2-chip"));
   var state = { s: "", q: "", sort: "new", page: 1 };

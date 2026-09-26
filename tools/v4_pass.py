@@ -22,6 +22,9 @@ What it does
            title sits under it, smaller. Every word stays in the <h1>.
   kb fold  a knowledge base section's long paragraphs fold under "Read more";
            its title, summary line and sources stay in view.
+  globe    an episode whose place is on the site's globe opens on a globe
+           turned to it (tools/v4_globe.py), with its coordinates, range and
+           bearing from Oslo in the instrument font.
 """
 import html
 import os
@@ -111,21 +114,229 @@ def kb_fold(src):
     return re.sub(r'(<div class="r">)(.*?)(<div class="chips">)', one, src, flags=re.S)
 
 
+_pins = None
+
+
+def pins():
+    """The site's own globe pins (globe-episodes.js): slug -> the pin."""
+    global _pins
+    if _pins is None:
+        src = open(os.path.join(ROOT, "globe-episodes.js"), encoding="utf-8").read()
+        import json
+        _pins = json.loads(src[src.index("{"):src.rindex("}") + 1])
+    return _pins
+
+
+def episode_globe(rel, src):
+    """An episode whose story has a place on the site's globe opens on a globe
+    turned to it; the others keep the usual opening. The pin, the range and
+    the bearing are the podcast globe's own (from Oslo, as its popup says)."""
+    if "v4-globe-wrap" in src:
+        return src
+    slug = rel.split("/")[-1][:-5]
+    p = pins().get(slug)
+    if not p or p.get("home"):
+        return src
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import v4_globe as G
+    lat, lon = p["lat"], p["lon"]
+    ns, ew = ("N" if lat >= 0 else "S"), ("E" if lon >= 0 else "W")
+    coord = "%.2f\u00b0%s %.2f\u00b0%s" % (abs(lat), ns, abs(lon), ew)
+    title = "A globe turned to %s, where this episode is from" % coord
+    desc = "The episode's pin on the podcast globe, %s, %s km %s of Oslo." % (coord, format(p["km"], ","), p["card"])
+    svg = G.globe(lat, lon, slug[:24], title, desc)
+    block = '\n  <div class="v4-globe-wrap">%s</div>' % svg
+    line = '<p class="v4-coord"><span>%s</span><span>%s km %s of Oslo</span></p>' % (coord, format(p["km"], ","), p["card"])
+    src = src.replace('<header class="cd-head">', '<header class="cd-head v4-has-globe">' + block, 1)
+    src = re.sub(r'(<p class="cd-epno">.*?</p>)', lambda m: m.group(1) + "\n    " + line, src, count=1, flags=re.S)
+    return src
+
+
+_meta = None
+
+
+def meta():
+    global _meta
+    if _meta is None:
+        import json
+        _meta = {e["slug"]: e for e in json.load(open(os.path.join(ROOT, "episode-meta.json"), encoding="utf-8"))}
+    return _meta
+
+
+def minutes(e):
+    m = re.match(r"(\d+)", e.get("duration_label") or "")
+    return int(m.group(1)) if m else 0
+
+
+def topic_log(name, eps, ident):
+    """The topic's conversations as a log: one bar per episode, placed by its
+    publish date, as tall as it is long. Real dates, real lengths."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import datetime as dt
+    import v4_draw as K
+    dated = [(dt.date.fromisoformat(e["published"]), minutes(e), e) for e in eps if e.get("published")]
+    if len(dated) < 2:
+        return ""
+    W, H = 640, 300
+    x0, x1, yb, yt = 40, 610, 236, 46
+    d0 = dt.date(min(x[0] for x in dated).year, 1, 1)
+    d1 = dt.date(max(x[0] for x in dated).year + 1, 1, 1)
+    span = (d1 - d0).days
+    X = lambda day: x0 + (x1 - x0) * (day - d0).days / span
+    top = max(x[1] for x in dated) or 1
+    Y = lambda m: yb - (yb - yt) * m / top
+    und = len(eps) - len(dated)
+    d = K.Drawing(W, H, "tg-" + ident, "The %s conversations by date and length" % name,
+                  "Each bar is one of the %d conversations tagged %s, placed by the date it was published and as tall as it "
+                  "is long; the longest is %d minutes.%s" % (len(eps), name, top,
+                  (" %d has no publish date and is not drawn." % und) if und else ""))
+    d.backdrop(glow=((x0 + x1) / 2, yb - 70), grid=32, glow_r=200)
+    d.line((x0, yb), (x1, yb), "outline")
+    y = d0.year
+    while dt.date(y, 1, 1) <= d1:
+        xx = X(dt.date(y, 1, 1))
+        d.line((xx, yb), (xx, yb + 8), "hair")
+        if dt.date(y, 1, 1) < d1:
+            d.text((xx + 4, yb + 22), str(y), "sub")
+        for q in (4, 7, 10):
+            if dt.date(y, q, 1) < d1:
+                qx = X(dt.date(y, q, 1))
+                d.line((qx, yb), (qx, yb + 4), "hair")
+        y += 1
+    longest = max(dated, key=lambda x: x[1])
+    for day, m, e in sorted(dated, key=lambda x: x[0]):
+        xx = X(day)
+        w = "accent" if e is longest[2] else "detail"
+        d.line((xx, yb), (xx, Y(m)), w)
+        d.dot((xx, Y(m)), 2.2, accent=(e is longest[2]))
+    # the one dimension: the longest, in minutes
+    lx = X(longest[0])
+    d.line((x0 - 8, Y(longest[1])), (lx - 6, Y(longest[1])), "ghost")
+    d.text((x0 - 8, Y(longest[1]) - 6), "%d min" % longest[1], "val")
+    d.text((x1, yt - 22), "Minutes", "sub", "end")
+    return d.svg("v4-tg-log")
+
+
+def topic_page(rel, src):
+    """A topic opens like the knowledge base: a drawing and a stats row; the
+    three newest conversations lead as a featured row."""
+    if "v4-tg-top" in src:
+        return src
+    slugs = re.findall(r'<a class="tg-ep-link" href="\.\./episodes/([^"]+)\.html"', src)
+    eps = [meta()[x] for x in slugs if x in meta()]
+    if not eps:
+        return src
+    name = re.sub(r"<[^>]+>", "", re.search(r"<h1>(.*?)</h1>", src, re.S).group(1)).lstrip("#").strip()
+    mins = sum(minutes(e) for e in eps)
+    chap = sum(len(e.get("chapters") or []) for e in eps)
+    series = len(set(e.get("series") for e in eps if e.get("series")))
+    stats = ('<dl class="v4-stats">'
+             '<div><dt>Conversations</dt><dd>%d</dd></div>'
+             '<div><dt>Listening</dt><dd>%dh %02dm</dd></div>'
+             '<div><dt>Chapters</dt><dd>%d</dd></div>'
+             '<div><dt>Series</dt><dd>%d</dd></div></dl>') % (len(eps), mins // 60, mins % 60, chap, series)
+    log = topic_log(name, eps, rel.split("/")[-1][:-5])
+    src = src.replace('<header class="kit-hero is-sky v2-tg-hero">', '<header class="kit-hero is-sky v2-tg-hero v4-tg-top">', 1)
+    src = re.sub(r'(<p class="kit-intro">.*?</p>)(\s*</div>)', lambda m: m.group(1) + "\n  " + stats + m.group(2) +
+                 ('\n  <figure class="v4-tg-fig">%s</figure>' % log if log else ""), src, count=1, flags=re.S)
+    # the featured row: the three newest, larger
+    items = re.findall(r'<li class="tg-ep"[^>]*data-date="([^"]*)"[^>]*>(.*?)</li>', src, re.S)
+    items = sorted([i for i in items if i[0]], key=lambda i: i[0], reverse=True)[:3]
+    if len(items) == 3:
+        cards = ""
+        for date, body in items:
+            a = re.search(r'<a class="tg-ep-link" href="([^"]+)">(.*?)</a>', body, re.S)
+            im = re.search(r'<span class="tg-thumb[^"]*">(.*?)</span>', a.group(2), re.S)
+            img = im.group(1) if im else ""
+            ser = re.search(r'<span class="tg-ep-series">(.*?)</span>', a.group(2), re.S).group(1)
+            h = re.search(r"<h2>(.*?)</h2>", a.group(2), re.S).group(1)
+            cards += ('<a class="v4-feat" href="%s"><span class="v4-feat-art">%s</span><span class="v4-feat-s">%s</span>'
+                      '<span class="v4-feat-t">%s</span></a>' % (a.group(1), img, ser, h))
+        row = ('\n<section class="v4-feat-row" aria-label="Newest"><div class="kit-in"><span class="kit-kicker">Newest</span>'
+               '<div class="v4-feat-grid">%s</div></div></section>\n' % cards)
+        src = src.replace('<p class="tg-answer">', row + '<p class="tg-answer">', 1)
+    return src
+
+
+# "Fly it yourself" (step 5): an episode whose place is within reach of a trip
+# links to it. The trips' places and next dates as the site states them.
+TRIPS = [("India", "Bir Billing", (32.04, 76.72), "21 to 30 Oct 2026", "destinations/india.html"),
+         ("Kenya", "Kerio Valley", (0.72, 35.65), "18 to 29 Jan 2027", "destinations/kenya.html")]
+
+
+def km(a, b):
+    import math
+    la1, lo1, la2, lo2 = map(math.radians, [a[0], a[1], b[0], b[1]])
+    h = math.sin((la2 - la1) / 2) ** 2 + math.cos(la1) * math.cos(la2) * math.sin((lo2 - lo1) / 2) ** 2
+    return 6371.0 * 2 * math.asin(math.sqrt(h))
+
+
+def episode_extras(rel, src):
+    """The phone bar (Play, Next) and, where the place is a trip's, the bridge."""
+    slug = rel.split("/")[-1][:-5]
+    if "v4-epbar" not in src:
+        nxt = re.search(r'<a class="ep2-card" href="([^"]+)">.*?<span class="ep2-card-t">(.*?)</span>', src, re.S)
+        bar = '\n<div class="v4-epbar" id="v4Epbar"><button type="button" class="btn-solid v4-play"><span>Play</span></button>'
+        if nxt:
+            bar += '<a class="btn-lines v4-next" href="%s"><span class="v4-next-k">Next</span> %s</a>' % (nxt.group(1), nxt.group(2))
+        bar += "</div>\n"
+        src = src.replace("</div><!-- /.page-wrap -->", bar + "</div><!-- /.page-wrap -->", 1)
+    p = pins().get(slug)
+    if p and not p.get("home") and "v4-bridge" not in src:
+        for name, place, at, when, href in TRIPS:
+            if km((p["lat"], p["lon"]), at) < 400:
+                link = '<a class="v4-bridge" href="../%s"><span>Fly it yourself</span> %s, %s <i aria-hidden="true">&rarr;</i></a>' % (href, place, when)
+                src = src.replace('</p>', '</p>', 1)
+                src = re.sub(r'(<p class="v4-coord">.*?</p>)', lambda m: m.group(1) + "\n    " + link, src, count=1, flags=re.S)
+                break
+    return src
+
+
+NAV = [("Expeditions", "index.html#destinations", ("destinations/", "enquire.html")),
+       ("Podcast", "podcast.html", ("podcast.html", "library.html", "episodes/", "tags", "samples/library")),
+       ("Knowledge Base", "knowledge-base.html", ("knowledge-base",)),
+       ("About", "about.html", ("about.html", "mission.html", "partners.html"))]
+
+
+def nav(rel, src):
+    """The header (owner's decision 5): Expeditions, Podcast, Knowledge Base,
+    About, then Enquire. Sitemap is in the footer. The current section is
+    marked (aria-current)."""
+    m = re.search(r'<div class="nav-links">.*?</div>', src, re.S)
+    if not m or "v4-nav" in m.group(0):
+        return src
+    up = "../" * rel.count("/")
+    items = []
+    for i, (label, href, starts) in enumerate(NAV):
+        here = any(rel.startswith(x) for x in starts)
+        items.append('<a href="%s%s"%s>%s</a>' % (up, href, ' aria-current="page" class="is-here"' if here else "", label))
+    new = '<div class="nav-links v4-nav">\n    ' + '\n    <span class="nav-sep">|</span>\n    '.join(items) + "\n  </div>"
+    return src[:m.start()] + new + src[m.end():]
+
+
 def main(args):
     rels = args or sorted(os.path.relpath(os.path.join(d, f), V4).replace(os.sep, "/")
                           for d, _, fs in os.walk(V4) for f in fs if f.endswith(".html"))
-    n = {"titles": 0, "kb folds": 0}
+    n = {"titles": 0, "kb folds": 0, "globes": 0, "topics": 0, "nav": 0}
     for rel in rels:
         fp = os.path.join(V4, rel)
         src = open(fp, encoding="utf-8").read()
-        out = src
+        out = nav(rel, src)
         if rel.startswith("episodes/"):
             out = titles(out)
             n["titles"] += out != src
+            g = episode_globe(rel, out)
+            n["globes"] += g != out
+            out = episode_extras(rel, g)
+        if rel.startswith("tags/"):
+            t = topic_page(rel, out)
+            n["topics"] += t != out
+            out = t
         if rel.startswith("knowledge-base/"):
             before = out
             out = kb_fold(out)
             n["kb folds"] += out.count('class="v4-fold k-more"') if out != before else 0
+        n["nav"] += 'class="nav-links v4-nav"' in out and 'class="nav-links v4-nav"' not in src
         if out != src:
             open(fp, "w", encoding="utf-8").write(out)
     print("v4 pass: " + ", ".join("%s %d" % kv for kv in n.items()))

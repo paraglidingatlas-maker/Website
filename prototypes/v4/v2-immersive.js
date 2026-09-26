@@ -477,3 +477,90 @@
   }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();
+
+/* V4 ADDITIONS (prototypes/v4 only)
+   6. CARDS OPEN INTO THE PAGE. Pressing an episode card grows its picture into
+      the episode's player (a cross-document view transition). The card's
+      picture takes the name ep-<slug> as the page is left; the player on the
+      episode page carries the same name. Where the browser has no
+      cross-document view transitions it is an ordinary link; reduced motion
+      turns it off.
+   7. THE ALTIMETER. On long pages, a tape down the left edge: ticks, a mark
+      at each section, and the glider descending as the page is read.
+      Decoration only (aria-hidden), wide screens, off under reduced motion. */
+(function () {
+  "use strict";
+  var d = document, w = window;
+  var still = w.matchMedia && w.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var store = { get: function (k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
+                set: function (k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} } };
+  function slugOf(href) {
+    var m = /\/episodes\/([^\/?#]+)\.html/.exec(href || "");
+    return m ? m[1] : null;
+  }
+
+  /* ------------------------------------------ 6. cards open into the page */
+  if (!still) {
+    d.addEventListener("click", function (e) {
+      if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+      var a = e.target.closest && e.target.closest('a[href*="episodes/"]');
+      if (!a) return;
+      var slug = slugOf(a.href);
+      var box = a.closest(".ep-modal, [class*='ep-modal'], .map-popup");
+      var img = a.querySelector(".ep-art img, .ep-th img, .ep2-card-art img, .kit-card-media img, img") ||
+                (box && box.querySelector("img"));
+      if (!slug || !img) return;
+      d.querySelectorAll("[data-v4-vt]").forEach(function (x) { x.style.viewTransitionName = ""; x.removeAttribute("data-v4-vt"); });
+      img.style.viewTransitionName = "ep-" + slug;
+      img.setAttribute("data-v4-vt", "");
+      store.set("v4-card", slug);
+    }, true);
+    w.addEventListener("pagereveal", function (e) {
+      var slug = store.get("v4-card"); store.set("v4-card", "");
+      if (!slug || !e.viewTransition) return;
+      var p = d.querySelector(".ep2-hero-media .cd-player");
+      if (p && !p.style.viewTransitionName) {
+        p.style.viewTransitionName = "ep-" + slug;
+        var off = function () { p.style.viewTransitionName = ""; };
+        e.viewTransition.finished.then(off, off);
+      }
+    });
+    w.addEventListener("pageshow", function () {
+      d.querySelectorAll("[data-v4-vt]").forEach(function (x) { x.style.viewTransitionName = ""; x.removeAttribute("data-v4-vt"); });
+    });
+  }
+
+  /* ------------------------------------------------------- 7. the altimeter */
+  function altimeter() {
+    if (still || !w.matchMedia("(min-width: 1180px)").matches) return;
+    var H = d.documentElement.scrollHeight, vh = w.innerHeight;
+    if (H < vh * 3.5) return;
+    var fl = d.querySelector(".flightline");
+    if (fl) fl.style.display = "none";
+    var el = d.createElement("div");
+    el.className = "v4-alti";
+    el.setAttribute("aria-hidden", "true");
+    var ticks = "";
+    for (var i = 0; i <= 20; i++) ticks += '<i class="t' + (i % 5 ? "" : " is-maj") + '" style="--p:' + (i * 5) + '%"></i>';
+    el.innerHTML = '<span class="v4-alti-tape">' + ticks + '</span><span class="v4-alti-marks"></span><b class="v4-alti-g"></b>';
+    d.body.appendChild(el);
+    var marks = el.querySelector(".v4-alti-marks");
+    function place() {
+      var max = d.documentElement.scrollHeight - w.innerHeight;
+      if (max <= 0) return;
+      var html = "";
+      d.querySelectorAll("main h2, .page-wrap > section h2, .dst-main h2").forEach(function (h) {
+        if (h.closest("details:not([open]), footer, nav, [hidden]")) return;
+        var y = h.getBoundingClientRect().top + w.scrollY - w.innerHeight * .3;
+        var p = Math.max(0, Math.min(1, y / max));
+        html += '<i style="--p:' + (p * 100).toFixed(2) + '%"></i>';
+      });
+      marks.innerHTML = html;
+    }
+    place();
+    w.addEventListener("load", place);
+    w.addEventListener("resize", place, { passive: true });
+    d.addEventListener("toggle", place, true);
+  }
+  if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", altimeter); else altimeter();
+})();

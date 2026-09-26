@@ -13,8 +13,8 @@ marked done is the next step.
 | 0. Setup: v4 copy, `--site`, v2 byte-identical | done | c649f29 | v4 check 182 pages 0 FAIL; switch v4 180 pages 0 FAIL; audit 0 FAIL; smoke 172 / 0 FAIL; v2 rerun byte-identical |
 | 1. Basics: the grammar | done | b0310c7 | all gates PASS (v4 182 pages 0 FAIL, switch 0 FAIL, smoke 0 FAIL, v2 untouched) |
 | 2. Drawing kit and the three-view | done (redraws go ahead: step 7) | 63d6a5e | all gates PASS (v4 183 pages 0 FAIL) |
-| 3. India, then Kenya | done | (step 3 commit) | all gates PASS (v4 183 pages 0 FAIL, parity kept on both trips) |
-| 4. Signature moments | | | |
+| 3. India, then Kenya | done | edf7a3f | all gates PASS (v4 183 pages 0 FAIL, parity kept on both trips) |
+| 4. Signature moments | done (the menu with step 5, KB figures with step 7) | (step 4 commit) | all gates PASS (v4 184 pages 0 FAIL) |
 | 5. Navigation and wayfinding | | | |
 | 6. Speed | | | |
 | 7. The remaining redraws | | | |
@@ -152,3 +152,39 @@ script needs was rewritten.
   kept (`#dates`, `#route`, and every section id).
 - JavaScript off: every screen readable (`@media (scripting: none)`);
   reduced motion: every screen shown, still.
+
+## Step 4: signature moments
+The rule is in `docs/v4-design-rules.md` with each page's one moment.
+- **Library: the flight log won.** Every episode a line in a pilot's log
+  (number, date, the episode and its guest, series, length, chapters; the
+  figures in the instrument font), 24 to a page, the whole library drawn as
+  a log above it with a stats row (86 episodes, 84 h 39 m, 764 chapters, 13
+  series). The poster wall is `prototypes/v4/samples/library-wall.html`. Why
+  the log: its pictures are YouTube stills of every style, many with their
+  own text, so a wall of them is noisy under our titles; the log is legible,
+  fits the instrument look, and keeps every word as text. (The stills are
+  blocked in this environment, so the wall could only be judged on its
+  structure: worth a look on the live preview.)
+- **Episodes open on a globe turned to where the story is from** (72 of 93:
+  those whose pin on the podcast globe is a real place; the others keep the
+  usual opening). Drawn at build time from Natural Earth (public domain), no
+  d3 on the page (about 10 KB compressed), with the coordinates, range and
+  bearing from Oslo in the instrument font, as the podcast globe's popup
+  gives them.
+- **Topics**: the knowledge base's header pattern: a stats row
+  (conversations, listening time, chapters, series) and a drawing that is the
+  topic's own log (one bar per conversation by date, as tall as it is long);
+  a featured row of the three newest (a swipe strip on a phone).
+- **Cards open into the page**: an episode card's picture (or the popup's)
+  grows into the episode's player (cross-document view transition; plain
+  navigation where not supported; off under reduced motion). Verified in
+  Chromium: the transition runs on arrival.
+- **The altimeter**: a tape down the left edge of long pages, a ring at each
+  section, the glider descending as you read (decoration, aria-hidden, wide
+  screens, off under reduced motion).
+- **Footage breather**: the podcast's opening line now sits over the site's
+  own hero loop, full screen (plays only while on screen).
+- **The instrument font**: DM Mono (OFL, self-hosted in `prototypes/v4/fonts/`,
+  subset, 8.9 KB a weight, licence beside it); specimen in the v4 style
+  guide; applied to the readout, coordinates, timestamps and chapter times,
+  durations, trip readouts and stats. The outlined numerals stay.

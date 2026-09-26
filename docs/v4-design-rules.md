@@ -40,6 +40,11 @@ base door); `--fs-title-s` for long titles (episodes, knowledge base
 articles). An episode's on-screen title is its short part; the rest sits
 under it, smaller, and every word stays in the `<h1>` (`tools/v4_pass.py`).
 
+**The instrument font (v4):** DM Mono (`--font-mono`, OFL, self-hosted in
+`prototypes/v4/fonts/`) only for what an instrument would print: the
+readout, coordinates, timestamps and chapter times, durations, the trip
+readouts, the stats rows. The outlined stat numerals stay.
+
 Poppins (`--font-display`) for titles and numbers, DM Sans (`--font-body`)
 for everything else. Sizes only from the scale: `--fs-micro` (kickers,
 labels), `--fs-small` (meta, chips), `--fs-body-s` (card text), `--fs-body`,
@@ -87,10 +92,33 @@ labels), `--fs-small` (meta, chips), `--fs-body-s` (card text), `--fs-body`,
   choice); quote and guest card in one row below; chapters, transcript,
   "Fly with us", "Up next". Host-only episodes say "Hosted by".
 
+## One signature moment per page (v4)
+Consistent in the grammar, distinctive in the moments. Each page has one
+moment, and everything around it stays quiet (kit heads, soft surfaces,
+short text). A second moment on the same page is a sign one should go.
+
+| Page | Its moment |
+|---|---|
+| Home | the fly-through of the four trips |
+| India, Kenya | the fly-through: five full screens, the photograph behind |
+| Kenya (second half) | the route map stays (it is the route section's own piece) |
+| Podcast | the globe; the footage breather is its pause |
+| Library | the flight log (every episode a line in the log, the library drawn as a log) |
+| Episode | the opening globe turned to where the story is from (72 episodes); the others open on the player |
+| Topic | the topic's log drawing and the newest three |
+| Knowledge base | its own drawings (it stays different on purpose) |
+| Partners | the flight line down the page |
+| Text pages | none: they are for reading |
+
+Shared, not moments: the altimeter on long pages (decoration), cards that
+open into the episode (a transition), the instrument font.
+
 ## Motion
 - Only in answer to the visitor: scroll, pointer, tap, key. Nothing loops or
   moves on its own except a looping flight video, and that only while on
   screen.
+- **Footage breathers (v4):** at most one a page, only footage the site
+  has (the hero loop, the Bir loop), plays only while on screen.
 - Page darkens as it descends; images fade up from a blur; contour backdrop
   behind text sections. No tracers (removed at the owner's request).
 - `prefers-reduced-motion`: transitions off, everything visible. With
