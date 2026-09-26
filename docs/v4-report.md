@@ -14,8 +14,8 @@ marked done is the next step.
 | 1. Basics: the grammar | done | b0310c7 | all gates PASS (v4 182 pages 0 FAIL, switch 0 FAIL, smoke 0 FAIL, v2 untouched) |
 | 2. Drawing kit and the three-view | done (redraws go ahead: step 7) | 63d6a5e | all gates PASS (v4 183 pages 0 FAIL) |
 | 3. India, then Kenya | done | edf7a3f | all gates PASS (v4 183 pages 0 FAIL, parity kept on both trips) |
-| 4. Signature moments | done (the menu with step 5, KB figures with step 7) | (step 4 commit) | all gates PASS (v4 184 pages 0 FAIL) |
-| 5. Navigation and wayfinding | | | |
+| 4. Signature moments | done (the menu with step 5, KB figures with step 7) | 5be88a9 | all gates PASS (v4 184 pages 0 FAIL) |
+| 5. Navigation and wayfinding | done | (step 5 commit) | all gates PASS (v4 184 pages 0 FAIL) |
 | 6. Speed | | | |
 | 7. The remaining redraws | | | |
 | 8. The report | | | |
@@ -188,3 +188,31 @@ The rule is in `docs/v4-design-rules.md` with each page's one moment.
   subset, 8.9 KB a weight, licence beside it); specimen in the v4 style
   guide; applied to the readout, coordinates, timestamps and chapter times,
   durations, trip readouts and stats. The outlined numerals stay.
+
+## Step 5: navigation and wayfinding
+- **The header** (decision 5): Expeditions, Podcast, Knowledge Base, About,
+  then Enquire Now; the current section underlined in orange
+  (`aria-current`). Sitemap is in the footer (and in the menu). Fitted at
+  every width from 821 to 1440 px (checked for overflow at 1440, 1280, 1180,
+  1024, 900 and 821).
+- **The full-screen menu with photos**: the search button in the header, and
+  the menu toggle on a phone, open it: the four sections as photographs
+  (loaded only when it opens) with their sub-pages (India, Kenya; Library,
+  Topics; Mission Statement, Partner With Me), Enquire Now and Sitemap. Focus
+  stays inside; Escape closes it and gives focus back.
+- **One search** across episodes, the knowledge base, trips and topics:
+  `prototypes/v4/search-index.js` (`tools/v4_search.py`, 179 pages, the
+  pages' own titles and descriptions, 42 KB, loaded when the search is first
+  used).
+- **Every page ends on one clear next step**, in the site's own words: the
+  text pages on "Book a free 30-minute, no obligation virtual call", the
+  library on Topics, a topic on the full episode library.
+- **Bridges**: trip pages keep "Hear Bir from someone who flies it" (from the
+  show); episodes whose place is within 400 km of a trip say "Fly it
+  yourself" with the trip's next dates (Navigating India with Eddie Colfox
+  and with Jigish Gohil, Pre PWC Kenya...).
+- **The wind button says what it is**: "Wind sound" beside the icon where
+  there is room (always in its label for screen readers).
+- **Phone bars**: the trip pages' "Hold a place" bar (step 3); episodes get
+  Play (starts the audio, or brings the video into view) and Next (the first
+  of "Up next").

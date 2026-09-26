@@ -198,6 +198,17 @@ def build(trip):
       </div>""" % (n, big, "".join("<div><dt>%s</dt><dd>%s</dd></div>" % r for r in reads)) for n, big, reads in cfg["steps"]) + "\n"
     sa, sb = el(ov, r'<div class="kfly-steps">')
     ov = ov[:sb - len("</div>")] + steps_add + "    " + ov[sb - len("</div>"):]
+    # speed: the screens after the first load their photographs only as the
+    # fly-through comes near (OPEN_JS below); the first stays as it is
+    first = True
+    def defer(m):
+        nonlocal first
+        if first:
+            first = False
+            return m.group(0)
+        x = m.group(0).replace(' srcset="', ' data-v4-srcset="').replace(' src="', ' data-v4-src="')
+        return x
+    ov = re.sub(r'<div class="kfly-slide[^"]*"><picture>.*?</picture></div>', defer, ov, flags=re.S)
     more = fold('<div class="v4t-more-in">' + lede + lead + tail + kair + quiet + close + "</div>",
                 cfg["more"], "v4-fold v4t-more")
     ov = ov.replace("\n</section>", "\n  " + more + "\n</section>")
@@ -302,6 +313,18 @@ OPEN_JS = """<script>
     if (a) openTo(a.getAttribute('href').slice(1));
   });
   go();
+  /* speed: the fly-through's later photographs load as it comes near */
+  var fly = document.getElementById('kfly');
+  function wake() {
+    fly.querySelectorAll('[data-v4-src],[data-v4-srcset]').forEach(function (el) {
+      if (el.dataset.v4Srcset) { el.srcset = el.dataset.v4Srcset; el.removeAttribute('data-v4-srcset'); }
+      if (el.dataset.v4Src) { el.src = el.dataset.v4Src; el.removeAttribute('data-v4-src'); }
+    });
+  }
+  if (fly) {
+    if (!('IntersectionObserver' in window)) wake();
+    else { var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); wake(); } }, { rootMargin: '60% 0px' }); io.observe(fly); }
+  }
 })();
 </script>
 """

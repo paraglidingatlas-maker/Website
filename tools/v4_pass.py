@@ -292,6 +292,35 @@ def episode_extras(rel, src):
     return src
 
 
+TEXT_PAGES = ("terms.html", "privacy-policy.html", "cookie-policy.html", "participant-agreement.html",
+              "corrections.html", "safety-and-disclosure.html", "mission.html")
+
+
+def next_step(rel, src):
+    """Every page ends on one clear next step (step 5), in words the site
+    already uses: the text pages on the call, the library on the topics, a
+    topic on the library."""
+    if "v4-next" in src:
+        return src
+    up = "../" * rel.count("/")
+    if rel in TEXT_PAGES:
+        band = ('<section class="v4-next"><div class="v4-next-in"><span class="kit-kicker">Ready To Touch The Sky With Glory?</span>'
+                '<a class="v4-next-a" href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener">'
+                'Book a free 30-minute, no obligation virtual call <i aria-hidden="true">&rarr;</i></a></div></section>')
+    elif rel == "library.html":
+        band = ('<section class="v4-next"><div class="v4-next-in"><span class="kit-kicker">Browse by subject</span>'
+                '<a class="v4-next-a" href="tags.html">Topics <i aria-hidden="true">&rarr;</i></a></div></section>')
+    elif rel.startswith("tags"):
+        def conv(m):
+            inner = re.sub(r'<a href="([^"]*library\.html)">', r'<a class="is-next" href="\1">', m.group(2))
+            return '<div class="%s v4-next v4-next-tg" role="navigation" aria-label="Next">%s</div>' % (m.group(1), inner)
+        src = re.sub(r'<p class="(tg-back[^"]*)">(.*?)</p>', conv, src, count=1, flags=re.S)
+        return src
+    else:
+        return src
+    return src.replace("</div><!-- /.page-wrap -->", band + "\n</div><!-- /.page-wrap -->", 1)
+
+
 NAV = [("Expeditions", "index.html#destinations", ("destinations/", "enquire.html")),
        ("Podcast", "podcast.html", ("podcast.html", "library.html", "episodes/", "tags", "samples/library")),
        ("Knowledge Base", "knowledge-base.html", ("knowledge-base",)),
@@ -321,7 +350,7 @@ def main(args):
     for rel in rels:
         fp = os.path.join(V4, rel)
         src = open(fp, encoding="utf-8").read()
-        out = nav(rel, src)
+        out = next_step(rel, nav(rel, src))
         if rel.startswith("episodes/"):
             out = titles(out)
             n["titles"] += out != src
