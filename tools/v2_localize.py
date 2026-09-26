@@ -110,7 +110,9 @@ def main():
             html = html.replace("</head>", '<script src="%sv2.js"></script>\n</head>' % up, 1)
         if "v2-immersive.js" not in html:
             html = html.replace("</head>", '<script src="%sv2-immersive.js"></script>\n</head>' % up, 1)
-        if not re.search(r'<link rel="canonical" href="https://paraglidingatlas\.com/', html):
+        live_twin = os.path.join(ROOT, rel)
+        live_has = os.path.exists(live_twin) and 'rel="canonical"' in open(live_twin, encoding="utf-8").read()
+        if (live_has or not os.path.exists(live_twin)) and not re.search(r'<link rel="canonical" href="https://paraglidingatlas\.com/', html):
             print("  no live canonical:", rel)
             problems += 1
         open(fp, "w", encoding="utf-8").write(html)

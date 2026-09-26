@@ -145,15 +145,19 @@ def build(slug, meta):
 
     # ---- hero ----
     img, webp, kind = portrait(ep)
-    face = bool(img and kind == "is-portrait")
+    # every episode takes the player-beside-the-title layout (the owner's choice,
+    # 26 Sep 2026); the portrait layout is kept in the code but no longer used
+    face = False
     series = ep.get("series", "")
     head_re = re.compile(r'(<p class="cd-epno">)(.*?)(</p>)\s*<div class="cd-headgrid">.*?</header>', re.S)
     submeta = re.search(r'<div class="cd-submeta">.*?</div>', src, re.S).group(0)
     hero = (r'\1\2%s\3' % ((" &middot; " + e(series)) if series else "")
             + '\n    <div class="ep2-hero%s">' % ("" if face else " is-media")
             + '\n      <div class="ep2-hero-copy">'
-            + ('\n        <p class="ep2-with">with <strong>%s</strong></p>' % e(guest) if guest else "")
-            + '\n        <h1><span class="ep2-h1">%s</span>%s</h1>' % (e(main_t), ' <span class="ep2-sub">%s</span>' % e(sub_t) if sub_t else "")
+            # the guest's name stays inside the heading: it is in the live <h1>, and search reads it there
+            + '\n        <h1>%s<span class="ep2-h1">%s</span>%s</h1>' % (
+                '<span class="ep2-with">with <strong>%s</strong></span> ' % e(guest) if guest else "",
+                e(main_t), ' <span class="ep2-sub">%s</span>' % e(sub_t) if sub_t else "")
             + "\n        " + submeta.replace("\\", "\\\\")
             + re.sub(r"<span>(Watch on|Listen on) ", r'<span><i class="ep2-lw">\1 </i>', listen.replace("\\", "\\\\")).replace('class="cd-listen"', 'class="cd-listen ep2-listen"')
             + "\n      </div>"
