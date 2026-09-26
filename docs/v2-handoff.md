@@ -74,8 +74,13 @@ Preview: any static server at the repo root (the old one was
    heading ("See where we fly") over the India picture; the old intro line was
    dropped. Text kept short on purpose.
 
-1. Owner to review the three v2 episode samples, then roll the design out to
-   all episodes (`tools/v2_episode.py` over every slug, then fold it into
+1. DECIDED (owner, 26 Sep): the episode layout for every episode is the
+   no-portrait one (player beside the title, quote and guest card in one row
+   below): see the Bruce Goldsmith, Zsolt Ero and Damien Lacaze samples. The
+   portrait layout (Urs Haari sample) is dropped, even for guests who have a
+   clean portrait. To do, only when the owner says go: make
+   `tools/v2_episode.py` always use the player-beside-title hero, rebuild the
+   Urs sample, then roll the design out to all episodes (`tools/v2_episode.py` over every slug, then fold it into
    `generate_chapter_deck.py` before switch-over).
 2. Text trimming pass across the site (show before/after word counts).
 3. Put 136 countries and the Kenya price on the LIVE site (offered, not yet
