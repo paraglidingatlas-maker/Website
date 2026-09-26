@@ -89,6 +89,17 @@ was followed.
    word kept but folded away (FAQ, packing, practical) so SEO/GEO parity
    holds; about 800 words on first read. India first, owner reviews, then
    Kenya.
+-2. The rest of the improvement list (owner, 27 Sep), biggest first:
+   a real booking path (the enquiry form is mailto only; free option: Google
+   Apps Script to a Sheet); less text on knowledge base categories (~2,400
+   words), homepage and podcast (~950); one episode count everywhere (71 / 86
+   / 93 / 90+; the library lists 86 of 93); the missing facts (Peru and
+   Kazakhstan, 14 episode dates, 2 descriptions); more of the owner's own
+   footage and photos (two clips today); shorter on-screen episode titles
+   (full title kept in the h1 words); a shorter homepage (4 to 5 sections);
+   knowledge base cards and figures in the new design; speed (home 2.5 MB on
+   arrival, the podcast globe's 273 KB library); the iPhone check, then the
+   switch-over.
 
 0. Done: the owner picked the fly-through (option 2 on
    `prototypes/v2/fly-options.html`). It is now the v2 homepage's expedition
