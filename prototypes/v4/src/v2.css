@@ -1848,7 +1848,7 @@ html body.v4-lib-log .v2-eps .ep-tile::after{display:block;content:attr(data-s);
 .dk .lab{fill:var(--white,#f6f4f4);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;}
 .dk .sub{fill:#8d8d8d;font-size:11px;}
 .dk .val{fill:var(--orange,#ff7517);font-size:12.5px;font-weight:600;letter-spacing:.04em;}
-.dk .vw{fill:#737373;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;}
+.dk .vw{fill:#8c8c8c;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;}
 .dk .vn{fill:var(--orange,#ff7517);font-family:var(--font-display,'Poppins',sans-serif);font-size:13px;font-weight:700;}
 .dk .tb{fill:#8d8d8d;font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;}
 .dk .tt{fill:var(--white,#f6f4f4);font-family:var(--font-display,'Poppins',sans-serif);font-size:14px;font-weight:700;letter-spacing:0;}
@@ -1898,3 +1898,15 @@ html .sm-ctrl button{min-width:44px;}
 
 /* the menu's Knowledge Base tile: the kit's three-view, whole, to the right */
 .v4-mg-img.is-drawing{background-color:#141519;background-size:94% auto;background-position:center 12%;background-repeat:no-repeat;filter:none;}
+
+/* Three hero figures stay on one line on a phone (the podcast's "80+" fell to
+   a line of its own); the home page already did this. */
+@media (max-width:560px){
+  .kit-hero .kit-stats{gap:var(--sp-2);flex-wrap:nowrap;justify-content:space-between;}
+  .kit-hero .kit-stat b{font-size:clamp(1.2rem,6.2vw,1.8rem);}
+}
+
+/* Readability: the secondary grey (--gray, #737373 in styles.css) is 3.85:1
+   on the page, under the 4.5:1 small text needs (WCAG AA). v4 lifts it to
+   5.4:1 (5.0:1 on cards): still clearly secondary, now readable. */
+:root{--gray:#8c8c8c;}

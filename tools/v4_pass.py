@@ -362,7 +362,7 @@ KBSVG = os.path.join(V4, "img", "kb")
 INLINE_MAX = 12 * 1024           # compressed bytes: a larger wordless drawing is fetched lazily instead
 PIC = re.compile(r'<picture><source srcset="[^"]*?assets/images/(kb-[a-z0-9-]+)\.webp" type="image/webp">'
                  r'<img src="[^"]*" alt="([^"]*)" width="(\d+)" height="(\d+)"([^>]*)></picture>')
-DONE = re.compile(r'<(?:svg|img) class="kbd[^"]*" data-kb="([a-z0-9-]+)".*?<!--/kb-->', re.S)
+DONE = re.compile(r'<(?:svg|img)(?=[^>]*class="kbd)[^>]*?data-kb="([a-z0-9-]+)".*?<!--/kb-->', re.S)   # either attribute order
 
 
 def kb_figure(name, alt, w, h, hero):

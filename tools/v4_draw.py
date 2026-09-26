@@ -49,7 +49,7 @@ CSS = """
 .{p} .lab{{fill:var(--white,#f6f4f4);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;}}
 .{p} .sub{{fill:#8d8d8d;font-size:11px;}}
 .{p} .val{{fill:var(--orange,#ff7517);font-size:12.5px;font-weight:600;letter-spacing:.04em;}}
-.{p} .vw{{fill:#737373;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;}}
+.{p} .vw{{fill:#8c8c8c;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;}}
 .{p} .vn{{fill:var(--orange,#ff7517);font-family:var(--font-display,'Poppins',sans-serif);font-size:13px;font-weight:700;}}
 .{p} .tb{{fill:#8d8d8d;font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;}}
 .{p} .tt{{fill:var(--white,#f6f4f4);font-family:var(--font-display,'Poppins',sans-serif);font-size:14px;font-weight:700;letter-spacing:0;}}

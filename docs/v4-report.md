@@ -409,3 +409,24 @@ Five things done without the owner, each through the gates:
   in the library's flight log on a phone, v2's stronger rule kept the
   chapter count showing, which squeezed the title to 74px and printed the
   episode number over its length.
+
+## Polish (owner: "keep polishing v4")
+- **Readability.** Every text on eleven key pages measured against its real
+  background (WCAG AA: 4.5:1 for small text). The secondary grey (#737373,
+  3.85:1) failed wherever it was used: timestamps, labels, notes, bylines.
+  v4 lifts the token to #8c8c8c (5.4:1; 5.0:1 on cards) in its own style
+  sheet (`styles.css`, the live file, is untouched), and the drawings' view
+  labels with it. What is left are false alarms (the "|" separators in the
+  header, outlined numbers, text on the orange buttons).
+- **Hero figures on a phone.** The podcast's "80+" fell to a line of its own;
+  the three figures now share one line down to 360px, as on the home page.
+- **Keyboard.** Tabbing through six pages: every stop shows focus (fields turn
+  orange, links get an outline).
+- **Walked** India, Kenya, the knowledge base index and three more knowledge
+  base pages at both widths; reduced motion on Kenya.
+- **A pass fix.** The three-view's markup names its attributes in another
+  order, so the pass never refreshed it after a kit change; it does now.
+- **Known, left as is (no JavaScript):** the trips' later fly-through photos
+  load on scroll (step 6), so without JavaScript the first photo stays behind
+  every screen, and v2's route diagram stays half drawn. All the words are
+  there; visitors without JavaScript are rare.
