@@ -17,7 +17,7 @@ marked done is the next step.
 | 4. Signature moments | done (the menu with step 5, KB figures with step 7) | 5be88a9 | all gates PASS (v4 184 pages 0 FAIL) |
 | 5. Navigation and wayfinding | done | d5546f5 | all gates PASS (v4 184 pages 0 FAIL) |
 | 6. Speed | done | 84258b8 | all gates PASS (v4 184 pages 0 FAIL; switch 0 FAIL after it learnt the deferred image attributes) |
-| 7. The remaining redraws | done (poster frame: see notes) | (step 7 commit) | all gates PASS (v4 184 pages 0 FAIL; smoke 0 FAIL on its rerun) |
+| 7. The remaining redraws | done (poster frame: see notes) | 3ab0e89 | all gates PASS (v4 184 pages 0 FAIL; smoke 0 FAIL on its rerun) |
 | 8. The report | | | |
 
 ## How to build and check v4
