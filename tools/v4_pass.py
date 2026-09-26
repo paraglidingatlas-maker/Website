@@ -377,6 +377,15 @@ def kb_figure(name, alt, w, h, hero):
         svg = re.sub(r'(<title id="[^"]*">).*?(</title>)', lambda m: m.group(1) + html.escape(a) + m.group(2), svg, 1)
         return svg.replace('<svg class="dk ', '<svg data-kb="%s" class="kbd kbd-tv dk ' % name, 1).replace(
             'class="kbd kbd-tv dk', 'class="kbd kbd-tv dk', 1) + "<!--/kb-->"
+    sys.path.insert(0, os.path.join(ROOT, "tools"))
+    import v4_darkside
+    if name in v4_darkside.NAMES:
+        # drawn with the kit from the page's own words (tools/v4_darkside.py): the drawing's title and
+        # description are its alt text, since the old picture's alt described a drawing that is gone
+        svg = v4_darkside.drawings()[name].svg()
+        par = {True: "xMaxYMid meet", "side": "xMaxYMid slice"}.get(hero, "xMidYMid meet")
+        return svg.replace('<svg class="dk ', '<svg data-kb="%s" class="kbd%s dk ' % (name, " kbd-hero" if hero is True else ""), 1
+                           ).replace(' role="img"', ' preserveAspectRatio="%s" role="img"' % par, 1) + "<!--/kb-->"
     fp = os.path.join(KBSVG, name + ".svg")
     if not os.path.exists(fp):
         return None
@@ -528,6 +537,21 @@ def facts(rel, src):
     return src
 
 
+def dark_side(src):
+    """The Dark Side (the owner, 26 Sep 2026): the rescue drawing and its caption come out; the Brazil section
+    gets Tilen Ceglar and Stan Radzikowski's timeline instead (tools/v4_darkside.py)."""
+    import v4_darkside
+    src = re.sub(r'<figure class="band-draw">(?:(?!</figure>).)*?(?:kb-the-dark-side-downwash)(?:(?!</figure>).)*</figure>',
+                 "", src, flags=re.S)
+    if 'data-kb="kb-the-dark-side-brazil"' in src:
+        return src
+    fig = '<figure class="band-draw">%s%s</figure>' % (kb_figure("kb-the-dark-side-brazil", "", "1200", "340", False),
+                                                        v4_darkside.BRAZIL_CAPS)
+    i = src.find("What pilots say went wrong in Brazil")
+    j = src.find("</section>", i) if i >= 0 else -1
+    return src[:j] + fig + src[j:] if j >= 0 else src
+
+
 def main(args):
     rels = args or sorted(os.path.relpath(os.path.join(d, f), V4).replace(os.sep, "/")
                           for d, _, fs in os.walk(V4) for f in fs if f.endswith(".html"))
@@ -555,6 +579,8 @@ def main(args):
         if rel.startswith("knowledge-base/"):
             before = out
             out = kb_fold(out)
+            if rel == "knowledge-base/the-dark-side.html":
+                out = dark_side(out)
             fg = kb_figures(out)
             n["kb figures"] += fg.count("<!--/kb-->") if fg != out else 0
             out = fg

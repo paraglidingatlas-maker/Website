@@ -524,3 +524,25 @@ carry with v4 at the switch-over.
 - **Currency**: waiting on one answer (India £1,100 and Kenya US$2,100 in
   euros: the same numbers, or converted amounts from the owner). Amounts
   inside transcripts and guests' quotes stay as spoken.
+
+## The Dark Side: three drawings replaced (owner, 26 Sep 2026)
+"Remove these three and choose another episode instead." Out: the page's
+opening (a competition task), the governance drawing (Julien Garcia's four
+boxes, Ep. 54) and the rescue drawing (Nick Neynens' downwash, Ep. 68, with
+its caption). In, drawn with the kit from the page's own words
+(`tools/v4_darkside.py`):
+- **Opening:** Bill Belcourt's two events a week apart: organisers made the
+  calls (a serious accident and several close calls) against pilots choosing
+  for themselves (the only incident a reserve throw, no injury). Ep. 59,
+  chapter 11.
+- **Governance:** Bill Hughes and Goran Dimiskovski: several roles on an
+  amateur budget, and paid staff, broadcasting and sponsors "would change
+  that". Ep. 60, chapter 5. Julien Garcia's quote beside it stays.
+- **Brazil section** (in place of the downwash drawing): Tilen Ceglar and
+  Stan Radzikowski's timeline: the venue moved five months before, a new
+  goal set the evening before and checked the next morning, against official
+  landings proven over two or three earlier events. Ep. 56, chapter 3; their
+  account, not to scale.
+The page's text is unchanged (it still tells Nick Neynens' story in words).
+Its og:image stays the live one (parity), so a shared link still shows the
+old opening picture until the live picture changes.
