@@ -22,6 +22,7 @@ previous session stopped.
 | `v2_localize.py` | Run after editing any v2 page: rewrites links to v2 twins or live files, adds noindex, v2.css, v2.js, v2-immersive.js, updates the page list in v2.js. |
 | `v2_episode.py` | Builds a v2 episode page from the live `episodes/<slug>.html` plus `episode-meta.json`. `--samples` rebuilds the samples; or pass slugs. Then run `v2_localize.py`. |
 | `v2_art.py` | Draws `prototypes/v2/img/contours.svg` and `ridge.svg`. `python3 tools/v2_art.py icons` writes the panel icons into pages. |
+| `v2_fly_options.py` | Builds `prototypes/v2/fly-options.html`: five layouts for the homepage block between "See where we fly" and "Every departure" (wing panels, fly-through, swipe strip, departure board, mosaic). Page script: `fly-options.js`. Then run `v2_localize.py`. |
 | `v3_directions.py` | Generator for the abandoned v3 directions. |
 
 Gates before every push: `./build.sh`, `python3 tools/audit.py --drift`
@@ -65,6 +66,10 @@ Preview: any static server at the repo root (the old one was
   their Workspace) was offered, not built.
 
 ## Open items / next steps
+
+0. Owner to pick one of the five layouts on `prototypes/v2/fly-options.html`
+   (https://paraglidingatlas.com/prototypes/v2/fly-options.html), then build it
+   into the v2 homepage.
 
 1. Owner to review the three v2 episode samples, then roll the design out to
    all episodes (`tools/v2_episode.py` over every slug, then fold it into
