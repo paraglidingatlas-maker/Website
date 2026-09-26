@@ -25,23 +25,23 @@ TBD = '<i class="v2-tbd">[to supply]</i>'
 
 TRIPS = [
     dict(key="india", place="India", region="Bir Billing, Himalaya", kicker="Sky Is Not The Limit",
-         title="The Majestic Himalayas", line="Drift over ancient monasteries while exploring your limits in thin air.",
+         title="The Majestic Himalayas", short="The Majestic Himalayas", line="Drift over ancient monasteries while exploring your limits in thin air.",
          img="images/himalayas-1", alt="Paraglider over snow-capped Himalayan peaks", video="video/bir",
          next="21 to 30 Oct 2026", days="10 days", level=4, group="6 pilots", price="&pound;1,100",
          status="Guaranteed to run", go=True, href="destinations/india.html", cta="See dates", cta_href="#dates"),
     dict(key="kenya", place="Kenya", region="Kerio Valley, Rift Valley", kicker="Explore East Africa From Above",
-         title="A Journey Over The Cradle Of Humankind", line="Glide over thousand year old baobabs, with zebras and giraffes below.",
+         title="A Journey Over The Cradle Of Humankind", short="A Journey Over The Cradle Of Humankind", line="Glide over thousand year old baobabs, with zebras and giraffes below.",
          img="images/kenya-3", alt="Paraglider over a green Kenyan crater", video="",
          next="18 to 29 Jan 2027", days="12 days", level=2, group="8 pilots", price="US$2,100",
          status="Booking open", go=False, href="destinations/kenya.html", cta="See dates", cta_href="#dates"),
     dict(key="peru", place="Peru", region="Lima and the Andes", kicker="Planned for November 2027",
-         title="A Multi-Day Soaring Adventure Through Iconic Flying Corridors",
+         title="A Multi-Day Soaring Adventure Through Iconic Flying Corridors", short="Soar The Land Of The Incas",
          line="Let the calm Pacific breezes carry you into long, graceful, and endlessly rewarding flights.",
          img="images/peru-1", alt="Paraglider above the Peruvian desert coastline", video="",
          next="November 2027", days=None, level=None, group=None, price=None,
          status="Register interest", go=False, href="enquire.html?trip=peru", cta="Register interest", cta_href="enquire.html?trip=peru"),
     dict(key="kazakhstan", place="Kazakhstan", region="The steppe", kicker="Planned for June 2027",
-         title="Beyond Roads, Beyond Maps, Beyond The Unknown",
+         title="Beyond Roads, Beyond Maps, Beyond The Unknown", short="Beyond Roads, Beyond Maps",
          line="Our Flagship Offering. Floating over a landscape untouched, unhurried, and utterly otherworldly.",
          img="images/kazakhstan-1", alt="Paragliders over striped canyon terrain in Kazakhstan", video="",
          next="June 2027", days=None, level=None, group=None, price=None,
@@ -50,7 +50,7 @@ TRIPS = [
 
 OPTIONS = [
     ("wings", "Wing panels", "Four tall photo panels. Point at one, or tap it, and it opens out with its dates and price. On a phone they stack and open downwards."),
-    ("fly", "Fly-through", "One full-screen picture that changes as you scroll, with each trip's card passing over it. A small altimeter shows where you are."),
+    ("fly", "Fly-through", "One full-screen picture that changes as you scroll, with each trip's details written straight onto it. A small altimeter shows where you are."),
     ("swipe", "Swipe strip", "Wide, film-like slides you swipe or drag sideways, one trip at a time. Arrows and a progress line on desktop."),
     ("board", "Departure board", "One full-bleed stage and a board of four departures along the bottom. Choosing one changes the picture and the details."),
     ("mosaic", "Mosaic", "An uneven grid of pictures, India largest. The details slide up on hover; on a phone they are always shown."),
@@ -96,6 +96,18 @@ def facts(t, cls="fo-facts"):
             % (cls, t["next"], v(t["days"]), meter(t["level"]), v(t["group"]), price))
 
 
+def lean_facts(t):
+    """The four facts that decide a booking; the group size is in Every departure."""
+    if not t["price"]:
+        return ('<dl class="fo-facts"><div><dt>Planned</dt><dd><b>%s</b></dd></div>'
+                '<div><dt>Details</dt><dd>%s</dd></div></dl>' % (t["next"], TBD))
+    return ('<dl class="fo-facts"><div><dt>Next</dt><dd><b>%s</b></dd></div>'
+            '<div><dt>Length</dt><dd><b>%s</b></dd></div>'
+            '<div><dt>Level</dt><dd>%s</dd></div>'
+            '<div><dt>From</dt><dd><b class="v2-price">%s</b></dd></div></dl>'
+            % (t["next"], t["days"], meter(t["level"]), t["price"]))
+
+
 def status(t):
     c = "is-go" if t["go"] else ("is-soon" if t["price"] is None else "")
     return '<span class="v2-status %s">%s</span>' % (c, t["status"])
@@ -131,10 +143,10 @@ def opt_fly():
     alt = "".join('<li data-alt="%d"%s><i></i><span>%s</span></li>'
                   % (i, ' class="is-on"' if i == 0 else "", t["place"]) for i, t in enumerate(TRIPS))
     steps = "".join(
-        '<div class="fo2-step" data-step="%d"><div class="fo2-card kit-panel">'
-        '<span class="fo2-n">0%d / 04</span><span class="kit-kicker">%s &middot; %s</span>'
-        '<h3 class="fo-title">%s</h3><p class="fo-line">%s</p>%s%s</div></div>'
-        % (i, i + 1, t["place"], t["region"], t["title"], t["line"], facts(t), actions(t)) for i, t in enumerate(TRIPS))
+        '<div class="fo2-step" data-step="%d"><div class="fo2-card">'
+        '<span class="kit-kicker">%s &middot; %s</span>'
+        '<h3 class="fo-title">%s</h3>%s%s</div></div>'
+        % (i, t["place"], t["region"], t["short"], lean_facts(t), actions(t)) for i, t in enumerate(TRIPS))
     return ('<div class="fo2" data-fo2><div class="fo2-stage" aria-hidden="true">%s<div class="fo2-shade"></div></div>'
             '<ol class="fo2-alt" aria-hidden="true">%s</ol><div class="fo2-steps">%s</div></div>' % (stage, alt, steps))
 
@@ -250,7 +262,7 @@ CSS = """
 .fo2-shot picture img{scale:1.08;transition:scale 6s linear;}
 .fo2-shot.is-on{opacity:1;}
 .fo2-shot.is-on picture img{scale:1;}
-.fo2-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,21,25,.85) 0%,rgba(20,21,25,.35) 55%,rgba(20,21,25,.15) 100%),
+.fo2-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,21,25,.9) 0%,rgba(20,21,25,.6) 45%,rgba(20,21,25,.15) 100%),
   linear-gradient(180deg,var(--bg) 0%,rgba(20,21,25,0) 14%,rgba(20,21,25,0) 86%,var(--bg) 100%);}
 .fo2-alt{position:sticky;top:50vh;z-index:2;float:right;margin:0 var(--gutter) 0 0;padding:0;list-style:none;translate:0 -50%;display:grid;gap:1.1rem;}
 .fo2-alt li{display:flex;align-items:center;justify-content:flex-end;gap:.7rem;color:var(--gray-light);font-size:var(--fs-small);transition:color .4s;}
@@ -259,15 +271,16 @@ CSS = """
 .fo2-alt li.is-on i{width:44px;background:var(--orange);}
 .fo2-steps{position:relative;z-index:1;}
 .fo2-step{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:12vh var(--gutter);}
-.fo2-card{max-width:560px;padding:clamp(1.4rem,3vw,2.2rem);background:rgba(20,21,25,.62);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
-  opacity:.25;translate:0 30px;transition:opacity .6s,translate .8s var(--ease-out);}
+.fo2-card{max-width:760px;opacity:.2;translate:0 30px;transition:opacity .6s,translate .8s var(--ease-out);}
+.fo-opt .fo2-card .fo-title{font-size:clamp(2rem,4.4vw,3.4rem);margin:.5rem 0 1.4rem;}
+.fo2-card .fo-facts{gap:1rem clamp(1.4rem,3vw,2.6rem);}
+.fo2-card .fo-facts dd b{font-size:clamp(1.05rem,1.5vw,1.3rem);}
 .fo2-step.is-on .fo2-card{opacity:1;translate:0 0;}
-.fo2-n{display:block;font-family:var(--font-display);font-size:var(--fs-small);color:var(--gray-light);letter-spacing:.1em;margin-bottom:.6rem;}
 @media (max-width:760px){
   .fo2-alt{display:none;}
-  .fo2-shade{background:linear-gradient(180deg,var(--bg) 0%,rgba(20,21,25,.1) 18%,rgba(20,21,25,.35) 55%,rgba(20,21,25,.9) 100%);}
+  .fo2-shade{background:linear-gradient(180deg,var(--bg) 0%,rgba(20,21,25,.1) 16%,rgba(20,21,25,.75) 42%,rgba(20,21,25,.97) 66%);}
   .fo2-step{align-items:flex-end;padding:0 1rem 8vh;}
-  .fo2-card .fo-line{display:none;}
+  .fo2-card .fo-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem 1.2rem;}
 }
 
 /* 3. swipe strip */
