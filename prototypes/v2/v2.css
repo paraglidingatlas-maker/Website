@@ -1180,3 +1180,8 @@ html .mp-scan{display:none;}
   .v2-join-grid > div:has(> .v2-fly-better){align-self:stretch;display:flex;flex-direction:column;}
   .v2-join-grid .v2-fly-better{margin-top:auto;margin-bottom:var(--sp-4);padding-top:var(--sp-3);}
 }
+
+/* the ALT / HDG readout: only while flight footage is moving behind it */
+.page-wrap > nav .v2-hud{opacity:0;visibility:hidden;transition:opacity .5s ease,visibility 0s .5s;}
+.page-wrap > nav .v2-hud.is-flying{opacity:1;visibility:visible;transition:opacity .5s ease;}
+.page-wrap > nav.v2-nav-pinned .v2-hud{opacity:0;visibility:hidden;}

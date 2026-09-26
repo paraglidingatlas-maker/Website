@@ -111,9 +111,10 @@
     /* The numbers fly with the hero's footage, not with the scroll: while the
        page's hero video plays, altitude climbs through its loop (the homepage
        clip climbs through cloud and breaks out above the peaks) and heading
-       drifts like a slow turn; both start again with the loop. Scrolling leaves
-       them still. With no video playing they hold. (Decorative instrument
-       numbers, as before; not telemetry from the flight.) */
+       drifts like a slow turn; both start again with the loop. The readout is
+       shown only while that footage is moving behind it (v2.css .is-flying):
+       not on the nav that returns on the way up, not on pages without a hero
+       video. (Decorative instrument numbers; not telemetry from the flight.) */
     function paintHud(f) {
       if (!hud) return;
       f = f || 0;                                   // 0..1 through the loop
@@ -124,6 +125,9 @@
     }
     var heroVid = d.querySelector(".page-wrap > .kit-hero video, .page-wrap > header video, .khero video");
     if (heroVid && hud) {
+      // the readout shows only while there is flight footage moving behind it
+      var flying = function () { hud.classList.toggle("is-flying", !heroVid.paused && !heroVid.ended); };
+      ["playing", "pause", "ended", "emptied"].forEach(function (ev) { heroVid.addEventListener(ev, flying); });
       heroVid.addEventListener("timeupdate", function () {
         var dur = heroVid.duration;
         if (dur && isFinite(dur)) paintHud(heroVid.currentTime / dur);
