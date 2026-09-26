@@ -34,6 +34,17 @@
    after on the paraglider three-view first.
 5. **An instrument font** (monospaced) for the readout, coordinates, stats and
    timestamps, as a sample first.
+6. **Navigation and wayfinding:** Expeditions in the main menu (Sitemap moves
+   to the footer); the current section marked in the menu; one search in the
+   header across episodes, knowledge base and trips; every page ends on one
+   clear next step; bridges between the halves ("from the show" on trip pages,
+   "fly it yourself" on relevant episodes, real links only); the wind-sound
+   button says what it is; the same sticky phone action bar on every trip
+   page (and Play / Next on episodes).
+7. **Business machinery:** a booking path (deposit or place-hold per
+   departure, places left shown); proof from past clients on each trip page;
+   a "why you can trust us" strip from the terms and agreement; an automatic
+   reply and a reminder after an enquiry.
 
 ## Needs the owner
 - **Footage and data:** IGC track logs for the filmed flights (real ALT / HDG
@@ -42,7 +53,8 @@
 - **Business:** how to take deposits (a payment link per departure is enough
   to start), client quotes and photos with permission, the trust strip facts.
 - **Facts:** Peru and Kazakhstan details, 14 episode dates and 2
-  descriptions, the one episode count.
+  descriptions, the one episode count, one currency or both (India is in £,
+  Kenya in US$).
 - **The go:** an iPhone check, then the switch-over (runbook in
   docs/v2-report.md).
 
