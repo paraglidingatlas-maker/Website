@@ -378,14 +378,19 @@ def kb_figure(name, alt, w, h, hero):
         return svg.replace('<svg class="dk ', '<svg data-kb="%s" class="kbd kbd-tv dk ' % name, 1).replace(
             'class="kbd kbd-tv dk', 'class="kbd kbd-tv dk', 1) + "<!--/kb-->"
     sys.path.insert(0, os.path.join(ROOT, "tools"))
-    import v4_darkside
-    if name in v4_darkside.NAMES:
-        # drawn with the kit from the page's own words (tools/v4_darkside.py): the drawing's title and
-        # description are its alt text, since the old picture's alt described a drawing that is gone
-        svg = v4_darkside.drawings()[name].svg()
+    import v4_lens
+    if name in v4_lens.names():
+        # drawn with the kit (tools/v4_lens.py, which lists the Dark Side's too): the drawing's title and
+        # description are its alt text. A drawing in a band may bring a phone version, shown instead of the
+        # wide one at phone widths (.kbd-p), so it reads without scrolling sideways
+        wide, phone = v4_lens.build(name)
         par = {True: "xMaxYMid meet", "side": "xMaxYMid slice"}.get(hero, "xMidYMid meet")
-        return svg.replace('<svg class="dk ', '<svg data-kb="%s" class="kbd%s dk ' % (name, " kbd-hero" if hero is True else ""), 1
-                           ).replace(' role="img"', ' preserveAspectRatio="%s" role="img"' % par, 1) + "<!--/kb-->"
+        out = wide.replace('<svg class="dk ', '<svg data-kb="%s" class="kbd%s%s dk ' % (
+            name, " kbd-hero" if hero is True else "", " has-p" if phone and hero is False else ""), 1
+            ).replace(' role="img"', ' preserveAspectRatio="%s" role="img"' % par, 1)
+        if phone and hero is False:
+            out += phone.replace('<svg class="dk ', '<svg data-kbp="%s" class="kbd kbd-p dk ' % name, 1)
+        return out + "<!--/kb-->"
     fp = os.path.join(KBSVG, name + ".svg")
     if not os.path.exists(fp):
         return None
@@ -581,6 +586,8 @@ def main(args):
             out = kb_fold(out)
             if rel == "knowledge-base/the-dark-side.html":
                 out = dark_side(out)
+            import v4_lens
+            out = v4_lens.legends(rel, out)
             fg = kb_figures(out)
             n["kb figures"] += fg.count("<!--/kb-->") if fg != out else 0
             out = fg

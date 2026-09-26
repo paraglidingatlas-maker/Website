@@ -145,8 +145,51 @@ def brazil():
     return d
 
 
+def brazil_phone():
+    """The same timeline, running down the screen at reading size."""
+    d = K.Drawing(360, 520, "ds-brazil-p",
+                  "The championship in Brazil as two pilots tell it",
+                  "The event moved to Castelo five months before it started. A new goal was set the evening before the "
+                  "task and only checked by the organisers the next morning. Normally, official landings are proven over "
+                  "two or three earlier events. Tilen Ceglar and Stan Radzikowski, Episode 56, chapter 3. Their account. "
+                  "Schematic, not to scale.", inline_css=False)
+    d.text((16, 26), "This championship", "vw")
+    x = 34
+    d.line((x, 50), (x, 104), "detail")
+    for by in (114, 124):                                # a break: months pass here
+        d.line((x - 8, by + 4), (x + 8, by - 4), "detail")
+    d.line((x, 134), (x, 300), "detail")
+    d.head((x, 314), (0, 1), 10)
+    d.dot((x, 70), 4, False)
+    d.text((x + 22, 66), "The venue moved to Castelo", "lab")
+    d.text((x + 22, 84), "five months before it started", "sub")
+    d.dot((x, 186), 4, False)
+    d.text((x + 22, 182), "A new goal set", "lab")
+    d.text((x + 22, 200), "the evening before", "sub")
+    d.dot((x, 262), 5, True)
+    d.text((x + 22, 258), "Checked by the organisers", "lab")
+    d.text((x + 22, 276), "the next morning", "val")
+    d.text((16, 366), "Normally", "vw")
+    d.line((x, 390), (x, 470), "hair")
+    for y in (398, 418, 438):
+        d.dot((x, y), 3.2, False)
+    d.text((x + 22, 422), "two or three earlier events", "sub")
+    d.arrow((x, 446), (x, 486), "accent", 9)
+    d.text((x + 22, 490), "official landings proven", "tv")
+    d.text((344, 514), "Ep. 56, ch. 3 · their account · not to scale", "tb", "end")
+    return d
+
+
+def drawings_fns():
+    return {"kb-the-dark-side": opening, "kb-the-dark-side-section": money, "kb-the-dark-side-brazil": brazil}
+
+
+def phone_fns():
+    return {"kb-the-dark-side-brazil": brazil_phone}
+
+
 def drawings():
-    return {"kb-the-dark-side": opening(), "kb-the-dark-side-section": money(), "kb-the-dark-side-brazil": brazil()}
+    return {k: fn() for k, fn in drawings_fns().items()}
 
 
 # the Brazil drawing's words, placed under it on the page (the page's own sentences, shortened)

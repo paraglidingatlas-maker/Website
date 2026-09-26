@@ -623,9 +623,12 @@ def main(only):
         sys.path.remove(KBFIG)
     tot_svg = tot_raster = 0
     import v4_darkside
+    import v4_lens
     for name, script, argv in jobs():
         if name in v4_darkside.NAMES + v4_darkside.GONE:
             continue                       # redrawn from other episodes on the owner's word (tools/v4_darkside.py)
+        if name in v4_lens.names():
+            continue                       # redrawn by lens (tools/v4_lens.py)
         if only and not any(o in (name, os.path.basename(script)[:-3]) or o in name for o in only):
             continue
         CURRENT[0] = name

@@ -1865,6 +1865,9 @@ html body.v4-lib-log .v2-eps .ep-tile::after{display:block;content:attr(data-s);
   .k-hero-media .kbd text{display:none;}
 }
 @media (max-width:760px){.band-draw .kbd{min-width:720px;}}
+/* a drawing's own phone version (tools/v4_lens.py): stacked, at reading size, instead of 720px scrolled sideways */
+.kbd-p{display:none;}
+@media (max-width:760px){.kbd.has-p{display:none;} .band-draw .kbd.kbd-p{display:block;min-width:0;max-width:480px;margin:0 auto;}}
 @media (prefers-reduced-motion:reduce){.k-hero-media .kbd{transform:none;} .kr-on .kr-wipe .kbd{clip-path:none;transition:none;}}
 @media (max-width:980px) and (prefers-reduced-motion:reduce){.k-hero-media .kbd-hero{transform:translateX(-62%);}}
 

@@ -136,7 +136,7 @@ AOA = 6.0
 
 
 def brakes_drawing(phone=False):
-    W, H = (440, 960) if phone else (1200, 460)
+    W, H = (440, 980) if phone else (1200, 460)
     d = K.Drawing(W, H, "xb-brakes" + ("-p" if phone else ""), "The same profile at three brake positions, with the airflow computed",
                   "Streamlines, the pressure on the surface and the point where the lift acts, computed for today's "
                   "profile hands up, with a little brake and with a lot of brake: a 2D inviscid panel method at an "
@@ -147,7 +147,7 @@ def brakes_drawing(phone=False):
     ca, sa = math.cos(-a), math.sin(-a)          # turn the frame so the air arrives level
     for k, (name, defl) in enumerate(BRAKES):
         r = panel_solve(*profile(defl), a)
-        ox, oy, sc = (20, 150 + 300 * k, 300.0) if phone else (70 + 400 * k, 215, 250.0)
+        ox, oy, sc = (56, 150 + 300 * k, 270.0) if phone else (70 + 400 * k, 215, 250.0)
         ty = 300 * k if phone else 0                  # the panel's top, for its words
         tx = 20 if phone else ox + 20
 
@@ -188,7 +188,10 @@ def brakes_drawing(phone=False):
             d.line((20, 300 * k), (W - 20, 300 * k), "hair")
         elif k:
             d.line((400 * k, 70), (400 * k, 430), "hair")
-    if not phone:
+    if phone:
+        d.text((20, 930), "2D inviscid panel method · illustrative 6°", "tb")
+        d.text((20, 948), "no separation: heavy-brake suction overstated", "tb")
+    else:
         d.text((W - 20, 448), "2D inviscid panel method · illustrative 6° · no separation, so heavy-brake suction is overstated",
                "tb", "end")
     return d
