@@ -60,6 +60,14 @@ def glow(d, ident, cx, cy, r, color="#ff7517", op=.18):
     d.raw('<circle cx="%s" cy="%s" r="%s" fill="%s"/>' % (f(cx), f(cy), f(r), rgrad(d, ident, cx, cy, r, color, op)))
 
 
+def fade_left(d, x0, w=200):
+    """The scene's left edge dissolves into the page instead of stopping on a vertical line."""
+    ident = "%s-fl" % d.id
+    vgrad(d, ident, [(0, BG, 1), (1, BG, 0)], 0, 0, 1, 0)
+    d.raw('<rect x="%s" y="0" width="%s" height="%s" fill="url(#%s)"/>' % (f(x0 - 2), f(w), f(d.h), ident))
+    d.raw('<rect x="0" y="0" width="%s" height="%s" fill="%s"/>' % (f(x0 - 1), f(d.h), BG))
+
+
 def noise(seed):
     """A small deterministic 1D value noise, for ridgelines."""
     import random
@@ -113,6 +121,7 @@ def sky_hero():
                 h = base + amp * n(X / 420 + k * 3)
             ys.append(Y(h) + (k == 2) * 0)
         ridge_layer(d, "pt-sg-r%d" % k, xs, ys, H, top, bot, opt, opb, rim)
+    fade_left(d, 640, 240)
     # snow light on the near range: short strokes down the sunlit faces
     # altitude scale
     for m in (2000, 5000, 7600, 8000, 8400):
@@ -173,6 +182,7 @@ def rvr_hero():
     glow(d, "pt-rvr-gorge", 1560 * s, G(1560) - 10, 120, "#ff7517", .35)
     stroke_path(d, list(zip(gx, [G(x / s) for x in gx])), "#ff7517", 1.4, .8)
     stroke_path(d, list(zip(xs, gs)), "#e9e7e7", 1.2, .7)
+    fade_left(d, 660, 90)
     # landable fields catching the light
     for x0, x1 in ((1180, 1330), (1740, 1840), (1960, 2120)):
         yy = G((x0 + x1) / 2)
@@ -233,6 +243,7 @@ def sky_section():
     wind_face = [(x, y) for x, y in zip(xs, g) if x <= 1500 * s]
     stroke_path(d, wind_face, "#e9e7e7", 1.4, .7)
     stroke_path(d, [(x, y) for x, y in zip(xs, g) if x > 1500 * s], "#8d8d8d", 1, .45)
+    fade_left(d, 600, 260)
     for yy in (240, 300, 360):
         d.arrow((960 * s, yy * s), (1380 * s, (yy + 40) * s), "detail", 8)
     d.text((960 * s, 215 * s), "wind", "sub")
@@ -298,6 +309,7 @@ def story_section():
     if run:
         stroke_path(d, run, "#ff7517", 1.6, .7)
     stroke_path(d, shade, "#ff7517", 1, .25, "6 6")
+    fade_left(d, 560, 200)
     d.text((930 * s, 120 * s), "low sun", "val")
     for k in range(4):
         d.arrow((930 * s, (150 + k * 45) * s), (1080 * s, (168 + k * 45) * s), "accent", 7)
