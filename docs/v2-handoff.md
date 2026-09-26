@@ -54,7 +54,7 @@ Preview: any static server at the repo root (the old one was
 - Site-wide: page darkens as it descends; contour backdrop behind text sections
   (the orange scroll tracers were removed at the owner's request); footer ridge horizon; image
   fade-in; instrument icons on panels; orange accent phrase in a few titles;
-  outlined stat numerals; library stills in brand red; testimonial faces.
+  outlined stat numerals; testimonial faces. (The red tint on episode stills and art was removed site-wide at the owner's request.)
 - Kenya/India trip pages: back as they were (no photo breaks), but keep the
   fade-in and the darkening background.
 - Episode pages: redesign built by `tools/v2_episode.py` on three samples:

@@ -896,19 +896,12 @@ footer::after{top:-120px;height:360px;
 
 /* ======================= POLISH =======================
    Testimonials: the face of the episode's guest beside the handle (the
-   episode's own still, in the brand red, where there is no portrait). */
+   episode's own still where there is no portrait). */
 .v2-testi figcaption:has(.v2-testi-face){display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:.8rem;row-gap:.2rem;align-items:center;}
-.v2-testi-face{grid-row:span 2;width:44px;height:44px;border-radius:50%;overflow:hidden;background:#b3120f;
+.v2-testi-face{grid-row:span 2;width:44px;height:44px;border-radius:50%;overflow:hidden;background:var(--card);
   box-shadow:0 0 0 1px rgba(255,255,255,.14),0 0 0 3px var(--bg);}
 .v2-testi-face picture,.v2-testi-face img{display:block;width:100%;height:100%;object-fit:cover;}
-.v2-testi-face.is-still img{mix-blend-mode:luminosity;opacity:.9;}
 
-/* Library: YouTube stills in the red of the guest posters (the homepage rail),
-   true colour when the card is pointed at. */
-.ep-tile .ep-th{background:linear-gradient(160deg,#d8221a,#7a0a08);}
-.ep-tile .ep-th img{mix-blend-mode:luminosity;opacity:.92;transition:opacity .35s ease,mix-blend-mode 0s .1s;}
-@media (hover:hover){ .ep-tile:hover .ep-th img{mix-blend-mode:normal;opacity:1;} }
-@media (hover:none){ .ep-tile .ep-th img{mix-blend-mode:normal;} .ep-tile .ep-th{background:none;} }
 
 /* Images arrive softly: a lazy photo fades up out of a blur instead of
    popping in (v2-immersive.js marks the ones still loading). */
@@ -937,14 +930,13 @@ img.v2-img-in{transition:opacity .7s ease,filter .9s ease;}
 .ep2-listen.cd-listen{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:.6rem;max-width:34rem;margin:1.8rem 0 0;}
 .ep2-listen .cd-lbtn{min-width:0;white-space:nowrap;padding:.75rem .6rem;}
 .ep2-listen .cd-lbtn:first-child{background:var(--orange);border-color:var(--orange);color:var(--ink);font-weight:600;}
-.ep2-portrait{margin:0;position:relative;aspect-ratio:480/678;overflow:hidden;background:linear-gradient(160deg,#d8221a,#7a0a08);
+.ep2-portrait{margin:0;position:relative;aspect-ratio:480/678;overflow:hidden;background:var(--card);
   box-shadow:0 30px 60px -30px rgba(0,0,0,.8);}
 .ep2-portrait::before,.ep2-portrait::after{content:"";position:absolute;z-index:2;width:16px;height:16px;pointer-events:none;}
 .ep2-portrait::before{top:8px;left:8px;border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
 .ep2-portrait::after{right:8px;bottom:8px;border-right:2px solid var(--orange);border-bottom:2px solid var(--orange);}
 .ep2-portrait picture,.ep2-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%;}
 .ep2-portrait.is-art{aspect-ratio:1;}
-.ep2-portrait.is-still img{mix-blend-mode:luminosity;opacity:.92;}
 
 /* the stage: player first and wide; quote and guest beside it */
 .ep2-stage{display:grid;grid-template-columns:minmax(0,1fr) clamp(280px,26vw,360px);gap:clamp(1.5rem,3vw,2.5rem);align-items:start;margin:0 0 clamp(2.5rem,5vw,4rem);}
@@ -954,7 +946,7 @@ img.v2-img-in{transition:opacity .7s ease,filter .9s ease;}
 .ep2-quote blockquote p{font-size:1.02rem;line-height:1.6;}
 .ep2-k{display:block;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:.8rem;}
 .ep2-guest.kit-panel{padding:1.4rem 1.4rem 1.2rem;}
-.ep2-guest-face{float:right;width:58px;height:58px;border-radius:50%;overflow:hidden;margin:-.3rem 0 .4rem .8rem;background:#b3120f;box-shadow:0 0 0 1px rgba(255,255,255,.14);}
+.ep2-guest-face{float:right;width:58px;height:58px;border-radius:50%;overflow:hidden;margin:-.3rem 0 .4rem .8rem;background:var(--card);box-shadow:0 0 0 1px rgba(255,255,255,.14);}
 .ep2-guest-face picture,.ep2-guest-face img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 16%;}
 .ep2-guest-name{font-family:var(--font-display);font-weight:600;font-size:1.2rem;color:var(--white);margin:0;}
 .ep2-guest-more{clear:both;margin:1rem 0 .3rem;font-size:var(--fs-small);color:var(--gray);}
@@ -995,7 +987,7 @@ img.v2-img-in{transition:opacity .7s ease,filter .9s ease;}
 .ep2-next-all:hover{color:var(--white);}
 .ep2-next-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(1rem,2vw,1.5rem);}
 .ep2-card{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--white);overflow:hidden;}
-.ep2-card-art{display:block;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(160deg,#d8221a,#7a0a08);}
+.ep2-card-art{display:block;aspect-ratio:16/9;overflow:hidden;background:var(--card);}
 .ep2-card-art picture,.ep2-card-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transition:transform .6s cubic-bezier(.2,.8,.2,1);}
 .ep2-card:hover .ep2-card-art img{transform:scale(1.05);}
 .ep2-card-body{display:flex;flex-direction:column;gap:.35rem;padding:1rem 1.1rem 1.2rem;}
