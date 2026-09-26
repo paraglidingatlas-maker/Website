@@ -123,34 +123,6 @@ def contours():
     return len(paths)
 
 
-def trails():
-    """A pool of the backdrop's longer contour lines (img/contours.svg is the
-    same drawing), thinned to every third point to stay small. The page picks
-    a few at random for each section and sends a short orange glow along them
-    from a random point as it scrolls (v2-immersive.js); the paths are written
-    into that file between markers."""
-    w, h, step = 1600, 1000, 12
-    z = terrain(w, h, 7)
-    pool = []
-    for n in range(22):
-        lv = 0.06 + n * 0.075
-        for line in join(march(z, w, h, step, lv)):
-            L = sum(math.dist(line[i], line[i + 1]) for i in range(len(line) - 1))
-            if L > 900:
-                pool.append((L, line))
-    pool.sort(key=lambda t: -t[0])
-    out = []
-    for L, line in pool[:12]:
-        pts = line[::3] + ([line[-1]] if (len(line) - 1) % 3 else [])
-        out.append(smooth_path(pts))
-    js = os.path.join(ROOT, "prototypes", "v2", "v2-immersive.js")
-    src = open(js, encoding="utf-8").read()
-    lst = ",".join('"%s"' % d for d in out)
-    src = re.sub(r"/\*v2-trails\*/.*?/\*/v2-trails\*/", lambda m: "/*v2-trails*/" + lst + "/*/v2-trails*/", src, flags=re.S)
-    open(js, "w", encoding="utf-8").write(src)
-    return len(out)
-
-
 def ridge():
     """Midpoint displacement, one profile per layer: far and high to near and low."""
     w, h = 1600, 260
@@ -261,5 +233,4 @@ if __name__ == "__main__":
         os.makedirs(OUT, exist_ok=True)
         n = contours()
         ridge()
-        t = trails()
-        print("v2 art: contours.svg (%d lines), ridge.svg, %d glow trails" % (n, t))
+        print("v2 art: contours.svg (%d lines), ridge.svg" % n)

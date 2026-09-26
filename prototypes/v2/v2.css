@@ -1048,37 +1048,6 @@ img.v2-img-in{transition:opacity .7s ease,filter .9s ease;}
   .v2-facts{grid-template-columns:minmax(0,1fr);}
 }
 
-/* ---- the contours carry the scroll (v2-immersive.js adds .v2-trails) ----
-   Laid exactly over the backdrop's centre tile (center / 1600px, 1100px on a
-   phone). Each line has a bright head and a soft tail with the same leading
-   end, driven down the line by the section's own passage through the screen. */
-.v2-topo,.enq-wrap{overflow:clip;}
-.v2-trails{position:absolute;left:50%;top:50%;width:1600px;height:1000px;translate:-50% -50%;z-index:-1;pointer-events:none;overflow:visible;
-  -webkit-mask-image:radial-gradient(60% 60% at 50% 50%,#000 35%,transparent 100%);
-          mask-image:radial-gradient(60% 60% at 50% 50%,#000 35%,transparent 100%);}
-@media (max-width:700px){ .v2-trails{width:1100px;height:687.5px;} }
-/* each glow: a bright head and a soft tail sharing a leading end, starting at
-   its own point (--o) and travelling its own stretch (--t) over its own part
-   of the scroll (--r0 to --r1), fading in at the start and out at the end */
-.v2-trail,.v2-trail-tail{fill:none;stroke:var(--orange);stroke-linecap:round;opacity:0;}
-.v2-trail{stroke-width:2;stroke-dasharray:.05 3;stroke-dashoffset:calc(.05 - var(--o,0));
-  filter:drop-shadow(0 0 3px rgba(255,117,23,.9)) drop-shadow(0 0 8px rgba(255,117,23,.45));}
-.v2-trail-tail{stroke-width:1.3;stroke-dasharray:.16 3;stroke-dashoffset:calc(.16 - var(--o,0));}
-@supports (animation-timeline: view()){
-  @media (prefers-reduced-motion: no-preference){
-    .v2-trail{animation:v2-trail-head linear both;animation-timeline:view();animation-range:cover var(--r0,10%) cover var(--r1,70%);}
-    .v2-trail-tail{animation:v2-trail-tail linear both;animation-timeline:view();animation-range:cover var(--r0,10%) cover var(--r1,70%);}
-    @keyframes v2-trail-head{
-      0%{stroke-dashoffset:calc(.05 - var(--o,0));opacity:0;}
-      15%{opacity:.95;} 80%{opacity:.95;}
-      100%{stroke-dashoffset:calc(.05 - var(--o,0) - var(--t,.3));opacity:0;}}
-    @keyframes v2-trail-tail{
-      0%{stroke-dashoffset:calc(.16 - var(--o,0));opacity:0;}
-      15%{opacity:.4;} 80%{opacity:.4;}
-      100%{stroke-dashoffset:calc(.16 - var(--o,0) - var(--t,.3));opacity:0;}}
-  }
-}
-
 /* three people: picture on top, words below */
 .v2-team{grid-template-columns:repeat(3,minmax(0,1fr));}
 .v2-person{grid-template-columns:minmax(0,1fr);gap:1.1rem;}

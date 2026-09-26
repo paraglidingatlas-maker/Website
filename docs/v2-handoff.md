@@ -21,7 +21,7 @@ previous session stopped.
 |---|---|
 | `v2_localize.py` | Run after editing any v2 page: rewrites links to v2 twins or live files, adds noindex, v2.css, v2.js, v2-immersive.js, updates the page list in v2.js. |
 | `v2_episode.py` | Builds a v2 episode page from the live `episodes/<slug>.html` plus `episode-meta.json`. `--samples` rebuilds the samples; or pass slugs. Then run `v2_localize.py`. |
-| `v2_art.py` | Draws `prototypes/v2/img/contours.svg` and `ridge.svg`, writes the contour-tracer paths into `v2-immersive.js`. `python3 tools/v2_art.py icons` writes the panel icons into pages. |
+| `v2_art.py` | Draws `prototypes/v2/img/contours.svg` and `ridge.svg`. `python3 tools/v2_art.py icons` writes the panel icons into pages. |
 | `v3_directions.py` | Generator for the abandoned v3 directions. |
 
 Gates before every push: `./build.sh`, `python3 tools/audit.py --drift`
@@ -45,7 +45,7 @@ Preview: any static server at the repo root (the old one was
   India and Kenya; "Every departure" dates table; nav returns on scroll up
   (plain dark glass, no blue tint), not on trip pages.
 - Site-wide: page darkens as it descends; contour backdrop behind text sections
-  with random orange tracers moving with scroll; footer ridge horizon; image
+  (the orange scroll tracers were removed at the owner's request); footer ridge horizon; image
   fade-in; instrument icons on panels; orange accent phrase in a few titles;
   outlined stat numerals; library stills in brand red; testimonial faces.
 - Kenya/India trip pages: back as they were (no photo breaks), but keep the
