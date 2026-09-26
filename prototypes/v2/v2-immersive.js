@@ -372,9 +372,26 @@
     if (nav.classList.contains("is-open")) return;          // the phone menu is open
     if (y <= 2) { show(false); pin(false); return; }
     if (!pinned) { if (y > threshold()) pin(true); else return; }
-    if (dy < -4) show(true);
+    if (dy < -4 && Date.now() > hold) show(true);
     else if (dy > 4) show(false);
   }
+  /* A card opened over a map (the podcast globe) must never sit under the
+     nav: the nav steps aside, and if the card runs off the top or bottom of
+     the screen the page moves just enough to show all of it. That move is
+     ours, so it does not count as the visitor scrolling up. */
+  var hold = 0;
+  d.querySelectorAll(".map-popup").forEach(function (card) {
+    new MutationObserver(function () {
+      if (!card.classList.contains("visible")) return;
+      show(false); hold = Date.now() + 900;
+      requestAnimationFrame(function () {
+        var r = card.getBoundingClientRect(), pad = 16, by = 0;
+        if (r.top < pad) by = r.top - pad;
+        else if (r.bottom > innerHeight - pad) by = Math.min(r.bottom - innerHeight + pad, r.top - pad);
+        if (by) w.scrollBy({ top: by, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      });
+    }).observe(card, { attributes: true, attributeFilter: ["class"] });
+  });
   w.addEventListener("scroll", function () {
     if (queued) return; queued = true; requestAnimationFrame(update);
   }, { passive: true });
