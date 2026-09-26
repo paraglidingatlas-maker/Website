@@ -1899,3 +1899,8 @@ html .sm-ctrl button{min-width:44px;}
    on the page, under the 4.5:1 small text needs (WCAG AA). v4 lifts it to
    5.4:1 (5.0:1 on cards): still clearly secondary, now readable. */
 :root{--gray:#8c8c8c;}
+
+/* An episode's side boxes on a tablet sit two by two; an odd last one (the
+   topics) takes the full row instead of leaving half of it empty. */
+.cd-side > .cd-box:last-child:nth-child(odd){grid-column:1 / -1;}
+.v4-404-find{margin:var(--sp-3) 0 0;}

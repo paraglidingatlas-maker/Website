@@ -470,6 +470,15 @@ def icon(rel, src):
                   '<link rel="icon" type="image/png" href="%simg/favicon-96.png">' % up, src)
 
 
+def not_found(src):
+    """The 404 page: search is the quickest way to a page that moved. The button opens it (a plain link to
+    the sitemap without JavaScript)."""
+    if "data-v4-search" in src:
+        return src
+    return src.replace("through the doors below.</p>", 'through the doors below.</p>\n<p class="v4-404-find">'
+                       '<a class="btn-lines" href="sitemap.html" data-v4-search>Search the site</a></p>', 1)
+
+
 def main(args):
     rels = args or sorted(os.path.relpath(os.path.join(d, f), V4).replace(os.sep, "/")
                           for d, _, fs in os.walk(V4) for f in fs if f.endswith(".html"))
@@ -484,6 +493,8 @@ def main(args):
             g = episode_globe(rel, out)
             n["globes"] += g != out
             out = episode_extras(rel, g)
+        if rel == "404.html":
+            out = not_found(out)
         if rel == "knowledge-base.html":
             out = kb_index_art(out)
         if rel.startswith("destinations/"):

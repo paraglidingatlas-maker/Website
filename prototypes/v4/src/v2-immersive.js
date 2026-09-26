@@ -597,6 +597,11 @@
     b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><span>Search</span>';
     b.addEventListener("click", function () { open(true); });
     if (cta) nav.insertBefore(b, cta); else nav.appendChild(b);
+    // anything marked data-v4-search opens the search (the 404 page's button; a link to the sitemap without JS)
+    d.addEventListener("click", function (e) {
+      var s = e.target.closest && e.target.closest("[data-v4-search]");
+      if (s) { e.preventDefault(); open(true); }
+    });
     // the phone's menu toggle opens the full-screen menu instead of the small panel
     d.addEventListener("click", function (e) {
       var t = e.target.closest && e.target.closest(".nav-toggle");

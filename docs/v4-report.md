@@ -486,3 +486,9 @@ screen below the opening. Fixed, then went further:
   description, then the headings; a plural finds its singular; a longer
   question needs most of its words. The index is 33 KB compressed and still
   loads only when the search is first used.
+- **The 404 page** offers "Search the site" (opens the search; a plain link
+  to the sitemap without JavaScript).
+- **An episode's side boxes on a tablet**: the odd last one (the topics)
+  takes the full row instead of leaving half of it empty.
+- **Hold a place** checked end to end: the enquiry opens with the trip and
+  the departure's dates filled in (India and Kenya).

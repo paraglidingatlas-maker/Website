@@ -495,6 +495,10 @@ b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
 b.addEventListener("click", function () { open(true); });
 if (cta) nav.insertBefore(b, cta); else nav.appendChild(b);
 d.addEventListener("click", function (e) {
+var s = e.target.closest && e.target.closest("[data-v4-search]");
+if (s) { e.preventDefault(); open(true); }
+});
+d.addEventListener("click", function (e) {
 var t = e.target.closest && e.target.closest(".nav-toggle");
 if (!t) return;
 e.preventDefault(); e.stopImmediatePropagation();
