@@ -1087,3 +1087,9 @@ img.v2-img-in{transition:opacity .7s ease,filter .9s ease;}
 @media (max-width:560px){ .v2-team{grid-template-columns:minmax(0,1fr);} .v2-person{grid-template-columns:120px minmax(0,1fr);} }
 .v2-person p a{color:var(--orange);text-decoration:underline;text-underline-offset:3px;}
 .v2-person{align-content:start;}
+/* one person: picture beside the words */
+.v2-team.is-one{grid-template-columns:minmax(0,1fr);max-width:60rem;}
+.v2-team.is-one .v2-person{grid-template-columns:clamp(200px,24vw,320px) minmax(0,1fr);gap:clamp(1.5rem,4vw,3rem);align-items:center;}
+.v2-team.is-one .v2-person-pic{aspect-ratio:4/5;}
+.v2-team.is-one .v2-person p{font-size:1.02rem;}
+@media (max-width:560px){ .v2-team.is-one .v2-person{grid-template-columns:minmax(0,1fr);} .v2-team.is-one .v2-person-pic{max-width:260px;} }
