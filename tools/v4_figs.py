@@ -134,7 +134,7 @@ def detail_brake(d, c, r, s=1.0, text_out=False):
     """Detail D: the brake handle, magnified. Hands fully up, then the first
     tension, at least 7 cm lower (Tom Lolies, Episode 66, chapter 12)."""
     d.circle(c, r, "hair")
-    x = c[0] - 14 * s
+    x = c[0] - (14 if text_out else 44) * s
     # the rear riser, a strap
     d.poly([(x - 3 * s, c[1] - r * .92), (x - 3 * s, c[1] + r * .92)], "outline")
     # the pulley on it, and the brake line coming down from the wing through it
@@ -153,10 +153,11 @@ def detail_brake(d, c, r, s=1.0, text_out=False):
     d.line(K.add(up, (0, 26 * s)), low, "ghost")
     toggle(low, "ghost")
     d.dim((up[0] + 9 * s, up[1]), (low[0] + 9 * s, low[1]), -18 * s, "", ext=True, gap=2)
-    lx = c[0] + r + 14 if text_out else up[0] + 40 * s
+    lx = c[0] + r + 14 if text_out else up[0] + 36 * s
+    lines = ["hands fully up", "to the first tension"] if text_out else ["hands fully up", "to the first", "tension"]
     d.text((lx, up[1] + 16 * s), "\u2265 7 cm", "val")
-    d.text((lx, up[1] + 31 * s), "hands fully up", "sub")
-    d.text((lx, up[1] + 45 * s), "to the first tension", "sub")
+    for i, t in enumerate(lines):
+        d.text((lx, up[1] + 16 * s + 16 + 14 * i), t, "sub")
 
 
 def front_view(d, o, s=1.0):
@@ -249,6 +250,7 @@ def three_view(layout="wide"):
         d = K.Drawing(1200, 660, "tv", TITLE, DESC)
         d.frame()
         sv = side_view(d, (70, 40), 1.0)
+        d.backdrop(glow=sv["lp"], glow_r=330)
         detail_mark(d, K.add(sv["hand"], (0, 4)), 26, "D")
         d.view((60, 628), "A", "Side view")
         plan_view(d, (700, 26), 1.12)
@@ -265,6 +267,7 @@ def three_view(layout="wide"):
         d = K.Drawing(390, 1250, "tvn", TITLE, DESC, compact=True)
         d.frame(4)
         sv = side_view(d, (22, 4), 0.62, narrow=True)
+        d.backdrop(glow=sv["lp"], glow_r=240, grid=30)
         detail_mark(d, K.add(sv["hand"], (0, 3)), 17, "D")
         d.view((20, 392), "A", "Side view")
         detail_brake(d, (118, 504), 84, 1.05, text_out=True)

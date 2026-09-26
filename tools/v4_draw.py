@@ -246,6 +246,24 @@ class Drawing:
             self.text((x + 12, yy), k, "tb")
             self.text((x + 88, yy), v, "tv")
 
+    def backdrop(self, glow=None, grid=40, glow_r=None):
+        """The drawing sheet: a faint drafting grid that fades out towards the
+        edges, and a soft orange light behind the figure's subject."""
+        p = "dk-" + self.id
+        self.defs_extra = getattr(self, "defs_extra", "") + (
+            '<pattern id="{p}-grid" width="{g}" height="{g}" patternUnits="userSpaceOnUse">'
+            '<path d="M{g} 0H0V{g}" fill="none" stroke="#fff" stroke-opacity=".05" stroke-width="1" vector-effect="non-scaling-stroke"/></pattern>'
+            '<radialGradient id="{p}-fade" cx="50%" cy="50%" r="62%"><stop offset="0" stop-color="#fff"/>'
+            '<stop offset=".7" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>'
+            '<mask id="{p}-mask"><rect width="100%" height="100%" fill="url(#{p}-fade)"/></mask>'
+            '<radialGradient id="{p}-glow"><stop offset="0" stop-color="#ff7517" stop-opacity=".16"/>'
+            '<stop offset=".45" stop-color="#ff7517" stop-opacity=".05"/><stop offset="1" stop-color="#ff7517" stop-opacity="0"/></radialGradient>'
+        ).format(p=p, g=grid)
+        self.el.insert(0, '<rect width="%s" height="%s" fill="url(#%s-grid)" mask="url(#%s-mask)"/>' % (f(self.w), f(self.h), p, p))
+        if glow:
+            r = glow_r or min(self.w, self.h) * .55
+            self.el.insert(1, '<circle cx="%s" cy="%s" r="%s" fill="url(#%s-glow)"/>' % (f(glow[0]), f(glow[1]), f(r), p))
+
     def frame(self, pad=8):
         """A drawing border with corner ticks, as on a drawing sheet."""
         x0, y0, x1, y1 = pad, pad, self.w - pad, self.h - pad
@@ -257,7 +275,8 @@ class Drawing:
     def svg(self, extra_cls=""):
         p = "dk-" + self.id
         defs = ('<defs><pattern id="%s-hatch" width="6" height="6" patternUnits="userSpaceOnUse" '
-                'patternTransform="rotate(45)"><line class="hl" x1="0" y1="0" x2="0" y2="6"/></pattern></defs>' % p)
+                'patternTransform="rotate(45)"><line class="hl" x1="0" y1="0" x2="0" y2="6"/></pattern>%s</defs>'
+                % (p, getattr(self, "defs_extra", "")))
         t = ('<title id="%s-t">%s</title><desc id="%s-d">%s</desc>' % (p, html.escape(self.title), p, html.escape(self.desc)))
         return ('<svg class="dk %s%s" viewBox="0 0 %s %s" role="img" aria-labelledby="%s-t %s-d" '
                 'xmlns="http://www.w3.org/2000/svg">%s<style>%s</style>%s%s</svg>' % (
