@@ -145,19 +145,20 @@ def build(slug, meta):
 
     # ---- hero ----
     img, webp, kind = portrait(ep)
+    face = bool(img and kind == "is-portrait")
     series = ep.get("series", "")
     head_re = re.compile(r'(<p class="cd-epno">)(.*?)(</p>)\s*<div class="cd-headgrid">.*?</header>', re.S)
     submeta = re.search(r'<div class="cd-submeta">.*?</div>', src, re.S).group(0)
     hero = (r'\1\2%s\3' % ((" &middot; " + e(series)) if series else "")
-            + '\n    <div class="ep2-hero%s">' % ("" if img and kind == "is-portrait" else " is-text")
+            + '\n    <div class="ep2-hero%s">' % ("" if face else " is-media")
             + '\n      <div class="ep2-hero-copy">'
             + ('\n        <p class="ep2-with">with <strong>%s</strong></p>' % e(guest) if guest else "")
             + '\n        <h1><span class="ep2-h1">%s</span>%s</h1>' % (e(main_t), ' <span class="ep2-sub">%s</span>' % e(sub_t) if sub_t else "")
             + "\n        " + submeta.replace("\\", "\\\\")
             + re.sub(r"<span>(Watch on|Listen on) ", r'<span><i class="ep2-lw">\1 </i>', listen.replace("\\", "\\\\")).replace('class="cd-listen"', 'class="cd-listen ep2-listen"')
             + "\n      </div>"
-            # the player already shows the artwork or the video still; only a face earns the hero
-            + ('\n      <figure class="ep2-portrait %s">%s</figure>' % (kind, pic(img, webp, guest or main_t, lazy=False).replace("\\", "\\\\")) if img and kind == "is-portrait" else "")
+            # a face earns the hero; without one the player takes that space (filled in below)
+            + ('\n      <figure class="ep2-portrait %s">%s</figure>' % (kind, pic(img, webp, guest or main_t, lazy=False).replace("\\", "\\\\")) if face else "\n      <!--ep2-hero-media-->")
             + "\n    </div>\n  </header>")
     src = head_re.sub(hero, src, count=1)
 
@@ -182,7 +183,7 @@ def build(slug, meta):
 
     others = [o for o in meta.values() if guest and o.get("guest") == guest and o["slug"] != slug and o["_listed"]]
     card = ['\n        <div class="ep2-guest kit-panel">', '<span class="ep2-k">The guest</span>']
-    if img and kind == "is-portrait":
+    if face:
         card.append('<span class="ep2-guest-face">%s</span>' % pic(img, webp, ""))
     card.append('<p class="ep2-guest-name">%s</p>' % e(guest or "Aninder Singh"))
     if others:
@@ -191,8 +192,13 @@ def build(slug, meta):
             card.append('<a class="cd-link" href="%s.html">%s</a>' % (o["slug"], e(split_title(o["title"], guest)[0])))
     card.append("</div>")
 
-    stage = ('\n\n  <div class="ep2-stage">\n    <div class="ep2-stage-play">\n      %s%s\n    </div>\n    <div class="ep2-stage-side">%s%s\n    </div>\n  </div>\n'
-             % (player.strip(), timeline, quote.replace('class="cd-quote"', 'class="cd-quote ep2-quote"'), "".join(card)))
+    side = quote.replace('class="cd-quote"', 'class="cd-quote ep2-quote"') + "".join(card)
+    if face:
+        stage = ('\n\n  <div class="ep2-stage">\n    <div class="ep2-stage-play">\n      %s%s\n    </div>\n    <div class="ep2-stage-side">%s\n    </div>\n  </div>\n'
+                 % (player.strip(), timeline, side))
+    else:
+        src = src.replace("<!--ep2-hero-media-->", '<div class="ep2-hero-media">\n      %s%s\n      </div>' % (player.strip(), timeline), 1)
+        stage = '\n\n  <div class="ep2-stage is-side">\n    <div class="ep2-stage-side">%s\n    </div>\n  </div>\n' % side
     src = src.replace('\n  <div class="cd-main">', stage + '\n  <div class="cd-main">', 1)
 
     # ---- fly with us, first in the side column ----
