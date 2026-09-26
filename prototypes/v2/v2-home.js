@@ -57,7 +57,13 @@
     var on = function (list, n) { [].forEach.call(list, function (el, k) { el.classList.toggle('is-on', k === n); }); };
     on(steps, i); on(shots, Math.max(0, i - 1)); on(alts, i - 1);
     box.classList.toggle('at-intro', i === 0);
+    cur = i; live();
   }
+  // the India flight (script.js, data-loop-when) runs only while the fly-through
+  // is on screen and on its first two frames, so it is not fetched on arrival
+  var cur = 0, inView = false;
+  function live() { box.classList.toggle('is-on', inView && cur <= 1); }
+  new IntersectionObserver(function (es) { inView = es[0].isIntersecting; live(); }, { rootMargin: '0px 0px -15% 0px' }).observe(box);
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (en) { if (en.isIntersecting) show(steps.indexOf(en.target)); });
   }, { rootMargin: '-45% 0px -45% 0px' });

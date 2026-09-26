@@ -512,8 +512,9 @@ a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
 .v2-nf{min-height:0;padding-bottom:0;}
 .v2-nf-links{padding-top:var(--sp-4);}
 .v2-door{text-decoration:none;color:inherit;display:flex;flex-direction:column;}
-.v2-door h3{transition:color .2s ease;}
-.v2-door:hover h3{color:var(--orange);}
+.v2-door :is(h2,h3){transition:color .2s ease;}
+.v2-door:hover :is(h2,h3){color:var(--orange);}
+.v2-door h2{font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);color:var(--white);margin:0 0 .5rem;line-height:1.3;}
 .v2-door .v2-more{margin-top:auto;padding-top:.8rem;}
 [data-v2="pg"] .listen-btn{flex:0 0 auto;min-width:0;padding-left:1.6rem;padding-right:1.6rem;}
 
