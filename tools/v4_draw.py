@@ -279,9 +279,12 @@ class Drawing:
     # ---- output ---------------------------------------------------------------
     def svg(self, extra_cls=""):
         p = "dk-" + self.id
-        defs = ('<defs><pattern id="%s-hatch" width="6" height="6" patternUnits="userSpaceOnUse" '
-                'patternTransform="rotate(45)"><line class="hl" x1="0" y1="0" x2="0" y2="6"/></pattern>%s</defs>'
-                % (p, getattr(self, "defs_extra", "")))
+        body = "".join(self.el)
+        hatch = ('<pattern id="%s-hatch" width="6" height="6" patternUnits="userSpaceOnUse" '
+                 'patternTransform="rotate(45)"><line class="hl" x1="0" y1="0" x2="0" y2="6"/></pattern>' % p
+                 if 'class="fx' in body or " fx" in body else "")          # only where something is hatched
+        extra = getattr(self, "defs_extra", "")
+        defs = "<defs>%s%s</defs>" % (hatch, extra) if hatch or extra else ""
         t = ('<title id="%s-t">%s</title><desc id="%s-d">%s</desc>' % (p, html.escape(self.title), p, html.escape(self.desc)))
         return ('<svg class="dk %s%s" viewBox="0 0 %s %s" role="img" aria-labelledby="%s-t %s-d" '
                 'xmlns="http://www.w3.org/2000/svg">%s<style>%s</style>%s%s</svg>' % (

@@ -12,6 +12,8 @@ preview server up.
 
     python3 tools/v4_weight.py                     # the key pages
     python3 tools/v4_weight.py podcast.html index.html
+    python3 tools/v4_weight.py --phone             # 390 x 844 as a touch phone
+Each page is loaded three times per site and the lightest load counts.
 """
 import gzip
 import re
@@ -51,11 +53,18 @@ def main(pages):
         for r in pages:
             res = []
             for site in ("v2", "v4"):
-                ctx = b.new_context(viewport={"width": 1440, "height": 900})
-                pg = ctx.new_page()
-                tot, sizes = weigh(pg, "http://127.0.0.1:8765/prototypes/%s/%s" % (site, r))
-                res.append((tot, sizes))
-                ctx.close()
+                # the lowest of RUNS loads: a font wanted only by hidden text (an accented name on a
+                # card further down the list) is fetched or not depending on timing, in v2 and v4 alike
+                best = None
+                for _ in range(RUNS):
+                    ctx = (b.new_context(viewport={"width": 390, "height": 844}, is_mobile=True, has_touch=True)
+                           if PHONE else b.new_context(viewport={"width": 1440, "height": 900}))
+                    pg = ctx.new_page()
+                    got = weigh(pg, "http://127.0.0.1:8765/prototypes/%s/%s" % (site, r))
+                    ctx.close()
+                    if best is None or got[0] < best[0]:
+                        best = got
+                res.append(best)
             (a, sa), (c, sc) = res
             flag = "ok " if c <= a else "OVER"
             print("%s %-50s v2 %7.0f KB   v4 %7.0f KB   %+6.0f KB" % (flag, r, a / 1024, c / 1024, (c - a) / 1024))
@@ -64,7 +73,10 @@ def main(pages):
     return rows
 
 
+PHONE = "--phone" in sys.argv
+RUNS = 3
+
 if __name__ == "__main__":
-    rows = main(sys.argv[1:] or PAGES)
+    rows = main([a for a in sys.argv[1:] if not a.startswith("--")] or PAGES)
     if "--why" in sys.argv:
         pass

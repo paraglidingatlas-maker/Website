@@ -174,7 +174,7 @@ def minutes(e):
     return int(m.group(1)) if m else 0
 
 
-def topic_log(name, eps, ident):
+def topic_log(name, eps, ident, where=None):
     """The topic's conversations as a log: one bar per episode, placed by its
     publish date, as tall as it is long. Real dates, real lengths."""
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -193,9 +193,10 @@ def topic_log(name, eps, ident):
     Y = lambda m: yb - (yb - yt) * m / top
     und = len(eps) - len(dated)
     d = K.Drawing(W, H, "tg-" + ident, "The %s conversations by date and length" % name, inline_css=False, desc=
-                  ("Each bar is one of the %d conversations tagged %s, placed by the date it was published and as tall as it "
-                  "is long; the longest is %d minutes.%s" % (len(eps), name, top,
-                  (" %d has no publish date and is not drawn." % und) if und else "")))
+                  ("Each bar is one of the %d conversations %s, placed by the date it was published and as tall as it "
+                  "is long; the longest is %d minutes.%s" % (len(eps), where or "tagged " + name, top,
+                  (" 1 has no publish date and is not drawn." if und == 1 else
+                   " %d have no publish date and are not drawn." % und) if und else "")))
     d.backdrop(glow=((x0 + x1) / 2, yb - 70), glow_r=200, sheet=False)
     d.line((x0, yb), (x1, yb), "outline")
     y = d0.year
@@ -460,6 +461,15 @@ def kb_index_art(src):
     return re.sub(r"--art:url\('([^']*?)assets/images/(kb-[a-z0-9-]+)\.webp'\)", swap, src)
 
 
+def icon(rel, src):
+    """The tab icon: the same picture at 96px (prototypes/v4/img/favicon-96.png, 4 KB) in place of the
+    256px original (18 KB) that every page fetched on arrival. Browsers show it at 16 to 32px; 96 is a
+    multiple of 48, the size search results ask for. The home-screen icon (apple-touch-icon) is unchanged."""
+    up = "../" * rel.count("/")
+    return re.sub(r'<link rel="icon" type="image/png" href="[^"]*assets/logo/favicon\.png[^"]*">',
+                  '<link rel="icon" type="image/png" href="%simg/favicon-96.png">' % up, src)
+
+
 def main(args):
     rels = args or sorted(os.path.relpath(os.path.join(d, f), V4).replace(os.sep, "/")
                           for d, _, fs in os.walk(V4) for f in fs if f.endswith(".html"))
@@ -467,7 +477,7 @@ def main(args):
     for rel in rels:
         fp = os.path.join(V4, rel)
         src = open(fp, encoding="utf-8").read()
-        out = next_step(rel, nav(rel, src))
+        out = icon(rel, next_step(rel, nav(rel, src)))
         if rel.startswith("episodes/"):
             out = titles(out)
             n["titles"] += out != src

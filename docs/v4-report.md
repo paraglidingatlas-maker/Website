@@ -430,3 +430,46 @@ Five things done without the owner, each through the gates:
   load on scroll (step 6), so without JavaScript the first photo stays behind
   every screen, and v2's route diagram stays half drawn. All the words are
   there; visitors without JavaScript are rare.
+
+### Polish, round 2: weight on a phone
+Step 6 measured at 1440px. Measured again as a phone (390 x 844, touch;
+`python3 tools/v4_weight.py --phone`), two trips were heavier than v2: the
+fly-through's first photograph loaded at once, though on a phone it sits a
+screen below the opening. Fixed, then went further:
+
+| Page | v2 | v4 (phone) | |
+|---|---|---|---|
+| Home | 2,215 KB | 2,199 KB | -16 KB |
+| Podcast | 605 KB | 530 KB | -75 KB |
+| Library | 243 KB | 230 KB | -13 KB |
+| About | 2,053 KB | 2,037 KB | -16 KB |
+| India | 3,356 KB | 3,339 KB | -17 KB |
+| Kenya | 974 KB | 957 KB | -17 KB |
+| Knowledge base | 1,155 KB | 991 KB | -163 KB |
+| Flight Mechanics | 322 KB | 266 KB | -57 KB |
+| Topic: Safety | 189 KB | 174 KB | -14 KB |
+| Episode (Eddie Colfox) | 222 KB | 206 KB | -15 KB |
+| Episode (Damien Lacaze) | 373 KB | 357 KB | -15 KB |
+| Terms | 178 KB | 162 KB | -16 KB |
+
+- **Every fly-through photograph waits** until the fly-through comes near;
+  without JavaScript the first still shows (a noscript copy).
+- **The tab icon** is the same picture at 96px (4 KB, in
+  `prototypes/v4/img/`) instead of the 256px original (18 KB) every page
+  fetched; the home-screen icon is unchanged, the live file untouched.
+- **The episode bar's "Next"** was set in the instrument font, against v4's
+  own rule (numbers only), and made every episode fetch its letters file.
+  Now in the body font.
+- **Unused rules** left from v2 removed from v4's style sheet (the ones no
+  page or generator can produce); drawings carry the hatch pattern only when
+  something is hatched.
+- **The weight tool** loads each page three times per site and counts the
+  lightest: a font wanted only by hidden text (an accented name further down
+  the library) is fetched or not by timing, in v2 and v4 alike.
+- **Left as they are:** the gallery's position dots (26px wide, as in v2;
+  eleven in a row cannot each be 40px on a phone, and the arrows and swiping
+  move the gallery too).
+- **Wording:** the library drawing's description said "86 conversations
+  tagged library" and "9 has no publish date"; now "in the library" and "9
+  have". The library's hero now refreshes on every build (it was built once,
+  so a change never reached it).

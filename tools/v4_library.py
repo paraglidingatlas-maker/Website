@@ -56,7 +56,7 @@ def augment(card):
 
 def library_log(eps):
     """The whole library as a log drawing."""
-    return P.topic_log("library", eps, "library").replace("The library conversations", "Every conversation in the library")
+    return P.topic_log("library", eps, "library", where="in the library").replace("The library conversations", "Every conversation in the library")
 
 
 def build():
@@ -69,15 +69,19 @@ def build():
     if "ep-log-head" not in src:
         src = src.replace('<div class="eps v2-eps" id="eps"', '<div class="ep-log-head" aria-hidden="true"><span>No.</span><span>Date</span>'
                           '<span>Episode</span><span>Series</span><span>Length</span><span>Chapters</span></div>\n    <div class="eps v2-eps" id="eps"', 1)
-    # the stats and the drawing in the hero
-    if "v4-lib-top" not in src:
-        slugs = re.findall(r'data-ep-slug="([^"]+)"', cards)
-        eps = [P.meta()[x] for x in slugs if x in P.meta()]
-        mins = sum(P.minutes(e) for e in eps)
-        chap = sum(len(e.get("chapters") or []) for e in eps)
-        stats = ('<dl class="v4-stats"><div><dt>Episodes</dt><dd>%d</dd></div><div><dt>Listening</dt><dd>%dh %02dm</dd></div>'
-                 '<div><dt>Chapters</dt><dd>%s</dd></div><div><dt>Series</dt><dd>%d</dd></div></dl>'
-                 % (len(eps), mins // 60, mins % 60, format(chap, ","), len(set(e.get("series") for e in eps if e.get("series")))))
+    # the stats and the drawing in the hero (built once, refreshed on every run after)
+    slugs = re.findall(r'data-ep-slug="([^"]+)"', cards)
+    eps = [P.meta()[x] for x in slugs if x in P.meta()]
+    mins = sum(P.minutes(e) for e in eps)
+    chap = sum(len(e.get("chapters") or []) for e in eps)
+    stats = ('<dl class="v4-stats"><div><dt>Episodes</dt><dd>%d</dd></div><div><dt>Listening</dt><dd>%dh %02dm</dd></div>'
+             '<div><dt>Chapters</dt><dd>%s</dd></div><div><dt>Series</dt><dd>%d</dd></div></dl>'
+             % (len(eps), mins // 60, mins % 60, format(chap, ","), len(set(e.get("series") for e in eps if e.get("series")))))
+    if "v4-lib-top" in src:
+        src = re.sub(r'<dl class="v4-stats">.*?</dl>', lambda _: stats, src, count=1, flags=re.S)
+        src = re.sub(r'(<figure class="v4-tg-fig">).*?(</figure>)', lambda x: x.group(1) + library_log(eps) + x.group(2),
+                     src, count=1, flags=re.S)
+    else:
         m = re.search(r'<header class="kit-hero is-sky([^"]*)">(.*?)</header>', src, re.S)
         inner = m.group(2)
         inner = re.sub(r'(\s*</div>\s*)$', lambda x: "\n    " + stats + x.group(1), inner, count=1)

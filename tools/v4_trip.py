@@ -198,15 +198,17 @@ def build(trip):
       </div>""" % (n, big, "".join("<div><dt>%s</dt><dd>%s</dd></div>" % r for r in reads)) for n, big, reads in cfg["steps"]) + "\n"
     sa, sb = el(ov, r'<div class="kfly-steps">')
     ov = ov[:sb - len("</div>")] + steps_add + "    " + ov[sb - len("</div>"):]
-    # speed: the screens after the first load their photographs only as the
-    # fly-through comes near (OPEN_JS below); the first stays as it is
+    # speed: every screen loads its photograph only as the fly-through comes
+    # near (OPEN_JS below); on a phone even the first sits a screen below the
+    # opening. Without JavaScript the first photograph still shows (noscript).
     first = True
     def defer(m):
         nonlocal first
+        x = m.group(0).replace(' srcset="', ' data-v4-srcset="').replace(' src="', ' data-v4-src="')
         if first:
             first = False
-            return m.group(0)
-        x = m.group(0).replace(' srcset="', ' data-v4-srcset="').replace(' src="', ' data-v4-src="')
+            pic = re.search(r"<picture>.*?</picture>", m.group(0), re.S).group(0)
+            x = x.replace("</picture>", "</picture><noscript>%s</noscript>" % pic, 1)
         return x
     ov = re.sub(r'<div class="kfly-slide[^"]*"><picture>.*?</picture></div>', defer, ov, flags=re.S)
     more = fold('<div class="v4t-more-in">' + lede + lead + tail + kair + quiet + close + "</div>",
