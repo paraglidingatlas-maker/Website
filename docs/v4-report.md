@@ -569,3 +569,46 @@ the rest are redrawn.**
   becomes a numbered map with the names in a list.
 Nothing new is claimed in any of them. The live pages and today's v4
 drawings are unchanged until the owner picks.
+
+## The drawings by lens (owner, 26 Sep 2026: "all")
+After the sample (`samples/drawings-expert.html`), the owner chose all three
+approaches. Each knowledge base drawing now takes the one that fits its
+subject. `tools/v4_lens.py` is the registry: v4_pass places what it lists,
+v4_kbsvg leaves those names alone, and it writes the wide versions to
+`img/kb/` for the index and the menu.
+- **Phone versions** for every drawing in a band (25). On a phone, each shows
+  its own drawing, stacked and at reading size (`.kbd-p`), instead of a
+  720px-wide drawing scrolled sideways. Checked on all 18 pages at 390 px:
+  no band scrolls sideways.
+- **Computed** (`tools/v4_computed.py`, `v4_phone.py`, `v4_phone2.py`):
+  - brakes: panel method;
+  - trim speed with height: Girard's figures on the standard atmosphere's
+    curve (thin air alone gives about 47 km/h at 5,000 m and 55 at 8,000 m;
+    his are about 50 and 60);
+  - millibars to metres: the rule of thumb beside the standard atmosphere's
+    heights (990, 1,950, 3,010 m);
+  - model resolution: circles to one scale, each that many km across (the
+    old drawing used the figure as a radius);
+  - airfoils: four-digit profiles at the page's thicknesses;
+  - jerk: worked out from each G curve;
+  - altitude: oxygen per breath as a share of sea level (69% at 3,000 m,
+    47% at 6,000 m);
+  - the sounding: drawn over dry adiabats at 9.8° per 1,000 m.
+- **Painted** (`tools/v4_painted.py`): meteorology, sky gods and
+  risk-vs-reward heroes; the lee (sky gods), the dusk (storytellers), the
+  Keepit blue hole, a launch for every wind, and the Cauca Valley (with a
+  phone version). Layered ridges paling with distance, one light, orange
+  only on the subject.
+- **Visualisation:** the navigators map on Equal Earth.
+- **Captions:** where a drawing now shows a computed layer, the caption says
+  so in one added sentence (`v4_lens.LEGENDS`, idempotent). The brakes
+  caption's "Grey: drag" became the new key, since a panel method does not
+  model drag.
+- **Unchanged:** the diagram-style drawings whose job is already done
+  (collapse sequence, industry, competitions, technical, the maps of
+  storytellers and living the dream, and the other side drawings). They can
+  take a lens later.
+- **For the owner:** the speed drawing shows Girard's "about 60 km/h at
+  8,000 m" above what thin air alone gives (about 55). Both are on the
+  drawing, labelled. If you would rather show only his figures, say so and
+  the curve comes out.
