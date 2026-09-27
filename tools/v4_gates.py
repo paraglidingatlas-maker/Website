@@ -28,7 +28,35 @@ def run(name, cmd, ok_re=None, tail=1):
     return good, out
 
 
+def preview_server():
+    """The browser check needs the preview server on 8765. Start one for this run only, when none is up;
+    it is stopped when the gates end, so nothing is left running."""
+    import socket
+    import time
+    with socket.socket() as sk:
+        if sk.connect_ex(("127.0.0.1", 8765)) == 0:
+            return None
+    proc = subprocess.Popen([sys.executable, "-m", "http.server", "8765", "--bind", "127.0.0.1"], cwd=ROOT,
+                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    for _ in range(50):
+        with socket.socket() as sk:
+            if sk.connect_ex(("127.0.0.1", 8765)) == 0:
+                break
+        time.sleep(.1)
+    return proc
+
+
 def main():
+    server = preview_server()
+    try:
+        gates()
+    finally:
+        if server:
+            server.terminate()
+            server.wait()
+
+
+def gates():
     quick = "--quick" in sys.argv
     os.makedirs(LOG, exist_ok=True)
     good = True
