@@ -660,3 +660,71 @@
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();
+
+/* 11. THE DRAWINGS DRAW THEMSELVES (owner, 27 Sep 2026). A knowledge base
+      drawing, as it comes into view, traces its lines, then its words
+      arrive, and the orange lands last. The kit's strokes keep one width at
+      any size (vector-effect), so a dash is measured in screen pixels: each
+      line's length is measured at the moment it draws, and the dash is
+      taken off again once it has drawn, leaving the drawing exactly as made.
+      Lines marked .fl keep moving (air along the computed streamlines, a
+      climb, a breeze); that is CSS. Reduced motion, or no script: the
+      drawing is simply there. */
+(function () {
+  "use strict";
+  var w = window, d = document;
+  if (!("IntersectionObserver" in w) || (w.matchMedia && w.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+  var SHAPES = "path,polyline,line,circle,ellipse,polygon";
+  var MAX = 700;                                   // a drawing with more lines than this fades in instead
+  function lines(svg) {
+    return Array.prototype.filter.call(svg.querySelectorAll(SHAPES), function (s) {
+      if (s.closest("defs,pattern,clipPath,mask") || s.classList.contains("fl")) return false;
+      var cs = getComputedStyle(s);
+      return cs.stroke !== "none" && cs.strokeDasharray === "none" && parseFloat(cs.strokeWidth) > 0;
+    });
+  }
+  function draw(svg) {
+    var ls = svg.__kd || [];
+    var m = svg.getScreenCTM && svg.getScreenCTM();
+    var k = m ? Math.sqrt(m.a * m.a + m.b * m.b) : 0;
+    ls.forEach(function (s) {
+      var L = 0;
+      try { L = s.getTotalLength() * k; } catch (e) { L = 0; }
+      if (!(L > 1)) { s.classList.remove("kd-h"); return; }
+      s.style.strokeDasharray = L + " " + L;
+      s.style.strokeDashoffset = L;
+    });
+    svg.getBoundingClientRect();                    // commit the start before the change
+    ls.forEach(function (s, i) {
+      var cs = getComputedStyle(s);
+      var late = /255, 117, 23|#ff7517/i.test(cs.stroke);
+      s.style.transition = "stroke-dashoffset 1.5s cubic-bezier(.65,0,.2,1) " + ((late ? .55 : 0) + Math.min(i * .006, .35)) + "s";
+      s.classList.remove("kd-h");
+      s.style.strokeDashoffset = 0;
+      s.addEventListener("transitionend", function end() {
+        s.removeEventListener("transitionend", end);
+        s.style.strokeDasharray = s.style.strokeDashoffset = s.style.transition = "";
+      });
+    });
+    svg.classList.add("kd-in");
+  }
+  function init() {
+    var svgs = d.querySelectorAll("svg.kbd");
+    if (!svgs.length) return;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        draw(e.target);
+      });
+    }, { threshold: .2 });
+    Array.prototype.forEach.call(svgs, function (svg) {
+      var ls = lines(svg);
+      svg.classList.add("kd", ls.length > MAX ? "kd-fade" : "kd-draw");
+      svg.__kd = ls.length > MAX ? [] : ls;
+      svg.__kd.forEach(function (s) { s.classList.add("kd-h"); });
+      io.observe(svg);
+    });
+  }
+  if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();

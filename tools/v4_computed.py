@@ -31,6 +31,13 @@ def P(pts):
     return " ".join("%s,%s" % (f(x), f(y)) for x, y in pts)
 
 
+def flow(d, pts, color="#f6f4f4", op=.75, slow=False):
+    """A moving dash laid over a line (class fl, animated by the page's CSS; still when motion is reduced)."""
+    d.raw('<path class="fl%s" d="M%s" fill="none" stroke="%s" stroke-opacity="%s" stroke-width="1.4" stroke-linecap="round" '
+          'vector-effect="non-scaling-stroke"/>' % (" fl-slow" if slow else "", " L".join("%s,%s" % (K.f(x), K.f(y)) for x, y in pts),
+                                                   color, op))
+
+
 def rect(d, x, y, w, h, cls="fa", op=None):
     d.raw('<rect class="%s" x="%s" y="%s" width="%s" height="%s"%s/>' % (
         cls, f(x), f(y), f(w), f(h), ' style="fill-opacity:%s"' % op if op is not None else ""))

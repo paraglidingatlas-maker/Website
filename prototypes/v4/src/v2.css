@@ -1907,3 +1907,14 @@ html .sm-ctrl button{min-width:44px;}
    topics) takes the full row instead of leaving half of it empty. */
 .cd-side > .cd-box:last-child:nth-child(odd){grid-column:1 / -1;}
 .v4-404-find{margin:var(--sp-3) 0 0;}
+/* 11. the drawings draw themselves (v2-immersive.js part 11); still when motion is reduced */
+.kr-on .kr-wipe .kbd.kd{clip-path:none;transition:none;}
+.kd .kd-h{stroke-opacity:0 !important;}
+.kd text{transition:opacity .8s ease .9s;}
+.kd:not(.kd-in) text{opacity:0;}
+.kd.kd-fade{opacity:0;transition:opacity 1.2s ease;}
+.kd.kd-fade.kd-in{opacity:1;}
+.dk .fl{stroke-dasharray:3 11;animation:dk-flow 1.6s linear infinite;}
+.dk .fl.fl-slow{animation-duration:3.2s;}
+@keyframes dk-flow{to{stroke-dashoffset:-14;}}
+@media (prefers-reduced-motion:reduce){.dk .fl{animation:none;stroke-dasharray:none;}}

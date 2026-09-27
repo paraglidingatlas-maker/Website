@@ -21,7 +21,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import v4_draw as K  # noqa: E402
-from v4_computed import P, rect  # noqa: E402
+from v4_computed import P, rect, flow  # noqa: E402
 from v4_phone import lines  # noqa: E402
 
 f = K.f
@@ -137,6 +137,7 @@ def sky_hero():
         a = 5000 + t * 2600
         pts.append((cx + 40 * math.sin(t * 2 * math.pi * 11) * (1 - .3 * t), Y(a)))
     stroke_path(d, pts, "#f6f4f4", 1.1, .8)
+    flow(d, pts, "#ff7517", .8, slow=True)
     d.path("M%s,%s L%s,%s" % (f(cx - 80), f(Y(7600)), f(cx + 280), f(Y(7600))), "accent", extra=' style="stroke-dasharray:6 6;stroke-opacity:.6"')
     glow(d, "pt-sg-wave", cx + 14, Y(8000), 60, "#ff7517", .35)
     d.line((cx, Y(7600)), (cx + 27, Y(8400) + 8), "accent")
@@ -321,6 +322,7 @@ def story_section():
     tr = [(2200, 230), (2020, 245), (1860, 300), (1760, 420), (1700, 560), (1650, 700)]
     glow(d, "pt-sts-p", 2200 * s, 230 * s, 70, "#ff7517", .4)
     stroke_path(d, [(x * s, y * s) for x, y in tr] + [(lx * s, ly)], "#ff7517", 2.2, 1)
+    flow(d, [(x * s, y * s) for x, y in tr] + [(lx * s, ly)])
     d.dot((2200 * s, 230 * s), 5, True)
     bx = 1515
     stroke_path(d, [((bx - 45) * s, Gi(bx) - 2), ((bx + 45) * s, Gi(bx) - 2)], "#f6f4f4", 2.4, .5)
@@ -478,6 +480,7 @@ def cauca_scene(d, W, H, s, oy=0):
     # the Pacific breeze, pouring over the western range
     for yy, op in ((150, .95), (190, .6)):
         d.arrow((60 * s, yy * s + oy), (430 * s, (yy + 40) * s + oy), "accent", 9)
+        flow(d, [(60 * s, yy * s + oy), (420 * s, (yy + 39) * s + oy)])
     d.path("M%s,%s L%s,%s" % (f(430 * s), f(190 * s + oy), f(620 * s), f(330 * s + oy)), "accent", extra=' style="stroke-dasharray:6 5"')
     d.head((640 * s, 350 * s + oy), (40, 32), 9, True)
     d.arrow((1380 * s, 480 * s + oy), (1640 * s, 480 * s + oy), "accent", 9)

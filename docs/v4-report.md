@@ -626,3 +626,23 @@ is not a real change, and it is not mine to commit: it is a live file. The
 gates now put the sitemap back when those dates are its only change, and say
 so in a note. Any other change still fails. The deploy (or the next live
 commit) refreshes the dates.
+
+## The drawings move (owner, 27 Sep 2026: "go")
+- **Draw-in:** every knowledge base drawing in v4 draws itself as it
+  comes into view (`v2-immersive.js` part 11). Lines trace, words arrive
+  after, and the orange lands last. The kit keeps its strokes one width at
+  any size, so each line is measured on screen at the moment it draws, and
+  the dash comes off once it has drawn. A drawing with more than 700 lines
+  (the older maps) fades in instead.
+- **Continuous motion:** a light dash moves over the lines that carry
+  something: air along the computed streamlines (brakes), the thermal
+  circling and its core, the record climb, the Pacific breeze over the
+  Cauca Valley, the dusk flight and the cold front.
+- With reduced motion or without JavaScript, every drawing is simply there,
+  still.
+- **vidIQ:** it is connected to the channel (UC0xDTfl8kurPl9CgpsLTr2Q), but
+  the account has no credits, so audience retention ("most replayed") could
+  not be read. Nothing was bought. With credits, each episode's retention
+  curve can pick the segments for animated Shorts. **Owner:** top up vidIQ,
+  or name the segments. The Shorts also need the episode audio files
+  (anchor.fm is blocked here).

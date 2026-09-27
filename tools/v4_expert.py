@@ -160,6 +160,8 @@ def brakes_drawing(phone=False):
             pts = streamline(r, -0.55, yy + .03)
             q = [T(px, py) for px, py in pts]
             d.raw('<polyline class="d" points="%s" style="stroke-opacity:%s"/>' % (P(q), f(.34 if abs(y0) < .2 else .22)))
+            d.raw('<polyline class="fl fl-slow" points="%s" fill="none" stroke="#f6f4f4" stroke-opacity=".45" stroke-width="1.2" '
+                  'vector-effect="non-scaling-stroke"/>' % P(q))
         # the surface pressure: suction (Cp < 0) drawn outward in orange, pressure inward in grey
         cp, xc, yc, nx, ny = r["Cp"], r["xc"], r["yc"], r["nx"], r["ny"]
         env = []
@@ -249,6 +251,8 @@ def meteo_drawing():
                       'vector-effect="non-scaling-stroke" stroke-linejoin="round"/>' % (P(line[::2]), f(.16 + .5 * tone ** 1.5), f(.6 + 1.3 * tone ** 2)))
     # the front: the only orange, triangles pointing the way it moves (toward the warm side, east)
     d.raw('<polyline class="a" points="%s" style="stroke-width:2.4px"/>' % P(np.c_[fx, fy][::3]))
+    d.raw('<polyline class="fl fl-slow" points="%s" fill="none" stroke="#f6f4f4" stroke-opacity=".6" stroke-width="1.4" '
+          'vector-effect="non-scaling-stroke"/>' % P(np.c_[fx, fy][::-3]))
     for k in np.linspace(.07, .93, 10):
         i = int(k * 299)
         dx, dy = fx[i + 1] - fx[i - 1], fy[i + 1] - fy[i - 1]

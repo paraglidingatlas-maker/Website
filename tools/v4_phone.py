@@ -13,7 +13,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import v4_draw as K  # noqa: E402
-from v4_computed import P, rect  # noqa: E402
+from v4_computed import P, rect, flow  # noqa: E402
 
 f = K.f
 
@@ -448,6 +448,7 @@ def top_view(d, C, s):
         rad = r0 * (1 - b) + 62 * s * b
         into.append((c[0] + rad * math.cos(th), c[1] - rad * math.sin(th)))
     d.poly(into, "accent")
+    flow(d, into)
     d.head(into[-1], (into[-1][0] - into[-4][0], into[-1][1] - into[-4][1]), 9, True)
     out, r2 = [], 70 * s
     for i in range(n):
@@ -473,6 +474,7 @@ def side_view(d, S, s, G):
     d.poly(back, "ghost")
     core = [(x0 - 20 * s + l - 10 * s * h, G - 560 * s * h) for h, l in zip(hs, lean)]
     d.poly(core, "accent")
+    flow(d, core)
     for fr in (.2, .45, .85):
         j = int(fr * 40)
         d.arrow((core[j][0], core[j][1] + 20 * s), (core[j][0] + 10 * s, core[j][1] - 40 * s), "accent", 8)
