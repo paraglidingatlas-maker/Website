@@ -62,6 +62,13 @@ def gates():
     good = True
     g, _ = run("build", "./build.sh", r"build complete")
     good &= g
+    # the build stamps today's date on the live sitemap: past midnight that is a change nobody made. A sitemap
+    # whose only changed lines are <lastmod> dates is put back; any other change still fails the gate
+    d = subprocess.run("git diff -U0 -- sitemap.xml", cwd=ROOT, shell=True, capture_output=True, text=True).stdout
+    changed = [ln for ln in d.splitlines() if ln[:1] in "+-" and not ln.startswith(("+++", "---"))]
+    if changed and all(re.match(r"^[+-]\s*<lastmod>\d{4}-\d{2}-\d{2}</lastmod>\s*$", ln) for ln in changed):
+        subprocess.run("git checkout -- sitemap.xml", cwd=ROOT, shell=True)
+        print("note  %-14s %s" % ("sitemap", "only lastmod dates moved with the clock: restored"))
     # no live page changed by the build or by the work
     st = subprocess.run("git status --short; git diff --name-only origin/main", cwd=ROOT, shell=True,
                         capture_output=True, text=True).stdout
