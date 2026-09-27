@@ -612,3 +612,17 @@ v4_kbsvg leaves those names alone, and it writes the wide versions to
   8,000 m" above what thin air alone gives (about 55). Both are on the
   drawing, labelled. If you would rather show only his figures, say so and
   the curve comes out.
+
+## Every drawing on one page (owner, 27 Sep 2026)
+`samples/drawings-all.html` (built by `tools/v4_gallery.py`): all 58 knowledge
+base drawings, grouped by lens. Each drawing that has a phone version shows it
+under the wide one, and each links to the page it sits on. The drawings no
+lens has taken yet follow at the end, as files.
+
+**For the owner: the live sitemap's dates.** The live build dates a page it
+is in the middle of rewriting as "today". So on any day after `sitemap.xml`
+was last committed, the build moves every `<lastmod>` to the new date. That
+is not a real change, and it is not mine to commit: it is a live file. The
+gates now put the sitemap back when those dates are its only change, and say
+so in a note. Any other change still fails. The deploy (or the next live
+commit) refreshes the dates.

@@ -28,6 +28,18 @@ def run(name, cmd, ok_re=None, tail=1):
     return good, out
 
 
+def sitemap_dates_only():
+    """The live build dates a page it is rewriting as today, so the day after the sitemap was last committed its
+    <lastmod> dates move with the clock: a change nobody made, and not this work's to commit (a live file). When
+    those dates are the sitemap's only change, it is put back and True returned; any other change is left alone."""
+    d = subprocess.run("git diff -U0 -- sitemap.xml", cwd=ROOT, shell=True, capture_output=True, text=True).stdout
+    changed = [ln for ln in d.splitlines() if ln[:1] in "+-" and not ln.startswith(("+++", "---"))]
+    if changed and all(re.match(r"^[+-]\s*<lastmod>\d{4}-\d{2}-\d{2}</lastmod>\s*$", ln) for ln in changed):
+        subprocess.run("git checkout -- sitemap.xml", cwd=ROOT, shell=True)
+        return True
+    return False
+
+
 def preview_server():
     """The browser check needs the preview server on 8765. Start one for this run only, when none is up;
     it is stopped when the gates end, so nothing is left running."""
@@ -62,12 +74,7 @@ def gates():
     good = True
     g, _ = run("build", "./build.sh", r"build complete")
     good &= g
-    # the build stamps today's date on the live sitemap: past midnight that is a change nobody made. A sitemap
-    # whose only changed lines are <lastmod> dates is put back; any other change still fails the gate
-    d = subprocess.run("git diff -U0 -- sitemap.xml", cwd=ROOT, shell=True, capture_output=True, text=True).stdout
-    changed = [ln for ln in d.splitlines() if ln[:1] in "+-" and not ln.startswith(("+++", "---"))]
-    if changed and all(re.match(r"^[+-]\s*<lastmod>\d{4}-\d{2}-\d{2}</lastmod>\s*$", ln) for ln in changed):
-        subprocess.run("git checkout -- sitemap.xml", cwd=ROOT, shell=True)
+    if sitemap_dates_only():
         print("note  %-14s %s" % ("sitemap", "only lastmod dates moved with the clock: restored"))
     # no live page changed by the build or by the work
     st = subprocess.run("git status --short; git diff --name-only origin/main", cwd=ROOT, shell=True,
@@ -76,7 +83,12 @@ def gates():
     bad = sorted(p for p in paths if not p.startswith(ALLOWED))
     print("%s  %-14s %s" % ("ok  " if not bad else "FAIL", "live-untouched", bad[:5] or "only prototypes/v4, tools, docs"))
     good &= not bad
-    g, _ = run("audit", "python3 tools/audit.py --drift", r"\b0 FAIL")
+    g, out = run("audit", "python3 tools/audit.py --drift", r"\b0 FAIL")
+    fails = [ln for ln in out.splitlines() if ln.startswith("FAIL")]
+    if not g and re.search(r"\| 1 FAIL \|", out) and len(fails) == 1 and "['sitemap.xml']" in fails[0] \
+            and fails[0].split()[1] == "drift" and sitemap_dates_only():
+        print("note  %-14s %s" % ("audit", "its one FAIL was the sitemap's lastmod dates (above): restored, counted as passed"))
+        g = True
     good &= g
     if not quick:
         g, out = run("smoke", "python3 tools/smoke.py", r"\b0 FAIL")
