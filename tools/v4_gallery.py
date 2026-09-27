@@ -27,10 +27,12 @@ LENS = {
     "Computed": ("Physics the page states, worked out rather than sketched.",
                  ["kb-flight-mechanics-brakes", "kb-sky-gods-speed", "kb-weather-patterns-millibars",
                   "kb-weather-patterns-resolution", "kb-new-technologies-airfoil", "kb-know-your-equipment-jerk",
-                  "kb-risk-vs-reward-altitude", "kb-weather-patterns"]),
+                  "kb-risk-vs-reward-altitude", "kb-weather-patterns", "kb-know-your-equipment",
+                  "kb-know-your-equipment-section", "kb-new-technologies", "kb-resources-tools-tips"]),
     "Painted": ("Scenes composed as pictures: ridges paling with distance, one light, orange only on the subject.",
                 ["kb-meteorology", "kb-sky-gods", "kb-risk-vs-reward", "kb-sky-gods-section", "kb-storytellers-section",
-                 "kb-weather-patterns-section", "kb-navigators-section", "kb-navigators-cauca"]),
+                 "kb-weather-patterns-section", "kb-navigators-section", "kb-navigators-cauca", "kb-living-the-dream-section",
+                 "kb-world-cups"]),
     "Made for a phone": ("Charts and diagrams redrawn with the kit, each with its own phone version, stacked and at "
                          "reading size.",
                          ["kb-navigators", "kb-world-cups-weight", "kb-sky-gods-hours", "kb-the-dark-side-speed",
@@ -103,7 +105,8 @@ def page():
             len(names), lens, why, "".join(item(n, pages) for n in names))
     extra = [n for n in v4_lens.names() if n not in done]
     if extra:
-        body += '<section class="ga-sec"><h2>Also redrawn</h2>%s</section>' % "".join(item(n, pages) for n in extra)
+        body += ('<section class="ga-sec"><span class="ga-n">%d drawings</span><h2>Redrawn with the kit</h2><p>Diagrams whose '
+                 'job was already done, now in the kit\'s own line and type.</p>%s</section>' % (len(extra), "".join(item(n, pages) for n in extra)))
         done.update(extra)
     rest = sorted(n for n in pages if n not in done)
     cards = []

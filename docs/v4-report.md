@@ -646,3 +646,20 @@ commit) refreshes the dates.
   curve can pick the segments for animated Shorts. **Owner:** top up vidIQ,
   or name the segments. The Shorts also need the episode audio files
   (anchor.fm is blocked here).
+
+## The last drawings taken by a lens (27 Sep 2026)
+`tools/v4_rest.py` redraws 11 more drawings from the scripts they replace,
+with the same geometry, labels and numbers:
+- **Computed:** the reserve hero (5.5 m/s down and forward as a true vector
+  triangle at 45°), the two-liner section (a four-digit profile at 18%),
+  the breathing trace (generated, 35% in and 65% out), and reserve sizes as
+  equal areas to one scale.
+- **Painted:** the awkward line through the birches into fresh snow, and
+  forty tracklogs with the leader.
+- **Kit:** the design sheet, the collapse and its two reopenings, the lab's
+  collapse field, the two thought curves, and the multi-radius cylinders.
+
+They draw themselves in like the others, with moving dashes on the leader's
+track, the breath and the ski line. Still as they were: the flight
+mechanics three-view and its Joukowski section (already computed exactly),
+the two route maps, and the four landing heroes.

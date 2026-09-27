@@ -41,7 +41,7 @@ def registry():
     }
     for name, fn in DS.drawings_fns().items():
         reg[name] = (fn, DS.phone_fns().get(name))
-    for mod in ("v4_computed", "v4_phone", "v4_phone2", "v4_painted"):
+    for mod in ("v4_computed", "v4_phone", "v4_phone2", "v4_painted", "v4_rest"):
         try:
             m = __import__(mod)
         except ImportError:
