@@ -7,3 +7,4 @@
 node_modules/
 __pycache__/
 shots/
+!critic/frag_inv.json

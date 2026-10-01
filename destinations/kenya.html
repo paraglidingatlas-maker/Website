@@ -2184,9 +2184,9 @@
     var needle = vario.querySelector('.needle'), read = vario.querySelector('.read');
     var set = function (x) {
       needle.style.transform = 'rotate(' + (x * 22.5).toFixed(2) + 'deg)';
-      read.textContent = x.toFixed(1);
+      if (read.firstChild) read.firstChild.data = x.toFixed(1); else read.textContent = x.toFixed(1);   // the text node only: replacing it restyles the page
     };
-    var REST = 5.0, swept = false, live = false, raf = 0, t0 = 0;
+    var REST = 5.0, swept = false, live = false, seen = false, raf = 0, t0 = 0;
     var back = function (t) { var c = 1.70158; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); };
     var drift = function (now) {
       if (!live) return;
@@ -2198,14 +2198,16 @@
       var t = Math.min(1, (now - t0) / 1700);
       set(REST * back(t));
       if (t < 1) { raf = requestAnimationFrame(sweep); return; }
-      swept = true; live = true; t0 = performance.now(); raf = requestAnimationFrame(drift);
+      swept = true; if (!seen) return;                 // left the screen mid-sweep: drift starts when it is back
+      live = true; t0 = performance.now(); raf = requestAnimationFrame(drift);
     };
     new IntersectionObserver(function (es) {
       var on = es[0].isIntersecting;
+      seen = on;
       if (calm) { set(REST); return; }
-      if (on && !swept) { t0 = performance.now(); raf = requestAnimationFrame(sweep); }
+      if (on && !swept) { cancelAnimationFrame(raf); t0 = performance.now(); raf = requestAnimationFrame(sweep); }
       else if (on && swept && !live) { live = true; t0 = performance.now(); raf = requestAnimationFrame(drift); }
-      else if (!on && live) { live = false; cancelAnimationFrame(raf); }
+      else if (!on) { live = false; cancelAnimationFrame(raf); }   // stops the sweep too, not only the drift
     }, { threshold: 0.35 }).observe(vario);
   }
 

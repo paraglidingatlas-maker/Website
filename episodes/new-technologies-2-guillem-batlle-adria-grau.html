@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../styles.css?v=c8d28696">
 <link rel="stylesheet" href="../tags.css?v=71f8244d">
-<link rel="stylesheet" href="episode.css?v=0df957df">
+<link rel="stylesheet" href="episode.css?v=ae861c37">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -991,16 +991,57 @@
 
 <script>
 /* The transcript is clipped by CSS only. Every word is already in the HTML
-   above, so a crawler that does not run scripts still reads all of it. */
+   above, so a crawler that does not run scripts still reads all of it.
+   A chapter link (the rail, or #cN arriving from another page) opens the
+   transcript first and then goes to the chapter: inside the clipped box the
+   browser would scroll the box itself, out of the reader's reach. Opening
+   keeps the reader where they are. */
 (function () {
   var btn = document.querySelector('.cd-more');
   var body = document.getElementById('transcript-body');
   if (!btn || !body) return;
-  btn.addEventListener('click', function () {
-    var open = body.classList.toggle('is-open');
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function setOpen(open) {
+    body.classList.toggle('is-open', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if (!open) body.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
+  function go(id, smooth) {
+    var t = id && document.getElementById(id);
+    if (!t || !body.contains(t)) return false;
+    setOpen(true);
+    body.scrollTop = 0;
+    t.scrollIntoView({ block: 'start', behavior: smooth && !still ? 'smooth' : 'auto' });
+    return true;
+  }
+  btn.addEventListener('click', function () {
+    var open = !body.classList.contains('is-open');
+    var inner = body.scrollTop;
+    setOpen(open);
+    if (open) {
+      if (inner) { body.scrollTop = 0; window.scrollBy(0, inner); }
+    } else {
+      body.scrollTop = 0;
+      body.scrollIntoView({ block: 'start', behavior: still ? 'auto' : 'smooth' });
+    }
   });
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || e.defaultPrevented) return;
+    var id = decodeURIComponent(a.getAttribute('href').slice(1));
+    if (go(id, true)) {
+      e.preventDefault();
+      if (history.pushState) history.pushState(null, '', '#' + id);
+    }
+  });
+  function fromHash() {
+    try { go(decodeURIComponent(location.hash.slice(1)), false); } catch (err) {}
+  }
+  window.addEventListener('hashchange', fromHash);
+  if (location.hash) {
+    if (document.readyState === 'complete') fromHash();
+    else window.addEventListener('load', fromHash);
+    fromHash();
+  }
 })();
 /* Scrollspy: highlight the chapter you are currently reading. */
 (function () {

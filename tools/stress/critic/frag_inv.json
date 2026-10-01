@@ -1,0 +1,1129 @@
+{
+ "targets": {
+  "index.html": [
+   "destinations"
+  ],
+  "episodes/navigating-india-eddie-colfox.html": [
+   "c3",
+   "c4",
+   "c5"
+  ],
+  "episodes/navigating-india-jigish-gohil.html": [
+   "c3",
+   "c4",
+   "c6",
+   "c7"
+  ],
+  "terms.html": [
+   "cancel-you"
+  ],
+  "episodes/pre-pwc-kenya-nikolay-yotov.html": [
+   "c2",
+   "c4",
+   "c9"
+  ],
+  "episodes/legacy-and-lifetimes-of-gin-seok-song.html": [
+   "c10",
+   "c12",
+   "c4",
+   "c8",
+   "c9"
+  ],
+  "episodes/brand-stories-neo-eric-roussel.html": [
+   "c10",
+   "c12",
+   "c13",
+   "c2",
+   "c4",
+   "c5"
+  ],
+  "episodes/pwca-goran-dimiskovski.html": [
+   "c10",
+   "c3",
+   "c9"
+  ],
+  "episodes/pal-takats-on-challenges-change-the-future-of-paragliding.html": [
+   "c5",
+   "c8",
+   "c9"
+  ],
+  "episodes/scoring-in-paragliding-competitions-a-new-pilot-s-guide-to.html": [
+   "c10",
+   "c12",
+   "c13",
+   "c4",
+   "c5",
+   "c6",
+   "c8"
+  ],
+  "episodes/risk-vs-reward-3-manfred-ruhmer.html": [
+   "c6"
+  ],
+  "episodes/risk-vs-reward-2-subir-sidhu.html": [
+   "c8",
+   "c9"
+  ],
+  "episodes/metacognition-paragliding-s-hidden-psychology-with-beni.html": [
+   "c9"
+  ],
+  "episodes/the-silent-mind-in-screaming-winds-unlocking-peak-focus-to.html": [
+   "c7",
+   "c9"
+  ],
+  "episodes/cognitive-bias-of-dunning-kruger-effect-in-paragliding.html": [
+   "c1",
+   "c3"
+  ],
+  "episodes/ziad-bassil-finest-paragliding-reviews-superpower-of.html": [
+   "c11",
+   "c4",
+   "c7",
+   "c9"
+  ],
+  "episodes/consequence-over-probability-will-gadd-on-why-true-safety.html": [
+   "c11",
+   "c13",
+   "c4",
+   "c5"
+  ],
+  "episodes/from-cuba-to-socotra-inside-the-worlds-most-unique.html": [
+   "c11",
+   "c2",
+   "c4",
+   "c5",
+   "c9"
+  ],
+  "episodes/sky-gods-flying-8000ers-antoine-girard.html": [
+   "c7",
+   "c8",
+   "c9"
+  ],
+  "episodes/anatomy-of-a-dream-with-damien-lacaze.html": [
+   "c11",
+   "c12",
+   "c6",
+   "c9"
+  ],
+  "episodes/maxime-pinot-the-journey-within.html": [
+   "c12",
+   "c3",
+   "c4",
+   "c5",
+   "c6",
+   "c7"
+  ],
+  "episodes/sky-gods-flying-to-win-honorin-hamard.html": [
+   "c1",
+   "c10",
+   "c11",
+   "c2",
+   "c6",
+   "c7",
+   "c9"
+  ],
+  "episodes/living-the-dream-benjamin-jordan.html": [
+   "c2",
+   "c3",
+   "c4"
+  ],
+  "episodes/how-to-fly-with-your-dog-explained-by-shams.html": [
+   "c11",
+   "c5",
+   "c9"
+  ],
+  "episodes/tom-lolies-explains-the-science-of-wing-design-and.html": [
+   "c10",
+   "c12",
+   "c13",
+   "c5",
+   "c6",
+   "c7"
+  ],
+  "episodes/helmut-schrempf-modernizing-siv-courses-how-this-new.html": [
+   "c4",
+   "c5"
+  ],
+  "episodes/how-to-thermal-like-a-pro-find-center-climb-paragliding.html": [
+   "c5",
+   "c7"
+  ],
+  "episodes/luc-armant-talks-about-the-moment-coefficient-enzo-3.html": [
+   "c2",
+   "c4"
+  ],
+  "episodes/alain-zoller-the-science-of-en-certifications-how-work.html": [
+   "c9"
+  ],
+  "episodes/luc-armant-talks-about-debunking-the-myths-and-upgrading.html": [
+   "c8"
+  ],
+  "episodes/storytellers-marko-milutinovic.html": [
+   "c2",
+   "c3",
+   "c4",
+   "c5",
+   "c6",
+   "c8"
+  ],
+  "episodes/insights-from-the-gaggle-with-tilen-ceglar-stan.html": [
+   "c3",
+   "c5",
+   "c9"
+  ],
+  "episodes/what-is-civlresign-with-julien-garcia.html": [
+   "c1",
+   "c2",
+   "c3"
+  ],
+  "episodes/the-unfiltered-truth-about-paragliding-governance-with.html": [
+   "c2",
+   "c5"
+  ],
+  "episodes/eddie-colfox-storytime-chasing-adventure-with-the-real-og.html": [
+   "c12",
+   "c4",
+   "c5"
+  ],
+  "episodes/bill-belcourt-the-uncomfortable-truth-no-one-is-talking.html": [
+   "c11",
+   "c2",
+   "c6",
+   "c8"
+  ],
+  "episodes/urs-haari-the-real-truth-about-reserve-parachutes-a.html": [
+   "c11",
+   "c13",
+   "c6",
+   "c7",
+   "c9"
+  ],
+  "episodes/watch-this-before-you-buy-a-paragliding-harness-a-talk.html": [
+   "c10",
+   "c11"
+  ],
+  "episodes/helmet-safety-christian-ciech-icaro-2000.html": [
+   "c3",
+   "c4",
+   "c5",
+   "c8"
+  ],
+  "episodes/snippet-a-reserve-parachute-trick-every-pilot-should-know.html": [
+   "c1"
+  ],
+  "episodes/carabiner-fatigue-finsterwalder-charly.html": [
+   "c3"
+  ],
+  "episodes/technical-masterclass-by-brett-janaway-science-of.html": [
+   "c8"
+  ],
+  "episodes/sandrine-roy-vol-biv-freedom-unfiltered-a-human-powered.html": [
+   "c2",
+   "c3"
+  ],
+  "episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html": [
+   "c10",
+   "c11",
+   "c12",
+   "c3",
+   "c4",
+   "c5",
+   "c6",
+   "c7",
+   "c8",
+   "c9"
+  ],
+  "episodes/navigating-colombia-pal-takats.html": [
+   "c12",
+   "c5",
+   "c7",
+   "c8"
+  ],
+  "episodes/navigating-australia-godfrey-wenness.html": [
+   "c3",
+   "c4",
+   "c6",
+   "c8"
+  ],
+  "episodes/navigating-panchgani-vistasp-kharas.html": [
+   "c10",
+   "c5",
+   "c6"
+  ],
+  "episodes/new-technologies-5-frantisek-pavlousek.html": [
+   "c10",
+   "c3",
+   "c4",
+   "c5",
+   "c6"
+  ],
+  "episodes/why-paraglidings-safety-future-looks-different-rast.html": [
+   "c3",
+   "c9"
+  ],
+  "episodes/understanding-skymate-paragliding-worlds-first-ai-driven.html": [
+   "c13",
+   "c6"
+  ],
+  "episodes/new-technologies-3-stephan-stiegler.html": [
+   "c6",
+   "c7"
+  ],
+  "episodes/new-technologies-1-beni-kalin.html": [
+   "c12",
+   "c5",
+   "c9"
+  ],
+  "episodes/new-technologies-2-guillem-batlle-adria-grau.html": [
+   "c11"
+  ],
+  "episodes/new-technologies-4-veselin-ovcharov.html": [
+   "c10"
+  ],
+  "episodes/sports-psychology-for-paragliding-train-your-mind-to-fly.html": [
+   "c10",
+   "c3",
+   "c4",
+   "c5",
+   "c6"
+  ],
+  "episodes/flying-filming-1-benjamin-jordan.html": [
+   "c2",
+   "c6"
+  ],
+  "episodes/flying-filming-2-benjamin-kellet.html": [
+   "c5",
+   "c9"
+  ],
+  "episodes/ashutosh-chopra-identifying-passion-vs-obsession-an.html": [
+   "c4",
+   "c6"
+  ],
+  "episodes/if-you-fly-in-the-himalayas-alps-or-above-3000-mtrs-this.html": [
+   "c5"
+  ],
+  "episodes/paragliding-physiology-safety-protocols-dr-matt-wilkes.html": [
+   "c7"
+  ],
+  "episodes/the-russell-ogden-interview-decoding-paragliding-mastery.html": [
+   "c4"
+  ],
+  "episodes/risk-vs-reward-5-gabriel-orsini.html": [
+   "c4"
+  ],
+  "episodes/kinga-masztalerz-building-a-healthy-relationship-with-the.html": [
+   "c5"
+  ],
+  "episodes/robert-whittall-113-mins-of-unhinged-conversations-with.html": [
+   "c8"
+  ],
+  "episodes/survived-15-years-of-flying-then-a-rescue-helicopter.html": [
+   "c4",
+   "c7",
+   "c9"
+  ],
+  "episodes/bruce-goldsmith-explains-mrt-scoring-system-and-its-impact.html": [
+   "c3",
+   "c5"
+  ],
+  "episodes/the-inside-story-of-sports-racing-series-by-brett-janaway.html": [
+   "c3",
+   "c7"
+  ],
+  "episodes/pwc-lifestyle-klaudia-bulgakow.html": [
+   "c6"
+  ],
+  "episodes/shane-tighes-road-to-x-alps-engineering-conquests-in-the.html": [
+   "c4"
+  ]
+ },
+ "srcs": {
+  "index.html#destinations": [
+   "404.html",
+   "404.html",
+   "about.html",
+   "about.html",
+   "about.html"
+  ],
+  "episodes/navigating-india-eddie-colfox.html#c4": [
+   "destinations/india.html",
+   "destinations/india.html",
+   "destinations/india.html",
+   "destinations/india.html",
+   "knowledge-base/core-series.html"
+  ],
+  "episodes/navigating-india-jigish-gohil.html#c4": [
+   "destinations/india.html",
+   "knowledge-base/navigators.html"
+  ],
+  "episodes/navigating-india-jigish-gohil.html#c6": [
+   "destinations/india.html",
+   "destinations/india.html",
+   "destinations/india.html",
+   "knowledge-base/navigators.html",
+   "knowledge-base/navigators.html"
+  ],
+  "episodes/navigating-india-eddie-colfox.html#c3": [
+   "destinations/india.html",
+   "destinations/india.html",
+   "destinations/india.html",
+   "knowledge-base/meteorology.html",
+   "knowledge-base/navigators.html"
+  ],
+  "episodes/navigating-india-jigish-gohil.html#c3": [
+   "destinations/india.html"
+  ],
+  "episodes/navigating-india-jigish-gohil.html#c7": [
+   "destinations/india.html"
+  ],
+  "episodes/navigating-india-eddie-colfox.html#c5": [
+   "destinations/india.html"
+  ],
+  "terms.html#cancel-you": [
+   "destinations/kenya.html"
+  ],
+  "episodes/pre-pwc-kenya-nikolay-yotov.html#c2": [
+   "destinations/kenya.html"
+  ],
+  "episodes/pre-pwc-kenya-nikolay-yotov.html#c9": [
+   "destinations/kenya.html",
+   "destinations/kenya.html"
+  ],
+  "episodes/legacy-and-lifetimes-of-gin-seok-song.html#c8": [
+   "knowledge-base/brand-stories.html",
+   "knowledge-base/brand-stories.html"
+  ],
+  "episodes/brand-stories-neo-eric-roussel.html#c12": [
+   "knowledge-base/brand-stories.html",
+   "knowledge-base/brand-stories.html",
+   "knowledge-base/brand-stories.html",
+   "knowledge-base/industry.html"
+  ],
+  "episodes/legacy-and-lifetimes-of-gin-seok-song.html#c10": [
+   "knowledge-base/brand-stories.html",
+   "knowledge-base/brand-stories.html",
+   "knowledge-base/brand-stories.html"
+  ],
+  "episodes/brand-stories-neo-eric-roussel.html#c5": [
+   "knowledge-base/brand-stories.html",
+   "knowledge-base/brand-stories.html"
+  ],
+  "episodes/brand-stories-neo-eric-roussel.html#c4": [
+   "knowledge-base/brand-stories.html",
+   "knowledge-base/industry.html"
+  ],
+  "episodes/legacy-and-lifetimes-of-gin-seok-song.html#c4": [
+   "knowledge-base/brand-stories.html",
+   "knowledge-base/industry.html"
+  ],
+  "episodes/legacy-and-lifetimes-of-gin-seok-song.html#c12": [
+   "knowledge-base/brand-stories.html",
+   "knowledge-base/industry.html"
+  ],
+  "episodes/brand-stories-neo-eric-roussel.html#c10": [
+   "knowledge-base/brand-stories.html"
+  ],
+  "episodes/pwca-goran-dimiskovski.html#c10": [
+   "knowledge-base/brand-stories.html",
+   "knowledge-base/industry.html"
+  ],
+  "episodes/pal-takats-on-challenges-change-the-future-of-paragliding.html#c9": [
+   "knowledge-base/brand-stories.html",
+   "knowledge-base/industry.html"
+  ],
+  "episodes/pal-takats-on-challenges-change-the-future-of-paragliding.html#c8": [
+   "knowledge-base/brand-stories.html"
+  ],
+  "episodes/brand-stories-neo-eric-roussel.html#c2": [
+   "knowledge-base/brand-stories.html"
+  ],
+  "episodes/legacy-and-lifetimes-of-gin-seok-song.html#c9": [
+   "knowledge-base/brand-stories.html"
+  ],
+  "episodes/brand-stories-neo-eric-roussel.html#c13": [
+   "knowledge-base/brand-stories.html"
+  ],
+  "episodes/pwca-goran-dimiskovski.html#c3": [
+   "knowledge-base/brand-stories.html"
+  ],
+  "episodes/pwca-goran-dimiskovski.html#c9": [
+   "knowledge-base/brand-stories.html"
+  ],
+  "episodes/pal-takats-on-challenges-change-the-future-of-paragliding.html#c5": [
+   "knowledge-base/brand-stories.html"
+  ],
+  "episodes/scoring-in-paragliding-competitions-a-new-pilot-s-guide-to.html#c12": [
+   "knowledge-base/competitions.html",
+   "knowledge-base/world-cups.html"
+  ],
+  "episodes/risk-vs-reward-3-manfred-ruhmer.html#c6": [
+   "knowledge-base/competitions.html",
+   "knowledge-base/risk-vs-reward.html",
+   "knowledge-base/risk-vs-reward.html",
+   "knowledge-base/risk-vs-reward.html"
+  ],
+  "episodes/risk-vs-reward-2-subir-sidhu.html#c8": [
+   "knowledge-base/competitions.html",
+   "knowledge-base/competitions.html",
+   "knowledge-base/risk-vs-reward.html",
+   "knowledge-base/risk-vs-reward.html",
+   "knowledge-base/risk-vs-reward.html"
+  ],
+  "episodes/metacognition-paragliding-s-hidden-psychology-with-beni.html#c9": [
+   "knowledge-base/competitions.html",
+   "knowledge-base/risk-vs-reward.html"
+  ],
+  "episodes/the-silent-mind-in-screaming-winds-unlocking-peak-focus-to.html#c9": [
+   "knowledge-base/competitions.html",
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/cognitive-bias-of-dunning-kruger-effect-in-paragliding.html#c1": [
+   "knowledge-base/competitions.html",
+   "knowledge-base/risk-vs-reward.html"
+  ],
+  "episodes/ziad-bassil-finest-paragliding-reviews-superpower-of.html#c4": [
+   "knowledge-base/competitions.html",
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/ziad-bassil-finest-paragliding-reviews-superpower-of.html#c9": [
+   "knowledge-base/competitions.html",
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/consequence-over-probability-will-gadd-on-why-true-safety.html#c13": [
+   "knowledge-base/competitions.html",
+   "knowledge-base/meteorology.html",
+   "knowledge-base/risk-vs-reward.html",
+   "knowledge-base/risk-vs-reward.html",
+   "knowledge-base/risk-vs-reward.html"
+  ],
+  "episodes/from-cuba-to-socotra-inside-the-worlds-most-unique.html#c4": [
+   "knowledge-base/core-series.html"
+  ],
+  "episodes/sky-gods-flying-8000ers-antoine-girard.html#c8": [
+   "knowledge-base/core-series.html",
+   "knowledge-base/sky-gods.html",
+   "knowledge-base/sky-gods.html",
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/anatomy-of-a-dream-with-damien-lacaze.html#c12": [
+   "knowledge-base/core-series.html"
+  ],
+  "episodes/maxime-pinot-the-journey-within.html#c4": [
+   "knowledge-base/core-series.html",
+   "knowledge-base/sky-gods.html",
+   "knowledge-base/sky-gods.html",
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/maxime-pinot-the-journey-within.html#c12": [
+   "knowledge-base/core-series.html",
+   "knowledge-base/sky-gods.html",
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/sky-gods-flying-to-win-honorin-hamard.html#c11": [
+   "knowledge-base/core-series.html",
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/sky-gods-flying-to-win-honorin-hamard.html#c2": [
+   "knowledge-base/core-series.html",
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/sky-gods-flying-to-win-honorin-hamard.html#c6": [
+   "knowledge-base/core-series.html",
+   "knowledge-base/sky-gods.html",
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/living-the-dream-benjamin-jordan.html#c4": [
+   "knowledge-base/core-series.html",
+   "knowledge-base/living-the-dream.html",
+   "knowledge-base/living-the-dream.html",
+   "knowledge-base/living-the-dream.html"
+  ],
+  "episodes/how-to-fly-with-your-dog-explained-by-shams.html#c9": [
+   "knowledge-base/core-series.html"
+  ],
+  "episodes/from-cuba-to-socotra-inside-the-worlds-most-unique.html#c2": [
+   "knowledge-base/core-series.html"
+  ],
+  "episodes/maxime-pinot-the-journey-within.html#c7": [
+   "knowledge-base/core-series.html",
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/sky-gods-flying-to-win-honorin-hamard.html#c1": [
+   "knowledge-base/core-series.html",
+   "knowledge-base/sky-gods.html",
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/anatomy-of-a-dream-with-damien-lacaze.html#c11": [
+   "knowledge-base/core-series.html",
+   "knowledge-base/living-the-dream.html"
+  ],
+  "episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c5": [
+   "knowledge-base/flight-mechanics.html",
+   "knowledge-base/flight-mechanics.html"
+  ],
+  "episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c12": [
+   "knowledge-base/flight-mechanics.html",
+   "knowledge-base/flight-mechanics.html",
+   "knowledge-base/flight-mechanics.html",
+   "knowledge-base/flight-mechanics.html"
+  ],
+  "episodes/helmut-schrempf-modernizing-siv-courses-how-this-new.html#c4": [
+   "knowledge-base/flight-mechanics.html",
+   "knowledge-base/flight-mechanics.html",
+   "knowledge-base/technical.html"
+  ],
+  "episodes/how-to-thermal-like-a-pro-find-center-climb-paragliding.html#c5": [
+   "knowledge-base/flight-mechanics.html"
+  ],
+  "episodes/how-to-thermal-like-a-pro-find-center-climb-paragliding.html#c7": [
+   "knowledge-base/flight-mechanics.html",
+   "knowledge-base/flight-mechanics.html",
+   "knowledge-base/flight-mechanics.html"
+  ],
+  "episodes/luc-armant-talks-about-the-moment-coefficient-enzo-3.html#c2": [
+   "knowledge-base/flight-mechanics.html",
+   "knowledge-base/flight-mechanics.html"
+  ],
+  "episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c6": [
+   "knowledge-base/flight-mechanics.html",
+   "knowledge-base/flight-mechanics.html",
+   "knowledge-base/technical.html"
+  ],
+  "episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c7": [
+   "knowledge-base/flight-mechanics.html",
+   "knowledge-base/technical.html"
+  ],
+  "episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c13": [
+   "knowledge-base/flight-mechanics.html"
+  ],
+  "episodes/alain-zoller-the-science-of-en-certifications-how-work.html#c9": [
+   "knowledge-base/flight-mechanics.html"
+  ],
+  "episodes/tom-lolies-explains-the-science-of-wing-design-and.html#c10": [
+   "knowledge-base/flight-mechanics.html",
+   "knowledge-base/flight-mechanics.html"
+  ],
+  "episodes/luc-armant-talks-about-debunking-the-myths-and-upgrading.html#c8": [
+   "knowledge-base/flight-mechanics.html"
+  ],
+  "episodes/helmut-schrempf-modernizing-siv-courses-how-this-new.html#c5": [
+   "knowledge-base/flight-mechanics.html"
+  ],
+  "episodes/luc-armant-talks-about-the-moment-coefficient-enzo-3.html#c4": [
+   "knowledge-base/flight-mechanics.html"
+  ],
+  "episodes/storytellers-marko-milutinovic.html#c8": [
+   "knowledge-base/industry.html",
+   "knowledge-base/storytellers.html",
+   "knowledge-base/storytellers.html"
+  ],
+  "episodes/insights-from-the-gaggle-with-tilen-ceglar-stan.html#c9": [
+   "knowledge-base/industry.html",
+   "knowledge-base/the-dark-side.html"
+  ],
+  "episodes/storytellers-marko-milutinovic.html#c4": [
+   "knowledge-base/industry.html",
+   "knowledge-base/storytellers.html",
+   "knowledge-base/storytellers.html",
+   "knowledge-base/storytellers.html",
+   "knowledge-base/storytellers.html"
+  ],
+  "episodes/storytellers-marko-milutinovic.html#c5": [
+   "knowledge-base/industry.html",
+   "knowledge-base/storytellers.html",
+   "knowledge-base/storytellers.html",
+   "knowledge-base/storytellers.html"
+  ],
+  "episodes/what-is-civlresign-with-julien-garcia.html#c1": [
+   "knowledge-base/industry.html",
+   "knowledge-base/the-dark-side.html"
+  ],
+  "episodes/the-unfiltered-truth-about-paragliding-governance-with.html#c2": [
+   "knowledge-base/industry.html",
+   "knowledge-base/the-dark-side.html",
+   "knowledge-base/the-dark-side.html"
+  ],
+  "episodes/eddie-colfox-storytime-chasing-adventure-with-the-real-og.html#c5": [
+   "knowledge-base/industry.html",
+   "knowledge-base/meteorology.html",
+   "knowledge-base/storytellers.html",
+   "knowledge-base/storytellers.html",
+   "knowledge-base/storytellers.html"
+  ],
+  "episodes/insights-from-the-gaggle-with-tilen-ceglar-stan.html#c3": [
+   "knowledge-base/industry.html",
+   "knowledge-base/the-dark-side.html",
+   "knowledge-base/the-dark-side.html"
+  ],
+  "episodes/bill-belcourt-the-uncomfortable-truth-no-one-is-talking.html#c11": [
+   "knowledge-base/industry.html",
+   "knowledge-base/the-dark-side.html"
+  ],
+  "episodes/urs-haari-the-real-truth-about-reserve-parachutes-a.html#c11": [
+   "knowledge-base/know-your-equipment.html",
+   "knowledge-base/know-your-equipment.html"
+  ],
+  "episodes/watch-this-before-you-buy-a-paragliding-harness-a-talk.html#c10": [
+   "knowledge-base/know-your-equipment.html",
+   "knowledge-base/know-your-equipment.html"
+  ],
+  "episodes/watch-this-before-you-buy-a-paragliding-harness-a-talk.html#c11": [
+   "knowledge-base/know-your-equipment.html",
+   "knowledge-base/know-your-equipment.html",
+   "knowledge-base/know-your-equipment.html"
+  ],
+  "episodes/helmet-safety-christian-ciech-icaro-2000.html#c3": [
+   "knowledge-base/know-your-equipment.html"
+  ],
+  "episodes/helmet-safety-christian-ciech-icaro-2000.html#c4": [
+   "knowledge-base/know-your-equipment.html"
+  ],
+  "episodes/helmet-safety-christian-ciech-icaro-2000.html#c5": [
+   "knowledge-base/know-your-equipment.html",
+   "knowledge-base/know-your-equipment.html",
+   "knowledge-base/know-your-equipment.html"
+  ],
+  "episodes/urs-haari-the-real-truth-about-reserve-parachutes-a.html#c7": [
+   "knowledge-base/know-your-equipment.html",
+   "knowledge-base/know-your-equipment.html",
+   "knowledge-base/know-your-equipment.html",
+   "knowledge-base/technical.html"
+  ],
+  "episodes/urs-haari-the-real-truth-about-reserve-parachutes-a.html#c6": [
+   "knowledge-base/know-your-equipment.html"
+  ],
+  "episodes/snippet-a-reserve-parachute-trick-every-pilot-should-know.html#c1": [
+   "knowledge-base/know-your-equipment.html",
+   "knowledge-base/know-your-equipment.html"
+  ],
+  "episodes/helmet-safety-christian-ciech-icaro-2000.html#c8": [
+   "knowledge-base/know-your-equipment.html"
+  ],
+  "episodes/urs-haari-the-real-truth-about-reserve-parachutes-a.html#c13": [
+   "knowledge-base/know-your-equipment.html",
+   "knowledge-base/know-your-equipment.html"
+  ],
+  "episodes/carabiner-fatigue-finsterwalder-charly.html#c3": [
+   "knowledge-base/know-your-equipment.html",
+   "knowledge-base/know-your-equipment.html"
+  ],
+  "episodes/technical-masterclass-by-brett-janaway-science-of.html#c8": [
+   "knowledge-base/know-your-equipment.html",
+   "knowledge-base/know-your-equipment.html"
+  ],
+  "episodes/urs-haari-the-real-truth-about-reserve-parachutes-a.html#c9": [
+   "knowledge-base/know-your-equipment.html"
+  ],
+  "episodes/living-the-dream-benjamin-jordan.html#c2": [
+   "knowledge-base/living-the-dream.html",
+   "knowledge-base/living-the-dream.html"
+  ],
+  "episodes/sandrine-roy-vol-biv-freedom-unfiltered-a-human-powered.html#c2": [
+   "knowledge-base/living-the-dream.html",
+   "knowledge-base/living-the-dream.html",
+   "knowledge-base/living-the-dream.html",
+   "knowledge-base/living-the-dream.html",
+   "knowledge-base/living-the-dream.html"
+  ],
+  "episodes/sandrine-roy-vol-biv-freedom-unfiltered-a-human-powered.html#c3": [
+   "knowledge-base/living-the-dream.html"
+  ],
+  "episodes/anatomy-of-a-dream-with-damien-lacaze.html#c9": [
+   "knowledge-base/living-the-dream.html",
+   "knowledge-base/living-the-dream.html",
+   "knowledge-base/living-the-dream.html"
+  ],
+  "episodes/how-to-fly-with-your-dog-explained-by-shams.html#c11": [
+   "knowledge-base/living-the-dream.html",
+   "knowledge-base/living-the-dream.html",
+   "knowledge-base/living-the-dream.html"
+  ],
+  "episodes/living-the-dream-benjamin-jordan.html#c3": [
+   "knowledge-base/living-the-dream.html"
+  ],
+  "episodes/from-cuba-to-socotra-inside-the-worlds-most-unique.html#c5": [
+   "knowledge-base/living-the-dream.html"
+  ],
+  "episodes/how-to-fly-with-your-dog-explained-by-shams.html#c5": [
+   "knowledge-base/living-the-dream.html",
+   "knowledge-base/living-the-dream.html"
+  ],
+  "episodes/anatomy-of-a-dream-with-damien-lacaze.html#c6": [
+   "knowledge-base/living-the-dream.html"
+  ],
+  "episodes/from-cuba-to-socotra-inside-the-worlds-most-unique.html#c9": [
+   "knowledge-base/living-the-dream.html"
+  ],
+  "episodes/from-cuba-to-socotra-inside-the-worlds-most-unique.html#c11": [
+   "knowledge-base/living-the-dream.html"
+  ],
+  "episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html#c9": [
+   "knowledge-base/meteorology.html",
+   "knowledge-base/weather-patterns.html",
+   "knowledge-base/weather-patterns.html",
+   "knowledge-base/weather-patterns.html",
+   "knowledge-base/weather-patterns.html"
+  ],
+  "episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html#c10": [
+   "knowledge-base/meteorology.html"
+  ],
+  "episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html#c7": [
+   "knowledge-base/meteorology.html",
+   "knowledge-base/weather-patterns.html",
+   "knowledge-base/weather-patterns.html",
+   "knowledge-base/weather-patterns.html",
+   "knowledge-base/weather-patterns.html"
+  ],
+  "episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html#c8": [
+   "knowledge-base/meteorology.html",
+   "knowledge-base/weather-patterns.html",
+   "knowledge-base/weather-patterns.html"
+  ],
+  "episodes/navigating-colombia-pal-takats.html#c12": [
+   "knowledge-base/meteorology.html",
+   "knowledge-base/navigators.html",
+   "knowledge-base/navigators.html"
+  ],
+  "episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html#c11": [
+   "knowledge-base/meteorology.html",
+   "knowledge-base/weather-patterns.html",
+   "knowledge-base/weather-patterns.html",
+   "knowledge-base/weather-patterns.html"
+  ],
+  "episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html#c12": [
+   "knowledge-base/meteorology.html",
+   "knowledge-base/weather-patterns.html"
+  ],
+  "episodes/navigating-colombia-pal-takats.html#c5": [
+   "knowledge-base/navigators.html"
+  ],
+  "episodes/navigating-colombia-pal-takats.html#c7": [
+   "knowledge-base/navigators.html",
+   "knowledge-base/navigators.html"
+  ],
+  "episodes/navigating-australia-godfrey-wenness.html#c8": [
+   "knowledge-base/navigators.html",
+   "knowledge-base/navigators.html"
+  ],
+  "episodes/navigating-australia-godfrey-wenness.html#c6": [
+   "knowledge-base/navigators.html",
+   "knowledge-base/navigators.html"
+  ],
+  "episodes/navigating-australia-godfrey-wenness.html#c3": [
+   "knowledge-base/navigators.html"
+  ],
+  "episodes/navigating-panchgani-vistasp-kharas.html#c6": [
+   "knowledge-base/navigators.html"
+  ],
+  "episodes/navigating-panchgani-vistasp-kharas.html#c10": [
+   "knowledge-base/navigators.html"
+  ],
+  "episodes/navigating-colombia-pal-takats.html#c8": [
+   "knowledge-base/navigators.html",
+   "knowledge-base/navigators.html"
+  ],
+  "episodes/navigating-australia-godfrey-wenness.html#c4": [
+   "knowledge-base/navigators.html"
+  ],
+  "episodes/navigating-panchgani-vistasp-kharas.html#c5": [
+   "knowledge-base/navigators.html"
+  ],
+  "episodes/pre-pwc-kenya-nikolay-yotov.html#c4": [
+   "knowledge-base/navigators.html"
+  ],
+  "episodes/new-technologies-5-frantisek-pavlousek.html#c3": [
+   "knowledge-base/new-technologies.html",
+   "knowledge-base/new-technologies.html"
+  ],
+  "episodes/why-paraglidings-safety-future-looks-different-rast.html#c3": [
+   "knowledge-base/new-technologies.html",
+   "knowledge-base/new-technologies.html",
+   "knowledge-base/new-technologies.html"
+  ],
+  "episodes/understanding-skymate-paragliding-worlds-first-ai-driven.html#c6": [
+   "knowledge-base/new-technologies.html",
+   "knowledge-base/new-technologies.html"
+  ],
+  "episodes/new-technologies-5-frantisek-pavlousek.html#c5": [
+   "knowledge-base/new-technologies.html",
+   "knowledge-base/new-technologies.html"
+  ],
+  "episodes/new-technologies-3-stephan-stiegler.html#c7": [
+   "knowledge-base/new-technologies.html",
+   "knowledge-base/technical.html"
+  ],
+  "episodes/new-technologies-5-frantisek-pavlousek.html#c6": [
+   "knowledge-base/new-technologies.html",
+   "knowledge-base/technical.html"
+  ],
+  "episodes/new-technologies-5-frantisek-pavlousek.html#c10": [
+   "knowledge-base/new-technologies.html",
+   "knowledge-base/technical.html"
+  ],
+  "episodes/new-technologies-3-stephan-stiegler.html#c6": [
+   "knowledge-base/new-technologies.html",
+   "knowledge-base/technical.html"
+  ],
+  "episodes/new-technologies-1-beni-kalin.html#c9": [
+   "knowledge-base/new-technologies.html",
+   "knowledge-base/technical.html"
+  ],
+  "episodes/new-technologies-2-guillem-batlle-adria-grau.html#c11": [
+   "knowledge-base/new-technologies.html",
+   "knowledge-base/new-technologies.html"
+  ],
+  "episodes/new-technologies-4-veselin-ovcharov.html#c10": [
+   "knowledge-base/new-technologies.html"
+  ],
+  "episodes/understanding-skymate-paragliding-worlds-first-ai-driven.html#c13": [
+   "knowledge-base/new-technologies.html",
+   "knowledge-base/new-technologies.html"
+  ],
+  "episodes/new-technologies-5-frantisek-pavlousek.html#c4": [
+   "knowledge-base/new-technologies.html"
+  ],
+  "episodes/why-paraglidings-safety-future-looks-different-rast.html#c9": [
+   "knowledge-base/new-technologies.html"
+  ],
+  "episodes/new-technologies-1-beni-kalin.html#c5": [
+   "knowledge-base/new-technologies.html"
+  ],
+  "episodes/new-technologies-1-beni-kalin.html#c12": [
+   "knowledge-base/new-technologies.html"
+  ],
+  "episodes/sports-psychology-for-paragliding-train-your-mind-to-fly.html#c4": [
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/flying-filming-1-benjamin-jordan.html#c6": [
+   "knowledge-base/resources-tools-tips.html",
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/flying-filming-2-benjamin-kellet.html#c9": [
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/sports-psychology-for-paragliding-train-your-mind-to-fly.html#c6": [
+   "knowledge-base/resources-tools-tips.html",
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/sports-psychology-for-paragliding-train-your-mind-to-fly.html#c5": [
+   "knowledge-base/resources-tools-tips.html",
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/sports-psychology-for-paragliding-train-your-mind-to-fly.html#c3": [
+   "knowledge-base/resources-tools-tips.html",
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/sports-psychology-for-paragliding-train-your-mind-to-fly.html#c10": [
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/the-silent-mind-in-screaming-winds-unlocking-peak-focus-to.html#c7": [
+   "knowledge-base/resources-tools-tips.html",
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/ashutosh-chopra-identifying-passion-vs-obsession-an.html#c6": [
+   "knowledge-base/resources-tools-tips.html",
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/flying-filming-1-benjamin-jordan.html#c2": [
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/ashutosh-chopra-identifying-passion-vs-obsession-an.html#c4": [
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/ziad-bassil-finest-paragliding-reviews-superpower-of.html#c7": [
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/ziad-bassil-finest-paragliding-reviews-superpower-of.html#c11": [
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/flying-filming-2-benjamin-kellet.html#c5": [
+   "knowledge-base/resources-tools-tips.html"
+  ],
+  "episodes/consequence-over-probability-will-gadd-on-why-true-safety.html#c11": [
+   "knowledge-base/risk-vs-reward.html"
+  ],
+  "episodes/consequence-over-probability-will-gadd-on-why-true-safety.html#c4": [
+   "knowledge-base/risk-vs-reward.html",
+   "knowledge-base/risk-vs-reward.html",
+   "knowledge-base/risk-vs-reward.html",
+   "knowledge-base/risk-vs-reward.html"
+  ],
+  "episodes/risk-vs-reward-2-subir-sidhu.html#c9": [
+   "knowledge-base/risk-vs-reward.html",
+   "knowledge-base/risk-vs-reward.html"
+  ],
+  "episodes/cognitive-bias-of-dunning-kruger-effect-in-paragliding.html#c3": [
+   "knowledge-base/risk-vs-reward.html"
+  ],
+  "episodes/if-you-fly-in-the-himalayas-alps-or-above-3000-mtrs-this.html#c5": [
+   "knowledge-base/risk-vs-reward.html",
+   "knowledge-base/risk-vs-reward.html"
+  ],
+  "episodes/paragliding-physiology-safety-protocols-dr-matt-wilkes.html#c7": [
+   "knowledge-base/risk-vs-reward.html"
+  ],
+  "episodes/the-russell-ogden-interview-decoding-paragliding-mastery.html#c4": [
+   "knowledge-base/risk-vs-reward.html"
+  ],
+  "episodes/consequence-over-probability-will-gadd-on-why-true-safety.html#c5": [
+   "knowledge-base/risk-vs-reward.html",
+   "knowledge-base/risk-vs-reward.html"
+  ],
+  "episodes/risk-vs-reward-5-gabriel-orsini.html#c4": [
+   "knowledge-base/risk-vs-reward.html"
+  ],
+  "episodes/kinga-masztalerz-building-a-healthy-relationship-with-the.html#c5": [
+   "knowledge-base/risk-vs-reward.html"
+  ],
+  "episodes/maxime-pinot-the-journey-within.html#c3": [
+   "knowledge-base/sky-gods.html",
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/sky-gods-flying-to-win-honorin-hamard.html#c7": [
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/maxime-pinot-the-journey-within.html#c5": [
+   "knowledge-base/sky-gods.html",
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/sky-gods-flying-to-win-honorin-hamard.html#c10": [
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/sky-gods-flying-8000ers-antoine-girard.html#c9": [
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/sky-gods-flying-8000ers-antoine-girard.html#c7": [
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/sky-gods-flying-to-win-honorin-hamard.html#c9": [
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/maxime-pinot-the-journey-within.html#c6": [
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/robert-whittall-113-mins-of-unhinged-conversations-with.html#c8": [
+   "knowledge-base/sky-gods.html"
+  ],
+  "episodes/eddie-colfox-storytime-chasing-adventure-with-the-real-og.html#c4": [
+   "knowledge-base/storytellers.html",
+   "knowledge-base/storytellers.html"
+  ],
+  "episodes/storytellers-marko-milutinovic.html#c2": [
+   "knowledge-base/storytellers.html"
+  ],
+  "episodes/eddie-colfox-storytime-chasing-adventure-with-the-real-og.html#c12": [
+   "knowledge-base/storytellers.html",
+   "knowledge-base/storytellers.html",
+   "knowledge-base/storytellers.html"
+  ],
+  "episodes/storytellers-marko-milutinovic.html#c3": [
+   "knowledge-base/storytellers.html",
+   "knowledge-base/storytellers.html"
+  ],
+  "episodes/storytellers-marko-milutinovic.html#c6": [
+   "knowledge-base/storytellers.html",
+   "knowledge-base/storytellers.html"
+  ],
+  "episodes/bill-belcourt-the-uncomfortable-truth-no-one-is-talking.html#c8": [
+   "knowledge-base/the-dark-side.html",
+   "knowledge-base/the-dark-side.html",
+   "knowledge-base/the-dark-side.html"
+  ],
+  "episodes/insights-from-the-gaggle-with-tilen-ceglar-stan.html#c5": [
+   "knowledge-base/the-dark-side.html"
+  ],
+  "episodes/what-is-civlresign-with-julien-garcia.html#c3": [
+   "knowledge-base/the-dark-side.html",
+   "knowledge-base/the-dark-side.html"
+  ],
+  "episodes/survived-15-years-of-flying-then-a-rescue-helicopter.html#c4": [
+   "knowledge-base/the-dark-side.html",
+   "knowledge-base/the-dark-side.html",
+   "knowledge-base/the-dark-side.html",
+   "knowledge-base/the-dark-side.html"
+  ],
+  "episodes/survived-15-years-of-flying-then-a-rescue-helicopter.html#c7": [
+   "knowledge-base/the-dark-side.html"
+  ],
+  "episodes/survived-15-years-of-flying-then-a-rescue-helicopter.html#c9": [
+   "knowledge-base/the-dark-side.html",
+   "knowledge-base/the-dark-side.html"
+  ],
+  "episodes/bill-belcourt-the-uncomfortable-truth-no-one-is-talking.html#c6": [
+   "knowledge-base/the-dark-side.html",
+   "knowledge-base/the-dark-side.html"
+  ],
+  "episodes/bill-belcourt-the-uncomfortable-truth-no-one-is-talking.html#c2": [
+   "knowledge-base/the-dark-side.html"
+  ],
+  "episodes/what-is-civlresign-with-julien-garcia.html#c2": [
+   "knowledge-base/the-dark-side.html"
+  ],
+  "episodes/the-unfiltered-truth-about-paragliding-governance-with.html#c5": [
+   "knowledge-base/the-dark-side.html"
+  ],
+  "episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html#c4": [
+   "knowledge-base/weather-patterns.html",
+   "knowledge-base/weather-patterns.html"
+  ],
+  "episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html#c5": [
+   "knowledge-base/weather-patterns.html",
+   "knowledge-base/weather-patterns.html",
+   "knowledge-base/weather-patterns.html",
+   "knowledge-base/weather-patterns.html"
+  ],
+  "episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html#c6": [
+   "knowledge-base/weather-patterns.html",
+   "knowledge-base/weather-patterns.html"
+  ],
+  "episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html#c3": [
+   "knowledge-base/weather-patterns.html"
+  ],
+  "episodes/scoring-in-paragliding-competitions-a-new-pilot-s-guide-to.html#c5": [
+   "knowledge-base/world-cups.html",
+   "knowledge-base/world-cups.html"
+  ],
+  "episodes/scoring-in-paragliding-competitions-a-new-pilot-s-guide-to.html#c6": [
+   "knowledge-base/world-cups.html",
+   "knowledge-base/world-cups.html",
+   "knowledge-base/world-cups.html",
+   "knowledge-base/world-cups.html"
+  ],
+  "episodes/bruce-goldsmith-explains-mrt-scoring-system-and-its-impact.html#c3": [
+   "knowledge-base/world-cups.html",
+   "knowledge-base/world-cups.html",
+   "knowledge-base/world-cups.html",
+   "knowledge-base/world-cups.html",
+   "knowledge-base/world-cups.html"
+  ],
+  "episodes/bruce-goldsmith-explains-mrt-scoring-system-and-its-impact.html#c5": [
+   "knowledge-base/world-cups.html"
+  ],
+  "episodes/scoring-in-paragliding-competitions-a-new-pilot-s-guide-to.html#c13": [
+   "knowledge-base/world-cups.html",
+   "knowledge-base/world-cups.html"
+  ],
+  "episodes/scoring-in-paragliding-competitions-a-new-pilot-s-guide-to.html#c10": [
+   "knowledge-base/world-cups.html",
+   "knowledge-base/world-cups.html"
+  ],
+  "episodes/the-inside-story-of-sports-racing-series-by-brett-janaway.html#c7": [
+   "knowledge-base/world-cups.html"
+  ],
+  "episodes/pwc-lifestyle-klaudia-bulgakow.html#c6": [
+   "knowledge-base/world-cups.html",
+   "knowledge-base/world-cups.html"
+  ],
+  "episodes/shane-tighes-road-to-x-alps-engineering-conquests-in-the.html#c4": [
+   "knowledge-base/world-cups.html"
+  ],
+  "episodes/scoring-in-paragliding-competitions-a-new-pilot-s-guide-to.html#c4": [
+   "knowledge-base/world-cups.html"
+  ],
+  "episodes/scoring-in-paragliding-competitions-a-new-pilot-s-guide-to.html#c8": [
+   "knowledge-base/world-cups.html"
+  ],
+  "episodes/the-inside-story-of-sports-racing-series-by-brett-janaway.html#c3": [
+   "knowledge-base/world-cups.html"
+  ]
+ }
+}

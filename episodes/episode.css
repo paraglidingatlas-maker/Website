@@ -115,6 +115,9 @@
 
   @media(max-width:1150px){
     .cd-main{grid-template-columns:220px minmax(0,1fr);}
+    /* the side boxes become a full-width row of the same grid, and a sticky rail
+       is bounded by the whole grid, so it would ride down over them: here it scrolls */
+    .cd-rail{position:static;}
     .cd-side{grid-column:1/-1;position:static;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem;}
     .cd-box{margin-bottom:0;}
   }

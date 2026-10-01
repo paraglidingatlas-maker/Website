@@ -9,6 +9,17 @@ Method: one agent per stress area wrote and ran its own tests; a second, indepen
 Every finding below was reproduced by the second agent. Severity is the verifier's. Re-run any check with its repro command from the repo root (the scripts are in `tools/stress/`; `lib.py` there serves the repo on a port for the run and stops it after; the accessibility checks need `npm install axe-core@4` in `tools/stress`, the print checks `pip install --target tools/stress/degraded/pylib pypdfium2`).
 
 
+## Fixed on the live site (owner's go, 1 Oct 2026)
+
+The four high findings, each re-checked with its own repro after the fix:
+
+- **CRIT-01, chapter links:** the episode template's transcript script now opens the transcript before going to a chapter, both when a chapter in the rail is clicked and when a page opens on `#cN` from elsewhere. Opening it with "Continue reading" keeps the reader where they are. Under reduced motion it jumps instead of scrolling smoothly (this also fixes REDUCED-MOTION-SMOOTH-SCROLL). Source: `templates/episode-template.html`, all 93 episode pages regenerated. Re-check: rail click lands on the chapter on 76 of 76 pages at phone and desktop sizes. Cold deep links land on 196 of 197 targets; the remaining one is `index.html#destinations`, whose start sits under the homepage header and is unrelated to chapters.
+- **VP-01, rail over the side boxes (821 to 1150px):** at 1150px and below the chapter rail scrolls with the page instead of sticking (`episodes/episode.css`). Re-check: overlap 0 at 844x390, 1024x768, 1150x900, 1151x900 and 1440x900. Desktop wider than 1150px keeps the sticky rail.
+- **INT-01, homepage search 404s:** the 8 audio-only records in `episode-search-data.js` now store a bare slug like the other 85. Re-check: all 93 records resolve to an existing page.
+- **PERF-1, Kenya and India vario loop:** leaving the screen now cancels the opening sweep as well as the drift, and the drift starts only while the gauge is visible. The readout writes its text node instead of replacing it, which avoids a whole-page restyle per frame. Re-check (`perf.py vario`, 4x CPU, 2 runs per case): after a quick 500 ms pass, 0 drift frames (before: 59 to 79) and idle CPU 32 to 36% (before: 99.8%), the same as when the reader lingers on the gauge. Style work fell from 88% to 4%. The rest is the on-screen hero and gallery, which the verifier showed is intended.
+
+The build's cache-busting version numbers changed with these files on the live pages, and also on the pages of the hidden v2 and v4 prototypes, which load the same `episode.css` and `episode-search-data.js`. Only the `?v=` value changed on those pages.
+
 ## High
 
 ### CRIT-01 · Chapter links open the chapter inside the collapsed 620px transcript box, and 'Continue reading' then sends the reader back to the Introduction
