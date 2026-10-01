@@ -2053,3 +2053,22 @@ html .clb-wall{justify-content:flex-start;}
   }
 }
 @media print{ .v2-home-hero .v4-ridge{display:none;} }
+
+/* topics: each tile's conversations over time, in the Gold line (tools/v4_topics.py) */
+html [data-v2="tg"] .tg-tile{padding-bottom:2.1rem;}
+.tg-spark{position:absolute;left:.9rem;right:.9rem;bottom:.55rem;width:calc(100% - 1.8rem);height:22px;overflow:visible;pointer-events:none;}
+.tg-spark .tg-sp-b{fill:none;stroke:#f6f4f4;stroke-opacity:.1;stroke-width:1;vector-effect:non-scaling-stroke;}
+.tg-spark .tg-sp-a{fill:#ffb35c;fill-opacity:.07;}
+.tg-spark .tg-sp-l{fill:none;stroke:#e9c08f;stroke-opacity:.55;stroke-width:1.2;stroke-linejoin:round;vector-effect:non-scaling-stroke;transition:stroke .3s ease,stroke-opacity .3s ease;}
+.tg-spark .tg-sp-d{fill:#ff7517;}
+html [data-v2="tg"] .tg-tile:is(:hover,:focus-visible) .tg-sp-l{stroke:#ff9a4d;stroke-opacity:1;}
+@media (forced-colors:active){ .tg-spark .tg-sp-l{stroke:CanvasText;} .tg-spark .tg-sp-a{fill:none;} }
+
+/* the instrument icons in the Gold line: a warm white glyph with a little light,
+   a hairline bezel, the four ticks in orange */
+.v2-ic .v2-ic-glyph{stroke:#f3dcbc;filter:drop-shadow(0 0 5px rgba(255,160,70,.22));}
+.v2-ic .v2-ic-glyph [fill="currentColor"]{fill:#ff9a4d;}
+.v2-ic .v2-ic-bezel circle{stroke:rgba(255,207,148,.22);}
+.v2-ic .v2-ic-bezel path{stroke:var(--orange);stroke-opacity:.85;}
+@media (hover:hover){ .kit-panel:hover .v2-ic .v2-ic-glyph{stroke:#fff1dc;} .kit-panel:hover .v2-ic-bezel circle{stroke:rgba(255,117,23,.5);} }
+@media (forced-colors:active){ .v2-ic .v2-ic-glyph,.v2-ic .v2-ic-bezel circle,.v2-ic .v2-ic-bezel path{stroke:CanvasText;filter:none;} }
