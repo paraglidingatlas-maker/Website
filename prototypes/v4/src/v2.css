@@ -2079,3 +2079,5 @@ html [data-v2="tg"] .tg-tile:is(:hover,:focus-visible) .tg-sp-l{stroke:#ff9a4d;s
   html .bf-media img{object-fit:cover;object-position:80% center;}
   html .bf-q{position:static;transform:none;width:auto;padding:1.4rem clamp(1.5rem,5vw,4rem) 2.4rem;}
 }
+/* DG-8: dots and bars drawn only with a background keep their colour in forced colours */
+@media (forced-colors:active){ .cfl-dot,.live-dot,.cd-chap-dot,.kdates-bar,.v2-status::before{forced-color-adjust:none;} }

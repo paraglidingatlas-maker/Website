@@ -40,7 +40,7 @@
 <link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../styles.css?v=c8d28696">
-<link rel="stylesheet" href="v2.css?v=7c20426b">
+<link rel="stylesheet" href="v2.css?v=4fad7f1f">
 <style>
 /* Enquiry page. Tokens and chrome come from styles.css.
    The form deliberately has no backend and no third party form service: it
@@ -170,7 +170,7 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
 }
 </script>
 <!-- /site-schema --><script src="v2.js?v=c7722c82"></script>
-<script src="v2-immersive.js?v=d2c30776"></script>
+<script src="v2-immersive.js?v=a859872d"></script>
 </head>
 <body class="enq" data-v2="pg">
 
@@ -461,7 +461,9 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
       + '&body=' + encodeURIComponent(lines.join('\n'));
   }
 
+  var mailing = 0;
   function sendByMail() {
+    if (Date.now() - mailing < 3000) return;      /* a second press while the mail app opens: one email, not twenty */
     var href = mailtoHref();
 
     if (href.length > 1900) {
@@ -472,6 +474,7 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
 
     status.className = 'enq-status';
     status.textContent = 'Opening your email app. If nothing happens, your device may have no mail client set up: email ' + TO + ' or use WhatsApp above.';
+    mailing = Date.now();
     window.location.href = href;
   }
 

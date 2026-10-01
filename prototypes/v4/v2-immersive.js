@@ -677,6 +677,15 @@ el.setAttribute("aria-label", (h ? h.textContent.trim() + ", " : "") + "scrolls 
 d.querySelectorAll('svg[role="img"]').forEach(function (s) {
 if (s.querySelector('a[href], [tabindex]:not([tabindex="-1"]), button')) s.setAttribute("role", "group");
 });
+var st = [d.getElementById("ytStatus"), d.getElementById("liveFeedStatus")].filter(Boolean);
+if (st.length) setTimeout(function () {
+st.forEach(function (el) {
+if (!/^Connecting/.test(el.textContent.trim())) return;
+el.textContent = "The feed did not load. Every episode is in the ";
+var a = d.createElement("a"); a.href = "library.html"; a.textContent = "library"; a.style.color = "var(--orange)";
+el.appendChild(a); el.appendChild(d.createTextNode("."));
+});
+}, 12000);
 d.querySelectorAll("a svg:not([role]):not([aria-label]):not([aria-hidden]), button svg:not([role]):not([aria-label]):not([aria-hidden])").forEach(function (s) {
 var host = s.closest("a, button");
 if (host && host.textContent.trim()) s.setAttribute("aria-hidden", "true");

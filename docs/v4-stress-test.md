@@ -11,7 +11,7 @@ pass); performance is covered only by the network dimension's measurements.
 critical. The repro scripts are in the session's scratchpad
 (`stress-v4/<dimension>/`), not in the repo.
 
-**Fixed: 29. Partly fixed: 3. Open: 16.** Commits 6a40bc9 and a117e46, every
+**Fixed: 32. Partly fixed: 3. Open: 13.** Commits 6a40bc9 and a117e46, every
 gate passing (v4 191 pages 0 FAIL, switch dry run 0 FAIL, smoke 0 FAIL, v2
 untouched, no live page changed).
 
@@ -47,6 +47,9 @@ untouched, no live page changed).
 | NET-6 | low | Knowledge-base landing eager-loads 220 YouTube thumbnails for the decorative tile wall | wall thumbnails lazy |
 | VP-6 | low | Home and podcast listen sections have a min-content wider than a 280/320 screen (home 352px) (v4 only) | min-width:0 on the listen and search columns; 280px has no sideways scroll |
 | VP-4 | medium | At 200% text the knowledge base band-figure quotes are cut off (same as live) | the quote's 900px rule repeated in em, so with large text it moves under the picture (1280px at 200%: 0px clipped) |
+| NET-8 | low | Podcast feed status stuck on 'Connecting to YouTube feed...' / 'Connecting to RSS feed...' when JS fails | a noscript rule hides the placeholder; after 12 s without a feed it says so and links the library |
+| ABUSE-7 | low | Enquire form: 20 rapid submits fire 20 mailto navigations, and a long (10 kB) message is refused by the 1900-char mailto cap (same as live: no double-submit guard; mailto 1900-char cap) | one mailto per 3 s (the 1900-character cap stays: a mail link cannot carry more) |
+| DG-8 | low | Forced colors: dots and bars drawn with background colours vanish (gallery dots, season date bars, live dot, chapter dots) | forced-color-adjust:none on the background-only dots and bars |
 
 ## Partly fixed
 | Id | Severity | Finding | What changed, what is left |
@@ -68,15 +71,12 @@ wrap was tried and dropped: at the default spacing the row only fits at
 | A11Y-V4-9 | low | Contrast: the only axe failures are buttons inside dimmed fly-through slides; real only on the fly-options sample (v4 only) | fly-options.html fo3 slide styling: a focused slide is not raised to full opacity (no :focus-within rule) |
 | ABUSE-4 | low | fly-options swipe strip: a mouse drag that starts on a picture or link gets stuck, and the strip then follows the mouse with no button held (v4 only) | prototypes/v4/fly-options.js:74-90 (generator tools/v2_fly_options.py). It listens for pointerdown, pointermove and pointerup only. There is |
 | ABUSE-6 | low | fly-options swipe strip drops arrow and key presses made while the previous slide is still scrolling (v4 only) | prototypes/v4/fly-options.js:53-62 and 67-69. go(cur + 1) uses cur, which mark() updates only when the scroll position's nearest slide chang |
-| ABUSE-7 | low | Enquire form: 20 rapid submits fire 20 mailto navigations, and a long (10 kB) message is refused by the 1900-char mailto cap (same as live: no double-submit guard; mailto 1900-char cap) | prototypes/v4/enquire.html inline script (sendByMail and the submit handler): no in-flight flag in mailto mode, and href.length > 1900 is re |
 | ABUSE-8 | low | Kenya gallery: 6 of 16 photo cards have an empty data-title, so the live region and the lightbox caption announce nothing for them (same as live: not in the list) | prototypes/v4/destinations/kenya.html card markup (data-title=""), read by prototypes/v4/kenya-gallery.js:69 and :94 (live.textContent and l |
-| DG-8 | low | Forced colors: dots and bars drawn with background colours vanish (gallery dots, season date bars, live dot, chapter dots) | background-color-only indicators with no forced-colors fallback (border or forced-color-adjust) in prototypes/v4/src/v2.css and the shared s |
 | DG-9 | low | No-JS phone header shows only Enquire Now; the section links are reachable only through the footer | the .nav-toggle / v4 menu button is created by prototypes/v4/src/v4-menu.js:135 and v2-immersive.js:592; the .v4-nav links are display:none  |
 | INT-3 | low | Sitemap graph: 8 audio-only episodes share the node id "ep:", so they collapse into one node (same as live: sitemap graph shared id) | The SITEMAP_GRAPH data inlined in prototypes/v4/sitemap.html:440 builds the episode id from the YouTube id, which is empty for audio-only ep |
 | INT-4 | low | og:image is relative on 8 audio-only episode pages (same as live: og:image relative on 8 audio-only episodes) | The v4 episode pages were copied from the live audio-only episode heads, which carry the relative path. |
 | NET-2 | low | Render-blocking head chain on every template: styles.css + v2.css + page CSS + 2 synchronous head scripts (v4 adds v2.css and the head scripts) | tools/v2_localize.py:112-115 inserts <script src=v2.js> and <script src=v2-immersive.js> before </head> without defer; v2.css is loaded in f |
 | NET-7 | low | Very heavy HTML on KB articles and the drawings sample delays DOMContentLoaded (and everything that waits for it) by 16-38 s on Slow 3G | inline band drawings emitted into the page HTML by the v4 KB generators (tools/v2_*.py / tools/kbfig); the end-of-body synchronous <script s |
-| NET-8 | low | Podcast feed status stuck on 'Connecting to YouTube feed...' / 'Connecting to RSS feed...' when JS fails | static 'Connecting...' placeholder text in prototypes/v4/podcast.html, replaced only by rss-feed.js / the YouTube glimpse script |
 | NET-9 | low | Audio-only episode Play when offline: unhandled rejection and no message | /home/user/Website/episode-audio.js:90 and :142 (audio.play() with no .catch and no error UI); prototypes/v4/src/v2-immersive.js:626-631 jus |
 | VP-7 | low | Episode chapter tap targets collapse at narrow widths: the new chapter track has ticks 2-27px wide; the audio-only player's chapter markers overlap each other | prototypes/v4/src/v2.css:953: .ep2-tick width calc(var(--w)*1%), proportional to chapter length with no minimum. Audio markers: episode-audi |
 
