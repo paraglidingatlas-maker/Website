@@ -2072,3 +2072,10 @@ html [data-v2="tg"] .tg-tile:is(:hover,:focus-visible) .tg-sp-l{stroke:#ff9a4d;s
 .v2-ic .v2-ic-bezel path{stroke:var(--orange);stroke-opacity:.85;}
 @media (hover:hover){ .kit-panel:hover .v2-ic .v2-ic-glyph{stroke:#fff1dc;} .kit-panel:hover .v2-ic-bezel circle{stroke:rgba(255,117,23,.5);} }
 @media (forced-colors:active){ .v2-ic .v2-ic-glyph,.v2-ic .v2-ic-bezel circle,.v2-ic .v2-ic-bezel path{stroke:CanvasText;filter:none;} }
+/* VP-4: the knowledge base's quote over a picture moves under it (its 900px rule,
+   again in em) when the reader's text is large, instead of running out of the figure */
+@media (max-width:56.25em){
+  html .bf-media{aspect-ratio:auto;height:62vw;}
+  html .bf-media img{object-fit:cover;object-position:80% center;}
+  html .bf-q{position:static;transform:none;width:auto;padding:1.4rem clamp(1.5rem,5vw,4rem) 2.4rem;}
+}

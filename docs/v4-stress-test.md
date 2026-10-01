@@ -11,7 +11,7 @@ pass); performance is covered only by the network dimension's measurements.
 critical. The repro scripts are in the session's scratchpad
 (`stress-v4/<dimension>/`), not in the repo.
 
-**Fixed: 28. Partly fixed: 3. Open: 17.** Commits 6a40bc9 and a117e46, every
+**Fixed: 29. Partly fixed: 3. Open: 16.** Commits 6a40bc9 and a117e46, every
 gate passing (v4 191 pages 0 FAIL, switch dry run 0 FAIL, smoke 0 FAIL, v2
 untouched, no live page changed).
 
@@ -46,6 +46,7 @@ untouched, no live page changed).
 | HOST-1 | low | A malformed percent-escape in the URL hash throws an uncaught URIError: it breaks the podcast globe and leaves the library unpaginated (same as live: URIError on malformed hash / library hash router URIError) | decodeURIComponent in try/catch |
 | NET-6 | low | Knowledge-base landing eager-loads 220 YouTube thumbnails for the decorative tile wall | wall thumbnails lazy |
 | VP-6 | low | Home and podcast listen sections have a min-content wider than a 280/320 screen (home 352px) (v4 only) | min-width:0 on the listen and search columns; 280px has no sideways scroll |
+| VP-4 | medium | At 200% text the knowledge base band-figure quotes are cut off (same as live) | the quote's 900px rule repeated in em, so with large text it moves under the picture (1280px at 200%: 0px clipped) |
 
 ## Partly fixed
 | Id | Severity | Finding | What changed, what is left |
@@ -55,14 +56,14 @@ untouched, no live page changed).
 | A11Y-V4-11 | low | Minor axe and SVG naming items | icons inside labelled links and buttons hidden; the podcast globe not changed |
 
 ## Open
-Left for a later round or for the owner. Most are low; the medium ones are
-VP-4 (KB quotes cut at 200% text, same as live) and DG-5 (text spacing pushes
-Enquire off at 1280-1366px).
+Left for a later round or for the owner. Most are low; the one medium is
+DG-5 (text spacing pushes Enquire off at 1280-1366px). Letting the header row
+wrap was tried and dropped: at the default spacing the row only fits at
+1280-1366px by shrinking, so it wrapped there for everyone.
 
 | Id | Severity | Finding | Cause (from the finding) |
 |---|---|---|---|
 | DG-5 | medium | Text spacing (WCAG 1.4.12) pushes the header's Enquire Now button off screen at common desktop widths (v4 only at these widths) | prototypes/v4/src/v2.css:1777 '.page-wrap > nav .v4-nav a{white-space:nowrap}' plus the extra header controls v4 adds (wind sound and search |
-| VP-4 | medium | At 200% text the knowledge base band-figure quotes are cut off: quote, attribution and caption clipped by up to about 600-840px (same on live, measured) | The KB pages' inline <style>: .bf-media{aspect-ratio:12/5;max-height:640px} and .bf-q{position:absolute;top:50%;transform:translateY(-50%);w |
 | A11Y-V4-10 | low | fly-options trip tabs: Tab to tabs 02-04 leaves the focused tab 226px above the viewport (v4 only, sample page) | fly-options.js: the panel opens on focus and re-lays out after the browser has scrolled the focused tab into view |
 | A11Y-V4-9 | low | Contrast: the only axe failures are buttons inside dimmed fly-through slides; real only on the fly-options sample (v4 only) | fly-options.html fo3 slide styling: a focused slide is not raised to full opacity (no :focus-within rule) |
 | ABUSE-4 | low | fly-options swipe strip: a mouse drag that starts on a picture or link gets stuck, and the strip then follows the mouse with no button held (v4 only) | prototypes/v4/fly-options.js:74-90 (generator tools/v2_fly_options.py). It listens for pointerdown, pointermove and pointerup only. There is |

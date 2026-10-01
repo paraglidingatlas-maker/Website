@@ -57,7 +57,9 @@ marked done is the next step.
 | 7. The remaining redraws | done (poster frame: see notes) | 3ab0e89 | all gates PASS (v4 184 pages 0 FAIL; smoke 0 FAIL on its rerun) |
 | 8. The report | done | 8f43896 | all gates PASS (v4 184 pages 0 FAIL, smoke 0 FAIL first run) |
 | 9. Series tiles: Gold line, option B for all 13 (owner, 1 Oct) | done | 9b4eac4 | all gates PASS (v4 191 pages 0 FAIL) |
-| 10. Stress test of v4 and fixes (docs/v4-stress-test.md) | done: 28 fixed, 3 partly, 17 open (listed there) | 6a40bc9, a117e46 | all gates PASS (v4 191 pages 0 FAIL, smoke 0 FAIL) |
+| 10. Stress test of v4 and fixes (docs/v4-stress-test.md) | done: 29 fixed, 3 partly, 16 open (listed there) | 6a40bc9, a117e46, and VP-4 with step 12 | all gates PASS (v4 191 pages 0 FAIL, smoke 0 FAIL) |
+| 11. The home page's opening: the ground in the Gold line, a climb, the ground dropping away on scroll (tools/v4_opening.py) | done | 960b890 | all gates PASS |
+| 12. The Gold line on the topics (each tile's conversations over time, tools/v4_topics.py) and on the instrument icons | done | 9f3d165 | all gates PASS |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they
