@@ -1,0 +1,9 @@
+# outputs of a re-run stay local
+*.png
+*.jpg
+*.pdf
+*.json
+!package.json
+node_modules/
+__pycache__/
+shots/
