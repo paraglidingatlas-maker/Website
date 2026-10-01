@@ -2081,3 +2081,53 @@ html [data-v2="tg"] .tg-tile:is(:hover,:focus-visible) .tg-sp-l{stroke:#ff9a4d;s
 }
 /* DG-8: dots and bars drawn only with a background keep their colour in forced colours */
 @media (forced-colors:active){ .cfl-dot,.live-dot,.cd-chap-dot,.kdates-bar,.v2-status::before{forced-color-adjust:none;} }
+
+/* ===========================================================================
+   THE FLY-THROUGH (tools/v4_flythrough.py; v2-immersive.js part 14): the trip
+   pages' photographs, one at a time, full screen, while the section holds
+   still. Reduced motion or no script: a column of photographs.
+   ========================================================================= */
+.gxa{padding:0 !important;position:relative;background:#0d0e11;}
+.gxa-track{height:calc(var(--n) * 60vh + 40vh);position:relative;}
+.gxa-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;}
+.gxa-f{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .9s ease;}
+.gxa-f.is-on{opacity:1;}
+.gxa-f picture,.gxa-f img{display:block;width:100%;height:100%;}
+.gxa-f img{object-fit:cover;transform:scale(calc(1.12 - .1 * var(--t,0)));transform-origin:60% 50%;}
+.gxa-f.is-on img{will-change:transform;}
+.gxa-f::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(13,14,17,.7) 0%,rgba(13,14,17,0) 30%,rgba(13,14,17,0) 52%,rgba(13,14,17,.88) 100%);}
+.gxa-f figcaption{position:absolute;left:var(--gutter);right:var(--gutter);bottom:clamp(5rem,12vh,7.5rem);z-index:2;max-width:42rem;
+  opacity:0;transform:translateY(14px);transition:opacity .7s ease .25s,transform .7s cubic-bezier(.2,.8,.2,1) .25s;}
+.gxa-f.is-on figcaption{opacity:1;transform:none;}
+.gxa-f figcaption b{display:block;font-family:var(--font-display);font-weight:700;font-size:clamp(1.9rem,4.6vw,3.8rem);line-height:1.04;color:#fff;letter-spacing:-.015em;
+  text-shadow:0 2px 30px rgba(0,0,0,.4);}
+.gxa-n{display:block;font-size:var(--fs-micro);letter-spacing:.22em;color:var(--orange);font-weight:600;margin-bottom:.7rem;}
+.gxa-alt{display:block;margin-top:.7rem;color:rgba(246,244,244,.8);font-size:var(--fs-body-s);max-width:34rem;}
+.gxa-head{position:absolute;z-index:3;left:var(--gutter);top:clamp(5.5rem,13vh,8rem);}
+.gxa-head h2{margin:.35rem 0 0;color:#fff;font-size:var(--fs-h3);}
+.gxa-count{position:absolute;z-index:3;right:var(--gutter);top:clamp(5.5rem,13vh,8rem);font-variant-numeric:tabular-nums;color:rgba(246,244,244,.7);
+  font-size:var(--fs-small);letter-spacing:.12em;}
+.gxa-count b{color:#fff;font-size:1.7rem;font-family:var(--font-display);letter-spacing:0;margin-right:.2rem;}
+.gxa-rail{position:absolute;z-index:3;left:var(--gutter);right:calc(var(--gutter) + 11rem);bottom:clamp(2.2rem,5vh,3rem);height:1px;background:rgba(246,244,244,.18);}
+.gxa-fill{position:absolute;left:0;top:-.5px;height:2px;width:calc(var(--p,0) * 100%);background:linear-gradient(90deg,#f6f4f4,#ffcf94 60%,#ff7517);}
+.gxa-rail i{position:absolute;top:-4px;width:1px;height:9px;background:rgba(246,244,244,.4);}
+.gxa-skip{position:absolute;z-index:3;right:var(--gutter);bottom:clamp(1.4rem,4vh,2.2rem);min-height:44px;display:inline-flex;align-items:center;gap:.4rem;
+  color:rgba(246,244,244,.75);font-size:var(--fs-small);letter-spacing:.06em;text-decoration:none;}
+.gxa-skip:hover,.gxa-skip:focus-visible{color:var(--orange);}
+@media (max-width:760px){
+  /* above the trip page's booking bar (about 4.5rem tall on a phone) */
+  .gxa-rail{right:var(--gutter);bottom:8.6rem;}
+  .gxa-skip{left:var(--gutter);right:auto;bottom:5rem;}
+  .gxa-f figcaption{bottom:10rem;}
+  .gxa-f img{transform-origin:50% 50%;}
+}
+@media (prefers-reduced-motion:reduce),(scripting:none){
+  .gxa-track{height:auto;} .gxa-pin{position:static;height:auto;overflow:visible;display:flex;flex-direction:column;}
+  .gxa-head{order:-1;}
+  .gxa-f{position:relative;opacity:1;height:72vh;margin-bottom:2px;transition:none;} .gxa-f img{transform:none;}
+  .gxa-f figcaption{opacity:1;transform:none;bottom:2rem;transition:none;}
+  .gxa-head{position:static;padding:var(--sp-5) var(--gutter) var(--sp-3);} .gxa-count,.gxa-rail,.gxa-skip{display:none;}
+}
+@media print{ .gxa-track{height:auto !important;} .gxa-pin{position:static;height:auto;} .gxa-f{position:relative;opacity:1;height:auto;break-inside:avoid;}
+  .gxa-f img{transform:none;height:auto;} .gxa-f::after,.gxa-count,.gxa-rail,.gxa-skip{display:none !important;} .gxa-f figcaption{position:static;opacity:1;transform:none;color:#141519;} .gxa-head{position:static;} }

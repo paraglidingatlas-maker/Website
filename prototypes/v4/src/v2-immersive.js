@@ -833,3 +833,40 @@
   }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", run); else run();
 })();
+
+/* 14. THE FLY-THROUGH (tools/v4_flythrough.py): on the trip pages, the
+      photographs pass one at a time while the section holds still; each
+      drifts slowly closer, the counter and the gold line follow. Reduced
+      motion: the CSS shows a column and this does nothing. */
+(function () {
+  "use strict";
+  var d = document, w = window;
+  function init() {
+    var sec = d.querySelector(".gxa");
+    if (!sec || (w.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+    var track = sec.querySelector(".gxa-track"), figs = [].slice.call(sec.querySelectorAll(".gxa-f"));
+    var count = sec.querySelector(".gxa-count b"), rail = sec.querySelector(".gxa-rail"), n = figs.length, at = -1, raf = 0;
+    if (!n) return;
+    function frame() {
+      raf = 0;
+      var r = track.getBoundingClientRect(), span = r.height - w.innerHeight;
+      if (r.bottom < -200 || r.top > w.innerHeight + 200) return;
+      var p = Math.min(1, Math.max(0, -r.top / Math.max(1, span)));
+      var x = Math.min(n - .0001, p * n), i = Math.floor(x), t = x - i;
+      if (i !== at) {
+        figs.forEach(function (f, k) { f.classList.toggle("is-on", k === i); });
+        // the next photograph starts loading while this one is on screen
+        var nx = figs[i + 1] && figs[i + 1].querySelector("img");
+        if (nx && nx.loading === "lazy") nx.loading = "eager";
+        count.textContent = (i < 9 ? "0" : "") + (i + 1);
+        at = i;
+      }
+      figs[i].style.setProperty("--t", t.toFixed(3));
+      rail.style.setProperty("--p", (n > 1 ? x / n : 1).toFixed(4));
+    }
+    w.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(frame); }, { passive: true });
+    w.addEventListener("resize", frame);
+    frame();
+  }
+  if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();

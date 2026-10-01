@@ -60,6 +60,7 @@ marked done is the next step.
 | 10. Stress test of v4 and fixes (docs/v4-stress-test.md) | done: 29 fixed, 3 partly, 16 open (listed there) | 6a40bc9, a117e46, and VP-4 with step 12 | all gates PASS (v4 191 pages 0 FAIL, smoke 0 FAIL) |
 | 11. The home page's opening: the ground in the Gold line, a climb, the ground dropping away on scroll (tools/v4_opening.py) | done | 960b890 | all gates PASS |
 | 12. The Gold line on the topics (each tile's conversations over time, tools/v4_topics.py) and on the instrument icons | done | 9f3d165 | all gates PASS |
+| 13. Trip galleries as a fly-through, option A of three (owner, 1 Oct): India and Kenya, tools/v4_flythrough.py | done | see git log | all gates PASS |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they
