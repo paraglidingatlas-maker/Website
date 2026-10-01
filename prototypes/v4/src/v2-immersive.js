@@ -870,3 +870,90 @@
   }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();
+
+/* 15. THE TRIP MAP (tools/v4_tripmap.py): the camera falls from the continent
+      to the country to the flying region, then follows the route site by
+      site while the line diagram along the foot slides to each station and
+      fills. Map marks keep their size at every zoom (--u, map units a pixel).
+      Reduced motion: the CSS shows it all still and this only frames the map. */
+(function () {
+  "use strict";
+  var d = document, w = window;
+  function init() {
+    var sec = d.querySelector(".tm");
+    if (!sec) return;
+    var keys = JSON.parse(sec.dataset.keys), kms = JSON.parse(sec.dataset.km || "[]"), xs = JSON.parse(sec.dataset.x), W = +sec.dataset.w;
+    var svg = sec.querySelector(".tm-map"), track = sec.querySelector(".tm-track"), route = sec.querySelector(".tm-route");
+    var sites = [].slice.call(sec.querySelectorAll(".tm-site")), cards = [].slice.call(sec.querySelectorAll(".tm-card"));
+    var sts = [].slice.call(sec.querySelectorAll(".tm-st")), line = sec.querySelector(".tm-line svg"), move = sec.querySelector(".tm-move"), l1 = sec.querySelector(".tm-l1");
+    var head = sec.querySelector(".tm-head"), km = sec.querySelector(".tm-km b"), n = cards.length, F = keys.focus, raf = 0, at = -2;
+    var len = route ? route.getTotalLength() : 0;
+    // India: the page's own schematic is the route; each card lights its line on it
+    var schem = sec.querySelector(".tm-schem"), hl = JSON.parse(sec.dataset.hl || "[]");
+    var cum = [0]; for (var i = 1; i < F.length; i++) cum.push(cum[i - 1] + Math.hypot(F[i][0] - F[i - 1][0], F[i][1] - F[i - 1][1]));
+    function lerp(a, b, t) { return a + (b - a) * t; }
+    function cam(a, b, t) { t = t * t * (3 - 2 * t); return [lerp(a[0], b[0], t), lerp(a[1], b[1], t), Math.exp(lerp(Math.log(a[2]), Math.log(b[2]), t))]; }
+    function view(c) {
+      var r = svg.getBoundingClientRect(), vw = c[2], vh = vw * r.height / Math.max(1, r.width);
+      if (r.width < r.height) { vh = c[2] * 1.15; vw = vh * r.width / r.height; }
+      svg.setAttribute("viewBox", (c[0] - vw / 2).toFixed(2) + " " + (c[1] - vh * (w.innerWidth < 760 ? .24 : .45)).toFixed(2) + " " + vw.toFixed(2) + " " + vh.toFixed(2));
+      svg.style.setProperty("--u", (vw / Math.max(1, r.width)).toFixed(4));
+    }
+    function show(i) {
+      if (i === at) return; at = i;
+      cards.forEach(function (c, k) { c.classList.toggle("is-on", k === i); });
+      sites.forEach(function (s, k) { s.classList.toggle("is-on", k === Math.min(i, sites.length - 1) && i >= 0); s.classList.toggle("is-past", i >= 0 && k <= i); });
+      sts.forEach(function (s, k) { s.classList.toggle("is-on", k === i); s.classList.toggle("is-past", i >= 0 && k <= i); });
+    }
+    if (w.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) { view(keys.region); return; }
+    if (route) { route.style.strokeDasharray = len; route.style.strokeDashoffset = len; }
+    if (l1) { l1.style.strokeDasharray = W; l1.style.strokeDashoffset = W; }
+    function frame() {
+      raf = 0;
+      var r = track.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > w.innerHeight + 100) return;
+      var p = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - w.innerHeight)));
+      var c, fine = 0, ter = 0, cn = 0, rt = 0, cur = -1, x = 0;
+      if (p < .2) { c = cam(keys.world, keys.country, p / .2); cn = Math.max(0, (p - .08) / .12); }
+      else if (p < .32) { var t = (p - .2) / .12; c = cam(keys.country, keys.region, t); cn = 1 - t; fine = t; ter = t * .85; }
+      else {
+        fine = 1; ter = .85; rt = Math.min(1, (p - .32) / .05);
+        var q = Math.min(1, (p - .32) / .64);
+        x = Math.min(n - 1, q * (n - 1) * 1.06); cur = Math.min(n - 1, Math.round(x));
+        var i0 = Math.floor(x), t2 = x - i0, f0 = F[Math.min(F.length - 1, i0)], f1 = F[Math.min(F.length - 1, i0 + 1)];
+        c = cam(keys.region, [lerp(f0[0], f1[0], t2), lerp(f0[1], f1[1], t2), keys.region[2] * keys.zoom], Math.min(1, q * 5));
+        if (route) {
+          var g0 = cum[Math.min(cum.length - 1, i0)], g1 = cum[Math.min(cum.length - 1, i0 + 1)];
+          route.style.strokeDashoffset = (len * (1 - lerp(g0, g1, t2) / Math.max(1, cum[cum.length - 1]))).toFixed(1);
+        }
+        if (schem) {
+          schem.setAttribute("data-on", hl[cur] || "");
+          // on a phone the schematic is framed on the line being described, at a size its words can be read
+          var sv = schem.querySelector("svg"), crop = { "ir-home": "400 40 500 330", "ir-west": "180 60 500 330", "ir-east": "470 60 500 330", "ir-over": "460 20 500 330" };
+          if (sv) {
+            if (!sv.dataset.vb) sv.dataset.vb = sv.getAttribute("viewBox");
+            sv.setAttribute("viewBox", w.innerWidth < 760 && crop[hl[cur]] ? crop[hl[cur]] : sv.dataset.vb);
+          }
+        }
+        else {
+          var pos = xs[i0] + ((xs[Math.min(n - 1, i0 + 1)]) - xs[i0]) * t2;
+          var vb = line.viewBox.baseVal, scale = line.getBoundingClientRect().height / vb.height;
+          move.style.setProperty("--sx", ((w.innerWidth * (w.innerWidth < 760 ? .5 : .62)) / scale + vb.x - pos).toFixed(1) + "px");
+          l1.style.strokeDashoffset = (W - pos).toFixed(1);
+        }
+        if (km && kms.length) km.innerHTML = Math.round(lerp(kms[i0], kms[Math.min(n - 1, i0 + 1)], t2)) + "<small>km</small>";
+      }
+      if (cur < 0) { if (route) route.style.strokeDashoffset = len; if (km) km.innerHTML = "0<small>km</small>"; }
+      view(c);
+      svg.style.setProperty("--fine", fine.toFixed(3)); svg.style.setProperty("--ter", ter.toFixed(3)); svg.style.setProperty("--cn", Math.min(1, cn).toFixed(3));
+      sec.style.setProperty("--route", rt.toFixed(3));
+      sec.classList.toggle("is-route", rt > 0);
+      head.style.opacity = p < .28 ? 1 : Math.max(0, 1 - (p - .28) / .05);
+      show(cur);
+    }
+    w.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(frame); }, { passive: true });
+    w.addEventListener("resize", frame);
+    frame();
+  }
+  if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();

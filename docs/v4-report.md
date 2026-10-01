@@ -61,6 +61,7 @@ marked done is the next step.
 | 11. The home page's opening: the ground in the Gold line, a climb, the ground dropping away on scroll (tools/v4_opening.py) | done | 960b890 | all gates PASS |
 | 12. The Gold line on the topics (each tile's conversations over time, tools/v4_topics.py) and on the instrument icons | done | 9f3d165 | all gates PASS |
 | 13. Trip galleries as a fly-through, option A of three (owner, 1 Oct): India and Kenya, tools/v4_flythrough.py | done | see git log | all gates PASS |
+| 14. Trip route sections: zoom from orbit with the route over it (owner: "C with A route overlay"). Kenya: six sites, line diagram by the page's legs; India: Bir's coordinate, the page's schematic as the route. tools/v4_tripmap.py | done | see git log | all gates PASS |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they

@@ -1,0 +1,60 @@
+<section class="dst-sec is-loud" id="route" aria-labelledby="route-h">
+  <div class="dst-head">
+    <span class="kicker">The routes</span>
+    <h2 id="route-h">Bir Billing cross country routes</h2>
+  </div>
+  <figure class="iroute-fig">
+    <div class="iroute-scroll">
+<svg class="iroute-svg" viewBox="0 0 1000 400" role="img" aria-labelledby="irT irD">
+  <title id="irT">The Dhauladhar front range above Bir, drawn as a schematic</title>
+  <desc id="irD">Billing launch sits on the front range above the Bir landing field. The standard day runs west to Dharamshala and back, a bigger day adds 360 to the east, and the back ranges rise behind.</desc>
+  <path class="ir-back" d="M60 118 L120 92 L170 110 L230 78 L290 102 L340 70 L400 96 L455 64 L510 90 L560 58 L615 84 L670 54 L725 80 L780 60 L840 88 L890 70 L940 96"/>
+  <text class="ir-k" x="940" y="40" text-anchor="end">Back ranges, towards Barabangal and Manali</text>
+  <path class="ir-front" d="M60 214 L110 196 L150 206 L205 184 L250 202 L300 180 L350 198 L400 176 L450 192 L505 170 L545 186 L573 172 L610 188 L660 168 L705 186 L760 170 L805 190 L860 176 L905 196 L940 188"/>
+  <text class="ir-k" x="60" y="244">The Dhauladhar front range</text>
+  <line class="ir-valley" x1="60" y1="318" x2="940" y2="318"/>
+  <text class="ir-k" x="940" y="340" text-anchor="end">Kangra valley</text>
+  <line class="ir-drop" x1="573" y1="172" x2="573" y2="318"/>
+  <path class="ir-west" d="M573 164 C453 120 400 120 280 150"/>
+  <path class="ir-west" d="M280 158 C400 146 453 146 567 166"/>
+  <path class="ir-east" d="M573 164 C643 132 710 128 770 150"/>
+  <path class="ir-over" d="M573 164 C583 120 613 96 643 60"/>
+  <circle class="ir-dot" cx="280" cy="160" r="6"/>
+  <text class="ir-l is-strong" x="280" y="136" text-anchor="middle">Dharamshala</text>
+  <circle class="ir-dot" cx="770" cy="160" r="6"/>
+  <text class="ir-l is-strong" x="770" y="136" text-anchor="middle">360</text>
+  <circle class="ir-dot ir-home" cx="573" cy="168" r="7"/>
+  <text class="ir-l is-strong" x="587" y="206">Billing launch</text>
+  <text class="ir-k" x="587" y="224">about 2,400m</text>
+  <circle class="ir-dot" cx="573" cy="318" r="6"/>
+  <text class="ir-l is-strong" x="587" y="306">Bir landing</text>
+  <text class="ir-k" x="657" y="72">Over the back</text>
+  <line class="ir-span" x1="60" y1="372" x2="573" y2="372"/>
+  <line class="ir-span" x1="60" y1="366" x2="60" y2="378"/><line class="ir-span" x1="573" y1="366" x2="573" y2="378"/>
+  <text class="ir-k" x="316" y="394" text-anchor="middle">about 70 km of front range to the west</text>
+  <line class="ir-span" x1="573" y1="372" x2="940" y2="372"/>
+  <line class="ir-span" x1="940" y1="366" x2="940" y2="378"/>
+  <text class="ir-k" x="756" y="394" text-anchor="middle">about 50 km to the east</text>
+</svg>
+    </div>
+    <figcaption>A schematic, not a map. The front range works for about 70 km west of the takeoff and 50 km east, in Jigish Gohil's description. <span class="iroute-hint">Swipe to see the whole range.</span></figcaption>
+  </figure>
+  <details class="v4-fold v4t-rintro"><summary>How the days go</summary><p>One launch, one landing field, and a front range that works for tens of kilometres either way. The tour follows the conditions rather than a schedule; these are the shapes the days tend to take.</p></details>
+  <ul class="iroute-list">
+    <li class="iroute-item">
+      <h3>Bir to Dharamshala and back</h3>
+      <span class="iroute-km">West, 80 to 90 km out and return</span>
+      <details class="v4-fold v4t-rfold"><summary>More</summary><p>The standard day, and the line Eddie Colfox would send a newer pilot on: west along the front range to Dharamshala and home, with big fields to land in and easy retrieves the whole way. In his telling, pilots were already flying it out and back in 1988. <a href="../episodes/navigating-india-eddie-colfox.html#c4">Hear him on it</a>.</p></details>
+    </li>
+    <li class="iroute-item is-east">
+      <h3>Add 360 on the way home</h3>
+      <span class="iroute-km">East, the bigger day</span>
+      <details class="v4-fold v4t-rfold"><summary>More</summary><p>With Dharamshala done, his next step is to turn back east past the takeoff to 360 and then home again. Same front range, same landing options, more of it.</p></details>
+    </li>
+    <li class="iroute-item is-over">
+      <h3>Over the back</h3>
+      <span class="iroute-km">North, not a first week line</span>
+      <details class="v4-fold v4t-rfold"><summary>More</summary><p>Behind Billing is a spine, and past it the big mountains: Barabangal, the run to Manali and beyond. Jigish Gohil's test for going is a couple of hundred hours, an SIV course, and the kit and fitness for a night out and a long walk. <a href="../episodes/navigating-india-jigish-gohil.html#c6">His test in full</a>.</p></details>
+    </li>
+  </ul>
+</section>
