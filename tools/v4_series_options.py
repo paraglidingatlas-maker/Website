@@ -10,7 +10,13 @@ behind the subject, and still one gold element per tile for what the series
 is about. Each series gets a row: today's Gold line tile, then options A, B, C.
 
     python3 tools/v4_series_options.py   # writes prototypes/v4/samples/series-options.html
+                                         # and puts PICK on the v4 library (v2-library.js)
+
+The owner picked B for every series (1 Oct 2026: "b"). install() writes those
+drawings into prototypes/v4/v2-library.js between the series-art markers; the
+tile loop there uses them in place of the stone slabs.
 """
+import json
 import math
 import os
 import re
@@ -25,6 +31,35 @@ from v4_computed import naca  # noqa: E402
 f, path, smooth = A.f, A.path, A.smooth
 W, H = A.W, A.H
 PI = math.pi
+
+
+def bbox(d):
+    """The box a clip path sits in (whole tile when the path has arcs, whose flags are not coordinates)."""
+    if re.search(r"[AaQqCcHhVv]", re.sub(r"[eE]", "", d)) and re.search(r"[Aa]", d):
+        return (0, 0, W, H)
+    n = [float(v) for v in re.findall(r"-?\d+(?:\.\d+)?", d)]
+    xs, ys = n[0::2], n[1::2]
+    return (max(0, min(xs) - 2), max(0, min(ys) - 2), min(W, max(xs) + 2), min(H, max(ys) + 2))
+
+
+def cut(a, b, box):
+    """Liang-Barsky: the part of segment a-b inside the box, or None."""
+    x0, y0, x1, y1 = box
+    dx, dy = b[0] - a[0], b[1] - a[1]
+    t0, t1 = 0.0, 1.0
+    for p, q in ((-dx, a[0] - x0), (dx, x1 - a[0]), (-dy, a[1] - y0), (dy, y1 - a[1])):
+        if p == 0:
+            if q < 0:
+                return None
+            continue
+        r = q / p
+        if p < 0:
+            t0 = max(t0, r)
+        else:
+            t1 = min(t1, r)
+        if t0 > t1:
+            return None
+    return (a[0] + t0 * dx, a[1] + t0 * dy), (a[0] + t1 * dx, a[1] + t1 * dy)
 
 
 # ---------------------------------------------------------------- the pen
@@ -68,12 +103,17 @@ class G:
         self.defs.append('<clipPath id="%s"><path d="%s"/></clipPath>' % (cid, clip))
         a = math.radians(ang)
         dx, dy, nx, ny = math.cos(a), math.sin(a), -math.sin(a), math.cos(a)
+        box = bbox(clip)
         d = ""
         o = -130.0
         while o <= 130:
             cx, cy = 100 + nx * o, 69 + ny * o
-            d += "M%s,%s L%s,%s " % (f(cx - dx * 140), f(cy - dy * 140), f(cx + dx * 140), f(cy + dy * 140))
+            seg = cut((cx - dx * 140, cy - dy * 140), (cx + dx * 140, cy + dy * 140), box)
+            if seg:
+                d += "M%s,%s L%s,%s " % (f(seg[0][0]), f(seg[0][1]), f(seg[1][0]), f(seg[1][1]))
             o += gap
+        if not d:
+            return
         el = ('<g clip-path="url(#%s)"><path d="%s" fill="none" stroke="#f6f4f4" stroke-opacity="%s" stroke-width="%s" '
               'vector-effect="non-scaling-stroke"/></g>' % (cid, d.strip(), round(min(.6, op * 1.4), 3), w))
         (self.mid if top else self.back).append(el)
@@ -1147,10 +1187,37 @@ def page():
                     body, SM.SPEC_CSS + CSS)
 
 
+PICK = {name: "B" for name, _ in OPTIONS}
+LIB = os.path.join(A.V4, "v2-library.js")
+MARK = ("  /* series-art: written by tools/v4_series_options.py */\n", "  /* /series-art */\n")
+
+
+def install():
+    art = {}
+    for name, opts in OPTIONS:
+        i = "ABC".index(PICK[name])
+        g = G("st-%s" % slug(name)[:12])
+        opts[i][1](g)
+        art[name] = g.svg(name).replace('role="img" aria-label="%s"' % name, 'aria-hidden="true"', 1)
+    src = open(LIB, encoding="utf-8").read()
+    block = MARK[0] + "  var ART = " + json.dumps(art, separators=(",", ":")) + ";\n" + MARK[1]
+    if MARK[0] in src:
+        src = src[:src.index(MARK[0])] + block + src[src.index(MARK[1]) + len(MARK[1]):]
+    else:
+        anchor = "  function emboss(p) {"
+        src = src.replace(anchor, block + "\n" + anchor, 1)
+    old = 't.querySelector(".shot").innerHTML = slab(t.getAttribute("data-t"), 200, 138);'
+    new = 'var k = t.getAttribute("data-t");\n    t.querySelector(".shot").innerHTML = ART[k] || slab(k, 200, 138);'
+    src = src.replace(old, new, 1)
+    open(LIB, "w", encoding="utf-8").write(src)
+    print("v4 series options: %s on the library" % ", ".join("%s %s" % (PICK[n], n) for n, _ in OPTIONS[:2]) + " ...")
+
+
 def main():
     out = os.path.join(A.V4, "samples", "series-options.html")
     open(out, "w", encoding="utf-8").write(page())
     print("v4 series options: samples/series-options.html")
+    install()
 
 
 if __name__ == "__main__":
