@@ -2030,3 +2030,26 @@ html .clb-wall{justify-content:flex-start;}
   .cd-ts::after,.cd-block-time::after{content:"";position:absolute;left:-6px;right:-6px;top:50%;height:40px;transform:translateY(-50%);}
   .v4-fold > summary{min-height:44px;display:flex;align-items:center;}
 }
+
+/* ===========================================================================
+   THE OPENING (tools/v4_opening.py): the ground in the Gold line over the hero
+   footage. It draws itself in (part 11); scrolling, the ground drops away under
+   the reader, the near range fastest, as if the camera were climbing.
+   ========================================================================= */
+.v2-home-hero .v4-ridge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:64%;z-index:0;pointer-events:none;overflow:hidden;}
+.v2-home-hero .v4-ridge{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 22%);mask-image:linear-gradient(180deg,transparent 0,#000 22%);}
+@media (max-width:760px){ .v2-home-hero .v4-ridge{height:44%;} }
+.v4-ridge g{transform-box:view-box;}
+@supports (animation-timeline: scroll()){
+  @media (prefers-reduced-motion: no-preference){
+    .v4-ridge .op-far,.v4-ridge .op-mid,.v4-ridge .op-sky,.v4-ridge .op-near{animation:linear both;animation-timeline:scroll(root);animation-range:0 100vh;}
+    .v4-ridge .op-far{animation-name:op-far;}
+    .v4-ridge .op-mid{animation-name:op-mid;}
+    .v4-ridge .op-sky{animation-name:op-mid;}
+    .v4-ridge .op-near{animation-name:op-near;}
+    @keyframes op-far{to{transform:translateY(60px);}}
+    @keyframes op-mid{to{transform:translateY(170px);}}
+    @keyframes op-near{to{transform:translateY(330px);}}
+  }
+}
+@media print{ .v2-home-hero .v4-ridge{display:none;} }
