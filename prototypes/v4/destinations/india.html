@@ -112,7 +112,7 @@
 <link rel="preload" href="../../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../../styles.css?v=c8d28696">
-<link rel="stylesheet" href="../v2.css?v=378725ec">
+<link rel="stylesheet" href="../v2.css?v=c39df0b9">
 <link rel="stylesheet" href="../../../destinations.css?v=993310a6">
 <style>
 /* ---------- INDIA additions =============================================
@@ -330,7 +330,7 @@
 }
 </script>
 <!-- /site-schema --><script src="../v2.js?v=c7722c82"></script>
-<script src="../v2-immersive.js?v=a48ed5af"></script>
+<script src="../v2-immersive.js?v=8a8902e2"></script>
 </head>
 <body class="dst v2-dst v4-trip">
 
@@ -1516,6 +1516,12 @@
     var t = tabs[at];
     t.classList.remove('is-timing');
     if (stopped || calm.matches || document.hidden) return;
+    /* the slideshow waits for the page: turning before load pulled every full-size
+       photo in ahead of the page itself (2.3 MB on a slow phone line); a phone that
+       asks to save data, or is on 2G, keeps the first picture */
+    if (document.readyState !== 'complete') { window.addEventListener('load', arm, { once: true }); return; }
+    var cn = navigator.connection;
+    if (cn && (cn.saveData || /2g/.test(cn.effectiveType || ''))) return;
     void t.offsetWidth;                 /* reflow, so the fill restarts */
     t.classList.add('is-timing');
     timer = setTimeout(function () { show(at + 1); }, DWELL);

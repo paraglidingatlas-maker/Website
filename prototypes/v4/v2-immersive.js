@@ -211,6 +211,11 @@ w.addEventListener("pointerup", function () { if (hold) later(); });
 rail.addEventListener("touchstart", pause, { passive: true }); rail.addEventListener("touchend", later);
 rail.addEventListener("focusin", pause); rail.addEventListener("focusout", later);
 rail.addEventListener("wheel", function () { pause(); later(); }, { passive: true });
+var sec = rail.closest("section") || rail.parentNode;
+sec.addEventListener("click", function (e) {
+var b = e.target.closest && e.target.closest("button");
+if (b && !rail.contains(b)) { pause(); later(); }
+}, true);
 rail.addEventListener("scroll", function () { if (hold && rail.scrollLeft >= half()) rail.scrollLeft -= half(); }, { passive: true });
 d.addEventListener("visibilitychange", wake);
 if ("IntersectionObserver" in w) new IntersectionObserver(function (en) { seen = en[0].isIntersecting; if (seen) wake(); }).observe(rail);
@@ -471,15 +476,21 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", altimeter
 var d = document, w = window;
 var m = /^(.*\/prototypes\/v\d+\/)/.exec(location.pathname);
 var SRC = m ? m[1] + "v4-menu.js" : "/assets/v4/v4-menu.js";
-var loading = false;
-function open(focusSearch) {
+var loading = false, failed = false;
+function fallback(from) {
+failed = true;
+if (from && from.classList.contains("nav-toggle")) from.click();
+else location.href = (m ? m[1] : "/") + "sitemap.html";
+}
+function open(focusSearch, from) {
 if (w.V4_MENU) { w.V4_MENU.open(focusSearch); return; }
 if (loading) return;
 loading = true;
-var s = d.createElement("script");
+var s = d.createElement("script"), done = false;
+var t = setTimeout(function () { if (!done) { done = true; loading = false; fallback(from); } }, 6000);
 s.src = SRC;
-s.onload = function () { loading = false; if (w.V4_MENU) w.V4_MENU.open(focusSearch); };
-s.onerror = function () { loading = false; };
+s.onload = function () { if (done) return; done = true; clearTimeout(t); loading = false; if (w.V4_MENU) w.V4_MENU.open(focusSearch); else fallback(from); };
+s.onerror = function () { if (done) return; done = true; clearTimeout(t); loading = false; fallback(from); };
 d.head.appendChild(s);
 }
 function mount() {
@@ -492,17 +503,17 @@ b.className = "v4-open";
 b.setAttribute("aria-controls", "v4Menu");
 b.setAttribute("aria-expanded", "false");
 b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><span>Search</span>';
-b.addEventListener("click", function () { open(true); });
+b.addEventListener("click", function () { open(true, b); });
 if (cta) nav.insertBefore(b, cta); else nav.appendChild(b);
 d.addEventListener("click", function (e) {
 var s = e.target.closest && e.target.closest("[data-v4-search]");
-if (s) { e.preventDefault(); open(true); }
+if (s && !failed) { e.preventDefault(); open(true, s); }
 });
 d.addEventListener("click", function (e) {
 var t = e.target.closest && e.target.closest(".nav-toggle");
-if (!t) return;
+if (!t || failed) return;
 e.preventDefault(); e.stopImmediatePropagation();
-open(false);
+open(false, t);
 }, true);
 }
 if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", mount); else mount();
@@ -526,6 +537,7 @@ var seen = new Set();
 var io = new IntersectionObserver(function (es) {
 es.forEach(function (e) { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
 bar.classList.toggle("show", seen.size === 0);
+bar.inert = seen.size !== 0;   // off screen it takes no Tab stops
 }, { threshold: 0 });
 io.observe(hero); if (foot) io.observe(foot);
 }
@@ -590,10 +602,12 @@ if (!svgs.length) return;
 var io = new IntersectionObserver(function (es) {
 es.forEach(function (e) {
 if (!e.isIntersecting) return;
+var r = e.boundingClientRect, wide = r.width > (w.innerWidth || 0) * 1.2;
+if (e.intersectionRatio < .2 && !wide) return;
 io.unobserve(e.target);
 draw(e.target);
 });
-}, { threshold: .2 });
+}, { threshold: [0, .05, .2] });
 Array.prototype.forEach.call(svgs, function (svg) {
 var ls = lines(svg);
 svg.classList.add("kd", ls.length > MAX ? "kd-fade" : "kd-draw");
@@ -602,5 +616,45 @@ svg.__kd.forEach(function (s) { s.classList.add("kd-h"); });
 io.observe(svg);
 });
 }
+function finish() {
+Array.prototype.forEach.call(d.querySelectorAll("svg.kd:not(.kd-in)"), function (svg) {
+(svg.__kd || []).forEach(function (s) { s.classList.remove("kd-h"); });
+svg.classList.add("kd-in");
+});
+}
+w.addEventListener("beforeprint", finish);
 if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();
+(function () {
+"use strict";
+var d = document;
+function skip() {
+var h = d.querySelector("main, h1");
+if (!h || d.querySelector(".v4-skip")) return;
+var t = h.tagName === "MAIN" ? h : (h.closest("header, section, article") || h);
+if (!t.id) t.id = "v4-main";
+if (!t.hasAttribute("tabindex")) t.setAttribute("tabindex", "-1");
+var a = d.createElement("a");
+a.className = "v4-skip"; a.href = "#" + t.id; a.textContent = "Skip to content";
+d.body.insertBefore(a, d.body.firstChild);
+}
+var FOC = 'a[href],button:not([disabled]),input:not([disabled]),select,textarea,summary,[tabindex]:not([tabindex="-1"])';
+function shown(el) {
+if (!el.getClientRects().length) return false;
+var cs = getComputedStyle(el);
+return cs.visibility !== "hidden" && cs.display !== "none";
+}
+d.addEventListener("keydown", function (e) {
+if (e.key !== "Tab") return;
+var ms = [].filter.call(d.querySelectorAll('[aria-modal="true"]'), shown);
+var m = ms[ms.length - 1];
+if (!m) return;
+var f = [].filter.call(m.querySelectorAll(FOC), shown);
+if (!f.length) { e.preventDefault(); return; }
+var a = d.activeElement, first = f[0], last = f[f.length - 1];
+if (!m.contains(a)) { e.preventDefault(); (e.shiftKey ? last : first).focus(); }
+else if (e.shiftKey && a === first) { e.preventDefault(); last.focus(); }
+else if (!e.shiftKey && a === last) { e.preventDefault(); first.focus(); }
+});
+if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", skip); else skip();
 })();

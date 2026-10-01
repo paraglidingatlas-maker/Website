@@ -46,6 +46,10 @@ menu.innerHTML =
 '</div>';
 d.body.appendChild(menu);
 menu.querySelector(".v4-menu-x").addEventListener("click", close);
+menu.addEventListener("click", function (e) {
+var l = e.target.closest && e.target.closest("a[href]");
+if (l && l.hash && l.pathname === location.pathname) close();
+});
 menu.addEventListener("keydown", function (e) {
 if (e.key === "Escape") { e.preventDefault(); close(); return; }
 if (e.key !== "Tab") return;
