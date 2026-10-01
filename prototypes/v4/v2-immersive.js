@@ -589,10 +589,13 @@ var late = /255, 117, 23|#ff7517/i.test(cs.stroke);
 s.style.transition = "stroke-dashoffset 1.5s cubic-bezier(.65,0,.2,1) " + ((late ? .55 : 0) + Math.min(i * .006, .35)) + "s";
 s.classList.remove("kd-h");
 s.style.strokeDashoffset = 0;
-s.addEventListener("transitionend", function end() {
+s.addEventListener("transitionend", end);
+s.addEventListener("transitioncancel", end);   // cut short (hidden by the wide/phone swap): end clean too
+function end() {
 s.removeEventListener("transitionend", end);
+s.removeEventListener("transitioncancel", end);
 s.style.strokeDasharray = s.style.strokeDashoffset = s.style.transition = "";
-});
+}
 });
 svg.classList.add("kd-in");
 }
@@ -657,4 +660,27 @@ else if (e.shiftKey && a === first) { e.preventDefault(); last.focus(); }
 else if (!e.shiftKey && a === last) { e.preventDefault(); first.focus(); }
 });
 if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", skip); else skip();
+})();
+(function () {
+"use strict";
+var d = document;
+function run() {
+d.querySelectorAll(".iroute-scroll, .pol-tablewrap").forEach(function (el) {
+if (el.scrollWidth <= el.clientWidth + 1 || el.hasAttribute("tabindex")) return;
+el.setAttribute("tabindex", "0");
+if (!el.getAttribute("role")) el.setAttribute("role", "region");
+if (!el.getAttribute("aria-label")) {
+var h = el.closest("section") && el.closest("section").querySelector("h2, h3");
+el.setAttribute("aria-label", (h ? h.textContent.trim() + ", " : "") + "scrolls sideways");
+}
+});
+d.querySelectorAll('svg[role="img"]').forEach(function (s) {
+if (s.querySelector('a[href], [tabindex]:not([tabindex="-1"]), button')) s.setAttribute("role", "group");
+});
+d.querySelectorAll("a svg:not([role]):not([aria-label]):not([aria-hidden]), button svg:not([role]):not([aria-label]):not([aria-hidden])").forEach(function (s) {
+var host = s.closest("a, button");
+if (host && host.textContent.trim()) s.setAttribute("aria-hidden", "true");
+});
+}
+if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", run); else run();
 })();

@@ -62,11 +62,19 @@ var q = menu.querySelector("#v4q");
 q.addEventListener("input", function () { search(q.value); });
 q.addEventListener("focus", loadIndex, { once: true });
 }
+var loadingIdx = false;
 function loadIndex() {
 if (idx || w.V4_SEARCH) { idx = w.V4_SEARCH; return; }
+if (loadingIdx) return;
+loadingIdx = true;
 var s = d.createElement("script");
 s.src = IDX;
 s.onload = function () { idx = w.V4_SEARCH || []; var q = menu.querySelector("#v4q"); if (q.value) search(q.value); };
+s.onerror = function () {
+loadingIdx = false;
+var ol = menu.querySelector("#v4hits");
+if (ol) ol.innerHTML = '<li class="v4-hit-none">The search could not load. The <a href="' + IDX.replace(/[^\/]*$/, "") + 'sitemap.html">sitemap</a> lists every page.</li>';
+};
 d.head.appendChild(s);
 }
 function search(v) {

@@ -2017,3 +2017,16 @@ html .clb-wall{justify-content:flex-start;}
 .listen-btn{max-width:100%;min-width:0;}
 .listen-btn > span{white-space:normal;min-width:0;}
 .k-head > *{min-width:0;overflow-wrap:anywhere;}
+/* VP-3: between 761 and 1000px the wide band drawings' words came out at 5-7px;
+   the drawing's own phone version, at reading size, holds until 1000px */
+@media (min-width:761px) and (max-width:1000px){
+  .kbd.has-p{display:none;}
+  .band-draw .kbd.kbd-p{display:block;min-width:0;max-width:560px;margin:0 auto;}
+}
+/* tap targets on a phone (v2_check's 40px count): the transcript's timestamps and
+   the folds keep their look and get a finger-sized hit area */
+@media (pointer:coarse){
+  .cd-ts,.cd-block-time{position:relative;}
+  .cd-ts::after,.cd-block-time::after{content:"";position:absolute;left:-6px;right:-6px;top:50%;height:40px;transform:translateY(-50%);}
+  .v4-fold > summary{min-height:44px;display:flex;align-items:center;}
+}

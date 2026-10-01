@@ -163,7 +163,8 @@
   $("widen").addEventListener("click", function () { state.s = ""; state.q = ""; $("q").value = ""; state.page = 1; draw(false); });
 
   function route() {
-    var h = decodeURIComponent(location.hash.replace(/^#/, "")), m;
+    var h = location.hash.replace(/^#/, ""), m;
+    try { h = decodeURIComponent(h); } catch (e) { h = ""; }
     var s = (m = /(?:^|&)s=([^&]*)/.exec(h)) ? m[1] : "";
     if (s && !chips.some(function (b) { return b.dataset.s === s; })) s = "";
     state.s = s;

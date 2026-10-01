@@ -23,7 +23,7 @@
 <link rel="preload" href="../../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../../styles.css?v=c8d28696">
-<link rel="stylesheet" href="../v2.css?v=c39df0b9">
+<link rel="stylesheet" href="../v2.css?v=7670d8ba">
 <link rel="stylesheet" href="../../../tags.css?v=71f8244d">
 <link rel="stylesheet" href="../../../episodes/episode.css?v=ae861c37">
 <script type="application/ld+json">
@@ -145,7 +145,7 @@
 }
 </script>
 <!-- /site-schema --><script src="../v2.js?v=c7722c82"></script>
-<script src="../v2-immersive.js?v=8a8902e2"></script>
+<script src="../v2-immersive.js?v=d2c30776"></script>
 </head>
 <body data-v2="ep">
 
@@ -463,7 +463,7 @@
   btn.addEventListener('click', function () {
     var open = body.classList.toggle('is-open');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if (!open) body.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    if (!open) body.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   });
 })();
 /* Scrollspy: highlight the chapter you are currently reading. */
