@@ -56,6 +56,8 @@ marked done is the next step.
 | 6. Speed | done | 84258b8 | all gates PASS (v4 184 pages 0 FAIL; switch 0 FAIL after it learnt the deferred image attributes) |
 | 7. The remaining redraws | done (poster frame: see notes) | 3ab0e89 | all gates PASS (v4 184 pages 0 FAIL; smoke 0 FAIL on its rerun) |
 | 8. The report | done | 8f43896 | all gates PASS (v4 184 pages 0 FAIL, smoke 0 FAIL first run) |
+| 9. Series tiles: Gold line, option B for all 13 (owner, 1 Oct) | done | 9b4eac4 | all gates PASS (v4 191 pages 0 FAIL) |
+| 10. Stress test of v4 and fixes (docs/v4-stress-test.md) | done: 28 fixed, 3 partly, 17 open (listed there) | 6a40bc9, a117e46 | all gates PASS (v4 191 pages 0 FAIL, smoke 0 FAIL) |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they
