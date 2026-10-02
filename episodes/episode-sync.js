@@ -1,7 +1,7 @@
 /* The episode page follows the conversation.
  *
- * Any timestamp in the transcript (and each chapter's own time) jumps the video
- * to that moment and plays it. While the video plays, the line being spoken is
+ * Any timestamp in the transcript (and each chapter's own time, and each
+ * stretch of the chapter timeline) jumps the video to that moment and plays it. While the video plays, the line being spoken is
  * lit and the chapter rail follows the playback instead of the scroll.
  *
  * It talks to the YouTube embed through the same postMessage protocol the
@@ -95,6 +95,7 @@
       if (chapTimes[j] !== null && chapTimes[j] <= t + 0.25) c = j;
     }
     chaps.forEach(function (a, j) { a.classList.toggle("active", j === c); });
+    if (window.cdTimeline) window.cdTimeline.set(c);
   }
 
   // A timestamp is a control. Keyboard reachable, with a label that says so.
@@ -114,6 +115,15 @@
   [].forEach.call(document.querySelectorAll(".cd-block"), function (b) {
     var bt = b.querySelector(".cd-block-time");
     if (bt) arm(bt, secs(bt.textContent));
+  });
+
+  // The chapter timeline under the player seeks the video too. The stretch is
+  // a link to its chapter; with the player here, the click plays that chapter
+  // instead of scrolling away from the video.
+  [].forEach.call(document.querySelectorAll(".cd-tl-seg"), function (s) {
+    var t = Number(s.getAttribute("data-at"));
+    if (isNaN(t)) return;
+    s.addEventListener("click", function (e) { e.preventDefault(); seek(t); });
   });
 
   function seek(t) {

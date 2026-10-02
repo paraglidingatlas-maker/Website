@@ -956,6 +956,22 @@ def head_style(meta, vid):
     return (' style="--cd-art:url(\'%s\')"' % esc(art)) if art else ""
 
 
+def _with_timeline(player, chapters, cues):
+    """The timeline sits between the player and the listen buttons."""
+    if not transcript_expected_chapters(chapters):
+        return player
+    total = max((c.get("end") or c["start"]) for c in cues) if cues else 0
+    tl = timeline_html(chapters, total)
+    if not tl:
+        return player
+    i = player.find('\n      <div class="cd-listen">')
+    return player[:i] + "\n" + tl + player[i:] if i >= 0 else player + tl
+
+
+def transcript_expected_chapters(chapters):
+    return bool(chapters)
+
+
 def build(meta, cues, chapters):
     paras = paragraphs(cues)
     words = sum(len(p["text"].split()) for p in paras)
@@ -1028,7 +1044,9 @@ def build(meta, cues, chapters):
         epno=esc(meta.get("epno", "")),
         submeta=submeta_html,
         video_id=esc(vid),
-        player=player_html(meta),
+        player=_with_timeline(player_html(meta), chapters_with_content(paras, chapters), cues),
+        series_head=series_head_html(meta),
+        map_box=map_box_html(meta),
         og_image=esc(meta.get("artwork") or
                      ("https://i.ytimg.com/vi/%s/maxresdefault.jpg" % vid if vid
                       else cfg.url("assets/images/hero.jpg"))),
@@ -1054,6 +1072,94 @@ def build(meta, cues, chapters):
         jsonld=json.dumps(jsonld, ensure_ascii=False, indent=2),
         words="{:,}".format(words),
     )
+
+
+
+# ---------------------------------------------------------------- additions
+# Three additions to the Chapter Deck pages, approved in the episode page
+# prototype (October 2026): the series emblem in the header, the chapter
+# timeline under the player, and "On The Map" with a small glass globe.
+# The drawings come from tools/data/episode-extras.json, which
+# tools/episode_globes.js writes (node, d3-geo); see that file for why.
+
+_EXTRAS = None
+
+
+def extras():
+    global _EXTRAS
+    if _EXTRAS is None:
+        try:
+            _EXTRAS = json.load(open(os.path.join(ROOT, "tools", "data", "episode-extras.json"),
+                                     encoding="utf-8"))
+        except (OSError, ValueError):
+            _EXTRAS = {"glyphs": {}, "globes": {}}
+    return _EXTRAS
+
+
+def series_head_html(meta):
+    """The library's drawing for the series, its name and the episode number,
+    in place of the bare episode number. Falls back to the number alone for an
+    episode with no series drawing."""
+    series = meta.get("series") or ""
+    glyph = extras()["glyphs"].get(series)
+    if not glyph:
+        return '    <p class="cd-epno">%s</p>' % esc(meta.get("epno", ""))
+    ep = ('<span class="cd-series-ep">%s</span>' % esc(meta["epno"])) if meta.get("epno") else ""
+    return ('    <a class="cd-series" href="../library.html#s=%s">\n'
+            '      <span class="cd-series-mark"><svg viewBox="0 0 120 120" aria-hidden="true">'
+            '<g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" '
+            'stroke-linejoin="round">%s</g></svg></span>\n'
+            '      <span class="cd-series-txt"><span class="cd-series-name">%s</span>%s</span>\n'
+            '    </a>' % (meta.get("series_slug", ""), glyph, esc(series), ep))
+
+
+def timeline_html(chapters, total):
+    """The whole conversation as one bar, each chapter as long as it runs.
+
+    Each stretch is a link to its chapter, so without script it still goes
+    there. With the video, a click seeks it (episode-sync.js); with the audio
+    player, the audio. The meta line under the bar names the chapter."""
+    if len(chapters) < 2 or not total:
+        return ""
+    segs = []
+    for n, c in enumerate(chapters):
+        start = 0 if n == 0 else c["at"]
+        end = chapters[n + 1]["at"] if n + 1 < len(chapters) else total
+        if end <= start:
+            continue
+        segs.append(
+            '<a class="cd-tl-seg%s" href="#c%d" style="flex-grow:%d" data-n="%s" data-i="%02d" '
+            'data-at="%d" data-r="%s to %s"><span class="cd-tl-sr">%s, %s</span></a>'
+            % (" active" if n == 0 else "", n + 1, max(1, int(round(end - start))), esc(c["title"]),
+               n + 1, int(start), clock(start), clock(end), esc(c["title"]), clock(start)))
+    if len(segs) < 2:
+        return ""
+    return ('      <nav class="cd-tl" aria-label="Chapter timeline">\n'
+            '        <div class="cd-tl-bar">%s</div>\n'
+            '        <p class="cd-tl-meta"><span class="cd-tl-now"><b></b><span></span></span>'
+            '<span class="cd-tl-len"></span></p>\n'
+            '      </nav>\n' % "".join(segs))
+
+
+def map_box_html(meta):
+    """On The Map: the small globe, the coordinate, range and bearing from Oslo
+    as the homepage card gives them, and a link to the pin on the homepage.
+    Nothing at all for an episode with no place on the globe."""
+    g = extras()["globes"].get(meta["slug"])
+    if not g:
+        return ""
+    if g["home"]:
+        rd = "<span>Oslo studio</span>"
+    else:
+        rd = "<span>{:,} km from Oslo</span><span>{:03d}° {}</span>".format(
+            int(g["km"]), int(g["brg"]), esc(g["card"]))
+    return ('      <div class="cd-box cd-map">\n'
+            '        <h2>On The Map</h2>\n'
+            '        %s\n'
+            '        <p class="cd-map-co">%s</p>\n'
+            '        <p class="cd-map-rd">%s</p>\n'
+            '        <a class="cd-link" href="../index.html#pin=%s">Find it on the globe</a>\n'
+            '      </div>\n' % (g["svg"], esc(g["co"]), rd, meta["slug"]))
 
 
 # ---------------------------------------------------------------- main

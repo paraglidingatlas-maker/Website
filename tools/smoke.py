@@ -482,6 +482,24 @@ def episode_sync(pg, base):
         playing = pg.evaluate("document.body.classList.contains('cd-playing')")
         check(lit == want and playing, "episode", "a timestamp plays from there and lights that line",
               "lit %s, wanted %s, playing %s" % (lit, want, playing))
+
+        # The chapter timeline under the player seeks the video too (October
+        # 2026): a click plays that chapter and the bar lights it, instead of
+        # scrolling off to the transcript.
+        segs = pg.query_selector_all(".cd-tl-seg")
+        check(len(segs) > 1, "episode", "the chapter timeline is under the player", len(segs))
+        if len(segs) > 2:
+            seg = segs[2]
+            at = int(seg.get_attribute("data-at"))
+            seg.click()
+            pg.wait_for_timeout(1200)
+            got = pg.evaluate("""(()=>{const n=document.querySelector('.cd-line.is-now .cd-ts');
+              if(!n) return null; const p=n.textContent.trim().split(':').map(Number);
+              return p.reduce((a,b)=>a*60+b,0)})()""")
+            on = pg.evaluate("[...document.querySelectorAll('.cd-tl-seg')].findIndex(s=>s.classList.contains('active'))")
+            check(got is not None and abs(got - at) < 90 and on == 2, "episode",
+                  "a timeline click plays that chapter and lights it on the bar",
+                  "line at %s, chapter at %s, lit stretch %s" % (got, at, on))
     finally:
         pg.unroute("**/www.youtube-nocookie.com/embed/**")
 

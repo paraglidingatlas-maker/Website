@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../styles.css?v=b084e774">
 <link rel="stylesheet" href="../tags.css?v=71f8244d">
-<link rel="stylesheet" href="episode.css?v=ae861c37">
+<link rel="stylesheet" href="episode.css?v=15dc0263">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -46,6 +46,7 @@
   "keywords": "Competition, World Cup, Pegalajar, Task Highlights"
 }
 </script>
+<script>document.documentElement.classList.add("js");</script>
 <!-- site-schema -->
 <script type="application/ld+json">
 {
@@ -162,7 +163,10 @@
 
   <header class="cd-head">
     <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../library.html">Library</a> / <a href="../library.html#s=World%20Cups">World Cups</a></p>
-    <p class="cd-epno"></p>
+    <a class="cd-series" href="../library.html#s=World%20Cups">
+      <span class="cd-series-mark"><svg viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="60" cy="60" r="39"/><circle cx="60" cy="60" r="25"/><circle cx="60" cy="60" r="11"/><path d="M60 8 V26"/><path d="M60 94 V112"/><path d="M8 60 H26"/><path d="M94 60 H112"/></g></svg></span>
+      <span class="cd-series-txt"><span class="cd-series-name">World Cups</span></span>
+    </a>
     <div class="cd-headgrid">
       <div>
         <h1>Task 1 Highlights | 15th Paragliding World Cup Super Final Pegalajar 2026</h1>
@@ -353,12 +357,70 @@
       chaps.forEach(function (a) {
         a.classList.toggle('active', a.getAttribute('href') === '#' + id);
       });
+      if (window.cdTimeline) window.cdTimeline.set(blocks.indexOf(e.target));
     });
   }, { rootMargin: '-20% 0px -70% 0px' });
   blocks.forEach(function (b) { io.observe(b); });
 })();
+/* The chapter timeline under the player. Pointing at a stretch of the bar
+   names it without moving anything; the bar follows the reading (above) or,
+   while the video plays, the playback (episode-sync.js, which also makes a
+   click seek the video). On an audio episode a click seeks the audio. Without
+   script each stretch is a plain link to its chapter. */
+(function () {
+  var segs = [].slice.call(document.querySelectorAll('.cd-tl-seg'));
+  if (!segs.length) return;
+  var no = document.querySelector('.cd-tl-now b');
+  var name = document.querySelector('.cd-tl-now span');
+  var len = document.querySelector('.cd-tl-len');
+  var active = 0;
+  function show(i) {
+    var s = segs[i];
+    if (!s) return;
+    no.textContent = s.getAttribute('data-i');
+    name.textContent = s.getAttribute('data-n');
+    len.textContent = s.getAttribute('data-r');
+  }
+  function set(i) {
+    if (i < 0 || i >= segs.length) return;
+    active = i;
+    segs.forEach(function (s, k) {
+      s.classList.toggle('active', k === i);
+      s.classList.toggle('done', k < i);
+    });
+    show(i);
+  }
+  window.cdTimeline = { set: set };
+  var au = document.querySelector('.ep-au audio');
+  segs.forEach(function (s, i) {
+    s.addEventListener('mouseenter', function () { show(i); });
+    s.addEventListener('focus', function () { show(i); });
+    s.addEventListener('blur', function () { show(active); });
+    s.addEventListener('click', function (e) {
+      set(i);
+      if (au) {
+        e.preventDefault();
+        au.currentTime = +s.getAttribute('data-at');
+        if (au.paused) au.play();
+      }
+    });
+  });
+  document.querySelector('.cd-tl-bar').addEventListener('mouseleave', function () { show(active); });
+  set(0);
+})();
+/* On The Map: the route is drawn out from Oslo and the ring's index swings to
+   the bearing, once, when the box first comes into view. */
+(function () {
+  var m = document.querySelector('.cd-map');
+  if (!m) return;
+  if (!('IntersectionObserver' in window)) { m.classList.add('in'); return; }
+  var io = new IntersectionObserver(function (en) {
+    if (en[0].isIntersecting) { m.classList.add('in'); io.disconnect(); }
+  }, { threshold: 0.35 });
+  io.observe(m);
+})();
 </script>
-<script defer src="episode-sync.js?v=2ab4635c"></script>
+<script defer src="episode-sync.js?v=9eba1e10"></script>
 <!-- site-script -->
 <script defer src="../script.js?v=1bb85db6"></script>
 <!-- /site-script -->

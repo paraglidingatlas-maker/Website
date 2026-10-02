@@ -4,6 +4,11 @@
 # whatever the generators produced.
 set -e
 cd "$(dirname "$0")"
+# The globe's episode data first: the episode pages draw their small globes
+# from it (tools/episode_globes.js, which needs node; its output is committed,
+# so without node the pages build from the last one written).
+python3 tools/generate_globe_episodes.py >/dev/null
+if command -v node >/dev/null 2>&1; then node tools/episode_globes.js >/dev/null; fi
 python3 generate_chapter_deck.py    >/dev/null
 python3 generate_kb_pages.py        >/dev/null
 python3 generate_policies.py        >/dev/null
@@ -15,7 +20,6 @@ python3 tools/indexnow.py --write-key
 python3 tools/generate_redirects.py >/dev/null
 python3 tools/generate_404.py       >/dev/null
 python3 tools/generate_homepage_cards.py >/dev/null
-python3 tools/generate_globe_episodes.py >/dev/null
 python3 tools/generate_library_episodes.py >/dev/null
 python3 tools/generate_library_index.py >/dev/null
 python3 tools/inject_nav_menu.py
