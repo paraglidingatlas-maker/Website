@@ -1039,7 +1039,7 @@ img{max-width:100%;display:block;}
 .contour-bg{position:absolute;inset:0;width:100%;height:100%;color:var(--gray);opacity:0.15;z-index:0;}
 .newsletter-left, .newsletter-right{position:relative;z-index:1;}
 .newsletter-eyebrow{color:var(--orange);font-weight:600;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.2rem;}
-.newsletter-title{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05;color:var(--white);margin-bottom:1.5rem;text-transform:uppercase;}
+.newsletter-title{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05;color:var(--white);margin-bottom:1.5rem;}
 .newsletter-desc{color:var(--gray-light);max-width:480px;line-height:1.6;}
 .newsletter-right{display:flex;flex-direction:column;align-items:flex-start;}
 .newsletter-label{color:var(--gray-light);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.6rem;}
@@ -1855,4 +1855,63 @@ video[data-loop].is-playing{opacity:1;}
     .dest-media video[data-loop]{scale:1.14;animation:pga-depth linear both;
       animation-timeline:view();animation-range:cover;}
   }
+}
+
+/* ===== One label style =======================================================
+   Every small label that sits above a heading, on every page, is the same
+   thing: small orange capitals. Before this there were about a dozen versions
+   of it (15px orange sentence case on the trip pages, 11px orange capitals on
+   the knowledge base, grey on the homepage booking card, grey on the quiet
+   bands of the trip pages), each set by its own page.
+
+   !important on the type only, deliberately. These classes are styled again by
+   page-level rules in the knowledge base generator, the trip pages, the podcast
+   page and the topic pages, several of them more specific than anything a
+   shared rule could reasonably be. Spacing and display stay with each page,
+   since where a label sits is layout; what a label looks like is not. */
+.kicker,
+.why-kicker,
+.cta-eyebrow,
+.podcast-label,
+.newsletter-eyebrow,
+.clb-tag,
+.tg-ep-series,
+.kday-kicker,
+.cd-epno{
+  font-family:var(--font-body) !important;font-size:var(--fs-micro) !important;
+  font-weight:700 !important;line-height:1.5 !important;letter-spacing:0.14em !important;
+  text-transform:uppercase !important;color:var(--orange) !important;
+}
+
+/* ===== Section headings ======================================================
+   One size from the type scale for the homepage's section headings, which had
+   five between them. The two feature headings (the podcast and the newsletter)
+   keep their larger size. */
+.dest-copy h2,
+.cta-band h2,
+.ep-search-section h2,
+.map-heading,
+.why-label{
+  font-family:var(--font-display);font-size:var(--fs-h2);font-weight:700;line-height:1.2;letter-spacing:0;
+}
+/* The same size for the heading of every full-width band on the other pages,
+   which ranged from 26px to 61px at the same window width. !important for the
+   same reason as the labels: each of these is sized again by its own page.
+   Left at their own size on purpose: the homepage's podcast and newsletter
+   headings and the host's name on the podcast page (feature headings), and the
+   headings inside a box, a sidebar, a policy clause or a transcript. */
+.dst-head h2,
+.kfaq-rail h2,
+.expect-head h2,
+.glimpse-head h2,
+.testimonials-head h2,
+.fly-better h2,
+.pw-air-copy h2,
+.pw-chapter h2,
+.pw-trust h2,
+.pw-contact-copy h2,
+.clb-body h2,
+.k-head h2,
+.fq-in h2{
+  font-size:var(--fs-h2) !important;line-height:1.2 !important;
 }
