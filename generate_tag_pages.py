@@ -114,7 +114,7 @@ HEAD = """<!DOCTYPE html>
   <span class="nav-coords">59.9139&deg;N &middot; 10.7522&deg;E</span>
   <a href="{root}index.html" class="wordmark"><img src="{root}assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100"></a>
   <div class="nav-links">
-    <a href="{root}about.html">About Us</a>
+    <a href="{root}about.html">About Me</a>
     <span class="nav-sep">|</span>
     <a href="{root}knowledge-base.html">Knowledge Base</a>
     <span class="nav-sep">|</span>
@@ -156,7 +156,7 @@ HEAD = """<!DOCTYPE html>
     </div>
     <div class="footer-col">
       <h2>About</h2>
-      <a href="{root}about.html">About Us</a>
+      <a href="{root}about.html">About Me</a>
       <a href="{root}mission.html">Mission Statement</a>
       <a href="{root}safety-and-disclosure.html">Safety &amp; Disclosure</a>
       <a href="{root}corrections.html">Corrections</a>

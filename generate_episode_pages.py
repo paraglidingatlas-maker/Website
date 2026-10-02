@@ -111,7 +111,7 @@ TEMPLATE = """<!DOCTYPE html>
   <span class="nav-coords">59.9139°N · 10.7522°E</span>
   <a href="../index.html" class="wordmark"><img src="../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img"></a>
   <div class="nav-links">
-    <a href="../about.html">About Us</a>
+    <a href="../about.html">About Me</a>
     <span class="nav-sep">|</span>
     <a href="../knowledge-base.html">Knowledge Base</a>
     <span class="nav-sep">|</span>

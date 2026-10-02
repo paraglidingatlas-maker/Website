@@ -105,7 +105,7 @@ def link(a, b):
     links.append({"s": a, "t": b})
 
 node("home", "Home", "root", "index.html", 0)
-node("about", "About Us", "section", "about.html", 1)
+node("about", "About Me", "section", "about.html", 1)
 node("kb", "Knowledge Base", "section", "knowledge-base.html", 1)
 node("pod", "Podcast", "section", "podcast.html", 1)
 node("lib", "Episode Library", "section", "library.html", 2)
