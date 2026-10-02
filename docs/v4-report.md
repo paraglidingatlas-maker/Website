@@ -672,3 +672,38 @@ They draw themselves in like the others, with moving dashes on the leader's
 track, the breath and the ski line. Still as they were: the flight
 mechanics three-view and its Joukowski section (already computed exactly),
 the two route maps, and the four landing heroes.
+
+## Approved prototypes on the live site (owner, 2 Oct 2026)
+
+The owner asked for five approved prototypes (one prototype file, four tabs)
+to go onto the live site, one commit each. This was the owner's own request to
+change live pages; the switch-over to v4 was not done.
+
+| # | What | Commit |
+|---|------|--------|
+| 1 | Homepage: the glass globe (land and borders hosted in the repo) | 9e8831e, and db13583 (no failure on a cached homepage) |
+| 2 | Title Case headings sitewide (a build step) and one label style | a84cc1c |
+| 3 | About page rebuilt, first person; "About Me" in every nav and footer | 73ad8d1 |
+| 4 | Episode pages: series emblem, chapter timeline that seeks the video, On The Map globe drawn at build time | 52e5db2 |
+| 5 | Sitemap as the night sky, with all 93 episode pages | see git log |
+
+Decisions taken without asking, for the owner to overrule:
+
+- Episode titles and transcript chapter names keep their own case; h3 card
+  titles and FAQ questions are not section headings and are untouched.
+- Feature headings keep their size (homepage podcast and newsletter, the host's
+  name); headings inside boxes, sidebars, policy clauses and the library's list
+  headers keep theirs.
+- A click on pins stacked on one spot zooms in rather than opening a card (the
+  prototype's smart pointer).
+- The sitemap includes the six pages the library leaves out on purpose (thank
+  you note, four Oslo reels, the trailer), each under its series in
+  episode-meta.json.
+
+Needs the owner:
+
+- New Technologies 5 (Frantisek Pavlousek) is missing from library-data.js, so
+  it is not in the episode library. The sitemap now lists it; the library does
+  not. Add it to the library, or say it was left out on purpose.
+- episodes/new-technologies-5-frantisek-pavlousek-2.html is only a redirect to
+  the episode above; it can stay as it is or be removed.

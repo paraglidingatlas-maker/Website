@@ -27,11 +27,6 @@
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="styles.css">
 <style>
-.sm-wrap{max-width:1140px;margin:0 auto;padding:clamp(2.5rem,5.5vw,4rem) clamp(1.25rem,4vw,3rem) 5rem;}
-.sm-wrap h1{font-family:var(--font-display);font-weight:800;
-  font-size:clamp(2rem,4.4vw,3rem);letter-spacing:-0.025em;line-height:1.08;}
-.sm-lede{color:var(--gray-light);font-size:1rem;margin-top:0.7rem;max-width:56ch;}
-.sm-stat{color:var(--gray);font-size:0.85rem;margin-top:0.9rem;}
 
 /* the five places you can go */
 
@@ -66,92 +61,124 @@
 .sm-eps a:hover{color:var(--orange);}
 .sm-eps a.sm-out::after{content:" \2197";color:var(--gray);font-size:0.78rem;}
 
-/* network graph */
-.sm-graph{position:relative;background:#101116;border:1px solid var(--line);
-  margin:2.2rem 0 1rem;overflow:hidden;}
-.sm-graph::before,.sm-graph::after{content:"";position:absolute;width:12px;height:12px;
-  border-color:var(--live);z-index:3;pointer-events:none;}
-.sm-graph::before{top:9px;left:9px;border-left:1px solid;border-top:1px solid;}
-.sm-graph::after{bottom:9px;right:9px;border-right:1px solid;border-bottom:1px solid;}
-#sm-svg{display:block;width:100%;height:640px;cursor:grab;touch-action:pan-y;}
-#sm-svg:active{cursor:grabbing;}
+/* =====================================================================
+   Sitemap as a night sky.
+   ===================================================================== */
+.sky{position:relative;}
+.sky-hud{position:absolute;z-index:3;left:clamp(1.5rem,5vw,4rem);top:clamp(1.3rem,2.6vw,2.2rem);max-width:44rem;pointer-events:none;}
+.sky-hud h1{font-family:var(--font-display);font-weight:700;font-size:var(--fs-h2);line-height:1.15;color:var(--white);margin:0;}
+.sky-lede{color:var(--gray-light);font-size:0.95rem;line-height:1.55;margin:0.55rem 0 0;max-width:27rem;}
+.sky-stat{color:var(--gray);font-size:var(--fs-small);margin:0.5rem 0 0;}
+.sky-count{color:var(--orange);font-size:var(--fs-micro);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin:0.7rem 0 0;}
+.sky-actions{position:absolute;z-index:4;left:clamp(1.5rem,5vw,4rem);bottom:1rem;display:flex;flex-wrap:wrap;gap:0.45rem;max-width:calc(100% - 16rem);}
+.sky-actions button{min-height:38px;padding:0.55rem 0.9rem;cursor:pointer;background:rgba(20,21,25,0.7);border:1px solid var(--edge-hi);
+  color:var(--white);font-family:var(--font-body);font-size:0.82rem;font-weight:600;transition:border-color .18s ease,color .18s ease,filter .18s ease;}
+.sky-actions button:hover{border-color:var(--orange);color:var(--orange);}
+.sky-actions .sky-primary{background:var(--orange);border-color:var(--orange);color:var(--ink);font-weight:700;}
+.sky-actions .sky-primary:hover{color:var(--ink);filter:brightness(1.1);}
+.sky-actions button:focus-visible,.sky-ctrl button:focus-visible,.sky-list button:focus-visible{outline:2px solid var(--white);outline-offset:2px;}
 
-/* three tiers of attention: what just opened, the path back, everything else */
-.t0{opacity:1;}
-.t1{opacity:0.5;}
-.t2{opacity:0.2;}
-.sm-node,.sm-edge,.sm-flow,.sm-stub{transition:opacity 0.55s cubic-bezier(.4,0,.2,1);}
+.sky-view{position:relative;height:clamp(620px,calc(100vh - 150px),1100px);overflow:hidden;cursor:grab;touch-action:none;
+  user-select:none;-webkit-user-select:none;
+  background:radial-gradient(120% 90% at 50% 100%,var(--card) 0%,var(--bg) 62%);}
+.sky-view.is-dragging{cursor:grabbing;}
+.sky-stars,.sky-svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
+.sky-hit{fill:transparent;}
 
-.sm-edge{stroke:rgba(180,180,180,0.34);stroke-width:1;}
-.sm-flow{fill:rgba(180,180,180,0.4);}
-.sm-stub{stroke:rgba(180,180,180,0.2);stroke-width:1;}
+/* ---- Stars ---- */
+.sky-dot{transform:scale(var(--ss,1));}
+.sky-lab{transform:scale(var(--ls,1));}
+.sky-star{cursor:pointer;outline:none;}
+.sky-core{fill:var(--white);animation:sky-twinkle 4.6s ease-in-out infinite;}
+.sky-glow{fill:var(--white);opacity:0.07;transition:opacity .2s ease,fill .2s ease;}
+.sky-star:hover .sky-glow,.sky-star:focus-visible .sky-glow,.sky-star.is-picked .sky-glow{opacity:0.3;fill:var(--orange);}
+.sky-star:hover .sky-core,.sky-star.is-picked .sky-core,.sky-star:focus-visible .sky-core{fill:var(--orange);animation:none;}
+@keyframes sky-twinkle{0%,100%{opacity:1;}50%{opacity:0.5;}}
+@media (prefers-reduced-motion:reduce){ .sky-core{animation:none;} }
 
-/* Nothing in the graph is selectable text. One click used to start a selection
-   that highlighted labels across the whole diagram and stayed until you clicked
-   somewhere else on purpose. An SVG label is a picture of a word here, not
-   something anyone wants to copy. */
-.sm-graph{user-select:none;-webkit-user-select:none;}
-.sm-node{cursor:pointer;}
-.sm-hit{fill:transparent;}
-.sm-glyph{fill:#171921;stroke:rgba(180,180,180,0.5);stroke-width:1.2;
-  transition:fill 0.16s ease,stroke 0.16s ease;}
-.sm-ring{fill:none;stroke:rgba(246,244,244,0.5);stroke-width:1.2;}
-.sm-core{fill:rgba(246,244,244,0.72);}
-.sm-cross{stroke:rgba(246,244,244,0.34);stroke-width:1;}
-.sm-open .sm-glyph{fill:#101116;stroke:rgba(180,180,180,0.32);}
-.sm-node:hover .sm-glyph,.sm-node:focus .sm-glyph{stroke:var(--orange);fill:#1d1f27;}
-.sm-focus .sm-glyph{stroke:rgba(246,244,244,0.85);}
-.sm-node:focus{outline:none;}
+/* ---- Constellations: the emblem is there all along, and is drawn in when found ---- */
+.sky-art *{fill:none;stroke:var(--gray-light);stroke-width:0.55;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:1;stroke-dashoffset:1;opacity:0.7;transition:stroke-dashoffset 1.3s cubic-bezier(.4,0,.2,1),stroke .3s ease,opacity .3s ease;}
+.sky-con.is-near .sky-art *{stroke-dashoffset:0;opacity:0.13;transition:opacity .3s ease;}
+.sky-con.is-found .sky-art *,.sky.is-named .sky-art *{stroke-dashoffset:0;opacity:0.62;}
+.sky-con.is-open .sky-art *{stroke:var(--orange);opacity:0.85;}
+.sky-name{opacity:0;pointer-events:none;cursor:pointer;outline:none;transition:opacity .5s ease .7s;}
+.sky-con.is-found .sky-name,.sky.is-named .sky-name{opacity:1;pointer-events:auto;}
+.sky-name-main{font-family:var(--font-display);font-size:17px;font-weight:600;fill:var(--white);text-anchor:middle;dominant-baseline:central;transition:fill .18s ease;}
+.sky-name-sub{font-family:var(--font-body);font-size:10.5px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;fill:var(--gray);text-anchor:middle;dominant-baseline:central;}
+.sky-name:hover .sky-name-main,.sky-name:focus-visible .sky-name-main,.sky-con.is-open .sky-name-main{fill:var(--orange);}
 
-.sm-lead{stroke:rgba(180,180,180,0.35);stroke-width:1;}
-.sm-label{fill:var(--gray);font-family:var(--font-body);font-size:11px;
-  pointer-events:none;transition:fill 0.16s ease;}
-.sm-root .sm-label,.sm-section .sm-label{fill:var(--gray-light);font-weight:600;
-  font-size:12px;letter-spacing:0.04em;}
-.sm-node:hover .sm-label,.sm-node:focus .sm-label{fill:var(--orange);}
+/* ---- Regions of the sky: the knowledge base categories ---- */
+.sky-region{cursor:pointer;outline:none;}
+.sky-region-name{font-family:var(--font-body);font-size:19px;font-weight:600;letter-spacing:0.34em;text-transform:uppercase;fill:var(--gray);
+  text-anchor:middle;dominant-baseline:central;transition:fill .18s ease;}
+.sky-region-rule{fill:none;stroke:var(--line);stroke-dasharray:2 8;}
+.sky-region:hover .sky-region-name,.sky-region:focus-visible .sky-region-name{fill:var(--orange);}
 
-/* the travelling signal: an accent, never a second connector.
-   The head is the same visual weight as the grey line it runs along. */
-.sm-signal{pointer-events:none;}
-.sm-sig{fill:var(--orange);}
-.sm-sig-tail{stroke:var(--orange);stroke-width:1;stroke-linecap:round;fill:none;}
+/* ---- Card, list, toast, controls ---- */
+.sky-card{width:19rem;z-index:5;}
+.sky-card:not(.pinned){pointer-events:none;}
+.sky-card .mp-bd{padding:0.9rem 1.1rem 1.1rem;}
+.sky-card .mp-rd:empty{display:none;}
+.sky-list{position:absolute;z-index:4;right:clamp(1rem,3vw,2rem);top:1.1rem;bottom:4.6rem;width:19.5rem;display:none;overflow:auto;
+  padding:1.2rem 1.2rem 1rem;background:rgba(20,21,25,0.93);border:1px solid var(--edge-hi);
+  user-select:text;-webkit-user-select:text;cursor:auto;scrollbar-width:thin;}
+.sky-list.visible{display:block;}
+.sky-list h2{font-family:var(--font-display);font-weight:700;font-size:1.25rem;line-height:1.2;color:var(--white);margin:0 1.6rem 0.6rem 0;}
+.sky-list-links{display:flex;flex-wrap:wrap;gap:0.3rem 1.1rem;margin:0 0 0.8rem;}
+.sky-list-links a{color:var(--orange);font-size:0.82rem;font-weight:600;}
+.sky-list ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
+.sky-list li{border-bottom:1px solid var(--line);}
+.sky-list ol button{display:block;width:100%;text-align:left;background:transparent;border:0;cursor:pointer;padding:0.6rem 0;
+  color:var(--gray-light);font-family:var(--font-body);font-size:0.86rem;line-height:1.4;transition:color .15s ease;}
+.sky-list ol button:hover{color:var(--orange);}
+.sky-list-close{position:absolute;top:0.7rem;right:0.7rem;width:32px;height:32px;background:transparent;border:1px solid var(--edge);
+  color:var(--gray-light);font-size:1.1rem;line-height:1;cursor:pointer;}
+.sky-list-close:hover{border-color:var(--orange);color:var(--orange);}
+.sky-toast{position:absolute;z-index:4;left:50%;bottom:4.2rem;transform:translate(-50%,8px);margin:0;padding:0.55rem 0.95rem;max-width:calc(100% - 9rem);
+  background:rgba(20,21,25,0.94);border:1px solid var(--live);color:var(--white);font-size:0.88rem;font-weight:500;text-align:center;
+  opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;}
+.sky-toast.visible{opacity:1;transform:translate(-50%,0);}
+.sky-ctrl{position:absolute;z-index:4;right:clamp(1rem,3vw,2rem);bottom:1rem;display:flex;}
+.sky-ctrl button{height:38px;min-width:38px;padding:0 0.7rem;display:grid;place-items:center;cursor:pointer;
+  background:rgba(20,21,25,0.85);border:1px solid var(--edge-hi);color:var(--white);font-family:var(--font-body);font-size:1.1rem;line-height:1;}
+.sky-ctrl button + button{border-left:0;}
+.sky-ctrl .sky-reset{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;}
+.sky-ctrl button:hover{border-color:var(--orange);color:var(--orange);}
 
-/* Arrival: the destination node itself warms and settles back. Nothing is
-   drawn over it, and the label keeps its own hover colour separately. */
-.sm-activated .sm-glyph{animation:smWake 1250ms cubic-bezier(.2,.7,.2,1) both;}
-@keyframes smWake{
-  0%{stroke:rgba(180,180,180,0.5);}
-  18%{stroke:var(--orange);}
-  100%{stroke:rgba(180,180,180,0.5);}
+/* ---- The ground: every other page, under a ridge line ---- */
+.sky-ground{position:relative;background:var(--card);}
+.sky-ridge{display:block;width:100%;height:40px;margin-top:-39px;position:relative;z-index:2;pointer-events:none;}
+.sky-ridge path{fill:var(--card);stroke:var(--edge-hi);stroke-width:1;vector-effect:non-scaling-stroke;}
+.sky-ground-in{max-width:1400px;margin:0 auto;padding:1.4rem clamp(1.5rem,5vw,4rem) 2rem;display:grid;
+  grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:1.5rem clamp(1.5rem,3vw,3rem);}
+.sky-g h2{font-family:var(--font-body);font-size:var(--fs-micro);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);margin:0 0 0.7rem;}
+.sky-g ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.1rem;}
+.sky-g a{display:inline-flex;align-items:center;gap:0.65rem;min-height:34px;color:var(--gray-light);font-size:0.92rem;transition:color .15s ease;}
+.sky-g a:hover{color:var(--orange);}
+.sky-g a img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:1px solid var(--edge-hi);flex:none;}
+.sky-g a span{display:flex;flex-direction:column;line-height:1.3;}
+.sky-g a small{color:var(--gray);font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;}
+.sky-g:first-child ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.5rem 1rem;}
+.sky-hint{text-align:center;color:var(--gray);font-size:0.85rem;margin:0;padding:1.1rem 1.5rem clamp(2rem,4vw,3rem);background:var(--card);}
+
+@media(max-width:900px){ .sky-ground-in{grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media(max-width:760px){
+  .sky-hud{position:static;padding:1.6rem clamp(1.25rem,5vw,2rem) 1.2rem;max-width:none;}
+  .sky-view{height:74vh;min-height:500px;}
+  .sky-list{left:0;right:0;top:auto;bottom:0;width:auto;max-height:46%;border-left:0;border-right:0;border-bottom:0;}
+  .sky-ctrl{bottom:auto;top:0.8rem;right:0.8rem;}
+  .sky-actions{left:0.8rem;right:0.8rem;bottom:0.8rem;max-width:none;}
+  .sky-actions button{flex:1 1 auto;padding:0.5rem 0.6rem;font-size:0.76rem;}
+  .sky-list{z-index:6;}
+  .sky-toast{bottom:auto;top:3.9rem;left:0.8rem;right:0.8rem;transform:translateY(-8px);max-width:none;}
+  .sky-toast.visible{transform:translateY(0);}
+  .sky-card{width:min(19rem,calc(100% - 20px));}
 }
-@media (prefers-reduced-motion:reduce){
-  .sm-activated .sm-glyph{animation:none;}
-}
-@media (prefers-reduced-motion:reduce){
-  }
-/* a node with nothing under it is a destination, so mark it as one */
-/* The hit rectangle stays invisible. It used to fill with orange on hover, which
-   drew a block behind the node rather than highlighting the node: the glyph and
-   the label already turn orange, and that IS the highlight. Keyboard focus still
-   needs a visible mark, so it gets an outline on the node itself. */
-.sm-node:focus-visible .sm-glyph{stroke:var(--orange);}
-.sm-node:focus-visible .sm-hit{fill:none;stroke:var(--live);stroke-width:1;}
-.sm-episode:hover .sm-label,.sm-episode:focus .sm-label{text-decoration:underline;
-  text-underline-offset:3px;}
+@media(max-width:520px){ .sky-ground-in{grid-template-columns:1fr;} }
 
-.sm-bar{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;}
-#sm-info{color:var(--gray);font-size:0.82rem;}
-#sm-info strong{color:var(--gray-light);font-weight:600;margin-right:0.55rem;}
-#sm-info{display:flex;flex-wrap:wrap;align-items:baseline;gap:0.15rem 0.55rem;
-  min-height:1.5rem;max-width:64ch;}
-.sm-go{color:var(--orange);text-decoration:underline;text-underline-offset:3px;
-  font-size:0.8rem;white-space:nowrap;}
-.sm-ctrl{display:flex;gap:0.4rem;}
-.sm-ctrl button{background:none;border:1px solid var(--edge);color:var(--gray);
-  font-family:var(--font-body);font-size:0.78rem;padding:0.34rem 0.8rem;cursor:pointer;
-  min-width:2.1rem;transition:all 0.16s ease;}
-.sm-ctrl button:hover{color:var(--gray-light);border-color:var(--edge-hi);}
-@media (max-width:720px){#sm-svg{height:440px;}}
+/* Without script the sky has nothing to show; the text index stands in. */
+.sm-index{max-width:1140px;margin:0 auto;padding:clamp(2.5rem,5.5vw,4rem) clamp(1.25rem,4vw,3rem) 4rem;}
 </style>
 </head>
 <body>
@@ -176,30 +203,43 @@
 </nav>
 <div class="nav-chevron"></div>
 
-<div class="sm-wrap">
-
-  <h1>How to find your way around</h1>
-  <p class="sm-lede">The whole site as a map. Start at the centre and open each branch to see what sits under it. Clicking only opens a branch, so you can explore the shape of things without losing your place.</p>
-  <p class="sm-stat">{{SERIESCOUNT}} series &middot; {{EPCOUNT}} episodes &middot; {{PAGECOUNT}} with full transcripts</p>
-
-  <div class="sm-graph">
-    <svg id="sm-svg" viewBox="0 0 900 620" preserveAspectRatio="xMidYMid meet"
-         role="img" aria-label="Network graph of the site structure. A full text index follows below."></svg>
+<section class="sky">
+  <div class="sky-hud">
+    <h1>How To Find Your Way Around</h1>
+    <p class="sky-lede">The whole site as a night sky. Every star is an episode and every constellation is a series. There are {{SERIESCOUNT}} to find.</p>
+    <p class="sky-stat">{{SERIESCOUNT}} series &middot; {{EPCOUNT}} episodes &middot; {{TRIPCOUNT}} destinations</p>
+    <p class="sky-count" role="status"></p>
   </div>
-  <div class="sm-bar">
-    <p id="sm-info"><strong>Click a node to open it out.</strong><span>Drag to move around. Episodes have nothing under them, so clicking one opens that episode.</span></p>
-    <div class="sm-ctrl">
-      <button id="sm-out" type="button" aria-label="Zoom out">&minus;</button>
-      <button id="sm-in" type="button" aria-label="Zoom in">+</button>
-      <button id="sm-reset" type="button">Reset</button>
+  <div class="sky-view">
+    <canvas class="sky-stars" aria-hidden="true"></canvas>
+    <svg class="sky-svg" role="group" aria-label="The site as a night sky. Each star is an episode and each constellation a series. A full text index is part of this page for anyone not using the map."></svg>
+    <div class="map-popup sky-card">
+      <span class="mp-tick tl"></span><span class="mp-tick br"></span>
+      <div class="mp-bd"></div>
+    </div>
+    <aside class="sky-list" aria-label="Episodes in this constellation"></aside>
+    <p class="sky-toast" role="status" aria-live="polite"></p>
+    <div class="sky-actions">
+      <button type="button" data-a="random" class="sky-primary">Take me to a star</button>
+      <button type="button" data-a="all">Name every constellation</button>
+      <button type="button" data-a="again">Start again</button>
+    </div>
+    <div class="sky-ctrl">
+      <button type="button" data-z="in" aria-label="Zoom in">+</button>
+      <button type="button" data-z="out" aria-label="Zoom out">&minus;</button>
+      <button type="button" data-z="reset" class="sky-reset">Whole sky</button>
     </div>
   </div>
+  <nav class="sky-ground" aria-label="Every other page on the site"></nav>
+  <p class="sky-hint">Click a star to find its constellation. Drag to look around.</p>
+</section>
 
-  <noscript>
+<noscript>
+  <style>.sky-view,.sky-hint,.sky-lede{display:none;}.sky-hud{position:static;padding:2rem clamp(1.25rem,5vw,4rem) 0;}</style>
+  <div class="sm-index">
 {{TREE}}
-  </noscript>
-
-</div>
+  </div>
+</noscript>
 
 </div><!-- /.page-wrap -->
 
@@ -257,7 +297,7 @@
   </div>
 </footer>
 
-<script>window.SITEMAP_GRAPH = {{GRAPH}};</script>
-<script src="sitemap-graph.js"></script>
+<script>window.SITEMAP_SKY = {{SKY}};</script>
+<script src="sitemap-sky.js"></script>
 </body>
 </html>

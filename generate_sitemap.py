@@ -33,6 +33,18 @@ PAGE = {m["video_id"]: m for m in META if m.get("video_id")}
 # back to the page slug, which library-data.js carries for every episode.
 BYSLUG = {m["slug"]: m for m in META}
 
+# EVERY EPISODE PAGE, NOT ONLY THE LIBRARY'S. The library leaves out six pages
+# on purpose (a note of thanks, four Oslo reels and the show trailer, listed at
+# the top of library-data.js) and is missing New Technologies 5, so the sitemap
+# listed 86 of the 93 episode pages. The rest are added here from
+# episode-meta.json, under the series that file gives them. The 94th file in
+# episodes/ is not a page: it is a redirect left behind by a renamed slug.
+_listed = {(PAGE.get(e["id"]) or BYSLUG.get(e.get("page", "")) or {}).get("slug") for e in EPS}
+for _n, _m in enumerate(m for m in META if m["slug"] not in _listed):
+    if _m.get("series") in TOPICS:
+        EPS.append({"order": 10000 + _n, "id": _m.get("video_id") or "", "page": _m["slug"],
+                    "topic": _m["series"], "title": _m["title"]})
+
 KB_PAGE = {}
 for f in glob.glob(os.path.join(ROOT, 'knowledge-base', '*.html')):
     KB_PAGE[os.path.basename(f)[:-5]] = True
@@ -126,12 +138,82 @@ for cat, series_list in CATS:
         link("lib", sid)          # the same series is reachable from the library too
         for e in sorted([x for x in EPS if x["topic"] == sname], key=lambda x: x["order"]):
             m = PAGE.get(e["id"]) or BYSLUG.get(e.get("page", ""))
-            eid = "ep:" + e["id"]
+            # By page, not by video id: the eight audio-only episodes have no
+            # video id and all came out as "ep:", one point for eight episodes.
+            eid = "ep:" + (m["slug"] if m else e["id"])
             node(eid, fix_title(e["id"], e["title"].split("[")[0]), "episode",
                  ("episodes/%s.html" % m["slug"]) if m else ("https://www.youtube.com/watch?v=%s" % e["id"]), 4)
             link(sid, eid)
 
 GRAPH = json.dumps({"nodes": nodes, "links": links}, ensure_ascii=False)
+
+# ---------------- the night sky (sitemap-sky.js) ----------------
+def ep_url(e):
+    m = PAGE.get(e["id"]) or BYSLUG.get(e.get("page", ""))
+    return ("episodes/%s.html" % m["slug"]) if m else ("https://www.youtube.com/watch?v=%s" % e["id"])
+
+def plural(n, word):
+    return "%d %s%s" % (n, word, "" if n == 1 else "s")
+
+lib_series = []
+for _cat, series_list in CATS:
+    for sname in series_list:
+        eps = sorted([e for e in EPS if e["topic"] == sname], key=lambda e: e["order"])
+        lib_series.append({"label": sname, "kind": "series", "series": sname,
+                           "url": "library.html#s=" + sname.replace(" ", "%20").replace(",", "%2C"),
+                           "sub": plural(len(eps), "episode"),
+                           "children": [{"label": fix_title(e["id"], e["title"].split("[")[0]),
+                                         "kind": "episode", "url": ep_url(e)} for e in eps]})
+kb_cats = []
+for cat, series_list in CATS:
+    page = CAT_PAGE.get(cat)
+    kb_cats.append({"label": cat, "kind": "category",
+                    "url": ("knowledge-base/%s.html" % page) if page and page in KB_PAGE else "knowledge-base.html",
+                    "sub": plural(len(series_list), "series").replace("seriess", "series"),
+                    "children": [{"label": sn, "kind": "guide", "series": sn,
+                                  "url": "knowledge-base/%s.html" % kb_slug(sn)}
+                                 for sn in series_list if kb_slug(sn)]})
+# The trips as the homepage presents them: its photographs (a small copy for
+# a 34px circle) and the season or the date it is planned for.
+TRIPS = [("Kenya", "destinations/kenya.html", "kenya-3", "December to March"),
+         ("India", "destinations/india.html", "himalayas-1", "October to November"),
+         ("Peru", "enquire.html?trip=peru", "peru-1", "Planned for November 2027"),
+         ("Kazakhstan", "enquire.html?trip=kazakhstan", "kazakhstan-1", "Planned for June 2027")]
+SKY_TREE = {"label": "Home", "kind": "root", "url": "index.html", "children": [
+    {"label": "Podcast", "kind": "section", "url": "podcast.html",
+     "sub": "%d series, %d episodes" % (len(TOPICS), len(EPS)), "children": [
+        {"label": "Episode Library", "kind": "lib", "url": "library.html",
+         "sub": "%d series" % len(TOPICS), "children": lib_series},
+        {"label": "Topics", "kind": "page", "url": "tags.html"}]},
+    {"label": "Knowledge Base", "kind": "section", "url": "knowledge-base.html",
+     "sub": plural(len(kb_cats), "category").replace("categorys", "categories"), "children": kb_cats},
+    {"label": "Trips", "kind": "section", "url": "index.html#destinations",
+     "sub": "%d destinations" % len(TRIPS), "children":
+        [{"label": l, "kind": "trip", "url": u, "img": "assets/images/%s-thumb.webp" % i, "sub": sub}
+         for l, u, i, sub in TRIPS] + [{"label": "Enquire", "kind": "page", "url": "enquire.html"}]},
+    {"label": "About Me", "kind": "section", "url": "about.html", "sub": "4 pages", "children": [
+        {"label": "Mission Statement", "kind": "page", "url": "mission.html"},
+        {"label": "Safety & Disclosure", "kind": "page", "url": "safety-and-disclosure.html"},
+        {"label": "Corrections", "kind": "page", "url": "corrections.html"},
+        {"label": "Partner With Me", "kind": "page", "url": "partners.html"}]},
+    {"label": "Legal", "kind": "section", "url": None, "sub": "4 pages", "children": [
+        {"label": "Terms & Conditions", "kind": "page", "url": "terms.html"},
+        {"label": "Privacy Policy", "kind": "page", "url": "privacy-policy.html"},
+        {"label": "Cookie Policy", "kind": "page", "url": "cookie-policy.html"},
+        {"label": "Participant Agreement", "kind": "page", "url": "participant-agreement.html"}]}]}
+SKY_META = {}
+for m in META:
+    SKY_META["episodes/%s.html" % m["slug"]] = {
+        k: v for k, v in (("epno", m.get("epno")), ("guest", m.get("guest")),
+                          ("nch", len(m.get("chapters") or []) or None), ("dur", m.get("duration_label")))
+        if v}
+try:
+    _GLYPHS = json.load(open(os.path.join(ROOT, "tools", "data", "episode-extras.json"), encoding="utf-8"))["glyphs"]
+except (OSError, ValueError, KeyError):
+    _GLYPHS = {}
+SKY = json.dumps({"tree": SKY_TREE, "meta": SKY_META, "glyphs": _GLYPHS}, ensure_ascii=False)
+# </script> cannot appear inside the inline script
+SKY = SKY.replace("</", "<\\/")
 
 tmpl = open(os.path.join(ROOT, 'templates', 'sitemap-template.html')).read()
 import sys as _sys, os as _os
@@ -139,11 +221,8 @@ _sys.path.insert(0, ROOT)
 import site_config as _cfg
 out = tmpl.replace('{{BASE}}', _cfg.BASE)
 out = out.replace('{{TREE}}', "\n".join(rows))
-out = out.replace('{{GRAPH}}', GRAPH)
-# cache bust the script so a browser can never serve a stale copy
-import hashlib
-_v = hashlib.md5(open(os.path.join(ROOT, 'sitemap-graph.js'), 'rb').read()).hexdigest()[:8]
-out = out.replace('src="sitemap-graph.js"', 'src="sitemap-graph.js?v=%s"' % _v)
+out = out.replace('{{SKY}}', SKY)
+out = out.replace('{{TRIPCOUNT}}', str(len(TRIPS)))
 out = out.replace('{{EPCOUNT}}', str(len(EPS)))
 out = out.replace('{{PAGECOUNT}}', str(sum(1 for e in EPS if e["id"] in PAGE or e.get("page") in BYSLUG)))
 out = out.replace('{{SERIESCOUNT}}', str(len(TOPICS)))

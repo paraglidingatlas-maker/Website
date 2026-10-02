@@ -504,6 +504,29 @@ def episode_sync(pg, base):
         pg.unroute("**/www.youtube-nocookie.com/embed/**")
 
 
+def sitemap_sky(pg, base):
+    """The sitemap is a night sky (sitemap-sky.js, October 2026): every
+    episode page is a star, and a star opens its constellation's list. The
+    count is checked against the episode pages themselves, because the old
+    sitemap quietly listed 86 of 93 and merged the eight audio-only episodes
+    into one point."""
+    import glob as _glob, re as _re
+    pages = 0
+    for f in _glob.glob("episodes/*.html"):
+        if 'http-equiv="refresh"' not in open(f, encoding="utf-8").read(3000):
+            pages += 1
+    pg.goto(base + "/sitemap.html", wait_until="load")
+    pg.wait_for_timeout(1500)
+    stars = pg.evaluate("document.querySelectorAll('.sky-star').length")
+    urls = pg.evaluate("new Set([...document.querySelectorAll('.sky-star')].map(s=>s.getAttribute('aria-label'))).size")
+    check(stars == pages, "sitemap", "every episode page is a star in the sky", "%d stars, %d pages" % (stars, pages))
+    check(urls == stars, "sitemap", "no two stars are the same episode", "%d distinct of %d" % (urls, stars))
+    pg.click(".sky-actions [data-a=random]")
+    pg.wait_for_timeout(1400)
+    n = pg.evaluate("document.querySelectorAll('.sky-list.visible li').length")
+    check(n > 0, "sitemap", "a star opens its constellation's list", n)
+
+
 def kenya_hero(pg, base):
     """The full bleed hero on the Kenya page.
 
@@ -1576,7 +1599,7 @@ def main():
                 return 0
             pg = browser.new_page(viewport={"width": 1280, "height": 900},
                                   reduced_motion="no-preference")
-            for fn in (rail, nav, player, library, search, kenya, booking_bar, episode_sync, kenya_hero, kenya_map, kenya_gallery, kenya_facts, kenya_overview, kenya_dates, kenya_rolls, india, enquire, overflow):
+            for fn in (rail, nav, player, library, search, kenya, booking_bar, episode_sync, sitemap_sky, kenya_hero, kenya_map, kenya_gallery, kenya_facts, kenya_overview, kenya_dates, kenya_rolls, india, enquire, overflow):
                 guarded(fn, pg, base)
             pg.close()
             pg2 = browser.new_page(viewport={"width": 1280, "height": 900},
