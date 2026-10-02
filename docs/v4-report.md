@@ -63,6 +63,7 @@ marked done is the next step.
 | 13. Trip galleries as a fly-through, option A of three (owner, 1 Oct): India and Kenya, tools/v4_flythrough.py | done | see git log | all gates PASS |
 | 14. Trip route sections: zoom from orbit with the route over it (owner: "C with A route overlay"). Kenya: six sites, line diagram by the page's legs; India: Bir's coordinate, the page's schematic as the route. tools/v4_tripmap.py | done | see git log | all gates PASS |
 | 15. The 404 as "lost the lift" (owner: B, then "change it with A"): a Gold line vario sinking at -4.04, the barogram falling, the four doors under it. tools/v4_404_options.py --install a | done | see git log | all gates PASS |
+| 16. "Tell me why", stage 1 of 3 (owner): ask anything, answered with the guests' own words from 8,904 transcript passages in 78 episodes, searched on the reader's device, each linked to its chapter. Stage 2 (written answers) needs an Anthropic API key and a small server: see Needs the owner. tools/v4_tellmewhy.py, samples/tell-me-why.html | done (sample) | see git log | all gates PASS |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they
@@ -76,6 +77,7 @@ python3 tools/v2_switch.py --site v4 --dry-run
 
 ## Needs the owner
 (collected as the run goes; nothing here blocks the build)
+- **Tell me why, stage 2.** Written answers on top of the transcript passages need an Anthropic API key and a small server to hold it (the site is static). Once there is one, set data-endpoint on the page; the page already sends the question and the passages it found.
 - **Proof from past clients.** The site has no quotes from trip clients (its
   testimonials are podcast listeners), so both trip pages show "From past
   pilots [to supply]". Send quotes and photos with permission.
