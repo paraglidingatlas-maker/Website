@@ -153,7 +153,7 @@ def opt_b(src, ds):
         y += 24 * math.sin(hd)
         step += 1
     track = P(tr)
-    tps = [(960, 230), (1200, 330), (1000, 500), (1240, 640)]   # the right half, clear of the words
+    tps = [(1020, 220), (1235, 330), (1050, 500), (1250, 645)]   # the right half, clear of the words
     tp = ""
     for (t, l, h), (px, py) in zip(ds, tps):
         tp += ('<a class="nb-tp" href="%s"><circle cx="%d" cy="%d" r="58" class="nb-cyl"/><circle cx="%d" cy="%d" r="5" class="nb-tpd"/>'
@@ -163,12 +163,18 @@ def opt_b(src, ds):
            '<rect x="60" y="60" width="%d" height="%d" class="nb-neat"/><g class="nb-par">%s%s</g>'
            '<path class="nb-trk0" d="%s"/><path class="nb-trk" d="%s"/>%s'
            '<g class="nb-you" transform="translate(%d,40)"><circle r="8" class="nb-ydot"/><text x="16" y="5" class="nb-yt">YOU ARE HERE, OFF THE SHEET</text></g>'
-           '<text x="76" y="%d" class="nb-sheet">SHEET 404 &middot; NOT ON THIS MAP</text></svg>'
-           % (W, H, W - 120, H - 120, grid, con, track, track, tp, W - 420, H - 74))
+           '<text x="%d" y="%d" text-anchor="end" class="nb-sheet">SHEET 404 &middot; NOT ON THIS MAP</text></svg>'
+           % (W, H, W - 120, H - 120, grid, con, track, track, tp, W - 420, W - 76, H - 74))
     body = ('<main class="nf nf-b"><div class="nb-map">%s</div><div class="nf-copy nb-copy"><span class="kit-kicker">%s</span><h1>%s</h1><p class="kit-intro">%s</p>%s'
-            '<p class="nb-hint">Pick a turnpoint to fly back in.</p></div></main>' % (svg, kicker, h1, intro, find))
-    css = """
-.nf-b{position:relative;min-height:clamp(640px,100svh,1000px);overflow:hidden;display:flex;flex-direction:row;align-items:flex-end;justify-content:flex-start;padding:7rem var(--gutter) var(--sp-5);}
+            '<p class="nb-hint">Pick a turnpoint to fly back in.</p><ul class="nb-doors">%s</ul></div></main>'
+            % (svg, kicker, h1, intro, find, "".join('<li><a href="%s">%s</a><span>%s</span></li>' % (h, t, l) for t, l, h in ds)))
+    css = B_CSS
+    js = B_JS
+    return body, css, js
+
+
+B_CSS = """
+html main.nf-b{position:relative;min-height:clamp(640px,100svh,1000px);overflow:hidden;display:flex;flex-direction:row;align-items:flex-end;justify-content:flex-start;padding:7rem var(--gutter) var(--sp-5);}
 .nb-map{position:absolute;inset:0;}
 .nb-svg{width:100%;height:100%;display:block;}
 .nb-svg path,.nb-svg circle,.nb-svg rect{vector-effect:non-scaling-stroke;}
@@ -189,20 +195,25 @@ def opt_b(src, ds):
 .nb-copy{position:relative;z-index:2;max-width:34rem;background:rgba(13,14,17,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:var(--sp-4);border-top:2px solid var(--orange);}
 .nb-copy h1{font-size:var(--fs-h1);}
 .nb-hint{margin:.8rem 0 0;color:var(--gray);font-size:var(--fs-small);}
+.nb-doors{list-style:none;margin:var(--sp-3) 0 0;padding:var(--sp-2) 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:.8rem 1.2rem;}
+.nb-doors a{color:#fff;font-weight:600;font-size:var(--fs-small);text-decoration:none;display:inline-flex;min-height:28px;align-items:center;}
+.nb-doors a:hover,.nb-doors a:focus-visible{color:var(--orange);}
+.nb-doors span{display:block;color:var(--gray);font-size:var(--fs-micro);line-height:1.45;}
+@media (max-width:420px){ .nb-doors{grid-template-columns:1fr;} }
 @media (max-width:760px){
-  .nf-b{display:block;padding:0 0 var(--sp-5);min-height:0;}
+  html main.nf-b{display:block;padding:0 0 var(--sp-5);min-height:0;}
   .nb-map{position:relative;height:72vh;margin-top:4.5rem;}
   .nb-svg{height:100%;}
   .nb-copy{margin:-3rem var(--gutter) 0;}
 }
 @media (prefers-reduced-motion:reduce){ .nb-trk{animation:none;stroke-dashoffset:0;} .nb-ydot{animation:none;} .nb-par{transition:none;} }
 """
-    js = """
+
+B_JS = """
 (function () {
   var m = document.querySelector('.nb-par'); if (!m || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   addEventListener('pointermove', function (e) { m.style.setProperty('--mx', ((e.clientX / innerWidth - .5) * -18).toFixed(1) + 'px'); m.style.setProperty('--my', ((e.clientY / innerHeight - .5) * -12).toFixed(1) + 'px'); }, { passive: true });
 })();"""
-    return body, css, js
 
 
 # ---------------------------------------------------------------- C: outland it
@@ -292,6 +303,8 @@ BANNER_CSS = (".v4s-banner{position:relative;z-index:5;background:#ff7517;color:
 
 def build(key, fn, label):
     src = open(SRC, encoding="utf-8").read()
+    if 'class="nf nf-b"' in src:                     # 404.html is B now: the samples start from today's original
+        src = open(DATA, encoding="utf-8").read()
     ds = doors(src)
     body, css, js = fn(src) if fn is opt_a else fn(src, ds)
     i = src.index('<main class="kit-hero')
@@ -301,6 +314,8 @@ def build(key, fn, label):
         out = re.sub(r'<section class="kit-band v2-nf-links">.*?</section>\s*', "", out, flags=re.S)   # the doors are in the moment itself
     out = re.sub(r"<title>(.*?)</title>", lambda m: "<title>%s (sample: 404 %s)</title>" % (m.group(1), label), out, 1, flags=re.S)
     out = out.replace("</head>", "<style>%s%s</style>\n</head>" % (BANNER_CSS, css), 1)
+    if 'rel="canonical"' not in out:                 # like the other samples: hidden, pointing home
+        out = out.replace("</head>", '<link rel="canonical" href="https://paraglidingatlas.com/">\n</head>', 1)
     out = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + BANNER % label, out, 1)
     if js:
         out = out.replace("</body>", "<script>%s</script>\n</body>" % js, 1)
@@ -313,7 +328,36 @@ def build(key, fn, label):
     print("v4 404 options: samples/404-%s.html" % key)
 
 
+DATA = os.path.join(ROOT, "tools", "data", "404-source.txt")
+
+
+def install():
+    """B on the real v4 404 (owner, 2 Oct 2026: "we go with b"). Today's 404 is kept in
+    tools/data/404-source.txt, the source of its words and doors on every rebuild."""
+    page = open(SRC, encoding="utf-8").read()
+    if 'class="nf nf-b"' in page:
+        orig = open(DATA, encoding="utf-8").read()
+    else:
+        orig = page
+        open(DATA, "w", encoding="utf-8").write(orig)
+    body, _, _ = opt_b(orig, doors(orig))
+    i = page.index("<main class=")
+    j = page.index("</main>", i) + len("</main>")
+    page = page[:i] + body + page[j:]
+    page = re.sub(r'<section class="kit-band v2-nf-links">.*?</section>\s*', "", page, flags=re.S)
+    open(SRC, "w", encoding="utf-8").write(page)
+    for path, mark, text in ((os.path.join(V4, "src", "v2.css"), "/* THE 404: OFF THE MAP", "/* THE 404: OFF THE MAP (tools/v4_404_options.py, option B) */" + B_CSS),
+                             (os.path.join(V4, "src", "v2-immersive.js"), "/* 16. THE 404", "\n/* 16. THE 404, OFF THE MAP (tools/v4_404_options.py): the contours drift a little with the pointer */" + B_JS + "\n")):
+        src = open(path, encoding="utf-8").read()
+        if mark not in src:
+            open(path, "a", encoding="utf-8").write("\n" + text)
+    print("v4 404: off the map, on 404.html")
+
+
 def main():
+    if "--install" in sys.argv:
+        install()
+        return
     build("a", opt_a, "A, lost the lift")
     build("b", opt_b, "B, off the map")
     build("c", opt_c, "C, outland it")

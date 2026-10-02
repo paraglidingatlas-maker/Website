@@ -803,3 +803,7 @@ frame();
 }
 if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();
+(function () {
+var m = document.querySelector('.nb-par'); if (!m || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+addEventListener('pointermove', function (e) { m.style.setProperty('--mx', ((e.clientX / innerWidth - .5) * -18).toFixed(1) + 'px'); m.style.setProperty('--my', ((e.clientY / innerHeight - .5) * -12).toFixed(1) + 'px'); }, { passive: true });
+})();

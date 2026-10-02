@@ -957,3 +957,10 @@
   }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();
+
+
+/* 16. THE 404, OFF THE MAP (tools/v4_404_options.py): the contours drift a little with the pointer */
+(function () {
+  var m = document.querySelector('.nb-par'); if (!m || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  addEventListener('pointermove', function (e) { m.style.setProperty('--mx', ((e.clientX / innerWidth - .5) * -18).toFixed(1) + 'px'); m.style.setProperty('--my', ((e.clientY / innerHeight - .5) * -12).toFixed(1) + 'px'); }, { passive: true });
+})();
