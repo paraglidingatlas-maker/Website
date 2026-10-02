@@ -20,16 +20,35 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const RAD = Math.PI / 180;
   const TAU = Math.PI * 2;
-  const WORLD = window.GLOBE_WORLD || null;
-  const LAND = WORLD ? WORLD.land : null;
-  const BORDERS = WORLD ? WORLD.borders : null;
+  let LAND = window.GLOBE_WORLD ? window.GLOBE_WORLD.land : null;
+  let BORDERS = window.GLOBE_WORLD ? window.GLOBE_WORLD.borders : null;
 
   const popup = document.getElementById('mapPopup');
   const popupTitle = popup.querySelector('.popup-title');
   const popupLink = popup.querySelector('.popup-link');
-  const tipEl = container.querySelector('.gl-tip');
-  const zoomEl = container.querySelector('.gl-zoom');
-  const hintEl = container.querySelector('.gl-hint');
+
+  /* SELF-SUFFICIENT ON PURPOSE. GitHub Pages lets a browser keep index.html for
+     up to ten minutes while fetching a fresh globe.js, so for a while after a
+     deploy this script can meet the previous homepage: no name tip, no hint, no
+     zoom buttons, no land data. It then threw on the first missing element and
+     the globe never appeared. Anything missing is made here instead, and the
+     land is fetched if the page did not load it. */
+  function part(cls, html, attrs) {
+    let el = container.querySelector('.' + cls);
+    if (el) return el;
+    el = document.createElement('div');
+    el.className = cls;
+    if (attrs) Object.keys(attrs).forEach((k) => el.setAttribute(k, attrs[k]));
+    el.innerHTML = html;
+    container.insertBefore(el, popup);
+    return el;
+  }
+  const tipEl = part('gl-tip', '<b></b><i></i>', { 'aria-hidden': 'true' });
+  const hintEl = part('gl-hint', '', { 'aria-hidden': 'true' });
+  const zoomEl = part('gl-zoom',
+    '<button type="button" data-zoom="in" aria-label="Zoom in">+</button>' +
+    '<button type="button" data-zoom="out" aria-label="Zoom out">&minus;</button>' +
+    '<button type="button" data-zoom="reset" aria-label="Reset the view"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><ellipse cx="8" cy="8" rx="2.6" ry="6.2"/><path d="M1.8 8h12.4"/></svg></button>');
 
   /* Canvas cannot read a CSS variable, so the tokens are read once from :root.
      Every colour drawn below is one of these, with an alpha. */
@@ -860,6 +879,18 @@
   }
 
   resize();
+  if (!LAND) {
+    const sc = document.createElement('script');
+    sc.src = (document.querySelector('script[src*="globe.js"]') || {}).src
+      ? document.querySelector('script[src*="globe.js"]').src.replace(/globe\.js.*$/, 'assets/js/globe-world.js')
+      : 'assets/js/globe-world.js';
+    sc.onload = () => {
+      if (!window.GLOBE_WORLD) return;
+      LAND = window.GLOBE_WORLD.land; BORDERS = window.GLOBE_WORLD.borders;
+      render();
+    };
+    document.head.appendChild(sc);
+  }
   openPinFromHash();
   if (!reduceMotion && !findPin(pinSlugFromHash())) startAutoRotate();
 })();
