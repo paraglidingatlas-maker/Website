@@ -189,11 +189,13 @@ def globe(pg, base):
       const c=m.querySelector('circle'), r=m.getBoundingClientRect();
       if(!c) return {fits:false, pin:null};
       const rad=+c.getAttribute('r');
-      const pins=[...m.querySelectorAll('g.pin')];
-      let pin=null;
-      for(const p of pins){const b=p.getBoundingClientRect();
-        if(b.width>0&&b.top>0&&b.bottom<innerHeight&&b.left>0&&b.right<innerWidth){
-          pin=[Math.round(b.left+b.width/2),Math.round(b.top+b.height/2)];break;}}
+      // Pins on screen, then the first one standing alone. Since the glass
+      // globe, a click on pins stacked within 9px zooms in to pull them apart
+      // instead of guessing which was meant, so a stack never opens the card.
+      const at=[...m.querySelectorAll('g.pin')].map(p=>p.getBoundingClientRect())
+        .filter(b=>b.width>0&&b.top>0&&b.bottom<innerHeight&&b.left>0&&b.right<innerWidth)
+        .map(b=>[Math.round(b.left+b.width/2),Math.round(b.top+b.height/2)]);
+      const pin=at.find(a=>at.every(o=>o===a||Math.hypot(o[0]-a[0],o[1]-a[1])>=14))||null;
       return {fits: rad>4 && rad*2<=Math.min(r.width,r.height)+2, pin:pin};}""")
     check(bool(d) and d["fits"], "globe",
           "the sphere still fits its container after a width change")
@@ -229,8 +231,10 @@ def touch_gestures(browser, base):
         c = pg.evaluate("""()=>{const r=document.getElementById('epMap').getBoundingClientRect();
             return {x:Math.round(r.left+r.width/2),y:Math.round(r.top+r.height/2)};}""")
         rad = lambda: pg.evaluate("+document.querySelector('#epMap circle').getAttribute('r')")
+        # The land is drawn on a canvas since the glass globe, so rotation is
+        # read from where the pins sit rather than from an SVG path.
         rot = lambda: pg.evaluate(
-            "document.querySelectorAll('#epMap path')[0].getAttribute('d').slice(0,80)")
+            "[...document.querySelectorAll('#epMap g.pin')].map(p=>p.getAttribute('transform')).join()")
 
         r0, a0 = rad(), rot()
         cdp.send("Input.dispatchTouchEvent", {"type": "touchStart",

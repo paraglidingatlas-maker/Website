@@ -29,7 +29,7 @@
 <link rel="preload" href="assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css?v=1f73ef11">
-<link rel="stylesheet" href="styles.css?v=c8d28696">
+<link rel="stylesheet" href="styles.css?v=6b478991">
 <link rel="icon" type="image/png" href="assets/logo/favicon.png">
 <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
 <meta name="theme-color" content="#141519">
@@ -503,6 +503,15 @@
   <p class="kicker">A Map Of Every Place We've Ever Told A Story From</p>
   <h2 class="map-heading">Click A Pin, Hear The Story</h2>
   <div class="ep-map" id="epMap">
+    <div class="gl-tip" aria-hidden="true"><b></b><i></i></div>
+    <div class="gl-hint" aria-hidden="true"></div>
+    <div class="gl-zoom">
+      <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
+      <button type="button" data-zoom="out" aria-label="Zoom out">&minus;</button>
+      <button type="button" data-zoom="reset" aria-label="Reset the view">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><ellipse cx="8" cy="8" rx="2.6" ry="6.2"/><path d="M1.8 8h12.4"/></svg>
+      </button>
+    </div>
     <div class="map-popup" id="mapPopup">
         <span class="mp-tick tl"></span><span class="mp-tick br"></span>
         <div class="mp-strip">
@@ -607,7 +616,6 @@
 </footer>
 
 <script src="assets/js/d3.min.js?v=f2094bbf"></script>
-<script src="assets/js/topojson-client.min.js?v=25cd02ae"></script>
 <script src="assets/js/gsap.min.js?v=28033e44"></script>
 <script src="assets/js/ScrollTrigger.min.js?v=ad33c2df"></script>
 <script src="script.js?v=1bb85db6"></script>
@@ -616,7 +624,8 @@
 <script src="episode-modal.js?v=686edaca"></script>
 <script src="homepage-motion.js?v=721cc27f"></script>
 <script src="globe-episodes.js?v=5ed6afaf"></script>
-<script src="globe.js?v=2b74cacc"></script>
+<script src="assets/js/globe-world.js?v=c3ca4ee4"></script>
+<script src="globe.js?v=edebea48"></script>
 <script src="episode-search-data.js?v=b88f5fc4"></script>
 <script src="episode-search.js?v=f1ae6169"></script>
 <!-- nav-menu -->

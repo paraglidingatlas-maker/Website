@@ -52,7 +52,10 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SKIP_DIRS = ("templates/", "node_modules/", ".git/", "__pycache__/")
+# prototypes/v2/ is a frozen snapshot that must never change, so its links keep
+# the hashes they were committed with (a query string does not stop the file
+# loading; it only decides whether a cache refetches it).
+SKIP_DIRS = ("templates/", "node_modules/", ".git/", "__pycache__/", "prototypes/v2/")
 LINK = re.compile(r'(<link[^>]*\shref=")([^"]+\.css)(\?v=[0-9a-f]+)?(")',
                   re.IGNORECASE)
 SCRIPT = re.compile(r'(<script[^>]*\ssrc=")([^"]+\.js)(\?v=[0-9a-f]+)?(")',

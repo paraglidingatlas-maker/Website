@@ -908,7 +908,7 @@ img{max-width:100%;display:block;}
 .ep-map-section{padding:clamp(4rem,10vw,6rem) clamp(1.5rem,5vw,4rem);background:var(--bg);border-bottom:1px solid var(--line);}
 .map-heading{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--white);margin:0.6rem 0 2.5rem;}
 .ep-map{
-  position:relative;width:100%;max-width:1400px;aspect-ratio:21/9;margin:0 auto;
+  position:relative;width:100%;max-width:1400px;aspect-ratio:13/7;margin:0 auto;
   overflow:hidden;
   /* Dragging the globe used to select whatever text it passed over, and the
      selection stayed until you clicked away on purpose. The popup is exempt
@@ -995,6 +995,37 @@ img{max-width:100%;display:block;}
 .popup-link:hover i{transform:translateX(3px);}
 @media(prefers-reduced-motion:reduce){.mp-scan{animation:none;}}
 .map-caption{color:var(--gray);font-size:0.85rem;margin-top:1.5rem;text-align:center;}
+/* ===== The glass globe (globe.js) ===========================================
+   The globe is drawn on a canvas; the shading, rim, compass ring and pins are
+   an SVG laid over it. 13/7 rather than 21/9 on a wide screen, to leave room
+   for the compass ring and its labels around the sphere. */
+.gl-canvas,.gl-svg{position:absolute;inset:0;display:block;}
+.gl-shell{pointer-events:none;}
+.gl-bz-label{font:500 9.5px var(--font-body);letter-spacing:0.12em;fill:var(--gray);
+  text-anchor:middle;dominant-baseline:central;font-variant-numeric:tabular-nums;}
+.gl-bz-label.n{fill:var(--orange);font-weight:600;}
+.gl-bz-index{transition:opacity 0.3s ease;}
+/* The name under the pointer. */
+.gl-tip{position:absolute;display:none;z-index:4;pointer-events:none;max-width:17rem;padding:0.45rem 0.65rem;
+  background:rgba(20,21,25,0.95);border:1px solid var(--edge-hi);transform:translate(-50%,-100%);}
+.gl-tip.visible{display:block;}
+.gl-tip.below{transform:translate(-50%,0);}
+.gl-tip b{display:block;font-weight:600;font-size:0.8rem;line-height:1.3;color:var(--white);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.gl-tip i{display:block;font-style:normal;font-size:var(--fs-micro);color:var(--orange);margin-top:0.1rem;}
+/* "Hold Ctrl and scroll to zoom", shown when a plain scroll lands on the globe. */
+.gl-hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:4;pointer-events:none;
+  padding:0.45rem 0.7rem;font-size:0.8rem;color:var(--white);white-space:nowrap;
+  background:rgba(20,21,25,0.92);border:1px solid var(--edge-hi);opacity:0;transition:opacity 0.2s ease;}
+.gl-hint.visible{opacity:1;}
+.gl-zoom{position:absolute;right:10px;bottom:10px;z-index:4;display:flex;flex-direction:column;}
+.gl-zoom button{width:38px;height:38px;display:grid;place-items:center;cursor:pointer;
+  background:rgba(20,21,25,0.85);border:1px solid var(--edge-hi);color:var(--white);font-size:1.15rem;line-height:1;padding:0;}
+.gl-zoom button + button{border-top:0;}
+.gl-zoom button:hover{border-color:var(--orange);color:var(--orange);}
+.gl-zoom button:focus-visible{outline:2px solid var(--white);outline-offset:2px;}
+.gl-zoom svg{display:block;}
+@media (pointer:coarse){ .gl-zoom button{width:44px;height:44px;} }
 .newsletter{
   position:relative;overflow:hidden;
   padding:clamp(4rem,10vw,7rem) clamp(1.5rem,5vw,4rem);
