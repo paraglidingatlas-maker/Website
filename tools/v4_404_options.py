@@ -331,32 +331,53 @@ def build(key, fn, label):
 DATA = os.path.join(ROOT, "tools", "data", "404-source.txt")
 
 
-def install():
-    """B on the real v4 404 (owner, 2 Oct 2026: "we go with b"). Today's 404 is kept in
-    tools/data/404-source.txt, the source of its words and doors on every rebuild."""
+def strip_block(path, mark, end_mark=None):
+    """Take an installed block back out of a site file (it was appended last, or up to end_mark)."""
+    src = open(path, encoding="utf-8").read()
+    if mark not in src:
+        return
+    a = src.index(mark)
+    b = src.index(end_mark, a) if end_mark and end_mark in src[a:] else len(src)
+    open(path, "w", encoding="utf-8").write(src[:a].rstrip("\n") + "\n" + src[b:])
+
+
+def install(which="a"):
+    """The chosen option on the real v4 404 (owner, 2 Oct 2026: "we go with b", then
+    "change it with A"). Today's original 404 is kept in tools/data/404-source.txt, the
+    source of its words and doors on every rebuild."""
     page = open(SRC, encoding="utf-8").read()
-    if 'class="nf nf-b"' in page:
+    if 'class="nf nf-' in page:
         orig = open(DATA, encoding="utf-8").read()
     else:
         orig = page
         open(DATA, "w", encoding="utf-8").write(orig)
-    body, _, _ = opt_b(orig, doors(orig))
-    i = page.index("<main class=")
-    j = page.index("</main>", i) + len("</main>")
-    page = page[:i] + body + page[j:]
-    page = re.sub(r'<section class="kit-band v2-nf-links">.*?</section>\s*', "", page, flags=re.S)
+    css_f, js_f = os.path.join(V4, "src", "v2.css"), os.path.join(V4, "src", "v2-immersive.js")
+    for m in ("/* THE 404: OFF THE MAP", "/* THE 404: LOST THE LIFT"):
+        strip_block(css_f, m)
+    strip_block(js_f, "/* 16. THE 404")
+    i = orig.index("<main class=")
+    j = orig.index("</main>", i) + len("</main>")
+    if which == "b":
+        body, css, js = opt_b(orig, doors(orig))
+        page = orig[:i] + body + orig[j:]
+        page = re.sub(r'<section class="kit-band v2-nf-links">.*?</section>\s*', "", page, flags=re.S)
+        mark, label = "/* THE 404: OFF THE MAP (tools/v4_404_options.py, option B) */", "off the map"
+    else:
+        body, css, js = opt_a(orig)
+        page = orig[:i] + body + orig[j:]                    # the four doors stay underneath, as today
+        mark, label = "/* THE 404: LOST THE LIFT (tools/v4_404_options.py, option A) */", "lost the lift"
+    # the site's own rules on <main> outrank a bare class: these are held to the 404's main
+    css = re.sub(r"(?<![\w-])\.nf\{", "html main.nf{", css)
     open(SRC, "w", encoding="utf-8").write(page)
-    for path, mark, text in ((os.path.join(V4, "src", "v2.css"), "/* THE 404: OFF THE MAP", "/* THE 404: OFF THE MAP (tools/v4_404_options.py, option B) */" + B_CSS),
-                             (os.path.join(V4, "src", "v2-immersive.js"), "/* 16. THE 404", "\n/* 16. THE 404, OFF THE MAP (tools/v4_404_options.py): the contours drift a little with the pointer */" + B_JS + "\n")):
-        src = open(path, encoding="utf-8").read()
-        if mark not in src:
-            open(path, "a", encoding="utf-8").write("\n" + text)
-    print("v4 404: off the map, on 404.html")
+    open(css_f, "a", encoding="utf-8").write("\n" + mark + css)
+    if js:
+        open(js_f, "a", encoding="utf-8").write("\n\n/* 16. THE 404 (tools/v4_404_options.py) */" + js + "\n")
+    print("v4 404: %s, on 404.html" % label)
 
 
 def main():
     if "--install" in sys.argv:
-        install()
+        install(sys.argv[sys.argv.index("--install") + 1] if len(sys.argv) > sys.argv.index("--install") + 1 else "a")
         return
     build("a", opt_a, "A, lost the lift")
     build("b", opt_b, "B, off the map")
