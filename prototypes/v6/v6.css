@@ -1,0 +1,37 @@
+/* v6: the owner's flying footage on the live pages (tools/v6_build.py).
+   The clips themselves play through the live site's looping footage rules
+   (styles.css, video[data-loop]); this only adds a backdrop for the bands
+   that had no picture, and the preview's own page list. */
+
+/* A band with no photograph gets one: the still, the clip over it, and a
+   shade from the page colour so the words on it stay readable. */
+.newsletter,.pol-hero,.enq-hero{position:relative;isolation:isolate;overflow:hidden;}
+.v6-bg{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;}
+.v6-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.v6-shade{position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(20,21,25,.92) 0%,rgba(20,21,25,.72) 45%,rgba(20,21,25,.35) 100%),
+             linear-gradient(0deg,var(--bg) 0%,rgba(20,21,25,0) 30%);}
+@media(max-width:820px){
+  .v6-shade{background:linear-gradient(180deg,rgba(20,21,25,.55) 0%,rgba(20,21,25,.85) 60%,var(--bg) 100%);}
+}
+/* The knowledge base headers hold a drawing on the right; the clip covers
+   the whole header behind the words, as a photograph would. */
+.k-hero-media video[data-loop]{object-position:center;}
+/* Inside these headers the media box is its own stacking context, where the
+   live rule's negative z-index put the clip under the picture. */
+.k-hero-media video[data-loop],.pod-hero-media video[data-loop],.ab2-hero-media video[data-loop]{z-index:1;}
+
+/* Which pages carry footage in this preview. */
+.v6-ribbon{position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:999;
+  display:flex;flex-wrap:wrap;align-items:center;gap:.35rem .9rem;max-width:max-content;
+  padding:.55rem .8rem;background:rgba(20,21,25,.94);border:1px solid var(--live);
+  font-family:var(--font-body);font-size:var(--fs-small);}
+.v6-ribbon b{color:var(--orange);font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;}
+.v6-ribbon a{color:var(--gray-light);}
+.v6-ribbon a:hover,.v6-ribbon a[aria-current]{color:var(--white);}
+.v6-ribbon a[aria-current]{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--orange);}
+@media(max-width:820px){
+  .v6-ribbon{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;max-width:none;font-size:var(--fs-micro);
+    gap:.9rem;padding:.5rem .7rem;scrollbar-width:none;}
+  .v6-ribbon::-webkit-scrollbar{display:none;}
+}
