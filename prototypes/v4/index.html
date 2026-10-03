@@ -31,7 +31,7 @@
 <link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../styles.css?v=b084e774">
-<link rel="stylesheet" href="v2.css?v=f9739bb9">
+<link rel="stylesheet" href="v2.css?v=39aa412d">
 <link rel="icon" type="image/png" href="img/favicon-96.png">
 <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
 <meta name="theme-color" content="#141519">
@@ -419,6 +419,65 @@
   </div>
 </section>
 
+<!-- v4-globe -->
+<section id="map" class="kit-band v4-map" aria-labelledby="v4MapTitle">
+  <div class="kit-in">
+    <div class="kit-head">
+      <span class="kit-kicker">A Map Of Every Place We've Ever Told A Story From</span>
+      <h2 class="kit-title" id="v4MapTitle">Click A Pin, Hear The <em class="v2-accent">Story</em></h2>
+    </div>
+  <div class="ep-map" id="epMap">
+    <div class="gl-tip" aria-hidden="true"><b></b><i></i></div>
+    <div class="gl-hint" aria-hidden="true"></div>
+    <div class="gl-zoom">
+      <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
+      <button type="button" data-zoom="out" aria-label="Zoom out">&minus;</button>
+      <button type="button" data-zoom="reset" aria-label="Reset the view">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><ellipse cx="8" cy="8" rx="2.6" ry="6.2"/><path d="M1.8 8h12.4"/></svg>
+      </button>
+    </div>
+    <div class="map-popup" id="mapPopup">
+        <span class="mp-tick tl"></span><span class="mp-tick br"></span>
+        <div class="mp-strip">
+          <span class="mp-co"></span><span class="mp-rng dim"></span><span class="mp-brg dim"></span>
+        </div>
+        <div class="mp-th"><img alt="" loading="lazy"><span class="mp-scan"></span></div>
+        <div class="mp-bd">
+          <p class="mp-kick"></p>
+          <p class="popup-title"></p>
+          <p class="mp-guest"></p>
+          <div class="mp-rd"><span class="mp-ch"></span><span class="mp-dur"></span></div>
+          <!-- globe.js replaces this href with the pin's episode when a pin is
+           clicked. The default is a real page so crawlers see a working link;
+           the popup is display:none until then, so the keyboard still cannot
+           land on it while it is empty. -->
+          <a class="popup-link" href="library.html" data-hover>Open the episode <i>&rarr;</i></a>
+        </div>
+      </div>
+  </div>
+  <p class="map-caption">Drag to rotate. Click a pin to see the episode.</p>
+  </div>
+  <template id="v4GlobeJs"><script src="../../assets/js/d3.min.js?v=f2094bbf"></script><script src="../../globe-episodes.js?v=5ed6afaf"></script><script src="../../assets/js/globe-world.js?v=c3ca4ee4"></script><script src="../../globe.js?v=82e331c4"></script></template>
+  <script>
+  (function(){
+    var box=document.getElementById('epMap'),t=document.getElementById('v4GlobeJs');
+    if(!box||!t)return;
+    var done=false;
+    function go(){
+      if(done)return;done=true;
+      var list=[].slice.call(t.content.querySelectorAll('script')).map(function(s){return s.getAttribute('src');});
+      (function next(){
+        var src=list.shift();if(!src)return;
+        var s=document.createElement('script');s.src=src;s.onload=next;document.body.appendChild(s);
+      })();
+    }
+    if(/^#pin/.test(location.hash)||!('IntersectionObserver' in window)){go();return;}
+    var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){io.disconnect();go();}},{rootMargin:'600px 0px'});
+    io.observe(box);
+  })();
+  </script>
+</section>
+<!-- /v4-globe -->
 <!-- ======================= PART 3: JOIN ======================= -->
 <section class="kit-band v2-join v2-topo">
   <div class="kit-in v2-join-grid">

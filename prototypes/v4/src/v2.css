@@ -1533,6 +1533,19 @@ html .v4t-read dd{font-weight:500;letter-spacing:-.01em;}
   .v4-globe-wrap{left:auto;right:-22vw;top:-2rem;width:min(88vw,520px);opacity:.5;}
 }
 
+/* The series mark (tools/v4_catchup.py, after the live episode header of
+   2 Oct): the series' Gold line tile from the library, beside the episode
+   number, linking to the series. */
+.v4-epline{display:flex;align-items:center;gap:1.1rem;margin-bottom:.6rem;}
+.v4-epline .cd-epno{margin:0;}
+.v4-series{position:relative;flex:none;display:block;width:76px;line-height:0;}
+.v4-series svg{display:block;width:100%;height:auto;}
+.v4-series::before,.v4-series::after{content:"";position:absolute;width:10px;height:10px;border:1.5px solid var(--orange);z-index:1;}
+.v4-series::before{top:-4px;left:-4px;border-right:0;border-bottom:0;}
+.v4-series::after{bottom:-4px;right:-4px;border-left:0;border-top:0;}
+.v4-series:hover svg{outline:1px solid var(--line);}
+.v4-series:focus-visible{outline:2px solid var(--white);outline-offset:4px;}
+
 /* ===========================================================================
    TOPIC PAGES, v4 (tools/v4_pass.py): the knowledge base's header pattern (a
    drawing and a stats row) and a featured row of the three newest. The

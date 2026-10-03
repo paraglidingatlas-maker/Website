@@ -64,6 +64,10 @@ marked done is the next step.
 | 14. Trip route sections: zoom from orbit with the route over it (owner: "C with A route overlay"). Kenya: six sites, line diagram by the page's legs; India: Bir's coordinate, the page's schematic as the route. tools/v4_tripmap.py | done | see git log | all gates PASS |
 | 15. The 404 as "lost the lift" (owner: B, then "change it with A"): a Gold line vario sinking at -4.04, the barogram falling, the four doors under it. tools/v4_404_options.py --install a | done | see git log | all gates PASS |
 | 16. "Tell me why", stage 1 of 3 (owner): ask anything, answered with the guests' own words from 8,904 transcript passages in 78 episodes, searched on the reader's device, each linked to its chapter. Stage 2 (written answers) needs an Anthropic API key and a small server: see Needs the owner. tools/v4_tellmewhy.py, samples/tell-me-why.html | done (sample) | see git log | all gates PASS |
+| 17. The app on the phone (owner, 3 Oct: option 1): installable, readable offline. tools/v4_pwa.py | done | 2b191bb | all gates PASS |
+| 18. Catch up with the live work of 2 and 3 Oct (owner, 3 Oct: "ok go"): the glass globe on the homepage (scripts load as it nears the screen), the series' Gold line mark in every episode header (v4 keeps its own header globe and chapter timeline, which already do what the live map box and timeline do), the night-sky sitemap. tools/v4_catchup.py | done | see git log | all gates PASS (v4 198 pages 0 FAIL, smoke 177 / 0 FAIL) |
+| 19. Page transitions: back out of an episode into its card; pages prerendered on hover | next | | |
+| 20. Listening mode on episode pages | to do | | |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they
