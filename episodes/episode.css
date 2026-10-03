@@ -476,7 +476,7 @@
 .cd-map .cd-link{color:var(--white);}
 .cd-map .cd-link:hover{color:var(--orange);}
 .mg-route{stroke-dasharray:1;stroke-dashoffset:0;}
-.mg-index{transform-origin:132px 132px;transform:rotate(var(--brg));}
+.mg-index{transform-origin:132px 132px;transform:rotate(var(--brg,0deg));}
 .mg-pulse{transform-box:fill-box;transform-origin:center;animation:mg-pulse 2.4s ease-out infinite;}
 @keyframes mg-pulse{from{transform:scale(0.4);opacity:0.8;}to{transform:scale(1.5);opacity:0;}}
 @media (prefers-reduced-motion:no-preference){
