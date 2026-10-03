@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Offline: Paragliding Atlas</title>
+<meta name="description" content="No signal. The pages you have read are still here.">
+<link rel="canonical" href="https://paraglidingatlas.com/">
+<link rel="icon" type="image/png" href="/prototypes/v4/img/favicon-96.png">
+<meta name="theme-color" content="#141519">
+<!-- Site-absolute links: this page is shown in place of a page in any folder,
+     so a relative link would resolve against that folder. -->
+<link rel="stylesheet" href="/fonts.css?v=1f73ef11">
+<link rel="stylesheet" href="/styles.css?v=b084e774">
+<link rel="stylesheet" href="/prototypes/v4/v2.css?v=f9739bb9">
+<style>
+.off{max-width:46rem;margin:0 auto;padding:clamp(3rem,10vw,6rem) clamp(1.2rem,5vw,3rem);display:grid;gap:1.2rem;}
+.off h1{font-family:var(--font-display);font-size:var(--fs-h1);line-height:1.1;margin:0;}
+.off p{color:var(--gray-light);margin:0;max-width:36rem;}
+.off ul{list-style:none;margin:.6rem 0 0;padding:0;border-top:1px solid var(--line);}
+.off li{border-bottom:1px solid var(--line);}
+.off li a{display:block;padding:.85rem 0;min-height:44px;color:var(--white);}
+.off li a:hover{color:var(--orange);}
+.off .none{color:var(--gray);}
+</style>
+</head>
+<body>
+<main class="off">
+  <span class="kicker">No Signal</span>
+  <h1>You Are Offline</h1>
+  <p>This page was never opened while you had a connection, so it is not on your phone. Everything you have read before is still here.</p>
+  <ul id="saved"><li class="none">Looking for saved pages&hellip;</li></ul>
+</main>
+<script>
+(function () {
+  var ul = document.getElementById('saved');
+  if (!('caches' in window)) { ul.innerHTML = '<li class="none">Saved pages need a newer browser.</li>'; return; }
+  caches.open('atlas-pages').then(function (c) { return c.keys().then(function (keys) {
+    return Promise.all(keys.map(function (k) {
+      return c.match(k).then(function (r) { return r.text(); }).then(function (t) {
+        var m = /<title>([^<]*)<\/title>/i.exec(t);
+        return { url: k.url, title: m ? m[1].replace(/\s*[|:]\s*Paragliding Atlas$/, '') : k.url };
+      });
+    }));
+  }); }).then(function (pages) {
+    pages = pages.filter(function (p) { return !/offline\.html/.test(p.url); });
+    if (!pages.length) { ul.innerHTML = '<li class="none">Nothing saved yet. Pages you open while online are kept here.</li>'; return; }
+    ul.innerHTML = '';
+    pages.forEach(function (p) {
+      var li = document.createElement('li'), a = document.createElement('a');
+      a.href = p.url; a.textContent = p.title; li.appendChild(a); ul.appendChild(li);
+    });
+  }).catch(function () { ul.innerHTML = '<li class="none">Saved pages could not be read.</li>'; });
+})();
+</script>
+</body>
+</html>

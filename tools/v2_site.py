@@ -42,7 +42,8 @@ ASSET_DIR = "assets/%s" % NAME                         # where the switch copies
 STAGE = "/tmp/claude-0/%s-stage" % NAME                # the switch rehearsal's staging copy
 # Pages that exist only in the prototype (no live twin, never switched):
 # the style guide, the fly options, and anything under samples/ (v4 before/after pages).
-PROTO_ONLY = {"styleguide.html", "fly-options.html"}
+# offline.html is the v4 app's no-signal page (tools/v4_pwa.py), not a site page
+PROTO_ONLY = {"styleguide.html", "fly-options.html", "offline.html"}
 
 
 def proto_only(rel):

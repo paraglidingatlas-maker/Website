@@ -153,7 +153,10 @@ def player(pg, base):
     # all passed. A hit test at the button's own centre is what catches that.
     for vw in (1280, 390):
         pg.set_viewport_size({"width": vw, "height": 900})
-        pg.evaluate("document.querySelector('.cd-player-audio').scrollIntoView({block:'center'})")
+        # The page scrolls smoothly (html{scroll-behavior:smooth}), so a scroll
+        # that animates can still be moving when the button is measured; one
+        # run in four caught it below the window. Jump instead, to the button.
+        pg.evaluate("document.querySelector('.ep-au-play').scrollIntoView({block:'center',behavior:'instant'})")
         pg.wait_for_timeout(400)
         hit = pg.evaluate("""()=>{const el=document.querySelector('.ep-au-play');
           if(!el) return false;

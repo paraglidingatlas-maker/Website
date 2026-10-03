@@ -1,0 +1,44 @@
+{
+ "name": "Paragliding Atlas",
+ "short_name": "Atlas",
+ "description": "The Paragliding Atlas podcast, knowledge base and trips, on your phone.",
+ "id": "./",
+ "start_url": "./index.html",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#141519",
+ "theme_color": "#141519",
+ "icons": [
+  {
+   "src": "img/app-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "img/app-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "img/app-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ],
+ "shortcuts": [
+  {
+   "name": "Episode library",
+   "url": "./library.html"
+  },
+  {
+   "name": "Knowledge base",
+   "url": "./knowledge-base.html"
+  },
+  {
+   "name": "Trips",
+   "url": "./index.html#destinations"
+  }
+ ]
+}

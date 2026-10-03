@@ -2257,3 +2257,18 @@ html main.nf{position:relative;min-height:clamp(620px,100svh,980px);display:grid
 @keyframes na-draw{to{stroke-dashoffset:0;}}
 .na-tl{display:block;font-size:var(--fs-micro);letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-top:.4rem;}
 @media (prefers-reduced-motion:reduce){ .na-needle{animation:none;transform:rotate(-116deg);} .na-b{animation:none;stroke-dashoffset:0;} }
+/* app:start */
+/* ===== The app (tools/v4_pwa.py) ===== */
+.pwa-install{order:-1;background:none;border:1px solid var(--live);color:var(--white);
+  font:600 var(--fs-small)/1 var(--font-body);padding:.6rem .9rem;min-height:44px;cursor:pointer;margin-right:.6rem;}
+.pwa-install:hover,.pwa-install:focus-visible{border-color:var(--orange);color:var(--orange);}
+.pwa-sheet{position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));z-index:1000;
+  max-width:28rem;margin:0 auto;padding:1.1rem 1.2rem 1.2rem;background:var(--card);border:1px solid var(--live);
+  display:grid;gap:.6rem;color:var(--gray-light);font-size:var(--fs-body-s);}
+.pwa-sheet[hidden]{display:none;}
+.pwa-sheet b{color:var(--white);}
+.pwa-sheet button{justify-self:start;background:var(--orange);color:var(--ink);border:0;font-weight:700;
+  padding:.65rem 1.1rem;min-height:44px;cursor:pointer;}
+/* Opened from the home screen: no browser bar above the header. */
+.is-app .page-wrap > nav{padding-top:max(1.5rem,env(safe-area-inset-top));}
+/* app:end */

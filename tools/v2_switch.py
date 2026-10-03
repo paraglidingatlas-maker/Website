@@ -47,7 +47,10 @@ SKIP = re.compile(r"^(?:[a-z][a-z0-9+.-]*:|//|#|/|\{|\$|%|data:)", re.I)
 ATTR = re.compile(r'(\s(?:href|src|poster|data-src|data-v4-src|data-poster|data-loop)=")([^"]*)(")', re.I)
 SRCSET = re.compile(r'(\s(?:srcset|data-srcset|data-v4-srcset)=")([^"]*)(")', re.I)
 CSSURL = re.compile(r'(url\((["\']?))([^)"\']+)(\2\))')
-V2_FILE = re.compile(r"\.(css|js|webp|jpg|jpeg|png|svg|gif|avif|json|woff2?)$", re.I)
+# webmanifest: the v4 app's manifest (tools/v4_pwa.py). At the switch the app
+# itself needs a root-level pass (its start page and the offline rules'
+# scope); see docs/v4-report.md.
+V2_FILE = re.compile(r"\.(css|js|webp|jpg|jpeg|png|svg|gif|avif|json|woff2?|webmanifest)$", re.I)
 
 
 def v2_pages():

@@ -765,7 +765,7 @@ def _check_tokens_resolve():
     for f in (["styles.css", "episodes/episode.css", "policies.css", "tags.css", "destinations.css"]
               + glob.glob("*.html") + glob.glob("templates/*.html")):
         if os.path.exists(f):
-            used.update(re.findall(r"var\((--[a-z0-9-]+)", read(f)))
+            used.update(re.findall(r"var\((--[a-z0-9-]+)\s*\)", read(f)))  # var(--x, fallback) has a default, so it is never undefined
     # a handful are defined locally on a page rather than in :root
     local = set()
     for f in glob.glob("*.html") + glob.glob("templates/*.html"):

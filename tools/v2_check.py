@@ -52,6 +52,11 @@ LOOP = re.compile(r'\sdata-loop="([^"]*)"')      # a prefix: <prefix>-720.mp4 an
 EXEMPT = {
     "index.html": {"words": "the owner cut the homepage text on purpose; the trip details it dropped are on the destination pages"},
 }
+# Live pages changed after v2 was frozen. In v2 their parity differences are
+# reported as warnings; v4 must still match.
+V2_FROZEN = {"about.html": "live 'About Us' became 'About Me', rebuilt in first person, 2 Oct 2026"}
+
+
 def owner_fixed(text):
     """Live text with the owner's corrections of the episode count applied (v4 only; v2 has none)."""
     fp = os.path.join(ROOT, "tools", "data", "v4_facts.json")
@@ -199,6 +204,9 @@ def check_static(rel):
     else:
         a, b = seo(read(live)), seo(src)
         ex = EXEMPT.get(rel, {})
+        # v2 is a frozen snapshot and may never change (owner's rule), so a later
+        # change to the live page it mirrors cannot be followed there.
+        frozen = S.IS_V2 and rel in V2_FROZEN
         for k in ("title", "description", "canonical", "og:title", "og:description", "og:image",
                   "twitter:card", "jsonld", "episode"):
             if a[k] != b[k]:
@@ -218,6 +226,9 @@ def check_static(rel):
             (warns.append(msg + " (exempt: %s)" % ex["words"]) if "words" in ex else fails.append(msg))
         if b["chapters"] < a["chapters"]:
             fails.append("parity: %d chapters, live %d" % (b["chapters"], a["chapters"]))
+        if frozen:
+            warns.extend(f + " (v2 frozen: %s)" % V2_FROZEN[rel] for f in fails if f.startswith("parity:"))
+            fails = [f for f in fails if not f.startswith("parity:")]
     return fails, warns
 
 

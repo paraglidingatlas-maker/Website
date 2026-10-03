@@ -707,3 +707,23 @@ Needs the owner:
   not. Add it to the library, or say it was left out on purpose.
 - episodes/new-technologies-5-frantisek-pavlousek-2.html is only a redirect to
   the episode above; it can stay as it is or be removed.
+
+## v4 as an app on the phone (owner, 3 Oct 2026)
+
+Option 1 of three, chosen by the owner: an installable web app, built into v4
+by tools/v4_pwa.py. Add to Home Screen gives v4 its own icon and a full-screen
+window; every page read while online stays readable without signal, and a page
+never opened shows an offline screen listing what is saved. Android and
+desktop Chrome get "Install the app" in the footer; iPhone gets the same
+button with the Share, Add to Home Screen steps. Video, audio and YouTube are
+not stored.
+
+Later (owner: "I want to do 3 at some point"): a native app. Not started. The
+manifest, icons and offline rules here are the starting point for it; it will
+need an Apple developer account ($99 a year) and a Google Play one ($25 once).
+
+At the switch-over the app needs one extra pass: the switch moves v4's files
+into assets/v4/, so the manifest's start page and the offline rules' scope must
+be pointed at the site root (sw.js served from the root, start_url "/"). The
+switch rehearsal checks the links resolve; it does not make the app work at the
+root.
