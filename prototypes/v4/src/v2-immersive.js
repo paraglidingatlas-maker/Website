@@ -490,7 +490,8 @@
       picture takes the name ep-<slug> as the page is left; the player on the
       episode page carries the same name. Where the browser has no
       cross-document view transitions it is an ordinary link; reduced motion
-      turns it off.
+      turns it off. Going back, the player shrinks into its card
+      again (6b), and pages are prerendered from a resting pointer (6c).
    7. THE ALTIMETER. On long pages, a tape down the left edge: ticks, a mark
       at each section, and the glider descending as the page is read.
       Decoration only (aria-hidden), wide screens, off under reduced motion. */
@@ -535,6 +536,50 @@
       d.querySelectorAll("[data-v4-vt]").forEach(function (x) { x.style.viewTransitionName = ""; x.removeAttribute("data-v4-vt"); });
     });
   }
+
+  /* ------------------------------- 6b. back out of an episode, into its card
+     Going back from an episode, the player shrinks into the card that opened
+     it (the episode page's player carries the name ep-<slug>). Only a card
+     on screen takes the name, and only one. */
+  if (!still) {
+    w.addEventListener("pagereveal", function (e) {
+      var nav = w.navigation, act = nav && nav.activation;
+      if (!e.viewTransition || !act || act.navigationType !== "traverse" || !act.from) return;
+      var slug = slugOf(act.from.url);
+      if (!slug) return;
+      var vh = w.innerHeight, img = null;
+      d.querySelectorAll('a[href*="episodes/' + slug + '.html"]').forEach(function (a) {
+        if (img) return;
+        var i = a.querySelector(".ep-art img, .ep-th img, .ep2-card-art img, .kit-card-media img, img");
+        if (!i) return;
+        var r = i.getBoundingClientRect();
+        if (r.width && r.bottom > 0 && r.top < vh) img = i;
+      });
+      if (!img) return;
+      d.querySelectorAll("[data-v4-vt]").forEach(function (x) { x.style.viewTransitionName = ""; x.removeAttribute("data-v4-vt"); });
+      img.style.viewTransitionName = "ep-" + slug;
+      var off = function () { img.style.viewTransitionName = ""; };
+      e.viewTransition.finished.then(off, off);
+    });
+  }
+
+  /* ------------------------------------- 6c. the next page is already there
+     Where the browser can, a page in this site is prerendered while the
+     pointer rests on its link (or a finger is down on it), so it opens at
+     once and the transition plays without a wait. Not on Save-Data. */
+  (function () {
+    var c = navigator.connection;
+    if (c && c.saveData) return;
+    if (!(w.HTMLScriptElement && HTMLScriptElement.supports && HTMLScriptElement.supports("speculationrules"))) return;
+    var m = /^(.*\/prototypes\/v\d+\/)/.exec(location.pathname);
+    var s = d.createElement("script");
+    s.type = "speculationrules";
+    s.textContent = JSON.stringify({ prerender: [{ where: { and: [
+      { href_matches: (m ? m[1] : "/") + "*" },
+      { not: { selector_matches: "[target], [download], [href*='enquire']" } }
+    ] }, eagerness: "moderate" }] });
+    d.head.appendChild(s);
+  })();
 
   /* ------------------------------------------------------- 7. the altimeter */
   function altimeter() {
@@ -954,6 +999,41 @@
     w.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(frame); }, { passive: true });
     w.addEventListener("resize", frame);
     frame();
+  }
+  if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();
+
+/* 10. LISTENING MODE (v4-listen.js, loaded the first time it is opened, so
+       no page carries it on arrival). A button under the player on episode
+       pages with a transcript; #listen opens it straight away. */
+(function () {
+  "use strict";
+  var d = document, w = window;
+  var m = /^(.*\/prototypes\/v\d+\/)/.exec(location.pathname);
+  var SRC = m ? m[1] + "v4-listen.js" : "/assets/v4/v4-listen.js";
+  function init() {
+    if (d.body.getAttribute("data-v2") !== "ep") return;
+    var player = d.querySelector(".cd-player");
+    if (!player || !d.querySelector(".cd-line")) return;
+    var host = d.querySelector(".ep2-hero-media") || player.parentNode;
+    var b = d.createElement("button"), loading = false;
+    b.type = "button";
+    b.className = "v4-ls-open";
+    b.setAttribute("aria-controls", "v4Listen");
+    b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="7" rx="1.2"/><rect x="17" y="14" width="4" height="7" rx="1.2"/></svg><span>Listening mode</span>';
+    host.appendChild(b);
+    function open() {
+      if (w.V4_LISTEN) { w.V4_LISTEN.open(b); return; }
+      if (loading) return;
+      loading = true;
+      var s = d.createElement("script");
+      s.src = SRC;
+      s.onload = function () { loading = false; if (w.V4_LISTEN) w.V4_LISTEN.open(b); };
+      s.onerror = function () { loading = false; b.hidden = true; };
+      d.head.appendChild(s);
+    }
+    b.addEventListener("click", open);
+    if (location.hash === "#listen") open();
   }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();

@@ -1,11 +1,11 @@
 /* Paragliding Atlas, v4 app: offline rules. Written by tools/v4_pwa.py;
    edit that file, not this one. */
-const VERSION = '8a38e94cd0';
+const VERSION = 'ba4d113b9c';
 const SHELL = 'atlas-shell-' + VERSION;
 const PAGES = 'atlas-pages';
 const ASSETS = 'atlas-assets-' + VERSION;
 const PAGE_LIMIT = 80;
-const PRECACHE = ["offline.html", "v2.css", "v2.js", "v2-immersive.js", "v4-menu.js", "pwa.js", "../../styles.css", "../../fonts.css", "../../assets/logo/atlas-logo-white.png", "img/app-192.png"];
+const PRECACHE = ["offline.html", "v2.css", "v2.js", "v2-immersive.js", "v4-menu.js", "v4-listen.js", "pwa.js", "../../styles.css", "../../fonts.css", "../../assets/logo/atlas-logo-white.png", "img/app-192.png"];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(SHELL).then((c) => c.addAll(PRECACHE)).then(() => self.skipWaiting()));

@@ -5,6 +5,7 @@ v4's served style sheet and immersion script, from their readable sources.
   prototypes/v4/src/v2.css            ->  prototypes/v4/v2.css
   prototypes/v4/src/v2-immersive.js   ->  prototypes/v4/v2-immersive.js
   prototypes/v4/src/v4-menu.js        ->  prototypes/v4/v4-menu.js (loaded on first use)
+  prototypes/v4/src/v4-listen.js      ->  prototypes/v4/v4-listen.js (loaded on first use)
 
 Edit the sources (they carry every comment); this writes the served copies
 without comments and spare white space, so v4 is not heavier on arrival than
@@ -42,7 +43,7 @@ def js(src):
 
 
 def main():
-    for name, fn in (("v2.css", css), ("v2-immersive.js", js), ("v4-menu.js", js)):
+    for name, fn in (("v2.css", css), ("v2-immersive.js", js), ("v4-menu.js", js), ("v4-listen.js", js)):
         src = open(os.path.join(V4, "src", name), encoding="utf-8").read()
         out = HEAD % name + fn(src)
         open(os.path.join(V4, name), "w", encoding="utf-8").write(out)

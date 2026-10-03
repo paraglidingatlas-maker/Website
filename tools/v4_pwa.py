@@ -297,7 +297,7 @@ def main():
     subprocess.run([sys.executable, os.path.join(ROOT, "tools", "v4_min.py")], check=True,
                    stdout=subprocess.DEVNULL)
 
-    shell = ["offline.html", "v2.css", "v2.js", "v2-immersive.js", "v4-menu.js", "pwa.js",
+    shell = ["offline.html", "v2.css", "v2.js", "v2-immersive.js", "v4-menu.js", "v4-listen.js", "pwa.js",
              "../../styles.css", "../../fonts.css", "../../assets/logo/atlas-logo-white.png",
              "img/app-192.png"]
     h = hashlib.sha256()

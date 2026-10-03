@@ -66,8 +66,8 @@ marked done is the next step.
 | 16. "Tell me why", stage 1 of 3 (owner): ask anything, answered with the guests' own words from 8,904 transcript passages in 78 episodes, searched on the reader's device, each linked to its chapter. Stage 2 (written answers) needs an Anthropic API key and a small server: see Needs the owner. tools/v4_tellmewhy.py, samples/tell-me-why.html | done (sample) | see git log | all gates PASS |
 | 17. The app on the phone (owner, 3 Oct: option 1): installable, readable offline. tools/v4_pwa.py | done | 2b191bb | all gates PASS |
 | 18. Catch up with the live work of 2 and 3 Oct (owner, 3 Oct: "ok go"): the glass globe on the homepage (scripts load as it nears the screen), the series' Gold line mark in every episode header (v4 keeps its own header globe and chapter timeline, which already do what the live map box and timeline do), the night-sky sitemap. tools/v4_catchup.py | done | see git log | all gates PASS (v4 198 pages 0 FAIL, smoke 177 / 0 FAIL) |
-| 19. Page transitions: back out of an episode into its card; pages prerendered on hover | next | | |
-| 20. Listening mode on episode pages | to do | | |
+| 19. Page transitions: going back from an episode, the player shrinks into the card that opened it (only a card on screen); pages inside v4 are prerendered while the pointer rests on their link (speculation rules, not on Save-Data, not the enquiry form), so they open at once. v2-immersive.js 6b, 6c | done | see git log | all gates PASS |
+| 20. Listening mode on episode pages (src/v4-listen.js, loaded on first use; a button under the player, or #listen): one screen with the player, a dial of the chapters around the header globe that turns to the chapter playing, the series' Gold line drawing drawing itself as the episode goes, the transcript lit line by line and kept in view (paused while the reader scrolls, with "Back to the voice"). Time from the YouTube embed's own messages or the audio element; Space, the arrows and Esc work; reduced motion keeps every state, nothing turns | done | see git log | all gates PASS |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they
@@ -731,3 +731,9 @@ into assets/v4/, so the manifest's start page and the offline rules' scope must
 be pointed at the site root (sw.js served from the root, start_url "/"). The
 switch rehearsal checks the links resolve; it does not make the app work at the
 root.
+
+## Listening mode and the transitions (owner, 3 Oct 2026: "ok go")
+- **Listening mode** is on every episode page that has a transcript: the button under the player, or a link ending in `#listen`. Nothing in it is new content: the chapters, lines and times are the page's own, the globe is the header globe, the drawing is the series' tile from the library.
+- The video is not moved into the screen (moving it would reload it and stop the sound); it is laid over a frame there and goes back when the screen closes.
+- If YouTube never answers (blocked, a strict browser), the screen still opens and the transcript still reads; Play then reloads the video at that second, as the page's own timestamps do, and the dial and the drawing stay where they are.
+- **To check on an iPhone:** listening mode with the audio-only episodes (for example Anatomy of a Dream); going back from an episode to the library (Safari 18.2 and later have the cross-page transitions; older Safari simply changes page). Safari has no prerendering, so pages open as before there.
