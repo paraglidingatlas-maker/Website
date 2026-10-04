@@ -15,9 +15,8 @@ elegant than let it be"). Video only where the motion is the point:
     its still the moment the valley opens), Risk vs Reward (soaring along a
     cliff) and Flight Mechanics (straight down the lines);
   - stills, no video: Weather Patterns (the cloud wall), behind the Mission
-    header (the limestone peaks), and the About header (the ATLAS harness
-    above a valley, in place of the Himalaya loop it shared with the India
-    page);
+    header (the limestone peaks), and the About header (above the glacier,
+    in place of the Himalaya loop it shared with the India page);
   - nothing behind the homepage's Why band or the Enquire header: both carry
     a form, which reads better on the plain page.
 
@@ -50,8 +49,12 @@ CLEAR = {"enquire.html": '<header class="kit-hero is-sky v2-page-hero">',
 # the About header: a still of clip 2 in place of the photograph and loop it shared with India
 ABOUT_OLD = ('<picture><source srcset="../../assets/images/himalayas-1.webp" type="image/webp"><img src="../../assets/images/himalayas-1.jpg" alt="Paraglider over the Himalayas" fetchpriority="high"></picture>\n'
              '    <video data-loop="../../assets/video/bir" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>')
-ABOUT_NEW = ('<picture><source srcset="img/alps-2-still.webp" type="image/webp"><img src="img/alps-2-still.jpg" width="1920" height="1080" '
-             'alt="A pilot in an ATLAS harness above a green valley" fetchpriority="high"></picture>')
+# (first the clip 2 frame of a pilot in an ATLAS harness; his helmet names someone
+#  else, and an About Me page should not open on another person: the glacier instead)
+ABOUT_V1 = ('<picture><source srcset="img/alps-2-still.webp" type="image/webp"><img src="img/alps-2-still.jpg" width="1920" height="1080" '
+            'alt="A pilot in an ATLAS harness above a green valley" fetchpriority="high"></picture>')
+ABOUT_NEW = ('<picture><source srcset="img/alps-11-still.webp" type="image/webp"><img src="img/alps-11-still.jpg" width="1920" height="1080" '
+             'alt="Flying above a glacier, the wing tip in view" fetchpriority="high"></picture>')
 START, END = "<!-- v4-footage -->", "<!-- /v4-footage -->"
 
 
@@ -99,8 +102,8 @@ def main():
             print("v4_footage: %-40s footage taken out" % rel)
     p = os.path.join(V4, "about.html")
     html = open(p, encoding="utf-8").read()
-    if ABOUT_OLD in html:
-        open(p, "w", encoding="utf-8").write(html.replace(ABOUT_OLD, ABOUT_NEW, 1))
+    if ABOUT_OLD in html or ABOUT_V1 in html:
+        open(p, "w", encoding="utf-8").write(html.replace(ABOUT_OLD, ABOUT_NEW, 1).replace(ABOUT_V1, ABOUT_NEW, 1))
         print("v4_footage: about.html                               still of clip 2")
     elif ABOUT_NEW not in html:
         raise SystemExit("v4_footage: about.html: hero not found")

@@ -62,7 +62,7 @@ function ready() {
 var hud = null, hudAlt, hudHdg, hudLine, lastY = w.scrollY, lastT = 0, bank = 0, bankRaf = 0;
 var BASE = [4200, 3100, 2200][here] || 3100;
 var HDG = (function () { var h = 0, s = location.pathname; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) % 360; return h; })();
-var slot = d.querySelector(".page-wrap > nav .nav-coords");
+var slot = null;
 if (slot) {
 hud = slot;
 slot.classList.add("v2-hud");
@@ -116,7 +116,6 @@ raf = 0; if (!cur) return;
 var r = cur.getBoundingClientRect(), x = (px - r.left) / r.width, y = (py - r.top) / r.height;
 cur.style.setProperty("--mx", (x * 100).toFixed(1) + "%");
 cur.style.setProperty("--my", (y * 100).toFixed(1) + "%");
-cur.style.transform = "perspective(900px) rotateX(" + ((0.5 - y) * 5).toFixed(2) + "deg) rotateY(" + ((x - 0.5) * 6).toFixed(2) + "deg)";
 };
 var leave = function (el) {
 el.style.transition = "transform .5s cubic-bezier(.2,.8,.2,1), translate .26s cubic-bezier(.2,.8,.2,1), scale .16s cubic-bezier(.2,.8,.2,1)";
@@ -141,33 +140,6 @@ px = e.clientX; py = e.clientY;
 if (cur && !raf) raf = requestAnimationFrame(apply);
 }, { passive: true });
 d.addEventListener("pointerleave", function () { if (cur) { leave(cur); cur = null; } }, true);
-var hero = d.querySelector(".kit-hero:not(.is-sky)");
-if (hero) {
-var hraf = 0, hx = 0, hy = 0;
-hero.addEventListener("pointermove", function (e) {
-hx = e.clientX / innerWidth - 0.5; hy = e.clientY / innerHeight - 0.5;
-if (!hraf) hraf = requestAnimationFrame(function () {
-hraf = 0;
-hero.style.setProperty("--hx", (hx * -18).toFixed(1) + "px");
-hero.style.setProperty("--hy", (hy * -12).toFixed(1) + "px");
-});
-}, { passive: true });
-}
-}
-if (!still) {
-d.querySelectorAll(".v2-rail").forEach(function (rail) {
-var lx = rail.scrollLeft, lean = 0, lraf = 0;
-var settle = function () {
-lean *= 0.82;
-rail.style.setProperty("--lean", lean.toFixed(2));
-if (Math.abs(lean) > 0.05) lraf = requestAnimationFrame(settle); else { lraf = 0; rail.style.setProperty("--lean", "0"); }
-};
-rail.addEventListener("scroll", function () {
-var dx = rail.scrollLeft - lx; lx = rail.scrollLeft;
-lean = Math.max(-9, Math.min(9, lean + dx * 0.12));
-if (!lraf) lraf = requestAnimationFrame(settle);
-}, { passive: true });
-});
 }
 d.querySelectorAll(".v2-rail").forEach(function (rail) {
 var down = false, sx = 0, sl = 0, moved = 0, dragged = 0;
@@ -256,8 +228,8 @@ if (btn) { btn.setAttribute("aria-pressed", String(v)); btn.classList.toggle("is
 if (v) start(); else stop();
 }
 function mount() {
-var nav = d.querySelector(".page-wrap > nav"), cta = nav && nav.querySelector(".nav-cta");
-if (!nav || !cta) return;
+var foot = d.querySelector(".footer-bottom");
+if (!foot) return;
 btn = d.createElement("button");
 btn.type = "button"; btn.className = "v2-wind"; btn.setAttribute("aria-pressed", String(on));
 btn.setAttribute("aria-label", "Wind sound"); btn.title = "Wind sound";
@@ -265,7 +237,7 @@ btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
 '<path d="M3 9h11a3 3 0 1 0-3-3"/><path d="M3 14h15a3 3 0 1 1-3 3"/><path d="M3 19h7"/></svg><span class="v4-wind-l" aria-hidden="true">Wind sound</span>';
 btn.classList.toggle("is-on", on);
 btn.addEventListener("click", function () { set(!on); });
-nav.insertBefore(btn, cta);
+foot.appendChild(btn);
 if (on) {
 var first = function () { d.removeEventListener("pointerdown", first, true); d.removeEventListener("keydown", first, true); if (on) start(); };
 d.addEventListener("pointerdown", first, true); d.addEventListener("keydown", first, true);
@@ -473,6 +445,7 @@ s.textContent = JSON.stringify({ prerender: [{ where: { and: [
 d.head.appendChild(s);
 })();
 function altimeter() {
+return;   // v4, the award pass (owner, 4 Oct): one progress mark, the bar at the top, is enough
 if (still || !w.matchMedia("(min-width: 1180px)").matches) return;
 var H = d.documentElement.scrollHeight, vh = w.innerHeight;
 if (H < vh * 3.5) return;
@@ -909,6 +882,6 @@ b0 += (e.beta - b0) * 0.01;          // the way it is held drifts back to level
 aim(e.gamma / 22, (e.beta - b0) / 22);
 }, { passive: true });
 }
-function init() { glow(); ground(); }
+function init() { glow(); }
 if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();
