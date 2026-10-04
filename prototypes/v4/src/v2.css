@@ -2411,6 +2411,8 @@ html.v4-ls-on{overflow:hidden;}
 }
 .kit-hero.is-sky[data-v4-footage]{min-height:min(70vh,640px);align-items:flex-end;overflow:hidden;padding-bottom:var(--sp-5);}
 .v4-film{min-height:72vh;min-height:72svh;padding:0;}
+/* a film strip carries no words, so only its edges fade into the page */
+.v4-film::after{background:linear-gradient(180deg,var(--bg) 0%,rgba(20,21,25,.06) 22%,rgba(20,21,25,.06) 78%,var(--bg) 100%);}
 
 /* 3. the glow */
 .ep2-hero-media{position:relative;isolation:isolate;}
@@ -2437,8 +2439,6 @@ html.v4-ls-on{overflow:hidden;}
     @keyframes v4-drift{from{transform:scale(1.16) translateY(-3%);}to{transform:scale(1.02) translateY(3%);}}
   }
 }
-/* the Why band carries a form on the right: an even shade, so its small print stays readable */
-.v2-join .v4-bg-shade{background:linear-gradient(0deg,var(--bg) 0%,rgba(20,21,25,0) 30%),linear-gradient(180deg,var(--bg) 0%,rgba(20,21,25,0) 22%),rgba(20,21,25,.8);}
 /* app:start */
 /* ===== The app (tools/v4_pwa.py) ===== */
 .pwa-install{order:-1;background:none;border:1px solid var(--live);color:var(--white);
