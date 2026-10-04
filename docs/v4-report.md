@@ -68,6 +68,7 @@ marked done is the next step.
 | 18. Catch up with the live work of 2 and 3 Oct (owner, 3 Oct: "ok go"): the glass globe on the homepage (scripts load as it nears the screen), the series' Gold line mark in every episode header (v4 keeps its own header globe and chapter timeline, which already do what the live map box and timeline do), the night-sky sitemap. tools/v4_catchup.py | done | see git log | all gates PASS (v4 198 pages 0 FAIL, smoke 177 / 0 FAIL) |
 | 19. Page transitions: going back from an episode, the player shrinks into the card that opened it (only a card on screen); pages inside v4 are prerendered while the pointer rests on their link (speculation rules, not on Save-Data, not the enquiry form), so they open at once. v2-immersive.js 6b, 6c | done | see git log | all gates PASS |
 | 20. Listening mode on episode pages (src/v4-listen.js, loaded on first use; a button under the player, or #listen): one screen with the player, a dial of the chapters around the header globe that turns to the chapter playing, the series' Gold line drawing drawing itself as the episode goes, the transcript lit line by line and kept in view (paused while the reader scrolls, with "Back to the voice"). Time from the YouTube embed's own messages or the audio element; Space, the arrows and Esc work; reduced motion keeps every state, nothing turns | done | see git log | all gates PASS |
+| 21. Immersion to the max (owner, 4 Oct): the owner's footage as film strips on four knowledge base pages and behind the Mission, Enquire and homepage Why bands (tools/v4_footage.py); footage drifts in as it scrolls past; the episode's own picture glows behind its player and the listening screen; hero pictures, footage and the episode globe shift with the pointer or a phone's tilt; the podcast breather's clip now plays (it never did) | done | see git log | all gates PASS |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they
@@ -737,3 +738,12 @@ root.
 - The video is not moved into the screen (moving it would reload it and stop the sound); it is laid over a frame there and goes back when the screen closes.
 - If YouTube never answers (blocked, a strict browser), the screen still opens and the transcript still reads; Play then reloads the video at that second, as the page's own timestamps do, and the dial and the drawing stay where they are.
 - **To check on an iPhone:** listening mode with the audio-only episodes (for example Anatomy of a Dream); going back from an episode to the library (Safari 18.2 and later have the cross-page transitions; older Safari simply changes page). Safari has no prerendering, so pages open as before there.
+
+## Immersion to the max (owner, 4 Oct 2026)
+- **The owner's footage** now runs through v4: a full-width film strip before the questions on Meteorology (clip 1, out of cloud), Weather Patterns (4, along a cloud wall), Risk vs Reward (3, along a cliff) and Flight Mechanics (10, down the lines); behind the headers of Mission (12) and Enquire (7); behind the homepage's Why band (11, the glacier). The knowledge base headers keep their drawings, which are those pages' own moment. No caption names a place: where the clips were filmed is still to supply.
+- **Footage drifts in** as it passes (scroll-driven, Chrome and Safari 18+; elsewhere it simply sits still).
+- **The glow:** the episode's own picture, blurred, lights the space behind its player, brighter and breathing while it plays, and tints the listening screen.
+- **The ground moves with you:** with a mouse, hero pictures, footage and the episode globe shift a few pixels against the pointer; on an Android phone, against its tilt. An iPhone asks permission for motion, and the site does not ask for it, so on an iPhone this stays still.
+- **Fixed:** the podcast page's footage breather waited for a class nothing set, so it never played.
+- Every one of these is off for reduced motion; footage keeps its still for Save-Data and slow connections.
+- **Needs the owner:** where each clip was filmed, to caption them; and whether the remaining clips (5, 6, 8, 9; 2 is on About in v6 only) should go anywhere.

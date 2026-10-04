@@ -868,3 +868,47 @@ if (location.hash === "#listen") open();
 }
 if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();
+(function () {
+"use strict";
+var d = document, w = window, root = d.documentElement;
+function glow() {
+var p = d.querySelector(".ep2-hero-media .cd-player");
+var v = p && p.style.getPropertyValue("--cd-poster");
+if (!v) return;
+p.parentNode.style.setProperty("--v4-glow", v);
+var mo = new MutationObserver(function () {
+var ls = d.getElementById("v4Listen");
+if (ls) { ls.style.setProperty("--v4-glow", v); mo.disconnect(); }
+});
+mo.observe(d.body, { childList: true });
+}
+function ground() {
+if (w.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+var tx = 0, ty = 0, x = 0, y = 0, raf = 0, on = false;
+function loop() {
+x += (tx - x) * 0.08; y += (ty - y) * 0.08;
+root.style.setProperty("--px", x.toFixed(3));
+root.style.setProperty("--py", y.toFixed(3));
+raf = (Math.abs(tx - x) + Math.abs(ty - y) > 0.002) ? requestAnimationFrame(loop) : 0;
+}
+function aim(a, b) {
+tx = Math.max(-1, Math.min(1, a)); ty = Math.max(-1, Math.min(1, b));
+if (!on) { on = true; root.classList.add("v4-px"); }
+if (!raf) raf = requestAnimationFrame(loop);
+}
+if (w.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+w.addEventListener("pointermove", function (e) { aim(e.clientX / w.innerWidth * 2 - 1, e.clientY / w.innerHeight * 2 - 1); }, { passive: true });
+return;
+}
+if (!("DeviceOrientationEvent" in w) || typeof DeviceOrientationEvent.requestPermission === "function") return;
+var b0 = null;
+w.addEventListener("deviceorientation", function (e) {
+if (e.gamma === null || e.beta === null) return;
+if (b0 === null) b0 = e.beta;
+b0 += (e.beta - b0) * 0.01;          // the way it is held drifts back to level
+aim(e.gamma / 22, (e.beta - b0) / 22);
+}, { passive: true });
+}
+function init() { glow(); ground(); }
+if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();
