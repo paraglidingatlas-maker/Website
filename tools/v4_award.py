@@ -20,6 +20,16 @@ src/v2-immersive.js, "THE AWARD PASS").
      set as a quiet wall of type behind the title; one name at a time
      brightens. The field of gliders photograph leaves the header.
 
+THE VISUAL BUILD LIST (owner, 5 Oct 2026: "visually improving how the site
+looks, go ahead"; docs/v4-report.md). The markup parts:
+   - "30-minute" in the booking headline never breaks at its hyphen
+     (a nowrap span, on every page that carries the call);
+   - one capitalisation for every page and section heading (h1, h2): the
+     live site's Title Case rule (tools/title_case_headings.py), with its
+     own exceptions (episode titles, transcript chapter names), plus the
+     series names, which are names ("Risk vs Reward", "Living the Dream");
+     the kilometres in "451 km" stay together.
+
 Every block sits between markers, so a rerun replaces it.
 
     python3 tools/v4_award.py
@@ -153,9 +163,81 @@ def podcast_voices():
     print("v4_award: podcast opening: %d guests, %d lit in turn" % (len(names), j))
 
 
+NOWRAP = re.compile(r'(>[^<]*?Book a free )30-minute')
+
+
+def booking_nowrap():
+    n = 0
+    for dirpath, _, files in os.walk(V4):
+        if os.sep + "samples" in dirpath or os.sep + "src" in dirpath:
+            continue
+        for fn in files:
+            if not fn.endswith(".html"):
+                continue
+            p = os.path.join(dirpath, fn)
+            s = read(p)
+            new = NOWRAP.sub(lambda m: m.group(1) + '<span class="v4-nw">30-minute</span>', s)
+            if new != s:
+                write(p, new)
+                n += 1
+    print("v4_award: booking headline kept whole on %d pages" % n)
+
+
+def title_case():
+    import sys as _s
+    _s.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import title_case_headings as T
+    import v4_series_full as F
+    names = sorted(F.CATS, key=len, reverse=True)
+    titles = T.episode_titles()
+    pages = n = 0
+    for dirpath, dirs, files in os.walk(V4):
+        dirs[:] = [d for d in dirs if d not in ("samples", "src", "img")]
+        for fn in files:
+            if not fn.endswith(".html"):
+                continue
+            p = os.path.join(dirpath, fn)
+            rel = os.path.relpath(p, V4)
+            src = read(p)
+
+            def sub(m):
+                nonlocal n
+                open_tag, tag, inner, close = m.groups()
+                text = T.plain(inner)
+                if not text or text in titles:
+                    return m.group(0)
+                if T.CHAPTER.search(src[max(0, m.start() - 200):m.start()]):
+                    return m.group(0)
+                if rel.startswith("episodes" + os.sep) and tag == "h1":
+                    return m.group(0)
+                keep = {}
+                body = inner
+                for k, name in enumerate(names):
+                    for form in (name, name.replace("&", "&amp;")):
+                        if form in body:
+                            key = "\u0001%d\u0001" % k
+                            keep[key] = form
+                            body = body.replace(form, key)
+                new = T.title_html(body)
+                for key, form in keep.items():
+                    new = new.replace(key, form)
+                new = new.replace("451 km", "451&nbsp;km")
+                if new != inner:
+                    n += 1
+                return open_tag + new + close
+
+            out = T.HEADING.sub(sub, src)
+            if out != src:
+                write(p, out)
+                pages += 1
+    print("v4_award: title case: %d headings on %d pages" % (n, pages))
+
+
 def main():
     kb_landing()
     podcast_voices()
+    booking_nowrap()
+    title_case()
 
 
 if __name__ == "__main__":
