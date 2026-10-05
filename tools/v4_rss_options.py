@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """
-Ten designs for the podcast page's live RSS section ("Live From The Feed"),
-side by side on one page (owner, 5 Oct 2026: "resedign the rss feed section,
-give me 10 protos to choose from"):
+Designs for the podcast page's live RSS section ("Live From The Feed"), side
+by side on one page (owner, 5 Oct 2026: "resedign the rss feed section, give
+me 10 protos to choose from"; then, liking 10, "gimme 5 more based on same
+concept, but a bit futuristic and immersive and responsive": 11 to 15, which
+also use a few lines of script, kept here as a sample and meant for
+v2-immersive.js, never rss-feed.js):
 
     prototypes/v4/samples/rss-options.html
 
@@ -70,6 +73,12 @@ DESIGNS = [
     ("Editorial", "No pictures: big outlined numbers and big titles, like a magazine contents page."),
     ("Docked player", "Quiet rows; the playing one opens into a full-width player bar."),
     ("Portholes", "Glass cards on a dusk sky, round covers like aircraft windows."),
+    # round two (owner, 5 Oct: "i like 10, gimme 5 more based on same concept, but a bit futuristic and immersive and responsive")
+    ("Instrument ring", "Each window wears a ring of ticks like a cockpit gauge; the playing one becomes a live progress ring, a light sweeping its card."),
+    ("Cabin light", "The sky moves with the pointer (with the scroll on a phone), each window looks out at a different angle, and a soft light follows the pointer across the cards."),
+    ("Window seat", "The playing episode leaves its row and fills one big window beside the list, the view drifting slowly past; on a phone the window sits on top."),
+    ("Fuselage", "A row of arched windows to swipe through; the cards turn towards you as they reach the middle, like looking down the cabin."),
+    ("Night flight", "A star field with a slow aurora; the window edges are lit like instruments at night, and the playing one glows with a moving level meter."),
 ]
 
 CSS = r"""
@@ -122,6 +131,8 @@ CSS = r"""
 .ro-h span{font-variant-numeric:tabular-nums;color:var(--orange);font-weight:600;}
 .ro-d{color:var(--gray-light);margin:0 0 var(--sp-4);max-width:60ch;}
 .ro-stage{position:relative;}
+.ro-round{padding-bottom:0;}
+.ro-rh{font-family:var(--font-display);font-size:var(--fs-h1);margin:.4rem 0 .8rem;}
 
 /* ============ 1. Ledger ============ */
 .rss1 .lf-grid{counter-reset:ep;}
@@ -300,6 +311,133 @@ CSS = r"""
 .rss10 .ep-player{border-top:1px solid rgba(255,255,255,.08);padding:.9rem 1.6rem 1.2rem;}
 @media (max-width:700px){ .rss10 .ep-row,.rss10 .ep-row:first-child{border-radius:22px;} .rss10 .ep-row-meta span:first-child{display:none;} }
 
+/* ============ 11 to 15: Portholes, further (shared base) ============ */
+.rssP .ro-stage{position:relative;isolation:isolate;overflow:hidden;padding:clamp(1rem,4vw,3rem);
+  --cv:60px;--glass:rgba(20,21,25,.5);--glass-edge:rgba(255,255,255,.09);--mx:.5;--my:.5;
+  background:radial-gradient(120% 80% at calc(var(--mx) * 100%) 0%,var(--sky-warm),transparent 60%),
+    radial-gradient(90% 70% at 8% 35%,var(--sky-cool),transparent 65%),linear-gradient(180deg,var(--card),var(--bg));}
+.rssP .lf-grid{display:grid;gap:.9rem;}
+.rssP .ep-row,.rssP .ep-row:first-child{border:1px solid var(--glass-edge);border-radius:999px;background:var(--glass);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transition:border-color .3s,border-radius .45s var(--ease),box-shadow .45s var(--ease);}
+.rssP .ep-row.playing{border-radius:28px;border-color:var(--live);}
+.rssP .ep-row-main{padding:.6rem 1.2rem .6rem .6rem;}
+.rssP .ep-cover{width:var(--cv);height:var(--cv);border-radius:50%;box-shadow:0 0 0 3px rgba(255,255,255,.08),0 0 0 7px rgba(255,255,255,.03);}
+.rssP .ep-row-show{display:none;}
+.rssP .ep-player{border-top:1px solid var(--glass-edge);padding:.9rem 1.6rem 1.2rem;}
+
+/* ============ 11. Instrument ring ============ */
+.rss11 .ep-row-main{position:relative;}
+.rss11 .ep-row-main::before{content:"";position:absolute;left:calc(.6rem - 8px);top:50%;width:calc(var(--cv) + 16px);height:calc(var(--cv) + 16px);
+  margin-top:calc(var(--cv) / -2 - 8px);border-radius:50%;pointer-events:none;
+  background:repeating-conic-gradient(var(--edge-hi) 0 1.2deg,transparent 1.2deg 10deg);
+  -webkit-mask:radial-gradient(circle,transparent calc(var(--cv) / 2 + 4px),#000 calc(var(--cv) / 2 + 5px));mask:radial-gradient(circle,transparent calc(var(--cv) / 2 + 4px),#000 calc(var(--cv) / 2 + 5px));
+  transition:transform 1.2s var(--ease);}
+.rss11 .ep-row:hover .ep-row-main::before{transform:rotate(40deg);}
+.rss11 .ep-row.playing .ep-row-main::before{background:conic-gradient(var(--orange) calc(var(--p,0) * 1turn),var(--edge) 0);transform:none;}
+.rss11 .ep-row.playing .ep-cover{box-shadow:none;}
+.rss11 .ep-row-meta{font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.08em;}
+.rss11 .ep-row.playing .ep-row-meta span:last-child{color:var(--orange);}
+.rss11 .ep-row.playing::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(100deg,transparent 42%,var(--wash) 50%,transparent 58%);background-size:260% 100%;}
+.rss11 .ep-row.playing::after{content:"";position:absolute;left:18px;top:14px;width:14px;height:14px;border-top:2px solid var(--orange);border-left:2px solid var(--orange);pointer-events:none;}
+.rss11 .ep-time{font-family:var(--font-mono);}
+@media (prefers-reduced-motion: no-preference){ .rss11 .ep-row.playing::before{animation:rss11-sweep 4.5s linear infinite;} }
+@keyframes rss11-sweep{from{background-position:130% 0;}to{background-position:-130% 0;}}
+
+/* ============ 12. Cabin light ============ */
+.rss12 .ro-stage::before{content:"";position:absolute;inset:-12%;z-index:-1;pointer-events:none;
+  background:radial-gradient(28% 18% at 22% 28%,var(--sky-high),transparent 70%),radial-gradient(40% 24% at 74% 58%,var(--sky-cool),transparent 70%),
+    radial-gradient(34% 22% at 46% 92%,var(--sky-warm),transparent 70%);
+  transform:translate3d(calc((var(--mx) - .5) * -70px),calc((var(--my) - .5) * -40px),0);transition:transform .8s var(--ease);}
+.rss12 .ep-cover{object-position:calc(var(--mx) * 100%) 50%;transition:object-position .8s var(--ease);}
+.rss12 .ep-row::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s;
+  background:radial-gradient(280px circle at var(--x,-400px) var(--y,50%),var(--wash),transparent 70%);}
+.rss12 .ep-row::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;opacity:0;transition:opacity .35s;
+  background:radial-gradient(220px circle at var(--x,-400px) var(--y,50%),var(--live),transparent 70%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);}
+.rss12 .ep-row:hover::before,.rss12 .ep-row:hover::after{opacity:1;}
+.rss12 .ep-row.playing{box-shadow:0 24px 70px -28px var(--live);}
+
+/* ============ 13. Window seat ============ */
+.rss13 .live-feed{position:relative;--win:min(68vw,340px);padding-top:calc(var(--win) + 4.5rem);}
+.rss13 .ep-row,.rss13 .ep-row:first-child,.rss13 .ep-row-main{position:static;}
+.rss13 .ep-row-meta span:first-child,.rss13 .ep-row-icons .ep-icon-btn:first-child{display:none;}
+.rss13 .ep-row,.rss13 .ep-row:first-child{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(20,21,25,.72);}
+.rss13 .lf-grid:has(.playing) .ep-row.playing .ep-cover,.rss13 .lf-grid:not(:has(.playing)) .ep-row:first-child .ep-cover,
+.rss13 .live-feed::after{position:absolute;top:3.4rem;left:calc(50% - var(--win) / 2);width:var(--win);height:var(--win);border-radius:50%;}
+.rss13 .lf-grid:has(.playing) .ep-row.playing .ep-cover,.rss13 .lf-grid:not(:has(.playing)) .ep-row:first-child .ep-cover{
+  box-shadow:0 0 0 10px rgba(255,255,255,.05),0 0 0 11px var(--edge),0 0 0 24px rgba(20,21,25,.7),0 0 0 25px var(--edge),0 40px 90px rgba(0,0,0,.55);}
+.rss13 .live-feed::after{content:"";pointer-events:none;background:linear-gradient(140deg,rgba(255,255,255,.16),transparent 38%),radial-gradient(circle at 50% 50%,transparent 62%,rgba(0,0,0,.35));}
+@media (prefers-reduced-motion: no-preference){
+  .rss13 .lf-grid:has(.playing) .ep-row.playing .ep-cover,.rss13 .lf-grid:not(:has(.playing)) .ep-row:first-child .ep-cover{animation:rss13-drift 22s ease-in-out infinite alternate;}
+}
+@keyframes rss13-drift{from{object-position:15% 50%;}to{object-position:85% 50%;}}
+@media (min-width:900px){
+  .rss13 .live-feed{--win:calc(38% - 60px);padding-top:0;padding-left:calc(38% + 2rem);min-height:calc(var(--win) + 9rem);}
+  .rss13 .lf-grid:has(.playing) .ep-row.playing .ep-cover,.rss13 .lf-grid:not(:has(.playing)) .ep-row:first-child .ep-cover,
+  .rss13 .live-feed::after{left:30px;top:4.2rem;width:calc(38% - 60px);height:auto;aspect-ratio:1;}
+}
+
+/* ============ 14. Fuselage ============ */
+.rss14 .lf-grid{display:flex;gap:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;perspective:1100px;
+  align-items:flex-start;margin:0 calc(-1 * clamp(1rem,4vw,3rem));padding:1.6rem max(8%,calc(50% - 600px)) 2rem;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);}
+.rss14 .lf-grid::-webkit-scrollbar{display:none;}
+.rss14 .ep-row,.rss14 .ep-row:first-child{flex:0 0 min(72vw,280px);scroll-snap-align:center;border-radius:150px 150px 26px 26px;}
+.rss14 .ep-row.playing{flex-basis:min(84vw,380px);border-radius:190px 190px 26px 26px;}
+.rss14 .ep-row-main{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"cover cover" "mid mid" "meta play";gap:.9rem;padding:1.2rem 1.2rem 1.3rem;}
+.rss14 .ep-cover{grid-area:cover;justify-self:center;width:78%;height:auto;aspect-ratio:1;}
+.rss14 .ep-row-mid{grid-area:mid;}
+.rss14 .ep-row-title{white-space:normal;font-family:var(--font-display);font-size:var(--fs-body);line-height:1.3;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;}
+.rss14 .ep-row-meta{grid-area:meta;flex-direction:column;align-items:flex-start;gap:.1rem;}
+.rss14 .ep-row-meta span:first-child{display:inline;}
+.rss14 .ep-play-btn{grid-area:play;width:48px;height:48px;}
+.rss14 .ep-row-icons{display:none;}
+.rss14 .ep-player{padding:.9rem 1.2rem 1.2rem;}
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .rss14 .ep-row{animation:rss14-turn linear both;animation-timeline:view(inline);}
+  }
+}
+@keyframes rss14-turn{0%{transform:rotateY(32deg) scale(.84);opacity:.45;}50%{transform:none;opacity:1;}100%{transform:rotateY(-32deg) scale(.84);opacity:.45;}}
+
+/* ============ 15. Night flight ============ */
+.rss15 .ro-stage{background:radial-gradient(130% 60% at 50% 115%,var(--sky-horizon),transparent 60%),linear-gradient(180deg,var(--ink),var(--bg));}
+.rss15 .ro-stage::before,.rss15 .ro-stage::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;}
+.rss15 .ro-stage::before{background-image:
+  radial-gradient(1px 1px at 8% 14%,var(--white),transparent),radial-gradient(1px 1px at 23% 62%,var(--gray-light),transparent),
+  radial-gradient(1.5px 1.5px at 37% 22%,var(--white),transparent),radial-gradient(1px 1px at 51% 78%,var(--gray-light),transparent),
+  radial-gradient(1px 1px at 64% 9%,var(--white),transparent),radial-gradient(1.5px 1.5px at 78% 41%,var(--white),transparent),
+  radial-gradient(1px 1px at 91% 70%,var(--gray-light),transparent),radial-gradient(1px 1px at 14% 88%,var(--white),transparent),
+  radial-gradient(1px 1px at 86% 18%,var(--gray-light),transparent),radial-gradient(1px 1px at 45% 48%,var(--gray),transparent);
+  background-size:420px 360px;}
+.rss15 .ro-stage::after{inset:-30% -20% auto;height:70%;filter:blur(50px);
+  background:conic-gradient(from 200deg at 50% 100%,transparent,var(--sky-cool),var(--sky-warm),var(--sky-cool),transparent 70%);}
+.rss15 .ep-row,.rss15 .ep-row:first-child{background:rgba(20,21,25,.62);border-color:rgba(255,255,255,.05);}
+.rss15 .ep-row::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;opacity:.35;transition:opacity .35s;
+  background:linear-gradient(90deg,transparent 10%,var(--live) 50%,transparent 90%);background-size:200% 100%;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);}
+.rss15 .ep-row:hover::after,.rss15 .ep-row.playing::after{opacity:1;}
+.rss15 .ep-cover{filter:brightness(.8) saturate(.8);transition:filter .4s;}
+.rss15 .ep-row:hover .ep-cover,.rss15 .ep-row.playing .ep-cover{filter:none;}
+.rss15 .ep-row.playing .ep-cover{box-shadow:0 0 0 3px var(--live),0 0 28px var(--live);}
+.rss15 .ep-row.playing .ep-row-title::before{content:"";display:inline-block;vertical-align:-1px;width:13px;height:12px;margin-right:.55rem;
+  background:linear-gradient(var(--orange),var(--orange)) 0 100% / 3px 45% no-repeat,linear-gradient(var(--orange),var(--orange)) 5px 100% / 3px 90% no-repeat,
+    linear-gradient(var(--orange),var(--orange)) 10px 100% / 3px 65% no-repeat;}
+@media (prefers-reduced-motion: no-preference){
+  .rss15 .ro-stage::before{animation:rss15-twinkle 5s ease-in-out infinite alternate;}
+  .rss15 .ro-stage::after{animation:rss15-aurora 20s ease-in-out infinite alternate;}
+  .rss15 .ep-row.playing::after{animation:rss15-edge 3s linear infinite;}
+  .rss15 .ep-row.playing .ep-row-title::before{animation:rss15-eq .9s ease-in-out infinite alternate;}
+}
+@keyframes rss15-twinkle{from{opacity:.55;}to{opacity:1;}}
+@keyframes rss15-aurora{from{transform:translateX(-8%) skewX(-6deg);}to{transform:translateX(8%) skewX(6deg);}}
+@keyframes rss15-edge{from{background-position:200% 0;}to{background-position:0 0;}}
+@keyframes rss15-eq{
+  0%{background-size:3px 45%,3px 90%,3px 65%;}
+  50%{background-size:3px 95%,3px 35%,3px 80%;}
+  100%{background-size:3px 60%,3px 70%,3px 30%;}}
+
 /* phones: the base row */
 @media (max-width:560px){
   .ep-row-meta span:first-child{display:none;}
@@ -318,6 +456,20 @@ CSS = r"""
   .rss10 .ep-cover{width:44px;height:44px;}
   .rss10 .ep-row-main{gap:.7rem;padding-right:1rem;}
   .rss10 .ep-row-show{display:none;}
+  .rssP .ro-stage{--cv:44px;}
+  .rssP .ep-row,.rssP .ep-row:first-child{border-radius:22px;}
+  .rssP .ep-row-main{gap:.7rem;padding-right:1rem;}
+  .rssP:not(.rss14) .ep-row-main{display:grid;grid-template-columns:var(--cv) 36px minmax(0,1fr);grid-template-areas:"cover play mid" "cover play meta";column-gap:.75rem;row-gap:.25rem;padding:.7rem 1.1rem .7rem .6rem;}
+  .rssP:not(.rss14) .ep-cover{grid-area:cover;align-self:center;}
+  .rssP:not(.rss14) .ep-play-btn{grid-area:play;align-self:center;}
+  .rssP:not(.rss14) .ep-row-mid{grid-area:mid;align-self:end;}
+  .rssP:not(.rss14) .ep-row-meta{grid-area:meta;align-self:start;}
+  .rss11 .ep-row-main::before{left:calc(.6rem - 8px);}
+  .rssP .ep-row-title{white-space:normal;line-height:1.35;}
+  .rssP .ep-row-icons{display:none;}
+  .rss14 .ep-row,.rss14 .ep-row:first-child{border-radius:120px 120px 22px 22px;}
+  .rss14 .ep-row-main{padding-right:1.2rem;}
+  .rss14 .lf-grid{padding-inline:calc(50% - min(36vw,140px));}
 }
 @media (prefers-reduced-motion: reduce){ .ro *{transition:none !important;} }
 """
@@ -326,8 +478,46 @@ SCRIPT = """<script>
 /* sample only: the play buttons toggle the playing state, so each design can be seen both ways */
 document.addEventListener('click', function (e) {
   var b = e.target.closest('.ep-play-btn, .ep-play-btn-lg'); if (!b) return;
-  var row = b.closest('.ep-row'); row.classList.toggle('playing');
+  var row = b.closest('.ep-row'), on = !row.classList.contains('playing');
+  row.parentNode.querySelectorAll('.ep-row.playing').forEach(function (r) { r.classList.remove('playing'); });
+  row.classList.toggle('playing', on);
 });
+/* round two: what the live page would get from v2-immersive.js (rss-feed.js stays as it is).
+   --p: the playing row's progress, read from the fill width rss-feed.js already writes;
+   --mx, --my: the pointer over the sky, or how far the section has scrolled on a touch screen;
+   --x, --y: the pointer inside a card */
+(function () {
+  function prog(fill) { var w = parseFloat(fill.style.width) || 0; fill.closest('.ep-row').style.setProperty('--p', (w / 100).toFixed(3)); }
+  document.querySelectorAll('.rssP .ep-progress-fill').forEach(function (f) {
+    prog(f); new MutationObserver(function () { prog(f); }).observe(f, { attributes: true, attributeFilter: ['style'] });
+  });
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var stages = [].slice.call(document.querySelectorAll('.rssP .ro-stage'));
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    stages.forEach(function (st) {
+      st.addEventListener('pointermove', function (e) {
+        var r = st.getBoundingClientRect();
+        st.style.setProperty('--mx', ((e.clientX - r.left) / r.width).toFixed(3));
+        st.style.setProperty('--my', ((e.clientY - r.top) / r.height).toFixed(3));
+        var row = e.target.closest('.ep-row');
+        if (row) { var q = row.getBoundingClientRect(); row.style.setProperty('--x', (e.clientX - q.left) + 'px'); row.style.setProperty('--y', (e.clientY - q.top) + 'px'); }
+      });
+    });
+  } else {
+    var tick = false;
+    addEventListener('scroll', function () {
+      if (tick) return; tick = true;
+      requestAnimationFrame(function () {
+        tick = false;
+        stages.forEach(function (st) {
+          var r = st.getBoundingClientRect(), t = 1 - (r.bottom / (innerHeight + r.height));
+          if (t < 0 || t > 1) return;
+          st.style.setProperty('--mx', t.toFixed(3)); st.style.setProperty('--my', (1 - t).toFixed(3));
+        });
+      });
+    }, { passive: true });
+  }
+})();
 </script>"""
 
 
@@ -351,15 +541,19 @@ def main():
     grid = "".join(rows)
     sections = []
     for n, (name, desc) in enumerate(DESIGNS, 1):
+        if n == 11:
+            sections.append('<div class="ro ro-round"><span class="kit-kicker">Round two</span><h2 class="ro-rh">Portholes, Further</h2>'
+                            '<p class="ro-d">Five more on the idea of number 10, more futuristic and immersive, each built for a phone as much as a desk. '
+                            'The pointer moves the sky on a computer; on a phone the scroll does.</p></div>')
         sections.append(
-            '<section class="ro rss%d" id="o%d" aria-labelledby="o%d-h">'
+            '<section class="ro rss%d%s" id="o%d" aria-labelledby="o%d-h">'
             '<h2 class="ro-h" id="o%d-h"><span>%02d</span><b>%s</b></h2><p class="ro-d">%s</p>'
             '<div class="ro-stage"><div class="live-feed">'
             '<div class="live-feed-head"><span class="live-dot"></span><span>Live From The Feed</span></div>'
             '<div class="lf-grid">%s</div>'
             '<div class="live-feed-footer"><button class="see-more-btn" type="button">All episodes loaded</button>'
             '<span class="live-counter">Showing 7 of 7</span></div>'
-            '</div></div></section>' % (n, n, n, n, n, html.escape(name), html.escape(desc), grid))
+            '</div></div></section>' % (n, " rssP" if n > 10 else "", n, n, n, n, html.escape(name), html.escape(desc), grid))
     jump = "".join('<li><a href="#o%d">%02d %s</a></li>' % (n, n, html.escape(d[0])) for n, d in enumerate(DESIGNS, 1))
     page = """<!doctype html>
 <html lang="en">
@@ -368,7 +562,7 @@ def main():
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/png" sizes="96x96" href="../img/favicon-96.png">
-<title>Live Feed: Ten Designs</title>
+<title>Live Feed: Fifteen Designs</title>
 <link rel="stylesheet" href="../../../fonts.css">
 <link rel="stylesheet" href="../../../styles.css">
 <link rel="stylesheet" href="../v2.css">
@@ -378,7 +572,7 @@ def main():
 <main class="ro-wrap">
 <header class="ro-intro">
 <span class="kit-kicker">Podcast page &middot; Live from the feed</span>
-<h1>Ten Designs For The Live Feed</h1>
+<h1>Fifteen Designs For The Live Feed</h1>
 <p>The same seven episodes in each, written with the exact markup rss-feed.js produces, so whichever you choose drops in with styles only and the feed script stays untouched. The second row of each is shown playing; press any play button to see the other state.</p>
 <ul class="ro-jump">%s</ul>
 </header>
