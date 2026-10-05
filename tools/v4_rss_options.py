@@ -488,7 +488,7 @@ document.addEventListener('click', function (e) {
    --x, --y: the pointer inside a card */
 (function () {
   function prog(fill) { var w = parseFloat(fill.style.width) || 0; fill.closest('.ep-row').style.setProperty('--p', (w / 100).toFixed(3)); }
-  document.querySelectorAll('.rssP .ep-progress-fill').forEach(function (f) {
+  document.querySelectorAll('.rssP .ep-progress-fill, #o16 .ep-progress-fill').forEach(function (f) {
     prog(f); new MutationObserver(function () { prog(f); }).observe(f, { attributes: true, attributeFilter: ['style'] });
   });
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -554,7 +554,20 @@ def main():
             '<div class="live-feed-footer"><button class="see-more-btn" type="button">All episodes loaded</button>'
             '<span class="live-counter">Showing 7 of 7</span></div>'
             '</div></div></section>' % (n, " rssP" if n > 10 else "", n, n, n, n, html.escape(name), html.escape(desc), grid))
+    # 16: the owner's pick as built into v4 (src/v2.css, "LIVE FROM THE FEED"), shown with those very rules
+    sections.append(
+        '<div class="ro ro-round"><span class="kit-kicker">The pick</span><h2 class="ro-rh">Night Flight, As Built</h2>'
+        '<p class="ro-d">Number 15 with the progress ring of number 11 around the cover art, play and pause on the art itself, '
+        'and the show\'s name running along the open player. This one is not a copy: it is styled by v4\'s own style sheet, '
+        'exactly as on the podcast page.</p></div>'
+        '<section class="ro v2-glimpse" id="o16" aria-labelledby="o16-h">'
+        '<h2 class="ro-h" id="o16-h"><span>16</span><b>Night flight, as built</b></h2>'
+        '<div class="live-feed"><div class="live-feed-head"><span class="live-dot"></span><span>Live From The Feed</span></div>'
+        '<div id="liveFeedGrid">%s</div>'
+        '<div class="live-feed-footer"><button class="see-more-btn" type="button">All episodes loaded</button>'
+        '<span class="live-counter">Showing 7 of 7</span></div></div></section>' % grid)
     jump = "".join('<li><a href="#o%d">%02d %s</a></li>' % (n, n, html.escape(d[0])) for n, d in enumerate(DESIGNS, 1))
+    jump += '<li><a href="#o16">16 Night flight, as built</a></li>'
     page = """<!doctype html>
 <html lang="en">
 <head>

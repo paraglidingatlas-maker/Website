@@ -885,3 +885,15 @@ aim(e.gamma / 22, (e.beta - b0) / 22);
 function init() { glow(); }
 if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();
+(function () {
+var grid = document.getElementById("liveFeedGrid");
+if (!grid || !window.MutationObserver) return;
+new MutationObserver(function (list) {
+for (var i = 0; i < list.length; i++) {
+var t = list[i].target;
+if (!t.classList || !t.classList.contains("ep-progress-fill")) continue;
+var row = t.closest(".ep-row");
+if (row) row.style.setProperty("--p", ((parseFloat(t.style.width) || 0) / 100).toFixed(4));
+}
+}).observe(grid, { subtree: true, attributes: true, attributeFilter: ["style"] });
+})();

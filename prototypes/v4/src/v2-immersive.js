@@ -1063,3 +1063,22 @@
   function init() { glow(); }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();
+
+/* ===========================================================================
+   LIVE FROM THE FEED (podcast, "Night flight"): the ring around the playing
+   episode's art fills with the episode. rss-feed.js (do-not-modify, untouched)
+   already writes the progress bar's width; this copies it into --p on the row,
+   which the ring in v2.css reads.
+   ========================================================================= */
+(function () {
+  var grid = document.getElementById("liveFeedGrid");
+  if (!grid || !window.MutationObserver) return;
+  new MutationObserver(function (list) {
+    for (var i = 0; i < list.length; i++) {
+      var t = list[i].target;
+      if (!t.classList || !t.classList.contains("ep-progress-fill")) continue;
+      var row = t.closest(".ep-row");
+      if (row) row.style.setProperty("--p", ((parseFloat(t.style.width) || 0) / 100).toFixed(4));
+    }
+  }).observe(grid, { subtree: true, attributes: true, attributeFilter: ["style"] });
+})();

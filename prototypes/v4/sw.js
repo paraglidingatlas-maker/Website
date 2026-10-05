@@ -1,6 +1,6 @@
 /* Paragliding Atlas, v4 app: offline rules. Written by tools/v4_pwa.py;
    edit that file, not this one. */
-const VERSION = '3ce9f5ea15';
+const VERSION = '1d4df7b18d';
 const SHELL = 'atlas-shell-' + VERSION;
 const PAGES = 'atlas-pages';
 const ASSETS = 'atlas-assets-' + VERSION;
