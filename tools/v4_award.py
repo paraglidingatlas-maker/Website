@@ -28,7 +28,12 @@ looks, go ahead"; docs/v4-report.md). The markup parts:
      live site's Title Case rule (tools/title_case_headings.py), with its
      own exceptions (episode titles, transcript chapter names), plus the
      series names, which are names ("Risk vs Reward", "Living the Dream");
-     the kilometres in "451 km" stay together.
+     the kilometres in "451 km" stay together;
+   - the Mission essay reads at a book's measure (class pol-essay);
+   - the knowledge base's altitude rail reads the page's own levels: the
+     altitude between two levels is interpolated as they cross the middle
+     of the screen (0 m where the levels start), printed with its comma,
+     and the rail leaves before the footer.
 
 Every block sits between markers, so a rerun replaces it.
 
@@ -233,11 +238,76 @@ def title_case():
     print("v4_award: title case: %d headings on %d pages" % (n, pages))
 
 
+def mission_essay():
+    p = os.path.join(V4, "mission.html")
+    s = read(p)
+    if 'class="pol-wrap pol-essay"' not in s:
+        if s.count('class="pol-wrap"') != 1:
+            raise SystemExit("v4_award: mission wrapper not found")
+        write(p, s.replace('class="pol-wrap"', 'class="pol-wrap pol-essay"', 1))
+    print("v4_award: mission essay measure")
+
+
+RAIL_OLD = """  function frame(){
+    ticking = false;
+    var doc = document.documentElement,
+        max = doc.scrollHeight - innerHeight,
+        p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
+    clb.style.setProperty('--p', p.toFixed(4));
+    clb.classList.toggle('is-climbing', scrollY > innerHeight * 0.35);
+    if(altEl) altEl.textContent = Math.round(p * TOP / 10) * 10;
+  }"""
+RAIL_NEW = """  /* v4 (tools/v4_award.py): the altitude is the page's own: between two
+     levels it is interpolated as they cross the middle of the screen. */
+  var lv = stations.map(function(st){ var b = st.querySelector('.clb-alt b'); return b ? +b.textContent.replace(/,/g, '') : null; }),
+      wrap = document.querySelector('.clb-stations'), foot = document.querySelector('footer');
+  function altitude(){
+    var mid = innerHeight / 2, pts = [];
+    if(wrap) pts.push([wrap.getBoundingClientRect().top, 0]);
+    stations.forEach(function(st, i){
+      if(lv[i] === null) return;
+      var a = st.querySelector('.clb-alt') || st;
+      pts.push([a.getBoundingClientRect().top, lv[i]]);
+    });
+    if(!pts.length || mid <= pts[0][0]) return 0;
+    for(var i = 1; i < pts.length; i++){
+      if(mid <= pts[i][0]){ var a = pts[i - 1], b = pts[i]; return a[1] + (mid - a[0]) / Math.max(1, b[0] - a[0]) * (b[1] - a[1]); }
+    }
+    return pts[pts.length - 1][1];
+  }
+  function frame(){
+    ticking = false;
+    var doc = document.documentElement,
+        max = doc.scrollHeight - innerHeight,
+        p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0,
+        alt = altitude(), ft = foot ? foot.getBoundingClientRect().top : Infinity;
+    clb.style.setProperty('--p', p.toFixed(4));
+    clb.style.setProperty('--q', Math.min(1, alt / TOP).toFixed(4));
+    clb.classList.toggle('is-climbing', scrollY > innerHeight * 0.35 && ft > innerHeight * 0.85);
+    if(altEl) altEl.textContent = (Math.round(alt / 10) * 10).toLocaleString('en-US');
+  }"""
+
+
+def kb_rail():
+    p = os.path.join(V4, "knowledge-base.html")
+    s = read(p)
+    if RAIL_NEW in s:
+        pass
+    elif RAIL_OLD in s:
+        s = s.replace(RAIL_OLD, RAIL_NEW, 1)
+        write(p, s)
+    else:
+        raise SystemExit("v4_award: the climb rail script was not found")
+    print("v4_award: knowledge base altitude rail reads the levels")
+
+
 def main():
+    kb_rail()
     kb_landing()
     podcast_voices()
     booking_nowrap()
     title_case()
+    mission_essay()
 
 
 if __name__ == "__main__":

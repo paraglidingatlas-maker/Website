@@ -947,7 +947,7 @@
         if (schem) {
           schem.setAttribute("data-on", hl[cur] || "");
           // on a phone the schematic is framed on the line being described, at a size its words can be read
-          var sv = schem.querySelector("svg"), crop = { "ir-home": "400 40 500 330", "ir-west": "180 60 500 330", "ir-east": "470 60 500 330", "ir-over": "460 20 500 330" };
+          var sv = schem.querySelector("svg"), crop = { "ir-home": "400 40 500 330", "ir-west": "200 60 560 330", "ir-east": "470 60 500 330", "ir-over": "460 20 500 330" };
           if (sv) {
             if (!sv.dataset.vb) sv.dataset.vb = sv.getAttribute("viewBox");
             sv.setAttribute("viewBox", w.innerWidth < 760 && crop[hl[cur]] ? crop[hl[cur]] : sv.dataset.vb);
@@ -966,7 +966,7 @@
       svg.style.setProperty("--fine", fine.toFixed(3)); svg.style.setProperty("--ter", ter.toFixed(3)); svg.style.setProperty("--cn", Math.min(1, cn).toFixed(3));
       sec.style.setProperty("--route", rt.toFixed(3));
       sec.classList.toggle("is-route", rt > 0);
-      head.style.opacity = p < .28 ? 1 : Math.max(0, 1 - (p - .28) / .05);
+      head.style.opacity = p < .2 ? 1 : Math.max(0, 1 - (p - .2) / .05);   // gone before the map lands under it
       show(cur);
     }
     w.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(frame); }, { passive: true });

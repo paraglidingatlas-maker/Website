@@ -45,9 +45,15 @@
         (s[3].length ? '<span class="v4-mg-sub">' + s[3].map(function (x) { return '<a href="' + BASE + x[1] + '">' + x[0] + '</a>'; }).join("") + '</span>' : "") +
         '</li>';
     }).join("");
+    // the header's own logo in the menu bar, at the same size and place,
+    // so the name does not jump from the logo to plain text as the menu opens
+    function homeMark() {
+      var lg = d.querySelector(".page-wrap > nav .wordmark img");
+      return lg ? '<img src="' + lg.getAttribute("src") + '" alt="Paragliding Atlas" width="480" height="100">' : "Paragliding Atlas";
+    }
     menu.innerHTML =
       '<div class="v4-menu-in">' +
-      '<div class="v4-menu-bar"><a class="v4-menu-home" href="' + BASE + 'index.html">Paragliding Atlas</a>' +
+      '<div class="v4-menu-bar"><a class="v4-menu-home" href="' + BASE + 'index.html">' + homeMark() + '</a>' +
       '<button type="button" class="v4-menu-x" aria-label="Close menu"><span aria-hidden="true"></span></button></div>' +
       '<div class="v4-menu-search" role="search"><label class="v4-menu-lab" for="v4q">Search episodes, the knowledge base and trips</label>' +
       '<input id="v4q" type="search" autocomplete="off" placeholder="Search" aria-controls="v4hits">' +

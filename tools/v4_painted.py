@@ -216,7 +216,7 @@ def rvr_hero():
     d.dot(D, 4.5, True)
     d.circle(D, 11, "accent")
     d.text((top[0] + 26, top[1] - 4), "climb first, cross high", "tv")
-    d.text((fast[50][0] + 4, fast[50][1] + 26), "straight across, low", "val")
+    d.text((fast[50][0] + 4, fast[50][1] + 44), "straight across, low", "val")   # +44: clear of its own line (visual review, 5 Oct)
     d.text((D[0] + 16, D[1] - 6), "the decision", "lab")
     d.text((2300 * s, G(2300) - 26), "goal", "lab", "middle")
     return d

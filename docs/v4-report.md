@@ -70,6 +70,7 @@ marked done is the next step.
 | 20. Listening mode on episode pages (src/v4-listen.js, loaded on first use; a button under the player, or #listen): one screen with the player, a dial of the chapters around the header globe that turns to the chapter playing, the series' Gold line drawing drawing itself as the episode goes, the transcript lit line by line and kept in view (paused while the reader scrolls, with "Back to the voice"). Time from the YouTube embed's own messages or the audio element; Space, the arrows and Esc work; reduced motion keeps every state, nothing turns | done | see git log | all gates PASS |
 | 21. Immersion to the max (owner, 4 Oct): the owner's footage as film strips on four knowledge base pages and behind the Mission, Enquire and homepage Why bands (tools/v4_footage.py); footage drifts in as it scrolls past; the episode's own picture glows behind its player and the listening screen; hero pictures, footage and the episode globe shift with the pointer or a phone's tilt; the podcast breather's clip now plays (it never did) | done | see git log | all gates PASS |
 | 22. The award pass (owner, 4 Oct: items 1, 3, 4, 5, 6 and 9 of the review): a quiet header; the phone header; orange caps labels only in page headers; one motion language; a calm knowledge base landing (the door off, a Gold line climb); About and Podcast with their own openings. tools/v4_award.py, src/v2.css "THE AWARD PASS" | done | see git log | all gates PASS |
+| 23. The visual build list (owner, 5 Oct: "visually improving how the site looks, go ahead"): a visual review by page group, every finding checked by a skeptic (48 kept of 48), merged into 32 items and all built; then a before/after regression review. src/v2.css "THE VISUAL BUILD LIST", tools/v4_award.py, tools/v4_tripmap.py, tools/v4_painted.py | done | 93aa11d and see git log | all gates PASS |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they
@@ -757,3 +758,45 @@ root.
 - **6. The knowledge base landing.** The hyperspace door is off (the page opens straight on its content), and the moving wall of episode stills behind the title is replaced by one Gold line drawing: a thermal climb up an altitude scale with the page's five levels at their own heights (600 m to 4,000 m), each a link to its level. All figures are the page's own.
 - **1. Openings.** Home and the trips keep the full-bleed film. About is now an editorial split: words on the plain page, the photograph framed beside them, the figures as one quiet line. Its photograph is the glacier still: the clip 2 frame of a pilot in an ATLAS harness first tried here shows a helmet with another name on it, and an About Me page should not open on someone else. Podcast opens on its people: every guest's name from the episode data as a quiet wall of type behind the title, one brightening at a time (on a phone the names fade out above the paragraph and stay still). The field of gliders photograph left the Podcast header.
 - **Still open from the review** (need the owner): a display typeface (2), sharper footage or photographs (7), and one episode count everywhere (8: the library says 86, the sitemap 93, the podcast 80+).
+
+## The visual build list (owner, 5 Oct 2026: "visually improving how the site looks, go ahead")
+How it was found: four visual reviewers, one per page group (home and about, podcast, knowledge base, trips and the rest), each walked every page at 1440 and 390 and returned the most valuable visual improvements with screenshots and measurements; a skeptic re-checked each finding on the page and judged whether the fix would clearly look better without breaking a house rule. All 48 findings held; they were merged into 32 items, ranked by visible gain over effort, and every one was built. A second review then compared every page before and after, looking only for anything that got worse.
+
+The 32, in the order they were ranked:
+1. **One in-page label style: replace the last ~70 orange caps labels on episode, KB landing and trip pages** (episodes/sky-gods-flying-8000ers-antoine-girard.html, episodes/anatomy-of-a-dream-with-damien-lacaze.html, podcast.html,).
+2. **One shared left edge: sections, footer, menu, CTA and headers all at 70px (1440) / 310px (1920)** (index.html, about.html, podcast.html, destinations/india.html, destinations/kenya.html, sitemap.html, 404.html, terms.ht).
+3. **Fade every hard image edge: home hero ridge, Meteorology hero seam, host portrait, episode globe under the header** (index.html, knowledge-base/meteorology.html, podcast.html, episodes/sky-gods-flying-8000ers-antoine-girard.html, episode).
+4. **Type over bright footage disappears: home flythrough rail, trip gallery labels, phone trip hero** (index.html, destinations/india.html, destinations/kenya.html).
+5. **Pull-quote over the drawing arrives clipped, then jumps 200px** (knowledge-base/risk-vs-reward.html, knowledge-base/sky-gods.html).
+6. **Library sticky filter bar lets rows show through the chips and takes 24% of a phone screen** (library.html).
+7. **Footer: two screens of single-column links on phone, copyright mixed into the platform links, 40px Wind button** (all pages (shared footer)).
+8. **Phone section titles squeezed into half a column and broken mid-word ('rememberi / ng')** (knowledge-base/risk-vs-reward.html, knowledge-base/sky-gods.html).
+9. **The orange 'fly' in 'See where we fly' renders muddy bronze** (index.html).
+10. **One heading style: one face, one leading, balanced lines, one capitalisation** (index.html, about.html, mission.html, podcast.html, destinations/india.html, destinations/kenya.html).
+11. **One booking CTA: About's card and the trip pages' card are both broken by the legacy .cta-card grid** (about.html, destinations/india.html, destinations/kenya.html, index.html, mission.html).
+12. **Route map: text sits straight on the map, and on phones the stage breaks into collisions and clipped labels** (destinations/india.html, destinations/kenya.html).
+13. **KB landing altimeter disagrees with the levels, drops its comma and prints over the footer** (knowledge-base.html).
+14. **Topics page: 50 identical tiles, 50 orange hashes, a ragged last row and a 4,133px phone column** (tags.html).
+15. **Phone departures: statuses wrap, arrows float, note floats right; desktop has a 130px dead gap** (index.html).
+16. **Full-screen menu: headless About photo, Knowledge Base title out of line, orange smudges through the glass** (menu overlay).
+17. **Trip lower page: rounded FAQ rows, three disclosure styles, a 1,249px paragraph, two competing headlines** (destinations/india.html, destinations/kenya.html).
+18. **Card grids that end on half-empty rows: episode 'More from', library series, KB 'Next'** (episodes/sky-gods-flying-8000ers-antoine-girard.html, episodes/anatomy-of-a-dream-with-damien-lacaze.html, library.html,).
+19. **Takeaway cards on phones split the guest name into a narrow column ('Beni / Kälin')** (knowledge-base/risk-vs-reward.html, knowledge-base/sky-gods.html).
+20. **Library table: an orange episode-number stripe and series names wrapping in tracked caps** (library.html).
+21. **Episode quote row: a near-empty 'The Guest' card and an em-dash caps attribution** (episodes/sky-gods-flying-8000ers-antoine-girard.html, episodes/anatomy-of-a-dream-with-damien-lacaze.html).
+22. **Reading line length: Mission about 110 characters a line, terms about 96; the 404 title is section-sized** (mission.html, terms.html, 404.html).
+23. **On a phone, 12 full-width episode tiles take five screens before the first idea** (knowledge-base/risk-vs-reward.html, knowledge-base/sky-gods.html).
+24. **Audio-only episode: cover art dimmed to 55%, and phone chapter dots merge into one blob** (episodes/anatomy-of-a-dream-with-damien-lacaze.html).
+25. **Episode rail: one card's two-line stamp pushes it 17px out of line** (index.html).
+26. **FAQ left column was meant to stick but scrolls away, and starts 96px below the questions** (knowledge-base/meteorology.html, knowledge-base/risk-vs-reward.html, knowledge-base/sky-gods.html).
+27. **KB landing levels start at five different left edges (237 to 255px)** (knowledge-base.html).
+28. **Meteorology's only series card stretches 1,300px, with a solid orange icon** (knowledge-base/meteorology.html).
+29. **Enquire form: bright white browser checkbox and the browser's default select arrow** (enquire.html).
+30. **Sitemap: ridge cuts through the controls, off-system buttons and labels, footer repeats the list** (sitemap.html).
+31. **'Why fly with us' icons sit 11px below their titles** (index.html).
+32. **A drawing label struck through by its own line, and the phone KB landing title jammed under the header** (knowledge-base/risk-vs-reward.html, knowledge-base.html).
+
+Notes:
+- The trip pages' own stylesheet (destinations.css) and the sitemap's script (sitemap-sky.js) are live files: their fixes are v4 overrides in src/v2.css. When v4 is promoted, two live selectors should be scoped (the footer's `span:last-child`, which now catches the wind button's label) and the sky's fitAll clearance could grow by the ridge's height.
+- The About photograph is the glacier frame (clip 11): the first choice, a clip 2 frame of a pilot in an ATLAS harness, shows another name on the helmet.
+- Headings are now in the house Title Case on 131 v4 pages (the live rule, tools/title_case_headings.py), with the series names kept as names ("Risk vs Reward", "Living the Dream").
