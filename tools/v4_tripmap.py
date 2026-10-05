@@ -206,10 +206,11 @@ def india():
     pt = (X(lon), Y(lat))
     # Bir framed to the left of the schematic panel (which sits on the right of the screen)
     # the region frame wide enough to show the ranges around Bir, not one flat field (visual review, 5 Oct: 3.4 to 10)
-    cfg = dict(INDIA, region=(lon + 1.0, lat - .25, 10), zoom=1, map_names=["Bir Billing"])
+    # the offset grows with the frame, so Bir stays left of the schematic panel (1.0 * 10 / 3.4)
+    cfg = dict(INDIA, region=(lon + 2.9, lat - .25, 10), zoom=1, map_names=["Bir Billing"])
     overlay = ('<div class="tm-line tm-schem" data-on="">%s<p class="tm-schem-cap">%s</p></div>' % (schem, cap))
     nxt = re.search(r'<section[^>]*\sid="([^"]+)"', src[j:]).group(1)
-    fp = (X(lon + 1.0), Y(lat - .25))
+    fp = (X(lon + 2.9), Y(lat - .25))
     sec = section(cfg, cards, [], head, nxt, [pt], [fp] * len(cards), overlay=overlay, hl=hl)
     src = src[:i] + sec + src[j:]
     open(p, "w", encoding="utf-8").write(src)

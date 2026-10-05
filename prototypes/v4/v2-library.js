@@ -130,7 +130,7 @@
         (state.s ? " in " + state.s : "") + (words.length ? " matching “" + state.q.trim() + "”" : "") +
         (pages > 1 ? " · page " + state.page + " of " + pages : "")
       : "";
-    $("browseH").textContent = state.s || (words.length ? "Search results" : "All episodes");
+    $("browseH").textContent = state.s || (words.length ? "Search Results" : "All Episodes");
     chips.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.s === state.s)); });
 
     var pg = $("pager");

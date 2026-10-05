@@ -30,6 +30,8 @@ looks, go ahead"; docs/v4-report.md). The markup parts:
      series names, which are names ("Risk vs Reward", "Living the Dream");
      the kilometres in "451 km" stay together;
    - the Mission essay reads at a book's measure (class pol-essay);
+   - the home rail's card stamp: the series name in its own element, so it
+     can shorten while the episode number stays on the same line;
    - the knowledge base's altitude rail reads the page's own levels: the
      altitude between two levels is interpolated as they cross the middle
      of the screen (0 m where the levels start), printed with its comma,
@@ -301,7 +303,20 @@ def kb_rail():
     print("v4_award: knowledge base altitude rail reads the levels")
 
 
+STAMP = re.compile(r'<span class="ep-stamp">([^<]+)<i>')
+
+
+def rail_stamps():
+    p = os.path.join(V4, "index.html")
+    s = read(p)
+    new = STAMP.sub(lambda m: '<span class="ep-stamp"><b>%s</b><i>' % m.group(1), s)
+    if new != s:
+        write(p, new)
+    print("v4_award: home rail stamps: %d" % new.count('<span class="ep-stamp"><b>'))
+
+
 def main():
+    rail_stamps()
     kb_rail()
     kb_landing()
     podcast_voices()

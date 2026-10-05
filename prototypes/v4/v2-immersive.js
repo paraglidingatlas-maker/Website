@@ -782,7 +782,7 @@ route.style.strokeDashoffset = (len * (1 - lerp(g0, g1, t2) / Math.max(1, cum[cu
 }
 if (schem) {
 schem.setAttribute("data-on", hl[cur] || "");
-var sv = schem.querySelector("svg"), crop = { "ir-home": "400 40 500 330", "ir-west": "200 60 560 330", "ir-east": "470 60 500 330", "ir-over": "460 20 500 330" };
+var sv = schem.querySelector("svg"), crop = { "ir-home": "400 40 500 330", "ir-west": "200 60 600 330", "ir-east": "470 60 500 330", "ir-over": "460 20 500 330" };
 if (sv) {
 if (!sv.dataset.vb) sv.dataset.vb = sv.getAttribute("viewBox");
 sv.setAttribute("viewBox", w.innerWidth < 760 && crop[hl[cur]] ? crop[hl[cur]] : sv.dataset.vb);
