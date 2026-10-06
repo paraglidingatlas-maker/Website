@@ -81,6 +81,76 @@ DESIGNS = [
     ("Night flight", "A star field with a slow aurora; the window edges are lit like instruments at night, and the playing one glows with a moving level meter."),
 ]
 
+NF_VARIANTS = [
+    ("Constellation", "The covers become stars on one dotted line drawn down through them, like a constellation chart; the playing star burns brightest."),
+    ("Radar", "Range rings spread from the corner and a slow sweep crosses the sky; a radar beam turns over the playing episode's art."),
+    ("Northern lights", "A stronger aurora in blue and amber behind see-through windows; the playing card takes on the light, drifting."),
+    ("Vario", "The playing card carries a climb gauge on its right edge, a scale of ticks filling upward as the episode plays."),
+    ("Cockpit glass", "The whole panel tilts back like an instrument screen and settles flat as it scrolls into view, with corner marks and a sheen crossing the glass."),
+]
+NF_CSS = """
+/* ============ 17 to 21: Night flight, five ways (on v4's own .v2-glimpse rules) ============ */
+.v2-glimpse.nf .nf-grid{display:grid;gap:.8rem;position:relative;}
+/* 17 Constellation */
+.v2-glimpse.nf17 .ep-row:first-child{--cv:64px;}
+.v2-glimpse.nf17 .nf-grid::before{content:"";position:absolute;top:1.5rem;bottom:1.5rem;left:calc(1px + .9rem + 32px);width:1px;pointer-events:none;
+  background:repeating-linear-gradient(180deg,var(--gray-light) 0 2px,transparent 2px 9px);
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(180deg,transparent,#000 10%,#000 90%,transparent);}
+.v2-glimpse.nf17 .ep-row,.v2-glimpse.nf17 .ep-row:first-child{background:rgba(20,21,25,.48);}
+.v2-glimpse.nf17 .ep-row.playing .ep-cover{box-shadow:0 0 0 2px var(--orange),0 0 36px 6px var(--live);}
+.v2-glimpse.nf17 .ep-row:hover .ep-row-main::before{rotate:none;filter:drop-shadow(0 0 4px var(--white));}
+/* 18 Radar */
+.v2-glimpse.nf18 .live-feed{background:repeating-radial-gradient(circle at 94% 0%,transparent 0 89px,rgba(180,180,180,.08) 90px 91px),
+  radial-gradient(130% 60% at 50% 115%,var(--sky-horizon),transparent 60%),linear-gradient(180deg,var(--ink),var(--bg));}
+.v2-glimpse.nf18 .live-feed::after{inset:auto;left:calc(94% - 150%);top:-150%;width:300%;height:300%;filter:none;
+  background:conic-gradient(from 0deg,var(--wash),transparent 40deg);}
+.v2-glimpse.nf18 .ep-play-btn{position:relative;overflow:hidden;}
+.v2-glimpse.nf18 .ep-play-btn svg{position:relative;z-index:1;}
+.v2-glimpse.nf18 .ep-row.playing .ep-play-btn::before{content:"";position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 0deg,var(--live),transparent 80deg);}
+@media (prefers-reduced-motion: no-preference){
+  .v2-glimpse.nf18 .live-feed::after{animation:nf-spin 9s linear infinite;}
+  .v2-glimpse.nf18 .ep-row.playing .ep-play-btn::before{animation:nf-spin 2.6s linear infinite;}
+}
+@keyframes nf-spin{to{transform:rotate(360deg);}}
+/* 19 Northern lights */
+.v2-glimpse.nf19 .live-feed::after{inset:-40% -30% auto;height:110%;filter:blur(60px);opacity:1;
+  background:conic-gradient(from 190deg at 50% 100%,transparent,var(--sky-cool),var(--live),var(--sky-cool),var(--sky-warm),transparent 75%);}
+.v2-glimpse.nf19 .ep-row,.v2-glimpse.nf19 .ep-row:first-child{background:rgba(20,21,25,.4);}
+.v2-glimpse.nf19 .ep-row.playing{background:linear-gradient(110deg,var(--sky-cool),var(--wash),var(--sky-cool));background-size:300% 100%;}
+@media (prefers-reduced-motion: no-preference){ .v2-glimpse.nf19 .ep-row.playing{animation:nf-drift 9s ease-in-out infinite alternate;} }
+@keyframes nf-drift{from{background-position:0 0;}to{background-position:100% 0;}}
+/* 20 Vario */
+.v2-glimpse.nf20 .ep-row.playing .ep-row-main{padding-right:2.6rem;}
+.v2-glimpse.nf20 .ep-row.playing .ep-player{padding-right:2.8rem;}
+.v2-glimpse.nf20 .ep-row.playing::before{content:"";position:absolute;right:14px;top:16px;bottom:16px;width:13px;pointer-events:none;
+  background:linear-gradient(to top,var(--orange) calc(var(--p,0) * 100%),rgba(255,255,255,.1) 0) 0 0 / 4px 100% no-repeat,
+    repeating-linear-gradient(to top,var(--edge-hi) 0 1px,transparent 1px 8px) 7px 0 / 6px 100% no-repeat;
+  box-shadow:0 0 0 0 transparent;}
+.v2-glimpse.nf20 .ep-row.playing::before{filter:drop-shadow(0 0 4px var(--live));}
+/* 21 Cockpit glass */
+.v2-glimpse.nf21 .nf-grid::before{content:"";position:absolute;inset:-10px;pointer-events:none;
+  background:linear-gradient(var(--orange),var(--orange)) 0 0 / 18px 2px no-repeat,linear-gradient(var(--orange),var(--orange)) 0 0 / 2px 18px no-repeat,
+    linear-gradient(var(--orange),var(--orange)) 100% 0 / 18px 2px no-repeat,linear-gradient(var(--orange),var(--orange)) 100% 0 / 2px 18px no-repeat,
+    linear-gradient(var(--orange),var(--orange)) 0 100% / 18px 2px no-repeat,linear-gradient(var(--orange),var(--orange)) 0 100% / 2px 18px no-repeat,
+    linear-gradient(var(--orange),var(--orange)) 100% 100% / 18px 2px no-repeat,linear-gradient(var(--orange),var(--orange)) 100% 100% / 2px 18px no-repeat;}
+.v2-glimpse.nf21 .nf-grid::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:28px;
+  background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.05) 50%,transparent 58%);background-size:260% 100%;}
+@media (prefers-reduced-motion: no-preference){
+  .v2-glimpse.nf21 .nf-grid::after{animation:nf-sheen 7s linear infinite;}
+  @supports (animation-timeline: view()){
+    .v2-glimpse.nf21 .live-feed{transform-origin:50% 100%;animation:nf-tilt linear both;animation-timeline:view();animation-range:entry 0% cover 40%;}
+  }
+}
+@keyframes nf-sheen{from{background-position:130% 0;}to{background-position:-130% 0;}}
+@keyframes nf-tilt{from{transform:perspective(1400px) rotateX(20deg) scale(.93);opacity:.5;}to{transform:none;opacity:1;}}
+@media (max-width:640px){
+  .v2-glimpse.nf17 .ep-row:first-child{--cv:48px;}
+  .v2-glimpse.nf17 .nf-grid::before{left:calc(1px + .7rem + 24px);}
+  .v2-glimpse.nf20 .ep-row.playing .ep-row-main{padding-right:2.2rem;}
+}
+"""
+
 CSS = r"""
 /* base: the live page's own row styles (podcast.html), so each design starts where the site is */
 .ep-row{position:relative;border:1px solid var(--line);border-top:none;background:var(--bg);overflow:hidden;}
@@ -488,7 +558,7 @@ document.addEventListener('click', function (e) {
    --x, --y: the pointer inside a card */
 (function () {
   function prog(fill) { var w = parseFloat(fill.style.width) || 0; fill.closest('.ep-row').style.setProperty('--p', (w / 100).toFixed(3)); }
-  document.querySelectorAll('.rssP .ep-progress-fill, #o16 .ep-progress-fill').forEach(function (f) {
+  document.querySelectorAll('.rssP .ep-progress-fill, #o16 .ep-progress-fill, .nf .ep-progress-fill').forEach(function (f) {
     prog(f); new MutationObserver(function () { prog(f); }).observe(f, { attributes: true, attributeFilter: ['style'] });
   });
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -566,8 +636,21 @@ def main():
         '<div id="liveFeedGrid">%s</div>'
         '<div class="live-feed-footer"><button class="see-more-btn" type="button">All episodes loaded</button>'
         '<span class="live-counter">Showing 7 of 7</span></div></div></section>' % grid)
+    sections.append('<div class="ro ro-round"><span class="kit-kicker">Round three</span><h2 class="ro-rh">Night Flight, Five Ways</h2>'
+                    '<p class="ro-d">Five variations on the built design (16), each layered on v4\'s own feed rules, so any of them '
+                    'goes in as a short addition to the style sheet.</p></div>')
+    for k, (name, desc) in enumerate(NF_VARIANTS, 17):
+        sections.append(
+            '<section class="ro v2-glimpse nf nf%d" id="o%d" aria-labelledby="o%d-h">'
+            '<h2 class="ro-h" id="o%d-h"><span>%d</span><b>%s</b></h2><p class="ro-d">%s</p>'
+            '<div class="live-feed"><div class="live-feed-head"><span class="live-dot"></span><span>Live From The Feed</span></div>'
+            '<div class="nf-grid">%s</div>'
+            '<div class="live-feed-footer"><button class="see-more-btn" type="button">All episodes loaded</button>'
+            '<span class="live-counter">Showing 7 of 7</span></div></div></section>'
+            % (k, k, k, k, k, html.escape(name), html.escape(desc), grid))
     jump = "".join('<li><a href="#o%d">%02d %s</a></li>' % (n, n, html.escape(d[0])) for n, d in enumerate(DESIGNS, 1))
     jump += '<li><a href="#o16">16 Night flight, as built</a></li>'
+    jump += "".join('<li><a href="#o%d">%d %s</a></li>' % (k, k, html.escape(v[0])) for k, v in enumerate(NF_VARIANTS, 17))
     page = """<!doctype html>
 <html lang="en">
 <head>
@@ -575,7 +658,7 @@ def main():
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/png" sizes="96x96" href="../img/favicon-96.png">
-<title>Live Feed: Fifteen Designs</title>
+<title>Live Feed: Designs</title>
 <link rel="stylesheet" href="../../../fonts.css">
 <link rel="stylesheet" href="../../../styles.css">
 <link rel="stylesheet" href="../v2.css">
@@ -585,7 +668,7 @@ def main():
 <main class="ro-wrap">
 <header class="ro-intro">
 <span class="kit-kicker">Podcast page &middot; Live from the feed</span>
-<h1>Fifteen Designs For The Live Feed</h1>
+<h1>Designs For The Live Feed</h1>
 <p>The same seven episodes in each, written with the exact markup rss-feed.js produces, so whichever you choose drops in with styles only and the feed script stays untouched. The second row of each is shown playing; press any play button to see the other state.</p>
 <ul class="ro-jump">%s</ul>
 </header>
@@ -594,7 +677,7 @@ def main():
 %s
 </body>
 </html>
-""" % (CSS, jump, "\n".join(sections), SCRIPT)
+""" % (CSS + NF_CSS, jump, "\n".join(sections), SCRIPT)
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     open(OUT, "w", encoding="utf-8").write(page)
     print("v4_rss_options: %s, %d designs, %d episodes" % (os.path.relpath(OUT, ROOT), len(DESIGNS), len(eps)))
