@@ -1209,31 +1209,31 @@
   "title": "Reading measure"
  },
  "17": {
-  "summary": "search at screen 3.07; collapse 0, reserve 0, thermal 0 results; empty state offers 0 topics",
+  "summary": "search at screen 3.08; collapse 0, reserve 3, thermal 1 results; empty state offers 0 topics",
   "data": {
-   "pos": 3.07,
+   "pos": 3.08,
    "res": {
     "collapse": {
      "shown": 0,
-     "none": null,
+     "none": "Nothing matches those filters. Clear them to see every episode.",
      "topics": 0,
      "status": ""
     },
     "reserve": {
-     "shown": 0,
+     "shown": 3,
      "none": null,
      "topics": 0,
      "status": "3 episodes matching “reserve”"
     },
     "thermal": {
-     "shown": 0,
+     "shown": 1,
      "none": null,
      "topics": 0,
      "status": "1 episode matching “thermal”"
     },
     "zzqx": {
      "shown": 0,
-     "none": null,
+     "none": "Nothing matches those filters. Clear them to see every episode.",
      "topics": 0,
      "status": ""
     }
@@ -1865,6 +1865,6 @@
   "done": false,
   "title": "Enquiry form messages"
  },
- "_when": "2026-10-07 10:20",
+ "_when": "2026-10-07 13:16",
  "_site": "v4"
 }

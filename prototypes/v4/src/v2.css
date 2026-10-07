@@ -3076,3 +3076,14 @@ html .clb-topics{align-items:stretch;}
   :root{--fs-micro:.75rem;}
   html .footer-listen-label{font-size:12px;}
 }
+
+/* 16. Reading measure. Running text on the knowledge base and trip pages in
+       one size from the scale (--fs-body), secondary text in the other
+       (--fs-body-s), instead of seven sizes from 14.9 to 17.3px; and no line
+       of it wider than about 75 characters (31rem; it reached 111 in the
+       knowledge base folds and 143 on Kenya at 1440). */
+html [data-v2="kb"] :is(.faq-r details p, .k-more p, .band .short, .check p, .k-hero p){font-size:var(--fs-body);max-width:31rem;}
+html [data-v2="kb"] .bd-src{max-width:28rem;}
+html .v2-dst.v4-trip .page-wrap :is(.kfaq-inner p, .kreal-rest, .dst-head p, .etq-diy-note, .etq-open p, .kov-friends, .kov-q p, .v4t-gfold p,
+  .dst-lede, .dst-rel-body, .kfly-lead, .kfly-tail, .cta-body, .tm-head p, .kdates-terms){font-size:var(--fs-body);max-width:31rem;}
+html .v2-dst.v4-trip .page-wrap :is(.kday-stop p, .kkit-gblurb, .kair-txt, .kfaq-note){font-size:var(--fs-body-s);}

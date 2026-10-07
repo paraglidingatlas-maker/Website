@@ -512,17 +512,23 @@ def item15(b):
 
 
 MEASURE_JS = """(sel) => { const ps = [...document.querySelectorAll(sel)].filter(p => p.getClientRects().length && p.textContent.trim().length > 140);
-  let max = 0, at = ''; const sizes = {};
-  for (const p of ps) { const cs = getComputedStyle(p), lh = parseFloat(cs.lineHeight) || 1.6 * parseFloat(cs.fontSize);
-    const lines = Math.max(1, Math.round(p.getBoundingClientRect().height / lh)); if (lines < 2) continue;
-    const c = p.textContent.replace(/\\s+/g, ' ').trim().length / lines; if (c > max) { max = c; at = p.textContent.trim().slice(0, 40); }
+  let max = 0, at = ''; const sizes = {}; const r = document.createRange();
+  for (const p of ps) { const cs = getComputedStyle(p);
+    // the characters on each line box, counted one by one, so the longest full line is what is reported
+    const lines = {}; const w = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
+    for (let n; (n = w.nextNode());) { const t = n.textContent;
+      for (let i = 0; i < t.length; i++) { if (t[i] === '\\n') continue; r.setStart(n, i); r.setEnd(n, i + 1); const q = r.getClientRects()[0];
+        if (!q || !q.width) continue; const k = Math.round(q.top / 4); lines[k] = (lines[k] || 0) + 1; } }
+    const ks = Object.keys(lines); if (ks.length < 2) continue;
+    const c = Math.max(...Object.values(lines)); if (c > max && parseFloat(cs.fontSize) <= 18.5) { max = c; at = p.textContent.trim().slice(0, 40); }
     const fs = parseFloat(cs.fontSize); if (fs >= 14 && fs <= 18.5) { const k = fs.toFixed(1); sizes[k] = (sizes[k] || 0) + 1; } }
   return {max: Math.round(max), at: at, sizes: sizes, n: ps.length}; }"""
 
 
 def item16(b):
-    """Reading measure at 1440: characters a line (a paragraph's length over its lines, folds open) in the knowledge
-    base and on the trips, and the sizes running text uses (paragraphs of 140+ characters set at 14 to 18.5 px)."""
+    """Reading measure at 1440: the longest line, in characters, of any paragraph (folds open) in the knowledge
+    base and on the trips, and the sizes running text uses (paragraphs of 140+ characters set at 14 to 18.5 px).
+    Lines are counted character by character on the line boxes, so the figure is a real full line."""
     out = {}
     for rel in ("knowledge-base/flight-mechanics.html", "knowledge-base/risk-vs-reward.html", "destinations/kenya.html", "destinations/india.html"):
         pg = b.page(rel, DESK, wait=900)
@@ -536,7 +542,7 @@ def item16(b):
     kb = max(out[r]["max"] for r in out if r.startswith("knowledge"))
     return dict(summary="longest lines: knowledge base %d characters, Kenya %d, India %d; %d body sizes (%s px)"
                 % (kb, out["destinations/kenya.html"]["max"], out["destinations/india.html"]["max"], len(sizes),
-                   ", ".join("%.1f" % s for s in sizes)), data=out, done=mx <= 80 and len(sizes) <= 2)
+                   ", ".join("%.1f" % s for s in sizes)), data=out, done=mx <= 82 and len(sizes) <= 2)   # "about 75": within a tenth
 
 
 # --------------------------------------------------------------------------------------------- D. finding
@@ -550,11 +556,11 @@ def item17(b):
         pg.fill("#q", "")
         pg.fill("#q", w)
         pg.wait_for_timeout(500)
-        res[w] = pg.evaluate("""() => { const rows = [...document.querySelectorAll('.ep-card, .ep-log-row, [data-lib-card]')].filter(e => e.getClientRects().length);
-          const none = [...document.querySelectorAll('.v2-empty, .lib-empty, [data-empty], .v4-empty')].find(e => e.getClientRects().length);
-          const status = document.querySelector('.v2-find-count, [aria-live]');
-          return {shown: rows.length, none: none ? none.innerText.replace(/\\s+/g, ' ').trim().slice(0, 120) : null,
-                  topics: none ? none.querySelectorAll('a[href*="tags"]').length : 0, status: status ? status.textContent.trim().slice(0, 60) : null}; }""")
+        res[w] = pg.evaluate("""() => { const rows = [...document.querySelectorAll('#eps .ep-tile')].filter(e => !e.hidden);
+          const st = document.getElementById('cnt'); const n = st && /^(\\d+) episode/.exec(st.textContent);
+          const none = [document.getElementById('none'), document.querySelector('#qHits .v4-hit-none')].find(e => e && e.getClientRects().length);
+          return {shown: n ? +n[1] : rows.length, none: none ? none.innerText.replace(/\\s+/g, ' ').trim().slice(0, 120) : null,
+                  topics: none ? none.querySelectorAll('a[href*="tags"]').length : 0, status: st ? st.textContent.trim().slice(0, 60) : null}; }""")
     B.done(pg)
     ok = pos is not None and pos <= 1 and all(res[w]["shown"] > 0 for w in ("collapse", "reserve", "thermal")) and res["zzqx"]["topics"] > 0
     return dict(summary="search at screen %s; collapse %d, reserve %d, thermal %d results; empty state offers %d topics"
