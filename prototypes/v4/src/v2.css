@@ -2957,3 +2957,12 @@ body.enq .page-wrap > nav .nav-toggle{margin-left:auto;}
 html.v4u-holding .enq-wrap > div{display:flex;flex-direction:column;}
 html.v4u-holding .enq-quick{order:2;margin-top:var(--sp-5);}
 html.v4u-holding #enqForm{margin-top:0 !important;}
+
+/* 5. Nothing important folded away. Every trip question is in view (the
+      "more questions" fold opened out, tools/v4_ux.py), and Flying Etiquette is
+      a band of its own after Before You Book: its heading and first lines in
+      view, the rules a press away as before. */
+html .v4u-etq{border-top:1px solid var(--line);padding-bottom:var(--sp-5);}
+html .v4u-etq .v4u-etq-head{margin-bottom:var(--sp-3);}
+html .v4u-etq .etq-open .dst-head{margin-top:0;}
+

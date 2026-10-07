@@ -25,6 +25,8 @@ What it does, by the brief's numbers
      whole, in a landscape frame.
   4  enquire.html?trip=..&when=..: the departure's facts (as the trip page
      states them) under the title, the form next, the message optional.
+  5  every trip question in view; Flying Etiquette a band of its own after
+     Before You Book, its heading and first lines in view, in the jump row.
 """
 import html
 import os
@@ -431,6 +433,8 @@ def page(rel, src):
     if rel in TRIPS:
         src = trip_bar(src)
         src = trip_dates_first(src)
+        src = trip_questions_shown(src)
+        src = trip_etiquette_band(src)
     return src
 
 
