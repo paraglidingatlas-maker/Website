@@ -136,8 +136,8 @@ a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
 @media (hover:hover){ :where(a.kit-card, a.kit-panel):hover{translate:0 var(--lift);} }
 :where(a.kit-card, a.kit-panel):is(:focus-visible, :has(:focus-visible)){translate:0 var(--lift);--lit:1;}
 :where(a.kit-card, a.kit-panel):active{translate:0 calc(var(--lift) / 3);scale:var(--press-card);}
-.page-wrap:has(> .kit-hero.is-sky){position:relative;overflow-x:clip;}
-.page-wrap:has(> .kit-hero.is-sky)::before{
+.page-wrap:has(> .kit-hero.is-sky, > #v4-main > .kit-hero.is-sky){position:relative;overflow-x:clip;}
+.page-wrap:has(> .kit-hero.is-sky, > #v4-main > .kit-hero.is-sky)::before{
   content:"";position:absolute;z-index:-1;pointer-events:none;
   top:0;left:0;right:0;height:clamp(640px,70vw,900px);
   background:
@@ -821,11 +821,11 @@ a.v2-dep:hover{padding-left:.5rem;} a.v2-dep:hover .v2-dep-trip b{color:var(--or
 /* ---- homepage: the footage is the header. The nav floats over it, clear;
    the only shading left is a soft left edge behind the words and the fade
    into the page at the bottom. ---- */
-.page-wrap:has(> .v2-home-hero) > nav{position:absolute;top:0;left:0;right:0;background:none;border-bottom:0;border-image:none;
+.page-wrap:has(> .v2-home-hero, > #v4-main > .v2-home-hero) > nav{position:absolute;top:0;left:0;right:0;background:none;border-bottom:0;border-image:none;
   text-shadow:0 1px 12px rgba(0,0,0,.35);}
-.page-wrap:has(> .v2-home-hero) > nav::before{opacity:0;}
-.page-wrap:has(> .v2-home-hero) > nav .nav-links a{color:rgba(255,255,255,.92);}
-.page-wrap:has(> .v2-home-hero) > .nav-chevron{display:none;}
+.page-wrap:has(> .v2-home-hero, > #v4-main > .v2-home-hero) > nav::before{opacity:0;}
+.page-wrap:has(> .v2-home-hero, > #v4-main > .v2-home-hero) > nav .nav-links a{color:rgba(255,255,255,.92);}
+.page-wrap:has(> .v2-home-hero, > #v4-main > .v2-home-hero) > .nav-chevron{display:none;}
 .v2-home-hero{padding-top:8rem;}
 .v2-home-hero::after{background:
   linear-gradient(180deg,rgba(10,11,14,.38) 0%,rgba(10,11,14,0) 16%),
@@ -850,7 +850,7 @@ a.v2-dep:hover{padding-left:.5rem;} a.v2-dep:hover .v2-dep-trip b{color:var(--or
 .page-wrap > nav.v2-nav-pinned:not(.v2-nav-shown){transition:translate .28s ease-in;}
 .page-wrap > nav.v2-nav-pinned::before{opacity:.8;}
 .page-wrap > nav.v2-nav-pinned{padding-top:1rem;padding-bottom:1rem;}
-.page-wrap:has(> .v2-home-hero) > nav.v2-nav-pinned .nav-links a{color:var(--gray-light);}
+.page-wrap:has(> .v2-home-hero, > #v4-main > .v2-home-hero) > nav.v2-nav-pinned .nav-links a{color:var(--gray-light);}
 /* anything else that sticks to the top steps down under it */
 .v2-tools,.v2-nl{transition:top .38s var(--ease);}
 html.v2-nav-up .v2-tools{top:var(--v2-nav-h,5rem);}
@@ -3133,3 +3133,19 @@ html .v2-dst.v4-trip .page-wrap :is(.kday-stop p, .kkit-gblurb, .kair-txt, .kfaq
 .v4u-play:active{scale:var(--press);}
 @media (scripting:none){ .v4u-latest{grid-template-columns:minmax(0,1fr);padding-left:1.4rem;} .v4u-play{display:none;} }
 @media (max-width:760px){ .v4u-latest{margin-top:var(--sp-3);} }
+
+/* 20. The topics page: a box that narrows the tiles (tools/v4_ux.py), and a
+       caption for the traces on them. */
+.v4u-tgtools{max-width:34rem;margin:var(--sp-3) 0 0;display:flex;}
+.tg-spark-cap{display:flex;align-items:center;gap:.6rem;margin:var(--sp-2) 0 0;font-size:var(--fs-small);color:var(--gray-light);}
+.tg-spark-cap svg{flex:none;width:40px;height:12px;fill:none;stroke:var(--orange);stroke-width:1.4;stroke-linecap:round;}
+html [data-v2="tg"] .tg-tile[hidden]{display:none !important;}
+.v4u-tg-none{margin:var(--sp-3) var(--edge-x) 0;color:var(--gray-light);font-size:var(--fs-body-s);}
+.v4u-tg-none a{color:var(--orange);margin-left:.4rem;}
+.v4u-tgfind .v2-find-input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
+@media (scripting:none){ .v4u-tgtools{display:none;} }
+
+/* 21. The one main landmark (tools/v4_ux.py), where the skip link lands: no
+       ring around the whole page when it takes the focus. */
+#v4-main:focus{outline:none;}
+

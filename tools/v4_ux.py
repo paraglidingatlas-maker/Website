@@ -668,6 +668,112 @@ def podcast_latest(src):
     return put_block(src, LATEST_JS_MARK, "<script>%s</script>" % inline_js("v4-ux-latest.js"), "</body>")
 
 
+# ------------------------------------------------------------------------------------------------ 20
+TOPIC_CASE = (("Srs", "SRS"), ("Ccc", "CCC"))
+
+
+def topic_case(src):
+    """20. Two topic names were written by a title-casing step ("Srs", "Ccc"); the site writes them SRS and CCC
+    everywhere else (the episodes, their transcripts). The same words, in the site's own case, on every page
+    and in the search files; the page title alone stays as the live page has it (the parity gate), until the
+    name is corrected at its source, episode-meta.json."""
+    keep = r'(<title>.*?</title>|<meta property="og:title"[^>]*>|<meta name="twitter:title"[^>]*>)'
+    parts = re.split(keep, src, flags=re.S)    # the page title stays the live page's (the parity gate)
+    for i in range(0, len(parts), 2):
+        for a, b in TOPIC_CASE:
+            parts[i] = re.sub(r"\b%s\b" % a, b, parts[i])
+    return "".join(parts)
+
+
+TG_FIND = ('<label class="v2-find v4u-tgfind"><span class="v2-sr">Search topics</span>'
+           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/>'
+           '<path d="M21 21l-4.3-4.3"/></svg><input class="v2-find-input" id="tgFind" type="search" placeholder="Search topics" '
+           'autocomplete="off" aria-controls="tgCloud"></label>')
+TG_JS_MARK = ("<!-- v4u-topics-js: tools/v4_ux.py -->", "<!-- /v4u-topics-js -->")
+TG_JS = ("<script>(function(d){var i=d.getElementById('tgFind'),c=d.getElementById('tgCloud'),n=d.getElementById('tgNone');if(!i||!c||!n)return;"
+         "var t=[].slice.call(c.querySelectorAll('.tg-tile'));function f(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();}"
+         "t.forEach(function(a){a.v4f=f((a.getAttribute('href')||'').replace(/^.*\\//,'').replace(/\\.html$/,'')+' '+a.textContent.replace(/\\d+\\s*$/,''));});"
+         "i.addEventListener('input',function(){var q=f(i.value),k=0;t.forEach(function(a){var on=!q||a.v4f.indexOf(q)>=0;a.hidden=!on;if(on)k++;});n.hidden=k>0;});"
+         "})(document);</script>")
+
+
+def topic_years():
+    """The first and last years among the dated conversations the topic tiles trace (tools/v4_topics.py)."""
+    years = []
+    for f in os.listdir(os.path.join(V4, "tags")):
+        if f.endswith(".html"):
+            years += re.findall(r'<li class="tg-ep[^"]*" data-date="(\d{4})-', open(os.path.join(V4, "tags", f), encoding="utf-8").read())
+    return (min(years), max(years)) if years else (None, None)
+
+
+def topics_page(src):
+    """20. The topics page: a box that narrows the 50 tiles as one types (they were a long list to scan on a
+    phone: 50 rows), "Nothing found" with the library when none matches; and a caption for the traces on the
+    tiles, in the words of the chart they shrink (each topic page's "conversations by date"), with its years.
+    Without script the box is not shown."""
+    if 'class="tg-cloud"' not in src:
+        return src
+    y0, y1 = topic_years()
+    if 'id="tgFind"' not in src:
+        cap = ('<p class="tg-spark-cap"><svg viewBox="0 0 40 12" aria-hidden="true" focusable="false"><path d="M1,10 C8,10 10,4 16,6 S26,10 30,3 '
+               'S36,8 39,8"/></svg>Each topic\'s conversations by date, %s&nbsp;to&nbsp;%s</p>' % (y0, y1)) if y0 else ""
+        src = re.sub(r'(<header class="kit-hero is-sky v2-tg-hero">\s*<div class="kit-hero-copy">.*?<p class="kit-intro">.*?</p>)',
+                     lambda m: m.group(1) + "\n    <div class=\"v4u-tgtools\" role=\"search\">" + TG_FIND + "</div>" + cap, src, count=1, flags=re.S)
+        src = src.replace('<div class="tg-cloud">', '<div class="tg-cloud" id="tgCloud">', 1)
+        src = re.sub(r'(<div class="tg-cloud" id="tgCloud">.*?)(\n\s*</div>)',
+                     lambda m: m.group(1) + m.group(2) + '\n<p class="v4u-tg-none" id="tgNone" hidden>Nothing found. <a href="library.html">Library</a></p>',
+                     src, count=1, flags=re.S)
+    return put_block(src, TG_JS_MARK, TG_JS, "</body>")
+
+
+# ------------------------------------------------------------------------------------------------ 21
+def _masked(src):
+    """src with script bodies and comments blanked (same length), so tags are counted only where they are tags."""
+    return re.sub(r"<script\b.*?</script>|<!--.*?-->", lambda m: " " * len(m.group(0)), src, flags=re.S)
+
+
+def _close(src, start, tag):
+    """End offset of the </tag> that closes the <tag> opening at start (scripts and comments ignored)."""
+    depth = 0
+    for t in re.finditer(r"<(/?)%s\b[^>]*>" % tag, _masked(src)[start:]):
+        depth += -1 if t.group(1) else 1
+        if depth == 0:
+            return start + t.start()
+    return None
+
+
+MAIN_OPEN = '<main id="v4-main" tabindex="-1">'
+
+
+def main_landmark(rel, src):
+    """21. One main landmark on every page, and it is where the skip link goes (most pages had none: axe
+    landmark-one-main failed on 33 of 60 views; the skip link landed on a header outside any main).
+    A page with no main: everything between the header and the end of .page-wrap goes in one (the header
+    and the footer stay outside). An episode: its main was only the centre column, after the title and the
+    player; the whole episode (.cd-wrap) becomes the main and the column a div, so the classes, and every
+    rule that reads them, are unchanged. The 404 and the flight options already have one."""
+    if 'id="v4-main"' in src:
+        return src
+    m = re.search(r'<div class="cd-wrap[^"]*"', src)
+    if m and src.count('<main class="cd-center">') == 1:
+        end = _close(src, m.start(), "div")
+        if end is None:
+            return src
+        src = src[:m.start()] + "<main" + src[m.start() + 4:end] + "</main>" + src[end + 6:]
+        src = src.replace('<main class="cd-wrap', '<main id="v4-main" tabindex="-1" class="cd-wrap', 1)
+        i = src.index('<main class="cd-center">')
+        j = _close(src, i, "main")
+        return src[:i] + '<div class="cd-center">' + src[i + len('<main class="cd-center">'):j] + "</div>" + src[j + 7:]
+    if "<main" in src:
+        return src
+    a = src.find('<div class="nav-chevron"></div>')
+    b = src.find("</div><!-- /.page-wrap -->")
+    if a < 0 or b < a:
+        return src
+    a += len('<div class="nav-chevron"></div>')
+    return src[:a] + "\n" + MAIN_OPEN + src[a:b] + "</main>\n" + src[b:]
+
+
 MEDIA_MARK = ("<!-- v4u-media: src/v4-ux-media.js via tools/v4_ux.py -->", "<!-- /v4u-media -->")
 
 
@@ -690,6 +796,9 @@ def hold_data():
 
 
 def page(rel, src):
+    src = topic_case(src)
+    if rel == "tags.html":
+        src = topics_page(src)
     if rel == "enquire.html":
         src = enquire_hold(src, hold_data())
     if rel == "index.html":
@@ -716,7 +825,7 @@ def page(rel, src):
         src = gallery_lazy(src)
         src = trip_subnav(src)
         src = media_script(src)
-    return src
+    return main_landmark(rel, src)
 
 
 def main(args):

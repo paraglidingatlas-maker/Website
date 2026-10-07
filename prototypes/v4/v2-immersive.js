@@ -80,7 +80,7 @@ var turn = HDG + Math.sin(f * Math.PI * 2) * 9 + f * 14;
 hudAlt.textContent = (Math.round(climb / 10) * 10).toLocaleString("en-US") + " m";
 hudHdg.textContent = pad3(turn) + "°";
 }
-var heroVid = d.querySelector(".page-wrap > .kit-hero video, .page-wrap > header video, .khero video");
+var heroVid = d.querySelector(".page-wrap > .kit-hero video, .page-wrap > header video, #v4-main > .kit-hero video, #v4-main > header video, .khero video");
 if (heroVid && hud) {
 var flying = function () { hud.classList.toggle("is-flying", !heroVid.paused && !heroVid.ended); };
 ["playing", "pause", "ended", "emptied"].forEach(function (ev) { heroVid.addEventListener(ev, flying); });
@@ -268,7 +268,7 @@ var nav = d.querySelector(".page-wrap > nav");
 if (!nav || d.querySelector(".dst-jump")) return;
 var root = d.documentElement, spacer = null, pinned = false, shown = false, lastY = w.scrollY, queued = false;
 function threshold() {
-var hero = d.querySelector(".page-wrap > .kit-hero, .page-wrap > header");
+var hero = d.querySelector(".page-wrap > .kit-hero, .page-wrap > header, #v4-main > .kit-hero, #v4-main > header");
 var h = hero ? hero.getBoundingClientRect().bottom + w.scrollY : 0;
 return Math.max(nav.offsetHeight * 3, Math.min(h, innerHeight));
 }
@@ -463,7 +463,7 @@ function place() {
 var max = d.documentElement.scrollHeight - w.innerHeight;
 if (max <= 0) return;
 var html = "";
-d.querySelectorAll("main h2, .page-wrap > section h2, .dst-main h2").forEach(function (h) {
+d.querySelectorAll(".cd-center h2, main:not(#v4-main) h2, .page-wrap > section h2, #v4-main > section h2, .dst-main h2").forEach(function (h) {
 if (h.closest("details:not([open]), footer, nav, [hidden]")) return;
 var y = h.getBoundingClientRect().top + w.scrollY - w.innerHeight * .3;
 var p = Math.max(0, Math.min(1, y / max));
@@ -661,7 +661,7 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
 "use strict";
 var d = document;
 function skip() {
-var h = d.querySelector("main, h1");
+var h = d.querySelector("main") || d.querySelector("h1");   // the page's one main (the usability pass, 21)
 if (!h || d.querySelector(".v4-skip")) return;
 var t = h.tagName === "MAIN" ? h : (h.closest("header, section, article") || h);
 if (!t.id) t.id = "v4-main";
