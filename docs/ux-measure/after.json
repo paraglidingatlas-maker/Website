@@ -1,0 +1,1428 @@
+{
+ "1": {
+  "summary": "India 390: \"£1,100 per pilot 10 days · Next departure 21 Oct 2026 Hold a place\" 69px; Kenya 390: \"From US$2,100 12 days · Next departure 18 Jan 2027 Hold a place\"",
+  "data": {
+   "india@320": {
+    "h": 75,
+    "shown": true,
+    "text": "£1,100 per pilot 10 days · Next departure 21 Oct 2026 Hold a place",
+    "price": true,
+    "small": 12,
+    "clipped": 0,
+    "over": false
+   },
+   "india@360": {
+    "h": 75,
+    "shown": true,
+    "text": "£1,100 per pilot 10 days · Next departure 21 Oct 2026 Hold a place",
+    "price": true,
+    "small": 12,
+    "clipped": 0,
+    "over": false
+   },
+   "india@375": {
+    "h": 75,
+    "shown": true,
+    "text": "£1,100 per pilot 10 days · Next departure 21 Oct 2026 Hold a place",
+    "price": true,
+    "small": 12,
+    "clipped": 0,
+    "over": false
+   },
+   "india@390": {
+    "h": 69,
+    "shown": true,
+    "text": "£1,100 per pilot 10 days · Next departure 21 Oct 2026 Hold a place",
+    "price": true,
+    "small": 12,
+    "clipped": 0,
+    "over": false
+   },
+   "india@414": {
+    "h": 69,
+    "shown": true,
+    "text": "£1,100 per pilot 10 days · Next departure 21 Oct 2026 Hold a place",
+    "price": true,
+    "small": 12,
+    "clipped": 0,
+    "over": false
+   },
+   "kenya@320": {
+    "h": 75,
+    "shown": true,
+    "text": "From US$2,100 12 days · Next departure 18 Jan 2027 Hold a place",
+    "price": true,
+    "small": 12,
+    "clipped": 0,
+    "over": false
+   },
+   "kenya@360": {
+    "h": 75,
+    "shown": true,
+    "text": "From US$2,100 12 days · Next departure 18 Jan 2027 Hold a place",
+    "price": true,
+    "small": 12,
+    "clipped": 0,
+    "over": false
+   },
+   "kenya@375": {
+    "h": 75,
+    "shown": true,
+    "text": "From US$2,100 12 days · Next departure 18 Jan 2027 Hold a place",
+    "price": true,
+    "small": 12,
+    "clipped": 0,
+    "over": false
+   },
+   "kenya@390": {
+    "h": 69,
+    "shown": true,
+    "text": "From US$2,100 12 days · Next departure 18 Jan 2027 Hold a place",
+    "price": true,
+    "small": 12,
+    "clipped": 0,
+    "over": false
+   },
+   "kenya@414": {
+    "h": 69,
+    "shown": true,
+    "text": "From US$2,100 12 days · Next departure 18 Jan 2027 Hold a place",
+    "price": true,
+    "small": 12,
+    "clipped": 0,
+    "over": false
+   }
+  },
+  "done": true,
+  "title": "Price in the phone action bar"
+ },
+ "2": {
+  "summary": "india dates at 10.6 of 21 (fly-through 5.6, route 3.2, gallery 2.8); kenya dates at 11.5 of 21 (fly-through 5.6, route 4.2, gallery 2.7)",
+  "data": {
+   "india": {
+    "screens": 21.4,
+    "overview": [
+     1.8,
+     5.6
+    ],
+    "route": [
+     7.4,
+     3.2
+    ],
+    "gallery": [
+     12.2,
+     2.8
+    ],
+    "dates": [
+     10.6,
+     1.6
+    ]
+   },
+   "kenya": {
+    "screens": 20.7,
+    "overview": [
+     1.8,
+     5.6
+    ],
+    "route": [
+     7.3,
+     4.2
+    ],
+    "gallery": [
+     12.9,
+     2.7
+    ],
+    "dates": [
+     11.5,
+     1.4
+    ]
+   }
+  },
+  "done": true,
+  "title": "Dates sooner"
+ },
+ "3": {
+  "summary": "23 photos: 100% of each shows on average (least 100%), enlarged up to 1.1x on a 3x phone; 0 with a focal point",
+  "data": {
+   "india": [
+    {
+     "alt": "A pilot on a red wing turning over steep snow",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1400,
+      933
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    },
+    {
+     "alt": "A single wing high above a snow-streaked peak",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1400,
+      933
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    },
+    {
+     "alt": "The forested front range under building cumulus",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1400,
+      933
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    },
+    {
+     "alt": "Dozens of paragliders thermalling together under grey cloud",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1400,
+      933
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    },
+    {
+     "alt": "The Bir landing field under big cumulus, snow peaks behind, ",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1400,
+      933
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    },
+    {
+     "alt": "Two pilots with paraglider rucksacks climbing a forest trail",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1400,
+      933
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    },
+    {
+     "alt": "The Kangra valley from the air, villages and fields below th",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1400,
+      933
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    },
+    {
+     "alt": "A Tibetan monastery with prayer flags against a blue sky",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1400,
+      933
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    },
+    {
+     "alt": "A meadow of white flowers below the snow-covered Dhauladhar",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1400,
+      933
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    },
+    {
+     "alt": "Terraced fields, a river and villages seen from the air",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1400,
+      933
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    },
+    {
+     "alt": "A snow-dusted rock peak half hidden in cloud",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1400,
+      933
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    },
+    {
+     "alt": "A paraglider silhouetted against a burning sunset",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1400,
+      933
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    }
+   ],
+   "kenya": [
+    {
+     "alt": "Mount Longonot",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1153,
+      768
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 1.05
+    },
+    {
+     "alt": "Kerio Valley",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1152,
+      768
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 1.05
+    },
+    {
+     "alt": "The Equator",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1152,
+      768
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 1.05
+    },
+    {
+     "alt": "Northern Kenya",
+     "box": [
+      402,
+      250
+     ],
+     "img": [
+      1233,
+      768
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.98
+    },
+    {
+     "alt": "Chyulu Hills",
+     "box": [
+      402,
+      275
+     ],
+     "img": [
+      1122,
+      768
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 1.07
+    },
+    {
+     "alt": "Paragliding in Kenya",
+     "box": [
+      402,
+      226
+     ],
+     "img": [
+      1400,
+      788
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    },
+    {
+     "alt": "Paragliding in Kenya",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1400,
+      933
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    },
+    {
+     "alt": "Paragliding in Kenya",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1400,
+      933
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    },
+    {
+     "alt": "Paragliding in Kenya",
+     "box": [
+      402,
+      172
+     ],
+     "img": [
+      1400,
+      600
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    },
+    {
+     "alt": "Paragliding in Kenya",
+     "box": [
+      402,
+      268
+     ],
+     "img": [
+      1400,
+      933
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    },
+    {
+     "alt": "Paragliding in Kenya",
+     "box": [
+      402,
+      301
+     ],
+     "img": [
+      1400,
+      1050
+     ],
+     "fit": "contain",
+     "pos": "50% 50%",
+     "shown": 1,
+     "x3": 0.86
+    }
+   ]
+  },
+  "done": true,
+  "title": "Gallery framing"
+ },
+ "4": {
+  "summary": "h1 \"Tell Us About Your Flying\"; first field at y=776; screen one shows trip True, dates True, price True; message required False; header Enquire False",
+  "data": {
+   "h1": "Tell Us About Your Flying",
+   "field": 776,
+   "fieldId": "name",
+   "dates": true,
+   "price": true,
+   "trip": true,
+   "msgRequired": false,
+   "headerEnquire": false
+  },
+  "done": true,
+  "title": "Hold a place in context"
+ },
+ "5": {
+  "summary": "india 10 of 10 questions shown, etiquette a band with 510 characters showing; kenya 6 of 6 questions shown, etiquette a band with 494 characters showing",
+  "data": {
+   "india": {
+    "faq": 10,
+    "faqShown": 10,
+    "etqChars": 510,
+    "etqFolded": false,
+    "etqAfter": "reality"
+   },
+   "kenya": {
+    "faq": 6,
+    "faqShown": 6,
+    "etqChars": 494,
+    "etqFolded": false,
+    "etqAfter": "reality"
+   }
+  },
+  "done": true,
+  "title": "Nothing important folded away"
+ },
+ "6": {
+  "summary": "India 1.46 MB, home 1.37 MB, Kenya 0.79 MB (gzipped as served: 0.98 / 0.93 / 0.34 MB)",
+  "data": {
+   "index.html": {
+    "raw": 1370254,
+    "served": 934523,
+    "top": [
+     [
+      "/prototypes/v4/img/clips/hero-p-720.webm",
+      430076
+     ],
+     [
+      "/assets/destinations/kenya/clouds/cloud-3.webp",
+      93848
+     ],
+     [
+      "/assets/podcast/plate.webp",
+      91188
+     ],
+     [
+      "/assets/images/hero.webp",
+      65038
+     ],
+     [
+      "/prototypes/v4/v2.css?v=f5073ed3",
+      34848
+     ]
+    ]
+   },
+   "destinations/india.html": {
+    "raw": 1455113,
+    "served": 984899,
+    "top": [
+     [
+      "/prototypes/v4/img/clips/bir-p-720.webm",
+      535148
+     ],
+     [
+      "/prototypes/v4/img/hero/india-snowline-p.webp",
+      170978
+     ],
+     [
+      "/prototypes/v4/destinations/india.html",
+      59840
+     ],
+     [
+      "/prototypes/v4/v2.css?v=f5073ed3",
+      34848
+     ],
+     [
+      "/styles.css?v=b084e774",
+      31227
+     ]
+    ]
+   },
+   "destinations/kenya.html": {
+    "raw": 790143,
+    "served": 338568,
+    "top": [
+     [
+      "/prototypes/v4/destinations/kenya.html",
+      51075
+     ],
+     [
+      "/prototypes/v4/img/hero/kenya-longonot-p.webp",
+      42254
+     ],
+     [
+      "/prototypes/v4/v2.css?v=f5073ed3",
+      34848
+     ],
+     [
+      "/styles.css?v=b084e774",
+      31227
+     ],
+     [
+      "/assets/destinations/kenya/map/kenya-sheet-terrain.webp",
+      26306
+     ]
+    ]
+   },
+   "podcast.html": {
+    "raw": 1363871,
+    "served": 933183,
+    "top": [
+     [
+      "/prototypes/v4/img/clips/hero-p-720.webm",
+      430076
+     ],
+     [
+      "/assets/destinations/kenya/clouds/cloud-3.webp",
+      93848
+     ],
+     [
+      "/assets/podcast/host-aninder-soft.webp",
+      71434
+     ],
+     [
+      "/assets/images/hero.webp",
+      65038
+     ],
+     [
+      "/prototypes/v4/v2.css?v=f5073ed3",
+      34848
+     ]
+    ]
+   },
+   "library.html": {
+    "raw": 986430,
+    "served": 295034,
+    "top": [
+     [
+      "/prototypes/v4/v2-library.js?v=f5b8cd15",
+      43265
+     ],
+     [
+      "/library-episodes.js?v=1ab16e12",
+      41306
+     ],
+     [
+      "/prototypes/v4/v2.css?v=f5073ed3",
+      34848
+     ],
+     [
+      "/styles.css?v=b084e774",
+      31227
+     ],
+     [
+      "/prototypes/v4/library.html",
+      21121
+     ]
+    ]
+   },
+   "about.html": {
+    "raw": 713391,
+    "served": 377121,
+    "top": [
+     [
+      "/assets/destinations/kenya/clouds/cloud-3.webp",
+      93848
+     ],
+     [
+      "/prototypes/v4/img/hero/about-alps-11-still-p.webp",
+      37174
+     ],
+     [
+      "/prototypes/v4/v2.css?v=f5073ed3",
+      34848
+     ],
+     [
+      "/assets/images/partners-aninder.webp",
+      31250
+     ],
+     [
+      "/styles.css?v=b084e774",
+      31227
+     ]
+    ]
+   },
+   "knowledge-base.html": {
+    "raw": 595546,
+    "served": 228377,
+    "top": [
+     [
+      "/prototypes/v4/knowledge-base.html",
+      38470
+     ],
+     [
+      "/prototypes/v4/v2.css?v=f5073ed3",
+      34848
+     ],
+     [
+      "/styles.css?v=b084e774",
+      31227
+     ],
+     [
+      "/assets/fonts/dm-sans-latin-700-normal.woff2",
+      14348
+     ],
+     [
+      "/assets/fonts/dm-sans-latin-500-normal.woff2",
+      14304
+     ]
+    ]
+   },
+   "knowledge-base/flight-mechanics.html": {
+    "raw": 995269,
+    "served": 332911,
+    "top": [
+     [
+      "/prototypes/v4/knowledge-base/flight-mechanics.html",
+      117037
+     ],
+     [
+      "/prototypes/v4/v2.css?v=f5073ed3",
+      34848
+     ],
+     [
+      "/styles.css?v=b084e774",
+      31227
+     ],
+     [
+      "/assets/fonts/dm-sans-latin-700-normal.woff2",
+      14348
+     ],
+     [
+      "/assets/fonts/dm-sans-latin-500-normal.woff2",
+      14304
+     ]
+    ]
+   },
+   "episodes/sky-gods-flying-8000ers-antoine-girard.html": {
+    "raw": 615764,
+    "served": 234720,
+    "top": [
+     [
+      "/prototypes/v4/v2.css?v=f5073ed3",
+      34848
+     ],
+     [
+      "/prototypes/v4/episodes/sky-gods-flying-8000ers-antoine-girard.html",
+      32183
+     ],
+     [
+      "/styles.css?v=b084e774",
+      31227
+     ],
+     [
+      "/assets/fonts/dm-sans-latin-700-normal.woff2",
+      14348
+     ],
+     [
+      "/assets/fonts/dm-sans-latin-500-normal.woff2",
+      14304
+     ]
+    ]
+   },
+   "enquire.html": {
+    "raw": 540687,
+    "served": 202954,
+    "top": [
+     [
+      "/prototypes/v4/v2.css?v=f5073ed3",
+      34848
+     ],
+     [
+      "/styles.css?v=b084e774",
+      31227
+     ],
+     [
+      "/prototypes/v4/img/contours.svg",
+      30497
+     ],
+     [
+      "/assets/fonts/dm-sans-latin-500-normal.woff2",
+      14304
+     ],
+     [
+      "/assets/fonts/dm-sans-latin-400-normal.woff2",
+      14200
+     ]
+    ]
+   }
+  },
+  "done": true,
+  "title": "Weight on a phone"
+ },
+ "7": {
+  "summary": "India: \"Overview Routes Dates Gallery Guides FAQ Before You Book Flying Etiquette Enquire £1,100 per pilot Hold a place\"",
+  "data": {
+   "india": {
+    "text": "Overview Routes Dates Gallery Guides FAQ Before You Book Flying Etiquette Enquire £1,100 per pilot Hold a place",
+    "price": true,
+    "hold": true,
+    "inView": true
+   },
+   "kenya": {
+    "text": "Overview Routes Dates Gallery FAQ Before You Book Flying Etiquette Enquire From US$2,100 Hold a place",
+    "price": true,
+    "hold": true,
+    "inView": true
+   }
+  },
+  "done": true,
+  "title": "Desktop sub-navigation"
+ },
+ "8": {
+  "summary": "paragraph 342px wide, 43 characters a line (median), 16.0px type, timestamp above True",
+  "data": {
+   "width": 342,
+   "cpl": 43,
+   "font": 16,
+   "tsAbove": true
+  },
+  "done": true,
+  "title": "Transcript on phones"
+ },
+ "9": {
+  "summary": "13 chapters, 342x44 px, a vertical list; ticks: narrowest None px here, None px on any touch screen; axe target-size: pass here, 0 on three more",
+  "data": {
+   "cards": 13,
+   "w": 342,
+   "h": 44,
+   "vertical": true,
+   "ticks": 0,
+   "tickMin": null,
+   "axe": [],
+   "thinTouch": null,
+   "axeMore": 0
+  },
+  "done": true,
+  "title": "Chapters on phones"
+ },
+ "10": {
+  "summary": "93 episode pages, 613 labels: 0 equal a series name, 0 repeats in a block (e.g. none)",
+  "data": {
+   "pages": 93,
+   "labels": 613,
+   "series": 0,
+   "repeats": 0,
+   "examples": []
+  },
+  "done": true,
+  "title": "Titles that say nothing"
+ },
+ "11": {
+  "summary": "CLS podcast 0.00, episode 0.01 (title moves 1 px), India episode 0.00, home 0.01",
+  "data": {
+   "podcast.html": {
+    "cls": 0.004,
+    "moved": -12,
+    "shifts": [
+     [
+      390,
+      0.004,
+      "nav-links,A"
+     ]
+    ]
+   },
+   "episodes/sky-gods-flying-8000ers-antoine-girard.html": {
+    "cls": 0.007,
+    "moved": 1,
+    "shifts": [
+     [
+      329,
+      0.007,
+      "nav-links,A"
+     ]
+    ]
+   },
+   "episodes/navigating-india-eddie-colfox.html": {
+    "cls": 0.004,
+    "moved": 2,
+    "shifts": [
+     [
+      345,
+      0.004,
+      "nav-links,A,I"
+     ]
+    ]
+   },
+   "index.html": {
+    "cls": 0.007,
+    "moved": -11,
+    "shifts": [
+     [
+      384,
+      0.007,
+      "nav-links,A,A,A,A"
+     ]
+    ]
+   }
+  },
+  "done": true,
+  "title": "Layout jumps at 1440"
+ },
+ "12": {
+  "summary": "0 dangling: none",
+  "data": {},
+  "done": true,
+  "title": "aria-controls before the target exists"
+ },
+ "13": {
+  "summary": "first idea at screen 1.4 (Flight Mechanics), 1.4 (Risk vs Reward), 1.5 (Sky Gods); tiles take 0.3 / 0.3 screens",
+  "data": {
+   "knowledge-base/flight-mechanics.html": {
+    "idea": 1.45,
+    "title": "Stability Comes From The Profile, Not From You",
+    "tiles": 0.34,
+    "screens": 15.5
+   },
+   "knowledge-base/risk-vs-reward.html": {
+    "idea": 1.45,
+    "title": "Judge What Could Kill You, Not What Is Likely",
+    "tiles": 0.34,
+    "screens": 17.6
+   },
+   "knowledge-base/sky-gods.html": {
+    "idea": 1.49,
+    "title": "Four Routes To The Top Of The Sport",
+    "tiles": 0.34,
+    "screens": 15.6
+   }
+  },
+  "done": true,
+  "title": "Ideas first"
+ },
+ "14": {
+  "summary": "13 series pages, 14 to 18 phone screens; 13 with a jump row",
+  "data": {
+   "knowledge-base/brand-stories.html": {
+    "screens": 15.4,
+    "series": true,
+    "jump": true,
+    "links": 8
+   },
+   "knowledge-base/competitions.html": {
+    "screens": 5.9,
+    "series": false,
+    "jump": false,
+    "links": 0
+   },
+   "knowledge-base/core-series.html": {
+    "screens": 5.9,
+    "series": false,
+    "jump": false,
+    "links": 0
+   },
+   "knowledge-base/flight-mechanics.html": {
+    "screens": 15.5,
+    "series": true,
+    "jump": true,
+    "links": 7
+   },
+   "knowledge-base/industry.html": {
+    "screens": 5.9,
+    "series": false,
+    "jump": false,
+    "links": 0
+   },
+   "knowledge-base/know-your-equipment.html": {
+    "screens": 15.7,
+    "series": true,
+    "jump": true,
+    "links": 8
+   },
+   "knowledge-base/living-the-dream.html": {
+    "screens": 16.5,
+    "series": true,
+    "jump": true,
+    "links": 8
+   },
+   "knowledge-base/meteorology.html": {
+    "screens": 5.3,
+    "series": false,
+    "jump": false,
+    "links": 0
+   },
+   "knowledge-base/navigators.html": {
+    "screens": 16.1,
+    "series": true,
+    "jump": true,
+    "links": 8
+   },
+   "knowledge-base/new-technologies.html": {
+    "screens": 15.7,
+    "series": true,
+    "jump": true,
+    "links": 8
+   },
+   "knowledge-base/resources-tools-tips.html": {
+    "screens": 14.5,
+    "series": true,
+    "jump": true,
+    "links": 8
+   },
+   "knowledge-base/risk-vs-reward.html": {
+    "screens": 17.6,
+    "series": true,
+    "jump": true,
+    "links": 8
+   },
+   "knowledge-base/sky-gods.html": {
+    "screens": 15.6,
+    "series": true,
+    "jump": true,
+    "links": 8
+   },
+   "knowledge-base/storytellers.html": {
+    "screens": 14.9,
+    "series": true,
+    "jump": true,
+    "links": 7
+   },
+   "knowledge-base/technical.html": {
+    "screens": 5.7,
+    "series": false,
+    "jump": false,
+    "links": 0
+   },
+   "knowledge-base/the-dark-side.html": {
+    "screens": 15.6,
+    "series": true,
+    "jump": true,
+    "links": 8
+   },
+   "knowledge-base/weather-patterns.html": {
+    "screens": 15.6,
+    "series": true,
+    "jump": true,
+    "links": 7
+   },
+   "knowledge-base/world-cups.html": {
+    "screens": 14.9,
+    "series": true,
+    "jump": true,
+    "links": 8
+   }
+  },
+  "done": true,
+  "title": "Series pages: a jump row"
+ },
+ "15": {
+  "summary": "0% of characters under 12px (smallest None); altitude links [46, 46, 46, 46, 46] px tall; 13 of 13 series with their question; search at 0.67",
+  "data": {
+   "levels": [
+    46,
+    46,
+    46,
+    46,
+    46
+   ],
+   "series": 13,
+   "questions": 13,
+   "search": 0.67,
+   "small": {
+    "pct": 0,
+    "chars": 0,
+    "min": null,
+    "top": []
+   }
+  },
+  "done": true,
+  "title": "The knowledge base hub"
+ },
+ "16": {
+  "summary": "longest lines: knowledge base 79 characters, Kenya 82, India 74; 2 body sizes (14.9, 16.0 px)",
+  "data": {
+   "knowledge-base/flight-mechanics.html": {
+    "max": 79,
+    "at": "After Tom Lolies, Episode 66, chapter 12",
+    "sizes": {
+     "16.0": 24
+    },
+    "n": 26
+   },
+   "knowledge-base/risk-vs-reward.html": {
+    "max": 74,
+    "at": "Two tests from two pilots. Subir Sidhu: ",
+    "sizes": {
+     "16.0": 25
+    },
+    "n": 26
+   },
+   "destinations/kenya.html": {
+    "max": 82,
+    "at": "For pilots going out there under their o",
+    "sizes": {
+     "16.0": 22,
+     "14.9": 6
+    },
+    "n": 29
+   },
+   "destinations/india.html": {
+    "max": 74,
+    "at": "Our Himalayan expedition delivers an aer",
+    "sizes": {
+     "16.0": 27,
+     "14.9": 5
+    },
+    "n": 39
+   }
+  },
+  "done": true,
+  "title": "Reading measure"
+ },
+ "17": {
+  "summary": "search at screen 0.48; collapse 11, reserve 9, thermal 5 results; empty state offers 1 topics",
+  "data": {
+   "pos": 0.48,
+   "res": {
+    "collapse": {
+     "shown": 11,
+     "none": null,
+     "topics": 0,
+     "status": "11 episodes matching “collapse”"
+    },
+    "reserve": {
+     "shown": 9,
+     "none": null,
+     "topics": 0,
+     "status": "9 episodes matching “reserve”"
+    },
+    "thermal": {
+     "shown": 5,
+     "none": null,
+     "topics": 0,
+     "status": "5 episodes matching “thermal”"
+    },
+    "zzqx": {
+     "shown": 0,
+     "none": "Nothing matches those filters. Clear them to see every episode. Topics",
+     "topics": 1,
+     "status": ""
+    }
+   }
+  },
+  "done": true,
+  "title": "Library search"
+ },
+ "18": {
+  "summary": "Kenya trip ranked 1 for \"how much does kenya cost\"; 1 of 1 results show a matching line; empty state: \"Nothing found. Topics Library India Kenya\" (4 links)",
+  "data": {
+   "how much does kenya cost": [
+    {
+     "u": "destinations/kenya.html",
+     "text": "TRIP Kenya: Paragliding in the Cradle of Humankind A 12 day guided paragliding tour based in Kerio Valley, Kenya. Thermals to 6 m/s, 1,500m ",
+     "line": true,
+     "links": 1
+    }
+   ],
+   "india price": [
+    {
+     "u": "destinations/india.html",
+     "text": "TRIP Bir Billing Paragliding Tour: 10 Days in India A 10-day guided paragliding tour from Bir Billing in the Indian Himalaya. Two departures",
+     "line": true,
+     "links": 1
+    }
+   ],
+   "reserve": [
+    {
+     "u": "knowledge-base/know-your-equipment.html",
+     "text": "KNOWLEDGE BASE Paragliding Gear: Reserves, Harnesses, Helmets What paragliding gear really does: reserve size and deployment, harness protec",
+     "line": true,
+     "links": 1
+    },
+    {
+     "u": "tags/reserves.html",
+     "text": "TOPIC Reserves 7 Paragliding Atlas conversations about reserves, each with a full transcript.",
+     "line": true,
+     "links": 1
+    },
+    {
+     "u": "episodes/can-we-steer-a-round-reserve-parachute-urs-haari-answers.html",
+     "text": "EPISODE Can we Steer a Round Reserve Parachute? Urs Haari Urs Haari answers whether a round reserve parachute can be steered. A Know Your Eq",
+     "line": true,
+     "links": 1
+    },
+    {
+     "u": "episodes/snippet-a-reserve-parachute-trick-every-pilot-should-know.html",
+     "text": "EPISODE Snippet: A Reserve Parachute Trick Every Pilot There is much more to reserve parachutes than just getting them repacked periodically",
+     "line": true,
+     "links": 1
+    },
+    {
+     "u": "episodes/urs-haari-the-real-truth-about-reserve-parachutes-a.html",
+     "text": "EPISODE Urs Haari: The Real Truth About Reserve Parachutes Urs Haari argues the reserve certification process needs new rules, describing a ",
+     "line": true,
+     "links": 1
+    },
+    {
+     "u": "knowledge-base/brand-stories.html",
+     "text": "KNOWLEDGE BASE How Paragliding Gear Is Designed and Made How paragliding brands design and build gear: sewing harnesses in France, wind tunn",
+     "line": true,
+     "links": 1
+    },
+    {
+     "u": "knowledge-base/storytellers.html",
+     "text": "KNOWLEDGE BASE Paragliding Close Calls and Lessons: Storytellers Two pilots on their closest calls: two mid-air collisions in championship g",
+     "line": true,
+     "links": 1
+    },
+    {
+     "u": "knowledge-base/risk-vs-reward.html",
+     "text": "KNOWLEDGE BASE Paragliding Risk: When to Push and When to Stop How experienced pilots judge risk: consequence over probability, capacity, us",
+     "line": true,
+     "links": 1
+    }
+   ],
+   "qqzzx": [
+    {
+     "u": "tags.html",
+     "text": "Nothing found. Topics Library India Kenya",
+     "line": false,
+     "links": 4
+    }
+   ]
+  },
+  "done": true,
+  "title": "Site search"
+ },
+ "19": {
+  "summary": "first episode link at screen 0.86, first listen control at 0.83 (feeds blocked)",
+  "data": {
+   "link": 0.86,
+   "play": 0.83
+  },
+  "done": true,
+  "title": "Podcast: latest episode first"
+ },
+ "20": {
+  "summary": "\"Srs\" gone, \"Ccc\" gone, filter box True, sparkline caption True",
+  "data": {
+   "srs": false,
+   "ccc": false,
+   "filter": true,
+   "caption": true
+  },
+  "done": true,
+  "title": "Topics"
+ },
+ "21": {
+  "summary": "landmark-one-main fails on 0 of 60 page views; skip link not on main on 0 templates",
+  "data": {
+   "fails": [],
+   "skip": []
+  },
+  "done": true,
+  "title": "One main landmark"
+ },
+ "22": {
+  "summary": "index 0%; knowledge-base 0%; library 0%; sitemap 0%; fly-options 0%; about 0%; smallest 12.0px",
+  "data": {
+   "index.html": {
+    "pct": 0,
+    "chars": 0,
+    "min": null,
+    "top": []
+   },
+   "knowledge-base.html": {
+    "pct": 0,
+    "chars": 0,
+    "min": null,
+    "top": []
+   },
+   "library.html": {
+    "pct": 0,
+    "chars": 0,
+    "min": null,
+    "top": []
+   },
+   "sitemap.html": {
+    "pct": 0,
+    "chars": 0,
+    "min": null,
+    "top": []
+   },
+   "fly-options.html": {
+    "pct": 0,
+    "chars": 0,
+    "min": null,
+    "top": []
+   },
+   "about.html": {
+    "pct": 0,
+    "chars": 0,
+    "min": null,
+    "top": []
+   },
+   "podcast.html": {
+    "pct": 0,
+    "chars": 0,
+    "min": null,
+    "top": []
+   },
+   "episodes/sky-gods-flying-8000ers-antoine-girard.html": {
+    "pct": 0,
+    "chars": 0,
+    "min": null,
+    "top": []
+   },
+   "destinations/india.html": {
+    "pct": 0,
+    "chars": 0,
+    "min": null,
+    "top": []
+   },
+   "knowledge-base/flight-mechanics.html": {
+    "pct": 0,
+    "chars": 0,
+    "min": null,
+    "top": []
+   },
+   "tags.html": {
+    "pct": 0,
+    "chars": 0,
+    "min": null,
+    "top": []
+   },
+   "enquire.html": {
+    "pct": 0,
+    "chars": 0,
+    "min": null,
+    "top": []
+   }
+  },
+  "done": true,
+  "title": "Small text on phones"
+ },
+ "23": {
+  "summary": "pause control True (beside Wind sound True); at 1920 the hero plays hero-1080.webm in a 1968 px box",
+  "data": {
+   "wind": true,
+   "pause": true,
+   "near": true,
+   "hero1920": {
+    "src": "hero-1080.webm",
+    "box": 1968,
+    "vw": 1920
+   }
+  },
+  "done": true,
+  "title": "Footage"
+ },
+ "24": {
+  "summary": "0 helper lines say click on a phone: none",
+  "data": {
+   "index.html": [],
+   "podcast.html": [],
+   "sitemap.html": []
+  },
+  "done": true,
+  "title": "Touch wording"
+ },
+ "25": {
+  "summary": "93 stars, hit areas 25.6 px (median 25.6); axe target-size pass",
+  "data": {
+   "n": 93,
+   "min": 25.6,
+   "median": 25.6,
+   "tag": "g.sky-star",
+   "axe": []
+  },
+  "done": true,
+  "title": "Sitemap stars"
+ },
+ "26": {
+  "summary": "partners 0 of 63 missing, knowledge-base 0 of 36 missing, fly-options 0 of 22 missing, index 0 of 24 missing, about 0 of 8 missing, podcast 0 of 16 missing",
+  "data": {
+   "partners.html": [
+    0,
+    63
+   ],
+   "knowledge-base.html": [
+    0,
+    36
+   ],
+   "fly-options.html": [
+    0,
+    22
+   ],
+   "index.html": [
+    0,
+    24
+   ],
+   "about.html": [
+    0,
+    8
+   ],
+   "podcast.html": [
+    0,
+    16
+   ]
+  },
+  "done": true,
+  "title": "Image width and height"
+ },
+ "27": {
+  "summary": "7 fields need attention: 7 messages under them, first (name) in view True, focused True",
+  "data": {
+   "invalid": 7,
+   "messages": 7,
+   "described": 7,
+   "firstInView": true,
+   "focused": true,
+   "firstId": "name"
+  },
+  "done": true,
+  "title": "Enquiry form messages"
+ },
+ "_when": "2026-10-07 16:14",
+ "_site": "v4"
+}
