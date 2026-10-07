@@ -81,24 +81,25 @@
     q.addEventListener("input", function () { search(q.value); });
     q.addEventListener("focus", loadIndex, { once: true });
   }
-  var loadingIdx = false;
+  var loadingIdx = false, last = null;          // last: the search waiting for the index ([words, list])
   function loadIndex() {
     if (idx || w.V4_SEARCH) { idx = w.V4_SEARCH; return; }
     if (loadingIdx) return;
     loadingIdx = true;
     var s = d.createElement("script");
     s.src = IDX;
-    s.onload = function () { idx = w.V4_SEARCH || []; var q = menu.querySelector("#v4q"); if (q.value) search(q.value); };
+    s.onload = function () { idx = w.V4_SEARCH || []; if (last) render(last[0], last[1]); };
     s.onerror = function () {
       loadingIdx = false;
-      var ol = menu.querySelector("#v4hits");
-      if (ol) ol.innerHTML = '<li class="v4-hit-none">The search could not load. The <a href="' + IDX.replace(/[^\/]*$/, "") + 'sitemap.html">sitemap</a> lists every page.</li>';
+      if (last) last[1].innerHTML = '<li class="v4-hit-none">The search could not load. The <a href="' + IDX.replace(/[^\/]*$/, "") + 'sitemap.html">sitemap</a> lists every page.</li>';
     };
     d.head.appendChild(s);
   }
-  function search(v) {
-    var ol = menu.querySelector("#v4hits");
+  function search(v) { render(v, menu.querySelector("#v4hits")); }
+  // the usability pass (15): the same search can fill any list (the knowledge base's own search field)
+  function render(v, ol) {
     v = v.trim().toLowerCase();
+    last = [v, ol];
     if (!v) { ol.innerHTML = ""; return; }
     if (!idx) { loadIndex(); return; }
     // a word counts where the page says it: the title most, then the description, then its headings
@@ -146,7 +147,7 @@
     // the usability pass (12): the buttons name the menu only now that it exists
     d.querySelectorAll(".v4-open, .nav-toggle").forEach(function (b) { b.setAttribute("aria-expanded", o ? "true" : "false"); b.setAttribute("aria-controls", "v4Menu"); });
   }
-  window.V4_MENU = { open: open, close: close };
+  window.V4_MENU = { open: open, close: close, find: function (v, ol) { loadIndex(); render(v, ol); } };
   return;
   function mount() {
     var nav = d.querySelector(".page-wrap > nav");

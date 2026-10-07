@@ -3044,3 +3044,35 @@ html .v4u-jump a:first-child{padding-left:0;}
 html .v4u-jump a:hover,html .v4u-jump a:focus-visible{color:var(--white);border-bottom-color:var(--orange);}
 @media (pointer:coarse){ html .v4u-jump a{min-height:44px;display:inline-flex;align-items:center;} }
 html [data-v2="kb"] :is(.k-sec,.band-fig){scroll-margin-top:3.75rem;}
+
+/* 15. The knowledge base hub. Each series says what it is about: its own
+       page's question under its name (tools/v4_ux.py), so Sky Gods and The
+       Dark Side explain themselves; the site search sits at the top, under
+       the introduction; on a phone no word is set under 12px, and each
+       altitude on the climb is a 46px band to tap (it was an 18px line). */
+html .clb-topic{display:grid;grid-template-columns:max-content minmax(0,1fr);justify-items:start;align-items:baseline;column-gap:.6rem;row-gap:.2rem;
+  border-radius:.75rem;max-width:21rem;padding:.6rem .95rem .7rem;}
+html .clb-topic b{font-size:max(12px,.74rem);}
+html .clb-topic .v4-q{grid-column:1 / -1;font-size:max(12px,var(--fs-small));line-height:1.4;color:var(--gray);transition:color .2s;}
+html .clb-topic:is(:hover,:focus-visible) .v4-q{color:var(--gray-light);}
+html .clb-topics{align-items:stretch;}
+.v4u-find{position:relative;max-width:34rem;margin:0 0 var(--sp-4);z-index:3;}
+.v4u-find-lab{display:block;font-size:max(12px,var(--fs-micro));font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light);margin-bottom:.5rem;}
+.v4u-find input{width:100%;height:3rem;padding:0 .75rem;background:rgba(255,255,255,.04);border:0;border-bottom:1px solid var(--edge-hi);
+  color:var(--white);font:inherit;font-size:var(--fs-body);border-radius:0;}
+.v4u-find input:focus{outline:none;border-bottom-color:var(--orange);}
+.v4u-find input::placeholder{color:var(--gray);}
+.v4u-find input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
+.v4u-find .v4-hits{background:rgba(20,21,25,.96);padding:0 .75rem;}
+.v4u-find .v4-hits a{grid-template-columns:7rem minmax(0,1fr);}
+@media (max-width:560px){ .v4u-find .v4-hits a{grid-template-columns:1fr;} }
+.v4-climb-hit{fill:transparent;}
+@media (max-width:760px){
+  html :is(.clb-face-t,.clb-cue,.clb-how summary,.clb-hero-in .kicker,.clb-tag,.clb-n,.clb-count){font-size:max(12px,1em);}
+  html .clb-face-t{font-size:12px;}
+  html .clb-cue,html .clb-how summary,html .clb-hero-in .kicker{font-size:12px;}
+  html .clb-alt i{font-size:12px;}
+  /* the kit's smallest size, for labels and kickers everywhere, is 12px on a phone (.72rem was 11.5px) */
+  :root{--fs-micro:.75rem;}
+  html .footer-listen-label{font-size:12px;}
+}

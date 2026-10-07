@@ -40,6 +40,8 @@ What it does, by the brief's numbers
      Listening mode button is in the page from the start.
  14  the knowledge base series pages get the trips' jump row: each idea by
      its kicker, Worth Remembering, FAQ, the conversations (13 is CSS).
+ 15  the knowledge base hub: each series with its own page's question under
+     its name, the site search at the top, the altitude links a band to tap.
 """
 import html
 import os
@@ -627,6 +629,8 @@ def page(rel, src):
         src = episode_listen_button(src)
     if rel.startswith("knowledge-base/"):
         src = kb_jump(src)
+    if rel == "knowledge-base.html":
+        src = kb_hub(src)
     if rel in TRIPS:
         src = trip_bar(src)
         src = trip_dates_first(src)

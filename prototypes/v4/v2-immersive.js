@@ -500,7 +500,30 @@ s.onload = function () { if (done) return; done = true; clearTimeout(t); loading
 s.onerror = function () { if (done) return; done = true; clearTimeout(t); loading = false; fallback(from); };
 d.head.appendChild(s);
 }
+var waiting = null;
+function get(cb) {
+if (w.V4_MENU) { cb(); return; }
+if (waiting) { waiting.push(cb); return; }
+waiting = [cb];
+var s = d.createElement("script");
+s.src = SRC;
+s.onload = function () { var q = waiting; waiting = null; if (w.V4_MENU) q.forEach(function (f) { f(); }); };
+s.onerror = function () { waiting = null; };
+d.head.appendChild(s);
+}
+function finder(form) {
+var q = form.querySelector("input[type=search]"), ol = form.querySelector("ol");
+if (!q || !ol) return;
+function go() { get(function () { w.V4_MENU.find(q.value, ol); }); }
+q.addEventListener("focus", function () { get(function () {}); });
+q.addEventListener("input", go);
+form.addEventListener("submit", function (e) {
+var a = ol.querySelector("a[href]");
+if (a) { e.preventDefault(); location.href = a.href; } else if (w.V4_MENU) { e.preventDefault(); go(); }
+});
+}
 function mount() {
+[].forEach.call(d.querySelectorAll("[data-v4-find]"), finder);
 var nav = d.querySelector(".page-wrap > nav");
 if (!nav) return;
 var cta = nav.querySelector(".nav-cta");
