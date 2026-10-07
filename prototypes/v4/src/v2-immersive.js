@@ -624,8 +624,7 @@
     var b = d.createElement("button");
     b.type = "button";
     b.className = "v4-open";
-    b.setAttribute("aria-controls", "v4Menu");
-    b.setAttribute("aria-expanded", "false");
+    b.setAttribute("aria-expanded", "false");     // aria-controls comes with the menu (v4-menu.js), once it exists
     b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><span>Search</span>';
     b.addEventListener("click", function () { open(true, b); });
     if (cta) nav.insertBefore(b, cta); else nav.appendChild(b);
@@ -989,19 +988,25 @@
     var player = d.querySelector(".cd-player");
     if (!player || !d.querySelector(".cd-line")) return;
     var host = d.querySelector(".ep2-hero-media") || player.parentNode;
-    var b = d.createElement("button"), loading = false;
-    b.type = "button";
-    b.className = "v4-ls-open";
-    b.setAttribute("aria-controls", "v4Listen");
-    b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="7" rx="1.2"/><rect x="17" y="14" width="4" height="7" rx="1.2"/></svg><span>Listening mode</span>';
-    host.appendChild(b);
+    // the usability pass (11): tools/v4_ux.py puts the button in the page, so the hero does not grow
+    // under the reader once it has drawn; made here only where the page does not carry it
+    var b = d.querySelector(".v4-ls-open"), loading = false;
+    if (!b) {
+      b = d.createElement("button");
+      b.type = "button";
+      b.className = "v4-ls-open";
+      b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="7" rx="1.2"/><rect x="17" y="14" width="4" height="7" rx="1.2"/></svg><span>Listening mode</span>';
+      host.appendChild(b);
+    }
+    // (12) it names the screen it opens only once that screen exists
+    function named() { if (d.getElementById("v4Listen")) b.setAttribute("aria-controls", "v4Listen"); }
     function open() {
-      if (w.V4_LISTEN) { w.V4_LISTEN.open(b); return; }
+      if (w.V4_LISTEN) { w.V4_LISTEN.open(b); named(); return; }
       if (loading) return;
       loading = true;
       var s = d.createElement("script");
       s.src = SRC;
-      s.onload = function () { loading = false; if (w.V4_LISTEN) w.V4_LISTEN.open(b); };
+      s.onload = function () { loading = false; if (w.V4_LISTEN) { w.V4_LISTEN.open(b); named(); } };
       s.onerror = function () { loading = false; b.hidden = true; };
       d.head.appendChild(s);
     }

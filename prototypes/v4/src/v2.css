@@ -2966,3 +2966,15 @@ html .v4u-etq{border-top:1px solid var(--line);padding-bottom:var(--sp-5);}
 html .v4u-etq .v4u-etq-head{margin-bottom:var(--sp-3);}
 html .v4u-etq .etq-open .dst-head{margin-top:0;}
 
+
+/* 7. On a wide screen the trip's section bar carries the price and Hold a
+      place beside Enquire, held at the bar's right end while the links scroll. */
+.v4u-jbook{display:none;}
+@media (min-width:821px){
+  html .v4u-jbook{display:flex;align-items:center;gap:var(--sp-3);flex:none;position:sticky;right:0;
+    padding-left:3rem;background:linear-gradient(90deg,rgba(20,21,25,0) 0,#141519 2.6rem);}
+  html .v4u-jprice{font-family:var(--font-display);font-weight:700;color:var(--white);font-size:var(--fs-body);white-space:nowrap;}
+  html .v4u-jprice small{font:500 var(--fs-small)/1 var(--font-body);color:var(--gray-light);}
+  html .dst-jump .v4u-jbook .btn-solid,html .dst-jump .v4u-jbook .btn-solid:hover,html .dst-jump .v4u-jbook .btn-solid:focus-visible{
+    padding:.55rem 1.2rem;font-size:.86rem;color:var(--bg);border-bottom:0;}
+}

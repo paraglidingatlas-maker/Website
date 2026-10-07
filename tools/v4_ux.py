@@ -31,7 +31,9 @@ What it does, by the brief's numbers
      (tools/v4_phone_media.py) and every slide but the first waits for the
      slideshow; the gallery's photographs all wait until it comes near; the
      home page's four expedition photographs wait for the fly-through. The
-     hero clips' phone cuts are chosen by src/v2-immersive.js.
+     hero clips' phone cuts are chosen by src/v4-ux-media.js (inlined).
+  7  on a wide screen the trip's section bar carries the price and Hold a
+     place beside Enquire.
 """
 import html
 import os
@@ -371,6 +373,7 @@ def page(rel, src):
         src = trip_etiquette_band(src)
         src = trip_hero_weight(rel, src)
         src = gallery_lazy(src)
+        src = trip_subnav(src)
         src = media_script(src)
     return src
 

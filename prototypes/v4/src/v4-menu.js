@@ -143,7 +143,8 @@
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
   function syncButtons(o) {
-    d.querySelectorAll(".v4-open, .nav-toggle").forEach(function (b) { b.setAttribute("aria-expanded", o ? "true" : "false"); });
+    // the usability pass (12): the buttons name the menu only now that it exists
+    d.querySelectorAll(".v4-open, .nav-toggle").forEach(function (b) { b.setAttribute("aria-expanded", o ? "true" : "false"); b.setAttribute("aria-controls", "v4Menu"); });
   }
   window.V4_MENU = { open: open, close: close };
   return;

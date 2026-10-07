@@ -125,7 +125,7 @@ syncButtons(false);
 if (lastFocus && lastFocus.focus) lastFocus.focus();
 }
 function syncButtons(o) {
-d.querySelectorAll(".v4-open, .nav-toggle").forEach(function (b) { b.setAttribute("aria-expanded", o ? "true" : "false"); });
+d.querySelectorAll(".v4-open, .nav-toggle").forEach(function (b) { b.setAttribute("aria-expanded", o ? "true" : "false"); b.setAttribute("aria-controls", "v4Menu"); });
 }
 window.V4_MENU = { open: open, close: close };
 return;
