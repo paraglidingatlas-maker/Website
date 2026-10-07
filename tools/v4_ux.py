@@ -726,6 +726,87 @@ def topics_page(src):
     return put_block(src, TG_JS_MARK, TG_JS, "</body>")
 
 
+# ------------------------------------------------------------------------------------------------ 24
+TOUCH = (("Drag to rotate. Click a pin to see the episode.", "Drag to rotate. Tap a pin to see the episode."),
+         ("Click a star to find its constellation. Drag to look around.", "Tap a star to find its constellation. Drag to look around."))
+
+
+def touch_words(src):
+    """24. The helper lines under the globe and the night sky said "Click" on a phone too. On a touch screen
+    they say "Tap", the site's own word for it ("Tap the centre to come inside", "Tap anywhere to take off
+    again"); with a mouse they read as before. The headings ("Click A Pin, Hear The Story") are not touched."""
+    if "v4u-touch" in src:
+        return src
+    for a, b in TOUCH:
+        src = src.replace(">%s<" % a, '><span class="v4u-ptr">%s</span><span class="v4u-touch">%s</span><' % (a, b))
+    return src
+
+
+# ------------------------------------------------------------------------------------------------ 26
+YT_SIZE = {"maxresdefault": (1280, 720), "sddefault": (640, 480), "hqdefault": (480, 360), "mqdefault": (320, 180), "default": (120, 90)}
+_SIZES = {}
+
+
+def _size(path):
+    if path not in _SIZES:
+        try:
+            from PIL import Image
+            with Image.open(path) as im:
+                _SIZES[path] = im.size
+        except Exception:      # noqa: BLE001 - not an image Pillow reads (an SVG): left as it is
+            _SIZES[path] = None
+    return _SIZES[path]
+
+
+def image_sizes(rel, src):
+    """26. Width and height on every image in a page's HTML, so its room is kept while it loads: the file's own
+    size for the site's images, YouTube's fixed sizes for its thumbnails (maxres 1280 by 720, mq 320 by 180...).
+    The attributes only give the shape; the stylesheet still sets the size shown."""
+    here = os.path.dirname(os.path.join(V4, rel))
+
+    def fix(m):
+        tag = m.group(0)
+        if re.search(r"\swidth=", tag) and re.search(r"\sheight=", tag):
+            return tag
+        s = re.search(r'\ssrc="([^"]+)"', tag) or re.search(r'\sdata-v4-src="([^"]+)"', tag)   # or the picture that waits (6)
+        if not s:
+            return tag
+        u = html.unescape(s.group(1)).split("?")[0]
+        wh = None
+        y = re.search(r"ytimg\.com/vi(?:_webp)?/[^/]+/(\w+)\.(?:jpg|webp)$", u)
+        if y:
+            wh = YT_SIZE.get(y.group(1))
+        elif not re.match(r"^(?:[a-z]+:|//)", u):
+            wh = _size(os.path.normpath(os.path.join(here, u)))
+        if not wh:
+            return tag
+        w0, h0 = re.search(r'\swidth="(\d+)"', tag), re.search(r'\sheight="(\d+)"', tag)
+        if w0:       # one of the two given: keep it, and the other by the file's shape
+            wh = (int(w0.group(1)), round(int(w0.group(1)) * wh[1] / wh[0]))
+        elif h0:
+            wh = (round(int(h0.group(1)) * wh[0] / wh[1]), int(h0.group(1)))
+        tag = re.sub(r'\s(?:width|height)="[^"]*"', "", tag)
+        return tag[:4] + ' width="%d" height="%d"' % wh + tag[4:]
+    parts = re.split(r"(<script\b.*?</script>)", src, flags=re.S)
+    for i in range(0, len(parts), 2):
+        parts[i] = re.sub(r"<img\b[^>]*>", fix, parts[i])
+        # the globe's card: its picture is a YouTube still put in by globe.js, 16 by 9 like every one of them
+        parts[i] = parts[i].replace('<div class="mp-th"><img alt="" loading="lazy">', '<div class="mp-th"><img width="1280" height="720" alt="" loading="lazy">')
+    return "".join(parts)
+
+
+# ------------------------------------------------------------------------------------------------ 27
+FORM_JS_MARK = ("<!-- v4u-form-js: src/v4-ux-form.js via tools/v4_ux.py -->", "<!-- /v4u-form-js -->")
+
+
+def enquire_messages(src):
+    """27. The enquiry form says under each field what it still needs, and brings the first into view
+    (src/v4-ux-form.js, inlined here only)."""
+    if 'id="enqForm"' not in src:
+        return src
+    return put_block(src, FORM_JS_MARK, "<script>%s</script>" % inline_js("v4-ux-form.js"), "</body>")
+
+
 # ------------------------------------------------------------------------------------------------ 21
 def _masked(src):
     """src with script bodies and comments blanked (same length), so tags are counted only where they are tags."""
@@ -797,6 +878,11 @@ def hold_data():
 
 def page(rel, src):
     src = topic_case(src)
+    src = image_sizes(rel, src)
+    if rel in ("index.html", "podcast.html", "sitemap.html"):
+        src = touch_words(src)
+    if rel == "enquire.html":
+        src = enquire_messages(src)
     if rel == "tags.html":
         src = topics_page(src)
     if rel == "enquire.html":

@@ -488,7 +488,8 @@ SMALL_JS = """() => { let all = 0, small = 0, min = 99; const sizes = {};
     if (cs.visibility === 'hidden' || +cs.opacity === 0 && !e.closest('[class*="reveal"], .kr, .v2-surface')) continue;
     let hid = false; for (let p = e; p; p = p.parentElement) { if (p.tagName === 'DETAILS' && !p.open && !p.querySelector(':scope > summary').contains(e)) { hid = true; break; } }
     if (hid) continue;
-    const fs = parseFloat(cs.fontSize); all += t.length;
+    const fs = parseFloat(cs.fontSize); if (fs < 1) continue;   /* drawn at 0 px: a label only a screen reader reads */
+    all += t.length;
     if (fs < 11.95) { small += t.length; min = Math.min(min, fs); const k = (e.className || e.tagName).toString().slice(0, 28) + ' ' + fs.toFixed(1);
       sizes[k] = (sizes[k] || 0) + t.length; } }
   return {pct: all ? +(100 * small / all).toFixed(1) : 0, chars: small, min: min === 99 ? null : +min.toFixed(1),

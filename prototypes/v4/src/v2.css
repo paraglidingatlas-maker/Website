@@ -3149,3 +3149,43 @@ html [data-v2="tg"] .tg-tile[hidden]{display:none !important;}
        ring around the whole page when it takes the focus. */
 #v4-main:focus{outline:none;}
 
+/* 22. No text under 12 px on a phone (drawings excepted): the last labels
+       that were drawn at 8 to 11.8 px take the micro size (12 px here). */
+@media (max-width:760px){
+  html body :is(.ep-card .ep-foot, .ep-card .ep-stamp b, .ep-card .ep-stamp i, .ep-open .s, .ep-open .m, .ep-open .g, .cta-n,
+    .v2-tour-tag, .cta-hud-tag, .pw-node, .sky-ctrl button, .sky-g small, .tg-sort-note,
+    .band .chips a, .band .chips .lab, .bf-q .cap, .ep-tile .ep-foot, .cardx .n, .ep-audio,
+    .cd-ts, .cd-block-time, .cd-chap time, .ep-au-cur, .ep-au-dur,
+    .v4t-read dt, .kkit-ess, .kair-ranges span, .kair-ranges small, .fact-l, .kov-q h3, .kkit-gate b, .kdates-price span,
+    .kkit-dl small, .kdates-months span, .kday-n, .kdates-flags span, .kdates-tour b, .kdates-n, .etq-diy){font-size:var(--fs-micro);}
+}
+
+/* 23. The trip hero's words over bright snow: the shade reaches further in
+       behind them, darker on their side (on wide screens; phones have their
+       own, already dark enough), and the footage can be paused from the
+       footer, beside Wind sound (v2-immersive.js). */
+@media (min-width:601px){
+  html .khero-scrim{background:
+    radial-gradient(ellipse 60% 50% at 22% 58%,rgba(20,21,25,.62),rgba(20,21,25,0) 76%),
+    linear-gradient(180deg,rgba(20,21,25,.72) 0,rgba(20,21,25,.18) 16%,rgba(20,21,25,0) 32%,rgba(20,21,25,.48) 74%,var(--bg) 100%),
+    linear-gradient(90deg,rgba(20,21,25,.68) 0,rgba(20,21,25,.3) 40%,rgba(20,21,25,0) 66%);}
+}
+.footer-bottom .v4u-still{margin-left:-.4rem;}
+
+/* 24. The helper lines say "Tap" on a touch screen, "Click" with a mouse
+       (tools/v4_ux.py); the headings are as they were. */
+.v4u-touch{display:none;}
+@media (hover:none) and (pointer:coarse){ .v4u-ptr{display:none;} .v4u-touch{display:inline;} }
+
+/* 25. The night sky's stars on a touch screen: each star's ring is larger
+       (r 15 to 26 in the sky's own units: 17 px to 25 px across on a phone
+       with the whole sky in view), and a tap goes to the nearest star within
+       30 px (sitemap-sky.js's own rule for taps between stars) rather than to
+       whichever ring lies on top; nothing drawn changes. */
+@media (pointer:coarse){ .sky-star .sky-hit{r:26px;pointer-events:none;} }
+
+/* 27. The enquiry form's messages under the fields (src/v4-ux-form.js), in the
+       form's own orange, the field's edge with them. */
+.enq-err{margin:.45rem 0 0;color:var(--orange);font-size:var(--fs-small);line-height:1.5;}
+html .enq-field :is(input,select,textarea)[aria-invalid="true"]{border-color:var(--orange);}
+html .enq-consent:has(input[aria-invalid="true"]) + .enq-err{margin-top:-.4rem;}
