@@ -111,7 +111,10 @@ def item1(b):
                 const t = [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim());
                 if (t && e.getClientRects().length) { small = Math.min(small, parseFloat(getComputedStyle(e).fontSize));
                   if (e.scrollWidth > e.clientWidth + 1 && getComputedStyle(e).overflow !== 'visible') clipped++; } });
-              const over = bar.scrollWidth > bar.clientWidth + 1 || r.right > innerWidth + 1;
+              // words running under the button count as overflow too
+              const btn = bar.querySelector('.btn-solid, a'), bl = btn ? btn.getBoundingClientRect().left : 1e9;
+              const words = [...bar.querySelectorAll('span, small, b')].filter(e => !btn || !btn.contains(e)).map(e => e.getBoundingClientRect().right);
+              const over = bar.scrollWidth > bar.clientWidth + 1 || r.right > innerWidth + 1 || Math.max(0, ...words) > bl - 2;
               return {h: Math.round(r.height), shown: cs.display !== 'none' && r.top < innerHeight && r.bottom > 0,
                 text: bar.innerText.replace(/\\s+/g, ' ').trim(), price: bar.innerText.includes(price),
                 small: small, clipped: clipped, over: over}; }""", PRICE[trip])
