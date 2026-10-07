@@ -2927,3 +2927,15 @@ html .dst-mobar .btn-solid{flex:none;}
   html .gxa-track{height:calc(var(--n) * 15vh + 100vh);height:calc(var(--n) * 15svh + 100svh);}
   html .tm-track{height:calc(var(--n) * 50vh + 120vh);height:calc(var(--n) * 50svh + 120svh);}
 }
+
+/* 3. Gallery framing on a phone or tablet held upright: each photograph whole, in a
+      landscape frame across the screen with its caption under it, instead of a
+      third of it blown up to fill a tall screen. The drift stays, smaller. */
+@media (max-width:1100px) and (orientation:portrait){
+  html .gxa-f{display:flex;flex-direction:column;justify-content:center;}
+  html .gxa-f picture{height:auto;flex:none;}
+  html .gxa-f img{height:auto;max-height:56vh;max-height:56svh;object-fit:contain;
+    transform:scale(calc(1.03 - .03 * var(--t,0)));transform-origin:50% 50%;}
+  html .gxa-f::after{display:none;}
+  html .gxa-f figcaption{position:static;margin:var(--sp-3) var(--edge-x) 0;max-width:none;}
+}
