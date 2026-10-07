@@ -612,6 +612,62 @@ def podcast_wall(src):
     return put_block(src, WALL_MARK, WALL_JS, "</head>")
 
 
+LATEST_MARK = ("<!-- v4u-latest: tools/v4_ux.py, from episode-meta.json and mp3-map.json -->", "<!-- /v4u-latest -->")
+LATEST_JS_MARK = ("<!-- v4u-latest-js: src/v4-ux-latest.js via tools/v4_ux.py -->", "<!-- /v4u-latest-js -->")
+
+
+def inline_js(name):
+    """A source in prototypes/v4/src, minified as tools/v4_min.py does, to inline in the one page that uses it."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import v4_min
+    with open(os.path.join(V4, "src", name), encoding="utf-8") as fh:
+        return v4_min.js(fh.read()).strip()
+PLAY_SVG = ('<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path class="v4u-i-play" d="M8 5v14l11-7Z"/>'
+            '<path class="v4u-i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>')
+
+
+def latest_episode():
+    """The newest episode in the saved archive (episode-meta.json), with its audio (mp3-map.json), its page's
+    own title and guest line, its number and length. None when the archive has no audio for it."""
+    import json
+    m = sorted(meta().values(), key=lambda x: x.get("published") or "", reverse=True)[0]
+    with open(os.path.join(ROOT, "mp3-map.json"), encoding="utf-8") as fh:
+        audio = (json.load(fh).get(m["slug"]) or {}).get("url")
+    rel = "episodes/%s.html" % m["slug"]
+    fp = os.path.join(V4, rel)
+    if not audio or not os.path.exists(fp):
+        return None
+    ep = open(fp, encoding="utf-8").read()
+    t = re.search(r'<span class="ep2-h1">(.*?)</span>', ep, re.S)
+    w = re.search(r'<span class="ep2-with">(.*?)</span>', ep, re.S)
+    return {"href": rel, "audio": audio, "title": t.group(1).strip() if t else html.escape(m["title"]),
+            "with": w.group(1).strip() if w else "", "no": m.get("epno") or "", "len": m.get("duration_label") or "",
+            "date": (m.get("published_label") or "").replace(" ", "&nbsp;")}
+
+
+def podcast_latest(src):
+    """19. The newest episode on screen one, with a play button, from the saved archive written into the page
+    (it played only from the live feed, five phone screens down, and not at all when the feed failed). Its
+    words are the episode's own: number, length, date, title, guest; the button is the feed's own "Play
+    episode". src/v4-ux-latest.js, inlined here, plays it; without script the button is not shown and the title still links."""
+    e = latest_episode()
+    if not e or 'class="kit-hero v2-pod-hero' not in src:
+        return src
+    kick = " · ".join(x for x in (e["no"], e["len"], e["date"]) if x)
+    block = ('<div class="v4u-latest" data-audio="%s"><button type="button" class="v4u-play" aria-label="Play episode" aria-pressed="false">%s</button>'
+             '<p><span class="v4u-latest-k">%s</span> <a href="%s">%s</a>%s</p></div>'
+             % (html.escape(e["audio"]), PLAY_SVG, kick, e["href"], e["title"],
+                (' <span class="v4u-latest-w">%s</span>' % e["with"]) if e["with"] else ""))
+    if LATEST_MARK[0] in src:
+        src = put_block(src, LATEST_MARK, block, "")
+    else:
+        m = re.search(r'(<header class="kit-hero v2-pod-hero[^"]*">.*?<div class="kit-actions">.*?</div>)', src, re.S)
+        if not m:
+            return src
+        src = src[:m.end()] + "\n      " + LATEST_MARK[0] + block + LATEST_MARK[1] + src[m.end():]
+    return put_block(src, LATEST_JS_MARK, "<script>%s</script>" % inline_js("v4-ux-latest.js"), "</body>")
+
+
 MEDIA_MARK = ("<!-- v4u-media: src/v4-ux-media.js via tools/v4_ux.py -->", "<!-- /v4u-media -->")
 
 
@@ -641,6 +697,7 @@ def page(rel, src):
         src = media_script(src)
     if rel == "podcast.html":
         src = podcast_wall(src)
+        src = podcast_latest(src)
     if rel.startswith("episodes/"):
         src = episode_labels(src)
         src = episode_listen_button(src)

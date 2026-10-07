@@ -3103,3 +3103,33 @@ html .v2-dst.v4-trip .page-wrap :is(.kday-stop p, .kkit-gblurb, .kair-txt, .kfaq
 .v4u-topics a.tg-chip{min-height:36px;display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .8rem;}
 .v4u-topics-all{color:var(--orange);font-size:var(--fs-body-s);}
 @media (pointer:coarse){ .v4u-topics a{min-height:44px;display:inline-flex;align-items:center;} }
+
+/* 19. The newest episode on the podcast's screen one, from the saved archive
+       (tools/v4_ux.py), its play button the feed's own; the whole row opens
+       the episode, the button plays it here. */
+.v4u-latest{--cv:52px;position:relative;display:grid;grid-template-columns:var(--cv) minmax(0,1fr);align-items:center;gap:var(--sp-3);
+  max-width:30rem;margin:var(--sp-4) 0 0;padding:.55rem 1.4rem .55rem .55rem;border:1px solid var(--edge);border-radius:999px;
+  background:rgba(20,21,25,.62);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transition:border-color .3s ease;}
+.v4u-latest:hover,.v4u-latest:focus-within,.v4u-latest.playing{border-color:var(--edge-hi);}
+.v4u-latest p{margin:0;min-width:0;line-height:1.35;}
+.v4u-latest-k{display:block;font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:.2rem;}
+.v4u-latest a{font-family:var(--font-display);font-weight:600;font-size:var(--fs-body-s);color:var(--white);text-decoration:none;}
+.v4u-latest a::after{content:"";position:absolute;inset:0;border-radius:inherit;}
+.v4u-latest a:hover{color:var(--orange);}
+.v4u-latest a:focus-visible{outline:none;}
+.v4u-latest:has(a:focus-visible){outline:2px solid var(--white);outline-offset:3px;}
+.v4u-latest-w{color:var(--gray-light);font-size:var(--fs-body-s);}
+.v4u-play{position:relative;z-index:1;width:var(--cv);height:var(--cv);margin:0;padding:0;border:0;border-radius:50%;cursor:pointer;
+  display:grid;place-items:center;color:var(--white);background:var(--orange);transition:scale .2s var(--ease),background-color .25s ease;}
+.v4u-play::before{content:"";position:absolute;inset:-5px;border-radius:50%;pointer-events:none;
+  background:conic-gradient(var(--orange) calc(var(--p,0) * 1turn),rgba(255,255,255,.12) 0);
+  -webkit-mask:radial-gradient(circle closest-side,transparent calc(100% - 2px),#000 calc(100% - 1px));
+  mask:radial-gradient(circle closest-side,transparent calc(100% - 2px),#000 calc(100% - 1px));opacity:0;transition:opacity .3s ease;}
+.v4u-latest.playing .v4u-play::before{opacity:1;}
+.v4u-play svg{width:20px;height:20px;}
+.v4u-play .v4u-i-pause,.v4u-latest.playing .v4u-play .v4u-i-play{display:none;}
+.v4u-latest.playing .v4u-play .v4u-i-pause{display:inline;}
+.v4u-play:focus-visible{outline:2px solid var(--white);outline-offset:4px;}
+.v4u-play:active{scale:var(--press);}
+@media (scripting:none){ .v4u-latest{grid-template-columns:minmax(0,1fr);padding-left:1.4rem;} .v4u-play{display:none;} }
+@media (max-width:760px){ .v4u-latest{margin-top:var(--sp-3);} }

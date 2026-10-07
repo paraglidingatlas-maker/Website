@@ -68,7 +68,7 @@
 <link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../styles.css?v=b084e774">
-<link rel="stylesheet" href="v2.css?v=44dbdd1f">
+<link rel="stylesheet" href="v2.css?v=e1715938">
 <style>
   .pod-hero{position:relative;min-height:64vh;display:flex;align-items:flex-end;}
   .pod-hero-media{position:absolute;inset:0;z-index:-2;}
@@ -998,6 +998,7 @@
       <a href="library.html" class="btn-solid" data-hover><span>See all episodes</span></a>
       <a href="#map" class="btn-lines" data-hover>Click A Pin, Hear The Story</a>
     </div>
+      <!-- v4u-latest: tools/v4_ux.py, from episode-meta.json and mp3-map.json --><div class="v4u-latest" data-audio="https://anchor.fm/s/ed1344d8/podcast/play/125350751/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-8-7%2F431383101-44100-2-9e42111930dac.mp3"><button type="button" class="v4u-play" aria-label="Play episode" aria-pressed="false"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path class="v4u-i-play" d="M8 5v14l11-7Z"/><path class="v4u-i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button><p><span class="v4u-latest-k">Episode 80 · 73 min · 8&nbsp;September&nbsp;2026</span> <a href="episodes/how-to-thermal-like-a-pro-find-center-climb-paragliding.html">How to Thermal Like a Pro</a> <span class="v4u-latest-w">with <strong>Brett Janaway</strong></span></p></div><!-- /v4u-latest -->
     <div class="kit-stats">
       <div class="kit-stat"><b>100,000+</b><span>Streams</span></div>
       <div class="kit-stat"><b>136</b><span>Countries Reached</span></div>
@@ -1320,5 +1321,37 @@
 </script>
 <script defer src="../../nav-menu.js?v=001fbbf6"></script>
 <!-- /nav-menu -->
+<!-- v4u-latest-js: src/v4-ux-latest.js via tools/v4_ux.py --><script>(function () {
+var d = document;
+function init() {
+var box = d.querySelector(".v4u-latest"), btn = box && box.querySelector(".v4u-play");
+if (!btn) return;
+var audio, quiet = false, grid = d.getElementById("liveFeedGrid");
+function set(on) { box.classList.toggle("playing", on); btn.setAttribute("aria-pressed", on ? "true" : "false"); }
+btn.addEventListener("click", function () {
+if (!audio) {
+audio = new Audio();
+audio.preload = "none";
+audio.src = box.getAttribute("data-audio");
+audio.addEventListener("play", function () {
+set(true);
+var r = grid && grid.querySelector(".ep-row.playing .ep-play-btn");
+if (r) { quiet = true; r.click(); quiet = false; }
+});
+audio.addEventListener("pause", function () { set(false); });
+audio.addEventListener("ended", function () { set(false); });
+audio.addEventListener("timeupdate", function () {
+if (audio.duration) box.style.setProperty("--p", (audio.currentTime / audio.duration).toFixed(4));
+});
+}
+if (audio.paused) { var p = audio.play(); if (p && p.catch) p.catch(function () { set(false); }); }
+else audio.pause();
+});
+if (grid) grid.addEventListener("click", function (e) {
+if (!quiet && audio && !audio.paused && e.target.closest && e.target.closest(".ep-play-btn, .ep-play-btn-lg")) audio.pause();
+});
+}
+if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();</script><!-- /v4u-latest-js -->
 </body>
 </html>
