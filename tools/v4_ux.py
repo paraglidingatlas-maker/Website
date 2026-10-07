@@ -21,6 +21,10 @@ What it does, by the brief's numbers
      jump row and the two skip links in the same order; on a phone the
      gallery's pinned run is under three screens and the route's shorter
      (src/v2.css).
+  3  (src/v2.css only) the gallery on an upright phone or tablet: each photo
+     whole, in a landscape frame.
+  4  enquire.html?trip=..&when=..: the departure's facts (as the trip page
+     states them) under the title, the form next, the message optional.
 """
 import html
 import os
@@ -186,7 +190,7 @@ def put_block(src, marks, block, anchor, before=True):
     return src[:k] + new + "\n" + src[k:] if before else src[:k + len(anchor)] + "\n" + new + src[k + len(anchor):]
 
 
-HOLD_JS = """<script>
+HOLD_JS = r"""<script>
 /* v4, the usability pass (4): arriving from "Hold a place" (?trip=..&when=..), the
    page opens on that departure: the trip, its dates, its length and its price as
    the trip page states them, then the form; the message becomes optional. Any
@@ -203,7 +207,8 @@ HOLD_JS = """<script>
   if (!box || !dep) { plainForm(); return; }
   var sel = document.getElementById('trip');
   function put(k, v) { var e = box.querySelector('[data-k="' + k + '"]'); if (e) e.textContent = v; }
-  put('trip', dep.title + (sel && sel.selectedIndex > 0 ? ', ' + sel.options[sel.selectedIndex].text : ''));
+  var place = sel && sel.selectedIndex > 0 ? (sel.options[sel.selectedIndex].text.match(/\(([^)]+)\)/) || [])[1] : '';
+  put('trip', dep.title + (place ? ' (' + place + ')' : ''));
   put('when', dep.when);
   put('len', t.len);
   put('price', /from$/i.test(dep.label) ? 'From ' + dep.price : dep.price + ' ' + dep.label.toLowerCase());
@@ -239,7 +244,190 @@ def enquire_hold(src, trips):
     return src
 
 
+# ------------------------------------------------------------------------------------------------ 6
+PHONE_MEDIA = '(max-aspect-ratio: 2/3)'
+
+
+def trip_hero_weight(rel, src):
+    """6a. The trip heroes: a phone cut of every slide (tools/v4_phone_media.py), and every slide but the first
+    waits (data-v4-src): src/v2-immersive.js wakes a slide just before the slideshow shows it."""
+    trip = rel.split("/")[-1][:-5]
+    first = True
+
+    def slide(m):
+        nonlocal first
+        pic = m.group(2)
+        jpg = re.search(r'(?:data-v4-src|\bsrc)="([^"]+\.jpg)"', pic).group(1)
+        name = os.path.basename(jpg)[:-4]
+        phone = "../img/hero/%s-%s-p" % (trip, name)
+        if not os.path.exists(os.path.join(V4, "destinations", phone + ".webp")):
+            raise SystemExit("v4_ux: run tools/v4_phone_media.py first (%s)" % phone)
+        if PHONE_MEDIA not in pic:
+            pic = ('\n          <source media="%s" srcset="%s.webp" type="image/webp">'
+                   '\n          <source media="%s" srcset="%s.jpg">' % (PHONE_MEDIA, phone, PHONE_MEDIA, phone)) + pic
+        if not first:
+            pic = re.sub(r'(<source\b[^>]*?\s)srcset=', r"\1data-v4-srcset=", pic)
+            pic = re.sub(r'(<img\b[^>]*?\s)src=', r"\1data-v4-src=", pic)
+        first = False
+        return m.group(1) + pic + m.group(3)
+    return re.sub(r'(<div class="khero-slide[^"]*">\s*<picture>)(.*?)(</picture>)', slide, src, flags=re.S)
+
+
+def gallery_lazy(src):
+    """6b. Every gallery photograph waits until the gallery comes near (the first two were fetched on arrival)."""
+    return re.sub(r'(<figure class="gxa-f[^"]*"[^>]*><picture><source [^>]*><img (?:(?!loading=)[^>])*?)( decoding="async">)',
+                  r'\1 loading="lazy"\2', src)
+
+
+def home_flyby_weight(src):
+    """6c. The home page's four expedition photographs wait until the fly-through comes near; without
+    script the first one still shows (a noscript copy)."""
+    m = re.search(r'<div class="v2-fb-stage" aria-hidden="true">(.*?)\n  </div>', src, re.S)
+    if not m or "data-v4-srcset" in m.group(1):
+        return src
+    stage = m.group(1)
+    first = re.search(r"<picture>.*?</picture>", stage, re.S).group(0)
+    stage = re.sub(r'(<source\b[^>]*?\s)srcset=', r"\1data-v4-srcset=", stage)
+    stage = re.sub(r'(<img\b[^>]*?\s)src=', r"\1data-v4-src=", stage)
+    stage = stage.replace("</picture>", "</picture><noscript>%s</noscript>" % first, 1)
+    return src[:m.start(1)] + stage + src[m.end(1):]
+
+
+# ------------------------------------------------------------------------------------------------ 10
+_META = None
+
+
+def meta():
+    global _META
+    if _META is None:
+        import json
+        with open(os.path.join(ROOT, "episode-meta.json"), encoding="utf-8") as fh:
+            _META = {m["slug"]: m for m in json.load(fh)}
+    return _META
+
+
+def _norm(s):
+    return re.sub(r"[^a-z0-9]+", " ", html.unescape(s).lower().replace("vs.", "vs")).strip()
+
+
+SERIES_LIKE = ("flying filming", "new technologies", "brand stories", "storytellers", "storytime", "living the dream",
+               "risk vs reward", "sky gods", "snippet")
+
+
+def _first_parts():
+    seen = {}
+    for m in meta().values():
+        if not (m.get("guest") or "").strip() or m.get("guest") == "Aninder Singh":
+            k = _norm(_parts(m["title"])[0])
+            seen[k] = seen.get(k, 0) + 1
+    return seen
+
+
+def _parts(title):
+    return [p.strip() for p in re.split(r"\s+[:|]\s+|:\s+|\s+\|\s*|\s+-\s+", title.strip()) if p.strip()]
+
+
+def describe(m):
+    """The episode in its own title's words: {guest, d (the descriptive part: the title without the series'
+    name and number and without the guest), paren (what the title adds in brackets after the guest's name),
+    tag (the series-like label the title starts with)}. Any of them may be empty."""
+    title, series, guest = m["title"].strip(), (m.get("series") or "").strip(), (m.get("guest") or "").strip()
+    if guest == "Aninder Singh":
+        guest = ""                                      # the host: his own episodes go by their title
+    parts = _parts(title)
+    s = _norm(series)
+    gn = _norm(re.sub(r"\(.*?\)", "", guest))
+    names = [_norm(re.sub(r"\(.*?\)", "", x)) for x in re.split(r"\s*&\s*", guest) if x] if guest else []
+    keep, paren, tag = [], "", ""
+    for p in parts:
+        n = _norm(re.sub(r"\(.*?\)", "", p))
+        if len(parts) > 1 and ((s and re.fullmatch(re.escape(s) + r"(?: \d+)?", n)) or
+                               re.fullmatch(r"(?:%s)(?: \d+)?" % "|".join(SERIES_LIKE), n)):
+            tag = tag or p                              # "Sky Gods", "Risk Vs Reward 3", "Flying & Filming 2"
+            continue
+        if gn and (n == gn or n in names):
+            b = re.search(r"\(([^)]+)\)\s*$", p)
+            if b and not re.fullmatch(r"(?i)bonus ep|whitepaper", b.group(1)) and _norm(b.group(1)) not in (gn, "robbie"):
+                paren = b.group(1)                      # "Marko Milutinovic (Mid-Air Collision)"
+            continue
+        keep.append(p)
+    # a part that is only the guest's interview ("The Russell Ogden Interview") gives way to the next one
+    if len(keep) > 1 and gn and gn in _norm(keep[0]) and \
+            not re.sub(r"\b(?:the|interview|with|by|of|s)\b", "", _norm(keep[0]).replace(gn, "")).strip():
+        keep = keep[1:]
+    d = keep[0] if keep else ""
+    if not guest and d and _first_parts().get(_norm(d), 0) > 1:
+        d = ": ".join(parts)                            # two "Bird's-Eye View of Oslo": the whole title
+    for name in sorted(([guest, re.sub(r"\s*\(.*?\)", "", guest)] + re.split(r"\s*&\s*", guest)) if guest else [], key=len, reverse=True):
+        if not name:
+            continue
+        d = re.sub(r"(?i)\s*(?:,|\|)?\s*(?:a talk with|explained by|ft\.|with|by|of)\s+" + re.escape(name) + r".*$", "", d)
+        d = re.sub(r"(?i)^" + re.escape(name) + r"(?:'s|’s)?\s+(?:talks about|explains|answers!?|on)?\s*", "", d)
+        d = re.sub(r"(?i)\s+" + re.escape(name) + r"\s+answers!?$", "", d)
+    d = re.sub(r"\s*\((?:bonus ep|whitepaper)\)", "", d, flags=re.I).strip(" ,:|-")
+    if d and d[0].islower():
+        d = d[0].upper() + d[1:]
+    return {"guest": guest, "d": d, "paren": paren, "tag": tag}
+
+
+def link_label(m):
+    x = describe(m)
+    what = x["d"] or x["paren"] or x["tag"]
+    if x["guest"] and what:
+        return "%s: %s" % (x["guest"], what)
+    return x["guest"] or what or m["title"]
+
+
+def episode_labels(src):
+    """10. Related Episodes and Up next say who and what: the guest and the descriptive part of the title
+    (no more "Sky Gods" nine times, or the guest's name twice on one card)."""
+    E = meta()
+
+    def slug(href):
+        return href.split("/")[-1].split("#")[0][:-5]
+
+    def rel_link(mm):
+        e = E.get(slug(mm.group(2)))
+        return mm.group(1) + (html.escape(link_label(e), quote=False) if e else mm.group(3)) + mm.group(4)
+
+    def related(mm):
+        return re.sub(r'(<a class="cd-link" href="([^"]+)">)(.*?)(</a>)', rel_link, mm.group(0))
+    src = re.sub(r"<h2>Related Episodes</h2>.*?</div>", related, src, count=1, flags=re.S)
+
+    def card(mm):
+        e = E.get(slug(mm.group(2)))
+        if not e:
+            return mm.group(0)
+        x = describe(e)
+        t = x["d"] or (x["paren"] if x["guest"] else "") or x["guest"] or x["tag"] or e["title"]
+        who = x["guest"] if x["guest"] and t != x["guest"] else (x["tag"] if t != x["tag"] else "")
+        dur = re.search(r"&middot;\s*(.*)$", mm.group(5))
+        meta_line = " &middot; ".join(y for y in (html.escape(who, quote=False), dur.group(1) if dur else "") if y)
+        return mm.group(1) + mm.group(3) + html.escape(t, quote=False) + mm.group(4) + meta_line + mm.group(6)
+    src = re.sub(r'(<a class="ep2-card" href="([^"]+)">.*?)(<span class="ep2-card-t">).*?(</span><span class="ep2-card-m">)(.*?)(</span>)',
+                 lambda mm: card(mm), src, flags=re.S)
+
+    def nxt(mm):
+        e = E.get(slug(mm.group(2)))
+        if not e:
+            return mm.group(0)
+        x = describe(e)
+        return mm.group(1) + html.escape(x["guest"] or x["d"] or e["title"], quote=False) + mm.group(4)
+    src = re.sub(r'(<a class="btn-lines v4-next" href="([^"]+)"><span class="v4-next-k">Next</span> )(.*?)(</a>)', nxt, src, count=1)
+    return src
+
+
+def hold_data():
+    out = {}
+    for rel in TRIPS:
+        s = open(os.path.join(V4, rel), encoding="utf-8").read()
+        out[rel.split("/")[-1][:-5]] = {"len": trip_length(s), "deps": trip_departures(s)}
+    return out
+
+
 def page(rel, src):
+    if rel == "enquire.html":
+        src = enquire_hold(src, hold_data())
     if rel in TRIPS:
         src = trip_bar(src)
         src = trip_dates_first(src)

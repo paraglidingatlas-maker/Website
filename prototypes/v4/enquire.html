@@ -40,7 +40,7 @@
 <link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../styles.css?v=b084e774">
-<link rel="stylesheet" href="v2.css?v=62dbe5b7">
+<link rel="stylesheet" href="v2.css?v=08313dce">
 <style>
 /* Enquiry page. Tokens and chrome come from styles.css.
    The form deliberately has no backend and no third party form service: it
@@ -178,6 +178,7 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="apple-touch-icon" sizes="180x180" href="img/app-180.png">
 <script defer src="pwa.js?v=3d4482f3"></script><!-- /app -->
+<!-- v4u-holding: tools/v4_ux.py --><script>/[?&]trip=/.test(location.search) && /[?&]when=/.test(location.search) && document.documentElement.classList.add('v4u-holding');</script><!-- /v4u-holding -->
 </head>
 <body class="enq" data-v2="pg">
 
@@ -205,6 +206,12 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
   <div class="kit-hero-copy">
     <span class="kit-kicker">Get In Touch</span>
     <h1>Tell Us About <em class="v2-accent">Your Flying</em></h1>
+    <div class="v4u-hold" id="v4uHold" hidden>
+      <p><span class="l">Destination</span><span class="v" data-k="trip"></span></p>
+      <p><span class="l">Dates</span><span class="v" data-k="when"></span></p>
+      <p><span class="l">Duration</span><span class="v" data-k="len"></span></p>
+      <p><span class="l">Price</span><span class="v" data-k="price"></span></p>
+    </div>
     <p class="kit-intro">The more you tell us about where you are as a pilot, the more useful our answer will be. There are no wrong answers here, and telling us you are less current than you would like is genuinely more helpful than telling us you are fine.</p>
   </div>
 </header>
@@ -541,6 +548,36 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
   });
 })();
 </script>
+<!-- v4u-hold: tools/v4_ux.py --><script type="application/json" id="v4uHoldData">{"india":{"len":"10 days","deps":[{"title":"India Tour 1","when":"21 to 30 October 2026","label":"Per pilot","price":"£1,100"},{"title":"India Tour 2","when":"3 to 12 November 2026","label":"Per pilot","price":"£1,100"}]},"kenya":{"len":"12 days","deps":[{"title":"Kenya Tour 1","when":"18 to 29 January 2027","label":"Starting from","price":"US$2,100"},{"title":"Kenya Tour 2","when":"1 to 12 February 2027","label":"Starting from","price":"US$2,100"}]}}</script>
+<script>
+/* v4, the usability pass (4): arriving from "Hold a place" (?trip=..&when=..), the
+   page opens on that departure: the trip, its dates, its length and its price as
+   the trip page states them, then the form; the message becomes optional. Any
+   other arrival, or dates the trip page does not list, gets the plain form.
+   The mailto and the worker hook below are unchanged. */
+(function () {
+  var de = document.documentElement, box = document.getElementById('v4uHold');
+  function plainForm() { de.classList.remove('v4u-holding'); }
+  var data, q;
+  try { data = JSON.parse(document.getElementById('v4uHoldData').textContent); q = new URLSearchParams(location.search); }
+  catch (e) { plainForm(); return; }
+  var t = data[(q.get('trip') || '').toLowerCase()], when = q.get('when') || '', dep = null;
+  if (t) t.deps.forEach(function (d) { if (d.when === when) dep = d; });
+  if (!box || !dep) { plainForm(); return; }
+  var sel = document.getElementById('trip');
+  function put(k, v) { var e = box.querySelector('[data-k="' + k + '"]'); if (e) e.textContent = v; }
+  var place = sel && sel.selectedIndex > 0 ? (sel.options[sel.selectedIndex].text.match(/\(([^)]+)\)/) || [])[1] : '';
+  put('trip', dep.title + (place ? ' (' + place + ')' : ''));
+  put('when', dep.when);
+  put('len', t.len);
+  put('price', /from$/i.test(dep.label) ? 'From ' + dep.price : dep.price + ' ' + dep.label.toLowerCase());
+  box.hidden = false;
+  var m = document.getElementById('message'), lab = document.querySelector('label[for="message"]');
+  if (m) m.required = false;
+  if (lab && !lab.querySelector('.opt')) { var o = document.createElement('span'); o.className = 'opt'; o.textContent = '(optional)'; lab.appendChild(document.createTextNode(' ')); lab.appendChild(o); }
+})();
+</script>
+<!-- /v4u-hold -->
 <!-- nav-menu -->
 <script defer src="../../nav-menu.js?v=001fbbf6"></script>
 <!-- /nav-menu -->
