@@ -3010,3 +3010,37 @@ html .v4u-etq .etq-open .dst-head{margin-top:0;}
 html.v4u-wall .v4-voices{visibility:hidden;opacity:0;}
 .v4-voices{transition:opacity .8s var(--ease);}
 @media (scripting: none){ .v4-ls-open{display:none !important;} }
+
+/* 13. Ideas first on a phone: a knowledge base page's conversations are one
+       row to swipe through (a third of the height of the grid they were),
+       so the first idea starts within a screen and a half. */
+@media (max-width:760px){
+  html [data-v2="kb"] #episodes{padding-top:var(--sp-4);padding-bottom:var(--sp-4);}
+  html [data-v2="kb"] #episodes .k-head{margin-bottom:var(--sp-3);}
+  html [data-v2="kb"] #episodes .ep-grid{display:flex;gap:.75rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;margin:0 calc(-1 * clamp(1.5rem,5vw,4rem));padding:0 clamp(1.5rem,5vw,4rem) .25rem;
+    scroll-padding-inline:clamp(1.5rem,5vw,4rem);}
+  html [data-v2="kb"] #episodes .ep-grid::-webkit-scrollbar{display:none;}
+  html [data-v2="kb"] #episodes .ep-tile{flex:0 0 min(78vw,20rem);scroll-snap-align:start;grid-template-columns:7.5rem minmax(0,1fr);
+    grid-template-rows:auto 1fr auto;padding:.6rem;row-gap:.25rem;}
+  html [data-v2="kb"] #episodes .ep-tile .ep-th{grid-row:1 / 4;}
+  html [data-v2="kb"] #episodes .ep-tile :is(.ep-stamp,.ep-foot){padding:0;min-height:0;border:0;}
+  html [data-v2="kb"] #episodes .ep-tile .ep-tile-body{padding:0;}
+  html [data-v2="kb"] #episodes .ep-tile .ep-tile-title{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;}
+  html [data-v2="kb"] #episodes .ep-tile .ep-tile-guest{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+}
+
+/* 14. The series pages' jump row (tools/v4_ux.py), the trip pages' own:
+       each idea by its kicker, then Worth Remembering, FAQ and the
+       conversations; it stays at the top while the page scrolls. */
+html .v4u-jump{position:sticky;top:0;z-index:15;background:rgba(20,21,25,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);}
+html .v4u-jump .dst-jump-in{display:flex;align-items:center;gap:.2rem;overflow-x:auto;padding:0 var(--edge-x);scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;}
+html .v4u-jump .dst-jump-in::-webkit-scrollbar{display:none;}
+html .v4u-jump a{white-space:nowrap;color:var(--gray-light);text-decoration:none;font-size:.86rem;padding:1rem .95rem;
+  border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
+html .v4u-jump a:first-child{padding-left:0;}
+html .v4u-jump a:hover,html .v4u-jump a:focus-visible{color:var(--white);border-bottom-color:var(--orange);}
+@media (pointer:coarse){ html .v4u-jump a{min-height:44px;display:inline-flex;align-items:center;} }
+html [data-v2="kb"] :is(.k-sec,.band-fig){scroll-margin-top:3.75rem;}

@@ -38,6 +38,8 @@ What it does, by the brief's numbers
      guest and the descriptive part of the title (episode-meta.json, read only).
  11  the podcast's wall of names waits for its typeface; the episodes'
      Listening mode button is in the page from the start.
+ 14  the knowledge base series pages get the trips' jump row: each idea by
+     its kicker, Worth Remembering, FAQ, the conversations (13 is CSS).
 """
 import html
 import os
@@ -526,14 +528,54 @@ def kb_jump(src):
     if ep:
         names["episodes"] = plain(ep.group(1))
     row = "".join('\n    <a href="#%s">%s</a>' % (i, html.escape(names[i], quote=False)) for i in order if i in names)
-    block = '<nav class="dst-jump v4u-jump" aria-label="On this page">\n  <div class="dst-jump-in">%s\n  </div>\n</nav>\n' % row
-    if 'class="dst-jump v4u-jump"' in src:
-        return re.sub(r'<nav class="dst-jump v4u-jump".*?</nav>\n', lambda _: block, src, count=1, flags=re.S)
+    block = ('<div class="dst-jump v4u-jump" role="navigation" aria-label="On this page">\n  <div class="dst-jump-in">%s\n  </div>\n</div>\n'
+             % row)
+    if '<div class="dst-jump v4u-jump"' in src:
+        a = src.index('<div class="dst-jump v4u-jump"')
+        a, b = element_span(src, a, "div")
+        return src[:a] + block.rstrip("\n") + src[b:]
     h = re.search(r'<header[^>]*class="k-hero[^"]*"', src)
     if not h:
         return src
     a, b = element_span(src, h.start(), "header")
     return src[:b] + "\n" + block + src[b:].lstrip("\n")
+
+
+# ------------------------------------------------------------------------------------------------ 15
+FIND_FORM = ('<form class="v4u-find" role="search" action="sitemap.html" data-v4-find>'
+             '<label class="v4u-find-lab" for="v4uFind">Search episodes, the knowledge base and trips</label>'
+             '<input id="v4uFind" type="search" name="q" autocomplete="off" placeholder="Search" aria-controls="v4uHits">'
+             '<ol class="v4-hits v4u-hits" id="v4uHits" aria-live="polite"></ol></form>\n      ')
+
+
+def kb_question(href):
+    """The question a knowledge base page asks: its own h1."""
+    with open(os.path.join(V4, href.split("#")[0]), encoding="utf-8") as fh:
+        s = fh.read()
+    m = re.search(r"<h1[^>]*>(.*?)</h1>", s, re.S)
+    return re.sub(r"\s+", " ", plain(m.group(1))) if m else ""
+
+
+def kb_hub(src):
+    """15. The knowledge base hub: each series says what it is about (its own page's question, under its name),
+    and the site search sits at the top. The small type is CSS."""
+    def chip(m):
+        q = kb_question(m.group(1))
+        return ('<a class="clb-topic" href="%s"><span>%s</span><b>%s</b>%s</a>'
+                % (m.group(1), m.group(2), m.group(3), ('<span class="v4-q">%s</span>' % html.escape(q, quote=False)) if q else ""))
+    src = re.sub(r'<a class="clb-topic" href="([^"]+)"><span>([^<]*)</span><b>([^<]*)</b>(?:<span class="v4-q">[^<]*</span>)?</a>', chip, src)
+    if 'class="v4u-find"' not in src:
+        src = src.replace('<details class="clb-how">', FIND_FORM + '<details class="clb-how">', 1)
+
+    # the altitude links on the climb: a band 90 units tall round each level's dot (46 px on a phone, where the
+    # words alone were an 18 px target); the levels are 100 units apart or more, so the bands never overlap
+    def lv(m):
+        a = m.group(0)
+        if "v4-climb-hit" in a:
+            return a
+        y = float(re.search(r'<circle class="v4-climb-dot" cx="[^"]+" cy="([0-9.]+)"', a).group(1))
+        return a.replace(">", '><rect class="v4-climb-hit" x="0" y="%.1f" width="640" height="90"/>' % (y - 45), 1)
+    return re.sub(r'<a class="v4-climb-lv"[^>]*>.*?</a>', lv, src, flags=re.S)
 
 
 WALL_MARK = ("<!-- v4u-wall: tools/v4_ux.py -->", "<!-- /v4u-wall -->")
@@ -583,6 +625,8 @@ def page(rel, src):
     if rel.startswith("episodes/"):
         src = episode_labels(src)
         src = episode_listen_button(src)
+    if rel.startswith("knowledge-base/"):
+        src = kb_jump(src)
     if rel in TRIPS:
         src = trip_bar(src)
         src = trip_dates_first(src)
