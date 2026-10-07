@@ -34,6 +34,10 @@ What it does, by the brief's numbers
      hero clips' phone cuts are chosen by src/v4-ux-media.js (inlined).
   7  on a wide screen the trip's section bar carries the price and Hold a
      place beside Enquire.
+ 10  episodes: Related Episodes, Up next and the phone bar's Next name the
+     guest and the descriptive part of the title (episode-meta.json, read only).
+ 11  the podcast's wall of names waits for its typeface; the episodes'
+     Listening mode button is in the page from the start.
 """
 import html
 import os
@@ -318,6 +322,147 @@ def home_flyby_weight(src):
     return src[:m.start(1)] + stage + src[m.end(1):]
 
 
+# ------------------------------------------------------------------------------------------------ 10
+_META = None
+
+
+def meta():
+    global _META
+    if _META is None:
+        import json
+        with open(os.path.join(ROOT, "episode-meta.json"), encoding="utf-8") as fh:
+            _META = {m["slug"]: m for m in json.load(fh)}
+    return _META
+
+
+def _norm(s):
+    return re.sub(r"[^a-z0-9]+", " ", html.unescape(s).lower().replace("vs.", "vs")).strip()
+
+
+SERIES_LIKE = ("flying filming", "new technologies", "brand stories", "storytellers", "storytime", "living the dream",
+               "risk vs reward", "sky gods", "snippet")
+
+
+def _parts(title):
+    return [p.strip() for p in re.split(r"\s+[:|]\s+|:\s+|\s+\|\s*|\s+-\s+", title.strip()) if p.strip()]
+
+
+def _first_parts():
+    seen = {}
+    for m in meta().values():
+        if not (m.get("guest") or "").strip() or m.get("guest") == "Aninder Singh":
+            k = _norm(_parts(m["title"])[0])
+            seen[k] = seen.get(k, 0) + 1
+    return seen
+
+
+def describe(m):
+    """The episode in its own title's words: {guest, d (the descriptive part: the title without the series'
+    name and number and without the guest), paren (what the title adds in brackets after the guest's name),
+    tag (the series-like label the title starts with)}. Any of them may be empty."""
+    title, series, guest = m["title"].strip(), (m.get("series") or "").strip(), (m.get("guest") or "").strip()
+    if guest == "Aninder Singh":
+        guest = ""                                      # the host: his own episodes go by their title
+    parts = _parts(title)
+    s = _norm(series)
+    gn = _norm(re.sub(r"\(.*?\)", "", guest))
+    names = [_norm(re.sub(r"\(.*?\)", "", x)) for x in re.split(r"\s*&\s*", guest) if x] if guest else []
+    keep, paren, tag = [], "", ""
+    for p in parts:
+        n = _norm(re.sub(r"\(.*?\)", "", p))
+        if len(parts) > 1 and ((s and re.fullmatch(re.escape(s) + r"(?: \d+)?", n)) or
+                               re.fullmatch(r"(?:%s)(?: \d+)?" % "|".join(SERIES_LIKE), n)):
+            tag = tag or p                              # "Sky Gods", "Risk Vs Reward 3", "Flying & Filming 2"
+            continue
+        if gn and (n == gn or n in names):
+            b = re.search(r"\(([^)]+)\)\s*$", p)
+            if b and not re.fullmatch(r"(?i)bonus ep|whitepaper", b.group(1)) and _norm(b.group(1)) not in (gn, "robbie"):
+                paren = b.group(1)                      # "Marko Milutinovic (Mid-Air Collision)"
+            continue
+        keep.append(p)
+    # a part that is only the guest's interview ("The Russell Ogden Interview") gives way to the next one
+    if len(keep) > 1 and gn and gn in _norm(keep[0]) and \
+            not re.sub(r"\b(?:the|interview|with|by|of|s)\b", "", _norm(keep[0]).replace(gn, "")).strip():
+        keep = keep[1:]
+    d = keep[0] if keep else ""
+    if not guest and d and _first_parts().get(_norm(d), 0) > 1:
+        d = ": ".join(parts)                            # two "Bird's-Eye View of Oslo": the whole title
+    for name in sorted(([guest, re.sub(r"\s*\(.*?\)", "", guest)] + re.split(r"\s*&\s*", guest)) if guest else [], key=len, reverse=True):
+        if not name:
+            continue
+        d = re.sub(r"(?i)\s*(?:,|\|)?\s*(?:a talk with|explained by|ft\.|with|by|of)\s+" + re.escape(name) + r".*$", "", d)
+        d = re.sub(r"(?i)^" + re.escape(name) + r"(?:'s|’s)?\s+(?:talks about|explains|answers!?|on)?\s*", "", d)
+        d = re.sub(r"(?i)\s+" + re.escape(name) + r"\s+answers!?$", "", d)
+    d = re.sub(r"\s*\((?:bonus ep|whitepaper)\)", "", d, flags=re.I).strip(" ,:|-")
+    if d and d[0].islower():
+        d = d[0].upper() + d[1:]
+    return {"guest": guest, "d": d, "paren": paren, "tag": tag}
+
+
+def _wordy(s):
+    return bool(s) and " " in s.strip() and "." not in s       # "Mid-Air Collision", not "hochzwei.media"
+
+
+def link_label(m):
+    x = describe(m)
+    what = x["d"] or (x["paren"] if _wordy(x["paren"]) else "") or x["tag"] or x["paren"]
+    if x["guest"] and what:
+        return "%s: %s" % (x["guest"], what)
+    return x["guest"] or what or m["title"]
+
+
+def episode_labels(src):
+    """10. Related Episodes and Up next say who and what: the guest and the descriptive part of the title
+    (no more "Sky Gods" nine times, or the guest's name twice on one card). The phone bar's Next too."""
+    E = meta()
+
+    def slug(href):
+        return href.split("/")[-1].split("#")[0][:-5]
+
+    def rel_link(mm):
+        e = E.get(slug(mm.group(2)))
+        return mm.group(1) + (html.escape(link_label(e), quote=False) if e else mm.group(3)) + mm.group(4)
+
+    def related(mm):
+        return re.sub(r'(<a class="cd-link" href="([^"]+)">)(.*?)(</a>)', rel_link, mm.group(0))
+    src = re.sub(r"<h2>Related Episodes</h2>.*?</div>", related, src, count=1, flags=re.S)
+
+    def card(mm, twice):
+        e = E.get(slug(mm.group(2)))
+        if not e:
+            return mm.group(0)
+        x = describe(e)
+        t = x["d"] or (x["paren"] if x["guest"] and _wordy(x["paren"]) else "") or x["guest"] or x["tag"] or e["title"]
+        if t in twice and x["guest"] and t != x["guest"]:
+            t = "%s: %s" % (x["guest"], t)               # two "Navigating India" in one row: say whose
+        who = x["guest"] if x["guest"] and x["guest"] not in t else (x["tag"] if x["tag"] and x["tag"] not in t else "")
+        dur = re.search(r"\d+\s*min\b", mm.group(5))
+        meta_line = " &middot; ".join(y for y in (html.escape(who, quote=False), dur.group(0) if dur else "") if y)
+        return mm.group(1) + mm.group(3) + html.escape(t, quote=False) + mm.group(4) + meta_line + mm.group(6)
+    CARD = re.compile(r'(<a class="ep2-card" href="([^"]+)">.*?)(<span class="ep2-card-t">).*?(</span><span class="ep2-card-m">)(.*?)(</span>)', re.S)
+
+    def grid(gm):
+        g = gm.group(0)
+        firsts = []
+        for mm in CARD.finditer(g):
+            e = E.get(slug(mm.group(2)))
+            if e:
+                x = describe(e)
+                firsts.append(x["d"] or (x["paren"] if x["guest"] and _wordy(x["paren"]) else "") or x["guest"] or x["tag"] or e["title"])
+        twice = {t for t in firsts if firsts.count(t) > 1}
+        return CARD.sub(lambda mm: card(mm, twice), g)
+    src = re.sub(r'<div class="ep2-next-grid">.*?</div>\s*</section>', grid, src, flags=re.S)
+
+    def nxt(mm):
+        e = E.get(slug(mm.group(2)))
+        if not e:
+            return mm.group(0)
+        x = describe(e)
+        return mm.group(1) + html.escape(x["guest"] or x["d"] or e["title"], quote=False) + mm.group(4)
+    src = re.sub(r'(<a class="btn-lines v4-next" href="([^"]+)"><span class="v4-next-k">Next</span> )(.*?)(</a>)', nxt, src, count=1)
+    return src
+
+
 # ------------------------------------------------------------------------------------------------ 11, 12
 LISTEN_BTN = ('<button type="button" class="v4-ls-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
               'stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/>'
@@ -337,6 +482,73 @@ def episode_listen_button(src):
     a, b = element_span(src, m.start(), "div")
     close = b - len("</div>")
     return src[:close] + "  " + LISTEN_BTN + "\n      " + src[close:]
+
+
+# ------------------------------------------------------------------------------------------------ 14
+def _slug(s):
+    return re.sub(r"[^a-z0-9]+", "-", plain(s).lower()).strip("-")
+
+
+def kb_jump(src):
+    """14. A knowledge base page's own jump row under its opening, as on the trip pages: each idea by its
+    kicker (the page's own word for it: Consequence, Capacity, Fear...), then Worth Remembering, FAQ and the
+    conversations, in the page's order. The idea sections get ids to land on."""
+    ids = set(re.findall(r'\sid="([^"]+)"', src))
+    links = []
+
+    def idea(m):
+        sec, body = m.group(1), m.group(2)
+        k = re.match(r'<div class="l"><span class="num">[^<]*</span><span class="kicker">([^<]+)</span><h2>', m.string[m.end():m.end() + 300])
+        if not k:
+            return m.group(0)
+        ident = re.search(r'\sid="([^"]+)"', sec)
+        if not ident:
+            base, n = "k-" + _slug(k.group(1)), 2
+            new = base
+            while new in ids:
+                new, n = "%s-%d" % (base, n), n + 1
+            ids.add(new)
+            sec = sec[:-1] + ' id="%s">' % new
+            ident = new
+        else:
+            ident = ident.group(1)
+        links.append((ident, plain(k.group(1))))
+        return sec + body
+    src = re.sub(r'(<section class="k-sec (?:bg|card)"[^>]*>)(<div class="band">)', idea, src)
+    if not links:
+        return src
+    order = []
+    for m in re.finditer(r'<section class="k-sec[^"]*"[^>]*\sid="([^"]+)"', src):
+        order.append(m.group(1))
+    names = dict(links)
+    names.update({"takeaways": "Worth Remembering", "questions": "FAQ"})
+    ep = re.search(r'<section class="k-sec[^"]*" id="episodes"><div class="k-head"><h2>([^<]+)</h2>', src)
+    if ep:
+        names["episodes"] = plain(ep.group(1))
+    row = "".join('\n    <a href="#%s">%s</a>' % (i, html.escape(names[i], quote=False)) for i in order if i in names)
+    block = '<nav class="dst-jump v4u-jump" aria-label="On this page">\n  <div class="dst-jump-in">%s\n  </div>\n</nav>\n' % row
+    if 'class="dst-jump v4u-jump"' in src:
+        return re.sub(r'<nav class="dst-jump v4u-jump".*?</nav>\n', lambda _: block, src, count=1, flags=re.S)
+    h = re.search(r'<header[^>]*class="k-hero[^"]*"', src)
+    if not h:
+        return src
+    a, b = element_span(src, h.start(), "header")
+    return src[:b] + "\n" + block + src[b:].lstrip("\n")
+
+
+WALL_MARK = ("<!-- v4u-wall: tools/v4_ux.py -->", "<!-- /v4u-wall -->")
+WALL_JS = ("<script>(function(d){var r=d.documentElement,done=0;function show(){if(!done){done=1;r.classList.remove('v4u-wall');}}"
+           "r.classList.add('v4u-wall');setTimeout(show,2500);"
+           "try{d.fonts.load('600 1em Poppins').then(function(){requestAnimationFrame(function(){requestAnimationFrame(show);});},show);}"
+           "catch(e){show();}})(document);</script>")
+
+
+def podcast_wall(src):
+    """11. The podcast's wall of names waits, hidden, for its typeface (it re-wrapped when the face arrived and
+    moved most of the opening: a layout shift of 0.55 at 1440); 2.5 s at most. Without script it simply shows."""
+    if 'class="kit-hero-media v4-voices"' not in src:
+        return src
+    return put_block(src, WALL_MARK, WALL_JS, "</head>")
 
 
 MEDIA_MARK = ("<!-- v4u-media: src/v4-ux-media.js via tools/v4_ux.py -->", "<!-- /v4u-media -->")
@@ -366,6 +578,11 @@ def page(rel, src):
     if rel == "index.html":
         src = home_flyby_weight(src)
         src = media_script(src)
+    if rel == "podcast.html":
+        src = podcast_wall(src)
+    if rel.startswith("episodes/"):
+        src = episode_labels(src)
+        src = episode_listen_button(src)
     if rel in TRIPS:
         src = trip_bar(src)
         src = trip_dates_first(src)

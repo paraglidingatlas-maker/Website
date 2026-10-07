@@ -464,17 +464,20 @@ def kb_pages():
 
 
 def item14(b):
-    """Series pages: how many phone screens, and whether a jump row leads into them."""
+    """Series pages (the knowledge base pages built on a set of conversations): how many phone screens, and
+    whether a jump row leads into them."""
     out = {}
     for rel in kb_pages():
         pg = b.page(rel, PHONE, wait=300)
         out[rel] = pg.evaluate("""() => ({screens: +(document.documentElement.scrollHeight / innerHeight).toFixed(1),
-          jump: !!document.querySelector('.dst-jump, .v4-jump'), links: document.querySelectorAll('.dst-jump a, .v4-jump a').length})""")
+          series: !!document.getElementById('episodes'),
+          jump: !!document.querySelector('.dst-jump, .v4u-jump'), links: document.querySelectorAll('.dst-jump a, .v4u-jump a').length})""")
         B.done(pg)
-    sc = [v["screens"] for v in out.values()]
-    j = sum(1 for v in out.values() if v["jump"])
-    return dict(summary="%d pages, %.0f to %.0f phone screens; %d with a jump row" % (len(out), min(sc), max(sc), j),
-                data=out, done=j == len(out))
+    ser = {k: v for k, v in out.items() if v["series"]}         # the series pages (the category pages are short indexes)
+    sc = [v["screens"] for v in ser.values()]
+    j = sum(1 for v in ser.values() if v["jump"])
+    return dict(summary="%d series pages, %.0f to %.0f phone screens; %d with a jump row" % (len(ser), min(sc), max(sc), j),
+                data=out, done=j == len(ser))
 
 
 SMALL_JS = """() => { let all = 0, small = 0, min = 99; const sizes = {};
@@ -498,7 +501,7 @@ def item15(b):
     small = pg.evaluate(SMALL_JS)
     r = pg.evaluate("""() => { const lv = [...document.querySelectorAll('.v4-climb-lv')].filter(e => e.getClientRects().length).map(e => Math.round(e.getBoundingClientRect().height));
       const topics = [...document.querySelectorAll('.clb-topic')];
-      const q = topics.filter(t => { const x = t.querySelector('.v4-q') || (t.nextElementSibling && t.nextElementSibling.classList.contains('v4-q') ? t.nextElementSibling : null); return x && /\\?/.test(x.textContent); }).length;
+      const q = topics.filter(t => { const x = t.querySelector('.v4-q') || (t.nextElementSibling && t.nextElementSibling.classList.contains('v4-q') ? t.nextElementSibling : null); return x && x.textContent.trim().length > 8; }).length;
       const s = [...document.querySelectorAll('input[type=search]')].find(i => i.getClientRects().length);
       return {levels: lv, series: topics.length, questions: q, search: s ? +((s.getBoundingClientRect().top + scrollY) / innerHeight).toFixed(2) : null}; }""")
     B.done(pg)
