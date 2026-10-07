@@ -2918,3 +2918,12 @@ html .dst-mobar .btn-solid{flex:none;}
 /* the button gives way on a narrow phone, so the words beside it never run under it */
 @media (max-width:440px){ html .dst-mobar .btn-solid{padding:.8rem 1.1rem;font-size:.9rem;} }
 @media (max-width:350px){ html .dst-mobar{padding-left:.75rem;padding-right:.75rem;gap:.6rem;} html .dst-mobar .btn-solid{padding:.8rem .9rem;} }
+
+/* 2. Dates sooner on a phone. The departures now follow the route (tools/v4_ux.py);
+      the gallery's pinned run is cut to under three screens (every photograph
+      still passes, each for about a sixth of a screen) and the route's fall
+      from orbit is a screen shorter, so the dates start by screen 12. */
+@media (max-width:760px){
+  html .gxa-track{height:calc(var(--n) * 15vh + 100vh);height:calc(var(--n) * 15svh + 100svh);}
+  html .tm-track{height:calc(var(--n) * 50vh + 120vh);height:calc(var(--n) * 50svh + 120svh);}
+}

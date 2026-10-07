@@ -17,6 +17,10 @@ What it does, by the brief's numbers
   1  the trips' phone bar leads with the price the departures already show
      ("£1,100 per pilot", "From US$2,100"), then the length and the next
      departure.
+  2  Dates come right after the route (the gallery after them), with the
+     jump row and the two skip links in the same order; on a phone the
+     gallery's pinned run is under three screens and the route's shorter
+     (src/v2.css).
 """
 import html
 import os
@@ -149,9 +153,96 @@ def trip_subnav(src):
                   src, count=1)
 
 
+# ------------------------------------------------------------------------------------------------ 4
+def trip_departures(src):
+    """The departures as the trip page states them: title, dates (as Hold a place sends them), price."""
+    out = []
+    for card in re.findall(r'<article class="kdates-card">(.*?)</article>', src, re.S):
+        title = plain(re.search(r"<h3>(.*?)</h3>", card, re.S).group(1))
+        when = re.search(r'href="\.\./enquire\.html\?trip=\w+&amp;when=([^"]+)"', card).group(1).replace("+", " ")
+        label, amount = re.search(r'<p class="kdates-price"><span>([^<]*)</span><b>([^<]*)</b></p>', card).groups()
+        out.append({"title": title, "when": html.unescape(when), "label": plain(label), "price": plain(amount)})
+    return out
+
+
+def trip_length(src):
+    m = re.search(r'<span class="l">Duration</span><span class="v">([^<]+)</span>', src)
+    return plain(m.group(1)) if m else ""
+
+
+HOLD_MARK = ("<!-- v4u-hold: tools/v4_ux.py -->", "<!-- /v4u-hold -->")
+HOLD_HEAD = ("<!-- v4u-holding: tools/v4_ux.py -->", "<!-- /v4u-holding -->")
+
+
+def put_block(src, marks, block, anchor, before=True):
+    """Write block between marks; replace it if it is there, else put it next to anchor."""
+    a, b = marks
+    new = a + block + b
+    if a in src:
+        i = src.index(a)
+        j = src.index(b, i) + len(b)
+        return src[:i] + new + src[j:]
+    k = src.index(anchor)
+    return src[:k] + new + "\n" + src[k:] if before else src[:k + len(anchor)] + "\n" + new + src[k + len(anchor):]
+
+
+HOLD_JS = """<script>
+/* v4, the usability pass (4): arriving from "Hold a place" (?trip=..&when=..), the
+   page opens on that departure: the trip, its dates, its length and its price as
+   the trip page states them, then the form; the message becomes optional. Any
+   other arrival, or dates the trip page does not list, gets the plain form.
+   The mailto and the worker hook below are unchanged. */
+(function () {
+  var de = document.documentElement, box = document.getElementById('v4uHold');
+  function plainForm() { de.classList.remove('v4u-holding'); }
+  var data, q;
+  try { data = JSON.parse(document.getElementById('v4uHoldData').textContent); q = new URLSearchParams(location.search); }
+  catch (e) { plainForm(); return; }
+  var t = data[(q.get('trip') || '').toLowerCase()], when = q.get('when') || '', dep = null;
+  if (t) t.deps.forEach(function (d) { if (d.when === when) dep = d; });
+  if (!box || !dep) { plainForm(); return; }
+  var sel = document.getElementById('trip');
+  function put(k, v) { var e = box.querySelector('[data-k="' + k + '"]'); if (e) e.textContent = v; }
+  put('trip', dep.title + (sel && sel.selectedIndex > 0 ? ', ' + sel.options[sel.selectedIndex].text : ''));
+  put('when', dep.when);
+  put('len', t.len);
+  put('price', /from$/i.test(dep.label) ? 'From ' + dep.price : dep.price + ' ' + dep.label.toLowerCase());
+  box.hidden = false;
+  var m = document.getElementById('message'), lab = document.querySelector('label[for="message"]');
+  if (m) m.required = false;
+  if (lab && !lab.querySelector('.opt')) { var o = document.createElement('span'); o.className = 'opt'; o.textContent = '(optional)'; lab.appendChild(document.createTextNode(' ')); lab.appendChild(o); }
+})();
+</script>
+"""
+
+HOLD_BOX = """<div class="v4u-hold" id="v4uHold" hidden>
+      <p><span class="l">Destination</span><span class="v" data-k="trip"></span></p>
+      <p><span class="l">Dates</span><span class="v" data-k="when"></span></p>
+      <p><span class="l">Duration</span><span class="v" data-k="len"></span></p>
+      <p><span class="l">Price</span><span class="v" data-k="price"></span></p>
+    </div>
+    """
+
+
+def enquire_hold(src, trips):
+    """4. "Hold a place" in context: the departure's facts at the top, the form on screen one."""
+    import json
+    data = json.dumps(trips, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    src = put_block(src, HOLD_HEAD,
+                    "<script>/[?&]trip=/.test(location.search) && /[?&]when=/.test(location.search) && "
+                    "document.documentElement.classList.add('v4u-holding');</script>", "</head>")
+    box = HOLD_BOX if 'id="v4uHold"' not in src else None
+    if box:
+        src = re.sub(r'(<h1>Tell Us About <em class="v2-accent">Your Flying</em></h1>\s*)', lambda m: m.group(1) + box, src, count=1)
+    block = '<script type="application/json" id="v4uHoldData">%s</script>\n%s' % (data, HOLD_JS)
+    src = put_block(src, HOLD_MARK, block, "<!-- nav-menu -->")
+    return src
+
+
 def page(rel, src):
     if rel in TRIPS:
         src = trip_bar(src)
+        src = trip_dates_first(src)
     return src
 
 
