@@ -1,0 +1,113 @@
+#!/usr/bin/env python3
+"""
+Phone sizes of the trips' hero photographs and of the two hero clips (the
+usability pass, item 6; docs/ux-report.md).
+
+On a phone held upright a landscape hero shows only its middle third, scaled
+up to fill a tall screen, yet the whole 1600 to 2400 px photograph was sent.
+The phone versions are the same photographs cut to what an upright screen
+shows (2:3, at the page's own object-position, so the same part is seen) and
+no taller than 1400 px; the clips likewise (the 1080p file cut to 2:3, 480 x
+720). Nothing is redrawn or retouched. The live files in assets/ are read,
+never written.
+
+    python3 tools/v4_phone_media.py              # write what is missing
+    python3 tools/v4_phone_media.py --force      # write everything again
+    python3 tools/v4_phone_media.py --out DIR    # write elsewhere (a dry run)
+
+Also the home page's four expedition photographs (home-<name>-p).
+
+Writes prototypes/v4/img/hero/<trip>-<name>-p.webp|jpg and
+prototypes/v4/img/clips/<name>-p-720.webm|mp4. Needs Pillow and ffmpeg
+(libvpx-vp9, libx264).
+"""
+import os
+import re
+import subprocess
+import sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+V4 = os.path.join(ROOT, "prototypes", "v4")
+ASPECT = 2 / 3           # width / height of the phone cut: covers any screen narrower than 2:3
+MAX_H = 1400
+CLIPS = {"bir": 50, "hero": 50}     # clip name -> its object-position x (%) on the page
+
+
+def heroes(trip):
+    """(name, jpg path, object-position x %) for each hero slide of a trip page, in order."""
+    src = open(os.path.join(V4, "destinations", trip + ".html"), encoding="utf-8").read()
+    out = []
+    for m in re.finditer(r'<div class="khero-slide[^"]*">\s*<picture>(.*?)</picture>', src, re.S):
+        jpg = re.search(r'(?:data-v4-src|\bsrc)="([^"]+\.jpg)"', m.group(1)).group(1)
+        x = re.search(r"object-position:\s*(\d+(?:\.\d+)?)%", m.group(1))
+        out.append((os.path.basename(jpg)[:-4], os.path.normpath(os.path.join(V4, "destinations", jpg)), float(x.group(1)) if x else 50.0))
+    return out
+
+
+def flyby():
+    """(name, jpg path, 50) for the home page's four expedition photographs."""
+    src = open(os.path.join(V4, "index.html"), encoding="utf-8").read()
+    out = []
+    for m in re.finditer(r'<div class="v2-fb-shot[^"]*"><picture>(.*?)</picture>', src, re.S):
+        jpg = re.search(r'(?:data-v4-src|\bsrc)="([^"]+\.jpg)"', m.group(1)).group(1)
+        out.append((os.path.basename(jpg)[:-4], os.path.normpath(os.path.join(V4, jpg)), 50.0))
+    return out
+
+
+def cut(im, x):
+    """The 2:3 window an upright screen shows at object-position x%, as a box in the image."""
+    w, h = im.size
+    cw = min(w, round(h * ASPECT))
+    left = round((x / 100.0) * (w - cw))
+    return (left, 0, left + cw, h)
+
+
+def photos(out, force):
+    from PIL import Image
+    os.makedirs(out, exist_ok=True)
+    for trip in ("india", "kenya", "home"):
+        for name, path, x in (flyby() if trip == "home" else heroes(trip)):
+            stem = os.path.join(out, "%s-%s-p" % (trip, name))
+            if not force and os.path.exists(stem + ".webp") and os.path.exists(stem + ".jpg"):
+                continue
+            im = Image.open(path).convert("RGB")
+            im = im.crop(cut(im, x))
+            if im.height > MAX_H:
+                im = im.resize((round(im.width * MAX_H / im.height), MAX_H), Image.LANCZOS)
+            im.save(stem + ".webp", "WEBP", quality=74, method=6)
+            im.save(stem + ".jpg", "JPEG", quality=80, optimize=True, progressive=True)
+            print("phone photo %s-%s: %dx%d, %d KB webp, %d KB jpg" % (trip, name, im.width, im.height,
+                  os.path.getsize(stem + ".webp") // 1024, os.path.getsize(stem + ".jpg") // 1024))
+
+
+def clips(out, force):
+    os.makedirs(out, exist_ok=True)
+    for name, x in CLIPS.items():
+        src = os.path.join(ROOT, "assets", "video", name + "-1080.mp4")
+        stem = os.path.join(out, name + "-p-720")
+        # 2:3 out of 1920 x 1080 is 720 x 1080, placed at x%, then 480 x 720
+        crop = "crop=720:1080:(in_w-720)*%.3f:0,scale=480:720:flags=lanczos" % (x / 100.0)
+        log = os.path.join("/tmp", "v4pm-" + name)
+        if force or not os.path.exists(stem + ".webm"):
+            # the same bits a pixel as the 720p files (about 650 kbit/s for 1280 x 720): 250 kbit/s, two passes
+            for ps, dst in (("1", os.devnull), ("2", stem + ".webm")):
+                subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", src, "-vf", crop, "-an", "-c:v", "libvpx-vp9", "-b:v", "250k",
+                                "-row-mt", "1", "-deadline", "good", "-cpu-used", "2", "-pass", ps, "-passlogfile", log,
+                                "-f", "webm", dst], check=True)
+        if force or not os.path.exists(stem + ".mp4"):
+            for ps, dst in (("1", os.devnull), ("2", stem + ".mp4")):
+                subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", src, "-vf", crop, "-an", "-c:v", "libx264", "-preset", "slow",
+                                "-b:v", "300k", "-pass", ps, "-passlogfile", log, "-pix_fmt", "yuv420p", "-profile:v", "high",
+                                "-movflags", "+faststart", "-f", "mp4", dst], check=True)
+        print("phone clip %s: %d KB webm, %d KB mp4" % (name, os.path.getsize(stem + ".webm") // 1024, os.path.getsize(stem + ".mp4") // 1024))
+
+
+def main(args):
+    force = "--force" in args
+    out = args[args.index("--out") + 1] if "--out" in args else None
+    photos(os.path.join(out, "hero") if out else os.path.join(V4, "img", "hero"), force)
+    clips(os.path.join(out, "clips") if out else os.path.join(V4, "img", "clips"), force)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

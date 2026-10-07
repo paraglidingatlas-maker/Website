@@ -338,6 +338,76 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="apple-touch-icon" sizes="180x180" href="../img/app-180.png">
 <script defer src="../pwa.js?v=3d4482f3"></script><!-- /app -->
+<!-- v4u-media: src/v4-ux-media.js via tools/v4_ux.py --><script>(function () {
+"use strict";
+var d = document, w = window;
+var m = location.pathname.match(/^(.*\/prototypes\/v\d+\/)/), BASE = m ? m[1] : "/assets/v4/";
+var PHONE_CLIPS = { bir: 1, hero: 1 };
+function upright() { return w.innerWidth / Math.max(1, w.innerHeight) <= 2 / 3; }
+function big() { return w.innerWidth > 820 && w.innerWidth * Math.min(w.devicePixelRatio || 1, 2) > 1400; }
+function want(v) {
+var base = v.getAttribute("data-v4u-base"), name = base.split("/").pop();
+return upright() && PHONE_CLIPS[name] ? BASE + "img/clips/" + name + "-p-720" : base + (big() ? "-1080" : "-720");
+}
+function fit(v) {
+if (v.hasAttribute("data-v4u-base") || !v.hasAttribute("data-loop") || v.hasAttribute("data-loop-size")) return;
+if (!v.closest || !v.closest(".khero, .v2-home-hero")) return;
+v.setAttribute("data-v4u-base", v.getAttribute("data-loop"));
+var t = want(v), i = t.lastIndexOf("-");
+v.setAttribute("data-loop", t.slice(0, i));           // script.js adds "-" + the size
+v.setAttribute("data-loop-size", t.slice(i + 1));
+}
+var mo = w.MutationObserver && new MutationObserver(function (rs) {
+rs.forEach(function (r) { [].forEach.call(r.addedNodes, function (n) {
+if (n.nodeType !== 1) return;
+if (n.tagName === "VIDEO") fit(n); else if (n.querySelectorAll) [].forEach.call(n.querySelectorAll("video[data-loop]"), fit);
+}); });
+});
+if (mo) mo.observe(d.documentElement, { childList: true, subtree: true });
+var rt = 0;
+w.addEventListener("resize", function () {
+clearTimeout(rt);
+rt = setTimeout(function () {
+[].forEach.call(d.querySelectorAll("video[data-v4u-base]"), function (v) {
+var s = v.currentSrc || "", t = want(v);
+if (!s || s.indexOf(t.split("/").pop() + ".") !== -1) return;
+if (/-1080\./.test(s) && /-720$/.test(t) && t.indexOf("-p-720") === -1) return;     // never trade down for a smaller window
+var at = v.currentTime, on = !v.paused;
+v.src = t + s.slice(s.lastIndexOf("."));
+v.addEventListener("loadedmetadata", function () { try { v.currentTime = at; } catch (e) {} }, { once: true });
+if (on) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }      // preload="none": play is what loads it
+});
+}, 400);
+});
+function wake(el) {
+if (!el) return;
+[].forEach.call(el.querySelectorAll ? el.querySelectorAll("[data-v4-src],[data-v4-srcset]") : [], function (x) {
+if (x.dataset.v4Srcset) { x.srcset = x.dataset.v4Srcset; x.removeAttribute("data-v4-srcset"); }
+if (x.dataset.v4Src) { x.src = x.dataset.v4Src; x.removeAttribute("data-v4-src"); }
+});
+}
+function init() {
+if (mo) { mo.disconnect(); [].forEach.call(d.querySelectorAll("video[data-loop]"), fit); }
+var slides = [].slice.call(d.querySelectorAll(".khero-slide"));
+if (slides.length > 1) {
+var next = function () {
+var i = slides.findIndex(function (s) { return s.classList.contains("is-on"); });
+wake(slides[i]); wake(slides[(i + 1) % slides.length]);
+};
+slides.forEach(function (s) { new MutationObserver(next).observe(s, { attributes: true, attributeFilter: ["class"] }); });
+var soon = function () { setTimeout(function () { wake(slides[1]); }, 4500); };
+if (d.readyState === "complete") soon(); else w.addEventListener("load", soon, { once: true });
+}
+var fb = d.querySelector(".v2-fb-stage");
+if (fb && fb.querySelector("[data-v4-src]")) {
+var go = function () { w.removeEventListener("scroll", go); if (io) io.disconnect(); wake(fb); }, io = null;
+w.addEventListener("scroll", go, { passive: true });
+if ("IntersectionObserver" in w) { io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.intersectionRatio > 0; })) go(); }); io.observe(fb.closest(".v2-flyby") || fb); }
+else go();
+}
+}
+if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();</script><!-- /v4u-media -->
 </head>
 <body class="dst v2-dst v4-trip">
 
@@ -366,6 +436,8 @@
     <div class="khero-par">
       <div class="khero-slide is-on">
         <picture>
+          <source media="(max-aspect-ratio: 2/3)" srcset="../img/hero/india-snowline-p.webp" type="image/webp">
+          <source media="(max-aspect-ratio: 2/3)" srcset="../img/hero/india-snowline-p.jpg">
           <source srcset="../../../assets/destinations/india/hero/snowline.webp" type="image/webp">
           <img src="../../../assets/destinations/india/hero/snowline.jpg" width="1800" height="1200"
             style="object-position:70% 50%"
@@ -377,29 +449,37 @@
       </div>
       <div class="khero-slide">
         <picture>
-          <source srcset="../../../assets/destinations/india/hero/billing-launch.webp" type="image/webp">
-          <img src="../../../assets/destinations/india/hero/billing-launch.jpg" width="2000" height="1333"
+          <source media="(max-aspect-ratio: 2/3)" data-v4-srcset="../img/hero/india-billing-launch-p.webp" type="image/webp">
+          <source media="(max-aspect-ratio: 2/3)" data-v4-srcset="../img/hero/india-billing-launch-p.jpg">
+          <source data-v4-srcset="../../../assets/destinations/india/hero/billing-launch.webp" type="image/webp">
+          <img data-v4-src="../../../assets/destinations/india/hero/billing-launch.jpg" width="2000" height="1333"
             draggable="false" loading="lazy" decoding="async" alt="Pilots laying out and launching on the grass at Billing">
         </picture>
       </div>
       <div class="khero-slide">
         <picture>
-          <source srcset="../../../assets/destinations/india/hero/bir-landing.webp" type="image/webp">
-          <img src="../../../assets/destinations/india/hero/bir-landing.jpg" width="1600" height="899"
+          <source media="(max-aspect-ratio: 2/3)" data-v4-srcset="../img/hero/india-bir-landing-p.webp" type="image/webp">
+          <source media="(max-aspect-ratio: 2/3)" data-v4-srcset="../img/hero/india-bir-landing-p.jpg">
+          <source data-v4-srcset="../../../assets/destinations/india/hero/bir-landing.webp" type="image/webp">
+          <img data-v4-src="../../../assets/destinations/india/hero/bir-landing.jpg" width="1600" height="899"
             draggable="false" loading="lazy" decoding="async" alt="Bir's landing field among terraced fields, seen from the air">
         </picture>
       </div>
       <div class="khero-slide">
         <picture>
-          <source srcset="../../../assets/destinations/india/hero/dhauladhar.webp" type="image/webp">
-          <img src="../../../assets/destinations/india/hero/dhauladhar.jpg" width="2400" height="1600"
+          <source media="(max-aspect-ratio: 2/3)" data-v4-srcset="../img/hero/india-dhauladhar-p.webp" type="image/webp">
+          <source media="(max-aspect-ratio: 2/3)" data-v4-srcset="../img/hero/india-dhauladhar-p.jpg">
+          <source data-v4-srcset="../../../assets/destinations/india/hero/dhauladhar.webp" type="image/webp">
+          <img data-v4-src="../../../assets/destinations/india/hero/dhauladhar.jpg" width="2400" height="1600"
             draggable="false" loading="lazy" decoding="async" alt="The Dhauladhar range under building cumulus, above the Kangra valley">
         </picture>
       </div>
       <div class="khero-slide">
         <picture>
-          <source srcset="../../../assets/destinations/india/hero/back-ranges.webp" type="image/webp">
-          <img src="../../../assets/destinations/india/hero/back-ranges.jpg" width="1920" height="848"
+          <source media="(max-aspect-ratio: 2/3)" data-v4-srcset="../img/hero/india-back-ranges-p.webp" type="image/webp">
+          <source media="(max-aspect-ratio: 2/3)" data-v4-srcset="../img/hero/india-back-ranges-p.jpg">
+          <source data-v4-srcset="../../../assets/destinations/india/hero/back-ranges.webp" type="image/webp">
+          <img data-v4-src="../../../assets/destinations/india/hero/back-ranges.jpg" width="1920" height="848"
             draggable="false" loading="lazy" decoding="async" alt="Snow-covered back ranges seen from the air">
         </picture>
       </div>
@@ -680,7 +760,7 @@
 
 <section class="dst-sec gxa" id="gallery" aria-labelledby="gallery-h" style="--n:12">
   <div class="gxa-track"><div class="gxa-pin">
-    <figure class="gxa-f is-on" data-title="Above the snowline"><picture><source srcset="../../../assets/destinations/india/gallery/red-wing.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/red-wing.webp" alt="A pilot on a red wing turning over steep snow" width="1400" height="933" decoding="async"></picture><figcaption><span class="gxa-n">01</span><b>Above the snowline</b><span class="gxa-alt">A pilot on a red wing turning over steep snow</span></figcaption></figure><figure class="gxa-f" data-title="Over the peaks"><picture><source srcset="../../../assets/destinations/india/gallery/over-the-peaks.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/over-the-peaks.webp" alt="A single wing high above a snow-streaked peak" width="1400" height="933" decoding="async"></picture><figcaption><span class="gxa-n">02</span><b>Over the peaks</b><span class="gxa-alt">A single wing high above a snow-streaked peak</span></figcaption></figure><figure class="gxa-f" data-title="The front range"><picture><source srcset="../../../assets/destinations/india/gallery/ridge-cumulus.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/ridge-cumulus.webp" alt="The forested front range under building cumulus" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">03</span><b>The front range</b><span class="gxa-alt">The forested front range under building cumulus</span></figcaption></figure><figure class="gxa-f" data-title="A sky full of wings"><picture><source srcset="../../../assets/destinations/india/gallery/sky-of-wings.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/sky-of-wings.webp" alt="Dozens of paragliders thermalling together under grey cloud" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">04</span><b>A sky full of wings</b><span class="gxa-alt">Dozens of paragliders thermalling together under grey cloud</span></figcaption></figure><figure class="gxa-f" data-title="The landing field"><picture><source srcset="../../../assets/destinations/india/gallery/landing-field.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/landing-field.webp" alt="The Bir landing field under big cumulus, snow peaks behind, one wing coming in" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">05</span><b>The landing field</b><span class="gxa-alt">The Bir landing field under big cumulus, snow peaks behind, one wing coming in</span></figcaption></figure><figure class="gxa-f" data-title="Hike and fly"><picture><source srcset="../../../assets/destinations/india/gallery/hike-and-fly.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/hike-and-fly.webp" alt="Two pilots with paraglider rucksacks climbing a forest trail" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">06</span><b>Hike and fly</b><span class="gxa-alt">Two pilots with paraglider rucksacks climbing a forest trail</span></figcaption></figure><figure class="gxa-f" data-title="Kangra valley"><picture><source srcset="../../../assets/destinations/india/gallery/kangra-valley.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/kangra-valley.webp" alt="The Kangra valley from the air, villages and fields below the hills" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">07</span><b>Kangra valley</b><span class="gxa-alt">The Kangra valley from the air, villages and fields below the hills</span></figcaption></figure><figure class="gxa-f" data-title="Tibetan monastery"><picture><source srcset="../../../assets/destinations/india/gallery/monastery.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/monastery.webp" alt="A Tibetan monastery with prayer flags against a blue sky" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">08</span><b>Tibetan monastery</b><span class="gxa-alt">A Tibetan monastery with prayer flags against a blue sky</span></figcaption></figure><figure class="gxa-f" data-title="Meadows below the range"><picture><source srcset="../../../assets/destinations/india/gallery/meadows.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/meadows.webp" alt="A meadow of white flowers below the snow-covered Dhauladhar" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">09</span><b>Meadows below the range</b><span class="gxa-alt">A meadow of white flowers below the snow-covered Dhauladhar</span></figcaption></figure><figure class="gxa-f" data-title="The valley floor"><picture><source srcset="../../../assets/destinations/india/gallery/valley-river.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/valley-river.webp" alt="Terraced fields, a river and villages seen from the air" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">10</span><b>The valley floor</b><span class="gxa-alt">Terraced fields, a river and villages seen from the air</span></figcaption></figure><figure class="gxa-f" data-title="Cloud on the range"><picture><source srcset="../../../assets/destinations/india/gallery/cloud-range.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/cloud-range.webp" alt="A snow-dusted rock peak half hidden in cloud" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">11</span><b>Cloud on the range</b><span class="gxa-alt">A snow-dusted rock peak half hidden in cloud</span></figcaption></figure><figure class="gxa-f" data-title="Last light"><picture><source srcset="../../../assets/destinations/india/gallery/last-light.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/last-light.webp" alt="A paraglider silhouetted against a burning sunset" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">12</span><b>Last light</b><span class="gxa-alt">A paraglider silhouetted against a burning sunset</span></figcaption></figure>
+    <figure class="gxa-f is-on" data-title="Above the snowline"><picture><source srcset="../../../assets/destinations/india/gallery/red-wing.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/red-wing.webp" alt="A pilot on a red wing turning over steep snow" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">01</span><b>Above the snowline</b><span class="gxa-alt">A pilot on a red wing turning over steep snow</span></figcaption></figure><figure class="gxa-f" data-title="Over the peaks"><picture><source srcset="../../../assets/destinations/india/gallery/over-the-peaks.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/over-the-peaks.webp" alt="A single wing high above a snow-streaked peak" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">02</span><b>Over the peaks</b><span class="gxa-alt">A single wing high above a snow-streaked peak</span></figcaption></figure><figure class="gxa-f" data-title="The front range"><picture><source srcset="../../../assets/destinations/india/gallery/ridge-cumulus.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/ridge-cumulus.webp" alt="The forested front range under building cumulus" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">03</span><b>The front range</b><span class="gxa-alt">The forested front range under building cumulus</span></figcaption></figure><figure class="gxa-f" data-title="A sky full of wings"><picture><source srcset="../../../assets/destinations/india/gallery/sky-of-wings.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/sky-of-wings.webp" alt="Dozens of paragliders thermalling together under grey cloud" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">04</span><b>A sky full of wings</b><span class="gxa-alt">Dozens of paragliders thermalling together under grey cloud</span></figcaption></figure><figure class="gxa-f" data-title="The landing field"><picture><source srcset="../../../assets/destinations/india/gallery/landing-field.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/landing-field.webp" alt="The Bir landing field under big cumulus, snow peaks behind, one wing coming in" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">05</span><b>The landing field</b><span class="gxa-alt">The Bir landing field under big cumulus, snow peaks behind, one wing coming in</span></figcaption></figure><figure class="gxa-f" data-title="Hike and fly"><picture><source srcset="../../../assets/destinations/india/gallery/hike-and-fly.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/hike-and-fly.webp" alt="Two pilots with paraglider rucksacks climbing a forest trail" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">06</span><b>Hike and fly</b><span class="gxa-alt">Two pilots with paraglider rucksacks climbing a forest trail</span></figcaption></figure><figure class="gxa-f" data-title="Kangra valley"><picture><source srcset="../../../assets/destinations/india/gallery/kangra-valley.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/kangra-valley.webp" alt="The Kangra valley from the air, villages and fields below the hills" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">07</span><b>Kangra valley</b><span class="gxa-alt">The Kangra valley from the air, villages and fields below the hills</span></figcaption></figure><figure class="gxa-f" data-title="Tibetan monastery"><picture><source srcset="../../../assets/destinations/india/gallery/monastery.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/monastery.webp" alt="A Tibetan monastery with prayer flags against a blue sky" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">08</span><b>Tibetan monastery</b><span class="gxa-alt">A Tibetan monastery with prayer flags against a blue sky</span></figcaption></figure><figure class="gxa-f" data-title="Meadows below the range"><picture><source srcset="../../../assets/destinations/india/gallery/meadows.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/meadows.webp" alt="A meadow of white flowers below the snow-covered Dhauladhar" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">09</span><b>Meadows below the range</b><span class="gxa-alt">A meadow of white flowers below the snow-covered Dhauladhar</span></figcaption></figure><figure class="gxa-f" data-title="The valley floor"><picture><source srcset="../../../assets/destinations/india/gallery/valley-river.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/valley-river.webp" alt="Terraced fields, a river and villages seen from the air" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">10</span><b>The valley floor</b><span class="gxa-alt">Terraced fields, a river and villages seen from the air</span></figcaption></figure><figure class="gxa-f" data-title="Cloud on the range"><picture><source srcset="../../../assets/destinations/india/gallery/cloud-range.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/cloud-range.webp" alt="A snow-dusted rock peak half hidden in cloud" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">11</span><b>Cloud on the range</b><span class="gxa-alt">A snow-dusted rock peak half hidden in cloud</span></figcaption></figure><figure class="gxa-f" data-title="Last light"><picture><source srcset="../../../assets/destinations/india/gallery/last-light.webp" type="image/webp"><img src="../../../assets/destinations/india/gallery/last-light.webp" alt="A paraglider silhouetted against a burning sunset" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">12</span><b>Last light</b><span class="gxa-alt">A paraglider silhouetted against a burning sunset</span></figcaption></figure>
     <div class="gxa-head"><span class="kicker">The pictures</span><h2 id="gallery-h">Bir Billing In Pictures</h2></div>
     <div class="gxa-count" aria-hidden="true"><b>01</b> / 12</div>
     <div class="gxa-rail" aria-hidden="true"><span class="gxa-fill"></span><i style="left:0.000%"></i><i style="left:9.091%"></i><i style="left:18.182%"></i><i style="left:27.273%"></i><i style="left:36.364%"></i><i style="left:45.455%"></i><i style="left:54.545%"></i><i style="left:63.636%"></i><i style="left:72.727%"></i><i style="left:81.818%"></i><i style="left:90.909%"></i><i style="left:100.000%"></i></div>

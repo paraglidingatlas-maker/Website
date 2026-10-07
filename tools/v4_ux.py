@@ -27,6 +27,11 @@ What it does, by the brief's numbers
      states them) under the title, the form next, the message optional.
   5  every trip question in view; Flying Etiquette a band of its own after
      Before You Book, its heading and first lines in view, in the jump row.
+  6  weight on a phone: each trip hero slide gets its phone cut
+     (tools/v4_phone_media.py) and every slide but the first waits for the
+     slideshow; the gallery's photographs all wait until it comes near; the
+     home page's four expedition photographs wait for the fly-through. The
+     hero clips' phone cuts are chosen by src/v2-immersive.js.
 """
 import html
 import os
@@ -282,141 +287,67 @@ def gallery_lazy(src):
 
 
 def home_flyby_weight(src):
-    """6c. The home page's four expedition photographs wait until the fly-through comes near; without
-    script the first one still shows (a noscript copy)."""
+    """6c. The home page's four expedition photographs: a phone cut each (tools/v4_phone_media.py), and all four
+    wait until the visitor first scrolls or the fly-through comes into view; without script the first one still
+    shows (a noscript copy)."""
     m = re.search(r'<div class="v2-fb-stage" aria-hidden="true">(.*?)\n  </div>', src, re.S)
-    if not m or "data-v4-srcset" in m.group(1):
+    if not m:
         return src
     stage = m.group(1)
-    first = re.search(r"<picture>.*?</picture>", stage, re.S).group(0)
-    stage = re.sub(r'(<source\b[^>]*?\s)srcset=', r"\1data-v4-srcset=", stage)
-    stage = re.sub(r'(<img\b[^>]*?\s)src=', r"\1data-v4-src=", stage)
-    stage = stage.replace("</picture>", "</picture><noscript>%s</noscript>" % first, 1)
+    if "<noscript>" not in stage:
+        first = re.search(r"<picture>.*?</picture>", stage, re.S).group(0)
+        stage = stage.replace("</picture>", "</picture><noscript>%s</noscript>" % first, 1)
+
+    def shot(mm):
+        pic = mm.group(2)
+        if PHONE_MEDIA not in pic:
+            jpg = re.search(r'(?:data-v4-src|\bsrc)="([^"]+\.jpg)"', pic).group(1)
+            phone = "img/hero/home-%s-p" % os.path.basename(jpg)[:-4]
+            if not os.path.exists(os.path.join(V4, phone + ".webp")):
+                raise SystemExit("v4_ux: run tools/v4_phone_media.py first (%s)" % phone)
+            pic = ('<source media="%s" srcset="%s.webp" type="image/webp"><source media="%s" srcset="%s.jpg">'
+                   % (PHONE_MEDIA, phone, PHONE_MEDIA, phone)) + pic
+        pic = re.sub(r'(<source\b[^>]*?\s)srcset=', r"\1data-v4-srcset=", pic)
+        pic = re.sub(r'(<img\b[^>]*?\s)src=', r"\1data-v4-src=", pic)
+        return mm.group(1) + pic + mm.group(3)
+    parts = re.split(r"(<noscript>.*?</noscript>)", stage, flags=re.S)
+    stage = "".join(p if p.startswith("<noscript>") else
+                    re.sub(r'(<div class="v2-fb-shot[^"]*"><picture>)(.*?)(</picture>)', shot, p, flags=re.S) for p in parts)
     return src[:m.start(1)] + stage + src[m.end(1):]
 
 
-# ------------------------------------------------------------------------------------------------ 10
-_META = None
+# ------------------------------------------------------------------------------------------------ 11, 12
+LISTEN_BTN = ('<button type="button" class="v4-ls-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+              'stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/>'
+              '<rect x="3" y="14" width="4" height="7" rx="1.2"/><rect x="17" y="14" width="4" height="7" rx="1.2"/></svg>'
+              '<span>Listening mode</span></button>')
 
 
-def meta():
-    global _META
-    if _META is None:
-        import json
-        with open(os.path.join(ROOT, "episode-meta.json"), encoding="utf-8") as fh:
-            _META = {m["slug"]: m for m in json.load(fh)}
-    return _META
+def episode_listen_button(src):
+    """11. The Listening mode button is in the page from the start (it was added by script after the page had
+    drawn, and the hero grew under the reader: 35 px at 1440). The script uses it (src/v2-immersive.js part 10);
+    without script it is not shown. 12: its aria-controls is set only once the screen it opens exists."""
+    if 'class="v4-ls-open"' in src or 'data-v2="ep"' not in src or 'class="cd-line"' not in src:
+        return src
+    m = re.search(r'<div class="ep2-hero-media">', src)
+    if not m or 'class="cd-player' not in src:
+        return src
+    a, b = element_span(src, m.start(), "div")
+    close = b - len("</div>")
+    return src[:close] + "  " + LISTEN_BTN + "\n      " + src[close:]
 
 
-def _norm(s):
-    return re.sub(r"[^a-z0-9]+", " ", html.unescape(s).lower().replace("vs.", "vs")).strip()
+MEDIA_MARK = ("<!-- v4u-media: src/v4-ux-media.js via tools/v4_ux.py -->", "<!-- /v4u-media -->")
 
 
-SERIES_LIKE = ("flying filming", "new technologies", "brand stories", "storytellers", "storytime", "living the dream",
-               "risk vs reward", "sky gods", "snippet")
-
-
-def _first_parts():
-    seen = {}
-    for m in meta().values():
-        if not (m.get("guest") or "").strip() or m.get("guest") == "Aninder Singh":
-            k = _norm(_parts(m["title"])[0])
-            seen[k] = seen.get(k, 0) + 1
-    return seen
-
-
-def _parts(title):
-    return [p.strip() for p in re.split(r"\s+[:|]\s+|:\s+|\s+\|\s*|\s+-\s+", title.strip()) if p.strip()]
-
-
-def describe(m):
-    """The episode in its own title's words: {guest, d (the descriptive part: the title without the series'
-    name and number and without the guest), paren (what the title adds in brackets after the guest's name),
-    tag (the series-like label the title starts with)}. Any of them may be empty."""
-    title, series, guest = m["title"].strip(), (m.get("series") or "").strip(), (m.get("guest") or "").strip()
-    if guest == "Aninder Singh":
-        guest = ""                                      # the host: his own episodes go by their title
-    parts = _parts(title)
-    s = _norm(series)
-    gn = _norm(re.sub(r"\(.*?\)", "", guest))
-    names = [_norm(re.sub(r"\(.*?\)", "", x)) for x in re.split(r"\s*&\s*", guest) if x] if guest else []
-    keep, paren, tag = [], "", ""
-    for p in parts:
-        n = _norm(re.sub(r"\(.*?\)", "", p))
-        if len(parts) > 1 and ((s and re.fullmatch(re.escape(s) + r"(?: \d+)?", n)) or
-                               re.fullmatch(r"(?:%s)(?: \d+)?" % "|".join(SERIES_LIKE), n)):
-            tag = tag or p                              # "Sky Gods", "Risk Vs Reward 3", "Flying & Filming 2"
-            continue
-        if gn and (n == gn or n in names):
-            b = re.search(r"\(([^)]+)\)\s*$", p)
-            if b and not re.fullmatch(r"(?i)bonus ep|whitepaper", b.group(1)) and _norm(b.group(1)) not in (gn, "robbie"):
-                paren = b.group(1)                      # "Marko Milutinovic (Mid-Air Collision)"
-            continue
-        keep.append(p)
-    # a part that is only the guest's interview ("The Russell Ogden Interview") gives way to the next one
-    if len(keep) > 1 and gn and gn in _norm(keep[0]) and \
-            not re.sub(r"\b(?:the|interview|with|by|of|s)\b", "", _norm(keep[0]).replace(gn, "")).strip():
-        keep = keep[1:]
-    d = keep[0] if keep else ""
-    if not guest and d and _first_parts().get(_norm(d), 0) > 1:
-        d = ": ".join(parts)                            # two "Bird's-Eye View of Oslo": the whole title
-    for name in sorted(([guest, re.sub(r"\s*\(.*?\)", "", guest)] + re.split(r"\s*&\s*", guest)) if guest else [], key=len, reverse=True):
-        if not name:
-            continue
-        d = re.sub(r"(?i)\s*(?:,|\|)?\s*(?:a talk with|explained by|ft\.|with|by|of)\s+" + re.escape(name) + r".*$", "", d)
-        d = re.sub(r"(?i)^" + re.escape(name) + r"(?:'s|’s)?\s+(?:talks about|explains|answers!?|on)?\s*", "", d)
-        d = re.sub(r"(?i)\s+" + re.escape(name) + r"\s+answers!?$", "", d)
-    d = re.sub(r"\s*\((?:bonus ep|whitepaper)\)", "", d, flags=re.I).strip(" ,:|-")
-    if d and d[0].islower():
-        d = d[0].upper() + d[1:]
-    return {"guest": guest, "d": d, "paren": paren, "tag": tag}
-
-
-def link_label(m):
-    x = describe(m)
-    what = x["d"] or x["paren"] or x["tag"]
-    if x["guest"] and what:
-        return "%s: %s" % (x["guest"], what)
-    return x["guest"] or what or m["title"]
-
-
-def episode_labels(src):
-    """10. Related Episodes and Up next say who and what: the guest and the descriptive part of the title
-    (no more "Sky Gods" nine times, or the guest's name twice on one card)."""
-    E = meta()
-
-    def slug(href):
-        return href.split("/")[-1].split("#")[0][:-5]
-
-    def rel_link(mm):
-        e = E.get(slug(mm.group(2)))
-        return mm.group(1) + (html.escape(link_label(e), quote=False) if e else mm.group(3)) + mm.group(4)
-
-    def related(mm):
-        return re.sub(r'(<a class="cd-link" href="([^"]+)">)(.*?)(</a>)', rel_link, mm.group(0))
-    src = re.sub(r"<h2>Related Episodes</h2>.*?</div>", related, src, count=1, flags=re.S)
-
-    def card(mm):
-        e = E.get(slug(mm.group(2)))
-        if not e:
-            return mm.group(0)
-        x = describe(e)
-        t = x["d"] or (x["paren"] if x["guest"] else "") or x["guest"] or x["tag"] or e["title"]
-        who = x["guest"] if x["guest"] and t != x["guest"] else (x["tag"] if t != x["tag"] else "")
-        dur = re.search(r"&middot;\s*(.*)$", mm.group(5))
-        meta_line = " &middot; ".join(y for y in (html.escape(who, quote=False), dur.group(1) if dur else "") if y)
-        return mm.group(1) + mm.group(3) + html.escape(t, quote=False) + mm.group(4) + meta_line + mm.group(6)
-    src = re.sub(r'(<a class="ep2-card" href="([^"]+)">.*?)(<span class="ep2-card-t">).*?(</span><span class="ep2-card-m">)(.*?)(</span>)',
-                 lambda mm: card(mm), src, flags=re.S)
-
-    def nxt(mm):
-        e = E.get(slug(mm.group(2)))
-        if not e:
-            return mm.group(0)
-        x = describe(e)
-        return mm.group(1) + html.escape(x["guest"] or x["d"] or e["title"], quote=False) + mm.group(4)
-    src = re.sub(r'(<a class="btn-lines v4-next" href="([^"]+)"><span class="v4-next-k">Next</span> )(.*?)(</a>)', nxt, src, count=1)
-    return src
+def media_script(src):
+    """6/23. The phone clips, the hero clip by the width it fills, and the pictures that wait: a short script
+    inlined in the head (it must run before script.js reads the clips), from src/v4-ux-media.js."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import v4_min
+    with open(os.path.join(V4, "src", "v4-ux-media.js"), encoding="utf-8") as fh:
+        js = v4_min.js(fh.read()).strip()
+    return put_block(src, MEDIA_MARK, "<script>%s</script>" % js, "</head>")
 
 
 def hold_data():
@@ -430,11 +361,17 @@ def hold_data():
 def page(rel, src):
     if rel == "enquire.html":
         src = enquire_hold(src, hold_data())
+    if rel == "index.html":
+        src = home_flyby_weight(src)
+        src = media_script(src)
     if rel in TRIPS:
         src = trip_bar(src)
         src = trip_dates_first(src)
         src = trip_questions_shown(src)
         src = trip_etiquette_band(src)
+        src = trip_hero_weight(rel, src)
+        src = gallery_lazy(src)
+        src = media_script(src)
     return src
 
 

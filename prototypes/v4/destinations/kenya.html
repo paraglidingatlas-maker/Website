@@ -156,6 +156,76 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="apple-touch-icon" sizes="180x180" href="../img/app-180.png">
 <script defer src="../pwa.js?v=3d4482f3"></script><!-- /app -->
+<!-- v4u-media: src/v4-ux-media.js via tools/v4_ux.py --><script>(function () {
+"use strict";
+var d = document, w = window;
+var m = location.pathname.match(/^(.*\/prototypes\/v\d+\/)/), BASE = m ? m[1] : "/assets/v4/";
+var PHONE_CLIPS = { bir: 1, hero: 1 };
+function upright() { return w.innerWidth / Math.max(1, w.innerHeight) <= 2 / 3; }
+function big() { return w.innerWidth > 820 && w.innerWidth * Math.min(w.devicePixelRatio || 1, 2) > 1400; }
+function want(v) {
+var base = v.getAttribute("data-v4u-base"), name = base.split("/").pop();
+return upright() && PHONE_CLIPS[name] ? BASE + "img/clips/" + name + "-p-720" : base + (big() ? "-1080" : "-720");
+}
+function fit(v) {
+if (v.hasAttribute("data-v4u-base") || !v.hasAttribute("data-loop") || v.hasAttribute("data-loop-size")) return;
+if (!v.closest || !v.closest(".khero, .v2-home-hero")) return;
+v.setAttribute("data-v4u-base", v.getAttribute("data-loop"));
+var t = want(v), i = t.lastIndexOf("-");
+v.setAttribute("data-loop", t.slice(0, i));           // script.js adds "-" + the size
+v.setAttribute("data-loop-size", t.slice(i + 1));
+}
+var mo = w.MutationObserver && new MutationObserver(function (rs) {
+rs.forEach(function (r) { [].forEach.call(r.addedNodes, function (n) {
+if (n.nodeType !== 1) return;
+if (n.tagName === "VIDEO") fit(n); else if (n.querySelectorAll) [].forEach.call(n.querySelectorAll("video[data-loop]"), fit);
+}); });
+});
+if (mo) mo.observe(d.documentElement, { childList: true, subtree: true });
+var rt = 0;
+w.addEventListener("resize", function () {
+clearTimeout(rt);
+rt = setTimeout(function () {
+[].forEach.call(d.querySelectorAll("video[data-v4u-base]"), function (v) {
+var s = v.currentSrc || "", t = want(v);
+if (!s || s.indexOf(t.split("/").pop() + ".") !== -1) return;
+if (/-1080\./.test(s) && /-720$/.test(t) && t.indexOf("-p-720") === -1) return;     // never trade down for a smaller window
+var at = v.currentTime, on = !v.paused;
+v.src = t + s.slice(s.lastIndexOf("."));
+v.addEventListener("loadedmetadata", function () { try { v.currentTime = at; } catch (e) {} }, { once: true });
+if (on) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }      // preload="none": play is what loads it
+});
+}, 400);
+});
+function wake(el) {
+if (!el) return;
+[].forEach.call(el.querySelectorAll ? el.querySelectorAll("[data-v4-src],[data-v4-srcset]") : [], function (x) {
+if (x.dataset.v4Srcset) { x.srcset = x.dataset.v4Srcset; x.removeAttribute("data-v4-srcset"); }
+if (x.dataset.v4Src) { x.src = x.dataset.v4Src; x.removeAttribute("data-v4-src"); }
+});
+}
+function init() {
+if (mo) { mo.disconnect(); [].forEach.call(d.querySelectorAll("video[data-loop]"), fit); }
+var slides = [].slice.call(d.querySelectorAll(".khero-slide"));
+if (slides.length > 1) {
+var next = function () {
+var i = slides.findIndex(function (s) { return s.classList.contains("is-on"); });
+wake(slides[i]); wake(slides[(i + 1) % slides.length]);
+};
+slides.forEach(function (s) { new MutationObserver(next).observe(s, { attributes: true, attributeFilter: ["class"] }); });
+var soon = function () { setTimeout(function () { wake(slides[1]); }, 4500); };
+if (d.readyState === "complete") soon(); else w.addEventListener("load", soon, { once: true });
+}
+var fb = d.querySelector(".v2-fb-stage");
+if (fb && fb.querySelector("[data-v4-src]")) {
+var go = function () { w.removeEventListener("scroll", go); if (io) io.disconnect(); wake(fb); }, io = null;
+w.addEventListener("scroll", go, { passive: true });
+if ("IntersectionObserver" in w) { io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.intersectionRatio > 0; })) go(); }); io.observe(fb.closest(".v2-flyby") || fb); }
+else go();
+}
+}
+if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();</script><!-- /v4u-media -->
 </head>
 <body class="dst v2-dst v4-trip">
 
@@ -184,6 +254,8 @@
     <div class="khero-par">
       <div class="khero-slide is-on">
         <picture>
+          <source media="(max-aspect-ratio: 2/3)" srcset="../img/hero/kenya-longonot-p.webp" type="image/webp">
+          <source media="(max-aspect-ratio: 2/3)" srcset="../img/hero/kenya-longonot-p.jpg">
           <source srcset="../../../assets/destinations/kenya/hero/longonot.webp" type="image/webp">
           <img style="object-position:52% 58%" src="../../../assets/destinations/kenya/hero/longonot.jpg" width="1153" height="768"
             draggable="false" fetchpriority="high" alt="A pink and yellow paraglider turning above the deep green crater of Mount Longonot">
@@ -191,29 +263,37 @@
       </div>
       <div class="khero-slide">
         <picture>
-          <source srcset="../../../assets/destinations/kenya/hero/kerio-valley.webp" type="image/webp">
-          <img style="object-position:62% 52%" src="../../../assets/destinations/kenya/hero/kerio-valley.jpg" width="1152" height="768"
+          <source media="(max-aspect-ratio: 2/3)" data-v4-srcset="../img/hero/kenya-kerio-valley-p.webp" type="image/webp">
+          <source media="(max-aspect-ratio: 2/3)" data-v4-srcset="../img/hero/kenya-kerio-valley-p.jpg">
+          <source data-v4-srcset="../../../assets/destinations/kenya/hero/kerio-valley.webp" type="image/webp">
+          <img style="object-position:62% 52%" data-v4-src="../../../assets/destinations/kenya/hero/kerio-valley.jpg" width="1152" height="768"
             draggable="false" loading="lazy" decoding="async" alt="Three paragliders soaring along a hazy green ridge above terraced fields in the Kerio Valley">
         </picture>
       </div>
       <div class="khero-slide">
         <picture>
-          <source srcset="../../../assets/destinations/kenya/hero/equator.webp" type="image/webp">
-          <img style="object-position:58% 56%" src="../../../assets/destinations/kenya/hero/equator.jpg" width="1152" height="768"
+          <source media="(max-aspect-ratio: 2/3)" data-v4-srcset="../img/hero/kenya-equator-p.webp" type="image/webp">
+          <source media="(max-aspect-ratio: 2/3)" data-v4-srcset="../img/hero/kenya-equator-p.jpg">
+          <source data-v4-srcset="../../../assets/destinations/kenya/hero/equator.webp" type="image/webp">
+          <img style="object-position:58% 56%" data-v4-src="../../../assets/destinations/kenya/hero/equator.jpg" width="1152" height="768"
             draggable="false" loading="lazy" decoding="async" alt="A yellow paraglider on a long glide over arid rock outcrops in low golden light">
         </picture>
       </div>
       <div class="khero-slide">
         <picture>
-          <source srcset="../../../assets/destinations/kenya/hero/north-kenya.webp" type="image/webp">
-          <img style="object-position:54% 52%" src="../../../assets/destinations/kenya/hero/north-kenya.jpg" width="1233" height="768"
+          <source media="(max-aspect-ratio: 2/3)" data-v4-srcset="../img/hero/kenya-north-kenya-p.webp" type="image/webp">
+          <source media="(max-aspect-ratio: 2/3)" data-v4-srcset="../img/hero/kenya-north-kenya-p.jpg">
+          <source data-v4-srcset="../../../assets/destinations/kenya/hero/north-kenya.webp" type="image/webp">
+          <img style="object-position:54% 52%" data-v4-src="../../../assets/destinations/kenya/hero/north-kenya.jpg" width="1233" height="768"
             draggable="false" loading="lazy" decoding="async" alt="A red and yellow paraglider high above a steep green ridge with plains stretching to the horizon">
         </picture>
       </div>
       <div class="khero-slide">
         <picture>
-          <source srcset="../../../assets/destinations/kenya/hero/chyulu-hills.webp" type="image/webp">
-          <img style="object-position:50% 46%" src="../../../assets/destinations/kenya/hero/chyulu-hills.jpg" width="1122" height="768"
+          <source media="(max-aspect-ratio: 2/3)" data-v4-srcset="../img/hero/kenya-chyulu-hills-p.webp" type="image/webp">
+          <source media="(max-aspect-ratio: 2/3)" data-v4-srcset="../img/hero/kenya-chyulu-hills-p.jpg">
+          <source data-v4-srcset="../../../assets/destinations/kenya/hero/chyulu-hills.webp" type="image/webp">
+          <img style="object-position:50% 46%" data-v4-src="../../../assets/destinations/kenya/hero/chyulu-hills.jpg" width="1122" height="768"
             draggable="false" loading="lazy" decoding="async" alt="Two paragliders over flat dark bush under a stormy sky in the Chyulu Hills">
         </picture>
       </div>
@@ -463,7 +543,7 @@
 
 <section class="dst-sec gxa" id="gallery" aria-labelledby="gallery-h" style="--n:11">
   <div class="gxa-track"><div class="gxa-pin">
-    <figure class="gxa-f is-on" data-title="Mount Longonot"><picture><source srcset="../../../assets/destinations/kenya/gallery/longonot.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/longonot.webp" alt="Mount Longonot" width="1153" height="768" decoding="async"></picture><figcaption><span class="gxa-n">01</span><b>Mount Longonot</b></figcaption></figure><figure class="gxa-f" data-title="Kerio Valley"><picture><source srcset="../../../assets/destinations/kenya/gallery/kerio-valley.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/kerio-valley.webp" alt="Kerio Valley" width="1152" height="768" decoding="async"></picture><figcaption><span class="gxa-n">02</span><b>Kerio Valley</b></figcaption></figure><figure class="gxa-f" data-title="The Equator"><picture><source srcset="../../../assets/destinations/kenya/gallery/equator.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/equator.webp" alt="The Equator" width="1152" height="768" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">03</span><b>The Equator</b></figcaption></figure><figure class="gxa-f" data-title="Northern Kenya"><picture><source srcset="../../../assets/destinations/kenya/gallery/north-kenya.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/north-kenya.webp" alt="Northern Kenya" width="1233" height="768" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">04</span><b>Northern Kenya</b></figcaption></figure><figure class="gxa-f" data-title="Chyulu Hills"><picture><source srcset="../../../assets/destinations/kenya/gallery/chyulu-hills.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/chyulu-hills.webp" alt="Chyulu Hills" width="1122" height="768" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">05</span><b>Chyulu Hills</b></figcaption></figure><figure class="gxa-f" data-title=""><picture><source srcset="../../../assets/destinations/kenya/gallery/kenya-hero.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/kenya-hero.webp" alt="Paragliding in Kenya" width="1400" height="788" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">06</span></figcaption></figure><figure class="gxa-f" data-title=""><picture><source srcset="../../../assets/destinations/kenya/gallery/kenya-high.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/kenya-high.webp" alt="Paragliding in Kenya" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">07</span></figcaption></figure><figure class="gxa-f" data-title=""><picture><source srcset="../../../assets/destinations/kenya/gallery/kenya-launch.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/kenya-launch.webp" alt="Paragliding in Kenya" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">08</span></figcaption></figure><figure class="gxa-f" data-title=""><picture><source srcset="../../../assets/destinations/kenya/gallery/kenya-ridge.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/kenya-ridge.webp" alt="Paragliding in Kenya" width="1400" height="600" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">09</span></figcaption></figure><figure class="gxa-f" data-title=""><picture><source srcset="../../../assets/destinations/kenya/gallery/kenya-slope.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/kenya-slope.webp" alt="Paragliding in Kenya" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">10</span></figcaption></figure><figure class="gxa-f" data-title=""><picture><source srcset="../../../assets/destinations/kenya/gallery/kenya-3.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/kenya-3.webp" alt="Paragliding in Kenya" width="1400" height="1050" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">11</span></figcaption></figure>
+    <figure class="gxa-f is-on" data-title="Mount Longonot"><picture><source srcset="../../../assets/destinations/kenya/gallery/longonot.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/longonot.webp" alt="Mount Longonot" width="1153" height="768" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">01</span><b>Mount Longonot</b></figcaption></figure><figure class="gxa-f" data-title="Kerio Valley"><picture><source srcset="../../../assets/destinations/kenya/gallery/kerio-valley.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/kerio-valley.webp" alt="Kerio Valley" width="1152" height="768" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">02</span><b>Kerio Valley</b></figcaption></figure><figure class="gxa-f" data-title="The Equator"><picture><source srcset="../../../assets/destinations/kenya/gallery/equator.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/equator.webp" alt="The Equator" width="1152" height="768" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">03</span><b>The Equator</b></figcaption></figure><figure class="gxa-f" data-title="Northern Kenya"><picture><source srcset="../../../assets/destinations/kenya/gallery/north-kenya.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/north-kenya.webp" alt="Northern Kenya" width="1233" height="768" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">04</span><b>Northern Kenya</b></figcaption></figure><figure class="gxa-f" data-title="Chyulu Hills"><picture><source srcset="../../../assets/destinations/kenya/gallery/chyulu-hills.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/chyulu-hills.webp" alt="Chyulu Hills" width="1122" height="768" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">05</span><b>Chyulu Hills</b></figcaption></figure><figure class="gxa-f" data-title=""><picture><source srcset="../../../assets/destinations/kenya/gallery/kenya-hero.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/kenya-hero.webp" alt="Paragliding in Kenya" width="1400" height="788" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">06</span></figcaption></figure><figure class="gxa-f" data-title=""><picture><source srcset="../../../assets/destinations/kenya/gallery/kenya-high.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/kenya-high.webp" alt="Paragliding in Kenya" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">07</span></figcaption></figure><figure class="gxa-f" data-title=""><picture><source srcset="../../../assets/destinations/kenya/gallery/kenya-launch.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/kenya-launch.webp" alt="Paragliding in Kenya" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">08</span></figcaption></figure><figure class="gxa-f" data-title=""><picture><source srcset="../../../assets/destinations/kenya/gallery/kenya-ridge.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/kenya-ridge.webp" alt="Paragliding in Kenya" width="1400" height="600" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">09</span></figcaption></figure><figure class="gxa-f" data-title=""><picture><source srcset="../../../assets/destinations/kenya/gallery/kenya-slope.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/kenya-slope.webp" alt="Paragliding in Kenya" width="1400" height="933" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">10</span></figcaption></figure><figure class="gxa-f" data-title=""><picture><source srcset="../../../assets/destinations/kenya/gallery/kenya-3.webp" type="image/webp"><img src="../../../assets/destinations/kenya/gallery/kenya-3.webp" alt="Paragliding in Kenya" width="1400" height="1050" loading="lazy" decoding="async"></picture><figcaption><span class="gxa-n">11</span></figcaption></figure>
     <div class="gxa-head"><span class="kicker">The pictures</span><h2 id="gallery-h">Eleven Frames From The Rift</h2></div>
     <div class="gxa-count" aria-hidden="true"><b>01</b> / 11</div>
     <div class="gxa-rail" aria-hidden="true"><span class="gxa-fill"></span><i style="left:0.000%"></i><i style="left:10.000%"></i><i style="left:20.000%"></i><i style="left:30.000%"></i><i style="left:40.000%"></i><i style="left:50.000%"></i><i style="left:60.000%"></i><i style="left:70.000%"></i><i style="left:80.000%"></i><i style="left:90.000%"></i><i style="left:100.000%"></i></div>
