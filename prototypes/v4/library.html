@@ -41,7 +41,7 @@
 <link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../styles.css?v=b084e774">
-<link rel="stylesheet" href="v2.css?v=8366855b">
+<link rel="stylesheet" href="v2.css?v=44dbdd1f">
 <style>
 :root{
   /* stone tones, derived from --bg and --card rather than new brand colors */
@@ -316,6 +316,12 @@
     <span class="kit-kicker">The Paragliding Atlas Podcast</span>
     <h1>Paragliding Podcast Episode Library</h1>
     <p class="kit-intro">Every conversation we have published, on the art and science of free flight. Search for something specific, or open a series.</p>
+    <div class="v4u-libfind" role="search"><label class="v2-find"><span class="v2-sr">Search episodes</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input class="v2-find-input" id="q" type="search" placeholder="Search episodes" autocomplete="off">
+        </label>
+      <ol class="v4-hits v4u-hits" id="qHits" aria-live="polite"></ol>
+    </div>
     <p class="v2-lib-count" data-v2-count>86 episodes in 13 series</p>
     <dl class="v4-stats"><div><dt>Episodes</dt><dd>86</dd></div><div><dt>Listening</dt><dd>84h 39m</dd></div><div><dt>Chapters</dt><dd>764</dd></div><div><dt>Series</dt><dd>13</dd></div></dl>
   </div>
@@ -359,10 +365,6 @@
     </div>
     <div class="v2-tools">
       <div class="v2-tools-row">
-        <label class="v2-find"><span class="v2-sr">Search episodes</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-          <input class="v2-find-input" id="q" type="search" placeholder="Search by title or guest" autocomplete="off">
-        </label>
         <label class="v2-sort"><span>Sort</span>
           <select id="sort">
             <option value="new">Newest first</option>
@@ -548,7 +550,7 @@
 <div id="portal"><div class="pbox"><div class="half t"></div><div class="half b"></div><div class="seamL"></div></div></div>
 <script src="../../library-episodes.js?v=1ab16e12"></script>
 <script src="../../episode-modal.js?v=686edaca"></script>
-<script src="v2-library.js?v=58feab9a"></script>
+<script src="v2-library.js?v=3ad2f425"></script>
 <script defer src="../../script.js?v=1bb85db6"></script>
 <!-- nav-menu -->
 <script defer src="../../nav-menu.js?v=001fbbf6"></script>

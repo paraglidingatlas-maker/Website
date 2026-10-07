@@ -86,9 +86,15 @@ v = v.trim().toLowerCase();
 last = [v, ol];
 if (!v) { ol.innerHTML = ""; return; }
 if (!idx) { loadIndex(); return; }
-var words = v.split(/\s+/).filter(Boolean);
+var STOP = " a an and are can do does for how i in is it me much my of on or the to what when where which who why will with you your ";
+var NEAR = { cost: ["price", "fee"], costs: ["price", "fee"], price: ["cost", "fee"], prices: ["cost", "fee"], fee: ["price", "cost"],
+date: ["departure", "when"], dates: ["departure", "when"], departure: ["date"], book: ["booking", "hold a place"], booking: ["book", "hold a place"] };
+var TRIPWORDS = /\b(kenya|india|bir|billing|trip|trips|tour|tours|expedition|expeditions|cost|costs|price|prices|fee|date|dates|departure|departures|book|booking|deposit|cancellation|refund|visa|insurance|hold)\b/;
+var words = v.split(/\s+/).filter(function (x) { return x && STOP.indexOf(" " + x + " ") === -1; });
+if (!words.length) words = v.split(/\s+/).filter(Boolean);
 var need = words.length <= 2 ? words.length : Math.ceil(words.length * 0.6);
-function forms(x) { return x.length > 3 && /s$/.test(x) ? [x, x.slice(0, -1)] : [x]; }
+var tripQ = TRIPWORDS.test(v);
+function forms(x) { var f = x.length > 3 && /s$/.test(x) ? [x, x.slice(0, -1)] : [x]; return f.concat(NEAR[x] || []); }
 var hits = [];
 for (var i = 0; i < idx.length; i++) {
 var e = idx[i], t = e.t.toLowerCase(), dsc = e.d.toLowerCase(), h = (e.h || "").toLowerCase();
@@ -98,13 +104,27 @@ var f = forms(x), w = 0;
 f.forEach(function (y) { w = Math.max(w, t.indexOf(y) !== -1 ? 3 : dsc.indexOf(y) !== -1 ? 2 : h.indexOf(y) !== -1 ? 1 : 0); });
 if (w) { found++; score += w; }
 });
-if (found >= need) hits.push([score + found * 2, e]);
+if (found >= need) hits.push([score + found * 2 + (tripQ && e.k === "Trip" ? 100 : 0), e]);
 }
 hits.sort(function (a, b) { return b[0] - a[0]; });
+function line(e) {
+var best = "", n = 0;
+(e.h || "").split(" \u00b7 ").forEach(function (x) {
+var lx = x.toLowerCase(), c = 0;
+words.forEach(function (w) { if (forms(w).some(function (y) { return lx.indexOf(y) !== -1; })) c++; });
+if (c > n) { n = c; best = x; }
+});
+var dl = e.d.toLowerCase(), dn = 0;
+words.forEach(function (w) { if (forms(w).some(function (y) { return dl.indexOf(y) !== -1; })) dn++; });
+var out = dn >= n && e.d ? e.d : best || e.d;
+return out.length > 140 ? out.slice(0, 137).replace(/\s+\S*$/, "") + "\u2026" : out;
+}
 ol.innerHTML = hits.length ? hits.slice(0, 8).map(function (h) {
-var e = h[1];
-return '<li><a href="' + BASE + e.u + '"><span class="v4-hit-k">' + esc(e.k) + '</span><span class="v4-hit-t">' + esc(e.t) + '</span></a></li>';
-}).join("") : '<li class="v4-hit-none">Nothing found</li>';
+var e = h[1], l = line(e);
+return '<li><a href="' + BASE + e.u + '"><span class="v4-hit-k">' + esc(e.k) + '</span><span class="v4-hit-t">' + esc(e.t) +
+(l ? '<span class="v4-hit-s">' + esc(l) + "</span>" : "") + "</span></a></li>";
+}).join("") : '<li class="v4-hit-none">Nothing found. <a href="' + BASE + 'tags.html">Topics</a> <a href="' + BASE +
+'library.html">Library</a> <a href="' + BASE + 'destinations/india.html">India</a> <a href="' + BASE + 'destinations/kenya.html">Kenya</a></li>';
 }
 function open(focusSearch) {
 if (!menu) build();

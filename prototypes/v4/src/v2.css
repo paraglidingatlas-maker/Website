@@ -3087,3 +3087,19 @@ html [data-v2="kb"] .bd-src{max-width:28rem;}
 html .v2-dst.v4-trip .page-wrap :is(.kfaq-inner p, .kreal-rest, .dst-head p, .etq-diy-note, .etq-open p, .kov-friends, .kov-q p, .v4t-gfold p,
   .dst-lede, .dst-rel-body, .kfly-lead, .kfly-tail, .cta-body, .tm-head p, .kdates-terms){font-size:var(--fs-body);max-width:31rem;}
 html .v2-dst.v4-trip .page-wrap :is(.kday-stop p, .kkit-gblurb, .kair-txt, .kfaq-note){font-size:var(--fs-body-s);}
+
+/* 17. The library's search under its title (tools/v4_ux.py; it sat 3.1 phone
+       screens down), its first results right under it (v2-library.js), and
+       topics offered when nothing matches. */
+.v4u-libfind{position:relative;max-width:34rem;margin:var(--sp-3) 0 0;z-index:3;}
+.v4u-libfind .v2-find-input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
+.v4u-libfind .v4-hits{background:rgba(20,21,25,.96);padding:0 .75rem;}
+.v4u-libfind .v4-hits a{grid-template-columns:6.5rem minmax(0,1fr);}
+@media (max-width:560px){ .v4u-libfind .v4-hits a{grid-template-columns:1fr;} }
+.v4-hit-s{display:block;color:var(--gray);font-size:var(--fs-small);line-height:1.45;margin-top:.15rem;}
+.v4u-hits-all a{display:flex !important;color:var(--orange);font-weight:600;font-size:var(--fs-body-s);}
+.v4u-topics{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:.8rem 0 0;}
+.v4u-topics > span{font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light);margin-right:.25rem;}
+.v4u-topics a.tg-chip{min-height:36px;display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .8rem;}
+.v4u-topics-all{color:var(--orange);font-size:var(--fs-body-s);}
+@media (pointer:coarse){ .v4u-topics a{min-height:44px;display:inline-flex;align-items:center;} }

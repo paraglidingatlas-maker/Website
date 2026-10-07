@@ -42,6 +42,7 @@ What it does, by the brief's numbers
      its kicker, Worth Remembering, FAQ, the conversations (13 is CSS).
  15  the knowledge base hub: each series with its own page's question under
      its name, the site search at the top, the altitude links a band to tap.
+ 17  the library's search under its title, with a list for its first results.
 """
 import html
 import os
@@ -580,6 +581,22 @@ def kb_hub(src):
     return re.sub(r'<a class="v4-climb-lv"[^>]*>.*?</a>', lv, src, flags=re.S)
 
 
+# ------------------------------------------------------------------------------------------------ 17
+def library_search(src):
+    """17. The library's search under its title (it sat 3.1 phone screens down, below the series), with the
+    first results right under it; it also matches topics, chapter titles and summaries (v2-library.js and
+    library-find.js, tools/v4_search.py), so its placeholder no longer says "by title or guest"."""
+    m = re.search(r'\s*<label class="v2-find">.*?</label>', src, re.S)
+    if not m or 'id="qHits"' in src:
+        return src
+    find = m.group(0).strip().replace('placeholder="Search by title or guest"', 'placeholder="Search episodes"')
+    src = src[:m.start()] + src[m.end():]
+    block = ('\n    <div class="v4u-libfind" role="search">%s\n      <ol class="v4-hits v4u-hits" id="qHits" aria-live="polite"></ol>\n    </div>'
+             % find)
+    return re.sub(r'(<header class="kit-hero is-sky v2-lib-hero[^"]*">\s*<div class="kit-hero-copy">.*?<p class="kit-intro">.*?</p>)',
+                  lambda mm: mm.group(1) + block, src, count=1, flags=re.S)
+
+
 WALL_MARK = ("<!-- v4u-wall: tools/v4_ux.py -->", "<!-- /v4u-wall -->")
 WALL_JS = ("<script>(function(d){var r=d.documentElement,done=0;function show(){if(!done){done=1;r.classList.remove('v4u-wall');}}"
            "r.classList.add('v4u-wall');setTimeout(show,2500);"
@@ -631,6 +648,8 @@ def page(rel, src):
         src = kb_jump(src)
     if rel == "knowledge-base.html":
         src = kb_hub(src)
+    if rel == "library.html":
+        src = library_search(src)
     if rel in TRIPS:
         src = trip_bar(src)
         src = trip_dates_first(src)

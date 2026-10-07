@@ -125,6 +125,7 @@
     cards.forEach(function (c) { c.hidden = show.indexOf(c) === -1; });
 
     $("none").hidden = hits.length > 0;
+    findExtras(words, hits);
     $("cnt").textContent = hits.length
       ? (hits.length === 1 ? "1 episode" : hits.length + " episodes") +
         (state.s ? " in " + state.s : "") + (words.length ? " matching “" + state.q.trim() + "”" : "") +
@@ -151,6 +152,58 @@
     }
   }
 
+  /* the usability pass (17): the search also matches each episode's topics, chapter titles and summary
+     (library-find.js, tools/v4_search.py, fetched on the first keystroke, so nobody pays for it on arrival);
+     its first results show right under it, at the top of the page; and when nothing matches, the topics
+     that do are offered. */
+  var FIND = null, findLoading = false;
+  var lm = /^(.*\/prototypes\/v\d+\/)/.exec(location.pathname);
+  var FIND_SRC = lm ? lm[1] + "library-find.js" : "/assets/v4/library-find.js";
+  function loadFind() {
+    if (FIND || findLoading) return;
+    findLoading = true;
+    var sc = document.createElement("script");
+    sc.src = FIND_SRC;
+    sc.onload = function () {
+      FIND = window.V4_LIBFIND || { eps: {}, topics: [] };
+      cards.forEach(function (c) {
+        var x = FIND.eps[(c.getAttribute("href") || "").replace(/^.*?(episodes\/)/, "$1")];
+        if (x) c.dataset.f += " " + x;
+      });
+      if (state.q) draw(false);
+    };
+    sc.onerror = function () { findLoading = false; };
+    document.head.appendChild(sc);
+  }
+  function esc(t) { return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function topicsFor(words) {
+    var out = [];
+    if (FIND && words.length) FIND.topics.forEach(function (t) {
+      var n = norm(t[0]);
+      if (out.length < 6 && words.some(function (w) { return w.length > 2 && (n.indexOf(w) !== -1 || w.indexOf(n) !== -1); })) out.push(t);
+    });
+    return '<p class="v4u-topics"><span>Topics</span> ' + out.map(function (t) {
+      return '<a class="tg-chip" href="' + esc(t[1]) + '">' + esc(t[0]) + " <i>" + t[2] + "</i></a>";
+    }).join(" ") + ' <a class="v4u-topics-all" href="tags.html">' + (out.length ? "Every topic" : "Browse the topics") + "</a></p>";
+  }
+  var heroHits = $("qHits");
+  function findExtras(words, hits) {
+    var none = $("none");
+    if (none) {
+      var old = none.querySelector(".v4u-topics");
+      if (old) old.remove();
+      if (!hits.length) none.insertAdjacentHTML("beforeend", topicsFor(words));
+    }
+    if (!heroHits) return;
+    if (!words.length) { heroHits.innerHTML = ""; return; }
+    if (!hits.length) { heroHits.innerHTML = '<li class="v4-hit-none">Nothing matches those filters. ' + topicsFor(words) + "</li>"; return; }
+    heroHits.innerHTML = hits.slice(0, 5).map(function (c) {
+      var t = c.querySelector(".ep-tile-title"), g = c.querySelector(".ep-log-guest"), no = c.querySelector(".ep-no");
+      return '<li><a href="' + esc(c.getAttribute("href")) + '"><span class="v4-hit-k">' + esc(no ? no.textContent : "") +
+        '</span><span class="v4-hit-t">' + esc(t ? t.textContent : "") + (g && g.textContent ? ' <span class="v4-hit-s">' + esc(g.textContent) + "</span>" : "") + "</span></a></li>";
+    }).join("") + (hits.length > 5 ? '<li class="v4u-hits-all"><a href="#browse">See all ' + hits.length + " episodes</a></li>" : "");
+  }
+
   $("pager").addEventListener("click", function (e) {
     var b = e.target.closest(".v2-pg"); if (!b || b.disabled) return;
     state.page = +b.dataset.p; draw(true);
@@ -158,7 +211,8 @@
   chips.forEach(function (b) {
     b.addEventListener("click", function () { state.s = b.dataset.s; state.page = 1; draw(false); });
   });
-  $("q").addEventListener("input", function () { state.q = this.value; state.page = 1; draw(false); });
+  $("q").addEventListener("input", function () { state.q = this.value; state.page = 1; loadFind(); draw(false); });
+  $("q").addEventListener("focus", loadFind);
   $("sort").addEventListener("change", function () { state.sort = this.value; state.page = 1; draw(false); });
   $("widen").addEventListener("click", function () { state.s = ""; state.q = ""; $("q").value = ""; state.page = 1; draw(false); });
 
