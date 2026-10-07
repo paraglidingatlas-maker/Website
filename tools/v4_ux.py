@@ -675,9 +675,9 @@ TOPIC_CASE = (("Srs", "SRS"), ("Ccc", "CCC"))
 def topic_case(src):
     """20. Two topic names were written by a title-casing step ("Srs", "Ccc"); the site writes them SRS and CCC
     everywhere else (the episodes, their transcripts). The same words, in the site's own case, on every page
-    and in the search files; the page title alone stays as the live page has it (the parity gate), until the
+    and in the search files; the page title and its structured data stay as the live page has them (the parity gate), until the
     name is corrected at its source, episode-meta.json."""
-    keep = r'(<title>.*?</title>|<meta property="og:title"[^>]*>|<meta name="twitter:title"[^>]*>)'
+    keep = r'(<title>.*?</title>|<meta property="og:title"[^>]*>|<meta name="twitter:title"[^>]*>|<script type="application/ld\+json">.*?</script>)'
     parts = re.split(keep, src, flags=re.S)    # the page title stays the live page's (the parity gate)
     for i in range(0, len(parts), 2):
         for a, b in TOPIC_CASE:
@@ -710,20 +710,220 @@ def topics_page(src):
     """20. The topics page: a box that narrows the 50 tiles as one types (they were a long list to scan on a
     phone: 50 rows), "Nothing found" with the library when none matches; and a caption for the traces on the
     tiles, in the words of the chart they shrink (each topic page's "conversations by date"), with its years.
+    (Its first wording, "Each topic's conversations by date", had a word the site does not use; the
+    independent check at the end of the pass caught it.)
     Without script the box is not shown."""
     if 'class="tg-cloud"' not in src:
         return src
     y0, y1 = topic_years()
     if 'id="tgFind"' not in src:
         cap = ('<p class="tg-spark-cap"><svg viewBox="0 0 40 12" aria-hidden="true" focusable="false"><path d="M1,10 C8,10 10,4 16,6 S26,10 30,3 '
-               'S36,8 39,8"/></svg>Each topic\'s conversations by date, %s&nbsp;to&nbsp;%s</p>' % (y0, y1)) if y0 else ""
+               'S36,8 39,8"/></svg>Conversations by date, %s&nbsp;to&nbsp;%s</p>' % (y0, y1)) if y0 else ""
         src = re.sub(r'(<header class="kit-hero is-sky v2-tg-hero">\s*<div class="kit-hero-copy">.*?<p class="kit-intro">.*?</p>)',
                      lambda m: m.group(1) + "\n    <div class=\"v4u-tgtools\" role=\"search\">" + TG_FIND + "</div>" + cap, src, count=1, flags=re.S)
         src = src.replace('<div class="tg-cloud">', '<div class="tg-cloud" id="tgCloud">', 1)
         src = re.sub(r'(<div class="tg-cloud" id="tgCloud">.*?)(\n\s*</div>)',
                      lambda m: m.group(1) + m.group(2) + '\n<p class="v4u-tg-none" id="tgNone" hidden>Nothing found. <a href="library.html">Library</a></p>',
                      src, count=1, flags=re.S)
+    if y0:   # the caption's words, kept current
+        src = re.sub(r'(<p class="tg-spark-cap">.*?</svg>)[^<]*(</p>)',
+                     lambda m: m.group(1) + "Conversations by date, %s&nbsp;to&nbsp;%s" % (y0, y1) + m.group(2), src, count=1, flags=re.S)
     return put_block(src, TG_JS_MARK, TG_JS, "</body>")
+
+
+# ------------------------------------------------------------------------------------------------ 6 again
+def film_stills(rel, src):
+    """6, re-measured at the end. A knowledge base film strip now sits within a phone's first two screens (13:
+    the ideas come first), where the browser fetches a lazy picture on arrival; its still was the 1600 x 900
+    file (up to 309 KB). The still now waits until the strip is near (as the trip heroes' do), and on an upright
+    screen it is the third such a screen shows (img/hero/film-<name>-p.webp, tools/v4_phone_media.py), the same
+    framing. The strip is drawn without words and hidden from screen readers; without script it shows no still."""
+    def wrap(m):
+        img = m.group(2)
+        s = re.search(r'\ssrc="([^"]+?)([^/"]+)\.jpg"', img)
+        if not s:
+            return m.group(0)
+        name = s.group(2)
+        if not os.path.exists(os.path.join(V4, "img", "hero", "film-%s-p.webp" % name)):
+            return m.group(0)
+        up = "../" * rel.count("/")
+        img = img.replace(' src="', ' data-v4-src="', 1)
+        return '%s<picture><source media="%s" data-v4-srcset="%simg/hero/film-%s-p.webp" type="image/webp">%s</picture>' % (
+            m.group(1), PHONE_MEDIA, up, name, img)
+    out = re.sub(r'(<section class="v4-breather v4-film"[^>]*>\s*<div class="v4-br-media">)(<img\b[^>]*>)', wrap, src)
+    if 'class="v4-breather v4-film"' in out and "data-v4-src=" in out:
+        out = put_block(out, FILM_MARK, FILM_JS, "</body>")
+    return out
+
+
+FILM_MARK = ("<!-- v4u-film: tools/v4_ux.py -->", "<!-- /v4u-film -->")
+FILM_JS = ("<script>(function(d,w){var im=[].slice.call(d.querySelectorAll('.v4-film img[data-v4-src]'));"
+           "function go(i){var p=i.parentNode;if(p.tagName==='PICTURE')[].forEach.call(p.querySelectorAll('source[data-v4-srcset]'),"
+           "function(s){s.srcset=s.getAttribute('data-v4-srcset');});i.src=i.getAttribute('data-v4-src');}"
+           "if(!('IntersectionObserver' in w)){im.forEach(go);return;}"
+           "var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){o.unobserve(e.target);go(e.target);}});},"
+           "{rootMargin:'400px 0px'});im.forEach(function(i){o.observe(i);});})(document,window);</script>")
+
+
+BREATHER_MARK = ("<!-- v4u-breather: tools/v4_ux.py -->", "<!-- /v4u-breather -->")
+BREATHER_JS = ("<script>(function(v){var m=location.pathname.match(/^(.*\\/prototypes\\/v\\d+\\/)/);"
+               "if(v&&innerWidth/Math.max(1,innerHeight)<=2/3)v.setAttribute('data-loop',(m?m[1]:'/assets/v4/')+'img/clips/hero-p');})"
+               "(document.querySelector('.v4-breather video[data-loop$=\"video/hero\"]'));</script>")
+
+
+def podcast_breather(src):
+    """6, re-measured at the end. The podcast's full-screen footage between the opening and the host was the
+    16:9 720p clip on a phone too (1.1 MB, fetched on arrival as it comes into reach); on an upright screen it
+    is now the clip cut for one (img/clips/hero-p-720, 0.4 MB, the same footage), set before script.js loads it."""
+    m = re.search(r'<section class="v4-breather">.*?</section>', src, re.S)
+    if not m or 'video/hero"' not in m.group(0):
+        return src
+    if BREATHER_MARK[0] in src:
+        return put_block(src, BREATHER_MARK, BREATHER_JS, "")
+    return src[:m.end()] + BREATHER_MARK[0] + BREATHER_JS + BREATHER_MARK[1] + src[m.end():]
+
+
+# ------------------------------------------------------------------------- the pass's own CSS and scripts, by page
+UXCSS_MARK = ("<!-- v4u-css: src/v4-ux.css via tools/v4_ux.py -->", "<!-- /v4u-css -->")
+FOOT_MARK = ("<!-- v4u-footage: src/v4-ux-footage.js via tools/v4_ux.py -->", "<!-- /v4u-footage -->")
+FIND_MARK = ("<!-- v4u-find: src/v4-ux-find.js via tools/v4_ux.py -->", "<!-- /v4u-find -->")
+_UXCSS = None
+
+
+def ux_groups(rel, src):
+    """Which sections of src/v4-ux.css a page needs."""
+    g = []
+    if rel in TRIPS:
+        g.append("trip")
+    if 'id="enqForm"' in src:
+        g.append("enquire")
+    if rel.startswith("episodes/") and 'class="cd-wrap' in src:
+        g.append("episode")
+    if 'data-v2="kb"' in src:
+        g.append("kb")
+    for r, n in (("knowledge-base.html", "hub"), ("library.html", "library"), ("podcast.html", "podcast"), ("tags.html", "topics")):
+        if rel == r:
+            g.append(n)
+    return g
+
+
+def ux_css(rel, src):
+    """6, re-measured at the end. The pass's rules for one kind of page (src/v4-ux.css) go into those pages
+    alone, minified, right after v2.css, so they cascade exactly as the end of v2.css did; every other page
+    no longer carries them (they had made every page 12 to 14 KB heavier)."""
+    global _UXCSS
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import v4_min
+    if _UXCSS is None:
+        text = open(os.path.join(V4, "src", "v4-ux.css"), encoding="utf-8").read()
+        _UXCSS = {m.group(1): m.group(2) for m in re.finditer(r"/\* @page (\w+) \*/(.*?)(?=/\* @page |\Z)", text, re.S)}
+    css = "".join(v4_min.css(_UXCSS[g]).strip() for g in ux_groups(rel, src))
+    link = re.search(r'<link rel="stylesheet" href="[^"]*v2\.css(?:\?v=[0-9a-f]+)?">', src)
+    if UXCSS_MARK[0] in src:
+        if not css:
+            i = src.index(UXCSS_MARK[0])
+            return src[:i] + src[src.index(UXCSS_MARK[1], i) + len(UXCSS_MARK[1]):]
+        return put_block(src, UXCSS_MARK, "<style>%s</style>" % css, "")
+    if not css or not link:
+        return src
+    return src[:link.end()] + UXCSS_MARK[0] + "<style>%s</style>" % css + UXCSS_MARK[1] + src[link.end():]
+
+
+def ux_scripts(rel, src):
+    """23 and 15: the footage's Pause only on the pages with footage, the in-page search only where there is one."""
+    if re.search(r"<video\b", src):
+        src = put_block(src, FOOT_MARK, "<script>%s</script>" % inline_js("v4-ux-footage.js"), "</body>")
+    if "data-v4-find" in src:
+        src = put_block(src, FIND_MARK, "<script>%s</script>" % inline_js("v4-ux-find.js"), "</body>")
+    return src
+
+
+def _relative(d):
+    """An SVG path of absolute integer M/L/Z steps (tools/v4_globe.py writes them) as relative steps: the same
+    points exactly, in about two thirds of the bytes."""
+    out, cx, cy, sx, sy, last = [], 0, 0, 0, 0, ""
+    for cmd, x, y in re.findall(r"([MLZ])(?:(-?\d+),(-?\d+))?", d):
+        if cmd == "Z":
+            out.append("z")
+            cx, cy, last = sx, sy, "z"
+            continue
+        x, y = int(x), int(y)
+        if cmd == "M":
+            out.append("M%d %d" % (x, y))
+            sx, sy, last = x, y, "M"
+        else:
+            dx, dy = x - cx, y - cy
+            out.append(("l" if last not in ("l", "M") else ("l" if last == "M" else " ")) + "%d %d" % (dx, dy))
+            last = "l"
+        cx, cy = x, y
+    return "".join(out).replace(" -", "-")
+
+
+def globe_paths(src):
+    """6, re-measured at the end. The globe on each episode page (and the home page) is drawn with absolute
+    coordinates, 12 KB a page; written as relative steps it is the same drawing, point for point, 3.5 KB
+    lighter (2.7 KB as sent): more than the pass added to an episode page."""
+    if 'class="v4-globe' not in src:
+        return src
+
+    def svg(m):
+        return re.sub(r' d="([MLZ0-9,\-]+)"', lambda p: ' d="%s"' % _relative(p.group(1)), m.group(0))
+    return re.sub(r'<svg class="v4-globe.*?</svg>', svg, src, flags=re.S)
+
+
+def kb_tile_art(rel, src):
+    """6, re-measured at the end. A knowledge base tile with the episode's own artwork showed the 1280 x 720
+    file (50 KB) at 120 px wide on a phone; there it gets the 400 px copy (img/art, tools/v4_phone_media.py)."""
+    up = "../" * rel.count("/")
+
+    def add(m):
+        name = m.group(2)
+        if not os.path.exists(os.path.join(V4, "img", "art", name + "-s.webp")):
+            return m.group(0)
+        return '%s<source media="(max-width: 760px)" srcset="%simg/art/%s-s.webp" type="image/webp">%s' % (
+            m.group(1), up, name, m.group(0)[len(m.group(1)):])
+    return re.sub(r'(<span class="ep-th"><picture>)<source srcset="[^"]*/assets/podcast/artwork/([^"/]+)\.webp"', add, src)
+
+
+def about_still(src):
+    """6, re-measured at the end. The About opening's still on an upright phone: the window of it the phone's
+    box shows (img/hero/about-alps-11-still-p.webp, tools/v4_phone_media.py), 36 KB instead of 92 KB."""
+    if "about-alps-11-still-p.webp" in src or not os.path.exists(os.path.join(V4, "img", "hero", "about-alps-11-still-p.webp")):
+        return src
+    return src.replace('<picture><source srcset="img/alps-11-still.webp" type="image/webp">',
+                       '<picture><source media="%s" srcset="img/hero/about-alps-11-still-p.webp" type="image/webp">'
+                       '<source srcset="img/alps-11-still.webp" type="image/webp">' % PHONE_MEDIA, 1)
+
+
+ART_MARK = ("<!-- v4u-art: tools/v4_ux.py -->", "<!-- /v4u-art -->")
+ART_JS = ("<script>(function(d,w){var m=location.pathname.match(/^(.*\\/prototypes\\/v\\d+\\/)/),B=m?m[1]:'/assets/v4/',"
+          "s=[].slice.call(d.querySelectorAll('[data-v4-art]'));function go(e){e.style.setProperty('--art',\"url('\"+B+e.getAttribute('data-v4-art')+\"')\");}"
+          "if(!('IntersectionObserver' in w)){s.forEach(go);return;}var o=new IntersectionObserver(function(es){es.forEach(function(e){"
+          "if(e.isIntersecting){o.unobserve(e.target);go(e.target);}});},{rootMargin:'600px 0px'});s.forEach(function(e){o.observe(e);});})(document,window);</script>")
+
+
+def hub_art(src):
+    """6, re-measured at the end. The knowledge base hub's four drawings behind its altitudes (img/kb, 173 KB,
+    the meteorology one 132 KB) were fetched on arrival though the first is three screens down; each now
+    arrives as its altitude comes near. Without script the altitudes show without their faint drawing."""
+    out = re.sub(r'(<section class="clb-station"[^>]*?) style="(--i:\d+);--art:url\(\'(img/kb/[^\']+)\'\)"',
+                 r'\1 style="\2" data-v4-art="\3"', src)
+    if "data-v4-art=" in out:
+        out = put_block(out, ART_MARK, ART_JS, "</body>")
+    return out
+
+
+def library_words(src):
+    """6, re-measured at the end. Each library card's search words (data-f) carried its title twice; once is
+    enough to match it (5.6 KB of the page)."""
+    def one(m):
+        w = m.group(1).split(" ")
+        for size in range(len(w) // 2, 2, -1):
+            for i in range(0, len(w) - 2 * size + 1):
+                if w[i:i + size] == w[i + size:i + 2 * size]:
+                    return ' data-f="%s"' % " ".join(w[:i + size] + w[i + 2 * size:])
+        return m.group(0)
+    return re.sub(r' data-f="([^"]*)"', one, src)
 
 
 # ------------------------------------------------------------------------------------------------ 24
@@ -893,15 +1093,23 @@ def page(rel, src):
     if rel == "podcast.html":
         src = podcast_wall(src)
         src = podcast_latest(src)
+        src = podcast_breather(src)
     if rel.startswith("episodes/"):
         src = episode_labels(src)
         src = episode_listen_button(src)
     if rel.startswith("knowledge-base/"):
         src = kb_jump(src)
+        src = film_stills(rel, src)
+        src = kb_tile_art(rel, src)
     if rel == "knowledge-base.html":
         src = kb_hub(src)
     if rel == "library.html":
         src = library_search(src)
+        src = library_words(src)
+    if rel == "about.html":
+        src = about_still(src)
+    if rel == "knowledge-base.html":
+        src = hub_art(src)
     if rel in TRIPS:
         src = trip_bar(src)
         src = trip_dates_first(src)
@@ -911,6 +1119,9 @@ def page(rel, src):
         src = gallery_lazy(src)
         src = trip_subnav(src)
         src = media_script(src)
+    src = ux_scripts(rel, src)
+    src = ux_css(rel, src)
+    src = globe_paths(src)
     return main_landmark(rel, src)
 
 
@@ -918,7 +1129,8 @@ def main(args):
     check = "--check" in args
     rels = [a for a in args if not a.startswith("--")] or sorted(
         os.path.relpath(os.path.join(d, f), V4).replace(os.sep, "/")
-        for d, _, fs in os.walk(V4) for f in fs if f.endswith(".html") and "/src/" not in os.path.join(d, f))
+        for d, _, fs in os.walk(V4) for f in fs if f.endswith(".html") and "/src/" not in os.path.join(d, f)
+        and "/samples" not in d)                                 # the samples are another chat's: never touched
     changed = []
     for rel in rels:
         fp = os.path.join(V4, rel)

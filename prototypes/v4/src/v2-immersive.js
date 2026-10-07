@@ -297,45 +297,12 @@
       btn.classList.toggle("is-on", on);
       btn.addEventListener("click", function () { set(!on); });
       foot.appendChild(btn);
-      footage(foot, btn);
       // remembered as on: a browser only lets sound start after the visitor
       // touches the page, so it waits for the first press or key
       if (on) {
         var first = function () { d.removeEventListener("pointerdown", first, true); d.removeEventListener("keydown", first, true); if (on) start(); };
         d.addEventListener("pointerdown", first, true); d.addEventListener("keydown", first, true);
       }
-    }
-    // the usability pass (23): beside it, the page's footage can be paused, and
-    // stays paused from page to page until it is played again (script.js
-    // starts each loop as it comes on screen; a paused visitor's loops are
-    // stopped as they start). Only where footage plays: not for reduced motion.
-    function footage(foot, after) {
-      if (!d.querySelector("video") || (w.matchMedia && w.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
-      var still = keep.get("v4-still") === "on", b = d.createElement("button");
-      b.type = "button"; b.className = "v2-wind v4u-still";
-      function own(v) { return v.tagName === "VIDEO" && !v.closest(".cd-player, .v4-ls"); }
-      function label() {
-        var t = still ? "Play" : "Pause";
-        b.setAttribute("aria-label", t); b.title = t;
-        b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-          (still ? '<path d="M7 5l12 7-12 7z"/>' : '<path d="M8 5v14"/><path d="M16 5v14"/>') + '</svg><span class="v4-wind-l" aria-hidden="true">' + t + '</span>';
-      }
-      function inView(v) {
-        var r = v.getBoundingClientRect(), when = v.getAttribute("data-loop-when"), host = when && v.closest(when);
-        return r.bottom > 0 && r.top < w.innerHeight && r.width > 0 && (!host || host.classList.contains("is-on"));
-      }
-      d.addEventListener("play", function (e) { if (still && own(e.target)) e.target.pause(); }, true);
-      b.addEventListener("click", function () {
-        still = !still; keep.set("v4-still", still ? "on" : "off"); label();
-        [].forEach.call(d.querySelectorAll("video"), function (v) {
-          if (!own(v)) return;
-          if (still) v.pause();
-          else if ((v.currentSrc || v.getAttribute("src")) && inView(v)) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-        });
-      });
-      label();
-      if (still) [].forEach.call(d.querySelectorAll("video"), function (v) { if (own(v)) v.pause(); });
-      foot.insertBefore(b, after.nextSibling);
     }
     d.addEventListener("visibilitychange", function () {
       if (!ctx) return;
@@ -650,33 +617,7 @@
     s.onerror = function () { if (done) return; done = true; clearTimeout(t); loading = false; fallback(from); };
     d.head.appendChild(s);
   }
-  // the usability pass (15): a search field in the page itself ([data-v4-find]: the knowledge base's) runs the
-  // same search into its own list, loading v4-menu.js on first use. Enter goes to the first result; without
-  // script the form goes to the sitemap, which lists every page.
-  var waiting = null;
-  function get(cb) {
-    if (w.V4_MENU) { cb(); return; }
-    if (waiting) { waiting.push(cb); return; }
-    waiting = [cb];
-    var s = d.createElement("script");
-    s.src = SRC;
-    s.onload = function () { var q = waiting; waiting = null; if (w.V4_MENU) q.forEach(function (f) { f(); }); };
-    s.onerror = function () { waiting = null; };
-    d.head.appendChild(s);
-  }
-  function finder(form) {
-    var q = form.querySelector("input[type=search]"), ol = form.querySelector("ol");
-    if (!q || !ol) return;
-    function go() { get(function () { w.V4_MENU.find(q.value, ol); }); }
-    q.addEventListener("focus", function () { get(function () {}); });
-    q.addEventListener("input", go);
-    form.addEventListener("submit", function (e) {
-      var a = ol.querySelector("a[href]");
-      if (a) { e.preventDefault(); location.href = a.href; } else if (w.V4_MENU) { e.preventDefault(); go(); }
-    });
-  }
   function mount() {
-    [].forEach.call(d.querySelectorAll("[data-v4-find]"), finder);
     var nav = d.querySelector(".page-wrap > nav");
     if (!nav) return;
     var cta = nav.querySelector(".nav-cta");

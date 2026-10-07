@@ -1,0 +1,262 @@
+/* THE USABILITY PASS, page by page (owner's brief, 7 Oct 2026; docs/ux-report.md).
+   Each "@page" section is put, minified, into the head of the pages it names,
+   right after v2.css (so it cascades exactly as the end of v2.css would), by
+   tools/v4_ux.py; no other page carries it. The rules every page needs stay in
+   src/v2.css. Edit here, then run python3 tools/v4_ux.py. */
+
+/* @page trip */
+/* 1. The trips' phone bar: the price first (the departures' own price line),
+      then the length and the next departure. Two lines on the left at most,
+      readable from 320px, no taller than 80px. */
+html .dst-mobar{padding:.6rem var(--gutter) calc(.6rem + env(safe-area-inset-bottom,0px));gap:.8rem;}
+html .dst-mobar-l{min-width:0;}
+html .v4u-bar .n{font-size:var(--fs-h4);line-height:1.2;white-space:nowrap;}
+html .v4u-bar .n small{font:500 var(--fs-small)/1 var(--font-body);color:var(--gray-light);}
+html .v4u-bar .w{font-size:max(12px,var(--fs-micro));line-height:1.3;margin-top:.15rem;}
+html .v4u-bar .w span{white-space:nowrap;}
+html .dst-mobar .btn-solid{flex:none;}
+/* the button gives way on a narrow phone, so the words beside it never run under it */
+@media (max-width:440px){ html .dst-mobar .btn-solid{padding:.8rem 1.1rem;font-size:.9rem;} }
+@media (max-width:350px){ html .dst-mobar{padding-left:.75rem;padding-right:.75rem;gap:.6rem;} html .dst-mobar .btn-solid{padding:.8rem .9rem;} }
+/* 2. Dates sooner on a phone. The departures now follow the route (tools/v4_ux.py);
+      the gallery's pinned run is cut to under three screens (every photograph
+      still passes, each for about a sixth of a screen) and the route's fall
+      from orbit is a screen shorter, so the dates start by screen 12. */
+@media (max-width:760px){
+  html .gxa-track{height:calc(var(--n) * 15vh + 100vh);height:calc(var(--n) * 15svh + 100svh);}
+  html .tm-track{height:calc(var(--n) * 50vh + 120vh);height:calc(var(--n) * 50svh + 120svh);}
+}
+/* 3. Gallery framing on a phone or tablet held upright: each photograph whole, in a
+      landscape frame across the screen with its caption under it, instead of a
+      third of it blown up to fill a tall screen. The drift stays, smaller. */
+@media (max-width:1100px) and (orientation:portrait){
+  html .gxa-f{display:flex;flex-direction:column;justify-content:center;}
+  html .gxa-f picture{height:auto;flex:none;}
+  html .gxa-f img{height:auto;max-height:56vh;max-height:56svh;object-fit:contain;
+    transform:scale(calc(1.03 - .03 * var(--t,0)));transform-origin:50% 50%;}
+  html .gxa-f::after{display:none;}
+  html .gxa-f figcaption{position:static;margin:var(--sp-3) var(--edge-x) 0;max-width:none;}
+}
+/* 5. Nothing important folded away. Every trip question is in view (the
+      "more questions" fold opened out, tools/v4_ux.py), and Flying Etiquette is
+      a band of its own after Before You Book: its heading and first lines in
+      view, the rules a press away as before. */
+html .v4u-etq{border-top:1px solid var(--line);padding-bottom:var(--sp-5);}
+html .v4u-etq .v4u-etq-head{margin-bottom:var(--sp-3);}
+html .v4u-etq .etq-open .dst-head{margin-top:0;}
+/* 7. On a wide screen the trip's section bar carries the price and Hold a
+      place beside Enquire, held at the bar's right end while the links scroll. */
+.v4u-jbook{display:none;}
+@media (min-width:821px){
+  html .v4u-jbook{display:flex;align-items:center;gap:var(--sp-3);flex:none;position:sticky;right:0;
+    padding-left:3rem;background:linear-gradient(90deg,rgba(20,21,25,0) 0,#141519 2.6rem);}
+  html .v4u-jprice{font-family:var(--font-display);font-weight:700;color:var(--white);font-size:var(--fs-body);white-space:nowrap;}
+  html .v4u-jprice small{font:500 var(--fs-small)/1 var(--font-body);color:var(--gray-light);}
+  html .dst-jump .v4u-jbook .btn-solid,html .dst-jump .v4u-jbook .btn-solid:hover,html .dst-jump .v4u-jbook .btn-solid:focus-visible{
+    padding:.55rem 1.2rem;font-size:.86rem;color:var(--bg);border-bottom:0;}
+}
+/* 16. Reading measure. Running text on the knowledge base and trip pages in
+       one size from the scale (--fs-body), secondary text in the other
+       (--fs-body-s), instead of seven sizes from 14.9 to 17.3px; and no line
+       of it wider than about 75 characters (31rem; it reached 111 in the
+       knowledge base folds and 143 on Kenya at 1440). */
+html .v2-dst.v4-trip .page-wrap :is(.kfaq-inner p, .kreal-rest, .dst-head p, .etq-diy-note, .etq-open p, .kov-friends, .kov-q p, .v4t-gfold p,
+  .dst-lede, .dst-rel-body, .kfly-lead, .kfly-tail, .cta-body, .tm-head p, .kdates-terms){font-size:var(--fs-body);max-width:31rem;}
+html .v2-dst.v4-trip .page-wrap :is(.kday-stop p, .kkit-gblurb, .kair-txt, .kfaq-note){font-size:var(--fs-body-s);}
+/* 23. The trip hero's words over bright snow: the shade reaches further in
+       behind them, darker on their side (on wide screens; phones have their
+       own, already dark enough), and the footage can be paused from the
+       footer, beside Wind sound (v2-immersive.js). */
+@media (min-width:601px){
+  html .khero-scrim{background:
+    radial-gradient(ellipse 60% 50% at 22% 58%,rgba(20,21,25,.62),rgba(20,21,25,0) 76%),
+    linear-gradient(180deg,rgba(20,21,25,.72) 0,rgba(20,21,25,.18) 16%,rgba(20,21,25,0) 32%,rgba(20,21,25,.48) 74%,var(--bg) 100%),
+    linear-gradient(90deg,rgba(20,21,25,.68) 0,rgba(20,21,25,.3) 40%,rgba(20,21,25,0) 66%);}
+}
+
+/* @page enquire */
+/* 4. Hold a place in context (tools/v4_ux.py): arriving with ?trip=..&when=..,
+      the departure's facts under the title, the form straight after them (the
+      call box moves below it); the header's own Enquire Now is not offered on
+      the enquiry page itself. */
+body.enq .page-wrap > nav .nav-cta{display:none;}
+body.enq .page-wrap > nav .nav-toggle{margin-left:auto;}
+.v4u-hold + .kit-intro{margin-top:var(--sp-4);}
+.v4u-hold{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-3) var(--sp-4);
+  margin:var(--sp-4) 0 0;padding:var(--sp-3) 0 0;border-top:1px solid var(--edge);max-width:44rem;}
+@media (min-width:700px){ .v4u-hold{grid-template-columns:repeat(4,minmax(0,auto));} }
+.v4u-hold[hidden]{display:none;}
+.v4u-hold p{margin:0;}
+.v4u-hold .l{display:block;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:.35rem;}
+.v4u-hold .v{display:block;font-family:var(--font-display);font-weight:600;color:var(--white);font-size:var(--fs-body);line-height:1.35;}
+html.v4u-holding .enq-wrap > div{display:flex;flex-direction:column;}
+html.v4u-holding .enq-quick{order:2;margin-top:var(--sp-5);}
+html.v4u-holding #enqForm{margin-top:0 !important;}
+/* 27. The enquiry form's messages under the fields (src/v4-ux-form.js), in the
+       form's own orange, the field's edge with them. */
+.enq-err{margin:.45rem 0 0;color:var(--orange);font-size:var(--fs-small);line-height:1.5;}
+html .enq-field :is(input,select,textarea)[aria-invalid=true]{border-color:var(--orange);}
+html .enq-consent:has(input[aria-invalid=true]) + .enq-err{margin-top:-.4rem;}
+
+/* @page episode */
+/* 8. The transcript on a phone: each paragraph's time above it, so the words
+      take the column's whole width (264px and about 33 characters a line before). */
+@media (max-width:820px){
+  html .cd-v2 .cd-line{display:block;}
+  html .cd-v2 .cd-line .cd-ts{display:inline-block;padding:0;margin:0 0 .2rem;}
+  html .cd-v2 .cd-line::before{left:-.7rem;}
+}
+/* 9. Chapters on a phone: a list down the page, not thirteen 220px cards in a
+      sideways row; on any touch screen the chapter timeline's thin ticks (2.7
+      to 19px), and the audio player's chapter marks on its bar, are left out:
+      the list is the way to a chapter there. */
+@media (max-width:820px){
+  html .cd-v2 .cd-rail{display:block;overflow:visible;margin:0;padding:0;-webkit-mask-image:none;mask-image:none;}
+  html .cd-v2 .cd-rail-title{margin:0 0 var(--sp-2);}
+  html .cd-v2 .cd-rail .cd-chap{width:auto;display:flex;justify-content:space-between;align-items:baseline;gap:var(--sp-3);
+    background:none;border:0;border-left:2px solid var(--line);padding:.7rem 0 .7rem .9rem;min-height:44px;}
+  html .cd-v2 .cd-rail .cd-chap.active{border-left-color:var(--orange);}
+  html .cd-v2 .cd-rail .cd-chap time{flex:none;margin:0;}
+}
+
+/* @page kb */
+/* 13. Ideas first on a phone: a knowledge base page's conversations are one
+       row to swipe through (a third of the height of the grid they were),
+       so the first idea starts within a screen and a half. */
+@media (max-width:760px){
+  html [data-v2="kb"] #episodes{padding-top:var(--sp-4);padding-bottom:var(--sp-4);}
+  html [data-v2="kb"] #episodes .k-head{margin-bottom:var(--sp-3);}
+  html [data-v2="kb"] #episodes .ep-grid{display:flex;gap:.75rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;margin:0 calc(-1 * clamp(1.5rem,5vw,4rem));padding:0 clamp(1.5rem,5vw,4rem) .25rem;
+    scroll-padding-inline:clamp(1.5rem,5vw,4rem);}
+  html [data-v2="kb"] #episodes .ep-grid::-webkit-scrollbar{display:none;}
+  html [data-v2="kb"] #episodes .ep-tile{flex:0 0 min(78vw,20rem);scroll-snap-align:start;grid-template-columns:7.5rem minmax(0,1fr);
+    grid-template-rows:auto 1fr auto;padding:.6rem;row-gap:.25rem;}
+  html [data-v2="kb"] #episodes .ep-tile .ep-th{grid-row:1 / 4;}
+  html [data-v2="kb"] #episodes .ep-tile :is(.ep-stamp,.ep-foot){padding:0;min-height:0;border:0;}
+  html [data-v2="kb"] #episodes .ep-tile .ep-tile-body{padding:0;}
+  html [data-v2="kb"] #episodes .ep-tile .ep-tile-title{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;}
+  html [data-v2="kb"] #episodes .ep-tile .ep-tile-guest{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+}
+/* 14. The series pages' jump row (tools/v4_ux.py), the trip pages' own:
+       each idea by its kicker, then Worth Remembering, FAQ and the
+       conversations; it stays at the top while the page scrolls. */
+html .v4u-jump{position:sticky;top:0;z-index:15;background:rgba(20,21,25,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);}
+html .v4u-jump .dst-jump-in{display:flex;align-items:center;gap:.2rem;overflow-x:auto;padding:0 var(--edge-x);scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;}
+html .v4u-jump .dst-jump-in::-webkit-scrollbar{display:none;}
+html .v4u-jump a{white-space:nowrap;color:var(--gray-light);text-decoration:none;font-size:.86rem;padding:1rem .95rem;
+  border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
+html .v4u-jump a:first-child{padding-left:0;}
+html .v4u-jump a:hover,html .v4u-jump a:focus-visible{color:var(--white);border-bottom-color:var(--orange);}
+@media (pointer:coarse){ html .v4u-jump a{min-height:44px;display:inline-flex;align-items:center;} }
+html [data-v2="kb"] :is(.k-sec,.band-fig){scroll-margin-top:3.75rem;}
+/* 16. Reading measure. Running text on the knowledge base and trip pages in
+       one size from the scale (--fs-body), secondary text in the other
+       (--fs-body-s), instead of seven sizes from 14.9 to 17.3px; and no line
+       of it wider than about 75 characters (31rem; it reached 111 in the
+       knowledge base folds and 143 on Kenya at 1440). */
+html [data-v2="kb"] :is(.faq-r details p, .k-more p, .band .short, .check p, .k-hero p){font-size:var(--fs-body);max-width:31rem;}
+html [data-v2="kb"] .bd-src{max-width:28rem;}
+
+/* @page hub */
+/* 15. The knowledge base hub. Each series says what it is about: its own
+       page's question under its name (tools/v4_ux.py), so Sky Gods and The
+       Dark Side explain themselves; the site search sits at the top, under
+       the introduction; on a phone no word is set under 12px, and each
+       altitude on the climb is a 46px band to tap (it was an 18px line). */
+html .clb-topic{display:grid;grid-template-columns:max-content minmax(0,1fr);justify-items:start;align-items:baseline;column-gap:.6rem;row-gap:.2rem;
+  border-radius:.75rem;max-width:21rem;padding:.6rem .95rem .7rem;}
+html .clb-topic b{font-size:max(12px,.74rem);}
+html .clb-topic .v4-q{grid-column:1 / -1;font-size:max(12px,var(--fs-small));line-height:1.4;color:var(--gray);transition:color .2s;}
+html .clb-topic:is(:hover,:focus-visible) .v4-q{color:var(--gray-light);}
+html .clb-topics{align-items:stretch;}
+.v4u-find{position:relative;max-width:34rem;margin:0 0 var(--sp-4);z-index:3;}
+.v4u-find-lab{display:block;font-size:max(12px,var(--fs-micro));font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light);margin-bottom:.5rem;}
+.v4u-find input{width:100%;height:3rem;padding:0 .75rem;background:rgba(255,255,255,.04);border:0;border-bottom:1px solid var(--edge-hi);
+  color:var(--white);font:inherit;font-size:var(--fs-body);border-radius:0;}
+.v4u-find input:focus{outline:none;border-bottom-color:var(--orange);}
+.v4u-find input::placeholder{color:var(--gray);}
+.v4u-find input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
+.v4u-find .v4-hits{background:rgba(20,21,25,.96);padding:0 .75rem;}
+.v4u-find .v4-hits a{grid-template-columns:7rem minmax(0,1fr);}
+@media (max-width:560px){ .v4u-find .v4-hits a{grid-template-columns:1fr;} }
+.v4-climb-hit{fill:transparent;}
+@media (max-width:760px){
+  html :is(.clb-face-t,.clb-cue,.clb-how summary,.clb-hero-in .kicker,.clb-tag,.clb-n,.clb-count){font-size:max(12px,1em);}
+  html .clb-face-t{font-size:12px;}
+  html .clb-cue,html .clb-how summary,html .clb-hero-in .kicker{font-size:12px;}
+  html .clb-alt i{font-size:12px;}
+}
+
+/* @page library */
+/* 17. The library's search under its title (tools/v4_ux.py; it sat 3.1 phone
+       screens down), its first results right under it (v2-library.js), and
+       topics offered when nothing matches. */
+.v4u-libfind{position:relative;max-width:34rem;margin:var(--sp-3) 0 0;z-index:3;}
+.v4u-libfind .v2-find-input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
+
+/* @page libfind */
+/* 17, the rest: what the library's search shows, which comes with
+   library-find.js on the first keystroke (tools/v4_search.py), so the page
+   does not carry it on arrival. */
+.v4u-libfind .v4-hits{background:rgba(20,21,25,.96);padding:0 .75rem;}
+.v4u-libfind .v4-hits a{grid-template-columns:6.5rem minmax(0,1fr);}
+@media (max-width:560px){ .v4u-libfind .v4-hits a{grid-template-columns:1fr;} }
+.v4u-hits-all a{display:flex !important;color:var(--orange);font-weight:600;font-size:var(--fs-body-s);}
+.v4u-topics{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:.8rem 0 0;}
+.v4u-topics > span{font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light);margin-right:.25rem;}
+.v4u-topics a.tg-chip{min-height:36px;display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .8rem;}
+.v4u-topics-all{color:var(--orange);font-size:var(--fs-body-s);}
+@media (pointer:coarse){ .v4u-topics a{min-height:44px;display:inline-flex;align-items:center;} }
+
+/* @page podcast */
+/* 11. Layout jumps. The podcast's wall of names re-wrapped when its typeface
+      arrived, moving most of the opening (a shift of 0.55): it now waits,
+      hidden, until the face is in (a short script in the page's head,
+      tools/v4_ux.py; 2.5 s at most), then fades in. Episodes: the Listening
+      mode button is in the page from the start (tools/v4_ux.py), so the
+      hero no longer grows under the reader; without script it is not shown. */
+html.v4u-wall .v4-voices{visibility:hidden;opacity:0;}
+/* 19. The newest episode on the podcast's screen one, from the saved archive
+       (tools/v4_ux.py), its play button the feed's own; the whole row opens
+       the episode, the button plays it here. */
+.v4u-latest{--cv:52px;position:relative;display:grid;grid-template-columns:var(--cv) minmax(0,1fr);align-items:center;gap:var(--sp-3);
+  max-width:30rem;margin:var(--sp-4) 0 0;padding:.55rem 1.4rem .55rem .55rem;border:1px solid var(--edge);border-radius:999px;
+  background:rgba(20,21,25,.62);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transition:border-color .3s ease;}
+.v4u-latest:hover,.v4u-latest:focus-within,.v4u-latest.playing{border-color:var(--edge-hi);}
+.v4u-latest p{margin:0;min-width:0;line-height:1.35;}
+.v4u-latest-k{display:block;font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:.2rem;}
+.v4u-latest a{font-family:var(--font-display);font-weight:600;font-size:var(--fs-body-s);color:var(--white);text-decoration:none;}
+.v4u-latest a::after{content:"";position:absolute;inset:0;border-radius:inherit;}
+.v4u-latest a:hover{color:var(--orange);}
+.v4u-latest a:focus-visible{outline:none;}
+.v4u-latest:has(a:focus-visible){outline:2px solid var(--white);outline-offset:3px;}
+.v4u-latest-w{color:var(--gray-light);font-size:var(--fs-body-s);}
+.v4u-play{position:relative;z-index:1;width:var(--cv);height:var(--cv);margin:0;padding:0;border:0;border-radius:50%;cursor:pointer;
+  display:grid;place-items:center;color:var(--white);background:var(--orange);}
+.v4u-play::before{content:"";position:absolute;inset:-5px;border-radius:50%;pointer-events:none;
+  background:conic-gradient(var(--orange) calc(var(--p,0) * 1turn),rgba(255,255,255,.12) 0);
+  -webkit-mask:radial-gradient(circle closest-side,transparent calc(100% - 2px),#000 calc(100% - 1px));
+  mask:radial-gradient(circle closest-side,transparent calc(100% - 2px),#000 calc(100% - 1px));opacity:0;transition:opacity .3s ease;}
+.v4u-latest.playing .v4u-play::before{opacity:1;}
+.v4u-play svg{width:20px;height:20px;}
+.v4u-play .v4u-i-pause,.v4u-latest.playing .v4u-play .v4u-i-play{display:none;}
+.v4u-latest.playing .v4u-play .v4u-i-pause{display:inline;}
+.v4u-play:focus-visible{outline:2px solid var(--white);outline-offset:4px;}
+.v4u-play:active{scale:var(--press);}
+@media (scripting:none){ .v4u-latest{grid-template-columns:minmax(0,1fr);padding-left:1.4rem;} .v4u-play{display:none;} }
+@media (max-width:760px){ .v4u-latest{margin-top:var(--sp-3);} }
+
+/* @page topics */
+/* 20. The topics page: a box that narrows the tiles (tools/v4_ux.py), and a
+       caption for the traces on them. */
+.v4u-tgtools{max-width:34rem;margin:var(--sp-3) 0 0;display:flex;}
+.tg-spark-cap{display:flex;align-items:center;gap:.6rem;margin:var(--sp-2) 0 0;font-size:var(--fs-small);color:var(--gray-light);}
+.tg-spark-cap svg{flex:none;width:40px;height:12px;fill:none;stroke:var(--orange);stroke-width:1.4;stroke-linecap:round;}
+html [data-v2="tg"] .tg-tile[hidden]{display:none !important;}
+.v4u-tg-none{color:var(--gray-light);font-size:var(--fs-body-s);}
+.v4u-tg-none a{color:var(--orange);margin-left:.4rem;}
+.v4u-tgfind .v2-find-input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
+@media (scripting:none){ .v4u-tgtools{display:none;} }

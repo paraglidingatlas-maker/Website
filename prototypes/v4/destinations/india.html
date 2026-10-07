@@ -112,7 +112,7 @@
 <link rel="preload" href="../../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../../styles.css?v=b084e774">
-<link rel="stylesheet" href="../v2.css?v=3416399e">
+<link rel="stylesheet" href="../v2.css?v=4ea4ff12"><!-- v4u-css: src/v4-ux.css via tools/v4_ux.py --><style>html .dst-mobar{padding:.6rem var(--gutter) calc(.6rem + env(safe-area-inset-bottom,0px));gap:.8rem}html .dst-mobar-l{min-width:0}html .v4u-bar .n{font-size:var(--fs-h4);line-height:1.2;white-space:nowrap}html .v4u-bar .n small{font:500 var(--fs-small)/1 var(--font-body);color:var(--gray-light)}html .v4u-bar .w{font-size:max(12px,var(--fs-micro));line-height:1.3;margin-top:.15rem}html .v4u-bar .w span{white-space:nowrap}html .dst-mobar .btn-solid{flex:none}@media (max-width:440px){html .dst-mobar .btn-solid{padding:.8rem 1.1rem;font-size:.9rem}}@media (max-width:350px){html .dst-mobar{padding-left:.75rem;padding-right:.75rem;gap:.6rem}html .dst-mobar .btn-solid{padding:.8rem .9rem}}@media (max-width:760px){html .gxa-track{height:calc(var(--n) * 15vh + 100vh);height:calc(var(--n) * 15svh + 100svh)}html .tm-track{height:calc(var(--n) * 50vh + 120vh);height:calc(var(--n) * 50svh + 120svh)}}@media (max-width:1100px) and (orientation:portrait){html .gxa-f{display:flex;flex-direction:column;justify-content:center}html .gxa-f picture{height:auto;flex:none}html .gxa-f img{height:auto;max-height:56vh;max-height:56svh;object-fit:contain;transform:scale(calc(1.03 - .03 * var(--t,0)));transform-origin:50% 50%}html .gxa-f::after{display:none}html .gxa-f figcaption{position:static;margin:var(--sp-3) var(--edge-x) 0;max-width:none}}html .v4u-etq{border-top:1px solid var(--line);padding-bottom:var(--sp-5)}html .v4u-etq .v4u-etq-head{margin-bottom:var(--sp-3)}html .v4u-etq .etq-open .dst-head{margin-top:0}.v4u-jbook{display:none}@media (min-width:821px){html .v4u-jbook{display:flex;align-items:center;gap:var(--sp-3);flex:none;position:sticky;right:0;padding-left:3rem;background:linear-gradient(90deg,rgba(20,21,25,0) 0,#141519 2.6rem)}html .v4u-jprice{font-family:var(--font-display);font-weight:700;color:var(--white);font-size:var(--fs-body);white-space:nowrap}html .v4u-jprice small{font:500 var(--fs-small)/1 var(--font-body);color:var(--gray-light)}html .dst-jump .v4u-jbook .btn-solid,html .dst-jump .v4u-jbook .btn-solid:hover,html .dst-jump .v4u-jbook .btn-solid:focus-visible{padding:.55rem 1.2rem;font-size:.86rem;color:var(--bg);border-bottom:0}}html .v2-dst.v4-trip .page-wrap :is(.kfaq-inner p,.kreal-rest,.dst-head p,.etq-diy-note,.etq-open p,.kov-friends,.kov-q p,.v4t-gfold p,.dst-lede,.dst-rel-body,.kfly-lead,.kfly-tail,.cta-body,.tm-head p,.kdates-terms){font-size:var(--fs-body);max-width:31rem}html .v2-dst.v4-trip .page-wrap :is(.kday-stop p,.kkit-gblurb,.kair-txt,.kfaq-note){font-size:var(--fs-body-s)}@media (min-width:601px){html .khero-scrim{background: radial-gradient(ellipse 60% 50% at 22% 58%,rgba(20,21,25,.62),rgba(20,21,25,0) 76%),linear-gradient(180deg,rgba(20,21,25,.72) 0,rgba(20,21,25,.18) 16%,rgba(20,21,25,0) 32%,rgba(20,21,25,.48) 74%,var(--bg) 100%),linear-gradient(90deg,rgba(20,21,25,.68) 0,rgba(20,21,25,.3) 40%,rgba(20,21,25,0) 66%)}}</style><!-- /v4u-css -->
 <link rel="stylesheet" href="../../../destinations.css?v=993310a6">
 <style>
 /* ---------- INDIA additions =============================================
@@ -330,7 +330,7 @@
 }
 </script>
 <!-- /site-schema --><script src="../v2.js?v=c7722c82"></script>
-<script src="../v2-immersive.js?v=aaca0e93"></script>
+<script src="../v2-immersive.js?v=80a8b878"></script>
 <!-- app --><link rel="manifest" href="../manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -2034,5 +2034,39 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
   }
 })();
 </script>
+<!-- v4u-footage: src/v4-ux-footage.js via tools/v4_ux.py --><script>(function () {
+var d = document, w = window;
+function keep(v) { try { if (v === undefined) return localStorage.getItem("v4-still"); localStorage.setItem("v4-still", v); } catch (e) { return null; } }
+function init() {
+var wind = d.querySelector(".footer-bottom .v2-wind");
+if (!wind || d.querySelector(".v4u-still") || (w.matchMedia && w.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+var still = keep() === "on", b = d.createElement("button");
+b.type = "button"; b.className = "v2-wind v4u-still";
+function own(v) { return v.tagName === "VIDEO" && !v.closest(".cd-player, .v4-ls"); }
+function label() {
+var t = still ? "Play" : "Pause";
+b.setAttribute("aria-label", t); b.title = t;
+b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+(still ? '<path d="M7 5l12 7-12 7z"/>' : '<path d="M8 5v14"/><path d="M16 5v14"/>') + '</svg><span class="v4-wind-l" aria-hidden="true">' + t + "</span>";
+}
+function inView(v) {
+var r = v.getBoundingClientRect(), when = v.getAttribute("data-loop-when"), host = when && v.closest(when);
+return r.bottom > 0 && r.top < w.innerHeight && r.width > 0 && (!host || host.classList.contains("is-on"));
+}
+function each(f) { [].forEach.call(d.querySelectorAll("video"), function (v) { if (own(v)) f(v); }); }
+d.addEventListener("play", function (e) { if (still && own(e.target)) e.target.pause(); }, true);
+b.addEventListener("click", function () {
+still = !still; keep(still ? "on" : "off"); label();
+each(function (v) {
+if (still) v.pause();
+else if ((v.currentSrc || v.getAttribute("src")) && inView(v)) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+});
+});
+label();
+if (still) each(function (v) { v.pause(); });
+wind.parentNode.insertBefore(b, wind.nextSibling);
+}
+if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();</script><!-- /v4u-footage -->
 </body>
 </html>

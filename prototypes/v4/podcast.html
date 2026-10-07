@@ -68,7 +68,7 @@
 <link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../styles.css?v=b084e774">
-<link rel="stylesheet" href="v2.css?v=3416399e">
+<link rel="stylesheet" href="v2.css?v=4ea4ff12"><!-- v4u-css: src/v4-ux.css via tools/v4_ux.py --><style>html.v4u-wall .v4-voices{visibility:hidden;opacity:0}.v4u-latest{--cv:52px;position:relative;display:grid;grid-template-columns:var(--cv) minmax(0,1fr);align-items:center;gap:var(--sp-3);max-width:30rem;margin:var(--sp-4) 0 0;padding:.55rem 1.4rem .55rem .55rem;border:1px solid var(--edge);border-radius:999px;background:rgba(20,21,25,.62);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transition:border-color .3s ease}.v4u-latest:hover,.v4u-latest:focus-within,.v4u-latest.playing{border-color:var(--edge-hi)}.v4u-latest p{margin:0;min-width:0;line-height:1.35}.v4u-latest-k{display:block;font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:.2rem}.v4u-latest a{font-family:var(--font-display);font-weight:600;font-size:var(--fs-body-s);color:var(--white);text-decoration:none}.v4u-latest a::after{content:"";position:absolute;inset:0;border-radius:inherit}.v4u-latest a:hover{color:var(--orange)}.v4u-latest a:focus-visible{outline:none}.v4u-latest:has(a:focus-visible){outline:2px solid var(--white);outline-offset:3px}.v4u-latest-w{color:var(--gray-light);font-size:var(--fs-body-s)}.v4u-play{position:relative;z-index:1;width:var(--cv);height:var(--cv);margin:0;padding:0;border:0;border-radius:50%;cursor:pointer;display:grid;place-items:center;color:var(--white);background:var(--orange)}.v4u-play::before{content:"";position:absolute;inset:-5px;border-radius:50%;pointer-events:none;background:conic-gradient(var(--orange) calc(var(--p,0) * 1turn),rgba(255,255,255,.12) 0);-webkit-mask:radial-gradient(circle closest-side,transparent calc(100% - 2px),#000 calc(100% - 1px));mask:radial-gradient(circle closest-side,transparent calc(100% - 2px),#000 calc(100% - 1px));opacity:0;transition:opacity .3s ease}.v4u-latest.playing .v4u-play::before{opacity:1}.v4u-play svg{width:20px;height:20px}.v4u-play .v4u-i-pause,.v4u-latest.playing .v4u-play .v4u-i-play{display:none}.v4u-latest.playing .v4u-play .v4u-i-pause{display:inline}.v4u-play:focus-visible{outline:2px solid var(--white);outline-offset:4px}.v4u-play:active{scale:var(--press)}@media (scripting:none){.v4u-latest{grid-template-columns:minmax(0,1fr);padding-left:1.4rem}.v4u-play{display:none}}@media (max-width:760px){.v4u-latest{margin-top:var(--sp-3)}}</style><!-- /v4u-css -->
 <style>
   .pod-hero{position:relative;min-height:64vh;display:flex;align-items:flex-end;}
   .pod-hero-media{position:absolute;inset:0;z-index:-2;}
@@ -955,7 +955,7 @@
 }
 </script>
 <!-- /site-schema --><script src="v2.js?v=c7722c82"></script>
-<script src="v2-immersive.js?v=aaca0e93"></script>
+<script src="v2-immersive.js?v=80a8b878"></script>
 <noscript id="v4-nofeed"><style>#ytStatus,#liveFeedStatus{display:none;}</style></noscript>
 <!-- app --><link rel="manifest" href="manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1017,7 +1017,7 @@
   <div class="v4-br-in">
     <blockquote class="v2-pull v4-br-q"><p>Intimate, deep and often thought provoking, these conversations are curated to stimulate, educate, inspire and empower you to touch the sky with glory every time you practice the art of flight.</p></blockquote>
   </div>
-</section>
+</section><!-- v4u-breather: tools/v4_ux.py --><script>(function(v){var m=location.pathname.match(/^(.*\/prototypes\/v\d+\/)/);if(v&&innerWidth/Math.max(1,innerHeight)<=2/3)v.setAttribute('data-loop',(m?m[1]:'/assets/v4/')+'img/clips/hero-p');})(document.querySelector('.v4-breather video[data-loop$="video/hero"]'));</script><!-- /v4u-breather -->
 
 <section class="kit-band v2-host">
   <div class="kit-in v2-host-grid">
@@ -1355,5 +1355,39 @@ if (!quiet && audio && !audio.paused && e.target.closest && e.target.closest(".e
 }
 if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();</script><!-- /v4u-latest-js -->
+<!-- v4u-footage: src/v4-ux-footage.js via tools/v4_ux.py --><script>(function () {
+var d = document, w = window;
+function keep(v) { try { if (v === undefined) return localStorage.getItem("v4-still"); localStorage.setItem("v4-still", v); } catch (e) { return null; } }
+function init() {
+var wind = d.querySelector(".footer-bottom .v2-wind");
+if (!wind || d.querySelector(".v4u-still") || (w.matchMedia && w.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+var still = keep() === "on", b = d.createElement("button");
+b.type = "button"; b.className = "v2-wind v4u-still";
+function own(v) { return v.tagName === "VIDEO" && !v.closest(".cd-player, .v4-ls"); }
+function label() {
+var t = still ? "Play" : "Pause";
+b.setAttribute("aria-label", t); b.title = t;
+b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+(still ? '<path d="M7 5l12 7-12 7z"/>' : '<path d="M8 5v14"/><path d="M16 5v14"/>') + '</svg><span class="v4-wind-l" aria-hidden="true">' + t + "</span>";
+}
+function inView(v) {
+var r = v.getBoundingClientRect(), when = v.getAttribute("data-loop-when"), host = when && v.closest(when);
+return r.bottom > 0 && r.top < w.innerHeight && r.width > 0 && (!host || host.classList.contains("is-on"));
+}
+function each(f) { [].forEach.call(d.querySelectorAll("video"), function (v) { if (own(v)) f(v); }); }
+d.addEventListener("play", function (e) { if (still && own(e.target)) e.target.pause(); }, true);
+b.addEventListener("click", function () {
+still = !still; keep(still ? "on" : "off"); label();
+each(function (v) {
+if (still) v.pause();
+else if ((v.currentSrc || v.getAttribute("src")) && inView(v)) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+});
+});
+label();
+if (still) each(function (v) { v.pause(); });
+wind.parentNode.insertBefore(b, wind.nextSibling);
+}
+if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();</script><!-- /v4u-footage -->
 </body>
 </html>
