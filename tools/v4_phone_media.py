@@ -20,7 +20,8 @@ stills under the knowledge base's film strips (film-<name>-p.webp, the usability
 pass's weight check: the strip now sits within a phone's first screens, where the
 browser fetches a lazy picture at once, and the 1600 px still was 87 to 309 KB).
 
-Writes prototypes/v4/img/hero/<trip>-<name>-p.webp|jpg, film-<name>-p.webp, img/art/<episode>-s.webp and
+Writes prototypes/v4/img/hero/<trip>-<name>-p.webp|jpg, film-<name>-p.webp, img/art/<episode>-s.webp,
+img/clouds/cloud-<n>-s.webp and
 prototypes/v4/img/clips/<name>-p-720.webm|mp4. Needs Pillow and ffmpeg
 (libvpx-vp9, libx264).
 """
@@ -125,6 +126,24 @@ def art_thumbs(out, force):
         print("tile art %s: %dx%d, %d KB" % (os.path.basename(dst), im.width, im.height, os.path.getsize(dst) // 1024))
 
 
+def cloud_copies(out, force):
+    """The Kenya page's own cloud layers (assets/destinations/kenya/clouds, 2400 px wide, transparent) at 1000 px
+    for a phone, for the climb into the footage bands (src/v4-ux-ascent.js): the same clouds at 1000 px."""
+    from PIL import Image
+    os.makedirs(out, exist_ok=True)
+    src = os.path.join(ROOT, "assets", "destinations", "kenya", "clouds")
+    for f in sorted(os.listdir(src)):
+        if not f.endswith(".webp"):
+            continue
+        dst = os.path.join(out, f[:-5] + "-s.webp")
+        if not force and os.path.exists(dst):
+            continue
+        im = Image.open(os.path.join(src, f)).convert("RGBA")
+        im = im.resize((1000, round(im.height * 1000 / im.width)), Image.LANCZOS)
+        im.save(dst, "WEBP", quality=60, method=6, alpha_quality=60)     # soft edges: 21 to 33 KB a layer
+        print("cloud %s: %dx%d, %d KB" % (os.path.basename(dst), im.width, im.height, os.path.getsize(dst) // 1024))
+
+
 def cut(im, x):
     """The 2:3 window an upright screen shows at object-position x%, as a box in the image."""
     w, h = im.size
@@ -180,6 +199,7 @@ def main(args):
     film_stills(os.path.join(out, "hero") if out else os.path.join(V4, "img", "hero"), force)
     page_stills(os.path.join(out, "hero") if out else os.path.join(V4, "img", "hero"), force)
     art_thumbs(os.path.join(out, "art") if out else os.path.join(V4, "img", "art"), force)
+    cloud_copies(os.path.join(out, "clouds") if out else os.path.join(V4, "img", "clouds"), force)
     clips(os.path.join(out, "clips") if out else os.path.join(V4, "img", "clips"), force)
 
 

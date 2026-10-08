@@ -23,7 +23,8 @@ Where the rest lives
                        live audit must not find inside a page.
   src/v4-ux-*.js       the pass's scripts, inlined only where used (the hero
                        clips, the footage's Pause, the newest episode, the
-                       enquiry form, the in-page search); the library's
+                       enquiry form, the in-page search, the climb into the
+                       footage); the library's
                        search extras ride in library-find.js (tools/v4_search.py).
   <!--v4u-name-->      the marks around what this writes into a page.
 
@@ -35,7 +36,9 @@ every drawing in relative steps); 10 episode labels; 11 the podcast's wall
 and the Listening mode button; 14 and 15 the knowledge base's jump rows and
 hub; 17 the library's search; 19 the podcast's newest episode; 20 topics;
 21 one main per page; 22 small labels; 23 the footage's Pause; 24 Tap on
-touch; 26 image sizes; 27 the enquiry form's messages.
+touch; 26 image sizes; 27 the enquiry form's messages. After the brief (the
+owner, 8 Oct 2026): the climb from the page's dark through cloud into each
+footage band ("ascent").
 """
 import html
 import os
@@ -776,6 +779,25 @@ def podcast_breather(src):
     return src[:m.end()] + BREATHER_MARK[0] + BREATHER_JS + BREATHER_MARK[1] + src[m.end():]
 
 
+# ------------------------------------------------------------------------ the climb into the footage (8 Oct 2026)
+ASCENT_MARK = ("<!--v4u-ascent-->", "<!--/v4u-ascent-->")
+ASCENT_JS_MARK = ("<!--v4u-ascent-js-->", "<!--/v4u-ascent-js-->")
+ASCENT = ('<div class="v4-ascent" aria-hidden="true"><div class="v4-asc-c v4-asc-c1" data-v4-cloud="1"></div>'
+          '<div class="v4-asc-c v4-asc-c2" data-v4-cloud="3"></div><div class="v4-asc-c v4-asc-c3" data-v4-cloud="4"></div></div>')
+
+
+def ascent(src):
+    """The owner, 8 Oct 2026: the footage came in straight after dark text; the page now climbs to it. A stretch
+    of sky before each footage band, dark to the white of cloud with the site's own cloud layers passing (the
+    Kenya page's, img/clouds on a phone), the footage coming up out of the white and the page's dark after it:
+    src/v4-ux.css "ascent", src/v4-ux-ascent.js. Drawn only, hidden from screen readers, no words."""
+    if 'class="v4-breather' not in src:
+        return src
+    src = re.sub(r"%s.*?%s\n?" % (re.escape(ASCENT_MARK[0]), re.escape(ASCENT_MARK[1])), "", src, flags=re.S)
+    src = re.sub(r'(?<!<!-- v4-footage -->)(?=(?:<!-- v4-footage -->)?<section class="v4-breather[ "])', lambda m: ASCENT_MARK[0] + ASCENT + ASCENT_MARK[1] + "\n", src)
+    return put_block(src, ASCENT_JS_MARK, "<script>%s</script>" % inline_js("v4-ux-ascent.js"), "</body>")
+
+
 # ------------------------------------------------------------------------- the pass's own CSS and scripts, by page
 UXCSS_MARK = ("<!--v4u-css-->", "<!--/v4u-css-->")
 FOOT_MARK = ("<!--v4u-footage-->", "<!--/v4u-footage-->")
@@ -800,6 +822,8 @@ def ux_groups(rel, src):
             g.append(n)
     if "v4u-touch" in src:
         g.append("touch")
+    if 'class="v4-ascent"' in src:
+        g.append("ascent")
     return g
 
 
@@ -1232,6 +1256,7 @@ def page(rel, src):
         src = gallery_lazy(src)
         src = trip_subnav(src)
         src = media_script(src)
+    src = ascent(src)
     src = ux_scripts(rel, src)
     src = ux_css(rel, src)
     src = drawings_relative(src)
