@@ -70,7 +70,7 @@ series pages, 18 episodes, Flight options, Partners and the sitemap.
 5. An episode: the transcript reads full width, chapters are a list, the
    Listening mode button is there from the start.
 6. A knowledge base series page: the jump row stays at the top while you
-   scroll; the film strip's still arrives as you come to it.
+   scroll.
 7. Library: type "collapse"; the results appear under the field. Then type
    nonsense: it offers Topics.
 8. Enquire: press Send with the form empty; a message under each field, the
@@ -108,25 +108,24 @@ Nothing was changed for these; one screenshot each.
    pages' titles and structured data still say so (they must match the live
    site). Correct them at the source?
 
-## After the report: the climb into the footage (8 Oct)
+## After the report: footage only on the trips and the home page (8 Oct)
 
-The owner: the footage came in straight after dark text; the background should
-go from black to white, then the video, then back to dark. On the five pages
-with a footage band (the podcast, and the knowledge base's flight mechanics,
-meteorology, risk and weather forecast pages) a stretch of sky now comes first, 120% of the screen
-(100% on a phone): the page's dark lifts through the light of the visitor's
-hour (the site's own dawn, day, dusk and night tints) to white, the Kenya
-page's cloud layers pass at three depths (far ones slower than the page, the
-near one faster, over the footage's edge), the footage comes up out of the
-white without an edge, a little near, and settles, and its foot fades back to
-the page's dark. The podcast's line over its footage comes in as the white
-clears. Reduced motion: nothing moves, the footage stands half out of the
-cloud. Sources: `src/v4-ux.css` ("ascent"), `src/v4-ux-ascent.js`,
-`tools/v4_ux.py` `ascent()`; the phone's cloud copies (1000 px, 21 to 34 KB a
-layer) are `img/clouds`, from `tools/v4_phone_media.py`. Cost: 1.3 to 1.5 KB
-gzipped on each of the five pages; the clouds load only as the sky comes near
-(about 90 KB on a phone, the live site's own files on a computer). Layout
-shift unchanged (0.00 on the podcast), gates passed.
+The owner saw the footage bands with a climb of cloud before each and asked
+for the videos to go from those pages entirely, keeping footage to the trip
+pages (and the home page), and the immersion on the other pages to come from
+what the site makes itself. Taken out: the podcast's full-screen footage
+(its line, "Intimate, deep and often thought provoking...", stays, as the
+plain quote band v2 had), the four knowledge base film strips (flight
+mechanics, meteorology, risk, weather forecasts), and the climb that led into
+them. Gone with them: the film strips' phone stills, the unused Meteorology
+still, the cloud copies, the climb's script and rules, and the shared
+stylesheet's rules for these bands (every page 0.3 KB lighter gzipped). The
+five pages are 0.5 to 1.2 KB lighter gzipped than before the climb, and no
+longer fetch any footage. The stills behind the Mission and About headers
+stay (photographs, not video). `tools/v4_footage.py` now clears the four
+strips; `tools/v4_ux.py` clears what it had written for them. The climb is in
+the history (commit c6065c47) if a made-for-the-site animation wants its
+cloud layers.
 
 ## How it is built
 
