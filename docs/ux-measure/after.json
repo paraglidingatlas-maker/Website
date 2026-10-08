@@ -534,11 +534,11 @@
   "title": "Nothing important folded away"
  },
  "6": {
-  "summary": "India 1.46 MB, home 1.37 MB, Kenya 0.79 MB (gzipped as served: 0.98 / 0.93 / 0.34 MB)",
+  "summary": "India 1.43 MB, home 1.36 MB, Kenya 0.77 MB (gzipped as served: 0.97 / 0.93 / 0.33 MB)",
   "data": {
    "index.html": {
-    "raw": 1370254,
-    "served": 934523,
+    "raw": 1355329,
+    "served": 928565,
     "top": [
      [
       "/prototypes/v4/img/clips/hero-p-720.webm",
@@ -557,14 +557,14 @@
       65038
      ],
      [
-      "/prototypes/v4/v2.css?v=f5073ed3",
-      34848
+      "/prototypes/v4/v2.css?v=4ea4ff12",
+      34484
      ]
     ]
    },
    "destinations/india.html": {
-    "raw": 1455113,
-    "served": 984899,
+    "raw": 1426444,
+    "served": 974634,
     "top": [
      [
       "/prototypes/v4/img/clips/bir-p-720.webm",
@@ -576,11 +576,11 @@
      ],
      [
       "/prototypes/v4/destinations/india.html",
-      59840
+      50147
      ],
      [
-      "/prototypes/v4/v2.css?v=f5073ed3",
-      34848
+      "/prototypes/v4/v2.css?v=4ea4ff12",
+      34484
      ],
      [
       "/styles.css?v=b084e774",
@@ -589,20 +589,20 @@
     ]
    },
    "destinations/kenya.html": {
-    "raw": 790143,
-    "served": 338568,
+    "raw": 766900,
+    "served": 330611,
     "top": [
      [
       "/prototypes/v4/destinations/kenya.html",
-      51075
+      43690
      ],
      [
       "/prototypes/v4/img/hero/kenya-longonot-p.webp",
       42254
      ],
      [
-      "/prototypes/v4/v2.css?v=f5073ed3",
-      34848
+      "/prototypes/v4/v2.css?v=4ea4ff12",
+      34484
      ],
      [
       "/styles.css?v=b084e774",
@@ -615,8 +615,8 @@
     ]
    },
    "podcast.html": {
-    "raw": 1363871,
-    "served": 933183,
+    "raw": 1361823,
+    "served": 932600,
     "top": [
      [
       "/prototypes/v4/img/clips/hero-p-720.webm",
@@ -635,14 +635,14 @@
       65038
      ],
      [
-      "/prototypes/v4/v2.css?v=f5073ed3",
-      34848
+      "/prototypes/v4/v2.css?v=4ea4ff12",
+      34484
      ]
     ]
    },
    "library.html": {
-    "raw": 986430,
-    "served": 295034,
+    "raw": 984318,
+    "served": 294441,
     "top": [
      [
       "/prototypes/v4/v2-library.js?v=f5b8cd15",
@@ -653,8 +653,8 @@
       41306
      ],
      [
-      "/prototypes/v4/v2.css?v=f5073ed3",
-      34848
+      "/prototypes/v4/v2.css?v=4ea4ff12",
+      34484
      ],
      [
       "/styles.css?v=b084e774",
@@ -662,13 +662,13 @@
      ],
      [
       "/prototypes/v4/library.html",
-      21121
+      21100
      ]
     ]
    },
    "about.html": {
-    "raw": 713391,
-    "served": 377121,
+    "raw": 711466,
+    "served": 376625,
     "top": [
      [
       "/assets/destinations/kenya/clouds/cloud-3.webp",
@@ -679,8 +679,8 @@
       37174
      ],
      [
-      "/prototypes/v4/v2.css?v=f5073ed3",
-      34848
+      "/prototypes/v4/v2.css?v=4ea4ff12",
+      34484
      ],
      [
       "/assets/images/partners-aninder.webp",
@@ -693,16 +693,16 @@
     ]
    },
    "knowledge-base.html": {
-    "raw": 595546,
-    "served": 228377,
+    "raw": 591705,
+    "served": 226372,
     "top": [
      [
       "/prototypes/v4/knowledge-base.html",
-      38470
+      37037
      ],
      [
-      "/prototypes/v4/v2.css?v=f5073ed3",
-      34848
+      "/prototypes/v4/v2.css?v=4ea4ff12",
+      34484
      ],
      [
       "/styles.css?v=b084e774",
@@ -719,16 +719,16 @@
     ]
    },
    "knowledge-base/flight-mechanics.html": {
-    "raw": 995269,
-    "served": 332911,
+    "raw": 843153,
+    "served": 272833,
     "top": [
      [
       "/prototypes/v4/knowledge-base/flight-mechanics.html",
-      117037
+      57531
      ],
      [
-      "/prototypes/v4/v2.css?v=f5073ed3",
-      34848
+      "/prototypes/v4/v2.css?v=4ea4ff12",
+      34484
      ],
      [
       "/styles.css?v=b084e774",
@@ -745,20 +745,20 @@
     ]
    },
    "episodes/sky-gods-flying-8000ers-antoine-girard.html": {
-    "raw": 615764,
-    "served": 234720,
+    "raw": 611449,
+    "served": 232480,
     "top": [
      [
-      "/prototypes/v4/v2.css?v=f5073ed3",
-      34848
-     ],
-     [
-      "/prototypes/v4/episodes/sky-gods-flying-8000ers-antoine-girard.html",
-      32183
+      "/prototypes/v4/v2.css?v=4ea4ff12",
+      34484
      ],
      [
       "/styles.css?v=b084e774",
       31227
+     ],
+     [
+      "/prototypes/v4/episodes/sky-gods-flying-8000ers-antoine-girard.html",
+      30515
      ],
      [
       "/assets/fonts/dm-sans-latin-700-normal.woff2",
@@ -771,12 +771,12 @@
     ]
    },
    "enquire.html": {
-    "raw": 540687,
-    "served": 202954,
+    "raw": 538502,
+    "served": 202342,
     "top": [
      [
-      "/prototypes/v4/v2.css?v=f5073ed3",
-      34848
+      "/prototypes/v4/v2.css?v=4ea4ff12",
+      34484
      ],
      [
       "/styles.css?v=b084e774",
@@ -863,10 +863,10 @@
   "data": {
    "podcast.html": {
     "cls": 0.004,
-    "moved": -12,
+    "moved": -11,
     "shifts": [
      [
-      390,
+      339,
       0.004,
       "nav-links,A"
      ]
@@ -877,7 +877,7 @@
     "moved": 1,
     "shifts": [
      [
-      329,
+      347,
       0.007,
       "nav-links,A"
      ]
@@ -888,7 +888,7 @@
     "moved": 2,
     "shifts": [
      [
-      345,
+      319,
       0.004,
       "nav-links,A,I"
      ]
@@ -899,7 +899,7 @@
     "moved": -11,
     "shifts": [
      [
-      384,
+      398,
       0.007,
       "nav-links,A,A,A,A"
      ]
@@ -1423,6 +1423,6 @@
   "done": true,
   "title": "Enquiry form messages"
  },
- "_when": "2026-10-07 16:14",
+ "_when": "2026-10-08 17:05",
  "_site": "v4"
 }

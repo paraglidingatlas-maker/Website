@@ -44,13 +44,17 @@ Click, in the helper lines on touch screens. Bigger star targets on the
 sitemap. Width and height on all 1,565 images. The enquiry form says under
 each field what it needs.
 
-**Weight.** Home 2.71 to 1.37 MB on a phone, India 4.19 to 1.46, Kenya 1.63 to
-0.79, podcast 2.04 to 1.36, the hub, About and Flight Mechanics lighter too.
-Of the ten pages measured, none is heavier as the preview server sends them;
-as GitHub Pages sends them, the library is 0.7 KB (0.3%) heavier. Pages with no
-photographs or footage to trim (the topic pages, the legal pages, 21 episodes
-without a globe) carry about half a kilobyte more as sent: the main landmark,
-image sizes and the rules every page now shares.
+**Weight.** Home 2.71 to 1.36 MB on a phone, India 4.19 to 1.43, Kenya 1.63 to
+0.77, podcast 2.04 to 1.36, Flight Mechanics 1.03 to 0.84, the hub 0.75 to
+0.59, About and the enquiry page lighter too. Every drawing on the site is now
+spelt in relative steps (the same drawing, point for point), which takes 144 KB
+off Flight Mechanics and 49 KB off Meteorology. Of the ten pages measured,
+none is heavier as the preview server sends them; as GitHub Pages sends them,
+the library is 149 bytes (0.05%) heavier. Across all 183 pages, 129 are lighter
+in both measures. The others carry a few hundred bytes more, the cost of what
+they gained (a jump row, a Pause, a form's messages, the episode's chapter
+list), where there was no picture or drawing to trim: four knowledge base
+series pages, 18 episodes, Flight options, Partners and the sitemap.
 
 ## What to check on your phone
 
@@ -111,10 +115,14 @@ Run after the other v4 passes, in this order: `python3 tools/v4_phone_media.py`
 (search-index.js, library-find.js), `python3 tools/v4_ux.py` (last; `--check`
 says whether anything would change), `python3 tools/v4_min.py`. The pass's
 rules for one kind of page are in `prototypes/v4/src/v4-ux.css` (each `@page`
-section goes into those pages only, right after v2.css); the rules every page
-needs are at the end of `src/v2.css`, with the few page rules the live audit
-must not find inside a page (a hidden element on an episode, v2.css's own
-tokens); its scripts are `src/v4-ux-*.js`.
+section goes into those pages only, right after v2.css; `@small` lists the
+labels that take the 12 px size on a phone, each page getting the ones it
+carries); the rules every page needs are at the end of `src/v2.css`, with the
+one the live audit must not find inside an episode (a hidden element reads as a
+clipped transcript); its scripts are `src/v4-ux-*.js`, inlined only where used.
+The marks around what it writes are `<!--v4u-name-->`. Every inline drawing is
+written in relative path steps (polylines as paths), checked point for point
+in decimal arithmetic and against screenshots.
 `tools/v2_switch.py` now also carries `.webm` and `.mp4`.
 
 An independent read-only check at the end confirmed nothing outside v4, tools
@@ -158,3 +166,4 @@ site's own "Search episodes" with its own "Topics").
 | 26 | Image width and height | missing: partners 56 of 63, hub 33 of 36, flight options 20 of 22, home 6 of 23, About 4 of 8, podcast 2 of 16 | 0 of 1,565 images on every v4 page (the file's own size; YouTube's fixed sizes for its stills); screenshots of 21 templates unchanged | 8ea75c8e |
 | 27 | Enquiry form messages | an empty send: the browser's bubble on the first field only | a message under each of the 7 fields, in the browser's own words and the form's orange, the field's edge with it; the first brought into view and focused; each message goes as its field is put right; without script, the browser's checks as before | 8ea75c8e |
 | 6, at the end | Weight, every measured page | the pass had made the pages without media to trim 1 to 3% heavier (its rules and scripts in the shared v2.css and v2-immersive.js), the Flight Mechanics page 32% (its film strip's 309 KB still now fetched on arrival) | home -49%, India -65%, Kenya -52%, podcast -33%, hub -21%, About -7%, Flight Mechanics -3%, enquiry -1%, episode -0.2%, library -0.3% (as the preview server sends them; as GitHub Pages sends them the library is +0.3%, 0.7 KB, all others lighter). How: each page carries only its own rules and scripts (src/v4-ux.css, src/v4-ux-*.js); the podcast's footage and the film strips' stills cut for an upright phone and fetched when near; the hub's drawings fetched when near; About's opening still, the tiles' artwork at the size shown; the episode globe written as relative steps (the same drawing, 3.5 KB lighter); the library's duplicated search words gone and its search extras fetched on first use | 6fb85495 |
+| 6, every page | Weight, all 183 pages | text on arrival (the page and the v4 styles and scripts it loads) against the start of the pass: 110 pages heavier, by 0.6 KB as sent on a plain page (topics, legal pages) | 129 lighter in both measures; a plain page 133 bytes lighter, within 25 bytes as sent. How: the shared stylesheet and script now carry only what every page needs (the small labels' rule, the search line's style, the Pause's spacing, the touch wording and the stars' rings go to the pages that use them; the Listening mode button's fallback and the shared selectors trimmed); every inline drawing in relative steps (Flight Mechanics -144 KB, Meteorology -49 KB, Risk vs Reward -13 KB, the episodes with a globe or series mark -6 KB); the pass's marks shortened; measured pages now: home -50%, India -66%, Kenya -53%, podcast -33%, hub -21%, Flight Mechanics -18%, About -7%, enquiry -2%, episode -1%, library -0.5% (as sent +149 bytes) | 329bbf6c |
