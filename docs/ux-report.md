@@ -108,6 +108,26 @@ Nothing was changed for these; one screenshot each.
    pages' titles and structured data still say so (they must match the live
    site). Correct them at the source?
 
+## After the report: the climb into the footage (8 Oct)
+
+The owner: the footage came in straight after dark text; the background should
+go from black to white, then the video, then back to dark. On the five pages
+with a footage band (the podcast, and the knowledge base's flight mechanics,
+meteorology, risk and weather forecast pages) a stretch of sky now comes first, 120% of the screen
+(100% on a phone): the page's dark lifts through the light of the visitor's
+hour (the site's own dawn, day, dusk and night tints) to white, the Kenya
+page's cloud layers pass at three depths (far ones slower than the page, the
+near one faster, over the footage's edge), the footage comes up out of the
+white without an edge, a little near, and settles, and its foot fades back to
+the page's dark. The podcast's line over its footage comes in as the white
+clears. Reduced motion: nothing moves, the footage stands half out of the
+cloud. Sources: `src/v4-ux.css` ("ascent"), `src/v4-ux-ascent.js`,
+`tools/v4_ux.py` `ascent()`; the phone's cloud copies (1000 px, 21 to 34 KB a
+layer) are `img/clouds`, from `tools/v4_phone_media.py`. Cost: 1.3 to 1.5 KB
+gzipped on each of the five pages; the clouds load only as the sky comes near
+(about 90 KB on a phone, the live site's own files on a computer). Layout
+shift unchanged (0.00 on the podcast), gates passed.
+
 ## How it is built
 
 Run after the other v4 passes, in this order: `python3 tools/v4_phone_media.py`
