@@ -51,6 +51,13 @@
   window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, { passive: true });
   window.addEventListener("resize", frame, { passive: true }); frame();
 
+  /* A link from the encyclopedia A to Z lands on one FAQ answer: open it. */
+  function openTarget() {
+    var id = decodeURIComponent(location.hash.slice(1)), el = id && d.getElementById(id);
+    if (el && el.tagName === "DETAILS") el.open = true;
+  }
+  openTarget(); window.addEventListener("hashchange", openTarget);
+
   d.addEventListener("pointermove", function (e) {
     var c = e.target.closest && e.target.closest(".cardx, .nx a, .check"); if (!c) return;
     var r = c.getBoundingClientRect(); c.style.setProperty("--mx", (e.clientX - r.left) + "px"); c.style.setProperty("--my", (e.clientY - r.top) + "px");

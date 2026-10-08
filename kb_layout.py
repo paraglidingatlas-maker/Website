@@ -141,10 +141,15 @@ def groups(ed):
     return "".join(out)
 
 
+def faq_id(q):
+    """Stable anchor for one FAQ answer, so the encyclopedia A to Z can link to it."""
+    return "q-" + re.sub(r"[^a-z0-9]+", "-", q.lower()).strip("-")[:70].rstrip("-")
+
+
 def faq(ed, n_eps):
     items = "".join(
-        '<details%s><summary><h3>%s</h3></summary><p>%s</p>%s</details>'
-        % (" open" if i == 0 else "", E(f["q"]), E(f["a"]), src(f["ep"], f["ch"], f["who"]))
+        '<details id="%s"%s><summary><h3>%s</h3></summary><p>%s</p>%s</details>'
+        % (faq_id(f["q"]), " open" if i == 0 else "", E(f["q"]), E(f["a"]), src(f["ep"], f["ch"], f["who"]))
         for i, f in enumerate(ed["faq"]))
     for f in ed["faq"]:
         if not f["q"].strip().endswith("?"):
@@ -154,6 +159,31 @@ def faq(ed, n_eps):
             '<div class="fq-n"><div><b>%d</b><span>questions</span></div><div><b>%d</b><span>episodes</span></div></div>'
             '</div></div><div class="faq-r">%s</div></div>'
             % (E(ed.get("faq_heading", "Questions these conversations answer")), len(ed["faq"]), n_eps, items))
+
+
+def in_depth(slug):
+    """The encyclopedia answers filed under this series, if any are published.
+
+    Drafts stay off the series page until they are reviewed; ENC_SHOW_DRAFTS=1
+    shows them, for a review build only."""
+    import kb_answers
+    show_drafts = os.environ.get("ENC_SHOW_DRAFTS") == "1"
+    items = [a for a in kb_answers.ENTRIES
+             if a["series"] == slug and (a["status"] == "published" or show_drafts)]
+    if not items:
+        return ""
+    cards = "".join('<a class="nx-card" href="encyclopedia/%s.html"><span class="kicker">%s</span>'
+                    '<strong>%s</strong><em>%s</em></a>'
+                    % (a["slug"], E(a["topic"]), E(a["q"]), E(_first_sentence(a["short"]))) for a in items)
+    return ('<section class="k-sec bg" id="in-depth"><div class="k-head"><h2>Answered in depth</h2>'
+            '<span class="kicker">From the encyclopedia, with sources and the guests\' view</span></div>'
+            '<div class="nx nx-depth">%s</div><p class="az-link"><a href="encyclopedia/index.html">'
+            'Every question in the Knowledge Base, A to Z &rarr;</a></p></section>' % cards)
+
+
+def _first_sentence(t):
+    m = re.match(r"(.+?[.?!])(\s|$)", t)
+    return m.group(1) if m else t
 
 
 def next_strip(nx):
@@ -176,6 +206,7 @@ def render(slug, ed, ep_html, n_eps, stats):
               '<span class="kicker">Each one links to the chapter where it is said</span></div>%s%s</section>'
               % (E(ed.get("takeaways_heading", "Worth remembering")), callout(ed.get("callout")), groups(ed))
             + '<section class="k-sec card" id="questions">%s</section>' % faq(ed, n_eps)
+            + in_depth(slug)
             + next_strip(ed["next"]))
     return CSS, body, JS
 
@@ -208,8 +239,8 @@ def landing(slug, ld, cards_html, n_series):
     for i, f in enumerate(ld["faq"]):
         if not f["q"].strip().endswith("?"):
             raise SystemExit("kb_layout: FAQ question must end with ?: " + f["q"])
-        items += ('<details%s><summary><h3>%s</h3></summary><p>%s</p>%s</details>'
-                  % (" open" if i == 0 else "", E(f["q"]), E(f["a"]),
+        items += ('<details id="%s"%s><summary><h3>%s</h3></summary><p>%s</p>%s</details>'
+                  % (faq_id(f["q"]), " open" if i == 0 else "", E(f["q"]), E(f["a"]),
                      "".join(src(ep, ch, who) for ep, ch, who in f["src"])))
     n_eps = len({ep for f in ld["faq"] for ep, _, _ in f["src"]})
     faq_html = ('<section class="k-sec card" id="questions"><div class="faq"><div class="faq-l"><div class="fq-in">'

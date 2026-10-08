@@ -133,7 +133,9 @@ def faq(h):
         q = re.sub(r"^\d+\.\s*", "", q)
         if not q.endswith("?"):
             continue
-        body = m.group(2)
+        # Encyclopedia pages cite sources inline as <sup class="cite">[n]</sup>;
+        # the numbers mean nothing outside the page, so they stay out of the answer text.
+        body = re.sub(r'<sup class="cite">.*?</sup>', "", m.group(2), flags=re.S)
         text = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", p)).strip()
                         for p in re.findall(r"<p[^>]*>(.*?)</p>", body, re.S))
         text = re.sub(r"\s+", " ", text).strip()

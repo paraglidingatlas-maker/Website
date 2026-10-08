@@ -105,9 +105,10 @@ The evidence is all in the transcripts one level down.
       body words, no keywords. Rewrite H1 and add an intro that names topics.
 - [x] **ep-tile data-desc was empty on every tile.** Now filled from the
       episode summary in generate_kb_pages.py.
-- [ ] **Standalone answer pages** (later). 30-50 most-searched questions in
-      the sport, 600-1,000 words each, citing own transcripts. KB categories
-      become the index into these.
+- [ ] **Standalone answer pages: the encyclopedia.** Built: generator, A to Z
+      of every KB question, and a pilot of 10 Flight Mechanics answers, all
+      draft (noindex) until Aninder reviews them. Next batches come from the
+      245-question bank. Process and status: docs/encyclopedia/README.md.
 - [ ] **Keyword research before writing.** Search Console queries, autocomplete
       and the forums; no volume data exists yet, the target phrases are guesses.
 - [ ] **Tag pages** duplicate the KB episode lists with no editorial. Either

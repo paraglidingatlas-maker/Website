@@ -104,6 +104,26 @@ def knowledge_base(u):
     return L
 
 
+def encyclopedia(u):
+    """The encyclopedia: one page per question, each with sources and the guests' view.
+
+    Only published entries are listed; drafts are noindex and stay out of here too.
+    """
+    from kb_answers import ENTRIES
+    pub = [a for a in ENTRIES if a["status"] == "published"]
+    if not pub:
+        return []
+    L = ["## Encyclopedia", "",
+         "One page per question, answered in plain language from cited sources (government handbooks, "
+         "manufacturer manuals, federations, test houses), then what the guests on the show add, linked to "
+         "the chapter. The A to Z lists every question the site answers: %s"
+         % u("knowledge-base/encyclopedia/index.html"), ""]
+    for a in pub:
+        short = " ".join(a["short"].split())
+        L.append("- [%s](%s): %s" % (a["q"], u("knowledge-base/encyclopedia/%s.html" % a["slug"]), short))
+    return L + [""]
+
+
 def llms():
     meta = json.load(open("episode-meta.json", encoding="utf-8"))
     withT = [e for e in meta if os.path.exists("transcripts/%s.vtt" % e["slug"])]
@@ -142,6 +162,7 @@ def llms():
          "- [Knowledge base](%s): the sport organised by subject" % u("knowledge-base.html"),
          "- [Sitemap](%s): every page" % u("sitemap.html"), ""]
     L += knowledge_base(u)
+    L += encyclopedia(u)
     L += ["## Subject hubs", ""]
     for t, n in counts.most_common():
         s = t.lower().replace(" ", "-").replace("/", "-")

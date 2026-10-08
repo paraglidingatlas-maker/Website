@@ -11,6 +11,7 @@ python3 tools/generate_globe_episodes.py >/dev/null
 if command -v node >/dev/null 2>&1; then node tools/episode_globes.js >/dev/null; fi
 python3 generate_chapter_deck.py    >/dev/null
 python3 generate_kb_pages.py        >/dev/null
+python3 generate_answer_pages.py
 python3 generate_policies.py        >/dev/null
 python3 generate_tag_pages.py       >/dev/null
 python3 generate_sitemap.py         >/dev/null
