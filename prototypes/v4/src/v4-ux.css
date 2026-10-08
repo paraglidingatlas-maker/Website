@@ -278,63 +278,6 @@ html [data-v2="tg"] .tg-tile[hidden]{display:none !important;}
        whichever ring lies on top; nothing drawn changes. */
 @media (pointer:coarse){ .sky-star .sky-hit{r:26px;pointer-events:none;} }
 
-/* @page ascent */
-/* The climb into the footage (owner, 8 Oct 2026: "change the background
-   gradually from black to white and then show the video ... I want to feel an
-   immersive experience before reaching the video part of the page"). On the
-   pages with a footage band (the podcast, four Knowledge Base pages) a stretch
-   of sky comes first (tools/v4_ux.py): the page's dark lifts through the light
-   of the visitor's hour (styles.css, the sky) to the white of cloud, the
-   site's own cloud layers (the Kenya page's) pass at three depths, the
-   footage comes up out of the white, a little near, and settles, and under it
-   the page's dark returns. src/v4-ux-ascent.js sets --a (the climb, 0 to 1)
-   and --e (the footage coming up, 0 to 1); without it all of this stands
-   still, as it does for reduced motion. */
-.v4-ascent{position:relative;z-index:1;height:120vh;height:120svh;overflow-x:clip;pointer-events:none;
-  background:linear-gradient(180deg,var(--bg) 10%,var(--white) 78%);
-  background:
-    radial-gradient(64% 18% at 16% 30%,var(--sky-warm),transparent 70%),
-    radial-gradient(58% 18% at 86% 24%,var(--sky-cool),transparent 70%),
-    linear-gradient(180deg,var(--bg) 0%,var(--bg) 10%,
-      color-mix(in oklab,var(--bg),var(--white) 7%) 24%,
-      color-mix(in oklab,var(--bg),var(--white) 22%) 36%,
-      color-mix(in oklab,var(--bg),var(--white) 44%) 48%,
-      color-mix(in oklab,var(--bg),var(--white) 68%) 59%,
-      color-mix(in oklab,var(--bg),var(--white) 88%) 69%,
-      var(--white) 78%,var(--white) 100%);}
-/* each layer as tall as its picture at the width it is drawn (12:5 holds the
-   tallest), so no cloud is cut along a line; a phone draws them two and a
-   half screens wide */
-.v4-asc-c{position:absolute;left:0;right:0;aspect-ratio:12/5;background:center/100% auto no-repeat;will-change:transform;
-  transform:translate3d(0,calc((var(--a,.5) - .5) * var(--k) * 1vh),0);}
-.v4-asc-c1{--k:34;top:14%;opacity:.5;}
-.v4-asc-c2{--k:-14;top:42%;opacity:.75;filter:brightness(.74);}
-.v4-asc-c3{--k:-72;top:72%;}
-/* the white over the footage's top stays solid where it meets the sky, so
-   there is no edge; it draws back up the footage as the footage comes up the
-   screen, and what is left of it goes as the footage reaches the top */
-.v4-ascent + .v4-breather::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  --s:calc((1 - min(var(--e,.6),1)) * 40%);
-  background:linear-gradient(180deg,var(--white) var(--s),transparent calc(var(--s) + 46%));
-  background:linear-gradient(180deg,var(--white) var(--s),
-    color-mix(in srgb,var(--white) 97%,transparent) calc(var(--s) + 5%),
-    color-mix(in srgb,var(--white) 88%,transparent) calc(var(--s) + 11%),
-    color-mix(in srgb,var(--white) 72%,transparent) calc(var(--s) + 17%),
-    color-mix(in srgb,var(--white) 52%,transparent) calc(var(--s) + 23%),
-    color-mix(in srgb,var(--white) 32%,transparent) calc(var(--s) + 29%),
-    color-mix(in srgb,var(--white) 15%,transparent) calc(var(--s) + 35%),
-    color-mix(in srgb,var(--white) 4%,transparent) calc(var(--s) + 41%),transparent calc(var(--s) + 48%));
-  opacity:calc((1.25 - var(--e,.6)) * 4);}
-/* the podcast's line over its footage comes in as the white clears */
-.v4-ascent + .v4-breather .v4-br-in{position:relative;z-index:1;opacity:calc(var(--e,1) * 2 - .6);}
-.v4-ascent + .v4-breather .v4-br-media{transform:scale(calc(1.14 - .14 * min(var(--e,1),1)));transform-origin:50% 30%;}
-.v4-ascent + .v4-breather::after{
-  background:linear-gradient(180deg,transparent 0%,rgba(20,21,25,.3) 36%,rgba(20,21,25,.45) 62%,var(--bg) 100%),
-             radial-gradient(60% 50% at 50% 50%,rgba(20,21,25,.5),transparent 80%);}
-.v4-ascent + .v4-film::after{background:linear-gradient(180deg,transparent 0%,transparent 48%,var(--bg) 100%);}
-@media (max-width:760px){ .v4-ascent{height:100vh;height:100svh;} .v4-asc-c{aspect-ratio:24/25;background-size:250% auto;} }
-@media (prefers-reduced-motion:reduce){ .v4-asc-c,.v4-ascent + .v4-breather .v4-br-media{transform:none;will-change:auto;} }
-
 /* @small */
 /* 22. No text under 12 px on a phone (drawings excepted): the last labels
        that were drawn at 8 to 11.8 px take the micro size (12 px there). One

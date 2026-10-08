@@ -23,8 +23,7 @@ Where the rest lives
                        live audit must not find inside a page.
   src/v4-ux-*.js       the pass's scripts, inlined only where used (the hero
                        clips, the footage's Pause, the newest episode, the
-                       enquiry form, the in-page search, the climb into the
-                       footage); the library's
+                       enquiry form, the in-page search); the library's
                        search extras ride in library-find.js (tools/v4_search.py).
   <!--v4u-name-->      the marks around what this writes into a page.
 
@@ -37,8 +36,8 @@ and the Listening mode button; 14 and 15 the knowledge base's jump rows and
 hub; 17 the library's search; 19 the podcast's newest episode; 20 topics;
 21 one main per page; 22 small labels; 23 the footage's Pause; 24 Tap on
 touch; 26 image sizes; 27 the enquiry form's messages. After the brief (the
-owner, 8 Oct 2026): the climb from the page's dark through cloud into each
-footage band ("ascent").
+owner, 8 Oct 2026): footage only on the trips and the home page; what this
+wrote for the podcast's and knowledge base's footage is taken out.
 """
 import html
 import os
@@ -727,75 +726,17 @@ def topics_page(src):
     return put_block(src, TG_JS_MARK, TG_JS, "</body>")
 
 
-# ------------------------------------------------------------------------------------------------ 6 again
-def film_stills(rel, src):
-    """6, re-measured at the end. A knowledge base film strip now sits within a phone's first two screens (13:
-    the ideas come first), where the browser fetches a lazy picture on arrival; its still was the 1600 x 900
-    file (up to 309 KB). The still now waits until the strip is near (as the trip heroes' do), and on an upright
-    screen it is the third such a screen shows (img/hero/film-<name>-p.webp, tools/v4_phone_media.py), the same
-    framing. The strip is drawn without words and hidden from screen readers; without script it shows no still."""
-    def wrap(m):
-        img = m.group(2)
-        s = re.search(r'\ssrc="([^"]+?)([^/"]+)\.jpg"', img)
-        if not s:
-            return m.group(0)
-        name = s.group(2)
-        if not os.path.exists(os.path.join(V4, "img", "hero", "film-%s-p.webp" % name)):
-            return m.group(0)
-        up = "../" * rel.count("/")
-        img = img.replace(' src="', ' data-v4-src="', 1)
-        return '%s<picture><source media="%s" data-v4-srcset="%simg/hero/film-%s-p.webp" type="image/webp">%s</picture>' % (
-            m.group(1), PHONE_MEDIA, up, name, img)
-    out = re.sub(r'(<section class="v4-breather v4-film"[^>]*>\s*<div class="v4-br-media">)(<img\b[^>]*>)', wrap, src)
-    if 'class="v4-breather v4-film"' in out and "data-v4-src=" in out:
-        out = put_block(out, FILM_MARK, FILM_JS, "</body>")
-    return out
+# ------------------------------------------------------------------------- footage taken off the pages (8 Oct)
+GONE = ("v4u-film", "v4u-breather", "v4u-ascent", "v4u-ascent-js")   # marks of blocks for footage no page carries now
 
 
-FILM_MARK = ("<!--v4u-film-->", "<!--/v4u-film-->")
-FILM_JS = ("<script>(function(d,w){var im=[].slice.call(d.querySelectorAll('.v4-film img[data-v4-src]'));"
-           "function go(i){var p=i.parentNode;if(p.tagName==='PICTURE')[].forEach.call(p.querySelectorAll('source[data-v4-srcset]'),"
-           "function(s){s.srcset=s.getAttribute('data-v4-srcset');});i.src=i.getAttribute('data-v4-src');}"
-           "if(!('IntersectionObserver' in w)){im.forEach(go);return;}"
-           "var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){o.unobserve(e.target);go(e.target);}});},"
-           "{rootMargin:'400px 0px'});im.forEach(function(i){o.observe(i);});})(document,window);</script>")
-
-
-BREATHER_MARK = ("<!--v4u-breather-->", "<!--/v4u-breather-->")
-BREATHER_JS = ("<script>(function(v){var m=location.pathname.match(/^(.*\\/prototypes\\/v\\d+\\/)/);"
-               "if(v&&innerWidth/Math.max(1,innerHeight)<=2/3)v.setAttribute('data-loop',(m?m[1]:'/assets/v4/')+'img/clips/hero-p');})"
-               "(document.querySelector('.v4-breather video[data-loop$=\"video/hero\"]'));</script>")
-
-
-def podcast_breather(src):
-    """6, re-measured at the end. The podcast's full-screen footage between the opening and the host was the
-    16:9 720p clip on a phone too (1.1 MB, fetched on arrival as it comes into reach); on an upright screen it
-    is now the clip cut for one (img/clips/hero-p-720, 0.4 MB, the same footage), set before script.js loads it."""
-    m = re.search(r'<section class="v4-breather">.*?</section>', src, re.S)
-    if not m or 'video/hero"' not in m.group(0):
-        return src
-    if BREATHER_MARK[0] in src:
-        return put_block(src, BREATHER_MARK, BREATHER_JS, "")
-    return src[:m.end()] + BREATHER_MARK[0] + BREATHER_JS + BREATHER_MARK[1] + src[m.end():]
-
-
-# ------------------------------------------------------------------------ the climb into the footage (8 Oct 2026)
-ASCENT_MARK = ("<!--v4u-ascent-->", "<!--/v4u-ascent-->")
-ASCENT_JS_MARK = ("<!--v4u-ascent-js-->", "<!--/v4u-ascent-js-->")
-ASCENT = ('<div class="v4-ascent" aria-hidden="true"><div class="v4-asc-c v4-asc-c1" data-v4-cloud="1"></div>'
-          '<div class="v4-asc-c v4-asc-c2" data-v4-cloud="3"></div><div class="v4-asc-c v4-asc-c3" data-v4-cloud="4"></div></div>')
-
-
-def ascent(src):
-    """The owner, 8 Oct 2026: the footage came in straight after dark text; the page now climbs to it. A stretch
-    of sky before each footage band, dark to the white of cloud with the site's own cloud layers passing (the
-    Kenya page's, img/clouds on a phone), the footage coming up out of the white and the page's dark after it:
-    src/v4-ux.css "ascent", src/v4-ux-ascent.js. Drawn only, hidden from screen readers, no words."""
-    if 'class="v4-breather' not in src:
-        return src
-    src = re.sub(r"%s.*?%s\n?" % (re.escape(ASCENT_MARK[0]), re.escape(ASCENT_MARK[1])), "", src, flags=re.S)
-    src = re.sub(r'(?<!<!-- v4-footage -->)(?=(?:<!-- v4-footage -->)?<section class="v4-breather[ "])', lambda m: ASCENT_MARK[0] + ASCENT + ASCENT_MARK[1] + "\n", src)
-    return put_block(src, ASCENT_JS_MARK, "<script>%s</script>" % inline_js("v4-ux-ascent.js"), "</body>")
+def footage_gone(src):
+    """The owner, 8 Oct 2026: no footage on the podcast and knowledge base pages, only on the trips and the
+    home page (tools/v4_footage.py; the podcast's line now stands on the page). What this pass had written for
+    that footage goes with it: the film stills' waker, the podcast clip's phone cut, the climb into the footage."""
+    for name in GONE:
+        src = re.sub(r"<!--%s-->.*?<!--/%s-->\n?" % (name, name), "", src, flags=re.S)
+    return src
 
 
 # ------------------------------------------------------------------------- the pass's own CSS and scripts, by page
@@ -822,8 +763,6 @@ def ux_groups(rel, src):
             g.append(n)
     if "v4u-touch" in src:
         g.append("touch")
-    if 'class="v4-ascent"' in src:
-        g.append("ascent")
     return g
 
 
@@ -874,6 +813,8 @@ def ux_scripts(rel, src):
     """23 and 15: the footage's Pause only on the pages with footage, the in-page search only where there is one."""
     if re.search(r"<video\b", src):
         src = put_block(src, FOOT_MARK, "<script>%s</script>" % inline_js("v4-ux-footage.js"), "</body>")
+    elif FOOT_MARK[0] in src:
+        src = re.sub(r"%s.*?%s\n?" % (re.escape(FOOT_MARK[0]), re.escape(FOOT_MARK[1])), "", src, flags=re.S)
     if "data-v4-find" in src:
         src = put_block(src, FIND_MARK, "<script>%s</script>" % inline_js("v4-ux-find.js"), "</body>")
     return src
@@ -1230,13 +1171,11 @@ def page(rel, src):
     if rel == "podcast.html":
         src = podcast_wall(src)
         src = podcast_latest(src)
-        src = podcast_breather(src)
     if rel.startswith("episodes/"):
         src = episode_labels(src)
         src = episode_listen_button(src)
     if rel.startswith("knowledge-base/"):
         src = kb_jump(src)
-        src = film_stills(rel, src)
         src = kb_tile_art(rel, src)
     if rel == "knowledge-base.html":
         src = kb_hub(src)
@@ -1256,7 +1195,7 @@ def page(rel, src):
         src = gallery_lazy(src)
         src = trip_subnav(src)
         src = media_script(src)
-    src = ascent(src)
+    src = footage_gone(src)
     src = ux_scripts(rel, src)
     src = ux_css(rel, src)
     src = drawings_relative(src)

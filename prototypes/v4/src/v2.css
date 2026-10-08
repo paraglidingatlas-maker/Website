@@ -1718,18 +1718,6 @@ html .v4-lib-wall .v2-eps .ep-tile[hidden]{display:none;}
 .v4-lib-log .ep-log-date .v2-tbd{font-family:var(--font-body);font-size:var(--fs-micro);}
 .v4-lib-log .ep-tile .ep-foot{margin:0;height:auto;min-height:0;align-items:center;display:flex;}
 
-/* ---- full-screen footage breather (at most one a page, only the site's own footage) ---- */
-.v4-breather{position:relative;isolation:isolate;min-height:88vh;min-height:88svh;display:flex;align-items:center;justify-content:center;
-  padding:var(--sp-section) var(--gutter);overflow:hidden;}
-.v4-br-media{position:absolute;inset:0;z-index:-2;}
-.v4-br-media img,.v4-br-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.v4-breather::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(180deg,var(--bg) 0%,rgba(20,21,25,.35) 22%,rgba(20,21,25,.45) 78%,var(--bg) 100%),
-             radial-gradient(60% 50% at 50% 50%,rgba(20,21,25,.55),transparent 80%);}
-.v4-br-in{max-width:46rem;text-align:center;}
-html .v4-br-q p{font-family:var(--font-display);font-weight:600;font-size:clamp(1.3rem,2.6vw,2rem);line-height:1.35;color:var(--white);
-  text-shadow:0 2px 24px rgba(0,0,0,.55);margin:0;}
-
 /* ===========================================================================
    THE HEADER AND THE FULL-SCREEN MENU (v4, v2-immersive.js 8)
    Expeditions, Podcast, Knowledge Base, About, then Enquire; the current
@@ -2458,9 +2446,6 @@ html.v4-ls-on{overflow:hidden;}
   .v4-bg-shade{background:linear-gradient(180deg,rgba(20,21,25,.55) 0%,rgba(20,21,25,.84) 55%,var(--bg) 100%);}
 }
 .kit-hero.is-sky[data-v4-footage]{min-height:min(70vh,640px);align-items:flex-end;overflow:hidden;padding-bottom:var(--sp-5);}
-.v4-film{min-height:72vh;min-height:72svh;padding:0;}
-/* a film strip carries no words, so only its edges fade into the page */
-.v4-film::after{background:linear-gradient(180deg,var(--bg) 0%,rgba(20,21,25,.06) 22%,rgba(20,21,25,.06) 78%,var(--bg) 100%);}
 
 /* 3. the glow */
 .ep2-hero-media{position:relative;isolation:isolate;}
@@ -2475,7 +2460,7 @@ html.v4-ls-on{overflow:hidden;}
   .cd-playing .ep2-hero-media[style*="--v4-glow"]::before{animation:v4-glow 7s ease-in-out infinite;}
   @keyframes v4-glow{50%{opacity:.46;transform:scale(1.04);}}
   /* 4. the ground moves with you (the script sets --px and --py, -1 to 1) */
-  html.v4-px :is(.kit-hero-media img,.kit-hero-media video,.v4-bg img,.v4-bg video,.v4-br-media img,.v4-br-media video){
+  html.v4-px :is(.kit-hero-media img,.kit-hero-media video,.v4-bg img,.v4-bg video){
     scale:1.07;translate:calc(var(--px,0) * -16px) calc(var(--py,0) * -12px);}
   html.v4-px .v4-globe-wrap{translate:calc(var(--px,0) * 18px) calc(var(--py,0) * 12px);}
   html.v4-px .k-hero-media svg{translate:calc(var(--px,0) * -10px) calc(var(--py,0) * -6px);}
@@ -2483,7 +2468,7 @@ html.v4-ls-on{overflow:hidden;}
 /* 2. the drift */
 @supports (animation-timeline: view()){
   @media (prefers-reduced-motion: no-preference){
-    :is(.v4-bg,.v4-br-media) :is(img,video){animation:v4-drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%;}
+    .v4-bg :is(img,video){animation:v4-drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%;}
     @keyframes v4-drift{from{transform:scale(1.16) translateY(-3%);}to{transform:scale(1.02) translateY(3%);}}
   }
 }

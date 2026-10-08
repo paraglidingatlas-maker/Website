@@ -102,7 +102,7 @@ short text). A second moment on the same page is a sign one should go.
 | Home | the fly-through of the four trips |
 | India, Kenya | the fly-through: five full screens, the photograph behind |
 | Kenya (second half) | the route map stays (it is the route section's own piece) |
-| Podcast | the globe; the footage breather is its pause |
+| Podcast | the globe (its footage breather taken out, owner, 8 Oct 2026; its line stands on the page) |
 | Library | the flight log (every episode a line in the log, the library drawn as a log) |
 | Episode | the opening globe turned to where the story is from (72 episodes); the others open on the player |
 | Topic | the topic's log drawing and the newest three |
@@ -117,8 +117,10 @@ open into the episode (a transition), the instrument font.
 - Only in answer to the visitor: scroll, pointer, tap, key. Nothing loops or
   moves on its own except a looping flight video, and that only while on
   screen.
-- **Footage breathers (v4):** at most one a page, only footage the site
-  has (the hero loop, the Bir loop), plays only while on screen.
+- **Footage (owner, 8 Oct 2026):** only on the trip pages and the home
+  page, only footage the site has, playing only while on screen. No footage
+  bands on the podcast or knowledge base pages; their immersion is to come
+  from what the site makes itself (drawings, animation).
 - Page darkens as it descends; images fade up from a blur; contour backdrop
   behind text sections. No tracers (removed at the owner's request).
 - `prefers-reduced-motion`: transitions off, everything visible. With

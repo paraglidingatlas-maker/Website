@@ -20,6 +20,13 @@ elegant than let it be"). Video only where the motion is the point:
   - nothing behind the homepage's Why band or the Enquire header: both carry
     a form, which reads better on the plain page.
 
+Then (owner, 8 Oct 2026, after seeing them with a climb of cloud before
+each: "remove these videos entirely from these pages ... only let them
+remain in the tour" pages): the four knowledge base film strips are taken
+out, as the podcast's breather is (by hand, its line kept on the page). The
+footage plays on the trips and the home page only; the stills behind the
+Mission and About headers stay.
+
 Captions and alt text: only what is visible. Where the clips were filmed is
 not known yet, so nothing names a place.
 
@@ -37,15 +44,15 @@ V4 = os.path.join(ROOT, "prototypes", "v4")
 # page -> (clip, kind, anchor the block goes before (strip) or inside (bg), still)
 # still: None for the clip's own first frame, or a frame of it in prototypes/v4/img/
 PLAN = {
-    "knowledge-base/meteorology.html": (1, "strip", '<section class="k-sec card"', "alps-1-still"),
-    "knowledge-base/weather-patterns.html": (4, "strip-still", '<section class="k-sec card"', None),
-    "knowledge-base/risk-vs-reward.html": (3, "strip", '<section class="k-sec card"', None),
-    "knowledge-base/flight-mechanics.html": (10, "strip", '<section class="k-sec card"', None),
     "mission.html": (12, "bg-still", '<header class="kit-hero is-sky v2-page-hero">', None),
 }
-# pages that carried footage in the first pass (4 Oct) and no longer do
+# pages that carried footage in the first pass (4 Oct) and no longer do; the knowledge base's from 8 Oct
 CLEAR = {"enquire.html": '<header class="kit-hero is-sky v2-page-hero">',
-         "index.html": '<section class="kit-band v2-join v2-topo">'}
+         "index.html": '<section class="kit-band v2-join v2-topo">',
+         "knowledge-base/meteorology.html": '<section class="k-sec card"',
+         "knowledge-base/weather-patterns.html": '<section class="k-sec card"',
+         "knowledge-base/risk-vs-reward.html": '<section class="k-sec card"',
+         "knowledge-base/flight-mechanics.html": '<section class="k-sec card"'}
 # the About header: a still of clip 2 in place of the photograph and loop it shared with India
 ABOUT_OLD = ('<picture><source srcset="../../assets/images/himalayas-1.webp" type="image/webp"><img src="../../assets/images/himalayas-1.jpg" alt="Paraglider over the Himalayas" fetchpriority="high"></picture>\n'
              '    <video data-loop="../../assets/video/bir" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>')
@@ -105,7 +112,7 @@ def main():
     if ABOUT_OLD in html or ABOUT_V1 in html:
         open(p, "w", encoding="utf-8").write(html.replace(ABOUT_OLD, ABOUT_NEW, 1).replace(ABOUT_V1, ABOUT_NEW, 1))
         print("v4_footage: about.html                               still of clip 2")
-    elif ABOUT_NEW not in html:
+    elif "img/alps-11-still." not in html:          # (tools/v4_ux.py then gives it a phone cut: still clip 11's)
         raise SystemExit("v4_footage: about.html: hero not found")
     # the podcast breather plays on screen, like every other loop
     p = os.path.join(V4, "podcast.html")
