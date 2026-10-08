@@ -19,13 +19,13 @@
 <link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../styles.css?v=b084e774">
-<link rel="stylesheet" href="v2.css?v=4ea4ff12">
+<link rel="stylesheet" href="v2.css?v=087a2d48">
 <link rel="icon" type="image/png" href="img/favicon-96.png">
 <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
 <meta name="theme-color" content="#141519">
 <link rel="alternate" type="application/rss+xml" title="Paragliding Atlas Podcast" href="https://anchor.fm/s/ed1344d8/podcast/rss">
 <script src="v2.js?v=c7722c82"></script>
-<script src="v2-immersive.js?v=80a8b878"></script>
+<script src="v2-immersive.js?v=88bb6141"></script>
 <style>
 /* ---- five ways to show where we fly (this page only) ---- */
 .fo-top{padding-top:calc(var(--sp-section) + 5rem);}
@@ -302,14 +302,14 @@
 <script src="../../script.js?v=1bb85db6"></script>
 <script defer src="../../nav-menu.js?v=001fbbf6"></script>
 <script src="fly-options.js?v=a5e5c7fd"></script>
-<!-- v4u-footage: src/v4-ux-footage.js via tools/v4_ux.py --><script>(function () {
+<!--v4u-footage--><script>(function () {
 var d = document, w = window;
 function keep(v) { try { if (v === undefined) return localStorage.getItem("v4-still"); localStorage.setItem("v4-still", v); } catch (e) { return null; } }
 function init() {
 var wind = d.querySelector(".footer-bottom .v2-wind");
 if (!wind || d.querySelector(".v4u-still") || (w.matchMedia && w.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
 var still = keep() === "on", b = d.createElement("button");
-b.type = "button"; b.className = "v2-wind v4u-still";
+b.type = "button"; b.className = "v2-wind v4u-still"; b.style.marginLeft = "-.4rem";
 function own(v) { return v.tagName === "VIDEO" && !v.closest(".cd-player, .v4-ls"); }
 function label() {
 var t = still ? "Play" : "Pause";
@@ -335,6 +335,6 @@ if (still) each(function (v) { v.pause(); });
 wind.parentNode.insertBefore(b, wind.nextSibling);
 }
 if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
-})();</script><!-- /v4u-footage -->
+})();</script><!--/v4u-footage-->
 </body>
 </html>

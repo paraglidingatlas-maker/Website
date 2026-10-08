@@ -136,8 +136,8 @@ a.kit-row:hover{padding-left:.5rem;} a.kit-row:hover h3{color:var(--orange);}
 @media (hover:hover){ :where(a.kit-card, a.kit-panel):hover{translate:0 var(--lift);} }
 :where(a.kit-card, a.kit-panel):is(:focus-visible, :has(:focus-visible)){translate:0 var(--lift);--lit:1;}
 :where(a.kit-card, a.kit-panel):active{translate:0 calc(var(--lift) / 3);scale:var(--press-card);}
-.page-wrap:has(> .kit-hero.is-sky, > #v4-main > .kit-hero.is-sky){position:relative;overflow-x:clip;}
-.page-wrap:has(> .kit-hero.is-sky, > #v4-main > .kit-hero.is-sky)::before{
+.page-wrap:has(.kit-hero.is-sky){position:relative;overflow-x:clip;}
+.page-wrap:has(.kit-hero.is-sky)::before{
   content:"";position:absolute;z-index:-1;pointer-events:none;
   top:0;left:0;right:0;height:clamp(640px,70vw,900px);
   background:
@@ -821,11 +821,11 @@ a.v2-dep:hover{padding-left:.5rem;} a.v2-dep:hover .v2-dep-trip b{color:var(--or
 /* ---- homepage: the footage is the header. The nav floats over it, clear;
    the only shading left is a soft left edge behind the words and the fade
    into the page at the bottom. ---- */
-.page-wrap:has(> .v2-home-hero, > #v4-main > .v2-home-hero) > nav{position:absolute;top:0;left:0;right:0;background:none;border-bottom:0;border-image:none;
+.page-wrap:has(.v2-home-hero) > nav{position:absolute;top:0;left:0;right:0;background:none;border-bottom:0;border-image:none;
   text-shadow:0 1px 12px rgba(0,0,0,.35);}
-.page-wrap:has(> .v2-home-hero, > #v4-main > .v2-home-hero) > nav::before{opacity:0;}
-.page-wrap:has(> .v2-home-hero, > #v4-main > .v2-home-hero) > nav .nav-links a{color:rgba(255,255,255,.92);}
-.page-wrap:has(> .v2-home-hero, > #v4-main > .v2-home-hero) > .nav-chevron{display:none;}
+.page-wrap:has(.v2-home-hero) > nav::before{opacity:0;}
+.page-wrap:has(.v2-home-hero) > nav .nav-links a{color:rgba(255,255,255,.92);}
+.page-wrap:has(.v2-home-hero) > .nav-chevron{display:none;}
 .v2-home-hero{padding-top:8rem;}
 .v2-home-hero::after{background:
   linear-gradient(180deg,rgba(10,11,14,.38) 0%,rgba(10,11,14,0) 16%),
@@ -850,7 +850,7 @@ a.v2-dep:hover{padding-left:.5rem;} a.v2-dep:hover .v2-dep-trip b{color:var(--or
 .page-wrap > nav.v2-nav-pinned:not(.v2-nav-shown){transition:translate .28s ease-in;}
 .page-wrap > nav.v2-nav-pinned::before{opacity:.8;}
 .page-wrap > nav.v2-nav-pinned{padding-top:1rem;padding-bottom:1rem;}
-.page-wrap:has(> .v2-home-hero, > #v4-main > .v2-home-hero) > nav.v2-nav-pinned .nav-links a{color:var(--gray-light);}
+.page-wrap:has(.v2-home-hero) > nav.v2-nav-pinned .nav-links a{color:var(--gray-light);}
 /* anything else that sticks to the top steps down under it */
 .v2-tools,.v2-nl{transition:top .38s var(--ease);}
 html.v2-nav-up .v2-tools{top:var(--v2-nav-h,5rem);}
@@ -2907,56 +2907,26 @@ html .tm-cards{left:var(--edge-x);width:min(26rem,calc(100% - 2 * var(--edge-x))
    The rules for one kind of page are in src/v4-ux.css, put into those pages
    alone by tools/v4_ux.py; here, the ones every page needs. */
 
-@media (scripting: none){ .v4-ls-open{display:none !important;} }
+@media (scripting:none){ .v4-ls-open{display:none !important;} }
 
 /* 15. (everywhere) The kit's smallest size, for labels and kickers on every
        page, is 12px on a phone (.72rem was 11.5px); the footer's too. */
 @media (max-width:760px){
   :root{--fs-micro:.75rem;}
   html .footer-listen-label{font-size:12px;}
+  /* 22. (the topic pages) the sort note under a topic's list, made by
+     tags-sort.js; the other labels are in each page's own rule (src/v4-ux.css) */
+  html body .tg-sort-note{font-size:var(--fs-micro);}
 }
 
-/* 18. The site search's matching line under each result (v4-menu.js). */
-.v4-hit-s{display:block;color:var(--gray);font-size:var(--fs-small);line-height:1.45;margin-top:.15rem;}
 
 /* 21. The one main landmark (tools/v4_ux.py), where the skip link lands: no
        ring around the whole page when it takes the focus. */
 #v4-main:focus{outline:none;}
 
-/* 22. No text under 12 px on a phone (drawings excepted): the last labels
-       that were drawn at 8 to 11.8 px take the micro size (12 px here). */
-@media (max-width:760px){
-  html body :is(.ep-card .ep-foot, .ep-card .ep-stamp b, .ep-card .ep-stamp i, .ep-open .s, .ep-open .m, .ep-open .g, .cta-n,
-    .v2-tour-tag, .cta-hud-tag, .pw-node, .sky-ctrl button, .sky-g small, .tg-sort-note,
-    .band .chips a, .band .chips .lab, .bf-q .cap, .ep-tile .ep-foot, .cardx .n, .ep-audio,
-    .cd-ts, .cd-block-time, .cd-chap time, .ep-au-cur, .ep-au-dur,
-    .v4t-read dt, .kkit-ess, .kair-ranges span, .kair-ranges small, .fact-l, .kov-q h3, .kkit-gate b, .kdates-price span,
-    .kkit-dl small, .kdates-months span, .kday-n, .kdates-flags span, .kdates-tour b, .kdates-n, .etq-diy){font-size:var(--fs-micro);}
-}
-
-/* 23. (every page with footage) The footage's Pause, beside Wind sound
-       (src/v4-ux-footage.js). */
-.footer-bottom .v4u-still{margin-left:-.4rem;}
-
-/* 24. The helper lines say "Tap" on a touch screen, "Click" with a mouse
-       (tools/v4_ux.py); the headings are as they were. */
-.v4u-touch{display:none;}
-@media (hover:none) and (pointer:coarse){ .v4u-ptr{display:none;} .v4u-touch{display:inline;} }
-
-/* 25. The night sky's stars on a touch screen: each star's ring is larger
-       (r 15 to 26 in the sky's own units: 17 px to 25 px across on a phone
-       with the whole sky in view), and a tap goes to the nearest star within
-       30 px (sitemap-sky.js's own rule for taps between stars) rather than to
-       whichever ring lies on top; nothing drawn changes. */
-@media (pointer:coarse){ .sky-star .sky-hit{r:26px;pointer-events:none;} }
-
-/* Rules of the page sections (src/v4-ux.css) that must not sit in a page:
-   the live audit, run on the switched site, reads each page's own styles,
-   and there a hidden element reads as a clipped transcript (episodes), and
-   v2.css's own tokens (--ease, --edge-x) as undefined. 9: the chapter
-   timeline's ticks and the audio bar's chapter marks are left out on touch
-   screens; 11 and 19: the podcast's fades; 20: the topics' "Nothing found". */
-@media (pointer:coarse){ html .ep2-timeline,html .ep-au-chap{display:none;} }
-.v4-voices{transition:opacity .8s var(--ease);}
-.v4u-play{transition:scale .2s var(--ease),background-color .25s ease;}
-.v4u-tg-none{margin:var(--sp-3) var(--edge-x) 0;}
+/* 9. (episodes) On any touch screen the chapter timeline's thin ticks and the
+      audio bar's chapter marks are left out: the list is the way to a
+      chapter there. Here, not in the episode's own styles: the live audit,
+      run on the switched site, reads a hidden element in an episode page as
+      a clipped transcript. */
+@media (pointer:coarse){ html :is(.ep2-timeline,.ep-au-chap){display:none;} }

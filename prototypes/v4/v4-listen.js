@@ -286,6 +286,7 @@ else if (!e.shiftKey && d.activeElement === f[f.length - 1]) { e.preventDefault(
 }
 function open(from) {
 opener = from || d.activeElement;
+if (from && from.setAttribute) from.setAttribute("aria-controls", "v4Listen");   // the usability pass (12): now it exists
 el.hidden = false;
 d.documentElement.classList.add("v4-ls-on");
 el.classList.add("is-still");

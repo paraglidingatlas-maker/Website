@@ -80,7 +80,7 @@ var turn = HDG + Math.sin(f * Math.PI * 2) * 9 + f * 14;
 hudAlt.textContent = (Math.round(climb / 10) * 10).toLocaleString("en-US") + " m";
 hudHdg.textContent = pad3(turn) + "°";
 }
-var heroVid = d.querySelector(".page-wrap > .kit-hero video, .page-wrap > header video, #v4-main > .kit-hero video, #v4-main > header video, .khero video");
+var heroVid = d.querySelector(":is(.page-wrap,#v4-main)>:is(.kit-hero,header) video,.khero video");
 if (heroVid && hud) {
 var flying = function () { hud.classList.toggle("is-flying", !heroVid.paused && !heroVid.ended); };
 ["playing", "pause", "ended", "emptied"].forEach(function (ev) { heroVid.addEventListener(ev, flying); });
@@ -268,7 +268,7 @@ var nav = d.querySelector(".page-wrap > nav");
 if (!nav || d.querySelector(".dst-jump")) return;
 var root = d.documentElement, spacer = null, pinned = false, shown = false, lastY = w.scrollY, queued = false;
 function threshold() {
-var hero = d.querySelector(".page-wrap > .kit-hero, .page-wrap > header, #v4-main > .kit-hero, #v4-main > header");
+var hero = d.querySelector(":is(.page-wrap,#v4-main)>:is(.kit-hero,header)");
 var h = hero ? hero.getBoundingClientRect().bottom + w.scrollY : 0;
 return Math.max(nav.offsetHeight * 3, Math.min(h, innerHeight));
 }
@@ -463,7 +463,7 @@ function place() {
 var max = d.documentElement.scrollHeight - w.innerHeight;
 if (max <= 0) return;
 var html = "";
-d.querySelectorAll(".cd-center h2, main:not(#v4-main) h2, .page-wrap > section h2, #v4-main > section h2, .dst-main h2").forEach(function (h) {
+d.querySelectorAll(":is(.cd-center,main:not(#v4-main),:is(.page-wrap,#v4-main)>section,.dst-main) h2").forEach(function (h) {
 if (h.closest("details:not([open]), footer, nav, [hidden]")) return;
 var y = h.getBoundingClientRect().top + w.scrollY - w.innerHeight * .3;
 var p = Math.max(0, Math.min(1, y / max));
@@ -507,7 +507,7 @@ var cta = nav.querySelector(".nav-cta");
 var b = d.createElement("button");
 b.type = "button";
 b.className = "v4-open";
-b.setAttribute("aria-expanded", "false");     // aria-controls comes with the menu (v4-menu.js), once it exists
+b.setAttribute("aria-expanded", "false");
 b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><span>Search</span>';
 b.addEventListener("click", function () { open(true, b); });
 if (cta) nav.insertBefore(b, cta); else nav.appendChild(b);
@@ -638,7 +638,7 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
 "use strict";
 var d = document;
 function skip() {
-var h = d.querySelector("main") || d.querySelector("h1");   // the page's one main (the usability pass, 21)
+var h = d.querySelector("main") || d.querySelector("h1");
 if (!h || d.querySelector(".v4-skip")) return;
 var t = h.tagName === "MAIN" ? h : (h.closest("header, section, article") || h);
 if (!t.id) t.id = "v4-main";
@@ -818,23 +818,15 @@ function init() {
 if (d.body.getAttribute("data-v2") !== "ep") return;
 var player = d.querySelector(".cd-player");
 if (!player || !d.querySelector(".cd-line")) return;
-var host = d.querySelector(".ep2-hero-media") || player.parentNode;
 var b = d.querySelector(".v4-ls-open"), loading = false;
-if (!b) {
-b = d.createElement("button");
-b.type = "button";
-b.className = "v4-ls-open";
-b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="7" rx="1.2"/><rect x="17" y="14" width="4" height="7" rx="1.2"/></svg><span>Listening mode</span>';
-host.appendChild(b);
-}
-function named() { if (d.getElementById("v4Listen")) b.setAttribute("aria-controls", "v4Listen"); }
+if (!b) return;
 function open() {
-if (w.V4_LISTEN) { w.V4_LISTEN.open(b); named(); return; }
+if (w.V4_LISTEN) { w.V4_LISTEN.open(b); return; }
 if (loading) return;
 loading = true;
 var s = d.createElement("script");
 s.src = SRC;
-s.onload = function () { loading = false; if (w.V4_LISTEN) { w.V4_LISTEN.open(b); named(); } };
+s.onload = function () { loading = false; if (w.V4_LISTEN) w.V4_LISTEN.open(b); };
 s.onerror = function () { loading = false; b.hidden = true; };
 d.head.appendChild(s);
 }

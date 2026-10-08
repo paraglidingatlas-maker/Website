@@ -2,47 +2,40 @@
 """
 The usability pass on v4 (owner's brief, 7 Oct 2026; docs/ux-report.md).
 
-The page changes that live in HTML. The look and the behaviour are in
-src/v2.css and src/v2-immersive.js ("THE USABILITY PASS"). Every change here
-uses only words and facts the pages already carry, and is idempotent: it runs
-after every other v4 generator and pass, and a rerun changes nothing.
+Everything the pass puts into the v4 pages. It uses only words and facts the
+pages already carry, and is idempotent: it runs after every other v4
+generator and pass, and a rerun changes nothing.
 
-    python3 tools/v4_ux.py              # every v4 page
+    python3 tools/v4_ux.py              # every v4 page (never the samples)
     python3 tools/v4_ux.py --check      # say what would change, write nothing
 
 Rebuild order for v4: the generators and passes in docs/v4-report.md, then
-this, then python3 tools/v4_min.py and python3 tools/v2_localize.py --site v4.
+python3 tools/v4_phone_media.py (the phone pictures and clips), python3
+tools/v4_search.py (the search files), this, python3 tools/v4_min.py and
+python3 tools/v2_localize.py --site v4.
 
-What it does, by the brief's numbers
-  1  the trips' phone bar leads with the price the departures already show
-     ("£1,100 per pilot", "From US$2,100"), then the length and the next
-     departure.
-  2  Dates come right after the route (the gallery after them), with the
-     jump row and the two skip links in the same order; on a phone the
-     gallery's pinned run is under three screens and the route's shorter
-     (src/v2.css).
-  3  (src/v2.css only) the gallery on an upright phone or tablet: each photo
-     whole, in a landscape frame.
-  4  enquire.html?trip=..&when=..: the departure's facts (as the trip page
-     states them) under the title, the form next, the message optional.
-  5  every trip question in view; Flying Etiquette a band of its own after
-     Before You Book, its heading and first lines in view, in the jump row.
-  6  weight on a phone: each trip hero slide gets its phone cut
-     (tools/v4_phone_media.py) and every slide but the first waits for the
-     slideshow; the gallery's photographs all wait until it comes near; the
-     home page's four expedition photographs wait for the fly-through. The
-     hero clips' phone cuts are chosen by src/v4-ux-media.js (inlined).
-  7  on a wide screen the trip's section bar carries the price and Hold a
-     place beside Enquire.
- 10  episodes: Related Episodes, Up next and the phone bar's Next name the
-     guest and the descriptive part of the title (episode-meta.json, read only).
- 11  the podcast's wall of names waits for its typeface; the episodes'
-     Listening mode button is in the page from the start.
- 14  the knowledge base series pages get the trips' jump row: each idea by
-     its kicker, Worth Remembering, FAQ, the conversations (13 is CSS).
- 15  the knowledge base hub: each series with its own page's question under
-     its name, the site search at the top, the altitude links a band to tap.
- 17  the library's search under its title, with a list for its first results.
+Where the rest lives
+  src/v4-ux.css        the pass's rules for one kind of page: each "@page"
+                       section goes, minified, into those pages only, right
+                       after v2.css; "@small" (22) is a list of labels, each
+                       page getting the ones it carries.
+  src/v2.css           (its end) the few rules every page needs, and those the
+                       live audit must not find inside a page.
+  src/v4-ux-*.js       the pass's scripts, inlined only where used (the hero
+                       clips, the footage's Pause, the newest episode, the
+                       enquiry form, the in-page search); the library's
+                       search extras ride in library-find.js (tools/v4_search.py).
+  <!--v4u-name-->      the marks around what this writes into a page.
+
+What it does, by the brief's numbers: 1, 2, 4, 5, 7 the trip pages (the phone
+bar's price, the dates after the route, the enquiry on a departure, every
+question shown, Flying Etiquette's band, the bar's price and Hold a place);
+6 weight (phone cuts of the heroes, clips and stills, pictures that wait,
+every drawing in relative steps); 10 episode labels; 11 the podcast's wall
+and the Listening mode button; 14 and 15 the knowledge base's jump rows and
+hub; 17 the library's search; 19 the podcast's newest episode; 20 topics;
+21 one main per page; 22 small labels; 23 the footage's Pause; 24 Tap on
+touch; 26 image sizes; 27 the enquiry form's messages.
 """
 import html
 import os
@@ -192,8 +185,8 @@ def trip_length(src):
     return plain(m.group(1)) if m else ""
 
 
-HOLD_MARK = ("<!-- v4u-hold: tools/v4_ux.py -->", "<!-- /v4u-hold -->")
-HOLD_HEAD = ("<!-- v4u-holding: tools/v4_ux.py -->", "<!-- /v4u-holding -->")
+HOLD_MARK = ("<!--v4u-hold-->", "<!--/v4u-hold-->")
+HOLD_HEAD = ("<!--v4u-holding-->", "<!--/v4u-holding-->")
 
 
 def put_block(src, marks, block, anchor, before=True):
@@ -597,7 +590,7 @@ def library_search(src):
                   lambda mm: mm.group(1) + block, src, count=1, flags=re.S)
 
 
-WALL_MARK = ("<!-- v4u-wall: tools/v4_ux.py -->", "<!-- /v4u-wall -->")
+WALL_MARK = ("<!--v4u-wall-->", "<!--/v4u-wall-->")
 WALL_JS = ("<script>(function(d){var r=d.documentElement,done=0;function show(){if(!done){done=1;r.classList.remove('v4u-wall');}}"
            "r.classList.add('v4u-wall');setTimeout(show,2500);"
            "try{d.fonts.load('600 1em Poppins').then(function(){requestAnimationFrame(function(){requestAnimationFrame(show);});},show);}"
@@ -612,8 +605,8 @@ def podcast_wall(src):
     return put_block(src, WALL_MARK, WALL_JS, "</head>")
 
 
-LATEST_MARK = ("<!-- v4u-latest: tools/v4_ux.py, from episode-meta.json and mp3-map.json -->", "<!-- /v4u-latest -->")
-LATEST_JS_MARK = ("<!-- v4u-latest-js: src/v4-ux-latest.js via tools/v4_ux.py -->", "<!-- /v4u-latest-js -->")
+LATEST_MARK = ("<!--v4u-latest-->", "<!--/v4u-latest-->")
+LATEST_JS_MARK = ("<!--v4u-latest-js-->", "<!--/v4u-latest-js-->")
 
 
 def inline_js(name):
@@ -689,7 +682,7 @@ TG_FIND = ('<label class="v2-find v4u-tgfind"><span class="v2-sr">Search topics<
            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/>'
            '<path d="M21 21l-4.3-4.3"/></svg><input class="v2-find-input" id="tgFind" type="search" placeholder="Search topics" '
            'autocomplete="off" aria-controls="tgCloud"></label>')
-TG_JS_MARK = ("<!-- v4u-topics-js: tools/v4_ux.py -->", "<!-- /v4u-topics-js -->")
+TG_JS_MARK = ("<!--v4u-topics-js-->", "<!--/v4u-topics-js-->")
 TG_JS = ("<script>(function(d){var i=d.getElementById('tgFind'),c=d.getElementById('tgCloud'),n=d.getElementById('tgNone');if(!i||!c||!n)return;"
          "var t=[].slice.call(c.querySelectorAll('.tg-tile'));function f(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();}"
          "t.forEach(function(a){a.v4f=f((a.getAttribute('href')||'').replace(/^.*\\//,'').replace(/\\.html$/,'')+' '+a.textContent.replace(/\\d+\\s*$/,''));});"
@@ -756,7 +749,7 @@ def film_stills(rel, src):
     return out
 
 
-FILM_MARK = ("<!-- v4u-film: tools/v4_ux.py -->", "<!-- /v4u-film -->")
+FILM_MARK = ("<!--v4u-film-->", "<!--/v4u-film-->")
 FILM_JS = ("<script>(function(d,w){var im=[].slice.call(d.querySelectorAll('.v4-film img[data-v4-src]'));"
            "function go(i){var p=i.parentNode;if(p.tagName==='PICTURE')[].forEach.call(p.querySelectorAll('source[data-v4-srcset]'),"
            "function(s){s.srcset=s.getAttribute('data-v4-srcset');});i.src=i.getAttribute('data-v4-src');}"
@@ -765,7 +758,7 @@ FILM_JS = ("<script>(function(d,w){var im=[].slice.call(d.querySelectorAll('.v4-
            "{rootMargin:'400px 0px'});im.forEach(function(i){o.observe(i);});})(document,window);</script>")
 
 
-BREATHER_MARK = ("<!-- v4u-breather: tools/v4_ux.py -->", "<!-- /v4u-breather -->")
+BREATHER_MARK = ("<!--v4u-breather-->", "<!--/v4u-breather-->")
 BREATHER_JS = ("<script>(function(v){var m=location.pathname.match(/^(.*\\/prototypes\\/v\\d+\\/)/);"
                "if(v&&innerWidth/Math.max(1,innerHeight)<=2/3)v.setAttribute('data-loop',(m?m[1]:'/assets/v4/')+'img/clips/hero-p');})"
                "(document.querySelector('.v4-breather video[data-loop$=\"video/hero\"]'));</script>")
@@ -784,9 +777,9 @@ def podcast_breather(src):
 
 
 # ------------------------------------------------------------------------- the pass's own CSS and scripts, by page
-UXCSS_MARK = ("<!-- v4u-css: src/v4-ux.css via tools/v4_ux.py -->", "<!-- /v4u-css -->")
-FOOT_MARK = ("<!-- v4u-footage: src/v4-ux-footage.js via tools/v4_ux.py -->", "<!-- /v4u-footage -->")
-FIND_MARK = ("<!-- v4u-find: src/v4-ux-find.js via tools/v4_ux.py -->", "<!-- /v4u-find -->")
+UXCSS_MARK = ("<!--v4u-css-->", "<!--/v4u-css-->")
+FOOT_MARK = ("<!--v4u-footage-->", "<!--/v4u-footage-->")
+FIND_MARK = ("<!--v4u-find-->", "<!--/v4u-find-->")
 _UXCSS = None
 
 
@@ -801,10 +794,32 @@ def ux_groups(rel, src):
         g.append("episode")
     if 'data-v2="kb"' in src:
         g.append("kb")
-    for r, n in (("knowledge-base.html", "hub"), ("library.html", "library"), ("podcast.html", "podcast"), ("tags.html", "topics")):
+    for r, n in (("knowledge-base.html", "hub"), ("library.html", "library"), ("podcast.html", "podcast"), ("tags.html", "topics"),
+                 ("sitemap.html", "sitemap")):
         if rel == r:
             g.append(n)
+    if "v4u-touch" in src:
+        g.append("touch")
     return g
+
+
+JS_MADE = {"sky-g": "sitemap-sky.js", "ep-au-cur": "episode-audio.js", "ep-au-dur": "episode-audio.js"}
+
+
+def small_rule(rel, src, small):
+    """22: of the labels that take the micro size on a phone, the ones this page carries: in its own HTML, or
+    made by a script it loads (JS_MADE)."""
+    own = re.sub(r"%s.*?%s" % (re.escape(UXCSS_MARK[0]), re.escape(UXCSS_MARK[1])), "", src, flags=re.S)
+    loads = set(os.path.basename(u) for u in re.findall(r'<script\b[^>]*\ssrc="([^"?]+)', src))
+
+    def has(c):
+        return re.search(r"(?<![\w-])%s(?![\w-])" % re.escape(c), own) or JS_MADE.get(c) in loads
+    keep = [sel for sel in small if all(has(c) for c in re.findall(r"\.([\w-]+)", sel) if len(c) > 2)]
+    # :is() weighs as its heaviest selector, and the rule must weigh what it did as one list for every page
+    top = max(small, key=lambda x: (len(re.findall(r"[.#\[:]", x)), len(re.findall(r"(?:^|[\s>+~])[a-z]", x))))
+    if keep and top not in keep:
+        keep.append(top)
+    return "@media (max-width:760px){html body :is(%s){font-size:var(--fs-micro)}}" % ",".join(keep) if keep else ""
 
 
 def ux_css(rel, src):
@@ -816,8 +831,10 @@ def ux_css(rel, src):
     import v4_min
     if _UXCSS is None:
         text = open(os.path.join(V4, "src", "v4-ux.css"), encoding="utf-8").read()
-        _UXCSS = {m.group(1): m.group(2) for m in re.finditer(r"/\* @page (\w+) \*/(.*?)(?=/\* @page |\Z)", text, re.S)}
-    css = "".join(v4_min.css(_UXCSS[g]).strip() for g in ux_groups(rel, src))
+        _UXCSS = {m.group(1): m.group(2) for m in re.finditer(r"/\* @page (\w+) \*/(.*?)(?=/\* @(?:page \w+|small) \*/|\Z)", text, re.S)}
+        sm = re.search(r"/\* @small \*/(.*)\Z", text, re.S)
+        _UXCSS[" small"] = [ln.strip() for ln in re.sub(r"/\*.*?\*/", "", sm.group(1), flags=re.S).splitlines() if ln.strip()] if sm else []
+    css = "".join(v4_min.css(_UXCSS[g]).strip() for g in ux_groups(rel, src)) + small_rule(rel, src, _UXCSS[" small"])
     link = re.search(r'<link rel="stylesheet" href="[^"]*v2\.css(?:\?v=[0-9a-f]+)?">', src)
     if UXCSS_MARK[0] in src:
         if not css:
@@ -838,37 +855,125 @@ def ux_scripts(rel, src):
     return src
 
 
-def _relative(d):
-    """An SVG path of absolute integer M/L/Z steps (tools/v4_globe.py writes them) as relative steps: the same
-    points exactly, in about two thirds of the bytes."""
-    out, cx, cy, sx, sy, last = [], 0, 0, 0, 0, ""
-    for cmd, x, y in re.findall(r"([MLZ])(?:(-?\d+),(-?\d+))?", d):
-        if cmd == "Z":
-            out.append("z")
-            cx, cy, last = sx, sy, "z"
+# ------------------------------------------------------------- 6 at the end: every drawing in relative steps
+from decimal import Decimal as _D   # noqa: E402
+
+_NUM = r"[-+]?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?"
+_ARGS = {"M": 2, "L": 2, "H": 1, "V": 1, "C": 6, "S": 4, "Q": 4, "T": 2, "Z": 0}
+
+
+def _fmt(x):
+    s = format(x.normalize(), "f")
+    if "." in s:
+        s = s.rstrip("0").rstrip(".")
+    if s in ("-0", ""):
+        s = "0"
+    if s.startswith("0."):
+        s = s[1:]
+    elif s.startswith("-0."):
+        s = "-" + s[2:]
+    return s
+
+
+def _join(nums):
+    out = ""
+    for n in nums:
+        t = _fmt(n)
+        out += t if (not out or t.startswith("-") or out[-1].isalpha()) else " " + t
+    return out
+
+
+def _tokens(d):
+    for m in re.finditer(r"([MmLlHhVvCcSsQqTtZz])|(%s)" % _NUM, d):
+        yield m.group(1) or _D(m.group(2))
+
+
+def path_relative(d):
+    """A path's data with every segment relative (each subpath's M absolute): the same points exactly, worked
+    in decimal, not in floating point. None when it holds arcs or anything else unexpected (left as it is)."""
+    if re.search(r"[Aa]", d) or re.sub(r"([MmLlHhVvCcSsQqTtZz])|(%s)|[\s,]" % _NUM, "", d):
+        return None
+    toks = list(_tokens(d))
+    out, i, cmd, cx, cy, sx, sy, last = [], 0, None, _D(0), _D(0), _D(0), _D(0), None
+    while i < len(toks):
+        t = toks[i]
+        if isinstance(t, str):
+            cmd = t
+            i += 1
+            if cmd in "Zz":
+                if last != "z":
+                    out.append("z")
+                cx, cy, last = sx, sy, "z"
+                continue
+        elif cmd is None:
+            return None
+        up = cmd.upper()
+        n = _ARGS[up]
+        a = toks[i:i + n]
+        if len(a) < n or any(isinstance(x, str) for x in a):
+            return None
+        i += n
+        rel = cmd.islower()
+        if up == "M":
+            x, y = (cx + a[0], cy + a[1]) if rel else (a[0], a[1])
+            out.append("M" + _join([x, y]))
+            cx, cy, sx, sy, last = x, y, x, y, "M"
+            cmd = "l" if rel else "L"          # what follows a moveto is a lineto
             continue
-        x, y = int(x), int(y)
-        if cmd == "M":
-            out.append("M%d %d" % (x, y))
-            sx, sy, last = x, y, "M"
+        if up == "H":
+            x = cx + a[0] if rel else a[0]
+            seg, letter = [x - cx], "h"
+            cx = x
+        elif up == "V":
+            y = cy + a[0] if rel else a[0]
+            seg, letter = [y - cy], "v"
+            cy = y
         else:
-            dx, dy = x - cx, y - cy
-            out.append(("l" if last not in ("l", "M") else ("l" if last == "M" else " ")) + "%d %d" % (dx, dy))
-            last = "l"
-        cx, cy = x, y
-    return "".join(out).replace(" -", "-")
+            pts = []
+            for k in range(0, n, 2):
+                px, py = (cx + a[k], cy + a[k + 1]) if rel else (a[k], a[k + 1])
+                pts += [px - cx, py - cy]
+            seg, letter = pts, up.lower()
+            cx, cy = cx + pts[-2], cy + pts[-1]
+        if last == letter:
+            body = _join(seg)
+            out.append(body if body.startswith("-") else " " + body)
+        else:
+            out.append(letter + _join(seg))
+        last = letter
+    return "".join(out)
 
 
-def globe_paths(src):
-    """6, re-measured at the end. The globe on each episode page (and the home page) is drawn with absolute
-    coordinates, 12 KB a page; written as relative steps it is the same drawing, point for point, 3.5 KB
-    lighter (2.7 KB as sent): more than the pass added to an episode page."""
-    if 'class="v4-globe' not in src:
-        return src
+def poly_path(tag):
+    """A <polyline> or <polygon> as the <path> it draws (the same points, relative), its other attributes kept."""
+    m = re.search(r'\spoints="([^"]*)"', tag)
+    if not m:
+        return None
+    nums = [_D(x) for x in re.findall(_NUM, m.group(1))]
+    if len(nums) < 4 or len(nums) % 2:
+        return None
+    closed = tag.startswith("<polygon")
+    cx, cy, seg = nums[0], nums[1], []
+    for k in range(2, len(nums), 2):
+        seg += [nums[k] - cx, nums[k + 1] - cy]
+        cx, cy = nums[k], nums[k + 1]
+    d = "M" + _join(nums[:2]) + "l" + _join(seg) + ("z" if closed else "")
+    return "<path" + tag[len("polygon" if closed else "polyline") + 1:m.start()] + ' d="%s"' % d + tag[m.end():]
 
+
+def drawings_relative(src):
+    """6, re-measured at the end. Every drawing in the page (the knowledge base's, the episodes' globes and
+    series marks, the topics' traces) spelt in relative steps, polylines as the paths they draw: the same
+    points exactly, each check in decimal, and a third lighter (the Flight Mechanics page 150 KB, 60 KB as
+    sent). Only where it is shorter; arcs left as they are; nothing inside scripts."""
     def svg(m):
-        return re.sub(r' d="([MLZ0-9,\-]+)"', lambda p: ' d="%s"' % _relative(p.group(1)), m.group(0))
-    return re.sub(r'<svg class="v4-globe.*?</svg>', svg, src, flags=re.S)
+        t = re.sub(r"<poly(?:line|gon)\b[^>]*>", lambda p: (lambda r: r if r and len(r) < len(p.group(0)) else p.group(0))(poly_path(p.group(0))), m.group(0))
+        return re.sub(r'(<path\b[^>]*?\sd=")([^"]*)"',
+                      lambda p: (lambda r: p.group(1) + r + '"' if r is not None and len(r) < len(p.group(2)) else p.group(0))(path_relative(p.group(2))), t)
+    parts = re.split(r"(<script\b.*?</script>|<template\b.*?</template>)", src, flags=re.S)
+    for i in range(0, len(parts), 2):
+        parts[i] = re.sub(r"<svg\b.*?</svg>", svg, parts[i], flags=re.S)
+    return "".join(parts)
 
 
 def kb_tile_art(rel, src):
@@ -895,7 +1000,7 @@ def about_still(src):
                        '<source srcset="img/alps-11-still.webp" type="image/webp">' % PHONE_MEDIA, 1)
 
 
-ART_MARK = ("<!-- v4u-art: tools/v4_ux.py -->", "<!-- /v4u-art -->")
+ART_MARK = ("<!--v4u-art-->", "<!--/v4u-art-->")
 ART_JS = ("<script>(function(d,w){var m=location.pathname.match(/^(.*\\/prototypes\\/v\\d+\\/)/),B=m?m[1]:'/assets/v4/',"
           "s=[].slice.call(d.querySelectorAll('[data-v4-art]'));function go(e){e.style.setProperty('--art',\"url('\"+B+e.getAttribute('data-v4-art')+\"')\");}"
           "if(!('IntersectionObserver' in w)){s.forEach(go);return;}var o=new IntersectionObserver(function(es){es.forEach(function(e){"
@@ -996,7 +1101,7 @@ def image_sizes(rel, src):
 
 
 # ------------------------------------------------------------------------------------------------ 27
-FORM_JS_MARK = ("<!-- v4u-form-js: src/v4-ux-form.js via tools/v4_ux.py -->", "<!-- /v4u-form-js -->")
+FORM_JS_MARK = ("<!--v4u-form-js-->", "<!--/v4u-form-js-->")
 
 
 def enquire_messages(src):
@@ -1023,7 +1128,7 @@ def _close(src, start, tag):
     return None
 
 
-MAIN_OPEN = '<main id="v4-main" tabindex="-1">'
+MAIN_OPEN = '<main id="v4-main">'   # the skip link's script makes it focusable (tabindex -1) as it adds the link
 
 
 def main_landmark(rel, src):
@@ -1041,7 +1146,7 @@ def main_landmark(rel, src):
         if end is None:
             return src
         src = src[:m.start()] + "<main" + src[m.start() + 4:end] + "</main>" + src[end + 6:]
-        src = src.replace('<main class="cd-wrap', '<main id="v4-main" tabindex="-1" class="cd-wrap', 1)
+        src = src.replace('<main class="cd-wrap', '<main id="v4-main" class="cd-wrap', 1)
         i = src.index('<main class="cd-center">')
         j = _close(src, i, "main")
         return src[:i] + '<div class="cd-center">' + src[i + len('<main class="cd-center">'):j] + "</div>" + src[j + 7:]
@@ -1055,7 +1160,7 @@ def main_landmark(rel, src):
     return src[:a] + "\n" + MAIN_OPEN + src[a:b] + "</main>\n" + src[b:]
 
 
-MEDIA_MARK = ("<!-- v4u-media: src/v4-ux-media.js via tools/v4_ux.py -->", "<!-- /v4u-media -->")
+MEDIA_MARK = ("<!--v4u-media-->", "<!--/v4u-media-->")
 
 
 def media_script(src):
@@ -1076,7 +1181,15 @@ def hold_data():
     return out
 
 
+def migrate(src):
+    """Pages built by earlier runs: the pass's marks in their short form, the main without its tabindex
+    (6 at the end: a few dozen bytes on every page)."""
+    src = re.sub(r"<!-- (/?)(v4u-[\w-]+)(?:[:,][^>]*?)? -->", r"<!--\1\2-->", src)
+    return src.replace(' id="v4-main" tabindex="-1"', ' id="v4-main"')
+
+
 def page(rel, src):
+    src = migrate(src)
     src = topic_case(src)
     src = image_sizes(rel, src)
     if rel in ("index.html", "podcast.html", "sitemap.html"):
@@ -1121,7 +1234,7 @@ def page(rel, src):
         src = media_script(src)
     src = ux_scripts(rel, src)
     src = ux_css(rel, src)
-    src = globe_paths(src)
+    src = drawings_relative(src)
     return main_landmark(rel, src)
 
 

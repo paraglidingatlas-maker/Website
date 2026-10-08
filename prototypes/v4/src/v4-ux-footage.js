@@ -12,7 +12,7 @@
     var wind = d.querySelector(".footer-bottom .v2-wind");
     if (!wind || d.querySelector(".v4u-still") || (w.matchMedia && w.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
     var still = keep() === "on", b = d.createElement("button");
-    b.type = "button"; b.className = "v2-wind v4u-still";
+    b.type = "button"; b.className = "v2-wind v4u-still"; b.style.marginLeft = "-.4rem";
     function own(v) { return v.tagName === "VIDEO" && !v.closest(".cd-player, .v4-ls"); }
     function label() {
       var t = still ? "Play" : "Pause";

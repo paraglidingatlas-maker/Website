@@ -2,6 +2,9 @@
 (function () {
 "use strict";
 var d = document, w = window;
+var hs = d.createElement("style");
+hs.textContent = ".v4-hit-s{display:block;color:var(--gray);font-size:var(--fs-small);line-height:1.45;margin-top:.15rem}";
+d.head.appendChild(hs);
 var m = /^(.*\/prototypes\/v\d+\/)/.exec(location.pathname);
 var BASE = m ? m[1] : "/";                        // the prototype's root
 var LIVE = m ? BASE.replace(/prototypes\/v\d+\/$/, "") : "/"; // the site's root (the assets)

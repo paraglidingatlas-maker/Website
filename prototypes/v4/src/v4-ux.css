@@ -201,6 +201,7 @@ html .clb-topics{align-items:stretch;}
 /* 17, the rest: what the library's search shows, which comes with
    library-find.js on the first keystroke (tools/v4_search.py), so the page
    does not carry it on arrival. */
+.v4-hit-s{display:block;color:var(--gray);font-size:var(--fs-small);line-height:1.45;margin-top:.15rem;}
 .v4u-libfind .v4-hits{background:rgba(20,21,25,.96);padding:0 .75rem;}
 .v4u-libfind .v4-hits a{grid-template-columns:6.5rem minmax(0,1fr);}
 @media (max-width:560px){ .v4u-libfind .v4-hits a{grid-template-columns:1fr;} }
@@ -219,6 +220,7 @@ html .clb-topics{align-items:stretch;}
       mode button is in the page from the start (tools/v4_ux.py), so the
       hero no longer grows under the reader; without script it is not shown. */
 html.v4u-wall .v4-voices{visibility:hidden;opacity:0;}
+.v4-voices{transition:opacity .8s var(--ease-out);}
 /* 19. The newest episode on the podcast's screen one, from the saved archive
        (tools/v4_ux.py), its play button the feed's own; the whole row opens
        the episode, the button plays it here. */
@@ -235,7 +237,7 @@ html.v4u-wall .v4-voices{visibility:hidden;opacity:0;}
 .v4u-latest:has(a:focus-visible){outline:2px solid var(--white);outline-offset:3px;}
 .v4u-latest-w{color:var(--gray-light);font-size:var(--fs-body-s);}
 .v4u-play{position:relative;z-index:1;width:var(--cv);height:var(--cv);margin:0;padding:0;border:0;border-radius:50%;cursor:pointer;
-  display:grid;place-items:center;color:var(--white);background:var(--orange);}
+  display:grid;place-items:center;color:var(--white);background:var(--orange);transition:scale .2s var(--ease-out),background-color .25s ease;}
 .v4u-play::before{content:"";position:absolute;inset:-5px;border-radius:50%;pointer-events:none;
   background:conic-gradient(var(--orange) calc(var(--p,0) * 1turn),rgba(255,255,255,.12) 0);
   -webkit-mask:radial-gradient(circle closest-side,transparent calc(100% - 2px),#000 calc(100% - 1px));
@@ -256,7 +258,68 @@ html.v4u-wall .v4-voices{visibility:hidden;opacity:0;}
 .tg-spark-cap{display:flex;align-items:center;gap:.6rem;margin:var(--sp-2) 0 0;font-size:var(--fs-small);color:var(--gray-light);}
 .tg-spark-cap svg{flex:none;width:40px;height:12px;fill:none;stroke:var(--orange);stroke-width:1.4;stroke-linecap:round;}
 html [data-v2="tg"] .tg-tile[hidden]{display:none !important;}
-.v4u-tg-none{color:var(--gray-light);font-size:var(--fs-body-s);}
+.v4u-tg-none{margin:var(--sp-3) max(var(--gutter),calc((100% - var(--measure)) / 2)) 0;color:var(--gray-light);font-size:var(--fs-body-s);}
 .v4u-tg-none a{color:var(--orange);margin-left:.4rem;}
 .v4u-tgfind .v2-find-input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
 @media (scripting:none){ .v4u-tgtools{display:none;} }
+
+/* @page touch */
+/* 24. The helper lines say "Tap" on a touch screen, "Click" with a mouse
+       (tools/v4_ux.py); the headings are as they were. On the pages that
+       carry such a line. */
+.v4u-touch{display:none;}
+@media (hover:none) and (pointer:coarse){ .v4u-ptr{display:none;} .v4u-touch{display:inline;} }
+
+/* @page sitemap */
+/* 25. The night sky's stars on a touch screen: each star's ring is larger
+       (r 15 to 26 in the sky's own units: 17 px to 25 px across on a phone
+       with the whole sky in view), and a tap goes to the nearest star within
+       30 px (sitemap-sky.js's own rule for taps between stars) rather than to
+       whichever ring lies on top; nothing drawn changes. */
+@media (pointer:coarse){ .sky-star .sky-hit{r:26px;pointer-events:none;} }
+
+/* @small */
+/* 22. No text under 12 px on a phone (drawings excepted): the last labels
+       that were drawn at 8 to 11.8 px take the micro size (12 px there). One
+       selector a line; tools/v4_ux.py gives each page the ones whose classes
+       it carries in its own HTML (or, for the few that a script makes, loads
+       that script: tools/v4_ux.py JS_MADE), as one rule, after the sections
+       above. The topics' sort note is in src/v2.css. */
+.ep-card .ep-foot
+.ep-card .ep-stamp b
+.ep-card .ep-stamp i
+.ep-open .s
+.ep-open .m
+.ep-open .g
+.cta-n
+.v2-tour-tag
+.cta-hud-tag
+.pw-node
+.sky-ctrl button
+.sky-g small
+.band .chips a
+.band .chips .lab
+.bf-q .cap
+.ep-tile .ep-foot
+.cardx .n
+.ep-audio
+.cd-ts
+.cd-block-time
+.cd-chap time
+.ep-au-cur
+.ep-au-dur
+.v4t-read dt
+.kkit-ess
+.kair-ranges span
+.kair-ranges small
+.fact-l
+.kov-q h3
+.kkit-gate b
+.kdates-price span
+.kkit-dl small
+.kdates-months span
+.kday-n
+.kdates-flags span
+.kdates-tour b
+.kdates-n
+.etq-diy
