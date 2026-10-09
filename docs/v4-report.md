@@ -72,6 +72,7 @@ marked done is the next step.
 | 22. The award pass (owner, 4 Oct: items 1, 3, 4, 5, 6 and 9 of the review): a quiet header; the phone header; orange caps labels only in page headers; one motion language; a calm knowledge base landing (the door off, a Gold line climb); About and Podcast with their own openings. tools/v4_award.py, src/v2.css "THE AWARD PASS" | done | see git log | all gates PASS |
 | 23. The visual build list (owner, 5 Oct: "visually improving how the site looks, go ahead"): a visual review by page group, every finding checked by a skeptic (48 kept of 48), merged into 32 items and all built; then a before/after regression review. src/v2.css "THE VISUAL BUILD LIST", tools/v4_award.py, tools/v4_tripmap.py, tools/v4_painted.py | done | 93aa11d and see git log | all gates PASS |
 | 24. The RSS feed section redesign, ten options (owner, 5 Oct: "give me 10 protos to choose from"): samples/rss-options.html, each one the live feed's own row markup from rss-feed.js with the seven newest episodes, styled only (rss-feed.js unchanged): Ledger, Cover grid, Feature and list, Waveform, Flight log, Timeline, Record shelf, Editorial, Docked player, Portholes. The owner liked 10 and asked for five more like it, "a bit futuristic and immersive and responsive": 11 Instrument ring, 12 Cabin light, 13 Window seat, 14 Fuselage, 15 Night flight (these also need a few lines of script for the pointer, the scroll and the progress ring, meant for v2-immersive.js, never rss-feed.js). The owner then chose 15, Night flight, with 11's progress ring around the cover art, play and pause on the art (no button beside it) and a ticker with the show's name in the open player: built into v4's podcast page (src/v2.css "LIVE FROM THE FEED", replacing the earlier feed styles; the ring's progress copied from the bar rss-feed.js already draws, src/v2-immersive.js), and shown on the samples page as 16 with v4's own rules. rss-feed.js untouched. Then five variations on it (owner, 6 Oct: "make 5 more"), 17 to 21 on the samples page: Constellation, Radar, Northern lights, Vario, Cockpit glass, each a short addition on top of the built rules. tools/v4_rss_options.py | done | see git log | all gates PASS |
+| 25. The owner's photographs on the knowledge base and episode pages (owner, 9 Oct; the footage left those pages on 8 Oct): a placement plan from three surveys, a planner and a skeptic who measured the pages (fourteen problems found and folded in): docs/v4-photo-plan.md | waiting on the photos (the Terabox link is blocked here) | see git log | docs only |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they
@@ -103,6 +104,10 @@ python3 tools/v2_switch.py --site v4 --dry-run
   93 and 90+); one currency or both (India in GBP, Kenya in USD today).
 - **The go.** An iPhone check (Safari items below), then the switch-over,
   v2 or v4. Not done here, as agreed.
+- **The photographs (9 Oct).** The Terabox link cannot be opened here (the
+  network policy blocks it). A Google Drive folder works (Drive is
+  connected), or the repository. Where they go, how they are built and eight
+  questions: `docs/v4-photo-plan.md`.
 - **"The poster frame"** (plan, step 7): which drawing is meant? None in the
   site goes by that name, so it was left as it is.
 
