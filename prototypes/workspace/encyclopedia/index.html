@@ -1,0 +1,746 @@
+<!doctype html><html lang="en-GB"><head><meta name="robots" content="noindex,nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body>
+<title>Atlas Encyclopedia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a visual encyclopedia. Front page of tiles and moving pictures; each article is a stack of
+   graphic panels (animation, interactive, icon grid, steps) with text cut to captions. */
+:root{--bg:#141519;--panel:#1c1d23;--panel2:#24252c;--ink:#f6f4f4;--soft:#b4b4b4;--dim:#7d7d84;--line:rgba(180,180,180,.14);
+  --or:#ff7517;--or2:#ff9a52;--wash:rgba(255,117,23,.12);--green:#7dd87d;--red:#ff5a4a;--sky:#6fb7ff;
+  --display:"Poppins",Arial,Helvetica,sans-serif;--body:"DM Sans",Arial,Helvetica,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--soft);font-family:var(--body);font-size:16px;line-height:1.55;margin:0}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+svg.i{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+h1,h2,h3{font-family:var(--display);color:var(--ink);margin:0;text-wrap:balance}
+.k{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--or)}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--or);outline-offset:3px}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(20,21,25,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:14px;height:58px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:var(--display);font-weight:700;letter-spacing:.02em}
+.logo b{color:var(--or)}
+.bar .sp{flex:1}
+.bar button.home{background:none;border:1px solid var(--line);color:var(--soft);padding:6px 12px}
+.bar button.home:hover{color:var(--ink);border-color:var(--or)}
+
+/* ---------- front page ---------- */
+.front-hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+#sky{position:absolute;inset:0;width:100%;height:100%}
+.front-hero .wrap{position:relative;padding-block:clamp(48px,9vw,110px) clamp(40px,6vw,70px)}
+.front-hero h1{font-size:clamp(2.3rem,6vw,4.4rem);line-height:1.02;font-weight:800;max-width:12ch}
+.front-hero h1 span{color:var(--or)}
+.front-hero p{max-width:46ch;color:var(--soft);font-size:1.08rem;margin:1rem 0 1.6rem}
+.search{display:flex;align-items:center;gap:10px;max-width:560px;background:rgba(28,29,35,.9);border:1px solid var(--line);padding:4px 6px 4px 14px}
+.search input{flex:1;min-width:0;background:none;border:none;color:var(--ink);font:inherit;font-size:1rem;padding:10px 0}
+.search input:focus{outline:none}
+.search:focus-within{border-color:var(--or)}
+.hits{max-width:560px;margin-top:6px;display:grid;gap:4px}
+.hits button{display:flex;gap:10px;align-items:center;text-align:left;background:var(--panel);border:1px solid var(--line);color:var(--ink);padding:9px 12px}
+.hits button:hover{border-color:var(--or)}
+.stats{display:flex;flex-wrap:wrap;gap:22px;margin-top:22px}
+.stats div{display:flex;align-items:center;gap:8px;color:var(--soft);font-size:.86rem}
+.stats b{font-family:var(--display);color:var(--ink);font-size:1.2rem}
+.stats svg{color:var(--or)}
+
+.sec{padding-block:clamp(36px,6vw,64px)}
+.sec-h{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.sec-h h2{font-size:clamp(1.4rem,2.8vw,2rem)}
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(170px,100%),1fr));gap:12px}
+.cat{position:relative;display:flex;flex-direction:column;gap:12px;align-items:flex-start;text-align:left;background:var(--panel);border:1px solid var(--line);color:var(--ink);padding:18px 16px 16px;min-height:150px;transition:transform .2s,border-color .2s}
+.cat:hover{transform:translateY(-3px);border-color:var(--or)}
+.cat .ic{width:54px;height:54px;display:grid;place-items:center;background:var(--wash);color:var(--or);border-radius:50%}
+.cat .ic svg{width:30px;height:30px}
+.cat b{font-family:var(--display);font-size:1rem;line-height:1.2}
+.cat small{color:var(--dim);font-size:.8rem}
+.cat:hover .ic svg{animation:bob 1s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-3px) rotate(-4deg)}}
+
+.feature{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:0;background:var(--panel);border:1px solid var(--line);overflow:hidden;text-align:left;color:inherit;padding:0;width:100%}
+.feature .art{position:relative;background:radial-gradient(120% 90% at 50% 100%,rgba(255,117,23,.18),transparent 60%),#17181d;min-height:260px}
+.feature .art canvas{position:absolute;inset:0;width:100%;height:100%}
+.feature .txt{padding:clamp(20px,3vw,34px);display:flex;flex-direction:column;gap:12px;justify-content:center}
+.feature h3{font-size:clamp(1.6rem,3vw,2.3rem)}
+.feature p{margin:0;color:var(--soft)}
+.go{display:inline-flex;align-items:center;gap:8px;color:var(--or);font-weight:600}
+.feature:hover{border-color:var(--or)}
+
+.dyk{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:18px;background:linear-gradient(110deg,rgba(255,117,23,.14),rgba(255,117,23,.02) 60%),var(--panel);border:1px solid var(--line);padding:20px 22px}
+.dyk .bulb{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--or);color:#171712}
+.dyk .bulb svg{width:30px;height:30px;animation:glow 2.4s ease-in-out infinite}
+@keyframes glow{50%{transform:scale(1.12)}}
+.dyk p{margin:0;color:var(--ink);font-family:var(--display);font-weight:500;font-size:clamp(1rem,1.8vw,1.2rem);min-height:3.2em;transition:opacity .35s}
+.dyk small{display:block;color:var(--dim);font-family:var(--body);font-weight:400;font-size:.8rem;margin-top:4px}
+.dyk .nav{display:flex;gap:6px}
+.dyk .nav button{width:38px;height:38px;border:1px solid var(--line);background:var(--bg);color:var(--ink);display:grid;place-items:center}
+.dyk .nav button:hover{border-color:var(--or)}
+
+.az{display:flex;flex-wrap:wrap;gap:8px}
+.az button{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);color:var(--ink);padding:8px 12px 8px 8px;font-size:.92rem}
+.az button .lt{width:28px;height:28px;display:grid;place-items:center;background:var(--panel2);color:var(--or);font-family:var(--display);font-weight:700;font-size:.85rem}
+.az button.live{border-color:rgba(255,117,23,.55)}
+.az button.live .lt{background:var(--or);color:#171712}
+.az button:hover{border-color:var(--or)}
+.legend{display:flex;gap:16px;color:var(--dim);font-size:.8rem;flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;background:var(--or);margin-right:6px;vertical-align:middle}
+.legend i.o{background:var(--panel2);border:1px solid var(--line)}
+
+/* ---------- article ---------- */
+.a-hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden;background:radial-gradient(80% 120% at 75% 30%,rgba(111,183,255,.08),transparent 60%)}
+.a-hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(16px,4vw,48px);align-items:center;padding-block:clamp(28px,5vw,56px)}
+.crumb{display:flex;align-items:center;gap:8px;color:var(--dim);font-size:.82rem;margin-bottom:14px;flex-wrap:wrap}
+.crumb button{background:none;border:none;color:var(--soft);padding:0}
+.crumb button:hover{color:var(--or)}
+.a-hero h1{font-size:clamp(2.6rem,7vw,5rem);line-height:1;font-weight:800}
+.a-hero .q{font-family:var(--display);color:var(--or2);font-size:clamp(1rem,1.8vw,1.2rem);margin:.6rem 0 1.1rem}
+.lede{font-size:1.1rem;color:var(--ink);max-width:44ch;margin:0 0 18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);padding:7px 12px;font-size:.86rem;color:var(--ink)}
+.chip svg{width:20px;height:20px;color:var(--or)}
+.stage{position:relative;aspect-ratio:16/11;background:radial-gradient(90% 70% at 50% 110%,rgba(255,117,23,.10),transparent 70%),#16171c;border:1px solid var(--line);max-width:100%}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.stage .cap{position:absolute;left:12px;bottom:10px;right:12px;display:flex;justify-content:space-between;gap:8px;font-size:.78rem;color:var(--dim)}
+.stage .cap b{color:var(--or);font-weight:600}
+.stage .replay{position:absolute;top:10px;right:10px;background:rgba(20,21,25,.8);border:1px solid var(--line);color:var(--soft);padding:5px 10px;font-size:.78rem}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(20px,3vw,40px);align-items:start;padding-block:clamp(28px,5vw,48px)}
+.panels{display:grid;gap:clamp(18px,3vw,28px);min-width:0}
+.panel{background:var(--panel);border:1px solid var(--line);padding:clamp(18px,3vw,28px);min-width:0}
+.panel-h{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.panel-h .num{width:38px;height:38px;flex:none;display:grid;place-items:center;border:1px solid var(--or);color:var(--or);font-family:var(--display);font-weight:700;border-radius:50%}
+.panel-h h2{font-size:clamp(1.2rem,2.4vw,1.55rem)}
+.panel p.cap2{margin:.2rem 0 0;color:var(--soft);font-size:.95rem;max-width:62ch}
+
+/* angle of attack lab */
+.lab{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px;align-items:center}
+.lab svg.foil{width:100%;height:auto;background:#16171c;border:1px solid var(--line)}
+.state{display:flex;flex-direction:column;gap:10px}
+.state .badge{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:1.5rem;color:var(--ink);transition:color .25s}
+.state .badge svg{width:34px;height:34px}
+.state p{margin:0;font-size:.95rem}
+.meter{position:relative;height:12px;background:linear-gradient(90deg,var(--red) 0 22%,var(--green) 22% 74%,var(--red) 74% 100%);opacity:.85}
+.meter i{position:absolute;top:-5px;width:4px;height:22px;background:var(--ink);transition:left .1s}
+.meter-l{display:flex;justify-content:space-between;font-size:.72rem;color:var(--dim);letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+input[type=range]{width:100%;accent-color:var(--or);margin-top:14px}
+.hint{display:flex;align-items:center;gap:8px;color:var(--dim);font-size:.82rem}
+.hint svg{width:18px;height:18px}
+
+/* two kinds */
+.kinds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.kind{background:var(--panel2);border:1px solid var(--line);padding:16px;display:grid;gap:10px}
+.kind svg.pl{width:100%;height:auto}
+.kind h3{font-size:1.1rem}
+.kind ul{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:.9rem}
+.kind li{display:flex;gap:8px;align-items:flex-start}
+.kind li svg{width:18px;height:18px;color:var(--or);margin-top:2px}
+
+/* trigger grid */
+.trig{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tg{background:var(--panel2);border:1px solid var(--line);padding:14px;display:grid;gap:8px;align-content:start;text-align:left;color:var(--ink)}
+.tg .ic{width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:rgba(255,90,74,.12);color:var(--red)}
+.tg .ic svg{width:28px;height:28px}
+.tg b{font-family:var(--display);font-size:.95rem}
+.tg span{color:var(--soft);font-size:.82rem;line-height:1.45}
+.tg .lvl{display:flex;gap:3px}
+.tg .lvl i{width:16px;height:5px;background:var(--panel)}
+.tg .lvl i.on{background:var(--red)}
+.tg:hover .ic svg{animation:shake .5s ease-in-out}
+@keyframes shake{25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+
+/* steps */
+.steps{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:18px;align-items:start}
+.steplist{display:grid;gap:6px;counter-reset:s}
+.step{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:center;text-align:left;background:var(--panel2);border:1px solid var(--line);color:var(--soft);padding:10px 12px;position:relative;overflow:hidden}
+.step .ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--bg);color:var(--soft);transition:.25s}
+.step b{display:block;color:var(--ink);font-family:var(--display);font-weight:600;font-size:.95rem}
+.step small{font-size:.8rem}
+.step.on{border-color:var(--or)}
+.step.on .ic{background:var(--or);color:#171712}
+.step .pr{position:absolute;left:0;bottom:0;height:2px;background:var(--or);width:0}
+.step.on .pr{animation:fill 4s linear forwards}
+@keyframes fill{to{width:100%}}
+.stepview{position:sticky;top:76px;background:#16171c;border:1px solid var(--line);aspect-ratio:4/3}
+.stepview canvas{width:100%;height:100%;display:block}
+.stepview .sv-t{position:absolute;left:14px;right:14px;bottom:12px;color:var(--ink);font-family:var(--display);font-weight:600;font-size:.95rem}
+.stepview .sv-t small{display:block;color:var(--soft);font-family:var(--body);font-weight:400;font-size:.82rem}
+.warn{display:flex;gap:12px;align-items:flex-start;margin-top:14px;padding:12px 14px;border:1px solid rgba(255,90,74,.5);background:rgba(255,90,74,.08);font-size:.9rem;color:var(--ink)}
+.warn svg{width:24px;height:24px;color:var(--red)}
+
+/* guests */
+.guests{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.guest{background:var(--panel2);border:1px solid var(--line);padding:16px;display:grid;grid-template-columns:52px minmax(0,1fr);gap:12px;align-items:start}
+.av{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:700;color:#171712;background:var(--or)}
+.guest b{color:var(--ink);font-family:var(--display)}
+.guest p{margin:.3rem 0 .6rem;font-size:.9rem}
+.play{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--or);font-size:.85rem;font-weight:600;border:1px solid rgba(255,117,23,.5);padding:5px 10px 5px 6px}
+.play .pb{width:22px;height:22px;border-radius:50%;background:var(--or);display:grid;place-items:center}
+.play .pb svg{width:12px;height:12px;fill:#171712;stroke:none}
+.wave{display:inline-flex;gap:2px;align-items:center;height:16px}
+.wave i{width:2px;background:var(--or);opacity:.7;animation:wv 1.1s ease-in-out infinite}
+@keyframes wv{50%{transform:scaleY(.3)}}
+
+/* side box */
+.side{position:sticky;top:76px;display:grid;gap:14px}
+.box{background:var(--panel);border:1px solid var(--line)}
+.box h3{font-size:.95rem;padding:12px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
+.box h3 svg{width:20px;height:20px;color:var(--or)}
+.box dl{margin:0;padding:6px 16px 12px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;font-size:.86rem}
+.box dt{color:var(--dim)}
+.box dd{margin:0;color:var(--ink)}
+.box .see{padding:12px 16px;display:flex;flex-wrap:wrap;gap:6px}
+.box .see button{background:var(--bg);border:1px solid var(--line);color:var(--soft);font-size:.8rem;padding:5px 9px}
+.box .see button:hover{color:var(--ink);border-color:var(--or)}
+.safety{display:flex;gap:12px;padding:14px 16px;font-size:.84rem}
+.safety svg{width:26px;height:26px;color:var(--or)}
+details.src{background:var(--panel);border:1px solid var(--line);padding:14px 18px}
+details.src summary{cursor:pointer;color:var(--ink);font-family:var(--display);font-weight:600;display:flex;align-items:center;gap:10px}
+details.src summary svg{color:var(--or)}
+details.src ol{margin:12px 0 0;padding-left:20px;font-size:.84rem;display:grid;gap:4px}
+details.src a{color:var(--soft)}
+.tag{font-size:.7rem;color:var(--dim);border:1px solid var(--line);padding:0 5px;margin-left:6px}
+
+.coming{padding-block:80px;text-align:center}
+.coming .ic{width:84px;height:84px;margin:0 auto 16px;border-radius:50%;display:grid;place-items:center;background:var(--wash);color:var(--or)}
+.coming .ic svg{width:44px;height:44px}
+.coming p{max-width:46ch;margin:10px auto 20px}
+.coming button{background:var(--or);color:#171712;border:none;padding:10px 18px;font-weight:600}
+footer{border-top:1px solid var(--line);color:var(--dim);font-size:.82rem;padding-block:22px}
+
+.reveal{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.js .reveal.in{opacity:1;transform:none}
+@media (max-width:900px){
+  .a-hero .wrap,.layout,.lab,.steps,.feature{grid-template-columns:1fr}
+  .side,.stepview{position:static}
+  .trig{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  .kinds,.guests,.trig{grid-template-columns:1fr}
+  .dyk{grid-template-columns:1fr}
+  .dyk .bulb{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-wing" viewBox="0 0 32 32"><path d="M3 13c4-6 22-6 26 0"/><path d="M5 13c3-3 19-3 22 0"/><path d="M6 13l10 13 10-13M11 13l5 13 5-13"/><circle cx="16" cy="27" r="1.6"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 32 32"><path d="M9 23h15a5 5 0 0 0 0-10 7 7 0 0 0-13.6-1.5A5.5 5.5 0 0 0 9 23z"/><path d="M14 27v-3M19 27v-3"/></symbol>
+    <symbol id="i-thermal" viewBox="0 0 32 32"><path d="M10 28c-3-4 3-6 0-10s3-7 0-11"/><path d="M17 28c-3-4 3-6 0-10s3-7 0-11"/><path d="M24 28c-3-4 3-6 0-10s3-7 0-11"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 32 32"><path d="M16 3l11 4v8c0 7-5 12-11 14C10 27 5 22 5 15V7z"/><path d="M11 16l4 4 7-8"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 32 32"><path d="M9 6h14l3 9-10 13L6 15z"/><path d="M6 15h20M12 6l4 22 4-22"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 32 32"><path d="M10 5h12v7a6 6 0 0 1-12 0z"/><path d="M10 7H5c0 5 3 7 5 7M22 7h5c0 5-3 7-5 7M16 18v5M11 27h10l-1-4h-8z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"/><path d="M4 16h24M16 4c4 4 4 20 0 24M16 4c-4 4-4 20 0 24"/></symbol>
+    <symbol id="i-people" viewBox="0 0 32 32"><circle cx="12" cy="11" r="4"/><path d="M4 26c1-5 4-7 8-7s7 2 8 7"/><circle cx="23" cy="12" r="3"/><path d="M21 19c4 0 6 2 7 6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 32 32"><circle cx="14" cy="14" r="8"/><path d="M20 20l7 7"/></symbol>
+    <symbol id="i-book" viewBox="0 0 32 32"><path d="M5 6h9a3 3 0 0 1 3 3v18a3 3 0 0 0-3-3H5zM27 6h-9a3 3 0 0 0-1 1"/><path d="M27 6v18h-9a3 3 0 0 0-1 3"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 32 32"><rect x="12" y="4" width="8" height="15" rx="4"/><path d="M8 15a8 8 0 0 0 16 0M16 23v5M11 28h10"/></symbol>
+    <symbol id="i-draw" viewBox="0 0 32 32"><path d="M5 27l4-1 16-16-3-3L6 23z"/><path d="M19 10l3 3"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 32 32"><path d="M11 21a8 8 0 1 1 10 0v3H11z"/><path d="M12 28h8"/></symbol>
+    <symbol id="i-left" viewBox="0 0 32 32"><path d="M19 8l-8 8 8 8"/></symbol>
+    <symbol id="i-right" viewBox="0 0 32 32"><path d="M13 8l8 8-8 8"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 32 32"><path d="M6 16h20M19 9l7 7-7 7"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 32 32"><path d="M4 12h16a4 4 0 1 0-4-4M4 18h22a4 4 0 1 1-4 4M4 24h10"/></symbol>
+    <symbol id="i-down" viewBox="0 0 32 32"><path d="M16 4v22M9 19l7 7 7-7"/><path d="M8 6h4M20 6h4" opacity=".6"/></symbol>
+    <symbol id="i-fast" viewBox="0 0 32 32"><path d="M5 22a11 11 0 1 1 22 0"/><path d="M16 22l7-8"/><path d="M8 22h2M22 22h2M16 11v2"/></symbol>
+    <symbol id="i-brake" viewBox="0 0 32 32"><path d="M10 4v14a6 6 0 0 0 12 0V4"/><path d="M16 24v4M12 28h8"/></symbol>
+    <symbol id="i-mountain" viewBox="0 0 32 32"><path d="M3 26l9-14 6 8 3-4 8 10z"/><path d="M22 9c2-2 5-2 6 0M24 13c2-1 4-1 5 0"/></symbol>
+    <symbol id="i-heli" viewBox="0 0 32 32"><path d="M4 7h24M16 7v4"/><path d="M9 11h11a5 5 0 0 1 0 10H12a3 3 0 0 1-3-3z"/><path d="M25 16h4M11 25h11M14 21v4M19 21v4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 32 32"><path d="M7 16l6 6 12-13"/></symbol>
+    <symbol id="i-x" viewBox="0 0 32 32"><path d="M9 9l14 14M23 9L9 23"/></symbol>
+    <symbol id="i-warn" viewBox="0 0 32 32"><path d="M16 4l13 23H3z"/><path d="M16 13v6M16 23v.5"/></symbol>
+    <symbol id="i-lean" viewBox="0 0 32 32"><circle cx="19" cy="6" r="3"/><path d="M18 10l-4 9 6 3M14 19l-3 9M22 14l4-3"/><path d="M7 12c-2 3-2 7 0 10" opacity=".6"/></symbol>
+    <symbol id="i-pump" viewBox="0 0 32 32"><path d="M16 4v16M10 14l6 6 6-6"/><path d="M8 26h16"/><path d="M16 4c-2 0-3 1-3 3" opacity=".6"/></symbol>
+    <symbol id="i-chute" viewBox="0 0 32 32"><path d="M4 14a12 9 0 0 1 24 0z"/><path d="M4 14l12 13 12-13M10 14l6 13 6-13"/></symbol>
+    <symbol id="i-open" viewBox="0 0 32 32"><path d="M4 18c4-8 20-8 24 0"/><path d="M9 11l-2-4M16 9V5M23 11l2-4"/></symbol>
+    <symbol id="i-bar" viewBox="0 0 32 32"><path d="M6 20h20"/><path d="M9 20l4-12M23 20l-4-12"/><path d="M12 26c2-3 6-3 8 0" /></symbol>
+    <symbol id="i-play" viewBox="0 0 32 32"><path d="M10 6l16 10-16 10z"/></symbol>
+    <symbol id="i-info" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"/><path d="M16 14v9M16 9v.5"/></symbol>
+    <symbol id="i-list" viewBox="0 0 32 32"><path d="M11 9h16M11 16h16M11 23h16"/><circle cx="6" cy="9" r="1"/><circle cx="6" cy="16" r="1"/><circle cx="6" cy="23" r="1"/></symbol>
+    <symbol id="i-link" viewBox="0 0 32 32"><path d="M13 19l6-6M11 14l-3 3a4 4 0 0 0 6 6l3-3M21 18l3-3a4 4 0 0 0-6-6l-3 3"/></symbol>
+  </defs>
+</svg>
+
+<header class="bar"><div class="wrap">
+  <a class="logo" href="#" data-go="home"><svg class="i"><use href="#i-wing"/></svg><span>Atlas <b>Encyclopedia</b></span></a>
+  <span class="sp"></span>
+  <button class="home" data-go="home" type="button">All topics</button>
+</div></header>
+
+<main id="view"></main>
+
+<footer><div class="wrap">Prototype for review. Built from the same sources and guest chapters as the draft pages; links to episodes open the live site.</div></footer>
+
+<template id="t-home">
+  <section class="front-hero">
+    <canvas id="sky" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <span class="k">Paragliding Atlas</span>
+      <h1>The <span>Paragliding</span> Encyclopedia</h1>
+      <p>How the wing flies, where the lift is, what goes wrong and what to do, told in pictures first, with the pilots and designers from the show.</p>
+      <label class="search" for="q"><svg class="i"><use href="#i-search"/></svg><input id="q" type="search" placeholder="Search: collapse, thermal, EN B, speed bar" autocomplete="off"></label>
+      <div class="hits" id="hits"></div>
+      <div class="stats">
+        <div><svg class="i"><use href="#i-book"/></svg><b>165</b> questions</div>
+        <div><svg class="i"><use href="#i-mic"/></svg><b>13</b> guests quoted</div>
+        <div><svg class="i"><use href="#i-draw"/></svg><b>60</b> drawings</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-h"><h2>Explore by subject</h2><span class="k">Seven worlds</span></div>
+    <div class="cats" id="cats"></div>
+  </div></section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap">
+    <div class="sec-h"><h2>Featured article</h2><span class="k">Safety</span></div>
+    <button class="feature reveal" data-go="collapse" type="button">
+      <div class="art"><canvas id="feat" aria-hidden="true"></canvas></div>
+      <div class="txt">
+        <span class="k">Article · animated</span>
+        <h3>Collapse</h3>
+        <p>Why part of the wing folds, the two kinds you will meet, and the five moves that bring it back. With an angle-of-attack lab you can play with.</p>
+        <span class="go">Open the article <svg class="i"><use href="#i-arrow"/></svg></span>
+      </div>
+    </button>
+  </div></section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap">
+    <div class="dyk reveal">
+      <div class="bulb"><svg class="i"><use href="#i-bulb"/></svg></div>
+      <p id="dyk"></p>
+      <div class="nav"><button type="button" id="dyk-p" aria-label="Previous fact"><svg class="i"><use href="#i-left"/></svg></button><button type="button" id="dyk-n" aria-label="Next fact"><svg class="i"><use href="#i-right"/></svg></button></div>
+    </div>
+  </div></section>
+
+  <section class="sec" style="padding-top:0"><div class="wrap">
+    <div class="sec-h"><h2>A to Z of topics</h2><div class="legend"><span><i></i>Article ready</span><span><i class="o"></i>Coming in this style</span></div></div>
+    <div class="az" id="az"></div>
+  </div></section>
+</template>
+
+<template id="t-collapse">
+  <section class="a-hero">
+    <div class="wrap">
+      <div>
+        <div class="crumb"><button type="button" data-go="home">Encyclopedia</button><span>/</span><span>Safety and recovery</span></div>
+        <h1>Collapse</h1>
+        <p class="q">What happens if a paraglider collapses?</p>
+        <p class="lede">Part of the wing loses its pressure and folds, usually because sinking air drops its angle of attack. Most collapses reopen on their own. Your job: keep flying straight and don't overreact.</p>
+        <div class="chips">
+          <span class="chip"><svg class="i"><use href="#i-down"/></svg>Cause: angle of attack drops</span>
+          <span class="chip"><svg class="i"><use href="#i-open"/></svg>Most reopen by themselves</span>
+          <span class="chip"><svg class="i"><use href="#i-lean"/></svg>Fly straight, stay calm</span>
+        </div>
+      </div>
+      <div class="stage">
+        <canvas id="hero-anim" aria-label="Animation: a paraglider seen from behind, hit by sinking air on one side, folds, turns, and reopens"></canvas>
+        <button class="replay" type="button" id="replay">Replay</button>
+        <div class="cap"><span id="hero-cap"><b>Flying</b> · wing pressurised overhead</span><span>Seen from behind</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <div class="panels">
+
+      <section class="panel reveal">
+        <div class="panel-h"><span class="num">1</span><h2>Why does a wing collapse?</h2></div>
+        <div class="lab">
+          <svg class="foil" id="foil" viewBox="0 0 520 300" role="img" aria-label="An airfoil at the angle of attack chosen with the slider"></svg>
+          <div class="state">
+            <span class="k">Angle of attack lab</span>
+            <span class="badge" id="st-b"><svg class="i"><use href="#i-check"/></svg><span>Flying</span></span>
+            <p id="st-t">Pressurised and making lift.</p>
+            <div><div class="meter"><i id="st-m"></i></div><div class="meter-l"><span>Collapse</span><span>Flying</span><span>Stall</span></div></div>
+            <label class="hint" for="aoa"><svg class="i"><use href="#i-arrow"/></svg>Drag to tilt the wing</label>
+            <input id="aoa" type="range" min="-10" max="26" value="6" step="0.5">
+          </div>
+        </div>
+        <p class="cap2">Same wing, one dial. Too low and the nose is pushed in and folds. Too high and the air breaks away and it stalls. Flying lives in between.</p>
+      </section>
+
+      <section class="panel reveal">
+        <div class="panel-h"><span class="num">2</span><h2>Which kind is it?</h2></div>
+        <div class="kinds">
+          <div class="kind">
+            <svg class="pl" viewBox="0 0 300 150" aria-hidden="true">
+              <path d="M20 70 Q150 20 280 70 Q270 120 150 125 Q30 120 20 70Z" fill="#24252c" stroke="#e9e7e7" stroke-width="1.5"/>
+              <path class="fold-a" d="M190 52 Q240 56 280 70 Q272 112 210 121 Z" fill="#ff7517" opacity=".75"/>
+              <path d="M110 140 a40 40 0 0 0 60 0" fill="none" stroke="#ff7517" stroke-width="2" class="turn" stroke-dasharray="4 4"/>
+              <path d="M170 140 l-8 -2 m8 2 l-3 -8" stroke="#ff7517" stroke-width="2" fill="none"/>
+            </svg>
+            <h3>Asymmetric</h3>
+            <ul>
+              <li><svg class="i"><use href="#i-warn"/></svg>One side folds and the wing turns towards it.</li>
+              <li><svg class="i"><use href="#i-warn"/></svg>The real danger is the spiral that can follow.</li>
+            </ul>
+          </div>
+          <div class="kind">
+            <svg class="pl" viewBox="0 0 300 150" aria-hidden="true">
+              <path d="M20 70 Q150 20 280 70 Q270 120 150 125 Q30 120 20 70Z" fill="#24252c" stroke="#e9e7e7" stroke-width="1.5"/>
+              <path class="fold-f" d="M20 70 Q150 20 280 70 Q150 52 20 70Z" fill="#ff7517" opacity=".75"/>
+              <path d="M150 140 v-0" />
+            </svg>
+            <h3>Frontal</h3>
+            <ul>
+              <li><svg class="i"><use href="#i-check"/></svg>The whole leading edge tucks under.</li>
+              <li><svg class="i"><use href="#i-check"/></svg>It usually reopens without turning.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel reveal">
+        <div class="panel-h"><span class="num">3</span><h2>What makes it more likely?</h2></div>
+        <div class="trig" id="trig"></div>
+      </section>
+
+      <section class="panel reveal">
+        <div class="panel-h"><span class="num">4</span><h2>What to do, step by step</h2></div>
+        <div class="steps">
+          <div class="steplist" id="steps"></div>
+          <div class="stepview"><canvas id="step-anim" aria-hidden="true"></canvas><div class="sv-t" id="sv-t"></div></div>
+        </div>
+        <div class="warn"><svg class="i"><use href="#i-chute"/></svg><span><b>Cravat or a turn you cannot stop?</b> Clear the tip with the stabilo line or pumps while leaning away. If the rotation speeds up and you cannot control it, throw the reserve at once.</span></div>
+      </section>
+
+      <section class="panel reveal">
+        <div class="panel-h"><span class="num">5</span><h2>Heard on the show</h2></div>
+        <div class="guests" id="guests"></div>
+      </section>
+
+      <details class="src">
+        <summary><svg class="i"><use href="#i-list"/></svg>12 sources, from Ozone, Gin, Niviuk, Advance, DHV, CAA New Zealand</summary>
+        <ol id="srcs"></ol>
+      </details>
+    </div>
+
+    <aside class="side">
+      <div class="box">
+        <h3><svg class="i"><use href="#i-info"/></svg>Fact box</h3>
+        <dl>
+          <dt>Subject</dt><dd>Safety and recovery</dd>
+          <dt>Cause</dt><dd>Angle of attack drops too low</dd>
+          <dt>Kinds</dt><dd>Asymmetric, frontal, cravat</dd>
+          <dt>First move</dt><dd>Bar off, lean away</dd>
+          <dt>Practise in</dt><dd>SIV course over water</dd>
+          <dt>Guests</dt><dd>4 from the show</dd>
+        </dl>
+      </div>
+      <div class="box">
+        <h3><svg class="i"><use href="#i-link"/></svg>See also</h3>
+        <div class="see">
+          <button type="button" data-go="soon:Stall">Stall</button>
+          <button type="button" data-go="soon:Active flying">Active flying</button>
+          <button type="button" data-go="soon:Speed bar">Speed bar</button>
+          <button type="button" data-go="soon:EN ratings">EN ratings</button>
+          <button type="button" data-go="soon:Reserve parachute">Reserve</button>
+        </div>
+      </div>
+      <div class="box safety"><svg class="i"><use href="#i-shield"/></svg><span>This explains how it works. It is not flying instruction. Your wing's manual comes first.</span></div>
+    </aside>
+  </div>
+</template>
+
+<template id="t-soon">
+  <section class="wrap coming">
+    <div class="ic"><svg class="i"><use href="#i-draw"/></svg></div>
+    <h1 id="soon-t"></h1>
+    <p>This article exists as a text draft. It will be rebuilt in the same visual style as Collapse once you approve the direction.</p>
+    <button type="button" data-go="collapse">See the Collapse article</button>
+  </section>
+</template>
+
+<script>
+(function () {
+  var d = document, view = d.getElementById("view"), reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  d.documentElement.classList.add("js");
+  var raf = [];
+  function stopAll() { raf.forEach(function (id) { cancelAnimationFrame(id); }); raf = []; }
+  function loop(fn) { var t0 = performance.now(); (function f(t) { fn((t - t0) / 1000); raf.push(requestAnimationFrame(f)); })(t0); }
+  function ctxOf(c) {
+    var r = c.getBoundingClientRect(), s = Math.min(2, window.devicePixelRatio || 1);
+    c.width = Math.max(1, r.width * s); c.height = Math.max(1, r.height * s);
+    var x = c.getContext("2d"); x.setTransform(s, 0, 0, s, 0, 0); return { x: x, w: r.width, h: r.height };
+  }
+  var OR = "#ff7517", WH = "#e9e7e7", GR = "#b4b4b4", DIM = "#5b5c63", FILL = "#24252c", RED = "#ff5a4a", GREEN = "#7dd87d";
+  function icon(id) { return '<svg class="i"><use href="#i-' + id + '"/></svg>'; }
+
+  /* ---------- data ---------- */
+  var CATS = [
+    ["wing", "How wings fly", "Lift, glide, speed, aspect ratio"],
+    ["shield", "Safety and recovery", "Collapse, stall, active flying"],
+    ["thermal", "Lift and weather", "Thermals, ridge, forecasts"],
+    ["gear", "Gear", "Reserves, harnesses, helmets"],
+    ["trophy", "Competition", "Scoring, tasks, racing"],
+    ["globe", "Places", "Colombia, Bir, Kenya, Australia"],
+    ["people", "Pilots and the mind", "Fear, risk, training"]
+  ];
+  var TOPICS = ["Active flying", "Aspect ratio", "Certification (EN)", "Collapse", "Competition scoring", "Cravat", "Flying with a dog",
+    "Glide ratio", "Harnesses", "Helmets", "High altitude", "How a paraglider flies", "Mid-air collisions", "Places to fly",
+    "Reserve parachute", "Ridge lift", "SIV", "Speed", "Speed bar", "Stall", "Thermals", "Two-liners", "Vol-biv", "Weather forecasts", "X-Alps"];
+  var DYK = [
+    ["A wing that flies 40 km/h at 2,000 m flies about 60 km/h at 8,000 m.", "Antoine Girard, on the show"],
+    ["A 3 m/s climb on your vario means the air is rising at about 4: the wing sinks the whole time.", "Brett Janaway, on the show"],
+    ["A chair harness makes about 23 newtons of drag. A submarine pod makes about 8.", "Roman Barthelemy of Supair, on the show"],
+    ["A sailplane sinks no slower than a paraglider. It just flies twice as fast while it does.", "FAA Glider Flying Handbook"],
+    ["Today's paraglider profiles are about 18 percent as thick as they are long.", "Michael Nesler, on the show"],
+    ["The big certification collapse is folded at 45 degrees from halfway along the trailing edge.", "Frantisek Pavlousek of UP, on the show"]
+  ];
+  var TRIG = [
+    ["wind", "Turbulence", "Worst when you are not flying actively.", 3],
+    ["thermal", "Strong thermals", "Entering or leaving a powerful core.", 3],
+    ["fast", "Speed bar", "Lowers the angle of attack.", 2],
+    ["brake", "Brakes on bar", "Weakens the profile. Never mix them.", 3],
+    ["mountain", "Lee-side rotor", "Behind a ridge, the air comes down.", 3],
+    ["heli", "Helicopter wake", "Rotor wash can fold a wing.", 2]
+  ];
+  var STEPS = [
+    ["bar", "Bar off", "On speed bar? Release it first."],
+    ["lean", "Lean away", "Weight to the side still flying."],
+    ["brake", "A little brake, open side", "Just enough to hold your heading."],
+    ["open", "Let it reopen", "Most wings do it by themselves."],
+    ["pump", "Pump only if needed", "Your manual says how."]
+  ];
+  var GUESTS = [
+    ["GS", "Gin Seok Song", "Gin Gliders", "A wing has to be able to collapse. What matters is a smooth reopening, not a violent one.", "legacy-and-lifetimes-of-gin-seok-song", "c10"],
+    ["TL", "Tom Lolies", "Skywalk", "Modern profiles fight the fold. You feel the harness go light before anything collapses.", "tom-lolies-explains-the-science-of-wing-design-and", "c5"],
+    ["HS", "Helmut Schrempf", "SIV coach", "On bar in rough air: feel a side go light, release that hip, let the wing take what it needs.", "helmut-schrempf-modernizing-siv-courses-how-this-new", "c4"],
+    ["AZ", "Alain Zoller", "Air Turquoise", "Induced collapses aren't like the real thing. Train the flight envelope instead.", "alain-zoller-the-science-of-en-certifications-how-work", "c9"]
+  ];
+  var SRCS = [
+    ["Delta 4 pilot's manual", "Ozone", "https://cdn1.flyozone.com/wp-content/uploads/sites/1/2018/07/Delta-4-manual-EN-v1.0.pdf"],
+    ["Bolero 8 user manual", "Gin Gliders", "https://static.gingliders.com/paragliders/bolero-8/documents/bolero-8-user-manual-en.pdf"],
+    ["How to handle a collapse", "Cross Country Magazine", "https://xcmag.com/news/blowout/"],
+    ["Hook 6 user manual", "Niviuk", "https://niviuk.com/biblioteca/items/449_A/user_manual_hook_6_glider_niviuk_paragliders.pdf"],
+    ["Safety Investigation Report 20/153", "CAA New Zealand", "https://www.aviation.govt.nz/assets/publications/fatal-accident-reports/20-153-fatal-paraglider-accident-mount-cheeseman-canterbury.pdf"],
+    ["Active flying (Bruce Goldsmith)", "Cross Country Magazine", "https://xcmag.com/other/active-flying/"],
+    ["Alpha 8 manual", "Advance", "https://manual.advance.ch/en/alpha_8/4009"],
+    ["Dealing with big collapses", "SkyNomad", "https://www.skynomad.com/dealing-with-big-collapses"],
+    ["LM7 pilot's manual", "Ozone", "https://cdn1.flyozone.com/wp-content/uploads/sites/1/2019/12/LM7-manual-EN-v1.0.pdf"],
+    ["Safety Journal", "DHV", "https://dhv.de/en/safety/safety-journal"],
+    ["Paragliders: safety", "Flybubble", "https://flybubble.com/blog/paragliders-safety"],
+    ["A danger not only for paragliders", "Aero-Club der Schweiz", "https://aeroclub.ch/en/eine-gefahr-nicht-nur-fur-gleitschirmflieger"]
+  ];
+
+  /* ---------- drawing helpers ---------- */
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function ease(t) { return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+  // a paraglider seen from behind: canopy arc, lines, pilot. fold 0..1 folds the right third.
+  function glider(x, cx, cy, W, fold, roll, frontal) {
+    x.save(); x.translate(cx, cy); x.rotate(roll);
+    var n = 40, pts = [], R = W / 2;
+    for (var i = 0; i <= n; i++) {
+      var u = i / n, a = Math.PI * (1.12 - 1.24 * u), px = Math.cos(a) * R, py = -Math.sin(a) * R * 0.55;
+      if (u > 0.62 && fold > 0) { var k = (u - 0.62) / 0.38, f = fold * Math.pow(k, 0.8); px = lerp(px, R * 0.5, f * 0.7); py = lerp(py, -R * 0.12 + k * R * 0.35, f); }
+      if (frontal > 0) py += frontal * R * 0.18 * Math.sin(Math.PI * u);
+      pts.push([px, py]);
+    }
+    var pilot = [0, R * 0.95];
+    x.strokeStyle = "rgba(180,180,180,.35)"; x.lineWidth = 1;
+    for (var j = 2; j < n; j += 4) { x.beginPath(); x.moveTo(pts[j][0], pts[j][1]); x.lineTo(pilot[0] + (pts[j][0] > 0 ? 4 : -4), pilot[1] - 6); x.stroke(); }
+    x.lineCap = "round";
+    x.lineWidth = Math.max(8, W * 0.05); x.strokeStyle = FILL; x.beginPath(); pts.forEach(function (p, i) { i ? x.lineTo(p[0], p[1]) : x.moveTo(p[0], p[1]); }); x.stroke();
+    x.lineWidth = 2; x.strokeStyle = WH; x.stroke();
+    if (fold > 0.02) {
+      x.strokeStyle = OR; x.lineWidth = Math.max(6, W * 0.04); x.globalAlpha = Math.min(1, fold * 1.4);
+      x.beginPath(); for (var k2 = Math.floor(n * 0.62); k2 <= n; k2++) { k2 === Math.floor(n * 0.62) ? x.moveTo(pts[k2][0], pts[k2][1]) : x.lineTo(pts[k2][0], pts[k2][1]); } x.stroke(); x.globalAlpha = 1;
+    }
+    if (frontal > 0.02) { x.strokeStyle = OR; x.globalAlpha = frontal; x.lineWidth = Math.max(6, W * 0.04); x.beginPath(); pts.forEach(function (p, i) { i ? x.lineTo(p[0], p[1]) : x.moveTo(p[0], p[1]); }); x.stroke(); x.globalAlpha = 1; }
+    x.fillStyle = WH; x.beginPath(); x.arc(pilot[0], pilot[1] - 2, Math.max(4, W * 0.025), 0, 7); x.fill();
+    x.fillStyle = "#3a3b44"; x.fillRect(pilot[0] - W * 0.03, pilot[1] + 2, W * 0.06, W * 0.05);
+    x.restore();
+  }
+  function arrowDown(x, ax, ay, len, alpha) {
+    x.globalAlpha = alpha; x.strokeStyle = OR; x.fillStyle = OR; x.lineWidth = 2.5;
+    x.beginPath(); x.moveTo(ax, ay); x.lineTo(ax, ay + len); x.stroke();
+    x.beginPath(); x.moveTo(ax - 7, ay + len - 9); x.lineTo(ax, ay + len + 2); x.lineTo(ax + 7, ay + len - 9); x.fill(); x.globalAlpha = 1;
+  }
+
+  /* ---------- front page ---------- */
+  function home() {
+    view.innerHTML = d.getElementById("t-home").innerHTML;
+    d.getElementById("cats").innerHTML = CATS.map(function (c) {
+      return '<button class="cat reveal" type="button" data-go="' + (c[1] === "Safety and recovery" ? "collapse" : "soon:" + c[1]) + '"><span class="ic">' + icon(c[0]) + '</span><b>' + c[1] + '</b><small>' + c[2] + '</small></button>';
+    }).join("");
+    d.getElementById("az").innerHTML = TOPICS.map(function (t) {
+      var live = t === "Collapse";
+      return '<button type="button" class="' + (live ? "live" : "") + '" data-go="' + (live ? "collapse" : "soon:" + t) + '"><span class="lt">' + t[0] + '</span>' + t + '</button>';
+    }).join("");
+    var q = d.getElementById("q"), hits = d.getElementById("hits");
+    q.addEventListener("input", function () {
+      var v = q.value.trim().toLowerCase();
+      hits.innerHTML = !v ? "" : TOPICS.filter(function (t) { return t.toLowerCase().indexOf(v) > -1; }).slice(0, 6).map(function (t) {
+        return '<button type="button" data-go="' + (t === "Collapse" ? "collapse" : "soon:" + t) + '">' + icon("arrow") + t + '</button>';
+      }).join("") || '<span style="color:var(--dim);font-size:.9rem">No topic yet. The A to Z below lists them all.</span>';
+    });
+    var i = 0, el = d.getElementById("dyk");
+    function show() { el.style.opacity = 0; setTimeout(function () { el.innerHTML = DYK[i][0] + "<small>" + DYK[i][1] + "</small>"; el.style.opacity = 1; }, 200); }
+    d.getElementById("dyk-n").onclick = function () { i = (i + 1) % DYK.length; show(); };
+    d.getElementById("dyk-p").onclick = function () { i = (i + DYK.length - 1) % DYK.length; show(); };
+    show(); if (!reduce) { var tm = setInterval(function () { if (!d.getElementById("dyk")) return clearInterval(tm); i = (i + 1) % DYK.length; show(); }, 7000); }
+
+    // sky: thermals rising, a glider circling in one
+    var sky = d.getElementById("sky"), S = ctxOf(sky), parts = [];
+    for (var p = 0; p < 70; p++) parts.push({ x: Math.random(), y: Math.random(), s: 0.02 + Math.random() * 0.05, r: 1 + Math.random() * 2 });
+    var feat = d.getElementById("feat"), F = ctxOf(feat);
+    loop(function (t) {
+      var x = S.x; x.clearRect(0, 0, S.w, S.h);
+      var g = x.createRadialGradient(S.w * 0.78, S.h * 1.1, 10, S.w * 0.78, S.h * 1.1, S.h * 1.1);
+      g.addColorStop(0, "rgba(255,117,23,.16)"); g.addColorStop(1, "rgba(255,117,23,0)"); x.fillStyle = g; x.fillRect(0, 0, S.w, S.h);
+      parts.forEach(function (q) {
+        var col = Math.abs(q.x - 0.78) < 0.08 ? 1 : 0.35;
+        var yy = ((q.y - (reduce ? 0 : t * q.s * col)) % 1 + 1) % 1;
+        x.fillStyle = "rgba(255,154,82," + (0.15 + 0.35 * col) + ")";
+        x.beginPath(); x.arc(q.x * S.w + Math.sin(t + q.y * 9) * 6, yy * S.h, q.r, 0, 7); x.fill();
+      });
+      var a = reduce ? 0 : t * 0.6, cx = S.w * 0.78 + Math.cos(a) * 60, cy = S.h * 0.42 - (reduce ? 0 : (t * 4) % 60) + Math.sin(a) * 14;
+      glider(x, cx, cy, Math.min(90, S.w * 0.08), 0, Math.cos(a) * 0.35, 0);
+      // featured: collapse loop
+      var y = F.x, c = (t % 6) / 6, fold = c < 0.2 ? 0 : c < 0.35 ? ease((c - 0.2) / 0.15) : c < 0.65 ? 1 : c < 0.85 ? 1 - ease((c - 0.65) / 0.2) : 0;
+      y.clearRect(0, 0, F.w, F.h);
+      if (c > 0.12 && c < 0.38) arrowDown(y, F.w * 0.66, F.h * 0.08, F.h * 0.16, Math.sin(Math.PI * (c - 0.12) / 0.26));
+      glider(y, F.w * 0.5, F.h * 0.42, Math.min(F.w * 0.62, 340), fold, fold * 0.18 * Math.sin(t * 2), 0);
+    });
+    observe();
+  }
+
+  /* ---------- article ---------- */
+  function collapse() {
+    view.innerHTML = d.getElementById("t-collapse").innerHTML;
+    window.scrollTo(0, 0);
+    // hero animation: fly, sinking air, fold, turn, reopen
+    var c = d.getElementById("hero-anim"), C = ctxOf(c), cap = d.getElementById("hero-cap"), t0 = 0, last = "";
+    d.getElementById("replay").onclick = function () { t0 = performanceNow(); };
+    function performanceNow() { return performance.now() / 1000; }
+    t0 = performanceNow();
+    loop(function () {
+      var t = (performanceNow() - t0) % 9, x = C.x, w = C.w, h = C.h, label;
+      x.clearRect(0, 0, w, h);
+      // air
+      x.strokeStyle = "rgba(180,180,180,.12)"; x.lineWidth = 1;
+      for (var i = 0; i < 7; i++) { var yy = (i / 7) * h + (t * 12) % (h / 7); x.beginPath(); x.moveTo(0, yy); x.lineTo(w, yy); x.stroke(); }
+      var fold = 0, roll = 0, sink = 0;
+      if (t < 1.5) { label = "<b>Flying</b> · wing pressurised overhead"; }
+      else if (t < 2.6) { sink = (t - 1.5) / 1.1; label = "<b>Sinking air</b> hits one side"; }
+      else if (t < 3.4) { fold = ease((t - 2.6) / 0.8); label = "<b>Collapse</b> · one side folds"; }
+      else if (t < 5.2) { fold = 1; roll = Math.sin((t - 3.4) / 1.8 * Math.PI) * 0.22; label = "<b>Lean away</b> · a little brake on the open side"; }
+      else if (t < 6.6) { fold = 1 - ease((t - 5.2) / 1.4); roll = fold * 0.1; label = "<b>Reopening</b> · let it come back"; }
+      else { label = "<b>Flying again</b>"; }
+      if (sink > 0 || (fold > 0 && t < 3.4)) for (var k = 0; k < 3; k++) arrowDown(x, w * (0.6 + k * 0.08), h * 0.06 + (sink * 20), h * 0.14, Math.min(1, sink + fold));
+      glider(x, w * 0.5, h * 0.4, Math.min(w * 0.6, 380), fold, roll, 0);
+      if (fold > 0.5 && t > 3.4 && t < 5.2) { x.fillStyle = GREEN; x.font = "600 13px DM Sans, Arial"; x.fillText("lean ←", w * 0.36, h * 0.84); }
+      if (label !== last) { cap.innerHTML = label; last = label; }
+    });
+
+    // angle of attack lab
+    var foil = d.getElementById("foil"), range = d.getElementById("aoa"), sb = d.getElementById("st-b"), st = d.getElementById("st-t"), sm = d.getElementById("st-m");
+    function naca(n) {
+      var up = [], lo = [], t = 0.17, m = 0.04, p = 0.32;
+      for (var i = 0; i <= n; i++) {
+        var xx = (1 - Math.cos(Math.PI * i / n)) / 2, yt = 5 * t * (0.2969 * Math.sqrt(xx) - 0.126 * xx - 0.3516 * xx * xx + 0.2843 * Math.pow(xx, 3) - 0.1036 * Math.pow(xx, 4));
+        var yc = xx < p ? m / (p * p) * (2 * p * xx - xx * xx) : m / Math.pow(1 - p, 2) * ((1 - 2 * p) + 2 * p * xx - xx * xx);
+        up.push([xx, yc + yt]); lo.push([xx, yc - yt]);
+      }
+      return [up, lo];
+    }
+    var base = naca(60);
+    function drawFoil(a) {
+      var col = a < -2 ? 1 : 0, stall = a > 17 ? Math.min(1, (a - 17) / 5) : 0, deflate = a < -2 ? Math.min(1, (-2 - a) / 6) : 0;
+      var C2 = 300, cx = 230, cy = 150, r = -a * Math.PI / 180, s = "";
+      function P(pt, lower) {
+        var xx = pt[0], yy = pt[1];
+        if (deflate && !lower && xx < 0.35) { var w = Math.pow(xx / 0.35, 1.3); var low = base[1][Math.round(xx * 60)] ? 0 : 0; yy = lerp(-0.02, yy, w * (1 - deflate) + w * w * deflate * 0.3 + (1 - deflate) * (1 - w)); }
+        var X = (xx - 0.3) * C2, Y = -yy * C2;
+        return [cx + X * Math.cos(r) - Y * Math.sin(r), cy + X * Math.sin(r) + Y * Math.cos(r)];
+      }
+      var U = base[0].map(function (p) { return P(p, false); }), L = base[1].map(function (p) { return P(p, true); });
+      var path = "M" + U.map(function (p) { return p[0].toFixed(1) + " " + p[1].toFixed(1); }).join("L") + "L" + L.reverse().map(function (p) { return p[0].toFixed(1) + " " + p[1].toFixed(1); }).join("L") + "Z";
+      var flows = "";
+      for (var i = 0; i < 6; i++) {
+        var y0 = 60 + i * 36, bend = (a / 25) * (i < 3 ? -26 : -14), path2;
+        if (stall && i < 3) path2 = "M10 " + y0 + " C 120 " + y0 + ", 170 " + (y0 + bend) + ", 230 " + (y0 + bend - 6) + " q 30 -20 50 0 t 50 0 t 50 0";
+        else path2 = "M10 " + y0 + " C 140 " + y0 + ", 200 " + (y0 + bend) + ", 300 " + (y0 + bend * 0.6) + " S 460 " + (y0 + bend * 0.2) + ", 510 " + y0;
+        flows += '<path d="' + path2 + '" fill="none" stroke="' + (stall && i < 3 ? RED : "#5b5c63") + '" stroke-width="1.3" stroke-dasharray="' + (stall && i < 3 ? "3 5" : "0") + '"/>';
+      }
+      var liftLen = a > -2 && a < 17 ? 30 + a * 5 : a >= 17 ? Math.max(10, 115 - (a - 17) * 14) : 6;
+      var lift = '<path d="M230 140 V' + (140 - liftLen) + '" stroke="' + OR + '" stroke-width="3"/><path d="M222 ' + (148 - liftLen) + ' L230 ' + (134 - liftLen) + ' L238 ' + (148 - liftLen) + 'Z" fill="' + OR + '"/>';
+      var arrows = deflate ? '<path d="M150 20 V75" stroke="' + OR + '" stroke-width="3"/><path d="M142 66 L150 80 L158 66Z" fill="' + OR + '"/><text x="162" y="34" fill="' + OR + '" font-size="13" font-family="DM Sans">sinking air</text>' : "";
+      foil.innerHTML = flows + '<path d="' + path + '" fill="' + (deflate ? "rgba(255,90,74,.18)" : stall ? "rgba(255,90,74,.12)" : FILL) + '" stroke="' + WH + '" stroke-width="2"/>' + lift + arrows +
+        '<text x="14" y="288" fill="#7d7d84" font-size="12" font-family="DM Sans">angle of attack ' + a.toFixed(1) + '° · air from the left</text>';
+      var state = a < -2 ? ["x", "Collapse", "The nose is pushed in and the front folds.", RED] : a > 17 ? ["warn", "Stall", "The air breaks away from the top. The wing stops flying.", RED] : ["check", "Flying", a > 11 ? "Slow, close to the stall. Easy on the brakes." : "Pressurised and making lift.", GREEN];
+      sb.innerHTML = icon(state[0]) + "<span>" + state[1] + "</span>"; sb.style.color = state[3]; st.textContent = state[2];
+      sm.style.left = ((a + 10) / 36 * 100) + "%";
+    }
+    range.addEventListener("input", function () { drawFoil(+range.value); });
+    drawFoil(+range.value);
+
+    d.getElementById("trig").innerHTML = TRIG.map(function (t) {
+      var lv = ""; for (var i = 1; i <= 3; i++) lv += '<i class="' + (i <= t[3] ? "on" : "") + '"></i>';
+      return '<div class="tg"><span class="ic">' + icon(t[0]) + '</span><b>' + t[1] + '</b><span>' + t[2] + '</span><span class="lvl" title="How often it comes up in the sources">' + lv + '</span></div>';
+    }).join("");
+
+    // steps with their own animation
+    var list = d.getElementById("steps"), cur = 0, timer, sv = d.getElementById("sv-t");
+    list.innerHTML = STEPS.map(function (s, i) { return '<button type="button" class="step" data-i="' + i + '"><span class="ic">' + icon(s[0]) + '</span><span><b>' + (i + 1) + ". " + s[1] + '</b><small>' + s[2] + '</small></span><span class="pr"></span></button>'; }).join("");
+    function setStep(i) {
+      cur = i; [].forEach.call(list.children, function (b, j) { b.classList.toggle("on", j === i); var p = b.querySelector(".pr"); p.style.animation = "none"; p.offsetWidth; p.style.animation = ""; });
+      sv.innerHTML = (i + 1) + ". " + STEPS[i][1] + "<small>" + STEPS[i][2] + "</small>";
+      clearTimeout(timer); if (!reduce) timer = setTimeout(function () { if (d.getElementById("steps")) setStep((cur + 1) % STEPS.length); }, 4000);
+    }
+    list.addEventListener("click", function (e) { var b = e.target.closest(".step"); if (b) setStep(+b.dataset.i); });
+    setStep(0);
+    var sc = d.getElementById("step-anim"), SC = ctxOf(sc);
+    loop(function (t) {
+      var x = SC.x, w = SC.w, h = SC.h, ph = (t % 4) / 4; x.clearRect(0, 0, w, h);
+      var fold = [1, 1, 1, 1 - ease(ph), 0.5][cur], roll = [0, 0.15, 0.1, 0.05, 0][cur], W = Math.min(w * 0.55, 240), cx = w / 2, cy = h * 0.28;
+      if (cur === 4) fold = 0.5 + 0.12 * Math.sin(t * 6);
+      glider(x, cx, cy, W, fold, roll * Math.sin(t * 2), 0);
+      var py = cy + W / 2 * 0.95 + 14;
+      x.lineWidth = 2.5; x.strokeStyle = OR; x.fillStyle = OR;
+      if (cur === 0) { var off = ease(Math.min(1, ph * 1.6)); x.strokeStyle = WH; x.beginPath(); x.moveTo(cx - 30, py + 30 - off * 18); x.lineTo(cx + 30, py + 30 - off * 18); x.stroke(); x.fillStyle = GREEN; x.font = "600 13px DM Sans,Arial"; x.fillText("bar released", cx + 38, py + 30 - off * 18); }
+      if (cur === 1) { x.beginPath(); x.moveTo(cx, py); x.lineTo(cx - 50 - 10 * Math.sin(t * 3), py); x.stroke(); x.beginPath(); x.moveTo(cx - 60, py - 7); x.lineTo(cx - 72, py); x.lineTo(cx - 60, py + 7); x.fill(); }
+      if (cur === 2) { var bx = cx - W * 0.32; x.beginPath(); x.moveTo(bx, py - 40); x.lineTo(bx, py - 40 + 14 + 6 * Math.sin(t * 4)); x.stroke(); x.font = "600 13px DM Sans,Arial"; x.fillText("a little", bx - 22, py - 50); }
+      if (cur === 3) { x.fillStyle = GREEN; x.font = "600 13px DM Sans,Arial"; x.fillText(fold < 0.1 ? "open" : "reopening…", cx + W * 0.2, cy - 10); }
+      if (cur === 4) { var bx2 = cx + W * 0.32, pull = Math.abs(Math.sin(t * 3)) * 30; x.beginPath(); x.moveTo(bx2, py - 40); x.lineTo(bx2, py - 40 + pull); x.stroke(); x.font = "600 13px DM Sans,Arial"; x.fillText("pump", bx2 + 8, py - 30); }
+    });
+
+    d.getElementById("guests").innerHTML = GUESTS.map(function (g) {
+      var bars = ""; for (var i = 0; i < 5; i++) bars += '<i style="height:' + (6 + (i * 37 % 10)) + 'px;animation-delay:' + (i * 0.12) + 's"></i>';
+      return '<div class="guest"><span class="av">' + g[0] + '</span><div><b>' + g[1] + '</b> <small style="color:var(--dim)">' + g[2] + '</small><p>' + g[3] + '</p><a class="play" href="https://paraglidingatlas.com/episodes/' + g[4] + '.html#' + g[5] + '" target="_blank" rel="noopener"><span class="pb"><svg viewBox="0 0 32 32"><use href="#i-play"/></svg></span>Hear the chapter <span class="wave">' + bars + '</span></a></div></div>';
+    }).join("");
+    d.getElementById("srcs").innerHTML = SRCS.map(function (s) { return '<li><a href="' + s[2] + '" target="_blank" rel="noopener">' + s[0] + '</a><span class="tag">' + s[1] + '</span></li>'; }).join("");
+    observe();
+  }
+
+  function soon(name) {
+    view.innerHTML = d.getElementById("t-soon").innerHTML;
+    d.getElementById("soon-t").textContent = name; window.scrollTo(0, 0);
+  }
+
+  function observe() {
+    var els = d.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window)) { [].forEach.call(els, function (e) { e.classList.add("in"); }); return; }
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { threshold: 0.08 });
+    [].forEach.call(els, function (e) { io.observe(e); });
+    setTimeout(function () { [].forEach.call(els, function (e) { e.classList.add("in"); }); }, 1500);
+  }
+
+  function go(where) {
+    stopAll();
+    if (where === "collapse") { history.replaceState(null, "", "#collapse"); collapse(); }
+    else if (where && where.indexOf("soon:") === 0) soon(where.slice(5));
+    else { history.replaceState(null, "", "#home"); home(); }
+  }
+  d.addEventListener("click", function (e) { var b = e.target.closest("[data-go]"); if (b) { e.preventDefault(); go(b.dataset.go); } });
+  var resizeT; window.addEventListener("resize", function () { clearTimeout(resizeT); resizeT = setTimeout(function () { go(location.hash === "#collapse" ? "collapse" : "home"); }, 250); });
+  go(location.hash === "#collapse" ? "collapse" : "home");
+})();
+</script>
+
+<a href="../index.html" style="position:fixed;left:12px;bottom:12px;z-index:99999;background:#ff7517;color:#141519;font:600 13px/1 "DM Sans",Arial,sans-serif;padding:9px 13px;text-decoration:none;border-radius:2px;box-shadow:0 2px 10px rgba(0,0,0,.4)">&larr; Workspace</a>

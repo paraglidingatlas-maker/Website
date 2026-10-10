@@ -1,0 +1,106 @@
+/* Self hosted webfonts.
+   These were loaded from fonts.googleapis.com on every page, which sent every
+   visitor's IP address to Google before a single word was read. Serving them
+   from our own origin removes that transfer entirely, and is also faster: no
+   extra DNS lookup, no extra TLS handshake, no round trip to a third party.
+
+   BOTH latin and latin-ext are shipped, and this matters. Google's stylesheet
+   served both with a unicode-range each, so the browser fetched latin-ext only
+   when a page actually needed it. Shipping latin alone silently breaks guest
+   names: Aljaz Valic, Frantisek Pavlousek and Goran Dimiskovski all carry
+   carons and acutes that live in latin-ext, and those letters would drop to a
+   fallback face mid word. The unicode-range declarations below keep the old
+   behaviour: latin-ext is only downloaded on pages that contain those glyphs.
+
+   Only the weights the site uses are included. font-display:swap so text is
+   readable immediately rather than invisible while a font loads.
+   To add a weight, copy the file from @fontsource and add both blocks here. */
+
+/* Poppins, the display face */
+@font-face{font-family:"Poppins";font-style:normal;font-weight:400;font-display:swap;
+  src:url("assets/fonts/poppins-latin-400-normal.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}  /* latin */
+@font-face{font-family:"Poppins";font-style:normal;font-weight:400;font-display:swap;
+  src:url("assets/fonts/poppins-latin-ext-400-normal.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}  /* latin-ext */
+@font-face{font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;
+  src:url("assets/fonts/poppins-latin-500-normal.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}  /* latin */
+@font-face{font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;
+  src:url("assets/fonts/poppins-latin-ext-500-normal.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}  /* latin-ext */
+@font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;
+  src:url("assets/fonts/poppins-latin-600-normal.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}  /* latin */
+@font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;
+  src:url("assets/fonts/poppins-latin-ext-600-normal.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}  /* latin-ext */
+@font-face{font-family:"Poppins";font-style:normal;font-weight:700;font-display:swap;
+  src:url("assets/fonts/poppins-latin-700-normal.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}  /* latin */
+@font-face{font-family:"Poppins";font-style:normal;font-weight:700;font-display:swap;
+  src:url("assets/fonts/poppins-latin-ext-700-normal.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}  /* latin-ext */
+@font-face{font-family:"Poppins";font-style:normal;font-weight:800;font-display:swap;
+  src:url("assets/fonts/poppins-latin-800-normal.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}  /* latin */
+@font-face{font-family:"Poppins";font-style:normal;font-weight:800;font-display:swap;
+  src:url("assets/fonts/poppins-latin-ext-800-normal.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}  /* latin-ext */
+
+/* DM Sans, the body face */
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:300;font-display:swap;
+  src:url("assets/fonts/dm-sans-latin-300-normal.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}  /* latin */
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:300;font-display:swap;
+  src:url("assets/fonts/dm-sans-latin-ext-300-normal.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}  /* latin-ext */
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:400;font-display:swap;
+  src:url("assets/fonts/dm-sans-latin-400-normal.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}  /* latin */
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:400;font-display:swap;
+  src:url("assets/fonts/dm-sans-latin-ext-400-normal.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}  /* latin-ext */
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:500;font-display:swap;
+  src:url("assets/fonts/dm-sans-latin-500-normal.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}  /* latin */
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:500;font-display:swap;
+  src:url("assets/fonts/dm-sans-latin-ext-500-normal.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}  /* latin-ext */
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:600;font-display:swap;
+  src:url("assets/fonts/dm-sans-latin-600-normal.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}  /* latin */
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:600;font-display:swap;
+  src:url("assets/fonts/dm-sans-latin-ext-600-normal.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}  /* latin-ext */
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:700;font-display:swap;
+  src:url("assets/fonts/dm-sans-latin-700-normal.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}  /* latin */
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:700;font-display:swap;
+  src:url("assets/fonts/dm-sans-latin-ext-700-normal.woff2") format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}  /* latin-ext */
+
+/* ---------------------------------------------------------------------------
+   Matched fallback faces.
+
+   Until a webfont arrives, and permanently for the small number of people who
+   never receive one (Opera Mini in extreme data saving, very old browsers, or
+   anyone who has told their browser to ignore page fonts), text is drawn in a
+   system face. Left alone that face has different vertical metrics, so the
+   whole page shifts when the real font swaps in.
+
+   These two faces borrow a local system font and override its vertical metrics
+   to match Poppins and DM Sans exactly. The percentages are computed from the
+   real font files, not estimated: Poppins is 1050/350/100 per 1000 units, DM
+   Sans is 992/310/0. Line boxes are therefore the same height before and after
+   the swap, so nothing jumps.
+
+   size-adjust is deliberately NOT set. It would need the fallback's average
+   character width, and xAvgCharWidth is defined inconsistently between fonts,
+   so a value derived from it is a guess dressed up as precision. Vertical
+   metrics fix the layout shift, which is the part that is actually visible. */
+
+@font-face{font-family:"Poppins Fallback";src:local("Arial"),local("Helvetica"),local("Roboto");
+  ascent-override:105%;descent-override:35%;line-gap-override:10%;}
+@font-face{font-family:"DM Sans Fallback";src:local("Arial"),local("Helvetica"),local("Roboto");
+  ascent-override:99.2%;descent-override:31%;line-gap-override:0%;}

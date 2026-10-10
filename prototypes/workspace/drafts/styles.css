@@ -1,0 +1,1917 @@
+:root{
+  --bg:#141519;
+  --card:#202127;
+  --orange:#ff7517;
+  --white:#f6f4f4;
+  --gray:#737373;
+  --gray-light:#b4b4b4;
+
+  /* EDGES. Before these existed every rule wrote its own, and the site had
+     drifted to TWENTY different border greys and TWENTY THREE orange alphas
+     across 145 uses. Nobody chose them; they accumulated one rule at a time,
+     and it is why edges never quite agreed between sections.
+
+       --line      a hairline inside a card, between rows
+       --edge      the outer edge of a card
+       --edge-hi   emphasis: a heading rule, a divider meant to be seen
+       --live      an interactive or focused border
+       --wash      an orange hover fill
+
+     THESE ARE FOR BORDERS ONLY. A glow and a gradient stop are not edges, and
+     naming them as if they were is how a token stops meaning anything. The
+     shadows and gradients on this site keep their own values on purpose. */
+  --line:rgba(180,180,180,0.12);
+  --edge:rgba(180,180,180,0.22);
+  --edge-hi:rgba(180,180,180,0.4);
+  --live:rgba(255,117,23,0.5);
+  --wash:rgba(255,117,23,0.12);
+
+  /* A SOLID hairline, for the places translucency cannot work: a grid with 1px
+     gaps paints the gap with a background, and a translucent one would show
+     whatever is behind rather than a line. Used 15 times, and already aliased
+     as --rule by hand on two pages. Named rather than converted, so no pixel
+     moves. */
+  --rule:#2b2c33;
+
+  /* Ink on an orange button, written by hand six times. */
+  --ink:#171712;
+  /* The light stop of the button and progress gradients. A gradient needs two
+     values, so this is a real colour rather than drift. */
+  --orange-lite:#ff8a3d;
+
+  --font-display:"Poppins", "Poppins Fallback", Arial, Helvetica, sans-serif;
+  --font-body:"DM Sans", "DM Sans Fallback", Arial, Helvetica, sans-serif;
+
+  /* TYPE SCALE. The site had drifted to 161 different font sizes, 61 on the
+     Kenya page alone, so headings and body never quite matched between pages.
+     These ten steps are taken from what Kenya, India and the knowledge base
+     already use most. New rules use these; old rules move onto them page by
+     page, each move reviewed, because snapping a size is a visible change. */
+  --fs-micro:.72rem;      /* kickers, labels, stat captions */
+  --fs-small:.82rem;      /* meta lines, captions, chips */
+  --fs-body-s:.93rem;     /* card and secondary copy */
+  --fs-body:1rem;         /* running text */
+  --fs-lead:1.08rem;      /* intro paragraphs */
+  --fs-h4:1.1rem;         /* card titles */
+  --fs-h3:clamp(1.25rem,2.2vw,1.6rem);
+  --fs-h2:clamp(1.5rem,3vw,2.2rem);
+  --fs-h1:clamp(2.2rem,5vw,3.8rem);
+  --fs-display:clamp(2.6rem,6vw,4.6rem);
+
+  /* SPACING. Section rhythm and gutters, from the same pages. */
+  --sp-1:.5rem; --sp-2:1rem; --sp-3:1.5rem; --sp-4:2rem; --sp-5:3rem;
+  --sp-section:clamp(3rem,7vw,5rem);   /* vertical padding of a band */
+  --gutter:clamp(1.5rem,5vw,4rem);     /* side padding of a band */
+  --measure:1300px;                    /* widest content column */
+
+  /* FEEDBACK. How everything pressable answers a pointer, a finger or a key,
+     so a card on the knowledge base and a card on the homepage move the same
+     distance at the same speed. The rules that use these are in the Feedback
+     section at the end of this file. A component that declares its own
+     transition list adds var(--t-press) to it, because a transition list is
+     one property and a shared rule cannot add to it from outside. */
+  --lift:-3px;                         /* a card rising under the pointer */
+  --press:.96;                         /* a button pressed in */
+  --press-card:.985;                   /* a card pressed in: bigger, so less */
+  --ease-out:cubic-bezier(.2,.8,.2,1);
+  --t-press:scale .16s var(--ease-out), translate .26s var(--ease-out);
+  --lit:0;                             /* 1 while a card is hovered or focused */
+
+  /* SKY. The ambient light behind the header and on the footer horizon. These
+     are the dusk values; script.js sets data-sky from the visitor's clock and
+     the overrides at the end of this file take over ("The sky keeps the
+     visitor's time"). */
+  --sky-warm:rgba(255,117,23,.13);
+  --sky-cool:rgba(92,112,190,.13);
+  --sky-high:rgba(180,180,180,.05);
+  --sky-horizon:rgba(255,117,23,.10);
+
+  /* BREAKPOINTS cannot be custom properties inside @media, so they are fixed
+     here in words: 560px (small phone), 820px (phone to tablet, where every
+     two-column layout stacks), 1100px (tablet to desktop). The site had drifted
+     to about 17 different widths; new rules use these three only. */
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+/* ===== Scrollbars ==========================================================
+   Every scrollable area on the site was drawing the operating system's default
+   bar: a light grey track with arrow buttons at each end, on a page that is
+   almost black. It appears in the episode search results, the card rails, the
+   testimonials, the policy tables and the page itself.
+
+   These match the site instead. The track is the background, the thumb is the
+   same grey as a card edge, and it warms to orange when you take hold of it.
+   Firefox gets the two-value `scrollbar-color`; everything else gets the
+   ::-webkit- rules, which are also what Chrome, Edge and Safari read.
+
+   NOT hidden, only quietened. A scrollbar that cannot be seen is a scrollbar
+   nobody knows to use.
+   ========================================================================= */
+html{scrollbar-width:thin;scrollbar-color:rgba(180,180,180,0.22) transparent;}
+*{scrollbar-width:thin;scrollbar-color:rgba(180,180,180,0.22) transparent;}
+::-webkit-scrollbar{width:10px;height:10px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-corner{background:transparent;}
+::-webkit-scrollbar-thumb{
+  background:rgba(180,180,180,0.22);
+  border:2px solid transparent;background-clip:padding-box;border-radius:0;
+}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,117,23,0.5);background-clip:padding-box;}
+::-webkit-scrollbar-thumb:active{background:var(--orange);background-clip:padding-box;}
+/* the arrow buttons at each end are the most dated part of the default bar */
+::-webkit-scrollbar-button{display:none;height:0;width:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:var(--font-body);
+  font-weight:400;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+
+/* Custom cursor removed for now, back to default browser cursor */
+
+/* Scoped deliberately. A bare nav{} selector also hits the table of contents
+   on the policy pages, which is correctly marked up as a <nav>. */
+.page-wrap > nav{
+  position:relative;z-index:20;
+  padding:1.5rem clamp(2rem,5vw,4rem);
+  display:flex;align-items:center;justify-content:flex-start;gap:1.3rem;
+  /* A whisper of a panel, not a slab. The old bar was a full gradient from
+     #2a2c33 with a corner clipped off both ends; between them they made three
+     different claims about where the header's edge was. This lifts the surface
+     just enough to separate it from the page. */
+  background:linear-gradient(180deg,
+    rgba(180,180,180,0.038) 0%, rgba(180,180,180,0.016) 55%, transparent 100%);
+  border-bottom:1px solid var(--line);
+}
+/* The orange rule is the one thing the old panel was really contributing: it is
+   the only part of the header that speaks the site's own language. It runs the
+   full width now that the corners are square. */
+.page-wrap > nav::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg, transparent, var(--orange), transparent);
+  opacity:0.8;
+}
+/* One mark, top right, beside Enquire. Two of them read as a frame and the bar
+   is no longer framed; one reads as the site's signature, the same bracket the
+   cards carry. The left one is hidden here rather than removed from 180 pages. */
+.nav-corner-l{display:none;}
+.nav-corner-r{
+  position:absolute;top:8px;right:8px;width:14px;height:14px;
+  border:1.5px solid var(--orange);border-left:none;border-bottom:none;
+}
+/* ORDERED HERE, NOT IN THE MARKUP. The nav is written into 180 files and
+   emitted by four generators; moving the coordinate after the links in the HTML
+   would mean touching all of them. Flex order does it in one rule. */
+.wordmark{order:1;}
+.nav-links{order:2;margin-left:auto;}
+.nav-coords{order:3;}
+.nav-cta{order:4;}
+.nav-coords{
+  position:relative;z-index:1;color:var(--gray);font-size:0.68rem;letter-spacing:0.08em;
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+  padding-left:1.3rem;border-left:1px solid var(--line);
+}
+/* flex-shrink:0 because the logo was the only item in the bar willing to give
+   way. On a phone the row ran out of room and squeezed this instead of the
+   coordinate or the button, so the wordmark rendered 154px wide at 560, 57 at
+   414, 33 at 390, 3 at 360 and 0 at 320: not cropped, horizontally crushed,
+   because width:auto on the image resolved against a squashed parent. It holds
+   its width now and the narrow sizes are set deliberately below. */
+.wordmark{position:relative;z-index:1;display:inline-block;flex-shrink:0;}
+.logo-img{height:32px;width:auto;display:block;}
+.nav-links{position:relative;z-index:1;display:flex;align-items:center;gap:1.6rem;font-size:0.92rem;}
+.nav-links a{color:var(--gray-light);position:relative;padding-bottom:4px;}
+.nav-links a::after{
+  content:"";position:absolute;left:50%;right:50%;bottom:0;height:1px;
+  background:var(--orange);transition:left .2s ease, right .2s ease;
+}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after{left:0;right:0;}
+.nav-sep{color:rgba(180,180,180,0.3);font-size:0.85rem;}
+.nav-cta{
+  position:relative;z-index:1;margin-left:0.6rem;
+  background:linear-gradient(180deg, var(--orange-lite), var(--orange));
+  color:var(--bg);font-weight:700;font-size:0.85rem;padding:0.65rem 1.4rem;
+  /* Never wrap, never shrink. Once the logo stopped absorbing the shortfall the
+     button became the next thing to give, and at 600 it squeezed to 128px and
+     broke the label onto two lines, which made the whole bar 20px taller. */
+  white-space:nowrap;flex-shrink:0;
+  /* One button shape on the site: skewed 10 degrees with the label counter
+     skewed so it stays upright. This used a clip-path cut corner instead, which
+     was a second idea doing the same job in the most visible place on the site. */
+  transform:skewX(-10deg);
+  box-shadow:0 2px 10px rgba(255,117,23,0.3);
+}
+/* THE MENU BUTTON.
+   Not skewed. The skew is the site's button signature and belongs to the one
+   button that asks for something; a utility control borrowing it would spend
+   that signature on opening a drawer. Square, quiet, and it sits to the right of
+   Enquire so the paid action keeps the stronger position.
+
+   The element is built by nav-menu.js, so it is absent until that runs. It is
+   display:none above 820 regardless, which is where .nav-links is still visible
+   and there is nothing for it to do. */
+.nav-toggle{
+  display:none;order:5;position:relative;z-index:1;
+  width:44px;height:44px;flex-shrink:0;
+  align-items:center;justify-content:center;
+  background:none;border:1px solid var(--edge);border-radius:0;
+  cursor:pointer;padding:0;margin-left:0.2rem;
+}
+.nav-toggle:hover{border-color:var(--live);}
+.nav-toggle-bars{display:block;width:20px;height:14px;position:relative;}
+.nav-toggle-bars i{
+  position:absolute;left:0;width:100%;height:2px;background:var(--white);
+  transition:transform .22s ease, opacity .16s ease, top .22s ease;
+}
+.nav-toggle-bars i:nth-child(1){top:0;}
+.nav-toggle-bars i:nth-child(2){top:6px;}
+.nav-toggle-bars i:nth-child(3){top:12px;}
+/* Open: the outer bars meet in the middle and cross, the middle one goes. */
+.is-open .nav-toggle-bars i:nth-child(1){top:6px;transform:rotate(45deg);}
+.is-open .nav-toggle-bars i:nth-child(2){opacity:0;}
+.is-open .nav-toggle-bars i:nth-child(3){top:6px;transform:rotate(-45deg);}
+.nav-cta span{display:inline-block;transform:skewX(10deg);}
+/* A 6px strip with an orange fade and a notch clipped out of the centre. Under
+   the old dark panel it read as a tail hanging off the bar. Under the new light
+   one it is a warm smudge sitting next to a grey line, and the nav's own
+   border-bottom is doing that job properly now: two separators, one of them
+   tinted.
+
+   Hidden rather than deleted, because the div is in 180 pages. Restore by
+   removing this rule if the tail is wanted back. */
+.nav-chevron{display:none;}
+
+/* HERO */
+.hero{
+  position:relative;min-height:96vh;display:flex;align-items:flex-end;
+}
+.hero-media{position:absolute;inset:0;z-index:-2;}
+.hero-media img{width:100%;height:100%;object-fit:cover;}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg, rgba(20,21,25,0.25) 0%, rgba(20,21,25,0.6) 65%, rgba(20,21,25,0.92) 100%);
+}
+.hero-copy{
+  color:var(--white);
+  padding:0 clamp(1.5rem,5vw,4rem) 5rem;
+  max-width:760px;
+}
+.coords{font-size:0.85rem;color:var(--gray-light);margin-bottom:1.5rem;letter-spacing:0.01em;}
+.hero-kicker{margin-bottom:1rem;}
+.hero-copy h1{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.08;
+  margin-bottom:1.6rem;
+}
+.hero-sub{max-width:520px;font-size:1.08rem;color:var(--gray-light);margin-bottom:2rem;}
+.hero-link{
+  display:inline-block;font-size:1rem;font-weight:500;color:var(--white);
+  border-bottom:1px solid var(--white);padding-bottom:0.25rem;
+}
+
+/* STATS BAR */
+.stats{
+  background:var(--card);
+  position:relative;overflow:hidden;
+  padding:clamp(2.5rem,5vw,3.5rem) clamp(1.5rem,5vw,4rem);
+  border-bottom:1px solid var(--edge);
+}
+.stats::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(246,244,244,0.35), transparent),
+    radial-gradient(1px 1px at 25% 60%, rgba(246,244,244,0.25), transparent),
+    radial-gradient(1px 1px at 40% 15%, rgba(246,244,244,0.3), transparent),
+    radial-gradient(1px 1px at 55% 75%, rgba(246,244,244,0.2), transparent),
+    radial-gradient(1px 1px at 70% 30%, rgba(246,244,244,0.35), transparent),
+    radial-gradient(1px 1px at 85% 55%, rgba(246,244,244,0.25), transparent),
+    radial-gradient(1px 1px at 95% 10%, rgba(246,244,244,0.3), transparent),
+    radial-gradient(1px 1px at 15% 85%, rgba(246,244,244,0.2), transparent),
+    radial-gradient(1px 1px at 60% 90%, rgba(246,244,244,0.25), transparent);
+  pointer-events:none;
+}
+.stats-inner{
+  position:relative;display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:2rem;
+}
+.stats-left{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;padding-left:1.5rem;}
+.scroll-label{
+  writing-mode:vertical-rl;color:var(--gray);font-size:0.75rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+}
+.stats-right{display:flex;gap:clamp(2rem,6vw,4.5rem);flex-wrap:wrap;}
+.stats-right .stat{display:flex;flex-direction:column;align-items:flex-start;gap:0.3rem;}
+.stats-right .num{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--white);}
+.stats-right .label{color:var(--gray-light);font-size:0.8rem;letter-spacing:0.03em;text-transform:uppercase;}
+
+/* BUTTONS */
+.btn-solid{
+  position:relative;display:inline-block;
+  background:var(--orange);color:var(--bg);font-weight:600;font-size:0.95rem;
+  padding:0.9rem 1.8rem;
+  transform:skewX(-10deg);
+  transition:transform 0.2s ease, var(--t-press);
+}
+.btn-solid span{display:inline-block;transform:skewX(10deg);}
+.btn-solid:hover{transform:skewX(-10deg) translateY(-2px);}
+.btn-lines{
+  display:inline-block;color:var(--white);font-weight:500;font-size:0.95rem;
+  padding:0.6rem 0.2rem;
+  border-top:1px solid var(--edge-hi);
+  border-bottom:1px solid var(--edge-hi);
+  transition:transform 0.2s ease, var(--t-press);
+}
+.btn-lines:hover{transform:translateY(-2px);}
+
+/* DESTINATIONS */
+.destination{
+  position:relative;
+  display:grid;grid-template-columns:1.1fr 1fr;gap:0;
+  align-items:stretch;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+.destination.reverse{grid-template-columns:1fr 1.1fr;background:var(--bg);}
+.destination.reverse .dest-media{order:2;}
+.destination.reverse .dest-copy{order:1;}
+.dest-media{overflow:hidden;}
+/* NO max-height. It was 520px while the copy beside it runs to about 550, so
+   whichever was shorter left a band of background under it, and because the copy
+   length differs by section, so did the band. That is why no two gaps matched.
+   The picture is now exactly as tall as the words next to it.
+
+   Safe on every photo here: all four are 1600x1200, which at this cell width
+   renders 754px tall naturally against the roughly 550px the copy needs. They
+   are cropped LESS than before, never stretched. */
+.dest-media img{width:100%;height:100%;min-height:400px;object-fit:cover;}
+/* THE HEADINGS RESERVE THREE LINES, SO THE FOUR SECTIONS MATCH.
+   The picture is exactly as tall as the words beside it, which is deliberate and
+   explained above. The consequence is that anything changing the height of the
+   words changes the height of the photograph, and what changes it is the heading
+   wrapping. Measured across widths, the four sections came out:
+
+     1024   619 / 595 / 644 / 693
+     1280   580 / 519 / 605 / 629
+     1440   567 / 567 / 605 / 568
+     1920   755 / 755 / 755 / 754
+
+   Never the same, never wrong in the same direction, and Kenya the short one at
+   the two widths a laptop is most likely to be. Reserving three lines on every
+   heading makes the words a fixed height, so the pictures match. 4.8em is three
+   times the 1.6 line height.
+
+   Equalised UP rather than down on purpose: the photograph is what sells a trip,
+   and at 1920 the picture is already the taller element, so this costs nothing
+   there at all. */
+@media(min-width:821px){
+  /* Three lines of heading, six of paragraph. Both are 1.6 line height, so
+     4.8em and 9.6em. Measured at 1280 and 1440, the four copy columns broke down
+     identically except for one thing:
+
+       kicker 25  heading 184  facts 73  link 30   on all four
+       paragraph 100 / 100 / 125 / 151
+
+     Four lines, four, five and six. That was the whole difference, and since the
+     picture is exactly as tall as the words, it was the whole difference in the
+     pictures too. The intros run 236, 255, 283 and 402 characters.
+
+     Equalised UP, to the longest. The photograph is what sells a trip, and at
+     1600 and above the picture is already the taller element so this costs
+     nothing there. Below that it buys a little space under the two shorter
+     intros, which reads as breathing room rather than as a mistake.
+
+     The cheaper fix is a shorter Kazakhstan intro, about 150 characters off. That
+     is copy, so it is Aninder's to write, not this stylesheet's to fake. */
+  .dest-copy h2{min-height:4.8em;}
+  .dest-copy > p:not(.kicker){min-height:9.6em;}
+}
+/* Narrower than 1280 the longest intro wraps further, so six lines stops being
+   enough. Measured, the lines the longest intro needs:
+
+     821   10 lines, heading 4      1000   8 lines, heading 3
+     900    9 lines, heading 4      1100   7 lines, heading 3
+
+   One band each, so the pictures stay the same size as each other all the way
+   down to where the layout goes single column at 820.
+
+   These numbers describe the copy as it stands. Change an intro and the bands
+   want remeasuring; the pictures would go uneven again rather than break, and
+   the comment above says where the measurement came from. The alternative was
+   a fixed tall crop on the media, which at 900 would render a 495px wide
+   landscape photograph 720px tall. Reserved space costs whitespace; that costs
+   the photograph. */
+@media(min-width:1100px) and (max-width:1279px){
+  .dest-copy > p:not(.kicker){min-height:11.2em;}
+}
+@media(min-width:1000px) and (max-width:1099px){
+  .dest-copy > p:not(.kicker){min-height:12.8em;}
+}
+@media(min-width:900px) and (max-width:999px){
+  .dest-copy h2{min-height:6.4em;}
+  .dest-copy > p:not(.kicker){min-height:14.4em;}
+}
+@media(min-width:821px) and (max-width:899px){
+  .dest-copy h2{min-height:6.4em;}
+  .dest-copy > p:not(.kicker){min-height:16em;}
+}
+/* NO max-width. The cap was 560px inside a cell 812px wide at 1920, leaving
+   252px empty to the right of every heading, growing on a wider screen.
+
+   The PARAGRAPH keeps its own limit below, and that is the one that matters: past
+   about 75 characters a line the eye loses its place on the return sweep. A
+   heading is read in a glance, not scanned line by line, so it has no such
+   problem and reads better wide. "The Majestic Himalayas: A Paraglider's Ultimate
+   Frontier" was breaking to three lines and reading as a stack. */
+.dest-copy{
+  display:flex;flex-direction:column;justify-content:center;gap:1rem;
+  padding:clamp(1.8rem,4vw,3.2rem);
+}
+.kicker{color:var(--orange);font-size:0.95rem;font-weight:500;}
+.dest-copy h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--white);}
+.dest-copy p{color:var(--gray-light);font-size:0.98rem;line-height:1.6;max-width:46ch;}
+.dest-copy a{font-weight:500;color:var(--white);border-bottom:1px solid var(--white);padding-bottom:0.2rem;width:fit-content;}
+/* The photo and the title lead to the destination page; the link under the
+   facts goes to the enquiry form, which is what "Enquire Now" says. The title
+   is a heading first, so it keeps the heading's look and only warms on hover. */
+.dest-copy h2 a.dest-title{font-weight:inherit;border-bottom:0;padding-bottom:0;width:auto;transition:color .2s ease;}
+.dest-copy h2 a.dest-title::after{content:none;}
+.dest-copy h2 a.dest-title:is(:hover,:focus-visible){color:var(--orange);}
+/* display:contents keeps the photo's layout exactly as it was. */
+.dest-media > a{display:contents;}
+.dest-media > a img{cursor:pointer;}
+.trip-facts{display:flex;flex-wrap:wrap;gap:1.6rem;padding:0.8rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.fact{display:flex;flex-direction:column;gap:0.25rem;}
+.fact-label{color:var(--orange);font-size:0.7rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;}
+.fact-value{color:var(--white);font-weight:600;font-size:0.92rem;}
+.skill-meter{display:flex;gap:3px;margin-top:0.3rem;}
+.skill-seg{
+  width:13px;height:11px;transform:skewX(-18deg);
+  background:repeating-linear-gradient(50deg, rgba(180,180,180,0.18) 0 2px, transparent 2px 5px);
+  background-color:rgba(180,180,180,0.05);
+}
+.skill-seg.filled{
+  background:linear-gradient(90deg, #ffb37a, var(--orange));
+  box-shadow:0 0 7px rgba(255,117,23,0.55);
+}
+
+/* WHY */
+/* ===== Why choose us =======================================================
+   Centred, because the four sections above it are all the same 50/50 split and
+   a fifth left-anchored block continues a pattern that has already run long
+   enough. The change of shape is what makes a reader stop, not the colour.
+
+   Hairline grid, no card boxes. Everything else on the site separates with
+   rules rather than borders, and boxes were forcing three columns of very
+   different copy lengths to the same height, which left a well of air in the
+   short ones.
+   ========================================================================= */
+.why{
+  position:relative;
+  /* The glow below is 130% of this section, so it hung off both sides and made
+     the whole document wider than the viewport: the homepage scrolled sideways
+     on every phone, by 59px at 390 and 115px at 768.
+
+     clip, not hidden. hidden on either axis forces the other axis to scroll and
+     would cut the glow's deliberate upward bleed, which is the exact thing the
+     note below says was tried and rejected. overflow-x:clip leaves overflow-y
+     computed as visible, so the bleed survives. Measured identical, pixel for
+     pixel, at 360, 390, 414, 768, 1440 and 1920. Safari 15 and earlier drop the
+     declaration and simply keep today's behaviour. */
+  overflow-x:clip;
+  padding:clamp(4rem,10vw,7rem) clamp(1.5rem,5vw,4rem);
+  background:var(--bg);
+  /* NO border-bottom. The booking card below is recessed into the same var(--bg)
+     surface, and a hairline here would put it in its own compartment. The page
+     runs on; the card is the only object in it. */
+}
+/* THE GLOW BLEEDS UPWARD ON PURPOSE.
+   Clipped to the section it drew a hard horizontal line at the boundary and the
+   warmth arrived all at once. It starts 180px above instead, and its own falloff
+   does the blending: the centre sits 205px INSIDE the section, so where it
+   crosses into the photograph above the alpha is about 0.015. No edge, and
+   nothing visible on the picture.
+
+   The destination directly above drops its border for the same reason: a
+   hairline would have cut straight through it. */
+/* THE BOUNDARY LINE, FADING AT BOTH ENDS.
+   The destination above dropped its border so the glow would not be cut, which
+   left 112px of undifferentiated dark with no marker in it: the glow is only
+   about 2% at that height and was not yet doing the job the border used to.
+
+   A plain hairline here would cut straight across the glow again. One that fades
+   out at both edges does not, and it is the same device already running along
+   the top of the header. */
+.why-rule{
+  position:absolute;z-index:1;top:0;left:0;right:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg, transparent,
+    rgba(180,180,180,0.28) 22%, rgba(180,180,180,0.28) 78%, transparent);
+}
+/* The short mark separates the argument from the evidence. It does the job the
+   grid's top border was doing, without drawing the lid of a box around three
+   columns we deliberately unboxed. */
+.why-mark{
+  display:block;width:56px;height:2px;background:var(--orange);margin:2rem auto 0;
+}
+.why-glow{
+  position:absolute;z-index:0;pointer-events:none;
+  left:50%;transform:translateX(-50%);top:-180px;
+  width:min(1200px,130%);height:700px;
+  background:radial-gradient(ellipse 60% 50% at 50% 55%,
+    rgba(255,117,23,0.09), rgba(255,117,23,0.03) 45%, transparent 72%);
+}
+.destination.last-dest{border-bottom:none;}
+.why-head{
+  position:relative;z-index:1;
+  text-align:center;max-width:66ch;margin:0 auto 3.4rem;
+}
+.why-kicker{color:var(--orange);font-size:0.7rem;letter-spacing:0.22em;
+  text-transform:uppercase;margin:0 0 0.9rem;}
+.why-bar{display:none;width:2px;background:var(--orange);flex-shrink:0;margin-top:0.3rem;}
+.why-label{color:var(--white);font-weight:700;font-family:var(--font-display);font-size:clamp(1.4rem,2.5vw,1.9rem);margin-bottom:1rem;}
+.why-intro{color:var(--gray-light);font-size:1.02rem;line-height:1.7;margin:0;}
+/* Equal columns. It was 1fr 1.3fr 1fr, so the widest column held the middle
+   card while the LONGEST copy sat in a narrow one: 425, 442 and 287 characters
+   against widths that had nothing to do with them. */
+.why-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+/* No box. The grid draws the separation with rules, the way the rest of the
+   site does, and without a box there is nothing to equalise: each column ends
+   where its own copy ends. */
+.why-card{
+  position:relative;background:transparent;padding:2.6rem 2rem;text-align:center;
+  border:none;border-left:1px solid var(--line);
+  transition:background 0.25s ease;
+}
+.why-card:last-child{border-right:1px solid var(--line);}
+.why-card:hover{background:rgba(255,117,23,0.03);transform:none;}
+.why-card::before, .why-card::after{
+  content:"";position:absolute;width:14px;height:14px;
+  border:1.5px solid var(--orange);opacity:0;transition:opacity 0.2s ease;
+}
+.why-card::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+.why-card::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+
+.why-card:hover::before, .why-card:hover::after{opacity:1;}
+.why-icon{width:34px;height:34px;color:var(--orange);margin:0 auto 1.3rem;display:block;}
+.why-card h3{font-family:var(--font-display);font-weight:700;font-size:1.15rem;margin-bottom:0.9rem;color:var(--white);}
+.why-card p{color:var(--gray-light);font-size:0.96rem;line-height:1.7;}
+.why-grid .why-card:first-child{grid-row:span 1;}
+
+/* CTA BAND */
+/* ===== The booking card ====================================================
+   RECESSED, not raised. The card is DARKER than the page rather than lighter,
+   so it reads as a well cut into the surface instead of a slab resting on it.
+   A thin sheen along the top edge is how a dark panel catches light, and it is
+   the whole trick: you register that the card has weight without seeing why.
+
+   The band itself carries no borders. The sections above and below are the same
+   var(--bg) and were separated from this one by hairlines, which made the card
+   look like it lived in its own compartment. Removed, so the page runs
+   continuously and the card is the only object in it.
+   ========================================================================= */
+.cta-band{
+  background:var(--bg);color:var(--white);
+  padding:clamp(3rem,8vw,5.5rem) clamp(1.5rem,5vw,4rem);
+}
+.cta-card{
+  position:relative;overflow:hidden;background:#101116;
+  /* No orange bar down the left. The card already announces itself with the
+     recess, the sheen and the corner bracket, and the bar was a fourth signal
+     doing the same job louder. */
+  padding:clamp(2.2rem,4vw,3.4rem);
+  display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start;
+}
+.cta-card::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(246,244,244,0.045),transparent 34%);}
+.cta-card::after{content:"";position:absolute;bottom:10px;right:10px;width:16px;height:16px;
+  z-index:2;border:1.5px solid var(--live);border-left:none;border-top:none;}
+/* Named, not `.cta-card > *`. A blanket child selector beat .cta-hud-tag's own
+   position:absolute and shunted it into the grid, which pushed every column one
+   cell along. */
+.cta-pitch,.cta-detail{position:relative;z-index:1;}
+/* A status, not a label: the dot is the same blip as the globe popup, and a
+   status implies somebody is at the other end. */
+.cta-hud-tag{
+  position:absolute;top:16px;right:38px;z-index:2;color:var(--gray);font-size:0.7rem;
+  letter-spacing:0.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:0.55rem;
+}
+.cta-dot{width:6px;height:6px;border-radius:50%;background:var(--orange);
+  animation:ctaPulse 2s ease-out infinite;}
+@keyframes ctaPulse{
+  0%{box-shadow:0 0 0 0 rgba(255,117,23,0.55);}
+  70%{box-shadow:0 0 0 7px rgba(255,117,23,0);}
+  100%{box-shadow:0 0 0 0 rgba(255,117,23,0);}
+}
+.cta-hud-tag i{font-style:normal;color:rgba(180,180,180,0.42);letter-spacing:0.08em;
+  padding-left:0.55rem;border-left:1px solid var(--line);font-variant-numeric:tabular-nums;}
+.cta-eyebrow{color:var(--gray-light);font-weight:600;font-size:0.9rem;margin-bottom:1rem;}
+.cta-band h2{font-family:var(--font-display);font-weight:700;
+  font-size:clamp(1.7rem,3.2vw,2.4rem);line-height:1.15;margin-bottom:1.4rem;}
+.cta-body{color:var(--gray-light);line-height:1.7;max-width:52ch;}
+/* The most persuasive thing about this offer is that it costs half an hour and
+   nothing else, and that fact was buried in the middle of the heading. */
+.cta-fig{display:flex;align-items:baseline;gap:0.7rem;margin-top:2rem;
+  padding-top:1.6rem;border-top:1px solid var(--line);}
+.cta-big{font-family:var(--font-display);font-weight:700;font-size:clamp(3rem,5.5vw,4rem);
+  line-height:0.85;color:var(--orange);font-variant-numeric:tabular-nums;letter-spacing:-0.03em;}
+.cta-unit{font-family:var(--font-display);font-weight:600;font-size:1rem;}
+.cta-sub{font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray);
+  margin-left:auto;align-self:flex-end;}
+.cta-detail{padding-left:clamp(1.5rem,3vw,2.4rem);border-left:1px solid var(--line);}
+.cta-breakdown-label{font-weight:600;color:var(--white);margin-bottom:1rem;font-size:0.95rem;}
+.cta-list{list-style:none;margin:0;padding:0;}
+.cta-list li{display:flex;gap:0.9rem;align-items:baseline;color:var(--gray-light);
+  padding:0.62rem 0;border-bottom:1px solid var(--line);line-height:1.5;font-size:0.95rem;}
+.cta-list li:last-child{border-bottom:none;}
+.cta-n{color:var(--orange);font-size:0.72rem;font-variant-numeric:tabular-nums;flex:0 0 auto;}
+.cta-buttons{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.7rem;}
+/* Its OWN class. It used .listen-btn, which is built for the podcast page where
+   seven of them share a row and each takes a quarter. Here it was the only
+   flexible item beside a fixed one, so it took every remaining pixel and its
+   label floated in the middle of nothing. */
+.cta-wa{display:inline-flex;align-items:center;justify-content:center;
+  transform:skewX(-10deg);border:1px solid var(--edge-hi);color:var(--white);
+  font-weight:600;font-size:0.9rem;padding:0.75rem 1.5rem;
+  transition:border-color 0.2s ease,color 0.2s ease,var(--t-press);}
+.cta-wa > span{display:inline-flex;align-items:center;gap:0.5rem;transform:skewX(10deg);}
+.cta-wa svg{width:18px;height:18px;}
+.cta-wa:hover{border-color:var(--orange);color:var(--orange);}
+
+/* PODCAST */
+.podcast{padding:clamp(4rem,10vw,6rem) clamp(1.5rem,5vw,4rem) clamp(2rem,4vw,3rem);background:var(--bg);border-bottom:1px solid var(--line);}
+.podcast-top{display:flex;align-items:center;gap:0.7rem;margin-bottom:1.5rem;}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);animation:pulse-dot 1.8s ease-in-out infinite;}
+@keyframes pulse-dot{
+  0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,117,23,0.5);}
+  50%{opacity:0.6;box-shadow:0 0 0 5px rgba(255,117,23,0);}
+}
+.podcast-label{color:var(--gray-light);font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;}
+.podcast-title{
+  font-family:var(--font-display);font-weight:800;color:var(--white);
+  font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.08;margin-bottom:2rem;max-width:900px;
+}
+.podcast-title .accent{color:var(--orange);}
+.waveform{width:100%;max-width:520px;height:34px;color:rgba(180,180,180,0.35);display:block;margin-bottom:2.5rem;}
+/* The margin-bottom is the gap above the card rail, and it was missing: this
+   grid had no bottom margin and .episodes-viewport has no top margin, so the
+   left column's third line sat directly on the card tops. Every other step in
+   this section is deliberate (1.5rem, 2rem, 2.5rem) and then it dropped to
+   zero. 2.5rem is the waveform's margin-bottom, not a new number. Applies at
+   both widths: stacked under 820px the second paragraph collided the same way. */
+.podcast-desc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;border-top:1px solid var(--line);padding-top:2rem;margin-bottom:2.5rem;}
+.podcast-desc-grid p{color:var(--gray-light);line-height:1.7;font-size:1rem;}
+/* No box. The strip is an infinite marquee, so cards are MEANT to run past the
+   edge, but a 1px border slicing a portrait in half reads as broken rather than
+   as motion. A mask fades them into the page instead. */
+.episodes-viewport{
+  position:relative;overflow:hidden;cursor:grab;
+  /* Without this a horizontal swipe on a phone is claimed by the page's own
+     vertical scrolling and the strip never sees it. pan-y keeps the page
+     scrollable up and down while the strip takes sideways. */
+  touch-action:pan-y;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+}
+.episodes-viewport.is-dragging{cursor:grabbing;}
+/* NOT a CSS animation any more. A CSS animation cannot be nudged by a finger,
+   and the strip now takes drag and swipe. homepage-cards.js drives the same
+   transform for both the drift and the drag, so they cannot fight each other. */
+.ep-track{
+  display:flex;gap:1.2rem;width:max-content;will-change:transform;
+}
+/* Pausing is handled in script now, along with the drift itself. */
+@media(prefers-reduced-motion: reduce){
+  .ep-track{transform:none !important;}
+  .episodes-viewport{overflow-x:auto;cursor:auto;}
+}
+/* ===== Homepage guest card ==================================================
+   A portrait with the plate over it: compass, the episode hook, two rules with
+   PARAGLIDING ATLAS PODCAST between them, and the guest's name. Hovering fades
+   the whole plate as ONE object and brings the portrait up bright with the
+   episode detail in its place.
+
+   THE TWO TEXT SIZES COME FROM THE MARKUP, not from here. Each card carries its
+   own --hf and --nf, worked out by tools/generate_homepage_cards.py from the
+   real advance widths in the woff2. A name is whatever length it is: "Will Gadd"
+   is 5.47 em in Poppins 700 and "Ivelin Kalushkov" is 9.48, so one size cannot
+   serve both and the longer one overflowed its box. Seven of the fifteen are
+   scaled down to fit.
+   ========================================================================= */
+.ep-card{-webkit-user-select:none;user-select:none;
+  flex:0 0 232px;position:relative;display:block;text-decoration:none;
+  background:var(--card);border:1px solid var(--edge);
+  transition:border-color 0.25s ease, var(--t-press);
+}
+/* The lift is the shared one (Feedback, end of file). It used to be a
+   transform here, which GSAP's reveal overwrote with an inline transform, so
+   after the cards arrived they never actually rose. */
+.ep-card:hover{border-color:var(--live);}
+.ep-card::before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;z-index:9;
+  border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+.ep-stamp{display:flex;justify-content:space-between;padding:0.45rem 0.8rem;font-size:0.68rem;
+  letter-spacing:0.13em;text-transform:uppercase;color:var(--gray);border-bottom:1px solid var(--line);}
+.ep-stamp i{font-style:normal;}
+.ep-art{display:block;position:relative;aspect-ratio:1414/2000;overflow:hidden;background:#000;
+  container-type:inline-size;}
+.ep-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  transition:filter 0.4s ease, transform 0.6s ease;}
+.ep-plate{position:absolute;inset:0;z-index:3;transition:opacity 0.4s ease;
+  background:url("assets/podcast/plate.webp") center/cover no-repeat;}
+/* The rules are baked into the plate at 81.0% and 87.6% of its height, measured
+   from the file, so the hook sits above the first and the name below the second. */
+.ep-hook{position:absolute;left:9%;right:9%;top:63.5%;height:17%;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  font-family:var(--font-display);font-weight:700;font-size:var(--hf);line-height:1.08;
+  letter-spacing:-0.015em;text-transform:uppercase;color:var(--white);
+  text-shadow:0 2px 10px rgba(0,0,0,0.45);}
+.ep-name{position:absolute;left:6%;right:6%;top:88.4%;height:9.4%;
+  display:flex;align-items:center;justify-content:center;white-space:nowrap;
+  font-family:var(--font-display);font-weight:700;font-size:var(--nf);line-height:1;
+  letter-spacing:-0.025em;text-transform:uppercase;color:var(--white);
+  text-shadow:0 2px 10px rgba(0,0,0,0.45);}
+.ep-card:hover .ep-plate{opacity:0;}
+.ep-card:hover .ep-art img{filter:saturate(1.14) brightness(1.12);transform:scale(1.03);}
+.ep-open{position:absolute;z-index:4;left:0;right:0;bottom:0;padding:2.6rem 0.85rem 0.95rem;
+  background:linear-gradient(0deg,rgba(12,13,16,0.9) 30%,rgba(12,13,16,0.35) 66%,transparent);
+  opacity:0;transform:translateY(10px);
+  transition:opacity 0.35s ease 0.08s, transform 0.35s ease 0.08s;}
+.ep-card:hover .ep-open{opacity:1;transform:none;}
+.ep-open .s{display:block;font-size:0.52rem;letter-spacing:0.17em;color:var(--orange);}
+.ep-open .n{display:block;font-family:var(--font-display);font-weight:700;font-size:1rem;
+  color:var(--white);margin:0.25rem 0 0.3rem;line-height:1.15;}
+.ep-open .m{display:block;font-size:0.66rem;color:var(--gray-light);font-variant-numeric:tabular-nums;}
+.ep-open .g{display:inline-block;margin-top:0.5rem;color:var(--orange);font-size:0.72rem;font-weight:600;}
+.ep-foot{display:flex;justify-content:space-between;align-items:center;padding:0.55rem 0.8rem 0.7rem;
+  border-top:1px solid var(--line);color:var(--gray);font-size:0.68rem;font-variant-numeric:tabular-nums;}
+.ep-foot s{text-decoration:none;opacity:0.45;padding:0 0.35rem;}
+.ep-foot i{font-style:normal;color:var(--orange);display:inline-flex;}
+.ep-foot i svg{width:12px;height:12px;}
+@media(prefers-reduced-motion:reduce){
+  .ep-card,.ep-art img,.ep-plate,.ep-open{transition:none;}
+}
+/* Same 2.5rem as the gap above the rail. The listen bar sat directly against
+   the card bottoms with nothing between them, so the rail read as running into
+   the label rather than ending. Putting it on the bar rather than on
+   .episodes-viewport keeps every layout property of the marquee viewport in one
+   place. Everything below moves down by 2.5rem as a result, which is intended. */
+.listen-bar{display:flex;flex-direction:column;gap:1.2rem;margin-top:2.5rem;}
+.listen-label{color:var(--gray-light);font-size:1rem;}
+.listen-buttons{display:flex;flex-wrap:wrap;gap:0.9rem;}
+.listen-btn{
+  display:flex;align-items:center;justify-content:center;
+  flex:1;min-width:150px;
+  transform:skewX(-10deg);
+  border:1px solid var(--edge-hi);background:transparent;
+  padding:0.85rem 1rem;transition:background 0.2s ease, border-color 0.2s ease, var(--t-press);
+}
+.listen-btn span{
+  display:flex;align-items:center;gap:0.6rem;transform:skewX(10deg);
+  color:var(--white);font-weight:600;font-size:0.92rem;white-space:nowrap;
+}
+.listen-btn svg{width:20px;height:20px;flex-shrink:0;}
+/* Hollow to filled. The fill was already here; the LABEL was not changing, so
+   white text sat on orange at about 2.2:1. */
+.listen-btn:hover{background:var(--orange);border-color:var(--orange);color:var(--ink);}
+.listen-btn:hover svg{color:var(--ink);}
+.listen-btn:hover span{color:var(--bg);}
+
+/* EPISODE MAP */
+/* ===== EPISODE SEARCH ===== */
+/* The lighter band STAYS. It is the only change of surface on the whole page and
+   it lands exactly where somebody should stop scrolling and type something, so it
+   is an accent rather than a drift. The hairline announces it, and the top
+   padding comes down from 96px because 96 here plus 96 above was 192px of
+   nothing between the platform buttons and this heading. */
+.ep-search-section{
+  padding:clamp(2.5rem,5vw,3.5rem) clamp(1.5rem,5vw,4rem) clamp(4rem,10vw,6rem);
+  background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  text-align:center;
+}
+.ep-search-section .kicker{display:block;margin-bottom:0.8rem;}
+.ep-search-section h2{
+  font-family:var(--font-display);font-weight:800;color:var(--white);
+  font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:0.8rem;line-height:1.1;
+}
+.ep-search-sub{color:var(--gray-light);font-size:1rem;margin-bottom:2.5rem;}
+/* ===== Library: the shine, then the dots ===================================
+   The same shine as the coordinate stamp in the episode popup: it travels INSIDE
+   the letterforms, with a solid background-color underneath so every character
+   stays painted wherever the highlight is not. The fade uses transparent ORANGE
+   rather than `transparent`, which would interpolate through transparent black
+   and muddy the band.
+
+   THE DOTS ARE HELD BACK until the shine has finished travelling, so the two
+   read as one gesture rather than as two things happening at once. Script adds
+   .lit at 1750ms, just before the 1900ms shine ends.
+
+   This replaces the corner brackets and three floating sparkles that were here:
+   brackets around a word inside a heading were competing with the heading, and
+   the sparkles sat over the letters rather than pointing at the link.
+   ========================================================================= */
+.ep-search-library-link{
+  position:relative;display:inline-block;color:var(--white);text-decoration:none;
+  padding-bottom:0.18em;
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .ep-search-library-link{
+    background-color:var(--white);
+    background-image:linear-gradient(118deg,
+      rgba(255,117,23,0) 34%, var(--orange) 50%, rgba(255,117,23,0) 66%);
+    background-size:260% 100%;background-position:130% 0;background-repeat:no-repeat;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+  }
+  .ep-search-library-link.is-shining,
+  .ep-search-library-link:hover{animation:library-shine 1900ms ease-in-out 1;}
+}
+@keyframes library-shine{
+  from{background-position:130% 0;}
+  to{background-position:-130% 0;}
+}
+/* An L at the TOP RIGHT, fading in and out.
+
+   THE GLOW USES filter:drop-shadow, NOT box-shadow. A 10px square with only
+   border-top and border-right still HAS a 10px box, and box-shadow casts from
+   the box rather than from the painted pixels: you get a soft rectangle behind
+   an L, faint on the empty corner and strong where the strokes are. drop-shadow
+   follows the strokes and nothing else.
+
+   The two spare sparkle spans in the markup are switched off rather than removed,
+   because the markup is hand written in index.html and one of them carries the
+   mark. */
+.ep-search-library-link::after{
+  content:"";position:absolute;top:-0.16em;right:-0.24em;
+  width:11px;height:11px;pointer-events:none;
+  border-top:2px solid var(--orange);border-right:2px solid var(--orange);
+  filter:drop-shadow(0 0 3px rgba(255,117,23,0.55));
+  opacity:0;transition:opacity 0.7s ease;
+}
+.ep-search-library-link.is-lit::after{
+  animation:library-mark 3.6s ease-in-out infinite;
+}
+@keyframes library-mark{
+  0%,100%{opacity:0.25;}
+  50%{opacity:1;}
+}
+.ep-search-library-sparkle{display:none;}
+@media(prefers-reduced-motion: reduce){
+  .ep-search-library-link{-webkit-text-fill-color:var(--white);color:var(--white);animation:none;}
+  .ep-search-library-link:hover{animation:none;}
+  .ep-search-library-link::after{opacity:1;animation:none;}
+}
+.ep-search-bar{
+  position:relative;display:flex;gap:0.8rem;max-width:700px;margin:0 auto;
+  background:var(--bg);border:1px solid var(--edge);padding:0.4rem 0.4rem 0.4rem 1.3rem;
+  align-items:center;
+}
+.ep-search-bar::before, .ep-search-bar::after{content:"";position:absolute;width:14px;height:14px;border:1.5px solid var(--live);}
+.ep-search-bar::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+.ep-search-bar::after{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+.ep-search-input{
+  flex:1;background:none;border:none;outline:none;color:var(--white);
+  font-family:var(--font-body);font-size:1rem;padding:0.7rem 0;
+}
+.ep-search-input::placeholder{color:var(--gray);}
+.ep-search-btn{
+  background:var(--orange);color:var(--ink);border:none;padding:0.85rem 1.6rem;
+  font-weight:700;font-size:0.88rem;cursor:pointer;white-space:nowrap;
+  display:flex;align-items:center;gap:0.5rem;
+  transform:skewX(-10deg);transform-origin:left top;
+}
+.ep-search-btn span{display:flex;align-items:center;gap:0.5rem;transform:skewX(10deg);}
+.ep-search-btn svg{width:16px;height:16px;}
+.ep-search-results{
+  position:relative;max-width:700px;margin:0.6rem auto 0;text-align:left;
+  background:var(--bg);border:1px solid var(--edge);
+  max-height:320px;overflow-y:auto;display:none;
+}
+.ep-search-results.active{display:block;}
+.ep-search-result{
+  display:block;padding:0.9rem 1.3rem;color:var(--gray-light);font-size:0.88rem;
+  text-decoration:none;border-bottom:1px solid var(--line);
+  transition:background 0.15s ease, color 0.15s ease;
+}
+.ep-search-result:last-child{border-bottom:none;}
+.ep-search-result:hover{background:rgba(255,117,23,0.08);color:var(--white);}
+.ep-search-empty{padding:1.2rem;color:var(--gray);font-size:0.85rem;text-align:center;}
+@media(max-width:560px){
+  .ep-search-bar{flex-direction:column;align-items:stretch;padding:0.8rem;}
+  .ep-search-btn{justify-content:center;}
+}
+
+.ep-map-section{padding:clamp(4rem,10vw,6rem) clamp(1.5rem,5vw,4rem);background:var(--bg);border-bottom:1px solid var(--line);}
+.map-heading{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--white);margin:0.6rem 0 2.5rem;}
+.ep-map{
+  position:relative;width:100%;max-width:1400px;aspect-ratio:13/7;margin:0 auto;
+  overflow:hidden;
+  /* Dragging the globe used to select whatever text it passed over, and the
+     selection stayed until you clicked away on purpose. The popup is exempt
+     below, because a coordinate is worth copying. */
+  user-select:none;-webkit-user-select:none;
+}
+.map-popup{user-select:text;-webkit-user-select:text;}
+/* 21/9 was the only shape at every width, so on a 380px phone the map was 163px
+   tall. That is a very small globe, and it is 200px shorter than the episode
+   card, which therefore could not be shown at all. Taller on narrow screens
+   fixes both: the globe gets bigger and the card has somewhere to go. */
+@media(max-width:1050px){ .ep-map{aspect-ratio:4/3;} }
+@media(max-width:600px){ .ep-map{aspect-ratio:4/5;} }
+/* ===== The globe popup ======================================================
+   A readout strip, the still, then the episode. Clicking a pin turns it to the
+   middle of the globe first, so this always opens in the same place with room
+   around it: as a card rather than three lines, it would otherwise hang off the
+   rim for any pin near the edge.
+
+   Range and bearing are real, computed from the pin's own coordinates against
+   the Oslo coordinate in the site nav. The coordinate keeps the orange because
+   it is the point of a globe; the two figures beside it drop to the same grey as
+   the chapter count below, so the strip has one bright thing in it.
+   ========================================================================= */
+.map-popup{
+  position:absolute;display:none;width:21rem;max-width:calc(100vw - 2rem);
+  background:rgba(20,21,25,0.95);border:1px solid var(--live);
+  backdrop-filter:blur(3px);padding:0;
+  /* THE CARD CAN NEVER BE TALLER THAN THE MAP.
+     Positioning alone kept failing because the card's height is not fixed: a
+     three line title makes it 80px taller than a one line title, and the map's
+     own height changes with the viewport. Rather than keep chasing that with
+     arithmetic, this caps it against the map itself, which is the parent, and
+     lets the inside scroll on the rare occasion it needs to. Clipping is now
+     impossible rather than merely unlikely. */
+  max-height:calc(100% - 20px);overflow:auto;overscroll-behavior:contain;
+  /* The safety net must not announce itself. The card fits at every width from
+     320 to 1400, checked, so this never actually scrolls; hiding the bars stops
+     the browser drawing chrome for a scroll that will not happen. */
+  scrollbar-width:none;-ms-overflow-style:none;
+  z-index:5;pointer-events:none;
+  /* No transform: globe.js positions the top left corner directly, beside
+     the pin and clamped inside the map. It used to be pulled above the pin
+     with translate(-50%,-100%), which cannot work for a card taller than
+     the space above a centred pin. */
+}
+.map-popup::-webkit-scrollbar{display:none;}
+.map-popup.visible{display:block;pointer-events:auto;}
+.mp-tick{position:absolute;width:14px;height:14px;pointer-events:none;z-index:6;}
+/* Flush with the border, not one pixel outside it. At -1px they sat OUTSIDE the
+   box, and once the card gained overflow:auto the browser counted that as
+   scrollable area and drew a scrollbar on both edges for the sake of one pixel. */
+.mp-tick.tl{top:0;left:0;border-top:2px solid var(--orange);border-left:2px solid var(--orange);}
+.mp-tick.br{bottom:0;right:0;border-bottom:2px solid var(--orange);border-right:2px solid var(--orange);}
+.mp-strip{
+  display:flex;justify-content:space-between;gap:0.6rem;padding:0.5rem 0.9rem;
+  border-bottom:1px solid var(--live);font-size:0.6rem;letter-spacing:0.1em;
+  text-transform:uppercase;font-variant-numeric:tabular-nums;color:var(--orange);
+}
+.mp-strip .dim{color:var(--gray);}
+.mp-th{display:block;position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;}
+.mp-th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.mp-scan{
+  position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(0deg,transparent 46%,rgba(255,117,23,0.35) 50%,transparent 54%);
+  animation:mp-scan 6s linear infinite;
+}
+@keyframes mp-scan{from{transform:translateY(-100%);}to{transform:translateY(100%);}}
+.mp-bd{padding:0.85rem 1.1rem 1.1rem;}
+.mp-kick{font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray);margin:0 0 0.3rem;}
+/* Two lines, like every other card on the site. Ziad Bassil's title runs to
+   three here and made the card 80px taller than its neighbours. */
+.popup-title{color:var(--white);font-family:var(--font-display);font-weight:700;
+  font-size:1rem;line-height:1.3;margin:0 0 0.25rem;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.mp-guest{color:var(--orange);font-size:0.82rem;margin:0 0 0.8rem;}
+.mp-rd{display:flex;gap:1rem;flex-wrap:wrap;font-size:0.66rem;letter-spacing:0.08em;
+  color:var(--gray);text-transform:uppercase;margin-bottom:0.9rem;font-variant-numeric:tabular-nums;}
+.popup-link{color:var(--white);font-size:0.84rem;font-weight:600;
+  border-bottom:1px solid rgba(246,244,244,0.5);padding-bottom:0.15rem;
+  display:inline-flex;gap:0.4rem;align-items:center;}
+.popup-link i{font-style:normal;transition:transform 0.18s ease;display:inline-block;}
+.popup-link:hover{color:var(--orange);border-color:var(--orange);}
+.popup-link:hover i{transform:translateX(3px);}
+@media(prefers-reduced-motion:reduce){.mp-scan{animation:none;}}
+.map-caption{color:var(--gray);font-size:0.85rem;margin-top:1.5rem;text-align:center;}
+/* ===== The glass globe (globe.js) ===========================================
+   The globe is drawn on a canvas; the shading, rim, compass ring and pins are
+   an SVG laid over it. 13/7 rather than 21/9 on a wide screen, to leave room
+   for the compass ring and its labels around the sphere. */
+.gl-canvas,.gl-svg{position:absolute;inset:0;display:block;}
+.gl-shell{pointer-events:none;}
+.gl-bz-label{font:500 9.5px var(--font-body);letter-spacing:0.12em;fill:var(--gray);
+  text-anchor:middle;dominant-baseline:central;font-variant-numeric:tabular-nums;}
+.gl-bz-label.n{fill:var(--orange);font-weight:600;}
+.gl-bz-index{transition:opacity 0.3s ease;}
+/* The name under the pointer. */
+.gl-tip{position:absolute;display:none;z-index:4;pointer-events:none;max-width:17rem;padding:0.45rem 0.65rem;
+  background:rgba(20,21,25,0.95);border:1px solid var(--edge-hi);transform:translate(-50%,-100%);}
+.gl-tip.visible{display:block;}
+.gl-tip.below{transform:translate(-50%,0);}
+.gl-tip b{display:block;font-weight:600;font-size:0.8rem;line-height:1.3;color:var(--white);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.gl-tip i{display:block;font-style:normal;font-size:var(--fs-micro);color:var(--orange);margin-top:0.1rem;}
+/* "Hold Ctrl and scroll to zoom", shown when a plain scroll lands on the globe. */
+.gl-hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:4;pointer-events:none;
+  padding:0.45rem 0.7rem;font-size:0.8rem;color:var(--white);white-space:nowrap;
+  background:rgba(20,21,25,0.92);border:1px solid var(--edge-hi);opacity:0;transition:opacity 0.2s ease;}
+.gl-hint.visible{opacity:1;}
+.gl-zoom{position:absolute;right:10px;bottom:10px;z-index:4;display:flex;flex-direction:column;}
+.gl-zoom button{width:38px;height:38px;display:grid;place-items:center;cursor:pointer;
+  background:rgba(20,21,25,0.85);border:1px solid var(--edge-hi);color:var(--white);font-size:1.15rem;line-height:1;padding:0;}
+.gl-zoom button + button{border-top:0;}
+.gl-zoom button:hover{border-color:var(--orange);color:var(--orange);}
+.gl-zoom button:focus-visible{outline:2px solid var(--white);outline-offset:2px;}
+.gl-zoom svg{display:block;}
+@media (pointer:coarse){ .gl-zoom button{width:44px;height:44px;} }
+.newsletter{
+  position:relative;overflow:hidden;
+  padding:clamp(4rem,10vw,7rem) clamp(1.5rem,5vw,4rem);
+  background:var(--bg);border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:center;
+}
+.newsletter-ring{
+  position:absolute;top:-40px;left:-40px;width:100px;height:100px;
+  border:1.5px solid var(--orange);border-radius:50%;opacity:0.5;
+}
+.contour-bg{position:absolute;inset:0;width:100%;height:100%;color:var(--gray);opacity:0.15;z-index:0;}
+.newsletter-left, .newsletter-right{position:relative;z-index:1;}
+.newsletter-eyebrow{color:var(--orange);font-weight:600;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.2rem;}
+.newsletter-title{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05;color:var(--white);margin-bottom:1.5rem;}
+.newsletter-desc{color:var(--gray-light);max-width:480px;line-height:1.6;}
+.newsletter-right{display:flex;flex-direction:column;align-items:flex-start;}
+.newsletter-label{color:var(--gray-light);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.6rem;}
+.newsletter-right input{
+  width:100%;background:var(--card);border:1px solid var(--edge);
+  padding:1rem 1.2rem;font-family:var(--font-body);font-size:1rem;color:var(--white);
+  margin-bottom:1.3rem;
+}
+.newsletter-right input::placeholder{color:var(--gray);}
+.newsletter-right .btn-solid{margin-bottom:1.2rem;}
+.newsletter-right .fine-print{color:var(--gray);font-size:0.82rem;max-width:340px;}
+.fine-print{color:var(--gray);font-size:0.85rem;max-width:520px;}
+
+/* FOOTER */
+.page-wrap{}
+.footer-spacer{display:none;}
+/* ===== EPISODE POPUP MODAL (Knowledge Base episode tiles) ===== */
+/* ===== Knowledge Base episode popup =========================================
+   Written fresh rather than patched. The previous block used .ep-modal-* names
+   and a two column grid; the card is now a single column with its own kb-*
+   names, so nothing here can collide with a leftover rule.
+
+   Orange appears three times per card and no more: the corner bracket, the
+   button, and the play control on hover. Everything else is white, gray-light
+   and gray, which is what makes those three mean something.
+   ========================================================================= */
+.ep-modal-overlay{
+  position:fixed;inset:0;background:rgba(10,10,12,0.85);backdrop-filter:blur(4px);
+  display:none;align-items:center;justify-content:center;z-index:200;padding:1.5rem;
+  overflow-y:auto;
+}
+.ep-modal-overlay.active{display:flex;}
+body.kb-modal-open{overflow:hidden;}
+
+.kb-card{
+  position:relative;background:var(--card);border:1px solid var(--edge);
+  width:100%;max-width:38rem;max-height:90vh;overflow-y:auto;outline:none;
+}
+/* One bracket, top left. The bottom right one was removed so the mark reads as
+   a corner tick rather than a frame, and so it cannot collide with the share
+   button sitting in that corner. */
+.kb-card::before{
+  content:"";position:absolute;top:-1px;left:-1px;width:16px;height:16px;z-index:5;
+  border-top:2px solid var(--orange);border-left:2px solid var(--orange);pointer-events:none;
+}
+.kb-stamp{
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  padding:0.45rem 1.35rem;min-height:2.1rem;font-size:0.7rem;letter-spacing:0.11em;
+  color:var(--gray);text-transform:uppercase;font-variant-numeric:tabular-nums;
+}
+.kb-coord{display:inline-block;text-decoration:none;color:var(--gray);}
+/* The shine travels INSIDE the letterforms. A solid background-color sits under
+   the gradient so every character is painted grey wherever the highlight is: an
+   earlier version had the gradient stop short and, because the text is
+   transparent to let it through, half the coordinate became invisible rather
+   than grey. The fade uses transparent ORANGE, not `transparent`, which would
+   interpolate through transparent black and muddy the band. */
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .kb-coord{
+    background-color:var(--gray);
+    background-image:linear-gradient(118deg,
+      rgba(255,117,23,0) 34%,var(--orange) 50%,rgba(255,117,23,0) 66%);
+    background-size:260% 100%;background-position:130% 0;background-repeat:no-repeat;
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .kb-coord:hover{animation:kb-shine 1900ms ease-in-out 1;}
+  .kb-card.opening .kb-coord{animation:kb-shine 1900ms ease-in-out 2;}
+}
+@keyframes kb-shine{
+  from{background-position:130% 0;}
+  to{background-position:-30% 0;}
+}
+
+.kb-med{
+  display:block;width:100%;padding:0;border:0;border-top:1px solid var(--line);
+  position:relative;background:#000;aspect-ratio:16/9;overflow:hidden;cursor:pointer;
+  text-align:inherit;
+}
+.kb-med img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;}
+.kb-med-audio{cursor:default;display:flex;flex-direction:column;aspect-ratio:auto;}
+.kb-med-audio img{position:static;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;}
+.kb-audio-note{margin:0;padding:0.75rem 1rem;color:var(--gray-light);font-size:0.84rem;
+  border-top:1px solid var(--line);background:var(--card);}
+.kb-frame{width:100%;aspect-ratio:16/9;border:0;display:block;
+  border-top:1px solid var(--line);}
+/* The play control keeps the geometry drawn in episodes/episode.css, 82 by 56
+   with a 14px radius. It turns YouTube red on hover because that is what it
+   loads: orange would promise an Atlas player and deliver someone else's. */
+.kb-play{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:82px;height:56px;border-radius:14px;z-index:3;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(20,21,25,0.62);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,0.22);
+  transition:background 0.2s ease,transform 0.2s ease,box-shadow 0.2s ease;
+}
+.kb-play svg{width:26px;height:26px;margin-left:3px;}
+button.kb-med:hover .kb-play{
+  background:#f00;transform:translate(-50%,-50%) scale(1.08);
+  box-shadow:0 6px 26px rgba(255,0,0,0.4);
+}
+
+.kb-bd{padding:1.25rem 1.35rem 1.35rem;display:flex;flex-direction:column;}
+.kb-q{border:0;padding:0;margin:0 0 0.45rem;font-family:var(--font-display);font-weight:600;
+  font-size:clamp(1rem,1.95vw,1.24rem);line-height:1.34;color:var(--white);}
+.kb-q::before{content:"\201C";}
+.kb-q::after{content:"\201D";}
+.kb-attrib{color:var(--gray-light);font-size:0.79rem;margin:0 0 0.95rem;}
+.kb-sum{color:var(--gray-light);font-size:0.86rem;line-height:1.65;margin:0 0 0.8rem;}
+.kb-bd hr{border:0;border-top:1px solid var(--line);margin:0 0 0.95rem;width:100%;}
+.kb-bd h3{font-family:var(--font-display);font-weight:600;font-size:0.9rem;line-height:1.3;margin:0;}
+.kb-lk{color:var(--gray-light);text-decoration:none;transition:color 0.18s ease;}
+.kb-lk:hover{color:var(--white);}
+.kb-lbl{font-family:var(--font-display);font-weight:600;font-size:0.7rem;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--gray);margin:0 0 0.4rem;}
+.kb-lbl.kb-sp{margin-top:0.85rem;}
+.kb-spec{width:100%;border-collapse:collapse;}
+.kb-spec td{padding:0.3rem 0;border-bottom:1px solid var(--line);
+  font-size:0.755rem;vertical-align:top;}
+.kb-k{color:var(--gray);text-transform:uppercase;letter-spacing:0.09em;font-size:0.68rem;
+  width:5.9rem;font-family:var(--font-display);font-weight:600;padding-top:0.42rem;}
+.kb-v{color:var(--gray-light);font-variant-numeric:tabular-nums;}
+.kb-ch{list-style:none;margin:0;padding:0;}
+.kb-ch li{font-size:0.775rem;line-height:1.35;}
+.kb-chl{display:flex;gap:0.5rem;text-decoration:none;padding:0.14rem 0.3rem;
+  margin-left:-0.3rem;transition:background 0.18s ease;}
+a.kb-chl:hover{background:rgba(255,117,23,0.07);}
+a.kb-chl:hover .kb-ct{color:var(--white);}
+a.kb-chl:hover .kb-at{color:var(--orange);}
+.kb-chl-plain{opacity:0.72;}
+.kb-at{color:var(--gray);font-variant-numeric:tabular-nums;flex:0 0 auto;}
+.kb-ct{color:var(--gray-light);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  transition:color 0.18s ease;}
+.kb-tags{display:flex;gap:0.28rem;flex-wrap:wrap;}
+.kb-tg{font-size:0.68rem;letter-spacing:0.07em;text-transform:uppercase;color:var(--gray-light);
+  border:1px solid var(--line);padding:0.15rem 0.38rem;text-decoration:none;
+  transition:border-color 0.18s ease,color 0.18s ease;}
+a.kb-tg:hover{border-color:var(--orange);color:var(--orange);}
+.kb-tg-plain{opacity:0.72;}
+.kb-cols{display:grid;grid-template-columns:1.22fr 0.88fr;gap:1.3rem;margin-bottom:1.05rem;}
+.kb-row{display:flex;gap:0.6rem;align-items:stretch;justify-content:space-between;
+  margin-top:auto;flex-wrap:wrap;}
+.kb-actions{display:flex;gap:0.5rem;}
+.kb-cta{color:var(--orange);font-size:0.81rem;font-weight:600;text-decoration:none;
+  border:1px solid var(--live);padding:0.48rem 1rem;transition:background 0.2s ease,var(--t-press);
+  display:inline-flex;gap:0.4rem;align-items:center;transform:skewX(-10deg);}
+.kb-cta > *{transform:skewX(10deg);}
+.kb-cta:hover{background:rgba(255,117,23,0.12);}
+.kb-cta span{transition:transform 0.2s ease;}
+.kb-cta:hover span{transform:translateX(3px);}
+.kb-sh,.kb-ghost{background:transparent;border:1px solid var(--line);
+  color:var(--gray-light);cursor:pointer;font-family:var(--font-body);font-size:0.81rem;
+  text-decoration:none;transition:border-color 0.18s ease,color 0.18s ease,var(--t-press);
+  display:inline-flex;align-items:center;gap:0.45rem;padding:0.48rem 0.9rem;
+  transform:skewX(-10deg);}
+.kb-sh > *,.kb-ghost > *{transform:skewX(10deg);}
+.kb-sh:hover,.kb-ghost:hover{border-color:var(--edge-hi);color:var(--white);}
+.kb-sh svg{width:15px;height:15px;}
+.kb-sh.copied{color:var(--orange);border-color:var(--live);}
+
+@media(max-width:640px){
+  .kb-cols{grid-template-columns:1fr;}
+  .ep-modal-overlay{padding:0.9rem;}
+}
+@media(prefers-reduced-motion:reduce){
+  .kb-coord:hover,.kb-card.opening .kb-coord{animation:none;}
+  button.kb-med:hover .kb-play{transform:translate(-50%,-50%);}
+}
+
+/* The `footer` selector went missing in 076ca7c, a commit titled "fix footer
+   bugs". Without it these two declarations formed a rule with no selector, and
+   CSS error recovery consumes a malformed prelude up to the NEXT `{`. That
+   swallowed `.footer-content` into the broken selector, so the .footer-content
+   rule was DISCARDED ENTIRELY and the footer has had no horizontal padding at
+   all since then. Verified with a CSS parser, not by eye. */
+footer{
+  width:100%;
+  background-color:var(--bg);
+}
+/* The footer sits OUTSIDE .page-wrap and its five column grid stretches to fill
+   whatever width it is given. Every section above it has the same horizontal
+   padding, but their contents are capped (760px, 640px, 560px), so nothing ever
+   reaches the edge. The footer had no cap, so on a wide monitor the outer
+   columns sat hard against the padding and the whole thing looked pushed to the
+   walls. 1400px is the width already used by .cd-wrap on episode pages and by
+   .ep-map, so it is the site's existing content width rather than a new number. */
+.footer-content{max-width:1400px;margin:0 auto;
+  padding:clamp(3rem,6vw,4.5rem) clamp(1.5rem,5vw,4rem) 1.8rem;}
+.footer-graphic{width:100%;line-height:0;}
+.footer-graphic img{width:100%;height:auto;display:block;}
+
+/* A grid, not space-between. Flex with space-between sized each column to its
+   longest link, which is why the gaps used to look arbitrary. Three equal link
+   columns sit to the right of a wider brand column. */
+/* Five columns since 2026-09-11: brand, Listen, Fly With Us, About, Legal.
+   The user picked the "Mega" layout from footer-layouts.html. */
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;
+  gap:clamp(1.8rem,4vw,3.5rem);margin-bottom:2.6rem;align-items:start;}
+.footer-brand{max-width:22rem;}
+/* Logo width is measured, not guessed. "Organisasjonsnummer: 937116934" renders
+   at 205.8px in DM Sans 400 at the .footer-addr size of 0.82rem, computed from
+   the actual woff2 advance widths rather than eyeballed. 12.86rem is that value,
+   in rem so the logo and the address line scale together if the root size
+   changes. The tagline shares the width and centres inside it, so it reads as
+   centred under the logo rather than under the whole column. */
+.footer-brand .logo-img{width:12.86rem;height:auto;margin-bottom:0.28rem;}
+/* The tagline sits directly under the logo and spans exactly its width, which
+   is how the brand lockup is drawn. Both numbers are measured, not eyeballed:
+   "Touch The Sky With Glory" is 12.7880 em wide in Poppins 600, read from the
+   woff2 advance widths with fontTools, so 12.86 / 12.7880 = 1.0056rem makes it
+   exactly as wide as the 12.86rem logo. THE SIZE BELONGS TO THE WEIGHT: a
+   heavier face is wider at the same size, so changing font-weight without
+   re-measuring breaks the alignment. The five measured pairs are
+   400/1.0348, 500/1.0178, 600/1.0056, 700/0.9926, 800/0.9813. text-align-last:justify is a safety net, not the
+   mechanism: it absorbs the fraction of a pixel that kerning moves, so the two
+   edges line up on every browser rather than nearly lining up. White to match
+   the logo. */
+/* Scoped to .footer-brand deliberately. A bare .footer-tagline is specificity
+   0,1,0 and loses to `.footer-brand p` below at 0,1,1, which sets
+   color:var(--gray-light). That is why an earlier attempt to make this white
+   did nothing at all. 0,2,0 wins. */
+.footer-brand .footer-tagline{
+  width:12.86rem;
+  font-family:var(--font-display);font-weight:600;font-size:1.0056rem;
+  color:var(--gray-light);line-height:1.25;
+  text-align:justify;text-align-last:justify;
+  margin:0 0 1.35rem;
+}
+/* The tagline links to mission.html, which is the page explaining where the
+   phrase comes from. It must inherit the measured font and colour rather than
+   pick up the generic footer link styling, because `.footer-col a` sets
+   font-size:0.9rem and `.footer-brand` carries that class too. An unscoped rule
+   would silently resize the text and break the end-to-end alignment with the
+   logo. `transform:none` cancels the translateX(3px) slide on the generic
+   footer-link hover, which would have shunted the tagline out of line with the
+   logo every time the mouse passed over it. */
+.footer-brand .footer-tagline a{
+  display:block;width:100%;
+  font:inherit;color:inherit;text-decoration:none;
+  text-align:justify;text-align-last:justify;
+  transition:color 0.18s ease;
+}
+.footer-brand .footer-tagline a:hover,
+.footer-brand .footer-tagline a:focus-visible{color:var(--white);transform:none;}
+.footer-brand p{color:var(--gray-light);font-size:0.9rem;line-height:1.75;margin:0 0 1rem;}
+.footer-addr{color:var(--gray);font-size:0.82rem;line-height:1.7;}
+
+.footer-col h2,.footer-col h3,.footer-col h4{
+  font-family:var(--font-display);color:var(--white);font-size:0.78rem;font-weight:600;
+  letter-spacing:0.12em;text-transform:uppercase;margin:0 0 1.1rem;padding-bottom:0.6rem;
+  border-bottom:1px solid var(--live);}
+.footer-col a{display:block;color:var(--gray-light);font-size:0.9rem;line-height:1.65;
+  padding:0.3rem 0;text-decoration:none;transition:color 0.18s ease,transform 0.18s ease;}
+.footer-col a:hover,.footer-col a:focus-visible{color:var(--orange);transform:translateX(3px);}
+.footer-col p{display:block;color:var(--gray-light);font-size:0.9rem;line-height:1.75;}
+
+.footer-links{display:flex;gap:1.8rem;font-size:0.92rem;color:var(--gray-light);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;
+  gap:0.6rem 1.6rem;font-size:0.82rem;color:var(--gray);padding-top:1.5rem;
+  border-top:1px solid var(--line);}
+.footer-bottom a{color:var(--gray);text-decoration:none;transition:color 0.18s ease;}
+.footer-bottom a:hover,.footer-bottom a:focus-visible{color:var(--orange);}
+.footer-bottom span:last-child{margin-left:auto;color:var(--gray);}
+/* The platform strip shares the bottom bar with the copyright: platforms on the
+   left, "Paragliding Atlas 2026" pushed right by the margin-left:auto above.
+   Those seven links are the only place on the site where the connection between
+   the site, the channel and the podcast is a real link rather than invisible
+   structured data, which is what an answer engine needs to treat them as one
+   organisation. */
+.footer-listen-label{color:var(--gray);text-transform:uppercase;letter-spacing:0.12em;
+  font-family:var(--font-display);font-weight:600;font-size:0.72rem;margin-right:0.2rem;}
+
+@media(max-width:980px){
+  .footer-top{grid-template-columns:1fr 1fr;gap:2.2rem;}
+  /* Five columns do not fit here. The brand spans the row, the other four pair
+     up, which is what the four-column version already did. */
+  .footer-brand{grid-column:1 / -1;max-width:none;}
+}
+/* WHERE THE BAR COLLAPSES: 940, not 820.
+   The links used to hide at 820 and the bar still fitted, but only because the
+   logo was being crushed to absorb the shortfall. With the logo holding its
+   width the full row measures about 960px, and it genuinely overflows the
+   viewport all the way up to 901. 820 was never the real threshold, it was just
+   where the damage stopped being visible. Measured, not guessed: overflow is
+   84px at 821, 27px at 881, 8px at 901 and gone at 911. 940 leaves headroom for
+   a fallback font rendering the links wider than Poppins does.
+
+   Kept above the 560 block below, so the phone padding override there wins. */
+/* THE COORDINATE IS WHAT GOES WHEN THE ROW IS TIGHT.
+   It is the only decorative item in the bar; everything else is navigation or
+   the call to action. Hiding it is always cheaper than hiding a link or letting
+   the brand distort.
+
+   1100 because that is where the links stop fitting on one line. Between 941 and
+   1099 the bar was already breaking into two rows before any of this work, 113px
+   tall instead of 92; the squashed logo was not enough to save it. With the
+   coordinate out of the way the row is one line and 92px tall from 941 all the
+   way up, and the coordinate returns above 1100 where there is room for both. */
+@media(max-width:1100px){
+  .nav-coords{display:none;}
+}
+@media(max-width:940px){
+  .nav-links{display:none;}
+  .nav-toggle{display:inline-flex;}
+  /* The hidden link row was the only thing pushing Enquire and the menu button
+     to the right, so without it they huddled beside the logo with the rest of
+     the bar empty. */
+  .nav-cta{margin-left:auto;}
+  /* Reachable again: About Us, Knowledge Base, Podcast and Sitemap had no route
+     in at all on a phone, because the links were hidden and nothing replaced
+     them. The panel drops under the bar rather than covering the page; it is
+     four links, not a destination. */
+  .page-wrap > nav.is-open .nav-links{
+    display:flex;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;
+    margin:0;padding:0.4rem 0;
+    background:var(--card);
+    border-bottom:1px solid var(--edge);
+    box-shadow:0 14px 30px rgba(0,0,0,0.45);
+  }
+  .page-wrap > nav.is-open .nav-links a{
+    display:flex;align-items:center;min-height:48px;
+    padding:0 clamp(2rem,5vw,4rem);
+    color:var(--gray-light);font-size:0.98rem;
+  }
+  .page-wrap > nav.is-open .nav-links a:hover{color:var(--white);background:var(--wash);}
+  /* The underline sweep is a pointer affordance for a horizontal bar. Stacked,
+     it draws a line under every row and the list reads as a table. */
+  .page-wrap > nav.is-open .nav-links a::after{display:none;}
+  .page-wrap > nav.is-open .nav-sep{display:none;}
+}
+@media(max-width:560px){
+  .footer-top{grid-template-columns:1fr;gap:1.9rem;}
+  .footer-bottom{justify-content:flex-start;}
+  .footer-bottom span:last-child{margin-left:0;width:100%;padding-top:.4rem;}
+  /* PHONE HEADER BUDGET.
+     Logo, Enquire and the menu button have to share the row. The coordinate is
+     the one element here that is decoration rather than navigation, so it is
+     what goes. Everything else is tightened rather than dropped, and the logo
+     is scaled down as a whole so it stays in proportion. */
+  .page-wrap > nav{
+    padding-left:clamp(1rem,4vw,1.25rem);padding-right:clamp(1rem,4vw,1.25rem);
+    gap:clamp(0.5rem,2.4vw,0.7rem);
+  }
+  /* Scaled rather than stepped at another breakpoint. Between 320 and 560 the
+     row has three fixed things in it and only the logo can afford to move, so
+     it shrinks with the viewport and settles at 26px once there is room. */
+  .logo-img{height:clamp(22px,6.4vw,26px);}
+  /* nowrap and flex-shrink:0 together. Without them the button was the next
+     thing to give after the logo stopped giving: at 320 it squeezed to 96px and
+     broke "Enquire Now" onto two lines, which made the bar taller and read as an
+     accident. It holds its shape now and the logo absorbs the difference. */
+  .nav-cta{
+    margin-left:auto;padding:0.6rem clamp(0.7rem,3.4vw,1.05rem);
+    font-size:clamp(0.74rem,3vw,0.8rem);
+    white-space:nowrap;flex-shrink:0;
+  }
+  .page-wrap > nav.is-open .nav-links a{padding:0 1.25rem;}
+}
+
+@media(max-width:820px){
+  .destination, .destination.reverse{grid-template-columns:1fr;}
+  .destination.reverse .dest-media, .destination.reverse .dest-copy{order:initial;}
+  .dest-media img{min-height:320px;}
+  /* Stacked, so a LEFT border between columns becomes a stray vertical line
+     down one edge. The separator turns horizontal and the gap goes, or the
+     rules float away from what they separate. */
+  .why-grid{grid-template-columns:1fr;gap:0;}
+  .why-card{border-left:none;border-bottom:1px solid var(--line);padding:2.2rem 0;}
+  .why-card:last-child{border-right:none;border-bottom:none;}
+  .why-glow{top:-120px;height:520px;}
+  /* Stacked, the vertical rule between the two halves becomes a line down one
+     edge, so it turns horizontal. The coordinate on the status tag goes: at this
+     width it collides with the heading. */
+  .cta-card{grid-template-columns:1fr;}
+  .cta-detail{padding-left:0;border-left:none;border-top:1px solid var(--line);padding-top:1.6rem;}
+  .cta-hud-tag i{display:none;}
+  .podcast-desc-grid{grid-template-columns:1fr;gap:1.2rem;}
+  .listen-buttons{flex-direction:column;}
+  .newsletter{grid-template-columns:1fr;gap:2rem;}
+}
+
+@media(prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  /* !important because .nav-toggle-bars i carries its own transition and the
+     two rules have equal specificity, so without it the later one wins. The
+     open state still shows the cross, it just arrives instantly. */
+  .nav-toggle-bars i{transition:none!important;}
+}
+
+/* Scroll reveal: subtle fade + rise, one-time per element */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease, transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.why-grid .why-card.reveal:nth-child(2){transition-delay:0.08s;}
+.why-grid .why-card.reveal:nth-child(3){transition-delay:0.16s;}
+.episodes .ep-card.reveal:nth-child(2){transition-delay:0.05s;}
+.episodes .ep-card.reveal:nth-child(3){transition-delay:0.1s;}
+.episodes .ep-card.reveal:nth-child(4){transition-delay:0.15s;}
+.episodes .ep-card.reveal:nth-child(5){transition-delay:0.2s;}
+@media(prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none;}
+}
+
+/* ===== Page transitions =====================================================
+   Moving between pages cross-fades instead of cutting. This is the browser's
+   own cross-document view transition: both pages have to opt in, and every
+   page that loads this stylesheet does. A browser without it loads pages
+   exactly as before, and with reduced motion the rule is never switched on,
+   so nothing animates at all.
+
+   THE HEADER STAYS STILL. Named, it is lifted out of the fade and shown as the
+   new page's header from the first frame, which on a site where it is the same
+   bar everywhere reads as not moving at all. When only one side has a header
+   (the knowledge base door is up, or script.js saw it was scrolled away or
+   covered), it fades with the page like everything else.
+
+   NOT UNDER THE KNOWLEDGE BASE DOOR. The door is a fixed layer over the whole
+   page, header included, and a named header would be painted above it for the
+   length of the fade and then drop behind it. So while `iris-on` is set the
+   header is not named and the page fades straight into the door.
+
+   A THUMBNAIL BECOMES THE PLAYER. Each episode page names its player
+   ep-<slug>; script.js gives the thumbnail you clicked the same name. Both are
+   16:9, so the picture grows into place without stretching. Nothing on the
+   destination hero slideshows is named: their slides change underneath the
+   fade on their own clock and are left to it.
+   ========================================================================= */
+@media (prefers-reduced-motion: no-preference){
+  @view-transition{navigation:auto;}
+}
+::view-transition-group(*){animation-duration:.32s;}
+::view-transition-group(*.ep-thumb){animation-duration:.46s;animation-timing-function:cubic-bezier(.2,.8,.2,1);}
+
+.page-wrap > nav{view-transition-name:site-nav;}
+.iris-on .page-wrap > nav{view-transition-name:none;}
+::view-transition-group(site-nav){animation:none;}
+::view-transition-old(site-nav){animation:none;opacity:0;}
+::view-transition-new(site-nav){animation:none;}
+::view-transition-old(site-nav):only-child{opacity:1;animation:pga-vt-out .32s ease both;}
+::view-transition-new(site-nav):only-child{animation:pga-vt-in .32s ease both;}
+@keyframes pga-vt-out{to{opacity:0;}}
+@keyframes pga-vt-in{from{opacity:0;}}
+
+/* ===== Feedback =============================================================
+   Everything pressable answers the same way, defined once here. The numbers
+   are tokens in :root (--lift, --press, --press-card, --t-press, --lit).
+
+   BUTTONS press in. The shape is set by `scale`, not `transform`, because
+   every button on the site already spends its transform on the skew: `scale`
+   is a separate property that composes with it instead of replacing it.
+
+   CARDS rise by --lift under the pointer or the keyboard, and set --lit to 1,
+   which is what their orange corner brackets read. A card that is itself a
+   link also presses in. A card that sits in a hairline grid, or runs the full
+   width of the page, lights its brackets without rising: lifting it would open
+   a gap in the rules it shares with its neighbours.
+
+   TEXT LINKS draw their underline in from the left.
+
+   `:where()` keeps every rule here at zero specificity, so a component's own
+   hover colours and its own focus styling still win. Hover lives inside
+   (hover:hover) so a phone never keeps a card raised after a tap; a finger
+   gets :active instead, which iOS only applies because script.js registers a
+   touchstart listener.
+   ========================================================================= */
+
+/* ---- focus: one clear ring, orange, off the edge ---- */
+:where(a, button, summary, input, select, textarea, [tabindex]):focus-visible{
+  outline:2px solid var(--orange);outline-offset:3px;
+}
+/* The search input carries outline:none so the ring would sit inside the bar
+   and collide with the button. The bar takes the focus instead. */
+.ep-search-bar:focus-within{border-color:var(--live);}
+
+/* ---- buttons ---- */
+:where(.btn-solid, .btn-lines, .nav-cta, .nav-toggle, .listen-btn, .cta-wa,
+       .ep-search-btn, .kb-cta, .kb-sh, .kb-ghost, .cd-lbtn, .glassB-submit,
+       .wwu-btn, .lib-all, .pill, .tg-chip, .cd-tags a.cd-tag, .clb-topic,
+       .clb-face, .chips a, .kfaq-cta, .mc-tab, .khero-tab, .cfl-arrow,
+       .cfl-lb-nav, .cfl-lb-x, .kmap-btn, .etq-toggle, .kkit-reset){
+  -webkit-tap-highlight-color:transparent;
+  transition:var(--t-press);
+}
+:where(.btn-solid, .btn-lines, .nav-cta, .nav-toggle, .listen-btn, .cta-wa,
+       .ep-search-btn, .kb-cta, .kb-sh, .kb-ghost, .cd-lbtn, .glassB-submit,
+       .wwu-btn, .lib-all, .pill, .tg-chip, .cd-tags a.cd-tag, .clb-topic,
+       .clb-face, .chips a, .kfaq-cta, .mc-tab, .khero-tab, .cfl-arrow,
+       .cfl-lb-nav, .cfl-lb-x, .kmap-btn, .etq-toggle, .kkit-reset):active{
+  scale:var(--press);
+}
+/* A finger on the menu panel gets the same wash a pointer does. */
+.page-wrap > nav.is-open .nav-links a:active{color:var(--white);background:var(--wash);}
+
+/* ---- cards ---- */
+:where(.ep-card, .ep-tile, .series-card, .nx a, .cardx, .tg-v2 .tg-ep, .cd-box,
+       .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep){
+  -webkit-tap-highlight-color:transparent;
+}
+@media (hover:hover){
+  :where(.ep-card, .ep-tile, .series-card, .nx a, .cardx, .tg-v2 .tg-ep, .cd-box):hover{
+    translate:0 var(--lift);--lit:1;
+  }
+  :where(.destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep):hover{--lit:1;}
+}
+:where(.ep-card, .ep-tile, .series-card, .nx a, .cardx, .tg-v2 .tg-ep, .cd-box):is(:focus-visible, :has(:focus-visible)){
+  translate:0 var(--lift);--lit:1;
+}
+:where(.destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep):is(:focus-visible, :has(:focus-visible)){
+  --lit:1;
+}
+/* Pressed: a card that is a link sinks back most of the way and in. The :has()
+   one is a rule of its own, so a browser without :has() drops only that line. */
+:where(.ep-card, .ep-tile, .series-card, .nx a):active{
+  translate:0 calc(var(--lift) / 3);scale:var(--press-card);
+}
+:where(.tg-v2 .tg-ep):has(.tg-ep-link:active){
+  translate:0 calc(var(--lift) / 3);scale:var(--press-card);
+}
+/* The homepage strip is dragged as well as clicked; a card must not shrink
+   under a finger that is moving the whole strip sideways. */
+.episodes-viewport.is-dragging .ep-card{scale:none;}
+:where(.tg-v2 .tg-ep, .cd-box, .kdates-card, .tg-tile){
+  transition:border-color .2s ease, background-color .18s ease, color .18s ease, var(--t-press);
+}
+.tg-list:not(.tg-v2) .tg-ep, .tg-tile, .kdates-card{position:relative;}
+
+/* ---- brackets ----
+   Cards that already carry a top-left bracket at rest keep it and gain the
+   bottom-right one when lit; both glow. Cards with none show both when lit.
+   The full-width destination rows draw theirs inset, the way the header and
+   the booking card already do, because a bracket on the edge of the screen
+   is not a corner of anything. */
+:where(.ep-card, .ep-tile, .nx a, .cardx, .tg-v2 .tg-ep)::after,
+:where(.series-card, .cd-box, .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep)::before,
+:where(.series-card, .cd-box, .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep)::after{
+  content:"";position:absolute;z-index:9;width:14px;height:14px;pointer-events:none;
+  opacity:var(--lit);
+}
+:where(.series-card, .cd-box, .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep)::before{
+  top:-1px;left:-1px;border-top:2px solid var(--orange);border-left:2px solid var(--orange);
+}
+:where(.ep-card, .ep-tile, .nx a, .cardx, .tg-v2 .tg-ep, .series-card, .cd-box,
+       .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep)::after{
+  right:-1px;bottom:-1px;border-right:2px solid var(--orange);border-bottom:2px solid var(--orange);
+}
+:where(.ep-card, .ep-tile, .nx a, .cardx, .tg-v2 .tg-ep, .series-card, .cd-box,
+       .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep)::before,
+:where(.ep-card, .ep-tile, .nx a, .cardx, .tg-v2 .tg-ep, .series-card, .cd-box,
+       .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep)::after{
+  filter:drop-shadow(0 0 calc(var(--lit) * 5px) rgba(255,117,23,0.85));
+  transition:opacity .25s ease, filter .25s ease;
+}
+.destination::before{top:14px;left:14px;}
+.destination::after{right:14px;bottom:14px;}
+
+/* ---- text links ----
+   A background rather than a border or a pseudo element, so the line follows a
+   link that wraps onto a second line. Links in running copy only: the header,
+   the footer and the tables of contents are link lists with their own hover. */
+:where(p, li, figcaption, dd) a:not([class]):not(:is(nav, footer) *),
+.kb-src span, .src span{
+  background:linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition:background-size .32s var(--ease-out), color .2s ease;
+}
+:where(p, li, figcaption, dd) a:not([class]):not(:is(nav, footer) *):is(:hover, :focus-visible, :active),
+.kb-src:is(:hover, :focus-visible, :active) span, .src:is(:hover, :focus-visible, :active) span{
+  background-size:100% 1px;
+}
+/* Links that already stand on a line of their own keep it; the orange one
+   draws over it. */
+:where(.hero-link, .dest-copy a, .popup-link){position:relative;-webkit-tap-highlight-color:transparent;}
+:where(.hero-link, .dest-copy a, .popup-link)::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;pointer-events:none;
+  background:var(--orange);transform:scaleX(0);transform-origin:0 50%;
+  transition:transform .36s var(--ease-out);
+}
+:where(.hero-link, .dest-copy a, .popup-link):is(:hover, :focus-visible, :active)::after{transform:scaleX(1);}
+
+@media (prefers-reduced-motion: reduce){
+  /* Nothing moves. Feedback stays, as colour and light instead of motion. */
+  :where(.ep-card, .ep-tile, .series-card, .nx a, .cardx, .tg-v2 .tg-ep, .cd-box):is(:hover, :focus-visible, :has(:focus-visible), :active){translate:none;scale:none;}
+  :where(.tg-v2 .tg-ep):has(.tg-ep-link:active){translate:none;scale:none;}
+  :where(.btn-solid, .btn-lines, .nav-cta, .nav-toggle, .listen-btn, .cta-wa,
+         .ep-search-btn, .kb-cta, .kb-sh, .kb-ghost, .cd-lbtn, .glassB-submit,
+         .wwu-btn, .lib-all, .pill, .tg-chip, .cd-tags a.cd-tag, .clb-topic,
+         .clb-face, .chips a, .kfaq-cta, .mc-tab, .khero-tab, .cfl-arrow,
+         .cfl-lb-nav, .cfl-lb-x, .kmap-btn, .etq-toggle, .kkit-reset):active{
+    scale:none;filter:brightness(0.85);
+  }
+  :where(.ep-card, .ep-tile, .nx a, .cardx, .tg-v2 .tg-ep, .series-card, .cd-box,
+         .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep)::before,
+  :where(.ep-card, .ep-tile, .nx a, .cardx, .tg-v2 .tg-ep, .series-card, .cd-box,
+         .destination, .kdates-card, .tg-tile, .tg-list:not(.tg-v2) .tg-ep)::after,
+  :where(p, li, figcaption, dd) a:not([class]):not(:is(nav, footer) *),
+  .kb-src span, .src span,
+  :where(.hero-link, .dest-copy a, .popup-link)::after{transition:none;}
+}
+
+/* Newsletter signup messages (newsletter.js), on the homepage and the podcast page */
+.nl-status{min-height:1.2em;margin:.7rem 0 0;font-size:var(--fs-small);line-height:1.5;color:var(--gray-light);}
+.nl-status:empty{margin:0;min-height:0;}
+.nl-status[data-state="ok"]{color:var(--white);}
+.nl-status[data-state="bad"]{color:var(--orange);}
+.pod-nl-after{flex-basis:100%;margin-top:-1.4rem;}
+.pod-nl-after .nl-status:empty{display:none;}
+.pod-nl-after .fine-print{margin:.5rem 0 0;max-width:none;}
+/* wide screens: the message and consent line sit in the form's column, under the form */
+@media (min-width:701px){ .pod-nl-after{width:min(100%,33rem);flex-basis:auto;margin-left:auto;} }
+
+/* ===== Horizon, site-wide ===================================================
+   The three rules the episode pages were rebuilt on (PROJECT_HANDOFF.md 68),
+   applied to the pieces every page shares. Lines that separate things fade
+   out at their ends instead of stopping dead, the way the orange rule at the
+   top of the header always has.
+   ========================================================================= */
+.page-wrap > nav{border-bottom:1px solid;
+  border-image:linear-gradient(90deg,transparent,var(--edge) 18%,var(--edge) 82%,transparent) 1;}
+.footer-col h2,.footer-col h3,.footer-col h4{
+  border-image:linear-gradient(90deg,var(--live),transparent) 1;}
+.footer-bottom{border-image:linear-gradient(90deg,transparent,var(--line) 12%,var(--line) 88%,transparent) 1;}
+/* The ground. Every page ends at a horizon with a low warm glow on it, the
+   last light of the day, so it ends somewhere rather than just stopping. The
+   footer is transparent so the glow can sit behind it; the page underneath is
+   the same colour. */
+footer{position:relative;background:none;}
+footer::before{content:"";position:absolute;inset:0 0 auto;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,117,23,.45) 50%,transparent);}
+footer::after{content:"";position:absolute;z-index:-1;pointer-events:none;
+  left:0;right:0;top:-160px;height:420px;
+  background:radial-gradient(60% 55% at 50% 38%,var(--sky-horizon),transparent 70%);}
+
+/* ===== Touch sizes ==========================================================
+   A finger needs about 44px. These keep their compact look under a mouse and
+   grow on touch screens only, so nothing changes on a desktop.
+   ========================================================================= */
+@media (pointer:coarse){
+  .footer-col a{display:flex;align-items:center;min-height:44px;padding:0;}
+  .footer-bottom a{display:inline-flex;align-items:center;min-height:44px;}
+  .footer-bottom{row-gap:0;}
+  a.kb-chl{min-height:40px;align-items:center;}
+  .kb-tg{display:inline-flex;align-items:center;min-height:36px;padding-inline:.6rem;}
+  .kb-tags{gap:.4rem;}
+}
+
+/* ===== Horizon on the homepage ==============================================
+   No section ends in a hard seam. The hero's photograph dissolves into the
+   page, so the starfield under it reads as the same sky rather than a band
+   stuck on below; section rules fade at their ends; the search band is a pool
+   of light instead of a grey slab; each destination photograph dissolves into
+   the words beside it (below it, on a phone). */
+.hero::after{
+  background:linear-gradient(180deg, rgba(20,21,25,0.25) 0%, rgba(20,21,25,0.6) 62%, var(--bg) 100%);
+}
+.stats{background:none;}
+.stats, .destination, .podcast, .ep-map-section, .newsletter, .why, .cta-band{
+  border-image:linear-gradient(90deg,transparent,var(--line) 15%,var(--line) 85%,transparent) 1;
+}
+.ep-search-section{border:0;
+  background:radial-gradient(62% 50% at 50% 50%, var(--card) 0%, color-mix(in srgb, var(--card) 55%, transparent) 50%, transparent 100%);}
+/* The fade is on the frame, not on the photograph. The photograph is scaled
+   up a little for the scroll drift, and a mask on it scales with it: its
+   transparent end then lay outside the frame and was clipped away, so the
+   photo stopped on a hard line while still half visible. On the frame, the
+   fade always ends exactly at the edge. */
+.dest-media{
+  -webkit-mask-image:linear-gradient(90deg,#000 72%,transparent 100%);
+          mask-image:linear-gradient(90deg,#000 72%,transparent 100%);}
+.destination.reverse .dest-media{
+  -webkit-mask-image:linear-gradient(270deg,#000 72%,transparent 100%);
+          mask-image:linear-gradient(270deg,#000 72%,transparent 100%);}
+@media (max-width:820px){
+  .dest-media, .destination.reverse .dest-media{
+    -webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 100%);
+            mask-image:linear-gradient(180deg,#000 70%,transparent 100%);}
+}
+
+/* ===== Horizon: an ambient sky for pages without a photograph ==============
+   The episode pages have their own art as a sky. The library, the topic pages,
+   the enquiry form and the text pages had nothing behind the header, so they
+   read as a flat dark sheet. This is the same idea with no picture: warm light
+   low on the left, cool light high on the right, dissolving into the page by
+   the time the content starts. Full width, clipped at the screen edges, never
+   a box. Chosen by the element that follows the header on each page, so no
+   markup changes. */
+.page-wrap:has(> .lib-wrap, > .enq-hero, > .pol-hero, > .tg-hero, > .sm-wrap, > .nf){
+  position:relative;overflow-x:clip;}
+.page-wrap:has(> .lib-wrap, > .enq-hero, > .pol-hero, > .tg-hero, > .sm-wrap, > .nf)::before{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  top:0;left:0;right:0;height:clamp(640px,70vw,900px);
+  background:
+    radial-gradient(48% 62% at 14% 8%, var(--sky-warm), transparent 70%),
+    radial-gradient(42% 56% at 88% 0%, var(--sky-cool), transparent 70%),
+    radial-gradient(70% 40% at 50% 0%, var(--sky-high), transparent 80%);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 35%,transparent 100%);
+          mask-image:linear-gradient(180deg,#000 0%,#000 35%,transparent 100%);}
+.page-wrap:has(> .lib-wrap, > .enq-hero, > .pol-hero, > .tg-hero, > .sm-wrap, > .nf) > nav{background:none;}
+
+/* ===== Horizon on the episode popup ========================================
+   It sits over a dimmed page, so it stays solid to be read. It is lit from
+   its bracket corner and floats on a deep shadow instead of a drawn frame. */
+.kb-card{
+  background:radial-gradient(120% 55% at 0% 0%,rgba(255,117,23,.075),rgba(255,117,23,0) 70%),var(--card);
+  border-color:var(--line);box-shadow:0 30px 90px rgba(0,0,0,.6);}
+
+/* ===== The episode popup opens and closes, it does not blink ===============
+   It used to go from display:none to fully drawn in one frame, and vanish the
+   same way. It now fades in with the card rising a few pixels into place, and
+   fades out before it is emptied (episode-modal.js waits for .is-closing).
+   The full-screen blur is dropped on touch screens, where blurring the whole
+   page behind a fading layer is the most expensive thing a phone can be asked
+   to paint. While the page is locked, scrollbar-gutter keeps the space the
+   scrollbar used, so locking it no longer shifts everything sideways by the
+   width of the bar. Only while locked: kept on all the time, it made the full
+   bleed heroes 10px short of the edge. */
+html:has(body.kb-modal-open){scrollbar-gutter:stable;}
+@media (prefers-reduced-motion: no-preference){
+  .ep-modal-overlay.active{animation:pga-ov-in .22s ease-out both;}
+  .ep-modal-overlay.active .kb-card{animation:pga-card-in .34s cubic-bezier(.2,.8,.2,1) both;}
+  .ep-modal-overlay.is-closing{animation:pga-ov-out .18s ease-in both;}
+  .ep-modal-overlay.is-closing .kb-card{animation:pga-card-out .18s ease-in both;}
+}
+@keyframes pga-ov-in{from{opacity:0;}}
+@keyframes pga-ov-out{to{opacity:0;}}
+@keyframes pga-card-in{from{opacity:0;transform:translateY(14px) scale(.985);}}
+@keyframes pga-card-out{to{opacity:0;transform:translateY(8px) scale(.99);}}
+@media (pointer:coarse){ .ep-modal-overlay{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(10,10,12,.9);} }
+
+/* ===== The hero flies (index.html, the script under the hero) =============
+   The video sits over the photograph and fades in once it is playing, so the
+   swap is a dissolve rather than a cut. The first seconds are inside bright
+   cloud, so the shading is a little deeper while the video shows, to keep the
+   white headline readable. */
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.2s ease;pointer-events:none;}
+.hero.has-video .hero-video{opacity:1;}
+.hero.has-video::after{
+  background:
+    linear-gradient(90deg, rgba(20,21,25,0.55) 0%, rgba(20,21,25,0.15) 55%, rgba(20,21,25,0) 80%),
+    linear-gradient(180deg, rgba(20,21,25,0.35) 0%, rgba(20,21,25,0.62) 60%, var(--bg) 100%);}
+
+/* ===== The sky keeps the visitor's time ====================================
+   script.js sets data-sky on <html> from the visitor's own clock: dawn (5-8),
+   day (9-16), dusk (17-20) or night (21-4). The ambient sky behind the header
+   and the glow on the footer horizon take their colours from these four
+   tokens, so someone reading at 10pm sees a different sky from someone at
+   8am. The tokens are registered as colours, so a change blends over two
+   seconds instead of switching in one frame. The default is dusk, which is
+   how the site looked before this, so a browser without the script, or the
+   moment before it runs, sees exactly that. Orange stays the accent in every
+   sky: the brand does not change, the light does. */
+@property --sky-warm{syntax:"<color>";inherits:true;initial-value:rgba(255,117,23,.13);}
+@property --sky-cool{syntax:"<color>";inherits:true;initial-value:rgba(92,112,190,.13);}
+@property --sky-high{syntax:"<color>";inherits:true;initial-value:rgba(180,180,180,.05);}
+@property --sky-horizon{syntax:"<color>";inherits:true;initial-value:rgba(255,117,23,.10);}
+:root{
+  transition:--sky-warm 2s ease,--sky-cool 2s ease,--sky-high 2s ease,--sky-horizon 2s ease;}
+:root[data-sky="dawn"]{--sky-warm:rgba(255,140,110,.24);--sky-cool:rgba(175,140,220,.22);--sky-high:rgba(255,205,185,.10);--sky-horizon:rgba(255,140,110,.14);}
+:root[data-sky="day"]{--sky-warm:rgba(255,205,130,.16);--sky-cool:rgba(100,165,245,.26);--sky-high:rgba(190,215,255,.12);--sky-horizon:rgba(255,195,120,.10);}
+:root[data-sky="night"]{--sky-warm:rgba(255,117,23,.06);--sky-cool:rgba(55,80,190,.28);--sky-high:rgba(110,130,230,.09);--sky-horizon:rgba(85,105,210,.12);}
+@media (prefers-reduced-motion: reduce){:root{transition:none;}}
+
+/* ===== One camera through the homepage ======================================
+   Only where the browser can tie an animation to scrolling (scroll-driven
+   animations), and never with reduced motion: elsewhere the page is exactly
+   as it was, with nothing half-built showing.
+
+   DEPTH. Each destination photograph drifts a little slower than the page
+   while it crosses the screen, so it reads as further away than the words.
+
+   THE FLIGHT LINE. On a wide screen a hairline runs down the left edge and
+   fills with orange as the page is read, with a small glider marking where
+   you are: a vario for the page. It sits in the gutter, clear of the words. */
+.flightline{display:none;}
+@supports (animation-timeline: scroll()){
+  @media (prefers-reduced-motion: no-preference){
+    /* clip, not hidden: overflow:hidden makes the frame a scroll container,
+       and the view timeline would then measure the frame, which never
+       scrolls, and sit at 50% for ever. */
+    .dest-media{overflow:clip;}
+    .dest-media img{scale:1.14;animation:pga-depth linear both;
+      animation-timeline:view();animation-range:cover;}
+    @keyframes pga-depth{from{translate:0 -6%;}to{translate:0 6%;}}
+
+    @media (min-width:1180px){
+      .flightline{display:block;position:fixed;z-index:15;pointer-events:none;
+        left:clamp(10px,1.1vw,20px);top:18vh;bottom:18vh;width:1px;
+        background:linear-gradient(180deg,transparent,var(--line) 12%,var(--line) 88%,transparent);
+        /* Not over the hero video: it appears once the hero has been scrolled past. */
+        opacity:0;animation:pga-fl-show linear both;animation-timeline:scroll(root);animation-range:60vh 100vh;}
+      @keyframes pga-fl-show{to{opacity:1;}}
+      .flightline::before{content:"";position:absolute;inset:0;transform-origin:top;
+        background:linear-gradient(180deg,transparent,var(--orange) 12%,var(--orange) 88%,transparent);opacity:.55;
+        animation:pga-fl-fill linear both;animation-timeline:scroll(root);}
+      .flightline i{position:absolute;left:-4px;top:0;width:9px;height:9px;
+        border-top:2px solid var(--orange);border-left:2px solid var(--orange);rotate:225deg;
+        filter:drop-shadow(0 0 5px rgba(255,117,23,.8));
+        animation:pga-fl-glider linear both;animation-timeline:scroll(root);}
+      @keyframes pga-fl-fill{from{transform:scaleY(0);}to{transform:scaleY(1);}}
+      @keyframes pga-fl-glider{from{top:0;}to{top:calc(100% - 9px);}}
+    }
+  }
+}
+
+/* ===== Looping footage (script.js, LOOPING FOOTAGE) =========================
+   Sits exactly over the photograph it replaces and fades in once playing.
+   On the homepage cards it takes the same mask and the same drift as the
+   photograph, so nothing jumps when it appears. */
+video[data-loop]{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.1s ease;pointer-events:none;}
+video[data-loop].is-playing{opacity:1;}
+.dest-media{position:relative;}
+@supports (animation-timeline: scroll()){
+  @media (prefers-reduced-motion: no-preference){
+    .dest-media video[data-loop]{scale:1.14;animation:pga-depth linear both;
+      animation-timeline:view();animation-range:cover;}
+  }
+}
+
+/* ===== One label style =======================================================
+   Every small label that sits above a heading, on every page, is the same
+   thing: small orange capitals. Before this there were about a dozen versions
+   of it (15px orange sentence case on the trip pages, 11px orange capitals on
+   the knowledge base, grey on the homepage booking card, grey on the quiet
+   bands of the trip pages), each set by its own page.
+
+   !important on the type only, deliberately. These classes are styled again by
+   page-level rules in the knowledge base generator, the trip pages, the podcast
+   page and the topic pages, several of them more specific than anything a
+   shared rule could reasonably be. Spacing and display stay with each page,
+   since where a label sits is layout; what a label looks like is not. */
+.kicker,
+.why-kicker,
+.cta-eyebrow,
+.podcast-label,
+.newsletter-eyebrow,
+.clb-tag,
+.tg-ep-series,
+.kday-kicker,
+.cd-epno{
+  font-family:var(--font-body) !important;font-size:var(--fs-micro) !important;
+  font-weight:700 !important;line-height:1.5 !important;letter-spacing:0.14em !important;
+  text-transform:uppercase !important;color:var(--orange) !important;
+}
+
+/* ===== Section headings ======================================================
+   One size from the type scale for the homepage's section headings, which had
+   five between them. The two feature headings (the podcast and the newsletter)
+   keep their larger size. */
+.dest-copy h2,
+.cta-band h2,
+.ep-search-section h2,
+.map-heading,
+.why-label{
+  font-family:var(--font-display);font-size:var(--fs-h2);font-weight:700;line-height:1.2;letter-spacing:0;
+}
+/* The same size for the heading of every full-width band on the other pages,
+   which ranged from 26px to 61px at the same window width. !important for the
+   same reason as the labels: each of these is sized again by its own page.
+   Left at their own size on purpose: the homepage's podcast and newsletter
+   headings and the host's name on the podcast page (feature headings), and the
+   headings inside a box, a sidebar, a policy clause or a transcript. */
+.dst-head h2,
+.kfaq-rail h2,
+.expect-head h2,
+.glimpse-head h2,
+.testimonials-head h2,
+.fly-better h2,
+.pw-air-copy h2,
+.pw-chapter h2,
+.pw-trust h2,
+.pw-contact-copy h2,
+.clb-body h2,
+.k-head h2,
+.fq-in h2{
+  font-size:var(--fs-h2) !important;line-height:1.2 !important;
+}

@@ -1,0 +1,154 @@
+<!doctype html><html lang="en-GB"><head><meta name="robots" content="noindex,nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body>
+<title>Encyclopedia Roadmap</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a flight route across the page (the plan as a cross-country task), then a feature matrix and a page-by-page map. */
+:root{--bg:#141519;--panel:#1c1d23;--panel2:#24252c;--ink:#f6f4f4;--soft:#b4b4b4;--dim:#7d7d84;--line:rgba(180,180,180,.14);
+ --or:#ff7517;--green:#7dd87d;--amber:#f2c14e;--display:"Poppins",Arial,sans-serif;--body:"DM Sans",Arial,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--soft);font-family:var(--body);margin:0;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:clamp(28px,5vw,56px)}
+h1,h2,h3{font-family:var(--display);color:var(--ink);margin:0;text-wrap:balance}
+h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.05}
+h2{font-size:clamp(1.3rem,2.6vw,1.8rem);margin-bottom:6px}
+.k{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--or)}
+.lead{color:var(--ink);max-width:60ch;font-size:1.05rem}
+section{margin-top:clamp(36px,6vw,64px)}
+.sub{color:var(--dim);margin:0 0 18px;max-width:70ch}
+.key{display:flex;gap:18px;flex-wrap:wrap;font-size:.82rem;margin:10px 0 18px}
+.key span{display:flex;align-items:center;gap:7px}
+.dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.done{background:var(--green)}.now{background:var(--or)}.next{background:var(--panel2);border:1px solid var(--dim)}
+/* route */
+.route{background:radial-gradient(70% 90% at 20% 100%,rgba(255,117,23,.10),transparent 60%),var(--panel);border:1px solid var(--line);overflow-x:auto}
+.route svg{display:block;min-width:900px;width:100%;height:auto}
+.route text{font-family:var(--body)}
+.legs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(250px,100%),1fr));gap:10px;margin-top:14px}
+.leg{background:var(--panel);border:1px solid var(--line);padding:14px 16px;display:grid;gap:6px}
+.leg .h{display:flex;align-items:center;gap:10px}
+.leg .n{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:.85rem;flex:none}
+.leg b{color:var(--ink);font-family:var(--display)}
+.leg small{color:var(--dim)}
+.leg ul{margin:0;padding-left:18px;font-size:.88rem}
+/* matrix */
+.mx{overflow-x:auto;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.9rem}
+th{text-align:left;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);padding:10px 12px;border-bottom:1px solid var(--line);background:var(--panel)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{color:var(--ink);font-weight:600;white-space:nowrap}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;padding:2px 9px;border:1px solid var(--line);white-space:nowrap}
+.pill.d{color:var(--green);border-color:rgba(125,216,125,.5)}
+.pill.p{color:var(--amber);border-color:rgba(242,193,78,.5)}
+.pill.t{color:var(--dim)}
+/* page map */
+.pages{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(330px,100%),1fr));gap:12px}
+.pg{background:var(--panel);border:1px solid var(--line);padding:16px;display:grid;gap:10px}
+.pg h3{font-size:1.05rem;display:flex;align-items:center;gap:10px}
+.pg h3 svg{width:26px;height:26px;stroke:var(--or);fill:none;stroke-width:1.7}
+.blocks{display:flex;flex-wrap:wrap;gap:6px}
+.b{font-size:.78rem;padding:4px 9px;background:var(--panel2);border-left:3px solid var(--dim);color:var(--soft)}
+.b.d{border-left-color:var(--green);color:var(--ink)}
+.b.p{border-left-color:var(--amber)}
+.pg p{margin:0;font-size:.86rem;color:var(--dim)}
+.foot{margin-top:40px;color:var(--dim);font-size:.85rem;border-top:1px solid var(--line);padding-top:16px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+@keyframes dash{to{stroke-dashoffset:-40}}
+.fly{animation:dash 2s linear infinite}
+</style>
+
+<div class="wrap">
+  <span class="k">Paragliding Atlas Encyclopedia</span>
+  <h1>The plan, as a flight</h1>
+  <p class="lead">Six legs from today's prototype to a full Encarta-style encyclopedia. Green is done, orange is where we are, grey is still ahead.</p>
+
+  <section>
+    <h2>The route</h2>
+    <div class="key"><span><i class="dot done"></i>Done</span><span><i class="dot now"></i>Now</span><span><i class="dot next"></i>Ahead</span><span>Session estimates per leg, about 11 to 14 in total</span></div>
+    <div class="route">
+      <svg viewBox="0 0 1100 360" role="img" aria-label="Route map of six stages from launch to goal">
+        <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#7dd87d"/><stop offset=".22" stop-color="#ff7517"/><stop offset=".3" stop-color="#5b5c63"/></linearGradient></defs>
+        <!-- terrain -->
+        <path d="M0 330 L120 270 L200 300 L320 230 L420 290 L540 210 L650 280 L760 220 L880 285 L980 240 L1100 300 L1100 360 L0 360Z" fill="#1f2026"/>
+        <path d="M0 345 L160 300 L300 330 L470 280 L620 320 L800 275 L960 315 L1100 290 L1100 360 L0 360Z" fill="#191a1f"/>
+        <!-- route -->
+        <path d="M70 250 C150 120 230 120 260 170 S380 260 420 150 S560 60 600 140 S720 250 770 150 S900 70 960 120 L1040 90" fill="none" stroke="#3a3b44" stroke-width="3"/>
+        <path d="M70 250 C150 120 230 120 260 170 S340 230 360 205" fill="none" stroke="#ff7517" stroke-width="3" stroke-dasharray="8 6" class="fly"/>
+        <!-- thermal at now -->
+        <g opacity=".5"><path d="M260 330 C250 280 275 240 260 190" stroke="#ff7517" fill="none" stroke-dasharray="3 6"/><path d="M285 330 C275 285 300 245 285 195" stroke="#ff7517" fill="none" stroke-dasharray="3 6"/></g>
+        <!-- turnpoints -->
+        <g font-size="13">
+          <circle cx="70" cy="250" r="16" fill="#7dd87d"/><text x="70" y="255" text-anchor="middle" fill="#141519" font-weight="700">✓</text>
+          <text x="70" y="290" text-anchor="middle" fill="#f6f4f4" font-weight="600">Launch</text><text x="70" y="306" text-anchor="middle" fill="#7d7d84">research, 10 drafts</text>
+
+          <circle cx="260" cy="170" r="16" fill="#ff7517"/><text x="260" y="175" text-anchor="middle" fill="#141519" font-weight="700">1</text>
+          <text x="260" y="135" text-anchor="middle" fill="#f6f4f4" font-weight="600">Lock the look</text><text x="260" y="119" text-anchor="middle" fill="#ff7517">you are here</text>
+
+          <circle cx="420" cy="150" r="16" fill="#24252c" stroke="#7d7d84"/><text x="420" y="155" text-anchor="middle" fill="#f6f4f4" font-weight="700">2</text>
+          <text x="420" y="190" text-anchor="middle" fill="#f6f4f4" font-weight="600">Generator</text><text x="420" y="206" text-anchor="middle" fill="#7d7d84">1 to 2 sessions</text>
+
+          <circle cx="600" cy="140" r="16" fill="#24252c" stroke="#7d7d84"/><text x="600" y="145" text-anchor="middle" fill="#f6f4f4" font-weight="700">3</text>
+          <text x="600" y="105" text-anchor="middle" fill="#f6f4f4" font-weight="600">Nine articles</text><text x="600" y="89" text-anchor="middle" fill="#7d7d84">3 to 4 sessions</text>
+
+          <circle cx="770" cy="150" r="16" fill="#24252c" stroke="#7d7d84"/><text x="770" y="155" text-anchor="middle" fill="#f6f4f4" font-weight="700">4</text>
+          <text x="770" y="190" text-anchor="middle" fill="#f6f4f4" font-weight="600">Audio, links, quizzes</text><text x="770" y="206" text-anchor="middle" fill="#7d7d84">2 sessions</text>
+
+          <circle cx="960" cy="120" r="16" fill="#24252c" stroke="#7d7d84"/><text x="960" y="125" text-anchor="middle" fill="#f6f4f4" font-weight="700">5</text>
+          <text x="960" y="85" text-anchor="middle" fill="#f6f4f4" font-weight="600">People, places, timeline</text><text x="960" y="69" text-anchor="middle" fill="#7d7d84">3 to 4 sessions</text>
+
+          <path d="M1040 70 v40 M1040 70 h26 l-8 8 l8 8 h-26" stroke="#f6f4f4" fill="#ff7517" stroke-width="1.5"/>
+          <text x="1040" y="132" text-anchor="middle" fill="#f6f4f4" font-weight="600">Goal</text><text x="1040" y="148" text-anchor="middle" fill="#7d7d84">media browser, 1</text>
+        </g>
+        <text x="20" y="30" fill="#7d7d84" font-size="12">After the goal: new articles from the 245-question bank, two or three per session.</text>
+      </svg>
+    </div>
+    <div class="legs">
+      <div class="leg"><div class="h"><span class="n" style="background:var(--green);color:#141519">✓</span><b>Launch</b></div><ul><li>245-question bank, source files</li><li>10 text drafts, fact-checked</li><li>A to Z of 165 questions</li><li>Collapse prototype in the new look</li></ul></div>
+      <div class="leg"><div class="h"><span class="n" style="background:var(--or);color:#141519">1</span><b>Lock the look</b></div><small>Your call, 1 session</small><ul><li>Your notes on the Collapse prototype</li><li>Agree the building blocks every article uses</li></ul></div>
+      <div class="leg"><div class="h"><span class="n" style="background:var(--panel2);color:var(--ink)">2</span><b>Generator</b></div><ul><li>Every article comes out in the new look</li><li>Front page built from real data</li></ul></div>
+      <div class="leg"><div class="h"><span class="n" style="background:var(--panel2);color:var(--ink)">3</span><b>Nine articles</b></div><ul><li>Each gets its own animation and interactive</li><li>Fact-checked, then your review</li></ul></div>
+      <div class="leg"><div class="h"><span class="n" style="background:var(--panel2);color:var(--ink)">4</span><b>Audio, links, quizzes</b></div><ul><li>Guest clips play inside the page</li><li>Words link to other articles</li><li>Test-yourself at the end</li></ul></div>
+      <div class="leg"><div class="h"><span class="n" style="background:var(--panel2);color:var(--ink)">5</span><b>People, places, timeline</b></div><ul><li>Guest profiles</li><li>Sites on the episode globe</li><li>History of paragliding</li></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Matching Encarta, feature by feature</h2>
+    <p class="sub">What made Encarta feel like Encarta, what we build instead, where it appears, and how far along it is.</p>
+    <div class="mx"><table>
+      <thead><tr><th>Encarta had</th><th>Our version</th><th>Where it appears</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Front page to explore from</td><td>Animated sky, subject tiles, featured article, search</td><td>Encyclopedia home</td><td><span class="pill d">Prototype</span></td></tr>
+        <tr><td>Pictures and animations</td><td>One main animation per article, plus drawings</td><td>Every article, top of page</td><td><span class="pill p">1 of 10</span></td></tr>
+        <tr><td>Interactivities</td><td>A slider or calculator per topic: angle of attack, glide, speed</td><td>Every article, panel 1</td><td><span class="pill p">1 of 10</span></td></tr>
+        <tr><td>Fact box</td><td>Key numbers, related topics, guests</td><td>Every article, side column</td><td><span class="pill d">Prototype</span></td></tr>
+        <tr><td>Icons and symbols</td><td>One icon set across tiles, triggers, steps</td><td>Everywhere</td><td><span class="pill d">Prototype</span></td></tr>
+        <tr><td>Sound clips</td><td>Guest chapter audio, playing in the page</td><td>"Heard on the show" panel</td><td><span class="pill p">Links out for now</span></td></tr>
+        <tr><td>Cross-references</td><td>Words in the text link to other articles</td><td>Inside every article</td><td><span class="pill t">Leg 4</span></td></tr>
+        <tr><td>A to Z index</td><td>Topics A to Z with search</td><td>Home and its own page</td><td><span class="pill d">Built</span></td></tr>
+        <tr><td>Did you know</td><td>Rotating facts from guests and sources</td><td>Home</td><td><span class="pill d">Prototype</span></td></tr>
+        <tr><td>Quizzes (MindMaze)</td><td>Test yourself, five questions per article</td><td>End of each article</td><td><span class="pill t">Leg 4</span></td></tr>
+        <tr><td>Biographies</td><td>Guest profiles with their episodes</td><td>People section</td><td><span class="pill t">Leg 5</span></td></tr>
+        <tr><td>World atlas</td><td>Flying sites on your episode globe</td><td>Places section</td><td><span class="pill t">Leg 5</span></td></tr>
+        <tr><td>Timeline</td><td>History of paragliding, scrolling strip</td><td>Its own page</td><td><span class="pill t">Leg 5</span></td></tr>
+        <tr><td>Media gallery</td><td>Every drawing, animation and clip in one place</td><td>Its own page</td><td><span class="pill t">Goal</span></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Where the Encarta look has to go</h2>
+    <p class="sub">Every page type and the building blocks it needs. Green is in the prototype, amber is partly there, grey is still to make.</p>
+    <div class="pages">
+      <div class="pg"><h3><svg viewBox="0 0 32 32"><path d="M4 14L16 5l12 9v13H4z"/><path d="M13 27v-8h6v8"/></svg>Encyclopedia home</h3><div class="blocks"><span class="b d">Animated hero</span><span class="b d">Search</span><span class="b d">Subject tiles</span><span class="b d">Featured</span><span class="b d">Did you know</span><span class="b d">A to Z</span><span class="b">Media strip</span></div><p>One page. Reached from the Knowledge Base and the menu.</p></div>
+      <div class="pg"><h3><svg viewBox="0 0 32 32"><path d="M6 4h14l6 6v18H6z"/><path d="M10 14h12M10 19h12M10 24h7"/></svg>Article (10 now, 245 to come)</h3><div class="blocks"><span class="b d">Hero animation</span><span class="b d">Short answer</span><span class="b d">Icon chips</span><span class="b d">Interactive lab</span><span class="b d">Icon cards</span><span class="b d">Animated steps</span><span class="b d">Fact box</span><span class="b p">Guest audio</span><span class="b">Cross-links</span><span class="b">Quiz</span></div><p>The template every topic uses. Only Collapse is built so far.</p></div>
+      <div class="pg"><h3><svg viewBox="0 0 32 32"><path d="M5 7h22v18H5z"/><path d="M5 12h22M11 7v18"/></svg>Subject page (7)</h3><div class="blocks"><span class="b p">Icon header</span><span class="b">Article tiles with thumbnails</span><span class="b">Key facts</span></div><p>How wings fly, Safety, Lift and weather, Gear, Competition, Places, Pilots.</p></div>
+      <div class="pg"><h3><svg viewBox="0 0 32 32"><circle cx="16" cy="11" r="5"/><path d="M6 27c1-6 5-9 10-9s9 3 10 9"/></svg>Guest profile</h3><div class="blocks"><span class="b">Portrait or initials</span><span class="b">Fact box</span><span class="b">Clips</span><span class="b">Articles they appear in</span></div><p>About 80 guests from the episodes.</p></div>
+      <div class="pg"><h3><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><path d="M5 16h22M16 5c4 4 4 18 0 22M16 5c-4 4-4 18 0 22"/></svg>Place</h3><div class="blocks"><span class="b">Globe pin</span><span class="b">Season strip</span><span class="b">Site facts</span><span class="b">Guests who fly there</span></div><p>Bir, Kenya, Colombia, Australia and more.</p></div>
+      <div class="pg"><h3><svg viewBox="0 0 32 32"><path d="M4 16h24"/><circle cx="8" cy="16" r="2"/><circle cx="16" cy="16" r="2"/><circle cx="24" cy="16" r="2"/><path d="M8 16V9M16 16v7M24 16V9"/></svg>Timeline and media browser</h3><div class="blocks"><span class="b">Scrolling history</span><span class="b">Gallery grid</span><span class="b">Filters</span></div><p>One page each, last on the route.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Prototype to look at alongside: the Atlas Encyclopedia page with the Collapse article. Estimates are working sessions, and each batch waits for your review before it goes live.</p>
+</div>
+
+<a href="../index.html" style="position:fixed;left:12px;bottom:12px;z-index:99999;background:#ff7517;color:#141519;font:600 13px/1 "DM Sans",Arial,sans-serif;padding:9px 13px;text-decoration:none;border-radius:2px;box-shadow:0 2px 10px rgba(0,0,0,.4)">&larr; Workspace</a>
