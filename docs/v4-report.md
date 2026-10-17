@@ -73,6 +73,7 @@ marked done is the next step.
 | 23. The visual build list (owner, 5 Oct: "visually improving how the site looks, go ahead"): a visual review by page group, every finding checked by a skeptic (48 kept of 48), merged into 32 items and all built; then a before/after regression review. src/v2.css "THE VISUAL BUILD LIST", tools/v4_award.py, tools/v4_tripmap.py, tools/v4_painted.py | done | 93aa11d and see git log | all gates PASS |
 | 24. The RSS feed section redesign, ten options (owner, 5 Oct: "give me 10 protos to choose from"): samples/rss-options.html, each one the live feed's own row markup from rss-feed.js with the seven newest episodes, styled only (rss-feed.js unchanged): Ledger, Cover grid, Feature and list, Waveform, Flight log, Timeline, Record shelf, Editorial, Docked player, Portholes. The owner liked 10 and asked for five more like it, "a bit futuristic and immersive and responsive": 11 Instrument ring, 12 Cabin light, 13 Window seat, 14 Fuselage, 15 Night flight (these also need a few lines of script for the pointer, the scroll and the progress ring, meant for v2-immersive.js, never rss-feed.js). The owner then chose 15, Night flight, with 11's progress ring around the cover art, play and pause on the art (no button beside it) and a ticker with the show's name in the open player: built into v4's podcast page (src/v2.css "LIVE FROM THE FEED", replacing the earlier feed styles; the ring's progress copied from the bar rss-feed.js already draws, src/v2-immersive.js), and shown on the samples page as 16 with v4's own rules. rss-feed.js untouched. Then five variations on it (owner, 6 Oct: "make 5 more"), 17 to 21 on the samples page: Constellation, Radar, Northern lights, Vario, Cockpit glass, each a short addition on top of the built rules. tools/v4_rss_options.py | done | see git log | all gates PASS |
 | 25. The owner's photographs on the knowledge base and episode pages (owner, 9 Oct; the footage left those pages on 8 Oct): a placement plan from three surveys, a planner and a skeptic who measured the pages (fourteen problems found and folded in): docs/v4-photo-plan.md | waiting on the photos (the Terabox link is blocked here) | see git log | docs only |
+| 26. The speed record attempt page (owner, 17 Oct: "a page for the WR attempt ... professional and elegant so that sponsors find it interesting"): record-attempt.html, prototype-only until the owner's go. The target and the owner's best as an instrument readout over Kerio Valley; the out-and-return course drawn to scale, 100 or 200 km, flown as it comes into view, with the time at the mark and at 36 km/h; the marks to beat; why Kerio Valley; the plan to the window (18 Jan to 12 Feb 2027, with the two Kenya departures); the audience; three partnership tiers and what partners get before, during and after. Every fact sourced on the page; the unknowns read [to supply] or [to confirm]. tools/v4_record.py | done (prototype) | see git log | all gates PASS |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they
@@ -104,6 +105,16 @@ python3 tools/v2_switch.py --site v4 --dry-run
   93 and 90+); one currency or both (India in GBP, Kenya in USD today).
 - **The go.** An iPhone check (Safari items below), then the switch-over,
   v2 or v4. Not done here, as agreed.
+- **The record attempt page (17 Oct), before it goes out.** Check the two
+  marks on the FAI CIVL list (the build machine cannot open fai.org): the
+  100 km O-3 mark shows as 35.94 km/h, Michel Macquet, 23 Jan 2025, listed in
+  one FAI listing as a claim under review and in another as the record; the
+  200 km O-3 mark was not found. Then supply: the wing and instruments, the
+  team and observer, the preparation; a sharper photo of you flying (the Kerio
+  Valley hero is 1152 px wide); whether the tiers and the promises (a film,
+  the flight data published) are right. Note: your wing is a UP and you are a
+  UP distributor, so the Equipment Partner slot may already be UP's. And one
+  audience figure: the live partners page says 85 countries, v4's says 130+.
 - **The photographs (9 Oct).** The Terabox link cannot be opened here (the
   network policy blocks it). A Google Drive folder works (Drive is
   connected), or the repository. Where they go, how they are built and eight

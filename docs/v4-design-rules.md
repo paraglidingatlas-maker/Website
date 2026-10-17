@@ -108,6 +108,7 @@ short text). A second moment on the same page is a sign one should go.
 | Topic | the topic's log drawing and the newest three |
 | Knowledge base | its own drawings (it stays different on purpose) |
 | Partners | the flight line down the page |
+| Record attempt | the course drawn to scale, flown as it comes into view (prototype-only until the owner's go, 17 Oct 2026) |
 | Text pages | none: they are for reading |
 
 Shared, not moments: the altimeter on long pages (decoration), cards that

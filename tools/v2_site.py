@@ -43,7 +43,8 @@ STAGE = "/tmp/claude-0/%s-stage" % NAME                # the switch rehearsal's 
 # Pages that exist only in the prototype (no live twin, never switched):
 # the style guide, the fly options, and anything under samples/ (v4 before/after pages).
 # offline.html is the v4 app's no-signal page (tools/v4_pwa.py), not a site page
-PROTO_ONLY = {"styleguide.html", "fly-options.html", "offline.html"}
+PROTO_ONLY = {"styleguide.html", "fly-options.html", "offline.html",
+              "record-attempt.html"}  # the record page waits for the owner's go (17 Oct)
 
 
 def proto_only(rel):
