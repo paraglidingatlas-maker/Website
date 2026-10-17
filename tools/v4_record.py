@@ -1,27 +1,70 @@
 #!/usr/bin/env python3
 """
-The world record attempt page (owner, 17 Oct 2026): "a page for the WR
-attempt I'll be doing ... avg speed over a course for 100 km and 200 km out
-and return ... professional and elegant so that sponsors find it
-interesting".
+The speed record attempt page, for sponsors (owner, 17 Oct 2026): "a page for
+the WR attempt I'll be doing ... avg speed over a course for 100 km and 200 km
+out and return ... professional and elegant so that sponsors find it
+interesting". On the first build he said "The design feels very robotic, too
+much text, difficult to navigate, make it stunning", and then "Add elements
+which awwwards worthy websites use".
 
     prototypes/v4/record-attempt.html
+
+The design is option A, "Cinematic story" (tools/v4_record_a.py, the judges'
+winner over B and C, which stay as options for the owner), with what the
+judges asked to graft from B and C and every fix they listed:
+  - the opening: the masked three-line title, and on the first screen the two
+    numbers (the mark to beat and his best, "about", "not a record course")
+    beside the window, with one way straight down to the offer (B). On phones
+    the photograph sits above the words so the type is on dark ground;
+  - a chapter bar with every chapter's name, a reading line per chapter and a
+    solid Partner button (B, C): along the top on wide screens (below the
+    site menu when it comes back), along the bottom on phones;
+  - 01 the mark: an outlined 35.94 against a solid orange "about 36", the
+    sources beside the numbers (B), "The time to beat" line and a fold with
+    the detail behind the numbers (C);
+  - 02 the course: pinned and flown kilometre by kilometre with the scroll, as
+    a hairpin out and back with a glider, Leg, Flown and two clocks counting
+    the same way (B), watch-face figures and a giant outlined kilometre
+    count behind (C), a 100 / 200 km switch that works without JavaScript
+    (two radio buttons and :has, B);
+  - 03 Kerio Valley: the photograph seen through its name (with a plain
+    fallback fill, so the name never vanishes), the full-bleed valley plate,
+    the thermals as a vario gauge (B);
+  - 04 the window: the 26 days drawn as two expedition blocks with the gap,
+    "During" once across both (B, C), and the before and after as a strip
+    moved sideways by the scroll on wide screens, a swipe row on phones;
+  - 05 the audience and 06 the offer: the counts, the portrait, the tiers with
+    outlined 01 02 03 numerals and an orange edge on the Title Partner (C).
 
 Facts only, each from a source named on the page or already on the site:
   - the owner's flight: UP Paragliders news, "Almost 200km with an average of
     36kph": 6 Feb 2025, Kenya, 198.86 km on XContest, about 36 km/h, on a UP
-    Trango X (EN C). The page does not call it a record or an out-and-return.
+    Trango X (EN C). The page never calls it a record or a record course.
   - the marks to beat: FAI CIVL records list (class O-3, speed over an
     out-and-return course of 100 km: 35.94 km/h, Michel Macquet, FRA, 23 Jan
     2025, shown in one FAI listing as a claim under review and in another as
     the record, so its status is "[to confirm]"; 200 km: not found, so
     "[to supply]"). The FAI pages cannot be opened from the build machine:
-    check them before the page goes out.
-  - Kerio Valley, the season, thermals, the 2027 departures: the Kenya page.
+    check them before the page goes out. The claim goes to the FAI under the
+    Sporting Code, Section 7D.
+  - times are distance over speed: 100 km at 35.94 or at 36 km/h, 2 h 47 min;
+    200 km at 36 km/h, 5 h 33 min.
+  - Kerio Valley, its place, season, thermals and flights: the Kenya page.
+    The window, 18 Jan to 12 Feb 2027, is flown alongside the two Kenya
+    expeditions (18 to 29 Jan, 1 to 12 Feb 2027).
   - audience: the v4 partners page (100,000+ streams, 130+ countries, 80
     interviews, 10+ years, a newsletter about four times a month).
-  - the partnership options are the owner's offer, drafted here as asked
-    ("this is where you come in"); prices stay in the media kit.
+  - the partnership options are the owner's offer, drafted as asked; prices
+    stay in the media kit.
+  - still to supply: the wing and instruments, the team and the FAI
+    observer, the preparation.
+  - photographs: only the site's own; each alt is the one the Kenya or
+    partners page gives it, and only kerio-valley is shown as Kerio Valley.
+
+Motion only answers the visitor (scroll, pointer, tap, key); nothing loops or
+runs on a timer. Reduced motion shows every finished state, unpinned; with
+JavaScript off everything is readable and the switch still works; phones get
+the simplest version. No new image files, no libraries, no video.
 
 The page takes the v4 shell (head, menu, footer) from partners.html and is
 prototype-only (tools/v2_site.py PROTO_ONLY) until the owner approves it.
@@ -37,375 +80,1115 @@ SHELL = os.path.join(V4, "partners.html")
 OUT = os.path.join(V4, "record-attempt.html")
 
 TITLE = "The Speed Record Attempt"
-DESC = ("Aninder Singh's attempt on the paragliding world records for speed over a "
-        "100 km and a 200 km out-and-return course, from Kerio Valley, Kenya, in "
-        "January and February 2027. What it is, the plan, and how to partner on it.")
+DESC = ("Aninder Singh's attempt on two paragliding world records for speed, over a 100 km "
+        "and a 200 km out-and-return course, from Kerio Valley, Kenya, between 18 January "
+        "and 12 February 2027, and how to partner on it.")
 URL = "https://paraglidingatlas.com/record-attempt.html"
-OG_IMG = "https://paraglidingatlas.com/assets/destinations/kenya/hero/kerio-valley.jpg"
+OG_IMG = "https://paraglidingatlas.com/assets/destinations/kenya/gallery/kenya-hero.jpg"
 
 # the marks (see the docstring for where each comes from)
-REC100 = 35.94          # km/h, status to confirm
-BEST = 36               # km/h, as reported, over 198.86 km
+REC100 = 35.94      # km/h, the 100 km mark to beat, status to confirm
+BEST = 36           # km/h, about, over 198.86 km (not a record course)
 
+MAIL = "mailto:aninder@paraglidingatlas.com?subject=Partnering%20on%20the%20speed%20record%20attempt"
+UP_NEWS = "https://www.up-paragliders.com/news/almost-200km-with-an-average-of-36kph"
+FAI_LIST = "https://www.fai.org/page/civl-records"
+FAI_CODE = "https://www.fai.org/sites/default/files/civl/documents/sporting_code_s7_d_-_records_and_badges_2025.pdf"
 
-def hm(km, kmh):
-    h = km / kmh
-    return "%d h %02d min" % (int(h), round((h - int(h)) * 60))
-
-
-CSS = r"""
-/* ===== The record attempt page (tools/v4_record.py) ===== */
-.wr{--wr-shade:color-mix(in srgb,var(--bg) 78%,transparent);}
-.wr-hero{position:relative;min-height:min(94svh,980px);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;}
-.wr-hero picture,.wr-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;}
-.wr-hero::before{content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 35%,transparent) 0%,transparent 30%,color-mix(in srgb,var(--bg) 70%,transparent) 66%,var(--bg) 100%),
-    linear-gradient(90deg,color-mix(in srgb,var(--bg) 72%,transparent) 0%,transparent 70%);}
-.wr-hero-in{width:100%;max-width:var(--measure);margin:0 auto;padding:0 var(--gutter) clamp(2.5rem,7vh,5rem);display:grid;
-  grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);align-items:end;}
-.wr-kick{display:block;margin:0 0 .9rem;color:var(--orange);font-size:var(--fs-micro);font-weight:700;letter-spacing:.18em;text-transform:uppercase;}
-.wr-hero h1{margin:0;font-family:var(--font-display);font-weight:700;font-size:var(--fs-display);line-height:1.02;letter-spacing:-.02em;color:var(--white);text-wrap:balance;}
-.wr-lead{margin:1.2rem 0 0;max-width:36rem;font-size:var(--fs-lead);line-height:1.6;color:var(--gray-light);}
-.wr-read{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--edge);background:var(--wr-shade);
-  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}
-.wr-read div{padding:1.1rem 1.2rem 1.2rem;}
-.wr-read div + div{border-left:1px solid var(--line);}
-.wr-read .t{display:block;margin:0 0 .5rem;color:var(--gray-light);font-size:var(--fs-micro);letter-spacing:.06em;}
-.wr-read .v{display:block;margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(2.2rem,4.4vw,3.4rem);line-height:1;color:var(--white);font-variant-numeric:tabular-nums;}
-.wr-read .v small{font-size:.38em;font-weight:500;color:var(--gray-light);margin-left:.25em;}
-.wr-read .is-best .v{color:var(--orange);}
-.wr-read p{margin:.55rem 0 0;font-size:var(--fs-small);line-height:1.45;color:var(--gray);}
-
-.wr-sec{max-width:var(--measure);margin:0 auto;padding:var(--sp-section) var(--gutter);}
-.wr-sec + .wr-sec{border-top:1px solid var(--line);}
-.wr-h{margin:0 0 .8rem;font-family:var(--font-display);font-weight:600;font-size:var(--fs-h2);line-height:1.15;color:var(--white);text-wrap:balance;max-width:44rem;}
-.wr-label{display:block;margin:0 0 .7rem;color:var(--gray-light);font-size:var(--fs-small);font-weight:600;}
-.wr-p{margin:0;max-width:44rem;color:var(--gray-light);line-height:1.7;}
-.wr-p + .wr-p{margin-top:1rem;}
-.wr-tbd{font-style:italic;font-weight:400;color:var(--gray);white-space:nowrap;}
-
-/* the course, drawn to scale */
-.wr-course{margin-top:var(--sp-4);border:1px solid var(--line);background:linear-gradient(180deg,var(--card),var(--bg));padding:clamp(1rem,3vw,2rem);}
-.wr-tabs{display:flex;gap:.5rem;margin:0 0 1rem;}
-.wr-tabs button{min-height:44px;padding:0 1.1rem;background:none;border:1px solid var(--edge-hi);color:var(--gray-light);font:inherit;font-weight:600;cursor:pointer;
-  transition:border-color .2s ease,color .2s ease,background-color .2s ease;}
-.wr-tabs button[aria-pressed="true"]{border-color:var(--orange);color:var(--white);background:var(--wash);}
-.wr-tabs button:focus-visible{outline:2px solid var(--white);outline-offset:2px;}
-.wr-svg{display:block;width:100%;height:auto;overflow:visible;}
-.wr-svg .tk{stroke:var(--edge-hi);stroke-width:1;vector-effect:non-scaling-stroke;}
-.wr-svg .tk-l{fill:var(--gray);font-size:13px;font-family:var(--font-body);}
-.wr-svg .trk{fill:none;stroke:var(--orange);stroke-width:3;stroke-linecap:round;vector-effect:non-scaling-stroke;}
-.wr-svg .trk-ghost{fill:none;stroke:var(--edge);stroke-width:3;stroke-linecap:round;vector-effect:non-scaling-stroke;}
-.wr-svg .pt{fill:var(--bg);stroke:var(--white);stroke-width:2;vector-effect:non-scaling-stroke;}
-.wr-svg .pt-l{fill:var(--white);font-size:14px;font-weight:600;font-family:var(--font-body);}
-.wr-svg .pt-s{fill:var(--gray-light);font-size:12px;font-family:var(--font-body);}
-.wr-svg .glider{fill:var(--orange);}
-.wr-ends{display:none;}
-.wr-legs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin-top:1.2rem;background:var(--line);border:1px solid var(--line);}
-.wr-legs div{background:var(--bg);padding:.9rem 1rem;}
-.wr-legs dt{color:var(--gray-light);font-size:var(--fs-small);margin:0 0 .3rem;}
-.wr-legs dd{margin:0;font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);color:var(--white);font-variant-numeric:tabular-nums;}
-
-/* the numbers to beat */
-.wr-marks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2vw,1.5rem);margin-top:var(--sp-4);}
-.wr-mark{border:1px solid var(--line);padding:1.4rem 1.4rem 1.5rem;background:var(--card);display:flex;flex-direction:column;}
-.wr-mark.is-best{border-color:var(--live);background:linear-gradient(180deg,var(--wash),var(--card) 60%);}
-.wr-mark h3{margin:0 0 1rem;font-family:var(--font-display);font-weight:600;font-size:var(--fs-body);color:var(--white);}
-.wr-mark .n{font-family:var(--font-display);font-weight:600;font-size:clamp(2.4rem,4vw,3.2rem);line-height:1;color:var(--white);font-variant-numeric:tabular-nums;}
-.wr-mark.is-best .n{color:var(--orange);}
-.wr-mark .n .wr-tbd{font-size:.42em;}
-.wr-mark .n small{font-size:.4em;font-weight:500;color:var(--gray-light);margin-left:.2em;}
-.wr-mark ul{list-style:none;margin:1.1rem 0 0;padding:0;font-size:var(--fs-small);color:var(--gray-light);line-height:1.55;}
-.wr-mark li + li{margin-top:.35rem;}
-.wr-note{margin:1.2rem 0 0;max-width:44rem;font-size:var(--fs-small);color:var(--gray);line-height:1.6;}
-.wr-note a,.wr-src a{color:var(--gray-light);text-decoration:underline;text-underline-offset:3px;}
-.wr-note a:hover,.wr-src a:hover{color:var(--orange);}
-
-/* Kerio Valley */
-.wr-site{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;}
-.wr-site figure{margin:0;position:relative;aspect-ratio:3/2;overflow:hidden;}
-.wr-site figure img{width:100%;height:100%;object-fit:cover;display:block;}
-.wr-facts{list-style:none;margin:1.4rem 0 0;padding:0;display:grid;gap:0;border-top:1px solid var(--line);}
-.wr-facts li{display:grid;grid-template-columns:9rem minmax(0,1fr);gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line);font-size:var(--fs-body-s);color:var(--white);}
-.wr-facts li span{color:var(--gray-light);}
-
-/* the plan */
-.wr-plan{list-style:none;margin:var(--sp-4) 0 0;padding:0;position:relative;display:grid;gap:0;}
-.wr-plan::before{content:"";position:absolute;left:7px;top:.5rem;bottom:.5rem;width:1px;background:linear-gradient(var(--orange),var(--edge) 40%,var(--edge) 85%,transparent);}
-.wr-plan li{position:relative;padding:0 0 1.6rem 2.2rem;}
-.wr-plan li::before{content:"";position:absolute;left:0;top:.35rem;width:15px;height:15px;border-radius:50%;background:var(--bg);border:2px solid var(--gray-light);}
-.wr-plan li.is-key::before{border-color:var(--orange);background:var(--orange);box-shadow:0 0 0 5px var(--wash);}
-.wr-plan b{display:block;font-family:var(--font-display);font-weight:600;color:var(--white);font-size:var(--fs-body);}
-.wr-plan span{display:block;margin-top:.25rem;color:var(--gray-light);font-size:var(--fs-body-s);line-height:1.6;max-width:42rem;}
-
-/* who will see it */
-.wr-reach{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:var(--sp-4);background:var(--line);border:1px solid var(--line);}
-.wr-reach div{background:var(--bg);padding:1.3rem 1.2rem;}
-.wr-reach .v{display:block;margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1;color:var(--white);font-variant-numeric:tabular-nums;}
-.wr-reach .t{display:block;margin:.55rem 0 0;color:var(--gray-light);font-size:var(--fs-small);}
-.wr-pilot{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(1rem,3vw,2rem);align-items:center;margin-top:var(--sp-5);}
-.wr-pilot img{width:clamp(96px,14vw,150px);aspect-ratio:4/5;height:auto;object-fit:cover;display:block;}
-.wr-pilot b{display:block;font-family:var(--font-display);font-weight:600;color:var(--white);font-size:var(--fs-h4);}
-
-/* partnership */
-.wr-tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2vw,1.5rem);margin-top:var(--sp-4);}
-.wr-tier{border:1px solid var(--line);padding:1.5rem;display:flex;flex-direction:column;background:var(--card);}
-.wr-tier.is-lead{border-color:var(--live);background:linear-gradient(180deg,var(--wash),var(--card) 55%);}
-.wr-tier .k{color:var(--gray-light);font-size:var(--fs-small);font-weight:600;}
-.wr-tier h3{margin:.35rem 0 .3rem;font-family:var(--font-display);font-weight:600;font-size:var(--fs-h3);color:var(--white);}
-.wr-tier .one{color:var(--gray);font-size:var(--fs-small);margin:0 0 1rem;}
-.wr-tier ul{list-style:none;margin:0;padding:0;font-size:var(--fs-body-s);color:var(--gray-light);line-height:1.55;}
-.wr-tier li{position:relative;padding:.45rem 0 .45rem 1.3rem;border-top:1px solid var(--line);}
-.wr-tier li::before{content:"";position:absolute;left:0;top:1rem;width:8px;height:1px;background:var(--orange);}
-.wr-when{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2vw,1.5rem);margin-top:var(--sp-5);}
-.wr-when h3{margin:0 0 .6rem;font-family:var(--font-display);font-weight:600;font-size:var(--fs-body);color:var(--white);}
-.wr-when p{margin:0;color:var(--gray-light);font-size:var(--fs-body-s);line-height:1.6;}
-.wr-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:var(--sp-4);}
-.wr-btn{display:inline-flex;align-items:center;min-height:48px;padding:0 1.5rem;font-weight:600;text-decoration:none;border:1px solid var(--edge-hi);color:var(--white);
-  transition:border-color .2s ease,color .2s ease,background-color .2s ease;}
-.wr-btn.is-main{background:var(--orange);border-color:var(--orange);color:var(--ink);}
-.wr-btn:hover{border-color:var(--orange);color:var(--orange);}
-.wr-btn.is-main:hover{color:var(--ink);filter:brightness(1.06);}
-.wr-btn:focus-visible{outline:2px solid var(--white);outline-offset:3px;}
-.wr-src{margin:var(--sp-4) 0 0;font-size:var(--fs-small);color:var(--gray);line-height:1.7;max-width:52rem;}
-
-/* the photograph moves only with the scroll (docs/v4-design-rules.md, Motion) */
-@supports (animation-timeline: view()){
-  @media (prefers-reduced-motion: no-preference){
-    .wr-hero img{animation:wr-drift linear both;animation-timeline:view();animation-range:exit 0% exit 100%;}
-    @keyframes wr-drift{from{transform:scale(1.03);}to{transform:scale(1.12) translateY(5%);}}
-  }
+A = "../../assets/"
+IMG = {
+    "hero": (A + "destinations/kenya/gallery/kenya-hero", 1400, 788, "Paragliding in Kenya"),
+    "kerio": (A + "destinations/kenya/hero/kerio-valley", 1152, 768, "Paragliding at Kerio Valley, Kenya"),
+    "kerio_p": ("img/hero/kenya-kerio-valley-p", 512, 768, "Paragliding at Kerio Valley, Kenya"),
+    "high": (A + "destinations/kenya/gallery/kenya-high", 1400, 933, "Paragliding in Kenya"),
+    "aninder": (A + "images/partners-aninder", 720, 900, "Aninder Singh"),
+    "icare": (A + "images/partners-coupe-icare-wide", 1920, 1372,
+              "Aninder shaking hands with a brand representative at a harness test stand, "
+              "camera in hand, at Coupe Icare"),
 }
-@media (max-width:900px){
-  .wr-hero-in{grid-template-columns:minmax(0,1fr);}
-  .wr-site{grid-template-columns:minmax(0,1fr);}
-  .wr-marks,.wr-tiers,.wr-when{grid-template-columns:minmax(0,1fr);}
-  .wr-reach{grid-template-columns:repeat(2,minmax(0,1fr));}
-}
-@media (max-width:560px){
-  .wr-read .v{font-size:2.2rem;}
-  .wr-legs{grid-template-columns:minmax(0,1fr);}
-  .wr-facts li{grid-template-columns:minmax(0,1fr);gap:.2rem;}
-  .wr-svg text{display:none;}
-  .wr-svg .pt{r:24px;}
-  .wr-svg .glider{r:16px;}
-  .wr-ends{display:flex;justify-content:space-between;gap:1rem;margin-top:.7rem;font-size:var(--fs-small);color:var(--gray-light);line-height:1.4;}
-  .wr-ends b{display:block;color:var(--white);font-weight:600;}
-  .wr-ends i{font-style:normal;}
-  .wr-ends span + span{text-align:right;}
-}
-"""
 
 TBD = '<span class="wr-tbd">[to supply]</span>'
 TBC = '<span class="wr-tbd">[to confirm]</span>'
 
+# the course drawing, in a 1000 x 200 box stretched to the width: km out from
+# the start to x; the out leg on YO, home on YB, the turn a half ellipse whose
+# far point is the turnpoint itself (so the drawing stays to scale)
+X0, PX_PER_KM = 30, 9.5
+YO, YB, RX = 50, 150, 40
+RY = (YB - YO) / 2
+CY = (YO + YB) / 2
+
+# the chapters: (id, number, name in the bar)
+CHAPTERS = [("wr-mark", "01", "Mark"), ("wr-course", "02", "Course"), ("wr-kerio", "03", "Kerio"),
+            ("wr-window", "04", "Window"), ("wr-audience", "05", "Audience")]
+
+EXT = ('<svg class="wr-ext" viewBox="0 0 12 12" aria-hidden="true" focusable="false">'
+       '<path d="M3.5 2.5h6v6M9.5 2.5l-7 7" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>')
+DOWN = ('<svg viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M7 1v11M2.5 7.5 7 12l4.5-4.5" '
+        'fill="none" stroke="currentColor" stroke-width="1.4"/></svg>')
+
+
+def X(km):
+    return X0 + km * PX_PER_KM
+
+
+def pct(km):
+    return "%g%%" % (X(km) / 10)
+
+
+def mins(km, kmh):
+    return int(round(km / kmh * 60))
+
+
+def hm(km, kmh):
+    m = mins(km, kmh)
+    return "%d h %02d min" % (m // 60, m % 60)
+
+
+def clock(km, kmh):
+    """The watch-face figures: large numerals, a small h and min."""
+    m = mins(km, kmh)
+    return "<b>%d</b><small>h</small> <b>%02d</b><small>min</small>" % (m // 60, m % 60)
+
+
+def pic(key, cls="", lazy=True, fetch=False):
+    base, w, h, alt = IMG[key]
+    att = ' loading="lazy" decoding="async"' if lazy else (' fetchpriority="high"' if fetch else "")
+    return ('<picture%s><source srcset="%s.webp" type="image/webp"><img src="%s.jpg" width="%d" height="%d" alt="%s"%s></picture>'
+            % (' class="%s"' % cls if cls else "", base, base, w, h, alt, att))
+
+
+def kin(text):
+    """A headline that rises word by word: each word in its own mask."""
+    out = []
+    for i, w in enumerate(text.split(" ")):
+        out.append('<span class="wr-w"><span style="--i:%d">%s</span></span>' % (i, w))
+    return " ".join(out)
+
+
+def count(final, to, dec=0, comma=False, suf=""):
+    return ('<span class="wr-count" data-final="%s" data-count="%s" data-dec="%d"%s%s><span>%s</span></span>'
+            % (final, to, dec, ' data-comma="1"' if comma else "", ' data-suf="%s"' % suf if suf else "", final))
+
+
+def ext(href, text, hidden=""):
+    return ('<a class="wr-u" href="%s" target="_blank" rel="noopener">%s%s%s</a>'
+            % (href, text, '<span class="wr-vh">%s</span>' % hidden if hidden else "", EXT))
+
+
+GRAIN = ("url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E"
+         "%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E"
+         "%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='.55'/%3E"
+         "%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23g)'/%3E%3C/svg%3E\")")
+
+CSS = r"""
+/* ===== The speed record attempt (tools/v4_record.py) ===== */
+.wr{--wr-top:92px;--wr-bar:56px;--wr-dock:58px;
+  --wr-deep:color-mix(in srgb,var(--bg) 58%,var(--ink));
+  --wr-shade:color-mix(in srgb,var(--bg) 84%,transparent);
+  --wr-solid:color-mix(in srgb,var(--bg) 92%,var(--card));
+  --wr-mega:min(calc(var(--fs-display) * 2.1),14.6vw);
+  --wr-giga:min(calc(var(--fs-display) * 3.3),23vw);
+  --wr-h2:calc(var(--fs-h1) * 1.2);
+  --wr-pad:calc(var(--sp-section) * 1.5);
+  --wr-x:var(--gutter);
+  position:relative;overflow-x:clip;}
+@media (max-width:560px){.wr{--wr-x:var(--sp-2);}}
+.wr-in{box-sizing:border-box;width:100%;max-width:var(--measure);margin:0 auto;padding-inline:var(--wr-x);}
+.wr-tbd{font-style:italic;font-weight:400;color:var(--gray);white-space:nowrap;letter-spacing:0;text-transform:none;font-family:var(--font-body);}
+.wr-vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+
+/* the chapter number, the headline, the one line under it */
+.wr-no{display:flex;align-items:center;gap:var(--sp-2);margin:0 0 var(--sp-3);font-family:var(--font-mono);font-size:var(--fs-small);letter-spacing:.08em;color:var(--gray);}
+.wr-no::after{content:"";flex:0 0 clamp(2.5rem,6vw,5rem);height:1px;background:var(--edge-hi);}
+.wr-h2{margin:0;font-family:var(--font-display);font-weight:700;font-size:var(--wr-h2);line-height:1.02;letter-spacing:-.035em;color:var(--white);text-wrap:balance;max-width:14ch;}
+.wr-lede{margin:var(--sp-3) 0 0;max-width:31rem;font-size:var(--fs-lead);line-height:1.55;color:var(--gray-light);text-wrap:pretty;}
+
+/* kinetic type: each word (or line) rises inside its own mask, once */
+.wr-w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em;}
+.wr-w>span,.wr-ln>span{display:inline-block;}
+.wr-ln{display:block;overflow:hidden;padding-bottom:.07em;margin-bottom:-.07em;}
+.wr-ln>span{display:block;}
+
+/* links: the underline draws in under the pointer */
+.wr-u{color:inherit;text-decoration:underline;text-decoration-color:var(--edge-hi);text-underline-offset:.22em;text-decoration-thickness:1px;
+  background:linear-gradient(var(--orange),var(--orange)) 0 100%/0 1px no-repeat;padding-bottom:1px;
+  transition:background-size .6s var(--ease),color .3s var(--ease),text-decoration-color .3s var(--ease);}
+.wr-u:hover,.wr-u:focus-visible{color:var(--white);text-decoration-color:transparent;background-size:100% 1px;}
+.wr-ext{display:inline-block;width:.62em;height:.62em;margin-left:.28em;vertical-align:.08em;}
+.wr :focus-visible{outline:2px solid var(--white);outline-offset:3px;}
+
+/* still film grain over the dark chapters (an SVG noise, never animated) */
+.wr-grain{position:relative;isolation:isolate;}
+.wr-grain::after{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;opacity:.32;mix-blend-mode:overlay;
+  background-image:__GRAIN__;background-size:220px 220px;}
+
+/* the button: the site's orange, skewed */
+.wr-btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:44px;padding:0 1.3rem;
+  font-family:var(--font-body);font-size:var(--fs-small);font-weight:700;letter-spacing:.01em;text-decoration:none;white-space:nowrap;color:var(--ink);}
+.wr-btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--orange);transform:skewX(-10deg);transition:transform .45s var(--ease),filter .3s var(--ease);}
+.wr-btn:hover::before{transform:skewX(-10deg) scaleX(1.05);filter:brightness(1.08);}
+
+/* ---------- the opening ---------- */
+.wr-hero{position:relative;min-height:calc(100svh - var(--wr-top));display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--bg);}
+.wr-hero-pic{position:absolute;inset:0;z-index:-2;}
+.wr-hero-pic img{display:block;width:100%;height:100%;object-fit:cover;object-position:66% 46%;}
+.wr-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:
+  linear-gradient(90deg,color-mix(in srgb,var(--bg) 80%,transparent) 0%,color-mix(in srgb,var(--bg) 38%,transparent) 46%,transparent 72%),
+  linear-gradient(180deg,color-mix(in srgb,var(--bg) 45%,transparent) 0%,transparent 24%,transparent 46%,color-mix(in srgb,var(--bg) 70%,transparent) 78%,var(--bg) 100%);}
+.wr-hero-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,16.5rem);align-items:end;gap:var(--sp-5);padding-block:var(--sp-5) calc(var(--sp-section) * 1.15);}
+.wr-kick{margin:0 0 var(--sp-3);text-wrap:balance;font-size:var(--fs-micro);font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);
+  text-shadow:0 1px 2px color-mix(in srgb,var(--bg) 85%,transparent);}
+.wr-mega{margin:0;font-family:var(--font-display);font-weight:700;font-size:var(--wr-mega);line-height:.9;letter-spacing:-.045em;color:var(--white);}
+.wr-mega .is-hollow{color:transparent;-webkit-text-stroke:max(1px,.011em) var(--white);}
+.wr-hero-sub{margin:var(--sp-4) 0 0;max-width:27rem;font-size:var(--fs-lead);line-height:1.5;color:var(--gray-light);}
+.wr-go{display:inline-flex;align-items:center;gap:.6rem;min-height:44px;margin-top:var(--sp-2);font-size:var(--fs-body);font-weight:600;color:var(--white);text-decoration:none;
+  background:linear-gradient(var(--orange),var(--orange)) 0 calc(100% - 6px)/100% 1px no-repeat;transition:background-size .6s var(--ease),color .3s var(--ease);}
+.wr-go svg{width:13px;height:13px;transition:transform .5s var(--ease);}
+.wr-go:hover{color:var(--orange);}
+.wr-go:hover svg{transform:translateY(3px);}
+.wr-hero-meta{margin:0;display:grid;gap:var(--sp-3);padding:0 0 .3rem var(--sp-3);border-left:1px solid var(--edge-hi);}
+.wr-hero-meta dt{font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.06em;color:var(--gray-light);}
+.wr-hero-meta dd{margin:.35rem 0 0;font-family:var(--font-mono);font-size:var(--fs-body-s);color:var(--white);}
+.wr-hero-meta .wr-v{font-family:var(--font-display);font-weight:600;font-size:var(--fs-h2);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;}
+.wr-hero-meta .wr-v small{font-family:var(--font-mono);font-size:var(--fs-small);font-weight:400;letter-spacing:0;color:var(--gray-light);margin-left:.4em;}
+.wr-hero-meta .is-me .wr-v{color:var(--orange);}
+.wr-hero-meta .wr-s{margin-top:.35rem;font-family:var(--font-body);font-size:var(--fs-small);line-height:1.4;color:var(--gray-light);}
+.wr-cue{position:absolute;left:50%;bottom:var(--sp-3);z-index:5;display:grid;place-items:center;width:44px;height:44px;margin-left:-22px;border-radius:50%;
+  border:1px solid var(--edge-hi);color:var(--white);transition:border-color .4s var(--ease),background-color .4s var(--ease);}
+.wr-cue:hover{border-color:var(--orange);background:var(--wash);}
+.wr-cue svg{width:14px;height:14px;}
+
+/* ---------- the chapter bar: every chapter named, a reading line under each ---------- */
+.wr-bar{z-index:55;}
+.wr-bar-in{display:flex;align-items:center;gap:var(--sp-2);}
+.wr-bar ol{position:relative;list-style:none;margin:0;padding:0;display:flex;}
+.wr-bar ol a{position:relative;display:flex;align-items:center;gap:.5rem;min-height:44px;padding:0 .8rem;white-space:nowrap;text-decoration:none;
+  font-size:var(--fs-small);font-weight:500;color:var(--gray-light);transition:color .3s var(--ease);}
+.wr-bar ol a span{font-family:var(--font-mono);font-size:var(--fs-micro);color:var(--gray);transition:color .3s var(--ease);}
+.wr-bar ol a i{position:absolute;left:.8rem;right:.8rem;bottom:6px;height:1px;background:var(--edge);overflow:hidden;}
+.wr-bar ol a i::after{content:"";position:absolute;inset:0;background:var(--orange);transform:scaleX(var(--p,0));transform-origin:0 50%;}
+.wr-bar ol a:hover,.wr-bar ol a[aria-current]{color:var(--white);}
+.wr-bar ol a[aria-current] span{color:var(--white);}
+.wr-bar .wr-btn{flex:none;margin-left:auto;}
+@media (min-width:900px){
+  .wr-bar{border-block:1px solid var(--line);background:var(--wr-solid);}
+  .wr-bar-in{height:var(--wr-bar);}
+  .wr-bar ol{margin-left:-.8rem;}
+  .wr-js .wr-bar{position:fixed;left:0;right:0;top:0;transform:translateY(-104%);transition:transform .45s var(--ease),translate .38s var(--ease);}
+  .wr-js .wr-bar.is-on{transform:none;}
+  html.v2-nav-up .wr-bar{translate:0 var(--v2-nav-h,77px);}
+  html{scroll-padding-top:calc(var(--wr-bar,56px) + .5rem);}
+}
+@media (max-width:899.98px){
+  .wr-bar{background:var(--wr-shade);border-top:1px solid var(--edge);}
+  @supports (backdrop-filter:blur(2px)){.wr-bar{-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);}}
+  .wr-bar-in{gap:.4rem;padding-block:6px calc(6px + env(safe-area-inset-bottom,0px));padding-right:calc(var(--wr-x) + 4px);}
+  .wr-bar ol{flex:1 1 auto;min-width:0;overflow-x:auto;scrollbar-width:none;margin-left:calc(var(--wr-x) * -1);padding-left:calc(var(--wr-x) - .7rem);
+    -webkit-mask-image:linear-gradient(90deg,transparent,var(--bg) 1rem,var(--bg) calc(100% - 1.5rem),transparent);mask-image:linear-gradient(90deg,transparent,var(--bg) 1rem,var(--bg) calc(100% - 1.5rem),transparent);}
+  .wr-bar ol::-webkit-scrollbar{display:none;}
+  .wr-bar ol a{padding:0 .7rem;}
+  .wr-bar ol a span{display:none;}
+  .wr-bar ol a i{left:.7rem;right:.7rem;bottom:4px;}
+  .wr-js .wr-bar{position:fixed;left:0;right:0;bottom:0;transform:translateY(110%);transition:transform .45s var(--ease);}
+  .wr-js .wr-bar.is-on{transform:none;}
+  /* while the site menu is back at the top, it does the navigating: one bar at a time on a small screen */
+  html.v2-nav-up.wr-js .wr-bar.is-on{transform:translateY(110%);}
+}
+/* a key that reaches the bar always finds it on screen */
+.wr-js .wr-bar:focus-within,html.v2-nav-up.wr-js .wr-bar:focus-within{transform:none;}
+
+/* ---------- the ticker: moves only while the page scrolls ---------- */
+.wr-tick{overflow:hidden;padding-block:clamp(1.1rem,2.6vw,2.2rem);border-block:1px solid var(--line);}
+.wr-tick-in{display:flex;width:max-content;}
+.wr-tick-in>span{display:flex;align-items:center;flex:none;white-space:nowrap;font-family:var(--font-display);font-weight:700;
+  font-size:min(calc(var(--fs-display) * 1.45),15vw);line-height:1.02;letter-spacing:-.035em;color:transparent;-webkit-text-stroke:1px var(--edge-hi);}
+.wr-tick em{font-style:normal;color:var(--white);-webkit-text-stroke:0;}
+.wr-tick i{flex:none;width:.14em;height:.14em;margin:0 .5em;border-radius:50%;background:var(--orange);}
+
+/* ---------- 01 the mark to beat ---------- */
+.wr-mark{padding-block:var(--wr-pad) calc(var(--wr-pad) * .55);}
+.wr-duel{display:grid;margin-top:var(--sp-5);}
+.wr-big{min-width:0;}
+.wr-big.is-mine{justify-self:end;text-align:right;margin-top:calc(var(--wr-giga) * -.2);}
+.wr-cap{margin:0 0 .4rem;font-family:var(--font-mono);font-size:var(--fs-small);color:var(--gray-light);}
+.wr-giga{margin:0;font-family:var(--font-display);font-weight:700;font-size:var(--wr-giga);line-height:.84;letter-spacing:-.055em;color:var(--white);
+  font-variant-numeric:tabular-nums;white-space:nowrap;}
+.is-theirs .wr-giga{color:transparent;-webkit-text-stroke:max(1px,.005em) color-mix(in srgb,var(--white) 78%,transparent);}
+.is-mine .wr-giga{color:var(--orange);}
+.wr-giga small{font-size:.15em;font-weight:600;letter-spacing:0;margin-left:.35em;color:var(--gray-light);-webkit-text-stroke:0;}
+.wr-meta{list-style:none;margin:var(--sp-3) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.35rem 0;font-size:var(--fs-body-s);color:var(--gray-light);}
+.wr-meta li{display:flex;align-items:center;}
+.wr-meta li+li::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--gray);margin:0 .75rem;}
+.is-mine .wr-meta{justify-content:flex-end;}
+.wr-meta b{font-weight:500;color:var(--white);}
+.wr-say{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--sp-2) var(--sp-5);margin:var(--sp-5) 0 0;padding-top:var(--sp-3);border-top:1px solid var(--line);}
+.wr-say p{margin:0;}
+.wr-say .wr-t{font-family:var(--font-display);font-weight:500;font-size:var(--fs-h2);line-height:1.2;letter-spacing:-.02em;color:var(--white);}
+.wr-say .wr-t b{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.wr-also{font-family:var(--font-mono);font-size:var(--fs-small);color:var(--gray-light);}
+.wr-more{margin-top:var(--sp-3);border-bottom:1px solid var(--line);max-width:46rem;}
+.wr-more summary{display:flex;align-items:center;gap:.9rem;min-height:52px;cursor:pointer;list-style:none;width:fit-content;
+  color:var(--gray-light);font-size:var(--fs-small);font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:color .3s var(--ease);}
+.wr-more summary::-webkit-details-marker{display:none;}
+.wr-more summary::after{content:"";width:11px;height:11px;flex:none;transition:transform .45s var(--ease);
+  background:linear-gradient(currentColor,currentColor) 50% 50%/100% 1px no-repeat,linear-gradient(currentColor,currentColor) 50% 50%/1px 100% no-repeat;}
+.wr-more[open] summary::after{transform:rotate(45deg);}
+.wr-more summary:hover{color:var(--white);}
+.wr-more p{margin:0 0 1rem;font-size:var(--fs-body-s);line-height:1.65;color:var(--gray-light);max-width:44rem;}
+/* a number that counts keeps the width of its final value */
+.wr-count{display:inline-grid;}
+.wr-count>span,.wr-count::after{grid-area:1/1;}
+.wr-count::after{content:attr(data-final);visibility:hidden;}
+.is-mine .wr-count>span{text-align:right;}
+
+/* ---------- 02 the course, pinned and flown ---------- */
+.wr-course{position:relative;background:var(--wr-deep);}
+.wr-course .wr-stage{position:relative;padding-block:var(--wr-pad);}
+.wr-course-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:var(--sp-3) var(--sp-4);}
+.wr-seg{position:relative;display:inline-flex;gap:3px;margin:0;padding:3px;min-width:0;border:1px solid var(--edge);}
+.wr-seg legend{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+.wr-seg input{position:absolute;opacity:0;width:1px;height:1px;margin:0;}
+.wr-seg label{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:5.6rem;padding:0 1rem;cursor:pointer;
+  font:600 var(--fs-body-s)/1 var(--font-body);color:var(--gray-light);transition:background-color .35s var(--ease),color .35s var(--ease);}
+.wr-seg label:hover{color:var(--white);}
+.wr-seg input:checked+label{background:var(--white);color:var(--bg);}
+.wr-seg input:focus-visible+label{outline:2px solid var(--white);outline-offset:2px;}
+/* the switch without a script: two radio buttons and :has */
+.wr-course:not(:has(#wrk200:checked)) .v200,.wr-course:has(#wrk200:checked) .v100{display:none;}
+.wr-map{position:relative;isolation:isolate;margin:clamp(2.6rem,7vh,4.6rem) 0 clamp(1.6rem,4vh,2.8rem);}
+.wr-box{position:relative;}
+.wr-box svg{display:block;width:100%;height:clamp(120px,21vh,200px);overflow:visible;}
+.wr-lane{fill:none;stroke:var(--edge-hi);stroke-width:1.5;vector-effect:non-scaling-stroke;}
+.wr-lane.is-200{stroke:var(--edge);stroke-dasharray:3 7;}
+.wr-course:has(#wrk200:checked) .wr-lane.is-200{stroke:var(--edge-hi);stroke-dasharray:none;}
+.wr-glow{fill:none;stroke:color-mix(in srgb,var(--orange) 26%,transparent);stroke-width:13;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;}
+.wr-flown{fill:none;stroke:var(--orange);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;}
+.wr-gate{stroke:var(--white);stroke-width:2;vector-effect:non-scaling-stroke;}
+.wr-tk{stroke:var(--edge-hi);stroke-width:1;vector-effect:non-scaling-stroke;}
+.wr-pl{position:absolute;bottom:calc(100% + .7rem);left:0;white-space:nowrap;font-size:var(--fs-small);line-height:1.3;color:var(--white);}
+.wr-pl i{display:block;font-style:normal;font-family:var(--font-mono);font-size:var(--fs-small);color:var(--gray-light);}
+.wr-tp{position:absolute;top:0;bottom:0;width:0;}
+.wr-tp .wr-pl{transform:translateX(-50%);text-align:center;}
+.wr-tp.v200 .wr-pl{transform:translateX(-100%);text-align:right;}
+.wr-ring{position:absolute;left:0;top:50%;width:2.8rem;height:2.8rem;margin:-1.4rem 0 0 -1.4rem;box-sizing:border-box;border-radius:50%;border:1px dashed var(--gray-light);}
+.wr-ring::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--white);}
+.wr-gl{position:absolute;left:3%;top:75%;width:34px;height:34px;margin:-17px 0 0 -17px;transform:rotate(180deg);pointer-events:none;}
+.wr-gl::before{content:"";position:absolute;inset:-16px;border-radius:50%;
+  background:radial-gradient(circle,color-mix(in srgb,var(--orange) 46%,transparent) 0%,color-mix(in srgb,var(--orange) 14%,transparent) 42%,transparent 70%);}
+.wr-gl svg{position:relative;display:block;width:100%;height:100%;overflow:visible;}
+.wr-gl .g-w{fill:none;stroke:var(--orange);stroke-width:3.6;stroke-linecap:round;}
+.wr-gl .g-l{fill:none;stroke:var(--white);stroke-width:.9;opacity:.75;}
+.wr-gl .g-p{fill:var(--white);}
+.wr-map.is-live .wr-gl{left:0;top:0;will-change:transform;}
+.wr-scale{position:relative;height:1.6em;margin-top:.8rem;font-family:var(--font-mono);font-size:var(--fs-small);color:var(--gray-light);}
+.wr-scale span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap;}
+.wr-scale span:first-child{transform:translateX(-30%);}
+.wr-scale span:last-child{transform:translateX(-80%);}
+.wr-read{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1.15fr) minmax(0,1.15fr);gap:var(--sp-4);margin:0;padding-top:var(--sp-3);border-top:1px solid var(--edge);}
+.wr-read dt{font-family:var(--font-mono);font-size:var(--fs-small);line-height:1.35;color:var(--gray-light);}
+.wr-read dd{margin:.6rem 0 0;font-family:var(--font-display);font-weight:500;font-size:calc(var(--fs-h2) * 1.45);line-height:1;letter-spacing:-.035em;color:var(--white);
+  font-variant-numeric:tabular-nums;white-space:nowrap;}
+.wr-read dd b{font-weight:500;}
+.wr-read dd small{font-size:.36em;font-weight:500;letter-spacing:.02em;color:var(--gray-light);margin:0 .5em 0 .18em;}
+.wr-read dd small:last-child{margin-right:0;}
+.wr-read dd .wr-tbd{font-size:.42em;letter-spacing:0;}
+.wr-read .is-leg dd{font-size:calc(var(--fs-h2) * 1.2);}
+.wr-read .is-me dd{color:var(--orange);}
+.wr-read .is-me dt::before{content:"";display:inline-block;width:7px;height:7px;margin-right:.45rem;border-radius:50%;background:var(--orange);vertical-align:.05em;}
+.wr-km{display:none;}
+/* a counting kilometre figure keeps three digits of room, so nothing beside it moves */
+#wrKm,#wrKmBig{display:inline-block;min-width:3ch;text-align:right;}
+
+/* ---------- 03 Kerio Valley ---------- */
+.wr-place{padding-top:var(--wr-pad);}
+.wr-cut{width:fit-content;max-width:100%;margin:0;font-family:var(--font-display);font-weight:700;font-size:min(calc(var(--fs-display) * 3),22vw);
+  line-height:.86;letter-spacing:-.05em;color:var(--white);}
+.wr-cut span{display:block;}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  /* the photograph inside the letters, over a plain fill, so the name shows before the photograph arrives */
+  .wr-cut{color:transparent;background:url("__KERIO__.webp") 50% 58%/cover no-repeat,var(--gray-light);
+    -webkit-background-clip:text;background-clip:text;filter:saturate(1.15) brightness(1.2);}
+  .wr-js .wr-cut:not(.is-near){background:var(--gray-light);-webkit-background-clip:text;background-clip:text;}
+}
+.wr-plate{position:relative;margin:var(--sp-5) 0 0;}
+.wr-plate-img{position:relative;height:min(80svh,54rem);overflow:hidden;}
+.wr-par{position:absolute;inset:0;}
+.wr-par img{width:100%;height:100%;object-fit:cover;}
+.wr-plate-img::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,var(--bg) 0%,transparent 22%,transparent 46%,color-mix(in srgb,var(--bg) 94%,transparent) 100%);}
+.wr-facts{position:absolute;left:0;right:0;bottom:0;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--sp-4);
+  box-sizing:border-box;max-width:var(--measure);margin:0 auto;padding:0 var(--wr-x) var(--sp-5);}
+.wr-facts div{padding-top:var(--sp-2);border-top:1px solid var(--edge-hi);}
+.wr-facts dt{font-family:var(--font-mono);font-size:var(--fs-micro);color:var(--gray-light);}
+.wr-facts dd{margin:.45rem 0 0;font-size:var(--fs-body);line-height:1.35;color:var(--white);}
+.wr-vario{display:block;width:100%;max-width:14rem;height:auto;margin:.7rem 0 0;overflow:visible;}
+.wr-vario .v-base,.wr-vario .v-tk{stroke:var(--gray-light);stroke-width:1;}
+.wr-vario .v-n{fill:var(--gray-light);font-family:var(--font-mono);font-size:11px;text-anchor:middle;}
+.wr-vario .v-pk{fill:var(--orange);}
+.wr-vario .v-rr{fill:url(#wrHatch);stroke:var(--orange);stroke-width:1;}
+.wr-vario .v-ht{stroke:var(--orange);stroke-width:1.4;}
+
+/* ---------- 04 the window ---------- */
+.wr-win .wr-stage{padding-block:var(--wr-pad);}
+.wr-win-in{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "days" "vp";gap:var(--sp-5);}
+.wr-win-head{grid-area:head;}
+.wr-win .wr-h2{max-width:9ch;}
+.wr-win .wr-lede{margin-top:var(--sp-2);}
+/* the 26 days: two expeditions and the two days between */
+.wr-days{grid-area:days;min-width:0;}
+.wr-days-k,.wr-days-bar,.wr-days-n{display:grid;grid-template-columns:repeat(26,minmax(0,1fr));gap:3px;}
+.wr-days-k{margin-bottom:.8rem;}
+.wr-days-k>span{display:flex;flex-direction:column;gap:.2rem;padding-left:.7rem;border-left:1px solid var(--orange);font-size:var(--fs-body-s);line-height:1.3;color:var(--gray-light);}
+.wr-days-k>span:first-child{grid-column:1/13;}
+.wr-days-k>span:last-child{grid-column:15/27;}
+.wr-days-k a{display:inline-flex;align-items:center;min-height:44px;margin:-.5rem 0 -.4rem;width:fit-content;font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);color:var(--white);}
+.wr-days-bar i{display:block;height:2.6rem;background:var(--orange);transform-origin:50% 100%;}
+.wr-days-bar i.is-off{background:none;border:1px dashed var(--edge-hi);}
+.wr-days-n{margin-top:.5rem;font-family:var(--font-mono);font-size:var(--fs-micro);color:var(--gray);text-align:center;}
+.wr-days-n span{min-width:0;}
+.wr-days-dur{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;margin:var(--sp-3) 0 0;padding-top:.9rem;border-top:1px solid var(--live);font-size:var(--fs-body);line-height:1.45;color:var(--white);}
+.wr-days-dur b{font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light);}
+/* before and after: a strip */
+.wr-vp{grid-area:vp;min-width:0;}
+.wr-track{display:flex;align-items:stretch;}
+.wr-steps{list-style:none;margin:0;padding:0;display:flex;}
+.wr-step{position:relative;flex:0 0 min(19rem,76vw);box-sizing:border-box;padding:var(--sp-4) var(--sp-5) var(--sp-2) 0;border-top:1px solid var(--edge);}
+.wr-step::before{content:"";position:absolute;left:0;top:-5px;width:9px;height:9px;box-sizing:border-box;border-radius:50%;background:var(--bg);border:1px solid var(--gray-light);}
+.wr-when{display:block;margin:0 0 var(--sp-2);font-family:var(--font-mono);font-size:var(--fs-small);color:var(--gray-light);}
+.wr-step h3{margin:0;font-family:var(--font-display);font-weight:600;font-size:calc(var(--fs-h3) * 1.15);line-height:1.15;color:var(--white);}
+.wr-step p{margin:.7rem 0 0;max-width:16rem;font-size:var(--fs-body);line-height:1.5;color:var(--gray-light);}
+.wr-step p a{display:inline-flex;align-items:center;min-height:44px;}
+.wr-fig{position:relative;flex:0 0 min(18rem,60vw);margin:0 var(--sp-5) 0 0;overflow:hidden;align-self:stretch;}
+.wr-fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:56% 50%;transition:transform 1.4s var(--ease);}
+.wr-fig:hover img{transform:scale(1.05);}
+.wr-swipe{display:none;}
+
+/* ---------- 05 the audience ---------- */
+.wr-aud{padding-block:var(--wr-pad);}
+.wr-aud-in{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.85fr);grid-template-areas:"copy pic" "stats pic";column-gap:clamp(2rem,6vw,6rem);}
+.wr-aud-copy{grid-area:copy;}
+.wr-portrait{grid-area:pic;position:relative;margin:calc(var(--sp-5) * 1.6) 0 0;align-self:start;aspect-ratio:4/5;overflow:hidden;}
+.wr-portrait figcaption{position:absolute;left:var(--sp-3);bottom:var(--sp-3);z-index:1;font-family:var(--font-mono);font-size:var(--fs-micro);color:var(--white);
+  text-shadow:0 1px 3px color-mix(in srgb,var(--bg) 90%,transparent);}
+.wr-portrait::after{content:"";position:absolute;inset:55% 0 0;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--bg) 70%,transparent));pointer-events:none;}
+.wr-stats{grid-area:stats;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-5) var(--sp-4);margin:var(--sp-5) 0 0;}
+.wr-stats div{display:flex;flex-direction:column-reverse;justify-content:flex-end;padding-top:var(--sp-3);border-top:1px solid var(--edge);}
+.wr-stats dd{margin:0;font-family:var(--font-display);font-weight:700;font-size:calc(var(--fs-display) * .95);line-height:1;letter-spacing:-.04em;color:var(--white);
+  font-variant-numeric:tabular-nums;white-space:nowrap;}
+.wr-stats dt{margin-top:.6rem;font-size:var(--fs-body-s);color:var(--gray-light);}
+
+/* ---------- 06 the offer ---------- */
+.wr-offer{padding-block:var(--wr-pad) var(--sp-section);background:radial-gradient(70% 60% at 85% 0%,var(--sky-warm),transparent 70%);}
+.wr-offer-head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2rem,6vw,6rem);align-items:end;}
+.wr-offer-pic{position:relative;margin:0;aspect-ratio:4/3;overflow:hidden;}
+.wr-offer-pic img{transition:transform 1.4s var(--ease);}
+.wr-offer-pic:hover img{transform:scale(1.04);}
+.wr-tiers{display:grid;grid-template-columns:minmax(0,1.2fr) repeat(2,minmax(0,1fr));gap:var(--sp-3);margin-top:var(--sp-5);}
+.wr-tier{position:relative;padding:var(--sp-4);border-top:1px solid var(--edge-hi);
+  background:linear-gradient(180deg,color-mix(in srgb,var(--white) 6%,transparent),color-mix(in srgb,var(--white) 1.5%,transparent) 70%);}
+.wr-tier.is-lead{border-top:2px solid var(--orange);background:linear-gradient(180deg,color-mix(in srgb,var(--orange) 9%,transparent),color-mix(in srgb,var(--white) 2%,transparent) 70%);}
+.wr-tier::after{content:"";position:absolute;left:0;top:0;width:2px;height:0;background:var(--orange);transition:height .6s var(--ease);}
+.wr-tier:hover::after,.wr-tier:focus-within::after{height:3.5rem;}
+.wr-tier-n{margin:0 0 var(--sp-3);font-family:var(--font-display);font-weight:700;font-size:calc(var(--fs-display) * 1.05);line-height:.9;letter-spacing:-.04em;
+  color:transparent;-webkit-text-stroke:1px var(--edge-hi);}
+.wr-tier.is-lead .wr-tier-n{-webkit-text-stroke-color:var(--orange);}
+.wr-tier-k{position:absolute;top:var(--sp-4);right:var(--sp-4);margin:0;padding:.2rem .5rem;border:1px solid var(--live);font-family:var(--font-mono);font-size:var(--fs-micro);line-height:1.4;color:var(--gray-light);}
+.wr-tier h3{margin:0 0 var(--sp-3);font-family:var(--font-display);font-weight:700;font-size:var(--fs-h3);line-height:1.1;color:var(--white);}
+.wr-tier ul{list-style:none;margin:0;padding:0;display:grid;gap:.15rem;}
+.wr-tier li{position:relative;padding:.5rem 0 .5rem 1.2rem;border-top:1px solid var(--line);font-size:var(--fs-body);line-height:1.45;color:color-mix(in srgb,var(--white) 88%,var(--gray-light));}
+.wr-tier li::before{content:"";position:absolute;left:0;top:1.2em;width:.5rem;height:2px;background:var(--orange);}
+.wr-cta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-3) var(--sp-5);margin-top:var(--sp-5);}
+.wr-mag{display:inline-block;padding:16px;margin:-16px;transition:transform .7s var(--ease);}
+.wr-cta .btn-solid{margin:0;font-size:var(--fs-lead);padding:1.05rem 2.3rem;}
+.wr-cta .btn-lines{display:inline-flex;align-items:center;min-height:48px;box-sizing:border-box;font-size:var(--fs-lead);}
+.wr-cta .btn-lines:hover{color:var(--orange);border-color:var(--orange);}
+.wr-src{margin:var(--sp-5) 0 0;font-size:var(--fs-small);line-height:1.8;color:var(--gray);}
+
+/* ---------- image reveals and depth ---------- */
+.wr-rv{clip-path:inset(0);}
+.wr-par img,.wr-offer-pic img,.wr-portrait img{display:block;width:100%;height:100%;object-fit:cover;}
+
+/* ---------- the ring cursor (fine pointers only; made by the script) ---------- */
+.wr-cursor{position:fixed;left:0;top:0;z-index:250;width:0;height:0;pointer-events:none;opacity:0;transition:opacity .3s var(--ease);}
+.wr-cursor.is-on{opacity:1;}
+.wr-cursor i{position:absolute;left:-17px;top:-17px;width:34px;height:34px;box-sizing:border-box;border-radius:50%;border:1px solid color-mix(in srgb,var(--white) 55%,transparent);
+  transition:transform .5s var(--ease),background-color .5s var(--ease),border-color .5s var(--ease);}
+.wr-cursor.is-big i{transform:scale(1.75);background:color-mix(in srgb,var(--orange) 12%,transparent);border-color:var(--live);}
+.wr-cursor.is-map i{transform:scale(2.5);background:transparent;border-color:color-mix(in srgb,var(--orange) 70%,transparent);}
+
+/* ---------- motion: only in answer to the visitor, and none of it when they ask for stillness ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .wr-js .wr-k :is(.wr-w,.wr-ln)>span{transform:translateY(112%);transition:transform 1.05s var(--ease);transition-delay:calc(var(--i,0) * 70ms);}
+  .wr-js .wr-k.is-in :is(.wr-w,.wr-ln)>span{transform:none;}
+  .wr-js .wr-fade{opacity:0;transform:translateY(1.4rem);transition:opacity 1s var(--ease) .3s,transform 1s var(--ease) .3s;}
+  .wr-js .wr-fade.is-in{opacity:1;transform:none;}
+  .wr-js .wr-cut{transition:clip-path 1.3s var(--ease),transform 1.3s var(--ease);}
+  .wr-js .wr-cut:not(.is-in){clip-path:inset(0 0 100% 0);transform:translateY(10%);}
+  .wr-js .wr-rv{transition:clip-path 1.5s var(--ease);}
+  .wr-js .wr-rv:not(.is-in){clip-path:inset(14% 9% 14% 9%);}
+  .wr-js .wr-rv img{transition:transform 1.8s var(--ease);}
+  .wr-js .wr-rv:not(.is-in) img{transform:scale(1.18);}
+  .wr-js .wr-days-bar i{transition:transform .9s var(--ease) calc(var(--d) * 32ms);}
+  .wr-js .wr-days:not(.is-in) .wr-days-bar i{transform:scaleY(.06);}
+  .wr-pin .wr-stage>.wr-in{transition:translate .38s var(--ease);}
+  html{scroll-behavior:smooth;}
+}
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .wr-hero-pic{animation:wr-sink linear both;animation-timeline:view();animation-range:exit 0% exit 100%;}
+    .wr-hero-in{animation:wr-lift linear both;animation-timeline:view();animation-range:exit 0% exit 100%;}
+    @keyframes wr-sink{to{transform:translateY(16%) scale(1.06);}}
+    @keyframes wr-lift{to{transform:translateY(-12vh);opacity:0;}}
+    .wr-par{animation:wr-drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%;}
+    @keyframes wr-drift{from{transform:translateY(-7%) scale(1.15);}to{transform:translateY(7%) scale(1.15);}}
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .wr *,.wr *::before,.wr *::after{transition:none!important;}
+}
+
+/* ---------- pinned chapters (set before the first paint by the script at the top of main) ---------- */
+.wr-pin .wr-course{height:200vh;}
+.wr-pin .wr-course .wr-stage{position:sticky;top:0;box-sizing:border-box;height:100svh;padding-block:calc(var(--wr-bar) + var(--sp-3)) var(--sp-3);display:flex;align-items:center;overflow:hidden;}
+.wr-pin .wr-km{display:block;position:absolute;z-index:-1;right:-.04em;top:50%;transform:translateY(-54%);margin:0;pointer-events:none;white-space:nowrap;
+  font-family:var(--font-display);font-weight:700;font-size:min(32vh,19vw);line-height:.8;letter-spacing:-.06em;color:transparent;
+  -webkit-text-stroke:1px color-mix(in srgb,var(--white) 14%,transparent);font-variant-numeric:tabular-nums;}
+.wr-pin .wr-km small{font-size:.22em;letter-spacing:0;margin-left:.12em;}
+html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .8);}
+.wr-hz .wr-win .wr-stage{position:sticky;top:0;box-sizing:border-box;height:100svh;padding-block:calc(var(--wr-bar) + var(--sp-3)) var(--sp-3);display:flex;align-items:center;overflow:hidden;}
+
+/* ---------- wide screens: the window's title and days hold while the strip passes ---------- */
+@media (min-width:900px){
+  .wr-win-in{grid-template-columns:minmax(0,20rem) minmax(0,1fr);grid-template-areas:"head days" "vp vp";column-gap:var(--sp-5);align-items:end;}
+  :root:not(.wr-hz) .wr-track{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-4);}
+  :root:not(.wr-hz) .wr-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-4);}
+  :root:not(.wr-hz) .wr-step{padding-right:0;}
+  :root:not(.wr-hz) .wr-fig{display:none;}
+  .wr-hz .wr-win-in{grid-template-areas:"head vp" "days days";row-gap:clamp(2rem,6vh,4rem);align-items:center;}
+  .wr-hz .wr-vp{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,var(--bg) 9%,var(--bg) 90%,transparent);mask-image:linear-gradient(90deg,transparent,var(--bg) 9%,var(--bg) 90%,transparent);}
+  .wr-hz .wr-track{padding:var(--sp-3) 0 0 var(--sp-3);width:max-content;will-change:transform;}
+  .wr-hz .wr-fig{height:auto;min-height:15rem;}
+}
+
+/* ---------- tablets and phones ---------- */
+@media (max-width:899.98px){
+  /* the photograph above the words, so the type sits on dark ground */
+  .wr-hero{--wr-ph:clamp(17rem,40svh,30rem);min-height:0;display:block;padding-top:calc(var(--wr-ph) - 3.4rem);}
+  .wr-hero-pic{inset:0 0 auto 0;height:var(--wr-ph);}
+  .wr-hero-pic img{object-position:81% 44%;}
+  .wr-hero::before{background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 30%,transparent) 0%,transparent 18%,transparent calc(var(--wr-ph) - 7rem),var(--bg) calc(var(--wr-ph) - .5rem));}
+  /* the title, then the numbers, then the line and the way down: what, why and when on the first screen */
+  .wr-hero-in{grid-template-columns:minmax(0,1fr);gap:0;padding-block:0 calc(var(--sp-5) + 1rem);}
+  .wr-hero-in>div:first-child{display:contents;}
+  .wr-kick{order:1;}
+  .wr-mega{order:2;}
+  .wr-hero-meta{order:3;}
+  .wr-hero-sub{order:4;}
+  .wr-go{order:5;justify-self:start;}
+  .wr-mega .is-hollow{-webkit-text-stroke-width:max(1.5px,.016em);}
+  .wr-hero-sub{margin-top:var(--sp-3);}
+  .wr-hero-meta{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--sp-3);margin-top:var(--sp-4);border-left:0;padding:var(--sp-3) 0 0;border-top:1px solid var(--edge-hi);}
+  .wr-cue{display:none;}
+  .wr-big.is-mine{margin-top:var(--sp-5);}
+  .wr-read{grid-template-columns:minmax(0,1fr);gap:0;}
+  .wr-read div{display:flex;align-items:baseline;justify-content:space-between;gap:var(--sp-2);padding:.6rem 0;border-bottom:1px solid var(--line);}
+  .wr-read dd,.wr-read .is-leg dd{margin:0;font-size:calc(var(--fs-h2) * 1.05);}
+  .wr-pin .wr-course .wr-stage{padding-block:var(--sp-3) calc(var(--sp-3) + var(--wr-dock));}
+  .wr-facts{position:static;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-3);padding-top:var(--sp-3);padding-bottom:0;}
+  .wr-plate-img{height:62svh;}
+  .wr-plate-img::after{background:linear-gradient(180deg,var(--bg) 0%,transparent 18%,transparent 75%,var(--bg) 100%);}
+  .wr-vp{margin-inline:calc(var(--wr-x) * -1);}
+  .wr-track{overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;padding:var(--sp-3) var(--wr-x) var(--sp-2);scroll-padding-inline:var(--wr-x);}
+  .wr-track::-webkit-scrollbar{display:none;}
+  .wr-step{scroll-snap-align:start;padding-right:var(--sp-4);}
+  .wr-fig{display:none;}
+  .wr-swipe{display:block;position:relative;height:2px;margin:var(--sp-2) var(--wr-x) 0;background:var(--line);}
+  .wr-swipe i{position:absolute;inset:0;background:var(--orange);transform:scaleX(var(--p,.25));transform-origin:0 50%;}
+  .wr-aud-in{grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "pic" "stats";}
+  .wr-portrait{justify-self:end;width:min(62%,20rem);margin-top:var(--sp-4);}
+  .wr-offer{padding-bottom:calc(var(--sp-section) + var(--wr-dock));}
+  .wr-offer-head{grid-template-columns:minmax(0,1fr);}
+  .wr-tiers{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .wr-tier.is-lead{grid-column:1/-1;}
+}
+@media (max-width:560px){
+  .wr-kick span{display:block;}
+  .wr-kick .wr-sep{display:none;}
+  .wr-hero-meta{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--sp-2);}
+  .wr-hero-meta .is-win{grid-column:1/-1;display:flex;align-items:baseline;gap:.8rem;}
+  .wr-hero-meta .is-win dd{margin:0;}
+  .wr-hero-meta .wr-v{font-size:calc(var(--fs-h2) * 1.15);}
+  .wr-meta{flex-direction:column;gap:.25rem;}
+  .wr-meta li+li::before{display:none;}
+  .wr-meta a{display:inline-flex;align-items:center;min-height:44px;}
+  .is-mine .wr-meta{align-items:flex-end;}
+  .wr-say .wr-t{font-size:var(--fs-h3);}
+  .wr-map{margin:var(--sp-5) 0 var(--sp-3);}
+  .wr-pin .wr-course{height:190vh;}
+  .wr-pin .wr-km{display:none;}
+  .wr-course-head .wr-h2{font-size:calc(var(--fs-h1) * 1.05);}
+  .wr-ring{width:2rem;height:2rem;margin:-1rem 0 0 -1rem;}
+  .wr-scale span:nth-child(even){display:none;}
+  .wr-facts{grid-template-columns:minmax(0,1fr);}
+  .wr-days-n{display:none;}
+  .wr-days-bar i{height:2.2rem;}
+  .wr-days-k a{font-size:var(--fs-body);}
+  .wr-stats{gap:var(--sp-4) var(--sp-3);}
+  .wr-stats dd{font-size:calc(var(--fs-display) * .82);}
+  .wr-tiers{grid-template-columns:minmax(0,1fr);}
+  .wr-cta{flex-direction:column;align-items:flex-start;}
+}
+@media print{
+  .wr-pin .wr-course,.wr-hz .wr-win{height:auto!important;}
+  .wr .wr-stage{position:static!important;height:auto!important;}
+  .wr-bar,.wr-tick,.wr-cursor,.wr-cue,.wr-km{display:none!important;}
+  .wr-track{transform:none!important;flex-wrap:wrap;}
+  .wr-cut{color:var(--white)!important;background:none!important;filter:none!important;}
+}
+""".replace("__GRAIN__", GRAIN).replace("__KERIO__", IMG["kerio"][0])
+
+
+def hero():
+    best = '<span class="wr-v">36<small>km/h</small></span>'
+    mark = '<span class="wr-v">35.94<small>km/h</small></span>'
+    return """
+<header class="wr-hero wr-grain" id="wr-goal">
+  """ + pic("hero", "wr-hero-pic", lazy=False, fetch=True) + """
+  <div class="wr-in wr-hero-in">
+    <div>
+      <p class="wr-kick"><span>World Record Attempt</span> <span class="wr-sep" aria-hidden="true">&middot;</span> <span>Kerio Valley, Kenya</span></p>
+      <h1 class="wr-mega wr-k"><span class="wr-ln"><span style="--i:0">The Speed</span></span> <span class="wr-ln"><span class="is-hollow" style="--i:1">Record</span></span> <span class="wr-ln"><span style="--i:2">Attempt</span></span></h1>
+      <p class="wr-hero-sub wr-fade">Two world records for speed: 100 km and 200 km, out and return.</p>
+      <a class="wr-go wr-fade" href="#wr-partner">Partner on the attempt """ + DOWN + """</a>
+    </div>
+    <dl class="wr-hero-meta wr-fade">
+      <div><dt>To beat, 100 km</dt><dd>""" + mark + """</dd><dd class="wr-s">""" + TBC + """</dd></div>
+      <div class="is-me"><dt>My best, about</dt><dd>""" + best + """</dd><dd class="wr-s">Over 198.86 km, not a record course</dd></div>
+      <div class="is-win"><dt>Window</dt><dd>18 Jan to 12 Feb 2027</dd></div>
+    </dl>
+  </div>
+  <a class="wr-cue" href="#wr-mark" aria-label="Go to the mark to beat">""" + DOWN + """</a>
+</header>
+"""
+
+
+def bar():
+    lis = "".join('<li><a href="#%s"><span>%s</span>%s<i aria-hidden="true"></i></a></li>' % (cid, n, name)
+                  for cid, n, name in CHAPTERS)
+    return ('\n<nav class="wr-bar" aria-label="Chapters"><div class="wr-in wr-bar-in"><ol>' + lis + '</ol>'
+            '<a class="wr-btn" href="#wr-partner">Partner</a></div></nav>\n')
+
+
+def ticker():
+    one = '<span>100 km<i></i>200 km<i></i><em>Kerio Valley</em><i></i>2027<i></i></span>'
+    return '\n<div class="wr-tick" aria-hidden="true"><div class="wr-tick-in">' + one + one + '</div></div>\n'
+
+
+def mark():
+    return """
+<section class="wr-mark" id="wr-mark" aria-labelledby="wr-mark-h">
+  <div class="wr-in">
+    <p class="wr-no">01</p>
+    <h2 class="wr-h2 wr-k" id="wr-mark-h">""" + kin("The Mark To Beat") + """</h2>
+    <div class="wr-duel">
+      <div class="wr-big is-theirs">
+        <p class="wr-cap">100 km mark, class O-3</p>
+        <p class="wr-giga">""" + count("35.94", REC100, 2) + """<small>km/h</small></p>
+        <ul class="wr-meta"><li><b>Michel Macquet (FRA)</b></li><li>23 Jan 2025</li><li>Status&nbsp;""" + TBC + """</li><li>""" + ext(FAI_LIST, "FAI records") + """</li></ul>
+      </div>
+      <div class="wr-big is-mine">
+        <p class="wr-cap">My best average, about</p>
+        <p class="wr-giga">""" + count("36", BEST) + """<small>km/h</small></p>
+        <ul class="wr-meta"><li><b>198.86 km</b></li><li>Kenya, 6 Feb 2025</li><li>UP Trango X (EN C)</li><li><b>Not a record course</b></li><li>""" + ext(UP_NEWS, "Source", ": UP Paragliders news") + """</li></ul>
+      </div>
+    </div>
+    <div class="wr-say">
+      <p class="wr-t">The time to beat: 100&nbsp;km in <b>""" + hm(100, REC100).replace(" ", "&nbsp;") + """</b>.</p>
+      <p class="wr-also">200 km mark """ + TBD + """</p>
+    </div>
+    <details class="wr-more"><summary>About these numbers</summary>
+      <p>Class O-3 is paragliders. Speed is the course distance over the time.</p>
+      <p>One FAI listing shows the 100&nbsp;km mark as a claim under review, another as the record: <a class="wr-u" href=\"""" + FAI_LIST + """\" target="_blank" rel="noopener">FAI CIVL records</a>.</p>
+      <p>My 198.86&nbsp;km flight, about 36&nbsp;km/h on a UP Trango X (EN C), was logged on XContest. It was not a record course: <a class="wr-u" href=\"""" + UP_NEWS + """\" target="_blank" rel="noopener">UP Paragliders</a>.</p>
+      <p>The claim goes to the FAI under the <a class="wr-u" href=\"""" + FAI_CODE + """\" target="_blank" rel="noopener">Sporting Code, Section 7D</a>.</p>
+    </details>
+  </div>
+</section>
+"""
+
+
+def lane(k):
+    xa = X(k / 2) - RX
+    return "M%g %gH%gA%g %g 0 0 1 %g %gH%g" % (X0, YO, xa, RX, RY, xa, YB, X0)
+
 
 def course_svg():
-    # a straight course drawn to scale: start, turnpoint, back; ticks every tenth
     ticks = []
-    for i in range(11):
-        x = 60 + i * 88
-        ticks.append('<line class="tk" x1="%d" y1="150" x2="%d" y2="%d"/>' % (x, x, 158 if i % 5 else 164))
-        if i % 5 == 0:
-            ticks.append('<text class="tk-l" x="%d" y="184" text-anchor="middle" data-frac="%d">%d km</text>' % (x, i, i * 5))
-    path = "M60 96 H940 A22 22 0 0 1 940 140 H60"
+    for k in range(0, 101, 10):
+        big = k % 50 == 0
+        ticks.append('<line class="wr-tk" x1="%g" y1="%d" x2="%g" y2="200"/>' % (X(k), 184 if big else 191, X(k)))
     return (
-        '<svg class="wr-svg" viewBox="0 0 1000 200" role="img" aria-labelledby="wrCourseT">'
-        '<title id="wrCourseT">An out-and-return course drawn to scale: from the start to a turnpoint at half the distance and straight back</title>'
-        '<path class="trk-ghost" d="%s"/>' % path
-        + '<path class="trk" id="wrTrk" d="%s"/>' % path
+        '<svg viewBox="0 0 1000 200" preserveAspectRatio="none" role="img" aria-labelledby="wrMapT">'
+        '<title id="wrMapT">The 100 km and 200 km out-and-return courses drawn to one scale: out from the start '
+        'to a turnpoint at half the distance, round it, and straight back</title>'
+        '<path class="wr-lane is-200" d="%s"/>' % lane(200)
+        + '<path class="wr-lane v100" d="%s"/>' % lane(100)
+        + '<path class="wr-glow v100" id="wrG100" d="%s"/><path class="wr-flown v100" id="wrF100" d="%s"/>' % (lane(100), lane(100))
+        + '<path class="wr-glow v200" id="wrG200" d="%s"/><path class="wr-flown v200" id="wrF200" d="%s"/>' % (lane(200), lane(200))
         + "".join(ticks)
-        + '<circle class="pt" cx="60" cy="118" r="9"/><text class="pt-l" x="48" y="66">Start and finish</text>'
-        '<text class="pt-s" x="48" y="34">Kerio Valley</text>'
-        '<circle class="pt" cx="962" cy="118" r="9"/><text class="pt-l" x="940" y="66" text-anchor="end">Turnpoint</text>'
-        '<text class="pt-s" x="940" y="34" text-anchor="end" id="wrTpKm">50 km out</text>'
-        '<circle class="glider" id="wrGlider" r="6" cx="60" cy="96"/>'
-        "</svg>"
+        + '<path class="wr-gate" d="M%g 28V172"/>' % X0
+        + "</svg>"
     )
 
 
-def main_html():
-    t100r, t100b, t200b = hm(100, REC100), hm(100, BEST), hm(200, BEST)
-    return """<main id="v4-main" class="wr">
+GLIDER = ('<svg viewBox="-16 -16 32 32" aria-hidden="true" focusable="false">'
+          '<path class="g-l" d="M5 -13 L-8 0 L5 13"/><path class="g-w" d="M5 -13 Q15 0 5 13"/><circle class="g-p" cx="-8" cy="0" r="2.6"/></svg>')
 
-<header class="wr-hero">
-  <picture><source media="(max-aspect-ratio: 2/3)" srcset="img/hero/kenya-kerio-valley-p.webp" type="image/webp"><source srcset="../../assets/destinations/kenya/hero/kerio-valley.webp" type="image/webp"><img src="../../assets/destinations/kenya/hero/kerio-valley.jpg" width="1152" height="768" alt="Paragliding at Kerio Valley, Kenya" fetchpriority="high"></picture>
-  <div class="wr-hero-in">
-    <div>
-      <span class="wr-kick">World record attempt &middot; Kerio Valley, Kenya</span>
-      <h1>The Fastest Paraglider Out And Back</h1>
-      <p class="wr-lead">In January and February 2027 I fly for the paragliding world records for speed over a 100 km and a 200 km out-and-return course, from Kerio Valley in Kenya. Here is the target, the plan, and how your brand can fly with it.</p>
-    </div>
-    <div class="wr-read">
-      <div><span class="t">100 km mark to beat</span><span class="v">35.94<small>km/h</small></span><p>Michel Macquet, 23 Jan 2025. Status """ + TBC + """</p></div>
-      <div class="is-best"><span class="t">My best average</span><span class="v">36<small>km/h</small></span><p>About 36 km/h over 198.86 km, Kenya, 6 Feb 2025</p></div>
+
+def course():
+    tp = lambda k, cls: ('<span class="wr-tp %s" style="left:%s"><span class="wr-ring" aria-hidden="true"></span>'
+                         '<span class="wr-pl">Turnpoint<i>%d km out</i></span></span>' % (cls, pct(k / 2), k // 2))
+    scale = "".join('<span style="left:%s">%s</span>' % (pct(k), "%d km" % k if k == 100 else k) for k in (0, 25, 50, 75, 100))
+    return """
+<section class="wr-course wr-grain" id="wr-course" aria-labelledby="wr-course-h">
+  <div class="wr-stage">
+    <div class="wr-in">
+      <div class="wr-course-head">
+        <div><p class="wr-no">02</p><h2 class="wr-h2 wr-k" id="wr-course-h">""" + kin("Out And Back, To Scale") + """</h2></div>
+        <fieldset class="wr-seg"><legend>Course length</legend>
+          <input type="radio" name="wrk" id="wrk100" value="100" checked><label for="wrk100">100 km</label>
+          <input type="radio" name="wrk" id="wrk200" value="200"><label for="wrk200">200 km</label>
+        </fieldset>
+      </div>
+      <div class="wr-map" data-cursor="map">
+        <p class="wr-km" aria-hidden="true"><span id="wrKmBig"><span class="v100">100</span><span class="v200">200</span></span><small>km</small></p>
+        <div class="wr-box">
+          """ + course_svg() + """
+          <span class="wr-pl" style="left:0">Start, finish</span>
+          """ + tp(100, "v100") + tp(200, "v200") + """
+          <span class="wr-gl" id="wrGl">""" + GLIDER + """</span>
+        </div>
+        <div class="wr-scale" aria-hidden="true">""" + scale + """</div>
+      </div>
+      <dl class="wr-read">
+        <div><dt>Flown</dt><dd><span id="wrKm"><span class="v100">100</span><span class="v200">200</span></span><small>km</small></dd></div>
+        <div class="is-leg"><dt>Leg</dt><dd id="wrLeg">Finish</dd></div>
+        <div class="is-me"><dt>At about 36 km/h, my best average</dt><dd id="wrT1"><span class="v100">""" + clock(100, BEST) + """</span><span class="v200">""" + clock(200, BEST) + """</span></dd></div>
+        <div class="is-mark"><dt>At the mark, """ + ("%.2f" % REC100) + """ km/h</dt><dd id="wrT2"><span class="v100">""" + clock(100, REC100) + """</span><span class="v200">""" + TBD + """</span></dd></div>
+      </dl>
     </div>
   </div>
-</header>
+</section>
+"""
 
-<section class="wr-sec" aria-labelledby="wr-what">
-  <span class="wr-label">The record</span>
-  <h2 class="wr-h" id="wr-what">Two Records, One Straight Line</h2>
-  <p class="wr-p">The FAI keeps world records for the speed a paraglider can hold around a declared course. On an out-and-return course the pilot flies from the start to a turnpoint and straight back, and the record is the distance divided by the time. I am going for two of them: the 100 km course and the 200 km course, in class O-3, paragliders.</p>
-  <div class="wr-course">
-    <div class="wr-tabs" role="group" aria-label="Course length">
-      <button type="button" aria-pressed="true" data-km="100">100 km</button>
-      <button type="button" aria-pressed="false" data-km="200">200 km</button>
+
+def vario_svg():
+    # 0 to 8 m/s: the midday peaks 4 to 6 filled, the rare surges 6 to 7 hatched
+    x0, x1, y = 6, 224, 16
+    u = (x1 - x0) / 8.0
+    p = ['<defs><pattern id="wrHatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'
+         '<line class="v-ht" x1="0" y1="0" x2="0" y2="4"/></pattern></defs>',
+         '<line class="v-base" x1="%d" y1="%d" x2="%d" y2="%d"/>' % (x0, y, x1, y)]
+    for v in range(9):
+        x = x0 + v * u
+        t = 5 if v % 2 == 0 else 3
+        p.append('<line class="v-tk" x1="%.1f" y1="%d" x2="%.1f" y2="%d"/>' % (x, y - t, x, y + t))
+        if v in (0, 2, 4, 6, 8):
+            p.append('<text class="v-n" x="%.1f" y="%d">%d</text>' % (x, y + 20, v))
+    p.append('<rect class="v-pk" x="%.1f" y="%d" width="%.1f" height="9"/>' % (x0 + 4 * u, y - 4.5, 2 * u))
+    p.append('<rect class="v-rr" x="%.1f" y="%d" width="%.1f" height="9"/>' % (x0 + 6 * u, y - 4.5, u))
+    return '<svg class="wr-vario" viewBox="0 0 230 40" aria-hidden="true" focusable="false">%s</svg>' % "".join(p)
+
+
+def place():
+    return """
+<section class="wr-place" id="wr-kerio" aria-labelledby="wr-kerio-h">
+  <div class="wr-in">
+    <p class="wr-no">03</p>
+    <h2 class="wr-cut" id="wr-kerio-h"><span>Kerio</span> <span>Valley</span></h2>
+    <p class="wr-lede wr-fade">The base of my <a class="wr-u" href="destinations/kenya.html">Kenya expeditions</a>, and the site where the world speed records are chased.</p>
+  </div>
+  <figure class="wr-plate">
+    <div class="wr-plate-img wr-rv"><div class="wr-par"><picture><source media="(max-width: 560px)" srcset=\"""" + IMG["kerio_p"][0] + """.webp" type="image/webp"><source srcset=\"""" + IMG["kerio"][0] + """.webp" type="image/webp"><img src=\"""" + IMG["kerio"][0] + """.jpg" width="1152" height="768" alt="Paragliding at Kerio Valley, Kenya" loading="lazy" decoding="async"></picture></div></div>
+    <dl class="wr-facts">
+      <div><dt>Where</dt><dd>0.72&deg;N 35.65&deg;E</dd></div>
+      <div><dt>Season</dt><dd>December to March</dd></div>
+      <div><dt>Thermals</dt><dd>4 to 6 m/s at the midday peaks, rare surges 6 to 7""" + vario_svg() + """</dd></div>
+      <div><dt>Flights</dt><dd>2 to 7 hours over the Rift Valley</dd></div>
+    </dl>
+  </figure>
+</section>
+"""
+
+
+def days():
+    # 18 Jan to 12 Feb 2027, a cell a day: Expedition One (18 to 29 Jan), the two days between, Expedition Two (1 to 12 Feb)
+    cells, nums = [], []
+    for i in range(26):
+        on = i < 12 or i >= 14
+        cells.append('<i class="%s" style="--d:%d"></i>' % ("is-on" if on else "is-off", i))
+        nums.append("<span>%d</span>" % (18 + i if i < 14 else i - 13))
+    return """
+      <div class="wr-days">
+        <div class="wr-days-k">
+          <span><a class="wr-u" href="destinations/kenya.html">Expedition One</a>18 to 29 Jan</span>
+          <span><a class="wr-u" href="destinations/kenya.html">Expedition Two</a>1 to 12 Feb</span>
+        </div>
+        <div class="wr-days-bar" role="img" aria-label="The window, 26 days from 18 January to 12 February 2027: Expedition One, 18 to 29 January, two days between, then Expedition Two, 1 to 12 February">""" + "".join(cells) + """</div>
+        <div class="wr-days-n" aria-hidden="true">""" + "".join(nums) + """</div>
+        <p class="wr-days-dur"><b>During</b>Live tracking from Kerio Valley on attempt days, daily updates</p>
+      </div>"""
+
+
+def window():
+    return """
+<section class="wr-win" id="wr-window" aria-labelledby="wr-win-h">
+  <div class="wr-stage">
+    <div class="wr-in wr-win-in">
+      <div class="wr-win-head">
+        <p class="wr-no">04</p>
+        <h2 class="wr-h2 wr-k" id="wr-win-h">""" + kin("18 Jan To 12 Feb 2027") + """</h2>
+        <p class="wr-lede wr-fade">Alongside my two Kenya expeditions.</p>
+      </div>""" + days() + """
+      <div class="wr-vp">
+        <div class="wr-track">
+          <ol class="wr-steps">
+            <li class="wr-step"><span class="wr-when">Before</span><h3>Preparation</h3><p>Wing, instruments, team, FAI observer """ + TBD + """</p></li>
+            <li class="wr-step"><span class="wr-when">Before</span><h3>Build-Up Episodes</h3><p>And the newsletter</p></li>
+          </ol>
+          <figure class="wr-fig">""" + pic("high") + """</figure>
+          <ol class="wr-steps" start="3">
+            <li class="wr-step"><span class="wr-when">After</span><h3>The Claim</h3><p><a class="wr-u" href=\"""" + FAI_CODE + """\" target="_blank" rel="noopener">FAI Sporting Code, Section 7D</a></p></li>
+            <li class="wr-step"><span class="wr-when">After</span><h3>The Film</h3><p>A debrief episode and the flight data</p></li>
+          </ol>
+        </div>
+        <div class="wr-swipe" aria-hidden="true"><i></i></div>
+      </div>
     </div>
-    """ + course_svg() + """
-    <div class="wr-ends" aria-hidden="true"><span><b>Start and finish</b>Kerio Valley</span><span><b>Turnpoint</b><i class="wr-tpkm">50 km out</i></span></div>
-    <dl class="wr-legs">
-      <div><dt>Course</dt><dd id="wrCourse">2 &times; 50 km</dd></div>
-      <div><dt>At the mark to beat</dt><dd id="wrAtRec">""" + t100r + """</dd></div>
-      <div><dt>At my 36 km/h</dt><dd id="wrAtBest">""" + t100b + """</dd></div>
+  </div>
+</section>
+"""
+
+
+def audience():
+    return """
+<section class="wr-aud" id="wr-audience" aria-labelledby="wr-aud-h">
+  <div class="wr-in wr-aud-in">
+    <div class="wr-aud-copy">
+      <p class="wr-no">05</p>
+      <h2 class="wr-h2 wr-k" id="wr-aud-h">""" + kin("Who Flies It With You") + """</h2>
+      <p class="wr-lede wr-fade">Podcast, YouTube and a newsletter about four times a month.</p>
+    </div>
+    <figure class="wr-portrait wr-rv"><div class="wr-par">""" + pic("aninder") + """</div><figcaption>Aninder Singh</figcaption></figure>
+    <dl class="wr-stats">
+      <div><dt>Podcast streams</dt><dd>""" + count("100,000+", 100000, comma=True, suf="+") + """</dd></div>
+      <div><dt>Countries reached</dt><dd>""" + count("130+", 130, suf="+") + """</dd></div>
+      <div><dt>Long-form interviews</dt><dd>""" + count("80", 80) + """</dd></div>
+      <div><dt>Years flying</dt><dd>""" + count("10+", 10, suf="+") + """</dd></div>
     </dl>
   </div>
-  <p class="wr-note">Times are the course length divided by the speed. The course is shown straight and to scale; its real line over the valley is chosen on the day.</p>
 </section>
+"""
 
-<section class="wr-sec" aria-labelledby="wr-marks">
-  <span class="wr-label">The numbers</span>
-  <h2 class="wr-h" id="wr-marks">The Marks To Beat</h2>
-  <div class="wr-marks">
-    <div class="wr-mark">
-      <h3>100 km out and return</h3>
-      <div class="n">35.94<small>km/h</small></div>
-      <ul><li>Michel Macquet (FRA), 23 January 2025</li><li>Class O-3, paragliders</li><li>Status: """ + TBC + """</li></ul>
-    </div>
-    <div class="wr-mark">
-      <h3>200 km out and return</h3>
-      <div class="n">""" + TBD + """</div>
-      <ul><li>The current class O-3 mark, from the FAI records list</li><li>Holder and date """ + TBD + """</li></ul>
-    </div>
-    <div class="wr-mark is-best">
-      <h3>My best flight</h3>
-      <div class="n">36<small>km/h</small></div>
-      <ul><li>198.86 km, logged on XContest</li><li>Kenya, 6 February 2025</li><li>UP Trango X (EN C)</li></ul>
-    </div>
-  </div>
-  <p class="wr-note">My 198.86 km flight was not flown as a record course; it shows the pace is already there over twice the distance. The FAI's own list gives the marks in force on the day of the attempt: <a href="https://www.fai.org/page/civl-records" target="_blank" rel="noopener">FAI CIVL records</a>.</p>
-</section>
 
-<section class="wr-sec" aria-labelledby="wr-site">
-  <div class="wr-site">
-    <div>
-      <span class="wr-label">The place</span>
-      <h2 class="wr-h" id="wr-site">Why Kerio Valley</h2>
-      <p class="wr-p">Kerio Valley is the base of my Kenya expeditions, and the site where the world speed records are chased.</p>
-      <ul class="wr-facts">
-        <li><span>Season</span>December to March</li>
-        <li><span>Thermals</span>4 to 6 m/s at the midday peaks, rare surges to 6 to 7 m/s</li>
-        <li><span>Flights</span>Two to seven hours over the Rift Valley</li>
-        <li><span>Where</span>0.72&deg;N &middot; 35.65&deg;E</li>
-      </ul>
+def offer():
+    return """
+<section class="wr-offer" id="wr-partner" aria-labelledby="wr-offer-h">
+  <div class="wr-in">
+    <div class="wr-offer-head">
+      <div>
+        <p class="wr-no">06</p>
+        <h2 class="wr-h2 wr-k" id="wr-offer-h">""" + kin("Put Your Name On The Attempt") + """</h2>
+        <p class="wr-lede wr-fade">Prices in the media kit, on request. Every sponsorship is <a class="wr-u" href="safety-and-disclosure.html">clearly marked as sponsored</a>.</p>
+      </div>
+      <figure class="wr-offer-pic wr-rv">""" + pic("icare") + """</figure>
     </div>
-    <figure><picture><source srcset="../../assets/destinations/kenya/gallery/kerio-valley.webp" type="image/webp"><img src="../../assets/destinations/kenya/gallery/kerio-valley.jpg" width="1152" height="768" alt="Paragliding at Kerio Valley, Kenya" loading="lazy" decoding="async"></picture></figure>
-  </div>
-</section>
-
-<section class="wr-sec" aria-labelledby="wr-plan">
-  <span class="wr-label">The plan</span>
-  <h2 class="wr-h" id="wr-plan">From Now To The Attempt</h2>
-  <ol class="wr-plan">
-    <li><b>Preparation</b><span>Training, kit and the declared courses """ + TBD + """</span></li>
-    <li><b>Wing and instruments</b><span>""" + TBD + """</span></li>
-    <li><b>Team on the ground</b><span>Official observer, retrieve and safety """ + TBD + """</span></li>
-    <li class="is-key"><b>Attempt window: 18 January to 12 February 2027</b><span>Flown from Kerio Valley alongside my two Kenya expeditions (18 to 29 January and 1 to 12 February), taking every day the air allows.</span></li>
-    <li><b>The claim</b><span>Flight recorder data and the observer's papers to the FAI under the Sporting Code, Section 7D (records).</span></li>
-  </ol>
-</section>
-
-<section class="wr-sec" aria-labelledby="wr-reach">
-  <span class="wr-label">The audience</span>
-  <h2 class="wr-h" id="wr-reach">Who Will Fly It With You</h2>
-  <p class="wr-p">The attempt is told on the Paragliding Atlas podcast, its YouTube channel and its newsletter, to pilots who come here to learn.</p>
-  <div class="wr-reach">
-    <div><span class="v">100,000+</span><span class="t">Podcast streams</span></div>
-    <div><span class="v">130+</span><span class="t">Countries reached</span></div>
-    <div><span class="v">80</span><span class="t">Long-form interviews</span></div>
-    <div><span class="v">10+</span><span class="t">Years flying</span></div>
-  </div>
-  <div class="wr-pilot">
-    <img src="../../assets/images/partners-aninder.jpg" width="720" height="900" alt="Aninder Singh" loading="lazy" decoding="async">
-    <div><b>Aninder Singh</b><p class="wr-p">Host of the Paragliding Atlas podcast and guide on the Kenya and India expeditions. Every episode, page and trip is run by me, so a partnership is one conversation with one person.</p></div>
+    <div class="wr-tiers">
+      <article class="wr-tier is-lead">
+        <p class="wr-tier-n" aria-hidden="true">01</p>
+        <p class="wr-tier-k">One only</p>
+        <h3>Title Partner</h3>
+        <ul><li>Your name in the attempt's title</li><li>Your mark on kit and on camera</li><li>Sponsored segments in the build-up and debrief episodes</li><li>First credit in the film</li><li>Your logo on the live tracking page</li></ul>
+      </article>
+      <article class="wr-tier">
+        <p class="wr-tier-n" aria-hidden="true">02</p>
+        <h3>Equipment Partner</h3>
+        <ul><li>Your product used and shown</li><li>An honest, disclosed review</li><li>In the hands of my Kenya expedition pilots</li><li>Credits</li></ul>
+      </article>
+      <article class="wr-tier">
+        <p class="wr-tier-n" aria-hidden="true">03</p>
+        <h3>Supporter</h3>
+        <ul><li>Your name on this page</li><li>Newsletter and debrief thanks</li><li>Film credit</li></ul>
+      </article>
+    </div>
+    <div class="wr-cta">
+      <span class="wr-mag"><a class="btn-solid" href=\"""" + MAIL + """\"><span>Partner on the attempt</span></a></span>
+      <span class="wr-mag"><a class="btn-lines" href="partners.html#pwForm">Other ways to work together</a></span>
+    </div>
+    <p class="wr-src">Sources: <a class="wr-u" href=\"""" + UP_NEWS + """\" target="_blank" rel="noopener">UP Paragliders</a>, <a class="wr-u" href=\"""" + FAI_LIST + """\" target="_blank" rel="noopener">FAI records</a>, <a class="wr-u" href=\"""" + FAI_CODE + """\" target="_blank" rel="noopener">Sporting Code 7D</a>, <a class="wr-u" href="destinations/kenya.html">the Kenya expedition</a></p>
   </div>
 </section>
-
-<section class="wr-sec" aria-labelledby="wr-partner">
-  <span class="wr-label">Partnership</span>
-  <h2 class="wr-h" id="wr-partner">Fly Your Name On A World Record Attempt</h2>
-  <p class="wr-p">Three ways to be part of it. Every partnership is clearly marked as sponsored, and the full media kit, with current audience numbers and prices, comes on request.</p>
-  <div class="wr-tiers">
-    <div class="wr-tier is-lead">
-      <span class="k">One partner</span><h3>Title Partner</h3><p class="one">The attempt carries your name.</p>
-      <ul><li>Your name in the attempt's title, on this page and in every episode about it</li><li>Your mark on my kit and on camera in the air</li><li>Sponsored segments in the build-up and debrief episodes</li><li>First credit in the film of the attempt</li><li>Your logo on the live tracking page during the window</li></ul>
-    </div>
-    <div class="wr-tier">
-      <span class="k">Gear and instruments</span><h3>Equipment Partner</h3><p class="one">Your product flies the record.</p>
-      <ul><li>Your product used on the attempt and shown in use</li><li>An honest review, with the relationship disclosed</li><li>In the hands of the pilots on my Kenya expeditions</li><li>Credit in the film and in the episodes</li></ul>
-    </div>
-    <div class="wr-tier">
-      <span class="k">Brands and people</span><h3>Supporter</h3><p class="one">Be on board from the start.</p>
-      <ul><li>Your name on this page</li><li>A thank you in the newsletter and in the debrief episode</li><li>Credit in the film of the attempt</li></ul>
-    </div>
-  </div>
-  <div class="wr-when">
-    <div><h3>Before</h3><p>Build-up episodes on speed flying and the plan, and the newsletter, about four times a month.</p></div>
-    <div><h3>During</h3><p>Live tracking from Kerio Valley on attempt days, with daily updates from the field.</p></div>
-    <div><h3>After</h3><p>A film of the attempt, a debrief episode, and the flight data, whatever the result.</p></div>
-  </div>
-  <div class="wr-cta">
-    <a class="wr-btn is-main" href="mailto:aninder@paraglidingatlas.com?subject=Partnering%20on%20the%20speed%20record%20attempt">Partner on the attempt</a>
-    <a class="wr-btn" href="partners.html#pwForm">Other ways to work together</a>
-  </div>
-  <p class="wr-src">Sources: my flight, <a href="https://www.up-paragliders.com/news/almost-200km-with-an-average-of-36kph" target="_blank" rel="noopener">UP Paragliders, "Almost 200km with an average of 36kph"</a>; the record marks, <a href="https://www.fai.org/page/civl-records" target="_blank" rel="noopener">FAI CIVL records</a>; the rules, <a href="https://www.fai.org/sites/default/files/civl/documents/sporting_code_s7_d_-_records_and_badges_2025.pdf" target="_blank" rel="noopener">FAI Sporting Code, Section 7D</a>; the site, the <a href="destinations/kenya.html">Kenya expedition</a>. How I work with sponsors: <a href="safety-and-disclosure.html">Safety &amp; Disclosure</a>.</p>
-</section>
-
-</main>"""
+"""
 
 
-SCRIPT = """<script>
-/* the course: 100 or 200 km, drawn as it comes into view, a glider flying it */
+EARLY = ('<script>(function(r,m){r.classList.add("wr-js");if(!m("(prefers-reduced-motion: reduce)").matches)'
+         '{r.classList.add("wr-pin");if(m("(min-width: 900px)").matches)r.classList.add("wr-hz");}})'
+         '(document.documentElement,function(q){return window.matchMedia(q);});</script>')
+
+
+def main_html():
+    return ('<main id="v4-main" class="wr">\n' + EARLY + hero() + bar() + ticker() + mark() + course()
+            + place() + window() + audience() + offer() + "\n</main>")
+
+
+SCRIPT = r"""<script>
+/* The speed record attempt (tools/v4_record.py). Every frame here is caused
+   by a scroll, a pointer, a tap or a key, and stops when they do. Reduced
+   motion: the finished state, nothing pinned, nothing counting. Without this
+   script the page is complete and the course switch still works. */
 (function () {
-  var trk = document.getElementById('wrTrk'), g = document.getElementById('wrGlider');
-  if (!trk) return;
-  var REC = %(rec)s, BEST = %(best)s, km = 100;
-  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function hm(d, v) { var h = d / v, m = Math.round((h - Math.floor(h)) * 60); return Math.floor(h) + ' h ' + (m < 10 ? '0' : '') + m + ' min'; }
-  function set(k) {
-    km = k;
-    document.getElementById('wrCourse').textContent = '2 \\u00d7 ' + (k / 2) + ' km';
-    document.getElementById('wrAtRec').innerHTML = k === 100 ? hm(100, REC) : '<span class="wr-tbd">[to supply]</span>';
-    document.getElementById('wrAtBest').textContent = hm(k, BEST);
-    document.getElementById('wrTpKm').textContent = (k / 2) + ' km out';
-    document.querySelectorAll('.wr-tpkm').forEach(function (t) { t.textContent = (k / 2) + ' km out'; });
-    document.querySelectorAll('.wr-svg [data-frac]').forEach(function (t) { t.textContent = (+t.getAttribute('data-frac')) * k / 20 + ' km'; });
-    document.querySelectorAll('.wr-tabs button').forEach(function (b) { b.setAttribute('aria-pressed', String(+b.getAttribute('data-km') === k)); });
-    if (!still) draw();
+  var d = document, w = window, root = d.documentElement;
+  var main = d.getElementById("v4-main");
+  if (!main || !main.classList.contains("wr")) return;
+  var mq = function (q) { return w.matchMedia(q); };
+  var still = mq("(prefers-reduced-motion: reduce)").matches;
+  var IO = "IntersectionObserver" in w;
+  var REC = @@REC@@, BEST = @@BEST@@, TBD = '<span class="wr-tbd">[to supply]</span>';
+  var X0 = @@X0@@, PX = @@PX@@, YO = @@YO@@, YB = @@YB@@, RX = @@RX@@, RY = @@RY@@, CY = @@CY@@;
+  function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function absTop(el) { return el.getBoundingClientRect().top + w.scrollY; }
+  function clock(h) { var m = Math.round(h * 60), mm = m % 60; return "<b>" + Math.floor(m / 60) + "</b><small>h</small> <b>" + (mm < 10 ? "0" : "") + mm + "</b><small>min</small>"; }
+  function all(s, r) { return [].slice.call((r || d).querySelectorAll(s)); }
+  function showAll() { all(".wr-k,.wr-fade,.wr-rv,.wr-cut,.wr-days").forEach(function (el) { el.classList.add("is-in", "is-near"); }); }
+
+  try {
+  /* 1. headlines, lines, photographs and the window's days arrive once, as they come into view */
+  var rv = all(".wr-k,.wr-fade,.wr-rv,.wr-cut,.wr-days");
+  if (still || !IO) showAll();
+  else {
+    /* an element clipped shut to begin with has no area to intersect, so its parent is watched for it */
+    var hosts = [];
+    var ro = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        ro.unobserve(e.target);
+        hosts.forEach(function (h) { if (h[0] === e.target) h[1].classList.add("is-in"); });
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+    rv.forEach(function (el) {
+      var host = el.classList.contains("wr-cut") ? el.parentNode : el;
+      hosts.push([host, el]); ro.observe(host);
+    });
   }
-  var L = trk.getTotalLength(), raf = 0;
-  function draw() {
-    cancelAnimationFrame(raf);
-    var t0 = performance.now(), dur = 2600;
-    trk.style.strokeDasharray = L; trk.style.strokeDashoffset = L;
-    (function step(t) {
-      var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
-      trk.style.strokeDashoffset = L * (1 - e);
-      var pt = trk.getPointAtLength(L * e); g.setAttribute('cx', pt.x); g.setAttribute('cy', pt.y);
-      if (p < 1) raf = requestAnimationFrame(step);
-    })(t0);
+  /* the photograph inside the letters loads only when its chapter is near (the letters show a plain fill until then) */
+  var cut = d.querySelector(".wr-cut");
+  if (cut && IO) {
+    var no = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { cut.classList.add("is-near"); no.disconnect(); } }, { rootMargin: "120% 0px 120% 0px" });
+    no.observe(cut);
+  } else if (cut) cut.classList.add("is-near");
+
+  /* 2. the numbers count up once, in the display face, at their final width */
+  function fmt(el, v) {
+    var dec = +el.getAttribute("data-dec") || 0, s = v.toFixed(dec);
+    if (el.hasAttribute("data-comma")) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return s + (el.getAttribute("data-suf") || "");
   }
-  document.querySelectorAll('.wr-tabs button').forEach(function (b) {
-    b.addEventListener('click', function () { set(+b.getAttribute('data-km')); });
+  if (!still && IO) {
+    var counts = all("[data-count]");
+    counts.forEach(function (el) { el.firstElementChild.textContent = fmt(el, 0); });
+    var co = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        co.unobserve(e.target);
+        var el = e.target, to = +el.getAttribute("data-count"), t = el.firstElementChild, t0 = performance.now(), dur = 1700;
+        (function step(now) {
+          var p = Math.min(1, (now - t0) / dur), k = 1 - Math.pow(1 - p, 4);
+          t.textContent = p < 1 ? fmt(el, to * k) : el.getAttribute("data-final");
+          if (p < 1) requestAnimationFrame(step);
+        })(t0);
+      });
+    }, { threshold: 0.6 });
+    counts.forEach(function (el) { co.observe(el); });
+  }
+
+  /* 3. the course: 100 or 200 km on one scale, a hairpin flown by the scroll */
+  var C = d.getElementById("wr-course"), Cst = C.querySelector(".wr-stage"), map = C.querySelector(".wr-map");
+  var box = C.querySelector(".wr-box svg"), gl = d.getElementById("wrGl");
+  var kmEl = d.getElementById("wrKm"), kmBig = d.getElementById("wrKmBig"), legEl = d.getElementById("wrLeg");
+  var t1 = d.getElementById("wrT1"), t2 = d.getElementById("wrT2");
+  var paths = { 100: [d.getElementById("wrF100"), d.getElementById("wrG100")], 200: [d.getElementById("wrF200"), d.getElementById("wrG200")] };
+  var r200 = d.getElementById("wrk200");
+  var K = r200 && r200.checked ? 200 : 100, F = 1, lastKm = -1, lastT = "", lastLeg = "";
+  function X(km) { return X0 + km * PX; }
+  var geo = { mapW: 1, mapH: 1 };
+  function render(f) {
+    F = f;
+    var xs = X(0), xa = X(K / 2) - RX, ts = 0.06, half = (1 - ts) / 2, sx = geo.mapW / 1000, sy = geo.mapH / 200;
+    var x, y, km, rot, dd, leg;
+    if (f <= half) {
+      var u = f / half; x = xs + (xa - xs) * u; y = YO; km = K / 2 * u; rot = 0; leg = "Out";
+      dd = "M" + xs + " " + YO + "H" + x.toFixed(1);
+    } else if (f <= half + ts) {
+      var v = (f - half) / ts, th = -Math.PI / 2 + v * Math.PI;
+      x = xa + RX * Math.cos(th); y = CY + RY * Math.sin(th); km = K / 2; leg = "Turnpoint";
+      rot = Math.atan2(RY * Math.cos(th) * sy, -RX * Math.sin(th) * sx) * 180 / Math.PI;
+      dd = "M" + xs + " " + YO + "H" + xa + "A" + RX + " " + RY + " 0 0 1 " + x.toFixed(1) + " " + y.toFixed(1);
+    } else {
+      var u2 = Math.min(1, (f - half - ts) / half); x = xa - (xa - xs) * u2; y = YB; km = K / 2 + K / 2 * u2; rot = 180;
+      leg = u2 >= 1 ? "Finish" : "Home";
+      dd = "M" + xs + " " + YO + "H" + xa + "A" + RX + " " + RY + " 0 0 1 " + xa + " " + YB + "H" + x.toFixed(1);
+    }
+    paths[K][0].setAttribute("d", dd); paths[K][1].setAttribute("d", dd);
+    gl.style.transform = "translate(" + (x * sx).toFixed(1) + "px," + (y * sy).toFixed(1) + "px) rotate(" + rot.toFixed(1) + "deg)";
+    var k = Math.round(km);
+    if (k !== lastKm) { lastKm = k; kmEl.textContent = k; if (kmBig) kmBig.textContent = k; }
+    if (leg !== lastLeg) { lastLeg = leg; legEl.textContent = leg; }
+    var s1 = clock(km / BEST);
+    if (s1 !== lastT) { lastT = s1; t1.innerHTML = s1; t2.innerHTML = K === 100 ? clock(km / REC) : TBD; }
+  }
+  function setK(k) {
+    K = k; lastKm = -1; lastT = ""; lastLeg = "";
+    /* the other course is shown whole, so a change of mind finds it drawn */
+    var o = k === 100 ? 200 : 100, full = "M" + X(0) + " " + YO + "H" + (X(o / 2) - RX) + "A" + RX + " " + RY + " 0 0 1 " + (X(o / 2) - RX) + " " + YB + "H" + X(0);
+    paths[o][0].setAttribute("d", full); paths[o][1].setAttribute("d", full);
+    render(F);
+  }
+  all('input[name="wrk"]').forEach(function (r) { r.addEventListener("change", function () { if (r.checked) setK(+r.value); }); });
+  map.classList.add("is-live");
+
+  /* 4. the window: a strip moved sideways by the vertical scroll (wide screens), a swipe row with a line under it (phones) */
+  var W = d.getElementById("wr-window"), Wst = W.querySelector(".wr-stage"), Wvp = W.querySelector(".wr-vp"), Wtr = W.querySelector(".wr-track");
+  var swipe = W.querySelector(".wr-swipe");
+  var hzMq = mq("(min-width: 900px)");
+  function hzOn() { return root.classList.contains("wr-hz"); }
+  function swiped() {
+    if (!swipe || hzOn()) return;
+    var m = Wtr.scrollWidth - Wtr.clientWidth;
+    swipe.style.setProperty("--p", (0.25 + 0.75 * (m > 0 ? Wtr.scrollLeft / m : 1)).toFixed(3));
+  }
+  Wtr.addEventListener("scroll", swiped, { passive: true });
+
+  /* 5. the ticker and the chapter bar */
+  var tick = d.querySelector(".wr-tick-in"), tickBox = d.querySelector(".wr-tick");
+  var barEl = d.querySelector(".wr-bar"), barOl = barEl && barEl.querySelector("ol");
+  var links = barEl ? all("ol a", barEl) : [], lines = links.map(function (a) { return a.querySelector("i"); });
+  var chaps = links.map(function (a) { return d.getElementById(a.getAttribute("href").slice(1)); });
+  var lastP = links.map(function () { return -1; });
+  var foot = d.querySelector("footer"), hero = d.getElementById("wr-goal"), partner = d.getElementById("wr-partner"), cur = -2;
+
+  function measure() {
+    var vh = w.innerHeight;
+    var r = box.getBoundingClientRect(); geo.mapW = r.width; geo.mapH = r.height;
+    geo.pin = root.classList.contains("wr-pin");
+    geo.cStart = absTop(C); geo.cLen = Math.max(1, C.offsetHeight - Cst.offsetHeight);
+    if (hzOn()) {
+      W.style.height = ""; Wtr.style.transform = "";
+      geo.over = Math.max(0, Wtr.scrollWidth - Wvp.clientWidth);
+      W.style.height = Math.round(Wst.offsetHeight + geo.over * 1.05 + vh * 0.15) + "px";
+      geo.wStart = absTop(W);
+      geo.wLen = Math.max(1, W.offsetHeight - Wst.offsetHeight);
+    } else { W.style.height = ""; Wtr.style.transform = ""; geo.over = 0; }
+    geo.seg = tick ? tick.firstElementChild.offsetWidth : 0;
+    geo.tickTop = tickBox ? absTop(tickBox) : 0;
+    geo.tops = chaps.map(function (c) { return c ? absTop(c) : 0; });
+    geo.ends = chaps.map(function (c, i) { return i + 1 < chaps.length ? geo.tops[i + 1] : (partner ? absTop(partner) : geo.tops[i] + 1); });
+    geo.partner = partner ? absTop(partner) : 1e9;
+    geo.foot = foot ? absTop(foot) : 1e9;
+    geo.heroEnd = hero ? absTop(hero) + hero.offsetHeight : 0;
+    geo.vh = vh;
+    swiped();
+  }
+
+  var queued = false;
+  function frame() {
+    queued = false;
+    var y = w.scrollY, vh = geo.vh;
+    if (geo.pin) render(clamp((clamp((y - geo.cStart) / geo.cLen) - 0.05) / 0.85));
+    if (hzOn() && geo.over) {
+      var q = clamp((y - geo.wStart) / geo.wLen);
+      Wtr.style.transform = "translate3d(" + (-q * geo.over).toFixed(1) + "px,0,0)";
+    }
+    if (tick && !still && geo.seg && y + vh > geo.tickTop - 200 && y < geo.tickTop + 600) {
+      tick.style.transform = "translate3d(" + (-((y * 0.55) % geo.seg)).toFixed(1) + "px,0,0)";
+    }
+    if (barEl) {
+      var line = y + vh * 0.4, i = -1;
+      for (var n = 0; n < geo.tops.length; n++) {
+        if (geo.tops[n] <= line && line < geo.ends[n]) i = n;
+        var p = clamp((line - geo.tops[n]) / Math.max(1, geo.ends[n] - geo.tops[n]));
+        if (Math.abs(p - lastP[n]) > 0.002) { lastP[n] = p; lines[n].style.setProperty("--p", p.toFixed(3)); }
+      }
+      if (i !== cur) {
+        cur = i;
+        links.forEach(function (a, k) { if (k === i) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
+        if (i >= 0 && barOl && barOl.scrollWidth > barOl.clientWidth) {
+          var li = links[i].parentNode;
+          barOl.scrollTo({ left: Math.max(0, li.offsetLeft - barOl.clientWidth * 0.3), behavior: still ? "auto" : "smooth" });
+        }
+      }
+      barEl.classList.toggle("is-on", y > geo.heroEnd - vh * 0.55 && y + vh < geo.foot + 2);
+    }
+  }
+  function onScroll() { if (!queued) { queued = true; requestAnimationFrame(frame); } }
+  function refresh() { measure(); if (!geo.pin) render(1); frame(); }
+
+  measure();
+  if (!geo.pin) render(1);
+  frame();
+  w.addEventListener("scroll", onScroll, { passive: true });
+  var rz = 0;
+  w.addEventListener("resize", function () { cancelAnimationFrame(rz); rz = requestAnimationFrame(refresh); }, { passive: true });
+  w.addEventListener("load", refresh);
+  if (d.fonts && d.fonts.ready) d.fonts.ready.then(refresh);
+  if (hzMq.addEventListener) hzMq.addEventListener("change", function (e) { if (!still) root.classList.toggle("wr-hz", e.matches); refresh(); });
+  /* a key that moves into the strip brings its step on screen */
+  Wtr.addEventListener("focusin", function (e) {
+    if (!hzOn() || !geo.over) return;
+    var item = e.target.closest(".wr-step,.wr-fig") || e.target;
+    var q = clamp((item.offsetLeft - Wvp.clientWidth * 0.3) / geo.over);
+    w.scrollTo(0, geo.wStart + q * geo.wLen);
   });
-  if (still) { g.setAttribute('cx', 60); g.setAttribute('cy', 140); return; }
-  trk.style.strokeDasharray = L; trk.style.strokeDashoffset = L;
-  var io = new IntersectionObserver(function (es) {
-    es.forEach(function (e) { if (e.isIntersecting) { draw(); io.disconnect(); } });
-  }, { threshold: 0.4 });
-  io.observe(trk);
+
+  /* 6. a ring cursor and magnetic buttons, under a fine pointer only */
+  if (!still && mq("(hover: hover) and (pointer: fine)").matches) {
+    var ring = d.createElement("div"); ring.className = "wr-cursor"; ring.setAttribute("aria-hidden", "true"); ring.innerHTML = "<i></i>";
+    d.body.appendChild(ring);
+    var cx = 0, cy = 0, craf = 0;
+    function paint() { craf = 0; ring.style.transform = "translate3d(" + cx + "px," + cy + "px,0)"; }
+    d.addEventListener("pointermove", function (e) {
+      if (e.pointerType !== "mouse") return;
+      cx = e.clientX; cy = e.clientY; if (!craf) craf = requestAnimationFrame(paint);
+      ring.classList.add("is-on");
+      var t = e.target.closest ? e.target.closest("a,button,label,summary,[data-cursor]") : null;
+      ring.classList.toggle("is-big", !!t && !t.hasAttribute("data-cursor"));
+      ring.classList.toggle("is-map", !!t && t.hasAttribute("data-cursor"));
+    }, { passive: true });
+    d.addEventListener("pointerleave", function () { ring.classList.remove("is-on"); });
+    w.addEventListener("blur", function () { ring.classList.remove("is-on"); });
+    all(".wr-mag").forEach(function (m) {
+      m.addEventListener("pointermove", function (e) {
+        var r = m.getBoundingClientRect();
+        var dx = Math.max(-10, Math.min(10, (e.clientX - (r.left + r.width / 2)) * 0.12)), dy = Math.max(-6, Math.min(6, (e.clientY - (r.top + r.height / 2)) * 0.2));
+        m.style.transform = "translate3d(" + dx.toFixed(1) + "px," + dy.toFixed(1) + "px,0)";
+      });
+      m.addEventListener("pointerleave", function () { m.style.transform = ""; });
+    });
+  }
+  } catch (err) {
+    root.classList.remove("wr-pin", "wr-hz");
+    showAll();
+  }
 })();
-</script>""" % {"rec": REC100, "best": BEST}
+</script>"""
+
+
+def script():
+    s = SCRIPT
+    for k, v in (("REC", REC100), ("BEST", BEST), ("X0", X0), ("PX", PX_PER_KM), ("YO", YO), ("YB", YB),
+                 ("RX", RX), ("RY", RY), ("CY", CY)):
+        s = s.replace("@@%s@@" % k, repr(v))
+    return s
 
 
 def ld():
@@ -413,7 +1196,7 @@ def ld():
             '"@id":"%s#webpage","name":"%s","url":"%s","description":"%s",'
             '"isPartOf":{"@id":"https://paraglidingatlas.com/#website"},'
             '"publisher":{"@id":"https://paraglidingatlas.com/#organization"},"inLanguage":"en"}\n</script>'
-            % (URL, TITLE, URL, DESC))
+            % (URL, TITLE, URL, DESC.replace('"', '\\"')))
 
 
 def main():
@@ -422,21 +1205,25 @@ def main():
     tail = rest.split("</main>", 1)[1]
     # the page's own title, description, address and picture
     head = re.sub(r"<title>.*?</title>", "<title>%s: Paragliding Atlas</title>" % TITLE, head, 1)
-    head = re.sub(r'(<meta name="description" content=")[^"]*', r"\g<1>" + DESC, head, 1)
-    head = re.sub(r'(<link rel="canonical" href=")[^"]*', r"\g<1>" + URL, head, 1)
-    head = re.sub(r'(<meta property="og:title" content=")[^"]*', r"\g<1>" + TITLE, head, 1)
-    head = re.sub(r'(<meta property="og:description" content=")[^"]*', r"\g<1>" + DESC, head, 1)
-    head = re.sub(r'(<meta property="og:image" content=")[^"]*', r"\g<1>" + OG_IMG, head, 1)
-    head = re.sub(r'(<meta property="og:url" content=")[^"]*', r"\g<1>" + URL, head, 1)
+    head = re.sub(r'(<meta name="description" content=")[^"]*', lambda m: m.group(1) + DESC, head, 1)
+    head = re.sub(r'(<link rel="canonical" href=")[^"]*', lambda m: m.group(1) + URL, head, 1)
+    head = re.sub(r'(<meta property="og:title" content=")[^"]*', lambda m: m.group(1) + TITLE, head, 1)
+    head = re.sub(r'(<meta property="og:description" content=")[^"]*', lambda m: m.group(1) + DESC, head, 1)
+    head = re.sub(r'(<meta property="og:image" content=")[^"]*', lambda m: m.group(1) + OG_IMG, head, 1)
+    head = re.sub(r'(<meta property="og:url" content=")[^"]*', lambda m: m.group(1) + URL, head, 1)
     # the partners page's own structured data and styles go; this page's come in
     head = re.sub(r'<script type="application/ld\+json">\s*\{\s*"@context": "https://schema.org",\s*"@type": "WebPage".*?</script>',
                   lambda m: ld(), head, 1, flags=re.S)
     head = re.sub(r"<!--v4u-css-->.*?<!--/v4u-css-->", "", head, 1, flags=re.S)
-    head = re.sub(r"\n<style>.*?</style>\n(?=<!-- site-schema -->)", "\n<style>" + CSS + "</style>\n", head, 1, flags=re.S)
+    head = re.sub(r"\n<style>.*?</style>\n(?=<!-- site-schema -->)", lambda m: "\n<style>" + CSS + "</style>\n", head, 1, flags=re.S)
     head = head.replace(' aria-current="page" class="is-here"', "")
-    if "wr-hero" not in head or "Partner With Me" in head.split("<body")[0]:
+    if ".wr-hero" not in head or "Partner With Me" in head.split("<body")[0] or URL not in head:
         raise SystemExit("v4_record: the partners shell has changed; check the head")
-    page = head + main_html() + tail.replace("</body>", SCRIPT + "\n</body>", 1)
+    page = head + main_html() + tail.replace("</body>", script() + "\n</body>", 1)
+    if "\u2014" in page:
+        raise SystemExit("v4_record: an em dash crept in")
+    if re.search(r"#[0-9a-fA-F]{3,8}\b|rgba?\(|hsla?\(", CSS + main_html() + script()):
+        raise SystemExit("v4_record: a raw colour crept in; use the design tokens")
     open(OUT, "w", encoding="utf-8").write(page)
     print("v4_record: %s" % os.path.relpath(OUT, ROOT))
 
