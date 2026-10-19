@@ -49,7 +49,8 @@ PROTO_ONLY = {"styleguide.html", "fly-options.html", "offline.html",
 
 def proto_only(rel):
     # record-*.html: the record page and its design options wait for the owner's go
-    return rel in PROTO_ONLY or rel.startswith("samples/") or rel.startswith("record-")
+    return (rel in PROTO_ONLY or rel.startswith("samples/") or rel.startswith("record-")
+            or rel.startswith("expeditions-"))  # the expeditions page's design options (owner, 19 Oct)
 
 
 if not os.path.isdir(DIR):

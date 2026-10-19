@@ -11,30 +11,36 @@ which awwwards worthy websites use".
 
 The design is option A, "Cinematic story" (tools/v4_record_a.py, the judges'
 winner over B and C, which stay as options for the owner), with what the
-judges asked to graft from B and C and every fix they listed:
-  - the opening: the masked three-line title, and on the first screen the two
-    numbers (the mark to beat and his best, "about", "not a record course")
-    beside the window, with one way straight down to the offer (B). On phones
-    the photograph sits above the words so the type is on dark ground;
+judges asked to graft from B and C:
+  - the opening: the masked three-line title (the page's one typographic
+    entrance), and on the first screen the two numbers (the mark to beat and
+    his best, "about", "not a record course") beside the window, with one way
+    straight down to the offer (B). On phones the photograph sits above the
+    words so the type is on dark ground;
   - a chapter bar with every chapter's name, a reading line per chapter and a
-    solid Partner button (B, C): along the top on wide screens (below the
-    site menu when it comes back), along the bottom on phones;
-  - 01 the mark: an outlined 35.94 against a solid orange "about 36", the
+    solid Partner button (B, C): along the top on wide screens, along the
+    bottom on phones (the chapters' numbers there, with the name of the one
+    being read beside them, so no name is ever cut), one bar at a time (it
+    steps away while the site menu is back, and the menu never slides across
+    it);
+  - 01 the mark: 35.94 in solid grey against a solid orange "about 36", the
     sources beside the numbers (B), "The time to beat" line and a fold with
     the detail behind the numbers (C);
   - 02 the course: pinned and flown kilometre by kilometre with the scroll, as
-    a hairpin out and back with a glider, Leg, Flown and two clocks counting
-    the same way (B), watch-face figures and a giant outlined kilometre
-    count behind (C), a 100 / 200 km switch that works without JavaScript
-    (two radio buttons and :has, B);
-  - 03 Kerio Valley: the photograph seen through its name (with a plain
-    fallback fill, so the name never vanishes), the full-bleed valley plate,
-    the thermals as a vario gauge (B);
-  - 04 the window: the 26 days drawn as two expedition blocks with the gap,
-    "During" once across both (B, C), and the before and after as a strip
-    moved sideways by the scroll on wide screens, a swipe row on phones;
-  - 05 the audience and 06 the offer: the counts, the portrait, the tiers with
-    outlined 01 02 03 numerals and an orange edge on the Title Partner (C).
+    a hairpin out and back with a position dot, Leg, Flown and two clocks counting
+    the same way (B), watch-face figures (C), a 100 / 200 km switch that works
+    without JavaScript (two radio buttons and :has, B);
+  - 03 Kerio Valley: the name in solid type, the full-bleed valley plate
+    dissolving into the sky, the facts under it, the thermals as a vario
+    gauge (B);
+  - 04 the window: the 26 days as two continuous expedition bars with the
+    two days between as a dashed hairline, "During" once across both (B, C),
+    and the before and after as four steps in a grid (one row on wide
+    screens, two by two on phones: nothing slides sideways, nothing is cut);
+  - 05 the audience and 06 the offer: the counts, the portrait, the tiers
+    with small 01 02 03 labels and an orange edge on the Title Partner (C).
+    Photographs of people are crisp frames with a hairline edge and a caption
+    under them (never half dissolved).
 
 Facts only, each from a source named on the page or already on the site:
   - the owner's flight: UP Paragliders news, "Almost 200km with an average of
@@ -60,6 +66,7 @@ Facts only, each from a source named on the page or already on the site:
     observer, the preparation.
   - photographs: only the site's own; each alt is the one the Kenya or
     partners page gives it, and only kerio-valley is shown as Kerio Valley.
+    Every number is true from the first frame (nothing counts up).
 
 Motion only answers the visitor (scroll, pointer, tap, key); nothing loops or
 runs on a timer. Reduced motion shows every finished state, unpinned; with
@@ -70,10 +77,26 @@ The backgrounds (owner, 18 to 19 Oct 2026: "The background of the winning
 page looks quite bland"; he chose option 2, "be creative, and use something
 from online as well if needed"). No photographs of pilots, people or stock
 paragliding: the page makes its own atmosphere, one record day over Kerio
-Valley from first light to night, moved on by the scroll. Second pass (19
-Oct), after two reviews of the first: midday read as a flat slate and its sun
-as a stain, the clouds as smoke, morning and dusk alike, the relief as blur,
-the escarpment as steps, and the scroll was much slower than before.
+Valley from first light to night, moved on by the scroll, told by light
+alone. Third pass (19 Oct), after the owner's "the animations seem to give a
+cheap rip-off feeling rather than a premium one, along with the graphics"
+(he circled the clouds, and the hard seam where the Kerio photograph
+begins) and two directors' audits: less, but better. The drawn clouds, the
+drawn hills and acacias, the sun's disc and rays, the thermals, the ticker,
+the count-ups, the ring cursor, the magnetic buttons, the outlined numerals,
+the photograph inside the letters, the word-by-word headlines and the
+sideways strip are gone; every photograph dissolves into the sky over a long
+eased mask; the course and the day follow the scroll with weight (eased
+toward it in one loop that stops when settled). Fourth pass (19 Oct, two
+judges on the third): no fixed stripe anywhere in the sky (the horizon is the
+bottom edge of the screen, so its light only falls off upward, and midday is
+deep overhead and lighter toward the horizon, never darker in the middle);
+the Kerio photograph's top is tinted with the very colour the sky has behind
+it (sampled from the painted sky), so it meets no band; the footer's drawn
+ridge gives way to a soft horizon of light; the headings simply stand (only
+the opening title rises); one easing curve (the site's --ease); the stars
+turn and fade on the compositor (redrawn only every few degrees), and no
+photograph is scaled or drifted, so the scroll stays smooth.
   - the brightness limit: no pixel of the sky, and nothing drawn on it, is
     let past SKY_CAP (relative luminance 0.044, with a soft knee), which
     keeps 4.5:1 for the muted small words (--wr-dim, 4.5:1 up to 0.050) and
@@ -83,80 +106,56 @@ the escarpment as steps, and the scroll was much slower than before.
     small (one pixel for every seven to fourteen on screen) in linear light
     from the design tokens (the site's --sky-cool follows the visitor's clock,
     so the page's blues do too) and stretched by the browser; over it one
-    canvas draws everything else on the sky, composed again only when
-    something on it has moved. Pre-dawn under the stars; dawn cool overhead
-    with a rose band and the Earth's shadow to the right and a narrow pale
-    line of light low on the LEFT, where the sun comes up behind the Tugen
-    Hills and lights the escarpment's east face (right); a deep blue
-    morning; midday deep and saturated, darker at the sides, its light
-    falling from the top edge with the sun overhead and out of sight (no
-    disc between about 09:00 and 15:00), a pale haze along the horizon; a
-    warm afternoon; dusk on the RIGHT, saturated orange behind the
-    escarpment, its edge rimmed, its face in shadow, violet above, the Tugen
-    Hills' west slopes in the afterglow; then night;
+    canvas draws the stars, composed again only when they have moved.
+    Pre-dawn under the stars; dawn cool overhead with a pale line of light
+    rising from the bottom edge on the LEFT, where the sun comes up; a deep
+    blue morning; midday deep and saturated overhead, lighter toward the
+    horizon, darker at the sides; a warm afternoon; dusk on the RIGHT as an
+    ember light rising from the bottom edge under a deep blue-violet sky (the
+    warmth only at the horizon, never a band across the screen); then night.
+    No objects: no disc, no clouds, no hills;
   - the sun: where it really is that day (6 Feb 2027, in the window, at the
     page's 0.72N 35.65E: declination -15.6, solar noon 12:51 EAT, up about
-    06:52, down about 18:51), seen looking south down the valley; a hazy
-    disc only when low, rising and setting half behind the hills' own line;
+    06:52, down about 18:51), seen looking south down the valley; shown only
+    as the light it puts on the horizon, under it;
   - the stars: the real sky over Kerio Valley that day, at 05:30 for the
     opening and 19:00 for the close, turning about the south celestial pole
-    as the scroll moves the clock on (15 degrees an hour), beginning under
-    the opening photograph (nothing of the sky shows through the pilot).
-    No lines between them, no names. Positions and magnitudes (STARS) are
-    from the npm package d3-celestial 0.7.35 (see its notice below), whose
-    star data is XHIP: An Extended Hipparcos Compilation (Anderson and
-    Francis 2012, VizieR V/137D), converted to GeoJSON at J2000 by Olaf
-    Frohn. The Milky Way is not taken from the package: it is drawn here
-    (img/record/mw-dawn.webp, mw-night.webp) from the galactic plane, in
-    the stars' own projection (see make_images): an impression;
-  - the horizon: the Elgeyo escarpment (right) as a fault scarp, a long,
-    nearly level plateau edge running away to the valley's end with 1/f
-    roughness, a steep face with gullies of uneven width and spacing; the
-    rounder Tugen Hills (left) by 1/f midpoint displacement; a farther range
-    and the far hills lighter; the phone has its own drawing with fewer,
-    larger features. Seeded geometry, not a survey. It steps aside while the
-    course is flown on its map, stands in midday's haze, keeps clear of the
-    opening photograph and the partner cards (and half steps down for the
-    01 numerals), and on tablets and phones stands on the chapter bar;
-  - clouds, at three depths, each fetched only as it comes near (phones get
-    copies half the size): far, a midday cloud street along the escarpment
-    (fair-weather cumulus with their bases at one height, so in perspective
-    they fall in line toward the valley's end), drifting slower than the
-    page; between, a dusk cloud passing from 05 into 06, lit from below by
-    the set sun and behind the hills; near, a cumulus passing from 02 into
-    03 faster than the page, in front of them. All are drawn with one colour
-    held at the brightness limit through a greyscale mask, so a cloud can
-    only lighten its sky, never darken it into a smudge. The cumulus are
-    built here (make_images) from seeded lobes, broken and textured by the
-    Kenya page's own cloud layer (assets/destinations/kenya/clouds/
-    cloud-1.webp); the dusk cloud is a band of cloud-4.webp, its edges
-    sharpened and its undersides lit (img/record/street-*, cu-*, dusk-*);
-  - 01 the mark: two thermals in the gutters, soft sinuous streamlines and
-    at most two bubbles each, leaning with the wind, of different heights,
-    faded through their own strokes; each rises faster than the page as one
-    layer (phones keep the right-hand one);
+    as the scroll moves the clock on (15 degrees an hour), coming out as the
+    opening photograph dissolves away. No lines between them, no names. Positions and
+    magnitudes (STARS) are from the npm package d3-celestial 0.7.35 (see its
+    notice below), whose star data is XHIP: An Extended Hipparcos
+    Compilation (Anderson and Francis 2012, VizieR V/137D), converted to
+    GeoJSON at J2000 by Olaf Frohn. The Milky Way is not taken from the
+    package: it is drawn here (img/record/mw-dawn.webp, mw-night.webp) from
+    the galactic plane, in the stars' own projection (see make_images): an
+    impression;
+  - the close: on this page the footer's drawn ridge (img/ridge.svg) is
+    replaced by a soft horizon: the night sky dissolving into the ground
+    under a faint last light, with the page's grain carried over it;
   - 02 the course: Kenya's ground under the line, as form lines traced
     (marching squares) from the chart sheet's shaded relief
     (assets/destinations/kenya/map/kenya-sheet-terrain.webp), so lines of
-    equal shade, smoothed: form lines, not surveyed contours. Cut round
-    Kerio Valley and turned a quarter so the Rift runs along the course,
-    each level faintly filling the land above it (terraces); vector, crisp
-    at every width (img/record/ground.svg), sliding under the glider out and
-    back, with the glider's shadow on it;
-  - the page's still grain lies in the page itself, over the sky.
+    equal shade, smoothed into curves: form lines, not surveyed contours.
+    Cut round Kerio Valley and turned a quarter so the Rift runs along the
+    course, four levels, each faintly filling the land above it (terraces);
+    vector, crisp at every width (img/record/ground.svg), seen only round the
+    course drawing (a soft oval), sliding under the position out and back
+    with the same eased progress. The position is a plain orange dot, as a
+    live tracker shows it;
+  - the page's still grain lies in the page itself, over the sky (it dithers
+    the gradients, so no banding).
 Without JavaScript, and with reduced motion, the same day is one still
 gradient down the whole page (its stops in STILL; every stop under the same
-limit with each of the site's four skies), the horizon drawn at the start of
-01, the start of 06 and the close (from the same paths), with the night's
-stars over the last. Nothing moves.
+limit with each of the site's four skies), with the night's stars over the
+close. Nothing moves.
 Muted small words (the markers, chapter numbers, sources) are lifted from
 --gray to a mix of --gray-light and --gray, so they keep 4.5:1 on a sky. The
-partner cards are solid, so neither sky nor hills show through the offer.
+partner cards are solid, so the sky does not show through the offer.
 The image files are made by `python3 tools/v4_record.py --images` (numpy,
 Pillow and contourpy), from the site's own files and the geometry here;
-nothing in them comes from online. Second-pass files in img/record/: ground.svg,
-street-l/-s, cu-l/-s, dusk-l/-s and mw-dawn, mw-night (the first pass's
-relief, contour and cloud-N masks are gone).
+nothing in them comes from online. Files in img/record/: ground.svg and
+mw-dawn, mw-night (the earlier passes' relief, contour and cloud masks are
+gone).
 
 The page takes the v4 shell (head, menu, footer) from partners.html and is
 prototype-only (tools/v2_site.py PROTO_ONLY) until the owner approves it.
@@ -164,10 +163,8 @@ prototype-only (tools/v2_site.py PROTO_ONLY) until the owner approves it.
     python3 tools/v4_record.py
 """
 import datetime
-import json
 import math
 import os
-import random
 import re
 import sys
 
@@ -256,16 +253,42 @@ def pic(key, cls="", lazy=True, fetch=False):
 
 
 def kin(text):
-    """A headline that rises word by word: each word in its own mask."""
+    """A headline: it arrives whole (see the CSS), so the words stay plain text."""
+    return text
+
+
+def ease_stops(p0, p1, a0, a1, n=8, col="var(--bg)"):
+    """Gradient stops for a smoothstep from opacity a0 at p0% to a1 at p1%: no knee at either end, so
+    no edge can be found where a photograph or a shade dissolves into the sky."""
     out = []
-    for i, w in enumerate(text.split(" ")):
-        out.append('<span class="wr-w"><span style="--i:%d">%s</span></span>' % (i, w))
-    return " ".join(out)
+    for i in range(n + 1):
+        t = i / float(n)
+        a = a0 + (a1 - a0) * t * t * (3 - 2 * t)
+        p = "%g%%" % round(p0 + (p1 - p0) * t, 2)
+        if a <= 0.0005:
+            out.append("transparent " + p)
+        elif a >= 0.9995:
+            out.append(col + " " + p)
+        else:
+            out.append("color-mix(in srgb,%s %g%%,transparent) %s" % (col, round(a * 100, 1), p))
+    return ",".join(out)
 
 
-def count(final, to, dec=0, comma=False, suf=""):
-    return ('<span class="wr-count" data-final="%s" data-count="%s" data-dec="%d"%s%s><span>%s</span></span>'
-            % (final, to, dec, ' data-comma="1"' if comma else "", ' data-suf="%s"' % suf if suf else "", final))
+def mask(*parts):
+    """A vertical mask from runs of stops (see ease_stops), written once and given to both the -webkit- and the
+    standard property."""
+    return "--wr-m:linear-gradient(180deg,%s);-webkit-mask-image:var(--wr-m);mask-image:var(--wr-m);" % ",".join(parts)
+
+
+def mask2(vert, horiz):
+    """Vertical and horizontal runs of stops intersected: an edge that dissolves on all four sides."""
+    return ("--wr-m:linear-gradient(180deg,%s),linear-gradient(90deg,%s);-webkit-mask-image:var(--wr-m);"
+            "-webkit-mask-composite:source-in;mask-image:var(--wr-m);mask-composite:intersect;" % (vert, horiz))
+
+
+def rmask(shape, stops):
+    """A radial mask (an ellipse from its centre outward, from runs of stops), with the -webkit- copy."""
+    return "--wr-m:radial-gradient(%s,%s);-webkit-mask-image:var(--wr-m);mask-image:var(--wr-m);" % (shape, stops)
 
 
 def ext(href, text, hidden=""):
@@ -542,214 +565,13 @@ def stars_g(key):
     return "".join('<path class="z%d t%s" d="%s"/>' % (z, t, "".join(v)) for (z, t), v in sorted(groups.items()))
 
 
-def mdp(n, amp, rough, rnd):
-    """1/f midpoint displacement: 2**n + 1 values from 0 to 0, each level's kick `rough` times the last."""
-    N = 2 ** n
-    v = [0.0] * (N + 1)
-    step, a = N, amp
-    while step > 1:
-        h = step // 2
-        for i in range(h, N, step):
-            v[i] = (v[i - h] + v[i + h]) / 2 + rnd.uniform(-a, a)
-        step, a = h, a * rough
-    return v
-
-
-def series(v, t):
-    x = min(max(t, 0.0), 1.0) * (len(v) - 1)
-    i = min(int(x), len(v) - 2)
-    return v[i] + (v[i + 1] - v[i]) * (x - i)
-
-
-# the horizon's two drawings: (width, height, vanishing point x, its y); the phone's is the right-hand part,
-# drawn with fewer and larger features, not a scaled-down copy of the wide one
-RIDGE_BOX = {"w": (1600, 400, 700, 332), "p": (800, 400, 150, 336)}
-
-
-def ridge(kind):
-    """The horizon looking south down Kerio Valley, from seeded geometry (an impression, not a survey).
-    The Elgeyo escarpment on the right is a fault scarp: a long, nearly level plateau edge running away to
-    the vanishing point (so in perspective a near-straight line falling toward it), with 1/f roughness and
-    small dips where gullies cut back; its steep face carries the gullies (curved, unevenly spaced, wider
-    near). The Tugen Hills on the left are rounder, with two summits, 1/f midpoint displacement for their
-    line; a farther range shows behind them and low hills where the valley ends, each farther layer
-    lighter. The valley floor near, with two flat-topped acacias. Returns the paths, and the skyline (the
-    highest land at 33 points across) for the sun to rise and set behind."""
-    W, H, vx, vy = RIDGE_BOX[kind]
-    phone = kind == "p"
-    rnd = random.Random(1907 if not phone else 2207)
-    zf = 7.0                                    # the wall runs from z=1 (the right edge) to z=7, near the vanishing point
-
-    def wx(z):
-        return vx + (W - vx) * (1 / z - 1 / zf) / (1 - 1 / zf)
-    tall = 205 if not phone else 196
-    plate = mdp(6 if phone else 8, 1.0, 0.5, rnd)
-    bend = mdp(3, 1.0, 0.6, rnd)
-    gul, z = [], 1.0 + rnd.uniform(0.05, 0.3)
-    while z < zf - 0.2:
-        gw = rnd.uniform(0.04, 0.16) * (1.7 if phone else 1)
-        gul.append((z, gw, rnd.uniform(0.25, 0.75)))
-        z += rnd.expovariate(1 / (0.55 if not phone else 1.1)) + gw * 1.4
-
-    def crest(x):
-        t = (x - vx) / float(W - vx)
-        if t <= 0:
-            return vy
-        z = 1 / (1 / zf + t * (1 - 1 / zf))
-        hgt = tall / z
-        y = vy - hgt * (1 - 0.9 * math.exp(-t / 0.03)) + series(plate, t) * (1.2 + 6 * t) + series(bend, t) * 9 * t
-        for gz, gw, gd in gul:
-            dz = abs(z - gz) / gw
-            if dz < 1:
-                y += gd * hgt * 0.035 * (1 - dz * dz)
-        return y
-
-    def foot(x):
-        return vy + (x - vx) / float(W - vx) * (H - vy + 30)
-    xs = sorted(set([vx + i * (W - vx) / (90.0 if phone else 170.0) for i in range(91 if phone else 171)] + [wx(g[0]) for g in gul]))
-    cr = [(x, crest(x)) for x in xs]
-    gl = []
-    for gz, gw, gd in gul:
-        x = wx(gz)
-        y0, y1 = crest(x), foot(x)
-        ln = (y1 - y0) * rnd.uniform(0.55, 0.9)
-        x1 = x + (W - x) * 0.015 * rnd.uniform(-0.5, 1.5) - (y1 - y0) * rnd.uniform(0.1, 0.35)
-        gl.append((x, y0 + 1, x1, y0 + ln))
-    tp = mdp(5 if phone else 7, 1.0, 0.56, rnd)
-    top_l = 236 if not phone else 262
-
-    def tug(x):
-        t = x / float(vx)
-        return (top_l + (vy - top_l) * t ** 1.6 + series(tp, t) * (44 * (1 - t) + 6)
-                - 18 * math.exp(-((t - 0.22) / 0.12) ** 2) - 9 * math.exp(-((t - 0.58) / 0.08) ** 2))
-    tg = [(x, min(tug(min(x, vx)), vy + 1)) for x in [i * vx / (40.0 if phone else 110.0) for i in range(41 if phone else 111)] + [vx + 20]]
-    fp = mdp(4 if phone else 6, 1.0, 0.5, rnd)
-    fw = vx + 120
-    far2 = [(x, top_l - 22 + (vy - 6 - top_l + 22) * (x / fw) ** 1.3 + series(fp, x / fw) * 14) for x in [i * fw / 80.0 for i in range(81)]]
-    hp = mdp(5, 1.0, 0.55, rnd)
-    farh = [(x, vy - 3 - 9 * math.exp(-((x - (vx - 60)) / 70.0) ** 2) - 6 * math.exp(-((x - (vx + 150)) / 60.0) ** 2) + series(hp, (x - vx + 260) / 600.0) * 3)
-            for x in [vx - 260 + i * 10.0 for i in range(61)]]
-    npr = mdp(5, 1.0, 0.5, rnd)
-    near = [(x, 372 + series(npr, x / float(W)) * 9) for x in [i * W / 64.0 for i in range(65)]]
-
-    def pts(p):
-        """a polyline as its first point and relative steps: "x y l dx dy dx dy ..." """
-        q = [(int(round(x)), int(round(y))) for x, y in p]
-        q = [q[0]] + [b for a, b in zip(q, q[1:]) if b != a]
-        return "%d %d" % q[0] + ("l" + " ".join("%d %d" % (b[0] - a[0], b[1] - a[1]) for a, b in zip(q, q[1:])) if len(q) > 1 else "")
-
-    def acacia(cx, base, h, w):
-        t0 = base - h
-        return ("M%d %dL%d %dL%d %dL%d %dZ" % (cx - 3, base, cx + 3, base, cx + 2, t0 + 4, cx - 1, t0 + 4)
-                + "M%d %dQ%d %d %d %dQ%d %d %d %dQ%d %d %d %dQ%d %d %d %dZ"
-                % (cx - w / 2, t0 + 3, cx - w / 2 + 6, t0 - 5, cx - w / 6, t0 - 7, cx + 2, t0 - 10, cx + w / 4, t0 - 7,
-                   cx + w / 2 - 4, t0 - 6, cx + w / 2, t0 + 2, cx, t0 + 7, cx - w / 2, t0 + 3))
-    sky = []
-    for i in range(33):
-        x = i * W / 32.0
-        y = min(tug(min(x, vx)) if x <= vx + 20 else 999, crest(x) if x >= vx else 999, vy)
-        sky.append(round(y, 1))
-    return {
-        "far2": "M0 %dL" % H + pts(far2) + "L%d %dZ" % (fw, H),
-        "farh": "M%d %dL" % (vx - 260, H) + pts(farh) + "L%d %dZ" % (vx + 340, H),
-        "tug": "M0 %dL" % H + pts(tg) + "L%d %dL%d %dZ" % (vx + 20, vy + 1, vx + 230, H),
-        "esc": "M%d %dL" % (vx - 4, vy + 1) + pts(cr) + "L%d %dL%d %dZ" % (W, H, vx - 220, H),
-        "near": "M0 %dL" % (H + 240) + pts(near) + "L%d %dZ" % (W, H + 240),
-        "trees": acacia(214, 372, 44, 92) + acacia(1196, 376, 30, 64) if not phone else acacia(560, 374, 34, 70),
-        "face": "M" + pts(cr + [(W, foot(W)), (vx, vy)]) + "Z",
-        "tface": "M" + pts([p for p in tg if p[0] <= vx] + [(vx, vy + 1), (0, vy + 26)]) + "Z",
-        "gul": "".join("M%.0f %.0fQ%.0f %.0f %.0f %.0f" % (a, b, a + (c - a) * 0.2, b + (d - b) * 0.55, c, d) for a, b, c, d in gl),
-        "rim": "M" + pts(cr),
-        "trim": "M" + pts([p for p in tg if 4 < p[0] < vx - 10]),
-        "sky": sky,
-        # each gradient-filled shape's top and bottom (the gradients run over the shape, as in SVG)
-        "bb": {"tug": [round(min(y for x, y in tg)), H], "esc": [round(min(y for x, y in cr)), H],
-               "face": [round(min(y for x, y in cr)), round(foot(W))], "tface": [round(min(y for x, y in tg)), vy + 26]},
-    }
-
-
-RIDGES = {k: ridge(k) for k in RIDGE_BOX}
-
-
-def ridge_defs():
-    """Paths, stars and gradients shared by the moving sky and the still page's horizons and night (one copy of
-    each in the page)."""
-    out = []
-    for k, r in RIDGES.items():
-        for name in ("far2", "farh", "tug", "esc", "near", "trees", "face", "tface", "gul", "rim", "trim"):
-            out.append('<path id="wrR%s-%s" d="%s"/>' % (k, name, r[name]))
-    grads = ('<linearGradient id="wrThF" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop class="f0" offset="0"/><stop class="f1" offset=".3"/>'
-             '<stop class="f1" offset=".74"/><stop class="f0" offset="1"/></linearGradient>'
-             '<filter id="wrLumA" color-interpolation-filters="sRGB"><feColorMatrix type="luminanceToAlpha"/></filter>'
-             '<linearGradient id="wrThR" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop class="q0" offset="0"/><stop class="q1" offset=".32"/>'
-             '<stop class="q1" offset=".7"/><stop class="q0" offset="1"/></linearGradient>')
+def defs():
+    """The Milky Way's grey-to-alpha filter (in a rendered, empty SVG) and the two skies' stars (in a hidden
+    one, read by the script and used by the still page's night): one copy of each in the page."""
+    flt = '<filter id="wrLumA" color-interpolation-filters="sRGB"><feColorMatrix type="luminanceToAlpha"/></filter>'
     stars = "".join('<g id="%s">%s</g>' % (gid, stars_g(key)) for key, gid in (("dawn", "wrStarsDawn"), ("night", "wrStarsNight")))
-    # the gradients in a rendered (empty) SVG; the shapes and the stars, which are only ever used by reference or
-    # read by the script, in a hidden one, so the browser keeps no style for them while the page scrolls
-    return ('<svg class="wr-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>' + grads + "</defs></svg>"
-            '<div class="wr-data" hidden><svg aria-hidden="true" focusable="false"><defs>' + "".join(out) + STAR_NOTE + stars + "</defs></svg></div>\n")
-
-
-# the hills' gradients, needed only where the still page draws its horizons (the canvas makes its own): they live
-# in the first still horizon, so the moving page, where it is hidden, keeps no style for them
-RIDGE_GRADS = ('<defs><linearGradient id="wrHaze" x1="0" y1="0" x2="0" y2="1"><stop class="h1" offset="0"/><stop class="h2" offset=".7"/></linearGradient>'
-               '<linearGradient id="wrWall" x1="0" y1="0" x2="0" y2="1"><stop class="w1" offset="0"/><stop class="w2" offset=".55"/></linearGradient>'
-               '<linearGradient id="wrLit" x1="0" y1="0" x2="0" y2="1"><stop class="g1" offset="0"/><stop class="g2" offset=".42"/><stop class="g3" offset="1"/></linearGradient>'
-               '<linearGradient id="wrGlow" x1="0" y1="0" x2="0" y2="1"><stop class="p1" offset="0"/><stop class="p2" offset="1"/></linearGradient></defs>')
-
-
-def horizon(layer, kinds="wp", defs=""):
-    """One layer of the horizon, wide and phone drawings (CSS shows one): the land, the morning light
-    (the escarpment's east face lit, its gullies in shadow, the Tugen crest backlit) or the dusk light
-    (the escarpment rimmed, the Tugen Hills' west slopes in the afterglow)."""
-    parts = {
-        "land": (("far2", "r-far2"), ("farh", "r-far"), ("tug", "r-tug"), ("esc", "r-esc"), ("near", "r-near"), ("trees", "r-near")),
-        "morn": (("face", "r-face"), ("gul", "r-gul"), ("trim", "r-trim")),
-        "dusk": (("tface", "r-tface"), ("rim", "r-rim")),
-    }[layer]
-    out = []
-    for k in kinds:
-        W, H = RIDGE_BOX[k][:2]
-        out.append('<svg class="is-%s" viewBox="0 0 %d %d" preserveAspectRatio="xMaxYMax slice" focusable="false">%s%s</svg>'
-                   % (k, W, H, defs if k == "w" else "", "".join('<use href="#wrR%s-%s" class="%s"/>' % (k, n, c) for n, c in parts)))
-    return "".join(out)
-
-
-def thermal(seed, lean, height, width, rings):
-    """One thermal column in a 240 x 1000 box, as a pilot pictures it: a few soft, sinuous streamlines of
-    air drawn in low down, rising through a core that leans with the wind and spreading at the top; at
-    most two bubbles (rings), widening as they rise. Faded top and bottom by its stroke (no mask)."""
-    rnd = random.Random(seed)
-    top = 1000 - 1000 * height
-    lines = []
-    for k in (-1, -0.35, 0.3, 0.95)[:4 if width > 0.8 else 3]:
-        ph, am = rnd.uniform(0, 6.3), rnd.uniform(4, 10)
-        p = []
-        for i in range(15):
-            u = i / 14.0                              # 0 at the ground, 1 at the top
-            y = 1000 - u * (1000 - top)
-            spread = 1 - 0.78 * math.sin(math.pi * min(u, 0.85) / 0.85 * 0.5) if u < 0.85 else 0.22 + (u - 0.85) / 0.15 * 0.55
-            x = 120 + lean * u ** 1.4 + k * 92 * width * spread + am * math.sin(u * 7.5 + ph) * (0.4 + u)
-            p.append((x, y))
-        d = "M%.0f %.0f" % p[0]
-        for i in range(1, len(p) - 1):           # smooth: through the midpoints, each point a control
-            d += "Q%.0f %.0f %.0f %.0f" % (p[i][0], p[i][1], (p[i][0] + p[i + 1][0]) / 2, (p[i][1] + p[i + 1][1]) / 2)
-        d += "L%.0f %.0f" % p[-1]
-        lines.append('<path d="%s"/>' % d)
-    rs = []
-    for j, (u, rx) in enumerate(rings):
-        y = 1000 - u * (1000 - top)
-        rs.append('<ellipse cx="%.0f" cy="%.0f" rx="%.0f" ry="%.0f"/>' % (120 + lean * u ** 1.4, y, rx * width, rx * width * 0.24))
-    return "".join(lines) + "".join(rs)
-
-
-def thermals_html():
-    """Two thermals behind the mark, in the gutters: a tall one leaning right at the right-hand edge, a
-    lower, narrower one leaning left at the left-hand edge (wide screens only; phones keep the right one)."""
-    cols = ((thermal(5, 34, 0.92, 1.0, ((0.42, 26), (0.7, 44))), "n0"), (thermal(17, -26, 0.66, 0.72, ((0.55, 30),)), "n1"))
-    return ('<div class="wr-thermals" aria-hidden="true">' + "".join(
-        '<svg class="wr-th %s" viewBox="0 0 240 1000" preserveAspectRatio="xMidYMax meet" focusable="false">%s</svg>' % (c, s)
-        for s, c in cols) + "</div>")
+    return ('<svg class="wr-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>' + flt + "</defs></svg>"
+            '<div class="wr-data" hidden><svg aria-hidden="true" focusable="false"><defs>' + STAR_NOTE + stars + "</defs></svg></div>\n")
 
 
 def sky_html():
@@ -758,25 +580,15 @@ def sky_html():
     return '<div class="wr-sky" aria-hidden="true"><canvas class="wr-sky-c" width="16" height="16"></canvas><canvas class="wr-sky-o" width="16" height="16"></canvas></div>\n'
 
 
-def still_ridge(where, light=""):
-    """The horizon on a still page (no script, or reduced motion): drawn in the flow at a chapter's edge."""
-    return ('<div class="wr-still-rg %s" aria-hidden="true"><div class="wr-rg is-land">%s</div>%s</div>'
-            % (where, horizon("land", defs=RIDGE_GRADS if where == "at-01" else ""), '<div class="wr-rg is-%s">%s</div>' % (light, horizon(light)) if light else ""))
-
-
 def night_static():
     """The close's stars for a still page (no script, or reduced motion): the night sky's own dots."""
     return ('<div class="wr-night" aria-hidden="true"><svg viewBox="-1500 -2250 3000 2350" preserveAspectRatio="xMidYMax slice" focusable="false">'
             '<use href="#wrStarsNight"/></svg></div>')
 
 
-# the cloud masks (see make_images): file, width, height
-CLOUDS = {"street-l": (1600, 640), "street-s": (800, 680), "cu-l": (1200, 700), "cu-s": (600, 350), "dusk-l": (1600, 520), "dusk-s": (800, 260)}
-
-
 def make_images():
     """Write the background images into prototypes/v4/img/record/ (see the docstring), all from the
-    site's own files or from geometry: the Milky Way, the cloud masks and the ground's form lines."""
+    site's own files or from geometry: the Milky Way and the ground's form lines."""
     import gzip
     import contourpy
     import numpy as np
@@ -784,7 +596,10 @@ def make_images():
     out = os.path.join(V4, REC_IMG)
     os.makedirs(out, exist_ok=True)
     kenya = os.path.join(ROOT, "assets", "destinations", "kenya")
-    for old in ("relief-w.webp", "relief-p.webp", "contours-p.webp") + tuple("cloud-%d-%s.webp" % (n, t) for n in (1, 3, 4) for t in "ls"):
+    # the earlier passes' files: relief and contours, then the clouds (cut in the third pass: flat masks
+    # under the brightness limit read as cardboard, so the sky keeps only its light)
+    for old in (("relief-w.webp", "relief-p.webp", "contours-p.webp") + tuple("cloud-%d-%s.webp" % (n, t) for n in (1, 3, 4) for t in "ls")
+                + tuple("%s-%s.webp" % (n, t) for n in ("street", "cu", "dusk") for t in "ls")):
         if os.path.exists(os.path.join(out, old)):
             os.remove(os.path.join(out, old))
 
@@ -841,79 +656,7 @@ def make_images():
         img = Image.fromarray((I * 255).astype("uint8")).filter(ImageFilter.GaussianBlur(1.2))
         save(np.asarray(img, dtype="float32") / 255, "mw-%s.webp" % key, 50)
 
-    # 2. the clouds, as greyscale luminance masks (white: the lit cloud; black: clear sky). Their texture is the
-    # Kenya page's own cloud layer (cloud-1's alpha, a fractal field): it warps each cumulus' lobes and breaks
-    # its edge, so no two lobes are round
-    T = np.asarray(Image.open(os.path.join(kenya, "clouds", "cloud-1.webp")).getchannel("A"), dtype="float32")
-    T /= T.max()
-
-    def tex(x, y):
-        return T[np.abs(y).astype(int) % T.shape[0], np.abs(x).astype(int) % T.shape[1]]
-
-    def blur(a, sg):
-        r = int(3 * sg) + 1
-        k = np.exp(-(np.arange(-r, r + 1) / sg) ** 2 / 2)
-        k /= k.sum()
-        a = np.apply_along_axis(lambda q: np.convolve(np.pad(q, r, mode="edge"), k, "valid"), 0, a)
-        return np.apply_along_axis(lambda q: np.convolve(np.pad(q, r, mode="edge"), k, "valid"), 1, a)
-
-    def cumulus(W, H, cx, base, cw, ch, seed):
-        """One fair-weather cumulus with a flat base at y=base: a seeded heap of lobes on a flat lens,
-        lit from above (lobe tops bright, a silver edge where the surface faces the sun), its base
-        dimmer but never darker than the sky behind (it is a mask: dark means clear)."""
-        rnd = random.Random(seed)
-        x0, x1 = int(max(0, cx - cw)), int(min(W, cx + cw))
-        y0, y1 = int(max(0, base - ch * 1.9)), int(min(H, base + 4))
-        yy, xx = np.mgrid[y0:y1, x0:x1].astype("float32")
-        k = 900.0 / cw
-        wx_ = xx + (tex(xx * k + 37 * seed, yy * k + 53 * seed) - 0.45) * ch * 0.32
-        wy_ = yy + (tex(xx * k + 37 * seed + 511, yy * k + 53 * seed + 233) - 0.45) * ch * 0.26
-        F = np.full(xx.shape, -1.0, "float32")
-        for _ in range(rnd.randint(16, 22)):
-            u = rnd.uniform(-1, 1)
-            dome = math.sqrt(max(0, 1 - u * u))
-            r = ch * (0.13 + 0.12 * rnd.random()) * (0.7 + 0.6 * dome)
-            F = np.maximum(F, 1 - np.hypot(wx_ - (cx + u * cw * 0.40), wy_ - (base - r * 0.4 - dome * ch * rnd.uniform(0.35, 0.78))) / r)
-        F = np.maximum(F, 1 - np.hypot((wx_ - cx) / (cw * 0.43), (wy_ - (base - ch * 0.12)) / (ch * 0.3)))
-        G = F + 0.07 * (tex(xx * 2.9 * k + 97, yy * 2.9 * k + 41) - 0.5)
-        A = np.clip(G / 0.05, 0, 1) * np.clip((base - yy) / 1.5, 0, 1)
-        S = blur(np.clip(G, 0, 0.6), max(1.0, ch * 0.05))
-        gy = np.zeros_like(S)
-        gy[1:-1] = (S[2:] - S[:-2]) / 2
-        up = np.clip(gy / (np.abs(gy).max() + 1e-6) * 3.0, -1, 1)
-        lum = (0.5 + 0.36 * np.clip((base - yy) / ch, 0, 1) ** 0.5) * (0.86 + 0.14 * up)
-        lum = np.clip(lum + 0.55 * np.clip(1 - np.abs(G - 0.035) / 0.05, 0, 1) * np.clip(up + 0.25, 0, 1), 0, 1)
-        o = np.zeros((H, W), "float32")
-        o[y0:y1, x0:x1] = A * lum
-        return o
-
-    def street(W, H, vx, vy, nx, ny, cw, ch, scales, seeds):
-        """A cloud street along the escarpment: cumulus with their bases at one height, so in perspective
-        the bases fall along one line toward the valley's vanishing point; the nearest is the largest."""
-        acc = np.zeros((H, W), "float32")
-        for sc, sd in zip(scales, seeds):
-            acc = np.maximum(acc, cumulus(W, H, vx + (nx - vx) * sc, vy + (ny - vy) * sc, cw * sc, ch * sc, sd))
-        return acc
-    save(street(1600, 640, 700, 628, 1380, 250, 400, 236, (1.0, 0.63, 0.41, 0.27, 0.18, 0.12), (3, 5, 8, 13, 21, 34)), "street-l.webp")
-    save(street(800, 680, 250, 668, 590, 240, 290, 175, (1.0, 0.6, 0.38, 0.24), (3, 5, 8, 13)), "street-s.webp")
-    save(cumulus(1200, 700, 640, 640, 470, 330, 55), "cu-l.webp")
-    save(cumulus(600, 350, 320, 320, 235, 165, 55), "cu-s.webp")
-    # the dusk cloud: a band of the Kenya page's cloud-4, its edges sharpened, lit from below by the set sun
-    # (bright where the cloud's underside faces down)
-    c4 = Image.open(os.path.join(kenya, "clouds", "cloud-4.webp")).getchannel("A")
-    for name, (W, H) in (("dusk-l.webp", CLOUDS["dusk-l"]), ("dusk-s.webp", CLOUDS["dusk-s"])):
-        a = np.asarray(c4.crop((0, 240, 2400, 1020)).resize((W, round(W * 780 / 2400)), Image.LANCZOS), dtype="float32")[:H] / 255.0
-        a = a / np.percentile(a, 99.5)
-        A = np.clip((a - 0.28) / 0.3, 0, 1)
-        A = A * A * (3 - 2 * A)
-        S = blur(A, W / 400.0)
-        gy = np.zeros_like(S)
-        gy[1:-1] = S[:-2] - S[2:]                 # > 0 on an underside
-        under = np.clip(gy / (np.abs(gy).max() + 1e-6) * 4, 0, 1)
-        fade = np.clip(np.minimum(np.arange(W) / (0.12 * W), (W - np.arange(W)) / (0.12 * W)), 0, 1)[None, :]
-        save(A * (0.06 + 0.94 * under ** 0.8) * fade, name)
-
-    # 3. the ground: form lines traced from the chart sheet's relief (kenya-sheet-terrain.webp, a shaded
+    # 2. the ground: form lines traced from the chart sheet's relief (kenya-sheet-terrain.webp, a shaded
     # relief, so these are lines of equal shade, smoothed: form lines, not surveyed contours), cut round Kerio
     # Valley and turned a quarter so the Rift runs along the course; each level's lines also fill the land
     # above them faintly, so the ground reads in terraces. Vector, crisp at every width, faded top and bottom
@@ -944,19 +687,31 @@ def make_images():
                 keep[i + 1 + m] = True
                 st += [(i, i + 1 + m), (i + 1 + m, j)]
         return p[keep]
+    # four levels (every second of eight), each line a closed quadratic B-spline: the simplified points are
+    # the control points and the curve runs through their midpoints (M, one q, then t after t, each t's control
+    # the mirror of the last), so the lines are smooth curves with no corners or stair-steps, at the size of the
+    # polylines they replace
     S4, paths = 4, []
-    for lv in np.percentile(f, np.linspace(34, 93, 8)):
+    for lv in np.percentile(f, np.linspace(34, 93, 8))[::2]:
         d = []
         for ln in gen.lines(lv):
             ln = ln - 1
             if len(ln) < 6 or np.sum(np.hypot(*np.diff(ln, axis=0).T)) * 2 < 60:
                 continue
-            q = np.round(dp(ln, 0.45) * S4).astype(int)
+            q = np.round(dp(ln, 0.7) * S4).astype(int)
             q = q[np.r_[True, np.any(np.diff(q, axis=0) != 0, axis=1)]]
+            if len(q) > 1 and np.all(q[0] == q[-1]):
+                q = q[:-1]
             if len(q) < 4:
                 continue
-            rel = np.diff(q, axis=0)
-            d.append("M%d %d" % tuple(q[0]) + "l" + " ".join("%d %d" % (dx, dy) for dx, dy in rel[:-1]) + "z")
+            # in half units: every midpoint (the sum of two neighbours) and every control point (twice a point) is whole
+            mid, ctl = q + np.roll(q, -1, axis=0), q * 2
+            u = lambda v: "%g" % (v / 2.0)
+            st = mid[-1]
+            seg = "M%s %sq%s %s %s %s" % (u(st[0]), u(st[1]), u(ctl[0][0] - st[0]), u(ctl[0][1] - st[1]),
+                                         u(mid[0][0] - st[0]), u(mid[0][1] - st[1]))
+            rel = np.diff(mid, axis=0)
+            d.append(seg + "t" + " ".join("%s %s" % (u(dx), u(dy)) for dx, dy in rel) + "z")
         paths.append("".join(d))
     W, H = fw * S4, fh * S4
     svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d" preserveAspectRatio="xMidYMid slice">'
@@ -997,6 +752,7 @@ CSS = r"""
   --wr-h2:calc(var(--fs-h1) * 1.2);
   --wr-pad:calc(var(--sp-section) * 1.5);
   --wr-x:var(--gutter);
+  /* one easing curve for every motion on the page: the site's own --ease, long and decelerating (no snap, no overshoot) */
   position:relative;overflow-x:clip;}
 @media (max-width:560px){.wr{--wr-x:var(--sp-2);}}
 .wr-in{box-sizing:border-box;width:100%;max-width:var(--measure);margin:0 auto;padding-inline:var(--wr-x);}
@@ -1009,9 +765,7 @@ CSS = r"""
 .wr-h2{margin:0;font-family:var(--font-display);font-weight:700;font-size:var(--wr-h2);line-height:1.02;letter-spacing:-.035em;color:var(--white);text-wrap:balance;max-width:14ch;}
 .wr-lede{margin:var(--sp-3) 0 0;max-width:31rem;font-size:var(--fs-lead);line-height:1.55;color:var(--gray-light);text-wrap:pretty;}
 
-/* kinetic type: each word (or line) rises inside its own mask, once */
-.wr-w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em;}
-.wr-w>span,.wr-ln>span{display:inline-block;}
+/* the opening title: each line rises inside its own mask, once */
 .wr-ln{display:block;overflow:hidden;padding-bottom:.07em;margin-bottom:-.07em;}
 .wr-ln>span{display:block;}
 
@@ -1035,8 +789,8 @@ CSS = r"""
 .wr-btn:hover::before{transform:skewX(-10deg) scaleX(1.05);filter:brightness(1.08);}
 
 /* ---------- the opening ---------- */
-.wr-hero{position:relative;min-height:calc(100svh - var(--wr-top));display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--bg);}
-.wr-hero-pic{position:absolute;inset:0;z-index:-2;}
+.wr-hero{position:relative;min-height:calc(100svh - var(--wr-top));display:flex;flex-direction:column;justify-content:flex-end;overflow:clip;background:var(--bg);}
+.wr-hero-pic{position:absolute;inset:0;z-index:-2;overflow:clip;}
 .wr-hero-pic img{display:block;width:100%;height:100%;object-fit:cover;object-position:66% 46%;}
 .wr-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:
   linear-gradient(90deg,color-mix(in srgb,var(--bg) 80%,transparent) 0%,color-mix(in srgb,var(--bg) 38%,transparent) 46%,transparent 72%),
@@ -1045,7 +799,6 @@ CSS = r"""
 .wr-kick{margin:0 0 var(--sp-3);text-wrap:balance;font-size:var(--fs-micro);font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);
   text-shadow:0 1px 2px color-mix(in srgb,var(--bg) 85%,transparent);}
 .wr-mega{margin:0;font-family:var(--font-display);font-weight:700;font-size:var(--wr-mega);line-height:.9;letter-spacing:-.045em;color:var(--white);}
-.wr-mega .is-hollow{color:transparent;-webkit-text-stroke:max(1px,.011em) var(--white);}
 .wr-hero-sub{margin:var(--sp-4) 0 0;max-width:27rem;font-size:var(--fs-lead);line-height:1.5;color:var(--gray-light);}
 .wr-go{display:inline-flex;align-items:center;gap:.6rem;min-height:44px;margin-top:var(--sp-2);font-size:var(--fs-body);font-weight:600;color:var(--white);text-decoration:none;
   background:linear-gradient(var(--orange),var(--orange)) 0 calc(100% - 6px)/100% 1px no-repeat;transition:background-size .6s var(--ease),color .3s var(--ease);}
@@ -1059,10 +812,10 @@ CSS = r"""
 .wr-hero-meta .wr-v small{font-family:var(--font-mono);font-size:var(--fs-small);font-weight:400;letter-spacing:0;color:var(--gray-light);margin-left:.4em;}
 .wr-hero-meta .is-me .wr-v{color:var(--orange);}
 .wr-hero-meta .wr-s{margin-top:.35rem;font-family:var(--font-body);font-size:var(--fs-small);line-height:1.4;color:var(--gray-light);}
-.wr-cue{position:absolute;left:50%;bottom:var(--sp-3);z-index:5;display:grid;place-items:center;width:44px;height:44px;margin-left:-22px;border-radius:50%;
-  border:1px solid var(--edge-hi);color:var(--white);transition:border-color .4s var(--ease),background-color .4s var(--ease);}
-.wr-cue:hover{border-color:var(--orange);background:var(--wash);}
-.wr-cue svg{width:14px;height:14px;}
+/* the way down: one hairline at the foot of the opening (a link to the first chapter, 44px wide to the touch) */
+.wr-cue{position:absolute;left:50%;bottom:0;z-index:5;display:block;width:44px;height:clamp(3rem,9vh,5rem);margin-left:-22px;}
+.wr-cue::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,var(--edge-hi));}
+.wr-cue:hover::before,.wr-cue:focus-visible::before{background:linear-gradient(180deg,transparent,var(--orange));}
 
 /* ---------- the chapter bar: every chapter named, a reading line under each ---------- */
 .wr-bar{z-index:55;}
@@ -1070,7 +823,8 @@ CSS = r"""
 .wr-bar ol{position:relative;list-style:none;margin:0;padding:0;display:flex;}
 .wr-bar ol a{position:relative;display:flex;align-items:center;gap:.5rem;min-height:44px;padding:0 .8rem;white-space:nowrap;text-decoration:none;
   font-size:var(--fs-small);font-weight:500;color:var(--gray-light);transition:color .3s var(--ease);}
-.wr-bar ol a span{font-family:var(--font-mono);font-size:var(--fs-micro);color:var(--gray);transition:color .3s var(--ease);}
+.wr-bar ol a span{font-family:var(--font-mono);font-size:var(--fs-micro);color:var(--wr-dim);transition:color .3s var(--ease);}
+.wr-bar ol a b{font-weight:inherit;}
 .wr-bar ol a i{position:absolute;left:.8rem;right:.8rem;bottom:6px;height:1px;background:var(--edge);overflow:hidden;}
 .wr-bar ol a i::after{content:"";position:absolute;inset:0;background:var(--orange);transform:scaleX(var(--p,0));transform-origin:0 50%;}
 .wr-bar ol a:hover,.wr-bar ol a[aria-current]{color:var(--white);}
@@ -1080,9 +834,8 @@ CSS = r"""
   .wr-bar{border-block:1px solid var(--line);background:var(--wr-solid);}
   .wr-bar-in{height:var(--wr-bar);}
   .wr-bar ol{margin-left:-.8rem;}
-  .wr-js .wr-bar{position:fixed;left:0;right:0;top:0;transform:translateY(-104%);transition:transform .45s var(--ease),translate .38s var(--ease);}
-  .wr-js .wr-bar.is-on{transform:none;}
-  html.v2-nav-up .wr-bar{translate:0 var(--v2-nav-h,77px);}
+  .wr-js .wr-bar{position:fixed;left:0;right:0;top:0;transform:translateY(-104%);transition:transform .45s var(--ease);}
+  .wr-js .wr-bar.is-on{transform:none;transition-delay:.24s;}
   html{scroll-padding-top:calc(var(--wr-bar,56px) + .5rem);}
 }
 @media (max-width:899.98px){
@@ -1097,21 +850,27 @@ CSS = r"""
   .wr-bar ol a i{left:.7rem;right:.7rem;bottom:4px;}
   .wr-js .wr-bar{position:fixed;left:0;right:0;bottom:0;transform:translateY(110%);transition:transform .45s var(--ease);}
   .wr-js .wr-bar.is-on{transform:none;}
-  /* while the site menu is back at the top, it does the navigating: one bar at a time on a small screen */
   html.v2-nav-up.wr-js .wr-bar.is-on{transform:translateY(110%);}
+}
+/* while the site menu is back at the top, it does the navigating: one bar at a time, and nothing under it shifts.
+   The bar steps away at once and comes back only after the menu has gone (the delay above), so they never cross */
+@media (min-width:900px){html.v2-nav-up.wr-js .wr-bar.is-on{transform:translateY(-104%);transition-delay:0s;}}
+/* a phone: the chapters' numbers, and beside them the name of the one being read (from the script), so no
+   name is ever cut by the screen's edge or by the button; every name stays in the links for screen readers */
+@media (max-width:560px){
+  .wr-js .wr-bar-in::before{content:attr(data-cur);flex:0 0 5.2rem;min-width:0;overflow:hidden;white-space:nowrap;
+    font-size:var(--fs-small);font-weight:500;color:var(--white);}
+  .wr-js .wr-bar ol{flex:0 1 auto;overflow:visible;margin-left:0;padding-left:0;-webkit-mask-image:none;mask-image:none;}
+  .wr-js .wr-bar ol a{padding:0 .42rem;}
+  .wr-js .wr-bar ol a span{display:inline;font-size:var(--fs-small);}
+  .wr-js .wr-bar ol a b{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+  .wr-js .wr-bar ol a i{left:.42rem;right:.42rem;}
+  .wr-js .wr-bar-in{padding-left:var(--wr-x);}
 }
 /* a key that reaches the bar always finds it on screen */
 .wr-js .wr-bar:focus-within,html.v2-nav-up.wr-js .wr-bar:focus-within{transform:none;}
 
-/* ---------- the ticker: moves only while the page scrolls ---------- */
-.wr-tick{overflow:hidden;padding-block:clamp(1.1rem,2.6vw,2.2rem);border-block:1px solid var(--line);}
-.wr-tick-in{display:flex;width:max-content;}
-.wr-tick-in>span{display:flex;align-items:center;flex:none;white-space:nowrap;font-family:var(--font-display);font-weight:700;
-  font-size:min(calc(var(--fs-display) * 1.45),15vw);line-height:1.02;letter-spacing:-.035em;color:transparent;-webkit-text-stroke:1px var(--edge-hi);}
-.wr-tick em{font-style:normal;color:var(--white);-webkit-text-stroke:0;}
-.wr-tick i{flex:none;width:.14em;height:.14em;margin:0 .5em;border-radius:50%;background:var(--orange);}
-
-/* ---------- 01 the mark to beat ---------- */
+/* ---------- 01 the mark to beat: theirs in neutral, mine in orange, both solid ---------- */
 .wr-mark{padding-block:var(--wr-pad) calc(var(--wr-pad) * .55);}
 .wr-duel{display:grid;margin-top:var(--sp-5);}
 .wr-big{min-width:0;}
@@ -1119,9 +878,9 @@ CSS = r"""
 .wr-cap{margin:0 0 .4rem;font-family:var(--font-mono);font-size:var(--fs-small);color:var(--gray-light);}
 .wr-giga{margin:0;font-family:var(--font-display);font-weight:700;font-size:var(--wr-giga);line-height:.84;letter-spacing:-.055em;color:var(--white);
   font-variant-numeric:tabular-nums;white-space:nowrap;}
-.is-theirs .wr-giga{color:transparent;-webkit-text-stroke:max(1px,.005em) color-mix(in srgb,var(--white) 78%,transparent);}
+.is-theirs .wr-giga{color:var(--gray-light);}
 .is-mine .wr-giga{color:var(--orange);}
-.wr-giga small{font-size:.15em;font-weight:600;letter-spacing:0;margin-left:.35em;color:var(--gray-light);-webkit-text-stroke:0;}
+.wr-giga small{font-size:.15em;font-weight:600;letter-spacing:0;margin-left:.35em;color:var(--gray-light);}
 .wr-meta{list-style:none;margin:var(--sp-3) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.35rem 0;font-size:var(--fs-body-s);color:var(--gray-light);}
 .wr-meta li{display:flex;align-items:center;}
 .wr-meta li+li::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--gray);margin:0 .75rem;}
@@ -1141,11 +900,6 @@ CSS = r"""
 .wr-more[open] summary::after{transform:rotate(45deg);}
 .wr-more summary:hover{color:var(--white);}
 .wr-more p{margin:0 0 1rem;font-size:var(--fs-body-s);line-height:1.65;color:var(--gray-light);max-width:44rem;}
-/* a number that counts keeps the width of its final value */
-.wr-count{display:inline-grid;}
-.wr-count>span,.wr-count::after{grid-area:1/1;}
-.wr-count::after{content:attr(data-final);visibility:hidden;}
-.is-mine .wr-count>span{text-align:right;}
 
 /* ---------- 02 the course, pinned and flown ---------- */
 .wr-course{position:relative;background:var(--wr-deep);}
@@ -1167,8 +921,8 @@ CSS = r"""
 .wr-lane{fill:none;stroke:var(--edge-hi);stroke-width:1.5;vector-effect:non-scaling-stroke;}
 .wr-lane.is-200{stroke:var(--edge);stroke-dasharray:3 7;}
 .wr-course:has(#wrk200:checked) .wr-lane.is-200{stroke:var(--edge-hi);stroke-dasharray:none;}
-.wr-glow{fill:none;stroke:color-mix(in srgb,var(--orange) 26%,transparent);stroke-width:13;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;}
-.wr-flown{fill:none;stroke:var(--orange);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;}
+/* the flown line: one clean orange stroke, no bloom */
+.wr-flown{fill:none;stroke:var(--orange);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;}
 .wr-gate{stroke:var(--white);stroke-width:2;vector-effect:non-scaling-stroke;}
 .wr-tk{stroke:var(--edge-hi);stroke-width:1;vector-effect:non-scaling-stroke;}
 .wr-pl{position:absolute;bottom:calc(100% + .7rem);left:0;white-space:nowrap;font-size:var(--fs-small);line-height:1.3;color:var(--white);}
@@ -1178,13 +932,11 @@ CSS = r"""
 .wr-tp.v200 .wr-pl{transform:translateX(-100%);text-align:right;}
 .wr-ring{position:absolute;left:0;top:50%;width:2.8rem;height:2.8rem;margin:-1.4rem 0 0 -1.4rem;box-sizing:border-box;border-radius:50%;border:1px dashed var(--gray-light);}
 .wr-ring::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--white);}
-.wr-gl{position:absolute;left:3%;top:75%;width:34px;height:34px;margin:-17px 0 0 -17px;transform:rotate(180deg);pointer-events:none;}
-.wr-gl::before{content:"";position:absolute;inset:-16px;border-radius:50%;
-  background:radial-gradient(circle,color-mix(in srgb,var(--orange) 46%,transparent) 0%,color-mix(in srgb,var(--orange) 14%,transparent) 42%,transparent 70%);}
-.wr-gl svg{position:relative;display:block;width:100%;height:100%;overflow:visible;}
-.wr-gl .g-w{fill:none;stroke:var(--orange);stroke-width:3.6;stroke-linecap:round;}
-.wr-gl .g-l{fill:none;stroke:var(--white);stroke-width:.9;opacity:.75;}
-.wr-gl .g-p{fill:var(--white);}
+/* the position: a plain orange dot in a hairline ring, as a live tracker draws it (no pictogram, nothing turning) */
+.wr-gl{position:absolute;left:3%;top:75%;width:22px;height:22px;margin:-11px 0 0 -11px;pointer-events:none;}
+.wr-gl::before{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid color-mix(in srgb,var(--orange) 55%,transparent);
+  background:color-mix(in srgb,var(--orange) 10%,transparent);}
+.wr-gl::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--orange);}
 .wr-map.is-live .wr-gl{left:0;top:0;will-change:transform;}
 .wr-scale{position:relative;height:1.6em;margin-top:.8rem;font-family:var(--font-mono);font-size:var(--fs-small);color:var(--gray-light);}
 .wr-scale span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap;}
@@ -1201,29 +953,25 @@ CSS = r"""
 .wr-read .is-leg dd{font-size:calc(var(--fs-h2) * 1.2);}
 .wr-read .is-me dd{color:var(--orange);}
 .wr-read .is-me dt::before{content:"";display:inline-block;width:7px;height:7px;margin-right:.45rem;border-radius:50%;background:var(--orange);vertical-align:.05em;}
-.wr-km{display:none;}
 /* a counting kilometre figure keeps three digits of room, so nothing beside it moves */
-#wrKm,#wrKmBig{display:inline-block;min-width:3ch;text-align:right;}
+#wrKm{display:inline-block;min-width:3ch;text-align:right;}
 
-/* ---------- 03 Kerio Valley ---------- */
+/* ---------- 03 Kerio Valley: the name in solid type, then the valley ---------- */
 .wr-place{padding-top:var(--wr-pad);}
 .wr-cut{width:fit-content;max-width:100%;margin:0;font-family:var(--font-display);font-weight:700;font-size:min(calc(var(--fs-display) * 3),22vw);
   line-height:.86;letter-spacing:-.05em;color:var(--white);}
 .wr-cut span{display:block;}
-@supports ((-webkit-background-clip:text) or (background-clip:text)){
-  /* the photograph inside the letters, over a plain fill, so the name shows before the photograph arrives */
-  .wr-cut{color:transparent;background:url("__KERIO__.webp") 50% 58%/cover no-repeat,var(--gray-light);
-    -webkit-background-clip:text;background-clip:text;filter:saturate(1.15) brightness(1.2);}
-  .wr-js .wr-cut:not(.is-near){background:var(--gray-light);-webkit-background-clip:text;background-clip:text;}
-}
 .wr-plate{position:relative;margin:var(--sp-5) 0 0;}
-.wr-plate-img{position:relative;height:min(80svh,54rem);overflow:hidden;}
-.wr-par{position:absolute;inset:0;}
-.wr-par img{width:100%;height:100%;object-fit:cover;}
-.wr-plate-img::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,var(--bg) 0%,transparent 22%,transparent 46%,color-mix(in srgb,var(--bg) 94%,transparent) 100%);}
-.wr-facts{position:absolute;left:0;right:0;bottom:0;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--sp-4);
-  box-sizing:border-box;max-width:var(--measure);margin:0 auto;padding:0 var(--wr-x) var(--sp-5);}
+/* the photograph, still and at its own scale: up and down it dissolves through its own long mask, so no box edge
+   can show; past 1440px it stops growing (the file is 1152px wide) and dissolves at the sides as well */
+.wr-plate-img{position:relative;height:min(96svh,62rem);overflow-x:clip;}
+.wr-par{position:absolute;inset:0;max-width:1440px;margin:0 auto;pointer-events:none;}
+.wr-par img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 72%;}
+/* its pale haze is tinted toward the very sky behind it (the script samples the painted sky into --wr-plate-sky;
+   the still day's own colour there otherwise), so the photograph meets the sky without a band */
+.wr-par::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,@@PAR_GRADE@@);}
+.wr-facts{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--sp-4);
+  box-sizing:border-box;max-width:var(--measure);margin:0 auto;padding:var(--sp-4) var(--wr-x) 0;}
 .wr-facts div{padding-top:var(--sp-2);border-top:1px solid var(--edge-hi);}
 .wr-facts dt{font-family:var(--font-mono);font-size:var(--fs-micro);color:var(--gray-light);}
 .wr-facts dd{margin:.45rem 0 0;font-size:var(--fs-body);line-height:1.35;color:var(--white);}
@@ -1238,23 +986,27 @@ CSS = r"""
 .wr-win .wr-stage{padding-block:var(--wr-pad);}
 .wr-win-in{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "days" "vp";gap:var(--sp-5);}
 .wr-win-head{grid-area:head;}
-.wr-win .wr-h2{max-width:9ch;}
+.wr-win .wr-h2{max-width:11ch;}
+.wr-nw{white-space:nowrap;}
 .wr-win .wr-lede{margin-top:var(--sp-2);}
-/* the 26 days: two expeditions and the two days between */
+/* the 26 days: each expedition one continuous bar, the two days between them a dashed hairline, the days as ticks
+   over their numbers */
 .wr-days{grid-area:days;min-width:0;}
-.wr-days-k,.wr-days-bar,.wr-days-n{display:grid;grid-template-columns:repeat(26,minmax(0,1fr));gap:3px;}
-.wr-days-k{margin-bottom:.8rem;}
+.wr-days-k,.wr-days-bar,.wr-days-n{display:grid;grid-template-columns:repeat(26,minmax(0,1fr));gap:2px;}
+.wr-days-k{margin-bottom:.9rem;}
 .wr-days-k>span{display:flex;flex-direction:column;gap:.2rem;padding-left:.7rem;border-left:1px solid var(--orange);font-size:var(--fs-body-s);line-height:1.3;color:var(--gray-light);}
 .wr-days-k>span:first-child{grid-column:1/13;}
 .wr-days-k>span:last-child{grid-column:15/27;}
 .wr-days-k a{display:inline-flex;align-items:center;min-height:44px;margin:-.5rem 0 -.4rem;width:fit-content;font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);color:var(--white);}
-.wr-days-bar i{display:block;height:2.6rem;background:var(--orange);transform-origin:50% 100%;}
-.wr-days-bar i.is-off{background:none;border:1px dashed var(--edge-hi);}
+.wr-days-bar{align-items:center;}
+.wr-days-bar i{display:block;height:4px;background:var(--orange);}
+.wr-days-bar i.is-off{height:1px;margin-inline:3px;background:linear-gradient(90deg,var(--edge-hi) 50%,transparent 0) 0 0/6px 1px repeat-x;}
 .wr-days-n{margin-top:.5rem;font-family:var(--font-mono);font-size:var(--fs-micro);color:var(--gray);text-align:center;}
-.wr-days-n span{min-width:0;}
+.wr-days-n span{position:relative;min-width:0;padding-top:.6rem;}
+.wr-days-n span::before{content:"";position:absolute;left:50%;top:0;width:1px;height:5px;background:var(--edge-hi);}
 .wr-days-dur{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;margin:var(--sp-3) 0 0;padding-top:.9rem;border-top:1px solid var(--live);font-size:var(--fs-body);line-height:1.45;color:var(--white);}
 .wr-days-dur b{font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light);}
-/* before and after: a strip */
+/* before and after: four steps */
 .wr-vp{grid-area:vp;min-width:0;}
 .wr-track{display:flex;align-items:stretch;}
 .wr-steps{list-style:none;margin:0;padding:0;display:flex;}
@@ -1264,19 +1016,16 @@ CSS = r"""
 .wr-step h3{margin:0;font-family:var(--font-display);font-weight:600;font-size:calc(var(--fs-h3) * 1.15);line-height:1.15;color:var(--white);}
 .wr-step p{margin:.7rem 0 0;max-width:16rem;font-size:var(--fs-body);line-height:1.5;color:var(--gray-light);}
 .wr-step p a{display:inline-flex;align-items:center;min-height:44px;}
-.wr-fig{position:relative;flex:0 0 min(18rem,60vw);margin:0 var(--sp-5) 0 0;overflow:hidden;align-self:stretch;}
-.wr-fig img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:56% 50%;transition:transform 1.4s var(--ease);}
-.wr-fig:hover img{transform:scale(1.05);}
-.wr-swipe{display:none;}
 
 /* ---------- 05 the audience ---------- */
 .wr-aud{padding-block:var(--wr-pad);}
 .wr-aud-in{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.85fr);grid-template-areas:"copy pic" "stats pic";column-gap:clamp(2rem,6vw,6rem);}
 .wr-aud-copy{grid-area:copy;}
-.wr-portrait{grid-area:pic;position:relative;margin:calc(var(--sp-5) * 1.6) 0 0;align-self:start;aspect-ratio:4/5;overflow:hidden;}
-.wr-portrait figcaption{position:absolute;left:var(--sp-3);bottom:var(--sp-3);z-index:1;font-family:var(--font-mono);font-size:var(--fs-micro);color:var(--white);
-  text-shadow:0 1px 3px color-mix(in srgb,var(--bg) 90%,transparent);}
-.wr-portrait::after{content:"";position:absolute;inset:55% 0 0;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--bg) 70%,transparent));pointer-events:none;}
+/* the portrait: a crisp frame in the page's light (its bright sky graded down from the top), the name under it */
+.wr-portrait{grid-area:pic;position:relative;margin:calc(var(--sp-5) * 1.6) 0 0;align-self:start;}
+.wr-portrait picture{position:relative;display:block;aspect-ratio:4/5;overflow:clip;outline:1px solid var(--line);outline-offset:-1px;}
+.wr-portrait picture::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,@@PORTRAIT_GRADE@@);}
+.wr-portrait figcaption{margin-top:.8rem;font-family:var(--font-mono);font-size:var(--fs-small);color:var(--wr-dim);}
 .wr-stats{grid-area:stats;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-5) var(--sp-4);margin:var(--sp-5) 0 0;}
 .wr-stats div{display:flex;flex-direction:column-reverse;justify-content:flex-end;padding-top:var(--sp-3);border-top:1px solid var(--edge);}
 .wr-stats dd{margin:0;font-family:var(--font-display);font-weight:700;font-size:calc(var(--fs-display) * .95);line-height:1;letter-spacing:-.04em;color:var(--white);
@@ -1286,94 +1035,55 @@ CSS = r"""
 /* ---------- 06 the offer ---------- */
 .wr-offer{padding-block:var(--wr-pad) var(--sp-section);background:radial-gradient(70% 60% at 85% 0%,var(--sky-warm),transparent 70%);}
 .wr-offer-head{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2rem,6vw,6rem);align-items:end;}
-.wr-offer-pic{position:relative;margin:0;aspect-ratio:4/3;overflow:hidden;}
-.wr-offer-pic img{transition:transform 1.4s var(--ease);}
-.wr-offer-pic:hover img{transform:scale(1.04);}
+/* photographs of people: crisp frames with a hairline edge (never half dissolved), graded to the page's light */
+.wr-offer-pic{position:relative;margin:0;aspect-ratio:4/3;overflow:clip;outline:1px solid var(--line);outline-offset:-1px;}
 .wr-tiers{display:grid;grid-template-columns:minmax(0,1.2fr) repeat(2,minmax(0,1fr));gap:var(--sp-3);margin-top:var(--sp-5);}
-.wr-tier{position:relative;padding:var(--sp-4);border-top:1px solid var(--edge-hi);
-  background:linear-gradient(180deg,color-mix(in srgb,var(--white) 6%,transparent),color-mix(in srgb,var(--white) 1.5%,transparent) 70%);}
-.wr-tier.is-lead{border-top:2px solid var(--orange);background:linear-gradient(180deg,color-mix(in srgb,var(--orange) 9%,transparent),color-mix(in srgb,var(--white) 2%,transparent) 70%);}
-.wr-tier::after{content:"";position:absolute;left:0;top:0;width:2px;height:0;background:var(--orange);transition:height .6s var(--ease);}
-.wr-tier:hover::after,.wr-tier:focus-within::after{height:3.5rem;}
-.wr-tier-n{margin:0 0 var(--sp-3);font-family:var(--font-display);font-weight:700;font-size:calc(var(--fs-display) * 1.05);line-height:.9;letter-spacing:-.04em;
-  color:transparent;-webkit-text-stroke:1px var(--edge-hi);}
-.wr-tier.is-lead .wr-tier-n{-webkit-text-stroke-color:var(--orange);}
+.wr-tier{position:relative;padding:var(--sp-4);border-top:1px solid var(--edge-hi);}
+.wr-tier.is-lead{border-top:2px solid var(--orange);}
+/* the tier's number: a small label, so the card leads with its name */
+.wr-tier-n{margin:0 0 var(--sp-2);font-family:var(--font-mono);font-size:var(--fs-small);line-height:1.4;letter-spacing:.08em;color:var(--wr-dim);}
 .wr-tier-k{position:absolute;top:var(--sp-4);right:var(--sp-4);margin:0;padding:.2rem .5rem;border:1px solid var(--live);font-family:var(--font-mono);font-size:var(--fs-micro);line-height:1.4;color:var(--gray-light);}
 .wr-tier h3{margin:0 0 var(--sp-3);font-family:var(--font-display);font-weight:700;font-size:var(--fs-h3);line-height:1.1;color:var(--white);}
 .wr-tier ul{list-style:none;margin:0;padding:0;display:grid;gap:.15rem;}
 .wr-tier li{position:relative;padding:.5rem 0 .5rem 1.2rem;border-top:1px solid var(--line);font-size:var(--fs-body);line-height:1.45;color:color-mix(in srgb,var(--white) 88%,var(--gray-light));}
 .wr-tier li::before{content:"";position:absolute;left:0;top:1.2em;width:.5rem;height:2px;background:var(--orange);}
 .wr-cta{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-3) var(--sp-5);margin-top:var(--sp-5);}
-.wr-mag{display:inline-block;padding:16px;margin:-16px;transition:transform .7s var(--ease);}
 .wr-cta .btn-solid{margin:0;font-size:var(--fs-lead);padding:1.05rem 2.3rem;}
 .wr-cta .btn-lines{display:inline-flex;align-items:center;min-height:48px;box-sizing:border-box;font-size:var(--fs-lead);}
 .wr-cta .btn-lines:hover{color:var(--orange);border-color:var(--orange);}
 .wr-src{margin:var(--sp-5) 0 0;font-size:var(--fs-small);line-height:1.8;color:var(--gray);}
 
-/* ---------- image reveals and depth ---------- */
-.wr-rv{clip-path:inset(0);}
-.wr-par img,.wr-offer-pic img,.wr-portrait img{display:block;width:100%;height:100%;object-fit:cover;}
-
-/* ---------- the ring cursor (fine pointers only; made by the script) ---------- */
-.wr-cursor{position:fixed;left:0;top:0;z-index:250;width:0;height:0;pointer-events:none;opacity:0;transition:opacity .3s var(--ease);}
-.wr-cursor.is-on{opacity:1;}
-.wr-cursor i{position:absolute;left:-17px;top:-17px;width:34px;height:34px;box-sizing:border-box;border-radius:50%;border:1px solid color-mix(in srgb,var(--white) 55%,transparent);
-  transition:transform .5s var(--ease),background-color .5s var(--ease),border-color .5s var(--ease);}
-.wr-cursor.is-big i{transform:scale(1.75);background:color-mix(in srgb,var(--orange) 12%,transparent);border-color:var(--live);}
-.wr-cursor.is-map i{transform:scale(2.5);background:transparent;border-color:color-mix(in srgb,var(--orange) 70%,transparent);}
+/* ---------- photographs in frames: graded to the page's light ---------- */
+.wr-offer-pic img,.wr-portrait img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.72) brightness(.74);}
 
 /* ---------- motion: only in answer to the visitor, and none of it when they ask for stillness ---------- */
 @media (prefers-reduced-motion:no-preference){
-  .wr-js .wr-k :is(.wr-w,.wr-ln)>span{transform:translateY(112%);transition:transform 1.05s var(--ease);transition-delay:calc(var(--i,0) * 70ms);}
-  .wr-js .wr-k.is-in :is(.wr-w,.wr-ln)>span{transform:none;}
-  .wr-js .wr-fade{opacity:0;transform:translateY(1.4rem);transition:opacity 1s var(--ease) .3s,transform 1s var(--ease) .3s;}
-  .wr-js .wr-fade.is-in{opacity:1;transform:none;}
-  .wr-js .wr-cut{transition:clip-path 1.3s var(--ease),transform 1.3s var(--ease);}
-  .wr-js .wr-cut:not(.is-in){clip-path:inset(0 0 100% 0);transform:translateY(10%);}
-  .wr-js .wr-rv{transition:clip-path 1.5s var(--ease);}
-  .wr-js .wr-rv:not(.is-in){clip-path:inset(14% 9% 14% 9%);}
-  .wr-js .wr-rv img{transition:transform 1.8s var(--ease);}
-  .wr-js .wr-rv:not(.is-in) img{transform:scale(1.18);}
-  .wr-js .wr-days-bar i{transition:transform .9s var(--ease) calc(var(--d) * 32ms);}
-  .wr-js .wr-days:not(.is-in) .wr-days-bar i{transform:scaleY(.06);}
-  .wr-pin .wr-stage>.wr-in{transition:translate .38s var(--ease);}
+  /* two entrances on the whole page, both on the site's one curve. The opening title: three lines rising once,
+     after the face has loaded, then its lines under it */
+  .wr-js .wr-mega .wr-ln>span{transform:translateY(104%);transition:transform 1.2s var(--ease);transition-delay:calc(var(--i,0) * 90ms);}
+  .wr-js .wr-mega.is-in .wr-ln>span{transform:none;}
+  .wr-js .wr-hero .wr-fade{opacity:0;transform:translateY(14px);transition:opacity 1s var(--ease) .35s,transform 1.1s var(--ease) .35s;}
+  .wr-js .wr-hero .wr-fade.is-in{opacity:1;transform:none;}
+  /* and the window's days, drawn once left to right, as time passing. Everything else simply stands; the
+     photographs stay still (no drift, no zoom), so the scroll is the only thing moving the page */
+  .wr-js .wr-days-bar{clip-path:inset(0 100% 0 0);transition:clip-path 1.6s var(--ease) .1s;}
+  .wr-js .wr-days.is-in .wr-days-bar{clip-path:inset(0);}
   html{scroll-behavior:smooth;}
-}
-@supports (animation-timeline:view()){
-  @media (prefers-reduced-motion:no-preference){
-    .wr-hero-pic{animation:wr-sink linear both;animation-timeline:view();animation-range:exit 0% exit 100%;}
-    .wr-hero-in{animation:wr-lift linear both;animation-timeline:view();animation-range:exit 0% exit 100%;}
-    @keyframes wr-sink{to{transform:translateY(16%) scale(1.06);}}
-    @keyframes wr-lift{to{transform:translateY(-12vh);opacity:0;}}
-    .wr-par{animation:wr-drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%;}
-    @keyframes wr-drift{from{transform:translateY(-7%) scale(1.15);}to{transform:translateY(7%) scale(1.15);}}
-  }
 }
 @media (prefers-reduced-motion:reduce){
   .wr *,.wr *::before,.wr *::after{transition:none!important;}
 }
 
-/* ---------- pinned chapters (set before the first paint by the script at the top of main) ---------- */
-.wr-pin .wr-course{height:200vh;}
+/* ---------- the pinned course (set before the first paint by the script at the top of main) ---------- */
+.wr-pin .wr-course{height:250vh;}
 .wr-pin .wr-course .wr-stage{position:sticky;top:0;box-sizing:border-box;height:100svh;padding-block:calc(var(--wr-bar) + var(--sp-3)) var(--sp-3);display:flex;align-items:center;overflow:hidden;}
-.wr-pin .wr-km{display:block;position:absolute;z-index:-1;right:-.04em;top:50%;transform:translateY(-54%);margin:0;pointer-events:none;white-space:nowrap;
-  font-family:var(--font-display);font-weight:700;font-size:min(32vh,19vw);line-height:.8;letter-spacing:-.06em;color:transparent;
-  -webkit-text-stroke:1px color-mix(in srgb,var(--white) 14%,transparent);font-variant-numeric:tabular-nums;}
-.wr-pin .wr-km small{font-size:.22em;letter-spacing:0;margin-left:.12em;}
-html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .8);}
-.wr-hz .wr-win .wr-stage{position:sticky;top:0;box-sizing:border-box;height:100svh;padding-block:calc(var(--wr-bar) + var(--sp-3)) var(--sp-3);display:flex;align-items:center;overflow:hidden;}
 
-/* ---------- wide screens: the window's title and days hold while the strip passes ---------- */
+/* ---------- wide screens: the window's four steps in one calm row ---------- */
 @media (min-width:900px){
   .wr-win-in{grid-template-columns:minmax(0,20rem) minmax(0,1fr);grid-template-areas:"head days" "vp vp";column-gap:var(--sp-5);align-items:end;}
-  :root:not(.wr-hz) .wr-track{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-4);}
-  :root:not(.wr-hz) .wr-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-4);}
-  :root:not(.wr-hz) .wr-step{padding-right:0;}
-  :root:not(.wr-hz) .wr-fig{display:none;}
-  .wr-hz .wr-win-in{grid-template-areas:"head vp" "days days";row-gap:clamp(2rem,6vh,4rem);align-items:center;}
-  .wr-hz .wr-vp{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,var(--bg) 9%,var(--bg) 90%,transparent);mask-image:linear-gradient(90deg,transparent,var(--bg) 9%,var(--bg) 90%,transparent);}
-  .wr-hz .wr-track{padding:var(--sp-3) 0 0 var(--sp-3);width:max-content;will-change:transform;}
-  .wr-hz .wr-fig{height:auto;min-height:15rem;}
+  .wr-track{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-4);}
+  .wr-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-4);}
+  .wr-step{padding-right:0;}
 }
 
 /* ---------- tablets and phones ---------- */
@@ -1391,7 +1101,6 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
   .wr-hero-meta{order:3;}
   .wr-hero-sub{order:4;}
   .wr-go{order:5;justify-self:start;}
-  .wr-mega .is-hollow{-webkit-text-stroke-width:max(1.5px,.016em);}
   .wr-hero-sub{margin-top:var(--sp-3);}
   .wr-hero-meta{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--sp-3);margin-top:var(--sp-4);border-left:0;padding:var(--sp-3) 0 0;border-top:1px solid var(--edge-hi);}
   .wr-cue{display:none;}
@@ -1399,17 +1108,15 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
   .wr-read{grid-template-columns:minmax(0,1fr);gap:0;}
   .wr-read div{display:flex;align-items:baseline;justify-content:space-between;gap:var(--sp-2);padding:.6rem 0;border-bottom:1px solid var(--line);}
   .wr-read dd,.wr-read .is-leg dd{margin:0;font-size:calc(var(--fs-h2) * 1.05);}
+  .wr-pin .wr-course{height:220vh;}
   .wr-pin .wr-course .wr-stage{padding-block:var(--sp-3) calc(var(--sp-3) + var(--wr-dock));}
-  .wr-facts{position:static;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-3);padding-top:var(--sp-3);padding-bottom:0;}
-  .wr-plate-img{height:62svh;}
-  .wr-plate-img::after{background:linear-gradient(180deg,var(--bg) 0%,transparent 18%,transparent 75%,var(--bg) 100%);}
-  .wr-vp{margin-inline:calc(var(--wr-x) * -1);}
-  .wr-track{overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;padding:var(--sp-3) var(--wr-x) var(--sp-2);scroll-padding-inline:var(--wr-x);}
-  .wr-track::-webkit-scrollbar{display:none;}
-  .wr-step{scroll-snap-align:start;padding-right:var(--sp-4);}
-  .wr-fig{display:none;}
-  .wr-swipe{display:block;position:relative;height:2px;margin:var(--sp-2) var(--wr-x) 0;background:var(--line);}
-  .wr-swipe i{position:absolute;inset:0;background:var(--orange);transform:scaleX(var(--p,.25));transform-origin:0 50%;}
+  .wr-facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-3);padding-top:var(--sp-3);}
+  .wr-plate-img{height:70svh;}
+  /* the four steps two by two: nothing slides sideways and nothing is cut by the screen's edge */
+  .wr-track{display:grid;grid-template-columns:minmax(0,1fr);row-gap:var(--sp-2);}
+  .wr-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--sp-3);}
+  .wr-step{padding:var(--sp-3) 0 var(--sp-2);}
+  .wr-step p{max-width:none;}
   .wr-aud-in{grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "pic" "stats";}
   .wr-portrait{justify-self:end;width:min(62%,20rem);margin-top:var(--sp-4);}
   .wr-offer{padding-bottom:calc(var(--sp-section) + var(--wr-dock));}
@@ -1430,14 +1137,13 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
   .is-mine .wr-meta{align-items:flex-end;}
   .wr-say .wr-t{font-size:var(--fs-h3);}
   .wr-map{margin:var(--sp-5) 0 var(--sp-3);}
-  .wr-pin .wr-course{height:190vh;}
-  .wr-pin .wr-km{display:none;}
   .wr-course-head .wr-h2{font-size:calc(var(--fs-h1) * 1.05);}
   .wr-ring{width:2rem;height:2rem;margin:-1rem 0 0 -1rem;}
   .wr-scale span:nth-child(even){display:none;}
   .wr-facts{grid-template-columns:minmax(0,1fr);}
   .wr-days-n{display:none;}
-  .wr-days-bar i{height:2.2rem;}
+  .wr-days-bar i{height:5px;}
+  .wr-days-bar i.is-off{height:1px;}
   .wr-days-k a{font-size:var(--fs-body);}
   .wr-stats{gap:var(--sp-4) var(--sp-3);}
   .wr-stats dd{font-size:calc(var(--fs-display) * .82);}
@@ -1446,82 +1152,50 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
 }
 /* ---------- the record day: the backgrounds (see the docstring) ---------- */
 /* small muted words sit on a sky now, not flat black: lifted enough to keep 4.5:1 on its brightest */
-.wr{--wr-dim:color-mix(in srgb,var(--gray-light) 84%,var(--gray));
-  --wr-land:color-mix(in srgb,var(--ink) 72%,var(--bg));
-  /* a cloud's lit colour: a warm white held at the sky's brightness limit, so a cloud lightens the sky and never lifts it past what the words need */
-  --wr-cloud:color-mix(in srgb,var(--white) 18.5%,var(--bg));
-  --wr-cloud-dusk:color-mix(in srgb,color-mix(in srgb,var(--orange) 80%,var(--white)) 26%,var(--bg));}
+.wr{--wr-dim:color-mix(in srgb,var(--gray-light) 84%,var(--gray));}
 .wr-tbd,.wr-no,.wr-src,.wr-days-n{color:var(--wr-dim);}
 .wr-mark,.wr-offer{position:relative;isolation:isolate;}
-.wr-sky,.wr-night,.wr-still-rg{display:none;}
+.wr-sky,.wr-night{display:none;}
 .wr-defs{position:absolute;width:0;height:0;overflow:hidden;}
-/* the partner cards are solid: neither the sky nor the hills show through the offer */
+/* the partner cards are solid: the sky does not show through the offer */
 .wr .wr-tier{background:linear-gradient(180deg,color-mix(in srgb,var(--white) 6%,transparent),color-mix(in srgb,var(--white) 1.5%,transparent) 70%),color-mix(in srgb,var(--card) 94%,var(--bg));}
 .wr .wr-tier.is-lead{background:linear-gradient(180deg,color-mix(in srgb,var(--orange) 9%,transparent),color-mix(in srgb,var(--white) 2%,transparent) 70%),color-mix(in srgb,var(--card) 94%,var(--bg));}
 /* the course's grain fades at both ends, so no line marks its edges (with the moving sky the page's own grain is there instead) */
 .wr-sky-on .wr-course.wr-grain::after{display:none;}
-.wr-course.wr-grain::after{-webkit-mask-image:linear-gradient(180deg,transparent,var(--bg) 16%,var(--bg) 84%,transparent);mask-image:linear-gradient(180deg,transparent,var(--bg) 16%,var(--bg) 84%,transparent);}
-
-/* ----- the horizon: the escarpment and the hills (drawn once in .wr-defs, used by the moving and the still page) ----- */
-.wr-rg{position:absolute;inset:0;}
-.wr-rg svg{position:absolute;left:0;top:0;display:block;width:100%;height:100%;overflow:visible;}
-.wr-rg .is-p{display:none;}
-@media (max-width:560px){.wr-rg .is-w{display:none;}.wr-rg .is-p{display:block;}}
-.r-far2{fill:var(--bg);fill-opacity:.26;}
-.r-far{fill:var(--bg);fill-opacity:.44;}
-.r-tug{fill:url(#wrHaze);}
-.r-esc{fill:url(#wrWall);}
-.r-near{fill:var(--wr-land);}
-.wr-still-rg .h1{stop-color:color-mix(in srgb,var(--bg) 86%,var(--gray-light));}
-.wr-still-rg .h2{stop-color:color-mix(in srgb,var(--bg) 70%,var(--ink));}
-.wr-still-rg .w1{stop-color:color-mix(in srgb,var(--bg) 93%,var(--gray-light));}
-.wr-still-rg .w2{stop-color:color-mix(in srgb,var(--bg) 60%,var(--ink));}
-/* morning: the sun comes up behind the Tugen Hills (left), lights the escarpment's east face (right) */
-.r-face{fill:url(#wrLit);}
-.wr-still-rg .g1{stop-color:color-mix(in srgb,var(--orange) 62%,var(--white));stop-opacity:.24;}
-.wr-still-rg .g2{stop-color:color-mix(in srgb,var(--orange) 70%,var(--white));stop-opacity:.08;}
-.wr-still-rg .g3{stop-color:var(--orange);stop-opacity:0;}
-.r-gul{fill:none;stroke:var(--bg);stroke-opacity:.6;stroke-width:1.3;stroke-linecap:round;vector-effect:non-scaling-stroke;}
-.r-trim{fill:none;stroke:color-mix(in srgb,var(--orange) 55%,var(--white));stroke-opacity:.7;stroke-width:1.2;stroke-linejoin:round;vector-effect:non-scaling-stroke;}
-/* dusk: the sun goes down behind the escarpment (right), rims its edge, and the Tugen Hills' west slopes glow */
-.r-tface{fill:url(#wrGlow);}
-.wr-still-rg .p1{stop-color:color-mix(in srgb,var(--orange) 70%,var(--sky-cool));stop-opacity:.2;}
-.wr-still-rg .p2{stop-color:var(--orange);stop-opacity:0;}
-.r-rim{fill:none;stroke:var(--orange);stroke-width:1.5;stroke-linejoin:round;vector-effect:non-scaling-stroke;}
-/* the thermals' streamlines and bubbles fade at both ends through their own stroke */
-.wr-defs .f0{stop-color:var(--gray-light);stop-opacity:0;}
-.wr-defs .f1{stop-color:var(--gray-light);stop-opacity:1;}
-.wr-defs .q0{stop-color:color-mix(in srgb,var(--orange) 50%,var(--white));stop-opacity:0;}
-.wr-defs .q1{stop-color:color-mix(in srgb,var(--orange) 50%,var(--white));stop-opacity:1;}
+.wr-course.wr-grain::after{@@M_COURSE_GRAIN@@}
 
 /* ----- the still day (no script, or reduced motion): one gradient down the whole page, every stop under the
-   moving sky's brightness limit (checked with each of the site's four skies), the horizon drawn at three edges ----- */
-.wr{--wr-s0:color-mix(in srgb,var(--bg) 62%,var(--sky-cool));
-  --wr-s1:color-mix(in srgb,color-mix(in srgb,var(--bg) 84%,color-mix(in srgb,var(--white) 62%,var(--orange))) 88%,var(--sky-cool));
-  --wr-s2:color-mix(in srgb,var(--bg) 82%,color-mix(in srgb,var(--orange) 38%,var(--white)));
+   moving sky's brightness limit (checked with each of the site's four skies); cool everywhere, the warmth of
+   dusk held to one low stop; the night's stars at the close, settling onto the footer's soft horizon ----- */
+.wr,footer{--wr-s0:color-mix(in srgb,var(--bg) 62%,var(--sky-cool));
+  --wr-s1:color-mix(in srgb,color-mix(in srgb,var(--bg) 58%,var(--sky-cool)) 92%,var(--white));
+  --wr-s2:color-mix(in srgb,color-mix(in srgb,var(--bg) 54%,var(--sky-cool)) 91%,color-mix(in srgb,var(--white) 86%,var(--orange)));
   --wr-s3:color-mix(in srgb,color-mix(in srgb,var(--bg) 50%,var(--sky-cool)) 94%,var(--white));
   --wr-s4:color-mix(in srgb,color-mix(in srgb,var(--bg) 46%,var(--sky-cool)) 93%,var(--white));
-  --wr-s5:color-mix(in srgb,color-mix(in srgb,var(--bg) 66%,var(--sky-cool)) 90%,color-mix(in srgb,var(--orange) 40%,var(--white)));
-  --wr-s6:color-mix(in srgb,color-mix(in srgb,var(--bg) 80%,color-mix(in srgb,var(--orange) 62%,var(--white))) 86%,var(--sky-cool));
-  --wr-s7:color-mix(in srgb,color-mix(in srgb,var(--bg) 70%,var(--sky-cool)) 94%,color-mix(in srgb,var(--orange) 50%,var(--white)));
+  --wr-s5:color-mix(in srgb,color-mix(in srgb,var(--bg) 56%,var(--sky-cool)) 95%,var(--white));
+  --wr-s6:color-mix(in srgb,color-mix(in srgb,var(--bg) 64%,var(--sky-cool)) 95%,var(--orange));
+  --wr-s7:color-mix(in srgb,var(--bg) 62%,var(--sky-cool));
   --wr-s8:color-mix(in srgb,var(--bg) 66%,var(--sky-cool));}
 :root:not(.wr-sky-on) .wr{background:linear-gradient(180deg,var(--bg) 0,var(--bg) @@S0@@%,var(--wr-s0) @@S1@@%,var(--wr-s1) @@S2@@%,var(--wr-s2) @@S3@@%,
   var(--wr-s3) @@S4@@%,var(--wr-s4) @@S5@@%,var(--wr-s3) @@S6@@%,var(--wr-s5) @@S7@@%,var(--wr-s6) @@S8@@%,var(--wr-s7) @@S9@@%,var(--wr-s8) @@S10@@%,var(--wr-s8));}
 :root:not(.wr-sky-on) .wr-course,:root:not(.wr-sky-on) .wr-offer{background:none;}
-:root:not(.wr-sky-on) .wr-still-rg{display:block;position:absolute;left:0;right:0;z-index:-1;height:clamp(120px,21vw,300px);pointer-events:none;
-  -webkit-mask-image:linear-gradient(180deg,var(--bg) 62%,transparent);mask-image:linear-gradient(180deg,var(--bg) 62%,transparent);}
-.wr-still-rg.at-01,.wr-still-rg.at-06{top:0;}
-.wr-still-rg.at-end{bottom:0;-webkit-mask-image:none;mask-image:none;}
-:root:not(.wr-sky-on) .wr-night{display:block;position:absolute;left:0;right:0;bottom:clamp(60px,9vw,150px);z-index:-1;height:min(110vh,80%);pointer-events:none;
-  -webkit-mask-image:linear-gradient(180deg,transparent,var(--bg) 60%);mask-image:linear-gradient(180deg,transparent,var(--bg) 60%);}
+:root:not(.wr-sky-on) .wr-night{display:block;position:absolute;left:0;right:0;bottom:0;z-index:-1;height:min(110vh,80%);pointer-events:none;@@M_NIGHT@@}
 .wr-night svg{display:block;width:100%;height:100%;}
-@media (max-width:899.98px){:root:not(.wr-sky-on) .wr-still-rg.at-end{bottom:var(--wr-dock);}}
+/* ----- the close: the night dissolves into the ground over a long eased band, under a faint last light (on
+   this page the footer's drawn ridge gives way to this soft horizon: no outline, no flat cut-out) ----- */
+footer{--wr-fh:clamp(110px,13vw,200px);padding-top:var(--wr-fh);
+  background:linear-gradient(180deg,@@FOOT_SKY@@) top/100% var(--wr-fh) no-repeat,linear-gradient(var(--bg),var(--bg)) bottom/100% calc(100% - var(--wr-fh) + 1px) no-repeat;}
+:root:not(.wr-sky-on) footer{background:linear-gradient(180deg,@@FOOT_STILL@@) top/100% var(--wr-fh) no-repeat,linear-gradient(var(--bg),var(--bg)) bottom/100% calc(100% - var(--wr-fh) + 1px) no-repeat;}
+footer::after{background:radial-gradient(58% 40% at 68% 36%,color-mix(in srgb,var(--sky-horizon) 55%,transparent),transparent 74%);}
 
 /* ----- the moving sky (with the script and motion): one canvas, fixed behind everything ----- */
 .wr-sky-on .wr-sky{display:block;position:fixed;left:0;top:0;z-index:-1;width:100%;height:100vh;height:100lvh;overflow:hidden;pointer-events:none;contain:strict;background:var(--wr-s0);}
 .wr-sky-c,.wr-sky-o{position:absolute;left:0;top:0;width:100%;height:100%;display:block;}
+.wr-sky-o{opacity:0;will-change:transform,opacity;}
 /* the page's still grain, in the page itself (no layer of its own): film texture on every chapter, and no banding in the sky's gradients */
 .wr-sky-on .wr{background-image:__GRAIN2__;background-size:220px 220px;}
+/* and carried over the footer, whose soft horizon closes the page, so no line marks where the page ends */
+.wr-sky-on footer::before{display:block;content:"";position:absolute;inset:0;height:auto;pointer-events:none;background:__GRAIN2__ 0 0/220px 220px;}
 /* the star dots, as the still page's night uses them (sizes in the drawing's units) */
 .wr .z0,.wr .z1,.wr .z2,.wr .z3,.wr .z4{fill:none;stroke-linecap:round;}
 .wr .z0{stroke-width:9.5;}.wr .z1{stroke-width:7.5;}.wr .z2{stroke-width:5.8;}.wr .z3{stroke-width:4.6;opacity:.82;}.wr .z4{stroke-width:3.6;opacity:.55;}
@@ -1529,77 +1203,62 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
 
 /* the chapters let the sky through */
 .wr-sky-on .wr-hero,.wr-sky-on .wr-course,.wr-sky-on .wr-offer{background:none;}
-.wr-sky-on .wr-hero.wr-grain::after{-webkit-mask-image:linear-gradient(180deg,var(--bg) 60%,transparent);mask-image:linear-gradient(180deg,var(--bg) 60%,transparent);}
-/* the opening photograph: whole until its last seventh, its own shade fading with it, so nothing of the
-   sky shows through the pilot and no band marks where the photograph ends */
-.wr-sky-on .wr-hero::before{background:
+.wr-sky-on .wr-hero.wr-grain::after{@@M_HERO_GRAIN@@}
+/* the opening photograph dissolves into the sky over its lower half, on a long eased mask that stays put while
+   the page scrolls; its shade for the words fades with it, so no band marks where it ends */
+.wr-sky-on .wr-hero::before{background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 45%,transparent) 0%,transparent 24%);}
+.wr-sky-on .wr-hero-pic{@@M_HERO@@}
+.wr-sky-on .wr-hero-pic::after{content:"";position:absolute;inset:0;pointer-events:none;background:
   linear-gradient(90deg,color-mix(in srgb,var(--bg) 80%,transparent) 0%,color-mix(in srgb,var(--bg) 38%,transparent) 46%,transparent 72%),
-  linear-gradient(180deg,color-mix(in srgb,var(--bg) 45%,transparent) 0%,transparent 24%);}
-.wr-sky-on .wr-hero-pic{-webkit-mask-image:linear-gradient(180deg,var(--bg) 86%,transparent);mask-image:linear-gradient(180deg,var(--bg) 86%,transparent);}
-.wr-sky-on .wr-hero-pic::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,transparent 46%,color-mix(in srgb,var(--bg) 70%,transparent) 78%,var(--bg) 100%);}
-/* the Kerio photograph fades into whatever sky is behind it (moving or still), at both ends: the fade rides
-   on the drifting photograph itself (its stops allow for the drift), so no mask is laid over a moving layer */
-.wr-par{-webkit-mask-image:linear-gradient(180deg,transparent 13%,var(--bg) 31%,var(--bg) 55%,transparent 87%);
-  mask-image:linear-gradient(180deg,transparent 13%,var(--bg) 31%,var(--bg) 55%,transparent 87%);}
-.wr-portrait .wr-par{-webkit-mask-image:none;mask-image:none;}
-/* the facts on it (wide screens): its shade starts well above them, so they keep 4.5:1 wherever the photograph
-   drifts, and lets go below them, where the photograph has already faded into the sky */
-.wr-plate-img::after{background:linear-gradient(180deg,transparent 40%,color-mix(in srgb,var(--bg) 80%,transparent) 70%,color-mix(in srgb,var(--bg) 92%,transparent) 87%,transparent 100%);}
+  linear-gradient(180deg,@@HERO_SHADE@@);}
+/* the Kerio photograph fades into whatever sky is behind it (moving or still), at both ends, on long eased masks */
+.wr-par{@@M_PLATE@@}
+@media (min-width:1500px){.wr-par{@@M_PLATE_W@@}}
 @media (max-width:899.98px){
   .wr-sky-on .wr-hero::before{background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 30%,transparent) 0%,transparent 18%);}
-  .wr-sky-on .wr-hero-pic{-webkit-mask-image:linear-gradient(180deg,var(--bg) 62%,transparent);mask-image:linear-gradient(180deg,var(--bg) 62%,transparent);}
-  .wr-sky-on .wr-hero-pic::after{background:linear-gradient(180deg,transparent 40%,color-mix(in srgb,var(--bg) 60%,transparent) 80%,var(--bg) 100%);}
-  .wr-plate .wr-par{-webkit-mask-image:linear-gradient(180deg,transparent 13%,var(--bg) 27%,var(--bg) 70%,transparent 87%);
-    mask-image:linear-gradient(180deg,transparent 13%,var(--bg) 27%,var(--bg) 70%,transparent 87%);}
-  .wr .wr-plate-img::after{background:none;}
+  .wr-sky-on .wr-hero-pic{@@M_HERO_P@@}
+  .wr-sky-on .wr-hero-pic::after{background:linear-gradient(180deg,@@HERO_SHADE_P@@);}
+  .wr-par{@@M_PLATE_P@@}
 }
-
-/* ----- 01: two thermals in the gutters, rising faster than the page (one layer each, no mask) ----- */
-.wr-thermals{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;}
-.wr-th{position:absolute;bottom:0;width:auto;aspect-ratio:240/1000;overflow:visible;opacity:.62;}
-.wr-th.n0{height:86%;right:max(-8rem,calc((100% - var(--measure)) / 2 - 12.5rem));}
-.wr-th.n1{height:58%;left:max(-6.5rem,calc((100% - var(--measure)) / 2 - 10rem));}
-.wr-th path{fill:none;stroke:url(#wrThF);stroke-width:.6;stroke-linecap:round;vector-effect:non-scaling-stroke;}
-.wr-th ellipse{fill:none;stroke:url(#wrThR);stroke-width:.8;vector-effect:non-scaling-stroke;}
-@media (max-width:899.98px){.wr-th.n1{display:none;}.wr-th.n0{height:62%;right:-26%;}}
 
 /* ----- 02: Kenya's ground under the course: form lines traced from the relief, crisp at every width ----- */
-.wr-ground{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;}
-/* a shade under the course for the words, fading into the sky above and below (a gradient, not a mask) */
-.wr-ground{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--bg) 72%,transparent) 18%,color-mix(in srgb,var(--bg) 72%,transparent) 82%,transparent);}
-.wr-topo{position:absolute;left:-7%;top:-4%;width:114%;height:108%;display:none;opacity:.2;}
+/* no shade and no slab: the chapter is the same sky as its neighbours, and the ground is seen only in a soft oval
+   round the course drawing (eased to nothing well before the heading and the readouts) */
+.wr-ground{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;@@M_GROUND@@}
+.wr-topo{position:absolute;left:-7%;top:-4%;width:114%;height:108%;display:none;opacity:.14;}
 :root:not(.wr-js) .wr-topo,.wr-ground.is-near .wr-topo{display:block;background:url(@@IMG@@ground.svg) 50% 50%/cover no-repeat;}
-/* the glider's shadow on the ground, cast away from the morning sun */
-.wr-gs{position:absolute;left:3%;top:75%;width:34px;height:34px;margin:-17px 0 0 -17px;pointer-events:none;transform:translate(9px,13px) rotate(180deg);
-  background:radial-gradient(50% 50% at 50% 50%,color-mix(in srgb,var(--ink) 80%,transparent),transparent 72%);clip-path:ellipse(22% 50% at 56% 50%);}
-.wr-map.is-live .wr-gs{left:0;top:0;will-change:transform;}
-
-/* all of it moves only with the scroll, and only where the browser ties it to the scroll itself */
-@supports (animation-timeline:view()){
-  @media (prefers-reduced-motion:no-preference){
-    .wr-mark{view-timeline:--wr-mk block;}
-    .wr-course{view-timeline:--wr-co block;}
-    .is-live .wr-th.n0{animation:wr-rise linear both;animation-timeline:--wr-mk;animation-range:cover 0% cover 100%;}
-    .is-live .wr-th.n1{animation:wr-rise2 linear both;animation-timeline:--wr-mk;animation-range:cover 0% cover 100%;}
-    @keyframes wr-rise{from{transform:translate3d(0,18%,0);}to{transform:translate3d(0,-22%,0);}}
-    @keyframes wr-rise2{from{transform:translate3d(0,12%,0);}to{transform:translate3d(0,-14%,0);}}
-    .wr-pin .is-live .wr-topo{animation:wr-gt linear both;animation-timeline:--wr-co;animation-range:contain 0% contain 100%;}
-    @keyframes wr-gt{0%,5%{transform:translate3d(0,2.5%,0);}47%,53%{transform:translate3d(-5.5%,0,0);}90%,100%{transform:translate3d(0,-2.5%,0);}}
-  }
-}
+.wr-pin .wr-topo{will-change:transform;}
 
 @media print{
-  .wr-sky,.wr-thermals,.wr-ground,.wr-night,.wr-still-rg,.wr-gs{display:none!important;}
-  .wr-pin .wr-course,.wr-hz .wr-win{height:auto!important;}
+  .wr-sky,.wr-ground,.wr-night{display:none!important;}
+  .wr-pin .wr-course{height:auto!important;}
   .wr .wr-stage{position:static!important;height:auto!important;}
-  .wr-bar,.wr-tick,.wr-cursor,.wr-cue,.wr-km{display:none!important;}
-  .wr-track{transform:none!important;flex-wrap:wrap;}
-  .wr-cut{color:var(--white)!important;background:none!important;filter:none!important;}
+  .wr-bar,.wr-cue{display:none!important;}
 }
-""".replace("__GRAIN2__", GRAIN2).replace("__GRAIN__", GRAIN).replace("__KERIO__", IMG["kerio"][0]).replace("@@IMG@@", REC_IMG)
+""".replace("__GRAIN2__", GRAIN2).replace("__GRAIN__", GRAIN).replace("@@IMG@@", REC_IMG)
 for _i, _v in enumerate(STILL):
     CSS = CSS.replace("@@S%d@@" % _i, "%g" % _v)
+# the long, eased masks and shades (smoothstep, sampled finely: no knee where a photograph or a shade meets the sky)
+for _k, _v in {
+        "M_PLATE": mask(ease_stops(0, 56, 0, 1, 12), ease_stops(64, 98, 1, 0, 10)),
+        "M_PLATE_P": mask(ease_stops(0, 50, 0, 1, 12), ease_stops(60, 96, 1, 0, 10)),
+        "M_PLATE_W": mask2(",".join((ease_stops(0, 56, 0, 1, 12), ease_stops(64, 98, 1, 0, 10))),
+                           ",".join((ease_stops(0, 12, 0, 1, 8), ease_stops(88, 100, 1, 0, 8)))),
+        "PAR_GRADE": ease_stops(0, 58, .9, 0, 10, "var(--wr-plate-sky,color-mix(in srgb,var(--bg) 50%,var(--sky-cool)))"),
+        "M_HERO": mask(ease_stops(50, 100, 1, 0, 10)),
+        "M_HERO_P": mask(ease_stops(44, 100, 1, 0, 10)),
+        "HERO_SHADE": ",".join((ease_stops(36, 70, 0, .5, 6), ease_stops(70, 100, .5, 0, 6))),
+        "HERO_SHADE_P": ",".join((ease_stops(30, 66, 0, .45, 6), ease_stops(66, 100, .45, 0, 6))),
+        "M_HERO_GRAIN": mask(ease_stops(50, 100, 1, 0, 6)),
+        "M_COURSE_GRAIN": mask(ease_stops(0, 16, 0, 1, 6), ease_stops(84, 100, 1, 0, 6)),
+        "PORTRAIT_GRADE": ease_stops(0, 62, .42, 0, 8),
+        "M_NIGHT": mask(ease_stops(0, 60, 0, 1, 8)),
+        "FOOT_SKY": ease_stops(0, 100, 0, 1, 12),
+        "FOOT_STILL": ",".join("color-mix(in srgb,var(--bg) %g%%,var(--wr-s8)) %g%%" % (round(100 * t * t * (3 - 2 * t), 1), round(100 * t, 2))
+                               for t in (i / 12.0 for i in range(13))),
+        "M_GROUND": rmask("64% 32% at 50% 57%", ease_stops(0, 100, 1, 0, 10)),
+}.items():
+    CSS = CSS.replace("@@%s@@" % _k, _v)
 
 
 def hero():
@@ -1611,7 +1270,7 @@ def hero():
   <div class="wr-in wr-hero-in">
     <div>
       <p class="wr-kick"><span>World Record Attempt</span> <span class="wr-sep" aria-hidden="true">&middot;</span> <span>Kerio Valley, Kenya</span></p>
-      <h1 class="wr-mega wr-k"><span class="wr-ln"><span style="--i:0">The Speed</span></span> <span class="wr-ln"><span class="is-hollow" style="--i:1">Record</span></span> <span class="wr-ln"><span style="--i:2">Attempt</span></span></h1>
+      <h1 class="wr-mega wr-k"><span class="wr-ln"><span style="--i:0">The Speed</span></span> <span class="wr-ln"><span style="--i:1">Record</span></span> <span class="wr-ln"><span style="--i:2">Attempt</span></span></h1>
       <p class="wr-hero-sub wr-fade">Two world records for speed: 100 km and 200 km, out and return.</p>
       <a class="wr-go wr-fade" href="#wr-partner">Partner on the attempt """ + DOWN + """</a>
     </div>
@@ -1621,39 +1280,33 @@ def hero():
       <div class="is-win"><dt>Window</dt><dd>18 Jan to 12 Feb 2027</dd></div>
     </dl>
   </div>
-  <a class="wr-cue" href="#wr-mark" aria-label="Go to the mark to beat">""" + DOWN + """</a>
+  <a class="wr-cue" href="#wr-mark" aria-label="Go to the mark to beat"></a>
 </header>
 """
 
 
 def bar():
-    lis = "".join('<li><a href="#%s"><span>%s</span>%s<i aria-hidden="true"></i></a></li>' % (cid, n, name)
+    lis = "".join('<li><a href="#%s"><span>%s</span><b>%s</b><i aria-hidden="true"></i></a></li>' % (cid, n, name)
                   for cid, n, name in CHAPTERS)
     return ('\n<nav class="wr-bar" aria-label="Chapters"><div class="wr-in wr-bar-in"><ol>' + lis + '</ol>'
             '<a class="wr-btn" href="#wr-partner">Partner</a></div></nav>\n')
 
 
-def ticker():
-    one = '<span>100 km<i></i>200 km<i></i><em>Kerio Valley</em><i></i>2027<i></i></span>'
-    return '\n<div class="wr-tick" aria-hidden="true"><div class="wr-tick-in">' + one + one + '</div></div>\n'
-
-
 def mark():
     return """
 <section class="wr-mark" id="wr-mark" aria-labelledby="wr-mark-h">
-  """ + thermals_html() + still_ridge("at-01", "morn") + """
   <div class="wr-in">
     <p class="wr-no">01</p>
-    <h2 class="wr-h2 wr-k" id="wr-mark-h">""" + kin("The Mark To Beat") + """</h2>
+    <h2 class="wr-h2" id="wr-mark-h">""" + kin("The Mark To Beat") + """</h2>
     <div class="wr-duel">
       <div class="wr-big is-theirs">
         <p class="wr-cap">100 km mark, class O-3</p>
-        <p class="wr-giga">""" + count("35.94", REC100, 2) + """<small>km/h</small></p>
+        <p class="wr-giga">35.94<small>km/h</small></p>
         <ul class="wr-meta"><li><b>Michel Macquet (FRA)</b></li><li>23 Jan 2025</li><li>Status&nbsp;""" + TBC + """</li><li>""" + ext(FAI_LIST, "FAI records") + """</li></ul>
       </div>
       <div class="wr-big is-mine">
         <p class="wr-cap">My best average, about</p>
-        <p class="wr-giga">""" + count("36", BEST) + """<small>km/h</small></p>
+        <p class="wr-giga">36<small>km/h</small></p>
         <ul class="wr-meta"><li><b>198.86 km</b></li><li>Kenya, 6 Feb 2025</li><li>UP Trango X (EN C)</li><li><b>Not a record course</b></li><li>""" + ext(UP_NEWS, "Source", ": UP Paragliders news") + """</li></ul>
       </div>
     </div>
@@ -1688,16 +1341,14 @@ def course_svg():
         'to a turnpoint at half the distance, round it, and straight back</title>'
         '<path class="wr-lane is-200" d="%s"/>' % lane(200)
         + '<path class="wr-lane v100" d="%s"/>' % lane(100)
-        + '<path class="wr-glow v100" id="wrG100" d="%s"/><path class="wr-flown v100" id="wrF100" d="%s"/>' % (lane(100), lane(100))
-        + '<path class="wr-glow v200" id="wrG200" d="%s"/><path class="wr-flown v200" id="wrF200" d="%s"/>' % (lane(200), lane(200))
+        + '<path class="wr-flown v100" id="wrF100" d="%s"/>' % lane(100)
+        + '<path class="wr-flown v200" id="wrF200" d="%s"/>' % lane(200)
         + "".join(ticks)
         + '<path class="wr-gate" d="M%g 28V172"/>' % X0
         + "</svg>"
     )
 
 
-GLIDER = ('<svg viewBox="-16 -16 32 32" aria-hidden="true" focusable="false">'
-          '<path class="g-l" d="M5 -13 L-8 0 L5 13"/><path class="g-w" d="M5 -13 Q15 0 5 13"/><circle class="g-p" cx="-8" cy="0" r="2.6"/></svg>')
 
 
 def course():
@@ -1710,19 +1361,18 @@ def course():
     <div class="wr-ground" aria-hidden="true"><i class="wr-topo"></i></div>
     <div class="wr-in">
       <div class="wr-course-head">
-        <div><p class="wr-no">02</p><h2 class="wr-h2 wr-k" id="wr-course-h">""" + kin("Out And Back, To Scale") + """</h2></div>
+        <div><p class="wr-no">02</p><h2 class="wr-h2" id="wr-course-h">""" + kin("Out And Back, To Scale") + """</h2></div>
         <fieldset class="wr-seg"><legend>Course length</legend>
           <input type="radio" name="wrk" id="wrk100" value="100" checked><label for="wrk100">100 km</label>
           <input type="radio" name="wrk" id="wrk200" value="200"><label for="wrk200">200 km</label>
         </fieldset>
       </div>
-      <div class="wr-map" data-cursor="map">
-        <p class="wr-km" aria-hidden="true"><span id="wrKmBig"><span class="v100">100</span><span class="v200">200</span></span><small>km</small></p>
+      <div class="wr-map">
         <div class="wr-box">
           """ + course_svg() + """
           <span class="wr-pl" style="left:0">Start, finish</span>
           """ + tp(100, "v100") + tp(200, "v200") + """
-          <span class="wr-gs" id="wrGs" aria-hidden="true"></span><span class="wr-gl" id="wrGl">""" + GLIDER + """</span>
+          <span class="wr-gl" id="wrGl" aria-hidden="true"></span>
         </div>
         <div class="wr-scale" aria-hidden="true">""" + scale + """</div>
       </div>
@@ -1762,10 +1412,10 @@ def place():
   <div class="wr-in">
     <p class="wr-no">03</p>
     <h2 class="wr-cut" id="wr-kerio-h"><span>Kerio</span> <span>Valley</span></h2>
-    <p class="wr-lede wr-fade">The base of my <a class="wr-u" href="destinations/kenya.html">Kenya expeditions</a>, and the site where the world speed records are chased.</p>
+    <p class="wr-lede">The base of my <a class="wr-u" href="destinations/kenya.html">Kenya expeditions</a>, and the site where the world speed records are chased.</p>
   </div>
   <figure class="wr-plate">
-    <div class="wr-plate-img wr-rv"><div class="wr-par"><picture><source media="(max-width: 560px)" srcset=\"""" + IMG["kerio_p"][0] + """.webp" type="image/webp"><source srcset=\"""" + IMG["kerio"][0] + """.webp" type="image/webp"><img src=\"""" + IMG["kerio"][0] + """.jpg" width="1152" height="768" alt="Paragliding at Kerio Valley, Kenya" loading="lazy" decoding="async"></picture></div></div>
+    <div class="wr-plate-img"><div class="wr-par"><picture><source media="(max-width: 560px)" srcset=\"""" + IMG["kerio_p"][0] + """.webp" type="image/webp"><source srcset=\"""" + IMG["kerio"][0] + """.webp" type="image/webp"><img src=\"""" + IMG["kerio"][0] + """.jpg" width="1152" height="768" alt="Paragliding at Kerio Valley, Kenya" loading="lazy" decoding="async"></picture></div></div>
     <dl class="wr-facts">
       <div><dt>Where</dt><dd>0.72&deg;N 35.65&deg;E</dd></div>
       <div><dt>Season</dt><dd>December to March</dd></div>
@@ -1778,12 +1428,11 @@ def place():
 
 
 def days():
-    # 18 Jan to 12 Feb 2027, a cell a day: Expedition One (18 to 29 Jan), the two days between, Expedition Two (1 to 12 Feb)
-    cells, nums = [], []
-    for i in range(26):
-        on = i < 12 or i >= 14
-        cells.append('<i class="%s" style="--d:%d"></i>' % ("is-on" if on else "is-off", i))
-        nums.append("<span>%d</span>" % (18 + i if i < 14 else i - 13))
+    # 18 Jan to 12 Feb 2027 on a grid of 26 days: Expedition One (18 to 29 Jan) and Expedition Two (1 to 12 Feb) each one
+    # continuous bar, the two days between a dashed hairline; the days themselves as ticks over the numbers under it
+    cells = ['<i class="is-on" style="grid-column:1/13"></i>', '<i class="is-off" style="grid-column:13/15"></i>',
+             '<i class="is-on" style="grid-column:15/27"></i>']
+    nums = ["<span>%d</span>" % (18 + i if i < 14 else i - 13) for i in range(26)]
     return """
       <div class="wr-days">
         <div class="wr-days-k">
@@ -1803,8 +1452,8 @@ def window():
     <div class="wr-in wr-win-in">
       <div class="wr-win-head">
         <p class="wr-no">04</p>
-        <h2 class="wr-h2 wr-k" id="wr-win-h">""" + kin("18 Jan To 12 Feb 2027") + """</h2>
-        <p class="wr-lede wr-fade">Alongside my two Kenya expeditions.</p>
+        <h2 class="wr-h2" id="wr-win-h"><span class="wr-nw">18 Jan</span> To <span class="wr-nw">12 Feb</span> 2027</h2>
+        <p class="wr-lede">Alongside my two Kenya expeditions.</p>
       </div>""" + days() + """
       <div class="wr-vp">
         <div class="wr-track">
@@ -1812,13 +1461,11 @@ def window():
             <li class="wr-step"><span class="wr-when">Before</span><h3>Preparation</h3><p>Wing, instruments, team, FAI observer """ + TBD + """</p></li>
             <li class="wr-step"><span class="wr-when">Before</span><h3>Build-Up Episodes</h3><p>And the newsletter</p></li>
           </ol>
-          <figure class="wr-fig">""" + pic("high") + """</figure>
           <ol class="wr-steps" start="3">
             <li class="wr-step"><span class="wr-when">After</span><h3>The Claim</h3><p><a class="wr-u" href=\"""" + FAI_CODE + """\" target="_blank" rel="noopener">FAI Sporting Code, Section 7D</a></p></li>
             <li class="wr-step"><span class="wr-when">After</span><h3>The Film</h3><p>A debrief episode and the flight data</p></li>
           </ol>
         </div>
-        <div class="wr-swipe" aria-hidden="true"><i></i></div>
       </div>
     </div>
   </div>
@@ -1832,15 +1479,15 @@ def audience():
   <div class="wr-in wr-aud-in">
     <div class="wr-aud-copy">
       <p class="wr-no">05</p>
-      <h2 class="wr-h2 wr-k" id="wr-aud-h">""" + kin("Who Flies It With You") + """</h2>
-      <p class="wr-lede wr-fade">Podcast, YouTube and a newsletter about four times a month.</p>
+      <h2 class="wr-h2" id="wr-aud-h">""" + kin("Who Flies It With You") + """</h2>
+      <p class="wr-lede">Podcast, YouTube and a newsletter about four times a month.</p>
     </div>
-    <figure class="wr-portrait wr-rv"><div class="wr-par">""" + pic("aninder") + """</div><figcaption>Aninder Singh</figcaption></figure>
+    <figure class="wr-portrait">""" + pic("aninder") + """<figcaption>Aninder Singh</figcaption></figure>
     <dl class="wr-stats">
-      <div><dt>Podcast streams</dt><dd>""" + count("100,000+", 100000, comma=True, suf="+") + """</dd></div>
-      <div><dt>Countries reached</dt><dd>""" + count("130+", 130, suf="+") + """</dd></div>
-      <div><dt>Long-form interviews</dt><dd>""" + count("80", 80) + """</dd></div>
-      <div><dt>Years flying</dt><dd>""" + count("10+", 10, suf="+") + """</dd></div>
+      <div><dt>Podcast streams</dt><dd>100,000+</dd></div>
+      <div><dt>Countries reached</dt><dd>130+</dd></div>
+      <div><dt>Long-form interviews</dt><dd>80</dd></div>
+      <div><dt>Years flying</dt><dd>10+</dd></div>
     </dl>
   </div>
 </section>
@@ -1850,15 +1497,15 @@ def audience():
 def offer():
     return """
 <section class="wr-offer" id="wr-partner" aria-labelledby="wr-offer-h">
-  """ + still_ridge("at-06", "dusk") + night_static() + still_ridge("at-end") + """
+  """ + night_static() + """
   <div class="wr-in">
     <div class="wr-offer-head">
       <div>
         <p class="wr-no">06</p>
-        <h2 class="wr-h2 wr-k" id="wr-offer-h">""" + kin("Put Your Name On The Attempt") + """</h2>
-        <p class="wr-lede wr-fade">Prices in the media kit, on request. Every sponsorship is <a class="wr-u" href="safety-and-disclosure.html">clearly marked as sponsored</a>.</p>
+        <h2 class="wr-h2" id="wr-offer-h">""" + kin("Put Your Name On The Attempt") + """</h2>
+        <p class="wr-lede">Prices in the media kit, on request. Every sponsorship is <a class="wr-u" href="safety-and-disclosure.html">clearly marked as sponsored</a>.</p>
       </div>
-      <figure class="wr-offer-pic wr-rv">""" + pic("icare") + """</figure>
+      <figure class="wr-offer-pic">""" + pic("icare") + """</figure>
     </div>
     <div class="wr-tiers">
       <article class="wr-tier is-lead">
@@ -1879,8 +1526,8 @@ def offer():
       </article>
     </div>
     <div class="wr-cta">
-      <span class="wr-mag"><a class="btn-solid" href=\"""" + MAIL + """\"><span>Partner on the attempt</span></a></span>
-      <span class="wr-mag"><a class="btn-lines" href="partners.html#pwForm">Other ways to work together</a></span>
+      <a class="btn-solid" href=\"""" + MAIL + """\"><span>Partner on the attempt</span></a>
+      <a class="btn-lines" href="partners.html#pwForm">Other ways to work together</a>
     </div>
     <p class="wr-src">Sources: <a class="wr-u" href=\"""" + UP_NEWS + """\" target="_blank" rel="noopener">UP Paragliders</a>, <a class="wr-u" href=\"""" + FAI_LIST + """\" target="_blank" rel="noopener">FAI records</a>, <a class="wr-u" href=\"""" + FAI_CODE + """\" target="_blank" rel="noopener">Sporting Code 7D</a>, <a class="wr-u" href="destinations/kenya.html">the Kenya expedition</a></p>
   </div>
@@ -1888,21 +1535,29 @@ def offer():
 """
 
 
+# The script that runs before the first paint: the page's modes, and one guard. The site's shell
+# (v2-immersive.js) still writes --v2-gust on the root at every scroll frame for an instrument that v4 no longer
+# has; nothing reads it, but each write restyles the whole page and repaints every layer drawn from a token
+# (measured: 2.5 s of raster in ten wheel notches, against 0.17 s without it). On this page that one write is
+# dropped (every other property passes through); the real fix belongs in the shell.
 EARLY = ('<script>(function(r,m){r.classList.add("wr-js");if(!m("(prefers-reduced-motion: reduce)").matches)'
-         '{r.classList.add("wr-pin","wr-sky-on");if(m("(min-width: 900px)").matches)r.classList.add("wr-hz");}})'
-         '(document.documentElement,function(q){return window.matchMedia(q);});</script>')
+         'r.classList.add("wr-pin","wr-sky-on");'
+         'var s=r.style,o=s.setProperty;s.setProperty=function(k){if(k!=="--v2-gust")return o.apply(s,arguments);};'
+         '})(document.documentElement,function(q){return window.matchMedia(q);});</script>')
 
 
 def main_html():
-    return ('<main id="v4-main" class="wr">\n' + EARLY + ridge_defs() + sky_html() + hero() + bar() + ticker() + mark() + course()
+    return ('<main id="v4-main" class="wr">\n' + EARLY + defs() + sky_html() + hero() + bar() + mark() + course()
             + place() + window() + audience() + offer() + "\n</main>")
 
 
 SCRIPT = r"""<script>
 /* The speed record attempt (tools/v4_record.py). Every frame here is caused
-   by a scroll, a pointer, a tap or a key, and stops when they do. Reduced
-   motion: the finished state, nothing pinned, nothing counting. Without this
-   script the page is complete and the course switch still works. */
+   by a scroll, a tap or a key, and stops when they do: what the scroll moves
+   (the position on its course, the ground under it, the day behind the page)
+   eases toward where the scroll has put it, in one loop that stops as soon as
+   it has arrived. Reduced motion: the finished state, nothing pinned. Without
+   this script the page is complete and the course switch still works. */
 (function () {
   var d = document, w = window, root = d.documentElement;
   var main = d.getElementById("v4-main");
@@ -1912,148 +1567,149 @@ SCRIPT = r"""<script>
   var IO = "IntersectionObserver" in w;
   var REC = @@REC@@, BEST = @@BEST@@, TBD = '<span class="wr-tbd">[to supply]</span>';
   var X0 = @@X0@@, PX = @@PX@@, YO = @@YO@@, YB = @@YB@@, RX = @@RX@@, RY = @@RY@@, CY = @@CY@@;
+  var ARRIVE = ".wr-k,.wr-fade,.wr-days";
   function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
   function absTop(el) { return el.getBoundingClientRect().top + w.scrollY; }
   function clock(h) { var m = Math.round(h * 60), mm = m % 60; return "<b>" + Math.floor(m / 60) + "</b><small>h</small> <b>" + (mm < 10 ? "0" : "") + mm + "</b><small>min</small>"; }
   function all(s, r) { return [].slice.call((r || d).querySelectorAll(s)); }
-  function showAll() { all(".wr-k,.wr-fade,.wr-rv,.wr-cut,.wr-days").forEach(function (el) { el.classList.add("is-in", "is-near"); }); }
+  function showAll() { all(ARRIVE).forEach(function (el) { el.classList.add("is-in"); }); }
 
   try {
-  /* 1. headlines, lines, photographs and the window's days arrive once, as they come into view */
-  var rv = all(".wr-k,.wr-fade,.wr-rv,.wr-cut,.wr-days");
+  /* 1. two entrances only: the opening's title rises (with its lines after it), once the display face has
+     loaded so the swap never lands mid-rise; and the window's days draw across, as time passing, once they are
+     well in view. Every other heading, line and photograph simply stands */
+  var hero = d.getElementById("wr-goal");
   if (still || !IO) showAll();
   else {
-    /* an element clipped shut to begin with has no area to intersect, so its parent is watched for it */
-    var hosts = [];
+    var first = hero ? all(ARRIVE, hero) : [];
     var ro = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        ro.unobserve(e.target);
-        hosts.forEach(function (h) { if (h[0] === e.target) h[1].classList.add("is-in"); });
-      });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
-    rv.forEach(function (el) {
-      var host = el.classList.contains("wr-cut") ? el.parentNode : el;
-      hosts.push([host, el]); ro.observe(host);
-    });
-  }
-  /* the photograph inside the letters loads only when its chapter is near (the letters show a plain fill until then) */
-  var cut = d.querySelector(".wr-cut");
-  if (cut && IO) {
-    var no = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { cut.classList.add("is-near"); no.disconnect(); } }, { rootMargin: "120% 0px 120% 0px" });
-    no.observe(cut);
-  } else if (cut) cut.classList.add("is-near");
-
-  /* 2. the numbers count up once, in the display face, at their final width */
-  function fmt(el, v) {
-    var dec = +el.getAttribute("data-dec") || 0, s = v.toFixed(dec);
-    if (el.hasAttribute("data-comma")) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return s + (el.getAttribute("data-suf") || "");
-  }
-  if (!still && IO) {
-    var counts = all("[data-count]");
-    counts.forEach(function (el) { el.firstElementChild.textContent = fmt(el, 0); });
-    var co = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        co.unobserve(e.target);
-        var el = e.target, to = +el.getAttribute("data-count"), t = el.firstElementChild, t0 = performance.now(), dur = 1700;
-        (function step(now) {
-          var p = Math.min(1, (now - t0) / dur), k = 1 - Math.pow(1 - p, 4);
-          t.textContent = p < 1 ? fmt(el, to * k) : el.getAttribute("data-final");
-          if (p < 1) requestAnimationFrame(step);
-        })(t0);
-      });
-    }, { threshold: 0.6 });
-    counts.forEach(function (el) { co.observe(el); });
+      es.forEach(function (e) { if (e.isIntersecting) { ro.unobserve(e.target); e.target.classList.add("is-in"); } });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: 0 });
+    all(ARRIVE).forEach(function (el) { if (first.indexOf(el) < 0) ro.observe(el); });
+    var open = function () { first.forEach(function (el) { el.classList.add("is-in"); }); };
+    if (d.fonts && d.fonts.ready) d.fonts.ready.then(open, open); else open();
   }
 
-  /* 3. the course: 100 or 200 km on one scale, a hairpin flown by the scroll */
+  /* 2. the course: 100 or 200 km on one scale, a hairpin flown by the scroll */
   var C = d.getElementById("wr-course"), Cst = C.querySelector(".wr-stage"), map = C.querySelector(".wr-map");
-  var box = C.querySelector(".wr-box svg"), gl = d.getElementById("wrGl"), gs = d.getElementById("wrGs");
-  var kmEl = d.getElementById("wrKm"), kmBig = d.getElementById("wrKmBig"), legEl = d.getElementById("wrLeg");
+  var box = C.querySelector(".wr-box svg"), gl = d.getElementById("wrGl"), topo = C.querySelector(".wr-topo");
+  var kmEl = d.getElementById("wrKm"), legEl = d.getElementById("wrLeg");
   var t1 = d.getElementById("wrT1"), t2 = d.getElementById("wrT2");
-  var paths = { 100: [d.getElementById("wrF100"), d.getElementById("wrG100")], 200: [d.getElementById("wrF200"), d.getElementById("wrG200")] };
+  var paths = { 100: d.getElementById("wrF100"), 200: d.getElementById("wrF200") };
   var r200 = d.getElementById("wrk200");
   var K = r200 && r200.checked ? 200 : 100, F = 1, lastKm = -1, lastT = "", lastLeg = "";
+  var geo = { mapW: 1, mapH: 1, vh: w.innerHeight, tops: [], ends: [], clipH: 1 };
   function X(km) { return X0 + km * PX; }
-  var geo = { mapW: 1, mapH: 1 };
   function render(f) {
     F = f;
-    var xs = X(0), xa = X(K / 2) - RX, ts = 0.06, half = (1 - ts) / 2, sx = geo.mapW / 1000, sy = geo.mapH / 200;
-    var x, y, km, rot, dd, leg;
+    var sx = geo.mapW / 1000, sy = geo.mapH / 200, xs = X(0), xa = X(K / 2) - RX;
+    /* the turn takes its true share of the line on screen, so the position keeps one speed all the way round */
+    var a = RX * sx, b = RY * sy, arc = Math.PI / 2 * (3 * (a + b) - Math.sqrt((3 * a + b) * (a + 3 * b))), run = Math.max(1, (xa - xs) * sx);
+    var ts = arc / (2 * run + arc), half = (1 - ts) / 2, x, y, km, dd, leg;
     if (f <= half) {
-      var u = f / half; x = xs + (xa - xs) * u; y = YO; km = K / 2 * u; rot = 0; leg = "Out";
+      var u = f / half; x = xs + (xa - xs) * u; y = YO; km = K / 2 * u; leg = "Out";
       dd = "M" + xs + " " + YO + "H" + x.toFixed(1);
     } else if (f <= half + ts) {
       var v = (f - half) / ts, th = -Math.PI / 2 + v * Math.PI;
       x = xa + RX * Math.cos(th); y = CY + RY * Math.sin(th); km = K / 2; leg = "Turnpoint";
-      rot = Math.atan2(RY * Math.cos(th) * sy, -RX * Math.sin(th) * sx) * 180 / Math.PI;
       dd = "M" + xs + " " + YO + "H" + xa + "A" + RX + " " + RY + " 0 0 1 " + x.toFixed(1) + " " + y.toFixed(1);
     } else {
-      var u2 = Math.min(1, (f - half - ts) / half); x = xa - (xa - xs) * u2; y = YB; km = K / 2 + K / 2 * u2; rot = 180;
+      var u2 = f >= 1 ? 1 : Math.min(1, (f - half - ts) / half); x = xa - (xa - xs) * u2; y = YB; km = K / 2 + K / 2 * u2;
       leg = u2 >= 1 ? "Finish" : "Home";
       dd = "M" + xs + " " + YO + "H" + xa + "A" + RX + " " + RY + " 0 0 1 " + xa + " " + YB + "H" + x.toFixed(1);
     }
-    paths[K][0].setAttribute("d", dd); paths[K][1].setAttribute("d", dd);
-    gl.style.transform = "translate(" + (x * sx).toFixed(1) + "px," + (y * sy).toFixed(1) + "px) rotate(" + rot.toFixed(1) + "deg)";
-    if (gs) gs.style.transform = "translate(" + (x * sx + 9).toFixed(1) + "px," + (y * sy + 13).toFixed(1) + "px) rotate(" + rot.toFixed(1) + "deg)";
-    var k = Math.round(km);
-    if (k !== lastKm) { lastKm = k; kmEl.textContent = k; if (kmBig) kmBig.textContent = k; }
+    paths[K].setAttribute("d", dd);
+    gl.style.transform = "translate(" + (x * sx).toFixed(1) + "px," + (y * sy).toFixed(1) + "px)";
+    /* the ground slides under the position out and back, on the same eased progress, so the two move as one */
+    if (topo && geo.pin) topo.style.transform = "translate3d(" + (-5 * Math.sin(Math.PI * f)).toFixed(2) + "%,0,0)";
+    /* the distance flown, in whole kilometres actually flown (the full course shows only at the finish), and
+       both clocks read from that same figure, so they always agree with it */
+    var k = Math.floor(km + 1e-6);
+    if (k !== lastKm) { lastKm = k; kmEl.textContent = k; }
     if (leg !== lastLeg) { lastLeg = leg; legEl.textContent = leg; }
-    var s1 = clock(km / BEST);
-    if (s1 !== lastT) { lastT = s1; t1.innerHTML = s1; t2.innerHTML = K === 100 ? clock(km / REC) : TBD; }
+    var tk = K + "|" + k;
+    if (tk !== lastT) { lastT = tk; t1.innerHTML = clock(k / BEST); t2.innerHTML = K === 100 ? clock(k / REC) : TBD; }
   }
   function setK(k) {
     K = k; lastKm = -1; lastT = ""; lastLeg = "";
     /* the other course is shown whole, so a change of mind finds it drawn */
-    var o = k === 100 ? 200 : 100, full = "M" + X(0) + " " + YO + "H" + (X(o / 2) - RX) + "A" + RX + " " + RY + " 0 0 1 " + (X(o / 2) - RX) + " " + YB + "H" + X(0);
-    paths[o][0].setAttribute("d", full); paths[o][1].setAttribute("d", full);
+    var o = k === 100 ? 200 : 100, xo = X(o / 2) - RX;
+    paths[o].setAttribute("d", "M" + X(0) + " " + YO + "H" + xo + "A" + RX + " " + RY + " 0 0 1 " + xo + " " + YB + "H" + X(0));
     render(F);
   }
   all('input[name="wrk"]').forEach(function (r) { r.addEventListener("change", function () { if (r.checked) setK(+r.value); }); });
   map.classList.add("is-live");
 
-  /* 4. the window: a strip moved sideways by the vertical scroll (wide screens), a swipe row with a line under it (phones) */
-  var W = d.getElementById("wr-window"), Wst = W.querySelector(".wr-stage"), Wvp = W.querySelector(".wr-vp"), Wtr = W.querySelector(".wr-track");
-  var swipe = W.querySelector(".wr-swipe");
-  var hzMq = mq("(min-width: 900px)");
-  function hzOn() { return root.classList.contains("wr-hz"); }
-  function swiped() {
-    if (!swipe || hzOn()) return;
-    var m = Wtr.scrollWidth - Wtr.clientWidth;
-    swipe.style.setProperty("--p", (0.25 + 0.75 * (m > 0 ? Wtr.scrollLeft / m : 1)).toFixed(3));
+  /* 3. the site menu: when it first leaves the page's flow to wait above the screen, it goes there at once
+     rather than sliding away across the chapter bar (so there is never a moment with two bars) */
+  var Wn = d.getElementById("wr-window"), siteNav = d.querySelector(".page-wrap > nav");
+  if (siteNav && "MutationObserver" in w) {
+    var wasPinned = siteNav.classList.contains("v2-nav-pinned");
+    new MutationObserver(function () {
+      var p = siteNav.classList.contains("v2-nav-pinned");
+      if (p && !wasPinned && !siteNav.classList.contains("v2-nav-shown")) {
+        siteNav.style.transition = "none"; void siteNav.offsetWidth;
+        requestAnimationFrame(function () { requestAnimationFrame(function () { siteNav.style.transition = ""; }); });
+      }
+      wasPinned = p;
+    }).observe(siteNav, { attributes: true, attributeFilter: ["class"] });
   }
-  Wtr.addEventListener("scroll", swiped, { passive: true });
 
-  /* 5. the ticker and the chapter bar */
-  var tick = d.querySelector(".wr-tick-in"), tickBox = d.querySelector(".wr-tick");
-  var barEl = d.querySelector(".wr-bar"), barOl = barEl && barEl.querySelector("ol");
+  /* 4. the chapter bar: the chapter being read, a reading line under each; over the offer, the Partner button.
+     On a phone the bar shows the chapters' numbers, with the name of the one being read beside them */
+  var barEl = d.querySelector(".wr-bar"), barOl = barEl && barEl.querySelector("ol"), barBtn = barEl && barEl.querySelector(".wr-btn");
+  var barIn = barEl && barEl.querySelector(".wr-bar-in");
   var links = barEl ? all("ol a", barEl) : [], lines = links.map(function (a) { return a.querySelector("i"); });
   var chaps = links.map(function (a) { return d.getElementById(a.getAttribute("href").slice(1)); });
   var lastP = links.map(function () { return -1; });
-  var foot = d.querySelector("footer"), hero = d.getElementById("wr-goal"), partner = d.getElementById("wr-partner"), cur = -2;
+  var foot = d.querySelector("footer"), partner = d.getElementById("wr-partner"), cur = -2;
+  function bars(y, vh) {
+    if (!barEl) return;
+    var line = y + vh * 0.4, i = -1;
+    for (var n = 0; n < geo.tops.length; n++) {
+      if (geo.tops[n] <= line && line < geo.ends[n]) i = n;
+      var p = clamp((line - geo.tops[n]) / Math.max(1, geo.ends[n] - geo.tops[n]));
+      if (Math.abs(p - lastP[n]) > 0.002) { lastP[n] = p; lines[n].style.setProperty("--p", p.toFixed(3)); }
+    }
+    if (i < 0 && line >= geo.partner) i = links.length;
+    if (i !== cur) {
+      cur = i;
+      links.forEach(function (a, k) { if (k === i) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
+      if (barBtn) { if (i === links.length) barBtn.setAttribute("aria-current", "true"); else barBtn.removeAttribute("aria-current"); }
+      if (barIn) barIn.setAttribute("data-cur", i >= 0 && i < links.length ? links[i].querySelector("b").textContent : "");
+      if (i >= 0 && i < links.length && barOl && barOl.scrollWidth > barOl.clientWidth) {
+        var li = links[i].parentNode;
+        barOl.scrollTo({ left: Math.max(0, li.offsetLeft - barOl.clientWidth * 0.3), behavior: still ? "auto" : "smooth" });
+      }
+    }
+    barEl.classList.toggle("is-on", y > geo.heroEnd - vh * 0.55 && y + vh < geo.foot + 2);
+  }
 
-  /* 7. the record day behind the page: from first light to night as the visitor scrolls. Two canvases,
-     fixed behind everything: the sky, painted small from the design tokens in linear light and never past a
-     set brightness (so the words keep their contrast), stretched by the browser; and over it everything on
-     the sky (the real stars and Milky Way of a night in the window, the low sun, the clouds, the hills),
-     composed again only when something on it has moved. Each change follows the scroll and stops with it. */
+  /* 5. the record day behind the page: from first light to night as the visitor scrolls, told by light alone.
+     Two canvases, fixed behind everything: the sky, painted small from the design tokens in linear light and
+     never past a set brightness (so the words keep their contrast), stretched by the browser; and over it the
+     real stars and Milky Way of a night in the window, drawn a little larger than the screen and only every
+     few degrees of their turn: between those, the browser's compositor turns and fades the drawing (no
+     repaint while the page scrolls) */
   var skyEl = root.classList.contains("wr-sky-on") ? d.querySelector(".wr-sky") : null;
-  var dayEls = [hero, d.getElementById("wr-mark"), C, d.getElementById("wr-kerio"), W, d.getElementById("wr-audience"), partner, foot];
+  var dayEls = [hero, d.getElementById("wr-mark"), C, d.getElementById("wr-kerio"), Wn, d.getElementById("wr-audience"), partner, foot];
   var SKY = null;
   /* a sky that cannot be painted leaves the still day in its place, and every other effect running */
   if (skyEl) { try { SKY = daySky(skyEl); } catch (e) { SKY = null; root.classList.remove("wr-sky-on"); } }
   function daySky(el) {
     var sk = el.querySelector(".wr-sky-c"), sg = sk.getContext("2d", { alpha: false }), cv = el.querySelector(".wr-sky-o"), g = cv.getContext("2d");
-    if (!g || !sg || typeof Path2D === "undefined") throw new Error("no sky");
-    var INFO = @@SKYINFO@@, IMGS = "@@IMG@@";
+    if (!g || !sg) throw new Error("no sky");
+    var IMGS = "@@IMG@@";
     var CAP = @@CAP@@, KNEE = CAP * 0.7, YH = 0.86, SUNR = 1.519, T = {}, P = [], img = null, Cc = {}, Cs = {};
-    var Wd = 1, Hd = 1, dpr = 1, W2 = 1, H2 = 1, cw = 1, ch = 1, kx = 1, ky = 1, lastQ = -1, hzH = 1, hzB = 0, kind = "w", lay = {}, sig = "", dirty = [0, 0];
-    var ENC = new Uint8ClampedArray(4096), GX = [], HX = [], BX = [], VX = [], OX = [], DX = [];
+    var Wd = 1, Hd = 1, dpr = 0, W2 = 1, H2 = 1, cw = 1, ch = 1, kx = 1, ky = 1, lastQ = -1;
+    /* the star drawing: which sky it holds, the turn it was drawn at, its margin past the screen, and what the
+       compositor was last told (turn, opacity); MAXR is how far it may be turned before it is drawn again */
+    var ov = { set: "", base: 0, m: 0, tf: "", op: "", dirty: true }, MAXR = 2.5 * Math.PI / 180, plate = { c: "" };
+    var ENC = new Uint8ClampedArray(4096), HX = [], VX = [];
     var i;
     for (i = 0; i < 4096; i++) { var e = i / 4095; ENC[i] = Math.round(e <= 0.0031308 ? 3294.6 * e : 269.025 * Math.pow(e, 1 / 2.4) - 14.025); }
     function lin(v) { v = v < 0 ? 0 : v > 255 ? 1 : v / 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }
+    function sm(t) { return t * t * (3 - 2 * t); }
     /* a token or a mix of tokens, as the page computes it now: [r, g, b, a] */
     function rgba(expr) {
       cv.style.color = expr;
@@ -2067,16 +1723,11 @@ SCRIPT = r"""<script>
     function tokens() {
       ["bg", "ink", "orange", "white", "sky-cool"].forEach(function (k) { T[k] = rgba("var(--" + k + ")"); });
       var mx = function (a, p, b) { return rgba("color-mix(in srgb," + a + " " + p + "%," + b + ")"); };
-      Cc = { bg: T.bg, land: mx("var(--ink)", 72, "var(--bg)"), h1: mx("var(--bg)", 86, "var(--gray-light)"), h2: mx("var(--bg)", 70, "var(--ink)"),
-        w1: mx("var(--bg)", 93, "var(--gray-light)"), w2: mx("var(--bg)", 60, "var(--ink)"), gold: mx("var(--orange)", 62, "var(--white)"),
-        gold2: mx("var(--orange)", 70, "var(--white)"), trim: mx("var(--orange)", 55, "var(--white)"), glow: mx("var(--orange)", 70, "var(--sky-cool)"),
-        orange: T.orange, cloud: rgba("var(--wr-cloud)"), dusk: rgba("var(--wr-cloud-dusk)"), sun: mx("var(--orange)", 30, "var(--bg)"),
-        sw: T.white, sy: mx("var(--white)", 80, "var(--orange)"), sr: mx("var(--white)", 58, "var(--orange)"), mw: mx("var(--white)", 82, "var(--sky-cool)") };
+      Cc = { sw: T.white, sy: mx("var(--white)", 80, "var(--orange)"), sr: mx("var(--white)", 58, "var(--orange)"), mw: mx("var(--white)", 82, "var(--sky-cool)") };
       Cs = { tw: css(Cc.sw, 1), tb: css(Cc.sw, 1), ty: css(Cc.sy, 1), tr: css(Cc.sr, 1) };
       build();
-      if (lay.k) ridges();
-      ["street", "near", "dusk", "mwd", "mwn"].forEach(function (k) { if (CL[k].img && CL[k].img.complete) CL[k].tint = tint(CL[k]); });
-      sig = "";
+      ["mwd", "mwn"].forEach(function (k) { if (CL[k].img && CL[k].img.complete) CL[k].tint = tint(CL[k]); });
+      ov.dirty = true;
     }
     function m() {
       var o = [0, 0, 0];
@@ -2091,49 +1742,48 @@ SCRIPT = r"""<script>
       return [l[0] * f, l[1] * f, l[2] * f];
     }
     /* the day: at each point (in chapters from the top: 0 the opening, 1 the mark, 2 the course, 3 Kerio
-       Valley, 4 the window, 5 the audience, 6 the offer, 7 the footer) the clock; the sky from the top down
-       (z, mi, h, in linear light at a set luminance); the low sun's glow (gc ga gr); the glow along the
-       horizon under it (hc ha, hh tall); its rays (ra); the rose band and the Earth's shadow on the side away
-       from the sun (b); midday's light falling from the top (bl, centred at bx) and its deep sides (vg); the
-       stars before dawn (sa) and at night (sb); the hills' sinking (rg) and haze (lo), the morning light on
-       the escarpment's face (fm), the dusk light (fd); the sun's disc (sd); the cloud street (cs) */
+       Valley, 4 the window, 5 the audience, 6 the offer, 7 the footer) the clock; the sky from the top of the
+       screen to its bottom edge, which is the horizon (z, mi, h, in linear light at a set luminance, never darker
+       lower down, so no stripe can form); the light the low sun puts on the horizon, rising from the bottom edge
+       under the sun (hc ha, hh tall, hw wide); the deep sides of midday (vg); the stars before dawn (sa) and at
+       night (sb). Overhead the sky stays in one cool family all day; the warmth of dawn and dusk lives only at
+       the horizon */
     function build() {
       function unit(c) { var l = [lin(c[0]), lin(c[1]), lin(c[2])], L = 0.2126 * l[0] + 0.7152 * l[1] + 0.0722 * l[2]; return [l[0] / L, l[1] / L, l[2] / L]; }
-      var gold = unit(m("orange", .36, "white", .64)), pale = unit(m("orange", .22, "white", .78)), warm = unit(m("white", .66, "orange", .34)),
-        amber = unit(m("orange", .72, "white", .28)), ember = unit(m("orange", .92, "white", .08));
+      /* the horizon's lights: first light pale and cool; the afternoon's amber and dusk's ember leaning to rose
+         (some of the sky's blue in them) and kept saturated, so that held under the brightness limit they read
+         as light, not as brown */
+      var first = unit(m("white", .62, "sky-cool", .28, "orange", .1)), amber = unit(m("orange", .62, "white", .2, "sky-cool", .18)),
+        ember = unit(m("orange", .76, "sky-cool", .24));
       function blue(L) { return tone(L, "sky-cool", .92, "white", .08); }
       function deep(L) { return tone(L, "sky-cool", 1.3, "white", -.3); }
       function S(dd, hr, z, mi, h, o) {
-        var s = { d: dd, hr: hr, z: z, mi: mi, h: h, gc: gold, ga: 0, gr: .3, hc: gold, ha: 0, hh: .12, hw: .5, ra: 0, b: 0, bl: 0, bx: .5, vg: 0, sa: 0, sb: 0, lo: 1, fm: 0, fd: 0, sd: 0, cs: 0 };
+        var s = { d: dd, hr: hr, z: z, mi: mi, h: h, hc: first, ha: 0, hh: .14, hw: .42, vg: 0, sa: 0, sb: 0 };
         for (var k in o) s[k] = o[k];
         return s;
       }
-      var n0 = blue(.0055), n1 = tone(.007, "sky-cool", .9, "white", .1), n2 = tone(.0095, "sky-cool", .8, "orange", .06, "white", .14);
+      var n0 = blue(.0055), n1 = tone(.0072, "sky-cool", .9, "white", .1), n2 = tone(.0092, "sky-cool", .84, "white", .14, "orange", .02);
       P = [
-        S(0, 5.2, n0, n1, n2, { sa: 1 }),
-        S(.45, 5.85, blue(.0065), tone(.009, "sky-cool", .86, "white", .1, "orange", .04), tone(.014, "sky-cool", .62, "white", .26, "orange", .12), { sa: 1, b: .4, hc: pale, ha: .25, hh: .05 }),
-        S(.75, 6.45, blue(.008), tone(.011, "sky-cool", .8, "white", .16, "orange", .04), tone(.016, "sky-cool", .56, "white", .34, "orange", .1), { sa: .55, b: .9, hc: pale, ha: .75, hh: .05, hw: .3, fm: .25 }),
-        S(1.05, 6.87, blue(.009), tone(.0125, "sky-cool", .74, "white", .22, "orange", .04), tone(.017, "sky-cool", .55, "white", .35, "orange", .1), { sa: .12, b: .55, ha: 1, hh: .06, hw: .3, ga: 1, gr: .14, ra: .3, fm: .9, sd: 1 }),
-        S(1.45, 7.6, blue(.0105), tone(.015, "sky-cool", .72, "white", .24, "orange", .04), tone(.02, "white", .5, "sky-cool", .4, "orange", .1), { b: .15, ha: .75, hh: .08, hw: .34, ga: 1, gr: .17, ra: .4, fm: 1, sd: .4 }),
-        S(1.75, 8.2, deep(.012), tone(.017, "sky-cool", .8, "white", .2), tone(.027, "white", .58, "sky-cool", .34, "orange", .08), { hc: pale, ha: .3, hh: .1, ga: .5, gr: .3, ra: .2, fm: .7, bl: .25, bx: .2 }),
-        S(2.2, 9.2, deep(.012), deep(.015), tone(.024, "sky-cool", .7, "white", .3), { bl: .5, bx: .2, vg: .4, fm: .3, cs: .25, lo: .85 }),
-        S(2.7, 10.6, deep(.0115), deep(.0145), tone(.025, "sky-cool", .66, "white", .34), { bl: .8, bx: .28, vg: .8, cs: .8, lo: .6 }),
-        S(3.2, 12.1, deep(.011), deep(.014), tone(.026, "sky-cool", .62, "white", .38), { bl: 1, bx: .36, vg: 1, cs: 1, lo: .5 }),
-        S(3.7, 13.3, deep(.011), deep(.014), tone(.026, "sky-cool", .62, "white", .34, "orange", .04), { bl: .95, bx: .44, vg: 1, cs: 1, lo: .5 }),
-        S(4.2, 14.5, deep(.0115), tone(.0145, "sky-cool", 1.15, "white", -.15), tone(.026, "sky-cool", .5, "white", .38, "orange", .12), { bl: .7, bx: .56, vg: .8, cs: .7, lo: .65 }),
-        S(4.65, 15.6, tone(.0115, "sky-cool", .95, "orange", .05), tone(.016, "sky-cool", .6, "white", .25, "orange", .15), tone(.027, "orange", .3, "white", .5, "sky-cool", .2), { bl: .3, bx: .85, gc: warm, ga: .45, gr: .3, hc: amber, ha: .3, hh: .12, cs: .3, fd: .15, lo: .85 }),
-        S(5.15, 16.8, tone(.0105, "sky-cool", .88, "orange", .12), tone(.015, "sky-cool", .45, "orange", .35, "white", .2), tone(.03, "orange", .62, "white", .3, "sky-cool", .08), { gc: amber, ga: .7, gr: .28, hc: amber, ha: .65, hh: .16, ra: .45, fd: .5 }),
-        S(5.55, 17.9, tone(.0095, "sky-cool", .85, "orange", .15), tone(.013, "sky-cool", .55, "orange", .45), tone(.032, "orange", .85, "white", .15), { gc: ember, ga: .7, gr: .24, hc: ember, ha: .9, hh: .2, ra: .4, fd: .8, sd: 1, b: .3 }),
-        S(5.8, 18.55, tone(.009, "sky-cool", .88, "orange", .12), tone(.012, "sky-cool", .6, "orange", .4), tone(.031, "orange", .92, "white", .08), { gc: ember, ga: .45, gr: .22, hc: ember, ha: 1, hh: .22, ra: .25, fd: 1, sd: .8, b: .5 }),
-        S(6.1, 18.95, blue(.0075), tone(.0105, "sky-cool", .7, "orange", .3), tone(.02, "orange", .8, "sky-cool", .2), { gc: ember, hc: ember, ha: .55, hh: .2, fd: .6, sb: .35, b: .3 }),
-        S(6.45, 19.3, n0, tone(.0085, "sky-cool", .82, "orange", .18), tone(.012, "orange", .5, "sky-cool", .5), { gc: ember, hc: ember, ha: .2, hh: .18, fd: .2, sb: .85 }),
-        S(6.8, 19.6, n0, n1, n2, { gc: ember, hc: ember, ha: .06, hh: .16, sb: 1 }),
-        S(8, 20.4, n0, n1, n2, { gc: ember, hc: ember, hh: .16, sb: 1 })
+        S(0, 5.2, n0, n1, n2, { sa: .25 }),
+        S(.45, 5.85, blue(.006), tone(.008, "sky-cool", .9, "white", .1), tone(.0115, "sky-cool", .78, "white", .2, "orange", .02), { sa: .4, ha: .15, hh: .12 }),
+        S(.75, 6.45, blue(.0072), tone(.0098, "sky-cool", .86, "white", .14), tone(.0145, "sky-cool", .7, "white", .27, "orange", .03), { sa: .75, ha: .5, hh: .12, hw: .38 }),
+        S(1.05, 6.87, blue(.0085), tone(.0115, "sky-cool", .82, "white", .18), tone(.0175, "sky-cool", .64, "white", .33, "orange", .03), { sa: .2, ha: .85, hh: .13, hw: .36 }),
+        S(1.45, 7.6, blue(.0098), tone(.0135, "sky-cool", .78, "white", .22), tone(.0205, "sky-cool", .6, "white", .37, "orange", .03), { ha: .5, hh: .15, hw: .4 }),
+        S(1.75, 8.2, deep(.0108), tone(.0148, "sky-cool", .82, "white", .18), tone(.0225, "sky-cool", .58, "white", .4, "orange", .02), { ha: .18, hh: .17, hw: .44 }),
+        S(2.2, 9.2, deep(.0108), deep(.0145), tone(.0235, "sky-cool", .64, "white", .36), { vg: .35 }),
+        S(2.7, 10.6, deep(.0105), deep(.0145), tone(.0245, "sky-cool", .62, "white", .38), { vg: .6 }),
+        S(3.2, 12.1, deep(.0102), deep(.0145), tone(.025, "sky-cool", .6, "white", .4), { vg: .7 }),
+        S(3.7, 13.3, deep(.0102), deep(.0145), tone(.025, "sky-cool", .6, "white", .39, "orange", .01), { vg: .7 }),
+        S(4.2, 14.5, deep(.0105), tone(.014, "sky-cool", 1.1, "white", -.1), tone(.023, "sky-cool", .6, "white", .36, "orange", .04), { vg: .55 }),
+        S(4.65, 15.6, tone(.0105, "sky-cool", .98, "orange", .02), tone(.0135, "sky-cool", .9, "white", .08, "orange", .02), tone(.0185, "sky-cool", .72, "white", .22, "orange", .06), { vg: .35, hc: amber, ha: .25, hh: .14, hw: .42 }),
+        S(5.15, 16.8, tone(.0098, "sky-cool", .97, "orange", .03), tone(.0125, "sky-cool", .93, "orange", .05, "white", .02), tone(.0145, "sky-cool", .84, "orange", .1, "white", .06), { vg: .15, hc: amber, ha: .55, hh: .15, hw: .44 }),
+        S(5.55, 17.9, tone(.009, "sky-cool", .95, "orange", .05), tone(.0112, "sky-cool", .92, "orange", .08), tone(.0122, "sky-cool", .86, "orange", .14), { hc: ember, ha: .85, hh: .16, hw: .46 }),
+        S(5.8, 18.55, tone(.0085, "sky-cool", .95, "orange", .05), tone(.0105, "sky-cool", .92, "orange", .08), tone(.0115, "sky-cool", .86, "orange", .14), { hc: ember, ha: .95, hh: .15, hw: .46 }),
+        S(6.1, 18.95, blue(.0072), tone(.0092, "sky-cool", .93, "orange", .07), tone(.0105, "sky-cool", .86, "orange", .14), { hc: ember, ha: .55, hh: .13, hw: .48, sb: .35 }),
+        S(6.45, 19.3, n0, tone(.0082, "sky-cool", .94, "orange", .04), tone(.0098, "sky-cool", .86, "white", .08, "orange", .06), { hc: ember, ha: .22, hh: .12, hw: .5, sb: .85 }),
+        S(6.8, 19.6, n0, n1, n2, { hc: ember, ha: .07, hh: .12, hw: .5, sb: 1 }),
+        S(8, 20.4, n0, n1, n2, { hc: ember, hh: .12, hw: .5, sb: 1 })
       ];
-      P.rose = tone(.022, "orange", .45, "white", .3, "sky-cool", .25);
-      P.shade = tone(.0075, "sky-cool", 1);
-      P.hot = unit(m("white", .74, "orange", .08, "sky-cool", .18));
-      P.rays = amber;
       lastQ = -1;
     }
     function mix(a, b, f) { return [a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f, a[2] + (b[2] - a[2]) * f]; }
@@ -2144,75 +1794,31 @@ SCRIPT = r"""<script>
       for (var k in a) s[k] = typeof a[k] === "number" ? a[k] + (b[k] - a[k]) * f : mix(a[k], b[k], f);
       return s;
     }
+    /* sizes are taken from the sky box (100lvh), so a phone's toolbar sliding in or out changes nothing here */
     function size() {
-      Wd = Math.max(1, el.clientWidth); Hd = Math.max(1, el.clientHeight); dpr = Math.min(w.devicePixelRatio || 1, 2);
-      W2 = Math.round(Wd * dpr); H2 = Math.round(Hd * dpr);
-      if (cv.width !== W2 || cv.height !== H2) { cv.width = W2; cv.height = H2; }
-      dirty = [0, H2];
+      var W = Math.max(1, el.clientWidth), H = Math.max(1, el.clientHeight), r = Math.min(w.devicePixelRatio || 1, 2);
+      if (W === Wd && H === Hd && r === dpr) return;
+      Wd = W; Hd = H; dpr = r;
       cw = Wd < 600 ? 56 : Wd < 1100 ? 80 : 104; ch = Math.max(8, Math.round(cw * Hd / Wd));
       sk.width = cw; sk.height = ch; img = sg.createImageData(cw, ch);
       ky = YH * Hd / 2.1; kx = Math.min(ky, (Wd / 2 - 14) / 1.6);
-      /* the hills: the phone's own drawing under 560 px; on tablets and phones they stand on the chapter bar */
-      var vh = w.innerHeight;
-      kind = Wd <= 560 ? "p" : "w"; hzB = Wd < 900 ? 58 : 0; hzH = Math.round(vh * (Wd <= 560 ? 0.2 : Wd < 900 ? 0.26 : 0.3));
-      ridges(); lastQ = -1; sig = "";
+      /* the star drawing reaches past the screen by as much as a turn of MAXR moves its farthest corner */
+      ov.m = Math.ceil(Math.sqrt(Wd * Wd / 4 + YH * Hd * YH * Hd) * Math.sin(MAXR + 0.003)) + 4;
+      W2 = Math.round((Wd + 2 * ov.m) * dpr); H2 = Math.round((Hd + 2 * ov.m) * dpr);
+      cv.width = W2; cv.height = H2;
+      cv.style.left = cv.style.top = -ov.m + "px";
+      cv.style.width = Wd + 2 * ov.m + "px"; cv.style.height = Hd + 2 * ov.m + "px";
+      cv.style.transformOrigin = (ov.m + Wd / 2) + "px " + (ov.m + YH * Hd) + "px";
+      lastQ = -1; ov.dirty = true; plate.c = "";
     }
-    /* the three layers of the hills, drawn once per size from the shared paths (the still page uses the same) */
-    function ridges() {
-      var R = INFO[kind], s = Math.max(Wd / R.w, hzH / R.h), ox = Wd - R.w * s, oy = hzH - R.h * s, hh = Math.round(hzH * dpr);
-      function layer() { var c = d.createElement("canvas"); c.width = W2; c.height = hh; var x = c.getContext("2d"); x.setTransform(dpr * s, 0, 0, dpr * s, dpr * ox, dpr * oy); return x; }
-      function p2(n) { return new Path2D(d.getElementById("wrR" + kind + "-" + n).getAttribute("d")); }
-      function grad(x, n, st) { var b = R.bb[n], gr = x.createLinearGradient(0, b[0], 0, b[1]); st.forEach(function (q) { gr.addColorStop(q[0], q[1]); }); return gr; }
-      var x = layer();
-      x.fillStyle = css(Cc.bg, 0.26); x.fill(p2("far2"));
-      x.fillStyle = css(Cc.bg, 0.44); x.fill(p2("farh"));
-      x.fillStyle = grad(x, "tug", [[0, css(Cc.h1)], [0.7, css(Cc.h2)], [1, css(Cc.h2)]]); x.fill(p2("tug"));
-      x.fillStyle = grad(x, "esc", [[0, css(Cc.w1)], [0.55, css(Cc.w2)], [1, css(Cc.w2)]]); x.fill(p2("esc"));
-      x.fillStyle = css(Cc.land); x.fill(p2("near")); x.fill(p2("trees"));
-      lay.land = x.canvas;
-      x = layer(); x.lineCap = "round"; x.lineJoin = "round";
-      x.fillStyle = grad(x, "face", [[0, css(Cc.gold, 0.24)], [0.42, css(Cc.gold2, 0.08)], [1, css(Cc.gold2, 0)]]); x.fill(p2("face"));
-      x.strokeStyle = css(Cc.bg, 0.6); x.lineWidth = 1.3 / s; x.stroke(p2("gul"));
-      x.strokeStyle = css(Cc.trim, 0.7); x.lineWidth = 1.2 / s; x.stroke(p2("trim"));
-      lay.morn = x.canvas;
-      x = layer(); x.lineJoin = "round";
-      x.fillStyle = grad(x, "tface", [[0, css(Cc.glow, 0.2)], [1, css(Cc.glow, 0)]]); x.fill(p2("tface"));
-      x.strokeStyle = css(Cc.orange, 1); x.lineWidth = 1.5 / s; x.stroke(p2("rim"));
-      lay.dusk = x.canvas; lay.k = kind; lay.s = s; lay.ox = ox; lay.oy = oy; lay.hk = "";
-    }
-    /* the hills as they stand at this hour (their haze, the morning light, the dusk light), composed once per step */
-    function hills(lo, fm, fd) {
-      var k = [Math.round(lo * 25), Math.round(fm * 25), Math.round(fd * 25), lay.k, W2].join();
-      if (lay.hk === k) return lay.h;
-      if (!lay.h || lay.h.width !== W2 || lay.h.height !== lay.land.height) { lay.h = d.createElement("canvas"); lay.h.width = W2; lay.h.height = lay.land.height; }
-      var x = lay.h.getContext("2d");
-      x.clearRect(0, 0, W2, lay.h.height);
-      x.globalAlpha = Math.round(lo * 25) / 25; x.drawImage(lay.land, 0, 0);
-      if (fm > 0.02) { x.globalAlpha = Math.round(fm * 25) / 25; x.drawImage(lay.morn, 0, 0); }
-      if (fd > 0.02) { x.globalAlpha = Math.round(fd * 25) / 25; x.drawImage(lay.dusk, 0, 0); }
-      lay.hk = k;
-      return lay.h;
-    }
-    /* where the hills' top line is on screen at x */
-    function skyline(x, vh) {
-      var b = INFO[kind], X = (x - lay.ox) / lay.s / b.w * 32;
-      var i = Math.max(0, Math.min(31, Math.floor(X))), f = clamp(X - i);
-      return vh - hzB - hzH + lay.oy + (b.y[i] + (b.y[i + 1] - b.y[i]) * f) * lay.s;
-    }
-    /* the clouds (the far cloud street, the near cumulus, the dusk cloud) and the two Milky Ways: greyscale
-       masks, each fetched only as its hour comes near, then given its colour from the tokens */
-    var CL = {
-      street: { f: function () { return Wd <= 700 ? "street-s" : "street-l"; }, c: "cloud" },
-      near: { f: function () { return Wd <= 700 ? "cu-s" : "cu-l"; }, c: "cloud" },
-      dusk: { f: function () { return Wd <= 700 ? "dusk-s" : "dusk-l"; }, c: "dusk" },
-      mwd: { f: function () { return "mw-dawn"; }, c: "mw", a: 0.09 }, mwn: { f: function () { return "mw-night"; }, c: "mw", a: 0.09 }
-    };
+    /* the Milky Ways: greyscale masks, each fetched only as its hour comes near, then given its colour from the tokens */
+    var CL = { mwd: { f: "mw-dawn", c: "mw", a: 0.09 }, mwn: { f: "mw-night", c: "mw", a: 0.09 } };
     function want(k) {
       var c = CL[k];
       if (c.img) return c.tint;
       c.img = new Image(); c.img.decoding = "async";
-      c.img.onload = function () { c.tint = tint(c); sig = ""; if (SKY) onScroll(); };
-      c.img.src = IMGS + c.f() + ".webp";
+      c.img.onload = function () { c.tint = tint(c); ov.dirty = true; if (SKY) onScroll(); };
+      c.img.src = IMGS + c.f + ".webp";
       return null;
     }
     function tint(c) {
@@ -2232,42 +1838,25 @@ SCRIPT = r"""<script>
         return { z: +cl[0].charAt(1), t: cl[1], p: pts };
       });
     }
-    /* every pixel of the sky, in linear light: the gradient, the rose band and the Earth's shadow away from
-       the sun, the low sun's glow, the glow on the horizon under it, its rays, midday's light from above;
-       then held under CAP (a soft knee) and encoded */
-    function paint(s, sx, sy) {
-      var px = img.data, sxw = Wd / cw, syh = Hd / ch, yhp = YH * Hd, R = s.gr * Math.max(Wd, Hd);
-      var bx = s.bx * Wd, by = -0.1 * Hd, BRX = Math.max(0.17 * Wd + 0.1 * Hd, 0.5 * Wd), BRY = 0.38 * Hd, hx = s.hw * Wd, hy = s.hh * Hd;
-      var gc = s.gc, hc = s.hc, rc = P.rays, hot = P.hot, n = 0, glow = s.ga > 0.004, rays = s.ra > 0.004, bloom = s.bl > 0.004, belt = s.b > 0.005, x, dx, u;
-      var away = sx < Wd / 2 ? 1 : -1, z = s.z, mi = s.mi, h = s.h, ro = P.rose, sh = P.shade;
+    /* every pixel of the sky, in linear light: the gradient (eased between its three heights, so it has no
+       knee, and never darker lower down), the deep sides, the light on the horizon (the bottom edge) under the
+       sun, falling off upward only; then held under CAP (a soft knee) and encoded */
+    function paint(s, sx) {
+      var px = img.data, syh = Hd / ch, hx = s.hw * Wd, hy = s.hh * Hd;
+      var hc = s.hc, n = 0, x, u;
+      var z = s.z, mi = s.mi, h = s.h;
       for (x = 0; x < cw; x++) {
-        u = (x + 0.5) / cw; dx = u * Wd - sx; DX[x] = dx;
-        GX[x] = Math.exp(-dx * dx / (R * R)); HX[x] = Math.exp(-(dx / hx) * (dx / hx));
-        var bd = (u * Wd - bx) / BRX; BX[x] = Math.exp(-bd * bd);
+        u = (x + 0.5) / cw; var dx = (u * Wd - sx) / hx;
+        HX[x] = Math.exp(-dx * dx);
         VX[x] = 1 - s.vg * (Wd < 600 ? 0.2 : 0.45) * (2 * u - 1) * (2 * u - 1);
-        OX[x] = s.b * (0.25 + 0.75 * clamp(0.5 + away * (u - 0.5) * 1.6));
       }
       for (var y = 0; y < ch; y++) {
         var py = (y + 0.5) * syh, t = py / Hd;
-        var base = t < 0.5 ? mix(z, mi, t / 0.5) : t < YH ? mix(mi, h, (t - 0.5) / (YH - 0.5)) : h;
-        var bt = (t - (YH - 0.09)) / 0.045, et = (t - (YH - 0.015)) / 0.03, rb = belt ? 0.55 * Math.exp(-bt * bt) : 0, eb = belt ? 0.5 * Math.exp(-et * et) : 0;
-        var dy = py - sy, hv = (py - yhp) / hy, hrow = s.ha * 0.026 * Math.exp(-hv * hv), above = py < sy + 0.02 * Hd;
-        var gy = glow ? 0.03 * s.ga * Math.exp(-dy * dy / (R * R)) : 0, bv = (py - by) / BRY, by2 = bloom ? s.bl * 0.06 * Math.exp(-bv * bv) : 0;
+        var base = t < 0.5 ? mix(z, mi, sm(t / 0.5)) : mix(mi, h, sm((t - 0.5) / 0.5));
+        var hv = (Hd - py) / hy, hrow = s.ha * 0.026 * Math.exp(-hv * hv);
         for (x = 0; x < cw; x++, n += 4) {
-          var r = base[0], gg = base[1], b = base[2], v = VX[x];
-          if (belt) {
-            var wr = rb * OX[x], we = eb * OX[x];
-            r += (ro[0] - r) * wr; gg += (ro[1] - gg) * wr; b += (ro[2] - b) * wr;
-            r += (sh[0] - r) * we; gg += (sh[1] - gg) * we; b += (sh[2] - b) * we;
-          }
-          var k = gy * GX[x], h2 = hrow * HX[x], k2 = by2 * BX[x];
-          r = r * v + gc[0] * k + hc[0] * h2 + hot[0] * k2; gg = gg * v + gc[1] * k + hc[1] * h2 + hot[1] * k2; b = b * v + gc[2] * k + hc[2] * h2 + hot[2] * k2;
-          if (rays && above) {
-            dx = DX[x];
-            var d2 = dx * dx + dy * dy, a = Math.atan2(dy, dx), q = 0.5 + 0.5 * Math.cos(a * 23 + 0.6) * Math.cos(a * 9 - 1.1);
-            k = s.ra * 0.009 * q * q * Math.exp(-Math.sqrt(d2) / (0.8 * Wd)) * (1 - Math.exp(-d2 / (0.004 * Wd * Wd)));
-            r += rc[0] * k; gg += rc[1] * k; b += rc[2] * k;
-          }
+          var v = VX[x], h2 = hrow * HX[x];
+          var r = base[0] * v + hc[0] * h2, gg = base[1] * v + hc[1] * h2, b = base[2] * v + hc[2] * h2;
           var L = 0.2126 * r + 0.7152 * gg + 0.0722 * b;
           if (L > KNEE) { var f = (KNEE + (CAP - KNEE) * (1 - Math.exp(-(L - KNEE) / (CAP - KNEE)))) / L; r *= f; gg *= f; b *= f; }
           px[n] = ENC[r > 1 ? 4095 : (r * 4095) | 0]; px[n + 1] = ENC[gg > 1 ? 4095 : (gg * 4095) | 0]; px[n + 2] = ENC[b > 1 ? 4095 : (b * 4095) | 0]; px[n + 3] = 255;
@@ -2275,84 +1864,61 @@ SCRIPT = r"""<script>
       }
       sg.putImageData(img, 0, 0);
     }
-    function sunAt(hr, vh) {
-      /* the sun that day: hour angle from solar noon; looking south it climbs from the left, stands high,
-         goes down right; its height over the true horizon is measured up from the hills' line */
-      var H = (hr - @@NOON@@) * 15 * Math.PI / 180, x = Wd / 2 + SUNR * Math.sin(H) * kx;
-      return [x, skyline(x, vh) - SUNR * Math.cos(H) * ky];
-    }
-    /* the real sky turned about the south pole (15 degrees an hour), cut off above the opening photograph */
-    function stars(list, mw, a, rot, clip) {
-      var cx = Wd / 2 * dpr, cy = YH * Hd * dpr, u = ky * dpr, c = Math.cos(rot), s = Math.sin(rot), top = clip * dpr;
-      g.save(); g.beginPath(); g.rect(0, top, W2, H2 - top); g.clip();
-      if (mw) { g.save(); g.translate(cx, cy); g.rotate(rot); g.globalAlpha = a * clamp(1 - clip / (0.5 * Hd)); g.drawImage(mw, -3 * u, -2.25 * u, 6 * u, 3 * u); g.restore(); }
+    /* the sun that day: hour angle from solar noon; looking south it comes up on the left and goes down on the
+       right; only the light it puts on the horizon under it is drawn */
+    function sunX(hr) { return Wd / 2 + SUNR * Math.sin((hr - @@NOON@@) * 15 * Math.PI / 180) * kx; }
+    /* the real sky, drawn turned by rot about the south pole, which sits on the horizon below the screen's
+       middle (the drawing's margin past the screen keeps every corner covered while the compositor turns it) */
+    function draw(list, mw, rot) {
+      var cx = (ov.m + Wd / 2) * dpr, cy = (ov.m + YH * Hd) * dpr, u = ky * dpr, c = Math.cos(rot), s = Math.sin(rot), j;
+      g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1; g.clearRect(0, 0, W2, H2);
+      if (mw) { g.save(); g.translate(cx, cy); g.rotate(rot); g.drawImage(mw, -3 * u, -2.25 * u, 6 * u, 3 * u); g.restore(); }
       for (var k = 0; k < list.length; k++) {
         var q = list[k], r = Math.max(0.35, SZ[q.z] / 2000 * u), p = q.p;
-        g.globalAlpha = a * SO[q.z]; g.fillStyle = Cs[q.t] || Cs.tw; g.beginPath();
-        for (var j = 0; j < p.length; j += 2) {
+        g.globalAlpha = SO[q.z]; g.fillStyle = Cs[q.t] || Cs.tw; g.beginPath();
+        for (j = 0; j < p.length; j += 2) {
           var X = cx + (p[j] * c - p[j + 1] * s) * u, Y = cy + (p[j] * s + p[j + 1] * c) * u;
-          if (X < -3 || X > W2 + 3 || Y < top - 3 || Y > H2 + 3) continue;
+          if (X < -3 || X > W2 + 3 || Y < -3 || Y > H2 + 3) continue;
           g.moveTo(X + r, Y); g.arc(X, Y, r, 0, 6.2832);
         }
         g.fill();
       }
-      g.restore(); g.globalAlpha = 1;
+      g.globalAlpha = 1;
     }
-    function cloudAt(t, x, y, wd, ht, a, mark) { if (t && a > 0.004 && y < Hd && y + ht > 0) { g.globalAlpha = a; g.drawImage(t, x * dpr, y * dpr, wd * dpr, ht * dpr); g.globalAlpha = 1; mark(y, y + ht); } }
+    /* the sky's own colour at a height on the screen (the middle of the row, as painted) */
+    function skyAt(py) {
+      var row = Math.max(0, Math.min(ch - 1, Math.floor(py / Hd * ch))), p = img.data, x0 = Math.floor(cw * 0.25), x1 = Math.ceil(cw * 0.75), o = [0, 0, 0];
+      for (var x = x0; x < x1; x++) { var n = (row * cw + x) * 4; o[0] += p[n]; o[1] += p[n + 1]; o[2] += p[n + 2]; }
+      return o.map(function (v) { return Math.round(v / (x1 - x0)); });
+    }
     function at(D, y, vh, geo) {
-      var q = Math.round(D * 40);
-      if (q !== lastQ) { lastQ = q; var sq = state(q / 40), sp = sunAt(sq.hr, vh); paint(sq, sp[0], sp[1]); }
-      var s = state(D), sp2 = sunAt(s.hr, vh);
-      /* the hills step aside while the course is flown on its map and stand in midday's haze; they keep out of
-         the way of the opening photograph and the cards, and half step down for the 01 numerals */
-      var rg = D < 1.8 ? 0 : D < 2.08 ? (D - 1.8) / 0.28 : D < 2.88 ? 1 : D < 3.15 ? 1 - 0.6 * (D - 2.88) / 0.27 : D < 4.4 ? 0.4 : D < 4.7 ? 0.4 * (4.7 - D) / 0.3 : 0;
-      var band = vh - hzB - hzH, full = hzH + hzB + 4, sink = rg * full, clr = geo.clear;
-      for (var i = 0; i < clr.length; i++) {
-        var t = clr[i][0] - y, b = clr[i][1] - y;
-        if (b <= band || t >= vh + hzH) continue;
-        sink = Math.max(sink, Math.min(b - band, full * clr[i][2]) * clamp((vh + hzH - t) / hzH));
+      var q = Math.round(D * 160);
+      if (q !== lastQ) { lastQ = q; var sq = state(q / 160); paint(sq, sunX(sq.hr)); plate.c = ""; }
+      var s = state(D), set = s.sa > 0.004 ? "d" : s.sb > 0.004 ? "n" : "", a = set === "d" ? s.sa : set === "n" ? s.sb : 0;
+      /* the stars: turned and faded by the compositor; drawn again only past MAXR of turn, or when what they
+         hold has changed (the other sky, a Milky Way just loaded, new tokens, a new size) */
+      if (set) {
+        var rot = (s.hr - (set === "d" ? 5.5 : 19)) * 15.04 * Math.PI / 180, mw = set === "d" ? want("mwd") : D > 5 ? want("mwn") : null;
+        if (ov.dirty || set !== ov.set || Math.abs(rot - ov.base) > MAXR || !!mw !== !!ov.mw) {
+          draw(set === "d" ? STARS.d : STARS.n, mw, rot); ov.set = set; ov.base = rot; ov.mw = mw; ov.dirty = false;
+        }
+        var tf = "rotate(" + (rot - ov.base).toFixed(5) + "rad)";
+        if (tf !== ov.tf) { ov.tf = tf; cv.style.transform = tf; }
       }
-      sink = Math.round(sink);
-      var clip = Math.round(Math.max(0, Math.min(Hd, geo.clip - y))), up = sink < full - 1;
-      /* the clouds' places: the street drifts slower than the page (far); the dusk cloud passes 05 into 06 a
-         little slower than the page (between); the near cumulus passes 02 into 03 faster than the page */
-      var sw = Wd <= 700 ? Wd : Math.min(Wd, 1.7 * Hd), sh = sw * (Wd <= 700 ? 680 / 800 : 640 / 1600);
-      var stx = Wd - sw + (2.6 - D) * 0.04 * sw, sty = (Wd <= 700 ? 0.02 : 0.01) * Hd + (3.2 - D) * 0.025 * Hd;
-      var nw = Wd <= 700 ? 0.96 * Wd : Math.min(0.54 * Wd, 840), nh = nw * 700 / 1200, nrel = geo.near - y, np = clamp((vh - nrel) / (vh + nh));
-      var nx = Wd - nw + (Wd <= 700 ? 0.34 * Wd : 0.05 * Wd) + (0.04 - 0.08 * np) * nw, ny = nrel - (Wd <= 700 ? 0.02 : 0.04) * vh + (0.3 - 0.6 * np) * vh;
-      var dw = Wd <= 700 ? 1.8 * Wd : Math.max(1.12 * Wd, 900), dh = dw * (Wd <= 700 ? 260 / 800 : 520 / 1600), drel = geo.dusk - y, dp = clamp((vh - drel) / (vh + dh));
-      var dx = (Wd <= 700 ? -0.4 * Wd : -0.06 * Wd) + (-0.02 + 0.04 * dp) * dw, dy = drel - (Wd <= 700 ? 0.12 : 0.22) * vh + (-0.09 + 0.18 * dp) * vh, da = (dp < 0.45 ? 1 : 1 - (dp - 0.45) / 0.55) * clamp((6.7 - D) / 0.5);
-      var nearOn = Math.abs(nrel - vh / 2) < 2 * vh, duskOn = Math.abs(drel - vh / 2) < 2 * vh;
-      /* the canvas is composed again only when something on it has moved: a still stretch of sky costs nothing */
-      var sees = function (top, ht) { return top < Hd && top + ht > 0; }, starsOn = s.sa > 0.004 || s.sb > 0.004;
-      var key = [kind, up ? sink : -1, starsOn ? Math.round(D * 900) + "," + clip : "", s.sd > 0.004 ? Math.round(sp2[0]) + "," + Math.round(sp2[1]) : "",
-        D > 1.7 && D < 5 && s.cs > 0.004 ? Math.round(stx / 2) + "," + Math.round(sty / 2) + "," + Math.round(s.cs * 50) : "",
-        nearOn && sees(ny, nh) ? Math.round(ny) : "", duskOn && sees(dy, dh) ? Math.round(dy) + "," + Math.round(da * 50) : "", Math.round(s.lo * 25), Math.round(s.fm * 25), Math.round(s.fd * 25)].join("|");
-      if (key === sig) return;
-      sig = key;
-      /* only the band drawn last time is cleared, and this frame's band noted */
-      g.globalAlpha = 1; if (dirty[1] > dirty[0]) g.clearRect(0, dirty[0], W2, dirty[1] - dirty[0]);
-      var y0 = H2, y1 = 0, mark = function (a, b) { a = Math.max(0, Math.floor(a * dpr) - 2); b = Math.min(H2, Math.ceil(b * dpr) + 2); if (b > a) { y0 = Math.min(y0, a); y1 = Math.max(y1, b); } };
-      if (s.sa > 0.004 && clip < Hd) { stars(STARS.d, want("mwd"), s.sa, (s.hr - 5.5) * 15.04 * Math.PI / 180, clip); mark(clip, Hd); }
-      if (s.sb > 0.004) { stars(STARS.n, D > 5 ? want("mwn") : null, s.sb, (s.hr - 19) * 15.04 * Math.PI / 180, 0); mark(0, Hd); }
-      if (s.sd > 0.004 && up) {
-        var r = Math.max(9, Math.min(15, 0.0135 * Math.min(Wd, Hd))), sx = sp2[0] * dpr, sy = (sp2[1] + sink) * dpr;
-        g.globalAlpha = s.sd; g.fillStyle = css(Cc.sun, 1); g.beginPath(); g.arc(sx, sy, r * dpr, 0, 6.2832); g.fill(); g.globalAlpha = 1; mark(sy / dpr - r, sy / dpr + r);
+      var op = a > 0.004 ? a.toFixed(3) : "0";
+      if (op !== ov.op) { ov.op = op; cv.style.opacity = op; }
+      /* the Kerio photograph's top is tinted with the very sky behind it, so it meets no band */
+      if (geo.plateEl) {
+        var py = geo.plateTop - y;
+        if (py > -Hd && py < Hd * 1.2) {
+          var c = skyAt(Math.max(0, Math.min(Hd - 1, py))), cs = "rgb(" + c.join(",") + ")";
+          if (cs !== plate.c) { plate.c = cs; geo.plateEl.style.setProperty("--wr-plate-sky", cs); }
+        }
       }
-      if (duskOn) cloudAt(want("dusk"), dx, dy, dw, dh, da, mark);
-      if (D > 1.7 && D < 5) cloudAt(want("street"), stx, sty, sw, sh, s.cs, mark);
-      if (up) {
-        var top = (band + sink) * dpr;
-        g.drawImage(hills(s.lo, s.fm, s.fd), 0, top);
-        if (hzB) { g.globalAlpha = s.lo; g.fillStyle = css(Cc.land, 1); g.fillRect(0, top + hzH * dpr - 1, W2, (hzB + 8) * dpr); g.globalAlpha = 1; }
-        mark(band + sink, vh + 8);
-      }
-      if (nearOn) cloudAt(want("near"), nx, ny, nw, nh, 1, mark);
-      dirty = [y0, y1];
     }
     tokens(); size();
     /* the site's sky tokens ease to the visitor's hour over two seconds after the page opens */
-    root.addEventListener("transitionend", function (e) { if (e.target === root && e.propertyName === "--sky-cool") { tokens(); onScroll(); } });
+    root.addEventListener("transitionend", function (e) { if (e.target === root && e.propertyName === "--sky-cool") { tokens(); lastQ = -1; onScroll(); } });
     return { size: size, at: at };
   }
   function dayAt(line) {
@@ -2363,126 +1929,63 @@ SCRIPT = r"""<script>
     return Math.min(8, i + clamp((line - t[i]) / Math.max(1, end - t[i])));
   }
 
-  /* the clouds and the ground under the course load once, as they come near; they, and the thermals,
-     move only while they are close to the screen, so nothing off screen costs a frame */
-  var nearEls = all(".wr-ground"), liveEls = all(".wr-ground,.wr-mark");
+  /* the ground under the course loads once, as it comes near */
+  var nearEls = all(".wr-ground");
   if (IO) {
     var nio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-near"); nio.unobserve(e.target); } }); }, { rootMargin: "60% 0px 60% 0px" });
     nearEls.forEach(function (el) { nio.observe(el); });
-    var lio = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle("is-live", e.isIntersecting); }); }, { rootMargin: "60% 0px 60% 0px" });
-    liveEls.forEach(function (el) { lio.observe(el); });
-  } else liveEls.forEach(function (el) { el.classList.add("is-near", "is-live"); });
+  } else nearEls.forEach(function (el) { el.classList.add("is-near"); });
 
   function measure() {
-    var vh = w.innerHeight;
-    var r = box.getBoundingClientRect(); geo.mapW = r.width; geo.mapH = r.height;
+    var vh = w.innerHeight, r = box.getBoundingClientRect();
+    geo.mapW = r.width; geo.mapH = r.height; geo.vh = vh;
     geo.pin = root.classList.contains("wr-pin");
     geo.cStart = absTop(C); geo.cLen = Math.max(1, C.offsetHeight - Cst.offsetHeight);
-    if (hzOn()) {
-      W.style.height = ""; Wtr.style.transform = "";
-      geo.over = Math.max(0, Wtr.scrollWidth - Wvp.clientWidth);
-      W.style.height = Math.round(Wst.offsetHeight + geo.over * 1.05 + vh * 0.15) + "px";
-      geo.wStart = absTop(W);
-      geo.wLen = Math.max(1, W.offsetHeight - Wst.offsetHeight);
-    } else { W.style.height = ""; Wtr.style.transform = ""; geo.over = 0; }
-    geo.seg = tick ? tick.firstElementChild.offsetWidth : 0;
-    geo.tickTop = tickBox ? absTop(tickBox) : 0;
     geo.tops = chaps.map(function (c) { return c ? absTop(c) : 0; });
     geo.ends = chaps.map(function (c, i) { return i + 1 < chaps.length ? geo.tops[i + 1] : (partner ? absTop(partner) : geo.tops[i] + 1); });
     geo.partner = partner ? absTop(partner) : 1e9;
     geo.foot = foot ? absTop(foot) : 1e9;
     geo.heroEnd = hero ? absTop(hero) + hero.offsetHeight : 0;
-    geo.vh = vh;
     if (SKY) {
       SKY.size(); geo.dT = dayEls.map(function (e) { return e ? absTop(e) : 0; }); geo.docH = root.scrollHeight;
-      /* the stars begin under the opening photograph (its parallax can carry it a sixth lower); the hills keep clear of it, the 01 numerals and the cards */
-      var pic = hero && hero.querySelector(".wr-hero-pic"), hb = hero ? absTop(hero) + hero.offsetHeight : 0;
-      geo.clip = pic ? Math.min(hb, absTop(pic) + pic.offsetHeight * 1.16) : hb;
-      /* (the hills only half step down for the 01 numerals: sunrise is behind them) */
-      geo.near = absTop(d.getElementById("wr-kerio")); geo.dusk = partner ? absTop(partner) : 1e9;
-      geo.clear = [[0, geo.clip, 1]].concat(all(".is-theirs .wr-giga,.wr-tiers").map(function (e) { var t = absTop(e); return [t, t + e.offsetHeight, e.classList.contains("wr-giga") ? 0.55 : 1]; }));
+      geo.plateEl = d.querySelector(".wr-par"); geo.plateTop = geo.plateEl ? absTop(geo.plateEl) : 0;
     }
-    swiped();
   }
 
-  var queued = false;
-  function frame() {
-    queued = false;
+  /* 6. one loop for all that the scroll moves. The position's progress and the day's hour ease toward where the
+     scroll has put them (each frame closes a share of the gap, by the time passed: a spring-like lerp), so a
+     flick of the wheel becomes a glide with weight that settles; the loop stops once both have arrived (the
+     position within half a pixel), and the next scroll starts it again */
+  var now = { f: -1, D: -1 }, raf = 0, last = 0;
+  function toward(v, to, dt, tau, eps) { return v < 0 || Math.abs(to - v) < eps ? to : v + (to - v) * (1 - Math.exp(-dt / tau)); }
+  function frame(t) {
+    raf = 0;
+    var dt = last ? Math.min(64, Math.max(1, t - last)) : 16; last = t;
     var y = w.scrollY, vh = geo.vh;
-    if (geo.pin) render(clamp((clamp((y - geo.cStart) / geo.cLen) - 0.05) / 0.85));
-    if (hzOn() && geo.over) {
-      var q = clamp((y - geo.wStart) / geo.wLen);
-      Wtr.style.transform = "translate3d(" + (-q * geo.over).toFixed(1) + "px,0,0)";
-    }
-    if (tick && !still && geo.seg && y + vh > geo.tickTop - 200 && y < geo.tickTop + 600) {
-      tick.style.transform = "translate3d(" + (-((y * 0.55) % geo.seg)).toFixed(1) + "px,0,0)";
-    }
-    if (barEl) {
-      var line = y + vh * 0.4, i = -1;
-      for (var n = 0; n < geo.tops.length; n++) {
-        if (geo.tops[n] <= line && line < geo.ends[n]) i = n;
-        var p = clamp((line - geo.tops[n]) / Math.max(1, geo.ends[n] - geo.tops[n]));
-        if (Math.abs(p - lastP[n]) > 0.002) { lastP[n] = p; lines[n].style.setProperty("--p", p.toFixed(3)); }
-      }
-      if (i !== cur) {
-        cur = i;
-        links.forEach(function (a, k) { if (k === i) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
-        if (i >= 0 && barOl && barOl.scrollWidth > barOl.clientWidth) {
-          var li = links[i].parentNode;
-          barOl.scrollTo({ left: Math.max(0, li.offsetLeft - barOl.clientWidth * 0.3), behavior: still ? "auto" : "smooth" });
-        }
-      }
-      barEl.classList.toggle("is-on", y > geo.heroEnd - vh * 0.55 && y + vh < geo.foot + 2);
-    }
-    if (SKY) SKY.at(dayAt(y + vh * 0.5), y, vh, geo);
+    var ft = geo.pin ? clamp((clamp((y - geo.cStart) / geo.cLen) - 0.05) / 0.77) : 1, Dt = SKY ? dayAt(y + vh * 0.5) : 0;
+    var f = toward(now.f, ft, dt, 140, 0.0004), D = toward(now.D, Dt, dt, 320, 0.002);
+    if (f !== now.f) { now.f = f; render(f); }
+    now.D = D;
+    bars(y, vh);
+    if (SKY) SKY.at(D, y, vh, geo);
+    if (f !== ft || D !== Dt) raf = requestAnimationFrame(frame); else last = 0;
   }
-  function onScroll() { if (!queued) { queued = true; requestAnimationFrame(frame); } }
-  function refresh() { measure(); if (!geo.pin) render(1); frame(); }
+  function onScroll() { if (!raf) raf = requestAnimationFrame(frame); }
+  /* measure again (a resize, a phone's toolbar, the fonts, the images): the position and the day go on easing from
+     where they are toward the new targets; only the first frame starts them in place */
+  function refresh(first) {
+    measure(); if (first) { now.f = -1; now.D = -1; } else if (now.f >= 0) render(now.f);
+    last = 0; if (raf) { cancelAnimationFrame(raf); raf = 0; } frame(performance.now());
+  }
 
-  measure();
-  if (!geo.pin) render(1);
-  frame();
+  refresh(true);
   w.addEventListener("scroll", onScroll, { passive: true });
   var rz = 0;
-  w.addEventListener("resize", function () { cancelAnimationFrame(rz); rz = requestAnimationFrame(refresh); }, { passive: true });
-  w.addEventListener("load", refresh);
-  if (d.fonts && d.fonts.ready) d.fonts.ready.then(refresh);
-  if (hzMq.addEventListener) hzMq.addEventListener("change", function (e) { if (!still) root.classList.toggle("wr-hz", e.matches); refresh(); });
-  /* a key that moves into the strip brings its step on screen */
-  Wtr.addEventListener("focusin", function (e) {
-    if (!hzOn() || !geo.over) return;
-    var item = e.target.closest(".wr-step,.wr-fig") || e.target;
-    var q = clamp((item.offsetLeft - Wvp.clientWidth * 0.3) / geo.over);
-    w.scrollTo(0, geo.wStart + q * geo.wLen);
-  });
-
-  /* 6. a ring cursor and magnetic buttons, under a fine pointer only */
-  if (!still && mq("(hover: hover) and (pointer: fine)").matches) {
-    var ring = d.createElement("div"); ring.className = "wr-cursor"; ring.setAttribute("aria-hidden", "true"); ring.innerHTML = "<i></i>";
-    d.body.appendChild(ring);
-    var cx = 0, cy = 0, craf = 0;
-    function paint() { craf = 0; ring.style.transform = "translate3d(" + cx + "px," + cy + "px,0)"; }
-    d.addEventListener("pointermove", function (e) {
-      if (e.pointerType !== "mouse") return;
-      cx = e.clientX; cy = e.clientY; if (!craf) craf = requestAnimationFrame(paint);
-      ring.classList.add("is-on");
-      var t = e.target.closest ? e.target.closest("a,button,label,summary,[data-cursor]") : null;
-      ring.classList.toggle("is-big", !!t && !t.hasAttribute("data-cursor"));
-      ring.classList.toggle("is-map", !!t && t.hasAttribute("data-cursor"));
-    }, { passive: true });
-    d.addEventListener("pointerleave", function () { ring.classList.remove("is-on"); });
-    w.addEventListener("blur", function () { ring.classList.remove("is-on"); });
-    all(".wr-mag").forEach(function (m) {
-      m.addEventListener("pointermove", function (e) {
-        var r = m.getBoundingClientRect();
-        var dx = Math.max(-10, Math.min(10, (e.clientX - (r.left + r.width / 2)) * 0.12)), dy = Math.max(-6, Math.min(6, (e.clientY - (r.top + r.height / 2)) * 0.2));
-        m.style.transform = "translate3d(" + dx.toFixed(1) + "px," + dy.toFixed(1) + "px,0)";
-      });
-      m.addEventListener("pointerleave", function () { m.style.transform = ""; });
-    });
-  }
+  w.addEventListener("resize", function () { cancelAnimationFrame(rz); rz = requestAnimationFrame(function () { refresh(false); }); }, { passive: true });
+  w.addEventListener("load", function () { refresh(false); });
+  if (d.fonts && d.fonts.ready) d.fonts.ready.then(function () { refresh(false); });
   } catch (err) {
-    root.classList.remove("wr-pin", "wr-hz", "wr-sky-on");
+    root.classList.remove("wr-pin", "wr-sky-on");
     showAll();
   }
 })();
@@ -2494,8 +1997,7 @@ def script():
     for k, v in (("REC", REC100), ("BEST", BEST), ("X0", X0), ("PX", PX_PER_KM), ("YO", YO), ("YB", YB),
                  ("RX", RX), ("RY", RY), ("CY", CY), ("CAP", SKY_CAP), ("NOON", SUN_NOON)):
         s = s.replace("@@%s@@" % k, repr(v))
-    s = s.replace("@@SKYINFO@@", json.dumps({k: {"w": RIDGE_BOX[k][0], "h": RIDGE_BOX[k][1], "y": RIDGES[k]["sky"], "bb": RIDGES[k]["bb"]}
-                                             for k in RIDGE_BOX}, separators=(",", ":"))).replace("@@IMG@@", REC_IMG)
+    s = s.replace("@@IMG@@", REC_IMG)
     return s
 
 
