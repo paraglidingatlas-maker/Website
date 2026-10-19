@@ -1210,7 +1210,8 @@ html.ex-fly .ex-year,html.ex-fly.v2-nav-up .ex-year{position:absolute;left:0;rig
   /* pointing at a place (or its month) lights it everywhere it appears; on the world map it opens a little of
      its photograph; the pointer carries a soft light over the land */
   function setHint(id, onn) {
-    [].forEach.call(atlas.querySelectorAll('a[href="#' + id + '"],.ex-ymonths span[data-t="' + id + '"]'), function (a) { a.classList.toggle("is-hint", onn); });
+    // the selector's quotes are single so the site audit does not read it as a link
+    [].forEach.call(atlas.querySelectorAll("a[href='#" + id + "'],.ex-ymonths span[data-t='" + id + "']"), function (a) { a.classList.toggle("is-hint", onn); });
     if (onn) hint = id; else if (hint === id) hint = "";
     kick();
   }

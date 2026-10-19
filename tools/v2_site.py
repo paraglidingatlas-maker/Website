@@ -53,5 +53,12 @@ def proto_only(rel):
             or rel.startswith("expeditions-"))  # the expeditions page's design options (owner, 19 Oct)
 
 
+# Pages the prototype adds to the site (no live twin, but switched): the switch
+# writes them at the root, indexable, and lists them in sitemap.xml; the checks
+# hold them to their own title, description and canonical instead of a live page's.
+# expeditions.html: the menu's Expeditions tab gets its own page (owner, 19 Oct)
+NEW_PAGES = set() if IS_V2 else {"expeditions.html"}
+
+
 if not os.path.isdir(DIR):
     raise SystemExit("no such prototype: %s" % os.path.relpath(DIR, ROOT))

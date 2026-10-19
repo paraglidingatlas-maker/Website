@@ -777,6 +777,10 @@ def _check_tokens_resolve():
         local.update(re.findall(r"setProperty\(\s*['\"](--[a-z0-9-]+)", read(f)))
     for f in glob.glob("*.js"):
         local.update(re.findall(r"setProperty\(\s*['\"](--[a-z0-9-]+)", read(f)))
+    # after the switch-over a prototype's own stylesheet (assets/v4/v2.css, tools/v2_switch.py)
+    # is loaded by every page and defines its tokens (--ease, the kit); absent before it
+    for f in glob.glob("assets/v*/v2.css"):
+        local.update(re.findall(r"(--[a-z0-9-]+)\s*:", read(f)))
     missing = sorted(used - set(defs) - local)
     (ok if not missing else fail)("tokens",
                                   "var() used but never defined: %s" % (missing[:4] or 0))

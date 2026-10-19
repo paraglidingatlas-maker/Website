@@ -17,7 +17,10 @@ What one run does, to a site root (the repo, or a staging copy of it):
   4. the v2 styles, scripts and images are copied to assets/v2/.
 
 Nothing else at the root is touched: the redirect stubs, sitemap.xml,
-robots.txt, llms.txt, the feed and every asset stay as they are.
+robots.txt, llms.txt, the feed and every asset stay as they are. The one
+exception: a page the prototype adds to the site (v2_site.NEW_PAGES, v4's
+expeditions.html) has no live page to replace, so it is written at the root,
+indexable, and given its line in sitemap.xml.
 
 Because build.sh regenerates the episode, knowledge base, policy, tag, 404
 and library pages in the old design, the switch is a step that runs at the
@@ -28,6 +31,7 @@ v2 generators read the freshly generated live pages as their input.
     python3 tools/v2_switch.py --apply --out _site       # the switched site, for publishing
 """
 import argparse
+import datetime
 import html
 import os
 import re
@@ -146,7 +150,34 @@ def apply(root):
         with open(dst, "w", encoding="utf-8") as fh:
             fh.write(out)
         n += 1
+    list_new_pages(root)
     return n
+
+
+def list_new_pages(root):
+    """A page the prototype adds (S.NEW_PAGES) gets its sitemap.xml line, written as
+    generate_robots_sitemap.py writes every other one and dated by the page's last
+    commit in the prototype. The sitemap is built before the switch runs, so
+    without this the new page would be the one indexable page it leaves out."""
+    sm = os.path.join(root, "sitemap.xml")
+    if not S.NEW_PAGES or not os.path.exists(sm):
+        return
+    sys.path.insert(0, ROOT)
+    import site_config as cfg
+    xml = open(sm, encoding="utf-8").read()
+    rows = ""
+    for rel in sorted(S.NEW_PAGES):
+        url = cfg.public_url(rel)
+        if "<loc>%s</loc>" % url in xml:
+            continue
+        r = subprocess.run(["git", "log", "-1", "--format=%cs", "--", os.path.join(S.URL_PATH, rel)],
+                           cwd=ROOT, capture_output=True, text=True)
+        day = r.stdout.strip() or datetime.date.today().isoformat()
+        rows += ("  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n"
+                 "    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n" % (url, day))
+    if rows:
+        with open(sm, "w", encoding="utf-8") as fh:
+            fh.write(xml.replace("</urlset>", rows + "</urlset>", 1))
 
 
 def live_html(root):
@@ -176,33 +207,55 @@ def dry_run(stage, build=False):
     # 1. no URL lost, none added by accident
     if before - after:
         fails.append("pages lost: %s" % sorted(before - after)[:5])
-    added = after - before
+    added = after - before - S.NEW_PAGES
     if added:
         fails.append("pages added at the root: %s" % sorted(added)[:5])
-    locs = re.findall(r"<loc>https://paraglidingatlas\.com/([^<]*)</loc>", open(os.path.join(stage, "sitemap.xml")).read())
+    if S.NEW_PAGES - after:
+        fails.append("new pages not written: %s" % sorted(S.NEW_PAGES - after))
+    locs_xml = open(os.path.join(stage, "sitemap.xml")).read()
+    locs = re.findall(r"<loc>https://paraglidingatlas\.com/([^<]*)</loc>", locs_xml)
     miss = [l for l in locs if not os.path.exists(os.path.join(stage, l or "index.html"))]
     if miss:
         fails.append("sitemap URLs without a page: %s" % miss[:5])
     # 2. SEO/GEO parity, robots and links, page by page against the live original
     exempt = C.EXEMPT
+    sys.path.insert(0, ROOT)
+    import site_config as cfg
     for rel in sorted(v2_pages()):
-        a = C.seo(open(os.path.join(ROOT, rel), encoding="utf-8").read())
         s_src = open(os.path.join(stage, rel), encoding="utf-8").read()
         b = C.seo(s_src)
-        for k in ("title", "description", "canonical", "og:title", "og:description", "og:image", "twitter:card", "jsonld", "episode"):
-            if a[k] != b[k]:
-                # the owner's correction of the episode count (tools/data/v4_facts.json), the only allowed difference
-                if k in ("description", "og:description") and isinstance(a[k], str) and C.owner_fixed(a[k]) == b[k]:
-                    continue
-                fails.append("%s: %s differs" % (rel, k))
-        if b["words"] < a["words"] * 0.95 and "words" not in exempt.get(rel, {}):
-            fails.append("%s: body text %d words, live %d" % (rel, b["words"], a["words"]))
-        if b["chapters"] < a["chapters"]:
-            fails.append("%s: chapters %d, live %d" % (rel, b["chapters"], a["chapters"]))
-        lr = re.findall(r'<meta name="robots"[^>]*>', open(os.path.join(ROOT, rel), encoding="utf-8").read())
-        sr = re.findall(r'<meta name="robots"[^>]*>', s_src)
-        if lr != sr:
-            fails.append("%s: robots %s, live %s" % (rel, sr, lr))
+        if rel in S.NEW_PAGES:
+            # no live page to match: its own head must be whole, it must be indexable and in the sitemap
+            url = cfg.public_url(rel)
+            for k in ("title", "description", "og:title", "og:description", "og:image", "twitter:card"):
+                if not b[k]:
+                    fails.append("%s (new page): no %s" % (rel, k))
+            if b["canonical"] != url:
+                fails.append("%s (new page): canonical %s, not %s" % (rel, b["canonical"], url))
+            if not b["jsonld"]:
+                fails.append("%s (new page): no structured data" % rel)
+            if re.findall(r'<meta name="robots"[^>]*>', s_src):
+                fails.append("%s (new page): carries a robots line" % rel)
+            if "<loc>%s</loc>" % url not in locs_xml:
+                fails.append("%s (new page): not in sitemap.xml" % rel)
+            a = None
+        else:
+            a = C.seo(open(os.path.join(ROOT, rel), encoding="utf-8").read())
+        if a is not None:      # a page that replaces a live one: the same head, words, chapters and robots
+            for k in ("title", "description", "canonical", "og:title", "og:description", "og:image", "twitter:card", "jsonld", "episode"):
+                if a[k] != b[k]:
+                    # the owner's correction of the episode count (tools/data/v4_facts.json), the only allowed difference
+                    if k in ("description", "og:description") and isinstance(a[k], str) and C.owner_fixed(a[k]) == b[k]:
+                        continue
+                    fails.append("%s: %s differs" % (rel, k))
+            if b["words"] < a["words"] * 0.95 and "words" not in exempt.get(rel, {}):
+                fails.append("%s: body text %d words, live %d" % (rel, b["words"], a["words"]))
+            if b["chapters"] < a["chapters"]:
+                fails.append("%s: chapters %d, live %d" % (rel, b["chapters"], a["chapters"]))
+            lr = re.findall(r'<meta name="robots"[^>]*>', open(os.path.join(ROOT, rel), encoding="utf-8").read())
+            sr = re.findall(r'<meta name="robots"[^>]*>', s_src)
+            if lr != sr:
+                fails.append("%s: robots %s, live %s" % (rel, sr, lr))
         if "prototypes/" + S.NAME in re.sub(r"<!--.*?-->", "", s_src, flags=re.S).replace("prototypes/v2/ only", ""):
             notes.append("%s: still mentions prototypes/%s" % (rel, S.NAME))
         # every relative link resolves inside the staging site

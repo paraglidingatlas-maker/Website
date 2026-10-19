@@ -1885,7 +1885,8 @@ SCRIPT = r"""<script>
   /* pointing at a place (or its month) lights it everywhere it appears; on the world map it opens a little of
      its photograph; the pointer carries a soft light over the land */
   function setHint(id, onn) {
-    [].forEach.call(atlas.querySelectorAll('a[href="#' + id + '"],.ex-ymonths span[data-t="' + id + '"]'), function (a) { a.classList.toggle("is-hint", onn); });
+    // the selector's quotes are single so the site audit does not read it as a link
+    [].forEach.call(atlas.querySelectorAll("a[href='#" + id + "'],.ex-ymonths span[data-t='" + id + "']"), function (a) { a.classList.toggle("is-hint", onn); });
     if (onn) hint = id; else if (hint === id) hint = "";
     kick();
   }
@@ -1978,6 +1979,11 @@ def main():
     head = re.sub(r"<!--v4u-css-->.*?<!--/v4u-css-->", "", head, 1, flags=re.S)
     head = re.sub(r"\n<style>.*?</style>\n(?=<!-- site-schema -->)", lambda m: "\n<style>" + css() + "</style>\n", head, 1, flags=re.S)
     head = head.replace(' aria-current="page" class="is-here"', "")
+    # the header's Expeditions tab leads here (owner, 19 Oct): marked as the page you are on
+    head = head.replace('<a href="expeditions.html">Expeditions</a>',
+                        '<a href="expeditions.html" aria-current="page" class="is-here">Expeditions</a>', 1)
+    if 'aria-current="page" class="is-here">Expeditions</a>' not in head:
+        raise SystemExit("v4_expeditions: the header has no Expeditions tab to mark")
     if ".ex-atlas" not in head or "Partner With Me" in head.split("<body")[0] or URL not in head:
         raise SystemExit("v4_expeditions: the partners shell has changed; check the head")
     if 'content="noindex' not in head:
