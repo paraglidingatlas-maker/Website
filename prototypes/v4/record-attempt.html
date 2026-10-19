@@ -485,7 +485,153 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
   .wr-tiers{grid-template-columns:minmax(0,1fr);}
   .wr-cta{flex-direction:column;align-items:flex-start;}
 }
+/* ---------- the record day: the backgrounds (see the docstring) ---------- */
+/* small muted words sit on a sky now, not flat black: lifted enough to keep 4.5:1 on its brightest */
+.wr{--wr-dim:color-mix(in srgb,var(--gray-light) 84%,var(--gray));
+  --wr-land:color-mix(in srgb,var(--ink) 72%,var(--bg));
+  /* a cloud's lit colour: a warm white held at the sky's brightness limit, so a cloud lightens the sky and never lifts it past what the words need */
+  --wr-cloud:color-mix(in srgb,var(--white) 18.5%,var(--bg));
+  --wr-cloud-dusk:color-mix(in srgb,color-mix(in srgb,var(--orange) 80%,var(--white)) 26%,var(--bg));}
+.wr-tbd,.wr-no,.wr-src,.wr-days-n{color:var(--wr-dim);}
+.wr-mark,.wr-offer{position:relative;isolation:isolate;}
+.wr-sky,.wr-night,.wr-still-rg{display:none;}
+.wr-defs{position:absolute;width:0;height:0;overflow:hidden;}
+/* the partner cards are solid: neither the sky nor the hills show through the offer */
+.wr .wr-tier{background:linear-gradient(180deg,color-mix(in srgb,var(--white) 6%,transparent),color-mix(in srgb,var(--white) 1.5%,transparent) 70%),color-mix(in srgb,var(--card) 94%,var(--bg));}
+.wr .wr-tier.is-lead{background:linear-gradient(180deg,color-mix(in srgb,var(--orange) 9%,transparent),color-mix(in srgb,var(--white) 2%,transparent) 70%),color-mix(in srgb,var(--card) 94%,var(--bg));}
+/* the course's grain fades at both ends, so no line marks its edges (with the moving sky the page's own grain is there instead) */
+.wr-sky-on .wr-course.wr-grain::after{display:none;}
+.wr-course.wr-grain::after{-webkit-mask-image:linear-gradient(180deg,transparent,var(--bg) 16%,var(--bg) 84%,transparent);mask-image:linear-gradient(180deg,transparent,var(--bg) 16%,var(--bg) 84%,transparent);}
+
+/* ----- the horizon: the escarpment and the hills (drawn once in .wr-defs, used by the moving and the still page) ----- */
+.wr-rg{position:absolute;inset:0;}
+.wr-rg svg{position:absolute;left:0;top:0;display:block;width:100%;height:100%;overflow:visible;}
+.wr-rg .is-p{display:none;}
+@media (max-width:560px){.wr-rg .is-w{display:none;}.wr-rg .is-p{display:block;}}
+.r-far2{fill:var(--bg);fill-opacity:.26;}
+.r-far{fill:var(--bg);fill-opacity:.44;}
+.r-tug{fill:url(#wrHaze);}
+.r-esc{fill:url(#wrWall);}
+.r-near{fill:var(--wr-land);}
+.wr-still-rg .h1{stop-color:color-mix(in srgb,var(--bg) 86%,var(--gray-light));}
+.wr-still-rg .h2{stop-color:color-mix(in srgb,var(--bg) 70%,var(--ink));}
+.wr-still-rg .w1{stop-color:color-mix(in srgb,var(--bg) 93%,var(--gray-light));}
+.wr-still-rg .w2{stop-color:color-mix(in srgb,var(--bg) 60%,var(--ink));}
+/* morning: the sun comes up behind the Tugen Hills (left), lights the escarpment's east face (right) */
+.r-face{fill:url(#wrLit);}
+.wr-still-rg .g1{stop-color:color-mix(in srgb,var(--orange) 62%,var(--white));stop-opacity:.24;}
+.wr-still-rg .g2{stop-color:color-mix(in srgb,var(--orange) 70%,var(--white));stop-opacity:.08;}
+.wr-still-rg .g3{stop-color:var(--orange);stop-opacity:0;}
+.r-gul{fill:none;stroke:var(--bg);stroke-opacity:.6;stroke-width:1.3;stroke-linecap:round;vector-effect:non-scaling-stroke;}
+.r-trim{fill:none;stroke:color-mix(in srgb,var(--orange) 55%,var(--white));stroke-opacity:.7;stroke-width:1.2;stroke-linejoin:round;vector-effect:non-scaling-stroke;}
+/* dusk: the sun goes down behind the escarpment (right), rims its edge, and the Tugen Hills' west slopes glow */
+.r-tface{fill:url(#wrGlow);}
+.wr-still-rg .p1{stop-color:color-mix(in srgb,var(--orange) 70%,var(--sky-cool));stop-opacity:.2;}
+.wr-still-rg .p2{stop-color:var(--orange);stop-opacity:0;}
+.r-rim{fill:none;stroke:var(--orange);stroke-width:1.5;stroke-linejoin:round;vector-effect:non-scaling-stroke;}
+/* the thermals' streamlines and bubbles fade at both ends through their own stroke */
+.wr-defs .f0{stop-color:var(--gray-light);stop-opacity:0;}
+.wr-defs .f1{stop-color:var(--gray-light);stop-opacity:1;}
+.wr-defs .q0{stop-color:color-mix(in srgb,var(--orange) 50%,var(--white));stop-opacity:0;}
+.wr-defs .q1{stop-color:color-mix(in srgb,var(--orange) 50%,var(--white));stop-opacity:1;}
+
+/* ----- the still day (no script, or reduced motion): one gradient down the whole page, every stop under the
+   moving sky's brightness limit (checked with each of the site's four skies), the horizon drawn at three edges ----- */
+.wr{--wr-s0:color-mix(in srgb,var(--bg) 62%,var(--sky-cool));
+  --wr-s1:color-mix(in srgb,color-mix(in srgb,var(--bg) 84%,color-mix(in srgb,var(--white) 62%,var(--orange))) 88%,var(--sky-cool));
+  --wr-s2:color-mix(in srgb,var(--bg) 82%,color-mix(in srgb,var(--orange) 38%,var(--white)));
+  --wr-s3:color-mix(in srgb,color-mix(in srgb,var(--bg) 50%,var(--sky-cool)) 94%,var(--white));
+  --wr-s4:color-mix(in srgb,color-mix(in srgb,var(--bg) 46%,var(--sky-cool)) 93%,var(--white));
+  --wr-s5:color-mix(in srgb,color-mix(in srgb,var(--bg) 66%,var(--sky-cool)) 90%,color-mix(in srgb,var(--orange) 40%,var(--white)));
+  --wr-s6:color-mix(in srgb,color-mix(in srgb,var(--bg) 80%,color-mix(in srgb,var(--orange) 62%,var(--white))) 86%,var(--sky-cool));
+  --wr-s7:color-mix(in srgb,color-mix(in srgb,var(--bg) 70%,var(--sky-cool)) 94%,color-mix(in srgb,var(--orange) 50%,var(--white)));
+  --wr-s8:color-mix(in srgb,var(--bg) 66%,var(--sky-cool));}
+:root:not(.wr-sky-on) .wr{background:linear-gradient(180deg,var(--bg) 0,var(--bg) 11%,var(--wr-s0) 13%,var(--wr-s1) 17%,var(--wr-s2) 23%,
+  var(--wr-s3) 29%,var(--wr-s4) 33%,var(--wr-s3) 45%,var(--wr-s5) 63%,var(--wr-s6) 77%,var(--wr-s7) 85%,var(--wr-s8) 92%,var(--wr-s8));}
+:root:not(.wr-sky-on) .wr-course,:root:not(.wr-sky-on) .wr-offer{background:none;}
+:root:not(.wr-sky-on) .wr-still-rg{display:block;position:absolute;left:0;right:0;z-index:-1;height:clamp(120px,21vw,300px);pointer-events:none;
+  -webkit-mask-image:linear-gradient(180deg,var(--bg) 62%,transparent);mask-image:linear-gradient(180deg,var(--bg) 62%,transparent);}
+.wr-still-rg.at-01,.wr-still-rg.at-06{top:0;}
+.wr-still-rg.at-end{bottom:0;-webkit-mask-image:none;mask-image:none;}
+:root:not(.wr-sky-on) .wr-night{display:block;position:absolute;left:0;right:0;bottom:clamp(60px,9vw,150px);z-index:-1;height:min(110vh,80%);pointer-events:none;
+  -webkit-mask-image:linear-gradient(180deg,transparent,var(--bg) 60%);mask-image:linear-gradient(180deg,transparent,var(--bg) 60%);}
+.wr-night svg{display:block;width:100%;height:100%;}
+@media (max-width:899.98px){:root:not(.wr-sky-on) .wr-still-rg.at-end{bottom:var(--wr-dock);}}
+
+/* ----- the moving sky (with the script and motion): one canvas, fixed behind everything ----- */
+.wr-sky-on .wr-sky{display:block;position:fixed;left:0;top:0;z-index:-1;width:100%;height:100vh;height:100lvh;overflow:hidden;pointer-events:none;contain:strict;background:var(--wr-s0);}
+.wr-sky-c,.wr-sky-o{position:absolute;left:0;top:0;width:100%;height:100%;display:block;}
+/* the page's still grain, in the page itself (no layer of its own): film texture on every chapter, and no banding in the sky's gradients */
+.wr-sky-on .wr{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='.04'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23g)'/%3E%3C/svg%3E");background-size:220px 220px;}
+/* the star dots, as the still page's night uses them (sizes in the drawing's units) */
+.wr .z0,.wr .z1,.wr .z2,.wr .z3,.wr .z4{fill:none;stroke-linecap:round;}
+.wr .z0{stroke-width:9.5;}.wr .z1{stroke-width:7.5;}.wr .z2{stroke-width:5.8;}.wr .z3{stroke-width:4.6;opacity:.82;}.wr .z4{stroke-width:3.6;opacity:.55;}
+.wr .tw,.wr .tb{stroke:var(--white);}.wr .ty{stroke:color-mix(in srgb,var(--white) 80%,var(--orange));}.wr .tr{stroke:color-mix(in srgb,var(--white) 58%,var(--orange));}
+
+/* the chapters let the sky through */
+.wr-sky-on .wr-hero,.wr-sky-on .wr-course,.wr-sky-on .wr-offer{background:none;}
+.wr-sky-on .wr-hero.wr-grain::after{-webkit-mask-image:linear-gradient(180deg,var(--bg) 60%,transparent);mask-image:linear-gradient(180deg,var(--bg) 60%,transparent);}
+/* the opening photograph: whole until its last seventh, its own shade fading with it, so nothing of the
+   sky shows through the pilot and no band marks where the photograph ends */
+.wr-sky-on .wr-hero::before{background:
+  linear-gradient(90deg,color-mix(in srgb,var(--bg) 80%,transparent) 0%,color-mix(in srgb,var(--bg) 38%,transparent) 46%,transparent 72%),
+  linear-gradient(180deg,color-mix(in srgb,var(--bg) 45%,transparent) 0%,transparent 24%);}
+.wr-sky-on .wr-hero-pic{-webkit-mask-image:linear-gradient(180deg,var(--bg) 86%,transparent);mask-image:linear-gradient(180deg,var(--bg) 86%,transparent);}
+.wr-sky-on .wr-hero-pic::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 46%,color-mix(in srgb,var(--bg) 70%,transparent) 78%,var(--bg) 100%);}
+/* the Kerio photograph fades into whatever sky is behind it (moving or still), at both ends: the fade rides
+   on the drifting photograph itself (its stops allow for the drift), so no mask is laid over a moving layer */
+.wr-par{-webkit-mask-image:linear-gradient(180deg,transparent 13%,var(--bg) 31%,var(--bg) 55%,transparent 87%);
+  mask-image:linear-gradient(180deg,transparent 13%,var(--bg) 31%,var(--bg) 55%,transparent 87%);}
+.wr-portrait .wr-par{-webkit-mask-image:none;mask-image:none;}
+/* the facts on it (wide screens): its shade starts well above them, so they keep 4.5:1 wherever the photograph
+   drifts, and lets go below them, where the photograph has already faded into the sky */
+.wr-plate-img::after{background:linear-gradient(180deg,transparent 40%,color-mix(in srgb,var(--bg) 80%,transparent) 70%,color-mix(in srgb,var(--bg) 92%,transparent) 87%,transparent 100%);}
+@media (max-width:899.98px){
+  .wr-sky-on .wr-hero::before{background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 30%,transparent) 0%,transparent 18%);}
+  .wr-sky-on .wr-hero-pic{-webkit-mask-image:linear-gradient(180deg,var(--bg) 62%,transparent);mask-image:linear-gradient(180deg,var(--bg) 62%,transparent);}
+  .wr-sky-on .wr-hero-pic::after{background:linear-gradient(180deg,transparent 40%,color-mix(in srgb,var(--bg) 60%,transparent) 80%,var(--bg) 100%);}
+  .wr-plate .wr-par{-webkit-mask-image:linear-gradient(180deg,transparent 13%,var(--bg) 27%,var(--bg) 70%,transparent 87%);
+    mask-image:linear-gradient(180deg,transparent 13%,var(--bg) 27%,var(--bg) 70%,transparent 87%);}
+  .wr .wr-plate-img::after{background:none;}
+}
+
+/* ----- 01: two thermals in the gutters, rising faster than the page (one layer each, no mask) ----- */
+.wr-thermals{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;}
+.wr-th{position:absolute;bottom:0;width:auto;aspect-ratio:240/1000;overflow:visible;opacity:.62;}
+.wr-th.n0{height:86%;right:max(-8rem,calc((100% - var(--measure)) / 2 - 12.5rem));}
+.wr-th.n1{height:58%;left:max(-6.5rem,calc((100% - var(--measure)) / 2 - 10rem));}
+.wr-th path{fill:none;stroke:url(#wrThF);stroke-width:.6;stroke-linecap:round;vector-effect:non-scaling-stroke;}
+.wr-th ellipse{fill:none;stroke:url(#wrThR);stroke-width:.8;vector-effect:non-scaling-stroke;}
+@media (max-width:899.98px){.wr-th.n1{display:none;}.wr-th.n0{height:62%;right:-26%;}}
+
+/* ----- 02: Kenya's ground under the course: form lines traced from the relief, crisp at every width ----- */
+.wr-ground{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;}
+/* a shade under the course for the words, fading into the sky above and below (a gradient, not a mask) */
+.wr-ground{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--bg) 72%,transparent) 18%,color-mix(in srgb,var(--bg) 72%,transparent) 82%,transparent);}
+.wr-topo{position:absolute;left:-7%;top:-4%;width:114%;height:108%;display:none;opacity:.2;}
+:root:not(.wr-js) .wr-topo,.wr-ground.is-near .wr-topo{display:block;background:url(img/record/ground.svg) 50% 50%/cover no-repeat;}
+/* the glider's shadow on the ground, cast away from the morning sun */
+.wr-gs{position:absolute;left:3%;top:75%;width:34px;height:34px;margin:-17px 0 0 -17px;pointer-events:none;transform:translate(9px,13px) rotate(180deg);
+  background:radial-gradient(50% 50% at 50% 50%,color-mix(in srgb,var(--ink) 80%,transparent),transparent 72%);clip-path:ellipse(22% 50% at 56% 50%);}
+.wr-map.is-live .wr-gs{left:0;top:0;will-change:transform;}
+
+/* all of it moves only with the scroll, and only where the browser ties it to the scroll itself */
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    .wr-mark{view-timeline:--wr-mk block;}
+    .wr-course{view-timeline:--wr-co block;}
+    .is-live .wr-th.n0{animation:wr-rise linear both;animation-timeline:--wr-mk;animation-range:cover 0% cover 100%;}
+    .is-live .wr-th.n1{animation:wr-rise2 linear both;animation-timeline:--wr-mk;animation-range:cover 0% cover 100%;}
+    @keyframes wr-rise{from{transform:translate3d(0,18%,0);}to{transform:translate3d(0,-22%,0);}}
+    @keyframes wr-rise2{from{transform:translate3d(0,12%,0);}to{transform:translate3d(0,-14%,0);}}
+    .wr-pin .is-live .wr-topo{animation:wr-gt linear both;animation-timeline:--wr-co;animation-range:contain 0% contain 100%;}
+    @keyframes wr-gt{0%,5%{transform:translate3d(0,2.5%,0);}47%,53%{transform:translate3d(-5.5%,0,0);}90%,100%{transform:translate3d(0,-2.5%,0);}}
+  }
+}
+
 @media print{
+  .wr-sky,.wr-thermals,.wr-ground,.wr-night,.wr-still-rg,.wr-gs{display:none!important;}
   .wr-pin .wr-course,.wr-hz .wr-win{height:auto!important;}
   .wr .wr-stage{position:static!important;height:auto!important;}
   .wr-bar,.wr-tick,.wr-cursor,.wr-cue,.wr-km{display:none!important;}
@@ -577,7 +723,9 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
 </nav>
 <div class="nav-chevron"></div>
 <main id="v4-main" class="wr">
-<script>(function(r,m){r.classList.add("wr-js");if(!m("(prefers-reduced-motion: reduce)").matches){r.classList.add("wr-pin");if(m("(min-width: 900px)").matches)r.classList.add("wr-hz");}})(document.documentElement,function(q){return window.matchMedia(q);});</script>
+<script>(function(r,m){r.classList.add("wr-js");if(!m("(prefers-reduced-motion: reduce)").matches){r.classList.add("wr-pin","wr-sky-on");if(m("(min-width: 900px)").matches)r.classList.add("wr-hz");}})(document.documentElement,function(q){return window.matchMedia(q);});</script><svg class="wr-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs><linearGradient id="wrThF" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop class="f0" offset="0"/><stop class="f1" offset=".3"/><stop class="f1" offset=".74"/><stop class="f0" offset="1"/></linearGradient><filter id="wrLumA" color-interpolation-filters="sRGB"><feColorMatrix type="luminanceToAlpha"/></filter><linearGradient id="wrThR" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop class="q0" offset="0"/><stop class="q1" offset=".32"/><stop class="q1" offset=".7"/><stop class="q0" offset="1"/></linearGradient></defs></svg><div class="wr-data" hidden><svg aria-hidden="true" focusable="false"><defs><path id="wrRw-far2" d="M0 400L0 214l10 1 10 1 11 1 10 0 10 1 11 0 10 1 10 0 10 1 10 1 11 1 10 1 10 2 11 1 10 1 10 1 10 1 10 1 11 1 10 1 10 1 11 1 10 1 10 2 10 1 10 1 11 2 10 1 10 2 11 2 10 1 10 1 10 1 10 1 11 1 10 1 10 1 11 1 10 1 10 0 10 2 10 1 11 2 10 1 10 1 11 3 10 1 10 2 10 1 10 2 11 2 10 2 10 2 11 3 10 2 10 1 10 2 10 2 11 2 10 2 10 3 11 2 10 3 10 1 10 3 10 1 11 2 10 2 10 1 11 2 10 1 10 1 10 1 10 2 11 1 10 2 10 2 11 2 10 2 10 1L820 400Z"/><path id="wrRw-farh" d="M440 400L440 329l10 0 10 0 10 1 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 -1 10 -1 10 -1 10 -1 10 -1 10 -1 10 -2 10 -1 10 0 10 -1 10 0 10 1 10 0 10 1 10 1 10 1 10 1 10 1 10 1 10 0 10 1 10 0 10 0 10 0 10 -1 10 0 10 -1 10 0 10 -1 10 -1 10 0 10 0 10 1 10 1 10 0 10 1 10 1 10 0 10 1 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0L1040 400Z"/><path id="wrRw-tug" d="M0 400L0 235l6 1 7 -1 6 1 6 4 7 3 6 4 7 1 6 -1 6 -1 7 1 6 -1 6 -2 7 -1 6 0 6 0 7 0 6 2 7 2 6 0 6 3 7 1 6 1 6 2 7 2 6 1 6 3 7 0 6 0 7 1 6 2 6 0 7 1 6 3 6 2 7 3 6 2 6 2 7 3 6 1 7 2 6 3 6 1 7 -1 6 0 6 1 7 1 6 2 6 0 7 0 6 1 7 0 6 0 6 0 7 0 6 -1 6 -1 7 -1 6 0 6 -2 7 0 6 1 7 -1 6 0 6 1 7 2 6 1 6 0 7 0 6 1 6 3 7 2 6 2 7 2 6 0 6 2 7 0 6 0 6 1 7 0 6 1 6 0 7 0 6 1 7 1 6 1 6 2 7 0 6 0 6 1 7 2 6 0 6 1 7 1 6 0 7 1 6 2 6 1 7 1 6 1 6 2 7 1 6 1 6 2 7 0 6 1 7 1 6 1 6 2 7 1 6 1 20 0L720 333L930 400Z"/><path id="wrRw-esc" d="M696 333L700 332l5 -8 4 -3 2 -1 5 -4 5 -4 5 -3 6 -3 5 -2 5 -3 6 -2 5 -2 5 -1 5 -1 1 -1 5 -2 5 -1 2 0 3 -1 6 -3 5 -1 5 -1 6 -1 5 -1 5 -2 5 -1 6 -2 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -2 5 -1 5 -1 6 0 5 -2 5 -1 6 -1 5 -2 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -2 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 5 -1 6 -2 5 -1 5 -1 6 -1 5 -1 5 -1 5 -1 6 -1 5 -1 5 -2 6 -1 5 -1 5 -1 6 -2 5 -1 5 -1 5 -1 6 -1 5 -2 5 -1 6 -1 5 0 5 -1 5 -1 6 -1 5 -1 5 0 6 -1 5 -1 5 -1 6 -1 5 0 5 -1 5 -1 6 -1 5 -1 5 0 6 -1 5 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 0 6 -1 5 -1 5 -1 5 -1 6 -1 5 0 5 -1 6 0 5 0 5 -1 5 0 6 -1 5 0 5 -1 5 -1 1 0 5 -1 5 -2 6 -1 5 -1 5 -1 5 -2 6 -2 5 -1 5 -2 6 -2 5 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -2 5 -1 6 -1 5 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 5 -2 6 -1 5 -1L1600 400L480 400Z"/><path id="wrRw-near" d="M0 640L0 372l25 0 25 1 25 0 25 0 25 0 25 1 25 1 25 0 25 0 25 0 25 0 25 -1 25 0 25 0 25 0 25 0 25 0 25 1 25 -1 25 0 25 0 25 0 25 0 25 -1 25 0 25 0 25 0 25 -1 25 0 25 0 25 0 25 0 25 0 25 0 25 0 25 0 25 0 25 0 25 0 25 0 25 0 25 0 25 0 25 0 25 -1 25 0 25 -1 25 0 25 0 25 0 25 0 25 0 25 0 25 1 25 0 25 0 25 0 25 0 25 0 25 1 25 0 25 0 25 0 25 0L1600 640Z"/><path id="wrRw-trees" d="M211 372L217 372L216 332L213 332ZM168 331Q174 323 198 321Q216 318 237 321Q256 322 260 330Q214 335 168 331ZM1193 376L1199 376L1198 350L1195 350ZM1164 349Q1170 341 1185 339Q1198 336 1212 339Q1224 340 1228 348Q1196 353 1164 349Z"/><path id="wrRw-face" d="M700 332l5 -8 4 -3 2 -1 5 -4 5 -4 5 -3 6 -3 5 -2 5 -3 6 -2 5 -2 5 -1 5 -1 1 -1 5 -2 5 -1 2 0 3 -1 6 -3 5 -1 5 -1 6 -1 5 -1 5 -2 5 -1 6 -2 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -2 5 -1 5 -1 6 0 5 -2 5 -1 6 -1 5 -2 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -2 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 5 -1 6 -2 5 -1 5 -1 6 -1 5 -1 5 -1 5 -1 6 -1 5 -1 5 -2 6 -1 5 -1 5 -1 6 -2 5 -1 5 -1 5 -1 6 -1 5 -2 5 -1 6 -1 5 0 5 -1 5 -1 6 -1 5 -1 5 0 6 -1 5 -1 5 -1 6 -1 5 0 5 -1 5 -1 6 -1 5 -1 5 0 6 -1 5 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 0 6 -1 5 -1 5 -1 5 -1 6 -1 5 0 5 -1 6 0 5 0 5 -1 5 0 6 -1 5 0 5 -1 5 -1 1 0 5 -1 5 -2 6 -1 5 -1 5 -1 5 -2 6 -2 5 -1 5 -2 6 -2 5 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -2 5 -1 6 -1 5 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 5 -2 6 -1 5 -1 0 303 -900 -98Z"/><path id="wrRw-tface" d="M0 235l6 1 7 -1 6 1 6 4 7 3 6 4 7 1 6 -1 6 -1 7 1 6 -1 6 -2 7 -1 6 0 6 0 7 0 6 2 7 2 6 0 6 3 7 1 6 1 6 2 7 2 6 1 6 3 7 0 6 0 7 1 6 2 6 0 7 1 6 3 6 2 7 3 6 2 6 2 7 3 6 1 7 2 6 3 6 1 7 -1 6 0 6 1 7 1 6 2 6 0 7 0 6 1 7 0 6 0 6 0 7 0 6 -1 6 -1 7 -1 6 0 6 -2 7 0 6 1 7 -1 6 0 6 1 7 2 6 1 6 0 7 0 6 1 6 3 7 2 6 2 7 2 6 0 6 2 7 0 6 0 6 1 7 0 6 1 6 0 7 0 6 1 7 1 6 1 6 2 7 0 6 0 6 1 7 2 6 0 6 1 7 1 6 0 7 1 6 2 6 1 7 1 6 1 6 2 7 1 6 1 6 2 7 0 6 1 7 1 6 1 6 2 7 1 6 1 0 1 -700 25Z"/><path id="wrRw-gul" d="M1377 177Q1365 248 1321 306M965 250Q959 304 936 347M875 269Q875 307 871 338M801 285Q797 311 781 332M776 292Q777 309 781 324M763 296Q763 309 765 319M709 322Q712 326 726 329"/><path id="wrRw-rim" d="M700 332l5 -8 4 -3 2 -1 5 -4 5 -4 5 -3 6 -3 5 -2 5 -3 6 -2 5 -2 5 -1 5 -1 1 -1 5 -2 5 -1 2 0 3 -1 6 -3 5 -1 5 -1 6 -1 5 -1 5 -2 5 -1 6 -2 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -2 5 -1 5 -1 6 0 5 -2 5 -1 6 -1 5 -2 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -2 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 5 -1 6 -2 5 -1 5 -1 6 -1 5 -1 5 -1 5 -1 6 -1 5 -1 5 -2 6 -1 5 -1 5 -1 6 -2 5 -1 5 -1 5 -1 6 -1 5 -2 5 -1 6 -1 5 0 5 -1 5 -1 6 -1 5 -1 5 0 6 -1 5 -1 5 -1 6 -1 5 0 5 -1 5 -1 6 -1 5 -1 5 0 6 -1 5 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 0 6 -1 5 -1 5 -1 5 -1 6 -1 5 0 5 -1 6 0 5 0 5 -1 5 0 6 -1 5 0 5 -1 5 -1 1 0 5 -1 5 -2 6 -1 5 -1 5 -1 5 -2 6 -2 5 -1 5 -2 6 -2 5 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -2 5 -1 6 -1 5 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 6 -1 5 -1 5 -1 5 -2 6 -1 5 -1"/><path id="wrRw-trim" d="M6 236l7 -1 6 1 6 4 7 3 6 4 7 1 6 -1 6 -1 7 1 6 -1 6 -2 7 -1 6 0 6 0 7 0 6 2 7 2 6 0 6 3 7 1 6 1 6 2 7 2 6 1 6 3 7 0 6 0 7 1 6 2 6 0 7 1 6 3 6 2 7 3 6 2 6 2 7 3 6 1 7 2 6 3 6 1 7 -1 6 0 6 1 7 1 6 2 6 0 7 0 6 1 7 0 6 0 6 0 7 0 6 -1 6 -1 7 -1 6 0 6 -2 7 0 6 1 7 -1 6 0 6 1 7 2 6 1 6 0 7 0 6 1 6 3 7 2 6 2 7 2 6 0 6 2 7 0 6 0 6 1 7 0 6 1 6 0 7 0 6 1 7 1 6 1 6 2 7 0 6 0 6 1 7 2 6 0 6 1 7 1 6 0 7 1 6 2 6 1 7 1 6 1 6 2 7 1 6 1 6 2 7 0 6 1 7 1 6 1 6 2"/><path id="wrRp-far2" d="M0 400L0 240l3 0 4 1 3 1 4 1 3 0 3 1 4 0 3 0 3 1 4 0 3 1 3 1 4 1 3 2 4 1 3 0 3 1 4 1 3 0 4 1 3 1 3 1 4 0 3 1 3 1 4 1 3 1 3 0 4 1 3 1 4 2 3 1 3 2 4 1 3 2 4 1 3 2 3 2 4 1 3 2 3 2 4 1 3 1 3 2 4 1 3 2 4 2 3 2 3 2 4 2 3 1 4 1 3 1 3 1 4 1 3 2 3 2 4 1 3 2 3 2 4 1 3 1 4 1 3 1 3 2 4 1 3 1 4 1 3 2 3 1 4 1 3 0 3 1 4 1 3 1 3 1 4 1 3 1 4 1 3 1L270 400Z"/><path id="wrRp-farh" d="M-110 400L-110 333l10 0 10 -1 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 0 10 -1 10 -1 10 -1 10 -1 10 -1 10 -1 10 -1 10 -1 10 0 10 1 10 0 10 1 10 1 10 1 10 1 10 1 10 1 10 1 10 0 10 0 10 0 10 0 10 -1 10 0 10 -1 10 -1 10 0 10 -1 10 0 10 0 10 0 10 1 10 0 10 1 10 1 10 1 10 0 10 1 10 0 10 0 10 0 10 0 10 0 10 0 10 -1 10 1 10 0 10 0 10 0L490 400Z"/><path id="wrRp-tug" d="M0 400L0 261l4 -5 4 -3 3 -2 4 -1 4 -6 3 -6 4 -1 4 0 4 -1 4 1 3 9 4 7 4 7 3 9 4 11 4 3 4 3 4 1 3 1 4 1 4 -2 3 0 4 1 4 4 4 5 4 3 3 3 4 2 4 2 3 2 4 2 4 4 4 2 4 2 3 2 4 2 4 3 3 3 4 3 4 4 20 0L170 337L380 400Z"/><path id="wrRp-esc" d="M146 337L150 336l7 -11 1 -1 6 -6 6 -3 2 -2 6 -4 1 0 7 -5 7 -3 8 -3 7 -2 7 -3 7 -2 7 -2 8 -2 7 -2 7 -2 7 -2 8 -2 7 -2 7 -2 7 -2 7 -1 8 -2 7 -2 7 -2 7 -2 8 -2 7 -1 7 -2 7 -2 7 -2 8 -2 7 -2 7 -2 7 -2 8 -2 7 -2 7 -2 7 -1 7 -2 8 -2 7 -2 7 -1 7 -2 8 -1 7 -2 7 -1 7 -2 7 -2 8 -2 7 -2 7 -2 7 -2 8 -2 7 -2 7 -3 7 -2 7 -2 8 -2 7 -2 7 -1 7 -2 8 -2 7 -2 7 -1 7 -2 7 -1 8 -2 7 -2 7 -2 7 -2 8 -1 7 -2 7 -2 7 -2 7 -2 8 -1 7 -2 7 -3 7 -2 8 -2 7 -2 7 -2 7 -2 7 -2 8 -2 7 -2 7 -2 7 -2 8 -2 7 -2 7 -2L800 400L-70 400Z"/><path id="wrRp-near" d="M0 640L0 372l12 0 13 1 13 0 12 1 12 0 13 0 13 1 12 1 12 0 13 1 13 0 12 1 12 0 13 0 13 1 12 0 12 0 13 0 13 1 12 0 12 0 13 1 13 1 12 0 12 0 13 0 13 -1 12 0 12 0 13 0 13 0 12 -1 12 0 13 -1 13 0 12 0 12 0 13 0 13 1 12 0 12 -1 13 0 13 0 12 0 12 -1 13 0 13 -1 12 0 12 -1 13 0 13 0 12 -1 12 0 13 1 13 0 12 0 12 -1 13 0 13 -1 12 0 12 0 13 0 13 -1 12 -1L800 640Z"/><path id="wrRp-trees" d="M557 374L563 374L562 344L559 344ZM525 343Q531 335 548 333Q562 330 577 333Q591 334 595 342Q560 347 525 343Z"/><path id="wrRp-face" d="M150 336l7 -11 1 -1 6 -6 6 -3 2 -2 6 -4 1 0 7 -5 7 -3 8 -3 7 -2 7 -3 7 -2 7 -2 8 -2 7 -2 7 -2 7 -2 8 -2 7 -2 7 -2 7 -2 7 -1 8 -2 7 -2 7 -2 7 -2 8 -2 7 -1 7 -2 7 -2 7 -2 8 -2 7 -2 7 -2 7 -2 8 -2 7 -2 7 -2 7 -1 7 -2 8 -2 7 -2 7 -1 7 -2 8 -1 7 -2 7 -1 7 -2 7 -2 8 -2 7 -2 7 -2 7 -2 8 -2 7 -2 7 -3 7 -2 7 -2 8 -2 7 -2 7 -1 7 -2 8 -2 7 -2 7 -1 7 -2 7 -1 8 -2 7 -2 7 -2 7 -2 8 -1 7 -2 7 -2 7 -2 7 -2 8 -1 7 -2 7 -3 7 -2 8 -2 7 -2 7 -2 7 -2 7 -2 8 -2 7 -2 7 -2 7 -2 8 -2 7 -2 7 -2 0 290 -650 -94Z"/><path id="wrRp-tface" d="M0 261l4 -5 4 -3 3 -2 4 -1 4 -6 3 -6 4 -1 4 0 4 -1 4 1 3 9 4 7 4 7 3 9 4 11 4 3 4 3 4 1 3 1 4 1 4 -2 3 0 4 1 4 4 4 5 4 3 3 3 4 2 4 2 3 2 4 2 4 4 4 2 4 2 3 2 4 2 4 3 3 3 4 3 4 4 0 1 -150 25Z"/><path id="wrRp-gul" d="M663 179Q656 283 625 368M178 310Q176 324 167 335M170 316Q167 324 158 330M158 325Q157 330 150 334"/><path id="wrRp-rim" d="M150 336l7 -11 1 -1 6 -6 6 -3 2 -2 6 -4 1 0 7 -5 7 -3 8 -3 7 -2 7 -3 7 -2 7 -2 8 -2 7 -2 7 -2 7 -2 8 -2 7 -2 7 -2 7 -2 7 -1 8 -2 7 -2 7 -2 7 -2 8 -2 7 -1 7 -2 7 -2 7 -2 8 -2 7 -2 7 -2 7 -2 8 -2 7 -2 7 -2 7 -1 7 -2 8 -2 7 -2 7 -1 7 -2 8 -1 7 -2 7 -1 7 -2 7 -2 8 -2 7 -2 7 -2 7 -2 8 -2 7 -2 7 -3 7 -2 7 -2 8 -2 7 -2 7 -1 7 -2 8 -2 7 -2 7 -1 7 -2 7 -1 8 -2 7 -2 7 -2 7 -2 8 -1 7 -2 7 -2 7 -2 7 -2 8 -1 7 -2 7 -3 7 -2 8 -2 7 -2 7 -2 7 -2 7 -2 8 -2 7 -2 7 -2 7 -2 8 -2 7 -2 7 -2"/><path id="wrRp-trim" d="M8 253l3 -2 4 -1 4 -6 3 -6 4 -1 4 0 4 -1 4 1 3 9 4 7 4 7 3 9 4 11 4 3 4 3 4 1 3 1 4 1 4 -2 3 0 4 1 4 4 4 5 4 3 3 3 4 2 4 2 3 2 4 2 4 4 4 2 4 2 3 2 4 2 4 3"/><!-- Star positions and magnitudes: d3-celestial 0.7.35 (npm), data/stars.6.json; star data XHIP: An Extended Hipparcos Compilation, Anderson E., Francis C. (2012), VizieR V/137D, converted by Olaf Frohn. Copyright (c) 2015, Olaf Frohn. All rights reserved. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. --><g id="wrStarsDawn"><path class="z0 tb" d="M-48 586h0"/><path class="z0 tw" d="M1416 456h0M621 266h0M-97 -511h0M2185 165h0"/><path class="z1 tb" d="M-17 -529h0M183 -442h0M225 -1629h0M160 -517h0M2072 -1342h0"/><path class="z1 tr" d="M-766 -974h0"/><path class="z1 tw" d="M-2336 -59h0"/><path class="z1 ty" d="M-97 -511h0"/><path class="z2 tb" d="M1141 295h0M-807 -581h0M-662 428h0M780 -44h0M-970 -414h0M-593 75h0M1334 580h0M-1198 -329h0M241 -709h0M932 -28h0M48 -658h0M-685 -1144h0M-153 -765h0M-150 -874h0M-795 -527h0M1159 166h0M587 -230h0"/><path class="z2 tr" d="M215 -550h0M-252 -271h0M1585 -664h0M-592 524h0M819 -264h0"/><path class="z2 tw" d="M338 -117h0M1213 259h0M-714 -497h0M622 -133h0M-2033 -1446h0M1367 -2196h0M516 -189h0M-1133 -1005h0"/><path class="z2 ty" d="M542 -61h0M2309 -1667h0M-44 -1010h0M-726 -768h0"/><path class="z3 tb" d="M4 -782h0M-749 -1189h0M325 -636h0M624 -1326h0M-583 -1593h0M878 598h0M-231 -836h0M125 -346h0M-797 -589h0M340 -302h0M240 -505h0M-378 -825h0M-766 -919h0M-589 -431h0M2293 297h0M-634 -1074h0M552 -1387h0M-675 -703h0M-863 484h0M1053 471h0M1268 302h0M117 -369h0M277 -392h0M-239 -856h0M815 292h0M-1167 -374h0M-332 -857h0M-1968 126h0M-995 -796h0M291 -198h0M399 487h0M393 -316h0M-477 -370h0M-306 -777h0M28 -897h0M-496 -830h0M526 -177h0M-1792 -401h0M670 0h0M27 -880h0M2265 -1453h0M-748 -308h0"/><path class="z3 tr" d="M980 171h0M-1059 -470h0M-2407 -109h0M-1060 -1547h0M-490 -381h0M-432 308h0M598 -1192h0M-910 -420h0M-436 -429h0M542 -237h0M857 103h0M-368 -1213h0M128 245h0M418 -294h0M559 -2048h0M1169 286h0"/><path class="z3 tw" d="M-1071 -1270h0M1878 -2189h0M-1125 -270h0M626 -1847h0M157 -991h0M-353 -1464h0M-86 206h0M1290 -62h0M-233 -410h0M-1332 697h0M5 507h0M-132 -352h0M-1345 -279h0M-743 -1017h0M392 -205h0M-786 -496h0M-2490 -566h0M-1532 164h0M-2383 -2028h0M-88 -435h0M478 147h0M-651 -569h0M1709 -1995h0M-2092 -286h0M2184 -486h0M189 -1970h0M-2790 -1781h0M-412 88h0M2495 -1748h0M-514 479h0"/><path class="z3 ty" d="M-1013 -1996h0M461 -1230h0M545 -500h0M-1811 -1189h0M-1960 -1674h0M-1170 -477h0M-1661 730h0M686 205h0M2725 -1406h0M-1014 -532h0M216 -1302h0M2147 -563h0M1094 -1029h0M-770 139h0M874 534h0M-1675 -1659h0M-848 -523h0M-1068 -1502h0M-1739 -768h0M-52 -1232h0M-1468 -827h0M-1181 -260h0M277 404h0M1277 41h0M-223 -650h0"/><path class="z4 tb" d="M1051 315h0M553 -320h0M-892 -1659h0M-80 -803h0M61 696h0M-676 -702h0M659 -127h0M-421 -310h0M-644 -335h0M-499 -1047h0M1059 -220h0M-444 -2019h0M1640 661h0M-2603 494h0M1227 95h0M-6 -888h0M507 -132h0M1829 -1483h0M113 -293h0M-7 -832h0M-588 -1015h0M-243 -713h0M1964 -693h0M402 -498h0M1853 -236h0M273 -670h0M-232 -752h0M-744 -1166h0M-131 612h0M467 -158h0M-830 -124h0M-910 -131h0M301 -611h0M-513 -941h0M-300 5h0M1211 223h0M-193 -961h0M157 -568h0M-2408 388h0M1395 -1730h0M-102 -973h0M-132 -727h0M192 -420h0M-255 -782h0M501 -228h0M-1407 439h0M800 26h0M1477 347h0M72 377h0M1945 385h0M766 11h0M-538 -845h0M-476 -137h0M78 -170h0M-655 -818h0M157 -713h0M-269 -721h0M548 -914h0M2079 -429h0M245 -396h0M530 -103h0M23 -1086h0M-204 -833h0M1224 475h0M628 234h0M377 -19h0M2159 -496h0M-966 494h0M-174 448h0M898 514h0M1427 386h0M-37 -907h0M-1948 -170h0M1258 210h0M-2584 -1315h0M-1035 14h0M367 -1778h0M-1671 -1710h0M1250 47h0M1418 -77h0M-108 -937h0M1220 228h0M-112 -710h0M122 -111h0M326 -636h0M-474 -615h0M1015 412h0M743 -5h0M1670 -1077h0M957 17h0M-211 378h0M583 -129h0M494 -360h0M461 -221h0M-1281 600h0M-351 271h0M76 -512h0M1038 88h0M1242 462h0M-455 -1330h0M-369 -930h0M-348 -753h0M-106 -817h0M-652 -460h0M103 -527h0M-672 -999h0M-618 -1105h0M-1272 -111h0M1346 -845h0"/><path class="z4 tr" d="M-2829 26h0M2341 -204h0M-368 -944h0M213 -483h0M-508 -1085h0M975 49h0M-619 -630h0M-2777 -112h0M-380 -403h0M1180 -901h0M-43 -187h0M-1623 -602h0M1247 349h0M1765 -853h0M1211 -1887h0M163 -354h0M-211 -1016h0M-477 -465h0M1559 435h0M153 -127h0M-1192 293h0M-670 529h0M-118 -1666h0M-665 -794h0M33 -1053h0M895 -690h0M-15 -110h0M2764 -1217h0M2321 290h0M205 -720h0M547 -198h0M-376 -794h0M-1705 -1310h0M-467 -201h0M2003 -1292h0M-2579 -1907h0M821 156h0M-279 -1170h0M-1208 32h0M-1786 405h0M939 -60h0M447 -372h0M-796 505h0M256 425h0M-1214 386h0M938 -401h0M-1222 2h0M259 439h0M392 -350h0M511 -368h0"/><path class="z4 tw" d="M2926 470h0M2136 -1048h0M-1252 -869h0M-421 22h0M2642 449h0M1121 729h0M1077 -1759h0M846 -368h0M223 -346h0M-2547 460h0M-1340 650h0M-1033 -1900h0M-2101 -1085h0M-1775 -1117h0M397 286h0M780 -152h0M-1651 374h0M-1000 -2189h0M442 -343h0M-1291 -1619h0M583 -492h0M-1237 -596h0M597 378h0M732 -503h0M256 -713h0M789 -173h0M-365 -1775h0M-2035 -37h0M810 -1803h0M-1440 -221h0M-2063 743h0M-1841 -1020h0M1177 66h0M384 67h0M224 -169h0M-364 437h0M401 -118h0M1487 -1891h0M-788 -1175h0M583 -1141h0M228 -22h0M899 -1153h0M-152 -1794h0M-193 -524h0M41 375h0M856 -155h0M-957 -200h0M-1238 271h0M-111 102h0M2174 -393h0M208 -400h0M-866 -1390h0M-1026 -789h0M-2748 -879h0M1327 -1h0M-404 167h0M-879 -1142h0M-182 407h0M52 -1084h0M-45 -2054h0M-972 -217h0M-1325 -887h0M-66 367h0M253 -894h0M399 573h0M2374 -657h0M-2579 -1417h0M-824 -121h0M-921 -702h0M-580 634h0M-859 688h0M2219 -2199h0M542 -1401h0M-62 -601h0M226 -417h0M-1241 -1003h0M-106 -814h0M-417 -212h0M361 234h0M671 -314h0M-18 -816h0M-2636 -826h0M-183 554h0M617 -636h0M-1067 -862h0M-2746 -199h0M-617 235h0M-389 -104h0M-544 318h0M1976 -2076h0M-1049 -2018h0M-1795 -983h0M-2556 529h0M586 674h0M1335 132h0M1000 -96h0M872 -248h0M1206 -1438h0M-855 -1061h0M876 -999h0M292 -90h0M-484 -1789h0M-203 -510h0M778 151h0M-912 591h0M-676 142h0M-155 -1573h0M-1491 -229h0M-174 448h0M-1452 -1114h0M-1020 -644h0M1792 -792h0M-761 -1047h0M-1548 -2040h0M-794 -1045h0M-2893 -801h0M-1426 -988h0M1752 -749h0M348 -400h0M-362 -889h0"/><path class="z4 ty" d="M-1327 -349h0M652 -901h0M976 -1192h0M-1597 150h0M1342 -888h0M76 -316h0M-377 -242h0M-547 142h0M-2 696h0M435 -223h0M-2964 -1692h0M920 18h0M-2237 -13h0M-198 98h0M752 -228h0M1177 716h0M-1321 -305h0M419 -53h0M-1237 513h0M336 71h0M400 -389h0M202 399h0M499 730h0M986 431h0M-2713 -1165h0M830 611h0M-266 -384h0M-123 -151h0M-367 726h0M2799 -1554h0M-546 616h0M105 -939h0M-644 -1399h0M-83 742h0M305 20h0M371 -412h0M1688 114h0M2700 -574h0M1334 485h0M761 428h0M1016 -195h0M-676 531h0M2811 656h0M-424 -588h0M-310 -103h0M1175 -282h0M-2529 -642h0M-1757 -430h0M-1848 -974h0M858 -181h0M1008 -1036h0M-692 -279h0M-927 -191h0M1350 -739h0M276 -433h0M-177 -380h0M-468 485h0M1089 -2060h0M-893 -5h0M-728 -1297h0M-1757 -549h0M-145 -164h0M-788 -552h0M-2597 576h0M-1382 542h0M470 -403h0M-930 -1164h0M1129 -1617h0M-1598 147h0M-744 -1160h0M-1929 355h0M1538 -339h0M-942 -799h0M218 -23h0M-399 -1080h0M1896 -99h0M941 439h0M2082 -51h0M-592 -1988h0M-2720 -185h0M629 189h0M1362 487h0M923 -70h0M315 450h0M2084 -388h0M-2265 -224h0M2978 -1203h0M429 -704h0M1993 616h0M-840 -1119h0M517 320h0M-1556 513h0M-1246 529h0M64 -447h0M-725 -359h0M753 704h0M2453 289h0M-1060 -543h0M-902 -193h0M699 -383h0M703 -703h0"/></g><g id="wrStarsNight"><path class="z0 tb" d="M-771 -1552h0M274 -520h0"/><path class="z0 tr" d="M-1357 -1829h0"/><path class="z0 tw" d="M-1124 -974h0M-467 -487h0M-111 508h0M-1946 -1008h0"/><path class="z1 tb" d="M-192 493h0M-342 335h0M-350 413h0M-2432 423h0"/><path class="z1 tw" d="M1077 -440h0"/><path class="z1 ty" d="M-2996 -1454h0M-111 508h0"/><path class="z2 tb" d="M-935 -718h0M-1086 -1953h0M-1033 -1664h0M777 -135h0M-1052 -1622h0M-735 -265h0M575 163h0M-1000 -1056h0M-962 -1387h0M2610 -2181h0M-499 558h0M-869 -339h0M-1018 -1709h0M-302 587h0M-1002 -607h0M-630 -19h0"/><path class="z2 tr" d="M-413 422h0M126 348h0M-1718 -9h0M750 -250h0M-857 -78h0M2373 -159h0"/><path class="z2 tw" d="M-357 -24h0M-1015 -713h0M462 737h0M-1962 -1816h0M-624 -122h0M-549 -28h0M2391 -1063h0"/><path class="z2 ty" d="M-522 -156h0M-2777 630h0M959 -1092h0M632 -618h0"/><path class="z3 tb" d="M-310 718h0M-548 458h0M-574 -894h0M-251 270h0M-431 144h0M-946 -1535h0M-418 371h0M1971 -1719h0M373 628h0M-1994 -1171h0M983 -108h0M-785 -845h0M-1048 -774h0M-252 293h0M-408 252h0M-635 -588h0M1860 654h0M-659 -1349h0M-345 68h0M-177 -604h0M-485 137h0M294 528h0M-927 -1679h0M-1246 -2028h0M2298 -754h0M-554 -43h0M-616 -262h0M-2653 450h0M567 577h0"/><path class="z3 tr" d="M248 -2134h0M-835 -541h0M302 542h0M519 -114h0M-2062 -2171h0M-200 -1564h0M-2367 -2074h0M673 743h0M234 565h0M-592 6h0M-548 -1222h0M-748 -430h0M-22 -276h0M-1984 -2242h0M-500 107h0M433 -746h0M-964 -721h0"/><path class="z3 tw" d="M-750 -1250h0M930 690h0M-766 -1662h0M160 -156h0M-1211 -449h0M54 469h0M1499 -119h0M194 -468h0M-16 376h0M123 -918h0M-441 35h0M1474 450h0M-89 435h0M-782 -2119h0M-382 -322h0M1407 -553h0M-1897 -1643h0M-2200 -409h0M414 80h0M-2980 631h0M418 -2075h0M660 -239h0M666 -1354h0"/><path class="z3 ty" d="M-697 247h0M-687 -1198h0M1814 -21h0M-551 -458h0M1963 -319h0M-2196 -323h0M-1410 519h0M762 174h0M-595 -833h0M463 -644h0M985 702h0M-97 -480h0M-1159 -538h0M-50 685h0M961 -1369h0"/><path class="z4 tb" d="M-843 -702h0M-634 78h0M-227 -1044h0M217 -664h0M-811 -1578h0M-656 -141h0M266 451h0M461 561h0M-1061 -212h0M-776 -2065h0M-760 -1944h0M-1250 -1251h0M-1026 -1612h0M2589 565h0M-1091 -568h0M-518 -77h0M-2263 649h0M-219 226h0M1901 -446h0M-2078 -132h0M-565 301h0M-1797 -508h0M-513 510h0M-547 -1805h0M360 -512h0M-491 -38h0M715 439h0M786 477h0M-517 444h0M279 113h0M-1026 -680h0M-620 -1785h0M-367 461h0M2368 586h0M1912 -571h0M-163 721h0M-341 311h0M-550 13h0M1466 147h0M430 -1965h0M-726 -337h0M-1223 -898h0M82 -375h0M-2029 -2027h0M-1639 -1116h0M1165 -377h0M-1126 -1912h0M-700 -310h0M384 313h0M206 -746h0M-138 126h0M304 -1537h0M-727 -1554h0M-29 -1358h0M-424 594h0M-737 -1404h0M-862 627h0M1545 -256h0M-85 -980h0M-2080 -420h0M-380 268h0M713 -927h0M607 -2239h0M-528 -113h0M-941 -916h0M-486 -461h0M-354 -131h0M-2181 -389h0M1083 -76h0M336 -344h0M-701 -1430h0M-625 -825h0M-1162 -914h0M-1075 -686h0M958 392h0M839 -505h0M-1234 -2014h0M-1132 -533h0M-1335 -485h0M1514 -780h0M-1033 -688h0M-1657 -1998h0M-175 697h0M-708 -1461h0M-156 55h0M-1678 -1946h0M-549 458h0M1017 -389h0M-772 -777h0M-686 -286h0M-1958 337h0M1957 -861h0M-874 -390h0M342 -265h0M1291 -853h0M-587 -109h0M-595 138h0M-1158 -1811h0M-511 23h0M1413 -51h0M430 -112h0M-271 441h0M-921 -487h0M-962 -911h0M1147 -920h0M419 679h0M-964 -1565h0M-302 445h0M1127 600h0M-1040 -1838h0M-1569 250h0"/><path class="z4 tr" d="M-2234 -729h0M-386 361h0M-878 -426h0M55 -1354h0M1636 -626h0M192 520h0M-1438 367h0M-34 189h0M-1010 -809h0M-1958 94h0M-254 -1032h0M-1188 -1342h0M519 -1271h0M1477 -543h0M-289 262h0M257 615h0M-2870 -1541h0M-1264 -1011h0M-191 57h0M1212 197h0M824 -224h0M1612 -799h0M-1094 284h0M-30 107h0M-433 -1341h0M-2022 -1175h0M-471 583h0M-581 -32h0M350 368h0M1413 -1115h0M1207 -677h0M324 -734h0M-2349 404h0M-694 -465h0M1124 444h0M1802 327h0M-122 -1612h0M-887 -312h0M1071 -946h0M1470 -1749h0M-557 167h0M994 -1964h0M930 -153h0M-786 -1905h0M-69 -491h0M1268 121h0M-1020 2h0M1125 477h0M2146 -980h0M-66 -505h0M-498 168h0M-615 138h0"/><path class="z4 tw" d="M-2509 -1579h0M-2375 128h0M2193 -400h0M-873 -1268h0M396 144h0M-2256 -1448h0M-746 -1110h0M-923 8h0M-341 231h0M2523 574h0M1931 -517h0M1487 -73h0M-935 -1246h0M-254 -419h0M-777 -166h0M1666 303h0M86 -1175h0M-541 143h0M776 -1950h0M-729 225h0M-401 -582h0M-870 177h0M-514 556h0M-793 -150h0M-331 -2196h0M2189 124h0M612 -598h0M-1058 -522h0M-327 -212h0M-272 67h0M506 -260h0M-415 -48h0M1786 -1376h0M-331 -1743h0M-219 -69h0M-1278 709h0M-28 558h0M109 -361h0M151 -1300h0M-848 -193h0M802 559h0M-1471 -1857h0M1246 235h0M142 -50h0M1855 -1195h0M-2155 -490h0M-348 287h0M-1221 -518h0M2336 -825h0M437 5h0M-103 -1313h0M327 -303h0M810 580h0M205 -312h0M-583 723h0M34 -868h0M-143 -684h0M-2442 -326h0M711 434h0M781 -356h0M1060 -297h0M-71 -2013h0M-178 577h0M-371 296h0M300 359h0M-240 -356h0M-740 26h0M-816 -2190h0M386 -438h0M-652 -1697h0M-816 344h0M-1498 -1566h0M660 26h0M317 248h0M626 -80h0M2660 -1482h0M2559 514h0M-275 -850h0M-1177 -644h0M-958 -303h0M-899 -113h0M-1197 576h0M-210 -1888h0M-1636 -1579h0M-304 -32h0M2379 149h0M273 -1412h0M-13 548h0M-657 -444h0M1724 -1133h0M1070 -187h0M677 134h0M336 -344h0M-1959 27h0M2707 -1436h0M-1906 3h0M-477 232h0M982 -688h0"/><path class="z4 ty" d="M2922 -1080h0M-106 -1682h0M-953 573h0M-1365 714h0M1260 -1161h0M-2787 -1365h0M1528 488h0M898 -1482h0M-1583 292h0M-194 261h0M252 371h0M559 84h0M1240 -582h0M275 -640h0M-488 35h0M1886 -964h0M-840 -377h0M-30 -1694h0M221 -12h0M688 -1520h0M-781 -84h0M-802 -1120h0M-407 -115h0M1339 13h0M-281 -197h0M-520 201h0M-2848 -1697h0M-328 -1094h0M-30 -446h0M-173 -867h0M-738 -783h0M-524 -887h0M94 458h0M54 187h0M-463 -1484h0M622 -524h0M744 -353h0M241 -1694h0M366 -650h0M-273 -138h0M-503 234h0M-1509 -765h0M-2709 -529h0M-1038 -969h0M-533 -692h0M1228 -668h0M-1011 -218h0M830 -224h0M2881 -1015h0M-2330 -1704h0M160 707h0M245 216h0M-1192 -201h0M-860 -169h0M-1333 558h0M2844 84h0M-1248 -1996h0M528 528h0M778 539h0M195 -915h0M-1531 152h0M-424 290h0M14 419h0M620 -263h0M820 355h0M-840 -1529h0M-91 -1011h0M1707 -363h0M1018 -407h0M70 207h0M1523 -768h0M1024 -2113h0M2615 487h0M1365 -1847h0M1941 -1111h0M1484 43h0M-590 187h0M1528 491h0M1914 429h0M-1548 -290h0M-210 -64h0M2714 -186h0M-1783 -651h0M759 -2209h0M-694 -772h0M-1936 -768h0M-505 -420h0M973 -506h0M-2872 -1969h0M-1062 -982h0M-876 -297h0M-352 -1714h0M-113 -537h0M190 -1083h0M-2070 -460h0M-925 -1888h0M-671 480h0M-1592 -1348h0M1188 -540h0M-323 -1114h0M-1899 -1663h0M-351 -497h0M1632 137h0M1354 1h0M-234 386h0M526 614h0M-1162 -1498h0M2166 -1255h0M-417 -942h0M-2144 -1226h0M-33 -926h0M754 530h0M-793 79h0M538 -600h0M-60 -989h0M-922 372h0"/></g></defs></svg></div>
+<div class="wr-sky" aria-hidden="true"><canvas class="wr-sky-c" width="16" height="16"></canvas><canvas class="wr-sky-o" width="16" height="16"></canvas></div>
+
 <header class="wr-hero wr-grain" id="wr-goal">
   <picture class="wr-hero-pic"><source srcset="../../assets/destinations/kenya/gallery/kenya-hero.webp" type="image/webp"><img src="../../assets/destinations/kenya/gallery/kenya-hero.jpg" width="1400" height="788" alt="Paragliding in Kenya" fetchpriority="high"></picture>
   <div class="wr-in wr-hero-in">
@@ -601,6 +749,7 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
 <div class="wr-tick" aria-hidden="true"><div class="wr-tick-in"><span>100 km<i></i>200 km<i></i><em>Kerio Valley</em><i></i>2027<i></i></span><span>100 km<i></i>200 km<i></i><em>Kerio Valley</em><i></i>2027<i></i></span></div></div>
 
 <section class="wr-mark" id="wr-mark" aria-labelledby="wr-mark-h">
+  <div class="wr-thermals" aria-hidden="true"><svg class="wr-th n0" viewBox="0 0 240 1000" preserveAspectRatio="xMidYMax meet" focusable="false"><path d="M26 1000Q34 934 39 901Q45 869 50 836Q56 803 62 770Q69 737 75 704Q82 671 88 639Q95 606 100 573Q106 540 110 507Q114 474 116 441Q118 409 119 376Q120 343 120 310Q120 277 118 244Q116 211 104 179Q93 146 83 113L72 80"/><path d="M84 1000Q89 934 92 901Q96 869 99 836Q103 803 107 770Q111 737 115 704Q118 671 121 639Q124 606 125 573Q126 540 126 507Q126 474 126 441Q125 409 125 376Q125 343 125 310Q126 277 127 244Q129 211 128 179Q127 146 128 113L128 80"/><path d="M144 1000Q142 934 142 901Q142 869 142 836Q143 803 145 770Q146 737 147 704Q149 671 150 639Q151 606 151 573Q151 540 150 507Q149 474 147 441Q145 409 144 376Q142 343 141 310Q140 277 141 244Q142 211 148 179Q154 146 162 113L170 80"/><path d="M208 1000Q201 934 198 901Q195 869 192 836Q189 803 186 770Q182 737 179 704Q175 671 171 639Q168 606 165 573Q162 540 159 507Q157 474 156 441Q156 409 157 376Q157 343 160 310Q162 277 167 244Q172 211 187 179Q202 146 216 113L231 80"/><ellipse cx="130" cy="614" rx="26" ry="6"/><ellipse cx="141" cy="356" rx="44" ry="11"/></svg><svg class="wr-th n1" viewBox="0 0 240 1000" preserveAspectRatio="xMidYMax meet" focusable="false"><path d="M53 1000Q57 953 59 929Q61 906 63 882Q65 859 68 835Q71 811 74 788Q77 764 81 741Q84 717 87 694Q91 670 93 646Q95 623 96 599Q97 576 96 552Q94 529 92 505Q89 481 84 458Q80 434 67 411Q54 387 43 364L31 340"/><path d="M96 1000Q99 953 101 929Q102 906 103 882Q104 859 105 835Q105 811 105 788Q105 764 104 741Q103 717 101 694Q99 670 98 646Q96 623 95 599Q94 576 93 552Q92 529 92 505Q92 481 92 458Q93 434 90 411Q88 387 85 364L83 340"/><path d="M137 1000Q134 953 133 929Q132 906 132 882Q132 859 131 835Q131 811 131 788Q130 764 129 741Q128 717 125 694Q123 670 120 646Q117 623 113 599Q110 576 106 552Q102 529 99 505Q97 481 95 458Q94 434 96 411Q99 387 103 364L107 340"/><ellipse cx="109" cy="637" rx="22" ry="5"/></svg></div><div class="wr-still-rg at-01" aria-hidden="true"><div class="wr-rg is-land"><svg class="is-w" viewBox="0 0 1600 400" preserveAspectRatio="xMaxYMax slice" focusable="false"><defs><linearGradient id="wrHaze" x1="0" y1="0" x2="0" y2="1"><stop class="h1" offset="0"/><stop class="h2" offset=".7"/></linearGradient><linearGradient id="wrWall" x1="0" y1="0" x2="0" y2="1"><stop class="w1" offset="0"/><stop class="w2" offset=".55"/></linearGradient><linearGradient id="wrLit" x1="0" y1="0" x2="0" y2="1"><stop class="g1" offset="0"/><stop class="g2" offset=".42"/><stop class="g3" offset="1"/></linearGradient><linearGradient id="wrGlow" x1="0" y1="0" x2="0" y2="1"><stop class="p1" offset="0"/><stop class="p2" offset="1"/></linearGradient></defs><use href="#wrRw-far2" class="r-far2"/><use href="#wrRw-farh" class="r-far"/><use href="#wrRw-tug" class="r-tug"/><use href="#wrRw-esc" class="r-esc"/><use href="#wrRw-near" class="r-near"/><use href="#wrRw-trees" class="r-near"/></svg><svg class="is-p" viewBox="0 0 800 400" preserveAspectRatio="xMaxYMax slice" focusable="false"><use href="#wrRp-far2" class="r-far2"/><use href="#wrRp-farh" class="r-far"/><use href="#wrRp-tug" class="r-tug"/><use href="#wrRp-esc" class="r-esc"/><use href="#wrRp-near" class="r-near"/><use href="#wrRp-trees" class="r-near"/></svg></div><div class="wr-rg is-morn"><svg class="is-w" viewBox="0 0 1600 400" preserveAspectRatio="xMaxYMax slice" focusable="false"><use href="#wrRw-face" class="r-face"/><use href="#wrRw-gul" class="r-gul"/><use href="#wrRw-trim" class="r-trim"/></svg><svg class="is-p" viewBox="0 0 800 400" preserveAspectRatio="xMaxYMax slice" focusable="false"><use href="#wrRp-face" class="r-face"/><use href="#wrRp-gul" class="r-gul"/><use href="#wrRp-trim" class="r-trim"/></svg></div></div>
   <div class="wr-in">
     <p class="wr-no">01</p>
     <h2 class="wr-h2 wr-k" id="wr-mark-h"><span class="wr-w"><span style="--i:0">The</span></span> <span class="wr-w"><span style="--i:1">Mark</span></span> <span class="wr-w"><span style="--i:2">To</span></span> <span class="wr-w"><span style="--i:3">Beat</span></span></h2>
@@ -631,6 +780,7 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
 
 <section class="wr-course wr-grain" id="wr-course" aria-labelledby="wr-course-h">
   <div class="wr-stage">
+    <div class="wr-ground" aria-hidden="true"><i class="wr-topo"></i></div>
     <div class="wr-in">
       <div class="wr-course-head">
         <div><p class="wr-no">02</p><h2 class="wr-h2 wr-k" id="wr-course-h"><span class="wr-w"><span style="--i:0">Out</span></span> <span class="wr-w"><span style="--i:1">And</span></span> <span class="wr-w"><span style="--i:2">Back,</span></span> <span class="wr-w"><span style="--i:3">To</span></span> <span class="wr-w"><span style="--i:4">Scale</span></span></h2></div>
@@ -645,7 +795,7 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
           <svg viewBox="0 0 1000 200" preserveAspectRatio="none" role="img" aria-labelledby="wrMapT"><title id="wrMapT">The 100 km and 200 km out-and-return courses drawn to one scale: out from the start to a turnpoint at half the distance, round it, and straight back</title><path class="wr-lane is-200" d="M30 50H940A40 50 0 0 1 940 150H30"/><path class="wr-lane v100" d="M30 50H465A40 50 0 0 1 465 150H30"/><path class="wr-glow v100" id="wrG100" d="M30 50H465A40 50 0 0 1 465 150H30"/><path class="wr-flown v100" id="wrF100" d="M30 50H465A40 50 0 0 1 465 150H30"/><path class="wr-glow v200" id="wrG200" d="M30 50H940A40 50 0 0 1 940 150H30"/><path class="wr-flown v200" id="wrF200" d="M30 50H940A40 50 0 0 1 940 150H30"/><line class="wr-tk" x1="30" y1="184" x2="30" y2="200"/><line class="wr-tk" x1="125" y1="191" x2="125" y2="200"/><line class="wr-tk" x1="220" y1="191" x2="220" y2="200"/><line class="wr-tk" x1="315" y1="191" x2="315" y2="200"/><line class="wr-tk" x1="410" y1="191" x2="410" y2="200"/><line class="wr-tk" x1="505" y1="184" x2="505" y2="200"/><line class="wr-tk" x1="600" y1="191" x2="600" y2="200"/><line class="wr-tk" x1="695" y1="191" x2="695" y2="200"/><line class="wr-tk" x1="790" y1="191" x2="790" y2="200"/><line class="wr-tk" x1="885" y1="191" x2="885" y2="200"/><line class="wr-tk" x1="980" y1="184" x2="980" y2="200"/><path class="wr-gate" d="M30 28V172"/></svg>
           <span class="wr-pl" style="left:0">Start, finish</span>
           <span class="wr-tp v100" style="left:50.5%"><span class="wr-ring" aria-hidden="true"></span><span class="wr-pl">Turnpoint<i>50 km out</i></span></span><span class="wr-tp v200" style="left:98%"><span class="wr-ring" aria-hidden="true"></span><span class="wr-pl">Turnpoint<i>100 km out</i></span></span>
-          <span class="wr-gl" id="wrGl"><svg viewBox="-16 -16 32 32" aria-hidden="true" focusable="false"><path class="g-l" d="M5 -13 L-8 0 L5 13"/><path class="g-w" d="M5 -13 Q15 0 5 13"/><circle class="g-p" cx="-8" cy="0" r="2.6"/></svg></span>
+          <span class="wr-gs" id="wrGs" aria-hidden="true"></span><span class="wr-gl" id="wrGl"><svg viewBox="-16 -16 32 32" aria-hidden="true" focusable="false"><path class="g-l" d="M5 -13 L-8 0 L5 13"/><path class="g-w" d="M5 -13 Q15 0 5 13"/><circle class="g-p" cx="-8" cy="0" r="2.6"/></svg></span>
         </div>
         <div class="wr-scale" aria-hidden="true"><span style="left:3%">0</span><span style="left:26.75%">25</span><span style="left:50.5%">50</span><span style="left:74.25%">75</span><span style="left:98%">100 km</span></div>
       </div>
@@ -729,6 +879,7 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
 </section>
 
 <section class="wr-offer" id="wr-partner" aria-labelledby="wr-offer-h">
+  <div class="wr-still-rg at-06" aria-hidden="true"><div class="wr-rg is-land"><svg class="is-w" viewBox="0 0 1600 400" preserveAspectRatio="xMaxYMax slice" focusable="false"><use href="#wrRw-far2" class="r-far2"/><use href="#wrRw-farh" class="r-far"/><use href="#wrRw-tug" class="r-tug"/><use href="#wrRw-esc" class="r-esc"/><use href="#wrRw-near" class="r-near"/><use href="#wrRw-trees" class="r-near"/></svg><svg class="is-p" viewBox="0 0 800 400" preserveAspectRatio="xMaxYMax slice" focusable="false"><use href="#wrRp-far2" class="r-far2"/><use href="#wrRp-farh" class="r-far"/><use href="#wrRp-tug" class="r-tug"/><use href="#wrRp-esc" class="r-esc"/><use href="#wrRp-near" class="r-near"/><use href="#wrRp-trees" class="r-near"/></svg></div><div class="wr-rg is-dusk"><svg class="is-w" viewBox="0 0 1600 400" preserveAspectRatio="xMaxYMax slice" focusable="false"><use href="#wrRw-tface" class="r-tface"/><use href="#wrRw-rim" class="r-rim"/></svg><svg class="is-p" viewBox="0 0 800 400" preserveAspectRatio="xMaxYMax slice" focusable="false"><use href="#wrRp-tface" class="r-tface"/><use href="#wrRp-rim" class="r-rim"/></svg></div></div><div class="wr-night" aria-hidden="true"><svg viewBox="-1500 -2250 3000 2350" preserveAspectRatio="xMidYMax slice" focusable="false"><use href="#wrStarsNight"/></svg></div><div class="wr-still-rg at-end" aria-hidden="true"><div class="wr-rg is-land"><svg class="is-w" viewBox="0 0 1600 400" preserveAspectRatio="xMaxYMax slice" focusable="false"><use href="#wrRw-far2" class="r-far2"/><use href="#wrRw-farh" class="r-far"/><use href="#wrRw-tug" class="r-tug"/><use href="#wrRw-esc" class="r-esc"/><use href="#wrRw-near" class="r-near"/><use href="#wrRw-trees" class="r-near"/></svg><svg class="is-p" viewBox="0 0 800 400" preserveAspectRatio="xMaxYMax slice" focusable="false"><use href="#wrRp-far2" class="r-far2"/><use href="#wrRp-farh" class="r-far"/><use href="#wrRp-tug" class="r-tug"/><use href="#wrRp-esc" class="r-esc"/><use href="#wrRp-near" class="r-near"/><use href="#wrRp-trees" class="r-near"/></svg></div></div>
   <div class="wr-in">
     <div class="wr-offer-head">
       <div>
@@ -897,7 +1048,7 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
 
   /* 3. the course: 100 or 200 km on one scale, a hairpin flown by the scroll */
   var C = d.getElementById("wr-course"), Cst = C.querySelector(".wr-stage"), map = C.querySelector(".wr-map");
-  var box = C.querySelector(".wr-box svg"), gl = d.getElementById("wrGl");
+  var box = C.querySelector(".wr-box svg"), gl = d.getElementById("wrGl"), gs = d.getElementById("wrGs");
   var kmEl = d.getElementById("wrKm"), kmBig = d.getElementById("wrKmBig"), legEl = d.getElementById("wrLeg");
   var t1 = d.getElementById("wrT1"), t2 = d.getElementById("wrT2");
   var paths = { 100: [d.getElementById("wrF100"), d.getElementById("wrG100")], 200: [d.getElementById("wrF200"), d.getElementById("wrG200")] };
@@ -924,6 +1075,7 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
     }
     paths[K][0].setAttribute("d", dd); paths[K][1].setAttribute("d", dd);
     gl.style.transform = "translate(" + (x * sx).toFixed(1) + "px," + (y * sy).toFixed(1) + "px) rotate(" + rot.toFixed(1) + "deg)";
+    if (gs) gs.style.transform = "translate(" + (x * sx + 9).toFixed(1) + "px," + (y * sy + 13).toFixed(1) + "px) rotate(" + rot.toFixed(1) + "deg)";
     var k = Math.round(km);
     if (k !== lastKm) { lastKm = k; kmEl.textContent = k; if (kmBig) kmBig.textContent = k; }
     if (leg !== lastLeg) { lastLeg = leg; legEl.textContent = leg; }
@@ -960,6 +1112,345 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
   var lastP = links.map(function () { return -1; });
   var foot = d.querySelector("footer"), hero = d.getElementById("wr-goal"), partner = d.getElementById("wr-partner"), cur = -2;
 
+  /* 7. the record day behind the page: from first light to night as the visitor scrolls. Two canvases,
+     fixed behind everything: the sky, painted small from the design tokens in linear light and never past a
+     set brightness (so the words keep their contrast), stretched by the browser; and over it everything on
+     the sky (the real stars and Milky Way of a night in the window, the low sun, the clouds, the hills),
+     composed again only when something on it has moved. Each change follows the scroll and stops with it. */
+  var skyEl = root.classList.contains("wr-sky-on") ? d.querySelector(".wr-sky") : null;
+  var dayEls = [hero, d.getElementById("wr-mark"), C, d.getElementById("wr-kerio"), W, d.getElementById("wr-audience"), partner, foot];
+  var SKY = null;
+  /* a sky that cannot be painted leaves the still day in its place, and every other effect running */
+  if (skyEl) { try { SKY = daySky(skyEl); } catch (e) { SKY = null; root.classList.remove("wr-sky-on"); } }
+  function daySky(el) {
+    var sk = el.querySelector(".wr-sky-c"), sg = sk.getContext("2d", { alpha: false }), cv = el.querySelector(".wr-sky-o"), g = cv.getContext("2d");
+    if (!g || !sg || typeof Path2D === "undefined") throw new Error("no sky");
+    var INFO = {"w":{"w":1600,"h":400,"y":[235.4,246.9,243.5,255.4,263.3,280.8,288.9,288.6,285.0,294.2,301.8,307.7,313.5,323.6,332.0,298.2,284.3,272.3,261.6,251.9,241.5,231.5,220.9,209.3,201.4,193.8,185.3,179.6,170.8,157.2,146.9,137.4,127.0],"bb":{"tug":[235,400],"esc":[127,400],"face":[127,430],"tface":[235,358]}},"p":{"w":800,"h":400,"y":[261.4,236.9,262.3,289.5,302.1,317.5,336.0,310.8,298.3,290.1,283.2,276.5,270.3,263.8,257.2,250.5,243.7,237.8,232.1,226.7,220.1,212.9,205.6,198.8,193.0,187.2,181.0,174.8,168.3,160.9,154.2,146.9,140.0],"bb":{"tug":[236,400],"esc":[140,400],"face":[140,430],"tface":[236,362]}}}, IMGS = "img/record/";
+    var CAP = 0.044, KNEE = CAP * 0.7, YH = 0.86, SUNR = 1.519, T = {}, P = [], img = null, Cc = {}, Cs = {};
+    var Wd = 1, Hd = 1, dpr = 1, W2 = 1, H2 = 1, cw = 1, ch = 1, kx = 1, ky = 1, lastQ = -1, hzH = 1, hzB = 0, kind = "w", lay = {}, sig = "", dirty = [0, 0];
+    var ENC = new Uint8ClampedArray(4096), GX = [], HX = [], BX = [], VX = [], OX = [], DX = [];
+    var i;
+    for (i = 0; i < 4096; i++) { var e = i / 4095; ENC[i] = Math.round(e <= 0.0031308 ? 3294.6 * e : 269.025 * Math.pow(e, 1 / 2.4) - 14.025); }
+    function lin(v) { v = v < 0 ? 0 : v > 255 ? 1 : v / 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }
+    /* a token or a mix of tokens, as the page computes it now: [r, g, b, a] */
+    function rgba(expr) {
+      cv.style.color = expr;
+      var s = getComputedStyle(cv).color, n = (s.match(/-?[\d.]+(?:e-?\d+)?/g) || [0, 0, 0]).map(Number);
+      cv.style.color = "";
+      if (s.indexOf("color(") === 0) { n[0] *= 255; n[1] *= 255; n[2] *= 255; }
+      return [n[0], n[1], n[2], n.length > 3 ? n[3] : 1];
+    }
+    function css(c, a) { return "rgba(" + Math.round(c[0]) + "," + Math.round(c[1]) + "," + Math.round(c[2]) + "," + (a === undefined ? c[3] : a) + ")"; }
+    /* the tokens (the site's own sky tokens follow the visitor's clock), and every colour drawn from them */
+    function tokens() {
+      ["bg", "ink", "orange", "white", "sky-cool"].forEach(function (k) { T[k] = rgba("var(--" + k + ")"); });
+      var mx = function (a, p, b) { return rgba("color-mix(in srgb," + a + " " + p + "%," + b + ")"); };
+      Cc = { bg: T.bg, land: mx("var(--ink)", 72, "var(--bg)"), h1: mx("var(--bg)", 86, "var(--gray-light)"), h2: mx("var(--bg)", 70, "var(--ink)"),
+        w1: mx("var(--bg)", 93, "var(--gray-light)"), w2: mx("var(--bg)", 60, "var(--ink)"), gold: mx("var(--orange)", 62, "var(--white)"),
+        gold2: mx("var(--orange)", 70, "var(--white)"), trim: mx("var(--orange)", 55, "var(--white)"), glow: mx("var(--orange)", 70, "var(--sky-cool)"),
+        orange: T.orange, cloud: rgba("var(--wr-cloud)"), dusk: rgba("var(--wr-cloud-dusk)"), sun: mx("var(--orange)", 30, "var(--bg)"),
+        sw: T.white, sy: mx("var(--white)", 80, "var(--orange)"), sr: mx("var(--white)", 58, "var(--orange)"), mw: mx("var(--white)", 82, "var(--sky-cool)") };
+      Cs = { tw: css(Cc.sw, 1), tb: css(Cc.sw, 1), ty: css(Cc.sy, 1), tr: css(Cc.sr, 1) };
+      build();
+      if (lay.k) ridges();
+      ["street", "near", "dusk", "mwd", "mwn"].forEach(function (k) { if (CL[k].img && CL[k].img.complete) CL[k].tint = tint(CL[k]); });
+      sig = "";
+    }
+    function m() {
+      var o = [0, 0, 0];
+      for (var i = 0; i < arguments.length; i += 2) { var t = T[arguments[i]], k = arguments[i + 1]; o[0] += t[0] * k; o[1] += t[1] * k; o[2] += t[2] * k; }
+      return o;
+    }
+    /* a colour from the tokens (a mix, as pairs) brought to a set relative luminance, in linear light: the
+       hue comes from the palette, the brightness from the day */
+    function tone(Lt) {
+      var c = m.apply(null, [].slice.call(arguments, 1)), l = [lin(c[0]), lin(c[1]), lin(c[2])];
+      var L = 0.2126 * l[0] + 0.7152 * l[1] + 0.0722 * l[2], f = L > 0 ? Lt / L : 0;
+      return [l[0] * f, l[1] * f, l[2] * f];
+    }
+    /* the day: at each point (in chapters from the top: 0 the opening, 1 the mark, 2 the course, 3 Kerio
+       Valley, 4 the window, 5 the audience, 6 the offer, 7 the footer) the clock; the sky from the top down
+       (z, mi, h, in linear light at a set luminance); the low sun's glow (gc ga gr); the glow along the
+       horizon under it (hc ha, hh tall); its rays (ra); the rose band and the Earth's shadow on the side away
+       from the sun (b); midday's light falling from the top (bl, centred at bx) and its deep sides (vg); the
+       stars before dawn (sa) and at night (sb); the hills' sinking (rg) and haze (lo), the morning light on
+       the escarpment's face (fm), the dusk light (fd); the sun's disc (sd); the cloud street (cs) */
+    function build() {
+      function unit(c) { var l = [lin(c[0]), lin(c[1]), lin(c[2])], L = 0.2126 * l[0] + 0.7152 * l[1] + 0.0722 * l[2]; return [l[0] / L, l[1] / L, l[2] / L]; }
+      var gold = unit(m("orange", .36, "white", .64)), pale = unit(m("orange", .22, "white", .78)), warm = unit(m("white", .66, "orange", .34)),
+        amber = unit(m("orange", .72, "white", .28)), ember = unit(m("orange", .92, "white", .08));
+      function blue(L) { return tone(L, "sky-cool", .92, "white", .08); }
+      function deep(L) { return tone(L, "sky-cool", 1.3, "white", -.3); }
+      function S(dd, hr, z, mi, h, o) {
+        var s = { d: dd, hr: hr, z: z, mi: mi, h: h, gc: gold, ga: 0, gr: .3, hc: gold, ha: 0, hh: .12, hw: .5, ra: 0, b: 0, bl: 0, bx: .5, vg: 0, sa: 0, sb: 0, lo: 1, fm: 0, fd: 0, sd: 0, cs: 0 };
+        for (var k in o) s[k] = o[k];
+        return s;
+      }
+      var n0 = blue(.0055), n1 = tone(.007, "sky-cool", .9, "white", .1), n2 = tone(.0095, "sky-cool", .8, "orange", .06, "white", .14);
+      P = [
+        S(0, 5.2, n0, n1, n2, { sa: 1 }),
+        S(.45, 5.85, blue(.0065), tone(.009, "sky-cool", .86, "white", .1, "orange", .04), tone(.014, "sky-cool", .62, "white", .26, "orange", .12), { sa: 1, b: .4, hc: pale, ha: .25, hh: .05 }),
+        S(.75, 6.45, blue(.008), tone(.011, "sky-cool", .8, "white", .16, "orange", .04), tone(.016, "sky-cool", .56, "white", .34, "orange", .1), { sa: .55, b: .9, hc: pale, ha: .75, hh: .05, hw: .3, fm: .25 }),
+        S(1.05, 6.87, blue(.009), tone(.0125, "sky-cool", .74, "white", .22, "orange", .04), tone(.017, "sky-cool", .55, "white", .35, "orange", .1), { sa: .12, b: .55, ha: 1, hh: .06, hw: .3, ga: 1, gr: .14, ra: .3, fm: .9, sd: 1 }),
+        S(1.45, 7.6, blue(.0105), tone(.015, "sky-cool", .72, "white", .24, "orange", .04), tone(.02, "white", .5, "sky-cool", .4, "orange", .1), { b: .15, ha: .75, hh: .08, hw: .34, ga: 1, gr: .17, ra: .4, fm: 1, sd: .4 }),
+        S(1.75, 8.2, deep(.012), tone(.017, "sky-cool", .8, "white", .2), tone(.027, "white", .58, "sky-cool", .34, "orange", .08), { hc: pale, ha: .3, hh: .1, ga: .5, gr: .3, ra: .2, fm: .7, bl: .25, bx: .2 }),
+        S(2.2, 9.2, deep(.012), deep(.015), tone(.024, "sky-cool", .7, "white", .3), { bl: .5, bx: .2, vg: .4, fm: .3, cs: .25, lo: .85 }),
+        S(2.7, 10.6, deep(.0115), deep(.0145), tone(.025, "sky-cool", .66, "white", .34), { bl: .8, bx: .28, vg: .8, cs: .8, lo: .6 }),
+        S(3.2, 12.1, deep(.011), deep(.014), tone(.026, "sky-cool", .62, "white", .38), { bl: 1, bx: .36, vg: 1, cs: 1, lo: .5 }),
+        S(3.7, 13.3, deep(.011), deep(.014), tone(.026, "sky-cool", .62, "white", .34, "orange", .04), { bl: .95, bx: .44, vg: 1, cs: 1, lo: .5 }),
+        S(4.2, 14.5, deep(.0115), tone(.0145, "sky-cool", 1.15, "white", -.15), tone(.026, "sky-cool", .5, "white", .38, "orange", .12), { bl: .7, bx: .56, vg: .8, cs: .7, lo: .65 }),
+        S(4.65, 15.6, tone(.0115, "sky-cool", .95, "orange", .05), tone(.016, "sky-cool", .6, "white", .25, "orange", .15), tone(.027, "orange", .3, "white", .5, "sky-cool", .2), { bl: .3, bx: .85, gc: warm, ga: .45, gr: .3, hc: amber, ha: .3, hh: .12, cs: .3, fd: .15, lo: .85 }),
+        S(5.15, 16.8, tone(.0105, "sky-cool", .88, "orange", .12), tone(.015, "sky-cool", .45, "orange", .35, "white", .2), tone(.03, "orange", .62, "white", .3, "sky-cool", .08), { gc: amber, ga: .7, gr: .28, hc: amber, ha: .65, hh: .16, ra: .45, fd: .5 }),
+        S(5.55, 17.9, tone(.0095, "sky-cool", .85, "orange", .15), tone(.013, "sky-cool", .55, "orange", .45), tone(.032, "orange", .85, "white", .15), { gc: ember, ga: .7, gr: .24, hc: ember, ha: .9, hh: .2, ra: .4, fd: .8, sd: 1, b: .3 }),
+        S(5.8, 18.55, tone(.009, "sky-cool", .88, "orange", .12), tone(.012, "sky-cool", .6, "orange", .4), tone(.031, "orange", .92, "white", .08), { gc: ember, ga: .45, gr: .22, hc: ember, ha: 1, hh: .22, ra: .25, fd: 1, sd: .8, b: .5 }),
+        S(6.1, 18.95, blue(.0075), tone(.0105, "sky-cool", .7, "orange", .3), tone(.02, "orange", .8, "sky-cool", .2), { gc: ember, hc: ember, ha: .55, hh: .2, fd: .6, sb: .35, b: .3 }),
+        S(6.45, 19.3, n0, tone(.0085, "sky-cool", .82, "orange", .18), tone(.012, "orange", .5, "sky-cool", .5), { gc: ember, hc: ember, ha: .2, hh: .18, fd: .2, sb: .85 }),
+        S(6.8, 19.6, n0, n1, n2, { gc: ember, hc: ember, ha: .06, hh: .16, sb: 1 }),
+        S(8, 20.4, n0, n1, n2, { gc: ember, hc: ember, hh: .16, sb: 1 })
+      ];
+      P.rose = tone(.022, "orange", .45, "white", .3, "sky-cool", .25);
+      P.shade = tone(.0075, "sky-cool", 1);
+      P.hot = unit(m("white", .74, "orange", .08, "sky-cool", .18));
+      P.rays = amber;
+      lastQ = -1;
+    }
+    function mix(a, b, f) { return [a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f, a[2] + (b[2] - a[2]) * f]; }
+    function state(D) {
+      var i = 0;
+      while (i < P.length - 2 && D > P[i + 1].d) i++;
+      var a = P[i], b = P[i + 1], f = clamp((D - a.d) / (b.d - a.d)), s = {};
+      for (var k in a) s[k] = typeof a[k] === "number" ? a[k] + (b[k] - a[k]) * f : mix(a[k], b[k], f);
+      return s;
+    }
+    function size() {
+      Wd = Math.max(1, el.clientWidth); Hd = Math.max(1, el.clientHeight); dpr = Math.min(w.devicePixelRatio || 1, 2);
+      W2 = Math.round(Wd * dpr); H2 = Math.round(Hd * dpr);
+      if (cv.width !== W2 || cv.height !== H2) { cv.width = W2; cv.height = H2; }
+      dirty = [0, H2];
+      cw = Wd < 600 ? 56 : Wd < 1100 ? 80 : 104; ch = Math.max(8, Math.round(cw * Hd / Wd));
+      sk.width = cw; sk.height = ch; img = sg.createImageData(cw, ch);
+      ky = YH * Hd / 2.1; kx = Math.min(ky, (Wd / 2 - 14) / 1.6);
+      /* the hills: the phone's own drawing under 560 px; on tablets and phones they stand on the chapter bar */
+      var vh = w.innerHeight;
+      kind = Wd <= 560 ? "p" : "w"; hzB = Wd < 900 ? 58 : 0; hzH = Math.round(vh * (Wd <= 560 ? 0.2 : Wd < 900 ? 0.26 : 0.3));
+      ridges(); lastQ = -1; sig = "";
+    }
+    /* the three layers of the hills, drawn once per size from the shared paths (the still page uses the same) */
+    function ridges() {
+      var R = INFO[kind], s = Math.max(Wd / R.w, hzH / R.h), ox = Wd - R.w * s, oy = hzH - R.h * s, hh = Math.round(hzH * dpr);
+      function layer() { var c = d.createElement("canvas"); c.width = W2; c.height = hh; var x = c.getContext("2d"); x.setTransform(dpr * s, 0, 0, dpr * s, dpr * ox, dpr * oy); return x; }
+      function p2(n) { return new Path2D(d.getElementById("wrR" + kind + "-" + n).getAttribute("d")); }
+      function grad(x, n, st) { var b = R.bb[n], gr = x.createLinearGradient(0, b[0], 0, b[1]); st.forEach(function (q) { gr.addColorStop(q[0], q[1]); }); return gr; }
+      var x = layer();
+      x.fillStyle = css(Cc.bg, 0.26); x.fill(p2("far2"));
+      x.fillStyle = css(Cc.bg, 0.44); x.fill(p2("farh"));
+      x.fillStyle = grad(x, "tug", [[0, css(Cc.h1)], [0.7, css(Cc.h2)], [1, css(Cc.h2)]]); x.fill(p2("tug"));
+      x.fillStyle = grad(x, "esc", [[0, css(Cc.w1)], [0.55, css(Cc.w2)], [1, css(Cc.w2)]]); x.fill(p2("esc"));
+      x.fillStyle = css(Cc.land); x.fill(p2("near")); x.fill(p2("trees"));
+      lay.land = x.canvas;
+      x = layer(); x.lineCap = "round"; x.lineJoin = "round";
+      x.fillStyle = grad(x, "face", [[0, css(Cc.gold, 0.24)], [0.42, css(Cc.gold2, 0.08)], [1, css(Cc.gold2, 0)]]); x.fill(p2("face"));
+      x.strokeStyle = css(Cc.bg, 0.6); x.lineWidth = 1.3 / s; x.stroke(p2("gul"));
+      x.strokeStyle = css(Cc.trim, 0.7); x.lineWidth = 1.2 / s; x.stroke(p2("trim"));
+      lay.morn = x.canvas;
+      x = layer(); x.lineJoin = "round";
+      x.fillStyle = grad(x, "tface", [[0, css(Cc.glow, 0.2)], [1, css(Cc.glow, 0)]]); x.fill(p2("tface"));
+      x.strokeStyle = css(Cc.orange, 1); x.lineWidth = 1.5 / s; x.stroke(p2("rim"));
+      lay.dusk = x.canvas; lay.k = kind; lay.s = s; lay.ox = ox; lay.oy = oy; lay.hk = "";
+    }
+    /* the hills as they stand at this hour (their haze, the morning light, the dusk light), composed once per step */
+    function hills(lo, fm, fd) {
+      var k = [Math.round(lo * 25), Math.round(fm * 25), Math.round(fd * 25), lay.k, W2].join();
+      if (lay.hk === k) return lay.h;
+      if (!lay.h || lay.h.width !== W2 || lay.h.height !== lay.land.height) { lay.h = d.createElement("canvas"); lay.h.width = W2; lay.h.height = lay.land.height; }
+      var x = lay.h.getContext("2d");
+      x.clearRect(0, 0, W2, lay.h.height);
+      x.globalAlpha = Math.round(lo * 25) / 25; x.drawImage(lay.land, 0, 0);
+      if (fm > 0.02) { x.globalAlpha = Math.round(fm * 25) / 25; x.drawImage(lay.morn, 0, 0); }
+      if (fd > 0.02) { x.globalAlpha = Math.round(fd * 25) / 25; x.drawImage(lay.dusk, 0, 0); }
+      lay.hk = k;
+      return lay.h;
+    }
+    /* where the hills' top line is on screen at x */
+    function skyline(x, vh) {
+      var b = INFO[kind], X = (x - lay.ox) / lay.s / b.w * 32;
+      var i = Math.max(0, Math.min(31, Math.floor(X))), f = clamp(X - i);
+      return vh - hzB - hzH + lay.oy + (b.y[i] + (b.y[i + 1] - b.y[i]) * f) * lay.s;
+    }
+    /* the clouds (the far cloud street, the near cumulus, the dusk cloud) and the two Milky Ways: greyscale
+       masks, each fetched only as its hour comes near, then given its colour from the tokens */
+    var CL = {
+      street: { f: function () { return Wd <= 700 ? "street-s" : "street-l"; }, c: "cloud" },
+      near: { f: function () { return Wd <= 700 ? "cu-s" : "cu-l"; }, c: "cloud" },
+      dusk: { f: function () { return Wd <= 700 ? "dusk-s" : "dusk-l"; }, c: "dusk" },
+      mwd: { f: function () { return "mw-dawn"; }, c: "mw", a: 0.09 }, mwn: { f: function () { return "mw-night"; }, c: "mw", a: 0.09 }
+    };
+    function want(k) {
+      var c = CL[k];
+      if (c.img) return c.tint;
+      c.img = new Image(); c.img.decoding = "async";
+      c.img.onload = function () { c.tint = tint(c); sig = ""; if (SKY) onScroll(); };
+      c.img.src = IMGS + c.f() + ".webp";
+      return null;
+    }
+    function tint(c) {
+      var im = c.img, t = d.createElement("canvas"), W = t.width = im.naturalWidth, H = t.height = im.naturalHeight, x = t.getContext("2d");
+      /* grey to alpha: through the page's own filter where the canvas takes filters, else pixel by pixel (once) */
+      if ("filter" in x && d.getElementById("wrLumA")) { x.filter = "url(#wrLumA)"; x.drawImage(im, 0, 0); x.filter = "none"; }
+      else { x.drawImage(im, 0, 0); var id = x.getImageData(0, 0, W, H), p = id.data; for (var i = 0; i < p.length; i += 4) p[i + 3] = p[i]; x.putImageData(id, 0, 0); }
+      if (c.a) { x.globalCompositeOperation = "destination-in"; x.globalAlpha = c.a; x.fillRect(0, 0, W, H); x.globalAlpha = 1; }
+      x.globalCompositeOperation = "source-in"; x.fillStyle = css(Cc[c.c], 1); x.fillRect(0, 0, W, H);
+      return t;
+    }
+    var STARS = { d: parseStars("wrStarsDawn"), n: parseStars("wrStarsNight") }, SZ = [9.5, 7.5, 5.8, 4.6, 3.6], SO = [1, 1, 1, 0.82, 0.55];
+    function parseStars(id) {
+      return [].map.call(d.querySelectorAll("#" + id + " path"), function (p) {
+        var cl = (p.getAttribute("class") || "z4 tw").split(" "), pts = [];
+        (p.getAttribute("d") || "").replace(/M(-?\d+) (-?\d+)h0/g, function (_, x, y) { pts.push(+x / 1000, +y / 1000); return ""; });
+        return { z: +cl[0].charAt(1), t: cl[1], p: pts };
+      });
+    }
+    /* every pixel of the sky, in linear light: the gradient, the rose band and the Earth's shadow away from
+       the sun, the low sun's glow, the glow on the horizon under it, its rays, midday's light from above;
+       then held under CAP (a soft knee) and encoded */
+    function paint(s, sx, sy) {
+      var px = img.data, sxw = Wd / cw, syh = Hd / ch, yhp = YH * Hd, R = s.gr * Math.max(Wd, Hd);
+      var bx = s.bx * Wd, by = -0.1 * Hd, BRX = Math.max(0.17 * Wd + 0.1 * Hd, 0.5 * Wd), BRY = 0.38 * Hd, hx = s.hw * Wd, hy = s.hh * Hd;
+      var gc = s.gc, hc = s.hc, rc = P.rays, hot = P.hot, n = 0, glow = s.ga > 0.004, rays = s.ra > 0.004, bloom = s.bl > 0.004, belt = s.b > 0.005, x, dx, u;
+      var away = sx < Wd / 2 ? 1 : -1, z = s.z, mi = s.mi, h = s.h, ro = P.rose, sh = P.shade;
+      for (x = 0; x < cw; x++) {
+        u = (x + 0.5) / cw; dx = u * Wd - sx; DX[x] = dx;
+        GX[x] = Math.exp(-dx * dx / (R * R)); HX[x] = Math.exp(-(dx / hx) * (dx / hx));
+        var bd = (u * Wd - bx) / BRX; BX[x] = Math.exp(-bd * bd);
+        VX[x] = 1 - s.vg * (Wd < 600 ? 0.2 : 0.45) * (2 * u - 1) * (2 * u - 1);
+        OX[x] = s.b * (0.25 + 0.75 * clamp(0.5 + away * (u - 0.5) * 1.6));
+      }
+      for (var y = 0; y < ch; y++) {
+        var py = (y + 0.5) * syh, t = py / Hd;
+        var base = t < 0.5 ? mix(z, mi, t / 0.5) : t < YH ? mix(mi, h, (t - 0.5) / (YH - 0.5)) : h;
+        var bt = (t - (YH - 0.09)) / 0.045, et = (t - (YH - 0.015)) / 0.03, rb = belt ? 0.55 * Math.exp(-bt * bt) : 0, eb = belt ? 0.5 * Math.exp(-et * et) : 0;
+        var dy = py - sy, hv = (py - yhp) / hy, hrow = s.ha * 0.026 * Math.exp(-hv * hv), above = py < sy + 0.02 * Hd;
+        var gy = glow ? 0.03 * s.ga * Math.exp(-dy * dy / (R * R)) : 0, bv = (py - by) / BRY, by2 = bloom ? s.bl * 0.06 * Math.exp(-bv * bv) : 0;
+        for (x = 0; x < cw; x++, n += 4) {
+          var r = base[0], gg = base[1], b = base[2], v = VX[x];
+          if (belt) {
+            var wr = rb * OX[x], we = eb * OX[x];
+            r += (ro[0] - r) * wr; gg += (ro[1] - gg) * wr; b += (ro[2] - b) * wr;
+            r += (sh[0] - r) * we; gg += (sh[1] - gg) * we; b += (sh[2] - b) * we;
+          }
+          var k = gy * GX[x], h2 = hrow * HX[x], k2 = by2 * BX[x];
+          r = r * v + gc[0] * k + hc[0] * h2 + hot[0] * k2; gg = gg * v + gc[1] * k + hc[1] * h2 + hot[1] * k2; b = b * v + gc[2] * k + hc[2] * h2 + hot[2] * k2;
+          if (rays && above) {
+            dx = DX[x];
+            var d2 = dx * dx + dy * dy, a = Math.atan2(dy, dx), q = 0.5 + 0.5 * Math.cos(a * 23 + 0.6) * Math.cos(a * 9 - 1.1);
+            k = s.ra * 0.009 * q * q * Math.exp(-Math.sqrt(d2) / (0.8 * Wd)) * (1 - Math.exp(-d2 / (0.004 * Wd * Wd)));
+            r += rc[0] * k; gg += rc[1] * k; b += rc[2] * k;
+          }
+          var L = 0.2126 * r + 0.7152 * gg + 0.0722 * b;
+          if (L > KNEE) { var f = (KNEE + (CAP - KNEE) * (1 - Math.exp(-(L - KNEE) / (CAP - KNEE)))) / L; r *= f; gg *= f; b *= f; }
+          px[n] = ENC[r > 1 ? 4095 : (r * 4095) | 0]; px[n + 1] = ENC[gg > 1 ? 4095 : (gg * 4095) | 0]; px[n + 2] = ENC[b > 1 ? 4095 : (b * 4095) | 0]; px[n + 3] = 255;
+        }
+      }
+      sg.putImageData(img, 0, 0);
+    }
+    function sunAt(hr, vh) {
+      /* the sun that day: hour angle from solar noon; looking south it climbs from the left, stands high,
+         goes down right; its height over the true horizon is measured up from the hills' line */
+      var H = (hr - 12.86) * 15 * Math.PI / 180, x = Wd / 2 + SUNR * Math.sin(H) * kx;
+      return [x, skyline(x, vh) - SUNR * Math.cos(H) * ky];
+    }
+    /* the real sky turned about the south pole (15 degrees an hour), cut off above the opening photograph */
+    function stars(list, mw, a, rot, clip) {
+      var cx = Wd / 2 * dpr, cy = YH * Hd * dpr, u = ky * dpr, c = Math.cos(rot), s = Math.sin(rot), top = clip * dpr;
+      g.save(); g.beginPath(); g.rect(0, top, W2, H2 - top); g.clip();
+      if (mw) { g.save(); g.translate(cx, cy); g.rotate(rot); g.globalAlpha = a * clamp(1 - clip / (0.5 * Hd)); g.drawImage(mw, -3 * u, -2.25 * u, 6 * u, 3 * u); g.restore(); }
+      for (var k = 0; k < list.length; k++) {
+        var q = list[k], r = Math.max(0.35, SZ[q.z] / 2000 * u), p = q.p;
+        g.globalAlpha = a * SO[q.z]; g.fillStyle = Cs[q.t] || Cs.tw; g.beginPath();
+        for (var j = 0; j < p.length; j += 2) {
+          var X = cx + (p[j] * c - p[j + 1] * s) * u, Y = cy + (p[j] * s + p[j + 1] * c) * u;
+          if (X < -3 || X > W2 + 3 || Y < top - 3 || Y > H2 + 3) continue;
+          g.moveTo(X + r, Y); g.arc(X, Y, r, 0, 6.2832);
+        }
+        g.fill();
+      }
+      g.restore(); g.globalAlpha = 1;
+    }
+    function cloudAt(t, x, y, wd, ht, a, mark) { if (t && a > 0.004 && y < Hd && y + ht > 0) { g.globalAlpha = a; g.drawImage(t, x * dpr, y * dpr, wd * dpr, ht * dpr); g.globalAlpha = 1; mark(y, y + ht); } }
+    function at(D, y, vh, geo) {
+      var q = Math.round(D * 40);
+      if (q !== lastQ) { lastQ = q; var sq = state(q / 40), sp = sunAt(sq.hr, vh); paint(sq, sp[0], sp[1]); }
+      var s = state(D), sp2 = sunAt(s.hr, vh);
+      /* the hills step aside while the course is flown on its map and stand in midday's haze; they keep out of
+         the way of the opening photograph and the cards, and half step down for the 01 numerals */
+      var rg = D < 1.8 ? 0 : D < 2.08 ? (D - 1.8) / 0.28 : D < 2.88 ? 1 : D < 3.15 ? 1 - 0.6 * (D - 2.88) / 0.27 : D < 4.4 ? 0.4 : D < 4.7 ? 0.4 * (4.7 - D) / 0.3 : 0;
+      var band = vh - hzB - hzH, full = hzH + hzB + 4, sink = rg * full, clr = geo.clear;
+      for (var i = 0; i < clr.length; i++) {
+        var t = clr[i][0] - y, b = clr[i][1] - y;
+        if (b <= band || t >= vh + hzH) continue;
+        sink = Math.max(sink, Math.min(b - band, full * clr[i][2]) * clamp((vh + hzH - t) / hzH));
+      }
+      sink = Math.round(sink);
+      var clip = Math.round(Math.max(0, Math.min(Hd, geo.clip - y))), up = sink < full - 1;
+      /* the clouds' places: the street drifts slower than the page (far); the dusk cloud passes 05 into 06 a
+         little slower than the page (between); the near cumulus passes 02 into 03 faster than the page */
+      var sw = Wd <= 700 ? Wd : Math.min(Wd, 1.7 * Hd), sh = sw * (Wd <= 700 ? 680 / 800 : 640 / 1600);
+      var stx = Wd - sw + (2.6 - D) * 0.04 * sw, sty = (Wd <= 700 ? 0.02 : 0.01) * Hd + (3.2 - D) * 0.025 * Hd;
+      var nw = Wd <= 700 ? 0.96 * Wd : Math.min(0.54 * Wd, 840), nh = nw * 700 / 1200, nrel = geo.near - y, np = clamp((vh - nrel) / (vh + nh));
+      var nx = Wd - nw + (Wd <= 700 ? 0.34 * Wd : 0.05 * Wd) + (0.04 - 0.08 * np) * nw, ny = nrel - (Wd <= 700 ? 0.02 : 0.04) * vh + (0.3 - 0.6 * np) * vh;
+      var dw = Wd <= 700 ? 1.8 * Wd : Math.max(1.12 * Wd, 900), dh = dw * (Wd <= 700 ? 260 / 800 : 520 / 1600), drel = geo.dusk - y, dp = clamp((vh - drel) / (vh + dh));
+      var dx = (Wd <= 700 ? -0.4 * Wd : -0.06 * Wd) + (-0.02 + 0.04 * dp) * dw, dy = drel - (Wd <= 700 ? 0.12 : 0.22) * vh + (-0.09 + 0.18 * dp) * vh, da = (dp < 0.45 ? 1 : 1 - (dp - 0.45) / 0.55) * clamp((6.7 - D) / 0.5);
+      var nearOn = Math.abs(nrel - vh / 2) < 2 * vh, duskOn = Math.abs(drel - vh / 2) < 2 * vh;
+      /* the canvas is composed again only when something on it has moved: a still stretch of sky costs nothing */
+      var sees = function (top, ht) { return top < Hd && top + ht > 0; }, starsOn = s.sa > 0.004 || s.sb > 0.004;
+      var key = [kind, up ? sink : -1, starsOn ? Math.round(D * 900) + "," + clip : "", s.sd > 0.004 ? Math.round(sp2[0]) + "," + Math.round(sp2[1]) : "",
+        D > 1.7 && D < 5 && s.cs > 0.004 ? Math.round(stx / 2) + "," + Math.round(sty / 2) + "," + Math.round(s.cs * 50) : "",
+        nearOn && sees(ny, nh) ? Math.round(ny) : "", duskOn && sees(dy, dh) ? Math.round(dy) + "," + Math.round(da * 50) : "", Math.round(s.lo * 25), Math.round(s.fm * 25), Math.round(s.fd * 25)].join("|");
+      if (key === sig) return;
+      sig = key;
+      /* only the band drawn last time is cleared, and this frame's band noted */
+      g.globalAlpha = 1; if (dirty[1] > dirty[0]) g.clearRect(0, dirty[0], W2, dirty[1] - dirty[0]);
+      var y0 = H2, y1 = 0, mark = function (a, b) { a = Math.max(0, Math.floor(a * dpr) - 2); b = Math.min(H2, Math.ceil(b * dpr) + 2); if (b > a) { y0 = Math.min(y0, a); y1 = Math.max(y1, b); } };
+      if (s.sa > 0.004 && clip < Hd) { stars(STARS.d, want("mwd"), s.sa, (s.hr - 5.5) * 15.04 * Math.PI / 180, clip); mark(clip, Hd); }
+      if (s.sb > 0.004) { stars(STARS.n, D > 5 ? want("mwn") : null, s.sb, (s.hr - 19) * 15.04 * Math.PI / 180, 0); mark(0, Hd); }
+      if (s.sd > 0.004 && up) {
+        var r = Math.max(9, Math.min(15, 0.0135 * Math.min(Wd, Hd))), sx = sp2[0] * dpr, sy = (sp2[1] + sink) * dpr;
+        g.globalAlpha = s.sd; g.fillStyle = css(Cc.sun, 1); g.beginPath(); g.arc(sx, sy, r * dpr, 0, 6.2832); g.fill(); g.globalAlpha = 1; mark(sy / dpr - r, sy / dpr + r);
+      }
+      if (duskOn) cloudAt(want("dusk"), dx, dy, dw, dh, da, mark);
+      if (D > 1.7 && D < 5) cloudAt(want("street"), stx, sty, sw, sh, s.cs, mark);
+      if (up) {
+        var top = (band + sink) * dpr;
+        g.drawImage(hills(s.lo, s.fm, s.fd), 0, top);
+        if (hzB) { g.globalAlpha = s.lo; g.fillStyle = css(Cc.land, 1); g.fillRect(0, top + hzH * dpr - 1, W2, (hzB + 8) * dpr); g.globalAlpha = 1; }
+        mark(band + sink, vh + 8);
+      }
+      if (nearOn) cloudAt(want("near"), nx, ny, nw, nh, 1, mark);
+      dirty = [y0, y1];
+    }
+    tokens(); size();
+    /* the site's sky tokens ease to the visitor's hour over two seconds after the page opens */
+    root.addEventListener("transitionend", function (e) { if (e.target === root && e.propertyName === "--sky-cool") { tokens(); onScroll(); } });
+    return { size: size, at: at };
+  }
+  function dayAt(line) {
+    var t = geo.dT, n = t.length, i = 0;
+    if (line <= t[0]) return 0;
+    while (i < n - 1 && line >= t[i + 1]) i++;
+    var end = i < n - 1 ? t[i + 1] : geo.docH;
+    return Math.min(8, i + clamp((line - t[i]) / Math.max(1, end - t[i])));
+  }
+
+  /* the clouds and the ground under the course load once, as they come near; they, and the thermals,
+     move only while they are close to the screen, so nothing off screen costs a frame */
+  var nearEls = all(".wr-ground"), liveEls = all(".wr-ground,.wr-mark");
+  if (IO) {
+    var nio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-near"); nio.unobserve(e.target); } }); }, { rootMargin: "60% 0px 60% 0px" });
+    nearEls.forEach(function (el) { nio.observe(el); });
+    var lio = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle("is-live", e.isIntersecting); }); }, { rootMargin: "60% 0px 60% 0px" });
+    liveEls.forEach(function (el) { lio.observe(el); });
+  } else liveEls.forEach(function (el) { el.classList.add("is-near", "is-live"); });
+
   function measure() {
     var vh = w.innerHeight;
     var r = box.getBoundingClientRect(); geo.mapW = r.width; geo.mapH = r.height;
@@ -980,6 +1471,15 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
     geo.foot = foot ? absTop(foot) : 1e9;
     geo.heroEnd = hero ? absTop(hero) + hero.offsetHeight : 0;
     geo.vh = vh;
+    if (SKY) {
+      SKY.size(); geo.dT = dayEls.map(function (e) { return e ? absTop(e) : 0; }); geo.docH = root.scrollHeight;
+      /* the stars begin under the opening photograph (its parallax can carry it a sixth lower); the hills keep clear of it, the 01 numerals and the cards */
+      var pic = hero && hero.querySelector(".wr-hero-pic"), hb = hero ? absTop(hero) + hero.offsetHeight : 0;
+      geo.clip = pic ? Math.min(hb, absTop(pic) + pic.offsetHeight * 1.16) : hb;
+      /* (the hills only half step down for the 01 numerals: sunrise is behind them) */
+      geo.near = absTop(d.getElementById("wr-kerio")); geo.dusk = partner ? absTop(partner) : 1e9;
+      geo.clear = [[0, geo.clip, 1]].concat(all(".is-theirs .wr-giga,.wr-tiers").map(function (e) { var t = absTop(e); return [t, t + e.offsetHeight, e.classList.contains("wr-giga") ? 0.55 : 1]; }));
+    }
     swiped();
   }
 
@@ -1012,6 +1512,7 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
       }
       barEl.classList.toggle("is-on", y > geo.heroEnd - vh * 0.55 && y + vh < geo.foot + 2);
     }
+    if (SKY) SKY.at(dayAt(y + vh * 0.5), y, vh, geo);
   }
   function onScroll() { if (!queued) { queued = true; requestAnimationFrame(frame); } }
   function refresh() { measure(); if (!geo.pin) render(1); frame(); }
@@ -1059,7 +1560,7 @@ html.v2-nav-up.wr-pin .wr-stage>.wr-in{translate:0 calc(var(--v2-nav-h,77px) * .
     });
   }
   } catch (err) {
-    root.classList.remove("wr-pin", "wr-hz");
+    root.classList.remove("wr-pin", "wr-hz", "wr-sky-on");
     showAll();
   }
 })();
