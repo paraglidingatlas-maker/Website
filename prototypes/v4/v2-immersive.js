@@ -92,7 +92,6 @@ if (dur && isFinite(dur)) paintHud(heroVid.currentTime / dur);
 function settleBank() {
 bank *= 0.86;
 if (hudLine) hudLine.style.transform = "rotate(" + bank.toFixed(2) + "deg)";
-root.style.setProperty("--v2-gust", Math.min(1, Math.abs(bank) / 14).toFixed(3));
 if (Math.abs(bank) > 0.05) bankRaf = requestAnimationFrame(settleBank); else { bankRaf = 0; bank = 0; }
 }
 var scrollQueued = false;

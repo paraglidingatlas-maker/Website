@@ -138,7 +138,8 @@
     function settleBank() {
       bank *= 0.86;
       if (hudLine) hudLine.style.transform = "rotate(" + bank.toFixed(2) + "deg)";
-      root.style.setProperty("--v2-gust", Math.min(1, Math.abs(bank) / 14).toFixed(3));
+      // (no --v2-gust write here any more: nothing read it, and setting a property on <html>
+      //  every scroll frame made the browser restyle the whole page; found on the record page, 19 Oct)
       if (Math.abs(bank) > 0.05) bankRaf = requestAnimationFrame(settleBank); else { bankRaf = 0; bank = 0; }
     }
     var scrollQueued = false;
