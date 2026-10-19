@@ -18,6 +18,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from v4_ux import topic_case   # noqa: E402  (20: SRS and CCC as the site writes them)
+from v2_site import proto_only   # noqa: E402  (pages left out of the switch stay out of the search)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V4 = os.path.join(ROOT, "prototypes", "v4")
@@ -97,7 +98,7 @@ def main():
             if not f.endswith(".html"):
                 continue
             rel = os.path.relpath(os.path.join(d, f), V4).replace(os.sep, "/")
-            if rel in SKIP or rel.startswith("samples/"):
+            if rel in SKIP or rel.startswith("samples/") or proto_only(rel):
                 continue
             src = open(os.path.join(d, f), encoding="utf-8").read()
             if 'http-equiv="refresh"' in src[:4000]:

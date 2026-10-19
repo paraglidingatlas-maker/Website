@@ -79,7 +79,7 @@ MANIFEST = {
     "shortcuts": [
         {"name": "Episode library", "url": "./library.html"},
         {"name": "Knowledge base", "url": "./knowledge-base.html"},
-        {"name": "Trips", "url": "./index.html#destinations"},
+        {"name": "Trips", "url": "./expeditions.html"},
     ],
 }
 

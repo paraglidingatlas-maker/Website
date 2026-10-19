@@ -109,6 +109,7 @@ short text). A second moment on the same page is a sign one should go.
 | Knowledge base | its own drawings (it stays different on purpose) |
 | Partners | the flight line down the page |
 | Record attempt | the course drawn to scale, pinned and flown kilometre by kilometre as the visitor scrolls, the clocks counting alongside (prototype-only until the owner's go, 17 Oct 2026) |
+| Expeditions | the map flown with the scroll from the world to each trip, each place's own photograph rising out of the map (owner, 19 Oct 2026: its own page, not the home page's section again) |
 | Text pages | none: they are for reading |
 
 Shared, not moments: the altimeter on long pages (decoration), cards that
@@ -124,6 +125,14 @@ open into the episode (a transition), the instrument font.
   from what the site makes itself (drawings, animation).
 - Page darkens as it descends; images fade up from a blur; contour backdrop
   behind text sections. No tracers (removed at the owner's request).
+- **Less but better (the record page, 19 Oct 2026):** the owner called the
+  first record page's flat clouds, drawn hills, count-ups, ring cursor and
+  word-by-word reveals "a cheap rip-off". What replaced them: one easing
+  curve; motion with weight (an eased glide that stops when it settles,
+  never a loop); no drawn stand-ins for nature (clouds, hills, trees,
+  thermals); typography and real photographs as the graphics; a
+  photograph never meets the page at a hard edge (its edge takes the colour
+  behind it).
 - `prefers-reduced-motion`: transitions off, everything visible. With
   JavaScript off, everything readable (the fly-through shows every trip).
 

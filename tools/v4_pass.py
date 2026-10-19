@@ -337,7 +337,9 @@ def next_step(rel, src):
     return src.replace("</div><!-- /.page-wrap -->", band + "\n</div><!-- /.page-wrap -->", 1)
 
 
-NAV = [("Expeditions", "index.html#destinations", ("destinations/", "enquire.html")),
+# Expeditions has its own page (owner, 19 Oct: "the expeditions tab ... is just an off copy of leftover
+# material at homepage"); it was index.html#destinations
+NAV = [("Expeditions", "expeditions.html", ("expeditions", "destinations/", "enquire.html")),
        ("Podcast", "podcast.html", ("podcast.html", "library.html", "episodes/", "tags", "samples/library")),
        ("Knowledge Base", "knowledge-base.html", ("knowledge-base",)),
        ("About", "about.html", ("about.html", "mission.html", "partners.html"))]
@@ -348,7 +350,18 @@ def nav(rel, src):
     About, then Enquire. Sitemap is in the footer. The current section is
     marked (aria-current)."""
     m = re.search(r'<div class="nav-links">.*?</div>', src, re.S)
-    if not m or "v4-nav" in m.group(0):
+    if not m:
+        old = re.search(r'<div class="nav-links v4-nav">.*?</div>', src, re.S)
+        if old and 'index.html#destinations">Expeditions' in old.group(0):
+            # a page written before Expeditions had its own page: point the link there
+            up = "../" * rel.count("/")
+            blk = re.sub(r'<a href="(?:\.\./)*index\.html#destinations"[^>]*>Expeditions</a>',
+                         '<a href="%sexpeditions.html"%s>Expeditions</a>' % (
+                             up, ' aria-current="page" class="is-here"' if any(rel.startswith(x) for x in NAV[0][2]) else ""),
+                         old.group(0))
+            return src[:old.start()] + blk + src[old.end():]
+        return src
+    if "v4-nav" in m.group(0):
         return src
     up = "../" * rel.count("/")
     items = []

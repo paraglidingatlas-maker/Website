@@ -23,7 +23,7 @@
   var IDX = m ? BASE + "search-index.js" : "/assets/v4/search-index.js";
   var KB = m ? BASE + "img/kb/" : "/assets/v4/img/kb/";   // the kit's drawings (@kb/ in a picture's path)
   var SECTIONS = [
-    ["Expeditions", "index.html#destinations", "assets/destinations/india/hero/snowline.webp", [["India", "destinations/india.html"], ["Kenya", "destinations/kenya.html"]]],
+    ["Expeditions", "expeditions.html", "assets/destinations/india/hero/snowline.webp", [["India", "destinations/india.html"], ["Kenya", "destinations/kenya.html"]]],
     ["Podcast", "podcast.html", "assets/images/pod-hero-gemona.webp", [["Library", "library.html"], ["Topics", "tags.html"]]],
     ["Knowledge Base", "knowledge-base.html", "@kb/kb-flight-mechanics.svg", []],
     ["About", "about.html", "assets/images/partners-aninder.webp", [["Mission Statement", "mission.html"], ["Partner With Me", "partners.html"]]]
@@ -68,7 +68,7 @@
       '</div>';
     d.body.appendChild(menu);
     menu.querySelector(".v4-menu-x").addEventListener("click", close);
-    // a link to a place on this same page (Expeditions on the home page) closes the menu too
+    // a link to a place on this same page closes the menu too
     menu.addEventListener("click", function (e) {
       var l = e.target.closest && e.target.closest("a[href]");
       if (l && l.hash && l.pathname === location.pathname) close();
