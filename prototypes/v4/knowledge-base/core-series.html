@@ -361,6 +361,55 @@
   details .src + .src{margin-left:1.2rem;}
 
 </style>
+<!--v4p:polish--><style>html.v4-kbc .k-hero-media{perspective:1200px}html.v4-kbc .k-hero-media>svg{transform:translate3d(0,var(--py,0px),0) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .9s var(--ease);will-change:transform}html.v4-kbc .faq-r details{overflow:hidden}</style><script>(function () {
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var html = document.documentElement; html.classList.add('v4-kbc');
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
+  ready(function () {
+    /* the hero drawing: drifts slower than the page, and on a desktop leans towards the mouse */
+    var media = document.querySelector('.k-hero-media'), art = media && media.querySelector('svg'), raf = 0;
+    function tick() {
+      raf = 0; if (!art) return;
+      var y = Math.min(window.scrollY, window.innerHeight);
+      art.style.setProperty('--py', (y * 0.25).toFixed(1) + 'px');
+    }
+    if (art) {
+      window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+      if (window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        var hero = document.querySelector('.k-hero');
+        hero.addEventListener('pointermove', function (e) {
+          if (e.pointerType !== 'mouse') return;
+          var r = hero.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, yy = (e.clientY - r.top) / r.height - 0.5;
+          art.style.setProperty('--ry', (x * 6).toFixed(2) + 'deg'); art.style.setProperty('--rx', (-yy * 4).toFixed(2) + 'deg');
+        });
+        hero.addEventListener('pointerleave', function () { art.style.removeProperty('--rx'); art.style.removeProperty('--ry'); });
+      }
+    }
+    /* the questions glide open and closed */
+    var EASE = 'cubic-bezier(.2,.8,.2,1)';
+    document.querySelectorAll('.faq-r details').forEach(function (d) {
+      var sum = d.querySelector('summary'); if (!sum || !d.animate) return;
+      var anim = null;
+      sum.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (anim) anim.cancel();
+        var start = d.offsetHeight;
+        if (d.open) {
+          var end = sum.offsetHeight;
+          anim = d.animate({ height: [start + 'px', end + 'px'] }, { duration: 380, easing: EASE });
+          anim.onfinish = function () { d.open = false; anim = null; d.style.height = ''; };
+        } else {
+          d.style.height = start + 'px'; d.open = true;
+          var full = d.scrollHeight; d.style.height = '';
+          anim = d.animate({ height: [start + 'px', full + 'px'] }, { duration: 460, easing: EASE });
+          anim.onfinish = function () { anim = null; };
+          var kids = [].slice.call(d.children).filter(function (k) { return k !== sum; });
+          kids.forEach(function (k, i) { k.animate({ opacity: [0, 1], transform: ['translateY(6px)', 'none'] }, { duration: 420, delay: 80 + i * 40, easing: EASE, fill: 'backwards' }); });
+        }
+      });
+    });
+  });
+})();</script><!--/v4p:polish-->
 <!-- site-schema -->
 <script type="application/ld+json">
 {

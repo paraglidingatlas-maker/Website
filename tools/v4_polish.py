@@ -31,6 +31,16 @@ were. Rewritten whole each run, so the pass is idempotent.
     a desktop the series tiles lean towards the mouse in 3D with a soft light
     where it is, and glide back level. The tiles' drawings draw themselves in
     as before (v2-immersive.js). Reduced motion: the page as it was.
+  - knowledge base (roadmap step 3): on the hub, the climb in the opening
+    keeps its route, dimmer, and a bright trace climbs it with the scroll with
+    a glider at its tip, from 600 m to 4,000 m as the opening scrolls away;
+    each level's big outlined number fills in orange while that level is in
+    the middle of the screen; each level's row of episodes glides in from the
+    side as it comes into view (on a phone it fades in, so the page never
+    widens). On the 18 category pages: the opening's
+    drawing drifts slower than the page and, on a desktop, leans towards the
+    mouse; the questions glide open and closed, their answer fading up.
+    Reduced motion: the pages as they were.
 
     python3 tools/v4_polish.py            # every page done so far
 
@@ -150,6 +160,109 @@ LIB_JS = r"""(function () {
   });
 })();"""
 
+KB_HUB_CSS = (
+    # the trace: the route stays, dimmer; a bright copy climbs it with the scroll, a glider at its tip
+    "html.v4-kbm .v4-climb-line{opacity:.32}"
+    "html.v4-kbm .v4-climb .v4p-trace{fill:none;stroke:var(--orange);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}"
+    "html.v4-kbm .v4-climb .v4p-glider{fill:var(--orange);filter:drop-shadow(0 0 6px rgba(255,117,23,.8))}"
+    # the level numbers: an outline until their level is in the middle of the screen, then filled in orange
+    "html.v4-kbm .clb-idx{transition:color .6s var(--ease),-webkit-text-stroke-color .6s var(--ease)}"
+    "html.v4-kbm .clb-station.v4p-on .clb-idx{color:var(--orange);-webkit-text-stroke-color:var(--orange)}"
+    # the episode rows glide in from the side as they come into view
+    "html.v4-kbm .clb-strip{transition:transform .9s var(--ease),opacity .9s var(--ease)}"
+    "html.v4-kbm .clb-strip:not(.v4p-in){opacity:0}"
+    "@media (min-width:900px){html.v4-kbm .clb-strip:not(.v4p-in){transform:translateX(48px)}}"
+)
+KB_HUB_JS = r"""(function () {
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  var html = document.documentElement; html.classList.add('v4-kbm');
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
+  ready(function () {
+    var NS = 'http://www.w3.org/2000/svg';
+    var line = document.querySelector('.v4-climb .v4-climb-line'), hero = document.querySelector('.clb-hero'), trace = null, glider = null, L = 0;
+    if (line && line.getTotalLength) {
+      L = line.getTotalLength();
+      trace = document.createElementNS(NS, 'path'); trace.setAttribute('d', line.getAttribute('d')); trace.setAttribute('class', 'v4p-trace');
+      trace.style.strokeDasharray = L; line.parentNode.insertBefore(trace, line.nextSibling);
+      glider = document.createElementNS(NS, 'circle'); glider.setAttribute('r', '5'); glider.setAttribute('class', 'v4p-glider');
+      line.parentNode.insertBefore(glider, trace.nextSibling);
+    }
+    var raf = 0;
+    function tick() {
+      raf = 0; if (!trace || !hero) return;
+      var p = Math.min(1, Math.max(0, window.scrollY / Math.max(1, hero.offsetHeight * 0.85)));
+      p = 0.04 + p * 0.96;
+      trace.style.strokeDashoffset = (L * (1 - p)).toFixed(1);
+      var pt = line.getPointAtLength(L * p); glider.setAttribute('cx', pt.x.toFixed(1)); glider.setAttribute('cy', pt.y.toFixed(1));
+    }
+    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+    tick();
+    var mid = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle('v4p-on', e.isIntersecting); }); },
+      { rootMargin: '-42% 0px -42% 0px' });
+    document.querySelectorAll('.clb-station').forEach(function (st) { mid.observe(st); });
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('v4p-in'); io.unobserve(e.target); } }); },
+      { rootMargin: '0px 0px -12% 0px' });
+    document.querySelectorAll('.clb-strip').forEach(function (st) { io.observe(st); });
+  });
+})();"""
+
+KB_CAT_CSS = (
+    "html.v4-kbc .k-hero-media{perspective:1200px}"
+    "html.v4-kbc .k-hero-media>svg{transform:translate3d(0,var(--py,0px),0) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));"
+    "transition:transform .9s var(--ease);will-change:transform}"
+    "html.v4-kbc .faq-r details{overflow:hidden}"
+)
+KB_CAT_JS = r"""(function () {
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var html = document.documentElement; html.classList.add('v4-kbc');
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
+  ready(function () {
+    /* the hero drawing: drifts slower than the page, and on a desktop leans towards the mouse */
+    var media = document.querySelector('.k-hero-media'), art = media && media.querySelector('svg'), raf = 0;
+    function tick() {
+      raf = 0; if (!art) return;
+      var y = Math.min(window.scrollY, window.innerHeight);
+      art.style.setProperty('--py', (y * 0.25).toFixed(1) + 'px');
+    }
+    if (art) {
+      window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+      if (window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        var hero = document.querySelector('.k-hero');
+        hero.addEventListener('pointermove', function (e) {
+          if (e.pointerType !== 'mouse') return;
+          var r = hero.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, yy = (e.clientY - r.top) / r.height - 0.5;
+          art.style.setProperty('--ry', (x * 6).toFixed(2) + 'deg'); art.style.setProperty('--rx', (-yy * 4).toFixed(2) + 'deg');
+        });
+        hero.addEventListener('pointerleave', function () { art.style.removeProperty('--rx'); art.style.removeProperty('--ry'); });
+      }
+    }
+    /* the questions glide open and closed */
+    var EASE = 'cubic-bezier(.2,.8,.2,1)';
+    document.querySelectorAll('.faq-r details').forEach(function (d) {
+      var sum = d.querySelector('summary'); if (!sum || !d.animate) return;
+      var anim = null;
+      sum.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (anim) anim.cancel();
+        var start = d.offsetHeight;
+        if (d.open) {
+          var end = sum.offsetHeight;
+          anim = d.animate({ height: [start + 'px', end + 'px'] }, { duration: 380, easing: EASE });
+          anim.onfinish = function () { d.open = false; anim = null; d.style.height = ''; };
+        } else {
+          d.style.height = start + 'px'; d.open = true;
+          var full = d.scrollHeight; d.style.height = '';
+          anim = d.animate({ height: [start + 'px', full + 'px'] }, { duration: 460, easing: EASE });
+          anim.onfinish = function () { anim = null; };
+          var kids = [].slice.call(d.children).filter(function (k) { return k !== sum; });
+          kids.forEach(function (k, i) { k.animate({ opacity: [0, 1], transform: ['translateY(6px)', 'none'] }, { duration: 420, delay: 80 + i * 40, easing: EASE, fill: 'backwards' }); });
+        }
+      });
+    });
+  });
+})();"""
+
 PAGES = {
     "podcast.html": (
         ".v2-pod-hero .kit-stats{gap:var(--sp-3) clamp(2.2rem,5vw,4rem);max-width:48rem;flex-wrap:nowrap}"
@@ -186,7 +299,12 @@ PAGES = {
         "html.v4-tilt .v2-tiles .tile:hover .shot::after{opacity:1}"
     ),
 }
-SCRIPTS = {"podcast.html": POD_JS, "library.html": LIB_JS}
+PAGES["knowledge-base.html"] = KB_HUB_CSS
+SCRIPTS = {"podcast.html": POD_JS, "library.html": LIB_JS, "knowledge-base.html": KB_HUB_JS}
+for _f in sorted(os.listdir(os.path.join(V4, "knowledge-base"))):
+    if _f.endswith(".html"):
+        PAGES["knowledge-base/" + _f] = KB_CAT_CSS
+        SCRIPTS["knowledge-base/" + _f] = KB_CAT_JS
 
 
 def main():

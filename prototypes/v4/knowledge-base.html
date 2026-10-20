@@ -493,6 +493,39 @@
   }catch(e){}
 })();
 </script>
+<!--v4p:polish--><style>html.v4-kbm .v4-climb-line{opacity:.32}html.v4-kbm .v4-climb .v4p-trace{fill:none;stroke:var(--orange);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}html.v4-kbm .v4-climb .v4p-glider{fill:var(--orange);filter:drop-shadow(0 0 6px rgba(255,117,23,.8))}html.v4-kbm .clb-idx{transition:color .6s var(--ease),-webkit-text-stroke-color .6s var(--ease)}html.v4-kbm .clb-station.v4p-on .clb-idx{color:var(--orange);-webkit-text-stroke-color:var(--orange)}html.v4-kbm .clb-strip{transition:transform .9s var(--ease),opacity .9s var(--ease)}html.v4-kbm .clb-strip:not(.v4p-in){opacity:0}@media (min-width:900px){html.v4-kbm .clb-strip:not(.v4p-in){transform:translateX(48px)}}</style><script>(function () {
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  var html = document.documentElement; html.classList.add('v4-kbm');
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
+  ready(function () {
+    var NS = 'http://www.w3.org/2000/svg';
+    var line = document.querySelector('.v4-climb .v4-climb-line'), hero = document.querySelector('.clb-hero'), trace = null, glider = null, L = 0;
+    if (line && line.getTotalLength) {
+      L = line.getTotalLength();
+      trace = document.createElementNS(NS, 'path'); trace.setAttribute('d', line.getAttribute('d')); trace.setAttribute('class', 'v4p-trace');
+      trace.style.strokeDasharray = L; line.parentNode.insertBefore(trace, line.nextSibling);
+      glider = document.createElementNS(NS, 'circle'); glider.setAttribute('r', '5'); glider.setAttribute('class', 'v4p-glider');
+      line.parentNode.insertBefore(glider, trace.nextSibling);
+    }
+    var raf = 0;
+    function tick() {
+      raf = 0; if (!trace || !hero) return;
+      var p = Math.min(1, Math.max(0, window.scrollY / Math.max(1, hero.offsetHeight * 0.85)));
+      p = 0.04 + p * 0.96;
+      trace.style.strokeDashoffset = (L * (1 - p)).toFixed(1);
+      var pt = line.getPointAtLength(L * p); glider.setAttribute('cx', pt.x.toFixed(1)); glider.setAttribute('cy', pt.y.toFixed(1));
+    }
+    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+    tick();
+    var mid = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle('v4p-on', e.isIntersecting); }); },
+      { rootMargin: '-42% 0px -42% 0px' });
+    document.querySelectorAll('.clb-station').forEach(function (st) { mid.observe(st); });
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('v4p-in'); io.unobserve(e.target); } }); },
+      { rootMargin: '0px 0px -12% 0px' });
+    document.querySelectorAll('.clb-strip').forEach(function (st) { io.observe(st); });
+  });
+})();</script><!--/v4p:polish-->
 <!-- site-schema -->
 <script type="application/ld+json">
 {
