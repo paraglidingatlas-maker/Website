@@ -24,6 +24,13 @@ were. Rewritten whole each run, so the pass is idempotent.
     orthographic projection the globe makes, and the scroll turns that; the
     globe's own spin draws it. With reduced motion or without JavaScript the
     page is as it was.
+  - library (owner's roadmap, step 2, 20 Oct 2026): the opening's chart
+    arrives once and settles (the bars grow from the baseline, the dots
+    settle on them, then the longest episode's marker and its guide draw)
+    and drifts up more slowly than the page as the opening scrolls away; on
+    a desktop the series tiles lean towards the mouse in 3D with a soft light
+    where it is, and glide back level. The tiles' drawings draw themselves in
+    as before (v2-immersive.js). Reduced motion: the page as it was.
 
     python3 tools/v4_polish.py            # every page done so far
 
@@ -107,6 +114,42 @@ POD_LOADER = ('      s.src = SRC[i]; s.onload = s.onerror = function () { next(i
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V4 = os.path.join(ROOT, "prototypes", "v4")
 
+LIB_JS = r"""(function () {
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var html = document.documentElement;
+  html.classList.add('v4-grow');
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
+  ready(function () {
+    /* the chart drifts up more slowly than the page as the opening scrolls away */
+    var chart = document.querySelector('.dk-tg-library'), raf = 0;
+    function tick() {
+      raf = 0; if (!chart) return;
+      var y = Math.min(window.scrollY, window.innerHeight);
+      chart.style.transform = 'translate3d(0,' + (y * 0.22).toFixed(1) + 'px,0)';
+    }
+    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+    /* the series tiles lean towards the mouse, with a soft light on them */
+    if (!(window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches)) return;
+    html.classList.add('v4-tilt');
+    document.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var t = e.target.closest && e.target.closest('.v2-tiles .tile'); if (!t) return;
+      var s = t.querySelector('.shot'); if (!s) return;
+      var r = s.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      if (x < 0 || x > 1 || y < 0 || y > 1) return;
+      s.style.setProperty('--ry', ((x - 0.5) * 10).toFixed(2) + 'deg');
+      s.style.setProperty('--rx', ((0.5 - y) * 8).toFixed(2) + 'deg');
+      s.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+      s.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+    }, { passive: true });
+    document.addEventListener('pointerout', function (e) {
+      var t = e.target.closest && e.target.closest('.v2-tiles .tile');
+      if (!t || (e.relatedTarget && t.contains(e.relatedTarget))) return;
+      var s = t.querySelector('.shot'); if (s) { s.style.removeProperty('--rx'); s.style.removeProperty('--ry'); }
+    });
+  });
+})();"""
+
 PAGES = {
     "podcast.html": (
         ".v2-pod-hero .kit-stats{gap:var(--sp-3) clamp(2.2rem,5vw,4rem);max-width:48rem;flex-wrap:nowrap}"
@@ -121,7 +164,29 @@ PAGES = {
         "html.v4-scrub .v2-pull .v4w{color:var(--edge-hi);transition:color .45s var(--ease)}"
         "html.v4-scrub .v2-pull .v4w.on{color:var(--white)}"
     ),
+    "library.html": (
+        # the chart arrives: the bars grow from the baseline, the dots settle on them, the longest's marker draws
+        "@keyframes v4p-rise{from{transform:scaleY(0)}}"
+        "@keyframes v4p-dots{from{opacity:0;transform:translateY(14px)}}"
+        "@keyframes v4p-mark{from{transform:scaleY(0)}}"
+        "@keyframes v4p-guide{from{transform:scaleX(0)}}"
+        "@keyframes v4p-fade{from{opacity:0}}"
+        "html.v4-grow .dk-tg-library{will-change:transform}"
+        "html.v4-grow .dk-tg-library .d{transform-box:fill-box;transform-origin:50% 100%;animation:v4p-rise 1.4s var(--ease) .2s both}"
+        "html.v4-grow .dk-tg-library path[stroke-width]{animation:v4p-dots .9s var(--ease) 1s both}"
+        "html.v4-grow .dk-tg-library .a{transform-box:fill-box;transform-origin:50% 100%;animation:v4p-mark .8s var(--ease) 1.4s both}"
+        "html.v4-grow .dk-tg-library .g{transform-box:fill-box;transform-origin:100% 50%;animation:v4p-guide .8s var(--ease) 1.8s both}"
+        "html.v4-grow .dk-tg-library :is(.fa,.val){animation:v4p-fade .6s var(--ease) 2.1s both}"
+        # the tiles lean towards the mouse, a soft light where it is
+        "html.v4-tilt .v2-tiles .tile .shot{position:relative;transform:perspective(800px) translateY(var(--ty,0px)) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));"
+        "transition:transform .6s var(--ease),box-shadow .4s var(--ease)}"
+        "html.v4-tilt .v2-tiles .tile:is(:hover,:focus-visible) .shot{--ty:-4px;transition:transform .18s var(--ease),box-shadow .4s var(--ease)}"
+        "html.v4-tilt .v2-tiles .tile .shot::after{content:\"\";position:absolute;inset:0;pointer-events:none;opacity:0;"
+        "background:radial-gradient(60% 60% at var(--mx,50%) var(--my,50%),rgba(246,244,244,.14),transparent 70%);transition:opacity .4s var(--ease)}"
+        "html.v4-tilt .v2-tiles .tile:hover .shot::after{opacity:1}"
+    ),
 }
+SCRIPTS = {"podcast.html": POD_JS, "library.html": LIB_JS}
 
 
 def main():
@@ -133,7 +198,7 @@ def main():
             raise SystemExit("v4_polish: no single <!-- site-schema --> in " + rel)
         html = html.replace("<!-- site-schema -->",
                             "<!--v4p:polish--><style>%s</style>%s<!--/v4p:polish-->\n<!-- site-schema -->"
-                            % (css, "<script>%s</script>" % POD_JS if rel == "podcast.html" else ""), 1)
+                            % (css, "<script>%s</script>" % SCRIPTS[rel] if rel in SCRIPTS else ""), 1)
         if rel == "podcast.html" and POD_LOADER[1] not in html:
             if html.count(POD_LOADER[0]) != 1:
                 raise SystemExit("v4_polish: podcast.html: the globe loader is not there once")
