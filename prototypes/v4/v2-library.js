@@ -166,7 +166,7 @@
 
   $("pager").addEventListener("click", function (e) {
     var b = e.target.closest(".v2-pg"); if (!b || b.disabled) return;
-    state.page = +b.dataset.p; draw(true);
+    arrive(function () { state.page = +b.dataset.p; draw(false); });   // arrive: see CHANGING SERIES, below
   });
   chips.forEach(function (b) {
     b.addEventListener("click", function () {
@@ -186,9 +186,11 @@
     if (s && !chips.some(function (b) { return b.dataset.s === s; })) s = "";
     state.s = s;
     state.page = (m = /(?:^|&)p=(\d+)/.exec(h)) ? +m[1] : 1;
-    draw(!!(s || h === "all"));
+    draw(false);
+    return !!(s || h === "all");
   }
-  window.addEventListener("hashchange", function () { swap(route); });
+  function asks() { return /(?:^|[#&])s=|^#all$/.test(location.hash); }
+  window.addEventListener("hashchange", function () { if (asks()) arrive(route); else swap(route); });
 
   /* CHANGING SERIES (owner, 20 Oct 2026: the stone portal "is old and doesnt match the design of the sites
      immersive modern look"). A change of series moves the list itself, not a curtain over it: the episodes on
@@ -225,13 +227,19 @@
     if (!a || a.classList.contains("zero")) return;
     ev.preventDefault();
     var shot = a.querySelector(".shot");
-    var pick = function () { state.s = a.getAttribute("data-t"); state.page = 1; state.q = ""; $("q").value = ""; draw(false); };
-    var top = $("browse").getBoundingClientRect().top + scrollY - 70;
-    if (slow || !document.body.animate) { pick(); scrollTo({ top: top, behavior: "auto" }); return; }
-    if (shot) shot.animate({ transform: ["scale(1)", "scale(.96)", "scale(1)"] }, { duration: 420, easing: EASE });
-    if (Math.abs(scrollY - top) < 60) { swap(pick); return; }
-    // the list is off screen: it becomes the series at once, and arrives as the page settles on it
-    var me = ++turn; pick();
+    if (shot && !slow && shot.animate) shot.animate({ transform: ["scale(1)", "scale(.96)", "scale(1)"] }, { duration: 420, easing: EASE });
+    arrive(function () { state.s = a.getAttribute("data-t"); state.page = 1; state.q = ""; $("q").value = ""; draw(false); });
+  });
+
+  /* Going to the list (a tile, a page number, an address that names a series): when the list is already
+     in view it changes in place (swap); when it is not, it becomes what was asked at once, hidden, the page
+     glides to it, and the heading and episodes arrive as the page settles. */
+  function listTop() { return $("browse").getBoundingClientRect().top + scrollY - 70; }
+  function arrive(change) {
+    var top = listTop();
+    if (slow || !document.body.animate) { change(); scrollTo({ top: listTop(), behavior: "instant" }); return; }
+    if (Math.abs(scrollY - top) < 60) { swap(change); return; }
+    var me = ++turn; change(); top = listTop();
     cards.forEach(function (c) { if (!c.hidden) c.style.opacity = "0"; });
     $("browseH").style.opacity = "0";
     var done = false, fin = function () {
@@ -242,7 +250,18 @@
     if ("onscrollend" in window) window.addEventListener("scrollend", fin);
     setTimeout(fin, 1100);
     scrollTo({ top: top, behavior: "smooth" });
-  });
+  }
 
-  route();
+  // arriving from another page with a series (or #all) in the address: no long glide down the page; it
+  // opens on the list, where the heading and the episodes arrive
+  if (route()) {
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    scrollTo({ top: listTop(), behavior: "instant" });            // before the first paint: no glide down the page
+    document.documentElement.classList.remove("v4-land");         // the page shows, on the list (tools/v4_polish.py)
+    if (!slow && document.body.animate) enter();
+    // pictures above the list may change its place as they load: keep the list where it was put
+    window.addEventListener("load", function () {
+      var t = listTop(); if (Math.abs(scrollY - t) > 20) scrollTo({ top: t, behavior: "instant" });
+    }, { once: true });
+  }
 })();

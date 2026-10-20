@@ -30,7 +30,9 @@ were. Rewritten whole each run, so the pass is idempotent.
     and drifts up more slowly than the page as the opening scrolls away; on
     a desktop the series tiles lean towards the mouse in 3D with a soft light
     where it is, and glide back level. The tiles' drawings draw themselves in
-    as before (v2-immersive.js). Reduced motion: the page as it was.
+    as before (v2-immersive.js). Reduced motion: the page as it was. Arriving
+    with a series in the address, the page stays unseen for the instant it
+    takes v2-library.js to open it on the list (at most 1.2 s).
   - knowledge base (roadmap step 3): on the hub, the climb in the opening
     keeps its route, dimmer, and a bright trace climbs it with the scroll with
     a glider at its tip, from 600 m to 4,000 m as the opening scrolls away;
@@ -141,6 +143,13 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V4 = os.path.join(ROOT, "prototypes", "v4")
 
 LIB_JS = r"""(function () {
+  /* arriving with a series (or #all) in the address: the page stays unseen for the moment it takes
+     v2-library.js to put the list in view, so it opens on the list rather than flashing the top first;
+     v2-library.js lifts this, and so does a timer, so the page can never stay unseen */
+  if (/(?:^|[#&])s=|^#all$/.test(location.hash)) {
+    var h0 = document.documentElement; h0.classList.add('v4-land');
+    setTimeout(function () { h0.classList.remove('v4-land'); }, 1200);
+  }
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var html = document.documentElement;
   html.classList.add('v4-grow');
@@ -356,6 +365,7 @@ PAGES = {
         "html.v4-tilt .v2-tiles .tile .shot::after{content:\"\";position:absolute;inset:0;pointer-events:none;opacity:0;"
         "background:radial-gradient(60% 60% at var(--mx,50%) var(--my,50%),rgba(246,244,244,.14),transparent 70%);transition:opacity .4s var(--ease)}"
         "html.v4-tilt .v2-tiles .tile:hover .shot::after{opacity:1}"
+    "html.v4-land body{opacity:0}"
     ),
 }
 PAGES["knowledge-base.html"] = KB_HUB_CSS
