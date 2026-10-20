@@ -432,12 +432,16 @@ trips, the record and Expeditions pages, the samples) are not rebuilt; the
 pages that follow the live data (the library, the podcast's newest episode,
 the topics, the search, new knowledge base, topic and text twins) are.
 
-**Before the switch-over (not yet done):** a new episode stops the v4 build
-on purpose. `tools/v2_episode.py` cannot read the live episode header as it
-has been since 2 Oct (the series mark, timeline and map box), so it would
-build an episode page without its hero and player; `v4_build.py` removes
-such a page and fails. The generator must learn the new header before the
-switch-over, or the first episode after it fails the deploy. Also not yet
+**Before the switch-over: the new episode header, done (20 Oct 2026).** Since 2 Oct the live
+episode page names the episode in a series badge (`<a class="cd-series">`) where the bare
+`<p class="cd-epno">` was, and carries its own chapter timeline (`nav.cd-tl`) and On The Map box
+(`.cd-box.cd-map`). `tools/v2_episode.py` now reads either header, takes the episode number from
+the badge, and leaves out the live timeline and map box (v4 draws its own timeline under the
+player and its own globe in the header; the live scripts for both check that their part is there
+and do nothing without it). Proved end to end: in a clean checkout with one episode's v4 page
+removed, `v4_build.py` built it as a new episode with its hero and player, and every part matched
+the committed page (the other differences were the live page's own later changes: its date and
+its transcript reader); no script errors. A new episode no longer stops the build. Also not yet
 seen: the chain on a GitHub runner (checked here with Python 3.11, Pillow
 12.3.0, numpy 2.4.6 and contourpy 1.3.3, the versions the draft pins).
 

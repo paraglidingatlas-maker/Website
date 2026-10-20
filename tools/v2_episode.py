@@ -149,6 +149,10 @@ def build(slug, meta):
     p_end = src.index("\n" + indent + "</div>", open_at) + len("\n" + indent + "</div>")
     player, src = cut(src, p_start, p_end)
     quote, src = grab(src, r'\n\s*<figure class="cd-quote">', "</figure>")
+    # the live page's own chapter timeline under the player and its On The Map box (both since 2 Oct 2026):
+    # this page draws its own timeline (ep2-timeline, below) and v4 its own globe in the header, so they go
+    src = re.sub(r'\n\s*<nav class="cd-tl"[^>]*>.*?</nav>\n', "\n", src, count=1, flags=re.S)
+    src = re.sub(r'\n\s*<div class="cd-box cd-map">.*?\n      </div>\n', "\n", src, count=1, flags=re.S)
     guestbox, src = grab(src, r'\n\s*<div class="cd-box">\s*<h2>The Guest</h2>', "\n      </div>\n")
 
     # ---- hero ----
@@ -157,10 +161,12 @@ def build(slug, meta):
     # 26 Sep 2026); the portrait layout is kept in the code but no longer used
     face = False
     series = ep.get("series", "")
-    head_re = re.compile(r'<p class="cd-epno">.*?</p>\s*<div class="cd-headgrid">.*?</header>', re.S)
+    # the live header names the episode in a series badge since 2 Oct 2026 (<a class="cd-series">, the series'
+    # drawing, name and number); an episode with no series drawing keeps the bare <p class="cd-epno">
+    head_re = re.compile(r'(?:<p class="cd-epno">.*?</p>|<a class="cd-series"[^>]*>.*?</a>)\s*<div class="cd-headgrid">.*?</header>', re.S)
     submeta = re.search(r'<div class="cd-submeta">.*?</div>', src, re.S).group(0)
     host = guest == HOST            # the host's own episodes (AMA, notes): no "with", no guest card
-    no = re.search(r'<p class="cd-epno">(.*?)</p>', src)
+    no = re.search(r'<p class="cd-epno">(.*?)</p>', src) or re.search(r'<span class="cd-series-ep">(.*?)</span>', src)
     epno = " &middot; ".join(x for x in ((no.group(1).strip() if no else ""), e(series)) if x)
     hero = ('<p class="cd-epno">%s</p>' % epno.replace("\\", "\\\\")
             + '\n    <div class="ep2-hero%s">' % ("" if face else " is-media")
