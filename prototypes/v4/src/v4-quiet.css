@@ -27,6 +27,19 @@ html.v4-quiet :where(a.kit-card,a.kit-panel):is(:hover,:focus-visible,:has(:focu
 /* the drawn flight line holds its dashes still */
 html.v4-quiet .dk .fl{animation:none}
 
+/* the figures: solid, in the display face, never outlined */
+html.v4-quiet .kit-stat b{-webkit-text-stroke:0;-webkit-text-fill-color:var(--white);color:var(--white);font-weight:700;font-variant-numeric:tabular-nums}
+
+/* the folding questions (home's why fly with us, the podcast's what you can expect): under hairlines, no drawn icons, no boxes */
+html.v4-quiet .v4-why-item{background:none;border-image:none;border-top:1px solid var(--line)}
+html.v4-quiet .v4-why-item>summary{grid-template-columns:minmax(0,1fr) auto;padding:var(--sp-3) 0}
+html.v4-quiet .v4-why-item>summary .v2-ic{display:none}
+html.v4-quiet .v4-why-item>p{padding:0 0 var(--sp-3)}
+html.v4-quiet .v4-why-item>summary h3{transition:color .25s var(--ease)}
+
+/* the newsletter: no glow behind it */
+html.v4-quiet .v2-nl{background:none;border-image:none;border-top:1px solid var(--line)}
+
 /* ---- Home ---- */
 
 /* the destinations' facts: the figures big and still, their labels quiet small capitals */
@@ -37,14 +50,9 @@ html.q-home .v2-fb-facts dd b{font-family:var(--font-display);font-weight:600;fo
 html.q-home .v2-deps.kit-panel{background:none;border-image:none;border-top:1px solid var(--line)}
 html.q-home a.v2-dep:hover{padding-left:0}
 html.q-home a.v2-dep:hover>i{translate:none}
-
-/* why fly with us: three questions under hairlines, no drawn icons, no boxes */
-html.q-home .v4-why-item{background:none;border-image:none;border-top:1px solid var(--line)}
 html.q-home .v4-why-item:last-child{border-bottom:1px solid var(--line)}
-html.q-home .v4-why-item>summary{grid-template-columns:minmax(0,1fr) auto;padding:var(--sp-3) 0}
-html.q-home .v4-why-item>summary .v2-ic{display:none}
-html.q-home .v4-why-item>p{padding:0 0 var(--sp-3)}
-html.q-home .v4-why-item>summary h3{transition:color .25s var(--ease)}
 
-/* the newsletter and the call: no glow behind them */
-html.q-home .v2-nl{background:none;border-image:none;border-top:1px solid var(--line)}
+/* ---- Podcast ---- */
+
+/* the guests' names behind the opening hold still: none lights in turn */
+html.q-podcast .v4-voices .is-lit{animation:none}
