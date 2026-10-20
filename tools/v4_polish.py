@@ -53,7 +53,10 @@ were. Rewritten whole each run, so the pass is idempotent.
     clear of them; and the
     questions have more room, larger type and an answer column clear of the
     open question's orange edge; each answer is as large as its question
-    (owner: small answers were hard to read), its sources at body size.
+    (owner: small answers were hard to read), its sources at body size; the
+    note under the questions' heading at body size and, on the hub, the
+    episode titles at 16 px (reading text, from the owner's preview: the
+    series' questions stay as they were).
 
     python3 tools/v4_polish.py            # every page done so far
 
@@ -192,7 +195,7 @@ KB_HUB_CSS = (
     "html body .clb-face{aspect-ratio:auto;overflow:visible;background:none;border:0;border-radius:0}"
     "html body .clb-face img{aspect-ratio:16/9;height:auto;border-radius:8px;border:1px solid var(--edge)}"
     "html body .clb-face:hover img{transform:none}"
-    "html body .clb-face .clb-face-t{position:static;background:none;border:0;padding:.65rem .1rem 0;font-size:.9rem;line-height:1.35;"
+    "html body .clb-face .clb-face-t{position:static;background:none;border:0;padding:.65rem .1rem 0;font-size:1rem;line-height:1.35;"
     "color:var(--gray-light);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:color .3s var(--ease)}"
     "html body .clb-face:is(:hover,:focus-visible) .clb-face-t{color:var(--white)}"
     "@media (max-width:760px){html body .clb-strip{grid-auto-columns:minmax(180px,64vw)}}"
@@ -259,6 +262,8 @@ KB_CAT_CSS = (
     "html body[data-v2] .faq .faq-r details p{font-size:clamp(1.08rem,1.5vw,1.3rem);line-height:1.7;max-width:46rem}"
     "html body .faq-r details .src{font-size:var(--fs-body)}html body .faq-r details .src span{font-size:inherit}"
     "html body .faq-r details .src{display:inline-block;margin-bottom:1.3rem}"
+    # the note under the questions' heading at the page's body size (owner, 20 Oct 2026: reading text, approved)
+    "html body .faq .faq-l p{font-size:var(--fs-body);line-height:1.65;color:var(--gray-light)}"
     "@media (max-width:760px){html body .faq-r details[open]{margin-left:0;padding-left:1rem}"
     "html body .faq-r details .src{display:block;margin:0 0 .5rem}html body .faq-r details .src + .src{margin-left:0}"
     "html body .faq-r details .src:last-of-type{margin-bottom:1.3rem}}"

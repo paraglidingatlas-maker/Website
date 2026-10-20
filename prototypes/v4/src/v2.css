@@ -2890,6 +2890,23 @@ html .tm-cards{left:var(--edge-x);width:min(26rem,calc(100% - 2 * var(--edge-x))
       run on the switched site, reads a hidden element in an episode page as
       a clipped transcript. */
 @media (pointer:coarse){ html :is(.ep2-timeline,.ep-au-chap){display:none;} }
+/* THE RECORD ATTEMPT IN THE HEADER (owner, 20 Oct 2026: "b9 is final"). The fifth item of the
+   menu, written by tools/v4_nav_record.py: three short speed streaks in orange before
+   "Speed Record". Under the pointer the streaks draw back a little, as if picking up speed. The
+   phone's full-screen menu (v4-menu.js) carries the same item under its sections. */
+.page-wrap>nav .v4-nav a.v4-wr{display:inline-flex;align-items:center;gap:.5rem}
+.v4-wr svg{width:16px;height:10px;flex:none;overflow:visible;fill:none;stroke:var(--orange);stroke-width:1.6;stroke-linecap:round}
+.v4-wr svg path{transition:transform .4s var(--ease)}
+.v4-wr:is(:hover,:focus-visible) svg path{transform:translateX(-3px)}
+.v4-wr:is(:hover,:focus-visible) svg path+path{transform:translateX(-5px)}
+/* between the width where the menu shows (941px) and 1099px the five items and the two buttons do not fit
+   with the words: there the item is its streaks alone, its words kept for screen readers and its title */
+@media (max-width:1099px){.page-wrap>nav .v4-nav a.v4-wr{font-size:0;gap:0}}
+.v4-menu-wr{display:inline-flex;align-items:center;gap:.6rem;margin-top:var(--sp-3);color:var(--white);
+  font-family:var(--font-display);font-weight:600;font-size:1.05rem;text-decoration:none}
+.v4-menu-wr svg{width:20px;height:12px}
+.v4-menu-wr small{font-family:var(--font-body);font-weight:400;font-size:var(--fs-small);color:var(--gray)}
+
 /* ONE CURVE (owner, 20 Oct 2026). Every transition on a v4 page moves on the site's own curve, --ease:
    quick to start, gliding to a stop. The ones set by the live sheets every v4 page also loads
    (styles.css, destinations.css), which v4 never edits, are brought onto it here. Left as they are:

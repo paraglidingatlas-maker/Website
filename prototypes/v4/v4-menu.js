@@ -48,6 +48,8 @@ menu.innerHTML =
 '<input id="v4q" type="search" autocomplete="off" placeholder="Search" aria-controls="v4hits">' +
 '<ol class="v4-hits" id="v4hits" aria-live="polite"></ol></div>' +
 '<ul class="v4-menu-go">' + go + '</ul>' +
+(d.querySelector(".v4-nav .v4-wr") ? '<a class="v4-wr v4-menu-wr" href="' + BASE + 'record-attempt.html">' +
+d.querySelector(".v4-nav .v4-wr svg").outerHTML + 'Speed Record <small>Kerio Valley, Kenya &middot; 18 Jan to 12 Feb 2027</small></a>' : "") +
 '<div class="v4-menu-foot"><a class="btn-solid" href="' + BASE + 'enquire.html"><span>Enquire Now</span></a>' +
 '<a class="btn-lines" href="' + BASE + 'sitemap.html">Sitemap</a></div>' +
 '</div>';
