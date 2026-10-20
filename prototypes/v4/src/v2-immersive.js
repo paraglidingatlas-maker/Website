@@ -1081,3 +1081,45 @@
     }
   }).observe(grid, { subtree: true, attributes: true, attributeFilter: ["style"] });
 })();
+
+/* 17. FOLDS THAT GLIDE (owner, 20 Oct 2026: "every time i click read more it
+      opens up without any smoothness, feels very abrupt"). Every fold on a v4
+      page (Read more, the trip notes, Why fly with us, What you can expect,
+      the trips' questions, the sitemap's series) opens and closes on the
+      site's curve: its height eases from the summary to the whole, and what
+      it opens fades up into place; closing eases it back. The knowledge base
+      questions glide by their own page's script (tools/v4_polish.py) and are
+      left to it. Reduced motion: a fold opens at once, as before. */
+(function () {
+  "use strict";
+  var w = window, d = document;
+  if (!d.addEventListener || (w.matchMedia && w.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+  var EASE = "cubic-bezier(.2,.8,.2,1)";
+  d.addEventListener("click", function (e) {
+    var sum = e.target.closest && e.target.closest("summary");
+    if (!sum || e.defaultPrevented || e.button) return;
+    var det = sum.parentNode;
+    if (!det || det.tagName !== "DETAILS" || det.closest(".faq-r") || !det.animate) return;
+    if (e.target.closest("a,button,input,select,textarea") && e.target.closest("a,button,input,select,textarea") !== sum) return;
+    e.preventDefault();
+    if (det.__fold) det.__fold.cancel();
+    var start = det.offsetHeight, kids, end;
+    // both heights measured as the page lays the fold out, before it is clipped for the glide
+    if (det.open) { det.open = false; end = det.offsetHeight; det.open = true; }
+    else { det.open = true; end = det.offsetHeight; }
+    det.style.overflow = "hidden"; det.style.boxSizing = "border-box";
+    function done() { det.__fold = null; det.style.overflow = det.style.boxSizing = ""; }
+    // a long fold takes longer than a short one, so neither rushes nor drags
+    var dur = Math.max(360, Math.min(820, 300 + Math.abs(end - start) * 0.45));
+    det.__fold = det.animate({ height: [start + "px", end + "px"] }, { duration: dur, easing: EASE });
+    if (end < start) {
+      det.__fold.onfinish = function () { det.open = false; done(); };
+    } else {
+      det.__fold.onfinish = done;
+      kids = [].slice.call(det.children).filter(function (k) { return k !== sum; });
+      kids.forEach(function (k, i) {
+        if (k.animate) k.animate({ opacity: [0, 1], transform: ["translateY(8px)", "none"] }, { duration: 460, delay: 70 + i * 40, easing: EASE, fill: "backwards" });
+      });
+    }
+  });
+})();

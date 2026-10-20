@@ -890,3 +890,34 @@ if (row) row.style.setProperty("--p", ((parseFloat(t.style.width) || 0) / 100).t
 }
 }).observe(grid, { subtree: true, attributes: true, attributeFilter: ["style"] });
 })();
+(function () {
+"use strict";
+var w = window, d = document;
+if (!d.addEventListener || (w.matchMedia && w.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+var EASE = "cubic-bezier(.2,.8,.2,1)";
+d.addEventListener("click", function (e) {
+var sum = e.target.closest && e.target.closest("summary");
+if (!sum || e.defaultPrevented || e.button) return;
+var det = sum.parentNode;
+if (!det || det.tagName !== "DETAILS" || det.closest(".faq-r") || !det.animate) return;
+if (e.target.closest("a,button,input,select,textarea") && e.target.closest("a,button,input,select,textarea") !== sum) return;
+e.preventDefault();
+if (det.__fold) det.__fold.cancel();
+var start = det.offsetHeight, kids, end;
+if (det.open) { det.open = false; end = det.offsetHeight; det.open = true; }
+else { det.open = true; end = det.offsetHeight; }
+det.style.overflow = "hidden"; det.style.boxSizing = "border-box";
+function done() { det.__fold = null; det.style.overflow = det.style.boxSizing = ""; }
+var dur = Math.max(360, Math.min(820, 300 + Math.abs(end - start) * 0.45));
+det.__fold = det.animate({ height: [start + "px", end + "px"] }, { duration: dur, easing: EASE });
+if (end < start) {
+det.__fold.onfinish = function () { det.open = false; done(); };
+} else {
+det.__fold.onfinish = done;
+kids = [].slice.call(det.children).filter(function (k) { return k !== sum; });
+kids.forEach(function (k, i) {
+if (k.animate) k.animate({ opacity: [0, 1], transform: ["translateY(8px)", "none"] }, { duration: 460, delay: 70 + i * 40, easing: EASE, fill: "backwards" });
+});
+}
+});
+})();
