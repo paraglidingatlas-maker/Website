@@ -2902,10 +2902,11 @@ html .tm-cards{left:var(--edge-x);width:min(26rem,calc(100% - 2 * var(--edge-x))
 /* between the width where the menu shows (941px) and 1099px the five items and the two buttons do not fit
    with the words: there the item is its streaks alone, its words kept for screen readers and its title */
 @media (max-width:1099px){.page-wrap>nav .v4-nav a.v4-wr{font-size:0;gap:0}}
-.v4-menu-wr{display:inline-flex;align-items:center;gap:.6rem;margin-top:var(--sp-3);color:var(--white);
-  font-family:var(--font-display);font-weight:600;font-size:1.05rem;text-decoration:none}
-.v4-menu-wr svg{width:20px;height:12px}
-.v4-menu-wr small{font-family:var(--font-body);font-weight:400;font-size:var(--fs-small);color:var(--gray)}
+.v4-menu-wr{display:inline-grid;align-self:flex-start;justify-self:start;grid-template-columns:auto auto;justify-content:start;align-items:center;gap:.2rem .7rem;
+  margin-top:var(--sp-3);color:var(--white);font-family:var(--font-display);font-weight:600;font-size:1.05rem;
+  white-space:nowrap;text-decoration:none}
+.v4-menu-wr svg{width:20px;height:12px;grid-row:1 / span 2}
+.v4-menu-wr small{grid-column:2;white-space:normal;font-family:var(--font-body);font-weight:400;font-size:var(--fs-small);color:var(--gray)}
 
 /* ONE CURVE (owner, 20 Oct 2026). Every transition on a v4 page moves on the site's own curve, --ease:
    quick to start, gliding to a stop. The ones set by the live sheets every v4 page also loads
