@@ -43,11 +43,12 @@ the owner's current queue and what the last session learnt doing it.
    start it again from this brief. `partners.html` is the shell (head, menu,
    footer) that the record, Expeditions and feed-option generators copy:
    leave those parts alone and prove their pages unchanged.
-3. **The site-wide pass, only on**: home, podcast, library, episode pages,
-   knowledge base, topics, about pages. One page type at a time, screenshots
-   to the owner after each, the way India was done (report: "India, less but
-   better"). Episode and topic pages are templates over about 140 pages: build
-   the change in a tool, check a sample of pages, and prove the rebuild.
+3. **The site-wide pass, only on**: home, podcast, library, knowledge base,
+   topics, about pages. Episode pages are off the list for now (owner, 20 Oct).
+   One page type at a time, screenshots to the owner after each, the way India
+   was done (report: "India, less but better"). Topic pages are a template
+   over about 50 pages: build the change in a tool, check a sample of pages,
+   and prove the rebuild.
 
 Then, before any switch-over: `tools/v2_episode.py` must read the live episode
 header of 2 Oct (a new episode stops `tools/v4_build.py` until then; see the
