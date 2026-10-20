@@ -32,7 +32,10 @@ were. Rewritten whole each run, so the pass is idempotent.
     where it is, and glide back level. The tiles' drawings draw themselves in
     as before (v2-immersive.js). Reduced motion: the page as it was. Arriving
     with a series in the address, the page stays unseen for the instant it
-    takes v2-library.js to open it on the list (at most 1.2 s).
+    takes v2-library.js to open it on the list (at most 1.2 s). With a
+    series chosen the list opens on the series' introduction (v2-library.js):
+    its drawing, category, name, its question and knowledge base page (read
+    here from the knowledge base page into window.V4_SX) and its figures.
   - knowledge base (roadmap step 3): on the hub, the climb in the opening
     keeps its route, dimmer, and a bright trace climbs it with the scroll with
     a glider at its tip, from 600 m to 4,000 m as the opening scrolls away;
@@ -366,6 +369,22 @@ PAGES = {
         "background:radial-gradient(60% 60% at var(--mx,50%) var(--my,50%),rgba(246,244,244,.14),transparent 70%);transition:opacity .4s var(--ease)}"
         "html.v4-tilt .v2-tiles .tile:hover .shot::after{opacity:1}"
     "html.v4-land body{opacity:0}"
+    # the series' introduction (v2-library.js): its drawing, then its words and figures
+    ".v4-sx{display:grid;grid-template-columns:minmax(220px,340px) minmax(0,1fr);gap:clamp(1.5rem,4vw,3.5rem);align-items:center;"
+    "margin:0 0 var(--sp-5);padding-bottom:var(--sp-5);border-bottom:1px solid var(--line)}"
+    ".v4-sx[hidden]{display:none}"
+    ".v4-sx-art{border-radius:12px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.45);aspect-ratio:200/138;background:var(--card)}"
+    ".v4-sx-art svg{width:100%;height:100%;display:block}"
+    ".v4-sx-k{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin:0 0 .7rem}"
+    ".v4-sx-h{font-family:var(--font-display);font-weight:700;font-size:clamp(2.4rem,5vw,4rem);line-height:1.02;margin:0 0 .9rem;color:var(--white)}"
+    ".v4-sx-q{font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.5;color:var(--gray-light);margin:0 0 1.6rem;max-width:34ch}"
+    ".v4-sx-n{display:flex;flex-wrap:wrap;gap:1.2rem clamp(1.6rem,4vw,3rem);margin:0 0 1.6rem;padding-top:1.1rem;border-top:1px solid var(--line);max-width:34rem}"
+    ".v4-sx-n b{display:block;font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1;color:var(--white);font-variant-numeric:tabular-nums}"
+    ".v4-sx-n span{display:block;margin-top:.45rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}"
+    ".v4-sx-a{color:var(--white);text-decoration:none;border-bottom:1px solid var(--orange);padding-bottom:.2rem;font-weight:600;"
+    "transition:color .3s var(--ease)}"
+    ".v4-sx-a:hover{color:var(--orange)}"
+    "@media (max-width:760px){.v4-sx{grid-template-columns:1fr}}"
     ),
 }
 PAGES["knowledge-base.html"] = KB_HUB_CSS
@@ -374,6 +393,28 @@ for _f in sorted(os.listdir(os.path.join(V4, "knowledge-base"))):
     if _f.endswith(".html"):
         PAGES["knowledge-base/" + _f] = KB_CAT_CSS
         SCRIPTS["knowledge-base/" + _f] = KB_CAT_JS
+
+
+def series_intro():
+    """window.V4_SX for the library's series introduction (v2-library.js): each library series' question and
+    knowledge base page, read from the knowledge base page's own panels; the question in sentence case. Every
+    series must be found, or this stops."""
+    import html as H
+    import json
+    kb = open(os.path.join(V4, "knowledge-base.html"), encoding="utf-8").read()
+    lib = open(os.path.join(V4, "library.html"), encoding="utf-8").read()
+    K = {m.group(1): H.unescape(m.group(2)) for m in re.finditer(
+        r'<a class="clb-topic" href="knowledge-base/([a-z0-9-]+)\.html"><span>[^<]*</span><b>\d+</b><span class="v4-q">([^<]*)</span>', kb)}
+    out = {}
+    for t in (H.unescape(x) for x in re.findall(r'<a class="tile[^"]*" href="[^"]*" data-t="([^"]*)"', lib)):
+        w = re.sub(r"[^a-z0-9 ]", "", t.lower().replace("&", " ")).split()
+        hit = [x for x in ("-".join(w), "-".join(y for y in w if y != "and")) if x in K]
+        if not hit:
+            raise SystemExit("v4_polish: the library series %r has no knowledge base panel" % t)
+        q = K[hit[0]].lower()
+        q = re.sub(r"\bi\b", "I", q[:1].upper() + q[1:])
+        out[t] = {"q": q, "u": "knowledge-base/%s.html" % hit[0]}
+    return "window.V4_SX=" + json.dumps(out, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") + ";\n"
 
 
 def main():
@@ -385,7 +426,8 @@ def main():
             raise SystemExit("v4_polish: no single <!-- site-schema --> in " + rel)
         html = html.replace("<!-- site-schema -->",
                             "<!--v4p:polish--><style>%s</style>%s<!--/v4p:polish-->\n<!-- site-schema -->"
-                            % (css, "<script>%s</script>" % SCRIPTS[rel] if rel in SCRIPTS else ""), 1)
+                            % (css, "<script>%s</script>" % ((series_intro() if rel == "library.html" else "") + SCRIPTS[rel])
+                               if rel in SCRIPTS else ""), 1)
         if rel == "podcast.html" and POD_LOADER[1] not in html:
             if html.count(POD_LOADER[0]) != 1:
                 raise SystemExit("v4_polish: podcast.html: the globe loader is not there once")

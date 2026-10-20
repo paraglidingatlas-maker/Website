@@ -107,6 +107,43 @@
     if (location.hash !== h) history.replaceState(null, "", h || location.pathname + location.search);
   }
 
+  /* THE SERIES' INTRODUCTION (owner, 20 Oct 2026: "build the series intro"). With a series chosen the list
+     opens on the series itself: its drawing (its tile's), its category (its tile's words), its name, its
+     question and its knowledge base page (window.V4_SX, read from the knowledge base page by
+     tools/v4_polish.py), and its figures, counted here from its own episodes: how many, and the listening
+     time and the chapters when every one of its episodes has them (a total that left some out would mislead). */
+  var SX = window.V4_SX || {}, sxBox = null;
+  function intro() {
+    if (!sxBox) {
+      sxBox = document.createElement("div"); sxBox.className = "v4-sx"; sxBox.hidden = true;
+      var hd = $("browse").querySelector(".kit-head");
+      hd.parentNode.insertBefore(sxBox, hd);
+    }
+    var k = state.s, d = k && SX[k];
+    if (!d) { sxBox.hidden = true; sxBox.innerHTML = ""; return; }
+    if (sxBox.dataset.s === k && !sxBox.hidden) return;
+    var mine = cards.filter(function (c) { return c.dataset.s === k; });
+    var mins = mine.map(function (c) { return +c.dataset.m || 0; });
+    var chs = mine.map(function (c) { var e = c.querySelector(".ep-ch"); return e ? parseInt(e.textContent, 10) || 0 : 0; });
+    var sum = function (a) { return a.reduce(function (x, y) { return x + y; }, 0); };
+    var all = function (a) { return a.length && a.every(function (x) { return x > 0; }); };
+    var tile = null;
+    document.querySelectorAll(".v2-tiles .tile").forEach(function (t) { if (t.getAttribute("data-t") === k) tile = t; });
+    var meta = tile && tile.querySelector(".meta"), cat = meta ? meta.textContent.replace(/^.*? in /, "") : "";
+    var m = sum(mins), fig = '<div><b>' + mine.length + '</b><span>' + (mine.length === 1 ? "Episode" : "Episodes") + '</span></div>';
+    if (all(mins)) fig += '<div><b>' + (m >= 60 ? Math.floor(m / 60) + "h" + (m % 60 ? " " + (m % 60) + "m" : "") : m + "m") + '</b><span>Listening</span></div>';
+    if (all(chs)) fig += '<div><b>' + sum(chs) + '</b><span>Chapters</span></div>';
+    var esc = function (t) { return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;"); };
+    sxBox.innerHTML =
+      '<div class="v4-sx-art" aria-hidden="true">' + (tile ? tile.querySelector(".shot").innerHTML : "") + '</div>' +
+      '<div class="v4-sx-txt">' + (cat ? '<p class="v4-sx-k">Series &middot; ' + esc(cat) + '</p>' : "") +
+      '<h2 class="v4-sx-h">' + esc(k) + '</h2>' +
+      '<p class="v4-sx-q">' + esc(d.q) + '</p>' +
+      '<div class="v4-sx-n">' + fig + '</div>' +
+      '<a class="v4-sx-a" href="' + d.u + '">Read the series in the knowledge base <span aria-hidden="true">&rarr;</span></a></div>';
+    sxBox.dataset.s = k; sxBox.hidden = false;
+  }
+
   function draw(scroll) {
     var words = norm(state.q).split(" ").filter(Boolean);
     var hits = cards.filter(function (c) {
@@ -131,7 +168,8 @@
         (state.s ? " in " + state.s : "") + (words.length ? " matching “" + state.q.trim() + "”" : "") +
         (pages > 1 ? " · page " + state.page + " of " + pages : "")
       : "";
-    $("browseH").textContent = state.s || (words.length ? "Search Results" : "All Episodes");
+    $("browseH").textContent = state.s ? (SX[state.s] ? "The Episodes" : state.s) : (words.length ? "Search Results" : "All Episodes");
+    intro();
     chips.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.s === state.s)); });
 
     var pg = $("pager");
@@ -201,11 +239,21 @@
   var EASE = "cubic-bezier(.2,.8,.2,1)", turn = 0;
   function seen(el) { var r = el.getBoundingClientRect(); return r.bottom > -40 && r.top < innerHeight + 40; }
   function enter() {
-    var head = $("browseH"), cnt = $("cnt");
+    var head = $("browseH"), cnt = $("cnt"), lead = 0;
+    if (sxBox && !sxBox.hidden) {
+      lead = 240;
+      var art = sxBox.querySelector(".v4-sx-art");
+      if (art) art.animate({ opacity: [0, 1], transform: ["scale(.96)", "none"] }, { duration: 760, easing: EASE, fill: "backwards" });
+      [].forEach.call(sxBox.querySelectorAll(".v4-sx-txt > *"), function (el, i) {
+        el.animate(el.classList.contains("v4-sx-h")
+          ? { clipPath: ["inset(0 100% 0 0)", "inset(0 0 0 0)"], transform: ["translateY(8px)", "none"] }
+          : { opacity: [0, 1], transform: ["translateY(14px)", "none"] }, { duration: 680, delay: 60 + i * 70, easing: EASE, fill: "backwards" });
+      });
+    }
     head.animate({ clipPath: ["inset(0 100% 0 0)", "inset(0 0 0 0)"], transform: ["translateY(8px)", "none"] }, { duration: 700, easing: EASE });
     if (cnt) cnt.animate({ opacity: [0, 1] }, { duration: 500, delay: 220, easing: EASE, fill: "backwards" });
     cards.filter(function (c) { return !c.hidden && seen(c); }).slice(0, 24).forEach(function (c, i) {
-      c.animate({ opacity: [0, 1], transform: ["translateY(24px)", "none"] }, { duration: 640, delay: 60 + i * 38, easing: EASE, fill: "backwards" });
+      c.animate({ opacity: [0, 1], transform: ["translateY(24px)", "none"] }, { duration: 640, delay: lead + 60 + i * 38, easing: EASE, fill: "backwards" });
     });
   }
   function swap(change) {
@@ -215,6 +263,7 @@
       return c.animate({ opacity: [1, 0], transform: ["none", "translateY(-12px)"] }, { duration: 220, delay: Math.min(i, 10) * 14, easing: "cubic-bezier(.5,0,.75,.2)", fill: "forwards" });
     });
     outs.push(head.animate({ opacity: [1, 0], filter: ["blur(0)", "blur(6px)"] }, { duration: 220, easing: "cubic-bezier(.5,0,.75,.2)", fill: "forwards" }));
+    if (sxBox && !sxBox.hidden && seen(sxBox)) outs.push(sxBox.animate({ opacity: [1, 0], transform: ["none", "translateY(-10px)"] }, { duration: 220, easing: "cubic-bezier(.5,0,.75,.2)", fill: "forwards" }));
     setTimeout(function () {
       if (me !== turn) return;
       change();
@@ -241,10 +290,10 @@
     if (Math.abs(scrollY - top) < 60) { swap(change); return; }
     var me = ++turn; change(); top = listTop();
     cards.forEach(function (c) { if (!c.hidden) c.style.opacity = "0"; });
-    $("browseH").style.opacity = "0";
+    $("browseH").style.opacity = "0"; if (sxBox) sxBox.style.opacity = "0";
     var done = false, fin = function () {
       if (done) return; done = true; window.removeEventListener("scrollend", fin);
-      cards.forEach(function (c) { c.style.opacity = ""; }); $("browseH").style.opacity = "";
+      cards.forEach(function (c) { c.style.opacity = ""; }); $("browseH").style.opacity = ""; if (sxBox) sxBox.style.opacity = "";
       if (me === turn) enter();
     };
     if ("onscrollend" in window) window.addEventListener("scrollend", fin);
