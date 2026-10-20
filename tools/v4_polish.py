@@ -52,7 +52,8 @@ were. Rewritten whole each run, so the pass is idempotent.
     words before this pass too, the drawing draws smaller towards the right,
     clear of them; and the
     questions have more room, larger type and an answer column clear of the
-    open question's orange edge.
+    open question's orange edge; each answer is as large as its question
+    (owner: small answers were hard to read), its sources at body size.
 
     python3 tools/v4_polish.py            # every page done so far
 
@@ -253,7 +254,10 @@ KB_CAT_CSS = (
     # the questions: more room, larger questions, a readable answer clear of the open question's orange edge
     "html body .faq-r summary{padding:1.35rem 0;font-size:clamp(1.08rem,1.5vw,1.3rem);line-height:1.35}"
     "html body .faq-r details[open]{padding-left:1.5rem;margin-left:-1.625rem}"
-    "html body[data-v2] .faq-r details p{font-size:1.05rem;line-height:1.75;max-width:38rem}"
+    # the answer as large as its question (owner, 20 Oct 2026: small answers were hard to read), its colour,
+    # weight and face kept; the column wider to suit; the sources under it at the page's body size
+    "html body[data-v2] .faq .faq-r details p{font-size:clamp(1.08rem,1.5vw,1.3rem);line-height:1.7;max-width:46rem}"
+    "html body .faq-r details .src{font-size:var(--fs-body)}html body .faq-r details .src span{font-size:inherit}"
     "html body .faq-r details .src{display:inline-block;margin-bottom:1.3rem}"
     "@media (max-width:760px){html body .faq-r details[open]{margin-left:0;padding-left:1rem}"
     "html body .faq-r details .src{display:block;margin:0 0 .5rem}html body .faq-r details .src + .src{margin-left:0}"
