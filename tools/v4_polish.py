@@ -41,6 +41,18 @@ were. Rewritten whole each run, so the pass is idempotent.
     drawing drifts slower than the page and, on a desktop, leans towards the
     mouse; the questions glide open and closed, their answer fading up.
     Reduced motion: the pages as they were.
+    And the look (owner, 20 Oct 2026, from a side-by-side preview): on the
+    hub each level's number is solid white and larger with its altitude in
+    orange, its series are larger panels with the question in readable grey,
+    and its episodes are pictures with their titles under them, the pictures
+    grey and dimmed as before until the pointer is on one; on the category
+    pages the opening's drawing is larger behind a larger title on a wide
+    screen (a drawing with its own words in it keeps its size, so they never
+    meet the page's); on a tablet, where drawings ran under the opening's
+    words before this pass too, the drawing draws smaller towards the right,
+    clear of them; and the
+    questions have more room, larger type and an answer column clear of the
+    open question's orange edge.
 
     python3 tools/v4_polish.py            # every page done so far
 
@@ -161,6 +173,28 @@ LIB_JS = r"""(function () {
 })();"""
 
 KB_HUB_CSS = (
+    # visual (owner, 20 Oct 2026: "go ahead with all", the pictures lit only on hover)
+    # the level numbers solid and larger, the altitude beside them in orange
+    "html body .clb-idx{color:var(--white);-webkit-text-stroke:0;font-size:clamp(3rem,7vw,5.5rem)}"
+    "html body .clb-alt b{color:var(--orange);font-weight:700;font-size:clamp(1.05rem,1.9vw,1.35rem)}"
+    # the series panels: larger, the series in white, its question readable under it
+    "html body .clb-topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:.8rem}"
+    "html body .clb-topics .clb-topic{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) auto;align-content:start;"
+    "gap:.55rem 1rem;min-height:6.5rem;padding:1.15rem 1.3rem;border-radius:10px;border:1px solid var(--line);background:var(--card);"
+    "font-family:var(--font-display);font-weight:600;font-size:1.05rem;color:var(--white)}"
+    "html body .clb-topics .clb-topic:hover{border-color:var(--live)}"
+    "html body .clb-topics .clb-topic b{font-size:1rem}"
+    "html body .clb-topics .clb-topic .v4-q{font-family:var(--font-body);font-weight:400;font-size:.95rem;line-height:1.45;color:var(--gray-light)}"
+    # the episodes: a picture with its title under it; the picture keeps its grey until the pointer is on it
+    "html body .clb-strip{grid-auto-columns:minmax(200px,1fr);gap:1rem}"
+    "html body .clb-strip:has(> .clb-face:only-child){grid-auto-columns:minmax(200px,260px)}"
+    "html body .clb-face{aspect-ratio:auto;overflow:visible;background:none;border:0;border-radius:0}"
+    "html body .clb-face img{aspect-ratio:16/9;height:auto;border-radius:8px;border:1px solid var(--edge)}"
+    "html body .clb-face:hover img{transform:none}"
+    "html body .clb-face .clb-face-t{position:static;background:none;border:0;padding:.65rem .1rem 0;font-size:.9rem;line-height:1.35;"
+    "color:var(--gray-light);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:color .3s var(--ease)}"
+    "html body .clb-face:is(:hover,:focus-visible) .clb-face-t{color:var(--white)}"
+    "@media (max-width:760px){html body .clb-strip{grid-auto-columns:minmax(180px,64vw)}}"
     # the trace: the route stays, dimmer; a bright copy climbs it with the scroll, a glider at its tip
     "html.v4-kbm .v4-climb-line{opacity:.32}"
     "html.v4-kbm .v4-climb .v4p-trace{fill:none;stroke:var(--orange);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}"
@@ -208,6 +242,22 @@ KB_HUB_JS = r"""(function () {
 })();"""
 
 KB_CAT_CSS = (
+    # visual: the opening more like a poster, the drawing larger behind a larger title
+    "html body .k-hero{overflow:hidden}"
+    "@media (min-width:1200px){html body .k-hero-media:not(:has(text)){transform:scale(1.28);transform-origin:88% 50%}"
+    "html body .k-hero-copy h1{font-size:clamp(2.6rem,4.6vw,4.4rem);max-width:15ch}}"
+    # on a tablet the drawing ran under the opening's words (it did before this pass too): it draws smaller,
+    # towards the right, clear of them
+    "@media (min-width:761px) and (max-width:1199px){html body .k-hero-media{transform:scale(.72);transform-origin:100% 50%}}"
+    "@media (min-width:1200px) and (max-width:1439px){html body .k-hero-media:has(text){transform:scale(.86);transform-origin:100% 50%}}"
+    # the questions: more room, larger questions, a readable answer clear of the open question's orange edge
+    "html body .faq-r summary{padding:1.35rem 0;font-size:clamp(1.08rem,1.5vw,1.3rem);line-height:1.35}"
+    "html body .faq-r details[open]{padding-left:1.5rem;margin-left:-1.625rem}"
+    "html body[data-v2] .faq-r details p{font-size:1.05rem;line-height:1.75;max-width:38rem}"
+    "html body .faq-r details .src{display:inline-block;margin-bottom:1.3rem}"
+    "@media (max-width:760px){html body .faq-r details[open]{margin-left:0;padding-left:1rem}"
+    "html body .faq-r details .src{display:block;margin:0 0 .5rem}html body .faq-r details .src + .src{margin-left:0}"
+    "html body .faq-r details .src:last-of-type{margin-bottom:1.3rem}}"
     "html.v4-kbc .k-hero-media{perspective:1200px}"
     "html.v4-kbc .k-hero-media>svg{transform:translate3d(0,var(--py,0px),0) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));"
     "transition:transform .9s var(--ease);will-change:transform}"
