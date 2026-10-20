@@ -169,7 +169,10 @@
     state.page = +b.dataset.p; draw(true);
   });
   chips.forEach(function (b) {
-    b.addEventListener("click", function () { state.s = b.dataset.s; state.page = 1; draw(false); });
+    b.addEventListener("click", function () {
+      if (b.dataset.s === state.s) return;
+      swap(function () { state.s = b.dataset.s; state.page = 1; draw(false); });   // swap: see CHANGING SERIES, below
+    });
   });
   $("q").addEventListener("input", function () { state.q = this.value; state.page = 1; loadFind(); draw(false); });
   $("q").addEventListener("focus", loadFind);
@@ -185,32 +188,60 @@
     state.page = (m = /(?:^|&)p=(\d+)/.exec(h)) ? +m[1] : 1;
     draw(!!(s || h === "all"));
   }
-  window.addEventListener("hashchange", route);
+  window.addEventListener("hashchange", function () { swap(route); });
 
-  /* the stone portal, as on the live library */
-  var portal = $("portal"), pbox = portal.querySelector(".pbox");
-  function openPortal(shot, done) {
-    if (slow) { done(); return; }
-    var r = shot.getBoundingClientRect();
-    pbox.className = "pbox";
-    pbox.style.cssText = "left:" + r.left + "px;top:" + r.top + "px;width:" + r.width + "px;height:" + r.height + "px;";
-    portal.classList.add("live");
-    void pbox.offsetWidth;
-    pbox.classList.add("grow");
-    setTimeout(function () { pbox.classList.add("seam"); }, 300);
-    setTimeout(function () { done(true); pbox.classList.add("open"); }, 580);
-    setTimeout(function () { portal.classList.remove("live"); pbox.className = "pbox"; pbox.style.cssText = ""; }, 1260);
+  /* CHANGING SERIES (owner, 20 Oct 2026: the stone portal "is old and doesnt match the design of the sites
+     immersive modern look"). A change of series moves the list itself, not a curtain over it: the episodes on
+     screen lift and fade away, the heading wipes across to the new series' name, and the new episodes rise
+     into place one after another, all on the site's curve. Pressing a series tile gives it a small press, and
+     the page glides down to the list, which is already that series; the heading and the episodes arrive as it
+     settles. With reduced motion the list simply changes. (The portal's markup stays in the page, unused.) */
+  var EASE = "cubic-bezier(.2,.8,.2,1)", turn = 0;
+  function seen(el) { var r = el.getBoundingClientRect(); return r.bottom > -40 && r.top < innerHeight + 40; }
+  function enter() {
+    var head = $("browseH"), cnt = $("cnt");
+    head.animate({ clipPath: ["inset(0 100% 0 0)", "inset(0 0 0 0)"], transform: ["translateY(8px)", "none"] }, { duration: 700, easing: EASE });
+    if (cnt) cnt.animate({ opacity: [0, 1] }, { duration: 500, delay: 220, easing: EASE, fill: "backwards" });
+    cards.filter(function (c) { return !c.hidden && seen(c); }).slice(0, 24).forEach(function (c, i) {
+      c.animate({ opacity: [0, 1], transform: ["translateY(24px)", "none"] }, { duration: 640, delay: 60 + i * 38, easing: EASE, fill: "backwards" });
+    });
+  }
+  function swap(change) {
+    if (slow || !document.body.animate) { change(); return; }
+    var me = ++turn, head = $("browseH");
+    var outs = cards.filter(function (c) { return !c.hidden && seen(c); }).slice(0, 24).map(function (c, i) {
+      return c.animate({ opacity: [1, 0], transform: ["none", "translateY(-12px)"] }, { duration: 220, delay: Math.min(i, 10) * 14, easing: "cubic-bezier(.5,0,.75,.2)", fill: "forwards" });
+    });
+    outs.push(head.animate({ opacity: [1, 0], filter: ["blur(0)", "blur(6px)"] }, { duration: 220, easing: "cubic-bezier(.5,0,.75,.2)", fill: "forwards" }));
+    setTimeout(function () {
+      if (me !== turn) return;
+      change();
+      outs.forEach(function (a) { a.cancel(); });
+      enter();
+    }, 300);
   }
   document.addEventListener("click", function (ev) {
     var a = ev.target.closest ? ev.target.closest(".v2-tiles .tile") : null;
     if (!a || a.classList.contains("zero")) return;
     ev.preventDefault();
-    openPortal(a.querySelector(".shot"), function (instant) {
-      state.s = a.getAttribute("data-t"); state.page = 1; state.q = ""; $("q").value = "";
-      draw(false);
-      var top = $("browse").getBoundingClientRect().top + scrollY - 70;
-      scrollTo({ top: top, behavior: instant || slow ? "auto" : "smooth" });
-    });
+    var shot = a.querySelector(".shot");
+    var pick = function () { state.s = a.getAttribute("data-t"); state.page = 1; state.q = ""; $("q").value = ""; draw(false); };
+    var top = $("browse").getBoundingClientRect().top + scrollY - 70;
+    if (slow || !document.body.animate) { pick(); scrollTo({ top: top, behavior: "auto" }); return; }
+    if (shot) shot.animate({ transform: ["scale(1)", "scale(.96)", "scale(1)"] }, { duration: 420, easing: EASE });
+    if (Math.abs(scrollY - top) < 60) { swap(pick); return; }
+    // the list is off screen: it becomes the series at once, and arrives as the page settles on it
+    var me = ++turn; pick();
+    cards.forEach(function (c) { if (!c.hidden) c.style.opacity = "0"; });
+    $("browseH").style.opacity = "0";
+    var done = false, fin = function () {
+      if (done) return; done = true; window.removeEventListener("scrollend", fin);
+      cards.forEach(function (c) { c.style.opacity = ""; }); $("browseH").style.opacity = "";
+      if (me === turn) enter();
+    };
+    if ("onscrollend" in window) window.addEventListener("scrollend", fin);
+    setTimeout(fin, 1100);
+    scrollTo({ top: top, behavior: "smooth" });
   });
 
   route();
