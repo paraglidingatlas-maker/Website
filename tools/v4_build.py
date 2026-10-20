@@ -117,6 +117,9 @@ THE ORDER, AND WHY
      v4_sitemap_sky        the sitemap's night sky from real stars (step 35):
                            img/sitemap-stars.svg and one <style> in the
                            sitemap's head; after v4_ux; idempotent.
+     v4_polish             the awwwards-direction polish (step 36), one
+                           page's own <style> at a time; after v4_ux;
+                           idempotent.
   9. v4_search             the search files, read from the finished pages.
  10. v4_min                v2.css and the scripts, from src/.
  11. (put back)            the pages their own generators own, as they were
@@ -351,6 +354,7 @@ def main():
         run([PY, "tools/v4_trip_calm.py", "india"])
         run([PY, "tools/v4_partners.py"])
         run([PY, "tools/v4_sitemap_sky.py"])
+        run([PY, "tools/v4_polish.py"])
         run([PY, "tools/v4_search.py"])
         run([PY, "tools/v4_min.py"])
 
