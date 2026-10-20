@@ -43,6 +43,68 @@
 <link rel="stylesheet" href="../../styles.css?v=b084e774">
 <link rel="stylesheet" href="v2.css?v=5b620941"><!--v4u-css--><style>.v4u-tgtools{max-width:34rem;margin:var(--sp-3) 0 0;display:flex}.tg-spark-cap{display:flex;align-items:center;gap:.6rem;margin:var(--sp-2) 0 0;font-size:var(--fs-small);color:var(--gray-light)}.tg-spark-cap svg{flex:none;width:40px;height:12px;fill:none;stroke:var(--orange);stroke-width:1.4;stroke-linecap:round}html [data-v2="tg"] .tg-tile[hidden]{display:none !important}.v4u-tg-none{margin:var(--sp-3) max(var(--gutter),calc((100% - var(--measure)) / 2)) 0;color:var(--gray-light);font-size:var(--fs-body-s)}.v4u-tg-none a{color:var(--orange);margin-left:.4rem}.v4u-tgfind .v2-find-input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}@media (scripting:none){.v4u-tgtools{display:none}}</style><!--/v4u-css-->
 <link rel="stylesheet" href="../../tags.css?v=71f8244d">
+<!--v4p:polish--><style>html.v4-tgh .tg-cloud .tg-tile:not(.v4-in){opacity:0}html body[data-v2="tg"] .tg-tile .tg-spark{transition:filter .4s var(--ease)}html body[data-v2="tg"] .tg-tile:is(:hover,:focus-visible) .tg-spark{filter:drop-shadow(0 0 4px rgba(255,117,23,.55))}html body[data-v2="tg"] .tg-tile .tg-sp-d{transform-box:fill-box;transform-origin:50% 50%;transition:transform .4s var(--ease)}html body[data-v2="tg"] .tg-tile:is(:hover,:focus-visible) .tg-sp-d{transform:scale(1.7)}#tgNone{transition:opacity .4s var(--ease)}</style><script>(function () {
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.IntersectionObserver || !document.documentElement.animate) return;
+  var html = document.documentElement, EASE = 'cubic-bezier(.2,.8,.2,1)';
+  html.classList.add('v4-tgh');
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
+  var WIPE = ['inset(-6px 100% -6px 0)', 'inset(-6px -6px -6px 0)'];
+  function draw(t, delay, ms) {
+    var sp = t.querySelector('.tg-spark'); if (!sp) return;
+    if (sp.v4d) sp.v4d.cancel();
+    sp.v4d = sp.animate({ clipPath: WIPE }, { duration: ms, delay: delay, easing: EASE, fill: 'backwards' });
+  }
+  ready(function () {
+    var cloud = document.getElementById('tgCloud');
+    if (!cloud) { html.classList.remove('v4-tgh'); return; }
+    var tiles = [].slice.call(cloud.querySelectorAll('.tg-tile'));
+    function show(t, i) {
+      t.classList.add('v4-in');
+      t.animate({ opacity: [0, 1], transform: ['translateY(18px)', 'none'] }, { duration: 650, delay: i * 30, easing: EASE, fill: 'backwards' });
+      draw(t, i * 30 + 240, 1000);
+    }
+    /* each topic rises in as it comes into view, a row at a time */
+    var io = new IntersectionObserver(function (es) {
+      var k = 0;
+      es.filter(function (e) { return e.isIntersecting; })
+        .sort(function (a, b) { return tiles.indexOf(a.target) - tiles.indexOf(b.target); })
+        .forEach(function (e) { io.unobserve(e.target); if (!e.target.classList.contains('v4-in')) show(e.target, Math.min(k++, 10)); });
+    }, { rootMargin: '0px 0px -6% 0px' });
+    tiles.forEach(function (t) { io.observe(t); });
+    window.addEventListener('beforeprint', function () { tiles.forEach(function (t) { t.classList.add('v4-in'); }); });
+    /* the pointer on a topic draws its trend line again */
+    tiles.forEach(function (t) {
+      t.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse' && t.classList.contains('v4-in')) draw(t, 0, 800); });
+    });
+    /* the topic search (its own script hides what does not match): the topics left glide to their new
+       places and those that come back rise in, instead of the grid jumping */
+    var find = document.getElementById('tgFind'), none = document.getElementById('tgNone');
+    if (!find) return;
+    document.addEventListener('input', function (e) {
+      if (e.target !== find) return;
+      var f = new Map(), wasNone = none && !none.hidden;
+      tiles.forEach(function (t) { if (!t.hidden) f.set(t, t.getBoundingClientRect()); });
+      requestAnimationFrame(function () {
+        var k = 0;
+        tiles.forEach(function (t) {
+          if (t.hidden) return;
+          var o = f.get(t);
+          if (t.v4g) t.v4g.cancel();
+          if (!o) {
+            t.classList.add('v4-in');
+            t.v4g = t.animate({ opacity: [0, 1], transform: ['scale(.94)', 'none'] }, { duration: 460, delay: Math.min(k++, 10) * 25, easing: EASE, fill: 'backwards' });
+            return;
+          }
+          var r = t.getBoundingClientRect(), dx = o.left - r.left, dy = o.top - r.top;
+          if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+          t.v4g = t.animate({ transform: ['translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px)', 'none'] }, { duration: 560, easing: EASE });
+        });
+        if (none && !none.hidden && !wasNone) none.animate({ opacity: [0, 1], transform: ['translateY(8px)', 'none'] }, { duration: 420, easing: EASE });
+      });
+    }, true);
+  });
+})();</script><!--/v4p:polish-->
 <!-- site-schema -->
 <script type="application/ld+json">
 {

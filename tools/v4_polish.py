@@ -62,6 +62,19 @@ were. Rewritten whole each run, so the pass is idempotent.
     note under the questions' heading at body size and, on the hub, the
     episode titles at 16 px (reading text, from the owner's preview: the
     series' questions stay as they were).
+  - topics (owner, 20 Oct 2026, from a preview: "the bigger picture will
+    overlap with text so adjust accordingly"): on the 50 topic pages each
+    episode's picture is larger in its own column, so it never meets the
+    words (narrower on a narrow card; on a phone above the words, full
+    width), grey and dimmed until the pointer is on the card (on a touch
+    screen, while the card is mid-screen); the descriptions at 16 px and the
+    titles a step larger. Sorting (the live tags-sort.js) glides each card on
+    screen from its old place to its new one. On the Topics page the topics
+    rise in a row at a time as they come into view, each trend line drawing
+    left to right after its topic; the pointer on a topic makes its line glow
+    and draw again; and the topic search glides the topics left to their new
+    places instead of the grid jumping. Reduced motion: no motion, the look
+    kept.
 
     python3 tools/v4_polish.py            # every page done so far
 
@@ -334,6 +347,136 @@ KB_CAT_JS = r"""(function () {
   });
 })();"""
 
+TG_CSS = (
+    # the pictures larger (owner, 20 Oct 2026, from the preview), in their own column so they never meet the
+    # words; the column narrows on a narrow card and on a phone the picture goes above the words, full width
+    "html body .tg-v2 .tg-ep{container-type:inline-size}"
+    "html body .tg-v2 .tg-ep-link{grid-template-columns:15rem minmax(0,1fr);column-gap:1.4rem}"
+    "@container (max-width:36rem){html body .tg-v2 .tg-ep-link{grid-template-columns:12rem minmax(0,1fr);column-gap:1.1rem}}"
+    "@container (max-width:30rem){html body .tg-v2 .tg-ep-link{grid-template-columns:minmax(0,1fr)}"
+    "html body .tg-v2 .tg-thumb{grid-row:auto;grid-column:1/-1;margin-bottom:1rem}html body .tg-v2 .tg-ep p{grid-column:1/-1;margin-top:0}}"
+    # grey and dimmed until the pointer is on the card (on a touch screen, while it is mid-screen), then in colour
+    "html body .tg-v2 .tg-thumb{border-radius:8px}"
+    "html body .tg-v2 .tg-thumb img{opacity:1;filter:grayscale(1) brightness(.68);transition:filter .5s var(--ease),transform .9s var(--ease)}"
+    "html body .tg-v2 .tg-ep:is(:hover,:focus-within,.v4-lit) .tg-thumb img{filter:none;transform:scale(1.04)}"
+    # reading text at 16 px, the titles a step larger
+    "html body .tg-v2 .tg-ep p{font-size:1rem;line-height:1.65}"
+    "html body .tg-v2 .tg-ep h2{font-size:1.12rem;line-height:1.35}"
+    "@media (prefers-reduced-motion:reduce){html body .tg-v2 .tg-ep .tg-thumb img{transform:none}}"
+)
+TG_JS = r"""(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var EASE = 'cubic-bezier(.2,.8,.2,1)';
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
+  ready(function () {
+    var list = document.querySelector('.tg-list'); if (!list) return;
+    /* a touch screen has no pointer to rest on a card: the card mid-screen shows its picture in colour */
+    if (window.matchMedia && matchMedia('(hover: none)').matches && window.IntersectionObserver) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { e.target.classList.toggle('v4-lit', e.isIntersecting); });
+      }, { rootMargin: '-40% 0px -40% 0px' });
+      list.querySelectorAll('.tg-ep').forEach(function (li) { io.observe(li); });
+    }
+    if (reduce || !list.animate) return;
+    /* sorting (the live tags-sort.js reorders the cards): each card on screen glides from where it was to
+       where it is now, on top of its own rise; one from far away fades in on its way */
+    var first = null;
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest || !e.target.closest('.tg-sort button')) return;
+      first = new Map();
+      list.querySelectorAll('.tg-ep').forEach(function (li) { first.set(li, li.getBoundingClientRect()); });
+      requestAnimationFrame(glide);
+    }, true);
+    function glide() {
+      var f = first, vh = window.innerHeight, k = 0; first = null; if (!f) return;
+      list.querySelectorAll('.tg-ep').forEach(function (li) {
+        var o = f.get(li), r = li.getBoundingClientRect();
+        if (!o || r.bottom < -80 || r.top > vh + 80) return;
+        var dx = o.left - r.left, dy = o.top - r.top, far = Math.abs(dy) > vh * 0.9;
+        if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+        if (far) dy = (dy < 0 ? -1 : 1) * vh * 0.35;
+        if (li.v4g) li.v4g.cancel();
+        var kf = { transform: ['translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px)', 'translate(0,0)'] };
+        if (far) kf.opacity = [0, 1];
+        li.v4g = li.animate(kf, { duration: 720, delay: Math.min(k++, 8) * 28, easing: EASE, fill: 'backwards', composite: 'add' });
+      });
+    }
+  });
+})();"""
+
+TG_HUB_CSS = (
+    # the topics rise in as they come into view (TG_HUB_JS), their trend lines drawing left to right after them
+    "html.v4-tgh .tg-cloud .tg-tile:not(.v4-in){opacity:0}"
+    # on the pointer the trend line glows and draws again, its last point grows
+    "html body[data-v2=\"tg\"] .tg-tile .tg-spark{transition:filter .4s var(--ease)}"
+    "html body[data-v2=\"tg\"] .tg-tile:is(:hover,:focus-visible) .tg-spark{filter:drop-shadow(0 0 4px rgba(255,117,23,.55))}"
+    "html body[data-v2=\"tg\"] .tg-tile .tg-sp-d{transform-box:fill-box;transform-origin:50% 50%;transition:transform .4s var(--ease)}"
+    "html body[data-v2=\"tg\"] .tg-tile:is(:hover,:focus-visible) .tg-sp-d{transform:scale(1.7)}"
+    "#tgNone{transition:opacity .4s var(--ease)}"
+)
+TG_HUB_JS = r"""(function () {
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.IntersectionObserver || !document.documentElement.animate) return;
+  var html = document.documentElement, EASE = 'cubic-bezier(.2,.8,.2,1)';
+  html.classList.add('v4-tgh');
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
+  var WIPE = ['inset(-6px 100% -6px 0)', 'inset(-6px -6px -6px 0)'];
+  function draw(t, delay, ms) {
+    var sp = t.querySelector('.tg-spark'); if (!sp) return;
+    if (sp.v4d) sp.v4d.cancel();
+    sp.v4d = sp.animate({ clipPath: WIPE }, { duration: ms, delay: delay, easing: EASE, fill: 'backwards' });
+  }
+  ready(function () {
+    var cloud = document.getElementById('tgCloud');
+    if (!cloud) { html.classList.remove('v4-tgh'); return; }
+    var tiles = [].slice.call(cloud.querySelectorAll('.tg-tile'));
+    function show(t, i) {
+      t.classList.add('v4-in');
+      t.animate({ opacity: [0, 1], transform: ['translateY(18px)', 'none'] }, { duration: 650, delay: i * 30, easing: EASE, fill: 'backwards' });
+      draw(t, i * 30 + 240, 1000);
+    }
+    /* each topic rises in as it comes into view, a row at a time */
+    var io = new IntersectionObserver(function (es) {
+      var k = 0;
+      es.filter(function (e) { return e.isIntersecting; })
+        .sort(function (a, b) { return tiles.indexOf(a.target) - tiles.indexOf(b.target); })
+        .forEach(function (e) { io.unobserve(e.target); if (!e.target.classList.contains('v4-in')) show(e.target, Math.min(k++, 10)); });
+    }, { rootMargin: '0px 0px -6% 0px' });
+    tiles.forEach(function (t) { io.observe(t); });
+    window.addEventListener('beforeprint', function () { tiles.forEach(function (t) { t.classList.add('v4-in'); }); });
+    /* the pointer on a topic draws its trend line again */
+    tiles.forEach(function (t) {
+      t.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse' && t.classList.contains('v4-in')) draw(t, 0, 800); });
+    });
+    /* the topic search (its own script hides what does not match): the topics left glide to their new
+       places and those that come back rise in, instead of the grid jumping */
+    var find = document.getElementById('tgFind'), none = document.getElementById('tgNone');
+    if (!find) return;
+    document.addEventListener('input', function (e) {
+      if (e.target !== find) return;
+      var f = new Map(), wasNone = none && !none.hidden;
+      tiles.forEach(function (t) { if (!t.hidden) f.set(t, t.getBoundingClientRect()); });
+      requestAnimationFrame(function () {
+        var k = 0;
+        tiles.forEach(function (t) {
+          if (t.hidden) return;
+          var o = f.get(t);
+          if (t.v4g) t.v4g.cancel();
+          if (!o) {
+            t.classList.add('v4-in');
+            t.v4g = t.animate({ opacity: [0, 1], transform: ['scale(.94)', 'none'] }, { duration: 460, delay: Math.min(k++, 10) * 25, easing: EASE, fill: 'backwards' });
+            return;
+          }
+          var r = t.getBoundingClientRect(), dx = o.left - r.left, dy = o.top - r.top;
+          if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+          t.v4g = t.animate({ transform: ['translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px)', 'none'] }, { duration: 560, easing: EASE });
+        });
+        if (none && !none.hidden && !wasNone) none.animate({ opacity: [0, 1], transform: ['translateY(8px)', 'none'] }, { duration: 420, easing: EASE });
+      });
+    }, true);
+  });
+})();"""
+
 PAGES = {
     "podcast.html": (
         ".v2-pod-hero .kit-stats{gap:var(--sp-3) clamp(2.2rem,5vw,4rem);max-width:48rem;flex-wrap:nowrap}"
@@ -393,6 +536,10 @@ for _f in sorted(os.listdir(os.path.join(V4, "knowledge-base"))):
     if _f.endswith(".html"):
         PAGES["knowledge-base/" + _f] = KB_CAT_CSS
         SCRIPTS["knowledge-base/" + _f] = KB_CAT_JS
+PAGES["tags.html"], SCRIPTS["tags.html"] = TG_HUB_CSS, TG_HUB_JS
+for _f in sorted(os.listdir(os.path.join(V4, "tags"))):
+    if _f.endswith(".html"):
+        PAGES["tags/" + _f], SCRIPTS["tags/" + _f] = TG_CSS, TG_JS
 
 
 def series_intro():
