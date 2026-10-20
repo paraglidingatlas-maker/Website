@@ -183,7 +183,10 @@ def trip_departures(src):
 
 
 def trip_length(src):
-    m = re.search(r'<span class="l">Duration</span><span class="v">([^<]+)</span>', src)
+    # the facts row's Duration; on a calmed trip page (tools/v4_trip_calm.py) it is a big fact,
+    # <dt>Duration</dt><dd><b>10 days</b></dd>, so the enquiry never loses the trip's length
+    m = (re.search(r'<span class="l">Duration</span><span class="v">([^<]+)</span>', src)
+         or re.search(r'<dt>Duration</dt>\s*<dd>(?:<b>)?([^<]+)', src))
     return plain(m.group(1)) if m else ""
 
 
