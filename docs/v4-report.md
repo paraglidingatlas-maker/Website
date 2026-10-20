@@ -80,6 +80,7 @@ marked done is the next step.
 | 30. From the record page to the whole site, first two (owner, 19 Oct: "ok"): every page scrolls more smoothly (v2-immersive.js no longer writes the unused --v2-gust to <html> on every scroll frame, which restyled the whole page; nothing read it); the podcast's Night flight feed no longer moves on its own (the twinkling stars, drifting aurora, edge sweep, level meter and ticker loops are gone, as the motion rule and the record page's lesson ask; the look, the progress ring and a still 'Now playing' line stay), and its last raw colours became tokens. rss-feed.js untouched. | done | see git log | all gates PASS |
 | 31. Expeditions gets its own page (owner, 19 Oct: "the expeditions standalone tab ... is just an off copy of leftover material at the homepage, I want it a bit different", then "use the same Awwwards rule" and "go crazy with your imagination"): expeditions.html. Three directions built in full (expeditions-a, -b and -c.html, prototype-only), judged, and the winner (C) built with the best of the other two: "Choose Your Sky", Kenya and India side by side with the split following the pointer; the map flown with the scroll from the world to India, Kenya, Kazakhstan and Peru (Natural Earth outlines, public domain; WebGL 2 where there is a real graphics card, drawn in SVG otherwise), each place's own photograph rising out of the map; the year drawn to scale from Oct 2026 to Nov 2027 with each departure on it; "Still Choosing?" over the Last light photograph. Every fact from the trip pages and the home page (Kazakhstan and Peru as the home page gives them: planned, with Register interest); about 330 words. Phones, reduced motion and no JavaScript get a still, stacked page. The header's Expeditions tab, the full-screen menu, the app's Trips shortcut and the search now lead here (they led to the home page's destinations section); the home page section stays. Note for later passes: a full rerun of tools/v4_pass.py rewrites the knowledge base drawings in long path syntax, so it must be followed by tools/v4_ux.py (or the nav change made on its own, as here). tools/v4_expeditions.py, tools/v4_expeditions_a.py, _b.py, _c.py, tools/v4_pass.py, tools/v4_pwa.py, tools/v4_search.py (prototype-only pages now stay out of the search). It is the first page v4 adds to the site rather than replaces, so the switch learnt about new pages: tools/v2_site.py NEW_PAGES; the switch writes such a page at the root, indexable, and gives it its sitemap.xml line (dated by its last commit); the dry run holds it to its own title, description, canonical, Open Graph and structured data instead of a live twin's. The site audit, run on the switched site, now also reads the tokens defined in assets/v4/v2.css, which every switched page loads | done | see git log | all gates PASS |
 | 32. One script rebuilds v4 (found 19 Oct while wiring Expeditions): the deploy draft for the switch-over ran only part of the v4 chain and would have published India and Kenya without their fly-through gallery, route map and usability pass, and the knowledge base drawings uncompacted. tools/v4_build.py runs every v4 generator and pass in the order that reproduces the committed v4 byte for byte; proven on a clean checkout (./build.sh, then the script: prototypes/v4 unchanged, a second run unchanged, v2 untouched, the switch dry run 0 FAIL). docs/v4-deploy-workflow.yml now runs it. Along the way: the Navigators map reads its Natural Earth outlines from tools/data/naturalearth_lowres.shp (the copy in the geopandas 0.14.4 wheel, its hash checked against PyPI; public domain) instead of downloading them at build time, and no longer falls back quietly to other outlines; v2_localize passes over prototype-only pages as v2_check does. Built by a workflow (two mappers, a builder, a verifier in a fresh copy each round, three rounds); then its guard on the generator-owned pages was made to ignore ?v= changes, which the live build makes whenever a linked file changes and which would otherwise have stopped a deploy, and the proof rerun. Before the switch-over: a new episode still stops the build (see The switch-over below). tools/v4_build.py, tools/kbfig/nav_land.py, tools/v4_expert.py, tools/v2_localize.py | done | see git log | all gates PASS |
+| 33. India, less but better (owner, 19 Oct: the record page's pass carried to the trip pages, one page at a time): the hero one plate with the footage, four big facts over the old row's other four, the fly-through kept as the one moment (a settle per step, no slow zoom, words held at the foot that leave before the next arrive), seamless photographs, the route a schematic flown with a weighted glide, a still gallery of full-width plates that rise out of the page's dark and sink back into it, the chapter bar with a hairline under the chapter being read, one curve, finished by default. See India, less but better, below. tools/v4_trip_calm.py, src/v4-calm.css, src/v4-calm.js (loaded by India alone), tools/v4_min.py (writes them) | built, checked in the browser against the pushed page; gates and commit by the lead | not committed | not run here |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they
@@ -850,3 +851,177 @@ Notes:
 - The About photograph is the glacier frame (clip 11): the first choice, a clip 2 frame of a pilot in an ATLAS harness, shows another name on the helmet.
 - Headings are now in the house Title Case on 131 v4 pages (the live rule, tools/title_case_headings.py), with the series names kept as names ("Risk vs Reward", "Living the Dream").
 - **The regression review.** Every page group was compared before and after the 32 changes; 23 things that had got worse were confirmed by a skeptic and fixed: the closing "Book a free 30-minute" link on seven pages had split into columns (the no-break span became a flex item); four page-header labels (partners, 404, offline) had lost their orange; the home rail had lost its episode numbers; the topics ledger's counts zig-zagged; the library's phone Sort label had gone; linked topic chips had lost their outline; an empty episode stage left a gap; the phone chapter rail no longer showed the next card; the phone topic tiles squeezed their stamp and titles; two band headings and the partners and Kenya gallery headings wrapped badly in Title Case; the library's run-time heading was still sentence case; India's Bir Billing pin had moved under the route panel; the route heading's shade had hard edges; parts of the trip overlays and the sitemap controls were off the shared edge; a phone route label was clipped.
+
+## India, less but better (owner, 19 Oct 2026)
+The record page's pass (step 29) carried to the trip pages, one page at a
+time, India first. The owner named four ideas from the record page: seamless
+photographs, the route flown to scale, a chapter bar with a progress line and
+Hold a place in reach, and big facts. Built from a lead's plan of 23 items
+(C00 to C22); Kenya shares every trip class and does not change.
+
+**What changed on the page.** The hero is one plate: the snowline photograph
+and the owner's footage, nothing moving on its own (the slideshow, its tabs,
+its 6.5 s timer and the Scroll cue are gone; the four other photographs moved
+to the gallery under their tab names); the motto and the offer keep their two
+lines without the orange rule. Under it, four big facts (21 Oct 2026, 10 days,
+IPPI 2 or equivalent, £1,100 per pilot), the old row's other four under them
+on the same columns, quieter (Bir, Himachal Pradesh; Billing, about 2,400m; 1
+guide to 3 pilots; October to November), and the trust strip in its four
+columns. The Overview heading sits over the fly-through's dissolved first
+photograph, so there is no dark screen before the moment. The fly-through
+stays the page's one moment: each photograph dissolves in over the last,
+which stays whole beneath it, and settles once when its step comes (the 9 s
+zoom is gone); a step's words come in at the foot of the screen with their
+step, once their photograph has come, and hold there for half of it, then
+ride up and fade before they reach the chapter bar; every readout row stays.
+The route's fall from orbit ends on the whole of India with Bir Billing's
+name on a halo of the page's dark (no border runs through it); then every
+card has an equal share of the pin, and while they are read the camera eases
+Bir Billing aside on a wide screen, lit on the dimmed map, and the schematic
+and each card's words sit on pools of the page's dark, so no line of the map
+runs through them; its sawtooth hills are two straight lines with their names
+on them (the back ranges dashed), its type larger, and each card's line draws
+with the scroll through a mask, eased; the cards hand over in turn, unboxed;
+on a phone the schematic keeps one frame in which every name is whole. The
+gallery is still photographs: twelve, none repeating the hero or the
+fly-through, ordered as a day (Billing launch first, Bir landing, the landing
+field and the monastery last), each a full-width plate cropped on its subject
+that rises out of the page's dark and sinks back into it, so one photograph
+passes to the next through the page, never through a double exposure, its caption and its place in the run
+(01 / 12) on its own lower third. The departures draw each tour as a line
+with its dates under it; "Guaranteed to run" is a status line beside
+"6 places", its green only in the dot. Guides (each under a hairline, the
+role in label type), Flying Etiquette (a list at every width) and the FAQ
+lose their boxes, chips and orange numerals; the call keeps its card and its
+Booking Open status without the corner bracket; the footer follows it
+closely, with no drawn ridge and no glow left alone in an empty band. The gauge reads 3.6 km, drawn finished;
+the season ring, tour bars and day line are drawn; no heading or card is
+revealed. Every transition in the page eases on one curve.
+
+**How it is built.** `tools/v4_trip_calm.py india` patches the page in place
+(each change between `<!--v4c:NAME-->` marks or an exact replace that checks
+for its applied form; a second run changes nothing), puts `class="v4-calm"`
+on `<html>` and links the page's own sheet and script,
+`prototypes/v4/v4-calm.css` and `v4-calm.js`, with version hashes (those of
+the copies `tools/v4_min.py` writes from `src/v4-calm.css` and
+`src/v4-calm.js`). Every rule is under `html.v4-calm`; the script is one
+requestAnimationFrame loop that eases toward the scroll position and stops
+when settled (the hero's 0.3 parallax, the chapter bar's current chapter and
+its hairline, the route's camera and lit lines) and an observer that sends
+the fly-through's words away before the bar. The route and the gallery carry
+their own section names on this page (`.tm-calm`, `.v4c-g`), so
+v2-immersive.js's trip map and pinned gallery (its parts 15 and 14) find
+nothing to run there. Nothing of this is in the shared `v2.css` or
+`v2-immersive.js`, which are byte for byte as they were: Kenya and every
+other v4 page load exactly what they loaded before, and their version
+hashes stay right.
+
+**Run order.** After every other pass on the page (the trip chain:
+v4_trip, v4_flythrough, v4_tripmap, v4_award, v4_footage, v4_phone_media,
+v4_pass, v4_ux), then the served copies:
+
+```
+python3 tools/v4_trip_calm.py india
+python3 tools/v4_min.py
+```
+`tools/v4_build.py` (step 32) runs `tools/v4_ux.py` over the trip pages, which
+puts back the two trimmed parts of its blocks on India (the pinned gallery's
+phone rules and the hero slideshow's waker), so it runs
+`python3 tools/v4_trip_calm.py india` right after its v4_ux step. `tools/v4_min.py` now also writes
+`v4-calm.css` and `v4-calm.js`.
+
+**Checked here** (Playwright, 1440 x 900 and 390 x 844 as a touch phone,
+against the pushed page on a second server): no requestAnimationFrame callback
+3 s after a scroll stops; no timer, no frame and no change on the hero for
+16 s, the footage still playing; the fly-through's new words come in only once
+their photograph is 95% in, and the last words are gone before them; the
+joins of the route, the gallery and the footer without a step of more than 2
+levels at 1440; the bar names the chapter under the centre line at every
+screen, with exactly one hairline showing; the phone's booking bar away while
+the departures' cards are on screen; the route 2,592 px tall (3,871), no blur
+in it, each card fully shown for 330 to 360 px of scroll at 1440 and 300 to
+330 px at 390 (the pushed page: the first card 270 px, at 390 150 px), every
+card fully readable when scrolled in 200 px steps, the fall's last frame the
+whole of India with Bir Billing and its name whole and clear of the bar at
+both widths; the gallery 6,406 px at 1440 (6,841) and 4,665 px at 390 (6,842
+in the first build), no photograph repeated, every caption at 5:1 or more
+over the brightest tenth of the photograph behind it; reduced motion and no
+JavaScript readable top to bottom, four route cards across at 1440, nothing
+over the next section; one easing curve in every transition and animation; no
+horizontal scroll at 390, 768 or 1440, no new touch target under 44 px, no
+console error; words 97% of the pushed page (only the Scroll cue, the gauge's
+0.0 and the four repeated photographs' captions went), JSON-LD, title, meta,
+canonical, Open Graph, the h1, every heading, id and link unchanged (one
+fewer link to #overview, the cue's); on arrival 39 bytes lighter than the
+pushed page at 1440 and at 390, with the page's own sheet and script counted
+(the map's land cut to what the camera ever shows, the dead slideshow waker,
+pinned-gallery rules and routes-sheet styles and script out of the page,
+ridge.svg no longer fetched). Scrolling with the CPU slowed four times: on a
+phone no frame over 50 ms in the gallery, the route or the fly-through (the
+pushed page: one hitch of 80 to 170 ms in each); on a wide screen the gallery
+1 slow frame (17), the route's cards as before. Kenya: kenya.html, v2.css and
+v2-immersive.js byte for byte as pushed, the same weight on arrival, and
+every frame the same as the pushed page, pixel for pixel, at both widths,
+with motion, reduced motion and no JavaScript. Running the tool on the
+pushed page gives this page byte for byte, and a second run changes nothing.
+
+**After review.** A check and two blind judges (both preferred this page to
+the pushed one) found things the first build had lost; they came back or were
+fixed: the old facts row's other four facts (Bir, Himachal Pradesh had
+dropped out of the page's visible words) and its own label, Pilot rating, with
+IPPI 2 or equivalent; the cloudbase and season readouts; the trust strip's
+four columns with their ticks (one run-on line was hard to scan on a phone);
+the call's card (it floated in an empty field); a hairline under the current
+chapter only (every passed chapter had stayed orange); a fly-through whose
+words no longer half fade at rest or with JavaScript off, and whose
+photographs no longer pass through a darkened double exposure; the route's
+labels clear of the map's borders and Bir Billing lit beside the schematic;
+a gallery without grey seams between photographs, with larger captions and a
+count, and with pairs so nothing is cropped at its subject; the departures'
+dates in a readable size, not tiny italic mono; the phone's step marks no
+longer fade in under reduced motion.
+
+**Second review.** A check and two more blind judges (both preferred this
+page again). Fixed from the check: the route's first card had held for only
+150 px of scroll and could be passed over (the pin now gives every card an
+equal share); the calm styles and script had lived in the shared v2.css and
+v2-immersive.js, so Kenya and every other v4 page carried 6 KB they never
+used, and the pages' version hashes had gone stale (they now live in their
+own files that only India loads, and the shared files are as they were, so
+no hash changes). Fixed from the judges: the gallery's long feathered edges
+read as a smudge and its dark bands between photographs as heavy, the pairs
+as a template and the phone run as too long (now full-width plates that melt
+into each other, each caption on its own photograph's lower third, a third
+shorter on a phone); route words crossed by the map's borders and "BIR
+BILLING" struck through by one (pools of the page's dark under the cards,
+the map dimmer behind them, a halo on the name); the back ranges' dashed
+line had all but vanished; a new chapter's words could arrive over the last
+photograph; an empty band and a lone glow between the call and the footer;
+the green "Guaranteed to run" badge (now a status line, green only in its
+dot); the guides with no structure on a phone (a hairline over each, the
+role in label type). The drawn ridge and the zig-zag hills both judges
+missed, and the pinned gallery one of them liked, stay out: they are the
+drawn stand-ins and the second moment the record page's lesson removed.
+
+**For the owner.**
+- Kenya has the same two faults India had with reduced motion or without
+  JavaScript (on a phone the gallery's photographs run over the next
+  section; the route's cards stay a third of the width). Left for Kenya's
+  round.
+- The hero's footage still loops while it is on screen: your exception of
+  8 Oct (design rules, Motion and Footage). Please confirm it stands against
+  this round's "no loops".
+- The gallery is no longer pinned, and the hero no longer offers a choice of
+  photographs: its four other photographs are in the gallery now, so none is
+  lost.
+- The route is not drawn to scale: neither page gives a position for
+  Dharamshala or 360, only distances along the range (about 70 km west,
+  about 50 km east), so the schematic and "A schematic, not a map" stay and
+  only the weighted glide was taken.
+- Images still fade up from a blur as they arrive (site grammar); changing
+  that on one page only would break consistency, so it is a site-wide choice.
+- The footer's drawn ridge and the schematic's zig-zag hills stay gone on
+  India, as on the record page; the judges of both reviews missed them. If
+  you would rather keep either on the trips, each is a small change.
+- The calm look has its own sheet and script (v4-calm.css, v4-calm.js),
+  linked from India alone; when Kenya joins, the tool links them there too.

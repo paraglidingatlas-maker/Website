@@ -82,7 +82,11 @@ labels), `--fs-small` (meta, chips), `--fs-body-s` (card text), `--fs-body`,
   boxes are a soft field with a line underneath.
 - **Facts:** a row of label (micro, orange, uppercase) over value (white).
   Trips show next date, length, level, price; group size lives in the
-  departures table.
+  departures table. On a calmed trip page (India) the row is four big
+  facts: the value large over a grey label in sentence case, a hairline over
+  each (the record page's figures), no orange; the old row's other four
+  (base, launch, guiding, season) sit under them on the same columns,
+  quieter, and the trust strip keeps its four columns.
 - **Words on a photo:** no box. A shade (gradient) behind them, darker on the
   side the words sit; small orange text on a photo gets `--orange-lite` and a
   tight dark text-shadow.
@@ -101,6 +105,7 @@ short text). A second moment on the same page is a sign one should go.
 |---|---|
 | Home | the fly-through of the four trips |
 | India, Kenya | the fly-through: five full screens, the photograph behind |
+| India (less but better, 19 Oct 2026) | the fly-through stays the one moment: the hero is one plate with the footage, the gallery still photographs (full-width plates, each rising out of the page's dark and sinking back into it, no second pinned run), the route a schematic flown with the same weighted glide |
 | Kenya (second half) | the route map stays (it is the route section's own piece) |
 | Podcast | the globe (its footage breather taken out, owner, 8 Oct 2026; its line stands on the page) |
 | Library | the flight log (every episode a line in the log, the library drawn as a log) |
@@ -133,6 +138,38 @@ open into the episode (a transition), the instrument font.
   thermals); typography and real photographs as the graphics; a
   photograph never meets the page at a hard edge (its edge takes the colour
   behind it).
+- **Trips, less but better (India first, 19 Oct 2026;
+  `tools/v4_trip_calm.py`, `html.v4-calm`, with its own `v4-calm.css` and
+  `v4-calm.js`, which only a calmed page loads):** the record page's lesson
+  on a trip page, one page at a time. One eased loop (the record page's):
+  each frame reads the scroll, every value glides toward it and the loop
+  stops when all have settled; it moves the hero at 0.3 of the scroll, the
+  hairline under the chapter being read and the route's camera and lit line.
+  The hero is one plate with the owner's footage (no slideshow, no tabs, no
+  cue); the facts under it are four big facts (next departure, length,
+  level, price) over the old row's other four. In the fly-through each
+  photograph dissolves in over the last, which stays whole beneath it (no
+  frame is two photographs half gone over the dark), and settles once per
+  step instead of a slow zoom; its words come in at the foot of the screen
+  once their photograph has come, hold there, and leave before the next
+  arrive and before the chapter bar. The gallery is still photographs:
+  full-width plates, each cropped on its subject, rising out of the page's
+  dark and sinking back into it, so one photograph passes to the next
+  through the page, never through a double exposure of the two; each caption sits on its own photograph's lower third on an eased
+  shade. The route stays a schematic (the page gives no positions to draw to
+  scale) with straight lines for the ranges, the back ranges dashed; its
+  fall ends on the whole of India with Bir Billing's name on a halo (no
+  border through it), every card gets an equal share of the pin, and the
+  schematic and the cards' words sit on pools of the page's dark, so no line
+  of the map runs through them, while Bir Billing stays lit on the dimmed
+  map beside them. "Guaranteed to run" is a status line, its green only in
+  the dot; the guides sit under hairlines, their roles in label type; the
+  footer follows the call closely, with no drawn ridge and no glow alone in
+  an empty band. The gauge, the season ring, the tour bars and the day line
+  are drawn finished; no reveals on headings or the call card, which keeps
+  its card without the corner bracket; every transition in the page on
+  `--ease`. Each dissolve is a smoothstep from clear to the page's dark (the
+  `--v4c-1` to `--v4c-7` steps).
 - `prefers-reduced-motion`: transitions off, everything visible. With
   JavaScript off, everything readable (the fly-through shows every trip).
 
