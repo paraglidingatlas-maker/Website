@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="v4-quiet q-home">
+<html lang="en">
 <head>
 <meta name="robots" content="noindex, nofollow">
 <meta charset="UTF-8">
@@ -31,7 +31,7 @@
 <link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../styles.css?v=b084e774">
-<link rel="stylesheet" href="v2.css?v=7833ffdc"><!--v4q:css--><link rel="stylesheet" href="v4-quiet.css?v=74cc112e"><!--/v4q:css--><!--v4u-css--><style>.v4u-touch{display:none}@media (hover:none) and (pointer:coarse){.v4u-ptr{display:none}.v4u-touch{display:inline}}@media (max-width:760px){html body :is(.ep-card .ep-foot,.ep-card .ep-stamp b,.ep-card .ep-stamp i,.ep-open .s,.ep-open .m,.ep-open .g,.cta-n,.band .chips .lab){font-size:var(--fs-micro)}}</style><!--/v4u-css-->
+<link rel="stylesheet" href="v2.css?v=7833ffdc"><!--v4u-css--><style>.v4u-touch{display:none}@media (hover:none) and (pointer:coarse){.v4u-ptr{display:none}.v4u-touch{display:inline}}@media (max-width:760px){html body :is(.ep-card .ep-foot,.ep-card .ep-stamp b,.ep-card .ep-stamp i,.ep-open .s,.ep-open .m,.ep-open .g,.cta-n,.band .chips .lab){font-size:var(--fs-micro)}}</style><!--/v4u-css-->
 <link rel="icon" type="image/png" href="img/favicon-96.png">
 <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
 <meta name="theme-color" content="#141519">
@@ -308,7 +308,7 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
     </div>
   </div>
   <div class="v2-rail-wrap">
-    <div class="v2-rail" tabindex="0" aria-label="Most streamed episodes">
+    <div class="v2-rail" data-auto tabindex="0" aria-label="Most streamed episodes">
       <!-- guest-cards:start -->
       <a class="ep-card" href="episodes/sky-gods-flying-to-win-honorin-hamard.html" data-ep-slug="sky-gods-flying-to-win-honorin-hamard" style="--hf:9.03cqw;--nf:9.29cqw">
         <span class="ep-stamp"><b>SKY GODS</b><i>EPISODE 6</i></span>
@@ -528,7 +528,7 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
   </div>
   <p class="map-caption"><span class="v4u-ptr">Drag to rotate. Click a pin to see the episode.</span><span class="v4u-touch">Drag to rotate. Tap a pin to see the episode.</span></p>
   </div>
-  <template id="v4GlobeJs"><script src="../../assets/js/d3.min.js?v=f2094bbf"></script><script src="../../globe-episodes.js?v=5ed6afaf"></script><script src="../../assets/js/globe-world.js?v=c3ca4ee4"></script><!--v4q:globe--><script src="v4-globe.js?v=31543bf2"></script><!--/v4q:globe--></template>
+  <template id="v4GlobeJs"><script src="../../assets/js/d3.min.js?v=f2094bbf"></script><script src="../../globe-episodes.js?v=5ed6afaf"></script><script src="../../assets/js/globe-world.js?v=c3ca4ee4"></script><script src="../../globe.js?v=82e331c4"></script></template>
   <script>
   (function(){
     var box=document.getElementById('epMap'),t=document.getElementById('v4GlobeJs');
