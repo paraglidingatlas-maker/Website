@@ -105,7 +105,7 @@ short text). A second moment on the same page is a sign one should go.
 |---|---|
 | Home | the fly-through of the four trips |
 | India, Kenya | the fly-through: five full screens, the photograph behind |
-| India (less but better, 19 Oct 2026) | the fly-through stays the one moment: the hero is one plate with the footage, the gallery still photographs (full-width plates, each rising out of the page's dark and sinking back into it, no second pinned run), the route a schematic flown with the same weighted glide |
+| India (less but better, 19 Oct 2026; the gallery, 20 Oct) | the fly-through stays the moment: the hero is one plate with the footage, the route a schematic flown with the same weighted glide; the gallery is the owner's pinned run again on a wide screen (his choice of 1 Oct; the blind judges missed it), kept quiet beside the fly-through: one photograph at a time at full brightness, a scroll-led dissolve and no zoom, one caption at a time; on a phone a column of clean full-width plates |
 | Kenya (second half) | the route map stays (it is the route section's own piece) |
 | Podcast | the globe (its footage breather taken out, owner, 8 Oct 2026; its line stands on the page) |
 | Library | the flight log (every episode a line in the log, the library drawn as a log) |
@@ -144,26 +144,39 @@ open into the episode (a transition), the instrument font.
   on a trip page, one page at a time. One eased loop (the record page's):
   each frame reads the scroll, every value glides toward it and the loop
   stops when all have settled; it moves the hero at 0.3 of the scroll, the
-  hairline under the chapter being read and the route's camera and lit line.
+  hairline under the chapter being read, the route's camera and lit line and
+  the gallery's dissolves, captions and marks.
   The hero is one plate with the owner's footage (no slideshow, no tabs, no
   cue); the facts under it are four big facts (next departure, length,
   level, price) over the old row's other four. In the fly-through each
   photograph dissolves in over the last, which stays whole beneath it (no
   frame is two photographs half gone over the dark), and settles once per
   step instead of a slow zoom; its words come in at the foot of the screen
-  once their photograph has come, hold there, and leave before the next
-  arrive and before the chapter bar. The gallery is still photographs:
-  full-width plates, each cropped on its subject, rising out of the page's
-  dark and sinking back into it, so one photograph passes to the next
-  through the page, never through a double exposure of the two; each caption sits on its own photograph's lower third on an eased
-  shade. The route stays a schematic (the page gives no positions to draw to
-  scale) with straight lines for the ranges, the back ranges dashed; its
+  once their photograph has come (the first step's once the heading has
+  passed), hold there, and leave before the next arrive and before the
+  chapter bar. The gallery opens on a strong photograph and closes on one
+  (the back ranges from the air, Last light), none shown twice on the page.
+  On a wide screen it is pinned: one photograph at a time fills the screen
+  at full brightness once settled; the scroll picks the photograph and the
+  loop dissolves the next in over the last, which stays whole beneath it, so
+  no frame is ever empty, even in a flick; one caption at a time, the one
+  whose photograph is more than half in, the last gone before the next comes
+  and none resting half faded, its count (01 / 13) in the caption so the two
+  always agree; marks that fill and a skip link along the foot. On a phone,
+  and with reduced motion or no script, it is a column of full-width
+  plates, clean nearly edge to edge: a short soft edge and a small gap of
+  the page between plates, a breath and not a dark band, each caption on its
+  own photograph's lower third on an eased shade. The route stays a
+  schematic (the page gives no positions to draw to scale) with straight
+  lines for the ranges, the back ranges dashed; its
   fall ends on the whole of India with Bir Billing's name on a halo (no
   border through it), every card gets an equal share of the pin, and the
   schematic and the cards' words sit on pools of the page's dark, so no line
   of the map runs through them, while Bir Billing stays lit on the dimmed
-  map beside them. "Guaranteed to run" is a status line, its green only in
-  the dot; the guides sit under hairlines, their roles in label type; the
+  map beside them; as it comes in, the pool comes before the schematic's
+  names, so none sits on a border. "Guaranteed to run" is a status line,
+  its green only in the dot; the guides sit under hairlines, their roles in
+  label type; the
   footer follows the call closely, with no drawn ridge and no glow alone in
   an empty band. The gauge, the season ring, the tour bars and the day line
   are drawn finished; no reveals on headings or the call card, which keeps

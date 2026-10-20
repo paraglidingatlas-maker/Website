@@ -41,23 +41,40 @@ carry none of it, and v2.css and v2-immersive.js are as they were):
     a status line beside "6 places" (.v2-status.is-go, its green in the dot).
   - The page's own rules for the schematic's ranges and type and for the
     guides, India's alone, take the calmed look in place.
-  - The gallery is still photographs (no second pinned run, so the
-    fly-through stays the page's one moment): the four that repeated the
-    hero or the fly-through go, the hero's four come in, ordered as a day,
-    each a full-width plate with its place in the run (01 / 12) and the
-    point its crop keeps (--fx, --fy). The section is .v4c-g, not .gxa, so
-    v2-immersive.js's pinned gallery (part 14) finds nothing to run.
+  - The gallery is the owner's pinned fly-through again on a wide screen
+    (his choice of 1 Oct, option A; the blind judges of 20 Oct missed it),
+    flown by v4-calm.js's one loop, and a column of clean full-width plates
+    on a phone, with reduced motion and without the script. Thirteen
+    photographs, none shown twice on the page: the four that repeated the
+    hero or the fly-through go, the hero's four come in, and Last light
+    (the pushed page's closer, its caption and alt as they were there);
+    it opens on the back ranges from the air and closes on Last light.
+    Each figure carries its place in the run (01 / 13) in its own caption,
+    and the point its crop keeps (--fx, --fy); one markup serves every
+    screen (a track, a pin, the figures, the progress marks). The section
+    is .v4c-g, not .gxa, so v2-immersive.js's pinned gallery (part 14)
+    finds nothing to run.
   - The phone's booking bar also steps aside while the departures' cards
     (which carry their own Hold a place) are on screen, and leaves for the
     call only once its buttons are in view.
   - Flying Etiquette is a list to read at every width (no sideways pin, no
     page-wide scroll listener). The FAQ's height transition takes the one
     curve. The dead "Routes sheet" script and its styles go.
+  - This pass's own small scripts (the booking bar, the fly-through's step
+    swap, Flying Etiquette's button) live in v4-calm.js, not inline in the
+    page; their marks stay, empty. The fly-through's first words wait for
+    their photograph, and the route's schematic comes in on its pool before
+    its names (v4-calm.css and v4-calm.js).
   - Weight on arrival (the speed rule: no heavier than before): the parts of
     the usability pass's blocks (tools/v4_ux.py) that have nothing left to
     act on here go (the hero slideshow's waker, the pinned gallery's phone
     rules), and the fly-through's photographs wake from the screen's foot,
-    since the fly-through now begins behind the Overview heading.
+    since the fly-through now begins behind the Overview heading. Last,
+    the page is written compactly (compact(): no indentation at the start
+    of a line, inline scripts as tools/v4_min.py writes the served ones,
+    the JSON-LD without its pretty-printing, the inline styles' notes out
+    but this tool's v4c marks), which pays for the gallery's run: nothing
+    on screen changes.
 
 Every change sits between <!--v4c:NAME--> and <!--/v4c:NAME--> marks, or is
 an exact replace that first checks for its applied form, and every match is
@@ -82,6 +99,7 @@ It never touches prototypes/v2/, the live pages or root files
 tools, src/v2.css, src/v2-immersive.js or src/v4-ux.css.
 """
 import hashlib
+import json
 import os
 import re
 import sys
@@ -115,9 +133,39 @@ def marked(src, name, new, find):
     return src[:ms[0].start()] + a + new + b + src[ms[0].end():]
 
 
+def squash(t):
+    """Markup as compact() leaves it: no indentation at the start of a line."""
+    return re.sub(r"\n[ \t]+", "\n", t)
+
+
+def compact(src):
+    """The page written compactly, for its weight on arrival (the speed rule: no heavier than the pushed page),
+    with nothing on screen changed: no indentation at the start of a line of markup or style (a line break is
+    still there, so the words wrap and space exactly as before); each inline script as tools/v4_min.py writes
+    the served scripts (no comments, no indentation, no empty lines); the structured data (JSON-LD) without its
+    pretty-printing; the inline styles without their notes, except this tool's own v4c marks. A second pass
+    changes nothing."""
+    out = []
+    for part in re.split(r"(<script\b[^>]*>.*?</script>)", src, flags=re.S):
+        m = re.match(r"(<script\b([^>]*)>)(.*?)(</script>)$", part, re.S)
+        if not m:
+            part = re.sub(r"(<style[^>]*>)(.*?)(</style>)", lambda t: t.group(1) + re.sub(r"/\*(?! v4c).*?\*/\n?", "", t.group(2), flags=re.S)
+                          + t.group(3), part, flags=re.S)
+            out.append(squash(part))
+            continue
+        attrs, body = m.group(2), m.group(3)
+        if "src=" in attrs:
+            out.append(part)
+        elif "ld+json" in attrs:
+            out.append(m.group(1) + json.dumps(json.loads(body), ensure_ascii=False, separators=(",", ":")) + m.group(4))
+        else:
+            out.append(m.group(1) + "\n" + v4_min.js(body) + m.group(4))
+    return "".join(out)
+
+
 def swap(src, name, old, new, n=1):
-    """An exact replace that first checks for its applied form."""
-    if src.count(new) == n and old not in src:
+    """An exact replace that first checks for its applied form (as compact() leaves it)."""
+    if src.count(squash(new)) == n and old not in src and squash(old) not in src:
         return src
     if src.count(old) != n:
         fail("%s: expected %d of %r, found %d" % (name, n, old[:60], src.count(old)))
@@ -319,16 +367,19 @@ SCHEM = """<svg class="iroute-svg" viewBox="0 0 1000 400" role="img" aria-labell
   <text class="ir-k" x="756" y="394" text-anchor="middle">about 50 km to the east</text>
 </svg>"""
 
-# ---------- the gallery: still photographs, ordered as a day ----------
+# ---------- the gallery: an edited sequence, opened and closed on a strong photograph ----------
 # (file, folder, caption, alt, width, height, --fx, --fy); the hero's four keep their alt text and take their tab
-# names. Each is a full-width plate that rises out of the one before (v4-calm.css); --fx is the point its crop
-# keeps across on an upright screen, --fy the point it keeps down on a wide one (the green wing at Billing, the
-# peak under the wing, the two hikers, the monastery's roof). No two near-identical scenes sit together.
+# names, Last light its caption and alt from the pushed page. It opens on the strongest aerial that is not the
+# hero's photograph (the back ranges from the air), runs as a day (the launch, the flying, the valley, the
+# landing, the monastery) and closes on Last light, the one sunset. --fx is the point its crop keeps across on
+# an upright screen, --fy the point it keeps down on a wide one (the green wing at Billing, the peak under the
+# wing, the two hikers, the monastery's roof, the wing in the sun). No two near-identical scenes sit together.
+# Thirteen: the twelve the page had (their words stay on the page) and Last light.
 GALLERY = [
+    ("back-ranges", "hero", "The back ranges", "Snow-covered back ranges seen from the air", 1920, 848, "50%", "50%"),
     ("billing-launch", "hero", "Billing launch", "Pilots laying out and launching on the grass at Billing", 2000, 1333, "74%", "42%"),
     ("over-the-peaks", "gallery", "Over the peaks", "A single wing high above a snow-streaked peak", 1400, 933, "44%", "72%"),
     ("dhauladhar", "hero", "The Dhauladhar", "The Dhauladhar range under building cumulus, above the Kangra valley", 2400, 1600, "50%", "56%"),
-    ("back-ranges", "hero", "The back ranges", "Snow-covered back ranges seen from the air", 1920, 848, "50%", "50%"),
     ("hike-and-fly", "gallery", "Hike and fly", "Two pilots with paraglider rucksacks climbing a forest trail", 1400, 933, "44%", "58%"),
     ("valley-river", "gallery", "The valley floor", "Terraced fields, a river and villages seen from the air", 1400, 933, "62%", "50%"),
     ("cloud-range", "gallery", "Cloud on the range", "A snow-dusted rock peak half hidden in cloud", 1400, 933, "46%", "45%"),
@@ -337,11 +388,17 @@ GALLERY = [
     ("bir-landing", "hero", "Bir landing", "Bir's landing field among terraced fields, seen from the air", 1600, 899, "50%", "50%"),
     ("landing-field", "gallery", "The landing field", "The Bir landing field under big cumulus, snow peaks behind, one wing coming in", 1400, 933, "62%", "50%"),
     ("monastery", "gallery", "Tibetan monastery", "A Tibetan monastery with prayer flags against a blue sky", 1400, 933, "64%", "35%"),
+    ("last-light", "gallery", "Last light", "A paraglider silhouetted against a burning sunset", 1400, 933, "47%", "45%"),
 ]
-GONE = ("red-wing", "ridge-cumulus", "sky-of-wings", "gallery/last-light.")   # the hero's flight and the fly-through's files
+# the hero's photograph and the fly-through's five: none of them is shown twice on the page
+GONE = ("snowline", "red-wing", "launch-day", "front-range", "last-light-pair", "ridge-cumulus", "sky-of-wings")
 
 
 def gallery():
+    """The run's markup, one for every screen: v4-calm.css lays it out as a column of plates (a phone, reduced
+    motion, no script) or, once v4-calm.js marks the section .is-pin on a wide screen, as one pinned frame the
+    photographs dissolve through, with the progress marks under it; each caption carries its own place in the
+    run (01 / 13), so the count and the caption showing are always the same photograph's."""
     figs = []
     for k, (name, folder, title, alt, wd, ht, fx, fy) in enumerate(GALLERY):
         g = A + folder + "/" + name
@@ -353,10 +410,14 @@ def gallery():
                     'loading="lazy" decoding="async"></picture><figcaption><span class="v4c-g-n">%02d / %02d</span><b>%s</b>'
                     '<span class="v4c-g-alt">%s</span></figcaption></figure>'
                     % (fx, fy, webp, src, esc(alt), wd, ht, k + 1, len(GALLERY), esc(title), esc(alt)))
-    return ('<section class="dst-sec v4c-g" id="gallery" aria-labelledby="gallery-h">\n'
+    # the progress marks are drawn by v4-calm.css on the one empty rail (a tick a photograph, from --n)
+    return ('<section class="dst-sec v4c-g" id="gallery" aria-labelledby="gallery-h" style="--n:%d">\n'
             '  <div class="v4c-g-head"><span class="kicker">The pictures</span><h2 id="gallery-h">Bir Billing In Pictures</h2></div>\n'
+            '  <div class="v4c-g-track"><div class="v4c-g-pin">\n'
             '  <a class="v4c-g-skip" href="#guides">Skip the pictures <i aria-hidden="true">&darr;</i></a>\n'
-            '  %s\n</section>' % "\n  ".join(figs))
+            '  %s\n'
+            '  <div class="v4c-g-rail" aria-hidden="true"></div>\n'
+            '  </div></div>\n</section>' % (len(GALLERY), "\n  ".join(figs)))
 
 
 # ---------- the page's own sheet and script: linked here alone, with the hash of the copy v4_min writes ----------
@@ -451,70 +512,11 @@ if (mo) { mo.disconnect(); [].forEach.call(d.querySelectorAll("video[data-loop]"
 """
 
 # ---------- the inline scripts ----------
-MOBAR = r"""<script>
-(function(){
-  /* The booking bar rises once the hero has scrolled away, and steps aside
-     while the departures' cards (each has its own Hold a place), the call
-     (once its buttons are in view) or the footer is on screen. */
-  var bar=document.getElementById('dstMobar'),
-      watch=[document.querySelector('.khero, .dst-hero'),
-             document.querySelector('.kdates-grid'),
-             document.querySelector('footer')].filter(Boolean),
-      call=document.getElementById('enquire');
-  if(!bar||!watch.length||!('IntersectionObserver' in window))return;
-  var seen=new Set(), note=function(es){
-    es.forEach(function(e){ if(e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
-    bar.classList.toggle('show', seen.size===0);
-  }, io=new IntersectionObserver(note,{threshold:0});
-  watch.forEach(function(el){ io.observe(el); });
-  if(call) new IntersectionObserver(note,{rootMargin:'0px 0px -35% 0px',threshold:0}).observe(call);
-})();
-</script>"""
-
-OVERVIEW = r"""<script>
-/* Overview. An observer on a line across the centre says which beat owns
- * the middle of the screen and swaps the photograph to match. */
-(function () {
-  var fly = document.getElementById('kfly');
-  if (fly && 'IntersectionObserver' in window) {
-    var steps  = [].slice.call(fly.querySelectorAll('.kfly-step'));
-    var slides = [].slice.call(fly.querySelectorAll('.kfly-slide'));
-    var marks  = [].slice.call(fly.querySelectorAll('.kfly-marks i'));
-    if (steps.length === slides.length) {
-      var at = 0;
-      var go = function (n) {
-        if (n === at) return;
-        slides[at].classList.remove('is-on'); steps[at].classList.remove('is-on');
-        at = n;
-        slides[at].classList.add('is-on'); steps[at].classList.add('is-on');
-        marks.forEach(function (m, i) { m.classList.toggle('is-on', i <= at); });
-      };
-      var io = new IntersectionObserver(function (es) {
-        es.forEach(function (e) { if (e.isIntersecting) go(steps.indexOf(e.target)); });
-      }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
-      steps.forEach(function (s) { io.observe(s); });
-    }
-  }
-
-})();
-</script>"""
-
-ETQ = r"""<script>
-/* Flying Etiquette: the nine rules as a list at every width (v4-calm.css,
- * tools/v4_trip_calm.py); this only opens and closes them. */
-(function(){
-  var toggle = document.getElementById('etqToggle'),
-      body   = document.getElementById('etqBody'),
-      txt    = toggle && toggle.querySelector('.etq-toggle-txt');
-  if(!toggle || !body) return;
-  toggle.addEventListener('click', function(){
-    var open = body.hidden;
-    body.hidden = !open;
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if(txt) txt.textContent = open ? 'Hide the rules' : 'Read the nine rules';
-  });
-})();
-</script>"""
+# The page's three small scripts of this pass (the booking bar that rises after the hero and steps aside for
+# the departures' cards, the call and the footer; the fly-through's step and photograph swap; Flying
+# Etiquette's open and close) live in v4-calm.js now (its chores()), written there once without the inline
+# copies' comments and indentation, for the page's weight on arrival; their marks here stay, empty, so the
+# old scripts are found and taken out on a fresh page and a second run changes nothing.
 
 
 def patch(src):
@@ -574,23 +576,30 @@ def patch(src):
     src = swap(src, "flags", '<p class="kdates-flags"><span class="is-go">Guaranteed to run</span><span>6 places</span></p>',
                '<p class="kdates-flags"><span class="v2-status is-go">Guaranteed to run</span><span>6 places</span></p>', n=2)
 
-    # the gallery, a still column
+    # the gallery: a pinned run on a wide screen, a column of plates on a phone (v4-calm.css, v4-calm.js)
     src = marked(src, "gallery", gallery(), r'<section class="dst-sec gxa" id="gallery".*?</section>')
+    gal = src.split('id="gallery"', 1)[1].split("</section>", 1)[0]
     for g in GONE:
-        if g in src.split('id="gallery"', 1)[1].split("</section>", 1)[0]:
+        if g + "." in gal:
             fail("gallery: %s is still there" % g)
+    rest = src.replace(gal, "")
+    for name, folder, *_ in GALLERY:
+        if "/%s/%s." % (folder, name) in rest:
+            fail("gallery: %s is shown elsewhere on the page too" % name)
 
     # the scripts
-    src = marked(src, "mobar", MOBAR, r'<script>\n\(function\(\)\{\n  /\* The booking bar rises.*?</script>')
+    src = marked(src, "mobar", "", r'<script>\n\(function\(\)\{\n  /\* The booking bar rises.*?</script>')
     src = marked(src, "hero-script", "", r'<script>\n/\* Hero\. Five photographs, crossfaded, drifting\..*?</script>')
     src = marked(src, "routes-sheet", "", r'<script>\n/\* Routes sheet\..*?</script>')
-    src = marked(src, "overview", OVERVIEW, r'<script>\n/\* Overview prototype\..*?</script>')
+    src = marked(src, "overview", "", r'<script>\n/\* Overview prototype\..*?</script>')
     # the fly-through's photographs wake as it comes near: it now begins behind the Overview heading, so
     # "near" is measured from the screen's foot, or the five would load on arrival (the page's weight rule)
     src = swap(src, "fly-wake", "{ rootMargin: '60% 0px' }", "{ rootMargin: '0px 0px 25% 0px' }")
     src = swap(src, "faq-curve", "body.style.transition='height .32s ease';", "body.style.transition='height .32s var(--ease)';", n=2)
-    src = marked(src, "etiquette", ETQ, r'<script>\n/\* Flying Etiquette: vertical scroll drives the sideways run of rules\. \*/.*?</script>')
+    src = marked(src, "etiquette", "", r'<script>\n/\* Flying Etiquette: vertical scroll drives the sideways run of rules\. \*/.*?</script>')
 
+    # last, the page written compactly (its weight on arrival)
+    src = compact(src)
     if "\u2014" in src:
         fail("an em dash crept in")
     if "iroute-scroll" in re.sub(r"<style>.*?</style>", "", src, flags=re.S):

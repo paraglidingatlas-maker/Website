@@ -11,8 +11,10 @@
    rules; colours only through the tokens and color-mix(). */
 
 /* the eased steps every dissolve below is drawn with: a smoothstep from clear to the page's dark in
-   eight (tools/v4_record.py, ease_stops); as a mask only their strength counts */
-:root.v4-calm{--v4c-1:color-mix(in srgb,var(--bg) 4.3%,transparent);--v4c-2:color-mix(in srgb,var(--bg) 15.6%,transparent);--v4c-3:color-mix(in srgb,var(--bg) 31.6%,transparent);--v4c-4:color-mix(in srgb,var(--bg) 50%,transparent);--v4c-5:color-mix(in srgb,var(--bg) 68.4%,transparent);--v4c-6:color-mix(in srgb,var(--bg) 84.4%,transparent);--v4c-7:color-mix(in srgb,var(--bg) 95.7%,transparent);}
+   eight (tools/v4_record.py, ease_stops); as a mask only their strength counts. --v4c-fall is the whole
+   fall from the page's dark to clear, the stop list of an edge's shade */
+:root.v4-calm{--v4c-1:color-mix(in srgb,var(--bg) 4.3%,transparent);--v4c-2:color-mix(in srgb,var(--bg) 15.6%,transparent);--v4c-3:color-mix(in srgb,var(--bg) 31.6%,transparent);--v4c-4:color-mix(in srgb,var(--bg) 50%,transparent);--v4c-5:color-mix(in srgb,var(--bg) 68.4%,transparent);--v4c-6:color-mix(in srgb,var(--bg) 84.4%,transparent);--v4c-7:color-mix(in srgb,var(--bg) 95.7%,transparent);
+  --v4c-fall:var(--bg),var(--v4c-7) 12.5%,var(--v4c-6) 25%,var(--v4c-5) 37.5%,var(--v4c-4) 50%,var(--v4c-3) 62.5%,var(--v4c-2) 75%,var(--v4c-1) 87.5%,transparent;}
 
 /* ---- one curve: every transition and animation in the page, its chapter
    bar, its booking bar and the footer eases on --ease (the site's header and
@@ -131,6 +133,14 @@ html.v4-calm .kfly-step.is-on .kfly-copy > *{opacity:1;transition:opacity var(--
 }
 @media (min-width:821px){ html.v4-calm .kfly-copy{max-width:44rem;} }
 html.v4-calm .kfly-step .kfly-copy.is-gone{opacity:0;transition:transform var(--dur-m) var(--ease),opacity var(--dur-s) var(--ease);transition-delay:0s;}
+/* the first step's words wait until the Overview heading has passed over the
+   stage and their photograph fills the screen (part 17 marks them .is-wait
+   until then); the first step is longer by the heading's height (--v4c-ovh,
+   measured) and a little more, so they still hold at the foot once they come */
+html.v4-calm .kfly-step.is-on .kfly-copy.is-wait > *{opacity:0;transition:opacity var(--dur-s) var(--ease);}
+@media (prefers-reduced-motion:no-preference) and (scripting:enabled){
+  html.v4-calm .kfly-steps > .kfly-step:first-child{min-height:calc(100vh + var(--v4c-ovh,0px) + 25vh);min-height:calc(100svh + var(--v4c-ovh,0px) + 25svh);}
+}
 @media (prefers-reduced-motion:reduce){
   html.v4-calm .kfly-slide img,html.v4-calm .kfly-slide.is-on img{transform:none;transition:none;}
   html.v4-calm :is(.kfly-copy,.kfly-copy > *){opacity:1;transition:none;}
@@ -176,8 +186,8 @@ html.v4-calm .tm-map{--u:1;}
 /* the map's top and foot take the page's dark, eased, from two shades over it rather than a mask on it: the
    camera repaints the map as it moves, and a masked map was re-masked on every one of those frames */
 html.v4-calm .tm-pin::before,html.v4-calm .tm-pin::after{content:"";position:absolute;z-index:1;left:0;right:0;pointer-events:none;}
-html.v4-calm .tm-pin::before{top:0;height:16%;background:linear-gradient(180deg,var(--bg),var(--v4c-7) 12.5%,var(--v4c-6) 25%,var(--v4c-5) 37.5%,var(--v4c-4) 50%,var(--v4c-3) 62.5%,var(--v4c-2) 75%,var(--v4c-1) 87.5%,transparent);}
-html.v4-calm .tm-pin::after{bottom:0;height:22%;background:linear-gradient(0deg,var(--bg),var(--v4c-7) 12.5%,var(--v4c-6) 25%,var(--v4c-5) 37.5%,var(--v4c-4) 50%,var(--v4c-3) 62.5%,var(--v4c-2) 75%,var(--v4c-1) 87.5%,transparent);}
+html.v4-calm .tm-pin::before{top:0;height:16%;background:linear-gradient(180deg,var(--v4c-fall));}
+html.v4-calm .tm-pin::after{bottom:0;height:22%;background:linear-gradient(0deg,var(--v4c-fall));}
 @media (max-width:760px){ html.v4-calm .tm-map{--u:2.4;} }
 html.v4-calm .tm-map > rect:first-child{fill:var(--bg);}
 html.v4-calm .tm-map > :is(.tm-land,.tm-grat,.tm-ctry){transition:opacity var(--dur-l) var(--ease);}
@@ -197,6 +207,14 @@ html.v4-calm .tm-schem :is(.ir-west,.ir-east,.ir-over){transition:opacity var(--
 html.v4-calm .tm-card{transform:translateY(12px);transition:opacity var(--dur-s) var(--ease),transform var(--dur-m) var(--ease);}
 html.v4-calm .tm-card.is-on{transform:none;transition:opacity var(--dur-m) var(--ease) var(--dur-s),transform var(--dur-m) var(--ease) var(--dur-s);}
 html.v4-calm .tm-card-t{padding:0;}
+/* the changeover from the fall to the route, in two halves of the scroll (part 17 writes --route): the heading
+   leaves and the schematic's pool of dark comes in over the first; its names and lines only over the second, on
+   the finished pool, so no label ever sits on the map's borders while the map dims behind it */
+@media (prefers-reduced-motion:no-preference) and (scripting:enabled){
+  html.v4-calm .tm-calm .tm-schem{opacity:1;}
+  html.v4-calm .tm-calm .tm-schem::before{opacity:min(1,calc(var(--route,0) * 2));}
+  html.v4-calm .tm-calm .tm-schem > *{opacity:max(0,calc(var(--route,0) * 2 - 1));}
+}
 /* the schematic without drawn hills (its two ranges, straight lines with
    their names on them, and its type are in the page's own rules); on a phone
    its names a little larger; the lit lines drawn by their masks */
@@ -204,39 +222,92 @@ html.v4-calm .tm-card-t{padding:0;}
 html.v4-calm .ir-m{mask-type:alpha;}
 html.v4-calm .ir-mk{fill:none;stroke:var(--white);stroke-width:14;stroke-linecap:round;}
 
-/* ---- the gallery: still photographs, so the fly-through stays the page's
-   one moment (the section is .v4c-g, so v2-immersive.js's pinned gallery
-   leaves it alone). Each photograph is a full-width plate cropped on its
-   subject (--fx across, --fy down, from the tool) that rises out of the page
-   and sinks back into it: its edges take the page's own colour, so one
-   photograph passes to the next through the dark of the page, never through
-   a double exposure of the two (the blind judges, 20 Oct: the plates melted
-   into each other left grey, foggy bands). Each caption sits on its own
-   photograph's lower third, on a shade eased from clear (the words-on-a-photo
-   rule: no box); nothing moves ---- */
-html.v4-calm .v4c-g{--m:clamp(4rem,11vh,7rem);--m:clamp(4rem,11svh,7rem);padding:0;}
+/* ---- the gallery: the owner's pinned fly-through (1 Oct, option A of
+   three), back on a wide screen, and a column of clean plates on a phone
+   (the blind judges of 20 Oct: the pinned run was what the pushed page did
+   better on a wide screen, the plates what this page did better on a phone).
+   One markup for both (tools/v4_trip_calm.py); the section is .v4c-g, not
+   .gxa, so v2-immersive.js's pinned gallery leaves it alone.
+
+   The column (a phone; and reduced motion and no script at every width):
+   each photograph a full-width plate cropped on its subject (--fx across,
+   --fy down), clean nearly edge to edge: a short soft edge, so it never
+   meets the page at a hard edge, and a small gap of the page between plates,
+   a breath and not a dark band. Each caption, its place in the run over it,
+   sits on its own photograph's lower third, on a shade eased from clear (the
+   words-on-a-photo rule: no box); nothing moves ---- */
+html.v4-calm .v4c-g{padding:0;}
 html.v4-calm .v4c-g-head{padding:var(--sp-section) var(--edge-x) 0;}
 html.v4-calm .v4c-g-head h2{margin:.35rem 0 0;font-size:var(--fs-h2);color:var(--white);}
-html.v4-calm .v4c-g-skip{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;margin:var(--sp-1) var(--edge-x) 0;
+html.v4-calm .v4c-g-pin{display:flex;flex-direction:column;gap:var(--sp-2);}
+html.v4-calm .v4c-g-skip{align-self:flex-start;display:inline-flex;align-items:center;gap:.4rem;min-height:44px;margin:var(--sp-1) var(--edge-x) 0;
   color:var(--gray-light);font-size:var(--fs-small);text-decoration:none;transition:color var(--dur-s) var(--ease);}
 html.v4-calm .v4c-g-skip:is(:hover,:focus-visible){color:var(--orange);}
-html.v4-calm .v4c-g-f{position:relative;margin:0;height:72vh;height:72svh;}
-html.v4-calm .v4c-g-f picture{position:absolute;inset:0;display:block;
+html.v4-calm .v4c-g-rail{display:none;}
+html.v4-calm .v4c-g-f{--e:var(--sp-2);position:relative;margin:0;height:72vh;height:72svh;}
+html.v4-calm .v4c-g-f picture{position:absolute;inset:0;display:block;--v4c-gm:linear-gradient(transparent,var(--bg) var(--e),var(--bg) calc(100% - var(--e)),transparent);
   -webkit-mask-image:var(--v4c-gm);mask-image:var(--v4c-gm);}
-html.v4-calm .v4c-g-f picture{--v4c-gm:linear-gradient(180deg,transparent 0,var(--v4c-2) calc(var(--m) * .25),var(--v4c-4) calc(var(--m) * .5),var(--v4c-6) calc(var(--m) * .75),var(--bg) var(--m),var(--bg) calc(100% - var(--m)),var(--v4c-6) calc(100% - var(--m) * .75),var(--v4c-4) calc(100% - var(--m) * .5),var(--v4c-2) calc(100% - var(--m) * .25),transparent 100%);}
 html.v4-calm .v4c-g-f img{display:block;width:100%;height:100%;object-fit:cover;object-position:var(--fx,50%) var(--fy,50%);}
+/* the caption's shade: clear over the top half, eased toward the page's dark at the foot, and a little from the left where the words are */
 html.v4-calm .v4c-g-f picture::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,transparent 35%,var(--v4c-1) calc(35% + (65% - var(--m)) * .167),var(--v4c-2) calc(35% + (65% - var(--m)) * .333),var(--v4c-3) calc(35% + (65% - var(--m)) * .5),var(--v4c-4) calc(35% + (65% - var(--m)) * .667),var(--v4c-5) calc(35% + (65% - var(--m)) * .833),var(--v4c-6) calc(100% - var(--m)),var(--v4c-6) 100%),linear-gradient(90deg,var(--v4c-5),transparent 70%);}
-html.v4-calm .v4c-g-f figcaption{position:absolute;z-index:1;left:var(--edge-x);right:var(--edge-x);bottom:calc(var(--m) + var(--sp-3));max-width:40rem;}
+  background:linear-gradient(transparent 45%,var(--v4c-1) 52%,var(--v4c-2) 59%,var(--v4c-3) 66%,var(--v4c-4) 74%,var(--v4c-5) 84%,var(--v4c-6)),linear-gradient(90deg,var(--v4c-4),transparent 60%);}
+html.v4-calm .v4c-g-f figcaption{position:absolute;z-index:1;left:var(--edge-x);right:var(--edge-x);bottom:calc(var(--e) + var(--sp-3));max-width:40rem;}
 html.v4-calm .v4c-g-n{display:block;margin:0 0 .45rem;font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.06em;color:var(--white);}
 html.v4-calm .v4c-g-f figcaption b{display:block;font-family:var(--font-display);font-weight:700;font-size:var(--fs-h2);line-height:1.1;letter-spacing:-.01em;color:var(--white);}
 html.v4-calm .v4c-g-alt{display:block;margin-top:.35rem;font-size:var(--fs-small);line-height:1.45;color:color-mix(in srgb,var(--white) 86%,transparent);}
 @media (max-width:760px){
-  html.v4-calm .v4c-g{--m:4rem;}
+  html.v4-calm .v4c-g-f{--e:.75rem;height:54vh;height:54svh;}
+  html.v4-calm .v4c-g-pin{gap:.75rem;}
   html.v4-calm .v4c-g-f figcaption b{font-size:var(--fs-h3);}
-  html.v4-calm .v4c-g-f{height:54vh;height:54svh;}
-  /* the caption runs the width of a phone and wraps: its shade starts higher */
-  html.v4-calm .v4c-g-f picture::after{background:linear-gradient(180deg,transparent 15%,var(--v4c-1) calc(15% + (85% - var(--m)) * .167),var(--v4c-2) calc(15% + (85% - var(--m)) * .333),var(--v4c-3) calc(15% + (85% - var(--m)) * .5),var(--v4c-4) calc(15% + (85% - var(--m)) * .667),var(--v4c-5) calc(15% + (85% - var(--m)) * .833),var(--v4c-6) calc(100% - var(--m)),var(--v4c-6) 100%),linear-gradient(90deg,var(--v4c-4),transparent);}
+  /* the caption runs the width of a phone and wraps: its shade starts a little higher, and stays light at the
+     plate's foot, so the plate does not end in a dark band (the words still read at 5:1 and more) */
+  html.v4-calm .v4c-g-f picture::after{background:linear-gradient(transparent 40%,var(--v4c-1) 50%,var(--v4c-2) 59%,var(--v4c-3) 68%,var(--v4c-4) 78%,var(--v4c-5)),linear-gradient(90deg,var(--v4c-4),transparent 90%);}
+}
+
+/* ---- the pinned run: a wide screen with motion and the script (v4-calm.js
+   marks the section .is-pin; reduced motion, no script and a phone keep the
+   column). One photograph at a time fills the screen, at full brightness
+   once settled: the one loop eases a position through the run toward the
+   photograph the scroll has reached, and the next dissolves in over the
+   last, which stays whole beneath it until it is covered (the loop writes
+   each one's --o), so at every moment a whole photograph lies under the
+   dissolve; it settles from a touch larger (--s). One caption at a time, the
+   one whose photograph is more than half in, faded by the same loop (--co):
+   the last is gone before the next comes in, and nothing rests half faded.
+   Its place in the run is in its own caption, so the count always names the
+   photograph captioned. The marks under the frame (drawn here: a tick for
+   each photograph and a line that fills, --p) follow the run; the frame's
+   top and foot take the page's dark only while it comes and goes (--g-in,
+   --g-out), so no edge meets the page and nothing dims it once pinned ---- */
+@media screen and (min-width:761px){
+  html.v4-calm .v4c-g.is-pin{--g-foot:var(--sp-4);}
+  html.v4-calm .v4c-g.is-pin .v4c-g-track{margin-top:var(--sp-4);height:calc(var(--n) * 46vh + 100vh);}
+  html.v4-calm .v4c-g.is-pin .v4c-g-pin{display:block;position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;}
+  html.v4-calm .v4c-g.is-pin .v4c-g-f{position:absolute;inset:0;height:auto;}
+  html.v4-calm .v4c-g.is-pin .v4c-g-f picture{-webkit-mask-image:none;mask-image:none;opacity:var(--o,0);transform:scale(var(--s,1));}
+  html.v4-calm .v4c-g.is-pin .v4c-g-f picture.is-up{will-change:opacity,transform;}
+  html.v4-calm .v4c-g.is-pin .v4c-g-f picture::after{background:linear-gradient(transparent 52%,var(--v4c-1) 59%,var(--v4c-2) 66%,var(--v4c-3) 73%,var(--v4c-4) 81%,var(--v4c-5) 90%,var(--v4c-6)),linear-gradient(90deg,var(--v4c-4),transparent 55%);}
+  html.v4-calm .v4c-g.is-pin .v4c-g-f figcaption{z-index:2;bottom:calc(var(--g-foot) + 44px + var(--sp-3));max-width:44rem;opacity:var(--co,0);}
+  html.v4-calm .v4c-g.is-pin .v4c-g-f:first-of-type picture{opacity:var(--o,1);}
+  html.v4-calm .v4c-g.is-pin .v4c-g-f:first-of-type figcaption{opacity:var(--co,1);}
+  html.v4-calm .v4c-g.is-pin .v4c-g-f figcaption b{font-size:clamp(2rem,4.2vw,3.6rem);line-height:1.04;letter-spacing:-.015em;}
+  html.v4-calm .v4c-g.is-pin .v4c-g-alt{margin-top:.6rem;font-size:var(--fs-body);}
+  html.v4-calm .v4c-g.is-pin .v4c-g-rail{display:block;position:absolute;z-index:3;left:var(--edge-x);right:calc(var(--edge-x) + 12rem);bottom:calc(var(--g-foot) + 22px);height:1px;background:var(--edge);}
+  html.v4-calm .v4c-g-rail::before,html.v4-calm .v4c-g-rail::after{content:"";position:absolute;left:0;}
+  html.v4-calm .v4c-g-rail::before{top:-4px;right:-1px;height:9px;background:repeating-linear-gradient(90deg,var(--edge-hi) 0 1px,transparent 1px calc((100% - 1px) / (var(--n) - 1)));}
+  html.v4-calm .v4c-g-rail::after{right:0;top:-.5px;height:2px;background:var(--white);transform:scaleX(var(--p,0));transform-origin:0 50%;}
+  html.v4-calm .v4c-g.is-pin .v4c-g-skip{position:absolute;z-index:3;right:var(--edge-x);bottom:var(--g-foot);margin:0;color:var(--white);}
+  html.v4-calm .v4c-g.is-pin .v4c-g-skip:is(:hover,:focus-visible){color:var(--orange);}
+  /* the shades lie over the photographs and under the words, so a caption is never dimmed by them */
+  html.v4-calm .v4c-g.is-pin .v4c-g-pin::before,html.v4-calm .v4c-g.is-pin .v4c-g-pin::after{content:"";position:absolute;z-index:1;left:0;right:0;height:32%;pointer-events:none;}
+  html.v4-calm .v4c-g.is-pin .v4c-g-pin::before{top:0;opacity:var(--g-in,1);background:linear-gradient(180deg,var(--v4c-fall));}
+  html.v4-calm .v4c-g.is-pin .v4c-g-pin::after{bottom:0;opacity:var(--g-out,0);background:linear-gradient(0deg,var(--v4c-fall));}
+}
+/* up to 820 px the phone's booking bar lies along the foot: the marks, the skip link and the caption sit above
+   it (the fly-through's words keep the same clearance) */
+@media screen and (min-width:761px) and (max-width:820px){
+  html.v4-calm .v4c-g.is-pin{--g-foot:calc(6.5rem + env(safe-area-inset-bottom,0px));}
+  html.v4-calm .v4c-g.is-pin .v4c-g-f picture::after{background:linear-gradient(transparent 32%,var(--v4c-1) 41%,var(--v4c-2) 50%,var(--v4c-3) 59%,var(--v4c-4) 68%,var(--v4c-5) 80%,var(--v4c-6)),linear-gradient(90deg,var(--v4c-4),transparent 70%);}
 }
 
 /* ---- the departures: a hairline band on a faint wash of the season, each

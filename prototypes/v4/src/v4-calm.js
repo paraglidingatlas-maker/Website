@@ -12,14 +12,16 @@
    fonts are in and when the page's height changes (a fold opening), never
    per frame. It moves the hero's photograph at 0.3 of the scroll while the
    hero is in view, fills the chapter bar's hairline under the chapter being
-   read and, on a phone, brings that chapter into view in the bar, and flies
-   the route: its camera and its lit lines. Which chapter is being read is
-   the one under the screen's centre line (an observer, aria-current);
-   another observer sends the fly-through's words away before they reach the
-   bar. The route and the gallery carry their own names on this page
-   (.tm-calm, .v4c-g), so v2-immersive.js's trip map and pinned gallery
-   (its parts 15 and 14) find nothing to run. Reduced motion: every value is
-   set at once and the hero stays still. */
+   read and, on a phone, brings that chapter into view in the bar, flies
+   the route (its camera and its lit lines) and, on a wide screen, the
+   gallery's pinned run (its dissolves, its caption, its marks). Which
+   chapter is being read is the one under the screen's centre line (an
+   observer, aria-current); another observer sends the fly-through's words
+   away before they reach the bar. The route and the gallery carry their own
+   names on this page (.tm-calm, .v4c-g), so v2-immersive.js's trip map and
+   pinned gallery (its parts 15 and 14) find nothing to run. Reduced motion:
+   every value is set at once, the hero stays still and the gallery stays a
+   column. */
 (function () {
   "use strict";
   var d = document, w = window, root = d.documentElement;
@@ -124,6 +126,87 @@
       es.forEach(function (e) { e.target.classList.toggle("is-gone", !!e.rootBounds && e.boundingClientRect.top < e.rootBounds.top); });
     }, { rootMargin: "-15% 0px 0px 0px", threshold: [0, 1] });
     copies.forEach(function (c) { io.observe(c); });
+    // the first step's words wait (.is-wait) until the Overview heading, which lies over the top of the stage,
+    // has scrolled off and the photograph fills the screen; the first step is longer by the heading's height
+    // (--v4c-ovh), so the words still hold at the foot once they come
+    var head = d.querySelector(".v4t-fly .kov-open"), kfly = d.getElementById("kfly"), first = copies[0], at = 0, wait = null;
+    if (!head || !kfly) return;
+    add(function (y) {
+      var on = y < at;
+      if (on !== wait) { wait = on; first.classList.toggle("is-wait", on); }
+      return false;
+    }, function () {
+      var h = head.offsetHeight;
+      kfly.style.setProperty("--v4c-ovh", h + "px");
+      at = absTop(head) + h;
+    });
+  }
+
+  /* The gallery (the section .v4c-g, tools/v4_trip_calm.py): the owner's pinned fly-through on a wide screen
+     (wider than 760 px) with motion; on a phone, with reduced motion and without the script it stays a column
+     of plates, and this only asks for its photographs as it nears. The scroll picks the photograph (the pin's
+     length in equal shares, one a photograph); the loop eases a position v toward it by the time passed, never
+     faster than a photograph in 100 ms, so a flick passes through the run as quick dissolves and never strobes
+     or lands on an empty frame. The photograph at floor(v) is whole and the next lies over it at a smoothstep
+     of the rest, settling from a touch larger (--o, --s, which only the pinned layout reads). Each caption's
+     --co comes from the same position: a caption shows only near its own photograph, rises only for the one
+     the scroll has picked and only fades for the others, so the last is gone before the next comes, no two
+     show, the one showing is the photograph's that is more than half in, and none rests half faded. The marks
+     fill with v; the frame's top and foot take the page's dark only while it comes in and goes (--g-in,
+     --g-out, straight from the scroll). Off screen the position is where the scroll is, with no glide. Within
+     two screens of the section (at every width) all its photographs are asked for and decoded, so none is
+     missing when it is needed. */
+  var TAU = 300, PER = 100;
+  function gallery() {
+    var sec = d.querySelector(".v4c-g");
+    if (!sec) return;
+    var track = sec.querySelector(".v4c-g-track"), pin = sec.querySelector(".v4c-g-pin"), rail = sec.querySelector(".v4c-g-rail");
+    var figs = [].slice.call(sec.querySelectorAll(".v4c-g-f")), n = figs.length, wide = w.matchMedia && matchMedia("(min-width: 761px)");
+    var on = false, top = 0, span = 1, vh = 1, s0 = 0, s1 = 0, v = null, lvl = [], woke = false, last = {};
+    if (!track || n < 2) return;
+    function put(el, prop, key, val) { if (last[key] !== val) { last[key] = val; el.style.setProperty(prop, val); return true; } }
+    function size() {
+      var run = !still && !!wide && wide.matches;
+      if (run !== on) { on = run; sec.classList.toggle("is-pin", on); v = null; last = {}; lvl = []; }
+      vh = w.innerHeight; s0 = absTop(sec); s1 = s0 + sec.offsetHeight;
+      top = absTop(track); span = Math.max(1, track.offsetHeight - vh);
+    }
+    if (wide && wide.addEventListener) wide.addEventListener("change", measure);
+    add(function (y, dt) {
+      if (!woke && y > s0 - 2 * vh && y < s1) {
+        woke = true;
+        figs.forEach(function (f) {
+          var img = f.querySelector("img"), go = function () { if (img.decode) img.decode().catch(function () {}); };
+          img.loading = "eager";
+          if (img.complete) go(); else img.addEventListener("load", go, { once: true });
+        });
+      }
+      if (!on) return false;
+      var t = Math.max(0, Math.min(n - 1, Math.floor((y - top) / span * n)));
+      if (v === null || y < top - 2 * vh || y > top + span + vh) v = t;
+      else if (v !== t) {
+        v += Math.max(-dt / PER, Math.min(dt / PER, (t - v) * (1 - Math.exp(-dt / TAU))));
+        // the last fiftieth of a dissolve is about a thousandth of a step of light (the smoothstep): land
+        if (Math.abs(t - v) < 0.02) v = t;
+      }
+      var b = Math.floor(v), f = v - b, s = f * f * (3 - 2 * f);
+      figs.forEach(function (fig, k) {
+        var pic = fig.firstChild, up = k === b + 1 && s > 0, o = k === b ? "1" : up ? s.toFixed(3) : "0";
+        // the captions, from the same position: one shows only within a third of a step of its own photograph
+        // (which is then at least 72% of the picture), rising as the run arrives there; one the run is leaving
+        // can only fade, and one a flick passes never rises, so no two ever show, none flashes by, and at rest
+        // the one showing is whole
+        var near = clamp(1 - Math.abs(v - k) / 0.35), lv = k === t ? near : Math.min(lvl[k] || 0, near);
+        lvl[k] = lv;
+        if (put(pic, "--o", "o" + k, o)) pic.classList.toggle("is-up", o !== "0");
+        put(pic, "--s", "s" + k, up ? (1.03 - 0.03 * s).toFixed(4) : "1");
+        put(fig.lastChild, "--co", "c" + k, (lv * lv * (3 - 2 * lv)).toFixed(3));
+      });
+      if (rail) put(rail, "--p", "p", (v / (n - 1)).toFixed(4));
+      put(pin, "--g-in", "i", clamp((top - y) / (0.3 * vh)).toFixed(3));
+      put(pin, "--g-out", "u", clamp((y - top - span) / (0.3 * vh)).toFixed(3));
+      return v !== t;
+    }, size);
   }
 
   /* The route (the trip map of tools/v4_tripmap.py, flown here instead of by v2-immersive.js part 15). The
@@ -203,7 +286,9 @@
       put("ter", (fine * .85).toFixed(2), function (v) { svg.style.setProperty("--ter", v); });
       put("cn", cn.toFixed(2), function (v) { svg.style.setProperty("--cn", v); });
       put("rt", rt.toFixed(2), function (v) { sec.style.setProperty("--route", v); sec.classList.toggle("is-route", rt > 0); });
-      put("head", (1 - rt).toFixed(2), function (v) { head.style.opacity = v; });
+      // the heading leaves over the first half of the changeover, while the schematic's pool comes in; the
+      // schematic's names and lines come over the second half, on the finished pool (v4-calm.css)
+      put("head", clamp(1 - 2 * rt).toFixed(2), function (v) { head.style.opacity = v; });
       show(cur);
       // each card's line draws over the first three quarters of its card and stays, eased, and never more than
       // a few hundredths of the line a frame, so a wheel's notch draws it rather than jumps
@@ -220,8 +305,55 @@
     }, size);
   }
 
+  /* The page's three small scripts, once inline in it (tools/v4_trip_calm.py now leaves their marks empty, for
+     the page's weight): the phone's booking bar rises once the hero has scrolled away and steps aside while
+     the departures' cards (each has its own Hold a place), the call (once its buttons are in view) or the
+     footer is on screen; in the fly-through an observer on a line across the centre says which step owns the
+     middle of the screen and swaps the photograph to match; Flying Etiquette's button opens and closes its
+     list. With reduced motion too: none of them moves anything. */
+  function chores() {
+    var IO = w.IntersectionObserver;
+    var mob = d.getElementById("dstMobar"), call = d.getElementById("enquire"), seen = [];
+    var watch = [".khero, .dst-hero", ".kdates-grid", "footer"].map(function (s) { return d.querySelector(s); }).filter(Boolean);
+    if (mob && watch.length && IO) {
+      var note = function (es) {
+        es.forEach(function (e) { var i = seen.indexOf(e.target); if (e.isIntersecting) { if (i < 0) seen.push(e.target); } else if (i >= 0) seen.splice(i, 1); });
+        mob.classList.toggle("show", !seen.length);
+      }, io = new IO(note, { threshold: 0 });
+      watch.forEach(function (el) { io.observe(el); });
+      if (call) new IO(note, { rootMargin: "0px 0px -35% 0px", threshold: 0 }).observe(call);
+    }
+    var kf = d.getElementById("kfly");
+    if (kf && IO) {
+      var steps = [].slice.call(kf.querySelectorAll(".kfly-step")), slides = kf.querySelectorAll(".kfly-slide"), marks = kf.querySelectorAll(".kfly-marks i"), at = 0;
+      if (steps.length === slides.length) {
+        var so = new IO(function (es) {
+          es.forEach(function (e) {
+            var k = steps.indexOf(e.target);
+            if (!e.isIntersecting || k === at) return;
+            slides[at].classList.remove("is-on"); steps[at].classList.remove("is-on");
+            at = k;
+            slides[at].classList.add("is-on"); steps[at].classList.add("is-on");
+            [].forEach.call(marks, function (m, i) { m.classList.toggle("is-on", i <= at); });
+          });
+        }, { rootMargin: "-50% 0px -50% 0px", threshold: 0 });
+        steps.forEach(function (s) { so.observe(s); });
+      }
+    }
+    var tg = d.getElementById("etqToggle"), body = d.getElementById("etqBody"), txt = tg && tg.querySelector(".etq-toggle-txt");
+    if (tg && body) tg.addEventListener("click", function () {
+      var open = body.hidden;
+      body.hidden = !open;
+      tg.setAttribute("aria-expanded", open ? "true" : "false");
+      if (txt) txt.textContent = open ? "Hide the rules" : "Read the nine rules";
+    });
+  }
+
   function init() {
-    hero(); bar(); fly(); route();
+    chores();
+    // the gallery and the fly-through first: they set the run's and the first step's lengths before the
+    // others measure the page
+    gallery(); fly(); hero(); bar(); route();
     kick();
     w.addEventListener("scroll", kick, { passive: true });
     var rz = 0;

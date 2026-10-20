@@ -90,6 +90,64 @@ var io = new IntersectionObserver(function (es) {
 es.forEach(function (e) { e.target.classList.toggle("is-gone", !!e.rootBounds && e.boundingClientRect.top < e.rootBounds.top); });
 }, { rootMargin: "-15% 0px 0px 0px", threshold: [0, 1] });
 copies.forEach(function (c) { io.observe(c); });
+var head = d.querySelector(".v4t-fly .kov-open"), kfly = d.getElementById("kfly"), first = copies[0], at = 0, wait = null;
+if (!head || !kfly) return;
+add(function (y) {
+var on = y < at;
+if (on !== wait) { wait = on; first.classList.toggle("is-wait", on); }
+return false;
+}, function () {
+var h = head.offsetHeight;
+kfly.style.setProperty("--v4c-ovh", h + "px");
+at = absTop(head) + h;
+});
+}
+var TAU = 300, PER = 100;
+function gallery() {
+var sec = d.querySelector(".v4c-g");
+if (!sec) return;
+var track = sec.querySelector(".v4c-g-track"), pin = sec.querySelector(".v4c-g-pin"), rail = sec.querySelector(".v4c-g-rail");
+var figs = [].slice.call(sec.querySelectorAll(".v4c-g-f")), n = figs.length, wide = w.matchMedia && matchMedia("(min-width: 761px)");
+var on = false, top = 0, span = 1, vh = 1, s0 = 0, s1 = 0, v = null, lvl = [], woke = false, last = {};
+if (!track || n < 2) return;
+function put(el, prop, key, val) { if (last[key] !== val) { last[key] = val; el.style.setProperty(prop, val); return true; } }
+function size() {
+var run = !still && !!wide && wide.matches;
+if (run !== on) { on = run; sec.classList.toggle("is-pin", on); v = null; last = {}; lvl = []; }
+vh = w.innerHeight; s0 = absTop(sec); s1 = s0 + sec.offsetHeight;
+top = absTop(track); span = Math.max(1, track.offsetHeight - vh);
+}
+if (wide && wide.addEventListener) wide.addEventListener("change", measure);
+add(function (y, dt) {
+if (!woke && y > s0 - 2 * vh && y < s1) {
+woke = true;
+figs.forEach(function (f) {
+var img = f.querySelector("img"), go = function () { if (img.decode) img.decode().catch(function () {}); };
+img.loading = "eager";
+if (img.complete) go(); else img.addEventListener("load", go, { once: true });
+});
+}
+if (!on) return false;
+var t = Math.max(0, Math.min(n - 1, Math.floor((y - top) / span * n)));
+if (v === null || y < top - 2 * vh || y > top + span + vh) v = t;
+else if (v !== t) {
+v += Math.max(-dt / PER, Math.min(dt / PER, (t - v) * (1 - Math.exp(-dt / TAU))));
+if (Math.abs(t - v) < 0.02) v = t;
+}
+var b = Math.floor(v), f = v - b, s = f * f * (3 - 2 * f);
+figs.forEach(function (fig, k) {
+var pic = fig.firstChild, up = k === b + 1 && s > 0, o = k === b ? "1" : up ? s.toFixed(3) : "0";
+var near = clamp(1 - Math.abs(v - k) / 0.35), lv = k === t ? near : Math.min(lvl[k] || 0, near);
+lvl[k] = lv;
+if (put(pic, "--o", "o" + k, o)) pic.classList.toggle("is-up", o !== "0");
+put(pic, "--s", "s" + k, up ? (1.03 - 0.03 * s).toFixed(4) : "1");
+put(fig.lastChild, "--co", "c" + k, (lv * lv * (3 - 2 * lv)).toFixed(3));
+});
+if (rail) put(rail, "--p", "p", (v / (n - 1)).toFixed(4));
+put(pin, "--g-in", "i", clamp((top - y) / (0.3 * vh)).toFixed(3));
+put(pin, "--g-out", "u", clamp((y - top - span) / (0.3 * vh)).toFixed(3));
+return v !== t;
+}, size);
 }
 var FALL = 0.18;
 function route() {
@@ -156,7 +214,7 @@ put("fine", fine.toFixed(2), function (v) { svg.style.setProperty("--fine", v); 
 put("ter", (fine * .85).toFixed(2), function (v) { svg.style.setProperty("--ter", v); });
 put("cn", cn.toFixed(2), function (v) { svg.style.setProperty("--cn", v); });
 put("rt", rt.toFixed(2), function (v) { sec.style.setProperty("--route", v); sec.classList.toggle("is-route", rt > 0); });
-put("head", (1 - rt).toFixed(2), function (v) { head.style.opacity = v; });
+put("head", clamp(1 - 2 * rt).toFixed(2), function (v) { head.style.opacity = v; });
 show(cur);
 lit.forEach(function (L) {
 var ft = cur < 0 ? 0 : clamp((x - L.i) / .75);
@@ -170,8 +228,46 @@ put("d" + L.i + "-" + j, (s.L * (1 - clamp(L.f * L.ps.length - j))).toFixed(1), 
 return busy;
 }, size);
 }
+function chores() {
+var IO = w.IntersectionObserver;
+var mob = d.getElementById("dstMobar"), call = d.getElementById("enquire"), seen = [];
+var watch = [".khero, .dst-hero", ".kdates-grid", "footer"].map(function (s) { return d.querySelector(s); }).filter(Boolean);
+if (mob && watch.length && IO) {
+var note = function (es) {
+es.forEach(function (e) { var i = seen.indexOf(e.target); if (e.isIntersecting) { if (i < 0) seen.push(e.target); } else if (i >= 0) seen.splice(i, 1); });
+mob.classList.toggle("show", !seen.length);
+}, io = new IO(note, { threshold: 0 });
+watch.forEach(function (el) { io.observe(el); });
+if (call) new IO(note, { rootMargin: "0px 0px -35% 0px", threshold: 0 }).observe(call);
+}
+var kf = d.getElementById("kfly");
+if (kf && IO) {
+var steps = [].slice.call(kf.querySelectorAll(".kfly-step")), slides = kf.querySelectorAll(".kfly-slide"), marks = kf.querySelectorAll(".kfly-marks i"), at = 0;
+if (steps.length === slides.length) {
+var so = new IO(function (es) {
+es.forEach(function (e) {
+var k = steps.indexOf(e.target);
+if (!e.isIntersecting || k === at) return;
+slides[at].classList.remove("is-on"); steps[at].classList.remove("is-on");
+at = k;
+slides[at].classList.add("is-on"); steps[at].classList.add("is-on");
+[].forEach.call(marks, function (m, i) { m.classList.toggle("is-on", i <= at); });
+});
+}, { rootMargin: "-50% 0px -50% 0px", threshold: 0 });
+steps.forEach(function (s) { so.observe(s); });
+}
+}
+var tg = d.getElementById("etqToggle"), body = d.getElementById("etqBody"), txt = tg && tg.querySelector(".etq-toggle-txt");
+if (tg && body) tg.addEventListener("click", function () {
+var open = body.hidden;
+body.hidden = !open;
+tg.setAttribute("aria-expanded", open ? "true" : "false");
+if (txt) txt.textContent = open ? "Hide the rules" : "Read the nine rules";
+});
+}
 function init() {
-hero(); bar(); fly(); route();
+chores();
+gallery(); fly(); hero(); bar(); route();
 kick();
 w.addEventListener("scroll", kick, { passive: true });
 var rz = 0;

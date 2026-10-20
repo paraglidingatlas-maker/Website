@@ -80,7 +80,7 @@ marked done is the next step.
 | 30. From the record page to the whole site, first two (owner, 19 Oct: "ok"): every page scrolls more smoothly (v2-immersive.js no longer writes the unused --v2-gust to <html> on every scroll frame, which restyled the whole page; nothing read it); the podcast's Night flight feed no longer moves on its own (the twinkling stars, drifting aurora, edge sweep, level meter and ticker loops are gone, as the motion rule and the record page's lesson ask; the look, the progress ring and a still 'Now playing' line stay), and its last raw colours became tokens. rss-feed.js untouched. | done | see git log | all gates PASS |
 | 31. Expeditions gets its own page (owner, 19 Oct: "the expeditions standalone tab ... is just an off copy of leftover material at the homepage, I want it a bit different", then "use the same Awwwards rule" and "go crazy with your imagination"): expeditions.html. Three directions built in full (expeditions-a, -b and -c.html, prototype-only), judged, and the winner (C) built with the best of the other two: "Choose Your Sky", Kenya and India side by side with the split following the pointer; the map flown with the scroll from the world to India, Kenya, Kazakhstan and Peru (Natural Earth outlines, public domain; WebGL 2 where there is a real graphics card, drawn in SVG otherwise), each place's own photograph rising out of the map; the year drawn to scale from Oct 2026 to Nov 2027 with each departure on it; "Still Choosing?" over the Last light photograph. Every fact from the trip pages and the home page (Kazakhstan and Peru as the home page gives them: planned, with Register interest); about 330 words. Phones, reduced motion and no JavaScript get a still, stacked page. The header's Expeditions tab, the full-screen menu, the app's Trips shortcut and the search now lead here (they led to the home page's destinations section); the home page section stays. Note for later passes: a full rerun of tools/v4_pass.py rewrites the knowledge base drawings in long path syntax, so it must be followed by tools/v4_ux.py (or the nav change made on its own, as here). tools/v4_expeditions.py, tools/v4_expeditions_a.py, _b.py, _c.py, tools/v4_pass.py, tools/v4_pwa.py, tools/v4_search.py (prototype-only pages now stay out of the search). It is the first page v4 adds to the site rather than replaces, so the switch learnt about new pages: tools/v2_site.py NEW_PAGES; the switch writes such a page at the root, indexable, and gives it its sitemap.xml line (dated by its last commit); the dry run holds it to its own title, description, canonical, Open Graph and structured data instead of a live twin's. The site audit, run on the switched site, now also reads the tokens defined in assets/v4/v2.css, which every switched page loads | done | see git log | all gates PASS |
 | 32. One script rebuilds v4 (found 19 Oct while wiring Expeditions): the deploy draft for the switch-over ran only part of the v4 chain and would have published India and Kenya without their fly-through gallery, route map and usability pass, and the knowledge base drawings uncompacted. tools/v4_build.py runs every v4 generator and pass in the order that reproduces the committed v4 byte for byte; proven on a clean checkout (./build.sh, then the script: prototypes/v4 unchanged, a second run unchanged, v2 untouched, the switch dry run 0 FAIL). docs/v4-deploy-workflow.yml now runs it. Along the way: the Navigators map reads its Natural Earth outlines from tools/data/naturalearth_lowres.shp (the copy in the geopandas 0.14.4 wheel, its hash checked against PyPI; public domain) instead of downloading them at build time, and no longer falls back quietly to other outlines; v2_localize passes over prototype-only pages as v2_check does. Built by a workflow (two mappers, a builder, a verifier in a fresh copy each round, three rounds); then its guard on the generator-owned pages was made to ignore ?v= changes, which the live build makes whenever a linked file changes and which would otherwise have stopped a deploy, and the proof rerun. Before the switch-over: a new episode still stops the build (see The switch-over below). tools/v4_build.py, tools/kbfig/nav_land.py, tools/v4_expert.py, tools/v2_localize.py | done | see git log | all gates PASS |
-| 33. India, less but better (owner, 19 Oct: the record page's pass carried to the trip pages, one page at a time): the hero one plate with the footage, four big facts over the old row's other four, the fly-through kept as the one moment (a settle per step, no slow zoom, words held at the foot that leave before the next arrive), seamless photographs, the route a schematic flown with a weighted glide, a still gallery of full-width plates that rise out of the page's dark and sink back into it, the chapter bar with a hairline under the chapter being read, one curve, finished by default. See India, less but better, below. tools/v4_trip_calm.py, src/v4-calm.css, src/v4-calm.js (loaded by India alone), tools/v4_min.py (writes them) | built, checked in the browser against the pushed page; gates and commit by the lead | not committed | not run here |
+| 33. India, less but better (owner, 19 Oct: the record page's pass carried to the trip pages, one page at a time): the hero one plate with the footage, four big facts over the old row's other four, the fly-through kept as the one moment (a settle per step, no slow zoom, words held at the foot that leave before the next arrive), seamless photographs, the route a schematic flown with a weighted glide, the gallery the owner's pinned fly-through again on a wide screen (one photograph at a time at full brightness, dissolves eased by the same loop, one caption at a time, the count in it, the marks and the skip link) and a column of clean full-width plates on a phone, opening on the back ranges and closing on Last light, the chapter bar with a hairline under the chapter being read, one curve, finished by default. See India, less but better, below (Third review: the gallery). tools/v4_trip_calm.py, src/v4-calm.css, src/v4-calm.js (loaded by India alone), tools/v4_min.py (writes them) | done | see git log | all gates PASS |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they
@@ -872,8 +872,10 @@ photograph, so there is no dark screen before the moment. The fly-through
 stays the page's one moment: each photograph dissolves in over the last,
 which stays whole beneath it, and settles once when its step comes (the 9 s
 zoom is gone); a step's words come in at the foot of the screen with their
-step, once their photograph has come, and hold there for half of it, then
-ride up and fade before they reach the chapter bar; every readout row stays.
+step, once their photograph has come (the first step's only once the
+Overview heading has passed and its photograph fills the screen), and hold
+there for half of it, then ride up and fade before they reach the chapter
+bar; every readout row stays.
 The route's fall from orbit ends on the whole of India with Bir Billing's
 name on a halo of the page's dark (no border runs through it); then every
 card has an equal share of the pin, and while they are read the camera eases
@@ -882,13 +884,22 @@ and each card's words sit on pools of the page's dark, so no line of the map
 runs through them; its sawtooth hills are two straight lines with their names
 on them (the back ranges dashed), its type larger, and each card's line draws
 with the scroll through a mask, eased; the cards hand over in turn, unboxed;
-on a phone the schematic keeps one frame in which every name is whole. The
-gallery is still photographs: twelve, none repeating the hero or the
-fly-through, ordered as a day (Billing launch first, Bir landing, the landing
-field and the monastery last), each a full-width plate cropped on its subject
-that rises out of the page's dark and sinks back into it, so one photograph
-passes to the next through the page, never through a double exposure, its caption and its place in the run
-(01 / 12) on its own lower third. The departures draw each tour as a line
+on a phone the schematic keeps one frame in which every name is whole; as
+the route comes in, the schematic's pool of dark comes first and its names
+after, so no name sits on a border while the map dims. The gallery is the
+owner's pinned fly-through again on a wide screen and a column of clean
+plates on a phone (see Third review, below): thirteen photographs, none
+shown twice on the page, opening on the back ranges from the air and closing
+on Last light, ordered as a day between (the launch, the flying, the valley,
+the landing, the monastery). On a screen wider than 760 px one photograph at
+a time fills the pinned screen, at full brightness once settled; as the
+scroll reaches the next one's share it dissolves in over the last, eased by
+the page's one loop; one caption at a time with its place in the run
+(01 / 13), a row of marks that fills, and the skip link. On a phone each
+photograph is a full-width plate, clean nearly edge to edge: a short soft
+edge and a small gap of the page between plates, its caption on its own
+lower third. With reduced motion or without JavaScript every width gets the
+column. The departures draw each tour as a line
 with its dates under it; "Guaranteed to run" is a status line beside
 "6 places", its green only in the dot. Guides (each under a hairline, the
 role in label type), Flying Etiquette (a list at every width) and the FAQ
@@ -907,8 +918,16 @@ the copies `tools/v4_min.py` writes from `src/v4-calm.css` and
 `src/v4-calm.js`). Every rule is under `html.v4-calm`; the script is one
 requestAnimationFrame loop that eases toward the scroll position and stops
 when settled (the hero's 0.3 parallax, the chapter bar's current chapter and
-its hairline, the route's camera and lit lines) and an observer that sends
-the fly-through's words away before the bar. The route and the gallery carry
+its hairline, the route's camera and lit lines, the gallery's dissolves,
+captions and marks) and an observer that sends the fly-through's words away
+before the bar; the page's three small scripts of this pass (the booking
+bar, the fly-through's step swap, Flying Etiquette's button) are in it too,
+no longer inline. Last, the tool writes the page compactly, for its weight
+on arrival: no indentation at the start of a line, each inline script as
+`tools/v4_min.py` writes the served ones, the JSON-LD without its
+pretty-printing, the inline styles without their notes (its own `v4c` marks
+stay). Nothing on screen changes (checked frame by frame, below), and a
+second run still changes nothing. The route and the gallery carry
 their own section names on this page (`.tm-calm`, `.v4c-g`), so
 v2-immersive.js's trip map and pinned gallery (its parts 15 and 14) find
 nothing to run there. Nothing of this is in the shared `v2.css` or
@@ -1003,6 +1022,97 @@ role in label type). The drawn ridge and the zig-zag hills both judges
 missed, and the pinned gallery one of them liked, stay out: they are the
 drawn stand-ins and the second moment the record page's lesson removed.
 
+**Third review: the gallery (20 Oct).** Blind judges preferred this page in
+three rounds, but the last agreed on one weakness, the gallery: every
+photograph faded into a heavy band of dark before the next, none was ever
+seen clean from edge to edge; on a wide screen about 8,000 px of the same
+rhythm read as a long strip, not an edited sequence; it opened on a weak
+photograph (Billing launch) with no closing image. What the pushed page did
+better on a wide screen was its pinned run (one photograph at a time
+filling the screen, dissolves, a count, progress marks, a skip link, each
+photograph at full brightness once settled), with a better opening and
+close; on a phone that run had real faults (a small letterbox over a dark
+gap, captions fading late onto the wrong photograph or over each other, a
+count that disagreed with the caption, a sliver of the last photograph at
+the top, a fast flick that caught an empty frame, captions resting half
+faded). The owner had chosen the pinned run on 1 Oct (row 13), and the
+second review had taken it out under "one moment per page"; the judges
+called that a loss. Now, on India only, inside this pass:
+- A wide screen (over 760 px), with motion and the script, gets the pinned
+  run, flown by v4-calm.js's one loop. The scroll picks the photograph (each
+  has an equal share of the pin, 46 vh, 414 px at 1440); the loop eases a
+  position toward it by the time passed and never faster than a photograph
+  in 100 ms, the photograph under it whole and the next over it at a
+  smoothstep of the rest, settling from a touch larger; so every frame has a
+  whole photograph under the dissolve, a flick passes through the run as
+  quick dissolves, and at rest one photograph fills the screen at full
+  brightness. A caption shows only within a third of a step of its own
+  photograph (then at least 72% of the picture), rises only for the
+  photograph the scroll picked and only fades for the others, so the last is
+  gone before the next comes, no two ever show, none flashes by in a flick
+  and none rests half faded; its place in the run (01 / 13) is in the
+  caption, so the count always names the photograph captioned. The marks (a
+  tick a photograph and a line that fills) and the skip link sit along the
+  foot, above the phone's booking bar where it shows (up to 820 px). The
+  frame's top and foot take the page's dark only while it comes and goes,
+  never once pinned; all thirteen photographs are asked for and decoded when
+  the section is two screens away.
+- A phone, and reduced motion or no script at every width, get the column:
+  full-width plates, clean nearly edge to edge, a short soft edge and a small
+  gap of the page between them, each caption with its count on its own lower
+  third, on a shade that stays light at the plate's foot.
+- The sequence: thirteen photographs, none shown twice on the page; the
+  hero's four, the gallery's own seven and Last light, its caption and alt
+  the pushed page's own. It opens on the back ranges from the air (the
+  strongest aerial that is not the hero's photograph, which is the red wing
+  over the snowline) and closes on Last light.
+- Two small things the judges saw: the fly-through's first words ("launch
+  from the meadow at Billing,") now wait until the Overview heading has
+  passed and their photograph fills the screen, and the first step is longer
+  by the heading's height and a quarter screen so they still hold at the
+  foot; during the route's changeover the heading leaves and the schematic's
+  pool comes in over the first half, its names and lines only over the
+  second, so no label sits on the map's borders while the map dims.
+
+**Final review.** A checker and two more blind judges, each shown the pages under swapped labels, against the pushed page: both preferred this page (7.5 to 5.5 and 7.5 to 6.5), and the checker passed every item (facts, parity, weight, booking, Kenya unchanged, the rules, the gallery's one caption at a time). What they still noted: on a phone two of the joins read a little dark where a photograph's own dark foot meets its caption shade; the count is small on a wide screen; a fast jump straight into the gallery can show the page's dark for a fifth of a second while the photographs arrive (the pushed page does the same); the opening photograph (The back ranges) is less striking than the red wing, which the hero now holds; and "From past pilots [to supply]" still waits for your quotes.
+
+Checked here (Playwright, as before): the gallery 6,476 px at 1440 (the
+pushed page 6,841, the last build 7,990) and 6,244 px at 390 (5,633 with
+twelve plates); a probe that records every frame at 1440 through slow scrolls
+both ways, eight smooth jumps, three one-frame jumps, a fling and wheel
+flicks (about 2,200 frames): every frame had a whole, loaded photograph under
+the dissolve, never two captions, and every caption showing belonged to the
+photograph covering more than half the frame; at 60 resting positions
+everything finished (each photograph and caption at 0 or 1, exactly one
+caption); the loop stops 2.4 s after the longest flick (first to last),
+and no requestAnimationFrame callback runs 3 s after the scroll stops
+anywhere on the page at 1440 or 390; captions at 5.4:1 or more at 1440,
+7.0:1 at 768 and 5.8:1 at 390 over the brightest tenth of the photograph
+behind them; with the CPU slowed four times, 20 frames over 50 ms of 322 in
+the gallery at 1440 (the pushed page 28 of 291, worst 117 ms against 233) and
+1 of 442 at 390 (12 of 218); the first words and the route's changeover in
+frame sequences at both widths (brightened 2.5 times, no border shows under
+a name); reduced motion and no JavaScript every photograph stacked with its
+caption at both widths, nothing pinned; no horizontal scroll at 390, 768 or
+1440, the gallery's one link 44 px tall, no console error. Weight on arrival,
+as the server sends it, 1,399 bytes lighter than the pushed page at 1440 and
+at 390, and gzipped 61 bytes lighter (the new code is paid for by writing
+the page compactly and moving the three inline scripts into v4-calm.js);
+brotli-compressed it is 782 bytes heavier (the committed page already was,
+by 565: the calm look's two own files compress less well apart). The page
+before and after the compact writing, frame by frame at 13 positions with
+motion, reduced motion and no JavaScript at both widths: identical, but for
+a rounding of at most 2 levels of 255 in the chapter bar and the headless
+renderer's own noise inside the pinned photographs (the page differs from
+itself between two runs by as much). Words: the committed page's all still
+here but the counts' "12" (now "13"), with Last light's caption and alt
+added; every id and link as it was; the tool on the pushed page gives this
+page byte for byte, and a second run changes nothing. Kenya: kenya.html,
+v2.css and v2-immersive.js byte for byte as pushed, and every frame the same
+as the pushed page at six positions, both widths, with motion, reduced motion
+and no JavaScript. Screens and frame sequences are in the session's
+scratchpad (`india-gal/build/`).
+
 **For the owner.**
 - Kenya has the same two faults India had with reduced motion or without
   JavaScript (on a phone the gallery's photographs run over the next
@@ -1011,9 +1121,18 @@ drawn stand-ins and the second moment the record page's lesson removed.
 - The hero's footage still loops while it is on screen: your exception of
   8 Oct (design rules, Motion and Footage). Please confirm it stands against
   this round's "no loops".
-- The gallery is no longer pinned, and the hero no longer offers a choice of
-  photographs: its four other photographs are in the gallery now, so none is
-  lost.
+- The gallery is pinned again on a wide screen, your option A of 1 Oct (the
+  judges missed it); on a phone it stays a column, which they preferred
+  there. The hero still shows one photograph; its four others are in the
+  gallery, so none is lost.
+- Last light, the gallery's closer as the judges asked, is a second frame of
+  the same sunset as the fly-through's third photograph ("Two paragliders
+  silhouetted against the sunset"): a different photograph, a page apart, but
+  the same sky. If you would rather see that sunset once, the monastery could
+  close the gallery instead.
+- The page's own source is now written compactly by the tool (for the
+  weight rule), so it reads less easily than before; the tool and the
+  src/ files keep every comment.
 - The route is not drawn to scale: neither page gives a position for
   Dharamshala or 360, only distances along the range (about 70 km west,
   about 50 km east), so the schematic and "A schematic, not a map" stay and
