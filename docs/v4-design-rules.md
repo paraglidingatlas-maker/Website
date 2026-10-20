@@ -112,7 +112,7 @@ short text). A second moment on the same page is a sign one should go.
 | Episode | the opening globe turned to where the story is from (72 episodes); the others open on the player |
 | Topic | the topic's log drawing and the newest three |
 | Knowledge base | its own drawings (it stays different on purpose) |
-| Partners | the flight line down the page |
+| Partners (less but better, 20 Oct 2026) | the flight line down the page stays the moment, now eased with weight (one loop glides it toward the scroll and stops when settled), drawn whole without the script or with reduced motion; the audience figures big and still under the opening (their sources fold waits for the owner's source of the 100,000+ streams); the four formats laid out like the record page's offer, four equal cards in the page's own words; the record attempt shown only once the record page goes live (in the prototype it shows; the switch leaves it out until then) |
 | Record attempt | the course drawn to scale, pinned and flown kilometre by kilometre as the visitor scrolls, the clocks counting alongside (prototype-only until the owner's go, 17 Oct 2026) |
 | Expeditions | the map flown with the scroll from the world to each trip, each place's own photograph rising out of the map (owner, 19 Oct 2026: its own page, not the home page's section again) |
 | Text pages | none: they are for reading |

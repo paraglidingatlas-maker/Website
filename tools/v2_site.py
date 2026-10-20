@@ -53,6 +53,50 @@ def proto_only(rel):
             or rel.startswith("expeditions-"))  # the expeditions page's design options (owner, 19 Oct)
 
 
+# A part of a page that leads to a page the switch does not carry yet (a
+# prototype-only page) sits between marks that name that page, relative to
+# the prototype's root:
+#     <!-- v4:needs record-attempt.html --> ... <!-- /v4:needs -->
+# While the named page is prototype-only the part is dropped whole, marks and
+# all; once it is switched only the marks go. The switch (tools/v2_switch.py)
+# and the search (tools/v4_search.py) both read pages through this.
+NEEDS_MARK = re.compile(r"<!--\s*(/?)\s*v4:needs\b([^>]*?)-->")
+NEEDS_OPEN = re.compile(r"<!-- v4:needs ([\w./-]+\.html) -->")
+NEEDS_CLOSE = "<!-- /v4:needs -->"
+NEEDS_BLOCK = re.compile(r"<!-- v4:needs ([\w./-]+\.html) -->(.*?)<!-- /v4:needs -->", re.S)
+
+
+def needs(src, root=None):
+    """src with its v4:needs parts resolved, and a list of problems: an
+    unbalanced or nested mark, a mark not written as above, or one that names
+    no page of the prototype at root (DIR by default). With a problem, src
+    comes back unchanged and the caller fails."""
+    root = root or DIR
+    problems, depth = [], 0
+    for m in NEEDS_MARK.finditer(src):
+        if m.group(1):
+            if m.group(0) != NEEDS_CLOSE:
+                problems.append("a v4:needs mark not written as %s: %s" % (NEEDS_CLOSE, m.group(0)))
+            depth -= 1
+            if depth < 0:
+                problems.append("a closing v4:needs mark with no opening one")
+                depth = 0
+            continue
+        o = NEEDS_OPEN.fullmatch(m.group(0))
+        if not o:
+            problems.append("a v4:needs mark not written as <!-- v4:needs PAGE.html -->: %s" % m.group(0))
+        elif not os.path.isfile(os.path.join(root, o.group(1))):
+            problems.append("a v4:needs mark names no page of the prototype: %s" % o.group(1))
+        depth += 1
+        if depth > 1:
+            problems.append("a v4:needs mark inside another")
+    if depth > 0:
+        problems.append("a v4:needs mark is never closed")
+    if problems:
+        return src, problems
+    return NEEDS_BLOCK.sub(lambda m: "" if proto_only(m.group(1)) else m.group(2), src), []
+
+
 # Pages the prototype adds to the site (no live twin, but switched): the switch
 # writes them at the root, indexable, and lists them in sitemap.xml; the checks
 # hold them to their own title, description and canonical instead of a live page's.

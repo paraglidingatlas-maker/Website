@@ -111,6 +111,9 @@ THE ORDER, AND WHY
                            puts back two blocks it trims (the pinned
                            gallery's phone rules and the hero slideshow's
                            waker), so it runs after v4_ux; idempotent.
+     v4_partners           Partners' less-but-better pass (step 34): after
+                           v4_ux, like India's; it rewrites only its own
+                           marks and the page's own <style>; idempotent.
   9. v4_search             the search files, read from the finished pages.
  10. v4_min                v2.css and the scripts, from src/.
  11. (put back)            the pages their own generators own, as they were
@@ -343,6 +346,7 @@ def main():
         run([PY, "tools/v2_localize.py", "--site", "v4"])
         run([PY, "tools/v4_ux.py"] + ux_pages())
         run([PY, "tools/v4_trip_calm.py", "india"])
+        run([PY, "tools/v4_partners.py"])
         run([PY, "tools/v4_search.py"])
         run([PY, "tools/v4_min.py"])
 

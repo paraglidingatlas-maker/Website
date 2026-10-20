@@ -81,6 +81,7 @@ marked done is the next step.
 | 31. Expeditions gets its own page (owner, 19 Oct: "the expeditions standalone tab ... is just an off copy of leftover material at the homepage, I want it a bit different", then "use the same Awwwards rule" and "go crazy with your imagination"): expeditions.html. Three directions built in full (expeditions-a, -b and -c.html, prototype-only), judged, and the winner (C) built with the best of the other two: "Choose Your Sky", Kenya and India side by side with the split following the pointer; the map flown with the scroll from the world to India, Kenya, Kazakhstan and Peru (Natural Earth outlines, public domain; WebGL 2 where there is a real graphics card, drawn in SVG otherwise), each place's own photograph rising out of the map; the year drawn to scale from Oct 2026 to Nov 2027 with each departure on it; "Still Choosing?" over the Last light photograph. Every fact from the trip pages and the home page (Kazakhstan and Peru as the home page gives them: planned, with Register interest); about 330 words. Phones, reduced motion and no JavaScript get a still, stacked page. The header's Expeditions tab, the full-screen menu, the app's Trips shortcut and the search now lead here (they led to the home page's destinations section); the home page section stays. Note for later passes: a full rerun of tools/v4_pass.py rewrites the knowledge base drawings in long path syntax, so it must be followed by tools/v4_ux.py (or the nav change made on its own, as here). tools/v4_expeditions.py, tools/v4_expeditions_a.py, _b.py, _c.py, tools/v4_pass.py, tools/v4_pwa.py, tools/v4_search.py (prototype-only pages now stay out of the search). It is the first page v4 adds to the site rather than replaces, so the switch learnt about new pages: tools/v2_site.py NEW_PAGES; the switch writes such a page at the root, indexable, and gives it its sitemap.xml line (dated by its last commit); the dry run holds it to its own title, description, canonical, Open Graph and structured data instead of a live twin's. The site audit, run on the switched site, now also reads the tokens defined in assets/v4/v2.css, which every switched page loads | done | see git log | all gates PASS |
 | 32. One script rebuilds v4 (found 19 Oct while wiring Expeditions): the deploy draft for the switch-over ran only part of the v4 chain and would have published India and Kenya without their fly-through gallery, route map and usability pass, and the knowledge base drawings uncompacted. tools/v4_build.py runs every v4 generator and pass in the order that reproduces the committed v4 byte for byte; proven on a clean checkout (./build.sh, then the script: prototypes/v4 unchanged, a second run unchanged, v2 untouched, the switch dry run 0 FAIL). docs/v4-deploy-workflow.yml now runs it. Along the way: the Navigators map reads its Natural Earth outlines from tools/data/naturalearth_lowres.shp (the copy in the geopandas 0.14.4 wheel, its hash checked against PyPI; public domain) instead of downloading them at build time, and no longer falls back quietly to other outlines; v2_localize passes over prototype-only pages as v2_check does. Built by a workflow (two mappers, a builder, a verifier in a fresh copy each round, three rounds); then its guard on the generator-owned pages was made to ignore ?v= changes, which the live build makes whenever a linked file changes and which would otherwise have stopped a deploy, and the proof rerun. Before the switch-over: a new episode still stops the build (see The switch-over below). tools/v4_build.py, tools/kbfig/nav_land.py, tools/v4_expert.py, tools/v2_localize.py | done | see git log | all gates PASS |
 | 33. India, less but better (owner, 19 Oct: the record page's pass carried to the trip pages, one page at a time): the hero one plate with the footage, four big facts over the old row's other four, the fly-through kept as the one moment (a settle per step, no slow zoom, words held at the foot that leave before the next arrive), seamless photographs, the route a schematic flown with a weighted glide, the gallery the owner's pinned fly-through again on a wide screen (one photograph at a time at full brightness, dissolves eased by the same loop, one caption at a time, the count in it, the marks and the skip link) and a column of clean full-width plates on a phone, opening on the back ranges and closing on Last light, the chapter bar with a hairline under the chapter being read, one curve, finished by default. See India, less but better, below (Third review: the gallery). tools/v4_trip_calm.py, src/v4-calm.css, src/v4-calm.js (loaded by India alone), tools/v4_min.py (writes them) | done | see git log | all gates PASS |
+| 34. Partners, less but better (owner, 20 Oct: the record page's pass carried to the sponsor funnel, with his three ideas; then a fix round the same day): the opening holds still and dissolves into the page on eased shades; the four audience figures stand big and still under it (no count-up), 100,000+ at least 2.5rem clear of 130+ and on one line at every width, with an "About these numbers" no fold under the figures yet (a blind judge read one that sourced two of the four as hedging; it returns with the owner's source for the 100,000+ streams and the 10+ years), the labels in small capitals again; the episodes in two still rows the visitor swipes; the band in the air still, straight under the episodes, out of the dark and back into it; the record attempt after it, type only, in the record page's own words, with one line of what a partner gets (Title Partner: Your mark on kit and on camera) and room above the flight line, shown only while the record page is part of the site (a v4:needs mark the switch understands); the flight line kept as the one moment, eased with weight and drawn whole by default; the four formats as the pushed page's editorial list again, without its arrows, sliding hover and outlined numerals, with one quiet "Start a conversation"; the portrait as clear as pushed; every numeral in the display face, none in mono; the enquiry over the pushed page's blurred photograph again, without its orange corner marks, the footer close behind it; one curve, tokens only. See Partners, less but better, below. tools/v4_partners.py, tools/v2_site.py (needs), tools/v2_switch.py, tools/v4_search.py, tools/v4_build.py | done | see git log | all gates PASS |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they
@@ -1147,3 +1148,234 @@ scratchpad (`india-gal/build/`).
   you would rather keep either on the trips, each is a small change.
 - The calm look has its own sheet and script (v4-calm.css, v4-calm.js),
   linked from India alone; when Kenya joins, the tool links them there too.
+
+## Partners, less but better (owner, 20 Oct 2026)
+The record page's pass (step 29) carried to the sponsor funnel,
+`partners.html`, with the owner's three ideas: the four formats with the
+clarity of the record page's offer, the audience numbers big and still with
+a fold that says where each comes from, and a prominent link to the record
+attempt. On the countries figure, his own words of 20 Oct: "130 plus is the
+correct figure". Built from a lead's plan of 18 items (P00 to P17), then a
+fix round the same day (below): a checker passed the first build and two
+blind judges preferred it to the pushed page, but narrowly on looks.
+
+**What changed on the page.** The opening holds still: the handshake is there
+at first paint (its arrival fade and its 16 s push-in with no input are gone),
+with no orange glow behind the words, and it dissolves into the page's dark
+on its left, top and foot in eight eased steps; its caption's orange is
+--orange-lite. The opening is the first screen under the header, so nothing
+pokes into its foot. Under it the four figures (100,000+ podcast streams,
+130+ countries reached, 80 long-form interviews, 10+ years flying) stand on
+the page's dark as the record page sets its own: each as large as its column
+allows, a hairline over it, its label under it in sentence case, the columns
+3rem apart four across (2rem two by two); no count-up, final from the first
+paint. Under them a closed fold, "About these numbers", written for a brand
+in the site's own words only: "80 long-form interviews: every episode on the
+podcast feed."; "130+ countries reached: the podcast's audience, 136
+countries and counting." (the podcast page: "audience base from 136
+countries and counting"); and for the rest the enquiry's own promise, in the
+page's first person: "Write a few lines and I will reply with current
+audience numbers.", its first words a link to the form. No [to supply] and
+no dates anywhere on the page. The episodes are two still rows of 14 (each
+of the 28 once; the loop's copy is gone), moved only by the visitor's own
+swipe and snapping to a tile. The Name Flies With Me holds still (no push
+when it is first seen) and follows the episodes straight away (the rows' own
+8 px between), out of the page's dark at its top on a short eased shade and
+back into it at its foot on a long one, a pool of the dark behind its words.
+After it, the record attempt, type only, every word the record page's own:
+World Record Attempt · Kerio Valley, Kenya; The Speed Record Attempt; Two
+world records for speed: 100 km and 200 km, out and return; Window 18 Jan to
+12 Feb 2027; Title Partner: Your mark on kit and on camera (its offer's
+words); Partner on the attempt (not its 35.94, which reads [to confirm]
+there); with a section's room and 1.5rem under it, so the flight line, which
+starts below it, never meets its title or its button. The flight line stays
+the page's one moment, now with weight: one loop eases it toward the scroll
+and stops when settled, a node lights when the line reaches it; without the
+script or with reduced motion it is drawn whole with both nodes lit. The
+four formats are the pushed page's editorial list: full-width rows under
+hairlines, the number, the format in orange label type over its name, the
+sentence in a column on the right (under the name below 1100 px), every word
+as pushed; the number a plain numeral in the display face in grey; the
+outlined numerals, the arrows and the hover that slid the row are gone;
+under them one quiet "Start a conversation" to the form, so Send Enquiry
+stays the only solid button. The portrait is as clear as the pushed page
+shows it, in a crisp frame without the orange bracket; the policy's numbers
+are quiet grey numerals in the display face (no mono, no slashed zero on the
+page). The close: the card sits over the pushed page's blurred photograph of
+the handshake again, which comes out of the page's dark and goes back into it
+in eased steps under an even veil of the dark; the card's frame a hairline,
+its two orange corner marks gone; every field, chip, label, the mailto link
+and the form script are as they were, the chips 44 px tall. The footer
+follows the form closely, with no drawn ridge and no glow left alone above
+it, as on India. One curve for every transition and animation; colours only
+through the tokens.
+
+**The fix round (owner, 20 Oct 2026).** Eight changes, all through
+`tools/v4_partners.py` (its marks and the page's own `<style>` only): the
+formats back to the pushed list (they had become four cards), without its
+arrows, sliding hover and outlined numerals; the fold rewritten for a brand
+(it had read as notes: "my figure, confirmed 20 Oct 2026", "26 Sep 2026" and
+two [to supply]); the record block given room over the flight line (the line
+had started right under its title at 1440 and under its button at 390) and
+one line of what a partner gets; the portrait's grade taken off (saturate .72,
+brightness .74); the blurred photograph behind the enquiry put back, without
+its corner marks; the figures' gap widened (100,000+ had stood 36 px from
+130+ at 1440); the mono numerals of the formats and the policy set in the
+display face; the band in the air moved up to the episodes (it had a 64 px
+margin and a shade over its top 42 %, now 8 px and 18 %).
+
+**How it is built.** `tools/v4_partners.py` patches the page in place: every
+change inside `<main>` between `<!--v4p:NAME-->` marks (figures, reel,
+record, formats, close, motion), and the page's own `<style>` block (the one
+before `<!-- site-schema -->`) rewritten whole, known by its leading
+`/* v4p */` comment. Nothing else before `<main>` and nothing after `</main>`
+changes, so the pages that take their shell from Partners (the record page
+and its three options, Expeditions and its three options) come out byte for
+byte as before; the page's own script (the flight line's loop) stays inside
+`<main>`. A second run changes nothing; on the pushed page it gives this page
+byte for byte. The record block sits between `<!-- v4:needs
+record-attempt.html -->` and `<!-- /v4:needs -->`: `tools/v2_site.py`
+(needs) drops such a block whole while the page it names is prototype-only,
+and keeps its content once that page is switched; `tools/v2_switch.py` reads
+every page through it, at --apply and --dry-run, before links are turned
+back (the dry run FAILs on an unbalanced mark or one naming no page of the
+prototype, --apply stops), and `tools/v4_search.py` reads headings through it,
+so the search does not offer a heading the switched page will not have. v2
+pages carry no mark. Run order: after `tools/v4_ux.py`; `tools/v4_build.py`
+runs it right after its v4_ux step, beside v4_trip_calm india, then the
+search:
+
+```
+python3 tools/v4_partners.py
+python3 tools/v4_search.py
+```
+
+**Checked at the first build** (Playwright, 1440 x 900 and 390 x 844 as a
+touch phone, against the pushed page on a second server; where the fix round
+changed a thing, the next paragraph gives it as the page now is). The figures read 100,000+,
+130+, 80 and 10+ at 0, 0.3, 0.7 and 1.5 s after a jump to them (the pushed
+page showed 70,828+ mid count), no element has data-count, no backdrop blur;
+62 px tall at 1440 (45), one line each with no clip or overlap at 1440, 1100,
+768, 390 and 360; at 1440 x 900 they begin at y 932, wholly below the first
+screen. At the top for 16 s: no running animation but the site's own fade-up
+of an arriving image, the photograph's transform none throughout (the pushed page 1.0015
+rising to 1.09), no requestAnimationFrame and no timer between 2 and 16 s,
+not a pixel changed between the 2 s and 10 s frames. The band in the air:
+transform none at 0, 4, 8 and 16 s after it is reached (1.031, 1.069, 1.09);
+its words at 7.5, 13.1 and 11.3 to 1 at 1440 and 6.7, 9.4 and 10.6 at 390
+over the brightest tenth of the photograph behind them (the pushed kicker
+3.4 at 390). The shades themselves, measured with flat white in place of the
+photographs: down the opening's foot at most 2 levels a row at 1440 and 390;
+the band's foot about 1 (a 120 px band of columns), its top at most 1.5
+(a single column at most 3, the gradient's own dithering) with no start
+line, where the pushed band's linear ramp stepped 3.1 with a kink at its
+start (brightened 2.5 times: the pushed line is plain, the new top has none).
+The reel: transform and scroll position unchanged over 10 s (the pushed rows
+moved 285 px in that time); its 28 links are the pushed page's 28; a finger's
+drag moves a row and it settles on a tile; a sideways trackpad swipe moves
+it, an up-and-down one scrolls the page. The flight line: after a fling its
+position trails the target for about 0.9 s and then equals it, and no
+requestAnimationFrame runs 3 s after any scroll stops; with reduced motion
+and without JavaScript the line is the journey's full height with both
+nodes lit. The formats: labels, names and sentences as pushed, tops aligned
+and heights equal at 1440, no arrow or outlined numeral, nothing moves under
+the pointer, Send Enquiry the only solid button. The fold: closed on arrival
+with JavaScript, reduced motion and none, at both widths; opens on click,
+tap (also without JavaScript) and Enter; its summary 44 px tall; the page's
+only two [to supply] are inside it. The record block's link answers 200; its
+title 61 px at 1440 (--fs-h2 35 px); the block 243 px tall at 1440, 342 at
+390. The portrait's mean brightness from 140 to 104 of 255, its hairline
+kept. The close: no request for the soft photograph (or for ridge.svg); for
+the same input Send Enquiry opens the same mailto address as the pushed page,
+and the three error messages are the same; through the card's foot into the
+footer at most 2 levels a row (the pushed close 29); the footer without
+background or glow, 64 px from the card to its first row at 1440. Every
+element with a transition or animation in the page and footer (80 at 1440)
+eases on cubic-bezier(0.2, 0.8, 0.2, 1); reduced motion leaves none. No
+horizontal scroll at 390, 768 or 1440; every touch target at 390 at least
+44 px (the inline links in a sentence take a fingertip without moving the
+line); the only console errors are YouTube's thumbnails, blocked here. Words:
+every word of the pushed page is still here (495 in the prototype; 460 on the
+switched page against the live page's 405); title, description, canonical,
+Open Graph, structured data and the h1 as they were; every id kept, plus the
+record title's; the links as before plus record-attempt.html and #enquire. On
+arrival 538,822 bytes against the pushed page's 577,934, at 1440 and at 390.
+The shell pages' generators (v4_record, v4_record_a/b/c, v4_expeditions,
+v4_expeditions_a/b/c, v4_rss_options) give byte for byte what they gave
+before. The whole of `tools/v4_build.py`, run in a copy of this tree, leaves
+every file as it is here. The switch: `python3 tools/v2_switch.py --site v4
+--dry-run --stage /tmp/claude-0/v4-stage-partners` 0 FAIL, its Partners with
+no record-attempt and no mark (the air band then chapter 01, no gap); --apply
+the same; v2's --apply output with the new switch and with the old one
+identical; an unclosed mark, or one naming no page, FAILs the dry run and
+stops --apply. The search: only Partners' entry changes, gaining "About
+these numbers". Screens and frame sequences are in the session's scratchpad
+(`partners-wf/build/`).
+
+**Checked in the fix round** (the same set-up). The figures: 100,000+ stands
+59 px (3.7rem) clear of 130+ at 1440 (36 px before), 58 px at 1100, 39 px
+at 390 and 38 px at 360; one line each, no clip, at 1440, 1100, 768, 390 and
+360; 58 px tall at 1440. The fold reads, open: "80 long-form interviews:
+every episode on the podcast feed." "130+ countries reached: the podcast's
+audience, 136 countries and counting." "Write a few lines and I will reply
+with current audience numbers."; no [to supply] and no v2-tbd anywhere on the
+page. The band in the air begins 8 px under the episodes at both widths
+(648 px tall at 1440, 523 at 390); its top shade covers 117 px at 1440 and
+94 at 390, half through at 58 and 47 px. The record block: the flight line starts 104 px under its
+title and its button at 1440, and 72 px under its button at 390 (it started
+right under them); "Title Partner" and "Your mark on kit and on camera" read
+word for word as the record page's offer has them (the tool checks this on
+every run), one line each at 1440 and 390. The formats: the pushed list's
+four rows, labels, names and sentences as pushed, no arrow, no outlined
+numeral, no hover rule; no element in `<main>` draws a numeral in DM Mono.
+The portrait, once arrived, has no filter and the same mean colour as the
+pushed page's (131, 143, 156; saturation 93 of 255, both). The close: the
+soft photograph is fetched again (41,528 bytes) and drawn under the card; no
+corner marks; the enquiry: empty, a bad address and a short message give the
+pushed page's three messages, the chips Podcast, Video and Not sure yet
+toggle on click (1440) and on tap (390) and stand 44 px tall, and Send
+Enquiry opens the same mailto address as the pushed page. With reduced motion
+and without JavaScript: the figures final, the fold closed, the line the
+journey's full height, no running animation; every element with a
+transition eases on the one curve, and reduced motion leaves none. No
+horizontal scroll at 360, 390, 768, 1100 or 1440. Words (visible text of
+`<main>`, the fold open): 484 in the prototype and 441 on the switched page
+against the pushed page's 404, and every word of the pushed page still
+there. On arrival, every same-origin response counted: 880,683 bytes against
+the pushed page's 886,085, at 1440 and at 390 (the blurred photograph is back;
+the first build's 39 KB saving is mostly spent on it). The tool run twice
+(the second run changes nothing), and run on the pushed page it gives this
+page byte for byte. The shell pages' generators (v4_record, v4_record_a/b/c,
+v4_expeditions, v4_expeditions_a/b/c, v4_rss_options) give their pages byte
+for byte as before (samples/rss-options.html only loses its ?v= strings, as
+always, and was put back). `python3 tools/v4_search.py` leaves the search
+index as it was. `python3 tools/v2_switch.py --site v4 --dry-run --stage
+/tmp/claude-0/v4-stage-fix` 0 FAIL, 181 pages, its Partners with no record
+block, no record-attempt.html link and no mark. The gates were not run in
+this round.
+
+**After the last review (20 Oct 2026).** One blind judge, looking at one shared set of screenshots, preferred the page after the fix round to the pushed one (6 to 5.5), mostly for the record attempt's dated offer and the "Start a conversation" step after the formats. Two of its points were fixed without another round: the "About these numbers" fold explained only 80 and 130+, which read as hedging about the headline 100,000+, so it is left out until the owner gives that figure's source and date (and the year the 10+ years count from); and the figures' labels are small capitals again, as the pushed page had them and both reviews preferred. The empty episode tiles the judges saw are YouTube thumbnails, blocked on the build machine only.
+
+**For the owner.**
+- Your question of 20 Oct, "do we have anything to change in podcast page as
+  well": no. v4's podcast page gives 136 countries in its figures and "136
+  countries and counting" in its sponsor line, which agrees with 130 plus; so
+  do v4's About page (136 countries) and Enquire page (136 countries). The
+  live podcast page still says 85 countries and the live enquire page "more
+  than 90 countries"; this work may not touch live pages, so the switch-over
+  puts those two right, or a live edit on your go. If you want one wording
+  everywhere, say whether v4 should read 130+ or 136.
+- The fold now says nothing of its own about 100,000+ podcast streams or 10+
+  years flying: it promises current numbers on enquiry, in your words. If you
+  give a source and date for the streams, and the year your flying counts
+  from, they can go in.
+- What a partner gets on the record block is the Title Partner's line, "Your
+  mark on kit and on camera", from the record page's offer; the Equipment
+  Partner and Supporter tiers are on the record page. Say if you would rather
+  show another line from the offer.
+- The record block shows on Partners in the prototype only. Once the record
+  page goes live (taken out of the prototype-only list), it appears on the
+  switched Partners page by itself.
+- The reel's thumbnails are YouTube's and could not be seen on the build
+  machine; please look at the reel once on your own screen.
+- The live partners page says 90+ interviews; v4 says 80, your feed count.

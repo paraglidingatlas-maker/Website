@@ -14,7 +14,13 @@ What one run does, to a site root (the repo, or a staging copy of it):
      at assets/v2/, and a link to a live file stays on that file;
   3. the prototype's noindex is taken out; the page keeps exactly the robots
      line the live page had (the 404 keeps its own noindex);
-  4. the v2 styles, scripts and images are copied to assets/v2/.
+  4. the v2 styles, scripts and images are copied to assets/v2/;
+  5. before the links are turned back, a part of a page marked
+     <!-- v4:needs PAGE --> ... <!-- /v4:needs --> is dropped whole while PAGE
+     (relative to the prototype's root) is prototype-only, and only its marks
+     go once PAGE is switched (v2_site.needs). The dry run FAILs on an
+     unbalanced mark or one naming no page of the prototype; --apply stops.
+     v2 pages carry no mark, so v2's output is as before.
 
 Nothing else at the root is touched: the redirect stubs, sitemap.xml,
 robots.txt, llms.txt, the feed and every asset stay as they are. The one
@@ -115,9 +121,15 @@ def remap(url, page_rel, pages):
     return out + tail
 
 
-def transform(rel, pages):
+def transform(rel, pages, problems=None):
     with open(os.path.join(V2, rel), encoding="utf-8") as fh:
         src = fh.read()
+    # a part that leads to a page not switched yet goes, before any link is turned back
+    src, bad = S.needs(src)
+    for b in bad:
+        if problems is None:
+            raise SystemExit("v2_switch: %s: %s" % (rel, b))
+        problems.append("%s: %s" % (rel, b))
     src = ATTR.sub(lambda m: m.group(1) + remap(m.group(2), rel, pages) + m.group(3), src)
     src = SRCSET.sub(lambda m: m.group(1) + ", ".join(
         " ".join([remap(c.strip().split(" ")[0], rel, pages)] + c.strip().split(" ")[1:])
@@ -136,15 +148,23 @@ def transform(rel, pages):
     return src
 
 
-def apply(root):
+def apply(root, problems=None):
+    """Write the switched pages into root. A bad v4:needs mark stops the run before any page is written
+    (problems=None), or, for the dry run, is added to problems and the page written as it stands."""
     pages = set(v2_pages()) | set(p for p in all_pages() if S.proto_only(p))
+    if problems is None:
+        for rel in v2_pages():
+            with open(os.path.join(V2, rel), encoding="utf-8") as fh:
+                bad = S.needs(fh.read())[1]
+            if bad:
+                raise SystemExit("v2_switch: %s: %s" % (rel, "; ".join(bad)))
     for a in v2_assets():
         dst = os.path.join(root, ASSET_DIR, a)
         os.makedirs(os.path.dirname(dst), exist_ok=True)
         shutil.copy2(os.path.join(V2, a), dst)
     n = 0
     for rel in v2_pages():
-        out = transform(rel, pages)
+        out = transform(rel, pages, problems)
         dst = os.path.join(root, rel)
         os.makedirs(os.path.dirname(dst), exist_ok=True)
         with open(dst, "w", encoding="utf-8") as fh:
@@ -201,9 +221,9 @@ def dry_run(stage, build=False):
         r = subprocess.run(["bash", "build.sh"], cwd=stage, capture_output=True, text=True)
         if r.returncode:
             raise SystemExit("stage build.sh failed:\n" + r.stdout[-800:] + r.stderr[-800:])
-    n = apply(stage)
-    after = live_html(stage)
     fails, notes = [], []
+    n = apply(stage, fails)        # a bad v4:needs mark is a FAIL here
+    after = live_html(stage)
     # 1. no URL lost, none added by accident
     if before - after:
         fails.append("pages lost: %s" % sorted(before - after)[:5])

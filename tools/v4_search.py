@@ -18,7 +18,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from v4_ux import topic_case   # noqa: E402  (20: SRS and CCC as the site writes them)
-from v2_site import proto_only   # noqa: E402  (pages left out of the switch stay out of the search)
+from v2_site import proto_only, needs   # noqa: E402  (pages left out of the switch stay out of the search, and so do the parts that lead to them)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V4 = os.path.join(ROOT, "prototypes", "v4")
@@ -109,7 +109,12 @@ def main():
                 continue
             title = re.sub(r"\s*\|\s*Paragliding Atlas(?: episodes)?\s*$", "", html.unescape(t.group(1)).strip())   # "Reserves | Paragliding Atlas episodes"
             e = {"t": title, "d": html.unescape(m.group(1)) if m else "", "u": rel, "k": kind(rel)}
-            h = headings(rel, src)
+            # a part marked <!-- v4:needs PAGE --> while PAGE is prototype-only is not on the switched page,
+            # so its headings are not offered (v2_site.needs, as the switch reads it)
+            body, bad = needs(src, V4)
+            if bad:
+                raise SystemExit("v4_search: %s: %s" % (rel, "; ".join(bad)))
+            h = headings(rel, body)
             if h:
                 e["h"] = h
             out.append(e)
