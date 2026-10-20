@@ -16,7 +16,7 @@ What this does to each page of a type, in place (each change between
 
   - <html class="v4-quiet q-TYPE">;
   - links v4-quiet.css, with its version hash, after v2.css;
-  - no rail drifts on its own (a .v2-rail's data-auto goes);
+  - home: the episode rail no longer drifts on its own (its data-auto goes);
   - home and podcast: the globe no longer moves on its own. The live
     globe.js (never edited) turns the globe slowly whenever it is on screen
     and nothing is open, again three seconds after every touch, and widens
@@ -43,13 +43,11 @@ import v4_min   # noqa: E402
 
 TYPES = {
     "home": ["index.html"],
-    "podcast": ["podcast.html"],
 }
 GLOBE_PAGES = {"index.html", "podcast.html"}
 # Rails that drift on their own (v2-immersive.js part 1 moves a .v2-rail[data-auto] whenever it is on screen and
-# untouched): on every page of the pass the attribute goes, so a rail moves only by the visitor's swipe, drag or
-# its arrows.
-RAIL_AUTO = re.compile(r'(<div class="v2-rail[^"]*") data-auto\b')
+# untouched): the attribute goes, so the rail moves only by the visitor's swipe, drag or its arrows.
+STILL_RAILS = {"index.html"}
 
 
 def fail(msg):
@@ -126,8 +124,12 @@ def one(rel, kind, globe):
     # the sheet, right after v2.css
     src = marked(src, "css", '<link rel="stylesheet" href="%sv4-quiet.css?v=%s">' % (up, stamp("v4-quiet.css")),
                  r'(?<=<link rel="stylesheet" href="%sv2\.css\?v=[0-9a-f]{8}">)' % re.escape(up), rel)
-    # the still rails
-    src = RAIL_AUTO.sub(r"\1", src)
+    # the still rail
+    if rel in STILL_RAILS:
+        n = src.count('<div class="v2-rail" data-auto ')
+        if n + src.count('<div class="v2-rail" tabindex=') != 1:
+            fail("%s: expected one episode rail" % rel)
+        src = src.replace('<div class="v2-rail" data-auto ', '<div class="v2-rail" ')
     # the still globe
     if rel in GLOBE_PAGES:
         src = marked(src, "globe", '<script src="%sv4-globe.js?v=%s"></script>' % (up, globe),
