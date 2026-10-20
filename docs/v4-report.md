@@ -121,7 +121,10 @@ python3 tools/v2_switch.py --site v4 --dry-run
   Valley hero is 1152 px wide); whether the tiers and the promises (a film,
   the flight data published) are right. Note: your wing is a UP and you are a
   UP distributor, so the Equipment Partner slot may already be UP's. And one
-  audience figure: the live partners page says 85 countries, v4's says 130+.
+  audience figure: settled (owner, 20 Oct 2026: "130 plus is the correct
+  figure"). The partners page says 130+ countries reached and v4's podcast
+  page 136 countries and counting (v2's figure of 25 Sep, which agrees); only
+  the live podcast page still says 85, and the switch-over replaces it.
 - **The photographs (9 Oct).** The Terabox link cannot be opened here (the
   network policy blocks it). A Google Drive folder works (Drive is
   connected), or the repository. Where they go, how they are built and eight
