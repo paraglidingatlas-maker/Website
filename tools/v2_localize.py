@@ -115,7 +115,9 @@ def main():
             html = html.replace("</head>", '<script src="%sv2-immersive.js"></script>\n</head>' % up, 1)
         live_twin = os.path.join(ROOT, rel)
         live_has = os.path.exists(live_twin) and 'rel="canonical"' in open(live_twin, encoding="utf-8").read()
-        if (live_has or not os.path.exists(live_twin)) and not re.search(r'<link rel="canonical" href="https://paraglidingatlas\.com/', html):
+        # a prototype-only page is never switched live, so it needs no live canonical (as in tools/v2_check.py)
+        if (live_has or not os.path.exists(live_twin)) and not S.proto_only(rel) \
+                and not re.search(r'<link rel="canonical" href="https://paraglidingatlas\.com/', html):
             print("  no live canonical:", rel)
             problems += 1
         open(fp, "w", encoding="utf-8").write(html)

@@ -285,12 +285,10 @@ def equal_earth(lat, lon):
 
 def land_rings():
     sys.path.insert(0, os.path.join(ROOT, "tools", "kbfig"))
-    try:
-        import nav_land
-        return nav_land.rings()
-    except Exception:            # noqa: BLE001 - offline: the land outlines kept in tools/data
-        import v4_kbsvg
-        return v4_kbsvg._nav_land().rings()
+    # tools/data/naturalearth_lowres.shp is in the repo: no quiet fallback to other outlines,
+    # which drew a different map; a missing file stops the build instead
+    import nav_land
+    return nav_land.rings()
 
 
 def map_drawing(phone=False):

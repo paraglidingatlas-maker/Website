@@ -79,6 +79,7 @@ marked done is the next step.
 | 29. The record page, less but better (owner, 19 Oct, with a screenshot: "the animations give a cheap rip-off feeling rather than a premium one, along with the graphics"; he circled the flat grey clouds and the hard seam where the Kerio photograph begins): an art director and a motion director audited every frame; cut the three cloud layers, the drawn hills, ridge and acacias, the sun's disc, the thermals, the ticker, every count-up, the ring cursor and magnetic buttons, the outlined numerals and the giant km count, the photograph inside the letters, the sideways strip and the word-by-word reveals; refined the Kerio seam (the photograph now takes the colour of the sky behind it), one easing curve, motion with weight (an eased glide that stops when settled), typography and real photographs as the graphics. Judged blind against the previous version by a creative director and an engineer: the new one preferred by both. Smoother than before (the shell's unused per-frame --v2-gust write is skipped on this page; removing it from v2-immersive.js would help every page). Facts and markers unchanged. tools/v4_record.py | done (prototype) | see git log | all gates PASS |
 | 30. From the record page to the whole site, first two (owner, 19 Oct: "ok"): every page scrolls more smoothly (v2-immersive.js no longer writes the unused --v2-gust to <html> on every scroll frame, which restyled the whole page; nothing read it); the podcast's Night flight feed no longer moves on its own (the twinkling stars, drifting aurora, edge sweep, level meter and ticker loops are gone, as the motion rule and the record page's lesson ask; the look, the progress ring and a still 'Now playing' line stay), and its last raw colours became tokens. rss-feed.js untouched. | done | see git log | all gates PASS |
 | 31. Expeditions gets its own page (owner, 19 Oct: "the expeditions standalone tab ... is just an off copy of leftover material at the homepage, I want it a bit different", then "use the same Awwwards rule" and "go crazy with your imagination"): expeditions.html. Three directions built in full (expeditions-a, -b and -c.html, prototype-only), judged, and the winner (C) built with the best of the other two: "Choose Your Sky", Kenya and India side by side with the split following the pointer; the map flown with the scroll from the world to India, Kenya, Kazakhstan and Peru (Natural Earth outlines, public domain; WebGL 2 where there is a real graphics card, drawn in SVG otherwise), each place's own photograph rising out of the map; the year drawn to scale from Oct 2026 to Nov 2027 with each departure on it; "Still Choosing?" over the Last light photograph. Every fact from the trip pages and the home page (Kazakhstan and Peru as the home page gives them: planned, with Register interest); about 330 words. Phones, reduced motion and no JavaScript get a still, stacked page. The header's Expeditions tab, the full-screen menu, the app's Trips shortcut and the search now lead here (they led to the home page's destinations section); the home page section stays. Note for later passes: a full rerun of tools/v4_pass.py rewrites the knowledge base drawings in long path syntax, so it must be followed by tools/v4_ux.py (or the nav change made on its own, as here). tools/v4_expeditions.py, tools/v4_expeditions_a.py, _b.py, _c.py, tools/v4_pass.py, tools/v4_pwa.py, tools/v4_search.py (prototype-only pages now stay out of the search). It is the first page v4 adds to the site rather than replaces, so the switch learnt about new pages: tools/v2_site.py NEW_PAGES; the switch writes such a page at the root, indexable, and gives it its sitemap.xml line (dated by its last commit); the dry run holds it to its own title, description, canonical, Open Graph and structured data instead of a live twin's. The site audit, run on the switched site, now also reads the tokens defined in assets/v4/v2.css, which every switched page loads | done | see git log | all gates PASS |
+| 32. One script rebuilds v4 (found 19 Oct while wiring Expeditions): the deploy draft for the switch-over ran only part of the v4 chain and would have published India and Kenya without their fly-through gallery, route map and usability pass, and the knowledge base drawings uncompacted. tools/v4_build.py runs every v4 generator and pass in the order that reproduces the committed v4 byte for byte; proven on a clean checkout (./build.sh, then the script: prototypes/v4 unchanged, a second run unchanged, v2 untouched, the switch dry run 0 FAIL). docs/v4-deploy-workflow.yml now runs it. Along the way: the Navigators map reads its Natural Earth outlines from tools/data/naturalearth_lowres.shp (the copy in the geopandas 0.14.4 wheel, its hash checked against PyPI; public domain) instead of downloading them at build time, and no longer falls back quietly to other outlines; v2_localize passes over prototype-only pages as v2_check does. Built by a workflow (two mappers, a builder, a verifier in a fresh copy each round, three rounds); then its guard on the generator-owned pages was made to ignore ?v= changes, which the live build makes whenever a linked file changes and which would otherwise have stopped a deploy, and the proof rerun. Before the switch-over: a new episode still stops the build (see The switch-over below). tools/v4_build.py, tools/kbfig/nav_land.py, tools/v4_expert.py, tools/v2_localize.py | done | see git log | all gates PASS |
 
 ## How to build and check v4
 Every `tools/v2_*.py` takes `--site v4` (or `PA_SITE=v4`); without it they
@@ -395,24 +396,39 @@ No page is heavier than its v2 twin; home is under 2.5 MB. How:
 
 ## The switch-over, if v4 is chosen
 `tools/v2_switch.py --site v4 --apply --out _site` builds the live site from
-v4 (dry run: 180 pages, 0 FAIL). It copies v4's own files to `assets/v4/`
+v4 (dry run: 181 pages, 0 FAIL). It copies v4's own files to `assets/v4/`
 (v2.css, v2.js, v2-immersive.js, v4-menu.js, search-index.js, fonts, img,
 the knowledge base drawings in img/kb) and points every page at them. The
-deploy workflow draft (`docs/v2-deploy-workflow.yml`) runs the same steps
-with `--site v4`, with v4's generators between v2_twin and v2_localize:
+deploy workflow draft (`docs/v4-deploy-workflow.yml`) runs the live build,
+then the whole v4 chain in one script, then the checks and the switch:
 
 ```
-python3 tools/v2_episode.py --site v4 --all
-python3 tools/v2_twin.py --site v4
-python3 tools/v2_library_cards.py --site v4 && python3 tools/v4_library.py
-python3 tools/v4_trip.py
-python3 tools/v4_kbsvg.py            # only when a figure script changes
-python3 tools/v4_pass.py
-python3 tools/v4_search.py
-python3 tools/v4_min.py
-python3 tools/v2_localize.py --site v4
 ./build.sh
+python3 tools/v4_build.py          # every v4 generator and pass, in order
+python3 tools/audit.py --drift
+python3 tools/v2_check.py --site v4 --static
+python3 tools/v2_switch.py --site v4 --dry-run
+python3 tools/v2_switch.py --site v4 --apply --out _site
 ```
+Until 19 Oct the draft ran only part of the chain (v4_trip, v4_pass and a
+few more): it would have rebuilt India and Kenya from v2 without their
+fly-through gallery, route map and usability pass, and the knowledge base
+drawings without their compaction. `tools/v4_build.py` runs the chain that
+reproduces the committed v4 byte for byte (proven on a clean checkout, twice;
+its docstring gives the order and why). Pages whose source never changes (the
+trips, the record and Expeditions pages, the samples) are not rebuilt; the
+pages that follow the live data (the library, the podcast's newest episode,
+the topics, the search, new knowledge base, topic and text twins) are.
+
+**Before the switch-over (not yet done):** a new episode stops the v4 build
+on purpose. `tools/v2_episode.py` cannot read the live episode header as it
+has been since 2 Oct (the series mark, timeline and map box), so it would
+build an episode page without its hero and player; `v4_build.py` removes
+such a page and fails. The generator must learn the new header before the
+switch-over, or the first episode after it fails the deploy. Also not yet
+seen: the chain on a GitHub runner (checked here with Python 3.11, Pillow
+12.3.0, numpy 2.4.6 and contourpy 1.3.3, the versions the draft pins).
+
 New pages: `expeditions.html` has no live twin. The switch writes it at the
 root and adds its line to `sitemap.xml` (`tools/v2_site.py` NEW_PAGES); every
 other root file stays as it is.
