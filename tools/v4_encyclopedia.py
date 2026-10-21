@@ -23,7 +23,9 @@ canonical, og and structured data stay absolute); the workspace's robots line go
 v4's own); the three new drawings (kb-enc-*) are not in the live assets, so they are copied to
 prototypes/v4/img/enc/ and pointed at there. One fix: the A to Z's search and filters changed only its
 count (its list's display rules overrode [hidden]; the same on the branch). The A to Z also gets a line to "Tell me why"
-(samples/tell-me-why.html, report row 16), the show's own answers. Written again on every build, so the
+(samples/tell-me-why.html, report row 16), the show's own answers. The 10 Oct "Encarta" build's pieces
+come in through tools/v4_enc_lab.py: the seven worlds and the featured article at the head of the A to Z,
+the moving wing on Collapse and the angle-of-attack lab on Collapse and Stall. Written again on every build, so the
 pages follow the review copy and nothing is edited in them by hand.
 
 links: the encyclopedia is prototype-only until the owner has reviewed it (tools/v2_site.py proto_only),
@@ -47,6 +49,8 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import v2_site as S  # noqa: E402
+import v4_atlas  # noqa: E402
+import v4_enc_lab  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V4 = os.path.join(ROOT, "prototypes", "v4")
@@ -84,7 +88,7 @@ ASK = ('<!-- v4:needs samples/tell-me-why.html --><p class="az-ask">Or ask the s
        'in their own words, each linked to its chapter.</p><!-- /v4:needs -->')
 
 
-def twin(name):
+def twin(name, encarta=True):
     src = open(os.path.join(SRC, name), encoding="utf-8").read()
     head, body = src.split("</head>", 1)
     head = head.replace('<head><meta name="robots" content="noindex,nofollow">', "<head>", 1)
@@ -100,6 +104,12 @@ def twin(name):
         if body.count('<p class="az-ask">') != 1:
             fail("the A to Z's closing line is not there")
         body = re.sub(r'(<p class="az-ask">.*?</p>)', lambda m: m.group(1) + ASK, body, count=1, flags=re.S)
+        if encarta:
+            col = [a for a in v4_atlas.answers(SRC) if a[0] + ".html" == v4_enc_lab.COLLAPSE][0]
+            first = re.match(r"(.+?[.?!])(\s|$)", col[3])
+            body = v4_enc_lab.front(body, (v4_enc_lab.COLLAPSE, col[1], first.group(1) if first else col[3]))
+    elif encarta:
+        body = v4_enc_lab.answer(name, body)
     if SITE in body.replace('href="' + SITE + '"', ""):
         left = sorted(set(re.findall(re.escape(SITE) + r'[^"\s<]*', body)))
         fail("%s: links to the site that have no page here: %s" % (name, left[:5]))
@@ -117,9 +127,8 @@ def pages():
             a, b = os.path.join(DRAFTS, "assets", "images", f), os.path.join(IMG, f)
             if not os.path.exists(b) or open(a, "rb").read() != open(b, "rb").read():
                 shutil.copyfile(a, b)
-    import v4_atlas
     made = {name: twin(name) for name in names}
-    made["atlas.html"] = v4_atlas.page(made["index.html"], SRC)    # the globe, the way in (tools/v4_atlas.py)
+    made["atlas.html"] = v4_atlas.page(twin("index.html", False), SRC)    # the globe, the way in (tools/v4_atlas.py)
     for name, out in made.items():
         fp = os.path.join(OUT, name)
         if not os.path.exists(fp) or open(fp, encoding="utf-8").read() != out:

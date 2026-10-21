@@ -67,6 +67,11 @@ section). What is open:
   answer is made on the encyclopedia-pilot branch (`kb_answers.py`) and the
   review copy built again (`ENC_SHOW_DRAFTS=1`). That branch's A to Z filter
   changes only the count (fixed in v4 only).
+- **The Encarta pieces** (21 Oct, report row 50, `tools/v4_enc_lab.py`): the
+  seven worlds and the featured article on the A to Z, the moving wing on
+  Collapse, the angle-of-attack lab on Collapse and Stall. Next, if the owner
+  wants more: Active flying with the same lab, the Encarta build's kinds of
+  collapse and step-by-step pictures, and a picture for each other answer.
 - **The Atlas** (21 Oct, report row 48): the knowledge base's button opens
   the globe (`knowledge-base/encyclopedia/atlas.html`, `tools/v4_atlas.py`),
   and its pins and questions lead into the encyclopedia. Built from the
