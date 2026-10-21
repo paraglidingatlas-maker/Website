@@ -43,6 +43,68 @@
 <link rel="stylesheet" href="../../styles.css?v=b084e774">
 <link rel="stylesheet" href="v2.css?v=5b620941">
 <link rel="stylesheet" href="../../policies.css?v=255207ee">
+<!--v4p:polish--><style>@keyframes v4p-near{to{transform:scale(1.12) translateY(2%)}}@supports (animation-timeline: scroll()){@media (prefers-reduced-motion:no-preference){html body .v2-page-hero .v4-bg{animation:v4p-near linear both;animation-timeline:scroll(root);animation-range:0 100vh}}}html.v4-toc .pol-toc::after{content:"";position:absolute;left:-2px;top:0;width:2px;height:var(--f,0px);background:var(--orange);box-shadow:0 0 10px rgba(255,117,23,.5)}html.v4-toc .pol-toc a{transition:color .3s var(--ease)}html.v4-toc .pol-toc a.done{color:var(--gray-light)}html.v4-toc .pol-toc a.on{color:var(--white)}html.v4-vw .pol-verse-en .v4w{color:var(--edge-hi);transition:color .45s var(--ease)}html.v4-vw .pol-verse-en .v4w.on{color:var(--white)}</style><script>(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var html = document.documentElement;
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
+  ready(function () {
+    var toc = document.querySelector('.pol-toc'), body = document.querySelector('.pol-body');
+    var links = toc ? [].slice.call(toc.querySelectorAll('a[href^="#"]')) : [];
+    var heads = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+    if (heads.some(function (h) { return !h; })) links = [];
+    if (links.length && body) {
+      html.classList.add('v4-toc');
+      if (getComputedStyle(toc).position === 'static') toc.style.position = 'relative';
+    }
+    /* the verse's translation, a word at a time */
+    var q = reduce ? null : document.querySelector('.pol-verse-en'), words = [];
+    if (q && !q.querySelector('.v4w') && !q.children.length) {
+      var parts = q.textContent.split(/\s+/).filter(Boolean);
+      q.textContent = '';
+      parts.forEach(function (w, i) {
+        var sp = document.createElement('span'); sp.className = 'v4w'; sp.textContent = w;
+        q.appendChild(sp); if (i < parts.length - 1) q.appendChild(document.createTextNode(' '));
+        words.push(sp);
+      });
+      html.classList.add('v4-vw');
+    }
+    var raf = 0, lit = -1, cur = -2;
+    function tick() {
+      raf = 0;
+      var vh = window.innerHeight;
+      if (words.length) {
+        var qb = q.getBoundingClientRect();
+        var t = Math.min(1, Math.max(0, (vh * 0.86 - qb.top) / (qb.height + vh * 0.36)));
+        var n = Math.round(t * words.length);
+        if (n !== lit) { for (var j = 0; j < words.length; j++) words[j].classList.toggle('on', j < n); lit = n; }
+      }
+      if (links.length && body) {
+        var line = vh * 0.35, i = -1, tops = heads.map(function (h) { return h.getBoundingClientRect().top; });
+        tops.forEach(function (tp, k) { if (tp <= line) i = k; });
+        var bb = body.getBoundingClientRect(), f;
+        if (i < 0) {
+          f = links[0].offsetTop * Math.min(1, Math.max(0, (line - bb.top) / Math.max(1, tops[0] - bb.top)));
+        } else {
+          var end = i + 1 < tops.length ? tops[i + 1] : bb.bottom;
+          var fr = Math.min(1, Math.max(0, (line - tops[i]) / Math.max(1, end - tops[i])));
+          var a = links[i], nx = links[i + 1];
+          f = a.offsetTop + fr * ((nx ? nx.offsetTop : toc.offsetHeight) - a.offsetTop);
+        }
+        toc.style.setProperty('--f', f.toFixed(1) + 'px');
+        if (i !== cur) {
+          links.forEach(function (a, k) {
+            a.classList.toggle('on', k === i); a.classList.toggle('done', k < i);
+            if (k === i) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current');
+          });
+          cur = i;
+        }
+      }
+    }
+    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+    window.addEventListener('resize', function () { if (!raf) raf = requestAnimationFrame(tick); });
+    tick();
+  });
+})();</script><!--/v4p:polish-->
 <!-- site-schema -->
 <script type="application/ld+json">
 {

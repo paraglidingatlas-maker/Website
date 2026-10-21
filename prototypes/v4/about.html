@@ -193,6 +193,77 @@
   }
   .dossier,.instrument-strip,.mission-control{border-image:linear-gradient(90deg,transparent,var(--line) 15%,var(--line) 85%,transparent) 1;}
 </style>
+<!--v4p:polish--><style>html body .kit-hero .kit-stats{gap:var(--sp-3) clamp(2.2rem,5vw,4rem)}html body .kit-hero .kit-stat b{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,4.2vw,3.25rem);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}html body .kit-hero .kit-stat span{color:var(--gray-light);margin-top:.55rem}html body .kit-hero .kit-stat b>span{display:inline;margin:0;font:inherit;color:inherit;letter-spacing:inherit;text-transform:none}html body .kit-hero .kit-stat b>.v4-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}html body .v2-origin-grid{grid-template-columns:minmax(0,1fr);max-width:46rem}.v2-origin .ab2-flight{margin:clamp(2.5rem,6vw,4.5rem) 0 0}.ab2-track{display:block;width:100%;height:auto;overflow:visible}.ab2-track path,.ab2-track rect,.ab2-track circle{fill:none;vector-effect:non-scaling-stroke}.ab2-alt path{stroke:var(--line);stroke-dasharray:2 8}.ab2-ridge{stroke:var(--edge-hi);stroke-width:1.2}.ab2-track .ab2-ridge-fill{fill:var(--card);stroke:none;opacity:.6}.ab2-line{stroke:var(--orange);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.ab2-future{stroke:var(--orange);stroke-width:1.4;stroke-dasharray:3 7;opacity:.55}.ab2-drop{stroke:var(--edge);stroke-dasharray:2 5}.ab2-track .ab2-mark{fill:var(--bg);stroke:var(--orange);stroke-width:1.6}.ab2-wing path,.ab2-wing circle{stroke:var(--white);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.ab2-track .ab2-wing circle{fill:var(--white)}.ab2-log{list-style:none;margin:1.4rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.2rem,3vw,2.5rem)}.ab2-log li{border-top:1px solid;border-image:linear-gradient(90deg,var(--orange),var(--line) 45%,transparent) 1;padding-top:1rem}.ab2-tag{display:block;font-family:var(--font-display);font-weight:700;font-size:var(--fs-h4);color:var(--orange);margin-bottom:.45rem}.ab2-log p{color:var(--gray-light);font-size:1rem;line-height:1.65;margin:0;max-width:30rem}@media (max-width:600px){.ab2-log{grid-template-columns:1fr;gap:1.4rem}}html.v4-fly .ab2-line{stroke-dasharray:var(--L,none);stroke-dashoffset:0;transition:stroke-dashoffset 2.6s cubic-bezier(.45,0,.2,1) .2s}html.v4-fly :is(.ab2-way,.ab2-wing,.ab2-future){transition:opacity .5s var(--ease)}html.v4-fly .ab2-way{transition-delay:var(--d)}html.v4-fly :is(.ab2-wing,.ab2-future){transition-delay:2.6s}html.v4-fly .ab2-log li{transition:opacity .7s var(--ease),transform .7s var(--ease)}html.v4-fly .ab2-log li:nth-child(1){transition-delay:.3s}html.v4-fly .ab2-log li:nth-child(2){transition-delay:.95s}html.v4-fly .ab2-log li:nth-child(3){transition-delay:1.6s}html.v4-fly .ab2-flight:not(.in) .ab2-line{stroke-dashoffset:var(--L,0)}html.v4-fly .ab2-flight:not(.in) :is(.ab2-way,.ab2-wing,.ab2-future){opacity:0}html.v4-fly .ab2-flight:not(.in) .ab2-log li{opacity:0;transform:translateY(12px)}html body .v2-promise p{font-size:1rem;line-height:1.65}html body .v4-nac{list-style:none;margin:var(--sp-5) 0 0;padding:0}html body .v4-nac li{display:grid;grid-template-columns:clamp(2.5rem,5vw,4rem) minmax(0,1fr);align-items:center;padding:clamp(.6rem,1.4vw,1rem) 0;border-top:1px solid var(--line)}html body .v4-nac li:last-child{border-bottom:1px solid var(--line)}html body .v4-nac small{font-family:var(--font-display);font-weight:600;font-size:.9rem;letter-spacing:.1em;color:var(--orange)}html body .v4-nac b{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,8vw,7.4rem);line-height:1;letter-spacing:-.03em;color:var(--white)}html.v4-nacm .v4-nac b{color:transparent;-webkit-text-stroke:1px var(--edge-hi);transition:color .6s var(--ease),-webkit-text-stroke-color .6s var(--ease)}html.v4-nacm .v4-nac small{color:var(--gray);transition:color .6s var(--ease)}html.v4-nacm .v4-nac li.on b{color:var(--white);-webkit-text-stroke-color:transparent}html.v4-nacm .v4-nac li.on small{color:var(--orange)}html.v4-tilt .v2-tours .kit-card-media{position:relative;transform:perspective(800px) translateY(var(--ty,0px)) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .6s var(--ease)}html.v4-tilt .v2-tours .kit-card:is(:hover,:focus-visible) .kit-card-media{--ty:-4px;transition:transform .18s var(--ease)}html.v4-tilt .v2-tours .kit-card-media::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(60% 60% at var(--mx,50%) var(--my,50%),rgba(246,244,244,.14),transparent 70%);transition:opacity .4s var(--ease)}html.v4-tilt .v2-tours .kit-card:hover .kit-card-media::after{opacity:1}</style><script>(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var html = document.documentElement;
+  if (reduce) return;
+  if (window.IntersectionObserver) html.classList.add('v4-fly', 'v4-nacm');
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
+  ready(function () {
+    /* the opening's figures count up once, the real figure kept for screen readers and at the end */
+    document.querySelectorAll('.kit-hero .kit-stat b').forEach(function (b, k) {
+      var real = b.textContent, m = real.match(/^(\d+)(\D*)$/); if (!m) return;
+      var n = +m[1], w = b.getBoundingClientRect().width, show = document.createElement('span'), t0 = 0;
+      show.setAttribute('aria-hidden', 'true');
+      b.textContent = ''; b.appendChild(show);
+      var sr = document.createElement('span'); sr.className = 'v4-sr'; sr.textContent = real; b.appendChild(sr);
+      b.style.display = 'inline-block'; b.style.minWidth = w + 'px';
+      function step(now) {
+        if (!t0) t0 = now;
+        var t = Math.min(1, Math.max(0, (now - t0 - 250 - k * 120) / 1400)), e = 1 - Math.pow(1 - t, 3);
+        show.textContent = Math.round(n * e) + m[2];
+        if (t < 1) requestAnimationFrame(step); else { b.textContent = real; b.style.display = b.style.minWidth = ''; }
+      }
+      requestAnimationFrame(step);
+    });
+    /* the flight is flown once, when it first comes into view; its line is measured on screen so the drawing
+       ends exactly at the tip (the live page's way) */
+    var fl = document.querySelector('.ab2-flight');
+    if (fl && window.IntersectionObserver) {
+      var line = fl.querySelector('.ab2-line'), art = fl.querySelector('svg');
+      var measure = function () {
+        if (!line.getTotalLength) return;
+        line.style.setProperty('--L', (Math.ceil(line.getTotalLength() * art.getBoundingClientRect().width / 1200) + 2) + 'px');
+      };
+      measure();
+      var io = new IntersectionObserver(function (en) {
+        if (en[0].isIntersecting) { measure(); fl.classList.add('in'); io.disconnect(); }
+      }, { threshold: 0.35 });
+      io.observe(fl);
+      window.addEventListener('beforeprint', function () { fl.classList.add('in'); });
+    }
+    /* Navigate, Aviate, Communicate: each fills as it reaches the middle of the screen, in order */
+    var rows = [].slice.call(document.querySelectorAll('.v4-nac li')), raf = 0;
+    function tick() {
+      raf = 0; var mid = window.innerHeight * 0.62;
+      rows.forEach(function (li) { var r = li.getBoundingClientRect(); li.classList.toggle('on', r.top + r.height / 2 < mid); });
+    }
+    if (rows.length) {
+      window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+      window.addEventListener('beforeprint', function () { rows.forEach(function (li) { li.classList.add('on'); }); });
+      tick();
+    }
+    /* the trips lean towards the mouse, with a soft light on them */
+    if (!(window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches)) return;
+    html.classList.add('v4-tilt');
+    document.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var c = e.target.closest && e.target.closest('.v2-tours .kit-card'); if (!c) return;
+      var s = c.querySelector('.kit-card-media'); if (!s) return;
+      var r = s.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      if (x < 0 || x > 1 || y < 0 || y > 1) return;
+      s.style.setProperty('--ry', ((x - 0.5) * 10).toFixed(2) + 'deg');
+      s.style.setProperty('--rx', ((0.5 - y) * 8).toFixed(2) + 'deg');
+      s.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+      s.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+    }, { passive: true });
+    document.addEventListener('pointerout', function (e) {
+      var c = e.target.closest && e.target.closest('.v2-tours .kit-card');
+      if (!c || (e.relatedTarget && c.contains(e.relatedTarget))) return;
+      var s = c.querySelector('.kit-card-media'); if (s) { s.style.removeProperty('--rx'); s.style.removeProperty('--ry'); }
+    });
+  });
+})();</script><!--/v4p:polish-->
 <!-- site-schema -->
 <script type="application/ld+json">
 {
@@ -307,12 +378,24 @@
         <p class="v2-origin-lede">Paragliding Atlas began with one tandem flight: mine, as a child, in the foothills of the Himalaya.</p>
         <p>Every trip since has been built the same way: small groups, genuine hospitality, and the highest safety standards I can build.</p>
       </div>
-      <ol class="kit-rows v2-log">
-        <li class="kit-row"><span class="kit-kicker">Childhood</span><p>I take my first tandem paragliding flight in the foothills of the Himalayas. The obsession begins.</p></li>
-        <li class="kit-row"><span class="kit-kicker">2023</span><p>I found Paragliding Atlas, aiming to build immersive flying experiences beyond a quick tandem flight.</p></li>
-        <li class="kit-row"><span class="kit-kicker">Today</span><p>A small team of pilots guiding expeditions across Kenya, the Himalayas, Peru, and Kazakhstan, telling the stories behind them on the Paragliding Atlas podcast.</p></li>
-      </ol>
     </div>
+    <!--v4p:flight-->
+    <div class="ab2-flight">
+      <svg class="ab2-track" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <g class="ab2-alt"><path d="M0,60 H1200"/><path d="M0,120 H1200"/><path d="M0,180 H1200"/><path d="M0,240 H1200"/></g>
+      <path class="ab2-ridge-fill" d="M0.0,292.0 L60.0,284.0 L120.0,262.0 L170.0,244.0 L200.0,238.0 L232.0,248.0 L290.0,274.0 L360.0,288.0 L450.0,280.0 L540.0,292.0 L640.0,286.0 L740.0,296.0 L840.0,284.0 L930.0,294.0 L1040.0,288.0 L1120.0,296.0 L1200.0,290.0 L1200,320 L0,320 Z"/>
+      <path class="ab2-ridge" d="M0.0,292.0 L60.0,284.0 L120.0,262.0 L170.0,244.0 L200.0,238.0 L232.0,248.0 L290.0,274.0 L360.0,288.0 L450.0,280.0 L540.0,292.0 L640.0,286.0 L740.0,296.0 L840.0,284.0 L930.0,294.0 L1040.0,288.0 L1120.0,296.0 L1200.0,290.0"/>
+      <path class="ab2-line" d="M200.0,236.0 L250.0,240.0 L300.0,246.0 L345.0,251.0 L346.3,249.9 L347.7,248.9 L349.4,247.9 L351.3,247.0 L353.4,246.2 L355.5,245.5 L357.8,244.9 L360.0,244.5 L362.3,244.2 L364.4,244.0 L366.4,244.1 L368.3,244.2 L369.9,244.4 L371.2,244.7 L372.3,245.1 L373.0,245.5 L373.3,245.9 L373.3,246.3 L373.0,246.6 L372.3,246.8 L371.3,246.8 L370.1,246.7 L368.6,246.4 L367.0,245.9 L365.3,245.1 L363.5,244.1 L361.8,242.8 L360.2,241.3 L358.8,239.5 L357.7,237.4 L356.9,235.2 L356.6,232.8 L356.7,230.2 L357.4,227.4 L358.6,224.6 L360.4,221.8 L363.1,219.1 L366.7,216.7 L370.8,214.5 L375.2,212.5 L379.9,210.8 L384.9,209.4 L390.0,208.4 L395.2,207.6 L400.4,207.1 L405.5,207.0 L410.4,207.2 L415.0,207.6 L419.4,208.3 L423.3,209.3 L426.9,210.4 L429.9,211.7 L432.4,213.2 L434.4,214.7 L435.8,216.2 L436.6,217.8 L436.8,219.3 L436.5,220.7 L435.7,222.0 L434.5,223.1 L432.8,224.0 L430.7,224.7 L428.4,225.1 L425.8,225.2 L423.1,225.0 L420.3,224.5 L417.5,223.7 L414.8,222.6 L412.3,221.2 L410.0,219.5 L408.0,217.5 L406.5,215.4 L405.3,213.0 L404.6,210.5 L404.4,207.8 L404.7,205.1 L405.7,202.3 L407.1,199.6 L409.1,196.9 L411.6,194.3 L414.7,191.8 L418.1,189.5 L422.0,187.3 L426.3,185.5 L430.8,183.8 L435.5,182.5 L440.4,181.4 L445.4,180.7 L450.3,180.2 L455.2,180.0 L459.9,180.2 L464.4,180.5 L468.5,181.2 L472.3,182.0 L475.7,183.1 L478.6,184.3 L481.1,185.6 L483.0,187.0 L484.3,188.4 L485.2,189.9 L485.5,191.3 L485.3,192.6 L484.6,193.7 L483.5,194.7 L481.9,195.5 L480.1,196.1 L477.9,196.5 L475.6,196.5 L473.1,196.3 L470.5,195.8 L467.9,195.0 L465.5,193.9 L463.2,192.6 L461.1,190.9 L459.3,189.1 L457.9,187.0 L456.8,184.7 L456.2,182.3 L456.1,179.8 L456.5,177.2 L457.4,174.6 L458.9,171.9 L460.8,169.3 L463.3,166.8 L466.2,164.5 L469.5,162.2 L473.3,160.2 L477.3,158.4 L481.7,156.8 L486.2,155.5 L490.9,154.5 L495.6,153.7 L500.3,153.3 L505.0,153.1 L509.4,153.2 L513.7,153.5 L517.7,154.0 L521.3,154.8 L524.6,155.8 L527.4,156.9 L529.7,158.1 L531.6,159.3 L532.9,160.6 L533.8,162.0 L534.2,163.2 L534.0,164.4 L533.5,165.5 L532.5,166.4 L531.1,167.1 L529.4,167.6 L527.5,167.9 L525.3,167.9 L523.0,167.6 L520.7,167.1 L518.4,166.3 L516.1,165.3 L514.0,164.0 L512.2,162.4 L510.5,160.6 L509.3,158.6 L508.4,156.5 L507.9,154.2 L507.9,151.7 L508.3,149.3 L509.2,146.8 L510.7,144.2 L512.6,141.8 L514.9,139.4 L517.7,137.1 L521.0,135.0 L524.5,133.1 L528.4,131.3 L532.5,129.8 L536.8,128.6 L541.3,127.6 L545.8,126.8 L550.3,126.3 L554.7,126.1 L559.0,126.2 L563.0,126.4 L566.8,126.9 L570.3,127.6 L573.4,128.4 L575.7,129.5 L577.4,130.7 L578.5,131.8 L579.2,132.9 L579.5,133.8 L579.4,134.6 L579.0,135.3 L578.3,135.7 L577.3,136.0 L576.3,136.1 L575.1,136.0 L574.0,135.6 L572.8,135.1 L571.8,134.3 L570.9,133.4 L570.2,132.4 L569.7,131.2 L569.4,129.9 L569.5,128.5 L569.7,127.1 L570.3,125.7 L571.1,124.2 L572.2,122.8 L573.5,121.4 L575.0,120.2 L576.7,119.0 L578.6,117.8 L580.5,116.8 L582.4,115.9 L584.4,115.2 L586.4,114.5 L588.3,113.9 L590.1,113.4 L591.8,113.0 L593.4,112.6 L594.8,112.3 L596.0,112.0 L680.0,128.0 L770.0,147.0 L852.0,166.0 L852.7,165.2 L853.6,164.5 L854.5,163.7 L855.6,163.0 L856.7,162.3 L858.0,161.6 L859.3,161.0 L860.7,160.4 L862.1,159.9 L863.6,159.5 L865.2,159.1 L866.7,158.8 L868.3,158.5 L869.8,158.3 L871.4,158.2 L872.8,158.2 L874.3,158.2 L875.6,158.3 L876.9,158.4 L878.1,158.6 L879.2,158.9 L880.2,159.2 L881.0,159.5 L881.7,159.9 L882.2,160.3 L882.6,160.7 L882.8,161.1 L882.8,161.5 L882.7,161.9 L882.4,162.2 L882.0,162.6 L881.4,162.8 L880.6,163.1 L879.7,163.2 L878.7,163.3 L877.5,163.4 L876.2,163.2 L874.9,162.7 L873.7,162.1 L872.5,161.4 L871.3,160.6 L870.2,159.7 L869.1,158.8 L868.2,157.7 L867.4,156.6 L866.6,155.5 L866.0,154.3 L865.6,153.0 L865.2,151.6 L865.0,150.3 L865.0,148.9 L865.1,147.4 L865.4,146.0 L865.9,144.5 L866.5,143.0 L867.3,141.5 L868.2,140.1 L869.3,138.6 L870.6,137.2 L872.0,135.8 L873.6,134.4 L875.3,133.1 L877.1,131.9 L879.1,130.7 L881.2,129.6 L883.4,128.5 L885.6,127.5 L888.0,126.6 L890.4,125.8 L892.9,125.1 L895.4,124.4 L897.9,123.8 L900.5,123.4 L903.0,123.0 L905.6,122.7 L908.1,122.5 L910.6,122.3 L913.0,122.3 L915.3,122.3 L917.6,122.5 L919.8,122.6 L921.9,122.9 L923.9,123.2 L925.7,123.6 L927.4,124.0 L929.0,124.5 L930.4,125.0 L931.7,125.5 L932.9,126.1 L933.9,126.7 L934.7,127.3 L935.4,127.9 L935.9,128.5 L936.2,129.0 L936.5,129.6 L936.5,130.1 L936.4,130.6 L936.2,131.1 L935.8,131.5 L935.3,131.8 L934.8,132.1 L934.0,132.4 L933.3,132.5 L932.4,132.6 L931.4,132.7 L930.4,132.6 L929.3,132.5 L928.2,132.2 L927.1,131.9 L926.0,131.5 L924.9,131.1 L923.8,130.5 L922.7,129.9 L921.7,129.1 L920.7,128.3 L919.8,127.5 L919.0,126.5 L918.2,125.5 L917.6,124.4 L917.1,123.3 L916.7,122.1 L916.4,120.9 L916.2,119.6 L916.2,118.3 L916.3,116.9 L916.6,115.6 L917.0,114.2 L917.6,112.8 L918.3,111.4 L919.2,110.0 L920.2,108.7 L921.4,107.3 L922.7,106.0 L924.2,104.7 L925.7,103.5 L927.4,102.3 L929.2,101.2 L931.2,100.1 L933.2,99.1 L935.3,98.1 L937.4,97.2 L939.7,96.4 L942.0,95.7 L944.3,95.0 L946.7,94.5 L949.1,94.0 L951.5,93.5 L953.8,93.2 L956.2,92.9 L958.5,92.8 L960.8,92.7 L963.0,92.6 L965.2,92.7 L967.2,92.8 L969.2,93.0 L971.1,93.2 L972.9,93.5 L974.5,93.8 L976.1,94.2 L977.5,94.6 L978.8,95.0 L979.9,95.5 L980.9,96.0 L981.8,96.5 L982.5,97.0 L983.1,97.5 L983.5,98.0 L983.8,98.5 L984.0,98.9 L984.0,99.3 L983.9,99.7 L983.6,100.1 L983.3,100.4 L982.9,100.6 L982.3,100.8 L981.7,100.9 L981.0,101.0 L980.2,101.0 L979.4,100.9 L978.5,100.8 L977.5,100.6 L976.6,100.3 L975.7,99.9 L974.7,99.3 L973.9,98.5 L973.2,97.6 L972.5,96.7 L972.1,95.7 L971.7,94.7 L971.5,93.7 L971.4,92.6 L971.5,91.5 L971.7,90.4 L972.0,89.3 L972.5,88.2 L973.1,87.2 L973.8,86.1 L974.6,85.1 L975.5,84.1 L976.5,83.2 L977.6,82.2 L978.8,81.4 L980.1,80.6 L981.4,79.8 L982.7,79.1 L984.0,78.5 L985.4,77.9 L986.8,77.3 L988.2,76.8 L989.5,76.4 L990.8,76.0 L992.1,75.7 L993.3,75.4 L994.5,75.1 L995.6,74.9 L996.6,74.6 L997.6,74.5 L998.5,74.3 L999.3,74.1 L1000.0,74.0"/>
+      <path class="ab2-future" d="M1014,70 L1070,64 L1140,58 L1200,54"/>
+      <g class="ab2-way" style="--d:300ms"><path d="M200,245 V300" class="ab2-drop"/><rect x="195" y="231" width="10" height="10" transform="rotate(45 200 236)" class="ab2-mark"/></g><g class="ab2-way" style="--d:950ms"><path d="M596,121 V300" class="ab2-drop"/><rect x="591" y="107" width="10" height="10" transform="rotate(45 596 112)" class="ab2-mark"/></g><g class="ab2-way" style="--d:1600ms"><path d="M1000,83 V300" class="ab2-drop"/><rect x="995" y="69" width="10" height="10" transform="rotate(45 1000 74)" class="ab2-mark"/></g>
+      <g class="ab2-wing" transform="translate(1000 50)"><path d="M-17,-3 Q0,-15 17,-3"/><path d="M-13,-4 L0,12 L13,-4"/><circle cx="0" cy="13" r="2.4"/></g>
+    </svg>
+      <ol class="ab2-log">
+        <li><span class="ab2-tag">Childhood</span><p>I take my first tandem paragliding flight in the foothills of the Himalayas. The obsession begins.</p></li>
+        <li><span class="ab2-tag">2023</span><p>I found Paragliding Atlas, aiming to build immersive flying experiences beyond a quick tandem flight.</p></li>
+        <li><span class="ab2-tag">Today</span><p>A small team of pilots guiding expeditions across Kenya, the Himalayas, Peru, and Kazakhstan, telling the stories behind them on the Paragliding Atlas podcast.</p></li>
+      </ol>
+    </div><!--/v4p:flight-->
   </div>
 </section>
 
@@ -343,7 +426,7 @@
       <p class="kit-intro">Four things I hold myself to on every trip, not just the ones that make for good marketing copy.</p>
     </div>
     <div class="kit-grid v2-promises"><div class="kit-panel v2-promise"><span class="v2-ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><g class="v2-ic-bezel"><circle cx="16" cy="16" r="15"/><path d="M16 1v2.6M16 28.4V31M1 16h2.6M28.4 16H31"/></g><g class="v2-ic-glyph"><path d="M6.5 13.2c3-4.9 16-4.9 19 0-3.2-1.6-15.8-1.6-19 0z"/><path d="M7.5 13 16 22.2M11.8 11.7 16 22.2M20.2 11.7 16 22.2M24.5 13 16 22.2"/><circle cx="16" cy="23.4" r="1.2" fill="currentColor"/></g></svg></span><h3>Experience</h3><p>Years of trips across Africa and beyond, still building on my knowledge base with every season.</p></div><div class="kit-panel v2-promise"><span class="v2-ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><g class="v2-ic-bezel"><circle cx="16" cy="16" r="15"/><path d="M16 1v2.6M16 28.4V31M1 16h2.6M28.4 16H31"/></g><g class="v2-ic-glyph"><path d="M9 9.5h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-8l-4 3.5v-3.5H9a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z"/><circle cx="12.5" cy="15" r=".9" fill="currentColor"/><circle cx="16" cy="15" r=".9" fill="currentColor"/><circle cx="19.5" cy="15" r=".9" fill="currentColor"/></g></svg></span><h3>Service</h3><p>Personal contact matters. Book a call and tell me what you actually want from the trip.</p></div><div class="kit-panel v2-promise"><span class="v2-ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><g class="v2-ic-bezel"><circle cx="16" cy="16" r="15"/><path d="M16 1v2.6M16 28.4V31M1 16h2.6M28.4 16H31"/></g><g class="v2-ic-glyph"><circle cx="12" cy="12.2" r="2.6"/><circle cx="20" cy="12.2" r="2.6"/><path d="M7.4 23c.3-3.1 2.2-5.2 4.6-5.2s4.3 2.1 4.6 5.2M15.4 23c.3-3.1 2.2-5.2 4.6-5.2s4.3 2.1 4.6 5.2"/></g></svg></span><h3>Community Empowerment</h3><p>Tourism that benefits local people makes them partners in protecting the places we fly over.</p></div><div class="kit-panel v2-promise"><span class="v2-ic" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><g class="v2-ic-bezel"><circle cx="16" cy="16" r="15"/><path d="M16 1v2.6M16 28.4V31M1 16h2.6M28.4 16H31"/></g><g class="v2-ic-glyph"><path d="M16 7l7 3v5.2c0 4.8-3 8.3-7 9.8-4-1.5-7-5-7-9.8V10z"/><path d="M12.8 16.1l2.3 2.3 4.3-4.6"/></g></svg></span><h3>Security</h3><p>I trust my local partners completely, backed by the safety standards of a Nordic-registered operator.</p></div></div>
-    <p class="v2-nac" aria-label="Navigate, Aviate, Communicate"><span>Navigate</span><span>Aviate</span><span>Communicate</span></p>
+    <!--v4p:nac--><ol class="v4-nac" aria-label="Navigate, Aviate, Communicate"><li><small aria-hidden="true">01</small><b>Navigate</b></li><li><small aria-hidden="true">02</small><b>Aviate</b></li><li><small aria-hidden="true">03</small><b>Communicate</b></li></ol><!--/v4p:nac-->
   </div>
 </section>
 

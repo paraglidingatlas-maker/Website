@@ -75,6 +75,23 @@ were. Rewritten whole each run, so the pass is idempotent.
     and draw again; and the topic search glides the topics left to their new
     places instead of the grid jumping. Reduced motion: no motion, the look
     kept.
+  - About (owner, 21 Oct 2026, from side-by-side previews): the opening's
+    figures (500+, 4, 10+) large and solid, counting up once (the real
+    figure kept for screen readers and at the end, the width held so nothing
+    moves); the origin story flies as on the live about.html: its drawing
+    (read from the live page each run) across the page under the story's
+    words, flown once as it comes into view, each step (the v4 page's own
+    three) arriving as the line reaches it, at 16 px; the promises' words at
+    16 px; Navigate, Aviate, Communicate as giant rows of pure type, each
+    filling white from an outline as it reaches the middle of the screen;
+    the trips lean towards the mouse with a soft light, as the library's
+    tiles. The photo already comes closer with the scroll (v2.css).
+  - Mission: On this page follows the reading (the section being read lit
+    and marked current, the ones read marked, the line beside the list
+    filling orange down to the reader); the verse's translation lights word
+    by word as it crosses the screen, as the podcast's pull quote; the photo
+    at the top comes closer as the page scrolls, its own slow drift kept.
+    Reduced motion: no motion (On this page still follows the reading).
 
     python3 tools/v4_polish.py            # every page done so far
 
@@ -477,6 +494,266 @@ TG_HUB_JS = r"""(function () {
   });
 })();"""
 
+ABOUT_CSS = (
+    # the opening's three figures large and solid, as on the podcast page (ABOUT_JS counts them up once)
+    "html body .kit-hero .kit-stats{gap:var(--sp-3) clamp(2.2rem,5vw,4rem)}"
+    "html body .kit-hero .kit-stat b{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,4.2vw,3.25rem);line-height:1;"
+    "letter-spacing:-.02em;font-variant-numeric:tabular-nums}"
+    "html body .kit-hero .kit-stat span{color:var(--gray-light);margin-top:.55rem}"
+    # (while counting, the figure is a span inside it: it keeps the figure's look, not the label's)
+    "html body .kit-hero .kit-stat b>span{display:inline;margin:0;font:inherit;color:inherit;letter-spacing:inherit;text-transform:none}"
+    "html body .kit-hero .kit-stat b>.v4-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}"
+    # the origin story: its words alone in the grid, the flight under them across the page
+    "html body .v2-origin-grid{grid-template-columns:minmax(0,1fr);max-width:46rem}"
+    # the flight, as the live About page draws it (about.html's own rules, the steps at 16 px)
+    ".v2-origin .ab2-flight{margin:clamp(2.5rem,6vw,4.5rem) 0 0}"
+    ".ab2-track{display:block;width:100%;height:auto;overflow:visible}"
+    ".ab2-track path,.ab2-track rect,.ab2-track circle{fill:none;vector-effect:non-scaling-stroke}"
+    ".ab2-alt path{stroke:var(--line);stroke-dasharray:2 8}"
+    ".ab2-ridge{stroke:var(--edge-hi);stroke-width:1.2}"
+    ".ab2-track .ab2-ridge-fill{fill:var(--card);stroke:none;opacity:.6}"
+    ".ab2-line{stroke:var(--orange);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}"
+    ".ab2-future{stroke:var(--orange);stroke-width:1.4;stroke-dasharray:3 7;opacity:.55}"
+    ".ab2-drop{stroke:var(--edge);stroke-dasharray:2 5}"
+    ".ab2-track .ab2-mark{fill:var(--bg);stroke:var(--orange);stroke-width:1.6}"
+    ".ab2-wing path,.ab2-wing circle{stroke:var(--white);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}"
+    ".ab2-track .ab2-wing circle{fill:var(--white)}"
+    ".ab2-log{list-style:none;margin:1.4rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.2rem,3vw,2.5rem)}"
+    ".ab2-log li{border-top:1px solid;border-image:linear-gradient(90deg,var(--orange),var(--line) 45%,transparent) 1;padding-top:1rem}"
+    ".ab2-tag{display:block;font-family:var(--font-display);font-weight:700;font-size:var(--fs-h4);color:var(--orange);margin-bottom:.45rem}"
+    ".ab2-log p{color:var(--gray-light);font-size:1rem;line-height:1.65;margin:0;max-width:30rem}"
+    "@media (max-width:600px){.ab2-log{grid-template-columns:1fr;gap:1.4rem}}"
+    # flown once when it comes into view: the line draws, each waypoint and its step arrive as the line reaches them
+    "html.v4-fly .ab2-line{stroke-dasharray:var(--L,none);stroke-dashoffset:0;transition:stroke-dashoffset 2.6s cubic-bezier(.45,0,.2,1) .2s}"
+    "html.v4-fly :is(.ab2-way,.ab2-wing,.ab2-future){transition:opacity .5s var(--ease)}"
+    "html.v4-fly .ab2-way{transition-delay:var(--d)}html.v4-fly :is(.ab2-wing,.ab2-future){transition-delay:2.6s}"
+    "html.v4-fly .ab2-log li{transition:opacity .7s var(--ease),transform .7s var(--ease)}"
+    "html.v4-fly .ab2-log li:nth-child(1){transition-delay:.3s}html.v4-fly .ab2-log li:nth-child(2){transition-delay:.95s}"
+    "html.v4-fly .ab2-log li:nth-child(3){transition-delay:1.6s}"
+    "html.v4-fly .ab2-flight:not(.in) .ab2-line{stroke-dashoffset:var(--L,0)}"
+    "html.v4-fly .ab2-flight:not(.in) :is(.ab2-way,.ab2-wing,.ab2-future){opacity:0}"
+    "html.v4-fly .ab2-flight:not(.in) .ab2-log li{opacity:0;transform:translateY(12px)}"
+    # the promises' words at 16 px (reading text)
+    "html body .v2-promise p{font-size:1rem;line-height:1.65}"
+    # Navigate, Aviate, Communicate: giant rows, pure type; with motion each fills white as it reaches the
+    # middle of the screen (ABOUT_JS), outlined until then
+    "html body .v4-nac{list-style:none;margin:var(--sp-5) 0 0;padding:0}"
+    "html body .v4-nac li{display:grid;grid-template-columns:clamp(2.5rem,5vw,4rem) minmax(0,1fr);align-items:center;"
+    "padding:clamp(.6rem,1.4vw,1rem) 0;border-top:1px solid var(--line)}"
+    "html body .v4-nac li:last-child{border-bottom:1px solid var(--line)}"
+    "html body .v4-nac small{font-family:var(--font-display);font-weight:600;font-size:.9rem;letter-spacing:.1em;color:var(--orange)}"
+    "html body .v4-nac b{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,8vw,7.4rem);line-height:1;"
+    "letter-spacing:-.03em;color:var(--white)}"
+    "html.v4-nacm .v4-nac b{color:transparent;-webkit-text-stroke:1px var(--edge-hi);"
+    "transition:color .6s var(--ease),-webkit-text-stroke-color .6s var(--ease)}"
+    "html.v4-nacm .v4-nac small{color:var(--gray);transition:color .6s var(--ease)}"
+    "html.v4-nacm .v4-nac li.on b{color:var(--white);-webkit-text-stroke-color:transparent}"
+    "html.v4-nacm .v4-nac li.on small{color:var(--orange)}"
+    # the trips lean towards the mouse, a soft light where it is (as the library's tiles)
+    "html.v4-tilt .v2-tours .kit-card-media{position:relative;transform:perspective(800px) translateY(var(--ty,0px)) "
+    "rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .6s var(--ease)}"
+    "html.v4-tilt .v2-tours .kit-card:is(:hover,:focus-visible) .kit-card-media{--ty:-4px;transition:transform .18s var(--ease)}"
+    "html.v4-tilt .v2-tours .kit-card-media::after{content:\"\";position:absolute;inset:0;pointer-events:none;opacity:0;"
+    "background:radial-gradient(60% 60% at var(--mx,50%) var(--my,50%),rgba(246,244,244,.14),transparent 70%);transition:opacity .4s var(--ease)}"
+    "html.v4-tilt .v2-tours .kit-card:hover .kit-card-media::after{opacity:1}"
+)
+ABOUT_JS = r"""(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var html = document.documentElement;
+  if (reduce) return;
+  if (window.IntersectionObserver) html.classList.add('v4-fly', 'v4-nacm');
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
+  ready(function () {
+    /* the opening's figures count up once, the real figure kept for screen readers and at the end */
+    document.querySelectorAll('.kit-hero .kit-stat b').forEach(function (b, k) {
+      var real = b.textContent, m = real.match(/^(\d+)(\D*)$/); if (!m) return;
+      var n = +m[1], w = b.getBoundingClientRect().width, show = document.createElement('span'), t0 = 0;
+      show.setAttribute('aria-hidden', 'true');
+      b.textContent = ''; b.appendChild(show);
+      var sr = document.createElement('span'); sr.className = 'v4-sr'; sr.textContent = real; b.appendChild(sr);
+      b.style.display = 'inline-block'; b.style.minWidth = w + 'px';
+      function step(now) {
+        if (!t0) t0 = now;
+        var t = Math.min(1, Math.max(0, (now - t0 - 250 - k * 120) / 1400)), e = 1 - Math.pow(1 - t, 3);
+        show.textContent = Math.round(n * e) + m[2];
+        if (t < 1) requestAnimationFrame(step); else { b.textContent = real; b.style.display = b.style.minWidth = ''; }
+      }
+      requestAnimationFrame(step);
+    });
+    /* the flight is flown once, when it first comes into view; its line is measured on screen so the drawing
+       ends exactly at the tip (the live page's way) */
+    var fl = document.querySelector('.ab2-flight');
+    if (fl && window.IntersectionObserver) {
+      var line = fl.querySelector('.ab2-line'), art = fl.querySelector('svg');
+      var measure = function () {
+        if (!line.getTotalLength) return;
+        line.style.setProperty('--L', (Math.ceil(line.getTotalLength() * art.getBoundingClientRect().width / 1200) + 2) + 'px');
+      };
+      measure();
+      var io = new IntersectionObserver(function (en) {
+        if (en[0].isIntersecting) { measure(); fl.classList.add('in'); io.disconnect(); }
+      }, { threshold: 0.35 });
+      io.observe(fl);
+      window.addEventListener('beforeprint', function () { fl.classList.add('in'); });
+    }
+    /* Navigate, Aviate, Communicate: each fills as it reaches the middle of the screen, in order */
+    var rows = [].slice.call(document.querySelectorAll('.v4-nac li')), raf = 0;
+    function tick() {
+      raf = 0; var mid = window.innerHeight * 0.62;
+      rows.forEach(function (li) { var r = li.getBoundingClientRect(); li.classList.toggle('on', r.top + r.height / 2 < mid); });
+    }
+    if (rows.length) {
+      window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+      window.addEventListener('beforeprint', function () { rows.forEach(function (li) { li.classList.add('on'); }); });
+      tick();
+    }
+    /* the trips lean towards the mouse, with a soft light on them */
+    if (!(window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches)) return;
+    html.classList.add('v4-tilt');
+    document.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var c = e.target.closest && e.target.closest('.v2-tours .kit-card'); if (!c) return;
+      var s = c.querySelector('.kit-card-media'); if (!s) return;
+      var r = s.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      if (x < 0 || x > 1 || y < 0 || y > 1) return;
+      s.style.setProperty('--ry', ((x - 0.5) * 10).toFixed(2) + 'deg');
+      s.style.setProperty('--rx', ((0.5 - y) * 8).toFixed(2) + 'deg');
+      s.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+      s.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+    }, { passive: true });
+    document.addEventListener('pointerout', function (e) {
+      var c = e.target.closest && e.target.closest('.v2-tours .kit-card');
+      if (!c || (e.relatedTarget && c.contains(e.relatedTarget))) return;
+      var s = c.querySelector('.kit-card-media'); if (s) { s.style.removeProperty('--rx'); s.style.removeProperty('--ry'); }
+    });
+  });
+})();"""
+FLIGHT = ("<!--v4p:flight-->", "<!--/v4p:flight-->")
+NAC = ("<!--v4p:nac-->", "<!--/v4p:nac-->")
+
+
+def about_markup(html):
+    """The About page's origin story as the live page flies it, and its three words as giant rows. The drawing
+    is read from the live about.html each run (it stops if it is not there once); the three steps keep the v4
+    page's own words. Both are written between marks, so a second run writes the same bytes."""
+    import html as H
+    live = open(os.path.join(ROOT, "about.html"), encoding="utf-8").read()
+    svg = re.findall(r'<svg class="ab2-track".*?</svg>', live, re.S)
+    if len(svg) != 1:
+        raise SystemExit("v4_polish: the live about.html's flight (svg.ab2-track) is not there once")
+    m = re.search(r'\s*<ol class="kit-rows v2-log">(.*?)</ol>(\s*</div>)', html, re.S)
+    if m:
+        steps = re.findall(r'<li class="kit-row"><span class="kit-kicker">(.*?)</span><p>(.*?)</p></li>', m.group(1))
+    else:
+        mm = re.search(re.escape(FLIGHT[0]) + r".*?" + re.escape(FLIGHT[1]), html, re.S)
+        if not mm:
+            raise SystemExit("v4_polish: about.html: neither the story's steps nor the flight is there")
+        steps = re.findall(r'<li><span class="ab2-tag">(.*?)</span><p>(.*?)</p></li>', mm.group(0))
+    if len(steps) != 3:
+        raise SystemExit("v4_polish: about.html: the story does not have three steps")
+    block = (FLIGHT[0] + '\n    <div class="ab2-flight">\n      ' + svg[0] + '\n      <ol class="ab2-log">\n'
+             + "".join('        <li><span class="ab2-tag">%s</span><p>%s</p></li>\n' % s for s in steps)
+             + "      </ol>\n    </div>" + FLIGHT[1])
+    if m:
+        html = html[:m.start()] + m.group(2) + "\n    " + block + html[m.end():]
+    else:
+        html = re.sub(re.escape(FLIGHT[0]) + r".*?" + re.escape(FLIGHT[1]), lambda _: block, html, count=1, flags=re.S)
+    old = re.search(r'<p class="v2-nac" aria-label="[^"]*">(.*?)</p>', html, re.S)
+    mine = re.search(re.escape(NAC[0]) + r".*?" + re.escape(NAC[1]), html, re.S)
+    words = (re.findall(r"<span>(.*?)</span>", old.group(1)) if old else
+             re.findall(r"<b>(.*?)</b>", mine.group(0)) if mine else [])
+    if len(words) != 3:
+        raise SystemExit("v4_polish: about.html: Navigate, Aviate, Communicate is not there")
+    nac = (NAC[0] + '<ol class="v4-nac" aria-label="%s">' % H.escape(", ".join(H.unescape(w) for w in words))
+           + "".join('<li><small aria-hidden="true">%02d</small><b>%s</b></li>' % (i + 1, w) for i, w in enumerate(words))
+           + "</ol>" + NAC[1])
+    if old:
+        html = html[:old.start()] + nac + html[old.end():]
+    else:
+        html = re.sub(re.escape(NAC[0]) + r".*?" + re.escape(NAC[1]), lambda _: nac, html, count=1, flags=re.S)
+    return html
+
+
+MISSION_CSS = (
+    # the photo at the top comes closer as the page scrolls (its own slow drift kept, on the picture inside)
+    "@keyframes v4p-near{to{transform:scale(1.12) translateY(2%)}}"
+    "@supports (animation-timeline: scroll()){@media (prefers-reduced-motion:no-preference){"
+    "html body .v2-page-hero .v4-bg{animation:v4p-near linear both;animation-timeline:scroll(root);animation-range:0 100vh}}}"
+    # On this page follows the reading: the section being read lit, the ones read marked, the line beside the
+    # list filling orange down to where the reader is (MISSION_JS)
+    "html.v4-toc .pol-toc::after{content:\"\";position:absolute;left:-2px;top:0;width:2px;height:var(--f,0px);"
+    "background:var(--orange);box-shadow:0 0 10px rgba(255,117,23,.5)}"
+    "html.v4-toc .pol-toc a{transition:color .3s var(--ease)}"
+    "html.v4-toc .pol-toc a.done{color:var(--gray-light)}"
+    "html.v4-toc .pol-toc a.on{color:var(--white)}"
+    # the verse's translation, a word at a time as it crosses the screen (as the podcast's pull quote)
+    "html.v4-vw .pol-verse-en .v4w{color:var(--edge-hi);transition:color .45s var(--ease)}"
+    "html.v4-vw .pol-verse-en .v4w.on{color:var(--white)}"
+)
+MISSION_JS = r"""(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var html = document.documentElement;
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
+  ready(function () {
+    var toc = document.querySelector('.pol-toc'), body = document.querySelector('.pol-body');
+    var links = toc ? [].slice.call(toc.querySelectorAll('a[href^="#"]')) : [];
+    var heads = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+    if (heads.some(function (h) { return !h; })) links = [];
+    if (links.length && body) {
+      html.classList.add('v4-toc');
+      if (getComputedStyle(toc).position === 'static') toc.style.position = 'relative';
+    }
+    /* the verse's translation, a word at a time */
+    var q = reduce ? null : document.querySelector('.pol-verse-en'), words = [];
+    if (q && !q.querySelector('.v4w') && !q.children.length) {
+      var parts = q.textContent.split(/\s+/).filter(Boolean);
+      q.textContent = '';
+      parts.forEach(function (w, i) {
+        var sp = document.createElement('span'); sp.className = 'v4w'; sp.textContent = w;
+        q.appendChild(sp); if (i < parts.length - 1) q.appendChild(document.createTextNode(' '));
+        words.push(sp);
+      });
+      html.classList.add('v4-vw');
+    }
+    var raf = 0, lit = -1, cur = -2;
+    function tick() {
+      raf = 0;
+      var vh = window.innerHeight;
+      if (words.length) {
+        var qb = q.getBoundingClientRect();
+        var t = Math.min(1, Math.max(0, (vh * 0.86 - qb.top) / (qb.height + vh * 0.36)));
+        var n = Math.round(t * words.length);
+        if (n !== lit) { for (var j = 0; j < words.length; j++) words[j].classList.toggle('on', j < n); lit = n; }
+      }
+      if (links.length && body) {
+        var line = vh * 0.35, i = -1, tops = heads.map(function (h) { return h.getBoundingClientRect().top; });
+        tops.forEach(function (tp, k) { if (tp <= line) i = k; });
+        var bb = body.getBoundingClientRect(), f;
+        if (i < 0) {
+          f = links[0].offsetTop * Math.min(1, Math.max(0, (line - bb.top) / Math.max(1, tops[0] - bb.top)));
+        } else {
+          var end = i + 1 < tops.length ? tops[i + 1] : bb.bottom;
+          var fr = Math.min(1, Math.max(0, (line - tops[i]) / Math.max(1, end - tops[i])));
+          var a = links[i], nx = links[i + 1];
+          f = a.offsetTop + fr * ((nx ? nx.offsetTop : toc.offsetHeight) - a.offsetTop);
+        }
+        toc.style.setProperty('--f', f.toFixed(1) + 'px');
+        if (i !== cur) {
+          links.forEach(function (a, k) {
+            a.classList.toggle('on', k === i); a.classList.toggle('done', k < i);
+            if (k === i) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current');
+          });
+          cur = i;
+        }
+      }
+    }
+    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+    window.addEventListener('resize', function () { if (!raf) raf = requestAnimationFrame(tick); });
+    tick();
+  });
+})();"""
+
+
 PAGES = {
     "podcast.html": (
         ".v2-pod-hero .kit-stats{gap:var(--sp-3) clamp(2.2rem,5vw,4rem);max-width:48rem;flex-wrap:nowrap}"
@@ -537,6 +814,8 @@ for _f in sorted(os.listdir(os.path.join(V4, "knowledge-base"))):
         PAGES["knowledge-base/" + _f] = KB_CAT_CSS
         SCRIPTS["knowledge-base/" + _f] = KB_CAT_JS
 PAGES["tags.html"], SCRIPTS["tags.html"] = TG_HUB_CSS, TG_HUB_JS
+PAGES["about.html"], SCRIPTS["about.html"] = ABOUT_CSS, ABOUT_JS
+PAGES["mission.html"], SCRIPTS["mission.html"] = MISSION_CSS, MISSION_JS
 for _f in sorted(os.listdir(os.path.join(V4, "tags"))):
     if _f.endswith(".html"):
         PAGES["tags/" + _f], SCRIPTS["tags/" + _f] = TG_CSS, TG_JS
@@ -575,6 +854,8 @@ def main():
                             "<!--v4p:polish--><style>%s</style>%s<!--/v4p:polish-->\n<!-- site-schema -->"
                             % (css, "<script>%s</script>" % ((series_intro() if rel == "library.html" else "") + SCRIPTS[rel])
                                if rel in SCRIPTS else ""), 1)
+        if rel == "about.html":
+            html = about_markup(html)
         if rel == "podcast.html" and POD_LOADER[1] not in html:
             if html.count(POD_LOADER[0]) != 1:
                 raise SystemExit("v4_polish: podcast.html: the globe loader is not there once")
