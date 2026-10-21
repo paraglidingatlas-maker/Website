@@ -29,7 +29,9 @@ pages follow the review copy and nothing is edited in them by hand.
 links: the encyclopedia is prototype-only until the owner has reviewed it (tools/v2_site.py proto_only),
 so every way into it sits between v4:needs marks and the switch-over and the search leave it out:
   - the knowledge base page, after the climb's last level: the A to Z's own title, words and counts,
-    and its ten answers, each with the first sentence of its short answer, as on the series page;
+    and its ten answers, each with the first sentence of its short answer, as on the series page; its
+    button opens the Atlas, the globe that leads into the encyclopedia (owner: "I want that button to
+    take us to globe and then to this"; tools/v4_atlas.py, written by pages as atlas.html);
   - Flight Mechanics, where the ten are filed: the review copy's "Answered In Depth" strip and its way
     into the A to Z, before the next strip;
   - every series and section page the A to Z links into: its FAQ answers get the ids the A to Z links
@@ -115,15 +117,18 @@ def pages():
             a, b = os.path.join(DRAFTS, "assets", "images", f), os.path.join(IMG, f)
             if not os.path.exists(b) or open(a, "rb").read() != open(b, "rb").read():
                 shutil.copyfile(a, b)
-    for name in names:
-        out = twin(name)
+    import v4_atlas
+    made = {name: twin(name) for name in names}
+    made["atlas.html"] = v4_atlas.page(made["index.html"], SRC)    # the globe, the way in (tools/v4_atlas.py)
+    for name, out in made.items():
         fp = os.path.join(OUT, name)
         if not os.path.exists(fp) or open(fp, encoding="utf-8").read() != out:
             open(fp, "w", encoding="utf-8").write(out)
     for f in os.listdir(OUT):            # a page the review copy dropped goes too
-        if f.endswith(".html") and f not in names:
+        if f.endswith(".html") and f not in made:
             os.remove(os.path.join(OUT, f))
-    print("v4_encyclopedia: %d pages from the review copy (the A to Z and %d answers)" % (len(names), len(names) - 1))
+    print("v4_encyclopedia: %d pages from the review copy (the A to Z and %d answers) and the Atlas"
+          % (len(names), len(names) - 1))
 
 
 # ── links ───────────────────────────────────────────────────────────────────
@@ -190,7 +195,7 @@ def band(cards):
             '<section class="v4e-band" id="encyclopedia" aria-labelledby="v4eT"><div class="v4e-in">'
             '<div class="v4e-head"><span class="kit-kicker">%s</span><h2 class="kit-title" id="v4eT">%s</h2>'
             '<p class="kit-intro">%s</p><ul class="v4e-figs">%s</ul>'
-            '<a class="btn-lines" href="knowledge-base/encyclopedia/index.html" data-hover>Open the A to Z</a></div>'
+            '<a class="btn-lines" href="knowledge-base/encyclopedia/atlas.html" data-hover>Explore the Atlas</a></div>'
             '<ol class="v4e-list">%s</ol></div></section>'
             % (k.group(1).strip(), t.group(1).strip(), words.group(1).strip(), figs, lis.replace('href="encyclopedia/', 'href="knowledge-base/encyclopedia/'))
             + NEED[1] + BAND[1])

@@ -87,7 +87,9 @@ THE ORDER, AND WHY
      v4_encyclopedia pages the encyclopedia (step 47): the A to Z and the
                            answers, written again on every build as v4 twins
                            of its review copy (prototypes/workspace/drafts/),
-                           so the chain below gives them v4's frame.
+                           and the Atlas, the globe that leads into them
+                           (step 48, tools/v4_atlas.py), so the chain below
+                           gives them v4's frame.
   3. v2_library_cards      the library's cards, from library-data.js; before
      v4_library            the flight log, which adds its columns to them.
   4. v4_pass               nav, next step, titles, globes, kb figures and the

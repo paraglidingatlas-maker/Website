@@ -67,11 +67,12 @@ section). What is open:
   answer is made on the encyclopedia-pilot branch (`kb_answers.py`) and the
   review copy built again (`ENC_SHOW_DRAFTS=1`). That branch's A to Z filter
   changes only the count (fixed in v4 only).
-- **Later, the owner's word ("leave this one for later")**: the Flying Atlas
-  globe (`prototypes/workspace/atlas/`) as the knowledge base's way in, in
-  the site's dark look, its pins opening the answers; and maybe on the home
-  page after that. Of its about 450 written entries only the ten answers are
-  fact-checked; the rest need checking first, and it weighs about 2 MB.
+- **The Atlas** (21 Oct, report row 48): the knowledge base's button opens
+  the globe (`knowledge-base/encyclopedia/atlas.html`, `tools/v4_atlas.py`),
+  and its pins and questions lead into the encyclopedia. Built from the
+  site's own data (globe-episodes.js, the FAQ answers, the ten answers),
+  not from the workspace's Flying Atlas, whose 450 entries were never
+  checked. On the home page too, later, if the owner wants it there.
 - From the 20 Oct roadmap, still open: icons to photographs (step 7,
   waiting for the owner's photographs; on About the owner chose to keep the
   icons).
