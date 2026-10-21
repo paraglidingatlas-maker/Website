@@ -348,7 +348,7 @@ KB_CAT_CSS = (
     "html body .faq-r details .src{display:block;margin:0 0 .5rem}html body .faq-r details .src + .src{margin-left:0}"
     "html body .faq-r details .src:last-of-type{margin-bottom:1.3rem}}"
     "html.v4-kbc .k-hero-media{perspective:1200px}"
-    "html.v4-kbc .k-hero-media>svg{transform:translate3d(0,var(--py,0px),0) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));"
+    "html.v4-kbc .k-hero-media>:is(svg,canvas){transform:translate3d(0,var(--py,0px),0) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));"
     "transition:transform .9s var(--ease);will-change:transform}"
     "html.v4-kbc .faq-r details{overflow:hidden}"
 )
@@ -357,8 +357,8 @@ KB_CAT_JS = r"""(function () {
   var html = document.documentElement; html.classList.add('v4-kbc');
   function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
   ready(function () {
-    /* the hero drawing: drifts slower than the page, and on a desktop leans towards the mouse */
-    var media = document.querySelector('.k-hero-media'), art = media && media.querySelector('svg'), raf = 0;
+    /* the hero drawing (or the encyclopedia's moving wing): drifts slower than the page, and on a desktop leans towards the mouse */
+    var media = document.querySelector('.k-hero-media'), art = media && media.querySelector(':scope > svg, :scope > canvas'), raf = 0;
     function tick() {
       raf = 0; if (!art) return;
       var y = Math.min(window.scrollY, window.innerHeight);
@@ -1011,6 +1011,14 @@ for _f in sorted(os.listdir(os.path.join(V4, "knowledge-base"))):
     if _f.endswith(".html"):
         PAGES["knowledge-base/" + _f] = KB_CAT_CSS
         SCRIPTS["knowledge-base/" + _f] = KB_CAT_JS
+# the encyclopedia's answers are knowledge base pages too (owner, 21 Oct: the answer page's opening "barely has
+# any immersive and responsive features that we applied on other pages"): the same polish; not the A to Z or
+# the Atlas, which have openings of their own
+_enc = os.path.join(V4, "knowledge-base", "encyclopedia")
+for _f in sorted(os.listdir(_enc)) if os.path.isdir(_enc) else []:
+    if _f.endswith(".html") and _f not in ("index.html", "atlas.html"):
+        PAGES["knowledge-base/encyclopedia/" + _f] = KB_CAT_CSS
+        SCRIPTS["knowledge-base/encyclopedia/" + _f] = KB_CAT_JS
 PAGES["tags.html"], SCRIPTS["tags.html"] = TG_HUB_CSS, TG_HUB_JS
 PAGES["index.html"], SCRIPTS["index.html"] = HOME_CSS, HOME_JS
 PAGES["about.html"], SCRIPTS["about.html"] = ABOUT_CSS, ABOUT_JS

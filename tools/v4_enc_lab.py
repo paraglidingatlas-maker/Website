@@ -167,7 +167,7 @@ CSS = (
     # on a phone the title keeps the opening; the wing and its caption follow it, a block of their own
     "@media (max-width:980px){.a-hero:has(.enc-hero){flex-wrap:wrap;min-height:0}"
     ".a-hero .k-hero-copy{order:1}"
-    ".k-hero-media.enc-hero{position:relative;inset:auto;z-index:0;order:2;flex:0 0 100%;height:min(64vw,420px);margin-top:var(--sp-3)}"
+    ".k-hero-media.enc-hero{position:relative;inset:auto;z-index:0;order:2;flex:0 0 100%;height:min(64vw,420px);margin-top:var(--sp-3);background:transparent}"
     ".enc-hero-cap{position:relative;order:3;flex:0 0 100%;right:auto;bottom:auto;align-items:flex-start;text-align:left;"
     "max-width:none;padding:0 var(--gutter) var(--sp-4)}}"
     # the angle-of-attack lab, in the drawing's place
@@ -186,6 +186,14 @@ CSS = (
     "text-transform:uppercase;color:var(--gray-light)}"
     ".enc-range input{width:100%;accent-color:var(--orange);min-height:32px;cursor:pointer}"
     ".enc-ends{display:flex;justify-content:space-between;color:var(--gray);letter-spacing:.1em}.enc-ends i{font-style:normal}"
+    # the opening as tall as a series page's (.k-hero), on a phone too, where the drawing stands behind the title
+    "@media (min-width:981px){html body .a-hero{min-height:clamp(470px,37.5vw,680px)}}"
+    "@media (max-width:980px){html body .a-hero{min-height:78vh}}"
+    # the moving wing keeps its own size (the series polish scales a drawing up on a desktop and down on a tablet)
+    "html body .k-hero-media.enc-hero{transform:none}"
+    # a citation number or a cross-reference keeps its size in the line and takes a fingertip around it
+    ".cite a,a.xref{position:relative}"
+    ".cite a::after,a.xref::after{content:\"\";position:absolute;left:-10px;right:-10px;top:-12px;bottom:-12px}"
     # the sources, folded into one quiet line
     ".k-sec.enc-src{padding-top:var(--sp-4);padding-bottom:var(--sp-4)}"
     # not the FAQ answers' open look (details[open]: an orange edge, 1.15rem out to the left), which moved it sideways

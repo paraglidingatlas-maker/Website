@@ -92,6 +92,10 @@ def twin(name, encarta=True):
     src = open(os.path.join(SRC, name), encoding="utf-8").read()
     head, body = src.split("</head>", 1)
     head = head.replace('<head><meta name="robots" content="noindex,nofollow">', "<head>", 1)
+    if "<!-- site-schema -->" not in head:
+        # the mark the page passes write their blocks before (v4_polish: the knowledge base's polish); the review
+        # copy's answer pages carry their own structured data and no mark
+        head += "<!-- site-schema -->\n"
     body = re.sub(r'(\s(?:href)=")' + re.escape(SITE) + r'([^"]*)"', relative, body)
     body = re.sub(r'\.\./\.\./assets/images/(kb-enc-[a-z0-9-]+)\.(webp|jpg)', r"../../img/enc/\1.\2", body)
     body, n = re.subn(r"<body(\s[^>]*)?>", lambda m: '<body data-v2="kb"%s>' % (m.group(1) or ""), body, count=1)
