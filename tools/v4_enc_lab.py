@@ -19,6 +19,11 @@ to click through"). Used by tools/v4_encyclopedia.py pages; nothing here is a pa
      its own one-line summaries) and its featured article, Collapse. A world filters the A to Z on the
      same page, so there is no page more to click through; each of the A to Z's 30 topics belongs to
      one world (the WORLDS table below).
+  3. Every answer page's sources fold into one line (owner, 21 Oct, of the full list and "How this answer
+     was made" box: "this whole section of the page can be made discreet and collapsed ... why are we
+     wasting space"): "Sources, N cited in the text by number", opened on a click. The list stays in the
+     page for search and answer engines; a citation number or the contents' "Sources" opens it on the
+     way, and pointing at a number shows its source's title.
 Motion: the collapse plays once, then only on Replay; the lab moves only with the slider. With reduced
 motion the wing is drawn folded, standing still, and the captions are listed.
 """
@@ -89,13 +94,25 @@ def lab(body):
     return body[:m.start()] + new + body[m.end():]
 
 
+def sources(body):
+    """The sources and the note on how the answer was made, folded into one line (see the docstring)."""
+    m = re.search(r'<section class="k-sec bg" id="sources"><div class="k-head"><h2>Sources</h2><span class="kicker">([^<]*)</span></div>'
+                  r'(<div class="a-sources">.*?</div></div>)</section>', body, re.S)
+    if not m:
+        fail("no sources section")
+    fold = ('<section class="k-sec bg enc-src" id="sources"><details class="enc-src-fold"><summary><h2>Sources</h2>'
+            '<span class="kicker">%s</span></summary>%s</details></section>'
+            % (m.group(1), m.group(2)))
+    return body[:m.start()] + fold + body[m.end():]
+
+
 def answer(name, body):
     if name == COLLAPSE:
         body = hero(body)
     if name in LABS:
         body = lab(body)
-        body = body.replace("</body>", "<style>%s</style><script>%s</script>\n</body>" % (CSS, JS), 1)
-    return body
+    body = sources(body)
+    return body.replace("</body>", "<style>%s</style><script>%s</script>\n</body>" % (CSS, JS), 1)
 
 
 # ── the A to Z page ─────────────────────────────────────────────────────────
@@ -169,6 +186,16 @@ CSS = (
     "text-transform:uppercase;color:var(--gray-light)}"
     ".enc-range input{width:100%;accent-color:var(--orange);min-height:32px;cursor:pointer}"
     ".enc-ends{display:flex;justify-content:space-between;color:var(--gray);letter-spacing:.1em}.enc-ends i{font-style:normal}"
+    # the sources, folded into one quiet line
+    ".k-sec.enc-src{padding-top:var(--sp-4);padding-bottom:var(--sp-4)}"
+    ".enc-src-fold{max-width:1300px;margin:0 auto}"
+    ".enc-src-fold>summary{display:flex;align-items:baseline;flex-wrap:wrap;gap:.4rem 1.2rem;cursor:pointer;list-style:none;"
+    "padding:var(--sp-2) 0;border-top:1px solid var(--edge);border-bottom:1px solid var(--edge)}"
+    ".enc-src-fold>summary::-webkit-details-marker{display:none}"
+    ".enc-src-fold>summary h2{font-size:var(--fs-h4);margin:0}"
+    ".enc-src-fold>summary .kicker{color:var(--gray-light);font-size:var(--fs-small);margin-right:auto}"
+    ".enc-src-fold>summary:hover h2{color:var(--orange)}"
+    ".enc-src-fold[open]>.a-sources{padding-top:var(--sp-4)}"
     # the A to Z's front: the seven worlds and the featured article
     ".enc-front{padding:var(--sp-5) clamp(1.5rem,5vw,4rem) 0}"
     ".enc-front-in{max-width:1300px;margin:0 auto}"
@@ -323,6 +350,21 @@ JS = r"""(function () {
     range.addEventListener("input", function () { draw(+range.value); });
     draw(+range.value);
   });
+
+  /* the sources, folded: a citation or the contents' link opens them on the way; a number shows its source's title */
+  var fold = d.querySelector(".enc-src-fold");
+  if (fold) {
+    var openFor = function (id) { var t = id && d.getElementById(id); if (t && (t === fold.parentNode || fold.contains(t))) fold.open = true; };
+    d.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]'); if (a) openFor(a.getAttribute("href").slice(1));
+    }, true);
+    openFor(decodeURIComponent(location.hash.slice(1)));
+    window.addEventListener("hashchange", function () { openFor(decodeURIComponent(location.hash.slice(1))); });
+    [].forEach.call(d.querySelectorAll(".cite a"), function (a) {
+      var li = d.getElementById(a.getAttribute("href").slice(1)), t = li && li.querySelector("a");
+      if (t) a.title = t.textContent + (li.querySelector("span") ? ", " + li.querySelector("span").firstChild.textContent : "");
+    });
+  }
 
   /* 3. the A to Z: a world filters the list on this page; the featured wing, still, folded */
   var list = d.getElementById("a-to-z");
