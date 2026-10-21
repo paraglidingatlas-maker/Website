@@ -164,7 +164,7 @@
                                { label: 'Topics', url: 'tags.html' }, { label: 'Knowledge Base', url: 'knowledge-base.html' }]);
     group('About', [{ label: 'About Me', url: 'about.html' }].concat(about.children));
     group('Legal', legal.children);
-    ground.innerHTML = h + '</div>';
+    if (!ground.querySelector('.sky-g')) ground.innerHTML = h + '</div>';
   })();
 
   /* ---- Camera ---- */

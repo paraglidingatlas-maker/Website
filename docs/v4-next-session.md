@@ -73,6 +73,10 @@ section). What is open:
   site's own data (globe-episodes.js, the FAQ answers, the ten answers),
   not from the workspace's Flying Atlas, whose 450 entries were never
   checked. On the home page too, later, if the owner wants it there.
+- **The sitemap's ground** (21 Oct, report row 49): every page that is not an
+  episode, one click away under the sky (`tools/v4_sitemap_sky.py` ground()).
+  The owner also heard of a richer sky (the trips as planets over the ridge,
+  the topics as a Milky Way, the answers as stars): not built.
 - From the 20 Oct roadmap, still open: icons to photographs (step 7,
   waiting for the owner's photographs; on About the owner chose to keep the
   icons).

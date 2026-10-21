@@ -38,8 +38,19 @@ between <!--v4sky--> and <!--/v4sky--> right before <!-- site-schema --> (v4_pwa
 puts its app block before </head> after this runs), and the script tag between
 <!--v4sky:js--> marks; both are rewritten whole each run, so the pass is
 idempotent. It runs in tools/v4_build.py after v4_ux.
+
+The ground under the sky (owner, 21 Oct: the sitemap "only navigates the episodes, but now the site has
+increased substantially"; of the two ways, the full list): the live script writes its four short groups
+into .sky-ground when the page runs, where no search engine reads them. Here the ground is written into
+the page itself, between <!--v4map--> marks, as a map of every page that is not an episode: Trips (the
+expeditions page and the four trips, from the page's own SITEMAP_SKY tree), Listen, Learn (the knowledge
+base and its five levels, the encyclopedia's Atlas and A to Z), About (with the speed record), Legal,
+then rows of the 13 series, the topics and the ten answers in depth. The script leaves a ground it
+finds written (one patched line). The encyclopedia and the record page are prototype-only, so their
+links sit between v4:needs marks and the switch-over leaves them out until the owner's go.
 """
 import hashlib
+import html as H_
 import json
 import math
 import os
@@ -152,6 +163,9 @@ PATCHES = [
 """, "    realSky();\n"),
     ("    if (shoot) draw(now);\n",
      "    if (shoot) draw(now);\n    else if (!reduce && skyOn && !document.hidden) sky(now);\n"),
+    # the ground is written into the page (ground() below): keep it
+    ("    ground.innerHTML = h + '</div>';\n",
+     "    if (!ground.querySelector('.sky-g')) ground.innerHTML = h + '</div>';\n"),
 ]
 
 
@@ -168,6 +182,94 @@ def script():
             "   pointer. Do not edit; change sitemap-sky.js or the tool and run it.\n"
             + STAR_NOTE.replace("<!-- ", "   ").replace(" -->", "") + " */\n")
     return head + src
+
+
+MAP = ("<!--v4map-->", "<!--/v4map-->")
+RIDGE = ('<svg class="sky-ridge" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0,34 L70,28 '
+         'L130,14 L180,6 L225,12 L300,27 L380,32 L470,24 L540,30 L640,21 L720,31 L820,18 L900,29 L1010,23 L1100,31 L1200,26"/></svg>')
+MAP_CSS = (
+    "@media (min-width:901px){.sky-ground .sky-ground-in{grid-template-columns:1.35fr repeat(4,minmax(0,1fr))}}"
+    ".sky-row{grid-column:1/-1;padding-top:var(--sp-3);border-top:1px solid var(--edge)}"
+    ".sky-row ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:row;flex-wrap:wrap;gap:.15rem 1.15rem}"
+    ".sky-row a{display:inline-flex;align-items:center;min-height:34px;color:var(--gray-light);font-size:.9rem;transition:color .15s ease}"
+    ".sky-row a:hover{color:var(--orange)}"
+    ".sky-g a small.sky-alt{display:inline;margin-left:.45rem;letter-spacing:.06em}"
+)
+
+
+def _need(page, inner):
+    return "<!-- v4:needs %s -->%s<!-- /v4:needs -->" % (page, inner)
+
+
+def _h1(rel):
+    s = open(os.path.join(V4, rel), encoding="utf-8").read()
+    m = re.search(r"<h1[^>]*>(.*?)</h1>", s, re.S)
+    return H_.unescape(re.sub(r"<[^>]+>", "", m.group(1))).strip() if m else None
+
+
+def ground(page):
+    """The map of every page that is not an episode, written into .sky-ground (see the docstring)."""
+    m = re.search(r"window\.SITEMAP_SKY = (\{.*?\});?\s*</script>", page, re.S)
+    if not m:
+        fail("no SITEMAP_SKY tree in sitemap.html")
+    tree = json.loads(m.group(1))["tree"]
+    by = {c["label"]: c for c in tree["children"]}
+    E = lambda t: H_.escape(t, quote=True)
+
+    def li(url, label, img=None, sub=None, alt=None):
+        pic = '<img src="%s" alt="">' % E(img) if img else ""
+        small = "<small>%s</small>" % E(sub) if sub else ""
+        a = '<small class="sky-alt">%s</small>' % E(alt) if alt else ""
+        return '<li><a href="%s">%s<span>%s%s%s</span></a></li>' % (E(url), pic, E(label), a, small)
+
+    def group(title, items):
+        return '<div class="sky-g"><h2>%s</h2><ul>%s</ul></div>' % (E(title), "".join(items))
+
+    trips = [li("expeditions.html", "Expeditions", sub=by["Trips"].get("sub"))]
+    trips += [li(c["url"], c["label"], c.get("img"), c.get("sub") if c.get("kind") == "trip" else None)
+              for c in by["Trips"]["children"]]
+    listen = [li("index.html", "Home"), li("podcast.html", "Podcast"), li("library.html", "Episode Library"),
+              li("tags.html", "Topics")]
+    kb = open(os.path.join(V4, "knowledge-base.html"), encoding="utf-8").read()
+    learn = [li("knowledge-base.html", "Knowledge Base")]
+    stations = re.findall(r'<section class="clb-station" id="lvl-\d" data-alt="([^"]+)"', kb)
+    cats = [c for c in by["Knowledge Base"]["children"] if c.get("kind") == "category"]
+    for i, c in enumerate(cats):
+        learn.append(li(c["url"], c["label"], alt=("%s m" % stations[i]) if i < len(stations) else None))
+    learn.append(_need("knowledge-base/encyclopedia/atlas.html", li("knowledge-base/encyclopedia/atlas.html", "The Atlas")))
+    learn.append(_need("knowledge-base/encyclopedia/index.html", li("knowledge-base/encyclopedia/index.html", "Encyclopedia, A to Z")))
+    about = [li(by["About Me"]["url"], "About Me")] + [li(c["url"], c["label"]) for c in by["About Me"]["children"]]
+    about.insert(3, _need("record-attempt.html", li("record-attempt.html", "Speed Record")))
+    legal = [li(c["url"], c["label"]) for c in by["Legal"]["children"]]
+    series = [s for c in cats for s in c.get("children", [])]
+    row_series = ('<div class="sky-row sky-g"><h2>The %d series</h2><ul>%s</ul></div>'
+                  % (len(series), "".join(li(s["url"], s["label"]) for s in series)))
+    topics = []
+    for f in sorted(os.listdir(os.path.join(V4, "tags"))):
+        if f.endswith(".html"):
+            t = _h1("tags/" + f)
+            if t:
+                topics.append((t.lstrip("#").strip(), "tags/" + f))
+    topics.sort(key=lambda t: t[0].lower())
+    row_topics = ('<div class="sky-row sky-g"><h2>%d topics</h2><ul>%s</ul></div>'
+                  % (len(topics), "".join(li(u, t) for t, u in topics)))
+    enc = os.path.join(V4, "knowledge-base", "encyclopedia")
+    deep = []
+    if os.path.isdir(enc):
+        fm = open(os.path.join(V4, "knowledge-base", "flight-mechanics.html"), encoding="utf-8").read()
+        deep = re.findall(r'<a class="nx-card" href="(encyclopedia/[a-z0-9-]+\.html)"><span class="kicker">[^<]*</span><strong>([^<]*)</strong>', fm)
+    row_deep = _need("knowledge-base/encyclopedia/index.html", '<div class="sky-row sky-g"><h2>Answered in depth</h2><ul>%s</ul></div>'
+                     % "".join(li("knowledge-base/" + u, H_.unescape(q)) for u, q in deep)) if deep else ""
+    inner = (RIDGE + '<div class="sky-ground-in">' + group("Trips", trips) + group("Listen", listen) + group("Learn", learn)
+             + group("About", about) + group("Legal", legal) + row_series + row_topics + row_deep + "</div>")
+    out = re.sub(re.escape(MAP[0]) + r".*?" + re.escape(MAP[1]), "", page, flags=re.S)
+    nav = '<nav class="sky-ground" aria-label="Every other page on the site">'
+    if out.count(nav) != 1:
+        fail("the sitemap's ground is not there once")
+    i = out.index(nav) + len(nav)
+    j = out.index("</nav>", i)
+    out = out[:i] + MAP[0] + "<style>%s</style>" % MAP_CSS + inner + MAP[1] + out[j:]
+    return out
 
 
 def main():
@@ -195,9 +297,10 @@ def main():
         html, n = re.subn(r'<script src="\.\./\.\./sitemap-sky\.js\?v=[0-9a-f]{8}"></script>', lambda m: a + tag + b, html)
         if n != 1:
             fail("the live sky script's tag is not in sitemap.html once")
+    html = ground(html)
     with open(PAGE, "w", encoding="utf-8", newline="\n") as f:
         f.write(html)
-    print("v4_sitemap_sky: %d real stars, in depth, behind the sitemap" % len(field()))
+    print("v4_sitemap_sky: %d real stars, in depth, behind the sitemap, and every page under it" % len(field()))
 
 
 if __name__ == "__main__":
