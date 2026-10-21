@@ -1,0 +1,8 @@
+{
+"source": "Lakes the terrain tiles do not show as flat (noisy data over water): painted as water where the ground in the box lies at or below the lake's level. Levels are the usual figures (Wikipedia): Bogoria about 990 m, Baringo about 970 m, Elementaita about 1,776 m.",
+"lakes": [
+{"name": "Lake Bogoria", "bbox": [36.04, 0.19, 36.14, 0.33], "level_m": 992},
+{"name": "Lake Baringo", "bbox": [35.98, 0.50, 36.17, 0.74], "level_m": 974},
+{"name": "Lake Elementaita", "bbox": [36.20, -0.49, 36.29, -0.39], "level_m": 1780}
+]
+}

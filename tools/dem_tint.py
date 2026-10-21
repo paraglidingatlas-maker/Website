@@ -7,7 +7,8 @@ Reads DIR/dem.bin and DIR/dem.json (from tools/dem_fetch.py). Writes OUTDIR/h-<n
 (heights as R*256+G metres, rows north first; the page flips them), OUTDIR/c-<name>-2k.jpg
 and the same at 1k for phones. --k2 and --k1 are the downsample factors of the 2k and 1k
 textures from the grid (India used 2 and 4). --water paints perfectly flat ground of
-some size as water: on these open tiles lakes are filled flat, plains are not.
+some size as water: on these open tiles lakes are filled flat, plains are not. --lakes JSON adds lakes the
+tiles carry as noise, painted where the ground in each lake's box lies at or below its level.
 
 Palettes are hypsometric stops (metres -> rgb) in the family of the site's dark pages,
 with slope rules: rock shows through on steep high faces, snow stays on gentle ground
@@ -26,6 +27,7 @@ PALETTES = {
                   rock_above=3600, snow=None),
 }
 WATER = (26, 36, 48)
+SEA = (18, 32, 50)
 
 
 def blur3(a):
@@ -35,7 +37,10 @@ def blur3(a):
     return b[:-2] * k[0] + b[1:-1] * k[1] + b[2:] * k[2]
 
 
-def tint(g, mpp, pal, water=False):
+def tint(g, mpp, pal, water=False, lakes=()):
+    """returns the colour image and the water mask (0 land, 128 sea, 255 lake)"""
+    sea = g <= 0.5                                            # the open tiles carry the sea floor below zero: the sea is drawn at sea level
+    g = np.maximum(g, 0)
     gs = blur3(g); gy, gx = np.gradient(gs, mpp); slope = np.degrees(np.arctan(np.hypot(gx, gy)))
     stops = pal["stops"]; e = np.clip(g, stops[0][0], stops[-1][0]); col = np.zeros(g.shape + (3,), np.float32)
     col[...] = np.array(stops[0][1])
@@ -47,29 +52,48 @@ def tint(g, mpp, pal, water=False):
     col = col * (1 - steep) + np.array((96, 92, 88), np.float32) * steep
     # steep faces anywhere are a touch darker, so escarpments read
     col = col * (1 - 0.22 * np.clip((slope - 14) / 22, 0, 1))[..., None]
+    mask = np.zeros(g.shape, np.uint8)
     if water:
         # perfectly flat ground of some size: the local range of heights is under half a metre across 5 cells
         from numpy.lib.stride_tricks import sliding_window_view
         p = np.pad(g, 2, mode="edge"); win = sliding_window_view(p, (5, 5))
-        flat = (win.max(axis=(2, 3)) - win.min(axis=(2, 3))) < 0.5
+        flat = ((win.max(axis=(2, 3)) - win.min(axis=(2, 3))) < 0.5) & (g > 0.5)
         # drop specks: a cell stays water only if its 3x3 neighbourhood is all flat, twice
         for _ in range(2):
             q = np.pad(flat, 1, mode="edge"); flat = np.ones_like(flat)
             for dy in (0, 1, 2):
                 for dx in (0, 1, 2): flat &= q[dy:dy + flat.shape[0], dx:dx + flat.shape[1]]
         col = np.where(flat[..., None], np.array(WATER, np.float32), col)
-    return np.clip(col, 0, 255).astype(np.uint8)
+        mask[flat] = 255
+    for x0, y0, x1, y1, level in lakes:                   # a named lake: its box, in grid cells, at or below its level
+        box = np.zeros(g.shape, bool); box[y0:y1, x0:x1] = True; lk = box & (g <= level) & (g > 0.5)
+        q = np.pad(lk, 1, mode="edge"); grown = np.zeros_like(lk)
+        for dy in (0, 1, 2):
+            for dx in (0, 1, 2): grown |= q[dy:dy + lk.shape[0], dx:dx + lk.shape[1]]
+        lk = grown & box; col = np.where(lk[..., None], np.array(WATER, np.float32), col); mask[lk] = 255
+    col = np.where(sea[..., None], np.array(SEA, np.float32), col); mask[sea] = 128
+    return np.clip(col, 0, 255).astype(np.uint8), mask
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dem", required=True); ap.add_argument("--out", required=True); ap.add_argument("--name", required=True)
     ap.add_argument("--palette", default="kenya"); ap.add_argument("--water", action="store_true")
-    ap.add_argument("--k2", type=int, default=2); ap.add_argument("--k1", type=int, default=4)
+    ap.add_argument("--k2", type=int, default=2); ap.add_argument("--k1", type=int, default=4); ap.add_argument("--lakes", default="")
     a = ap.parse_args()
     m = json.load(open(os.path.join(a.dem, "dem.json"))); W, H = m["w"], m["h"]
     g = np.fromfile(os.path.join(a.dem, "dem.bin"), np.float32).reshape(H, W)
-    col = Image.fromarray(tint(g, m["mpp"], PALETTES[a.palette], a.water))
+    lakes = []
+    if a.lakes:
+        import math
+        def px(lon, lat):
+            n = 2 ** m["z"]; x = (lon + 180) / 360 * n; y = (1 - math.log(math.tan(math.radians(lat)) + 1 / math.cos(math.radians(lat))) / math.pi) / 2 * n
+            return int((x - m["tx0"]) * 256 / m["down"]), int((y - m["ty0"]) * 256 / m["down"])
+        for lk in json.load(open(a.lakes))["lakes"]:
+            (x0, y1), (x1, y0) = px(lk["bbox"][0], lk["bbox"][1]), px(lk["bbox"][2], lk["bbox"][3])
+            if x1 > 0 and y1 > 0 and x0 < W and y0 < H: lakes.append((max(0, x0), max(0, y0), min(W, x1), min(H, y1), lk["level_m"]))
+    colarr, mask = tint(g, m["mpp"], PALETTES[a.palette], a.water, lakes); col = Image.fromarray(colarr); wm = Image.fromarray(mask)
+    g = np.maximum(g, 0)
     os.makedirs(a.out, exist_ok=True)
     for tag, k, q in (("2k", a.k2, 82), ("1k", a.k1, 78)):
         w, h = W // k, H // k
@@ -78,6 +102,7 @@ def main():
         png = np.zeros((h, w, 3), np.uint8); png[..., 0] = hm >> 8; png[..., 1] = hm & 255
         Image.fromarray(png).save(os.path.join(a.out, "h-%s-%s.png" % (a.name, tag)), optimize=True)
         col.resize((w, h), Image.LANCZOS).save(os.path.join(a.out, "c-%s-%s.jpg" % (a.name, tag)), quality=q, optimize=True, progressive=True)
+        if mask.any(): wm.resize((w, h), Image.NEAREST).save(os.path.join(a.out, "w-%s-%s.png" % (a.name, tag)), optimize=True)
         print(a.name, tag, w, h)
     col.save(os.path.join(a.dem, "color.png"))
 

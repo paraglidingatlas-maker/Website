@@ -1,12 +1,12 @@
 {
 "source": "AWS Terrain Tiles (Mapzen Terrarium), zoom 10 for the journey, zoom 12 for the insets; tools/dem_fetch.py, tools/dem_tint.py",
 "grid": {
-"w": 1152,
-"h": 1792,
+"w": 1920,
+"h": 1920,
 "mpp": 305.70383773742464,
 "base_m": 300,
 "exag": 1.4,
-"min": 345.75,
+"min": 0,
 "max": 5866.0,
 "z": 10,
 "tx0": 612,
@@ -18,17 +18,19 @@
 "h": "../img/kenya/dem/h-journey-2k.png",
 "c": "../img/kenya/dem/c-journey-2k.jpg",
 "seg": [
-576,
-896
-]
+960,
+960
+],
+"w": "../img/kenya/dem/w-journey-2k.png"
 },
 "phone": {
 "h": "../img/kenya/dem/h-journey-1k.png",
 "c": "../img/kenya/dem/c-journey-1k.jpg",
 "seg": [
-288,
-448
-]
+480,
+480
+],
+"w": "../img/kenya/dem/w-journey-1k.png"
 }
 },
 "layers": [
@@ -90,7 +92,8 @@
 "seg": [
 448,
 384
-]
+],
+"w": "../img/kenya/dem/w-naivasha-2k.png"
 },
 "phone": {
 "h": "../img/kenya/dem/h-naivasha-1k.png",
@@ -98,7 +101,8 @@
 "seg": [
 224,
 192
-]
+],
+"w": "../img/kenya/dem/w-naivasha-1k.png"
 }
 }
 },
@@ -213,10 +217,10 @@
 "bounds": {
 "sw": [
 40,
-1752
+1880
 ],
 "ne": [
-1112,
+1880,
 40
 ],
 "pitch": [

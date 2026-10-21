@@ -110,6 +110,10 @@ CSS = r"""
 .v4i-fl-ov .v4i-fl-pl.is-far circle{opacity:.55}
 .v4i-fl-ov .v4i-fl-pl text.is-l{text-anchor:end}
 .v4i-fl-ov .v4i-fl-pl.is-town rect{fill:var(--white);opacity:.85}
+.v4i-fl-ov .v4i-fl-pl.is-country text{font-size:12px;letter-spacing:.42em;fill:var(--gray);stroke:none;opacity:.8}
+.v4i-fl-ov .v4i-fl-pl.is-story path{fill:var(--white);opacity:.9}.v4i-fl-ov .v4i-fl-pl.is-story .is-hollow{fill:none;stroke:var(--white);stroke-width:1.2}
+.v4i-fl-ov .v4i-fl-pl.is-story.is-far path,.v4i-fl-ov .v4i-fl-pl.is-story.is-far .is-hollow{opacity:.55}
+.v4i-fl-dg .v4i-fl-dk{grid-column:1/-1;margin:0 0 -.4rem;font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
 .v4i-fl-ov .v4i-fl-pl.is-town text{font-size:11px;letter-spacing:.14em;text-transform:uppercase;fill:var(--gray-light)}
 .v4i-fl-ov .v4i-fl-pl.is-town.is-far text{fill:var(--gray)}.v4i-fl-ov .v4i-fl-pl.is-town.is-far rect{opacity:.5}
 .v4i-fl-lead .v4i-fl-tie{stroke:var(--orange);stroke-width:1.25;opacity:0}
@@ -280,6 +284,17 @@ CSS = r"""
 .v4i-fl-lbn[hidden]{display:none}.v4i-fl-lbp{left:1rem}.v4i-fl-lbnx{right:1rem}
 .v4i-fl-lbh{position:absolute;right:1.25rem;bottom:1.2rem;font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.06em;color:var(--gray);white-space:nowrap;pointer-events:none}
 @media (max-width:700px){.v4i-fl-lbh{display:none}.v4i-fl-lb img{max-width:100vw;max-height:78vh;border-radius:0}.v4i-fl-lbc{bottom:1rem;max-width:calc(100vw - 2.5rem)}.v4i-fl-lbn{width:2.4rem;height:2.4rem;top:auto;bottom:4rem;transform:none}.v4i-fl-lbp{left:auto;right:4.2rem}.v4i-fl-lbnx{right:1rem}}
+.v4i-fl-ov .v4i-fl-an use{transition:opacity .3s var(--ease)}
+.v4i-fl-ov .v4i-fl-an.is-hot use{filter:drop-shadow(0 0 2px rgba(255,117,23,.95)) drop-shadow(0 0 6px rgba(255,117,23,.6))}
+.v4i-fl-ab{position:absolute;left:0;top:0;width:30px;height:30px;margin:-15px 0 0 -15px;background:none;border:0;padding:0;border-radius:50%;pointer-events:auto;cursor:pointer}
+.v4i-fl-ab:focus-visible{outline:1px solid var(--orange);outline-offset:2px}
+.v4i-fl-ab[hidden]{display:none}
+.v4i-fl .v4i-fl-map.is-hand,.v4i-fl.is-free .v4i-fl-map.is-hand{cursor:pointer}
+.v4i-fl.is-tracked .v4i-fl-ab{opacity:0;pointer-events:none}
+.v4i-fl-dg .v4i-fl-dl{grid-column:1/-1;margin:.3rem 0 0;max-width:64ch;padding-top:.9rem;border-top:1px solid rgba(255,255,255,.08);font-size:var(--fs-body-s);color:var(--gray-light);line-height:1.6}
+.v4i-fl-dg .v4i-fl-dl b{display:flex;align-items:center;gap:.45rem;margin:0 0 .35rem;font-family:var(--font-mono);font-weight:400;font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;color:var(--white)}
+.v4i-fl-dg .v4i-fl-dl b svg{width:1.3rem;height:1.3rem;flex:none}
+@media (prefers-reduced-motion:reduce){.v4i-fl-ov .v4i-fl-an use{transition:none}}
 @media (prefers-reduced-motion:reduce){.v4i-fl-lb,.v4i-fl-lb img,.v4i-fl-lbx{transition:none}}
 .v4i-fl-hint .is-short{display:none}
 @media (max-width:700px){.v4i-fl-ctl{top:4.6rem;right:var(--gutter);padding:.55rem .8rem;font-size:var(--fs-micro)}.v4i-fl-hint{bottom:13.6rem;left:var(--gutter);right:var(--gutter);transform:none;white-space:normal;text-align:center;font-size:10px;line-height:1.5}.v4i-fl.is-free .v4i-fl-hint{top:auto;bottom:13.6rem;left:var(--gutter);transform:none}.v4i-fl-hint .is-long{display:none}.v4i-fl-hint .is-short{display:inline}.v4i-fl-mk{width:34px;height:34px;margin:-17px 0 0 -17px}
@@ -287,6 +302,20 @@ CSS = r"""
 .v4i-fl-tks{top:9.8rem;left:var(--gutter);right:3.2rem;max-width:none}
 .v4i-fl.is-free .v4i-fl-hint{top:auto;bottom:auto;left:var(--gutter);right:3.2rem;transform:none;display:none}
 .v4i-fl-tcard{bottom:5.2rem;width:calc(100% - 2 * var(--gutter));padding:.8rem .9rem .9rem}.v4i-fl-tcard .v4i-fl-tg{gap:.45rem}.v4i-fl-tcard .v4i-fl-tg b{font-size:1.1rem}.v4i-fl-tcard .v4i-fl-tkm b{font-size:1.7rem}.v4i-fl-tcard .v4i-fl-tg span{font-size:9px;letter-spacing:.04em}.v4i-fl-tcard .v4i-fl-td{display:none}.v4i-fl-lm{height:32px;margin-top:-16px}}
+/* a flight chosen: the ground, the line and its figures, nothing else; the figures as a strip along the bottom */
+.v4i-fl.is-tracked .v4i-fl-head,.v4i-fl.is-tracked .v4i-fl-tks,.v4i-fl.is-tracked .v4i-fl-btns,.v4i-fl.is-tracked .v4i-fl-hint,.v4i-fl.is-tracked .v4i-fl-read,.v4i-fl.is-tracked .v4i-fl-ov,.v4i-fl.is-tracked .v4i-fl-ctl,.v4i-fl.is-tracked .v4i-fl-mk,.v4i-fl.is-tracked .v4i-fl-lm,.v4i-fl.is-tracked .v4i-fl-skip,.v4i-fl.is-tracked .v4i-fl-lead{opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.v4i-fl.is-tracked .v4i-fl-tp:not(.is-on){display:none}
+.v4i-fl.is-tracked .v4i-fl-tcard{left:0;right:0;bottom:0;width:auto;max-width:none;background:linear-gradient(to top,rgba(20,21,25,.94) 55%,rgba(20,21,25,0));box-shadow:none;border-radius:0;padding:2.4rem var(--gutter) 1.2rem;display:flex;align-items:baseline;gap:1.4rem 2rem;flex-wrap:wrap}
+.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-th{display:flex;align-items:baseline;gap:.8rem;padding:0}
+.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-td{display:inline;margin:0}
+.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tg{display:flex;flex-wrap:wrap;gap:.6rem 1.8rem;margin:0}
+.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tg > div{display:flex;align-items:baseline;gap:.45rem}
+.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tkm{border:0;padding:0;margin:0}
+.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tg b,.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tkm b{font-size:1.3rem;margin:0;line-height:1}
+.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tg span{display:inline;white-space:nowrap}
+.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tnote{flex-basis:100%;margin:0;opacity:.8;order:5}
+.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tx{position:static;margin-left:auto;align-self:center;order:4}
+@media (max-width:700px){.v4i-fl.is-tracked .v4i-fl-tcard{bottom:4.9rem;padding:1.6rem var(--gutter) .6rem;gap:.7rem 1.2rem}.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tg{gap:.5rem 1.1rem}.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tg b,.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tkm b{font-size:1.1rem}.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-td{display:inline}.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tnote{display:none}}
 /* the quiet row after it */
 .dst-sec.v4i-fl-row{padding-top:var(--sp-section);padding-bottom:var(--sp-section)}
 .v4i-fl-row .dst-head{margin-bottom:var(--sp-4)}
@@ -383,7 +412,7 @@ def build():
     for cd in card_data:
         cd["c"] = [code for code, label in PINS if label == cd["p"]][0]
     data = {"grid": dem["grid"], "textures": dem["textures"], "keys": dem["keys"], "per_leg": dem["per_leg"], "bounds": dem["bounds"],
-            "light": dem["light"], "waypoints": dem["waypoints"], "chapter": LEG_CHAPTER, "cards": card_data, "farKm": 42, "phonePins": PHONE_PINS,
+            "light": dem["light"], "waypoints": dem["waypoints"], "chapter": LEG_CHAPTER, "cards": card_data, "farKm": 42, "phonePins": PHONE_PINS, "edge_fade": 0.04,
             "tracks": [{"name": t["name"], "date": t["date"], "distance_km": t["distance_km"], "duration_min": t["duration_min"], "avg_kmh": t["avg_kmh"],
                         "max_alt_m": t["max_alt_m"], "type": t["type"], "closed": t["closed"], "points": t["points"], "ground_km": t["ground_km"],
                         "off_map": t["off_map"], "route": t["route"], "segs": t["segs"]} for t in tracks]}
