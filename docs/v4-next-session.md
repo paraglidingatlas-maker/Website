@@ -54,9 +54,9 @@ section). What is open:
 - The home page (roadmap step 6): built on 21 Oct, both directions the
   owner chose ("both A&B", report row 46): figures under the opening that
   count up, every departure on one line of months, the held photographs that
-  come closer, the episode cards that lean towards the mouse (made stronger
-  at the owner's word; the trip list's orange fill was taken out, "remove
-  this"). All in `tools/v4_polish.py` (HOME_CSS, HOME_JS, `home_markup`,
+  come closer, the episode cards that lean gently towards the mouse (a
+  stronger lean was tried and turned back by the owner; the trip list's
+  orange fill was taken out, "remove this"). All in `tools/v4_polish.py` (HOME_CSS, HOME_JS, `home_markup`,
   read from the site at each build).
 - From the 20 Oct roadmap, still open: icons to photographs (step 7,
   waiting for the owner's photographs; on About the owner chose to keep the

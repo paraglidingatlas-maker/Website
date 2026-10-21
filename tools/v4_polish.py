@@ -823,16 +823,14 @@ HOME_CSS = (
     "html.v4-tld .v4-tl li b{transform:scaleX(0);transition:transform .9s var(--ease)}"
     "html.v4-tld .v4-tl li span{opacity:0;transition:opacity .6s var(--ease)}"
     "html.v4-tld .v4-tl.is-in li b{transform:none}html.v4-tld .v4-tl.is-in li span{opacity:1}"
-    # A: the episode cards lean towards the mouse, lift, cast a shadow away from it and catch a light where it is
-    # (owner, 21 Oct, of the first, gentler lean: "cant notice")
-    "html.v4-tilt .v2-rail .ep-card .ep-art{transform:perspective(700px) translateY(var(--ty,0px)) scale(var(--sc,1)) "
-    "rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .7s var(--ease),box-shadow .5s var(--ease)}"
-    "html.v4-tilt .v2-rail .ep-card .ep-art.v4-lean{--ty:-2px;--sc:1.03;transition:transform .12s linear,box-shadow .3s var(--ease);"
-    "box-shadow:var(--sx,0px) var(--sy,22px) 44px -14px color-mix(in srgb,var(--bg) 92%,transparent)}"
+    # A: the episode cards lean towards the mouse with a soft light where it is
+    "html.v4-tilt .v2-rail .ep-card .ep-art{transform:perspective(800px) translateY(var(--ty,0px)) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));"
+    "transition:transform .6s var(--ease)}"
+    "html.v4-tilt .v2-rail .ep-card:is(:hover,:focus-visible) .ep-art{--ty:-4px;transition:transform .18s var(--ease)}"
     "html.v4-tilt .v2-rail .ep-card .ep-art::after{content:\"\";position:absolute;inset:0;pointer-events:none;opacity:0;z-index:3;"
-    "background:radial-gradient(55% 55% at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--white) 32%,transparent),"
-    "color-mix(in srgb,var(--white) 6%,transparent) 45%,transparent 75%);transition:opacity .4s var(--ease)}"
-    "html.v4-tilt .v2-rail .ep-card .ep-art.v4-lean::after{opacity:1}"
+    "background:radial-gradient(60% 60% at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--white) 14%,transparent),transparent 70%);"
+    "transition:opacity .4s var(--ease)}"
+    "html.v4-tilt .v2-rail .ep-card:hover .ep-art::after{opacity:1}"
 )
 HOME_JS = r"""(function () {
   var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches, html = document.documentElement;
@@ -879,28 +877,23 @@ HOME_JS = r"""(function () {
       window.addEventListener('resize', function () { if (!raf) raf = requestAnimationFrame(tick); });
       tick();
     }
-    /* A. the episode cards lean towards the mouse; read again each frame while the mouse is on one, so a card
-       drifting along the rail under a still mouse keeps leaning towards it */
+    /* A. the episode cards lean towards the mouse, with a soft light on them */
     if (still || !(window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches)) return;
     html.classList.add('v4-tilt');
-    var px = -1, py = -1, on = null, loop = 0;
-    var lean = function () {
-      loop = 0;
-      var el = px < 0 ? null : document.elementFromPoint(px, py), c = el && el.closest && el.closest('.v2-rail .ep-card'), s = c && c.querySelector('.ep-art');
-      if (on && on !== s) { on.classList.remove('v4-lean'); on.style.removeProperty('--rx'); on.style.removeProperty('--ry'); }
-      on = s || null; if (!s) return;
-      var r = s.getBoundingClientRect(), x = Math.min(1, Math.max(0, (px - r.left) / r.width)), y = Math.min(1, Math.max(0, (py - r.top) / r.height));
-      s.classList.add('v4-lean');
-      s.style.setProperty('--ry', ((x - 0.5) * 22).toFixed(2) + 'deg'); s.style.setProperty('--rx', ((0.5 - y) * 16).toFixed(2) + 'deg');
-      s.style.setProperty('--sx', ((0.5 - x) * 28).toFixed(1) + 'px'); s.style.setProperty('--sy', (14 + (0.5 - y) * 20).toFixed(1) + 'px');
-      s.style.setProperty('--mx', (x * 100).toFixed(1) + '%'); s.style.setProperty('--my', (y * 100).toFixed(1) + '%');
-      loop = requestAnimationFrame(lean);
-    };
     document.addEventListener('pointermove', function (e) {
       if (e.pointerType !== 'mouse') return;
-      px = e.clientX; py = e.clientY; if (!loop) loop = requestAnimationFrame(lean);
+      var c = e.target.closest && e.target.closest('.v2-rail .ep-card'); if (!c) return;
+      var s = c.querySelector('.ep-art'); if (!s) return;
+      var r = s.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      if (x < 0 || x > 1 || y < 0 || y > 1) return;
+      s.style.setProperty('--ry', ((x - 0.5) * 10).toFixed(2) + 'deg'); s.style.setProperty('--rx', ((0.5 - y) * 8).toFixed(2) + 'deg');
+      s.style.setProperty('--mx', (x * 100).toFixed(1) + '%'); s.style.setProperty('--my', (y * 100).toFixed(1) + '%');
     }, { passive: true });
-    document.addEventListener('mouseout', function (e) { if (!e.relatedTarget) { px = -1; if (!loop) loop = requestAnimationFrame(lean); } });
+    document.addEventListener('pointerout', function (e) {
+      var c = e.target.closest && e.target.closest('.v2-rail .ep-card');
+      if (!c || (e.relatedTarget && c.contains(e.relatedTarget))) return;
+      var s = c.querySelector('.ep-art'); if (s) { s.style.removeProperty('--rx'); s.style.removeProperty('--ry'); }
+    });
   });
 })();"""
 HFIG = ("<!--v4p:fig-->", "<!--/v4p:fig-->")
