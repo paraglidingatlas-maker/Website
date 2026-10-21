@@ -1,0 +1,370 @@
+{
+ "source": "BirIndia.cup from github.com/cyberorg/xcleague (gh-pages), the Indian paragliding XC League's Bir waypoint file; names as pilots use them",
+ "fetched": "2026-10-21",
+ "points": [
+  {
+   "code": "A01",
+   "name": "Desc 45",
+   "lat": 32.04033,
+   "lon": 76.70933,
+   "elev": 1400.0
+  },
+  {
+   "code": "A02",
+   "name": "goal palampur",
+   "lat": 32.10167,
+   "lon": 76.548,
+   "elev": 1280.0
+  },
+  {
+   "code": "A03",
+   "name": "goal dharamsala",
+   "lat": 32.204,
+   "lon": 76.324,
+   "elev": 1220.0
+  },
+  {
+   "code": "B01",
+   "name": "billing upper ridge",
+   "lat": 32.06517,
+   "lon": 76.75333,
+   "elev": 2660.0
+  },
+  {
+   "code": "B02",
+   "name": "first rige",
+   "lat": 32.06517,
+   "lon": 76.72683,
+   "elev": 2180.0
+  },
+  {
+   "code": "B03",
+   "name": "sansal",
+   "lat": 32.06583,
+   "lon": 76.697,
+   "elev": 1360.0
+  },
+  {
+   "code": "B04",
+   "name": "red roof temple",
+   "lat": 32.086,
+   "lon": 76.69867,
+   "elev": 2100.0
+  },
+  {
+   "code": "B05",
+   "name": "golf course",
+   "lat": 32.09383,
+   "lon": 76.70433,
+   "elev": 2290.0
+  },
+  {
+   "code": "B06",
+   "name": "Thatwal Thati",
+   "lat": 32.10383,
+   "lon": 76.7175,
+   "elev": 2620.0
+  },
+  {
+   "code": "B07",
+   "name": "waldo peak",
+   "lat": 32.14483,
+   "lon": 76.7145,
+   "elev": 3470.0
+  },
+  {
+   "code": "B08",
+   "name": "dam ridge",
+   "lat": 32.11217,
+   "lon": 76.66017,
+   "elev": 1680.0
+  },
+  {
+   "code": "B09",
+   "name": "mills peak",
+   "lat": 32.18417,
+   "lon": 76.652,
+   "elev": 4140.0
+  },
+  {
+   "code": "B10",
+   "name": "big face centre",
+   "lat": 32.12017,
+   "lon": 76.6365,
+   "elev": 2070.0
+  },
+  {
+   "code": "B11",
+   "name": "top of big face",
+   "lat": 32.14483,
+   "lon": 76.62617,
+   "elev": 3190.0
+  },
+  {
+   "code": "B12",
+   "name": "tashijong ridge",
+   "lat": 32.08917,
+   "lon": 76.62833,
+   "elev": 1510.0
+  },
+  {
+   "code": "B13",
+   "name": "small temple",
+   "lat": 32.132,
+   "lon": 76.59283,
+   "elev": 2160.0
+  },
+  {
+   "code": "B14",
+   "name": "palampur ridge",
+   "lat": 32.14683,
+   "lon": 76.56333,
+   "elev": 2240.0
+  },
+  {
+   "code": "B15",
+   "name": "palampur hill",
+   "lat": 32.13883,
+   "lon": 76.50883,
+   "elev": 1720.0
+  },
+  {
+   "code": "B16",
+   "name": "sheperd camp",
+   "lat": 32.17433,
+   "lon": 76.53,
+   "elev": 2660.0
+  },
+  {
+   "code": "B17",
+   "name": "hobbiton",
+   "lat": 32.17283,
+   "lon": 76.48983,
+   "elev": 2400.0
+  },
+  {
+   "code": "B18",
+   "name": "gopalpur",
+   "lat": 32.1415,
+   "lon": 76.459,
+   "elev": 1320.0
+  },
+  {
+   "code": "B19",
+   "name": "chamunda devi temple",
+   "lat": 32.19233,
+   "lon": 76.45067,
+   "elev": 2780.0
+  },
+  {
+   "code": "B20",
+   "name": "stone quarry",
+   "lat": 32.20583,
+   "lon": 76.40317,
+   "elev": 2130.0
+  },
+  {
+   "code": "B21",
+   "name": "last ridge",
+   "lat": 32.2385,
+   "lon": 76.38333,
+   "elev": 2700.0
+  },
+  {
+   "code": "B22",
+   "name": "triund",
+   "lat": 32.259,
+   "lon": 76.35533,
+   "elev": 2780.0
+  },
+  {
+   "code": "B23",
+   "name": "Dharamsala",
+   "lat": 32.25133,
+   "lon": 76.31667,
+   "elev": 2170.0
+  },
+  {
+   "code": "B24",
+   "name": "past Dharamsala 1",
+   "lat": 32.29383,
+   "lon": 76.27733,
+   "elev": 2610.0
+  },
+  {
+   "code": "B25",
+   "name": "past dharamsala 2",
+   "lat": 32.32183,
+   "lon": 76.227,
+   "elev": 2950.0
+  },
+  {
+   "code": "B26",
+   "name": "DH cricket stadium",
+   "lat": 32.19783,
+   "lon": 76.326,
+   "elev": 1160.0
+  },
+  {
+   "code": "B27",
+   "name": "antenna",
+   "lat": 32.01983,
+   "lon": 76.69283,
+   "elev": 1450.0
+  },
+  {
+   "code": "B28",
+   "name": "mangroli takeoff",
+   "lat": 31.985,
+   "lon": 76.71917,
+   "elev": 1480.0
+  },
+  {
+   "code": "B29",
+   "name": "chauntra monastery",
+   "lat": 32.00683,
+   "lon": 76.74033,
+   "elev": 1210.0
+  },
+  {
+   "code": "B30",
+   "name": "1st spur east",
+   "lat": 32.03783,
+   "lon": 76.7655,
+   "elev": 2240.0
+  },
+  {
+   "code": "B31",
+   "name": "2nd spur east",
+   "lat": 32.03717,
+   "lon": 76.79083,
+   "elev": 2450.0
+  },
+  {
+   "code": "B32",
+   "name": "Dohag",
+   "lat": 31.99933,
+   "lon": 76.76817,
+   "elev": 1080.0
+  },
+  {
+   "code": "B33",
+   "name": "3rd spur east",
+   "lat": 32.02117,
+   "lon": 76.79983,
+   "elev": 2070.0
+  },
+  {
+   "code": "B34",
+   "name": "jnagar train station",
+   "lat": 32.013,
+   "lon": 76.8255,
+   "elev": 2420.0
+  },
+  {
+   "code": "B35",
+   "name": "cricket pitch",
+   "lat": 31.9885,
+   "lon": 76.81217,
+   "elev": 1320.0
+  },
+  {
+   "code": "B36",
+   "name": "mandi ridge 1",
+   "lat": 31.99517,
+   "lon": 76.84783,
+   "elev": 2320.0
+  },
+  {
+   "code": "B37",
+   "name": "pond",
+   "lat": 31.98683,
+   "lon": 76.858,
+   "elev": 2340.0
+  },
+  {
+   "code": "B38",
+   "name": "xaviers 360",
+   "lat": 31.97617,
+   "lon": 76.8675,
+   "elev": 2260.0
+  },
+  {
+   "code": "B39",
+   "name": "jnagar out",
+   "lat": 31.97383,
+   "lon": 76.81317,
+   "elev": 1520.0
+  },
+  {
+   "code": "B40",
+   "name": "barot pass",
+   "lat": 31.94917,
+   "lon": 76.88217,
+   "elev": 2050.0
+  },
+  {
+   "code": "B41",
+   "name": "twin peaks",
+   "lat": 31.91483,
+   "lon": 76.90633,
+   "elev": 2090.0
+  },
+  {
+   "code": "B42",
+   "name": "dyna park",
+   "lat": 31.882,
+   "lon": 76.93717,
+   "elev": 1910.0
+  },
+  {
+   "code": "B43",
+   "name": "drang",
+   "lat": 31.82517,
+   "lon": 76.95717,
+   "elev": 1670.0
+  },
+  {
+   "code": "B44",
+   "name": "mandi top",
+   "lat": 31.73867,
+   "lon": 76.967,
+   "elev": 1750.0
+  },
+  {
+   "code": "B45",
+   "name": "Andreta",
+   "lat": 32.03767,
+   "lon": 76.56983,
+   "elev": 990.0
+  },
+  {
+   "code": "B46",
+   "name": "Palampur",
+   "lat": 32.1085,
+   "lon": 76.52967,
+   "elev": 1230.0
+  },
+  {
+   "code": "B47",
+   "name": "baijnathish",
+   "lat": 32.05133,
+   "lon": 76.64433,
+   "elev": 990.0
+  },
+  {
+   "code": "B48",
+   "name": "Nagehr Gabli",
+   "lat": 31.98833,
+   "lon": 76.659,
+   "elev": 830.0
+  },
+  {
+   "code": "D01",
+   "name": "Biling",
+   "lat": 32.0565,
+   "lon": 76.74333,
+   "elev": 2350.0
+  }
+ ]
+}

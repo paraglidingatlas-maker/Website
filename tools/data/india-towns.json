@@ -1,0 +1,149 @@
+{
+ "source": "Town positions from GeoNames (cities500, CC BY 4.0, https://www.geonames.org/) via the lmfmaier/cities-json mirror on GitHub; elevation read from the terrain grid",
+ "towns": {
+  "T01": {
+   "label": "Mandi",
+   "lat": 31.71194,
+   "lon": 76.93273,
+   "pop": 28217,
+   "geonames_id": 1263862,
+   "px": [
+    2770.8,
+    2999.6
+   ],
+   "elev": 757.0
+  },
+  "T02": {
+   "label": "Kangra",
+   "lat": 32.09135,
+   "lon": 76.26267,
+   "pop": 9528,
+   "geonames_id": 1268084,
+   "px": [
+    819.1,
+    1697.8
+   ],
+   "elev": 695.0
+  },
+  "T03": {
+   "label": "Kullu",
+   "lat": 31.95835,
+   "lon": 77.10823,
+   "pop": 19831,
+   "geonames_id": 1265709,
+   "px": [
+    3282.0,
+    2154.8
+   ],
+   "elev": 1244.0
+  },
+  "T04": {
+   "label": "Jogindernagar",
+   "lat": 31.98727,
+   "lon": 76.78906,
+   "pop": 5335,
+   "geonames_id": 1268849,
+   "px": [
+    2352.3,
+    2055.5
+   ],
+   "elev": 1172.0
+  },
+  "T05": {
+   "label": "Manali",
+   "lat": 32.2574,
+   "lon": 77.17481,
+   "pop": 8096,
+   "geonames_id": 1263967,
+   "px": [
+    3475.9,
+    1126.4
+   ],
+   "elev": 2118.0
+  },
+  "T06": {
+   "label": "Chamba",
+   "lat": 32.55531,
+   "lon": 76.12647,
+   "pop": 21502,
+   "geonames_id": 1274848,
+   "px": [
+    422.4,
+    98.6
+   ],
+   "elev": 949.0
+  },
+  "T07": {
+   "label": "Bhuntar",
+   "lat": 31.86,
+   "lon": 77.15,
+   "pop": 4475,
+   "geonames_id": 9645432,
+   "px": [
+    3403.7,
+    2492.2
+   ],
+   "elev": 1186.0
+  },
+  "T08": {
+   "label": "Nagrota Bagwan",
+   "lat": 32.10721,
+   "lon": 76.37657,
+   "pop": 5900,
+   "geonames_id": 1266855,
+   "px": [
+    1150.9,
+    1643.3
+   ],
+   "elev": 860.0
+  },
+  "T09": {
+   "label": "Sujanpur Tira",
+   "lat": 31.83364,
+   "lon": 76.50539,
+   "pop": 7943,
+   "geonames_id": 1254415,
+   "px": [
+    1526.1,
+    2582.6
+   ],
+   "elev": 564.0
+  },
+  "T10": {
+   "label": "Jawalamukhi",
+   "lat": 31.87456,
+   "lon": 76.32013,
+   "pop": 5361,
+   "geonames_id": 1269119,
+   "px": [
+    986.5,
+    2442.3
+   ],
+   "elev": 522.0
+  },
+  "T11": {
+   "label": "Nadaun",
+   "lat": 31.78303,
+   "lon": 76.3431,
+   "pop": 4838,
+   "geonames_id": 1262300,
+   "px": [
+    1053.4,
+    2756.1
+   ],
+   "elev": 480.0
+  },
+  "T12": {
+   "label": "Naggar",
+   "lat": 32.13808,
+   "lon": 77.17393,
+   "pop": 2000,
+   "geonames_id": 1262252,
+   "px": [
+    3473.4,
+    1537.1
+   ],
+   "elev": 1690.0
+  }
+ }
+}

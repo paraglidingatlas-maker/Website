@@ -1,0 +1,72 @@
+{
+"source": "The descriptions are written from published sources and kept to what they agree on. The photographs are fetched from Wikimedia Commons by tools/fetch_landmarks.py, which keeps only files under CC0, public domain, CC BY or CC BY-SA terms and records each file's author and licence in tools/data/india-landmarks-credits.json; the page names them under the pictures.",
+"places": {
+"B26": {
+"title": "The cricket ground at Dharamshala",
+"blurb": "The Himachal Pradesh Cricket Association's ground sits at about 1,457 m on the edge of Dharamshala, with the Dhauladhar straight behind the stands. It was built in 2002 and 2003, saw its first one-day international in January 2013 and its first Test match in March 2017.",
+"files": [],
+"category": "Himachal_Pradesh_Cricket_Association_Stadium",
+"search": "HPCA stadium Dharamsala"
+},
+"B22": {
+"title": "Triund",
+"blurb": "A grass ridge at about 2,825 m above McLeod Ganj, a day's walk up from McLeod Ganj or Dharamkot. The Dhauladhar peaks rise directly behind it, and the trail to the Indrahar pass carries on from here.",
+"files": [
+"Triund_2@ashu.jpg",
+"Triund_1@ashu.jpg"
+],
+"category": "Triund",
+"search": "Triund Dhauladhar"
+},
+"B19": {
+"title": "Adi Himani Chamunda",
+"blurb": "The old seat of the goddess Chamunda, high on the Dhauladhar ridge at about 2,800 m, with the snow peaks straight behind it. The better known Chamunda Devi temple on the Baner river below, west of Palampur, is the newer of the two.",
+"files": [],
+"category": "",
+"search": ""
+},
+"B47": {
+"title": "Baijnath temple",
+"blurb": "A stone temple to Shiva as Vaidyanath, the lord of physicians, raised in 1204 by two merchants, Ahuka and Manyuka, in the Nagara style of the north. It is a protected monument of the Archaeological Survey of India.",
+"files": [],
+"category": "Baijnath_Temple,_Himachal_Pradesh",
+"search": "Baijnath temple Himachal Pradesh"
+},
+"B46": {
+"title": "Palampur",
+"blurb": "The tea town of the Kangra valley. Tea was first planted here in 1849; Kangra tea won medals at exhibitions in the 1880s and 1890s, the earthquake of 1905 set the gardens back, and in 2005 it was given a geographical indication of its own.",
+"files": [
+"Tea_garden_at_Nagri_in_the_Kangra_Valley_of_Himachal_Pradesh,_India.jpg",
+"Dhauldhar_through_the_Canopy.jpg"
+],
+"category": "Tea_gardens_in_Palampur",
+"search": "Palampur tea garden Dhauladhar"
+},
+"B29": {
+"title": "Chauntra monastery",
+"blurb": "The Dzongsar Khyentse Chökyi Lodrö Institute, a Buddhist college on the hillside at Chauntra a few kilometres south-east of Bir. Its present campus opened in 2004 and is home to several hundred monks.",
+"files": [
+"Dzongser_Khyentse_Monastery_at_Chauntra.jpg"
+],
+"category": "",
+"search": "Dzongsar Khyentse Chauntra"
+},
+"B40": {
+"title": "Barot",
+"blurb": "The pass drops into the Uhl valley at Barot, where a diversion dam was built in 1932 for the Shanan hydroelectric scheme opened the following year, one of the first in these hills. The Uhl is known for its trout.",
+"files": [
+"Uhl_River_at_Barot_Oct_2017_D72_2280.jpg",
+"Uhl_above_Barot_towards_Billing_Oct_2017_D72_2280_01.jpg"
+],
+"category": "Barot",
+"search": "Barot Uhl river"
+},
+"B23": {
+"title": "Dharamshala and McLeod Ganj",
+"blurb": "McLeod Ganj, on the ridge above Dharamshala, has been the seat of the Dalai Lama and of the Central Tibetan Administration since 1960. The Tsuglagkhang complex holds his residence and the main temple.",
+"files": [],
+"category": "Tsuglagkhang_Complex",
+"search": "McLeod Ganj Dharamsala view"
+}
+}
+}
