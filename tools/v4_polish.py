@@ -922,9 +922,12 @@ def corrections():
         if rel.startswith(("samples/", "src/")) or re.match(r"(record-|expeditions)", rel):
             continue
         html = open(p, encoding="utf-8").read()
-        out = html
+        # the page's own words only: the head (description, og:description) must stay the live page's (the switch-over checks it)
+        cut = html.find("</head>") + 1 if "</head>" in html else 0
+        body = html[cut:]
         for a, b in TEXT_FIXES:
-            out = out.replace(a, b)
+            body = body.replace(a, b)
+        out = html[:cut] + body
         if rel == "tags.html" or rel.startswith("tags/"):
             out = transcripts(rel, out)
         if rel == "about.html":
