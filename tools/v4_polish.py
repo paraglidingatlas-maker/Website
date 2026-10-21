@@ -27,7 +27,10 @@ were. Rewritten whole each run, so the pass is idempotent.
   - library (owner's roadmap, step 2, 20 Oct 2026): the opening's chart
     arrives once and settles (the bars grow from the baseline, the dots
     settle on them, then the longest episode's marker and its guide draw)
-    and drifts up more slowly than the page as the opening scrolls away; on
+    and drifts up more slowly than the page as the opening scrolls away
+    (never further than the room under it in the opening, so it never runs
+    over the next section; fixed 21 Oct after the review found it did on a
+    phone); on
     a desktop the series tiles lean towards the mouse in 3D with a soft light
     where it is, and glide back level. The tiles' drawings draw themselves in
     as before (v2-immersive.js). Reduced motion: the page as it was. Arriving
@@ -188,13 +191,23 @@ LIB_JS = r"""(function () {
   html.classList.add('v4-grow');
   function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
   ready(function () {
-    /* the chart drifts up more slowly than the page as the opening scrolls away */
-    var chart = document.querySelector('.dk-tg-library'), raf = 0;
+    /* the chart drifts up more slowly than the page as the opening scrolls away, never further than the room
+       left under it in the opening, so it never runs over the next section's heading (on a phone that room is
+       small and the chart barely moves) */
+    var chart = document.querySelector('.dk-tg-library'), box = chart && (chart.closest('header, section') || chart.parentNode);
+    var raf = 0, cur = 0, room = 0;
+    function measure() {
+      if (!chart) return;
+      room = Math.max(0, box.getBoundingClientRect().bottom - (chart.getBoundingClientRect().bottom - cur) - 8);
+    }
     function tick() {
       raf = 0; if (!chart) return;
-      var y = Math.min(window.scrollY, window.innerHeight);
-      chart.style.transform = 'translate3d(0,' + (y * 0.22).toFixed(1) + 'px,0)';
+      cur = Math.min(Math.min(window.scrollY, window.innerHeight) * 0.22, room);
+      chart.style.transform = 'translate3d(0,' + cur.toFixed(1) + 'px,0)';
     }
+    measure();
+    window.addEventListener('load', function () { measure(); tick(); });
+    window.addEventListener('resize', function () { measure(); if (!raf) raf = requestAnimationFrame(tick); });
     window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
     /* the series tiles lean towards the mouse, with a soft light on them */
     if (!(window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches)) return;
