@@ -80,8 +80,9 @@ section). What is open:
   checked. On the home page too, later, if the owner wants it there.
 - **The sitemap's ground** (21 Oct, report row 49): every page that is not an
   episode, one click away under the sky (`tools/v4_sitemap_sky.py` ground()).
-  The owner also heard of a richer sky (the trips as planets over the ridge,
-  the topics as a Milky Way, the answers as stars): not built.
+  The landmarks followed (row 52): Home as the moon, the Atlas, the
+  knowledge base's altitude scale, the trips as planets over the ridge and
+  the named stars. Not built: the topics as a Milky Way.
 - From the 20 Oct roadmap, still open: icons to photographs (step 7,
   waiting for the owner's photographs; on About the owner chose to keep the
   icons).

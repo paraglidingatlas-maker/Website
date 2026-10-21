@@ -48,6 +48,16 @@ base and its five levels, the encyclopedia's Atlas and A to Z), About (with the 
 then rows of the 13 series, the topics and the ten answers in depth. The script leaves a ground it
 finds written (one patched line). The encyclopedia and the record page are prototype-only, so their
 links sit between v4:needs marks and the switch-over leaves them out until the owner's go.
+
+The landmarks (owner, 21 Oct, of the two ways to show the rest of the site in the sky: "A. Landmarks in the
+same sky"): the episode constellations stay as they are, and the main parts of the site join them as named,
+clickable bodies in a frame that stays still while the sky moves, as a planetarium's horizon does: Home as
+the moon and the encyclopedia's Atlas as a small globe, top right; the knowledge base's five levels as an
+altitude scale up the left edge (600 m to 4,000 m, as on its page); and under the sky a horizon where the
+four trips rise as planets over the mountain line, each with its own photograph, and About, Mission,
+Partners and the Speed Record shine as named stars. Every word, picture and link is the page's own data
+(the SITEMAP_SKY tree, the knowledge base's levels, the A to Z's count). Hover only; still with reduced
+motion. Between <!--v4marks:...--> marks, written whole each run.
 """
 import hashlib
 import html as H_
@@ -272,6 +282,123 @@ def ground(page):
     return out
 
 
+MARKS_SKY = ("<!--v4marks:sky-->", "<!--/v4marks:sky-->")
+MARKS_BAND = ("<!--v4marks:band-->", "<!--/v4marks:band-->")
+MARKS_CSS = (
+    ".sky-mk{position:absolute;z-index:4;display:flex;gap:clamp(1rem,2.4vw,2rem);align-items:flex-start;"
+    "top:clamp(1.2rem,2.4vw,2rem);right:clamp(1.5rem,5vw,4rem)}"
+    ".sky-mk a,.sky-hz a,.sky-alt-sc a{color:inherit;text-decoration:none}"
+    ".sky-mk a{display:flex;flex-direction:column;align-items:center;gap:.5rem;text-align:center}"
+    ".sky-mk b,.sky-hz b{font-family:var(--font-display);font-weight:600;font-size:.95rem;color:var(--white);line-height:1.2}"
+    ".sky-mk small,.sky-hz small{display:block;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-light);margin-top:.15rem}"
+    ".sky-moon-o{width:84px;height:84px;border-radius:50%;position:relative;"
+    "background:radial-gradient(circle at 36% 32%,var(--white) 0,color-mix(in srgb,var(--white) 82%,var(--gray)) 46%,color-mix(in srgb,var(--gray) 80%,var(--bg)) 100%);"
+    "box-shadow:0 0 46px 10px color-mix(in srgb,var(--white) 16%,transparent),inset -12px -9px 24px color-mix(in srgb,var(--bg) 42%,transparent);"
+    "transition:transform .45s var(--ease),box-shadow .45s var(--ease)}"
+    ".sky-moon-o::before,.sky-moon-o::after{content:\"\";position:absolute;border-radius:50%;background:color-mix(in srgb,var(--gray) 45%,transparent)}"
+    ".sky-moon-o::before{width:16px;height:16px;left:46px;top:20px}.sky-moon-o::after{width:10px;height:10px;left:24px;top:50px}"
+    ".sky-atlas-o{width:62px;height:62px;margin-top:11px;transition:transform .45s var(--ease)}"
+    ".sky-atlas-o circle.g{fill:var(--bg);stroke:var(--edge-hi)}.sky-atlas-o .m{fill:none;stroke:var(--edge);stroke-width:1}"
+    ".sky-atlas-o .p{fill:var(--orange)}"
+    ".sky-mk a:is(:hover,:focus-visible) .sky-moon-o{transform:scale(1.06);box-shadow:0 0 64px 16px color-mix(in srgb,var(--white) 24%,transparent),inset -12px -9px 24px color-mix(in srgb,var(--bg) 42%,transparent)}"
+    ".sky-mk a:is(:hover,:focus-visible) .sky-atlas-o{transform:scale(1.1) rotate(-8deg)}"
+    ".sky-mk a:is(:hover,:focus-visible) b,.sky-hz a:is(:hover,:focus-visible) b,.sky-alt-sc a:is(:hover,:focus-visible) b{color:var(--orange)}"
+    # the knowledge base's levels, an altitude scale up the left edge
+    ".sky-alt-sc{position:absolute;z-index:4;left:clamp(.6rem,1.6vw,1.4rem);top:30%;bottom:16%}"
+    ".sky-alt-sc ol{height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:0 0 0 .8rem;"
+    "border-left:1px solid var(--edge-hi);margin:0;list-style:none}"
+    ".sky-alt-sc li{position:relative}.sky-alt-sc li::before{content:\"\";position:absolute;left:-.8rem;top:.55rem;width:.5rem;height:1px;background:var(--edge-hi)}"
+    ".sky-alt-sc a{display:block;line-height:1.2}"
+    ".sky-alt-sc i{display:block;font-style:normal;font-size:.68rem;letter-spacing:.08em;color:var(--orange);font-variant-numeric:tabular-nums}"
+    ".sky-alt-sc b{font-size:.78rem;font-weight:500;color:var(--gray-light)}"
+    ".sky-alt-sc .top{position:absolute;top:-1.6rem;left:0;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);white-space:nowrap}"
+    # the horizon: the trips rising over the mountain line, and the named stars
+    ".sky-hz{position:relative;z-index:1;height:clamp(200px,20vw,250px);overflow:hidden;background:"
+    "radial-gradient(1px 1px at 12% 22%,color-mix(in srgb,var(--white) 55%,transparent),transparent),"
+    "radial-gradient(1px 1px at 31% 48%,color-mix(in srgb,var(--white) 40%,transparent),transparent),"
+    "radial-gradient(1px 1px at 57% 26%,color-mix(in srgb,var(--white) 50%,transparent),transparent),"
+    "radial-gradient(1px 1px at 79% 52%,color-mix(in srgb,var(--white) 35%,transparent),transparent),"
+    "radial-gradient(1px 1px at 92% 18%,color-mix(in srgb,var(--white) 45%,transparent),transparent),"
+    # the sky's glow (.sky-view: --card at the middle of its foot, --bg to the sides) goes on, mirrored, and warms towards the mountains
+    "linear-gradient(180deg,transparent 35%,color-mix(in srgb,var(--orange) 7%,transparent) 82%,color-mix(in srgb,var(--orange) 11%,transparent)),"
+    "radial-gradient(120% 90% at 50% 0%,var(--card) 0%,var(--bg) 62%)}"
+    ".sky-hz .sky-hz-k{position:absolute;z-index:2;left:50%;bottom:46px;transform:translateX(-50%);font-size:.7rem;letter-spacing:.16em;"
+    "text-transform:uppercase;color:var(--orange);white-space:nowrap}"
+    ".sky-hz ul{list-style:none;margin:0;padding:0}"
+    ".sky-pl li{position:absolute;left:var(--x);bottom:0;transform:translateX(-50%)}"
+    ".sky-pl a{display:flex;flex-direction:column;align-items:center;gap:.6rem;text-align:center}"
+    ".sky-pl .o{display:block;width:var(--r);height:var(--r);border-radius:50%;overflow:hidden;margin-bottom:calc(var(--r) * -.32);"
+    "box-shadow:0 0 0 1px color-mix(in srgb,var(--orange) 45%,transparent),0 0 34px 6px color-mix(in srgb,var(--orange) 22%,transparent);"
+    "transition:transform .5s var(--ease),box-shadow .5s var(--ease)}"
+    ".sky-pl .o img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) brightness(.9);display:block}"
+    ".sky-pl a:is(:hover,:focus-visible) .o{transform:translateY(-10px);box-shadow:0 0 0 1px var(--orange),0 0 46px 10px color-mix(in srgb,var(--orange) 34%,transparent)}"
+    ".sky-st li{position:absolute;left:var(--x);top:var(--y)}"
+    ".sky-st a{display:flex;align-items:center;gap:.55rem}"
+    ".sky-st i{display:block;width:16px;height:16px;flex:none;background:var(--white);"
+    "clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);"
+    "filter:drop-shadow(0 0 6px color-mix(in srgb,var(--white) 70%,transparent));transition:transform .4s var(--ease)}"
+    ".sky-st b{font-size:.85rem;font-weight:500}"
+    ".sky-st a:is(:hover,:focus-visible) i{transform:scale(1.5) rotate(45deg);background:var(--orange)}"
+    "@media (max-width:759px){.sky-mk{top:.8rem;left:.8rem;right:auto;gap:1rem}.sky-moon-o{width:52px;height:52px}"
+    ".sky-moon-o::before{width:10px;height:10px;left:28px;top:12px}.sky-moon-o::after{width:6px;height:6px;left:14px;top:30px}"
+    ".sky-atlas-o{width:40px;height:40px;margin-top:6px}.sky-mk b{font-size:.8rem}.sky-mk small{display:none}"
+    ".sky-alt-sc{display:none}.sky-hz{height:300px}.sky-pl li{--r:58px!important}.sky-pl small{display:none}"
+    ".sky-st li{left:var(--xs)!important;top:var(--ys)!important}"
+    ".sky-hz .sky-hz-k{left:clamp(1.25rem,5vw,2rem);bottom:104px;transform:none}}"
+    "@media (prefers-reduced-motion:reduce){.sky-moon-o,.sky-atlas-o,.sky-pl .o,.sky-st i{transition:none}}"
+)
+
+
+def landmarks(page):
+    """The landmarks (see the docstring): the frame inside .sky-view and the horizon under it."""
+    m = re.search(r"window\.SITEMAP_SKY = (\{.*?\});?\s*</script>", page, re.S)
+    tree = json.loads(m.group(1))["tree"]
+    by = {c["label"]: c for c in tree["children"]}
+    E = lambda t: H_.escape(t, quote=True)
+    kb = open(os.path.join(V4, "knowledge-base.html"), encoding="utf-8").read()
+    alts = re.findall(r'<section class="clb-station" id="lvl-\d" data-alt="([^"]+)"', kb)
+    cats = [c for c in by["Knowledge Base"]["children"] if c.get("kind") == "category"]
+    az = os.path.join(V4, "knowledge-base", "encyclopedia", "index.html")
+    n_q = None
+    if os.path.exists(az):
+        mm = re.search(r'<span><b>(\d+)</b>questions</span>', open(az, encoding="utf-8").read())
+        n_q = mm.group(1) if mm else None
+    globe = ('<svg class="sky-atlas-o" viewBox="0 0 64 64" aria-hidden="true"><circle class="g" cx="32" cy="32" r="30"/>'
+             '<ellipse class="m" cx="32" cy="32" rx="12" ry="30"/><ellipse class="m" cx="32" cy="32" rx="24" ry="30"/>'
+             '<path class="m" d="M2 32h60M7 17h50M7 47h50"/><circle class="p" cx="36" cy="18" r="2.4"/>'
+             '<circle class="p" cx="26" cy="27" r="2"/><circle class="p" cx="40" cy="33" r="2"/><circle class="p" cx="30" cy="42" r="2.4"/></svg>')
+    top = ('<div class="sky-mk"><!-- v4:needs knowledge-base/encyclopedia/atlas.html --><a href="knowledge-base/encyclopedia/atlas.html">%s'
+           '<span><b>The Atlas</b><small>%s</small></span></a><!-- /v4:needs -->'
+           '<a href="index.html"><span class="sky-moon-o" aria-hidden="true"></span><span><b>Home</b><small>Back to the start</small></span></a></div>'
+           % (globe, ("%s questions, A to Z" % n_q) if n_q else "The encyclopedia"))
+    lv = "".join('<li><a href="%s"><i>%s m</i><b>%s</b></a></li>' % (E(c["url"]), E(alts[i]) if i < len(alts) else "", E(c["label"]))
+                 for i, c in reversed(list(enumerate(cats))))
+    scale = ('<div class="sky-alt-sc"><a class="top" href="knowledge-base.html">Knowledge Base</a>'
+             '<ol aria-label="The knowledge base, by level">%s</ol></div>' % lv)
+    trips = [c for c in by["Trips"]["children"] if c.get("kind") == "trip"]
+    xs, rs = ["16%", "38%", "62%", "84%"], ["104px", "124px", "112px", "96px"]
+    pl = "".join('<li style="--x:%s;--r:%s"><a href="%s"><span><b>%s</b><small>%s</small></span><span class="o"><img src="%s" alt="" loading="lazy" decoding="async"></span></a></li>'
+                 % (xs[i % 4], rs[i % 4], E(c["url"]), E(c["label"]), E(c.get("sub", "")), E(c.get("img", ""))) for i, c in enumerate(trips))
+    named = [("about.html", "About Me", "4%", "12%", "6%", "8%"), ("mission.html", "Mission Statement", "26%", "26%", "52%", "8%"),
+             ("partners.html", "Partner With Me", "49%", "10%", "6%", "22%"), ("record-attempt.html", "Speed Record", "72%", "24%", "52%", "22%")]
+    st = ""
+    for u, label, x, y, xs_, ys_ in named:
+        li = '<li style="--x:%s;--y:%s;--xs:%s;--ys:%s"><a href="%s"><i aria-hidden="true"></i><b>%s</b></a></li>' % (x, y, xs_, ys_, u, E(label))
+        st += ("<!-- v4:needs %s -->%s<!-- /v4:needs -->" % (u, li)) if u == "record-attempt.html" else li
+    band = ('<div class="sky-hz"><a class="sky-hz-k" href="expeditions.html">Expeditions</a><ul class="sky-st">%s</ul>'
+            '<ul class="sky-pl">%s</ul></div>' % (st, pl))
+    out = re.sub(re.escape(MARKS_SKY[0]) + r".*?" + re.escape(MARKS_SKY[1]), "", page, flags=re.S)
+    out = re.sub(re.escape(MARKS_BAND[0]) + r".*?" + re.escape(MARKS_BAND[1]), "", out, flags=re.S)
+    view = '<div class="sky-view">'
+    nav = '<nav class="sky-ground"'
+    if out.count(view) != 1 or out.count(nav) != 1:
+        fail("the sky's view or its ground is not there once")
+    i = out.index(view) + len(view)
+    out = out[:i] + MARKS_SKY[0] + "<style>%s</style>" % MARKS_CSS + top + scale + MARKS_SKY[1] + out[i:]
+    j = out.index(nav)
+    return out[:j] + MARKS_BAND[0] + band + MARKS_BAND[1] + out[j:]
+
+
 def main():
     js = script()
     with open(OUT, "w", encoding="utf-8", newline="\n") as f:
@@ -297,7 +424,7 @@ def main():
         html, n = re.subn(r'<script src="\.\./\.\./sitemap-sky\.js\?v=[0-9a-f]{8}"></script>', lambda m: a + tag + b, html)
         if n != 1:
             fail("the live sky script's tag is not in sitemap.html once")
-    html = ground(html)
+    html = landmarks(ground(html))
     with open(PAGE, "w", encoding="utf-8", newline="\n") as f:
         f.write(html)
     print("v4_sitemap_sky: %d real stars, in depth, behind the sitemap, and every page under it" % len(field()))
