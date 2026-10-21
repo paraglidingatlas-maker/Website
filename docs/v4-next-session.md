@@ -10,7 +10,7 @@ the owner's current queue and what the last session learnt doing it.
 - Nothing invented: a missing fact shows as `[to supply]` (`.v2-tbd`).
 - Design tokens only; no em dashes in copy; cache-bust changed CSS and JS.
 - Motion only in answer to the visitor; nothing loops or runs on its own (the
-  owner's footage while on screen is the one exception; he was asked on
+  owner's footage while on screen is the one exception; they were asked on
   20 Oct to confirm it still stands). Reduced motion and no JavaScript show the
   finished page.
 - Push only `git push origin HEAD:main` and `git push origin HEAD:claude/v2-prototype`,
@@ -58,6 +58,20 @@ section). What is open:
   stronger lean was tried and turned back by the owner; the trip list's
   orange fill was taken out, "remove this"). All in `tools/v4_polish.py` (HOME_CSS, HOME_JS, `home_markup`,
   read from the site at each build).
+- **The encyclopedia** (21 Oct, report row 47): the A to Z and the ten
+  Flight Mechanics answers are v4 pages under the knowledge base
+  (`tools/v4_encyclopedia.py`, rebuilt from the review copy in
+  `prototypes/workspace/drafts/` on every build), reached from the knowledge
+  base page, Flight Mechanics and the FAQ answers the A to Z links to.
+  Prototype-only until the owner has reviewed the ten drafts. A change to an
+  answer is made on the encyclopedia-pilot branch (`kb_answers.py`) and the
+  review copy built again (`ENC_SHOW_DRAFTS=1`). That branch's A to Z filter
+  changes only the count (fixed in v4 only).
+- **Later, the owner's word ("leave this one for later")**: the Flying Atlas
+  globe (`prototypes/workspace/atlas/`) as the knowledge base's way in, in
+  the site's dark look, its pins opening the answers; and maybe on the home
+  page after that. Of its about 450 written entries only the ten answers are
+  fact-checked; the rest need checking first, and it weighs about 2 MB.
 - From the 20 Oct roadmap, still open: icons to photographs (step 7,
   waiting for the owner's photographs; on About the owner chose to keep the
   icons).

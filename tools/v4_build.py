@@ -84,6 +84,10 @@ THE ORDER, AND WHY
                            and v2_episode then drops both without a word, so
                            it has to learn the new header before a new
                            episode can be built.
+     v4_encyclopedia pages the encyclopedia (step 47): the A to Z and the
+                           answers, written again on every build as v4 twins
+                           of its review copy (prototypes/workspace/drafts/),
+                           so the chain below gives them v4's frame.
   3. v2_library_cards      the library's cards, from library-data.js; before
      v4_library            the flight log, which adds its columns to them.
   4. v4_pass               nav, next step, titles, globes, kb figures and the
@@ -120,6 +124,9 @@ THE ORDER, AND WHY
      v4_polish             the awwwards-direction polish (step 36), one
                            page's own <style> at a time; after v4_ux;
                            idempotent.
+     v4_encyclopedia links the ways into the encyclopedia (step 47): the
+                           knowledge base page, Flight Mechanics and the FAQ
+                           ids the A to Z links to; after v4_ux; idempotent.
      v4_nav_record         the record attempt in every header (step 40),
                            between v4:needs marks; after v4_ux; idempotent.
   9. v4_search             the search files, read from the finished pages.
@@ -343,6 +350,7 @@ def main():
             generate([PY, "tools/v2_twin.py", "--site", "v4"], twins, twins)
         else:
             print("== v2_twin: every page has its v4 twin", flush=True)
+        run([PY, "tools/v4_encyclopedia.py", "pages"])
 
         run([PY, "tools/v2_library_cards.py", "--site", "v4"])
         run([PY, "tools/v4_library.py"])
@@ -357,6 +365,7 @@ def main():
         run([PY, "tools/v4_partners.py"])
         run([PY, "tools/v4_sitemap_sky.py"])
         run([PY, "tools/v4_polish.py"])
+        run([PY, "tools/v4_encyclopedia.py", "links"])
         run([PY, "tools/v4_nav_record.py"])
         run([PY, "tools/v4_search.py"])
         run([PY, "tools/v4_min.py"])

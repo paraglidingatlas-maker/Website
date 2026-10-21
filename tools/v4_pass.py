@@ -379,8 +379,8 @@ PIC = re.compile(r'<picture><source srcset="[^"]*?assets/images/(kb-[a-z0-9-]+)\
 DONE = re.compile(r'<(?:svg|img)(?=[^>]*class="kbd)[^>]*?data-kb="([a-z0-9-]+)".*?<!--/kb-->', re.S)   # either attribute order
 
 
-def kb_figure(name, alt, w, h, hero):
-    """One figure's markup (None when it has no redraw)."""
+def kb_figure(name, alt, w, h, hero, up="../"):
+    """One figure's markup (None when it has no redraw); up leads from the page to v4's root."""
     import gzip
     a = html.unescape(alt)
     if name == "kb-flight-mechanics":
@@ -411,8 +411,8 @@ def kb_figure(name, alt, w, h, hero):
     body = src[src.index(">") + 1:src.rindex("</svg>")]
     words = "<text" in body
     if hero is not True and not words and len(gzip.compress(src.encode(), 9)) > INLINE_MAX:
-        return ('<img class="kbd" data-kb="%s" src="../img/kb/%s.svg" alt="%s" width="%s" height="%s" loading="lazy" '
-                'decoding="async"><!--/kb-->' % (name, name, alt, w, h))
+        return ('<img class="kbd" data-kb="%s" src="%simg/kb/%s.svg" alt="%s" width="%s" height="%s" loading="lazy" '
+                'decoding="async"><!--/kb-->' % (name, up, name, alt, w, h))
     vb = re.search(r'viewBox="([^"]+)"', src).group(1)
     return ('<svg class="kbd%s" data-kb="%s" viewBox="%s" preserveAspectRatio="%s" role="img" aria-labelledby="%s-t" '
             'style="aspect-ratio:%s/%s"><title id="%s-t">%s</title>%s</svg><!--/kb-->' % (
@@ -420,8 +420,8 @@ def kb_figure(name, alt, w, h, hero):
                 w, h, name, html.escape(a), body))
 
 
-def kb_figures(src):
-    """Swap each knowledge base picture (or an earlier swap) for its kit redraw."""
+def kb_figures(src, up="../"):
+    """Swap each knowledge base picture (or an earlier swap) for its kit redraw (up: from the page to v4's root)."""
     def alt_of(m):
         t = re.search(r'<title id="[^"]*">(.*?)</title>', m.group(0)) or re.search(r'alt="([^"]*)"', m.group(0))
         return html.escape(html.unescape(t.group(1)), quote=True)
@@ -433,14 +433,14 @@ def kb_figures(src):
     def pic(m):
         before = src[max(0, m.start() - 60):m.start()]
         hero = True if "k-hero-media" in before else ("side" if "bf-media" in before else False)
-        out = kb_figure(m.group(1), m.group(2), m.group(3), m.group(4), hero)
+        out = kb_figure(m.group(1), m.group(2), m.group(3), m.group(4), hero, up)
         return out or m.group(0)
 
     def again(m):
         before = src[max(0, m.start() - 60):m.start()]
         hero = True if "k-hero-media" in before else ("side" if "bf-media" in before else False)
         w, h = dims(m)
-        return kb_figure(m.group(1), alt_of(m), w, h, hero) or m.group(0)
+        return kb_figure(m.group(1), alt_of(m), w, h, hero, up) or m.group(0)
     src = DONE.sub(again, src)
     return PIC.sub(pic, src)
 
@@ -601,7 +601,7 @@ def main(args):
                 out = dark_side(out)
             import v4_lens
             out = v4_lens.legends(rel, out)
-            fg = kb_figures(out)
+            fg = kb_figures(out, "../" * rel.count("/"))
             n["kb figures"] += fg.count("<!--/kb-->") if fg != out else 0
             out = fg
             n["kb folds"] += out.count('class="v4-fold k-more"') if out != before else 0
