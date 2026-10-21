@@ -1,7 +1,7 @@
-# v4: handoff to the next session (20 Oct 2026)
+# v4: handoff to the next session (21 Oct 2026)
 
 Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
-the progress table in `docs/v4-report.md` (rows 0 to 34). Everything below is
+the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
 the owner's current queue and what the last session learnt doing it.
 
 ## The owner's rules (unchanged)
@@ -18,6 +18,21 @@ the owner's current queue and what the last session learnt doing it.
   iterating). Never forced, no pull requests.
 - Never store a token or key in the repository or the chat; GitHub access comes
   from the connected account.
+
+## Where the queue stands (21 Oct)
+Items 1 to 3 below are done and pushed: the sitemap's real sky (row 35, with
+the motion the owner asked for), Partners (row 34) and the site-wide pass on
+home, podcast, library, knowledge base, topics, About and Mission (rows 36 to
+43). The owner chose every look from side-by-side previews; the episode
+reader fix the switch-over needed is done too (the report's switch-over
+section). What is open:
+- **The record page photo** (`docs/record-photo/README.md`): the harness cut
+  out of the owner's DSC06347 and a fly-by through "01 The Mark To Beat",
+  shown to the owner as stills and a clip on 21 Oct; build it only on the owner's yes.
+- **The review of every page type** (21 Oct): screenshots of 17 page types
+  on desktop and phone sent to the owner, with what the review found (below,
+  under "Found in the 21 Oct review").
+- The switch-over stays the owner's.
 
 ## The queue, in the owner's order (20 Oct)
 1. **The sitemap's night sky from real stars.** The v4 sitemap
@@ -51,10 +66,14 @@ the owner's current queue and what the last session learnt doing it.
    and prove the rebuild.
 
 Then, before any switch-over: `tools/v2_episode.py` must read the live episode
-header of 2 Oct (a new episode stops `tools/v4_build.py` until then; see the
-report's switch-over section). Kenya's pass is paused by the owner; the
+header of 2 Oct. Done on 20 Oct (commit 19f4707f): a new episode builds again. Kenya's pass is paused by the owner; the
 cheap option offered was removing only what breaks the motion rule (its hero
 slideshow timer and the slow zooms).
+
+## Found in the 21 Oct review
+The review (17 page types, desktop and phone, captured by scrolling a real
+window, not one tall full-page shot, which breaks the scroll-driven parts) is
+still being read; what it finds goes here.
 
 ## Keeping the cost down (the owner asked, 20 Oct)
 India took about 25 agents and three workflows for a 7.5-to-6 win. Most of
