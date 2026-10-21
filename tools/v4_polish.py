@@ -903,6 +903,37 @@ ABOUT_INDIA = ('<picture><source srcset="../../assets/images/himalayas-1.webp" t
                'loading="lazy"></picture>')
 
 
+def feed_count():
+    """The episode count is the RSS feed's (owner, 21 Oct 2026: "whatever the RSS feed shows, it's the correct count"):
+    the episodes in episode-meta.json that went out on the feed (a publish date); the YouTube-only videos have none."""
+    import json
+    meta = json.load(open(os.path.join(ROOT, "episode-meta.json"), encoding="utf-8"))
+    return sum(1 for e in meta if e.get("published"))
+
+
+def words(n):
+    ones = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split()
+    tens = "_ _ twenty thirty forty fifty sixty seventy eighty ninety".split()
+    if n < 20:
+        return ones[n]
+    if n < 100:
+        return tens[n // 10] + ("" if n % 10 == 0 else " " + ones[n % 10])
+    return str(n)
+
+
+def episode_count(rel, html):
+    """Pages that counted every episode page (93, with the YouTube-only videos) give the feed's count."""
+    n = feed_count()
+    if rel == "sitemap.html":
+        html = re.sub(r"(13 series &middot; )\d+( episodes)", lambda m: m.group(1) + str(n) + m.group(2), html)
+        html = re.sub(r'("sub": "13 series, )\d+( episodes")', lambda m: m.group(1) + str(n) + m.group(2), html)
+    if rel == "mission.html":
+        num = r"(?:Twenty|Thirty|Forty|Fifty|Sixty|Seventy|Eighty|Ninety)(?: (?:one|two|three|four|five|six|seven|eight|nine))?"
+        html = re.sub(num + r" conversations( with designers| is a lot of ground)",
+                      lambda m: words(n).capitalize() + " conversations" + m.group(1), html)
+    return html
+
+
 def transcripts(rel, html):
     """A topic page promised a full transcript for every conversation; its own answer below gives the count."""
     if rel == "tags.html":
@@ -932,6 +963,8 @@ def corrections():
             out = transcripts(rel, out)
         if rel == "about.html":
             out = out.replace(*ABOUT_INDIA)
+        if rel in ("sitemap.html", "mission.html"):
+            out = out[:cut] + episode_count(rel, out[cut:])
         if out != html:
             with open(p, "w", encoding="utf-8", newline="\n") as f:
                 f.write(out)

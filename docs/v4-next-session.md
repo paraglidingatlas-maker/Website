@@ -18,6 +18,10 @@ the owner's current queue and what the last session learnt doing it.
   iterating). Never forced, no pull requests.
 - Never store a token or key in the repository or the chat; GitHub access comes
   from the connected account.
+- Episode counts are the RSS feed's (owner, 21 Oct: "whatever the RSS feed
+  shows, it's the correct count"; never ask again): the episodes in
+  episode-meta.json with a publish date (80 on 21 Oct); tools/v4_polish.py
+  feed_count() writes it on the sitemap and Mission.
 - No photograph is used twice on the site unless it really must be (faces,
   portraits); a repeat is replaced with a different picture, not dropped
   (owner, 21 Oct).
@@ -39,8 +43,7 @@ section). What is open:
   on desktop and phone sent to the owner, with what the review found (below,
   under "Found in the 21 Oct review").
 - Done on 21 Oct from the review (row 45): the four small fixes and the
-  corrections v4 can make. Left for the owner: one wording for the episode
-  count (80 in the feed, 93 with the YouTube-only videos), and the same
+  corrections v4 can make. Left for the owner: the same
   corrections in the live site's own sources (generate_tag_pages.py lines
   331 and 363, episode-meta.json, destinations/kenya.html).
 - Photographs used twice on v4 (owner's rule), each waiting for a new
