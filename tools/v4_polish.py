@@ -78,6 +78,17 @@ were. Rewritten whole each run, so the pass is idempotent.
     and draw again; and the topic search glides the topics left to their new
     places instead of the grid jumping. Reduced motion: no motion, the look
     kept.
+  - From the 21 Oct review of every page type (owner: "complete all"): on the
+    podcast, the live feed's failure line (rss-feed.js, which promises an
+    archive below that is not there) says so and points to the library; on
+    home, a soft dark shadow behind the small orange line over the footage,
+    so it reads on snow; on the topic pages, the phone chart's words at
+    reading size; corrections in the text of every page that has them (an
+    episode description that lost its maker's name, from its own title;
+    Kenya's "It's"; topic pages that promised a full transcript for every
+    conversation, now giving their own count); and About's India card takes
+    a photograph not used elsewhere on the site (owner: no photograph
+    twice).
   - About (owner, 21 Oct 2026, from side-by-side previews): the opening's
     figures (500+, 4, 10+) large and solid, counting up once (the real
     figure kept for screen readers and at the end, the width held so nothing
@@ -104,6 +115,20 @@ import os
 import re
 
 POD_JS = r"""(function () {
+  /* the live feed (rss-feed.js, never edited) says on failure that "the saved archive is below instead", and
+     nothing is below it: on v4 the line says so and points to the library, where every episode is */
+  function fix() {
+    var st = document.getElementById('liveFeedStatus');
+    if (!st || !/saved archive is below/.test(st.textContent)) return;
+    st.innerHTML = 'Could not reach the live feed right now. Every episode is in the <a href="library.html">library</a>.';
+  }
+  function watch() {
+    var st = document.getElementById('liveFeedStatus'); if (!st) return;
+    fix(); if (window.MutationObserver) new MutationObserver(fix).observe(st, { childList: true, characterData: true, subtree: true });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watch); else watch();
+})();
+(function () {
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var proj = null;
   window.v4BeforeGlobe = function () {
@@ -393,6 +418,8 @@ TG_CSS = (
     "html body .tg-v2 .tg-ep p{font-size:1rem;line-height:1.65}"
     "html body .tg-v2 .tg-ep h2{font-size:1.12rem;line-height:1.35}"
     "@media (prefers-reduced-motion:reduce){html body .tg-v2 .tg-ep .tg-thumb img{transform:none}}"
+    # on a phone the chart draws at about half its size, so its words were about 5 px: larger in the drawing
+    "@media (max-width:600px){html body .dk.v4-tg-log :is(.sub,.val){font-size:21px}}"
 )
 TG_JS = r"""(function () {
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -767,6 +794,11 @@ MISSION_JS = r"""(function () {
 })();"""
 
 
+HOME_CSS = (
+    "html body .v2-home-hero .kit-kicker{text-shadow:0 1px 2px color-mix(in srgb,var(--bg) 85%,transparent),"
+    "0 0 16px color-mix(in srgb,var(--bg) 75%,transparent)}"
+)
+
 PAGES = {
     "podcast.html": (
         ".v2-pod-hero .kit-stats{gap:var(--sp-3) clamp(2.2rem,5vw,4rem);max-width:48rem;flex-wrap:nowrap}"
@@ -827,6 +859,7 @@ for _f in sorted(os.listdir(os.path.join(V4, "knowledge-base"))):
         PAGES["knowledge-base/" + _f] = KB_CAT_CSS
         SCRIPTS["knowledge-base/" + _f] = KB_CAT_JS
 PAGES["tags.html"], SCRIPTS["tags.html"] = TG_HUB_CSS, TG_HUB_JS
+PAGES["index.html"] = HOME_CSS
 PAGES["about.html"], SCRIPTS["about.html"] = ABOUT_CSS, ABOUT_JS
 PAGES["mission.html"], SCRIPTS["mission.html"] = MISSION_CSS, MISSION_JS
 for _f in sorted(os.listdir(os.path.join(V4, "tags"))):
@@ -856,7 +889,55 @@ def series_intro():
     return "window.V4_SX=" + json.dumps(out, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") + ";\n"
 
 
+# (wrong, right) in the text of every v4 page that has it (the pages their own generators own are left to them)
+TEXT_FIXES = [
+    # the episode description lost its maker's name; the episode's own title gives it
+    ("the innovative designer from .", "the innovative designer from AirDesign."),
+    ("Took It\u2019s First Steps", "Took Its First Steps"),
+]
+# About's India card showed the home page's India photograph: no photograph twice on the site (owner, 21 Oct)
+ABOUT_INDIA = ('<picture><source srcset="../../assets/images/himalayas-1.webp" type="image/webp"><img width="1600" height="1200" '
+               'src="../../assets/images/himalayas-1.jpg" alt="Paraglider over snow-capped Himalayan peaks" loading="lazy"></picture>',
+               '<picture><source srcset="../../assets/destinations/india/gallery/red-wing.webp" type="image/webp"><img width="1400" '
+               'height="933" src="../../assets/destinations/india/gallery/red-wing.jpg" alt="A pilot on a red wing turning over steep snow" '
+               'loading="lazy"></picture>')
+
+
+def transcripts(rel, html):
+    """A topic page promised a full transcript for every conversation; its own answer below gives the count."""
+    if rel == "tags.html":
+        return html.replace(" Every episode carries a full transcript.</p>", "</p>")
+    m = re.search(r"(\d+) conversations tagged [^,<]+, (\d+) of them with a complete transcript", html)
+    if m and int(m.group(2)) < int(m.group(1)):
+        html = html.replace('<p class="kit-intro">%s conversations, every one with a full transcript.</p>' % m.group(1),
+                            '<p class="kit-intro">%s conversations, %s with a full transcript.</p>' % (m.group(1), m.group(2)))
+    return html
+
+
+def corrections():
+    import glob
+    n = 0
+    for p in glob.glob(os.path.join(V4, "**", "*.html"), recursive=True):
+        rel = os.path.relpath(p, V4).replace(os.sep, "/")
+        if rel.startswith(("samples/", "src/")) or re.match(r"(record-|expeditions)", rel):
+            continue
+        html = open(p, encoding="utf-8").read()
+        out = html
+        for a, b in TEXT_FIXES:
+            out = out.replace(a, b)
+        if rel == "tags.html" or rel.startswith("tags/"):
+            out = transcripts(rel, out)
+        if rel == "about.html":
+            out = out.replace(*ABOUT_INDIA)
+        if out != html:
+            with open(p, "w", encoding="utf-8", newline="\n") as f:
+                f.write(out)
+            n += 1
+    print("v4_polish: corrections on %d pages" % n)
+
+
 def main():
+    corrections()
     for rel, css in PAGES.items():
         p = os.path.join(V4, rel)
         html = open(p, encoding="utf-8").read()

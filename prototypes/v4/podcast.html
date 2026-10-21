@@ -903,6 +903,20 @@
     background:radial-gradient(120% 110% at 0% 0%,rgba(255,117,23,.08) 0%,rgba(180,180,180,.03) 45%,transparent 78%);}
 </style>
 <!--v4p:polish--><style>.v2-pod-hero .kit-stats{gap:var(--sp-3) clamp(2.2rem,5vw,4rem);max-width:48rem;flex-wrap:nowrap}.v2-pod-hero .kit-stat b{-webkit-text-stroke:0;-webkit-text-fill-color:var(--white);color:var(--white);font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,4.2vw,3.25rem);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.v2-pod-hero .kit-stat span{color:var(--gray-light);margin-top:.55rem}@media (max-width:560px){.v2-pod-hero .kit-stats{gap:1.2rem;justify-content:space-between}.v2-pod-hero .kit-stat b{font-size:clamp(1.45rem,7vw,1.9rem)}}html.v4-rows .v4-voices p span{display:inline-block;will-change:transform}html.v4-rows .v4-voices span + span::before{white-space:pre}html.v4-scrub .v2-pull .v4w{color:var(--edge-hi);transition:color .45s var(--ease)}html.v4-scrub .v2-pull .v4w.on{color:var(--white)}</style><script>(function () {
+  /* the live feed (rss-feed.js, never edited) says on failure that "the saved archive is below instead", and
+     nothing is below it: on v4 the line says so and points to the library, where every episode is */
+  function fix() {
+    var st = document.getElementById('liveFeedStatus');
+    if (!st || !/saved archive is below/.test(st.textContent)) return;
+    st.innerHTML = 'Could not reach the live feed right now. Every episode is in the <a href="library.html">library</a>.';
+  }
+  function watch() {
+    var st = document.getElementById('liveFeedStatus'); if (!st) return;
+    fix(); if (window.MutationObserver) new MutationObserver(fix).observe(st, { childList: true, characterData: true, subtree: true });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watch); else watch();
+})();
+(function () {
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var proj = null;
   window.v4BeforeGlobe = function () {

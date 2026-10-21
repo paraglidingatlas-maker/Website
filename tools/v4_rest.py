@@ -280,7 +280,7 @@ def bs_hero():
     kx, ky = T(KX, KY)
     d.path("M%s,%s a%s,%s 0 0 1 %s,0 v%s a%s,%s 0 0 1 -%s,0 Z" % (
         f(kx - 16), f(ky - 18), f(16), f(16), f(32), f(36), f(16), f(16), f(32)), "outline")
-    d.text((kx, ky + 54), "carabiner", "sub", "middle")
+    d.text((kx - 26, ky + 6), "carabiner", "sub", "end")      # beside the ring, clear of the harness outline
     d.path("M%s,%s L%s,%s" % tuple(f(v) for v in (kx, ky + 34) + T(HX - 230, HY - 30)), "ghost")
     fade_left(d, 660, 60)
     return d

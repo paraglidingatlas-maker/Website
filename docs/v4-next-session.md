@@ -38,6 +38,21 @@ section). What is open:
 - **The review of every page type** (21 Oct): screenshots of 17 page types
   on desktop and phone sent to the owner, with what the review found (below,
   under "Found in the 21 Oct review").
+- Done on 21 Oct from the review (row 45): the four small fixes and the
+  corrections v4 can make. Left for the owner: one wording for the episode
+  count (80 in the feed, 93 with the YouTube-only videos), and the same
+  corrections in the live site's own sources (generate_tag_pages.py lines
+  331 and 363, episode-meta.json, destinations/kenya.html).
+- Photographs used twice on v4 (owner's rule), each waiting for a new
+  photograph from the owner: About's Kenya, Peru and Kazakhstan cards (the
+  home page's), Expeditions' India and Kenya photographs (the trip pages'),
+  and the record page's Kerio Valley, Kenya hero and Coupe Icare photographs
+  (the Kenya page's and Partners'). Episode cover art repeats by design.
+- From the 20 Oct roadmap, still open: the home page (the first pass was
+  turned down; a preview of two directions was being made on 21 Oct, with
+  photographs that fade into the page, roadmap step 6), and icons to
+  photographs (step 7, waiting for the owner's photographs; on About the
+  owner chose to keep the icons).
 - The switch-over stays the owner's.
 
 ## The queue, in the owner's order (20 Oct)
