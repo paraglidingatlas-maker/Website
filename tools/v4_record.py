@@ -129,6 +129,19 @@ photograph is scaled or drifted, so the scroll stays smooth.
     package: it is drawn here (img/record/mw-dawn.webp, mw-night.webp) from
     the galactic plane, in the stars' own projection (see make_images): an
     impression;
+  - 01 the mark (owner, 21 Oct 2026: "go with your mix", from mock-ups of
+    four backgrounds): the owner's own photograph of the pod harness, cut out
+    (docs/record-photo), crosses the gap between the mark and the owner's
+    best, left to right, nose down as photographed, eased with the scroll in the
+    page's one loop (so a flick glides and settles), and slips behind the
+    orange 36, which lights as it passes. Behind it on one canvas: wind lines
+    that bend round it and stream with the scroll (one in orange), speed
+    lines that stretch with the speed it is flying at, and drawn clouds at
+    three depths drifting slower than it (drawn, not photographed: no
+    photograph is used twice on the site). Three short orange streaks trail
+    it, as in the header's Speed Record mark. Reduced motion: it waits in the
+    gap, the lines still (on a phone, where the gap is narrow, it is left
+    out); without JavaScript it is not there;
   - the close: on this page the footer's drawn ridge (img/ridge.svg) is
     replaced by a soft horizon: the night sky dissolving into the ground
     under a faint last light, with the page's grain carried over it;
@@ -155,7 +168,8 @@ The image files are made by `python3 tools/v4_record.py --images` (numpy,
 Pillow and contourpy), from the site's own files and the geometry here;
 nothing in them comes from online. Files in img/record/: ground.svg and
 mw-dawn, mw-night (the earlier passes' relief, contour and cloud masks are
-gone).
+gone), and harness.webp, which --images does not make: the owner's
+photograph cut out by docs/record-photo's recipe.
 
 The page takes the v4 shell (head, menu, footer) from partners.html and is
 prototype-only (tools/v2_site.py PROTO_ONLY) until the owner approves it.
@@ -1155,6 +1169,19 @@ CSS = r"""
 .wr{--wr-dim:color-mix(in srgb,var(--gray-light) 84%,var(--gray));}
 .wr-tbd,.wr-no,.wr-src,.wr-days-n{color:var(--wr-dim);}
 .wr-mark,.wr-offer{position:relative;isolation:isolate;}
+/* the harness flying through the mark, and the wind, speed lines and clouds round it (the script draws them) */
+.wr-hx,.wr-air{display:none;}
+.wr-mark{overflow-x:hidden;overflow-x:clip;}
+.wr-fly .wr-air{display:block;position:absolute;left:0;top:0;width:100%;height:100%;z-index:-2;pointer-events:none;}
+.wr-fly .wr-hx{display:block;position:absolute;left:0;top:0;z-index:-1;width:clamp(120px,17vw,250px);pointer-events:none;will-change:transform;}
+.wr-hx img{display:block;width:100%;height:auto;
+  filter:drop-shadow(0 18px 24px color-mix(in srgb,var(--bg) 70%,transparent)) drop-shadow(0 0 22px color-mix(in srgb,var(--orange) 16%,transparent));}
+.wr-hx i{position:absolute;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--orange));transform-origin:100% 50%;transform:scaleX(var(--sl,1));will-change:transform;}
+.wr-hx i:nth-of-type(1){width:38%;left:-30%;top:34%;}
+.wr-hx i:nth-of-type(2){width:58%;left:-50%;top:48%;}
+.wr-hx i:nth-of-type(3){width:30%;left:-18%;top:62%;}
+.is-mine .wr-giga{transition:text-shadow .6s var(--ease),filter .6s var(--ease);}
+.is-mine.is-passed .wr-giga{text-shadow:0 0 30px color-mix(in srgb,var(--orange) 55%,transparent),0 0 80px color-mix(in srgb,var(--orange) 35%,transparent);filter:brightness(1.12);}
 .wr-sky,.wr-night{display:none;}
 .wr-defs{position:absolute;width:0;height:0;overflow:hidden;}
 /* the partner cards are solid: the sky does not show through the offer */
@@ -1295,6 +1322,8 @@ def bar():
 def mark():
     return """
 <section class="wr-mark" id="wr-mark" aria-labelledby="wr-mark-h">
+  <canvas class="wr-air" aria-hidden="true"></canvas>
+  <div class="wr-hx" aria-hidden="true"><i></i><i></i><i></i><img src=\"""" + REC_IMG + """harness.webp" alt="" width="346" height="239" decoding="async"></div>
   <div class="wr-in">
     <p class="wr-no">01</p>
     <h2 class="wr-h2" id="wr-mark-h">""" + kin("The Mark To Beat") + """</h2>
@@ -1640,6 +1669,110 @@ SCRIPT = r"""<script>
   all('input[name="wrk"]').forEach(function (r) { r.addEventListener("change", function () { if (r.checked) setK(+r.value); }); });
   map.classList.add("is-live");
 
+  /* 2b. the mark: the harness flies through. The owner's own photograph, cut out, crosses the gap between the
+     mark and the owner's best from left to right, eased with the scroll in the one loop below (part 6), and slips
+     behind the orange 36, which lights as it passes. Round it, on one canvas the size of the section: drawn
+     clouds at three depths, drifting slower than it; speed lines streaming back past it, longer the faster it
+     flies; and the wind, lines that bend round it and stream with the scroll, one in orange. Its speed is the
+     eased progress's own (so a flick stretches the lines and they settle as it glides to rest); nothing is
+     drawn while the section is off screen. Colours come from the tokens. Reduced motion: it waits in the gap */
+  var MK = d.getElementById("wr-mark"), FLY = null;
+  /* with reduced motion on a phone it would wait over the words (the gap there is narrow): it is left out */
+  if (MK && !(still && w.innerWidth < 700)) { try { FLY = flyBy(MK); } catch (e) { FLY = null; MK.classList.remove("wr-fly"); } }
+  function flyBy(sec) {
+    var hx = sec.querySelector(".wr-hx"), cv = sec.querySelector(".wr-air"), g = cv && cv.getContext && cv.getContext("2d");
+    var bigs = sec.querySelectorAll(".wr-big"), mine = bigs[1], gm = mine && mine.querySelector(".wr-giga");
+    var aMeta = bigs[0] && bigs[0].querySelector(".wr-meta"), bMeta = mine && mine.querySelector(".wr-meta");
+    if (!hx || !g || !gm || !aMeta || !bMeta) return null;
+    /* a token as "r,g,b", resolved by the browser */
+    function rgb(tok) {
+      var t = d.createElement("i"); t.style.color = "var(" + tok + ")"; sec.appendChild(t);
+      var c = (getComputedStyle(t).color.match(/[\d.]+/g) || [0, 0, 0]).slice(0, 3).join(","); sec.removeChild(t); return c;
+    }
+    var OR = rgb("--orange"), WH = rgb("--white"), seed = 11, lines = [], clouds = [];
+    var m = { top: 0, W: 1, H: 1, mid: 0, hw: 1, hh: 1, dpr: 1, gx: 0, gw: 1, b0: 0, bh: 1 };
+    function rnd() { seed = seed * 16807 % 2147483647; return seed / 2147483647; }
+    function col(c, a) { return "rgba(" + c + "," + a.toFixed(2) + ")"; }
+    /* a speed line, drawn once: clear to solid along its length; each line on screen is this, stretched */
+    function streak(c) {
+      var e = d.createElement("canvas"), x = e.getContext("2d"), gr = x.createLinearGradient(0, 0, 128, 0); e.width = 128; e.height = 2;
+      gr.addColorStop(0, col(c, 0)); gr.addColorStop(1, col(c, 1)); x.fillStyle = gr; x.fillRect(0, 0, 128, 2); return e;
+    }
+    var SW = streak(WH), SO = streak(OR);
+    /* one drawn cloud: soft puffs on a small canvas, drawn once */
+    function cloud(cw, ch) {
+      var c = d.createElement("canvas"), x = c.getContext("2d"); c.width = cw; c.height = ch;
+      for (var k = 0; k < 16; k++) {
+        var px = cw * (0.12 + 0.76 * rnd()), py = ch * (0.45 + 0.3 * (rnd() - 0.5)), r = ch * (0.18 + 0.3 * rnd());
+        var gr = x.createRadialGradient(px, py, 0, px, py, r); gr.addColorStop(0, col(WH, 0.5)); gr.addColorStop(1, col(WH, 0));
+        x.fillStyle = gr; x.beginPath(); x.arc(px, py, r, 0, 6.2832); x.fill();
+      }
+      return c;
+    }
+    function size() {
+      var r = sec.getBoundingClientRect(), a = aMeta.getBoundingClientRect(), b = bMeta.getBoundingClientRect(), q = gm.getBoundingClientRect();
+      m.top = r.top + w.scrollY; m.W = Math.max(1, sec.clientWidth); m.H = Math.max(1, sec.clientHeight);
+      m.mid = ((a.bottom - r.top) + (b.top - r.top)) / 2; m.gx = q.left - r.left; m.gw = q.width;
+      m.hw = hx.offsetWidth || 200; m.hh = hx.offsetHeight || m.hw * 0.69;
+      m.dpr = Math.min(w.devicePixelRatio || 1, 1.25);
+      /* the canvas covers only the band the harness flies through */
+      var band = Math.max(300, m.hh * 2.6);
+      m.b0 = Math.max(0, Math.round(m.mid - band)); m.bh = Math.max(1, Math.round(Math.min(m.H, m.mid + band) - m.b0));
+      cv.style.top = m.b0 + "px"; cv.style.height = m.bh + "px";
+      var cw = Math.round(m.W * m.dpr), ch = Math.round(m.bh * m.dpr);
+      if (cv.width !== cw || cv.height !== ch) { cv.width = cw; cv.height = ch; }
+      seed = 11; lines = []; clouds = [];
+      for (var k = 0, n = m.W < 700 ? 36 : 64; k < n; k++) {
+        var near = rnd() < 0.65;
+        lines.push({ y: near ? m.mid + (rnd() - 0.5) * 260 : m.b0 + rnd() * m.bh, x0: rnd() * m.W * 1.2, l: 20 + rnd() * 120, k: 0.5 + rnd() * 1.1, o: rnd() < 0.12 });
+      }
+      for (var j = 0, nc = m.W < 700 ? 4 : 7; j < nc; j++) {
+        var dd = [0.35, 0.6, 0.9][j % 3], cw2 = Math.round((180 + 260 * rnd()) * (0.6 + dd));
+        clouds.push({ s: cloud(cw2, Math.round(cw2 * 0.32)), d: dd, x0: rnd() * m.W * 1.4, y: m.b0 + m.bh * (0.15 + 0.7 * rnd()), a: 0.06 + 0.07 * dd });
+      }
+    }
+    function seen(y, vh) { return y + vh > m.top - 200 && y < m.top + m.H + 200; }
+    function render(p, sp, y) {
+      var W = m.W, H = m.H, hw = m.hw, hh = m.hh, k;
+      var x = -hw * 1.4 + (W + hw * 1.8) * p, yy = m.mid - hh * 0.65 + hh * 0.3 * p;
+      hx.style.transform = "translate3d(" + x.toFixed(1) + "px," + yy.toFixed(1) + "px,0) rotate(" + (-6 + 5 * p - 5 * sp).toFixed(2) + "deg)";
+      hx.style.setProperty("--sl", (1 + 1.8 * sp).toFixed(2));
+      var cx = x + hw * 0.55, cy = yy + hh * 0.5;
+      mine.classList.toggle("is-passed", !still && cx > m.gx + m.gw * 0.25);
+      /* the canvas's own top is the band's: everything below is drawn shifted up by it */
+      g.setTransform(m.dpr, 0, 0, m.dpr, 0, -m.b0 * m.dpr); g.clearRect(0, m.b0, W, m.bh);
+      /* the clouds, far to near */
+      for (k = 0; k < clouds.length; k++) {
+        var C1 = clouds[k], sw = C1.s.width, span = W + sw, X = ((C1.x0 - y * 0.3 * C1.d - p * W * 0.12 * C1.d) % span + span) % span - sw;
+        g.globalAlpha = C1.a; g.drawImage(C1.s, X, C1.y - C1.s.height / 2);
+      }
+      g.globalAlpha = 1; g.lineCap = "round";
+      /* the speed lines */
+      for (k = 0; k < lines.length; k++) {
+        var L = lines[k], len = L.l * (1 + 2.6 * sp), sl = W + len + 40, LX = ((L.x0 - y * 1.3 * L.k) % sl + sl) % sl - len;
+        g.globalAlpha = L.o ? 0.55 : 0.1 + 0.22 * L.k / 1.6; g.drawImage(L.o ? SO : SW, LX, L.y - (L.o ? 0.7 : 0.5), len, L.o ? 1.4 : 1);
+      }
+      g.globalAlpha = 1;
+      /* the wind round the harness */
+      var gap = W < 700 ? 18 : 24;
+      for (var i = -6; i <= 6; i++) {
+        var y0 = cy + i * gap, dy = y0 - cy, near2 = Math.abs(i) <= 1;
+        g.strokeStyle = i === -1 ? col(OR, 0.85) : col(WH, near2 ? 0.38 : 0.16); g.lineWidth = near2 ? 1.3 : 1;
+        g.setLineDash(Math.abs(i) % 2 === 0 ? [3, 9] : []); g.lineDashOffset = y * 1.2;
+        g.beginPath();
+        for (var X2 = -28; X2 <= W + 28; X2 += 28) {
+          var t = (X2 - cx) / (hw * 0.75), off = (dy < 0 ? -1 : 1) * 34 * Math.exp(-t * t) / (1 + Math.abs(dy) / 70) * (1 + 0.6 * sp);
+          if (X2 < 0) g.moveTo(X2, y0 + off); else g.lineTo(X2, y0 + off);
+        }
+        g.stroke();
+      }
+      g.setLineDash([]);
+    }
+    size();
+    sec.classList.add("wr-fly");
+    return { size: size, render: render, seen: seen, at: function () { return m.top + m.mid; } };
+  }
+
   /* 3. the site menu: when it first leaves the page's flow to wait above the screen, it goes there at once
      rather than sliding away across the chapter bar (so there is never a moment with two bars) */
   var Wn = d.getElementById("wr-window"), siteNav = d.querySelector(".page-wrap > nav");
@@ -1946,6 +2079,7 @@ SCRIPT = r"""<script>
     geo.partner = partner ? absTop(partner) : 1e9;
     geo.foot = foot ? absTop(foot) : 1e9;
     geo.heroEnd = hero ? absTop(hero) + hero.offsetHeight : 0;
+    if (FLY) FLY.size();
     if (SKY) {
       SKY.size(); geo.dT = dayEls.map(function (e) { return e ? absTop(e) : 0; }); geo.docH = root.scrollHeight;
       geo.plateEl = d.querySelector(".wr-par"); geo.plateTop = geo.plateEl ? absTop(geo.plateEl) : 0;
@@ -1956,7 +2090,7 @@ SCRIPT = r"""<script>
      scroll has put them (each frame closes a share of the gap, by the time passed: a spring-like lerp), so a
      flick of the wheel becomes a glide with weight that settles; the loop stops once both have arrived (the
      position within half a pixel), and the next scroll starts it again */
-  var now = { f: -1, D: -1 }, raf = 0, last = 0;
+  var now = { f: -1, D: -1, h: -1, s: 0 }, raf = 0, last = 0;
   function toward(v, to, dt, tau, eps) { return v < 0 || Math.abs(to - v) < eps ? to : v + (to - v) * (1 - Math.exp(-dt / tau)); }
   function frame(t) {
     raf = 0;
@@ -1966,15 +2100,26 @@ SCRIPT = r"""<script>
     var f = toward(now.f, ft, dt, 140, 0.0004), D = toward(now.D, Dt, dt, 320, 0.002);
     if (f !== now.f) { now.f = f; render(f); }
     now.D = D;
+    /* the harness: its progress across the gap eases toward where the scroll has put it; its speed (the eased
+       progress's own) stretches the lines, and falls to nothing as it arrives */
+    var h = now.h, ht = h;
+    if (FLY) {
+      ht = still ? 0.5 : clamp((y + vh * 0.98 - FLY.at()) / (vh * 0.85));
+      h = toward(now.h, ht, dt, 160, 0.0004);
+      var sp = h === ht || now.h < 0 ? 0 : Math.min(1, Math.abs(h - now.h) / dt * 900);
+      if ((h !== now.h || sp !== now.s) && FLY.seen(y, vh)) FLY.render(h, sp, y);
+      now.h = h; now.s = sp;
+    }
     bars(y, vh);
     if (SKY) SKY.at(D, y, vh, geo);
-    if (f !== ft || D !== Dt) raf = requestAnimationFrame(frame); else last = 0;
+    if (f !== ft || D !== Dt || h !== ht) raf = requestAnimationFrame(frame); else last = 0;
   }
   function onScroll() { if (!raf) raf = requestAnimationFrame(frame); }
   /* measure again (a resize, a phone's toolbar, the fonts, the images): the position and the day go on easing from
      where they are toward the new targets; only the first frame starts them in place */
   function refresh(first) {
-    measure(); if (first) { now.f = -1; now.D = -1; } else if (now.f >= 0) render(now.f);
+    measure(); if (first) { now.f = -1; now.D = -1; now.h = -1; } else if (now.f >= 0) render(now.f);
+    if (!first && FLY && now.h >= 0) FLY.render(now.h, 0, w.scrollY);
     last = 0; if (raf) { cancelAnimationFrame(raf); raf = 0; } frame(performance.now());
   }
 
@@ -1986,6 +2131,7 @@ SCRIPT = r"""<script>
   if (d.fonts && d.fonts.ready) d.fonts.ready.then(function () { refresh(false); });
   } catch (err) {
     root.classList.remove("wr-pin", "wr-sky-on");
+    if (MK) MK.classList.remove("wr-fly");
     showAll();
   }
 })();

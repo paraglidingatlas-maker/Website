@@ -16,12 +16,16 @@ harness blends into a page as a backdrop that moves with the scroll.
   visor; `u2net` kept a block of flats). At up to about 250 px wide on the
   page it stays sharp on a phone; a full-size export would allow it larger.
 
-The proposal (21 Oct, waiting for the owner's yes): on the record page, in
-"01 The Mark To Beat", the harness flies across the gap between 35.94 and 36
-from left to right with the scroll, nose down as in the photo, three orange
-speed streaks behind it (the header's Speed Record mark), passing behind the
-orange 36 on its way out; still and absent with reduced motion. It never
-flies right to left: mirrored, its lettering would read backwards, which is
-why it does not ride the course drawing out and back. Built, it belongs in
-`tools/v4_record.py` (the record page is that tool's), the image in
-`prototypes/v4/img/`.
+Built (21 Oct, the owner's choice from mock-ups of four backgrounds: "go
+with your mix"): on the record page, in "01 The Mark To Beat", the harness
+crosses the gap between 35.94 and 36 from left to right with the scroll,
+nose down as photographed, eased in the page's one loop, three orange speed
+streaks behind it (the header's Speed Record mark), and slips behind the
+orange 36, which lights as it passes. Round it on one canvas: wind lines
+bending round it (one orange), speed lines that stretch with its speed, and
+drawn clouds at three depths (drawn because no photograph is used twice on
+the site; the photographed sky and the ground contours were left out). It
+never flies right to left: mirrored, its lettering would read backwards.
+Reduced motion: it waits in the gap (on a phone it is left out); without
+JavaScript it is not there. The image is `prototypes/v4/img/record/harness.webp`;
+the code is `tools/v4_record.py`, 01 the mark and the script's part 2b.

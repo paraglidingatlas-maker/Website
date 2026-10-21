@@ -18,6 +18,12 @@ the owner's current queue and what the last session learnt doing it.
   iterating). Never forced, no pull requests.
 - Never store a token or key in the repository or the chat; GitHub access comes
   from the connected account.
+- No photograph is used twice on the site unless it really must be (faces,
+  portraits); a repeat is replaced with a different picture, not dropped
+  (owner, 21 Oct).
+- Work lean (owner, 21 Oct: "we're spending a lot of time discussing"): at
+  most two options for a decision, one preview only for a large visual
+  change, small fixes built straight away and shown after.
 
 ## Where the queue stands (21 Oct)
 Items 1 to 3 below are done and pushed: the sitemap's real sky (row 35, with
@@ -26,9 +32,9 @@ home, podcast, library, knowledge base, topics, About and Mission (rows 36 to
 43). The owner chose every look from side-by-side previews; the episode
 reader fix the switch-over needed is done too (the report's switch-over
 section). What is open:
-- **The record page photo** (`docs/record-photo/README.md`): the harness cut
-  out of the owner's DSC06347 and a fly-by through "01 The Mark To Beat",
-  shown to the owner as stills and a clip on 21 Oct; build it only on the owner's yes.
+- **The record page photo**: built on 21 Oct (report row 44) as the owner
+  chose from mock-ups, `docs/record-photo/README.md` and `tools/v4_record.py`
+  01 the mark. A full-size export of DSC06347 would let it fly larger.
 - **The review of every page type** (21 Oct): screenshots of 17 page types
   on desktop and phone sent to the owner, with what the review found (below,
   under "Found in the 21 Oct review").
