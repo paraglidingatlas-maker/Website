@@ -797,7 +797,167 @@ MISSION_JS = r"""(function () {
 HOME_CSS = (
     "html body .v2-home-hero .kit-kicker{text-shadow:0 1px 2px color-mix(in srgb,var(--bg) 85%,transparent),"
     "0 0 16px color-mix(in srgb,var(--bg) 75%,transparent)}"
+    # B: the opening's figures (home_markup), large and solid as on the podcast and About pages
+    ".v4-hfig{display:flex;flex-wrap:wrap;gap:var(--sp-3) clamp(2rem,5vw,4rem);margin:var(--sp-4) 0 0;padding:var(--sp-3) 0 0;"
+    "border-top:1px solid color-mix(in srgb,var(--white) 18%,transparent);list-style:none}"
+    ".v4-hfig b{display:block;font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,4vw,3.1rem);line-height:1;"
+    "color:var(--white);font-variant-numeric:tabular-nums;text-shadow:0 2px 18px color-mix(in srgb,var(--bg) 60%,transparent)}"
+    ".v4-hfig b>span{display:inline}.v4-hfig .v4-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}"
+    ".v4-hfig li>span{display:block;margin-top:.5rem;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light)}"
+    # B: every departure on one line of months (home_markup), drawing in as it comes into view
+    ".v4-tl{margin:var(--sp-4) 0 var(--sp-5)}"
+    ".v4-tl ol{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:10px}"
+    ".v4-tl li{position:relative;height:28px}"
+    ".v4-tl li b{position:absolute;top:0;height:28px;min-width:6px;border-radius:4px;background:var(--orange);transform-origin:0 50%}"
+    ".v4-tl li.is-plan b{background:transparent;border:1px dashed color-mix(in srgb,var(--orange) 70%,transparent)}"
+    ".v4-tl li span{position:absolute;top:5px;font-size:.8rem;color:var(--gray-light);white-space:nowrap}"
+    ".v4-tl li span em{font-style:normal;color:var(--gray);margin-left:.4rem}"
+    ".v4-tl .v4-tl-ax{display:grid;border-top:1px solid var(--line);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}"
+    ".v4-tl .v4-tl-ax span{padding:.5rem 0 0 .35rem;border-left:1px solid var(--line);white-space:nowrap;overflow:hidden}"
+    # on a phone the dates go under each name (the axis has no room for the years) and the three figures keep one row
+    "@media (max-width:760px){.v4-tl li{height:36px}.v4-tl li b{top:4px}.v4-tl li span{top:1px;font-size:.8rem;line-height:1.3}"
+    ".v4-tl li span em{display:block;margin:0;font-size:.72rem}.v4-tl .v4-tl-ax{font-size:.6rem;letter-spacing:.04em}"
+    ".v4-tl .v4-tl-ax span{padding-left:.15rem}.v4-tl .v4-tl-ax i{display:none}"
+    ".v4-hfig{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:var(--sp-3) 1.5rem}"
+    ".v4-hfig li>span{font-size:.64rem;letter-spacing:.1em;line-height:1.35}}"
+    "html.v4-tld .v4-tl li b{transform:scaleX(0);transition:transform .9s var(--ease)}"
+    "html.v4-tld .v4-tl li span{opacity:0;transition:opacity .6s var(--ease)}"
+    "html.v4-tld .v4-tl.is-in li b{transform:none}html.v4-tld .v4-tl.is-in li span{opacity:1}"
+    # A: the trip list beside the held photograph fills as the visitor travels through the trips
+    "html.v4-fbr .v2-fb-alt{padding-left:18px}"
+    "html.v4-fbr .v2-fb-alt::before,html.v4-fbr .v2-fb-alt::after{content:\"\";position:absolute;left:0;top:4px;bottom:4px;width:2px;background:var(--line)}"
+    "html.v4-fbr .v2-fb-alt::after{background:var(--orange);bottom:auto;height:calc((100% - 8px) * var(--p,0));"
+    "box-shadow:0 0 10px color-mix(in srgb,var(--orange) 60%,transparent)}"
+    # A: the episode cards lean towards the mouse with a soft light where it is
+    "html.v4-tilt .v2-rail .ep-card .ep-art{transform:perspective(800px) translateY(var(--ty,0px)) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));"
+    "transition:transform .6s var(--ease)}"
+    "html.v4-tilt .v2-rail .ep-card:is(:hover,:focus-visible) .ep-art{--ty:-4px;transition:transform .18s var(--ease)}"
+    "html.v4-tilt .v2-rail .ep-card .ep-art::after{content:\"\";position:absolute;inset:0;pointer-events:none;opacity:0;z-index:3;"
+    "background:radial-gradient(60% 60% at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--white) 14%,transparent),transparent 70%);"
+    "transition:opacity .4s var(--ease)}"
+    "html.v4-tilt .v2-rail .ep-card:hover .ep-art::after{opacity:1}"
 )
+HOME_JS = r"""(function () {
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches, html = document.documentElement;
+  if (!still && window.IntersectionObserver) html.classList.add('v4-tld');
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
+  ready(function () {
+    /* B. the opening's figures count up once (the real figure kept for screen readers, its width held) */
+    if (!still) document.querySelectorAll('.v4-hfig b').forEach(function (b, k) {
+      var real = b.textContent, m = real.match(/^(\d+)(\D*)$/); if (!m) return;
+      var n = +m[1], w = b.getBoundingClientRect().width, show = document.createElement('span'), t0 = 0;
+      show.setAttribute('aria-hidden', 'true'); b.textContent = ''; b.appendChild(show);
+      var sr = document.createElement('span'); sr.className = 'v4-sr'; sr.textContent = real; b.appendChild(sr);
+      b.style.display = 'inline-block'; b.style.minWidth = w + 'px';
+      (function step(now) {
+        if (!t0) t0 = now;
+        var t = Math.min(1, Math.max(0, (now - t0 - 450 - k * 120) / 1400)), e = 1 - Math.pow(1 - t, 3);
+        show.textContent = Math.round(n * e) + m[2];
+        if (t < 1) requestAnimationFrame(step); else { b.textContent = real; b.style.display = b.style.minWidth = ''; }
+      })(performance.now());
+    });
+    /* B. the departures' line draws in once, as it comes into view */
+    var tl = document.querySelector('.v4-tl');
+    if (tl && html.classList.contains('v4-tld')) {
+      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { tl.classList.add('is-in'); io.disconnect(); } }, { threshold: 0.3 });
+      io.observe(tl);
+      tl.querySelectorAll('li').forEach(function (li, k) { var b = li.querySelector('b'), s = li.querySelector('span');
+        if (b) b.style.transitionDelay = (k * 0.12) + 's'; if (s) s.style.transitionDelay = (0.4 + k * 0.12) + 's'; });
+      window.addEventListener('beforeprint', function () { tl.classList.add('is-in'); });
+    }
+    /* A. the trip list fills as the visitor travels through the trips; each held photograph comes slowly closer */
+    var alt = document.querySelector('.v2-fb-alt'), trips = [].slice.call(document.querySelectorAll('.v2-fb-step:not(.v2-fb-intro)'));
+    var shots = [].slice.call(document.querySelectorAll('.v2-fb-shot picture')), raf = 0;
+    if (alt && trips.length) {
+      html.classList.add('v4-fbr');
+      var tick = function () {
+        raf = 0;
+        var mid = window.innerHeight * 0.5, a = trips[0].getBoundingClientRect(), z = trips[trips.length - 1].getBoundingClientRect();
+        alt.style.setProperty('--p', Math.min(1, Math.max(0, (mid - a.top) / Math.max(1, z.bottom - a.top))).toFixed(4));
+        if (!still) trips.forEach(function (t, k) {
+          if (!shots[k]) return;
+          var r = t.getBoundingClientRect(), u = Math.min(1, Math.max(0, (mid - r.top) / Math.max(1, r.height)));
+          shots[k].style.transform = 'scale(' + (1 + 0.06 * u).toFixed(4) + ')';
+        });
+      };
+      window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+      window.addEventListener('resize', function () { if (!raf) raf = requestAnimationFrame(tick); });
+      tick();
+    }
+    /* A. the episode cards lean towards the mouse, with a soft light on them */
+    if (still || !(window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches)) return;
+    html.classList.add('v4-tilt');
+    document.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var c = e.target.closest && e.target.closest('.v2-rail .ep-card'); if (!c) return;
+      var s = c.querySelector('.ep-art'); if (!s) return;
+      var r = s.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      if (x < 0 || x > 1 || y < 0 || y > 1) return;
+      s.style.setProperty('--ry', ((x - 0.5) * 10).toFixed(2) + 'deg'); s.style.setProperty('--rx', ((0.5 - y) * 8).toFixed(2) + 'deg');
+      s.style.setProperty('--mx', (x * 100).toFixed(1) + '%'); s.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+    }, { passive: true });
+    document.addEventListener('pointerout', function (e) {
+      var c = e.target.closest && e.target.closest('.v2-rail .ep-card');
+      if (!c || (e.relatedTarget && c.contains(e.relatedTarget))) return;
+      var s = c.querySelector('.ep-art'); if (s) { s.style.removeProperty('--rx'); s.style.removeProperty('--ry'); }
+    });
+  });
+})();"""
+HFIG = ("<!--v4p:fig-->", "<!--/v4p:fig-->")
+TL = ("<!--v4p:tl-->", "<!--/v4p:tl-->")
+MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
+
+
+def home_markup(html):
+    """B on the home page: the opening's figures and every departure on one line of months. Both are read from the
+    site at each build (the feed's episode count, the podcast page's countries, the departures listed on this page)
+    and written between marks, so a second run writes the same bytes."""
+    import calendar
+    import html as H
+    pod = open(os.path.join(V4, "podcast.html"), encoding="utf-8").read()
+    mc = re.search(r'<b>(\d+)</b><span>Countries', pod)
+    deps = re.findall(r'<a class="v2-dep" href="[^"]*" data-place="([a-z]+)" data-month="(\d{4})-(\d{2})">'
+                      r'<span class="v2-dep-trip"><b>([^<]+)</b>(?: <em>([^<]+)</em>)?</span><span data-l="Dates">([^<]+)</span>', html)
+    if not mc or not deps:
+        raise SystemExit("v4_polish: index.html: the figures' or the departures' source is not there")
+    figs = [(str(feed_count()), "Conversations"), (mc.group(1), "Countries listening"), (str(len({d[0] for d in deps})), "Destinations")]
+    fig = (HFIG[0] + '<ul class="v4-hfig">' + "".join('<li><b>%s</b><span>%s</span></li>' % f for f in figs) + "</ul>" + HFIG[1])
+    html = re.sub(re.escape(HFIG[0]) + r".*?" + re.escape(HFIG[1]), "", html, flags=re.S)
+    m = re.search(r'(<header class="kit-hero v2-home-hero".*?<div class="kit-actions">.*?</div>)', html, re.S)
+    if not m:
+        raise SystemExit("v4_polish: index.html: the opening's actions are not there")
+    html = html[:m.end()] + fig + html[m.end():]
+    # the line of months: from the first departure's month to the last's
+    rows = []
+    for place, yy, mm, name, tour, dates in deps:
+        y, mo = int(yy), int(mm)
+        dm = re.match(r"(\d+) to (\d+) [A-Z][a-z]{2} \d{4}$", dates)
+        if dm:
+            a, b = int(dm.group(1)), int(dm.group(2)); plan = False
+        else:
+            a, b = 1, calendar.monthrange(y, mo)[1]; plan = True
+        rows.append((y * 12 + mo - 1, a, b, plan, name + (", " + tour.lower() if tour else ""), H.unescape(dates)))
+    m0 = min(r[0] for r in rows); m1 = max(r[0] for r in rows); n = m1 - m0 + 1
+    def pos(mi, day):
+        y, mo = divmod(mi, 12)
+        return 100.0 * ((mi - m0) + (day - 1) / calendar.monthrange(y, mo + 1)[1]) / n
+    lis = []
+    for mi, a, b, plan, label, dates in rows:
+        x0 = pos(mi, a); x1 = pos(mi, b + 1); right = x1 > 72
+        lab = ('<span style="%s">%s<em>%s</em></span>' % (
+            ("right:calc(%.2f%% + 10px)" % (100 - x0)) if right else ("left:calc(%.2f%% + 10px)" % x1), H.escape(label), H.escape(dates)))
+        lis.append('<li%s><b style="left:%.2f%%;width:%.2f%%"></b>%s</li>' % (' class="is-plan"' if plan else "", x0, x1 - x0, lab))
+    ax = []
+    for mi in range(m0, m1 + 1):
+        y, mo = divmod(mi, 12)
+        ax.append("<span>%s%s</span>" % (MONTHS[mo], "<i> %d</i>" % y if mi == m0 or mo == 0 else ""))
+    tl = (TL[0] + '<div class="v4-tl" aria-hidden="true"><ol>' + "".join(lis) + '</ol><div class="v4-tl-ax" style="grid-template-columns:repeat(%d,1fr)">' % n
+          + "".join(ax) + "</div></div>" + TL[1])
+    html = re.sub(re.escape(TL[0]) + r".*?" + re.escape(TL[1]) + "\n  ", "", html, flags=re.S)
+    anchor = '<p class="v2-found" data-found'
+    if html.count(anchor) != 1:
+        raise SystemExit("v4_polish: index.html: the departures' place is not there")
+    return html.replace(anchor, tl + "\n  " + anchor, 1)
 
 PAGES = {
     "podcast.html": (
@@ -859,7 +1019,7 @@ for _f in sorted(os.listdir(os.path.join(V4, "knowledge-base"))):
         PAGES["knowledge-base/" + _f] = KB_CAT_CSS
         SCRIPTS["knowledge-base/" + _f] = KB_CAT_JS
 PAGES["tags.html"], SCRIPTS["tags.html"] = TG_HUB_CSS, TG_HUB_JS
-PAGES["index.html"] = HOME_CSS
+PAGES["index.html"], SCRIPTS["index.html"] = HOME_CSS, HOME_JS
 PAGES["about.html"], SCRIPTS["about.html"] = ABOUT_CSS, ABOUT_JS
 PAGES["mission.html"], SCRIPTS["mission.html"] = MISSION_CSS, MISSION_JS
 for _f in sorted(os.listdir(os.path.join(V4, "tags"))):
@@ -986,6 +1146,8 @@ def main():
                                if rel in SCRIPTS else ""), 1)
         if rel == "about.html":
             html = about_markup(html)
+        if rel == "index.html":
+            html = home_markup(html)
         if rel == "podcast.html" and POD_LOADER[1] not in html:
             if html.count(POD_LOADER[0]) != 1:
                 raise SystemExit("v4_polish: podcast.html: the globe loader is not there once")

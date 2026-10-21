@@ -36,7 +36,72 @@
 <link rel="apple-touch-icon" href="../../assets/logo/apple-touch-icon.png">
 <meta name="theme-color" content="#141519">
 <link rel="alternate" type="application/rss+xml" title="Paragliding Atlas Podcast" href="https://anchor.fm/s/ed1344d8/podcast/rss">
-<!--v4p:polish--><style>html body .v2-home-hero .kit-kicker{text-shadow:0 1px 2px color-mix(in srgb,var(--bg) 85%,transparent),0 0 16px color-mix(in srgb,var(--bg) 75%,transparent)}</style><!--/v4p:polish-->
+<!--v4p:polish--><style>html body .v2-home-hero .kit-kicker{text-shadow:0 1px 2px color-mix(in srgb,var(--bg) 85%,transparent),0 0 16px color-mix(in srgb,var(--bg) 75%,transparent)}.v4-hfig{display:flex;flex-wrap:wrap;gap:var(--sp-3) clamp(2rem,5vw,4rem);margin:var(--sp-4) 0 0;padding:var(--sp-3) 0 0;border-top:1px solid color-mix(in srgb,var(--white) 18%,transparent);list-style:none}.v4-hfig b{display:block;font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,4vw,3.1rem);line-height:1;color:var(--white);font-variant-numeric:tabular-nums;text-shadow:0 2px 18px color-mix(in srgb,var(--bg) 60%,transparent)}.v4-hfig b>span{display:inline}.v4-hfig .v4-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.v4-hfig li>span{display:block;margin-top:.5rem;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light)}.v4-tl{margin:var(--sp-4) 0 var(--sp-5)}.v4-tl ol{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:10px}.v4-tl li{position:relative;height:28px}.v4-tl li b{position:absolute;top:0;height:28px;min-width:6px;border-radius:4px;background:var(--orange);transform-origin:0 50%}.v4-tl li.is-plan b{background:transparent;border:1px dashed color-mix(in srgb,var(--orange) 70%,transparent)}.v4-tl li span{position:absolute;top:5px;font-size:.8rem;color:var(--gray-light);white-space:nowrap}.v4-tl li span em{font-style:normal;color:var(--gray);margin-left:.4rem}.v4-tl .v4-tl-ax{display:grid;border-top:1px solid var(--line);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}.v4-tl .v4-tl-ax span{padding:.5rem 0 0 .35rem;border-left:1px solid var(--line);white-space:nowrap;overflow:hidden}@media (max-width:760px){.v4-tl li{height:36px}.v4-tl li b{top:4px}.v4-tl li span{top:1px;font-size:.8rem;line-height:1.3}.v4-tl li span em{display:block;margin:0;font-size:.72rem}.v4-tl .v4-tl-ax{font-size:.6rem;letter-spacing:.04em}.v4-tl .v4-tl-ax span{padding-left:.15rem}.v4-tl .v4-tl-ax i{display:none}.v4-hfig{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:var(--sp-3) 1.5rem}.v4-hfig li>span{font-size:.64rem;letter-spacing:.1em;line-height:1.35}}html.v4-tld .v4-tl li b{transform:scaleX(0);transition:transform .9s var(--ease)}html.v4-tld .v4-tl li span{opacity:0;transition:opacity .6s var(--ease)}html.v4-tld .v4-tl.is-in li b{transform:none}html.v4-tld .v4-tl.is-in li span{opacity:1}html.v4-fbr .v2-fb-alt{padding-left:18px}html.v4-fbr .v2-fb-alt::before,html.v4-fbr .v2-fb-alt::after{content:"";position:absolute;left:0;top:4px;bottom:4px;width:2px;background:var(--line)}html.v4-fbr .v2-fb-alt::after{background:var(--orange);bottom:auto;height:calc((100% - 8px) * var(--p,0));box-shadow:0 0 10px color-mix(in srgb,var(--orange) 60%,transparent)}html.v4-tilt .v2-rail .ep-card .ep-art{transform:perspective(800px) translateY(var(--ty,0px)) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .6s var(--ease)}html.v4-tilt .v2-rail .ep-card:is(:hover,:focus-visible) .ep-art{--ty:-4px;transition:transform .18s var(--ease)}html.v4-tilt .v2-rail .ep-card .ep-art::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;z-index:3;background:radial-gradient(60% 60% at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--white) 14%,transparent),transparent 70%);transition:opacity .4s var(--ease)}html.v4-tilt .v2-rail .ep-card:hover .ep-art::after{opacity:1}</style><script>(function () {
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches, html = document.documentElement;
+  if (!still && window.IntersectionObserver) html.classList.add('v4-tld');
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
+  ready(function () {
+    /* B. the opening's figures count up once (the real figure kept for screen readers, its width held) */
+    if (!still) document.querySelectorAll('.v4-hfig b').forEach(function (b, k) {
+      var real = b.textContent, m = real.match(/^(\d+)(\D*)$/); if (!m) return;
+      var n = +m[1], w = b.getBoundingClientRect().width, show = document.createElement('span'), t0 = 0;
+      show.setAttribute('aria-hidden', 'true'); b.textContent = ''; b.appendChild(show);
+      var sr = document.createElement('span'); sr.className = 'v4-sr'; sr.textContent = real; b.appendChild(sr);
+      b.style.display = 'inline-block'; b.style.minWidth = w + 'px';
+      (function step(now) {
+        if (!t0) t0 = now;
+        var t = Math.min(1, Math.max(0, (now - t0 - 450 - k * 120) / 1400)), e = 1 - Math.pow(1 - t, 3);
+        show.textContent = Math.round(n * e) + m[2];
+        if (t < 1) requestAnimationFrame(step); else { b.textContent = real; b.style.display = b.style.minWidth = ''; }
+      })(performance.now());
+    });
+    /* B. the departures' line draws in once, as it comes into view */
+    var tl = document.querySelector('.v4-tl');
+    if (tl && html.classList.contains('v4-tld')) {
+      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { tl.classList.add('is-in'); io.disconnect(); } }, { threshold: 0.3 });
+      io.observe(tl);
+      tl.querySelectorAll('li').forEach(function (li, k) { var b = li.querySelector('b'), s = li.querySelector('span');
+        if (b) b.style.transitionDelay = (k * 0.12) + 's'; if (s) s.style.transitionDelay = (0.4 + k * 0.12) + 's'; });
+      window.addEventListener('beforeprint', function () { tl.classList.add('is-in'); });
+    }
+    /* A. the trip list fills as the visitor travels through the trips; each held photograph comes slowly closer */
+    var alt = document.querySelector('.v2-fb-alt'), trips = [].slice.call(document.querySelectorAll('.v2-fb-step:not(.v2-fb-intro)'));
+    var shots = [].slice.call(document.querySelectorAll('.v2-fb-shot picture')), raf = 0;
+    if (alt && trips.length) {
+      html.classList.add('v4-fbr');
+      var tick = function () {
+        raf = 0;
+        var mid = window.innerHeight * 0.5, a = trips[0].getBoundingClientRect(), z = trips[trips.length - 1].getBoundingClientRect();
+        alt.style.setProperty('--p', Math.min(1, Math.max(0, (mid - a.top) / Math.max(1, z.bottom - a.top))).toFixed(4));
+        if (!still) trips.forEach(function (t, k) {
+          if (!shots[k]) return;
+          var r = t.getBoundingClientRect(), u = Math.min(1, Math.max(0, (mid - r.top) / Math.max(1, r.height)));
+          shots[k].style.transform = 'scale(' + (1 + 0.06 * u).toFixed(4) + ')';
+        });
+      };
+      window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+      window.addEventListener('resize', function () { if (!raf) raf = requestAnimationFrame(tick); });
+      tick();
+    }
+    /* A. the episode cards lean towards the mouse, with a soft light on them */
+    if (still || !(window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches)) return;
+    html.classList.add('v4-tilt');
+    document.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var c = e.target.closest && e.target.closest('.v2-rail .ep-card'); if (!c) return;
+      var s = c.querySelector('.ep-art'); if (!s) return;
+      var r = s.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      if (x < 0 || x > 1 || y < 0 || y > 1) return;
+      s.style.setProperty('--ry', ((x - 0.5) * 10).toFixed(2) + 'deg'); s.style.setProperty('--rx', ((0.5 - y) * 8).toFixed(2) + 'deg');
+      s.style.setProperty('--mx', (x * 100).toFixed(1) + '%'); s.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+    }, { passive: true });
+    document.addEventListener('pointerout', function (e) {
+      var c = e.target.closest && e.target.closest('.v2-rail .ep-card');
+      if (!c || (e.relatedTarget && c.contains(e.relatedTarget))) return;
+      var s = c.querySelector('.ep-art'); if (s) { s.style.removeProperty('--rx'); s.style.removeProperty('--ry'); }
+    });
+  });
+})();</script><!--/v4p:polish-->
 <!-- site-schema -->
 <script type="application/ld+json">
 {
@@ -227,7 +292,7 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
     <div class="kit-actions">
       <a href="#destinations" class="btn-solid" data-hover><span>Find your expedition</span></a>
       <a href="#listen" class="btn-lines" data-hover>Listen to the podcast</a>
-    </div>
+    </div><!--v4p:fig--><ul class="v4-hfig"><li><b>80</b><span>Conversations</span></li><li><b>136</b><span>Countries listening</span></li><li><b>4</b><span>Destinations</span></li></ul><!--/v4p:fig-->
   </div>
 </header>
 
@@ -258,7 +323,8 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
       <h2 class="kit-title">Every Departure</h2>
       <p class="kit-note">Small groups, fixed dates. Prices are per pilot.</p>
     </div>
-    <p class="v2-found" data-found role="status" aria-live="polite"></p>
+    <!--v4p:tl--><div class="v4-tl" aria-hidden="true"><ol><li><b style="left:4.61%;width:2.30%"></b><span style="left:calc(6.91% + 10px)">India, tour 1<em>21 to 30 Oct 2026</em></span></li><li><b style="left:7.62%;width:2.38%"></b><span style="left:calc(10.00% + 10px)">India, tour 2<em>3 to 12 Nov 2026</em></span></li><li><b style="left:25.35%;width:2.76%"></b><span style="left:calc(28.11% + 10px)">Kenya, tour 1<em>18 to 29 Jan 2027</em></span></li><li><b style="left:28.57%;width:3.06%"></b><span style="left:calc(31.63% + 10px)">Kenya, tour 2<em>1 to 12 Feb 2027</em></span></li><li class="is-plan"><b style="left:57.14%;width:7.14%"></b><span style="left:calc(64.29% + 10px)">Kazakhstan<em>June 2027</em></span></li><li class="is-plan"><b style="left:92.86%;width:7.14%"></b><span style="right:calc(7.14% + 10px)">Peru<em>November 2027</em></span></li></ol><div class="v4-tl-ax" style="grid-template-columns:repeat(14,1fr)"><span>Oct<i> 2026</i></span><span>Nov</span><span>Dec</span><span>Jan<i> 2027</i></span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span></div></div><!--/v4p:tl-->
+  <p class="v2-found" data-found role="status" aria-live="polite"></p>
     <div class="v2-deps kit-panel">
       <div class="v2-dep v2-dep-head" aria-hidden="true"><span>Expedition</span><span>Dates</span><span>Length</span><span>Group</span><span>Price</span><span>Status</span><i></i></div>
       <a class="v2-dep" href="destinations/india.html" data-place="india" data-month="2026-10"><span class="v2-dep-trip"><b>India</b> <em>Tour 1</em></span><span data-l="Dates">21 to 30 Oct 2026</span><span data-l="Length">10 days</span><span data-l="Group">6 places</span><span data-l="Price" class="v2-price">&pound;1,100</span><span class="v2-status is-go">Guaranteed to run</span><i aria-hidden="true">&rarr;</i></a>

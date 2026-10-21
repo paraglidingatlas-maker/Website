@@ -51,11 +51,15 @@ section). What is open:
   home page's), Expeditions' India and Kenya photographs (the trip pages'),
   and the record page's Kerio Valley, Kenya hero and Coupe Icare photographs
   (the Kenya page's and Partners'). Episode cover art repeats by design.
-- From the 20 Oct roadmap, still open: the home page (the first pass was
-  turned down; a preview of two directions was being made on 21 Oct, with
-  photographs that fade into the page, roadmap step 6), and icons to
-  photographs (step 7, waiting for the owner's photographs; on About the
-  owner chose to keep the icons).
+- The home page (roadmap step 6): built on 21 Oct, both directions the
+  owner chose ("both A&B", report row 46): figures under the opening that
+  count up, every departure on one line of months, the trip list that fills
+  with the scroll, the held photographs that come closer, the episode cards
+  that lean towards the mouse. All in `tools/v4_polish.py` (HOME_CSS,
+  HOME_JS, `home_markup`, read from the site at each build).
+- From the 20 Oct roadmap, still open: icons to photographs (step 7,
+  waiting for the owner's photographs; on About the owner chose to keep the
+  icons).
 - The switch-over stays the owner's.
 
 ## The queue, in the owner's order (20 Oct)
