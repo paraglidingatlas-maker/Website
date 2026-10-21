@@ -71,9 +71,31 @@ cheap option offered was removing only what breaks the motion rule (its hero
 slideshow timer and the slow zooms).
 
 ## Found in the 21 Oct review
-The review (17 page types, desktop and phone, captured by scrolling a real
-window, not one tall full-page shot, which breaks the scroll-driven parts) is
-still being read; what it finds goes here.
+17 page types on desktop (1440) and phone (390), captured by scrolling a real
+window one screen at a time and joining the screens (one tall full-page shot
+breaks the pinned and scroll-driven parts), read by two agents and every
+finding checked again by hand; sent to the owner as a page
+(https://claude.ai/artifact/5oA3E1CrreKHtYgbopMXW3). No script errors.
+- Fixed (a regression of row 36): the library's opening chart drifted over
+  "Start here / All Series" on a phone; its drift now stops at the room left
+  in the opening (`tools/v4_polish.py` LIB_JS).
+- For the owner (content, also on the live site): topic pages promise a full
+  transcript for every episode (`generate_tag_pages.py`, lines 331 and 363)
+  while Safety has 29 of 30; the "New Technologies 3: Stephan Stiegler"
+  description lacks a name ("the innovative designer from .",
+  `episode-meta.json`; probably AirDesign); 80 episodes on some pages, 93 on
+  others (both true: 80 in the feed, 93 with the 13 YouTube-only videos);
+  Kenya's "Took It's First Steps".
+- Proposed v4 fixes, waiting for a yes: the podcast feed's failure message
+  ("the saved archive is below instead", from `rss-feed.js`, with nothing
+  below; v4 can replace it with a link to the library); a soft shadow behind
+  the home opening's small orange line over bright snow; "carabiner" under
+  the harness outline in the Brand Stories drawing; the topic pages' chart
+  labels about 5 px on a phone.
+- Not problems: Kenya's gallery and Expeditions' panels need a continuous
+  scroll to load and show (a capture that jumps a screen at a time misses
+  them); nine topics have no trend line because none of their episodes is
+  dated; YouTube pictures are blank only where YouTube cannot be reached.
 
 ## Keeping the cost down (the owner asked, 20 Oct)
 India took about 25 agents and three workflows for a 7.5-to-6 win. Most of
