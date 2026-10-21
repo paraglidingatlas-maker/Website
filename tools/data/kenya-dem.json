@@ -1,0 +1,245 @@
+{
+"source": "AWS Terrain Tiles (Mapzen Terrarium), zoom 10 for the journey, zoom 12 for the insets; tools/dem_fetch.py, tools/dem_tint.py",
+"grid": {
+"w": 1152,
+"h": 1792,
+"mpp": 305.70383773742464,
+"base_m": 300,
+"exag": 1.4,
+"min": 345.75,
+"max": 5866.0,
+"z": 10,
+"tx0": 612,
+"ty0": 508,
+"down": 2
+},
+"textures": {
+"desktop": {
+"h": "../img/kenya/dem/h-journey-2k.png",
+"c": "../img/kenya/dem/c-journey-2k.jpg",
+"seg": [
+576,
+896
+]
+},
+"phone": {
+"h": "../img/kenya/dem/h-journey-1k.png",
+"c": "../img/kenya/dem/c-journey-1k.jpg",
+"seg": [
+288,
+448
+]
+}
+},
+"layers": [
+{
+"name": "kerio",
+"w": 768,
+"h": 1792,
+"scale": 0.25,
+"px0": [
+64.0,
+0.0
+],
+"near_km": 90,
+"bbox": [
+35.38,
+0.22,
+35.78,
+1.32
+],
+"textures": {
+"desktop": {
+"h": "../img/kenya/dem/h-kerio-2k.png",
+"c": "../img/kenya/dem/c-kerio-2k.jpg",
+"seg": [
+384,
+896
+]
+},
+"phone": {
+"h": "../img/kenya/dem/h-kerio-1k.png",
+"c": "../img/kenya/dem/c-kerio-1k.jpg",
+"seg": [
+192,
+448
+]
+}
+}
+},
+{
+"name": "naivasha",
+"w": 896,
+"h": 768,
+"scale": 0.25,
+"px0": [
+352.0,
+736.0
+],
+"near_km": 90,
+"bbox": [
+36.18,
+-1.08,
+36.72,
+-0.62
+],
+"textures": {
+"desktop": {
+"h": "../img/kenya/dem/h-naivasha-2k.png",
+"c": "../img/kenya/dem/c-naivasha-2k.jpg",
+"seg": [
+448,
+384
+]
+},
+"phone": {
+"h": "../img/kenya/dem/h-naivasha-1k.png",
+"c": "../img/kenya/dem/c-naivasha-1k.jpg",
+"seg": [
+224,
+192
+]
+}
+}
+},
+{
+"name": "machakos",
+"w": 768,
+"h": 640,
+"scale": 0.25,
+"px0": [
+672.0,
+992.0
+],
+"near_km": 70,
+"bbox": [
+37.08,
+-1.72,
+37.46,
+-1.32
+],
+"textures": {
+"desktop": {
+"h": "../img/kenya/dem/h-machakos-2k.png",
+"c": "../img/kenya/dem/c-machakos-2k.jpg",
+"seg": [
+384,
+320
+]
+},
+"phone": {
+"h": "../img/kenya/dem/h-machakos-1k.png",
+"c": "../img/kenya/dem/c-machakos-1k.jpg",
+"seg": [
+192,
+160
+]
+}
+}
+},
+{
+"name": "site13",
+"w": 512,
+"h": 640,
+"scale": 0.25,
+"px0": [
+768.0,
+1184.0
+],
+"near_km": 60,
+"bbox": [
+37.28,
+-2.22,
+37.58,
+-1.92
+],
+"textures": {
+"desktop": {
+"h": "../img/kenya/dem/h-site13-2k.png",
+"c": "../img/kenya/dem/c-site13-2k.jpg",
+"seg": [
+256,
+320
+]
+},
+"phone": {
+"h": "../img/kenya/dem/h-site13-1k.png",
+"c": "../img/kenya/dem/c-site13-1k.jpg",
+"seg": [
+128,
+160
+]
+}
+}
+},
+{
+"name": "chyulu",
+"w": 768,
+"h": 896,
+"scale": 0.25,
+"px0": [
+896.0,
+1376.0
+],
+"near_km": 80,
+"bbox": [
+37.68,
+-2.92,
+38.1,
+-2.42
+],
+"textures": {
+"desktop": {
+"h": "../img/kenya/dem/h-chyulu-2k.png",
+"c": "../img/kenya/dem/c-chyulu-2k.jpg",
+"seg": [
+384,
+448
+]
+},
+"phone": {
+"h": "../img/kenya/dem/h-chyulu-1k.png",
+"c": "../img/kenya/dem/c-chyulu-1k.jpg",
+"seg": [
+192,
+224
+]
+}
+}
+}
+],
+"keys": [],
+"per_leg": [],
+"bounds": {
+"sw": [
+40,
+1752
+],
+"ne": [
+1112,
+40
+],
+"pitch": [
+16,
+72
+],
+"yaw": [
+-100,
+100
+],
+"dist": [
+2500,
+160000
+],
+"alt_min": 600
+},
+"light": {
+"az": 150,
+"el": 26,
+"sun": 3.2,
+"amb": 0.95,
+"exposure": 2.0,
+"fog": "#141519"
+},
+"waypoints": {}
+}

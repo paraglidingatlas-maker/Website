@@ -1,0 +1,166 @@
+{
+ "source": "Town positions from GeoNames (cities500, CC BY 4.0, https://www.geonames.org/) via the lmfmaier/cities-json mirror on GitHub",
+ "towns": {
+  "T01": {
+   "label": "Nairobi",
+   "lat": -1.28333,
+   "lon": 36.81667,
+   "pop": 4397073,
+   "geonames_id": 184745
+  },
+  "T02": {
+   "label": "Nakuru",
+   "lat": -0.30719,
+   "lon": 36.07225,
+   "pop": 570674,
+   "geonames_id": 184622
+  },
+  "T03": {
+   "label": "Eldoret",
+   "lat": 0.52036,
+   "lon": 35.26993,
+   "pop": 475716,
+   "geonames_id": 198629
+  },
+  "T04": {
+   "label": "Naivasha",
+   "lat": -0.71383,
+   "lon": 36.43261,
+   "pop": 198444,
+   "geonames_id": 184707
+  },
+  "T05": {
+   "label": "Iten",
+   "lat": 0.67028,
+   "lon": 35.50806,
+   "pop": 42000,
+   "geonames_id": 196185
+  },
+  "T06": {
+   "label": "Kabarnet",
+   "lat": 0.49194,
+   "lon": 35.74303,
+   "pop": 24661,
+   "geonames_id": 195821
+  },
+  "T07": {
+   "label": "Thika",
+   "lat": -1.03326,
+   "lon": 37.06933,
+   "pop": 251407,
+   "geonames_id": 179330
+  },
+  "T08": {
+   "label": "Machakos",
+   "lat": -1.52233,
+   "lon": 37.26521,
+   "pop": 63767,
+   "geonames_id": 188492
+  },
+  "T09": {
+   "label": "Nanyuki",
+   "lat": 0.00624,
+   "lon": 37.07398,
+   "pop": 72813,
+   "geonames_id": 184433
+  },
+  "T10": {
+   "label": "Nyeri",
+   "lat": -0.42013,
+   "lon": 36.94759,
+   "pop": 80081,
+   "geonames_id": 182701
+  },
+  "T11": {
+   "label": "Narok",
+   "lat": -1.08083,
+   "lon": 35.87111,
+   "pop": 65430,
+   "geonames_id": 184379
+  },
+  "T12": {
+   "label": "Embu",
+   "lat": -0.53987,
+   "lon": 37.45743,
+   "pop": 64979,
+   "geonames_id": 198476
+  },
+  "T13": {
+   "label": "Meru",
+   "lat": 0.04626,
+   "lon": 37.65587,
+   "pop": 80191,
+   "geonames_id": 186827
+  },
+  "T14": {
+   "label": "Gilgil",
+   "lat": -0.50397,
+   "lon": 36.31845,
+   "pop": 60711,
+   "geonames_id": 197334
+  },
+  "T15": {
+   "label": "Kajiado",
+   "lat": -1.85238,
+   "lon": 36.77683,
+   "pop": 24678,
+   "geonames_id": 195298
+  },
+  "T16": {
+   "label": "Emali",
+   "lat": -2.08033,
+   "lon": 37.47202,
+   "pop": 18325,
+   "geonames_id": 198537
+  },
+  "T17": {
+   "label": "Kibwezi",
+   "lat": -2.40935,
+   "lon": 37.96631,
+   "pop": 8143,
+   "geonames_id": 192372
+  },
+  "T18": {
+   "label": "Kijabe",
+   "lat": -0.948,
+   "lon": 36.598,
+   "pop": 4679,
+   "geonames_id": 192202
+  },
+  "T19": {
+   "label": "Marigat",
+   "lat": 0.47119,
+   "lon": 35.98638,
+   "pop": 9395,
+   "geonames_id": 187641
+  },
+  "T20": {
+   "label": "Eldama Ravine",
+   "lat": 0.05196,
+   "lon": 35.72734,
+   "pop": 21385,
+   "geonames_id": 198636
+  },
+  "T21": {
+   "label": "Mtito Andei",
+   "lat": -2.68987,
+   "lon": 38.16687,
+   "pop": 5626,
+   "geonames_id": 186101
+  },
+  "T22": {
+   "label": "Kitui",
+   "lat": -1.36696,
+   "lon": 38.01055,
+   "pop": 29062,
+   "geonames_id": 191038
+  },
+  "T23": {
+   "label": "Sultan Hamud",
+   "lat": -2.02042,
+   "lon": 37.37212,
+   "pop": 8718,
+   "geonames_id": 179750
+  }
+ }
+}
