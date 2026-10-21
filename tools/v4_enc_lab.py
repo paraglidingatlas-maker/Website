@@ -190,7 +190,7 @@ CSS = (
     ".k-sec.enc-src{padding-top:var(--sp-4);padding-bottom:var(--sp-4)}"
     # not the FAQ answers' open look (details[open]: an orange edge, 1.15rem out to the left), which moved it sideways
     ".k-sec .enc-src-fold,.k-sec .enc-src-fold[open]{max-width:1300px;margin:0 auto;padding-left:0;border:0}"
-    ".enc-src-fold>summary{display:flex;align-items:baseline;flex-wrap:wrap;gap:.4rem 1.2rem;cursor:pointer;list-style:none;"
+    ".enc-src-fold>summary{display:flex;align-items:center;flex-wrap:wrap;gap:.4rem 1.2rem;cursor:pointer;list-style:none;"
     "padding:var(--sp-2) 0;border-top:1px solid var(--edge);border-bottom:1px solid var(--edge)}"
     ".enc-src-fold>summary::-webkit-details-marker{display:none}"
     ".enc-src-fold>summary h2{font-size:var(--fs-h4);margin:0}"
