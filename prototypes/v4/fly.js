@@ -461,24 +461,24 @@ import * as THREE from "./lib/three.module.min.js";
 
   /* ---------- the frame ---------- */
 
-  /* ---------- the life: elephants, flamingos, runners, cattle, baobabs; emoji figures that keep to their ground, drift a little, and open their place's story ---------- */
-  var NS = "http://www.w3.org/2000/svg", LIFE = D.life || [], LREACH = (D.lifeKm || 60) * 1000, lifeOn = false, lifeT = 0, lifeFr = 0, tap = null, hotG = null;
-  var calm = mq("(prefers-reduced-motion: reduce)").matches, mksBox = s.querySelector(".v4i-fl-mks");
-  /* per kind: height against the others, pace in metres a second (brisk, so the drift shows from the air), spacing in metres, which way the drawing faces (-1 left, 1 right, 0 either) */
-  var KIND = { elephant: [1, 110, 700, -1], giraffe: [1.25, 120, 650, -1], zebra: [.9, 150, 420, -1], rhino: [.95, 70, 900, -1], hippo: [.85, 40, 380, -1], buffalo: [.95, 100, 440, -1], lion: [.8, 50, 700, 0],
-               flamingo: [.8, 30, 170, -1], runner: [.9, 260, 320, 1], cattle: [.9, 80, 380, -1], walker: [.9, 80, 300, 1], crocodile: [.8, 20, 500, 1], baobab: [1.5, 0, 1600, 0] };
+  /* ---------- the life: elephants, flamingos, runners, cattle, baobabs; emoji figures standing on their ground at any distance, each group opening its place's story ---------- */
+  var NS = "http://www.w3.org/2000/svg", LIFE = D.life || [], tap = null, hotG = null, mksBox = s.querySelector(".v4i-fl-mks");
+  /* per kind: height against the others, spacing in metres, which way the drawing faces (-1 left, 1 right, 0 either) */
+  var KIND = { elephant: [1, 700, -1], giraffe: [1.25, 650, -1], zebra: [.9, 420, -1], rhino: [.95, 900, -1], hippo: [.85, 380, -1], buffalo: [.95, 440, -1], lion: [.8, 700, 0],
+               flamingo: [.8, 170, -1], runner: [.9, 320, 1], cattle: [.9, 380, -1], walker: [.9, 300, 1], crocodile: [.8, 500, 1], baobab: [1.5, 1600, 0] };
   function rng(seed) { return function () { seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
   var lifeG = LIFE.map(function (L, gi) {
-    var k = KIND[L.kind] || KIND.elephant, r = rng(gi * 7919 + 17), n = L.n || 1, sp = k[2], still = L.mode === "still";
-    var hr = still ? (L.km || 3) * 1000 : sp * Math.sqrt(n) * 0.75, R = Math.max((L.km || 2) * 1000, hr * 1.4);   // the ground a group spreads over, and the ground it roams
+    var k = KIND[L.kind] || KIND.elephant, r = rng(gi * 7919 + 17), n = L.n || 1, sp = k[1], hr = L.mode === "still" ? (L.km || 3) * 1000 : sp * Math.sqrt(n) * 0.75;
     var a = toWorld(L.px[0], L.px[1], base), el = document.createElementNS(NS, "g"); el.setAttribute("class", "v4i-fl-an is-" + L.kind); el.style.display = "none"; ov.appendChild(el);
-    var ms = [], homes = [];
+    var to = L.to ? toWorld(L.to[0], L.to[1], base) : null, len = to ? Math.hypot(to.x - a.x, to.y - a.y) : 0, dir = to ? [(to.x - a.x) / len, (to.y - a.y) / len] : null;
+    var face = r() < .5 ? -1 : 1, ms = [], homes = [];
     for (var i = 0; i < n; i++) {
       var hx = 0, hy = 0, ok = false, tries = 0;
-      while (!ok && tries++ < 60) { var ang = r() * 6.2832, rad = Math.sqrt(r()) * hr; hx = Math.cos(ang) * rad; hy = Math.sin(ang) * rad; ok = true; for (var q = 0; q < homes.length; q++) if (Math.hypot(homes[q][0] - hx, homes[q][1] - hy) < sp * 0.7) { ok = false; break; } }
+      if (dir) { var u = (i + 0.5) / n * len; hx = dir[0] * u + (r() - .5) * sp * 0.3; hy = dir[1] * u + (r() - .5) * sp * 0.3; }   // in single file along the road
+      else while (!ok && tries++ < 60) { var ang = r() * 6.2832, rad = Math.sqrt(r()) * hr; hx = Math.cos(ang) * rad; hy = Math.sin(ang) * rad; ok = true; for (var q = 0; q < homes.length; q++) if (Math.hypot(homes[q][0] - hx, homes[q][1] - hy) < sp * 0.7) { ok = false; break; } }
       homes.push([hx, hy]);
-      var u = document.createElementNS(NS, "use"); u.setAttribute("href", "#v4i-em-" + L.kind); u.setAttribute("width", "128"); u.setAttribute("height", "128"); u.style.display = "none"; el.appendChild(u);   // a symbol fills its use: give it the drawing's own size
-      ms.push({ el: u, hx: hx, hy: hy, x: hx, y: hy, th: r() * 6.2832, ph: r() * 6.2832, w1: .25 + r() * .3, w2: .2 + r() * .3, face: r() < .5 ? -1 : 1, sc: still ? .75 + r() * .55 : .92 + r() * .16, hid: false, shown: false, sx: 0, sy: 0, hw: 0, hh: 0 });
+      var use = document.createElementNS(NS, "use"); use.setAttribute("href", "#v4i-em-" + L.kind); use.setAttribute("width", "128"); use.setAttribute("height", "128"); use.style.display = "none"; el.appendChild(use);   // a symbol fills its use: give it the drawing's own size
+      ms.push({ el: use, x: hx, y: hy, z: null, face: L.mode === "solo" ? (r() < .5 ? -1 : 1) : face, sc: L.mode === "still" ? .75 + r() * .55 : .92 + r() * .16, shown: false, sx: 0, sy: 0, hw: 0, hh: 0 });
     }
     var b = null;
     if (mksBox && WP[L.c]) {                                 // a small button at the group's middle, for keys and fingers; the figures themselves answer the pointer
@@ -486,49 +486,29 @@ import * as THREE from "./lib/three.module.min.js";
       b.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); openDlg(L.c); });
       b.addEventListener("focus", function () { el.classList.add("is-hot"); }); b.addEventListener("blur", function () { el.classList.remove("is-hot"); }); mksBox.appendChild(b);
     }
-    var to = L.to ? toWorld(L.to[0], L.to[1], base) : null, len = to ? Math.hypot(to.x - a.x, to.y - a.y) : 0;
-    return { L: L, k: k, a: a, el: el, btn: b, ms: ms, cx: 0, cy: 0, th: r() * 6.2832, rot: 0, u: r() * len * 2, R: R, on: false, dir: to ? [(to.x - a.x) / len, (to.y - a.y) / len] : null, len: len };
+    return { L: L, k: k, a: a, el: el, btn: b, ms: ms, on: false };
   });
-  var lv = new THREE.Vector3(), lv2 = new THREE.Vector3();
-  function life(now) {
-    var dt = lifeT ? Math.min(0.1, (now - lifeT) / 1000) : 0; lifeT = now; if (calm) dt = 0; lifeFr++;
-    var t = now / 1000, cam = camera.position, any = false;
+  var lv = new THREE.Vector3();
+  function life() {                                          // after a render: every figure projected afresh, hidden only behind the ground or off the screen
+    var cam = camera.position;
     lifeG.forEach(function (G) {
-      var L = G.L, k = G.k, dist = Math.hypot(G.a.x - cam.x, G.a.y - cam.y, G.a.z - cam.z), on = dist < LREACH;
-      if (on) { lv.set(G.a.x + G.cx, G.a.y + G.cy, G.a.z); var pr = project(lv); on = pr[2] && pr[0] > -120 && pr[0] < W + 120 && pr[1] > -120 && pr[1] < Hh + 120; }
+      var k = G.k, dist = Math.hypot(G.a.x - cam.x, G.a.y - cam.y, G.a.z - cam.z);
+      lv.set(G.a.x, G.a.y, G.a.z); var pr = project(lv), on = pr[2] && pr[0] > -160 && pr[0] < W + 160 && pr[1] > -160 && pr[1] < Hh + 160;
       if (!on) { if (G.on) { G.on = false; G.el.style.display = "none"; if (G.btn) G.btn.hidden = true; G.ms.forEach(function (m) { m.shown = false; m.el.style.display = "none"; }); } return; }
       if (!G.on) { G.on = true; G.el.style.display = ""; G.a.z = groundZ(G.a); }
-      any = true;
-      var v = k[1], mode = L.mode || "herd";
-      if (mode === "herd" || mode === "flock") {              // the group wanders, and turns back when it reaches the edge of its ground
-        G.th += (Math.random() - .5) * 0.8 * dt; if (Math.hypot(G.cx, G.cy) > G.R) G.th = Math.atan2(-G.cy, -G.cx) + (Math.random() - .5) * 0.6;
-        G.cx += Math.cos(G.th) * v * dt; G.cy += Math.sin(G.th) * v * dt; if (mode === "flock") G.rot += 0.05 * dt;
-      } else if (mode === "line" && G.dir) G.u = (G.u + v * dt) % (2 * G.len);
-      var hb = clamp((small ? 24 : 27) * Math.pow(16000 / Math.max(dist, 1500), 0.4), 12, 48) * k[0], fade = smooth(clamp((LREACH - dist) / (LREACH * 0.2), 0, 1)), chk = (lifeFr + G.ms.length) % 6 === 0 || !G.ms[0].shown;
+      var hb = clamp((small ? 24 : 27) * Math.pow(16000 / Math.max(dist, 1500), 0.4), 12, 48) * k[0];
       var x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9, shownN = 0;
-      G.ms.forEach(function (m, i) {
-        var vx = 0, vy = 0;
-        if (mode === "herd") { var A = k[2] * 0.35; m.x = G.cx + m.hx + A * Math.sin(t * m.w1 + m.ph); m.y = G.cy + m.hy + A * Math.cos(t * m.w2 + m.ph); vx = Math.cos(G.th) * v; vy = Math.sin(G.th) * v; }
-        else if (mode === "flock") { var c = Math.cos(G.rot), sn = Math.sin(G.rot), A2 = k[2] * 0.3, rx = c * m.hx - sn * m.hy, ry = sn * m.hx + c * m.hy; m.x = G.cx + rx + A2 * Math.sin(t * m.w1 + m.ph); m.y = G.cy + ry + A2 * Math.cos(t * m.w2 + m.ph); vx = -ry * 0.05 + Math.cos(G.th) * v; vy = rx * 0.05 + Math.sin(G.th) * v; }
-        else if (mode === "solo") {                              // each on its own: a walk, a pause, a turn
-          var go = smooth(clamp((Math.sin(t * 0.12 + m.ph) + 0.5) / 1.2, 0, 1)); m.th += (Math.random() - .5) * 1.4 * dt; if (Math.hypot(m.x, m.y) > G.R) m.th = Math.atan2(-m.y, -m.x) + (Math.random() - .5) * 0.5;
-          vx = Math.cos(m.th) * v * go; vy = Math.sin(m.th) * v * go; m.x += vx * dt; m.y += vy * dt;
-        } else if (mode === "line" && G.dir) {                   // in single file along the road, out and back
-          var uu = (G.u + i * k[2]) % (2 * G.len), fwd = uu < G.len, sg = fwd ? uu : 2 * G.len - uu; m.x = G.dir[0] * sg + m.hx * 0.15; m.y = G.dir[1] * sg + m.hy * 0.15; vx = G.dir[0] * (fwd ? v : -v); vy = G.dir[1] * (fwd ? v : -v);
-        }
-        var wx = G.a.x + m.x, wy = G.a.y + m.y, z = groundZ({ x: wx, y: wy });
-        lv.set(wx, wy, z); var p1 = project(lv), sx = p1[0], sy = p1[1], inn = p1[2] && sx > -30 && sx < W + 30 && sy > -30 && sy < Hh + 30;
-        if (inn && chk && H) m.hid = hidden(lv, cam);
-        if (!inn || m.hid) { if (m.shown) { m.shown = false; m.el.style.display = "none"; } return; }
-        if (vx || vy) { lv2.set(wx + vx * 2, wy + vy * 2, z); var p2 = project(lv2), dxs = p2[0] - sx; if (dxs > 0.15) m.face = 1; else if (dxs < -0.15) m.face = -1; }
-        var hh = hb * m.sc, sc = hh / 128, fx = k[3] === 0 || m.face === k[3] ? 1 : -1;
+      G.ms.forEach(function (m) {
+        var wx = G.a.x + m.x, wy = G.a.y + m.y; if (m.z === null) m.z = groundZ({ x: wx, y: wy });
+        lv.set(wx, wy, m.z); var p1 = project(lv), sx = p1[0], sy = p1[1], inn = p1[2] && sx > -30 && sx < W + 30 && sy > -30 && sy < Hh + 30;
+        if (!inn || (H && hidden(lv, cam))) { if (m.shown) { m.shown = false; m.el.style.display = "none"; } return; }
+        var hh = hb * m.sc, sc = hh / 128, fx = k[2] === 0 || m.face === k[2] ? 1 : -1;
         m.el.setAttribute("transform", "translate(" + sx.toFixed(1) + " " + sy.toFixed(1) + ") scale(" + (sc * fx).toFixed(4) + " " + sc.toFixed(4) + ") translate(-64 -118)");
-        if (!m.shown) { m.shown = true; m.el.style.display = ""; } m.el.style.opacity = fade.toFixed(2);
+        if (!m.shown) { m.shown = true; m.el.style.display = ""; }
         m.sx = sx; m.sy = sy; m.hw = hh * 0.5; m.hh = hh; if (sx - m.hw < x0) x0 = sx - m.hw; if (sx + m.hw > x1) x1 = sx + m.hw; if (sy - hh < y0) y0 = sy - hh; if (sy > y1) y1 = sy; shownN++;
       });
       if (G.btn) { if (!shownN) G.btn.hidden = true; else { G.btn.hidden = false; G.btn.style.transform = "translate(" + ((x0 + x1) / 2).toFixed(0) + "px," + ((y0 + y1) / 2).toFixed(0) + "px)"; } }
     });
-    lifeOn = any;
   }
   function lifeAt(x, y) {                                     // the group whose figure is under the pointer
     for (var gi = 0; gi < lifeG.length; gi++) { var G = lifeG[gi]; if (!G.on) continue;
@@ -645,6 +625,7 @@ import * as THREE from "./lib/three.module.min.js";
       if (on) for (var q = 0; q < cardBoxes.length; q++) { var o = cardBoxes[q]; if (m.x > o[0] - 14 && m.x < o[2] + 14 && m.y > o[1] - 14 && m.y < o[3] + 14) under = true; }   // a ring half under a plate is hidden too
       put("mk" + c, on && !under ? m.x.toFixed(0) + "," + m.y.toFixed(0) : "", function (v) { if (!v) { b.hidden = true; return; } var a = v.split(","); b.hidden = false; b.style.transform = "translate(" + a[0] + "px," + a[1] + "px)"; });
     });
+    if (ready && lifeG.length) life();
   }
   function progress() { var r = s.getBoundingClientRect(), h = r.height - window.innerHeight; if (h <= 0) return 0; var p = -r.top / h; return p < 0 ? 0 : p > 1 ? 1 : p; }
   function tick() {
@@ -657,7 +638,6 @@ import * as THREE from "./lib/three.module.min.js";
     if (free && !grab && !two && settleZ()) dirty = true;
     if (glide) coast();
     if (dirty) { dirty = false; render(); }
-    if (ready && lifeG.length) life(performance.now());
     raf = requestAnimationFrame(tick);
   }
   function run(on) { if (on) { if (!raf) raf = requestAnimationFrame(tick); } else if (raf) { cancelAnimationFrame(raf); raf = 0; } }

@@ -61,7 +61,7 @@ CREDIT = ("The ground is open terrain data (AWS Terrain Tiles, Mapzen Terrarium,
           "launches are read from the owner's own tracklogs and the towns are placed from GeoNames (CC BY 4.0); the parks, peoples, prehistoric sites and landmarks "
           "along the way are placed by hand at the centre of each area, with a few lines each from published sources; the border is Natural Earth's. The flights drawn are the owner's, "
           "scored by the XContest rules: the distance is the scored route, the dashed line is that route, and the average speed is the scored "
-          "distance over the time in the air. The figures are Noto Emoji (Google, Apache 2.0): they stand on ground placed by hand near each park, lake or town, "
+          "distance over the time in the air. The figures are Noto Emoji (Google, Apache 2.0): they stand on ground placed by hand near each park, lake or town, in view at any distance, "
           "for the animals and people of a place, not for sightings.")
 
 
@@ -150,7 +150,7 @@ def build():
     keys = [dict(name=n, cam=px_of(c[0], c[1], g) + [c[2]], tgt=px_of(tg[0], tg[1], g) + [tg[2]], fov=fov, fog=fog, sun=sun) for n, c, tg, fov, fog, sun in KEYS]
     assert len(PER_LEG) == len(keys) - 1 == len(LEG_CHAPTER)
     data = {"grid": g, "textures": dem["textures"], "layers": dem["layers"], "edge_fade": 0.04, "keys": keys, "per_leg": PER_LEG, "bounds": dem["bounds"],
-            "light": dem["light"], "waypoints": wp, "chapter": LEG_CHAPTER, "cards": [], "farKm": 50, "phonePins": PHONE_PINS, "maxPins": 12, "borders": borders, "life": life, "lifeKm": 60,
+            "light": dem["light"], "waypoints": wp, "chapter": LEG_CHAPTER, "cards": [], "farKm": 50, "phonePins": PHONE_PINS, "maxPins": 12, "borders": borders, "life": life,
             "tracks": [{"name": x["name"], "date": x["date"], "distance_km": x["distance_km"], "duration_min": x["duration_min"], "avg_kmh": x["avg_kmh"],
                         "max_alt_m": x["max_alt_m"], "type": x["type"], "closed": x["closed"], "points": x["points"], "ground_km": x["ground_km"],
                         "off_map": x["off_map"], "route": x["route"], "segs": x["segs"]} for x in tracks]}
