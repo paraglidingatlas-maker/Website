@@ -29,6 +29,62 @@ the owner's current queue and what the last session learnt doing it.
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
 
+## Where chat 6 left it (23 Oct): three things wait on the owner, nothing half-built in the repo
+Chat 6 changed nothing in v4. Its work lives in two private review pages the
+owner has; their published files are the hand-over (read them with the
+Artifact tool, `action: "read"`, `path`).
+- **The live episode chart** (owner, 22 Oct: "make this live and real
+  clickable to episode pages"). Built and tested in chat 5; screenshots in
+  the review page https://claude.ai/artifact/H3xMx4aW6teybonm5aYpvY. The
+  owner has not said "finish it" or "drop it". The change is that page's
+  published file `chart.patch` (tools/v4_pass.py topic_log and topic_page,
+  tools/v4_library.py, tools/v4_polish.py LOG_CSS and LOG_JS, report row 54).
+  To finish: `git apply` it, `python3 tools/v4_build.py` twice (the second
+  changes nothing), `git checkout -- sitemap.xml`, commit, gates, clean
+  rebuild, push. To drop: nothing to undo.
+- **Five new Kenya photographs for the repeats** (owner, 22 Oct: find them
+  in the Drive, "impactful and captivating", edited to match the site).
+  From the owner's Drive folder "Kenya Feb 2025" (Paragliding Atlas > PG
+  Atlas Photos > Photos by Self): DSC_9840 for About's Kenya card, DSC_9842
+  and DSC_9541 for Expeditions' Kenya and Kerio Valley photographs (with 2:3
+  phone crops), DSC_9452 and DSC_9537 for the record page's Kenya and Kerio
+  Valley photographs. Graded warmer and deeper with a soft vignette, framed
+  on the wing. The finished files (jpg and webp, `edit/` in the same review
+  page) await the owner's yes; the review page shows each against the photo
+  it replaces. Where each is set: Expeditions in `tools/v4_expeditions.py`
+  (about lines 337 and 366), the record page in `tools/v4_record*.py`,
+  About's card comes through the v2 About build (find `kenya-3` in the
+  About source). Put them in `prototypes/v4/img/`, never in `assets/`.
+  Still uncovered: India, Peru and Kazakhstan (no photographs of them in the
+  Drive), Coupe Icare (the Drive's "Coupe Icare Asset Sheet" folder is not
+  yet looked at). The Drive connector refuses files over 10 MB and dropped
+  the connection on them; the owner's "Hi Res Camera" folder needs smaller
+  exports.
+- **The home page opening** (owner, 23 Oct: the hero "is a joke"; asked for a
+  competition between three designers). Three mock-ups (A footage, B atlas
+  chart, C still photograph with the wing cut out over a giant KENYA); the
+  owner liked C, asked whether dropping video lost awwwards ground, and said
+  "ok" to both upgrades: C2 adds depth-map parallax (Depth Anything) in
+  WebGL, the wing's shadow on the letters, a pointer light, static grain, a
+  one-time arrival (about 1.5 s, approved), footage inside the letters on
+  point or tap (India: the Bir clip; the others a second photograph, since
+  footage must come from the named place) and a four-destination switcher.
+  All four live, with their files, at
+  https://claude.ai/artifact/BFTmxrj3NZpbkf3cqcYtxG (C2 first). Waiting for
+  the owner's verdict on C2. C2's open points: Peru and Kazakhstan reuse
+  peru-1 and kazakhstan-1 (already lower on the home page; kazakhstan-1 may
+  be a composite, ask); the wing cut-outs lose the lines; not yet tried on a
+  real iPhone. New headline in C and C2: "Paragliding expeditions, run by a
+  pilot." Building the winner into v4 means `tools/v4_polish.py`
+  `home_markup` and HOME_CSS/HOME_JS, the assets into `prototypes/v4/img/`.
+- Parked by the owner (23 Oct, "I'll take my own time, don't disturb me"):
+  the Encarta concept for the globe and the encyclopedia home. Do not ask.
+- Small, not yet offered again: on a phone the library chart's year labels
+  and "166 min" are tiny (the topic pages' chart got larger ones in row 45).
+- The build needs `contourpy` (`pip install contourpy`; v4_expert.py's
+  meteo drawing). A fresh container may lack it: `v4_build.py` then fails at
+  `v4_pass.py`.
+
 ## Where the queue stands (21 Oct)
 Items 1 to 3 below are done and pushed: the sitemap's real sky (row 35, with
 the motion the owner asked for), Partners (row 34) and the site-wide pass on
@@ -140,7 +196,7 @@ finding checked again by hand; sent to the owner as a page
   `episode-meta.json`; probably AirDesign); 80 episodes on some pages, 93 on
   others (both true: 80 in the feed, 93 with the 13 YouTube-only videos);
   Kenya's "Took It's First Steps".
-- Proposed v4 fixes, waiting for a yes: the podcast feed's failure message
+- Proposed v4 fixes, built the same day (report row 45, commit e7398530; checked again in the browser on 21 Oct, all four in place): the podcast feed's failure message
   ("the saved archive is below instead", from `rss-feed.js`, with nothing
   below; v4 can replace it with a link to the library); a soft shadow behind
   the home opening's small orange line over bright snow; "carabiner" under
