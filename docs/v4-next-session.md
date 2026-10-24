@@ -29,7 +29,7 @@ the owner's current queue and what the last session learnt doing it.
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
 
-## Where chat 9 left it (24 Oct): the route plays on, and Panchgani is a fifth stop (F2 only)
+## Where chat 9 left it (24 Oct): the route plays on, and Panchgani is a fifth tour (F2 only)
 Chat 9 changed nothing in v4 (docs only). Its work is in the review page
 https://claude.ai/artifact/BFTmxrj3NZpbkf3cqcYtxG (newest at the top; F2's
 code is its published file `F2/index.html`, the Panchgani layers are
@@ -46,29 +46,38 @@ code is its published file `F2/index.html`, the Panchgani layers are
   next place wipes in. Code: `playOn()` and `dwell` in F2/index.html; it
   pauses off screen, in a hidden tab and mid swipe, and restarts when the
   visitor picks a place. Reduced motion: no autoplay, the line stays 48 px.
-- **Panchgani, option A** (owner: "Add Panchgani to F2 as option A (the
-  designers' pick, which I chose)"; from chat 8's prompt). A fifth stop after
-  Peru: the dated season now fills `--s` of the route (0.9 desktop, 0.78
-  phone, in `.season`), and Panchgani stands at the right end with a hollow
-  marker and "Podcast" under it (`.tp.pod`, `.tp-k`). The glider's position
-  along the route is now read from each marker in `layout()`. Readout: 14 to
-  21 Feb 2027, 8 days (owner: "2 days after the last kenya tour and runs for
-  8 days"; Kenya's last ends 12 Feb), launch and price `[to supply]`; photo
-  credit under the place name, "Photo by Michael Gebert /
-  @flywithandy_paragliding" (owner's words; the handle links to Instagram); "You fly: The plateau that hosted a
-  pre World Cup" (from the episode summary); button "Listen: Navigating
-  Panchgani" to `episodes/navigating-panchgani-vistasp-kharas.html`
-  (Navigators episode 9, 54 min). Photo: the review page's `src/panchgani.webp`
-  (1500 x 756). The wing keeps its real size and place (`box`, mapped through
-  the ground's cover rect); PANCHGANI is at Kazakhstan's size (`sizeAs`) with
-  its middle on the plateau's flat top (`rim: 0.285`); the land drifts 3% of
-  the width sideways under the wing, centred (`push.pan`, `center: true`), no
-  push-in. The wing was cut by hand (white canopy by low saturation, the
-  pilot by a tight box: about 110 px of wing, too small for the line tools),
-  then `scene.py` with place-named outputs, `groundw` 1500, `wingw` 240.
-- **Waiting on the owner (do not push):** how the autoplay and Panchgani look
-  live; Panchgani's launch and price (it stays apart from the season line
-  even with dates, as the owner placed it); and everything still
+- **Panchgani** (owner: first "Add Panchgani to F2 as option A", a podcast
+  stop apart from the season; then "it has dates, 2 days after the last kenya
+  tour and runs for 8 days"; then "yes, it is a proper tour which will need
+  to have all its necessities like other destination pages in the site, for
+  now do this and then we proceed"). Now a dated tour on the season line:
+  14 to 21 Feb 2027, 8 days (Kenya's last ends 12 Feb), bar at left 31.89%,
+  width 2.04%, marker 32.91%; `ORDER` is India, Kenya, Panchgani, Kazakhstan,
+  Peru. Its name reads to the right of its marker (`.tp.lt`), and on a phone
+  sits a row above Kenya's. Readout: launch and price `[to supply]`; "You fly:
+  The plateau that hosted a pre World Cup" (episode summary); photo credit
+  under the place name, "Photo by Michael Gebert / @flywithandy_paragliding"
+  (owner's words; the handle links to Instagram); the button is still
+  "Listen: Navigating Panchgani" (`episodes/navigating-panchgani-vistasp-kharas.html`)
+  until a Panchgani tour page exists. The `.season` box and the route-%
+  glider positions read from each marker in `layout()` stay (with `--s:1`).
+  Photo: the review page's `src/panchgani.webp` (1500 x 756). The wing keeps
+  its real size and place (`box`, mapped through the ground's cover rect);
+  PANCHGANI is at Kazakhstan's size (`sizeAs`) with its middle on the
+  plateau's flat top (`rim: 0.285`). Motion (owner: "a left circle with a
+  very shallow angle while moving forward ... ensure this does not become
+  nauseating"): over each 14 s pass the land comes 4% nearer (`g` 0.04 about
+  `far` [0.47, 0.4], depth `k` 0.04), slides 2.5% of the width right
+  (`pan[0]`, centred) and turns 1.6 degrees clockwise about the frame's middle
+  (`push.rot`, new uniform `uGRot`); name and wing hold still. The wing was cut
+  by hand (low saturation inside its box, the pilot in a tight box: about
+  110 px of wing, too small for the line tools), then `scene.py` with
+  place-named outputs, `groundw` 1500, `wingw` 240.
+- **Next (owner):** Panchgani needs everything the other destinations have
+  in the site (its own destination page and the rest); the owner said "then
+  we proceed", so ask what comes first only if it is not clear from them.
+- **Waiting on the owner (do not push):** how the autoplay and the Panchgani
+  turn look live; Panchgani's launch and price; and everything still
   listed under chat 8 below.
 
 ## Where chat 8 left it (24 Oct): F2's Kenya photo and DSC_9492's move, nothing half-built in the repo
