@@ -63,9 +63,11 @@ the top; F2's code is its published file `F2/index.html`).
   reduce that by 50%": on every place the gliders' shadow strength now falls
   to half as the page scrolls (`uShK` times `1 - 0.5p`) and its scroll gap
   grows half as much (`lift` 1.4 to 0.7). "Do the same with India": the
-  snowline photo drifts, the ground 0.8% of the width right plus a depth
-  shift 0.014 (near rock moves more), the wing 1.2% left, 18 s each way
-  (`DESTS.india.push.pan`); "red wing" and "launch day" stay still.
+  snowline photo drifts, the ground 2.2% of the width right plus a depth
+  shift 0.03 (near rock moves more) under a 5% zoom that hides the edges,
+  the wing 3.5% left, 14 s each way (`DESTS.india.push`); "red wing" and
+  "launch day" stay still. (A first, smaller drift, 1.2%, was too small to
+  see: the owner said "the india animation isn't working".)
 - **The owner changed the motion rule for these (24 Oct):** "for both kenya
   and india add this as a infinity loop, as long as the viewer stays the
   immersion stays". So both moves loop out and back on a sine (no jump),
