@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home opening (sample: F2) | Paragliding Atlas</title>
+<title>Home opening (sample) | Paragliding Atlas</title>
 <meta name="robots" content="noindex, nofollow">
 <!-- a standalone review page (the home opening, design F2): it carries its own styles, so it links neither styles.css nor v2.css -->
 <link rel="icon" type="image/png" href="../../img/favicon-96.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="kenya-ground.webp" type="image/webp">
-<link rel="preload" as="image" href="kenya-wing.webp" type="image/webp">
+<link rel="preload" as="image" href="kenya-9492-ground.webp" type="image/webp">
+<link rel="preload" as="image" href="kenya-9492-wing.webp" type="image/webp">
 <script>
 /* One arrival per visit, never with reduced motion. Without JavaScript the still shows. */
 (function (d) {
@@ -374,12 +374,12 @@ html:not(.js) .swipe{display:none!important}
 <main>
 <header class="held" id="held">
   <div class="stage">
-    <div class="scene sw is-on" data-dest="kenya">
-      <div class="layer ground" aria-hidden="true"><picture><source srcset="kenya-ground.webp" type="image/webp"><img src="kenya-ground.jpg" width="1600" height="900" alt="" fetchpriority="high"></picture></div>
-      <div class="layer shadow" aria-hidden="true"><img src="kenya-wing.webp" width="796" height="658" alt=""></div>
+    <div class="scene sw is-on pushes" data-dest="kenya">
+      <div class="layer ground" aria-hidden="true"><picture><source srcset="kenya-9492-ground.webp" type="image/webp"><img src="kenya-9492-ground.jpg" width="2000" height="1333" alt="" fetchpriority="high"></picture></div>
+      <div class="layer shadow" aria-hidden="true"><img src="kenya-9492-wing.webp" width="1300" height="978" alt=""></div>
       <div class="layer shade" aria-hidden="true"></div>
       <div class="layer word" aria-hidden="true"><span class="w"><i style="--i:0">K</i><i style="--i:1">E</i><i style="--i:2">N</i><i style="--i:3">Y</i><i style="--i:4">A</i><b></b></span></div>
-      <div class="layer wing"><img src="kenya-wing.webp" width="796" height="658" alt="A paraglider pilot in a pod harness under a blue and yellow wing, over forest and cliffs in Kenya" fetchpriority="high"></div>
+      <div class="layer wing"><img src="kenya-9492-wing.webp" width="1300" height="978" alt="Three paragliders, yellow, red and orange, over a valley in Kenya" fetchpriority="high"></div>
     </div>
     <div class="scene sw" data-dest="india">
       <div class="layer ground" aria-hidden="true"><img src="india-ground.webp" width="1600" height="1067" alt="" loading="lazy"></div>
@@ -554,10 +554,13 @@ html:not(.js) .swipe{display:none!important}
       say: 'India, Big Mountain Flying. 15 to 24 April, 25 April to 4 May, 21 to 30 October and 3 to 12 November 2027, 10 days, from £1,100.',
       d: { wing: [0.57, 0.11, 0.27], focus: [0.62, 0.45] }, m: { wing: [0.46, 0.04, 0.5], focus: [0.72, 0.4] },
       push: { g: 0.05, w: 1, k: 0, far: [0.5, 0.5], drift: 0, ms: 14000, pan: [0.022, 0.03, -0.035], loop: 'forward', fade: 0.35, mist: [2, 1.35, 1.38, 1.42, 0.9] } },
-    kenya: { word: 'KENYA', ground: 'kenya-ground.webp', gs: [1600, 900], wing: 'kenya-wing.webp', ws: [796, 658], pad: [0.054, 0.0653], dim: 0.82,
+    /* DSC_9492, three gliders (the owner's choice): the follow shot flies slowly into the valley */
+    kenya: { word: 'KENYA', ground: 'kenya-9492-ground.webp', gs: [2000, 1333], wing: 'kenya-9492-wing.webp', ws: [1300, 978], pad: [0.06, 0.0593], dim: 0.86,
+      depth: 'kenya-9492-depth.jpg', shadow: 'kenya-9492-shadow.png',
       fill: 'kenya-fill.webp', fs: [1500, 1000], hint: 'a second view of Kenya', x: 28.49,
       say: 'Kenya, Explore the Cradle. 18 to 29 January and 1 to 12 February 2027, 12 days, from US$2,100.',
-      d: { wing: [0.42, 0.10, 0.52], focus: [0.58, 0.5] }, m: { wing: [0.06, 0.19, 0.88], focus: [0.62, 0.3] } },
+      d: { wing: [0.47, 0.09, 0.44], focus: [0.5, 0.6] }, m: { wing: [0.06, 0.12, 0.86], focus: [0.62, 0.5] },
+      push: { g: 0.08, w: 0.93, k: 0.1, ms: 14000, far: [0.42, 0.18], drift: 0.015, loop: 'forward', fade: 0.35, mist: [1, 0.82, 0.8, 0.75, 0.78] } },
     kazakhstan: { word: 'KAZAKHSTAN', ground: 'kazakhstan-ground.webp', gs: [1556, 1156], wing: 'kazakhstan-wing.webp', ws: [1021, 664], pad: [0.0411, 0.0633], dim: 0.62,
       self: true, hint: 'the canyons seen through it', x: 60.71,
       say: 'Kazakhstan, Beyond Roads, Beyond Maps. Planned for June 2027, 10 days, from €2,100.',
@@ -578,46 +581,6 @@ html:not(.js) .swipe{display:none!important}
          a turn without making anyone queasy: the name and the wing hold still, nothing swings back */
       push: { g: 0.04, w: 1, k: 0.04, far: [0.47, 0.4], drift: 0, ms: 14000, pan: [0.025, 0.01, 0], rot: 1.6, center: true } }
   };
-  /* which photograph Kenya and India use: Kenya DSC_9492 and India's snowline, the owner's choices (?kenya=9452 or 9522, ?india=redwing or launch, still reach the others); same layout, other layers */
-  var PHOTOS = {
-    kenya: {
-      '9492': { ground: 'kenya-9492-ground.webp', jpg: 'kenya-9492-ground.jpg', gs: [2000, 1333], wing: 'kenya-9492-wing.webp', ws: [1300, 978], pad: [0.06, 0.0593],
-        depth: 'kenya-9492-depth.jpg', shadow: 'kenya-9492-shadow.png', dim: 0.86, push: { g: 0.08, w: 0.93, k: 0.1, ms: 14000, far: [0.42, 0.18], drift: 0.015, loop: 'forward', fade: 0.35, mist: [1, 0.82, 0.8, 0.75, 0.78] },
-        alt: 'Three paragliders, yellow, red and orange, over a valley in Kenya',
-        d: { wing: [0.47, 0.09, 0.44], focus: [0.5, 0.6] }, m: { wing: [0.06, 0.12, 0.86], focus: [0.62, 0.5] } },
-      '9522': { ground: 'kenya-9522-ground.webp', jpg: 'kenya-9522-ground.jpg', gs: [2000, 1333], wing: 'kenya-9522-wing.webp', ws: [900, 1288], pad: [0.06, 0.0598],
-        depth: 'kenya-9522-depth.jpg', shadow: 'kenya-9522-shadow.png', dim: 0.8,
-        alt: 'A paraglider pilot under a yellow and blue wing, its lines catching the sun, over forested hills in Kenya',
-        d: { wing: [0.6, 0.07, 0.25], focus: [0.5, 0.55] }, m: { wing: [0.34, 0.02, 0.58], focus: [0.4, 0.5] } },
-      '9452': null
-    },
-    india: {
-      snowline: null,
-      redwing: { ground: 'india-redwing-ground.webp', jpg: 'india-redwing-ground.jpg', gs: [1400, 933], wing: 'india-redwing-wing.webp', ws: [470, 424], pad: [0.0596, 0.059],
-        depth: 'india-redwing-depth.jpg', shadow: 'india-redwing-shadow.png', dim: 0.62,
-        alt: 'A pilot under a red and yellow wing over snow and rock in India',
-        d: { wing: [0.56, 0.09, 0.3], focus: [0.5, 0.5] }, m: { wing: [0.3, 0.03, 0.66], focus: [0.4, 0.5] } },
-      launch: { ground: 'india-launch-ground.webp', jpg: 'india-launch-ground.jpg', gs: [1400, 933], wing: 'india-launch-wing.webp', ws: [300, 267], pad: [0.06, 0.0599],
-        depth: 'india-launch-depth.jpg', shadow: 'india-launch-shadow.png', dim: 0.78,
-        alt: 'A pilot under a green wing just off the Billing launch, the Kangra valley below',
-        d: { wing: [0.58, 0.1, 0.28], focus: [0.5, 0.62] }, m: { wing: [0.36, 0.04, 0.56], focus: [0.5, 0.6] } }
-    }
-  };
-  var pick = {};
-  Object.keys(PHOTOS).forEach(function (place) {
-    var v = (new RegExp('[?&]' + place + '=(\\w+)').exec(location.search) || [])[1];
-    pick[place] = PHOTOS[place].hasOwnProperty(v) ? v : { kenya: '9492', india: 'snowline' }[place];
-    var k = PHOTOS[place][pick[place]];
-    if (!k) return;
-    var d = DESTS[place], sc = held.querySelector('.scene[data-dest="' + place + '"]');
-    if (k.push) sc.classList.add('pushes');
-    ['ground', 'gs', 'wing', 'ws', 'pad', 'depth', 'shadow', 'dim', 'd', 'm', 'push'].forEach(function (n) { d[n] = k[n]; });
-    var src = sc.querySelector('.ground source'), gi = sc.querySelector('.ground img');
-    if (src) src.srcset = k.ground;
-    gi.src = src ? k.jpg : k.ground; gi.width = k.gs[0]; gi.height = k.gs[1];
-    [].forEach.call(sc.querySelectorAll('.shadow img, .wing img'), function (im) { im.src = k.wing; im.width = k.ws[0]; im.height = k.ws[1]; });
-    sc.querySelector('.wing img').alt = k.alt;
-  });
   var ORDER = ['kenya', 'panchgani', 'india', 'kazakhstan', 'peru'];   /* the order they fly, October 2026 to November 2027 */
   var active = 'kenya', target = 'kenya';
   var scenes = {};
