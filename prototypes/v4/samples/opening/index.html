@@ -156,6 +156,14 @@ h1{font:700 clamp(2rem,3.2vw,3rem)/1.04 var(--font-display);letter-spacing:-.02e
 .tbd{display:inline-block;font:500 .86rem/1.2 var(--font-body);color:var(--gray);border:1px dashed color-mix(in srgb,var(--white) 26%,transparent);padding:.32rem .5rem;margin-top:.1rem}
 .pp{display:none;letter-spacing:.1em}
 .tbd.sm{font-size:.72rem;padding:.12rem .35rem;margin:0}
+/* the line itself skips: a click fills it to the end and the next place flies in */
+.skip{display:none;position:absolute;left:0;top:-11px;width:calc(100% - 36px);height:22px;padding:0;border:0;background:none;cursor:pointer;z-index:1}
+.auto .skip{display:block}
+.skip::before{content:"";position:absolute;left:0;right:0;top:10px;height:1px;background:color-mix(in srgb,var(--white) 0%,transparent);transition:background .3s var(--ease)}
+.skip:hover::before{background:color-mix(in srgb,var(--white) 22%,transparent)}
+.skip:focus-visible{outline:1px solid var(--orange);outline-offset:-4px}
+.auto .deck::before{transition:height .3s var(--ease),top .3s var(--ease)}
+.auto .deck:has(.skip:hover)::before{height:2px;top:-1.5px}
 /* play and pause, at the end of the line: for visitors who want to stay on a place */
 .play{display:none;position:absolute;right:-10px;top:-15px;width:30px;height:30px;padding:0;border:0;border-radius:50%;background:none;place-items:center;cursor:pointer;
   color:color-mix(in srgb,var(--white) 34%,transparent);transition:color .3s var(--ease),transform .3s var(--ease)}
@@ -425,6 +433,7 @@ html:not(.js) .swipe{display:none!important}
     </div>
 
     <section class="deck" aria-label="The chosen trip">
+      <button class="skip" type="button" aria-label="Skip: go on to the next place"></button>
       <button class="play" type="button" aria-label="Pause: stay on this place"><svg class="i-pause" viewBox="0 0 10 10" aria-hidden="true"><rect x="1.5" y="1" width="2.4" height="8" rx="1"/><rect x="6.1" y="1" width="2.4" height="8" rx="1"/></svg><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg></button>
       <div class="trips">
         <article class="trip sw" data-dest="india" data-starts="2027-04-15 2027-04-25 2027-10-21 2027-11-03">
@@ -891,6 +900,13 @@ html:not(.js) .swipe{display:none!important}
     playBtn.setAttribute('aria-label', paused ? 'Play: go on to the next places' : 'Pause: stay on this place');
     kick();
   });
+  /* a click on the line: it fills to the end in a moment, then the next place flies in (paused or not) */
+  var skipBtn = held.querySelector('.skip'), skipping = null;
+  if (skipBtn) skipBtn.addEventListener('click', function () {
+    if (trans || busy || skipping) return;
+    skipping = { t0: performance.now(), a: Math.min(1, dwell.t / holdFor(active)) };
+    kick();
+  });
   function holdFor(key) { var u = DESTS[key].push; return u ? u.ms : 14000; }
   function playOn(now) {
     if (reduce) return false;
@@ -898,6 +914,11 @@ html:not(.js) .swipe{display:none!important}
     if (going && dwell.last != null) dwell.t += Math.min(50, now - dwell.last);
     dwell.last = going ? now : null;
     var pr = Math.min(1, dwell.t / holdFor(active));
+    if (skipping) {
+      var u = Math.min(1, (now - skipping.t0) / 320);
+      pr = skipping.a + (1 - skipping.a) * easeOut(u);
+      if (u >= 1) { skipping = null; dwell.t = 0; request(ORDER[(ORDER.indexOf(active) + 1) % ORDER.length]); return true; }
+    }
     held.style.setProperty('--prog', (trans ? 1 - trans.e : pr).toFixed(4));
     if (going && pr >= 1) { dwell.t = 0; request(ORDER[(ORDER.indexOf(active) + 1) % ORDER.length]); }
     return true;
