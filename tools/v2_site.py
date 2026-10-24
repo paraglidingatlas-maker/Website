@@ -102,7 +102,7 @@ def needs(src, root=None):
 # writes them at the root, indexable, and lists them in sitemap.xml; the checks
 # hold them to their own title, description and canonical instead of a live page's.
 # expeditions.html: the menu's Expeditions tab gets its own page (owner, 19 Oct)
-NEW_PAGES = set() if IS_V2 else {"expeditions.html"}
+NEW_PAGES = set() if IS_V2 else {"expeditions.html", "destinations/panchgani.html"}     # Panchgani: a new tour (chat 11)
 
 
 if not os.path.isdir(DIR):

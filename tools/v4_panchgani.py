@@ -320,7 +320,8 @@ def build():
         head = re.sub(r'(<meta %s content=")[^"]*(")' % name, r"\g<1>%s\2" % DESC, head, count=1)
     head = re.sub(r'(<meta property="og:title" content=")[^"]*(")', r"\g<1>%s\2" % OG_TITLE, head, count=1)
     head = re.sub(r'(<meta property="og:image" content=")[^"]*(")',
-                  r"\1https://paraglidingatlas.com/prototypes/v4/img/panchgani/plateau.jpg\2", head, count=1)
+                  r"\1https://paraglidingatlas.com/assets/v4/img/panchgani/plateau.jpg\2", head, count=1)
+    # og:image: where the switch-over puts v4's images (like the canonical, the address it will have)
     head = head.replace("https://paraglidingatlas.com/destinations/kenya.html", URL)
     trip = {"@context": "https://schema.org", "@type": "TouristTrip", "name": "Panchgani Paragliding Tour",
             "description": "An 8 day guided paragliding tour in Panchgani, in the Sahyadri hills of India.",
