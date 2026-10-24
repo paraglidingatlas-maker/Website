@@ -31,7 +31,7 @@ TRIPS = [
     dict(key="india", place="India", region="Bir Billing, Himalaya", kicker="Sky Is Not The Limit",
          title="The Majestic Himalayas", short="The Majestic Himalayas", line="Drift over ancient monasteries while exploring your limits in thin air.",
          img="images/himalayas-1", alt="Paraglider over snow-capped Himalayan peaks", video="video/bir",
-         next="21 to 30 Oct 2026", days="10 days", level=4, group="6 pilots", price="&pound;1,100",
+         next="15 to 24 Apr 2027", days="10 days", level=4, group="6 pilots", price="&pound;1,100",
          status="Guaranteed to run", go=True, href="destinations/india.html", cta="See dates", cta_href="#dates"),
     dict(key="kenya", place="Kenya", region="Kerio Valley, Rift Valley", kicker="Explore East Africa From Above",
          title="A Journey Over The Cradle Of Humankind", short="A Journey Over The Cradle Of Humankind", line="Glide over thousand year old baobabs, with zebras and giraffes below.",

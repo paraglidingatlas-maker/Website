@@ -101,7 +101,7 @@ photograph at every width.
 
 Facts, each from the site (nothing here is new):
   - the home page's #destinations section (prototypes/v4/index.html): India
-    "Bir Billing, Himalaya", 21 to 30 Oct 2026 and 3 to 12 Nov 2026, 10 days,
+    "Bir Billing, Himalaya", four departures in 2027 (15 to 24 Apr, 25 Apr to 4 May, 21 to 30 Oct, 3 to 12 Nov), 10 days,
     6 places, £1,100, "Guaranteed to run"; Kenya "Kerio Valley, Rift Valley",
     18 to 29 Jan 2027 and 1 to 12 Feb 2027, 12 days, 8 places, US$2,100,
     "Booking open"; Kazakhstan "The steppe", "Beyond Roads, Beyond Maps",
@@ -311,10 +311,11 @@ PLACES = [
     dict(id="india", n="01", name="India", region="Bir Billing, Himalaya", country="India",
          lon=76.72, lat=32.05, co="32.05°N · 76.72°E", status="set",
          line="Big Mountain Flying is built for autonomous pilots who want the Himalaya at its most approachable.",
-         dates=["21 to 30 Oct 2026", "3 to 12 Nov 2026"], state="Guaranteed to run",
-         deps=[(2026, 10, 21, 30), (2026, 11, 3, 12)], season=((2026, 10), (2026, 11)), pick="Oct, Nov 2026",
+         dates=["15 to 24 Apr 2027", "25 Apr to 4 May 2027", "21 to 30 Oct 2027", "3 to 12 Nov 2027"], state="Guaranteed to run",
+         deps=[(2027, 4, 15, 24), (2027, 4, 25, 4), (2027, 10, 21, 30), (2027, 11, 3, 12)], season=None,
+         pick="Apr, May, Oct, Nov 2027",
          facts=[("Length", "10 days"), ("Group", "6 places"), ("Price", "£1,100 per pilot"),
-                ("Rating", "IPPI 2 or equivalent"), ("Season", "October to November"),
+                ("Rating", "IPPI 2 or equivalent"), ("Season", "April to May, October to November"),
                 ("Cloudbase", "3 to 3.6 km on the front range")],
          ix=("10 days", "From £1,100"),
          book=("Hold a place", "enquire.html?trip=india"), more=("The full trip", "destinations/india.html"),
@@ -615,17 +616,23 @@ def frac(y, m, day, end=False):
     return (i + (day if end else day - 1) / float(n)) / NMONTHS
 
 
+def dep_end(y, m, d0, d1):
+    """A departure's last day as (year, month, day): one whose last day is smaller than its first ends in the next month."""
+    if d1 >= d0:
+        return y, m, d1
+    return (y + 1, 1, d1) if m == 12 else (y, m + 1, d1)
+
+
 def year_strip():
     links, bars, seasons = [], [], []
     for i, p in enumerate(PLACES):
         x0 = frac(*p["deps"][0][:3])
-        last = p["deps"][-1]
-        x1 = frac(last[0], last[1], last[3], end=True)
+        x1 = frac(*dep_end(*p["deps"][-1]), end=True)
         anchor = ("right:%.3f%%" % ((1 - x1) * 100)) if x1 > 0.9 else ("left:%.3f%%" % (x0 * 100))
         links.append('<li style="%s"><a href="#%s" data-i="%d"><b>%s</b> <span class="ex-mo">%s</span></a></li>'
                      % (anchor, p["id"], i + 2, esc(p["name"]), esc(p["pick"])))
         for (y, m, d0, d1) in p["deps"]:
-            s, e = frac(y, m, d0), frac(y, m, d1, end=True)
+            s, e = frac(y, m, d0), frac(*dep_end(y, m, d0, d1), end=True)
             bars.append('<i class="ex-ybar%s" data-t="%s" style="left:%.3f%%;width:%.3f%%"></i>'
                         % (" is-plan" if p["status"] == "planned" else "", p["id"], s * 100, (e - s) * 100))
         if p["season"]:

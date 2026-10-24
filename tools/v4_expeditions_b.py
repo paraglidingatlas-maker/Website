@@ -36,8 +36,8 @@ choose by when you can travel, then compare.
     the free call as a line of text with two links, not a band.
 
 Facts only, each from the site as it stands (prototypes/v4/):
-  - index.html #destinations: the departures (India Tour 1 21 to 30 Oct 2026,
-    Tour 2 3 to 12 Nov 2026, 10 days, 6 places, £1,100, Guaranteed to run,
+  - index.html #destinations: the departures (India Tours 1 to 4: 15 to 24 Apr, 25 Apr to 4 May,
+    21 to 30 Oct and 3 to 12 Nov 2027, 10 days, 6 places, £1,100, Guaranteed to run,
     skill level 4 of 5; Kenya Tour 1 18 to 29 Jan 2027, Tour 2 1 to 12 Feb 2027,
     12 days, 8 places, from US$2,100, Booking open, skill level 2 of 5;
     Kazakhstan, the steppe, planned June 2027, 10 days, small group, €2,100;
@@ -130,9 +130,11 @@ def months():
 TRIPS = [
     {"k": "india", "name": "India", "where": "Bir Billing, Himalaya",
      "dates": "destinations/india.html#dates",
-     "season": (D(2026, 10, 1), D(2026, 12, 1)), "season_txt": "October to November",
-     "deps": [("Tour 1", D(2026, 10, 21), D(2026, 10, 31), "21 to 30 Oct 2026"),
-              ("Tour 2", D(2026, 11, 3), D(2026, 11, 13), "3 to 12 Nov 2026")],
+     "season": (D(2027, 4, 1), D(2027, 12, 1)), "season_txt": "April to May, October to November",
+     "deps": [("Tour 1", D(2027, 4, 15), D(2027, 4, 25), "15 to 24 Apr 2027"),
+              ("Tour 2", D(2027, 4, 25), D(2027, 5, 5), "25 Apr to 4 May 2027"),
+              ("Tour 3", D(2027, 10, 21), D(2027, 10, 31), "21 to 30 Oct 2027"),
+              ("Tour 4", D(2027, 11, 3), D(2027, 11, 13), "3 to 12 Nov 2027")],
      "flying": ("Big Mountain Flying", "Cloudbase 3 to 3.6 km on the front range"),
      "level": 4, "rating": "IPPI 2 or equivalent",
      "length": "10 days", "group": ("6 places", "1 guide to 3 pilots"),

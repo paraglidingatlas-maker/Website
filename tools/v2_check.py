@@ -60,11 +60,12 @@ V2_FROZEN = {"about.html": "live 'About Us' became 'About Me', rebuilt in first 
 
 
 def owner_fixed(text):
-    """Live text with the owner's corrections of the episode count applied (v4 only; v2 has none)."""
+    """Live text with the owner's corrections applied: the episode count, India's 2027 dates (v4 only; v2 has none)."""
     fp = os.path.join(ROOT, "tools", "data", "v4_facts.json")
     if S.IS_V2 or not os.path.exists(fp):
         return text
-    for x, y in json.load(open(fp, encoding="utf-8"))["episode_count"]["replace"]:
+    F = json.load(open(fp, encoding="utf-8"))
+    for x, y in F["episode_count"]["replace"] + F.get("india_2027", {}).get("replace", []):
         text = text.replace(html.escape(x, quote=False), html.escape(y, quote=False)).replace(x, y)
     return text
 
@@ -215,7 +216,7 @@ def check_static(rel):
                 # the one allowed difference: the owner's corrections of a stated fact (the episode count,
                 # tools/data/v4_facts.json) applied to the live text give exactly the page's text
                 if k in ("description", "og:description") and isinstance(a[k], str) and owner_fixed(a[k]) == b[k]:
-                    warns.append("parity: %s carries the owner's correction of the episode count" % k)
+                    warns.append("parity: %s carries the owner's corrections (the episode count, India's 2027 dates)" % k)
                     continue
                 fails.append("parity: %s differs (live %r, v2 %r)" % (k, str(a[k])[:80], str(b[k])[:80]))
         # the heading may be laid out differently, but must keep every word that carries meaning

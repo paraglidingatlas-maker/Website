@@ -276,7 +276,7 @@ def topic_page(rel, src):
 
 # "Fly it yourself" (step 5): an episode whose place is within reach of a trip
 # links to it. The trips' places and next dates as the site states them.
-TRIPS = [("India", "Bir Billing", (32.04, 76.72), "21 to 30 Oct 2026", "destinations/india.html"),
+TRIPS = [("India", "Bir Billing", (32.04, 76.72), "15 to 24 Apr 2027", "destinations/india.html"),
          ("Kenya", "Kerio Valley", (0.72, 35.65), "18 to 29 Jan 2027", "destinations/kenya.html")]
 
 

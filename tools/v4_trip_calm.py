@@ -177,12 +177,12 @@ def esc(s):
 
 
 # ---------- the facts row: four big facts, then the old row's other four, quieter ----------
-# Every label and value is the old row's own (or the booking bar's "Next departure 21 Oct 2026"); a value's
+# Every label and value is the old row's own (or the booking bar's next departure; India in 2027, tools/v4_india_2027.py); a value's
 # small words ("or equivalent", "per pilot") sit beside its big ones, so no label is reworded.
-BIG = [("Next departure", "21 Oct 2026", ""), ("Duration", "10 days", ""), ("Pilot rating", "IPPI 2", "or equivalent"),
+BIG = [("Next departure", "15 Apr 2027", ""), ("Duration", "10 days", ""), ("Pilot rating", "IPPI 2", "or equivalent"),
        ("Price", "£1,100", "per pilot")]
 QUIET = [("Base", "Bir, Himachal Pradesh"), ("Launch", "Billing, about 2,400m"), ("Guiding", "1 guide to 3 pilots"),
-         ("Season", "October to November")]
+         ("Season", "April to May, October to November")]
 
 
 def facts():

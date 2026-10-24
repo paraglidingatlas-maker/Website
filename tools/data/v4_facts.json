@@ -66,5 +66,14 @@
     "can-we-steer-a-round-reserve-parachute-urs-haari-answers": {
       "summary": "There is much more to reserve parachutes than just getting them repacked periodically and in a correct way! This talk is a snippet from one of our most replayed moments from an episode where we ended up revealing The Real Truth about Reserve Parachutes."
     }
+  },
+  "india_2027": {
+    "source": "The owner, 24 Oct 2026: \"move dates of india to 15th april for the first tour and then 1 day later the next one\", then \"keep the older india dates for 2027 so make that tour visible as well accordingly everywhere needed\". Four departures: 15 to 24 Apr, 25 Apr to 4 May, 21 to 30 Oct, 3 to 12 Nov 2027 (tools/v4_india_2027.py).",
+    "replace": [
+      [
+        "Two departures in October and November 2026",
+        "Four departures in 2027, in April, May, October and November"
+      ]
+    ]
   }
 }

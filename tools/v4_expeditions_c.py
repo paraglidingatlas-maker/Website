@@ -51,7 +51,7 @@ trips show only what the home page gives them.
 
 Facts, each from the site (nothing here is new):
   - the home page's #destinations section (prototypes/v4/index.html): India
-    "Bir Billing, Himalaya", 21 to 30 Oct 2026 and 3 to 12 Nov 2026, 10 days,
+    "Bir Billing, Himalaya", four departures in 2027 (15 to 24 Apr, 25 Apr to 4 May, 21 to 30 Oct, 3 to 12 Nov), 10 days,
     6 places, £1,100, "Guaranteed to run"; Kenya "Kerio Valley, Rift Valley",
     18 to 29 Jan 2027 and 1 to 12 Feb 2027, 12 days, 8 places, US$2,100,
     "Booking open"; Kazakhstan "The steppe", "Beyond Roads, Beyond Maps",
@@ -238,9 +238,9 @@ PLACES = [
     dict(id="india", n="01", name="India", region="Bir Billing, Himalaya", country="India",
          lon=76.72, lat=32.05, co="32.05°N · 76.72°E", status="set", side="r",
          line="Ten days on the Dhauladhar, the wall of the Himalaya above Bir.",
-         dates=["21 to 30 Oct 2026", "3 to 12 Nov 2026"], state="Guaranteed to run",
+         dates=["15 to 24 Apr 2027", "25 Apr to 4 May 2027", "21 to 30 Oct 2027", "3 to 12 Nov 2027"], state="Guaranteed to run",
          facts=[("Length", "10 days"), ("Group", "6 places"), ("Price", "£1,100 per pilot"),
-                ("Rating", "IPPI 2 or equivalent"), ("Season", "October to November"),
+                ("Rating", "IPPI 2 or equivalent"), ("Season", "April to May, October to November"),
                 ("Cloudbase", "3 to 3.6 km on the front range")],
          book=("Hold a place", "enquire.html?trip=india"), more=("The full trip", "destinations/india.html"),
          photo=(A + "destinations/india/hero/dhauladhar", 2400, 1600,

@@ -33,7 +33,7 @@ those). Photography-led, editorial and calm:
 
 Facts, each from the site (nothing here is new):
   - the home page's #destinations section (prototypes/v4/index.html): the
-    departures (21 to 30 Oct 2026, 3 to 12 Nov 2026; 18 to 29 Jan 2027, 1 to 12
+    departures (15 to 24 Apr, 25 Apr to 4 May, 21 to 30 Oct, 3 to 12 Nov 2027; 18 to 29 Jan 2027, 1 to 12
     Feb 2027), lengths (10 days, 12 days), group sizes (6 places, 8 places,
     planned "Small group"), prices with currency (India £1,100, Kenya
     US$2,100, Kazakhstan €2,100, Peru €1,850), status ("Guaranteed to run",
@@ -132,11 +132,12 @@ TRIPS = [
         "pic": "front-range", "side": "l", "half": "snowline",
         "line": ("Launch from the meadow at Billing, climb the knobs of the Dhauladhar and run west "
                  "towards Dharamshala, then turn for Bir with the light going."),
-        "when": ["21 to 30 Oct 2026", "3 to 12 Nov 2026"], "pick": "Oct, Nov 2026",
-        "deps": [(2026, 10, 21, 30), (2026, 11, 3, 12)],
+        "when": ["15 to 24 Apr 2027", "25 Apr to 4 May 2027", "21 to 30 Oct 2027", "3 to 12 Nov 2027"],
+        "pick": "Apr, May, Oct, Nov 2027",
+        "deps": [(2027, 4, 15, 24), (2027, 4, 25, 4), (2027, 10, 21, 30), (2027, 11, 3, 12)],
         "length": "10 days", "group": "6 places", "from": "&pound;1,100",
         "status": "Guaranteed to run",
-        "air": [("Season", "October to November"), ("Cloudbase", "3 to 3.6 km on the front range"),
+        "air": [("Season", "April to May, October to November"), ("Cloudbase", "3 to 3.6 km on the front range"),
                 ("Rating", "IPPI 2 or equivalent")],
         "hold": "enquire.html?trip=india", "page": "destinations/india.html",
     },
@@ -268,18 +269,24 @@ def frac(y, m, day, end=False):
     return (i + (day if end else day - 1) / n) / NMONTHS
 
 
+def dep_end(y, m, d0, d1):
+    """A departure's last day as (year, month, day): one whose last day is smaller than its first ends in the next month."""
+    if d1 >= d0:
+        return y, m, d1
+    return (y + 1, 1, d1) if m == 12 else (y, m + 1, d1)
+
+
 def chooser():
     links, bars = [], []
     for t in TRIPS + PLANNED:
         x0 = frac(*t["deps"][0][:3])
-        last = t["deps"][-1]
-        x1 = frac(last[0], last[1], last[3], end=True)
+        x1 = frac(*dep_end(*t["deps"][-1]), end=True)
         # each place sits over its first departure; the last one is held to the end of the line
         anchor = ("right:%.3f%%" % ((1 - x1) * 100)) if x1 > 0.9 else ("left:%.3f%%" % (x0 * 100))
         links.append('<li style="%s"><a href="#%s"><b>%s</b> <span class="ex-mo">%s</span></a></li>'
                      % (anchor, t["id"], t["place"], t["pick"]))
         for (y, m, d0, d1) in t["deps"]:
-            s, e = frac(y, m, d0), frac(y, m, d1, end=True)
+            s, e = frac(y, m, d0), frac(*dep_end(y, m, d0, d1), end=True)
             bars.append('<i class="ex-bar%s" data-t="%s" style="left:%.3f%%;width:%.3f%%"></i>'
                         % (" is-plan" if t in PLANNED else "", t["id"], s * 100, (e - s) * 100))
     months = []

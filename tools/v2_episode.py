@@ -42,8 +42,8 @@ SAMPLES = ["urs-haari-the-real-truth-about-reserve-parachutes-a", "anatomy-of-a-
 
 # The next departures, as the dates table on the v2 homepage has them.
 FLY = [
-    ("India", "21 to 30 Oct 2026", "10 days", "&pound;1,100", "../destinations/india.html"),
     ("Kenya", "18 to 29 Jan 2027", "12 days", "US$2,100", "../destinations/kenya.html"),
+    ("India", "15 to 24 Apr 2027", "10 days", "&pound;1,100", "../destinations/india.html"),
 ]
 
 # Clean portraits (no poster text), by the name the site's own alt text gives.
