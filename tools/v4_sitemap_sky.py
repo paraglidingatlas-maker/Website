@@ -377,8 +377,10 @@ def landmarks(page):
              '<ol aria-label="The knowledge base, by level">%s</ol></div>' % lv)
     trips = [c for c in by["Trips"]["children"] if c.get("kind") == "trip"]
     xs, rs = ["16%", "38%", "62%", "84%"], ["104px", "124px", "112px", "96px"]
+    if len(trips) == 5:          # Panchgani, a fifth trip (chat 11)
+        xs, rs = ["10%", "30%", "50%", "70%", "90%"], ["104px", "88px", "124px", "112px", "96px"]
     pl = "".join('<li style="--x:%s;--r:%s"><a href="%s"><span><b>%s</b><small>%s</small></span><span class="o"><img src="%s" alt="" loading="lazy" decoding="async"></span></a></li>'
-                 % (xs[i % 4], rs[i % 4], E(c["url"]), E(c["label"]), E(c.get("sub", "")), E(c.get("img", ""))) for i, c in enumerate(trips))
+                 % (xs[i % len(xs)], rs[i % len(rs)], E(c["url"]), E(c["label"]), E(c.get("sub", "")), E(c.get("img", ""))) for i, c in enumerate(trips))
     named = [("about.html", "About Me", "4%", "12%", "6%", "8%"), ("mission.html", "Mission Statement", "26%", "26%", "52%", "8%"),
              ("partners.html", "Partner With Me", "49%", "10%", "6%", "22%"), ("record-attempt.html", "Speed Record", "72%", "24%", "52%", "22%")]
     st = ""

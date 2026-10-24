@@ -23,7 +23,7 @@
   var IDX = m ? BASE + "search-index.js" : "/assets/v4/search-index.js";
   var KB = m ? BASE + "img/kb/" : "/assets/v4/img/kb/";   // the kit's drawings (@kb/ in a picture's path)
   var SECTIONS = [
-    ["Expeditions", "expeditions.html", "assets/destinations/india/hero/snowline.webp", [["India", "destinations/india.html"], ["Kenya", "destinations/kenya.html"]]],
+    ["Expeditions", "expeditions.html", "assets/destinations/india/hero/snowline.webp", [["India", "destinations/india.html"], ["Kenya", "destinations/kenya.html"], ["Panchgani", "destinations/panchgani.html"]]],
     ["Podcast", "podcast.html", "assets/images/pod-hero-gemona.webp", [["Library", "library.html"], ["Topics", "tags.html"]]],
     ["Knowledge Base", "knowledge-base.html", "@kb/kb-flight-mechanics.svg", []],
     ["About", "about.html", "assets/images/partners-aninder.webp", [["Mission Statement", "mission.html"], ["Partner With Me", "partners.html"]]]
@@ -120,7 +120,7 @@
     var STOP = " a an and are can do does for how i in is it me much my of on or the to what when where which who why will with you your ";
     var NEAR = { cost: ["price", "fee"], costs: ["price", "fee"], price: ["cost", "fee"], prices: ["cost", "fee"], fee: ["price", "cost"],
                  date: ["departure", "when"], dates: ["departure", "when"], departure: ["date"], book: ["booking", "hold a place"], booking: ["book", "hold a place"] };
-    var TRIPWORDS = /\b(kenya|india|bir|billing|trip|trips|tour|tours|expedition|expeditions|cost|costs|price|prices|fee|date|dates|departure|departures|book|booking|deposit|cancellation|refund|visa|insurance|hold)\b/;
+    var TRIPWORDS = /\b(kenya|india|panchgani|bir|billing|trip|trips|tour|tours|expedition|expeditions|cost|costs|price|prices|fee|date|dates|departure|departures|book|booking|deposit|cancellation|refund|visa|insurance|hold)\b/;
     var words = v.split(/\s+/).filter(function (x) { return x && STOP.indexOf(" " + x + " ") === -1; });
     if (!words.length) words = v.split(/\s+/).filter(Boolean);
     var need = words.length <= 2 ? words.length : Math.ceil(words.length * 0.6);
@@ -156,7 +156,7 @@
       return '<li><a href="' + BASE + e.u + '"><span class="v4-hit-k">' + esc(e.k) + '</span><span class="v4-hit-t">' + esc(e.t) +
         (l ? '<span class="v4-hit-s">' + esc(l) + "</span>" : "") + "</span></a></li>";
     }).join("") : '<li class="v4-hit-none">Nothing found. <a href="' + BASE + 'tags.html">Topics</a> <a href="' + BASE +
-      'library.html">Library</a> <a href="' + BASE + 'destinations/india.html">India</a> <a href="' + BASE + 'destinations/kenya.html">Kenya</a></li>';
+      'library.html">Library</a> <a href="' + BASE + 'destinations/india.html">India</a> <a href="' + BASE + 'destinations/kenya.html">Kenya</a> <a href="' + BASE + 'destinations/panchgani.html">Panchgani</a></li>';
   }
   function open(focusSearch) {
     if (!menu) build();

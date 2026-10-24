@@ -175,12 +175,12 @@ OUT = os.path.join(V4, "expeditions.html")
 WORLD = os.path.join(ROOT, "prototypes", "workspace", "atlas", "data", "world.json")
 
 TITLE = "Expeditions"
-DESC = ("Four places to fly with Paragliding Atlas, on one map and one year: Bir Billing in India and "
-        "Kerio Valley in Kenya with dates set, Kazakhstan and Peru planned for 2027.")
+DESC = ("Five places to fly with Paragliding Atlas, on one map and one year: Kerio Valley in Kenya, Panchgani "
+        "and Bir Billing in India with dates set, Kazakhstan and Peru planned for 2027.")
 URL = "https://paraglidingatlas.com/expeditions.html"
 OG_IMG = "https://paraglidingatlas.com/assets/destinations/india/hero/snowline.jpg"
 CALL = "https://calendar.app.google/HaJMYuiomt5Db9eh8"
-MAX_WORDS = 400
+MAX_WORDS = 450          # 400 for four places; Panchgani, a fifth, adds its card and its row (chat 11)
 
 A = "../../assets/"
 
@@ -307,29 +307,21 @@ MIN_AREA = 6.0     # islands smaller than this (square units, a few pixels at th
 NEAR_DEG = 22      # except within this many degrees of a place, where the camera comes close
 
 # ---------- the places, in the order they fly ----------
+TBD = "[to supply]"      # the owner's fact still to come: shown as the site's to-supply mark
+
+
+def val(v):
+    """A fact, escaped, with [to supply] as the site's mark."""
+    return esc(v).replace(TBD, '<i class="v2-tbd">%s</i>' % TBD)
+
+
 PLACES = [
-    dict(id="india", n="01", name="India", region="Bir Billing, Himalaya", country="India",
-         lon=76.72, lat=32.05, co="32.05°N · 76.72°E", status="set",
-         line="Big Mountain Flying is built for autonomous pilots who want the Himalaya at its most approachable.",
-         dates=["15 to 24 Apr 2027", "25 Apr to 4 May 2027", "21 to 30 Oct 2027", "3 to 12 Nov 2027"], state="Guaranteed to run",
-         deps=[(2027, 4, 15, 24), (2027, 4, 25, 4), (2027, 10, 21, 30), (2027, 11, 3, 12)], season=None,
-         pick="Apr, May, Oct, Nov 2027",
-         facts=[("Length", "10 days"), ("Group", "6 places"), ("Price", "£1,100 per pilot"),
-                ("Rating", "IPPI 2 or equivalent"), ("Season", "April to May, October to November"),
-                ("Cloudbase", "3 to 3.6 km on the front range")],
-         ix=("10 days", "From £1,100"),
-         book=("Hold a place", "enquire.html?trip=india"), more=("The full trip", "destinations/india.html"),
-         photo=dict(base=A + "destinations/india/hero/dhauladhar", w=2400, h=1600,
-                    p=("img/hero/india-dhauladhar-p", 934, 1400),
-                    alt="The Dhauladhar range under building cumulus, above the Kangra valley",
-                    cap="The Dhauladhar", pos=(.5, .62)),
-         near=7.0),
-    dict(id="kenya", n="02", name="Kenya", region="Kerio Valley, Rift Valley", country="Kenya",
+    dict(id="kenya", n="01", name="Kenya", region="Kerio Valley, Rift Valley", country="Kenya",
          lon=35.65, lat=0.72, co="0.72°N · 35.65°E", status="set",
          line=("Explore the Cradle is built for independent pilots with strong glider handling and an appetite "
                "for the unfamiliar."),
          dates=["18 to 29 Jan 2027", "1 to 12 Feb 2027"], state="Booking open",
-         deps=[(2027, 1, 18, 29), (2027, 2, 1, 12)], season=((2026, 12), (2027, 3)), pick="Jan, Feb 2027",
+         deps=[(2027, 1, 18, 29), (2027, 2, 1, 12)], season=((2026, 12), (2027, 3)), pick="Jan, Feb", lab="r",
          facts=[("Length", "12 days"), ("Group", "8 places"), ("Price", "From US$2,100"),
                 ("Rating", "IPPI 2 or equivalent"), ("Season", "December to March"),
                 ("Thermals", "4 to 6 m/s at the midday peaks")],
@@ -340,18 +332,45 @@ PLACES = [
                     alt="Three paragliders soaring along a hazy green ridge above terraced fields in the Kerio Valley",
                     cap="Kerio Valley", pos=(.55, .6)),
          near=7.0),
-    dict(id="kazakhstan", n="03", name="Kazakhstan", region="The steppe", country="Kazakhstan",
+    dict(id="panchgani", n="02", name="Panchgani", region="Sahyadri hills", country="India",
+         lon=73.82, lat=17.92, co="17.92°N · 73.82°E", status="set",
+         line="The plateau that hosted a pre World Cup.",
+         dates=["14 to 21 Feb 2027"], state="Dates set",
+         deps=[(2027, 2, 14, 21)], season=None, pick="Feb",
+         facts=[("Length", "8 days"), ("Group", TBD), ("Price", TBD), ("Rating", TBD),
+                ("Season", "November to March")],
+         ix=("8 days", "Price " + TBD),
+         book=("Hold a place", "enquire.html?trip=panchgani"), more=("The full trip", "destinations/panchgani.html"),
+         photo=None,      # its one photograph is already the opening's and its own page's (no photo twice)
+         near=7.0),
+    dict(id="india", n="03", name="India", region="Bir Billing, Himalaya", country="India",
+         lon=76.72, lat=32.05, co="32.05°N · 76.72°E", status="set",
+         line="Big Mountain Flying is built for autonomous pilots who want the Himalaya at its most approachable.",
+         dates=["15 to 24 Apr 2027", "25 Apr to 4 May 2027", "21 to 30 Oct 2027", "3 to 12 Nov 2027"], state="Guaranteed to run",
+         deps=[(2027, 4, 15, 24), (2027, 4, 25, 4), (2027, 10, 21, 30), (2027, 11, 3, 12)], season=None,
+         pick="Apr, May, Oct, Nov", lab=("r", (2027, 10, 31)),
+         facts=[("Length", "10 days"), ("Group", "6 places"), ("Price", "£1,100 per pilot"),
+                ("Rating", "IPPI 2 or equivalent"), ("Season", "April to May, October to November"),
+                ("Cloudbase", "3 to 3.6 km on the front range")],
+         ix=("10 days", "From £1,100"),
+         book=("Hold a place", "enquire.html?trip=india"), more=("The full trip", "destinations/india.html"),
+         photo=dict(base=A + "destinations/india/hero/dhauladhar", w=2400, h=1600,
+                    p=("img/hero/india-dhauladhar-p", 934, 1400),
+                    alt="The Dhauladhar range under building cumulus, above the Kangra valley",
+                    cap="The Dhauladhar", pos=(.5, .62)),
+         near=7.0),
+    dict(id="kazakhstan", n="04", name="Kazakhstan", region="The steppe", country="Kazakhstan",
          lon=67.0, lat=48.0, co="", status="planned",
          line="Beyond Roads, Beyond Maps",
-         dates=[], state="", deps=[(2027, 6, 1, 30)], season=None, pick="Jun 2027", when="June 2027",
+         dates=[], state="", deps=[(2027, 6, 1, 30)], season=None, pick="Jun", when="June 2027",
          facts=[("Planned", "June 2027"), ("Length", "10 days"), ("Group", "Small group"), ("Price", "From €2,100")],
          ix=("10 days", "From €2,100"),
          book=("Register interest", "enquire.html?trip=kazakhstan"), more=None, photo=None,
          near=11.0),
-    dict(id="peru", n="04", name="Peru", region="Lima and the Andes", country="Peru",
+    dict(id="peru", n="05", name="Peru", region="Lima and the Andes", country="Peru",
          lon=-77.04, lat=-12.05, co="", status="planned",
          line="Soar The Land Of The Incas",
-         dates=[], state="", deps=[(2027, 11, 1, 30)], season=None, pick="Nov 2027", when="November 2027",
+         dates=[], state="", deps=[(2027, 11, 1, 30)], season=None, pick="Nov", lab="l", when="November 2027",
          facts=[("Planned", "November 2027"), ("Length", "14 days"), ("Group", "Small group"),
                 ("Price", "From €1,850")],
          ix=("14 days", "From €1,850"),
@@ -605,7 +624,7 @@ def opening():
     return ('<header class="ex-stop ex-open is-on" data-i="0">'
             '<div class="ex-sky">%s</div>'
             '<div class="ex-panel"><p class="ex-kicker">Expeditions</p><h1 class="ex-h1">Choose Your Sky</h1>'
-            '<p class="ex-lead">Two with dates set, two being planned. Small groups, fixed dates. '
+            '<p class="ex-lead">Three with dates set, two being planned. Small groups, fixed dates. '
             'Prices are per pilot.</p></div>%s</header>' % (pics, halves))
 
 
@@ -628,7 +647,14 @@ def year_strip():
     for i, p in enumerate(PLACES):
         x0 = frac(*p["deps"][0][:3])
         x1 = frac(*dep_end(*p["deps"][-1]), end=True)
-        anchor = ("right:%.3f%%" % ((1 - x1) * 100)) if x1 > 0.9 else ("left:%.3f%%" % (x0 * 100))
+        # a label starts at its first departure, or ends at its last (lab="r", or past nine tenths of the
+        # line): Kenya's ends where Panchgani's begins (chat 11); the months, not the year, as the line marks it
+        # India's ends with October, where Peru's begins: both fly in November 2027
+        lab = p.get("lab")
+        if isinstance(lab, tuple):
+            lab, x1 = lab[0], frac(*lab[1], end=True)
+        right = lab == "r" or (lab != "l" and x1 > 0.9)
+        anchor = ("right:calc(%.3f%% + .6rem)" % ((1 - x1) * 100)) if right else ("left:%.3f%%" % (x0 * 100))
         links.append('<li style="%s"><a href="#%s" data-i="%d"><b>%s</b> <span class="ex-mo">%s</span></a></li>'
                      % (anchor, p["id"], i + 2, esc(p["name"]), esc(p["pick"])))
         for (y, m, d0, d1) in p["deps"]:
@@ -648,7 +674,7 @@ def year_strip():
         who = [p["id"] for p in PLACES if any(dy == y and dm == m for (dy, dm, _, _) in p["deps"])]
         months.append('<span%s%s><b>%s</b><i>%s</i></span>'
                       % (' class="is-y"' if m == 1 else "", (' data-t="%s"' % who[0]) if who else "", name, name[0]))
-    return ('<nav class="ex-year" aria-label="The four expeditions, by place and month"><div class="ex-year-in">'
+    return ('<nav class="ex-year" aria-label="The five expeditions, by place and month"><div class="ex-year-in">'
             '<div class="ex-yline" aria-hidden="true">%s%s</div>'
             '<div class="ex-ymonths" aria-hidden="true">%s</div>'
             '<ol class="ex-yplaces">%s</ol></div></nav>'
@@ -664,7 +690,7 @@ def world():
             when = '<span>Planned, %s</span>' % esc(p["when"])
         rows.append('<li><a href="#%s" data-i="%d"><span class="ex-ix-n">%s</span><span class="ex-ix-t">%s</span>'
                     '<span class="ex-ix-m"><span class="ex-ix-d">%s</span><span class="ex-ix-f">%s · %s</span></span>'
-                    '</a></li>' % (p["id"], i + 2, p["n"], esc(p["name"]), when, esc(p["ix"][0]), esc(p["ix"][1])))
+                    '</a></li>' % (p["id"], i + 2, p["n"], esc(p["name"]), when, esc(p["ix"][0]), val(p["ix"][1])))
     return ('<section class="ex-stop ex-world" data-i="1" aria-labelledby="ex-world-h"><div class="ex-panel">'
             '<h2 class="ex-h2" id="ex-world-h">Where And When</h2>'
             '<ol class="ex-ix">%s</ol></div></section>' % "".join(rows))
@@ -672,7 +698,7 @@ def world():
 
 def plate():
     pins = "".join(pin(p, i) for i, p in enumerate(PLACES))
-    return ('<figure class="ex-plate" aria-label="Map of the four places and the route between them">%s'
+    return ('<figure class="ex-plate" aria-label="Map of the five places and the route between them">%s'
             '<canvas class="ex-gl" aria-hidden="true"></canvas><canvas class="ex-air" aria-hidden="true"></canvas>'
             '<div class="ex-pins">%s</div></figure>' % (map_svg(), pins))
 
@@ -703,7 +729,7 @@ def place(p, i):
                 % ("".join('<span>%s</span>' % esc(d) for d in p["dates"]), esc(p["state"])))
     else:
         when = ""
-    facts = "".join('<div><dt>%s</dt><dd>%s</dd></div>' % (esc(k), esc(v)) for k, v in p["facts"])
+    facts = "".join('<div><dt>%s</dt><dd>%s</dd></div>' % (esc(k), val(v)) for k, v in p["facts"])
     acts = ('<a class="btn-solid ex-book" href="%s"><span>%s<span class="ex-vh"> for %s</span></span></a>'
             % (p["book"][1], esc(p["book"][0]), esc(p["name"])))
     if p["more"]:
@@ -1094,6 +1120,12 @@ html.v2-nav-up .ex-year{top:var(--v2-nav-h,77px);}
   .ex-ymonths b{display:none;}
   .ex-ymonths i{display:inline;}
   .ex-yplaces b{font-size:var(--fs-small);}
+}
+@media (max-width:479px){
+  /* five names on a phone's line: Kazakhstan and India, a few weeks apart, need the smaller size (chat 11) */
+  .ex-yplaces b{font-size:var(--fs-micro);}
+  .ex-yplaces li:has(a[href="#kazakhstan"]){translate:-10px 0;}
+  .ex-yplaces li:has(a[href="#india"]){translate:10px 0;}
 }
 @media (min-width:760px) and (max-width:1023px){
   .ex-yplaces a{flex-direction:column;gap:0;padding-top:8px;}

@@ -5,6 +5,7 @@ proper tour which will need to have all its necessities like other destination
 pages"). Run by hand, then the build:
 
     python3 tools/v4_panchgani.py && python3 tools/v4_build.py
+    python3 tools/v4_panchgani.py links      # Panchgani Tour in every footer (step 5)
 
 It writes prototypes/v4/destinations/panchgani.html from the v4 Kenya page's
 frame (head, nav, footer, the booking bar and the dst-* and kdates/kfaq
@@ -358,7 +359,37 @@ def build():
         fh.write(page)
 
 
+FOOT = re.compile(r'(\n?)([ \t]*)<a href="([^"]*)destinations/kenya\.html">Kenya Tour</a>')
+
+
+def links():
+    """Panchgani in every v4 footer's Fly With Us, after Kenya (the season's order): every page but the
+    samples, which are other chats' option pages, and library.html, which is the owner's other chat's
+    (it gets the link from that chat). Idempotent."""
+    n = 0
+    for d, dirs, fs in os.walk(V4):
+        dirs[:] = [x for x in dirs if x not in ("samples", "src")]
+        for f in fs:
+            if not f.endswith(".html") or os.path.join(d, f) == os.path.join(V4, "library.html"):
+                continue
+            path = os.path.join(d, f)
+            src = open(path, encoding="utf-8").read()
+            if "Panchgani Tour</a>" in src:
+                continue
+            out = FOOT.sub(lambda m: m.group(0) + "%s%s<a href=\"%sdestinations/panchgani.html\">Panchgani Tour</a>"
+                           % (m.group(1) or "", m.group(2), m.group(3)), src, count=1)
+            if out != src:
+                with open(path, "w", encoding="utf-8") as fh:
+                    fh.write(out)
+                n += 1
+    print("v4_panchgani: Panchgani Tour in %d footers" % n)
+
+
 def main():
+    import sys
+    if sys.argv[1:] == ["links"]:
+        links()
+        return
     hero_photo()
     build()
     print("v4_panchgani: wrote %s" % os.path.relpath(OUT, ROOT))
