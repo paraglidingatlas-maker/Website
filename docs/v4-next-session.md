@@ -100,6 +100,16 @@ code is its published file `F2/index.html`, the Panchgani layers are
   https://paraglidingatlas.com/prototypes/v4/samples/opening/?kenya=9492
   once deployed. It is a copy of the review page's F2: change both, or
   rebuild this one from F2 (rewrite the page links to `../../`).
+- **The library is another chat's** (owner, 24 Oct: "forget about library
+  here, I'm working on it on another chat ... which needs to be connected to
+  chat 10"): the owner's chat https://claude.ai/code/cshk_014sbQF9W1CqGXbH3oHgNsEBPkibnHiMxcAso6rNZN4e7y
+  (session_014sbQF9W1CqGXbH3oHgNsEB, "Website immersion capabilities
+  assessment"). Do not change `library.html`, `tools/v4_library.py` or the
+  library chart from this chain; before touching anything the library
+  shares (the build, `tools/v4_polish.py`, the nav), check with the owner.
+  That session can be found with list_sessions and sent a message
+  (SendMessage to its name), but a cloud session cannot answer back, so
+  anything it needs to know goes through the owner too.
 - **Next (owner):** Panchgani needs everything the other destinations have
   in the site (its own destination page and the rest); the owner said "then
   we proceed", so ask what comes first only if it is not clear from them.
