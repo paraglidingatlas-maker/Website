@@ -574,7 +574,8 @@ def patch(src):
     src = swap(src, "tour2", '<i class="kdates-tour" style="--a:54.10;--w:16.39;--i:1"><b>02</b></i>',
                '<i class="kdates-tour" style="--a:54.10;--w:16.39;--i:1"><b>02</b><span>3 to 12 Nov</span></i>')
     src = swap(src, "flags", '<p class="kdates-flags"><span class="is-go">Guaranteed to run</span><span>6 places</span></p>',
-               '<p class="kdates-flags"><span class="v2-status is-go">Guaranteed to run</span><span>6 places</span></p>', n=2)
+               '<p class="kdates-flags"><span class="v2-status is-go">Guaranteed to run</span><span>6 places</span></p>',
+               n=4)   # India's four 2027 departures (tools/v4_india_2027.py)
 
     # the gallery: a pinned run on a wide screen, a column of plates on a phone (v4-calm.css, v4-calm.js)
     src = marked(src, "gallery", gallery(), r'<section class="dst-sec gxa" id="gallery".*?</section>')
