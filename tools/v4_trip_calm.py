@@ -569,10 +569,12 @@ def patch(src):
     src = marked(src, "schem", SCHEM, r'<svg class="iroute-svg" viewBox="0 0 1000 400" role="img" aria-labelledby="irT irD">.*?</svg>')
 
     # the departures: each tour's dates under its bar; the flag in green, the count plain
-    src = swap(src, "tour1", '<i class="kdates-tour" style="--a:32.79;--w:16.39;--i:0"><b>01</b></i>',
-               '<i class="kdates-tour" style="--a:32.79;--w:16.39;--i:0"><b>01</b><span>21 to 30 Oct</span></i>')
-    src = swap(src, "tour2", '<i class="kdates-tour" style="--a:54.10;--w:16.39;--i:1"><b>02</b></i>',
-               '<i class="kdates-tour" style="--a:54.10;--w:16.39;--i:1"><b>02</b><span>3 to 12 Nov</span></i>')
+    # (India's 2027 bands carry their dates already, tools/v4_india_2027.py; these label the 2026 tours if they come back)
+    if '<i class="kdates-tour" style="--a:32.79;--w:16.39;--i:0"><b>01</b></i>' in src:
+        src = swap(src, "tour1", '<i class="kdates-tour" style="--a:32.79;--w:16.39;--i:0"><b>01</b></i>',
+                   '<i class="kdates-tour" style="--a:32.79;--w:16.39;--i:0"><b>01</b><span>21 to 30 Oct</span></i>')
+        src = swap(src, "tour2", '<i class="kdates-tour" style="--a:54.10;--w:16.39;--i:1"><b>02</b></i>',
+                   '<i class="kdates-tour" style="--a:54.10;--w:16.39;--i:1"><b>02</b><span>3 to 12 Nov</span></i>')
     src = swap(src, "flags", '<p class="kdates-flags"><span class="is-go">Guaranteed to run</span><span>6 places</span></p>',
                '<p class="kdates-flags"><span class="v2-status is-go">Guaranteed to run</span><span>6 places</span></p>',
                n=4)   # India's four 2027 departures (tools/v4_india_2027.py)
