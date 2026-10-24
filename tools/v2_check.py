@@ -50,7 +50,9 @@ ATTR = re.compile(r'\s(?:href|src|poster|data-src)="([^"]*)"', re.I)
 LOOP = re.compile(r'\sdata-loop="([^"]*)"')      # a prefix: <prefix>-720.mp4 and the rest
 # Deliberate differences from the live page, with the reason (reported, not failed).
 EXEMPT = {
-    "index.html": {"words": "the owner cut the homepage text on purpose; the trip details it dropped are on the destination pages"},
+    "index.html": {"words": "the owner cut the homepage text on purpose; the trip details it dropped are on the destination pages",
+                   "h1": "the owner's opening (design F2, 24 Oct 2026: \"do it\", \"keep F2 as it stands\") carries its own headline, "
+                         "'Paragliding expeditions, run by a pilot.'"},
 }
 # Live pages changed after v2 was frozen. In v2 their parity differences are
 # reported as warnings; v4 must still match.
@@ -220,7 +222,8 @@ def check_static(rel):
         words = lambda hs: set(w for w in re.findall(r"[\w'’-]+", " ".join(hs).lower()) if w not in FILLER)
         lost = words(a["h1"]) - words(b["h1"])
         if len(a["h1"]) != len(b["h1"]) or lost:
-            fails.append("parity: h1 loses %s (live %r)" % (sorted(lost), a["h1"][:1]))
+            msg = "parity: h1 loses %s (live %r)" % (sorted(lost), a["h1"][:1])
+            (warns.append(msg + " (exempt: %s)" % ex["h1"]) if "h1" in ex else fails.append(msg))
         if b["words"] < a["words"] * 0.95:
             msg = "parity: body text %d words, live %d" % (b["words"], a["words"])
             (warns.append(msg + " (exempt: %s)" % ex["words"]) if "words" in ex else fails.append(msg))
