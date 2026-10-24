@@ -56,3 +56,14 @@ numbers and the owner's words.
 Later the same day: India's snowline photo drifts (snow right, wing left), and
 both moves loop out and back for as long as the visitor stays (the owner's
 call); the shadow on the letters is half as strong on scroll.
+
+## Chat 9 (24 Oct): one pass, then the next place; Panchgani
+F2 only. The loop is gone: each place plays one pass, then the route moves on
+and the line on the readout fills as a progress bar. Panchgani is a fifth,
+podcast stop from the review page's `src/panchgani.webp`; its wing was too
+small for `seg.py` and the line tools, so it was masked by hand (low
+saturation inside the wing's box, the pilot in its own tight box) and built
+with `scene.py` (outputs named for the place, `groundw` 1500, `wingw` 240).
+New per-place keys in `DESTS`: `box` (keep the glider at its real size and
+place), `sizeAs` (the name at another place's size), `rim` (the name's middle
+on a line of the photo), `push.center` (a drift centred on the photo).

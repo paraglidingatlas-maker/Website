@@ -29,6 +29,44 @@ the owner's current queue and what the last session learnt doing it.
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
 
+## Where chat 9 left it (24 Oct): the route plays on, and Panchgani is a fifth stop (F2 only)
+Chat 9 changed nothing in v4 (docs only). Its work is in the review page
+https://claude.ai/artifact/BFTmxrj3NZpbkf3cqcYtxG (newest at the top; F2's
+code is its published file `F2/index.html`, the Panchgani layers are
+`F2/panchgani-*`).
+- **No restart, the route moves on** (owner: "the transition in kenya is
+  making the gliders abruptly switch positions ... instead move on the next
+  slide and maybe we can make this as a progress bar ... make the line a bit
+  sleek"). The cloud restart is gone: each place plays one forward pass
+  (14 s, `push.ms`; 14 s for a place without a move), then the route goes to
+  the next place in `ORDER`, round again after the last. During the wipe the
+  old pass keeps flying forward (z runs on past 1, capped at 1.3). The short
+  orange line on top of the trip readout (`.deck::before`) is now a progress
+  bar: full width, 1 px, a soft glow, `scaleX(var(--prog))`; it drains as the
+  next place wipes in. Code: `playOn()` and `dwell` in F2/index.html; it
+  pauses off screen, in a hidden tab and mid swipe, and restarts when the
+  visitor picks a place. Reduced motion: no autoplay, the line stays 48 px.
+- **Panchgani, option A** (owner: "Add Panchgani to F2 as option A (the
+  designers' pick, which I chose)"; from chat 8's prompt). A fifth stop after
+  Peru: the dated season now fills `--s` of the route (0.9 desktop, 0.78
+  phone, in `.season`), and Panchgani stands at the right end with a hollow
+  marker and "Podcast" under it (`.tp.pod`, `.tp-k`). The glider's position
+  along the route is now read from each marker in `layout()`. Readout: dates,
+  length, launch and price `[to supply]`; "You fly: The plateau that hosted a
+  pre World Cup" (from the episode summary); button "Listen: Navigating
+  Panchgani" to `episodes/navigating-panchgani-vistasp-kharas.html`
+  (Navigators episode 9, 54 min). Photo: the review page's `src/panchgani.webp`
+  (1500 x 756). The wing keeps its real size and place (`box`, mapped through
+  the ground's cover rect); PANCHGANI is at Kazakhstan's size (`sizeAs`) with
+  its middle on the plateau's flat top (`rim: 0.285`); the land drifts 3% of
+  the width sideways under the wing, centred (`push.pan`, `center: true`), no
+  push-in. The wing was cut by hand (white canopy by low saturation, the
+  pilot by a tight box: about 110 px of wing, too small for the line tools),
+  then `scene.py` with place-named outputs, `groundw` 1500, `wingw` 240.
+- **Waiting on the owner (do not push):** how the autoplay and Panchgani look
+  live; Panchgani's dates, length, launch and price; and everything still
+  listed under chat 8 below.
+
 ## Where chat 8 left it (24 Oct): F2's Kenya photo and DSC_9492's move, nothing half-built in the repo
 Chat 8 changed nothing in v4 (docs only: this section, `docs/home-opening`
 README and `scripts/sheet.py`, the contact-sheet maker). All its work is in
