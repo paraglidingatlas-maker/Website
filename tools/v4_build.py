@@ -90,6 +90,9 @@ THE ORDER, AND WHY
                            and the Atlas, the globe that leads into them
                            (step 48, tools/v4_atlas.py), so the chain below
                            gives them v4's frame.
+     v4_panchgani links    Panchgani Tour in every footer (chat 11): the
+                           encyclopedia's pages and any new twin come from
+                           sources without it; idempotent.
   3. v2_library_cards      the library's cards, from library-data.js; before
      v4_library            the flight log, which adds its columns to them.
   4. v4_pass               nav, next step, titles, globes, kb figures and the
@@ -353,6 +356,7 @@ def main():
         else:
             print("== v2_twin: every page has its v4 twin", flush=True)
         run([PY, "tools/v4_encyclopedia.py", "pages"])
+        run([PY, "tools/v4_panchgani.py", "links"])
 
         run([PY, "tools/v2_library_cards.py", "--site", "v4"])
         run([PY, "tools/v4_library.py"])
