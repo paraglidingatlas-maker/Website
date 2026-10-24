@@ -73,6 +73,17 @@ code is its published file `F2/index.html`, the Panchgani layers are
   by hand (low saturation inside its box, the pilot in a tight box: about
   110 px of wing, too small for the line tools), then `scene.py` with
   place-named outputs, `groundw` 1500, `wingw` 240.
+- **The three standing designers** (owner, 24 Oct: "how can we have access
+  to 3 master designers all the time so it doesn't get confusing, because
+  every time we switch I think it's a loss of direction"): `designer-d`,
+  `designer-e`, `designer-f` in `.claude/agents/`, their memory in
+  `docs/designers/` (`direction.md`: the brief and the owner's decisions, keep
+  it current; `D.md`, `E.md`, `F.md`: their notebooks). Use them for every
+  design question. The owner was given a prompt for chat 8 so the original
+  three write their own notebook entries; if chat 8 has pushed them, read
+  them first.
+- **The play button and the line** (24 Oct): no ring, dim until hovered, a
+  small gap before it; the progress line at 75%.
 - **Chat 10 starts here, in this order** (owner, 24 Oct, asked whether the
   opening should replace the v4 home page's own opening: "do it"):
   1. **Build F2 into the v4 home page** (`prototypes/v4/index.html`), in

@@ -131,7 +131,7 @@ h1{font:700 clamp(2rem,3.2vw,3rem)/1.04 var(--font-display);letter-spacing:-.02e
 .deck{position:relative;border-top:1px solid var(--line);padding-top:clamp(12px,1.8vh,18px)}
 .deck::before{content:"";position:absolute;top:-1px;left:0;width:48px;height:1px;background:var(--orange)}
 /* the route plays on by itself: the line fills as each place plays, then the next one flies in */
-.auto .deck::before{width:calc(100% - 46px);height:1px;border-radius:1px;transform-origin:0 50%;transform:scaleX(var(--prog,0));background:linear-gradient(90deg,color-mix(in srgb,var(--orange) 10%,transparent),var(--orange) 85%);box-shadow:0 0 6px color-mix(in srgb,var(--orange) 55%,transparent)}
+.auto .deck::before{opacity:.75;z-index:1;width:calc(100% - 36px);height:1px;border-radius:1px;transform-origin:0 50%;transform:scaleX(var(--prog,0));background:linear-gradient(90deg,color-mix(in srgb,var(--orange) 10%,transparent),var(--orange) 85%);box-shadow:0 0 6px color-mix(in srgb,var(--orange) 55%,transparent)}
 .trips{display:grid}
 .trip{grid-area:1/1;display:grid;grid-template-columns:minmax(12rem,1.2fr) minmax(9.5rem,1fr) minmax(4rem,.45fr) minmax(7rem,.8fr) minmax(11rem,1.35fr) minmax(6.5rem,.7fr) auto;gap:0 clamp(14px,1.8vw,30px);align-items:start}
 .trip:not(.is-on){visibility:hidden}
@@ -157,12 +157,13 @@ h1{font:700 clamp(2rem,3.2vw,3rem)/1.04 var(--font-display);letter-spacing:-.02e
 .pp{display:none;letter-spacing:.1em}
 .tbd.sm{font-size:.72rem;padding:.12rem .35rem;margin:0}
 /* play and pause, at the end of the line: for visitors who want to stay on a place */
-.play{display:none;position:absolute;right:0;top:-15px;width:30px;height:30px;padding:0;border-radius:50%;place-items:center;cursor:pointer;
-  border:1px solid color-mix(in srgb,var(--white) 22%,transparent);background:color-mix(in srgb,var(--bg) 55%,transparent);
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:color-mix(in srgb,var(--white) 78%,transparent);
-  transition:border-color .3s var(--ease),color .3s var(--ease),transform .3s var(--ease)}
+.play{display:none;position:absolute;right:-10px;top:-15px;width:30px;height:30px;padding:0;border:0;border-radius:50%;background:none;place-items:center;cursor:pointer;
+  color:color-mix(in srgb,var(--white) 34%,transparent);transition:color .3s var(--ease),transform .3s var(--ease)}
 .auto .play{display:grid}
-.play:hover{border-color:var(--orange);color:var(--white)}
+/* the line and its track stop short of the button, so it stands in a little space of its own */
+.auto .deck{border-top-color:transparent}
+.auto .deck::after{content:"";position:absolute;top:-1px;left:0;width:calc(100% - 36px);height:1px;background:var(--line)}
+.play:hover,.play:focus-visible{color:color-mix(in srgb,var(--white) 78%,transparent)}
 .play:active{transform:scale(.94)}
 .play:focus-visible{outline:1px solid var(--orange);outline-offset:3px}
 .play svg{width:10px;height:10px;fill:currentColor;display:block}
