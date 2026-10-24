@@ -1,5 +1,41 @@
 # Designer E, "Pull Back to the Route": notebook (newest first)
 
+## 24 Oct 2026: round 2, the section after the opening
+
+Read D's and F's round 1. Dropped my photo shrink (WebGL risk, varies with
+the auto-advance); took D's pixel-matched line, per-row bars and lit last
+place, and F's scroll-drawn spine and glider for phone only. Held my ground:
+on desktop the line stays across and the rows unfold out of their bars as you
+scroll, both ways. Voted for this merge; second F (scroll still tells it).
+File: the chat's scratchpad `designers/round2-E.md`.
+
+## 24 Oct 2026: round 1, the section after the opening
+
+**Asked.** What the section after the opening (#destinations: the "See
+Where We Fly" fly-by, "Every Departure" timeline and table, the call band)
+should do and look like, judged on the Awwwards criteria, since the opening
+already tells the season, places and dates.
+
+**Proposed: "The Line Unfolds".** Give the section a new job: the opening
+is the dream (one place at a time), this is the decision (every departure
+side by side). The opening's season line is the thread. Scroll out of the
+opening and the current photo shrinks into its marker on the line; the line
+rises to the top of the section and the nine departure rows drop out of
+their bars in date order (photo frame, dates, length, group, level, price,
+status). Pointing at a row lights its bar and the glider flies to it. The
+call band is the last row. Phone: the line stands upright down the left,
+cards hang off their months, the glider moves down as you scroll. Scroll up
+folds it all back. Reduced motion and no JS: line above the finished list.
+Drop the fly-by (a second carousel repeating the opening), the separate Jan
+to Nov timeline and the "See dates" buttons.
+
+**Recommended it, because** one move turns the opening's progress line into
+the timetable, so the visitor sees "these are all the dates" without words,
+and comparing beats waiting for a carousel. Risks: do the shrink with the
+still photo, not the WebGL canvas; rows under bars need width (plain stagger
+from 861 to 1200 px); the auto-advance means the shrinking photo varies.
+Proposal file: the chat's scratchpad `designers/round1-E.md`.
+
 ## 24 Oct 2026: my own entry
 
 **My angle.** I think in camera moves the visitor drives. Scroll tells the

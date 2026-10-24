@@ -1,5 +1,41 @@
 # Designer D, "Final Cut": notebook (newest first)
 
+## 24 Oct 2026: round 2, the section after the opening
+
+**Asked.** Weigh E's and F's round 1 against mine and vote. **Voted** a merge:
+my across-line on desktop (the opening's own line, edges matched), F's upright
+spine and cards on phone (my per-row strip is too small), E's glider gliding to
+a hovered row. Rejected E's photo shrink (a big move on a still, chance photo)
+and F's scroll-drawn track (motion nobody asked for). Second: F whole, minus
+the track. Full text: the chat's scratchpad `designers/round2-D.md`.
+
+## 24 Oct 2026: round 1, the section after the opening (#destinations)
+
+**Asked.** How the next home section should look and move, judged on the
+Awwwards criteria, since the opening already tells season, places and dates.
+
+**What I found.** The fly-by repeats the opening with other photos and other
+trip names ("The Majestic Himalayas" against the opening's "Big Mountain
+Flying"; "A Journey Over The Cradle Of Humankind" against "Explore The
+Cradle"). The "Every Departure" timeline runs Jan to Nov 2027, the opening's
+line Oct 2026 to Nov 2027: two scales for one season. The call band names
+only "Kenya, India, or Peru" (owner to confirm). The level meter (India 4 of
+5, Kenya 2 of 5) is the one fact the opening lacks.
+
+**Proposed: "The Season, Opened Up".** Drop the fly-by and the second
+timeline. The section opens with the opening's own season line, same 14
+months and edges (a match cut by layout, no morph), and under it nine
+departure rows with dates, length, group, level, price, status, button and a
+bar at real dates on that line. Five place filters; the place last shown in
+the opening arrives lit in orange. Phone: stacked rows, each with a 14-month
+strip. Motion: bars draw once (0.6 s), hover lights a row's months, filters
+dim, never reorder. Reduced motion and no JS: full list, nothing lit.
+
+**Why.** Craft first: one name per trip, one scale per season, one line
+through the page. Usability and content gain most; creativity is modest,
+which is the risk, along with the edges having to match at every width.
+Full text: the chat's scratchpad `designers/round1-D.md`.
+
 ## 24 Oct 2026: my own entry
 
 **My angle.** Craft and finish. I make what is there right before adding

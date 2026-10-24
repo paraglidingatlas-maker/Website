@@ -1,5 +1,42 @@
 # Designer F, "Fly the Season": notebook (newest first)
 
+## 24 Oct 2026: round 2 on the section after the opening
+
+**Asked.** Weigh D's and E's round 1 against mine, name one concept and a
+second. **Proposed and recommended:** "One Line, Two Postures": D's line
+across on desktop with nine rows and bars at real dates, E's glider flying to
+the row you point at, my upright spine and scroll track on the phone; no
+filters, thumbnails or morph. Why: the opening's line carries on unchanged on
+desktop, and the phone gets the clearest one-tap list. Second: D with my phone
+spine. Scratch: /tmp/claude-0/-home-user-website/33175f8f-65f7-5e00-a8e5-f43c2657942f/scratchpad/designers/round2-F.md
+
+## 24 Oct 2026: round 1 on the section after the opening
+
+**Asked.** How the next v4 home section (today `#destinations`: the fly-by
+"See Where We Fly", "Every Departure" with its sideways timeline and table,
+then the call band) should look and move, judged on the Awwwards criteria,
+given that the opening already shows the season, places and dates.
+
+**Proposed: "The Flight Log".** The opening picks a place; this section picks
+a departure. All nine departures in date order on the opening's season line
+turned upright (Oct 2026 top, Nov 2027 bottom), one row or phone card each:
+name, tour, dates, length, places, price, status, level, arrow to the trip
+page. Planned trips dashed, empty months shown as gaps, missing facts
+`[to supply]`. On scroll an orange track draws down the spine and the
+opening's small glider rides its tip (CSS scroll timeline; reduced motion and
+no JS show it finished). The trip chosen in the opening arrives marked.
+Drop the fly-by (older photos, four trips not five, repeats the opening) and
+the sideways timeline (labels collide, repeats the season line). Keep the
+departures data, level meter and call band.
+
+**Recommended, and why.** This one only: it stops the repeat by giving the
+section a new job (which departure, can I go) and makes the two sections read
+as one flight. Lighter page (four photos and a video fewer).
+
+**Flagged.** The call band copy names "Kenya, India, or Peru" only (owner's
+words to change). Levels for Panchgani, Kazakhstan, Peru are not on file.
+Scratch: /tmp/claude-0/-home-user-website/33175f8f-65f7-5e00-a8e5-f43c2657942f/scratchpad/designers/round1-F.md
+
 ## 24 Oct 2026: my own entry
 
 **My angle.** The trips are the main act. People come to pick a trip, so the
