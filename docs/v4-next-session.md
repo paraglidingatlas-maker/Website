@@ -29,7 +29,7 @@ the owner's current queue and what the last session learnt doing it.
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
 
-## Where chat 10 left it (24 Oct): E's cloud move chosen and live on the sample; the owner said "go autonomous"
+## Where chat 10 left it (24 Oct): the opening is the v4 home hero, India is in 2027 everywhere; chat 11 builds Panchgani's page
 Live (17f53b72, gates PASS): https://paraglidingatlas.com/prototypes/v4/samples/opening/
 - **The move between places is E's** (owner: "build E only"): the camera flies
   forward into a cloud and out of it over the next place (`flight()`,
@@ -84,8 +84,33 @@ Live (17f53b72, gates PASS): https://paraglidingatlas.com/prototypes/v4/samples/
      the booking terms line now just points to the terms (the 120-day rule
      no longer fits). Never run `tools/v2_fly_options.py` without `--site v4`:
      it writes prototypes/v2 (reverted once in chat 10).
-  4. Panchgani's destination page, then its button in the opening points there.
-  5. Panchgani in the rest of v4 (expeditions, dates, enquire, sitemap, map).
+  4. **Next (chat 11 starts here): Panchgani's destination page**, then its
+     button in the opening points there (edit `samples/opening/index.html`,
+     run `tools/v4_home_opening.py`, then the build). Only India and Kenya
+     have pages (live and v4); Panchgani's has no live twin (v2_check warns
+     "no live twin", fine). Plan scoped in chat 10: a generator
+     (`tools/v4_panchgani.py`) that takes the v4 Kenya page's shell (head,
+     nav, footer, the dst-* section classes) and writes
+     `destinations/panchgani.html` with: hero (the opening's Panchgani layers
+     in `img/opening/`, credit "Photo by Michael Gebert /
+     @flywithandy_paragliding"; the only Panchgani photo, so it repeats the
+     opening's: note it to the owner), facts (14 to 21 Feb 2027, 8 days,
+     17.92°N 73.82°E, Sahyadri hills; launch, price, group, rating
+     `[to supply]`), overview and FAQ from the episode
+     `episodes/navigating-panchgani-vistasp-kharas.html` with Vistasp Kharas
+     named (take-off about 1,100 to 1,200 m; 3,000 to 4,000 m in peak season;
+     two hours from Pune, four and a half to five from Mumbai; volcanic
+     plateaus of the Deccan, sharp cliffs, flat tops; evening coastal winds
+     time the window; season November to March, the wind turning from
+     north-northeast to southeast; strong, punchy thermals, SIV advised, EN-B
+     fine; Panchgani to Kamshet about 100 km; the pre World Cup), one dates
+     card (Hold a place, `enquire.html?trip=panchgani&when=14+to+21+February+2027`),
+     the episode as "from the show", the call band. Keep the facts row's
+     launch `[to supply]` (the owner's number), quote the episode elsewhere.
+  5. Panchgani in the rest of v4 (expeditions pages, the home departures and
+     fly-by, enquire's trips and v4_ux `TRIPS` for hold data, sitemap, map,
+     nav where destinations are listed). Reorder the expeditions generators'
+     PLACES to the season (Kenya, Panchgani, India, Kazakhstan, Peru) then.
   6. Small fixes: on a phone India's label covers the Panchgani marker; a
      short swipe on a phone went through as a flick (check it springs back
      below a third when slow).
