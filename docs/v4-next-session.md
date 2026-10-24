@@ -29,7 +29,7 @@ the owner's current queue and what the last session learnt doing it.
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
 
-## Where chat 11 left it (24 Oct): Panchgani has its page and is across v4; next, the small fixes
+## Where chat 11 left it (24 Oct): Panchgani has its page and is across v4, the phone fixes and the review are done
 - **Step 4 done (01505966, gates PASS): Panchgani's page**
   https://paraglidingatlas.com/prototypes/v4/destinations/panchgani.html, by
   `tools/v4_panchgani.py` (run by hand, then the build; it writes the page from
@@ -85,8 +85,23 @@ the owner's current queue and what the last session learnt doing it.
   apart, too slow to flick): slow short, twitch and rest spring back; flick
   and long go. Headless frames lag once WebGL runs, so the ready path reads
   every swipe as slow there; check it by hand on a phone.
-- **Next:** 11. a final review pass of v4 on phone and desktop. Then disable
-  the scheduled task "Chat 11: carry on the v4 plan" and tell the owner.
+- **Step 11 done: the final review pass.** 19 main pages at 1440 and 390 px
+  (home, expeditions, the three trips, podcast, knowledge base, library,
+  the Panchgani episode, enquire, about, sitemap, mission, record, topics,
+  the Atlas, partners, 404, terms): no script errors, no sideways scroll, no
+  broken image, no failed request. Hold a place from Panchgani opens enquire
+  on its departure; its price now shows as the to-supply mark
+  (`tools/v4_ux.py` HOLD_JS). The only new check warning is Panchgani's "no
+  live twin", expected. The scheduled task "Chat 11: carry on the v4 plan" is
+  disabled: every step that does not wait on the owner is done.
+- **Waiting on the owner:** Panchgani's and Kenya's launch heights and
+  prices, Panchgani's group size and pilot rating; whether "Guaranteed to
+  run, 6 places" applies to all four India 2027 departures; Peru and
+  Kazakhstan dates; a second Panchgani photo (for the home fly-by and the
+  expeditions page); which big-wing Kenya photo, if any; full-size India JPGs
+  under 10 MB; a JPG of DSC_6210; the live episode chart and the five Kenya
+  repeat photos; the switch-over (it changes the live home h1 to
+  "Paragliding expeditions, run by a pilot.").
 
 ## Where chat 10 left it (24 Oct): the opening is the v4 home hero, India is in 2027 everywhere; chat 11 builds Panchgani's page
 Live (17f53b72, gates PASS): https://paraglidingatlas.com/prototypes/v4/samples/opening/

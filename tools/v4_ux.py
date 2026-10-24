@@ -230,6 +230,8 @@ HOLD_JS = r"""<script>
   put('when', dep.when);
   put('len', t.len);
   put('price', /from$/i.test(dep.label) ? 'From ' + dep.price : dep.price + ' ' + dep.label.toLowerCase());
+  /* a price the owner has still to give (Panchgani) shows as the site's to-supply mark, not as a price */
+  if (dep.price === '[to supply]') box.querySelector('[data-k="price"]').innerHTML = '<i class="v2-tbd">[to supply]</i>';
   box.hidden = false;
   var m = document.getElementById('message'), lab = document.querySelector('label[for="message"]');
   if (m) m.required = false;
