@@ -11,3 +11,11 @@ Agent tool, `subagent_type: "designer-d"`). Their memory is in this folder:
 each one's notebook (`D.md`, `E.md`, `F.md`, kept by the designer). A chat
 asks them, shows the owner at most two options with one preview, then writes
 the owner's answer into `direction.md`.
+
+The Juror (`.claude/agents/awwwards-juror.md`, notebook `juror.md`) is the
+fourth, added 24 Oct 2026: an independent judge that scores a built preview
+blind against Design, Usability, Creativity and Content and never designs.
+The owner's rule: "use only after checking with me the prediction of time and
+turn expenses". Before calling it, tell the owner the estimate (one page at
+two widths: about 3 to 6 minutes, 60,000 to 120,000 tokens) and wait for
+their yes.
