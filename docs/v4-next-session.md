@@ -29,8 +29,8 @@ the owner's current queue and what the last session learnt doing it.
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
 
-## Where chat 9 left it (24 Oct): the route plays on, and Panchgani is a fifth tour (F2 only)
-Chat 9 changed nothing in v4 (docs only). Its work is in the review page
+## Where chat 9 left it (24 Oct): the route plays on, Panchgani is a fifth tour, India moves to 2027, the opening is on the prototype
+Chat 9 added one v4 page, the opening sample (`prototypes/v4/samples/opening/`); the rest is docs. Its work is in the review page
 https://claude.ai/artifact/BFTmxrj3NZpbkf3cqcYtxG (newest at the top; F2's
 code is its published file `F2/index.html`, the Panchgani layers are
 `F2/panchgani-*`).
@@ -73,6 +73,33 @@ code is its published file `F2/index.html`, the Panchgani layers are
   by hand (low saturation inside its box, the pilot in a tight box: about
   110 px of wing, too small for the line tools), then `scene.py` with
   place-named outputs, `groundw` 1500, `wingw` 240.
+- **India's dates** (owner, 24 Oct: "move dates of india to 15th april for
+  the first tour and then 1 day later the next one", then "keep the older
+  india dates for 2027 so make that tour visible as well accordingly
+  everywhere needed"). In F2 India now has four departures, 10 days each:
+  15 to 24 Apr 2027, 25 Apr to 4 May 2027 (one day after the first ends,
+  read like Panchgani's "2 days after"), 21 to 30 Oct 2027, 3 to 12 Nov 2027.
+  Bars at 46.19/2.38, 48.57/2.35, 90.32/2.3, 93.33/2.38 (%), marker 48.56%;
+  `ORDER` is Kenya, Panchgani, India, Kazakhstan, Peru; on a phone
+  Kazakhstan's name reads right of its marker (`.tp.lt-m`) to clear India's;
+  the dates are one a line (`dd.four`). The Oct and Nov 2027 bars sit inside
+  Peru's dashed "planned Nov 2027" box. **Not done, chat 10's first job:**
+  the same dates "everywhere needed" in v4 (only v4; live pages are the
+  owner's). India's 2026 dates are written in many generators: grep
+  `21 to 30 Oct 2026`, `2026-10-21`, `3 to 12 Nov 2026` in tools/ (v4_expeditions*.py,
+  v4_trip_calm.py, v4_pass.py TRIPS, v2_episode.py, v2_fly_options.py,
+  v3_directions.py, ux_measure.py, smoke.py) and prototypes/v4 (index,
+  expeditions*, destinations/india, enquire, about, fly-options, styleguide,
+  v4-sitemap-sky.js); some v4 pages are localized from the live pages, so
+  change the v4 generator or polish step, never the live page.
+- **The opening is on the prototype** (owner: "make this page live on proto
+  and give me the link"): `prototypes/v4/samples/opening/` (index.html plus
+  its 47 files, about 6.7 MB), a standalone review page (noindex, links to
+  the v4 pages with `../../`, its own styles: a comment names why it links
+  neither styles.css nor v2.css, which v2_localize looks for). Live at
+  https://paraglidingatlas.com/prototypes/v4/samples/opening/?kenya=9492
+  once deployed. It is a copy of the review page's F2: change both, or
+  rebuild this one from F2 (rewrite the page links to `../../`).
 - **Next (owner):** Panchgani needs everything the other destinations have
   in the site (its own destination page and the rest); the owner said "then
   we proceed", so ask what comes first only if it is not clear from them.
