@@ -17,6 +17,8 @@ blurred silhouette at a third, for the shadow on the letters), and
 picks them, and the pill at the top switches (review only).
 
 ## The scripts (set SCRATCH to a work folder; inputs in $SCRATCH/orig, work in $SCRATCH/k3)
+- `sheet.py SRC_DIR OUT_PREFIX [n]`: contact sheets (three across, file name
+  and size under each) for going through a Drive folder.
 - `grade.py NAME...`: the site's grade for a full-size photo (haze cut,
   deeper, a little warmer, soft vignette) to `k3/NAME-graded.png`.
 - `prep_site.py SRC NAME WARM`: the same, half strength, for photos that are
@@ -44,3 +46,10 @@ picks them, and the pill at the top switches (review only).
   above Oslo. The India choices use the site's 1400 px copies
   (`assets/destinations/india/gallery/red-wing.jpg`, `launch-day.jpg`), too
   small for lines; both are also in the India page gallery.
+
+## Chat 8 (24 Oct): DSC_9492's follow shot
+F2 only. For a photo with `push` in `PHOTOS`, the WebGL scene flies slowly into
+the valley once (12 s) while the gliders shrink to 90% and drift toward the
+valley's far point; one number `z` drives the gliders' size, drift, shadow gap
+and darkness, and mouse pull. See `docs/v4-next-session.md` (chat 8) for the
+numbers and the owner's words.

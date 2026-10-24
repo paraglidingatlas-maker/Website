@@ -29,6 +29,45 @@ the owner's current queue and what the last session learnt doing it.
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
 
+## Where chat 8 left it (24 Oct): F2's Kenya photo and DSC_9492's move, nothing half-built in the repo
+Chat 8 changed nothing in v4 (docs only: this section, `docs/home-opening`
+README and `scripts/sheet.py`, the contact-sheet maker). All its work is in
+the review page https://claude.ai/artifact/BFTmxrj3NZpbkf3cqcYtxG (newest at
+the top; F2's code is its published file `F2/index.html`).
+- **Big-wing search** (owner: "stunning photos only where the wing is
+  visible largely"). Went through the Drive's "Kenya Feb 2025" (62 JPGs and 6
+  NEFs; 58 JPGs downloaded) and "Go Pro Photos" (10 frames, all Norway and a
+  sea coast, nothing for Kenya or India). Shortlist sent to the owner, no
+  answer yet: **DSC_9473** (orange wing against the sky, lines clear; the
+  pick), **DSC_9489** (orange and blue over red earth), **DSC_9792** (biggest
+  wing, over grass); runners-up DSC_9814, DSC_9763. Not reachable through the
+  connector: IMG_2073, IMG_2074, IMG_2132 (8.5 to 9.7 MB, the connector drops
+  on them) and IMG_2111 (over 10 MB). India: still no originals; the owner
+  was asked once for full-size India JPGs under 10 MB.
+- **Wing liveries** (owner asked to see the wing in a Kenyan pattern, then
+  said "forget it"). Three F1-style looks were shown in chat only (shuka
+  slash, bead line, Maasai shield). Dropped; do not raise.
+- **DSC_9492 now moves** (owner: "the gliders have to go away from the viewer
+  and background is correct, but this has to be done slowly"; three designers
+  D, E, F were asked; the owner said "ok" to option A, D's and F's): a follow
+  shot that plays once when WebGL takes over (about 1.55 s), 12 s, sine
+  in-out. The valley grows 1 to 1.08 about its far point (uv 0.42, 0.18 of the
+  ground) with a depth dolly 0.10; the gliders shrink 1 to 0.9 about their
+  own centre and drift 2% of the width toward that point; their shadow gap on
+  the letters shrinks to 0.6 and darkens 14%; the mouse pull shrinks with
+  them; scroll works on top. The arrival glide for this photo starts at
+  scale 1.05 from lower right (`glide-away`), so the gliders only ever move
+  away. Code: F2/index.html `PHOTOS.kenya['9492'].push`, `pushZ`, `drawDest`,
+  uniforms `uDolly` and `uShK`. Option B (E's: scroll drives the move, bigger)
+  was not chosen. The owner has not yet said whether the motion stays.
+- **Waiting on the owner (do not push):** which Kenya big-wing photo (if any)
+  to build into F2 the same way (grade, cut-out with real lines, filled
+  ground, shadow, depth: `docs/home-opening/README.md`); India originals;
+  everything still listed under chat 7 and chat 6 below.
+- Testing WebGL in this container: serve the folder over http
+  (`python3 -m http.server`), not file:// (textures from file:// are
+  cross-origin and the WebGL scene never starts); headless Chromium has WebGL.
+
 ## Where chat 7 left it (24 Oct): the home opening is down to photo choices, nothing half-built in the repo
 Chat 7 changed nothing in v4. It ran a second round of three designers on
 C2 (the owner, 23 Oct: "C2 is really nice", asked for a competition to
