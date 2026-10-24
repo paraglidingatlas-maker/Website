@@ -100,6 +100,12 @@ code is its published file `F2/index.html`, the Panchgani layers are
   https://paraglidingatlas.com/prototypes/v4/samples/opening/?kenya=9492
   once deployed. It is a copy of the review page's F2: change both, or
   rebuild this one from F2 (rewrite the page links to `../../`).
+- **Play and pause** (owner: "give a subtle yet elegant and sleek play pause
+  button for those who want to stay on the image"): a 30 px ring at the right
+  end of the progress line (`.play`, shown only with `.auto`), the line stops
+  46 px short of it. Pause holds the place and its move still (`paused` stops
+  both `dwell` and `pushClock`); play goes on from there. Both copies (F2 and
+  `samples/opening/`).
 - **The library is another chat's** (owner, 24 Oct: "forget about library
   here, I'm working on it on another chat ... which needs to be connected to
   chat 10"): the owner's chat https://claude.ai/code/cshk_014sbQF9W1CqGXbH3oHgNsEBPkibnHiMxcAso6rNZN4e7y

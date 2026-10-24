@@ -131,7 +131,7 @@ h1{font:700 clamp(2rem,3.2vw,3rem)/1.04 var(--font-display);letter-spacing:-.02e
 .deck{position:relative;border-top:1px solid var(--line);padding-top:clamp(12px,1.8vh,18px)}
 .deck::before{content:"";position:absolute;top:-1px;left:0;width:48px;height:1px;background:var(--orange)}
 /* the route plays on by itself: the line fills as each place plays, then the next one flies in */
-.auto .deck::before{width:100%;height:1px;border-radius:1px;transform-origin:0 50%;transform:scaleX(var(--prog,0));background:linear-gradient(90deg,color-mix(in srgb,var(--orange) 10%,transparent),var(--orange) 85%);box-shadow:0 0 6px color-mix(in srgb,var(--orange) 55%,transparent)}
+.auto .deck::before{width:calc(100% - 46px);height:1px;border-radius:1px;transform-origin:0 50%;transform:scaleX(var(--prog,0));background:linear-gradient(90deg,color-mix(in srgb,var(--orange) 10%,transparent),var(--orange) 85%);box-shadow:0 0 6px color-mix(in srgb,var(--orange) 55%,transparent)}
 .trips{display:grid}
 .trip{grid-area:1/1;display:grid;grid-template-columns:minmax(12rem,1.2fr) minmax(9.5rem,1fr) minmax(4rem,.45fr) minmax(7rem,.8fr) minmax(11rem,1.35fr) minmax(6.5rem,.7fr) auto;gap:0 clamp(14px,1.8vw,30px);align-items:start}
 .trip:not(.is-on){visibility:hidden}
@@ -156,6 +156,19 @@ h1{font:700 clamp(2rem,3.2vw,3rem)/1.04 var(--font-display);letter-spacing:-.02e
 .tbd{display:inline-block;font:500 .86rem/1.2 var(--font-body);color:var(--gray);border:1px dashed color-mix(in srgb,var(--white) 26%,transparent);padding:.32rem .5rem;margin-top:.1rem}
 .pp{display:none;letter-spacing:.1em}
 .tbd.sm{font-size:.72rem;padding:.12rem .35rem;margin:0}
+/* play and pause, at the end of the line: for visitors who want to stay on a place */
+.play{display:none;position:absolute;right:0;top:-15px;width:30px;height:30px;padding:0;border-radius:50%;place-items:center;cursor:pointer;
+  border:1px solid color-mix(in srgb,var(--white) 22%,transparent);background:color-mix(in srgb,var(--bg) 55%,transparent);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:color-mix(in srgb,var(--white) 78%,transparent);
+  transition:border-color .3s var(--ease),color .3s var(--ease),transform .3s var(--ease)}
+.auto .play{display:grid}
+.play:hover{border-color:var(--orange);color:var(--white)}
+.play:active{transform:scale(.94)}
+.play:focus-visible{outline:1px solid var(--orange);outline-offset:3px}
+.play svg{width:10px;height:10px;fill:currentColor;display:block}
+.play .i-play{display:none;margin-left:2px}
+.held.is-paused .play .i-play{display:block}
+.held.is-paused .play .i-pause{display:none}
 .trip dd.four{font-size:.88rem;line-height:1.32}   /* India's four departures, one a line */
 .br{display:block}
 .t-go{display:grid;justify-items:end;gap:.55rem;text-align:right}
@@ -411,6 +424,7 @@ html:not(.js) .swipe{display:none!important}
     </div>
 
     <section class="deck" aria-label="The chosen trip">
+      <button class="play" type="button" aria-label="Pause: stay on this place"><svg class="i-pause" viewBox="0 0 10 10" aria-hidden="true"><rect x="1.5" y="1" width="2.4" height="8" rx="1"/><rect x="6.1" y="1" width="2.4" height="8" rx="1"/></svg><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg></button>
       <div class="trips">
         <article class="trip sw" data-dest="india" data-starts="2027-04-15 2027-04-25 2027-10-21 2027-11-03">
           <div class="t-name" style="--k:0"><h2>Big Mountain Flying</h2><p>India · Bir Billing, Himalaya<span class="co">32.05°N · 76.72°E</span></p></div>
@@ -867,11 +881,19 @@ html:not(.js) .swipe{display:none!important}
   held.addEventListener('pointercancel', release);
 
   /* the route plays on by itself while the opening is in view: each place holds for one pass, then the next flies in */
-  var dwell = { t: 0, last: null };
+  var dwell = { t: 0, last: null }, paused = false;
+  /* the button at the end of the line: pause stays on the place and holds its move still; play goes on from there */
+  var playBtn = held.querySelector('.play');
+  if (playBtn) playBtn.addEventListener('click', function () {
+    paused = !paused;
+    held.classList.toggle('is-paused', paused);
+    playBtn.setAttribute('aria-label', paused ? 'Play: go on to the next places' : 'Pause: stay on this place');
+    kick();
+  });
   function holdFor(key) { var u = DESTS[key].push; return u ? u.ms : 14000; }
   function playOn(now) {
     if (reduce) return false;
-    var going = !trans && !busy && !drag && onScreen && !document.hidden;
+    var going = !paused && !trans && !busy && !drag && onScreen && !document.hidden;
     if (going && dwell.last != null) dwell.t += Math.min(50, now - dwell.last);
     dwell.last = going ? now : null;
     var pr = Math.min(1, dwell.t / holdFor(active));
@@ -1159,7 +1181,7 @@ html:not(.js) .swipe{display:none!important}
     api.pushing = false;
     function pushClock(key) {
       var now = performance.now(), last = pushLast[key];
-      pushAge[key] = (pushAge[key] || 0) + (last == null ? 0 : Math.min(50, now - last));
+      pushAge[key] = (pushAge[key] || 0) + (last == null || paused ? 0 : Math.min(50, now - last));
       pushLast[key] = now;
       api.pushing = true;
       return pushAge[key];
