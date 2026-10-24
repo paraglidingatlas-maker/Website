@@ -73,6 +73,26 @@ code is its published file `F2/index.html`, the Panchgani layers are
   by hand (low saturation inside its box, the pilot in a tight box: about
   110 px of wing, too small for the line tools), then `scene.py` with
   place-named outputs, `groundw` 1500, `wingw` 240.
+- **Chat 10 starts here, in this order** (owner, 24 Oct, asked whether the
+  opening should replace the v4 home page's own opening: "do it"):
+  1. **Build F2 into the v4 home page** (`prototypes/v4/index.html`), in
+     place of its current opening: the source is
+     `prototypes/v4/samples/opening/index.html` (the same as the review page's
+     F2/index.html; its page links carry `../../`). The home opening is made
+     by `tools/v4_polish.py` (`home_markup`, HOME_CSS, HOME_JS); the assets
+     go into `prototypes/v4/img/` (never `assets/`). Keep F2 as it stands:
+     the season route with Panchgani and India's four 2027 departures, one
+     pass then the next place, the progress line with play and pause, the
+     real-size Panchgani wing and its left turn, the DSC_9492 follow shot
+     (`?kenya=9492` picks it in the sample; in v4 make 9492 Kenya's photo, as
+     the owner chose option A for it) and drop the review-only photo switch
+     (`.kpick`). The rest of the home page stays. Use the site's own fonts
+     (`prototypes/v4/fonts/`), not Google Fonts, and the design tokens.
+  2. **India's 2027 dates everywhere in v4** (next point).
+  3. Then Panchgani's own destination page and the rest it needs (owner:
+     "it is a proper tour which will need to have all its necessities like
+     other destination pages"), and its button changes from the episode to
+     that page.
 - **India's dates** (owner, 24 Oct: "move dates of india to 15th april for
   the first tour and then 1 day later the next one", then "keep the older
   india dates for 2027 so make that tour visible as well accordingly
