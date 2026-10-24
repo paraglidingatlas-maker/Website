@@ -67,7 +67,23 @@ Live (17f53b72, gates PASS): https://paraglidingatlas.com/prototypes/v4/samples/
      the owner's deliberate change from the live "Touch The Sky With Glory":
      **tell the owner this changes the live h1 at the switch-over.**
      The sample is the single source; Kenya is fixed to DSC_9492 there.
-  3. India's 2027 dates everywhere in v4 (chat 9 below).
+  3. **Done: India's 2027 dates everywhere in v4** (four departures, 15 to
+     24 Apr, 25 Apr to 4 May, 21 to 30 Oct, 3 to 12 Nov 2027).
+     `tools/v4_india_2027.py` (idempotent, run by hand) moved the pages: the
+     India page (two season bands, spring and autumn; four cards; strap, FAQ,
+     terms, structured data; "Next departure 15 Apr 2027"), the home
+     departures (by month, dated before planned) and fly-by, every episode's
+     Fly With Us (Kenya first now), the Fly it yourself links, About. The
+     generators carry the dates (v4_expeditions*.py with a cross-month
+     departure, v2_fly_options, v2_episode, v4_pass TRIPS, v4_trip_calm
+     BIG/QUIET, which now expects four flags). v4_polish's line of months
+     reads a departure that crosses a month. The India search description is
+     the owner's fact (`tools/data/v4_facts.json` india_2027), accepted by
+     v2_check's parity. Carried over, not confirmed by the owner: "Guaranteed
+     to run" and "6 places" for all four (as the opening already says), and
+     the booking terms line now just points to the terms (the 120-day rule
+     no longer fits). Never run `tools/v2_fly_options.py` without `--site v4`:
+     it writes prototypes/v2 (reverted once in chat 10).
   4. Panchgani's destination page, then its button in the opening points there.
   5. Panchgani in the rest of v4 (expeditions, dates, enquire, sitemap, map).
   6. Small fixes: on a phone India's label covers the Panchgani marker; a
