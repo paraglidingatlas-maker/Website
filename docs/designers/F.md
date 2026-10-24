@@ -1,5 +1,21 @@
 # Designer F, "Fly the Season": notebook (newest first)
 
+## 24 Oct 2026: built the one preview of the merged departures section
+
+**Asked.** Build option A, the three designers' merge, as one preview in
+context. **Built:** `prototypes/v4/samples/departures/index.html`, a copy of
+the v4 home with only `#destinations` replaced. Desktop: the opening's season
+line (edges matched to the pixel, 72 to 1368 px at 1440), today marked, Kenya
+lit; nine rows (today's table facts, `[to supply]` kept), each with its bar at
+real dates as a line under the row (bars above the row read as belonging to
+the row before, so I moved them under). Pointing or focus flies the glider
+along the line to that bar with the opening's lift and bank, orange track
+from today. Phone: upright spine, one card per departure, Nov, Dec and Jul,
+Aug, Sep shown as gaps, scroll-drawn track with the glider on its tip. Reduced
+motion and no JS: whole list, glider at today. Call band kept. **Recommend**
+showing the owner this as is; the call band's "Kenya, India, or Peru" is still
+the owner's words to change. Shots: scratchpad `designers/preview-*.png`.
+
 ## 24 Oct 2026: round 2 on the section after the opening
 
 **Asked.** Weigh D's and E's round 1 against mine, name one concept and a
