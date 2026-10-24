@@ -1,5 +1,23 @@
 # Designer D, "Final Cut": notebook (newest first)
 
+## 24 Oct 2026: whole-site study to Awwwards standard
+
+**Asked.** Study the whole v4 site (home, expeditions, Kenya, Panchgani,
+podcast, knowledge base, one episode, about) on the Awwwards criteria, and
+say how far it has come since v4 at 48bfc475 (the owner: "I'm talking about
+V4"). **Found.** The home opening is the big step (the place as the page,
+readout, season line); Panchgani is new; the other pages are unchanged and
+now lag. **Ranked gaps:** (1) one trip, one name, one list: home shows each
+tour three times under three names, four time scales, "Touch The Sky With
+Glory" left in footer and call band; (2) the opening's finish: grey rim on
+the pilot in the A, no lines, the dashed [to supply] box, 9 px phone months;
+(3) red YouTube episode cards; (4) type and token drift: six body sizes, DM
+Mono, pure white and #FF8A3D on Kenya, mixed button case; (5) Kenya's fly
+chapters black without JS, 21 phone screens. **Recommended:** the opening's
+season line as the site's one ruler, fed from one list of names, dates and
+prices. Why: it closes the biggest gap and adds nothing new. Full text: the
+chat's scratchpad `designers/study-D.md`.
+
 ## 24 Oct 2026: round 2, the section after the opening
 
 **Asked.** Weigh E's and F's round 1 against mine and vote. **Voted** a merge:
