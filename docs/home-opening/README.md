@@ -49,7 +49,10 @@ picks them, and the pill at the top switches (review only).
 
 ## Chat 8 (24 Oct): DSC_9492's follow shot
 F2 only. For a photo with `push` in `PHOTOS`, the WebGL scene flies slowly into
-the valley once (12 s) while the gliders shrink to 90% and drift toward the
+the valley (12 s) while the gliders shrink to 90% and drift toward the
 valley's far point; one number `z` drives the gliders' size, drift, shadow gap
 and darkness, and mouse pull. See `docs/v4-next-session.md` (chat 8) for the
 numbers and the owner's words.
+Later the same day: India's snowline photo drifts (snow right, wing left), and
+both moves loop out and back for as long as the visitor stays (the owner's
+call); the shadow on the letters is half as strong on scroll.

@@ -50,8 +50,7 @@ the top; F2's code is its published file `F2/index.html`).
 - **DSC_9492 now moves** (owner: "the gliders have to go away from the viewer
   and background is correct, but this has to be done slowly"; three designers
   D, E, F were asked; the owner said "ok" to option A, D's and F's): a follow
-  shot that plays once when WebGL takes over (about 1.55 s), 12 s, sine
-  in-out. The valley grows 1 to 1.08 about its far point (uv 0.42, 0.18 of the
+  shot that starts when WebGL takes over (about 1.55 s), 12 s each way. The valley grows 1 to 1.08 about its far point (uv 0.42, 0.18 of the
   ground) with a depth dolly 0.10; the gliders shrink 1 to 0.9 about their
   own centre and drift 2% of the width toward that point; their shadow gap on
   the letters shrinks to 0.6 and darkens 14%; the mouse pull shrinks with
@@ -59,13 +58,28 @@ the top; F2's code is its published file `F2/index.html`).
   scale 1.05 from lower right (`glide-away`), so the gliders only ever move
   away. Code: F2/index.html `PHOTOS.kenya['9492'].push`, `pushZ`, `drawDest`,
   uniforms `uDolly` and `uShK`. Option B (E's: scroll drives the move, bigger)
-  was not chosen. The owner has not yet said whether the motion stays.
+  was not chosen.
+- **Then (owner, 24 Oct):** "the shadows become too prominent upon scroll,
+  reduce that by 50%": on every place the gliders' shadow strength now falls
+  to half as the page scrolls (`uShK` times `1 - 0.5p`) and its scroll gap
+  grows half as much (`lift` 1.4 to 0.7). "Do the same with India": the
+  snowline photo drifts, the ground 0.8% of the width right plus a depth
+  shift 0.014 (near rock moves more), the wing 1.2% left, 18 s each way
+  (`DESTS.india.push.pan`); "red wing" and "launch day" stay still.
+- **The owner changed the motion rule for these (24 Oct):** "for both kenya
+  and india add this as a infinity loop, as long as the viewer stays the
+  immersion stays". So both moves loop out and back on a sine (no jump),
+  forever; time runs only while that place is drawn, so it pauses off
+  screen, in a hidden tab and on other places. Reduced motion: still, as
+  before. This is the owner's exception to "nothing loops on its own"; it
+  covers these two opening moves only.
 - **Waiting on the owner (do not push):** which Kenya big-wing photo (if any)
   to build into F2 the same way (grade, cut-out with real lines, filled
   ground, shadow, depth: `docs/home-opening/README.md`); India originals;
   everything still listed under chat 7 and chat 6 below.
-- Testing WebGL in this container: serve the folder over http
-  (`python3 -m http.server`), not file:// (textures from file:// are
+- Testing WebGL in this container: serve the folder over http on any port
+  but 8765 (the gates use 8765 and will use, and fail on, any server already
+  there), not file:// (textures from file:// are
   cross-origin and the WebGL scene never starts); headless Chromium has WebGL.
 
 ## Where chat 7 left it (24 Oct): the home opening is down to photo choices, nothing half-built in the repo
