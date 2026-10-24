@@ -24,6 +24,8 @@ and a readout under the photo. The owner said "do it" to building it into the
 v4 home page (chat 10's job).
 
 ## Decision log (newest first)
+- 24 Oct (chat 11): the designers have names: D is Trim, E is Cloudbase, F is
+  Turnpoint ("give these designers some cool names"; chosen by the chat).
 - 24 Oct (chat 10): the move between places is E's, "through the cloud" (the
   owner saw three built versions: D "Contour Cut", the orange line bending
   round the land; E, the camera flies into cloud and out over the next place;
