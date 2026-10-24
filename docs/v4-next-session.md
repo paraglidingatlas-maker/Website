@@ -70,11 +70,23 @@ the top; F2's code is its published file `F2/index.html`).
   see: the owner said "the india animation isn't working".)
 - **The owner changed the motion rule for these (24 Oct):** "for both kenya
   and india add this as a infinity loop, as long as the viewer stays the
-  immersion stays". So both moves loop out and back on a sine (no jump),
-  forever; time runs only while that place is drawn, so it pauses off
-  screen, in a hidden tab and on other places. Reduced motion: still, as
-  before. This is the owner's exception to "nothing loops on its own"; it
-  covers these two opening moves only.
+  immersion stays"; then "the gliders start reversing after a bit, that
+  defeats the purpose, they should only go in one direction, and that is
+  forward" (Kenya, then "do the same for india"), and "make sure your
+  restart is awwwards worthy". So both moves only ever go forward, forever:
+  each pass runs 14 s at an even pace (the first starts from rest); the next
+  pass starts 9.1 s in (`fade` 0.35). The restart is hidden in a cloud we fly
+  through: in Kenya a ring of cloud streams out from the valley's far point,
+  in India a bank of cloud drifts across with the snow; the next pass is
+  drawn over the last only where the cloud has already passed (shader
+  `cloud()`, uniforms `uMist`, `uMistB`, `uRev`; per place `push.mist` =
+  [mode, colour, peak]; India's colour is above 1 because its grade is dim).
+  A faint wisp (0.08) always drifts. Time runs only while that place is
+  drawn, so it pauses off screen, in a hidden tab and on other places.
+  Reduced motion: still. This is the owner's exception to "nothing loops on
+  its own" for these two opening moves only. Testing note: headless
+  Chromium draws slowly, so the scene clock (capped at 50 ms a frame) runs
+  at about half speed there; capture by the clock, not by wall time.
 - **Waiting on the owner (do not push):** which Kenya big-wing photo (if any)
   to build into F2 the same way (grade, cut-out with real lines, filled
   ground, shadow, depth: `docs/home-opening/README.md`); India originals;
