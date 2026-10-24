@@ -1,4 +1,4 @@
-# v4: handoff to the next session (21 Oct 2026)
+# v4: handoff to the next session (24 Oct 2026)
 
 Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
@@ -28,6 +28,52 @@ the owner's current queue and what the last session learnt doing it.
 - Work lean (owner, 21 Oct: "we're spending a lot of time discussing"): at
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
+
+## Where chat 11 left it (24 Oct): Panchgani has its page and is across v4; next, the small fixes
+- **Step 4 done (01505966, gates PASS): Panchgani's page**
+  https://paraglidingatlas.com/prototypes/v4/destinations/panchgani.html, by
+  `tools/v4_panchgani.py` (run by hand, then the build; it writes the page from
+  the v4 Kenya page's frame, and `img/panchgani/plateau.jpg|webp`, the
+  opening's ground with its wing put back). Hero (one photo, no rail, the
+  credit on it), jump row, facts (launch, rating, group, price `[to supply]`),
+  overview and six questions from Vistasp Kharas's episode (each fact his, or
+  the owner's dates), one departure card (Hold a place with
+  `?trip=panchgani&when=14+to+21+February+2027`), the episode, the call band,
+  the booking bar. A small script lights the dates band (Kenya's overview
+  script does it there). `tools/v4_ux.py` TRIPS and `tools/v4_phone_media.py`
+  take Panchgani as a third trip (the phone cut `img/hero/panchgani-plateau-p`);
+  v4_ux's trip_dates_first skips a page with no route or gallery, its price
+  regexes allow `<b class="v2-tbd">`. `tools/v2_site.py` NEW_PAGES lists
+  `destinations/panchgani.html` (no live twin: the switch writes it, indexable,
+  into the sitemap); its canonical and og:image are the addresses it will have
+  (`/destinations/panchgani.html`, `/assets/v4/img/panchgani/plateau.jpg`).
+  The opening's Panchgani button is "See the Panchgani trip" (sample, then
+  `tools/v4_home_opening.py`, then the build; the build title-cases the home
+  headings, so commit its output).
+- **Step 5 done: Panchgani across v4.** `python3 tools/v4_panchgani.py links`
+  puts "Panchgani Tour" after Kenya in every footer (not samples, not
+  library.html: the library is the other chat's); v4_build runs it after the
+  encyclopedia's pages, which are rebuilt from a source without it. Phone menu
+  (`src/v4-menu.js`), enquire's trip list, the sitemap (a fifth trip in its
+  SITEMAP_SKY tree, thumbnail `img/panchgani/plateau-thumb.webp`, five
+  positions in `tools/v4_sitemap_sky.py`; India's line now "April to May,
+  October to November"), the home departures (a row after Kenya, "Dates set",
+  group and price `[to supply]`; v4_polish draws it on the line of months),
+  the expeditions page (`tools/v4_expeditions.py`: five places in the
+  season's order, Panchgani 02 without a photo, words cap 450; year labels
+  carry months only, Kenya's ends at its last departure, India's ends with
+  October where Peru's begins, and on a phone Kazakhstan's and India's are
+  nudged apart), and Fly it yourself on the Panchgani episode
+  (`tools/v4_pass.py` TRIPS).
+- **Decided without the owner (tell them):** Panchgani's only photo appears on
+  the opening, its page hero and the sitemap thumbnail; the home fly-by and the
+  expeditions page leave it out rather than repeat it again. A second
+  Panchgani photo would fill both. Panchgani's status reads "Dates set" (not
+  "Booking open", which the owner has not said).
+- **Next (in order):** 6. small fixes (on a phone India's season label covers
+  the Panchgani marker in the opening; check a slow short swipe springs back);
+  11. a final review pass of v4 on phone and desktop. Then disable the
+  scheduled task "Chat 11: carry on the v4 plan" and tell the owner.
 
 ## Where chat 10 left it (24 Oct): the opening is the v4 home hero, India is in 2027 everywhere; chat 11 builds Panchgani's page
 Live (17f53b72, gates PASS): https://paraglidingatlas.com/prototypes/v4/samples/opening/
