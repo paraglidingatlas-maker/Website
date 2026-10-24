@@ -51,8 +51,11 @@ code is its published file `F2/index.html`, the Panchgani layers are
   Peru: the dated season now fills `--s` of the route (0.9 desktop, 0.78
   phone, in `.season`), and Panchgani stands at the right end with a hollow
   marker and "Podcast" under it (`.tp.pod`, `.tp-k`). The glider's position
-  along the route is now read from each marker in `layout()`. Readout: dates,
-  length, launch and price `[to supply]`; "You fly: The plateau that hosted a
+  along the route is now read from each marker in `layout()`. Readout: 14 to
+  21 Feb 2027, 8 days (owner: "2 days after the last kenya tour and runs for
+  8 days"; Kenya's last ends 12 Feb), launch and price `[to supply]`; photo
+  credit under the place name, "Photo by Michael Gebert /
+  @flywithandy_paragliding" (owner's words; the handle links to Instagram); "You fly: The plateau that hosted a
   pre World Cup" (from the episode summary); button "Listen: Navigating
   Panchgani" to `episodes/navigating-panchgani-vistasp-kharas.html`
   (Navigators episode 9, 54 min). Photo: the review page's `src/panchgani.webp`
@@ -64,7 +67,8 @@ code is its published file `F2/index.html`, the Panchgani layers are
   pilot by a tight box: about 110 px of wing, too small for the line tools),
   then `scene.py` with place-named outputs, `groundw` 1500, `wingw` 240.
 - **Waiting on the owner (do not push):** how the autoplay and Panchgani look
-  live; Panchgani's dates, length, launch and price; and everything still
+  live; Panchgani's launch and price (it stays apart from the season line
+  even with dates, as the owner placed it); and everything still
   listed under chat 8 below.
 
 ## Where chat 8 left it (24 Oct): F2's Kenya photo and DSC_9492's move, nothing half-built in the repo
