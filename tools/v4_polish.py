@@ -927,18 +927,23 @@ def home_markup(html):
     for place, yy, mm, name, tour, dates in deps:
         y, mo = int(yy), int(mm)
         dm = re.match(r"(\d+) to (\d+) [A-Z][a-z]{2} \d{4}$", dates)
+        # a departure that runs into the next month: 25 Apr to 4 May 2027
+        dx = re.match(r"(\d+) [A-Z][a-z]{2} to (\d+) ([A-Z][a-z]{2}) \d{4}$", dates)
         if dm:
-            a, b = int(dm.group(1)), int(dm.group(2)); plan = False
+            a, b, mb = int(dm.group(1)), int(dm.group(2)), y * 12 + mo - 1; plan = False
+        elif dx:
+            a, b = int(dx.group(1)), int(dx.group(2)); plan = False
+            mb = y * 12 + mo - 1 + (MONTHS.index(dx.group(3)) - (mo - 1)) % 12
         else:
-            a, b = 1, calendar.monthrange(y, mo)[1]; plan = True
-        rows.append((y * 12 + mo - 1, a, b, plan, name + (", " + tour.lower() if tour else ""), H.unescape(dates)))
-    m0 = min(r[0] for r in rows); m1 = max(r[0] for r in rows); n = m1 - m0 + 1
+            a, b, mb = 1, calendar.monthrange(y, mo)[1], y * 12 + mo - 1; plan = True
+        rows.append((y * 12 + mo - 1, a, b, plan, name + (", " + tour.lower() if tour else ""), H.unescape(dates), mb))
+    m0 = min(r[0] for r in rows); m1 = max(r[6] for r in rows); n = m1 - m0 + 1
     def pos(mi, day):
         y, mo = divmod(mi, 12)
         return 100.0 * ((mi - m0) + (day - 1) / calendar.monthrange(y, mo + 1)[1]) / n
     lis = []
-    for mi, a, b, plan, label, dates in rows:
-        x0 = pos(mi, a); x1 = pos(mi, b + 1); right = x1 > 72
+    for mi, a, b, plan, label, dates, mb in rows:
+        x0 = pos(mi, a); x1 = pos(mb, b + 1); right = x1 > 72
         lab = ('<span style="%s">%s<em>%s</em></span>' % (
             ("right:calc(%.2f%% + 10px)" % (100 - x0)) if right else ("left:calc(%.2f%% + 10px)" % x1), H.escape(label), H.escape(dates)))
         lis.append('<li%s><b style="left:%.2f%%;width:%.2f%%"></b>%s</li>' % (' class="is-plan"' if plan else "", x0, x1 - x0, lab))

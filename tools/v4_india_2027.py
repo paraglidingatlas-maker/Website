@@ -75,7 +75,7 @@ DEP = re.compile(r'( *)<a class="v2-dep" href="destinations/india\.html" data-pl
 def home(s):
     rows = list(DEP.finditer(s))
     if not rows:
-        return s
+        return order(s)
     pad = rows[0].group(1)
     proto = rows[0].group(0)
     new = []
@@ -94,8 +94,17 @@ def home(s):
     keep = [(m.group(1), m.group(0)) for m in allrows]
     for r in new:
         keep.append((re.search(r'data-month="(\d{4}-\d{2})"', r).group(1), r))
-    keep.sort(key=lambda t: t[0])
-    return s[:start] + "".join(r for _, r in keep) + s[end:]
+    return order(s[:start] + "".join(r for _, r in keep) + s[end:])
+
+
+def order(s):
+    """The departure rows by month; in the same month a dated tour before a planned one (Peru, November 2027)."""
+    allrows = list(re.finditer(r' *<a class="v2-dep" [^>]*data-month="(\d{4}-\d{2})">.*?</a>\n', s, re.S))
+    if not allrows:
+        return s
+    start, end = allrows[0].start(), allrows[-1].end()
+    keep = sorted(((m.group(1), "trip=" in m.group(0)[:200], m.group(0)) for m in allrows), key=lambda t: t[:2])
+    return s[:start] + "".join(r for _, _, r in keep) + s[end:]
 
 
 # ---------- the India page ----------
