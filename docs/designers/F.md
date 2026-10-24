@@ -1,5 +1,27 @@
 # Designer F, "Fly the Season": notebook (newest first)
 
+## 24 Oct 2026: whole-site study for Awwwards, from the destinations
+
+**Asked.** Study the whole v4 site against Awwwards (Design 40, Usability 30,
+Creativity 20, Content 10) and say how far it has come since v4 at 48bfc475
+(the owner: "I'm talking about V4"). **Found:** the home now opens on the
+trips (KENYA, real dates, "Next one in 86 days", one button, season line);
+India's 2027 dates match everywhere; Panchgani is a tour with its own page and
+the episode links to it. One step back: on a phone the opening's trip button
+sits at 824 to 871 px on an 844 px screen (was 560 px). **Gaps, ranked:**
+(1) trip pages tell the trip differently from the opening (no dates or price
+on Kenya's or Panchgani's first phone screen; US$, GBP, EUR unexplained);
+(2) phone button below the fold; (3) the home says the trips three times
+(fly-by, sideways timeline, table); (4) trust thins at the last step (pilot
+quotes and eight Panchgani facts `[to supply]`, Send opens the visitor's own
+email app); (5) Kenya's route stops in reduced motion are a 150 px column with
+labels overlapping, DM Mono in Kenya's season facts, empty maps for
+Panchgani, Kazakhstan, Peru on expeditions, Panchgani's only photo borrowed.
+**Recommended, and why:** "one trip, one readout, everywhere": the opening's
+readout and season line as the trip component on home, expeditions, every
+trip page's top and the enquiry summary, so the same facts follow the visitor
+to Send. Scratch: /tmp/claude-0/-home-user-website/33175f8f-65f7-5e00-a8e5-f43c2657942f/scratchpad/designers/study-F.md
+
 ## 24 Oct 2026: built the one preview of the merged departures section
 
 **Asked.** Build option A, the three designers' merge, as one preview in

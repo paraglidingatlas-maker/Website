@@ -1,5 +1,20 @@
 # Designer E, "Pull Back to the Route": notebook (newest first)
 
+## 24 Oct 2026: whole-site study, v4 at 48bfc475 against v4 now
+
+**Asked.** How the whole site can reach Awwwards level, and how far v4 has come since 48bfc475, from my angle (scroll as story, hand-offs, navigation).
+
+**Found.** The gains are the home opening and true route data (India 2027, Panchgani everywhere, a new Panchgani page). The other pages barely changed. The five gaps, in order:
+1. Home tells the places three times (opening, fly-by without Panchgani, departures).
+2. The opening does not fly into its place: "into the picture" is only wired to the old fly-by, and Kenya opens on a different photo.
+3. With no JS, home hides its departure rows, three fly-by photos and the list signup.
+4. Place pages are dead ends; Panchgani's page is flat, and the episode sidebar and About cards miss it.
+5. The route line is drawn four different ways, and the Expeditions atlas has empty map between stops.
+Flagged: Panchgani's hero is credited to Michael Gebert.
+
+**Recommended: make the route the navigation.** Tap a place and fly into its page; the end of each page flies on to the next leg. Why: one move shows the site is a season of trips without words, and the parts already exist (v2-immersive.js depth transitions, the season line, the cloud move).
+File: the chat's scratchpad `designers/study-E.md`.
+
 ## 24 Oct 2026: round 2, the section after the opening
 
 Read D's and F's round 1. Dropped my photo shrink (WebGL risk, varies with
