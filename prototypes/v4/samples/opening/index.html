@@ -229,6 +229,14 @@ h1{font:700 clamp(2rem,3.2vw,3rem)/1.04 var(--font-display);letter-spacing:-.02e
 .tp.lt{margin-left:-1rem}
 .tp.lt .tp-n{text-align:left;left:.6rem;right:auto;white-space:nowrap}
 .tp.lt .tp-r{left:1rem}
+/* only the name and the marker take a tap (chat 11): the label boxes overlap on a phone, where Panchgani's
+   covered Kenya's marker. The name's box is its own width, a little padded, in the same place as before */
+.tp{pointer-events:none}
+.tp-n,.tp-r{pointer-events:auto}
+.tp-n{left:50%;right:auto;width:max-content;translate:-50% 0;padding:8px 4px;margin:-8px 0 0}
+.tp.end .tp-n{left:auto;translate:none;margin-right:-4px}
+.tp.lt .tp-n{translate:none;margin-left:-4px}
+.tp-r::before{content:"";position:absolute;inset:-7px;border-radius:50%}
 .glider{position:absolute;left:var(--gx);top:40px;width:22px;height:14px;margin:-9px 0 0 -11px;pointer-events:none;transform:translateY(var(--ga)) rotate(var(--gr))}
 .glider svg{opacity:var(--go,1);display:block;width:100%;height:100%;fill:none;stroke:var(--white);stroke-linecap:round;stroke-linejoin:round}
 .glider.bump{animation:bump .36s var(--ease)}
@@ -316,7 +324,7 @@ html:not(.js) .swipe{display:none!important}
   .tp.lt{margin-left:-1rem}
   .tp.lt .tp-n{top:-10px;left:.5rem}   /* on a phone its name takes a row above Kenya's */
   .tp.lt-m{margin-left:-1rem}   /* Kazakhstan reads to the right of its marker, clear of India's */
-  .tp.lt-m .tp-n{text-align:left;left:.5rem;right:auto}
+  .tp.lt-m .tp-n{text-align:left;left:.5rem;right:auto;translate:none;margin-left:-4px}
   .tp.lt-m .tp-r{left:1rem}
   .rt-m{font-size:.56rem;letter-spacing:.02em}
   .rt-m li{padding-left:3px}
@@ -817,7 +825,8 @@ html:not(.js) .swipe{display:none!important}
   held.addEventListener('pointerdown', function (e) {
     if (e.pointerType === 'mouse' || !e.isPrimary) return;
     if (e.target.closest('a,button')) return;
-    drag = { x0: e.clientX, y0: e.clientY, on: false, dead: false, lx: e.clientX, lt: performance.now(), v: 0 };
+    drag = { x0: e.clientX, y0: e.clientY, on: false, dead: false, lx: e.clientX, lt: performance.now(), v: 0,
+             hist: [[performance.now(), e.clientX]] };
   });
   held.addEventListener('pointermove', function (e) {
     if (!drag || drag.dead || e.pointerType === 'mouse') return;
@@ -830,7 +839,10 @@ html:not(.js) .swipe{display:none!important}
       drag.on = true; drag.d = d; drag.to = ORDER[i];
       if (!reduce && ready(drag.to)) { busy = true; begin(active, drag.to, true); }
     }
-    drag.v = (e.clientX - drag.lx) / Math.max(1, now - drag.lt); drag.lx = e.clientX; drag.lt = now;
+    /* the speed over the last 60 ms, so one quick twitch as the finger lifts is not a flick */
+    drag.hist.push([now, e.clientX]);
+    while (drag.hist.length > 2 && now - drag.hist[1][0] >= 60) drag.hist.shift();
+    drag.v = (e.clientX - drag.hist[0][1]) / Math.max(60, now - drag.hist[0][0]); drag.lx = e.clientX; drag.lt = now;
     if (trans && trans.drag) { trans.e = Math.max(0, Math.min(1, (-dx * drag.d) / (W * 0.62))); kick(); }
   });
   function release(e) {
@@ -839,13 +851,15 @@ html:not(.js) .swipe{display:none!important}
     if (!g.on) return;
     swipedAt = performance.now();
     var dx = (e && e.clientX != null ? e.clientX : g.lx) - g.x0;
+    if (performance.now() - g.lt > 90) g.v = 0;      /* the finger rested before it let go: a slow swipe, not a flick */
+    var flick = -g.v * g.d > 0.45;
     if (trans && trans.drag) {
-      var flick = -g.v * g.d > 0.45 && trans.e > 0.04;
+      flick = flick && trans.e > 0.08;
       if (e && e.type !== 'pointercancel' && (trans.e > 0.3 || flick)) {
         target = trans.to; showUI(trans.to);
         animateTo(1, 260 + 420 * (1 - trans.e), easeOut);
       } else animateTo(0, 320, easeOut);
-    } else if (e && e.type !== 'pointercancel' && Math.abs(dx) > 40) request(g.to);
+    } else if (e && e.type !== 'pointercancel' && (Math.abs(dx) > W * 0.62 * 0.3 || (flick && Math.abs(dx) > 40))) request(g.to);   /* the same third, before the next photo is ready */
   }
   held.addEventListener('pointerup', release);
   held.addEventListener('pointercancel', release);
