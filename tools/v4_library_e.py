@@ -37,9 +37,12 @@ def short_title(e):
 def build():
     t = open(SRC, encoding="utf-8").read()
     meta = json.load(open(META)); stills = json.load(open(STILLS)) if os.path.exists(STILLS) else {}
-    eps = []
+    live = set(re.findall(r'data-ep-slug="([^"]+)"', t))                  # the library is what the live page lists; the rest are films and short pieces
+    eps = []; films = []
     for e in meta:
         if not (e.get("epno") or e.get("published") or e.get("video_id")): continue
+        if e["slug"] not in live:
+            films.append(dict(slug=e["slug"], title=short_title(e), guest=e.get("guest") or "", label=e.get("published_label") or "", mins=mins(e), still=e["slug"] if e["slug"] in stills else "")); continue
         d = e.get("published") or ""
         eps.append(dict(slug=e["slug"], title=short_title(e), full=e["title"], guest=e.get("guest") or "", series=e.get("series") or "", shelf=SHELF_OF.get(e.get("series"), 4),
                         date=d, label=e.get("published_label") or "", mins=mins(e), quote=(e.get("quote") or "").strip(), tags=e.get("tags") or [], summary=e.get("summary") or "",
@@ -123,7 +126,10 @@ def build():
         '<div class="v4l-mini" aria-hidden="true"><svg viewBox="0 0 1000 80" preserveAspectRatio="none"></svg></div>'
         '<div class="v4l-head" aria-hidden="true"><span>No.</span><span>Date</span><span></span><span>Episode</span><span>Shelf</span><span>Length</span><span></span></div>'
         '<div class="v4l-list">%s</div><button class="v4l-more" type="button">Show 24 more</button>' % rows +
-        '<p class="v4l-none" hidden>Nothing matches. Clear the filter to see all %d.</p></div></section>' % len(eps))
+        '<p class="v4l-none" hidden>Nothing matches. Clear the filter to see all %d.</p>' % len(eps) +
+        '<div class="v4l-films"><span class="v4l-kk">Also on the channel</span><h3>Films and short pieces</h3><p>Flying films and shorter pieces from the podcast\'s channel, outside the numbered episodes.</p><div class="v4l-film-list">' +
+        "".join('<a class="v4l-film" href="episodes/%s.html">%s<b>%s</b><span>%s</span></a>' % (esc(f["slug"]), ('<img src="%s" alt="" loading="lazy" width="96" height="54">' % still(f)) if f["still"] else '<span class="v4l-nost">still to come</span>', esc(f["title"]), esc(" · ".join(x for x in (f["guest"], f["label"], ("%d min" % f["mins"]) if f["mins"] else "") if x))) for f in films) +
+        '</div></div></div></section>')
 
     main = ('<main id="v4-main">\n<script type="application/json" id="v4l-data">%s</script>\n' % data_js + flight + "\n" + finder + "\n" + browse + "\n" +
             '<section class="v4-next"><div class="v4-next-in"><span class="kit-kicker">Browse by subject</span><a class="v4-next-a" href="tags.html">Topics <i aria-hidden="true">&rarr;</i></a></div></section>\n</main>')
@@ -136,7 +142,7 @@ def build():
     t = t.replace("</head>", "<style>" + CSS + "</style>\n</head>", 1)
     t = t.replace("</body>", '<script src="library-e.js" defer></script>\n</body>', 1)
     open(OUT, "w", encoding="utf-8").write(t)
-    print("wrote %s %d bytes; %d episodes (%d dated), %d stops: %s" % (os.path.relpath(OUT, ROOT), len(t), len(eps), len(dated), len(stops), ", ".join(e["guest"] for e in stops)))
+    print("wrote %s %d bytes; %d episodes (%d dated), %d films, %d stops: %s" % (os.path.relpath(OUT, ROOT), len(t), len(eps), len(dated), len(films), len(stops), ", ".join(e["guest"] for e in stops)))
 
 
 CSS = r"""
@@ -190,6 +196,8 @@ CSS = r"""
 .v4l-tt b{display:block;font-family:var(--font-display,Poppins,sans-serif);font-weight:600;font-size:1rem;line-height:1.3}.v4l-tt span{font-size:13px;color:var(--lg)}.v4l-sh{font-size:14px;color:var(--lgl)}.v4l-go{color:var(--lg)}.v4l-row:hover .v4l-go{color:var(--lo)}
 .v4l-more{display:block;margin:1.6rem auto 0;background:none;border:1px solid #33343d;color:var(--lgl);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:.8rem 1.4rem;border-radius:999px;cursor:pointer}.v4l-more:hover{border-color:var(--lo);color:var(--lw)}.v4l-more[hidden]{display:none}
 .v4l-none{color:var(--lgl);padding:1.5rem 0}
+.v4l-films{margin-top:4rem;padding-top:2rem;border-top:1px solid #26272e}.v4l-films h3{font-family:var(--font-display,Poppins,sans-serif);font-weight:600;font-size:1.4rem;margin:.3rem 0 .4rem}.v4l-films p{color:var(--lg);margin:0 0 1.2rem;max-width:60ch}
+.v4l-film-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px 24px}.v4l-film{display:grid;grid-template-columns:96px 1fr;gap:4px 14px;align-items:center;color:inherit;text-decoration:none;padding:8px 0}.v4l-film img,.v4l-film .v4l-nost{grid-row:1/3;width:96px;height:54px;object-fit:cover}.v4l-film b{font-family:var(--font-display,Poppins,sans-serif);font-weight:600;font-size:.95rem;line-height:1.3}.v4l-film span{font-size:12px;color:var(--lg)}.v4l-film:hover b{color:var(--lo)}
 @media (max-width:900px){.v4l-find-in{grid-template-columns:1fr}.v4l-head,.v4l-row{grid-template-columns:50px 120px 96px 1fr 70px 30px}.v4l-sh{display:none}.v4l-head span:nth-child(5){display:none}}
 @media (max-width:700px){
 .v4l-q{top:11vh;max-width:none;right:var(--lgut)}.v4l-k{display:block;line-height:1.7}.v4l-k b,.v4l-k i{margin-right:.9em}.v4l-qt{font-size:1.55rem}.v4l-qw{font-size:.95rem}.v4l-open{margin-top:1rem;padding:.6rem .95rem;font-size:.88rem}
