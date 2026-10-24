@@ -46,7 +46,7 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V4 = os.path.join(ROOT, "prototypes", "v4")
-TRIPS = ("destinations/india.html", "destinations/kenya.html")
+TRIPS = ("destinations/india.html", "destinations/kenya.html", "destinations/panchgani.html")
 
 
 def plain(s):
@@ -55,7 +55,7 @@ def plain(s):
 
 def trip_price(src):
     """The departures' own price line: (label, amount), e.g. ("Per pilot", "£1,100"), ("Starting from", "US$2,100")."""
-    m = re.search(r'<p class="kdates-price"><span>([^<]*)</span><b>([^<]*)</b></p>', src)
+    m = re.search(r'<p class="kdates-price"><span>([^<]*)</span><b[^>]*>([^<]*)</b></p>', src)
     if not m:
         raise SystemExit("v4_ux: no departure price")
     return plain(m.group(1)), plain(m.group(2))
@@ -102,6 +102,8 @@ def section_ids(src):
 def trip_dates_first(src):
     """2. Dates right after the route; the gallery after them. The jump row and the two skip links follow."""
     ids = section_ids(src)
+    if "route" not in ids or "gallery" not in ids:
+        return src            # Panchgani: no route map and no gallery, the dates follow the overview
     if ids.index("dates") != ids.index("route") + 1:
         a, b = section_span(src, "dates")
         dates = src[a:b]
@@ -177,7 +179,7 @@ def trip_departures(src):
     for card in re.findall(r'<article class="kdates-card">(.*?)</article>', src, re.S):
         title = plain(re.search(r"<h3>(.*?)</h3>", card, re.S).group(1))
         when = re.search(r'href="\.\./enquire\.html\?trip=\w+&amp;when=([^"]+)"', card).group(1).replace("+", " ")
-        label, amount = re.search(r'<p class="kdates-price"><span>([^<]*)</span><b>([^<]*)</b></p>', card).groups()
+        label, amount = re.search(r'<p class="kdates-price"><span>([^<]*)</span><b[^>]*>([^<]*)</b></p>', card).groups()
         out.append({"title": title, "when": html.unescape(when), "label": plain(label), "price": plain(amount)})
     return out
 
