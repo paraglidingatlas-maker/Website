@@ -109,20 +109,29 @@ def order(s):
 
 # ---------- the India page ----------
 def band():
-    """The season band: April to November 2027, a tick at each month, the four tours at their days."""
-    first, last = D(2027, 4, 1), D(2027, 11, 30)
-    total = (last - first).days + 1
-    p = lambda d: 100.0 * (d - first).days / total
-    months = [D(2027, m, 1) for m in range(4, 12)]
-    ticks = "".join('<i class="kdates-tick" style="--p:%.2f"></i>\n' % p(m) for m in months[1:])
-    tours = "".join('<i class="kdates-tour" style="--a:%.2f;--w:%.2f;--i:%d"><b>%02d</b><span>%s</span></i>\n'
-                    % (p(a), 100.0 * ((b - a).days + 1) / total, i, i + 1, short(a, b).rsplit(" ", 1)[0])
-                    for i, (a, b) in enumerate(TOURS))
-    mos = "".join('<span style="--p:%s">%s</span>' % (("%.2f" % p(m)) if m != first else "0", MON[m.month - 1]) for m in months)
-    return ('<div class="kdates-band" aria-hidden="true">\n<div class="kdates-track">\n' + ticks + tours + '</div>\n'
-            '<div class="kdates-months">\n' + mos + '\n</div>\n'
-            '<p class="kdates-legend">Two departures in spring, back to back from 15 April to 4 May. Two in autumn, inside the '
-            'season that runs from about 10 October well into November, three days apart.</p>\n</div>\n')
+    """Two season bands as the page drew one: spring (April and May) and autumn (October and November), a tick at the
+    second month, the tours at their days. The spring tours run back to back, so their labels keep a little apart."""
+    def one(y, m1, tours, legend):
+        first = D(y, m1, 1)
+        nxt = D(y, m1 + 1, 1)
+        total = (D(y, m1 + 2, 1) - first).days
+        p = lambda d: 100.0 * (d - first).days / total
+        out = ['<div class="kdates-band" aria-hidden="true">\n<div class="kdates-track">\n<i class="kdates-tick" style="--p:%.2f"></i>\n' % p(nxt)]
+        for i, (a, b) in tours:
+            gap = ""
+            if len(tours) == 2 and (tours[1][1][0] - tours[0][1][1]).days == 1:
+                gap = ' style="right:var(--sp-1)"' if i == tours[0][0] else ' style="left:var(--sp-1)"'
+            out.append('<i class="kdates-tour" style="--a:%.2f;--w:%.2f;--i:%d"><b>%02d</b><span%s>%s</span></i>\n'
+                       % (p(a), 100.0 * ((b - a).days + 1) / total, i, i + 1, gap, short(a, b).rsplit(" ", 1)[0]))
+        out.append('</div>\n<div class="kdates-months">\n<span style="--p:0">%s</span><span style="--p:%.2f">%s</span>\n</div>\n'
+                   % (MON[m1 - 1], p(nxt), MON[m1]))
+        if legend:
+            out.append('<p class="kdates-legend">%s</p>\n' % legend)
+        return "".join(out) + "</div>\n"
+    t = list(enumerate(TOURS))
+    return (one(2027, 4, t[:2], "") +
+            one(2027, 10, t[2:], "Two departures in spring, back to back from 15 April to 4 May. Two in autumn, inside the "
+                                 "season that runs from about 10 October well into November, three days apart."))
 
 
 def when_html(a, b):
@@ -187,8 +196,8 @@ def india(s):
     for a, b in TEXT:
         s = s.replace(a, b)
     s = trips_ld(s)
-    m = re.search(r'<div class="kdates-band" aria-hidden="true">.*?</div>\n</div>\n(?=<div class="kdates-grid">)', s, re.S)
-    if m and "21 to 30 Oct" in m.group(0):
+    m = re.search(r'<div class="kdates-band" aria-hidden="true">.*?</div>\n(?=<div class="kdates-grid">)', s, re.S)
+    if m and m.group(0) != band():
         s = s[:m.start()] + band() + s[m.end():]
     g = re.search(r'(<div class="kdates-grid">\n)(.*?)(\n</div>\n<p class="kdates-terms">)', s, re.S)
     if g and "2026-10-21" in g.group(2):
