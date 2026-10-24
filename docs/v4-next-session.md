@@ -29,6 +29,43 @@ the owner's current queue and what the last session learnt doing it.
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
 
+## Where chat 10 left it (24 Oct): E's cloud move chosen and live on the sample; the owner said "go autonomous"
+Live (17f53b72, gates PASS): https://paraglidingatlas.com/prototypes/v4/samples/opening/
+- **The move between places is E's** (owner: "build E only"): the camera flies
+  forward into a cloud and out of it over the next place (`flight()`,
+  `flyCSS()` for no WebGL with the `.veil`, shader `flyAt`/`flyCover`, uniforms
+  `uFly`, `uFlyB`, `uCloud`, `uFlyO`, `uWordS`; 1.4 s, `easeFly`); the season
+  glider lifts a few px on the leg (`--ga`). The orange wipe is gone. D and F
+  were built (scratch only, never pushed) and dropped.
+- **Skip** (owner): a click on the progress line fills it in 0.32 s and the
+  next place flies in, paused or not (`.skip` button over the line, `skipping`).
+- **Peru back to Kenya** on autoplay: forward round the season (`autoWrap`,
+  `trans.wrap`, glider fades at the ends, `--go`).
+- **No photo switch** (owner): `.kpick` and the `#india` jump removed; Kenya
+  defaults to DSC_9492 (`pick` default map; `?kenya=9452|9522`,
+  `?india=redwing|launch` still reach the others). No-JS still shows the 9452
+  layers: hard-wire 9492 when building into the home page.
+- The owner's other chat (session_01DCHUF6z6Tm2mvyLyj9PbTP) pushed the play
+  button without a ring and three standing designers (`.claude/agents/designer-*.md`,
+  `docs/designers/`); the owner: "those pushes have to stay". Record design
+  decisions in `docs/designers/direction.md`.
+- **The owner said "go autonomous"** at extra high effort: carry on without
+  asking, through usage resets (a scheduled task in this session wakes it),
+  steps in this order, each ending with gates and a push:
+  2. **F2/E opening into the v4 home** (owner: "put it on main V4 hero image";
+     OK given to edit `tools/v4_polish.py`): see chat 9's step 1 below.
+  3. India's 2027 dates everywhere in v4 (chat 9 below).
+  4. Panchgani's destination page, then its button in the opening points there.
+  5. Panchgani in the rest of v4 (expeditions, dates, enquire, sitemap, map).
+  6. Small fixes: on a phone India's label covers the Panchgani marker; a
+     short swipe on a phone went through as a flick (check it springs back
+     below a third when slow).
+  11. A final review pass of v4 on phone and desktop.
+  Skip what waits on the owner (facts, photos, the episode chart, the
+  switch-over) and list it at the end. Never touch the library's files.
+- Testing tip: headless screenshots are too slow to catch a 1.4 s move; slow
+  the page clock (`performance.now` scaled after load) to take frames.
+
 ## Where chat 9 left it (24 Oct): the route plays on, Panchgani is a fifth tour, India moves to 2027, the opening is on the prototype
 Chat 9 added one v4 page, the opening sample (`prototypes/v4/samples/opening/`); the rest is docs. Its work is in the review page
 https://claude.ai/artifact/BFTmxrj3NZpbkf3cqcYtxG (newest at the top; F2's

@@ -24,6 +24,16 @@ and a readout under the photo. The owner said "do it" to building it into the
 v4 home page (chat 10's job).
 
 ## Decision log (newest first)
+- 24 Oct (chat 10): the move between places is E's, "through the cloud" (the
+  owner saw three built versions: D "Contour Cut", the orange line bending
+  round the land; E, the camera flies into cloud and out over the next place;
+  F "Opens at the Turnpoint", a window rising from the next marker; and said
+  "build E only"). The review-only photo switch is removed ("remove the photo
+  changing option widget from the centre of the page"); Kenya opens on
+  DSC_9492. A click on the progress line skips to the next place ("let the
+  progress bar be clickable ... rather than waiting for long"). From Peru back
+  to Kenya the season glider flies on forward (off the right end, in from the
+  left), as designer F's notebook asked.
 - 24 Oct: progress line toned down by a quarter; play/pause has no ring, is dim
   until hovered, and stands in a small gap at the line's end ("remove the
   round circle around the pause button ... even more subtle, only highlight it
@@ -53,5 +63,5 @@ v4 home page (chat 10's job).
 - Parked by the owner: the Encarta concept (do not raise).
 
 ## Open now
-- The transition between places in the hero (now an orange diagonal wipe, a
-  small glider flying the leg on the season line): the owner wants options.
+- Nothing open in design. Chat 10 builds the opening (with E's cloud move) into
+  the v4 home page.
