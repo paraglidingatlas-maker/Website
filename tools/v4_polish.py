@@ -916,10 +916,12 @@ def home_markup(html):
     figs = [(str(feed_count()), "Conversations"), (mc.group(1), "Countries listening"), (str(len({d[0] for d in deps})), "Destinations")]
     fig = (HFIG[0] + '<ul class="v4-hfig">' + "".join('<li><b>%s</b><span>%s</span></li>' % f for f in figs) + "</ul>" + HFIG[1])
     html = re.sub(re.escape(HFIG[0]) + r".*?" + re.escape(HFIG[1]), "", html, flags=re.S)
+    # the figures sat in the old hero; the opening that replaced it (tools/v4_home_opening.py) has the season instead
     m = re.search(r'(<header class="kit-hero v2-home-hero".*?<div class="kit-actions">.*?</div>)', html, re.S)
-    if not m:
+    if m:
+        html = html[:m.end()] + fig + html[m.end():]
+    elif 'id="held"' not in html:
         raise SystemExit("v4_polish: index.html: the opening's actions are not there")
-    html = html[:m.end()] + fig + html[m.end():]
     # the line of months: from the first departure's month to the last's
     rows = []
     for place, yy, mm, name, tour, dates in deps:
