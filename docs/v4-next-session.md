@@ -29,6 +29,40 @@ the owner's current queue and what the last session learnt doing it.
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
 
+## Where chat 7 left it (24 Oct): the home opening is down to photo choices, nothing half-built in the repo
+Chat 7 changed nothing in v4. It ran a second round of three designers on
+C2 (the owner, 23 Oct: "C2 is really nice", asked for a competition to
+improve it). All live in https://claude.ai/artifact/BFTmxrj3NZpbkf3cqcYtxG,
+newest at the top, each with its files under its letter:
+- **D. Final Cut** (craft: drawn lines, a light per place, film-cut switch),
+  **E. Pull Back to the Route** (scroll pulls back into a four-place route
+  that replaces the destinations section), **F. Fly the Season** (the list
+  becomes a season line Oct 2026 to Nov 2027 with each trip's readout and a
+  button to its page; `[to supply]` for Kenya, Peru and Kazakhstan launch
+  heights and the Peru and Kazakhstan dates).
+- The owner looked at **F** and asked for the wing's "original lineset" back,
+  then chose photos: DSC_9522, DSC_9492 and DSC_6210 for Kenya, and "similar
+  examples for India". Built as **F2** (same page, `F2/`): a review-only pill
+  switches Kenya (now DSC_9452, DSC_9522 with its real lines traced from the
+  photo, DSC_9492 three gliders) and India (now snowline, red wing, launch
+  day; no lines, only 1400 px copies exist). How the layers are made, and the
+  scripts: `docs/home-opening/README.md`.
+- **Waiting on the owner:** which design (F2 is the one they are working
+  in) and which photo per place; a JPG export of DSC_6210 (the NEF is over
+  the Drive connector's 10 MB limit); full-size India originals if India
+  should get real lines. Still open from chat 6, not raised again in chat 7:
+  the live episode chart (finish or drop) and the five Kenya repeat photos
+  (both below, unchanged).
+- On a yes: build the chosen design into `tools/v4_polish.py` `home_markup`
+  and HOME_CSS/HOME_JS, layers into `prototypes/v4/img/`, drop the pill.
+  Note DSC_9452 is also the record page's new Kenya photo (chat 6), and the
+  India choices are in the India gallery: "no photo twice" needs a call.
+- Container (24 Oct): the preinstalled Chromium is now build 1243, so the
+  gates' browser needs `pip install "playwright==1.63.0"` (1.56.0 no longer
+  launches; check `/opt/node-tools/node_modules/playwright-core/browsers.json`
+  if it moves again). Still `git fetch --unshallow origin claude/v2-prototype`
+  and `pip install contourpy fonttools brotli` first.
+
 ## Where chat 6 left it (23 Oct): three things wait on the owner, nothing half-built in the repo
 Chat 6 changed nothing in v4. Its work lives in two private review pages the
 owner has; their published files are the hand-over (read them with the
