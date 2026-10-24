@@ -226,7 +226,7 @@ h1{font:700 clamp(2rem,3.2vw,3rem)/1.04 var(--font-display);letter-spacing:-.02e
 .tp.lt .tp-n{text-align:left;left:.6rem;right:auto;white-space:nowrap}
 .tp.lt .tp-r{left:1rem}
 .glider{position:absolute;left:var(--gx);top:40px;width:22px;height:14px;margin:-9px 0 0 -11px;pointer-events:none;transform:rotate(var(--gr))}
-.glider svg{display:block;width:100%;height:100%;fill:none;stroke:var(--white);stroke-linecap:round;stroke-linejoin:round}
+.glider svg{opacity:var(--go,1);display:block;width:100%;height:100%;fill:none;stroke:var(--white);stroke-linecap:round;stroke-linejoin:round}
 .glider.bump{animation:bump .36s var(--ease)}
 @keyframes bump{30%{translate:var(--bx,6px) 0}}
 .swipe{display:none}
@@ -795,7 +795,8 @@ html:not(.js) .swipe{display:none!important}
     });
   }
   function begin(from, to, drag) {
-    trans = { from: from, to: to, dir: dirOf(from, to), e: 0, drag: drag, anim: null };
+    var wrap = autoWrap && from === ORDER[ORDER.length - 1] && to === ORDER[0]; autoWrap = false;
+    trans = { from: from, to: to, dir: wrap ? 1 : dirOf(from, to), wrap: wrap, e: 0, drag: drag, anim: null };
     route.classList.remove('arrived');
     var s = warm(to);
     if (GL) GL.prepare(to);
@@ -891,7 +892,7 @@ html:not(.js) .swipe{display:none!important}
   held.addEventListener('pointercancel', release);
 
   /* the route plays on by itself while the opening is in view: each place holds for one pass, then the next flies in */
-  var dwell = { t: 0, last: null }, paused = false;
+  var dwell = { t: 0, last: null }, paused = false, autoWrap = false;
   /* the button at the end of the line: pause stays on the place and holds its move still; play goes on from there */
   var playBtn = held.querySelector('.play');
   if (playBtn) playBtn.addEventListener('click', function () {
@@ -917,10 +918,10 @@ html:not(.js) .swipe{display:none!important}
     if (skipping) {
       var u = Math.min(1, (now - skipping.t0) / 320);
       pr = skipping.a + (1 - skipping.a) * easeOut(u);
-      if (u >= 1) { skipping = null; dwell.t = 0; request(ORDER[(ORDER.indexOf(active) + 1) % ORDER.length]); return true; }
+      if (u >= 1) { skipping = null; dwell.t = 0; autoWrap = ORDER.indexOf(active) === ORDER.length - 1; request(ORDER[(ORDER.indexOf(active) + 1) % ORDER.length]); return true; }
     }
     held.style.setProperty('--prog', (trans ? 1 - trans.e : pr).toFixed(4));
-    if (going && pr >= 1) { dwell.t = 0; request(ORDER[(ORDER.indexOf(active) + 1) % ORDER.length]); }
+    if (going && pr >= 1) { dwell.t = 0; autoWrap = ORDER.indexOf(active) === ORDER.length - 1; request(ORDER[(ORDER.indexOf(active) + 1) % ORDER.length]); }
     return true;
   }
   if (!reduce) held.classList.add('auto');
@@ -945,7 +946,7 @@ html:not(.js) .swipe{display:none!important}
     held.style.setProperty('--p', p.toFixed(4));
     held.style.setProperty('--mx', st.mx.toFixed(4));
     held.style.setProperty('--my', st.my.toFixed(4));
-    var wipe = null, gx = DESTS[active].x, gr = 0, tl = gx, tw = 0;
+    var wipe = null, gx = DESTS[active].x, gr = 0, tl = gx, tw = 0, go = 1;
     if (trans) {
       var a = trans.anim, done = 0;
       if (a) {
@@ -963,12 +964,20 @@ html:not(.js) .swipe{display:none!important}
           ? 'polygon(' + top + 'px 0,100% 0,100% 100%,' + x + 'px 100%)'
           : 'polygon(0 0,' + top + 'px 0,' + x + 'px 100%,0 100%)';
       }
+      if (trans.wrap) {
+        /* round the season: off the right end of the line and back in from the left, fading at the ends */
+        var x0 = DESTS[trans.from].x, x1 = DESTS[trans.to].x, out = 100 - x0, d = e * (out + x1);
+        gx = d < out ? x0 + d : d - out;
+        go = Math.min(1, Math.abs(gx - (d < out ? 100 : 0)) / 4);
+      } else
       gx = DESTS[trans.from].x + (DESTS[trans.to].x - DESTS[trans.from].x) * e;
       gr = trans.dir * Math.sin(Math.PI * e) * 9;
       tl = Math.min(DESTS[trans.from].x, gx); tw = Math.abs(gx - DESTS[trans.from].x);
+      if (trans.wrap) { tl = gx >= DESTS[trans.from].x ? DESTS[trans.from].x : 0; tw = gx >= DESTS[trans.from].x ? gx - DESTS[trans.from].x : gx; }
       if (done === 1) finish(); else if (done === -1) cancel();
     }
     route.style.setProperty('--gx', gx.toFixed(3) + '%');
+    route.style.setProperty('--go', go.toFixed(3));
     route.style.setProperty('--gr', gr.toFixed(2) + 'deg');
     route.style.setProperty('--tl', tl.toFixed(3) + '%');
     route.style.setProperty('--tw', tw.toFixed(3) + '%');
