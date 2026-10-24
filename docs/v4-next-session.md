@@ -70,10 +70,23 @@ the owner's current queue and what the last session learnt doing it.
   expeditions page leave it out rather than repeat it again. A second
   Panchgani photo would fill both. Panchgani's status reads "Dates set" (not
   "Booking open", which the owner has not said).
-- **Next (in order):** 6. small fixes (on a phone India's season label covers
-  the Panchgani marker in the opening; check a slow short swipe springs back);
-  11. a final review pass of v4 on phone and desktop. Then disable the
-  scheduled task "Chat 11: carry on the v4 plan" and tell the owner.
+- **Step 6 done: the opening's two phone faults.** (1) The route's label
+  boxes (`.tp`, 4.6rem wide on a phone) overlapped: Panchgani's took taps on
+  Kenya's marker, a neighbour's took the end of India's and Kazakhstan's
+  names. Now `.tp{pointer-events:none}` and only `.tp-n` (its own width,
+  padded 8px 4px, placed as before) and `.tp-r` (a 7px tap ring) take taps;
+  checked by elementFromPoint at 320 to 1440 px (one ambiguous 4px edge at
+  320, where the two markers are 13px apart). (2) The swipe: the old code let
+  every slow short swipe through (before the next photo was ready, any 40px).
+  Now the speed is over the last 60 ms (`drag.hist`), zero if the finger
+  rested 90 ms before lifting, a flick needs 0.45 px/ms and 8% of the way,
+  and the no-photo path needs the same third (W * 0.62 * 0.3) or a flick.
+  Tested by in-page PointerEvents on a timer (CDP touches arrive ~100 ms
+  apart, too slow to flick): slow short, twitch and rest spring back; flick
+  and long go. Headless frames lag once WebGL runs, so the ready path reads
+  every swipe as slow there; check it by hand on a phone.
+- **Next:** 11. a final review pass of v4 on phone and desktop. Then disable
+  the scheduled task "Chat 11: carry on the v4 plan" and tell the owner.
 
 ## Where chat 10 left it (24 Oct): the opening is the v4 home hero, India is in 2027 everywhere; chat 11 builds Panchgani's page
 Live (17f53b72, gates PASS): https://paraglidingatlas.com/prototypes/v4/samples/opening/
