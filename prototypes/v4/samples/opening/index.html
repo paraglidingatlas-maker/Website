@@ -106,7 +106,11 @@ a:focus-visible,button:focus-visible{outline:1px solid var(--orange);outline-off
 .gl .gl-canvas{opacity:1}
 .gl-on .scene{opacity:0}
 .gl .scene .layer{transform:none}
-.wipe-line{position:absolute;z-index:2;bottom:0;left:0;width:2px;height:100%;background:var(--orange);transform-origin:50% 100%;opacity:0;pointer-events:none}
+.veil{position:absolute;z-index:2;inset:0;opacity:0;pointer-events:none;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 70%,transparent) 0,transparent 22%),
+    linear-gradient(0deg,var(--bg) 0,color-mix(in srgb,var(--bg) 82%,transparent) 22%,transparent 58%),
+    linear-gradient(90deg,color-mix(in srgb,var(--bg) 70%,transparent) 0,transparent 55%),
+    radial-gradient(90% 70% at 60% 30%,#a9adb5,#7b8089)}
 .caption{position:absolute;z-index:10;right:var(--gutter);top:clamp(110px,15vh,150px);writing-mode:vertical-rl;font:500 .68rem/1 var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:color-mix(in srgb,var(--white) 60%,transparent);display:flex;align-items:center;gap:.9rem}
 .caption::after{content:"";width:1px;height:56px;background:var(--line)}
 
@@ -189,7 +193,7 @@ h1{font:700 clamp(2rem,3.2vw,3rem)/1.04 var(--font-display);letter-spacing:-.02e
   .t-go{grid-column:4/-1;order:6;align-self:end}
 }
 /* the route: the season as a flight line, one turnpoint per trip, at its real dates */
-.route{position:relative;height:76px;--s:1;--gx:calc(28.49% * var(--s));--gr:0deg}
+.route{position:relative;height:76px;--s:1;--gx:calc(28.49% * var(--s));--gr:0deg;--ga:0px}
 .season{position:absolute;left:0;top:0;bottom:0;width:calc(var(--s) * 100%)}
 .route fieldset{border:0;margin:0;padding:0;min-width:0}
 .route legend{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
@@ -225,7 +229,7 @@ h1{font:700 clamp(2rem,3.2vw,3rem)/1.04 var(--font-display);letter-spacing:-.02e
 .tp.lt{margin-left:-1rem}
 .tp.lt .tp-n{text-align:left;left:.6rem;right:auto;white-space:nowrap}
 .tp.lt .tp-r{left:1rem}
-.glider{position:absolute;left:var(--gx);top:40px;width:22px;height:14px;margin:-9px 0 0 -11px;pointer-events:none;transform:rotate(var(--gr))}
+.glider{position:absolute;left:var(--gx);top:40px;width:22px;height:14px;margin:-9px 0 0 -11px;pointer-events:none;transform:translateY(var(--ga)) rotate(var(--gr))}
 .glider svg{opacity:var(--go,1);display:block;width:100%;height:100%;fill:none;stroke:var(--white);stroke-linecap:round;stroke-linejoin:round}
 .glider.bump{animation:bump .36s var(--ease)}
 @keyframes bump{30%{translate:var(--bx,6px) 0}}
@@ -292,6 +296,9 @@ html:not(.js) .swipe{display:none!important}
     linear-gradient(180deg,color-mix(in srgb,var(--bg) 70%,transparent) 0,transparent 16%),
     linear-gradient(0deg,var(--bg) 0,var(--bg) 7%,color-mix(in srgb,var(--bg) 72%,transparent) 19%,transparent 46%)}
   .caption,html .held .caption.sw{display:none!important}
+  .veil{background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 70%,transparent) 0,transparent 16%),
+    linear-gradient(0deg,var(--bg) 0,var(--bg) 7%,color-mix(in srgb,var(--bg) 72%,transparent) 19%,transparent 46%),
+    radial-gradient(90% 70% at 55% 35%,#a9adb5,#7b8089)}
   .dock{position:relative;left:auto;right:auto;bottom:auto;margin:calc(64px + 90vw) 16px 0;padding-bottom:32px;gap:0}
   .route{order:1;height:70px}
   .rt-m{top:58px}
@@ -348,20 +355,9 @@ html:not(.js) .swipe{display:none!important}
   .held{--p:0!important;--mx:0!important;--my:0!important}
   .trip > *,.trip dl > *,.tp-r,.tp-n,.rt-bar{transition:none!important}
 }
-/* review only: the Kenya photograph switch */
-.kpick{position:fixed;z-index:60;top:88px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:2px;padding:4px;background:rgba(20,21,25,.82);border:1px solid var(--line);border-radius:18px;font:500 .78rem/1 var(--font-body);backdrop-filter:blur(6px);white-space:nowrap}
-.kpick div{display:flex;align-items:center;gap:2px}
-.kpick span{min-width:62px;padding:0 10px 0 12px;color:var(--gray-light);letter-spacing:.08em;text-transform:uppercase;font-size:.68rem}
-.kpick a{padding:7px 11px;border-radius:999px;color:var(--white)}
-.kpick a:hover{background:rgba(255,255,255,.08)}
-.kpick a[aria-current]{background:var(--orange);color:var(--bg)}
-.kpick a:focus-visible{outline:2px solid var(--white);outline-offset:2px}
-@media (max-width:860px){.kpick{top:auto;bottom:14px;font-size:.72rem}.kpick div{display:flex;align-items:center;gap:2px}
-.kpick span{min-width:62px;display:none}.kpick a{padding:9px 10px}}
 </style>
 </head>
 <body>
-<nav class="kpick" aria-label="Photo choice (review only)"><div><span>Kenya</span><a href="?kenya=9452" data-p="kenya" data-k="9452">Now (DSC_9452)</a><a href="?kenya=9522" data-p="kenya" data-k="9522">DSC_9522</a><a href="?kenya=9492" data-p="kenya" data-k="9492">DSC_9492</a></div><div><span>India</span><a href="?india=snowline" data-p="india" data-k="snowline">Now (snowline)</a><a href="?india=redwing" data-p="india" data-k="redwing">red wing</a><a href="?india=launch" data-p="india" data-k="launch">launch day</a></div></nav>
 <div class="nav">
   <a href="../../index.html" class="logo"><img src="atlas-logo-white.png" alt="Paragliding Atlas" width="480" height="100"></a>
   <nav class="nav-links" aria-label="Main">
@@ -414,7 +410,7 @@ html:not(.js) .swipe{display:none!important}
       <div class="layer wing"><img src="panchgani-wing.webp" width="240" height="219" alt="A pilot under a white wing, small against the plateau and the terraced fields of Panchgani" loading="lazy"></div>
     </div>
     <canvas class="gl-canvas" aria-hidden="true"></canvas>
-    <i class="wipe-line" aria-hidden="true"></i>
+    <i class="veil" aria-hidden="true"></i>
   </div>
   <span class="caption sw is-on" data-dest="kenya" aria-hidden="true">Kenya, from the air</span>
   <span class="caption sw" data-dest="india" aria-hidden="true">India, above the snowline</span>
@@ -582,18 +578,18 @@ html:not(.js) .swipe{display:none!important}
          a turn without making anyone queasy: the name and the wing hold still, nothing swings back */
       push: { g: 0.04, w: 1, k: 0.04, far: [0.47, 0.4], drift: 0, ms: 14000, pan: [0.025, 0.01, 0], rot: 1.6, center: true } }
   };
-  /* review only: which photograph Kenya and India use (?kenya=9522&india=launch); same layout, other layers */
+  /* which photograph Kenya and India use: Kenya DSC_9492 and India's snowline, the owner's choices (?kenya=9452 or 9522, ?india=redwing or launch, still reach the others); same layout, other layers */
   var PHOTOS = {
     kenya: {
-      '9452': null,
+      '9492': { ground: 'kenya-9492-ground.webp', jpg: 'kenya-9492-ground.jpg', gs: [2000, 1333], wing: 'kenya-9492-wing.webp', ws: [1300, 978], pad: [0.06, 0.0593],
+        depth: 'kenya-9492-depth.jpg', shadow: 'kenya-9492-shadow.png', dim: 0.86, push: { g: 0.08, w: 0.93, k: 0.1, ms: 14000, far: [0.42, 0.18], drift: 0.015, loop: 'forward', fade: 0.35, mist: [1, 0.82, 0.8, 0.75, 0.78] },
+        alt: 'Three paragliders, yellow, red and orange, over a valley in Kenya',
+        d: { wing: [0.47, 0.09, 0.44], focus: [0.5, 0.6] }, m: { wing: [0.06, 0.12, 0.86], focus: [0.62, 0.5] } },
       '9522': { ground: 'kenya-9522-ground.webp', jpg: 'kenya-9522-ground.jpg', gs: [2000, 1333], wing: 'kenya-9522-wing.webp', ws: [900, 1288], pad: [0.06, 0.0598],
         depth: 'kenya-9522-depth.jpg', shadow: 'kenya-9522-shadow.png', dim: 0.8,
         alt: 'A paraglider pilot under a yellow and blue wing, its lines catching the sun, over forested hills in Kenya',
         d: { wing: [0.6, 0.07, 0.25], focus: [0.5, 0.55] }, m: { wing: [0.34, 0.02, 0.58], focus: [0.4, 0.5] } },
-      '9492': { ground: 'kenya-9492-ground.webp', jpg: 'kenya-9492-ground.jpg', gs: [2000, 1333], wing: 'kenya-9492-wing.webp', ws: [1300, 978], pad: [0.06, 0.0593],
-        depth: 'kenya-9492-depth.jpg', shadow: 'kenya-9492-shadow.png', dim: 0.86, push: { g: 0.08, w: 0.93, k: 0.1, ms: 14000, far: [0.42, 0.18], drift: 0.015, loop: 'forward', fade: 0.35, mist: [1, 0.82, 0.8, 0.75, 0.78] },
-        alt: 'Three paragliders, yellow, red and orange, over a valley in Kenya',
-        d: { wing: [0.47, 0.09, 0.44], focus: [0.5, 0.6] }, m: { wing: [0.06, 0.12, 0.86], focus: [0.62, 0.5] } }
+      '9452': null
     },
     india: {
       snowline: null,
@@ -610,7 +606,7 @@ html:not(.js) .swipe{display:none!important}
   var pick = {};
   Object.keys(PHOTOS).forEach(function (place) {
     var v = (new RegExp('[?&]' + place + '=(\\w+)').exec(location.search) || [])[1];
-    pick[place] = PHOTOS[place].hasOwnProperty(v) ? v : Object.keys(PHOTOS[place])[0];
+    pick[place] = PHOTOS[place].hasOwnProperty(v) ? v : { kenya: '9492', india: 'snowline' }[place];
     var k = PHOTOS[place][pick[place]];
     if (!k) return;
     var d = DESTS[place], sc = held.querySelector('.scene[data-dest="' + place + '"]');
@@ -622,17 +618,11 @@ html:not(.js) .swipe{display:none!important}
     [].forEach.call(sc.querySelectorAll('.shadow img, .wing img'), function (im) { im.src = k.wing; im.width = k.ws[0]; im.height = k.ws[1]; });
     sc.querySelector('.wing img').alt = k.alt;
   });
-  [].forEach.call(document.querySelectorAll('.kpick a'), function (a) {
-    var place = a.getAttribute('data-p'), v = a.getAttribute('data-k'), q = {};
-    Object.keys(pick).forEach(function (p) { q[p] = pick[p]; }); q[place] = v;
-    a.href = '?' + Object.keys(q).map(function (p) { return p + '=' + q[p]; }).join('&') + (place === 'india' ? '#india' : '');
-    if (pick[place] === v) a.setAttribute('aria-current', 'true');
-  });
   var ORDER = ['kenya', 'panchgani', 'india', 'kazakhstan', 'peru'];   /* the order they fly, October 2026 to November 2027 */
   var active = 'kenya', target = 'kenya';
   var scenes = {};
   ORDER.forEach(function (k) { scenes[k] = held.querySelector('.scene[data-dest="' + k + '"]'); });
-  var line = held.querySelector('.wipe-line');
+  var veil = held.querySelector('.veil');   /* without WebGL: the cloud, drawn in CSS */
   var radios = [].slice.call(route.querySelectorAll('input[name="dest"]'));
   var glider = route.querySelector('.glider');
   var hintW = held.querySelector('.hint-w');
@@ -666,7 +656,7 @@ html:not(.js) .swipe{display:none!important}
   })();
 
   /* ---------- layout (shared by the CSS still and the WebGL scene) ---------- */
-  var W = 0, H = 0, mobile = false, copyTop = 0;
+  var W = 0, H = 0, mobile = false, copyTop = 0, routeW = 1000;
   function gutter() { return mobile ? 16 : Math.max(16, Math.min(72, W * 0.05)); }
   function layoutScene(key) {
     var s = scenes[key]; if (!s || !(s.classList.contains('is-on') || s.classList.contains('warm'))) return;
@@ -721,6 +711,7 @@ html:not(.js) .swipe{display:none!important}
     var c = held.querySelector('.copy');
     copyTop = mobile ? 0 : c.getBoundingClientRect().top - stage.getBoundingClientRect().top;
     var rr = route.getBoundingClientRect();
+    if (rr.width) routeW = rr.width;
     if (rr.width) radios.forEach(function (r) {
       var m = r.nextElementSibling.querySelector('.tp-r').getBoundingClientRect();
       DESTS[r.value].x = (m.left + m.width / 2 - rr.left) / rr.width * 100;
@@ -791,7 +782,7 @@ html:not(.js) .swipe{display:none!important}
     whenReady(to, function () {
       if (reduce) { begin(active, to, false); finish(); return; }
       begin(active, to, false);
-      animateTo(1, 1050, easeInOut);
+      animateTo(1, 1400, easeFly);
     });
   }
   function begin(from, to, drag) {
@@ -800,16 +791,21 @@ html:not(.js) .swipe{display:none!important}
     route.classList.remove('arrived');
     var s = warm(to);
     if (GL) GL.prepare(to);
-    else { s.style.clipPath = 'polygon(0 0,0 0,0 0)'; s.classList.add('is-on'); s.style.zIndex = 1; }
-    line.style.opacity = reduce ? 0 : 1;
+    else { s.classList.add('is-on'); s.style.zIndex = 1; s.style.opacity = 0; veil.style.opacity = reduce ? 0 : 1; }
     kick();
+  }
+  /* without WebGL: put a place's layers back as the stylesheet has them */
+  function still(key) {
+    [].forEach.call(scenes[key].querySelectorAll('.layer'), function (l) { l.style.scale = ''; l.style.translate = ''; });
+    veil.style.opacity = 0;
   }
   function animateTo(b, dur, fn) { trans.anim = { a: trans.e, b: b, t0: performance.now(), dur: dur, fn: fn }; kick(); }
   function finish() {
     var from = trans.from, to = trans.to;
-    scenes[to].classList.add('is-on'); scenes[to].style.zIndex = ''; scenes[to].style.clipPath = '';
+    scenes[to].classList.add('is-on'); scenes[to].style.zIndex = ''; scenes[to].style.opacity = '';
     scenes[from].classList.remove('is-on');
-    active = to; trans = null; line.style.opacity = 0; dwell.t = 0;
+    if (!GL) { still(from); still(to); }
+    active = to; trans = null; dwell.t = 0;
     route.classList.add('arrived');
     if (GL) GL.done(to);
     busy = false;
@@ -818,9 +814,9 @@ html:not(.js) .swipe{display:none!important}
   }
   function cancel() {
     var to = trans.to;
-    if (!GL) { scenes[to].classList.remove('is-on'); scenes[to].style.zIndex = ''; scenes[to].style.clipPath = ''; }
-    trans = null; line.style.opacity = 0; route.classList.add('arrived');
-    if (GL) GL.done(active);
+    if (!GL) { scenes[to].classList.remove('is-on'); scenes[to].style.zIndex = ''; scenes[to].style.opacity = ''; still(to); still(trans.from); }
+    trans = null; route.classList.add('arrived');
+    if (GL) GL.done(active, true);   /* the place we stayed on flies on from where it was: nothing turns back */
     busy = false;
     if (target !== active) run();
     kick();
@@ -853,7 +849,7 @@ html:not(.js) .swipe{display:none!important}
     step(d, onTp);
   });
 
-  /* swipe on a phone: the orange line follows the thumb, and lets go past a third of the way */
+  /* swipe on a phone: the thumb flies the camera into the cloud and out the far side, and lets go past a third of the way */
   var drag = null;
   held.addEventListener('pointerdown', function (e) {
     if (e.pointerType === 'mouse' || !e.isPrimary) return;
@@ -927,9 +923,58 @@ html:not(.js) .swipe{display:none!important}
   if (!reduce) held.classList.add('auto');
   document.addEventListener('visibilitychange', kick);
 
-  var K = Math.tan(8 * Math.PI / 180);
-  function easeInOut(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
   function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+  function bezier(x1, y1, x2, y2) {
+    function f(a, b, u) { return 3 * a * u * (1 - u) * (1 - u) + 3 * b * u * u * (1 - u) + u * u * u; }
+    return function (t) { var lo = 0, hi = 1, u = t; for (var i = 0; i < 18; i++) { u = (lo + hi) / 2; if (f(x1, x2, u) < t) lo = u; else hi = u; } return f(y1, y2, u); };
+  }
+  var easeFly = bezier(0.42, 0, 0.18, 1);   /* sets off gently, cruises through the cloud, settles slowly on the next place */
+
+  /* ---------- the move between places: one flight forward, up into a cloud and out of its far side ----------
+     A paraglider climbs to cloudbase and glides on to the next valley. The camera never turns back: it flies on
+     towards F, rises a little into the cloud, and the next place opens out of the cloud ahead, from the middle out.
+     The place we leave grows as we close on it (the near ground faster, by its depth); its glider pulls away from
+     us into the cloud; its name is the last thing the cloud takes. The next place's name is the first thing it gives
+     back. u is the camera's distance past this place's rest: 0 to 0.5 for the one we leave, -0.5 to 0 for the next.
+     trans.e alone sets every frame, so a thumb can hold, scrub back and let go anywhere. */
+  function flight(tr) {
+    var e = tr.e, out = e >= 0.5, u = out ? e - 1 : e;
+    var F = [W * (mobile ? 0.55 : 0.6), H * (mobile ? 0.44 : 0.4)];
+    var rmax = Math.max(Math.hypot(F[0], F[1]), Math.hypot(W - F[0], F[1]), Math.hypot(F[0], H - F[1]), Math.hypot(W - F[0], H - F[1]));
+    var arc = Math.sin(Math.PI * e);   /* how far up we are: into the cloudbase, then down the far side */
+    var h = out ? (1 - e) * 2 : e * 2, h1 = Math.min(1, e * 2), h2 = Math.max(0, e * 2 - 1);
+    return {
+      out: out, F: F, rmax: rmax,
+      S: Math.exp((out ? 0.1 : 0.24) * u),          /* the ground: 1 to 1.13 as we close in; the next from 0.95 to 1 */
+      Sw: Math.exp(-0.26 * u),                      /* the glider pulls away: 1 to 0.88; the next settles from 1.14 to 1 */
+      Sword: Math.exp((out ? 0.2 : 0.34) * u),      /* the name is nearer than the ground, so it grows faster */
+      dx: -tr.dir * 0.05 * W * u,                   /* a slight drift towards the next place on the season */
+      dy: 0.03 * H * arc,                           /* we rise: the land sinks a little in the frame */
+      par: [-tr.dir * 0.012 * u, 0.02 * arc],       /* and the near ground moves more than the far */
+      dolly: (out ? 0.1 : 0.16) * u,
+      mode: out ? 2 : 1,
+      /* the cloud's edge, as a share of the way from F to the far corner: an even pace across what shows, then a last
+         stretch that closes (or clears) the far corners, so the frame is all cloud only at the very middle */
+      front: out ? -0.3 + 1.1 * h2 - 0.55 * Math.pow(1 - h2, 8) + 0.65 * Math.pow(h2, 8) : -0.15 + 0.95 * h1 + 0.85 * Math.pow(h1, 8),
+      haze: 0.3 * h * Math.sqrt(h),                 /* the light goes milky as the cloud nears */
+      wingDep: out ? 0.5 : 0.75   /* the glider is nearer than the land: the cloud takes the land behind it first */
+    };
+  }
+  /* the same flight in CSS, for browsers without WebGL: the layers move and scale, and a soft cloud grows over them */
+  function flyCSS(tr) {
+    var f = flight(tr), sc = scenes[f.out ? tr.to : tr.from], cx = W / 2, cy = H / 2;
+    scenes[tr.to].style.opacity = f.out ? 1 : 0;
+    [].forEach.call(sc.querySelectorAll('.layer'), function (l) {
+      var c = l.classList, k = c.contains('word') ? f.Sword : c.contains('wing') || c.contains('shadow') ? f.Sw : f.S;
+      if (c.contains('shade')) return;
+      l.style.scale = k.toFixed(4);
+      l.style.translate = ((f.F[0] - cx) * (1 - k) + f.dx).toFixed(1) + 'px ' + ((f.F[1] - cy) * (1 - k) + f.dy).toFixed(1) + 'px';
+    });
+    var a = (f.out ? f.front : f.front - 0.5) * f.rmax, b = a + 0.5 * f.rmax, i = f.out ? f.haze : 1, o = f.out ? 1 : f.haze;
+    var s0 = a < 0 ? (b <= 0 ? o : i + (o - i) * (-a / (b - a))) : i;
+    var m = 'radial-gradient(circle at ' + f.F[0].toFixed(0) + 'px ' + f.F[1].toFixed(0) + 'px,rgba(0,0,0,' + s0.toFixed(3) + ') ' + Math.max(0, a).toFixed(0) + 'px,rgba(0,0,0,' + o.toFixed(3) + ') ' + Math.max(1, b).toFixed(0) + 'px)';
+    veil.style.webkitMaskImage = m; veil.style.maskImage = m;
+  }
 
   /* ---------- one frame ---------- */
   function frame(now) {
@@ -946,7 +991,7 @@ html:not(.js) .swipe{display:none!important}
     held.style.setProperty('--p', p.toFixed(4));
     held.style.setProperty('--mx', st.mx.toFixed(4));
     held.style.setProperty('--my', st.my.toFixed(4));
-    var wipe = null, gx = DESTS[active].x, gr = 0, tl = gx, tw = 0, go = 1;
+    var gx = DESTS[active].x, gr = 0, ga = 0, tl = gx, tw = 0, go = 1;
     if (trans) {
       var a = trans.anim, done = 0;
       if (a) {
@@ -954,16 +999,8 @@ html:not(.js) .swipe{display:none!important}
         trans.e = a.a + (a.b - a.a) * a.fn(t);
         if (t >= 1) { trans.anim = null; done = a.b >= 1 ? 1 : -1; } else more = true;
       }
-      var e = trans.e, span = W + H * K + 4;
-      var x = trans.dir > 0 ? W + 4 - e * span : -H * K + e * span;
-      wipe = { e: e, x: x, side: -trans.dir };
-      line.style.transform = 'translateX(' + (x - 1) + 'px) skewX(-8deg)';
-      if (!GL) {
-        var top = x + H * K;
-        scenes[trans.to].style.clipPath = trans.dir > 0
-          ? 'polygon(' + top + 'px 0,100% 0,100% 100%,' + x + 'px 100%)'
-          : 'polygon(0 0,' + top + 'px 0,' + x + 'px 100%,0 100%)';
-      }
+      var e = trans.e;
+      if (!GL) flyCSS(trans);
       if (trans.wrap) {
         /* round the season: off the right end of the line and back in from the left, fading at the ends */
         var x0 = DESTS[trans.from].x, x1 = DESTS[trans.to].x, out = 100 - x0, d = e * (out + x1);
@@ -971,6 +1008,9 @@ html:not(.js) .swipe{display:none!important}
         go = Math.min(1, Math.abs(gx - (d < out ? 100 : 0)) / 4);
       } else
       gx = DESTS[trans.from].x + (DESTS[trans.to].x - DESTS[trans.from].x) * e;
+      /* the small glider flies the leg as the camera does: up towards the cloudbase, then the glide down to the next place */
+      var leg = Math.abs(DESTS[trans.to].x - DESTS[trans.from].x) / 100 * routeW;
+      ga = -Math.max(4, Math.min(8, leg * 0.14)) * Math.sin(Math.PI * e);
       gr = trans.dir * Math.sin(Math.PI * e) * 9;
       tl = Math.min(DESTS[trans.from].x, gx); tw = Math.abs(gx - DESTS[trans.from].x);
       if (trans.wrap) { tl = gx >= DESTS[trans.from].x ? DESTS[trans.from].x : 0; tw = gx >= DESTS[trans.from].x ? gx - DESTS[trans.from].x : gx; }
@@ -979,9 +1019,10 @@ html:not(.js) .swipe{display:none!important}
     route.style.setProperty('--gx', gx.toFixed(3) + '%');
     route.style.setProperty('--go', go.toFixed(3));
     route.style.setProperty('--gr', gr.toFixed(2) + 'deg');
+    route.style.setProperty('--ga', ga.toFixed(2) + 'px');
     route.style.setProperty('--tl', tl.toFixed(3) + '%');
     route.style.setProperty('--tw', tw.toFixed(3) + '%');
-    if (GL && onScreen) { if (GL.draw(st, wipe, trans)) more = true; }
+    if (GL && onScreen) { if (GL.draw(st, trans)) more = true; }
     if (playOn(now || performance.now()) && onScreen) more = true;
     if (more) kick();
   }
@@ -1037,7 +1078,7 @@ html:not(.js) .swipe{display:none!important}
       'uniform vec4 uWRect;uniform vec2 uWMove;uniform float uWRot,uWScale;uniform vec2 uPad;',
       'uniform vec2 uWordMove;uniform vec4 uFRect;uniform vec2 uFillPan;uniform vec3 uReveal;',
       'uniform vec4 uMist;uniform vec3 uMistC;uniform vec2 uMistF;uniform float uMistB,uRev;',
-      'uniform vec2 uShG,uShW;uniform vec3 uLight;uniform float uMobile,uPass,uWipe,uSide,uSlide,uK,uLook,uSelf;',
+      'uniform vec2 uShG,uShW;uniform vec3 uLight;uniform float uMobile,uLook,uSelf,uWordS;uniform vec4 uFly,uFlyB;uniform vec3 uCloud;uniform vec2 uFlyO;',
       'vec3 BG=vec3(.0784,.0824,.098);',
       'vec3 over(vec3 c,float a){return mix(c,BG,clamp(a,0.,1.));}',
       'vec2 wingUV(vec2 p){vec2 c=uRes*.5;vec2 q=p-uWMove-c;float s=sin(-uWRot),co=cos(-uWRot);q=vec2(co*q.x-s*q.y,s*q.x+co*q.y)/uWScale+c;return (q-uWRect.xy)/uWRect.zw;}',
@@ -1054,11 +1095,24 @@ html:not(.js) .swipe{display:none!important}
       ' float off=sd-uMist.w-(n-.5)*.3;',
       ' float mx=uMistB*smoothstep(.4,.75,n)+uMist.x*exp(-off*off/.045)*mix(.6,1.,n);',
       ' return vec2(clamp(mx,0.,1.),1.-smoothstep(-.12,.06,off));}',
+      /* the move between places: the cloud we fly into, and out of. uFly: F (where we head), the cloud\'s edge, and 1 going in,
+         2 coming out. Its wisps stream out from F as we fly on (uFlyB.x); r is the share of the way from F to the far corner */
+      'vec3 flyC=vec3(0.);float flyR=0.,flyN=.5;',
+      'float fbm4(vec2 p){float s=0.,a=.5;for(int i=0;i<4;i++){s+=a*vn(p);p=p*2.03+vec2(17.1,9.3);a*=.5;}return s/.9375;}',
+      'void flyAt(vec2 p){vec2 q=(p-uFly.xy)*uFlyB.y;flyR=length(q);vec2 dr=q/max(flyR,.001);float lr=log(flyR+.08),ph=uFlyB.x;',
+      /* wisps, drawn out along the way they stream; billows, the cloud\'s body, growing about F as we close on them */
+      ' float ws=fbm4(dr*1.7+vec2(lr*1.6-ph,lr*1.1-ph*.69));',
+      ' float bl=fbm4(q*2.2*exp(-.35*ph)+vec2(3.7,1.3));',
+      ' flyN=mix(bl,ws,.24*smoothstep(0.,.45,flyR));',
+      ' float c=smoothstep(.3,.72,flyN);',
+      ' flyC=uCloud*(.62+.56*c)*(1.16-.34*p.y/uRes.y);}',
+      /* going in, the far land goes first and the nearest last; coming out, the nearest comes first. dep: 0 far, 1 near;
+         r: how far out from F (the name and the glider each go as one, at their own middle) */
+      'float flyCover(float r,float dep,float k){float o=(flyN-.5)*.8*k,c;',
+      ' if(uFly.w<1.5)c=smoothstep(-.12,.12,uFly.z-r-o-dep*.28);else c=1.-smoothstep(-.12,.12,uFly.z-r-o+dep*.28);',
+      ' return c+(1.-c)*uFlyB.z*(1.-.5*min(dep,1.));}',
       'void main(){',
       ' vec2 p=vec2(v.x,1.-v.y)*uRes;',
-      /* the wipe: the new place shows on one side of the slanted orange line */
-      ' if(uPass>.5){float e=p.x-(uRes.y-p.y)*uK;if((e-uWipe)*uSide>0.)discard;}',
-      ' p.x-=uSlide;',
       /* ground, displaced by its own depth */
       ' vec2 c=uRes*.5;vec2 gq=p-uGMove-c;float gc=cos(uGRot),gs_=sin(uGRot);gq=vec2(gc*gq.x+gs_*gq.y,-gs_*gq.x+gc*gq.y);vec2 gp=gq/uGScale+c;vec2 uv=(gp-uGRect.xy)/uGRect.zw;',
       ' float d=texture2D(uDepth,uv).r;uv-=uPar*(d-.4);d=texture2D(uDepth,uv).r;uv=(gp-uGRect.xy)/uGRect.zw-uPar*(d-.4);',
@@ -1070,21 +1124,25 @@ html:not(.js) .swipe{display:none!important}
       /* the wing\'s shadow on the ground */
       ' col*=1.-.55*uShK*shadowAt(p-uShG);',
       ' vec2 cl=cloud(p);float mi=cl.x;col=mix(col,uMistC*uDim,mi);',
-      /* shading, as in the still */
-      ' float y=p.y/uRes.y,x=p.x/uRes.x;',
-      ' if(uMobile<.5){col=over(col,.7*(1.-x/.55)*step(x,.55));float b=1.-y;col=over(col,b<.22?mix(1.,.82,b/.22):(b<.58?mix(.82,0.,(b-.22)/.36):0.));col=over(col,.7*(1.-y/.22)*step(y,.22));}',
-      ' else{float b=1.-y;col=over(col,b<.07?1.:(b<.19?mix(1.,.72,(b-.07)/.12):(b<.46?mix(.72,0.,(b-.19)/.27):0.)));col=over(col,.7*(1.-y/.16)*step(y,.16));}',
+      ' bool fl=uFly.w>.5;float gk=0.;if(fl){flyAt(p);gk=flyCover(flyR,d,1.);}',
+      /* shading, as in the still (one factor, so the cloud in front of the name and the wing is shaded the same) */
+      ' float y=p.y/uRes.y,x=p.x/uRes.x,b=1.-y,sf;',
+      ' if(uMobile<.5)sf=(1.-clamp(.7*(1.-x/.55)*step(x,.55),0.,1.))*(1.-clamp(b<.22?mix(1.,.82,b/.22):(b<.58?mix(.82,0.,(b-.22)/.36):0.),0.,1.))*(1.-clamp(.7*(1.-y/.22)*step(y,.22),0.,1.));',
+      ' else sf=(1.-clamp(b<.07?1.:(b<.19?mix(1.,.72,(b-.07)/.12):(b<.46?mix(.72,0.,(b-.19)/.27):0.)),0.,1.))*(1.-clamp(.7*(1.-y/.16)*step(y,.16),0.,1.));',
+      /* the cloud takes a little less of the shade than the land: it carries its own light */
+      ' col=BG+(col-BG)*sf;vec3 fcS=BG+(flyC-BG)*mix(sf,1.,.22);col=mix(col,fcS,gk);',
       /* the word: white, shadowed by the wing, or a window onto the place */
-      ' vec2 wp=p-uWordMove;float m=texture2D(uMask,wp/uRes).a;',
+      ' vec2 wp=uFly.xy+(p-uFly.xy)/uWordS-uWordMove;float m=texture2D(uMask,wp/uRes).a;',
       ' if(m>0.){',
       '  vec3 wc=vec3(.965,.957,.957)*(1.-.42*uShK*shadowAt(p-uShW));',
       '  float rv=1.-smoothstep(uReveal.z-90.,uReveal.z,length(wp-uReveal.xy));',
       '  if(rv>0.){vec3 fc;if(uSelf>.5){fc=raw*1.06;}else{vec2 fu=(wp-uFRect.xy-uFillPan)/uFRect.zw;fc=texture2D(uFill,clamp(fu,vec2(.001),vec2(.999))).rgb;}',
       '   fc=fc*(1.-.3*shadowAt(p-uShW));wc=mix(wc,fc,rv);}',
+      '  if(fl)wc=mix(wc,fcS,flyCover(mix(flyR,uFlyO.x,.8),1.2,.55));',
       '  col=mix(col,wc,m);}',
       /* the wing itself */
       ' vec2 wu=wingUV(p);',
-      ' if(wu.x>0.&&wu.y>0.&&wu.x<1.&&wu.y<1.){vec4 w=texture2D(uWing,wu);vec3 wc=1.-(1.-w.rgb)*(1.-vec3(1.,.81,.58)*lg*.16);wc=mix(wc,uMistC*uDim,mi*.9);col=mix(col,wc,w.a);}',
+      ' if(wu.x>0.&&wu.y>0.&&wu.x<1.&&wu.y<1.){vec4 w=texture2D(uWing,wu);vec3 wc=1.-(1.-w.rgb)*(1.-vec3(1.,.81,.58)*lg*.16);wc=mix(wc,uMistC*uDim,mi*.9);if(fl)wc=mix(wc,fcS,flyCover(mix(flyR,uFlyO.y,.8),uFlyB.w,.55));col=mix(col,wc,w.a);}',
       /* static grain: it sits on the lens and never moves on its own */
       ' col+=(hash(floor(gl_FragCoord.xy))-.5)*.045;',
       ' gl_FragColor=vec4(col,uAlpha*mix(1.,cl.y,uRev));',
@@ -1101,7 +1159,7 @@ html:not(.js) .swipe{display:none!important}
     var al = gl.getAttribLocation(pr, 'a'); gl.enableVertexAttribArray(al); gl.vertexAttribPointer(al, 2, gl.FLOAT, false, 0, 0);
     var U = {};
     ['uRes', 'uGround', 'uDepth', 'uWing', 'uShadow', 'uMask', 'uFill', 'uGRect', 'uGMove', 'uGScale', 'uGRot', 'uPar', 'uDim', 'uDolly', 'uShK', 'uAlpha', 'uMist', 'uMistC', 'uMistF', 'uMistB', 'uRev', 'uWRect', 'uWMove', 'uWRot', 'uWScale', 'uPad',
-     'uWordMove', 'uFRect', 'uFillPan', 'uReveal', 'uShG', 'uShW', 'uLight', 'uMobile', 'uPass', 'uWipe', 'uSide', 'uSlide', 'uK', 'uLook', 'uSelf'].forEach(function (n) { U[n] = gl.getUniformLocation(pr, n); });
+     'uWordMove', 'uFRect', 'uFillPan', 'uReveal', 'uShG', 'uShW', 'uLight', 'uMobile', 'uLook', 'uSelf', 'uWordS', 'uFly', 'uFlyB', 'uCloud', 'uFlyO'].forEach(function (n) { U[n] = gl.getUniformLocation(pr, n); });
     ['uGround', 'uDepth', 'uWing', 'uShadow', 'uMask', 'uFill'].forEach(function (n, i) { gl.uniform1i(U[n], i); });
     gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
 
@@ -1125,6 +1183,15 @@ html:not(.js) .swipe{display:none!important}
         var t = T[key];
         t.ground = tex(ims[0]); t.depth = tex(ims[1]); t.wing = tex(ims[2]); t.shadow = tex(ims[3]); t.fill = d.self ? t.ground : tex(ims[4]);
         t.mask = null; t.ready = true;
+        /* the land's own colour, which the cloud picks up from below */
+        try {
+          var tc = document.createElement('canvas'); tc.width = tc.height = 8;
+          var tx = tc.getContext('2d'); tx.drawImage(ims[0], 0, 0, 8, 8);
+          var px = tx.getImageData(0, 0, 8, 8).data, sm = [0, 0, 0];
+          for (var i = 0; i < px.length; i += 4) { sm[0] += px[i]; sm[1] += px[i + 1]; sm[2] += px[i + 2]; }
+          var l = (0.2126 * sm[0] + 0.7152 * sm[1] + 0.0722 * sm[2]) || 1;
+          t.tint = sm.map(function (c) { return Math.min(1.2, c / l); });
+        } catch (er) { t.tint = null; }
         var w = t.wait; t.wait = null; w.forEach(function (f) { f(); });
       }, function () { api.ok = false; var w = T[key].wait; T[key].wait = null; w.forEach(function (f) { f(); }); });
     };
@@ -1159,8 +1226,9 @@ html:not(.js) .swipe{display:none!important}
       gl.viewport(0, 0, canvas.width, canvas.height);
       Object.keys(T).forEach(function (k) { if (T[k].ready) measure(k); });
     };
-    api.prepare = function (key) { if (!T[key].word) measure(key); reveal.on = false; reveal.target = 0; reveal.r = 0; syncVideo(); };
-    api.done = function (key) { pushAge[key] = 0; pushLast[key] = null; if (!T[key].word) measure(key); reveal.on = false; reveal.target = 0; reveal.r = 0; syncVideo(); };
+    /* the next place comes in at the start of its pass; the place we leave flies on until the cloud has it */
+    api.prepare = function (key) { if (!T[key].word) measure(key); pushAge[key] = 0; pushLast[key] = null; reveal.on = false; reveal.target = 0; reveal.r = 0; syncVideo(); };
+    api.done = function (key, keep) { if (!keep) { pushAge[key] = 0; pushLast[key] = null; } if (!T[key].word) measure(key); reveal.on = false; reveal.target = 0; reveal.r = 0; syncVideo(); };
     api.visible = function () { syncVideo(); };
 
     /* the window in the letters */
@@ -1231,7 +1299,7 @@ html:not(.js) .swipe{display:none!important}
       var ps = pushPasses(key);
       return ps[ps.length - 1][0];
     }
-    function drawDest(key, s, pass, wipeX, side, slide, zo, alpha, rev) {
+    function drawDest(key, s, fly, zo, alpha, rev) {
       var t = T[key], d = DESTS[key], vh = window.innerHeight;
       if (!t || !t.ready || !t.word) return;
       if (key === 'india' && video && vidReady && !video.paused && video.readyState >= 2) {
@@ -1256,24 +1324,54 @@ html:not(.js) .swipe{display:none!important}
       var gs0 = 1.06 - s.p * 0.04, gmx = s.mx * -6, gmy = s.p * 0.12 * vh + s.my * -4;
       var zp = pu.center ? z - 0.5 : z;   /* a centred drift goes from half one way to half the other */
       var gs = gs0 * Zg, gx = Zg * gmx + (fx - cx) * (1 - Zg) + zp * pan[0] * W, gy = Zg * gmy + (fy - cy) * (1 - Zg);
+      var grot = (pu.rot || 0) * zp * Math.PI / 180;   /* clockwise on screen: we turn left */
+      var fpx = (fx - gx - cx) / gs + cx, fpy = (fy - gy - cy) / gs + cy;
+      var du = (fpx - gr[0]) / gr[2], dv = (fpy - gr[1]) / gr[3], dk = z * pu.k;
+      if (fly) {
+        /* between places: the camera flies on towards F, a little higher and a little to the side */
+        var F = fly.F;
+        gx = fly.S * gx + (F[0] - cx) * (1 - fly.S) + fly.dx; gy = fly.S * gy + (F[1] - cy) * (1 - fly.S) + fly.dy; gs *= fly.S;
+        /* the photograph always fills the frame */
+        var mg = 0.015 * Math.max(W, H), L0 = (gr[0] - cx) * gs + cx + gx, R0 = L0 + gr[2] * gs, T0 = (gr[1] - cy) * gs + cy + gy, B0 = T0 + gr[3] * gs;
+        if (L0 > -mg) gx -= Math.min(L0 + mg, Math.max(0, R0 - W - mg)); else if (R0 < W + mg) gx += Math.min(W + mg - R0, Math.max(0, -mg - L0));
+        if (T0 > -mg) gy -= Math.min(T0 + mg, Math.max(0, B0 - H - mg)); else if (B0 < H + mg) gy += Math.min(H + mg - B0, Math.max(0, -mg - T0));
+        /* and the near ground comes on faster than the far, about the point we fly towards */
+        var qx = F[0] - gx - cx, qy = F[1] - gy - cy, rc = Math.cos(grot), rs = Math.sin(grot);
+        var fu = ((rc * qx + rs * qy) / gs + cx - gr[0]) / gr[2], fv = ((-rs * qx + rc * qy) / gs + cy - gr[1]) / gr[3];
+        var kk = dk + fly.dolly;
+        if (Math.abs(kk) > 1e-5) { du = (du * dk + fu * fly.dolly) / kk; dv = (dv * dk + fv * fly.dolly) / kk; }
+        dk = kk;
+      }
       gl.uniform2f(U.uGMove, gx, gy);
       gl.uniform1f(U.uGScale, gs);
-      gl.uniform1f(U.uGRot, (pu.rot || 0) * zp * Math.PI / 180);   /* clockwise on screen: we turn left */
-      var fpx = (fx - gx - cx) / gs + cx, fpy = (fy - gy - cy) / gs + cy;
-      gl.uniform3f(U.uDolly, (fpx - gr[0]) / gr[2], (fpy - gr[1]) / gr[3], z * pu.k);
+      gl.uniform1f(U.uGRot, grot);
+      gl.uniform3f(U.uDolly, du, dv, dk);
       gl.uniform2f(U.uMistF, fx, fy);
-      gl.uniform2f(U.uPar, (mobile ? 0 : s.mx * 0.022) + zp * pan[1], (mobile ? 0 : s.my * 0.016) - s.p * 0.07);
+      gl.uniform2f(U.uPar, (mobile ? 0 : s.mx * 0.022) + zp * pan[1] + (fly ? fly.par[0] : 0), (mobile ? 0 : s.my * 0.016) - s.p * 0.07 + (fly ? fly.par[1] : 0));
       gl.uniform1f(U.uDim, d.dim);
       gl.uniform4fv(U.uWRect, t.wingRect);
       var Zw = 1 - z * (1 - pu.w), gcx = wr[0] + wr[2] / 2, gcy = wr[1] + wr[3] / 2;
       var dl = Math.hypot(fx - gcx, fy - gcy) || 1, dr = z * pu.drift * W / dl;
       var wmx = s.mx * 26, wmy = s.p * -0.30 * vh + s.my * 16;
-      gl.uniform2f(U.uWMove, Zw * wmx + (gcx - cx) * (1 - Zw) + (fx - gcx) * dr + z * pan[2] * W, Zw * wmy + (gcy - cy) * (1 - Zw) + (fy - gcy) * dr);
+      var wX = Zw * wmx + (gcx - cx) * (1 - Zw) + (fx - gcx) * dr + z * pan[2] * W, wY = Zw * wmy + (gcy - cy) * (1 - Zw) + (fy - gcy) * dr, wS = (1 + s.p * 0.12) * Zw;
+      /* between places the glider pulls away from us, towards F, into the cloud */
+      if (fly) { wX = fly.Sw * wX + (fly.F[0] - cx) * (1 - fly.Sw) + fly.dx; wY = fly.Sw * wY + (fly.F[1] - cy) * (1 - fly.Sw) + fly.dy; wS *= fly.Sw; }
+      gl.uniform2f(U.uWMove, wX, wY);
       gl.uniform1f(U.uWRot, (s.mx * -1.2 + s.p * -3) * Math.PI / 180);
-      gl.uniform1f(U.uWScale, (1 + s.p * 0.12) * Zw);
+      gl.uniform1f(U.uWScale, wS);
       gl.uniform1f(U.uShK, (1 + z * 0.14) * (1 - s.p * 0.5));   /* the shadow softens by half as the page scrolls */
       gl.uniform2f(U.uPad, d.pad[0], d.pad[1]);
-      gl.uniform2f(U.uWordMove, s.mx * -14 + s.p * -0.09 * W, s.my * -8);
+      var wsS = fly ? fly.Sword : 1;
+      gl.uniform2f(U.uWordMove, s.mx * -14 + s.p * -0.09 * W + (fly ? fly.dx / wsS : 0), s.my * -8 + (fly ? fly.dy / wsS : 0));
+      gl.uniform1f(U.uWordS, wsS);
+      gl.uniform4f(U.uFly, fly ? fly.F[0] : 0, fly ? fly.F[1] : 0, fly ? fly.front : 0, fly ? fly.mode : 0);
+      if (fly) {
+        gl.uniform4f(U.uFlyB, fly.phase, 1 / fly.rmax, fly.haze, fly.wingDep); gl.uniform3fv(U.uCloud, fly.cloud);
+        /* where the middle of the name and of the glider are now, as a share of the way out from F */
+        var tw = t.word, ox = tw.x + tw.w / 2 + s.mx * -14 - fly.F[0], oy = tw.y + tw.h / 2 + s.my * -8 - fly.F[1];
+        var vx = (gcx - cx) * wS + cx + wX - fly.F[0], vy = (gcy - cy) * wS + cy + wY - fly.F[1];
+        gl.uniform2f(U.uFlyO, Math.hypot(ox, oy) * fly.Sword / fly.rmax, Math.hypot(vx, vy) / fly.rmax);
+      }
       /* the fill covers the word, a little larger so a photograph can pan with the pointer */
       var w = t.word, over = d.video ? 1.04 : 1.22, fw = d.fs ? d.fs[0] : 1, fh = d.fs ? d.fs[1] : 1;
       var sc = Math.max(w.w * over / fw, w.h * 1.6 * over / fh), FW = fw * sc, FH = fh * sc;
@@ -1286,42 +1384,46 @@ html:not(.js) .swipe{display:none!important}
       gl.uniform2f(U.uShW, 0.011 * W * lift, 0.02 * W * lift);
       gl.uniform3f(U.uLight, s.lx, s.ly, s.lOn);
       gl.uniform1f(U.uMobile, mobile ? 1 : 0);
-      gl.uniform1f(U.uPass, pass);
-      gl.uniform1f(U.uWipe, wipeX);
-      gl.uniform1f(U.uSide, side);
-      gl.uniform1f(U.uSlide, slide);
-      gl.uniform1f(U.uK, K);
       gl.uniform1f(U.uLook, key === active ? Math.min(1, reveal.r / 400) : 0);
       gl.uniform1f(U.uSelf, d.self ? 1 : 0);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     }
-    api.draw = function (s, wipe, tr) {
+    /* the cloud's colour: a soft grey that takes a little of the land's colour below, from the place we leave to the next */
+    var CLOUD = [0.76, 0.78, 0.82];
+    function cloudOf(tr) {
+      var a = T[tr.from].tint || CLOUD, b = T[tr.to].tint || CLOUD, k = Math.min(1, Math.max(0, (tr.e - 0.3) / 0.4));
+      k = k * k * (3 - 2 * k);
+      return CLOUD.map(function (c, i) { return c * 0.82 + 0.18 * 0.75 * (a[i] + (b[i] - a[i]) * k); });
+    }
+    api.draw = function (s, tr) {
       var more = false;
       api.pushing = false;
       reveal.r += (reveal.target - reveal.r) * (reveal.on ? 0.06 : 0.1);
       if (Math.abs(reveal.target - reveal.r) > 0.5) more = true; else reveal.r = reveal.target;
-      if (tr && wipe) {
-        drawDest(tr.from, s, 0, 0, 1, -tr.dir * wipe.e * 0.03 * W);
-        drawDest(tr.to, s, 1, wipe.x, wipe.side, tr.dir * (1 - wipe.e) * 0.07 * W);
+      if (tr) {
+        /* one place is drawn at a time: the one we leave until the cloud closes over it, then the next, out of the same cloud */
+        var f = flight(tr);
+        f.phase = 2.1 * tr.e + performance.now() * 0.00005;   /* the wisps stream past as we fly, and drift while a thumb holds still */
+        f.cloud = cloudOf(tr);
+        drawDest(f.out ? tr.to : tr.from, s, f, f.out ? 0 : null);
+        more = true;
       } else if (DESTS[active].push) {
         var ps = pushPasses(active);
         mistKey = active;
-        drawDest(active, s, 0, 0, 1, 0, ps[0][0], 1);
+        drawDest(active, s, null, ps[0][0], 1);
         if (ps.length > 1) {
           gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-          drawDest(active, s, 0, 0, 1, 0, ps[1][0], 1, true);
+          drawDest(active, s, null, ps[1][0], 1, true);
           gl.disable(gl.BLEND);
         }
         mistKey = null;
-      } else drawDest(active, s, 0, 0, 1, 0);
+      } else drawDest(active, s, null);
       if (video && !video.paused && active === 'india') more = true;
       return more || api.pushing;
     };
     return api;
   }
 })();
-/* review only: after choosing an India photo, open on India */
-if (location.hash === '#india') addEventListener('load', function () { setTimeout(function () { var r = document.getElementById('tp-india'); if (r && !r.checked) r.click(); }, 300); });
 </script>
 </body>
 </html>
