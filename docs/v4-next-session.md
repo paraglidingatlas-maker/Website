@@ -52,8 +52,21 @@ Live (17f53b72, gates PASS): https://paraglidingatlas.com/prototypes/v4/samples/
 - **The owner said "go autonomous"** at extra high effort: carry on without
   asking, through usage resets (a scheduled task in this session wakes it),
   steps in this order, each ending with gates and a push:
-  2. **F2/E opening into the v4 home** (owner: "put it on main V4 hero image";
-     OK given to edit `tools/v4_polish.py`): see chat 9's step 1 below.
+  2. **Done (f47d960e, gates PASS): the opening is the v4 home page's hero.**
+     `tools/v4_home_opening.py` (run by hand after any change to the sample,
+     then the build) copies `samples/opening/` into `index.html`: photo layers
+     to `img/opening/`, the hero between `<!-- v4-home-opening -->` marks
+     (replacing the old kit-hero, its footage and the ridge drawing; so
+     `tools/v4_opening.py` has no place any more), styles fenced to `#held`
+     (classes on <html> renamed `op-*`, keyframes `op-*`, the kicker
+     `op-kicker` because the site greys every `.kicker`, the site's slanted
+     `.btn-solid` box undone), the site's nav lying over the photo, the script
+     loading from `img/opening/`. The build title-cases the headings. v4_polish
+     skips its figures when the old hero is gone. `tools/v2_check.py` EXEMPT
+     now lists the home h1 ("Paragliding expeditions, run by a pilot.") as
+     the owner's deliberate change from the live "Touch The Sky With Glory":
+     **tell the owner this changes the live h1 at the switch-over.**
+     The sample is the single source; Kenya is fixed to DSC_9492 there.
   3. India's 2027 dates everywhere in v4 (chat 9 below).
   4. Panchgani's destination page, then its button in the opening points there.
   5. Panchgani in the rest of v4 (expeditions, dates, enquire, sitemap, map).
