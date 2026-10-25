@@ -933,17 +933,17 @@ html.lc-tilt .lb .ep-card:hover .lc-light{opacity:1}
    guest's head; so the lines run on from card to card and out into the section. The cards slide over the
    map as the strip moves. Without JavaScript only the section's lines show. */
 .lb .v2-rail-wrap{isolation:isolate}
-.lb .v2-rail-wrap::before{content:"";position:absolute;left:0;right:0;top:-220px;bottom:-80px;z-index:-1;pointer-events:none;
-  background:url("../../img/contours.svg") 0 220px/400px auto repeat;opacity:.2;
-  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 45%,#000 72%,transparent 100%),linear-gradient(to right,transparent 0%,#000 22%,#000 78%,transparent 100%);
+.lb .v2-rail-wrap::before{content:"";position:absolute;left:0;right:0;top:-220px;bottom:-80px;z-index:-1;pointer-events:none;will-change:transform;
+  background:url("../../img/contours.svg") 0 220px/400px auto repeat;opacity:.28;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 190px,#000 250px,transparent 380px),linear-gradient(to right,transparent 0%,#000 22%,#000 78%,transparent 100%);
   -webkit-mask-composite:source-in;
-  mask-image:linear-gradient(to bottom,transparent 0%,#000 45%,#000 72%,transparent 100%),linear-gradient(to right,transparent 0%,#000 22%,#000 78%,transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0,#000 190px,#000 250px,transparent 380px),linear-gradient(to right,transparent 0%,#000 22%,#000 78%,transparent 100%);
   mask-composite:intersect}
 .lc-topo{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;
   background:url("../../img/contours.svg") 0 0/400px auto repeat;
-  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 10%,transparent 32%);mask-image:linear-gradient(to bottom,#000 0%,#000 10%,transparent 32%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 6%,transparent 26%);mask-image:linear-gradient(to bottom,#000 0,#000 6%,transparent 26%);
   transition:opacity .5s var(--ease-out)}
-.lb.lc-live .lc-topo{opacity:.32}
+.lb.lc-live .lc-topo{opacity:.42}
 .lb.lc-live .ep-card:is(:hover,:focus-visible) .lc-topo{opacity:.5}
 @media (max-width:760px){
   .lb{--lb-cw:76vw}
