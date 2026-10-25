@@ -1,5 +1,10 @@
 # Designer F, "Fly the Season": notebook (newest first)
 
+## 25 Oct 2026: refining "Hear Where We Fly" for Awwwards (review, nothing built)
+**Asked.** The owner chose B and asked to refine it with Awwwards in mind; fix trip photos reused from the opening, compass rose and red YouTube art fighting the orange, phone globe ring cut off, sideways "More conversations", unsourced "most streamed".
+**Proposed, ranked:** (1) one art system: trip cards on owner photos not on the home (Kenya `img/hero/kenya-chyulu-hills-p`, India Billing launch for Colfox and Bir landing for Gohil), Panchgani `[to supply]` (its only photo is the opening's), compass and tiny baked text off, all art in one dark grade, colour back on hover or focus; (2) pin popups use that art, not YouTube thumbnails; (3) one India head over both India cards with all four 2027 dates; (4) "More conversations" as a flat head in the trip-head row, split line gone; (5) phone globe: dial fits 358 px or loses its degree ring, zoom buttons in a row under it; (6) a "Find it on the globe" link in each trip head turns the globe to its pin and opens it (the only new motion, on tap); (7) no order claim for the 15 unless sourced ("Newest first" if sorted by date).
+**Recommended:** (1) matters most: it ends the rule breach and makes orange the only colour, the biggest Design lift.
+
 ## 25 Oct 2026: built "Hear Where We Fly" as preview B
 Built `prototypes/v4/samples/listen-b/` (home copy, #listen and #map merged): trip cards first (Kenya, Panchgani, India x2, next date and "See the trip" above each), then the 15 cards, no self-scroll; globe below with trip pins orange, others grey, trip popup adds dates from the rows. No JS or reduced motion: list of the pinned trip episodes. Flagged: trip photos repeat the opening's (owner's rule).
 

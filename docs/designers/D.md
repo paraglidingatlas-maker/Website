@@ -1,5 +1,27 @@
 # Designer D, "Final Cut": notebook (newest first)
 
+## 25 Oct 2026: refining B, "Hear Where We Fly" (the owner chose it over my A)
+
+**Asked.** How B can be refined for Awwwards, keeping its idea (trip places
+first, globe under the rail, orange trip pins with dates and "See the trip").
+Review only. **Found.** Compass rose over every photo; guest portraits on red;
+popups show YouTube thumbnails with baked text; trip cards reuse the opening's
+photos; two identical "India" headers (reads as a bug); "More conversations"
+sideways; phone ring cut and zoom buttons on the globe; popup coordinates at
+four decimals in a mono face; 3D tilt and shine on cards.
+**Proposed, ranked.** (1) Clean card faces: no compass, portraits greyscale,
+title and guest in live type below the photo, popup uses the same image, never
+the YouTube art. (2) Unused owner photos for trip cards: kenya-kerio-valley-p,
+india-billing-launch-p, india-dhauladhar-p (img/hero); Panchgani has only one
+photo, so its card waits on `[photo to supply]`. (3) One India header over both
+cards. (4) "More conversations" as a flat header in the trip headers' grammar,
+grey rule. (5) Phone: ring fits inside the gutters, N/E/S/W only, zoom buttons
+under the caption. (6) No "most streamed"; order by date or no label; popup
+coordinates to one decimal, DM Sans. (7) Drop tilt and shine; hover brightens
+the photo and turns the title rule orange. (8) Sentence case on kicker and
+labels. **Recommended** (1) as the one that matters most. Why: it is what the
+eye meets first, and it gives the one orange back to the trips.
+
 ## 25 Oct 2026: round 1, the podcast section (#listen) and the map
 
 **Asked.** One concept for #listen (search box plus a rail of most streamed

@@ -1,5 +1,13 @@
 # Designer E, "Pull Back to the Route": notebook (newest first)
 
+## 25 Oct 2026: refine option B, "Hear Where We Fly" (review only)
+
+**Asked.** The owner chose B for the home podcast section and asked whether it can be refined "keeping awwwards in mind". Review `prototypes/v4/samples/listen-b/`, do not build. Known faults: trip cards reuse the opening's photos; a compass rose over every card and red YouTube art fight the orange; the globe ring is cut off on a 390 phone; "More conversations" stands sideways; "most streamed" has no source.
+
+**Proposed, ranked.** (1) One calm card art: no compass, guest art in grey with colour back only on the card pointed at, the globe popup uses the card art, not the YouTube thumbnail. (2) New owner photos for the trip cards from `img/hero/` (Kenya Kerio Valley; India Billing launch and Dhauladhar, one each), Panchgani a type card until a second photo is `[to supply]`. (3) One India header over both India cards. (4) "More conversations" flat in the header row with a grey rule: orange = our trips, grey = the rest, same key as the globe legend. (5) Name the 15 honestly: "Latest conversations", newest first from episode-meta.json, unless the owner gives a source. (6) Phone: shrink the globe so its ring fits inside 358 px. (7) The globe draws the route: a thin orange arc joining the trip places in season order, Kazakhstan and Peru as hollow orange pins with dates and "See the trip". (8) My round 1 turn, adapted: the globe is below the fold while you point at cards, so instead it turns once, as it scrolls into view, to the last card pointed at (Kenya by default).
+
+**Recommended (1) most,** because Design is 40% of the score and today the cards read as YouTube thumbnails with a stamp on top; one quiet art system lets the single orange (trip lines, pins) carry the meaning.
+
 ## 25 Oct 2026: round 1, the #listen section (podcast rail and search)
 
 **Asked.** One concept for `#listen` (search plus the most-streamed rail), how it follows the season line and leads into `#map`, and whether the two should merge.
