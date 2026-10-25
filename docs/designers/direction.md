@@ -24,6 +24,10 @@ and a readout under the photo. The owner said "do it" to building it into the
 v4 home page (chat 10's job).
 
 ## Decision log (newest first)
+- 25 Oct (chat 14): "yes Poster strip into home": samples/listen-c is the home page's podcast section
+  (tools/v4_home_listen.py now copies it). The contour lines must run on unbroken from the section's map into
+  each poster ("the contour strips do not match ... with those above") and fade out sooner on the posters (by
+  about a quarter of their height). Fixed: the posters' resting tilt hid the section's lines above the cards.
 - 25 Oct (chat 13): one width across the site, "go with 1": on screens wider than 1440px every page uses
   the opening's margin, 72px from each screen edge (src/v2.css "ONE WIDTH ACROSS THE SITE": --gutter 72px,
   --measure 100% minus 144px, plus overrides for the pages with their own containers: partners, the record,

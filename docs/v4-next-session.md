@@ -29,6 +29,12 @@ the owner's current queue and what the last session learnt doing it.
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
 
+## Chat 14 (25 Oct): the poster strip is in the home page
+- The owner said "yes Poster strip into home": tools/v4_home_listen.py copies samples/listen-c (not listen-b).
+- Contour lines fixed on the owner's screenshot: the map behind the strip has its own layer (will-change), since
+  the posters' resting 3D tilt hid it above the cards; it peaks where the posters start; poster lines fade out by
+  26% of the height. Known, left alone: img/contours.svg is not a seamless tile, so faint straight joins show.
+
 ## Chat 14 starts here (25 Oct): put the poster strip (listen-c) into the home page when the owner says yes
 Chat 13 (all pushed, last 43eefad8, gates PASS):
 - **The podcast section is in the home page** (`tools/v4_home_listen.py` copies PART 2 of
