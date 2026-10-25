@@ -1,5 +1,15 @@
 # Designer E, "Pull Back to the Route": notebook (newest first)
 
+## 25 Oct 2026: the "More conversations" strip, awwwards level (review only)
+
+**Asked.** The owner, on the home rail in #listen (built today from listen-b): "I really like the previous design", wants agency-quality cards and strip. Compared fa877a47 (poster cards: red guest art, compass stamp, hook and name plate on the art, lean with a soft light) with today's grey portrait cards, title and meta under the photo, boxed arrows.
+
+**Found.** Old did better: one poster per episode, type on the art, warmth, the card answered the hand. New does better: no compass, readable titles, honest meta, calm. Lost: warmth and depth; the grey row reads as mugshots, and hover brings back the red YouTube ground that fights the orange. I recommended the grey earlier; I was partly wrong, the fault was the red and the compass, not the colour or the plate.
+
+**Proposed.** Cards: poster ratio, guest art as one warm duotone (ink shadows to the site orange in the light, CSS only), the plate back (hook in Poppins on the art, guest name under it), series and episode number as a small line above, meta under the card; the lean and soft light back, the light in the duotone's orange, no colour flip. Strip: heading "More conversations" at the section's second size, the strip is a scroll-driven pan on desktop (sticky, about 1.5 screens, vertical scroll moves the cards sideways, the art drifts inside its frame for depth), a thin readout line under it with episode numbers and an orange tick where you are, echoing the season line; arrows sit at the line's end. Phone: native swipe with snap, card about 78vw, same readout. Reduced motion / no JS: a plain swipe rail.
+
+**Recommended** the duotone plate cards with the scroll-driven pan, because it gives back the warmth the owner liked in one on-brand colour, and the pan turns a list into a camera move the visitor drives.
+
 ## 25 Oct 2026: shrink the episode picture, let the globe lead (review only)
 
 **Asked.** On listen-b's lead block the owner said the 560 px episode face is too big and wants the globe to dominate the section; the globe itself will later be swapped for the Encarta one, so only its place, size and look in the layout matter. Keep the lead trip (name, dates, play in place, chapter line, See the trip), the turn to the picked trip with the route lit, Hear another trip, More conversations.
