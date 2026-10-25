@@ -1,5 +1,31 @@
 # Designer D, "Final Cut": notebook (newest first)
 
+## 25 Oct 2026: making the lead trip right (B, "Hear Where We Fly")
+
+**Asked.** How to build the owner's choice: the lit trip leads big (Kenya by
+default), others small beside it; play in place with my chapter line; the
+globe turns to the lead and the route lights to it. Not the footage.
+**Found.** All four trip episodes are YouTube only (8 of 93 episodes have
+their own audio, none of these); episode pages use the youtube-nocookie
+embed with enablejsapi, and v4-listen.js seeks through it. Trip cards show
+YouTube maxresdefault art (baked text). episode-meta.json gives chapter
+starts but length only to the minute; the episode page timeline holds the
+exact length (Kenya 52:05).
+**Proposed.** 1440: lead 2/3 (about 856 px): name Poppins 112 px, dates,
+16:9 picture (owner's unused place photo; Panchgani [photo to supply]),
+under it play plus chapter line in one row, then title 32 px. The other two
+trips stacked in the last third, 160x90 picture, today's 1.05rem names.
+390: name 64 px (fits "Panchgani"), picture full width, play and line under,
+title 24 px, other trips as two rows under. Pick by a radio group in the
+section (labels on the small rows); CSS hides the picked trip's small row;
+the switch is a cut. Play: no iframe until pressed, then the nocookie embed
+in the same frame, controls off, our line the only control; another pick
+stops it. Globe: 0.8 s shortest turn, route orange up to the lead, the rest
+dim; reduced motion jumps. No JS: Kenya leads, picks still work, play and
+ticks link to the episode page and its chapters.
+**Recommended** the player as the picture. Why: nothing jumps on play and
+YouTube's art never shows, so play in place reads as ours, not an embed.
+
 ## 25 Oct 2026: "something missing" in B, "Hear Where We Fly"
 
 **Asked.** The owner: "There's something missing. Is it the size, the feel,
