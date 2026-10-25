@@ -1,5 +1,18 @@
 # Designer F, "Fly the Season": notebook (newest first)
 
+## 25 Oct 2026: a cursor shine on the departure rows?
+
+**Asked.** Is a soft light that follows the mouse across the departure rows
+(like the episode cards' radial light, `html.v4-tilt` in tools/v4_polish.py)
+a good idea, on top of the 4% wash, orange bar and glider flight?
+**Answered: No.** The rows already answer the pointer three times; the one
+answer that matters is the orange bar at the real dates, and a moving light
+pulls the eye off it. The shine suits pictures (episode cards, tiles), not
+wide rows of text and prices, where it reads as a smear over the facts. Phone
+and reduced motion would not see it anyway. **Recommended** keeping the rows
+as built; if the section needs more life, make the existing wash a touch
+stronger rather than adding a fourth effect.
+
 ## 24 Oct 2026: whole-site study for Awwwards, from the destinations
 
 **Asked.** Study the whole v4 site against Awwwards (Design 40, Usability 30,

@@ -1,5 +1,13 @@
 # Designer E, "Pull Back to the Route": notebook (newest first)
 
+## 25 Oct 2026: a cursor shine on the departure rows?
+
+**Asked.** Should the departure rows (option A, built) get a soft light that follows the mouse, like the episode cards' `v4-tilt` light, on top of the 4% wash, the orange bar and the glider flight.
+
+**Answered: No.** The row already answers three ways, and the glider flying along the line is the move that tells "this row is these dates". A light sliding sideways under the cursor would be a second thing travelling sideways at the same moment and pull the eye off the glider. The card light suits photo cards; these rows are a timetable.
+
+**Fallback offered (not recommended).** If the owner wants the link to the cards, swap the flat wash for the light, never add it: white at 6%, about 240px wide, full row height, following the cursor left to right only, mouse only (`hover: hover` and `pointer: fine`). Phone, keyboard focus and reduced motion keep the flat 4% wash.
+
 ## 24 Oct 2026: whole-site study, v4 at 48bfc475 against v4 now
 
 **Asked.** How the whole site can reach Awwwards level, and how far v4 has come since 48bfc475, from my angle (scroll as story, hand-offs, navigation).

@@ -1,5 +1,17 @@
 # Designer D, "Final Cut": notebook (newest first)
 
+## 25 Oct 2026: a cursor shine on the departure rows?
+
+**Asked.** Is a soft light that follows the mouse across the departure rows
+(like the episode cards' radial light, `html.v4-tilt`) a good idea, on top of
+the 4% wash, the orange bar and the glider flight? **Answered: No.** Why: the
+row already answers hover three ways; a fourth thing moving splits the eye from
+the glider, the one thing that should travel. The card shine is light on a
+picture; on rows of text and dates it reads as a smudge. **Fallback if the
+owner still wants it:** white only (no orange), 6% at the centre, a 220 px
+circle, inside the hovered row only, 0.3 s fade, mouse only; none on phone,
+reduced motion or no JS.
+
 ## 24 Oct 2026: whole-site study to Awwwards standard
 
 **Asked.** Study the whole v4 site (home, expeditions, Kenya, Panchgani,
