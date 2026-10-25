@@ -29,15 +29,35 @@ the owner's current queue and what the last session learnt doing it.
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
 
-## Where chat 13 is (25 Oct)
-- **The podcast section is in the home page:** `tools/v4_home_listen.py` copies PART 2 of
-  `samples/listen-b/index.html` into `prototypes/v4/index.html` in place of #listen and #map (run it by hand
-  after a change to the sample, then commit both). `tools/v4_polish.py` no longer leans the home rail's cards.
-  The sample sets `--hf`/`--nf` once (styles.css still sizes the old plate's words by them; without it the
-  switch dry run fails its token check). The globe box keeps `id="map"`, so old #map links still land.
-  Play still needs checking on the owner's device.
-- **Open:** the call band under the departures; the three designers' one shared proposal is in
-  docs/designers/direction.md. Waiting on the owner.
+## Chat 14 starts here (25 Oct): put the poster strip (listen-c) into the home page when the owner says yes
+Chat 13 (all pushed, last 43eefad8, gates PASS):
+- **The podcast section is in the home page** (`tools/v4_home_listen.py` copies PART 2 of
+  `samples/listen-b/index.html` in place of #listen and #map; run it by hand after a change to the sample, then
+  commit both). `tools/v4_polish.py` no longer leans the home rail's cards. The sample sets `--hf`/`--nf` once
+  (styles.css still sizes the old plate's words by them; without it the switch dry run fails its token check).
+  The globe box keeps `id="map"`. Play still needs checking on the owner's device.
+- **The call band stays and arrives** (samples/departures, copied by tools/v4_home_departures.py): the glow opens
+  in the middle and settles top-left, the line draws, the words rise; words on the rows' edge, buttons level with
+  the title, an --sp-4 gap; on a phone the season line runs to a ring at the call.
+- **The poster strip, preview only:** `samples/listen-c/index.html` (live at
+  https://paraglidingatlas.com/prototypes/v4/samples/listen-c/), listen-b with the "More conversations" cards as
+  posters again: each guest's own art in colour (a step darker at rest), hook and name in live type on the art
+  (no plate image, no compass), a deep fade into the page dark, the lean with a soft light, a line per card to
+  its real length with chapter ticks, arrows in the heading row, a progress line under the strip, the strip
+  drifting on its own again (v2-immersive.js data-auto), faint contour lines (img/contours.svg) on the red above
+  each head, lined up with one map behind the strip that fades out into the section; the lead trip's pictures in
+  colour; "15 guests, newest first". The owner tried and rejected a small compass dial and a big compass rose
+  ("looks odd"). Chat 13's generator was in its scratchpad (gone); the sample itself is the source now.
+  **Next:** when the owner says yes, copy listen-c into the home page (point tools/v4_home_listen.py at
+  samples/listen-c, rerun, build, gates).
+- **One width across the site** (owner: "go with 1"): above 1440px every page uses the opening's 72px edge
+  (src/v2.css "ONE WIDTH ACROSS THE SITE"). Up to 1440px nothing changed. Left as designed: the knowledge base
+  climb's staircase, the partners journey's spine, full-bleed photos, maps and rails. The library page follows
+  through the shared stylesheet only (its files are the other chat's; nothing in them was edited).
+- **Designers:** their definitions now carry the owner's "professional standard" (homework first, no rule
+  stretched past its section, weigh immersion before simplifying, own the whole site).
+- **Build note:** a change to src/v2.css changes the ?v= stamp on every page; build once, commit the rebuilt
+  pages, then the clean double rebuild.
 
 ## Chat 13 starts here (25 Oct): build the podcast section into the v4 home page
 Chat 12 did the seven steps (below) and then, with the owner and the three designers, designed the
