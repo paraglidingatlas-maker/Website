@@ -1,5 +1,13 @@
 # Designer E, "Pull Back to the Route": notebook (newest first)
 
+## 25 Oct 2026: overlay brainstorm for the listen-c posters (review only)
+
+**Asked.** The owner on listen-c (posters back: live type on colour art, dark foot gradient, lean and light, length line): "how will overlays affect the look, what kind, types etc, just brainstorm."
+
+**Proposed.** (1) Orange ember tint pulling the red toward the site orange; (2) the site's topo contours as hairlines on the art, drifting slower than the photo as the strip moves; (3) film grain; (4) the foot gradient into the page ground, not slate; (5) one light sweep as each card enters; (6) the title in outline that fills on hover. Flag: the foot gradient reads blue-grey, not the page ground.
+
+**Picked (2) contours,** because they give depth through parallax and say "place" without words, tying the cards to the topo ground below the section.
+
 ## 25 Oct 2026: the "More conversations" strip, awwwards level (review only)
 
 **Asked.** The owner, on the home rail in #listen (built today from listen-b): "I really like the previous design", wants agency-quality cards and strip. Compared fa877a47 (poster cards: red guest art, compass stamp, hook and name plate on the art, lean with a soft light) with today's grey portrait cards, title and meta under the photo, boxed arrows.

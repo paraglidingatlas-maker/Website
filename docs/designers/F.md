@@ -1,5 +1,10 @@
 # Designer F, "Fly the Season": notebook (newest first)
 
+## 25 Oct 2026: overlays on the listen-c posters (brainstorm, nothing built)
+**Asked.** The owner: "how will overlays affect the look, what kind, types etc". Looked at `samples/listen-c/` at 1440 and 390 (scratchpad `f-rail/c-*.png`): the foot gradient reads navy, not the page ground; hover change is barely visible.
+**Ideas.** (1) foot fade into the page's own ground; (2) faint site topo lines in the red ground; (3) fine static grain over all 15; (4) duotone at rest, colour on hover; (5) hover light tinted orange; (6) the pin's real place on the art: lat, lon and bearing from globe-episodes.js (e.g. Ogden 52.5 N 1.9 W), "Find it on the globe" on hover.
+**Picked.** (6), on top of (1): it ties the strip to the globe above with real data, the site's "where" thread; risk is small type on red, so it sits on the fade.
+
 ## 25 Oct 2026: the "More conversations" strip, award level (advice, nothing built)
 **Asked.** The owner likes the previous home rail (fa877a47: red poster art, hook and name on the plate, lean with a soft light) more than today's calm grey cards; what can make the cards and the strip agency quality. Shots: scratchpad `f-rail/` (old and current, 1440 and 390, hover).
 **Found.** The calm look came from my own chat 12 refinement ("calm cards ... no compass, plate, tilt or glint", to make orange the only colour). What I missed: the red ground and the plate are the podcast's own cover art, its identity and the strip's warmth; grey cards read as a stock gallery after the lit Kenya stage. Kept from today: live, readable series, number and length; no baked compass or tiny baked text.

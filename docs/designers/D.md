@@ -1,5 +1,19 @@
 # Designer D, "Final Cut": notebook (newest first)
 
+## 25 Oct 2026: overlays on the listen-c poster cards (brainstorm)
+
+**Asked.** "how will overlays affect the look, what kind, types etc".
+**Found** in listen-c: the backdrop is still raw YouTube red, the foot
+gradient is light so the plate type sits on shirts.
+**Offered.** (1) Ember regrade of the red backdrop to the one orange,
+darker at the edges, faces untouched. (2) Deeper foot gradient into the
+ground colour. (3) Fine film grain. (4) Faint contour or map lines of the
+guest's place. (5) Hover light following the mouse, the plate's line
+drawing in. (6) Vignette with an inner hairline.
+**Recommended** (1), with (2) under it. Why: it fixes the second warm
+colour without losing the warmth; the others add things before the base
+is right.
+
 ## 25 Oct 2026: the "More conversations" strip, agency quality
 
 **Asked.** The owner "really like[s] the previous design" (poster cards at
