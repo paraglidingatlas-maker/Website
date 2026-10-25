@@ -1,5 +1,15 @@
 # Designer E, "Pull Back to the Route": notebook (newest first)
 
+## 25 Oct 2026: "something is missing" in B2, "Hear Where We Fly" (review only)
+
+**Asked.** The owner, on refined B (`prototypes/v4/samples/listen-b/`): "There's something missing. Is it the size, the feel, the appearance, what?" Judged in the whole page flow at 1440 and 390 (opening, departures, call band, this section).
+
+**Found: a hero moment, which is a scale problem.** The page goes cinema (KENYA about 260 px tall over a full photo), then timetable, then this section opens at the same size as the call band above it (a 36 px heading, a paragraph, a search box). Its only big thing, the globe, sits about 1000 px down, after the cards. So it reads as one more block, not a new chapter, and the page never climbs back up after the opening.
+
+**Proposed.** Make the globe the section's first screen: full width, about 85 to 90 vh (phone: full width, ring inside 358 px), "Hear Where We Fly" set big over its top (about 120 to 140 px desktop, 52 px phone, one step under the opening's name), the place rail sitting on the globe's lower edge, search moved under the rail. The move: as it scrolls in, the globe turns once to Kenya, the route pulls back to the planet. Smaller: (1) nothing plays; a podcast section with no visible "listen" on a card; (2) about 190 px of dead dark between the call band and the kicker, plus the band's empty right half; tighten so the globe follows the call.
+
+**Recommended the globe-first hero,** because the opening's grammar is one huge thing per screen and this section breaks it; one big round world answers "where we fly" without words.
+
 ## 25 Oct 2026: refine option B, "Hear Where We Fly" (review only)
 
 **Asked.** The owner chose B for the home podcast section and asked whether it can be refined "keeping awwwards in mind". Review `prototypes/v4/samples/listen-b/`, do not build. Known faults: trip cards reuse the opening's photos; a compass rose over every card and red YouTube art fight the orange; the globe ring is cut off on a 390 phone; "More conversations" stands sideways; "most streamed" has no source.
