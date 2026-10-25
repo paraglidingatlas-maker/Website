@@ -1,5 +1,13 @@
 # Designer E, "Pull Back to the Route": notebook (newest first)
 
+## 25 Oct 2026: motion and flow for B with a lead trip (review only)
+
+**Asked.** The owner chose the lead block for B (`prototypes/v4/samples/listen-b/`): the trip lit in the departures leads large (Kenya by default), the others small; the episode plays in place with Trim's chapter line (real length, real chapter starts from episode-meta.json); the globe turns to the lead trip and the orange route lights to it. My globe-led option was not chosen. Advise motion and flow only, do not build.
+
+**Proposed.** Turn: one move, 0.9 s (`--dur-l`), ease in-out, then the route draws in season order from Kenya to the picked trip in 0.5 s (`--dur-m`, `--ease`); the rest of the route stays dim; picking an earlier trip pulls the lit part back; a new pick mid-move retargets, never queues. No idle spin. While audio plays only the playhead moves (linear, real time); chapter jumps cut, no glide; picking another trip pauses and keeps the place. Flow: no entrance motion; the departures' lit row already picks the lead, so the orange hands over; cut the dead dark after the call band to the normal section gap. 1440: lead block and globe side by side on one screen, the small trips under the lead, so the answer is seen when you pick. 390: lead, small trips as a swipe row, globe under; the globe makes its turn as it scrolls into view. Reduced motion: cut to the place, route shown lit; the playhead still moves. No JS: Kenya lead as plain HTML, play is a link to the episode page, the chapter line static with ticks linking to the chapters, no globe box. Data: the episode JSON has only "52 min", so the exact length comes from the player once loaded; trips with no episode (Kazakhstan, Peru) show no play button, not an invented one.
+
+**Strongest point.** The route lit in season order up to the picked trip: it tells "this trip is stop N of one season" without words, the same story the opening's season line tells, so it must sit on the same screen as the pick.
+
 ## 25 Oct 2026: "something is missing" in B2, "Hear Where We Fly" (review only)
 
 **Asked.** The owner, on refined B (`prototypes/v4/samples/listen-b/`): "There's something missing. Is it the size, the feel, the appearance, what?" Judged in the whole page flow at 1440 and 390 (opening, departures, call band, this section).
