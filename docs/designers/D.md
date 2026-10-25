@@ -1,5 +1,20 @@
 # Designer D, "Final Cut": notebook (newest first)
 
+## 25 Oct 2026: an adventure emblem on the listen-c posters (brainstorm)
+
+**Asked.** "the overlay of some shape like I had, a compass or something,
+which invokes a sense of adventure." **Found.** The old plate.webp compass
+was a distressed half-card rose in slate grey, laid over the face on every
+card at the same angle: muddy on red, a watermark, it said nothing.
+globe-episodes.js holds each guest's bearing and range from Oslo.
+**Offered.** (1) A true bearing rose, small, top corner, needle at the
+guest's real bearing, turns to it on hover. (2) A large rose ring cropped
+off the card's corner, behind the plate. (3) A graticule with the
+coordinates set small. (4) A wing arc in place of the plate's rule.
+(5) A route line from Oslo bending off the card's edge.
+**Recommended** (1). Why: it brings the compass back as true data, not
+decoration, and it keeps off the face.
+
 ## 25 Oct 2026: overlays on the listen-c poster cards (brainstorm)
 
 **Asked.** "how will overlays affect the look, what kind, types etc".

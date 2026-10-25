@@ -1,5 +1,11 @@
 # Designer F, "Fly the Season": notebook (newest first)
 
+## 25 Oct 2026: a compass or emblem on the listen-c posters (brainstorm, nothing built)
+**Asked.** The owner wants a shape "like I had, a compass or something, which invokes a sense of adventure".
+**Old compass, honestly.** Baked into plate.webp: large, grey on red so muddy, across the faces, the same on all 15 (wallpaper), it said nothing true, and it could not move.
+**Ideas.** (1) bearing compass: thin ring in the top corner, needle at the episode's real bearing from the Oslo studio (globe-episodes.js `brg`, `card`, `km`; globe.js already swings an index this way), readout "229° SW, 1,133 km", needle swings on hover; (2) the wing arc of the Atlas mark over the head; (3) XC turnpoint cylinder, dashed ring with a cross; (4) contour rings behind the head; (5) curved graticule in the red ground.
+**Picked.** (1): the same adventure sign, but true and different on each card, and it ties the strip to the globe above.
+
 ## 25 Oct 2026: overlays on the listen-c posters (brainstorm, nothing built)
 **Asked.** The owner: "how will overlays affect the look, what kind, types etc". Looked at `samples/listen-c/` at 1440 and 390 (scratchpad `f-rail/c-*.png`): the foot gradient reads navy, not the page ground; hover change is barely visible.
 **Ideas.** (1) foot fade into the page's own ground; (2) faint site topo lines in the red ground; (3) fine static grain over all 15; (4) duotone at rest, colour on hover; (5) hover light tinted orange; (6) the pin's real place on the art: lat, lon and bearing from globe-episodes.js (e.g. Ogden 52.5 N 1.9 W), "Find it on the globe" on hover.

@@ -1,5 +1,17 @@
 # Designer E, "Pull Back to the Route": notebook (newest first)
 
+## 25 Oct 2026: a compass-like emblem on the listen-c posters (review only)
+
+**Asked.** The owner wants a shape overlay "like I had, a compass or something", for a sense of adventure. Old plate (assets/podcast/plate.webp): a large distressed compass rose at eye level, identical on every card.
+
+**Old fault.** Same big rose, same place, across every face: it read as a stamp or watermark, the grunge texture was clip art next to the site's fine lines, and it said nothing about the episode.
+
+**Proposed.** (1) Bearing ring, cropped off the top right corner, its orange needle pointing to the guest's place from the lead trip, swinging as the strip pans; (2) coordinates set up the card edge; (3) the logo's wing arc over the head, drawn on hover; (4) contour lines with a summit mark; (5) a dotted flight track drawn on scroll, only from the owner's real tracks; (6) map graticule corner ticks.
+
+**Does a shape help?** Yes, if it carries a real fact (the bearing to the guest's place) and moves with the strip; a fixed decorative stamp would not.
+
+**Picked (1)** because it keeps the compass the owner liked but makes it true to each card and gives it a move the visitor drives; it needs a place per guest (globe-episodes.js), else `[to supply]`.
+
 ## 25 Oct 2026: overlay brainstorm for the listen-c posters (review only)
 
 **Asked.** The owner on listen-c (posters back: live type on colour art, dark foot gradient, lean and light, length line): "how will overlays affect the look, what kind, types etc, just brainstorm."
