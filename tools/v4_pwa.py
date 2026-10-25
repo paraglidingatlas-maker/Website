@@ -36,12 +36,20 @@ import os
 import re
 import subprocess
 import sys
+from datetime import date
 
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V4 = os.path.join(ROOT, "prototypes", "v4")
 BG = (20, 21, 25)                     # --bg
+# The footer's year (owner, 25 Oct 2026: the year shown must change by itself each new year). Every page's
+# "Paragliding Atlas 2026" is marked here, written with the build's year, and pwa.js sets the visitor's year.
+YEAR = re.compile(r"<span>Paragliding Atlas (?:<span data-year>)?(\d{4})(?:</span>)?</span>")
+
+
+def year(m):
+    return "<span>Paragliding Atlas <span data-year>%d</span></span>" % max(int(m.group(1)), date.today().year)
 LOGO = os.path.join(ROOT, "assets", "logo", "atlas-favicon-source.png")
 
 
@@ -143,6 +151,11 @@ self.addEventListener('fetch', (e) => {
 
 PWA_JS = r"""/* Paragliding Atlas, v4 app: registers the offline rules (sw.js) and offers
    "Install the app" in the footer. Written by tools/v4_pwa.py. */
+/* the footer's year follows the visitor's calendar, so it turns over on 1 January by itself */
+(function () {
+  var y = String(new Date().getFullYear());
+  [].forEach.call(document.querySelectorAll('[data-year]'), function (e) { if (e.textContent < y) e.textContent = y; });
+})();
 (function () {
   'use strict';
   var root = document.currentScript ? document.currentScript.src.replace(/pwa\.js.*$/, '') : '';
@@ -324,6 +337,7 @@ def main():
                 '<link rel="apple-touch-icon" sizes="180x180" href="%simg/app-180.png">\n'
                 '<script defer src="%spwa.js"></script><!-- /app -->\n' % (up, up, up))
         s = s.replace("</head>", tags + "</head>", 1)
+        s = YEAR.sub(year, s)
         open(fp, "w", encoding="utf-8").write(s)
         n += 1
     print("v4 app: manifest, icons, sw.js (%s), offline page, %d pages" % (h.hexdigest()[:10], n))
