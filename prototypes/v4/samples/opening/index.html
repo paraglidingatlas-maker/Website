@@ -111,7 +111,7 @@ a:focus-visible,button:focus-visible{outline:1px solid var(--orange);outline-off
     linear-gradient(0deg,var(--bg) 0,color-mix(in srgb,var(--bg) 82%,transparent) 22%,transparent 58%),
     linear-gradient(90deg,color-mix(in srgb,var(--bg) 70%,transparent) 0,transparent 55%),
     radial-gradient(90% 70% at 60% 30%,#a9adb5,#7b8089)}
-.caption{position:absolute;z-index:10;right:var(--gutter);top:clamp(110px,15vh,150px);writing-mode:vertical-rl;font:500 .68rem/1 var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:color-mix(in srgb,var(--white) 60%,transparent);display:flex;align-items:center;gap:.9rem}
+.caption{position:absolute;z-index:10;right:var(--gutter);top:clamp(110px,15vh,150px);writing-mode:vertical-rl;font:500 .72rem/1 var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:color-mix(in srgb,var(--white) 60%,transparent);display:flex;align-items:center;gap:.9rem}
 .caption::after{content:"";width:1px;height:56px;background:var(--line)}
 
 /* ---------- the dock: headline, the trip readout, the route ---------- */
@@ -122,13 +122,13 @@ h1{font:700 clamp(2rem,3.2vw,3rem)/1.04 var(--font-display);letter-spacing:-.02e
 .btn-solid{display:inline-block;padding:1rem 1.7rem;font:600 .98rem/1 var(--font-body);white-space:nowrap}
 .btn-lines{padding:.95rem .2rem;font:500 1rem/1 var(--font-body);border-top:1px solid var(--line);border-bottom:1px solid var(--line);transition:border-color .3s var(--ease)}
 .btn-lines:hover{border-color:var(--orange)}
-.hint{display:none;margin:0;font:500 .74rem/1.35 var(--font-body);letter-spacing:.04em;color:var(--gray-light);flex-direction:column;align-items:flex-start;gap:.5rem}
+.hint{display:none;margin:0;font:500 .78rem/1.35 var(--font-body);letter-spacing:.04em;color:var(--gray-light);flex-direction:column;align-items:flex-start;gap:.5rem}
 .js .hint{display:flex}
 .hint-w{display:none}
 .gl .hint-w{display:inline}
 .keys{display:none;align-items:center;gap:4px}
 .fine .keys{display:inline-flex}
-.keys kbd{display:grid;place-items:center;width:20px;height:18px;border:1px solid var(--line-hi);border-radius:3px;font:600 .66rem/1 var(--font-body);color:var(--white)}
+.keys kbd{display:grid;place-items:center;width:20px;height:18px;border:1px solid var(--line-hi);border-radius:3px;font:600 .7rem/1 var(--font-body);color:var(--white)}
 .keys span{margin-left:.3rem}
 
 /* the readout: one trip at a time, its real figures */
@@ -147,10 +147,10 @@ h1{font:700 clamp(2rem,3.2vw,3rem)/1.04 var(--font-display);letter-spacing:-.02e
 .t-name h2{font:600 1.22rem/1.12 var(--font-display);letter-spacing:-.01em;margin:0 0 .4rem}
 .t-name p{margin:0;font:500 .76rem/1.45 var(--font-body);color:var(--gray-light)}
 .t-name .co{display:block;color:var(--gray);letter-spacing:.04em;font-variant-numeric:tabular-nums}
-.t-name .credit{display:block;margin-top:.35rem;font:400 .68rem/1.35 var(--font-body);color:var(--gray)}
+.t-name .credit{display:block;margin-top:.35rem;font:400 .72rem/1.35 var(--font-body);color:var(--gray)}
 .t-name .credit a{color:inherit;text-underline-offset:2px}
 .t-name .credit a:hover{color:var(--white)}
-.trip dt{font:600 .62rem/1.3 var(--font-body);letter-spacing:.17em;text-transform:uppercase;color:var(--gray-light);margin:0 0 .5rem}
+.trip dt{font:600 .7rem/1.3 var(--font-body);letter-spacing:.17em;text-transform:uppercase;color:var(--gray-light);margin:0 0 .5rem}
 .trip dd{margin:0;font:500 .9rem/1.4 var(--font-body);color:var(--white)}
 .trip dd b{display:inline-block;font:700 1.6rem/1 var(--font-display);letter-spacing:-.015em;font-variant-numeric:tabular-nums}
 .trip dd small.u{display:inline;margin-left:.35rem;font-size:.82rem;color:var(--gray-light)}
@@ -169,7 +169,7 @@ h1{font:700 clamp(2rem,3.2vw,3rem)/1.04 var(--font-display);letter-spacing:-.02e
 .auto .deck::before{transition:height .3s var(--ease),top .3s var(--ease)}
 .auto .deck:has(.skip:hover)::before{height:2px;top:-1.5px}
 /* play and pause, at the end of the line: for visitors who want to stay on a place */
-.play{display:none;position:absolute;right:-10px;top:-15px;width:30px;height:30px;padding:0;border:0;border-radius:50%;background:none;place-items:center;cursor:pointer;
+.play{display:none;position:absolute;right:-17px;top:-22px;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:none;place-items:center;cursor:pointer;
   color:color-mix(in srgb,var(--white) 34%,transparent);transition:color .3s var(--ease),transform .3s var(--ease)}
 .auto .play{display:grid}
 /* the line and its track stop short of the button, so it stands in a little space of its own */
@@ -204,7 +204,7 @@ h1{font:700 clamp(2rem,3.2vw,3rem)/1.04 var(--font-display);letter-spacing:-.02e
 .rt-bar{position:absolute;top:39px;height:3px;background:color-mix(in srgb,var(--white) 62%,transparent);transition:background .4s var(--ease)}
 .rt-bar.plan{top:38px;height:5px;background:none;border:1px dashed color-mix(in srgb,var(--white) 45%,transparent)}
 .rt-track{position:absolute;left:var(--tl,0);top:39.5px;height:2px;width:var(--tw,0);background:var(--orange)}
-.rt-m{position:absolute;left:0;right:calc((1 - var(--s)) * 100%);top:62px;display:grid;grid-template-columns:repeat(14,1fr);margin:0;padding:0;list-style:none;font:500 .62rem/1 var(--font-body);letter-spacing:.08em;color:var(--gray);text-transform:uppercase}
+.rt-m{position:absolute;left:0;right:calc((1 - var(--s)) * 100%);top:62px;display:grid;grid-template-columns:repeat(14,1fr);margin:0;padding:0;list-style:none;font:500 .7rem/1 var(--font-body);letter-spacing:.08em;color:var(--gray);text-transform:uppercase}
 .rt-m li{padding-left:5px;white-space:nowrap}
 .rt-m em{font-style:normal;color:var(--gray-light)}
 .tp{position:absolute;top:0;left:var(--x);width:7.5rem;height:58px;margin-left:-3.75rem;cursor:pointer;display:block;-webkit-tap-highlight-color:transparent}
@@ -307,17 +307,22 @@ html:not(.js) .swipe{display:none!important}
   .veil{background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 70%,transparent) 0,transparent 16%),
     linear-gradient(0deg,var(--bg) 0,var(--bg) 7%,color-mix(in srgb,var(--bg) 72%,transparent) 19%,transparent 46%),
     radial-gradient(90% 70% at 55% 35%,#a9adb5,#7b8089)}
-  .dock{position:relative;left:auto;right:auto;bottom:auto;margin:calc(64px + 90vw) 16px 0;padding-bottom:32px;gap:0}
+  /* on a phone the dock follows the photo: it stays as it is while scrolled (no fade), and the headline comes
+     up under the route so it and the trip's button are on the first screen */
+  .dock{position:relative;left:auto;right:auto;bottom:auto;margin:calc(64px + 74vw) 16px 0;padding-bottom:32px;gap:0;opacity:1}
+  .copy{display:contents}
+  h1{order:3;margin:1rem 0 0}
+  .kicker{order:5;margin:var(--sp-4) 0 0}
+  .actions{order:5;margin-top:.9rem}
   .route{order:1;height:70px}
   .rt-m{top:58px}
   .keys{display:none!important}
   .pp{display:inline}
   .trip .f-from small{display:none}
-  .swipe{order:2;display:block;margin:.1rem 0 0;font:500 .72rem/1.4 var(--font-body);color:var(--gray-light)}
-  .deck{order:3;margin-top:1rem;padding-top:12px}
-  .copy{order:4;margin-top:var(--sp-4)}
+  .swipe{order:2;display:block;margin:.1rem 0 0;font:500 .78rem/1.4 var(--font-body);color:var(--gray-light)}
+  .deck{order:4;margin-top:1rem;padding-top:12px}
   .tp{width:4.6rem;margin-left:-2.3rem;height:58px}
-  .tp-n{font-size:.62rem;letter-spacing:.1em}
+  .tp-n{font-size:.7rem;letter-spacing:.08em}
   .tp.end{margin-left:-4.1rem}
   .tp.end .tp-n{right:.5rem}
   .tp.end .tp-r{left:calc(100% - .5rem)}
@@ -326,10 +331,10 @@ html:not(.js) .swipe{display:none!important}
   .tp.lt-m{margin-left:-1rem}   /* Kazakhstan reads to the right of its marker, clear of India's */
   .tp.lt-m .tp-n{text-align:left;left:.5rem;right:auto;translate:none;margin-left:-4px}
   .tp.lt-m .tp-r{left:1rem}
-  .rt-m{font-size:.56rem;letter-spacing:.02em}
+  .rt-m{font-size:.7rem;letter-spacing:0}
   .rt-m li{padding-left:3px}
   .rt-m .l,.rt-m em{display:none}
-  .trip{grid-template-columns:1fr 1fr 1fr;gap:14px 14px}
+  .trip{grid-template-columns:1fr 1fr 1fr;gap:10px 14px;align-content:start}
   .t-name{grid-column:1/-1}
   .t-name h2{font-size:1.25rem;margin-bottom:.2rem}
   .f-dates{grid-column:1/-1}
@@ -343,17 +348,18 @@ html:not(.js) .swipe{display:none!important}
   .t-name .co::before{content:" · "}
   .f-dates{order:1}.f-len{order:2}.f-launch{order:3}.f-from{order:4}
   .rt-track{top:39px}
-  .f-fly{grid-column:1/-1;order:5}
+  .f-fly{grid-column:1/-1;order:7;margin-top:.5rem}   /* under the trip's button, so the button is on the first screen */
   .t-go{order:6}
   .t-go{grid-column:1/-1;justify-items:start;text-align:left;grid-template-columns:auto 1fr;align-items:center;gap:.4rem 1.1rem;margin-top:.3rem}
   .trip dd b{font-size:1.3rem}
   .trip dd small.u{font-size:.76rem;margin-left:.25rem}
   .hint{margin-top:.2rem}
-  .kicker{letter-spacing:.12em;font-size:.66rem}
-  h1{font-size:clamp(1.85rem,8.4vw,2.4rem)}
+  .kicker{letter-spacing:.12em;font-size:.72rem}
+  h1{font-size:clamp(1.5rem,6.6vw,2.1rem)}
   .btn-solid,.btn-lines{font-size:.95rem}
   .actions{gap:.9rem 1.2rem}
 }
+@media (max-width:359px){.tp-n{letter-spacing:0}}
 @media (max-width:860px) and (min-width:560px){
   .trip{grid-template-columns:repeat(4,1fr)}
   .f-dates{grid-column:span 2}
