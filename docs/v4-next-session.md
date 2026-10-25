@@ -29,6 +29,16 @@ the owner's current queue and what the last session learnt doing it.
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
 
+## Where chat 13 is (25 Oct)
+- **The podcast section is in the home page:** `tools/v4_home_listen.py` copies PART 2 of
+  `samples/listen-b/index.html` into `prototypes/v4/index.html` in place of #listen and #map (run it by hand
+  after a change to the sample, then commit both). `tools/v4_polish.py` no longer leans the home rail's cards.
+  The sample sets `--hf`/`--nf` once (styles.css still sizes the old plate's words by them; without it the
+  switch dry run fails its token check). The globe box keeps `id="map"`, so old #map links still land.
+  Play still needs checking on the owner's device.
+- **Open:** the call band under the departures; the three designers' one shared proposal is in
+  docs/designers/direction.md. Waiting on the owner.
+
 ## Chat 13 starts here (25 Oct): build the podcast section into the v4 home page
 Chat 12 did the seven steps (below) and then, with the owner and the three designers, designed the
 section after the departures. The owner's choices, in order (also in docs/designers/direction.md):

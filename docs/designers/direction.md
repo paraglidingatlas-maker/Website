@@ -24,6 +24,14 @@ and a readout under the photo. The owner said "do it" to building it into the
 v4 home page (chat 10's job).
 
 ## Decision log (newest first)
+- 25 Oct (chat 13): the owner said "ok" to building listen-b into the home page; built in place of #listen
+  and #map by tools/v4_home_listen.py. Then asked all three about the step from the departures into the call
+  band, "the only one which hasn't been updated as per the new site rules". All three agree: no box, no
+  orange glow or fading orange line; the call becomes the last row on the departures grid (words under
+  "Expedition", Book a Call and WhatsApp under Status, level with the title), one hairline above it, a
+  token gap (--sp-3 or --sp-4); on a phone the orange season line runs past Peru to the call. They differ only
+  on the hairline (plain, D; with the heads' short orange lead, F; Peru's own rule, E) and on whether the other
+  four places follow. Waiting on the owner.
 - 25 Oct (chat 12): option B's missing piece is scale (all three). The owner chose option 1, the lit trip
   leads as a large block, with two of the chat's ideas: play the episode in place with Trim's chapter line
   under it, and the globe answers the lead trip (turns to it, the route lit to it). Not the footage behind
@@ -79,5 +87,6 @@ v4 home page (chat 10's job).
 - Parked by the owner: the Encarta concept (do not raise).
 
 ## Open now
+- 25 Oct (chat 13): the home call band under the departures (see the log). Waiting on the owner.
 - Nothing open in design. Chat 10 builds the opening (with E's cloud move) into
   the v4 home page.
