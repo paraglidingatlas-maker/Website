@@ -24,6 +24,13 @@ and a readout under the photo. The owner said "do it" to building it into the
 v4 home page (chat 10's job).
 
 ## Decision log (newest first)
+- 25 Oct (chat 13): one width across the site, "go with 1": on screens wider than 1440px every page uses
+  the opening's margin, 72px from each screen edge (src/v2.css "ONE WIDTH ACROSS THE SITE": --gutter 72px,
+  --measure 100% minus 144px, plus overrides for the pages with their own containers: partners, the record,
+  the knowledge base hub and topic pages, episodes). Up to 1440px nothing changes. Left as designed: the
+  knowledge base climb's staircase, the partners journey's spine, full-bleed photos, maps and rails.
+  The listen-c preview: the posters back with faint contour lines that run on into the section and fade;
+  the strip drifts on its own again. No compass (the owner: the dial and the rose "look odd").
 - 25 Oct (chat 13): the call band kept and made to arrive (glow opens in the middle, settles top-left; words
   rise), built and pushed. Then the owner on the "More conversations" strip: "I really like the previous
   design ... agency quality". All three now say bring the poster back (the grey calm look was their own

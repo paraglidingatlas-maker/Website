@@ -2914,6 +2914,26 @@ html .tm-cards{left:var(--edge-x);width:min(26rem,calc(100% - 2 * var(--edge-x))
    anything a script times itself (an inline transition), the SVG drawings, the listening bar's timed
    fills and the trip photographs' slow linear zooms. */
 :where(*):not(svg,svg *,[style*="transition"],.v2-fb-shot img,.khero-slide img,.kfly-slide img,.v4-ls-draw,.v4-ls-fill){transition-timing-function:var(--ease) !important}
+/* ===== ONE WIDTH ACROSS THE SITE (owner, 25 Oct 2026: "go with 1") =====
+   On a wide screen every page uses the opening's margin: 72px from each screen edge, the same as the
+   opening and the departures, instead of a 1300px column in the middle. The column, the gutter and the
+   edge (--measure, --gutter, --edge-x) are the site's own, so the menu, every section, the footer and the
+   rails follow. Up to 1440px wide (laptops, tablets, phones) nothing changes. Reading text keeps its own
+   measure (its ch widths), so lines never run the full width. */
+@media (min-width:1441px){
+  :root{--gutter:72px;--measure:calc(100% - 144px)}
+  .kit-band{padding-left:0;padding-right:0}
+  /* pages with their own containers, brought onto the same 72px edge */
+  html body :is(.pw-air-copy,.pw-hero-copy,.pw-journey,.pw-rec-in,.pw-reel-h,.pw-stats){padding-left:0;padding-right:0}
+  html body .wr-in{--wr-x:0px}
+  html body .v4e-band{padding-left:0;padding-right:0}
+  html body :is(.kb-cat-grid,.k-head,.faq,.cards,.band,.band-draw,.ep-grid,.ep-empty){max-width:none}
+  html body .v4e-in{max-width:var(--measure)}
+  html body .k-sec{padding-left:var(--gutter);padding-right:var(--gutter)}
+  html body .k-hero-copy{padding-left:var(--gutter);padding-right:var(--gutter)}
+  html body .clb-hero-in{max-width:var(--measure);margin-left:auto;margin-right:auto;padding-left:0}
+  html body .cd-wrap{max-width:var(--measure);padding-left:0;padding-right:0}
+}
 /* app:start */
 /* ===== The app (tools/v4_pwa.py) ===== */
 .pwa-install{order:-1;background:none;border:1px solid var(--live);color:var(--white);
