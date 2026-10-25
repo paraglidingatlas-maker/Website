@@ -556,7 +556,7 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
 </section>
 <!-- /v4-home-departures -->
 
-<!-- ======================= PART 2: HEAR WHERE WE FLY (preview, listen-b, B2) ======================= -->
+<!-- ======================= PART 2: HEAR WHERE WE FLY (preview, listen-b, B4) ======================= -->
 <!-- One section in place of #listen and #map: head and search, the rail (our trip places first,
      in season order, under one heading each, then more conversations, newest first), the globe
      under it with the trip route, one quiet line of platforms. Page-only CSS and JS; globe.js is
@@ -688,30 +688,42 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
   .lb .ep-art img,.lb-cap,.lb-see,.lb-see span,.lb-find{transition:none}
 }
 
-/* ===== B3: the lit trip leads. The lead (place, dates, picture, play, chapter line, episode)
-   on the left, the globe answering it on the right, the other trips small under the lead.
+/* ===== B4: the globe leads the stage. Left, 5 of 12: the lead trip (place, dates, a small
+   picture with play, the episode, the chapter line, See the trip), then the other trips as
+   compact rows. Right, 7 of 12: the globe, its ring about the column's width, not sticky.
    A radio group holds the lead, so picking works without JavaScript; the switch is a cut. ===== */
 #listen.lb{padding-top:0;border-top:0}
+.lb{--lb-on:flex}
 .lb .v2-listen-head{margin-bottom:0}
 .lb .kit-intro{max-width:none}
-.lb-stage{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:var(--sp-5);align-items:start;margin-top:var(--sp-4)}
+.lb-stage{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:var(--sp-5);align-items:stretch;margin-top:var(--sp-4)}
+/* the left column fills the globe's height: the lead at its top, level with the ring, the other
+   trips at its foot. A playing episode takes the space between them first, so the globe never moves */
+.lb-leadcol{display:flex;flex-direction:column;min-width:0;container:lblead/inline-size}
+.lb-leads{margin-bottom:var(--sp-4)}
 /* the lead: Kenya unless another radio is checked (a browser without :has keeps Kenya) */
 .lb-lead{display:none;flex-direction:column;align-items:flex-start;min-width:0}
-.lb-lead[data-dest="kenya"]{display:flex}
+.lb-lead[data-dest="kenya"]{display:var(--lb-on)}
 .lb:has(.lb-r:checked:not(#lbr-kenya)) .lb-lead[data-dest="kenya"]{display:none}
 .lb:has(#lbr-panchgani:checked) .lb-lead[data-dest="panchgani"],
-.lb:has(#lbr-india:checked) .lb-lead[data-dest="india"]{display:flex}
-.lb-place{order:0;margin:0;font:600 7rem/.92 var(--font-display);letter-spacing:-.035em;color:var(--white);max-width:100%;scroll-margin-top:6rem}
-.lb-dates{order:0;margin:.85rem 0 0;font-size:var(--fs-body);line-height:1.45;color:var(--gray-light);font-variant-numeric:tabular-nums}
+.lb:has(#lbr-india:checked) .lb-lead[data-dest="india"]{display:var(--lb-on)}
+.lb-place{order:0;margin:-.06em 0 0;font:600 min(7rem,30cqi)/.92 var(--font-display);letter-spacing:-.035em;color:var(--white);max-width:100%;scroll-margin-top:6rem}
+/* 112px; Panchgani, the longest name, shrinks to fit the column */
+.lb-lead[data-dest="panchgani"] .lb-place{font-size:min(7rem,18.8cqi)}
+.lb-dates{order:1;margin:1.15rem 0 0;font-size:var(--fs-body);line-height:1.45;color:var(--gray-light);font-variant-numeric:tabular-nums}
 .lb:has(.lb-r:focus-visible) .lb-place{outline:2px solid var(--white);outline-offset:6px}
-/* one episode: picture, play and chapter line, then the words. A second episode (India) sits
-   under the first as one line, and swaps into the player when tapped */
-.lb-ep{order:1;display:flex;flex-direction:column;align-items:flex-start;width:100%;max-width:560px;margin-top:var(--sp-3)}
-.lb-ep.is-alt{order:2;margin-top:var(--sp-2)}
-.lb-lead>.lb-see{order:3;margin-top:var(--sp-3);font-size:var(--fs-body-s)}
+/* one episode: a small picture with play on it, the words beside it, the chapter line under at
+   the column's width. Play grows the frame to the column's width for the video; another pick or
+   the end brings it back. A second episode (India) sits under the first as one line */
+.lb-ep{order:3;width:100%;min-width:0;margin-top:var(--sp-4)}
+.lb-ep:not(.is-alt){display:grid;grid-template-columns:240px minmax(0,1fr);grid-template-areas:"frame txt" "ctl ctl";column-gap:1.25rem;align-items:center}
+.lb-ep.is-on{grid-template-columns:minmax(0,1fr);grid-template-areas:"frame" "ctl" "txt"}
+.lb-ep.is-alt{order:4;display:flex;margin-top:var(--sp-3)}
+.lb-lead>.lb-see{order:5;margin-top:var(--sp-3);font-size:var(--fs-body-s)}
 .lb-ep.is-alt>:not(.lb-altline),.lb-ep:not(.is-alt)>.lb-altline{display:none}
-/* the picture: the episode's own art, cropped to the face, words left out; 1:1 at 560 px */
-.lb-frame{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--card)}
+.lb-frame{grid-area:frame;position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--card)}
+.lb-txt{grid-area:txt;min-width:0}
+.lb-ep.is-on .lb-txt{margin-top:.35rem}
 .lb-pic,.lb-o-pic{position:absolute;inset:0;display:block;overflow:hidden}
 .lb-pic img,.lb-o-pic img{position:absolute;max-width:none;height:auto;object-fit:fill;
   width:calc(1280 / var(--cw) * 100%);left:calc(var(--x) / var(--cw) * -100%);top:calc(var(--y) / var(--cw) * -177.778%);
@@ -719,16 +731,17 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
 .lb-ep:has(.lb-play:is(:hover,:focus-visible)) .lb-pic img,.lb-pic:hover img{filter:none}
 .lb-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
 .lb-ep.is-on .lb-pic{visibility:hidden}
-/* play, the chapter line and the readout in one row */
-.lb-ctl{display:flex;align-items:flex-start;gap:.75rem;width:100%;margin-top:.35rem}
-.lb-play{flex:none;display:grid;place-items:center;width:44px;height:44px;margin:14px 0 0 -13px;border-radius:50%;
-  color:color-mix(in srgb,var(--white) 34%,transparent);transition:color .3s var(--ease),transform .3s var(--ease)}
-.lb-play:hover,.lb-play:focus-visible{color:color-mix(in srgb,var(--white) 78%,transparent)}
+/* our play button, on the picture */
+.lb-play{position:absolute;left:50%;top:50%;z-index:2;display:grid;place-items:center;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;
+  background:color-mix(in srgb,var(--bg) 62%,transparent);color:color-mix(in srgb,var(--white) 82%,transparent);transition:color .3s var(--ease),transform .3s var(--ease)}
+.lb-play:hover,.lb-play:focus-visible{color:var(--white)}
 .lb-play:active{transform:scale(.94)}
-.lb-play:focus-visible{outline:1px solid var(--orange);outline-offset:-2px}
-.lb-play svg{display:block;width:14px;height:14px;fill:currentColor}
-.lb-play .i-pause,.lb-ep.is-playing .lb-play .i-play{display:none}
-.lb-ep.is-playing .lb-play .i-pause{display:block}
+.lb-play:focus-visible{outline:1px solid var(--orange);outline-offset:2px}
+.lb-play svg{display:block;width:15px;height:15px;margin-left:2px;fill:currentColor}
+.lb-play .i-pause{display:none}
+.lb-ep.is-on .lb-play{display:none}
+/* the chapter line and the readout, the column's width */
+.lb-ctl{grid-area:ctl;display:flex;align-items:flex-start;gap:.9rem;width:100%;margin-top:.5rem}
 .lb-line{position:relative;flex:1;min-width:0;height:58px;touch-action:manipulation;cursor:pointer}
 .lb-track{position:absolute;left:0;right:0;top:35px;height:2px;background:var(--edge)}
 .lb-played{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--gray-light)}
@@ -743,39 +756,72 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
 .lb-line.is-pointing .lb-now{color:var(--white)}
 .lb-rd{flex:none;margin-top:28px;font-size:var(--fs-small);line-height:1.2;color:var(--gray);font-variant-numeric:tabular-nums;white-space:nowrap}
 .lb-rd b{font-weight:400;color:var(--gray-light)}
-.lb-meta{margin:.55rem 0 0;font-size:var(--fs-small);color:var(--gray);font-variant-numeric:tabular-nums}
-.lb-title{margin:.3rem 0 0;font:600 2rem/1.15 var(--font-display);letter-spacing:-.01em;color:var(--white)}
+.lb-meta{margin:0;font-size:var(--fs-small);color:var(--gray);font-variant-numeric:tabular-nums}
+.lb-title{margin:.3rem 0 0;font:600 1.5rem/1.2 var(--font-display);letter-spacing:-.01em;color:var(--white)}
 .lb-title a{color:inherit;text-decoration:none;transition:color .25s var(--ease-out)}
 .lb-title a:is(:hover,:focus-visible){color:var(--orange)}
-.lb-guest{margin:.35rem 0 0;font-size:var(--fs-body);color:var(--gray-light)}
-.lb-altline{display:flex;align-items:baseline;gap:.6rem;width:100%;padding-top:.8rem;border-top:1px solid var(--line);
+.lb-guest{margin:.3rem 0 0;font-size:var(--fs-body-s);color:var(--gray-light)}
+.lb-altline{display:block;width:100%;padding-top:.8rem;border-top:1px solid var(--line);
   font-size:var(--fs-body-s);line-height:1.45;color:var(--gray-light);text-decoration:none;transition:color .25s var(--ease-out)}
-.lb-altline svg{flex:none;width:10px;height:10px;fill:currentColor;align-self:center;color:color-mix(in srgb,var(--white) 34%,transparent)}
-.lb-altline b{font-weight:600;color:var(--white)}
-.lb-altline span{color:var(--gray)}
+.lb-altline svg{display:inline-block;width:10px;height:10px;margin-right:.6rem;fill:currentColor;vertical-align:0;color:color-mix(in srgb,var(--white) 34%,transparent)}
+.lb-altline b{font-weight:600;color:var(--white);margin-right:.5rem}
+.lb-altline span{color:var(--gray);margin-right:.5rem}
 .lb-altline:is(:hover,:focus-visible){color:var(--white)}
 .lb-altline:is(:hover,:focus-visible) svg{color:color-mix(in srgb,var(--white) 78%,transparent)}
 .lb-altline:focus-visible{outline:2px solid var(--white);outline-offset:4px}
 .lb-lead .lb-see{color:var(--white)}
-/* the other trips, small, under the lead: the labels of the radio group */
-.lb-others{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.1rem 1.6rem;margin-top:var(--sp-5);padding-top:var(--sp-3);border-top:1px solid var(--line)}
-.lb-others-k{grid-column:1/-1;margin:0 0 -.2rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+/* a narrow left column: the words go under the small picture */
+@container lblead (max-width:470px){
+  .lb-ep:not(.is-alt){grid-template-columns:minmax(0,1fr);grid-template-areas:"frame" "txt" "ctl"}
+  .lb-ep:not(.is-alt):not(.is-on) .lb-frame{max-width:240px}
+  .lb-ep:not(.is-on) .lb-txt{margin-top:.75rem}
+  .lb-ep.is-on{grid-template-areas:"frame" "ctl" "txt"}
+}
+/* hear another trip: compact rows in the same column, the labels of the radio group */
+.lb-others{position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:.85rem;margin-top:auto;padding-top:var(--sp-3);border-top:1px solid var(--line)}
+.lb-others-k{margin:0;font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
 .lb-r{position:absolute;top:0;left:0;width:1px;height:1px;margin:0;opacity:0;pointer-events:none}
-.lb-o{display:grid;grid-template-columns:160px minmax(0,1fr);gap:1rem;align-items:start;cursor:pointer;min-width:0}
+.lb-o{display:grid;grid-template-columns:96px minmax(0,1fr);gap:1rem;align-items:center;cursor:pointer;min-width:0}
 .lb-r:checked+.lb-o{display:none}
 .lb-r:focus-visible+.lb-o{outline:2px solid var(--white);outline-offset:4px}
-.lb-o-pic{position:relative;inset:auto;aspect-ratio:16/9;background:var(--card)}
+.lb-o-pic{position:relative;inset:auto;width:96px;aspect-ratio:16/9;background:var(--card)}
 .lb-o:hover .lb-o-pic img{filter:none}
-.lb-o-tx{display:flex;flex-direction:column;gap:.18rem;min-width:0}
-.lb-o-tx b{font:600 1.05rem/1.2 var(--font-display);color:var(--white);transition:color .25s var(--ease-out)}
-.lb-o:hover .lb-o-tx b{color:var(--orange)}
+.lb-o-tx{display:flex;flex-direction:column;gap:.2rem;min-width:0}
+.lb-o-h,.lb-o-s{display:flex;flex-wrap:wrap;align-items:baseline;gap:.1rem .65rem;min-width:0}
+.lb-o-h b{font:600 1rem/1.2 var(--font-display);color:var(--white);transition:color .25s var(--ease-out)}
+.lb-o:hover .lb-o-h b{color:var(--orange)}
 .lb-o-d{font-size:var(--fs-small);line-height:1.35;color:var(--gray-light);font-variant-numeric:tabular-nums}
-.lb-o-t{font-size:var(--fs-body-s);line-height:1.3;color:var(--white)}
+.lb-o-t{font-size:var(--fs-small);line-height:1.35;color:var(--gray-light)}
 .lb-o-l{font-size:var(--fs-micro);color:var(--gray);font-variant-numeric:tabular-nums}
-/* the globe joins the section, beside the lead, and stays in view while you pick */
-.lb-globe{position:sticky;top:5.5rem;min-width:0;scroll-margin-top:5rem}
-.lb-globe .lb-key{margin:0 0 var(--sp-1)}
-.lb .lb-globe .ep-map{margin-top:0;aspect-ratio:1/1}
+/* the globe: its own square, the ring about the column's width, top level with the place name.
+   globe.js fits the sphere to about 0.74 of its box (0.85 under 600px), so the box is drawn larger
+   than the square and the square clips it: what shows, and takes a click, is the square */
+.lb-globe{position:relative;align-self:start;min-width:0;scroll-margin-top:5rem;container:lbg/inline-size}
+.lb-sq{display:none;position:relative;overflow:hidden;aspect-ratio:1/1;container:lbsq/inline-size}
+.lb.lb-live .lb-sq{display:block}
+.lb .lb-sq .ep-map{--k:1.34;display:block;width:134%;max-width:none;aspect-ratio:1/1;margin:-17% 0 0 -17%}
+@container lbsq (max-width:447.9px){
+  .lb .lb-sq .ep-map{--k:1.16;width:116%;margin:-8% 0 0 -8%}
+}
+#listen .lb-sq .map-popup{max-height:calc(100% / var(--k) - 20px)}
+/* one thin ring in the line token: no compass (ticks, letters, second ring, index), no glow */
+#epMap svg.gl-svg>g.gl-shell>g{display:none}
+#epMap svg.gl-svg circle[stroke="url(#gRim)"]{stroke:var(--line);stroke-width:1}
+/* the zoom buttons, small, inside the square's lower right corner, off the ring */
+.lb .lb-sq .gl-zoom{right:calc((1 - 1 / var(--k)) * 50% + 8px);bottom:calc((1 - 1 / var(--k)) * 50% + 8px)}
+.lb .gl-zoom button{width:28px;height:28px;font-size:.95rem;color:var(--gray-light);background:color-mix(in srgb,var(--bg) 70%,transparent);border-color:var(--edge)}
+.lb .gl-zoom svg{width:13px;height:13px}
+/* legend and caption: one quiet grey line under the globe */
+.lb-under{display:none}
+.lb.lb-live .lb-under{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.4rem 1.4rem;margin-top:var(--sp-2);font-size:var(--fs-small);color:var(--gray)}
+.lb.lb-live .lb-under .lb-key{display:flex;gap:.4rem 1.2rem;color:var(--gray)}
+.lb .lb-key .g i{background:var(--gray)}
+.lb.lb-live .lb-under .map-caption{display:block;margin:0;font-size:inherit;color:var(--gray);text-align:left}
+.lb .lb-under .map-caption b{font-weight:400;color:inherit}
+.lb.lb-live .lb-zoomrow{display:none}
+@container lbg (max-width:600px){
+  .lb.lb-live .lb-under{justify-content:flex-start}
+}
 .lb-pins>ol{grid-template-columns:1fr;gap:var(--sp-2)}
 .lb-pins>ol>li{border-top-color:var(--edge)}
 .lb-pins>ol>li b{transition:none}
@@ -785,28 +831,43 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
 .lb:not(:has(.lb-r:checked:not(#lbr-kenya))) #lb-at-kenya>b,
 .lb:has(#lbr-panchgani:checked) #lb-at-panchgani>b,
 .lb:has(#lbr-india:checked) #lb-at-india>b{color:var(--orange)}
+.lb-globe .lb-pins{margin-top:0}
 /* the route: dim all season, lit from Kenya up to the lead */
 #epMap .lb-route{opacity:.28}
 #epMap .lb-route-lit{fill:none;stroke:var(--orange);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
 .lb .v2-rail-wrap{margin-top:var(--lb-gap)}
 .lb .lb-grp.is-more .lb-hd{height:auto}
-@media (max-width:900px){
-  .lb-stage{grid-template-columns:minmax(0,1fr);gap:var(--sp-5)}
-  .lb-globe{position:static}
+/* phone and narrow tablet: one column. Heading, the place and its dates, the globe full width,
+   then the small picture row, the chapter line, See the trip, the other trips */
+@media (max-width:760px){
+  .lb{--lb-on:contents}
+  .lb-stage{display:flex;flex-direction:column;align-items:stretch;margin-top:var(--sp-3)}
+  .lb-leadcol,.lb-leads{display:contents}
+  .lb-lead>*{align-self:stretch}
+  .lb-lead>.lb-see{align-self:flex-start}
+  .lb-globe{order:2;align-self:stretch;margin-top:var(--sp-3)}
+  .lb-others{order:6;margin-top:var(--sp-4)}
+  .lb-place,.lb-lead[data-dest="panchgani"] .lb-place{font-size:min(4rem,calc((100vw - 32px) / 5.5));margin-top:0}
+  .lb-dates{font-size:var(--fs-body-s);margin-top:.6rem}
+  .lb-ep{margin-top:var(--sp-3)}
+  .lb-ep:not(.is-alt){grid-template-columns:160px minmax(0,1fr);grid-template-areas:"frame txt" "ctl ctl";column-gap:.9rem}
+  .lb-ep.is-on{grid-template-columns:minmax(0,1fr);grid-template-areas:"frame" "ctl" "txt"}
+  .lb-play{width:44px;height:44px;margin:-22px 0 0 -22px}
+  .lb-title{font-size:1.1rem}
+  .lb-meta,.lb-guest{font-size:var(--fs-small)}
+  /* zoom buttons: no room inside a phone's square, so they close the line under it, on the right */
+  .lb.lb-live .lb-under{justify-content:flex-start}
+  .lb.lb-live .lb-under .lb-key{gap:.3rem .9rem;font-size:var(--fs-micro)}
+  .lb-key i{margin-right:.4rem}
+  .lb.lb-live .lb-zoomrow{display:flex;margin:0 0 0 auto}
+  .lb-zoomrow .gl-zoom{position:static;flex-direction:row}
+  .lb-zoomrow .gl-zoom button+button{border-top:1px solid var(--edge);border-left:0}
 }
 @media (max-width:600px){
   .lb{--gutter:16px}
-  .lb-stage{margin-top:var(--sp-3)}
-  .lb-place{font-size:min(4rem,calc((100vw - 32px) / 5.5))}
-  .lb-dates{font-size:var(--fs-body-s);margin-top:.6rem}
-  .lb-ep{max-width:none}
-  .lb-title{font-size:1.5rem}
-  .lb-others{grid-template-columns:minmax(0,1fr);margin-top:var(--sp-4)}
-  .lb-o{grid-template-columns:128px minmax(0,1fr);gap:.85rem}
-  .lb .lb-globe .ep-map{aspect-ratio:4/5}
 }
 @media (prefers-reduced-motion:reduce){
-  .lb-pic img,.lb-o-pic img,.lb-play,.lb-tick::before,.lb-title a,.lb-altline,.lb-o-tx b{transition:none}
+  .lb-pic img,.lb-o-pic img,.lb-play,.lb-tick::before,.lb-title a,.lb-altline,.lb-o-h b{transition:none}
 }
 </style>
 <section id="listen" class="kit-band v2-listen lb" aria-labelledby="lbTitle">
@@ -833,15 +894,14 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
         <h3 class="lb-place" id="lbl-kenya">Kenya</h3>
         <p class="lb-dates">18 to 29 Jan, 1 to 12 Feb 2027</p>
         <div class="lb-ep" data-slug="pre-pwc-kenya-nikolay-yotov" data-vid="UVLF8l0qFlA" data-min="52">
-          <div class="lb-frame"><a class="lb-pic" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html" tabindex="-1" aria-hidden="true" style="--x:700;--y:195;--cw:540" data-px="720" data-py="90"><img src="https://i.ytimg.com/vi/UVLF8l0qFlA/maxresdefault.jpg" alt="Nikolay Yotov" loading="lazy" decoding="async" width="1280" height="720"></a></div>
+          <div class="lb-frame"><a class="lb-pic" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html" tabindex="-1" aria-hidden="true" style="--x:700;--y:195;--cw:540" data-px="720" data-py="90"><img src="https://i.ytimg.com/vi/UVLF8l0qFlA/maxresdefault.jpg" alt="Nikolay Yotov" loading="lazy" decoding="async" width="1280" height="720"></a><a class="lb-play" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html" aria-label="Play Pre PWC Kenya, with Nikolay Yotov"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><svg class="i-pause" viewBox="0 0 10 10" aria-hidden="true"><rect x="1.5" y="1" width="2.4" height="8" rx="1"/><rect x="6.1" y="1" width="2.4" height="8" rx="1"/></svg></a></div>
+          <div class="lb-txt"><p class="lb-meta">Navigators, Episode 10</p>
+            <p class="lb-title"><a href="../../episodes/pre-pwc-kenya-nikolay-yotov.html">Pre PWC Kenya</a></p>
+            <p class="lb-guest">Nikolay Yotov</p></div>
           <div class="lb-ctl">
-            <a class="lb-play" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html" aria-label="Play Pre PWC Kenya, with Nikolay Yotov"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><svg class="i-pause" viewBox="0 0 10 10" aria-hidden="true"><rect x="1.5" y="1" width="2.4" height="8" rx="1"/><rect x="6.1" y="1" width="2.4" height="8" rx="1"/></svg></a>
             <div class="lb-line"><p class="lb-now" aria-hidden="true">Welcome back after a long gap</p><nav class="lb-track" aria-label="Chapters of Pre PWC Kenya"><span class="lb-played"></span><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c1" data-t="6" style="left:0.192%"><span class="lb-tn">Welcome back after a long gap</span><span class="lb-tn">, chapter 1, 0:06</span></a><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c2" data-t="251" style="left:8.045%"><span class="lb-tn">Sunshine, food, and the trade-offs of the place</span><span class="lb-tn">, chapter 2, 4:11</span></a><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c3" data-t="475" style="left:15.224%"><span class="lb-tn">Climate, seasons, and when to come</span><span class="lb-tn">, chapter 3, 7:55</span></a><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c4" data-t="751" style="left:24.071%"><span class="lb-tn">Zebras below the crater</span><span class="lb-tn">, chapter 4, 12:31</span></a><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c5" data-t="1056" style="left:33.846%"><span class="lb-tn">What Kenya offers as a flying destination</span><span class="lb-tn">, chapter 5, 17:36</span></a><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c6" data-t="1326" style="left:42.500%"><span class="lb-tn">Flying in this region</span><span class="lb-tn">, chapter 6, 22:06</span></a><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c7" data-t="1619" style="left:51.891%"><span class="lb-tn">What you need to navigate Africa</span><span class="lb-tn">, chapter 7, 26:59</span></a><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c8" data-t="1863" style="left:59.712%"><span class="lb-tn">Out and return</span><span class="lb-tn">, chapter 8, 31:03</span></a><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c9" data-t="2109" style="left:67.596%"><span class="lb-tn">Experience, and what it does not cover</span><span class="lb-tn">, chapter 9, 35:09</span></a></nav></div>
             <span class="lb-rd"><b>0:00</b> / <i style="font-style:normal">52 min</i></span>
           </div>
-          <p class="lb-meta">Navigators, Episode 10</p>
-          <p class="lb-title"><a href="../../episodes/pre-pwc-kenya-nikolay-yotov.html">Pre PWC Kenya</a></p>
-          <p class="lb-guest">Nikolay Yotov</p>
           <a class="lb-altline" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><span>Also from Kenya</span><b>Nikolay Yotov</b>Pre PWC Kenya, Episode 10, 52 min</a>
         </div>
         <a class="lb-see" href="../../destinations/kenya.html" aria-label="See the Kenya trip">See the trip <span aria-hidden="true">&rarr;</span></a>
@@ -850,15 +910,14 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
         <h3 class="lb-place" id="lbl-panchgani">Panchgani</h3>
         <p class="lb-dates">14 to 21 Feb 2027</p>
         <div class="lb-ep" data-slug="navigating-panchgani-vistasp-kharas" data-vid="0VPg7TZ9hK0" data-min="54">
-          <div class="lb-frame"><a class="lb-pic" href="../../episodes/navigating-panchgani-vistasp-kharas.html" tabindex="-1" aria-hidden="true" style="--x:712;--y:95;--cw:530" data-px="710" data-py="70"><img src="https://i.ytimg.com/vi/0VPg7TZ9hK0/maxresdefault.jpg" alt="Vistasp Kharas" loading="lazy" decoding="async" width="1280" height="720"></a></div>
+          <div class="lb-frame"><a class="lb-pic" href="../../episodes/navigating-panchgani-vistasp-kharas.html" tabindex="-1" aria-hidden="true" style="--x:712;--y:95;--cw:530" data-px="710" data-py="70"><img src="https://i.ytimg.com/vi/0VPg7TZ9hK0/maxresdefault.jpg" alt="Vistasp Kharas" loading="lazy" decoding="async" width="1280" height="720"></a><a class="lb-play" href="../../episodes/navigating-panchgani-vistasp-kharas.html" aria-label="Play Navigating Panchgani, with Vistasp Kharas"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><svg class="i-pause" viewBox="0 0 10 10" aria-hidden="true"><rect x="1.5" y="1" width="2.4" height="8" rx="1"/><rect x="6.1" y="1" width="2.4" height="8" rx="1"/></svg></a></div>
+          <div class="lb-txt"><p class="lb-meta">Navigators, Episode 9</p>
+            <p class="lb-title"><a href="../../episodes/navigating-panchgani-vistasp-kharas.html">Navigating Panchgani</a></p>
+            <p class="lb-guest">Vistasp Kharas</p></div>
           <div class="lb-ctl">
-            <a class="lb-play" href="../../episodes/navigating-panchgani-vistasp-kharas.html" aria-label="Play Navigating Panchgani, with Vistasp Kharas"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><svg class="i-pause" viewBox="0 0 10 10" aria-hidden="true"><rect x="1.5" y="1" width="2.4" height="8" rx="1"/><rect x="6.1" y="1" width="2.4" height="8" rx="1"/></svg></a>
             <div class="lb-line"><p class="lb-now" aria-hidden="true">Introduction</p><nav class="lb-track" aria-label="Chapters of Navigating Panchgani"><span class="lb-played"></span><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c1" data-t="0" style="left:0.000%"><span class="lb-tn">Introduction</span><span class="lb-tn">, chapter 1, 0:00</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c2" data-t="230" style="left:7.099%"><span class="lb-tn">More to Panchgani than the nationals</span><span class="lb-tn">, chapter 2, 3:50</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c3" data-t="510" style="left:15.741%"><span class="lb-tn">The pre World Cup on the plateau</span><span class="lb-tn">, chapter 3, 8:30</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c4" data-t="775" style="left:23.920%"><span class="lb-tn">What AGL you are working with</span><span class="lb-tn">, chapter 4, 12:55</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c5" data-t="1054" style="left:32.531%"><span class="lb-tn">How a newer pilot should approach it</span><span class="lb-tn">, chapter 5, 17:34</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c6" data-t="1478" style="left:45.617%"><span class="lb-tn">Mistakes visiting pilots make</span><span class="lb-tn">, chapter 6, 24:38</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c7" data-t="1739" style="left:53.673%"><span class="lb-tn">What equipment is recommended</span><span class="lb-tn">, chapter 7, 28:59</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c8" data-t="1992" style="left:61.481%"><span class="lb-tn">Wind shear, and reading it</span><span class="lb-tn">, chapter 8, 33:12</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c9" data-t="2264" style="left:69.877%"><span class="lb-tn">How the visual clues change</span><span class="lb-tn">, chapter 9, 37:44</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c10" data-t="2513" style="left:77.562%"><span class="lb-tn">Hazards on retrieve and top landing</span><span class="lb-tn">, chapter 10, 41:53</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c11" data-t="2746" style="left:84.753%"><span class="lb-tn">Safety for a solo female pilot</span><span class="lb-tn">, chapter 11, 45:46</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c12" data-t="2958" style="left:91.296%"><span class="lb-tn">Airspace over the site</span><span class="lb-tn">, chapter 12, 49:18</span></a></nav></div>
             <span class="lb-rd"><b>0:00</b> / <i style="font-style:normal">54 min</i></span>
           </div>
-          <p class="lb-meta">Navigators, Episode 9</p>
-          <p class="lb-title"><a href="../../episodes/navigating-panchgani-vistasp-kharas.html">Navigating Panchgani</a></p>
-          <p class="lb-guest">Vistasp Kharas</p>
           <a class="lb-altline" href="../../episodes/navigating-panchgani-vistasp-kharas.html"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><span>Also from Panchgani</span><b>Vistasp Kharas</b>Navigating Panchgani, Episode 9, 54 min</a>
         </div>
         <a class="lb-see" href="../../destinations/panchgani.html" aria-label="See the Panchgani trip">See the trip <span aria-hidden="true">&rarr;</span></a>
@@ -867,27 +926,25 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
         <h3 class="lb-place" id="lbl-india">India</h3>
         <p class="lb-dates">15 to 24 Apr, 25 Apr to 4 May, 21 to 30 Oct, 3 to 12 Nov 2027</p>
         <div class="lb-ep" data-slug="navigating-india-eddie-colfox" data-vid="TO6gW69d7YE" data-min="52">
-          <div class="lb-frame"><a class="lb-pic" href="../../episodes/navigating-india-eddie-colfox.html" tabindex="-1" aria-hidden="true" style="--x:712;--y:150;--cw:530" data-px="770" data-py="150"><img src="https://i.ytimg.com/vi/TO6gW69d7YE/maxresdefault.jpg" alt="Eddie Colfox" loading="lazy" decoding="async" width="1280" height="720"></a></div>
+          <div class="lb-frame"><a class="lb-pic" href="../../episodes/navigating-india-eddie-colfox.html" tabindex="-1" aria-hidden="true" style="--x:712;--y:150;--cw:530" data-px="770" data-py="150"><img src="https://i.ytimg.com/vi/TO6gW69d7YE/maxresdefault.jpg" alt="Eddie Colfox" loading="lazy" decoding="async" width="1280" height="720"></a><a class="lb-play" href="../../episodes/navigating-india-eddie-colfox.html" aria-label="Play Navigating India, with Eddie Colfox"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><svg class="i-pause" viewBox="0 0 10 10" aria-hidden="true"><rect x="1.5" y="1" width="2.4" height="8" rx="1"/><rect x="6.1" y="1" width="2.4" height="8" rx="1"/></svg></a></div>
+          <div class="lb-txt"><p class="lb-meta">Navigators, Episode 3</p>
+            <p class="lb-title"><a href="../../episodes/navigating-india-eddie-colfox.html">Navigating India</a></p>
+            <p class="lb-guest">Eddie Colfox</p></div>
           <div class="lb-ctl">
-            <a class="lb-play" href="../../episodes/navigating-india-eddie-colfox.html" aria-label="Play Navigating India, with Eddie Colfox"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><svg class="i-pause" viewBox="0 0 10 10" aria-hidden="true"><rect x="1.5" y="1" width="2.4" height="8" rx="1"/><rect x="6.1" y="1" width="2.4" height="8" rx="1"/></svg></a>
             <div class="lb-line"><p class="lb-now" aria-hidden="true">Introduction</p><nav class="lb-track" aria-label="Chapters of Navigating India"><span class="lb-played"></span><a class="lb-tick" href="../../episodes/navigating-india-eddie-colfox.html#c1" data-t="0" style="left:0.000%"><span class="lb-tn">Introduction</span><span class="lb-tn">, chapter 1, 0:00</span></a><a class="lb-tick" href="../../episodes/navigating-india-eddie-colfox.html#c2" data-t="46" style="left:1.474%"><span class="lb-tn">A cold open: the first landing at Barabangal</span><span class="lb-tn">, chapter 2, 0:46</span></a><a class="lb-tick" href="../../episodes/navigating-india-eddie-colfox.html#c3" data-t="729" style="left:23.365%"><span class="lb-tn">Being brave enough to go out and do it</span><span class="lb-tn">, chapter 3, 12:09</span></a><a class="lb-tick" href="../../episodes/navigating-india-eddie-colfox.html#c4" data-t="1009" style="left:32.340%"><span class="lb-tn">A short season, and a changing climate</span><span class="lb-tn">, chapter 4, 16:49</span></a><a class="lb-tick" href="../../episodes/navigating-india-eddie-colfox.html#c5" data-t="2209" style="left:70.801%"><span class="lb-tn">The balance you have to strike</span><span class="lb-tn">, chapter 5, 36:49</span></a><a class="lb-tick" href="../../episodes/navigating-india-eddie-colfox.html#c6" data-t="2539" style="left:81.378%"><span class="lb-tn">Reading what is likely to happen next</span><span class="lb-tn">, chapter 6, 42:19</span></a><a class="lb-tick" href="../../episodes/navigating-india-eddie-colfox.html#c7" data-t="2864" style="left:91.795%"><span class="lb-tn">The Barabangal flight, told properly</span><span class="lb-tn">, chapter 7, 47:44</span></a></nav></div>
             <span class="lb-rd"><b>0:00</b> / <i style="font-style:normal">52 min</i></span>
           </div>
-          <p class="lb-meta">Navigators, Episode 3</p>
-          <p class="lb-title"><a href="../../episodes/navigating-india-eddie-colfox.html">Navigating India</a></p>
-          <p class="lb-guest">Eddie Colfox</p>
           <a class="lb-altline" href="../../episodes/navigating-india-eddie-colfox.html"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><span>Also from India</span><b>Eddie Colfox</b>Navigating India, Episode 3, 52 min</a>
         </div>
         <div class="lb-ep is-alt" data-slug="navigating-india-jigish-gohil" data-vid="_apo1PNabZI" data-min="36">
-          <div class="lb-frame"><a class="lb-pic" href="../../episodes/navigating-india-jigish-gohil.html" tabindex="-1" aria-hidden="true" style="--x:712;--y:200;--cw:530" data-px="700" data-py="236"><img src="https://i.ytimg.com/vi/_apo1PNabZI/maxresdefault.jpg" alt="Jigish Gohil" loading="lazy" decoding="async" width="1280" height="720"></a></div>
+          <div class="lb-frame"><a class="lb-pic" href="../../episodes/navigating-india-jigish-gohil.html" tabindex="-1" aria-hidden="true" style="--x:712;--y:200;--cw:530" data-px="700" data-py="236"><img src="https://i.ytimg.com/vi/_apo1PNabZI/maxresdefault.jpg" alt="Jigish Gohil" loading="lazy" decoding="async" width="1280" height="720"></a><a class="lb-play" href="../../episodes/navigating-india-jigish-gohil.html" aria-label="Play Navigating India (Bonus Ep), with Jigish Gohil"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><svg class="i-pause" viewBox="0 0 10 10" aria-hidden="true"><rect x="1.5" y="1" width="2.4" height="8" rx="1"/><rect x="6.1" y="1" width="2.4" height="8" rx="1"/></svg></a></div>
+          <div class="lb-txt"><p class="lb-meta">Navigators, Episode 4</p>
+            <p class="lb-title"><a href="../../episodes/navigating-india-jigish-gohil.html">Navigating India (Bonus Ep)</a></p>
+            <p class="lb-guest">Jigish Gohil</p></div>
           <div class="lb-ctl">
-            <a class="lb-play" href="../../episodes/navigating-india-jigish-gohil.html" aria-label="Play Navigating India (Bonus Ep), with Jigish Gohil"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><svg class="i-pause" viewBox="0 0 10 10" aria-hidden="true"><rect x="1.5" y="1" width="2.4" height="8" rx="1"/><rect x="6.1" y="1" width="2.4" height="8" rx="1"/></svg></a>
             <div class="lb-line"><p class="lb-now" aria-hidden="true">Introduction</p><nav class="lb-track" aria-label="Chapters of Navigating India (Bonus Ep)"><span class="lb-played"></span><a class="lb-tick" href="../../episodes/navigating-india-jigish-gohil.html#c1" data-t="0" style="left:0.000%"><span class="lb-tn">Introduction</span><span class="lb-tn">, chapter 1, 0:00</span></a><a class="lb-tick" href="../../episodes/navigating-india-jigish-gohil.html#c2" data-t="64" style="left:2.963%"><span class="lb-tn">Bir off the hill: pottery, yoga and Buddhism</span><span class="lb-tn">, chapter 2, 1:04</span></a><a class="lb-tick" href="../../episodes/navigating-india-jigish-gohil.html#c3" data-t="363" style="left:16.806%"><span class="lb-tn">What the guidebook offers</span><span class="lb-tn">, chapter 3, 6:03</span></a><a class="lb-tick" href="../../episodes/navigating-india-jigish-gohil.html#c4" data-t="626" style="left:28.981%"><span class="lb-tn">Why wind strength differs between seasons</span><span class="lb-tn">, chapter 4, 10:26</span></a><a class="lb-tick" href="../../episodes/navigating-india-jigish-gohil.html#c5" data-t="853" style="left:39.491%"><span class="lb-tn">Retrieves, taxis, and finding your tribe</span><span class="lb-tn">, chapter 5, 14:13</span></a><a class="lb-tick" href="../../episodes/navigating-india-jigish-gohil.html#c6" data-t="1205" style="left:55.787%"><span class="lb-tn">Standing on takeoff, what to expect</span><span class="lb-tn">, chapter 6, 20:05</span></a><a class="lb-tick" href="../../episodes/navigating-india-jigish-gohil.html#c7" data-t="1753" style="left:81.157%"><span class="lb-tn">Insurance, and the admin side</span><span class="lb-tn">, chapter 7, 29:13</span></a><a class="lb-tick" href="../../episodes/navigating-india-jigish-gohil.html#c8" data-t="2058" style="left:95.278%"><span class="lb-tn">The paraguide.in website</span><span class="lb-tn">, chapter 8, 34:18</span></a></nav></div>
             <span class="lb-rd"><b>0:00</b> / <i style="font-style:normal">36 min</i></span>
           </div>
-          <p class="lb-meta">Navigators, Episode 4</p>
-          <p class="lb-title"><a href="../../episodes/navigating-india-jigish-gohil.html">Navigating India (Bonus Ep)</a></p>
-          <p class="lb-guest">Jigish Gohil</p>
           <a class="lb-altline" href="../../episodes/navigating-india-jigish-gohil.html"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><span>Also from India</span><b>Jigish Gohil</b>Navigating India (Bonus Ep), Episode 4, 36 min</a>
         </div>
         <a class="lb-see" href="../../destinations/india.html" aria-label="See the India trip">See the trip <span aria-hidden="true">&rarr;</span></a>
@@ -896,15 +953,15 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
       <div class="lb-others" role="radiogroup" aria-label="Choose the trip to hear">
         <p class="lb-others-k" aria-hidden="true">Hear another trip</p>
         <input type="radio" class="lb-r" name="lb-lead" id="lbr-kenya" value="kenya" checked>
-        <label class="lb-o" for="lbr-kenya" data-dest="kenya"><span class="lb-o-pic" style="--x:700;--y:195;--cw:540"><img src="https://i.ytimg.com/vi/UVLF8l0qFlA/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720"></span><span class="lb-o-tx"><b>Kenya</b><span class="lb-o-d">18 to 29 Jan, 1 to 12 Feb 2027</span><span class="lb-o-t">Pre PWC Kenya, Nikolay Yotov</span><span class="lb-o-l">52 min</span></span></label>
+        <label class="lb-o" for="lbr-kenya" data-dest="kenya"><span class="lb-o-pic" style="--x:700;--y:195;--cw:540"><img src="https://i.ytimg.com/vi/UVLF8l0qFlA/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720"></span><span class="lb-o-tx"><span class="lb-o-h"><b>Kenya</b><span class="lb-o-d">18 to 29 Jan, 1 to 12 Feb 2027</span></span><span class="lb-o-s"><span class="lb-o-t">Pre PWC Kenya, Nikolay Yotov</span><span class="lb-o-l">52 min</span></span></span></label>
         <input type="radio" class="lb-r" name="lb-lead" id="lbr-panchgani" value="panchgani">
-        <label class="lb-o" for="lbr-panchgani" data-dest="panchgani"><span class="lb-o-pic" style="--x:712;--y:95;--cw:530"><img src="https://i.ytimg.com/vi/0VPg7TZ9hK0/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720"></span><span class="lb-o-tx"><b>Panchgani</b><span class="lb-o-d">14 to 21 Feb 2027</span><span class="lb-o-t">Navigating Panchgani, Vistasp Kharas</span><span class="lb-o-l">54 min</span></span></label>
+        <label class="lb-o" for="lbr-panchgani" data-dest="panchgani"><span class="lb-o-pic" style="--x:712;--y:95;--cw:530"><img src="https://i.ytimg.com/vi/0VPg7TZ9hK0/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720"></span><span class="lb-o-tx"><span class="lb-o-h"><b>Panchgani</b><span class="lb-o-d">14 to 21 Feb 2027</span></span><span class="lb-o-s"><span class="lb-o-t">Navigating Panchgani, Vistasp Kharas</span><span class="lb-o-l">54 min</span></span></span></label>
         <input type="radio" class="lb-r" name="lb-lead" id="lbr-india" value="india">
-        <label class="lb-o" for="lbr-india" data-dest="india"><span class="lb-o-pic" style="--x:712;--y:150;--cw:530"><img src="https://i.ytimg.com/vi/TO6gW69d7YE/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720"></span><span class="lb-o-tx"><b>India</b><span class="lb-o-d">15 to 24 Apr, 25 Apr to 4 May, 21 to 30 Oct, 3 to 12 Nov 2027</span><span class="lb-o-t">Navigating India, Eddie Colfox</span><span class="lb-o-l">52 min</span></span></label>
+        <label class="lb-o" for="lbr-india" data-dest="india"><span class="lb-o-pic" style="--x:712;--y:150;--cw:530"><img src="https://i.ytimg.com/vi/TO6gW69d7YE/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720"></span><span class="lb-o-tx"><span class="lb-o-h"><b>India</b><span class="lb-o-d">15 to 24 Apr, 25 Apr to 4 May, 21 to 30 Oct, 3 to 12 Nov 2027</span></span><span class="lb-o-s"><span class="lb-o-t">Navigating India, Eddie Colfox</span><span class="lb-o-l">52 min</span></span></span></label>
       </div>
       </div>
       <div class="lb-globe" id="map">
-        <ul class="lb-key" aria-hidden="true"><li class="o"><i></i>Our trips</li><li class="p"><i></i>Planned, no episode yet</li><li class="g"><i></i>Every other episode</li></ul>
+        <div class="lb-sq">
         <div class="ep-map" id="epMap">
         <div class="gl-tip" aria-hidden="true"><b></b><i></i></div>
         <div class="gl-hint" aria-hidden="true"></div>
@@ -936,9 +993,8 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
           </div>
         </div>
       </div>
-        <p class="map-caption"><b>Click a pin, hear the story.</b> <span class="v4u-ptr">Drag to rotate.</span><span class="v4u-touch">Swipe sideways to turn it.</span></p>
-      <div class="lb-zoomrow"></div>
-        <div class="lb-zoomrow"></div>
+        </div>
+        <div class="lb-under"><ul class="lb-key" aria-hidden="true"><li class="o"><i></i>Our trips</li><li class="p"><i></i>Planned, no episode yet</li><li class="g"><i></i>Every other episode</li></ul><p class="map-caption"><b>Click a pin, hear the story.</b> <span class="v4u-ptr">Drag to rotate.</span><span class="v4u-touch">Swipe sideways to turn it.</span></p><div class="lb-zoomrow"></div></div>
         <div class="lb-pins">
         <ol>
           <li id="lb-at-kenya"><b>Kenya</b><span class="d">18 to 29 Jan, 1 to 12 Feb 2027</span><ul><li><a href="../../episodes/pre-pwc-kenya-nikolay-yotov.html">Pre PWC Kenya: Nikolay Yotov<small>Navigators, Episode 10, 52 min</small></a></li></ul><a class="go" href="../../destinations/kenya.html">See the trip &rarr;</a></li>
@@ -986,7 +1042,7 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
   </div>
   <template id="v4GlobeJs"><script src="../../../../assets/js/d3.min.js?v=f2094bbf"></script><script src="../../../../globe-episodes.js?v=5ed6afaf"></script><script src="../../../../assets/js/globe-world.js?v=c3ca4ee4"></script><script src="../../../../globe.js?v=82e331c4"></script></template>
   <script>
-  /* Hear Where We Fly (preview B3): the lit trip leads.
+  /* Hear Where We Fly (preview B4): the globe leads the stage, the lit trip beside it.
      Without JavaScript: Kenya leads as plain HTML, the radio group still switches the lead
      (CSS), play opens the episode page, the ticks open its chapters, and the list of trip
      places stands where the globe would be, the lead marked orange.
@@ -1105,7 +1161,9 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
       f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
       f.setAttribute('allowfullscreen', '');
       f.referrerPolicy = 'strict-origin-when-cross-origin';
+      var had = ep.contains(document.activeElement);
       ep.querySelector('.lb-frame').appendChild(f);
+      if (had) f.focus();
       cur = { ep: ep, f: f, live: false, playing: true, at: s, stamp: 0 };
       ep._t = s;
       ep.classList.add('is-on', 'is-playing');
@@ -1150,6 +1208,7 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
       if (typeof info.currentTime === 'number') { cur.at = info.currentTime; cur.stamp = performance.now(); ep._t = info.currentTime; }
       paint(ep);
       run();
+      if (info.playerState === 0) stop();
     });
     /* the playhead moves at real time between the player's messages (also with reduced motion) */
     var raf = 0;
@@ -1306,7 +1365,7 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
         if (d && TRIP[slugOf(d.href)]) { g.classList.add('lb-trip'); g.parentNode.appendChild(g); }
       });
     }
-    var route, routeLit, nesw, ROUTE, AT = {};
+    var route, routeLit, ROUTE, AT = {};
     function el(name, attrs, parent) {
       var n = document.createElementNS(NS, name);
       Object.keys(attrs).forEach(function (k) { n.setAttribute(k, attrs[k]); });
@@ -1338,10 +1397,6 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
         });
         g.addEventListener('click', function (e) { e.stopPropagation(); showPlan(p); });
       });
-      nesw = el('g', { 'aria-hidden': 'true' }, svg);
-      ['N', 'E', 'S', 'W'].forEach(function (c, i) {
-        var n = el('text', { 'class': 'lb-nesw' + (i ? '' : ' n') }, nesw); n.textContent = c;
-      });
       ready = true;
       /* it opens on the lead, the route lit up to it */
       G.p = ORDER[leadOf()] || 0;
@@ -1357,7 +1412,7 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
     }
     function draw() {
       if (!overlay || !proj) return;
-      var R = proj.scale(), tr = proj.translate(), rot = proj.rotate(), centre = [-rot[0], -rot[1]];
+      var rot = proj.rotate(), centre = [-rot[0], -rot[1]];
       var gp = d3.geoPath(proj);
       route.setAttribute('d', gp({ type: 'LineString', coordinates: ROUTE }) || '');
       var lc = litCoords(G.p);
@@ -1371,16 +1426,6 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
         p.g.style.opacity = Math.min(1, c / 0.34);
         p.g.setAttribute('transform', 'translate(' + q[0].toFixed(1) + ',' + q[1].toFixed(1) + ')');
       });
-      /* globe.js drops every ring label below 600px; keep the four points of the compass, inside the ring */
-      var small = box.clientWidth < 600, rr = R * 1.05;
-      nesw.style.display = small ? '' : 'none';
-      if (small) {
-        var xy = [[0, -1], [1, 0], [0, 1], [-1, 0]];
-        [].forEach.call(nesw.childNodes, function (n, i) {
-          n.setAttribute('x', (tr[0] + xy[i][0] * rr).toFixed(1));
-          n.setAttribute('y', (tr[1] + xy[i][1] * rr).toFixed(1));
-        });
-      }
       if (planOpen) { if (planOpen.on) place(planOpen.x, planOpen.y); else hide(); }
     }
 
@@ -1444,7 +1489,7 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
       if (how === 'pin') { cancel(); light(ORDER[dest]); return; }   /* globe.js is already flying to the pin */
       if (RM) { cancel(); setRot(dest); G.p = ORDER[dest]; draw(); return; }
       if (how === 'user' && inView()) { turn(dest); return; }
-      if (how === 'user' && matchMedia('(max-width: 900px)').matches) { G.pending = dest; return; }   /* turn as it scrolls into view */
+      if (how === 'user' && matchMedia('(max-width: 760px)').matches) { G.pending = dest; return; }   /* turn as it scrolls into view */
       cancel(); setRot(dest); G.p = ORDER[dest]; draw();
     }
     if ('IntersectionObserver' in window) {
@@ -1459,12 +1504,14 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
     var ROOT = '../../';
     function hide() { if (pop.classList.contains('visible')) pop.classList.remove('visible'); }
     function place(x, y) {
-      var cw = box.clientWidth, ch = box.clientHeight, pw = pop.offsetWidth || 336, ph = pop.offsetHeight || 300, GAP = 22, EDGE = 10;
+      var sq = box.parentNode, ox = -box.offsetLeft, oy = -box.offsetTop, cw = sq.clientWidth, ch = sq.clientHeight;
+      var pw = pop.offsetWidth || 336, ph = pop.offsetHeight || 300, GAP = 22, EDGE = 10;
+      x -= ox; y -= oy;
       var left = x + GAP;
       if (left + pw > cw - EDGE) left = x - GAP - pw;
       if (left < EDGE) left = Math.max(EDGE, (cw - pw) / 2);
       var top = Math.min(Math.max(EDGE, y - ph / 2), Math.max(EDGE, ch - ph - EDGE));
-      pop.style.left = left + 'px'; pop.style.top = top + 'px';
+      pop.style.left = (left + ox) + 'px'; pop.style.top = (top + oy) + 'px';
     }
     function tripBlock(dest, label) {
       var rows = document.querySelectorAll('.sl-row[data-dest="' + dest + '"]');
@@ -1548,14 +1595,22 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
       }, { capture: true, passive: true });
     });
 
-    /* phone: the + / - / globe buttons sit in a row under the caption, off the globe */
-    var zoomEl = box.querySelector('.gl-zoom'), zoomRow = sec.querySelector('.lb-zoomrow'), mq = matchMedia('(max-width: 600px)');
+    /* the + / - / globe buttons: inside the square's corner; on a phone they close the line under it */
+    var zoomEl = box.querySelector('.gl-zoom'), zoomRow = sec.querySelector('.lb-zoomrow'), mq = matchMedia('(max-width: 760px)');
     function placeZoom() {
       if (!zoomEl || !zoomRow) return;
       if (mq.matches) { if (zoomEl.parentNode !== zoomRow) zoomRow.appendChild(zoomEl); }
       else if (zoomEl.parentNode !== box) box.insertBefore(zoomEl, pop);
     }
     if (mq.addEventListener) mq.addEventListener('change', placeZoom);
+    if (window.ResizeObserver) {
+      var bw = box.clientWidth;
+      new ResizeObserver(function () {
+        var w = box.clientWidth;
+        if (w === bw) return;
+        bw = w; lock = null; hide();
+      }).observe(box);
+    }
 
     /* phone: a vertical drag over the globe scrolls the page; a sideways one turns it */
     var sx = 0, sy = 0, mode = 0;
