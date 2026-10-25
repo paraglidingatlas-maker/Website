@@ -1210,9 +1210,10 @@ CSS = r"""
 .wr-night svg{display:block;width:100%;height:100%;}
 /* ----- the close: the night dissolves into the ground over a long eased band, under a faint last light (on
    this page the footer's drawn ridge gives way to this soft horizon: no outline, no flat cut-out) ----- */
-footer{--wr-fh:clamp(110px,13vw,200px);padding-top:var(--wr-fh);
-  background:linear-gradient(180deg,@@FOOT_SKY@@) top/100% var(--wr-fh) no-repeat,linear-gradient(var(--bg),var(--bg)) bottom/100% calc(100% - var(--wr-fh) + 1px) no-repeat;}
-:root:not(.wr-sky-on) footer{background:linear-gradient(180deg,@@FOOT_STILL@@) top/100% var(--wr-fh) no-repeat,linear-gradient(var(--bg),var(--bg)) bottom/100% calc(100% - var(--wr-fh) + 1px) no-repeat;}
+/* the footer is completely transparent (owner, 25 Oct 2026): the moving sky runs on behind it to the page's end;
+   the still page carries its last sky colour on under it, so no line marks where the page ends */
+footer{--wr-fh:clamp(110px,13vw,200px);padding-top:var(--wr-fh);background:none;}
+:root:not(.wr-sky-on) footer{background:var(--wr-s8);}
 footer::after{background:radial-gradient(58% 40% at 68% 36%,color-mix(in srgb,var(--sky-horizon) 55%,transparent),transparent 74%);}
 
 /* ----- the moving sky (with the script and motion): one canvas, fixed behind everything ----- */
@@ -1280,9 +1281,6 @@ for _k, _v in {
         "M_COURSE_GRAIN": mask(ease_stops(0, 16, 0, 1, 6), ease_stops(84, 100, 1, 0, 6)),
         "PORTRAIT_GRADE": ease_stops(0, 62, .42, 0, 8),
         "M_NIGHT": mask(ease_stops(0, 60, 0, 1, 8)),
-        "FOOT_SKY": ease_stops(0, 100, 0, 1, 12),
-        "FOOT_STILL": ",".join("color-mix(in srgb,var(--bg) %g%%,var(--wr-s8)) %g%%" % (round(100 * t * t * (3 - 2 * t), 1), round(100 * t, 2))
-                               for t in (i / 12.0 for i in range(13))),
         "M_GROUND": rmask("64% 32% at 50% 57%", ease_stops(0, 100, 1, 0, 10)),
 }.items():
     CSS = CSS.replace("@@%s@@" % _k, _v)
