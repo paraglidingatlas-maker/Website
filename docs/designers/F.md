@@ -1,5 +1,8 @@
 # Designer F, "Fly the Season": notebook (newest first)
 
+## 25 Oct 2026: built "Hear Where We Fly" as preview B
+Built `prototypes/v4/samples/listen-b/` (home copy, #listen and #map merged): trip cards first (Kenya, Panchgani, India x2, next date and "See the trip" above each), then the 15 cards, no self-scroll; globe below with trip pins orange, others grey, trip popup adds dates from the rows. No JS or reduced motion: list of the pinned trip episodes. Flagged: trip photos repeat the opening's (owner's rule).
+
 ## 25 Oct 2026: round 1 on #listen (the podcast section) and #map
 
 **Asked.** One concept for `#listen` (search, most-streamed rail), what
