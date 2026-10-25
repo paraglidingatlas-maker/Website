@@ -482,9 +482,10 @@
 .wr-night svg{display:block;width:100%;height:100%;}
 /* ----- the close: the night dissolves into the ground over a long eased band, under a faint last light (on
    this page the footer's drawn ridge gives way to this soft horizon: no outline, no flat cut-out) ----- */
-footer{--wr-fh:clamp(110px,13vw,200px);padding-top:var(--wr-fh);
-  background:linear-gradient(180deg,transparent 0%,color-mix(in srgb,var(--bg) 2%,transparent) 8.33%,color-mix(in srgb,var(--bg) 7.4%,transparent) 16.67%,color-mix(in srgb,var(--bg) 15.6%,transparent) 25%,color-mix(in srgb,var(--bg) 25.9%,transparent) 33.33%,color-mix(in srgb,var(--bg) 37.6%,transparent) 41.67%,color-mix(in srgb,var(--bg) 50%,transparent) 50%,color-mix(in srgb,var(--bg) 62.4%,transparent) 58.33%,color-mix(in srgb,var(--bg) 74.1%,transparent) 66.67%,color-mix(in srgb,var(--bg) 84.4%,transparent) 75%,color-mix(in srgb,var(--bg) 92.6%,transparent) 83.33%,color-mix(in srgb,var(--bg) 98%,transparent) 91.67%,var(--bg) 100%) top/100% var(--wr-fh) no-repeat,linear-gradient(var(--bg),var(--bg)) bottom/100% calc(100% - var(--wr-fh) + 1px) no-repeat;}
-:root:not(.wr-sky-on) footer{background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 0%,var(--wr-s8)) 0%,color-mix(in srgb,var(--bg) 2%,var(--wr-s8)) 8.33%,color-mix(in srgb,var(--bg) 7.4%,var(--wr-s8)) 16.67%,color-mix(in srgb,var(--bg) 15.6%,var(--wr-s8)) 25%,color-mix(in srgb,var(--bg) 25.9%,var(--wr-s8)) 33.33%,color-mix(in srgb,var(--bg) 37.6%,var(--wr-s8)) 41.67%,color-mix(in srgb,var(--bg) 50%,var(--wr-s8)) 50%,color-mix(in srgb,var(--bg) 62.4%,var(--wr-s8)) 58.33%,color-mix(in srgb,var(--bg) 74.1%,var(--wr-s8)) 66.67%,color-mix(in srgb,var(--bg) 84.4%,var(--wr-s8)) 75%,color-mix(in srgb,var(--bg) 92.6%,var(--wr-s8)) 83.33%,color-mix(in srgb,var(--bg) 98%,var(--wr-s8)) 91.67%,color-mix(in srgb,var(--bg) 100%,var(--wr-s8)) 100%) top/100% var(--wr-fh) no-repeat,linear-gradient(var(--bg),var(--bg)) bottom/100% calc(100% - var(--wr-fh) + 1px) no-repeat;}
+/* the footer is completely transparent (owner, 25 Oct 2026): the moving sky runs on behind it to the page's end;
+   the still page carries its last sky colour on under it, so no line marks where the page ends */
+footer{--wr-fh:clamp(110px,13vw,200px);padding-top:var(--wr-fh);background:none;}
+:root:not(.wr-sky-on) footer{background:var(--wr-s8);}
 footer::after{background:radial-gradient(58% 40% at 68% 36%,color-mix(in srgb,var(--sky-horizon) 55%,transparent),transparent 74%);}
 
 /* ----- the moving sky (with the script and motion): one canvas, fixed behind everything ----- */
@@ -615,7 +616,7 @@ footer::after{background:radial-gradient(58% 40% at 68% 36%,color-mix(in srgb,va
     <span class="nav-sep">|</span>
     <a href="about.html">About</a>
     <!-- v4:needs record-attempt.html --><span class="nav-sep">|</span>
-    <a class="v4-wr is-here" href="record-attempt.html" title="Speed Record" aria-current="page"><svg viewBox="0 0 16 10" aria-hidden="true" focusable="false"><path d="M6 1.5h9"/><path d="M2 5h13"/><path d="M8 8.5h7"/></svg>Speed Record</a><!-- /v4:needs -->
+    <a class="v4-wr" href="record-attempt.html" title="Speed Record"><svg viewBox="0 0 16 10" aria-hidden="true" focusable="false"><path d="M6 1.5h9"/><path d="M2 5h13"/><path d="M8 8.5h7"/></svg>Speed Record</a><!-- /v4:needs -->
   </div>
   <a href="enquire.html" class="nav-cta" data-hover><span>Enquire Now</span></a>
 </nav>
