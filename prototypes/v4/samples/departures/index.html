@@ -483,7 +483,60 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
 .sl-row a:hover .sl-go,.sl-row a:focus-visible .sl-go{color:var(--orange);translate:3px 0}
 .sl-row a:focus-visible::before{opacity:1;outline:1px solid var(--orange);outline-offset:-1px}
 .sl-spine,.sl-trk,.sl-pin,.sl-gap,.sl-row .sl-l,.sl-gl-m{display:none}
-.sl .v4-call{margin-top:clamp(2.5rem,5vw,4rem)}
+/* the call at the foot of the season (owner, 25 Oct: keep the lit panel, make it arrive): the words on the
+   rows' left edge, the buttons level with the title, one --sp-4 gap. As it comes into view its faint glow opens
+   in the middle, then settles into the top-left corner where it rests; the top line draws, the words rise.
+   Without JavaScript, with reduced motion or in print it is simply there, finished. */
+@property --cg-x{syntax:"<percentage>";inherits:false;initial-value:0%}
+@property --cg-y{syntax:"<percentage>";inherits:false;initial-value:0%}
+@property --cg-w{syntax:"<percentage>";inherits:false;initial-value:120%}
+@property --cg-h{syntax:"<percentage>";inherits:false;initial-value:140%}
+.sl .v4-call{margin-top:var(--sp-4);padding:var(--sp-4) 0 var(--sp-3);background:none;border-top:0;border-image:none;isolation:isolate}
+.sl .v4-call::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(var(--cg-w) var(--cg-h) at var(--cg-x) var(--cg-y),color-mix(in srgb,var(--orange) 9%,transparent) 0%,color-mix(in srgb,var(--orange) 2%,transparent) 40%,transparent 75%)}
+.sl .v4-call::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,var(--orange),var(--edge) 30%,transparent);transform-origin:0 50%}
+.sl-end{display:none}
+@media (min-width:821px){
+  .sl .v4-call{row-gap:0}
+  .sl .v4-call-copy{display:contents}
+  .sl .v4-call .kit-kicker{grid-column:1;grid-row:1}
+  .sl .v4-call-title{grid-column:1;grid-row:2}
+  .sl .v4-call .v4-fold{grid-column:1;grid-row:3}
+  .sl .v4-call-actions{grid-column:2;grid-row:2;align-self:center;margin-top:0}
+}
+@keyframes cg-glow{
+  0%{--cg-x:50%;--cg-y:50%;--cg-w:8%;--cg-h:14%;opacity:0}
+  45%{--cg-x:50%;--cg-y:50%;--cg-w:70%;--cg-h:120%;opacity:1}
+  100%{--cg-x:0%;--cg-y:0%;--cg-w:120%;--cg-h:140%;opacity:1}
+}
+.sl .v4-call.is-armed::before{opacity:0}
+.sl .v4-call.is-armed::after,.sl .v4-call.is-armed .sl-end{transform:scaleX(0)}
+.sl .v4-call.is-armed .sl-end{transform:scaleY(0)}
+.sl .v4-call.is-armed :is(.kit-kicker,.v4-call-title,.v4-fold,.v4-call-actions){opacity:0;translate:0 14px}
+.sl .v4-call.is-armed .v4-call-title{clip-path:inset(0 0 100% 0)}
+.sl .v4-call.is-in::before{animation:cg-glow 2.4s var(--ease-out) both}
+.sl .v4-call.is-in::after{transform:none;transition:transform 1.4s var(--ease-out) .9s}
+.sl .v4-call.is-in .sl-end{transform:none;transition:transform .7s var(--ease-out)}
+.sl .v4-call.is-in :is(.kit-kicker,.v4-call-title,.v4-fold,.v4-call-actions){opacity:1;translate:0 0;
+  transition:opacity .9s var(--ease-out),translate 1s var(--ease-out),clip-path 1.1s var(--ease-out)}
+.sl .v4-call.is-in .v4-call-title{clip-path:inset(0 0 -12% 0);transition-delay:.85s}
+.sl .v4-call.is-in .kit-kicker{transition-delay:.7s}
+.sl .v4-call.is-in .v4-fold{transition-delay:1.1s}
+.sl .v4-call.is-in .v4-call-actions{transition-delay:1.25s}
+@media (max-width:759px){
+  /* the season line runs on past Peru to a ring at the call */
+  .sl .v4-call{padding:var(--sp-3) 0 0 30px}
+  .sl .v4-call::before{left:30px}
+  .sl .v4-call::after{left:30px}
+  .sl-end{display:block;position:absolute;left:5.5px;top:calc(-1 * var(--sp-4));width:2px;height:calc(var(--sp-4) + var(--sp-3) + .3rem);
+    background:var(--orange);transform-origin:50% 0}
+  .sl-end::after{content:"";position:absolute;left:-3.5px;bottom:-9px;width:9px;height:9px;border-radius:50%;
+    border:1.5px solid var(--orange);background:var(--bg);box-sizing:border-box}
+  .sl .v4-call-actions{display:flex;flex-direction:column;align-items:stretch;width:100%}
+  .sl .v4-call-actions a{justify-content:center}
+}
+@media print{.sl .v4-call::before{animation:none}}
 @media (min-width:760px) and (max-width:1080px){
   .sl-hd,.sl-row a{grid-template-columns:minmax(0,1.3fr) minmax(0,1.3fr) minmax(0,.7fr) minmax(0,.8fr) minmax(0,.8fr) 22px;row-gap:.35rem}
   .sl-hd span:nth-child(6){display:none}
@@ -580,6 +633,7 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
   </div>
 
   <div class="v4-call">
+    <i class="sl-end" aria-hidden="true"></i>
     <div class="v4-call-copy">
       <span class="kit-kicker">Ready To Touch The Sky With Glory?</span>
       <h2 class="v4-call-title">Book A Free <span class="v4-nw">30-Minute</span>, No Obligation Virtual Call</h2>
@@ -599,6 +653,21 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
       <a href="https://wa.me/4796757456" target="_blank" rel="noopener" class="btn-lines v4-wa" data-hover><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.4-4.1A7.9 7.9 0 1 1 8.7 19L4 20Z"/><path d="M8.5 9.5c.3-.8 1-.7 1.5-.5.3.1.5.6.7 1 .2.4.1.6-.1.9-.2.3-.4.4-.2.8.2.4 1 1.5 2.3 2 .3.1.5.1.7-.1.2-.3.6-.8.9-1 .3-.2.5-.1.8 0 .3.1 1.6.7 1.9.9.2.1.4.2.4.5 0 .8-.3 1.6-1.4 1.9-1 .3-1.8.2-3.2-.3-2.6-1-4.3-3.5-4.5-3.8-.1-.2-1-1.3-1-2.5 0-1.1.6-1.6.8-1.8Z" fill="currentColor" stroke="none"/></svg>WhatsApp</a>
     </div>
   </div>
+<script>
+/* the call arrives (see the styles): armed only when it is still below the fold, so it never hides once seen */
+(function () {
+  var c = document.querySelector('#destinations .v4-call');
+  if (!c || !window.IntersectionObserver || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+  if (c.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+  c.classList.add('is-armed');
+  var io = new IntersectionObserver(function (es) {
+    if (!es[0].isIntersecting) return;
+    c.classList.add('is-in'); io.disconnect();
+  }, { rootMargin: '0px 0px -18% 0px' });
+  io.observe(c);
+  window.addEventListener('beforeprint', function () { c.classList.add('is-in'); });
+})();
+</script>
 <script>
 /* The departures on the opening's season line. Today is worked out from the
    date; the place last shown in the opening arrives lit; pointing at (or

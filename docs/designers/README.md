@@ -10,7 +10,9 @@ Agent tool, `subagent_type: "designer-d"`). Their memory is in this folder:
 `direction.md` (the brief and the owner's decisions, kept by the chats) and
 each one's notebook (`D.md`, `E.md`, `F.md`, kept by the designer). A chat
 asks them, shows the owner at most two options with one preview, then writes
-the owner's answer into `direction.md`.
+the owner's answer into `direction.md`. Since 25 Oct 2026 each designer
+works to "The professional standard" in its definition: homework first, no rule stretched past its
+section, the site's immersive feel weighed before anything is made simpler, the whole site owned.
 
 The Juror (`.claude/agents/awwwards-juror.md`, notebook `juror.md`) is the
 fourth, added 24 Oct 2026: an independent judge that scores a built preview
