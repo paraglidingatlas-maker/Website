@@ -688,6 +688,126 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
   .lb .ep-art img,.lb-cap,.lb-see,.lb-see span,.lb-find{transition:none}
 }
 
+/* ===== B3: the lit trip leads. The lead (place, dates, picture, play, chapter line, episode)
+   on the left, the globe answering it on the right, the other trips small under the lead.
+   A radio group holds the lead, so picking works without JavaScript; the switch is a cut. ===== */
+#listen.lb{padding-top:0;border-top:0}
+.lb .v2-listen-head{margin-bottom:0}
+.lb .kit-intro{max-width:none}
+.lb-stage{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:var(--sp-5);align-items:start;margin-top:var(--sp-4)}
+/* the lead: Kenya unless another radio is checked (a browser without :has keeps Kenya) */
+.lb-lead{display:none;flex-direction:column;align-items:flex-start;min-width:0}
+.lb-lead[data-dest="kenya"]{display:flex}
+.lb:has(.lb-r:checked:not(#lbr-kenya)) .lb-lead[data-dest="kenya"]{display:none}
+.lb:has(#lbr-panchgani:checked) .lb-lead[data-dest="panchgani"],
+.lb:has(#lbr-india:checked) .lb-lead[data-dest="india"]{display:flex}
+.lb-place{order:0;margin:0;font:600 7rem/.92 var(--font-display);letter-spacing:-.035em;color:var(--white);max-width:100%;scroll-margin-top:6rem}
+.lb-dates{order:0;margin:.85rem 0 0;font-size:var(--fs-body);line-height:1.45;color:var(--gray-light);font-variant-numeric:tabular-nums}
+.lb:has(.lb-r:focus-visible) .lb-place{outline:2px solid var(--white);outline-offset:6px}
+/* one episode: picture, play and chapter line, then the words. A second episode (India) sits
+   under the first as one line, and swaps into the player when tapped */
+.lb-ep{order:1;display:flex;flex-direction:column;align-items:flex-start;width:100%;max-width:560px;margin-top:var(--sp-3)}
+.lb-ep.is-alt{order:2;margin-top:var(--sp-2)}
+.lb-lead>.lb-see{order:3;margin-top:var(--sp-3);font-size:var(--fs-body-s)}
+.lb-ep.is-alt>:not(.lb-altline),.lb-ep:not(.is-alt)>.lb-altline{display:none}
+/* the picture: the episode's own art, cropped to the face, words left out; 1:1 at 560 px */
+.lb-frame{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--card)}
+.lb-pic,.lb-o-pic{position:absolute;inset:0;display:block;overflow:hidden}
+.lb-pic img,.lb-o-pic img{position:absolute;max-width:none;height:auto;object-fit:fill;
+  width:calc(1280 / var(--cw) * 100%);left:calc(var(--x) / var(--cw) * -100%);top:calc(var(--y) / var(--cw) * -177.778%);
+  filter:grayscale(1) brightness(.62) contrast(1.06);transition:filter .45s var(--ease-out)}
+.lb-ep:has(.lb-play:is(:hover,:focus-visible)) .lb-pic img,.lb-pic:hover img{filter:none}
+.lb-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.lb-ep.is-on .lb-pic{visibility:hidden}
+/* play, the chapter line and the readout in one row */
+.lb-ctl{display:flex;align-items:flex-start;gap:.75rem;width:100%;margin-top:.35rem}
+.lb-play{flex:none;display:grid;place-items:center;width:44px;height:44px;margin:14px 0 0 -13px;border-radius:50%;
+  color:color-mix(in srgb,var(--white) 34%,transparent);transition:color .3s var(--ease),transform .3s var(--ease)}
+.lb-play:hover,.lb-play:focus-visible{color:color-mix(in srgb,var(--white) 78%,transparent)}
+.lb-play:active{transform:scale(.94)}
+.lb-play:focus-visible{outline:1px solid var(--orange);outline-offset:-2px}
+.lb-play svg{display:block;width:14px;height:14px;fill:currentColor}
+.lb-play .i-pause,.lb-ep.is-playing .lb-play .i-play{display:none}
+.lb-ep.is-playing .lb-play .i-pause{display:block}
+.lb-line{position:relative;flex:1;min-width:0;height:58px;touch-action:manipulation;cursor:pointer}
+.lb-track{position:absolute;left:0;right:0;top:35px;height:2px;background:var(--edge)}
+.lb-played{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--gray-light)}
+.lb-tick{position:absolute;top:-9px;width:14px;height:20px;margin-left:-7px;display:block}
+.lb-tick::before{content:"";position:absolute;left:6.5px;top:4px;width:1px;height:12px;background:var(--gray);transition:background .2s var(--ease-out)}
+.lb-tick.is-past::before{background:var(--gray-light)}
+.lb-tick.is-here::before,.lb-tick:hover::before,.lb-tick:focus-visible::before{background:var(--white)}
+.lb-tick:focus-visible{outline:1px solid var(--white);outline-offset:1px}
+.lb-tn{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.lb-now{position:absolute;left:0;top:6px;margin:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  font-size:var(--fs-small);line-height:1.3;color:var(--gray-light);pointer-events:none}
+.lb-line.is-pointing .lb-now{color:var(--white)}
+.lb-rd{flex:none;margin-top:28px;font-size:var(--fs-small);line-height:1.2;color:var(--gray);font-variant-numeric:tabular-nums;white-space:nowrap}
+.lb-rd b{font-weight:400;color:var(--gray-light)}
+.lb-meta{margin:.55rem 0 0;font-size:var(--fs-small);color:var(--gray);font-variant-numeric:tabular-nums}
+.lb-title{margin:.3rem 0 0;font:600 2rem/1.15 var(--font-display);letter-spacing:-.01em;color:var(--white)}
+.lb-title a{color:inherit;text-decoration:none;transition:color .25s var(--ease-out)}
+.lb-title a:is(:hover,:focus-visible){color:var(--orange)}
+.lb-guest{margin:.35rem 0 0;font-size:var(--fs-body);color:var(--gray-light)}
+.lb-altline{display:flex;align-items:baseline;gap:.6rem;width:100%;padding-top:.8rem;border-top:1px solid var(--line);
+  font-size:var(--fs-body-s);line-height:1.45;color:var(--gray-light);text-decoration:none;transition:color .25s var(--ease-out)}
+.lb-altline svg{flex:none;width:10px;height:10px;fill:currentColor;align-self:center;color:color-mix(in srgb,var(--white) 34%,transparent)}
+.lb-altline b{font-weight:600;color:var(--white)}
+.lb-altline span{color:var(--gray)}
+.lb-altline:is(:hover,:focus-visible){color:var(--white)}
+.lb-altline:is(:hover,:focus-visible) svg{color:color-mix(in srgb,var(--white) 78%,transparent)}
+.lb-altline:focus-visible{outline:2px solid var(--white);outline-offset:4px}
+.lb-lead .lb-see{color:var(--white)}
+/* the other trips, small, under the lead: the labels of the radio group */
+.lb-others{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.1rem 1.6rem;margin-top:var(--sp-5);padding-top:var(--sp-3);border-top:1px solid var(--line)}
+.lb-others-k{grid-column:1/-1;margin:0 0 -.2rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+.lb-r{position:absolute;top:0;left:0;width:1px;height:1px;margin:0;opacity:0;pointer-events:none}
+.lb-o{display:grid;grid-template-columns:160px minmax(0,1fr);gap:1rem;align-items:start;cursor:pointer;min-width:0}
+.lb-r:checked+.lb-o{display:none}
+.lb-r:focus-visible+.lb-o{outline:2px solid var(--white);outline-offset:4px}
+.lb-o-pic{position:relative;inset:auto;aspect-ratio:16/9;background:var(--card)}
+.lb-o:hover .lb-o-pic img{filter:none}
+.lb-o-tx{display:flex;flex-direction:column;gap:.18rem;min-width:0}
+.lb-o-tx b{font:600 1.05rem/1.2 var(--font-display);color:var(--white);transition:color .25s var(--ease-out)}
+.lb-o:hover .lb-o-tx b{color:var(--orange)}
+.lb-o-d{font-size:var(--fs-small);line-height:1.35;color:var(--gray-light);font-variant-numeric:tabular-nums}
+.lb-o-t{font-size:var(--fs-body-s);line-height:1.3;color:var(--white)}
+.lb-o-l{font-size:var(--fs-micro);color:var(--gray);font-variant-numeric:tabular-nums}
+/* the globe joins the section, beside the lead, and stays in view while you pick */
+.lb-globe{position:sticky;top:5.5rem;min-width:0;scroll-margin-top:5rem}
+.lb-globe .lb-key{margin:0 0 var(--sp-1)}
+.lb .lb-globe .ep-map{margin-top:0;aspect-ratio:1/1}
+.lb-pins>ol{grid-template-columns:1fr;gap:var(--sp-2)}
+.lb-pins>ol>li{border-top-color:var(--edge)}
+.lb-pins>ol>li b{transition:none}
+.lb:not(:has(.lb-r:checked:not(#lbr-kenya))) #lb-at-kenya,
+.lb:has(#lbr-panchgani:checked) #lb-at-panchgani,
+.lb:has(#lbr-india:checked) #lb-at-india{border-top-color:var(--orange)}
+.lb:not(:has(.lb-r:checked:not(#lbr-kenya))) #lb-at-kenya>b,
+.lb:has(#lbr-panchgani:checked) #lb-at-panchgani>b,
+.lb:has(#lbr-india:checked) #lb-at-india>b{color:var(--orange)}
+/* the route: dim all season, lit from Kenya up to the lead */
+#epMap .lb-route{opacity:.28}
+#epMap .lb-route-lit{fill:none;stroke:var(--orange);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.lb .v2-rail-wrap{margin-top:var(--lb-gap)}
+.lb .lb-grp.is-more .lb-hd{height:auto}
+@media (max-width:900px){
+  .lb-stage{grid-template-columns:minmax(0,1fr);gap:var(--sp-5)}
+  .lb-globe{position:static}
+}
+@media (max-width:600px){
+  .lb{--gutter:16px}
+  .lb-stage{margin-top:var(--sp-3)}
+  .lb-place{font-size:min(4rem,calc((100vw - 32px) / 5.5))}
+  .lb-dates{font-size:var(--fs-body-s);margin-top:.6rem}
+  .lb-ep{max-width:none}
+  .lb-title{font-size:1.5rem}
+  .lb-others{grid-template-columns:minmax(0,1fr);margin-top:var(--sp-4)}
+  .lb-o{grid-template-columns:128px minmax(0,1fr);gap:.85rem}
+  .lb .lb-globe .ep-map{aspect-ratio:4/5}
+}
+@media (prefers-reduced-motion:reduce){
+  .lb-pic img,.lb-o-pic img,.lb-play,.lb-tick::before,.lb-title a,.lb-altline,.lb-o-tx b{transition:none}
+}
 </style>
 <section id="listen" class="kit-band v2-listen lb" aria-labelledby="lbTitle">
   <div class="kit-in">
@@ -695,7 +815,7 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
       <div class="kit-head">
         <span class="kit-kicker">On Air: The Paragliding Atlas Podcast</span>
         <h2 class="kit-title" id="lbTitle">Hear Where We <em class="v2-accent">Fly</em></h2>
-        <p class="kit-intro">Conversations with the designers, test pilots and champions who shape the sport. We start with the places we fly, in season order. Search every episode, or find one on the globe below.</p>
+        <p class="kit-intro">Conversations with the designers, test pilots and champions who shape the sport.</p>
       </div>
       <div class="ep-search-section v2-search" role="search">
         <label class="v2-search-label" for="epSearchInput">Search The Whole Episode Library</label>
@@ -706,44 +826,86 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
         <div class="ep-search-results" id="epSearchResults"></div>
       </div>
     </div>
-  </div>
-  <div class="v2-rail-wrap">
-    <div class="v2-rail" tabindex="0" aria-label="Episodes: the places we fly first, in season order, then more conversations, newest first">
-      <div class="lb-grp" data-dest="kenya"><div class="lb-hd"><div class="lb-hd-in"><p class="lb-hd-top"><b>Kenya</b><a class="lb-see" href="../../destinations/kenya.html" aria-label="See the Kenya trip">See the trip <span aria-hidden="true">&rarr;</span></a></p><p class="lb-hd-d">18 to 29 Jan, 1 to 12 Feb 2027</p><a class="lb-find" href="#lb-at-kenya" data-find="pre-pwc-kenya-nikolay-yotov" aria-label="Find Kenya on the globe"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><ellipse cx="8" cy="8" rx="2.6" ry="6.2"/><path d="M1.8 8h12.4"/></svg>Find it on the globe</a></div></div><div class="lb-cards"><a class="ep-card" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html" data-ep-slug="pre-pwc-kenya-nikolay-yotov"><span class="ep-art lb-crop" style="--x:790;--y:24" data-px="720" data-py="90"><img src="https://i.ytimg.com/vi/UVLF8l0qFlA/maxresdefault.jpg" alt="Nikolay Yotov" loading="lazy" width="1280" height="720"></span><span class="lb-cap"><span class="lb-k"><b>Navigators</b><i>Episode 10</i></span><span class="lb-t">Pre PWC Kenya</span><span class="lb-g">Nikolay Yotov</span></span><span class="ep-foot">52 min<s>/</s>9 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a></div></div>
-      <div class="lb-grp" data-dest="panchgani"><div class="lb-hd"><div class="lb-hd-in"><p class="lb-hd-top"><b>Panchgani</b><a class="lb-see" href="../../destinations/panchgani.html" aria-label="See the Panchgani trip">See the trip <span aria-hidden="true">&rarr;</span></a></p><p class="lb-hd-d">14 to 21 Feb 2027</p><a class="lb-find" href="#lb-at-panchgani" data-find="navigating-panchgani-vistasp-kharas" aria-label="Find Panchgani on the globe"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><ellipse cx="8" cy="8" rx="2.6" ry="6.2"/><path d="M1.8 8h12.4"/></svg>Find it on the globe</a></div></div><div class="lb-cards"><a class="ep-card" href="../../episodes/navigating-panchgani-vistasp-kharas.html" data-ep-slug="navigating-panchgani-vistasp-kharas"><span class="ep-art lb-crop" style="--x:760;--y:24" data-px="710" data-py="70"><img src="https://i.ytimg.com/vi/0VPg7TZ9hK0/maxresdefault.jpg" alt="Vistasp Kharas" loading="lazy" width="1280" height="720"></span><span class="lb-cap"><span class="lb-k"><b>Navigators</b><i>Episode 9</i></span><span class="lb-t">Navigating Panchgani</span><span class="lb-g">Vistasp Kharas</span></span><span class="ep-foot">54 min<s>/</s>12 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a></div></div>
-      <div class="lb-grp is-two" data-dest="india"><div class="lb-hd"><div class="lb-hd-in"><p class="lb-hd-top"><b>India</b><a class="lb-see" href="../../destinations/india.html" aria-label="See the India trip">See the trip <span aria-hidden="true">&rarr;</span></a></p><p class="lb-hd-d">15 to 24 Apr, 25 Apr to 4 May, 21 to 30 Oct, 3 to 12 Nov 2027</p><a class="lb-find" href="#lb-at-india" data-find="navigating-india-eddie-colfox" aria-label="Find India on the globe"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><ellipse cx="8" cy="8" rx="2.6" ry="6.2"/><path d="M1.8 8h12.4"/></svg>Find it on the globe</a></div></div><div class="lb-cards"><a class="ep-card" href="../../episodes/navigating-india-eddie-colfox.html" data-ep-slug="navigating-india-eddie-colfox"><span class="ep-art lb-crop" style="--x:830;--y:24" data-px="770" data-py="150"><img src="https://i.ytimg.com/vi/TO6gW69d7YE/maxresdefault.jpg" alt="Eddie Colfox" loading="lazy" width="1280" height="720"></span><span class="lb-cap"><span class="lb-k"><b>Navigators</b><i>Episode 3</i></span><span class="lb-t">Navigating India</span><span class="lb-g">Eddie Colfox</span></span><span class="ep-foot">52 min<s>/</s>7 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a><a class="ep-card" href="../../episodes/navigating-india-jigish-gohil.html" data-ep-slug="navigating-india-jigish-gohil"><span class="ep-art lb-crop" style="--x:742;--y:24" data-px="700" data-py="236"><img src="https://i.ytimg.com/vi/_apo1PNabZI/maxresdefault.jpg" alt="Jigish Gohil" loading="lazy" width="1280" height="720"></span><span class="lb-cap"><span class="lb-k"><b>Navigators</b><i>Episode 4</i></span><span class="lb-t">Navigating India</span><span class="lb-g">Jigish Gohil</span></span><span class="ep-foot">36 min<s>/</s>8 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a></div></div>
-      <div class="lb-grp is-more"><div class="lb-hd"><div class="lb-hd-in"><p class="lb-hd-top"><b>More conversations</b></p><p class="lb-hd-d">Newest first</p></div></div><div class="lb-cards">
-      <!-- guest-cards:start -->
-      <a class="ep-card" href="../../episodes/the-russell-ogden-interview-decoding-paragliding-mastery.html" data-ep-slug="the-russell-ogden-interview-decoding-paragliding-mastery"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-russel.webp" type="image/webp"><img src="../../../../assets/podcast/guest-russel.jpg" alt="Russell Ogden" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Risk vs Reward</b><i>Episode 75</i></span><span class="lb-t">Progression, Fear &amp; Competition</span><span class="lb-g">Russell Ogden</span></span><span class="ep-foot">132 min<s>/</s>12 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
-      <a class="ep-card" href="../../episodes/paragliding-physiology-safety-protocols-dr-matt-wilkes.html" data-ep-slug="paragliding-physiology-safety-protocols-dr-matt-wilkes"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-matt.webp" type="image/webp"><img src="../../../../assets/podcast/guest-matt.jpg" alt="Dr Matt Wilkes" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Risk vs Reward</b><i>Episode 74</i></span><span class="lb-t">Biophysics In The Art Of Flight</span><span class="lb-g">Dr Matt Wilkes</span></span><span class="ep-foot">83 min<s>/</s>12 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
-      <a class="ep-card" href="../../episodes/tom-lolies-explains-the-science-of-wing-design-and.html" data-ep-slug="tom-lolies-explains-the-science-of-wing-design-and"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-tom.webp" type="image/webp"><img src="../../../../assets/podcast/guest-tom.jpg" alt="Tom Lolies" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Flight Mechanics</b><i>Episode 66</i></span><span class="lb-t">The Science Of Wing Design</span><span class="lb-g">Tom Lolies</span></span><span class="ep-foot">92 min<s>/</s>12 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
-      <a class="ep-card" href="../../episodes/luc-armant-talks-about-debunking-the-myths-and-upgrading.html" data-ep-slug="luc-armant-talks-about-debunking-the-myths-and-upgrading"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-luc.webp" type="image/webp"><img src="../../../../assets/podcast/guest-luc.jpg" alt="Luc Armant" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Flight Mechanics</b><i>Episode 57</i></span><span class="lb-t">Debunking The Myths, Enzo 3</span><span class="lb-g">Luc Armant</span></span><span class="ep-foot">40 min<s>/</s>8 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
-      <a class="ep-card" href="../../episodes/maxime-pinot-the-journey-within.html" data-ep-slug="maxime-pinot-the-journey-within"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-maxime.webp" type="image/webp"><img src="../../../../assets/podcast/guest-maxime.jpg" alt="Maxime Pinot" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Sky Gods</b><i>Episode 50</i></span><span class="lb-t">The Journey Within</span><span class="lb-g">Maxime Pinot</span></span><span class="ep-foot">103 min<s>/</s>11 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
-      <a class="ep-card" href="../../episodes/consequence-over-probability-will-gadd-on-why-true-safety.html" data-ep-slug="consequence-over-probability-will-gadd-on-why-true-safety"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-will.webp" type="image/webp"><img src="../../../../assets/podcast/guest-will.jpg" alt="Will Gadd" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Risk vs Reward</b><i>Episode 45</i></span><span class="lb-t">Field Protocols For Rewiring Risk Intuition</span><span class="lb-g">Will Gadd</span></span><span class="ep-foot">63 min<s>/</s>13 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
-      <a class="ep-card" href="../../episodes/why-paraglidings-safety-future-looks-different-rast.html" data-ep-slug="why-paraglidings-safety-future-looks-different-rast"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-michaiel.webp" type="image/webp"><img src="../../../../assets/podcast/guest-michaiel.jpg" alt="Michael Nesler" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>New Technologies</b><i>Episode 44</i></span><span class="lb-t">RAST And The LeelooX Effect</span><span class="lb-g">Michael Nesler</span></span><span class="ep-foot">78 min<s>/</s>13 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
-      <a class="ep-card" href="../../episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html" data-ep-slug="meteorology-101-a-beginners-guide-to-understanding-weather"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-meterology.webp" type="image/webp"><img src="../../../../assets/podcast/guest-meterology.jpg" alt="Ivelin Kalushkov" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Weather Patterns</b><i>Episode 42</i></span><span class="lb-t">Decoding Weather Apps</span><span class="lb-g">Ivelin Kalushkov</span></span><span class="ep-foot">71 min<s>/</s>13 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
-      <a class="ep-card" href="../../episodes/urs-haari-the-real-truth-about-reserve-parachutes-a.html" data-ep-slug="urs-haari-the-real-truth-about-reserve-parachutes-a"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-urs.webp" type="image/webp"><img src="../../../../assets/podcast/guest-urs.jpg" alt="Urs Haari" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Know Your Equipment</b><i>Episode 41</i></span><span class="lb-t">Untold Truth About Reserve Parachutes</span><span class="lb-g">Urs Haari</span></span><span class="ep-foot">166 min<s>/</s>13 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
-      <a class="ep-card" href="../../episodes/alain-zoller-the-science-of-en-certifications-how-work.html" data-ep-slug="alain-zoller-the-science-of-en-certifications-how-work"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-alain.webp" type="image/webp"><img src="../../../../assets/podcast/guest-alain.jpg" alt="Alain Zoller" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Flight Mechanics</b><i>Episode 37</i></span><span class="lb-t">The Science Of EN Certifications</span><span class="lb-g">Alain Zoller</span></span><span class="ep-foot">96 min<s>/</s>13 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
-      <a class="ep-card" href="../../episodes/kinga-masztalerz-building-a-healthy-relationship-with-the.html" data-ep-slug="kinga-masztalerz-building-a-healthy-relationship-with-the"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-kinga.webp" type="image/webp"><img src="../../../../assets/podcast/guest-kinga.jpg" alt="Kinga Masztalerz" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Risk vs Reward</b><i>Episode 33</i></span><span class="lb-t">Master Fear, Build Resilience &amp; Find Joy</span><span class="lb-g">Kinga Masztalerz</span></span><span class="ep-foot">101 min<s>/</s>12 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
-      <a class="ep-card" href="../../episodes/helmut-schrempf-modernizing-siv-courses-how-this-new.html" data-ep-slug="helmut-schrempf-modernizing-siv-courses-how-this-new"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-helmut.webp" type="image/webp"><img src="../../../../assets/podcast/guest-helmut.jpg" alt="Helmut Schrempf" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Flight Mechanics</b><i>Episode 32</i></span><span class="lb-t">Modernizing SIV Courses</span><span class="lb-g">Helmut Schrempf</span></span><span class="ep-foot">80 min<s>/</s>10 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
-      <a class="ep-card" href="../../episodes/risk-vs-reward-5-gabriel-orsini.html" data-ep-slug="risk-vs-reward-5-gabriel-orsini"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-gabriel.webp" type="image/webp"><img src="../../../../assets/podcast/guest-gabriel.jpg" alt="Gabriel Orsini" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Risk vs Reward</b><i>Episode 26</i></span><span class="lb-t">How Open Are Manufacturers Really</span><span class="lb-g">Gabriel Orsini</span></span><span class="ep-foot">101 min<s>/</s>13 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
-      <a class="ep-card" href="../../episodes/sky-gods-flying-to-win-honorin-hamard.html" data-ep-slug="sky-gods-flying-to-win-honorin-hamard"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-honorin.webp" type="image/webp"><img src="../../../../assets/podcast/guest-honorin.jpg" alt="Honorin Hamard" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Sky Gods</b><i>Episode 6</i></span><span class="lb-t">Flying To Win</span><span class="lb-g">Honorin Hamard</span></span><span class="ep-foot">108 min<s>/</s>11 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
-      <a class="ep-card" href="../../episodes/sky-gods-flying-8000ers-antoine-girard.html" data-ep-slug="sky-gods-flying-8000ers-antoine-girard"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-antoine.webp" type="image/webp"><img src="../../../../assets/podcast/guest-antoine.jpg" alt="Antoine Girard" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Sky Gods</b><i>Episode 5</i></span><span class="lb-t">Flying 8000ers</span><span class="lb-g">Antoine Girard</span></span><span class="ep-foot">67 min<s>/</s>13 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
-      <!-- guest-cards:end -->
-      </div></div>
-    </div>
-    <div class="v2-rail-nav" hidden>
-      <button type="button" class="v2-rail-btn" data-dir="-1" aria-label="Previous episodes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <button type="button" class="v2-rail-btn" data-dir="1" aria-label="Next episodes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-    </div>
-  </div>
-  <div class="kit-in">
-    <div class="lb-map" id="map">
-      <div class="lb-map-top">
-        <span class="kit-kicker">A Map Of Every Place We've Ever Told A Story From</span>
-        <ul class="lb-key" aria-hidden="true"><li class="o"><i></i>Our trips</li><li class="p"><i></i>Planned, no episode yet</li><li class="g"><i></i>Every other episode</li></ul>
+    <div class="lb-stage">
+      <div class="lb-leadcol">
+      <div class="lb-leads">
+      <article class="lb-lead" data-dest="kenya" aria-labelledby="lbl-kenya">
+        <h3 class="lb-place" id="lbl-kenya">Kenya</h3>
+        <p class="lb-dates">18 to 29 Jan, 1 to 12 Feb 2027</p>
+        <div class="lb-ep" data-slug="pre-pwc-kenya-nikolay-yotov" data-vid="UVLF8l0qFlA" data-min="52">
+          <div class="lb-frame"><a class="lb-pic" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html" tabindex="-1" aria-hidden="true" style="--x:700;--y:195;--cw:540" data-px="720" data-py="90"><img src="https://i.ytimg.com/vi/UVLF8l0qFlA/maxresdefault.jpg" alt="Nikolay Yotov" loading="lazy" decoding="async" width="1280" height="720"></a></div>
+          <div class="lb-ctl">
+            <a class="lb-play" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html" aria-label="Play Pre PWC Kenya, with Nikolay Yotov"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><svg class="i-pause" viewBox="0 0 10 10" aria-hidden="true"><rect x="1.5" y="1" width="2.4" height="8" rx="1"/><rect x="6.1" y="1" width="2.4" height="8" rx="1"/></svg></a>
+            <div class="lb-line"><p class="lb-now" aria-hidden="true">Welcome back after a long gap</p><nav class="lb-track" aria-label="Chapters of Pre PWC Kenya"><span class="lb-played"></span><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c1" data-t="6" style="left:0.192%"><span class="lb-tn">Welcome back after a long gap</span><span class="lb-tn">, chapter 1, 0:06</span></a><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c2" data-t="251" style="left:8.045%"><span class="lb-tn">Sunshine, food, and the trade-offs of the place</span><span class="lb-tn">, chapter 2, 4:11</span></a><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c3" data-t="475" style="left:15.224%"><span class="lb-tn">Climate, seasons, and when to come</span><span class="lb-tn">, chapter 3, 7:55</span></a><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c4" data-t="751" style="left:24.071%"><span class="lb-tn">Zebras below the crater</span><span class="lb-tn">, chapter 4, 12:31</span></a><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c5" data-t="1056" style="left:33.846%"><span class="lb-tn">What Kenya offers as a flying destination</span><span class="lb-tn">, chapter 5, 17:36</span></a><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c6" data-t="1326" style="left:42.500%"><span class="lb-tn">Flying in this region</span><span class="lb-tn">, chapter 6, 22:06</span></a><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c7" data-t="1619" style="left:51.891%"><span class="lb-tn">What you need to navigate Africa</span><span class="lb-tn">, chapter 7, 26:59</span></a><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c8" data-t="1863" style="left:59.712%"><span class="lb-tn">Out and return</span><span class="lb-tn">, chapter 8, 31:03</span></a><a class="lb-tick" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html#c9" data-t="2109" style="left:67.596%"><span class="lb-tn">Experience, and what it does not cover</span><span class="lb-tn">, chapter 9, 35:09</span></a></nav></div>
+            <span class="lb-rd"><b>0:00</b> / <i style="font-style:normal">52 min</i></span>
+          </div>
+          <p class="lb-meta">Navigators, Episode 10</p>
+          <p class="lb-title"><a href="../../episodes/pre-pwc-kenya-nikolay-yotov.html">Pre PWC Kenya</a></p>
+          <p class="lb-guest">Nikolay Yotov</p>
+          <a class="lb-altline" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><span>Also from Kenya</span><b>Nikolay Yotov</b>Pre PWC Kenya, Episode 10, 52 min</a>
+        </div>
+        <a class="lb-see" href="../../destinations/kenya.html" aria-label="See the Kenya trip">See the trip <span aria-hidden="true">&rarr;</span></a>
+      </article>
+      <article class="lb-lead" data-dest="panchgani" aria-labelledby="lbl-panchgani">
+        <h3 class="lb-place" id="lbl-panchgani">Panchgani</h3>
+        <p class="lb-dates">14 to 21 Feb 2027</p>
+        <div class="lb-ep" data-slug="navigating-panchgani-vistasp-kharas" data-vid="0VPg7TZ9hK0" data-min="54">
+          <div class="lb-frame"><a class="lb-pic" href="../../episodes/navigating-panchgani-vistasp-kharas.html" tabindex="-1" aria-hidden="true" style="--x:712;--y:95;--cw:530" data-px="710" data-py="70"><img src="https://i.ytimg.com/vi/0VPg7TZ9hK0/maxresdefault.jpg" alt="Vistasp Kharas" loading="lazy" decoding="async" width="1280" height="720"></a></div>
+          <div class="lb-ctl">
+            <a class="lb-play" href="../../episodes/navigating-panchgani-vistasp-kharas.html" aria-label="Play Navigating Panchgani, with Vistasp Kharas"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><svg class="i-pause" viewBox="0 0 10 10" aria-hidden="true"><rect x="1.5" y="1" width="2.4" height="8" rx="1"/><rect x="6.1" y="1" width="2.4" height="8" rx="1"/></svg></a>
+            <div class="lb-line"><p class="lb-now" aria-hidden="true">Introduction</p><nav class="lb-track" aria-label="Chapters of Navigating Panchgani"><span class="lb-played"></span><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c1" data-t="0" style="left:0.000%"><span class="lb-tn">Introduction</span><span class="lb-tn">, chapter 1, 0:00</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c2" data-t="230" style="left:7.099%"><span class="lb-tn">More to Panchgani than the nationals</span><span class="lb-tn">, chapter 2, 3:50</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c3" data-t="510" style="left:15.741%"><span class="lb-tn">The pre World Cup on the plateau</span><span class="lb-tn">, chapter 3, 8:30</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c4" data-t="775" style="left:23.920%"><span class="lb-tn">What AGL you are working with</span><span class="lb-tn">, chapter 4, 12:55</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c5" data-t="1054" style="left:32.531%"><span class="lb-tn">How a newer pilot should approach it</span><span class="lb-tn">, chapter 5, 17:34</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c6" data-t="1478" style="left:45.617%"><span class="lb-tn">Mistakes visiting pilots make</span><span class="lb-tn">, chapter 6, 24:38</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c7" data-t="1739" style="left:53.673%"><span class="lb-tn">What equipment is recommended</span><span class="lb-tn">, chapter 7, 28:59</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c8" data-t="1992" style="left:61.481%"><span class="lb-tn">Wind shear, and reading it</span><span class="lb-tn">, chapter 8, 33:12</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c9" data-t="2264" style="left:69.877%"><span class="lb-tn">How the visual clues change</span><span class="lb-tn">, chapter 9, 37:44</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c10" data-t="2513" style="left:77.562%"><span class="lb-tn">Hazards on retrieve and top landing</span><span class="lb-tn">, chapter 10, 41:53</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c11" data-t="2746" style="left:84.753%"><span class="lb-tn">Safety for a solo female pilot</span><span class="lb-tn">, chapter 11, 45:46</span></a><a class="lb-tick" href="../../episodes/navigating-panchgani-vistasp-kharas.html#c12" data-t="2958" style="left:91.296%"><span class="lb-tn">Airspace over the site</span><span class="lb-tn">, chapter 12, 49:18</span></a></nav></div>
+            <span class="lb-rd"><b>0:00</b> / <i style="font-style:normal">54 min</i></span>
+          </div>
+          <p class="lb-meta">Navigators, Episode 9</p>
+          <p class="lb-title"><a href="../../episodes/navigating-panchgani-vistasp-kharas.html">Navigating Panchgani</a></p>
+          <p class="lb-guest">Vistasp Kharas</p>
+          <a class="lb-altline" href="../../episodes/navigating-panchgani-vistasp-kharas.html"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><span>Also from Panchgani</span><b>Vistasp Kharas</b>Navigating Panchgani, Episode 9, 54 min</a>
+        </div>
+        <a class="lb-see" href="../../destinations/panchgani.html" aria-label="See the Panchgani trip">See the trip <span aria-hidden="true">&rarr;</span></a>
+      </article>
+      <article class="lb-lead" data-dest="india" aria-labelledby="lbl-india">
+        <h3 class="lb-place" id="lbl-india">India</h3>
+        <p class="lb-dates">15 to 24 Apr, 25 Apr to 4 May, 21 to 30 Oct, 3 to 12 Nov 2027</p>
+        <div class="lb-ep" data-slug="navigating-india-eddie-colfox" data-vid="TO6gW69d7YE" data-min="52">
+          <div class="lb-frame"><a class="lb-pic" href="../../episodes/navigating-india-eddie-colfox.html" tabindex="-1" aria-hidden="true" style="--x:712;--y:150;--cw:530" data-px="770" data-py="150"><img src="https://i.ytimg.com/vi/TO6gW69d7YE/maxresdefault.jpg" alt="Eddie Colfox" loading="lazy" decoding="async" width="1280" height="720"></a></div>
+          <div class="lb-ctl">
+            <a class="lb-play" href="../../episodes/navigating-india-eddie-colfox.html" aria-label="Play Navigating India, with Eddie Colfox"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><svg class="i-pause" viewBox="0 0 10 10" aria-hidden="true"><rect x="1.5" y="1" width="2.4" height="8" rx="1"/><rect x="6.1" y="1" width="2.4" height="8" rx="1"/></svg></a>
+            <div class="lb-line"><p class="lb-now" aria-hidden="true">Introduction</p><nav class="lb-track" aria-label="Chapters of Navigating India"><span class="lb-played"></span><a class="lb-tick" href="../../episodes/navigating-india-eddie-colfox.html#c1" data-t="0" style="left:0.000%"><span class="lb-tn">Introduction</span><span class="lb-tn">, chapter 1, 0:00</span></a><a class="lb-tick" href="../../episodes/navigating-india-eddie-colfox.html#c2" data-t="46" style="left:1.474%"><span class="lb-tn">A cold open: the first landing at Barabangal</span><span class="lb-tn">, chapter 2, 0:46</span></a><a class="lb-tick" href="../../episodes/navigating-india-eddie-colfox.html#c3" data-t="729" style="left:23.365%"><span class="lb-tn">Being brave enough to go out and do it</span><span class="lb-tn">, chapter 3, 12:09</span></a><a class="lb-tick" href="../../episodes/navigating-india-eddie-colfox.html#c4" data-t="1009" style="left:32.340%"><span class="lb-tn">A short season, and a changing climate</span><span class="lb-tn">, chapter 4, 16:49</span></a><a class="lb-tick" href="../../episodes/navigating-india-eddie-colfox.html#c5" data-t="2209" style="left:70.801%"><span class="lb-tn">The balance you have to strike</span><span class="lb-tn">, chapter 5, 36:49</span></a><a class="lb-tick" href="../../episodes/navigating-india-eddie-colfox.html#c6" data-t="2539" style="left:81.378%"><span class="lb-tn">Reading what is likely to happen next</span><span class="lb-tn">, chapter 6, 42:19</span></a><a class="lb-tick" href="../../episodes/navigating-india-eddie-colfox.html#c7" data-t="2864" style="left:91.795%"><span class="lb-tn">The Barabangal flight, told properly</span><span class="lb-tn">, chapter 7, 47:44</span></a></nav></div>
+            <span class="lb-rd"><b>0:00</b> / <i style="font-style:normal">52 min</i></span>
+          </div>
+          <p class="lb-meta">Navigators, Episode 3</p>
+          <p class="lb-title"><a href="../../episodes/navigating-india-eddie-colfox.html">Navigating India</a></p>
+          <p class="lb-guest">Eddie Colfox</p>
+          <a class="lb-altline" href="../../episodes/navigating-india-eddie-colfox.html"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><span>Also from India</span><b>Eddie Colfox</b>Navigating India, Episode 3, 52 min</a>
+        </div>
+        <div class="lb-ep is-alt" data-slug="navigating-india-jigish-gohil" data-vid="_apo1PNabZI" data-min="36">
+          <div class="lb-frame"><a class="lb-pic" href="../../episodes/navigating-india-jigish-gohil.html" tabindex="-1" aria-hidden="true" style="--x:712;--y:200;--cw:530" data-px="700" data-py="236"><img src="https://i.ytimg.com/vi/_apo1PNabZI/maxresdefault.jpg" alt="Jigish Gohil" loading="lazy" decoding="async" width="1280" height="720"></a></div>
+          <div class="lb-ctl">
+            <a class="lb-play" href="../../episodes/navigating-india-jigish-gohil.html" aria-label="Play Navigating India (Bonus Ep), with Jigish Gohil"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><svg class="i-pause" viewBox="0 0 10 10" aria-hidden="true"><rect x="1.5" y="1" width="2.4" height="8" rx="1"/><rect x="6.1" y="1" width="2.4" height="8" rx="1"/></svg></a>
+            <div class="lb-line"><p class="lb-now" aria-hidden="true">Introduction</p><nav class="lb-track" aria-label="Chapters of Navigating India (Bonus Ep)"><span class="lb-played"></span><a class="lb-tick" href="../../episodes/navigating-india-jigish-gohil.html#c1" data-t="0" style="left:0.000%"><span class="lb-tn">Introduction</span><span class="lb-tn">, chapter 1, 0:00</span></a><a class="lb-tick" href="../../episodes/navigating-india-jigish-gohil.html#c2" data-t="64" style="left:2.963%"><span class="lb-tn">Bir off the hill: pottery, yoga and Buddhism</span><span class="lb-tn">, chapter 2, 1:04</span></a><a class="lb-tick" href="../../episodes/navigating-india-jigish-gohil.html#c3" data-t="363" style="left:16.806%"><span class="lb-tn">What the guidebook offers</span><span class="lb-tn">, chapter 3, 6:03</span></a><a class="lb-tick" href="../../episodes/navigating-india-jigish-gohil.html#c4" data-t="626" style="left:28.981%"><span class="lb-tn">Why wind strength differs between seasons</span><span class="lb-tn">, chapter 4, 10:26</span></a><a class="lb-tick" href="../../episodes/navigating-india-jigish-gohil.html#c5" data-t="853" style="left:39.491%"><span class="lb-tn">Retrieves, taxis, and finding your tribe</span><span class="lb-tn">, chapter 5, 14:13</span></a><a class="lb-tick" href="../../episodes/navigating-india-jigish-gohil.html#c6" data-t="1205" style="left:55.787%"><span class="lb-tn">Standing on takeoff, what to expect</span><span class="lb-tn">, chapter 6, 20:05</span></a><a class="lb-tick" href="../../episodes/navigating-india-jigish-gohil.html#c7" data-t="1753" style="left:81.157%"><span class="lb-tn">Insurance, and the admin side</span><span class="lb-tn">, chapter 7, 29:13</span></a><a class="lb-tick" href="../../episodes/navigating-india-jigish-gohil.html#c8" data-t="2058" style="left:95.278%"><span class="lb-tn">The paraguide.in website</span><span class="lb-tn">, chapter 8, 34:18</span></a></nav></div>
+            <span class="lb-rd"><b>0:00</b> / <i style="font-style:normal">36 min</i></span>
+          </div>
+          <p class="lb-meta">Navigators, Episode 4</p>
+          <p class="lb-title"><a href="../../episodes/navigating-india-jigish-gohil.html">Navigating India (Bonus Ep)</a></p>
+          <p class="lb-guest">Jigish Gohil</p>
+          <a class="lb-altline" href="../../episodes/navigating-india-jigish-gohil.html"><svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg><span>Also from India</span><b>Jigish Gohil</b>Navigating India (Bonus Ep), Episode 4, 36 min</a>
+        </div>
+        <a class="lb-see" href="../../destinations/india.html" aria-label="See the India trip">See the trip <span aria-hidden="true">&rarr;</span></a>
+      </article>
       </div>
-      <div class="ep-map" id="epMap">
+      <div class="lb-others" role="radiogroup" aria-label="Choose the trip to hear">
+        <p class="lb-others-k" aria-hidden="true">Hear another trip</p>
+        <input type="radio" class="lb-r" name="lb-lead" id="lbr-kenya" value="kenya" checked>
+        <label class="lb-o" for="lbr-kenya" data-dest="kenya"><span class="lb-o-pic" style="--x:700;--y:195;--cw:540"><img src="https://i.ytimg.com/vi/UVLF8l0qFlA/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720"></span><span class="lb-o-tx"><b>Kenya</b><span class="lb-o-d">18 to 29 Jan, 1 to 12 Feb 2027</span><span class="lb-o-t">Pre PWC Kenya, Nikolay Yotov</span><span class="lb-o-l">52 min</span></span></label>
+        <input type="radio" class="lb-r" name="lb-lead" id="lbr-panchgani" value="panchgani">
+        <label class="lb-o" for="lbr-panchgani" data-dest="panchgani"><span class="lb-o-pic" style="--x:712;--y:95;--cw:530"><img src="https://i.ytimg.com/vi/0VPg7TZ9hK0/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720"></span><span class="lb-o-tx"><b>Panchgani</b><span class="lb-o-d">14 to 21 Feb 2027</span><span class="lb-o-t">Navigating Panchgani, Vistasp Kharas</span><span class="lb-o-l">54 min</span></span></label>
+        <input type="radio" class="lb-r" name="lb-lead" id="lbr-india" value="india">
+        <label class="lb-o" for="lbr-india" data-dest="india"><span class="lb-o-pic" style="--x:712;--y:150;--cw:530"><img src="https://i.ytimg.com/vi/TO6gW69d7YE/maxresdefault.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720"></span><span class="lb-o-tx"><b>India</b><span class="lb-o-d">15 to 24 Apr, 25 Apr to 4 May, 21 to 30 Oct, 3 to 12 Nov 2027</span><span class="lb-o-t">Navigating India, Eddie Colfox</span><span class="lb-o-l">52 min</span></span></label>
+      </div>
+      </div>
+      <div class="lb-globe" id="map">
+        <ul class="lb-key" aria-hidden="true"><li class="o"><i></i>Our trips</li><li class="p"><i></i>Planned, no episode yet</li><li class="g"><i></i>Every other episode</li></ul>
+        <div class="ep-map" id="epMap">
         <div class="gl-tip" aria-hidden="true"><b></b><i></i></div>
         <div class="gl-hint" aria-hidden="true"></div>
         <div class="gl-zoom">
@@ -774,9 +936,10 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
           </div>
         </div>
       </div>
-      <p class="map-caption"><b>Click a pin, hear the story.</b> <span class="v4u-ptr">Drag to rotate.</span><span class="v4u-touch">Swipe sideways to turn it.</span></p>
+        <p class="map-caption"><b>Click a pin, hear the story.</b> <span class="v4u-ptr">Drag to rotate.</span><span class="v4u-touch">Swipe sideways to turn it.</span></p>
       <div class="lb-zoomrow"></div>
-      <div class="lb-pins">
+        <div class="lb-zoomrow"></div>
+        <div class="lb-pins">
         <ol>
           <li id="lb-at-kenya"><b>Kenya</b><span class="d">18 to 29 Jan, 1 to 12 Feb 2027</span><ul><li><a href="../../episodes/pre-pwc-kenya-nikolay-yotov.html">Pre PWC Kenya: Nikolay Yotov<small>Navigators, Episode 10, 52 min</small></a></li></ul><a class="go" href="../../destinations/kenya.html">See the trip &rarr;</a></li>
           <li id="lb-at-panchgani"><b>Panchgani</b><span class="d">14 to 21 Feb 2027</span><ul><li><a href="../../episodes/navigating-panchgani-vistasp-kharas.html">Navigating Panchgani (Pre PWC India) : Vistasp Kharas<small>Navigators, Episode 9, 54 min</small></a></li></ul><a class="go" href="../../destinations/panchgani.html">See the trip &rarr;</a></li>
@@ -785,7 +948,37 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
           <li id="lb-at-peru" class="is-plan"><b>Peru</b><span class="d">Planned, November 2027</span><a class="go" href="../../enquire.html?trip=peru">See the trip &rarr;</a></li>
         </ol>
       </div>
+      </div>
     </div>
+  </div>
+  <div class="v2-rail-wrap">
+    <div class="v2-rail" tabindex="0" aria-label="More conversations, newest first">
+      <div class="lb-grp is-more"><div class="lb-hd"><div class="lb-hd-in"><p class="lb-hd-top"><b>More conversations</b></p><p class="lb-hd-d">Newest first</p></div></div><div class="lb-cards">
+      <!-- guest-cards:start -->
+      <a class="ep-card" href="../../episodes/the-russell-ogden-interview-decoding-paragliding-mastery.html" data-ep-slug="the-russell-ogden-interview-decoding-paragliding-mastery"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-russel.webp" type="image/webp"><img src="../../../../assets/podcast/guest-russel.jpg" alt="Russell Ogden" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Risk vs Reward</b><i>Episode 75</i></span><span class="lb-t">Progression, Fear &amp; Competition</span><span class="lb-g">Russell Ogden</span></span><span class="ep-foot">132 min<s>/</s>12 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
+      <a class="ep-card" href="../../episodes/paragliding-physiology-safety-protocols-dr-matt-wilkes.html" data-ep-slug="paragliding-physiology-safety-protocols-dr-matt-wilkes"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-matt.webp" type="image/webp"><img src="../../../../assets/podcast/guest-matt.jpg" alt="Dr Matt Wilkes" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Risk vs Reward</b><i>Episode 74</i></span><span class="lb-t">Biophysics In The Art Of Flight</span><span class="lb-g">Dr Matt Wilkes</span></span><span class="ep-foot">83 min<s>/</s>12 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
+      <a class="ep-card" href="../../episodes/tom-lolies-explains-the-science-of-wing-design-and.html" data-ep-slug="tom-lolies-explains-the-science-of-wing-design-and"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-tom.webp" type="image/webp"><img src="../../../../assets/podcast/guest-tom.jpg" alt="Tom Lolies" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Flight Mechanics</b><i>Episode 66</i></span><span class="lb-t">The Science Of Wing Design</span><span class="lb-g">Tom Lolies</span></span><span class="ep-foot">92 min<s>/</s>12 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
+      <a class="ep-card" href="../../episodes/luc-armant-talks-about-debunking-the-myths-and-upgrading.html" data-ep-slug="luc-armant-talks-about-debunking-the-myths-and-upgrading"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-luc.webp" type="image/webp"><img src="../../../../assets/podcast/guest-luc.jpg" alt="Luc Armant" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Flight Mechanics</b><i>Episode 57</i></span><span class="lb-t">Debunking The Myths, Enzo 3</span><span class="lb-g">Luc Armant</span></span><span class="ep-foot">40 min<s>/</s>8 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
+      <a class="ep-card" href="../../episodes/maxime-pinot-the-journey-within.html" data-ep-slug="maxime-pinot-the-journey-within"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-maxime.webp" type="image/webp"><img src="../../../../assets/podcast/guest-maxime.jpg" alt="Maxime Pinot" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Sky Gods</b><i>Episode 50</i></span><span class="lb-t">The Journey Within</span><span class="lb-g">Maxime Pinot</span></span><span class="ep-foot">103 min<s>/</s>11 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
+      <a class="ep-card" href="../../episodes/consequence-over-probability-will-gadd-on-why-true-safety.html" data-ep-slug="consequence-over-probability-will-gadd-on-why-true-safety"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-will.webp" type="image/webp"><img src="../../../../assets/podcast/guest-will.jpg" alt="Will Gadd" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Risk vs Reward</b><i>Episode 45</i></span><span class="lb-t">Field Protocols For Rewiring Risk Intuition</span><span class="lb-g">Will Gadd</span></span><span class="ep-foot">63 min<s>/</s>13 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
+      <a class="ep-card" href="../../episodes/why-paraglidings-safety-future-looks-different-rast.html" data-ep-slug="why-paraglidings-safety-future-looks-different-rast"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-michaiel.webp" type="image/webp"><img src="../../../../assets/podcast/guest-michaiel.jpg" alt="Michael Nesler" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>New Technologies</b><i>Episode 44</i></span><span class="lb-t">RAST And The LeelooX Effect</span><span class="lb-g">Michael Nesler</span></span><span class="ep-foot">78 min<s>/</s>13 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
+      <a class="ep-card" href="../../episodes/meteorology-101-a-beginners-guide-to-understanding-weather.html" data-ep-slug="meteorology-101-a-beginners-guide-to-understanding-weather"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-meterology.webp" type="image/webp"><img src="../../../../assets/podcast/guest-meterology.jpg" alt="Ivelin Kalushkov" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Weather Patterns</b><i>Episode 42</i></span><span class="lb-t">Decoding Weather Apps</span><span class="lb-g">Ivelin Kalushkov</span></span><span class="ep-foot">71 min<s>/</s>13 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
+      <a class="ep-card" href="../../episodes/urs-haari-the-real-truth-about-reserve-parachutes-a.html" data-ep-slug="urs-haari-the-real-truth-about-reserve-parachutes-a"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-urs.webp" type="image/webp"><img src="../../../../assets/podcast/guest-urs.jpg" alt="Urs Haari" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Know Your Equipment</b><i>Episode 41</i></span><span class="lb-t">Untold Truth About Reserve Parachutes</span><span class="lb-g">Urs Haari</span></span><span class="ep-foot">166 min<s>/</s>13 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
+      <a class="ep-card" href="../../episodes/alain-zoller-the-science-of-en-certifications-how-work.html" data-ep-slug="alain-zoller-the-science-of-en-certifications-how-work"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-alain.webp" type="image/webp"><img src="../../../../assets/podcast/guest-alain.jpg" alt="Alain Zoller" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Flight Mechanics</b><i>Episode 37</i></span><span class="lb-t">The Science Of EN Certifications</span><span class="lb-g">Alain Zoller</span></span><span class="ep-foot">96 min<s>/</s>13 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
+      <a class="ep-card" href="../../episodes/kinga-masztalerz-building-a-healthy-relationship-with-the.html" data-ep-slug="kinga-masztalerz-building-a-healthy-relationship-with-the"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-kinga.webp" type="image/webp"><img src="../../../../assets/podcast/guest-kinga.jpg" alt="Kinga Masztalerz" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Risk vs Reward</b><i>Episode 33</i></span><span class="lb-t">Master Fear, Build Resilience &amp; Find Joy</span><span class="lb-g">Kinga Masztalerz</span></span><span class="ep-foot">101 min<s>/</s>12 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
+      <a class="ep-card" href="../../episodes/helmut-schrempf-modernizing-siv-courses-how-this-new.html" data-ep-slug="helmut-schrempf-modernizing-siv-courses-how-this-new"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-helmut.webp" type="image/webp"><img src="../../../../assets/podcast/guest-helmut.jpg" alt="Helmut Schrempf" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Flight Mechanics</b><i>Episode 32</i></span><span class="lb-t">Modernizing SIV Courses</span><span class="lb-g">Helmut Schrempf</span></span><span class="ep-foot">80 min<s>/</s>10 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
+      <a class="ep-card" href="../../episodes/risk-vs-reward-5-gabriel-orsini.html" data-ep-slug="risk-vs-reward-5-gabriel-orsini"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-gabriel.webp" type="image/webp"><img src="../../../../assets/podcast/guest-gabriel.jpg" alt="Gabriel Orsini" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Risk vs Reward</b><i>Episode 26</i></span><span class="lb-t">How Open Are Manufacturers Really</span><span class="lb-g">Gabriel Orsini</span></span><span class="ep-foot">101 min<s>/</s>13 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
+      <a class="ep-card" href="../../episodes/sky-gods-flying-to-win-honorin-hamard.html" data-ep-slug="sky-gods-flying-to-win-honorin-hamard"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-honorin.webp" type="image/webp"><img src="../../../../assets/podcast/guest-honorin.jpg" alt="Honorin Hamard" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Sky Gods</b><i>Episode 6</i></span><span class="lb-t">Flying To Win</span><span class="lb-g">Honorin Hamard</span></span><span class="ep-foot">108 min<s>/</s>11 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
+      <a class="ep-card" href="../../episodes/sky-gods-flying-8000ers-antoine-girard.html" data-ep-slug="sky-gods-flying-8000ers-antoine-girard"><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-antoine.webp" type="image/webp"><img src="../../../../assets/podcast/guest-antoine.jpg" alt="Antoine Girard" loading="lazy" width="480" height="679"></picture></span><span class="lb-cap"><span class="lb-k"><b>Sky Gods</b><i>Episode 5</i></span><span class="lb-t">Flying 8000ers</span><span class="lb-g">Antoine Girard</span></span><span class="ep-foot">67 min<s>/</s>13 chapters<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg></i></span></a>
+      <!-- guest-cards:end -->
+      </div></div>
+    </div>
+    <div class="v2-rail-nav" hidden>
+      <button type="button" class="v2-rail-btn" data-dir="-1" aria-label="Previous episodes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button type="button" class="v2-rail-btn" data-dir="1" aria-label="Next episodes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+  <div class="kit-in">
     <p class="lb-plat">
       <a class="lib" href="../../library.html">All episodes in the Library &rarr;</a>
       <span><span style="white-space:nowrap">Also on <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">Spotify</a></span> <s>/</s> <a href="https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803" target="_blank" rel="noopener">Apple Podcasts</a> <s>/</s> <a href="https://music.amazon.com/podcasts/44399f7e-fef1-4db1-9a60-7c9ef74df2b4/paragliding-atlas-by-aninder-singh" target="_blank" rel="noopener">Amazon Music</a> <s>/</s> <a href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener">YouTube</a></span>
@@ -793,21 +986,237 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
   </div>
   <template id="v4GlobeJs"><script src="../../../../assets/js/d3.min.js?v=f2094bbf"></script><script src="../../../../globe-episodes.js?v=5ed6afaf"></script><script src="../../../../assets/js/globe-world.js?v=c3ca4ee4"></script><script src="../../../../globe.js?v=82e331c4"></script></template>
   <script>
-  /* Hear Where We Fly (preview B2). Without JavaScript, or with reduced motion, the
-     list of trip places stands where the globe would be, and "Find it on the
-     globe" jumps to that place in the list. Otherwise the existing globe loads
-     as #map did (when near the screen); our trip pins turn orange; a thin, still
-     orange line joins the trip places in season order; Kazakhstan and Peru, with
-     no episode yet, get hollow pins whose card gives the planned month from the
-     departure rows. Every card on the globe uses the picture of the card in the
-     rail, in the same grey grade, never the YouTube still. "Find it on the
-     globe" scrolls to the globe, turns it to that pin and opens it: the one new
-     motion, and only on a click. globe.js itself is untouched: its projection
-     is borrowed when it is made, so the line and the planned pins turn with it. */
+  /* Hear Where We Fly (preview B3): the lit trip leads.
+     Without JavaScript: Kenya leads as plain HTML, the radio group still switches the lead
+     (CSS), play opens the episode page, the ticks open its chapters, and the list of trip
+     places stands where the globe would be, the lead marked orange.
+     With it: play loads the episode's youtube-nocookie player in the picture's frame (no
+     iframe before), our chapter line follows it and jumps it; one sound at a time. The lead
+     copies the trip lit in the departures only while this section is off screen and the
+     visitor has not picked here. The globe (globe.js, untouched) turns to the lead the
+     shortest way and the orange route lights from Kenya up to it; no idle spin. Reduced
+     motion: the globe jumps and the route shows lit; the playhead still moves. */
   (function () {
-    var sec = document.getElementById('listen'), box = document.getElementById('epMap'), t = document.getElementById('v4GlobeJs');
-    if (!sec || !box || !t) return;
-    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var sec = document.getElementById('listen');
+    if (!sec) return;
+    var RM = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var ORDER = { kenya: 0, panchgani: 1, india: 2 };
+    var radios = [].slice.call(sec.querySelectorAll('.lb-r'));
+    var pickedHere = false;
+    function leadOf() { for (var i = 0; i < radios.length; i++) if (radios[i].checked) return radios[i].value; return 'kenya'; }
+    function leadEl(dest) { return sec.querySelector('.lb-lead[data-dest="' + dest + '"]'); }
+    function mainEp(dest) { var l = leadEl(dest); return l && l.querySelector('.lb-ep:not(.is-alt)'); }
+    var coarse = !!(window.matchMedia && matchMedia('(pointer: coarse)').matches);
+
+    /* ---------------- the chapter line ---------------- */
+    function fmt(s) {
+      s = Math.max(0, Math.floor(s));
+      var h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60;
+      return (h ? h + ':' + (m < 10 ? '0' : '') : '') + m + ':' + (x < 10 ? '0' : '') + x;
+    }
+    var EPS = [].slice.call(sec.querySelectorAll('.lb-ep'));
+    EPS.forEach(function (ep) {
+      ep._t = 0; ep._total = Number(ep.dataset.min) * 60; ep._exact = false; ep._point = -1;
+      ep._line = ep.querySelector('.lb-line');
+      ep._played = ep.querySelector('.lb-played');
+      ep._now = ep.querySelector('.lb-now');
+      ep._rdT = ep.querySelector('.lb-rd b');
+      ep._rdD = ep.querySelector('.lb-rd i');
+      ep._ticks = [].slice.call(ep.querySelectorAll('.lb-tick')).map(function (a) {
+        return { a: a, t: Number(a.dataset.t), name: a.querySelector('.lb-tn').textContent };
+      });
+      layout(ep); paint(ep);
+      /* point at the line: that chapter's name shows above it */
+      ep._line.addEventListener('pointermove', function (e) {
+        if (e.pointerType !== 'mouse') return;
+        ep._point = chapterAt(ep, secAt(ep, e.clientX));
+        ep._line.classList.add('is-pointing'); paint(ep);
+      });
+      ep._line.addEventListener('pointerleave', function () {
+        ep._point = -1; ep._line.classList.remove('is-pointing'); paint(ep);
+      });
+      /* a tap jumps to that chapter (a phone snaps to the nearest tick); a tick from the keyboard too */
+      ep._line.addEventListener('click', function (e) {
+        e.preventDefault();
+        var tick = e.target.closest && e.target.closest('.lb-tick'), s;
+        if (tick) s = Number(tick.dataset.t);
+        else {
+          var at = secAt(ep, e.clientX);
+          s = coarse ? nearest(ep, at) : ep._ticks[Math.max(0, chapterAt(ep, at))].t;
+        }
+        jump(ep, s);
+      });
+    });
+    function secAt(ep, x) {
+      var r = ep._line.getBoundingClientRect();
+      return Math.max(0, Math.min(1, (x - r.left) / r.width)) * ep._total;
+    }
+    function chapterAt(ep, s) {
+      var i = -1;
+      ep._ticks.forEach(function (c, k) { if (c.t <= s + 0.5) i = k; });
+      return i;
+    }
+    function nearest(ep, s) {
+      var best = ep._ticks[0];
+      ep._ticks.forEach(function (c) { if (Math.abs(c.t - s) < Math.abs(best.t - s)) best = c; });
+      return best.t;
+    }
+    function layout(ep) {
+      ep._ticks.forEach(function (c) { c.a.style.left = (c.t / ep._total * 100).toFixed(3) + '%'; });
+    }
+    function paint(ep) {
+      var t = Math.min(ep._t, ep._total);
+      ep._played.style.width = (t / ep._total * 100).toFixed(3) + '%';
+      var here = Math.max(0, chapterAt(ep, t));
+      ep._ticks.forEach(function (c, k) {
+        c.a.classList.toggle('is-past', c.t <= t && t > 0);
+        c.a.classList.toggle('is-here', k === here && (t > 0 || ep.classList.contains('is-on')));
+      });
+      var show = ep._point >= 0 ? ep._point : here, c = ep._ticks[show];
+      if (c && ep._now.textContent !== c.name) ep._now.textContent = c.name;
+      if (c) {
+        var L = ep._line.clientWidth, w = ep._now.offsetWidth, x = c.t / ep._total * L;
+        ep._now.style.left = Math.max(0, Math.min(x, L - w)).toFixed(1) + 'px';
+      }
+      ep._rdT.textContent = fmt(t);
+      ep._rdD.textContent = ep._exact ? fmt(ep._total) : ep.dataset.min + ' min';
+    }
+    addEventListener('resize', function () { EPS.forEach(paint); });
+
+    /* ---------------- the player: no iframe until play ---------------- */
+    var cur = null;   /* { ep, f, live, playing, at, stamp } */
+    function src(ep, s) {
+      return 'https://www.youtube-nocookie.com/embed/' + ep.dataset.vid +
+        '?autoplay=1&rel=0&playsinline=1&enablejsapi=1' + (s >= 1 ? '&start=' + Math.floor(s) : '');
+    }
+    function send(func, args) {
+      if (!cur) return;
+      try { cur.f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: func, args: args || [], id: 1, channel: 'widget' }), '*'); } catch (e) {}
+    }
+    function hello() {
+      if (!cur || cur.live) return;
+      try { cur.f.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 1, channel: 'widget' }), '*'); } catch (e) {}
+    }
+    function start(ep, s) {
+      stop();
+      var f = document.createElement('iframe');
+      f.src = src(ep, s);
+      f.title = ep.querySelector('.lb-title').textContent + ', ' + ep.querySelector('.lb-guest').textContent;
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.setAttribute('allowfullscreen', '');
+      f.referrerPolicy = 'strict-origin-when-cross-origin';
+      ep.querySelector('.lb-frame').appendChild(f);
+      cur = { ep: ep, f: f, live: false, playing: true, at: s, stamp: 0 };
+      ep._t = s;
+      ep.classList.add('is-on', 'is-playing');
+      var tries = 0, c = cur;
+      f.addEventListener('load', function () {
+        (function knock() { if (cur !== c || c.live || tries++ > 40) return; hello(); setTimeout(knock, 250); })();
+      });
+      paint(ep);
+    }
+    function stop() {
+      if (!cur) return;
+      var ep = cur.ep;
+      if (cur.f.parentNode) cur.f.parentNode.removeChild(cur.f);
+      ep.classList.remove('is-on', 'is-playing');
+      cur = null;
+      paint(ep);
+    }
+    function jump(ep, s) {
+      s = Math.max(0, Math.min(ep._total - 1, s));
+      if (cur && cur.ep === ep) {
+        ep._t = s; cur.at = s; cur.stamp = performance.now();
+        if (cur.live) { send('seekTo', [s, true]); send('playVideo'); }
+        else { cur.f.src = src(ep, s); }   /* no time messages: reload the player at that chapter */
+        cur.playing = true; ep.classList.add('is-playing');
+        paint(ep);
+      } else start(ep, s);
+    }
+    addEventListener('message', function (e) {
+      if (!cur || e.source !== cur.f.contentWindow) return;
+      if (!/^https:\/\/www\.youtube(-nocookie)?\.com$/.test(e.origin)) return;
+      var m; try { m = typeof e.data === 'string' ? JSON.parse(e.data) : e.data; } catch (x) { return; }
+      if (!m || !m.event) return;
+      cur.live = true;
+      var info = m.info || {}, ep = cur.ep;
+      if (typeof info.duration === 'number' && info.duration > 60) {
+        if (!ep._exact || Math.abs(ep._total - info.duration) > 0.5) { ep._total = info.duration; ep._exact = true; layout(ep); }
+      }
+      if (typeof info.playerState === 'number') {
+        cur.playing = info.playerState === 1;
+        ep.classList.toggle('is-playing', cur.playing || info.playerState === 3);
+      }
+      if (typeof info.currentTime === 'number') { cur.at = info.currentTime; cur.stamp = performance.now(); ep._t = info.currentTime; }
+      paint(ep);
+      run();
+    });
+    /* the playhead moves at real time between the player's messages (also with reduced motion) */
+    var raf = 0;
+    function run() {
+      if (raf || !cur || !cur.live || !cur.playing) return;
+      raf = requestAnimationFrame(function step(now) {
+        raf = 0;
+        if (!cur || !cur.live || !cur.playing) return;
+        var ep = cur.ep, dt = Math.min(1.5, (now - cur.stamp) / 1000);
+        ep._t = Math.min(ep._total, cur.at + Math.max(0, dt));
+        paint(ep);
+        raf = requestAnimationFrame(step);
+      });
+    }
+    sec.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('.lb-play, .lb-pic, .lb-altline');
+      if (!a) return;
+      e.preventDefault();
+      var ep = a.closest('.lb-ep');
+      if (a.classList.contains('lb-altline')) { swap(ep); start(ep, ep._t); return; }
+      if (!cur || cur.ep !== ep) { start(ep, ep._t); return; }
+      if (cur.playing) { send('pauseVideo'); cur.playing = false; ep.classList.remove('is-playing'); }
+      else { send('playVideo'); cur.playing = true; cur.stamp = performance.now(); ep.classList.add('is-playing'); run(); }
+    });
+    /* India: the second episode swaps into the player */
+    function swap(ep) {
+      var lead = ep.closest('.lb-lead'), main = lead.querySelector('.lb-ep:not(.is-alt)');
+      if (!main || main === ep) return;
+      stop();
+      main.classList.add('is-alt'); ep.classList.remove('is-alt');
+      lead.insertBefore(ep, main);
+      paint(ep);
+    }
+
+    /* ---------------- picking ---------------- */
+    function setLead(dest) {
+      radios.forEach(function (r) { r.checked = r.value === dest; });
+    }
+    radios.forEach(function (r) {
+      r.addEventListener('change', function () {
+        if (!r.checked) return;
+        pickedHere = true;
+        stop();
+        /* picked from the row under the lead: bring the new lead's name into view if it went above */
+        var name = leadEl(r.value) && leadEl(r.value).querySelector('.lb-place');
+        if (name && name.getBoundingClientRect().top < 72) name.scrollIntoView({ block: 'start', behavior: RM ? 'auto' : 'smooth' });
+        answer(r.value, 'user');
+      });
+    });
+    /* the departures' lit trip leads, only while this section is off screen and nobody picked here */
+    var dst = document.getElementById('destinations'), seen = false;
+    function sync() {
+      if (pickedHere || seen || !dst) return;
+      var v = dst.getAttribute('data-lit');
+      if (!(v in ORDER)) v = 'kenya';         /* Kazakhstan and Peru have no episode: Kenya leads */
+      if (v === leadOf()) return;
+      stop(); setLead(v); answer(v, 'sync');
+    }
+    if (dst && window.MutationObserver) new MutationObserver(sync).observe(dst, { attributes: true, attributeFilter: ['data-lit'] });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) { seen = en[0].isIntersecting; if (!seen) sync(); }).observe(sec);
+    }
+    sync();
+
+    /* ---------------- the globe ---------------- */
+    var box = document.getElementById('epMap'), t = document.getElementById('v4GlobeJs');
+    if (!box || !t) return;
     sec.classList.add('lb-live');
     var TRIP = {
       'pre-pwc-kenya-nikolay-yotov': 'kenya',
@@ -824,11 +1233,10 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
     ];
     var NS = 'http://www.w3.org/2000/svg';
     var slugOf = function (h) { return (h || '').split('/').pop().replace('.html', ''); };
-    var proj = null, lock = null, planOpen = null, overlay = null, ready = false, queued = false;
+    var proj = null, Z = null, lock = null, planOpen = null, overlay = null, ready = false, queued = false, svgNode = null;
 
-    /* the projection globe.js makes first is the globe's own: keep a handle on it,
-       redraw the overlay whenever it turns, zooms or resizes, and hold it still
-       while a planned trip's card is open */
+    /* the projection globe.js makes first is the globe's own: keep a handle on it, redraw the
+       overlay whenever it turns, zooms or resizes, and hold it still while a planned trip's card is open */
     function hook(p) {
       ['rotate', 'scale', 'translate'].forEach(function (k) {
         var f = p[k];
@@ -845,26 +1253,42 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
       queued = true;
       Promise.resolve().then(function () { queued = false; draw(); });
     }
+    /* globe.js redraws the world on its own zoom event: sent with the same zoom, it is how a
+       turn made here gets drawn */
+    function render() {
+      if (Z && svgNode && window.d3) d3.select(svgNode).call(Z.transform, d3.zoomTransform(svgNode));
+    }
 
-    /* load the globe, as #map does */
+    /* load the globe, as #map does. Its slow idle spin is left out: the globe moves only to answer */
     var done = false;
     function go() {
       if (done) return; done = true;
       var list = [].slice.call(t.content.querySelectorAll('script')).map(function (s) { return s.getAttribute('src'); });
-      var orig = null;
+      var orig = null, origZoom = null;
       (function next() {
-        var src = list.shift(); if (!src) return;
-        var s = document.createElement('script'); s.src = src;
+        var s0 = list.shift(); if (!s0) return;
+        var s = document.createElement('script'); s.src = s0;
         s.onload = function () {
-          if (/d3\.min\.js/.test(src) && window.d3 && d3.geoOrthographic) {
+          if (/d3\.min\.js/.test(s0) && window.d3 && d3.geoOrthographic) {
             orig = d3.geoOrthographic;
             d3.geoOrthographic = function () {
               var p = orig.apply(this, arguments);
               if (!proj) { proj = p; hook(p); }
               return p;
             };
+            origZoom = d3.zoom;
+            d3.zoom = function () { var z = origZoom.apply(this, arguments); if (!Z) Z = z; return z; };
+            var oi = d3.interval;
+            d3.interval = function (cb, delay) {
+              if (delay === 30) return { stop: function () {}, restart: function () {} };   /* the idle spin */
+              return oi.apply(this, arguments);
+            };
           }
-          if (/\/globe\.js/.test(src)) { if (orig) d3.geoOrthographic = orig; init(); }
+          if (/\/globe\.js/.test(s0)) {
+            if (orig) d3.geoOrthographic = orig;
+            if (origZoom) d3.zoom = origZoom;
+            init();
+          }
           next();
         };
         document.body.appendChild(s);
@@ -876,19 +1300,13 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
       io.observe(box);
     }
 
-    /* our trip pins: marked once globe.js has drawn them, and lifted above the rest */
     function mark() {
-      var pins = box.querySelectorAll('g.pin');
-      if (!pins.length) return false;
-      [].forEach.call(pins, function (g) {
+      [].forEach.call(box.querySelectorAll('g.pin'), function (g) {
         var d = g.__data__;
         if (d && TRIP[slugOf(d.href)]) { g.classList.add('lb-trip'); g.parentNode.appendChild(g); }
       });
-      return true;
     }
-
-    /* the route line, the planned pins and, on a phone, N E S W inside the ring */
-    var route, nesw, ROUTE, AT = {};   /* AT: each pin where globe.js drew it */
+    var route, routeLit, nesw, ROUTE, AT = {};
     function el(name, attrs, parent) {
       var n = document.createElementNS(NS, name);
       Object.keys(attrs).forEach(function (k) { n.setAttribute(k, attrs[k]); });
@@ -898,6 +1316,7 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
     function init() {
       var svg = box.querySelector('svg.gl-svg'), pin = box.querySelector('g.pin');
       if (!svg || !pin || !proj) return;
+      svgNode = svg;
       mark();
       var pinG = pin.parentNode;
       [].forEach.call(box.querySelectorAll('g.pin'), function (g) { if (g.__data__) AT[slugOf(g.__data__.href)] = g.__data__; });
@@ -905,6 +1324,8 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
         .concat(PLAN.map(function (p) { return [p.lon, p.lat]; }));
       route = el('path', { 'class': 'lb-route' });
       svg.insertBefore(route, pinG);
+      routeLit = el('path', { 'class': 'lb-route-lit' });
+      svg.insertBefore(routeLit, pinG);
       overlay = el('g', { 'class': 'lb-plans' });
       pinG.parentNode.insertBefore(overlay, pinG.nextSibling);
       PLAN.forEach(function (p) {
@@ -922,14 +1343,25 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
         var n = el('text', { 'class': 'lb-nesw' + (i ? '' : ' n') }, nesw); n.textContent = c;
       });
       ready = true;
+      /* it opens on the lead, the route lit up to it */
+      G.p = ORDER[leadOf()] || 0;
+      setRot(leadOf());
       draw();
       placeZoom();
-      if (pendingFind) { var s = pendingFind; pendingFind = null; find(s); }
+    }
+    function litCoords(p) {
+      if (!ROUTE || p <= 0) return null;
+      var i = Math.min(ROUTE.length - 1, Math.floor(p)), f = p - i, c = ROUTE.slice(0, i + 1);
+      if (f > 0.001 && ROUTE[i + 1]) c.push(d3.geoInterpolate(ROUTE[i], ROUTE[i + 1])(f));
+      return c.length > 1 ? c : null;
     }
     function draw() {
       if (!overlay || !proj) return;
       var R = proj.scale(), tr = proj.translate(), rot = proj.rotate(), centre = [-rot[0], -rot[1]];
-      route.setAttribute('d', d3.geoPath(proj)({ type: 'LineString', coordinates: ROUTE }) || '');
+      var gp = d3.geoPath(proj);
+      route.setAttribute('d', gp({ type: 'LineString', coordinates: ROUTE }) || '');
+      var lc = litCoords(G.p);
+      routeLit.setAttribute('d', lc ? (gp({ type: 'LineString', coordinates: lc }) || '') : '');
       PLAN.forEach(function (p) {
         var c = Math.cos(d3.geoDistance([p.lon, p.lat], centre));
         if (c <= 0) { p.g.style.display = 'none'; p.on = false; return; }
@@ -939,8 +1371,7 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
         p.g.style.opacity = Math.min(1, c / 0.34);
         p.g.setAttribute('transform', 'translate(' + q[0].toFixed(1) + ',' + q[1].toFixed(1) + ')');
       });
-      /* globe.js drops every ring label below 600px; keep the four points of the compass,
-         inside the ring, so the dial fits the phone */
+      /* globe.js drops every ring label below 600px; keep the four points of the compass, inside the ring */
       var small = box.clientWidth < 600, rr = R * 1.05;
       nesw.style.display = small ? '' : 'none';
       if (small) {
@@ -953,11 +1384,80 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
       if (planOpen) { if (planOpen.on) place(planOpen.x, planOpen.y); else hide(); }
     }
 
-    /* the card */
+    /* ---- the answer: turn to the lead, then light the route up to it ---- */
+    var G = { p: 0, turn: 0, light: 0, pending: null };
+    function pinOf(dest) {
+      var s = ROUTE_EP[ORDER[dest] || 0];
+      return AT[s] || (window.GLOBE_EP || {})[s];
+    }
+    function rotFor(dest) {
+      var d = pinOf(dest), r0 = proj.rotate();
+      if (!d) return null;
+      var dLon = (((-d.lon) - r0[0] + 540) % 360) - 180;   /* the shortest way round */
+      return [r0[0] + dLon, -d.lat, 0];
+    }
+    function setRot(dest) {
+      var r = rotFor(dest);
+      if (!r) return;
+      lock = null; hide();
+      proj.rotate(r); render(); draw();
+    }
+    function cancel() {
+      if (G.turn) cancelAnimationFrame(G.turn);
+      if (G.light) cancelAnimationFrame(G.light);
+      G.turn = G.light = 0;
+    }
+    var inOut = function (x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+    var out = function (x) { return 1 - Math.pow(1 - x, 3); };
+    function turn(dest) {
+      cancel();
+      var r1 = rotFor(dest);
+      if (!r1) return;
+      lock = null; hide();
+      var r0 = proj.rotate().slice(), t0 = performance.now(), D = 900;
+      G.turn = requestAnimationFrame(function step(now) {
+        var k = Math.min(1, (now - t0) / D), e = inOut(k);
+        proj.rotate([r0[0] + (r1[0] - r0[0]) * e, r0[1] + (r1[1] - r0[1]) * e, 0]);
+        render();
+        if (k < 1) G.turn = requestAnimationFrame(step);
+        else { G.turn = 0; light(ORDER[dest]); }
+      });
+    }
+    function light(to) {
+      if (G.light) cancelAnimationFrame(G.light);
+      var from = G.p, t0 = performance.now(), D = 500;
+      if (from === to) { draw(); return; }
+      G.light = requestAnimationFrame(function step(now) {
+        var k = Math.min(1, (now - t0) / D);
+        G.p = from + (to - from) * out(k);
+        draw();
+        if (k < 1) G.light = requestAnimationFrame(step); else G.light = 0;
+      });
+    }
+    function inView() {
+      var r = box.getBoundingClientRect(), h = innerHeight || document.documentElement.clientHeight;
+      return r.bottom > h * 0.15 && r.top < h * 0.85;
+    }
+    function answer(dest, how) {
+      if (!ready) return;   /* init opens on whatever leads by then */
+      G.pending = null;
+      if (how === 'pin') { cancel(); light(ORDER[dest]); return; }   /* globe.js is already flying to the pin */
+      if (RM) { cancel(); setRot(dest); G.p = ORDER[dest]; draw(); return; }
+      if (how === 'user' && inView()) { turn(dest); return; }
+      if (how === 'user' && matchMedia('(max-width: 900px)').matches) { G.pending = dest; return; }   /* turn as it scrolls into view */
+      cancel(); setRot(dest); G.p = ORDER[dest]; draw();
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) {
+        if (en[0].isIntersecting && G.pending && ready) { var d = G.pending; G.pending = null; turn(d); }
+      }, { threshold: 0.55 }).observe(box);
+    }
+
+    /* ---- the card ---- */
     var pop = document.getElementById('mapPopup'), link = pop.querySelector('.popup-link'), pt = pop.querySelector('.lb-pt'),
         th = pop.querySelector('.mp-th'), thImg = th.querySelector('img'), pn = pop.querySelector('.lb-pn');
     var ROOT = '../../';
-    function hide() { pop.classList.remove('visible'); }
+    function hide() { if (pop.classList.contains('visible')) pop.classList.remove('visible'); }
     function place(x, y) {
       var cw = box.clientWidth, ch = box.clientHeight, pw = pop.offsetWidth || 336, ph = pop.offsetHeight || 300, GAP = 22, EDGE = 10;
       var left = x + GAP;
@@ -986,16 +1486,15 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
       pop.classList.add('visible');
       place(p.x, p.y);
     }
-    /* an episode's card: the link fixed for this folder, the rail's picture in the
-       rail's grade, coordinates to one decimal, and a trip pin adds its trip */
-    /* classList.remove writes the attribute even when the class is absent, which
-       would wake this observer again: only touch it when it is there */
+    /* classList.remove writes the attribute even when the class is absent, which would wake
+       this observer again: only touch it when it is there */
     function unplan() {
       if (pop.classList.contains('lb-plan')) pop.classList.remove('lb-plan');
       planOpen = null; lock = null;
     }
+    var lastPin = '';
     function dress(recs) {
-      if (!pop.classList.contains('visible')) { unplan(); return; }
+      if (!pop.classList.contains('visible')) { unplan(); lastPin = ''; return; }
       var episode = recs.some(function (r) { return r.target === link; });
       if (pop.classList.contains('lb-plan') && !episode) return;
       unplan();
@@ -1006,13 +1505,15 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
         pop.querySelector('.mp-co').textContent = Math.abs(x.lat).toFixed(1) + '°' + (x.lat >= 0 ? 'N' : 'S') + ' ' +
           Math.abs(x.lon).toFixed(1) + '°' + (x.lon >= 0 ? 'E' : 'W');
       }
-      var card = sec.querySelector('.lb-cards .ep-card[data-ep-slug="' + slug + '"]');
+      /* the picture this section already uses for that episode, in the same grey grade */
+      var art = sec.querySelector('.lb-cards .ep-card[data-ep-slug="' + slug + '"] .ep-art') ||
+                sec.querySelector('.lb-ep[data-slug="' + slug + '"] .lb-pic');
       thImg.onerror = null;
-      if (card) {
-        var art = card.querySelector('.ep-art'), ci = art.querySelector('img');
+      if (art) {
+        var ci = art.querySelector('img'), crop = art.dataset.px != null;
         th.classList.remove('lb-noart');
-        th.classList.toggle('lb-cropped', art.classList.contains('lb-crop'));
-        if (art.classList.contains('lb-crop')) { th.style.setProperty('--x', art.dataset.px); th.style.setProperty('--y', art.dataset.py); }
+        th.classList.toggle('lb-cropped', crop);
+        if (crop) { th.style.setProperty('--x', art.dataset.px); th.style.setProperty('--y', art.dataset.py); }
         thImg.src = ci.currentSrc || ci.src;
         thImg.alt = ci.alt;
       } else {
@@ -1022,10 +1523,18 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
       }
       var trip = TRIP[slug];
       if (trip) tripBlock(trip, 'Our ' + NAME[trip] + ' trip'); else pt.hidden = true;
-      /* it changed size: centre it on its pin again, inside the map */
       var at = AT[slug] || x, q = at && proj ? proj([at.lon, at.lat]) : null;
       if (q) place(q[0], q[1]);
-      if (focusNext) { focusNext = false; link.focus({ preventScroll: true }); }
+      /* a trip pin on the globe picks that trip here too */
+      if (trip && slug !== lastPin) {
+        lastPin = slug;
+        var ep = sec.querySelector('.lb-ep[data-slug="' + slug + '"]');
+        if (trip !== leadOf() || (ep && ep.classList.contains('is-alt'))) {
+          pickedHere = true; stop();
+          if (ep && ep.classList.contains('is-alt')) swap(ep);
+          setLead(trip); answer(trip, 'pin');
+        }
+      }
     }
     new MutationObserver(dress).observe(pop, { attributes: true, attributeFilter: ['class'] });
     new MutationObserver(dress).observe(link, { attributes: true, attributeFilter: ['href'] });
@@ -1033,36 +1542,10 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
     /* the visitor takes the globe back: a press anywhere on it lets go of the hold */
     ['mousedown', 'touchstart', 'wheel'].forEach(function (ev) {
       box.addEventListener(ev, function (e) {
+        if (G.turn) cancel();
         if (!lock || pop.contains(e.target) || (e.target.closest && e.target.closest('.lb-ppin'))) return;
         lock = null; hide();
       }, { capture: true, passive: true });
-    });
-
-    /* "Find it on the globe": scroll there, then the globe's own deep link
-       (#pin=slug) turns it to the pin and opens its card; the address is left as it was */
-    var pendingFind = null, focusNext = false;
-    function fire(slug) {
-      var prev = location.href;
-      try { history.replaceState(history.state, '', '#pin=' + slug); } catch (e) {}
-      window.dispatchEvent(new HashChangeEvent('hashchange'));
-      try { history.replaceState(history.state, '', prev); } catch (e) {}
-    }
-    function find(slug) {
-      if (!ready) { pendingFind = slug; go(); return; }
-      var r = box.getBoundingClientRect(), off = Math.abs(r.top + r.height / 2 - innerHeight / 2);
-      if (off < 40) { fire(slug); return; }
-      var fired = false, timer;
-      var once = function () { if (fired) return; fired = true; clearTimeout(timer); removeEventListener('scrollend', once); fire(slug); };
-      addEventListener('scrollend', once);
-      timer = setTimeout(once, 1100);
-      box.scrollIntoView({ block: 'center', behavior: 'smooth' });
-    }
-    sec.addEventListener('click', function (e) {
-      var a = e.target.closest && e.target.closest('.lb-find');
-      if (!a) return;
-      e.preventDefault();
-      focusNext = e.detail === 0;   /* from the keyboard: the card's link takes the focus */
-      find(a.dataset.find);
     });
 
     /* phone: the + / - / globe buttons sit in a row under the caption, off the globe */
