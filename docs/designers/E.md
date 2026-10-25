@@ -1,5 +1,13 @@
 # Designer E, "Pull Back to the Route": notebook (newest first)
 
+## 25 Oct 2026: round 1, the #listen section (podcast rail and search)
+
+**Asked.** One concept for `#listen` (search plus the most-streamed rail), how it follows the season line and leads into `#map`, and whether the two should merge.
+
+**Proposed: "Turn to the Voice", and merge #listen with #map.** Desktop: heading and search top left, the existing globe top right (about 560px, still), the rail full width under both. Phone: heading, search, globe at full width, rail swiping under it. One interaction: point at or focus a card (on a phone, the card that snaps into place) and the globe turns to that guest's place, lights its pin and reads out e.g. "Honorin Hamard, 1588 km SSW". Same grammar as the departures (point at a row, the season line answers), but time becomes place. Data: episode-meta.json and globe-episodes.js only (all 15 rail episodes have a place). Remove: the map's own heading and kicker, the "Click A Pin" link to podcast.html#map, the globe's idle spin, the card tilt light, the card hover overlay that repeats the plate; platform buttons become one quiet line. No JS: rail full width, no globe box. Reduced motion: the globe cuts to the place.
+
+**Recommended it, because** the globe stops being a second section that repeats the episodes and becomes the rail's answer, so the visitor sees "these voices come from all over" without words. Honest limit: most top guests sit in the Alps, so most turns are small; Everest (Girard) and Canada (Gadd) give the big swings. Flagged: the intro says 80 conversations; episode-meta.json has 93 entries and the latest is Episode 80.
+
 ## 25 Oct 2026: a cursor shine on the departure rows?
 
 **Asked.** Should the departure rows (option A, built) get a soft light that follows the mouse, like the episode cards' `v4-tilt` light, on top of the 4% wash, the orange bar and the glider flight.
