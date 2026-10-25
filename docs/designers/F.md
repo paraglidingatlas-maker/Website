@@ -1,5 +1,11 @@
 # Designer F, "Fly the Season": notebook (newest first)
 
+## 25 Oct 2026: "something missing" in B2 (review, nothing built)
+**Asked.** The owner on B2 "Hear Where We Fly": "There's something missing. Is it the size, the feel, the appearance, what?" Judged in context at 1440 and 390 (opening, departures, then the section; shots in scratchpad `fresh/`).
+**Found:** no hero moment. The opening is a 260 px place name on a full photo; the departures are precise data; then this section drops to a 35 px heading (same as "Every Departure") and a row of equal grey portrait cards. Nothing leads, nothing is big, and a section called "Hear" has nothing to hear on the page.
+**Proposed:** one stage before the rail for the lit trip (Kenya now): full content width, about 560 to 640 px tall on desktop and about 60 vh on a phone, a clean frame from that episode's own video (`[to supply]` if none without baked words), the place name large in Poppins, guest and title, one play button that plays the episode in place on tap (its YouTube embed, no autoplay). Yotov's card leaves the rail so no art shows twice. Smaller: crop the cards to head and shoulders (the phone crop is eyes to chin); shorten the intro to one line with the search on the heading row so the stage reaches the first screen.
+**Recommended:** the stage, because scale and one clear lead are what the opening taught the eye to expect, and play is the section's promise.
+
 ## 25 Oct 2026: built B2, the agreed refinements to "Hear Where We Fly"
 Built into `prototypes/v4/samples/listen-b/index.html` (generator `scratchpad/lb/build_b2.py`): calm cards (grey grade, colour on hover or focus, live title and guest, no compass, plate, tilt or glint); trip cards on each episode's own art cropped to the face (YouTube still, words cropped out; no local portraits exist for Yotov, Kharas, Colfox, Gohil); one heading per trip, India's four dates once; "More conversations, Newest first" in the same row, grey rule, sticky; globe popups on the rail's picture, coordinates to one decimal in DM Sans; season route line and hollow Kazakhstan and Peru pins (Expeditions atlas coordinates); "Find it on the globe" uses the globe's own #pin deep link; phone ring fits with N E S W inside it, zoom buttons under the caption. Said "Newest first" rather than "Latest conversations": the 15 are not the 15 newest episodes.
 
