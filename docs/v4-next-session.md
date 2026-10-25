@@ -29,6 +29,34 @@ the owner's current queue and what the last session learnt doing it.
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
 
+## Chat 13 starts here (25 Oct): build the podcast section into the v4 home page
+Chat 12 did the seven steps (below) and then, with the owner and the three designers, designed the
+section after the departures. The owner's choices, in order (also in docs/designers/direction.md):
+no cursor shine on the departure rows; option B, Turnpoint's "Hear Where We Fly", #listen and #map
+merged into one section; refined (one calm card look: grey pictures, colour on hover, no compass, no
+YouTube red; one India heading; "More conversations, Newest first", no "most streamed" claim; the phone
+globe fits; "Find it on the globe"; a still orange route on the globe in season order, hollow pins for
+Kazakhstan and Peru); then a lead: the lit trip leads with its big name, dates, play in place (the
+youtube-nocookie embed loads only on tap) and Trim's chapter line, the globe turns to a picked trip and
+lights the route to it; no footage ("Except 2, 1 & 3"); last, the globe leads the stage (about 720px on the
+right, one plain ring, legend and caption one line under it, zoom inside its square), the episode picture
+small (240px) and growing on play. The owner: the globe "will most likely be replaced by the Encarta
+concept globe later on", so only its place and look matter now.
+- **The preview:** `prototypes/v4/samples/listen-b/index.html` (live at
+  https://paraglidingatlas.com/prototypes/v4/samples/listen-b/), last at bfb126d9, gates PASS. Turnpoint's
+  rebuild scripts were in chat 12's scratchpad (gone with the container); the sample itself is the source.
+- **Next (not yet asked):** the owner had not yet said "build it into the home page". Ask once, then do it
+  like `tools/v4_home_departures.py`: a tool copying the merged section from the sample into
+  prototypes/v4/index.html in place of `<section id="listen">` and `<section id="map">`, with the chain
+  checked (v4_ux, v4_polish, v2-home.js rail code, the globe scripts, smoke tests on #listen or #map).
+- **To check with the owner:** play on a real device (YouTube is blocked in the container, so the playhead
+  and the exact length from the player are untested); the chapter titles in episode-meta.json were written
+  from transcripts and marked for review; sharper guest portraits would help (the face crops come from each
+  episode's YouTube art, to keep "no photo used twice"); the source of "most streamed" if it is to come back.
+- **Worktree note:** a designer run with `isolation: worktree` leaves full copies under
+  `.claude/worktrees/`; the audit and the switch dry run then scan them and FAIL. Remove them
+  (`git worktree remove --force`) before gates. Chat 12 put `.claude/worktrees/` in `.git/info/exclude`.
+
 ## Where chat 12 left it (25 Oct): the seven steps are done and pushed
 - **Step 1 (301b80d1): option A is the home departures.** `tools/v4_home_departures.py`
   (run by hand after a change to `samples/departures/index.html`; the build
