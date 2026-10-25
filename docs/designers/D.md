@@ -1,5 +1,23 @@
 # Designer D, "Final Cut": notebook (newest first)
 
+## 25 Oct 2026: "something missing" in B, "Hear Where We Fly"
+
+**Asked.** The owner: "There's something missing. Is it the size, the feel,
+the appearance, what?" Judged in the page, opening down to #listen, 1440 and
+390. **Found.** Scale. The opening is a 260 px place name on a photo; the
+section is all one size: a 35 px heading (same as every h2), 19 px place
+names, five equal grey faces, then a globe under its own rule and kicker.
+No lead, so it reads as a podcast catalogue, and faces, not places, lead.
+**Proposed.** One hero: the place lit above (#destinations data-lit, Kenya by
+default) leads as a block about half the width: place name in Poppins at
+about 110 px desktop, 64 px phone (a step down from the opening, not a copy),
+dates under it, its episode portrait at about twice the card size, title 32
+px. The other groups stay at today's size beside it: one big, then small.
+Smaller: cut the dead 170 px gap after the call band; fold the globe into the
+section (no second kicker or rule; legend into the trip headers).
+**Recommended** the hero. Why: the eye needs one place to land, and it makes
+"places first" visible.
+
 ## 25 Oct 2026: refining B, "Hear Where We Fly" (the owner chose it over my A)
 
 **Asked.** How B can be refined for Awwwards, keeping its idea (trip places
