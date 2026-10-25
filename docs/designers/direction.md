@@ -24,6 +24,10 @@ and a readout under the photo. The owner said "do it" to building it into the
 v4 home page (chat 10's job).
 
 ## Decision log (newest first)
+- 25 Oct (chat 12): option B's missing piece is scale (all three). The owner chose option 1, the lit trip
+  leads as a large block, with two of the chat's ideas: play the episode in place with Trim's chapter line
+  under it, and the globe answers the lead trip (turns to it, the route lit to it). Not the footage behind
+  the lead trip ("Except 2, 1 & 3 are good concepts"). Globe-led option 2 (Cloudbase) not chosen.
 - 25 Oct (chat 12): the podcast section after the departures: option B, Turnpoint's "Hear Where We Fly"
   ("i like option B"; A was Trim's "Told From Here"), #listen and #map merged, the rail opening with
   the trip places' episodes. The owner asked the three to refine it "keeping awwwards in mind".
