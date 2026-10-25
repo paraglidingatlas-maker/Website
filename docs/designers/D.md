@@ -1,5 +1,28 @@
 # Designer D, "Final Cut": notebook (newest first)
 
+## 25 Oct 2026: round 1, the podcast section (#listen) and the map
+
+**Asked.** One concept for #listen (search box plus a rail of most streamed
+episode cards), and whether #listen and #map should merge.
+**Found.** The cards are guest portraits on red YouTube backgrounds with a
+compass rose over the face: a second warm colour fighting the one orange. The
+rail hides most cards off the right edge. The intro says "80 conversations";
+episode-meta.json lists 93 entries and the globe 78 (owner to confirm).
+**Proposed: "Told From Here".** Merge #listen and #map into one band. Left:
+heading, search, six to eight rows from homepage-cards.json in the departure
+rows' grammar (series and number, hook, guest, minutes, chapters), each with a
+quiet line drawn to its real length in minutes with ticks at its real chapter
+times (episode-meta.json), the season line's twin. Small greyscale portrait.
+Right: the globe, sticky. One interaction: point at or focus a row and the
+globe turns to that guest's pin (0.6 s), the pin lights orange, a readout gives
+range and bearing from Oslo (globe-episodes.js), as the glider flies to a
+departure row. Phone: stacked rows, globe below, drag only. Reduced motion: the
+globe cuts. No JS: the full list, readouts as text. Removed: red cards, compass
+overlay, rail and arrows, "Click A Pin" link, the map's own heading.
+**Recommended** the merge. Why: two bands about episodes with a link from one
+to the other is one band; the same gesture as the rows above makes the page
+read as one hand.
+
 ## 25 Oct 2026: a cursor shine on the departure rows?
 
 **Asked.** Is a soft light that follows the mouse across the departure rows

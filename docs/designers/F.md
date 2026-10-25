@@ -1,5 +1,25 @@
 # Designer F, "Fly the Season": notebook (newest first)
 
+## 25 Oct 2026: round 1 on #listen (the podcast section) and #map
+
+**Asked.** One concept for `#listen` (search, most-streamed rail), what
+follows the season line and leads to `#map`; should the two merge?
+**Proposed: "Hear Where We Fly".** One section, one heading: head and search,
+then the rail, then the globe straight under it (its own kicker and title
+become the caption). The rail opens with the episodes recorded at our trip
+places, in season order (Kenya: Nikolay Yotov, Navigators 10; Panchgani:
+Vistasp Kharas, 9; India: Eddie Colfox, 3, Jigish Gohil, 4), the trip lit
+above first, on the owner's own trip photos (no guest art exists for them);
+then the 15 most streamed. One interaction, the existing pin tap: trip pins
+orange, and their popup adds the trip's dates from the season rows and "See
+the trip". Remove the rail's self-scroll (moves unasked, clones all 15
+cards) and the "Click A Pin" link. **Recommended** merging: both halves are
+episodes, and the trips stay the thread from the season line to the map.
+**Flagged:** "80 conversations" vs 93 entries in episode-meta.json and 78
+pins; Kazakhstan and Peru have no episode (no card, no placeholder); the
+intro's "most streamed" copy is the owner's to change; without JS the globe
+box is empty (needs a plain list of pinned episodes).
+
 ## 25 Oct 2026: a cursor shine on the departure rows?
 
 **Asked.** Is a soft light that follows the mouse across the departure rows
