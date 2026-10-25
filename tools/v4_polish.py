@@ -911,6 +911,10 @@ def home_markup(html):
     mc = re.search(r'<b>(\d+)</b><span>Countries', pod)
     deps = re.findall(r'<a class="v2-dep" href="[^"]*" data-place="([a-z]+)" data-month="(\d{4})-(\d{2})">'
                       r'<span class="v2-dep-trip"><b>([^<]+)</b>(?: <em>([^<]+)</em>)?</span><span data-l="Dates">([^<]+)</span>', html)
+    # the departures on the season line (tools/v4_home_departures.py) draw their own line; only their places count
+    season = re.findall(r'<li class="sl-row(?: plan)?" data-dest="([a-z]+)"', html)
+    if season and not deps:
+        deps = [(d,) for d in season]
     if not mc or not deps:
         raise SystemExit("v4_polish: index.html: the figures' or the departures' source is not there")
     figs = [(str(feed_count()), "Conversations"), (mc.group(1), "Countries listening"), (str(len({d[0] for d in deps})), "Destinations")]
@@ -922,6 +926,8 @@ def home_markup(html):
         html = html[:m.end()] + fig + html[m.end():]
     elif 'id="held"' not in html:
         raise SystemExit("v4_polish: index.html: the opening's actions are not there")
+    if season:
+        return re.sub(re.escape(TL[0]) + r".*?" + re.escape(TL[1]) + "\n  ", "", html, flags=re.S)
     # the line of months: from the first departure's month to the last's
     rows = []
     for place, yy, mm, name, tour, dates in deps:

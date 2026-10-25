@@ -106,7 +106,7 @@ def cut(im, x):
 def photos(out, force):
     from PIL import Image
     os.makedirs(out, exist_ok=True)
-    for trip in ("india", "kenya", "panchgani", "home"):
+    for trip in ("india", "kenya", "panchgani", "home"):    # home: none since the departures replaced the fly-by
         for name, path, x in (flyby() if trip == "home" else heroes(trip)):
             stem = os.path.join(out, "%s-%s-p" % (trip, name))
             if not force and os.path.exists(stem + ".webp") and os.path.exists(stem + ".jpg"):
