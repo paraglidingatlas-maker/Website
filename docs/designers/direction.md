@@ -24,6 +24,10 @@ and a readout under the photo. The owner said "do it" to building it into the
 v4 home page (chat 10's job).
 
 ## Decision log (newest first)
+- 25 Oct (chat 12): the podcast section after the departures: option B, Turnpoint's "Hear Where We Fly"
+  ("i like option B"; A was Trim's "Told From Here"), #listen and #map merged, the rail opening with
+  the trip places' episodes. The owner asked the three to refine it "keeping awwwards in mind".
+  Preview: prototypes/v4/samples/listen-b/. The cursor shine on the departure rows: not added (all three said no).
 - 25 Oct (chat 12): option A "One Line, Two Postures" is built into the v4 home page in place of
   the fly-by and table ("do what you can yourself"); on a phone the opening's headline and trip
   button sit on the first screen and the trip panel no longer fades.
