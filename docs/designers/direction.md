@@ -24,6 +24,11 @@ and a readout under the photo. The owner said "do it" to building it into the
 v4 home page (chat 10's job).
 
 ## Decision log (newest first)
+- 25 Oct (chat 13): the owner saw the flat call band built and said "i like the current one really".
+  Asked why simpler, all three agreed: keep the current band (a lit panel like .kit-panel, the page's one warm
+  spot where it asks for action; "no glow" was the podcast cards' rule, not the site's). Small fixes offered:
+  the gap to the spacing scale (D 48px, E 24px), the words on the rows' left edge (D), the buttons centred on
+  the title (F), the glow colour as a token (D), the phone's season line run down to the band (E).
 - 25 Oct (chat 13): the owner said "ok" to building listen-b into the home page; built in place of #listen
   and #map by tools/v4_home_listen.py. Then asked all three about the step from the departures into the call
   band, "the only one which hasn't been updated as per the new site rules". All three agree: no box, no
@@ -87,6 +92,6 @@ v4 home page (chat 10's job).
 - Parked by the owner: the Encarta concept (do not raise).
 
 ## Open now
-- 25 Oct (chat 13): the home call band under the departures (see the log). Waiting on the owner.
+- 25 Oct (chat 13): the call band stays; the small fixes wait on the owner's yes.
 - Nothing open in design. Chat 10 builds the opening (with E's cloud move) into
   the v4 home page.
