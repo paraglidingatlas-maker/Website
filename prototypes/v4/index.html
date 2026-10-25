@@ -564,6 +564,9 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
      the existing file, untouched. -->
 <style>
 .lb{--lb-gap:clamp(2.2rem,4vw,3.2rem);--lb-cw:clamp(200px,24vw,232px)}
+/* styles.css still sizes the old plate's hook and name by --hf and --nf (set per card by
+   tools/generate_homepage_cards.py); these cards have no plate, so the two are set once here */
+.lb{--hf:1em;--nf:1em}
 .lb .v2-listen-head{margin-bottom:var(--sp-4)}
 /* the rail: one calm look. No lean, no tilt, no light following the cursor */
 .lb .v2-rail{perspective:none;align-items:flex-start;gap:2.2rem}
