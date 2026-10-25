@@ -823,14 +823,6 @@ HOME_CSS = (
     "html.v4-tld .v4-tl li b{transform:scaleX(0);transition:transform .9s var(--ease)}"
     "html.v4-tld .v4-tl li span{opacity:0;transition:opacity .6s var(--ease)}"
     "html.v4-tld .v4-tl.is-in li b{transform:none}html.v4-tld .v4-tl.is-in li span{opacity:1}"
-    # A: the episode cards lean towards the mouse with a soft light where it is
-    "html.v4-tilt .v2-rail .ep-card .ep-art{transform:perspective(800px) translateY(var(--ty,0px)) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));"
-    "transition:transform .6s var(--ease)}"
-    "html.v4-tilt .v2-rail .ep-card:is(:hover,:focus-visible) .ep-art{--ty:-4px;transition:transform .18s var(--ease)}"
-    "html.v4-tilt .v2-rail .ep-card .ep-art::after{content:\"\";position:absolute;inset:0;pointer-events:none;opacity:0;z-index:3;"
-    "background:radial-gradient(60% 60% at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--white) 14%,transparent),transparent 70%);"
-    "transition:opacity .4s var(--ease)}"
-    "html.v4-tilt .v2-rail .ep-card:hover .ep-art::after{opacity:1}"
 )
 HOME_JS = r"""(function () {
   var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches, html = document.documentElement;
@@ -877,23 +869,7 @@ HOME_JS = r"""(function () {
       window.addEventListener('resize', function () { if (!raf) raf = requestAnimationFrame(tick); });
       tick();
     }
-    /* A. the episode cards lean towards the mouse, with a soft light on them */
-    if (still || !(window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches)) return;
-    html.classList.add('v4-tilt');
-    document.addEventListener('pointermove', function (e) {
-      if (e.pointerType !== 'mouse') return;
-      var c = e.target.closest && e.target.closest('.v2-rail .ep-card'); if (!c) return;
-      var s = c.querySelector('.ep-art'); if (!s) return;
-      var r = s.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-      if (x < 0 || x > 1 || y < 0 || y > 1) return;
-      s.style.setProperty('--ry', ((x - 0.5) * 10).toFixed(2) + 'deg'); s.style.setProperty('--rx', ((0.5 - y) * 8).toFixed(2) + 'deg');
-      s.style.setProperty('--mx', (x * 100).toFixed(1) + '%'); s.style.setProperty('--my', (y * 100).toFixed(1) + '%');
-    }, { passive: true });
-    document.addEventListener('pointerout', function (e) {
-      var c = e.target.closest && e.target.closest('.v2-rail .ep-card');
-      if (!c || (e.relatedTarget && c.contains(e.relatedTarget))) return;
-      var s = c.querySelector('.ep-art'); if (s) { s.style.removeProperty('--rx'); s.style.removeProperty('--ry'); }
-    });
+    /* A. (the card tilt and its cursor light were dropped in B2: the cards stay calm) */
   });
 })();"""
 HFIG = ("<!--v4p:fig-->", "<!--/v4p:fig-->")
