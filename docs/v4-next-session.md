@@ -1,4 +1,4 @@
-# v4: handoff to the next session (24 Oct 2026)
+# v4: handoff to the next session (25 Oct 2026)
 
 Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
@@ -28,6 +28,51 @@ the owner's current queue and what the last session learnt doing it.
 - Work lean (owner, 21 Oct: "we're spending a lot of time discussing"): at
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
+
+## Where chat 12 left it (25 Oct): the seven steps are done and pushed
+- **Step 1 (301b80d1): option A is the home departures.** `tools/v4_home_departures.py`
+  (run by hand after a change to `samples/departures/index.html`; the build
+  keeps what it wrote) copies the sample's `<style>` into the head and its
+  `<section id="destinations">` (season line, nine rows, call band, small
+  script) in place of the fly-by, line of months and table, between
+  `v4-home-departures` marks. `tools/v4_polish.py` counts the Destinations
+  from the `.sl-row` rows and no longer draws the old line (`v4p:tl`);
+  `v4_ux` home_flyby_weight and `v4_phone_media` flyby() find no fly-by and
+  do nothing; the fly-by's phone cuts (`img/hero/home-*-p`) are deleted. The
+  home page has no video now, so v4_footage drops its pause script there.
+  No JavaScript shows the whole list (checked at 1440 and 390); the phone
+  card's "Today" reads the sample's 24 Oct 2026 until the script sets it.
+- **Step 2: the phone opening.** On a phone (sample, then
+  `tools/v4_home_opening.py`) the headline comes up under the route, the
+  trip panel follows with its button, "You fly" moves under the button, the
+  kicker and "Listen to the podcast" go last; the panel no longer fades as
+  the page scrolls (`.dock{opacity:1}` on phones) and the trips' grid no
+  longer stretches to India's height. At 390x844: headline 456 to 510 px,
+  the trip button 723 to 811 px for every place (was 842 to 957).
+- **Step 3: text and targets.** Readout labels, month letters (desktop and
+  phone), route names on a phone, the swipe hint and hints 11.2 to 12.5 px
+  (route names lose their letter spacing under 360 px, so KAZAKHSTAN clears
+  PERU at 320); the pause button is a 44 px target, still dim, no ring. The
+  departures' small labels went up the same way.
+- **Step 4: the call band** reads "(Kenya, Panchgani, India, Kazakhstan or
+  Peru)" on home and the three trip pages (tell the owner).
+- **Step 5: Panchgani.** Vistasp Kharas's episode lists Panchgani first in
+  Fly With Us (price `[to supply]`); About has a fifth card ("Panchgani ·
+  Sahyadri hills", "The Sahyadri Tablelands", from the page's own title)
+  with the contour pattern instead of a photo (its one photo is used three
+  times already), five cards in a row from 1101 px.
+- **Step 6: no JavaScript.** Kenya's five fly chapters each show their own
+  photo under their words (noscript copies, India's v4-calm way, in the
+  page's own `<style id="v4-kenya-own">`). The home rows and "Join The Atlas
+  List" show without JS at 1440 and 390 (the old hidden rows went with step 1).
+- **Step 7: Kenya's drift.** On Kenya `--font-mono` is the body font and
+  `--orange-lite` the one orange (page-only, so the library's mono stays);
+  `src/v2.css` gallery, route, 404 and altitude whites are `var(--white)`.
+- **Listed, not done:** the pilot cut-out's grey rim and the shadow blobs in
+  the opening need image work (re-cut masks); not tried, to keep it clean.
+- **Next:** offer the owner a new Juror review with its estimate (one page at
+  two widths about 3 to 6 min and 60k to 120k tokens; site-wide about 20 min
+  and 150k). The scheduled task "Chat 12: carry on the v4 plan" is disabled.
 
 ## Chat 12 starts here (25 Oct): the owner said "do what you can yourself"
 After the steps below the owner had the three designers (now named Trim = D,

@@ -24,6 +24,9 @@ and a readout under the photo. The owner said "do it" to building it into the
 v4 home page (chat 10's job).
 
 ## Decision log (newest first)
+- 25 Oct (chat 12): option A "One Line, Two Postures" is built into the v4 home page in place of
+  the fly-by and table ("do what you can yourself"); on a phone the opening's headline and trip
+  button sit on the first screen and the trip panel no longer fades.
 - 24 Oct (chat 11): a fourth agent, the Juror, scores built previews blind on
   the Awwwards criteria; "use only after checking with me the prediction of
   time and turn expenses".
