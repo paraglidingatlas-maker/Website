@@ -29,6 +29,77 @@ the owner's current queue and what the last session learnt doing it.
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
 
+## Chat 12 starts here (25 Oct): the owner said "do what you can yourself"
+After the steps below the owner had the three designers (now named Trim = D,
+Cloudbase = E, Turnpoint = F; `docs/designers/README.md`) and a new fourth
+agent, the Juror (`.claude/agents/awwwards-juror.md`), look at the home page
+and the whole site. Their write-ups are in the designers' notebooks
+(`docs/designers/D.md`, `E.md`, `F.md`, `juror.md`, newest at the top).
+- **The Juror's rule (owner):** "use only after checking with me the
+  prediction of time and turn expenses". Tell the owner the estimate first
+  (one page at two widths about 3 to 6 min and 60k to 120k tokens; the
+  site-wide review took 19 min and 150k) and wait for their yes.
+- **The Juror's scores** (v4 at 48bfc475 before the opening went in, against
+  v4 now): 7.14 then, 7.83 now out of 10 (Design 8.2, Usability 7.3,
+  Creativity 8.3, Content 7.0). About 8 usually wins Site of the Day.
+- **The next home section, option A "One Line, Two Postures"** (the
+  designers' majority pick after two rounds): the opening's season line
+  carried down across the top, matched to the pixel; the nine departures as
+  rows under it, each with a thin bar at its real dates (planned dashed), the
+  place last shown in the opening lit orange; pointing at a row flies the
+  glider to its bar. Phone: the line upright in the left margin, one card per
+  departure, the orange track drawn by scroll (CSS scroll timeline) with the
+  glider on its tip. The fly-by and the sideways line of months go; the call
+  band stays. Preview built by Turnpoint as a full copy of the home page:
+  `prototypes/v4/samples/departures/index.html` (live at
+  https://paraglidingatlas.com/prototypes/v4/samples/departures/#destinations).
+  Option B (Cloudbase's: rows unfold out of their bars as you scroll) was not
+  chosen by the majority.
+- **"Do what you can yourself" (owner, 25 Oct)**, chat 12, in this order,
+  each step with gates and a push:
+  1. **Build option A into the v4 home page** in place of
+     `<section id="destinations">` (the fly-by, the line of months and the
+     table). Make it a tool like `tools/v4_home_opening.py` that copies the
+     section from the sample. Watch the chain: `tools/v4_polish.py` reads the
+     departures (`a.v2-dep` rows) for the home line of months and the
+     Destinations figure and stops if they are gone; `tools/v4_ux.py`
+     home_flyby_weight and `tools/v4_phone_media.py` flyby() read the fly-by
+     (the phone cuts `img/hero/home-*-p`). Keep the departures' data (one
+     list, the rows) so the passes and v4_polish can read it, or move them to
+     read the new rows. No-JS must show the finished list.
+  2. **The phone opening** (all four found it): on a 390x844 phone the
+     opening's trip button sits at 824 to 871 px (was 560 px), the headline
+     "Paragliding Expeditions, Run By A Pilot." starts about 964 px down, and
+     the trip panel fades to black after about 200 px of scroll. Put the
+     headline and button inside the first screen, hold the fade until the
+     panel has scrolled past (sample, then `tools/v4_home_opening.py`, then
+     the build).
+  3. **Small text and targets** (Juror): readout labels 9.9 px, phone month
+     letters 9 px, the route hint 11 px: none under 11 to 12 px; the pause
+     button a 44 px touch area (it can stay dim).
+  4. **The call band** says "Ideal tour match ... (Kenya, India, or Peru)" on
+     the home page and the trip pages: make it the five places (Kenya,
+     Panchgani, India, Kazakhstan or Peru); tell the owner.
+  5. **Panchgani where it is still missing** (Cloudbase): the Panchgani
+     episode's "Fly With Us" box and About's place cards.
+  6. **No JavaScript** (Cloudbase, Trim): on the home page the departure rows
+     and "Join The Atlas List" are hidden without JS (the fly-by goes with
+     step 1); on Kenya's page the five chapter sections are black without JS.
+  7. **Kenya's page drift** (Trim): DM Mono as a third font, an off-token
+     white and a second orange; use the tokens and the two fonts.
+  Then ask the owner (with the estimate) whether the Juror should score again.
+  Not decided by the chats: keep `[to supply]` visible (the owner's standing
+  rule: a missing fact shows as `[to supply]`; the Juror would hide empty
+  fields: put that to the owner, do not change it). The pilot cut-out's grey
+  rim and the shadow blobs in the opening (Juror, Trim) need image work: try
+  only if it can be done cleanly, otherwise list it.
+- **Still waiting on the owner:** Panchgani's and Kenya's launch heights and
+  prices, Panchgani's group and rating; "Guaranteed to run, 6 places" for all
+  four India 2027 departures; Peru and Kazakhstan dates; a second Panchgani
+  photo; the big-wing Kenya photo, if any; India JPGs under 10 MB; a JPG of
+  DSC_6210; the live episode chart and the five Kenya repeat photos; the
+  switch-over (it changes the live home h1).
+
 ## Where chat 11 left it (24 Oct): Panchgani has its page and is across v4, the phone fixes and the review are done
 - **Step 4 done (01505966, gates PASS): Panchgani's page**
   https://paraglidingatlas.com/prototypes/v4/destinations/panchgani.html, by
