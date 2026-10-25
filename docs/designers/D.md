@@ -1,5 +1,32 @@
 # Designer D, "Final Cut": notebook (newest first)
 
+## 25 Oct 2026: the "More conversations" strip, agency quality
+
+**Asked.** The owner "really like[s] the previous design" (poster cards at
+fa877a47: hook and guest name set on the art, colour, the lean with a soft
+light) and wants the strip and its cards award level. **Found.** The calm
+look came largely from my own list (portraits greyscale, drop tilt and
+shine); "no glow" was the podcast cards' rule, never the site's. I was
+right about the compass and the raw YouTube red, wrong to take the poster
+and the warmth with them: today's strip reads as a contact sheet, grey on
+grey. Its hover floods the raw red and blue shirts in (worst of both).
+Also: "Newest first" is untrue (F noted the 15 are not the 15 newest);
+the phone heading sits at 24 px against the 16 px gutter; one-line titles
+leave a hole; "Enzo 3" orphan; the expand icon is unexplained; the rule
+runs past the container.
+**Proposed, "The Plate, Finished".** Keep the poster. Key the flat red
+backdrop out (clean cut, no red rim), lay each guest on an ember ground
+from the one orange to the dark at the foot; face in true colour. Live
+plate: hook in Poppins caps, short orange rule, guest name large; series
+and number one line on top. Meta: each episode's chapter line drawn to its
+real length (episode-meta.json), the lead player's twin; no expand icon.
+Hover: 2 degree lean, white light 8%, the rule draws; no overlay. Strip:
+hairline to container, arrows in the heading row, edge fade not a hard
+crop, token gap after the globe; phone: 82% cards with a peek, swipe and
+snap, no arrows, gutters fixed. Reduced motion and no JS: the still plate.
+**Recommended** it. Why: it gives back what the owner liked and fixes
+the two faults that made us drop it (the second red, the compass).
+
 ## 25 Oct 2026: the globe leads the lead trip (B, "Hear Where We Fly")
 
 **Asked.** The owner: the lead trip shows "too big of an episode thumbnail"

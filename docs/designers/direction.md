@@ -24,6 +24,14 @@ and a readout under the photo. The owner said "do it" to building it into the
 v4 home page (chat 10's job).
 
 ## Decision log (newest first)
+- 25 Oct (chat 13): the call band kept and made to arrive (glow opens in the middle, settles top-left; words
+  rise), built and pushed. Then the owner on the "More conversations" strip: "I really like the previous
+  design ... agency quality". All three now say bring the poster back (the grey calm look was their own
+  over-reach): live Poppins type on the art, warmth, the lean with a soft light, arrows in the heading row, a
+  thin progress line under the strip, a peeking swipe on the phone. They differ on colour: each guest's own
+  art, darker at rest (F); one warm orange duotone (E); the face cut out on an ember ground (D). D adds a line
+  per card true to its length and chapters; E a short scroll-held sideways pass. Flags: "Newest first" is
+  not true of the 15 (D); "Enzo 3" breaks alone; the lead's pictures still grey. Waiting on the owner.
 - 25 Oct (chat 13): the owner saw the flat call band built and said "i like the current one really".
   Asked why simpler, all three agreed: keep the current band (a lit panel like .kit-panel, the page's one warm
   spot where it asks for action; "no glow" was the podcast cards' rule, not the site's). Small fixes offered:
