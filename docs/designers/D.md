@@ -1,5 +1,26 @@
 # Designer D, "Final Cut": notebook (newest first)
 
+## 25 Oct 2026: the globe leads the lead trip (B, "Hear Where We Fly")
+
+**Asked.** The owner: the lead trip shows "too big of an episode thumbnail"
+(560 px face); they want the globe to dominate this section; the globe will
+likely be swapped later, so only its position, size and look. Need a change?
+**Found.** Yes: the face is the largest thing in the section, the globe
+(about 480 px) floats right with dead space under it, legend above and zoom
+buttons sitting on the ring.
+**Proposed.** 1440: swap the weights. Globe column about 60% (ring about 720
+px, globe about 640), top aligned with "Kenya", sticky. Left 40%: name 112
+px, dates, a small 16:9 picture (240x135) with play over it, chapter line the
+full column width under it, title, guest, See the trip; Hear another trip as
+two rows with 96x54 pictures under it. 390: name and dates, then the globe
+full width inside the 16 px gutters, then picture (96x54) plus title in one
+row, chapter line, See the trip, other trips as rows. Fix: one hairline ring
+(--line), no glow, the route the only orange; legend, caption and the three
+buttons in one row under the globe, off the ring.
+**Recommended** side by side, not text over the globe. Why: text over a
+turning globe fights it, and the globe is going to be swapped; a fixed
+column survives the swap.
+
 ## 25 Oct 2026: making the lead trip right (B, "Hear Where We Fly")
 
 **Asked.** How to build the owner's choice: the lit trip leads big (Kenya by

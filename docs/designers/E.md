@@ -1,5 +1,13 @@
 # Designer E, "Pull Back to the Route": notebook (newest first)
 
+## 25 Oct 2026: shrink the episode picture, let the globe lead (review only)
+
+**Asked.** On listen-b's lead block the owner said the 560 px episode face is too big and wants the globe to dominate the section; the globe itself will later be swapped for the Encarta one, so only its place, size and look in the layout matter. Keep the lead trip (name, dates, play in place, chapter line, See the trip), the turn to the picked trip with the route lit, Hear another trip, More conversations.
+
+**Proposed.** Yes, change: the face is the biggest thing and says "a man", not "where we fly". 1440: two columns, text 5 of 12 on the left, the globe 7 of 12 on the right, ring about 720 px (fits a 900 px tall screen), its top level with the KENYA name. Left column: KENYA, dates, then one row: a 160 x 90 picture, play, episode title and guest; the chapter line under it at column width; See the trip; Hear another trip as two text rows with a small play, no pictures. Search moves out of the header into the More conversations row. Legend and "Click a pin" become one grey caption line under the ring; zoom buttons sit quiet inside the ring's lower right. 390: heading, KENYA and dates, the globe full width (ring inside 358 px) straight after the dates, then the small picture row, chapter line, See the trip, the two other trips. The globe turns to the lead as it scrolls in from the departures, nothing else moves. Appearance fix: drop the compass bezel (ticks, N S E W, second ring); one hairline ring in the line token, orange only on the route and pins. Option 2 (not recommended): my earlier globe-first full-width hero.
+
+**Recommended the side by side,** because the pick and the globe's answer must be on one screen, and a plain frame survives the Encarta swap unchanged.
+
 ## 25 Oct 2026: motion and flow for B with a lead trip (review only)
 
 **Asked.** The owner chose the lead block for B (`prototypes/v4/samples/listen-b/`): the trip lit in the departures leads large (Kenya by default), the others small; the episode plays in place with Trim's chapter line (real length, real chapter starts from episode-meta.json); the globe turns to the lead trip and the orange route lights to it. My globe-led option was not chosen. Advise motion and flow only, do not build.
