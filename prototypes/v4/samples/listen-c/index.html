@@ -927,14 +927,21 @@ html.lc-tilt .lb .ep-card:hover .lc-light{opacity:1}
 /* the lead trip's pictures and the globe's thumbnails in colour too, a step darker at rest */
 .lb-pic img,.lb-o-pic img,#listen .mp-th img{filter:brightness(.78) saturate(.92)}
 .lb-ep:has(.lb-play:is(:hover,:focus-visible)) .lb-pic img,.lb-pic:hover img,.lb-o:is(:hover,:focus-within) .lb-o-pic img{filter:none}
-/* the contour lines (the owner chose them over a compass): the site's own map lines (img/contours.svg),
-   faint, only in the red above the guest's head, fading out before the face and never under the words;
-   each card shows another part of the map, and the lines drift a little slower than the strip as it slides. */
-.lc-topo{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.32;
-  background:url("../../img/contours.svg") calc(var(--i,0) * -173px + var(--tx,0px)) calc(var(--i,0) * -61px)/520px auto repeat;
+/* the contour lines (the owner: "let the contour lines continue outside the photo and into the background
+   of the section and fade away"): one map (img/contours.svg) laid behind the whole strip, faint on the dark
+   ground and fading out at its edges, and the same map, lined up exactly, on each poster's red above the
+   guest's head; so the lines run on from card to card and out into the section. The cards slide over the
+   map as the strip moves. Without JavaScript only the section's lines show. */
+.lb .v2-rail-wrap{isolation:isolate}
+.lb .v2-rail-wrap::before{content:"";position:absolute;left:0;right:0;top:-90px;bottom:-60px;z-index:-1;pointer-events:none;
+  background:url("../../img/contours.svg") 0 90px/400px auto repeat;opacity:.2;
+  -webkit-mask-image:radial-gradient(60% 62% at 50% 42%,#000 25%,transparent 100%);mask-image:radial-gradient(60% 62% at 50% 42%,#000 25%,transparent 100%)}
+.lc-topo{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;
+  background:url("../../img/contours.svg") 0 0/400px auto repeat;
   -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 10%,transparent 32%);mask-image:linear-gradient(to bottom,#000 0%,#000 10%,transparent 32%);
   transition:opacity .5s var(--ease-out)}
-.lb .ep-card:is(:hover,:focus-visible) .lc-topo{opacity:.5}
+.lb.lc-live .lc-topo{opacity:.32}
+.lb.lc-live .ep-card:is(:hover,:focus-visible) .lc-topo{opacity:.5}
 @media (max-width:760px){
   .lb{--lb-cw:76vw}
   .lc-head .v2-rail-nav{display:none}
@@ -1712,7 +1719,14 @@ html.lc-tilt .lb .ep-card:hover .lc-light{opacity:1}
     var sec = document.getElementById('listen'); if (!sec) return;
     var rail = sec.querySelector('.v2-rail'), bar = sec.querySelector('.lc-prog b');
     var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    [].forEach.call(sec.querySelectorAll('.lc-topo'), function (t, i) { t.style.setProperty('--i', i); });
+    /* each poster's map lines sit exactly on the map behind the strip, so they run on from card to card */
+    var wrap = sec.querySelector('.v2-rail-wrap'), topos = [].slice.call(sec.querySelectorAll('.lc-topo')), araf = 0;
+    function align() {
+      araf = 0; if (!wrap) return;
+      var w = wrap.getBoundingClientRect();
+      topos.forEach(function (t) { var r = t.getBoundingClientRect(); t.style.backgroundPosition = (w.left - r.left).toFixed(1) + 'px ' + (w.top - r.top).toFixed(1) + 'px'; });
+    }
+    function queue() { if (!araf) araf = requestAnimationFrame(align); }
     if (rail && bar) {
       sec.classList.add('lc-live');
       var sync = function () {
@@ -1720,10 +1734,11 @@ html.lc-tilt .lb .ep-card:hover .lc-light{opacity:1}
         bar.style.setProperty('--pl', (rail.scrollLeft / w * 100).toFixed(2) + '%');
         bar.style.setProperty('--pw', (rail.clientWidth / w * 100).toFixed(2) + '%');
         rail.classList.toggle('at-end', rail.scrollLeft >= max - 2);
-        if (!still) sec.style.setProperty('--tx', (rail.scrollLeft * 0.25).toFixed(1) + 'px');   /* the map lines drift slower than the strip */
+        queue();
       };
       rail.addEventListener('scroll', sync, { passive: true });
       window.addEventListener('resize', sync); window.addEventListener('load', sync); sync();
+      sec.addEventListener('pointermove', queue, { passive: true }); sec.addEventListener('pointerleave', function () { setTimeout(queue, 650); });
     }
     if ((window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) ||
         !(window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches)) return;
