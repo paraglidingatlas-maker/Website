@@ -933,9 +933,12 @@ html.lc-tilt .lb .ep-card:hover .lc-light{opacity:1}
    guest's head; so the lines run on from card to card and out into the section. The cards slide over the
    map as the strip moves. Without JavaScript only the section's lines show. */
 .lb .v2-rail-wrap{isolation:isolate}
-.lb .v2-rail-wrap::before{content:"";position:absolute;left:0;right:0;top:-90px;bottom:-60px;z-index:-1;pointer-events:none;
-  background:url("../../img/contours.svg") 0 90px/400px auto repeat;opacity:.2;
-  -webkit-mask-image:radial-gradient(60% 62% at 50% 42%,#000 25%,transparent 100%);mask-image:radial-gradient(60% 62% at 50% 42%,#000 25%,transparent 100%)}
+.lb .v2-rail-wrap::before{content:"";position:absolute;left:0;right:0;top:-220px;bottom:-80px;z-index:-1;pointer-events:none;
+  background:url("../../img/contours.svg") 0 220px/400px auto repeat;opacity:.2;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 45%,#000 72%,transparent 100%),linear-gradient(to right,transparent 0%,#000 22%,#000 78%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to bottom,transparent 0%,#000 45%,#000 72%,transparent 100%),linear-gradient(to right,transparent 0%,#000 22%,#000 78%,transparent 100%);
+  mask-composite:intersect}
 .lc-topo{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;
   background:url("../../img/contours.svg") 0 0/400px auto repeat;
   -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 10%,transparent 32%);mask-image:linear-gradient(to bottom,#000 0%,#000 10%,transparent 32%);
@@ -1095,7 +1098,7 @@ html.lc-tilt .lb .ep-card:hover .lc-light{opacity:1}
     </div>
   </div></div>
   <div class="v2-rail-wrap">
-    <div class="v2-rail" tabindex="0" aria-label="More conversations, 15 guests, newest first">
+    <div class="v2-rail" data-auto tabindex="0" aria-label="More conversations, 15 guests, newest first">
       <div class="lb-grp is-more"><div class="lb-cards">
       <!-- guest-cards:start -->
       <a class="ep-card" href="../../episodes/the-russell-ogden-interview-decoding-paragliding-mastery.html" data-ep-slug="the-russell-ogden-interview-decoding-paragliding-mastery" style="--hf:8.1cqw;--nf:10.93cqw"><span class="lc-k"><b>Risk vs Reward</b><i>Episode 75</i></span><span class="ep-art"><picture><source srcset="../../../../assets/podcast/guest-russel.webp" type="image/webp"><img src="../../../../assets/podcast/guest-russel.jpg" alt="Russell Ogden" loading="lazy" width="480" height="679"></picture><span class="lc-topo" aria-hidden="true"></span><span class="lc-plate"><span class="lc-hook">Progression, Fear & Competition</span><span class="lc-rule" aria-hidden="true"></span><span class="lc-name">Russell Ogden</span></span><span class="lc-light" aria-hidden="true"></span></span><span class="lc-run" aria-hidden="true"><span class="lc-bar" style="--w:79.5%"><i style="--at:11.6%"></i><i style="--at:18.4%"></i><i style="--at:23.2%"></i><i style="--at:32.0%"></i><i style="--at:37.0%"></i><i style="--at:43.0%"></i><i style="--at:51.4%"></i><i style="--at:56.8%"></i><i style="--at:64.5%"></i><i style="--at:71.0%"></i><i style="--at:77.0%"></i></span></span><span class="lc-foot">132 min<s>/</s>12 chapters</span></a>
@@ -1720,20 +1723,21 @@ html.lc-tilt .lb .ep-card:hover .lc-light{opacity:1}
     var rail = sec.querySelector('.v2-rail'), bar = sec.querySelector('.lc-prog b');
     var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
     /* each poster's map lines sit exactly on the map behind the strip, so they run on from card to card */
-    var wrap = sec.querySelector('.v2-rail-wrap'), topos = [].slice.call(sec.querySelectorAll('.lc-topo')), araf = 0;
+    var wrap = sec.querySelector('.v2-rail-wrap'), araf = 0;
     function align() {
       araf = 0; if (!wrap) return;
       var w = wrap.getBoundingClientRect();
-      topos.forEach(function (t) { var r = t.getBoundingClientRect(); t.style.backgroundPosition = (w.left - r.left).toFixed(1) + 'px ' + (w.top - r.top).toFixed(1) + 'px'; });
+      [].forEach.call(sec.querySelectorAll('.lc-topo'), function (t) {   /* the drift's copies too */ var r = t.getBoundingClientRect(); t.style.backgroundPosition = (w.left - r.left).toFixed(1) + 'px ' + (w.top - r.top).toFixed(1) + 'px'; });
     }
     function queue() { if (!araf) araf = requestAnimationFrame(align); }
     if (rail && bar) {
       sec.classList.add('lc-live');
       var sync = function () {
-        var w = rail.scrollWidth || 1, max = w - rail.clientWidth;
-        bar.style.setProperty('--pl', (rail.scrollLeft / w * 100).toFixed(2) + '%');
+        /* the strip drifts on its own again (v2-immersive.js, data-auto, a second copy after the first): the line counts one copy */
+        var auto = rail.classList.contains('is-auto'), w = (rail.scrollWidth / (auto ? 2 : 1)) || 1, max = rail.scrollWidth - rail.clientWidth;
+        bar.style.setProperty('--pl', ((rail.scrollLeft % w) / w * 100).toFixed(2) + '%');
         bar.style.setProperty('--pw', (rail.clientWidth / w * 100).toFixed(2) + '%');
-        rail.classList.toggle('at-end', rail.scrollLeft >= max - 2);
+        rail.classList.toggle('at-end', !auto && rail.scrollLeft >= max - 2);
         queue();
       };
       rail.addEventListener('scroll', sync, { passive: true });
