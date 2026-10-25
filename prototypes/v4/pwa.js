@@ -1,5 +1,10 @@
 /* Paragliding Atlas, v4 app: registers the offline rules (sw.js) and offers
    "Install the app" in the footer. Written by tools/v4_pwa.py. */
+/* the footer's year follows the visitor's calendar, so it turns over on 1 January by itself */
+(function () {
+  var y = String(new Date().getFullYear());
+  [].forEach.call(document.querySelectorAll('[data-year]'), function (e) { if (e.textContent < y) e.textContent = y; });
+})();
 (function () {
   'use strict';
   var root = document.currentScript ? document.currentScript.src.replace(/pwa\.js.*$/, '') : '';
