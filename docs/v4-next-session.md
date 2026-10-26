@@ -25,6 +25,8 @@ the owner's current queue and what the last session learnt doing it.
 - No photograph is used twice on the site unless it really must be (faces,
   portraits); a repeat is replaced with a different picture, not dropped
   (owner, 21 Oct).
+- Every push to live gets a link (owner, 26 Oct: "give me a link whenever you push something live, this rule
+  is forever valid across chats"): after each push, give the live paraglidingatlas.com link(s) to what changed.
 - Work lean (owner, 21 Oct: "we're spending a lot of time discussing"): at
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
