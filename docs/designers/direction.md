@@ -26,6 +26,14 @@ v4 home page (chat 10's job).
 ## Decision log (newest first)
 - 26 Oct (chat 14): asked "which tiles are better, v4's posters or the live page's", D, E and F all chose the v4
   posters (clean faces with no compass, live type, the length line). Built on the owner's "push the 4 changes":
+  series labels fit, the foot fades into the page's dark (E, F), one hook size up to three lines (D), an orange
+  "Open the episode" on hover and focus (F, from the live tiles). The chapter ticks on the length line "looking a
+  bit odd" (owner): now one calm rounded bar, orange on hover; the chapter count stays in the line under it.
+- 25 Oct (chat 14): contour lines removed entirely from the posters and the strip's section (owner). The record
+  attempt page's footer completely transparent (owner). The footer's year turns over by itself each new year
+  (tools/v4_pwa.py marks it, pwa.js sets the visitor's year).
+- 26 Oct (chat 14): asked "which tiles are better, v4's posters or the live page's", D, E and F all chose the v4
+  posters (clean faces with no compass, live type, the length line). Built on the owner's "push the 4 changes":
   series labels fit (no "NEW TECHNOLOGIE..."), the foot fades into the page's dark not the jackets' blue (E, F),
   one hook size up to three lines (D), an orange "Open the episode" on hover and focus (F, from the live tiles).
 - 25 Oct (chat 14): contour lines removed entirely from the posters and the strip's section (owner). The record
