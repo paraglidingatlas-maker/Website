@@ -24,6 +24,12 @@ and a readout under the photo. The owner said "do it" to building it into the
 v4 home page (chat 10's job).
 
 ## Decision log (newest first)
+- 26 Oct (chat 14): the "Also on" marks glow in their own brand colour on hover, focus and tap, the name turns
+  white, no underline (owner; after D, E, F's one-colour refinement: marks quieter than names, Apple sized to the
+  circles, Amazon Music by name only). The home headline stays (D, E, F: one fixed h1; the trip titles are the
+  per-place slogans; suggested: Panchgani's title "The Land Of Five Hills", "Explore The Cradle" capitals; asked).
+  The year once for a place's dates (owner). Panchgani's photo credit off the home page (owner). The phone opening
+  preview: samples/opening/phone.html, photo full height, the route, headline and button low on its foot.
 - 26 Oct (chat 14): the section's last line ("All episodes in the Library", "Also on ..."). D, E, F: no brand-colour
   icons (they fight the one orange; a logo row reads as a template); one rule only, the Library as the clear next
   step, phone tap targets. The owner chose the four listening apps (Spotify, Apple Podcasts, YouTube, Amazon

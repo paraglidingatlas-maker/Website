@@ -679,12 +679,16 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
 /* the marks a step quieter than the names, each sized by eye so the square and the circles weigh the same (D, E, F);
    Amazon Music by name only: its own mark is a wordmark, unreadable this small, and a made-up one is not allowed */
 #listen .lb-on a{background:none}
-.lb-on a{display:inline-flex;align-items:center;gap:.55rem;color:var(--gray-light);text-decoration:none;white-space:nowrap;padding:.2rem 0}
-.lb-on a span{background:linear-gradient(var(--orange),var(--orange)) 0 100%/0 1px no-repeat;padding-bottom:2px;transition:background-size .2s var(--ease-out)}
-.lb-on svg{width:16px;height:16px;flex:none;color:var(--gray);transition:color .2s var(--ease-out)}
+/* the marks a step quieter than the names, each sized by eye so the square and the circles weigh the same (D, E, F);
+   Amazon Music by name only: its own mark is a wordmark, unreadable this small, and a made-up one is not allowed.
+   On hover, focus and tap each mark lights in its own brand colour with a soft glow, the name turns white, no
+   underline (owner, 26 Oct 2026; the brand colours are the services' own, used only here) */
+.lb-on a{display:inline-flex;align-items:center;gap:.55rem;color:var(--gray-light);text-decoration:none;white-space:nowrap;padding:.2rem 0;transition:color .2s var(--ease-out)}
+.lb-on svg{width:16px;height:16px;flex:none;color:var(--gray);transition:color .25s var(--ease-out),filter .25s var(--ease-out)}
 .lb-on svg.i-ap{width:14px;height:14px}
-.lb-on a:is(:hover,:focus-visible),.lb-on a:is(:hover,:focus-visible) svg{color:var(--orange)}
-.lb-on a:is(:hover,:focus-visible) span{background-size:100% 1px}
+.lb-on svg.i-sp{--brand:#1ed760}.lb-on svg.i-ap{--brand:#9933cc}.lb-on svg.i-yt{--brand:#ff0000}
+.lb-on a:is(:hover,:focus-visible,:active){color:var(--white)}
+.lb-on a:is(:hover,:focus-visible,:active) svg{color:var(--brand);filter:drop-shadow(0 0 6px color-mix(in srgb,var(--brand) 70%,transparent))}
 @media (max-width:760px){
   .lb-pins>ol{grid-template-columns:1fr}
 }
@@ -704,7 +708,6 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
   .lb-on{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
   .lb-on-k{grid-column:1/-1;padding-bottom:.2rem}
   .lb-on a{min-height:44px}
-  .lb-on a span{background:none}
 }
 @media (prefers-reduced-motion:reduce){
   .lb .ep-art img,.lb-cap,.lb-see,.lb-see span,.lb-find{transition:none}
@@ -959,7 +962,7 @@ html.lc-tilt .lb .ep-card:hover .lc-light{opacity:1}
   .lb .v2-rail{-webkit-mask-image:none;mask-image:none}
 }
 @media (prefers-reduced-motion:reduce){
-  .lb .lb-cards .ep-art,.lb .lb-cards .ep-art img,.lc-rule,.lc-bar::after,.lc-prog b,.lc-foot i,.lc-brand,.lb-plat .lib,.lb-plat .lib span,.lb-on a span,.lb-on svg{transition:none}
+  .lb .lb-cards .ep-art,.lb .lb-cards .ep-art img,.lc-rule,.lc-bar::after,.lc-prog b,.lc-foot i,.lc-brand,.lb-plat .lib,.lb-plat .lib span,.lb-on a,.lb-on svg{transition:none}
 }
 </style>
 <section id="listen" class="kit-band v2-listen lb" aria-labelledby="lbTitle">
