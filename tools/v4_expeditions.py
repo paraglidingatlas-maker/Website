@@ -190,6 +190,14 @@ EM = math.sqrt(3) / 2
 SCALE = 200.0
 
 
+
+def one_year(dates):
+    """A place's departures in one year name it once, on the last (owner, 26 Oct 2026: "write 2027 only once")."""
+    yrs = {d.rsplit(" ", 1)[-1] for d in dates}
+    if len(dates) < 2 or len(yrs) != 1:
+        return dates
+    return [d.rsplit(" ", 1)[0] for d in dates[:-1]] + dates[-1:]
+
 def ee(lon, lat):
     """Longitude and latitude in degrees to the drawing's x and y (y down)."""
     lam = math.radians(lon)
@@ -685,7 +693,7 @@ def world():
     rows = []
     for i, p in enumerate(PLACES):
         if p["dates"]:
-            when = "".join('<span>%s</span>' % esc(d) for d in p["dates"])
+            when = "".join('<span>%s</span>' % esc(d) for d in one_year(p["dates"]))
         else:
             when = '<span>Planned, %s</span>' % esc(p["when"])
         rows.append('<li><a href="#%s" data-i="%d"><span class="ex-ix-n">%s</span><span class="ex-ix-t">%s</span>'
@@ -726,7 +734,7 @@ def place(p, i):
     if p["dates"]:
         when = ('<div class="ex-when"><span class="ex-lab">Departures</span><p>%s</p>'
                 '<p class="ex-state"><i aria-hidden="true"></i>%s</p></div>'
-                % ("".join('<span>%s</span>' % esc(d) for d in p["dates"]), esc(p["state"])))
+                % ("".join('<span>%s</span>' % esc(d) for d in one_year(p["dates"])), esc(p["state"])))
     else:
         when = ""
     facts = "".join('<div><dt>%s</dt><dd>%s</dd></div>' % (esc(k), val(v)) for k, v in p["facts"])
