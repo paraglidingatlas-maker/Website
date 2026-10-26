@@ -907,9 +907,10 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
 .lb .ep-card:is(:hover,:focus-visible) .lc-rule{transform:none;opacity:1}
 .lc-name{font:700 var(--nf)/1 var(--font-display);letter-spacing:-.025em;text-transform:uppercase;color:var(--white);
   white-space:nowrap;text-shadow:0 2px 10px color-mix(in srgb,var(--bg) 60%,transparent)}
-/* the show's name under the guest's, small and quiet, as on the live tiles (owner, 26 Oct 2026) */
-.lc-brand{display:block;margin-top:4cqw;font:500 4.3cqw/1 var(--font-body);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;
+/* the show's name under the guest's, small and quiet, shown on hover and focus only (owner, 26 Oct 2026) */
+.lc-brand{opacity:0;transform:translateY(4px);transition:opacity .35s var(--ease-out),transform .35s var(--ease-out);display:block;margin-top:4cqw;font:500 4.3cqw/1 var(--font-body);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;
   color:color-mix(in srgb,var(--white) 62%,transparent)}
+.lb .ep-card:is(:hover,:focus-visible) .lc-brand{opacity:1;transform:none}
 /* the open cue: the live tiles' expand sign at the right of the length line, in orange */
 .lc-foot i{margin-left:auto;display:inline-flex;width:14px;height:14px;color:var(--orange);transition:transform .35s var(--ease-out)}
 .lc-foot i svg{width:100%;height:100%}
@@ -939,7 +940,7 @@ html.lc-tilt .lb .ep-card:hover .lc-light{opacity:1}
   .lb .v2-rail{-webkit-mask-image:none;mask-image:none}
 }
 @media (prefers-reduced-motion:reduce){
-  .lb .lb-cards .ep-art,.lb .lb-cards .ep-art img,.lc-rule,.lc-bar::after,.lc-prog b,.lc-foot i{transition:none}
+  .lb .lb-cards .ep-art,.lb .lb-cards .ep-art img,.lc-rule,.lc-bar::after,.lc-prog b,.lc-foot i,.lc-brand{transition:none}
 }
 </style>
 <section id="listen" class="kit-band v2-listen lb" aria-labelledby="lbTitle">

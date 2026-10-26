@@ -30,7 +30,7 @@ v4 home page (chat 10's job).
   "Open the episode" on hover and focus (F, from the live tiles); the owner found that text odd and chose the
   live tiles' expand sign instead, in orange at the right end of the length line, opposite "min / chapters"
   (a corner on the poster was tried first and turned down).
-  Under each guest's name, small and quiet: "Paragliding Atlas Podcast" (owner, in place of the words). The chapter ticks on the length line "looking a
+  Under each guest's name, small and quiet, on hover and focus only: "Paragliding Atlas Podcast" (owner). The chapter ticks on the length line "looking a
   bit odd" (owner): now one calm rounded bar, orange on hover; the chapter count stays in the line under it.
 - 25 Oct (chat 14): contour lines removed entirely from the posters and the strip's section (owner). The record
   attempt page's footer completely transparent (owner). The footer's year turns over by itself each new year
