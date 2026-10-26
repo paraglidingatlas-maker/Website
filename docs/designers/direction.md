@@ -28,7 +28,8 @@ v4 home page (chat 10's job).
   posters (clean faces with no compass, live type, the length line). Built on the owner's "push the 4 changes":
   series labels fit, the foot fades into the page's dark (E, F), one hook size up to three lines (D), an orange
   "Open the episode" on hover and focus (F, from the live tiles); the owner found that text odd and chose the
-  site's small orange corner at each poster's foot instead (always there, larger on hover and focus). The chapter ticks on the length line "looking a
+  site's small orange corner at each poster's foot instead (always there, larger on hover and focus).
+  Under each guest's name, small and quiet: "Paragliding Atlas Podcast" (owner, in place of the words). The chapter ticks on the length line "looking a
   bit odd" (owner): now one calm rounded bar, orange on hover; the chapter count stays in the line under it.
 - 25 Oct (chat 14): contour lines removed entirely from the posters and the strip's section (owner). The record
   attempt page's footer completely transparent (owner). The footer's year turns over by itself each new year
