@@ -30,6 +30,16 @@ the owner's current queue and what the last session learnt doing it.
   change, small fixes built straight away and shown after.
 
 ## Chat 14 (25 Oct): the poster strip is in the home page
+- 26 Oct, the posters after the designers' review (all three chose them over the live tiles): series labels fit,
+  the foot fades into the page's dark, one hook size (up to three lines), the length line one calm bar (no
+  chapter ticks), the live tiles' expand sign in orange opposite "min / chapters", "Paragliding Atlas Podcast"
+  under the name on hover only. Contour lines removed entirely. The record page's footer transparent. The
+  footer's year turns over by itself (tools/v4_pwa.py + pwa.js).
+- The old site for reference (owner, 26 Oct: "just host it on GitHub"): a frozen copy of today's live site (every
+  page noindex, robots.txt Disallow, no CNAME) to go in a new public repository paraglidingatlas-maker/old-site,
+  served by GitHub Pages at paraglidingatlas-maker.github.io/old-site/. The chat cannot create repositories (403);
+  the owner creates the empty repo, the chat adds it with add_repo (push) and pushes, the owner turns Pages on
+  (Settings > Pages > main). Make it again from origin/main right before the switch-over if live pages changed.
 - The owner said "yes Poster strip into home": tools/v4_home_listen.py copies samples/listen-c (not listen-b).
 - Contour lines fixed on the owner's screenshot: the map behind the strip has its own layer (will-change), since
   the posters' resting 3D tilt hid it above the cards; it peaks where the posters start; poster lines fade out by
