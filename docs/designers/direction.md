@@ -24,6 +24,13 @@ and a readout under the photo. The owner said "do it" to building it into the
 v4 home page (chat 10's job).
 
 ## Decision log (newest first)
+- 26 Oct (chat 14): asked "which tiles are better, v4's posters or the live page's", D, E and F all chose the v4
+  posters (clean faces with no compass, live type, the length line). Built on the owner's "push the 4 changes":
+  series labels fit (no "NEW TECHNOLOGIE..."), the foot fades into the page's dark not the jackets' blue (E, F),
+  one hook size up to three lines (D), an orange "Open the episode" on hover and focus (F, from the live tiles).
+- 25 Oct (chat 14): contour lines removed entirely from the posters and the strip's section (owner). The record
+  attempt page's footer completely transparent (owner). The footer's year turns over by itself each new year
+  (tools/v4_pwa.py marks it, pwa.js sets the visitor's year).
 - 25 Oct (chat 14): "yes Poster strip into home": samples/listen-c is the home page's podcast section
   (tools/v4_home_listen.py now copies it). The contour lines must run on unbroken from the section's map into
   each poster ("the contour strips do not match ... with those above") and fade out sooner on the posters (by
