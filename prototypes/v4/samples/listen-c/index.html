@@ -666,11 +666,20 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
 .lb-pins .go{color:var(--orange);font-size:var(--fs-small);font-weight:600;text-decoration:none}
 .lb-pins>ol>li:target b{color:var(--orange)}
 /* platforms: one quiet line */
-.lb-plat{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.7rem 2rem;margin:var(--lb-gap) 0 0;padding-top:var(--sp-3);border-top:1px solid var(--line);font-size:var(--fs-small);color:var(--gray)}
-.lb-plat a{color:var(--gray-light);text-decoration:none;white-space:nowrap;transition:color .2s var(--ease-out)}
-.lb-plat a:hover,.lb-plat a:focus-visible{color:var(--orange)}
-.lb-plat .lib{color:var(--white);font-weight:600}
-.lb-plat s{text-decoration:none;opacity:.5;padding:0 .2rem}
+/* the section's last line (D, E, F, 26 Oct 2026): one rule only (the strip's own progress line above), the Library
+   as the clear next step, the four listening apps in the site's own one-colour marks (no brand colours) */
+.lb-plat{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--sp-3) 2rem;margin:var(--sp-4) 0 0;font-size:var(--fs-small);color:var(--gray)}
+.lb-plat .lib{display:inline-flex;align-items:center;gap:.6rem;font:600 var(--fs-body)/1.3 var(--font-display);color:var(--white);text-decoration:none;
+  background:linear-gradient(var(--orange),var(--orange)) 0 100%/0 1px no-repeat;padding-bottom:.2rem;transition:background-size .3s var(--ease-out)}
+.lb-plat .lib span{color:var(--orange);transition:transform .3s var(--ease-out)}
+.lb-plat .lib:is(:hover,:focus-visible){background-size:100% 1px}
+.lb-plat .lib:is(:hover,:focus-visible) span{transform:translateX(4px)}
+.lb-on{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.5rem}
+.lb-on-k{font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray)}
+.lb-on a{display:inline-flex;align-items:center;gap:.5rem;color:var(--gray-light);text-decoration:none;white-space:nowrap;
+  background:linear-gradient(var(--orange),var(--orange)) 0 100%/0 1px no-repeat;padding:.2rem 0;transition:color .2s var(--ease-out),background-size .2s var(--ease-out)}
+.lb-on a:is(:hover,:focus-visible){color:var(--orange);background-size:100% 1px}
+.lb-on svg{width:16px;height:16px;flex:none}
 @media (max-width:760px){
   .lb-pins>ol{grid-template-columns:1fr}
 }
@@ -685,7 +694,11 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
   .lb.lb-live .lb-zoomrow{display:flex;justify-content:center;margin-top:var(--sp-2)}
   .lb-zoomrow .gl-zoom{position:static;flex-direction:row}
   .lb-zoomrow .gl-zoom button+button{border-top:1px solid var(--edge-hi);border-left:0}
-  .lb-plat{flex-direction:column;gap:.5rem}
+  .lb-plat{flex-direction:column;align-items:stretch;gap:var(--sp-3)}
+  .lb-plat .lib{justify-content:space-between;min-height:48px;padding:0 1rem;border:1px solid var(--line);background:none}
+  .lb-on{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+  .lb-on-k{grid-column:1/-1;padding-bottom:.2rem}
+  .lb-on a{min-height:44px}
 }
 @media (prefers-reduced-motion:reduce){
   .lb .ep-art img,.lb-cap,.lb-see,.lb-see span,.lb-find{transition:none}
@@ -940,7 +953,7 @@ html.lc-tilt .lb .ep-card:hover .lc-light{opacity:1}
   .lb .v2-rail{-webkit-mask-image:none;mask-image:none}
 }
 @media (prefers-reduced-motion:reduce){
-  .lb .lb-cards .ep-art,.lb .lb-cards .ep-art img,.lc-rule,.lc-bar::after,.lc-prog b,.lc-foot i,.lc-brand{transition:none}
+  .lb .lb-cards .ep-art,.lb .lb-cards .ep-art img,.lc-rule,.lc-bar::after,.lc-prog b,.lc-foot i,.lc-brand,.lb-plat .lib,.lb-plat .lib span,.lb-on a{transition:none}
 }
 </style>
 <section id="listen" class="kit-band v2-listen lb" aria-labelledby="lbTitle">
@@ -1112,8 +1125,13 @@ html.lc-tilt .lb .ep-card:hover .lc-light{opacity:1}
   </div>
   <div class="kit-in">
     <p class="lb-plat">
-      <a class="lib" href="../../library.html">All episodes in the Library &rarr;</a>
-      <span><span style="white-space:nowrap">Also on <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">Spotify</a></span> <s>/</s> <a href="https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803" target="_blank" rel="noopener">Apple Podcasts</a> <s>/</s> <a href="https://music.amazon.com/podcasts/44399f7e-fef1-4db1-9a60-7c9ef74df2b4/paragliding-atlas-by-aninder-singh" target="_blank" rel="noopener">Amazon Music</a> <s>/</s> <a href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener">YouTube</a></span>
+      <a class="lib" href="../../library.html">All episodes in the Library <span aria-hidden="true">&rarr;</span></a>
+      <span class="lb-on"><span class="lb-on-k">Also on</span>
+        <a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.3 14.4a.6.6 0 0 1-.8.2c-2.2-1.4-5-1.7-8.2-.9a.6.6 0 1 1-.3-1.2c3.5-.8 6.6-.5 9 1a.6.6 0 0 1 .3.9Zm1.2-2.7a.75.75 0 0 1-1 .3c-2.5-1.5-6.3-2-9.3-1.1a.75.75 0 1 1-.4-1.4c3.4-1 7.6-.5 10.5 1.2a.75.75 0 0 1 .2 1Zm.1-2.8c-3-1.8-8-2-10.9-1.1a.9.9 0 1 1-.5-1.7c3.3-1 8.8-.8 12.3 1.3a.9.9 0 0 1-.9 1.5Z"/></svg>Spotify</a>
+        <a href="https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 3.5a3.6 3.6 0 0 1 3.6 3.6c0 1.3-.7 2.4-1.7 3.1v.1c1.2.7 2 2 2 3.5a1 1 0 1 1-2 0c0-1.2-1-2.2-2.2-2.2h-.4c-1.2 0-2.2 1-2.2 2.2a1 1 0 1 1-2 0c0-1.5.8-2.8 2-3.5v-.1c-1-.7-1.7-1.8-1.7-3.1A3.6 3.6 0 0 1 12 5.5Z"/></svg>Apple Podcasts</a>
+        <a href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.1 5 12 5 12 5s-6.1 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8A26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.9 19 12 19 12 19s6.1 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3-5.2 3Z"/></svg>YouTube</a>
+        <a href="https://music.amazon.com/podcasts/44399f7e-fef1-4db1-9a60-7c9ef74df2b4/paragliding-atlas-by-aninder-singh" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1.2 5.5 5 4.5-5 4.5v-9Z"/></svg>Amazon Music</a>
+      </span>
     </p>
   </div>
   <template id="v4GlobeJs"><script src="../../../../assets/js/d3.min.js?v=f2094bbf"></script><script src="../../../../globe-episodes.js?v=5ed6afaf"></script><script src="../../../../assets/js/globe-world.js?v=c3ca4ee4"></script><script src="../../../../globe.js?v=82e331c4"></script></template>

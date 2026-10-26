@@ -24,6 +24,11 @@ and a readout under the photo. The owner said "do it" to building it into the
 v4 home page (chat 10's job).
 
 ## Decision log (newest first)
+- 26 Oct (chat 14): the section's last line ("All episodes in the Library", "Also on ..."). D, E, F: no brand-colour
+  icons (they fight the one orange; a logo row reads as a template); one rule only, the Library as the clear next
+  step, phone tap targets. The owner chose the four listening apps (Spotify, Apple Podcasts, YouTube, Amazon
+  Music; the footer keeps its full list) and asked for one-colour icons: built with the live podcast page's own
+  one-colour marks, grey, orange with an underline on hover.
 - 26 Oct (chat 14): asked "which tiles are better, v4's posters or the live page's", D, E and F all chose the v4
   posters (clean faces with no compass, live type, the length line). Built on the owner's "push the 4 changes":
   series labels fit, the foot fades into the page's dark (E, F), one hook size up to three lines (D), an orange
