@@ -855,7 +855,13 @@ html.v2-nav-up .v2-nl{top:calc(var(--v2-nav-h,5rem) + 1.5rem);}
    costs nothing on scroll. Whole sections that painted their own flat --bg
    let it through; small cards keep theirs, a shade lifted off the night. */
 body{background:
+  url("img/grain.webp") 0 0/256px 256px repeat,
   linear-gradient(180deg,#17181d 0,var(--bg) 1100px,#121317 62%,#101115 100%) var(--bg);}
+/* GRAIN (owner, 27 Oct, after eliteexped.com; designers D, E and F): a still film grain, specks clumped a
+   little, as many darker as lighter so the ground stays #141519 (variation about 2 levels), 24 KB, tiled at
+   1:1. On the ground only: the sticky tools bar and the footer carry it too, so neither shows as a flat
+   strip; photos, video, the globe, the orange and form fields never. It also breaks the gradient's banding. */
+.v2-tools{background:url("img/grain.webp") 0 0/256px 256px repeat,var(--bg);}
 :is(.cta-band,.destination,.destination.reverse,.podcast,.ep-map-section,.newsletter,.dossier,.kb-hero,.kb-portal){background:transparent;}
 
 /* Survey-map contours (img/contours.svg, drawn by tools/v2_art.py) behind the
@@ -871,7 +877,9 @@ body{background:
    the time-of-day glow (styles.css footer::after) rising behind it. */
 footer{padding-top:clamp(90px,11vw,170px);
   background:url("img/ridge.svg") top center/100% clamp(90px,11vw,170px) no-repeat,
+    url("img/grain.webp") 0 0/256px 256px repeat content-box,
     linear-gradient(#101115,#101115) bottom/100% calc(100% - clamp(90px,11vw,170px) + 1px) no-repeat;}
+@media print{ body,footer,.v2-tools{background-image:none !important;} }
 footer::before{display:none;}
 footer::after{top:-120px;height:360px;
   background:radial-gradient(55% 60% at 62% 55%,var(--sky-horizon),transparent 72%),
