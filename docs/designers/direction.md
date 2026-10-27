@@ -24,6 +24,13 @@ and a readout under the photo. The owner said "do it" to building it into the
 v4 home page (chat 10's job).
 
 ## Decision log (newest first)
+- 27 Oct (chat 14): the phone opening at full height, option 2 (owner): the photo fills the screen; the route,
+  headline and the trip's title, dates and button on its foot; length, launch, price, You fly below. Option 3
+  (text lowered, a dates line by the button; the designers' later pick) not chosen. Previews kept:
+  samples/opening/phone.html (3 without dates), phone-full.html (2), phone-dates.html (3). Partners page: the
+  designers scored it about 7/10 (D 6.9, E 7.3, F 7.0); their changes (posters in the episode rows, a bigger Speed
+  Record block, an early "Start a conversation") are "not now" (owner). Trip titles: "Explore The Cradle",
+  Panchgani "The Land Of Five Hills" (owner).
 - 26 Oct (chat 14): the "Also on" marks glow in their own brand colour on hover, focus and tap, the name turns
   white, no underline (owner; after D, E, F's one-colour refinement: marks quieter than names, Apple sized to the
   circles, Amazon Music by name only). The home headline stays (D, E, F: one fixed h1; the trip titles are the
