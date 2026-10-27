@@ -95,6 +95,28 @@ def hero_photo():
     g.save(webp, "WEBP", quality=78, method=6)
 
 
+# the gallery (owner, 27 Oct): their own photographs, the first batch credited to Michael Gebert, the second
+# needing no credit; the one with another body's mark on it and the upright one are left out
+CREDIT = ('Photo by Michael Gebert / <a href="https://www.instagram.com/flywithandy_paragliding/" target="_blank" '
+          'rel="noopener">@flywithandy_paragliding</a>')
+GALLERY = [
+    ("lake-wing", 1440, 960, "A white paraglider over farmland on the shore of a lake, a dry hillside to the right", True),
+    ("landing", 1440, 1079, "Two pilots coming in to land over a dry field, more wings above and a flat-topped hill behind", False),
+    ("lake-wide", 1440, 960, "A paraglider high above a wide lake, with terraced cliffs beyond", True),
+    ("cliffs", 1440, 960, "A paraglider over a terraced valley below steep cliffs", True),
+    ("gaggle", 1440, 1151, "A gaggle of paragliders above a lake in the haze", False),
+    ("terraces", 1440, 960, "A paraglider above terraced fields and villages", True),
+    ("lake-fields", 1440, 960, "A paraglider over fields along the lake shore, red hills below", True),
+]
+
+
+def gallery_html():
+    import v4_flythrough
+    fs = [dict(title="", alt=alt, webp="../img/panchgani/%s.webp" % n, jpg="../img/panchgani/%s.jpg" % n, w=w, h=h,
+               credit=CREDIT if cr else "") for n, w, h, alt, cr in GALLERY]
+    return v4_flythrough.build(fs, "The pictures", "Seven Frames From The Tablelands", "from-the-show")
+
+
 def faq_html():
     out = []
     for i, (q, key, ps) in enumerate(FAQ, 1):
@@ -142,6 +164,7 @@ BODY = '''<header class="khero pg-hero">
   <div class="dst-jump-in">
     <a href="#overview">Overview</a>
     <a href="#dates">Dates</a>
+    <a href="#gallery">Gallery</a>
     <a href="#from-the-show">From The Show</a>
     <a href="#faq">FAQ</a>
     <a href="#enquire" class="last">Enquire</a>
@@ -227,6 +250,8 @@ TRUST
   </div>
   <p class="kdates-terms"><span class="v4t-hold-note">Hold a place sends an enquiry for that departure.</span></p>
 </section>
+
+GALLERY
 
 <section class="dst-sec v4t-show" id="from-the-show">
   <div class="dst-head">
@@ -351,7 +376,7 @@ def build():
         z = tail.index("</script>", i) + len("</script>")
         tail = tail[:a].rstrip(" \n") + "\n" + tail[z:].lstrip("\n")
 
-    body = (BODY.replace("TRUST", trust).replace("FAQS", faq_html()).replace("EP", EP)
+    body = (BODY.replace("GALLERY", gallery_html()).replace("TRUST", trust).replace("FAQS", faq_html()).replace("EP", EP)
             .replace(">TBD<", ">%s<" % TBD).replace("</small> TBD<", "</small> %s<" % TBD))
     page = head + nav + body + tail
     page = page.replace("—", ",")      # no em dashes

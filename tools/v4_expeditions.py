@@ -349,7 +349,10 @@ PLACES = [
                 ("Season", "November to March")],
          ix=("8 days", "Price " + TBD),
          book=("Hold a place", "enquire.html?trip=panchgani"), more=("The full trip", "destinations/panchgani.html"),
-         photo=None,      # its one photograph is already the opening's and its own page's (no photo twice)
+         photo=dict(base="img/panchgani/launch-ridge", w=1440, h=959,      # the owner's, 27 Oct (no credit needed)
+                    p=("img/hero/panchgani-launch-ridge-p", 640, 960),
+                    alt="Paragliders above a dry ridge, the hazy tablelands beyond",
+                    cap="Panchgani", pos=(.4, .45)),
          near=7.0),
     dict(id="india", n="03", name="India", region="Bir Billing, Himalaya", country="India",
          lon=76.72, lat=32.05, co="32.05°N · 76.72°E", status="set",
@@ -1662,7 +1665,8 @@ SCRIPT = r"""<script>
   var Air = (function () {
     var cv = plate.querySelector(".ex-air"), cx = cv.getContext("2d"), mk = d.createElement("canvas"), mx = mk.getContext("2d");
     var imgs = {}, caches = {}, shown = "", last = "", alts = {};
-    PL.forEach(function (pl) { var a = d.querySelector("#" + pl.id + " .ex-photo img"); if (a) alts[pl.id] = a.getAttribute("alt"); });
+    /* each photo's address from its own <img>, which the switch-over points at the live folder */
+    PL.forEach(function (pl) { var a = d.querySelector("#" + pl.id + " .ex-photo img"); if (a) { alts[pl.id] = a.getAttribute("alt"); if (pl.photo) pl.photo.src = a.getAttribute("src").replace(/\.jpg$/, ""); } });
     function ss(a, b, x) { var t = clamp((x - a) / (b - a), 0, 1); return t * t * t * (t * (t * 6 - 15) + 10); }
     function load() {
       PL.forEach(function (pl) {

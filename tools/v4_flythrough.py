@@ -67,6 +67,8 @@ def build(fs, kicker, h2, after):
             cap += "<b>%s</b>" % esc(f["title"])
             if f["alt"] and f["alt"].strip().lower() != f["title"].strip().lower():
                 cap += '<span class="gxa-alt">%s</span>' % esc(f["alt"])
+        if f.get("credit"):     # the photographer's line, as the page's own HTML (Panchgani)
+            cap += '<span class="gxa-alt">%s</span>' % f["credit"]
         figs += ('<figure class="gxa-f%s" data-title="%s"><picture><source srcset="%s" type="image/webp">'
                  '<img src="%s" alt="%s" width="%d" height="%d"%s decoding="async"></picture><figcaption>%s</figcaption></figure>'
                  % (" is-on" if k == 0 else "", esc(f["title"]), f["webp"], f["jpg"], esc(f["alt"]), f["w"], f["h"],
