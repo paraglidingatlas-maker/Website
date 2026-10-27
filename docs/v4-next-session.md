@@ -31,6 +31,34 @@ the owner's current queue and what the last session learnt doing it.
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
 
+## Chat 15 (27 Oct night): v4 is LIVE, stress test done
+- **v4 went live at 02:14 UTC on 27 Oct** with the first push of `.github/workflows/deploy.yml`: Pages already
+  published from GitHub Actions, so the workflow's deploy job succeeded (not the harmless failure expected). The
+  owner had said "push the build to live site as it is". Every push to main now rebuilds and publishes the
+  switched site (about 2 minutes). Rollback: Settings > Pages > Source "Deploy from a branch", main, / (root).
+- Fixed after launch (all gated, all live): the home opening's Kenya layers 404'd (its script had a fixed
+  `img/opening/`; tools/v4_home_opening.py now takes the folder from the page's own photo); the home globe's trip
+  layer never started on the live page (samples/listen-c tested `/\/globe\.js/`, the live src has no slash):
+  orange trip pins, the season route, planned trips; the trip picker's radios named; the partners rows take
+  keyboard focus; the knowledge base hub's faces fetch YouTube's 480px still up to 2x (2.2 MB to 0.5 MB).
+- Listening mode on the 71 filmed episodes now plays the feed's audio file (mp3-map.json, via a data-audio on
+  the button, tools/v4_ux.py episode_audio; src/v4-listen.js), so an iPhone keeps playing with the screen locked;
+  lock-screen title and artwork via Media Session. The video stays on the page, paused. Transcript timing: the
+  transcripts seem to follow the audio (new-technologies-5 runs 93 min in both the audio and its transcript, the
+  video is 82 min), but the owner should spot-check one episode. Not verifiable here: anchor.fm answers this
+  container's browser with 400 (curl gets 302), so real playback was not heard.
+- Stress test (switched site, 183 pages x desktop 1440, phone 390 touch, 375x667): no horizontal scroll, no
+  broken links or images, no script errors; axe WCAG A/AA on 18 page types: only the fixes above left (one
+  remaining: the audio-only player's chapter buttons inside its slider, live generator markup); menu, site
+  search, library find, enquiry validation, globe, reduced motion (nothing loops), no JavaScript all fine. SEO:
+  all 181 sitemap pages 200 on the live site, canonical right, social image present, structured data parses,
+  no stray indexable page, robots.txt and 404 fine. Live LCP 0.3 to 1.7 s.
+- For the owner (not built): no analytics on the site (old or new); the enquiry form opens the visitor's mail
+  app (mailto), so people without one cannot send; internal notes (LEGAL-REVIEW.md, TODO.md, PROJECT_HANDOFF.md,
+  build.sh...) are readable on the live site, as on the old one; Search Console: submit
+  sitemap.xml and watch coverage for a week; IndexNow: run the IndexNow workflow once with "all" ticked
+  (its per-push diff names prototypes/v4 paths, not the live addresses).
+
 ## Chat 15 starts here (27 Oct): go live, then a full stress test
 Chat 14 (all pushed, last c774f333, gates PASS): home podcast poster strip (samples/listen-c via
 tools/v4_home_listen.py) with the designers' fixes (labels fit, foot fade, one hook size, calm length bar, orange
