@@ -473,7 +473,9 @@ def reel(region):
             tiles.append(t)
     if len(tiles) != 28:
         fail("reel: expected 28 episode tiles, found %d" % len(tiles))
-    rows = ['    <div class="pw-row"><div class="pw-track">%s</div></div>' % "".join(tiles[i:i + 14]) for i in (0, 14)]
+    # each row scrolls sideways, so it takes keyboard focus (arrow keys scroll it) and a name (27 Oct, axe)
+    rows = ['    <div class="pw-row" tabindex="0" role="region" aria-label="Partners, row %d"><div class="pw-track">%s</div></div>'
+            % (k + 1, "".join(tiles[i:i + 14])) for k, i in enumerate((0, 14))]
     return '<div class="pw-rows">\n%s\n  </div>' % "\n".join(rows)
 
 
