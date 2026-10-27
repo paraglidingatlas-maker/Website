@@ -1665,7 +1665,7 @@ SCRIPT = r"""<script>
   var Air = (function () {
     var cv = plate.querySelector(".ex-air"), cx = cv.getContext("2d"), mk = d.createElement("canvas"), mx = mk.getContext("2d");
     var imgs = {}, caches = {}, shown = "", last = "", alts = {};
-    /* each photo's address from its own <img>, which the switch-over points at the live folder */
+    /* each photo's address from its own img tag, which the switch-over points at the live folder */
     PL.forEach(function (pl) { var a = d.querySelector("#" + pl.id + " .ex-photo img"); if (a) { alts[pl.id] = a.getAttribute("alt"); if (pl.photo) pl.photo.src = a.getAttribute("src").replace(/\.jpg$/, ""); } });
     function ss(a, b, x) { var t = clamp((x - a) / (b - a), 0, 1); return t * t * t * (t * (t * 6 - 15) + 10); }
     function load() {
