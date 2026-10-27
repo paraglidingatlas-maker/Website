@@ -515,6 +515,20 @@ def _slug(s):
     return re.sub(r"[^a-z0-9]+", "-", plain(s).lower()).strip("-")
 
 
+def kb_hub_thumbs(src):
+    """27 Oct: the hub's episode faces show at 180 to 200px but fetched YouTube's 1280px still (about 150 KB
+    each, 2 MB a visit). They are cropped to 16:9 (object-fit: cover), so the 480px still, whose 4:3 bands fall
+    outside the crop, serves up to a 2x screen; the 1280px one stays for larger."""
+    def one(m):
+        tag = m.group(0)
+        if "srcset=" in tag:
+            return tag
+        url = m.group(1)
+        return tag.replace(' src="%s"' % url, ' src="%s" srcset="%s 480w, %s 1280w" sizes="200px"'
+                           % (url, url.replace("/maxresdefault.jpg", "/hqdefault.jpg"), url), 1)
+    return re.sub(r'<img [^>]*src="(https://i\.ytimg\.com/vi/[\w-]+/maxresdefault\.jpg)"[^>]*>', one, src)
+
+
 def kb_jump(src):
     """14. A knowledge base page's own jump row under its opening, as on the trip pages: each idea by its
     kicker (the page's own word for it: Consequence, Capacity, Fear...), then Worth Remembering, FAQ and the
@@ -1205,6 +1219,7 @@ def page(rel, src):
         src = kb_tile_art(rel, src)
     if rel == "knowledge-base.html":
         src = kb_hub(src)
+        src = kb_hub_thumbs(src)
     if rel == "library.html":
         src = library_search(src)
         src = library_words(src)
