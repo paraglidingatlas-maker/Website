@@ -477,18 +477,37 @@ LISTEN_BTN = ('<button type="button" class="v4-ls-open"><svg viewBox="0 0 24 24"
               '<span>Listening mode</span></button>')
 
 
+def episode_audio(src):
+    """27 Oct: an iPhone stops a YouTube embed when its screen locks; the episode's own audio file (the feed's,
+    mp3-map.json) keeps playing, so a filmed episode's listening mode plays that (src/v4-listen.js). None for an
+    episode with no film (it has its own player) or no audio in the map."""
+    import json
+    slug = re.search(r'<link rel="canonical" href="[^"]*/episodes/([^"/]+)\.html"', src)
+    if not slug or "youtube-nocookie.com/embed/" not in src:
+        return None
+    with open(os.path.join(ROOT, "mp3-map.json"), encoding="utf-8") as fh:
+        return (json.load(fh).get(slug.group(1)) or {}).get("url")
+
+
 def episode_listen_button(src):
     """11. The Listening mode button is in the page from the start (it was added by script after the page had
     drawn, and the hero grew under the reader: 35 px at 1440). The script uses it (src/v2-immersive.js part 10);
-    without script it is not shown. 12: its aria-controls is set only once the screen it opens exists."""
-    if 'class="v4-ls-open"' in src or 'data-v2="ep"' not in src or 'class="cd-line"' not in src:
+    without script it is not shown. 12: its aria-controls is set only once the screen it opens exists. A filmed
+    episode's button names its audio file (episode_audio)."""
+    if 'data-v2="ep"' not in src or 'class="cd-line"' not in src:
         return src
+    url = episode_audio(src)
+    btn = LISTEN_BTN
+    if url:
+        btn = btn.replace('class="v4-ls-open"', 'class="v4-ls-open" data-audio="%s"' % html.escape(url), 1)
+    if 'class="v4-ls-open"' in src:
+        return src.replace('<button type="button" class="v4-ls-open">', btn[:btn.index(">") + 1], 1) if url else src
     m = re.search(r'<div class="ep2-hero-media">', src)
     if not m or 'class="cd-player' not in src:
         return src
     a, b = element_span(src, m.start(), "div")
     close = b - len("</div>")
-    return src[:close] + "  " + LISTEN_BTN + "\n      " + src[close:]
+    return src[:close] + "  " + btn + "\n      " + src[close:]
 
 
 # ------------------------------------------------------------------------------------------------ 14

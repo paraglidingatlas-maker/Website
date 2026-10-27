@@ -27,6 +27,23 @@
   var frame = player.querySelector("iframe");
   var audio = player.querySelector("audio");
   var au = player.querySelector(".ep-au");
+  /* A filmed episode whose button names its audio file (tools/v4_ux.py) plays that file here: an iPhone stops
+     the YouTube embed when the screen locks, the audio keeps going. The video stays on the page, paused while
+     this plays; the screen starts where the video was. */
+  var vid = null, vt = 0, vseen = 0, vplaying = false, src0 = d.querySelector(".v4-ls-open[data-audio]");
+  if (frame && !audio && src0) {
+    vid = frame; frame = null;
+    audio = new Audio();
+    audio.preload = "none";
+    audio.src = src0.getAttribute("data-audio");
+    w.addEventListener("message", function (e) {
+      if (e.source !== vid.contentWindow) return;
+      var m; try { m = typeof e.data === "string" ? JSON.parse(e.data) : e.data; } catch (x) { return; }
+      var i = (m && m.info) || {};
+      if (typeof i.currentTime === "number") vt = i.currentTime;
+      if (typeof i.playerState === "number") vplaying = i.playerState === 1;
+    });
+  }
 
   function secs(t) {
     var p = (t || "").trim().split(":").map(Number);
@@ -338,6 +355,17 @@
     el.classList.add("is-still");
     cur = -2; curC = -2;
     if (audio) t = audio.currentTime || 0;
+    if (vid) {
+      if (vt !== vseen) { vseen = vt; t = vt; try { audio.currentTime = vt; } catch (e) {} }   // the video moved since
+      if (vplaying) {
+        try { vid.contentWindow.postMessage(JSON.stringify({ event: "command", func: "pauseVideo", args: [], id: 1, channel: "widget" }), "*"); } catch (e) {}
+        play();
+      }
+      if ("mediaSession" in navigator && w.MediaMetadata) {
+        var art = d.querySelector('meta[property="og:image"]');
+        try { navigator.mediaSession.metadata = new MediaMetadata({ title: title, artist: "Paragliding Atlas Podcast", artwork: art ? [{ src: art.content }] : [] }); } catch (e) {}
+      }
+    }
     paint("now");
     requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.remove("is-still"); }); });
     place();
@@ -352,6 +380,7 @@
     el.hidden = true;
     d.documentElement.classList.remove("v4-ls-on");
     unplace();
+    if (vid) pause();
     w.removeEventListener("resize", onResize);
     w.removeEventListener("scroll", onResize);
     d.removeEventListener("keydown", keys);
