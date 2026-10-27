@@ -43,13 +43,13 @@ STAGE = "/tmp/claude-0/%s-stage" % NAME                # the switch rehearsal's 
 # Pages that exist only in the prototype (no live twin, never switched):
 # the style guide, the fly options, and anything under samples/ (v4 before/after pages).
 # offline.html is the v4 app's no-signal page (tools/v4_pwa.py), not a site page
-PROTO_ONLY = {"styleguide.html", "fly-options.html", "offline.html",
-              "record-attempt.html"}  # the record page waits for the owner's go (17 Oct)
+PROTO_ONLY = {"styleguide.html", "fly-options.html", "offline.html"}
+# record-attempt.html went live on the owner's go (27 Oct: "go live"), its [to supply] gaps showing
 
 
 def proto_only(rel):
-    # record-*.html: the record page and its design options wait for the owner's go
-    return (rel in PROTO_ONLY or rel.startswith("samples/") or rel.startswith("record-")
+    # record-a/b/c.html: the record page's design options stay prototype-only
+    return (rel in PROTO_ONLY or rel.startswith("samples/") or re.match(r"record-[a-z]\.html$", rel) is not None
             or rel.startswith("expeditions-")  # the expeditions page's design options (owner, 19 Oct)
             or rel.startswith("knowledge-base/encyclopedia/"))  # drafts until the owner has reviewed them (21 Oct)
 
@@ -102,7 +102,7 @@ def needs(src, root=None):
 # writes them at the root, indexable, and lists them in sitemap.xml; the checks
 # hold them to their own title, description and canonical instead of a live page's.
 # expeditions.html: the menu's Expeditions tab gets its own page (owner, 19 Oct)
-NEW_PAGES = set() if IS_V2 else {"expeditions.html", "destinations/panchgani.html"}     # Panchgani: a new tour (chat 11)
+NEW_PAGES = set() if IS_V2 else {"expeditions.html", "destinations/panchgani.html", "record-attempt.html"}     # Panchgani: a new tour (chat 11)
 
 
 if not os.path.isdir(DIR):
