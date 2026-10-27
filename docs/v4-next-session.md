@@ -1,4 +1,4 @@
-# v4: handoff to the next session (25 Oct 2026)
+# v4: handoff to the next session (27 Oct 2026)
 
 Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
@@ -30,6 +30,26 @@ the owner's current queue and what the last session learnt doing it.
 - Work lean (owner, 21 Oct: "we're spending a lot of time discussing"): at
   most two options for a decision, one preview only for a large visual
   change, small fixes built straight away and shown after.
+
+## Chat 15 starts here (27 Oct): go live, then a full stress test
+Chat 14 (all pushed, last c774f333, gates PASS): home podcast poster strip (samples/listen-c via
+tools/v4_home_listen.py) with the designers' fixes (labels fit, foot fade, one hook size, calm length bar, orange
+expand sign by "min / chapters", "Paragliding Atlas Podcast" on hover only, no contour lines); the section's last
+line (Library link; "Also on" Spotify, Apple Podcasts, YouTube with one-colour marks that glow in brand colour on
+hover, Amazon Music by name); Apple's real Apple Podcasts glyph (tools/v4_polish.py APPLE_*); the footer year
+turns over by itself (tools/v4_pwa.py + pwa.js); the record page footer transparent; dates name 2027 once
+(opening, expeditions); Panchgani photo credit off the home page; trip titles "Explore The Cradle" and Panchgani
+"The Land Of Five Hills"; the phone opening at full height, option 2 (owner's pick, samples/opening/index.html,
+phone only; previews samples/opening/phone.html, phone-full.html, phone-dates.html). Partners page scored ~7/10
+by D/E/F; their changes are "not now". The old live site is saved in the owner's private repo
+paraglidingatlas-maker/v3.
+
+Go-live (owner, 26 Oct: "push the build to live site as it is, if needed to fix, we'll do it afterwards"):
+`.github/workflows/deploy.yml` is now docs/v4-deploy-workflow.yml, active. While Settings > Pages > Source is
+"Deploy from a branch" its deploy job fails harmlessly and the live site is untouched. The owner switches Source
+to "GitHub Actions" (https://github.com/paraglidingatlas-maker/Website/settings/pages); then the workflow is run
+again and the live site checked. Rollback: Source back to "Deploy from a branch", main, / (root). Kept out on
+purpose by the switch: the record attempt page, the encyclopedia, samples.
 
 ## Chat 14 (25 Oct): the poster strip is in the home page
 - 26 Oct, the posters after the designers' review (all three chose them over the live tiles): series labels fit,

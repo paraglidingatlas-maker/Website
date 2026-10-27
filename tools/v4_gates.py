@@ -14,7 +14,8 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOG = "/tmp/claude-0/gates"
-ALLOWED = ("prototypes/v4/", "tools/", "docs/", ".claude/")
+ALLOWED = ("prototypes/v4/", "tools/", "docs/", ".claude/",
+           ".github/workflows/deploy.yml")    # the v4 deploy step (owner's go-live, 27 Oct 2026)
 
 
 def run(name, cmd, ok_re=None, tail=1):

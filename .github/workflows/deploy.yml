@@ -1,0 +1,78 @@
+# ACTIVE (owner's go-live, 27 Oct 2026; copied from docs/v4-deploy-workflow.yml).
+# The v4 switch-over as a deploy step.
+#
+# It publishes only once the owner sets GitHub repo Settings > Pages > Build and
+# deployment > Source to "GitHub Actions". Until then the deploy job fails
+# harmlessly and the live site stays as the branch publishes it.
+# To roll back: set the Pages source back to "Deploy from a branch" (main, /),
+# which publishes the repo exactly as before, and delete deploy.yml.
+#
+# The same shape as docs/v2-deploy-workflow.yml, with --site v4. The v4 pages
+# are rebuilt by tools/v4_build.py, which runs every v4 generator and pass in
+# order (its docstring says which, and why). Checked on 20 Oct 2026 at
+# c2751f9d: ./build.sh && python3 tools/v4_build.py on a clean checkout leaves
+# prototypes/v4/ byte for byte as committed, with no network and nothing read
+# from /tmp. It needs Pillow, numpy and contourpy, pinned below to the
+# versions that check was made with: v4_pwa re-encodes the app icons with
+# Pillow (and the system zlib, so the runner is pinned too) and v4_pass
+# computes the knowledge base figures with numpy and contourpy, so other
+# versions may change bytes. ffmpeg only when a committed phone clip is
+# missing. A new episode in episode-meta.json stops tools/v4_build.py (and so
+# this deploy) until tools/v2_episode.py reads the live episode header of
+# 2 Oct (the docstring of tools/v4_build.py says why).
+# The checkout takes the full history: the live build dates each page's
+# dateModified from git (tools/inject_site_schema.py), and a shallow clone
+# would date every live page to the last commit.
+# The knowledge base drawings (prototypes/v4/img/kb/) are committed; they are
+# redrawn with tools/v4_kbsvg.py only when a figure script changes (it needs
+# numpy, matplotlib and contourpy), so this workflow does not run it.
+name: Deploy site (v4)
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install fonttools==4.66.0 brotli==1.2.0 pillow==12.3.0 numpy==2.4.6 contourpy==1.3.3
+      - name: Live build (generators, sitemap, schema)
+        run: ./build.sh
+      - name: Rebuild the v4 pages from the fresh output
+        run: python3 tools/v4_build.py
+      # audit.py --drift runs ./build.sh again and compares. sitemap.xml dates
+      # the pages the build is still rewriting at that point "today", so a job
+      # whose two builds fall either side of midnight UTC fails here on
+      # sitemap.xml alone (not a v4 matter); run the job again.
+      - name: Gates
+        run: |
+          python3 tools/audit.py --drift
+          python3 tools/v2_check.py --site v4 --static
+          python3 tools/v2_switch.py --site v4 --dry-run
+      - name: Switch into _site
+        run: python3 tools/v2_switch.py --site v4 --apply --out _site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
