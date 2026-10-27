@@ -1446,7 +1446,7 @@ html.lc-tilt .lb .ep-card:hover .lc-light{opacity:1}
               return oi.apply(this, arguments);
             };
           }
-          if (/\/globe\.js/.test(s0)) {
+          if (/(^|\/)globe\.js/.test(s0)) {   /* live: "globe.js?v=", no slash */
             if (orig) d3.geoOrthographic = orig;
             if (origZoom) d3.zoom = origZoom;
             init();
