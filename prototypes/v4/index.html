@@ -1891,7 +1891,7 @@ html.lc-tilt .lb .ep-card:hover .lc-light{opacity:1}
 <!-- v4-home-opening-script --><script>
 (function () {
   'use strict';
-  var OP = 'img/opening/';
+  var OP = (function () { var i = document.querySelector('#held img[src*="opening/"]'); return i ? i.getAttribute('src').replace(/[^\/]*$/, '') : 'img/opening/'; })();
   var held = document.getElementById('held');
   if (!held || !window.matchMedia) return;
   var stage = held.querySelector('.stage');

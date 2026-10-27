@@ -144,7 +144,10 @@ def main():
     js = rename_html_classes(main_js)
     if "(function () {\n  'use strict';" not in js:
         raise SystemExit("v4_home_opening: the script's start changed")
-    js = js.replace("'use strict';", "'use strict';\n  var OP = 'img/opening/';", 1)
+    # the folder from the page's own photo, whose src the switch-over rewrites (live: assets/v4/img/opening/);
+    # a fixed 'img/opening/' 404'd on the live home (27 Oct)
+    js = js.replace("'use strict';", "'use strict';\n  var OP = (function () { var i = document.querySelector('#held img[src*=\"opening/\"]');"
+                    " return i ? i.getAttribute('src').replace(/[^\\/]*$/, '') : 'img/opening/'; })();", 1)
     for a, b in (("i.src = src;", "i.src = OP + src;"), ("so.src = s;", "so.src = OP + s;")):
         if js.count(a) != 1:
             raise SystemExit("v4_home_opening: the script's loader changed (%r)" % a)
