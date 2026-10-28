@@ -48,10 +48,6 @@ def mark(name, body):
 def main():
     e = open(SRC, encoding="utf-8").read()
     s = open(OUT, encoding="utf-8").read()
-    if "<!--v4ie:" in s:
-        print("v4 India immersive: already in place")
-        return
-
     secs = []
     for ident in ("flight", "pictures"):
         span = section(e, ident)
@@ -71,11 +67,22 @@ def main():
             fail("india-e.html's jump link to #%s not found" % ident)
         jumps[ident] = m.group(0)
 
-    # the sections: the three in place of the route, the gallery gone (the pictures row takes its place)
+    blocks = {"sections": "\n".join(secs), "jump": jumps["flight"], "css": "\n".join(styles), "js": fly.group(0)}
+    if "<!--v4ie:" in s:
+        # a later run: each marked part refreshed from india-e.html
+        for name, body in blocks.items():
+            s, n = re.subn(r"<!--v4ie:%s-->.*?<!--/v4ie:%s-->" % (name, name), lambda _: mark(name, body), s, flags=re.S)
+            if n != 1:
+                fail("the v4ie marks for %s: found %d" % (name, n))
+        open(OUT, "w", encoding="utf-8").write(s)
+        print("v4 India immersive: refreshed from india-e.html")
+        return
+
+    # the sections: the two in place of the route, the gallery gone (the pictures row takes its place)
     r = section(s, "route")
     if not r:
         fail("india.html has no #route")
-    s = s[:r[0]] + mark("sections", "\n".join(secs)) + s[r[1]:]
+    s = s[:r[0]] + mark("sections", blocks["sections"]) + s[r[1]:]
     g = section(s, "gallery")
     if not g:
         fail("india.html has no #gallery")
@@ -88,13 +95,13 @@ def main():
         fail("india.html's jump links to #route and #gallery not found")
     s = s[:ga.start()] + s[ga.end():]
     ro = re.search(r'<a [^>]*href="#route"[^>]*>.*?</a>', s, re.S)
-    s = s[:ro.start()] + mark("jump", jumps["flight"]) + s[ro.end():]
+    s = s[:ro.start()] + mark("jump", blocks["jump"]) + s[ro.end():]
     if 'href="#route"' in s or 'href="#gallery"' in s:
         fail("a link to #route or #gallery is left on the page")
 
     # their styles and scripts
-    s = s.replace("</head>", mark("css", "\n".join(styles)) + "\n</head>", 1)
-    s = s.replace("</body>", mark("js", fly.group(0)) + "\n</body>", 1)
+    s = s.replace("</head>", mark("css", blocks["css"]) + "\n</head>", 1)
+    s = s.replace("</body>", mark("js", blocks["js"]) + "\n</body>", 1)
     open(OUT, "w", encoding="utf-8").write(s)
     print("v4 India immersive: the flight and the pictures in place of the route and the gallery")
 

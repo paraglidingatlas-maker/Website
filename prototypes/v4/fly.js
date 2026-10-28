@@ -27,6 +27,10 @@ import * as THREE from "./lib/three.module.min.js";
   var ctl = s.querySelector(".v4i-fl-ctl"), dlg = document.getElementById("v4i-fl-dlg"), hint = s.querySelector(".v4i-fl-hint");
   var G = D.grid, mpp = G.mpp, exag = G.exag, base = G.base_m, sizeX = G.w * mpp, sizeY = G.h * mpp;
   var TEX = (small || lite) ? D.textures.phone : D.textures.desktop, src = s.getAttribute("data-src") || "";
+  /* the terrain files are listed page-relative ("../img/india/dem/..."); on the live site the page sits at the
+     root and v4's files under /assets/v4/, which the switch-over cannot rewrite inside this data (28 Oct) */
+  var BASE = (/^(.*\/prototypes\/v\d+\/)/.exec(location.pathname) || [0, "/assets/v4/"])[1];
+  function at(p) { return src ? src + p : (p.indexOf("../") === 0 ? BASE + p.slice(3) : p); }
   var n = 0; D.per_leg.forEach(function (k) { n += k; }); n += 1;      // frames along the flight
   var MAXL = small ? D.phonePins : (D.maxPins || 9), FAR = D.farKm * 1000;
   s.classList.add("is-live");
@@ -128,15 +132,15 @@ import * as THREE from "./lib/three.module.min.js";
       var d = decodeHeights(img); L.H = d.A; L.HW = d.w; L.HH = d.h;
       var sx = L.w * L.scale * mpp, sy = L.h * L.scale * mpp;
       var u = Object.assign({}, uniforms, { hmap: { value: d.tex }, cmap: { value: null }, wmap: { value: null }, hasW: { value: 0 }, texel: { value: new THREE.Vector2(1 / d.w, 1 / d.h) }, mppTex: { value: new THREE.Vector2(sx / d.w, sy / d.h) }, edge: { value: 0.08 }, lift: { value: 10 * exag } });
-      if (L.tex.w) new THREE.TextureLoader().load(src + L.tex.w, function (wt) { wt.minFilter = wt.magFilter = THREE.LinearFilter; u.wmap.value = wt; u.hasW.value = 1; dirty = true; });
-      new THREE.TextureLoader().load(src + L.tex.c, function (ct) {
+      if (L.tex.w) new THREE.TextureLoader().load(at(L.tex.w), function (wt) { wt.minFilter = wt.magFilter = THREE.LinearFilter; u.wmap.value = wt; u.hasW.value = 1; dirty = true; });
+      new THREE.TextureLoader().load(at(L.tex.c), function (ct) {
         ct.colorSpace = THREE.SRGBColorSpace; ct.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); u.cmap.value = ct;
         var m = new THREE.ShaderMaterial({ uniforms: u, vertexShader: VS, fragmentShader: FS, transparent: true });
         var mesh = new THREE.Mesh(new THREE.PlaneGeometry(sx, sy, L.tex.seg[0], L.tex.seg[1]), m); mesh.frustumCulled = false;
         var c = toWorld(L.x0 + L.w * L.scale / 2, L.y0 + L.h * L.scale / 2, base); mesh.position.set(c.x, c.y, 0); mesh.renderOrder = 1; scene.add(mesh); L.mesh = mesh; dirty = true;
       });
     };
-    img.src = src + L.tex.h;
+    img.src = at(L.tex.h);
   }
   function load() {
     if (started) return; started = true;
@@ -144,8 +148,8 @@ import * as THREE from "./lib/three.module.min.js";
     img.onload = function () {
       var d = decodeHeights(img), w = d.w, h = d.h; H = d.A; HW = w; HH = h;
       uniforms.hmap.value = d.tex; uniforms.texel.value.set(1 / w, 1 / h); uniforms.mppTex.value.set(sizeX / w, sizeY / h);
-      if (TEX.w) new THREE.TextureLoader().load(src + TEX.w, function (wt) { wt.minFilter = wt.magFilter = THREE.LinearFilter; uniforms.wmap.value = wt; uniforms.hasW.value = 1; dirty = true; });
-      new THREE.TextureLoader().load(src + TEX.c, function (ct) {
+      if (TEX.w) new THREE.TextureLoader().load(at(TEX.w), function (wt) { wt.minFilter = wt.magFilter = THREE.LinearFilter; uniforms.wmap.value = wt; uniforms.hasW.value = 1; dirty = true; });
+      new THREE.TextureLoader().load(at(TEX.c), function (ct) {
         ct.colorSpace = THREE.SRGBColorSpace; ct.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); uniforms.cmap.value = ct;
         var geo = new THREE.PlaneGeometry(sizeX, sizeY, TEX.seg[0], TEX.seg[1]);
         mesh = new THREE.Mesh(geo, material); mesh.frustumCulled = false; scene.add(mesh);
@@ -153,7 +157,7 @@ import * as THREE from "./lib/three.module.min.js";
         ready = true; dirty = true; s.classList.add("is-ready");
       });
     };
-    img.src = src + TEX.h;
+    img.src = at(TEX.h);
     cards.forEach(function (f) { var im = f.querySelector("img"); if (im) { im.loading = "eager"; if (im.decode) im.decode().catch(function () {}); } });
   }
 
