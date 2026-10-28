@@ -54,6 +54,16 @@ TOWNS = os.path.join(ROOT, "tools", "data", "india-towns.json")         # the to
 LANDMARKS = os.path.join(ROOT, "tools", "data", "india-landmarks.json")   # the places with a story: a description and open-source photographs
 LM_CREDITS = os.path.join(ROOT, "tools", "data", "india-landmarks-credits.json")   # written by tools/fetch_landmarks.py
 LM_DIR = os.path.join(V4, "img", "india", "landmarks")
+TRACKS_OUT = os.path.join(V4, "img", "india", "tracks.json")      # the flights, fetched by the page only when the controls are taken
+# the ground: WebP throughout (heights lossless, checked bit-identical by the harness's make_tex.py); a desktop starts on
+# the 1k ground and the 2k comes in when the visitor is still; a phone keeps the 1k
+TEXTURES = {"desktop": {"h": "../img/india/dem/h-1k.webp", "c": "../img/india/dem/c-1k.webp", "seg": [1024, 793],
+                        "full": {"h": "../img/india/dem/h-2k.webp", "c": "../img/india/dem/c-2k.webp"}},
+            "phone": {"h": "../img/india/dem/h-1k.webp", "c": "../img/india/dem/c-1k.webp", "seg": [512, 396]}}
+# what the pins keep clear of besides the head, the readouts, the chapter and the button: the hand controls, and the skip link in flight
+KEEP_FREE = [".v4i-fl-tks", ".v4i-fl-btns", ".v4i-fl-hint", ".v4i-fl-reset"]
+KEEP_FLIGHT = [".v4i-fl-skip"]
+KEEP_PAGE = [".dst-jump", "#dstMobar"]                              # the page's own bars over the stage: the jump bar, the phone's booking bar
 
 # the eight photographs on the stage, each anchored to a waypoint (code in bir-waypoints.json) and
 # up between two frames (0-based) chosen from where the waypoint sits well inside the view (see
@@ -316,6 +326,29 @@ CSS = r"""
 .v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tnote{flex-basis:100%;margin:0;opacity:.8;order:5}
 .v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tx{position:static;margin-left:auto;align-self:center;order:4}
 @media (max-width:700px){.v4i-fl.is-tracked .v4i-fl-tcard{bottom:4.9rem;padding:1.6rem var(--gutter) .6rem;gap:.7rem 1.2rem}.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tg{gap:.5rem 1.1rem}.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tg b,.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tkm b{font-size:1.1rem}.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-td{display:inline}.v4i-fl.is-tracked .v4i-fl-tcard .v4i-fl-tnote{display:none}}
+/* the jury's fixes: a plate is up or down, never resting half-seen; the hand controls on a phone are the fingers, one reset, all 44 px */
+@property --w{syntax:"<number>";inherits:true;initial-value:0}
+.v4i-fl.is-live .v4i-fl-card{transition:--w .45s var(--ease)}
+.v4i-fl-lead .v4i-fl-tie,.v4i-fl-lead .v4i-fl-dot,.v4i-fl-lead .v4i-fl-halo{transition:opacity .45s var(--ease)}
+.v4i-fl-reset{display:none}
+@media (max-width:700px){
+.v4i-fl-btns,.v4i-fl.is-free .v4i-fl-btns{display:none}
+.v4i-fl-ctl{min-height:44px;padding:.7rem 1rem;font-size:var(--fs-small)}
+.v4i-fl-reset{position:absolute;z-index:5;right:var(--gutter);bottom:7.6rem;min-height:44px;padding:0 1rem;font:600 var(--fs-small)/1 var(--font-display);color:var(--white);background:rgba(20,21,25,.72);border:1px solid rgba(246,244,244,.28);border-radius:999px;cursor:pointer;backdrop-filter:blur(6px)}
+.v4i-fl.is-free .v4i-fl-reset{display:block}
+.v4i-fl-reset:focus-visible{border-color:var(--orange);outline:none}
+.v4i-fl-hint{font-size:11px}
+.v4i-fl.is-free .v4i-fl-hint{opacity:1;top:auto;bottom:7.6rem;left:var(--gutter);right:calc(var(--gutter) + 8.6rem);max-width:none;min-height:44px;display:flex;align-items:center;padding:.4rem .8rem;border-radius:12px;font-size:11px;line-height:1.45;text-align:left}
+.v4i-fl.is-tracked .v4i-fl-reset{opacity:0;pointer-events:none}
+.v4i-fl-tk{min-height:44px;padding:.5rem .9rem}
+.v4i-fl-tcard .v4i-fl-tx{min-height:44px;min-width:44px;padding:.35rem .8rem}
+.v4i-fl-mk,.v4i-fl-mk:hover,.v4i-fl-mk:focus-visible{width:44px;height:44px;margin:-22px 0 0 -22px;border:0;background:none}
+.v4i-fl-mk::before{width:34px;height:34px;box-sizing:border-box;border:1.5px solid var(--orange);box-shadow:none;background:radial-gradient(circle,var(--orange) 0 4px,rgba(255,117,23,.25) 4.5px 7px,rgba(20,21,25,.55) 7.5px)}
+.v4i-fl-mk:focus-visible::before{background:radial-gradient(circle,var(--orange) 0 4px,rgba(255,117,23,.25) 4.5px 7px,rgba(255,117,23,.28) 7.5px)}
+.v4i-fl-lm{height:44px;margin-top:-22px}
+.v4i-fl-dx{min-height:44px;padding:.5rem 1rem}
+.v4i-fl-lbx,.v4i-fl-lbn{width:2.75rem;height:2.75rem}
+}
 /* the quiet row after it */
 .dst-sec.v4i-fl-row{padding-top:var(--sp-section);padding-bottom:var(--sp-section)}
 .v4i-fl-row .dst-head{margin-bottom:var(--sp-4)}
@@ -411,11 +444,15 @@ def build():
     chapter = [LEG_CHAPTER[fr["leg"]] for fr in F]
     for cd in card_data:
         cd["c"] = [code for code, label in PINS if label == cd["p"]][0]
-    data = {"grid": dem["grid"], "textures": dem["textures"], "keys": dem["keys"], "per_leg": dem["per_leg"], "bounds": dem["bounds"],
+    for k in ("desktop", "phone"):
+        assert all(os.path.exists(os.path.join(V4, "destinations", p)) for p in [TEXTURES[k]["h"], TEXTURES[k]["c"]] + list(TEXTURES[k].get("full", {}).values())), k
+    data = {"grid": dem["grid"], "textures": TEXTURES, "keys": dem["keys"], "per_leg": dem["per_leg"], "bounds": dem["bounds"],
             "light": dem["light"], "waypoints": dem["waypoints"], "chapter": LEG_CHAPTER, "cards": card_data, "farKm": 42, "phonePins": PHONE_PINS, "edge_fade": 0.04,
-            "tracks": [{"name": t["name"], "date": t["date"], "distance_km": t["distance_km"], "duration_min": t["duration_min"], "avg_kmh": t["avg_kmh"],
+            "keepFree": KEEP_FREE, "keepFlight": KEEP_FLIGHT, "keepPage": KEEP_PAGE, "flipLabels": True, "keepMarks": True, "cardSnap": True, "stillEager": True,
+            "tracksUrl": "../img/india/tracks.json"}
+    tracks_js = json.dumps({"tracks": [{"name": t["name"], "date": t["date"], "distance_km": t["distance_km"], "duration_min": t["duration_min"], "avg_kmh": t["avg_kmh"],
                         "max_alt_m": t["max_alt_m"], "type": t["type"], "closed": t["closed"], "points": t["points"], "ground_km": t["ground_km"],
-                        "off_map": t["off_map"], "route": t["route"], "segs": t["segs"]} for t in tracks]}
+                        "off_map": t["off_map"], "route": t["route"], "segs": t["segs"]} for t in tracks]}, separators=(",", ":"))
     data_js = json.dumps(data, separators=(",", ":"))
 
     # the markup
@@ -507,8 +544,8 @@ def build():
         '<div class="v4i-fl-head"><span class="kicker">Bir Immersive</span><h2 id="flight-h">%s</h2>' % h2 +
         '<p>In from %d km wide over the Kangra valley, down to Billing, west along the front to Dharamshala, back east to 360, and up over the back. The scroll flies it, or take the controls and go where you like.</p></div>' % km0,
         '<button class="v4i-fl-ctl" type="button" data-take="Take the controls" data-back="Back to the flight">Take the controls</button>',
-        btns, chips, tcard,
-        '<span class="v4i-fl-hint" aria-hidden="true"><span class="is-long">drag the ground &middot; scroll to come closer &middot; right button to turn and tilt &middot; a ring opens the photographs &middot; a dotted name tells its story</span><span class="is-short">drag the ground &middot; pinch to come closer &middot; twist to turn, two fingers up or down to tilt &middot; a ring opens the photographs, a dotted name its story</span></span>',
+        btns, '<button class="v4i-fl-reset" type="button">Reset view</button>', chips, tcard,
+        '<span class="v4i-fl-hint" aria-hidden="true"><span class="is-long">drag the ground &middot; scroll to come closer &middot; right button to turn and tilt &middot; a ring opens the photographs &middot; a dotted name tells its story</span><span class="is-short">drag the ground &middot; pinch to come closer &middot; twist to turn &middot; two fingers up or down to tilt</span></span>',
         '<ol class="v4i-fl-ch">' + chapters + '</ol>',
         '<div class="v4i-fl-cards">' + "".join(card_html) + '</div>',
         '<svg class="v4i-fl-lead" viewBox="0 0 1600 900" aria-hidden="true"><line class="v4i-fl-tie"/><circle class="v4i-fl-halo" r="9"/><circle class="v4i-fl-dot" r="4"/></svg>',
@@ -547,6 +584,7 @@ def build():
         c = len(re.findall(r'/%s\.(?:webp|jpg)' % re.escape(f), t))
         assert c in (2, 4), (nm, c)
     open(OUT, "w", encoding="utf-8").write(t)
+    open(TRACKS_OUT, "w", encoding="utf-8").write(tracks_js)
     print("wrote", os.path.relpath(OUT, ROOT), n0, "->", len(t), "bytes; data", len(data_js), "bytes; plates", [(c["n"], c["a"], c["b"]) for c in card_data])
 
 
