@@ -23,7 +23,11 @@ import * as THREE from "./lib/three.module.min.js";
   var chBox = s.querySelector(".v4i-fl-ch"), readBox = s.querySelector(".v4i-fl-read"), ctlBox = s.querySelector(".v4i-fl-ctl");
   function rectOf(el) { if (!el) return null; var r = el.getBoundingClientRect(), m = map.getBoundingClientRect(); return [r.left - m.left - 8, r.top - m.top - 8, r.right - m.left + 8, r.bottom - m.top + 8]; }
   var KR = { read: null, ctl: null, head: null, ch: null, top: 120, gut: 24 };   // the plates the pins keep out of, measured when they change
-  function measureKeep() { KR.read = rectOf(readBox); KR.ctl = rectOf(ctlBox); KR.head = rectOf(head); KR.ch = rectOf(s.querySelector(".v4i-fl-c.is-on")); KR.top = head ? head.offsetHeight + (head.offsetTop || 0) + 10 : 120; KR.gut = head ? head.offsetLeft || 24 : 24; }
+  function measureKeep() { KR.read = rectOf(readBox); KR.ctl = rectOf(ctlBox); KR.head = rectOf(head); KR.ch = rectOf(s.querySelector(".v4i-fl-c.is-on")); KR.top = head ? head.offsetHeight + (head.offsetTop || 0) + 10 : 120; KR.gut = head ? head.offsetLeft || 24 : 24;
+    function extra(list, on) { var out = []; if (on) list.forEach(function (sel) { var el = s.querySelector(sel); if (!el || el.hidden || !el.getClientRects().length) return; var r = rectOf(el); if (r[2] - r[0] > 17 && r[3] - r[1] > 17) out.push(r); }); return out; }
+    if (D.keepFree || D.keepFlight) { KR.free = extra(D.keepFree || [], free); KR.flight = extra(D.keepFlight || [], !free); dirty = true; } }   // a page may keep its own controls clear of the names too, by hand or in flight
+  var KP = [], kpT = 0;                                   // a page may keep the names clear of its own bars over the stage too (D.keepPage), looked at a few times a second
+  function measurePage() { KP = []; (D.keepPage || []).forEach(function (sel) { var el = document.querySelector(sel); if (!el) return; var cs = getComputedStyle(el); if (cs.display === "none" || cs.visibility === "hidden" || +cs.opacity < 0.05) return; var r = rectOf(el); if (r[2] - r[0] > 17 && r[3] - r[1] > 17 && r[3] > 0 && r[1] < Hh) KP.push(r); }); }
   var ctl = s.querySelector(".v4i-fl-ctl"), dlg = document.getElementById("v4i-fl-dlg"), hint = s.querySelector(".v4i-fl-hint");
   var G = D.grid, mpp = G.mpp, exag = G.exag, base = G.base_m, sizeX = G.w * mpp, sizeY = G.h * mpp;
   var TEX = (small || lite) ? D.textures.phone : D.textures.desktop, src = s.getAttribute("data-src") || "";
@@ -57,6 +61,7 @@ import * as THREE from "./lib/three.module.min.js";
 
   /* ---------- the flight path: centripetal Catmull-Rom through the keys, eased per leg ---------- */
   var K = D.keys, cams = K.map(function (k) { return k.cam; }), tgts = K.map(function (k) { return k.tgt; });
+  var tgtsP = K.some(function (k) { return k.ptgt; }) ? K.map(function (k) { return k.ptgt || k.tgt; }) : null;   // a key may look elsewhere on a tall screen
   function catmull(pts, i, t) {
     var p0 = pts[Math.max(i - 1, 0)], p1 = pts[i], p2 = pts[i + 1], p3 = pts[Math.min(i + 2, pts.length - 1)];
     function tj(ti, a, b) { var d = Math.sqrt((a[0] - b[0]) * (a[0] - b[0]) + (a[1] - b[1]) * (a[1] - b[1]) + (a[2] - b[2]) * (a[2] - b[2])); return ti + Math.pow(Math.max(d, 1e-6), 0.5); }
@@ -71,7 +76,7 @@ import * as THREE from "./lib/three.module.min.js";
     while (leg < D.per_leg.length - 1 && f >= acc + D.per_leg[leg]) { acc += D.per_leg[leg]; leg++; }
     var u = smooth(clamp((f - acc) / D.per_leg[leg], 0, 1));
     if (f >= n - 1) { leg = D.per_leg.length - 1; u = 1; }
-    var c = catmull(cams, leg, u), t = catmull(tgts, leg, u), a = K[leg], b = K[leg + 1];
+    var c = catmull(cams, leg, u), t = catmull(tgtsP && W < Hh ? tgtsP : tgts, leg, u), a = K[leg], b = K[leg + 1];
     return { cam: toWorld(c[0], c[1], c[2]), tgt: toWorld(t[0], t[1], t[2]), fov: lerp(a.fov, b.fov, u), fog0: lerp(a.fog[0], b.fog[0], u), fog1: lerp(a.fog[1], b.fog[1], u), leg: leg,
              sun: (a.sun && b.sun) ? [lerp(a.sun[0], b.sun[0], u), lerp(a.sun[1], b.sun[1], u)] : (a.sun || b.sun || null) };
   }
@@ -111,6 +116,19 @@ import * as THREE from "./lib/three.module.min.js";
       "  float f = smoothstep(fogNear, fogFar, distance(vW, camPos)); col = mix(col, fogColor, f);",         // THREE.Color is linear
       "  float ed = min(min(vUv.x, 1.0 - vUv.x), min(vUv.y, 1.0 - vUv.y)); float al = edge > 0.0 ? smoothstep(0.0, edge, ed) : 1.0;",   // an inset fades into the ground around it
       "  gl_FragColor = vec4(pow(col, vec3(1.0 / 2.2)), al); }"].join("\n");
+  /* a page may ask for a sky: haze at the ground's far edge, the page's dark overhead; the far ground fogs into the haze */
+  var SKY = D.sky || null, skyMesh = null;
+  if (SKY) {
+    uniforms.fogColor.value = new THREE.Color(SKY.haze); renderer.setClearColor(new THREE.Color(SKY.haze), 1);
+    skyMesh = new THREE.Mesh(new THREE.SphereGeometry(150000, 48, 24), new THREE.ShaderMaterial({
+      uniforms: { haze: { value: new THREE.Color(SKY.haze) }, zen: { value: new THREE.Color(SKY.zenith) }, lo: { value: SKY.lo === undefined ? -0.1 : SKY.lo }, hi: { value: SKY.hi === undefined ? 0.45 : SKY.hi } },
+      vertexShader: "varying vec3 vD; void main(){ vD = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }",
+      fragmentShader: ["precision highp float; uniform vec3 haze, zen; uniform float lo, hi; varying vec3 vD;",
+        "void main(){ float t = smoothstep(lo, hi, normalize(vD).z); vec3 c = pow(mix(haze, zen, t), vec3(1.0 / 2.2));",
+        "  c += (fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) / 255.0; gl_FragColor = vec4(c, 1.0); }"].join("\n"),
+      side: THREE.BackSide, depthWrite: false, depthTest: false }));
+    skyMesh.renderOrder = -10; skyMesh.frustumCulled = false; scene.add(skyMesh);
+  }
   uniforms.edge.value = D.edge_fade || 0;                 // the ground's outer edge can dissolve into the sky instead of ending in a line
   var material = new THREE.ShaderMaterial({ uniforms: uniforms, vertexShader: VS, fragmentShader: FS, transparent: !!D.edge_fade });
   material.polygonOffset = true; material.polygonOffsetFactor = 2; material.polygonOffsetUnits = 2;   // the base sits a hair behind any inset
@@ -155,15 +173,37 @@ import * as THREE from "./lib/three.module.min.js";
         mesh = new THREE.Mesh(geo, material); mesh.frustumCulled = false; scene.add(mesh);
         buildTracks(); buildBorders(); if (free) showTracks(true);
         ready = true; dirty = true; s.classList.add("is-ready");
+        if (TEX.full) later(upgrade, 2500);
       });
     };
     img.src = at(TEX.h);
     cards.forEach(function (f) { var im = f.querySelector("img"); if (im) { im.loading = "eager"; if (im.decode) im.decode().catch(function () {}); } });
+    stillIn();
+  }
+  /* a page may start on a lighter ground and name the full one (TEX.full: h, c, seg); it comes in when the visitor is still */
+  function stillIn() { if (!D.stillEager) return; var st = map.querySelector("picture img"); if (st && st.loading !== "eager") { st.loading = "eager"; if (st.decode) st.decode().catch(function () {}); } }   // a page may ask for its still in hand before a jump lands
+  function later(fn, t) { if (window.requestIdleCallback) requestIdleCallback(fn, { timeout: t }); else setTimeout(fn, 600); }
+  var upgraded = false;
+  function upgrade() {
+    if (upgraded) return; upgraded = true; var F = TEX.full, img = new Image(), ct = null, hi = false; img.decoding = "async";
+    function swap() {
+      if (!ct || !hi) return;
+      if (performance.now() - lastR < 400 || grab || two) { setTimeout(function () { later(swap, 1500); }, 300); return; }   // never mid-move: the decode takes a moment
+      var d = decodeHeights(img), oh = uniforms.hmap.value, oc = uniforms.cmap.value;
+      H = d.A; HW = d.w; HH = d.h; uniforms.hmap.value = d.tex; uniforms.texel.value.set(1 / d.w, 1 / d.h); uniforms.mppTex.value.set(sizeX / d.w, sizeY / d.h);
+      ct.colorSpace = THREE.SRGBColorSpace; ct.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); uniforms.cmap.value = ct;
+      if (F.seg && mesh) { var g0 = mesh.geometry; mesh.geometry = new THREE.PlaneGeometry(sizeX, sizeY, F.seg[0], F.seg[1]); g0.dispose(); }
+      if (oh) oh.dispose(); if (oc) oc.dispose(); lifeG.forEach(function (G) { G.a.z = groundZ(G.a); G.ms.forEach(function (m) { m.z = null; }); });
+      s.classList.add("is-full"); dirty = true;
+    }
+    new THREE.TextureLoader().load(at(F.c), function (t) { ct = t; swap(); });
+    img.onload = function () { var go = function () { hi = true; swap(); }; if (img.decode) img.decode().then(go, go); else go(); };
+    img.src = at(F.h);
   }
 
   /* ---------- the camera: the flight, or the visitor's hands ---------- */
   var W = 1, Hh = 1, cur = -1, target = 0, free = false, blend = 0, blendFrom = null, dirty = true, raf = 0, lastP = -1;
-  var O = { tgt: new THREE.Vector3(), dist: 10000, yaw: 0, pitch: 0.6, fov: 48 };     // the free pose, yaw 0 = camera south of its target, facing north
+  var O = { tgt: new THREE.Vector3(), dist: 10000, yaw: 0, pitch: 0.6, fov: 48 }, O0 = null;     // the free pose, yaw 0 = camera south of its target, facing north
   var B = D.bounds, PITCH = [THREE.MathUtils.degToRad(B.pitch[0]), THREE.MathUtils.degToRad(B.pitch[1])], YAW = [THREE.MathUtils.degToRad(B.yaw[0]), THREE.MathUtils.degToRad(B.yaw[1])];
   var bSW = toWorld(B.sw[0], B.sw[1], 0), bNE = toWorld(B.ne[0], B.ne[1], 0);
   function freeCam() {
@@ -181,9 +221,9 @@ import * as THREE from "./lib/three.module.min.js";
     var gz = groundZ(O.tgt), dz = gz - O.tgt.z; if (Math.abs(dz) < 0.5) { O.tgt.z = gz; return false; } O.tgt.z += dz * 0.14; return true;
   }
   function enterFree() {
-    if (free) return; var p = poseAt(flightF); free = true; blend = 0; lastP = progress();
+    if (free) return; var p = poseAt(flightF); free = true; blend = 0; lastP = progress(); getTracks();
     O.tgt.copy(p.tgt); var v = p.cam.clone().sub(p.tgt); O.dist = v.length(); O.pitch = Math.asin(clamp(v.z / O.dist, -1, 1)); O.yaw = Math.atan2(v.x, -v.y); O.fov = p.fov;
-    clampFree(true); s.classList.add("is-free"); if (ctl) ctl.textContent = ctl.getAttribute("data-back"); showTracks(true); dirty = true; requestAnimationFrame(measureKeep);
+    clampFree(true); O0 = { tgt: O.tgt.clone(), dist: O.dist, yaw: O.yaw, pitch: O.pitch }; s.classList.add("is-free"); if (ctl) ctl.textContent = ctl.getAttribute("data-back"); showTracks(true); dirty = true; requestAnimationFrame(measureKeep);
   }
   function leaveFree() {
     if (!free) return; blendFrom = currentPose(); free = false; blend = 1; glide = null; s.classList.remove("is-free"); if (ctl) ctl.textContent = ctl.getAttribute("data-take"); showTracks(false); dirty = true; requestAnimationFrame(measureKeep);
@@ -279,6 +319,9 @@ import * as THREE from "./lib/three.module.min.js";
   map.addEventListener("contextmenu", function (e) { if (free) e.preventDefault(); });
   map.addEventListener("wheel", function (e) { if (!free) return; e.preventDefault(); var l = local(e); zoom(Math.exp(clamp(e.deltaY, -60, 60) * 0.004), l[0], l[1]); }, { passive: false });
   if (ctl) ctl.addEventListener("click", function () { if (free) leaveFree(); else enterFree(); });
+  if (ctl && D.tracksUrl) ["pointerenter", "pointerdown", "focus"].forEach(function (ev) { ctl.addEventListener(ev, getTracks); });   // the flights on their way before the click lands
+  var rst = s.querySelector(".v4i-fl-reset");             // a page may offer one control to put the view back where the controls were taken
+  if (rst) rst.addEventListener("click", function () { if (!free || !O0) return; glide = null; O.tgt.copy(O0.tgt); O.dist = O0.dist; O.yaw = O0.yaw; O.pitch = O0.pitch; clampFree(); dirty = true; });
   [].slice.call(s.querySelectorAll(".v4i-fl-btn")).forEach(function (b) {
     b.addEventListener("click", function () { if (!free) enterFree(); var k = b.getAttribute("data-do");
       if (k === "in") zoom(0.72); else if (k === "out") zoom(1.38); else if (k === "left") { O.yaw -= 0.35; clampFree(); dirty = true; } else if (k === "right") { O.yaw += 0.35; clampFree(); dirty = true; }
@@ -303,6 +346,14 @@ import * as THREE from "./lib/three.module.min.js";
 
   /* ---------- the tracks: real flights drawn on the ground when the controls are taken ---------- */
   var TR = D.tracks || [], trackObjs = [], activeTrack = -1, tkList = s.querySelector(".v4i-fl-tks"), tcard = s.querySelector(".v4i-fl-tcard");
+  var trGet = null, trWant = -1, trBuilt = false;
+  function getTracks() {                                   // a page may keep its flights in their own file, fetched only when the controls are taken or about to be
+    if (!D.tracksUrl || trGet) return; trGet = 1;
+    fetch(at(D.tracksUrl)).then(function (r) { if (!r.ok) throw r.status; return r.json(); }).then(function (j) {
+      TR = j.tracks || j; if (ready) { buildTracks(); if (free) showTracks(true); }
+      if (trWant >= 0 && free && TR[trWant]) { setTrack(trWant); flyToTrack(trWant); } trWant = -1; dirty = true;
+    }).catch(function () { trGet = null; });
+  }
   var trackMat = new THREE.MeshBasicMaterial({ color: new THREE.Color(0xff7517), transparent: true, opacity: 0.55, fog: true, depthWrite: false });
   var trackMatOn = new THREE.MeshBasicMaterial({ color: new THREE.Color(0xff7517), transparent: true, opacity: 1, fog: true, depthWrite: false });
   var trackMatDim = new THREE.MeshBasicMaterial({ color: new THREE.Color(0xf6f4f4), transparent: true, opacity: 0.16, fog: true, depthWrite: false });
@@ -316,6 +367,7 @@ import * as THREE from "./lib/three.module.min.js";
     });
   }
   function buildTracks() {                                 // a flight is drawn in the pieces that lie on the map
+    if (D.tracksUrl) { if (trBuilt || !TR.length) return; trBuilt = true; }
     TR.forEach(function (t, i) {
       var grp = new THREE.Group(), all = [];
       (t.segs || [t.points]).forEach(function (seg) {
@@ -336,7 +388,7 @@ import * as THREE from "./lib/three.module.min.js";
     });
   }
   function niceDate(d) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d || ""); if (!m) return d || ""; return (+m[3]) + " " + ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][+m[2] - 1] + " " + m[1]; }
-  function showTracks(on) { trackObjs.forEach(function (o) { o.mesh.visible = on; }); if (tkList) tkList.hidden = !on || !TR.length; if (!on) setTrack(-1); dirty = true; }
+  function showTracks(on) { trackObjs.forEach(function (o) { o.mesh.visible = on; }); if (tkList) tkList.hidden = !on || !(TR.length || D.tracksUrl); if (!on) setTrack(-1); dirty = true; }
   function setTrack(i) {
     activeTrack = i; s.classList.toggle("is-tracked", i >= 0);   // a flight chosen: the page steps back, the ground and the line stay
     trackObjs.forEach(function (o, k) { var mat = i < 0 ? trackMat : (k === i ? trackMatOn : trackMatDim); o.mesh.children.forEach(function (m) { m.material = mat; }); if (o.route) o.route.visible = free && k === i; });
@@ -359,7 +411,7 @@ import * as THREE from "./lib/three.module.min.js";
     O.tgt.set(c.x, c.y, 0); O.tgt.z = groundZ(O.tgt); O.yaw = 0; O.pitch = THREE.MathUtils.degToRad(38);
     O.dist = clamp(Math.max(sz.x, sz.y * 1.4) * 0.9 / Math.tan(THREE.MathUtils.degToRad(O.fov / 2)) * 0.6, B.dist[0], B.dist[1]); clampFree(true); dirty = true;
   }
-  if (tkList) [].slice.call(tkList.querySelectorAll(".v4i-fl-tk")).forEach(function (b, i) { b.addEventListener("click", function () { if (activeTrack === i) { setTrack(-1); return; } setTrack(i); flyToTrack(i); }); });
+  if (tkList) [].slice.call(tkList.querySelectorAll(".v4i-fl-tk")).forEach(function (b, i) { b.addEventListener("click", function () { if (activeTrack === i) { setTrack(-1); return; } if (!TR[i]) { trWant = i; getTracks(); return; } setTrack(i); flyToTrack(i); }); });
   if (tcard) { var tx = tcard.querySelector(".v4i-fl-tx"); if (tx) tx.addEventListener("click", function () { setTrack(-1); }); }
 
   /* ---------- the dialog: the photographs of a place ---------- */
@@ -467,6 +519,9 @@ import * as THREE from "./lib/three.module.min.js";
 
   /* ---------- the life: elephants, flamingos, runners, cattle, baobabs; emoji figures standing on their ground at any distance, each group opening its place's story ---------- */
   var NS = "http://www.w3.org/2000/svg", LIFE = D.life || [], tap = null, hotG = null, mksBox = s.querySelector(".v4i-fl-mks");
+  /* a page may set how big a figure stands on the screen: min px far away, max px close by, eased over the log of the distance;
+     a far group then shows only as many of its figures as have room, fading the others, so a herd never piles into a blot */
+  var LS = D.lifeSize || null;
   /* per kind: height against the others, spacing in metres, which way the drawing faces (-1 left, 1 right, 0 either) */
   var KIND = { elephant: [1, 700, -1], giraffe: [1.25, 650, -1], zebra: [.9, 420, -1], rhino: [.95, 900, -1], hippo: [.85, 380, -1], buffalo: [.95, 440, -1], lion: [.8, 700, 0],
                flamingo: [.8, 170, -1], runner: [.9, 320, 1], cattle: [.9, 380, -1], walker: [.9, 300, 1], crocodile: [.8, 500, 1], baobab: [1.5, 1600, 0] };
@@ -484,6 +539,7 @@ import * as THREE from "./lib/three.module.min.js";
       var use = document.createElementNS(NS, "use"); use.setAttribute("href", "#v4i-em-" + L.kind); use.setAttribute("width", "128"); use.setAttribute("height", "128"); use.style.display = "none"; el.appendChild(use);   // a symbol fills its use: give it the drawing's own size
       ms.push({ el: use, x: hx, y: hy, z: null, face: L.mode === "solo" ? (r() < .5 ? -1 : 1) : face, sc: L.mode === "still" ? .75 + r() * .55 : .92 + r() * .16, shown: false, sx: 0, sy: 0, hw: 0, hh: 0 });
     }
+    if (LS) ms.sort(function (p, q) { return Math.hypot(p.x, p.y) - Math.hypot(q.x, q.y); });   // the middle of a group first: a far group thins from its edges
     var b = null;
     if (mksBox && WP[L.c]) {                                 // a small button at the group's middle, for keys and fingers; the figures themselves answer the pointer
       b = document.createElement("button"); b.className = "v4i-fl-ab"; b.type = "button"; b.hidden = true; b.setAttribute("aria-label", "About " + (L.name || L.kind) + " at " + WP[L.c].label);
@@ -500,15 +556,24 @@ import * as THREE from "./lib/three.module.min.js";
       lv.set(G.a.x, G.a.y, G.a.z); var pr = project(lv), on = pr[2] && pr[0] > -160 && pr[0] < W + 160 && pr[1] > -160 && pr[1] < Hh + 160;
       if (!on) { if (G.on) { G.on = false; G.el.style.display = "none"; if (G.btn) G.btn.hidden = true; G.ms.forEach(function (m) { m.shown = false; m.el.style.display = "none"; }); } return; }
       if (!G.on) { G.on = true; G.el.style.display = ""; G.a.z = groundZ(G.a); }
-      var hb = clamp((small ? 24 : 27) * Math.pow(16000 / Math.max(dist, 1500), 0.4), 12, 48) * k[0];
+      var hb, nFit = 1e9;
+      if (LS) {
+        var lt = smooth(clamp((Math.log(LS.far) - Math.log(Math.max(dist, 1))) / (Math.log(LS.far) - Math.log(LS.near)), 0, 1));
+        hb = lerp(LS.min, LS.max, lt) * k[0];
+        var ppm = Hh / (2 * dist * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2))), room = k[1] * ppm / (hb * 0.55), nn = G.ms.length;   // the spacing on the screen against a figure's width
+        nFit = nn <= 1 ? 1 : lerp(Math.min(nn, LS.few || 3), nn, smooth(clamp((room - 0.15) / 0.85, 0, 1)));
+      } else hb = clamp((small ? 24 : 27) * Math.pow(16000 / Math.max(dist, 1500), 0.4), 12, 48) * k[0];
       var x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9, shownN = 0;
-      G.ms.forEach(function (m) {
+      G.ms.forEach(function (m, mi) {
+        var op = clamp(nFit - mi, 0, 1);
+        if (op < 0.02) { if (m.shown) { m.shown = false; m.el.style.display = "none"; } return; }
         var wx = G.a.x + m.x, wy = G.a.y + m.y; if (m.z === null) m.z = groundZ({ x: wx, y: wy });
         lv.set(wx, wy, m.z); var p1 = project(lv), sx = p1[0], sy = p1[1], inn = p1[2] && sx > -30 && sx < W + 30 && sy > -30 && sy < Hh + 30;
         if (!inn || (H && hidden(lv, cam))) { if (m.shown) { m.shown = false; m.el.style.display = "none"; } return; }
-        var hh = hb * m.sc, sc = hh / 128, fx = k[2] === 0 || m.face === k[2] ? 1 : -1;
+        var hh = LS ? Math.min(hb * m.sc, LS.cap || 1e9) : hb * m.sc, sc = hh / 128, fx = k[2] === 0 || m.face === k[2] ? 1 : -1;
         m.el.setAttribute("transform", "translate(" + sx.toFixed(1) + " " + sy.toFixed(1) + ") scale(" + (sc * fx).toFixed(4) + " " + sc.toFixed(4) + ") translate(-64 -118)");
         if (!m.shown) { m.shown = true; m.el.style.display = ""; }
+        if (LS) { var os = op > 0.98 ? "" : op.toFixed(2); if (m.op !== os) { m.op = os; m.el.style.opacity = os; } }
         m.sx = sx; m.sy = sy; m.hw = hh * 0.5; m.hh = hh; if (sx - m.hw < x0) x0 = sx - m.hw; if (sx + m.hw > x1) x1 = sx + m.hw; if (sy - hh < y0) y0 = sy - hh; if (sy > y1) y1 = sy; shownN++;
       });
       if (G.btn) { if (!shownN) G.btn.hidden = true; else { G.btn.hidden = false; G.btn.style.transform = "translate(" + ((x0 + x1) / 2).toFixed(0) + "px," + ((y0 + y1) / 2).toFixed(0) + "px)"; } }
@@ -522,7 +587,7 @@ import * as THREE from "./lib/three.module.min.js";
   function lifeHover(G) { if (G === hotG) return; if (hotG) hotG.el.classList.remove("is-hot"); hotG = G; if (G) G.el.classList.add("is-hot"); map.classList.toggle("is-hand", !!G); }
   function size() {
     var r = map.getBoundingClientRect(); W = Math.max(1, r.width); Hh = Math.max(1, r.height);
-    dprHi = lite ? 1 : Math.min(1.5, window.devicePixelRatio || 1); dprLo = lite ? 1 : Math.max(0.7, dprHi * 0.66); dprNow = 0; setDpr(dprHi);
+    dprHi = lite ? 1 : Math.min(D.dprMax || 1.5, window.devicePixelRatio || 1); dprLo = lite ? 1 : Math.max(0.7, dprHi * 0.66); dprNow = 0; setDpr(dprHi);
     camera.aspect = W / Hh; camera.updateProjectionMatrix();
     ov.setAttribute("viewBox", "0 0 " + W.toFixed(0) + " " + Hh.toFixed(0)); lead.setAttribute("viewBox", "0 0 " + W.toFixed(0) + " " + Hh.toFixed(0));
     pls.forEach(function (g) { var tx = g.querySelector("text"); g._tx = tx; try { g._tw = tx.getComputedTextLength() || tx.textContent.length * 7.3; } catch (e) { g._tw = tx.textContent.length * 7.3; } });
@@ -532,9 +597,11 @@ import * as THREE from "./lib/three.module.min.js";
   function setDpr(d) { if (d === dprNow) return; dprNow = d; renderer.setPixelRatio(d); renderer.setSize(W, Hh, false); }
   function render() {
     var now = performance.now(), moving = now - lastR < 90; lastR = now;   // frames in quick succession: the view is moving
+    if (D.keepPage && now - kpT > 250) { kpT = now; measurePage(); }
     setDpr(moving ? dprLo : dprHi); clearTimeout(settleT); if (moving) settleT = setTimeout(function () { lastR = 0; dirty = true; }, 170);
     var p = currentPose();
     camera.position.copy(p.cam); camera.lookAt(p.tgt); camera.fov = p.fov; camera.updateProjectionMatrix(); camera.updateMatrixWorld();
+    if (skyMesh) skyMesh.position.copy(p.cam);
     uniforms.fogNear.value = p.fog0; uniforms.fogFar.value = p.fog1; uniforms.camPos.value.copy(p.cam);
     if (p.sun) { var sa = THREE.MathUtils.degToRad(p.sun[0]), se = THREE.MathUtils.degToRad(p.sun[1]); uniforms.sunDir.value.set(Math.cos(se) * Math.sin(sa), Math.cos(se) * Math.cos(sa), Math.sin(se)).normalize(); }
     if (layers.length && ready) { var tg = gridOf(p.tgt); layers.forEach(function (L) { if (L.started) return; var qx = clamp(tg[0], L.x0, L.x1), qy = clamp(tg[1], L.y0, L.y1); if (Math.hypot(qx - tg[0], qy - tg[1]) * mpp < L.near) loadLayer(L); }); }
@@ -548,6 +615,8 @@ import * as THREE from "./lib/three.module.min.js";
     var lit = null, lw = 0, cardBoxes = [];
     cards.forEach(function (card, k) {
       var cd = D.cards[k], w = free ? 0 : Math.min(1, (f - cd.a) / 1.6, (cd.b - f) / 1.6); w = w < 0 ? 0 : w; w = smooth(w);
+      if (D.cardSnap) { w = !free && f >= cd.a + 0.8 && f <= cd.b - 0.8 ? 1 : 0;   // up or down, the fade left to the stylesheet; while one fades out its place stays kept
+        if (w <= 0 && card._box) { if (!card._off) card._off = performance.now(); if (performance.now() - card._off < 600) cardBoxes.push(card._box); else card._box = null; dirty = true; } }
       if (w <= 0) { put("w" + k, "0", function () { card.style.setProperty("--w", "0"); card.classList.remove("is-on"); card._side = -1; }); return; }
       var pt = wpWorld[cd.c], pr = project(pt); if (!pr[2]) { put("w" + k, "0", function () { card.style.setProperty("--w", "0"); card.classList.remove("is-on"); }); return; }
       var ax = pr[0], ay = pr[1], off = ax < 6 || ax > W - 6 || ay < 6 || ay > Hh - 6; ax = clamp(ax, 6, W - 6); ay = clamp(ay, 6, Hh - 6);
@@ -582,6 +651,7 @@ import * as THREE from "./lib/three.module.min.js";
         }
       }
       if (w > .05) cardBoxes.push([x - 6, y - 6, x + cw + 6, y + chh + 6]);
+      if (D.cardSnap) { card._box = [x - 6, y - 6, x + cw + 6, y + chh + 6]; card._off = 0; }
       put("w" + k, w.toFixed(3), function (v) { card.style.setProperty("--w", v); card.classList.toggle("is-on", parseFloat(v) > 0.5); });
       put("x" + k, x.toFixed(1) + "|" + y.toFixed(1), function () { card.style.setProperty("--x", x.toFixed(1) + "px"); card.style.setProperty("--y", y.toFixed(1) + "px"); });
       if (w > lw) { lw = w; var cs = [[x, y], [x + cw, y], [x, y + chh], [x + cw, y + chh]], bc = cs[0], bdd = 1e9; cs.forEach(function (q) { var d = Math.hypot(q[0] - ax, q[1] - ay); if (d < bdd) { bdd = d; bc = q; } }); lit = { ax: ax, ay: ay, bx: bc[0], by: bc[1], w: w, off: off, near: cd.near }; }
@@ -592,7 +662,7 @@ import * as THREE from "./lib/three.module.min.js";
       dot.setAttribute("cx", lit.ax); dot.setAttribute("cy", lit.ay); dot.style.opacity = o; halo.setAttribute("cx", lit.ax); halo.setAttribute("cy", lit.ay); halo.classList.toggle("is-near", !!lit.near); halo.setAttribute("r", lit.near ? 14 : 9); halo.style.opacity = (lit.w * (lit.near ? .22 : .8) * (lit.off ? .35 : 1)).toFixed(3);
     });
     /* the pins: priority order, in frame, near enough, not behind the ground, not on another label or a plate */
-    var best = null, bd = 99, boxes = cardBoxes.slice(), shown = 0, cx = W / 2, cy = Hh / 2, keep = [KR.ch, KR.read, KR.ctl, KR.head].filter(Boolean);
+    var best = null, bd = 99, boxes = cardBoxes.slice(), shown = 0, cx = W / 2, cy = Hh / 2, keep = [KR.ch, KR.read, KR.ctl, KR.head].concat(free && KR.free ? KR.free : [], !free && KR.flight ? KR.flight : [], KP).filter(Boolean);
     boxes = boxes.concat(keep);
     function inKeep(x, y) { for (var q = 0; q < keep.length; q++) { var o = keep[q]; if (x > o[0] && x < o[2] && y > o[1] && y < o[3]) return true; } return false; }
     pls.forEach(function (g) {
@@ -603,6 +673,10 @@ import * as THREE from "./lib/three.module.min.js";
         far = dist > reach * .6; side = x + 9 + tw < W - 8 ? 0 : x - 9 - tw > 8 ? 1 : -1;
         if (side >= 0) { var bx = side ? x - 9 - tw : x + 9, box = [Math.min(bx, x) - 8, y - 11, Math.max(bx + tw, x) + 8, y + 11], ok = true;
           for (var q = 0; q < boxes.length; q++) { var o = boxes[q]; if (box[0] < o[2] && box[2] > o[0] && box[1] < o[3] && box[3] > o[1]) { ok = false; break; } }
+          if (!ok && D.flipLabels && (side ? x + 9 + tw < W - 8 : x - 9 - tw > 8)) {   // a page may let a blocked name try the other side of its pin
+            var bx2 = side ? x + 9 : x - 9 - tw, box2 = [Math.min(bx2, x) - 8, y - 11, Math.max(bx2 + tw, x) + 8, y + 11]; ok = true;
+            for (var q4 = 0; q4 < boxes.length; q4++) { var o4 = boxes[q4]; if (box2[0] < o4[2] && box2[2] > o4[0] && box2[1] < o4[3] && box2[3] > o4[1]) { ok = false; break; } }
+            if (ok) { side = 1 - side; box = box2; } }
           if (ok) { show = true; boxes.push(box); shown++; } }
       }
       put("pl" + c, show ? x.toFixed(1) + "," + y.toFixed(1) + "," + side + "," + (far ? 1 : 0) : "", function (v) {
@@ -627,6 +701,7 @@ import * as THREE from "./lib/three.module.min.js";
       var c = b.getAttribute("data-c"), g = pls.filter(function (q) { return q.getAttribute("data-c") === c; })[0], m = g && g._mk;
       var on = m && m.on; var under = false;
       if (on) for (var q = 0; q < cardBoxes.length; q++) { var o = cardBoxes[q]; if (m.x > o[0] - 14 && m.x < o[2] + 14 && m.y > o[1] - 14 && m.y < o[3] + 14) under = true; }   // a ring half under a plate is hidden too
+      if (on && D.keepMarks) for (var q5 = 0; q5 < keep.length; q5++) { var o5 = keep[q5]; if (m.x > o5[0] - 18 && m.x < o5[2] + 18 && m.y > o5[1] - 18 && m.y < o5[3] + 18) under = true; }
       put("mk" + c, on && !under ? m.x.toFixed(0) + "," + m.y.toFixed(0) : "", function (v) { if (!v) { b.hidden = true; return; } var a = v.split(","); b.hidden = false; b.style.transform = "translate(" + a[0] + "px," + a[1] + "px)"; });
     });
     if (ready && lifeG.length) life();
@@ -646,6 +721,7 @@ import * as THREE from "./lib/three.module.min.js";
   }
   function run(on) { if (on) { if (!raf) raf = requestAnimationFrame(tick); } else if (raf) { cancelAnimationFrame(raf); raf = 0; } }
   size();
+  if (D.stillEager) later(stillIn, 4000);                 // fetched when the page is idle: under a ground not yet up, the still shows, never a flat black
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(function (e) { for (var k = 0; k < e.length; k++) if (e[k].isIntersecting) load(); }, { rootMargin: "150% 0px" }).observe(s);
     new IntersectionObserver(function (e) { var on = false; for (var k = 0; k < e.length; k++) if (e[k].isIntersecting) on = true; run(on); }, { rootMargin: "20% 0px" }).observe(s);
