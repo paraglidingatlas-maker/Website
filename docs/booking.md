@@ -19,7 +19,7 @@ enabled: every switch is the owner's.
 |---|---|
 | The page | `prototypes/v4/book.html`, built by `tools/v4_book.py` on the enquiry page's shell. Prototype-only (`tools/v2_site.py`, `PROTO_ONLY`). |
 | The relay | `booking-worker.js` at the repo root, a Cloudflare Worker in the shape of `enquiry-worker.js`. |
-| The emails | MailerLite automations "Booking confirmation" (id 201934827617781573) and "Welcome kit: India 2026" (id 201934830701643442), both disabled. The same HTML is kept in `docs/emails/booking-confirmation-india.html`, `booking-confirmation-kenya.html` (see the section at the end) and `docs/emails/welcome-kit-india.html`. |
+| The emails | MailerLite automations "Booking confirmation" (id 201934827617781573) and "Welcome kit: India 2026" (id 201934830701643442), both disabled. The same HTML is kept in `docs/emails/booking-confirmation-india.html.txt`, `booking-confirmation-kenya.html.txt` (see the section at the end) and `docs/emails/welcome-kit-india.html.txt`. |
 | MailerLite fields | `trip`, `departure`, `reference`, `deposit_status`, `balance_due` (text; ids 1938134 to 1938138). |
 | MailerLite groups | "India 2026 pilots" (199795329387726060, existed) and "Kenya 2027 pilots" (201934341732828248, new). The existing "Kenya 2027 interest" group is left for the interest list. |
 
@@ -155,8 +155,8 @@ departures today), "due with the booking".
 
 ## The confirmation email (21 Oct, second design)
 
-`tools/email_booking.py` writes `docs/emails/booking-confirmation-india.html` and
-`booking-confirmation-kenya.html`, one per trip, in the site's own look: the
+`tools/email_booking.py` writes `docs/emails/booking-confirmation-india.html.txt` and
+`booking-confirmation-kenya.html.txt`, one per trip, in the site's own look: the
 departure's photograph with the headline on it, a boarding card (pilot, reference,
 departure, payment, balance), the relief map and terrain profile for India, the
 owner's note, the next steps as a rail, three photographs from the trip page and

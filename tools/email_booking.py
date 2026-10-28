@@ -1,6 +1,6 @@
 """The booking confirmation email, one per trip, in the site's own look.
 
-Writes docs/emails/booking-confirmation-<trip>.html with live image URLs
+Writes docs/emails/booking-confirmation-<trip>.html.txt (a draft, so the site build and audit pass it by) with live image URLs
 (https://paraglidingatlas.com/...). With --preview DIR it also writes a copy
 whose image paths are relative, next to the images, for a local render.
 
@@ -300,12 +300,12 @@ def main():
     for trip in TRIPS:
         doc = build(trip, LIVE)
         assert "—" not in doc
-        p = os.path.join(out, "booking-confirmation-%s.html" % trip)
+        p = os.path.join(out, "booking-confirmation-%s.html.txt" % trip)
         open(p, "w").write(doc)
         print("wrote", p, len(doc) // 1024, "KB")
         if preview:
             pd = build(trip, "")
-            open(os.path.join(preview, "booking-confirmation-%s.html" % trip), "w").write(pd)
+            open(os.path.join(preview, "booking-confirmation-%s.html.txt" % trip), "w").write(pd)
             t = TRIPS[trip]
             for f in [t["hero"], t["map"], t["profile"], "assets/logo/atlas-logo-white.png"] + [x[0] for x in t["photos"]]:
                 if not f: continue

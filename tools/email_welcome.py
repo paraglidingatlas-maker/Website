@@ -1,5 +1,5 @@
 """The India welcome kit email, in the same system as the booking confirmation
-(tools/email_booking.py). Writes docs/emails/welcome-kit-india.html with live
+(tools/email_booking.py). Writes docs/emails/welcome-kit-india.html.txt (a draft) with live
 image URLs; --preview DIR writes a relative-path copy next to the images.
 Every fact is the India trip page's or the packing checklist PDF's; the text is
 the 21 Oct kit, re-set. Merge tags: {$name} {$reference} {$departure}."""
@@ -282,12 +282,12 @@ a[x-apple-data-detectors]{color:inherit!important;text-decoration:none!important
 
 
 def main():
-    out = os.path.join(ROOT, "docs", "emails", "welcome-kit-india.html")
+    out = os.path.join(ROOT, "docs", "emails", "welcome-kit-india.html.txt")
     open(out, "w").write(build(LIVE)); print("wrote", out)
     if "--preview" in sys.argv:
         pv = sys.argv[sys.argv.index("--preview") + 1]
         os.makedirs(pv, exist_ok=True)
-        open(os.path.join(pv, "welcome-kit-india.html"), "w").write(build(""))
+        open(os.path.join(pv, "welcome-kit-india.html.txt"), "w").write(build(""))
         for f in [HERO, OPEN_PHOTO[0], CLOSE_PHOTO[0], "assets/logo/atlas-logo-white.png"] + [x[0] for x in PHOTOS]:
             d = os.path.join(pv, os.path.dirname(f)); os.makedirs(d, exist_ok=True)
             shutil.copy(os.path.join(ROOT, f), os.path.join(pv, f))

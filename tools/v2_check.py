@@ -172,6 +172,8 @@ def check_static(rel):
             continue
         target = os.path.normpath(os.path.join(here, f))
         if os.path.isdir(target):
+            if f.endswith("/") and re.search(r'\sdata-src="%s"' % re.escape(u), src):
+                continue    # a folder named as a prefix for a script's frames (the immersion pages' ridge, 28 Oct)
             target = os.path.join(target, "index.html")
         if not os.path.exists(target):
             missing.add(u)
