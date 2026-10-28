@@ -10,6 +10,7 @@ The footer, shorter (owner, 28 Oct 2026). Same pages reachable, less height:
   - above the line: "Listen on" at the left, "(c) Paragliding Atlas" at the right; below it, one line on a
     desktop: the platforms at the left, the legal pages (Terms, Privacy, Cookies, Participant Agreement,
     Corrections, Sitemap) at the right;
+  - no Instagram in the footer (owner, 28 Oct 2026);
   - no wind sound (owner); the footage pages' pause button, which sat beside it, keeps its place at the head of
     the "Listen on" row (src/v4-ux-footage.js), since moving pictures need a way to stop.
 The look is in src/v2.css (FOOTER, shorter). Written between <!--v4f--> marks in place of the footer's own
@@ -32,7 +33,6 @@ LISTEN_ON = [
     ("Castbox", "https://castbox.fm/channel/Paragliding-Atlas-by-Aninder-Singh-id6075445"),
     ("Podbean", "https://www.podbean.com/podcast-detail/tb6yq-2f5cd4/Paragliding-Atlas-by-Aninder-Singh-Podcast"),
     ("Patreon", "https://www.patreon.com/cw/ParaglidingAtlas"),
-    ("Instagram", "https://www.instagram.com/anindersingh13"),
 ]
 MENUS = [
     ("Listen", [("Podcast", "podcast.html"), ("Episode Library", "library.html"), ("Topics", "tags.html"), ("Knowledge Base", "knowledge-base.html")]),
