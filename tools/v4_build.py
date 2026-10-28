@@ -369,6 +369,7 @@ def main():
         run([PY, "tools/v4_ux.py"] + ux_pages())
         run([PY, "tools/v4_trip_calm.py", "india"])
         run([PY, "tools/v4_india_immersive.py"])     # the immersion chat's map, in place of the route (28 Oct)
+        run([PY, "tools/v4_kenya_immersive.py"])     # the immersion chat's Rift map, in place of the route (28 Oct)
         run([PY, "tools/v4_partners.py"])
         run([PY, "tools/v4_sitemap_sky.py"])
         run([PY, "tools/v4_polish.py"])
