@@ -40,7 +40,7 @@
 <link rel="preload" href="../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../fonts.css?v=1f73ef11">
 <link rel="stylesheet" href="../../styles.css?v=b084e774">
-<link rel="stylesheet" href="v2.css?v=49f0916e">
+<link rel="stylesheet" href="v2.css?v=fee9c98a">
 <style>
 /* Enquiry page. Tokens and chrome come from styles.css.
    The form deliberately has no backend and no third party form service: it
@@ -148,15 +148,8 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
 }
 </script>
 <!-- /site-schema --><script src="v2.js?v=c7722c82"></script>
-<script src="v2-immersive.js?v=95da0f78"></script>
+<script src="v2-immersive.js?v=15c98b15"></script>
 
-<!-- app --><link rel="manifest" href="manifest.webmanifest">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Atlas">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="apple-touch-icon" sizes="180x180" href="img/app-180.png">
-<script defer src="pwa.js?v=3d4482f3"></script><!-- /app -->
 <style>
 /* The booking flow (tools/v4_book.py). Tokens and chrome from styles.css and v2.css;
    the fields are the enquiry page's. Phone first: one column, the wide screen
@@ -234,6 +227,13 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
 @media (prefers-reduced-motion:reduce){.bk-rail li::before,.bk-dep{transition:none}}
 @media (pointer:coarse){.bk-dep{min-height:44px}}
 </style>
+<!-- app --><link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Atlas">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" sizes="180x180" href="img/app-180.png">
+<script defer src="pwa.js?v=c0d9e99a"></script><!-- /app -->
 </head>
 <body class="enq bk" data-v2="pg">
 
@@ -252,6 +252,8 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
     <a href="knowledge-base.html">Knowledge Base</a>
     <span class="nav-sep">|</span>
     <a href="about.html">About</a>
+    <!-- v4:needs record-attempt.html --><span class="nav-sep">|</span>
+    <a class="v4-wr" href="record-attempt.html" title="Speed Record"><svg viewBox="0 0 16 10" aria-hidden="true" focusable="false"><path d="M6 1.5h9"/><path d="M2 5h13"/><path d="M8 8.5h7"/></svg>Speed Record</a><!-- /v4:needs -->
   </div>
   <a href="book.html" class="nav-cta" data-hover><span>Hold a Place</span></a>
 </nav>
@@ -372,10 +374,10 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
           <p class="bk-note" id="depositNote">You pay by card on Stripe's page and come straight back here with your reference.</p>
         </div>
         <div class="kit-panel bk-panel">
-          <h3>Book a free 30-minute call</h3>
+          <h3>Book a free <span class="v4-nw">30-minute</span> call</h3>
           <p>Not sure yet, or a question first? Hold the place now and book a call. We talk through your flying and the trip, and the deposit waits until we have spoken.</p>
           <span class="spacer"></span>
-          <button type="submit" class="listen-btn" name="mode" value="call" id="btnCall" data-hover><span>Book a free 30-minute call</span></button>
+          <button type="submit" class="listen-btn" name="mode" value="call" id="btnCall" data-hover><span>Book a free <span class="v4-nw">30-minute</span> call</span></button>
           <p class="bk-note">The place is held under your name and a reference. The call link comes next.</p>
         </div>
       </div>
@@ -440,6 +442,7 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
       <h2>Fly With Us</h2>
       <a href="index.html#destinations">Destinations</a>
       <a href="destinations/kenya.html">Kenya Tour</a>
+      <a href="destinations/panchgani.html">Panchgani Tour</a>
       <a href="destinations/india.html">India Tour</a>
       <a href="enquire.html">Enquire</a>
       <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener">Book a Call</a>
@@ -469,7 +472,7 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
     <a href="https://www.podbean.com/podcast-detail/tb6yq-2f5cd4/Paragliding-Atlas-by-Aninder-Singh-Podcast" target="_blank" rel="noopener">Podbean</a>
     <a href="https://www.patreon.com/cw/ParaglidingAtlas" target="_blank" rel="noopener">Patreon</a>
     <a href="https://www.instagram.com/anindersingh13" target="_blank" rel="noopener">Instagram</a>
-    <span>Paragliding Atlas 2026</span>
+    <span>Paragliding Atlas <span data-year>2026</span></span>
   </div>
   </div>
 </footer>
