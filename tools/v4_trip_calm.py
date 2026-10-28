@@ -557,16 +557,19 @@ def patch(src):
                '<line class="needle" x1="120" y1="120" x2="32.0" y2="120.0" style="transform:rotate(108deg)"/>')
     src = swap(src, "read", '<text class="read" x="120" y="160">0.0</text>', '<text class="read" x="120" y="160">3.6</text>')
 
-    # the route: the fall ends on India with Bir Billing at its centre; the schematic without drawn hills
-    src = swap(src, "route", '<section class="dst-sec tm" id="route"', '<section class="dst-sec tm-calm" id="route"')
-    src = swap(src, "keys", KEYS_OLD, KEYS_NEW)
-    src = land(src)
-    g2 = len(re.findall(r'<path class="tm-g2" d="[^"]*"/>', src))
-    if g2 not in (0, 12):
-        fail("map: expected the 12 lines of the finer graticule, found %d" % g2)
-    src = re.sub(r'<path class="tm-g2" d="[^"]*"/>', "", src)
-    src = swap(src, "map", MAP_OLD, MAP_NEW)
-    src = marked(src, "schem", SCHEM, r'<svg class="iroute-svg" viewBox="0 0 1000 400" role="img" aria-labelledby="irT irD">.*?</svg>')
+    # the route and the gallery gave way to the immersion chat's map (tools/v4_india_immersive.py, 28 Oct):
+    # once its marks are on the page, this pass leaves those two parts alone
+    ie = "<!--v4ie:" in src
+    if not ie:
+        src = swap(src, "route", '<section class="dst-sec tm" id="route"', '<section class="dst-sec tm-calm" id="route"')
+        src = swap(src, "keys", KEYS_OLD, KEYS_NEW)
+        src = land(src)
+        g2 = len(re.findall(r'<path class="tm-g2" d="[^"]*"/>', src))
+        if g2 not in (0, 12):
+            fail("map: expected the 12 lines of the finer graticule, found %d" % g2)
+        src = re.sub(r'<path class="tm-g2" d="[^"]*"/>', "", src)
+        src = swap(src, "map", MAP_OLD, MAP_NEW)
+        src = marked(src, "schem", SCHEM, r'<svg class="iroute-svg" viewBox="0 0 1000 400" role="img" aria-labelledby="irT irD">.*?</svg>')
 
     # the departures: each tour's dates under its bar; the flag in green, the count plain
     # (India's 2027 bands carry their dates already, tools/v4_india_2027.py; these label the 2026 tours if they come back)
@@ -580,15 +583,16 @@ def patch(src):
                n=4)   # India's four 2027 departures (tools/v4_india_2027.py)
 
     # the gallery: a pinned run on a wide screen, a column of plates on a phone (v4-calm.css, v4-calm.js)
-    src = marked(src, "gallery", gallery(), r'<section class="dst-sec gxa" id="gallery".*?</section>')
-    gal = src.split('id="gallery"', 1)[1].split("</section>", 1)[0]
-    for g in GONE:
-        if g + "." in gal:
-            fail("gallery: %s is still there" % g)
-    rest = src.replace(gal, "")
-    for name, folder, *_ in GALLERY:
-        if "/%s/%s." % (folder, name) in rest:
-            fail("gallery: %s is shown elsewhere on the page too" % name)
+    if not ie:
+        src = marked(src, "gallery", gallery(), r'<section class="dst-sec gxa" id="gallery".*?</section>')
+        gal = src.split('id="gallery"', 1)[1].split("</section>", 1)[0]
+        for g in GONE:
+            if g + "." in gal:
+                fail("gallery: %s is still there" % g)
+        rest = src.replace(gal, "")
+        for name, folder, *_ in GALLERY:
+            if "/%s/%s." % (folder, name) in rest:
+                fail("gallery: %s is shown elsewhere on the page too" % name)
 
     # the scripts
     src = marked(src, "mobar", "", r'<script>\n\(function\(\)\{\n  /\* The booking bar rises.*?</script>')
