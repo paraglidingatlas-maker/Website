@@ -219,9 +219,10 @@ HERO_MASK = ",".join([eased("linear-gradient(90deg", 0, 28, fall=False),
                       eased("linear-gradient(180deg", 0, 22, fall=False),
                       eased("linear-gradient(0deg", 0, 42, fall=False)])
 HERO_MASK_P = eased("linear-gradient(0deg", 0, 46, fall=False)
-# the band as a split (the Oslo photograph): a short shade at its top, a shorter one at its foot, no pool (the
-# words stand on the page's dark beside the photograph, not on it)
-AIR_SHADE = ",".join([eased("linear-gradient(180deg", 0, 12), eased("linear-gradient(0deg", 0, 26)])
+# the band as a split (the OverOslo photograph): no shade at its top (owner, 28 Oct 2026: the sky over the festival
+# stays clear; the band sits a gap below the episodes instead), a short one at its foot, no pool (the words stand
+# on the page's dark beside the photograph, not on it)
+AIR_SHADE = eased("linear-gradient(0deg", 0, 26)
 # the close: the pushed page's blurred handshake comes out of the page's dark at its top and goes back into it
 # at its foot in eased steps, under an even veil of the dark (the pushed page's 70%), so the card sits on the
 # photograph and the footer follows on one dark
@@ -298,7 +299,7 @@ CSS = r"""/* v4p: Partner With Me, less but better (owner, 20 Oct 2026). tools/v
    edge; still, straight under the episodes (the rows' own 8px between), out of the page's dark at its top on a
    short shade and back into it at its foot on a long one */
 .pw-air{position:relative;overflow:hidden;isolation:isolate;display:grid;grid-template-columns:minmax(0,44fr) minmax(0,56fr);
-  align-items:end;min-height:clamp(560px,88vh,900px);margin-top:8px;}
+  align-items:end;min-height:clamp(560px,88vh,900px);margin-top:clamp(3rem,6vw,5rem);}
 .pw-air-photo{position:relative;grid-column:2;grid-row:1;align-self:stretch;z-index:-2;overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg,transparent 0,var(--bg) 24%);mask-image:linear-gradient(90deg,transparent 0,var(--bg) 24%);}
 .pw-air-photo picture{display:block;width:100%;height:100%;}
@@ -467,14 +468,14 @@ FORMATS = [
 AIR = ('<section class="pw-air" aria-label="In the air">\n'
        '  <div class="pw-air-photo"><picture><source type="image/webp" srcset="img/partners/oslo-festival-900.webp 900w, img/partners/oslo-festival-1600.webp 1600w" sizes="(max-width: 820px) 100vw, 56vw">'
        '<img src="img/partners/oslo-festival-1600.jpg" srcset="img/partners/oslo-festival-900.jpg 900w, img/partners/oslo-festival-1600.jpg 1600w" sizes="(max-width: 820px) 100vw, 56vw" width="1600" height="1777" loading="lazy" '
-       'alt="A paraglider flying low over a festival crowd in Oslo, a forest behind"></picture>'
+       'alt="A paraglider flying low over the OverOslo festival crowd at Grefsenkollen, Oslo, a forest behind"></picture>'
        '</div>\n'
-       '  <p class="pw-air-cap"><span>Oslo, 2025</span>Over a festival crowd</p>\n'
+       '  <p class="pw-air-cap"><span>OverOslo, June 2025</span>Over the festival crowd at Grefsenkollen</p>\n'
        '  <div class="pw-air-copy">\n'
        '    <span class="kicker">In the air</span>\n'
        '    <h2>The Name Flies With Me</h2>\n'
        '    <p>Every flight carries the Paragliding Atlas name, on the harness and on camera.</p>\n'
-       '    <p>Above a festival in Oslo in 2025, a whole crowd looked up at once. A brand in the air reaches people in a way no feed can.</p>\n'
+       '    <p>Above the OverOslo festival in 2025, a whole crowd looked up at once. A brand in the air reaches people in a way no feed can.</p>\n'
        '  </div>\n'
        '</section>')
 
