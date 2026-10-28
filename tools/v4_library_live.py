@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
 The library goes live in the immersion chat's design (owner, 28 Oct 2026: "upload the library page, also
-designed in the immersion tab chat, to the current website"). Its page is prototypes/v4/library-e.html ("the
-ridge and the voices", script library-e.js); this writes it to prototypes/v4/library-live.html at the end of the
+designed in the immersion tab chat, to the current website"; then "here is the final design that goes in library
+page", option E1). Its page is prototypes/v4/library-e1.html ("the ridge and the voices on one screen", script
+library-e1.js, from tools/v4_library_e1.py); this writes it to prototypes/v4/library-live.html at the end of the
 v4 build, after every pass, and the switch-over publishes that file at /library.html (tools/v2_site.py LIVE_FROM).
 prototypes/v4/library.html stays the page the build's own library passes rebuild in place.
 
 Two things the option page did not have, added here:
-  - its title without the "Option E: " the review copy carried;
+  - its title without the "Option E1: " the review copy carried;
   - the series links: 317 links across the site open library.html#s=<series> (an episode's series, a topic
     page's series). The option page filters by shelf, guest, topic and search, not by series, so a small script
     reads #s=, keeps the rows of that series (from episode-meta.json's own series), shows the series name in
@@ -23,7 +24,7 @@ import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V4 = os.path.join(ROOT, "prototypes", "v4")
-SRC = os.path.join(V4, "library-e.html")
+SRC = os.path.join(V4, "library-e1.html")
 OUT = os.path.join(V4, "library-live.html")
 
 SERIES_JS = r"""<script>
@@ -59,10 +60,10 @@ SERIES_JS = r"""<script>
 
 def main():
     s = open(SRC, encoding="utf-8").read()
-    s, n = re.subn(r"<title>Option E: ", "<title>", s, count=1)
+    s, n = re.subn(r"<title>Option E1?: ", "<title>", s, count=1)
     if not n and "<title>Option E" in s:
         raise SystemExit("v4_library_live: the title's option label moved")
-    s = s.replace('content="Option E: ', 'content="')
+    s = re.sub(r'content="Option E1?: ', 'content="', s)
     with open(os.path.join(ROOT, "episode-meta.json"), encoding="utf-8") as fh:
         meta = json.load(fh)
     series = {}

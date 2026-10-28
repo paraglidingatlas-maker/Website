@@ -219,10 +219,9 @@ HERO_MASK = ",".join([eased("linear-gradient(90deg", 0, 28, fall=False),
                       eased("linear-gradient(180deg", 0, 22, fall=False),
                       eased("linear-gradient(0deg", 0, 42, fall=False)])
 HERO_MASK_P = eased("linear-gradient(0deg", 0, 46, fall=False)
-# the band in the air: out of the page's dark at its top, back into it at its foot, a pool behind the words
-AIR_SHADE = ",".join([eased("linear-gradient(180deg", 0, 18),
-                      eased("linear-gradient(0deg", 0, 66),
-                      eased("radial-gradient(80% 95% at 12% 100%", 0, 100, strength=64)])
+# the band as a split (the Oslo photograph): a short shade at its top, a shorter one at its foot, no pool (the
+# words stand on the page's dark beside the photograph, not on it)
+AIR_SHADE = ",".join([eased("linear-gradient(180deg", 0, 12), eased("linear-gradient(0deg", 0, 26)])
 # the close: the pushed page's blurred handshake comes out of the page's dark at its top and goes back into it
 # at its foot in eased steps, under an even veil of the dark (the pushed page's 70%), so the card sits on the
 # photograph and the footer follows on one dark
@@ -294,14 +293,22 @@ CSS = r"""/* v4p: Partner With Me, less but better (owner, 20 Oct 2026). tools/v
 .pw-tile img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) brightness(.75);transition:filter var(--dur-m) var(--ease);}
 .pw-tile:hover img,.pw-tile:focus-visible img{filter:none;}
 
-/* in the air: a full-width band, still, straight under the episodes (the rows' own 8px between), out of the
-   page's dark at its top on a short shade and back into it at its foot on a long one */
-.pw-air{position:relative;overflow:hidden;isolation:isolate;height:clamp(420px,72vh,780px);display:flex;align-items:flex-end;margin-top:8px;}
-.pw-air-photo{position:absolute;inset:0;z-index:-2;overflow:hidden;}
+/* in the air: the Oslo festival photograph (owner, 28 Oct 2026), upright, so the band is a split: the words on
+   the page's dark at the left, the photograph standing on the right and dissolving into the dark at its left
+   edge; still, straight under the episodes (the rows' own 8px between), out of the page's dark at its top on a
+   short shade and back into it at its foot on a long one */
+.pw-air{position:relative;overflow:hidden;isolation:isolate;display:grid;grid-template-columns:minmax(0,44fr) minmax(0,56fr);
+  align-items:end;min-height:clamp(560px,88vh,900px);margin-top:8px;}
+.pw-air-photo{position:relative;grid-column:2;grid-row:1;align-self:stretch;z-index:-2;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,var(--bg) 24%);mask-image:linear-gradient(90deg,transparent 0,var(--bg) 24%);}
 .pw-air-photo picture{display:block;width:100%;height:100%;}
-.pw-air-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;}
+.pw-air-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 34%;display:block;}
 .pw-air::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:@@AIR_SHADE@@;}
-.pw-air-copy{width:100%;max-width:var(--measure);margin:0 auto;padding:0 var(--gutter) clamp(1.5rem,4vw,3rem);}
+.pw-air-copy{grid-column:1;grid-row:1;width:100%;max-width:36rem;justify-self:end;padding:0 var(--gutter) clamp(2rem,6vw,4.5rem);}
+.pw-air-copy p+p{margin-top:.9rem;}
+.pw-air-cap{position:absolute;right:var(--gutter);bottom:clamp(1.5rem,4vw,3rem);z-index:1;grid-column:2;margin:0;text-align:right;color:var(--white);font-size:var(--fs-small);
+  text-shadow:0 1px 2px color-mix(in srgb,var(--bg) 85%,transparent);}
+.pw-air-cap span{display:block;color:var(--orange-lite);font-size:var(--fs-micro);letter-spacing:.16em;text-transform:uppercase;margin-bottom:.25rem;}
 .pw-air-copy .kicker{display:block;margin-bottom:.6rem;}
 .pw-air-copy h2{font-family:var(--font-display);font-weight:800;font-size:var(--fs-h1);line-height:1.05;color:var(--white);margin:0 0 .7rem;
   text-shadow:0 2px 24px color-mix(in srgb,var(--bg) 45%,transparent);}
@@ -420,8 +427,11 @@ html footer::after{display:none;}
   .pw-hero-photo img{object-position:64% 40%;}
   .pw-hero-copy{padding:0 var(--gutter) 2rem;margin-top:-3.2rem;}
   .pw-caption{display:none;}
-  .pw-air{height:clamp(360px,62svh,560px);}
-  .pw-air-photo img{object-position:52% 50%;}
+  .pw-air{display:block;min-height:0;}
+  .pw-air-photo{aspect-ratio:9/10;-webkit-mask-image:linear-gradient(0deg,transparent 0,var(--bg) 26%);mask-image:linear-gradient(0deg,transparent 0,var(--bg) 26%);}
+  .pw-air-photo img{object-position:50% 40%;}
+  .pw-air-copy{max-width:none;margin-top:1.4rem;padding-bottom:2.5rem;}
+  .pw-air-cap{position:relative;right:auto;bottom:auto;text-align:left;margin:-2.4rem var(--gutter) 0;}
   .pw-rec-in{grid-template-columns:minmax(0,1fr);align-items:start;}
   .pw-journey::before,.pw-fill{left:calc(var(--gutter) + 10px);}
   .pw-chapter{padding-left:2.8rem;}
@@ -452,6 +462,21 @@ FORMATS = [
     ("04", "Expeditions", "Tour partners",
      "Gear, instruments or services in the hands of pilots on my Kenya and India expeditions."),
 ]
+
+
+AIR = ('<section class="pw-air" aria-label="In the air">\n'
+       '  <div class="pw-air-photo"><picture><source type="image/webp" srcset="img/partners/oslo-festival-900.webp 900w, img/partners/oslo-festival-1600.webp 1600w" sizes="(max-width: 820px) 100vw, 56vw">'
+       '<img src="img/partners/oslo-festival-1600.jpg" srcset="img/partners/oslo-festival-900.jpg 900w, img/partners/oslo-festival-1600.jpg 1600w" sizes="(max-width: 820px) 100vw, 56vw" width="1600" height="1777" loading="lazy" '
+       'alt="A paraglider flying low over a festival crowd in Oslo, a forest behind"></picture>'
+       '</div>\n'
+       '  <p class="pw-air-cap"><span>Oslo, 2025</span>Over a festival crowd</p>\n'
+       '  <div class="pw-air-copy">\n'
+       '    <span class="kicker">In the air</span>\n'
+       '    <h2>The Name Flies With Me</h2>\n'
+       '    <p>Every flight carries the Paragliding Atlas name, on the harness and on camera.</p>\n'
+       '    <p>Above a festival in Oslo in 2025, a whole crowd looked up at once. A brand in the air reaches people in a way no feed can.</p>\n'
+       '  </div>\n'
+       '</section>')
 
 
 def figures():
@@ -608,6 +633,9 @@ def patch(src):
         if len(TILE.findall(region)) != 56:
             fail("reel: expected the loop's 56 tiles, found %d" % len(TILE.findall(region)))
     main = marked(main, "reel", reel(region), r'<div class="pw-rows">\n.*?</div></div>\n  </div>')
+
+    # the band in the air: the Oslo festival photograph and its caption, a line for brands
+    main = marked(main, "air", AIR, r'<section class="pw-air" aria-label="In the air">\n.*?</section>')
 
     # the record attempt, after the band in the air, before the flight line
     main = marked(main, "record", record(), r'(?<=</section>\n)(?=\n<div class="pw-journey" id="pwJourney">)')

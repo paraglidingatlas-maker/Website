@@ -105,7 +105,10 @@ def check_links():
     broken = Counter()
     for p in PAGES:
         h = read(p)
-        for u in re.findall(r'(?:href|src|srcset)="([^"]+)"', h):
+        urls = re.findall(r'(?:href|src)="([^"]+)"', h)
+        for ss in re.findall(r'srcset="([^"]+)"', h):        # each candidate of a srcset ("a.webp 288w, b.webp 416w")
+            urls += [c.strip().split(" ")[0] for c in ss.split(",") if c.strip()]
+        for u in urls:
             if u.startswith(("http", "//", "mailto:", "tel:", "#", "data:", "javascript:")):
                 continue
             t = resolve(p, u)
