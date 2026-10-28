@@ -94,6 +94,14 @@ def v2_assets():
     return sorted(out)
 
 
+def asset_dir(target):
+    """A v2 folder of files and no pages (a script's frame folder, img/india/ridge/): published under assets/v2/."""
+    if not os.path.isdir(target):
+        return False
+    fs = [f for _, _, names in os.walk(target) for f in names]
+    return bool(fs) and not any(f.endswith(".html") for f in fs)
+
+
 def remap(url, page_rel, pages):
     """A link as written in prototypes/v2/<page_rel> -> the same link from <root>/<page_rel>."""
     if not url or SKIP.match(url):
@@ -106,7 +114,7 @@ def remap(url, page_rel, pages):
     target = os.path.normpath(os.path.join(here, path))
     rel_v2 = os.path.relpath(target, V2).replace(os.sep, "/")
     if not rel_v2.startswith(".."):
-        if rel_v2 in pages or rel_v2.endswith("/") or os.path.isdir(target):
+        if rel_v2 in pages or ((rel_v2.endswith("/") or os.path.isdir(target)) and not asset_dir(target)):
             new = os.path.join(ROOT, rel_v2)                 # another v2 page -> its live address
         else:
             new = os.path.join(ROOT, ASSET_DIR, rel_v2)      # a v2 file -> assets/v2/
@@ -292,7 +300,7 @@ def dry_run(stage, build=False):
             t = os.path.normpath(os.path.join(here, f))
             if 'data-loop="%s"' % u in s_src:          # a looping-video prefix, not a file
                 t = t + "-720.mp4"
-            if os.path.isdir(t):
+            if os.path.isdir(t) and not asset_dir(t):      # a folder of frames is a script's prefix, not a page
                 t = os.path.join(t, "index.html")
             if not os.path.exists(t):
                 bad.add(u)

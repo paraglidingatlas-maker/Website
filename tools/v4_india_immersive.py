@@ -6,10 +6,11 @@ Immersive": the ridge flown by the scroll, the live Dhauladhar terrain drawn by 
 other sections carry the facts of the day it was built (two 2026 departures), so the page itself is not copied:
 the current India page keeps every fact it has (four 2027 departures, guides, FAQ) and takes from india-e only
 
-  - its sections #flight and #pictures, in place of the old route (#route) and gallery (#gallery); not its
-    #ridge, whose 60 frames never left that chat (its preview shows one still repeated 60 times);
+  - its sections #ridge, #flight and #pictures, in place of the old route (#route) and gallery (#gallery); the
+    ridge's 60 frames are cut again from the Bir clip by tools/v4_india_ridge_frames.py (that chat's were all
+    the clip's first picture);
   - the two style blocks those sections use (india-e's "option C" and "option D" styles);
-  - the terrain engine (../fly.js, a module);
+  - the terrain engine (../fly.js, a module) and the ridge's frame script;
   - its jump link for the flight (Bir Immersive), in place of Routes and Gallery.
 
 Run in tools/v4_build.py after tools/v4_trip_calm.py india. Idempotent: the parts sit between v4ie marks and a
@@ -49,7 +50,7 @@ def main():
     e = open(SRC, encoding="utf-8").read()
     s = open(OUT, encoding="utf-8").read()
     secs = []
-    for ident in ("flight", "pictures"):
+    for ident in ("ridge", "flight", "pictures"):
         span = section(e, ident)
         if not span:
             fail("india-e.html has no #%s" % ident)
@@ -67,7 +68,11 @@ def main():
             fail("india-e.html's jump link to #%s not found" % ident)
         jumps[ident] = m.group(0)
 
-    blocks = {"sections": "\n".join(secs), "jump": jumps["flight"], "css": "\n".join(styles), "js": fly.group(0)}
+    ridge = [m.group(0) for m in re.finditer(r"<script>.*?</script>", e, re.S) if 'getElementById("ridge")' in m.group(0)]
+    if len(ridge) != 1:
+        fail("the ridge's frame script not found (%d)" % len(ridge))
+    blocks = {"sections": "\n".join(secs), "jump": jumps["flight"], "css": "\n".join(styles),
+              "js": fly.group(0) + "\n" + ridge[0]}
     if "<!--v4ie:" in s:
         # a later run: each marked part refreshed from india-e.html
         for name, body in blocks.items():
