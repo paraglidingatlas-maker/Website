@@ -60,7 +60,7 @@ CSSURL = re.compile(r'(url\((["\']?))([^)"\']+)(\2\))')
 # webmanifest: the v4 app's manifest (tools/v4_pwa.py). At the switch the app
 # itself needs a root-level pass (its start page and the offline rules'
 # scope); see docs/v4-report.md.
-V2_FILE = re.compile(r"\.(css|js|webp|jpg|jpeg|png|svg|gif|avif|json|woff2?|webmanifest|webm|mp4)$", re.I)   # webm, mp4: v4's phone clips (img/clips)
+V2_FILE = re.compile(r"\.(css|js|webp|jpg|jpeg|png|svg|gif|avif|json|woff2?|webmanifest|webm|mp4|mp3)$", re.I)   # webm, mp4: v4's phone clips (img/clips); mp3: the library's voice clips (img/library/clips)
 
 
 def v2_pages():
