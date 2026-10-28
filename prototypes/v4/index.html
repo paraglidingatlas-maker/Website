@@ -317,7 +317,7 @@ if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); el
   <div class="dock">
     <div class="copy">
       <span class="op-kicker">Paragliding podcast, knowledge base and guided expeditions</span>
-      <h1>Paragliding Expeditions, Run By A Pilot.</h1>
+      <h1>Paragliding expeditions, run by a pilot.</h1>
       <div class="actions">
         <a href="#listen" class="btn-lines" data-hover>Listen to the podcast</a>
         <p class="hint"><span class="keys" aria-hidden="true"><kbd>&larr;</kbd><kbd>&rarr;</kbd><span>fly the route</span></span><span class="hint-w">Point at the name: a second view of Kenya</span></p>
@@ -2469,7 +2469,7 @@ html.lc-tilt .lb .ep-card:hover .lc-light{opacity:1}
       ' vec2 wu=wingUV(p);',
       ' if(wu.x>0.&&wu.y>0.&&wu.x<1.&&wu.y<1.){vec4 w=texture2D(uWing,wu);vec3 wc=1.-(1.-w.rgb)*(1.-vec3(1.,.81,.58)*lg*.16);wc=mix(wc,uMistC*uDim,mi*.9);if(fl)wc=mix(wc,fcS,flyCover(mix(flyR,uFlyO.y,.8),uFlyB.w,.55));col=mix(col,wc,w.a);}',
       /* static grain: it sits on the lens and never moves on its own */
-      ' col+=(hash(floor(gl_FragCoord.xy))-.5)*.045;',
+      ' col+=(hash(floor(gl_FragCoord.xy))-.5)*.045*smoothstep(0.,.22*uRes.y,gl_FragCoord.y);',
       ' gl_FragColor=vec4(col,uAlpha*mix(1.,cl.y,uRev));',
       '}'
     ].join('\n');

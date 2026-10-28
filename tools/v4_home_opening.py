@@ -153,6 +153,11 @@ def main():
             raise SystemExit("v4_home_opening: the script's loader changed (%r)" % a)
         js = js.replace(a, b)
     js = js.replace("'f-arrived'", "'v4-op-arrived'")
+    # the shader's own grain hands over to the page grain (v2.css GRAIN) over the opening's foot (designers D, E, F,
+    # 28 Oct): it fades out in the bottom 22% while the page grain, laid over that band, fades in
+    if ".045;'" not in js:
+        raise SystemExit("v4_home_opening: the shader grain line moved")
+    js = js.replace("-.5)*.045;'", "-.5)*.045*smoothstep(0.,.22*uRes.y,gl_FragCoord.y);'", 1)
     head = rename_html_classes(head_js).replace("'f-arrived'", "'v4-op-arrived'")
 
     page = open(PAGE, encoding="utf-8").read()

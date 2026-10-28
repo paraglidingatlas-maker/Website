@@ -862,6 +862,15 @@ body{background:
    1:1. On the ground only: the sticky tools bar and the footer carry it too, so neither shows as a flat
    strip; photos, video, the globe, the orange and form fields never. It also breaks the gradient's banding. */
 .v2-tools{background:url("img/grain.webp") 0 0/256px 256px repeat,var(--bg);}
+/* the grain map (designers D, E, F, 28 Oct): the opening's foot takes the page grain as its own fades; the
+   destination pages' pinned map and fly-through (flat #0d0e11, about 10,000 px) carry it on their still layer,
+   so it holds still with the picture; the sticky section menu carries it like the tools bar. Never on photos,
+   cards or under text in any other way. */
+#held .stage::after{content:"";position:absolute;inset:auto 0 0;height:22%;z-index:3;pointer-events:none;
+  background:url("img/grain.webp") 0 0/256px 256px repeat;
+  -webkit-mask-image:linear-gradient(transparent,#000);mask-image:linear-gradient(transparent,#000);}
+.tm-pin,.gxa-pin{background:url("img/grain.webp") 0 0/256px 256px repeat;}
+html body .v4u-jump{background:url("img/grain.webp") 0 0/256px 256px repeat,rgba(20,21,25,.94);}
 :is(.cta-band,.destination,.destination.reverse,.podcast,.ep-map-section,.newsletter,.dossier,.kb-hero,.kb-portal){background:transparent;}
 
 /* Survey-map contours (img/contours.svg, drawn by tools/v2_art.py) behind the
@@ -879,7 +888,7 @@ footer{padding-top:clamp(90px,11vw,170px);
   background:url("img/ridge.svg") top center/100% clamp(90px,11vw,170px) no-repeat,
     url("img/grain.webp") 0 0/256px 256px repeat content-box,
     linear-gradient(#101115,#101115) bottom/100% calc(100% - clamp(90px,11vw,170px) + 1px) no-repeat;}
-@media print{ body,footer,.v2-tools{background-image:none !important;} }
+@media print{ body,footer,.v2-tools,.tm-pin,.gxa-pin,html body .v4u-jump{background-image:none !important;} #held .stage::after{display:none;} }
 footer::before{display:none;}
 footer::after{top:-120px;height:360px;
   background:radial-gradient(55% 60% at 62% 55%,var(--sky-horizon),transparent 72%),
