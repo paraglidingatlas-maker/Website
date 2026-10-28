@@ -874,6 +874,7 @@ body{background:
 body:has(main.ex){background-image:linear-gradient(180deg,#17181d 0,var(--bg) 1100px,#121317 62%,#101115 100%);}
 .v2-origin::after{inset:-3rem 0;}   /* a full-width band: the light stays inside the page's width */
 @media (max-width:700px){ .cd-center::after,#questions .faq::after,body:not(:has(#v4-kenya-own)) .kfaq-wrap::after,.pol-body::after,.v2-origin::after{inset:-2rem -1rem;} }
+@media (max-width:700px){ .v2-origin::after{inset:-2rem 0;} }   /* the full-width band keeps its light inside the page on a phone too */
 :is(.cta-band,.destination,.destination.reverse,.podcast,.ep-map-section,.newsletter,.dossier,.kb-hero,.kb-portal){background:transparent;}
 
 /* Survey-map contours (img/contours.svg, drawn by tools/v2_art.py) behind the
@@ -887,9 +888,9 @@ body:has(main.ex){background-image:linear-gradient(180deg,#17181d 0,var(--bg) 11
 
 /* The footer horizon: a ridge line with the last light on its far crest, and
    the time-of-day glow (styles.css footer::after) rising behind it. */
-footer{padding-top:clamp(90px,11vw,170px);
-  background:url("img/ridge.svg") top center/100% clamp(90px,11vw,170px) no-repeat,
-    linear-gradient(#101115,#101115) bottom/100% calc(100% - clamp(90px,11vw,170px) + 1px) no-repeat;}
+footer{padding-top:clamp(64px,7.5vw,118px);
+  background:url("img/ridge.svg") top center/100% clamp(64px,7.5vw,118px) no-repeat,
+    linear-gradient(#101115,#101115) bottom/100% calc(100% - clamp(64px,7.5vw,118px) + 1px) no-repeat;}
 @media print{ body,footer{background-image:none !important;} .cd-center::after,#questions .faq::after,.kfaq-wrap::after,.pol-body::after,.v2-origin::after{display:none;} }
 footer::before{display:none;}
 footer::after{top:-120px;height:360px;
@@ -2953,6 +2954,22 @@ html .tm-cards{left:var(--edge-x);width:min(26rem,calc(100% - 2 * var(--edge-x))
   html body .clb-hero-in{max-width:var(--measure);margin-left:auto;margin-right:auto;padding-left:0}
   html body .cd-wrap{max-width:var(--measure);padding-left:0;padding-right:0}
 }
+/* ======================= FOOTER, shorter (owner, 28 Oct 2026; tools/v4_footer.py) =======================
+   the brand and three menus of four; above the line "Listen on" and the copyright at the two corners; below
+   it one line on a desktop, the platforms at the left and the legal pages at the right */
+html .v4f-on .footer-top{grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:2rem;padding-bottom:2.2rem;}
+html .v4f-on .footer-col a{padding:.2rem 0;}
+html .v4f-on .footer-addr{font-size:var(--fs-small);line-height:1.65;color:var(--gray);margin-top:.7rem;}
+html .v4f-k{display:flex;justify-content:flex-start;align-items:center;gap:.6rem 1.5rem;padding-bottom:.85rem;font-size:var(--fs-small);color:var(--gray);}
+html .v4f-k .footer-listen-label{flex-basis:auto;margin:0;}
+html .v4f-k > span:last-child{margin-left:auto;}
+html .v4f-k .v2-wind{order:-1;margin:0 .6rem 0 0;}
+html footer .footer-bottom.v4f{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem 2rem;}
+html .v4f-ls,html .v4f-lg{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem 1.15rem;}
+html .v4f-lg a{font-size:var(--fs-micro);color:var(--gray);}
+html .v4f-lg a:hover{color:var(--white);}
+@media (max-width:61.25em){ html .v4f-on .footer-top{grid-template-columns:repeat(2,minmax(0,1fr));} html .v4f-on .footer-top > .footer-brand{grid-column:1/-1;} }
+@media (max-width:35em){ html .v4f-on .footer-top{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.8rem 1.2rem;} html .v4f-on .footer-top > .footer-col:last-child{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:1.2rem;} html .v4f-on .footer-top > .footer-col:last-child h2{grid-column:1/-1;} }
 /* app:start */
 /* ===== The app (tools/v4_pwa.py) ===== */
 .pwa-install{order:-1;background:none;border:1px solid var(--live);color:var(--white);

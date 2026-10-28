@@ -228,7 +228,7 @@ if (v) start(); else stop();
 }
 function mount() {
 var foot = d.querySelector(".footer-bottom");
-if (!foot) return;
+if (!foot || foot.classList.contains("v4f")) return;    // the shorter footer has no wind sound (owner, 28 Oct 2026)
 btn = d.createElement("button");
 btn.type = "button"; btn.className = "v2-wind"; btn.setAttribute("aria-pressed", String(on));
 btn.setAttribute("aria-label", "Wind sound"); btn.title = "Wind sound";

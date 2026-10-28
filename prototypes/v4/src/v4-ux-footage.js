@@ -9,8 +9,8 @@
   var d = document, w = window;
   function keep(v) { try { if (v === undefined) return localStorage.getItem("v4-still"); localStorage.setItem("v4-still", v); } catch (e) { return null; } }
   function init() {
-    var wind = d.querySelector(".footer-bottom .v2-wind");
-    if (!wind || d.querySelector(".v4u-still") || (w.matchMedia && w.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+    var wind = d.querySelector(".footer-bottom .v2-wind"), row = d.querySelector(".v4f-k");
+    if ((!wind && !row) || d.querySelector(".v4u-still") || (w.matchMedia && w.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
     var still = keep() === "on", b = d.createElement("button");
     b.type = "button"; b.className = "v2-wind v4u-still"; b.style.marginLeft = "-.4rem";
     function own(v) { return v.tagName === "VIDEO" && !v.closest(".cd-player, .v4-ls"); }
@@ -35,7 +35,7 @@
     });
     label();
     if (still) each(function (v) { v.pause(); });
-    wind.parentNode.insertBefore(b, wind.nextSibling);
+    if (wind) wind.parentNode.insertBefore(b, wind.nextSibling); else row.insertBefore(b, row.firstChild);
   }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();
