@@ -855,27 +855,22 @@ html.v2-nav-up .v2-nl{top:calc(var(--v2-nav-h,5rem) + 1.5rem);}
    costs nothing on scroll. Whole sections that painted their own flat --bg
    let it through; small cards keep theirs, a shade lifted off the night. */
 body{background:
-  url("img/grain.webp") 0 0/256px 256px repeat,
+  url("img/dither.webp") 0 0/128px 128px repeat,
   linear-gradient(180deg,#17181d 0,var(--bg) 1100px,#121317 62%,#101115 100%) var(--bg);}
-/* GRAIN (owner, 27 Oct, after eliteexped.com; designers D, E and F): a still film grain, specks clumped a
-   little, as many darker as lighter so the ground stays #141519 (variation about 2 levels), 24 KB, tiled at
-   1:1. On the ground only: the sticky tools bar and the footer carry it too, so neither shows as a flat
-   strip; photos, video, the globe, the orange and form fields never. It also breaks the gradient's banding. */
-.v2-tools{background:url("img/grain.webp") 0 0/256px 256px repeat,var(--bg);}
-/* the grain map (designers D, E, F, 28 Oct): the opening's foot takes the page grain as its own fades; the
-   destination pages' pinned map and fly-through (flat #0d0e11, about 10,000 px) carry it on their still layer,
-   so it holds still with the picture; the sticky section menu carries it like the tools bar. Never on photos,
-   cards or under text in any other way. */
-#held .stage::after{content:"";position:absolute;inset:auto 0 0;height:22%;z-index:3;pointer-events:none;
-  background:url("img/grain.webp") 0 0/256px 256px repeat;
-  -webkit-mask-image:linear-gradient(transparent,#000);mask-image:linear-gradient(transparent,#000);}
-.gxa-pin{background:url("img/grain.webp") 0 0/256px 256px repeat;}
-/* the route map paints its own sea over the whole stage: its grain lies over the drawing, under the words (4) and
-   the route line (3), a little lighter (E); the still versions (reduced motion, no script, print) have none */
-.tm-pin::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.8;
-  background:url("img/grain.webp") 0 0/256px 256px repeat;}
-@media (prefers-reduced-motion:reduce),(scripting:none),print{ .tm-pin::after{content:none;} }
-html body .v4u-jump{background:url("img/grain.webp") 0 0/256px 256px repeat,rgba(20,21,25,.94);}
+/* GRAIN, reworked (owner, 28 Oct 2026, the designers' option 1): the film grain over the whole ground goes (it
+   read as a dirty screen on the footer, the 404 and the long dark pages, and added nothing where the photographs
+   and maps already carry the page). What stays:
+   - an invisible dither on the ground (img/dither.webp, white at under one level), so the depth gradient and the
+     soft glows never break into rings on a weak screen; no one sees it;
+   - a reading light behind long text only: a faint warm glow with fine light-only dust (img/dust.webp, no dark
+     specks), fading out at every edge. On episode transcripts, the knowledge base questions, a destination's
+     FAQ (not Kenya's yet: that page waits for its own update), the legal pages and the About story. */
+.cd-center,#questions .faq,body:not(:has(#v4-kenya-own)) .kfaq-wrap,.pol-body,.v2-origin{position:relative;isolation:isolate;}
+.cd-center::after,#questions .faq::after,body:not(:has(#v4-kenya-own)) .kfaq-wrap::after,.pol-body::after,.v2-origin::after{
+  content:"";position:absolute;inset:-3rem -4rem;z-index:-1;pointer-events:none;
+  background:url("img/dust.webp") 0 0/256px 256px repeat,radial-gradient(closest-side,rgba(255,226,200,.045),rgba(255,226,200,0));
+  -webkit-mask-image:radial-gradient(farthest-side,#000 40%,transparent 100%);mask-image:radial-gradient(farthest-side,#000 40%,transparent 100%);}
+@media (max-width:700px){ .cd-center::after,#questions .faq::after,body:not(:has(#v4-kenya-own)) .kfaq-wrap::after,.pol-body::after,.v2-origin::after{inset:-2rem -1rem;} }
 :is(.cta-band,.destination,.destination.reverse,.podcast,.ep-map-section,.newsletter,.dossier,.kb-hero,.kb-portal){background:transparent;}
 
 /* Survey-map contours (img/contours.svg, drawn by tools/v2_art.py) behind the
@@ -891,9 +886,8 @@ html body .v4u-jump{background:url("img/grain.webp") 0 0/256px 256px repeat,rgba
    the time-of-day glow (styles.css footer::after) rising behind it. */
 footer{padding-top:clamp(90px,11vw,170px);
   background:url("img/ridge.svg") top center/100% clamp(90px,11vw,170px) no-repeat,
-    url("img/grain.webp") 0 0/256px 256px repeat content-box,
     linear-gradient(#101115,#101115) bottom/100% calc(100% - clamp(90px,11vw,170px) + 1px) no-repeat;}
-@media print{ body,footer,.v2-tools,.gxa-pin,html body .v4u-jump{background-image:none !important;} #held .stage::after{display:none;} }
+@media print{ body,footer{background-image:none !important;} .cd-center::after,#questions .faq::after,.kfaq-wrap::after,.pol-body::after,.v2-origin::after{display:none;} }
 footer::before{display:none;}
 footer::after{top:-120px;height:360px;
   background:radial-gradient(55% 60% at 62% 55%,var(--sky-horizon),transparent 72%),
