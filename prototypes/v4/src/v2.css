@@ -2969,7 +2969,8 @@ html .v4f-ls,html .v4f-lg{display:flex;flex-wrap:wrap;align-items:center;gap:.35
 html .v4f-lg a{font-size:var(--fs-micro);color:var(--gray);}
 html .v4f-lg a:hover{color:var(--white);}
 @media (max-width:61.25em){ html .v4f-on .footer-top{grid-template-columns:repeat(2,minmax(0,1fr));} html .v4f-on .footer-top > .footer-brand{grid-column:1/-1;} }
-@media (max-width:35em){ html .v4f-on .footer-top{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.8rem 1.2rem;} html .v4f-on .footer-top > .footer-col:last-child{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:1.2rem;} html .v4f-on .footer-top > .footer-col:last-child h2{grid-column:1/-1;} }
+@media (max-width:35em){ html .v4f-on .footer-top{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.8rem 1.2rem;} html .v4f-on .footer-top > .footer-col:last-child{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:1.2rem;} html .v4f-on .footer-top > .footer-col:last-child h2{grid-column:1/-1;} }/* on a touch screen every footer link is a full 40px tall to tap */
+@media (pointer:coarse),(max-width:51.25em){ html .v4f-on .footer-col a,html .v4f-ls a,html .v4f-lg a{min-height:40px;min-width:40px;display:inline-flex;align-items:center;padding:0;} html .v4f-on .footer-col a{display:flex;} html .v4f-ls,html .v4f-lg{gap:0 1.15rem;} }
 /* app:start */
 /* ===== The app (tools/v4_pwa.py) ===== */
 .pwa-install{order:-1;background:none;border:1px solid var(--live);color:var(--white);
