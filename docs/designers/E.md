@@ -1,5 +1,12 @@
 # Designer E, "Pull Back to the Route": notebook (newest first)
 
+## 28 Oct 2026: a loading screen (advice only)
+**Asked.** Critique the second loader (scratchpad loader.html: drawn glider, speed lines, filled ridge, big per cent counter, canopy wipe; owner: "cheap build"), give one concept, back or kill horizon line, focus pull, ASCII terrain.
+**Found.** Seven things at once; the glider is clip art of our own subject; speed lines are a stock trope; the counter and mono kicker are dashboard language; the ridge is a filled chart. Flags: the podcast state says 93 conversations (the owner's fact is 86); the meta lines show a broken "Â·"; on a phone the counter collides with the meta.
+**Proposed: "The line becomes the horizon."** Nothing for 0.5 s; then a faint full ridge hairline traced from the hero photo's own skyline, an orange stroke drawing over it as real progress (critical assets done), the place in small spaced capitals; on load the dark above the line lifts, the photo is placed so its skyline sits on the line, a slow 1.04 to 1 push in hands over to the opening's giant name. Phone: same line full width, central part of the ridge. Reduced motion: no draw, a 200 ms crossfade. No JS: no loader.
+**Back / kill.** Back horizon line (it is the concept). Kill focus pull as a loader (it needs the photo, which is what is slow). Kill ASCII terrain for the loader (needs three.js and the DEM, the heaviest things, and it is good-fella's signature); worth a look for the footer, where the owner saw it.
+**Recommended** the horizon line, because one line that turns into the photo's real horizon explains the arrival without words and costs almost nothing to load.
+
 ## 28 Oct 2026: a grain map for every page type (advice; built by the chat)
 **Asked.** Where the live film grain should be on, off, lighter or faded so it merges into the site.
 **Found.** Ground sd 1.9, zero on a few surfaces: the opening's foot (finer shader grain, sd 3.3, meets the page's on a line), the footer ridge band, the destination route map and fly-through, the sitemap sky.

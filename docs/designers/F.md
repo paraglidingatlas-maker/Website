@@ -1,5 +1,11 @@
 # Designer F, "Fly the Season": notebook (newest first)
 
+## 28 Oct 2026: a loading screen (advice, nothing built)
+**Asked.** One concept for a loader shown only on slow loads (over 0.5 s, once per visit), after the owner called version 2 (scratchpad `loader.html`, stills `l2sheet.jpg`) "a cheap build"; back or kill horizon line, focus pull, ASCII terrain.
+**Found.** Cheap because: clip-art glider and stock speed lines; a percentage counter (fake precision, dashboard talk); six things at once; a canopy wipe to a hero that is not our opening; demo chrome. Flagged: "Â·" mojibake in the readouts; "93 conversations" on the podcast screen where the fact is 86.
+**Proposed: "The line is already there."** The loader is the opening's own first frame without the photo: the place name in Poppins, dim, and the season line drawing as real progress at its own place; when loaded, the photo rises behind the name and the line simply carries on as the season line. No exit, no wipe. Phone: same at the phone line's place. Reduced motion: name and line still, then a cut.
+**Recommended.** That, with the horizon line kept only for destination pages (their ridge as the line); kill focus pull (needs the photo it waits for) and ASCII terrain for the loader (heavy three.js to cover a slow load; borrowed signature). Why: the best loader is the page arriving, not a separate show.
+
 ## 28 Oct 2026: a grain map for every page type (advice, nothing built in the repo)
 **Asked.** Where D's film grain (sd about 2) should be on, off, lighter or faded, so it merges into the site. Looked at the staged site (scratchpad `_site5`) at 1440 with the contrast stretched (scratchpad `gmap/`).
 **Found.** Grain is already off on photos, video, globe, posters and cards (they sit above the body). Gaps: (1) the home opening's own shader grain (sd 3.3, fine) stops on a hard line at the canvas foot against the CSS grain (sd 2.0); (2) the destination page's `.tm` (#route) and `.gxa` (#gallery) are opaque #0d0e11, about 12,000 px with no grain and a hard on/off edge; (3) the sticky `.v4u-jump` bar (destinations, KB topics, atlas) is flat (blur, 94% fill), the same fault `.v2-tools` had; also the footer ridge fill and the sitemap `.sky-ground` are flat.

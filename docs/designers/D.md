@@ -1,5 +1,11 @@
 # Designer D, "Final Cut": notebook (newest first)
 
+## 28 Oct 2026: the loading screen (advice for the owner's choice of two)
+**Asked.** Critique the second loader (loader.html, "a cheap build"), give one concept, back or kill horizon line, focus pull and ASCII terrain.
+**Found.** Five things talk at once (logo, speed lines, clip-art glider, filled grey ridge, 120 px counter); the ellipse wipe leaves half-cut type ("ntry") and reads as a fault; "Â·" mojibake in the meta lines; the podcast card says 93 conversations, the fact is 86; on the phone the counter runs into the type and the switcher.
+**Proposed, "Match Cut".** One orange hairline draws the destination's real ridge (DEM, seen from the hero photo's own camera point), its length is the real progress, no number; place and one fact in DM Mono spaced caps under it. At 100% the photo opens from the line as a slit, and the line lands on the photo's own skyline, then fades. Phone: line inside the 16 px gutters at the portrait crop's horizon. Reduced motion: the still line and name, then a plain swap. No JS: no loader.
+**Recommended** it (the horizon line, finished). Killed focus pull (a blur on a still reads as a bug, like a big zoom). ASCII terrain: right for the footer, wrong for a loader (it needs three.js loaded, the very wait it covers).
+
 ## 28 Oct 2026: a grain map for every page type (advice; built by the chat)
 **Asked.** Where the live film grain (mine, sd about 2) should be on, off, lighter or faded.
 **Found.** The ground reads sd 1.9 on every page; a hard seam at the home opening's foot (shader grain sd 3.4 stops); the destination `.tm` and `.gxa` paint flat #0d0e11 over about 10,000 px; the topic hero `.k-hero-media` is opaque and flat.
