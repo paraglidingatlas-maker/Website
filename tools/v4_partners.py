@@ -307,7 +307,7 @@ CSS = r"""/* v4p: Partner With Me, less but better (owner, 20 Oct 2026). tools/v
 .pw-air::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:@@AIR_SHADE@@;}
 .pw-air-copy{grid-column:1;grid-row:1;width:100%;max-width:36rem;justify-self:end;padding:0 var(--gutter) clamp(2rem,6vw,4.5rem);}
 .pw-air-copy p+p{margin-top:.9rem;}
-.pw-air-cap{position:absolute;right:var(--gutter);bottom:clamp(1.5rem,4vw,3rem);z-index:1;grid-column:2;margin:0;text-align:right;color:var(--white);font-size:var(--fs-small);
+.pw-air-cap{position:relative;z-index:1;grid-column:2;grid-row:2;margin:0;padding:.9rem var(--gutter) 0;text-align:right;color:var(--white);font-size:var(--fs-small);
   text-shadow:0 1px 2px color-mix(in srgb,var(--bg) 85%,transparent);}
 .pw-air-cap span{display:block;color:var(--orange-lite);font-size:var(--fs-micro);letter-spacing:.16em;text-transform:uppercase;margin-bottom:.25rem;}
 .pw-air-copy .kicker{display:block;margin-bottom:.6rem;}
@@ -432,7 +432,7 @@ html footer::after{display:none;}
   .pw-air-photo{aspect-ratio:9/10;-webkit-mask-image:linear-gradient(0deg,transparent 0,var(--bg) 26%);mask-image:linear-gradient(0deg,transparent 0,var(--bg) 26%);}
   .pw-air-photo img{object-position:50% 40%;}
   .pw-air-copy{max-width:none;margin-top:1.4rem;padding-bottom:2.5rem;}
-  .pw-air-cap{position:relative;right:auto;bottom:auto;text-align:left;margin:-2.4rem var(--gutter) 0;}
+  .pw-air-cap{text-align:left;padding:.8rem var(--gutter) 0;}
   .pw-rec-in{grid-template-columns:minmax(0,1fr);align-items:start;}
   .pw-journey::before,.pw-fill{left:calc(var(--gutter) + 10px);}
   .pw-chapter{padding-left:2.8rem;}
@@ -470,7 +470,7 @@ AIR = ('<section class="pw-air" aria-label="In the air">\n'
        '<img src="img/partners/oslo-festival-1600.jpg" srcset="img/partners/oslo-festival-900.jpg 900w, img/partners/oslo-festival-1600.jpg 1600w" sizes="(max-width: 820px) 100vw, 56vw" width="1600" height="1777" loading="lazy" '
        'alt="A paraglider flying low over the OverOslo festival crowd at Grefsenkollen, Oslo, a forest behind"></picture>'
        '</div>\n'
-       '  <p class="pw-air-cap"><span>OverOslo, June 2025</span>Over the festival crowd at Grefsenkollen</p>\n'
+       '  <p class="pw-air-cap"><span>OverOslo, June 2025</span>Above the festival crowd</p>\n'
        '  <div class="pw-air-copy">\n'
        '    <span class="kicker">In the air</span>\n'
        '    <h2>The Name Flies With Me</h2>\n'
