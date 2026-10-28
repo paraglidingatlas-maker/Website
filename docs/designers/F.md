@@ -1,5 +1,11 @@
 # Designer F, "Fly the Season": notebook (newest first)
 
+## 28 Oct 2026: a grain map for every page type (advice, nothing built in the repo)
+**Asked.** Where D's film grain (sd about 2) should be on, off, lighter or faded, so it merges into the site. Looked at the staged site (scratchpad `_site5`) at 1440 with the contrast stretched (scratchpad `gmap/`).
+**Found.** Grain is already off on photos, video, globe, posters and cards (they sit above the body). Gaps: (1) the home opening's own shader grain (sd 3.3, fine) stops on a hard line at the canvas foot against the CSS grain (sd 2.0); (2) the destination page's `.tm` (#route) and `.gxa` (#gallery) are opaque #0d0e11, about 12,000 px with no grain and a hard on/off edge; (3) the sticky `.v4u-jump` bar (destinations, KB topics, atlas) is flat (blur, 94% fill), the same fault `.v2-tools` had; also the footer ridge fill and the sitemap `.sky-ground` are flat.
+**Proposed and tested.** Mask `.gl-canvas,.veil` to transparent over their last 200 px: the two grains cross-fade, no step (`gmap/seam_before_after.png`). Grain layer on `.tm,.gxa` and on `html body .v4u-jump`.
+**Recommended.** Those three; keep cards, photos, globe, posters, buttons, fields and the orange clean; no "lighter grain" behind transcripts (2 levels is already below what text notices); no grain over photos.
+
 ## 25 Oct 2026: a compass or emblem on the listen-c posters (brainstorm, nothing built)
 **Asked.** The owner wants a shape "like I had, a compass or something, which invokes a sense of adventure".
 **Old compass, honestly.** Baked into plate.webp: large, grey on red so muddy, across the faces, the same on all 15 (wallpaper), it said nothing true, and it could not move.
