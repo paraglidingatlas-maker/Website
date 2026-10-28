@@ -1,5 +1,11 @@
 # The booking flow (21 Oct 2026)
 
+> **Parked (28 Oct 2026, imported into the live repo by chat 15).** The site's rules keep the live tree
+> untouched until the owner switches booking on, so `booking-worker.js` sits at `docs/booking/booking-worker.js`
+> and the two email images at `docs/booking/email-assets/`. When booking is switched on, move them back to the
+> repo root and `assets/email/` (the emails link `https://paraglidingatlas.com/assets/email/...`).
+
+
 The owner's ask: "activate the Hold a place / Book now buttons by enabling a
 high-end booking system matching the vibe of the site, then connect it with a
 confirmation email (with the receipt) and a welcome-kit email, both prepared."

@@ -44,7 +44,10 @@ STAGE = "/tmp/claude-0/%s-stage" % NAME                # the switch rehearsal's 
 # the style guide, the fly options, and anything under samples/ (v4 before/after pages).
 # offline.html is the v4 app's no-signal page (tools/v4_pwa.py), not a site page
 PROTO_ONLY = {"styleguide.html", "fly-options.html", "offline.html",
-              "book.html"}  # the booking page: drafts, switched off, waiting on the owner
+              "book.html",  # the booking page: drafts, switched off, waiting on the owner
+              # the immersion chat's option pages (imported 28 Oct): India's sections go into india.html
+              # (tools/v4_india_immersive.py); Kenya's and the library's wait on the owner
+              "destinations/india-e.html", "destinations/kenya-e.html", "library-e.html"}
 # record-attempt.html went live on the owner's go (27 Oct: "go live"), its [to supply] gaps showing
 
 
