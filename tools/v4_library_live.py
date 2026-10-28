@@ -2,8 +2,9 @@
 """
 The library goes live in the immersion chat's design (owner, 28 Oct 2026: "upload the library page, also
 designed in the immersion tab chat, to the current website"). Its page is prototypes/v4/library-e.html ("the
-ridge and the voices", script library-e.js); this writes it over prototypes/v4/library.html at the end of the
-v4 build, after every pass, so the switch-over publishes it at /library.html.
+ridge and the voices", script library-e.js); this writes it to prototypes/v4/library-live.html at the end of the
+v4 build, after every pass, and the switch-over publishes that file at /library.html (tools/v2_site.py LIVE_FROM).
+prototypes/v4/library.html stays the page the build's own library passes rebuild in place.
 
 Two things the option page did not have, added here:
   - its title without the "Option E: " the review copy carried;
@@ -23,7 +24,7 @@ import re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V4 = os.path.join(ROOT, "prototypes", "v4")
 SRC = os.path.join(V4, "library-e.html")
-OUT = os.path.join(V4, "library.html")
+OUT = os.path.join(V4, "library-live.html")
 
 SERIES_JS = r"""<script>
 /* a series link (library.html#s=<series>, tools/v4_library_live.py): that series' rows, its name in the heading */
@@ -74,7 +75,7 @@ def main():
     old = open(OUT, encoding="utf-8").read() if os.path.exists(OUT) else ""
     if s != old:
         open(OUT, "w", encoding="utf-8").write(s)
-    print("v4 library live: library.html is the immersion design (%d series for #s= links)" % len(series))
+    print("v4 library live: library-live.html (published as library.html) is the immersion design (%d series for #s= links)" % len(series))
 
 
 if __name__ == "__main__":

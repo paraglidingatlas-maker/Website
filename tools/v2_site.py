@@ -47,7 +47,12 @@ PROTO_ONLY = {"styleguide.html", "fly-options.html", "offline.html",
               "book.html",  # the booking page: drafts, switched off, waiting on the owner
               # the immersion chat's option pages (imported 28 Oct): India's sections go into india.html
               # (tools/v4_india_immersive.py); Kenya's and the library's wait on the owner
-              "destinations/india-e.html", "destinations/kenya-e.html", "library-e.html"}
+              "destinations/india-e.html", "destinations/kenya-e.html", "library-e.html",
+              "library-live.html"}  # what the switch publishes as library.html (LIVE_FROM)
+# A live page published from another v4 file than its own (tools/v2_switch.py transform): the library in the
+# immersion chat's design (tools/v4_library_live.py writes library-live.html), while prototypes/v4/library.html
+# stays the page the build's own library passes work on (owner, 28 Oct 2026)
+LIVE_FROM = {} if NAME == "v2" else {"library.html": "library-live.html"}
 # record-attempt.html went live on the owner's go (27 Oct: "go live"), its [to supply] gaps showing
 
 

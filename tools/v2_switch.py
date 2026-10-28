@@ -122,7 +122,7 @@ def remap(url, page_rel, pages):
 
 
 def transform(rel, pages, problems=None):
-    with open(os.path.join(V2, rel), encoding="utf-8") as fh:
+    with open(os.path.join(V2, S.LIVE_FROM.get(rel, rel)), encoding="utf-8") as fh:
         src = fh.read()
     # a part that leads to a page not switched yet goes, before any link is turned back
     src, bad = S.needs(src)
