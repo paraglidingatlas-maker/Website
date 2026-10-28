@@ -1,5 +1,11 @@
 # Designer D, "Final Cut": notebook (newest first)
 
+## 28 Oct 2026: a grain map for every page type (advice; built by the chat)
+**Asked.** Where the live film grain (mine, sd about 2) should be on, off, lighter or faded.
+**Found.** The ground reads sd 1.9 on every page; a hard seam at the home opening's foot (shader grain sd 3.4 stops); the destination `.tm` and `.gxa` paint flat #0d0e11 over about 10,000 px; the topic hero `.k-hero-media` is opaque and flat.
+**Proposed.** Crossfade the opening (shader grain times smoothstep over the bottom 22%, the page grain laid over that band fading in); grain on `.tm-pin,.gxa-pin` so it holds still with the pinned picture; grain on big opaque panels (`.cta-card`, `.k-hero-media`). Never: fade under text, grain on photos, posters or small cards, moving grain.
+**Built (by the chat, agreed by D, E and F).** The opening crossfade, the destination pins, the sticky section menu. Not built: the panels (F wanted `.cta-card` smooth).
+
 ## 25 Oct 2026: an adventure emblem on the listen-c posters (brainstorm)
 
 **Asked.** "the overlay of some shape like I had, a compass or something,

@@ -1,5 +1,11 @@
 # Designer E, "Pull Back to the Route": notebook (newest first)
 
+## 28 Oct 2026: a grain map for every page type (advice; built by the chat)
+**Asked.** Where the live film grain should be on, off, lighter or faded so it merges into the site.
+**Found.** Ground sd 1.9, zero on a few surfaces: the opening's foot (finer shader grain, sd 3.3, meets the page's on a line), the footer ridge band, the destination route map and fly-through, the sitemap sky.
+**Proposed.** Fix the opening seam (smoothstep over the bottom 22% plus a fading CSS grain band); grain as the footer's top layer over the ridge; grain on the route map (0.8) and on the fly-through's top and bottom edges; leave glass nav, photos, cards and text alone.
+**Built (by the chat, agreed by D, E and F).** The opening crossfade, grain on the destination pinned layers, the sticky section menu. Not built: the footer ridge and the sitemap sky (F wanted the sky clean; a footer top layer doubles the grain above the ridge).
+
 ## 25 Oct 2026: a compass-like emblem on the listen-c posters (review only)
 
 **Asked.** The owner wants a shape overlay "like I had, a compass or something", for a sense of adventure. Old plate (assets/podcast/plate.webp): a large distressed compass rose at eye level, identical on every card.
