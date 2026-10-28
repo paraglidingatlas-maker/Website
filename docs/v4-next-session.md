@@ -9,10 +9,11 @@ the owner's current queue and what the last session learnt doing it.
   never a live page, never `rss-feed.js`. The switch-over is the owner's.
 - Nothing invented: a missing fact shows as `[to supply]` (`.v2-tbd`).
 - Design tokens only; no em dashes in copy; cache-bust changed CSS and JS.
-- Motion only in answer to the visitor; nothing loops or runs on its own (the
-  owner's footage while on screen is the one exception; they were asked on
-  20 Oct to confirm it still stands). Reduced motion and no JavaScript show the
-  finished page.
+- Motion (owner, 28 Oct, replacing "nothing loops or runs on its own"): ambient motion that runs by itself is
+  allowed within four limits: (1) subtle and slow (a glow breathing, grain shimmering faintly, clouds drifting);
+  (2) it stops completely under "reduce motion"; (3) it pauses when off screen; (4) never behind reading text or
+  beside the booking button. Motion in answer to the visitor stays as before. Reduced motion and no JavaScript
+  show the finished page.
 - Push only `git push origin HEAD:main` and `git push origin HEAD:claude/v2-prototype`,
   after `python3 tools/v4_gates.py` passes (about 25 minutes; `--quick` while
   iterating). Never forced, no pull requests.

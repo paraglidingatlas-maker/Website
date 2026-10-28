@@ -10,8 +10,8 @@ this file, newest at the top of the log, in the owner's own words.
 ## The brief (unchanged since round 1, 23 Oct 2026)
 The home opening must be awwwards worthy and true to the owner: their own
 photos and footage only, the site's look (dark ground, one orange, Poppins and
-DM Sans, design tokens), nothing invented. Motion answers the visitor, with the
-owner's exceptions below. Reduced motion and no JavaScript show the finished
+DM Sans, design tokens), nothing invented. Motion: see the 28 Oct entry (ambient motion allowed within four
+limits). Reduced motion and no JavaScript show the finished
 page. Work lean: at most two options, one preview for a big change.
 
 ## Where it stands (24 Oct 2026)
@@ -24,6 +24,16 @@ and a readout under the photo. The owner said "do it" to building it into the
 v4 home page (chat 10's job).
 
 ## Decision log (newest first)
+
+- **28 Oct 2026, the motion rule (owner: "why do we have a rule which reduces the site's quality ... do it").**
+  "Nothing loops or runs on its own" is replaced by four limits: ambient motion is allowed when it is (1)
+  subtle and slow, (2) stopped completely under reduce motion, (3) paused off screen, (4) never behind reading
+  text or beside the booking button.
+- **28 Oct 2026, grain to be reworked (owner).** The live film grain (D's, sd about 2, on body, sticky bars,
+  footer, destination pins) feels like too much: "at the footer it's just adding a weird look", the 404 does
+  not need it, nor places that are already immersive. The owner sees grain earning its place where large bodies
+  of text sit on plain dark. And Elite Exped and others are not plain white noise: "sometimes subtle switches or
+  other elements which add more elegance to grain". Brainstorm with D, E, F.
 - 27 Oct (chat 14): the phone opening at full height, option 2 (owner): the photo fills the screen; the route,
   headline and the trip's title, dates and button on its foot; length, launch, price, You fly below. Option 3
   (text lowered, a dates line by the button; the designers' later pick) not chosen. Previews kept:
