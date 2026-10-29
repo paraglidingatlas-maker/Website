@@ -43,17 +43,16 @@ KEYS = [
     ("hells-gate",     (36.22, -0.80,  3600), (36.31, -0.90, 1950), 50, [14000, 100000], [225, 28]),
     ("longonot",       (36.39, -0.84,  4800), (36.455, -0.915, 2500), 50, [14000, 100000], [230, 27]),
     ("kijabe",         (36.49, -0.985, 3900), (36.56, -0.925, 2350), 50, [14000, 100000], [235, 28]),
-    ("transit-2",      (36.92, -1.24, 12000), (37.25, -1.52, 1800), 48, [60000, 260000], [230, 34]),   # from here on low and continuous (owner, 29 Oct: "smoothened out with flying sites in focus")
-    ("machakos",       (37.17, -1.44,  3600), (37.265, -1.52, 1800), 50, [14000, 100000], [235, 28]),
-    ("site-13-feb",    (37.33, -1.99,  3300), (37.395, -2.07, 1600), 50, [14000, 100000], [235, 27]),
-    ("transit-3",      (37.60, -2.36,  9000), (37.87, -2.66, 1600), 48, [50000, 240000], [240, 32]),
-    ("chyulu",         (37.77, -2.58,  4200), (37.885, -2.68, 1750), 50, [14000, 100000], [240, 26]),
-    ("glide",          (37.74, -2.66,  6500), (37.38, -3.04, 4600), 48, [40000, 220000], [248, 24]),   # the glide out: the summit held in view, no turn to the sea
-    ("kilimanjaro",    (37.60, -2.76,  8500), (37.355, -3.067, 4800), 46, [60000, 300000], [250, 22]),
+    ("transit-2",      (36.78, -1.12, 20000), (37.40, -1.75, 1700), 48, [80000, 320000], [230, 34]),   # from Kijabe up to 20 km (owner, 29 Oct), then one straight line over Machakos
+    ("machakos",       (37.15, -1.48, 20000), (37.77, -2.11, 1600), 48, [80000, 320000], [235, 32]),   # the same heading and height: straight over Machakos
+    ("curve",          (37.42, -2.28, 14000), (37.885, -2.68, 1750), 48, [60000, 260000], [240, 30]),   # down and round, so the Chyulu come in from the left
+    ("chyulu",         (37.56, -2.64, 10000), (37.90, -2.70, 1750), 48, [50000, 240000], [240, 28]),   # 10 km, the hills ahead
+    ("glide",          (37.58, -2.74, 10000), (37.50, -3.02, 3500), 48, [50000, 240000], [246, 25]),   # the same height on to Kilimanjaro
+    ("kilimanjaro",    (37.52, -2.82, 10000), (37.355, -3.067, 4800), 46, [60000, 300000], [250, 22]),
 ]
 PORTRAIT_TGT = {"opening": (36.70, -1.525, 1500)}   # a tall screen stands further back with a wider lens: it looks steeper down so the ground still fills the frame
-PER_LEG = [22, 14, 16, 18, 16, 10, 14, 12, 16, 12, 14, 16, 12, 20]
-LEG_CHAPTER = [0, 0, 0, 0, 1, 1, 2, 3, 4, 4, 4, 5, 5, 5]
+PER_LEG = [22, 14, 16, 18, 16, 10, 14, 12, 16, 16, 16, 12, 18]
+LEG_CHAPTER = [0, 0, 0, 0, 1, 1, 2, 3, 4, 4, 5, 5, 5]
 # the pins, in priority order: the owner's launches from his tracks, the six sites from the page, then the towns
 LAUNCHES = [("L01", "Kerio launch", 35.5141, 0.639, 2226), ("L02", "Rift wall launch, 8 Feb", 36.5461, -0.9109, 2656), ("L03", "Launch, 13 Feb", 37.392, -2.0681, 1614)]
 PHONE_PINS = 6
@@ -184,8 +183,12 @@ def build():
     if DEMBIN and os.path.exists(DEMBIN):
         import numpy as np
         heights = np.fromfile(DEMBIN, np.float32).reshape(g["h"], g["w"])
+    known = {}                                                       # without the heights file, the pins keep the heights the page already has (else the ground hides them)
+    if heights is None and os.path.exists(OUT):
+        m0 = re.search(r'<script type="application/json" id="v4i-fl-data">(.*?)</script>', open(OUT, encoding="utf-8").read(), re.S)
+        if m0: known = {tuple(w["px"]): w["elev"] for w in json.loads(m0.group(1))["waypoints"].values() if w["elev"] != g["base_m"]}
     def elev(px):
-        if heights is None: return g["base_m"]
+        if heights is None: return known.get(tuple(px), g["base_m"])
         x, y = int(min(max(px[0], 0), g["w"] - 1)), int(min(max(px[1], 0), g["h"] - 1)); return float(round(heights[y, x]))
 
     # the route section: its six cards are the chapters and the sites
@@ -231,7 +234,7 @@ def build():
     tex, layers = textures(dem)
     data = {"grid": g, "textures": tex, "layers": layers, "dprMax": 2, "edge_fade": 0.04, "keys": keys, "per_leg": PER_LEG, "flow": [k[0] for k in KEYS].index("transit-2"), "bounds": dem["bounds"],
             "light": dem["light"], "waypoints": wp, "chapter": LEG_CHAPTER, "cards": [], "farKm": 50, "phonePins": PHONE_PINS, "maxPins": 12, "borders": borders, "life": life,
-            "lifeSize": LIFE_SIZE, "keepFree": [".v4i-fl-tks", ".v4i-fl-btns", ".v4i-fl-hint"], "keepFlight": [".v4i-fl-jump"], "flipLabels": True, "tracks": [{"name": x["name"], "date": x["date"], "distance_km": x["distance_km"], "duration_min": x["duration_min"], "avg_kmh": x["avg_kmh"],
+            "lifeSize": LIFE_SIZE, "keepFree": [".v4i-fl-tks", ".v4i-fl-btns", ".v4i-fl-hint"], "keepFlight": [".v4i-fl-jump"], "flipLabels": True, "tracksAlways": True, "tracks": [{"name": x["name"], "date": x["date"], "distance_km": x["distance_km"], "duration_min": x["duration_min"], "avg_kmh": x["avg_kmh"],
                         "max_alt_m": x["max_alt_m"], "type": x["type"], "closed": x["closed"], "points": x["points"], "ground_km": x["ground_km"],
                         "off_map": x["off_map"], "route": x["route"], "segs": x["segs"]} for x in tracks]}
     data_js = json.dumps(data, separators=(",", ":"))

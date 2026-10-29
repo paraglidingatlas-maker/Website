@@ -174,7 +174,7 @@ import * as THREE from "./lib/three.module.min.js";
         ct.colorSpace = THREE.SRGBColorSpace; ct.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); uniforms.cmap.value = ct;
         var geo = new THREE.PlaneGeometry(sizeX, sizeY, TEX.seg[0], TEX.seg[1]);
         mesh = new THREE.Mesh(geo, material); mesh.frustumCulled = false; scene.add(mesh);
-        buildTracks(); buildBorders(); if (free) showTracks(true);
+        buildTracks(); buildBorders(); if (free || D.tracksAlways) showTracks(free); if (D.tracksAlways) later(getTracks, 1200);   // a page may keep its flights drawn in flight too (D.tracksAlways)
         ready = true; dirty = true; s.classList.add("is-ready");
         if (TEX.full) later(upgrade, 2500);
       });
@@ -353,7 +353,7 @@ import * as THREE from "./lib/three.module.min.js";
   function getTracks() {                                   // a page may keep its flights in their own file, fetched only when the controls are taken or about to be
     if (!D.tracksUrl || trGet) return; trGet = 1;
     fetch(at(D.tracksUrl)).then(function (r) { if (!r.ok) throw r.status; return r.json(); }).then(function (j) {
-      TR = j.tracks || j; if (ready) { buildTracks(); if (free) showTracks(true); }
+      TR = j.tracks || j; if (ready) { buildTracks(); if (free || D.tracksAlways) showTracks(free); }
       if (trWant >= 0 && free && TR[trWant]) { setTrack(trWant); flyToTrack(trWant); } trWant = -1; dirty = true;
     }).catch(function () { trGet = null; });
   }
@@ -391,7 +391,7 @@ import * as THREE from "./lib/three.module.min.js";
     });
   }
   function niceDate(d) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d || ""); if (!m) return d || ""; return (+m[3]) + " " + ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][+m[2] - 1] + " " + m[1]; }
-  function showTracks(on) { trackObjs.forEach(function (o) { o.mesh.visible = on; }); if (tkList) tkList.hidden = !on || !(TR.length || D.tracksUrl); if (!on) setTrack(-1); dirty = true; }
+  function showTracks(on) { trackObjs.forEach(function (o) { o.mesh.visible = on || !!D.tracksAlways; }); if (tkList) tkList.hidden = !on || !(TR.length || D.tracksUrl); if (!on) setTrack(-1); dirty = true; }
   function setTrack(i) {
     activeTrack = i; s.classList.toggle("is-tracked", i >= 0);   // a flight chosen: the page steps back, the ground and the line stay
     trackObjs.forEach(function (o, k) { var mat = i < 0 ? trackMat : (k === i ? trackMatOn : trackMatDim); o.mesh.children.forEach(function (m) { m.material = mat; }); if (o.route) o.route.visible = free && k === i; });

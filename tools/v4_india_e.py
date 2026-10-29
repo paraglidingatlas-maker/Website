@@ -449,7 +449,7 @@ def build():
     data = {"grid": dem["grid"], "textures": TEXTURES, "keys": dem["keys"], "per_leg": dem["per_leg"], "bounds": dem["bounds"],
             "light": dem["light"], "waypoints": dem["waypoints"], "chapter": LEG_CHAPTER, "cards": card_data, "farKm": 42, "phonePins": PHONE_PINS, "edge_fade": 0.04,
             "keepFree": KEEP_FREE, "keepFlight": KEEP_FLIGHT, "keepPage": KEEP_PAGE, "flipLabels": True, "keepMarks": True, "cardSnap": True, "stillEager": True,
-            "tracksUrl": "../img/india/tracks.json"}
+            "tracksUrl": "../img/india/tracks.json", "tracksAlways": True}
     tracks_js = json.dumps({"tracks": [{"name": t["name"], "date": t["date"], "distance_km": t["distance_km"], "duration_min": t["duration_min"], "avg_kmh": t["avg_kmh"],
                         "max_alt_m": t["max_alt_m"], "type": t["type"], "closed": t["closed"], "points": t["points"], "ground_km": t["ground_km"],
                         "off_map": t["off_map"], "route": t["route"], "segs": t["segs"]} for t in tracks]}, separators=(",", ":"))

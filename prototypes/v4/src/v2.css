@@ -2972,7 +2972,7 @@ html .v4f-lg a:hover{color:var(--white);}
 @media (pointer:coarse),(max-width:51.25em){ html .v4f-on .footer-col a,html .v4f-ls a,html .v4f-lg a{min-height:40px;min-width:40px;display:inline-flex;align-items:center;padding:0;} html .v4f-on .footer-col a{display:flex;} html .v4f-ls,html .v4f-lg{gap:0 1.15rem;} }/* the About page's call box, right under the origin story, carries on its night sky (owner, 29 Oct 2026): the
    stars mostly around the box, like the story's, and a much fainter layer over the box itself; About only */
 body:has(.v2-origin) .cta-band{position:relative;isolation:isolate;}
-body:has(.v2-origin) .cta-band::before{content:"";position:absolute;inset:-5rem 0;z-index:-1;pointer-events:none;opacity:.7;   /* 30% softer (owner, 29 Oct 2026) */
+body:has(.v2-origin) .cta-band::before{content:"";position:absolute;inset:-5rem 0;z-index:-1;pointer-events:none;opacity:.49;   /* 30% softer, then 30% softer again (owner, 29 Oct 2026) */
   background:url("img/dust.webp") 0 0/256px 256px repeat,radial-gradient(closest-side,rgba(255,226,200,.05),rgba(255,226,200,0));
   -webkit-mask-image:radial-gradient(farthest-side,#000 45%,transparent 100%);mask-image:radial-gradient(farthest-side,#000 45%,transparent 100%);}
 body:has(.v2-origin) .cta-band .cta-card{background-image:url("img/dust-soft.webp");background-size:256px 256px;}
