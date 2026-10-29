@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 """
 The footer, shorter (owner, 28 Oct 2026). Same pages reachable, less height:
-  - three menus of four, side by side with the brand: Listen (Podcast, Episode Library, Topics, Knowledge Base),
-    Fly With Us (Kenya, India, Panchgani, Book a Call), Atlas (About, Mission, Partner With Me, Safety & Disclosure);
+  - four menus of four, side by side with the brand: Listen (Podcast, Episode Library, Topics, Knowledge Base),
+    Fly With Us (Kenya, India, Panchgani, Book a Call), Atlas (About, Mission, Partner With Me, Safety & Disclosure),
+    Legal (Terms, Privacy, Participant Agreement, Corrections; owner, 29 Oct 2026);
     gone as repeats: the motto's link (Mission is in Atlas), "Destinations" (Expeditions is in the menu bar, the
     three trips are listed), "All Episodes" beside "Podcast" (now Episode Library), "Enquire" (the menu bar's
     button);
   - the address in two lines, complete;
-  - above the line: "Listen on" at the left, "(c) Paragliding Atlas" at the right; below it, one line on a
-    desktop: the platforms at the left, the legal pages (Terms, Privacy, Cookies, Participant Agreement,
-    Corrections, Sitemap) at the right;
+  - above the line: "Listen on"; below it, one line on a desktop: the platforms at the left, and at the right
+    Cookies, Sitemap and "(c) Paragliding Atlas" (owner, 29 Oct 2026); no "Install the app" button there
+    (tools/v4_pwa.py leaves the shorter footer alone);
   - no Instagram in the footer (owner, 28 Oct 2026);
   - no wind sound (owner); the footage pages' pause button, which sat beside it, keeps its place at the head of
     the "Listen on" row (src/v4-ux-footage.js), since moving pictures need a way to stop.
@@ -38,9 +39,9 @@ MENUS = [
     ("Listen", [("Podcast", "podcast.html"), ("Episode Library", "library.html"), ("Topics", "tags.html"), ("Knowledge Base", "knowledge-base.html")]),
     ("Fly With Us", [("Kenya", "destinations/kenya.html"), ("India", "destinations/india.html"), ("Panchgani", "destinations/panchgani.html"), ("Book a Call", CALL)]),
     ("Atlas", [("About", "about.html"), ("Mission", "mission.html"), ("Partner With Me", "partners.html"), ("Safety &amp; Disclosure", "safety-and-disclosure.html")]),
+    ("Legal", [("Terms", "terms.html"), ("Privacy", "privacy-policy.html"), ("Participant Agreement", "participant-agreement.html"), ("Corrections", "corrections.html")]),
 ]
-LEGAL = [("Terms", "terms.html"), ("Privacy", "privacy-policy.html"), ("Cookies", "cookie-policy.html"),
-         ("Participant Agreement", "participant-agreement.html"), ("Corrections", "corrections.html"), ("Sitemap", "sitemap.html")]
+LEGAL = [("Cookies", "cookie-policy.html"), ("Sitemap", "sitemap.html")]
 
 
 def link(label, href, up):
@@ -55,8 +56,8 @@ def footer(up, logo):
     return ('\n  <div class="footer-content v4f-on">\n  <div class="footer-top">\n    <div class="footer-col footer-brand">\n      %s\n'
             '      <p class="footer-tagline">Touch The Sky With Glory</p>\n'
             '      <p class="footer-addr">Paragliding Atlas · Org. nr 937116934<br>Olav Troviks Vei M 46, 0864 Oslo, Norway</p>\n    </div>%s\n  </div>\n'
-            '  <div class="v4f-k"><span class="footer-listen-label">Listen on</span><span>© Paragliding Atlas <span data-year>2026</span></span></div>\n'
-            '  <div class="footer-bottom v4f">\n    <div class="v4f-ls">%s</div>\n    <div class="v4f-lg">%s</div>\n  </div>\n  </div>\n'
+            '  <div class="v4f-k"><span class="footer-listen-label">Listen on</span></div>\n'
+            '  <div class="footer-bottom v4f">\n    <div class="v4f-ls">%s</div>\n    <div class="v4f-lg">%s<span>© Paragliding Atlas <span data-year>2026</span></span></div>\n  </div>\n  </div>\n'
             % (logo, cols, "".join(link(l, u, "") for l, u in LISTEN_ON), "".join(link(l, u, up) for l, u in LEGAL)))
 
 

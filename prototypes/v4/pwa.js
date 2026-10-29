@@ -21,7 +21,7 @@
   var ios = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
   function button(label, onClick) {
     var bar = document.querySelector('.footer-bottom');
-    if (!bar || bar.querySelector('.pwa-install')) return;
+    if (!bar || bar.classList.contains('v4f') || bar.querySelector('.pwa-install')) return;   // not in the shorter footer (owner, 29 Oct 2026)
     var b = document.createElement('button');
     b.type = 'button';
     b.className = 'pwa-install';
