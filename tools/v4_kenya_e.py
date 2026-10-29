@@ -21,7 +21,7 @@ V4 = os.path.join(ROOT, "prototypes", "v4")
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 import v4_india_e as I  # noqa: E402  the CSS and the escapes are shared
 
-SRC = os.path.join(V4, "destinations", "kenya.html")
+SRC = os.environ.get("KENYA_SRC") or os.path.join(V4, "destinations", "kenya.html")   # the live page before tools/v4_kenya_immersive.py puts this flight in it
 OUT = os.path.join(V4, "destinations", "kenya-e.html")
 DEM = os.path.join(ROOT, "tools", "data", "kenya-dem.json")
 TRACKS = os.path.join(ROOT, "tools", "data", "kenya-tracks.json")
@@ -43,16 +43,16 @@ KEYS = [
     ("hells-gate",     (36.22, -0.80,  3600), (36.31, -0.90, 1950), 50, [14000, 100000], [225, 28]),
     ("longonot",       (36.39, -0.84,  4800), (36.455, -0.915, 2500), 50, [14000, 100000], [230, 27]),
     ("kijabe",         (36.49, -0.985, 3900), (36.56, -0.925, 2350), 50, [14000, 100000], [235, 28]),
-    ("transit-2",      (36.75, -1.15, 48000), (37.22, -1.50, 1700), 46, [100000, 380000], [230, 40]),
+    ("transit-2",      (36.92, -1.24, 12000), (37.25, -1.52, 1800), 48, [60000, 260000], [230, 34]),   # from here on low and continuous (owner, 29 Oct: "smoothened out with flying sites in focus")
     ("machakos",       (37.17, -1.44,  3600), (37.265, -1.52, 1800), 50, [14000, 100000], [235, 28]),
     ("site-13-feb",    (37.33, -1.99,  3300), (37.395, -2.07, 1600), 50, [14000, 100000], [235, 27]),
-    ("transit-3",      (37.55, -2.25, 42000), (37.87, -2.66, 1500), 46, [90000, 340000], [240, 38]),
+    ("transit-3",      (37.60, -2.36,  9000), (37.87, -2.66, 1600), 48, [50000, 240000], [240, 32]),
     ("chyulu",         (37.77, -2.58,  4200), (37.885, -2.68, 1750), 50, [14000, 100000], [240, 26]),
-    ("coast",          (38.05, -2.70, 42000), (40.30, -3.40, 0), 50, [140000, 560000], [255, 32]),
-    ("kilimanjaro",    (37.62, -2.72,  9000), (37.35, -3.07, 4500), 48, [60000, 300000], [250, 22]),
+    ("glide",          (37.74, -2.66,  6500), (37.38, -3.04, 4600), 48, [40000, 220000], [248, 24]),   # the glide out: the summit held in view, no turn to the sea
+    ("kilimanjaro",    (37.60, -2.76,  8500), (37.355, -3.067, 4800), 46, [60000, 300000], [250, 22]),
 ]
 PORTRAIT_TGT = {"opening": (36.70, -1.525, 1500)}   # a tall screen stands further back with a wider lens: it looks steeper down so the ground still fills the frame
-PER_LEG = [22, 14, 16, 18, 16, 10, 14, 12, 16, 12, 14, 16, 14, 16]
+PER_LEG = [22, 14, 16, 18, 16, 10, 14, 12, 16, 12, 14, 16, 12, 20]
 LEG_CHAPTER = [0, 0, 0, 0, 1, 1, 2, 3, 4, 4, 4, 5, 5, 5]
 # the pins, in priority order: the owner's launches from his tracks, the six sites from the page, then the towns
 LAUNCHES = [("L01", "Kerio launch", 35.5141, 0.639, 2226), ("L02", "Rift wall launch, 8 Feb", 36.5461, -0.9109, 2656), ("L03", "Launch, 13 Feb", 37.392, -2.0681, 1614)]
@@ -229,7 +229,7 @@ def build():
         if k["name"] in PORTRAIT_TGT: pt = PORTRAIT_TGT[k["name"]]; k["ptgt"] = px_of(pt[0], pt[1], g) + [pt[2]]
     assert len(PER_LEG) == len(keys) - 1 == len(LEG_CHAPTER)
     tex, layers = textures(dem)
-    data = {"grid": g, "textures": tex, "layers": layers, "dprMax": 2, "edge_fade": 0.04, "keys": keys, "per_leg": PER_LEG, "bounds": dem["bounds"],
+    data = {"grid": g, "textures": tex, "layers": layers, "dprMax": 2, "edge_fade": 0.04, "keys": keys, "per_leg": PER_LEG, "flow": [k[0] for k in KEYS].index("transit-2"), "bounds": dem["bounds"],
             "light": dem["light"], "waypoints": wp, "chapter": LEG_CHAPTER, "cards": [], "farKm": 50, "phonePins": PHONE_PINS, "maxPins": 12, "borders": borders, "life": life,
             "lifeSize": LIFE_SIZE, "keepFree": [".v4i-fl-tks", ".v4i-fl-btns", ".v4i-fl-hint"], "keepFlight": [".v4i-fl-jump"], "flipLabels": True, "tracks": [{"name": x["name"], "date": x["date"], "distance_km": x["distance_km"], "duration_min": x["duration_min"], "avg_kmh": x["avg_kmh"],
                         "max_alt_m": x["max_alt_m"], "type": x["type"], "closed": x["closed"], "points": x["points"], "ground_km": x["ground_km"],

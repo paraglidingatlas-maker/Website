@@ -71,10 +71,13 @@ import * as THREE from "./lib/three.module.min.js";
     var A1 = seg(p0, p1, t0, t1), A2 = seg(p1, p2, t1, t2), A3 = seg(p2, p3, t2, t3), B1 = seg(A1, A2, t0, t2), B2 = seg(A2, A3, t1, t3);
     return seg(B1, B2, t1, t2);
   }
+  // a page may ask for one continuous glide from a key on (D.flow): no stop at each key after it, one ease over the whole run
+  var flowAt = -1; if (D.flow > 0) { flowAt = 0; for (var q = 0; q < D.flow; q++) flowAt += D.per_leg[q]; }
   function poseAt(f) {                                   // f: 0 .. n-1
-    f = clamp(f, 0, n - 1); var leg = 0, acc = 0;
+    f = clamp(f, 0, n - 1); var leg = 0, acc = 0, flowing = flowAt >= 0 && f > flowAt;
+    if (flowing) f = flowAt + smooth((f - flowAt) / (n - 1 - flowAt)) * (n - 1 - flowAt);
     while (leg < D.per_leg.length - 1 && f >= acc + D.per_leg[leg]) { acc += D.per_leg[leg]; leg++; }
-    var u = smooth(clamp((f - acc) / D.per_leg[leg], 0, 1));
+    var u = clamp((f - acc) / D.per_leg[leg], 0, 1); if (!flowing) u = smooth(u);
     if (f >= n - 1) { leg = D.per_leg.length - 1; u = 1; }
     var c = catmull(cams, leg, u), t = catmull(tgtsP && W < Hh ? tgtsP : tgts, leg, u), a = K[leg], b = K[leg + 1];
     return { cam: toWorld(c[0], c[1], c[2]), tgt: toWorld(t[0], t[1], t[2]), fov: lerp(a.fov, b.fov, u), fog0: lerp(a.fog[0], b.fog[0], u), fog1: lerp(a.fog[1], b.fog[1], u), leg: leg,
