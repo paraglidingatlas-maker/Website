@@ -2978,7 +2978,16 @@ body:has(.v2-origin) .cta-band::before{content:"";position:absolute;inset:-5rem 
   background:url("img/dust.webp") 0 0/256px 256px repeat,radial-gradient(closest-side,rgba(255,226,200,.05),rgba(255,226,200,0));
   -webkit-mask-image:radial-gradient(farthest-side,#000 45%,transparent 100%);mask-image:radial-gradient(farthest-side,#000 45%,transparent 100%);}
 body:has(.v2-origin) .cta-band .cta-card{background-image:url("img/dust-soft.webp");background-size:256px 256px;}
-@media print{ body:has(.v2-origin) .cta-band::before{display:none;} body:has(.v2-origin) .cta-band .cta-card{background-image:none;} }
+@media print{ body:has(.v2-origin) .cta-band::before{display:none;} body:has(.v2-origin) .cta-band .cta-card{background-image:none;} }/* BREAKERS (owner, 29 Oct 2026): one photograph edge to edge between two sections, fading into the page at top and
+   bottom, one line and the place over it (tools/v4_breakers.py) */
+.v4br{position:relative;height:80vh;min-height:420px;max-height:900px;overflow:hidden;margin:0;}
+.v4br picture,.v4br img{position:absolute;inset:0;width:100%;height:100%;}
+.v4br img{object-fit:cover;object-position:center 45%;}
+.v4br::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#141519 0%,rgba(20,21,25,0) 20%,rgba(20,21,25,0) 66%,#141519 100%);}
+.v4br-l{position:absolute;z-index:1;left:var(--edge-x,var(--gutter));bottom:12%;margin:0;max-width:16ch;font-family:var(--font-display,Poppins,sans-serif);font-weight:600;font-size:clamp(1.6rem,3vw,2.6rem);line-height:1.15;color:#f6f4f4;text-wrap:balance;text-shadow:0 2px 18px rgba(0,0,0,.45);}
+.v4br-p{position:absolute;z-index:1;right:var(--edge-x,var(--gutter));bottom:12%;font-size:.72rem;line-height:1;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,244,244,.75);text-shadow:0 1px 8px rgba(0,0,0,.5);}
+@media (max-width:760px){ .v4br{height:70vh;min-height:360px;} .v4br-l{left:var(--gutter);bottom:16%;max-width:12ch;} .v4br-p{left:var(--gutter);right:auto;bottom:9%;} }
+@media print{ .v4br{display:none;} }
 /* app:start */
 /* ===== The app (tools/v4_pwa.py) ===== */
 .pwa-install{order:-1;background:none;border:1px solid var(--live);color:var(--white);

@@ -378,6 +378,7 @@ def main():
         run([PY, "tools/v4_search.py"])
         run([PY, "tools/v4_library_live.py"])     # the immersion chat's library over library.html (28 Oct)
         run([PY, "tools/v4_footer.py"])     # the shorter footer (28 Oct)
+        run([PY, "tools/v4_breakers.py"])   # one photograph between two sections on the long pages (29 Oct)
         run([PY, "tools/v4_loader.py"])     # the loading screen, on a slow load only (28 Oct)
         run([PY, "tools/v4_min.py"])
 
