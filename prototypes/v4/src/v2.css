@@ -2647,6 +2647,7 @@ html .cta-band .cta-card > :not(.cta-hud-tag){position:relative;z-index:1;}
 html .cta-band .cta-card > .cta-eyebrow{grid-area:eyebrow;margin:0;}
 html .cta-band .cta-card > h2{grid-area:title;margin:0;text-wrap:balance;}
 html .cta-band .cta-card > .cta-buttons{grid-area:buttons;align-self:center;margin:0;}
+@media (min-width:821px){ html .cta-band .cta-card > .cta-buttons{justify-self:end;} }   /* the buttons at the card's right edge (owner, 29 Oct 2026) */
 html .cta-band .cta-card > .cta-body{grid-area:body;margin:0;max-width:52ch;}
 html .cta-band .cta-card > .v4-fold{grid-area:fold;margin:0;}
 @media (max-width:820px){
