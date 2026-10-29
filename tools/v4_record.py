@@ -23,7 +23,7 @@ judges asked to graft from B and C:
     being read beside them, so no name is ever cut), one bar at a time (it
     steps away while the site menu is back, and the menu never slides across
     it);
-  - 01 the mark: 35.94 in solid grey against a solid orange "about 36", the
+  - 01 the mark: 36.22 (the 200 km mark) in solid grey against a solid orange "about 36", the
     sources beside the numbers (B), "The time to beat" line and a fold with
     the detail behind the numbers (C);
   - 02 the course: pinned and flown kilometre by kilometre with the scroll, as
@@ -46,15 +46,15 @@ Facts only, each from a source named on the page or already on the site:
   - the owner's flight: UP Paragliders news, "Almost 200km with an average of
     36kph": 6 Feb 2025, Kenya, 198.86 km on XContest, about 36 km/h, on a UP
     Trango X (EN C). The page never calls it a record or a record course.
-  - the marks to beat: FAI CIVL records list (class O-3, speed over an
-    out-and-return course of 100 km: 35.94 km/h, Michel Macquet, FRA, 23 Jan
-    2025, shown in one FAI listing as a claim under review and in another as
-    the record, so its status is "[to confirm]"; 200 km: not found, so
-    "[to supply]"). The FAI pages cannot be opened from the build machine:
-    check them before the page goes out. The claim goes to the FAI under the
-    Sporting Code, Section 7D.
-  - times are distance over speed: 100 km at 35.94 or at 36 km/h, 2 h 47 min;
-    200 km at 36 km/h, 5 h 33 min.
+  - the marks to beat: FAI CIVL records, class O-3, category General, both
+    ratified and current (checked on www-2025.fai.org, 29 Oct 2026): speed over
+    an out-and-return course of 200 km, 36.22 km/h, Gregory Knudson (LUX), 19
+    Jan 2014, Nyeru, Kenya (FAI record 17038); 100 km, 42.34 km/h, the same
+    pilot, 19 Jan 2013, Nyeru (FAI record 16730). The 35.94 km/h shown before
+    was the tandem (multiplace) 100 km record, not the solo one (owner, 29 Oct
+    2026). The claim goes to the FAI under the Sporting Code, Section 7D.
+  - times are distance over speed: 200 km at 36.22 km/h, 5 h 31 min, at 36
+    km/h, 5 h 33 min; 100 km at 42.34 km/h, 2 h 22 min.
   - Kerio Valley, its place, season, thermals and flights: the Kenya page.
     The window, 18 Jan to 12 Feb 2027, is flown alongside the two Kenya
     expeditions (18 to 29 Jan, 1 to 12 Feb 2027).
@@ -195,7 +195,8 @@ URL = "https://paraglidingatlas.com/record-attempt.html"
 OG_IMG = "https://paraglidingatlas.com/assets/destinations/kenya/gallery/kenya-hero.jpg"
 
 # the marks (see the docstring for where each comes from)
-REC100 = 35.94      # km/h, the 100 km mark to beat, status to confirm
+REC100 = 42.34      # km/h, the 100 km mark, ratified (FAI 16730)
+REC200 = 36.22      # km/h, the 200 km mark, ratified (FAI 17038)
 BEST = 36           # km/h, about, over 198.86 km (not a record course)
 
 MAIL = "mailto:aninder@paraglidingatlas.com?subject=Partnering%20on%20the%20speed%20record%20attempt"
@@ -1288,7 +1289,7 @@ for _k, _v in {
 
 def hero():
     best = '<span class="wr-v">36<small>km/h</small></span>'
-    mark = '<span class="wr-v">35.94<small>km/h</small></span>'
+    mark = '<span class="wr-v">36.22<small>km/h</small></span>'
     return """
 <header class="wr-hero wr-grain" id="wr-goal">
   """ + pic("hero", "wr-hero-pic", lazy=False, fetch=True) + """
@@ -1300,7 +1301,7 @@ def hero():
       <a class="wr-go wr-fade" href="#wr-partner">Partner on the attempt """ + DOWN + """</a>
     </div>
     <dl class="wr-hero-meta wr-fade">
-      <div><dt>To beat, 100 km</dt><dd>""" + mark + """</dd><dd class="wr-s">""" + TBC + """</dd></div>
+      <div><dt>To beat, 200 km</dt><dd>""" + mark + """</dd><dd class="wr-s">World record, ratified by the FAI</dd></div>
       <div class="is-me"><dt>My best, about</dt><dd>""" + best + """</dd><dd class="wr-s">Over 198.86 km, not a record course</dd></div>
       <div class="is-win"><dt>Window</dt><dd>18 Jan to 12 Feb 2027</dd></div>
     </dl>
@@ -1327,9 +1328,9 @@ def mark():
     <h2 class="wr-h2" id="wr-mark-h">""" + kin("The Mark To Beat") + """</h2>
     <div class="wr-duel">
       <div class="wr-big is-theirs">
-        <p class="wr-cap">100 km mark, class O-3</p>
-        <p class="wr-giga">35.94<small>km/h</small></p>
-        <ul class="wr-meta"><li><b>Michel Macquet (FRA)</b></li><li>23 Jan 2025</li><li>Status&nbsp;""" + TBC + """</li><li>""" + ext(FAI_LIST, "FAI records") + """</li></ul>
+        <p class="wr-cap">200 km mark, class O-3</p>
+        <p class="wr-giga">36.22<small>km/h</small></p>
+        <ul class="wr-meta"><li><b>Gregory Knudson (LUX)</b></li><li>19 Jan 2014</li><li>Nyeru, Kenya</li><li>Ratified</li><li>""" + ext(FAI_LIST, "FAI records") + """</li></ul>
       </div>
       <div class="wr-big is-mine">
         <p class="wr-cap">My best average, about</p>
@@ -1338,12 +1339,12 @@ def mark():
       </div>
     </div>
     <div class="wr-say">
-      <p class="wr-t">The time to beat: 100&nbsp;km in <b>""" + hm(100, REC100).replace(" ", "&nbsp;") + """</b>.</p>
-      <p class="wr-also">200 km mark """ + TBD + """</p>
+      <p class="wr-t">The time to beat: 200&nbsp;km in <b>""" + hm(200, REC200).replace(" ", "&nbsp;") + """</b>.</p>
+      <p class="wr-also">100 km mark: """ + ("%.2f" % REC100) + """&nbsp;km/h, Gregory Knudson (LUX), 19 Jan 2013, """ + hm(100, REC100).replace(" ", "&nbsp;") + """</p>
     </div>
     <details class="wr-more"><summary>About these numbers</summary>
       <p>Class O-3 is paragliders. Speed is the course distance over the time.</p>
-      <p>One FAI listing shows the 100&nbsp;km mark as a claim under review, another as the record: <a class="wr-u" href=\"""" + FAI_LIST + """\" target="_blank" rel="noopener">FAI CIVL records</a>.</p>
+      <p>Both marks are ratified, current world records in the FAI list, category General: 200&nbsp;km at 36.22&nbsp;km/h and 100&nbsp;km at 42.34&nbsp;km/h, both flown by Gregory Knudson at Nyeru, Kenya: <a class="wr-u" href=\"""" + FAI_LIST + """\" target="_blank" rel="noopener">FAI CIVL records</a>.</p>
       <p>My 198.86&nbsp;km flight, about 36&nbsp;km/h on a UP Trango X (EN C), was logged on XContest. It was not a record course: <a class="wr-u" href=\"""" + UP_NEWS + """\" target="_blank" rel="noopener">UP Paragliders</a>.</p>
       <p>The claim goes to the FAI under the <a class="wr-u" href=\"""" + FAI_CODE + """\" target="_blank" rel="noopener">Sporting Code, Section 7D</a>.</p>
     </details>
@@ -1407,7 +1408,7 @@ def course():
         <div><dt>Flown</dt><dd><span id="wrKm"><span class="v100">100</span><span class="v200">200</span></span><small>km</small></dd></div>
         <div class="is-leg"><dt>Leg</dt><dd id="wrLeg">Finish</dd></div>
         <div class="is-me"><dt>At about 36 km/h, my best average</dt><dd id="wrT1"><span class="v100">""" + clock(100, BEST) + """</span><span class="v200">""" + clock(200, BEST) + """</span></dd></div>
-        <div class="is-mark"><dt>At the mark, """ + ("%.2f" % REC100) + """ km/h</dt><dd id="wrT2"><span class="v100">""" + clock(100, REC100) + """</span><span class="v200">""" + TBD + """</span></dd></div>
+        <div class="is-mark"><dt>At the mark, <span class="v100">""" + ("%.2f" % REC100) + """</span><span class="v200">""" + ("%.2f" % REC200) + """</span> km/h</dt><dd id="wrT2"><span class="v100">""" + clock(100, REC100) + """</span><span class="v200">""" + clock(200, REC200) + """</span></dd></div>
       </dl>
     </div>
   </div>
@@ -1592,7 +1593,7 @@ SCRIPT = r"""<script>
   var mq = function (q) { return w.matchMedia(q); };
   var still = mq("(prefers-reduced-motion: reduce)").matches;
   var IO = "IntersectionObserver" in w;
-  var REC = @@REC@@, BEST = @@BEST@@, TBD = '<span class="wr-tbd">[to supply]</span>';
+  var REC = @@REC@@, REC2 = @@REC2@@, BEST = @@BEST@@;
   var X0 = @@X0@@, PX = @@PX@@, YO = @@YO@@, YB = @@YB@@, RX = @@RX@@, RY = @@RY@@, CY = @@CY@@;
   var ARRIVE = ".wr-k,.wr-fade,.wr-days";
   function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
@@ -1655,7 +1656,7 @@ SCRIPT = r"""<script>
     if (k !== lastKm) { lastKm = k; kmEl.textContent = k; }
     if (leg !== lastLeg) { lastLeg = leg; legEl.textContent = leg; }
     var tk = K + "|" + k;
-    if (tk !== lastT) { lastT = tk; t1.innerHTML = clock(k / BEST); t2.innerHTML = K === 100 ? clock(k / REC) : TBD; }
+    if (tk !== lastT) { lastT = tk; t1.innerHTML = clock(k / BEST); t2.innerHTML = clock(k / (K === 100 ? REC : REC2)); }
   }
   function setK(k) {
     K = k; lastKm = -1; lastT = ""; lastLeg = "";
@@ -2138,7 +2139,7 @@ SCRIPT = r"""<script>
 
 def script():
     s = SCRIPT
-    for k, v in (("REC", REC100), ("BEST", BEST), ("X0", X0), ("PX", PX_PER_KM), ("YO", YO), ("YB", YB),
+    for k, v in (("REC", REC100), ("REC2", REC200), ("BEST", BEST), ("X0", X0), ("PX", PX_PER_KM), ("YO", YO), ("YB", YB),
                  ("RX", RX), ("RY", RY), ("CY", CY), ("CAP", SKY_CAP), ("NOON", SUN_NOON)):
         s = s.replace("@@%s@@" % k, repr(v))
     s = s.replace("@@IMG@@", REC_IMG)

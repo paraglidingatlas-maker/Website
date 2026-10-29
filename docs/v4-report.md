@@ -1402,3 +1402,10 @@ this round.
 - The reel's thumbnails are YouTube's and could not be seen on the build
   machine; please look at the reel once on your own screen.
 - The live partners page says 90+ interviews; v4 says 80, your feed count.
+
+- Record page facts (owner, 29 Oct 2026): the mark to beat corrected. 35.94 km/h was the tandem (multiplace)
+  100 km record. The solo open records, ratified and current (FAI records 16730 and 17038, checked on
+  www-2025.fai.org): 100 km out and return 42.34 km/h and 200 km 36.22 km/h, both Gregory Knudson (LUX) at Nyeru,
+  Kenya. The page now leads with the 200 km mark against the owner's best of about 36 km/h over 198.86 km;
+  times 5 h 31 min (200 km) and 2 h 22 min (100 km). Edited in record-attempt.html and tools/v4_record.py (that
+  generator no longer runs against the current partners shell; the page is kept as committed by the build).
