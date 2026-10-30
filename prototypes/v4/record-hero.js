@@ -1,5 +1,5 @@
 /* The Speed Record hero on record-attempt.html (styles in record-hero.css; data from tools/v4_record_hero_prep.py):
-   the curtain opens on the Kerio photograph, which moves in depth as the visitor scrolls; the push into his seat;
+   a widescreen frame opens on the Kerio photograph, which moves in depth as the visitor scrolls; the push into his seat;
    then his logged run of 6 Feb 2025 over the escarpment, drawn from open terrain heights alone, with record pace
    (36.22 km/h) as a second light. Nothing moves unless the visitor scrolls. window.__snap (still frames only)
    makes the scroll's spring and the camera land at once. */
@@ -14,6 +14,64 @@ const $ = id => document.getElementById('srh-' + id);
    cannot rewrite inside a script; three.js is imported relative to this file */
 const BASE = (/^(.*\/prototypes\/v\d+\/)/.exec(location.pathname) || [0, '/assets/v4/'])[1], HERO = BASE + 'img/record/hero/';
 const LIVE = document.documentElement.classList.contains('wr-pin');     // set by the page when it may move: otherwise the still frames
+{                                       // fine film grain over the opening: one tile of noise, moved only with the scroll
+  const c = document.createElement('canvas'); c.width = c.height = 200; const x = c.getContext('2d'), d = x.createImageData(200, 200);
+  let sd = 7; for (let i = 0; i < d.data.length; i += 4) { sd = (sd * 16807) % 2147483647; const v = 128 + ((sd / 2147483647) - .5) * 190; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; }
+  x.putImageData(d, 0, 0); addEventListener('DOMContentLoaded', () => { $('grain').style.backgroundImage = `url(${c.toDataURL()})`; });
+}
+/* the title: SPEED RECORD solid white and sharp; WORLD and ATTEMPT recede, and change as the frame opens: frosted glass in
+   the slit, then soft and dim as the lens pulls focus past them (the wing and its lines in front), then settling into the
+   escarpment itself, warm inside the letters. Bound to the scroll, every step blended, so it runs the same both ways. */
+let TIMG = null, TPOS = null;
+function titleSetup() {
+  if (titleSetup.done) return; titleSetup.done = true;
+  $('wa').classList.add('srh-rec'); $('wd').classList.add('srh-rec');
+  TIMG = new Image(); TIMG.onload = kick; TIMG.src = HERO + 'plate.jpg';
+}
+function drawTitle(M, bright) {
+  const cv = $('tcv'), r = Math.min(devicePixelRatio || 1, 2), w = Math.round(W * r), h = Math.round(H * r);
+  if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
+  const c = cv.getContext('2d'); c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, w, h);
+  if (!TPOS || !TIMG || !TIMG.complete || TPOS.exitK >= 1) return;
+  const { fs, ls, pos, exitK, eO } = TPOS, fade = 1 - exitK;
+  const wa = 1 - ss(seg(eO, .3, .5)), wc = ss(seg(eO, .62, .85)), wb = Math.max(0, 1 - wa - wc);
+  // each look comes in over the last, which stays at full strength until it is covered: the letters never thin out on the way
+  const ka = Math.min(1, 2 * wa), kb = Math.min(1, 2 * wb), kc = Math.min(1, 2 * wc);
+  const font = `700 ${fs}px Poppins`, spc = (ls * fs) + 'px';
+  const words = [['wa', 'WORLD', -1], ['wd', 'ATTEMPT', 1]].map(([id, t, side]) => ({ t, x: pos[id][0] + side * exitK * W * .6, y: pos[id][1] + fs * .78 }));
+  const text = (cx, stroke) => { cx.font = font; try { cx.letterSpacing = spc; } catch (e) {} cx.textBaseline = 'alphabetic'; for (const q of words) stroke ? cx.strokeText(q.t, q.x, q.y) : cx.fillText(q.t, q.x, q.y); };
+  const buf = id => {
+    const b = drawTitle[id] || (drawTitle[id] = document.createElement('canvas')); if (b.width !== w || b.height !== h) { b.width = w; b.height = h; }
+    const x = b.getContext('2d'); x.setTransform(1, 0, 0, 1, 0, 0); x.globalCompositeOperation = 'source-over'; x.filter = 'none'; x.clearRect(0, 0, w, h); x.setTransform(r, 0, 0, r, 0, 0); return [b, x];
+  };
+  // both words in one mask (cutting with each in turn would leave only where they overlap)
+  const [mk, mc] = buf('mk'); mc.fillStyle = '#000'; text(mc);
+  const fill = paint => { const [b, x] = buf('off'); paint(x); x.setTransform(1, 0, 0, 1, 0, 0); x.globalCompositeOperation = 'destination-in'; x.drawImage(mk, 0, 0); return b; };
+  c.setTransform(r, 0, 0, r, 0, 0);
+  // a soft shadow under the letters, so they hold on sky and on rock
+  c.save(); c.globalAlpha = fade * (.35 + .65 * (wa + wc)); c.shadowColor = 'rgba(6,8,12,.45)'; c.shadowBlur = 22; c.shadowOffsetY = 4; c.fillStyle = 'rgba(6,8,12,.3)'; text(c); c.restore();
+  if (wa > .003) {        // a: frosted glass, the photograph behind seen blurred and lifted, a light edge
+    const lift = .1 + .25 * (1 - bright);
+    const b = fill(x => {
+      x.filter = `blur(10px) brightness(${(1.12 * bright).toFixed(3)}) saturate(.8)`; x.drawImage(TIMG, L.tx, L.ty, 1920 * L.s, 1080 * L.s); x.filter = 'none';
+      x.fillStyle = `rgba(246,244,244,${lift.toFixed(3)})`; x.fillRect(0, 0, W, H); x.fillStyle = 'rgba(20,21,25,.14)'; x.fillRect(0, 0, W, H);
+    });
+    c.globalAlpha = fade * ka; c.drawImage(b, 0, 0, W, H); c.lineWidth = 1.1; c.strokeStyle = 'rgba(255,255,255,.5)'; text(c, true);
+  }
+  if (wb > .003) {        // b: out of focus, dimmer
+    c.save(); c.globalAlpha = fade * kb; c.filter = 'blur(1.4px)'; c.fillStyle = 'rgba(232,230,230,.82)'; text(c); c.restore();
+  }
+  if (wc > .003) {        // c: the escarpment's cliffs, darker and warm, inside the letters, a warm hairline
+    c.font = font; try { c.letterSpacing = spc; } catch (e) {}
+    const tw = words.map(q => c.measureText(q.t).width);
+    const b = fill(x => { x.filter = 'brightness(.7) sepia(.35) saturate(1.35) contrast(1.15)'; words.forEach((q, i) => x.drawImage(TIMG, 260, 560, 900, 260, q.x - 4, q.y - fs * .78, tw[i] + 8, fs * .86)); x.filter = 'none'; });
+    c.globalAlpha = fade * kc; c.drawImage(b, 0, 0, W, H); c.lineWidth = 1.1; c.strokeStyle = 'rgba(255,178,112,.9)'; text(c, true);
+  }
+  c.globalAlpha = 1;
+  if (wb > .003 && M) {   // while out of focus they sit behind the wing: its shape is cut out of them
+    c.save(); c.globalAlpha = kb * (1 - kc); c.globalCompositeOperation = 'destination-out'; c.setTransform(r * M[0], r * M[1], r * M[2], r * M[3], r * M[4], r * M[5]); c.drawImage($('wing'), 0, 0); c.restore();
+  }
+}
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const lerp = (a, b, t) => a + (b - a) * t;
 const seg = (x, a, b) => clamp((x - a) / (b - a));
@@ -53,7 +111,7 @@ function layout() {
   for (const id of ['wa', 'wb', 'wc', 'wd']) { const el = $(id); el.style.fontSize = '100px'; el.style.letterSpacing = '-.025em'; em[id] = (el.offsetWidth + 2.5) / 100; }
   const g = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gut')) || 24, SP = .3;
   const line = em.wa + em.wb + em.wc + em.wd + 2 * SP;
-  // closed: one line across the seam; open: one line edge to edge on a wide screen, four stacked lines on a phone
+  // in the slit: one small line; open: one line edge to edge on a wide screen, four stacked lines on a phone
   const ls0 = phone ? .3 : .5, chars = 25;
   L.fs0 = phone ? Math.min(W * .05, (W / 2 - g - 20) / (Math.max(em.wa, em.wb, em.wc, em.wd) + ls0 * 7)) : Math.min(W * .026, 38, (W - 2 * g - 40) / (line + ls0 * chars)); L.ls0 = ls0;
   L.fs = phone ? Math.min(W * .16, (W - 2 * g) / Math.max(em.wa, em.wb, em.wc, em.wd)) : Math.min(H * .17, (W - 2 * g - W * .08) / line);
@@ -542,22 +600,24 @@ function frame(now) {
   const u = uS;
   const eO = seg(u, 0, U_OPEN), eG = seg(u, U_OPEN * .4, U_GLIDE), eT = seg(u, U_GLIDE, U_TRANS), eE = seg(u, U_FLY, U_END);
 
-  /* the curtain: two panels part, a little toward the viewer, light through the seam */
-  const o = io(eO), gap = o * W * .5;
-  const ang = Math.sin(Math.PI * Math.min(1, eO * 1.15)) * 9 + o * 6;
-  $('dl').style.transform = `translate3d(${-gap}px,0,${o * 60}px) rotateY(${ang}deg)`;
-  $('dr').style.transform = `translate3d(${gap}px,0,${o * 60}px) rotateY(${-ang}deg)`;
-  $('doors').style.visibility = eO >= 1 ? 'hidden' : 'visible';
-  const sk = 1 - seg(eO, .05, .55);
-  $('seam').style.opacity = sk; $('seam').style.transform = `scaleX(${1 + 30 * o})`;
+  /* the opening: a widescreen frame opening out, a thin slit, then 2.39:1, then the whole screen; flares along its edges,
+     the exposure rising from dark; the push-in is the photograph's own depth move (below), so the frame never shows its edges */
   $('cue').style.opacity = 1 - seg(eO, .02, .12);
-  // the photograph pushes forward as the panels open, and lights up
-  const push = lerp(.9, 1.0, out(eO));
-  $('photo').style.transform = push < 1 ? `scale(${push})` : '';
-  $('photo').style.filter = eO < 1 ? `brightness(${lerp(.55, 1, out(eO)).toFixed(3)})` : 'none';
-  $('plate').style.transform = `translate3d(${L.tx}px,${L.ty}px,0) scale(${L.s})`;
-  // the words: grow, tracking tightens, the halves ride the panels to the edges
   {
+    const slit = H * (phone ? .03 : .04), lb = Math.min(H, W / 2.39);
+    const h = lerp(lerp(slit, lb, ss(seg(eO, 0, .42))), H, io(seg(eO, .38, 1)));
+    const bar = Math.max(0, (H - h) / 2);
+    for (const id of ['lbt', 'lbb']) { const el = $(id); el.style.display = 'block'; el.style.height = bar + 'px'; el.style.visibility = bar > 0 ? 'visible' : 'hidden'; }
+    const fl = (1 - seg(eO, .8, 1)) * (.55 + .45 * ss(seg(eO, 0, .3)));
+    for (const el of document.querySelectorAll('.srh-lb i, .srh-lb em')) el.style.opacity = fl;
+    $('grain').style.opacity = eT < 1 ? .09 : 0; $('grain').style.backgroundPosition = `${(u * 9137) % 200}px ${(u * 5651) % 200}px`;
+  }
+  const push = 1, bright = lerp(.3, 1, ss(seg(eO, .03, .95)));
+  $('photo').style.filter = eO < 1 ? `brightness(${bright.toFixed(3)})` : 'none';
+  $('plate').style.transform = `translate3d(${L.tx}px,${L.ty}px,0) scale(${L.s})`;
+  // the words: grow from the slit, tracking tightens, the halves ride out to the edges
+  {
+    titleSetup();
     let fs = lerp(L.fs0, L.fs, out(seg(eO, 0, .85))), ls = lerp(L.ls0, -.025, out(seg(eO, 0, .9))), g = L.g, sp = (L.SP + Math.max(0, ls)) * fs;
     const ids = ['wa', 'wb', 'wc', 'wd'], w = {}, pos = {};
     const measure = f => { for (const id of ids) { const el = $(id); el.style.fontSize = f + 'px'; el.style.letterSpacing = ls + 'em'; w[id] = el.offsetWidth - ls * f; } };
@@ -569,7 +629,7 @@ function frame(now) {
     const k = io(seg(eO, .05, 1)), exitK = io(seg(eT, 0, .6));
     if (!phone) {
       // one line: WORLD SPEED | RECORD ATTEMPT, the seam between the halves; the halves ride to the edges
-      const y = lerp(H * .46, H * .6, io(eO)) - fs * .43;
+      const y = lerp(H * .5, H * .6, io(eO)) - fs * .43;
       let cB = W / 2 - 14 - w.wb, cC = W / 2 + 14;
       const ovR = cC + w.wc + sp + w.wd - (W - g); if (ovR > 0) { cB -= ovR; cC -= ovR; }     // the longer right half: the whole line slides to fit
       const ovL = g - (cB - sp - w.wa); if (ovL > 0) { cB += ovL; cC += ovL; }
@@ -580,7 +640,7 @@ function frame(now) {
       Object.assign(pos, { wa: [xa, y], wb: [xb, y], wc: [xc, y], wd: [xd, y] });
     } else {
       // four rows: WORLD and SPEED to the left of the seam, RECORD and ATTEMPT to the right; they ride out to the edges
-      const lh = fs * .9, yc = lerp(H * .46, H * .56, io(eO)) - fs * .43;
+      const lh = fs * .9, yc = lerp(H * .5, H * .56, io(eO)) - fs * .43;
       ids.forEach((id, r) => {
         const left = r < 2, x = left ? lerp(W / 2 - 14 - w[id], g, k) : lerp(W / 2 + 14, W - g - w[id], k);
         pos[id] = [clamp(x, g, W - g - w[id]), yc + (r - 1.5) * lh];
@@ -590,11 +650,12 @@ function frame(now) {
       const side = id === 'wa' || id === 'wb' ? -1 : 1, x = pos[id][0] + side * exitK * W * .6, y = pos[id][1];
       const el = $(id); el.style.transform = `translate3d(${x}px,${y}px,0)`; el.style.opacity = 1 - exitK;
     }
+    TPOS = { fs, ls, pos, exitK, eO };
   }
 
   /* the glide: the land slides back under him, the far ridge drifts, he flies on; then the push into his seat */
   const ready = G && PATH;
-  const gp = eE > 0 ? 0 : ss(eG), jT = io(eT);
+  const gp = eE > 0 ? 0 : Math.max(ss(eG), .35 * ss(eO)), jT = io(eT);
   {
     const th = .016 * Math.sin(Math.PI * 1.5 * gp), sc = 1 + .05 * gp, dr = [(PV[0] - PIL[0]) * .07 * gp, (PV[1] - PIL[1]) * .07 * gp];
     const zoom = eE > 0 ? 1 : lerpLog(1, 7, io(seg(eT, 0, .85)));
@@ -609,6 +670,7 @@ function frame(now) {
     $('photo').style.opacity = photoA; $('photo').style.visibility = photoA > 0 ? 'visible' : 'hidden';
     if (photoA > 0) drawPhoto(eE > 0 ? 0 : .16 * gp + .3 * jT, -.01 * gp, eE > 0 ? 0 : -.03 * jT);
     drawRig(M, push, wingA * (eE > 0 ? 1 : 1 - seg(eT, .2, .5)));
+    drawTitle(M, bright);
   }
   $('veil').style.opacity = 1 - seg(eT, .3, .8) * .45 * (1 - eE);
 

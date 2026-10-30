@@ -1,4 +1,4 @@
-/* The Speed Record hero (record-hero.js): the curtain, the Kerio photograph in depth, the push into his seat,
+/* The Speed Record hero (record-hero.js): the letterbox opening, the Kerio photograph in depth, the push into his seat,
    and his logged run over the escarpment drawn from heights alone. Still frames when motion is off or there is
    no script (the page sets .wr-pin only when it may move). Its own dark tokens: the hero is never light. */
 .srh{--srh-bg:#141519;--srh-card:#202127;--srh-orange:#ff7517;--srh-text:#f6f4f4;--srh-grey:#9a9aa3;--srh-grey-l:#c9c9cf;--srh-gut:clamp(16px,2.6vw,40px);--srh-display:'Poppins',system-ui,sans-serif;--srh-body:'DM Sans',system-ui,sans-serif;--srh-mono:'DM Mono',ui-monospace,monospace}
@@ -17,22 +17,18 @@
 .srh-rig{inset:0;width:100%;height:100%;pointer-events:none}
 .srh-veil{inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,12,16,.4) 0%,rgba(10,12,16,0) 22%,rgba(10,12,16,0) 56%,rgba(10,12,16,.6) 100%)}
 
-/* the curtain */
-.srh-doors{inset:0;perspective:1600px;perspective-origin:50% 46%;pointer-events:none}
-.srh-door{position:absolute;top:-2%;height:104%;width:50.5%;background:#141519;will-change:transform;backface-visibility:hidden}
-.srh-door::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,0) 0 23px,rgba(255,255,255,.035) 23px 24px)}
-.srh-door::after{content:"";position:absolute;top:0;bottom:0;width:38%;pointer-events:none}
-.srh-door.srh-l{left:0;transform-origin:0 50%}
-.srh-door.srh-l::after{right:0;background:linear-gradient(90deg,rgba(255,236,214,0),rgba(255,236,214,.07) 70%,rgba(255,236,214,.16))}
-.srh-door.srh-r{right:0;transform-origin:100% 50%}
-.srh-door.srh-r::after{left:0;background:linear-gradient(270deg,rgba(255,236,214,0),rgba(255,236,214,.07) 70%,rgba(255,236,214,.16))}
-.srh-door i{position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(180deg,rgba(255,117,23,0),rgba(255,117,23,.9) 30%,rgba(255,180,120,.9) 50%,rgba(255,117,23,.9) 70%,rgba(255,117,23,0))}
-.srh-door.srh-l i{right:0}.srh-door.srh-r i{left:0}
-.srh-seam{left:50%;top:0;height:100%;width:0;pointer-events:none}
-.srh-seam b{position:absolute;top:0;bottom:0;left:-1px;width:2px;background:linear-gradient(180deg,rgba(255,240,224,0),rgba(255,244,232,.95) 35%,#fff 50%,rgba(255,244,232,.95) 65%,rgba(255,240,224,0))}
-.srh-seam em{position:absolute;top:10%;bottom:10%;left:-90px;width:180px;background:radial-gradient(50% 50% at 50% 50%,rgba(255,236,214,.34),rgba(255,236,214,0));filter:blur(6px)}
 .srh-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .srh-word{left:0;top:0;font-family:var(--srh-display);font-weight:700;line-height:.86;text-transform:uppercase;color:var(--srh-text);white-space:nowrap;will-change:transform,opacity;text-shadow:0 2px 34px rgba(8,10,14,.5),0 1px 3px rgba(8,10,14,.25)}
+/* the opening: a widescreen frame, its edges catching the light */
+.srh-lb{left:0;right:0;top:0;height:0;background:#050506;display:none;pointer-events:none}
+.srh-lb.srh-b{top:auto;bottom:0}
+.srh-lb i{position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,rgba(255,226,196,0) 4%,rgba(255,236,214,.75) 30%,rgba(255,248,236,.95) 50%,rgba(255,236,214,.75) 70%,rgba(255,226,196,0) 96%)}
+.srh-lb em{position:absolute;left:-10%;right:-10%;bottom:-23px;height:46px;background:radial-gradient(50% 50% at 50% 50%,rgba(255,214,170,.32),rgba(170,200,255,.10) 55%,rgba(170,200,255,0) 100%);filter:blur(5px);mix-blend-mode:screen}
+.srh-lb.srh-b i{bottom:auto;top:-1px}.srh-lb.srh-b em{bottom:auto;top:-23px}
+.srh-grain{inset:-50px;pointer-events:none;opacity:0;mix-blend-mode:overlay;background-size:200px 200px}
+/* the title: WORLD and ATTEMPT are drawn on a canvas over the frame's bars, so they read even outside the slit; their letters stay in the page for layout */
+.srh-tcv{inset:0;width:100%;height:100%;pointer-events:none}
+.srh-word.srh-rec{color:transparent;text-shadow:none}
 .srh-cue{left:50%;bottom:calc(var(--srh-gut) + 4px);transform:translateX(-50%);font:400 11px/1 var(--srh-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--srh-grey-l);text-align:center}
 .srh-cue i{display:block;width:1px;height:28px;background:var(--srh-grey-l);margin:10px auto 0;opacity:.7}
 
