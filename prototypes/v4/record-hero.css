@@ -1,0 +1,89 @@
+/* The Speed Record hero (record-hero.js): the curtain, the Kerio photograph in depth, the push into his seat,
+   and his logged run over the escarpment drawn from heights alone. Still frames when motion is off or there is
+   no script (the page sets .wr-pin only when it may move). Its own dark tokens: the hero is never light. */
+.srh{--srh-bg:#141519;--srh-card:#202127;--srh-orange:#ff7517;--srh-text:#f6f4f4;--srh-grey:#9a9aa3;--srh-grey-l:#c9c9cf;--srh-gut:clamp(16px,2.6vw,40px);--srh-display:'Poppins',system-ui,sans-serif;--srh-body:'DM Sans',system-ui,sans-serif;--srh-mono:'DM Mono',ui-monospace,monospace}
+.srh .srh-stage *,.srh .srh-stage *::before,.srh .srh-stage *::after{box-sizing:border-box}
+.srh .srh-read *,.srh .srh-leg *,.srh .srh-warp *{margin:0;padding:0}
+
+.srh{position:relative}
+.srh-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--srh-bg)}
+.srh-stage > *{position:absolute}
+.srh-gl{inset:0;width:100%;height:100%;display:block;visibility:hidden}
+.srh-photo{inset:0;overflow:hidden;transform-origin:50% 46%;will-change:transform,filter,opacity}
+.srh-photo > *{position:absolute;left:0;top:0;transform-origin:0 0;max-width:none}
+.srh-plate{width:1920px;height:1080px}
+.srh-pgc{width:100%;height:100%;display:block}
+.srh-wing{width:1962px;height:1756px;will-change:transform,opacity}
+.srh-rig{inset:0;width:100%;height:100%;pointer-events:none}
+.srh-veil{inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,12,16,.4) 0%,rgba(10,12,16,0) 22%,rgba(10,12,16,0) 56%,rgba(10,12,16,.6) 100%)}
+
+/* the curtain */
+.srh-doors{inset:0;perspective:1600px;perspective-origin:50% 46%;pointer-events:none}
+.srh-door{position:absolute;top:-2%;height:104%;width:50.5%;background:#141519;will-change:transform;backface-visibility:hidden}
+.srh-door::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,0) 0 23px,rgba(255,255,255,.035) 23px 24px)}
+.srh-door::after{content:"";position:absolute;top:0;bottom:0;width:38%;pointer-events:none}
+.srh-door.srh-l{left:0;transform-origin:0 50%}
+.srh-door.srh-l::after{right:0;background:linear-gradient(90deg,rgba(255,236,214,0),rgba(255,236,214,.07) 70%,rgba(255,236,214,.16))}
+.srh-door.srh-r{right:0;transform-origin:100% 50%}
+.srh-door.srh-r::after{left:0;background:linear-gradient(270deg,rgba(255,236,214,0),rgba(255,236,214,.07) 70%,rgba(255,236,214,.16))}
+.srh-door i{position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(180deg,rgba(255,117,23,0),rgba(255,117,23,.9) 30%,rgba(255,180,120,.9) 50%,rgba(255,117,23,.9) 70%,rgba(255,117,23,0))}
+.srh-door.srh-l i{right:0}.srh-door.srh-r i{left:0}
+.srh-seam{left:50%;top:0;height:100%;width:0;pointer-events:none}
+.srh-seam b{position:absolute;top:0;bottom:0;left:-1px;width:2px;background:linear-gradient(180deg,rgba(255,240,224,0),rgba(255,244,232,.95) 35%,#fff 50%,rgba(255,244,232,.95) 65%,rgba(255,240,224,0))}
+.srh-seam em{position:absolute;top:10%;bottom:10%;left:-90px;width:180px;background:radial-gradient(50% 50% at 50% 50%,rgba(255,236,214,.34),rgba(255,236,214,0));filter:blur(6px)}
+.srh-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.srh-word{left:0;top:0;font-family:var(--srh-display);font-weight:700;line-height:.86;text-transform:uppercase;color:var(--srh-text);white-space:nowrap;will-change:transform,opacity;text-shadow:0 2px 34px rgba(8,10,14,.5),0 1px 3px rgba(8,10,14,.25)}
+.srh-cue{left:50%;bottom:calc(var(--srh-gut) + 4px);transform:translateX(-50%);font:400 11px/1 var(--srh-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--srh-grey-l);text-align:center}
+.srh-cue i{display:block;width:1px;height:28px;background:var(--srh-grey-l);margin:10px auto 0;opacity:.7}
+
+/* the run */
+.srh-fx{inset:0;width:100%;height:100%;pointer-events:none}
+.srh-vig{inset:0;pointer-events:none;opacity:0;background:radial-gradient(115% 95% at 50% 44%,rgba(0,0,0,0) 48%,rgba(8,9,12,.5) 84%,rgba(8,9,12,.8) 100%)}
+.srh-read{left:var(--srh-gut);bottom:calc(var(--srh-gut) + 22px);opacity:0;font-family:var(--srh-mono);text-shadow:0 1px 14px rgba(0,0,0,.35)}
+.srh-read .srh-lab{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--srh-grey-l)}
+.srh-read .srh-big{font-size:clamp(46px,5.4vw,80px);line-height:1;letter-spacing:-.02em;margin:8px 0 6px;font-variant-numeric:tabular-nums}
+.srh-read .srh-big small{font-size:.28em;letter-spacing:.06em;color:var(--srh-grey-l);margin-left:.5em}
+.srh-read .srh-row{font-size:clamp(12px,1vw,14px);color:var(--srh-grey-l);font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.srh-read .srh-row b{color:var(--srh-text);font-weight:400}
+.srh-read .srh-gaprow{margin-top:4px}
+.srh-read .srh-gaprow b{color:#c9dcff}
+.srh-ghostl{left:0;top:0;opacity:0;font:400 10px/1 var(--srh-mono);letter-spacing:.14em;text-transform:uppercase;color:#c9dcff;white-space:nowrap;pointer-events:none;text-shadow:0 1px 10px rgba(0,0,0,.6);will-change:transform}
+.srh-mel{left:0;top:0;opacity:0;font:400 10px/1 var(--srh-mono);letter-spacing:.14em;text-transform:uppercase;color:#ffd7a8;white-space:nowrap;pointer-events:none;text-shadow:0 1px 10px rgba(0,0,0,.6);will-change:transform}
+.srh-mel::before{content:"";display:inline-block;width:6px;height:6px;background:#ffb25e;border-radius:50%;margin-right:7px;vertical-align:-1px}
+.srh-ghostl::before{content:"";display:inline-block;width:6px;height:6px;border:1px solid #c9dcff;border-radius:50%;margin-right:7px;vertical-align:-1px}
+.srh-turnm{left:50%;top:20%;transform:translateX(-50%);opacity:0;font:400 12px/1 var(--srh-mono);letter-spacing:.22em;text-transform:uppercase;color:var(--srh-text);white-space:nowrap;pointer-events:none;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.srh-turnm b{color:var(--srh-orange);font-weight:400;margin:0 .4em}
+.srh-turnm small{color:var(--srh-grey-l);font-size:10px;margin-left:.3em}
+.srh-ghostb{left:50%;bottom:calc(var(--srh-gut) + 22px);transform:translateX(-50%);opacity:0;font:400 10px/1 var(--srh-mono);letter-spacing:.14em;text-transform:uppercase;color:#c9dcff;white-space:nowrap;pointer-events:none;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+.srh-ghostb i{font-style:normal;margin-right:8px}
+.srh-ghostb b{font-weight:400;color:#f6f4f4;margin-left:6px}
+@media (max-width:720px){.srh-ghostb{bottom:auto;top:132px;left:var(--srh-gut);transform:none}}
+.srh-navfade{left:0;right:0;top:0;height:150px;pointer-events:none;background:linear-gradient(180deg,rgba(10,11,14,.62),rgba(10,11,14,.28) 55%,rgba(10,11,14,0))}
+.srh-leg{left:var(--srh-gut);top:112px;opacity:0;font:400 11px/1.7 var(--srh-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--srh-grey-l);text-shadow:0 1px 12px rgba(0,0,0,.4)}
+.srh-leg b{display:block;color:var(--srh-text);font-weight:400}
+.srh-warp{right:var(--srh-gut);bottom:calc(var(--srh-gut) + 22px);opacity:0;text-align:right;font:400 11px/1.7 var(--srh-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--srh-grey-l)}
+.srh-warp .srh-m{display:block;width:140px;height:1px;background:rgba(246,244,244,.25);margin:8px 0 0 auto;position:relative}
+.srh-warp .srh-m i{position:absolute;right:0;top:0;height:1px;width:100%;background:var(--srh-orange);transform-origin:100% 0;transform:scaleX(0)}
+.srh-end{position:absolute;left:0;right:0;bottom:0;opacity:0;pointer-events:none}
+.srh-end.is-on{pointer-events:auto}
+.srh-credit{right:var(--srh-gut);bottom:calc(var(--srh-gut) + 4px);max-width:430px;opacity:0;font:400 10px/1.6 var(--srh-mono);letter-spacing:.04em;color:var(--srh-grey);text-align:right;text-shadow:0 1px 10px rgba(0,0,0,.6);pointer-events:none}
+.srh-stills .srh-credit{position:static;opacity:1;max-width:none;text-align:left;padding:18px var(--srh-gut) 28px}
+@media (max-width:720px){.srh-credit{left:var(--srh-gut);right:var(--srh-gut);bottom:10px;max-width:none;text-align:left;font-size:9px}}
+.srh-end .wr-kick,.srh-end .wr-hero-sub{text-shadow:0 1px 14px rgba(8,10,14,.55)}
+
+.srh-stills{display:none}
+.srh-stills figure{position:relative;height:100vh;height:100svh;overflow:hidden;border-bottom:1px solid var(--srh-card)}
+.srh-stills img{width:100%;height:100%;object-fit:cover;display:block}
+.srh-stills figcaption{position:absolute;left:var(--srh-gut);bottom:var(--srh-gut);font:400 12px/1.7 var(--srh-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--srh-text);max-width:520px;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+@media (max-width:720px){
+  .srh-leg{top:84px}
+  .srh-read{bottom:calc(var(--srh-gut) + 14px)}
+  .srh-warp{bottom:calc(var(--srh-gut) + 18px)}
+  .srh-warp .srh-m{width:90px}
+}
+.srh-stills{display:none}
+:root:not(.wr-pin) .srh-stage{display:none}
+:root:not(.wr-pin) .srh-stills{display:block}
+.srh-stills .srh-still-end{padding:28px var(--srh-gut) 0}
+/* the menu over the hero, which slides up under it (record-hero.js) */
+.page-wrap>nav{z-index:60}
