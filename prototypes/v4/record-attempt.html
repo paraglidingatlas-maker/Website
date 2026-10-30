@@ -1159,7 +1159,7 @@ footer::after{background:radial-gradient(58% 40% at 68% 36%,color-mix(in srgb,va
   function daySky(el) {
     var sk = el.querySelector(".wr-sky-c"), sg = sk.getContext("2d", { alpha: false }), cv = el.querySelector(".wr-sky-o"), g = cv.getContext("2d");
     if (!g || !sg) throw new Error("no sky");
-    var IMGS = "img/record/";
+    var IMGS = (/^(.*\/prototypes\/v\d+\/)/.exec(location.pathname) || [0, "/assets/v4/"])[1] + "img/record/";   /* from the page or its published copy at the root alike */
     var CAP = 0.044, KNEE = CAP * 0.7, YH = 0.86, SUNR = 1.519, T = {}, P = [], img = null, Cc = {}, Cs = {};
     var Wd = 1, Hd = 1, dpr = 0, W2 = 1, H2 = 1, cw = 1, ch = 1, kx = 1, ky = 1, lastQ = -1;
     /* the star drawing: which sky it holds, the turn it was drawn at, its margin past the screen, and what the
