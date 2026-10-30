@@ -189,6 +189,10 @@ TEXT = [
      "All four departures are guaranteed to run: we will not cancel any of them for low numbers. What is due when you "
      "book is set out in our"),
     ("<span>Next departure 21 Oct 2026</span>", "<span>Next departure 15 Apr 2027</span>"),
+    # the FAQ on cancellation (missed on 24 Oct; found 30 Oct): what is due follows the booking terms, section 3
+    ("Both 2026 departures are less than 120 days away, so the full price is due when you book. If you then cancel",
+     "A deposit secures your place and the balance is due 120 days before departure; book later than that and the "
+     "full price is due when you book. If you then cancel"),
 ]
 
 
