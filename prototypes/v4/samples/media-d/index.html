@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<!--v4ld--><style>.v4ld{position:fixed;inset:0;z-index:2147483000;color:#f6f4f4;opacity:0;transition:opacity .3s cubic-bezier(.16,1,.3,1)}.v4ld.on{opacity:1}.v4ld svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.v4ld-a,.v4ld-b{position:absolute;left:0;right:0;background:#141519;transition:transform .75s cubic-bezier(.16,1,.3,1)}.v4ld-a{top:0}.v4ld-b{bottom:0}.v4ld.open .v4ld-a{transform:translateY(-101%)}.v4ld.open .v4ld-b{transform:translateY(101%)}.v4ld svg,.v4ld-n,.v4ld-p,.v4ld-w{transition:opacity .35s}.v4ld.open svg,.v4ld.open .v4ld-n,.v4ld.open .v4ld-p,.v4ld.open .v4ld-w{opacity:0}.v4ld-n{position:absolute;left:0;right:0;top:27%;text-align:center;padding:0 16px;font:500 12px/1 'DM Mono',ui-monospace,monospace;letter-spacing:.5em;text-indent:.5em;text-transform:uppercase}.v4ld-n small{display:block;margin-top:1.1em;font-size:10px;letter-spacing:.32em;text-indent:.32em;color:#8d8c92}.v4ld-p{position:absolute;font:11px/1 'DM Mono',ui-monospace,monospace;letter-spacing:.08em;color:#c9c7cc;transform:translate(10px,-170%);font-variant-numeric:tabular-nums;white-space:nowrap}.v4ld-p i{font-style:normal;color:#8d8c92}.v4ld-w{position:absolute;left:0;right:0;top:12%;text-align:center;font:800 min(25vw,23rem)/1 Poppins,system-ui,sans-serif;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px rgba(246,244,244,.32);white-space:nowrap}@media (max-width:700px){.v4ld-w{top:18%}}</style><script type="application/json" id="v4ld-c">{"k":"page","n":"Media"}</script><script>(function(){var d=document,w=window,C=JSON.parse(d.getElementById("v4ld-c").textContent);
+try{if(sessionStorage.getItem("v4ld"))return}catch(e){}
+var done=false,shown=false,el,t0,raf=0,P=0,reduce=w.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+w.addEventListener("load",function(){done=true});
+function share(){if(done)return 1;var im=d.images,n=0,k=0;for(var i=0;i<im.length;i++){if(im[i].loading=="lazy")continue;n++;if(im[i].complete)k++}
+ var f=d.fonts&&d.fonts.status=="loaded"?1:0;return Math.min(.97,(k+f+(d.readyState!="loading"?1:0))/(n+2))}
+function ns(t,a){var e=d.createElementNS("http://www.w3.org/2000/svg",t);for(var k in a)e.setAttribute(k,a[k]);return e}
+function show(){if(done||d.readyState=="complete")return;shown=true;try{sessionStorage.setItem("v4ld","1")}catch(e){}
+ el=d.createElement("div");el.className="v4ld";el.setAttribute("role","status");el.setAttribute("aria-label","Loading");
+ var W=1000,H=600,s=ns("svg",{viewBox:"0 0 1000 600",preserveAspectRatio:"none","aria-hidden":"true"}),line,len=0,cols=[],tipY=360,x0=0,x1=1000;
+ if(C.k=="trip"){var pts=C.r||[],dd="";if(pts.length){for(var i=0;i<pts.length;i++)dd+=(i?"L":"M")+(i/(pts.length-1)*1000).toFixed(1)+" "+(400-pts[i]*150).toFixed(1)}else dd="M0 360L1000 360";
+  line=ns("path",{d:dd,fill:"none",stroke:"#ff7517","stroke-width":"1.2","stroke-linejoin":"round"});s.appendChild(line)}
+ else if(C.k=="home"){tipY=560;x0=50;x1=950;s.appendChild(ns("line",{x1:50,y1:560,x2:950,y2:560,stroke:"rgba(246,244,244,.14)","vector-effect":"non-scaling-stroke"}));
+  line=ns("line",{x1:50,y1:560,x2:50,y2:560,stroke:"#ff7517","stroke-width":"1.4","vector-effect":"non-scaling-stroke"});s.appendChild(line)}
+ else if(C.k=="listen"){tipY=520;x0=60;x1=940;s.appendChild(ns("line",{x1:60,y1:520,x2:940,y2:520,stroke:"rgba(246,244,244,.14)","vector-effect":"non-scaling-stroke"}));
+  (C.c||[]).forEach(function(c){var l=ns("line",{x1:60+c[0]*880,x2:60+c[0]*880,y1:520,y2:520,stroke:"#ff7517","stroke-width":"1.2","vector-effect":"non-scaling-stroke"});l._h=c[1];l._x=60+c[0]*880;s.appendChild(l);cols.push(l)})}
+ else{tipY=360;x0=300;x1=700;line=ns("line",{x1:300,y1:360,x2:300,y2:360,stroke:"#ff7517","stroke-width":"1.4","vector-effect":"non-scaling-stroke"});s.appendChild(line)}
+ var cut=(C.k=="trip"?400:tipY)/6,A=d.createElement("div"),B=d.createElement("div");A.className="v4ld-a";B.className="v4ld-b";A.style.height=cut+"%";B.style.height=(100-cut)+"%";el.appendChild(A);el.appendChild(B);
+ el.appendChild(s);
+ if(C.k=="home"&&C.w){var wd=d.createElement("div");wd.className="v4ld-w";wd.setAttribute("aria-hidden","true");wd.textContent=C.w;el.appendChild(wd)}
+ var nm=d.createElement("div");nm.className="v4ld-n";nm.textContent=C.n;if(C.f){var sm=d.createElement("small");sm.textContent=C.f;nm.appendChild(sm)}if(C.k!="home")el.appendChild(nm);
+ var pc=d.createElement("div");pc.className="v4ld-p";pc.setAttribute("aria-hidden","true");el.appendChild(pc);
+ (d.body||d.documentElement).appendChild(el);if(line&&line.getTotalLength&&C.k=="trip"){len=line.getTotalLength();line.style.strokeDasharray=len;line.style.strokeDashoffset=len}
+ el.addEventListener("click",out);requestAnimationFrame(function(){el.classList.add("on")});t0=performance.now();
+ function frame(now){var a=share();P=reduce?a:P+(a-P)*.12;if(done&&P>.995)P=1;var x;
+  if(C.k=="trip"){line.style.strokeDashoffset=(len*(1-P)).toFixed(1);var pt=line.getPointAtLength(len*P);x=pt.x;tipY=pt.y}
+  else if(C.k=="listen"){x=x0+(x1-x0)*P;cols.forEach(function(l){var k=Math.max(0,Math.min(1,(x-l._x)/80));l.setAttribute("y2",(520-l._h*170*(1-Math.pow(1-k,3))).toFixed(1))})}
+  else{x=x0+(x1-x0)*P;line.setAttribute("x2",x.toFixed(1))}
+  pc.style.left=(x/10)+"%";pc.style.top=(tipY/6)+"%";pc.innerHTML=Math.round(P*100)+"<i>%</i>";
+  if((P>=1&&now-t0>900)||now-t0>8000){out();return}raf=requestAnimationFrame(frame)}
+ raf=requestAnimationFrame(frame)}
+function out(){if(!el||el._out)return;el._out=1;cancelAnimationFrame(raf);
+ if(reduce)el.classList.remove("on");else el.classList.add("open");setTimeout(function(){if(el&&el.parentNode)el.parentNode.removeChild(el)},reduce?350:850)}
+setTimeout(show,500)})();</script><!--/v4ld-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media: Paragliding Atlas</title>
+<meta name="description" content="Comp coverage by Paragliding Atlas: daily highlight videos, live commentary and stills from the 2026 SRS races and the Paragliding World Cup Super Final.">
+<link rel="canonical" href="https://paraglidingatlas.com/media.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Media">
+<meta property="og:description" content="Comp coverage by Paragliding Atlas: daily highlight videos, live commentary and stills from the 2026 SRS races and the Paragliding World Cup Super Final.">
+<meta property="og:image" content="../../img/media-tmp/SRS_5_T3_21-1600.webp">
+<meta property="og:url" content="https://paraglidingatlas.com/media.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../../img/favicon-96.png">
+<link rel="apple-touch-icon" href="../../../../assets/logo/apple-touch-icon.png">
+<meta name="theme-color" content="#141519">
+<link rel="alternate" type="application/rss+xml" title="Paragliding Atlas Podcast" href="https://anchor.fm/s/ed1344d8/podcast/rss">
+<link rel="preload" href="../../../../assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../assets/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../../../fonts.css?v=1f73ef11">
+<link rel="stylesheet" href="../../../../styles.css?v=b084e774">
+<link rel="stylesheet" href="../../v2.css?v=8f8ced12"><!--v4u-css--><style>@media (max-width:760px){html body :is(.v2-tour-tag,.cta-hud-tag,.band .chips .lab){font-size:var(--fs-micro)}}</style><!--/v4u-css-->
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://paraglidingatlas.com/media.html#webpage", "name": "Media", "url": "https://paraglidingatlas.com/media.html", "description": "Comp coverage by Paragliding Atlas: daily highlight videos, live commentary and stills from the 2026 SRS races and the Paragliding World Cup Super Final.", "isPartOf": {"@id": "https://paraglidingatlas.com/#website"}, "publisher": {"@id": "https://paraglidingatlas.com/#organization"}, "inLanguage": "en", "dateModified": "2026-11-03"}</script>
+<style>
+/* Media, designer D (Trim): "Clean Feed". The owner's frames run clean, full-bleed, no rims and no muddy scrim; one
+   graphics package carries every fact: a lower third, tabular figures, one steady orange tally light that is lit only
+   while an event is on air. Only this page's parts; everything else is the site's own (v2.css, styles.css). */
+
+/* ---------- the graphics package: one label style, one figure style, one tally ---------- */
+.mdd-eg{display:inline-flex;align-items:center;height:1.25rem;padding:0 .45rem;border:1px solid rgba(246,244,244,.34);border-radius:2px;
+  font-family:var(--font-body);font-style:normal;font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light);vertical-align:middle;white-space:nowrap}
+.mdd-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mdd-k{font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:0;color:var(--gray);font-variant-numeric:tabular-nums}
+
+/* ---------- 1. the promise: a lower third on the picture ---------- */
+html body .kit-hero.mdd-hero{min-height:min(calc(100svh - 5.8125rem),64rem);align-items:stretch;padding:0 var(--gutter) clamp(1.25rem,3.2vh,2.25rem)}
+.mdd-hero .kit-hero-media img{object-position:50% 36%}
+html body .kit-hero.mdd-hero::after{background:
+  linear-gradient(90deg,rgba(20,21,25,.82) 0%,rgba(20,21,25,.55) 26%,rgba(20,21,25,.12) 50%,rgba(20,21,25,0) 62%),
+  linear-gradient(180deg,rgba(20,21,25,.6) 0%,rgba(20,21,25,0) 13%,rgba(20,21,25,0) 46%,rgba(20,21,25,.62) 76%,var(--bg) 100%)}
+html body .mdd-hero .kit-hero-copy{position:relative;z-index:1;flex:1;width:100%;max-width:var(--measure);margin:0 auto;display:flex;flex-direction:column;justify-content:flex-end}
+@media (min-width:1441px){html body .mdd-hero .kit-hero-copy{max-width:none}}
+.mdd-lead{max-width:40rem}
+.mdd-tally{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .9rem;margin:0 0 var(--sp-3);font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,244,244,.78)}
+.mdd-tally>b{display:inline-flex;align-items:center;gap:.6rem;font-weight:600;color:var(--white)}
+.mdd-tally>b>i,.mdd-next>b>i{flex:none;width:.56rem;height:.56rem;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--orange)}
+.mdd-tally.is-live>b>i{background:var(--orange);box-shadow:0 0 0 3px rgba(255,117,23,.2)}
+.mdd-tally-ev{padding-left:.9rem;border-left:1px solid rgba(246,244,244,.24)}
+.mdd-hero h1{font-size:clamp(2.75rem,5.4vw,4.9rem);line-height:.98;letter-spacing:-.028em}
+.mdd-hero h1 span{display:block}
+.mdd-hero .mdd-deck{max-width:35rem;margin-top:var(--sp-3);line-height:1.6;text-wrap:pretty}
+.mdd-act{margin-top:var(--sp-4);gap:.9rem 1.6rem}
+.mdd-bug{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--sp-3) var(--sp-5);margin-top:clamp(1.75rem,5.5vh,3.5rem);padding-top:clamp(1rem,2.2vh,1.4rem);border-top:1px solid rgba(246,244,244,.16)}
+.mdd-for{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem}
+.mdd-for-k{font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light);margin-right:.35rem}
+.mdd-logo{position:relative;display:inline-grid;place-items:center;min-width:7.25rem;height:3.25rem;padding:.75rem 1.1rem .45rem;border:1px solid rgba(246,244,244,.22);border-radius:2px}
+.mdd-logo b{font-family:var(--font-display);font-weight:700;font-size:1.2rem;line-height:1;letter-spacing:.16em;margin-right:-.16em;color:rgba(246,244,244,.92)}
+.mdd-logo i{position:absolute;left:.5rem;top:.3rem;font-style:normal;font-size:.55rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+html body .mdd-hero .mdd-stats{margin:0;display:flex;flex-wrap:nowrap;gap:0}
+html body .mdd-stats .kit-stat{padding-left:clamp(1.1rem,2.2vw,2rem);margin-left:clamp(1.1rem,2.2vw,2rem);border-left:1px solid rgba(246,244,244,.16)}
+html body .mdd-stats .kit-stat:first-child{padding:0;margin:0;border:0}
+html body .mdd-stats .kit-stat b{font-family:var(--font-display);font-weight:600;font-size:clamp(1.55rem,2.3vw,2.15rem);line-height:1;letter-spacing:-.01em;
+  color:var(--white);-webkit-text-fill-color:var(--white);-webkit-text-stroke:0;font-variant-numeric:tabular-nums lining-nums;white-space:nowrap}
+html body .mdd-stats .kit-stat b>span{display:inline;margin:0;font:inherit;letter-spacing:inherit;text-transform:none;color:inherit;max-width:none}
+html body .mdd-stats .kit-stat b small{font-size:.5em;font-weight:500;letter-spacing:.02em;margin:0 .2em 0 .06em;color:var(--gray-light);-webkit-text-fill-color:var(--gray-light)}
+html body .mdd-stats .kit-stat span{max-width:10.5rem;margin-top:.55rem;line-height:1.45;color:var(--gray-light)}
+
+/* ---------- 2. the four programmes: tall posters on dark, the reading text off the art ---------- */
+.mdd-posters{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:auto;column-gap:clamp(1rem,2vw,1.75rem);row-gap:var(--sp-4)}
+.mdd-show{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0;min-width:0}
+.mdd-poster{position:relative;isolation:isolate;display:block;aspect-ratio:3/4;overflow:hidden;border-radius:3px;background:var(--card);color:var(--white);text-decoration:none;
+  box-shadow:0 34px 60px -34px rgba(0,0,0,.85)}
+.mdd-poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:brightness(.9) saturate(.96)}
+.mdd-poster::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(20,21,25,.62) 0%,rgba(20,21,25,0) 19%,rgba(20,21,25,0) 50%,rgba(20,21,25,.82) 80%,rgba(20,21,25,.95) 100%)}
+.mdd-p-n{position:absolute;left:clamp(.9rem,1.4vw,1.15rem);top:clamp(.8rem,1.3vw,1.05rem);font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,244,244,.9)}
+.mdd-p-t{position:absolute;left:clamp(.9rem,1.4vw,1.15rem);right:clamp(.9rem,1.4vw,1.15rem);bottom:clamp(.9rem,1.4vw,1.15rem);font-family:var(--font-display);font-weight:700;
+  font-size:clamp(1.25rem,1.85vw,1.7rem);line-height:1.08;letter-spacing:-.01em;text-wrap:balance}
+.mdd-p-t::after{content:"";display:block;width:2rem;height:2px;margin-top:.75rem;background:rgba(246,244,244,.38)}
+.mdd-p-go{position:absolute;right:clamp(.9rem,1.4vw,1.15rem);bottom:calc(clamp(.9rem,1.4vw,1.15rem) - .42rem);display:inline-flex;align-items:center;gap:.4rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--white)}
+.mdd-p-go::before{content:"";width:0;height:0;border-left:7px solid currentColor;border-top:4.5px solid transparent;border-bottom:4.5px solid transparent}
+.mdd-show-d{margin:var(--sp-2) 0 0;font-size:var(--fs-body-s);line-height:1.65;color:var(--gray-light)}
+.mdd-show-eg{align-self:start;margin:.55rem 0 0;padding-top:.55rem;border-top:1px solid var(--line);font-size:var(--fs-small);line-height:1.5;color:var(--gray)}
+.mdd-show-eg b{display:block;font-weight:500;color:var(--white)}
+@media (prefers-reduced-motion:no-preference){
+  a.mdd-poster{transition:translate .45s var(--ease),box-shadow .45s var(--ease)}
+  .mdd-poster img{transition:filter .45s var(--ease)}
+  .mdd-p-t::after{transition:width .45s var(--ease),background-color .45s var(--ease)}
+}
+@media (hover:hover){a.mdd-poster:hover{translate:0 -4px;box-shadow:0 44px 70px -34px rgba(0,0,0,.95)}}
+a.mdd-poster:is(:hover,:focus-visible) img{filter:none}
+a.mdd-poster:is(:hover,:focus-visible) .mdd-p-t::after{width:calc(100% - 5.4rem);background:var(--orange)}
+a.mdd-poster:focus-visible{outline:1px solid var(--orange);outline-offset:3px}
+
+/* ---------- 3. packages: what is delivered, never a price ---------- */
+.mdd-packs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:auto;column-gap:var(--sp-3);row-gap:var(--sp-3)}
+html body .mdd-pack{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0;padding:var(--sp-4) var(--sp-4) var(--sp-3)}
+.mdd-pack h3{margin:0;font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,2.3vw,2.05rem);line-height:1.1;letter-spacing:-.015em;color:var(--white)}
+html body .mdd-pack .mdd-pack-for{margin:.45rem 0 0;font-size:var(--fs-body-s);color:var(--gray-light)}
+.mdd-pack ul{list-style:none;margin:var(--sp-3) 0 0;padding:0;border-top:1px solid var(--line)}
+.mdd-pack li{position:relative;padding:.8rem 0 .8rem 1.35rem;border-bottom:1px solid var(--line);font-family:var(--font-display);font-weight:600;font-size:.98rem;line-height:1.35;color:var(--white)}
+.mdd-pack li::before{content:"";position:absolute;left:0;top:1.28rem;width:.6rem;height:1px;background:var(--gray-light)}
+.mdd-pack li small{display:block;margin-top:.2rem;font-family:var(--font-body);font-weight:400;font-size:var(--fs-small);line-height:1.5;color:var(--gray)}
+.mdd-pack-foot{align-self:end;padding-top:var(--sp-4);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem 1rem}
+.mdd-pack-price{font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light)}
+html body .mdd-pack .mdd-pack-tag{position:absolute;z-index:2;top:0;right:var(--sp-3);translate:0 -50%;margin:0;padding:0 .7rem;background:var(--bg);display:inline-flex;align-items:center;gap:.5rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange)}
+.mdd-pack.is-lead{background:radial-gradient(120% 120% at 0% 0%,rgba(255,117,23,.085) 0%,rgba(255,117,23,.02) 45%,transparent 78%)}
+.mdd-add{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-2) var(--sp-4);margin-top:var(--sp-4)}
+.mdd-add p{margin:0;font-size:var(--fs-body-s);line-height:1.6;color:var(--gray-light)}
+.mdd-add b{display:block;margin-bottom:.2rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--white)}
+
+/* ---------- 4. your audience: the season set like a results sheet ---------- */
+.mdd-aud{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:var(--sp-5) clamp(2.5rem,6vw,6rem);align-items:start}
+.mdd-sum{display:grid;grid-template-columns:auto 2.2rem minmax(0,1fr);grid-template-rows:auto auto;align-items:center;row-gap:.6rem;margin:0 0 var(--sp-4)}
+.mdd-ch{grid-column:1;padding:.55rem .9rem;border:1px solid var(--edge);font-family:var(--font-display);font-weight:600;font-size:.95rem;color:var(--white);white-space:nowrap}
+.mdd-post{grid-column:3;grid-row:1 / span 2;position:relative;padding-left:1rem;font-family:var(--font-display);font-weight:700;font-size:clamp(1.25rem,1.9vw,1.6rem);line-height:1.15;color:var(--white)}
+.mdd-post::before{content:"";position:absolute;right:calc(100% + .1rem);top:50%;width:2.2rem;height:calc(100% + 1.4rem);translate:0 -50%;border:1px solid var(--edge-hi);border-left:0}
+.mdd-post small{display:block;margin-top:.3rem;font-family:var(--font-body);font-weight:400;font-size:var(--fs-small);color:var(--gray-light)}
+.mdd-pod{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.1rem;align-items:center;margin:0;padding-top:var(--sp-3);border-top:1px solid var(--line)}
+.mdd-pod b{font-family:var(--font-display);font-weight:600;font-size:clamp(2.2rem,3.4vw,3rem);line-height:1;letter-spacing:-.02em;color:var(--white);font-variant-numeric:tabular-nums}
+.mdd-pod span{font-size:var(--fs-body-s);line-height:1.6;color:var(--gray-light);max-width:24rem}
+.mdd-board{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.mdd-board caption{caption-side:top;text-align:left;padding:0 0 .9rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light)}
+.mdd-board th,.mdd-board td{padding:1.05rem 1.2rem 1.05rem 0;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+.mdd-board thead th{padding-top:.6rem;padding-bottom:.6rem;border-top:1px solid var(--edge-hi);font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray)}
+.mdd-board tbody th{font-family:var(--font-display);font-weight:600;font-size:1.05rem;line-height:1.3;color:var(--white)}
+.mdd-board tbody th small{display:block;margin-top:.3rem;font-family:var(--font-body);font-weight:400;font-size:var(--fs-small);line-height:1.5;color:var(--gray)}
+.mdd-board td{font-size:var(--fs-body-s);line-height:1.55;color:var(--gray-light)}
+.mdd-board .n{padding-right:0;text-align:right;white-space:nowrap}
+.mdd-board td.n{font-family:var(--font-display);font-weight:600;font-size:clamp(1.3rem,1.9vw,1.65rem);line-height:1.1;color:var(--white)}
+.mdd-board tfoot :is(th,td){border-top:1px solid var(--edge-hi);border-bottom:1px solid var(--edge-hi)}
+.mdd-board tfoot th{font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--white);vertical-align:middle}
+.mdd-board tfoot td{vertical-align:middle}
+.mdd-board tfoot td.n{font-size:clamp(1.6rem,2.5vw,2.15rem)}
+.mdd-w{display:inline-flex;align-items:center;gap:.4rem;margin-top:.45rem;font-size:var(--fs-small);font-weight:600;color:var(--white);text-decoration:none;border-bottom:1px solid var(--edge-hi);padding-bottom:.1rem;width:max-content}
+.mdd-board td .mdd-w{display:flex}
+.mdd-w::before{content:"";border-left:6px solid var(--orange);border-top:4px solid transparent;border-bottom:4px solid transparent}
+.mdd-w:hover,.mdd-w:focus-visible{border-color:var(--orange)}
+.mdd-top,.mdd-next{display:flex;flex-wrap:wrap;align-items:baseline;gap:.3rem 1rem;margin:var(--sp-3) 0 0;font-size:var(--fs-body-s);line-height:1.55;color:var(--gray-light)}
+.mdd-top b,.mdd-next b{display:inline-flex;align-items:center;gap:.55rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--white)}
+.mdd-next{display:grid;gap:.55rem;margin-top:var(--sp-2);padding-top:var(--sp-2);border-top:1px solid var(--line)}
+.mdd-next-t{font-family:var(--font-display);font-weight:600;font-size:1.05rem;line-height:1.3;color:var(--white)}
+.mdd-next-t small{display:block;margin-top:.3rem;font-family:var(--font-body);font-weight:400;font-size:var(--fs-small);line-height:1.5;color:var(--gray)}
+
+/* ---------- 5. proof: the word, then the work ---------- */
+.mdd-quote{margin:0 0 clamp(3rem,7vw,5rem);max-width:54rem}
+.mdd-quote blockquote{margin:var(--sp-2) 0 0}
+.mdd-quote p{margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(1.45rem,3vw,2.35rem);line-height:1.25;letter-spacing:-.015em;color:var(--white);text-wrap:balance}
+.mdd-quote figcaption{margin-top:var(--sp-3);font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray)}
+.mdd-quote figcaption .v2-tbd{letter-spacing:.04em;text-transform:none;font-size:var(--fs-small)}
+.md-reel{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);gap:clamp(1.25rem,3vw,2.5rem);align-items:stretch}
+.md-frame{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--card);border-radius:2px}
+.md-frame>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.84)}
+.md-frame:hover>img{filter:none}
+.md-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.md-frame.is-on>img,.md-frame.is-on .md-play{display:none}
+.md-play{position:absolute;left:50%;top:50%;z-index:2;display:grid;place-items:center;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;
+  background:color-mix(in srgb,var(--bg) 62%,transparent);color:color-mix(in srgb,var(--white) 88%,transparent)}
+.md-play::before{content:"";position:absolute;inset:0}
+.md-frame:hover .md-play,.md-play:focus-visible{color:var(--white);background:color-mix(in srgb,var(--orange) 82%,transparent)}
+.md-play:focus-visible{outline:1px solid var(--orange);outline-offset:3px}
+.md-play svg{position:relative;display:block;width:18px;height:18px;margin-left:3px;fill:currentColor}
+.md-now{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.3rem 1.2rem;margin-top:var(--sp-2)}
+.md-now h3{margin:0;font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);color:var(--white)}
+.md-now p{margin:0;font-size:var(--fs-small);color:var(--gray);font-variant-numeric:tabular-nums}
+.md-now a{color:var(--gray-light);text-decoration:none;border-bottom:1px solid var(--edge)}
+.md-now a:hover{color:var(--white);border-color:var(--orange)}
+.md-side .v2-chips{margin:0 0 .6rem}
+@media (min-width:901px){.md-side .v2-chips{flex-wrap:wrap;overflow:visible;-webkit-mask-image:none;mask-image:none}.md-side .v2-chip{padding:.45rem .8rem}}
+.md-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);counter-reset:ro}
+.md-list li[hidden]{display:none}
+.md-list button{all:unset;box-sizing:border-box;display:grid;grid-template-columns:2rem minmax(0,1fr);gap:.5rem;align-items:baseline;width:100%;padding:.72rem .55rem .72rem .35rem;border-bottom:1px solid var(--line);cursor:pointer;transition:background-color .2s var(--ease)}
+.md-list button:hover{background:rgba(255,255,255,.035)}
+.md-list button:focus-visible{outline:1px solid var(--orange);outline-offset:-1px}
+.mdd-ro-n{position:relative;font-family:var(--font-mono);font-size:var(--fs-micro);color:var(--gray);font-variant-numeric:tabular-nums}
+.mdd-ro-t b{display:block;font-family:var(--font-display);font-weight:600;font-size:.93rem;line-height:1.3;color:var(--gray-light)}
+.mdd-ro-t small{display:block;margin-top:.15rem;font-size:var(--fs-small);line-height:1.45;color:var(--gray)}
+.md-list button:hover b,.md-list button[aria-current="true"] b{color:var(--white)}
+.md-list button[aria-current="true"] .mdd-ro-n{color:transparent}
+.md-list button[aria-current="true"] .mdd-ro-n::after{content:"";position:absolute;left:0;top:50%;width:.56rem;height:.56rem;margin-top:-.28rem;border-radius:50%;background:var(--orange)}
+@media (min-width:901px){
+  .md-side{position:relative}
+  .md-side-in{position:absolute;inset:0;display:flex;flex-direction:column}
+  .md-side .md-list{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--edge) transparent;
+    -webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 3rem),transparent);mask-image:linear-gradient(180deg,#000 calc(100% - 3rem),transparent);padding-bottom:2.5rem}
+}
+.mdd-stills{margin-top:clamp(3rem,6vw,4.5rem)}
+.mdd-sub{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.3rem 1rem;margin:0;padding-bottom:.9rem;border-bottom:1px solid var(--line);font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);color:var(--white)}
+.mdd-sub span{font-family:var(--font-body);font-weight:400;font-size:var(--fs-small);color:var(--gray)}
+.md-grid{display:flex;flex-wrap:wrap;gap:clamp(6px,.8vw,10px);margin-top:var(--sp-3);--rh:clamp(150px,19vw,270px)}
+.md-grid::after{content:"";flex:999 1 0}
+.md-grid.is-js::after{content:none}
+.md-grid.is-js .md-ph{flex:none}
+.md-ph{margin:0;flex:var(--r) 1 calc(var(--r) * var(--rh));position:relative;overflow:hidden;background:var(--card)}
+.md-ph a{display:block;cursor:zoom-in}
+.md-ph img{display:block;width:100%;height:auto;aspect-ratio:var(--r);filter:brightness(.94)}
+.md-ph a:is(:hover,:focus-visible) img{filter:none}
+.md-ph a:focus-visible{outline:1px solid var(--orange);outline-offset:2px}
+.md-ph figcaption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.md-more{margin-top:var(--sp-4)}
+@media (prefers-reduced-motion:no-preference){.md-frame>img,.md-ph img{transition:filter .45s var(--ease)}.md-play{transition:color .3s var(--ease),background-color .3s var(--ease)}}
+
+/* ---------- 6. the spec: what you get, what we need ---------- */
+.mdd-spec{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:var(--sp-4) clamp(2.5rem,6vw,6rem)}
+.mdd-spec h3{margin:0 0 .9rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light)}
+.mdd-spec dl{margin:0;border-bottom:1px solid var(--line)}
+.mdd-spec dl>div{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:1rem;min-height:4.25rem;padding:.85rem 0;border-top:1px solid var(--line)}
+.mdd-spec dt{display:flex;align-items:center;gap:1rem;font-family:var(--font-display);font-weight:600;font-size:1.05rem;color:var(--white)}
+.mdd-spec dd{margin:0;text-align:right;font-size:var(--fs-body-s);line-height:1.5;color:var(--gray-light);max-width:18rem}
+.mdd-spec dl>div:nth-child(-n+2) dd{font-family:var(--font-display);font-weight:600;font-size:1.35rem;color:var(--white);font-variant-numeric:tabular-nums}
+.mdd-ar{flex:none;display:grid;place-items:center;width:2.6rem;height:2.6rem}
+.mdd-ar::before{content:"";display:block;border:1.5px solid var(--gray-light);border-radius:2px}
+.mdd-ar.is-169::before{width:2.6rem;height:1.4625rem}
+.mdd-ar.is-916::before{width:1.4625rem;height:2.6rem}
+.mdd-ar.is-32::before{width:2.4rem;height:1.6rem}
+.mdd-ar.is-clock::before{width:1.9rem;height:1.9rem;border-radius:50%;background:linear-gradient(var(--gray-light),var(--gray-light)) 50% 30%/1.5px .6rem no-repeat,linear-gradient(90deg,var(--gray-light),var(--gray-light)) 68% 50%/.5rem 1.5px no-repeat}
+.mdd-spec-note{margin:.9rem 0 0;font-size:var(--fs-small);line-height:1.6;color:var(--gray)}
+.mdd-need{list-style:none;margin:0;padding:0;counter-reset:need;border-bottom:1px solid var(--line)}
+.mdd-need li{counter-increment:need;display:flex;align-items:center;gap:1rem;min-height:4.25rem;padding:.85rem 0;border-top:1px solid var(--line);font-family:var(--font-display);font-weight:600;font-size:1.05rem;color:var(--white)}
+.mdd-need li::before{content:counter(need,decimal-leading-zero);flex:none;width:2.6rem;font-family:var(--font-mono);font-weight:400;font-size:var(--fs-micro);color:var(--gray)}
+
+/* ---------- 7. questions ---------- */
+.mdd-faq-in{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:var(--sp-4) clamp(2.5rem,6vw,6rem);align-items:start}
+.mdd-faq-in .kit-head{margin:0}
+.mdd-faq{border-bottom:1px solid var(--line)}
+.mdd-q{border-top:1px solid var(--line)}
+.mdd-q>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:3.6rem;padding:.9rem 0;cursor:pointer}
+.mdd-q>summary::-webkit-details-marker{display:none}
+.mdd-q>summary h3{margin:0;font-family:var(--font-display);font-weight:600;font-size:1.08rem;line-height:1.35;color:var(--white)}
+.mdd-q>summary::after{content:"";flex:none;width:.55rem;height:.55rem;margin-right:.35rem;border-right:1.5px solid var(--gray-light);border-bottom:1.5px solid var(--gray-light);rotate:45deg;translate:0 -.15rem}
+.mdd-q[open]>summary::after{rotate:225deg;translate:0 .15rem;border-color:var(--orange)}
+.mdd-q>summary:hover h3{color:var(--orange)}
+.mdd-q>summary:focus-visible{outline:1px solid var(--orange);outline-offset:2px}
+.mdd-q p{margin:0;padding:0 2.5rem 1.2rem 0;font-size:var(--fs-body-s);line-height:1.7;color:var(--gray-light);max-width:40rem}
+@media (prefers-reduced-motion:no-preference){.mdd-q>summary::after{transition:rotate .25s var(--ease),translate .25s var(--ease)}.mdd-q>summary h3{transition:color .2s var(--ease)}}
+
+/* ---------- 8. the dates: the page's one lit panel holds the form ---------- */
+html body .cta-band.mdd-book .cta-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-areas:"l form" "or form";grid-template-rows:auto 1fr;column-gap:clamp(2.5rem,6vw,5.5rem);row-gap:0;align-items:start}
+html body .mdd-book .cta-card>.mdd-book-l{grid-area:l}
+html body .mdd-book .cta-card>.mdd-form{grid-area:form}
+html body .mdd-book .cta-card>.mdd-or{grid-area:or}
+.mdd-book h2{margin:0;text-wrap:balance}
+html body .mdd-book .cta-body{margin:var(--sp-2) 0 0;max-width:30rem;font-size:var(--fs-body-s);line-height:1.65;color:var(--gray-light)}
+.mdd-season{margin-top:var(--sp-4)}
+.mdd-season-k{display:flex;align-items:center;gap:.6rem;margin:0 0 .7rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--white)}
+.mdd-months{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px}
+.mdd-months li{display:flex;flex-direction:column;gap:.4rem}
+.mdd-months li::before{content:"";display:block;height:.55rem;border:1px solid var(--edge-hi);border-radius:1px}
+.mdd-months li.is-held::before{background:var(--gray);border-color:var(--gray)}
+.mdd-months b{font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-light);text-align:center}
+.mdd-months i{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mdd-season-l{display:flex;gap:1.2rem;margin:.7rem 0 0;font-size:var(--fs-small);color:var(--gray)}
+.mdd-season-l span{display:inline-flex;align-items:center;gap:.45rem}
+.mdd-season-l span::before{content:"";width:.9rem;height:.5rem;border:1px solid var(--edge-hi);border-radius:1px}
+.mdd-season-l .is-held::before{background:var(--gray);border-color:var(--gray)}
+.mdd-or{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.4rem;margin-top:var(--sp-4);padding-top:var(--sp-3);border-top:1px solid var(--line)}
+.mdd-or>span{flex:1 0 100%;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light)}
+html body .mdd-or .listen-btn{padding:.6rem .1rem;border-top:1px solid var(--edge-hi);border-bottom:1px solid var(--edge-hi);display:inline-flex}
+.mdd-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-3) var(--sp-3)}
+.mdd-f{display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.mdd-f-wide{grid-column:1 / -1}
+.mdd-f label{font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light)}
+.mdd-f :is(input,select){width:100%;min-height:50px;box-sizing:border-box;padding:.7rem .95rem;background:var(--bg);border:1px solid var(--edge);border-radius:0;color:var(--white);font:inherit;font-size:16px}
+.mdd-f select{appearance:none;-webkit-appearance:none;padding-right:2.4rem;cursor:pointer;
+  background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23b4b4b4' stroke-width='1.5'/%3E%3C/svg%3E") right .95rem center/12px 8px no-repeat}
+.mdd-f :is(input,select):focus{border-color:var(--live);outline:none}
+.mdd-f input::placeholder{color:var(--gray)}
+.mdd-f-go{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;gap:.9rem 1.5rem;margin-top:.3rem}
+.mdd-f-go p{margin:0;font-size:var(--fs-small);color:var(--gray)}
+.mdd-f-go .btn-solid,.mdd-nl .btn-solid{border:0;cursor:pointer;font-family:var(--font-body)}
+
+/* ---------- 9. the newsletter, one line at the foot ---------- */
+html body .mdd-nl-band{padding-top:clamp(2rem,4vw,3rem);padding-bottom:clamp(2.5rem,5vw,4rem)}
+.mdd-nl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,26rem);grid-template-areas:"k row" ". status" ". fine";column-gap:var(--sp-4);row-gap:.4rem;align-items:center}
+.mdd-nl-k{grid-area:k;font-size:var(--fs-body-s);line-height:1.55;color:var(--gray-light)}
+.mdd-nl .v2-nl-row{grid-area:row;flex-wrap:nowrap}
+.mdd-nl .v2-nl-row input{min-width:0;min-height:46px}
+.mdd-nl .nl-status{grid-area:status;margin:0;font-size:var(--fs-small);color:var(--gray-light)}
+.mdd-nl .nl-status:empty{display:none}
+.mdd-nl .fine-print{grid-area:fine;margin:0;font-size:var(--fs-micro);line-height:1.5;color:var(--gray)}
+
+/* ---------- the phone's booking bar (the episode pages' bar), off above 820px ---------- */
+@media (min-width:821px){.mdd-bar{display:none}}
+.mdd-bar .v4-next{font-size:var(--fs-small);font-weight:500;letter-spacing:.02em;color:var(--white)}
+
+/* ---------- tablet ---------- */
+@media (max-width:1100px){
+  .mdd-posters{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--sp-5)}
+  .mdd-aud,.mdd-faq-in{grid-template-columns:minmax(0,1fr)}
+  html body .cta-band.mdd-book .cta-card{grid-template-columns:minmax(0,1fr);grid-template-areas:"l" "form" "or";grid-template-rows:none;row-gap:var(--sp-4)}
+}
+@media (max-width:1100px){
+  .mdd-bug{flex-direction:column;align-items:flex-start}
+  .mdd-for{flex-wrap:nowrap}
+}
+@media (max-width:900px){
+  .mdd-packs{grid-template-columns:minmax(0,1fr)}
+  .md-reel{grid-template-columns:minmax(0,1fr)}
+  .mdd-spec{grid-template-columns:minmax(0,1fr)}
+  .mdd-nl{grid-template-columns:minmax(0,1fr);grid-template-areas:"k" "row" "status" "fine"}
+}
+
+/* ---------- tablets on their side: the frame pushed right, so the words keep off the wing ---------- */
+@media (min-width:701px) and (max-width:1360px) and (orientation:landscape){
+  .mdd-hero .kit-hero-media img{transform:scale(var(--mdd-push,1.1));transform-origin:0% 40%}
+}
+@media (min-width:701px) and (max-width:1100px) and (orientation:landscape){
+  .mdd-hero{--mdd-push:1.3}
+  .mdd-lead{max-width:30rem}
+  .mdd-hero .mdd-deck{max-width:28rem}
+}
+
+/* ---------- the band: the picture above, the words below on the ground (phones, and tablets held upright) ---------- */
+@media (max-width:700px),(max-width:1100px) and (orientation:portrait){
+  html body .kit-hero.mdd-hero{display:block;min-height:0;padding:0 var(--gutter) var(--sp-4);--ph:clamp(16rem,calc(100svh - 5.8125rem - 32rem),30rem)}
+  html body .kit-hero.mdd-hero:not(.is-sky) .kit-hero-media{inset:0 0 auto 0;height:calc(var(--ph) + 2.5rem);translate:none}
+  .mdd-hero .kit-hero-media img{object-position:52% 36%;transform:scale(1.22);transform-origin:52% 34%}
+  html body .kit-hero.mdd-hero::after{background:linear-gradient(180deg,rgba(20,21,25,.45) 0,rgba(20,21,25,0) 3.5rem,rgba(20,21,25,0) calc(var(--ph) - 5rem),rgba(20,21,25,.75) calc(var(--ph) - .5rem),var(--bg) calc(var(--ph) + 2.5rem))}
+  html body .mdd-hero .kit-hero-copy{padding-top:calc(var(--ph) - .75rem)}
+  .mdd-hero h1{font-size:clamp(2.75rem,7.4vw,4.4rem)}
+  .mdd-bug{flex-direction:column;align-items:flex-start}
+}
+
+/* ---------- the phone: a layout of its own ---------- */
+@media (max-width:700px){
+  .mdd-wide{display:none}
+  html body .kit-hero.mdd-hero{--ph:clamp(11.5rem,calc(100svh - 5.8125rem - 30.25rem),22rem)}
+  .mdd-tally{margin-bottom:var(--sp-2);gap:.35rem .7rem}
+  .mdd-tally-ev{padding-left:.7rem}
+  .mdd-hero h1{font-size:2.75rem;line-height:1}
+  .mdd-hero .mdd-deck{margin-top:var(--sp-2);font-size:1rem;line-height:1.55}
+  .mdd-act{margin-top:var(--sp-3);gap:.7rem 1.1rem}
+  .mdd-act .btn-solid{padding:.85rem 1.2rem}
+  .mdd-bug{margin-top:var(--sp-4);padding-top:var(--sp-3);gap:var(--sp-3)}
+  .mdd-for{gap:.6rem;width:100%}
+  .mdd-for{flex-wrap:nowrap}
+  .mdd-for-k{flex:none;max-width:4.6rem;margin:0;line-height:1.4}
+  .mdd-logo{flex:1 1 0;min-width:0;height:3rem}
+  html body .mdd-hero .mdd-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%}
+  html body .mdd-stats .kit-stat{padding-left:.8rem;margin-left:0}
+  html body .mdd-stats .kit-stat b{font-size:1.45rem}
+  html body .mdd-stats .kit-stat span{font-size:.66rem;letter-spacing:.1em}
+  .mdd-posters{display:flex;gap:.9rem;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 calc(-1 * var(--gutter));padding:0 var(--gutter) .3rem;scroll-padding-inline:var(--gutter)}
+  .mdd-posters::-webkit-scrollbar{display:none}
+  .mdd-show{display:flex;flex-direction:column;flex:0 0 74%;scroll-snap-align:start}
+  .mdd-p-t{font-size:1.4rem}
+  html body .mdd-pack{padding:var(--sp-3) var(--sp-3) var(--sp-3)}
+  .mdd-add{grid-template-columns:minmax(0,1fr)}
+  .mdd-sum{grid-template-columns:auto 1.6rem minmax(0,1fr)}
+  .mdd-post::before{width:1.6rem}
+  .mdd-ch{font-size:.88rem;padding:.5rem .7rem}
+  .mdd-board,.mdd-board tbody,.mdd-board tfoot,.mdd-board tr,.mdd-board caption{display:block;width:100%}
+  .mdd-board thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .mdd-board tr{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:1rem;padding:1rem 0;border-top:1px solid var(--line)}
+  .mdd-board :is(th,td){display:block;padding:0;border:0}
+  .mdd-board tbody th{grid-column:1 / -1}
+  .mdd-board tbody td{margin-top:.55rem}
+  .mdd-board td.n{align-self:end}
+  .mdd-board tfoot tr{border-top:1px solid var(--edge-hi);border-bottom:1px solid var(--edge-hi);align-items:center}
+  .mdd-board tfoot :is(th,td){border:0}
+  .mdd-board tfoot td:not(.n){grid-column:1;grid-row:2;margin-top:.3rem}
+  .mdd-board tfoot td.n{grid-column:2;grid-row:1 / span 2}
+  .md-list button{padding:.65rem .2rem}
+  .md-play{width:58px;height:58px;margin:-29px 0 0 -29px}
+  .md-grid{--rh:118px}
+  .mdd-spec dl>div:last-child{grid-template-columns:minmax(0,1fr);gap:.35rem}
+  .mdd-spec dl>div:last-child dd{text-align:left;padding-left:3.6rem;max-width:none}
+  .mdd-q p{padding-right:0}
+  html body .cta-band.mdd-book{padding-left:0;padding-right:0}
+  html body .cta-band.mdd-book .cta-card{padding:var(--sp-5) var(--gutter) var(--sp-4)}
+  .mdd-months{gap:2px}
+  .mdd-months b{font-size:.56rem;letter-spacing:0}
+  .mdd-form{grid-template-columns:minmax(0,1fr);gap:var(--sp-2)}
+  .mdd-f-go .btn-solid{flex:none}
+  .mdd-or{gap:.6rem 1.2rem}
+}
+@media (max-width:380px){html body .mdd-stats .kit-stat b{font-size:1.3rem}.mdd-tally{letter-spacing:.09em;gap:.3rem .55rem}.mdd-tally-ev{padding-left:.55rem}}
+
+/* ---------- reduced motion: the finished page, still ---------- */
+@media (prefers-reduced-motion:reduce){a.mdd-poster:hover{translate:none}}
+
+/* ---------- the photo viewer, as on the India page (fly.js) ---------- */
+.v4i-fl-lb{border:0;padding:0;margin:0;max-width:none;max-height:none;width:100vw;height:100vh;background:transparent;overflow:hidden;opacity:0;transition:opacity .22s var(--ease)}
+.v4i-fl-lb.is-in{opacity:1}
+.v4i-fl-lb::backdrop{background:rgba(20,21,25,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.v4i-fl-lbs{position:absolute;inset:0;display:grid;place-items:center;touch-action:none}
+.v4i-fl-lb img{max-width:min(92vw,1800px);max-height:86vh;width:auto;height:auto;display:block;box-shadow:0 40px 120px rgba(0,0,0,.7);border-radius:3px;cursor:zoom-in;transform-origin:center center;transition:transform .18s var(--ease),opacity .22s var(--ease);user-select:none;-webkit-user-drag:none;transform:scale(.96)}
+.v4i-fl-lb.is-in img{transform:none}
+.v4i-fl-lb.is-zoomed img{cursor:grab}
+.v4i-fl-lb.is-drag img{cursor:grabbing;transition:opacity .22s var(--ease)}
+.v4i-fl-lbx{position:absolute;top:1rem;right:1rem;width:2.6rem;height:2.6rem;border-radius:50%;border:1px solid rgba(246,244,244,.3);background:rgba(20,21,25,.5);cursor:pointer;z-index:2;padding:0;transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.v4i-fl-lbx::before,.v4i-fl-lbx::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:1px;margin:0 0 0 -7px;background:var(--white);transform:rotate(45deg)}
+.v4i-fl-lbx::after{transform:rotate(-45deg)}
+.v4i-fl-lbx:hover,.v4i-fl-lbx:focus-visible{border-color:var(--orange);outline:none;transform:rotate(90deg)}
+.v4i-fl-lbc{position:absolute;left:1.25rem;bottom:1.1rem;max-width:50vw;display:flex;align-items:baseline;gap:.8rem;font-family:var(--font-display);font-weight:600;font-size:var(--fs-small);color:var(--white);pointer-events:none}
+.v4i-fl-lbc .v4i-fl-lbi{font-family:var(--font-mono);font-weight:400;font-size:var(--fs-micro);letter-spacing:.08em;color:var(--gray)}
+.v4i-fl-lbn{position:absolute;top:50%;transform:translateY(-50%);width:2.8rem;height:2.8rem;border-radius:50%;border:1px solid rgba(246,244,244,.3);background:rgba(20,21,25,.5);color:var(--white);cursor:pointer;z-index:2;display:grid;place-items:center;padding:0;transition:border-color .2s var(--ease),background .2s var(--ease)}
+.v4i-fl-lbn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.v4i-fl-lbn:hover,.v4i-fl-lbn:focus-visible{border-color:var(--orange);background:rgba(255,117,23,.18);outline:none}
+.v4i-fl-lbn[hidden]{display:none}
+.v4i-fl-lbp{left:1rem}
+.v4i-fl-lbnx{right:1rem}
+.v4i-fl-lbh{position:absolute;right:1.25rem;bottom:1.2rem;font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.06em;color:var(--gray);white-space:nowrap;pointer-events:none}
+@media (max-width:700px){.v4i-fl-lbh{display:none}.v4i-fl-lb img{max-width:100vw;max-height:78vh;border-radius:0}.v4i-fl-lbc{bottom:1rem;max-width:calc(100vw - 2.5rem)}
+  .v4i-fl-lbn{top:auto;bottom:4rem;transform:none}.v4i-fl-lbp{left:auto;right:4.4rem}.v4i-fl-lbnx{right:1rem}.v4i-fl-lbx,.v4i-fl-lbn{width:2.75rem;height:2.75rem}}
+@media (prefers-reduced-motion:reduce){.v4i-fl-lb,.v4i-fl-lb img,.v4i-fl-lbx{transition:none}}
+
+</style>
+<!-- site-schema -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://paraglidingatlas.com/#organization",
+   "name": "Paragliding Atlas",
+   "url": "https://paraglidingatlas.com/",
+   "description": "A talk show on the art and science of free flight. Honest conversations with designers, test pilots, instructors and record holders, published in full with transcripts, alongside small guided paragliding trips.",
+   "email": "aninder@paraglidingatlas.com",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://paraglidingatlas.com/assets/logo/atlas-logo-white.png"
+   },
+   "founder": {
+    "@type": "Person",
+    "name": "Aninder Singh"
+   },
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Olav Troviks Vei M 68",
+    "postalCode": "0864",
+    "addressLocality": "Oslo",
+    "addressCountry": "NO"
+   },
+   "identifier": "937116934",
+   "sameAs": [
+    "https://www.youtube.com/@ParaglidingAtlas",
+    "https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803",
+    "https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec",
+    "https://www.patreon.com/cw/ParaglidingAtlas",
+    "https://www.instagram.com/anindersingh13",
+    "https://castbox.fm/channel/Paragliding-Atlas-by-Aninder-Singh-id6075445",
+    "https://www.podbean.com/podcast-detail/tb6yq-2f5cd4/Paragliding-Atlas-by-Aninder-Singh-Podcast"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://paraglidingatlas.com/#website",
+   "name": "Paragliding Atlas",
+   "url": "https://paraglidingatlas.com/",
+   "description": "A talk show on the art and science of free flight. Honest conversations with designers, test pilots, instructors and record holders, published in full with transcripts, alongside small guided paragliding trips.",
+   "inLanguage": "en",
+   "publisher": {
+    "@id": "https://paraglidingatlas.com/#organization"
+   }
+  }
+ ]
+}
+</script>
+<!-- /site-schema --><script src="../../v2.js?v=c7722c82"></script>
+<script src="../../v2-immersive.js?v=80a78cab"></script>
+<!-- app --><link rel="manifest" href="../../manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Atlas">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" sizes="180x180" href="../../img/app-180.png">
+<script defer src="../../pwa.js?v=7c836a4a"></script><!-- /app -->
+</head>
+<body>
+
+<div class="page-wrap">
+
+<nav>
+  <span class="nav-corner-l"></span>
+  <span class="nav-corner-r"></span>
+  <span class="nav-coords">59.9139°N · 10.7522°E</span>
+  <a href="../../index.html" class="wordmark"><img src="../../../../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100"></a>
+  <div class="nav-links v4-nav">
+    <a href="../../expeditions.html">Expeditions</a>
+    <span class="nav-sep">|</span>
+    <a href="../../podcast.html">Podcast</a>
+    <span class="nav-sep">|</span>
+    <a href="../../knowledge-base.html">Knowledge Base</a>
+    <span class="nav-sep">|</span>
+    <a href="../../about.html">About</a>
+    <!-- v4:needs record-attempt.html --><span class="nav-sep">|</span>
+    <a class="v4-wr" href="../../record-attempt.html" title="Speed Record"><svg viewBox="0 0 16 10" aria-hidden="true" focusable="false"><path d="M6 1.5h9"/><path d="M2 5h13"/><path d="M8 8.5h7"/></svg>Speed Record</a><!-- /v4:needs -->
+  </div>
+  <a href="#dates" class="nav-cta" data-hover><span>Enquire Now</span></a>
+</nav>
+<div class="nav-chevron"></div>
+<main id="v4-main">
+<header class="kit-hero mdd-hero">
+  <div class="kit-hero-media">
+    <img src="../../img/media-tmp/SRS_5_T3_27-1600.webp" srcset="../../img/media-tmp/SRS_5_T3_27-800.webp 800w, ../../img/media-tmp/SRS_5_T3_27-1600.webp 1600w, ../../img/media-tmp/SRS_5_T3_27-2400.webp 2400w" sizes="100vw" width="1600" height="1067" alt="A white and blue wing over the dry plain at SRS Piedrahita, a yellow wing racing beyond it" fetchpriority="high">
+  </div>
+  <div class="kit-hero-copy mdd-hero-copy">
+    <div class="mdd-lead">
+      <p class="mdd-tally" data-live-from="2026-11-08" data-live-to="2026-11-14"><b><i aria-hidden="true"></i><span class="mdd-tally-k">Next on air</span></b><span class="mdd-tally-ev">SRS Tapalpa<span class="mdd-wide">, Mexico</span> &middot; 8 to 14 Nov<span class="mdd-wide"> 2026</span></span></p>
+      <h1>Your Comp,<span> On Air</span></h1>
+      <p class="kit-intro mdd-deck">Your race told every task day, your sponsors seen on your channels and ours, and your pilots given a reason to come back.</p>
+      <div class="kit-actions mdd-act">
+        <a class="btn-solid" href="#dates" data-hover><span>Check dates for your event</span></a>
+        <a class="btn-lines" href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" data-hover>Book a Call</a>
+      </div>
+    </div>
+    <div class="mdd-bug">
+      <div class="mdd-for">
+        <span class="mdd-for-k">Covered for</span>
+        <span class="mdd-logo" role="img" aria-label="SRS, Sports-Class Racing Series (logo slot)"><i aria-hidden="true">Logo slot</i><b aria-hidden="true">SRS</b></span>
+        <span class="mdd-logo" role="img" aria-label="PWCA, the Paragliding World Cup Association (logo slot)"><i aria-hidden="true">Logo slot</i><b aria-hidden="true">PWCA</b></span>
+      </div>
+      <div class="kit-stats mdd-stats">
+        <div class="kit-stat"><b>31,250</b><span>Views on 13 comp videos, 2026</span></div>
+        <div class="kit-stat"><b><span aria-hidden="true">21<small>h</small> 42<small>min</small></span><span class="mdd-sr">21 hours 42 minutes</span></b><span>Live on air at SRS Bassano</span></div>
+        <div class="kit-stat"><b>136</b><span>Countries listen to the podcast</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="kit-band mdd-shows" id="programmes" aria-labelledby="programmes-t">
+  <div class="kit-in">
+    <div class="kit-head">
+      <span class="kit-kicker">What an event gets</span>
+      <h2 class="kit-title" id="programmes-t">Four Programmes Around Your Race</h2>
+      <p class="kit-intro">Before the race, every task day, after the last task and across the season. Each one goes out as a joint post on your channels and on Paragliding Atlas.</p>
+    </div>
+    <ol class="mdd-posters">
+      <li class="mdd-show">
+        <a class="md-poster mdd-poster" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html" aria-label="Pre-Race Show: hear an example, Pre PWC Kenya with Nikolay Yotov"><img src="../../img/media-tmp/poster-pre-race-show-600.webp" srcset="../../img/media-tmp/poster-pre-race-show-600.webp 600w, ../../img/media-tmp/poster-pre-race-show-900.webp 900w" sizes="(max-width:700px) 72vw, (max-width:1100px) 44vw, 22vw" width="600" height="800" alt="The host of the Paragliding Atlas podcast" loading="lazy" decoding="async"><span class="mdd-p-n">01 &middot; Before the race</span><span class="mdd-p-t">Pre-Race Show</span><span class="mdd-p-go" aria-hidden="true">Listen</span></a>
+        <p class="mdd-show-d">A Paragliding Atlas podcast episode on your venue and its conditions, to build anticipation with pilots and audiences.</p>
+        <p class="mdd-show-eg">Example <b>Pre PWC Kenya, with Nikolay Yotov</b></p>
+      </li>
+      <li class="mdd-show">
+        <a class="md-poster mdd-poster" href="#watch" data-play="BRAX1XMU390" aria-label="Daily Highlights: watch an example, Task 1 at the PWC Super Final"><img src="../../img/media-tmp/poster-daily-highlights-600.webp" srcset="../../img/media-tmp/poster-daily-highlights-600.webp 600w, ../../img/media-tmp/poster-daily-highlights-900.webp 900w" sizes="(max-width:700px) 72vw, (max-width:1100px) 44vw, 22vw" width="600" height="800" alt="An orange wing between white clouds" loading="lazy" decoding="async"><span class="mdd-p-n">02 &middot; Every task day</span><span class="mdd-p-t">Daily Highlights</span><span class="mdd-p-go" aria-hidden="true">Watch</span></a>
+        <p class="mdd-show-d">A video each task day: the task, the results, the race and what made the day, with social clips and a results newsletter.</p>
+        <p class="mdd-show-eg">Example <b>Task 1, PWC Super Final, 7,342 views</b></p>
+      </li>
+      <li class="mdd-show">
+        <div class="mdd-poster"><img src="../../img/media-tmp/poster-aftermovie-600.webp" srcset="../../img/media-tmp/poster-aftermovie-600.webp 600w, ../../img/media-tmp/poster-aftermovie-900.webp 900w" sizes="(max-width:700px) 72vw, (max-width:1100px) 44vw, 22vw" width="600" height="800" alt="The gaggle, dozens of wings in the blue" loading="lazy" decoding="async"><span class="mdd-p-n">03 &middot; After the race</span><span class="mdd-p-t">Aftermovie</span></div>
+        <p class="mdd-show-d">The whole event in one film: task details, racing strategies, the leaderboard standings and the fun of it.</p>
+        <p class="mdd-show-eg">Example <i class="v2-tbd">[to supply]</i></p>
+      </li>
+      <li class="mdd-show">
+        <div class="mdd-poster"><img src="../../img/media-tmp/poster-race-behind-the-race-600.webp" srcset="../../img/media-tmp/poster-race-behind-the-race-600.webp 600w" sizes="(max-width:700px) 72vw, (max-width:1100px) 44vw, 22vw" width="600" height="800" alt="A pilot in harness at launch among the crowd" loading="lazy" decoding="async"><span class="mdd-p-n">04 &middot; Across the season</span><span class="mdd-p-t">Race Behind The Race</span></div>
+        <p class="mdd-show-d">Behind the scenes and athlete showreels: what it takes to run a comp, and a closer bond between audiences, athletes and organisers.</p>
+        <p class="mdd-show-eg">Example <i class="v2-tbd">[to supply]</i></p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="kit-band v2-topo mdd-packages" id="packages" aria-labelledby="packages-t">
+  <div class="kit-in">
+    <div class="kit-head">
+      <span class="kit-kicker">Packages</span>
+      <h2 class="kit-title" id="packages-t">Three Ways To Cover Your Event</h2>
+      <p class="kit-intro">What each one delivers. Every package is priced per event, agreed on a call once we know your dates, your place and your budget.</p>
+    </div>
+    <div class="mdd-packs">
+      <article class="kit-panel mdd-pack" aria-labelledby="pk-daily">
+        <h3 id="pk-daily">Daily</h3>
+        <p class="mdd-pack-for">Every task day, told.</p>
+        <ul>
+          <li>Daily Highlights<small>A video each task day</small></li>
+          <li>Social clips</li>
+          <li>A results newsletter</li>
+        </ul>
+        <div class="mdd-pack-foot"><span class="mdd-pack-price">Priced per event</span><a class="btn-lines" href="#dates" data-package="Daily" aria-label="Check dates for the Daily package" data-hover>Check dates</a></div>
+      </article>
+      <article class="kit-panel mdd-pack is-lead" aria-labelledby="pk-full">
+        <p class="mdd-pack-tag">Most chosen <span class="mdd-eg">Example</span></p>
+        <h3 id="pk-full">Full Event</h3>
+        <p class="mdd-pack-for">From the build-up to the last frame.</p>
+        <ul>
+          <li>Pre-Race Show<small>The podcast preview of your venue</small></li>
+          <li>Daily Highlights<small>With social clips and a results newsletter</small></li>
+          <li>Aftermovie<small>The whole event in one film</small></li>
+        </ul>
+        <div class="mdd-pack-foot"><span class="mdd-pack-price">Priced per event</span><a class="btn-lines" href="#dates" data-package="Full Event" aria-label="Check dates for the Full Event package" data-hover>Check dates</a></div>
+      </article>
+      <article class="kit-panel mdd-pack" aria-labelledby="pk-season">
+        <h3 id="pk-season">Season</h3>
+        <p class="mdd-pack-for">Your whole series, and the story behind it.</p>
+        <ul>
+          <li>Every event of the series</li>
+          <li>Race Behind The Race<small>Mid-season or as available</small></li>
+        </ul>
+        <div class="mdd-pack-foot"><span class="mdd-pack-price">Priced per event</span><a class="btn-lines" href="#dates" data-package="Season" aria-label="Check dates for the Season package" data-hover>Check dates</a></div>
+      </article>
+    </div>
+    <div class="mdd-add"><p><b>Also offered</b> Live commentary, as at SRS Bassano, and stills, as at SRS Piedrahita.</p><p><b>Start small</b> Begin with what your budget allows and grow the coverage as it grows.</p></div>
+  </div>
+</section>
+
+<section class="kit-band mdd-audience" id="audience" aria-labelledby="audience-t">
+  <div class="kit-in mdd-aud">
+    <div class="mdd-aud-l">
+      <div class="kit-head">
+        <span class="kit-kicker">Your audience</span>
+        <h2 class="kit-title" id="audience-t">Your Audience, Not Just Your Video</h2>
+        <p class="kit-intro">Every programme goes out as a joint post, on your channels and on Paragliding Atlas: your race in front of the pilots who follow you and the ones who follow us.</p>
+      </div>
+      <div class="mdd-sum" role="img" aria-label="Your channels and Paragliding Atlas: one joint post">
+        <span class="mdd-ch">Your channels</span>
+        <span class="mdd-ch">Paragliding Atlas</span>
+        <span class="mdd-post">One joint post<small>Seen by both audiences</small></span>
+      </div>
+      <p class="mdd-pod"><b>136</b><span>countries listen to the Paragliding Atlas podcast, about 80 episodes in. Your Pre-Race Show goes out on it.</span></p>
+    </div>
+    <div class="mdd-aud-r">
+      <table class="mdd-board">
+        <caption>The 2026 season, coverage by event</caption>
+        <thead><tr><th scope="col">Event</th><th scope="col">What was made</th><th scope="col" class="n">Views</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">PWC Super Final<small>15th Paragliding World Cup Super Final &middot; Pegalajar, Spain &middot; May 2026</small></th><td>5 highlight videos<a class="mdd-w" href="#watch" data-comp="pwc" aria-label="Watch the 5 PWC Super Final videos">Watch</a></td><td class="n">21,690</td></tr>
+          <tr><th scope="row">SRS Piedrahita<small>BGD Edition &middot; &Aacute;vila, Spain &middot; 22 to 29 Aug 2026 &middot; 120 pilots from 54 countries</small></th><td>Stills and 3 highlight videos<a class="mdd-w" href="#watch" data-comp="srs5" aria-label="Watch the 3 SRS Piedrahita videos">Watch</a></td><td class="n">5,479</td></tr>
+          <tr><th scope="row">SRS Bassano<small>Skywalk Bassano Edition &middot; Monte Grappa, Italy &middot; May 2026</small></th><td>Live commentary: 5 broadcasts, 21 h 42 min on air<a class="mdd-w" href="#watch" data-comp="srs4" aria-label="Watch the 5 SRS Bassano broadcasts">Watch</a></td><td class="n">4,081</td></tr>
+        </tbody>
+        <tfoot><tr><th scope="row">All of 2026</th><td>13 comp videos</td><td class="n">31,250</td></tr></tfoot>
+      </table>
+      <p class="mdd-top"><b>Most watched</b><span>Task 1 Highlights, PWC Super Final: 7,342 views for 6:53 of an 86.5 km sprint</span></p>
+      <p class="mdd-next"><b><i aria-hidden="true"></i>Next</b><span class="mdd-next-t">SRS Tapalpa<small>Advance Edition &middot; Tapalpa, Mexico &middot; 8 to 14 Nov 2026 &middot; 7 tasks &middot; up to 120 pilots from 44 countries</small></span></p>
+    </div>
+  </div>
+</section>
+
+<section class="kit-band v2-topo mdd-proof" id="proof" aria-labelledby="watch-t">
+  <div class="kit-in">
+    <figure class="mdd-quote">
+      <span class="mdd-eg">Example</span>
+      <blockquote><p>&ldquo;The coverage made our race look as big as it felt, every single day.&rdquo;</p></blockquote>
+      <figcaption>Name, role and event <i class="v2-tbd">[to supply]</i></figcaption>
+    </figure>
+    <div class="kit-head" id="watch">
+      <span class="kit-kicker">The work</span>
+      <h2 class="kit-title" id="watch-t"><span class="v4-nw">13 Comp Videos,</span> <span class="v4-nw">31,250 Views</span></h2>
+      <p class="kit-intro">The most watched first: Task 1 of the PWC Super Final, an 86.5 km sprint, 7,342 views. Tap any video to play it here.</p>
+    </div>
+    <div class="md-reel"><div class="md-main"><div class="md-frame" data-vid="BRAX1XMU390"><img src="https://i.ytimg.com/vi/BRAX1XMU390/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><a class="md-play" href="https://www.youtube.com/watch?v=BRAX1XMU390" target="_blank" rel="noopener" aria-label="Play Task 1 Highlights, PWC Super Final, Pegalajar"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg></a></div><div class="md-now"><h3>PWC Super Final, Pegalajar, Task 1 Highlights</h3><p><span>7,342 views &middot; 6:53</span> &middot; <span>14 May 2026</span><span class="md-ep"> &middot; <a href="../../episodes/task-1-highlights-15th-paragliding-world-cup-super-final.html">Read the episode</a></span></p></div></div><div class="md-side"><div class="md-side-in"><div class="v2-chips" role="group" aria-label="Show the videos from"><button class="v2-chip" type="button" aria-pressed="true" data-comp="">All <i>13</i></button><button class="v2-chip" type="button" aria-pressed="false" data-comp="pwc">Pegalajar <i>5</i></button><button class="v2-chip" type="button" aria-pressed="false" data-comp="srs5">Piedrahita <i>3</i></button><button class="v2-chip" type="button" aria-pressed="false" data-comp="srs4">Bassano live <i>5</i></button></div><ol class="md-list"><li data-comp="pwc"><button type="button" data-vid="BRAX1XMU390" data-date="14 May 2026" data-ep="../../episodes/task-1-highlights-15th-paragliding-world-cup-super-final.html" aria-current="true"><span class="mdd-ro-n" aria-hidden="true">01</span><span class="mdd-ro-t"><b>Task 1 Highlights</b><small>PWC Super Final, Pegalajar &middot; 7,342 views &middot; 6:53</small></span></button></li><li data-comp="pwc"><button type="button" data-vid="7il6yV1vdIc" data-date="16 May 2026" data-ep="../../episodes/task-2-highlights-15th-paragliding-world-cup-super-final.html"><span class="mdd-ro-n" aria-hidden="true">02</span><span class="mdd-ro-t"><b>Task 2 Highlights</b><small>PWC Super Final, Pegalajar &middot; 4,034 views &middot; 8:17</small></span></button></li><li data-comp="pwc"><button type="button" data-vid="FOuAWMeoxs4" data-date="13 May 2026" data-ep="../../episodes/highlights-day-1-pwca-superfinal-2026.html"><span class="mdd-ro-n" aria-hidden="true">03</span><span class="mdd-ro-t"><b>Day 1 Highlights</b><small>PWC Super Final, Pegalajar &middot; 3,537 views &middot; 6:44</small></span></button></li><li data-comp="pwc"><button type="button" data-vid="op1-O01xkH4" data-date="18 May 2026" data-ep="../../episodes/task-4-highlights-15th-paragliding-world-cup-super-final.html"><span class="mdd-ro-n" aria-hidden="true">04</span><span class="mdd-ro-t"><b>Task 4 Highlights</b><small>PWC Super Final, Pegalajar &middot; 3,437 views &middot; 7:47</small></span></button></li><li data-comp="pwc"><button type="button" data-vid="vPnIYYKcvEg" data-date="20 May 2026" data-ep="../../episodes/task-5-highlights-15th-paragliding-world-cup-super-final.html"><span class="mdd-ro-n" aria-hidden="true">05</span><span class="mdd-ro-t"><b>Task 5 Highlights</b><small>PWC Super Final, Pegalajar &middot; 3,340 views &middot; 8:08</small></span></button></li><li data-comp="srs5"><button type="button" data-vid="NXUEyPQ3V4E" data-date="6 Sep 2026" data-ep="../../episodes/srs-piedrahita-bgd-edition-task-2-highlights.html"><span class="mdd-ro-n" aria-hidden="true">06</span><span class="mdd-ro-t"><b>Task 2 Highlights</b><small>SRS Piedrahita &middot; 2,303 views &middot; 13:46</small></span></button></li><li data-comp="srs5"><button type="button" data-vid="uCEfssE40u8" data-date="27 Aug 2026" data-ep="../../episodes/srs-piedrahita-bgd-edition-task-1-highlights.html"><span class="mdd-ro-n" aria-hidden="true">07</span><span class="mdd-ro-t"><b>Task 1 Highlights</b><small>SRS Piedrahita &middot; 1,970 views &middot; 7:38</small></span></button></li><li data-comp="srs5"><button type="button" data-vid="cuGs7Lk6Dt4" data-date="23 Aug 2026" data-ep="../../episodes/srs-bgd-edition-2026-day-1-registration-pilots-penas-de.html"><span class="mdd-ro-n" aria-hidden="true">08</span><span class="mdd-ro-t"><b>Day 1: Registration and the Peñas</b><small>SRS Piedrahita &middot; 1,206 views &middot; 9:04</small></span></button></li><li data-comp="srs4"><button type="button" data-vid="ZL9B5eXip5o" data-date="25 May 2026"><span class="mdd-ro-n" aria-hidden="true">09</span><span class="mdd-ro-t"><b>Live: Task 2</b><small>SRS Bassano, live &middot; 1,145 views &middot; 5 h 41 min</small></span></button></li><li data-comp="srs4"><button type="button" data-vid="SZWQjcO_fWk" data-date="26 May 2026"><span class="mdd-ro-n" aria-hidden="true">10</span><span class="mdd-ro-t"><b>Live: Task 3</b><small>SRS Bassano, live &middot; 890 views &middot; 4 h 59 min</small></span></button></li><li data-comp="srs4"><button type="button" data-vid="x8sSBSBy4dI" data-date="29 May 2026"><span class="mdd-ro-n" aria-hidden="true">11</span><span class="mdd-ro-t"><b>Live: Task 4, part 1</b><small>SRS Bassano, live &middot; 853 views &middot; 1 h 57 min</small></span></button></li><li data-comp="srs4"><button type="button" data-vid="DA4nGop3i9g" data-date="30 May 2026"><span class="mdd-ro-n" aria-hidden="true">12</span><span class="mdd-ro-t"><b>Live: Task 4, part 2</b><small>SRS Bassano, live &middot; 513 views &middot; 3 h 55 min</small></span></button></li><li data-comp="srs4"><button type="button" data-vid="PEyO6MXngUw" data-date="30 May 2026"><span class="mdd-ro-n" aria-hidden="true">13</span><span class="mdd-ro-t"><b>Live: Task 5, the final day</b><small>SRS Bassano, live &middot; 680 views &middot; 5 h 8 min</small></span></button></li></ol></div></div></div>
+    <div class="mdd-stills" id="stills">
+      <h3 class="mdd-sub">Stills from the air, SRS Piedrahita 2026<span>Tap one to see it full size</span></h3>
+      <div class="md-grid" data-zoom aria-label="Stills from the air at SRS Piedrahita 2026"><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T3_166-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_166-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_166-800.webp" srcset="../../img/media-tmp/SRS_5_T3_166-800.webp 800w, ../../img/media-tmp/SRS_5_T3_166-1600.webp 1600w" sizes="(max-width:700px) 60vw, 30vw" width="1600" height="1067" alt="A blue and white wing in a deep blue sky" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T3_66-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_66-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_66-800.webp" srcset="../../img/media-tmp/SRS_5_T3_66-800.webp 800w, ../../img/media-tmp/SRS_5_T3_66-1600.webp 1600w" sizes="(max-width:700px) 60vw, 30vw" width="1600" height="1067" alt="The race spread high across the sky" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T3_172-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_172-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_172-800.webp" srcset="../../img/media-tmp/SRS_5_T3_172-800.webp 800w, ../../img/media-tmp/SRS_5_T3_172-1600.webp 1600w" sizes="(max-width:700px) 60vw, 30vw" width="1600" height="1067" alt="A yellow wing overhead in a blue sky" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:0.6667"><a href="../../img/media-tmp/SRS_5_T3_64-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_64-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_64-800.webp" srcset="../../img/media-tmp/SRS_5_T3_64-800.webp 800w, ../../img/media-tmp/SRS_5_T3_64-1600.webp 1600w" sizes="(max-width:700px) 60vw, 30vw" width="1067" height="1600" alt="Wings stacked in a climb" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T3_27-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_27-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_27-800.webp" srcset="../../img/media-tmp/SRS_5_T3_27-800.webp 800w, ../../img/media-tmp/SRS_5_T3_27-1600.webp 1600w" sizes="(max-width:700px) 60vw, 30vw" width="1600" height="1067" alt="A white and blue wing over the dry plain" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.4998"><a href="../../img/media-tmp/SRS_5_T3_92-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_92-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_92-800.webp" srcset="../../img/media-tmp/SRS_5_T3_92-800.webp 800w, ../../img/media-tmp/SRS_5_T3_92-1600.webp 1600w" sizes="(max-width:700px) 60vw, 30vw" width="1600" height="1067" alt="A yellow wing over a green hillside" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T1_9-2400.webp" data-full="../../img/media-tmp/SRS_5_T1_9-2400.webp"><img src="../../img/media-tmp/SRS_5_T1_9-800.webp" srcset="../../img/media-tmp/SRS_5_T1_9-800.webp 800w, ../../img/media-tmp/SRS_5_T1_9-1600.webp 1600w" sizes="(max-width:700px) 60vw, 30vw" width="1600" height="1067" alt="An orange wing high over a patchwork of fields under cloud" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 1</b></figcaption></figure><figure class="md-ph" style="--r:0.6665"><a href="../../img/media-tmp/SRS_5_T3_86-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_86-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_86-800.webp" srcset="../../img/media-tmp/SRS_5_T3_86-800.webp 800w, ../../img/media-tmp/SRS_5_T3_86-1600.webp 1600w" sizes="(max-width:700px) 60vw, 30vw" width="1066" height="1600" alt="A red wing over the plain" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.4652"><a href="../../img/media-tmp/SRS_5_T3_150-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_150-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_150-800.webp" srcset="../../img/media-tmp/SRS_5_T3_150-800.webp 800w, ../../img/media-tmp/SRS_5_T3_150-1600.webp 1600w" sizes="(max-width:700px) 60vw, 30vw" width="1600" height="1092" alt="An orange wing banking in a clear blue sky" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T3_121-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_121-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_121-800.webp" srcset="../../img/media-tmp/SRS_5_T3_121-800.webp 800w, ../../img/media-tmp/SRS_5_T3_121-1600.webp 1600w" sizes="(max-width:700px) 60vw, 30vw" width="1600" height="1067" alt="A white wing with a red edge, the pilot seen from below" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:0.6667"><a href="../../img/media-tmp/SRS_5_T2_76-2400.webp" data-full="../../img/media-tmp/SRS_5_T2_76-2400.webp"><img src="../../img/media-tmp/SRS_5_T2_76-800.webp" srcset="../../img/media-tmp/SRS_5_T2_76-800.webp 800w, ../../img/media-tmp/SRS_5_T2_76-1600.webp 1600w" sizes="(max-width:700px) 60vw, 30vw" width="1067" height="1600" alt="A lime wing above a forested slope" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 2</b></figcaption></figure><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T3_57-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_57-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_57-800.webp" srcset="../../img/media-tmp/SRS_5_T3_57-800.webp 800w, ../../img/media-tmp/SRS_5_T3_57-1600.webp 1600w" sizes="(max-width:700px) 60vw, 30vw" width="1600" height="1067" alt="A white wing over the scrub" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure></div>
+      <div class="kit-actions md-more"><a class="btn-lines" href="../../media-srs-piedrahita-2026.html" data-hover>All 20 from Piedrahita, by task</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="kit-band mdd-specs" id="spec" aria-labelledby="spec-t">
+  <div class="kit-in">
+    <div class="kit-head">
+      <span class="kit-kicker">The spec</span>
+      <h2 class="kit-title" id="spec-t">What You Get, What We Need</h2>
+    </div>
+    <div class="mdd-spec">
+      <div class="mdd-spec-col">
+        <h3>You get</h3>
+        <dl>
+          <div><dt><i class="mdd-ar is-169" aria-hidden="true"></i>Videos</dt><dd>16:9</dd></div>
+          <div><dt><i class="mdd-ar is-916" aria-hidden="true"></i>Social clips</dt><dd>9:16</dd></div>
+          <div><dt><i class="mdd-ar is-32" aria-hidden="true"></i>Stills</dt><dd>Web and full size</dd></div>
+          <div><dt><i class="mdd-ar is-clock" aria-hidden="true"></i>Delivery</dt><dd>The same day, or at the end of the week, as you need</dd></div>
+        </dl>
+        <p class="mdd-spec-note">Same-day delivery depends on the internet on site, when the task finishes and access to footage.</p>
+      </div>
+      <div class="mdd-spec-col">
+        <h3>We need</h3>
+        <ol class="mdd-need">
+          <li>Internet on site</li>
+          <li>Access to footage</li>
+          <li><i class="v2-tbd">[to supply]</i></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kit-band v2-topo mdd-faqs" id="faq" aria-labelledby="faq-t">
+  <div class="kit-in mdd-faq-in">
+    <div class="kit-head">
+      <span class="kit-kicker">Questions</span>
+      <h2 class="kit-title" id="faq-t">What Organisers Ask</h2>
+      <p class="kit-intro">Anything else, ask on a call.</p>
+    </div>
+    <div class="mdd-faq">
+      <details class="mdd-q" open><summary><h3>What does it cost?</h3></summary><p>Each package is priced per event. We agree the price on a call, once we know your event, its dates and its place.</p></details>
+      <details class="mdd-q"><summary><h3>Can we start small?</h3></summary><p>Yes. Start with what your budget allows, Daily Highlights for one event for example, and grow the coverage as the budget grows.</p></details>
+      <details class="mdd-q"><summary><h3>Where does it go out?</h3></summary><p>On your channels and on Paragliding Atlas, as joint posts, so your race reaches both audiences.</p></details>
+      <details class="mdd-q"><summary><h3>Can you cover a whole series?</h3></summary><p>Yes. The Season package covers every event of a series, with Race Behind The Race mid-season or as available.</p></details>
+      <details class="mdd-q"><summary><h3>Who covers travel?</h3></summary><p><i class="v2-tbd">[to supply]</i></p></details>
+      <details class="mdd-q"><summary><h3>Who holds the rights to the videos and photos?</h3></summary><p><i class="v2-tbd">[to supply]</i></p></details>
+      <details class="mdd-q"><summary><h3>How far ahead should we book?</h3></summary><p><i class="v2-tbd">[to supply]</i></p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band mdd-book" id="dates" aria-labelledby="dates-t">
+  <div class="cta-card">
+    <span class="cta-hud-tag">Dates</span>
+    <div class="mdd-book-l">
+      <h2 id="dates-t">Check Dates For <span class="v4-nw">Your Event</span></h2>
+      <p class="cta-body">Tell us the event, the dates and the place. We reply by email with what we can hold, and agree the price on a call.</p>
+      <div class="mdd-season">
+        <p class="mdd-season-k">The 2027 season <span class="mdd-eg">Example</span></p>
+        <ol class="mdd-months" aria-label="Example: open and booked months in 2027">
+          <li><b>Jan</b><i>Open</i></li><li><b>Feb</b><i>Open</i></li><li class="is-held"><b>Mar</b><i>Booked</i></li><li><b>Apr</b><i>Open</i></li><li class="is-held"><b>May</b><i>Booked</i></li><li><b>Jun</b><i>Open</i></li><li class="is-held"><b>Jul</b><i>Booked</i></li><li class="is-held"><b>Aug</b><i>Booked</i></li><li><b>Sep</b><i>Open</i></li><li><b>Oct</b><i>Open</i></li><li><b>Nov</b><i>Open</i></li><li><b>Dec</b><i>Open</i></li>
+        </ol>
+        <p class="mdd-season-l"><span class="is-open">Open</span><span class="is-held">Booked</span></p>
+      </div>
+    </div>
+    <div class="mdd-or">
+      <span>Rather talk it through?</span>
+      <a class="btn-lines" href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" data-hover>Book a Call</a>
+      <a class="listen-btn" href="https://wa.me/4796757456" target="_blank" rel="noopener" data-hover><span><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zm8.3-18.1C18.1 1.5 15.1.2 12 .2 5.5.2.2 5.5.2 12c0 2.1.5 4.1 1.6 5.9L.1 24l6.3-1.6c1.7.9 3.7 1.4 5.6 1.4 6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.5-8.3z"/></svg> WhatsApp</span></a>
+    </div>
+    <form class="mdd-form" action="../../enquire.html" method="get">
+      <input type="hidden" name="trip" value="media">
+      <div class="mdd-f mdd-f-wide"><label for="f-event">Event</label><input id="f-event" name="event" type="text" placeholder="Name of your event" required></div>
+      <div class="mdd-f"><label for="f-when">Dates</label><input id="f-when" name="when" type="text" placeholder="Task days, or a rough window" required></div>
+      <div class="mdd-f"><label for="f-place">Place</label><input id="f-place" name="place" type="text" placeholder="Town and country" required></div>
+      <div class="mdd-f mdd-f-wide"><label for="f-package">Package</label><select id="f-package" name="package"><option>Not sure yet</option><option>Daily</option><option>Full Event</option><option>Season</option></select></div>
+      <div class="mdd-f"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+      <div class="mdd-f"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="mdd-f-go"><button class="btn-solid" type="submit" data-hover><span>Check dates</span></button><p>Priced per event, agreed on a call.</p></div>
+    </form>
+  </div>
+</section>
+
+<div id="newsletter"></div>
+<section class="kit-band mdd-nl-band" aria-label="The newsletter">
+  <div class="kit-in">
+    <div class="mdd-nl" data-nl>
+      <label class="mdd-nl-k" for="newsletterEmail">Pilots and fans: follow SRS Tapalpa day by day, the highlights and results in your inbox.</label>
+      <div class="v2-nl-row"><input id="newsletterEmail" type="email" placeholder="you@example.com" autocomplete="email"><button class="btn-solid" data-hover><span>Sign Up</span></button></div>
+      <p class="nl-status" data-nl-status role="status" aria-live="polite"></p>
+      <p class="fine-print">By submitting you consent to email updates from Paragliding Atlas. Unsubscribe any time.</p>
+    </div>
+  </div>
+</section>
+
+<div class="v4-epbar mdd-bar" aria-hidden="true"><span class="v4-next">Priced per event</span><a class="btn-solid" href="#dates" tabindex="-1" data-hover><span>Check dates</span></a></div>
+
+<dialog class="v4i-fl-lb" id="v4i-fl-lb" aria-label="The photograph, enlarged"><div class="v4i-fl-lbs"><img alt="" draggable="false"></div><button class="v4i-fl-lbx" type="button" aria-label="Close the photograph"></button><span class="v4i-fl-lbc"></span><button class="v4i-fl-lbn v4i-fl-lbp" type="button" hidden aria-label="Previous photograph"><svg viewBox="0 0 16 16"><path d="M10 3 5 8l5 5"/></svg></button><button class="v4i-fl-lbn v4i-fl-lbnx" type="button" hidden aria-label="Next photograph"><svg viewBox="0 0 16 16"><path d="m6 3 5 5-5 5"/></svg></button><span class="v4i-fl-lbh" aria-hidden="true">click to come closer &middot; scroll or pinch for more &middot; drag to move &middot; arrows for the next &middot; click outside to close</span></dialog>
+</main>
+</div><!-- /.page-wrap -->
+
+<footer><!--v4f-->
+  <div class="footer-content v4f-on">
+  <div class="footer-top">
+    <div class="footer-col footer-brand">
+      <a href="../../index.html" class="wordmark" aria-label="Paragliding Atlas, home"><img src="../../../../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100" loading="lazy"></a>
+      <p class="footer-tagline">Touch The Sky With Glory</p>
+      <p class="footer-addr">Paragliding Atlas · Org. nr 937116934<br>Olav Troviks Vei M 68, 0864 Oslo, Norway</p>
+    </div>
+    <div class="footer-col">
+      <h2>Listen</h2>
+      <a href="../../podcast.html">Podcast</a>
+      <a href="../../library.html">Episode Library</a>
+      <a href="../../tags.html">Topics</a>
+      <a href="../../knowledge-base.html">Knowledge Base</a>
+    </div>
+    <div class="footer-col">
+      <h2>Fly With Us</h2>
+      <a href="../../destinations/kenya.html">Kenya</a>
+      <a href="../../destinations/india.html">India</a>
+      <a href="../../destinations/panchgani.html">Panchgani</a>
+      <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener">Book a Call</a>
+    </div>
+    <div class="footer-col">
+      <h2>Atlas</h2>
+      <a href="../../about.html">About</a>
+      <a href="../../mission.html">Mission</a>
+      <a href="../../partners.html">Partner With Me</a>
+      <a href="../../media.html">Media</a>
+      <a href="../../safety-and-disclosure.html">Safety &amp; Disclosure</a>
+    </div>
+    <div class="footer-col">
+      <h2>Legal</h2>
+      <a href="../../terms.html">Terms</a>
+      <a href="../../privacy-policy.html">Privacy</a>
+      <a href="../../participant-agreement.html">Participant Agreement</a>
+      <a href="../../corrections.html">Corrections</a>
+    </div>
+  </div>
+  <div class="v4f-k"><span class="footer-listen-label">Listen on</span></div>
+  <div class="footer-bottom v4f">
+    <div class="v4f-ls"><a href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener">YouTube</a><a href="https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">Spotify</a><a href="https://castbox.fm/channel/Paragliding-Atlas-by-Aninder-Singh-id6075445" target="_blank" rel="noopener">Castbox</a><a href="https://www.podbean.com/podcast-detail/tb6yq-2f5cd4/Paragliding-Atlas-by-Aninder-Singh-Podcast" target="_blank" rel="noopener">Podbean</a><a href="https://www.patreon.com/cw/ParaglidingAtlas" target="_blank" rel="noopener">Patreon</a></div>
+    <div class="v4f-lg"><a href="../../cookie-policy.html">Cookies</a><a href="../../sitemap.html">Sitemap</a><span>© Paragliding Atlas <span data-year>2026</span></span></div>
+  </div>
+  </div>
+<!--/v4f-->
+</footer>
+
+<script src="../../../../script.js?v=1bb85db6"></script>
+<!-- nav-menu -->
+<script defer src="../../../../nav-menu.js?v=001fbbf6"></script>
+<!-- /nav-menu -->
+<script defer src="../../../../newsletter.js?v=d28c01a5"></script>
+<script defer src="../../v4-media.js"></script>
+<script defer src="media-d.js"></script>
+</body>
+</html>

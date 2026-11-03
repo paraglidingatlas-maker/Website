@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<!--v4ld--><style>.v4ld{position:fixed;inset:0;z-index:2147483000;color:#f6f4f4;opacity:0;transition:opacity .3s cubic-bezier(.16,1,.3,1)}.v4ld.on{opacity:1}.v4ld svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.v4ld-a,.v4ld-b{position:absolute;left:0;right:0;background:#141519;transition:transform .75s cubic-bezier(.16,1,.3,1)}.v4ld-a{top:0}.v4ld-b{bottom:0}.v4ld.open .v4ld-a{transform:translateY(-101%)}.v4ld.open .v4ld-b{transform:translateY(101%)}.v4ld svg,.v4ld-n,.v4ld-p,.v4ld-w{transition:opacity .35s}.v4ld.open svg,.v4ld.open .v4ld-n,.v4ld.open .v4ld-p,.v4ld.open .v4ld-w{opacity:0}.v4ld-n{position:absolute;left:0;right:0;top:27%;text-align:center;padding:0 16px;font:500 12px/1 'DM Mono',ui-monospace,monospace;letter-spacing:.5em;text-indent:.5em;text-transform:uppercase}.v4ld-n small{display:block;margin-top:1.1em;font-size:10px;letter-spacing:.32em;text-indent:.32em;color:#8d8c92}.v4ld-p{position:absolute;font:11px/1 'DM Mono',ui-monospace,monospace;letter-spacing:.08em;color:#c9c7cc;transform:translate(10px,-170%);font-variant-numeric:tabular-nums;white-space:nowrap}.v4ld-p i{font-style:normal;color:#8d8c92}.v4ld-w{position:absolute;left:0;right:0;top:12%;text-align:center;font:800 min(25vw,23rem)/1 Poppins,system-ui,sans-serif;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px rgba(246,244,244,.32);white-space:nowrap}@media (max-width:700px){.v4ld-w{top:18%}}</style><script type="application/json" id="v4ld-c">{"k":"page","n":"Media"}</script><script>(function(){var d=document,w=window,C=JSON.parse(d.getElementById("v4ld-c").textContent);
+try{if(sessionStorage.getItem("v4ld"))return}catch(e){}
+var done=false,shown=false,el,t0,raf=0,P=0,reduce=w.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+w.addEventListener("load",function(){done=true});
+function share(){if(done)return 1;var im=d.images,n=0,k=0;for(var i=0;i<im.length;i++){if(im[i].loading=="lazy")continue;n++;if(im[i].complete)k++}
+ var f=d.fonts&&d.fonts.status=="loaded"?1:0;return Math.min(.97,(k+f+(d.readyState!="loading"?1:0))/(n+2))}
+function ns(t,a){var e=d.createElementNS("http://www.w3.org/2000/svg",t);for(var k in a)e.setAttribute(k,a[k]);return e}
+function show(){if(done||d.readyState=="complete")return;shown=true;try{sessionStorage.setItem("v4ld","1")}catch(e){}
+ el=d.createElement("div");el.className="v4ld";el.setAttribute("role","status");el.setAttribute("aria-label","Loading");
+ var W=1000,H=600,s=ns("svg",{viewBox:"0 0 1000 600",preserveAspectRatio:"none","aria-hidden":"true"}),line,len=0,cols=[],tipY=360,x0=0,x1=1000;
+ if(C.k=="trip"){var pts=C.r||[],dd="";if(pts.length){for(var i=0;i<pts.length;i++)dd+=(i?"L":"M")+(i/(pts.length-1)*1000).toFixed(1)+" "+(400-pts[i]*150).toFixed(1)}else dd="M0 360L1000 360";
+  line=ns("path",{d:dd,fill:"none",stroke:"#ff7517","stroke-width":"1.2","stroke-linejoin":"round"});s.appendChild(line)}
+ else if(C.k=="home"){tipY=560;x0=50;x1=950;s.appendChild(ns("line",{x1:50,y1:560,x2:950,y2:560,stroke:"rgba(246,244,244,.14)","vector-effect":"non-scaling-stroke"}));
+  line=ns("line",{x1:50,y1:560,x2:50,y2:560,stroke:"#ff7517","stroke-width":"1.4","vector-effect":"non-scaling-stroke"});s.appendChild(line)}
+ else if(C.k=="listen"){tipY=520;x0=60;x1=940;s.appendChild(ns("line",{x1:60,y1:520,x2:940,y2:520,stroke:"rgba(246,244,244,.14)","vector-effect":"non-scaling-stroke"}));
+  (C.c||[]).forEach(function(c){var l=ns("line",{x1:60+c[0]*880,x2:60+c[0]*880,y1:520,y2:520,stroke:"#ff7517","stroke-width":"1.2","vector-effect":"non-scaling-stroke"});l._h=c[1];l._x=60+c[0]*880;s.appendChild(l);cols.push(l)})}
+ else{tipY=360;x0=300;x1=700;line=ns("line",{x1:300,y1:360,x2:300,y2:360,stroke:"#ff7517","stroke-width":"1.4","vector-effect":"non-scaling-stroke"});s.appendChild(line)}
+ var cut=(C.k=="trip"?400:tipY)/6,A=d.createElement("div"),B=d.createElement("div");A.className="v4ld-a";B.className="v4ld-b";A.style.height=cut+"%";B.style.height=(100-cut)+"%";el.appendChild(A);el.appendChild(B);
+ el.appendChild(s);
+ if(C.k=="home"&&C.w){var wd=d.createElement("div");wd.className="v4ld-w";wd.setAttribute("aria-hidden","true");wd.textContent=C.w;el.appendChild(wd)}
+ var nm=d.createElement("div");nm.className="v4ld-n";nm.textContent=C.n;if(C.f){var sm=d.createElement("small");sm.textContent=C.f;nm.appendChild(sm)}if(C.k!="home")el.appendChild(nm);
+ var pc=d.createElement("div");pc.className="v4ld-p";pc.setAttribute("aria-hidden","true");el.appendChild(pc);
+ (d.body||d.documentElement).appendChild(el);if(line&&line.getTotalLength&&C.k=="trip"){len=line.getTotalLength();line.style.strokeDasharray=len;line.style.strokeDashoffset=len}
+ el.addEventListener("click",out);requestAnimationFrame(function(){el.classList.add("on")});t0=performance.now();
+ function frame(now){var a=share();P=reduce?a:P+(a-P)*.12;if(done&&P>.995)P=1;var x;
+  if(C.k=="trip"){line.style.strokeDashoffset=(len*(1-P)).toFixed(1);var pt=line.getPointAtLength(len*P);x=pt.x;tipY=pt.y}
+  else if(C.k=="listen"){x=x0+(x1-x0)*P;cols.forEach(function(l){var k=Math.max(0,Math.min(1,(x-l._x)/80));l.setAttribute("y2",(520-l._h*170*(1-Math.pow(1-k,3))).toFixed(1))})}
+  else{x=x0+(x1-x0)*P;line.setAttribute("x2",x.toFixed(1))}
+  pc.style.left=(x/10)+"%";pc.style.top=(tipY/6)+"%";pc.innerHTML=Math.round(P*100)+"<i>%</i>";
+  if((P>=1&&now-t0>900)||now-t0>8000){out();return}raf=requestAnimationFrame(frame)}
+ raf=requestAnimationFrame(frame)}
+function out(){if(!el||el._out)return;el._out=1;cancelAnimationFrame(raf);
+ if(reduce)el.classList.remove("on");else el.classList.add("open");setTimeout(function(){if(el&&el.parentNode)el.parentNode.removeChild(el)},reduce?350:850)}
+setTimeout(show,500)})();</script><!--/v4ld-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media: Coverage For Your Comp, Paragliding Atlas</title>
+<meta name="description" content="Comp coverage for organisers and sponsors: a highlight film every task day, live commentary and stills, as covered for SRS and the Paragliding World Cup Association.">
+<link rel="canonical" href="https://paraglidingatlas.com/media.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Media">
+<meta property="og:description" content="Comp coverage for organisers and sponsors: a highlight film every task day, live commentary and stills, as covered for SRS and the Paragliding World Cup Association.">
+<meta property="og:image" content="../../img/media-tmp/SRS_5_T1_9-1600.webp">
+<meta property="og:url" content="https://paraglidingatlas.com/media.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../../img/favicon-96.png">
+<link rel="apple-touch-icon" href="../../../../assets/logo/apple-touch-icon.png">
+<meta name="theme-color" content="#141519">
+<link rel="alternate" type="application/rss+xml" title="Paragliding Atlas Podcast" href="https://anchor.fm/s/ed1344d8/podcast/rss">
+<link rel="preload" href="../../../../assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../assets/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../../../fonts.css?v=1f73ef11">
+<link rel="stylesheet" href="../../../../styles.css?v=b084e774">
+<link rel="stylesheet" href="../../v2.css?v=8f8ced12"><!--v4u-css--><style>@media (max-width:760px){html body :is(.v2-tour-tag,.cta-hud-tag,.band .chips .lab){font-size:var(--fs-micro)}}</style><!--/v4u-css-->
+<!--v4p:polish--><style>html body .kit-hero .kit-stats{gap:var(--sp-3) clamp(2.2rem,5vw,4rem)}html body .kit-hero .kit-stat b{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,4.2vw,3.25rem);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}html body .kit-hero .kit-stat span{color:var(--gray-light);margin-top:.55rem}html body .kit-hero .kit-stat b>span{display:inline;margin:0;font:inherit;color:inherit;letter-spacing:inherit;text-transform:none}html body .kit-hero .kit-stat b>.v4-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}html body .v2-origin-grid{grid-template-columns:minmax(0,1fr);max-width:46rem}.v2-origin .ab2-flight{margin:clamp(2.5rem,6vw,4.5rem) 0 0}.ab2-track{display:block;width:100%;height:auto;overflow:visible}.ab2-track path,.ab2-track rect,.ab2-track circle{fill:none;vector-effect:non-scaling-stroke}.ab2-alt path{stroke:var(--line);stroke-dasharray:2 8}.ab2-ridge{stroke:var(--edge-hi);stroke-width:1.2}.ab2-track .ab2-ridge-fill{fill:var(--card);stroke:none;opacity:.6}.ab2-line{stroke:var(--orange);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.ab2-future{stroke:var(--orange);stroke-width:1.4;stroke-dasharray:3 7;opacity:.55}.ab2-drop{stroke:var(--edge);stroke-dasharray:2 5}.ab2-track .ab2-mark{fill:var(--bg);stroke:var(--orange);stroke-width:1.6}.ab2-wing path,.ab2-wing circle{stroke:var(--white);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.ab2-track .ab2-wing circle{fill:var(--white)}.ab2-log{list-style:none;margin:1.4rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.2rem,3vw,2.5rem)}.ab2-log li{border-top:1px solid;border-image:linear-gradient(90deg,var(--orange),var(--line) 45%,transparent) 1;padding-top:1rem}.ab2-tag{display:block;font-family:var(--font-display);font-weight:700;font-size:var(--fs-h4);color:var(--orange);margin-bottom:.45rem}.ab2-log p{color:var(--gray-light);font-size:1rem;line-height:1.65;margin:0;max-width:30rem}@media (max-width:600px){.ab2-log{grid-template-columns:1fr;gap:1.4rem}}html.v4-fly .ab2-line{stroke-dasharray:var(--L,none);stroke-dashoffset:0;transition:stroke-dashoffset 2.6s cubic-bezier(.45,0,.2,1) .2s}html.v4-fly :is(.ab2-way,.ab2-wing,.ab2-future){transition:opacity .5s var(--ease)}html.v4-fly .ab2-way{transition-delay:var(--d)}html.v4-fly :is(.ab2-wing,.ab2-future){transition-delay:2.6s}html.v4-fly .ab2-log li{transition:opacity .7s var(--ease),transform .7s var(--ease)}html.v4-fly .ab2-log li:nth-child(1){transition-delay:.3s}html.v4-fly .ab2-log li:nth-child(2){transition-delay:.95s}html.v4-fly .ab2-log li:nth-child(3){transition-delay:1.6s}html.v4-fly .ab2-flight:not(.in) .ab2-line{stroke-dashoffset:var(--L,0)}html.v4-fly .ab2-flight:not(.in) :is(.ab2-way,.ab2-wing,.ab2-future){opacity:0}html.v4-fly .ab2-flight:not(.in) .ab2-log li{opacity:0;transform:translateY(12px)}html body .v2-promise p{font-size:1rem;line-height:1.65}html body .v4-nac{list-style:none;margin:var(--sp-5) 0 0;padding:0}html body .v4-nac li{display:grid;grid-template-columns:clamp(2.5rem,5vw,4rem) minmax(0,1fr);align-items:center;padding:clamp(.6rem,1.4vw,1rem) 0;border-top:1px solid var(--line)}html body .v4-nac li:last-child{border-bottom:1px solid var(--line)}html body .v4-nac small{font-family:var(--font-display);font-weight:600;font-size:.9rem;letter-spacing:.1em;color:var(--orange)}html body .v4-nac b{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,8vw,7.4rem);line-height:1;letter-spacing:-.03em;color:var(--white)}html.v4-nacm .v4-nac b{color:transparent;-webkit-text-stroke:1px var(--edge-hi);transition:color .6s var(--ease),-webkit-text-stroke-color .6s var(--ease)}html.v4-nacm .v4-nac small{color:var(--gray);transition:color .6s var(--ease)}html.v4-nacm .v4-nac li.on b{color:var(--white);-webkit-text-stroke-color:transparent}html.v4-nacm .v4-nac li.on small{color:var(--orange)}html.v4-tilt .v2-tours .kit-card-media{position:relative;transform:perspective(800px) translateY(var(--ty,0px)) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .6s var(--ease)}html.v4-tilt .v2-tours .kit-card:is(:hover,:focus-visible) .kit-card-media{--ty:-4px;transition:transform .18s var(--ease)}html.v4-tilt .v2-tours .kit-card-media::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(60% 60% at var(--mx,50%) var(--my,50%),rgba(246,244,244,.14),transparent 70%);transition:opacity .4s var(--ease)}html.v4-tilt .v2-tours .kit-card:hover .kit-card-media::after{opacity:1}</style><script>(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var html = document.documentElement;
+  if (reduce) return;
+  if (window.IntersectionObserver) html.classList.add('v4-fly', 'v4-nacm');
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
+  ready(function () {
+    /* the opening's figures count up once, the real figure kept for screen readers and at the end */
+    document.querySelectorAll('.kit-hero .kit-stat b').forEach(function (b, k) {
+      var real = b.textContent, m = real.match(/^(\d+)(\D*)$/); if (!m) return;
+      var n = +m[1], w = b.getBoundingClientRect().width, show = document.createElement('span'), t0 = 0;
+      show.setAttribute('aria-hidden', 'true');
+      b.textContent = ''; b.appendChild(show);
+      var sr = document.createElement('span'); sr.className = 'v4-sr'; sr.textContent = real; b.appendChild(sr);
+      b.style.display = 'inline-block'; b.style.minWidth = w + 'px';
+      function step(now) {
+        if (!t0) t0 = now;
+        var t = Math.min(1, Math.max(0, (now - t0 - 250 - k * 120) / 1400)), e = 1 - Math.pow(1 - t, 3);
+        show.textContent = Math.round(n * e) + m[2];
+        if (t < 1) requestAnimationFrame(step); else { b.textContent = real; b.style.display = b.style.minWidth = ''; }
+      }
+      requestAnimationFrame(step);
+    });
+    /* the flight is flown once, when it first comes into view; its line is measured on screen so the drawing
+       ends exactly at the tip (the live page's way) */
+    var fl = document.querySelector('.ab2-flight');
+    if (fl && window.IntersectionObserver) {
+      var line = fl.querySelector('.ab2-line'), art = fl.querySelector('svg');
+      var measure = function () {
+        if (!line.getTotalLength) return;
+        line.style.setProperty('--L', (Math.ceil(line.getTotalLength() * art.getBoundingClientRect().width / 1200) + 2) + 'px');
+      };
+      measure();
+      var io = new IntersectionObserver(function (en) {
+        if (en[0].isIntersecting) { measure(); fl.classList.add('in'); io.disconnect(); }
+      }, { threshold: 0.35 });
+      io.observe(fl);
+      window.addEventListener('beforeprint', function () { fl.classList.add('in'); });
+    }
+    /* Navigate, Aviate, Communicate: each fills as it reaches the middle of the screen, in order */
+    var rows = [].slice.call(document.querySelectorAll('.v4-nac li')), raf = 0;
+    function tick() {
+      raf = 0; var mid = window.innerHeight * 0.62;
+      rows.forEach(function (li) { var r = li.getBoundingClientRect(); li.classList.toggle('on', r.top + r.height / 2 < mid); });
+    }
+    if (rows.length) {
+      window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+      window.addEventListener('beforeprint', function () { rows.forEach(function (li) { li.classList.add('on'); }); });
+      tick();
+    }
+    /* the trips lean towards the mouse, with a soft light on them */
+    if (!(window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches)) return;
+    html.classList.add('v4-tilt');
+    document.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var c = e.target.closest && e.target.closest('.v2-tours .kit-card'); if (!c) return;
+      var s = c.querySelector('.kit-card-media'); if (!s) return;
+      var r = s.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      if (x < 0 || x > 1 || y < 0 || y > 1) return;
+      s.style.setProperty('--ry', ((x - 0.5) * 10).toFixed(2) + 'deg');
+      s.style.setProperty('--rx', ((0.5 - y) * 8).toFixed(2) + 'deg');
+      s.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+      s.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+    }, { passive: true });
+    document.addEventListener('pointerout', function (e) {
+      var c = e.target.closest && e.target.closest('.v2-tours .kit-card');
+      if (!c || (e.relatedTarget && c.contains(e.relatedTarget))) return;
+      var s = c.querySelector('.kit-card-media'); if (s) { s.style.removeProperty('--rx'); s.style.removeProperty('--ry'); }
+    });
+  });
+})();</script><!--/v4p:polish-->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://paraglidingatlas.com/media.html#webpage", "name": "Media", "url": "https://paraglidingatlas.com/media.html", "description": "Comp coverage for organisers and sponsors: a highlight film every task day, live commentary and stills, as covered for SRS and the Paragliding World Cup Association.", "isPartOf": {"@id": "https://paraglidingatlas.com/#website"}, "publisher": {"@id": "https://paraglidingatlas.com/#organization"}, "inLanguage": "en", "dateModified": "2026-11-03"}</script>
+<style>
+/* the current page's rules for the reel, the stills and the viewer (tools/v4_media.py) */
+.md-reel{display:grid;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr);gap:clamp(1.25rem,3vw,2.5rem);align-items:stretch;margin-top:var(--sp-5)}
+.md-frame{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--card);border-radius:3px}
+.md-frame>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease-out),filter .45s var(--ease-out);filter:brightness(.82)}
+.md-frame:hover>img{transform:scale(1.025);filter:none}
+.md-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.md-frame.is-on>img,.md-frame.is-on .md-play{display:none}
+.md-play{position:absolute;left:50%;top:50%;z-index:2;display:grid;place-items:center;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;
+  background:color-mix(in srgb,var(--bg) 62%,transparent);color:color-mix(in srgb,var(--white) 86%,transparent);transition:color .3s var(--ease),transform .3s var(--ease),background .3s var(--ease)}
+.md-play::before{content:"";position:absolute;inset:0}
+.md-frame:hover .md-play,.md-play:focus-visible{color:var(--white);background:color-mix(in srgb,var(--orange) 78%,transparent)}
+.md-play:active{transform:scale(.94)}
+.md-play:focus-visible{outline:1px solid var(--orange);outline-offset:3px}
+.md-play svg{position:relative;display:block;width:18px;height:18px;margin-left:3px;fill:currentColor}
+.md-now{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.4rem 1.2rem;margin-top:var(--sp-2)}
+.md-now h3{margin:0;font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);color:var(--white)}
+.md-now p{margin:0;font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.08em;color:var(--gray)}
+.md-now a{color:var(--gray-light);text-decoration:none;border-bottom:1px solid var(--line)}
+.md-now a:hover{color:var(--white);border-color:var(--orange)}
+.md-side .v2-chips{margin:0 0 var(--sp-2)}
+.md-list{list-style:none;margin:0;padding:0;max-height:min(30rem,62vh);overflow:auto;scrollbar-width:thin;scrollbar-color:var(--edge) transparent}
+.md-list li[hidden]{display:none}
+.md-list button{all:unset;box-sizing:border-box;display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:.9rem;align-items:center;width:100%;padding:.55rem .5rem;border-radius:3px;cursor:pointer;transition:background .2s var(--ease)}
+.md-list button:hover,.md-list button:focus-visible{background:rgba(255,255,255,.05)}
+.md-list button:focus-visible{outline:1px solid var(--orange)}
+.md-list button[aria-current="true"]{background:rgba(255,117,23,.1)}
+.md-list img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block;border-radius:2px}
+.md-list b{display:block;font-family:var(--font-display);font-weight:600;font-size:.95rem;line-height:1.3;color:var(--white)}
+.md-list small{display:block;margin-top:.25rem;font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.06em;color:var(--gray)}
+.md-list button[aria-current="true"] b{color:var(--orange)}
+.md-grid{display:flex;flex-wrap:wrap;gap:clamp(6px,.8vw,10px);margin-top:var(--sp-5);--rh:clamp(150px,19vw,270px)}
+.md-grid::after{content:"";flex:999 1 0}
+.md-grid.is-js::after{content:none}
+.md-grid.is-js .md-ph{flex:none}
+.md-ph{margin:0;flex:var(--r) 1 calc(var(--r) * var(--rh));position:relative;overflow:hidden;background:var(--card)}
+.md-ph a{display:block;cursor:zoom-in}
+.md-ph img{display:block;width:100%;height:auto;aspect-ratio:var(--r);transition:transform .8s var(--ease-out),filter .5s var(--ease-out)}
+.md-ph a:hover img,.md-ph a:focus-visible img{transform:scale(1.03)}
+.md-ph a:focus-visible{outline:1px solid var(--orange);outline-offset:2px}
+.md-ph figcaption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.md-more{margin-top:var(--sp-4)}
+.md-day .md-frame{max-width:62rem;margin-top:var(--sp-4)}
+.md-day .md-grid{max-width:62rem}
+.md-day .md-now{max-width:62rem}
+@media (min-width:901px){.md-side{position:relative}
+.md-side-in{position:absolute;inset:0;display:flex;flex-direction:column}
+.md-side .md-list{flex:1;min-height:0;max-height:none}}
+@media (max-width:900px){.md-reel{grid-template-columns:minmax(0,1fr)}
+.md-list{display:flex;gap:.75rem;max-height:none;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;margin-right:calc(-1 * var(--gutter));padding-right:var(--gutter)}
+.md-list::-webkit-scrollbar{display:none}
+.md-list li{flex:none;width:min(44vw,15rem);scroll-snap-align:start}
+.md-list button{grid-template-columns:minmax(0,1fr);gap:.5rem;padding:.4rem}}
+@media (max-width:700px){.md-grid{--rh:118px}
+.md-side .v2-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:calc(-1 * var(--gutter));padding-right:var(--gutter)}
+.md-side .v2-chips::-webkit-scrollbar{display:none}
+.md-side .v2-chip{flex:none}
+.md-play{width:56px;height:56px;margin:-28px 0 0 -28px}}
+@media (prefers-reduced-motion:reduce){.md-frame>img,.md-ph img{transition:none}
+.md-frame:hover>img,.md-ph a:hover img{transform:none}}
+.v4i-fl-lb{border:0;padding:0;margin:0;max-width:none;max-height:none;width:100vw;height:100vh;background:transparent;overflow:hidden;opacity:0;transition:opacity .22s var(--ease)}
+.v4i-fl-lb.is-in{opacity:1}
+.v4i-fl-lb::backdrop{background:rgba(20,21,25,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.v4i-fl-lbs{position:absolute;inset:0;display:grid;place-items:center;touch-action:none}
+.v4i-fl-lb img{max-width:min(92vw,1800px);max-height:86vh;width:auto;height:auto;display:block;box-shadow:0 40px 120px rgba(0,0,0,.7);border-radius:3px;cursor:zoom-in;transform-origin:center center;transition:transform .18s var(--ease),opacity .22s var(--ease);user-select:none;-webkit-user-drag:none;transform:scale(.96)}
+.v4i-fl-lb.is-in img{transform:none}
+.v4i-fl-lb.is-zoomed img{cursor:grab}
+.v4i-fl-lb.is-drag img{cursor:grabbing;transition:opacity .22s var(--ease)}
+.v4i-fl-lbx{position:absolute;top:1rem;right:1rem;width:2.6rem;height:2.6rem;border-radius:50%;border:1px solid rgba(246,244,244,.3);background:rgba(20,21,25,.5);cursor:pointer;z-index:2;padding:0;transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.v4i-fl-lbx::before,.v4i-fl-lbx::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:1px;margin:0 0 0 -7px;background:var(--white);transform:rotate(45deg)}
+.v4i-fl-lbx::after{transform:rotate(-45deg)}
+.v4i-fl-lbx:hover,.v4i-fl-lbx:focus-visible{border-color:var(--orange);outline:none;transform:rotate(90deg)}
+.v4i-fl-lbc{position:absolute;left:1.25rem;bottom:1.1rem;max-width:50vw;display:flex;align-items:baseline;gap:.8rem;font-family:var(--font-display);font-weight:600;font-size:var(--fs-small);color:var(--white);pointer-events:none}
+.v4i-fl-lbc .v4i-fl-lbi{font-family:var(--font-mono);font-weight:400;font-size:var(--fs-micro);letter-spacing:.08em;color:var(--gray)}
+.v4i-fl-lbn{position:absolute;top:50%;transform:translateY(-50%);width:2.8rem;height:2.8rem;border-radius:50%;border:1px solid rgba(246,244,244,.3);background:rgba(20,21,25,.5);color:var(--white);cursor:pointer;z-index:2;display:grid;place-items:center;padding:0;transition:border-color .2s var(--ease),background .2s var(--ease)}
+.v4i-fl-lbn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.v4i-fl-lbn:hover,.v4i-fl-lbn:focus-visible{border-color:var(--orange);background:rgba(255,117,23,.18);outline:none}
+.v4i-fl-lbn[hidden]{display:none}
+.v4i-fl-lbp{left:1rem}
+.v4i-fl-lbnx{right:1rem}
+.v4i-fl-lbh{position:absolute;right:1.25rem;bottom:1.2rem;font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.06em;color:var(--gray);white-space:nowrap;pointer-events:none}
+@media (max-width:700px){.v4i-fl-lbh{display:none}
+.v4i-fl-lb img{max-width:100vw;max-height:78vh;border-radius:0}
+.v4i-fl-lbc{bottom:1rem;max-width:calc(100vw - 2.5rem)}
+.v4i-fl-lbn{top:auto;bottom:4rem;transform:none}
+.v4i-fl-lbp{left:auto;right:4.4rem}
+.v4i-fl-lbnx{right:1rem}
+.v4i-fl-lbx,.v4i-fl-lbn{width:2.75rem;height:2.75rem}}
+@media (prefers-reduced-motion:reduce){.v4i-fl-lb,.v4i-fl-lb img,.v4i-fl-lbx{transition:none}}
+/* ===== Media F, "On Air": the season rundown an event director reads (designer F, 3 Nov 2026) =====
+   One promise, one tally light, one action. Orange is the LIVE tally: the next comp's dot, the lit package,
+   the button. Everything else is white, grey and the owner's photos. */
+
+/* small parts used across the page */
+.mf-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mf-eg{display:inline-flex;align-items:center;padding:.16rem .5rem .14rem;border:1px dashed rgba(246,244,244,.6);border-radius:2px;
+  font-family:var(--font-body);font-style:normal;font-size:.6rem;font-weight:700;line-height:1.35;letter-spacing:.2em;text-transform:uppercase;color:var(--white);white-space:nowrap}
+.mf-dot{flex:none;display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--orange);
+  box-shadow:0 0 0 3px rgba(255,117,23,.16),0 0 14px rgba(255,117,23,.7)}
+.mf-lab{display:block;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light)}
+
+/* ---------- 1. the promise: the first screen ---------- */
+.mf-hero{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;
+  min-height:clamp(560px,calc(100svh - var(--mf-nav,93px)),1040px);padding:clamp(5rem,11vh,7rem) var(--gutter) 0}
+.mf-hero-media{position:absolute;inset:0;z-index:-1;overflow:hidden;background:var(--bg)}
+.mf-hero-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:62% 38%;filter:saturate(.9) brightness(.9)}
+.mf-hero-media::after{content:"";position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(90deg,rgba(20,21,25,.9) 0%,rgba(20,21,25,.62) 30%,rgba(20,21,25,.12) 60%,rgba(20,21,25,0) 78%),
+  linear-gradient(180deg,rgba(20,21,25,.5) 0%,rgba(20,21,25,0) 24%,rgba(20,21,25,0) 50%,rgba(20,21,25,.82) 84%,var(--bg) 100%)}
+.mf-hero-in{position:relative;width:100%;max-width:var(--measure);margin:0 auto}
+.mf-lead{max-width:47rem;padding-bottom:clamp(2rem,5.5vh,3.5rem)}
+.mf-lead .kit-kicker{margin-bottom:1.1rem}
+.mf-hero h1{max-width:7em;margin:0;font-family:var(--font-display);font-weight:700;font-size:clamp(3rem,8.4vw,7.75rem);line-height:.93;letter-spacing:-.035em;color:var(--white);text-wrap:balance}
+.mf-intro{margin:1.5rem 0 0;max-width:37rem;font-size:clamp(1.04rem,1.35vw,1.22rem);line-height:1.6;color:rgba(246,244,244,.86)}
+.mf-acts{margin-top:2rem;gap:1rem 1.8rem}
+
+/* the broadcast bug: the next comp, steady like a tally light */
+.mf-bug{position:absolute;z-index:2;top:clamp(1rem,3.2vh,1.8rem);right:max(var(--gutter),calc((100% - var(--measure)) / 2));display:flex;align-items:center;gap:.75rem;
+  margin:0;padding:.55rem .95rem .55rem .85rem;background:rgba(14,15,19,.6);border:1px solid rgba(246,244,244,.1);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  font-size:var(--fs-micro);font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-light);white-space:nowrap}
+.mf-bug b{font-weight:700;color:var(--white)}
+.mf-bug-e{color:var(--white)}
+.mf-bug-e,.mf-bug-d,.mf-bug-n{padding-left:.75rem;border-left:1px solid var(--edge)}
+.mf-bug-n:empty{display:none}
+.mf-bug-n{font-variant-numeric:tabular-nums}
+
+/* the lower third: who hired, and three numbers */
+.mf-strip{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,2.5fr);border-top:1px solid;border-image:linear-gradient(90deg,var(--edge-hi),var(--line) 55%,transparent) 1}
+.mf-cred{padding:1.25rem 2rem 1.6rem 0}
+.mf-logos{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.85rem}
+.mf-logo{position:relative;display:flex;flex-direction:column;justify-content:center;min-width:8.6rem;padding:.7rem .95rem .65rem;border:1px dashed rgba(246,244,244,.3);border-radius:2px}
+.mf-logo b{font-family:var(--font-display);font-weight:700;font-size:1.4rem;line-height:1;letter-spacing:.02em;color:var(--white)}
+.mf-logo small{margin-top:.32rem;max-width:11.5rem;font-size:.64rem;line-height:1.3;letter-spacing:.03em;color:var(--gray-light)}
+.mf-logo i{position:absolute;top:-.5rem;right:.55rem;padding:0 .35rem;background:var(--bg);font-style:normal;font-size:.55rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gray)}
+html body .mf-hero .kit-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0}
+html body .mf-hero .kit-stat{animation:none;padding:1.25rem 0 1.6rem 1.8rem;border-left:1px solid var(--line)}
+html body .mf-hero .kit-stat b,html body .mf-stats2 .kit-stat b{font-family:var(--font-display);font-weight:600;font-size:clamp(1.9rem,3vw,2.75rem);line-height:1;letter-spacing:-.02em;
+  color:var(--white);-webkit-text-fill-color:currentColor;-webkit-text-stroke:0;font-variant-numeric:tabular-nums;white-space:nowrap}
+html body .mf-hero .kit-stat span{margin-top:.6rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-light)}
+
+/* ---------- 2. the line-up: four posters on the event's own line ---------- */
+.mf-run{position:relative;list-style:none;margin:var(--sp-5) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.9rem,1.8vw,1.6rem)}
+.mf-run::before{content:"";position:absolute;left:0;right:0;top:4px;height:1px;background:linear-gradient(90deg,var(--edge-hi),var(--edge) 60%,transparent)}
+.mf-run-i{display:flex;flex-direction:column;min-width:0}
+.mf-when{position:relative;display:block;padding:1.35rem 0 1rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light)}
+.mf-when::before{content:"";position:absolute;left:0;top:0;width:9px;height:9px;border-radius:50%;background:var(--bg);border:1px solid var(--white)}
+.mf-when i{font-style:normal;color:var(--white);margin-right:.75rem;font-variant-numeric:tabular-nums}
+.mf-poster{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:2/3;overflow:hidden;border-radius:3px;background:var(--card);
+  color:var(--white);text-decoration:none;padding:clamp(1rem,1.6vw,1.45rem);box-shadow:0 30px 70px rgba(0,0,0,.5);outline:1px solid rgba(246,244,244,.08);outline-offset:-1px;
+  transition:transform .6s var(--ease-out),box-shadow .6s var(--ease-out)}
+.mf-poster img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.86);transition:transform 1.2s var(--ease-out),filter .6s var(--ease-out)}
+.mf-poster::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,21,25,0) 32%,rgba(20,21,25,.74) 62%,rgba(20,21,25,.97) 100%)}
+.mf-poster[href^="#watch"] img{object-position:50% 30%}
+.mf-p-t{font-family:var(--font-display);font-weight:700;font-size:clamp(1.3rem,2vw,1.9rem);line-height:1.05;letter-spacing:-.015em;text-wrap:balance}
+.mf-p-d{margin-top:.6rem;font-size:var(--fs-body-s);line-height:1.5;color:var(--gray-light)}
+.mf-p-go{margin-top:1rem;padding-top:.8rem;border-top:1px solid rgba(246,244,244,.16);font-family:var(--font-display);font-weight:600;font-size:.86rem}
+.mf-p-go i{display:inline-block;margin-left:.25rem;font-style:normal;color:var(--orange);transition:transform .3s var(--ease-out)}
+.mf-poster:hover,.mf-poster:focus-visible{transform:translateY(-6px);box-shadow:0 40px 90px rgba(0,0,0,.62)}
+.mf-poster:hover img,.mf-poster:focus-visible img{transform:scale(1.05);filter:none}
+.mf-poster:hover .mf-p-go i,.mf-poster:focus-visible .mf-p-go i{transform:translateX(4px)}
+.mf-poster:focus-visible{outline:1px solid var(--orange)}
+.mf-in{align-self:flex-start;margin-top:.95rem;font-size:var(--fs-small);color:var(--gray);text-decoration:none}
+.mf-in b{font-weight:500;color:var(--gray-light);transition:color .2s var(--ease)}
+.mf-in:hover b,.mf-in:focus-visible b{color:var(--white)}
+
+/* ---------- 3. packages: what each one covers on the event's line, no prices ---------- */
+.mf-pks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2vw,1.6rem);align-items:stretch}
+.mf-pkc{position:relative;display:flex;flex-direction:column;min-width:0;padding:clamp(1.5rem,2.4vw,2.25rem);border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(246,244,244,.035),rgba(246,244,244,.008) 60%)}
+.mf-pkc.is-lead{background:#101116;border-color:var(--edge);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.mf-pkc.is-lead::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:2px;background:var(--orange);box-shadow:0 0 18px rgba(255,117,23,.45)}
+.mf-pk-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem 1rem}
+.mf-pkc h3{margin:0;font-family:var(--font-display);font-weight:700;font-size:clamp(1.7rem,2.5vw,2.2rem);line-height:1.05;letter-spacing:-.02em;color:var(--white)}
+.mf-tag{position:absolute;top:0;left:clamp(1.5rem,2.4vw,2.25rem);transform:translateY(-50%);display:inline-flex;align-items:center;gap:.55rem;padding:0 .65rem;background:var(--bg);
+  font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--white);white-space:nowrap}
+.mf-pk-p{margin:.65rem 0 0;font-size:var(--fs-body);line-height:1.55;color:var(--gray-light)}
+.mf-cov{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin:1.7rem 0 1.5rem}
+.mf-cov.is-season{grid-template-columns:repeat(4,minmax(0,1fr))}
+.mf-cov span{padding-top:.6rem;border-top:3px solid var(--line);font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);white-space:nowrap}
+.mf-cov .is-on{border-top-color:var(--white);color:var(--white)}
+.mf-pk-l{flex:1;list-style:none;margin:0;padding:0}
+.mf-pk-l li{padding:.75rem 0;border-top:1px solid var(--line);font-size:var(--fs-body-s);line-height:1.5;color:var(--gray-light)}
+.mf-pk-l b{font-weight:600;color:var(--white)}
+.mf-pk-price{margin:1.3rem 0 1.2rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray)}
+.mf-pkc>.btn-lines,.mf-pkc>.btn-solid{align-self:flex-start}
+.mf-pk-add{margin:var(--sp-4) 0 0;color:var(--gray-light);line-height:1.6}
+.mf-pk-add b{font-weight:600;color:var(--white)}
+
+/* ---------- 4. your audience: the field full-bleed, then the 2026 season on its line ---------- */
+.mf-reach{position:relative}
+.mf-reach-band{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:flex-end;min-height:clamp(520px,80vh,780px);padding:var(--sp-section) var(--gutter)}
+.mf-reach-band>img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:saturate(.9) brightness(.82)}
+.mf-reach-band::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:
+  linear-gradient(180deg,var(--bg) 0%,rgba(20,21,25,.22) 14%,rgba(20,21,25,.12) 46%,rgba(20,21,25,.8) 84%,var(--bg) 100%),
+  linear-gradient(90deg,rgba(20,21,25,.72) 0%,rgba(20,21,25,.2) 55%,rgba(20,21,25,0) 80%)}
+.mf-reach-in{width:100%;max-width:var(--measure);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--sp-5);align-items:end}
+.mf-reach-in .kit-head{margin:0}
+.mf-big{margin:0;text-align:right}
+.mf-big b{display:block;font-family:var(--font-display);font-weight:700;font-size:clamp(4rem,12.5vw,11.5rem);line-height:.82;letter-spacing:-.05em;color:var(--white);font-variant-numeric:tabular-nums}
+.mf-big span{display:block;margin-top:1.1rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light)}
+.mf-season-band{padding-top:clamp(1.5rem,3vw,2.5rem)}
+.mf-reach .kit-band+.kit-band,.mf-reach-band+.kit-band{border-top:0}
+.mf-line{position:relative;height:3.4rem;margin:0 0 1.4rem}
+.mf-line::before{content:"";position:absolute;left:0;right:0;top:1.3rem;height:1px;background:var(--edge)}
+.mf-m{position:absolute;left:calc(var(--x) * 100%);top:1.3rem;padding:.75rem 0 0 .45rem;border-left:1px solid var(--edge);height:1.1rem;box-sizing:content-box;
+  font-size:.64rem;font-weight:600;line-height:1;letter-spacing:.16em;text-transform:uppercase;color:var(--gray)}
+.mf-mk{position:absolute;top:calc(1.3rem - 4px);left:calc(var(--x) * 100% - 4.5px);width:calc(var(--w,0) * 100% + 9px);height:9px;border-radius:5px;background:var(--white);transition:box-shadow .25s var(--ease)}
+.mf-mk.is-next{background:var(--orange);box-shadow:0 0 0 3px rgba(255,117,23,.16),0 0 14px rgba(255,117,23,.7)}
+.mf-today{position:absolute;top:0;left:calc(var(--x) * 100%);height:1.3rem;border-left:1px dashed var(--gray)}
+.mf-today i{position:absolute;right:.4rem;top:-.1rem;font-style:normal;font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light);white-space:nowrap}
+.mf-season:has(.mf-c1:is(:hover,:focus-within)) .mf-mk1,.mf-season:has(.mf-c2:is(:hover,:focus-within)) .mf-mk2,
+.mf-season:has(.mf-c3:is(:hover,:focus-within)) .mf-mk3{box-shadow:0 0 0 4px rgba(246,244,244,.2)}
+.mf-comps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(1rem,2.4vw,2.25rem)}
+.mf-c{display:flex;flex-direction:column;min-width:0;padding-top:1.1rem;border-top:1px solid var(--line)}
+.mf-c-d{display:flex;align-items:center;gap:.55rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-light)}
+.mf-c.is-next .mf-c-d{color:var(--white)}
+.mf-c h3{margin:.65rem 0 .3rem;font-family:var(--font-display);font-weight:700;font-size:var(--fs-h3);line-height:1.15;color:var(--white)}
+.mf-c-p{margin:0;font-size:var(--fs-small);line-height:1.5;color:var(--gray)}
+.mf-c-w{margin:.85rem 0 0;font-size:var(--fs-body-s);line-height:1.5;color:var(--gray-light)}
+.mf-c-n{margin:.95rem 0 0;font-size:var(--fs-small);color:var(--gray-light)}
+.mf-c-n b{display:block;margin-bottom:.3rem;font-family:var(--font-display);font-weight:600;font-size:clamp(1.8rem,2.8vw,2.5rem);line-height:1;letter-spacing:-.02em;color:var(--white);font-variant-numeric:tabular-nums}
+.mf-c-go{align-self:flex-start;margin-top:auto;padding-top:1.15rem;font-family:var(--font-display);font-weight:600;font-size:.86rem;color:var(--white);text-decoration:none}
+.mf-c-go i{display:inline-block;margin-left:.2rem;font-style:normal;color:var(--orange);transition:transform .3s var(--ease-out)}
+.mf-c-go:hover i,.mf-c-go:focus-visible i{transform:translateX(4px)}
+html body .mf-stats2{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:var(--sp-5);border-top:1px solid var(--line)}
+html body .mf-stats2 .kit-stat{padding:1.5rem 1.8rem 0 0}
+html body .mf-stats2 .kit-stat+.kit-stat{padding-left:1.8rem;border-left:1px solid var(--line)}
+html body .mf-stats2 .kit-stat span{max-width:22rem;margin-top:.65rem;font-size:var(--fs-small);line-height:1.5;letter-spacing:0;text-transform:none;color:var(--gray-light)}
+
+/* ---------- 5. proof: the quote, the films, the stills ---------- */
+.mf-quote{position:relative;max-width:64rem;margin:0 0 var(--sp-section)}
+.mf-quote blockquote{margin:1.1rem 0 0}
+.mf-quote p{margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(1.6rem,3.4vw,2.9rem);line-height:1.2;letter-spacing:-.018em;color:var(--white);text-wrap:balance}
+.mf-quote figcaption{margin-top:1.4rem;font-size:var(--fs-small);color:var(--gray-light)}
+.mf-head2{scroll-margin-top:6rem}
+.mf-proof .md-reel{margin-top:var(--sp-4)}
+.mf-proof .md-frame{box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.mf-proof :is(.md-list small,.md-now p){font-family:var(--font-body);letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.mf-stills{margin-top:var(--sp-section)}
+.mf-stills-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.4rem 2rem}
+.mf-stills-h h3{margin:0;font-family:var(--font-display);font-weight:600;font-size:var(--fs-h3);color:var(--white)}
+.mf-stills-h p{margin:0;font-size:var(--fs-small);color:var(--gray)}
+.mf-stills .md-grid{margin-top:var(--sp-3)}
+
+/* ---------- 6. what you get, what I need: a spec sheet ---------- */
+.mf-spec-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1.5rem,4.5vw,4.5rem)}
+.mf-spec-h{margin:0 0 .5rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light)}
+.mf-spec-l{margin:0}
+.mf-spec-l>div{display:grid;grid-template-columns:minmax(0,12rem) minmax(0,1fr);gap:.4rem 1.2rem;padding:1.15rem 0;border-top:1px solid var(--line)}
+.mf-spec-l>div:last-child{border-bottom:1px solid var(--line)}
+.mf-spec-l dt{font-family:var(--font-display);font-weight:600;font-size:1.06rem;line-height:1.35;color:var(--white)}
+.mf-spec-l dd{margin:0;font-size:var(--fs-body-s);line-height:1.6;color:var(--gray-light)}
+.mf-note{margin:1.1rem 0 0;font-size:var(--fs-small);line-height:1.6;color:var(--gray)}
+
+/* ---------- 7. questions ---------- */
+.mf-faq-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.65fr);gap:clamp(2rem,5vw,5rem);align-items:start}
+.mf-faq .kit-head{position:sticky;top:7rem;margin:0}
+.mf-qs details{border-top:1px solid var(--line)}
+.mf-qs details:last-child{border-bottom:1px solid var(--line)}
+.mf-qs summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.3rem 0;list-style:none;cursor:pointer;
+  font-family:var(--font-display);font-weight:600;font-size:clamp(1.06rem,1.6vw,1.32rem);line-height:1.3;color:var(--white)}
+.mf-qs summary::-webkit-details-marker{display:none}
+.mf-qs summary::after{content:"";flex:none;width:.55rem;height:.55rem;margin-right:.3rem;border-right:1.5px solid var(--gray-light);border-bottom:1.5px solid var(--gray-light);transform:translateY(-30%) rotate(45deg);transition:transform .3s var(--ease)}
+.mf-qs details[open] summary::after{transform:translateY(15%) rotate(-135deg)}
+.mf-qs summary:hover::after{border-color:var(--orange)}
+.mf-qs p{margin:0 0 1.35rem;max-width:40rem;line-height:1.7;color:var(--gray-light)}
+
+/* ---------- 8. check dates: the 2027 line and the form, in the site's booking card ---------- */
+html body .mf-dates .cta-card{display:block;padding:clamp(1.6rem,4vw,3.4rem)}
+.mf-dates-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(2rem,5vw,4.5rem);align-items:start}
+html body .mf-dates h2{margin:0 0 1rem}
+.mf-dates .cta-body{margin:0}
+.mf-cal{margin-top:var(--sp-4)}
+.mf-cal-h{display:flex;align-items:center;gap:.8rem;margin-bottom:.85rem}
+.mf-cal-h b{font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light)}
+.mf-cal-m{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
+.mf-cal-m label,.mf-cal-x{display:flex;flex-direction:column;gap:.3rem;height:100%;padding:.7rem .65rem .65rem;border-top:2px solid var(--line);background:rgba(246,244,244,.03)}
+.mf-cal-m b{font-family:var(--font-display);font-weight:600;font-size:.98rem;line-height:1;color:var(--white)}
+.mf-cal-m label>span,.mf-cal-x>span{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+.mf-cal-m .is-open label{cursor:pointer;border-top-color:var(--white);transition:background .2s var(--ease),border-color .2s var(--ease)}
+.mf-cal-m .is-open label>span{color:var(--gray-light)}
+.mf-cal-m .is-open label:hover,.mf-cal-m .is-open.is-picked label{border-top-color:var(--orange);background:var(--wash)}
+.mf-cal-m .is-held .mf-cal-x{border-top-style:dashed;border-top-color:var(--edge-hi)}
+.mf-cal-m .is-taken .mf-cal-x{background:transparent}
+.mf-cal-m .is-taken b{color:var(--gray);text-decoration:line-through;text-decoration-color:var(--gray)}
+.mf-cal-note{margin:.85rem 0 0;font-size:var(--fs-small);line-height:1.5;color:var(--gray)}
+.mf-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.05rem 1.1rem}
+.mf-f{display:flex;flex-direction:column;gap:.45rem;min-width:0}
+.mf-f label{font-size:var(--fs-small);color:var(--gray-light)}
+.mf-f input,.mf-f select{width:100%;min-height:48px;padding:.7rem .9rem;border:1px solid transparent;border-bottom-color:var(--edge);border-radius:0;background:rgba(255,255,255,.045);
+  color:var(--white);font:inherit;font-size:16px;color-scheme:dark}
+.mf-f input::placeholder{color:var(--gray)}
+.mf-f input:focus,.mf-f select:focus{outline:none;border-bottom-color:var(--orange)}
+.mf-f-sel{position:relative}
+.mf-f-sel select{-webkit-appearance:none;appearance:none;padding-right:2.6rem;cursor:pointer}
+.mf-f-sel::after{content:"";position:absolute;right:1.1rem;bottom:1.3rem;width:.42rem;height:.42rem;pointer-events:none;border-right:1.5px solid var(--gray-light);border-bottom:1.5px solid var(--gray-light);transform:rotate(45deg)}
+.mf-f-sel:has(select:focus)::after{border-color:var(--orange)}
+.mf-go{grid-column:1 / -1;display:flex;flex-wrap:wrap;align-items:center;gap:1.1rem 2rem;margin-top:.9rem}
+.mf-form button.btn-solid{border:0;cursor:pointer;font:inherit;font-weight:600;font-size:.95rem}
+.mf-or{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1.4rem;margin:0;font-size:var(--fs-small);color:var(--gray)}
+
+/* ---------- 9. the newsletter, one line at the foot ---------- */
+.mf-nl{padding:clamp(1.8rem,4vw,2.8rem) var(--gutter) clamp(2rem,4vw,3rem)}
+html body .mf-nl .v2-nl{position:static;display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1.4rem;padding:1.4rem 0 0;margin:0;background:none;border:0;border-top:1px solid var(--line);border-image:none}
+.mf-nl-t{flex:1 1 24rem;margin:0;color:var(--gray-light)}
+.mf-nl-t b{font-weight:600;color:var(--white)}
+.mf-nl input{flex:0 1 19rem;min-width:0;min-height:44px;padding:.6rem .9rem;border:1px solid transparent;border-bottom-color:var(--edge);border-radius:0;background:rgba(255,255,255,.045);color:var(--white);font:inherit;font-size:16px}
+.mf-nl input::placeholder{color:var(--gray)}
+.mf-nl input:focus{outline:none;border-bottom-color:var(--orange)}
+.mf-nl button.btn-lines{background:none;border-left:0;border-right:0;cursor:pointer;font:inherit;font-weight:500;font-size:.95rem;color:var(--white)}
+.mf-nl .nl-status{flex:1 0 100%;margin:0}
+.mf-nl .nl-status:empty{display:none}
+.mf-fine{flex:1 0 100%;margin:0;font-size:.78rem;color:var(--gray)}
+
+/* ---------- motion: one arrival, one slow fall on scroll; reduced motion shows it all still ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .mf-hero-media img{animation:mf-fall linear both;animation-timeline:scroll(root);animation-range:0 100vh}
+  .mf-lead>*,.mf-strip{animation:mf-rise .9s var(--ease-out) backwards}
+  .mf-lead>:nth-child(2){animation-delay:.08s}.mf-lead>:nth-child(3){animation-delay:.18s}.mf-lead>:nth-child(4){animation-delay:.28s}.mf-strip{animation-delay:.4s}
+  .mf-bug{animation:mf-on .8s var(--ease-out) .55s backwards}
+  .mf-line::before{transform-origin:0 50%;animation:mf-draw linear both;animation-timeline:view();animation-range:entry 10% cover 40%}
+}
+@keyframes mf-fall{to{transform:translateY(10%) scale(1.06)}}
+@keyframes mf-rise{from{opacity:0;transform:translateY(18px)}}
+@keyframes mf-on{from{opacity:0}}
+@keyframes mf-draw{from{transform:scaleX(0)}}
+@media (prefers-reduced-motion:reduce){.mf-poster,.mf-poster img,.mf-p-go i,.mf-c-go i{transition:none}.mf-poster:hover,.mf-poster:focus-visible{transform:none}.mf-poster:hover img,.mf-poster:focus-visible img{transform:none}}
+
+/* ---------- tablet ---------- */
+@media (max-width:1100px){
+  .mf-strip{grid-template-columns:minmax(0,1fr)}
+  .mf-cred{padding-right:0;padding-bottom:1.2rem;border-bottom:1px solid var(--line)}
+  html body .mf-hero .kit-stat:first-child{padding-left:0;border-left:0}
+  .mf-run{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:2.2rem}
+  .mf-run::before{display:none}
+  .mf-pks{grid-template-columns:minmax(0,1fr)}
+  .mf-pkc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);column-gap:2rem;align-items:start}
+  .mf-pkc>*{grid-column:1}
+  .mf-pkc>.mf-pk-l{grid-column:2;grid-row:1 / span 5}
+  .mf-pkc>.btn-lines,.mf-pkc>.btn-solid{justify-self:start}
+  .mf-poster{aspect-ratio:3/4}
+  .mf-comps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:2.2rem}
+  .mf-dates-g,.mf-faq-g{grid-template-columns:minmax(0,1fr)}
+  .mf-faq .kit-head{position:static}
+}
+
+/* ---------- phone ---------- */
+@media (max-width:700px){
+  /* the photo takes a fixed share of the first screen, the promise and both buttons sit on its foot, and who
+     hired him follows straight after (in view on a 390x844 phone, its edge in view on 390x683) */
+  .mf-hero{--mf-off:clamp(11.5rem,calc((100svh - var(--mf-nav,93px)) * .31),19rem);display:block;min-height:0;padding:var(--mf-off) var(--gutter) 0}
+  .mf-hero-media{inset:0 0 auto 0;height:calc(var(--mf-off) + 8rem)}
+  .mf-hero-media img{object-position:100% 50%}
+  .mf-hero-media::after{background:
+    linear-gradient(180deg,rgba(20,21,25,.45) 0%,rgba(20,21,25,0) 24%,rgba(20,21,25,0) 44%,rgba(20,21,25,.62) 64%,rgba(20,21,25,.9) 82%,var(--bg) 100%)}
+  .mf-lead{max-width:none;padding-bottom:1.1rem}
+  .mf-lead .kit-kicker{margin-bottom:.7rem;text-shadow:0 1px 3px rgba(0,0,0,.8),0 0 16px rgba(0,0,0,.5)}
+  .mf-hero h1{font-size:clamp(2.6rem,12.6vw,3.4rem);line-height:.93}
+  .mf-intro{margin-top:.9rem;font-size:1rem;line-height:1.55}
+  .mf-acts{margin-top:1.2rem;gap:.9rem}
+  .mf-acts .btn-solid{padding:.85rem 1.15rem;font-size:.9rem}
+  .mf-cred{display:flex;align-items:center;gap:.9rem}
+  .mf-cred .mf-lab{flex:none;width:4.6rem;line-height:1.4}
+  .mf-bug{top:.85rem;left:var(--gutter);right:auto;max-width:calc(100% - 2 * var(--gutter));gap:.6rem;padding:.45rem .7rem;font-size:.64rem;letter-spacing:.1em}
+  .mf-bug-e,.mf-bug-d,.mf-bug-n{padding-left:.6rem}
+  .mf-x{display:none}
+  .mf-bug:not(:has(.mf-bug-n:empty)) .mf-bug-d{display:none}
+  .mf-strip{border-image:none;border-top:1px solid var(--line)}
+  .mf-cred{padding:.95rem 0 1rem}
+  .mf-logos{flex:1;min-width:0;flex-wrap:nowrap;gap:.6rem;margin:0}
+  .mf-logo{flex:1 1 0;min-width:0;padding:.6rem .7rem .55rem}
+  .mf-logo b{font-size:1.15rem}
+  .mf-logo small{margin-top:.25rem;font-size:.56rem}
+  .mf-logo i{font-size:.5rem}
+  html body .mf-dates .cta-card{padding-top:3.4rem}
+  html body .mf-hero .kit-stats{grid-template-columns:minmax(0,1fr)}
+  html body .mf-hero .kit-stat{display:grid;grid-template-columns:9.2rem minmax(0,1fr);align-items:baseline;gap:.8rem;padding:.85rem 0;border-left:0;border-bottom:1px solid var(--line)}
+  html body .mf-hero .kit-stat b{font-size:1.5rem}
+  html body .mf-hero .kit-stat span{margin:0;font-size:.66rem;line-height:1.4}
+  .mf-lineup{padding-top:var(--sp-5)}
+  .mf-run{display:flex;gap:.9rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-right:calc(-1 * var(--gutter));padding:0 var(--gutter) .8rem 0}
+  .mf-run::-webkit-scrollbar{display:none}
+  .mf-run::before{display:block;right:0;width:calc(4 * (74vw + .9rem))}
+  .mf-run-i{flex:none;width:74vw;max-width:19rem;scroll-snap-align:start}
+  .mf-poster{aspect-ratio:2/3}
+  .mf-p-t{font-size:1.45rem}
+  .mf-pks{gap:1.75rem}
+  .mf-pkc{display:flex;align-items:stretch}
+  .mf-pkc>.mf-pk-l{grid-row:auto}
+  .mf-cov span{font-size:.6rem;letter-spacing:.1em}
+  .mf-reach-band{min-height:clamp(460px,74svh,620px);padding-top:var(--sp-5);padding-bottom:var(--sp-4)}
+  .mf-reach-in{grid-template-columns:minmax(0,1fr);gap:var(--sp-4)}
+  .mf-big{text-align:left}
+  .mf-big b{font-size:clamp(4.2rem,23vw,6.5rem)}
+  .mf-line{display:none}
+  .mf-comps{grid-template-columns:minmax(0,1fr);gap:0;border-left:1px solid var(--edge);margin-left:4px}
+  .mf-c{position:relative;padding:0 0 1.9rem 1.4rem;border-top:0}
+  .mf-c::before{content:"";position:absolute;left:-5px;top:.2rem;width:9px;height:9px;border-radius:50%;background:var(--white)}
+  .mf-c.is-next::before{background:var(--orange);box-shadow:0 0 0 3px rgba(255,117,23,.16),0 0 14px rgba(255,117,23,.7)}
+  .mf-c.is-next .mf-c-d .mf-dot{display:none}
+  .mf-c:last-child{padding-bottom:.2rem}
+  .mf-c-go{margin-top:.2rem}
+  html body .mf-stats2{grid-template-columns:minmax(0,1fr);margin-top:var(--sp-4)}
+  html body .mf-stats2 .kit-stat,html body .mf-stats2 .kit-stat+.kit-stat{padding:1.1rem 0;border-left:0;border-bottom:1px solid var(--line)}
+  .mf-quote{margin-bottom:var(--sp-5)}
+  .mf-spec-g{grid-template-columns:minmax(0,1fr);gap:var(--sp-4)}
+  .mf-spec-l>div{grid-template-columns:minmax(0,1fr)}
+  .mf-cal-m{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .mf-form{grid-template-columns:minmax(0,1fr)}
+  .mf-go{flex-direction:column;align-items:flex-start}
+  .mf-nl input{flex:1 1 12rem}
+}
+</style>
+<!-- site-schema -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://paraglidingatlas.com/#organization",
+   "name": "Paragliding Atlas",
+   "url": "https://paraglidingatlas.com/",
+   "description": "A talk show on the art and science of free flight. Honest conversations with designers, test pilots, instructors and record holders, published in full with transcripts, alongside small guided paragliding trips.",
+   "email": "aninder@paraglidingatlas.com",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://paraglidingatlas.com/assets/logo/atlas-logo-white.png"
+   },
+   "founder": {
+    "@type": "Person",
+    "name": "Aninder Singh"
+   },
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Olav Troviks Vei M 68",
+    "postalCode": "0864",
+    "addressLocality": "Oslo",
+    "addressCountry": "NO"
+   },
+   "identifier": "937116934",
+   "sameAs": [
+    "https://www.youtube.com/@ParaglidingAtlas",
+    "https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803",
+    "https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec",
+    "https://www.patreon.com/cw/ParaglidingAtlas",
+    "https://www.instagram.com/anindersingh13",
+    "https://castbox.fm/channel/Paragliding-Atlas-by-Aninder-Singh-id6075445",
+    "https://www.podbean.com/podcast-detail/tb6yq-2f5cd4/Paragliding-Atlas-by-Aninder-Singh-Podcast"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://paraglidingatlas.com/#website",
+   "name": "Paragliding Atlas",
+   "url": "https://paraglidingatlas.com/",
+   "description": "A talk show on the art and science of free flight. Honest conversations with designers, test pilots, instructors and record holders, published in full with transcripts, alongside small guided paragliding trips.",
+   "inLanguage": "en",
+   "publisher": {
+    "@id": "https://paraglidingatlas.com/#organization"
+   }
+  }
+ ]
+}
+</script>
+<!-- /site-schema --><script src="../../v2.js?v=c7722c82"></script>
+<script src="../../v2-immersive.js?v=80a78cab"></script>
+<!-- app --><link rel="manifest" href="../../manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Atlas">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" sizes="180x180" href="../../img/app-180.png">
+<script defer src="../../pwa.js?v=7c836a4a"></script><!-- /app -->
+</head>
+<body>
+
+<div class="page-wrap">
+
+<nav>
+  <span class="nav-corner-l"></span>
+  <span class="nav-corner-r"></span>
+  <span class="nav-coords">59.9139°N · 10.7522°E</span>
+  <a href="../../index.html" class="wordmark"><img src="../../../../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100"></a>
+  <div class="nav-links v4-nav">
+    <a href="../../expeditions.html">Expeditions</a>
+    <span class="nav-sep">|</span>
+    <a href="../../podcast.html">Podcast</a>
+    <span class="nav-sep">|</span>
+    <a href="../../knowledge-base.html">Knowledge Base</a>
+    <span class="nav-sep">|</span>
+    <a href="../../about.html">About</a>
+    <!-- v4:needs record-attempt.html --><span class="nav-sep">|</span>
+    <a class="v4-wr" href="../../record-attempt.html" title="Speed Record"><svg viewBox="0 0 16 10" aria-hidden="true" focusable="false"><path d="M6 1.5h9"/><path d="M2 5h13"/><path d="M8 8.5h7"/></svg>Speed Record</a><!-- /v4:needs -->
+  </div>
+  <a href="../../enquire.html" class="nav-cta" data-hover><span>Enquire Now</span></a>
+</nav>
+<div class="nav-chevron"></div>
+<main id="v4-main">
+
+<header class="mf-hero" id="top">
+  <div class="mf-hero-media">
+    <img src="../../img/media-tmp/SRS_5_T1_9-1600.webp" srcset="../../img/media-tmp/SRS_5_T1_9-800.webp 800w, ../../img/media-tmp/SRS_5_T1_9-1600.webp 1600w, ../../img/media-tmp/SRS_5_T1_9-2400.webp 2400w" sizes="(max-width:700px) 150vw, 100vw" width="1600" height="1067" alt="An orange race wing high over the plain at SRS Piedrahita, under heavy cloud" fetchpriority="high">
+  </div>
+  <p class="mf-bug" data-tally><span class="mf-dot" aria-hidden="true"></span><b data-tally-k>Next</b><span class="mf-bug-e"><span class="mf-x">SRS </span>Tapalpa, Mexico</span><span class="mf-bug-d"><span class="mf-x">Tasks </span>8 to 14 Nov<span class="mf-x"> 2026</span></span><span class="mf-bug-n" data-tally-n></span></p>
+  <div class="mf-hero-in">
+    <div class="mf-lead">
+      <span class="kit-kicker">Comp coverage &middot; For organisers and sponsors</span>
+      <h1>Your Comp, On Air</h1>
+      <p class="mf-intro">A highlight film every task day, live commentary and stills, published as joint posts on your channels and ours, so your sponsors are seen and your pilots come back.</p>
+      <div class="kit-actions mf-acts">
+        <a class="btn-solid" href="#dates" data-hover><span>Check dates for your event</span></a>
+        <a class="btn-lines" href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" data-hover>Book a Call</a>
+      </div>
+    </div>
+    <div class="mf-strip">
+      <div class="mf-cred">
+        <span class="mf-lab">Covered for</span>
+        <div class="mf-logos">
+          <span class="mf-logo" title="Logo slot: the SRS logo file is to come"><b>SRS</b><small>Sports-Class Racing Series</small><i>Logo slot</i></span>
+          <span class="mf-logo" title="Logo slot: the PWCA logo file is to come"><b>PWCA</b><small>Paragliding World Cup Association</small><i>Logo slot</i></span>
+        </div>
+      </div>
+      <div class="kit-stats mf-stats">
+        <div class="kit-stat"><b>31,250</b><span>Views on 13 comp videos</span></div>
+        <div class="kit-stat"><b>21 h 42 min</b><span>Live on air, SRS Bassano</span></div>
+        <div class="kit-stat"><b>136</b><span>Countries listen to the podcast</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="kit-band mf-lineup" id="lineup">
+  <div class="kit-in">
+    <div class="mf-headrow">
+      <div class="kit-head">
+        <span class="kit-kicker">What an event gets</span>
+        <h2 class="kit-title">Four Programmes Around Your Race</h2>
+        <p class="kit-intro">Before the first task, every task day, after the last, and mid-season. Each one goes out as a joint post on your channels and on Paragliding Atlas.</p>
+      </div>
+    </div>
+    <ol class="mf-run">
+      <li class="mf-run-i">
+        <span class="mf-when"><i>01</i>Before the race</span>
+        <a class="md-poster mf-poster" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html"><img src="../../img/media-tmp/poster-pre-race-show-600.webp" srcset="../../img/media-tmp/poster-pre-race-show-600.webp 600w, ../../img/media-tmp/poster-pre-race-show-900.webp 900w" sizes="(max-width:700px) 74vw, 24vw" width="600" height="800" alt="The host of the Paragliding Atlas podcast" loading="lazy" decoding="async"><span class="mf-p-t">Pre-Race Show</span><span class="mf-p-d">A podcast preview of the venue and its conditions.</span><span class="mf-p-go">Hear an example <i aria-hidden="true">&rarr;</i></span></a>
+        <a class="mf-in" href="#pk-full">In <b>Full Event</b></a>
+      </li>
+      <li class="mf-run-i">
+        <span class="mf-when"><i>02</i>Every task day</span>
+        <a class="md-poster mf-poster" href="#watch" data-play="BRAX1XMU390"><img src="../../img/media-tmp/poster-daily-highlights-600.webp" srcset="../../img/media-tmp/poster-daily-highlights-600.webp 600w, ../../img/media-tmp/poster-daily-highlights-900.webp 900w" sizes="(max-width:700px) 74vw, 24vw" width="600" height="800" alt="An orange wing between white clouds" loading="lazy" decoding="async"><span class="mf-p-t">Daily Highlights</span><span class="mf-p-d">A film every task day, with social clips and a results newsletter.</span><span class="mf-p-go">Watch an example <i aria-hidden="true">&rarr;</i></span></a>
+        <a class="mf-in" href="#pk-daily">In <b>Daily</b> and <b>Full Event</b></a>
+      </li>
+      <li class="mf-run-i">
+        <span class="mf-when"><i>03</i>After the race</span>
+        <a class="md-poster mf-poster" href="#pk-full"><img src="../../img/media-tmp/poster-aftermovie-600.webp" srcset="../../img/media-tmp/poster-aftermovie-600.webp 600w, ../../img/media-tmp/poster-aftermovie-900.webp 900w" sizes="(max-width:700px) 74vw, 24vw" width="600" height="800" alt="The gaggle, dozens of wings in the blue" loading="lazy" decoding="async"><span class="mf-p-t">Aftermovie</span><span class="mf-p-d">The event in one film: tasks, strategies, the leaderboard.</span><span class="mf-p-go">See the package <i aria-hidden="true">&rarr;</i></span></a>
+        <a class="mf-in" href="#pk-full">In <b>Full Event</b></a>
+      </li>
+      <li class="mf-run-i">
+        <span class="mf-when"><i>04</i>Mid-season</span>
+        <a class="md-poster mf-poster" href="#pk-season"><img src="../../img/media-tmp/poster-race-behind-the-race-600.webp" width="540" height="720" sizes="(max-width:700px) 74vw, 24vw" alt="A pilot in harness at launch among the crowd" loading="lazy" decoding="async"><span class="mf-p-t">Race Behind The Race</span><span class="mf-p-d">Behind the scenes and athlete showreels.</span><span class="mf-p-go">See the package <i aria-hidden="true">&rarr;</i></span></a>
+        <a class="mf-in" href="#pk-season">In <b>Season</b></a>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="kit-band mf-pk" id="packages">
+  <div class="kit-in">
+    <div class="kit-head">
+      <span class="kit-kicker">Packages</span>
+      <h2 class="kit-title">Three Ways To Cover Your Event</h2>
+      <p class="kit-intro">Every package is priced per event, after a call. Start with what your budget allows and grow the coverage as it does.</p>
+    </div>
+    <div class="mf-pks">
+      <article class="mf-pkc" id="pk-daily" aria-labelledby="pk-daily-h">
+        <div class="mf-pk-top"><h3 id="pk-daily-h">Daily</h3></div>
+        <p class="mf-pk-p">Every task day, on film.</p>
+        <div class="mf-cov" role="img" aria-label="Covers the task days"><span>Before</span><span class="is-on">Task days</span><span>After</span></div>
+        <ul class="mf-pk-l">
+          <li><b>Daily Highlights</b>, a long-form film each task day</li>
+          <li><b>Social clips</b></li>
+          <li><b>A results newsletter</b></li>
+        </ul>
+        <p class="mf-pk-price">Priced per event</p>
+        <a class="btn-lines" href="#dates" data-pkg="Daily" data-hover>Check dates</a>
+      </article>
+      <article class="mf-pkc is-lead" id="pk-full" aria-labelledby="pk-full-h">
+        <span class="mf-tag">Most chosen <span class="mf-eg">Example</span></span>
+        <div class="mf-pk-top"><h3 id="pk-full-h">Full Event</h3></div>
+        <p class="mf-pk-p">From the preview to the final film.</p>
+        <div class="mf-cov" role="img" aria-label="Covers before the race, the task days and after the race"><span class="is-on">Before</span><span class="is-on">Task days</span><span class="is-on">After</span></div>
+        <ul class="mf-pk-l">
+          <li><b>Pre-Race Show</b>, a podcast preview episode</li>
+          <li><b>Daily Highlights</b>, with social clips and a results newsletter</li>
+          <li><b>Aftermovie</b></li>
+        </ul>
+        <p class="mf-pk-price">Priced per event</p>
+        <a class="btn-solid" href="#dates" data-pkg="Full Event" data-hover><span>Check dates</span></a>
+      </article>
+      <article class="mf-pkc" id="pk-season" aria-labelledby="pk-season-h">
+        <div class="mf-pk-top"><h3 id="pk-season-h">Season</h3></div>
+        <p class="mf-pk-p">Every event of your series, one story.</p>
+        <div class="mf-cov is-season" role="img" aria-label="Covers every event of the series"><span class="is-on">Event</span><span class="is-on">Event</span><span class="is-on">Event</span><span class="is-on">Event</span></div>
+        <ul class="mf-pk-l">
+          <li><b>Every event of the series</b>, covered</li>
+          <li><b>Race Behind The Race</b>, mid-season</li>
+        </ul>
+        <p class="mf-pk-price">Priced per event</p>
+        <a class="btn-lines" href="#dates" data-pkg="Season" data-hover>Check dates</a>
+      </article>
+    </div>
+    <p class="mf-pk-add">Also offered: <b>live commentary</b>, as at SRS Bassano, and <b>stills</b>, as at SRS Piedrahita.</p>
+  </div>
+</section>
+
+<section class="mf-reach" id="audience">
+  <div class="mf-reach-band">
+    <img src="../../img/media-tmp/SRS_5_T3_63-1600.webp" srcset="../../img/media-tmp/SRS_5_T3_63-800.webp 800w, ../../img/media-tmp/SRS_5_T3_63-1600.webp 1600w, ../../img/media-tmp/SRS_5_T3_63-2400.webp 2400w" sizes="100vw" width="1600" height="1067" alt="The gaggle at SRS Piedrahita, dozens of wings in the blue" loading="lazy" decoding="async">
+    <div class="mf-reach-in">
+      <div class="kit-head">
+        <span class="kit-kicker">Reach</span>
+        <h2 class="kit-title">Your Audience, Not Just Your Video</h2>
+        <p class="kit-intro">Every piece goes out as a collaborative post on your channels and on Paragliding Atlas: one post, both audiences. This is what the 2026 season reached.</p>
+      </div>
+      <p class="mf-big"><b>31,250</b><span>Views on 13 comp videos in 2026, counted 3 Nov</span></p>
+    </div>
+  </div>
+  <div class="kit-band mf-season-band">
+    <div class="kit-in">
+      <div class="mf-season" data-season>
+        <div class="mf-line" aria-hidden="true">
+          <span class="mf-m" style="--x:0">May</span><span class="mf-m" style="--x:.1449">Jun</span><span class="mf-m" style="--x:.285">Jul</span><span class="mf-m" style="--x:.4299">Aug</span><span class="mf-m" style="--x:.5748">Sep</span><span class="mf-m" style="--x:.715">Oct</span><span class="mf-m" style="--x:.8598">Nov</span>
+          <span class="mf-mk mf-mk1" style="--x:.07"></span><span class="mf-mk mf-mk2" style="--x:.12"></span><span class="mf-mk mf-mk3" style="--x:.528;--w:.033"></span><span class="mf-mk mf-mk4 is-next" style="--x:.8925;--w:.028"></span>
+          <span class="mf-today" data-today hidden><i>Today</i></span>
+        </div>
+        <ol class="mf-comps">
+          <li class="mf-c mf-c1">
+            <span class="mf-c-d">May 2026</span>
+            <h3>PWC Super Final</h3>
+            <p class="mf-c-p">15th Paragliding World Cup Super Final &middot; <span class="v4-nw">Pegalajar, Spain</span></p>
+            <p class="mf-c-w">5 highlight videos</p>
+            <p class="mf-c-n"><b>21,690</b> views</p>
+            <a class="mf-c-go" href="#watch" data-comp="pwc">Watch the five <i aria-hidden="true">&rarr;</i></a>
+          </li>
+          <li class="mf-c mf-c2">
+            <span class="mf-c-d">May 2026</span>
+            <h3>SRS Bassano</h3>
+            <p class="mf-c-p">SRS Skywalk Bassano Edition &middot; Monte Grappa, Italy</p>
+            <p class="mf-c-w">Live commentary: 5 broadcasts, <span class="v4-nw">21 h 42 min</span> on air</p>
+            <p class="mf-c-n"><b>4,081</b> views</p>
+            <a class="mf-c-go" href="#watch" data-comp="srs4">Watch the broadcasts <i aria-hidden="true">&rarr;</i></a>
+          </li>
+          <li class="mf-c mf-c3">
+            <span class="mf-c-d">22 to 29 Aug 2026</span>
+            <h3>SRS Piedrahita</h3>
+            <p class="mf-c-p">SRS BGD Edition &middot; Piedrahita, &Aacute;vila, Spain</p>
+            <p class="mf-c-w">Stills and 3 highlight videos &middot; <span class="v4-nw">FAI CAT 2</span>, 120 pilots from 54 countries</p>
+            <p class="mf-c-n"><b>5,479</b> views</p>
+            <a class="mf-c-go" href="../../media-srs-piedrahita-2026.html">See the photos and videos <i aria-hidden="true">&rarr;</i></a>
+          </li>
+          <li class="mf-c mf-c4 is-next">
+            <span class="mf-c-d"><span class="mf-dot" aria-hidden="true"></span><b data-next-k>Next</b> &middot; Tasks 8 to 14 Nov 2026</span>
+            <h3>SRS Tapalpa</h3>
+            <p class="mf-c-p">SRS Advance Edition &middot; Tapalpa, Mexico</p>
+            <p class="mf-c-w">7 tasks, up to 120 pilots, 44 countries</p>
+            <a class="mf-c-go" href="#dates">Your comp next? Check dates <i aria-hidden="true">&rarr;</i></a>
+          </li>
+        </ol>
+      </div>
+      <div class="kit-stats mf-stats2">
+        <div class="kit-stat"><b>7,342</b><span>Views on one film: Task 1 at the PWC Super Final, an 86.5 km sprint</span></div>
+        <div class="kit-stat"><b>136</b><span>Countries listen to the podcast</span></div>
+        <div class="kit-stat"><b>About 80</b><span>Podcast episodes, the audience your coverage joins</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kit-band mf-proof" id="proof">
+  <div class="kit-in">
+    <figure class="mf-quote">
+      <span class="mf-eg">Example</span>
+      <blockquote><p>&ldquo;The daily films took our race to everyone who could not be on launch, and our sponsors went with it.&rdquo;</p></blockquote>
+      <figcaption>An organiser&rsquo;s name, role and event <i class="v2-tbd">[to supply]</i></figcaption>
+    </figure>
+    <div class="kit-head mf-head2" id="watch">
+      <span class="kit-kicker">The work</span>
+      <h2 class="kit-title">Watch Before You Book</h2>
+      <p class="kit-intro">Thirteen comp videos from 2026, the most watched first: Task 1 of the Paragliding World Cup Super Final, an 86.5 km sprint, 7,342 views. Tap one to play it here.</p>
+    </div>
+    <div class="md-reel"><div class="md-main"><div class="md-frame" data-vid="BRAX1XMU390"><img src="https://i.ytimg.com/vi/BRAX1XMU390/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><a class="md-play" href="https://www.youtube.com/watch?v=BRAX1XMU390" target="_blank" rel="noopener" aria-label="Play Task 1 Highlights, PWC Super Final, Pegalajar"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg></a></div><div class="md-now"><h3>PWC Super Final, Pegalajar, Task 1 Highlights</h3><p><span>7,342 views &middot; 6:53</span> &middot; <span>14 May 2026</span><span class="md-ep"> &middot; <a href="../../episodes/task-1-highlights-15th-paragliding-world-cup-super-final.html">Read the episode</a></span></p></div></div><div class="md-side"><div class="md-side-in"><div class="v2-chips" role="group" aria-label="Show the videos from"><button class="v2-chip" type="button" aria-pressed="true" data-comp="">All <i>13</i></button><button class="v2-chip" type="button" aria-pressed="false" data-comp="pwc">Pegalajar <i>5</i></button><button class="v2-chip" type="button" aria-pressed="false" data-comp="srs5">Piedrahita <i>3</i></button><button class="v2-chip" type="button" aria-pressed="false" data-comp="srs4">Bassano live <i>5</i></button></div><ul class="md-list"><li data-comp="pwc"><button type="button" data-vid="BRAX1XMU390" data-date="14 May 2026" data-ep="../../episodes/task-1-highlights-15th-paragliding-world-cup-super-final.html" aria-current="true"><img src="https://i.ytimg.com/vi/BRAX1XMU390/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Task 1 Highlights</b><small>PWC Super Final, Pegalajar &middot; 7,342 views &middot; 6:53</small></span></button></li><li data-comp="pwc"><button type="button" data-vid="7il6yV1vdIc" data-date="16 May 2026" data-ep="../../episodes/task-2-highlights-15th-paragliding-world-cup-super-final.html"><img src="https://i.ytimg.com/vi/7il6yV1vdIc/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Task 2 Highlights</b><small>PWC Super Final, Pegalajar &middot; 4,034 views &middot; 8:17</small></span></button></li><li data-comp="pwc"><button type="button" data-vid="FOuAWMeoxs4" data-date="13 May 2026" data-ep="../../episodes/highlights-day-1-pwca-superfinal-2026.html"><img src="https://i.ytimg.com/vi/FOuAWMeoxs4/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Day 1 Highlights</b><small>PWC Super Final, Pegalajar &middot; 3,537 views &middot; 6:44</small></span></button></li><li data-comp="pwc"><button type="button" data-vid="op1-O01xkH4" data-date="18 May 2026" data-ep="../../episodes/task-4-highlights-15th-paragliding-world-cup-super-final.html"><img src="https://i.ytimg.com/vi/op1-O01xkH4/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Task 4 Highlights</b><small>PWC Super Final, Pegalajar &middot; 3,437 views &middot; 7:47</small></span></button></li><li data-comp="pwc"><button type="button" data-vid="vPnIYYKcvEg" data-date="20 May 2026" data-ep="../../episodes/task-5-highlights-15th-paragliding-world-cup-super-final.html"><img src="https://i.ytimg.com/vi/vPnIYYKcvEg/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Task 5 Highlights</b><small>PWC Super Final, Pegalajar &middot; 3,340 views &middot; 8:08</small></span></button></li><li data-comp="srs5"><button type="button" data-vid="NXUEyPQ3V4E" data-date="6 Sep 2026" data-ep="../../episodes/srs-piedrahita-bgd-edition-task-2-highlights.html"><img src="https://i.ytimg.com/vi/NXUEyPQ3V4E/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Task 2 Highlights</b><small>SRS Piedrahita &middot; 2,303 views &middot; 13:46</small></span></button></li><li data-comp="srs5"><button type="button" data-vid="uCEfssE40u8" data-date="27 Aug 2026" data-ep="../../episodes/srs-piedrahita-bgd-edition-task-1-highlights.html"><img src="https://i.ytimg.com/vi/uCEfssE40u8/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Task 1 Highlights</b><small>SRS Piedrahita &middot; 1,970 views &middot; 7:38</small></span></button></li><li data-comp="srs5"><button type="button" data-vid="cuGs7Lk6Dt4" data-date="23 Aug 2026" data-ep="../../episodes/srs-bgd-edition-2026-day-1-registration-pilots-penas-de.html"><img src="https://i.ytimg.com/vi/cuGs7Lk6Dt4/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Day 1: Registration and the Peñas</b><small>SRS Piedrahita &middot; 1,206 views &middot; 9:04</small></span></button></li><li data-comp="srs4"><button type="button" data-vid="ZL9B5eXip5o" data-date="25 May 2026"><img src="https://i.ytimg.com/vi/ZL9B5eXip5o/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Live: Task 2</b><small>SRS Bassano, live &middot; 1,145 views &middot; 5 h 41 min</small></span></button></li><li data-comp="srs4"><button type="button" data-vid="SZWQjcO_fWk" data-date="26 May 2026"><img src="https://i.ytimg.com/vi/SZWQjcO_fWk/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Live: Task 3</b><small>SRS Bassano, live &middot; 890 views &middot; 4 h 59 min</small></span></button></li><li data-comp="srs4"><button type="button" data-vid="x8sSBSBy4dI" data-date="29 May 2026"><img src="https://i.ytimg.com/vi/x8sSBSBy4dI/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Live: Task 4, part 1</b><small>SRS Bassano, live &middot; 853 views &middot; 1 h 57 min</small></span></button></li><li data-comp="srs4"><button type="button" data-vid="DA4nGop3i9g" data-date="30 May 2026"><img src="https://i.ytimg.com/vi/DA4nGop3i9g/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Live: Task 4, part 2</b><small>SRS Bassano, live &middot; 513 views &middot; 3 h 55 min</small></span></button></li><li data-comp="srs4"><button type="button" data-vid="PEyO6MXngUw" data-date="30 May 2026"><img src="https://i.ytimg.com/vi/PEyO6MXngUw/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Live: Task 5, the final day</b><small>SRS Bassano, live &middot; 680 views &middot; 5 h 8 min</small></span></button></li></ul></div></div></div>
+    <div class="mf-stills">
+      <div class="mf-stills-h">
+        <h3>Stills from SRS Piedrahita, August 2026</h3>
+        <p>Every frame shown whole. Tap one to see it full size and zoom in.</p>
+      </div>
+      <div class="md-grid" data-zoom aria-label="Selected stills from SRS Piedrahita 2026"><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T3_166-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_166-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_166-800.webp" srcset="../../img/media-tmp/SRS_5_T3_166-800.webp 800w, ../../img/media-tmp/SRS_5_T3_166-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1600" height="1067" alt="A blue and white wing in a deep blue sky" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T3_66-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_66-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_66-800.webp" srcset="../../img/media-tmp/SRS_5_T3_66-800.webp 800w, ../../img/media-tmp/SRS_5_T3_66-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1600" height="1067" alt="The race spread high across the sky" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T3_172-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_172-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_172-800.webp" srcset="../../img/media-tmp/SRS_5_T3_172-800.webp 800w, ../../img/media-tmp/SRS_5_T3_172-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1600" height="1067" alt="A yellow wing overhead in a blue sky" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:0.6667"><a href="../../img/media-tmp/SRS_5_T3_64-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_64-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_64-800.webp" srcset="../../img/media-tmp/SRS_5_T3_64-800.webp 800w, ../../img/media-tmp/SRS_5_T3_64-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1067" height="1600" alt="Wings stacked in a climb" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T3_27-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_27-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_27-800.webp" srcset="../../img/media-tmp/SRS_5_T3_27-800.webp 800w, ../../img/media-tmp/SRS_5_T3_27-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1600" height="1067" alt="A white and blue wing over the dry plain" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.4998"><a href="../../img/media-tmp/SRS_5_T3_92-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_92-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_92-800.webp" srcset="../../img/media-tmp/SRS_5_T3_92-800.webp 800w, ../../img/media-tmp/SRS_5_T3_92-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1600" height="1067" alt="A yellow wing over a green hillside" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T1_9-2400.webp" data-full="../../img/media-tmp/SRS_5_T1_9-2400.webp"><img src="../../img/media-tmp/SRS_5_T1_9-800.webp" srcset="../../img/media-tmp/SRS_5_T1_9-800.webp 800w, ../../img/media-tmp/SRS_5_T1_9-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1600" height="1067" alt="An orange wing high over a patchwork of fields under cloud" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 1</b></figcaption></figure><figure class="md-ph" style="--r:1.4652"><a href="../../img/media-tmp/SRS_5_T3_150-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_150-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_150-800.webp" srcset="../../img/media-tmp/SRS_5_T3_150-800.webp 800w, ../../img/media-tmp/SRS_5_T3_150-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1600" height="1092" alt="An orange wing banking in a clear blue sky" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T3_121-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_121-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_121-800.webp" srcset="../../img/media-tmp/SRS_5_T3_121-800.webp 800w, ../../img/media-tmp/SRS_5_T3_121-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1600" height="1067" alt="A white wing with a red edge, the pilot seen from below" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure></div>
+      <div class="kit-actions mf-more"><a class="btn-lines" href="../../media-srs-piedrahita-2026.html" data-hover>All 20 from Piedrahita, by task</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="kit-band mf-spec" id="delivery">
+  <div class="kit-in">
+    <div class="kit-head">
+      <span class="kit-kicker">Delivery</span>
+      <h2 class="kit-title">What You Get, What I Need</h2>
+    </div>
+    <div class="mf-spec-g">
+      <div class="mf-spec-c">
+        <h3 class="mf-spec-h">You get</h3>
+        <dl class="mf-spec-l">
+          <div><dt>16:9 videos</dt><dd>The daily highlight films and the aftermovie</dd></div>
+          <div><dt>9:16 social clips</dt><dd>Vertical cuts for social feeds</dd></div>
+          <div><dt>Stills</dt><dd>Web and full-size files</dd></div>
+          <div><dt>Delivery</dt><dd>The same day or at the end of the week, as you need</dd></div>
+        </dl>
+      </div>
+      <div class="mf-spec-c">
+        <h3 class="mf-spec-h">I need from you</h3>
+        <dl class="mf-spec-l">
+          <div><dt>Internet on site</dt><dd>So the films can go out the same day</dd></div>
+          <div><dt>Access to footage</dt><dd>The detail <i class="v2-tbd">[to supply]</i></dd></div>
+          <div><dt><i class="v2-tbd">[to supply]</i></dt><dd>Anything else an organiser provides</dd></div>
+        </dl>
+        <p class="mf-note">Same-day delivery depends on the internet on site, the time the task finishes and access to footage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kit-band mf-faq" id="faq">
+  <div class="kit-in mf-faq-g">
+    <div class="kit-head">
+      <span class="kit-kicker">Questions</span>
+      <h2 class="kit-title">What Organisers Ask First</h2>
+      <p class="kit-intro">Anything else, ask on a call.</p>
+      <div class="kit-actions"><a class="btn-lines" href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" data-hover>Book a Call</a></div>
+    </div>
+    <div class="mf-qs">
+      <details open><summary>What does it cost?</summary><p>Each event is priced on its own, after a call about your dates, your place and the coverage you want.</p></details>
+      <details><summary>Do you travel to the event?</summary><p><i class="v2-tbd">[to supply]</i></p></details>
+      <details><summary>Who owns the films and the photos?</summary><p><i class="v2-tbd">[to supply]</i></p></details>
+      <details><summary>How far ahead should we book?</summary><p><i class="v2-tbd">[to supply]</i></p></details>
+      <details><summary>Can we start small?</summary><p>Yes. Start with the resources you have and grow the coverage as your budget allows.</p></details>
+      <details><summary>Can you cover a whole series?</summary><p>Yes: every event of the series, with Race Behind The Race mid-season. A roadmap like SRS&rsquo;s, from Q3 2026 to Q2 2027, can be covered as one season.</p></details>
+      <details><summary>Where is it published?</summary><p>As joint posts on your channels and on Paragliding Atlas, so both audiences see the same post.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band mf-dates" id="dates">
+  <div class="cta-card">
+    <span class="cta-hud-tag">Coverage For Your Comp</span>
+    <div class="mf-dates-g">
+      <div class="mf-dates-l">
+        <h2>Check Dates For Your Event</h2>
+        <p class="cta-body">Tell me the event, the dates and the place. I will reply with what is open and how I would cover it.</p>
+        <div class="mf-cal" aria-labelledby="cal-h">
+          <div class="mf-cal-h"><b id="cal-h">2027 season</b><span class="mf-eg">Example</span></div>
+          <ol class="mf-cal-m">
+            <li class="is-open"><label for="f-when" data-when="Jan 2027"><b>Jan</b><span>Open</span></label></li>
+            <li class="is-open"><label for="f-when" data-when="Feb 2027"><b>Feb</b><span>Open</span></label></li>
+            <li class="is-held"><span class="mf-cal-x"><b>Mar</b><span>Held</span></span></li>
+            <li class="is-open"><label for="f-when" data-when="Apr 2027"><b>Apr</b><span>Open</span></label></li>
+            <li class="is-taken"><span class="mf-cal-x"><b>May</b><span>Booked</span></span></li>
+            <li class="is-open"><label for="f-when" data-when="Jun 2027"><b>Jun</b><span>Open</span></label></li>
+            <li class="is-taken"><span class="mf-cal-x"><b>Jul</b><span>Booked</span></span></li>
+            <li class="is-held"><span class="mf-cal-x"><b>Aug</b><span>Held</span></span></li>
+            <li class="is-open"><label for="f-when" data-when="Sep 2027"><b>Sep</b><span>Open</span></label></li>
+            <li class="is-open"><label for="f-when" data-when="Oct 2027"><b>Oct</b><span>Open</span></label></li>
+            <li class="is-open"><label for="f-when" data-when="Nov 2027"><b>Nov</b><span>Open</span></label></li>
+            <li class="is-open"><label for="f-when" data-when="Dec 2027"><b>Dec</b><span>Open</span></label></li>
+          </ol>
+          <p class="mf-cal-note">Example data, to show how it will read. The real 2027 calendar: <i class="v2-tbd">[to supply]</i></p>
+        </div>
+      </div>
+      <form class="mf-form" action="../../enquire.html" method="get" id="dates-form">
+        <input type="hidden" name="trip" value="media">
+        <div class="mf-f"><label for="f-event">Event</label><input id="f-event" name="event" type="text" autocomplete="off" placeholder="The name of your comp" required></div>
+        <div class="mf-f"><label for="f-when">Dates</label><input id="f-when" name="when" type="text" autocomplete="off" placeholder="Task days, or a rough window" required></div>
+        <div class="mf-f"><label for="f-place">Place</label><input id="f-place" name="place" type="text" autocomplete="off" placeholder="Venue and country"></div>
+        <div class="mf-f mf-f-sel"><label for="f-pkg">Package</label><select id="f-pkg" name="package"><option value="">Not sure yet</option><option>Daily</option><option>Full Event</option><option>Season</option></select></div>
+        <div class="mf-f"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+        <div class="mf-f"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="mf-go">
+          <button class="btn-solid" type="submit" data-hover><span>Check dates</span></button>
+          <p class="mf-or"><span>Or talk it through</span><a class="btn-lines" href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" data-hover>Book a Call</a><a class="btn-lines" href="https://wa.me/4796757456" target="_blank" rel="noopener" data-hover>WhatsApp</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div id="newsletter"></div>
+<section class="mf-nl" aria-label="Newsletter">
+  <div class="kit-in">
+    <div class="v2-nl mf-nl-row" data-nl>
+      <p class="mf-nl-t"><b>Not organising a comp?</b> Follow the races day by day in your inbox.</p>
+      <label class="mf-sr" for="newsletterEmail">Email address</label>
+      <input id="newsletterEmail" type="email" placeholder="you@example.com" autocomplete="email">
+      <button class="btn-lines" type="button" data-hover>Sign Up</button>
+      <p class="nl-status" data-nl-status role="status" aria-live="polite"></p>
+      <p class="mf-fine">By submitting you consent to email updates from Paragliding Atlas. Unsubscribe any time.</p>
+    </div>
+  </div>
+</section>
+
+<dialog class="v4i-fl-lb" id="v4i-fl-lb" aria-label="The photograph, enlarged"><div class="v4i-fl-lbs"><img alt="" draggable="false"></div><button class="v4i-fl-lbx" type="button" aria-label="Close the photograph"></button><span class="v4i-fl-lbc"></span><button class="v4i-fl-lbn v4i-fl-lbp" type="button" hidden aria-label="Previous photograph"><svg viewBox="0 0 16 16"><path d="M10 3 5 8l5 5"/></svg></button><button class="v4i-fl-lbn v4i-fl-lbnx" type="button" hidden aria-label="Next photograph"><svg viewBox="0 0 16 16"><path d="m6 3 5 5-5 5"/></svg></button><span class="v4i-fl-lbh" aria-hidden="true">click to come closer &middot; scroll or pinch for more &middot; drag to move &middot; arrows for the next &middot; click outside to close</span></dialog>
+
+</main>
+</div><!-- /.page-wrap -->
+
+<footer><!--v4f-->
+  <div class="footer-content v4f-on">
+  <div class="footer-top">
+    <div class="footer-col footer-brand">
+      <a href="../../index.html" class="wordmark" aria-label="Paragliding Atlas, home"><img src="../../../../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100" loading="lazy"></a>
+      <p class="footer-tagline">Touch The Sky With Glory</p>
+      <p class="footer-addr">Paragliding Atlas · Org. nr 937116934<br>Olav Troviks Vei M 68, 0864 Oslo, Norway</p>
+    </div>
+    <div class="footer-col">
+      <h2>Listen</h2>
+      <a href="../../podcast.html">Podcast</a>
+      <a href="../../library.html">Episode Library</a>
+      <a href="../../tags.html">Topics</a>
+      <a href="../../knowledge-base.html">Knowledge Base</a>
+    </div>
+    <div class="footer-col">
+      <h2>Fly With Us</h2>
+      <a href="../../destinations/kenya.html">Kenya</a>
+      <a href="../../destinations/india.html">India</a>
+      <a href="../../destinations/panchgani.html">Panchgani</a>
+      <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener">Book a Call</a>
+    </div>
+    <div class="footer-col">
+      <h2>Atlas</h2>
+      <a href="../../about.html">About</a>
+      <a href="../../mission.html">Mission</a>
+      <a href="../../partners.html">Partner With Me</a>
+      <a href="../../media.html">Media</a>
+      <a href="../../safety-and-disclosure.html">Safety &amp; Disclosure</a>
+    </div>
+    <div class="footer-col">
+      <h2>Legal</h2>
+      <a href="../../terms.html">Terms</a>
+      <a href="../../privacy-policy.html">Privacy</a>
+      <a href="../../participant-agreement.html">Participant Agreement</a>
+      <a href="../../corrections.html">Corrections</a>
+    </div>
+  </div>
+  <div class="v4f-k"><span class="footer-listen-label">Listen on</span></div>
+  <div class="footer-bottom v4f">
+    <div class="v4f-ls"><a href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener">YouTube</a><a href="https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">Spotify</a><a href="https://castbox.fm/channel/Paragliding-Atlas-by-Aninder-Singh-id6075445" target="_blank" rel="noopener">Castbox</a><a href="https://www.podbean.com/podcast-detail/tb6yq-2f5cd4/Paragliding-Atlas-by-Aninder-Singh-Podcast" target="_blank" rel="noopener">Podbean</a><a href="https://www.patreon.com/cw/ParaglidingAtlas" target="_blank" rel="noopener">Patreon</a></div>
+    <div class="v4f-lg"><a href="../../cookie-policy.html">Cookies</a><a href="../../sitemap.html">Sitemap</a><span>© Paragliding Atlas <span data-year>2026</span></span></div>
+  </div>
+  </div>
+<!--/v4f-->
+</footer>
+
+<script src="../../../../script.js?v=1bb85db6"></script>
+<!-- nav-menu -->
+<script defer src="../../../../nav-menu.js?v=001fbbf6"></script>
+<!-- /nav-menu -->
+<script defer src="../../../../newsletter.js?v=d28c01a5"></script>
+<script defer src="../../v4-media.js"></script>
+<script>
+/* Media F: the tally light counts the days to the next comp, today sits on the season line, and a package
+   or an open month fills in the dates form. Without this script the page reads the same, just without the
+   countdown and the today mark. */
+(function () {
+  "use strict";
+  var d = document;
+  function ready(f) { if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", f); else f(); }
+  ready(function () {
+    /* the first screen is the screen minus the nav, whatever height the nav has */
+    var nav = d.querySelector("nav");
+    function navH() { if (nav) d.documentElement.style.setProperty("--mf-nav", nav.offsetHeight + "px"); }
+    navH(); window.addEventListener("resize", navH);
+    var now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate()), DAY = 864e5;
+    /* the next comp: SRS Tapalpa, Mexico, tasks 8 to 14 Nov 2026 */
+    var first = new Date(2026, 10, 8), last = new Date(2026, 10, 14), n = Math.round((first - today) / DAY);
+    var state = today < first ? "next" : today <= last ? "now" : "past";
+    var bug = d.querySelector("[data-tally]");
+    if (bug) {
+      var k = bug.querySelector("[data-tally-k]"), o = bug.querySelector("[data-tally-n]");
+      if (state === "next") o.textContent = n === 1 ? "Tomorrow" : "In " + n + " days";
+      else if (state === "now") k.textContent = "Now";
+      else k.textContent = "Latest";
+    }
+    [].forEach.call(d.querySelectorAll("[data-next-k]"), function (b) { b.textContent = state === "next" ? "Next" : state === "now" ? "Now" : "Latest"; });
+    /* today on the 2026 season line, 1 May to 1 Dec */
+    var s0 = new Date(2026, 4, 1), s1 = new Date(2026, 11, 1), td = d.querySelector("[data-today]");
+    if (td && today >= s0 && today < s1) { td.style.setProperty("--x", ((today - s0) / (s1 - s0)).toFixed(4)); td.hidden = false; }
+    /* a package's Check dates chooses it in the form; an open month fills in the dates */
+    var pkg = d.getElementById("f-pkg"), when = d.getElementById("f-when");
+    d.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest("a[data-pkg]");
+      if (a && pkg) pkg.value = a.getAttribute("data-pkg");
+      var m = e.target.closest && e.target.closest(".mf-cal-m label[data-when]");
+      if (m && when) {
+        when.value = m.getAttribute("data-when");
+        [].forEach.call(d.querySelectorAll(".mf-cal-m li"), function (li) { li.classList.toggle("is-picked", li.contains(m)); });
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
