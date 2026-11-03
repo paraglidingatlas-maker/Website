@@ -74,8 +74,18 @@ css = '''<style>
 </style>'''
 rep('</head>', css + '\n</head>')
 # a preview one folder deep: resolve the page's relative addresses from prototypes/v4 as before
-rep("<head>", '<head>\n<base href="../../">')
-h = re.sub(r'href="#([^"]*)"', r'href="samples/expeditions-phone/#\1"', h)
+SKIP = ("http:", "https:", "#", "/", "mailto:", "tel:", "data:", "javascript:", "{")
+def up(u):
+    u = u.strip()
+    return u if not u or u.startswith(SKIP) else "../../" + u
+def attr(m):
+    return '%s="%s"' % (m.group(1), up(m.group(2)))
+h = re.sub(r'\b(src|href|poster)="([^"]*)"', attr, h)
+h = re.sub(r'\b(srcset)="([^"]*)"', lambda m: '%s="%s"' % (m.group(1), ", ".join(
+    " ".join([up(x.split()[0])] + x.split()[1:]) for x in m.group(2).split(",") if x.strip())), h)
+h = re.sub(r'url\((["\']?)(?!data:|http|/|#)([^)"\']+)\1\)', lambda m: "url(%s../../%s%s)" % (m.group(1), m.group(2), m.group(1)), h)
+h = re.sub(r'(&quot;(?:src|srcset|phone|href)&quot;:&quot;)(?!http|/|#)', r'\1../../', h)
+h = re.sub(r'href="(#[^"]*)"', r'href="\1"', h)
 h = h.replace("<title>", "<title>Phone preview: ", 1)
 os.makedirs(os.path.dirname(out), exist_ok=True)
 open(out, "w").write(h)
