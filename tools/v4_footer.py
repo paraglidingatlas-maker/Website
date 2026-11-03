@@ -55,7 +55,7 @@ def footer(up, logo):
                    for h, items in MENUS)
     return ('\n  <div class="footer-content v4f-on">\n  <div class="footer-top">\n    <div class="footer-col footer-brand">\n      %s\n'
             '      <p class="footer-tagline">Touch The Sky With Glory</p>\n'
-            '      <p class="footer-addr">Paragliding Atlas · Org. nr 937116934<br>Olav Troviks Vei M 46, 0864 Oslo, Norway</p>\n    </div>%s\n  </div>\n'
+            '      <p class="footer-addr">Paragliding Atlas · Org. nr 937116934<br>Olav Troviks Vei M 68, 0864 Oslo, Norway</p>\n    </div>%s\n  </div>\n'
             '  <div class="v4f-k"><span class="footer-listen-label">Listen on</span></div>\n'
             '  <div class="footer-bottom v4f">\n    <div class="v4f-ls">%s</div>\n    <div class="v4f-lg">%s<span>© Paragliding Atlas <span data-year>2026</span></span></div>\n  </div>\n  </div>\n'
             % (logo, cols, "".join(link(l, u, "") for l, u in LISTEN_ON), "".join(link(l, u, up) for l, u in LEGAL)))

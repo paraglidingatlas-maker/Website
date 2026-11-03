@@ -218,7 +218,7 @@ def build(trip, base):
       <a href="%(live)s" style="color:%(muted)s;text-decoration:none;">Website</a>
     </td>
   </tr></table>
-  <div style="font-family:%(sans)s;font-size:11px;line-height:1.8;color:%(dim)s;padding-top:22px;">Aninder Singh, Paragliding Atlas, Olav Troviks Vei M 46, 0864 Oslo, Norway. Organisasjonsnummer 937116934. <a href="mailto:aninder@paraglidingatlas.com" style="color:%(dim)s;">aninder@paraglidingatlas.com</a><br>This email is about your booking. You can update your <a href="{$preferences}" style="color:%(muted)s;">preferences</a> or <a href="{$unsubscribe}" style="color:%(muted)s;">unsubscribe</a> from everything else.</div>
+  <div style="font-family:%(sans)s;font-size:11px;line-height:1.8;color:%(dim)s;padding-top:22px;">Aninder Singh, Paragliding Atlas, Olav Troviks Vei M 68, 0864 Oslo, Norway. Organisasjonsnummer 937116934. <a href="mailto:aninder@paraglidingatlas.com" style="color:%(dim)s;">aninder@paraglidingatlas.com</a><br>This email is about your booking. You can update your <a href="{$preferences}" style="color:%(muted)s;">preferences</a> or <a href="{$unsubscribe}" style="color:%(muted)s;">unsubscribe</a> from everything else.</div>
 </td></tr>''' % dict(logo=U("assets/logo/atlas-logo-white.png"), mono=MONO, sans=SANS, muted=MUTED, dim=DIM, live=LIVE)
 
     doc = '''<!DOCTYPE html>

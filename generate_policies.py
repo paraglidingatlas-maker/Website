@@ -101,7 +101,7 @@ HEAD = """<!DOCTYPE html>
     <div class="footer-col footer-brand">
       <a href="index.html" class="wordmark" aria-label="Paragliding Atlas, home"><img src="assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100" loading="lazy"></a>
       <p class="footer-tagline"><a href="mission.html">Touch The Sky With Glory</a></p>
-      <p class="footer-addr">Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 46<br>0864, Oslo<br>Norway</p>
+      <p class="footer-addr">Organisasjonsnummer: 937116934<br>Olav Troviks Vei M 68<br>0864, Oslo<br>Norway</p>
     </div>
     <div class="footer-col">
       <h2>Listen</h2>
@@ -156,7 +156,7 @@ HEAD = """<!DOCTYPE html>
 
 TERMS = """
 <h2 id="who">1. Who we are</h2>
-<p>Paragliding Atlas is a paragliding travel and media company registered in Norway. Organisasjonsnummer 937116934, Olav Troviks Vei M 46, Oslo, Norway. In these terms "we", "us" and "our" mean Paragliding Atlas, and "you" means the person making a booking and every participant named on it.</p>
+<p>Paragliding Atlas is a paragliding travel and media company registered in Norway. Organisasjonsnummer 937116934, Olav Troviks Vei M 68, Oslo, Norway. In these terms "we", "us" and "our" mean Paragliding Atlas, and "you" means the person making a booking and every participant named on it.</p>
 <p>These terms apply to guided paragliding trips we organise. They do not restrict any right you have under Norwegian or EU consumer law that cannot be restricted by agreement.</p>
 
 <h2 id="package">2. Package travel rights</h2>
@@ -257,7 +257,7 @@ TERMS = """
 
 <div class="pol-contact">
   <h3>Questions about these terms</h3>
-  <p>Email <a href="mailto:aninder@paraglidingatlas.com">aninder@paraglidingatlas.com</a>, or write to Paragliding Atlas, Olav Troviks Vei M 46, Oslo, Norway.</p>
+  <p>Email <a href="mailto:aninder@paraglidingatlas.com">aninder@paraglidingatlas.com</a>, or write to Paragliding Atlas, Olav Troviks Vei M 68, Oslo, Norway.</p>
 </div>
 """
 
@@ -330,7 +330,7 @@ PRIVACY = """
 
 <div class="pol-contact">
   <h3>Contact for privacy matters</h3>
-  <p>Paragliding Atlas, Olav Troviks Vei M 46, Oslo, Norway. Email <a href="mailto:aninder@paraglidingatlas.com">aninder@paraglidingatlas.com</a>.</p>
+  <p>Paragliding Atlas, Olav Troviks Vei M 68, Oslo, Norway. Email <a href="mailto:aninder@paraglidingatlas.com">aninder@paraglidingatlas.com</a>.</p>
 </div>
 """
 

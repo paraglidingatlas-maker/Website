@@ -128,7 +128,7 @@ def foot():
     return f'''<footer class="foot">
   <div class="foot-in">
     <div><img src="{A}logo/atlas-logo-white.png" alt="Paragliding Atlas" width="160" height="33" loading="lazy" class="foot-logo">
-      <p>Organisasjonsnummer 937116934 · Olav Troviks Vei M 46, 0864 Oslo, Norway</p></div>
+      <p>Organisasjonsnummer 937116934 · Olav Troviks Vei M 68, 0864 Oslo, Norway</p></div>
     <div class="foot-cols">
       <div><b>Fly</b><a href="{V2}destinations/india.html">India</a><a href="{V2}destinations/kenya.html">Kenya</a><a href="../../enquire.html">Enquire</a></div>
       <div><b>Listen</b><a href="{V2}podcast.html">Podcast</a><a href="{V2}library.html">All episodes</a><a href="{V2}knowledge-base.html">Knowledge Base</a></div>

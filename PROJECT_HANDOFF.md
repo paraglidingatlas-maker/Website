@@ -1742,7 +1742,7 @@ old site either 404 or have no equivalent here.
   the work that removed every third party request from the homepage. Reversible
   from git history if that judgement is ever overturned.
 - **Org number is 937116934**, confirmed by the user. The old live site's footer
-  shows 927118594; that one is wrong. Street address is "Olav Troviks Vei M 46";
+  shows 927118594; that one is wrong. Street address is "Olav Troviks Vei M 68";
   the old site's "Drav Troviks Vei M 46" is wrong.
 - **Knowledge base series pages were deliberately NOT given sorting.** Their
   episodes are numbered installments in meaningful order and carry no dates.
@@ -2512,7 +2512,7 @@ this project on the same day, and none is visible in the source you are editing.
 ### Address block reordered, 183 files
 ```
 Organisasjonsnummer: 937116934
-Olav Troviks Vei M 46
+Olav Troviks Vei M 68
 0864, Oslo
 Norway
 ```
