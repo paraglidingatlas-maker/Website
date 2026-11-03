@@ -20,6 +20,15 @@
     if (a && !document.documentElement.hasAttribute("data-md-out")) { e.preventDefault(); play(a.closest(".md-frame")); }
   });
 
+  /* ---------- a poster that holds an example: the showreel plays it where it is ---------- */
+  document.addEventListener("click", function (e) {
+    var p = e.target.closest && e.target.closest(".md-poster[data-play]"); if (!p) return;
+    var fr = document.querySelector('.md-main .md-frame[data-vid="' + p.getAttribute("data-play") + '"]'); if (!fr) return;
+    e.preventDefault();
+    fr.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+    if (!document.documentElement.hasAttribute("data-md-out")) play(fr);
+  });
+
   /* ---------- the showreel: the list loads a video into the big frame; the chips filter by comp ---------- */
   var reel = document.querySelector(".md-reel");
   if (reel) {

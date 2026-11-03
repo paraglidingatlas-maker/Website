@@ -63,7 +63,7 @@ PH = {
     "SRS_5_T3_92": (3394, 2263, 3, "A yellow wing over a green hillside"),
 }
 HERO, HERO_P, CARD = "SRS_5_T3_21", "SRS_5_T2_83", "SRS_5_T3_38"
-SELECT = ["SRS_5_T2_133-2", "SRS_5_T3_63", "SRS_5_T3_172", "SRS_5_T3_64", "SRS_5_T3_27", "SRS_5_T3_92",
+SELECT = ["SRS_5_T3_166", "SRS_5_T3_66", "SRS_5_T3_172", "SRS_5_T3_64", "SRS_5_T3_27", "SRS_5_T3_92",
           "SRS_5_T1_9", "SRS_5_T3_86", "SRS_5_T3_150", "SRS_5_T3_121", "SRS_5_T2_76", "SRS_5_T3_57"]
 
 
@@ -171,7 +171,39 @@ html body .kit-hero .kit-stat b{font-family:var(--font-display);font-weight:700;
 html body .kit-hero .kit-stat span{color:var(--gray-light);margin-top:.55rem}
 html body .kit-hero .kit-stat b>span{display:inline;margin:0;font:inherit;color:inherit;letter-spacing:inherit;text-transform:none}
 html body .kit-hero .kit-stat b>.v4-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.md-hero .kit-actions{margin-top:var(--sp-4)}
+.md-hero .kit-actions{margin-top:0}
+/* the opening: a shelf of four posters, one per piece of the coverage (the owner's "SRS TV" board) */
+.md-hero{min-height:0;align-items:flex-start;padding-top:clamp(6.5rem,12vh,8rem)}
+.md-hero::after{background:linear-gradient(180deg,rgba(20,21,25,.55) 0%,rgba(20,21,25,.72) 45%,var(--bg) 100%)}
+.md-hero .kit-hero-copy{max-width:none;width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"lead foot" "shelf shelf";column-gap:var(--sp-5);align-items:end}
+.md-lead{grid-area:lead}.md-shelf{grid-area:shelf}.md-hero-foot{grid-area:foot}
+.md-hero .kit-intro{max-width:40rem}
+.md-shelf{margin-top:clamp(1.8rem,4vw,2.8rem)}
+.md-shelf-k{display:block;font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;color:var(--gray-light);margin-bottom:.9rem}
+.md-posters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.8rem,1.6vw,1.4rem)}
+.md-poster{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;border-radius:4px;background:var(--card);
+  text-decoration:none;color:var(--white);padding:clamp(.9rem,1.6vw,1.3rem);box-shadow:0 24px 60px rgba(0,0,0,.45);outline:1px solid rgba(246,244,244,.08);outline-offset:-1px;
+  transition:transform .5s var(--ease-out),box-shadow .5s var(--ease-out)}
+.md-poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.1s var(--ease-out),filter .5s var(--ease-out);filter:saturate(.92) brightness(.9)}
+.md-poster::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,21,25,0) 25%,rgba(20,21,25,.7) 55%,rgba(20,21,25,.96) 100%)}
+.md-posters{--pa:4/5}.md-poster{aspect-ratio:var(--pa)}
+.md-poster[href="#watch"] img{object-position:50% 12%}.md-poster[href="#offer-after"] img{object-position:50% 20%}
+.md-poster::after{content:"";position:absolute;inset:8px;pointer-events:none;opacity:0;transition:opacity .4s var(--ease-out);
+  background:linear-gradient(var(--orange),var(--orange)) top left/16px 2px,linear-gradient(var(--orange),var(--orange)) top left/2px 16px,
+  linear-gradient(var(--orange),var(--orange)) bottom right/16px 2px,linear-gradient(var(--orange),var(--orange)) bottom right/2px 16px;background-repeat:no-repeat}
+.md-poster:hover,.md-poster:focus-visible{transform:translateY(-6px);box-shadow:0 34px 80px rgba(0,0,0,.6)}
+.md-poster:hover img,.md-poster:focus-visible img{transform:scale(1.05);filter:none}
+.md-poster:hover::after,.md-poster:focus-visible::after{opacity:1}
+.md-poster:focus-visible{outline:1px solid var(--orange)}
+.md-p-n{font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
+.md-p-t{margin-top:.35rem;font-family:var(--font-display);font-weight:700;font-size:clamp(1.15rem,1.7vw,1.55rem);line-height:1.1;letter-spacing:-.01em;text-wrap:balance}
+.md-p-tags{margin-top:.5rem;font-size:.8rem;line-height:1.45;color:var(--gray-light)}
+.md-p-go{margin-top:.8rem;padding-top:.7rem;border-top:1px solid rgba(246,244,244,.16);font-family:var(--font-display);font-weight:600;font-size:.82rem;color:var(--white)}
+.md-p-go i{font-style:normal;color:var(--orange);margin-left:.2rem;display:inline-block;transition:transform .3s var(--ease-out)}
+.md-poster:hover .md-p-go i{transform:translateX(4px)}
+.md-shelf-note{margin:.9rem 0 0;font-size:.85rem;color:var(--gray)}
+.md-hero-foot{display:flex;flex-direction:column;align-items:flex-end;gap:var(--sp-4)}
+.md-hero-foot .kit-stats{margin-top:0}
 .md-hero .kit-hero-media img{object-position:62% 40%}
 .md-by{display:block;margin-top:var(--sp-4);font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
 .md-by b{color:var(--gray-light);font-weight:400}
@@ -259,6 +291,8 @@ html body .kit-hero .kit-stat b>.v4-sr{position:absolute;width:1px;height:1px;ov
 .md-day .md-now{max-width:62rem}
 .md-back{display:inline-block;margin-bottom:var(--sp-3);font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.12em;text-transform:uppercase;color:var(--gray-light);text-decoration:none}
 .md-back:hover{color:var(--white)}
+@media (min-width:701px) and (max-width:900px){.md-posters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:701px) and (max-width:1100px){.md-hero .kit-hero-copy{grid-template-columns:minmax(0,1fr);grid-template-areas:"lead" "foot" "shelf"}.md-hero-foot{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-top:var(--sp-4)}}
 @media (max-width:1100px){.md-comps{grid-template-columns:repeat(2,minmax(0,1fr))}.md-four{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:2.2rem}}
 @media (min-width:901px){.md-side{position:relative}.md-side-in{position:absolute;inset:0;display:flex;flex-direction:column}.md-side .md-list{flex:1;min-height:0;max-height:none}}
 @media (max-width:900px){.md-reel{grid-template-columns:minmax(0,1fr)}
@@ -268,6 +302,14 @@ html body .kit-hero .kit-stat b>.v4-sr{position:absolute;width:1px;height:1px;ov
   .md-list button{grid-template-columns:minmax(0,1fr);gap:.5rem;padding:.4rem}}
 @media (max-width:700px){
   .md-hero .kit-hero-media img{object-position:50% 30%}
+  .md-hero{padding-top:6.2rem}
+  .md-posters{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-right:calc(-1 * var(--gutter));padding:0 var(--gutter) 1.2rem 0}
+  .md-posters::-webkit-scrollbar{display:none}
+  .md-poster{flex:none;width:64vw;max-width:17rem;scroll-snap-align:start}
+  .md-p-t{font-size:1.3rem}
+  .md-hero .kit-hero-copy{grid-template-columns:minmax(0,1fr);grid-template-areas:"lead" "shelf" "foot"}
+  .md-hero-foot{align-items:stretch;margin-top:var(--sp-4)}
+  .md-posters{--pa:3/4}
   .md-grid{--rh:118px}
   .md-four,.md-also{grid-template-columns:minmax(0,1fr)}
   .md-comps{display:flex;gap:.9rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-right:calc(-1 * var(--gutter));padding-right:var(--gutter)}
@@ -284,7 +326,7 @@ html body .kit-hero .kit-stat b>.v4-sr{position:absolute;width:1px;height:1px;ov
   .md-play{width:56px;height:56px;margin:-28px 0 0 -28px}
   .cta-buttons .btn-lines{align-self:auto;text-align:center}
 }
-@media (prefers-reduced-motion:reduce){.md-frame>img,.md-ph img{transition:none}.md-frame:hover>img,.md-ph a:hover img{transform:none}}
+@media (prefers-reduced-motion:reduce){.md-poster,.md-poster img{transition:none}.md-poster:hover{transform:none}.md-poster:hover img{transform:none}.md-frame>img,.md-ph img{transition:none}.md-frame:hover>img,.md-ph a:hover img{transform:none}}
 /* the photo viewer, as on the India page (fly.js) */
 .v4i-fl-lb{border:0;padding:0;margin:0;max-width:none;max-height:none;width:100vw;height:100vh;background:transparent;overflow:hidden;opacity:0;transition:opacity .22s var(--ease)}
 .v4i-fl-lb.is-in{opacity:1}
@@ -400,6 +442,33 @@ def reel():
             % (frame(REEL), E("%s, %s" % (COMPS[c], t)), vmeta(REEL), d, ep, chips, "".join(items)))
 
 
+POSTERS = [   # key, number and moment, title, what is in it (the owner's pitch and Canva board), link, link text
+    ("pre-race-show", "01 &middot; Before the race", "Pre-Race Show", "Podcast episode &middot; The venue &middot; The conditions",
+     "episodes/pre-pwc-kenya-nikolay-yotov.html", "Hear an example", 900, "The host of the Paragliding Atlas podcast"),
+    ("daily-highlights", "02 &middot; Every task day", "Daily Highlights", "A video each day &middot; Social clips &middot; Results newsletter",
+     "#watch", "Watch an example", 900, "An orange wing between white clouds"),
+    ("aftermovie", "03 &middot; After the race", "Aftermovie", "Task details &middot; Racing strategies &middot; Leaderboard &middot; Fun factor",
+     "#offer-after", "What it includes", 900, "The gaggle, dozens of wings in the blue"),
+    ("race-behind-the-race", "04 &middot; Between races", "Race Behind The Race", "Behind the scenes &middot; Athlete showreels",
+     "#offer-bts", "What it includes", 600, "A pilot in harness at launch among the crowd"),
+]
+
+
+def shelf():
+    out = []
+    for i, (k, n, t, tags, href, go, big, alt) in enumerate(POSTERS):
+        srcset = src("x", 0).replace("x-0.webp", "") + "poster-%s-600.webp 600w" % k
+        if big == 900:
+            srcset += ", " + src("x", 0).replace("x-0.webp", "") + "poster-%s-900.webp 900w" % k
+        play = ' data-play="%s"' % REEL if href == "#watch" else ""
+        out.append('<a class="md-poster" href="%s"%s><img src="%s" srcset="%s" sizes="(max-width:700px) 64vw, 22vw" width="600" height="800" alt="%s" decoding="async">'
+                   '<span class="md-p-n">%s</span><span class="md-p-t">%s</span><span class="md-p-tags">%s</span>'
+                   '<span class="md-p-go">%s <i aria-hidden="true">&rarr;</i></span></a>'
+                   % (href, play, src("x", 0).replace("x-0.webp", "") + "poster-%s-600.webp" % k, srcset, alt, n, t, tags, go))
+    return ('<div class="md-shelf"><span class="md-shelf-k">What every event gets</span><div class="md-posters">%s</div>'
+            '<p class="md-shelf-note">Published as joint posts on your channels and on Paragliding Atlas.</p></div>' % "".join(out))
+
+
 def media_page():
     w, h = PH[HERO][:2]
     main = '''
@@ -408,14 +477,19 @@ def media_page():
     <picture><source media="(max-aspect-ratio: 2/3)" srcset="%(hp)s"><img src="%(h)s" srcset="%(h8)s 800w, %(h)s 1600w, %(h24)s 2400w" sizes="100vw" width="%(w)d" height="%(hh)d" alt="%(alt)s" fetchpriority="high"></picture>
   </div>
   <div class="kit-hero-copy">
+    <div class="md-lead">
     <span class="kit-kicker">Media &middot; Covered for SRS and the PWC</span>
     <h1>From The Comps</h1>
     <p class="kit-intro">Daily highlight videos, live commentary and stills from paragliding's racing circuits, made at the comp and out the same day.</p>
+    </div>
+    %(shelf)s
+    <div class="md-hero-foot">
     <div class="kit-actions"><a class="btn-solid" href="%(call)s" target="_blank" rel="noopener" data-hover><span>Book a Call</span></a><a class="btn-lines" href="#watch" data-hover>Watch the Highlights</a></div>
     <div class="kit-stats">
       <div class="kit-stat"><b>31,250</b><span>Views on 13 comp videos</span></div>
       <div class="kit-stat"><b>21h 42m</b><span>Live commentary</span></div>
       <div class="kit-stat"><b>3</b><span>Comps in 2026</span></div>
+    </div>
     </div>
   </div>
 </header>
@@ -463,10 +537,10 @@ def media_page():
       <p class="kit-intro">Four pieces across your event, published as joint posts on your channels and on Paragliding Atlas. Start with what your budget allows and add more as it grows, for one event or a whole season.</p>
     </div>
     <ol class="md-four">
-      <li><span class="md-when">Before the race</span><h3>Pre-Race Show</h3><p>A Paragliding Atlas podcast episode previewing the venue and its conditions, to build anticipation with pilots and audiences.</p><p class="md-eg">Example: <a href="episodes/pre-pwc-kenya-nikolay-yotov.html">Pre PWC Kenya, with Nikolay Yotov</a></p></li>
-      <li><span class="md-when">Every task day</span><h3>Daily Highlights</h3><p>A video each day showing the task, the results, the race dynamics and what made the day special, with social clips and a results newsletter.</p><p class="md-eg">Example: <a href="#watch">Task 1 at the Super Final</a></p></li>
-      <li><span class="md-when">After the race</span><h3>Aftermovie</h3><p>A highlights compilation of the whole event: task details, racing strategies, leaderboard standings and the fun of the week.</p></li>
-      <li><span class="md-when">Between races</span><h3>Race Behind The Race</h3><p>Behind the scenes and athlete showreels: what it takes to organise a comp, and a deeper connection between audiences, athletes and organisers.</p></li>
+      <li id="offer-pre"><span class="md-when">Before the race</span><h3>Pre-Race Show</h3><p>A Paragliding Atlas podcast episode previewing the venue and its conditions, to build anticipation with pilots and audiences.</p><p class="md-eg">Example: <a href="episodes/pre-pwc-kenya-nikolay-yotov.html">Pre PWC Kenya, with Nikolay Yotov</a></p></li>
+      <li id="offer-daily"><span class="md-when">Every task day</span><h3>Daily Highlights</h3><p>A video each day showing the task, the results, the race dynamics and what made the day special, with social clips and a results newsletter.</p><p class="md-eg">Example: <a href="#watch">Task 1 at the Super Final</a></p></li>
+      <li id="offer-after"><span class="md-when">After the race</span><h3>Aftermovie</h3><p>A highlights compilation of the whole event: task details, racing strategies, leaderboard standings and the fun of the week.</p></li>
+      <li id="offer-bts"><span class="md-when">Between races</span><h3>Race Behind The Race</h3><p>Behind the scenes and athlete showreels: what it takes to organise a comp, and a deeper connection between audiences, athletes and organisers.</p></li>
     </ol>
     <div class="md-also">
       <div class="kit-panel"><h3>Live commentary</h3><p>The whole task live on YouTube, as at SRS Bassano: five broadcasts, 21 hours 42 minutes on air.</p></div>
@@ -501,7 +575,7 @@ def media_page():
 %(nl)s
 %(viewer)s
 ''' % dict(hp=src(HERO_P, 1600), h=src(HERO, 1600), h8=src(HERO, 800), h24=src(HERO, 2400), w=1600, hh=round(1600 * h / w),
-           alt=E(PH[HERO][3]), call=CALL, rv="{:,}".format(V[REEL][2]), reel=reel(),
+           alt=E(PH[HERO][3]), call=CALL, rv="{:,}".format(V[REEL][2]), reel=reel(), shelf=shelf(),
            grid=grid(SELECT, "Selected stills from SRS Piedrahita 2026"), cards=comp_cards(),
            cta=cta("Book A Free <span class=\"v4-nw\">30-Minute</span> Call About Your Event", "Coverage For Your Comp",
                    "Tell me the event, the dates and the place, and what you would like to come out of it. Season coverage too."),
