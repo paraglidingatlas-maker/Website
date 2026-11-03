@@ -4,6 +4,93 @@ Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
 the owner's current queue and what the last session learnt doing it.
 
+## Chat 17 starts here (3 Nov 2026): build the Media portfolio page properly
+**Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
+has grown long, hand over without asking the owner: write the handover at the top of this file, update the
+owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
+chat yourself with the session tools (create_session), and give the owner its link.
+
+Chat 16 (all pushed if the gates passed; check `git log origin/main`):
+- **Welcome email LIVE** (3 Nov): MailerLite automation 199572486318196276 "Welcome to the Atlas list" now sends
+  the letter design, subject "Welcome to the Atlas Tribe"; old version in docs/emails/welcome-atlas-list-old.html.txt.
+  Newsletters from now on belong to the owner's newsletter chat; the website chat only does site pieces.
+- **Expeditions on phones LIVE** (owner: "a go"): the desktop flight below 1000 px in a phone shape, photo first.
+  `tools/v4_expeditions_phone.py` applies it to the committed `prototypes/v4/expeditions.html` (the build keeps
+  that file as committed; `tools/v4_expeditions.py` itself stops on "the partners shell has changed", an older
+  problem, and also calls phone() if it is ever fixed). Preview: https://claude.ai/artifact/Pa6jToj4vWyYf2iiJCudRA.
+  Lessons: test at the owner's real phone size (390 x 683 inside the Claude app) with the menu bar shown and hidden
+  before sending anything; the owner is right to reject untested previews.
+- Container setup: `pip install "playwright==1.63.0" contourpy fonttools brotli` before the gates, or the build
+  half-runs and rewrites live pages in the working tree (stash them; never commit them). A sample page must not
+  use a `<base>` tag (the build's asset check reads relative paths). Since go-live `prototypes/` is not served, so
+  previews go to claude.ai artifacts (Artifact tool, files map; flatten paths, drop pwa.js; see chat 16's
+  scratch approach in tools/v4_expeditions_phone_preview.py and tools/v4_media_preview.py).
+
+### The job: the Media page (owner, 3 Nov: "this is my face to asking people to trust my site ... where I convert
+eyeballs into customers and newsletter subscribers, but all in an elegant and effective way")
+The first preview (https://claude.ai/artifact/WctLPGmX5uVpGabthpHde3, `tools/v4_media_preview.py`) was rejected:
+"a joke ... incomplete, no zoom on the pics, pay button is different from rest of the site". Rebuild it from the
+site's own parts. Owner decisions: a **Media** page (a bold portfolio) plus subtle signposts only: a photo credit
+on the owner's photos, one "Media" line in the full-screen menu, one in the footer About column. No home section.
+Photos in a separate free GitHub repo per year (owner creates it, e.g. media-2026; GitHub's own address, not a
+subdomain, unless the owner says otherwise); web copies only (WebP, 800/1600, plus AVIF if worth it), originals stay
+with the owner. Videos stay on YouTube, played in place on tap (youtube-nocookie; audit.py fails other embeds).
+
+**Audit of the rejected preview (fix all):** invented buttons (use only `btn-solid` with its inner span and
+`btn-lines`, `data-hover`); own weak lightbox (reuse the India page's viewer in `prototypes/v4/fly.js` ~450-520,
+`dialog.v4i-fl-lb`: tap zoom 2x/3.5x, pinch, drag, counter, keys); own headings (use `kit-head` > `kit-kicker` +
+`kit-title` + `kit-intro`); videos left the site (reuse the home `#listen` `lb-ep` tap-to-play); no proof; no
+newsletter (reuse `.v2-nl` + /newsletter.js, MailerLite form 199520945794189126); the enquiry form is the trip form
+with required pilot fields (add a "Media coverage" option with event, dates, place, needs; enquire.html is
+hand-edited, no generator; subject is hard-coded 'Trip enquiry: '); dates shown as "2026" only; the grid crops
+every frame (a portfolio must show full frames: justified rows by aspect ratio); the event page is uneven.
+
+**What the owner delivers (read from the three Canva pitches, 3 Nov; use these names):** four products, the same
+in the SRS letter (Piedrahita, dated 09 Aug 2026), the SRS Media Deck Strategic Roadmap and the PWCA "Paragliding
+World Cup TV" board: (1) **Pre-Race Show**, a Paragliding Atlas podcast preview episode, "build anticipation with
+audiences/pilots who would like to know the venue and conditions"; (2) **Daily Highlights** ("Race Week"), a
+long-form video each task day plus social clips (reels) and a results newsletter, "show task, results, race dynamics,
+and what made each day special"; (3) **Aftermovie** ("Recap Video"), a highlights compilation: task details,
+racing strategies, leaderboard standings, fun factor; (4) **Race Behind The Race**, BTS and athlete showreel,
+mid-season or as available (SRS roadmap: Episodes 1 and 2), "explain what it takes to organize a comp and create a
+deeper emotional connection between audiences, athletes and organizers". Conditions in the pitches: everything is
+published as collaborative posts on both Paragliding Atlas and the organiser's channels; daily timing depends on
+on-site internet, task finish time, access to footage and on-site editing; start with the resources available and
+grow the deliverables as budget allows. The SRS roadmap runs Q3 2026 to Q2 2027 across the season to the Sports
+World Final (a plan, not a list of confirmed events): the page can sell **season coverage**, not only single events.
+Beyond the four: **live commentary** (Bassano) and **stills** (Piedrahita, Tapalpa).
+
+**Agreed page order:** 1 hero (one full-bleed still, kicker "Media", h1 "From The Comps", one line, btn-solid
+"Book a Call" + btn-lines "Watch the Highlights"); 2 proof strip (`kit-stats`); 3 showreel (most-watched
+highlight, in place); 4 selected work (full frames, zoom viewer); 5 the comps (a card each: best still, place,
+dates, what was delivered, views; each opens its page); 6 what an event gets (the owner's pitch: Pre race: podcast
+preview episode; During: daily highlight videos and a results newsletter; Post: aftermovie / highlight
+compilation; Between races: Race Behind the Race BTS and athlete showreel; published as joint posts on both
+channels; delivery same day or end of the week, depending on need; subject to connectivity on site); 7 how it
+works (call, plan, daily delivery); 8 a quote (owner: "soon"; never invent one); 9 the closing booking band
+(`cta-band`: btn-solid Book a Call + WhatsApp + media enquiry); 10 newsletter ("Follow Tapalpa day by day").
+Show ONE preview, tested at 390x683, 390x844 and 1440x900, before building into the site.
+
+**Facts (all checked 3 Nov):** the owner was **hired** by SRS and PWCA (wording "covered for"). Events:
+- PWC Super Final, Pegalajar, Spain, May 2026 (15th Paragliding World Cup Super Final): highlight videos only:
+  Day 1 FOuAWMeoxs4 (3,537 views), Task 1 BRAX1XMU390 (7,342), Task 2 7il6yV1vdIc (4,034), Task 4 op1-O01xkH4
+  (3,437), Task 5 vPnIYYKcvEg (3,340). Playlist PLwalaswPmuBgYtvCDEXKDP6kJC0qubzou.
+- SRS Skywalk Bassano Edition, Monte Grappa, May 2026: live commentary on YouTube: Task 2 ZL9B5eXip5o (5h41,
+  1,145), Task 3 SZWQjcO_fWk (4h59, 890), Task 4 x8sSBSBy4dI (1h57, 853) and DA4nGop3i9g (3h55, 513), Task 5
+  PEyO6MXngUw (5h08, 680). About 21 h 40 min live.
+- SRS BGD Edition, Piedrahita, Ávila, Spain, 22 to 29 Aug 2026, FAI CAT 2, 120 pilots from 54 countries (owner's
+  video description): stills and video: Day 1 cuGs7Lk6Dt4 (1,206), Task 1 uCEfssE40u8 (1,970), Task 2 NXUEyPQ3V4E
+  (2,303). Playlist PLwalaswPmuBhoes6pMIu-bfntsAVM0eIK. Stills: Drive "Chosen Few" 1423IRZp63UI_1G5i73-dwUjixBWL1hXF
+  (20 JPEGs, Canon EOS R50, SRS_5_T1/T2/T3 = tasks; download with
+  https://drive.usercontent.google.com/download?id=ID&export=download&confirm=t); "All Tasks" folder
+  1GwKlKvNkYJ5P5WF0QBtkOByG8du8lrjC (100+ files, 1.7 GB per 100).
+- SRS Advance Edition, Tapalpa (Gravedad Cero, Jalisco, Mexico): registration Sat 7 Nov, tasks Sun 8 to Sat 14 Nov
+  2026, 7 tasks, 120 pilots max, 44 countries (airtribune.com/srs-2026-6/info). Stills and daily video, to come.
+- 13 comp videos total about 31,250 views (vidIQ, 3 Nov). Owner's pitches (Canva): SRS letterhead DAHR0zZ62h4,
+  SRS calendar DAHNfJ3Qjyw, PWCA TV DAHNTAnUhT0.
+Still to ask: photos per day at Tapalpa; the daily drop folder (Google Drive); which site photos are the owner's
+(credits); rates (turnaround given above).
+
 ## Chat 16 starts here (3 Nov 2026): the expeditions page on phones, then the media library
 Chat 15 (all pushed, last commit before this note 469f9464, gates PASS apart from the expected live-untouched
 flag for `assets/email/`) went live on 27 Oct and then took many owner requests: Kenya flight, About, photo
