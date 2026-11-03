@@ -38,10 +38,10 @@ rep('    step = Math.max(1, (atlas.offsetHeight - H) / (N - 1 + HOLD));',
       panelR = 0;
     }
     step = Math.max(1, (atlas.offsetHeight - H) / (N - 1 + HOLD));''')
-rep('  function photoRect(pl) {\n', '  function photoRect(pl) {\n    if (PH.matches) return [0, 0, W, Math.round(H * .58)];\n')
+rep('  function photoRect(pl) {\n', '  function photoRect(pl) {\n    if (PH.matches) { var nv = parseFloat(getComputedStyle(root).getPropertyValue(\"--ex-nav\")) || 0; return [0, Math.round(nv), W, Math.round(H * .64)]; }\n')
 rep("var y = (j + .5) / MH * rh, my = pk ? 1 : ss(0, rh * .26, y) * ss(0, rh * .3, rh - y);",
-    "var y = (j + .5) / MH * rh, my = pk ? 1 : PH.matches ? ss(0, rh * .12, y) * ss(0, rh * .34, rh - y) : ss(0, rh * .26, y) * ss(0, rh * .3, rh - y);")
-rep("m = pk ? my : my * ss(0, rw * .5, x);", "m = pk ? my : PH.matches ? my * ss(0, rw * .1, x) * ss(0, rw * .1, rw - x) : my * ss(0, rw * .5, x);")
+    "var y = (j + .5) / MH * rh, my = pk ? 1 : PH.matches ? ss(0, rh * .05, y) * ss(0, rh * .26, rh - y) : ss(0, rh * .26, y) * ss(0, rh * .3, rh - y);")
+rep("m = pk ? my : my * ss(0, rw * .5, x);", "m = pk ? my : PH.matches ? my * ss(0, rw * .03, x) * ss(0, rw * .03, rw - x) : my * ss(0, rw * .5, x);")
 # 3 the phone layout
 css = '''<style>
 /* phone flight (preview): one window at the top where the camera flies and the photographs rise;
@@ -49,13 +49,13 @@ css = '''<style>
 .ex-phone .ex-atlas{height:calc(100svh + (var(--n) - .55) * 110svh);margin-top:0;}
 .ex-phone .ex-stage{top:0;}
 .ex-phone .ex-stop:not(.ex-open){top:auto;bottom:0;left:0;right:0;width:auto;align-items:flex-end;
-  padding:2.6rem 16px calc(var(--ex-yh) + 1.6rem);}
+  padding:1.6rem 16px calc(var(--ex-yh) + 1.4rem);}
 .ex-phone .ex-stop.is-on:not(.ex-open,.ex-outro){background:linear-gradient(180deg,transparent 0,var(--bg) 2.4rem);}
 .ex-phone .ex-place .ex-panel,.ex-phone .ex-place.is-planned .ex-panel{--ex-namew:86vw;}
-.ex-phone .ex-name{font-size:min(calc(var(--ex-namew) * var(--ex-fit)),11svh);}
+.ex-phone .ex-name{font-size:min(calc(var(--ex-namew) * var(--ex-fit)),8.5svh);}
 .ex-phone .ex-co{display:none;}
 .ex-phone .ex-name{line-height:1.05;}
-.ex-phone .ex-line{font-size:1rem;line-height:1.4;margin-top:.6rem;}
+.ex-phone .ex-line{font-size:.95rem;line-height:1.4;margin-top:.5rem;}
 .ex-phone .ex-year::before{inset:-25% 0 0;}
 .ex-phone .ex-when{margin-top:.7rem;}
 .ex-phone .ex-facts{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:.5rem;}
@@ -67,6 +67,9 @@ css = '''<style>
 .ex-phone .ex-outro .ex-h2{font-size:min(var(--fs-display),13vw);}
 .ex-phone .is-planned .ex-facts{grid-template-columns:repeat(2,minmax(0,1fr));}
 .ex-phone .is-planned .ex-facts>div{display:block;}
+/* no desktop shade on phones (it darkens the left half for words that sit at the foot here): only a soft
+   fade from the camera window into the words */
+.ex-phone .ex-plate::after{background:linear-gradient(180deg,transparent 0,transparent 58%,var(--bg) 70%);}
 .ex-phone .ex-pic{inset:0;}
 .ex-phone .ex-pic .ex-sky-ph{width:100%;left:0!important;right:0!important;}
 .ex-phone .ex-pic.is-india{-webkit-mask-image:linear-gradient(180deg,#000 40%,transparent 62%);mask-image:linear-gradient(180deg,#000 40%,transparent 62%);}
