@@ -82,7 +82,8 @@ The page, on a wide screen with motion allowed (the flight):
   - the close: the camera pulls back over the whole route and India's "Last
     light" frame rises under "Still Choosing?" (B's closing photograph).
 
-Phones, tablets, reduced motion and no script (the still journey): the
+Phones and tablets below 1000 px now fly too, in a phone shape (owner, 3 Nov 2026; tools/v4_expeditions_phone.py).
+Reduced motion and no script (the still journey): the
 same story down the page, nothing pinned, nothing moving: the two skies
 (stacked on phones, India above Kenya, as on the map), the year chooser
 sticky under the menu (stepping down when the menu returns, and letting go
@@ -167,6 +168,10 @@ import json
 import math
 import os
 import re
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from v4_expeditions_phone import phone  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V4 = os.path.join(ROOT, "prototypes", "v4")
@@ -2058,6 +2063,7 @@ def main():
     n = len(words(body))
     if n > MAX_WORDS:
         raise SystemExit("v4_expeditions: %d words in <main>; keep it under %d" % (n, MAX_WORDS))
+    page = phone(page)   # the flight on phones too, in a phone shape (tools/v4_expeditions_phone.py)
     open(OUT, "w", encoding="utf-8").write(page)
     print("v4_expeditions: %s (%d KB, main %d KB, %d words in <main>)"
           % (os.path.relpath(OUT, ROOT), len(page.encode()) // 1024, len(body.encode()) // 1024, n))
