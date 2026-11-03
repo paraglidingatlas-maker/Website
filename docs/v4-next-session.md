@@ -1,8 +1,39 @@
-# v4: handoff to the next session (27 Oct 2026)
+# v4: handoff to the next session (3 Nov 2026)
 
 Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
 the owner's current queue and what the last session learnt doing it.
+
+## Chat 16 starts here (3 Nov 2026): the expeditions page on phones, then the media library
+Chat 15 (all pushed, last commit before this note 469f9464, gates PASS apart from the expected live-untouched
+flag for `assets/email/`) went live on 27 Oct and then took many owner requests: Kenya flight, About, photo
+breakers, the record page, the email signature (`assets/email/`), the owner's map, India 2027 dates, and the
+MailerLite welcome email redesign (images in `assets/email/welcome/v1/`, never move them; a switched-off test
+copy is MailerLite automation 203064539021837887; going live is handled in chat 15 or, if not yet done, waits on
+the owner saying "make it live").
+
+**Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
+has grown long, hand over without asking the owner: write the handover at the top of this file, update the
+owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
+chat yourself with the session tools (create_session), and give the owner its link.
+
+1. **Expeditions page on phones (first job).** Owner, 3 Nov: on a phone `expeditions.html` "doesn't have any
+   animation that comes up in the desktop view, and looks an oddly designed broken page". Desktop: split hero
+   (Kenya and India photos), "Where And When" list beside the world map, each place pinned with its photo, the
+   map fly-in and the cloud move between places (designer E's "through the cloud", docs/designers/). Phone 390:
+   the hero photos crop awkwardly under the place labels, the list and map stack, the place sections lose the
+   pinned moves and read as loose blocks. Bring the desktop motion to phones in a phone-shaped form (or a
+   deliberate phone version), within the motion rules below; show the owner a phone preview first (one preview).
+2. **Media library (owner approved the idea, 3 Nov).** The owner shoots stills and one highlight video a day for
+   paragliding comps (SRS, PWCA, Coupe Icare; playlists on the YouTube channel) and leaves for SRS Tapalpa,
+   Mexico (about 5 to 18 Nov; confirm the comp dates). Plan agreed in chat 15: zero cost, the site must not get
+   slower. Photos as web versions only (2400 px about 300 KB, thumbnails about 40 KB, lazy grids, big image on
+   tap) in a separate free GitHub repository served at `media.paraglidingatlas.com` (one store about 1 GB,
+   about 7 to 9 comps; a new one when full); videos stay on YouTube behind a click-to-play still. One page per
+   event with a section per day, and a top page across editions (the portfolio). Daily routine: the owner drops
+   selects into a Google Drive folder; a scheduled chat resizes, uploads, adds the day and pushes. The owner has
+   all the rights. Still to ask: daily photo count, where past editions' stills are, and the DNS record for the
+   subdomain (walk them through it). Cloudflare R2 is the fallback (free to 10 GB, needs a card).
 
 ## The owner's rules (unchanged)
 - Only `prototypes/v4/`, `tools/` and `docs/` change. Never `prototypes/v2/`,
