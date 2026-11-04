@@ -51,7 +51,8 @@ give the owner the prompt to paste.
 - Designers E and F stalled for about an hour in round 2 (most likely a tool call waiting for an approval the owner
   could not give from a plane), then finished after a nudge: all three wrote their round 2 notes and pitches, and the
   preview carries their own words. Not yet checked on a real phone by anyone: F's glider, E's pull-back to the
-  contact sheet, everyone's Save to Photos. E asks for a 320 px copy of each photo for its Scan view.
+  contact sheet, everyone's Save to Photos. E asks for a 320 px copy of each photo for its Scan view; with 350 photos (?stress) at 4x CPU its zoom-out
+  holds its frames but starts 140 to 190 ms after the tap (fix: lay out only the photos near the screen).
 - The move's remaining cost: about 1 ms of style recalc per changed element batch per frame on a real phone (4 ms at
   4x CPU), from matching against the large site stylesheet; inside the frame budget. Going further means CSS
   scroll-driven animations (animation-timeline), a larger rebuild: only if the owner still sees it patchy.
