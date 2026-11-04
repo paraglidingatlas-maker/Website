@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""Media: pack the two built pages into one claude.ai preview (chat 17, 3 Nov 2026).
+"""Media: pack the built pages into one claude.ai preview (chat 17, 3 Nov 2026).
 
 prototypes/ is not served live since go-live, so the owner previews in a claude.ai artifact. This copies
 prototypes/v4/media.html and media-srs-piedrahita-2026.html (built by tools/v4_media.py with
---media img/media-tmp/) into OUT_DIR with every file they use beside them under flat names: the site's CSS, JS,
-fonts and logo, the photos, and the YouTube stills (an artifact can load nothing from other hosts). Links to
-other site pages point at paraglidingatlas.com. An artifact cannot show a YouTube player, so in the preview a
-video's play button opens it on YouTube; on the site it plays in place.
+--media img/media-tmp/), and prototypes/v4/enquire.html, into OUT_DIR with every file they use beside them under flat
+names: the site's CSS (v4-media.css among them), JS, fonts and logo, the photos, and the YouTube stills (an artifact
+can load nothing from other hosts). enquire.html comes too (A3), so the dates form lands on the preview's own enquiry
+page in its media mode, not on the live pilot form. Links to other site pages point at paraglidingatlas.com. An
+artifact cannot show a YouTube player, so in the preview a video's play button opens it on YouTube; on the site it
+plays in place.
 
     python3 tools/v4_media.py --media img/media-tmp/
     python3 tools/v4_media_preview.py OUT_DIR
@@ -22,7 +24,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V4 = os.path.join(ROOT, "prototypes", "v4")
 OUT = sys.argv[1]
 os.makedirs(OUT, exist_ok=True)
-PAGES = ["media.html", "media-srs-piedrahita-2026.html"]
+PAGES = ["media.html", "media-srs-piedrahita-2026.html", "enquire.html"]
 done = {}
 
 
@@ -78,17 +80,16 @@ for pg in PAGES:
     h = open(os.path.join(V4, pg)).read()
     h = re.sub(r'<script defer src="pwa\.js[^"]*"></script>', "", h)
     h = re.sub(r'<link rel="manifest"[^>]*>', "", h)
-    h = re.sub(r'\b(src|href|data-full|data-ep)="([^"]*)"', lambda m: '%s="%s"' % (m.group(1), fix(m.group(2))), h)
+    # every address in the page: links, sources, the viewer's large copies, the episode pages, the list's video stills
+    # (data-still), and the forms' targets (the dates form goes to the packed enquire.html)
+    h = re.sub(r'\b(src|href|action|data-full|data-ep|data-still)="([^"]*)"', lambda m: '%s="%s"' % (m.group(1), fix(m.group(2))), h)
     h = re.sub(r'\bsrcset="([^"]*)"', lambda m: 'srcset="%s"' % ", ".join(
         " ".join([fix(x.split()[0])] + x.split()[1:]) for x in m.group(1).split(",") if x.strip()), h)
     # the preview cannot show a YouTube player: the play buttons open YouTube, and the list's stills are local
     h = h.replace("<html lang=\"en\">", "<html lang=\"en\" data-md-out>", 1)
     h = h.replace("<title>", "<title>Preview: ", 1)
     open(os.path.join(OUT, pg), "w").write(h)
-# the list swaps the big still by video id: keep those local too
-js = open(os.path.join(OUT, done[os.path.normpath(os.path.join(V4, "v4-media.js"))])).read()
-js = js.replace('img.src = "https://i.ytimg.com/vi/" + v + "/maxresdefault.jpg";', 'img.src = "yt-" + v + "-maxresdefault.jpg";')
-open(os.path.join(OUT, "v4-media.js"), "w").write(js)
 for v in re.findall(r'data-vid="([^"]+)"', open(os.path.join(OUT, PAGES[0])).read()):
     yt("https://i.ytimg.com/vi/%s/maxresdefault.jpg" % v)
+assert os.path.exists(os.path.join(OUT, "v4-media.css")), "v4-media.css was not packed"
 print(len(os.listdir(OUT)), "files in", OUT)
