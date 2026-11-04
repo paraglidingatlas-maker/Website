@@ -122,7 +122,7 @@
     var a = -1;                                                    // the anchor: the last opened frame if on screen, else the one nearest the middle
     if (lastOpen && inView(old[lastOpen._i], -40)) a = lastOpen._i;
     if (a < 0) { var best = 1e9; old.forEach(function (r, i) { if (!inView(r, 0)) return; var dd = Math.abs(r.top + r.height / 2 - vh * 0.5); if (dd < best) { best = dd; a = i; } }); }
-    var openVisible = $(".g-open").getBoundingClientRect().bottom > 0;
+    var openVisible = $(".g-open").getBoundingClientRect().bottom > vh * 0.3;   // the opening in view: the page stays put
     root.classList.toggle("g-scan", on);
     cam.setAttribute("aria-pressed", on ? "true" : "false");
     camL.textContent = on ? "Days" : "Scan all";
