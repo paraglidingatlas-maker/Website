@@ -103,6 +103,13 @@ setTimeout(show,500)})();</script><!--/v4ld-->
 .enq-aside h3{font-family:var(--font-display);font-weight:600;color:var(--white);
   font-size:.98rem;margin:0 0 .6rem;}
 .enq-aside p{color:var(--gray-light);font-size:.9rem;line-height:1.75;margin:0 0 1.4rem;}
+/* Media mode (?trip=media, or "Media coverage" chosen in Destination): the form speaks to race organisers and
+   sponsors. html.enq-media is set by the line under <main> and by the mode switch at the foot; the pilot copy and
+   "Your flying" step aside, "Your event" comes in. Without JS the page is the pilots' form. (These rules sit
+   inside the block tools/v4_book.py drops, so book.html never carries them.) */
+[data-enq="media"]{display:none;}
+html.enq-media [data-enq="media"]{display:revert;}
+html.enq-media [data-enq="trip"]{display:none;}
 .enq-aside a{color:var(--orange);}
 
 fieldset{border:none;padding:0;margin:0 0 2rem;}
@@ -238,6 +245,8 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
 </nav>
 <div class="nav-chevron"></div>
 <main id="v4-main">
+<script>/* Media mode, before the form is drawn: ?trip=media opens it for organisers, and the "Hold a place" arrival (v4u-holding, set in the head) never applies to it. */
+if (/[?&]trip=media(?:&|$)/i.test(location.search)) { document.documentElement.classList.remove('v4u-holding'); document.documentElement.classList.add('enq-media'); }</script>
 
 <header class="kit-hero is-sky v2-page-hero">
   <div class="kit-hero-copy">
@@ -249,7 +258,8 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
       <p><span class="l">Duration</span><span class="v" data-k="len"></span></p>
       <p><span class="l">Price</span><span class="v" data-k="price"></span></p>
     </div>
-    <p class="kit-intro">The more you tell us about where you are as a pilot, the more useful our answer will be. There are no wrong answers here, and telling us you are less current than you would like is genuinely more helpful than telling us you are fine.</p>
+    <p class="kit-intro" data-enq="trip">The more you tell us about where you are as a pilot, the more useful our answer will be. There are no wrong answers here, and telling us you are less current than you would like is genuinely more helpful than telling us you are fine.</p>
+    <p class="kit-intro" data-enq="media">For race organisers and sponsors. Send the event, its dates and its place, and the coverage you have in mind, and we will reply about availability. Coverage is priced per event, after a call.</p>
   </div>
 </header>
 
@@ -285,8 +295,9 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
       </fieldset>
 
       <fieldset>
-        <legend>Which trip</legend>
-        <p class="enq-legend-note">Not sure yet is a perfectly good answer, and often the right one.</p>
+        <legend><span data-enq="trip">Which trip</span><span data-enq="media">What you are asking about</span></legend>
+        <p class="enq-legend-note" data-enq="trip">Not sure yet is a perfectly good answer, and often the right one.</p>
+        <p class="enq-legend-note" data-enq="media">Media coverage of a race or a series. To ask about a trip instead, choose it here.</p>
         <div class="enq-field">
           <label for="trip">Destination</label>
           <select id="trip" name="trip">
@@ -296,15 +307,44 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
             <option>India (Bir Billing)</option>
             <option>Peru</option>
             <option>Kazakhstan</option>
+            <option value="media">Media coverage</option>
           </select>
         </div>
-        <div class="enq-field">
-          <label for="when">When you are hoping to travel <span class="opt">(optional)</span></label>
+        <div class="enq-field" id="enqWhen">
+          <label for="when"><span data-enq="trip">When you are hoping to travel</span><span data-enq="media">Dates</span> <span class="opt">(optional)</span></label>
           <input type="text" id="when" name="when" placeholder="A season or a rough window is fine">
         </div>
       </fieldset>
 
-      <fieldset>
+      <!-- Media mode only (Media coverage): shown, and enabled, by the mode switch at the foot. Disabled here so
+           the pilots' form never waits on it; the Dates field above moves in beside Event while it shows. -->
+      <fieldset id="enqEvent" data-enq="media" disabled>
+        <legend>Your event</legend>
+        <p class="enq-legend-note">Its name is enough to start. The dates, the place and the package help us reply about availability.</p>
+        <div class="enq-row" id="enqEventRow">
+          <div class="enq-field">
+            <label for="event">Event</label>
+            <input type="text" id="event" name="event" placeholder="Its name" maxlength="120" required>
+          </div>
+        </div>
+        <div class="enq-row">
+          <div class="enq-field">
+            <label for="place">Place <span class="opt">(optional)</span></label>
+            <input type="text" id="place" name="place" placeholder="Site and country" maxlength="120">
+          </div>
+          <div class="enq-field">
+            <label for="package">Package</label>
+            <select id="package" name="package">
+              <option value="daily">Daily</option>
+              <option value="full">Full Event</option>
+              <option value="season">Season</option>
+              <option value="unsure" selected>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset id="enqFlying" data-enq="trip">
         <legend>Your flying</legend>
         <p class="enq-legend-note">This is the part that decides whether a trip is right for you, so please be straight with us. It is used to answer your enquiry, nothing else.</p>
         <div class="enq-row">
@@ -334,10 +374,11 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
       </fieldset>
 
       <fieldset>
-        <legend>What you want from it</legend>
-        <p class="enq-legend-note">Anything you would like us to know, and anything you would like to ask.</p>
+        <legend><span data-enq="trip">What you want from it</span><span data-enq="media">Anything else</span></legend>
+        <p class="enq-legend-note" data-enq="trip">Anything you would like us to know, and anything you would like to ask.</p>
+        <p class="enq-legend-note" data-enq="media">Anything we should know about the event, and anything you would like to ask.</p>
         <div class="enq-field">
-          <label for="message">Your message</label>
+          <label for="message"><span data-enq="trip">Your message</span><span data-enq="media">Anything else</span></label>
           <textarea id="message" name="message" required></textarea>
         </div>
       </fieldset>
@@ -370,8 +411,8 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
     <h3>What we do with it</h3>
     <p>We read it and reply, usually within a couple of days. We do not add you to a mailing list from an enquiry, and we do not pass your details to anyone. The full detail is in the <a href="privacy-policy.html">Privacy Policy</a>.</p>
 
-    <h3>Before you book</h3>
-    <p>Worth reading either way: the <a href="terms.html">booking terms</a>, and the <a href="participant-agreement.html">participant agreement</a> that every pilot completes before a trip. Both are published in full rather than sprung on you later.</p>
+    <h3 data-enq="trip">Before you book</h3>
+    <p data-enq="trip">Worth reading either way: the <a href="terms.html">booking terms</a>, and the <a href="participant-agreement.html">participant agreement</a> that every pilot completes before a trip. Both are published in full rather than sprung on you later.</p>
 
     <h3>Building something for the sport?</h3>
     <p>If you have made a piece of gear, a piece of tech or a wild new adventure concept that would make a positive difference to this community, we would like to hear about it. We run paid spotlight segments inside episodes: you reach listeners across 136 countries, and it helps keep the podcast funded and free. Sponsored segments are always disclosed at the top of the episode, which is set out in our <a href="safety-and-disclosure.html">disclosure statements</a>.</p>
@@ -441,11 +482,101 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
   /* v4: "Hold a place" on a departure also brings its dates */
   var w = document.getElementById('when');
   if (w && when && !w.value) w.value = when.slice(0, 80);
-  if (!sel || !want) return;
-  want = want.toLowerCase();
-  for (var i = 0; i < sel.options.length; i++) {
-    if (sel.options[i].text.toLowerCase().indexOf(want) === 0) { sel.selectedIndex = i; break; }
+  if (sel && want) {
+    want = want.toLowerCase();
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].text.toLowerCase().indexOf(want) === 0) { sel.selectedIndex = i; break; }
+    }
   }
+
+  /* Media mode (the Media page's dates form, docs/designers/media-build-spec.md S3 and N1 to N3):
+     enquire.html?trip=media&event=..&when=..&place=..&package=daily|full|season|unsure arrives with
+     Media coverage chosen and those filled in; the name and email come in sessionStorage "v4-media-enq"
+     (JSON {"name","email"}, never in the address bar), read once and removed. Choosing Media coverage in
+     Destination does the same; choosing a trip again gives the pilots' form back as it was. */
+  var d = document, de = d.documentElement, q2 = null;
+  try { q2 = new URLSearchParams(location.search); } catch (e) {}
+  function fill(id, v, n) {
+    var el = d.getElementById(id);
+    if (el && typeof v === 'string' && v.trim() && !el.value) el.value = v.trim().slice(0, n || 120);
+  }
+  if (q2) {
+    fill('event', q2.get('event'));
+    fill('place', q2.get('place'));
+    var pk = (q2.get('package') || '').toLowerCase(), ps = d.getElementById('package');
+    if (ps && /^(daily|full|season|unsure)$/.test(pk)) ps.value = pk;
+  }
+  try {
+    var raw = sessionStorage.getItem('v4-media-enq');
+    if (raw !== null) {
+      sessionStorage.removeItem('v4-media-enq');
+      var who = JSON.parse(raw) || {};
+      fill('name', who.name, 200);
+      fill('email', who.email, 200);
+    }
+  } catch (e) {}
+
+  var ev = d.getElementById('enqEvent'), fly = d.getElementById('enqFlying'), wf = d.getElementById('enqWhen'),
+      home = wf && wf.parentNode, next = wf && wf.nextSibling, row = d.getElementById('enqEventRow'),
+      em = d.querySelector('.kit-hero h1 em'), msg = d.getElementById('message'),
+      mlab = d.querySelector('label[for="message"]'), box = d.getElementById('v4uHold');
+  if (!sel || !ev || !fly) return;
+  var cur = null, was = null;
+  /* the form's messages (v4u-form-js) under fields that are stepping aside go with them */
+  function quiet(scope) {
+    [].forEach.call(scope.querySelectorAll('.enq-err'), function (p) { p.parentNode.removeChild(p); });
+    [].forEach.call(scope.querySelectorAll('[aria-invalid]'), function (el) {
+      el.removeAttribute('aria-invalid');
+      var ids = (el.getAttribute('aria-describedby') || '').split(' ').filter(function (x) { return x && x !== el.id + '-err'; });
+      if (ids.length) el.setAttribute('aria-describedby', ids.join(' ')); else el.removeAttribute('aria-describedby');
+    });
+  }
+  function mode(on) {
+    if (on === cur) return;
+    var first = cur === null;
+    cur = on;
+    if (on) {
+      /* what the trip form had (a "Hold a place" arrival makes the message optional and shows the departure) */
+      was = { msg: msg ? msg.required : true, box: box ? box.hidden : true, holding: de.classList.contains('v4u-holding'),
+              em: em ? em.textContent : '', ph: d.getElementById('when').placeholder };
+      de.classList.add('enq-media');
+      de.classList.remove('v4u-holding');
+      if (box) box.hidden = true;
+      [].forEach.call(fly.querySelectorAll('[required]'), function (el) { el.setAttribute('data-req', ''); el.required = false; });
+      fly.disabled = true;
+      quiet(fly);
+      ev.disabled = false;
+      if (wf && row) row.appendChild(wf);
+      d.getElementById('when').placeholder = 'Task days, or a rough window';
+      if (em) em.textContent = 'Your Event';
+      if (msg) msg.required = false;
+      if (mlab && !mlab.querySelector('.opt')) {
+        var o = d.createElement('span'); o.className = 'opt'; o.setAttribute('data-enq-opt', ''); o.textContent = '(optional)';
+        mlab.appendChild(d.createTextNode(' ')); mlab.appendChild(o);
+      }
+      return;
+    }
+    de.classList.remove('enq-media');
+    ev.disabled = true;
+    quiet(ev);
+    if (first || !was) return;
+    if (was.holding) de.classList.add('v4u-holding');
+    if (box) box.hidden = was.box;
+    fly.disabled = false;
+    [].forEach.call(fly.querySelectorAll('[data-req]'), function (el) { el.required = true; el.removeAttribute('data-req'); });
+    if (wf && home) home.insertBefore(wf, next);
+    d.getElementById('when').placeholder = was.ph;
+    if (em) em.textContent = was.em;
+    if (msg) msg.required = was.msg;
+    var mine = mlab && mlab.querySelector('[data-enq-opt]');
+    if (mine) {
+      var gap = mine.previousSibling;
+      if (gap && gap.nodeType === 3) gap.parentNode.removeChild(gap);
+      mine.parentNode.removeChild(mine);
+    }
+  }
+  mode(sel.value === 'media');
+  sel.addEventListener('change', function () { mode(sel.value === 'media'); });
 })();
 </script>
 <script>
@@ -479,7 +610,36 @@ legend{font-family:var(--font-display);font-weight:600;color:var(--white);font-s
     return el && el.value ? el.value.trim() : '';
   }
 
+  /* Media mode (Media coverage chosen): an organiser's enquiry. Its fields (event, when, place,
+     package) are the enabled ones, so the Worker's FormData carries them and not the pilot fields. */
+  function isMedia() { return val('trip') === 'media'; }
+  function packageName() {
+    var s = document.getElementById('package');
+    return s && s.selectedIndex >= 0 ? s.options[s.selectedIndex].text : '';
+  }
+
   function mailtoHref() {
+    if (isMedia()) {
+      var mlines = [
+        'Name: ' + val('name'),
+        'Email: ' + val('email'),
+        'Based in: ' + (val('country') || 'not given'),
+        '',
+        'Media coverage',
+        'Event: ' + val('event'),
+        'Dates: ' + (val('when') || 'not given'),
+        'Place: ' + (val('place') || 'not given'),
+        'Package: ' + packageName(),
+        '',
+        'Anything else:',
+        val('message') || 'nothing added',
+        '',
+        'Consent given to use these details to answer this enquiry.'
+      ];
+      return 'mailto:' + TO
+        + '?subject=' + encodeURIComponent('Media enquiry: ' + val('event'))
+        + '&body=' + encodeURIComponent(mlines.join('\n'));
+    }
     var lines = [
       'Name: ' + val('name'),
       'Email: ' + val('email'),

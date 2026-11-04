@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<!--v4ld--><style>.v4ld{position:fixed;inset:0;z-index:2147483000;color:#f6f4f4;opacity:0;transition:opacity .3s cubic-bezier(.16,1,.3,1)}.v4ld.on{opacity:1}.v4ld svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.v4ld-a,.v4ld-b{position:absolute;left:0;right:0;background:#141519;transition:transform .75s cubic-bezier(.16,1,.3,1)}.v4ld-a{top:0}.v4ld-b{bottom:0}.v4ld.open .v4ld-a{transform:translateY(-101%)}.v4ld.open .v4ld-b{transform:translateY(101%)}.v4ld svg,.v4ld-n,.v4ld-p,.v4ld-w{transition:opacity .35s}.v4ld.open svg,.v4ld.open .v4ld-n,.v4ld.open .v4ld-p,.v4ld.open .v4ld-w{opacity:0}.v4ld-n{position:absolute;left:0;right:0;top:27%;text-align:center;padding:0 16px;font:500 12px/1 'DM Mono',ui-monospace,monospace;letter-spacing:.5em;text-indent:.5em;text-transform:uppercase}.v4ld-n small{display:block;margin-top:1.1em;font-size:10px;letter-spacing:.32em;text-indent:.32em;color:#8d8c92}.v4ld-p{position:absolute;font:11px/1 'DM Mono',ui-monospace,monospace;letter-spacing:.08em;color:#c9c7cc;transform:translate(10px,-170%);font-variant-numeric:tabular-nums;white-space:nowrap}.v4ld-p i{font-style:normal;color:#8d8c92}.v4ld-w{position:absolute;left:0;right:0;top:12%;text-align:center;font:800 min(25vw,23rem)/1 Poppins,system-ui,sans-serif;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px rgba(246,244,244,.32);white-space:nowrap}@media (max-width:700px){.v4ld-w{top:18%}}</style><script type="application/json" id="v4ld-c">{"k":"page","n":"Media"}</script><script>(function(){var d=document,w=window,C=JSON.parse(d.getElementById("v4ld-c").textContent);
+try{if(sessionStorage.getItem("v4ld"))return}catch(e){}
+var done=false,shown=false,el,t0,raf=0,P=0,reduce=w.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+w.addEventListener("load",function(){done=true});
+function share(){if(done)return 1;var im=d.images,n=0,k=0;for(var i=0;i<im.length;i++){if(im[i].loading=="lazy")continue;n++;if(im[i].complete)k++}
+ var f=d.fonts&&d.fonts.status=="loaded"?1:0;return Math.min(.97,(k+f+(d.readyState!="loading"?1:0))/(n+2))}
+function ns(t,a){var e=d.createElementNS("http://www.w3.org/2000/svg",t);for(var k in a)e.setAttribute(k,a[k]);return e}
+function show(){if(done||d.readyState=="complete")return;shown=true;try{sessionStorage.setItem("v4ld","1")}catch(e){}
+ el=d.createElement("div");el.className="v4ld";el.setAttribute("role","status");el.setAttribute("aria-label","Loading");
+ var W=1000,H=600,s=ns("svg",{viewBox:"0 0 1000 600",preserveAspectRatio:"none","aria-hidden":"true"}),line,len=0,cols=[],tipY=360,x0=0,x1=1000;
+ if(C.k=="trip"){var pts=C.r||[],dd="";if(pts.length){for(var i=0;i<pts.length;i++)dd+=(i?"L":"M")+(i/(pts.length-1)*1000).toFixed(1)+" "+(400-pts[i]*150).toFixed(1)}else dd="M0 360L1000 360";
+  line=ns("path",{d:dd,fill:"none",stroke:"#ff7517","stroke-width":"1.2","stroke-linejoin":"round"});s.appendChild(line)}
+ else if(C.k=="home"){tipY=560;x0=50;x1=950;s.appendChild(ns("line",{x1:50,y1:560,x2:950,y2:560,stroke:"rgba(246,244,244,.14)","vector-effect":"non-scaling-stroke"}));
+  line=ns("line",{x1:50,y1:560,x2:50,y2:560,stroke:"#ff7517","stroke-width":"1.4","vector-effect":"non-scaling-stroke"});s.appendChild(line)}
+ else if(C.k=="listen"){tipY=520;x0=60;x1=940;s.appendChild(ns("line",{x1:60,y1:520,x2:940,y2:520,stroke:"rgba(246,244,244,.14)","vector-effect":"non-scaling-stroke"}));
+  (C.c||[]).forEach(function(c){var l=ns("line",{x1:60+c[0]*880,x2:60+c[0]*880,y1:520,y2:520,stroke:"#ff7517","stroke-width":"1.2","vector-effect":"non-scaling-stroke"});l._h=c[1];l._x=60+c[0]*880;s.appendChild(l);cols.push(l)})}
+ else{tipY=360;x0=300;x1=700;line=ns("line",{x1:300,y1:360,x2:300,y2:360,stroke:"#ff7517","stroke-width":"1.4","vector-effect":"non-scaling-stroke"});s.appendChild(line)}
+ var cut=(C.k=="trip"?400:tipY)/6,A=d.createElement("div"),B=d.createElement("div");A.className="v4ld-a";B.className="v4ld-b";A.style.height=cut+"%";B.style.height=(100-cut)+"%";el.appendChild(A);el.appendChild(B);
+ el.appendChild(s);
+ if(C.k=="home"&&C.w){var wd=d.createElement("div");wd.className="v4ld-w";wd.setAttribute("aria-hidden","true");wd.textContent=C.w;el.appendChild(wd)}
+ var nm=d.createElement("div");nm.className="v4ld-n";nm.textContent=C.n;if(C.f){var sm=d.createElement("small");sm.textContent=C.f;nm.appendChild(sm)}if(C.k!="home")el.appendChild(nm);
+ var pc=d.createElement("div");pc.className="v4ld-p";pc.setAttribute("aria-hidden","true");el.appendChild(pc);
+ (d.body||d.documentElement).appendChild(el);if(line&&line.getTotalLength&&C.k=="trip"){len=line.getTotalLength();line.style.strokeDasharray=len;line.style.strokeDashoffset=len}
+ el.addEventListener("click",out);requestAnimationFrame(function(){el.classList.add("on")});t0=performance.now();
+ function frame(now){var a=share();P=reduce?a:P+(a-P)*.12;if(done&&P>.995)P=1;var x;
+  if(C.k=="trip"){line.style.strokeDashoffset=(len*(1-P)).toFixed(1);var pt=line.getPointAtLength(len*P);x=pt.x;tipY=pt.y}
+  else if(C.k=="listen"){x=x0+(x1-x0)*P;cols.forEach(function(l){var k=Math.max(0,Math.min(1,(x-l._x)/80));l.setAttribute("y2",(520-l._h*170*(1-Math.pow(1-k,3))).toFixed(1))})}
+  else{x=x0+(x1-x0)*P;line.setAttribute("x2",x.toFixed(1))}
+  pc.style.left=(x/10)+"%";pc.style.top=(tipY/6)+"%";pc.innerHTML=Math.round(P*100)+"<i>%</i>";
+  if((P>=1&&now-t0>900)||now-t0>8000){out();return}raf=requestAnimationFrame(frame)}
+ raf=requestAnimationFrame(frame)}
+function out(){if(!el||el._out)return;el._out=1;cancelAnimationFrame(raf);
+ if(reduce)el.classList.remove("on");else el.classList.add("open");setTimeout(function(){if(el&&el.parentNode)el.parentNode.removeChild(el)},reduce?350:850)}
+setTimeout(show,500)})();</script><!--/v4ld-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media: Paragliding Atlas</title>
+<meta name="description" content="Comp coverage by Paragliding Atlas: daily highlight videos, live commentary and stills from the 2026 SRS races and the Paragliding World Cup Super Final.">
+<link rel="canonical" href="https://paraglidingatlas.com/media.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Media">
+<meta property="og:description" content="Comp coverage by Paragliding Atlas: daily highlight videos, live commentary and stills from the 2026 SRS races and the Paragliding World Cup Super Final.">
+<meta property="og:image" content="../../img/media-tmp/SRS_5_T3_21-1600.webp">
+<meta property="og:url" content="https://paraglidingatlas.com/media.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../../img/favicon-96.png">
+<link rel="apple-touch-icon" href="../../../../assets/logo/apple-touch-icon.png">
+<meta name="theme-color" content="#141519">
+<link rel="alternate" type="application/rss+xml" title="Paragliding Atlas Podcast" href="https://anchor.fm/s/ed1344d8/podcast/rss">
+<link rel="preload" href="../../../../assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../assets/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../../assets/fonts/dm-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../../../fonts.css?v=1f73ef11">
+<link rel="stylesheet" href="../../../../styles.css?v=b084e774">
+<link rel="stylesheet" href="../../v2.css?v=8f8ced12"><!--v4u-css--><style>@media (max-width:760px){html body :is(.v2-tour-tag,.cta-hud-tag,.band .chips .lab){font-size:var(--fs-micro)}}</style><!--/v4u-css-->
+<!--v4p:polish--><style>html body .kit-hero .kit-stats{gap:var(--sp-3) clamp(2.2rem,5vw,4rem)}html body .kit-hero .kit-stat b{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,4.2vw,3.25rem);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}html body .kit-hero .kit-stat span{color:var(--gray-light);margin-top:.55rem}html body .kit-hero .kit-stat b>span{display:inline;margin:0;font:inherit;color:inherit;letter-spacing:inherit;text-transform:none}html body .kit-hero .kit-stat b>.v4-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}html body .v2-origin-grid{grid-template-columns:minmax(0,1fr);max-width:46rem}.v2-origin .ab2-flight{margin:clamp(2.5rem,6vw,4.5rem) 0 0}.ab2-track{display:block;width:100%;height:auto;overflow:visible}.ab2-track path,.ab2-track rect,.ab2-track circle{fill:none;vector-effect:non-scaling-stroke}.ab2-alt path{stroke:var(--line);stroke-dasharray:2 8}.ab2-ridge{stroke:var(--edge-hi);stroke-width:1.2}.ab2-track .ab2-ridge-fill{fill:var(--card);stroke:none;opacity:.6}.ab2-line{stroke:var(--orange);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.ab2-future{stroke:var(--orange);stroke-width:1.4;stroke-dasharray:3 7;opacity:.55}.ab2-drop{stroke:var(--edge);stroke-dasharray:2 5}.ab2-track .ab2-mark{fill:var(--bg);stroke:var(--orange);stroke-width:1.6}.ab2-wing path,.ab2-wing circle{stroke:var(--white);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.ab2-track .ab2-wing circle{fill:var(--white)}.ab2-log{list-style:none;margin:1.4rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.2rem,3vw,2.5rem)}.ab2-log li{border-top:1px solid;border-image:linear-gradient(90deg,var(--orange),var(--line) 45%,transparent) 1;padding-top:1rem}.ab2-tag{display:block;font-family:var(--font-display);font-weight:700;font-size:var(--fs-h4);color:var(--orange);margin-bottom:.45rem}.ab2-log p{color:var(--gray-light);font-size:1rem;line-height:1.65;margin:0;max-width:30rem}@media (max-width:600px){.ab2-log{grid-template-columns:1fr;gap:1.4rem}}html.v4-fly .ab2-line{stroke-dasharray:var(--L,none);stroke-dashoffset:0;transition:stroke-dashoffset 2.6s cubic-bezier(.45,0,.2,1) .2s}html.v4-fly :is(.ab2-way,.ab2-wing,.ab2-future){transition:opacity .5s var(--ease)}html.v4-fly .ab2-way{transition-delay:var(--d)}html.v4-fly :is(.ab2-wing,.ab2-future){transition-delay:2.6s}html.v4-fly .ab2-log li{transition:opacity .7s var(--ease),transform .7s var(--ease)}html.v4-fly .ab2-log li:nth-child(1){transition-delay:.3s}html.v4-fly .ab2-log li:nth-child(2){transition-delay:.95s}html.v4-fly .ab2-log li:nth-child(3){transition-delay:1.6s}html.v4-fly .ab2-flight:not(.in) .ab2-line{stroke-dashoffset:var(--L,0)}html.v4-fly .ab2-flight:not(.in) :is(.ab2-way,.ab2-wing,.ab2-future){opacity:0}html.v4-fly .ab2-flight:not(.in) .ab2-log li{opacity:0;transform:translateY(12px)}html body .v2-promise p{font-size:1rem;line-height:1.65}html body .v4-nac{list-style:none;margin:var(--sp-5) 0 0;padding:0}html body .v4-nac li{display:grid;grid-template-columns:clamp(2.5rem,5vw,4rem) minmax(0,1fr);align-items:center;padding:clamp(.6rem,1.4vw,1rem) 0;border-top:1px solid var(--line)}html body .v4-nac li:last-child{border-bottom:1px solid var(--line)}html body .v4-nac small{font-family:var(--font-display);font-weight:600;font-size:.9rem;letter-spacing:.1em;color:var(--orange)}html body .v4-nac b{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,8vw,7.4rem);line-height:1;letter-spacing:-.03em;color:var(--white)}html.v4-nacm .v4-nac b{color:transparent;-webkit-text-stroke:1px var(--edge-hi);transition:color .6s var(--ease),-webkit-text-stroke-color .6s var(--ease)}html.v4-nacm .v4-nac small{color:var(--gray);transition:color .6s var(--ease)}html.v4-nacm .v4-nac li.on b{color:var(--white);-webkit-text-stroke-color:transparent}html.v4-nacm .v4-nac li.on small{color:var(--orange)}html.v4-tilt .v2-tours .kit-card-media{position:relative;transform:perspective(800px) translateY(var(--ty,0px)) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .6s var(--ease)}html.v4-tilt .v2-tours .kit-card:is(:hover,:focus-visible) .kit-card-media{--ty:-4px;transition:transform .18s var(--ease)}html.v4-tilt .v2-tours .kit-card-media::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(60% 60% at var(--mx,50%) var(--my,50%),rgba(246,244,244,.14),transparent 70%);transition:opacity .4s var(--ease)}html.v4-tilt .v2-tours .kit-card:hover .kit-card-media::after{opacity:1}</style><script>(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var html = document.documentElement;
+  if (reduce) return;
+  if (window.IntersectionObserver) html.classList.add('v4-fly', 'v4-nacm');
+  function ready(f) { if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', f); else f(); }
+  ready(function () {
+    /* the opening's figures count up once, the real figure kept for screen readers and at the end */
+    document.querySelectorAll('.kit-hero .kit-stat b').forEach(function (b, k) {
+      var real = b.textContent, m = real.match(/^(\d+)(\D*)$/); if (!m) return;
+      var n = +m[1], w = b.getBoundingClientRect().width, show = document.createElement('span'), t0 = 0;
+      show.setAttribute('aria-hidden', 'true');
+      b.textContent = ''; b.appendChild(show);
+      var sr = document.createElement('span'); sr.className = 'v4-sr'; sr.textContent = real; b.appendChild(sr);
+      b.style.display = 'inline-block'; b.style.minWidth = w + 'px';
+      function step(now) {
+        if (!t0) t0 = now;
+        var t = Math.min(1, Math.max(0, (now - t0 - 250 - k * 120) / 1400)), e = 1 - Math.pow(1 - t, 3);
+        show.textContent = Math.round(n * e) + m[2];
+        if (t < 1) requestAnimationFrame(step); else { b.textContent = real; b.style.display = b.style.minWidth = ''; }
+      }
+      requestAnimationFrame(step);
+    });
+    /* the flight is flown once, when it first comes into view; its line is measured on screen so the drawing
+       ends exactly at the tip (the live page's way) */
+    var fl = document.querySelector('.ab2-flight');
+    if (fl && window.IntersectionObserver) {
+      var line = fl.querySelector('.ab2-line'), art = fl.querySelector('svg');
+      var measure = function () {
+        if (!line.getTotalLength) return;
+        line.style.setProperty('--L', (Math.ceil(line.getTotalLength() * art.getBoundingClientRect().width / 1200) + 2) + 'px');
+      };
+      measure();
+      var io = new IntersectionObserver(function (en) {
+        if (en[0].isIntersecting) { measure(); fl.classList.add('in'); io.disconnect(); }
+      }, { threshold: 0.35 });
+      io.observe(fl);
+      window.addEventListener('beforeprint', function () { fl.classList.add('in'); });
+    }
+    /* Navigate, Aviate, Communicate: each fills as it reaches the middle of the screen, in order */
+    var rows = [].slice.call(document.querySelectorAll('.v4-nac li')), raf = 0;
+    function tick() {
+      raf = 0; var mid = window.innerHeight * 0.62;
+      rows.forEach(function (li) { var r = li.getBoundingClientRect(); li.classList.toggle('on', r.top + r.height / 2 < mid); });
+    }
+    if (rows.length) {
+      window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+      window.addEventListener('beforeprint', function () { rows.forEach(function (li) { li.classList.add('on'); }); });
+      tick();
+    }
+    /* the trips lean towards the mouse, with a soft light on them */
+    if (!(window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches)) return;
+    html.classList.add('v4-tilt');
+    document.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var c = e.target.closest && e.target.closest('.v2-tours .kit-card'); if (!c) return;
+      var s = c.querySelector('.kit-card-media'); if (!s) return;
+      var r = s.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      if (x < 0 || x > 1 || y < 0 || y > 1) return;
+      s.style.setProperty('--ry', ((x - 0.5) * 10).toFixed(2) + 'deg');
+      s.style.setProperty('--rx', ((0.5 - y) * 8).toFixed(2) + 'deg');
+      s.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+      s.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+    }, { passive: true });
+    document.addEventListener('pointerout', function (e) {
+      var c = e.target.closest && e.target.closest('.v2-tours .kit-card');
+      if (!c || (e.relatedTarget && c.contains(e.relatedTarget))) return;
+      var s = c.querySelector('.kit-card-media'); if (s) { s.style.removeProperty('--rx'); s.style.removeProperty('--ry'); }
+    });
+  });
+})();</script><!--/v4p:polish-->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://paraglidingatlas.com/media.html#webpage", "name": "Media", "url": "https://paraglidingatlas.com/media.html", "description": "Comp coverage by Paragliding Atlas: daily highlight videos, live commentary and stills from the 2026 SRS races and the Paragliding World Cup Super Final.", "isPartOf": {"@id": "https://paraglidingatlas.com/#website"}, "publisher": {"@id": "https://paraglidingatlas.com/#organization"}, "inLanguage": "en", "dateModified": "2026-11-03"}</script>
+<link rel="stylesheet" href="media-e.css?v=8">
+<!-- site-schema -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://paraglidingatlas.com/#organization",
+   "name": "Paragliding Atlas",
+   "url": "https://paraglidingatlas.com/",
+   "description": "A talk show on the art and science of free flight. Honest conversations with designers, test pilots, instructors and record holders, published in full with transcripts, alongside small guided paragliding trips.",
+   "email": "aninder@paraglidingatlas.com",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://paraglidingatlas.com/assets/logo/atlas-logo-white.png"
+   },
+   "founder": {
+    "@type": "Person",
+    "name": "Aninder Singh"
+   },
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Olav Troviks Vei M 68",
+    "postalCode": "0864",
+    "addressLocality": "Oslo",
+    "addressCountry": "NO"
+   },
+   "identifier": "937116934",
+   "sameAs": [
+    "https://www.youtube.com/@ParaglidingAtlas",
+    "https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803",
+    "https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec",
+    "https://www.patreon.com/cw/ParaglidingAtlas",
+    "https://www.instagram.com/anindersingh13",
+    "https://castbox.fm/channel/Paragliding-Atlas-by-Aninder-Singh-id6075445",
+    "https://www.podbean.com/podcast-detail/tb6yq-2f5cd4/Paragliding-Atlas-by-Aninder-Singh-Podcast"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://paraglidingatlas.com/#website",
+   "name": "Paragliding Atlas",
+   "url": "https://paraglidingatlas.com/",
+   "description": "A talk show on the art and science of free flight. Honest conversations with designers, test pilots, instructors and record holders, published in full with transcripts, alongside small guided paragliding trips.",
+   "inLanguage": "en",
+   "publisher": {
+    "@id": "https://paraglidingatlas.com/#organization"
+   }
+  }
+ ]
+}
+</script>
+<!-- /site-schema --><script src="../../v2.js?v=c7722c82"></script>
+<script src="../../v2-immersive.js?v=80a78cab"></script>
+<!-- app --><link rel="manifest" href="../../manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Atlas">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" sizes="180x180" href="../../img/app-180.png">
+<script defer src="../../pwa.js?v=7c836a4a"></script><!-- /app -->
+</head>
+<body>
+
+<div class="page-wrap">
+
+<nav>
+  <span class="nav-corner-l"></span>
+  <span class="nav-corner-r"></span>
+  <span class="nav-coords">59.9139°N · 10.7522°E</span>
+  <a href="../../index.html" class="wordmark"><img src="../../../../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100"></a>
+  <div class="nav-links v4-nav">
+    <a href="../../expeditions.html">Expeditions</a>
+    <span class="nav-sep">|</span>
+    <a href="../../podcast.html">Podcast</a>
+    <span class="nav-sep">|</span>
+    <a href="../../knowledge-base.html">Knowledge Base</a>
+    <span class="nav-sep">|</span>
+    <a href="../../about.html">About</a>
+    <!-- v4:needs record-attempt.html --><span class="nav-sep">|</span>
+    <a class="v4-wr" href="../../record-attempt.html" title="Speed Record"><svg viewBox="0 0 16 10" aria-hidden="true" focusable="false"><path d="M6 1.5h9"/><path d="M2 5h13"/><path d="M8 8.5h7"/></svg>Speed Record</a><!-- /v4:needs -->
+  </div>
+  <a href="#dates" class="nav-cta" data-hover><span>Enquire Now</span></a>
+</nav>
+<div class="nav-chevron"></div>
+<main id="v4-main">
+
+<!-- Designer E (Cloudbase), "Pull Back To The Coverage": the first screen is one shot of a race, the way an audience
+     sees it; scrolling pulls the camera back until that shot is one of the four pieces of coverage, the other three
+     sliding in in event order. Reduced motion and no JavaScript show the finished page: the opening, then the four. -->
+<div class="e-pull" id="top">
+ <div class="e-stage">
+
+  <header class="e-hero" aria-labelledby="e-h1">
+    <div class="e-cam" aria-hidden="true"><img class="e-cam-img" src="../../img/media-tmp/SRS_5_T2_133-2-1600.webp" srcset="../../img/media-tmp/SRS_5_T2_133-2-800.webp 533w, ../../img/media-tmp/SRS_5_T2_133-2-1600.webp 1067w, ../../img/media-tmp/SRS_5_T2_133-2-2400.webp 1600w" sizes="100vw" width="1600" height="2400" alt="" fetchpriority="high"></div>
+    <div class="e-shade" aria-hidden="true"></div>
+    <div class="e-hero-in">
+      <div class="e-copy">
+        <p class="e-slate"><i class="e-tally" aria-hidden="true"></i><span class="e-slate-k">Next</span><span>SRS Tapalpa, Mexico &middot; 8 to 14 Nov 2026</span></p>
+        <span class="e-kick">Media &middot; For organisers and sponsors</span>
+        <h1 id="e-h1">Your Comp, <span class="e-seen">Seen.</span></h1>
+        <p class="e-deck">Highlights every task day, live commentary and stills, published on your channels and on Paragliding Atlas. Your sponsors seen. Your pilots back next season.</p>
+        <div class="e-actions">
+          <a class="btn-solid" href="#dates" data-hover><span>Check dates for your event</span></a>
+          <a class="btn-lines" href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" data-hover>Book a Call</a>
+        </div>
+        <div class="e-for">
+          <span class="e-for-k">Covered for</span>
+          <span class="e-logo" role="img" aria-label="SRS, Sports-Class Racing Series (logo slot)"><b>SRS</b><small>Logo slot</small></span>
+          <span class="e-logo" role="img" aria-label="PWCA, the Paragliding World Cup Association (logo slot)"><b>PWCA</b><small>Logo slot</small></span>
+        </div>
+      </div>
+      <div class="kit-stats e-bug">
+        <div class="kit-stat"><b>21,690</b><span>Views of one event<em>PWC Super Final, May 2026</em></span></div>
+        <div class="kit-stat"><b>7,342</b><span>Views of one task day<em>Task 1, an 86.5 km sprint</em></span></div>
+        <div class="kit-stat"><b>21h&nbsp;42m</b><span>Live on air<em>SRS Bassano, May 2026</em></span></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="e-four" id="coverage" aria-labelledby="e-four-t">
+    <div class="e-four-in">
+      <div class="kit-head e-four-head">
+        <span class="kit-kicker">What your event gets</span>
+        <h2 class="kit-title" id="e-four-t">Four Pieces Of Coverage</h2>
+      </div>
+      <ol class="e-posters">
+        <li class="e-pl" data-k="1"><a class="md-poster e-poster" href="../../episodes/pre-pwc-kenya-nikolay-yotov.html"><img src="../../img/media-tmp/poster-pre-race-show-600.webp" srcset="../../img/media-tmp/poster-pre-race-show-600.webp 600w, ../../img/media-tmp/poster-pre-race-show-900.webp 900w" sizes="(max-width:820px) 46vw, 22vw" width="600" height="800" alt="The host of the Paragliding Atlas podcast" decoding="async"><span class="e-p-n">01 &middot; Before the race</span><span class="e-p-t">Pre-Race Show</span><span class="e-p-tags">A podcast episode on your venue and its conditions</span><span class="e-p-go">Hear an example <i aria-hidden="true">&rarr;</i></span><i class="e-p-tally" aria-hidden="true"></i></a></li>
+        <li class="e-pl is-cam" data-k="2"><a class="md-poster e-poster" href="#watch" data-play="BRAX1XMU390"><img class="e-p2-img" src="../../img/media-tmp/SRS_5_T2_133-2-800.webp" srcset="../../img/media-tmp/SRS_5_T2_133-2-800.webp 533w, ../../img/media-tmp/SRS_5_T2_133-2-1600.webp 1067w" sizes="(max-width:820px) 46vw, 22vw" width="1067" height="1600" alt="An orange and black wing between white clouds, SRS Piedrahita 2026" decoding="async"><span class="e-p-n">02 &middot; Every task day</span><span class="e-p-t">Daily Highlights</span><span class="e-p-tags">A video each task day, social clips and a results newsletter</span><span class="e-p-go">Watch an example <i aria-hidden="true">&rarr;</i></span><i class="e-p-tally" aria-hidden="true"></i></a></li>
+        <li class="e-pl" data-k="3"><a class="md-poster e-poster" href="#pk-full" data-pkg="Full Event"><img src="../../img/media-tmp/poster-aftermovie-600.webp" srcset="../../img/media-tmp/poster-aftermovie-600.webp 600w, ../../img/media-tmp/poster-aftermovie-900.webp 900w" sizes="(max-width:820px) 46vw, 22vw" width="600" height="800" alt="The gaggle, dozens of wings in the blue" decoding="async"><span class="e-p-n">03 &middot; After the race</span><span class="e-p-t">Aftermovie</span><span class="e-p-tags">Task details, racing strategies, leaderboard standings, fun factor</span><span class="e-p-go">Full Event package <i aria-hidden="true">&rarr;</i></span><i class="e-p-tally" aria-hidden="true"></i></a></li>
+        <li class="e-pl" data-k="4"><a class="md-poster e-poster" href="#pk-season" data-pkg="Season"><img src="../../img/media-tmp/poster-race-behind-the-race-600.webp" width="540" height="720" alt="A pilot in harness at launch among the crowd" decoding="async"><span class="e-p-n">04 &middot; Between races</span><span class="e-p-t">Race Behind The Race</span><span class="e-p-tags">Behind the scenes and athlete showreels</span><span class="e-p-go">Season package <i aria-hidden="true">&rarr;</i></span><i class="e-p-tally" aria-hidden="true"></i></a></li>
+      </ol>
+      <div class="e-line" aria-hidden="true"><i></i><b></b><b></b><b></b><b></b></div>
+      <p class="e-four-note">Everything goes out as joint posts on your channels and on Paragliding Atlas.</p>
+    </div>
+  </section>
+
+ </div>
+</div>
+
+<section class="kit-band e-pk" id="packages" aria-labelledby="e-pk-t">
+  <div class="kit-in">
+    <div class="kit-head">
+      <span class="kit-kicker">Packages</span>
+      <h2 class="kit-title" id="e-pk-t">Pick Your Coverage, Grow It Later</h2>
+      <p class="kit-intro">Each package shows what you get. The price is agreed per event, on a call. Start with what your budget allows and add pieces as it grows.</p>
+    </div>
+    <div class="e-pk-grid">
+      <article class="e-pk-card" id="pk-daily" aria-labelledby="pk-daily-t">
+        <div class="e-pk-top"><span class="e-pk-n">01</span><h3 id="pk-daily-t">Daily</h3><p>Every task day of one event.</p></div>
+        <ol class="e-run">
+          <li><span>Task days</span><b>Daily Highlights</b><em>A long-form video each task day</em></li>
+          <li><span>Task days</span><b>Social clips</b><em>9:16, for your channels</em></li>
+          <li><span>Task days</span><b>Results newsletter</b></li>
+        </ol>
+        <div class="e-pk-foot"><span class="e-pk-price">Priced per event</span><a class="btn-lines" href="#dates" data-pkg="Daily" data-hover>Check dates</a></div>
+      </article>
+      <article class="e-pk-card is-pick" id="pk-full" aria-labelledby="pk-full-t">
+        <div class="e-pk-top"><span class="e-pk-n">02</span><h3 id="pk-full-t">Full Event</h3><p>Before, during and after your event.</p><span class="e-pick"><i class="e-tally" aria-hidden="true"></i>Most chosen <span class="e-eg">Example</span></span></div>
+        <ol class="e-run">
+          <li><span>Before</span><b>Pre-Race Show</b><em>A podcast episode on your venue and its conditions</em></li>
+          <li><span>Task days</span><b>Daily Highlights</b><em>With social clips and a results newsletter</em></li>
+          <li><span>After</span><b>Aftermovie</b><em>The event in one highlights film</em></li>
+        </ol>
+        <div class="e-pk-foot"><span class="e-pk-price">Priced per event</span><a class="btn-solid" href="#dates" data-pkg="Full Event" data-hover><span>Check dates</span></a></div>
+      </article>
+      <article class="e-pk-card" id="pk-season" aria-labelledby="pk-season-t">
+        <div class="e-pk-top"><span class="e-pk-n">03</span><h3 id="pk-season-t">Season</h3><p>Every event of your series.</p></div>
+        <ol class="e-run">
+          <li><span>Each event</span><b>Coverage at every stop</b><em>The pieces you pick, at each event of the series</em></li>
+          <li><span>Mid-season</span><b>Race Behind The Race</b><em>Behind the scenes and athlete showreels</em></li>
+        </ol>
+        <div class="e-pk-foot"><span class="e-pk-price">Priced per event</span><a class="btn-lines" href="#dates" data-pkg="Season" data-hover>Check dates</a></div>
+      </article>
+    </div>
+    <p class="e-addons"><b>Add to any package</b><span>Live commentary, as at SRS Bassano: 5 broadcasts, 21 h 42 min on air</span><span>Stills, as at SRS Piedrahita</span></p>
+  </div>
+</section>
+
+<section class="kit-band e-reach" id="reach" aria-labelledby="e-reach-t">
+  <div class="kit-in">
+    <div class="kit-head">
+      <span class="kit-kicker">Reach</span>
+      <h2 class="kit-title" id="e-reach-t">Your Audience, Not Just Your Video</h2>
+      <p class="kit-intro">Every piece goes out as a joint post on your channels and on Paragliding Atlas, so your event and your sponsors reach both audiences.</p>
+    </div>
+    <div class="e-reach-grid">
+      <div class="e-reach-l">
+        <div class="e-reach-pair">
+        <figure class="e-post" aria-label="One joint post, published on your channels and on Paragliding Atlas">
+          <span class="e-post-img"><img src="../../img/media-tmp/SRS_5_T2_83-800.webp" srcset="../../img/media-tmp/SRS_5_T2_83-800.webp 533w, ../../img/media-tmp/SRS_5_T2_83-1600.webp 1067w" sizes="(max-width:700px) 60vw, 16rem" width="1067" height="1600" alt="A white wing with a red edge against a deep blue sky, SRS Piedrahita 2026" loading="lazy" decoding="async"></span>
+          <span class="e-post-top"><span class="e-av is-you" aria-hidden="true"></span><span class="e-av is-atlas" aria-hidden="true"><img src="../../img/app-180.png" alt="" width="180" height="180" loading="lazy"></span><span class="e-post-who"><b>Your event</b> and <b>Paragliding Atlas</b></span></span>
+          <figcaption class="e-post-cap"><b>One joint post</b><span>On your channels and on ours</span></figcaption>
+        </figure>
+        <div class="e-reach-nums">
+        <div class="kit-stats e-big">
+          <div class="kit-stat"><b>31,250</b><span>Views on 13 comp videos, 2026</span></div>
+          <div class="kit-stat"><b>136</b><span>Countries listen to the podcast</span></div>
+        </div>
+        <p class="e-tbd-line">About 80 podcast episodes. Channel subscribers and followers: <i class="v2-tbd">[to supply]</i></p>
+        </div>
+        </div>
+      </div>
+      <figure class="e-board" aria-labelledby="e-board-t">
+        <figcaption class="e-board-h"><b id="e-board-t">Views by event</b><span>YouTube, 3 Nov 2026</span></figcaption>
+        <ol class="e-rows">
+          <li class="e-row" style="--v:1"><span class="e-row-n"><b>PWC Super Final</b><small>Pegalajar, Spain &middot; May</small></span><span class="e-row-d">5 highlight videos</span><span class="e-row-bar" aria-hidden="true"><i></i></span><span class="e-row-v">21,690</span></li>
+          <li class="e-row" style="--v:.2526"><span class="e-row-n"><b>SRS Piedrahita</b><small>&Aacute;vila, Spain &middot; Aug</small></span><span class="e-row-d">Stills and 3 highlight videos</span><span class="e-row-bar" aria-hidden="true"><i></i></span><span class="e-row-v">5,479</span></li>
+          <li class="e-row" style="--v:.1882"><span class="e-row-n"><b>SRS Bassano</b><small>Monte Grappa, Italy &middot; May</small></span><span class="e-row-d">5 live broadcasts, 21 h 42 min on air</span><span class="e-row-bar" aria-hidden="true"><i></i></span><span class="e-row-v">4,081</span></li>
+          <li class="e-row is-next"><span class="e-row-n"><b>SRS Tapalpa</b><small>Mexico &middot; 8 to 14 Nov</small></span><span class="e-row-d">7 tasks, up to 120 pilots from 44 countries</span><span class="e-row-bar" aria-hidden="true"></span><span class="e-row-v"><i class="e-tally" aria-hidden="true"></i>Next</span></li>
+        </ol>
+        <p class="e-board-f"><span>13 videos</span><span>31,250 views in all</span></p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="e-qband" aria-label="A word from an organiser">
+  <div class="e-qband-media" aria-hidden="true"><img src="../../img/media-tmp/SRS_5_T3_66-1600.webp" srcset="../../img/media-tmp/SRS_5_T3_66-800.webp 800w, ../../img/media-tmp/SRS_5_T3_66-1600.webp 1600w, ../../img/media-tmp/SRS_5_T3_66-2400.webp 2400w" sizes="100vw" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
+  <figure class="e-quote">
+    <span class="e-eg">Example</span>
+    <blockquote><p>&ldquo;Every task day our pilots and sponsors had the race in their feeds the same evening. The week felt bigger than the field.&rdquo;</p></blockquote>
+    <figcaption><i class="v2-tbd">[to supply]</i> <span>Organiser, event</span></figcaption>
+  </figure>
+</section>
+
+<section class="kit-band e-proof" id="proof" aria-labelledby="e-watch-t">
+  <div class="kit-in">
+    <div class="kit-head e-watch-head" id="watch">
+      <span class="kit-kicker">The work</span>
+      <h2 class="kit-title" id="e-watch-t">Watch The Coverage</h2>
+      <p class="kit-intro">The 13 comp videos of 2026, the most watched first: Task 1 of the Super Final, 7,342 views. Tap any video to play it here.</p>
+    </div>
+    <div class="md-reel"><div class="md-main"><div class="md-frame" data-vid="BRAX1XMU390"><img src="https://i.ytimg.com/vi/BRAX1XMU390/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><a class="md-play" href="https://www.youtube.com/watch?v=BRAX1XMU390" target="_blank" rel="noopener" aria-label="Play Task 1 Highlights, PWC Super Final, Pegalajar"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1.2v7.6c0 .5.5.8.9.5l5.9-3.8c.4-.2.4-.8 0-1L2.9.7C2.5.4 2 .7 2 1.2z"/></svg></a></div><div class="md-now"><h3>PWC Super Final, Pegalajar, Task 1 Highlights</h3><p><span>7,342 views &middot; 6:53</span> &middot; <span>14 May 2026</span><span class="md-ep"> &middot; <a href="../../episodes/task-1-highlights-15th-paragliding-world-cup-super-final.html">Read the episode</a></span></p></div></div><div class="md-side"><div class="md-side-in"><div class="v2-chips" role="group" aria-label="Show the videos from"><button class="v2-chip" type="button" aria-pressed="true" data-comp="">All <i>13</i></button><button class="v2-chip" type="button" aria-pressed="false" data-comp="pwc">Pegalajar <i>5</i></button><button class="v2-chip" type="button" aria-pressed="false" data-comp="srs5">Piedrahita <i>3</i></button><button class="v2-chip" type="button" aria-pressed="false" data-comp="srs4">Bassano live <i>5</i></button></div><ul class="md-list"><li data-comp="pwc"><button type="button" data-vid="BRAX1XMU390" data-date="14 May 2026" data-ep="../../episodes/task-1-highlights-15th-paragliding-world-cup-super-final.html" aria-current="true"><img src="https://i.ytimg.com/vi/BRAX1XMU390/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Task 1 Highlights</b><small>PWC Super Final, Pegalajar &middot; 7,342 views &middot; 6:53</small></span></button></li><li data-comp="pwc"><button type="button" data-vid="7il6yV1vdIc" data-date="16 May 2026" data-ep="../../episodes/task-2-highlights-15th-paragliding-world-cup-super-final.html"><img src="https://i.ytimg.com/vi/7il6yV1vdIc/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Task 2 Highlights</b><small>PWC Super Final, Pegalajar &middot; 4,034 views &middot; 8:17</small></span></button></li><li data-comp="pwc"><button type="button" data-vid="FOuAWMeoxs4" data-date="13 May 2026" data-ep="../../episodes/highlights-day-1-pwca-superfinal-2026.html"><img src="https://i.ytimg.com/vi/FOuAWMeoxs4/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Day 1 Highlights</b><small>PWC Super Final, Pegalajar &middot; 3,537 views &middot; 6:44</small></span></button></li><li data-comp="pwc"><button type="button" data-vid="op1-O01xkH4" data-date="18 May 2026" data-ep="../../episodes/task-4-highlights-15th-paragliding-world-cup-super-final.html"><img src="https://i.ytimg.com/vi/op1-O01xkH4/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Task 4 Highlights</b><small>PWC Super Final, Pegalajar &middot; 3,437 views &middot; 7:47</small></span></button></li><li data-comp="pwc"><button type="button" data-vid="vPnIYYKcvEg" data-date="20 May 2026" data-ep="../../episodes/task-5-highlights-15th-paragliding-world-cup-super-final.html"><img src="https://i.ytimg.com/vi/vPnIYYKcvEg/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Task 5 Highlights</b><small>PWC Super Final, Pegalajar &middot; 3,340 views &middot; 8:08</small></span></button></li><li data-comp="srs5"><button type="button" data-vid="NXUEyPQ3V4E" data-date="6 Sep 2026" data-ep="../../episodes/srs-piedrahita-bgd-edition-task-2-highlights.html"><img src="https://i.ytimg.com/vi/NXUEyPQ3V4E/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Task 2 Highlights</b><small>SRS Piedrahita &middot; 2,303 views &middot; 13:46</small></span></button></li><li data-comp="srs5"><button type="button" data-vid="uCEfssE40u8" data-date="27 Aug 2026" data-ep="../../episodes/srs-piedrahita-bgd-edition-task-1-highlights.html"><img src="https://i.ytimg.com/vi/uCEfssE40u8/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Task 1 Highlights</b><small>SRS Piedrahita &middot; 1,970 views &middot; 7:38</small></span></button></li><li data-comp="srs5"><button type="button" data-vid="cuGs7Lk6Dt4" data-date="23 Aug 2026" data-ep="../../episodes/srs-bgd-edition-2026-day-1-registration-pilots-penas-de.html"><img src="https://i.ytimg.com/vi/cuGs7Lk6Dt4/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Day 1: Registration and the Peñas</b><small>SRS Piedrahita &middot; 1,206 views &middot; 9:04</small></span></button></li><li data-comp="srs4"><button type="button" data-vid="ZL9B5eXip5o" data-date="25 May 2026"><img src="https://i.ytimg.com/vi/ZL9B5eXip5o/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Live: Task 2</b><small>SRS Bassano, live &middot; 1,145 views &middot; 5 h 41 min</small></span></button></li><li data-comp="srs4"><button type="button" data-vid="SZWQjcO_fWk" data-date="26 May 2026"><img src="https://i.ytimg.com/vi/SZWQjcO_fWk/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Live: Task 3</b><small>SRS Bassano, live &middot; 890 views &middot; 4 h 59 min</small></span></button></li><li data-comp="srs4"><button type="button" data-vid="x8sSBSBy4dI" data-date="29 May 2026"><img src="https://i.ytimg.com/vi/x8sSBSBy4dI/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Live: Task 4, part 1</b><small>SRS Bassano, live &middot; 853 views &middot; 1 h 57 min</small></span></button></li><li data-comp="srs4"><button type="button" data-vid="DA4nGop3i9g" data-date="30 May 2026"><img src="https://i.ytimg.com/vi/DA4nGop3i9g/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Live: Task 4, part 2</b><small>SRS Bassano, live &middot; 513 views &middot; 3 h 55 min</small></span></button></li><li data-comp="srs4"><button type="button" data-vid="PEyO6MXngUw" data-date="30 May 2026"><img src="https://i.ytimg.com/vi/PEyO6MXngUw/mqdefault.jpg" alt="" width="320" height="180" loading="lazy"><span><b>Live: Task 5, the final day</b><small>SRS Bassano, live &middot; 680 views &middot; 5 h 8 min</small></span></button></li></ul></div></div></div>
+    <div class="e-stills-head">
+      <h3>Stills from SRS Piedrahita 2026</h3>
+      <p>Every frame shown whole. Tap one to see it full size and zoom in.</p>
+    </div>
+    <div class="md-grid" data-zoom aria-label="Stills from SRS Piedrahita 2026"><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T3_63-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_63-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_63-800.webp" srcset="../../img/media-tmp/SRS_5_T3_63-800.webp 800w, ../../img/media-tmp/SRS_5_T3_63-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1600" height="1067" alt="The gaggle, dozens of wings in the blue" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.7098"><a href="../../img/media-tmp/SRS_5_T3_21-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_21-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_21-800.webp" srcset="../../img/media-tmp/SRS_5_T3_21-800.webp 800w, ../../img/media-tmp/SRS_5_T3_21-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1600" height="936" alt="A red and blue wing over the valley and its winding road" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:0.6667"><a href="../../img/media-tmp/SRS_5_T3_64-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_64-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_64-800.webp" srcset="../../img/media-tmp/SRS_5_T3_64-800.webp 800w, ../../img/media-tmp/SRS_5_T3_64-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1067" height="1600" alt="Wings stacked in a climb" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.4652"><a href="../../img/media-tmp/SRS_5_T3_150-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_150-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_150-800.webp" srcset="../../img/media-tmp/SRS_5_T3_150-800.webp 800w, ../../img/media-tmp/SRS_5_T3_150-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1600" height="1092" alt="An orange wing banking in a clear blue sky" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T1_9-2400.webp" data-full="../../img/media-tmp/SRS_5_T1_9-2400.webp"><img src="../../img/media-tmp/SRS_5_T1_9-800.webp" srcset="../../img/media-tmp/SRS_5_T1_9-800.webp 800w, ../../img/media-tmp/SRS_5_T1_9-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1600" height="1067" alt="An orange wing high over a patchwork of fields under cloud" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 1</b></figcaption></figure><figure class="md-ph" style="--r:0.6667"><a href="../../img/media-tmp/SRS_5_T3_47-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_47-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_47-800.webp" srcset="../../img/media-tmp/SRS_5_T3_47-800.webp 800w, ../../img/media-tmp/SRS_5_T3_47-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1067" height="1600" alt="A green wing above a winding road" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.4998"><a href="../../img/media-tmp/SRS_5_T3_92-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_92-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_92-800.webp" srcset="../../img/media-tmp/SRS_5_T3_92-800.webp 800w, ../../img/media-tmp/SRS_5_T3_92-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1600" height="1067" alt="A yellow wing over a green hillside" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T3_166-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_166-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_166-800.webp" srcset="../../img/media-tmp/SRS_5_T3_166-800.webp 800w, ../../img/media-tmp/SRS_5_T3_166-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1600" height="1067" alt="A blue and white wing in a deep blue sky" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:0.8456"><a href="../../img/media-tmp/SRS_5_T3_38-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_38-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_38-800.webp" srcset="../../img/media-tmp/SRS_5_T3_38-800.webp 800w, ../../img/media-tmp/SRS_5_T3_38-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1353" height="1600" alt="An orange wing over fields and trees" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure><figure class="md-ph" style="--r:1.5000"><a href="../../img/media-tmp/SRS_5_T3_27-2400.webp" data-full="../../img/media-tmp/SRS_5_T3_27-2400.webp"><img src="../../img/media-tmp/SRS_5_T3_27-800.webp" srcset="../../img/media-tmp/SRS_5_T3_27-800.webp 800w, ../../img/media-tmp/SRS_5_T3_27-1600.webp 1600w" sizes="(max-width:700px) 70vw, 40vw" width="1600" height="1067" alt="A white and blue wing over the dry plain" loading="lazy" decoding="async"></a><figcaption><b>Piedrahita 2026, Task 3</b></figcaption></figure></div>
+    <div class="e-more"><a class="btn-lines" href="../../media-srs-piedrahita-2026.html" data-hover>All 20 from Piedrahita, by task</a></div>
+  </div>
+</section>
+
+<section class="kit-band e-del" id="delivery" aria-labelledby="e-del-t">
+  <div class="kit-in">
+    <div class="kit-head">
+      <span class="kit-kicker">Delivery</span>
+      <h2 class="kit-title" id="e-del-t">What You Get, What I Need</h2>
+    </div>
+    <div class="e-del-grid">
+      <div class="e-get">
+        <h3>What you get</h3>
+        <ul class="e-frames">
+          <li class="e-fr is-169"><span class="e-fr-box"><img src="../../img/media-tmp/SRS_5_T3_57-800.webp" width="800" height="533" alt="" loading="lazy" decoding="async"></span><span class="e-fr-t"><b>16:9</b><small>Videos</small></span></li>
+          <li class="e-fr is-916"><span class="e-fr-box"><img src="../../img/media-tmp/SRS_5_T2_76-800.webp" width="533" height="800" alt="" loading="lazy" decoding="async"></span><span class="e-fr-t"><b>9:16</b><small>Social clips</small></span></li>
+          <li class="e-fr is-still"><span class="e-fr-box"><img src="../../img/media-tmp/SRS_5_T3_121-800.webp" width="800" height="533" alt="" loading="lazy" decoding="async"></span><span class="e-fr-t"><b>Stills</b><small>Web and full size</small></span></li>
+        </ul>
+        <p class="e-when"><b>The same day or at the end of the week, as you need.</b> Same-day delivery depends on the internet on site, when the task finishes and access to footage.</p>
+      </div>
+      <div class="e-need">
+        <h3>What I need from you</h3>
+        <ul class="e-needs">
+          <li><b>Internet on site</b><span>For same-day delivery</span></li>
+          <li><b>Access to footage</b></li>
+          <li><b><i class="v2-tbd">[to supply]</i></b><span>Anything else an event provides</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kit-band e-faq" id="faq" aria-labelledby="e-faq-t">
+  <div class="kit-in e-faq-in">
+    <div class="kit-head">
+      <span class="kit-kicker">Questions</span>
+      <h2 class="kit-title" id="e-faq-t">For Organisers</h2>
+      <p class="e-faq-more">Another question? <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener">Book a call</a> or <a href="https://wa.me/4796757456" target="_blank" rel="noopener">send a WhatsApp</a>.</p>
+    </div>
+    <div class="e-qs">
+      <details><summary>What does it cost?</summary><p>Every package is priced per event. We agree the price on a call, once I know your event, its dates and what you would like from it.</p></details>
+      <details><summary>Can we start small?</summary><p>Yes. Start with the resources you have and grow the coverage as your budget allows.</p></details>
+      <details><summary>When does it come out?</summary><p>The same day or at the end of the week, as you need. Same-day delivery depends on the internet on site, when the task finishes and access to footage.</p></details>
+      <details><summary>Where is it published?</summary><p>As joint posts on your channels and on Paragliding Atlas, so both audiences see it.</p></details>
+      <details><summary>Can you cover a whole season?</summary><p>Yes. The Season package covers every event of your series, with Race Behind The Race between events.</p></details>
+      <details><summary>How does travel work?</summary><p><i class="v2-tbd">[to supply]</i></p></details>
+      <details><summary>Who can use the videos and photos?</summary><p><i class="v2-tbd">[to supply]</i></p></details>
+      <details><summary>How far ahead should we book?</summary><p><i class="v2-tbd">[to supply]</i></p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band e-dates" id="dates" aria-labelledby="e-dates-t">
+  <div class="cta-card e-dates-card">
+    <span class="cta-hud-tag">Coverage for your comp</span>
+    <div class="e-dates-l">
+      <div class="kit-head">
+        <span class="kit-kicker">Dates</span>
+        <h2 class="kit-title" id="e-dates-t">Check Dates For Your Event</h2>
+        <p class="kit-intro">Send the event, its dates and its place, and I will reply about availability.</p>
+      </div>
+      <div class="e-season" aria-labelledby="e-season-t">
+        <p class="e-season-h"><b id="e-season-t">The 2027 season</b><span class="e-eg">Example</span></p>
+        <ol class="e-months">
+          <li class="is-open"><b>Jan</b><span>Open</span></li>
+          <li class="is-few"><b>Feb</b><span>Few dates</span></li>
+          <li class="is-open"><b>Mar</b><span>Open</span></li>
+          <li class="is-few"><b>Apr</b><span>Few dates</span></li>
+          <li class="is-booked"><b>May</b><span>Booked</span></li>
+          <li class="is-open"><b>Jun</b><span>Open</span></li>
+          <li class="is-few"><b>Jul</b><span>Few dates</span></li>
+          <li class="is-booked"><b>Aug</b><span>Booked</span></li>
+          <li class="is-open"><b>Sep</b><span>Open</span></li>
+          <li class="is-few"><b>Oct</b><span>Few dates</span></li>
+          <li class="is-open"><b>Nov</b><span>Open</span></li>
+          <li class="is-open"><b>Dec</b><span>Open</span></li>
+        </ol>
+      </div>
+      <div class="e-or">
+        <span>Or talk first</span>
+        <a class="btn-lines" href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener" data-hover>Book a Call</a>
+        <a class="btn-lines" href="https://wa.me/4796757456" target="_blank" rel="noopener" data-hover>WhatsApp</a>
+      </div>
+    </div>
+    <form class="e-form" action="../../enquire.html" method="get" aria-labelledby="e-dates-t">
+      <input type="hidden" name="trip" value="media">
+      <div class="e-f-row">
+        <div class="e-field"><label for="e-event">Event</label><input id="e-event" name="event" type="text" placeholder="Its name" required></div>
+        <div class="e-field"><label for="e-when">Dates</label><input id="e-when" name="when" type="text" placeholder="Task days, or a rough window"></div>
+      </div>
+      <div class="e-f-row">
+        <div class="e-field"><label for="e-place">Place</label><input id="e-place" name="place" type="text" placeholder="Site and country"></div>
+        <div class="e-field e-sel"><label for="e-pkg">Package</label><select id="e-pkg" name="package"><option>Not sure yet</option><option>Daily</option><option>Full Event</option><option>Season</option></select></div>
+      </div>
+      <div class="e-f-row">
+        <div class="e-field"><label for="e-name">Your name</label><input id="e-name" name="name" type="text" autocomplete="name" required></div>
+        <div class="e-field"><label for="e-email">Email</label><input id="e-email" name="email" type="email" autocomplete="email" required></div>
+      </div>
+      <div class="e-f-go">
+        <button type="submit" class="btn-solid" data-hover><span>Check dates</span></button>
+        <p>Used only to answer you. See the <a href="../../privacy-policy.html">Privacy Policy</a>.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="e-nl" aria-label="Newsletter">
+  <div class="v2-nl e-nl-in" data-nl>
+    <p class="e-nl-t"><b>Not organising?</b> Follow the races in the newsletter.</p>
+    <label class="e-sr" for="newsletterEmail">Email Address</label>
+    <div class="v2-nl-row">
+      <input id="newsletterEmail" type="email" placeholder="you@example.com" autocomplete="email">
+      <button class="btn-lines" data-hover>Sign Up</button>
+    </div>
+    <p class="nl-status" data-nl-status role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<div class="e-mobar" id="eMobar">
+  <span class="e-mobar-l"><b>Your comp, seen.</b><small>Coverage priced per event</small></span>
+  <a class="btn-solid" href="#dates" data-hover><span>Check dates</span></a>
+</div>
+
+<dialog class="v4i-fl-lb" id="v4i-fl-lb" aria-label="The photograph, enlarged"><div class="v4i-fl-lbs"><img alt="" draggable="false"></div><button class="v4i-fl-lbx" type="button" aria-label="Close the photograph"></button><span class="v4i-fl-lbc"></span><button class="v4i-fl-lbn v4i-fl-lbp" type="button" hidden aria-label="Previous photograph"><svg viewBox="0 0 16 16"><path d="M10 3 5 8l5 5"/></svg></button><button class="v4i-fl-lbn v4i-fl-lbnx" type="button" hidden aria-label="Next photograph"><svg viewBox="0 0 16 16"><path d="m6 3 5 5-5 5"/></svg></button><span class="v4i-fl-lbh" aria-hidden="true">click to come closer &middot; scroll or pinch for more &middot; drag to move &middot; arrows for the next &middot; click outside to close</span></dialog>
+
+</main>
+</div><!-- /.page-wrap -->
+
+<footer><!--v4f-->
+  <div class="footer-content v4f-on">
+  <div class="footer-top">
+    <div class="footer-col footer-brand">
+      <a href="../../index.html" class="wordmark" aria-label="Paragliding Atlas, home"><img src="../../../../assets/logo/atlas-logo-white.png" alt="Paragliding Atlas" class="logo-img" width="480" height="100" loading="lazy"></a>
+      <p class="footer-tagline">Touch The Sky With Glory</p>
+      <p class="footer-addr">Paragliding Atlas · Org. nr 937116934<br>Olav Troviks Vei M 68, 0864 Oslo, Norway</p>
+    </div>
+    <div class="footer-col">
+      <h2>Listen</h2>
+      <a href="../../podcast.html">Podcast</a>
+      <a href="../../library.html">Episode Library</a>
+      <a href="../../tags.html">Topics</a>
+      <a href="../../knowledge-base.html">Knowledge Base</a>
+    </div>
+    <div class="footer-col">
+      <h2>Fly With Us</h2>
+      <a href="../../destinations/kenya.html">Kenya</a>
+      <a href="../../destinations/india.html">India</a>
+      <a href="../../destinations/panchgani.html">Panchgani</a>
+      <a href="https://calendar.app.google/HaJMYuiomt5Db9eh8" target="_blank" rel="noopener">Book a Call</a>
+    </div>
+    <div class="footer-col">
+      <h2>Atlas</h2>
+      <a href="../../about.html">About</a>
+      <a href="../../mission.html">Mission</a>
+      <a href="../../partners.html">Partner With Me</a>
+      <a href="../../media.html">Media</a>
+      <a href="../../safety-and-disclosure.html">Safety &amp; Disclosure</a>
+    </div>
+    <div class="footer-col">
+      <h2>Legal</h2>
+      <a href="../../terms.html">Terms</a>
+      <a href="../../privacy-policy.html">Privacy</a>
+      <a href="../../participant-agreement.html">Participant Agreement</a>
+      <a href="../../corrections.html">Corrections</a>
+    </div>
+  </div>
+  <div class="v4f-k"><span class="footer-listen-label">Listen on</span></div>
+  <div class="footer-bottom v4f">
+    <div class="v4f-ls"><a href="https://www.youtube.com/@ParaglidingAtlas" target="_blank" rel="noopener">YouTube</a><a href="https://podcasts.apple.com/us/podcast/paragliding-atlas-by-aninder-singh/id1735782803" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/16jBM3RfjVERukNHJrIRec" target="_blank" rel="noopener">Spotify</a><a href="https://castbox.fm/channel/Paragliding-Atlas-by-Aninder-Singh-id6075445" target="_blank" rel="noopener">Castbox</a><a href="https://www.podbean.com/podcast-detail/tb6yq-2f5cd4/Paragliding-Atlas-by-Aninder-Singh-Podcast" target="_blank" rel="noopener">Podbean</a><a href="https://www.patreon.com/cw/ParaglidingAtlas" target="_blank" rel="noopener">Patreon</a></div>
+    <div class="v4f-lg"><a href="../../cookie-policy.html">Cookies</a><a href="../../sitemap.html">Sitemap</a><span>© Paragliding Atlas <span data-year>2026</span></span></div>
+  </div>
+  </div>
+<!--/v4f-->
+</footer>
+
+<script src="../../../../script.js?v=1bb85db6"></script>
+<!-- nav-menu -->
+<script defer src="../../../../nav-menu.js?v=001fbbf6"></script>
+<!-- /nav-menu -->
+<script defer src="../../../../newsletter.js?v=d28c01a5"></script>
+<script defer src="../../v4-media.js"></script>
+<script defer src="media-e.js?v=8"></script>
+</body>
+</html>
