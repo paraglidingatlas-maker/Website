@@ -10,6 +10,29 @@ has grown long, hand over without asking the owner: write the handover at the to
 owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
 chat yourself with the session tools (create_session), and give the owner its link.
 
+**Open when chat 18 ended (read first).**
+- **"Patchy" animations on media.html (owner, 4 Nov).** Measured with Playwright traces (scripts were in
+  /tmp/claude-0/perf, gone in a new container): the opening's pull-back (v4-media.js pull(), render()) rasters about
+  200 ms per 40 scroll steps against about 29 ms elsewhere on the page, on every pass, at 390 (DPR 3) and 1440.
+  Switching render() off drops it to 16 ms. Cumulative tests: the photo's transform and mask alone about 23 ms, plus the
+  frame's clip-path, shade and words about 38 ms on a phone (about 230 ms on desktop: the full-screen clip-path), plus
+  the label, foot and tally about 58 ms; the rest comes once the other posters are on screen (feather() masks and
+  clip-paths on the posters each frame, the --e-co fades, G.fades). Commit 07cba177 (branch only, NOT on main, not yet
+  checked visually) puts each poster on its own layer during the move: about 15% less. Next ideas: replace the per-frame
+  clip-path with a transform-based frame (an overflow-hidden box scaled with a counter-scaled photo), drop the
+  per-frame mask on the posters (a moving gradient overlay instead), and on touch screens stop settle() from
+  snapping while momentum is still running (its 160 ms timer after touchend can fight the finger; frame 540 of
+  the phone run showed the page jump back with the nav). The site-wide nav pin (v2-immersive.js update/pin) costs
+  one long frame (~110 ms at 4x CPU) on the first scroll on every page. The owner was asked: which device, and where on
+  the page looks patchy (a screen recording would help). Ask again if not answered.
+- **The comp gallery page is NOT built.** media-srs-piedrahita-2026.html shows about 20 photos with zoom and the
+  task videos, but no downloads, no HQ request, no paid originals. The owner was offered: (1) the quick version (the
+  Piedrahita page becomes the first gallery: all photos by day, free 2400 px download, "Request HQ" that emails the
+  owner with the photo's name; Tapalpa reuses it), or (2) the designers D, E, F first (tell the owner time and cost,
+  get a yes). Also open: HQ free on request or paid, and the price.
+- Chat 18 could not open chat 19 (session lineage limit 8); the owner starts it by hand. If create_session fails the
+  same way at your handover, give the owner the prompt to paste instead.
+
 **The owner's answers (4 Nov, after go-live) and what they change.**
 - Reach: YouTube only, read online (vidIQ user channel): 2,160 subscribers, 294,561 views, 166 videos, 4 Nov 2026.
   On the page. NO Instagram count (owner: too low); the Followers cell is gone.
