@@ -35,12 +35,12 @@
   }
 
   var tiles = $$(".g-f");
-  tiles.forEach(function (t, i) { t._r = parseFloat(t.style.getPropertyValue("--r")) || 1.5; t._i = i; });
+  tiles.forEach(function (t, i) { t._r = parseFloat(t.style.getPropertyValue("--r")) || 1.5; t._i = i; t._css = "--r:" + t._r + ";--c:" + t.style.getPropertyValue("--c") + ";"; });
 
   /* ---------------------------------------------------------------- the walls in justified rows, whole pixels */
   function rowH() { var scan = root.classList.contains("g-scan"), wide = w.innerWidth >= 1000; return scan ? (wide ? 76 : 50) : (wide ? 300 : 170); }
-  function layWall(wl) {
-    var W = Math.floor(wl.getBoundingClientRect().width), G = 4, H = rowH(), items = $$(".g-f", wl), rows = [], row = [], sum = 0;
+  function layWall(wl, W) {                                        // W read beforehand, so the walls cost one layout, not one each
+    var G = 4, H = rowH(), items = wl._items || (wl._items = $$(".g-f", wl)), rows = [], row = [], sum = 0;
     if (!W) return;
     function close(list, h, last) { rows.push({ it: list, h: h, last: last }); }
     items.forEach(function (it) {
@@ -59,14 +59,15 @@
       var hh = Math.round(R.h), x = 0, n = R.it.length;
       R.it.forEach(function (it, j) {
         var ww = (j === n - 1 && !R.last) ? W - x : Math.round(it._r * R.h);
-        it.style.width = ww + "px"; it.style.height = hh + "px"; it.style.left = x + "px"; it.style.top = y + "px";
+        it.style.cssText = it._css + "width:" + ww + "px;height:" + hh + "px;left:" + x + "px;top:" + y + "px";   // one write per frame
+        it._box = { x: x, y: y, w: ww, h: hh };
         x += ww + G;
       });
       y += hh + G;
     });
     wl.style.height = Math.max(0, y - G) + "px";
   }
-  function layAll() { $$(".g-wall").forEach(layWall); }
+  function layAll() { var ws = $$(".g-wall"), W = ws.map(function (wl) { return Math.floor(wl.getBoundingClientRect().width); }); ws.forEach(function (wl, i) { layWall(wl, W[i]); }); }
   layAll();
   var lastW = days.clientWidth;                                   // relay only when the column's width changes, never for its height
   if (w.ResizeObserver) new ResizeObserver(function () { var cw = days.clientWidth; if (cw !== lastW) { lastW = cw; layAll(); litI = -1; lit(); } }).observe(days);
@@ -77,7 +78,7 @@
   var targets = chips.map(function (c) { return d.getElementById(c.getAttribute("href").slice(1)); });
   var litI = -1;
   function lit() {
-    var line = w.innerHeight * 0.4, k = 0;
+    var line = w.innerHeight * (root.classList.contains("g-scan") ? 0.22 : 0.4), k = 0;
     for (var i = 0; i < targets.length; i++) if (targets[i] && targets[i].getBoundingClientRect().top <= line) k = i;
     if (k === litI) return; litI = k;
     chips.forEach(function (c, i) { c.classList.toggle("is-lit", i === k); if (i === k) c.setAttribute("aria-current", "true"); else c.removeAttribute("aria-current"); });
@@ -133,7 +134,7 @@
       if (Math.abs(dy) > 0.5) w.scrollTo({ top: y0 + dy, behavior: "instant" });
     }
     var nw = tiles.map(rect);
-    lit();
+    litI = -1; lit();
     if (reduced() || a < 0 || !Element.prototype.animate) return;
     var A0 = old[a], A1 = nw[a], k = A0.height / A1.height;
     var ocx = A0.left + A0.width / 2, ocy = A0.top + A0.height / 2, ncx = A1.left + A1.width / 2, ncy = A1.top + A1.height / 2;
