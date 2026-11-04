@@ -10,6 +10,28 @@ has grown long, hand over without asking the owner: write the handover at the to
 owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
 chat yourself with the session tools (create_session), and give the owner its link.
 
+**The owner's answers (4 Nov, after go-live) and what they change.**
+- Reach: YouTube only, read online (vidIQ user channel): 2,160 subscribers, 294,561 views, 166 videos, 4 Nov 2026.
+  On the page. NO Instagram count (owner: too low); the Followers cell is gone.
+- Sponsors (owner's words): "banners, footnotes, premium spaces, depending upon the collaborations". On the page as
+  one line for the films, the live commentary and the results newsletter.
+- The quote and the SRS and PWCA logos: "available online". Logos: PWCA draws its own as inline SVG on pwca.org
+  (54 svg on the home page; find the PWCA mark, not a sponsor's); SRS: airtribune.com serves
+  /static/brett/srs_badge_small.fw.png on airtribune.com/srs-2026-6/info; look for a larger official file (SRS's own
+  site, socials). Replace the "Logo slot" boxes in hero() of tools/v4_media.py. The quote: find a published
+  organiser's word about the coverage (SRS or PWCA posts) and use it verbatim with its source; if none, ask once.
+- Tapalpa photos per day and the Drive folder: NOT answered yet.
+- Piedrahita photos: chat 19 picks (owner: "you know better").
+- **New job, the owner's next page (asked to "wake up those agents again", i.e. designers D, E, F):** every comp
+  the owner covers gets its own gallery page, Tapalpa first: people browse, download, and request a high-quality
+  photo; the original file maybe behind a paywall. The Piedrahita page becomes the first of the same kind. Storage:
+  a GitHub repo should stay under about 1 GB (files under 100 MB; Pages publishes up to 1 GB and about 100 GB a month
+  of traffic), so it holds web copies only (about 0.3 MB per photo across 800/1600/2400, so even 300 photos a comp
+  is about 100 MB: one repo per year is fine). Originals (15 MB each, 3 GB a comp) never go to GitHub: free download =
+  the 2400 px web copy; HQ = a request (the owner sends a Drive link) or a paid download (a payment link that hands
+  over a Drive file; Cloudflare R2 is the free-to-10 GB fallback). The owner chooses. Brief the three designers
+  (docs/designers/, the media brief as a model) after telling the owner the time and cost and getting a yes.
+
 **What chat 18 did (owner's yes on preview 3, 4 Nov).**
 - Photos: the owner created the public repo `paraglidingatlas-maker/media-2026` and switched on Pages (main, root).
   Chat 18 pushed the 67 web copies (800/1600/2400 WebP and the posters, 14 MB) to `srs-piedrahita/`, plus README and

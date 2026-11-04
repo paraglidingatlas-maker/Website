@@ -419,9 +419,7 @@ def packages():
       <h3 id="e-spons-t">Where your sponsors appear</h3>
       <ul>
         <li><b>In the joint posts</b><span>On your channels and on Paragliding Atlas</span></li>
-        <li><b>In the films</b><span>%(tbd)s</span></li>
-        <li><b>In the live commentary</b><span>%(tbd)s</span></li>
-        <li><b>In the results newsletter</b><span>%(tbd)s</span></li>
+        <li><b>In the films, the live commentary and the results newsletter</b><span>Banners, footnotes and premium spaces, depending on the collaboration</span></li>
       </ul>
     </div>
   </div>
@@ -485,7 +483,7 @@ def reach():
           <div class="e-aud"><b>Your channels</b><span>Your event&rsquo;s own followers</span></div>
           <span class="e-plus" aria-hidden="true">+</span>
           <div class="e-aud"><b>Paragliding Atlas</b>
-            <dl class="e-base"><div><dt>Channel subscribers</dt><dd>%(tbd)s</dd></div><div><dt>Followers</dt><dd>%(tbd)s</dd></div></dl>
+            <dl class="e-base"><div><dt>YouTube subscribers</dt><dd>2,160 <small>(4 Nov 2026)</small></dd></div><div><dt>YouTube views</dt><dd>294,561 <small>all videos</small></dd></div></dl>
           </div>
         </div>
         <p class="e-pod">The podcast: about 80 episodes, listened to in 136 countries.</p>

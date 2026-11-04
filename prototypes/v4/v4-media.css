@@ -315,7 +315,7 @@ html.e-move .e-stage.is-done .e-cam{visibility:hidden}
 .e-spons{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:1rem clamp(1.5rem,3vw,2.5rem);align-items:start;
   margin-top:clamp(2rem,4vw,3rem);padding-top:var(--sp-3);border-top:1px solid var(--line)}
 .e-spons h3{margin:0;font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);line-height:1.3;color:var(--white)}
-.e-spons ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem clamp(1rem,2vw,1.6rem)}
+.e-spons ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem clamp(1rem,2vw,1.6rem)}
 .e-spons li{display:flex;flex-direction:column;gap:.25rem;padding-top:.7rem;border-top:2px solid var(--edge)}
 .e-spons li:first-child{border-top-color:var(--white)}
 .e-spons b{font-family:var(--font-display);font-weight:600;font-size:.96rem;line-height:1.3;color:var(--white)}
