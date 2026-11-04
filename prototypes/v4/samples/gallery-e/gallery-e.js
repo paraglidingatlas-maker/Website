@@ -68,8 +68,8 @@
   }
   function layAll() { $$(".g-wall").forEach(layWall); }
   layAll();
-  var lastW = w.innerWidth;
-  if (w.ResizeObserver) new ResizeObserver(function () { if (w.innerWidth !== lastW) { lastW = w.innerWidth; layAll(); lit(); } }).observe(days);
+  var lastW = days.clientWidth;                                   // relay only when the column's width changes, never for its height
+  if (w.ResizeObserver) new ResizeObserver(function () { var cw = days.clientWidth; if (cw !== lastW) { lastW = cw; layAll(); litI = -1; lit(); } }).observe(days);
   w.addEventListener("load", layAll);
 
   /* ---------------------------------------------------------------- the day bar: lit where you are, taps that land clear */

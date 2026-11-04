@@ -186,7 +186,7 @@ html.v2-nav-up .gd-days{transform:translate3d(0,var(--v2-nav-h,4.25rem),0);trans
   .gd-days-row{padding:0 calc(var(--gutter) - .8rem)}
   .gd-day{min-height:3.4rem;padding:.45rem .8rem}
   .gd-sec{padding-top:1.35rem}
-  .gd-wc{margin-top:.75rem;margin-right:calc(-1 * var(--gutter));padding-right:var(--gutter)}
+  .gd-wc{margin-top:.75rem;flex-basis:calc(100% + var(--gutter));margin-right:calc(-1 * var(--gutter));padding-right:var(--gutter)}
   .gd-sheet{margin-top:.85rem}
   .gd-soon li{grid-template-columns:4.75rem 4rem minmax(0,1fr);gap:.75rem}
   .gd-org-b{width:100%;justify-content:space-between}

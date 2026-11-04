@@ -31,7 +31,7 @@
 }
 
 /* ------------------------------------------------------------------ the comp line: day bar (phone) and rail (desktop) */
-.g-body{position:relative;padding:0 0 var(--sp-section)}
+.g-body{position:relative;padding:0 0 var(--sp-section);overflow-x:clip}
 .g-bar{position:sticky;top:0;z-index:30;display:flex;align-items:stretch;height:58px;background:var(--bg);border-bottom:1px solid var(--line)}
 html.v2-nav-up .g-bar{top:var(--v2-nav-h,77px)}
 .g-chips{display:flex;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;padding:0 0 0 calc(var(--gx) - 10px);margin:0;list-style:none}
