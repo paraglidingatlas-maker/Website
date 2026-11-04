@@ -11,6 +11,15 @@ owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modu
 chat yourself with the session tools (create_session), and give the owner its link. If create_session is refused,
 give the owner the prompt to paste.
 
+**The owner's answers to chat 20 (4 Nov).**
+- Payment: PayPal. Licence of the free 2400 px copy: CC BY-NC 4.0.
+- Delivery: "The download has to be on site" (the buyer gets the original from the site right after paying, not a
+  Drive link by hand). That needs the originals somewhere private (not GitHub, not the link-shared Drive folders) and
+  a check that the PayPal payment went through before the file is handed over (e.g. the Cloudflare Worker plus R2,
+  with PayPal's order check). Not built; the owner has to set up PayPal (business account, API credentials) and say
+  yes to the storage. Until then the button stays "[to supply]".
+- Design: the owner had not seen the screenshots; chat 20 sent them in the chat (design-d/e/f.jpg) and is waiting.
+
 **The owner's answers (4 Nov, chat 19).**
 - Gallery: designers D, E, F first ("samples needed, but first discuss with me"), then "let the designers brainstorm
   amongst themselves and do their magic". The owner picks one when back (flying 4 Nov evening, about 4 hours).
