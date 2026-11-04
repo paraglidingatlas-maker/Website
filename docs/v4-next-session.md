@@ -35,16 +35,19 @@ chat yourself with the session tools (create_session), and give the owner its li
   dates on main with the owner's ok.
 
 **Chat 19's job, in order.**
-1. Check https://paraglidingatlas.com/media.html and /media-srs-piedrahita-2026.html at 390x683, 390x844, 1440x900
-   (photos load, menu and footer Media lines, the dates form lands on enquire.html in media mode).
-2. Piedrahita event page, for pilots (owner's job 3): 40 to 60 photos by task, each task's story from its video
+LIVE since 4 Nov (deploy run 36, commit 2f19bc04): https://paraglidingatlas.com/media.html and
+/media-srs-piedrahita-2026.html, checked by chat 18 at 390x683, 390x844, 1440x900: every media-2026 photo loads, no
+errors, no sideways scroll, Media in the footer (about.html checked too). The first deploy (run 35) failed: designer
+samples D, E, F pointed at img/media-tmp/, which exists only in a container; they now read media-2026. Lesson: before
+pushing, move img/media-tmp/ aside and run ./build.sh then tools/v4_build.py, as the deploy does.
+1. Piedrahita event page, for pilots (owner's job 3): 40 to 60 photos by task, each task's story from its video
    description (Day 1 cuGs7Lk6Dt4, Task 1 uCEfssE40u8, Task 2 NXUEyPQ3V4E; read the descriptions with vidIQ
    video tools or YouTube; never invent). Drive "All Tasks" 1GwKlKvNkYJ5P5WF0QBtkOByG8du8lrjC holds 200+ JPEGs
    (page 1: 20 T1, 34 T2, 146 T3, ~15 MB each, 3 GB; there is a second page). Mind the disk allowance: download a
    few at a time, make web copies (tools/v4_media_photos.py), delete each original. Ask the owner once: their own
    pick, or chat 19 picks. Push the web copies to media-2026 `srs-piedrahita/`, extend PH in tools/v4_media.py.
    One preview (artifact) before it goes live.
-3. Tapalpa (8 to 14 Nov): the owner is on site; a daily routine (photos into a Drive folder, a scheduled chat makes
+2. Tapalpa (8 to 14 Nov): the owner is on site; a daily routine (photos into a Drive folder, a scheduled chat makes
    web copies, adds the day, pushes) waits on the owner saying how many photos a day and which folder.
 **Still open for the owner (asked 4 Nov, not yet answered):** subscriber and follower counts with the date; where
 sponsors appear; the quote; the SRS and PWCA logo files; Tapalpa photos per day and the folder; which site photos
