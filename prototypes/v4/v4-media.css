@@ -174,7 +174,7 @@ html body .e-bug .kit-stat b{font-family:var(--font-display);font-weight:600;fon
 html body .e-bug .kit-stat b small{font-size:.5em;font-weight:500;letter-spacing:0}
 html body .e-bug .kit-stat span{margin-top:.55rem;color:rgba(246,244,244,.86);font-size:.72rem;letter-spacing:.12em}
 /* the source is two pieces ("Views", "PWC Super Final"): one line here, two deliberate lines on a phone */
-html body .e-bug .e-cr span{display:inline;margin:0;font-size:inherit;letter-spacing:inherit;color:inherit}
+html body .e-bug .e-cr span{display:inline;margin:0;font-size:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit}
 .e-cr-s::before{content:", "}
 html body .e-bug .kit-stat em{display:block;margin:.3rem 0 .85rem;font-style:normal;font-family:var(--font-body);font-size:.76rem;letter-spacing:0;text-transform:none;color:rgba(246,244,244,.76)}
 
@@ -213,6 +213,10 @@ html body .e-bug .kit-stat em{display:block;margin:.3rem 0 .85rem;font-style:nor
 .e-posters:has(.e-pl:not(.is-cam):is(:hover,:focus-within)) .e-pl.is-cam:not(:hover):not(:focus-within) .e-poster::after{box-shadow:inset 0 0 0 1px rgba(246,244,244,.09)}
 @media (hover:hover){.e-poster:hover{translate:0 -6px;box-shadow:0 34px 80px rgba(0,0,0,.58)}.e-poster:hover img{transform:scale(1.045)}.e-poster:hover .e-p-go i{transform:translateX(4px)}}
 .e-poster:focus-visible{outline:1px solid var(--orange);outline-offset:3px}
+/* on the phone's rail a poster only partly in view keeps its picture and its number; its words wait until it is in,
+   so no word is ever cut by the screen's edge (critic-1-7; v4-media.js sets .is-off) */
+.e-pl :is(.e-poster>span,.e-in){transition:opacity .25s var(--ease)}
+.e-pl.is-off :is(.e-poster>span,.e-in){opacity:0}
 /* the package each piece is in (P5) */
 .e-in{margin:.7rem 0 0;font-size:var(--fs-small);line-height:1.5;color:var(--gray)}
 .e-in a{color:var(--gray-light);text-decoration:none;border-bottom:1px solid var(--edge);transition:color .2s var(--ease),border-color .2s var(--ease)}
@@ -242,6 +246,7 @@ html.e-move .e-stage.is-pull:not(.is-gone) .e-hero-in :is(a,button){pointer-even
 html.e-move .e-cam{background:var(--bg)}
 /* the other three come in as pictures; their words wait until the shot has cleared them (critic-1-1) */
 html.e-move .e-pl:not(.is-cam) :is(.e-when,.e-in,.e-poster>span,.e-p-tally){opacity:var(--e-co,1)}
+html.e-move .e-pl.is-off:not(.is-cam) :is(.e-in,.e-poster>span){opacity:0}
 html.e-move .e-four{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:center;
   padding:calc(var(--e-navp) + .75rem) var(--edge-x) clamp(.75rem,2.5vh,1.5rem)}
 html.e-move .e-four-in{width:100%}
@@ -508,12 +513,13 @@ html body .e-nl .v2-nl-row input{min-height:44px;min-width:0}
 /* slim, and only when no other orange button is on screen: hidden over the opening and the four, beside any Check
    dates, at the form, at the footer, and while the nav (with its Enquire Now) is shown */
 .e-bar{display:none}
-/* this page's Enquire Now goes to the same form as the opening's Check dates (H5). The top nav is only ever seen over
-   the opening, so there it leaves the one orange button to the opening (critic-1-10); the pinned nav that comes back
-   on a scroll up keeps the site's own button. Matched by its #dates link, so no other page changes */
-.page-wrap>nav:not(.v2-nav-pinned) .nav-cta[href="#dates"]{display:none}
-.page-wrap>nav:not(.v2-nav-pinned):has(.nav-cta[href="#dates"]) .nav-toggle{margin-left:auto}
 @media (max-width:820px){
+  /* this page's Enquire Now goes to the same form as the opening's Check dates (H5). On a phone the two sit one above
+     the other, so the top nav (only ever seen over the opening) leaves the one orange button to the opening
+     (critic-1-10); the pinned nav that comes back on a scroll up keeps the site's own. Matched by its #dates link, so no
+     other page changes. A wide screen keeps the site's header as it is: there the two buttons are far apart */
+  .page-wrap>nav:not(.v2-nav-pinned) .nav-cta[href="#dates"]{display:none}
+  .page-wrap>nav:not(.v2-nav-pinned):has(.nav-cta[href="#dates"]) .nav-toggle{margin-left:auto}
   /* a field or link reached with the keyboard never lands under the bar (qa-1-2) */
   html:has(.e-bar.show){scroll-padding-bottom:4.75rem}
   .e-bar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:.8rem;
@@ -707,7 +713,7 @@ html body .e-nl .v2-nl-row input{min-height:44px;min-width:0}
 /* ================================================================ reduced motion: the finished page ==== */
 @media (prefers-reduced-motion:reduce){
   .e-poster,.e-poster img,.md-frame>img,.md-ph img,.e-row-bar i,.e-bar,.e-p-tally,.e-pk-card,.md-play,.e-watch i,.e-p-go i,.md-meta a i,.e-field input,
-  .page-wrap>nav .nav-cta,html.e-cta-off .page-wrap>nav .nav-cta{transition:none}
+  .e-pl :is(.e-poster>span,.e-in){transition:none}
   .e-poster:hover{translate:none}.e-poster:hover img,.md-frame:hover>img,.md-ph a:hover img{transform:none}
   .v4i-fl-lb,.v4i-fl-lb img,.v4i-fl-lbx{transition:none}
 }

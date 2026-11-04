@@ -10,6 +10,21 @@ has grown long, hand over without asking the owner: write the handover at the to
 owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
 chat yourself with the session tools (create_session), and give the owner its link.
 
+**Media page: two things only the owner can unblock (review fix pass 1, 4 Nov).**
+1. **ENDPOINT must stay empty for media enquiries until the Worker is changed.** `enquiry-worker.js` (repo root, so
+   the owner approves any change) has no media branch: it requires the pilot fields (rating, total, recent) and a
+   message of 10 or more characters, never reads event, when, place or package, and its subject is "Trip enquiry".
+   Every organiser would get "Please fill in the required fields." `prototypes/v4/enquire.html` now sends a media
+   enquiry by the visitor's own email app even if ENDPOINT is set (`posts()` in its send script). The Worker change,
+   for the owner's yes: when trip=media, require only name, email and event; allow an empty message; add Event,
+   Dates, Place and Package lines to the email; subject "Media enquiry: <event>". Then drop the `isMedia()` test in
+   `posts()`.
+2. **Facts to supply, first (they decide the sponsor sale):** the YouTube subscriber and Instagram follower counts,
+   with the date counted; where sponsors appear in the films, the live commentary and the results newsletter; who
+   can use the videos and photos (the rights wording); how travel works; how far ahead to book. Then: social clips
+   per task day; what an event provides beyond internet and footage; the real quote and its organiser (now EXAMPLE);
+   the real 2027 calendar (now EXAMPLE); the SRS and PWCA logo files. Each shows `[to supply]` on media.html until given.
+
 Chat 16 (all pushed if the gates passed; check `git log origin/main`):
 - **Welcome email LIVE** (3 Nov): MailerLite automation 199572486318196276 "Welcome to the Atlas list" now sends
   the letter design, subject "Welcome to the Atlas Tribe"; old version in docs/emails/welcome-atlas-list-old.html.txt.

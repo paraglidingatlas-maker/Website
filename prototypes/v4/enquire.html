@@ -110,6 +110,14 @@ setTimeout(show,500)})();</script><!--/v4ld-->
 [data-enq="media"]{display:none;}
 html.enq-media [data-enq="media"]{display:revert;}
 html.enq-media [data-enq="trip"]{display:none;}
+/* an organiser is not on the trips' page: the nav lights no section (buyer-1-3) */
+html.enq-media .page-wrap>nav .v4-nav a.is-here{color:var(--gray-light);box-shadow:none;}
+/* the second of two steps, arriving from the Media page with the event filled in (buyer-1-5) */
+.enq-step{margin:-.5rem 0 1.4rem;color:var(--gray-light);font-size:.9rem;line-height:1.65;}
+.enq-step b{color:var(--white);font-weight:600;}
+.enq-consent{transition:box-shadow .6s var(--ease);}
+.enq-consent.is-lit{box-shadow:inset 0 0 0 1px var(--orange);}
+@media (prefers-reduced-motion:reduce){.enq-consent{transition:none;}}
 .enq-aside a{color:var(--orange);}
 
 fieldset{border:none;padding:0;margin:0 0 2rem;}
@@ -299,7 +307,7 @@ if (/[?&]trip=media(?:&|$)/i.test(location.search)) { document.documentElement.c
         <p class="enq-legend-note" data-enq="trip">Not sure yet is a perfectly good answer, and often the right one.</p>
         <p class="enq-legend-note" data-enq="media">Media coverage of a race or a series. To ask about a trip instead, choose it here.</p>
         <div class="enq-field">
-          <label for="trip">Destination</label>
+          <label for="trip"><span data-enq="trip">Destination</span><span data-enq="media">Enquiry</span></label>
           <select id="trip" name="trip">
             <option>Not sure yet, help me choose</option>
             <option>Kenya</option>
@@ -385,8 +393,10 @@ if (/[?&]trip=media(?:&|$)/i.test(location.search)) { document.documentElement.c
 
       <div class="enq-consent">
         <input type="checkbox" id="consent" name="consent" required>
-        <label for="consent">I am happy for Paragliding Atlas to use these details to answer my enquiry. I understand they are kept for up to 24 months if this does not become a booking, that they are not sold or shared for marketing, and that I can ask for them to be deleted at any time. See the <a href="privacy-policy.html">Privacy Policy</a>.</label>
+        <label for="consent">I am happy for Paragliding Atlas to use these details to answer my enquiry. I understand they are kept for up to 24 months <span data-enq="trip">if this does not become a booking</span><span data-enq="media">if no coverage is agreed</span>, that they are not sold or shared for marketing, and that I can ask for them to be deleted at any time. See the <a href="privacy-policy.html">Privacy Policy</a>.</label>
       </div>
+      <!-- Media mode, arriving from the Media page's dates form with the event already filled: the second of two steps -->
+      <p class="enq-step" id="enqStep" hidden><b>Step 2 of 2.</b> Your event is filled in from the Media page: check it, tick the box and send.</p>
 
       <!-- Spam traps for the posted mode. A person never sees or fills
            "website"; a bot fills every field. "t" is stamped by the script. -->
@@ -414,11 +424,14 @@ if (/[?&]trip=media(?:&|$)/i.test(location.search)) { document.documentElement.c
     <h3 data-enq="trip">Before you book</h3>
     <p data-enq="trip">Worth reading either way: the <a href="terms.html">booking terms</a>, and the <a href="participant-agreement.html">participant agreement</a> that every pilot completes before a trip. Both are published in full rather than sprung on you later.</p>
 
-    <h3>Building something for the sport?</h3>
-    <p>If you have made a piece of gear, a piece of tech or a wild new adventure concept that would make a positive difference to this community, we would like to hear about it. We run paid spotlight segments inside episodes: you reach listeners across 136 countries, and it helps keep the podcast funded and free. Sponsored segments are always disclosed at the top of the episode, which is set out in our <a href="safety-and-disclosure.html">disclosure statements</a>.</p>
+    <h3 data-enq="trip">Building something for the sport?</h3>
+    <p data-enq="trip">If you have made a piece of gear, a piece of tech or a wild new adventure concept that would make a positive difference to this community, we would like to hear about it. We run paid spotlight segments inside episodes: you reach listeners across 136 countries, and it helps keep the podcast funded and free. Sponsored segments are always disclosed at the top of the episode, which is set out in our <a href="safety-and-disclosure.html">disclosure statements</a>.</p>
 
-    <h3>Not ready to enquire?</h3>
-    <p>The <a href="library.html">episode library</a> has 80 conversations with pilots, designers and instructors, transcripts included. <a href="destinations/kenya.html">Kenya</a> is the trip page with the most detail on it.</p>
+    <h3 data-enq="trip">Not ready to enquire?</h3>
+    <p data-enq="trip">The <a href="library.html">episode library</a> has 80 conversations with pilots, designers and instructors, transcripts included. <a href="destinations/kenya.html">Kenya</a> is the trip page with the most detail on it.</p>
+
+    <h3 data-enq="media">Not ready to send?</h3>
+    <p data-enq="media">Watch the coverage first: the 13 comp videos of 2026 play on the <a href="media.html#watch">Media page</a>, with the stills from SRS Piedrahita.</p>
   </aside>
 </div>
 
@@ -519,7 +532,8 @@ if (/[?&]trip=media(?:&|$)/i.test(location.search)) { document.documentElement.c
   var ev = d.getElementById('enqEvent'), fly = d.getElementById('enqFlying'), wf = d.getElementById('enqWhen'),
       home = wf && wf.parentNode, next = wf && wf.nextSibling, row = d.getElementById('enqEventRow'),
       em = d.querySelector('.kit-hero h1 em'), msg = d.getElementById('message'),
-      mlab = d.querySelector('label[for="message"]'), box = d.getElementById('v4uHold');
+      mlab = d.querySelector('label[for="message"]'), box = d.getElementById('v4uHold'),
+      here = d.querySelector('.page-wrap>nav .v4-nav a.is-here'), step = d.getElementById('enqStep');
   if (!sel || !ev || !fly) return;
   var cur = null, was = null;
   /* the form's messages (v4u-form-js) under fields that are stepping aside go with them */
@@ -535,6 +549,9 @@ if (/[?&]trip=media(?:&|$)/i.test(location.search)) { document.documentElement.c
     if (on === cur) return;
     var first = cur === null;
     cur = on;
+    /* an organiser is not on the trips' page: the nav marks no section for them */
+    if (here) { if (on) here.removeAttribute('aria-current'); else here.setAttribute('aria-current', 'page'); }
+    if (step && !on) step.hidden = true;
     if (on) {
       /* what the trip form had (a "Hold a place" arrival makes the message optional and shows the departure) */
       was = { msg: msg ? msg.required : true, box: box ? box.hidden : true, holding: de.classList.contains('v4u-holding'),
@@ -577,6 +594,20 @@ if (/[?&]trip=media(?:&|$)/i.test(location.search)) { document.documentElement.c
   }
   mode(sel.value === 'media');
   sel.addEventListener('change', function () { mode(sel.value === 'media'); });
+
+  /* Arriving from the Media page's dates form (step 1 of 2) with the event, the name and the email filled in: this is
+     step 2. Its line shows, and the consent box and Send come into view, lit for a moment (buyer-1-5). */
+  var cbox = d.querySelector('.enq-consent');
+  if (cur && step && cbox && q2 && q2.get('event') && ['event', 'name', 'email'].every(function (id) { var el = d.getElementById(id); return el && el.value.trim(); })) {
+    step.hidden = false;
+    var bring = function () {
+      var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      cbox.scrollIntoView({ block: 'center', behavior: still ? 'auto' : 'smooth' });
+      cbox.classList.add('is-lit');
+      setTimeout(function () { cbox.classList.remove('is-lit'); }, 1800);
+    };
+    if (d.readyState === 'complete') setTimeout(bring, 250); else window.addEventListener('load', function () { setTimeout(bring, 250); });
+  }
 })();
 </script>
 <script>
@@ -600,19 +631,29 @@ if (/[?&]trip=media(?:&|$)/i.test(location.search)) { document.documentElement.c
   var stamp = document.getElementById('t');
   if (stamp) stamp.value = String(Date.now());
 
-  /* The privacy note has a paragraph for each mode; show the true one. */
-  var mode = ENDPOINT ? 'post' : 'mailto';
-  var notes = document.querySelectorAll('[data-mode]');
-  for (var i = 0; i < notes.length; i++) notes[i].hidden = notes[i].getAttribute('data-mode') !== mode;
-
   function val(id) {
     var el = document.getElementById(id);
     return el && el.value ? el.value.trim() : '';
   }
 
   /* Media mode (Media coverage chosen): an organiser's enquiry. Its fields (event, when, place,
-     package) are the enabled ones, so the Worker's FormData carries them and not the pilot fields. */
+     package) are the enabled ones, so a post would carry them and not the pilot fields.
+     The Worker (enquiry-worker.js) has no media branch yet: it requires the pilot fields and a
+     message, so it would refuse every organiser. Until the owner approves its media branch
+     (docs/v4-next-session.md), a media enquiry always goes by the visitor's own email app, even
+     with ENDPOINT set. Remove the isMedia() test in posts() once the Worker takes trip=media. */
   function isMedia() { return val('trip') === 'media'; }
+  function posts() { return !!ENDPOINT && !isMedia(); }
+
+  /* The privacy note has a paragraph for each mode; show the true one (it follows the choice). */
+  var notes = document.querySelectorAll('[data-mode]');
+  function showNotes() {
+    var mode = posts() ? 'post' : 'mailto';
+    for (var i = 0; i < notes.length; i++) notes[i].hidden = notes[i].getAttribute('data-mode') !== mode;
+  }
+  showNotes();
+  var tripSel = document.getElementById('trip');
+  if (tripSel) tripSel.addEventListener('change', showNotes);
   function packageName() {
     var s = document.getElementById('package');
     return s && s.selectedIndex >= 0 ? s.options[s.selectedIndex].text : '';
@@ -660,7 +701,7 @@ if (/[?&]trip=media(?:&|$)/i.test(location.search)) { document.documentElement.c
       'Consent given to use these details to answer this enquiry.'
     ];
 
-    var subject = 'Trip enquiry: ' + val('trip') + ' — ' + val('name');
+    var subject = 'Trip enquiry: ' + val('trip') + ' - ' + val('name');
     return 'mailto:' + TO
       + '?subject=' + encodeURIComponent(subject)
       + '&body=' + encodeURIComponent(lines.join('\n'));
@@ -703,7 +744,7 @@ if (/[?&]trip=media(?:&|$)/i.test(location.search)) { document.documentElement.c
   form.addEventListener('submit', function (ev) {
     ev.preventDefault();
     if (!form.checkValidity()) { form.reportValidity(); return; }
-    if (!ENDPOINT) { sendByMail(); return; }
+    if (!posts()) { sendByMail(); return; }
 
     var btn = form.querySelector('button[type="submit"]');
     var label = btn && btn.querySelector('span');

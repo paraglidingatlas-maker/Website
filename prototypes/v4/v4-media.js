@@ -321,7 +321,7 @@
       }
       // the order of a clean pull-back (critic-1-1): the words cut out before anything moves; the shot pulls back; its
       // label rides on it; only then do the other three come in, as pictures; every word of the board comes last
-      var e = inout(band(p, .03, .9)), done = e >= 1;
+      var e = inout(band(p, .035, .9)), done = e >= 1;
       // the frame: from the whole screen to the poster's place
       var x = e * G.sx, y = e * G.sy, fw = lerp(G.W, G.sw, e), fh = lerp(G.H, G.sh, e), rad = 4 * e;
       // the photo: from the opening's frame to the poster's crop (the poster follows the rail if it was moved)
@@ -335,7 +335,7 @@
       shade.style.opacity = (1 - band(p, .05, .5)).toFixed(3);
       // the opening's words leave first, within a few per cent, so they never hang ghosted over a moving photo; the
       // buttons stop taking taps as they go (P1)
-      var g = out3(band(p, 0, .04));
+      var g = out3(band(p, 0, .035));
       hin.style.opacity = (1 - g).toFixed(3);
       hin.style.transform = g ? "translate3d(0," + (-20 * g).toFixed(1) + "px,0)" : "";
       // the Daily Highlights label and its tally ride on the shot from the moment the words are gone (P2)
@@ -473,25 +473,37 @@
   /* ---------------------------------------------------------------- the phone bar (S4): never two orange buttons at once ---- */
   function bar() {
     var b = d.getElementById("eBar"); if (!b || !w.IntersectionObserver) return;
-    // the packages count as one stop (each card holds a Check dates), so the bar does not flicker between them; the
-    // footer is a stop for the bar only (it has no orange button, the bar would sit on it)
+    // the packages count as one stop (each card holds a Check dates), so the bar does not flicker between them
     var stops = [].slice.call(d.querySelectorAll(".e-pull, .e-pk-grid, [data-cd], #dates, body > footer, .page-wrap ~ footer")), seen = [];
-    var foot = stops.filter(function (el) { return el.tagName === "FOOTER"; });
     function set() {
-      var lit = false, any;
-      for (var i = 0; i < seen.length; i++) if (seen[i] && foot.indexOf(stops[i]) < 0) lit = true;
-      any = lit || root.classList.contains("v2-nav-up");
-      for (i = 0; i < seen.length && !any; i++) any = seen[i];
+      var any = root.classList.contains("v2-nav-up");
+      for (var i = 0; i < seen.length && !any; i++) any = seen[i];
       b.classList.toggle("show", !any);
-      // the header's Enquire Now goes to the same form: it steps back while another orange button is on screen (critic-1-10)
-      if (root.classList.contains("e-cta-off") !== lit) root.classList.toggle("e-cta-off", lit);
     }
     var io = new IntersectionObserver(function (en) {
       en.forEach(function (x) { seen[stops.indexOf(x.target)] = x.isIntersecting; }); set();
     });
     stops.forEach(function (el, i) { seen[i] = true; io.observe(el); });
-    // set() is idempotent: the class it sets itself changes nothing on the second call
     if (w.MutationObserver) new MutationObserver(set).observe(root, { attributes: true, attributeFilter: ["class"] });
+  }
+
+  /* ---------------------------------------------------------------- the phone's poster rail: words only on posters in view ---- */
+  function railText() {
+    var rail = d.querySelector(".e-posters"); if (!rail) return;
+    var items = [].slice.call(rail.querySelectorAll(".e-pl")), raf = 0;
+    function set() {
+      raf = 0;
+      var rr = rail.getBoundingClientRect(), scroller = rail.scrollWidth > rail.clientWidth + 2;
+      items.forEach(function (li) {
+        var r = li.getBoundingClientRect(), seen = r.width ? (Math.min(r.right, rr.right) - Math.max(r.left, rr.left)) / r.width : 1;
+        li.classList.toggle("is-off", scroller && seen < .75);      // a slice peeking in: its picture and number only (critic-1-7)
+      });
+    }
+    function ask() { if (!raf) raf = requestAnimationFrame(set); }
+    rail.addEventListener("scroll", ask, { passive: true });
+    w.addEventListener("resize", ask);
+    w.addEventListener("load", ask);
+    set();
   }
 
   /* ---------------------------------------------------------------- the season's views fill once, when they are seen ---- */
@@ -512,6 +524,7 @@
     picks();
     handoff();
     bar();
+    railText();
     season();
   });
 })();
