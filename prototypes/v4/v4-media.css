@@ -163,14 +163,13 @@ html{scroll-padding-top:var(--e-sp)}
 .e-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.7rem;margin-top:clamp(1.3rem,3.2vh,2rem)}
 .e-actions .btn-solid{margin:0;font-size:1rem;padding:1rem 2rem}
 
-/* who hired him: two logo slots with the full names, marked as slots until the files arrive (H4) */
+/* who hired him: the two organisers' own marks (H4; SRS from sportsracingseries.org, the World Cup from pwca.org, both
+   set in white for the dark ground, chat 19) */
 .e-for{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem 1rem;margin-top:clamp(1.3rem,3.2vh,2rem)}
 .e-for-k{font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(246,244,244,.7)}
-.e-logo{display:inline-flex;flex-direction:column;justify-content:center;align-self:stretch;min-width:6.4rem;padding:.5rem .8rem .45rem;
-  border:1px dashed rgba(246,244,244,.36);border-radius:2px;background:rgba(12,13,17,.34)}
-.e-logo b{font-family:var(--font-display);font-weight:800;font-size:1.08rem;letter-spacing:.08em;color:var(--white);line-height:1}
-.e-logo small{margin-top:.3rem;font-size:.6875rem;line-height:1.25;color:rgba(246,244,244,.82)}
-.e-logo em{margin-top:.2rem;font-style:normal;font-size:.6875rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,244,244,.56)}
+.e-logo{display:inline-flex;align-items:center;justify-content:center}
+.e-logo img{display:block;width:auto;height:3.1rem;filter:drop-shadow(0 1px 10px rgba(12,13,17,.45))}
+.e-logo-pwca img{height:3.4rem}
 
 /* the three proof numbers, set like a broadcast score bug, each naming its source (H1) */
 html body .e-bug{display:grid;grid-template-columns:repeat(3,auto);gap:0;margin:0;padding:0;border:0}
@@ -641,13 +640,11 @@ html body .e-nl .v2-nl-row input{min-height:44px;min-width:0}
   .e-actions{flex-wrap:nowrap;margin-top:1rem;gap:1rem}
   .e-actions .btn-solid{flex:none;font-size:.88rem;padding:.9rem 1.05rem;white-space:nowrap}
   .e-actions .btn-lines{flex:none;font-size:.88rem;white-space:nowrap}
-  /* "Covered for" on its own line over the two logo slots, every word 11px or more (critic-1-3) */
-  .e-for{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:.45rem .5rem;margin-top:.95rem}
-  .e-for-k{grid-column:1 / -1;font-size:.6875rem;line-height:1.2;letter-spacing:.12em}
-  .e-logo{position:relative;min-width:0;padding:.45rem .6rem .5rem}
-  .e-logo b{font-size:.95rem}
-  .e-logo small{margin-top:.25rem;font-size:.6875rem;line-height:1.3}
-  .e-logo em{position:absolute;top:.5rem;right:.55rem;margin:0;font-size:.6875rem;line-height:1;letter-spacing:.1em}
+  /* "Covered for" on one line with the two marks, every word 11px or more (critic-1-3) */
+  .e-for{gap:.5rem 1.1rem;margin-top:.95rem}
+  .e-for-k{font-size:.6875rem;line-height:1.2;letter-spacing:.12em}
+  .e-logo img{height:2.6rem}
+  .e-logo-pwca img{height:2.9rem}
   .e-hero-in{row-gap:.95rem}
   /* the three numbers: each source on two deliberate lines at 12px ("Views" / "PWC Super Final"), never a ragged wrap */
   html body .e-bug{grid-template-columns:repeat(3,auto);width:100%}
@@ -752,7 +749,6 @@ html body .e-nl .v2-nl-row input{min-height:44px;min-width:0}
 }
 @media (max-width:370px){
   .e-actions{flex-wrap:wrap}
-  .e-logo em{position:static;margin-top:.2rem}
   .md-list li{width:50vw}
 }
 

@@ -305,8 +305,8 @@ def hero():
         </div>
         <div class="e-for">
           <span class="e-for-k">Covered for</span>
-          <span class="e-logo" role="img" aria-label="SRS, the Sports-Class Racing Series (logo slot)"><b>SRS</b><small>Sports-Class Racing Series</small><em>Logo slot</em></span>
-          <span class="e-logo" role="img" aria-label="PWCA, the Paragliding World Cup Association (logo slot)"><b>PWCA</b><small>Paragliding World Cup Association</small><em>Logo slot</em></span>
+          <span class="e-logo e-logo-srs"><img src="img/media/logo-srs.png" width="340" height="240" alt="SRS, the Sports-Class Racing Series" decoding="async"></span>
+          <span class="e-logo e-logo-pwca"><img src="img/media/logo-pwca.png" width="113" height="130" alt="The Paragliding World Cup" decoding="async"></span>
         </div>
       </div>
       <div class="kit-stats e-bug">
