@@ -4,6 +4,26 @@ Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
 the owner's current queue and what the last session learnt doing it.
 
+## Chat 20 starts here (4 Nov 2026): the owner picks a gallery design, then build it for Tapalpa (Task 1 is 8 Nov)
+**Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
+has grown long, hand over without asking the owner: write the handover at the top of this file, update the
+owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
+chat yourself with the session tools (create_session), and give the owner its link. If create_session is refused,
+give the owner the prompt to paste.
+
+**The owner's answers (4 Nov, chat 19).**
+- Gallery: designers D, E, F first ("samples needed, but first discuss with me"), then "let the designers brainstorm
+  amongst themselves and do their magic". The owner picks one when back (flying 4 Nov evening, about 4 hours).
+- Originals: EUR 1 per photo, option B = a payment link per photo (not a basket). Provider (Stripe or PayPal) and
+  delivery: not answered; hand delivery by Drive link assumed, delivery time [to supply], licence [to supply].
+- media-2026: attach it "and future ones as well as need be" (standing yes for add_repo push on media-2026).
+- Tapalpa: about 50 photos a day; Drive folder 1FklBNyCYQ1Zx3QnOy2tWuVGQmzkXnROJ (empty on 4 Nov). Piedrahita:
+  "All Tasks" 1GwKlKvNkYJ5P5WF0QBtkOByG8du8lrjC. Both folders are shared by link: anyone with the link can download
+  the originals, so never publish a folder link or a file id (the originals are what the owner sells). Tell the owner.
+- "Patchy": the owner did not say where; chat 19 fixed the opening's pull-back (the slowest part everywhere).
+
+CHAT19_RESULTS
+
 ## Chat 19 starts here (4 Nov 2026): the richer Piedrahita event page, then the Media page's [to supply] facts
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
 has grown long, hand over without asking the owner: write the handover at the top of this file, update the
