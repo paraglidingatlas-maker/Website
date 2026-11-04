@@ -14,7 +14,7 @@ var SECTIONS = [
 ["Expeditions", "expeditions.html", "assets/destinations/india/hero/snowline.webp", [["India", "destinations/india.html"], ["Kenya", "destinations/kenya.html"], ["Panchgani", "destinations/panchgani.html"]]],
 ["Podcast", "podcast.html", "assets/images/pod-hero-gemona.webp", [["Library", "library.html"], ["Topics", "tags.html"]]],
 ["Knowledge Base", "knowledge-base.html", "@kb/kb-flight-mechanics.svg", []],
-["About", "about.html", "assets/images/partners-aninder.webp", [["Mission Statement", "mission.html"], ["Partner With Me", "partners.html"]]]
+["About", "about.html", "assets/images/partners-aninder.webp", [["Mission Statement", "mission.html"], ["Partner With Me", "partners.html"], ["Media", "media.html"]]]
 ];
 var menu = null, lastFocus = null, idx = null;
 function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }

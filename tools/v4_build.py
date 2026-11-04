@@ -137,8 +137,9 @@ THE ORDER, AND WHY
   9. v4_search             the search files, read from the finished pages.
  10. v4_min                v2.css and the scripts, from src/.
  11. (put back)            the pages their own generators own, as they were
-                           before this ran: samples/**, record-*.html and
-                           expeditions*.html. v4_library, v4_award and
+                           before this ran: samples/**, record-*.html,
+                           expeditions*.html and media*.html (tools/v4_media.py).
+                           v4_library, v4_award and
                            v2_localize touch them in passing; their own
                            generators (tools/v4_samples.py, v4_record*.py,
                            v4_expeditions*.py, ...) are not part of this, so
@@ -181,7 +182,8 @@ def owned():
     for d, _, fs in os.walk(os.path.join(V4, "samples")):
         out += [os.path.join(d, f) for f in fs]
     out += [os.path.join(V4, f) for f in os.listdir(V4)
-            if f.endswith(".html") and (f.startswith("record-") or f.startswith("expeditions"))]
+            if f.endswith(".html") and (f.startswith("record-") or f.startswith("expeditions")
+                                         or f.startswith("media"))]
     return sorted(out)
 
 
@@ -262,7 +264,7 @@ def check_episodes(pages):
 
 VER = re.compile(rb"\?v=[0-9a-f]{8}\b")     # a ?v= hash, as tools/version_assets.py writes it
 OWNED_GIT = ["prototypes/v4/samples/", ":(glob)prototypes/v4/record-*.html",
-             ":(glob)prototypes/v4/expeditions*.html"]     # owned(), as git pathspecs
+             ":(glob)prototypes/v4/expeditions*.html", ":(glob)prototypes/v4/media*.html"]     # owned(), as git pathspecs
 
 
 def changed_owned():

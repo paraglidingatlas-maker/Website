@@ -275,7 +275,8 @@ def shell(title, desc, canon, og_img, name, main, enquire=None):
             '<a href="%s" class="nav-cta" data-hover><span>Enquire Now</span></a>' % enquire)
     a, b = s.index('<main id="v4-main">'), s.index("</main>")
     s = s[:a] + '<main id="v4-main">\n' + main + "\n" + s[b:]
-    rep('<a href="partners.html">Partner With Me</a>', '<a href="partners.html">Partner With Me</a>\n      <a href="media.html">Media</a>')
+    if '<a href="media.html">Media</a>' not in s:     # tools/v4_footer.py has it once the site carries it
+        rep('<a href="partners.html">Partner With Me</a>', '<a href="partners.html">Partner With Me</a>\n      <a href="media.html">Media</a>')
     rep("</body>", '<script defer src="../../newsletter.js?v=d28c01a5"></script>\n<script defer src="v4-media.js?v=%s"></script>\n</body>' % ver("v4-media.js"))
     return s
 

@@ -2,7 +2,8 @@
 """
 The footer, shorter (owner, 28 Oct 2026). Same pages reachable, less height:
   - four menus of four, side by side with the brand: Listen (Podcast, Episode Library, Topics, Knowledge Base),
-    Fly With Us (Kenya, India, Panchgani, Book a Call), Atlas (About, Mission, Partner With Me, Safety & Disclosure),
+    Fly With Us (Kenya, India, Panchgani, Book a Call), Atlas (About, Mission, Partner With Me, Media, Safety & Disclosure;
+    Media added 4 Nov 2026),
     Legal (Terms, Privacy, Participant Agreement, Corrections; owner, 29 Oct 2026);
     gone as repeats: the motto's link (Mission is in Atlas), "Destinations" (Expeditions is in the menu bar, the
     three trips are listed), "All Episodes" beside "Podcast" (now Episode Library), "Enquire" (the menu bar's
@@ -38,7 +39,7 @@ LISTEN_ON = [
 MENUS = [
     ("Listen", [("Podcast", "podcast.html"), ("Episode Library", "library.html"), ("Topics", "tags.html"), ("Knowledge Base", "knowledge-base.html")]),
     ("Fly With Us", [("Kenya", "destinations/kenya.html"), ("India", "destinations/india.html"), ("Panchgani", "destinations/panchgani.html"), ("Book a Call", CALL)]),
-    ("Atlas", [("About", "about.html"), ("Mission", "mission.html"), ("Partner With Me", "partners.html"), ("Safety &amp; Disclosure", "safety-and-disclosure.html")]),
+    ("Atlas", [("About", "about.html"), ("Mission", "mission.html"), ("Partner With Me", "partners.html"), ("Media", "media.html"), ("Safety &amp; Disclosure", "safety-and-disclosure.html")]),
     ("Legal", [("Terms", "terms.html"), ("Privacy", "privacy-policy.html"), ("Participant Agreement", "participant-agreement.html"), ("Corrections", "corrections.html")]),
 ]
 LEGAL = [("Cookies", "cookie-policy.html"), ("Sitemap", "sitemap.html")]
