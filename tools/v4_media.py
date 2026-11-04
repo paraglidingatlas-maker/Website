@@ -720,7 +720,8 @@ def piedrahita_page():
             ("Task 3", "The race from the air", None, 3)]
     out = []
     for k, (lab, line, v, t) in enumerate(days):
-        stems = [s for s in PH if PH[s][2] == t] if t else []
+        # the opening's two shots (wide and phone) are not shown again in the grids (no photo twice, owner 21 Oct)
+        stems = [s for s in PH if PH[s][2] == t and s not in ("SRS_5_T3_63", "SRS_5_T2_133-2")] if t else []
         vid = ""
         if v:
             vid = '%s<div class="md-now"><h3>%s</h3>%s</div>' % (frame(v), E("Piedrahita, " + V[v][1]), now_line(v))
@@ -738,7 +739,7 @@ def piedrahita_page():
     <a class="md-back" href="media.html">&larr; Media</a>
     <span class="kit-kicker">SRS BGD Edition &middot; Piedrahita, Ávila, Spain</span>
     <h1>Piedrahita 2026</h1>
-    <p class="kit-intro">22 to 29 Aug 2026, FAI Category 2: 120 pilots from 54 countries. Stills and a highlight video each day.</p>
+    <p class="kit-intro">22 to 29 Aug 2026, FAI Category 2: 120 pilots from 54 countries. Stills from all three tasks, and highlight videos of Day 1, Task 1 and Task 2.</p>
     <div class="kit-stats">
       <div class="kit-stat"><b>20</b><span>Chosen stills</span></div>
       <div class="kit-stat"><b>3</b><span>Highlight videos</span></div>
@@ -754,7 +755,7 @@ def piedrahita_page():
            cta=cta("Coverage Like This For <span class=\"v4-nw\">Your Event</span>", "Coverage For Your Comp",
                    "A free 30-minute call: tell me the event, the dates and the place, and what you would like to come out of it."),
            viewer=VIEWER)
-    return shell("Piedrahita 2026", "SRS BGD Edition, Piedrahita, Spain, 22 to 29 Aug 2026: the stills and daily highlight videos by Paragliding Atlas.",
+    return shell("Piedrahita 2026", "SRS BGD Edition, Piedrahita, Spain, 22 to 29 Aug 2026: the stills and highlight videos by Paragliding Atlas.",
                  "media-srs-piedrahita-2026.html", src("SRS_5_T3_63", 1600), "Piedrahita 2026", main)
 
 
