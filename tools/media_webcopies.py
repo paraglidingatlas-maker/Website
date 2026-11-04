@@ -112,7 +112,7 @@ def main():
                 continue
             m = re.search(a.day_re, t + " ")
             if shot is None:                             # a copy made on an earlier run: its time from then, else a ranged read
-                shot = (old.get(stem) or {}).get("shot") or head_shot(ids[t])
+                shot = old[stem].get("shot", "") if stem in old else head_shot(ids[t])
             done[stem] = {"stem": stem, "day": m.group(1) if m else "", "w": size[0], "h": size[1], "shot": shot}
             n += 1
             if n % 10 == 0 or n == len(files):

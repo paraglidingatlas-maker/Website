@@ -22,7 +22,57 @@ give the owner the prompt to paste.
   the originals, so never publish a folder link or a file id (the originals are what the owner sells). Tell the owner.
 - "Patchy": the owner did not say where; chat 19 fixed the opening's pull-back (the slowest part everywhere).
 
-CHAT19_RESULTS
+**What chat 19 did (live since 4 Nov, deploy of b02330f5).**
+- "Patchy" fixed (v4-media.js pull(), v4-media.css): the phone's feathers were masks rewritten every frame (they
+  repainted the photo and every poster with its 60px shadow); they are now veils of the ground's colour that only move
+  (veil(), .e-veil). The poster words lose their 0.25s transition during the move (it restarted every frame and
+  trailed the finger); the scrim and the opening's words fade on their own layers; a frame writes only what changed
+  (put()); on touch screens settle() waits until the page has been still for 120 ms (a flick's momentum). Measured over
+  40 scroll steps at 4x CPU: phone paint 392 to 168 ms, raster 636 to 181 ms; desktop raster 1021 to 235 ms. Frames
+  match the old move within 0.03% of pixels (390x844, 390x683, 1440x900, snapping held off). Style recalc is still
+  about 15 ms a step at 4x and is NOT the move's own writes (switching them all off leaves it): next suspect the page's
+  other scroll work (v2-immersive.js) during the pinned stage. Not checked on a real phone: ask the owner to look.
+- Logos: SRS from sportsracingseries.org (SRS-Logo_512x512.png) and the World Cup from pwca.org (images/brand.png),
+  set in white for the dark ground, in prototypes/v4/img/media/ (logo-srs.png, logo-pwca.png), in hero() of
+  tools/v4_media.py. PWCA's is only 113x130 px: a larger file would come from pwca@pwca.org.
+- The quote: no published organiser quote found (web, airtribune SRS blog, the YouTube comments on BRAX1XMU390 and
+  uCEfssE40u8 have none from SRS or PWCA). Viewer praise exists, e.g. @imdakshnain on BRAX1XMU390, 14 May 2026:
+  "Best coverage of an XC comp so far, IMO." Offer it to the owner as a pilots' line; the organiser quote stays as it is.
+- Piedrahita page: the intro no longer claims a video each day (Task 3 has none); its two opening shots are not repeated
+  in the grids.
+- All 325 Piedrahita photos (T1 48, T2 131, T3 146) are web copies in media-2026 srs-piedrahita/ with photos.json
+  (stem, day, w, h, in the owner's file order), made by tools/media_webcopies.py (downloads a link-shared Drive folder
+  one original at a time, deletes each; no Drive ids in the public repo). The originals' EXIF capture times read
+  31 Aug (after the comp): never show or sort by them. Tapalpa: run the same tool into media-2026 srs-tapalpa/ each night.
+- Gates on b02330f5: everything passes except the known live-untouched FAIL (the ~179 live pages from 62360aa, see
+  chat 18's notes); the deploy builds fresh. The build writes its own ?v= hashes (tools/version_assets.py) into the
+  media pages and the media-d/e/f samples, unlike tools/v4_media.py: after running v4_media.py, build in a clean
+  worktree and copy those pages back before committing, or the chain's byte-for-byte check fails.
+- Container lesson: `pkill -f <pattern>` also kills the shell running it when the pattern is in its own command line
+  (exit 144); kill by pid.
+
+**The gallery: three samples, the owner chooses (preview link in the chat, GALLERY_PREVIEW).**
+Brief docs/designers/gallery-brief.md; concepts, round 2 replies and pitches in docs/designers/gallery/; samples in
+prototypes/v4/samples/gallery-d/, gallery-e/, gallery-f/ (Tapalpa as on the evening of 11 Nov, the Piedrahita photos
+as labelled stand-ins). D "Proof Sheet": every day on one calm page, photos whole, a photo lifts out and back into its
+place, wing-colour chips dim (never hide). E "Pull Back to the Comp": one photo, one day, the whole comp as a contact
+sheet, the Media page's pull-back as the move. F "Fly the Comp": the task line of 7 dates, the newest day open, the
+glider flies along the line to the day you tap. All: "Save, free" (fetch + share sheet on phones, download on desktop;
+media-2026 sends access-control-allow-origin: *), "Original, EUR 1" with the file name and the payment link [to supply].
+
+**Chat 20's job, in order.**
+1. Get the owner's pick (and the payment provider: Stripe or PayPal, a link per photo that carries the file name;
+   delivery time; licence of the free copy). Build it as tools/v4_gallery.py (an owned page like v4_media.py: add
+   media-*-gallery or the chosen file names to owned() and OWNED_GIT in tools/v4_build.py, NEW_PAGES in
+   tools/v2_site.py) reading media-2026 <comp>/photos.json, first media-srs-tapalpa-2026.html (empty days say when
+   photos come), then the Piedrahita page rebuilt the same way with all 325 photos. Test on a real iPhone: Save to
+   Photos, a WebP into Instagram and WhatsApp (the designers flag it). One preview before it goes live.
+2. Tapalpa, 8 to 14 Nov: each night run tools/media_webcopies.py 1FklBNyCYQ1Zx3QnOy2tWuVGQmzkXnROJ
+   /home/user/media-2026/srs-tapalpa --day-re '<the owner's naming>' (check the file names on the first night), push
+   media-2026, regenerate the page, build, gates, push, give the owner the link. A scheduled task can do it: see below.
+3. Still open for the owner: the organiser quote (or the viewer comment above); a larger PWCA logo; which device looked
+   patchy (ask them to look again now); the Drive folders are link-shared (anyone with a link gets the originals free).
+   Chat 18's list (photo credits, the two orange buttons at 1440, the Worker's media branch, MailerLite M 46) is unchanged.
 
 ## Chat 19 starts here (4 Nov 2026): the richer Piedrahita event page, then the Media page's [to supply] facts
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
