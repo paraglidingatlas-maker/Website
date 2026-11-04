@@ -48,10 +48,17 @@ give the owner the prompt to paste.
   chat 18's notes); the deploy builds fresh. The build writes its own ?v= hashes (tools/version_assets.py) into the
   media pages and the media-d/e/f samples, unlike tools/v4_media.py: after running v4_media.py, build in a clean
   worktree and copy those pages back before committing, or the chain's byte-for-byte check fails.
+- Designers E and F stalled in round 2 (no file written after 17:34; most likely a tool call waiting for an approval
+  the owner could not give from a plane): their samples are complete enough to judge and were screenshotted by
+  chat 19, but their "## Round 2" notes and pitches are missing (the preview's E and F pitches are chat 19's summary
+  of their round 1 concepts, marked so). D finished both rounds.
+- The move's remaining cost: about 1 ms of style recalc per changed element batch per frame on a real phone (4 ms at
+  4x CPU), from matching against the large site stylesheet; inside the frame budget. Going further means CSS
+  scroll-driven animations (animation-timeline), a larger rebuild: only if the owner still sees it patchy.
 - Container lesson: `pkill -f <pattern>` also kills the shell running it when the pattern is in its own command line
   (exit 144); kill by pid.
 
-**The gallery: three samples, the owner chooses (preview link in the chat, GALLERY_PREVIEW).**
+**The gallery: three samples, the owner chooses (preview: https://claude.ai/artifact/FeGEvbUMkVLsshEZroXxyX).**
 Brief docs/designers/gallery-brief.md; concepts, round 2 replies and pitches in docs/designers/gallery/; samples in
 prototypes/v4/samples/gallery-d/, gallery-e/, gallery-f/ (Tapalpa as on the evening of 11 Nov, the Piedrahita photos
 as labelled stand-ins). D "Proof Sheet": every day on one calm page, photos whole, a photo lifts out and back into its
