@@ -76,7 +76,10 @@ media-2026 sends access-control-allow-origin: *), "Original, EUR 1" with the fil
    Photos, a WebP into Instagram and WhatsApp (the designers flag it). One preview before it goes live.
 2. Tapalpa, 8 to 14 Nov: each night run tools/media_webcopies.py 1FklBNyCYQ1Zx3QnOy2tWuVGQmzkXnROJ
    /home/user/media-2026/srs-tapalpa --day-re '<the owner's naming>' (check the file names on the first night), push
-   media-2026, regenerate the page, build, gates, push, give the owner the link. A scheduled task can do it: see below.
+   media-2026, regenerate the page, build, gates, push, give the owner the link. Chat 19 set this up as a scheduled
+   task, "Tapalpa photos, nightly" (trig_01EmNr55b35qPdgPMGFC1JqA): 22:41 Mexico City time, 8 to 14 Nov, firing into
+   chat 20 (session_018Da7i8ixhhEZonsV8t1MmP). It needs no Drive connector (the folder is read by link). If chat 20
+   hands over before 14 Nov, delete it and create it again bound to the next chat.
 3. Still open for the owner: the organiser quote (or the viewer comment above); a larger PWCA logo; which device looked
    patchy (ask them to look again now); the Drive folders are link-shared (anyone with a link gets the originals free).
    Chat 18's list (photo credits, the two orange buttons at 1440, the Worker's media branch, MailerLite M 46) is unchanged.
