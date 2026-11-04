@@ -1,0 +1,224 @@
+/* Comp gallery, designer D (Trim): "Proof Sheet". One still sheet for the whole comp, every frame uncropped at its own
+   ratio, in shot order by day. Nothing on the page moves but the photo you touch. The shop lives in the viewer, under
+   the photo, never on the sheet. Motion is transform and opacity only. Everything else is the site's (v2.css, styles.css). */
+
+html.gd-lock{overflow:hidden}
+.gd-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.gd-eg{display:inline-flex;align-items:center;height:1.3rem;padding:0 .5rem;border:1px solid rgba(246,244,244,.34);border-radius:2px;
+  font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light);white-space:nowrap;vertical-align:middle}
+
+/* ---------- the opening: the comp's lead frame, the name on its foot ---------- */
+.gd-hero{position:relative;isolation:isolate;display:flex;align-items:flex-end;min-height:clamp(30rem,66vh,44rem);
+  padding:0 var(--gutter) clamp(2rem,4vw,3.25rem);overflow:hidden}
+.gd-hero-media{position:absolute;inset:0;z-index:-2;background:#3c63a6}
+.gd-hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 42%;display:block}
+.gd-hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:
+  linear-gradient(90deg,rgba(20,21,25,.62) 0%,rgba(20,21,25,.2) 52%,rgba(20,21,25,0) 78%),
+  linear-gradient(180deg,rgba(20,21,25,.3) 0%,rgba(20,21,25,0) 24%,rgba(20,21,25,.5) 70%,var(--bg) 100%)}
+.gd-hero-copy{width:100%;max-width:var(--measure);margin:0 auto}
+.gd-back{display:inline-flex;gap:.4rem;margin:0 0 var(--sp-3);font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,244,244,.78)}
+.gd-back:hover{color:var(--white)}
+.gd-kick{display:block;margin:0 0 .7rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange)}
+.gd-hero h1{font-family:var(--font-display);font-weight:700;font-size:var(--fs-display);line-height:1.02;letter-spacing:-.02em;color:var(--white);margin:0}
+.gd-intro{max-width:34rem;margin:.9rem 0 0;font-size:var(--fs-lead);line-height:1.6;color:rgba(246,244,244,.92);text-wrap:pretty}
+.gd-intro-s{display:none}
+.gd-facts{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1.5rem;margin:1.2rem 0 0;padding:0;list-style:none;
+  font-size:var(--fs-small);color:var(--gray-light);font-variant-numeric:tabular-nums}
+.gd-facts b{color:var(--white);font-weight:600}
+.gd-latest{margin-top:var(--sp-4)}
+.gd-latest a{font-size:var(--fs-body-s)}
+
+/* ---------- the day strip: sticky, one row, the live day carries the tally ---------- */
+.gd-days{position:sticky;top:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--line);transition:transform .28s ease-in}
+/* when the site's header comes back on a scroll up, the strip steps down under it (transform only, the header's own timing) */
+html.v2-nav-up .gd-days{transform:translate3d(0,var(--v2-nav-h,4.25rem),0);transition:transform .38s var(--ease)}
+.gd-days-in{max-width:var(--measure);margin:0 auto;display:flex;align-items:center;gap:var(--sp-4)}
+.gd-days-t{flex:none;font-family:var(--font-display);font-weight:600;font-size:var(--fs-body-s);color:var(--white);white-space:nowrap}
+.gd-days-row{flex:1;min-width:0;display:flex;gap:.15rem;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain}
+.gd-days-row::-webkit-scrollbar{display:none}
+.gd-days-n{flex:none;font-size:var(--fs-micro);color:var(--gray);font-variant-numeric:tabular-nums;white-space:nowrap}
+.gd-day{flex:none;position:relative;display:flex;flex-direction:column;justify-content:center;gap:.1rem;min-height:3.6rem;padding:.5rem .8rem;color:var(--gray-light)}
+.gd-day b{display:flex;align-items:center;gap:.45rem;font-family:var(--font-display);font-weight:600;font-size:.88rem;line-height:1.2;color:var(--white);white-space:nowrap}
+.gd-day span{font-size:var(--fs-micro);line-height:1.2;color:var(--gray-light);font-variant-numeric:tabular-nums;white-space:nowrap}
+.gd-day.is-soon b{color:var(--gray-light);font-weight:500}
+.gd-day.is-soon span{color:var(--gray)}
+.gd-day::after{content:"";position:absolute;left:.8rem;right:.8rem;bottom:-1px;height:2px;background:var(--white);opacity:0;transition:opacity .2s var(--ease)}
+.gd-day[aria-current]::after{opacity:1}
+.gd-day:hover b{color:var(--white)}
+.gd-day:focus-visible{outline:1px solid var(--white);outline-offset:-3px}
+.gd-tally{flex:none;width:.5rem;height:.5rem;border-radius:50%;background:var(--orange);box-shadow:0 0 0 3px rgba(255,117,23,.22)}
+
+/* ---------- a day: its head (sticky on a wide screen) and its sheet ---------- */
+.gd-sec{padding:clamp(1.6rem,4.2vw,3.75rem) var(--gutter) 0;scroll-margin-top:3.6rem}
+.gd-sec-in{max-width:var(--measure);margin:0 auto;display:flex;flex-direction:column}
+.gd-side{display:contents}
+.gd-head{order:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 1rem}
+.gd-head h2{font-family:var(--font-display);font-weight:700;font-size:var(--fs-h2);line-height:1.1;letter-spacing:-.01em;color:var(--white);margin:0}
+.gd-meta{margin:0;display:flex;align-items:center;gap:.5rem;font-size:var(--fs-small);color:var(--gray-light);font-variant-numeric:tabular-nums}
+.gd-meta i{width:3px;height:3px;border-radius:50%;background:var(--gray)}
+.gd-meta .gd-tally{margin-right:.15rem}
+.gd-meta.is-live{color:var(--white)}
+
+/* wing colours: they light, they never hide */
+.gd-wc{order:1;flex-basis:100%;display:flex;align-items:center;gap:.4rem;margin:var(--sp-2) 0 0;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.gd-wc::-webkit-scrollbar{display:none}
+.gd-wc[hidden]{display:none}
+.gd-wc-k{flex:none;margin-right:.3rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+.gd-wc button{flex:none;display:inline-flex;align-items:center;gap:.35rem;min-height:2.1rem;padding:0 .8rem;border:1px solid var(--edge);border-radius:999px;
+  background:none;font:inherit;font-size:var(--fs-micro);font-weight:500;color:var(--gray-light);cursor:pointer;transition:color .2s var(--ease),border-color .2s var(--ease)}
+.gd-wc button small{font-size:inherit;color:var(--gray);font-variant-numeric:tabular-nums}
+.gd-wc button:hover{color:var(--white);border-color:var(--edge-hi)}
+.gd-wc button[aria-pressed="true"]{color:var(--white);border-color:var(--white)}
+.gd-wc button:focus-visible{outline:1px solid var(--white);outline-offset:2px}
+
+/* the sheet: drawn by CSS alone, so it is the same before, after and without the script. Each frame grows in
+   proportion to its own ratio, so a row shares one height and nothing is ever cropped. */
+.gd-sheet{order:2;margin-top:var(--sp-3);display:flex;flex-wrap:wrap;gap:4px;--rh:110px}
+.gd-sheet::after{content:"";flex:2 1 0}
+.gd-ph{margin:0;flex:var(--r) 1 calc(var(--r) * var(--rh));min-width:0;position:relative;background:var(--c);scroll-margin:5rem 0 2rem}
+.gd-ph a{display:block;cursor:zoom-in;-webkit-tap-highlight-color:transparent}
+.gd-ph img{display:block;width:100%;height:auto;aspect-ratio:var(--r);transition:opacity .3s var(--ease)}
+.gd-ph a:focus-visible{outline:2px solid var(--white);outline-offset:2px}
+.gd-ph.is-out img{opacity:0;transition:none}
+.gd-ph.is-snap img{transition:none}
+.gd-sheet.is-lit .gd-ph:not(.is-on) img{opacity:.16}
+.gd-ph figcaption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.gd-nojs{order:3;margin:var(--sp-2) 0 0;font-size:var(--fs-micro);color:var(--gray)}
+
+/* the day's video: one row; it plays in place */
+.gd-vids{order:3;margin-top:var(--sp-3)}
+.gd-vid{display:flex;align-items:center;gap:.85rem;width:100%;padding:.75rem 0;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:none;font:inherit;text-align:left;color:var(--white);cursor:pointer}
+.gd-vid i{flex:none;display:grid;place-items:center;width:2.25rem;height:2.25rem;border:1px solid var(--edge-hi);border-radius:50%;transition:border-color .2s var(--ease)}
+.gd-vid i svg{width:.7rem;height:.7rem;margin-left:2px;fill:currentColor}
+.gd-vid b{display:block;font-weight:600;font-size:var(--fs-body-s);line-height:1.3}
+.gd-vid small{display:block;font-size:var(--fs-micro);color:var(--gray-light);font-variant-numeric:tabular-nums}
+.gd-vid:hover i{border-color:var(--white)}
+.gd-vid:focus-visible{outline:1px solid var(--white);outline-offset:2px}
+.gd-vid-f{position:relative;aspect-ratio:16/9;margin-top:var(--sp-2);background:#000}
+.gd-vid-f iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* a day with no photos yet: one empty frame, intended */
+.gd-wait{order:2;margin-top:var(--sp-3);aspect-ratio:3/2;width:min(100%,30rem);border:1px solid var(--edge);display:flex;flex-direction:column;justify-content:flex-end;gap:.4rem;padding:var(--sp-3)}
+.gd-wait b{font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);line-height:1.25;color:var(--white)}
+.gd-wait span{font-size:var(--fs-small);line-height:1.55;color:var(--gray-light);max-width:24rem}
+
+/* the days still to fly */
+.gd-soon{padding:clamp(1.6rem,4.2vw,3.75rem) var(--gutter) 0}
+.gd-soon-in{max-width:var(--measure);margin:0 auto}
+.gd-soon h2{font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);color:var(--gray-light);margin:0 0 var(--sp-2)}
+.gd-soon ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.gd-soon li{display:grid;grid-template-columns:5.5rem 4.5rem minmax(0,1fr);align-items:baseline;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--line);
+  font-size:var(--fs-small);color:var(--gray);scroll-margin-top:4.5rem;font-variant-numeric:tabular-nums}
+.gd-soon li b{font-family:var(--font-display);font-weight:600;color:var(--gray-light)}
+
+/* the sample's own note, and the organisers' band */
+.gd-note{padding:var(--sp-5) var(--gutter) 0}
+.gd-note p{max-width:var(--measure);margin:0 auto;font-size:var(--fs-micro);line-height:1.7;color:var(--gray)}
+.gd-note .gd-eg{margin-right:.5rem}
+.gd-org{padding:var(--sp-section) var(--gutter) 0}
+.gd-org-in{max-width:var(--measure);margin:0 auto;padding-top:var(--sp-4);border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--sp-3)}
+.gd-org h2{font-family:var(--font-display);font-weight:700;font-size:var(--fs-h3);line-height:1.2;color:var(--white);margin:.35rem 0 0}
+.gd-org-b{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-3)}
+.gd-org-b .btn-solid{margin:0}
+
+/* ---------- the viewer: the frame lifts out of the sheet, the shop sits under it ---------- */
+.gd-v{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:var(--white);overflow:hidden;overscroll-behavior:contain}
+.gd-v::backdrop{background:transparent}
+.gd-v:focus{outline:none}
+.gd-v-bg{position:absolute;inset:0;background:#0d0e11;opacity:0;transition:opacity .28s var(--ease)}
+.gd-v.is-in .gd-v-bg{opacity:1}
+.gd-v-stage{position:absolute;left:0;right:0;top:3.75rem;bottom:var(--gd-bar,10rem);touch-action:none}
+.gd-v-img{position:absolute;left:0;top:0;max-width:none;transform-origin:0 0;will-change:transform;user-select:none;-webkit-user-select:none;-webkit-user-drag:none;cursor:zoom-in;background:var(--c,#202127)}
+.gd-v.is-zoom .gd-v-img{cursor:grab}
+.gd-v.is-drag .gd-v-img{cursor:grabbing}
+.gd-v-x{position:absolute;top:.6rem;right:max(.6rem,calc(var(--gutter) - .75rem));z-index:3;display:grid;place-items:center;width:2.75rem;height:2.75rem;border:1px solid rgba(246,244,244,.22);border-radius:50%;
+  background:rgba(20,21,25,.5);color:var(--white);cursor:pointer;opacity:0;transition:opacity .2s var(--ease),border-color .2s var(--ease)}
+.gd-v-x svg,.gd-v-n svg{width:1rem;height:1rem;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.gd-v-x:hover{border-color:var(--white)}
+.gd-v-top{position:absolute;top:0;left:var(--gutter);right:4.5rem;height:3.75rem;display:flex;align-items:center;z-index:2;opacity:0;transition:opacity .2s var(--ease);
+  font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-light);pointer-events:none}
+.gd-v-n{position:absolute;top:50%;z-index:3;display:none;place-items:center;width:3rem;height:3rem;margin-top:-1.5rem;border:1px solid rgba(246,244,244,.18);border-radius:50%;
+  background:rgba(20,21,25,.5);color:var(--white);cursor:pointer;opacity:0;transition:opacity .2s var(--ease),border-color .2s var(--ease)}
+.gd-v-n:hover{border-color:var(--white)}
+.gd-v-n[hidden]{display:none !important}
+.gd-v-p{left:1.25rem}.gd-v-nx{right:1.25rem}
+.gd-v-bar{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:.85rem var(--gutter) calc(1rem + env(safe-area-inset-bottom));display:grid;grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;gap:.7rem 1rem;opacity:0;transition:opacity .2s var(--ease)}
+.gd-v.is-landed .gd-v-bar,.gd-v.is-landed .gd-v-x,.gd-v.is-landed .gd-v-top,.gd-v.is-landed .gd-v-n{opacity:1}
+.gd-v-id{min-width:0;display:flex;align-items:baseline;justify-content:space-between;gap:1rem;grid-column:1/-1}
+.gd-v-name{font-weight:600;font-size:var(--fs-body-s);letter-spacing:.02em;color:var(--white);font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gd-v-pos{flex:none;font-size:var(--fs-micro);color:var(--gray-light);font-variant-numeric:tabular-nums}
+.gd-v-act{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.gd-v-act .btn-solid{margin:0;white-space:nowrap;cursor:pointer;border:0;font-family:inherit}
+.gd-v-act .btn-lines{white-space:nowrap;cursor:pointer;background:none;border-left:0;border-right:0;font-family:inherit;min-width:6.5rem;text-align:center}
+.gd-v-terms{grid-column:1/-1;margin:0;font-size:var(--fs-micro);line-height:1.5;color:var(--gray)}
+.gd-v-mark{color:var(--gray-light)}
+
+/* buying: one panel rises from the foot of the viewer, over the bar */
+.gd-v-buy{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:var(--sp-3) var(--gutter) calc(var(--sp-3) + env(safe-area-inset-bottom));background:#1c1d22;border-top:1px solid var(--edge);
+  transform:translateY(100%);opacity:0;visibility:hidden;transition:transform .3s var(--ease),opacity .2s var(--ease),visibility 0s linear .3s}
+.gd-v.is-buy .gd-v-act{opacity:0;visibility:hidden}
+.gd-v.is-buy .gd-v-buy{transform:none;opacity:1;visibility:visible;transition:transform .3s var(--ease),opacity .2s var(--ease)}
+.gd-v-buy-k{margin:0;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light)}
+.gd-v-buy-name{display:flex;align-items:center;gap:.8rem;margin:.45rem 0 0}
+.gd-v-buy-name b{font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.gd-copy{padding:.35rem 0;border:0;border-bottom:1px solid var(--edge-hi);background:none;font:inherit;font-size:var(--fs-micro);color:var(--gray-light);cursor:pointer}
+.gd-copy:hover{color:var(--white)}
+.gd-v-buy p.gd-v-buy-t{margin:.7rem 0 0;max-width:30rem;font-size:var(--fs-small);line-height:1.6;color:var(--gray-light)}
+.gd-v-buy-a{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem;margin-top:var(--sp-3)}
+.gd-v-buy-a .btn-solid{margin:0}
+.gd-v-buy-a .v2-tbd{white-space:normal}
+.gd-v-back{margin-top:var(--sp-2);padding:.35rem 0;border:0;background:none;font:inherit;font-size:var(--fs-small);color:var(--gray-light);cursor:pointer}
+.gd-v-back:hover{color:var(--white)}
+.gd-v-said{margin:.6rem 0 0;font-size:var(--fs-micro);color:var(--gray-light);min-height:1.2em}
+
+/* ---------- phone: its own layout ---------- */
+@media (max-width:699px){
+  .gd-hero{min-height:clamp(16.5rem,44svh,25rem);padding-bottom:1.25rem}
+  .gd-hero-media img{object-position:50% 30%}
+  .gd-back,.gd-intro,.gd-latest{display:none}
+  .gd-intro-s{display:block;margin:.55rem 0 0;font-size:var(--fs-body-s);color:rgba(246,244,244,.92)}
+  .gd-facts{margin-top:.6rem;gap:.2rem 1rem;font-size:var(--fs-micro)}
+  .gd-facts .gd-f-x{display:none}
+  .gd-days-in{padding:0}
+  .gd-days-t,.gd-days-n{display:none}
+  .gd-days-row{padding:0 calc(var(--gutter) - .8rem)}
+  .gd-day{min-height:3.4rem;padding:.45rem .8rem}
+  .gd-sec{padding-top:1.35rem}
+  .gd-wc{margin-top:.75rem;margin-right:calc(-1 * var(--gutter));padding-right:var(--gutter)}
+  .gd-sheet{margin-top:.85rem}
+  .gd-soon li{grid-template-columns:4.75rem 4rem minmax(0,1fr);gap:.75rem}
+  .gd-org-b{width:100%;justify-content:space-between}
+}
+
+/* ---------- a wide screen: the head stays beside its sheet ---------- */
+@media (min-width:700px){
+  .gd-sheet{gap:6px;--rh:clamp(170px,17vw,250px)}
+  .gd-sheet::after{flex:999 1 0}
+  .gd-days-row{justify-content:flex-start}
+  .gd-v-stage{top:4.25rem;bottom:var(--gd-bar,6rem)}
+  .gd-v-top{height:4.25rem}
+  .gd-v-bar{grid-template-columns:auto minmax(0,1fr) auto;padding:1rem var(--gutter) 1.4rem;gap:1.5rem}
+  .gd-v-id{grid-column:auto;flex-direction:column;align-items:flex-start;gap:.1rem;justify-content:flex-start}
+  .gd-v-terms{grid-column:auto;max-width:30rem}
+  .gd-v-act{grid-column:auto;gap:1.6rem}
+  .gd-v-n{display:grid}
+  .gd-v-buy{left:auto;right:var(--gutter);bottom:1rem;width:min(28rem,calc(100% - 2 * var(--gutter)));border:1px solid var(--edge);border-radius:3px;transform:translateY(1.5rem)}
+}
+@media (min-width:1024px){
+  .gd-sec-in{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:0 var(--sp-5);align-items:start}
+  .gd-side{display:block;position:sticky;top:5.5rem;grid-column:1;grid-row:1 / span 2;transition:transform .28s ease-in}
+  html.v2-nav-up .gd-side{transform:translate3d(0,var(--v2-nav-h,4.25rem),0);transition:transform .38s var(--ease)}
+  .gd-head{flex-direction:column;gap:.5rem}
+  .gd-wc{flex-wrap:wrap;margin-top:var(--sp-3);overflow:visible}
+  .gd-wc-k{flex-basis:100%;margin:0 0 .2rem}
+  .gd-sheet,.gd-wait{grid-column:2;grid-row:1;margin-top:0}
+  .gd-nojs{grid-column:2}
+  .gd-sec{padding-top:clamp(3rem,5vw,4.5rem)}
+}
+
+/* reduced motion: every move is a cut */
+@media (prefers-reduced-motion:reduce){
+  .gd-v-bg,.gd-v-bar,.gd-v-x,.gd-v-top,.gd-v-n,.gd-v-buy,.gd-ph img,.gd-day::after,.gd-days,.gd-side{transition:none !important}
+}
