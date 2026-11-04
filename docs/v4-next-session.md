@@ -19,6 +19,15 @@ give the owner the prompt to paste.
   with PayPal's order check). Not built; the owner has to set up PayPal (business account, API credentials) and say
   yes to the storage. Until then the button stays "[to supply]".
 - Design: the owner had not seen the screenshots; chat 20 sent them in the chat (design-d/e/f.jpg) and is waiting.
+- Done while waiting: tools/v4_comp_gallery.py (comp facts, photos.json by task, licence, PayPal hook buy_link(),
+  shell, checks; render() is the chosen design's markup, still to write; v4_gallery.py is the drawings page, not this).
+  media-2026: README says the web copies are CC BY-NC 4.0; srs-tapalpa/photos.json is [] until Task 1.
+- BLOCKER for the nightly run: the Tapalpa folder 1FklBNyCYQ1Zx3QnOy2tWuVGQmzkXnROJ answers 401 by link (Piedrahita's
+  answers 200) and the Google Drive connector cannot see it either (nor "All Tasks"). Asked the owner (4 Nov) to share
+  it, preferably with the connected Google account rather than by link.
+- To do in the build: "Save, free" should hand over a JPEG made in the browser from the 2400 WebP (canvas toBlob
+  image/jpeg), since Instagram and WhatsApp on iPhone may refuse WebP; no extra storage. Then NEW_PAGES gets
+  media-srs-tapalpa-2026.html (tools/v2_site.py), and media.html links the galleries.
 
 **The owner's answers (4 Nov, chat 19).**
 - Gallery: designers D, E, F first ("samples needed, but first discuss with me"), then "let the designers brainstorm
