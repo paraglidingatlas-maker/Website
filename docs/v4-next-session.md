@@ -4,6 +4,54 @@ Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
 the owner's current queue and what the last session learnt doing it.
 
+## Chat 19 starts here (4 Nov 2026): the richer Piedrahita event page, then the Media page's [to supply] facts
+**Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
+has grown long, hand over without asking the owner: write the handover at the top of this file, update the
+owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
+chat yourself with the session tools (create_session), and give the owner its link.
+
+**What chat 18 did (owner's yes on preview 3, 4 Nov).**
+- Photos: the owner created the public repo `paraglidingatlas-maker/media-2026` and switched on Pages (main, root).
+  Chat 18 pushed the 67 web copies (800/1600/2400 WebP and the posters, 14 MB) to `srs-piedrahita/`, plus README and
+  .nojekyll. All served: https://paraglidingatlas-maker.github.io/media-2026/srs-piedrahita/ (every URL the pages use
+  checked 200). To work on it: add_repo media-2026 (push), clone, commit to main. The owner must approve add_repo.
+- Site: `prototypes/v4/media.html` and `media-srs-piedrahita-2026.html` are committed, built with the default MEDIA
+  base (`python3 tools/v4_media.py`, no --media). They are owned pages: `tools/v4_build.py` owned() and OWNED_GIT
+  take `media*.html`, so the chain puts them back; run tools/v4_media.py by hand to change them. They go live as new
+  pages: `tools/v2_site.py` NEW_PAGES. "Media" is in the full-screen menu (About's sub-links, `src/v4-menu.js`, then
+  `tools/v4_min.py`) and in every footer's Atlas column after Partner With Me (`tools/v4_footer.py`); v4_media.py
+  adds its own footer line only if the shell lacks it.
+- Fixes found by the gates: `tools/audit.py` counted `data-vid="..."` as an id (regex now `(?<![\w-])id=`);
+  `v4-media.js`'s pull-back stops when the page lacks the generator's markup (designer E's sample threw errors).
+- The design sample `samples/media-e/index.html` now carries the ?v= hashes the build writes (it failed the chain's
+  owned-page check before).
+- Container lessons: the fresh clone is SHALLOW, and the live build dates every page from git, so first
+  `git fetch --depth=100000 origin main claude/v2-prototype`. Never run two builds or gate runs at once (they write
+  the same files). The working tree after a build holds rewritten live pages: stash them (`git stash push`), never
+  commit them; deleting or dropping is refused by the permission check, a stash is fine.
+- Known gate result, not the media work: live-untouched FAILs on about.html and ~178 other live pages because commit
+  62360aa (address M 68, 3 Nov) edited them without moving their "dateModified" (still 2026-10-02; any build writes
+  2026-11-03). The deploy builds fresh, so the live site is right. Fix in a site-wide pass: rebuild and commit those
+  dates on main with the owner's ok.
+
+**Chat 19's job, in order.**
+1. Check https://paraglidingatlas.com/media.html and /media-srs-piedrahita-2026.html at 390x683, 390x844, 1440x900
+   (photos load, menu and footer Media lines, the dates form lands on enquire.html in media mode).
+2. Piedrahita event page, for pilots (owner's job 3): 40 to 60 photos by task, each task's story from its video
+   description (Day 1 cuGs7Lk6Dt4, Task 1 uCEfssE40u8, Task 2 NXUEyPQ3V4E; read the descriptions with vidIQ
+   video tools or YouTube; never invent). Drive "All Tasks" 1GwKlKvNkYJ5P5WF0QBtkOByG8du8lrjC holds 200+ JPEGs
+   (page 1: 20 T1, 34 T2, 146 T3, ~15 MB each, 3 GB; there is a second page). Mind the disk allowance: download a
+   few at a time, make web copies (tools/v4_media_photos.py), delete each original. Ask the owner once: their own
+   pick, or chat 19 picks. Push the web copies to media-2026 `srs-piedrahita/`, extend PH in tools/v4_media.py.
+   One preview (artifact) before it goes live.
+3. Tapalpa (8 to 14 Nov): the owner is on site; a daily routine (photos into a Drive folder, a scheduled chat makes
+   web copies, adds the day, pushes) waits on the owner saying how many photos a day and which folder.
+**Still open for the owner (asked 4 Nov, not yet answered):** subscriber and follower counts with the date; where
+sponsors appear; the quote; the SRS and PWCA logo files; Tapalpa photos per day and the folder; which site photos
+are theirs (photo credits, not yet done); the two orange buttons at 1440; the Worker's media branch (ENDPOINT stays
+empty for media until then). Chat 17's leftovers (MailerLite draft and form address M 46, six emails without "M",
+.claude/settings.json) are unchanged.
+
 ## Chat 18 starts here (4 Nov 2026): the owner's yes on the Media page, then build it into the live site
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
 has grown long, hand over without asking the owner: write the handover at the top of this file, update the

@@ -535,7 +535,7 @@ def check_structure():
             if o != c:
                 unbal.append("%s <%s> %d open %d close" % (p, tag, o, c))
                 break
-        ids = Counter(re.findall(r'id="([^"]+)"', h))
+        ids = Counter(re.findall(r'(?<![\w-])id="([^"]+)"', h))     # not data-vid="..." (the Media page's video ids)
         d = {k: v for k, v in ids.items() if v > 1}
         if d:
             dupid.append((p, d))

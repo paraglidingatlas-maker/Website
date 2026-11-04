@@ -245,12 +245,14 @@
         slotLi = four.querySelector(".e-pl.is-cam"), slot = slotLi.querySelector(".e-poster"),
         others = items.filter(function (li) { return li !== slotLi; }),
         fades = [four.querySelector(".e-four-head"), slotLi.querySelector(".e-when"), slotLi.querySelector(".e-in"), four.querySelector(".e-four-note")];
+    // the move needs the generator's markup (tools/v4_media.py); designer E's sample (samples/media-e/) has an older one
+    if (!lab || !foot || !tal || !slot.querySelector(".e-p-tally")) return;
     var A = 1600 / 2400;              // the shot's own shape: SRS_5_T2_133-2 is portrait
     var on = false, G = {}, P = -1, raf = 0, lastW = 0, lastH = 0;
 
     function can() { return !reduced() && w.CSS && CSS.supports("position", "sticky") && CSS.supports("clip-path", "inset(0px 0px 0px 0px round 4px)"); }
     function clear() {
-      [img, cam, shade, hin, lab, foot, tal].forEach(function (el) { el.removeAttribute("style"); });
+      [img, cam, shade, hin, lab, foot, tal].forEach(function (el) { if (el) el.removeAttribute("style"); });
       items.forEach(function (li) { li.style.transform = li.style.opacity = li.style.webkitMaskImage = li.style.maskImage = li.style.clipPath = ""; li.style.removeProperty("--e-co"); });
       fades.forEach(function (f) { if (f) { f.style.opacity = f.style.visibility = f.style.pointerEvents = ""; } });
       rail.style.overflowX = "";
