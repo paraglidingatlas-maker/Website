@@ -249,12 +249,33 @@
     if (!lab || !foot || !tal || !slot.querySelector(".e-p-tally")) return;
     var A = 1600 / 2400;              // the shot's own shape: SRS_5_T2_133-2 is portrait
     var on = false, G = {}, P = -1, raf = 0, lastW = 0, lastH = 0;
+    // a frame writes only what changed: an unchanged value costs nothing, a written one restyles (chat 19, "patchy")
+    function put(el, k, v) {
+      var c = el._e || (el._e = {}); if (c[k] === v) return; c[k] = v;
+      if (k.charAt(0) === "-") { if (v === "") el.style.removeProperty(k); else el.style.setProperty(k, v); } else el.style[k] = v;
+    }
+    // the phone's feathers (chat 19): the shot's foot and the board below the frame used to fade with masks rewritten every
+    // frame, which repainted the photo and every poster with its big shadow. Over the opaque ground a mask is the same as
+    // a veil of the ground's colour laid on top, so each feather is now a veil (a gradient and a solid below it) that
+    // only moves: the compositor does it, nothing repaints. The board's solid also takes the taps the old clip took (P1)
+    function veil(cls) {
+      var v = d.createElement("div"); v.className = "e-veil " + cls; v.setAttribute("aria-hidden", "true");
+      v.innerHTML = '<i class="e-veil-g"></i><i class="e-veil-s"></i>'; return v;
+    }
+    var camV = veil("e-veil-cam"), boardV = veil("e-veil-board");
+    img.parentNode.insertBefore(camV, img.nextSibling); four.appendChild(boardV);
+    function veilAt(v, top, a, b) {     // a to b: the fade, in the stage's coordinates; the veil's own box starts at top
+      if (!b) { put(v, "visibility", "hidden"); return; }
+      put(v, "visibility", "");
+      put(v.firstChild, "transform", "translate3d(0," + (a - top).toFixed(2) + "px,0) scaleY(" + (Math.max(.01, b - a) / 100).toFixed(4) + ")");
+      put(v.lastChild, "transform", "translate3d(0," + (b - top - 1).toFixed(2) + "px,0)");
+    }
 
     function can() { return !reduced() && w.CSS && CSS.supports("position", "sticky") && CSS.supports("clip-path", "inset(0px 0px 0px 0px round 4px)"); }
     function clear() {
-      [img, cam, shade, hin, lab, foot, tal].forEach(function (el) { if (el) el.removeAttribute("style"); });
-      items.forEach(function (li) { li.style.transform = li.style.opacity = li.style.webkitMaskImage = li.style.maskImage = li.style.clipPath = ""; li.style.removeProperty("--e-co"); });
-      fades.forEach(function (f) { if (f) { f.style.opacity = f.style.visibility = f.style.pointerEvents = ""; } });
+      [img, cam, shade, hin, lab, foot, tal, camV, camV.firstChild, camV.lastChild, boardV, boardV.firstChild, boardV.lastChild].forEach(function (el) { if (el) { el.removeAttribute("style"); el._e = null; } });
+      items.forEach(function (li) { li.style.transform = li.style.opacity = ""; li.style.removeProperty("--e-co"); li._e = null; });
+      fades.forEach(function (f) { if (f) { f.style.opacity = f.style.visibility = f.style.pointerEvents = ""; f._e = null; } });
       rail.style.overflowX = "";
     }
     function rect(x, y, wd, ht) { return { x: x, y: y, w: wd, h: ht }; }
@@ -270,19 +291,8 @@
     }
     var V = .12;                      // the label is on: from here the other three may show
     // on a phone the frame ends where the lifted photo ends (critic-3-1), so the board's pieces below that line are kept
-    // unseen by a mask that fades each out along the photo's own feather (a to b, in the stage's coordinates); a piece
-    // the shot has come down over, or the finished board (a = b = 0), has none
-    // a mask is only paint: a tap would still reach the unseen part, so the same line also clips it (no ghost taps, P1)
-    function feather(a, b) {
-      G.rows.forEach(function (o) {
-        var t = o.y + (o.gy || 0), m = "", c = "";
-        if (b && b - t < o.h) {
-          m = "linear-gradient(180deg,#000 " + (a - t).toFixed(1) + "px,transparent " + (b - t).toFixed(1) + "px)";
-          c = "inset(0px 0px " + Math.max(0, o.h - (b - t)).toFixed(1) + "px 0px)";
-        }
-        if (o.m !== m) { o.li.style.webkitMaskImage = o.li.style.maskImage = m; o.li.style.clipPath = c; o.m = m; }
-      });
-    }
+    // unseen: the board's veil fades them out along the photo's own feather (a to b, in the stage's coordinates); once
+    // the shot has come down over them, or on the finished board (a = b = 0), the veil is gone
 
     function measure() {
       clear();
@@ -351,8 +361,10 @@
         o.fin = gapTo(o, G.sx, G.sy, G.sw, G.sh);
         return o;
       });
-      var sq = slotLi.getBoundingClientRect();
-      G.rows = G.others.concat([{ li: slotLi, y: sq.top - sr.top, h: sq.height }]);
+      var rq = rail.getBoundingClientRect();
+      G.vt = rq.top - sr.top;
+      boardV.style.left = (rq.left - sr.left).toFixed(1) + "px"; boardV.style.top = G.vt.toFixed(1) + "px";
+      boardV.style.width = rq.width.toFixed(1) + "px"; boardV.style.height = rq.height.toFixed(1) + "px";
       G.fades = [];
       fades.forEach(function (f) {
         if (!f) return; var q = f.getBoundingClientRect(); if (!q.width || !q.height) return;
@@ -381,7 +393,6 @@
       var ly = y + fh, cb = y + fh, fa = 0, fb = 0;   // the label's foot, the frame's visible foot, the photo's feather
       if (G.lift) {                     // the feather holds while the lifted shot is short of the frame's foot, then recedes
         var k = G.ec < 1 ? band(e, G.ec, 1) : 1, m0 = lerp(64, 112, k), m1 = lerp(96, 144, k), ph = iw / A;
-        img.style.setProperty("--e-m0", m0.toFixed(2) + "%"); img.style.setProperty("--e-m1", m1.toFixed(2) + "%");
         // until then the photo fades out above the frame's foot: the label rides where the photo ends, on the shot, never
         // on the bare ground below it (critic-2-1)
         ly = Math.min(ly, py + ph * m1 / 100);
@@ -392,34 +403,33 @@
         if (g >= 1) cb = ly;
         fa = done ? 0 : py + ph * m0 / 100; fb = done ? 0 : py + ph * m1 / 100;
       }
-      cam.style.clipPath = "inset(" + y.toFixed(2) + "px " + (G.W - x - fw).toFixed(2) + "px " + (G.H - cb).toFixed(2) + "px " + x.toFixed(2) + "px round " + rad.toFixed(2) + "px)";
-      shade.style.opacity = (G.lift ? 1 - g : 1 - band(p, .05, .5)).toFixed(3);
-      hin.style.opacity = (1 - g).toFixed(3);
-      hin.style.transform = g ? "translate3d(0," + (-20 * g).toFixed(1) + "px,0)" : "";
+      put(cam, "clipPath", "inset(" + y.toFixed(2) + "px " + (G.W - x - fw).toFixed(2) + "px " + (G.H - cb).toFixed(2) + "px " + x.toFixed(2) + "px round " + rad.toFixed(2) + "px)");
+      put(shade, "opacity", (G.lift ? 1 - g : 1 - band(p, .05, .5)).toFixed(3));
+      put(hin, "opacity", (1 - g).toFixed(3));
+      put(hin, "transform", g ? "translate3d(0," + (-20 * g).toFixed(1) + "px,0)" : "");
       // the Daily Highlights label and its tally ride on the shot, coming in as the words go, so no frame is left with
       // neither (P2, qa-2-3)
       var l = out3(band(p, .03, .12));
-      lab.style.opacity = foot.style.opacity = tal.style.opacity = l.toFixed(3);
-      lab.style.transform = "translate3d(" + x.toFixed(2) + "px," + (ly - G.sh).toFixed(2) + "px,0)";
-      foot.style.transform = "translate3d(0," + (ly - G.sh).toFixed(2) + "px,0)";
-      tal.style.transform = "translate3d(" + (x + fw - G.tx).toFixed(2) + "px," + (y + G.ty).toFixed(2) + "px,0)";
+      var lo = l.toFixed(3); put(lab, "opacity", lo); put(foot, "opacity", lo); put(tal, "opacity", lo);
+      put(lab, "transform", "translate3d(" + x.toFixed(2) + "px," + (ly - G.sh).toFixed(2) + "px,0)");
+      put(foot, "transform", "translate3d(0," + (ly - G.sh).toFixed(2) + "px,0)");
+      put(tal, "transform", "translate3d(" + (x + fw - G.tx).toFixed(2) + "px," + (y + G.ty).toFixed(2) + "px,0)");
       // the other three: unseen until the label is on, then opaque, uncovered by the shot as it shrinks and sliding in
       // under it; their words only where the shot no longer covers them, together with the board's own words at the end
       G.others.forEach(function (o) {
         var t = out3(band(p, o.a, o.a + .4)), gx = (1 - t) * o.dx, gy = (1 - t) * o.dy;
-        o.li.style.opacity = p < o.v ? "0" : "";
-        o.li.style.transform = t < 1 ? "translate3d(" + gx.toFixed(1) + "px," + gy.toFixed(1) + "px,0)" : "";
+        put(o.li, "opacity", p < o.v ? "0" : "");
+        put(o.li, "transform", t < 1 ? "translate3d(" + gx.toFixed(1) + "px," + gy.toFixed(1) + "px,0)" : "");
         var co = done ? 1 : clamp(gapTo({ x: o.x + gx, y: o.y + gy, w: o.w, h: o.h }, x, y, fw, fh) / Math.max(1, Math.min(18, o.fin)), 0, 1) * band(p, .7, .86);
-        o.li.style.setProperty("--e-co", co.toFixed(3));
-        o.gy = gy;
+        put(o.li, "--e-co", co.toFixed(3));
       });
-      if (G.lift) feather(fa, fb);
+      if (G.lift) { veilAt(camV, 0, fa, fb); veilAt(boardV, G.vt, fa, fb); }
       // the heading, the shot's number and its package show only where the shot no longer covers them (P2)
       G.fades.forEach(function (f) {
         var op = done ? 1 : clamp(gapTo(f, x, y, fw, fh) / Math.max(1, Math.min(18, f.fin)), 0, 1) * (f.late ? band(p, .78, .9) : 1);
-        f.el.style.opacity = op < 1 ? op.toFixed(3) : "";
-        f.el.style.visibility = op <= 0 ? "hidden" : "";
-        f.el.style.pointerEvents = op < .5 ? "none" : "";
+        put(f.el, "opacity", op < 1 ? op.toFixed(3) : "");
+        put(f.el, "visibility", op <= 0 ? "hidden" : "");
+        put(f.el, "pointerEvents", op < .5 ? "none" : "");
       });
       stage.classList.toggle("is-pull", p > 0 && !done);
       stage.classList.toggle("is-gone", g > .5);
@@ -438,10 +448,14 @@
     function onScroll() { if (on && !raf) raf = requestAnimationFrame(tick); }
 
     // a stop between the two ends on a touch screen finishes the move the way it was going (P4)
-    var touching = 0, lastY = w.scrollY, dir = 0, idle = 0, settling = 0;
+    var touching = 0, lastY = w.scrollY, dir = 0, idle = 0, settling = 0, lastT = 0;
     function settle() {
       clearTimeout(idle); idle = 0;
       if (!on || !G.snap || touching || settling) return;
+      // a flick's momentum is still running (the page moved in the last 120 ms): wait for it, never pull against the
+      // finger's throw (chat 19: the page jumped back under the nav when the snap fired mid-glide)
+      var since = (w.performance ? performance.now() : Date.now()) - lastT;
+      if (since < 120) { idle = setTimeout(settle, 140 - since); return; }
       var p = target(); if (p <= 0 || p >= .9) return;
       // on to the four, or back to the whole opening. Down, a small push finishes the move; up, it takes a real pull
       // (more than a third of the move) to fly back in, so a nudge to re-read the heading keeps the four (qa-2-4)
@@ -450,7 +464,7 @@
       setTimeout(function () { settling = 0; }, 900);
     }
     w.addEventListener("scroll", function () {
-      var y = w.scrollY; if (y !== lastY) { dir = y > lastY ? 1 : -1; lastY = y; }
+      var y = w.scrollY; if (y !== lastY) { dir = y > lastY ? 1 : -1; lastY = y; lastT = w.performance ? performance.now() : Date.now(); }
       onScroll();
       if (on && G.snap) { clearTimeout(idle); idle = setTimeout(settle, "onscrollend" in w ? 400 : 160); }
     }, { passive: true });

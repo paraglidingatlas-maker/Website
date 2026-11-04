@@ -267,6 +267,19 @@ html.e-move .e-pl:not(.is-cam) :is(.e-when,.e-in,.e-poster>span,.e-p-tally){opac
    repainting them (chat 18: the move painted ten times what the rest of the page does, patchy on phones) */
 html.e-move .e-stage:not(.is-done) .e-pl{will-change:transform,opacity}
 html.e-move .e-stage:not(.is-done) .e-pl:not(.is-cam) :is(.e-when,.e-in,.e-poster>span,.e-p-tally){will-change:opacity}
+/* while the move runs a frame sets the words' opacity itself: no transition, which would restart on every frame and
+   trail behind the finger (chat 19, "patchy"); the scrim and the opening's words fade on their own layers */
+html.e-move .e-stage:not(.is-done) .e-pl :is(.e-poster>span,.e-in){transition:none}
+html.e-move .e-stage:not(.is-done) .e-shade{will-change:opacity}
+html.e-move .e-stage:not(.is-done) .e-hero-in{will-change:transform,opacity}
+/* the phone's feathers: veils of the ground's colour that only move (v4-media.js veil(); shown at 700px and below) */
+.e-veil{display:none}
+html.e-move .e-veil{position:absolute;left:0;top:0;width:100%;height:100%;overflow:hidden;pointer-events:none;contain:strict}
+html.e-move .e-veil i{position:absolute;left:0;top:0;width:100%;transform-origin:0 0;will-change:transform}
+html.e-move .e-veil-g{height:100px;background:linear-gradient(180deg,transparent,var(--bg))}
+html.e-move .e-veil-s{height:100%;background:var(--bg);pointer-events:auto}
+html.e-move .e-veil-board{z-index:3}
+html.e-move .e-stage.is-done .e-veil{display:none}
 html.e-move .e-pl.is-off:not(.is-cam) :is(.e-in,.e-poster>span){opacity:0}
 html.e-move .e-pl.is-off:not(.is-cam):focus-within :is(.e-in,.e-poster>span){opacity:var(--e-co,1)}
 html.e-move .e-four{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:center;
@@ -613,8 +626,9 @@ html body .e-nl .v2-nl-row input{min-height:44px;min-width:0}
   .e-hero-in{padding:1.4rem var(--edge-x) calc(var(--e-nav) + 1rem);gap:1.1rem}
   .e-cam-img{--e-lift:.3;height:auto;object-fit:cover;transform:translateY(calc(var(--e-lift) * -100%));
     -webkit-mask-image:linear-gradient(180deg,#000 64%,transparent 96%);mask-image:linear-gradient(180deg,#000 64%,transparent 96%)}
-  /* in the move the feather recedes as the shot comes to cover its poster (v4-media.js sets the two stops) */
-  html.e-move .e-cam-img{-webkit-mask-image:linear-gradient(180deg,#000 var(--e-m0,64%),transparent var(--e-m1,96%));mask-image:linear-gradient(180deg,#000 var(--e-m0,64%),transparent var(--e-m1,96%))}
+  /* in the move the feather is a veil laid over the shot that recedes as it comes to cover its poster (v4-media.js) */
+  html.e-move .e-cam-img{-webkit-mask-image:none;mask-image:none}
+  html.e-move .e-veil{display:block}
   .e-shade{background:linear-gradient(180deg,rgba(12,13,17,.3) 0%,rgba(12,13,17,.06) 11%,rgba(12,13,17,.06) 24%,rgba(12,13,17,.42) 34%,rgba(13,14,18,.78) 44%,rgba(16,17,21,.9) 58%,rgba(20,21,25,.96) 100%)}
   /* the slate in two rows: the status and its countdown, then the event */
   .e-slate{display:inline-grid;grid-template-columns:auto auto 1fr;justify-content:start;align-items:center;gap:.28rem .55rem;margin-bottom:.8rem;
