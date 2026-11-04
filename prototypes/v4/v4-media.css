@@ -263,6 +263,10 @@ html.e-move .e-stage.is-pull:not(.is-gone) .e-hero-in :is(a,button){pointer-even
 html.e-move .e-cam{background:var(--bg)}
 /* the other three come in as pictures; their words wait until the shot has cleared them (critic-1-1) */
 html.e-move .e-pl:not(.is-cam) :is(.e-when,.e-in,.e-poster>span,.e-p-tally){opacity:var(--e-co,1)}
+/* each poster and its words on their own layer while the move runs, so a frame moves and fades them instead of
+   repainting them (chat 18: the move painted ten times what the rest of the page does, patchy on phones) */
+html.e-move .e-stage:not(.is-done) .e-pl{will-change:transform,opacity}
+html.e-move .e-stage:not(.is-done) .e-pl:not(.is-cam) :is(.e-when,.e-in,.e-poster>span,.e-p-tally){will-change:opacity}
 html.e-move .e-pl.is-off:not(.is-cam) :is(.e-in,.e-poster>span){opacity:0}
 html.e-move .e-pl.is-off:not(.is-cam):focus-within :is(.e-in,.e-poster>span){opacity:var(--e-co,1)}
 html.e-move .e-four{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:center;
