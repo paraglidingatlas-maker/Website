@@ -1,8 +1,55 @@
-# v4: handoff to the next session (3 Nov 2026)
+# v4: handoff to the next session (4 Nov 2026)
 
 Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
 the owner's current queue and what the last session learnt doing it.
+
+## Chat 18 starts here (4 Nov 2026): the owner's yes on the Media page, then build it into the live site
+**Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
+has grown long, hand over without asking the owner: write the handover at the top of this file, update the
+owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
+chat yourself with the session tools (create_session), and give the owner its link.
+
+**Where chat 17 left it.** The Media page sells comp coverage to organisers and sponsors only (owner, 3 Nov: prices
+hidden, photos only for now, logos OK, quote coming, slots as example data). Three designers built mocks
+(`prototypes/v4/samples/media-d|e|f/`, brief `docs/designers/media-brief.md`); three judges picked E, "Pull Back
+To The Coverage", 3 of 3. It is built into the generator from `docs/designers/media-build-spec.md` (every item done;
+the judges' grafts from D and F included), then reviewed three rounds (buyer, QA, critic) with 48 fixes; chat 17
+re-checked it at 390x683, 390x844, 1440x900, 360x740, 820x1180, 1920x1080, with JS, reduced motion and no JS: no
+horizontal scroll, no errors, no em dashes, 12 [to supply] marks, and the dates form arrives on enquire.html in its
+media mode with every field filled. **Preview 3 (sent to the owner 4 Nov): https://claude.ai/artifact/1MvsFDSybt34TQ2j2Aviee**
+(version 3; it packs media.html, the Piedrahita page and enquire.html; in the preview a video's play opens YouTube).
+
+**Files.** `tools/v4_media.py` (writes `prototypes/v4/media.html` and `media-srs-piedrahita-2026.html`; data PH, V,
+POSTERS, UPCOMING, SEASON at the top), `prototypes/v4/v4-media.css`, `prototypes/v4/v4-media.js`,
+`tools/v4_media_preview.py`, `tools/v4_media_posters.py`, `prototypes/v4/enquire.html` (media mode: `?trip=media`,
+name and email via sessionStorage `v4-media-enq`; proven to survive `tools/v4_ux.py enquire.html` twice). All committed
+on claude/v2-prototype and pushed (not main). NOT committed on purpose: the two built pages and the photos'
+web copies `prototypes/v4/img/media-tmp/` (photos go to their own repo, never this one). A fresh container has
+neither: rebuild the pages with `python3 tools/v4_media.py --media img/media-tmp/` after fetching the photos back
+from the preview artifact (Artifact read, `path` each `SRS_5_*-800/1600/2400.webp` and `poster-*.webp`, listed with
+scope "files"), or from the owner's Drive "All Tasks" folder 1GwKlKvNkYJ5P5WF0QBtkOByG8du8lrjC.
+
+**Chat 18's job, in order.**
+1. The owner's yes or changes on preview 3 (rebuild, re-test at 390x683, 390x844, 1440x900, republish the same link).
+   Ask the three questions below once, briefly; the owner leaves for SRS Tapalpa about 5 Nov (tasks 8 to 14 Nov).
+2. On yes, build it into the site: the photos into the owner's new public repo `media-2026` (owner creates it; web
+   copies only, `srs-piedrahita/` folder, served at https://paraglidingatlas-maker.github.io/media-2026/), then
+   `python3 tools/v4_media.py` (default MEDIA base) and commit the pages; add media.html and
+   media-srs-piedrahita-2026.html to the pages their own generator owns in `tools/v4_build.py` step 11 (as
+   record-*.html), so the chain does not rewrite them; the "Media" line in the full-screen menu and in every footer
+   (Atlas column, after Partner With Me; the generator already does it on its own two pages); photo credits on the
+   owner's photos elsewhere on the site (ask which); then `python3 tools/v4_gates.py` and a clean double rebuild,
+   push to main and claude/v2-prototype, never forced, and check the live page.
+3. Piedrahita event page (speaks to pilots): richer, 40 to 60 photos by task from the Drive folder above or the
+   owner's pick, with each task's story from its video description.
+**Owner's questions (only they can answer):** the three in the chat 17 note below (the Worker's media branch; the
+facts that decide the sponsor sale, first the subscriber and follower counts and where sponsors appear; the two orange
+buttons at 1440), plus: Tapalpa photos per day and the Drive folder they go in; create `media-2026`; the quote; the
+SRS and PWCA logo files. Other leftovers from chat 17: MailerLite draft "Patreon update · Website edition"
+(200388930129889120), the account's company address and the "Newsletter signup" form still read M 46; six fixed
+emails read "Olav Troviks vei 68" without the "M" (owner to say); the owner may paste a permissions block into
+`.claude/settings.json` themselves (chat 17's edits to it were refused, do not retry).
 
 ## Chat 17 starts here (3 Nov 2026): build the Media portfolio page properly
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
@@ -10,7 +57,7 @@ has grown long, hand over without asking the owner: write the handover at the to
 owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
 chat yourself with the session tools (create_session), and give the owner its link.
 
-**Media page: two things only the owner can unblock (review fix pass 1, 4 Nov).**
+**Media page: three things only the owner can decide (review fix passes 1 to 3, 4 Nov).**
 1. **ENDPOINT must stay empty for media enquiries until the Worker is changed.** `enquiry-worker.js` (repo root, so
    the owner approves any change) has no media branch: it requires the pilot fields (rating, total, recent) and a
    message of 10 or more characters, never reads event, when, place or package, and its subject is "Trip enquiry".
@@ -24,6 +71,20 @@ chat yourself with the session tools (create_session), and give the owner its li
    can use the videos and photos (the rights wording); how travel works; how far ahead to book. Then: social clips
    per task day; what an event provides beyond internet and footage; the real quote and its organiser (now EXAMPLE);
    the real 2027 calendar (now EXAMPLE); the SRS and PWCA logo files. Each shows `[to supply]` on media.html until given.
+   Also: "Also offered" (live commentary, stills) replaced "Add to any package", which the facts did not say; if they
+   can be added to any package, say so and it goes back.
+3. **One ruling: two orange buttons on the desktop's first screen.** At 1440 the header's Enquire Now and the
+   opening's Check dates for your event are both solid orange (both go to the dates form), so orange is not quite the
+   single LIVE light the brief asks for (critic-1-10, buyer-2-1, critic-2-2). Phones already show one orange button at
+   a time, the nav that comes back on a scroll up included (fix pass 2). Keep the site's header as it is (designer E's
+   call: the two sit far apart and every page has the same header), or on this page draw the header button in the lines
+   style while the opening is on screen (same size and place, so nothing moves).
+
+Noticed in fix pass 3, for the next site-wide pass (not a page fix): `prototypes/v4/sw.js` is stale. Its VERSION is
+fb1b14f102 while the app files now hash to abf7cece7a, and `offline.html` differs from what `tools/v4_pwa.py` writes.
+The service worker precaches `v4-menu.js` without a `?v=`, so a change to the shared menu reaches an installed phone
+only after `python3 tools/v4_pwa.py` runs, and that rewrites every v4 page. For that reason the Media page's own menu
+fix (its Enquire Now goes to the dates form, qa-3-1) lives in `v4-media.js`.
 
 Chat 16 (all pushed if the gates passed; check `git log origin/main`):
 - **Welcome email LIVE** (3 Nov): MailerLite automation 199572486318196276 "Welcome to the Atlas list" now sends

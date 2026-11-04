@@ -35,7 +35,7 @@
       var v = fr.getAttribute("data-vid"), f = d.createElement("iframe"), a = fr.querySelector(".md-play");
       f.src = "https://www.youtube-nocookie.com/embed/" + v + "?autoplay=1&rel=0&playsinline=1&modestbranding=1";
       f.title = a ? a.getAttribute("aria-label") : "Video";
-      f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen = true;
+      f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";      // the allow list grants fullscreen (qa-2-6)
       fr.appendChild(f); fr.classList.add("is-on");
     }
     d.addEventListener("click", function (e) {
@@ -89,7 +89,9 @@
     [].slice.call(d.querySelectorAll(".md-grid")).forEach(function (g) {
       var figs = [].slice.call(g.querySelectorAll(".md-ph")), rs = figs.map(function (f) { return parseFloat(f.style.getPropertyValue("--r")) || 1.5; }), lastW = 0;
       function lay() {
-        var W = g.clientWidth; if (!W || W === lastW) return; lastW = W;
+        // the grid's own width to the fraction (clientWidth rounds it: 921.625 read as 922 at 1024 wide wrapped each
+        // row's last frame), a hair under it so the browser's sub-pixel rounding never wraps one either
+        var W = (parseFloat(getComputedStyle(g).width) || g.clientWidth) - .05; if (W <= 0 || Math.abs(W - lastW) < .01) return; lastW = W;
         var gap = parseFloat(getComputedStyle(g).columnGap) || 8, t = W < 700 ? 150 : Math.max(150, Math.min(270, W * .19)), n = rs.length, best = [0], cut = [0];
         for (var j = 1; j <= n; j++) {
           best[j] = Infinity;
@@ -103,7 +105,15 @@
           var sum = 0, k; for (k = rw[0]; k < rw[1]; k++) sum += rs[k];
           var room = W - gap * (rw[1] - rw[0] - 1), h = room / sum, last = rw[1] === n && h > t * 1.35 && n > 1;
           if (last) h = t * 1.35;
-          var used = 0; for (k = rw[0]; k < rw[1]; k++) { var wd = (k === rw[1] - 1 && !last) ? room - used : Math.floor(rs[k] * h); figs[k].style.width = wd + "px"; used += wd; }
+          // whole pixels that still add up to the row (so nothing wraps), each frame within half a pixel of its own
+          // width, and one height for the whole row, so every frame in it shares its top and its foot; the photo covers
+          // its box, so the rounding crops under a pixel instead of stepping the row's foot (critic-3-2)
+          var acc = 0, prev = 0, hh = Math.round(h);
+          for (k = rw[0]; k < rw[1]; k++) {
+            acc += rs[k] * h;
+            var edge = (k === rw[1] - 1 && !last) ? room : Math.round(acc);
+            figs[k].style.width = (edge - prev) + "px"; figs[k].style.height = hh + "px"; prev = edge;
+          }
         });
         g.classList.add("is-js");
       }
@@ -241,13 +251,36 @@
     function can() { return !reduced() && w.CSS && CSS.supports("position", "sticky") && CSS.supports("clip-path", "inset(0px 0px 0px 0px round 4px)"); }
     function clear() {
       [img, cam, shade, hin, lab, foot, tal].forEach(function (el) { el.removeAttribute("style"); });
-      items.forEach(function (li) { li.style.transform = li.style.opacity = ""; li.style.removeProperty("--e-co"); });
+      items.forEach(function (li) { li.style.transform = li.style.opacity = li.style.webkitMaskImage = li.style.maskImage = li.style.clipPath = ""; li.style.removeProperty("--e-co"); });
       fades.forEach(function (f) { if (f) { f.style.opacity = f.style.visibility = f.style.pointerEvents = ""; } });
       rail.style.overflowX = "";
     }
     function rect(x, y, wd, ht) { return { x: x, y: y, w: wd, h: ht }; }
     // how far the shot's frame is from an element: more than 0 once they no longer touch
     function gapTo(o, x, y, fw, fh) { return Math.max(y - (o.y + o.h), o.y - (y + fh), x - (o.x + o.w), o.x - (x + fw)); }
+    // the shot's frame at a point of the move (the same easing as render)
+    function frameAt(p) { var e = inout(band(p, .035, .9)); return rect(e * G.sx, e * G.sy, lerp(G.W, G.sw, e), lerp(G.H, G.sh, e)); }
+    // how far a card still at the start of its slide reaches out from under the frame f (its part on screen only)
+    function outside(o, f) {
+      var l = Math.max(0, o.x + o.dx), r = Math.min(G.W, o.x + o.dx + o.w), t = Math.max(0, o.y + o.dy), b = Math.min(G.H, o.y + o.dy + o.h);
+      if (r <= l || b <= t) return 0;
+      return Math.max(0, f.x - l, r - (f.x + f.w), f.y - t, b - (f.y + f.h));
+    }
+    var V = .12;                      // the label is on: from here the other three may show
+    // on a phone the frame ends where the lifted photo ends (critic-3-1), so the board's pieces below that line are kept
+    // unseen by a mask that fades each out along the photo's own feather (a to b, in the stage's coordinates); a piece
+    // the shot has come down over, or the finished board (a = b = 0), has none
+    // a mask is only paint: a tap would still reach the unseen part, so the same line also clips it (no ghost taps, P1)
+    function feather(a, b) {
+      G.rows.forEach(function (o) {
+        var t = o.y + (o.gy || 0), m = "", c = "";
+        if (b && b - t < o.h) {
+          m = "linear-gradient(180deg,#000 " + (a - t).toFixed(1) + "px,transparent " + (b - t).toFixed(1) + "px)";
+          c = "inset(0px 0px " + Math.max(0, o.h - (b - t)).toFixed(1) + "px 0px)";
+        }
+        if (o.m !== m) { o.li.style.webkitMaskImage = o.li.style.maskImage = m; o.li.style.clipPath = c; o.m = m; }
+      });
+    }
 
     function measure() {
       clear();
@@ -276,7 +309,8 @@
       var sr = stage.getBoundingClientRect(), r = slot.getBoundingClientRect(), tr = slot.querySelector(".e-p-tally").getBoundingClientRect();
       G.sx = r.left - sr.left; G.sy = r.top - sr.top; G.sw = r.width; G.sh = r.height;
       G.tx = r.right - tr.left; G.ty = tr.top - r.top;
-      lab.style.width = G.sw.toFixed(1) + "px"; lab.style.height = foot.style.height = G.sh.toFixed(1) + "px";
+      // the dark foot runs 2px past the frame's foot, so the clip cuts it and no last row of the photo shows under it
+      lab.style.width = G.sw.toFixed(1) + "px"; lab.style.height = G.sh.toFixed(1) + "px"; foot.style.height = (G.sh + 2).toFixed(1) + "px";
       // the photo moves from the opening's frame (r0) to its poster's crop (r1), both in the stage's coordinates. Wide:
       // the shot covers the screen, the wing right of centre. Phone: the static page's own frame, the shot as wide as the
       // screen and lifted by --e-lift so the wing sits under the nav, its foot feathered into the ground (critic-1-5)
@@ -296,15 +330,27 @@
       wrap.style.setProperty("--e-travel", Math.max(0, G.S - G.top) + "px");
       G.snap = G.phone || mm("(pointer: coarse)");
       // the other three come in under the shot, in event order, never from beyond the screen's edge; their words wait
-      // until the shot has cleared them (critic-1-1)
+      // until the shot has cleared them (critic-1-1). Whenever they show they are opaque (P2, qa-2-2): at V each lies
+      // wholly under the shot, its slide trimmed until it does, so the shrinking frame uncovers it; nothing fades in
+      // over the ground. One the frame has uncovered sooner (a short screen) shows sooner, while it is still covered
+      var fv = frameAt(V);
       G.others = others.map(function (li, i) {
         var q = li.getBoundingClientRect(), cx = q.left + q.width / 2 - (r.left + r.width / 2), cy = q.top + q.height / 2 - (r.top + r.height / 2);
         var room = Math.max(0, cx < 0 ? q.left - sr.left : sr.right - q.right);
         var o = { li: li, x: q.left - sr.left, y: q.top - sr.top, w: q.width, h: q.height, a: .15 + i * .05,
                   dx: Math.sign(cx) * Math.min(G.phone ? 64 : 140, Math.abs(cx) * .3, room), dy: Math.sign(cy) * Math.min(90, Math.abs(cy) * .25) };
+        if (o.dx < 0) o.dx = Math.min(0, Math.max(o.dx, fv.x - o.x)); else if (o.dx > 0) o.dx = Math.max(0, Math.min(o.dx, fv.x + fv.w - o.x - o.w));
+        if (o.dy < 0) o.dy = Math.min(0, Math.max(o.dy, fv.y - o.y)); else if (o.dy > 0) o.dy = Math.max(0, Math.min(o.dy, fv.y + fv.h - o.y - o.h));
+        o.v = V;
+        if (outside(o, fv) > 1.5) {
+          for (var lo = .035, hi = V, k = 0; k < 12; k++) { var md = (lo + hi) / 2; if (outside(o, frameAt(md)) > 1.5) hi = md; else lo = md; }
+          o.v = lo;
+        }
         o.fin = gapTo(o, G.sx, G.sy, G.sw, G.sh);
         return o;
       });
+      var sq = slotLi.getBoundingClientRect();
+      G.rows = G.others.concat([{ li: slotLi, y: sq.top - sr.top, h: sq.height }]);
       G.fades = [];
       fades.forEach(function (f) {
         if (!f) return; var q = f.getBoundingClientRect(); if (!q.width || !q.height) return;
@@ -325,34 +371,47 @@
       // the frame: from the whole screen to the poster's place
       var x = e * G.sx, y = e * G.sy, fw = lerp(G.W, G.sw, e), fh = lerp(G.H, G.sh, e), rad = 4 * e;
       // the photo: from the opening's frame to the poster's crop (the poster follows the rail if it was moved)
-      var r1x = G.sx + (G.sw - G.r1.w) * .5, iw = lerp(G.r0.w, G.r1.w, e);
-      img.style.transform = "translate3d(" + lerp(G.r0.x, r1x, e).toFixed(2) + "px," + lerp(G.r0.y, G.r1.y, e).toFixed(2) + "px,0) scale(" + (iw / G.bw).toFixed(5) + ")";
-      if (G.lift) {                     // the feather holds while the lifted shot is short of the frame's foot, then recedes
-        var k = G.ec < 1 ? band(e, G.ec, 1) : 1;
-        img.style.setProperty("--e-m0", lerp(64, 112, k).toFixed(2) + "%"); img.style.setProperty("--e-m1", lerp(96, 144, k).toFixed(2) + "%");
-      }
-      cam.style.clipPath = "inset(" + y.toFixed(2) + "px " + (G.W - x - fw).toFixed(2) + "px " + (G.H - y - fh).toFixed(2) + "px " + x.toFixed(2) + "px round " + rad.toFixed(2) + "px)";
-      shade.style.opacity = (1 - band(p, .05, .5)).toFixed(3);
+      var r1x = G.sx + (G.sw - G.r1.w) * .5, iw = lerp(G.r0.w, G.r1.w, e), py = lerp(G.r0.y, G.r1.y, e);
+      img.style.transform = "translate3d(" + lerp(G.r0.x, r1x, e).toFixed(2) + "px," + py.toFixed(2) + "px,0) scale(" + (iw / G.bw).toFixed(5) + ")";
       // the opening's words leave first, within a few per cent, so they never hang ghosted over a moving photo; the
       // buttons stop taking taps as they go (P1)
       var g = out3(band(p, 0, .035));
+      var ly = y + fh, cb = y + fh, fa = 0, fb = 0;   // the label's foot, the frame's visible foot, the photo's feather
+      if (G.lift) {                     // the feather holds while the lifted shot is short of the frame's foot, then recedes
+        var k = G.ec < 1 ? band(e, G.ec, 1) : 1, m0 = lerp(64, 112, k), m1 = lerp(96, 144, k), ph = iw / A;
+        img.style.setProperty("--e-m0", m0.toFixed(2) + "%"); img.style.setProperty("--e-m1", m1.toFixed(2) + "%");
+        // until then the photo fades out above the frame's foot: the label rides where the photo ends, on the shot, never
+        // on the bare ground below it (critic-2-1)
+        ly = Math.min(ly, py + ph * m1 / 100);
+        // and once the words are gone the frame ends there too, so no empty dark card hangs under the shot mid-move
+        // (critic-3-1): the camera's view is the photo. The board below that line stays unseen, each piece fading out
+        // along the photo's own feather, until the shot has come down over it; the phone's scrim leaves with the words,
+        // so the frame's new foot meets the bare ground with no seam
+        if (g >= 1) cb = ly;
+        fa = done ? 0 : py + ph * m0 / 100; fb = done ? 0 : py + ph * m1 / 100;
+      }
+      cam.style.clipPath = "inset(" + y.toFixed(2) + "px " + (G.W - x - fw).toFixed(2) + "px " + (G.H - cb).toFixed(2) + "px " + x.toFixed(2) + "px round " + rad.toFixed(2) + "px)";
+      shade.style.opacity = (G.lift ? 1 - g : 1 - band(p, .05, .5)).toFixed(3);
       hin.style.opacity = (1 - g).toFixed(3);
       hin.style.transform = g ? "translate3d(0," + (-20 * g).toFixed(1) + "px,0)" : "";
-      // the Daily Highlights label and its tally ride on the shot from the moment the words are gone (P2)
-      var l = out3(band(p, .05, .15));
+      // the Daily Highlights label and its tally ride on the shot, coming in as the words go, so no frame is left with
+      // neither (P2, qa-2-3)
+      var l = out3(band(p, .03, .12));
       lab.style.opacity = foot.style.opacity = tal.style.opacity = l.toFixed(3);
-      lab.style.transform = "translate3d(" + x.toFixed(2) + "px," + (y + fh - G.sh).toFixed(2) + "px,0)";
-      foot.style.transform = "translate3d(0," + (y + fh - G.sh).toFixed(2) + "px,0)";
+      lab.style.transform = "translate3d(" + x.toFixed(2) + "px," + (ly - G.sh).toFixed(2) + "px,0)";
+      foot.style.transform = "translate3d(0," + (ly - G.sh).toFixed(2) + "px,0)";
       tal.style.transform = "translate3d(" + (x + fw - G.tx).toFixed(2) + "px," + (y + G.ty).toFixed(2) + "px,0)";
-      // the other three: unseen until the label is on, then in under the shot, opaque once in; their words only where
-      // the shot no longer covers them, together with the board's own words at the end
+      // the other three: unseen until the label is on, then opaque, uncovered by the shot as it shrinks and sliding in
+      // under it; their words only where the shot no longer covers them, together with the board's own words at the end
       G.others.forEach(function (o) {
-        var a = band(p, o.a, o.a + .08), t = out3(band(p, o.a, o.a + .4)), gx = (1 - t) * o.dx, gy = (1 - t) * o.dy;
-        o.li.style.opacity = a < 1 ? a.toFixed(3) : "";
+        var t = out3(band(p, o.a, o.a + .4)), gx = (1 - t) * o.dx, gy = (1 - t) * o.dy;
+        o.li.style.opacity = p < o.v ? "0" : "";
         o.li.style.transform = t < 1 ? "translate3d(" + gx.toFixed(1) + "px," + gy.toFixed(1) + "px,0)" : "";
         var co = done ? 1 : clamp(gapTo({ x: o.x + gx, y: o.y + gy, w: o.w, h: o.h }, x, y, fw, fh) / Math.max(1, Math.min(18, o.fin)), 0, 1) * band(p, .7, .86);
         o.li.style.setProperty("--e-co", co.toFixed(3));
+        o.gy = gy;
       });
+      if (G.lift) feather(fa, fb);
       // the heading, the shot's number and its package show only where the shot no longer covers them (P2)
       G.fades.forEach(function (f) {
         var op = done ? 1 : clamp(gapTo(f, x, y, fw, fh) / Math.max(1, Math.min(18, f.fin)), 0, 1) * (f.late ? band(p, .78, .9) : 1);
@@ -382,7 +441,9 @@
       clearTimeout(idle); idle = 0;
       if (!on || !G.snap || touching || settling) return;
       var p = target(); if (p <= 0 || p >= .9) return;
-      var to = (dir >= 0 ? p > .12 : p > .88) ? G.S : G.top;        // on to the four, or back to the whole opening
+      // on to the four, or back to the whole opening. Down, a small push finishes the move; up, it takes a real pull
+      // (more than a third of the move) to fly back in, so a nudge to re-read the heading keeps the four (qa-2-4)
+      var to = (dir >= 0 ? p > .12 : p > .62) ? G.S : G.top;
       settling = 1; w.scrollTo({ top: to, behavior: "smooth" });
       setTimeout(function () { settling = 0; }, 900);
     }
@@ -474,9 +535,11 @@
   function bar() {
     var b = d.getElementById("eBar"); if (!b || !w.IntersectionObserver) return;
     // the packages count as one stop (each card holds a Check dates), so the bar does not flicker between them
+    // (the nav that comes back on a scroll up carries no orange button on a phone here, v4-media.css, critic-2-2, so it
+    // no longer hides the bar)
     var stops = [].slice.call(d.querySelectorAll(".e-pull, .e-pk-grid, [data-cd], #dates, body > footer, .page-wrap ~ footer")), seen = [];
     function set() {
-      var any = root.classList.contains("v2-nav-up");
+      var any = false;
       for (var i = 0; i < seen.length && !any; i++) any = seen[i];
       b.classList.toggle("show", !any);
     }
@@ -484,7 +547,6 @@
       en.forEach(function (x) { seen[stops.indexOf(x.target)] = x.isIntersecting; }); set();
     });
     stops.forEach(function (el, i) { seen[i] = true; io.observe(el); });
-    if (w.MutationObserver) new MutationObserver(set).observe(root, { attributes: true, attributeFilter: ["class"] });
   }
 
   /* ---------------------------------------------------------------- the phone's poster rail: words only on posters in view ---- */
@@ -504,6 +566,74 @@
     w.addEventListener("resize", ask);
     w.addEventListener("load", ask);
     set();
+    // a keyboard visitor: the poster that holds the focus (its link or its package line) comes to the middle of the
+    // rail, so the focus is never off the screen (qa-2-1). Two frames later, once the move has reached the four and the
+    // browser's own focus scroll is done
+    rail.addEventListener("focusin", function (e) {
+      var li = e.target.closest && e.target.closest(".e-pl"); if (!li) return;
+      requestAnimationFrame(function () { requestAnimationFrame(function () {
+        if (rail.scrollWidth <= rail.clientWidth + 2 || !li.contains(d.activeElement)) return;
+        var rr = rail.getBoundingClientRect(), r = li.getBoundingClientRect(),
+            to = Math.round(rail.scrollLeft + (r.left + r.width / 2) - (rr.left + rr.width / 2));
+        if (Math.abs(to - rail.scrollLeft) > 1) rail.scrollTo({ left: to, behavior: smooth() });
+      }); });
+    });
+  }
+
+  /* ---------------------------------------------------------------- the four titles on one line (critic-3-3) ---- */
+  // a poster's words sit on its foot, so a one-line description (or a two-line title) put that poster's title a line
+  // off its neighbours'. Where the posters stand side by side, each description takes the room the tallest block in its
+  // row needs: the titles share one line, the "Watch" lines stay on the foot, the space falls under the shorter
+  // description. The shot's own label in the move gets what its poster gets, so nothing jumps as the move ends. A
+  // phone's rail shows one poster at a time and keeps its words as they are; so does the page without JavaScript
+  function titles() {
+    var rail = d.querySelector(".e-posters"); if (!rail) return;
+    var items = [].slice.call(rail.querySelectorAll(".e-pl")), camTags = d.querySelector(".e-cam-lab .e-p-tags"), raf = 0, lastW = -1;
+    function part(li, s) { return li.querySelector(s); }
+    function set(force) {
+      raf = 0;
+      if (!force && rail.clientWidth === lastW) return; lastW = rail.clientWidth;
+      items.forEach(function (li) { part(li, ".e-p-tags").style.minHeight = ""; });
+      if (camTags) camTags.style.minHeight = "";
+      if (getComputedStyle(rail).display !== "grid") return;          // the phone's rail (a flex row that swipes)
+      var rows = {};                    // by row: the layout's own top, never a moving poster's
+      items.forEach(function (li) { (rows[li.offsetTop] = rows[li.offsetTop] || []).push(li); });
+      Object.keys(rows).forEach(function (k) {
+        var row = rows[k], hs = row.map(function (li) { return part(li, ".e-poster").getBoundingClientRect().bottom - part(li, ".e-p-t").getBoundingClientRect().top; }),
+            M = Math.max.apply(null, hs);
+        row.forEach(function (li, i) {
+          if (M - hs[i] < 1) return;
+          var g = part(li, ".e-p-tags"), v = (g.getBoundingClientRect().height + M - hs[i]).toFixed(1) + "px";
+          g.style.minHeight = v;
+          if (camTags && li.classList.contains("is-cam")) camTags.style.minHeight = v;
+        });
+      });
+    }
+    set(true);
+    // the rail's width changes with the window and with the move's own measure (the posters' size), so it is watched
+    function ask() { if (!raf) raf = requestAnimationFrame(function () { set(false); }); }
+    if (w.ResizeObserver) new ResizeObserver(ask).observe(rail); else w.addEventListener("resize", ask);
+    w.addEventListener("load", function () { set(true); });
+    if (d.fonts && d.fonts.ready) d.fonts.ready.then(function () { set(true); });
+  }
+
+  /* ---------------------------------------------------------------- the menu's Enquire Now goes where the header's goes (H5) ---- */
+  // the site's menu (v4-menu.js, built the first time it opens) ends on a solid Enquire Now to the pilots' trip
+  // enquiry. On a page whose header sends Enquire Now to a part of the page itself (media.html: the dates form), the
+  // menu's does the same, so an organiser never lands on the pilots' form; on a phone it is the only Enquire Now in
+  // the header (qa-3-1). The menu closes itself for a link to this same page. Done here, not in the shared menu,
+  // because the app's offline copy of v4-menu.js is not versioned and would keep the old one on an installed phone
+  function menuCta() {
+    var cta = d.querySelector(".page-wrap > nav .nav-cta"), to = cta && cta.getAttribute("href");
+    if (!to || to.charAt(0) !== "#" || to.length < 2) return;
+    function fix() {
+      var a = d.querySelector("#v4Menu .v4-menu-foot .btn-solid");
+      if (a && a.getAttribute("href") !== to) a.setAttribute("href", to);
+      return !!a;
+    }
+    if (fix() || !w.MutationObserver) return;
+    var mo = new MutationObserver(function () { if (fix()) mo.disconnect(); });
+    mo.observe(d.body, { childList: true });
   }
 
   /* ---------------------------------------------------------------- the season's views fill once, when they are seen ---- */
@@ -526,5 +656,7 @@
     bar();
     railText();
     season();
+    titles();
+    menuCta();
   });
 })();

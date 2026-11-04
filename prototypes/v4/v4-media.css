@@ -5,7 +5,7 @@
    on the slate (Q2). html.e-move (set by v4-media.js, never under reduced motion) turns the opening and the four
    posters into one camera move; without it the page is the finished page: the opening, then the four. */
 
-:root{--e-nav:93px;--e-navp:77px;--e-r:4px;--e-gap:clamp(.75rem,1.5vw,1.3rem);--e-pp:clamp(.85rem,1.4vw,1.25rem)}
+:root{--e-nav:93px;--e-navp:77px;--e-sp:calc(var(--e-navp) + 1rem);--e-r:4px;--e-gap:clamp(.75rem,1.5vw,1.3rem);--e-pp:clamp(.85rem,1.4vw,1.25rem)}
 
 /* ================================================================ shared by the media pages ==== */
 
@@ -77,6 +77,9 @@ html body .e-proof .v2-chip[aria-pressed="true"] i{color:var(--white);opacity:.7
 .md-grid::after{content:"";flex:999 1 0}
 .md-grid.is-js::after{content:none}
 .md-grid.is-js .md-ph{flex:none}
+/* laid out by v4-media.js: each row one height, the photo covering its box (critic-3-2) */
+.md-grid.is-js .md-ph a{height:100%}
+.md-grid.is-js .md-ph img{height:100%;aspect-ratio:auto;object-fit:cover}
 .md-ph{margin:0;flex:var(--r) 1 calc(var(--r) * var(--rh));position:relative;overflow:hidden;background:var(--card)}
 .md-ph a{display:block;cursor:zoom-in}
 .md-ph img{display:block;width:100%;height:auto;aspect-ratio:var(--r);transition:transform .8s var(--ease-out)}
@@ -106,6 +109,13 @@ html body .e-proof .v2-chip[aria-pressed="true"] i{color:var(--white);opacity:.7
 .v4i-fl-lbp{left:1rem}
 .v4i-fl-lbnx{right:1rem}
 .v4i-fl-lbh{position:absolute;right:1.25rem;bottom:1.2rem;font-size:var(--fs-micro);letter-spacing:.04em;color:var(--gray);white-space:nowrap;pointer-events:none}
+
+/* a stop reached with the keyboard never lands under the nav (WCAG 2.4.11, qa-3-2): going back with Shift+Tab the
+   browser shows each stop just at the top edge, and that scroll up brings the nav back over it. The page keeps the
+   nav's height clear at its top for every scroll it makes (inside the reel's own list too); each part a link jumps to
+   takes that room back in its own scroll-margin (calc(... - var(--e-sp))), so #dates, #pk-full, #watch and the
+   form's fields land exactly where they did */
+html{scroll-padding-top:var(--e-sp)}
 
 /* the EXAMPLE mark: data the owner has not given yet, never to go live as it is */
 .e-eg{display:inline-flex;align-items:center;padding:.18rem .45rem;border:1px dashed rgba(246,244,244,.42);border-radius:2px;
@@ -173,9 +183,9 @@ html body .e-bug .kit-stat b{font-family:var(--font-display);font-weight:600;fon
   color:var(--white);-webkit-text-stroke:0;-webkit-text-fill-color:var(--white);white-space:nowrap;font-variant-numeric:tabular-nums}
 html body .e-bug .kit-stat b small{font-size:.5em;font-weight:500;letter-spacing:0}
 html body .e-bug .kit-stat span{margin-top:.55rem;color:rgba(246,244,244,.86);font-size:.72rem;letter-spacing:.12em}
-/* the source is two pieces ("Views", "PWC Super Final"): one line here, two deliberate lines on a phone */
+/* the source is two pieces ("Views", "PWC Super Final"): one line here, two deliberate lines on a phone. The comma
+   between them is real text, so a copy or a search snippet reads "views, PWC Super Final" (critic-2-5) */
 html body .e-bug .e-cr span{display:inline;margin:0;font-size:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit}
-.e-cr-s::before{content:", "}
 html body .e-bug .kit-stat em{display:block;margin:.3rem 0 .85rem;font-style:normal;font-family:var(--font-body);font-size:.76rem;letter-spacing:0;text-transform:none;color:rgba(246,244,244,.76)}
 
 /* ================================================================ the four ==== */
@@ -201,9 +211,14 @@ html body .e-bug .kit-stat em{display:block;margin:.3rem 0 .85rem;font-style:nor
 .e-poster::before,.e-cam-foot{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,21,25,0) 30%,rgba(20,21,25,.74) 60%,rgba(20,21,25,.96) 100%)}
 .e-poster>span,.e-cam-lab>span{text-shadow:0 1px 12px rgba(12,13,17,.55)}
 .e-p-t{font-family:var(--font-display);font-weight:700;font-size:clamp(1.12rem,1.65vw,1.55rem);line-height:1.08;letter-spacing:-.01em;text-wrap:balance}
-.e-p-tags{margin-top:.45rem;font-size:.8rem;line-height:1.45;color:var(--gray-light)}
+.e-p-tags{margin-top:.45rem;font-size:.8rem;line-height:1.45;color:var(--gray-light);text-wrap:pretty}
 .e-p-go{margin-top:.75rem;padding-top:.65rem;border-top:1px solid rgba(246,244,244,.16);font-family:var(--font-display);font-weight:600;font-size:.8rem;color:var(--white)}
-.e-p-go i{font-style:normal;color:var(--orange);margin-left:.15rem;display:inline-block;transition:transform .3s var(--ease-out)}
+/* side by side, every description holds two lines, so the four titles share a line even without JavaScript;
+   v4-media.js evens out a longer one (critic-3-3) */
+@media (min-width:701px){.e-p-tags{min-height:2.9em}}
+/* the link arrows are the link's own colour: on this page orange is the tally light, the next comp and the one Check
+   dates, not a decoration on every link (critic-2-7) */
+.e-p-go i{font-style:normal;color:currentColor;margin-left:.15rem;display:inline-block;transition:transform .3s var(--ease-out)}
 /* the tally lamp on each poster: lit on the one on air (the shot the page opened on), and on the one you point at */
 .e-p-tally,.e-cam-tally{position:absolute;top:.8rem;right:.8rem;z-index:3;width:7px;height:7px;border-radius:50%;background:rgba(246,244,244,.32);
   box-shadow:0 0 0 3px rgba(12,13,17,.35);transition:background .25s var(--ease-out),box-shadow .25s var(--ease-out)}
@@ -217,6 +232,8 @@ html body .e-bug .kit-stat em{display:block;margin:.3rem 0 .85rem;font-style:nor
    so no word is ever cut by the screen's edge (critic-1-7; v4-media.js sets .is-off) */
 .e-pl :is(.e-poster>span,.e-in){transition:opacity .25s var(--ease)}
 .e-pl.is-off :is(.e-poster>span,.e-in){opacity:0}
+/* ...but a poster that holds the keyboard's focus shows its words at once, as the rail brings it to the middle (qa-2-1) */
+.e-pl.is-off:focus-within :is(.e-poster>span,.e-in){opacity:1}
 /* the package each piece is in (P5) */
 .e-in{margin:.7rem 0 0;font-size:var(--fs-small);line-height:1.5;color:var(--gray)}
 .e-in a{color:var(--gray-light);text-decoration:none;border-bottom:1px solid var(--edge);transition:color .2s var(--ease),border-color .2s var(--ease)}
@@ -247,6 +264,7 @@ html.e-move .e-cam{background:var(--bg)}
 /* the other three come in as pictures; their words wait until the shot has cleared them (critic-1-1) */
 html.e-move .e-pl:not(.is-cam) :is(.e-when,.e-in,.e-poster>span,.e-p-tally){opacity:var(--e-co,1)}
 html.e-move .e-pl.is-off:not(.is-cam) :is(.e-in,.e-poster>span){opacity:0}
+html.e-move .e-pl.is-off:not(.is-cam):focus-within :is(.e-in,.e-poster>span){opacity:var(--e-co,1)}
 html.e-move .e-four{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:center;
   padding:calc(var(--e-navp) + .75rem) var(--edge-x) clamp(.75rem,2.5vh,1.5rem)}
 html.e-move .e-four-in{width:100%}
@@ -258,7 +276,7 @@ html.e-move .e-stage.is-done .e-cam{visibility:hidden}
 
 /* ================================================================ packages ==== */
 .e-pk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2vw,1.6rem);align-items:stretch}
-.e-pk-card{position:relative;display:flex;flex-direction:column;padding:clamp(1.4rem,2.4vw,2rem);border-radius:var(--e-r);scroll-margin-top:calc(var(--e-navp) + 1.5rem);
+.e-pk-card{position:relative;display:flex;flex-direction:column;padding:clamp(1.4rem,2.4vw,2rem);border-radius:var(--e-r);scroll-margin-top:calc(var(--e-navp) + 1.5rem - var(--e-sp));
   background:linear-gradient(180deg,rgba(246,244,244,.045),rgba(246,244,244,.015) 60%,rgba(246,244,244,.01));box-shadow:inset 0 0 0 1px var(--line);
   transition:box-shadow .4s var(--ease-out)}
 .e-pk-card.is-pick{background:linear-gradient(180deg,rgba(255,117,23,.07),rgba(246,244,244,.015) 55%,rgba(246,244,244,.01));box-shadow:inset 0 0 0 1px rgba(255,117,23,.42)}
@@ -318,7 +336,7 @@ html.e-move .e-stage.is-done .e-cam{visibility:hidden}
 .e-total-n b{display:block;font-family:var(--font-display);font-weight:700;font-size:clamp(4rem,12.5vw,11.5rem);line-height:.82;letter-spacing:-.05em;color:var(--white);font-variant-numeric:tabular-nums}
 .e-total-n span{display:block;margin-top:1.1rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--white);text-wrap:balance}
 .e-total-n small{display:block;margin-top:.35rem;font-size:var(--fs-small);color:var(--gray-light)}
-.e-most{margin:1rem 0 0 auto;max-width:27rem;font-size:var(--fs-body-s);line-height:1.55;color:var(--gray-light)}
+.e-most{margin:1rem 0 0 auto;max-width:27rem;font-size:var(--fs-body-s);line-height:1.55;color:var(--gray-light);text-wrap:balance}
 .e-most b{margin-right:.35rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--white)}
 .e-reach-b{padding-top:clamp(2rem,4vw,3rem)}
 /* one joint post, two audiences, said plainly (R3), and the audience it joins (R4) */
@@ -335,7 +353,7 @@ html.e-move .e-stage.is-done .e-cam{visibility:hidden}
 .e-base div{display:flex;flex-direction:column}
 .e-base dt{font-size:var(--fs-micro);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
 .e-base dd{margin:.2rem 0 0;font-size:var(--fs-body-s)}
-.e-pod{grid-column:1 / -1;margin:0;font-size:var(--fs-small);color:var(--gray)}
+.e-pod{grid-column:1 / -1;margin:0;font-size:var(--fs-small);color:var(--gray);text-wrap:pretty}
 /* the 2026 season on its real dates, Today marked, the next comp lit, the views per event with a Watch on each (R1, D's rows) */
 .e-season{margin:clamp(2rem,4vw,3rem) 0 0;padding:0}
 .e-season-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.4rem 1rem;margin:0 0 1.1rem}
@@ -350,6 +368,8 @@ html.e-move .e-stage.is-done .e-cam{visibility:hidden}
   background:var(--white);box-shadow:0 0 0 2px var(--bg);transition:box-shadow .25s var(--ease)}
 .e-tl-k.is-next{background:rgba(255,117,23,.6)}
 .e-season[data-state="now"] .e-tl-k.is-next{background:var(--orange);box-shadow:0 0 0 2px var(--bg),0 0 0 5px rgba(255,117,23,.16),0 0 14px rgba(255,117,23,.7)}
+/* once it is over it is one of the season's past events: orange is only for next and on air (qa-2-5) */
+.e-season[data-state="none"] .e-tl-k.is-next{background:var(--white)}
 .e-tl-today{position:absolute;top:0;left:calc(var(--x) * 100%);height:1.25rem;border-left:1px dashed var(--gray-light)}
 .e-tl-today i{position:absolute;right:.4rem;top:-.05rem;font-style:normal;font-size:.6875rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-light);white-space:nowrap}
 .e-season:has(.e-row[data-i="1"]:is(:hover,:focus-within)) .e-tl-k[data-i="1"],.e-season:has(.e-row[data-i="2"]:is(:hover,:focus-within)) .e-tl-k[data-i="2"],
@@ -362,7 +382,8 @@ html.e-move .e-stage.is-done .e-cam{visibility:hidden}
 .e-row-n{grid-area:n;min-width:0}
 .e-row-n b{display:block;font-family:var(--font-display);font-weight:600;font-size:1rem;line-height:1.3;color:var(--white)}
 .e-row-n small{display:block;margin-top:.15rem;font-size:var(--fs-small);line-height:1.4;color:var(--gray)}
-.e-row-w::before{content:"\00b7";margin:0 .45rem}
+/* the middot between the edition and the place is real text, for the same reason (critic-2-5) */
+.e-row-sep{margin:0 .2rem}
 .e-row-m{grid-area:m;font-size:var(--fs-small);line-height:1.45;color:var(--gray-light)}
 .e-row-bar{grid-area:bar;position:relative;height:8px}
 .e-row-bar i{position:absolute;left:0;top:0;bottom:0;width:calc(var(--v) * 100%);min-width:6px;background:rgba(246,244,244,.78);border-radius:0 4px 4px 0;
@@ -370,8 +391,9 @@ html.e-move .e-stage.is-done .e-cam{visibility:hidden}
 .e-row-v{grid-area:v;justify-self:end;font-family:var(--font-display);font-weight:600;font-size:1.1rem;color:var(--white);font-variant-numeric:tabular-nums;white-space:nowrap}
 .e-row-v small{font-family:var(--font-body);font-weight:400;font-size:var(--fs-small);color:var(--gray)}
 .e-watch{grid-area:w;justify-self:end;padding:.55rem 0;font-family:var(--font-display);font-weight:600;font-size:.86rem;color:var(--white);text-decoration:none;white-space:nowrap}
-.e-watch i{display:inline-block;margin-left:.15rem;font-style:normal;color:var(--orange);transition:transform .3s var(--ease-out)}
+.e-watch i{display:inline-block;margin-left:.15rem;font-style:normal;color:currentColor;transition:transform .3s var(--ease-out)}
 .e-watch:hover i,.e-watch:focus-visible i{transform:translateX(4px)}
+.e-proof .md-meta a i{color:currentColor}
 .e-row.is-next{grid-template-areas:"d n m w w w"}
 .e-row.is-next .e-row-bar,.e-row.is-next .e-row-v{display:none}
 .e-row.is-next .e-row-d b{color:var(--white);font-weight:600}
@@ -388,8 +410,13 @@ html.md-js .e-season:not(.is-in) .e-row-bar i{transform:scaleX(0)}
 .e-quote .e-eg{margin-bottom:1.3rem;background:rgba(12,13,17,.55);color:var(--white)}
 .e-quote blockquote{margin:0}
 .e-quote p{margin:0;font-family:var(--font-display);font-weight:600;font-size:clamp(1.5rem,3.2vw,2.6rem);line-height:1.24;letter-spacing:-.015em;color:var(--white);text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.35)}
-.e-quote figcaption{margin-top:var(--sp-3);display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,244,244,.74)}
-.e-watch-head{scroll-margin-top:calc(var(--e-navp) + 1.5rem)}
+.e-quote figcaption{margin-top:var(--sp-3);display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:.6rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,244,244,.74)}
+/* the organiser still to come: the site's to-supply mark (italic, lower case), as bright as the line beside it over the
+   photo (critic-2-4) */
+.e-quote figcaption .v2-tbd{font-size:var(--fs-small);letter-spacing:0;text-transform:none;color:inherit}
+/* the Watch intro: no ragged break inside a figure or a name (critic-2-3) */
+.e-watch-head .kit-intro{text-wrap:pretty}
+.e-watch-head{scroll-margin-top:calc(var(--e-navp) + 1.5rem - var(--e-sp))}
 .e-stills-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.4rem 2rem;margin:clamp(3rem,6vw,4.5rem) 0 0;padding-top:var(--sp-3);border-top:1px solid var(--line)}
 .e-stills-head h3{margin:0;font-family:var(--font-display);font-weight:600;font-size:var(--fs-h3);color:var(--white)}
 .e-stills-head p{margin:0;font-size:var(--fs-small);color:var(--gray)}
@@ -454,7 +481,7 @@ html body .cta-band .e-dates-card h2{margin:0;font-size:var(--fs-h2)}
 .e-dates-card>.e-form{grid-area:form}
 .e-dates-card>.e-cal{grid-area:cal}
 .e-dates-card>.e-or{grid-area:or}
-.e-dates{scroll-margin-top:0}
+.e-dates{scroll-margin-top:calc(0px - var(--e-sp))}
 /* the 2027 season, EXAMPLE: open months fill the dates, held ones are dashed, booked ones struck through (S1) */
 .e-cal-h{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:0 0 .8rem}
 .e-cal-h b{font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);color:var(--white)}
@@ -480,7 +507,7 @@ html body .cta-band .e-dates-card h2{margin:0;font-size:var(--fs-h2)}
 .e-opt{color:var(--gray)}
 /* a field the browser points at never lands under the fixed nav (S2) */
 .e-field input,.e-field select{width:100%;min-height:48px;background:var(--card);color:var(--white);border:1px solid var(--rule);border-radius:0;
-  font-family:var(--font-body);font-size:16px;padding:.7rem .8rem;scroll-margin-top:calc(var(--e-nav) + 3rem);color-scheme:dark}
+  font-family:var(--font-body);font-size:16px;padding:.7rem .8rem;scroll-margin-top:calc(var(--e-nav) + 3rem - var(--e-sp));color-scheme:dark}
 .e-field input::placeholder{color:#6b6b70}
 .e-field input:focus,.e-field select:focus{outline:none;border-color:var(--orange)}
 /* a month picked in the season lands here: the field shows it for a moment (critic-1-11) */
@@ -514,12 +541,13 @@ html body .e-nl .v2-nl-row input{min-height:44px;min-width:0}
    dates, at the form, at the footer, and while the nav (with its Enquire Now) is shown */
 .e-bar{display:none}
 @media (max-width:820px){
-  /* this page's Enquire Now goes to the same form as the opening's Check dates (H5). On a phone the two sit one above
-     the other, so the top nav (only ever seen over the opening) leaves the one orange button to the opening
-     (critic-1-10); the pinned nav that comes back on a scroll up keeps the site's own. Matched by its #dates link, so no
-     other page changes. A wide screen keeps the site's header as it is: there the two buttons are far apart */
-  .page-wrap>nav:not(.v2-nav-pinned) .nav-cta[href="#dates"]{display:none}
-  .page-wrap>nav:not(.v2-nav-pinned):has(.nav-cta[href="#dates"]) .nav-toggle{margin-left:auto}
+  /* this page's Enquire Now goes to the same form as the opening's Check dates (H5). On a phone it would sit above the
+     opening's button, or, in the nav that comes back on a scroll up, beside a Check dates or over the form itself, so
+     here the nav leaves the one orange button to the page: the opening's, a section's, or the bar's (critic-1-10,
+     critic-2-2). Matched by its #dates link, so no other page changes. A wide screen keeps the site's header as it is
+     (there the two buttons are far apart; the owner's call) */
+  .page-wrap>nav .nav-cta[href="#dates"]{display:none}
+  .page-wrap>nav:has(.nav-cta[href="#dates"]) .nav-toggle{margin-left:auto}
   /* a field or link reached with the keyboard never lands under the bar (qa-1-2) */
   html:has(.e-bar.show){scroll-padding-bottom:4.75rem}
   .e-bar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:.8rem;
@@ -616,7 +644,7 @@ html body .e-nl .v2-nl-row input{min-height:44px;min-width:0}
   html body .e-bug .kit-stat>.e-cr{margin-top:.4rem;font-size:12px;line-height:1.3;letter-spacing:0;text-transform:none;color:rgba(246,244,244,.9)}
   html body .e-bug .e-cr span{display:block;white-space:nowrap}
   html body .e-bug .e-cr .e-cr-s{color:rgba(246,244,244,.72)}
-  .e-cr-s::before{content:none}
+  html body .e-bug .e-cr .e-cr-sep{display:none}
   html body .e-bug .kit-stat em{display:none}
   /* the four: a swipe rail of tall posters on the numbered line, the one on air in the middle (P3) */
   :root{--e-pw:min(280px,74vw)}
@@ -655,7 +683,7 @@ html body .e-nl .v2-nl-row input{min-height:44px;min-width:0}
   .e-tl-today i{font-size:.6875rem;letter-spacing:.08em}
   /* the edition and the place each on their own line, no middot at a line's start (critic-1-8) */
   .e-row-n small span{display:block}
-  .e-row-w::before{content:none}
+  .e-row-n small .e-row-sep{display:none}
   .e-row{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"d d" "n v" "m m" "bar bar" "w w";row-gap:.45rem;padding:1.1rem 0}
   .e-row.is-next{grid-template-areas:"d d" "n n" "m m" "w w"}
   .e-row-v{align-self:start}

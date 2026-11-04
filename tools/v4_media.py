@@ -130,9 +130,15 @@ V = {
     "ZL9B5eXip5o": ("srs4", "Live: Task 2", 1145, "5 h 41 min", "25 May 2026", None),
     "SZWQjcO_fWk": ("srs4", "Live: Task 3", 890, "4 h 59 min", "26 May 2026", None),
     "x8sSBSBy4dI": ("srs4", "Live: Task 4, part 1", 853, "1 h 57 min", "29 May 2026", None),
-    "DA4nGop3i9g": ("srs4", "Live: Task 4, part 2", 513, "3 h 55 min", "30 May 2026", None),
     "PEyO6MXngUw": ("srs4", "Live: Task 5, the final day", 680, "5 h 8 min", "30 May 2026", None),
+    "DA4nGop3i9g": ("srs4", "Live: Task 4, part 2", 513, "3 h 55 min", "30 May 2026", None),
 }
+# the showreel lists them in this order: by comp, the most watched comp first, and by views inside each (buyer-2-3)
+_order = [c for c in dict.fromkeys(v[0] for v in V.values())]
+assert _order == sorted(_order, key=lambda c: -sum(v[2] for v in V.values() if v[0] == c)), _order
+for _c in _order:
+    _k = [v[2] for v in V.values() if v[0] == _c]
+    assert _k == sorted(_k, reverse=True), (_c, _k)
 COMPS = {"pwc": "PWC Super Final, Pegalajar", "srs5": "SRS Piedrahita", "srs4": "SRS Bassano, live"}
 REEL = "BRAX1XMU390"
 TOTAL = sum(v[2] for v in V.values())             # 31,250 on 3 Nov 2026
@@ -303,9 +309,9 @@ def hero():
         </div>
       </div>
       <div class="kit-stats e-bug">
-        <div class="kit-stat"><b>%(pv)s</b><span class="e-cr"><span>views</span><span class="e-cr-s">PWC Super Final</span></span><em>5 highlight videos, May 2026</em></div>
-        <div class="kit-stat"><b>%(rv)s</b><span class="e-cr"><span>views</span><span class="e-cr-s">one task day film</span></span><em>Task 1, an 86.5 km sprint</em></div>
-        <div class="kit-stat"><b>21<small>&nbsp;h</small> 42<small>&nbsp;min</small></b><span class="e-cr"><span>live</span><span class="e-cr-s">SRS Bassano</span></span><em>5 broadcasts, May 2026</em></div>
+        <div class="kit-stat"><b>%(pv)s</b><span class="e-cr"><span>views</span><span class="e-cr-sep">, </span><span class="e-cr-s">PWC Super Final</span></span><em>5 highlight videos, May 2026</em></div>
+        <div class="kit-stat"><b>%(rv)s</b><span class="e-cr"><span>views</span><span class="e-cr-sep">, </span><span class="e-cr-s">one task day film</span></span><em>Task 1, an 86.5&nbsp;km sprint</em></div>
+        <div class="kit-stat"><b>21<small>&nbsp;h</small> 42<small>&nbsp;min</small></b><span class="e-cr"><span>live</span><span class="e-cr-sep">, </span><span class="e-cr-s">SRS Bassano</span></span><em>5 broadcasts, May 2026</em></div>
       </div>
     </div>
   </header>''' % dict(s16=src(SHOT, 1600), ss=srcset(SHOT), tags=POSTERS[1][4], slate=slate, call=CALL,
@@ -407,7 +413,7 @@ def packages():
         %(f3)s
       </article>
     </div>
-    <p class="e-addons"><b>Add to any package</b><span>Live commentary, as at SRS Bassano: 5 broadcasts, 21&nbsp;h&nbsp;42&nbsp;min on air</span><span>Stills, as at SRS Piedrahita</span></p>
+    <p class="e-addons"><b>Also offered</b><span>Live commentary, as at SRS Bassano: 5 broadcasts, 21&nbsp;h&nbsp;42&nbsp;min on air</span><span>Stills, as at SRS Piedrahita</span></p>
     <div class="e-spons" aria-labelledby="e-spons-t">
       <h3 id="e-spons-t">Where your sponsors appear</h3>
       <ul>
@@ -439,7 +445,7 @@ def reach():
         marks.append('<span class="e-tl-k" data-i="%d" style="--x:%.4f;--w:%.4f"></span>' % (i, at(a), (b - a).days / (LINE[1] - LINE[0]).days))
         v = views(ev["comp"])
         rows.append('<li class="e-row" data-i="%d" style="--v:%.4f"><span class="e-row-d">%s</span>'
-                    '<span class="e-row-n"><b>%s</b><small><span>%s</span><span class="e-row-w">%s</span></small></span><span class="e-row-m">%s</span>'
+                    '<span class="e-row-n"><b>%s</b><small><span>%s</span><span class="e-row-sep"> &middot; </span><span class="e-row-w">%s</span></small></span><span class="e-row-m">%s</span>'
                     '<span class="e-row-bar" aria-hidden="true"><i></i></span><span class="e-row-v">%s<small> views</small></span>'
                     '<a class="e-watch" href="#watch" data-comp="%s" aria-label="Watch the %s videos">Watch <i aria-hidden="true">&rarr;</i></a></li>'
                     % (i, v / top, ev["when"], ev["name"], ev["edition"], ev["where"], ev["made"], n(v), ev["comp"], ev["name"]))
@@ -448,7 +454,7 @@ def reach():
         a, b = day(up["first"]), day(up["last"])
         marks.append('<span class="e-tl-k is-next" data-i="%d" style="--x:%.4f;--w:%.4f"></span>' % (len(SEASON) + 1, at(a), (b - a).days / (LINE[1] - LINE[0]).days))
         rows.append('<li class="e-row is-next" data-i="%d" data-up-row><span class="e-row-d"><i class="e-tally" aria-hidden="true"></i><b data-up-k>Next</b> %s</span>'
-                    '<span class="e-row-n"><b>%s</b><small><span>%s</span><span class="e-row-w">%s</span></small></span><span class="e-row-m">%s</span>'
+                    '<span class="e-row-n"><b>%s</b><small><span>%s</span><span class="e-row-sep"> &middot; </span><span class="e-row-w">%s</span></small></span><span class="e-row-m">%s</span>'
                     '<span class="e-row-bar" aria-hidden="true"></span><span class="e-row-v"></span>'
                     '<a class="e-watch" href="#dates" data-cd>Your comp next? Check dates <i aria-hidden="true">&rarr;</i></a></li>'
                     % (len(SEASON) + 1, up["short"], E(up["name"]), E(up["edition"]), E(up["where"]), E(up["facts"])))
@@ -466,7 +472,7 @@ def reach():
       </div>
       <div class="e-total">
         <p class="e-total-n"><b>%(total)s</b><span>views on 13 comp videos in 2026</span><small>Counted on YouTube, %(counted)s</small></p>
-        <p class="e-most"><b>Most watched</b> Task 1 Highlights, PWC Super Final, %(rv)s views for %(ln)s of an 86.5 km sprint</p>
+        <p class="e-most"><b>Most watched</b> Task 1 Highlights, PWC&nbsp;Super&nbsp;Final, %(rv)s&nbsp;views for %(ln)s of an 86.5&nbsp;km sprint</p>
       </div>
     </div>
   </div>
@@ -526,7 +532,7 @@ def proof():
     <div class="kit-head e-watch-head" id="watch">
       <span class="kit-kicker">The work</span>
       <h2 class="kit-title" id="e-watch-t">Watch The Coverage</h2>
-      <p class="kit-intro">The 13 comp videos of 2026, the most watched first: Task 1 of the Super Final, %(rv)s views. Every one plays here.</p>
+      <p class="kit-intro">The 13 comp videos of 2026, by comp and the most watched first: Task 1 of the Super&nbsp;Final, %(rv)s&nbsp;views. Every one plays here.</p>
     </div>
     %(reel)s
     <div class="e-stills-head">

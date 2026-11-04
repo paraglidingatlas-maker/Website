@@ -114,7 +114,10 @@ html.enq-media [data-enq="trip"]{display:none;}
 html.enq-media .page-wrap>nav .v4-nav a.is-here{color:var(--gray-light);box-shadow:none;}
 /* the second of two steps, arriving from the Media page with the event filled in (buyer-1-5) */
 .enq-step{margin:-.5rem 0 1.4rem;color:var(--gray-light);font-size:.9rem;line-height:1.65;}
+.enq-step p{margin:0;}
 .enq-step b{color:var(--white);font-weight:600;}
+.enq-step .enq-rb{margin-top:.35rem;color:var(--white);overflow-wrap:anywhere;}
+.enq-rb a{color:var(--orange);}
 .enq-consent{transition:box-shadow .6s var(--ease);}
 .enq-consent.is-lit{box-shadow:inset 0 0 0 1px var(--orange);}
 @media (prefers-reduced-motion:reduce){.enq-consent{transition:none;}}
@@ -396,7 +399,11 @@ if (/[?&]trip=media(?:&|$)/i.test(location.search)) { document.documentElement.c
         <label for="consent">I am happy for Paragliding Atlas to use these details to answer my enquiry. I understand they are kept for up to 24 months <span data-enq="trip">if this does not become a booking</span><span data-enq="media">if no coverage is agreed</span>, that they are not sold or shared for marketing, and that I can ask for them to be deleted at any time. See the <a href="privacy-policy.html">Privacy Policy</a>.</label>
       </div>
       <!-- Media mode, arriving from the Media page's dates form with the event already filled: the second of two steps -->
-      <p class="enq-step" id="enqStep" hidden><b>Step 2 of 2.</b> Your event is filled in from the Media page: check it, tick the box and send.</p>
+      <div class="enq-step" id="enqStep" hidden>
+        <p><b>Step 2 of 2.</b> Your event is filled in from the Media page: check it, tick the box and send.</p>
+        <!-- what will be sent, read back in one line, so the details above need not be scrolled to (buyer-2-2) -->
+        <p class="enq-rb"><span id="enqReadback"></span> <a href="#event" id="enqEdit">Edit</a></p>
+      </div>
 
       <!-- Spam traps for the posted mode. A person never sees or fills
            "website"; a bot fills every field. "t" is stamped by the script. -->
@@ -597,9 +604,30 @@ if (/[?&]trip=media(?:&|$)/i.test(location.search)) { document.documentElement.c
 
   /* Arriving from the Media page's dates form (step 1 of 2) with the event, the name and the email filled in: this is
      step 2. Its line shows, and the consent box and Send come into view, lit for a moment (buyer-1-5). */
+  /* Its read-back: the event, its dates, place and package, and who is asking, in one line beside "Step 2 of 2", so
+     the organiser checks it where they send it; Edit takes them to the Event field. Set as text only, and kept up to
+     date while they change any of it (buyer-2-2). */
+  var rb = d.getElementById('enqReadback'), edit = d.getElementById('enqEdit'), form = d.getElementById('enqForm');
+  function readback() {
+    if (!rb) return;
+    var v = function (id) { var el = d.getElementById(id); return el && el.value ? el.value.trim() : ''; };
+    var ps = d.getElementById('package'), pk = ps && ps.selectedIndex >= 0 ? ps.value : '';
+    var parts = [v('event'), v('when'), v('place'), !pk || pk === 'unsure' ? 'package not sure yet' : ps.options[ps.selectedIndex].text + ' package'];
+    var who = v('name') + (v('email') ? ' (' + v('email') + ')' : '');
+    rb.textContent = parts.filter(Boolean).join(' · ') + (who ? ', for ' + who : '') + '.';
+  }
+  if (edit) edit.addEventListener('click', function (e) {
+    var f = d.getElementById('event'); if (!f) return;
+    e.preventDefault();
+    var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    f.scrollIntoView({ block: 'center', behavior: still ? 'auto' : 'smooth' });
+    try { f.focus({ preventScroll: true }); } catch (err) { f.focus(); }
+  });
   var cbox = d.querySelector('.enq-consent');
   if (cur && step && cbox && q2 && q2.get('event') && ['event', 'name', 'email'].every(function (id) { var el = d.getElementById(id); return el && el.value.trim(); })) {
     step.hidden = false;
+    readback();
+    if (form) { form.addEventListener('input', readback); form.addEventListener('change', readback); }
     var bring = function () {
       var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
       cbox.scrollIntoView({ block: 'center', behavior: still ? 'auto' : 'smooth' });
