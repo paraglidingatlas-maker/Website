@@ -18,7 +18,17 @@ give the owner the prompt to paste.
   a check that the PayPal payment went through before the file is handed over (e.g. the Cloudflare Worker plus R2,
   with PayPal's order check). Not built; the owner has to set up PayPal (business account, API credentials) and say
   yes to the storage. Until then the button stays "[to supply]".
-- Design: the owner had not seen the screenshots; chat 20 sent them in the chat (design-d/e/f.jpg) and is waiting.
+- Design (owner, 5 Nov): F as the base with two things from D: the lift-out viewer (the photo flies from its cell and
+  back, FLIP by transform) and "Every task on one page". Built: tools/v4_comp_gallery.py writes
+  media-srs-tapalpa-2026.html (new, in NEW_PAGES) and media-srs-piedrahita-2026.html (all 325, the task videos and
+  lines kept); shared prototypes/v4/v4-gallery.css and v4-gallery.js (from samples/gallery-f, find-your-wing and the
+  sample bits dropped, Save makes a JPEG, PayPal link per photo once PAYPAL_EMAIL is set). tools/v4_media.py no longer
+  writes the Piedrahita page; the Media page links both galleries. Preview sent to the owner 5 Nov (screenshots);
+  NOT live until the owner says yes. Tapalpa assumes one task a day from 8 Nov: set COMPS["tapalpa"]["dates"] when a
+  day is cancelled. Gates take more than 10 minutes: run them in the background.
+- Owner's question (5 Nov): where to show the gallery on the site. Proposed: Media stays in the menu and footer; during a
+  comp, a small "Live from Tapalpa" hint in the nav that shows itself only between the comp's dates (plus 3 days).
+  Waiting for a yes.
 - Done while waiting: tools/v4_comp_gallery.py (comp facts, photos.json by task, licence, PayPal hook buy_link(),
   shell, checks; render() is the chosen design's markup, still to write; v4_gallery.py is the drawings page, not this).
   media-2026: README says the web copies are CC BY-NC 4.0; srs-tapalpa/photos.json is [] until Task 1.
