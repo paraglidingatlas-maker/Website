@@ -24,7 +24,8 @@ give the owner the prompt to paste.
   lines kept); shared prototypes/v4/v4-gallery.css and v4-gallery.js (from samples/gallery-f, find-your-wing and the
   sample bits dropped, Save makes a JPEG, PayPal link per photo once PAYPAL_EMAIL is set). tools/v4_media.py no longer
   writes the Piedrahita page; the Media page links both galleries. Preview sent to the owner 5 Nov (screenshots);
-  NOT live until the owner says yes. Tapalpa assumes one task a day from 8 Nov: set COMPS["tapalpa"]["dates"] when a
+  LIVE 5 Nov (owner's yes; main 701b04e2, deploy ok): checked on paraglidingatlas.com at 390x683, 390x844, 1440x900, no
+  errors, no 4xx, no sideways scroll, 325 cells, the viewer loads. The shared files are served from assets/v4/. Tapalpa assumes one task a day from 8 Nov: set COMPS["tapalpa"]["dates"] when a
   day is cancelled. Gates take more than 10 minutes: run them in the background.
 - Owner's question (5 Nov): where to show the gallery on the site. Proposed: Media stays in the menu and footer; during a
   comp, a small "Live from Tapalpa" hint in the nav that shows itself only between the comp's dates (plus 3 days).
