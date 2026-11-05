@@ -13,7 +13,7 @@ docs/designers/media-build-spec.md lists (each item has an id, quoted in the com
                                    2026 season on its dates with a Today mark); the quote (EXAMPLE); the work (13
                                    videos that play in place, 10 stills in the viewer); delivery; the questions; the
                                    dates form that hands over to enquire.html?trip=media; the newsletter in one line
-  media-srs-piedrahita-2026.html   one comp, for pilots: its videos and every chosen still, by task (A5: kept as it
+  media-srs-piedrahita-2026.html   (since chat 20 written by tools/v4_comp_gallery.py, the comp gallery) one comp, for pilots: its videos and every chosen still, by task (A5: kept as it
                                    was, now on the shared CSS and JS; its photo pick is still with the owner)
 
 Shared files: prototypes/v4/v4-media.css (both pages, A1) and prototypes/v4/v4-media.js (play in place, the reel,
@@ -539,7 +539,8 @@ def proof():
       <p>Every frame shown whole. Open one to see it full size and zoom in.</p>
     </div>
     %(grid)s
-    <div class="e-more"><a class="btn-lines" href="media-srs-piedrahita-2026.html" data-hover>All 20 from Piedrahita, by task</a></div>
+    <div class="e-more"><a class="btn-lines" href="media-srs-piedrahita-2026.html" data-hover>All 325 from Piedrahita, by task</a>
+      <a class="btn-lines" href="media-srs-tapalpa-2026.html" data-hover>Tapalpa 2026, each task day from 8 Nov</a></div>
   </div>
 </section>''' % dict(q16=src(QUOTE, 1600), qss=srcset(QUOTE), tbd=TBD, rv=n(V[REEL][2]), reel=reel,
                      grid=grid(STILLS, "Stills from SRS Piedrahita 2026"))
@@ -767,7 +768,8 @@ def check(name, page):
 
 
 if __name__ == "__main__":
-    for name, page in (("media.html", media_page()), ("media-srs-piedrahita-2026.html", piedrahita_page())):
+    # the comp pages (media-srs-*.html) are tools/v4_comp_gallery.py's since chat 20; piedrahita_page() is the old one
+    for name, page in (("media.html", media_page()),):
         check(name, page)
         open(os.path.join(V4, name), "w").write(page)
         print("wrote prototypes/v4/" + name, len(page))

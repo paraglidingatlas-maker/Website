@@ -436,7 +436,7 @@ html.md-js .e-season:not(.is-in) .e-row-bar i{transform:scaleX(0)}
 .e-stills-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.4rem 2rem;margin:clamp(3rem,6vw,4.5rem) 0 0;padding-top:var(--sp-3);border-top:1px solid var(--line)}
 .e-stills-head h3{margin:0;font-family:var(--font-display);font-weight:600;font-size:var(--fs-h3);color:var(--white)}
 .e-stills-head p{margin:0;font-size:var(--fs-small);color:var(--gray)}
-.e-more{margin-top:var(--sp-4)}
+.e-more{margin-top:var(--sp-4);display:flex;flex-wrap:wrap;gap:1rem 1.6rem}
 
 /* ================================================================ delivery ==== */
 .e-del-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:start}

@@ -18,6 +18,7 @@ After running this, build in a clean worktree and copy the pages back before com
 
     python3 tools/v4_comp_gallery.py [tapalpa|piedrahita ...] [--repo /home/user/media-2026]
 """
+import datetime
 import html
 import json
 import os
@@ -36,27 +37,28 @@ if "--repo" in sys.argv:
     REPO = sys.argv[sys.argv.index("--repo") + 1]
 
 CREDIT = "Photo: Aninder Singh, Paragliding Atlas"
-LICENCE = ('Free web copy, 2400 px, under <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="license noopener" '
-           'target="_blank">CC BY-NC 4.0</a>: share it with the credit, not for commercial use.')
 PRICE = "EUR 1"
-PAYPAL = None          # [to supply]: the owner's PayPal set-up; buy_link() returns None until it exists
-DELIVERY = "Download on this page right after paying"     # owner, 4 Nov: "The download has to be on site"
 
-# Facts: only from the owner and docs/designers/gallery-brief.md; a task's date is set when the comp flies it
+# Facts: only from the owner, docs/designers/gallery-brief.md and the task videos (tools/v4_media.py V); a task's
+# date: Tapalpa assumes one task a day from 8 Nov (set "dates" when a day is cancelled); Piedrahita's are not known
 COMPS = {
-    "tapalpa": dict(page="media-srs-tapalpa-2026.html", folder="srs-tapalpa", title="Tapalpa 2026",
-                    kicker="SRS Advance Edition &middot; Tapalpa, Mexico",
-                    intro="Tasks 8 to 14 Nov 2026: 7 tasks, up to 120 pilots from 44 countries.",
+    "tapalpa": dict(page="media-srs-tapalpa-2026.html", folder="srs-tapalpa", title="Tapalpa 2026", tz="America/Mexico_City",
+                    kicker="SRS Advance Edition &middot; Tapalpa, Mexico", span="8 to 14 Nov 2026",
+                    facts=["Tasks 8 to 14 Nov 2026", "7 tasks", "Up to 120 pilots, 44 countries", "Photos by Aninder Singh"],
                     desc="SRS Advance Edition, Tapalpa, Mexico, 8 to 14 Nov 2026: every photo by task, free to save, "
                          "the original EUR 1. Photos by Paragliding Atlas.",
-                    tasks=["T%d" % i for i in range(1, 8)], window=("2026-11-08", "2026-11-14"), dates={}),
-    "piedrahita": dict(page="media-srs-piedrahita-2026.html", folder="srs-piedrahita", title="Piedrahita 2026",
-                       kicker="SRS BGD Edition &middot; Piedrahita, Ávila, Spain",
-                       intro="22 to 29 Aug 2026, FAI Category 2: 120 pilots from 54 countries.",
-                       desc="SRS BGD Edition, Piedrahita, Spain, 22 to 29 Aug 2026: every photo by task, free to save, "
-                            "the original EUR 1. Photos by Paragliding Atlas.",
-                       tasks=["T1", "T2", "T3"], window=("2026-08-22", "2026-08-29"), dates={},
-                       videos={"T1": "uCEfssE40u8", "T2": "NXUEyPQ3V4E"}, day1="cuGs7Lk6Dt4"),
+                    tasks=["T%d" % i for i in range(1, 8)], window=("2026-11-08", "2026-11-14"), one_a_day=True, dates={}),
+    "piedrahita": dict(page="media-srs-piedrahita-2026.html", folder="srs-piedrahita", title="Piedrahita 2026", tz="Europe/Madrid",
+                       kicker="SRS BGD Edition &middot; Piedrahita, Ávila, Spain", span="22 to 29 Aug 2026",
+                       facts=["22 to 29 Aug 2026", "FAI Category 2", "120 pilots, 54 countries", "Photos by Aninder Singh"],
+                       desc="SRS BGD Edition, Piedrahita, Spain, 22 to 29 Aug 2026: all 325 photos by task, free to save, "
+                            "the original EUR 1, and the task videos. Photos by Paragliding Atlas.",
+                       tasks=["T1", "T2", "T3"], window=("2026-08-22", "2026-08-29"), dates={}, lead="SRS_5_T3_63",
+                       # the task lines and videos as on the page chat 19 built (from the videos' descriptions)
+                       stories={"T1": "59 km, humid air, a 2,100 m ceiling and a long leg into a westerly wind.",
+                                "T2": "75 km, and a flatland gamble that cut the course short.",
+                                "T3": "The race from the air."},
+                       videos={"T1": ["cuGs7Lk6Dt4", "uCEfssE40u8"], "T2": ["NXUEyPQ3V4E"]}),
 }
 
 
@@ -98,18 +100,193 @@ def days(comp):
     return [(t, label(t), by.get(t, [])) for t in COMPS[comp]["tasks"]]
 
 
-def buy_link(stem):
-    """the payment link for one photo, carrying its file name; None until the owner's PayPal set-up exists"""
-    return PAYPAL(stem) if PAYPAL else None
+PAYPAL_EMAIL = None   # [to supply]: the owner's PayPal address; then each photo's button pays EUR 1 with its file name
 
 
-def buy_note(stem):
-    return ("%s, %s. %s." % (E(stem), PRICE, DELIVERY)) if buy_link(stem) else ("%s, %s: payment %s" % (E(stem), PRICE, TBD))
+def pay_template():
+    """PayPal's standard payment link, one per photo: {stem} becomes the photo's file name (its item name)"""
+    if not PAYPAL_EMAIL:
+        return ""
+    return ("https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=%s&item_name={stem}&amount=1.00"
+            "&currency_code=EUR&no_shipping=1" % urllib.request.quote(PAYPAL_EMAIL))
+
+
+def colour(comp, stem):
+    """the photo's average colour, for its cell while it loads (from the local 800 px copy; grey without one)"""
+    try:
+        from PIL import Image
+        with Image.open(os.path.join(REPO, COMPS[comp]["folder"], stem + "-800.webp")) as im:
+            r, g, b = im.convert("RGB").resize((1, 1), Image.BILINEAR).getpixel((0, 0))
+        return "#%02x%02x%02x" % (r, g, b)
+    except Exception:
+        return "#5f6064"
+
+
+def nice(date):
+    """'2026-11-08' -> ('Sun 8 Nov', 'Sun 8 Nov 2026', '8 Nov')"""
+    dt = datetime.date.fromisoformat(date)
+    return dt.strftime("%a ") + str(dt.day) + dt.strftime(" %b"), dt.strftime("%a ") + str(dt.day) + dt.strftime(" %b %Y"), str(dt.day) + dt.strftime(" %b")
+
+
+def task_dates(comp):
+    c = COMPS[comp]
+    if c.get("one_a_day"):          # one task a day from the first day, until the owner's files say otherwise
+        d0 = datetime.date.fromisoformat(c["window"][0])
+        out = {t: (d0 + datetime.timedelta(days=k)).isoformat() for k, t in enumerate(c["tasks"])}
+        out.update(c["dates"])
+        return out
+    return dict(c["dates"])
+
+
+GLIDER = ('<svg viewBox="0 0 22 14" aria-hidden="true"><path d="M1.5 5.2C6 1.4 16 1.4 20.5 5.2" stroke-width="1.6"/>'
+          '<path d="M2.6 5 11 12.2 19.4 5" stroke-width=".6"/><circle cx="11" cy="12" r="1.5" fill="currentColor" stroke="none"/></svg>')
+
+
+def nphotos(n):
+    return "%d photo%s" % (n, "" if n == 1 else "s")
+
+
+def cell(comp, r, task, k, n):
+    stem, w, h = r["stem"], r["w"], r["h"]
+    tw, th = (800, round(800 * h / w)) if w >= h else (round(800 * w / h), 800)
+    return ('<figure class="gf-ph" id="%s" style="--r:%.4f;--c:%s"><a href="%s" data-stem="%s" data-W="%d" data-H="%d">'
+            '<img src="%s" width="%d" height="%d" alt="%s, photo %d of %d" loading="lazy" decoding="async"></a>'
+            '<figcaption>%s</figcaption></figure>'
+            % (E(stem), w / h, colour(comp, stem), src(comp, stem, 2400), E(stem), w, h, src(comp, stem, 800), tw, th,
+               E(label(task)), k + 1, n, E(stem)))
 
 
 def render(comp):
-    """the page's main, in the owner's chosen design; set DESIGN once they pick"""
-    raise SystemExit("the owner has not picked the gallery design yet (D, E or F): see docs/v4-next-session.md")
+    c = COMPS[comp]
+    ds, dates = days(comp), task_dates(comp)
+    N = len(ds)
+    latest = max([i for i, (_, _, rows) in enumerate(ds) if rows] or [-1])
+    # the lead: the comp's own chosen photo, else the first photo of the newest task, else a labelled stand-in
+    lead_comp, lead, note = comp, c.get("lead"), ""
+    if not lead and latest >= 0:
+        lead = ds[latest][2][0]["stem"]
+    if not lead:
+        lead_comp, lead = "piedrahita", "SRS_5_T3_63"
+        note = '<p class="gf-cred">Photo: SRS Piedrahita 2026. Tapalpa&#x27;s own photos from Task 1.</p>'
+    lr = next(r for r in photos(lead_comp) if r["stem"] == lead)
+    facts = "".join("<span>%s</span>" % f for f in c["facts"])
+    tps, secs, info = [], [], []
+    for i, (task, lab, rows) in enumerate(ds):
+        date = dates.get(task, "")
+        short, full, dm = nice(date) if date else ("", "", "")
+        n = len(rows)
+        info.append({"i": i, "task": int(task[1:]), "date": date, "label": short, "n": n})
+        tps.append('<li class="gf-tp" data-i="%d"><a href="#task-%d"><i class="gf-dot" aria-hidden="true"></i><b>%s</b>'
+                   '<span class="gf-tp-d">%s</span><span class="gf-tp-s"><span data-s="photos">%s</span>'
+                   '<span data-s="today">Photos tonight</span><span data-s="coming">Photos coming</span>'
+                   '<span data-s="soon">To come</span></span></a></li>'
+                   % (i, i + 1, lab, dm or nphotos(n), nphotos(n) if dm else ""))
+        story = c.get("stories", {}).get(task)
+        vids = [v for v in c.get("videos", {}).get(task, [])]
+        vb = ""
+        if vids:
+            vb = '<div class="gf-vids">%s</div>' % "".join(
+                '<figure>%s<figcaption>%s &middot; %s</figcaption></figure>' % (M.frame(v), E(M.V[v][1]), M.V[v][3]) for v in vids)
+        when = ("<span>%s</span>" % full) if full else ""
+        head = ('<header class="gf-dh"><h2 id="gf-h-%d">%s</h2><p class="gf-dh-r">%s<span class="gf-dh-n" data-s="photos">%s'
+                '<span class="gf-dh-o">, in the order shot</span></span><span class="gf-dh-n" data-s="today">Flying today</span>'
+                '<span class="gf-dh-n" data-s="coming">Photos coming</span><span class="gf-dh-n" data-s="soon">To come</span></p>%s</header>'
+                % (i + 1, lab, when, nphotos(n), '<p class="gf-story">%s</p>' % E(story) if story else ""))
+        if rows:
+            body = '<div class="gf-grid" aria-label="Photos of %s, in the order shot">%s</div>' % (lab, "".join(cell(comp, r, task, k, n) for k, r in enumerate(rows)))
+        else:
+            on = full or lab
+            body = ('<div class="gf-wait"><div data-s="today"><p class="gf-wait-t"><i class="gf-tally" aria-hidden="true"></i>Photos tonight</p>'
+                    '<p>%s flies today%s. The photos land here this evening.</p></div>'
+                    '<div data-s="coming"><p class="gf-wait-t">Photos coming</p><p>%s%s. Its photos are on their way.</p></div>'
+                    '<div data-s="soon"><p class="gf-wait-t">%s</p><p>%s. Photos land here on the evening of the task.</p></div>'
+                    '<a class="gf-latest" href="#task-1" data-latest hidden>See the latest photos <i aria-hidden="true">&rarr;</i></a></div>'
+                    % (lab, ", " + short if short else "", lab, " was on " + short if short else " has flown", E(on), lab))
+        nav = []
+        if i > 0:
+            nav.append('<a class="gf-df-p" href="#task-%d" data-go="%d"><i aria-hidden="true">&larr;</i> %s</a>' % (i, i - 1, ds[i - 1][1]))
+        if i < N - 1:
+            nd = dates.get(ds[i + 1][0], "")
+            nav.append('<a class="gf-df-n" href="#task-%d" data-go="%d">Next leg: %s%s <i aria-hidden="true">&rarr;</i></a>'
+                       % (i + 2, i + 1, ds[i + 1][1], ", " + nice(nd)[0] if nd else ""))
+        secs.append('<section class="gf-day" id="task-%d" data-i="%d" data-date="%s" aria-labelledby="gf-h-%d">%s%s%s%s</section>'
+                    % (i + 1, i, date, i + 1, head, vb, body, '<nav class="gf-df" aria-label="Other tasks">%s</nav>' % "".join(nav) if nav else ""))
+    data = {"base": BASE + c["folder"] + "/", "tz": c["tz"], "days": info, "pay": pay_template()}
+    terms = ('Free web copy, <span class="gfv-px"></span>, under <a href="https://creativecommons.org/licenses/by-nc/4.0/" '
+             'target="_blank" rel="license noopener">CC BY-NC 4.0</a>: share it with the credit &ldquo;%s&rdquo;, not for '
+             'commercial use.' % E(CREDIT.replace("Photo: ", "Photo: ")))
+    w, h = lr["w"], lr["h"]
+    return """
+<header class="gf-lead">
+  <div class="gf-lead-media"><img src="%(lead)s" srcset="%(leads)s" sizes="100vw" width="1600" height="%(lh)d" alt="%(lalt)s" fetchpriority="high"></div>
+  <div class="gf-lead-copy">
+    <a class="gf-back" href="media.html"><i aria-hidden="true">&larr;</i> Media</a>
+    <p class="gf-kicker">%(kicker)s</p>
+    <h1 class="gf-name">%(name)s <span>%(year)s</span></h1>
+    <p class="gf-facts">%(facts)s</p>
+    %(note)s
+  </div>
+</header>
+
+<div class="gf-body">
+<nav class="gf-line" aria-label="%(linelabel)s">
+  <div class="gf-line-in">
+    <span class="gf-track" aria-hidden="true"><i class="gf-flown"></i></span>
+    <span class="gf-glw" aria-hidden="true"><i class="gf-glider">%(glider)s</i></span>
+    <ol class="gf-tps">%(tps)s</ol>
+  </div>
+</nav>
+
+<div class="gf-days">
+<p class="gf-mode"><button type="button" data-m="all" aria-pressed="false">Every task on one page</button><button type="button" data-m="one" aria-pressed="true">One task at a time</button></p>
+%(secs)s
+</div>
+</div>
+
+%(cta)s
+
+<dialog class="gfv" id="gfv" aria-label="The photo, enlarged">
+  <div class="gfv-top">
+    <button class="gfv-nav gfv-prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+    <span class="gfv-pos" aria-live="polite"></span>
+    <button class="gfv-nav gfv-next" type="button" aria-label="Next photo"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
+    <button class="gfv-x" type="button" aria-label="Close the photo"></button>
+  </div>
+  <div class="gfv-stage"><img alt="" draggable="false"></div>
+  <div class="gfv-foot">
+    <div class="gfv-meta"><b class="gfv-name"></b><span class="gfv-where"></span></div>
+    <div class="gfv-acts">
+      <a class="btn-lines gfv-save" href="#" download data-hover>Save, free</a>
+      <button class="btn-solid gfv-buy" type="button" data-hover><span>Original, %(price)s</span></button>
+    </div>
+    <p class="gfv-terms">%(terms)s</p>
+  </div>
+  <div class="gfv-sheet" role="region" aria-labelledby="gfv-sheet-t">
+    <div class="gfv-sheet-in">
+      <p class="gfv-sheet-k">The original</p>
+      <h3 id="gfv-sheet-t" class="gfv-sheet-t" tabindex="-1">Full size, %(price)s</h3>
+      <div class="gfv-ref"><span>Your photo</span><b class="gfv-ref-n"></b><button class="gfv-copy" type="button">Copy name</button></div>
+      <p class="gfv-sheet-p">The camera&#x27;s full-size file, paid with PayPal. Licence of the original: %(tbd)s.</p>
+      <div class="gfv-sheet-a">
+        <a class="btn-solid gfv-pay" href="#" data-hover><span>Pay %(price)s</span></a>
+        <button class="btn-lines gfv-back" type="button" data-hover>Back to the photo</button>
+      </div>
+      <p class="gfv-paynote">%(paynote)s</p>
+    </div>
+  </div>
+</dialog>
+
+<script type="application/json" id="gf-data">%(data)s</script>
+""" % dict(lead=src(lead_comp, lead, 1600), leads=srcset(lead_comp, lead), lh=round(1600 * h / w),
+           lalt=E("A photo from %s" % ("SRS Piedrahita 2026" if lead_comp != comp else c["title"])),
+           kicker=c["kicker"], name=E(c["title"].rsplit(" ", 1)[0]), year=c["title"].rsplit(" ", 1)[1], facts=facts,
+           note=note, linelabel=E("%s, %s" % (c["title"], "tasks " + c["span"])), glider=GLIDER, tps="".join(tps),
+           secs="\n".join(secs), cta=M.cta("Coverage Like This For <span class=\"v4-nw\">Your Event</span>", "Coverage For Your Comp",
+                                         "Every task day: stills like these, and Daily Highlights, a video each task day with social clips and a results newsletter."),
+           price=PRICE, terms=terms, tbd=TBD,
+           paynote=("The payment carries the photo&#x27;s name. The download after paying: %s" % TBD) if PAYPAL_EMAIL
+           else "Payment link: %s. It will carry the photo&#x27;s name." % TBD,
+           data=json.dumps(data, separators=(",", ":")).replace("</", "<\\/"))
 
 
 def page(comp):
@@ -118,7 +295,11 @@ def page(comp):
     og = src(comp, rows[0]["stem"], 1600) if rows else "https://paraglidingatlas.com/assets/images/hero.jpg"
     out = M.shell(c["title"], c["desc"], c["page"], og, c["title"], render(comp))
     M.check(c["page"], out)
-    body = out.split('<main id="v4-main">')[1].split("</main>")[0]
+    k = len(days(comp))
+    out = out.replace('<main id="v4-main">', '<main id="v4-main" class="gf" style="--n:%d">' % k, 1)
+    out = out.replace("<!-- site-schema -->", '<link rel="stylesheet" href="v4-gallery.css?v=%s">\n<!-- site-schema -->' % M.ver("v4-gallery.css"), 1)
+    out = out.replace("</body>", '<script defer src="v4-gallery.js?v=%s"></script>\n</body>' % M.ver("v4-gallery.js"), 1)
+    body = out.split('<main id="v4-main" class="gf"')[1].split("</main>")[0]
     assert "drive.google" not in body, "a Drive link on " + c["page"]
     return out
 

@@ -112,7 +112,8 @@ def needs(src, root=None):
 # hold them to their own title, description and canonical instead of a live page's.
 # expeditions.html: the menu's Expeditions tab gets its own page (owner, 19 Oct)
 NEW_PAGES = set() if IS_V2 else {"expeditions.html", "destinations/panchgani.html", "record-attempt.html",
-                                    "media.html", "media-srs-piedrahita-2026.html"}     # Panchgani: a new tour (chat 11); Media (owner's yes, 4 Nov)
+                                    "media.html", "media-srs-piedrahita-2026.html",
+                                    "media-srs-tapalpa-2026.html"}     # Panchgani: a new tour (chat 11); Media (owner's yes, 4 Nov)
 
 
 if not os.path.isdir(DIR):
