@@ -33,6 +33,11 @@ give the owner the prompt to paste.
   map (box r-gallery-leads). YouTube kit for the daily highlights: see tools/yt_kit/README.md; part 1 sent 8 Nov
   (116 name plates, Task 1 opener and end card, thumbnail template). srs.live checks scheduled (send_later
   trig_01V3mqgxKFWGHUbbap9qJnNV, then every 30 min while the task runs).
+- Task 1 story so far (srs.live commentary, read 18:35 UTC = 12:35 Tapalpa): provisional 59.1 km task (first set at
+  65 km) dipping onto the 2,200 m plateau; window 11:00, start 12:30 in the air; about 110 pilots at the start, very
+  low over the plateau (greenhouses below); 24 teams. Names to watch per the commentary: Estefano Salgado, Andres
+  Tello Alvarado, Manuel Quintanilla, Michael Sigel, Torsten Siegel (first SRS), Pal Takats, Luke Nicol, Arnold
+  Castro, Matthijs Groeneveld, Aurelijus Andreliunas, Felipe Karam (owns the take-off). Photos credited [Ross Desmond].
 - Owner's question (5 Nov): where to show the gallery on the site. Proposed: Media stays in the menu and footer; during a
   comp, a small "Live from Tapalpa" hint in the nav that shows itself only between the comp's dates (plus 3 days).
   Waiting for a yes.
