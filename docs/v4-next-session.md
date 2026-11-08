@@ -38,6 +38,14 @@ give the owner the prompt to paste.
   low over the plateau (greenhouses below); 24 teams. Names to watch per the commentary: Estefano Salgado, Andres
   Tello Alvarado, Manuel Quintanilla, Michael Sigel, Torsten Siegel (first SRS), Pal Takats, Luke Nicol, Arnold
   Castro, Matthijs Groeneveld, Aurelijus Andreliunas, Felipe Karam (owns the take-off). Photos credited [Ross Desmond].
+  Read 20:14 UTC (14:14 local): weak, low start over the plateau ("berry picking" joke), more lift by TP1 (12:46).
+  Luke Nicol took TP2 alone and 200 m higher (13:07; 2nd in the 2026 series). Michael Sigel and Matthijs Groeneveld,
+  wing tip to wing tip, took a 5 km lead (13:14 to 13:27), then the chasing gaggle closed in on the ridge (13:39).
+  Leading ladies: Pamela Diez (13:37, may have missed a turnpoint, 13:58), Lynsey Haynes (13:42). Front at 13:52:
+  Sigel, Nicol, Tello Alvarado, Salgado, Chaeden Luebberke, Haynes; "a total mix of gliders at the front".
+  14:01 Andres Tello Alvarado (Advance Tau, the event's partner) leads at the last turnpoint, with Estefano Salgado
+  (Ozone Lyght), Matthijs Groeneveld and Luke Nicol (Gin GTO3). Latest, untimed: "Luke touching down", "Next in
+  Matthijs" (goal arrivals). Héctor Valdés top landed and relaunched (12:53).
 - Owner's question (5 Nov): where to show the gallery on the site. Proposed: Media stays in the menu and footer; during a
   comp, a small "Live from Tapalpa" hint in the nav that shows itself only between the comp's dates (plus 3 days).
   Waiting for a yes.
