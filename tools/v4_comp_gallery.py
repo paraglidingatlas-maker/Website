@@ -47,13 +47,15 @@ COMPS = {
                     facts=["Tasks 8 to 14 Nov 2026", "7 tasks", "116 pilots, 44 countries", "Photos by Aninder Singh"],
                     desc="SRS Advance Edition, Tapalpa, Mexico, 8 to 14 Nov 2026: every photo by task, free to save, "
                          "the original EUR 1. Photos by Paragliding Atlas.",
-                    tasks=["T%d" % i for i in range(1, 8)], window=("2026-11-08", "2026-11-14"), one_a_day=True, dates={}),
+                    tasks=["T%d" % i for i in range(1, 8)], window=("2026-11-08", "2026-11-14"), one_a_day=True, dates={},
+                    event=("SRS Advance Edition, Tapalpa", "https://airtribune.com/srs-2026-6/info")),
     "piedrahita": dict(page="media-srs-piedrahita-2026.html", folder="srs-piedrahita", title="Piedrahita 2026", tz="Europe/Madrid",
                        kicker="SRS BGD Edition &middot; Piedrahita, Ávila, Spain", span="22 to 29 Aug 2026",
                        facts=["22 to 29 Aug 2026", "FAI Category 2", "120 pilots, 54 countries", "Photos by Aninder Singh"],
                        desc="SRS BGD Edition, Piedrahita, Spain, 22 to 29 Aug 2026: all 325 photos by task, free to save, "
                             "the original EUR 1, and the task videos. Photos by Paragliding Atlas.",
                        tasks=["T1", "T2", "T3"], window=("2026-08-22", "2026-08-29"), dates={}, lead="SRS_5_T3_63",
+                       event=("SRS BGD Edition, Piedrahita", "https://airtribune.com/srs-2026-5/info"),
                        # the task lines and videos as on the page chat 19 built (from the videos' descriptions)
                        stories={"T1": "59 km, humid air, a 2,100 m ceiling and a long leg into a westerly wind.",
                                 "T2": "75 km, and a flatland gamble that cut the course short.",
@@ -224,6 +226,7 @@ def render(comp):
     <p class="gf-kicker">%(kicker)s</p>
     <h1 class="gf-name">%(name)s <span>%(year)s</span></h1>
     <p class="gf-facts">%(facts)s</p>
+    <p class="gf-event">Official event: <a href="%(evu)s" target="_blank" rel="noopener">%(evn)s</a></p>
     %(note)s
   </div>
 </header>
@@ -279,7 +282,7 @@ def render(comp):
 <script type="application/json" id="gf-data">%(data)s</script>
 """ % dict(lead=src(lead_comp, lead, 1600), leads=srcset(lead_comp, lead), lh=round(1600 * h / w),
            lalt=E("A photo from %s" % ("SRS Piedrahita 2026" if lead_comp != comp else c["title"])),
-           kicker=c["kicker"], name=E(c["title"].rsplit(" ", 1)[0]), year=c["title"].rsplit(" ", 1)[1], facts=facts,
+           kicker=c["kicker"], evn=E(c["event"][0]), evu=E(c["event"][1]), name=E(c["title"].rsplit(" ", 1)[0]), year=c["title"].rsplit(" ", 1)[1], facts=facts,
            note=note, linelabel=E("%s, %s" % (c["title"], "tasks " + c["span"])), glider=GLIDER, tps="".join(tps),
            secs="\n".join(secs), cta=M.cta("Coverage Like This For <span class=\"v4-nw\">Your Event</span>", "Coverage For Your Comp",
                                          "Every task day: stills like these, and Daily Highlights, a video each task day with social clips and a results newsletter."),

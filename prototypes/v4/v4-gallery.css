@@ -229,3 +229,6 @@ html.v2-nav-up .gf-line.is-stuck{transform:translateY(var(--v2-nav-h,5rem))}
 .gfv.is-lift-out .gfv-top,.gfv.is-lift-out .gfv-foot{opacity:0}
 .gf-cred{margin-top:.5rem;font-size:var(--fs-micro);letter-spacing:.03em;color:rgba(246,244,244,.66)}
 .gf-mode[hidden]{display:none!important}
+.gf-event{margin-top:.45rem;font-size:var(--fs-small);color:rgba(246,244,244,.72)}
+.gf-event a{color:var(--white);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(246,244,244,.4)}
+.gf-event a:hover,.gf-event a:focus-visible{text-decoration-color:var(--orange)}
