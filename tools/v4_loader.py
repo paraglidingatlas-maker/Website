@@ -151,6 +151,10 @@ def main():
         block = (MARK[0] + "<style>" + CSS + "</style><script type=\"application/json\" id=\"v4ld-c\">"
                  + json.dumps(config(rel, clean, cache), ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
                  + "</script><script>" + JS + "</script>" + MARK[1] + "\n")
+        if rel == "index.html":      # owner, 8 Nov 2026: no loading screen on the home page
+            if clean != src:
+                open(path, "w", encoding="utf-8").write(clean)
+            continue
         m = re.search(r'<meta charset="UTF-8">\n', clean)
         if not m:
             continue

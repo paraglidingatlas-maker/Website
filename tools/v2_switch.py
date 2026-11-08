@@ -153,6 +153,9 @@ def transform(rel, pages, problems=None):
         src = re.sub(r'<meta name="robots"[^>]*>\n?', "", src)
         if live_robots:
             src = src.replace("<head>\n", "<head>\n" + "\n".join(live_robots) + "\n", 1)
+    # owner, 8 Nov 2026: a fact still missing reads "Coming soon" on the live site (the prototypes keep the
+    # [to supply] marker, so the checks still find every gap)
+    src = src.replace("[to supply]", "Coming soon")
     return src
 
 

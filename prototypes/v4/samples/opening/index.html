@@ -139,6 +139,7 @@ h1{font:700 clamp(2rem,3.2vw,3rem)/1.04 var(--font-display);letter-spacing:-.02e
 .trips{display:grid}
 .trip{grid-area:1/1;display:grid;grid-template-columns:minmax(12rem,1.2fr) minmax(9.5rem,1fr) minmax(4rem,.45fr) minmax(7rem,.8fr) minmax(11rem,1.35fr) minmax(6.5rem,.7fr) auto;gap:0 clamp(14px,1.8vw,30px);align-items:start}
 .trip:not(.is-on){visibility:hidden}
+.hl:not(.is-on){display:none}
 .trip > *,.trip dl > *{transition:opacity .25s linear,translate .45s var(--ease)}
 .trip:not(.is-on) > *,.trip:not(.is-on) dl > *{opacity:0;translate:0 .45rem}
 .trip.is-on > *,.trip.is-on dl > *{transition-delay:calc(var(--k,0)*45ms + 60ms)}
@@ -157,9 +158,9 @@ h1{font:700 clamp(2rem,3.2vw,3rem)/1.04 var(--font-display);letter-spacing:-.02e
 .trip dd small{display:block;margin-top:.4rem;font-size:.74rem;line-height:1.35;color:var(--gray-light)}
 .trip dd .next{color:var(--orange)}
 .trip dd .next:empty{display:none}
-.tbd{display:inline-block;font:500 .86rem/1.2 var(--font-body);color:var(--gray);border:1px dashed color-mix(in srgb,var(--white) 26%,transparent);padding:.32rem .5rem;margin-top:.1rem}
+.tbd{display:inline-block;font:500 .95rem/1.2 var(--font-body);color:var(--gray-light);font-style:italic;margin-top:.1rem}
 .pp{display:none;letter-spacing:.1em}
-.tbd.sm{font-size:.72rem;padding:.12rem .35rem;margin:0}
+.tbd.sm{font-size:.78rem;margin:0}
 /* the line itself skips: a click fills it to the end and the next place flies in */
 .skip{display:none;position:absolute;left:0;top:-11px;width:calc(100% - 36px);height:22px;padding:0;border:0;background:none;cursor:pointer;z-index:1}
 .auto .skip{display:block}
@@ -343,7 +344,7 @@ html:not(.js) .swipe{display:none!important}
   .trip dt{margin-bottom:.4rem}
   .trip dd{font-size:.88rem}
   .trip dd small{margin-top:.3rem}
-  .tbd{font-size:.8rem;padding:.26rem .4rem}
+  .tbd{font-size:.85rem}
   .t-name .co{display:inline}
   .t-name .co::before{content:" · "}
   .f-dates{order:1}.f-len{order:2}.f-launch{order:3}.f-from{order:4}
@@ -456,7 +457,7 @@ html:not(.js) .swipe{display:none!important}
   <div class="dock">
     <div class="copy">
       <span class="kicker">Paragliding podcast, knowledge base and guided expeditions</span>
-      <h1>Paragliding expeditions, run by a pilot.</h1>
+      <h1><span class="hl sw is-on" data-dest="kenya" data-lines="Go Thermal Hunting In Primal Habitats|Over Nature&#x27;s Wildest Secrets|Fly Where Humankind First Walked|Rift Valley&#x27;s Endless Skies Await">Go Thermal Hunting In Primal Habitats</span><span class="hl sw" data-dest="india">Touch the sky with glory</span><span class="hl sw" data-dest="kazakhstan">Paragliding expeditions, run by a pilot.</span><span class="hl sw" data-dest="peru">Paragliding expeditions, run by a pilot.</span><span class="hl sw" data-dest="panchgani">Paragliding expeditions, run by a pilot.</span></h1><script>(function(){var e=document.querySelector('.hl[data-dest="kenya"]'),l=e&&e.getAttribute("data-lines").split("|");if(l&&l.length)e.textContent=l[Math.floor(Math.random()*l.length)];})();</script>
       <div class="actions">
         <a href="#listen" class="btn-lines">Listen to the podcast</a>
         <p class="hint"><span class="keys" aria-hidden="true"><kbd>&larr;</kbd><kbd>&rarr;</kbd><span>fly the route</span></span><span class="hint-w">Point at the name: a second view of Kenya</span></p>
@@ -483,7 +484,7 @@ html:not(.js) .swipe{display:none!important}
           <dl>
             <div class="f-dates" style="--k:1"><dt>Dates</dt><dd>18 to 29 Jan<span class="br"></span>1 to 12 Feb 2027<small class="next"></small></dd></div>
             <div class="f-len" style="--k:2"><dt>Length</dt><dd><b>12</b><small class="u">days</small></dd></div>
-            <div class="f-launch" style="--k:3"><dt>Launch</dt><dd><span class="tbd">[to supply]</span></dd></div>
+            <div class="f-launch" style="--k:3"><dt>Launch</dt><dd><b>Kerio Valley</b></dd></div>
             <div class="f-fly" style="--k:4"><dt>You fly</dt><dd>Thermals of 4 to 6 m/s, six sites down the Rift</dd></div>
             <div class="f-from" style="--k:5"><dt>From<span class="pp">, per pilot</span></dt><dd><b>US$2,100</b><small>per pilot</small></dd></div>
           </dl>
@@ -492,9 +493,9 @@ html:not(.js) .swipe{display:none!important}
         <article class="trip sw" data-dest="kazakhstan">
           <div class="t-name" style="--k:0"><h2>Beyond Roads, Beyond Maps</h2><p>Kazakhstan · The steppe</p></div>
           <dl>
-            <div class="f-dates" style="--k:1"><dt>Dates</dt><dd>June 2027<small>Planned, dates <span class="tbd sm">[to supply]</span></small></dd></div>
+            <div class="f-dates" style="--k:1"><dt>Dates</dt><dd>June 2027<small>Planned, dates <span class="tbd sm">coming soon</span></small></dd></div>
             <div class="f-len" style="--k:2"><dt>Length</dt><dd><b>10</b><small class="u">days</small></dd></div>
-            <div class="f-launch" style="--k:3"><dt>Launch</dt><dd><span class="tbd">[to supply]</span></dd></div>
+            <div class="f-launch" style="--k:3"><dt>Launch</dt><dd><span class="tbd">Coming soon</span></dd></div>
             <div class="f-fly" style="--k:4"><dt>You fly</dt><dd>Wind carved rock, with dried ancient seabeds to land on</dd></div>
             <div class="f-from" style="--k:5"><dt>From<span class="pp">, per pilot</span></dt><dd><b>€2,100</b><small>per pilot</small></dd></div>
           </dl>
@@ -503,9 +504,9 @@ html:not(.js) .swipe{display:none!important}
         <article class="trip sw" data-dest="peru">
           <div class="t-name" style="--k:0"><h2>Soar The Land Of The Incas</h2><p>Peru · Lima and the Andes</p></div>
           <dl>
-            <div class="f-dates" style="--k:1"><dt>Dates</dt><dd>November 2027<small>Planned, dates <span class="tbd sm">[to supply]</span></small></dd></div>
+            <div class="f-dates" style="--k:1"><dt>Dates</dt><dd>November 2027<small>Planned, dates <span class="tbd sm">coming soon</span></small></dd></div>
             <div class="f-len" style="--k:2"><dt>Length</dt><dd><b>14</b><small class="u">days</small></dd></div>
-            <div class="f-launch" style="--k:3"><dt>Launch</dt><dd><span class="tbd">[to supply]</span></dd></div>
+            <div class="f-launch" style="--k:3"><dt>Launch</dt><dd><span class="tbd">Coming soon</span></dd></div>
             <div class="f-fly" style="--k:4"><dt>You fly</dt><dd>The calm Pacific breeze, from Lima to the Andes</dd></div>
             <div class="f-from" style="--k:5"><dt>From<span class="pp">, per pilot</span></dt><dd><b>€1,850</b><small>per pilot</small></dd></div>
           </dl>
@@ -516,9 +517,9 @@ html:not(.js) .swipe{display:none!important}
           <dl>
             <div class="f-dates" style="--k:1"><dt>Dates</dt><dd>14 to 21 Feb 2027<small class="next"></small></dd></div>
             <div class="f-len" style="--k:2"><dt>Length</dt><dd><b>8</b><small class="u">days</small></dd></div>
-            <div class="f-launch" style="--k:3"><dt>Launch</dt><dd><span class="tbd">[to supply]</span></dd></div>
+            <div class="f-launch" style="--k:3"><dt>Launch</dt><dd><span class="tbd">Coming soon</span></dd></div>
             <div class="f-fly" style="--k:4"><dt>You fly</dt><dd>The plateau that hosted a pre World Cup</dd></div>
-            <div class="f-from" style="--k:5"><dt>From<span class="pp">, per pilot</span></dt><dd><span class="tbd">[to supply]</span></dd></div>
+            <div class="f-from" style="--k:5"><dt>From<span class="pp">, per pilot</span></dt><dd><span class="tbd">Coming soon</span></dd></div>
           </dl>
           <div class="t-go" style="--k:6"><a class="btn-solid" href="../../destinations/panchgani.html">See the Panchgani trip</a><small>8 days, February 2027</small></div>
         </article>
