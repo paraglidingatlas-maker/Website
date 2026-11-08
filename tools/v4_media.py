@@ -401,8 +401,8 @@ def packages():
         %(r1)s
         %(f1)s
       </article>
-      <article class="e-pk-card is-pick" id="pk-full" aria-labelledby="pk-full-t">
-        <div class="e-pk-top"><span class="e-pk-n">02</span><h3 id="pk-full-t">Full Event</h3><p>Before, during and after your event.</p><span class="e-pick">Most chosen <span class="e-eg">Example</span></span></div>
+      <article class="e-pk-card" id="pk-full" aria-labelledby="pk-full-t">
+        <div class="e-pk-top"><span class="e-pk-n">02</span><h3 id="pk-full-t">Full Event</h3><p>Before, during and after your event.</p></div>
         %(c2)s
         %(r2)s
         %(f2)s
@@ -517,16 +517,8 @@ def proof():
     reel = ('<div class="md-reel"><div class="md-main">%s<div class="md-now">%s%s</div></div>'
             '<div class="md-side"><div class="md-side-in">%s<ul class="md-list">%s</ul></div></div></div>'
             % (frame(REEL), now_title(REEL), now_line(REEL), chips, "".join(items)))
-    return '''<section class="e-qband" aria-label="A word from an organiser">
-  <div class="e-qband-media" aria-hidden="true"><img src="%(q16)s" srcset="%(qss)s" sizes="100vw" width="1600" height="1067" alt="" loading="lazy" decoding="async"></div>
-  <figure class="e-quote">
-    <span class="e-eg">Example</span>
-    <blockquote><p>&ldquo;Every task day our pilots and sponsors had the race in their feeds the same evening. The week felt bigger than the field.&rdquo;</p></blockquote>
-    <figcaption>%(tbd)s <span>Organiser, event</span></figcaption>
-  </figure>
-</section>
-
-<section class="kit-band e-proof" id="proof" aria-labelledby="e-watch-t">
+    # the organiser quote (EXAMPLE) is off the page until a real one exists (owner, 8 Nov 2026)
+    return '''<section class="kit-band e-proof" id="proof" aria-labelledby="e-watch-t">
   <div class="kit-in">
     <div class="kit-head e-watch-head" id="watch">
       <span class="kit-kicker">The work</span>
@@ -602,7 +594,7 @@ def faq():
     </div>
     <div class="e-qs">%s</div>
   </div>
-</section>''' % (CALL, WA, "".join("<details><summary>%s</summary><p>%s</p></details>" % (q, a) for q, a in FAQ))
+</section>''' % (CALL, WA, "".join("<details><summary>%s</summary><p>%s</p></details>" % (q, a) for q, a in FAQ if a != TBD))   # only answered ones
 
 
 def dates():
@@ -646,11 +638,6 @@ def dates():
       <span>Or talk first</span>
       <a class="btn-lines" href="%(call)s" target="_blank" rel="noopener" data-hover>Book a Call</a>
       <a class="btn-lines" href="%(wa)s" target="_blank" rel="noopener" data-hover>WhatsApp</a>
-    </div>
-    <div class="e-cal" aria-labelledby="e-cal-t">
-      <p class="e-cal-h"><b id="e-cal-t">The 2027 season</b><span class="e-eg">Example</span></p>
-      <ol class="e-months">%(cells)s</ol>
-      <p class="e-cal-note">Example data, to show how it will read. The real 2027 calendar: %(tbd)s</p>
     </div>
   </div>
 </section>''' % dict(cells="".join(cells), tbd=TBD, call=CALL, wa=WA, opts=opts)
