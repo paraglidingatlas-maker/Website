@@ -195,7 +195,7 @@ def now_title(v):
 UPCOMING = [
     {"key": "tapalpa", "name": "SRS Tapalpa", "place": "Mexico", "edition": "SRS Advance Edition", "where": "Tapalpa, Mexico",
      "first": "2026-11-08", "last": "2026-11-14", "dates": "8 to 14 Nov 2026", "short": "8 to 14 Nov",
-     "facts": "7 tasks, up to 120 pilots, 44 countries"},
+     "facts": "7 tasks, 116 pilots from 44 countries"},
 ]
 # the comps covered in 2026, in date order (R1); span: the days on the season line (Piedrahita: the comp's own dates;
 # the other two: the days their films and broadcasts came out)

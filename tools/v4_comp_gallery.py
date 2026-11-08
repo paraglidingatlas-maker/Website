@@ -39,12 +39,12 @@ if "--repo" in sys.argv:
 CREDIT = "Photo: Aninder Singh, Paragliding Atlas"
 PRICE = "EUR 1"
 
-# Facts: only from the owner, docs/designers/gallery-brief.md and the task videos (tools/v4_media.py V); a task's
+# Facts: only from the owner (Tapalpa: 116 pilots confirmed, 44 countries, airtribune.com/srs-2026-6/info, 8 Nov), docs/designers/gallery-brief.md and the task videos (tools/v4_media.py V); a task's
 # date: Tapalpa assumes one task a day from 8 Nov (set "dates" when a day is cancelled); Piedrahita's are not known
 COMPS = {
     "tapalpa": dict(page="media-srs-tapalpa-2026.html", folder="srs-tapalpa", title="Tapalpa 2026", tz="America/Mexico_City",
                     kicker="SRS Advance Edition &middot; Tapalpa, Mexico", span="8 to 14 Nov 2026",
-                    facts=["Tasks 8 to 14 Nov 2026", "7 tasks", "Up to 120 pilots, 44 countries", "Photos by Aninder Singh"],
+                    facts=["Tasks 8 to 14 Nov 2026", "7 tasks", "116 pilots, 44 countries", "Photos by Aninder Singh"],
                     desc="SRS Advance Edition, Tapalpa, Mexico, 8 to 14 Nov 2026: every photo by task, free to save, "
                          "the original EUR 1. Photos by Paragliding Atlas.",
                     tasks=["T%d" % i for i in range(1, 8)], window=("2026-11-08", "2026-11-14"), one_a_day=True, dates={}),
