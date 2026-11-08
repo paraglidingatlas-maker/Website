@@ -17,7 +17,7 @@ Originals never go to GitHub. The site repo never holds a photo: copies go only 
 """
 import argparse, concurrent.futures as cf, html, io, json, os, re, subprocess, sys, tempfile
 
-from PIL import Image, ImageOps
+from PIL import Image, ImageFilter, ImageOps, ImageStat
 
 SIZES = (800, 1600, 2400)
 QUALITY = {800: 78, 1600: 80, 2400: 82}
@@ -62,12 +62,18 @@ def head_shot(fid):
         return shot_time(tmp.name)
 
 
-def one(fid, title, out):
-    stem = stem_of(title)
+def sharpness(im):
+    """how sharp the photo is: the spread of the edge map of an 800 px grey copy (out-of-focus photos score low)"""
+    g = im.convert("L"); g.thumbnail((800, 800))
+    return round(ImageStat.Stat(g.filter(ImageFilter.FIND_EDGES)).stddev[0], 2)
+
+
+def one(fid, title, out, prefix=""):
+    stem = prefix + stem_of(title)
     paths = [os.path.join(out, "%s-%d.webp" % (stem, w)) for w in SIZES]
     if all(os.path.exists(p) for p in paths):
         with Image.open(paths[-1]) as im:
-            return stem, im.size, "kept", None
+            return stem, im.size, "kept", None, sharpness(im)
     with tempfile.NamedTemporaryFile(suffix=".jpg", delete=True) as tmp:
         url = "https://drive.usercontent.google.com/download?id=%s&export=download&confirm=t" % fid
         subprocess.run(["curl", "-sSL", "--retry", "4", "--retry-delay", "3", "-o", tmp.name, url], check=True)
@@ -81,7 +87,7 @@ def one(fid, title, out):
         c.save(p + ".part", "WEBP", quality=QUALITY[w], method=5)
         os.replace(p + ".part", p)
         size = c.size
-    return stem, size, "made", shot
+    return stem, size, "made", shot, sharpness(im)
 
 
 def main():
@@ -90,6 +96,9 @@ def main():
     ap.add_argument("out")
     ap.add_argument("--day-re", default=r"_(T\d+)[ _(]")
     ap.add_argument("--jobs", type=int, default=3)
+    ap.add_argument("--day", help="every photo in this folder is this day (T1, P ...); the stems get it as a prefix")
+    ap.add_argument("--hold-below", type=float, default=0,
+                    help="photos whose sharpness is under this are marked hold (kept off the page until the owner says)")
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     files = [(i, t) for i, t in listing(a.folder) if t.lower().endswith((".jpg", ".jpeg", ".png", ".tif", ".tiff"))]
@@ -102,28 +111,34 @@ def main():
     except (OSError, ValueError):
         pass
     with cf.ThreadPoolExecutor(a.jobs) as ex:
-        futs = {ex.submit(one, i, t, a.out): t for i, t in files}
+        futs = {ex.submit(one, i, t, a.out, (a.day + "_") if a.day else ""): t for i, t in files}
         for f in cf.as_completed(futs):
             t = futs[f]
             try:
-                stem, size, how, shot = f.result()
+                stem, size, how, shot, sharp = f.result()
             except Exception as e:                       # one bad file never stops the rest; run again to retry it
                 print("FAILED %s: %s" % (t, e), flush=True)
                 continue
-            m = re.search(a.day_re, t + " ")
+            m = None if a.day else re.search(a.day_re, t + " ")
             if shot is None:                             # a copy made on an earlier run: its time from then, else a ranged read
                 shot = old[stem].get("shot", "") if stem in old else head_shot(ids[t])
-            done[stem] = {"stem": stem, "day": m.group(1) if m else "", "w": size[0], "h": size[1], "shot": shot}
+            done[stem] = {"stem": stem, "day": a.day or (m.group(1) if m else ""), "w": size[0], "h": size[1], "shot": shot,
+                          "sharp": sharp}
+            if a.hold_below and sharp < a.hold_below and not old.get(stem, {}).get("shown"):
+                done[stem]["hold"] = True
             n += 1
             if n % 10 == 0 or n == len(files):
                 print("%d/%d (%s %s)" % (n, len(files), how, stem), flush=True)
     # by the number in the owner's file names: the Piedrahita originals' capture times read 31 Aug, after the comp
     # (22 to 29 Aug), so a camera clock or the export is off and "shot" is kept as data only, never shown or sorted on
+    if a.day:      # one day's folder: the other days already in photos.json stay as they are
+        done.update({k: v for k, v in old.items() if v.get("day") != a.day})
     rows = sorted(done.values(), key=lambda r: (r["day"], order(r["stem"])))
     with open(os.path.join(a.out, "photos.json"), "w") as fh:
         json.dump(rows, fh, separators=(",", ":"))
     print("photos.json: %d photos" % len(rows))
-    return 0 if len(rows) == len(files) else 1
+    print("held for a look (sharpness under %s): %d" % (a.hold_below, sum(1 for r in rows if r.get("hold"))))
+    return 0 if len(done) >= len(files) else 1
 
 
 if __name__ == "__main__":

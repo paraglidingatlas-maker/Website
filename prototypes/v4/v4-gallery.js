@@ -37,7 +37,7 @@
     if (has || !date || date <= on) flownTo = i;
     var info = (data.days || [])[i] || {}, a = tps[i].querySelector("a");
     var say = { photos: (info.n || 0) + (info.n === 1 ? " photo" : " photos"), today: "flying today, photos tonight", coming: "photos coming", soon: "to come" }[st];
-    a.setAttribute("aria-label", "Task " + (info.task || i + 1) + ", " + (info.label || "") + ", " + say);
+    a.setAttribute("aria-label", (info.name || "Task " + (i + 1)) + ", " + (info.label || "") + ", " + say);
   });
   line.style.setProperty("--flown", Math.max(0, flownTo));
   // every task on one page only makes sense once two tasks have photos
@@ -48,7 +48,7 @@
     if (latest >= 0 && latest !== i) {
       var info = (data.days || [])[latest] || {};
       a.href = "#task-" + (latest + 1); a.setAttribute("data-go", latest); a.hidden = false;
-      a.firstChild.nodeValue = "See Task " + (info.task || latest + 1) + ", " + info.n + (info.n === 1 ? " photo " : " photos ");
+      a.firstChild.nodeValue = "See " + (info.name || "Task " + (latest + 1)) + ", " + info.n + (info.n === 1 ? " photo " : " photos ");
     } else a.hidden = true;
   });
 
@@ -182,7 +182,7 @@
     img.src = Z.got[stem] ? url(a, Z.got[stem]) : (th.currentSrc || th.src); img.alt = th.alt || "";
     want(1600);
     nameEl.textContent = stem;
-    whereEl.textContent = "Task " + (info.task || di + 1) + (info.label ? " · " + info.label : "");
+    whereEl.textContent = (info.name || "Task " + (di + 1)) + (info.label ? " · " + info.label : "");
     pxEl.textContent = a.getAttribute("data-W") + " × " + a.getAttribute("data-H") + " px";
     pos.textContent = (Z.i + 1) + " of " + Z.set.length;
     bPrev.disabled = Z.i <= 0; bNext.disabled = Z.i >= Z.set.length - 1;

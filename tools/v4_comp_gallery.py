@@ -47,7 +47,8 @@ COMPS = {
                     facts=["Tasks 8 to 14 Nov 2026", "7 tasks", "116 pilots, 44 countries", "Photos by Aninder Singh"],
                     desc="SRS Advance Edition, Tapalpa, Mexico, 8 to 14 Nov 2026: every photo by task, free to save, "
                          "the original EUR 1. Photos by Paragliding Atlas.",
-                    tasks=["T%d" % i for i in range(1, 8)], window=("2026-11-08", "2026-11-14"), one_a_day=True, dates={},
+                    tasks=["P"] + ["T%d" % i for i in range(1, 8)], window=("2026-11-08", "2026-11-14"), one_a_day=True,
+                    dates={"P": "2026-11-07"},
                     event=("SRS Advance Edition, Tapalpa", "https://airtribune.com/srs-2026-6/info")),
     "piedrahita": dict(page="media-srs-piedrahita-2026.html", folder="srs-piedrahita", title="Piedrahita 2026", tz="Europe/Madrid",
                        kicker="SRS BGD Edition &middot; Piedrahita, Ávila, Spain", span="22 to 29 Aug 2026",
@@ -88,7 +89,7 @@ def srcset(comp, stem, ws=(800, 1600, 2400)):
 
 
 def label(task):
-    return "Task " + task[1:] if task.startswith("T") else task
+    return "Task " + task[1:] if task.startswith("T") else {"P": "Practice"}.get(task, task)
 
 
 def days(comp):
@@ -96,6 +97,8 @@ def days(comp):
     rows = photos(comp)
     by = {}
     for r in rows:
+        if r.get("hold"):          # out of focus by the sharpness check: off the page until the owner says
+            continue
         by.setdefault(r.get("day") or "", []).append(r)
     stray = [k for k in by if k not in COMPS[comp]["tasks"]]
     assert not stray, "photos with a day the comp does not have: %s (check --day-re)" % stray
@@ -134,7 +137,7 @@ def task_dates(comp):
     c = COMPS[comp]
     if c.get("one_a_day"):          # one task a day from the first day, until the owner's files say otherwise
         d0 = datetime.date.fromisoformat(c["window"][0])
-        out = {t: (d0 + datetime.timedelta(days=k)).isoformat() for k, t in enumerate(c["tasks"])}
+        out = {t: (d0 + datetime.timedelta(days=k)).isoformat() for k, t in enumerate(x for x in c["tasks"] if x.startswith("T"))}
         out.update(c["dates"])
         return out
     return dict(c["dates"])
@@ -177,7 +180,7 @@ def render(comp):
         date = dates.get(task, "")
         short, full, dm = nice(date) if date else ("", "", "")
         n = len(rows)
-        info.append({"i": i, "task": int(task[1:]), "date": date, "label": short, "n": n})
+        info.append({"i": i, "task": int(task[1:]) if task[1:].isdigit() else 0, "name": lab, "date": date, "label": short, "n": n})
         tps.append('<li class="gf-tp" data-i="%d"><a href="#task-%d"><i class="gf-dot" aria-hidden="true"></i><b>%s</b>'
                    '<span class="gf-tp-d">%s</span><span class="gf-tp-s"><span data-s="photos">%s</span>'
                    '<span data-s="today">Photos tonight</span><span data-s="coming">Photos coming</span>'
