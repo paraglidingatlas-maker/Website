@@ -10,7 +10,7 @@ import asyncio, os, shutil, subprocess, sys
 from playwright.async_api import async_playwright
 
 K = os.path.dirname(os.path.abspath(__file__))
-TPL = open(os.path.join(K, "anim.html")).read()
+TPL = open(os.path.join(K, "anim.tpl")).read()
 LOCK = ('<div class="lock"><img class="l-srs" src="src/srs-w.png"><i></i><div class="l-adv">'
         '<img src="src/advance-white.svg"><span>Advance<br>Edition</span></div></div>')
 IN, OUT = "cubic-bezier(.2,.8,.2,1)", "cubic-bezier(.6,0,.8,.4)"
