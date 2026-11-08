@@ -27,6 +27,12 @@ give the owner the prompt to paste.
   LIVE 5 Nov (owner's yes; main 701b04e2, deploy ok): checked on paraglidingatlas.com at 390x683, 390x844, 1440x900, no
   errors, no 4xx, no sideways scroll, 325 cells, the viewer loads. The shared files are served from assets/v4/. Tapalpa assumes one task a day from 8 Nov: set COMPS["tapalpa"]["dates"] when a
   day is cancelled. Gates take more than 10 minutes: run them in the background.
+- 8 Nov: Tapalpa facts now "116 pilots, 44 countries" (owner, from airtribune). NOTE: the 116 confirmed pilots come
+  from 25 countries; airtribune's 44 counts all 262 registrations. Asked the owner; change only on their word.
+  Event credit line on both galleries (live 8 Nov, 05422997). Sponsors kept off our pages; listed as leads in the
+  map (box r-gallery-leads). YouTube kit for the daily highlights: see tools/yt_kit/README.md; part 1 sent 8 Nov
+  (116 name plates, Task 1 opener and end card, thumbnail template). srs.live checks scheduled (send_later
+  trig_01V3mqgxKFWGHUbbap9qJnNV, then every 30 min while the task runs).
 - Owner's question (5 Nov): where to show the gallery on the site. Proposed: Media stays in the menu and footer; during a
   comp, a small "Live from Tapalpa" hint in the nav that shows itself only between the comp's dates (plus 3 days).
   Waiting for a yes.
