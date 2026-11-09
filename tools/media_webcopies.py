@@ -97,6 +97,7 @@ def main():
     ap.add_argument("--day-re", default=r"_(T\d+)[ _(]")
     ap.add_argument("--jobs", type=int, default=3)
     ap.add_argument("--day", help="every photo in this folder is this day (T1, P ...); the stems get it as a prefix")
+    ap.add_argument("--keep-names", action="store_true", help="with --day: keep the owner's file names (no day prefix)")
     ap.add_argument("--hold-below", type=float, default=0,
                     help="photos whose sharpness is under this are marked hold (kept off the page until the owner says)")
     a = ap.parse_args()
@@ -111,7 +112,7 @@ def main():
     except (OSError, ValueError):
         pass
     with cf.ThreadPoolExecutor(a.jobs) as ex:
-        futs = {ex.submit(one, i, t, a.out, (a.day + "_") if a.day else ""): t for i, t in files}
+        futs = {ex.submit(one, i, t, a.out, (a.day + "_") if a.day and not a.keep_names else ""): t for i, t in files}
         for f in cf.as_completed(futs):
             t = futs[f]
             try:
