@@ -96,7 +96,7 @@ def share_image(comp):
     c = COMPS[comp]
     if not c.get("share"):
         return None
-    from PIL import Image
+    from PIL import Image, ImageOps
     folder = os.path.join(REPO, c["folder"])
     tiles = [os.path.join(folder, s + "-800.webp") for s in c["share"]]
     if not all(os.path.exists(t) for t in tiles):
@@ -105,11 +105,16 @@ def share_image(comp):
     out = Image.new("RGB", (W, H), (20, 21, 25))
     tw, th = (W - g) // 2, (H - g) // 2
     for i, t in enumerate(tiles[:4]):
-        im = Image.open(t).convert("RGB")
+        im = ImageOps.autocontrast(Image.open(t).convert("RGB"), cutoff=0.8, preserve_tone=True)   # the haze out, gently
         r = max(tw / im.width, th / im.height)
         im = im.resize((round(im.width * r), round(im.height * r)), Image.LANCZOS)
         x, y = (im.width - tw) // 2, (im.height - th) // 2
         out.paste(im.crop((x, y, x + tw, y + th)), ((i % 2) * (tw + g), (i // 2) * (th + g)))
+    # a subtle lift (owner, 9 Nov: "a bit more vibrant ... currently it looks a bit shaded out")
+    from PIL import ImageEnhance
+    out = ImageEnhance.Color(out).enhance(1.18)
+    out = ImageEnhance.Contrast(out).enhance(1.04)
+    out = ImageEnhance.Brightness(out).enhance(1.04)
     out.save(os.path.join(folder, "share.jpg"), quality=85, optimize=True, progressive=True)
     return BASE + c["folder"] + "/share.jpg"
 
