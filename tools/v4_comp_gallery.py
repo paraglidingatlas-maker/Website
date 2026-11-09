@@ -161,9 +161,14 @@ def cell(comp, r, task, k, n):
                E(label(task)), k + 1, n, E(stem)))
 
 
+def sid(task):
+    return "task-" + task[1:] if task.startswith("T") else {"P": "practice"}.get(task, task.lower())
+
+
 def render(comp):
     c = COMPS[comp]
     ds, dates = days(comp), task_dates(comp)
+    ds = [d for d in ds if d[2] or d[0].startswith("T")]       # the practice day shows only once it has photos
     N = len(ds)
     latest = max([i for i, (_, _, rows) in enumerate(ds) if rows] or [-1])
     # the lead: the comp's own chosen photo, else the first photo of the newest task, else a labelled stand-in
@@ -181,11 +186,11 @@ def render(comp):
         short, full, dm = nice(date) if date else ("", "", "")
         n = len(rows)
         info.append({"i": i, "task": int(task[1:]) if task[1:].isdigit() else 0, "name": lab, "date": date, "label": short, "n": n})
-        tps.append('<li class="gf-tp" data-i="%d"><a href="#task-%d"><i class="gf-dot" aria-hidden="true"></i><b>%s</b>'
+        tps.append('<li class="gf-tp" data-i="%d"><a href="#%s"><i class="gf-dot" aria-hidden="true"></i><b>%s</b>'
                    '<span class="gf-tp-d">%s</span><span class="gf-tp-s"><span data-s="photos">%s</span>'
                    '<span data-s="today">Photos tonight</span><span data-s="coming">Photos coming</span>'
                    '<span data-s="soon">To come</span></span></a></li>'
-                   % (i, i + 1, lab, dm or nphotos(n), nphotos(n) if dm else ""))
+                   % (i, sid(task), lab, dm or nphotos(n), nphotos(n) if dm else ""))
         story = c.get("stories", {}).get(task)
         vids = [v for v in c.get("videos", {}).get(task, [])]
         vb = ""
@@ -205,17 +210,17 @@ def render(comp):
                     '<p>%s flies today%s. The photos land here this evening.</p></div>'
                     '<div data-s="coming"><p class="gf-wait-t">Photos coming</p><p>%s%s. Its photos are on their way.</p></div>'
                     '<div data-s="soon"><p class="gf-wait-t">%s</p><p>%s. Photos land here on the evening of the task.</p></div>'
-                    '<a class="gf-latest" href="#task-1" data-latest hidden>See the latest photos <i aria-hidden="true">&rarr;</i></a></div>'
+                    '<a class="gf-latest" href="#" data-latest hidden>See the latest photos <i aria-hidden="true">&rarr;</i></a></div>'
                     % (lab, ", " + short if short else "", lab, " was on " + short if short else " has flown", E(on), lab))
         nav = []
         if i > 0:
-            nav.append('<a class="gf-df-p" href="#task-%d" data-go="%d"><i aria-hidden="true">&larr;</i> %s</a>' % (i, i - 1, ds[i - 1][1]))
+            nav.append('<a class="gf-df-p" href="#%s" data-go="%d"><i aria-hidden="true">&larr;</i> %s</a>' % (sid(ds[i - 1][0]), i - 1, ds[i - 1][1]))
         if i < N - 1:
             nd = dates.get(ds[i + 1][0], "")
-            nav.append('<a class="gf-df-n" href="#task-%d" data-go="%d">Next leg: %s%s <i aria-hidden="true">&rarr;</i></a>'
-                       % (i + 2, i + 1, ds[i + 1][1], ", " + nice(nd)[0] if nd else ""))
-        secs.append('<section class="gf-day" id="task-%d" data-i="%d" data-date="%s" aria-labelledby="gf-h-%d">%s%s%s%s</section>'
-                    % (i + 1, i, date, i + 1, head, vb, body, '<nav class="gf-df" aria-label="Other tasks">%s</nav>' % "".join(nav) if nav else ""))
+            nav.append('<a class="gf-df-n" href="#%s" data-go="%d">Next leg: %s%s <i aria-hidden="true">&rarr;</i></a>'
+                       % (sid(ds[i + 1][0]), i + 1, ds[i + 1][1], ", " + nice(nd)[0] if nd else ""))
+        secs.append('<section class="gf-day" id="%s" data-i="%d" data-date="%s" aria-labelledby="gf-h-%d">%s%s%s%s</section>'
+                    % (sid(task), i, date, i + 1, head, vb, body, '<nav class="gf-df" aria-label="Other tasks">%s</nav>' % "".join(nav) if nav else ""))
     data = {"base": BASE + c["folder"] + "/", "tz": c["tz"], "days": info, "pay": pay_template()}
     terms = ('Free web copy, <span class="gfv-px"></span>, under <a href="https://creativecommons.org/licenses/by-nc/4.0/" '
              'target="_blank" rel="license noopener">CC BY-NC 4.0</a>: share it with the credit &ldquo;%s&rdquo;, not for '
@@ -301,7 +306,7 @@ def page(comp):
     og = src(comp, rows[0]["stem"], 1600) if rows else "https://paraglidingatlas.com/assets/images/hero.jpg"
     out = M.shell(c["title"], c["desc"], c["page"], og, c["title"], render(comp))
     M.check(c["page"], out)
-    k = len(days(comp))
+    k = len([d for d in days(comp) if d[2] or d[0].startswith("T")])
     out = out.replace('<main id="v4-main">', '<main id="v4-main" class="gf" style="--n:%d">' % k, 1)
     out = out.replace("<!-- site-schema -->", '<link rel="stylesheet" href="v4-gallery.css?v=%s">\n<!-- site-schema -->' % M.ver("v4-gallery.css"), 1)
     out = out.replace("</body>", '<script defer src="v4-gallery.js?v=%s"></script>\n</body>' % M.ver("v4-gallery.js"), 1)

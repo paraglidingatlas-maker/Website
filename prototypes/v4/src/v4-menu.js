@@ -62,6 +62,9 @@
       '<div class="v4-menu-search" role="search"><label class="v4-menu-lab" for="v4q">Search episodes, the knowledge base and trips</label>' +
       '<input id="v4q" type="search" autocomplete="off" placeholder="Search" aria-controls="v4hits">' +
       '<ol class="v4-hits" id="v4hits" aria-live="polite"></ol></div>' +
+      // Live from SRS, as in the header (tools/v4_nav_live.py), only while the header carries it
+      (d.querySelector(".v4-nav .v4-live") ? '<a class="v4-live v4-menu-live" href="' + d.querySelector(".v4-nav .v4-live").getAttribute("href") + '">' +
+        '<i aria-hidden="true"></i><span>Live from SRS <small>Tapalpa, Mexico &middot; photos and videos</small></span></a>' : "") +
       '<ul class="v4-menu-go">' + go + '</ul>' +
       // the record attempt, as in the header (tools/v4_nav_record.py), only when the header carries it, so it
       // goes with the header's item at the switch-over while the record page is prototype-only

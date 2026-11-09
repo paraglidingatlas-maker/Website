@@ -377,6 +377,7 @@ def main():
         run([PY, "tools/v4_polish.py"])
         run([PY, "tools/v4_encyclopedia.py", "links"])
         run([PY, "tools/v4_nav_record.py"])
+run([PY, "tools/v4_nav_live.py"])     # "Live from SRS" while a covered comp runs (owner, 9 Nov)
         run([PY, "tools/v4_search.py"])
         run([PY, "tools/v4_library_live.py"])     # the immersion chat's library over library.html (28 Oct)
         run([PY, "tools/v4_footer.py"])     # the shorter footer (28 Oct)

@@ -2924,6 +2924,19 @@ html .tm-cards{left:var(--edge-x);width:min(26rem,calc(100% - 2 * var(--edge-x))
 /* between the width where the menu shows (941px) and 1099px the five items and the two buttons do not fit
    with the words: there the item is its streaks alone, its words kept for screen readers and its title */
 @media (max-width:1099px){.page-wrap>nav .v4-nav a.v4-wr{font-size:0;gap:0}}
+/* LIVE FROM SRS (owner, 9 Nov 2026), written by tools/v4_nav_live.py while a covered comp runs: a small orange
+   dot that breathes slowly, and the words; "Live" alone below 1300px, the dot alone below 1100px */
+.page-wrap>nav .v4-nav a.v4-live{display:inline-flex;align-items:center;gap:.45rem}
+.v4-live i{position:relative;width:7px;height:7px;flex:none;border-radius:50%;background:var(--orange)}
+.v4-live i::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--orange);opacity:0;animation:v4-live 2.4s ease-out infinite}
+@keyframes v4-live{0%{transform:scale(.5);opacity:.7}70%,100%{transform:scale(1.4);opacity:0}}
+@media (prefers-reduced-motion:reduce){.v4-live i::after{animation:none}}
+.v4-live-s{display:none}
+@media (max-width:1299px){.page-wrap>nav .v4-nav .v4-live-l{display:none}.page-wrap>nav .v4-nav .v4-live-s{display:inline}}
+@media (max-width:1099px){.page-wrap>nav .v4-nav a.v4-live{font-size:0;gap:0}}
+.v4-menu-live{display:inline-flex;align-self:flex-start;align-items:center;gap:.6rem;margin:0 0 var(--sp-3);color:var(--white);
+  font-family:var(--font-display);font-weight:600;font-size:1.05rem;text-decoration:none}
+.v4-menu-live small{display:block;font-family:var(--font-body);font-weight:400;font-size:var(--fs-small);color:var(--gray-light)}
 .v4-menu-wr{display:inline-grid;align-self:flex-start;justify-self:start;grid-template-columns:auto auto;justify-content:start;align-items:center;gap:.2rem .7rem;
   margin-top:var(--sp-3);color:var(--white);font-family:var(--font-display);font-weight:600;font-size:1.05rem;
   white-space:nowrap;text-decoration:none}

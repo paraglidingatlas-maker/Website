@@ -47,7 +47,7 @@
     var a = sec.querySelector("[data-latest]"); if (!a) return;
     if (latest >= 0 && latest !== i) {
       var info = (data.days || [])[latest] || {};
-      a.href = "#task-" + (latest + 1); a.setAttribute("data-go", latest); a.hidden = false;
+      a.href = "#" + days[latest].id; a.setAttribute("data-go", latest); a.hidden = false;
       a.firstChild.nodeValue = "See " + (info.name || "Task " + (latest + 1)) + ", " + info.n + (info.n === 1 ? " photo " : " photos ");
     } else a.hidden = true;
   });
@@ -112,7 +112,7 @@
       var dir = i > prev ? 1 : -1;
       days[i].animate([{ opacity: 0, transform: "translateX(" + (dir * 18) + "px)" }, { opacity: 1, transform: "none" }], { duration: 380, easing: EASE });
     }
-    if (!o.keepHash) setHash("#task-" + (i + 1));
+    if (!o.keepHash) setHash("#" + days[i].id);
   }
   var all = false;
   function setAll(on2) {
@@ -261,7 +261,7 @@
         if (r.top < 90 || r.bottom > innerHeight) f.scrollIntoView({ block: "center" });
         a.focus({ preventScroll: true });
         if (!reduced()) { f.classList.remove("is-last"); void f.offsetWidth; f.classList.add("is-last"); }
-        setHash(all ? "" : "#task-" + (dayOf(a) + 1));
+        setHash(all ? "" : "#" + days[dayOf(a)].id);
       }
     }
   }
@@ -373,8 +373,9 @@
 
   /* ---------------------------------------------------------------- where to start */
   function fromHash(o) {
-    var h = decodeURIComponent((location.hash || "").slice(1)), m = h.match(/^task-(\d+)$/);
-    if (m) { var i = +m[1] - 1; if (i >= 0 && i < N) { openDay(i, o); return true; } }
+    var h = decodeURIComponent((location.hash || "").slice(1));
+    var di = days.findIndex ? days.findIndex(function (s) { return s.id === h; }) : -1;   // a task by its own name (#task-1, #practice)
+    if (di >= 0) { openDay(di, o); return true; }
     if (h) {
       var f = d.getElementById(h);
       if (f && f.classList.contains("gf-ph") && f.closest(".gf-day").getAttribute("data-state") === "photos") {
