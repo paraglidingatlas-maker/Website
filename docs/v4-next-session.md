@@ -4,6 +4,58 @@ Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
 the owner's current queue and what the last session learnt doing it.
 
+## Chat 21 starts here (9 Nov 2026): Tapalpa, tasks 2 to 7 (9 to 14 Nov), the daily kit and photos
+**Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
+has grown long, hand over without asking the owner: write the handover at the top of this file, update the
+owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
+chat yourself with the session tools (create_session), and give the owner its link. If create_session is refused,
+give the owner the prompt to paste.
+
+**The owner's workflow rule (8 Nov, after a bad day): never wait for the owner while they fly.** Ask everything you
+need BEFORE they launch (one message in the morning), then work during the task: the task card as soon as the task
+is set (srs.live), follow srs.live commentary every 30 min, results boards the moment SRS posts scores, the Google
+Earth file and replay from the tracks, the YouTube text, the thumbnail from the day's own photo, and photos live the
+same evening without asking. When they land, the day's kit is waiting.
+
+**Live now (9 Nov, main 02b9b7d9):** https://paraglidingatlas.com/media-srs-tapalpa-2026.html : Practice (19,
+SRS_6_T0) and Task 1 (99, SRS_6_T1); people photos first (COMPS first=), cover #62, WhatsApp share picture
+share.jpg = #62, #10, #20, #58 with a gentle colour lift (owner chose the gentle one, not the haze-cut one);
+"Save, free" (JPEG) and "Like what you see? Join me on Patreon" (https://www.patreon.com/15133612/join) instead of
+the EUR 1 original; "Live from SRS" in every header (tools/v4_nav_live.py, first in the phone menu, off after 17 Nov
+by itself); event credit line; homepage: Kenya headline rotates 4 lines, India "Touch The Sky With Glory", Kenya
+launch Kerio Valley, no loader on home; live pages say "Coming soon" for [to supply] (tools/v2_switch.py); Media page
+without example content.
+
+**URGENT for the owner (asked 9 Nov):** GitHub Settings > Pages > Source must be "GitHub Actions". Today a second
+"pages build and deployment" (deploy from branch) runs on every push and publishes the raw repo about a minute
+before the v4 deploy finishes: the galleries 404 for ~1 min and the CDN can keep the 404 up to 10 min. Until the
+owner switches it: push at most once an evening, tell the owner before, and give them ?t=1 links.
+
+**Every night (Tapalpa, 9 to 14 Nov):**
+1. Photos: the owner uploads to Drive folder 1FklBNyCYQ1Zx3QnOy2tWuVGQmzkXnROJ (link-shared; NEVER publish its id)
+   as SRS_6_Tn (k).JPG; practice was a subfolder. Run tools/media_webcopies.py FOLDER /home/user/media-2026/srs-tapalpa
+   --jobs 4 (default --day-re reads T1..T7 from the names; --day P --keep-names for a subfolder of practice). The
+   owner edits and culls before upload: no hold. A loop that re-runs until the folder stops growing is in chat 20's
+   scratchpad idea (photo_loop.sh): rewrite it if needed. Push media-2026, then python3 tools/v4_comp_gallery.py
+   tapalpa, python3 tools/v4_nav_live.py, commit, build in a clean worktree (./build.sh, git add the owned media pages,
+   python3 tools/v4_build.py; if it exits 1 at v4_ux, run it once more: it passed the second time on 9 Nov), gates in
+   the background (~15 min), copy the owned pages back, push main + branch (never forced; merge, don't rebase).
+   Ask the owner which photos go first and which make the cover/share picture only if they want; set COMPS first=.
+2. Task dates: tapalpa one_a_day assumes T2 = 9 Nov ... T7 = 14 Nov; set COMPS["tapalpa"]["dates"] when SRS skips a day.
+3. The YouTube kit: tools/yt_kit/ (README). Results: api.airtribune.com/srs/scores/?indx=1&comp=9 lists Tapalpa as
+   T6.n; the task's Sports/Female/Team tables (meet=93, task=...), IGC zip and KMZ (../files/task/2710_NN.*). Boards
+   (board.tpl), winner and first-into-goal cards, make_kml.py (top 10 tracks, cylinders, tour), make_anim.py N
+   (opener green-screen MP4 + end card), YouTube text (see chat 20's Task 1 text), thumbnail style A (A2 with the
+   photo shifted right: .bg left:400px; pick a photo with the wing clear of the text). Owner: CapCut, 4K 60 fps.
+   Name plates for the 116 confirmed pilots were sent 8 Nov. Still not done: the 2D race replay.
+   Note: Task 1 winner on points was Matthijs Groeneveld (provisional 989.7); Andres Tello Alvarado first into goal.
+4. srs.live: render it (JS app), click "Follow us Live", read the commentary; scores at srs.live/scores.
+
+**Open questions for the owner:** 44 vs 25 countries (the 116 confirmed pilots come from 25; airtribune's 44 counts
+all registrations); PayPal for originals (parked: Patreon instead); Kenya/India "From past pilots" quotes.
+Scheduled: "Tapalpa photos, nightly" trig_01EmNr55b35qPdgPMGFC1JqA was bound to chat 20; chat 20 re-binds it to
+chat 21 at the handover.
+
 ## Chat 20 starts here (4 Nov 2026): the owner picks a gallery design, then build it for Tapalpa (Task 1 is 8 Nov)
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
 has grown long, hand over without asking the owner: write the handover at the top of this file, update the
