@@ -41,7 +41,7 @@ CREDIT = "Photo: Aninder Singh, Paragliding Atlas"
 PRICE = "EUR 1"
 # owner, 9 Nov 2026: instead of the EUR 1 original, the viewer's second button invites to Patreon (the paid
 # originals wait for the owner's PayPal; the sheet stays in the code, unused)
-PATREON = "https://www.patreon.com/cw/ParaglidingAtlas"
+PATREON = "https://www.patreon.com/15133612/join"     # the owner's join link (9 Nov)
 
 # Facts: only from the owner (Tapalpa: 116 pilots confirmed, 44 countries, airtribune.com/srs-2026-6/info, 8 Nov), docs/designers/gallery-brief.md and the task videos (tools/v4_media.py V); a task's
 # date: Tapalpa assumes one task a day from 8 Nov (set "dates" when a day is cancelled); Piedrahita's are not known
