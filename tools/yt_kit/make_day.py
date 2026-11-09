@@ -56,6 +56,10 @@ def table(meet, task, typ):
     head = re.search(r"<h3>([^<]+)<em>([^<]*)</em>", t)
     status = head.group(2).strip() if head else ""
     body = t[t.find("<th>Rank</th>"):]
+    # the columns by their headers: a stopped task adds "Alt Goal" and "Adj Dist" (T6.2, 9 Nov)
+    hdr = [re.sub(r"<[^>]+>|&nbsp;", "", h).strip() for h in re.findall(r"<th[^>]*>(.*?)</th>", body[:body.find("</tr>")], re.S)]
+    cols = [{"Dist P": "DistP", "LO P": "LOP", "Spd P": "SpdP", "Low P": "LowP", "Alt Goal": "AltGoal", "Adj Dist": "AdjDist"}.get(h, h) or "_" for h in hdr]
+    body = body[body.find("</tr>") + 5:]
     rows = re.findall(r"<tr>(.*?)</tr>", body, re.S)
     out, team = [], None
     for r in rows:
@@ -66,12 +70,12 @@ def table(meet, task, typ):
                 team = {"Rank": c[0], "Team": b.group(1).strip(), "Score": c[-2], "pilots": []}
                 out.append(team)
             elif team is not None and len(c) >= 17 and c[1]:
-                p = dict(zip(COLS, c)); p["Name"] = name_case(p["Name"])
+                p = dict(zip(cols, c)); p["Name"] = name_case(p["Name"])
                 p["counts"] = "<del>" not in r
                 team["pilots"].append(p)
             continue
         if len(c) >= 17 and c[1]:
-            p = dict(zip(COLS, c)); p["Name"] = name_case(p["Name"])
+            p = dict(zip(cols, c)); p["Name"] = name_case(p["Name"])
             out.append(p)
     return out, status
 
