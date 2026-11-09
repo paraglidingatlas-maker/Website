@@ -176,7 +176,7 @@ def secs(t):
 def pages(R):
     n, F = R["task"], flags()
     st = R.get("sports_status", "").strip().capitalize() or "Provisional"
-    foot = "Task %d &middot; %s &middot; SRS scores, %s" % (n, E(R["date"]), E(st.lower()))
+    foot = "Task %d &middot; %s &middot; SRS scores" % (n, E(R["date"]))   # no status word (owner, 9 Nov)
     P = {}
     sp, fe, tm = R["sports"], R["female"], R["team"]
     P["Board_Sports_Top10"] = board(n, "Task %d results" % n, "Top <span>10</span>", [prow(i, p, F) for i, p in enumerate(sp[:10])], foot)
