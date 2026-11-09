@@ -42,6 +42,10 @@ PRICE = "EUR 1"
 # owner, 9 Nov 2026: instead of the EUR 1 original, the viewer's second button invites to Patreon (the paid
 # originals wait for the owner's PayPal; the sheet stays in the code, unused)
 PATREON = "https://www.patreon.com/15133612/join"     # the owner's join link (9 Nov)
+# owner, 9 Nov: a link beside "Save, free" downloads the full-size original, through the owner's Cloudflare worker
+# (tools/originals-worker.js: it fetches the file from the owner's Drive and hands it over under the site's name;
+# the Drive folder IDs live only in Cloudflare). Empty: the link stays hidden until the worker is live.
+ORIGINALS = ""
 
 # Facts: only from the owner (Tapalpa: 116 pilots confirmed, 44 countries, airtribune.com/srs-2026-6/info, 8 Nov), docs/designers/gallery-brief.md and the task videos (tools/v4_media.py V); a task's
 # date: Tapalpa assumes one task a day from 8 Nov (set "dates" when a day is cancelled); Piedrahita's are not known
@@ -275,6 +279,8 @@ def render(comp):
         secs.append('<section class="gf-day" id="%s" data-i="%d" data-date="%s" aria-labelledby="gf-h-%d">%s%s%s%s</section>'
                     % (sid(task), i, date, i + 1, head, vb, body, '<nav class="gf-df" aria-label="Other tasks">%s</nav>' % "".join(nav) if nav else ""))
     data = {"base": BASE + c["folder"] + "/", "tz": c["tz"], "days": info, "pay": pay_template()}
+    if ORIGINALS:
+        data["orig"] = ORIGINALS.rstrip("/") + "/"
     terms = ('Free web copy, <span class="gfv-px"></span>, under <a href="https://creativecommons.org/licenses/by-nc/4.0/" '
              'target="_blank" rel="license noopener">CC BY-NC 4.0</a>: share it with the credit &ldquo;<span class="gfv-cr">%s</span>&rdquo;, not for '
              'commercial use.' % E(CREDIT.replace("Photo: ", "Photo: ")))
@@ -321,6 +327,7 @@ def render(comp):
     <div class="gfv-meta"><b class="gfv-name"></b><span class="gfv-where"></span></div>
     <div class="gfv-acts">
       <a class="btn-lines gfv-save" href="#" download data-hover>Save, free</a>
+      <a class="gfv-orig" href="#" rel="nofollow" hidden>Full-size original</a>
       <a class="btn-solid gfv-patreon" href="%(patreon)s" target="_blank" rel="noopener" data-hover><span><small>Like what you see?</small>Join me on Patreon</span></a>
     </div>
     <p class="gfv-terms">%(terms)s</p>

@@ -234,6 +234,8 @@ html.v2-nav-up .gf-line.is-stuck{transform:translateY(var(--v2-nav-h,5rem))}
 .gf-event a{color:var(--white);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(246,244,244,.4)}
 .gf-event a:hover,.gf-event a:focus-visible{text-decoration-color:var(--orange)}
 /* the Patreon invitation in the viewer (owner, 9 Nov): its words may wrap to two lines on a phone */
+.gfv-orig{grid-column:1/-1;order:3;justify-self:center;font-size:var(--fs-small);color:var(--gray-light);text-decoration:underline;text-underline-offset:.2em}.gfv-orig:hover{color:var(--white)}
+@media (min-width:900px){.gfv-acts{grid-template-columns:auto auto auto}.gfv-orig{grid-column:auto;order:0}}
 .gfv-acts .gfv-patreon{white-space:nowrap;line-height:1.1;padding-top:.35rem;padding-bottom:.35rem}
 .gfv-patreon small{display:block;font-size:.72em;font-weight:500;opacity:.85;letter-spacing:.01em}
 /* zoomed in, the photo has the whole screen (owner, 9 Nov 2026: "the pic fills the page and other things hide"):
