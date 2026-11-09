@@ -16,8 +16,8 @@ html,body{width:3840px;height:2160px;overflow:hidden;background:transparent;font
 .row img{width:96px;height:64px;object-fit:cover;border-radius:6px;box-shadow:0 0 0 3px rgba(0,0,0,.3)}
 .row .nm{font:800 italic 84px/1 "Barlow Condensed";text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .row .gl{font:600 46px/1 "Barlow";color:rgba(255,255,255,.7);letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.row .sc{font:800 84px/1 "Barlow Condensed";text-align:right}
-.row .sc small{display:block;font:600 40px/1.1 "Barlow";color:rgba(255,255,255,.65);margin-top:6px}
+.row .sc{font:800 78px/.95 "Barlow Condensed";text-align:right}
+.row .sc small{display:block;font:600 34px/1 "Barlow";color:rgba(255,255,255,.65);margin-top:4px}
 .foot{margin-top:40px;color:rgba(255,255,255,.7);font:600 44px/1.2 "Barlow";letter-spacing:.06em}
 .lock{position:absolute;right:120px;top:110px;display:flex;align-items:center;gap:60px;filter:drop-shadow(0 6px 24px rgba(0,0,0,.6))}
 .lock .l-srs{width:420px}.lock i{display:block;width:8px;height:230px;background:rgba(255,255,255,.75)}

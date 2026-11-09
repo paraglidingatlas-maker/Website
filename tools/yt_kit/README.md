@@ -15,6 +15,7 @@ kit's own type (Advance's wordmark is not available as a file; never redraw it).
 - Still to make each evening: task card, results boards (airtribune results), Google Earth KML (tracks), 2D replay,
   YouTube text, the thumbnail from the day's photo. Follow srs.live for the day's story (owner, 8 Nov).
 - Templates are .tpl, not .html: the site's audit treats every .html in the repo as a page (8 Nov lesson).
+- `make_day.py N`: one command for the day (chat 21): reads SRS T6.N, writes tN/results.json, igc, kmz and renders the boards and cards into out/taskN/boards.
 - `board.tpl`: the results boards and winner cards (rows from SRS scores, api.airtribune.com/srs/scores/, the
   task's Sports, Female and Team tables). `make_kml.py t1 1 10`: the Google Earth file from SRS's task KMZ and IGC zip.
 - `thumb.tpl`: the YouTube thumbnail (style A2). Replace VAR with A2, PHOTO with a local jpg (no extension), POS and
