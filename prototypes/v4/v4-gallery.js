@@ -36,7 +36,7 @@
     if (st === "photos") latest = i;
     if (has || !date || date <= on) flownTo = i;
     var info = (data.days || [])[i] || {}, a = tps[i].querySelector("a");
-    var say = { photos: (info.n || 0) + (info.n === 1 ? " photo" : " photos"), today: "flying today, photos tonight", coming: "photos coming", soon: "to come" }[st];
+    var say = { photos: (info.n || 0) + (info.n === 1 ? " photo" : " photos") + (info.film ? " and the highlights film" : ""), today: "flying today, photos tonight", coming: "photos coming", soon: "to come" }[st];
     a.setAttribute("aria-label", (info.name || "Task " + (i + 1)) + ", " + (info.label || "") + ", " + say);
   });
   line.style.setProperty("--flown", Math.max(0, flownTo));
@@ -408,11 +408,347 @@
     else { var r = d.createRange(); r.selectNodeContents(lb.querySelector(".gfv-ref-n")); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
   });
 
+  /* ---------------------------------------------------------------- the films (owner, 9 Nov 2026)
+     A task with a Daily Highlights film opens with a band. Tapped, the band's photo lifts off the page and opens into
+     the theatre, re-cropped as it grows (transform only), and the film plays there in YouTube's privacy-enhanced
+     player, loaded only now. Where a visitor stopped is kept in this browser: the band shows how far they got and the
+     film plays on from there. At its end the day's photos are one tap away. The lead carries the newest film's cue.
+     No JS, or the claude.ai preview (html[data-md-out]): the band and the cue are links to the film on YouTube. */
+  var film = { open: function () { return false; } };
+  var fv = d.getElementById("gffv");
+  if (fv && !root.hasAttribute("data-md-out")) {
+    try { film = films(); } catch (err) { root.classList.remove("gff-js"); }
+  }
+  function films() {
+    var F = data.films || {};
+    var bands = [].slice.call(d.querySelectorAll(".gff[data-film]"));
+    var frame = fv.querySelector(".gffv-frame"), pic = fv.querySelector(".gffv-pic"), pimg = pic.querySelector("img"),
+        amb = fv.querySelector(".gffv-amb img"), box = fv.querySelector(".gffv-player"), endEl = fv.querySelector(".gffv-end"),
+        resume = fv.querySelector(".gffv-resume"), photosA = fv.querySelector(".gffv-photos"), again = fv.querySelector(".gffv-again");
+    var S = { id: "", band: null, from: null, player: null, timer: 0, start: 0, closing: false, hash: "", api: null };
+    function fine() { return !!(w.matchMedia && w.matchMedia("(hover: hover) and (pointer: fine)").matches); }
+
+    /* where a visitor stopped, in this browser only (a private window keeps nothing: the band simply says Play) */
+    function load(id) { try { var v = JSON.parse(localStorage.getItem("gff-" + id) || "null"); return v && typeof v === "object" ? v : null; } catch (e) { return null; } }
+    function keep(id, v) { try { localStorage.setItem("gff-" + id, JSON.stringify(v)); } catch (e) {} }
+    function mmss(t) { t = Math.max(0, Math.floor(t)); return Math.floor(t / 60) + ":" + ("0" + t % 60).slice(-2); }
+    function resumable(id) { var f = F[id] || {}, p = load(id); return p && !p.end && p.t >= 10 && p.t < (f.secs || 1e9) - 15 ? Math.floor(p.t) : 0; }
+    function paint(band) {
+      var id = band.getAttribute("data-film"), f = F[id]; if (!f) return;
+      var p = load(id), at = resumable(id), mode = at ? "resume" : p && p.end ? "again" : "play";
+      var a = band.querySelector(".gff-play"), cta = band.querySelector("[data-cta]"), sub = band.querySelector("[data-cta-s]");
+      if (a._name == null) a._name = a.getAttribute("aria-label");
+      band.setAttribute("data-mode", mode);
+      band.style.setProperty("--done", at ? (100 * at / f.secs).toFixed(1) : "0");
+      if (cta) cta.textContent = mode === "resume" ? "Resume the film" : mode === "again" ? "Watch again" : "Play the film";
+      if (sub) sub.textContent = mode === "resume" ? "from " + mmss(at) + " of " + f.len : f.len;
+      var note = band.querySelector(".gff-at");      // a phone shows no button words: the kicker says it
+      if (note) { note.hidden = mode === "play"; note.textContent = mode === "resume" ? "Paused at " + mmss(at) : mode === "again" ? "Watched" : ""; }
+      a.setAttribute("aria-label", mode === "resume" ? "Resume the film from " + mmss(at) + ", " + f.title + ", " + f.len
+        : mode === "again" ? "Watch the film again, " + f.title + ", " + f.len : a._name);
+    }
+    bands.forEach(paint);
+
+    /* the band's way in, once, as it comes on screen */
+    root.classList.add("gff-js");
+    function seen(b) { b.classList.add("is-seen"); }
+    if (reduced() || !w.IntersectionObserver) bands.forEach(seen);
+    else {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { seen(e.target); io.unobserve(e.target); } });
+      }, { threshold: 0.2 });
+      bands.forEach(function (b) { io.observe(b); });
+    }
+    /* a mouse: the play button leans towards the pointer (translate only) */
+    if (fine() && !reduced()) bands.forEach(function (b) {
+      var btn = b.querySelector(".gff-btn"), raf = 0, x = 0, y = 0;
+      function set() { raf = 0; btn.style.translate = x.toFixed(1) + "px " + y.toFixed(1) + "px"; }
+      b.addEventListener("pointermove", function (e) {
+        if (e.pointerType !== "mouse") return;
+        var q = btn.getBoundingClientRect(), cx = q.left + q.width / 2 - x, cy = q.top + q.height / 2 - y;
+        var dx = e.clientX - cx, dy = e.clientY - cy, k = Math.max(0, 1 - Math.hypot(dx, dy) / 340);
+        x = clamp(dx * 0.32 * k, -34, 34); y = clamp(dy * 0.32 * k, -26, 26);
+        if (!raf) raf = requestAnimationFrame(set);
+      });
+      b.addEventListener("pointerleave", function () { x = y = 0; if (!raf) raf = requestAnimationFrame(set); });
+    });
+
+    /* YouTube: warm the connection on intent, load the player's code on the press, the player itself once open */
+    var warmed = 0;
+    function warm() {
+      if (warmed) return; warmed = 1;
+      ["https://www.youtube-nocookie.com", "https://www.youtube.com", "https://i.ytimg.com"].forEach(function (h) {
+        var l = d.createElement("link"); l.rel = "preconnect"; l.href = h; d.head.appendChild(l);
+      });
+    }
+    function api() {
+      if (S.api) return S.api;
+      S.api = new Promise(function (res, rej) {
+        if (w.YT && w.YT.Player) { res(w.YT); return; }
+        var prev = w.onYouTubeIframeAPIReady;
+        w.onYouTubeIframeAPIReady = function () { if (typeof prev === "function") { try { prev(); } catch (e) {} } res(w.YT); };
+        var s = d.createElement("script"); s.src = "https://www.youtube.com/iframe_api"; s.async = true;
+        s.onerror = function () { rej(new Error("api")); };
+        d.head.appendChild(s);
+        setTimeout(function () { if (!(w.YT && w.YT.Player)) rej(new Error("slow")); }, 7000);
+      });
+      S.api.catch(function () { S.api = null; });
+      return S.api;
+    }
+    function ready() { if (fv.open && !S.closing) { fv.classList.add("is-ready"); fv.classList.remove("is-loading"); } }
+    function player() {
+      var id = S.id, f = F[id], mount = d.createElement("div");
+      box.textContent = ""; box.appendChild(mount);
+      fv.classList.add("is-loading");
+      api().then(function (YT) {
+        if (S.id !== id || !fv.open || S.closing) return;
+        S.player = new YT.Player(mount, {
+          host: "https://www.youtube-nocookie.com", videoId: id, width: "100%", height: "100%",
+          playerVars: { autoplay: 1, playsinline: 1, rel: 0, iv_load_policy: 3, start: S.start || 0, origin: location.origin },
+          events: {
+            onReady: function (e) {
+              try { e.target.getIframe().title = f.title + ", on YouTube"; } catch (x) {}
+              try { e.target.playVideo(); } catch (x) {}
+              setTimeout(ready, 1500);       // autoplay refused (often on a phone): YouTube's own play button shows
+            },
+            onStateChange: function (e) { state(e.data); },
+            onError: ready
+          }
+        });
+      }, function () {                       // the player's code did not come: the player alone, as on the other media pages
+        if (S.id !== id || !fv.open || S.closing) return;
+        var fr = d.createElement("iframe");
+        fr.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0&playsinline=1" + (S.start ? "&start=" + S.start : "");
+        fr.title = f.title + ", on YouTube"; fr.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen"; fr.setAttribute("allowfullscreen", "");
+        fr.addEventListener("load", function () { setTimeout(ready, 700); });
+        if (mount.parentNode) box.replaceChild(fr, mount);
+      });
+    }
+    function state(s) {
+      if (s === 1) {
+        ready(); if (!endEl.hidden) { endEl.hidden = true; fv.classList.remove("is-ended"); }
+        if (!resume.hidden && !S.fade) S.fade = setTimeout(function () { resume.classList.add("is-gone"); }, 7000);
+      }
+      else if (s === 0) ended();
+      if (s === 2) save();
+    }
+    function save() {
+      var p = S.player, f = F[S.id]; if (!p || !p.getCurrentTime || !f) return;
+      try {
+        var t = p.getCurrentTime() || 0, du = p.getDuration() || f.secs;
+        if (p.getPlayerState() === 0 || (t && t >= du - 15)) keep(S.id, { end: 1, at: Date.now() });
+        else if (t > 0) keep(S.id, { t: Math.floor(t), at: Date.now() });
+      } catch (e) {}
+    }
+    function ended() {
+      var f = F[S.id]; if (!f) return;
+      keep(S.id, { end: 1, at: Date.now() });
+      var info = (data.days || [])[f.day] || {};
+      fv.querySelector(".gffv-end-k").textContent = (info.name ? info.name + " · " : "") + "Daily Highlights";
+      photosA.querySelector("span").textContent = info.n ? "See all " + info.n + " photos" : "See the photos";
+      photosA.href = "#" + (days[f.day] ? days[f.day].id : "");
+      endEl.hidden = false; fv.classList.add("is-ended");
+      fv.classList.remove("is-ready");     // the film steps back: the end card lies over the day's own photo
+      resume.classList.add("is-gone");
+      if (!reduced() && endEl.animate) endEl.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 450, easing: EASE });
+      photosA.focus({ preventScroll: true });
+    }
+
+    /* the theatre's geometry: the band's photo, re-cropped frame by frame as it becomes the film's frame.
+       The frame scales from the band's box to its own (by transform, from its top left corner); the photo inside it is
+       scaled back so it never stretches, and placed so the crop moves smoothly from the band's to the frame's. */
+    function bez(x1, y1, x2, y2) {
+      function c(t, a, b) { return ((1 - 3 * b + 3 * a) * t + (3 * b - 6 * a)) * t * t + 3 * a * t; }
+      return function (x) {
+        if (x <= 0 || x >= 1) return x <= 0 ? 0 : 1;
+        var lo = 0, hi = 1, t = x;
+        for (var i = 0; i < 24; i++) { var v = c(t, x1, x2); if (Math.abs(v - x) < 1e-5) break; if (v < x) lo = t; else hi = t; t = (lo + hi) / 2; }
+        return c(t, y1, y2);
+      };
+    }
+    var IN = bez(0.2, 0.8, 0.2, 1), OUT = bez(0.45, 0, 0.2, 1);
+    function cover(bw, bh, nw, nh, ox, oy) {   // a photo laid to cover a box: its scale, and its centre's offset from the box's
+      var s = Math.max(bw / nw, bh / nh);
+      return { s: s, x: (nw * s - bw) * (0.5 - ox), y: (nh * s - bh) * (0.5 - oy) };
+    }
+    function opos(el) {
+      var p = (getComputedStyle(el).objectPosition || "50% 50%").split(" ");
+      function f(v) { return /%$/.test(v || "") ? parseFloat(v) / 100 : 0.5; }
+      return [f(p[0]), f(p[1])];
+    }
+    function zoomOf(el) {   // the band photo's own scale at this moment (its hover, its way in)
+      var cs = getComputedStyle(el), k = 1, m = cs.transform, v = m && m !== "none" && m.match(/matrix\(([^)]+)\)/);
+      if (v) k *= parseFloat(v[1].split(",")[0]) || 1;
+      if (cs.scale && cs.scale !== "none") k *= parseFloat(cs.scale) || 1;
+      return k;
+    }
+    function morph(media, opening) {
+      var bimg = media.querySelector("img"), B = media.getBoundingClientRect(), R = frame.getBoundingClientRect();
+      var nw = +bimg.getAttribute("width") || 16, nh = +bimg.getAttribute("height") || 9;
+      var oB = opos(bimg), k0 = zoomOf(bimg), cF = cover(R.width, R.height, nw, nh, 0.5, 0.5);
+      var n = 30, kf = [], kp = [];
+      for (var i = 0; i <= n; i++) {
+        var e = opening ? IN(i / n) : 1 - OUT(i / n);
+        var W = { l: B.left + (R.left - B.left) * e, t: B.top + (R.top - B.top) * e, w: B.width + (R.width - B.width) * e, h: B.height + (R.height - B.height) * e };
+        var kz = k0 + (1 - k0) * e, cW = cover(W.w, W.h, nw, nh, oB[0] + (0.5 - oB[0]) * e, oB[1] + (0.5 - oB[1]) * e);
+        var sx = W.w / R.width, sy = W.h / R.height, sW = cW.s * kz, ax = sW / (sx * cF.s), ay = sW / (sy * cF.s);
+        var tx = cW.x * kz / sx - ax * cF.x, ty = cW.y * kz / sy - ay * cF.y;
+        kf.push({ transform: "translate(" + (W.l - R.left).toFixed(2) + "px," + (W.t - R.top).toFixed(2) + "px) scale(" + sx.toFixed(5) + "," + sy.toFixed(5) + ")" });
+        kp.push({ transform: "translate(" + tx.toFixed(2) + "px," + ty.toFixed(2) + "px) scale(" + ax.toFixed(5) + "," + ay.toFixed(5) + ")" });
+      }
+      var o = { duration: opening ? 720 : 520, easing: "linear", fill: "both" };
+      pic.animate(kp, o);
+      return frame.animate(kf, o);
+    }
+    function grow(from, opening) {   // from somewhere that is not a band (the lead's cue, a link): the frame grows out of it
+      var R = frame.getBoundingClientRect(), r = from && from.getBoundingClientRect && from.getBoundingClientRect(), s = 0.14;
+      var x0 = r && r.width ? r.left + r.width / 2 - (R.left + R.width / 2) : 0, y0 = r && r.width ? r.top + r.height / 2 - (R.top + R.height / 2) : 30;
+      var at = "translate(" + (x0 + R.width * (1 - s) / 2).toFixed(1) + "px," + (y0 + R.height * (1 - s) / 2).toFixed(1) + "px) scale(" + s + ")";
+      var kf = opening ? [{ transform: at, opacity: 0 }, { transform: "none", opacity: 1 }] : [{ transform: "none", opacity: 1 }, { transform: at, opacity: 0 }];
+      return frame.animate(kf, { duration: opening ? 560 : 420, easing: opening ? EASE : "cubic-bezier(.45,0,.2,1)", fill: "both" });
+    }
+    function stop(el) { if (el.getAnimations) el.getAnimations().forEach(function (a) { a.cancel(); }); }
+
+    /* open, close */
+    function open(id, from) {
+      var f = F[id]; if (!f || fv.open || lb.open) return false;
+      warm(); api();
+      S.id = id; S.from = from || null; S.band = d.getElementById(f.band); S.closing = false; S.start = resumable(id); S.t0 = Date.now();
+      S.hash = location.hash;
+      fv.querySelector(".gffv-t").textContent = f.title;
+      fv.querySelector(".gffv-len").textContent = f.len;
+      fv.querySelector(".gffv-line").textContent = f.line || "";
+      fv.querySelector(".gffv-yt").href = "https://www.youtube.com/watch?v=" + id + (S.start ? "&t=" + S.start + "s" : "");
+      resume.hidden = !S.start; resume.classList.remove("is-gone"); clearTimeout(S.fade); S.fade = 0;
+      if (S.start) resume.querySelector("span").textContent = "Playing on from " + mmss(S.start) + ".";
+      endEl.hidden = true;
+      fv.classList.remove("is-in", "is-ready", "is-ended", "is-loading");
+      var bimg = S.band && S.band.querySelector(".gff-media img");
+      pimg.src = (bimg && (bimg.currentSrc || bimg.src)) || f.amb; amb.src = f.amb;
+      var fromBand = !!(from && S.band && S.band.contains(from)) && S.band.offsetParent !== null;
+      var go = function () { if (!fv.open || S.closing) return; stop(frame); stop(pic); player(); clearInterval(S.timer); S.timer = setInterval(save, 2000); };
+      if (reduced() || !frame.animate) {
+        if (fv.showModal) fv.showModal(); else fv.setAttribute("open", "");
+        fv.classList.add("is-in"); frame.focus({ preventScroll: true }); setHash("#" + f.band); go(); return true;
+      }
+      fv.classList.add("is-pre");
+      if (fv.showModal) fv.showModal(); else fv.setAttribute("open", "");
+      frame.focus({ preventScroll: true });
+      setHash("#" + f.band);
+      var started = false;
+      function start() {
+        if (started || !fv.open || S.closing) return; started = true;
+        var an = fromBand ? morph(S.band.querySelector(".gff-media"), true) : grow(from, true);
+        if (fromBand) S.band.classList.add("is-lifted");
+        fv.classList.remove("is-pre");
+        requestAnimationFrame(function () { fv.classList.add("is-in"); });
+        an.onfinish = go;
+      }
+      // the photo must be decoded before it flies (it is the band's own, in the cache: a frame or two)
+      if (pimg.decode) pimg.decode().then(start, start); else pimg.onload = start;
+      setTimeout(start, 260);
+      return true;
+    }
+    function close(after) {
+      if (!fv.open || S.closing) return; S.closing = true;
+      save(); clearInterval(S.timer);
+      try { if (S.player && S.player.pauseVideo) S.player.pauseVideo(); } catch (e) {}
+      var band = S.band, fromBand = !!(S.from && band && band.contains(S.from)) && band.offsetParent !== null;
+      stop(frame); stop(pic);
+      fv.classList.remove("is-in", "is-ready", "is-loading");
+      if (reduced() || !frame.animate) { finish(after); return; }
+      if (fromBand) {   // the band must be on screen, behind the theatre, for the photo to fly back into it
+        var r = band.getBoundingClientRect();
+        if (r.bottom < 80 || r.top > innerHeight - 80) band.scrollIntoView({ block: "center" });
+      }
+      var gone = S.from && !fromBand ? S.from.getBoundingClientRect() : null;
+      var an = fromBand ? morph(band.querySelector(".gff-media"), false)
+        : grow(gone && gone.bottom > 0 && gone.top < innerHeight ? S.from : null, false);
+      an.onfinish = function () { finish(after); };
+    }
+    function finish(after) {
+      try { if (S.player && S.player.destroy) S.player.destroy(); } catch (e) {}
+      S.player = null; box.textContent = "";
+      if (fv.open) fv.close();
+      stop(frame); stop(pic);
+      fv.classList.remove("is-in", "is-ready", "is-loading", "is-ended", "is-pre");
+      pimg.removeAttribute("src");
+      if (S.band) {
+        var bd = S.band; bd.classList.add("is-landing"); bd.classList.remove("is-lifted"); paint(bd);
+        void bd.offsetWidth; requestAnimationFrame(function () { requestAnimationFrame(function () { bd.classList.remove("is-landing"); }); });
+      }
+      setHash(/^#film-/.test(S.hash) || !S.hash ? (all ? "" : "#" + days[Math.max(0, cur)].id) : S.hash);
+      var back = S.from && d.body.contains(S.from) ? S.from : S.band && S.band.querySelector(".gff-play");
+      if (back && !after) back.focus({ preventScroll: true });
+      S.closing = false; S.id = "";
+      if (after) after();
+    }
+
+    /* the ways in and out */
+    d.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest(".gff-play, [data-film-cue]");
+      if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
+      var b = a.closest(".gff"), id = a.getAttribute("data-film-cue") || (b && b.getAttribute("data-film"));
+      if (!F[id]) return;
+      e.preventDefault(); open(id, a);
+    });
+    d.addEventListener("pointerdown", function (e) { if (e.target.closest && e.target.closest(".gff-play, [data-film-cue]")) { warm(); api(); } });
+    bands.forEach(function (b) { b.addEventListener("pointerenter", warm); b.addEventListener("focusin", warm); });
+    [].forEach.call(d.querySelectorAll("[data-film-cue]"), function (c) { c.addEventListener("pointerenter", warm); c.addEventListener("focusin", warm); });
+    fv.addEventListener("cancel", function (e) { e.preventDefault(); close(); });
+    fv.querySelector(".gffv-x").addEventListener("click", function () { close(); });
+    fv.addEventListener("click", function (e) {   // the dark ground closes it (not a double tap's second tap, just after opening)
+      var t = e.target; if (Date.now() - S.t0 < 700) return;
+      if (t === fv || t.classList.contains("gffv-stage") || t.classList.contains("gffv-bg")) close();
+    });
+    again.addEventListener("click", function () {
+      endEl.hidden = true; fv.classList.remove("is-ended"); keep(S.id, { t: 0, at: Date.now() });
+      try { S.player.seekTo(0, true); S.player.playVideo(); } catch (e) {}
+      frame.focus({ preventScroll: true });
+    });
+    fv.querySelector(".gffv-over").addEventListener("click", function () {
+      S.start = 0; resume.hidden = true; keep(S.id, { t: 0, at: Date.now() });
+      try { S.player.seekTo(0, true); S.player.playVideo(); } catch (e) {}
+      frame.focus({ preventScroll: true });
+    });
+    photosA.addEventListener("click", function (e) {
+      e.preventDefault();
+      var f = F[S.id]; if (!f) return; var di = f.day;
+      close(function () {
+        if (!all && cur !== di) openDay(di, { keepHash: true });
+        setHash(all ? "" : "#" + days[di].id);
+        var g = days[di].querySelector(".gf-grid") || days[di], top = g.getBoundingClientRect().top;
+        w.scrollTo({ top: Math.max(0, w.scrollY + top - line.offsetHeight - 14), behavior: reduced() ? "auto" : "smooth" });
+        var a = g.querySelector("a[data-stem]"); if (a) a.focus({ preventScroll: true });
+      });
+    });
+    // the keys YouTube's own player answers to, while the theatre (not the player inside it) has the focus
+    fv.addEventListener("keydown", function (e) {
+      var p = S.player, k = e.key, onCtl = /^(BUTTON|A|INPUT)$/.test(e.target.tagName);
+      if (!p || !p.getPlayerState || e.altKey || e.ctrlKey || e.metaKey) return;
+      try {
+        if ((k === " " && !onCtl) || k === "k" || k === "K") { e.preventDefault(); if (p.getPlayerState() === 1) p.pauseVideo(); else p.playVideo(); }
+        else if (k === "ArrowRight" || k === "l" || k === "L") { e.preventDefault(); p.seekTo(Math.min(p.getDuration() - 0.5, p.getCurrentTime() + (k === "ArrowRight" ? 5 : 10)), true); }
+        else if (k === "ArrowLeft" || k === "j" || k === "J") { e.preventDefault(); p.seekTo(Math.max(0, p.getCurrentTime() - (k === "ArrowLeft" ? 5 : 10)), true); }
+        else if (k === "m" || k === "M") { if (p.isMuted()) p.unMute(); else p.mute(); }
+        else if (k === "f" || k === "F") { var fr = p.getIframe(), rq = fr.requestFullscreen || fr.webkitRequestFullscreen; if (rq) rq.call(fr); }
+      } catch (x) {}
+    });
+    w.addEventListener("pagehide", save);
+    return { open: function (id, from) { return open(id, from); }, band: function (h) { var b = d.getElementById(h); return b && b.classList.contains("gff") ? b : null; } };
+  }
+
   /* ---------------------------------------------------------------- where to start */
   function fromHash(o) {
     var h = decodeURIComponent((location.hash || "").slice(1));
     var di = days.findIndex ? days.findIndex(function (s) { return s.id === h; }) : -1;   // a task by its own name (#task-1, #practice)
     if (di >= 0) { openDay(di, o); return true; }
+    var fb = film.band && /^film-/.test(h) ? film.band(h) : null;   // a task's film (#film-task-1): its task, then the theatre
+    if (fb) {
+      openDay(+fb.closest(".gf-day").getAttribute("data-i"), { keepHash: true, arrive: o.arrive });
+      setTimeout(function () { film.open(fb.getAttribute("data-film"), null); }, 500);
+      return true;
+    }
     if (h) {
       var f = d.getElementById(h);
       if (f && f.classList.contains("gf-ph") && f.closest(".gf-day").getAttribute("data-state") === "photos") {

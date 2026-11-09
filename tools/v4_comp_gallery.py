@@ -63,7 +63,14 @@ COMPS = {
                     # owner, 9 Nov: the people photos first, then the wings, by number; the cover and the share
                     # picture from these four (the file names stay the originals', the ones a buyer quotes)
                     first={"T1": [2, 3, 4, 5, 15, 16, 17, 19]}, lead="SRS_6_T1_62",
-                    share=["SRS_6_T1_62", "SRS_6_T1_10", "SRS_6_T1_20", "SRS_6_T1_58"]),
+                    share=["SRS_6_T1_62", "SRS_6_T1_10", "SRS_6_T1_20", "SRS_6_T1_58"],
+                    # owner, 9 Nov 2026: "Add this link to photos page if anyone wants to see video highlights too for
+                    # the task day". A task's Daily Highlights film, one line a night once it is on YouTube: its id, its
+                    # title and length as YouTube has them (vidIQ), its line from the video's own description, and a
+                    # photo of the same task as its poster ("pos": where the band crops it, as CSS object-position).
+                    films={"T1": dict(id="ZTxWnsHeUmE", title="Task 1 Highlights", len="4:48",
+                                      line="A 59.1 km opener that started low and ended with a long glide into the wind.",
+                                      poster="SRS_6_T1_55", pos="50% 30%")}),
     "piedrahita": dict(page="media-srs-piedrahita-2026.html", folder="srs-piedrahita", title="Piedrahita 2026", tz="Europe/Madrid",
                        kicker="SRS BGD Edition &middot; Piedrahita, Ávila, Spain", span="22 to 29 Aug 2026",
                        facts=["22 to 29 Aug 2026", "FAI Category 2", "120 pilots, 54 countries", "Photos by Aninder Singh"],
@@ -218,6 +225,81 @@ def sid(task):
     return "task-" + task[1:] if task.startswith("T") else {"P": "practice"}.get(task, task.lower())
 
 
+# ---------------------------------------------------------------- the films (owner, 9 Nov 2026) ----
+# A task with a Daily Highlights film opens with a band: a photo of that task, the film's title, length and line, and a
+# play button. JS opens the film in the theatre (v4-gallery.js films()); without JS the band is a link to YouTube.
+YT = "https://www.youtube.com/watch?v="
+CHANNEL = "https://www.youtube.com/@ParaglidingAtlas"          # as linked across the site
+PLAY = ('<svg class="gff-tri" viewBox="0 0 10 10" aria-hidden="true"><path d="M3 1.85v6.3a.62.62 0 0 0 .95.52l4.9-3.15a.62'
+        '.62 0 0 0 0-1.04L3.95 1.33A.62.62 0 0 0 3 1.85z"/></svg>')
+RING = ('<svg class="gff-ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="49"/>'
+        '<circle class="gff-done" cx="50" cy="50" r="49" pathLength="100"/></svg>')
+EXT = '<svg class="gff-ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.2 2.6h5.2v5.2M9.2 2.8 2.6 9.4"/></svg>'
+
+
+def said(ln):
+    """'4:48' -> '4 min 48 s', for the play button's name"""
+    m, s = (int(x) for x in ln.split(":"))
+    return "%d min %d s" % (m, s) if s else "%d min" % m
+
+
+def film_band(comp, task, f):
+    r = next(x for x in photos(comp) if x["stem"] == f["poster"])
+    return ('<div class="gff" id="film-%(s)s" data-film="%(id)s" style="--pos:%(pos)s">'
+            '<div class="gff-media"><img src="%(src)s" srcset="%(srcset)s" sizes="(min-width:1300px) 1300px, 100vw" '
+            'width="1600" height="%(h)d" alt="" loading="lazy" decoding="async"></div>'
+            '<div class="gff-head"><p class="gff-k"><span>Daily Highlights</span><span class="gff-len">%(len)s</span><span class="gff-at" hidden></span></p>'
+            '<h3 class="gff-t">%(title)s</h3></div>'
+            '<a class="gff-play" href="%(yt)s" target="_blank" rel="noopener" aria-label="Play the film, %(title)s, %(said)s">'
+            '<span class="gff-btn"><span class="gff-btn-in">%(ring)s%(play)s</span></span>'
+            '<span class="gff-cta" aria-hidden="true"><b data-cta>Play the film</b><small data-cta-s>%(len)s</small></span></a>'
+            '<p class="gff-line"><span>%(line)s</span> <a class="gff-yt" href="%(yt)s" target="_blank" rel="noopener">Watch on YouTube%(ext)s</a></p>'
+            '<i class="gff-bar" aria-hidden="true"><i></i></i></div>'
+            % dict(s=sid(task), id=E(f["id"]), pos=E(f.get("pos", "50% 50%")), src=src(comp, f["poster"], 1600),
+                   srcset=srcset(comp, f["poster"]), h=round(1600 * r["h"] / r["w"]), len=E(f["len"]), title=E(f["title"]),
+                   line=E(f["line"]), yt=E(YT + f["id"]), ext=EXT, said=said(f["len"]), ring=RING, play=PLAY))
+
+
+def film_cue(f):
+    """the lead's cue to the newest film (it shows whichever task is open)"""
+    return ('<p class="gf-film"><a href="%s" target="_blank" rel="noopener" data-film-cue="%s"><span class="gf-film-i" aria-hidden="true">%s</span>'
+            '<span class="gf-film-t">Watch %s</span><span class="gf-film-l">%s</span></a></p>'
+            % (E(YT + f["id"]), E(f["id"]), PLAY, E(f["title"]), E(f["len"])))
+
+
+FILM_DIALOG = """
+<dialog class="gffv" id="gffv" aria-labelledby="gffv-t">
+  <div class="gffv-bg" aria-hidden="true"></div>
+  <div class="gffv-amb" aria-hidden="true"><img alt="" decoding="async"></div>
+  <div class="gffv-stage">
+    <div class="gffv-box">
+      <div class="gffv-top">
+        <div class="gffv-meta"><p class="gffv-k"><span>Daily Highlights</span><span class="gffv-len"></span></p><p class="gffv-t" id="gffv-t"></p></div>
+        <a class="gffv-yt" href="%(channel)s" target="_blank" rel="noopener">YouTube%(ext)s</a>
+        <button class="gffv-x" type="button" aria-label="Close the film"></button>
+      </div>
+      <div class="gffv-frame" tabindex="-1" aria-label="The film">
+        <div class="gffv-pic"><img alt="" decoding="async"></div>
+        <div class="gffv-player"></div>
+        <span class="gffv-load" aria-hidden="true"><i></i></span>
+        <div class="gffv-end" hidden>
+          <p class="gffv-end-k"></p>
+          <p class="gffv-end-t">Find Yourself In The Photos</p>
+          <div class="gffv-end-a"><a class="btn-solid gffv-photos" href="#"><span>See the photos</span></a><button class="btn-lines gffv-again" type="button">Watch again</button></div>
+          <p class="gffv-end-s"><a href="%(channel)s?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a></p>
+        </div>
+      </div>
+      <div class="gffv-foot">
+        <p class="gffv-line"></p>
+        <p class="gffv-resume" hidden><span></span> <button class="gffv-over" type="button">Start over</button></p>
+        <p class="gffv-keys">Space plays and pauses &middot; F full screen &middot; Esc closes</p>
+      </div>
+    </div>
+  </div>
+</dialog>
+""" % dict(channel=CHANNEL, ext=EXT)
+
+
 def render(comp):
     c = COMPS[comp]
     ds, dates = days(comp), task_dates(comp)
@@ -233,6 +315,7 @@ def render(comp):
         note = '<p class="gf-cred">Photo: SRS Piedrahita 2026. Tapalpa&#x27;s own photos from Task 1.</p>'
     lr = next(r for r in photos(lead_comp) if r["stem"] == lead)
     facts = "".join("<span>%s</span>" % f for f in c["facts"])
+    films, fdata, cue = c.get("films", {}), {}, ""
     tps, secs, info = [], [], []
     for i, (task, lab, rows) in enumerate(ds):
         date = dates.get(task, "")
@@ -242,11 +325,19 @@ def render(comp):
         cr = c.get("credits", {}).get(task)
         if cr:
             info[-1]["cred"] = cr[0]
+        fm = films.get(task)
+        if fm:
+            info[-1]["film"] = fm["id"]
+            m, s = (int(x) for x in fm["len"].split(":"))
+            fdata[fm["id"]] = {"title": fm["title"], "len": fm["len"], "secs": m * 60 + s, "line": fm["line"], "day": i,
+                               "band": "film-" + sid(task), "amb": src(comp, fm["poster"], 800)}
+            cue = film_cue(fm)          # the newest film of the comp goes on the lead
         tps.append('<li class="gf-tp" data-i="%d"><a href="#%s"><i class="gf-dot" aria-hidden="true"></i><b>%s</b>'
-                   '<span class="gf-tp-d">%s</span><span class="gf-tp-s"><span data-s="photos">%s</span>'
+                   '<span class="gf-tp-d">%s</span><span class="gf-tp-s"><span data-s="photos">%s%s</span>'
                    '<span data-s="today">Photos tonight</span><span data-s="coming">Photos coming</span>'
                    '<span data-s="soon">To come</span></span></a></li>'
-                   % (i, sid(task), lab, dm or nphotos(n), nphotos(n) if dm else ""))
+                   % (i, sid(task), lab, dm or nphotos(n), nphotos(n) if dm else "",
+                      '<span class="gf-tp-f"> + film</span>' if fm else ""))
         story = c.get("stories", {}).get(task)
         vids = [v for v in c.get("videos", {}).get(task, [])]
         vb = ""
@@ -276,9 +367,12 @@ def render(comp):
             nd = dates.get(ds[i + 1][0], "")
             nav.append('<a class="gf-df-n" href="#%s" data-go="%d">Next leg: %s%s <i aria-hidden="true">&rarr;</i></a>'
                        % (sid(ds[i + 1][0]), i + 1, ds[i + 1][1], ", " + nice(nd)[0] if nd else ""))
-        secs.append('<section class="gf-day" id="%s" data-i="%d" data-date="%s" aria-labelledby="gf-h-%d">%s%s%s%s</section>'
-                    % (sid(task), i, date, i + 1, head, vb, body, '<nav class="gf-df" aria-label="Other tasks">%s</nav>' % "".join(nav) if nav else ""))
+        fb = film_band(comp, task, fm) if fm else ""
+        secs.append('<section class="gf-day" id="%s" data-i="%d" data-date="%s" aria-labelledby="gf-h-%d">%s%s%s%s%s</section>'
+                    % (sid(task), i, date, i + 1, head, fb, vb, body, '<nav class="gf-df" aria-label="Other tasks">%s</nav>' % "".join(nav) if nav else ""))
     data = {"base": BASE + c["folder"] + "/", "tz": c["tz"], "days": info, "pay": pay_template()}
+    if fdata:
+        data["films"] = fdata
     if ORIGINALS:
         data["orig"] = ORIGINALS.rstrip("/") + "/"
     terms = ('Free web copy, <span class="gfv-px"></span>, under <a href="https://creativecommons.org/licenses/by-nc/4.0/" '
@@ -294,7 +388,7 @@ def render(comp):
     <h1 class="gf-name">%(name)s <span>%(year)s</span></h1>
     <p class="gf-facts">%(facts)s</p>
     <p class="gf-event">Official event: <a href="%(evu)s" target="_blank" rel="noopener">%(evn)s</a></p>
-    %(note)s
+    %(cue)s%(note)s
   </div>
 </header>
 
@@ -346,9 +440,10 @@ def render(comp):
     </div>
   </div>
 </dialog>
-
+%(filmdialog)s
 <script type="application/json" id="gf-data">%(data)s</script>
 """ % dict(lead=src(lead_comp, lead, 1600), leads=srcset(lead_comp, lead), lh=round(1600 * h / w),
+           cue=cue, filmdialog=FILM_DIALOG if fdata else "",
            lalt=E("A photo from %s" % ("SRS Piedrahita 2026" if lead_comp != comp else c["title"])),
            kicker=c["kicker"], evn=E(c["event"][0]), evu=E(c["event"][1]), name=E(c["title"].rsplit(" ", 1)[0]), year=c["title"].rsplit(" ", 1)[1], facts=facts,
            note=note, linelabel=E("%s, %s" % (c["title"], "tasks " + c["span"])), glider=GLIDER, tps="".join(tps),
