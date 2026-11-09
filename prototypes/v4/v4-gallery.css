@@ -44,7 +44,11 @@
   border-bottom:1px solid var(--line);transition:transform .38s var(--gf-ease)}
 html.v2-nav-up .gf-line.is-stuck{transform:translateY(var(--v2-nav-h,5rem))}
 .gf-line-in{position:relative;max-width:var(--measure);margin:0 auto;padding:0;overflow:hidden}
-@media (max-width:820px){.gf-line-in{margin:0 var(--gutter)}}
+@media (max-width:820px){.gf-line-in{margin:0 var(--gutter);overflow:visible}}   /* a phone: "Practice" is wider than its column; it may reach into the gutter, not be cut */
+.gf-glc{position:absolute;inset:0;overflow:hidden;pointer-events:none}   /* the glider's own strip is clipped, not the words */
+/* eight stops (the practice day and seven tasks) on a narrow phone: the words a little smaller, so they never touch */
+@media (max-width:389px){.gf[style*="--n:8"] .gf-tp b{font-size:11px}.gf[style*="--n:8"] .gf-tp-d{font-size:10px}}
+@media (max-width:349px){.gf[style*="--n:8"] .gf-tp b{font-size:9.5px}.gf[style*="--n:8"] .gf-tp-d{font-size:9px}}
 .gf-tps{list-style:none;padding:0;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr))}
 .gf-tp a{position:relative;display:flex;flex-direction:column;align-items:center;padding:30px 0 9px;min-height:44px;color:var(--gray);text-decoration:none;text-align:center;-webkit-tap-highlight-color:transparent}
 .gf-tp b{font-family:var(--font-body);font-weight:600;font-size:12px;line-height:1.2;color:var(--gray-light);white-space:nowrap;margin-top:9px}
@@ -351,7 +355,8 @@ html.v2-nav-up .gf-line.is-stuck{transform:translateY(var(--v2-nav-h,5rem))}
 .gffv.is-in .gffv-bg{opacity:1}
 .gffv.is-in .gffv-amb{opacity:.42}
 .gffv-stage{position:absolute;inset:0;display:grid;place-items:center;container-type:size}
-.gffv-box{position:relative;display:grid;gap:.9rem;width:min(100cqw - 2 * var(--gutter), (100cqh - 9rem) * 16 / 9, 1680px)}
+.gffv-box{position:relative;display:grid;gap:.9rem;width:min(100vw - 2 * var(--gutter), (100vh - 9rem) * 16 / 9, 1680px);
+  width:min(100cqw - 2 * var(--gutter), (100cqh - 9rem) * 16 / 9, 1680px)}   /* the first: a browser without container units */
 .gffv-top{display:flex;align-items:center;gap:1.1rem;min-height:48px}
 .gffv-meta{flex:1;min-width:0}
 .gffv-k{display:flex;align-items:center;gap:.6rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange)}
@@ -398,7 +403,7 @@ html.v2-nav-up .gf-line.is-stuck{transform:translateY(var(--v2-nav-h,5rem))}
 .gffv.is-in .gffv-top,.gffv.is-in .gffv-foot{opacity:1;transition:opacity .45s var(--gf-ease) .22s}
 .gffv.is-pre .gffv-frame{opacity:0}
 @media (max-width:820px){
-  .gffv-box{width:min(100cqw, (100cqh - 10rem) * 16 / 9);gap:.75rem}
+  .gffv-box{width:min(100vw, (100vh - 10rem) * 16 / 9);width:min(100cqw, (100cqh - 10rem) * 16 / 9);gap:.75rem}
   .gffv-top,.gffv-foot{padding:0 1rem}
   .gffv-yt{font-size:var(--fs-micro);letter-spacing:.04em}
   .gffv-end{gap:.35rem}
@@ -409,7 +414,7 @@ html.v2-nav-up .gf-line.is-stuck{transform:translateY(var(--v2-nav-h,5rem))}
 }
 /* a phone on its side: the film has the whole screen; only the close button stays, in the margin */
 @media (orientation:landscape) and (max-height:520px){
-  .gffv-box{width:min(100cqw, 100cqh * 16 / 9);gap:0}
+  .gffv-box{width:min(100vw, 100vh * 16 / 9);width:min(100cqw, 100cqh * 16 / 9);gap:0}
   .gffv-top{position:fixed;top:.6rem;right:.6rem;z-index:5;min-height:0;padding:0}
   .gffv-meta,.gffv-yt,.gffv-foot{display:none}
 }

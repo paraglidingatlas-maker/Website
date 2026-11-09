@@ -68,6 +68,7 @@ COMPS = {
                     # the task day". A task's Daily Highlights film, one line a night once it is on YouTube: its id, its
                     # title and length as YouTube has them (vidIQ), its line from the video's own description, and a
                     # photo of the same task as its poster ("pos": where the band crops it, as CSS object-position).
+                    # No line in the description: leave "line" out (the band then shows only the YouTube link).
                     films={"T1": dict(id="ZTxWnsHeUmE", title="Task 1 Highlights", len="4:48",
                                       line="A 59.1 km opener that started low and ended with a long glide into the wind.",
                                       poster="SRS_6_T1_55", pos="50% 30%")}),
@@ -257,7 +258,7 @@ def film_band(comp, task, f):
             '<i class="gff-bar" aria-hidden="true"><i></i></i></div>'
             % dict(s=sid(task), id=E(f["id"]), pos=E(f.get("pos", "50% 50%")), src=src(comp, f["poster"], 1600),
                    srcset=srcset(comp, f["poster"]), h=round(1600 * r["h"] / r["w"]), len=E(f["len"]), title=E(f["title"]),
-                   line=E(f["line"]), yt=E(YT + f["id"]), ext=EXT, said=said(f["len"]), ring=RING, play=PLAY))
+                   line=E(f.get("line", "")), yt=E(YT + f["id"]), ext=EXT, said=said(f["len"]), ring=RING, play=PLAY))
 
 
 def film_cue(f):
@@ -329,7 +330,7 @@ def render(comp):
         if fm:
             info[-1]["film"] = fm["id"]
             m, s = (int(x) for x in fm["len"].split(":"))
-            fdata[fm["id"]] = {"title": fm["title"], "len": fm["len"], "secs": m * 60 + s, "line": fm["line"], "day": i,
+            fdata[fm["id"]] = {"title": fm["title"], "len": fm["len"], "secs": m * 60 + s, "line": fm.get("line", ""), "day": i,
                                "band": "film-" + sid(task), "amb": src(comp, fm["poster"], 800)}
             cue = film_cue(fm)          # the newest film of the comp goes on the lead
         tps.append('<li class="gf-tp" data-i="%d"><a href="#%s"><i class="gf-dot" aria-hidden="true"></i><b>%s</b>'
@@ -396,7 +397,7 @@ def render(comp):
 <nav class="gf-line" aria-label="%(linelabel)s">
   <div class="gf-line-in">
     <span class="gf-track" aria-hidden="true"><i class="gf-flown"></i></span>
-    <span class="gf-glw" aria-hidden="true"><i class="gf-glider">%(glider)s</i></span>
+    <span class="gf-glc" aria-hidden="true"><span class="gf-glw"><i class="gf-glider">%(glider)s</i></span></span>
     <ol class="gf-tps">%(tps)s</ol>
   </div>
 </nav>

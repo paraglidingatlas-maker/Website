@@ -4,6 +4,40 @@ Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
 the owner's current queue and what the last session learnt doing it.
 
+## Chat 20, overnight 9 Nov: the Daily Highlights film on the comp gallery (chat 21 carries on below)
+**Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
+has grown long, hand over without asking the owner: write the handover at the top of this file, update the
+owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
+chat yourself with the session tools (create_session), and give the owner its link. If create_session is refused,
+give the owner the prompt to paste.
+
+The owner (9 Nov, 00:30 Tapalpa): "Add this link to photos page if anyone wants to see video highlights too for the
+task day, make it look elegant and awwwards worthy". Live with the zoom viewer and chat 21's Paco credit:
+https://paraglidingatlas.com/media-srs-tapalpa-2026.html#film-task-1 (Task 1, https://youtu.be/ZTxWnsHeUmE, 4:48).
+- **What it is.** A band opens each task that has a film: a photo of that day, "Daily Highlights | 4:48", the title,
+  the line from the video's own description, a play button (it leans towards a mouse). Tapped, the band's photo
+  lifts off the page and re-crops into the theatre's 16:9 frame (transform only: the frame scales from the band's box,
+  the photo inside is scaled back so it never stretches); YouTube's player (IFrame API, host youtube-nocookie) loads
+  only then and plays. Where a visitor stopped stays in their browser (localStorage "gff-<id>"): the band then says
+  "Resume the film from 1:02" (a phone's kicker: "Paused at 1:02"), the ring and the bar show how far; after the end,
+  "Watched" and "Watch again". End card: "Find Yourself In The Photos", See all N photos (closes and lands on the
+  day's first photo), Watch again, Subscribe on YouTube. Keys in the theatre: Space/K, arrows, J/L, M, F, Esc. The
+  lead carries the newest film's cue ("Watch Task 1 Highlights | 4:48"), the task line "99 photos + film"; a film
+  link #film-task-1 opens its task and the theatre. No JS: plain links to YouTube; reduced motion: no moves.
+  Code: tools/v4_comp_gallery.py (films=, film_band, film_cue, FILM_DIALOG), v4-gallery.css ("the films"),
+  v4-gallery.js films().
+- **Every night, once the owner's film is up:** one line in COMPS["tapalpa"]["films"]:
+  `"T2": dict(id="...", title="Task 2 Highlights", len="m:ss", line="...", poster="SRS_6_T2_n", pos="50% 40%")`.
+  Id, title and length from YouTube (vidIQ vidiq_get_videos_by_ids); line = the one-line summary at the top of the
+  video's description, word for word (none there: leave line out); poster = a landscape flying photo of that task,
+  the wing clear of the left third (the words sit there on a laptop), not the cover; pos = the band's crop (16:5 on a
+  laptop, 3:2 on a phone). Then the usual: generate, v4_nav_live, commit, worktree build, gates, push.
+- **Testing:** this container's IP gets Google's "unusual traffic" page, so the owner's videos say "Video
+  unavailable" in a test browser here (other videos play). It is the container, not the site. Test with a
+  stand-in id swapped in at test time (a Playwright route that replaces the id in the page).
+- **Not done:** Piedrahita's three videos still use the older small frames (gf-vids). Giving them the band means
+  picking two posters from its 325 photos (ask the owner first).
+
 ## Chat 21 starts here (9 Nov 2026): Tapalpa, tasks 2 to 7 (9 to 14 Nov), the daily kit and photos
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
 has grown long, hand over without asking the owner: write the handover at the top of this file, update the
