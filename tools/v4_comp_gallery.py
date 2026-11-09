@@ -21,6 +21,7 @@ After running this, build in a clean worktree and copy the pages back before com
 import datetime
 import html
 import json
+import re
 import os
 import sys
 import urllib.request
@@ -49,7 +50,11 @@ COMPS = {
                          "the original EUR 1. Photos by Paragliding Atlas.",
                     tasks=["P"] + ["T%d" % i for i in range(1, 8)], window=("2026-11-08", "2026-11-14"), one_a_day=True,
                     dates={"P": "2026-11-07"},
-                    event=("SRS Advance Edition, Tapalpa", "https://airtribune.com/srs-2026-6/info")),
+                    event=("SRS Advance Edition, Tapalpa", "https://airtribune.com/srs-2026-6/info"),
+                    # owner, 9 Nov: the people photos first, then the wings, by number; the cover and the share
+                    # picture from these four (the file names stay the originals', the ones a buyer quotes)
+                    first={"T1": [2, 3, 4, 5, 15, 16, 17, 19]}, lead="SRS_6_T1_62",
+                    share=["SRS_6_T1_62", "SRS_6_T1_10", "SRS_6_T1_20", "SRS_6_T1_58"]),
     "piedrahita": dict(page="media-srs-piedrahita-2026.html", folder="srs-piedrahita", title="Piedrahita 2026", tz="Europe/Madrid",
                        kicker="SRS BGD Edition &middot; Piedrahita, Ávila, Spain", span="22 to 29 Aug 2026",
                        facts=["22 to 29 Aug 2026", "FAI Category 2", "120 pilots, 54 countries", "Photos by Aninder Singh"],
@@ -80,6 +85,35 @@ def photos(comp):
         return []
 
 
+def order(stem):
+    m = re.search(r"_(\d+)(?:-(\d+))?$", stem)
+    return (int(m.group(1)), int(m.group(2) or 0)) if m else (10 ** 9, 0)
+
+
+def share_image(comp):
+    """the link preview (WhatsApp, Facebook ...): a 1200x630 JPEG of the owner's chosen photos, two by two, written
+    beside the photos in the media repo as share.jpg (push the media repo for it to be served)"""
+    c = COMPS[comp]
+    if not c.get("share"):
+        return None
+    from PIL import Image
+    folder = os.path.join(REPO, c["folder"])
+    tiles = [os.path.join(folder, s + "-800.webp") for s in c["share"]]
+    if not all(os.path.exists(t) for t in tiles):
+        return None
+    W, H, g = 1200, 630, 6
+    out = Image.new("RGB", (W, H), (20, 21, 25))
+    tw, th = (W - g) // 2, (H - g) // 2
+    for i, t in enumerate(tiles[:4]):
+        im = Image.open(t).convert("RGB")
+        r = max(tw / im.width, th / im.height)
+        im = im.resize((round(im.width * r), round(im.height * r)), Image.LANCZOS)
+        x, y = (im.width - tw) // 2, (im.height - th) // 2
+        out.paste(im.crop((x, y, x + tw, y + th)), ((i % 2) * (tw + g), (i // 2) * (th + g)))
+    out.save(os.path.join(folder, "share.jpg"), quality=85, optimize=True, progressive=True)
+    return BASE + c["folder"] + "/share.jpg"
+
+
 def src(comp, stem, w):
     return "%s%s/%s-%d.webp" % (BASE, COMPS[comp]["folder"], stem, w)
 
@@ -100,6 +134,11 @@ def days(comp):
         if r.get("hold"):          # out of focus by the sharpness check: off the page until the owner says
             continue
         by.setdefault(r.get("day") or "", []).append(r)
+    first = COMPS[comp].get("first", {})
+    for k, lst in by.items():       # the owner's chosen first photos of a task, in their order, then the rest by number
+        want = ["%s_%d" % (re.sub(r"_\d+(-\d+)?$", "", lst[0]["stem"]), n) for n in first.get(k, [])] if lst else []
+        pos = {st: i for i, st in enumerate(want)}
+        lst.sort(key=lambda r: (pos.get(r["stem"], len(pos)), order(r["stem"])))
     stray = [k for k in by if k not in COMPS[comp]["tasks"]]
     assert not stray, "photos with a day the comp does not have: %s (check --day-re)" % stray
     return [(t, label(t), by.get(t, [])) for t in COMPS[comp]["tasks"]]
@@ -303,7 +342,7 @@ def render(comp):
 def page(comp):
     c = COMPS[comp]
     rows = photos(comp)
-    og = src(comp, rows[0]["stem"], 1600) if rows else "https://paraglidingatlas.com/assets/images/hero.jpg"
+    og = share_image(comp) or (src(comp, rows[0]["stem"], 1600) if rows else "https://paraglidingatlas.com/assets/images/hero.jpg")
     out = M.shell(c["title"], c["desc"], c["page"], og, c["title"], render(comp))
     M.check(c["page"], out)
     k = len([d for d in days(comp) if d[2] or d[0].startswith("T")])
