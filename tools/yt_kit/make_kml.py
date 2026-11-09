@@ -52,7 +52,10 @@ def main():
         tracks.append((i, r, pts))
     # the race: from the start gate to the last of the top N in goal (UTC; Tapalpa is UTC-6)
     t0 = min(p[0][0] for _, _, p in tracks)
-    start = dt.datetime.combine(t0.date(), dt.time(18, 30))     # 12:30 local, the start (SRS, srs.live)
+    # the start gate from SRS's own Start column (local, UTC-6); 12:30 if no pilot has one
+    st = next((r["Start"] for r in R if r.get("Start")), "12:30:00")
+    h, m, _ = map(int, st.split(":"))
+    start = dt.datetime.combine(t0.date(), dt.time(h, m)) + dt.timedelta(hours=6)
     ends = []
     for _, r, pts in tracks:
         fin = r.get("Finish")
