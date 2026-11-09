@@ -39,6 +39,9 @@ if "--repo" in sys.argv:
 
 CREDIT = "Photo: Aninder Singh, Paragliding Atlas"
 PRICE = "EUR 1"
+# owner, 9 Nov 2026: instead of the EUR 1 original, the viewer's second button invites to Patreon (the paid
+# originals wait for the owner's PayPal; the sheet stays in the code, unused)
+PATREON = "https://www.patreon.com/cw/ParaglidingAtlas"
 
 # Facts: only from the owner (Tapalpa: 116 pilots confirmed, 44 countries, airtribune.com/srs-2026-6/info, 8 Nov), docs/designers/gallery-brief.md and the task videos (tools/v4_media.py V); a task's
 # date: Tapalpa assumes one task a day from 8 Nov (set "dates" when a day is cancelled); Piedrahita's are not known
@@ -312,7 +315,7 @@ def render(comp):
     <div class="gfv-meta"><b class="gfv-name"></b><span class="gfv-where"></span></div>
     <div class="gfv-acts">
       <a class="btn-lines gfv-save" href="#" download data-hover>Save, free</a>
-      <button class="btn-solid gfv-buy" type="button" data-hover><span>Original, %(price)s</span></button>
+      <a class="btn-solid gfv-patreon" href="%(patreon)s" target="_blank" rel="noopener" data-hover><span><small>Like what you see?</small>Join me on Patreon</span></a>
     </div>
     <p class="gfv-terms">%(terms)s</p>
   </div>
@@ -338,7 +341,7 @@ def render(comp):
            note=note, linelabel=E("%s, %s" % (c["title"], "tasks " + c["span"])), glider=GLIDER, tps="".join(tps),
            secs="\n".join(secs), cta=M.cta("Coverage Like This For <span class=\"v4-nw\">Your Event</span>", "Coverage For Your Comp",
                                          "Every task day: stills like these, and Daily Highlights, a video each task day with social clips and a results newsletter."),
-           price=PRICE, terms=terms, tbd=TBD,
+           price=PRICE, terms=terms, tbd=TBD, patreon=PATREON,
            paynote=("The payment carries the photo&#x27;s name. The download after paying: %s" % TBD) if PAYPAL_EMAIL
            else "Payment link: %s. It will carry the photo&#x27;s name." % TBD,
            data=json.dumps(data, separators=(",", ":")).replace("</", "<\\/"))

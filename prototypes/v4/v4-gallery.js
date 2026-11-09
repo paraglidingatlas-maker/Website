@@ -356,8 +356,8 @@
 
   /* ---------------------------------------------------------------- Original, EUR 1: the sheet */
   function openSheet() { lb.classList.add("is-buy"); setTimeout(function () { lb.querySelector(".gfv-sheet-t").focus({ preventScroll: true }); }, reduced() ? 0 : 60); }
-  function closeSheet() { lb.classList.remove("is-buy"); buy.focus({ preventScroll: true }); }
-  buy.addEventListener("click", openSheet);
+  function closeSheet() { lb.classList.remove("is-buy"); if (buy) buy.focus({ preventScroll: true }); }
+  if (buy) buy.addEventListener("click", openSheet);     // the EUR 1 original: off while the Patreon button stands in
   back.addEventListener("click", closeSheet);
   pay.addEventListener("click", function (e) {
     var link = data.pay || "";
