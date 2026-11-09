@@ -40,14 +40,13 @@ def endcard(n, next_date):
     body = ('<i class="slash s1"></i><i class="slash s2"></i><i class="slash s3"></i>'
             '<div class="e-h">%s</div><div class="e-sub">%s</div>'
             '<div class="e-url">Free photos of every task: <b>paraglidingatlas.com</b></div>'
-            '<div class="slot" style="left:2500px;top:560px;width:1150px;height:647px">YouTube end screen:<br>next video here</div>'
-            '<div class="slot" style="left:2500px;top:1280px;width:1150px;height:300px">Subscribe button here</div>%s'
+            '%s'
             '<img class="atlas" src="src/atlas.png">') % (head, sub, LOCK)
     sc = """
 A('.slash',[{transform:'skewX(-18deg) translateY(-2600px)'},{transform:'skewX(-18deg) translateY(0)'}],{duration:900,stagger:70,ke:'cubic-bezier(.7,0,.3,1)'});
 A('.e-h',[{opacity:0,transform:'translateX(-200px)'},{opacity:1,transform:'none'}],{duration:700,delay:400});
 A('.e-sub,.e-url',[{opacity:0,transform:'translateY(40px)'},{opacity:1,transform:'none'}],{duration:600,delay:650,stagger:120});
-A('.lock,.atlas,.slot',[{opacity:0},{opacity:1}],{duration:600,delay:500,ke:'linear'});
+A('.lock,.atlas',[{opacity:0},{opacity:1}],{duration:600,delay:500,ke:'linear'});
 """
     return TPL.replace("BODYCLASS", "bg").replace("BODY", body).replace("SCRIPT", sc), 1500
 
