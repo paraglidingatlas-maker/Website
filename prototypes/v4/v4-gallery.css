@@ -235,3 +235,12 @@ html.v2-nav-up .gf-line.is-stuck{transform:translateY(var(--v2-nav-h,5rem))}
 /* the Patreon invitation in the viewer (owner, 9 Nov): its words may wrap to two lines on a phone */
 .gfv-acts .gfv-patreon{white-space:nowrap;line-height:1.1;padding-top:.35rem;padding-bottom:.35rem}
 .gfv-patreon small{display:block;font-size:.72em;font-weight:500;opacity:.85;letter-spacing:.01em}
+/* zoomed in, the photo has the whole screen (owner, 9 Nov 2026: "the pic fills the page and other things hide"):
+   the bar and the caption fade away, the ground goes black, the photo may pass over where they were */
+.gfv.is-zoomed{background-color:#000}
+.gfv.is-zoomed .gfv-stage{overflow:visible}
+.gfv.is-zoomed .gfv-top,.gfv.is-zoomed .gfv-foot,.gfv.is-pull .gfv-top,.gfv.is-pull .gfv-foot{opacity:0;pointer-events:none}
+.gfv-top,.gfv-foot{transition:opacity .25s var(--gf-ease)}
+.gfv.is-pull{transition:none}
+.gfv-stage img{max-height:var(--gfv-h,100%);max-width:var(--gfv-w,100%)}
+@media (min-width:821px){.gfv-stage img{max-width:calc(var(--gfv-w,100%) - 9rem)}}

@@ -156,11 +156,25 @@
   var Z = { s: 1, x: 0, y: 0, ptrs: {}, pinch: null, moved: 0, closing: 0, set: [], i: 0, req: {}, got: {} };
   var blobs = {};
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
-  function apply() { img.style.transform = "translate(" + Z.x.toFixed(1) + "px," + Z.y.toFixed(1) + "px) scale(" + Z.s.toFixed(3) + ")"; lb.classList.toggle("is-zoomed", Z.s > 1.01); }
+  function apply() { img.style.transform = "translate(" + Z.x.toFixed(1) + "px," + Z.y.toFixed(1) + "px) scale(" + Z.s.toFixed(3) + ")"; Z.as = Z.s; Z.ax = Z.x; Z.ay = Z.y; lb.classList.toggle("is-zoomed", Z.s > 1.01); }
+  function drawn() {   // the photo's size at scale 1, as the screen draws it (its box can differ from its pixels)
+    var r = img.getBoundingClientRect(), k = Z.as || 1; return { w: r.width / k, h: r.height / k };
+  }
+  function fit() {     // the photo's height limit is the stage's real height (a % height does not hold in its grid)
+    lb.style.setProperty("--gfv-h", stage.clientHeight + "px"); lb.style.setProperty("--gfv-w", stage.clientWidth + "px");
+  }
+  w.addEventListener("resize", function () { if (lb.open) { fit(); if (Z.s > 1.01) { clampPan(); apply(); } } });
+  function fill() {    // the scale at which the photo covers the whole screen
+    var b = drawn(); return b.w && b.h ? Math.max(innerWidth / b.w, innerHeight / b.h) : 2;
+  }
   function clampPan() {
-    var iw = img.clientWidth, ih = img.clientHeight, sw = stage.clientWidth, sh = stage.clientHeight;
-    var mx = Math.max(0, (iw * Z.s - sw) / 2 + 24), my = Math.max(0, (ih * Z.s - sh) / 2 + 24);
-    if (iw * Z.s <= sw) mx = 0; if (ih * Z.s <= sh) my = 0; Z.x = clamp(Z.x, -mx, mx); Z.y = clamp(Z.y, -my, my);
+    if (Z.s <= 1.01) { Z.x = Z.y = 0; return; }
+    // zoomed, the photo has the whole screen (owner, 9 Nov): its edges stop at the screen's, centred if smaller
+    // the photo's resting centre: where it is drawn now, less the move applied to it
+    var b = drawn(), iw = b.w * Z.s, ih = b.h * Z.s, q = img.getBoundingClientRect();
+    var cx = q.left + q.width / 2 - (Z.ax || 0), cy = q.top + q.height / 2 - (Z.ay || 0), W = innerWidth, H = innerHeight;
+    Z.x = iw <= W ? W / 2 - cx : clamp(Z.x, W - cx - iw / 2, iw / 2 - cx);
+    Z.y = ih <= H ? H / 2 - cy : clamp(Z.y, H - cy - ih / 2, ih / 2 - cy);
   }
   function zoomAt(k, cx, cy) {
     var r = stage.getBoundingClientRect(), px = cx - (r.left + r.width / 2), py = cy - (r.top + r.height / 2), s1 = clamp(Z.s * k, 1, 6), ratio = s1 / Z.s;
@@ -200,6 +214,7 @@
     lb.classList.remove("is-in", "is-buy"); img.style.transform = "";
     show(a);
     if (lb.showModal) { if (!lb.open) lb.showModal(); } else lb.setAttribute("open", "");
+    fit();
     if (reduced() || !img.animate) { lb.classList.add("is-in"); return; }
     lb.classList.add("is-lift-out");          // ground clear, chrome hidden: only the photo shows, over its cell
     var started = false;
@@ -273,11 +288,17 @@
   bPrev.addEventListener("click", function () { go(-1); });
   bNext.addEventListener("click", function () { go(1); });
   lb.querySelector(".gfv-x").addEventListener("click", closeLb);
-  lb.addEventListener("cancel", function (e) { e.preventDefault(); if (lb.classList.contains("is-buy")) closeSheet(); else closeLb(); });
+  lb.addEventListener("cancel", function (e) {
+    e.preventDefault();
+    if (lb.classList.contains("is-buy")) closeSheet();
+    else if (Z.s > 1.01) zoomAt(1 / Z.s, innerWidth / 2, innerHeight / 2);     // out of the zoom first
+    else closeLb();
+  });
   stage.addEventListener("click", function (e) {
     if (Z.moved > 6) { Z.moved = 0; return; }
     var r = img.getBoundingClientRect(), onImg = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
-    if (onImg) { var next = Z.s < 1.5 ? 2 : Z.s < 3 ? 3.5 : 1; zoomAt(next / Z.s, e.clientX, e.clientY); return; }
+    // first tap: the photo fills the whole screen; second: closer still; third: back (owner, 9 Nov)
+    if (onImg) { var f = Math.max(1.6, fill()), next = Z.s < 1.05 ? f : Z.s < f * 1.5 ? Math.min(6, f * 2) : 1; zoomAt(next / Z.s, e.clientX, e.clientY); return; }
     closeLb();
   });
   stage.addEventListener("wheel", function (e) { e.preventDefault(); zoomAt(Math.exp(-clamp(e.deltaY, -80, 80) * 0.004), e.clientX, e.clientY); }, { passive: false });
@@ -294,10 +315,24 @@
       if (Z.pinch.span > 0) zoomAt(span / Math.max(1, Z.pinch.span), cx, cy);
       Z.x += cx - Z.pinch.cx; Z.y += cy - Z.pinch.cy; Z.pinch.span = span; Z.pinch.cx = cx; Z.pinch.cy = cy; clampPan(); apply(); return;
     }
-    if (Z.s > 1.01) { Z.x += dx; Z.y += dy; clampPan(); apply(); }
+    if (Z.s > 1.01) { Z.x += dx; Z.y += dy; clampPan(); apply(); return; }
+    var tx = e.clientX - p.sx, ty = e.clientY - p.sy;
+    if (ids.length === 1 && (Z.pull || (ty > 12 && ty > Math.abs(tx) * 1.3))) {
+      Z.pull = Math.max(0, ty);
+      img.style.transition = "none";
+      img.style.transform = "translate(" + (tx * 0.3).toFixed(1) + "px," + Z.pull.toFixed(1) + "px) scale(" + (1 - Math.min(0.18, Z.pull / 1400)).toFixed(3) + ")";
+      lb.style.backgroundColor = "rgba(14,15,18," + Math.max(0.25, 1 - Z.pull / 420).toFixed(3) + ")";
+      lb.classList.add("is-pull");
+    }
   });
   function up(e) {
     var p = Z.ptrs[e.pointerId]; delete Z.ptrs[e.pointerId]; var ids = Object.keys(Z.ptrs); if (ids.length < 2) Z.pinch = null; lb.classList.remove("is-drag");
+    if (Z.pull) {                                  // a swipe down: far enough closes, else the photo settles back
+      var far = Z.pull > 110; Z.pull = 0; Z.moved = 99; lb.classList.remove("is-pull");
+      img.style.transition = ""; lb.style.backgroundColor = "";
+      if (far) { closeLb(); } else { img.style.transform = ""; apply(); }
+      return;
+    }
     if (p && !ids.length && Z.s <= 1.01 && !Z.pinch) { var dx = e.clientX - p.sx, dy = e.clientY - p.sy; if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) { Z.moved = 99; go(dx < 0 ? 1 : -1); } }
   }
   stage.addEventListener("pointerup", up); stage.addEventListener("pointercancel", up);
