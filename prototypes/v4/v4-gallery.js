@@ -150,7 +150,7 @@
   /* ---------------------------------------------------------------- the viewer (from v4-media.js viewer(): tap to come closer, pinch, drag, swipe) */
   var lb = d.getElementById("gfv"), stage = lb.querySelector(".gfv-stage"), img = stage.querySelector("img");
   var bPrev = lb.querySelector(".gfv-prev"), bNext = lb.querySelector(".gfv-next"), pos = lb.querySelector(".gfv-pos");
-  var nameEl = lb.querySelector(".gfv-name"), whereEl = lb.querySelector(".gfv-where"), pxEl = lb.querySelector(".gfv-px");
+  var nameEl = lb.querySelector(".gfv-name"), whereEl = lb.querySelector(".gfv-where"), pxEl = lb.querySelector(".gfv-px"), crEl = lb.querySelector(".gfv-cr");
   var save = lb.querySelector(".gfv-save"), buy = lb.querySelector(".gfv-buy"), pay = lb.querySelector(".gfv-pay"), back = lb.querySelector(".gfv-back");
   var copy = lb.querySelector(".gfv-copy"), refs = lb.querySelectorAll(".gfv-ref-n, .gfv-ref-n2"), payNote = lb.querySelector(".gfv-paynote");
   var Z = { s: 1, x: 0, y: 0, ptrs: {}, pinch: null, moved: 0, closing: 0, set: [], i: 0, req: {}, got: {} };
@@ -198,6 +198,7 @@
     nameEl.textContent = stem;
     whereEl.textContent = (info.name || "Task " + (di + 1)) + (info.label ? " · " + info.label : "");
     pxEl.textContent = a.getAttribute("data-W") + " × " + a.getAttribute("data-H") + " px";
+    if (crEl) { if (crEl._d == null) crEl._d = crEl.textContent; crEl.textContent = info.cred ? "Photo: " + info.cred : crEl._d; }
     pos.textContent = (Z.i + 1) + " of " + Z.set.length;
     bPrev.disabled = Z.i <= 0; bNext.disabled = Z.i >= Z.set.length - 1;
     save.href = url(a, 2400); save.setAttribute("download", stem + ".jpg");

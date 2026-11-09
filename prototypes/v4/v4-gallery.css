@@ -165,6 +165,7 @@ html.v2-nav-up .gf-line.is-stuck{transform:translateY(var(--v2-nav-h,5rem))}
 .gfv-acts .btn-lines,.gfv-acts .btn-solid{min-height:46px;display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;text-decoration:none}
 .gfv-acts .btn-solid{border:0;cursor:pointer;font-family:inherit}
 .gfv-save.is-busy{color:var(--gray-light)}
+.gf-dh-cred{margin-top:.4rem;font-size:var(--fs-small);color:var(--gray-light)}.gf-dh-cred a{color:inherit;text-decoration:underline;text-underline-offset:.2em}
 .gfv-terms{font-size:var(--fs-micro);line-height:1.5;color:var(--gray)}
 @media (min-width:821px){
   .gfv-top{padding:1rem 1.25rem .25rem}

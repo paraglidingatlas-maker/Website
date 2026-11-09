@@ -53,6 +53,8 @@ COMPS = {
                          "the original EUR 1. Photos by Paragliding Atlas.",
                     tasks=["P"] + ["T%d" % i for i in range(1, 8)], window=("2026-11-08", "2026-11-14"), one_a_day=True,
                     dates={"P": "2026-11-07"},
+                    # owner, 9 Nov: the practice day's photos are by Paco Peciado; credit with a link to their Instagram
+                    credits={"P": ("@paco_peciado", "https://www.instagram.com/paco_peciado/")},
                     event=("SRS Advance Edition, Tapalpa", "https://airtribune.com/srs-2026-6/info"),
                     # owner, 9 Nov: the people photos first, then the wings, by number; the cover and the share
                     # picture from these four (the file names stay the originals', the ones a buyer quotes)
@@ -233,6 +235,9 @@ def render(comp):
         short, full, dm = nice(date) if date else ("", "", "")
         n = len(rows)
         info.append({"i": i, "task": int(task[1:]) if task[1:].isdigit() else 0, "name": lab, "date": date, "label": short, "n": n})
+        cr = c.get("credits", {}).get(task)
+        if cr:
+            info[-1]["cred"] = cr[0]
         tps.append('<li class="gf-tp" data-i="%d"><a href="#%s"><i class="gf-dot" aria-hidden="true"></i><b>%s</b>'
                    '<span class="gf-tp-d">%s</span><span class="gf-tp-s"><span data-s="photos">%s</span>'
                    '<span data-s="today">Photos tonight</span><span data-s="coming">Photos coming</span>'
@@ -247,8 +252,9 @@ def render(comp):
         when = ("<span>%s</span>" % full) if full else ""
         head = ('<header class="gf-dh"><h2 id="gf-h-%d">%s</h2><p class="gf-dh-r">%s<span class="gf-dh-n" data-s="photos">%s'
                 '<span class="gf-dh-o">, in the order shot</span></span><span class="gf-dh-n" data-s="today">Flying today</span>'
-                '<span class="gf-dh-n" data-s="coming">Photos coming</span><span class="gf-dh-n" data-s="soon">To come</span></p>%s</header>'
-                % (i + 1, lab, when, nphotos(n), '<p class="gf-story">%s</p>' % E(story) if story else ""))
+                '<span class="gf-dh-n" data-s="coming">Photos coming</span><span class="gf-dh-n" data-s="soon">To come</span></p>%s%s</header>'
+                % (i + 1, lab, when, nphotos(n), '<p class="gf-story">%s</p>' % E(story) if story else "",
+                   '<p class="gf-dh-cred">Photos by <a href="%s" target="_blank" rel="noopener">%s</a></p>' % (E(cr[1]), E(cr[0])) if cr else ""))
         if rows:
             body = '<div class="gf-grid" aria-label="Photos of %s, in the order shot">%s</div>' % (lab, "".join(cell(comp, r, task, k, n) for k, r in enumerate(rows)))
         else:
@@ -270,7 +276,7 @@ def render(comp):
                     % (sid(task), i, date, i + 1, head, vb, body, '<nav class="gf-df" aria-label="Other tasks">%s</nav>' % "".join(nav) if nav else ""))
     data = {"base": BASE + c["folder"] + "/", "tz": c["tz"], "days": info, "pay": pay_template()}
     terms = ('Free web copy, <span class="gfv-px"></span>, under <a href="https://creativecommons.org/licenses/by-nc/4.0/" '
-             'target="_blank" rel="license noopener">CC BY-NC 4.0</a>: share it with the credit &ldquo;%s&rdquo;, not for '
+             'target="_blank" rel="license noopener">CC BY-NC 4.0</a>: share it with the credit &ldquo;<span class="gfv-cr">%s</span>&rdquo;, not for '
              'commercial use.' % E(CREDIT.replace("Photo: ", "Photo: ")))
     w, h = lr["w"], lr["h"]
     return """
