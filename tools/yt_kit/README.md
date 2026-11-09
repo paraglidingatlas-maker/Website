@@ -17,3 +17,7 @@ kit's own type (Advance's wordmark is not available as a file; never redraw it).
 - Templates are .tpl, not .html: the site's audit treats every .html in the repo as a page (8 Nov lesson).
 - `board.tpl`: the results boards and winner cards (rows from SRS scores, api.airtribune.com/srs/scores/, the
   task's Sports, Female and Team tables). `make_kml.py t1 1 10`: the Google Earth file from SRS's task KMZ and IGC zip.
+- `thumb.tpl`: the YouTube thumbnail (style A2). Replace VAR with A2, PHOTO with a local jpg (no extension), POS and
+  BODY (kick "Tapalpa · Day n of 7", big "Task <span>n</span>", strip date + Highlights); for the day's own photo
+  add `.A2 .bg{left:400px}` with a left fade so the wing sits right of the text. Needs srs.png, adv.svg, atlas.png.
+- `srs_live.py`: reads the srs.live commentary (clicks "Follow us Live") into live2.txt.
