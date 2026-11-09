@@ -51,10 +51,10 @@ COMPS = {
                     tasks=["P"] + ["T%d" % i for i in range(1, 8)], window=("2026-11-08", "2026-11-14"), one_a_day=True,
                     dates={"P": "2026-11-07"},
                     event=("SRS Advance Edition, Tapalpa", "https://airtribune.com/srs-2026-6/info"),
-                    # owner, 9 Nov: the people photos first, then the wings, by number; the cover and the share
+                    # owner, 9 Nov: the people photos first (share: #22, not #20, owner), then the wings, by number; the cover and the share
                     # picture from these four (the file names stay the originals', the ones a buyer quotes)
                     first={"T1": [2, 3, 4, 5, 15, 16, 17, 19]}, lead="SRS_6_T1_62",
-                    share=["SRS_6_T1_62", "SRS_6_T1_10", "SRS_6_T1_20", "SRS_6_T1_58"]),
+                    share=["SRS_6_T1_62", "SRS_6_T1_10", "SRS_6_T1_22", "SRS_6_T1_58"]),
     "piedrahita": dict(page="media-srs-piedrahita-2026.html", folder="srs-piedrahita", title="Piedrahita 2026", tz="Europe/Madrid",
                        kicker="SRS BGD Edition &middot; Piedrahita, Ávila, Spain", span="22 to 29 Aug 2026",
                        facts=["22 to 29 Aug 2026", "FAI Category 2", "120 pilots, 54 countries", "Photos by Aninder Singh"],
