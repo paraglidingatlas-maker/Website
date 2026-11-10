@@ -53,8 +53,10 @@ COMPS = {
     "tapalpa": dict(page="media-srs-tapalpa-2026.html", folder="srs-tapalpa", title="Tapalpa 2026", tz="America/Mexico_City",
                     kicker="SRS Advance Edition &middot; Tapalpa, Mexico", span="8 to 14 Nov 2026",
                     facts=["Tasks 8 to 14 Nov 2026", "7 tasks", "116 pilots, 44 countries", "Photos by Aninder Singh"],
-                    desc="SRS Advance Edition, Tapalpa, Mexico, 8 to 14 Nov 2026: every photo by task, free to save, "
-                         "the original EUR 1. Photos by Paragliding Atlas.",
+                    desc="SRS Advance Edition, Tapalpa, Mexico, 8 to 14 Nov 2026: every photo by task, free to save. "
+                         "Photos by Paragliding Atlas.",
+                    # owner, 10 Nov: the link preview's title is the comp's full name and the newest task with photos
+                    share_title="SRS Advance Edition Tapalpa 2026",
                     tasks=["P"] + ["T%d" % i for i in range(1, 8)], window=("2026-11-08", "2026-11-14"), one_a_day=True,
                     dates={"P": "2026-11-07"},
                     # owner, 9 Nov: the practice day's photos are by Paco Peciado; credit with a link to their Instagram
@@ -464,6 +466,10 @@ def page(comp):
     og = share_image(comp) or (src(comp, rows[0]["stem"], 1600) if rows else "https://paraglidingatlas.com/assets/images/hero.jpg")
     out = M.shell(c["title"], c["desc"], c["page"], og, c["title"], render(comp))
     M.check(c["page"], out)
+    if c.get("share_title"):
+        new = [lab for t, lab, rs in days(comp) if rs and t.startswith("T")]
+        st = c["share_title"] + (" · " + new[-1] if new else "")
+        out = out.replace('<meta property="og:title" content="%s">' % E(c["title"]), '<meta property="og:title" content="%s">' % E(st), 1)
     k = len([d for d in days(comp) if d[2] or d[0].startswith("T")])
     out = out.replace('<main id="v4-main">', '<main id="v4-main" class="gf" style="--n:%d">' % k, 1)
     out = out.replace("<!-- site-schema -->", '<link rel="stylesheet" href="v4-gallery.css?v=%s">\n<!-- site-schema -->' % M.ver("v4-gallery.css"), 1)
