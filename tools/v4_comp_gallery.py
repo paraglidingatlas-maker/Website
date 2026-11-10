@@ -232,10 +232,11 @@ def sid(task):
 # play button. JS opens the film in the theatre (v4-gallery.js films()); without JS the band is a link to YouTube.
 YT = "https://www.youtube.com/watch?v="
 CHANNEL = "https://www.youtube.com/@ParaglidingAtlas"          # as linked across the site
-PLAY = ('<svg class="gff-tri" viewBox="0 0 10 10" aria-hidden="true"><path d="M3 1.85v6.3a.62.62 0 0 0 .95.52l4.9-3.15a.62'
-        '.62 0 0 0 0-1.04L3.95 1.33A.62.62 0 0 0 3 1.85z"/></svg>')
-RING = ('<svg class="gff-ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="49"/>'
-        '<circle class="gff-done" cx="50" cy="50" r="49" pathLength="100"/></svg>')
+# owner, 10 Nov: the play button as the site's other YouTube buttons (podcast page rail, library popup): a dark
+# see-through rounded rectangle, 82 by 56, YouTube's own optically centred triangle, red on hover
+PLAY = '<svg class="gff-tri" viewBox="0 0 68 48" aria-hidden="true"><path d="M45 24 27 14 27 34Z"/></svg>'
+RING = ('<svg class="gff-ring" viewBox="0 0 82 56" aria-hidden="true"><rect x=".75" y=".75" width="80.5" height="54.5" rx="13.25"/>'
+        '<rect class="gff-done" x="1.5" y="1.5" width="79" height="53" rx="12.5" pathLength="100"/></svg>')
 EXT = '<svg class="gff-ext" viewBox="0 0 12 12" aria-hidden="true"><path d="M4.2 2.6h5.2v5.2M9.2 2.8 2.6 9.4"/></svg>'
 
 
