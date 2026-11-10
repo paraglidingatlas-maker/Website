@@ -66,7 +66,7 @@ COMPS = {
                     # picture from these four (the file names stay the originals', the ones a buyer quotes)
                     first={"T1": [2, 3, 4, 5, 15, 16, 17, 19]}, lead="SRS_6_T1_62",
                     # owner, 10 Nov: the link picture from Task 2 photos 22, 19, 43, 2 (was Task 1: 62, 10, 20, 58)
-                    share=["SRS_6_T2_22", "SRS_6_T2_19", "SRS_6_T2_43", "SRS_6_T2_2"],
+                    share=["SRS_6_T3_41", "SRS_6_T3_82", "SRS_6_T3_141", "SRS_6_T3_114", "SRS_6_T3_115"],   # Task 3, owner 10 Nov
                     # owner, 9 Nov 2026: "Add this link to photos page if anyone wants to see video highlights too for
                     # the task day". A task's Daily Highlights film, one line a night once it is on YouTube: its id, its
                     # title and length as YouTube has them (vidIQ), its line from the video's own description, and a
@@ -126,13 +126,23 @@ def share_image(comp):
         return None
     W, H, g = 1200, 630, 6
     out = Image.new("RGB", (W, H), (20, 21, 25))
-    tw, th = (W - g) // 2, (H - g) // 2
-    for i, t in enumerate(tiles[:4]):
+
+    def fit(t, tw, th):
         im = Image.open(t).convert("RGB")
         r = max(tw / im.width, th / im.height)
         im = im.resize((round(im.width * r), round(im.height * r)), Image.LANCZOS)
         x, y = (im.width - tw) // 2, (im.height - th) // 2
-        out.paste(im.crop((x, y, x + tw, y + th)), ((i % 2) * (tw + g), (i // 2) * (th + g)))
+        return im.crop((x, y, x + tw, y + th))
+    if len(tiles) >= 5:      # owner, 10 Nov (Task 3): five photos, the first big on the left, four 2 by 2 on the right
+        bw = (W - g) // 2
+        out.paste(fit(tiles[0], bw, H), (0, 0))
+        tw, th = (W - bw - 2 * g) // 2, (H - g) // 2
+        for i, t in enumerate(tiles[1:5]):
+            out.paste(fit(t, tw, th), (bw + g + (i % 2) * (tw + g), (i // 2) * (th + g)))
+    else:
+        tw, th = (W - g) // 2, (H - g) // 2
+        for i, t in enumerate(tiles[:4]):
+            out.paste(fit(t, tw, th), ((i % 2) * (tw + g), (i // 2) * (th + g)))
     # a subtle lift (owner, 9 Nov: "a bit more vibrant ... currently it looks a bit shaded out")
     from PIL import ImageEnhance
     out = ImageEnhance.Color(out).enhance(1.22)
