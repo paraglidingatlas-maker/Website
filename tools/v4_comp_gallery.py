@@ -54,7 +54,7 @@ COMPS = {
                     kicker="SRS Advance Edition &middot; Tapalpa, Mexico", span="8 to 14 Nov 2026",
                     facts=["Tasks 8 to 14 Nov 2026", "7 tasks", "116 pilots, 44 countries", "Photos by Aninder Singh"],
                     desc="SRS Advance Edition, Tapalpa, Mexico, 8 to 14 Nov 2026: every photo by task, free to save. "
-                         "Photos by Paragliding Atlas.",
+                         "Photos by Aninder Singh, Paragliding Atlas.",
                     # owner, 10 Nov: the link preview's title is the comp's full name and the newest task with photos
                     share_title="SRS Advance Edition Tapalpa 2026",
                     tasks=["P"] + ["T%d" % i for i in range(1, 8)], window=("2026-11-08", "2026-11-14"), one_a_day=True,
@@ -79,7 +79,7 @@ COMPS = {
                        kicker="SRS BGD Edition &middot; Piedrahita, Ávila, Spain", span="22 to 29 Aug 2026",
                        facts=["22 to 29 Aug 2026", "FAI Category 2", "120 pilots, 54 countries", "Photos by Aninder Singh"],
                        desc="SRS BGD Edition, Piedrahita, Spain, 22 to 29 Aug 2026: all 325 photos by task, free to save, "
-                            "the original EUR 1, and the task videos. Photos by Paragliding Atlas.",
+                            "and the task videos. Photos by Aninder Singh, Paragliding Atlas.",
                        tasks=["T1", "T2", "T3"], window=("2026-08-22", "2026-08-29"), dates={}, lead="SRS_5_T3_63",
                        event=("SRS BGD Edition, Piedrahita", "https://airtribune.com/srs-2026-5/info"),
                        # the task lines and videos as on the page chat 19 built (from the videos' descriptions)
