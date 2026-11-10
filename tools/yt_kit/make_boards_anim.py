@@ -61,6 +61,83 @@ A('.panel',[{opacity:1},{opacity:0}],{duration:350,delay:OUT+300,ke:'linear',fil
     return tpl.replace("BODY", body + js)
 
 
+def task_stats(meet, task):
+    """SRS's own Task Statistics block (and the stop time, when the task was stopped)"""
+    import html as H
+    t = D.get(D.API + "?meet=%s&task=%s&type=56" % (meet, task))
+    j = t.find("Task Statistics")
+    txt = re.sub(r"\s+", " ", H.unescape(re.sub(r"<[^>]+>", " ", t[j:j + 4000])))
+    out = {}
+    for k in ("Total Pilots", "Pilots Landed Out", "Pilots at ESS", "Pilots in Goal", "Task Validity", "Max Task Points"):
+        m = re.search(re.escape(k) + r":\s*([\d.]+)", txt)
+        if m:
+            out[k] = m.group(1)
+    m = re.search(r"Stopped at (\d\d:\d\d)", t)
+    if m:
+        out["Stopped"] = m.group(1)
+    m = re.search(r"<td>GOAL</td>.*?([\d.]+ km)</td><td[^>]*>([\d.]+ km)", t, re.S)
+    if m:
+        out["Distance"] = m.group(1)
+    return out
+
+
+TILES_CSS = """
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:0 60px;margin-top:10px}
+.tile{padding:46px 0 40px;border-top:3px solid rgba(255,255,255,.14);overflow:hidden}
+.tile b{display:block;font:900 italic 168px/.9 "Barlow Condensed";color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.45);white-space:nowrap}
+.tile b.o{color:var(--o)}
+.tile b small{font-size:.42em;font-weight:800;margin-left:.12em}
+.tile span{display:block;margin-top:18px;font:600 46px/1.15 "Barlow";color:#fff;letter-spacing:.04em;text-shadow:0 3px 14px rgba(0,0,0,.45)}
+.panel.wide{width:3480px;top:470px}
+"""
+
+
+STOP_WHY = {2: "rain"}
+# a stopped task: pilots who reached the goal field after the scored stop time (srs.live 16:33, 9 Nov: "only 9
+# people in goal"; SRS scores count 1, Castro, before the 14:40 stop). Owner, 10 Nov: show the 9.
+REACHED_GOAL = {2: 9}      # from srs.live's commentary: Task 2 stopped for rain at the southern turnpoint
+
+
+def numbers_page(n, R, S, dur):
+    sp = R["sports"]
+    fin = [p for p in sp if p.get("Time")]
+    tiles = []
+    if S.get("Distance"):
+        v = S["Distance"].replace(" km", "")
+        tiles.append(("%s<small>km</small>" % v, "Task distance", ""))
+    tiles.append((S.get("Total Pilots", str(len(sp))), "Pilots flying", ""))
+    if n in REACHED_GOAL:
+        tot = int(S.get("Total Pilots", len(sp)))
+        tiles.append((str(REACHED_GOAL[n]), "Reached goal", "o"))
+        tiles.append((str(tot - REACHED_GOAL[n]), "Landed out", ""))
+    else:
+        tiles.append((S.get("Pilots in Goal", str(len(fin))), "In goal", "o"))
+        tiles.append((S.get("Pilots Landed Out", "?"), "Landed out", ""))
+    if fin:
+        w = min(fin, key=lambda p: D.secs(p["Time"]))
+        tiles.append((w["Time"].lstrip("0").replace(":", ":", 2) if not w["Time"].startswith("00") else w["Time"][3:], "Fastest time &middot; %s" % E(w["Name"]), "o"))
+        tiles.append(("%s<small>km/h</small>" % E(w["Speed"]), "Fastest speed", ""))
+    best = max((float(p["Distance"]) for p in sp if p.get("Distance") and not p.get("Time")), default=None)
+    if n in REACHED_GOAL:
+        k = S.get("Pilots in Goal", str(len(fin)))
+        tiles.append((k, "Finish%s scored before the stop" % ("" if k == "1" else "es"), ""))
+    elif best is not None:
+        tiles.append(("%.1f<small>km</small>" % best, "Best distance at the stop" if S.get("Stopped") else "Furthest without goal", ""))
+    if S.get("Stopped"):
+        tiles.append((S["Stopped"], "Stopped (%s)" % STOP_WHY[n] if n in STOP_WHY else "Task stopped", "o"))
+    elif S.get("Task Validity"):
+        tiles.append(("%d<small>%%</small>" % round(float(S["Task Validity"]) * 100), "Task validity", ""))
+    tiles = tiles[:8]
+    body = "".join('<div class="tile"><b class="%s">%s</b><span>%s</span></div>' % (c, v, l) for v, l, c in tiles)
+    foot = "SRS scores &middot; Task %d &middot; %s" % (n, E(R["date"]))
+    tpl = open(os.path.join(K, "board.tpl")).read().replace("</style>", CSS + TILES_CSS + "</style>")
+    html = ('<div class="panel wide"><div class="tri"></div><div class="kick">Tapalpa <b>&middot;</b> Task %d</div>'
+            '<div class="title">Task %d <span>in numbers</span></div><div class="tiles">%s</div><div class="foot">%s</div></div>%s'
+            % (n, n, body, foot, D.LOCK))
+    js = page("", "", [], "", 0, dur).split("<script>", 1)[1].replace("'.row'", "'.tile'")
+    return tpl.replace("BODY", html + "<script>" + js)
+
+
 async def clip(name, html, dur, out):
     fr = os.path.join(K, "frames_" + name)
     shutil.rmtree(fr, ignore_errors=True); os.makedirs(fr)
@@ -114,5 +191,16 @@ async def main(n):
         await clip(name, html, dur, out)
 
 
+async def numbers(n, dur=7000):
+    R = json.load(open(os.path.join(K, "t%d" % n, "results.json")))
+    S = task_stats(R["meet"], R["task_id"])
+    print(S)
+    out = os.path.join(K, "out", "task%d" % n, "animated"); os.makedirs(out, exist_ok=True)
+    await clip("Task%d_Numbers_7s" % n, numbers_page(n, R, S, dur), dur, out)
+
+
 if __name__ == "__main__":
-    asyncio.run(main(int(sys.argv[1])))
+    if "--numbers" in sys.argv:
+        asyncio.run(numbers(int(sys.argv[1])))
+    else:
+        asyncio.run(main(int(sys.argv[1])))
