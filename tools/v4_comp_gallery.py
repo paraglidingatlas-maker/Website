@@ -74,7 +74,10 @@ COMPS = {
                     # No line in the description: leave "line" out (the band then shows only the YouTube link).
                     films={"T1": dict(id="ZTxWnsHeUmE", title="Task 1 Highlights", len="4:48",
                                       line="A 59.1 km opener that started low and ended with a long glide into the wind.",
-                                      poster="SRS_6_T1_55", pos="50% 30%")}),
+                                      poster="SRS_6_T1_55", pos="50% 30%"),
+                           "T2": dict(id="MXt0RJgXNs4", title="Task 2 Highlights", len="4:36",
+                                      line="A 41.3 km task raced under a storm clock, which eventually got stopped by rain.",
+                                      poster="SRS_6_T2_44", pos="50% 40%")}),
     "piedrahita": dict(page="media-srs-piedrahita-2026.html", folder="srs-piedrahita", title="Piedrahita 2026", tz="Europe/Madrid",
                        kicker="SRS BGD Edition &middot; Piedrahita, Ávila, Spain", span="22 to 29 Aug 2026",
                        facts=["22 to 29 Aug 2026", "FAI Category 2", "120 pilots, 54 countries", "Photos by Aninder Singh"],
