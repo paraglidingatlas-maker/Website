@@ -27,6 +27,22 @@ def overall(typ):
     return out
 
 
+def overall_teams():
+    """SRS's team overall: each team row (rank, name, total) followed by its pilots"""
+    t = D.get(D.API + "?meet=%s&type=61" % MEET)
+    body = t[t.find("<th>Rank</th>"):]
+    out, team = [], None
+    for r in re.findall(r"<tr>(.*?)</tr>", body, re.S):
+        c = D.cells(r)
+        b = re.search(r"<b>([^<]+)</b>", r)
+        if b and c and c[0]:
+            team = {"Rank": c[0], "Team": b.group(1).strip(), "Score": c[-1], "pilots": []}
+            out.append(team)
+        elif team is not None and len(c) > 4 and c[1]:
+            team["pilots"].append({"Name": D.name_case(c[2])})
+    return out
+
+
 CSS = """
 .panel{background:rgba(8,34,24,.40)!important;box-shadow:none!important}
 .row{overflow:hidden}
@@ -35,6 +51,13 @@ CSS = """
 .title,.kick,.foot{text-shadow:0 4px 18px rgba(0,0,0,.45)}
 .foot{color:#fff!important}
 """
+
+
+def team_page(n, teams, foot, dur):
+    F = D.flags()
+    html = page("Teams &middot; after Task %d" % n, "Team <span>standings</span>", [], foot, 0, dur)
+    rows = "".join(D.prow(i, t, F, True) for i, t in enumerate(teams))
+    return html.replace('<div class="foot">', rows + '<div class="foot">', 1)
 
 
 def page(kick, title, rows, foot, n_rows, dur):
@@ -186,7 +209,10 @@ async def main(n):
         ("Task%d_Standings_7s" % n, page("Task %d" % n, "Task %d <span>standings</span>" % n, R["sports"][:10], foot, 10, 7000), 7000),
         ("Task%d_Women_7s" % n, page("Women &middot; after Task %d" % n, "Women&#x27;s <span>standings</span>", overall(57)[:10], foot, 10, 7000), 7000),
         ("Task%d_Overall_10s" % n, page("Overall &middot; after Task %d" % n, "Overall <span>leaderboard</span>", overall(56)[:10], foot, 10, 10000), 10000),
+        ("Task%d_Teams_7s" % n, team_page(n, overall_teams()[:8], foot, 7000), 7000),
     ]
+    if "--teams" in sys.argv:
+        jobs = jobs[-1:]
     for name, html, dur in jobs:
         await clip(name, html, dur, out)
 
