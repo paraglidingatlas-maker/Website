@@ -66,7 +66,7 @@ COMPS = {
                     # picture from these four (the file names stay the originals', the ones a buyer quotes)
                     first={"T1": [2, 3, 4, 5, 15, 16, 17, 19]}, lead="SRS_6_T1_62",
                     # owner, 10 Nov: the link picture from Task 2 photos 22, 19, 43, 2 (was Task 1: 62, 10, 20, 58)
-                    share=["SRS_6_T3_41", "SRS_6_T3_82", "SRS_6_T3_141", "SRS_6_T3_114", "SRS_6_T3_115"],   # Task 3, owner 10 Nov
+                    share=["SRS_6_T3_46", "SRS_6_T3_82", "SRS_6_T3_111", "SRS_6_T3_115", "SRS_6_T3_130"],   # Task 3, owner 11 Nov
                     # owner, 9 Nov 2026: "Add this link to photos page if anyone wants to see video highlights too for
                     # the task day". A task's Daily Highlights film, one line a night once it is on YouTube: its id, its
                     # title and length as YouTube has them (vidIQ), its line from the video's own description, and a
