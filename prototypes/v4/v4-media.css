@@ -406,6 +406,7 @@ html.e-move .e-stage.is-done .e-cam{visibility:hidden}
   transform-origin:0 50%;transition:transform 1.2s var(--ease-out)}
 .e-row-v{grid-area:v;justify-self:end;font-family:var(--font-display);font-weight:600;font-size:1.1rem;color:var(--white);font-variant-numeric:tabular-nums;white-space:nowrap}
 .e-row-v small{font-family:var(--font-body);font-weight:400;font-size:var(--fs-small);color:var(--gray)}
+.e-row{position:relative}.e-row:has(.e-watch){cursor:pointer}.e-watch::after{content:"";position:absolute;inset:0;z-index:1}/* owner, 12 Nov: the whole row opens it */
 .e-watch{grid-area:w;justify-self:end;padding:.55rem 0;font-family:var(--font-display);font-weight:600;font-size:.86rem;color:var(--white);text-decoration:none;white-space:nowrap}
 .e-watch i{display:inline-block;margin-left:.15rem;font-style:normal;color:currentColor;transition:transform .3s var(--ease-out)}
 .e-watch:hover i,.e-watch:focus-visible i{transform:translateX(4px)}

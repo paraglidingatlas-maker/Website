@@ -195,7 +195,7 @@ def now_title(v):
 UPCOMING = [
     {"key": "tapalpa", "name": "SRS Tapalpa", "place": "Mexico", "edition": "SRS Advance Edition", "where": "Tapalpa, Mexico",
      "first": "2026-11-08", "last": "2026-11-14", "dates": "8 to 14 Nov 2026", "short": "8 to 14 Nov",
-     "facts": "7 tasks, 116 pilots from 44 countries"},
+     "facts": "7 tasks, 116 pilots from 44 countries", "page": "media-srs-tapalpa-2026.html"},
 ]
 # the comps covered in 2026, in date order (R1); span: the days on the season line (Piedrahita: the comp's own dates;
 # the other two: the days their films and broadcasts came out)
@@ -455,8 +455,12 @@ def reach():
         rows.append('<li class="e-row is-next" data-i="%d" data-up-row><span class="e-row-d"><i class="e-tally" aria-hidden="true"></i><b data-up-k>Next</b> %s</span>'
                     '<span class="e-row-n"><b>%s</b><small><span>%s</span><span class="e-row-sep"> &middot; </span><span class="e-row-w">%s</span></small></span><span class="e-row-m">%s</span>'
                     '<span class="e-row-bar" aria-hidden="true"></span><span class="e-row-v"></span>'
-                    '<a class="e-watch" href="#dates" data-cd>Your comp next? Check dates <i aria-hidden="true">&rarr;</i></a></li>'
-                    % (len(SEASON) + 1, up["short"], E(up["name"]), E(up["edition"]), E(up["where"]), E(up["facts"])))
+                    '%s</li>'
+                    % (len(SEASON) + 1, up["short"], E(up["name"]), E(up["edition"]), E(up["where"]), E(up["facts"]),
+                       # owner, 12 Nov: the comp on air now opens its own page (photos and films), not the dates form
+                       '<a class="e-watch" href="%s" aria-label="%s: photos and films">Photos and films <i aria-hidden="true">&rarr;</i></a>' % (E(up["page"]), E(up["name"]))
+                       if up.get("page") else
+                       '<a class="e-watch" href="#dates" data-cd>Your comp next? Check dates <i aria-hidden="true">&rarr;</i></a>'))
     months = "".join('<span class="e-tl-m" style="--x:%.4f">%s</span>' % (at(datetime.date(2026, m, 1)), datetime.date(2026, m, 1).strftime("%b"))
                      for m in range(5, 12))
     c, t, k, ln, d, ep = V[REEL]
