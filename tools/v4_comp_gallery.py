@@ -358,6 +358,7 @@ FILM_DIALOG = """
     <div class="gffv-box">
       <div class="gffv-top">
         <div class="gffv-meta"><p class="gffv-k"><span>Daily Highlights</span><span class="gffv-len"></span></p><p class="gffv-t" id="gffv-t"></p></div>
+        <button class="gffv-share" type="button" data-share></button>
         <a class="gffv-yt" href="%(channel)s" target="_blank" rel="noopener">YouTube%(ext)s</a>
         <button class="gffv-x" type="button" aria-label="Close the film"></button>
       </div>
@@ -516,6 +517,7 @@ def render(comp):
     <div class="gfv-meta"><b class="gfv-name"></b><span class="gfv-where"></span></div>
     <div class="gfv-acts">
       <a class="btn-lines gfv-save" href="#" download data-hover>Save, free</a>
+      <button class="gfv-share" type="button" data-share></button>
       <a class="gfv-orig" href="#" rel="nofollow" hidden>Full-size original</a>
       <a class="btn-solid gfv-patreon" href="%(patreon)s" target="_blank" rel="noopener" data-hover><span><small>Like what you see?</small>Join me on Patreon</span></a>
     </div>
@@ -680,7 +682,8 @@ def chapter(comp, v, eager):
     q = c.get("posters", {}).get(v, "maxresdefault")
     badge = ""        # the broadcast's own frame carries the stream's LIVE overlay; the kicker says "Live broadcast"
     acts = ('<a href="episodes/%s.html">Read the episode %s</a>' % (E(ep), ARROW) if ep else "") + \
-           '<a href="%s%s" target="_blank" rel="noopener">Watch on YouTube %s</a>' % (YT, E(v), NE)
+           '<a href="%s%s" target="_blank" rel="noopener">Watch on YouTube %s</a>' % (YT, E(v), NE) + \
+           '<button type="button" data-share></button>'
     return ('<article class="ev-ch"><div class="md-frame" data-vid="%(v)s"><img src="%(img)s" alt="" width="1280" height="720"%(lazy)s decoding="async">'
             '<a class="md-play" href="%(yt)s" target="_blank" rel="noopener" aria-label="Play %(t)s, %(ev)s">%(play)s</a>%(badge)s</div>'
             '<div class="ev-ch-f"><p class="ev-ch-k">%(kind)s</p><h3 class="ev-ch-t">%(name)s</h3>'

@@ -151,6 +151,7 @@
   var lb = d.getElementById("gfv"), stage = lb.querySelector(".gfv-stage"), img = stage.querySelector("img");
   var bPrev = lb.querySelector(".gfv-prev"), bNext = lb.querySelector(".gfv-next"), pos = lb.querySelector(".gfv-pos");
   var nameEl = lb.querySelector(".gfv-name"), whereEl = lb.querySelector(".gfv-where"), pxEl = lb.querySelector(".gfv-px"), crEl = lb.querySelector(".gfv-cr"), origEl = lb.querySelector(".gfv-orig");
+  var shareB = lb.querySelector(".gfv-share");
   var save = lb.querySelector(".gfv-save"), buy = lb.querySelector(".gfv-buy"), pay = lb.querySelector(".gfv-pay"), back = lb.querySelector(".gfv-back");
   var copy = lb.querySelector(".gfv-copy"), refs = lb.querySelectorAll(".gfv-ref-n, .gfv-ref-n2"), payNote = lb.querySelector(".gfv-paynote");
   var Z = { s: 1, x: 0, y: 0, ptrs: {}, pinch: null, moved: 0, closing: 0, set: [], i: 0, req: {}, got: {} };
@@ -208,6 +209,7 @@
     copy.textContent = "Copy name"; payNote.classList.remove("is-lit");
     apply();
     setHash("#" + stem);
+    if (shareB) { shareB.setAttribute("data-share-url", "#" + stem); shareB.setAttribute("data-share-title", whereEl.textContent); }
   }
   function openLb(a, o) {
     o = o || {};
@@ -619,6 +621,8 @@
       fv.querySelector(".gffv-len").textContent = f.len;
       fv.querySelector(".gffv-line").textContent = f.line || "";
       fv.querySelector(".gffv-yt").href = "https://www.youtube.com/watch?v=" + id + (S.start ? "&t=" + S.start + "s" : "");
+      var shF = fv.querySelector(".gffv-share");
+      if (shF) { shF.setAttribute("data-share-url", "https://www.youtube.com/watch?v=" + id); shF.setAttribute("data-share-title", f.title); }
       resume.hidden = !S.start; resume.classList.remove("is-gone"); clearTimeout(S.fade); S.fade = 0;
       if (S.start) resume.querySelector("span").textContent = "Playing on from " + mmss(S.start) + ".";
       endEl.hidden = true;

@@ -180,7 +180,8 @@ def now_line(v, with_ep=True):
     separator (Q2); the episode link on its own row on a phone"""
     c, t, k, ln, d, ep = V[v]
     return ('<p class="md-meta"><span data-m>%s views</span><span data-l>%s</span><span data-d>%s</span>'
-            '<span class="md-ep"%s><a href="%s">Read the episode <i aria-hidden="true">&rarr;</i></a></span></p>'
+            '<span class="md-ep"%s><a href="%s">Read the episode <i aria-hidden="true">&rarr;</i></a></span>'
+            '<span class="md-sh"><button type="button" data-share></button></span></p>'
             % (n(k), ln, d, "" if ep else " hidden", "episodes/%s.html" % ep if ep else "#"))
 
 
@@ -291,8 +292,10 @@ def shell(title, desc, canon, og_img, name, main, enquire=None):
           "name": title, "url": "https://paraglidingatlas.com/" + canon, "description": desc,
           "isPartOf": {"@id": "https://paraglidingatlas.com/#website"}, "publisher": {"@id": "https://paraglidingatlas.com/#organization"},
           "inLanguage": "en", "dateModified": "2026-11-03"}
-    rep("<!-- site-schema -->", '<script type="application/ld+json">%s</script>\n<link rel="stylesheet" href="v4-media.css?v=%s">\n<!-- site-schema -->'
-        % (json.dumps(ld, ensure_ascii=False), ver("v4-media.css")))
+    rep("<!-- site-schema -->", '<script type="application/ld+json">%s</script>\n<link rel="stylesheet" href="v4-media.css?v=%s">\n<link rel="stylesheet" href="v4-share.css?v=%s">\n<!-- site-schema -->'
+        % (json.dumps(ld, ensure_ascii=False), ver("v4-media.css"), ver("v4-share.css")))
+    # owner, 12 Nov: a Share button on every photo and film (v4-share.js; the device's own share sheet where there is one)
+    rep("</body>", '<script defer src="v4-share.js?v=%s"></script>\n</body>' % ver("v4-share.js"))
     rep('<a href="about.html" aria-current="page" class="is-here">About</a>', '<a href="about.html">About</a>')
     if enquire:
         rep('<a href="enquire.html" class="nav-cta" data-hover><span>Enquire Now</span></a>',
