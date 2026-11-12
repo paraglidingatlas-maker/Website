@@ -25,6 +25,12 @@ v4 home page (chat 10's job).
 
 ## Decision log (newest first)
 
+- **12 Nov 2026 (chat 22), owner.** Every event on the Media page gets its own immersive, easy-to-navigate landing page,
+  through a contest between D, E and F (brief docs/designers/event-brief.md, concepts in docs/designers/events/).
+  Newsletter after the landing pages: "4 designers" = the three plus a NEW fourth designer (designer-g, the inbox
+  specialist, name [to supply]); audience: all subscribers; send time: the owner picks later (MailerLite draft only);
+  voice: a mix, a personal opener from the owner, then brand-style sections.
+
 - **28 Oct 2026, the motion rule (owner: "why do we have a rule which reduces the site's quality ... do it").**
   "Nothing loops or runs on its own" is replaced by four limits: ambient motion is allowed when it is (1)
   subtle and slow, (2) stopped completely under reduce motion, (3) paused off screen, (4) never behind reading
