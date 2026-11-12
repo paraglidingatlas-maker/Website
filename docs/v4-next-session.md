@@ -38,6 +38,63 @@ https://paraglidingatlas.com/media-srs-tapalpa-2026.html#film-task-1 (Task 1, ht
 - **Not done:** Piedrahita's three videos still use the older small frames (gf-vids). Giving them the band means
   picking two posters from its 325 photos (ask the owner first).
 
+## Chat 23 starts here (12 Nov 2026, from chat 22): the newsletter update and send, then the owner's open list
+**Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
+has grown long, hand over without asking the owner: write the handover at the top of this file, update the
+owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
+chat yourself with the session tools (create_session), and give the owner its link. If create_session is refused,
+give the owner the prompt to paste.
+
+**Done by chat 22 (12 Nov, LIVE on main b14e0193, checked live at 390x683 and 1440x900: no errors, no 4xx, no sideways scroll).**
+- Event landing pages (owner's yes): contest D/E/F (brief docs/designers/event-brief.md, entries docs/designers/events/,
+  samples prototypes/v4/samples/event-d|e|f/); F "The Season Opens Here" won, with E's film rows and D's fixes
+  (verdict in docs/designers/direction.md). Built in tools/v4_comp_gallery.py (opening(), season_strip(), season_foot(),
+  landing(), page_films(); COMPS[c]["landing"]=True; on for piedrahita, pwc, bassano; OFF for tapalpa until the comp
+  ends) and tools/v4_media.py (season() is the one season list; Media rows link to the event pages). New pages:
+  media-pwc-pegalajar-2026.html, media-srs-bassano-2026.html; shared prototypes/v4/v4-event.css/js.
+  NEXT: after 14 Nov set COMPS["tapalpa"]["landing"]=True (chat 21 edits that dict nightly until then; coordinate).
+- Link previews: the 29 old-address redirect stubs (tools/generate_redirects.py social()) and the duplicate episode
+  stub now carry their destination's og tags. The 404 page was left alone: its tags must match its v2 and v4 copies
+  (v2_check parity), so changing it means all three or none.
+- Owner switched GitHub Pages Source to "GitHub Actions" (12 Nov): confirmed, b14e0193 ran no "pages build and
+  deployment" run. The double-deploy 404 window is gone.
+- A fourth designer: designer-g (.claude/agents/designer-g.md, notebook docs/designers/G.md), the inbox specialist,
+  name [to supply] by the owner. "4 designers" = D, E, F + G (owner, 12 Nov).
+- Newsletter contest (brief docs/designers/newsletter-brief.md; entries docs/designers/newsletter/, mocks
+  prototypes/v4/samples/newsletter-*/email.html.txt: kept as .txt because the v4 build checks every .html):
+  F "The Task Line" won (owner: "the design is good"). MailerLite DRAFT campaign 203910238840031114 "Newsletter 01 ·
+  Tapalpa (draft, chat 22)", custom HTML (edit with update_campaign content; a copy in
+  docs/emails/newsletter-01-tapalpa.html.txt), images in assets/email/newsletter-2026-11/ (live). 28 active
+  subscribers, audience all; NEVER send, schedule or test-send without the owner's explicit yes.
+- YouTube kit for talks: tools/yt_kit/make_talk.py + talk.tpl ("SRS Tapalpa Talks" overlays timed from the talk's
+  SRT; transparent qtrle MOV 4K60 + 1080p GIF; see-through shades as separate PNG stills; holds are copied, not
+  re-shot). Torsten Siegel's talk: all overlays and YouTube text sent to the owner 12 Nov.
+- Logos for the owner (SRS colour/white, Atlas white/dark, transparent PNGs) sent 12 Nov.
+
+**Chat 23's job.**
+1. The newsletter: the owner is uploading a new YouTube video. When they send its link, update the draft (owner:
+   "update it once the YT video goes inline and then we send it"): 12 Nov cancelled for weather (Task 5 is now
+   13 Nov, Task 6 14 Nov, at most 6 tasks: from chat 21's Tapalpa page), "4 of 7 tasks" and "Tasks 5 to 7 to come"
+   are wrong now, the new video, the latest SRS results (api.airtribune.com/srs/scores, provisional), Task 4 film.
+   Then a preview to the owner; send only on their explicit yes.
+2. The owner's open list (they will look later; ask in one message, do not nag):
+   - Newsletter: who Miguel Gutierrez is (one line); the footer's postal address (MailerLite still reads "M 46");
+     the owner's own opener words; the send date.
+   - PWC: comp dates, pilots, countries, event link, was Task 3 flown. Bassano: dates, pilots, was Task 1 flown.
+     Their own stills to replace YouTube's frames (Bassano's carry the live overlay, one reads "TASK CANCELLED").
+   - Piedrahita film posters picked by designer F: SRS_5_T1_10 (Task 1), SRS_5_T2_99 (Task 2): keep or swap.
+   - Tapalpa: 44 or 25 countries (the 116 confirmed pilots come from 25).
+   - YouTube descriptions point the newsletter to a Google Form, not MailerLite: switch to the site's signup?
+   - YouTube typos: "Maxico" in the Miguel title; the PWC Day 1 thumbnail reads 2027.
+   - A name for designer G.
+   - Optional preview upgrades (offered, not asked for): own 1200x630 preview images instead of YouTube's;
+     og tags higher in the head.
+3. Pushes: chat 21 runs Tapalpa until 14 Nov and pushes to main (usually 03:00 to 07:30 UTC, owner-driven):
+   message it (session_018Da7i74T9xiAv1VY2PfhYw) before any push to main; never forced; merge, don't rebase;
+   build (./build.sh, tools/v4_build.py) in a clean worktree, tools/v4_gates.py (live-untouched FAIL is the known
+   old one plus any intended root files). Main's committed v4 pages carry a stale v2.css ?v= hash (8f8ced12 vs
+   43c58fb8 on 233 pages); the deploy builds fresh so live is right; leave it unless a chat owns that cleanup.
+
 ## Chat 22 starts here (12 Nov 2026): event landing pages, then the newsletter (design contest)
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
 has grown long, hand over without asking the owner: write the handover at the top of this file, update the
