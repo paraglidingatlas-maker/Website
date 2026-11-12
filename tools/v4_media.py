@@ -195,7 +195,7 @@ def now_title(v):
 UPCOMING = [
     {"key": "tapalpa", "name": "SRS Tapalpa", "place": "Mexico", "edition": "SRS Advance Edition", "where": "Tapalpa, Mexico",
      "first": "2026-11-08", "last": "2026-11-14", "dates": "8 to 14 Nov 2026", "short": "8 to 14 Nov",
-     "facts": "7 tasks, 116 pilots from 44 countries", "page": "media-srs-tapalpa-2026.html",
+     "facts": "7 tasks, 116 pilots from 25 countries", "page": "media-srs-tapalpa-2026.html",
      "nick": "Tapalpa", "pic": "https://paraglidingatlas-maker.github.io/media-2026/srs-tapalpa/SRS_6_T1_62-800.webp"},
 ]
 # the comps covered in 2026, in date order (R1); span: the days on the season line (Piedrahita: the comp's own dates;

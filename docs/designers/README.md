@@ -14,7 +14,7 @@ the owner's answer into `direction.md`. Since 25 Oct 2026 each designer
 works to "The professional standard" in its definition: homework first, no rule stretched past its
 section, the site's immersive feel weighed before anything is made simpler, the whole site owned.
 
-Designer G (`designer-g`, added 12 Nov 2026, the newsletter and email designer; the owner's fourth designer, name [to supply]; notebook `G.md`) joins the three for anything that ends in an inbox.
+Designer G (`designer-g`, added 12 Nov 2026, the newsletter and email designer; the owner's fourth designer, "Tailwind"; notebook `G.md`) joins the three for anything that ends in an inbox.
 
 The Juror (`.claude/agents/awwwards-juror.md`, notebook `juror.md`) is the
 fourth, added 24 Oct 2026: an independent judge that scores a built preview

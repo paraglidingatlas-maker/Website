@@ -47,12 +47,12 @@ PATREON = "https://www.patreon.com/15133612/join"     # the owner's join link (9
 # the Drive folder IDs live only in Cloudflare). Empty: the link stays hidden until the worker is live.
 ORIGINALS = ""
 
-# Facts: only from the owner (Tapalpa: 116 pilots confirmed, 44 countries, airtribune.com/srs-2026-6/info, 8 Nov), docs/designers/gallery-brief.md and the task videos (tools/v4_media.py V); a task's
+# Facts: only from the owner (Tapalpa: 116 pilots confirmed from 25 countries, owner 12 Nov; airtribune.com/srs-2026-6/info counts 44 over all registrations), docs/designers/gallery-brief.md and the task videos (tools/v4_media.py V); a task's
 # date: Tapalpa assumes one task a day from 8 Nov (set "dates" when a day is cancelled); Piedrahita's are not known
 COMPS = {
     "tapalpa": dict(page="media-srs-tapalpa-2026.html", folder="srs-tapalpa", title="Tapalpa 2026", tz="America/Mexico_City",
                     kicker="SRS Advance Edition &middot; Tapalpa, Mexico", span="8 to 14 Nov 2026",
-                    facts=["Tasks 8 to 14 Nov 2026", "12 Nov cancelled (weather)", "116 pilots, 44 countries", "Photos by Aninder Singh"],
+                    facts=["Tasks 8 to 14 Nov 2026", "12 Nov cancelled (weather)", "116 pilots, 25 countries", "Photos by Aninder Singh"],
                     desc="SRS Advance Edition, Tapalpa, Mexico, 8 to 14 Nov 2026: every photo by task, free to save. "
                          "Photos by Aninder Singh, Paragliding Atlas.",
                     # owner, 10 Nov: the link preview's title is the comp's full name and the newest task with photos
