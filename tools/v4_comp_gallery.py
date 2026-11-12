@@ -785,10 +785,78 @@ def page(comp):
     return out
 
 
+# ------------------------------------------------------------------ photo previews ----
+# owner, 12 Nov 2026: a shared photo must show THAT photo in WhatsApp and the like. Link previews ignore the "#photo"
+# part of a link, so every photo gets a tiny page of its own at photo/<stem>.html (site root): its own og tags
+# (the photo, its task and date) and an instant forward to the gallery with the photo open. v4-gallery.js shares
+# this address. Written with the gallery page, so the nightly run makes them for new photos too.
+SHARE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "photo")
+STUB = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Photo {stem}, {title} | Paragliding Atlas</title>
+<link rel="canonical" href="{canon}">
+<meta http-equiv="refresh" content="0; url={rel}">
+<meta name="theme-color" content="#141519">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Paragliding Atlas">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:image" content="{img}">
+<meta property="og:image:width" content="{w}">
+<meta property="og:image:height" content="{h}">
+<meta property="og:image:alt" content="{alt}">
+<meta property="og:url" content="{url}">
+<meta name="twitter:card" content="summary_large_image">
+<script>location.replace({js});</script>
+<style>
+body{{background:#141519;color:#b4b4b4;font-family:system-ui,sans-serif;
+  display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:2rem;text-align:center;}}
+a{{color:#ff7517;}}
+</style>
+</head>
+<body>
+<p><a href="{rel}">{title}</a></p>
+</body>
+</html>
+"""
+
+
+def share_stubs(comp):
+    c = COMPS[comp]
+    if not c.get("folder"):
+        return 0
+    dates = task_dates(comp)
+    os.makedirs(SHARE_DIR, exist_ok=True)
+    k = 0
+    for task, lab, rows in days(comp):
+        when = nice(dates[task])[1] if dates.get(task) else ""
+        cr = c.get("credits", {}).get(task)     # a day shot by someone else carries their credit, not the owner's
+        desc = c["desc"] if not cr else "Photo: %s. %s" % (cr[0], re.sub(r"\s*Photos by [^.]*(\.[^.]*)?\.\s*$", "", c["desc"]).rstrip(".") + ".")
+        for r in rows:
+            stem, w, h = r["stem"], r["w"], r["h"]
+            sw, sh = (1600, round(1600 * h / w)) if w >= h else (round(1600 * w / h), 1600)
+            title = "%s%s · %s" % (lab, " · " + when if when else "", c["title"])
+            page = "https://paraglidingatlas.com/" + c["page"]
+            out = STUB.format(stem=E(stem), title=E(title), canon=page, rel="%s#%s" % (page, stem),
+                              js=json.dumps("%s#%s" % (page, stem)), desc=E(desc),
+                              img=src(comp, stem, 1600), w=sw, h=sh, alt=E("%s, %s, photo %s" % (c["title"], lab, stem)),
+                              url="https://paraglidingatlas.com/photo/%s.html" % stem)
+            f = os.path.join(SHARE_DIR, stem + ".html")
+            if not os.path.exists(f) or open(f).read() != out:
+                open(f, "w").write(out)
+            k += 1
+    return k
+
+
 if __name__ == "__main__":
     which = [a for a in sys.argv[1:] if a in COMPS] or list(COMPS)
     for comp in which:
         s = page(comp)
         open(os.path.join(V4, COMPS[comp]["page"]), "w").write(s)
+        share_stubs(comp)
         print("wrote prototypes/v4/%s (%s)" % (COMPS[comp]["page"], "%d photos" % len(photos(comp)) if COMPS[comp].get("folder")
                                                 else "%d films" % sum(len(v) for _, v in COMPS[comp]["stops"])))

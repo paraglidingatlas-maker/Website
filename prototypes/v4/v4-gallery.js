@@ -209,7 +209,7 @@
     copy.textContent = "Copy name"; payNote.classList.remove("is-lit");
     apply();
     setHash("#" + stem);
-    if (shareB) { shareB.setAttribute("data-share-url", "#" + stem); shareB.setAttribute("data-share-title", whereEl.textContent); }
+    if (shareB) { shareB.setAttribute("data-share-url", "/photo/" + stem + ".html");   // its own preview page (v4_comp_gallery.py share_stubs) shareB.setAttribute("data-share-title", whereEl.textContent); }
   }
   function openLb(a, o) {
     o = o || {};
