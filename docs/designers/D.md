@@ -1,5 +1,25 @@
 # Designer D, "Final Cut": notebook (newest first)
 
+## 12 Nov 2026: event landing pages, contest round 1 ("Final Cut, the event")
+**Asked.** docs/designers/event-brief.md: one immersive, easy landing page per event; a concept
+(docs/designers/events/D-concept.md) and a working sample, prototypes/v4/samples/event-d/ (index.html SRS Piedrahita,
+pwc.html PWC Super Final, films only), shots at 390 and 1440. Worked alone, E and F unseen.
+**Found.** The PWC Day 1 thumbnail says "12.05.2027 - 23.05.2027" (wrong year); the live Piedrahita gallery files the
+Day 1 film under Task 1 and uses the purple SRS thumbnails as posters (Tapalpa's own-photo poster rule never reached
+it); PWC has no stills, only YouTube's 1280 frames of the owner's films (maxres1-3.jpg, real footage, no baked text
+mostly); Bassano's broadcast frames carry the live overlay.
+**Proposed.** The gallery IS the landing (same URLs, no page above). A cover that cuts straight (no fade, no zoom)
+through each task's best frame, 5.5 s each, one forward pass, resting on the cover frame; the task's segment fills
+along the photo's foot. The bar is a letterbox: on the cover it is the cut's line, scrolled it sticks and lights the
+day in view; first item "&larr; 2026" jumps to the season rows at the foot (Before / Here / Next). Each day: title,
+count, story line, its film (poster: a photo of the same task, or the film's own frame), then the photo sheet (true
+ratios, CSS only, mean colours). Films only: a film frame is shown as a film frame, so on a phone the PWC cover is a
+16:9 screen with the title under it; each day gets its film plus two more frames from it. Missing facts [to supply].
+Generator: chat 22 scratchpad gen_event_d.py (one template, two events).
+**Recommended** it. Why: it takes the owner's approved home grammar (one pass, a tappable progress line) into the
+event pages for almost no phone cost (opacity switches and one scaleX), and it removes a tap instead of adding a page.
+Tested 390x683, 390x844, 1440x900, reduced motion, no JS; no horizontal scroll; viewer and play-in-place work.
+
 ## 4 Nov 2026: the comp photo gallery, round 2 (the sample, "Proof Sheet")
 **Asked.** Read E's ("Pull Back to the Comp") and F's ("Fly the Comp") concepts, answer their questions, steal with credit, sharpen my angle, then build a Tapalpa sample (Piedrahita stand-ins) at prototypes/v4/samples/gallery-d/ and write gallery/D-pitch.md.
 **Answered and took.** Date order (with F); the sixth photo is as quick as the first because Pay opens a new tab and the viewer stays; owner cost about 3 min a night (F's figure, one colour word at the cull). Taken: F's day states in Mexico time and the credit line, E's and F's per-photo link and Copy name, E's flag that the sheet should load only 800s. Differ: E's contact sheet belongs on the gallery index, not as a second mode; F's one-open-day hides the other days; F's chips hide photos (mine dim); no second orange flash.

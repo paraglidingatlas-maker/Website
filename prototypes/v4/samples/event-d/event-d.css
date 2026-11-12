@@ -1,0 +1,203 @@
+/* Designer D (Trim), event landing page, contest round 1: "Final Cut, the event".
+   The gallery page, finished: a cover that cuts once through the event's days like a film edit, a letterbox
+   slate that is both the cut's progress line and the page's chapter bar, then each day: its film, its photos.
+   Tokens only from styles.css and v2.css. No zoom on stills, no glow, one orange. */
+
+.ev{--sl:72px;--hold:5.5s;display:block;background:var(--bg);color:var(--white)}
+@media (min-width:900px){.ev{--sl:84px}}
+
+/* ---------------------------------------------------------------- the cover ---- */
+.ev-cover{position:relative;height:calc(100vh - var(--ev-nav,93px));height:calc(100svh - var(--ev-nav,93px));min-height:520px;max-height:1100px;overflow:hidden;isolation:isolate}
+.ev-frames{position:absolute;inset:0;z-index:-2;background:#0d0e11}
+.ev-f{position:absolute;inset:0;opacity:0}
+.ev-f img{width:100%;height:100%;object-fit:cover;display:block}
+.ev-f[data-rest]{opacity:1}
+/* the cut: one forward pass through the days, a straight cut (no fade, no zoom), then it rests on the last */
+html.ev-run .ev-f[data-rest]{opacity:0}
+html.ev-run .ev-f[data-i="0"]{opacity:1}
+html.ev-run.ev-live .ev-f{opacity:0}
+html.ev-run.ev-live .ev-f.is-on{opacity:1}
+.ev-cover::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(20,21,25,.5) 0,rgba(20,21,25,0) 18%),
+             linear-gradient(180deg,rgba(20,21,25,0) 38%,rgba(20,21,25,.55) 66%,rgba(20,21,25,.92) 100%)}
+@media (min-width:900px){.ev-cover::after{background:linear-gradient(180deg,rgba(20,21,25,.5) 0,rgba(20,21,25,0) 16%),
+  linear-gradient(90deg,rgba(20,21,25,.62) 0,rgba(20,21,25,.2) 42%,rgba(20,21,25,0) 64%),
+  linear-gradient(180deg,rgba(20,21,25,0) 52%,rgba(20,21,25,.7) 100%)}}
+
+.ev-title{position:absolute;left:var(--gutter);right:var(--gutter);bottom:calc(var(--sl) + clamp(1.25rem,4vh,3rem));max-width:72rem}
+.ev-kick{font-family:var(--font-body);font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,244,244,.82);margin:0 0 .6rem}
+.ev-h1{font-family:var(--font-display);font-weight:700;font-size:clamp(3.1rem,13vw,6.75rem);line-height:.98;letter-spacing:-.025em;margin:0;color:var(--white)}
+.ev-h1 span{font-weight:500;color:rgba(246,244,244,.62)}
+.ev-facts{margin:1rem 0 0;font-size:var(--fs-body);font-weight:500;color:var(--white);display:flex;flex-wrap:wrap;gap:.2rem 1.25rem}
+.ev-facts span{white-space:nowrap}
+.ev-made{margin:.45rem 0 0;font-size:var(--fs-small);line-height:1.55;color:rgba(246,244,244,.72);max-width:44rem}
+.ev-off{margin:.35rem 0 0;font-size:var(--fs-small);color:rgba(246,244,244,.72)}
+.ev-off a{color:var(--white);text-decoration:underline;text-decoration-color:rgba(246,244,244,.35);text-underline-offset:3px}
+.ev-off a:hover,.ev-off a:focus-visible{text-decoration-color:var(--orange)}
+@media (max-width:699px){.ev-made{display:none}.ev-facts{font-size:var(--fs-body-s)}}
+
+/* films only (PWC): a film frame is shown as a film frame. On a phone it is never cropped to a portrait (a 1280
+   frame cut to 390x683 is soft and reads as a fault): the cover is a 16:9 screen, the title on the ground under it */
+@media (max-width:699px){
+  .ev.is-screen .ev-cover{height:auto;min-height:0;max-height:none;padding-bottom:var(--sl);overflow:visible}
+  .ev.is-screen .ev-frames{position:relative;inset:auto;aspect-ratio:16/9;z-index:0}
+  .ev.is-screen .ev-cover::after{display:none}
+  .ev.is-screen .ev-title{position:static;padding:1.4rem var(--gutter) 1.6rem}
+  .ev.is-screen .ev-made{display:block}
+  .ev.is-screen .ev-h1{font-size:2.5rem}
+}
+
+/* ---------------------------------------------------------------- the slate ---- */
+/* a letterbox bar: on the cover it is the cut's progress line; scrolled, it sticks and is the chapter bar */
+.ev-slate{position:sticky;top:0;z-index:40;height:var(--sl);margin-top:calc(-1 * var(--sl));background:var(--bg);
+  border-bottom:1px solid var(--line);transition:transform .38s var(--ease)}
+html.v2-nav-up .ev-slate{transform:translate3d(0,var(--v2-nav-h,4.25rem),0)}
+.ev-slate-in{height:100%;display:flex;align-items:stretch;gap:0;padding:0 var(--gutter)}
+@media (max-width:699px){.ev-slate-in{padding:0 12px 0 4px}}
+.ev-season-k{flex:none;display:flex;align-items:center;gap:.4rem;padding:0 14px 0 12px;margin-right:6px;color:var(--gray-light);
+  font-family:var(--font-display);font-weight:600;font-size:.9rem;text-decoration:none;border-right:1px solid var(--line);min-width:44px}
+.ev-season-k i{font-style:normal;transition:transform .2s var(--ease)}
+.ev-season-k:hover,.ev-season-k:focus-visible{color:var(--white)}
+.ev-season-k:hover i{transform:translateX(-3px)}
+.ev-ss{flex:1;min-width:0;list-style:none;margin:0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);overflow-x:auto;scrollbar-width:none}
+.ev-ss::-webkit-scrollbar{display:none}
+.ev-s a{position:relative;height:100%;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:.45rem;
+  align-content:center;padding:0 10px;color:var(--gray-light);text-decoration:none;min-width:48px}
+.ev-s small{grid-column:1;grid-row:1;align-self:end;font-family:var(--font-body);font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+.ev-s b{grid-column:1;grid-row:2;font-family:var(--font-display);font-weight:600;font-size:1.3rem;line-height:1.05;color:inherit}
+.ev-s .ev-s-n{grid-column:2;grid-row:2;align-self:end;padding-bottom:.18rem;font-size:var(--fs-small);color:var(--gray);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* the line runs along the photo's foot, one segment per day, like a film's chapter marks */
+.ev-s-l{position:absolute;left:3px;right:3px;top:-1px;display:block;height:2px;margin:0;background:rgba(246,244,244,.18);overflow:hidden}
+.ev-s-l i{display:block;height:100%;background:var(--orange);transform:scaleX(0);transform-origin:0 50%}
+.ev-s a:hover,.ev-s a:focus-visible{color:var(--white)}
+.ev-s a:hover .ev-s-l{background:rgba(246,244,244,.3)}
+.ev-s.is-on a{color:var(--white)}
+.ev-s.is-on .ev-s-l i{transform:scaleX(1)}
+.ev-s.is-tbd a{color:var(--gray)}
+.ev-s.is-tbd .ev-s-n{font-style:italic}
+@media (max-width:699px){.ev-s .ev-s-n{display:none}.ev-s a{grid-template-columns:auto;padding:0 6px;justify-items:start}.ev-s b{font-size:1.15rem}}
+/* the run: the day on screen fills its line; days already shown hold a quiet full line */
+.ev-s.is-run a{color:var(--white)}
+.ev-s.is-run .ev-s-l i{animation:ev-fill var(--hold) linear forwards}
+.ev-s.is-past .ev-s-l i{transform:scaleX(1);background:rgba(246,244,244,.55)}
+.ev-cover.is-held~.ev-slate .ev-s-l i,html.ev-held .ev-s.is-run .ev-s-l i{animation-play-state:paused}
+@keyframes ev-fill{to{transform:scaleX(1)}}
+.ev-pp{flex:none;align-self:center;width:40px;height:40px;margin-left:4px;border:0;background:none;color:rgba(246,244,244,.45);cursor:pointer;
+  display:grid;place-items:center;transition:color .2s}
+.ev-pp[hidden]{display:none}
+.ev-pp:hover,.ev-pp:focus-visible{color:var(--white)}
+.ev-pp svg{width:12px;height:12px;stroke:currentColor;stroke-width:1.6;fill:none}
+.ev-pp .ev-pp-g{display:none;fill:currentColor;stroke:none}
+html.ev-held .ev-pp .ev-pp-p{display:none}
+html.ev-held .ev-pp .ev-pp-g{display:block}
+
+/* ---------------------------------------------------------------- the days ---- */
+.ev-body{padding:0 var(--gutter)}
+.ev-ch{max-width:var(--measure);margin:0 auto;padding:clamp(2.5rem,6vw,5rem) 0 0;scroll-margin-top:var(--sl)}
+.ev-ch+.ev-ch{border-top:0}
+.ev-ch-h{margin:0 0 var(--sp-3)}
+.ev-ch-k{margin:0 0 .35rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray)}
+.ev-ch-h h2{font-family:var(--font-display);font-weight:700;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1;letter-spacing:-.02em;margin:0;color:var(--white)}
+.ev-ch-s{margin:.75rem 0 0;font-size:var(--fs-lead);line-height:1.6;color:var(--gray-light);max-width:34ch}
+@media (min-width:1000px){
+  .ev-ch{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);column-gap:clamp(2rem,4vw,4rem);align-items:start}
+  .ev-ch-h{position:sticky;top:calc(var(--sl) + 2rem);margin:0;transition:transform .38s var(--ease)}
+  html.v2-nav-up .ev-ch-h{transform:translate3d(0,var(--v2-nav-h,4.25rem),0)}
+  .ev-ch.is-tbd .ev-ch-h{position:static;grid-column:1/-1}
+}
+.ev-ch.is-tbd .ev-ch-h h2{color:var(--gray)}
+.ev-ch.is-tbd .ev-ch-s{font-size:var(--fs-body)}
+
+/* the film: its own frame or a photo of the same day as the poster, never the thumbnail art; plays in place */
+.ev-film{margin:0 0 var(--sp-4)}
+.ev-fr{position:relative;aspect-ratio:16/9;background:#0d0e11;overflow:hidden}
+.ev-fr img,.ev-fr iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;display:block}
+.ev-play{position:absolute;left:clamp(12px,2vw,24px);bottom:clamp(12px,2vw,24px);display:inline-flex;align-items:center;gap:.6rem;
+  padding:.7rem 1.1rem .7rem .95rem;background:rgba(20,21,25,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  color:var(--white);text-decoration:none;font-family:var(--font-display);font-weight:600;font-size:.95rem;border-radius:999px;transition:background .2s}
+.ev-play svg{width:12px;height:12px;fill:var(--orange)}
+.ev-play:hover,.ev-play:focus-visible{background:rgba(20,21,25,.92)}
+.ev-play::after{content:"";position:absolute;inset:-100vmax;z-index:-1}
+.ev-fr:has(.ev-play:hover) img{filter:brightness(1.06)}
+.ev-film figcaption{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 0;margin:.8rem 0 0;font-size:var(--fs-small);color:var(--gray)}
+.ev-film figcaption b{font-family:var(--font-display);font-weight:600;font-size:1.05rem;color:var(--white);margin-right:.75rem;flex-basis:auto}
+.ev-film figcaption span+span::before{content:"\00b7";margin:0 .5em}
+.ev-strip{list-style:none;margin:.9rem 0 0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:4px}
+.ev-strip a{display:block;aspect-ratio:16/9;overflow:hidden;background:#0d0e11}
+@media (max-width:699px){.ev-film figcaption b{flex-basis:100%;margin:0 0 .15rem}.ev-film{margin-left:calc(-1 * var(--gutter));margin-right:calc(-1 * var(--gutter))}.ev-film figcaption{padding:0 var(--gutter)}.ev-strip{margin-top:.9rem;padding:0 var(--gutter)}}
+.ev-strip img{width:100%;height:100%;object-fit:cover;display:block;opacity:.86;transition:opacity .2s}
+.ev-strip a:hover img,.ev-strip a:focus-visible img{opacity:1}
+
+/* the photos: true ratios in shot order, nothing cropped, drawn by CSS alone; each cell holds its photo's colour */
+.ev-sheet{--h:108px;display:flex;flex-wrap:wrap;gap:4px}
+@media (min-width:700px){.ev-sheet{--h:168px}}
+@media (min-width:1300px){.ev-sheet{--h:200px}}
+.ev-sheet::after{content:"";flex:9999 1 0}
+.ev-ph{margin:0;flex:var(--r) 1 calc(var(--r) * var(--h));background:var(--c);position:relative}
+.ev-ph a{display:block;outline-offset:2px}
+.ev-ph img{display:block;width:100%;height:auto;aspect-ratio:var(--r)}
+.ev-ph a:focus-visible{outline:2px solid var(--orange)}
+.ev-ph a::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(246,244,244,0);transition:box-shadow .2s}
+.ev-ph a:hover::after{box-shadow:inset 0 0 0 1px rgba(246,244,244,.55)}
+
+/* ---------------------------------------------------------------- the season ---- */
+.ev-season{padding:var(--sp-section) var(--gutter) 0}
+.ev-season-in{max-width:var(--measure);margin:0 auto;border-top:1px solid var(--line);padding-top:var(--sp-4)}
+.ev-season-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.5rem 2rem;margin:0 0 var(--sp-3)}
+.ev-season-h h2{font-family:var(--font-display);font-weight:700;font-size:var(--fs-h2);margin:0;color:var(--white)}
+.ev-season-h a{color:var(--gray-light);font-size:var(--fs-small);text-decoration:none}
+.ev-season-h a:hover,.ev-season-h a:focus-visible{color:var(--white)}
+.ev-rows{list-style:none;margin:0;padding:0}
+.ev-r{border-top:1px solid var(--line)}
+.ev-r:last-child{border-bottom:1px solid var(--line)}
+.ev-r-a{display:grid;grid-template-columns:5.5rem 9rem minmax(0,1fr) minmax(0,1fr) 2rem;align-items:baseline;gap:1rem;padding:1.15rem 0;
+  color:var(--gray-light);text-decoration:none;transition:color .2s}
+.ev-r-k{font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray)}
+.ev-r-d{font-size:var(--fs-small);color:var(--gray)}
+.ev-r-n b{display:block;font-family:var(--font-display);font-weight:600;font-size:1.15rem;color:var(--white)}
+.ev-r-n small{display:block;margin-top:.15rem;font-size:var(--fs-small);color:var(--gray)}
+.ev-r-m{font-size:var(--fs-small)}
+.ev-r-go{justify-self:end;color:var(--gray);transition:transform .2s var(--ease),color .2s}
+a.ev-r-a:hover .ev-r-go,a.ev-r-a:focus-visible .ev-r-go{color:var(--orange);transform:translateX(3px)}
+a.ev-r-a:hover .ev-r-n b{color:var(--white)}
+.ev-r.is-here .ev-r-a{box-shadow:inset 2px 0 0 var(--orange);padding-left:1rem}
+.ev-r.is-here .ev-r-k{color:var(--orange)}
+.ev-r.is-here .ev-r-go{font-size:var(--fs-micro);letter-spacing:.08em;white-space:nowrap;grid-column:5}
+.ev-r.is-adj .ev-r-k{color:var(--white)}
+@media (max-width:899px){
+  .ev-r-a{grid-template-columns:minmax(0,1fr) auto;gap:.2rem 1rem;padding:1rem 0}
+  .ev-r-k{grid-column:1;grid-row:1}.ev-r-d{grid-column:1;grid-row:2}.ev-r-n{grid-column:1;grid-row:3}.ev-r-m{grid-column:1;grid-row:4;color:var(--gray)}
+  .ev-r-go{grid-column:2;grid-row:1/5;align-self:center}
+  .ev-r.is-here .ev-r-go{display:none}
+}
+.ev .cta-band{margin-top:var(--sp-section)}
+
+/* ---------------------------------------------------------------- the viewer ---- */
+.evv{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:rgba(12,13,16,.97);color:var(--white);
+  overflow:hidden;display:none;grid-template-rows:auto minmax(0,1fr) auto}
+.evv[open]{display:grid}
+.evv::backdrop{background:rgba(12,13,16,.97)}
+.evv-top{display:flex;align-items:center;justify-content:space-between;padding:10px var(--gutter);min-height:56px}
+.evv-pos{font-size:var(--fs-small);color:var(--gray-light);font-variant-numeric:tabular-nums}
+.evv-x{width:44px;height:44px;border:0;background:none;color:var(--white);cursor:pointer;display:grid;place-items:center;margin-right:-10px}
+.evv-x svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.5}
+.evv-stage{position:relative;min-height:0;display:grid;place-items:center;padding:0 clamp(0px,5vw,72px);touch-action:pan-y}
+.evv-stage img{max-width:100%;max-height:100%;object-fit:contain;display:block;user-select:none;-webkit-user-select:none}
+.evv-n{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:64px;border:0;background:none;color:rgba(246,244,244,.7);cursor:pointer;display:grid;place-items:center}
+.evv-n:hover,.evv-n:focus-visible{color:var(--white)}
+.evv-n svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.5;fill:none}
+.evv-prev{left:8px}.evv-next{right:8px}
+@media (max-width:699px){.evv-n{display:none}}
+.evv-foot{padding:14px var(--gutter) max(16px,env(safe-area-inset-bottom));display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.6rem 1.5rem;align-items:center}
+.evv-name{margin:0;font-size:var(--fs-small);color:var(--gray-light)}
+.evv-name b{display:block;font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1rem}
+.evv-acts{display:flex;gap:.6rem;flex-wrap:wrap}
+.evv-terms{grid-column:1/-1;margin:0;font-size:var(--fs-micro);line-height:1.6;color:var(--gray)}
+.evv-terms a{color:var(--gray-light)}
+@media (max-width:699px){.evv-foot{grid-template-columns:1fr}.evv-acts{flex-direction:column}.evv-acts>*{text-align:center;justify-content:center}}
+
+/* ---------------------------------------------------------------- motion off ---- */
+@media (prefers-reduced-motion:reduce){
+  .ev-slate,.ev-ch-h,.ev-season-k i,.ev-r-go{transition:none}
+  .ev-s.is-run .ev-s-l i{animation:none}
+}
