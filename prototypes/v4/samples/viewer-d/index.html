@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<!--
+  Designer D (Trim), "Edge Code": the controls are set like the numbers printed on a film's edge, type and hairlines on the dark, no boxes, no glass.
+  The photo sits on a ruler of the task's frames (one tick per photo, the near ones swell like a lens, the current one orange), the count rolls like a counter.
+  One hand: all five controls live in the last 230 px, the most used in the middle rows, Close at the far end from Next, every target 44 px or more.
+  Swipe left and right to change photo, swipe down to close; Download shows the real resolution, then the real size once the copy is fetched.
+  Borrows: a cinema camera's monitor readout (frame counter, scale ruler), film edge numbers, and the gallery's own Download, Share and Patreon wording.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0e0f12">
+<title>Viewer, Edge Code (D)</title>
+<link rel="stylesheet" href="../../v4-share.css">
+<style>
+@font-face{font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;src:url("../../../../assets/fonts/poppins-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;src:url("../../../../assets/fonts/poppins-latin-600-normal.woff2") format("woff2")}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:400;font-display:swap;src:url("../../../../assets/fonts/dm-sans-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"DM Sans";font-style:normal;font-weight:500;font-display:swap;src:url("../../../../assets/fonts/dm-sans-latin-500-normal.woff2") format("woff2")}
+
+:root{
+  --ground:#0e0f12;--bg:#141519;--white:#f6f4f4;--orange:#ff7517;
+  --t1:rgba(246,244,244,.92);--t2:rgba(246,244,244,.62);--t3:rgba(246,244,244,.40);
+  --hair:rgba(246,244,244,.14);--hair-hi:rgba(246,244,244,.28);
+  --font-display:"Poppins",system-ui,sans-serif;--font-body:"DM Sans",system-ui,sans-serif;
+  --gutter:16px;--ease:cubic-bezier(.2,.8,.2,1);--snap:cubic-bezier(.3,1.35,.45,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--ground);color:var(--white);font-family:var(--font-body);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+button,a{font:inherit;color:inherit}
+button{background:none;border:0;padding:0;cursor:pointer}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ------------------------------------------------------------------ the viewer */
+.v{position:fixed;inset:0;display:flex;flex-direction:column;background:var(--ground);overflow:hidden;
+  opacity:1;transition:opacity .24s var(--ease)}
+.v.is-out{opacity:0;pointer-events:none}
+.v-stage{flex:1;min-height:0;position:relative;touch-action:none;overflow:hidden;padding-top:env(safe-area-inset-top)}
+.v-stage img{position:absolute;left:50%;top:50%;max-width:100%;max-height:100%;width:auto;height:auto;display:block;
+  transform:translate(-50%,-50%);user-select:none;-webkit-user-drag:none;transition:opacity .16s linear}
+.v-stage img.is-old{opacity:0}
+.v.is-drag .v-stage img{transition:none}
+
+/* ------------------------------------------------------------------ the dock: Edge Code */
+.ec{flex:none;position:relative;padding:0 var(--gutter) calc(4px + env(safe-area-inset-bottom));user-select:none}
+.ec :focus-visible{outline:1px solid var(--orange);outline-offset:3px;border-radius:2px}
+
+/* the edge line: task and date left, the photo's name right (it opens the licence) */
+.ec-edge{display:flex;justify-content:space-between;align-items:center;height:38px;gap:12px}
+.ec-task{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--t2);white-space:nowrap}
+.ec-task b{font-weight:500;color:var(--t1)}
+.ec-task i{font-style:normal;color:var(--t3);margin:0 .5em}
+.ec-name{display:inline-flex;align-items:center;gap:9px;height:44px;margin-right:-10px;padding:0 10px;
+  font-family:var(--font-display);font-weight:500;font-size:12.5px;letter-spacing:.06em;color:var(--t1);font-variant-numeric:tabular-nums}
+.ec-name svg{width:15px;height:15px;fill:none;stroke:var(--t2);stroke-width:1.1;transition:stroke .2s var(--ease)}
+.ec-name[aria-expanded="true"] svg,.ec-name:active svg{stroke:var(--orange)}
+.ec-name[aria-expanded="true"]{color:var(--white)}
+
+/* the ruler: one tick per photo of the task */
+.ec-ruler{position:relative;height:24px;margin:0 1px}
+.ec-ruler::after{content:"";position:absolute;left:-1px;right:-1px;bottom:0;height:1px;background:var(--hair)}
+.ec-tick{position:absolute;bottom:1px;width:1px;height:16px;background:var(--t3);transform-origin:50% 100%;
+  transition:transform .42s var(--ease),background-color .42s var(--ease)}
+.ec-tick.is-seen{background:rgba(246,244,244,.66)}
+.ec-tick.is-fut{background:rgba(246,244,244,.2)}
+.ec-mark{position:absolute;bottom:0;width:2px;height:24px;margin-left:-.5px;background:var(--orange);
+  transition:left .5s var(--ease)}
+.ec-mark::after{content:"";position:absolute;left:-3px;right:-3px;bottom:-3px;height:3px;background:var(--orange)}
+.ec-ruler.is-relay .ec-tick{transition:none}
+
+/* prev, the count, next */
+.ec-nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:64px}
+.ec-step{display:flex;align-items:center;gap:12px;height:56px;color:var(--t1);
+  font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase}
+.ec-prev{justify-self:start;padding-right:28px;margin-left:-4px;padding-left:4px}
+.ec-next{justify-self:end;padding-left:28px;margin-right:-4px;padding-right:4px}
+.ec-step svg{width:34px;height:12px;overflow:visible;fill:none;stroke:currentColor;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+.ec-step .ln{transition:transform .38s var(--snap)}
+.ec-prev .ln{transform-origin:100% 50%}.ec-next .ln{transform-origin:0 50%}
+.ec-step .hd{transition:transform .38s var(--snap)}
+.ec-step span{transition:color .2s var(--ease)}
+.ec-step:hover{color:var(--white)}
+.ec-step.is-press,.ec-step:active{color:var(--orange)}
+.ec-step.is-press .ln,.ec-step:active .ln{transform:scaleX(1.45)}
+.ec-prev.is-press .hd,.ec-prev:active .hd{transform:translateX(-15px)}
+.ec-next.is-press .hd,.ec-next:active .hd{transform:translateX(15px)}
+
+.ec-count{display:flex;align-items:baseline;gap:7px;font-variant-numeric:tabular-nums;line-height:1}
+.odo{display:inline-flex;font-family:var(--font-display);font-weight:500;font-size:30px;letter-spacing:-.01em;color:var(--white);
+  height:1em;overflow:hidden;line-height:1}
+.odo .d{display:block;height:1em;overflow:hidden;width:.62em;text-align:center}
+.odo .c{display:block;transition:transform .55s var(--ease)}
+.odo .c b{display:block;height:1em;font-weight:500}
+.ec-of{font-size:12px;letter-spacing:.08em;color:var(--t3)}
+.ec-of b{font-weight:500;color:var(--t2)}
+
+/* Share, Download, Close */
+.ec-acts{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:64px;position:relative}
+.ec-acts::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--hair) 18%,var(--hair) 82%,transparent)}
+.ec-act{display:flex;align-items:center;gap:9px;min-height:52px;min-width:72px;font-size:13.5px;font-weight:500;color:var(--t1);
+  text-decoration:none;transition:color .2s var(--ease)}
+.ec-act svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;
+  transition:transform .35s var(--snap)}
+.ec-share{justify-self:start;margin-left:-4px;padding-left:4px}
+.ec-close{justify-self:end;justify-content:flex-end;margin-right:-4px;padding-right:4px}
+.ec-act:hover{color:var(--white)}
+.ec-act.is-press,.ec-act:active{color:var(--orange)}
+.ec-share.is-press svg,.ec-share:active svg{transform:translateY(-3px)}
+.ec-close.is-press svg,.ec-close:active svg{transform:rotate(90deg)}
+/* the share module's own button style is reset here: ours is the same word and mark, set in the dock's type */
+.ec .ec-share[data-share]{display:flex;min-height:52px;padding:0 0 0 4px;font-size:13.5px;border:0}
+.ec .ec-share[data-share]:hover{color:var(--white)}
+.ec .ec-share[data-share].is-press,.ec .ec-share[data-share]:active{color:var(--orange)}
+
+/* Download: the word, the readout under it, and a hairline that is the progress */
+.ec-dl{position:relative;display:grid;grid-template-columns:auto;justify-items:center;gap:3px;min-width:190px;padding:7px 14px 9px;
+  text-decoration:none;color:var(--white)}
+.ec-dl-t{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:500;letter-spacing:.01em;transition:color .2s var(--ease)}
+.ec-dl-t svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s var(--snap)}
+.ec-dl-m{font-size:11.5px;letter-spacing:.06em;color:var(--t2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ec-dl-m i{font-style:normal;color:var(--t3);margin:0 .45em}
+.ec-dl::after{content:"";position:absolute;left:14px;right:14px;bottom:2px;height:1px;background:var(--hair-hi)}
+.ec-dl-p{position:absolute;left:14px;bottom:2px;height:1px;width:calc((100% - 28px) * var(--p,0));background:var(--orange);z-index:1;
+  transition:width .2s linear}
+.ec-dl:hover .ec-dl-t{color:var(--white)}
+.ec-dl.is-press .ec-dl-t,.ec-dl:active .ec-dl-t{color:var(--orange)}
+.ec-dl.is-press .ec-dl-t svg,.ec-dl:active .ec-dl-t svg{transform:translateY(3px)}
+.ec-dl.is-busy .ec-dl-t{color:var(--t2)}
+.ec-dl.is-busy .ec-dl-t svg .ar{animation:ec-drop 1s var(--ease) infinite}
+@keyframes ec-drop{0%{transform:translateY(-5px);opacity:0}40%{opacity:1}100%{transform:translateY(3px);opacity:0}}
+.ec-dl.is-done .ec-dl-t{color:var(--white)}
+.ec-dl.is-done .ec-dl-p{--p:1!important;background:var(--orange)}
+.ec-dl .ok{display:none}.ec-dl.is-done .ok{display:block}.ec-dl.is-done .ar{display:none}
+.ec-dl .ok path{stroke-dasharray:20;stroke-dashoffset:20;animation:ec-tick .45s .05s var(--ease) forwards}
+@keyframes ec-tick{to{stroke-dashoffset:0}}
+
+/* Patreon: the owner's support link, one line, the dock's only underline in orange */
+.ec-pat{display:flex;justify-content:center;align-items:center;gap:.5em;min-height:46px;text-decoration:none;font-size:13px;color:var(--t2)}
+.ec-pat b{font-weight:500;color:var(--white);background:linear-gradient(var(--orange),var(--orange)) 0 100%/100% 1px no-repeat;padding-bottom:3px;
+  transition:color .2s var(--ease),background-size .3s var(--ease)}
+.ec-pat svg{width:22px;height:10px;fill:none;stroke:var(--orange);stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s var(--snap)}
+.ec-pat:hover b{color:var(--white)}
+.ec-pat.is-press b,.ec-pat:active b{color:var(--orange)}
+.ec-pat.is-press svg,.ec-pat:active svg,.ec-pat:hover svg{transform:translateX(5px)}
+
+/* the licence: opens from the photo's name, over the photo's foot, never a box */
+.ec-lic{position:absolute;left:0;right:0;bottom:100%;padding:56px var(--gutter) 12px;pointer-events:none;
+  background:linear-gradient(180deg,rgba(14,15,18,0),rgba(14,15,18,.86) 46%,var(--ground));
+  opacity:0;transform:translateY(8px);transition:opacity .25s var(--ease),transform .3s var(--ease)}
+.ec-lic.is-open{opacity:1;transform:none;pointer-events:auto}
+.ec-lic p{margin:0;max-width:34rem;font-size:12.5px;line-height:1.55;color:var(--t1)}
+.ec-lic a{color:var(--white);text-decoration:underline;text-decoration-color:var(--hair-hi);text-underline-offset:.2em}
+.ec-lic .k{display:block;margin-bottom:6px;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+.ec-lic .rv{display:inline-flex;align-items:center;min-height:44px;margin-top:2px;font-size:12px;color:var(--t2)}
+
+/* desktop: the same edge code laid in one band; Close takes the top right, where a mouse looks for it */
+.ec-x-top{display:none}
+@media (min-width:821px) and (min-height:501px){
+  :root{--gutter:40px}
+  .v-stage{padding:0}
+  .v-stage img{max-width:calc(100% - 200px);max-height:calc(100% - 64px)}
+  .ec{display:grid;grid-template-columns:minmax(0,1fr) minmax(440px,560px) minmax(0,1fr);grid-template-rows:auto auto;
+    column-gap:48px;align-items:end;padding:0 var(--gutter) 20px}
+  .ec-edge{grid-column:1;grid-row:1;flex-direction:column;align-items:flex-start;justify-content:flex-end;height:auto;gap:0;padding-bottom:0}
+  .ec-name{order:-1;margin:0 0 0 -10px;font-size:15px;letter-spacing:.05em}
+  .ec-ruler{grid-column:2;grid-row:1}
+  .ec-nav{grid-column:2;grid-row:2;height:60px}
+  .ec-pat{grid-column:1;grid-row:2;align-self:center;justify-content:flex-start;min-height:44px}
+  .ec-acts{grid-column:3;grid-row:2;align-self:center;display:flex;justify-content:flex-end;align-items:center;height:auto;gap:34px}
+  .ec-acts::before{display:none}
+  .ec-close{display:none}
+  .ec-share,.ec .ec-share[data-share]{margin:0;padding:0;min-width:0}
+  .ec-dl{justify-items:end;padding:6px 0 9px;min-width:0}
+  .ec-dl::after,.ec-dl-p{left:0}.ec-dl::after{right:0}.ec-dl-p{width:calc(100% * var(--p,0))}
+  .ec-x-top{display:flex;position:absolute;top:18px;right:var(--gutter);z-index:4;align-items:center;gap:12px;min-height:48px;padding:0 0 0 14px;
+    font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--t2);transition:color .2s var(--ease)}
+  .ec-x-top kbd{font:inherit;font-size:10px;letter-spacing:.14em;color:var(--t3);border-bottom:1px solid var(--hair);padding-bottom:1px}
+  .ec-x-top svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.2;stroke-linecap:round;transition:transform .35s var(--snap)}
+  .ec-x-top:hover{color:var(--white)}
+  .ec-x-top:active,.ec-x-top.is-press{color:var(--orange)}
+  .ec-x-top:hover svg{transform:rotate(90deg)}
+  .ec-lic{left:var(--gutter);right:auto;width:min(36rem,40vw);padding-left:0;background:none}
+  .ec-lic p{text-shadow:0 1px 12px rgba(0,0,0,.8)}
+  /* the stage's own side halves step for a mouse; their arrows show only on hover */
+  .v .v-side{position:absolute;top:0;bottom:0;width:22%;z-index:2;display:flex;align-items:center;padding:0 var(--gutter);color:var(--t2);opacity:0;transition:opacity .25s var(--ease)}
+  .v .v-side:hover{opacity:1}
+  .v-side.l{left:0}.v-side.r{right:0;justify-content:flex-end}
+  .v-side svg{width:44px;height:14px;fill:none;stroke:currentColor;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round}
+}
+.v-side{display:none}
+@media (max-width:360px){.ec-dl{min-width:164px;padding-left:8px;padding-right:8px}.ec-act{min-width:60px}.ec-step span{display:none}}
+
+/* landscape on a phone (short and wide): the dock steps aside so the photo keeps the height */
+@media (max-height:500px) and (orientation:landscape){
+  .v{flex-direction:row}
+  .ec{width:384px;display:flex;flex-direction:column;justify-content:flex-end;padding:0 calc(16px + env(safe-area-inset-right)) 6px 20px}
+  .ec-dl{min-width:170px}
+  .ec-lic{left:20px;right:16px;bottom:auto;top:0;padding-top:16px;transform:none;background:var(--ground)}
+  .st-open{display:none}
+}
+
+/* ------------------------------------------------------------------ the gallery behind (the sample's closed state) */
+.gal{min-height:100%;padding:40px var(--gutter);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;text-align:center}
+.gal p{margin:0;font-size:13px;color:var(--t2);letter-spacing:.04em}
+.gal-row{display:flex;gap:10px;align-items:flex-end}
+.gal-row button img{display:block;height:min(180px,30vw);width:auto}
+.gal-row button:focus-visible{outline:1px solid var(--orange);outline-offset:3px}
+
+/* ------------------------------------------------------------------ the sample's state sheet (review only) */
+.st{position:fixed;inset:0;z-index:50;background:var(--ground);overflow:auto;padding:28px var(--gutter) 40px;display:none}
+.st.is-open{display:block}
+.st h2{font-family:var(--font-display);font-weight:600;font-size:20px;margin:0 0 4px}
+.st > p{margin:0 0 22px;font-size:13px;color:var(--t2);max-width:40rem}
+.st-g{display:grid;gap:22px;max-width:56rem}
+.st-row{border-top:1px solid var(--hair);padding-top:12px}
+.st-row h3{margin:0 0 6px;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+.st-cells{display:flex;flex-wrap:wrap;gap:6px 28px;align-items:center}
+.st-cell{display:flex;flex-direction:column;align-items:center;gap:2px}
+.st-cell > small{font-size:11px;color:var(--t3);letter-spacing:.06em}
+.st-x{position:fixed;top:12px;right:var(--gutter);min-height:44px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--t2)}
+.st .ec-step,.st .ec-act{pointer-events:none}
+.st-open{position:fixed;top:8px;left:8px;z-index:6;min-height:32px;padding:0 8px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--t3)}
+
+@media (prefers-reduced-motion:reduce){
+  .v,.v-stage img,.ec-tick,.ec-mark,.odo .c,.ec-step .ln,.ec-step .hd,.ec-act svg,.ec-dl-t svg,.ec-dl-p,.ec-pat svg,.ec-pat b,.ec-lic,.ec-x-top svg{transition:none!important}
+  .ec-dl.is-busy .ec-dl-t svg .ar,.ec-dl .ok path{animation:none!important;stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+
+<main class="gal" id="gal" hidden>
+  <p>The gallery (sample). Tap a photo to open it.</p>
+  <div class="gal-row">
+    <button type="button" data-open="0" aria-label="Open Task 3, photo 21"><img src="https://paraglidingatlas-maker.github.io/media-2026/srs-tapalpa/SRS_6_T3_21-800.webp" alt="" width="120" height="180"></button>
+    <button type="button" data-open="1" aria-label="Open Task 4, photo 54"><img src="https://paraglidingatlas-maker.github.io/media-2026/srs-tapalpa/SRS_6_T4_54-800.webp" alt="" width="254" height="180"></button>
+  </div>
+</main>
+
+<section class="v" id="v" role="dialog" aria-modal="true" aria-label="The photo, enlarged">
+  <div class="v-stage" id="stage">
+    <img id="pic" alt="" draggable="false">
+    <button class="v-side l" type="button" tabindex="-1" aria-hidden="true" data-go="-1"><svg viewBox="0 0 44 14"><path d="M43 7H1M7 1 1 7l6 6"/></svg></button>
+    <button class="v-side r" type="button" tabindex="-1" aria-hidden="true" data-go="1"><svg viewBox="0 0 44 14"><path d="M1 7h42M37 1l6 6-6 6"/></svg></button>
+  </div>
+  <button class="st-open" type="button" id="stOpen">States</button>
+  <button class="ec-x-top" type="button" data-close aria-label="Close the photo"><kbd>Esc</kbd><span>Close</span><svg viewBox="0 0 18 18"><path d="m3 3 12 12M15 3 3 15"/></svg></button>
+
+  <div class="ec" id="dock">
+    <div class="ec-lic" id="lic" aria-hidden="true">
+      <p><span class="k">Free web copy</span><span id="licPx">1600 × 2400 px</span>, under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="license noopener">CC BY-NC 4.0</a>: share it with the credit &ldquo;Photo: Aninder Singh, Paragliding Atlas&rdquo;, not for commercial use.</p>
+    </div>
+
+    <div class="ec-edge">
+      <span class="ec-task" id="task"><b>Task 3</b><i>·</i>Tue 10 Nov</span>
+      <button class="ec-name" id="name" type="button" aria-expanded="false" aria-controls="lic"><span id="nameT">SRS_6_T3_21</span><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7"/><path d="M8 7v4.5M8 4.6v.1"/></svg><span class="sr">, licence</span></button>
+    </div>
+
+    <div class="ec-ruler" id="ruler" aria-hidden="true"><i class="ec-mark" id="mark"></i></div>
+
+    <div class="ec-nav">
+      <button class="ec-step ec-prev" type="button" data-go="-1" aria-label="Previous photo">
+        <svg viewBox="0 0 34 12" aria-hidden="true"><path class="ln" d="M33 6H2"/><path class="hd" d="M7 1 1.5 6 7 11"/></svg><span>Prev</span>
+      </button>
+      <div class="ec-count"><span class="odo" id="odo" aria-hidden="true"></span><span class="ec-of" aria-hidden="true">of <b id="of">144</b></span><span class="sr" id="pos" aria-live="polite"></span></div>
+      <button class="ec-step ec-next" type="button" data-go="1" aria-label="Next photo">
+        <span>Next</span><svg viewBox="0 0 34 12" aria-hidden="true"><path class="ln" d="M1 6h31"/><path class="hd" d="M27 1l5.5 5L27 11"/></svg>
+      </button>
+    </div>
+
+    <div class="ec-acts">
+      <button class="ec-act ec-share" type="button" data-share id="share"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5v10M6.2 6.3 10 2.5l3.8 3.8M4 10.5V16a1.5 1.5 0 0 0 1.5 1.5h9A1.5 1.5 0 0 0 16 16v-5.5"/></svg><span>Share</span></button>
+      <a class="ec-dl" id="dl" href="#" download>
+        <span class="ec-dl-t"><svg viewBox="0 0 16 16" aria-hidden="true"><g class="ar"><path d="M8 1.5v9M4.5 7 8 10.5 11.5 7"/></g><g class="ok"><path d="M2.5 8.5 6.2 12 13.5 4"/></g><path d="M2 14.5h12"/></svg><span id="dlT">Download</span></span>
+        <span class="ec-dl-m" id="dlM">1600 × 2400 px</span>
+        <i class="ec-dl-p" id="dlP"></i>
+      </a>
+      <button class="ec-act ec-close" type="button" data-close aria-label="Close the photo"><span>Close</span><svg viewBox="0 0 18 18" aria-hidden="true"><path d="m3.5 3.5 11 11M14.5 3.5l-11 11"/></svg></button>
+    </div>
+
+    <a class="ec-pat" href="https://www.patreon.com/15133612/join" target="_blank" rel="noopener">Like what you see? <b>Join me on Patreon</b><svg viewBox="0 0 22 10" aria-hidden="true"><path d="M1 5h20M17 1l4 4-4 4"/></svg></a>
+  </div>
+</section>
+
+<aside class="st" id="st" aria-label="The button states (sample only)">
+  <button class="st-x" type="button" id="stX">Back to the photo</button>
+  <h2>The states</h2>
+  <p>Sample only: every control at rest and pressed, and Download in its three states. The sizes are the real ones, fetched from the media host.</p>
+  <div class="st-g" id="stG"></div>
+</aside>
+
+<script src="../../v4-share.js"></script>
+<script>
+(function (w, d) {
+  "use strict";
+  var BASE = "https://paraglidingatlas-maker.github.io/media-2026/srs-tapalpa/";
+  var SITE = "https://paraglidingatlas.com/media-srs-tapalpa-2026.html#";
+  // the two photos of the brief, with their real places in the gallery (media-srs-tapalpa-2026.html)
+  var P = [
+    { stem: "SRS_6_T3_21", task: "Task 3", date: "Tue 10 Nov", n: 21, of: 144, W: 1600, H: 2400 },
+    { stem: "SRS_6_T4_54", task: "Task 4", date: "Wed 11 Nov", n: 54, of: 168, W: 2400, H: 1702 }
+  ];
+  var $ = function (id) { return d.getElementById(id); };
+  var v = $("v"), stage = $("stage"), pic = $("pic"), ruler = $("ruler"), mark = $("mark"), odo = $("odo");
+  var dl = $("dl"), dlT = $("dlT"), dlM = $("dlM"), dlP = $("dlP"), nameB = $("name"), lic = $("lic");
+  var reduce = w.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var IOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var lean = !!(navigator.connection && navigator.connection.saveData);
+  var cur = 0, ticks = [], tickOf = 0, blobs = {}, pending = {}, prog = {}, warmT = 0;
+
+  function src(p, s) { return BASE + p.stem + "-" + s + ".webp"; }
+  function mb(n) { return n >= 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB"; }
+  function px(p) { return p.W + " × " + p.H + " px"; }
+
+  /* ---- the ruler: one tick per photo; the near ones swell like a lens, the seen ones brighter */
+  function layRuler(p) {
+    var wd = ruler.clientWidth, N = p.of, i, t;
+    if (tickOf !== N || ticks.length !== N) {
+      ruler.classList.add("is-relay");
+      ticks.forEach(function (t) { t.remove(); });
+      ticks = [];
+      for (i = 0; i < N; i++) { t = d.createElement("i"); t.className = "ec-tick"; ruler.insertBefore(t, mark); ticks.push(t); }
+      tickOf = N;
+      requestAnimationFrame(function () { requestAnimationFrame(function () { ruler.classList.remove("is-relay"); }); });
+    }
+    for (i = 0; i < N; i++) ticks[i].style.left = Math.round(i / (N - 1) * (wd - 1)) + "px";
+    mark.style.left = Math.round((p.n - 1) / (N - 1) * (wd - 1)) + "px";
+    var c = p.n - 1;
+    for (i = 0; i < N; i++) {
+      var dd = i - c, lens = Math.exp(-(dd * dd) / 18), major = (i + 1) % 10 === 0 ? 1 : 0;
+      var h = 0.32 + major * 0.16 + lens * 0.62;           // in parts of the 16 px tick
+      ticks[i].style.transform = "scaleY(" + Math.min(1, h).toFixed(3) + ")";
+      ticks[i].className = "ec-tick " + (i < c ? "is-seen" : i > c ? "is-fut" : "");
+    }
+  }
+
+  /* ---- the counter rolls like an odometer (up for Next, down for Prev); reduced motion swaps */
+  function setOdo(str) {
+    var cols = odo.children;
+    if (cols.length !== str.length) {
+      odo.innerHTML = "";
+      for (var k = 0; k < str.length; k++) {
+        var dgt = d.createElement("span"); dgt.className = "d";
+        var c = d.createElement("span"); c.className = "c";
+        for (var n = 0; n < 10; n++) { var b = d.createElement("b"); b.textContent = n; c.appendChild(b); }
+        dgt.appendChild(c); odo.appendChild(dgt);
+      }
+      cols = odo.children;
+      [].forEach.call(cols, function (x) { x.firstChild.style.transition = "none"; });
+      odo.offsetWidth;
+    }
+    for (var j = 0; j < str.length; j++) {
+      var col = cols[j].firstChild;
+      col.style.transform = "translateY(" + (-str.charCodeAt(j) + 48) + "em)";
+    }
+    requestAnimationFrame(function () { [].forEach.call(odo.children, function (x) { x.firstChild.style.transition = ""; }); });
+  }
+
+  /* ---- show a photo */
+  function show(i, how) {
+    cur = (i + P.length) % P.length;
+    var p = P[cur];
+    if (how === "cut" && !reduce) {      // a cut, as in film: the new frame is in a beat later, no slide
+      pic.classList.add("is-old");
+      var im = new Image(); im.onload = im.onerror = function () { pic.src = im.src; pic.alt = p.task + ", photo " + p.n + " of " + p.of; pic.classList.remove("is-old"); };
+      setTimeout(function () { im.src = src(p, 1600); }, 90);
+    } else if (how !== "swipe") { pic.src = src(p, 1600); pic.alt = p.task + ", photo " + p.n + " of " + p.of; }
+    $("task").innerHTML = "<b>" + p.task + "</b><i>·</i>" + p.date;
+    $("nameT").textContent = p.stem;
+    $("of").textContent = p.of;
+    $("pos").textContent = p.task + ", photo " + p.n + " of " + p.of;
+    $("licPx").textContent = px(p);
+    setOdo(String(p.n));
+    layRuler(p);
+    $("share").setAttribute("data-share-url", SITE + p.stem);
+    $("share").setAttribute("data-share-title", p.stem + ", " + p.task);
+    dl.href = src(p, 2400); dl.setAttribute("download", p.stem + ".jpg");
+    resetDl(); warm(p);
+    // the neighbour, ready for the next tap
+    var nb = new Image(); nb.src = src(P[(cur + 1) % P.length], 1600);
+  }
+  function go(dir) { if (v.classList.contains("is-out")) return; show(cur + dir, "cut"); }
+
+  /* ---- Download: the 2400 web copy as a JPEG, by name; resolution at once, the size once fetched */
+  function readout(p) {
+    var b = blobs[p.stem];
+    dlM.innerHTML = px(p) + (b ? "<i>·</i>" + mb(b.size) : "");
+  }
+  function resetDl() { dl.classList.remove("is-busy", "is-done"); dl.removeAttribute("aria-busy"); dlT.textContent = "Download"; dl.style.setProperty("--p", 0); readout(P[cur]); }
+  function toJpeg(b) {
+    return new Promise(function (res) {
+      var u = URL.createObjectURL(b), im = new Image();
+      im.onload = function () {
+        try { var c = d.createElement("canvas"); c.width = im.naturalWidth; c.height = im.naturalHeight; c.getContext("2d").drawImage(im, 0, 0);
+          c.toBlob(function (j) { URL.revokeObjectURL(u); res(j || b); }, "image/jpeg", 0.92); } catch (e) { URL.revokeObjectURL(u); res(b); }
+      };
+      im.onerror = function () { URL.revokeObjectURL(u); res(b); };
+      im.src = u;
+    });
+  }
+  function fetchCopy(p) {
+    if (blobs[p.stem]) return Promise.resolve(blobs[p.stem]);
+    if (!pending[p.stem]) pending[p.stem] = fetch(src(p, 2400), { mode: "cors" }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      var total = +r.headers.get("content-length") || 0;
+      if (!r.body || !r.body.getReader || !total) return r.blob();
+      var rd = r.body.getReader(), parts = [], got = 0;
+      return (function pump() {
+        return rd.read().then(function (x) {
+          if (x.done) return new Blob(parts, { type: r.headers.get("content-type") || "image/webp" });
+          parts.push(x.value); got += x.value.length; prog[p.stem] = got / total; tick(p); return pump();
+        });
+      })();
+    }).then(toJpeg).then(function (b) { blobs[p.stem] = b; delete pending[p.stem]; if (P[cur] === p && !dl.classList.contains("is-busy")) readout(p); return b; },
+                       function (e) { delete pending[p.stem]; throw e; });
+    return pending[p.stem];
+  }
+  function tick(p) {      // the hairline under Download is the real progress of the fetch
+    if (P[cur] !== p || !dl.classList.contains("is-busy")) return;
+    var f = prog[p.stem] || 0;
+    dl.style.setProperty("--p", (f * 0.96).toFixed(3));
+    dlM.textContent = Math.round(f * 100) + "%";
+  }
+  function warm(p) {
+    clearTimeout(warmT);
+    if (lean || !w.fetch) return;
+    warmT = setTimeout(function () { if (P[cur] === p) fetchCopy(p).catch(function () {}); }, 900);
+  }
+  function deliver(p) {
+    var b = blobs[p.stem], u = URL.createObjectURL(b), x = d.createElement("a");
+    x.href = u; x.download = p.stem + (b.type === "image/jpeg" ? ".jpg" : ".webp"); x.style.display = "none"; d.body.appendChild(x); x.click(); x.remove();
+    setTimeout(function () { URL.revokeObjectURL(u); }, 4000);
+    dl.classList.remove("is-busy"); dl.removeAttribute("aria-busy"); dl.classList.add("is-done");
+    dlT.textContent = IOS ? "Saved to Files" : "Downloaded";
+    dlM.innerHTML = p.stem + ".jpg<i>·</i>" + mb(b.size);
+    clearTimeout(dl._t); dl._t = setTimeout(function () { if (P[cur] === p) resetDl(); }, 3200);
+  }
+  dl.addEventListener("click", function (e) {
+    var p = P[cur]; if (!w.fetch || !w.Blob) return;      // no fetch: the plain link opens the copy
+    e.preventDefault();
+    if (dl.classList.contains("is-busy")) return;
+    if (blobs[p.stem]) { deliver(p); return; }
+    dl.classList.add("is-busy"); dl.setAttribute("aria-busy", "true"); dlT.textContent = "Getting it"; tick(p);
+    if (!prog[p.stem]) dlM.textContent = "0%";
+    fetchCopy(p).then(function () {
+      if (P[cur] !== p) return;
+      if (IOS) { dl.classList.remove("is-busy"); dlT.textContent = "Ready: tap to save"; readout(p); return; }
+      deliver(p);
+    }).catch(function () { resetDl(); w.open(src(p, 2400), "_blank", "noopener"); });
+  });
+
+  /* ---- presses: the pressed look also from a touch that is too quick for :active */
+  d.addEventListener("pointerdown", function (e) {
+    var b = e.target.closest(".ec-step,.ec-act,.ec-dl,.ec-pat,.ec-x-top"); if (!b) return;
+    b.classList.add("is-press");
+    var up = function () { setTimeout(function () { b.classList.remove("is-press"); }, 160); d.removeEventListener("pointerup", up); d.removeEventListener("pointercancel", up); };
+    d.addEventListener("pointerup", up); d.addEventListener("pointercancel", up);
+  });
+
+  [].forEach.call(d.querySelectorAll("[data-go]"), function (b) { b.addEventListener("click", function () { go(+b.getAttribute("data-go")); }); });
+
+  /* ---- the licence opens from the photo's name */
+  nameB.addEventListener("click", function () {
+    var open = nameB.getAttribute("aria-expanded") !== "true";
+    nameB.setAttribute("aria-expanded", open); lic.classList.toggle("is-open", open); lic.setAttribute("aria-hidden", !open);
+  });
+
+  /* ---- close and open (the sample's gallery stands behind) */
+  function close() { v.classList.add("is-out"); setTimeout(function () { $("gal").hidden = false; v.hidden = true; }, reduce ? 0 : 240); }
+  function open(i) { v.hidden = false; $("gal").hidden = true; show(i); requestAnimationFrame(function () { v.classList.remove("is-out"); }); }
+  [].forEach.call(d.querySelectorAll("[data-close]"), function (b) { b.addEventListener("click", close); });
+  [].forEach.call(d.querySelectorAll("[data-open]"), function (b) { b.addEventListener("click", function () { open(+b.getAttribute("data-open")); }); });
+
+  d.addEventListener("keydown", function (e) {
+    if ($("st").classList.contains("is-open")) { if (e.key === "Escape") states(false); return; }
+    if (v.hidden) return;
+    var pop = d.querySelector(".v4sh"); if (pop && !pop.hidden) return;
+    if (e.key === "ArrowRight") go(1); else if (e.key === "ArrowLeft") go(-1); else if (e.key === "Escape") close();
+  });
+
+  /* ---- swipe: the photo follows the thumb; left and right change it, down closes */
+  var S = null;
+  stage.addEventListener("pointerdown", function (e) {
+    if (e.target.closest(".v-side")) return;
+    S = { x: e.clientX, y: e.clientY, t: Date.now(), ax: 0 }; stage.setPointerCapture(e.pointerId); v.classList.add("is-drag");
+  });
+  stage.addEventListener("pointermove", function (e) {
+    if (!S) return;
+    var dx = e.clientX - S.x, dy = e.clientY - S.y;
+    if (!S.ax && Math.abs(dx) + Math.abs(dy) > 8) S.ax = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+    if (S.ax === "x") pic.style.transform = "translate(calc(-50% + " + dx + "px),-50%)";
+    if (S.ax === "y" && dy > 0) { pic.style.transform = "translate(-50%,calc(-50% + " + dy + "px)) scale(" + Math.max(.86, 1 - dy / 1600) + ")"; v.style.backgroundColor = "rgba(14,15,18," + Math.max(.4, 1 - dy / 500) + ")"; }
+  });
+  function endSwipe(e) {
+    if (!S) return;
+    var dx = e.clientX - S.x, dy = e.clientY - S.y, fast = Date.now() - S.t < 260, ax = S.ax; S = null;
+    v.classList.remove("is-drag"); v.style.backgroundColor = "";
+    if (ax === "x" && (Math.abs(dx) > 70 || (fast && Math.abs(dx) > 30))) {
+      var dir = dx < 0 ? 1 : -1;
+      if (reduce) { pic.style.transform = ""; show(cur + dir); return; }
+      pic.style.transition = "transform .18s cubic-bezier(.4,0,1,1),opacity .18s linear";
+      pic.style.transform = "translate(calc(-50% + " + (-dir * 60) + "vw),-50%)"; pic.style.opacity = "0";
+      setTimeout(function () {
+        var p = P[(cur + dir + P.length) % P.length], im = new Image();
+        im.onload = im.onerror = function () {
+          pic.style.transition = "none"; pic.src = im.src; pic.style.transform = "translate(calc(-50% + " + (dir * 24) + "vw),-50%)";
+          pic.offsetWidth; pic.style.transition = "transform .3s var(--ease),opacity .2s linear"; pic.style.transform = ""; pic.style.opacity = "";
+          setTimeout(function () { pic.style.transition = ""; }, 320);
+        };
+        show(cur + dir, "swipe"); im.src = src(p, 1600);
+      }, 170);
+      return;
+    }
+    if (ax === "y" && dy > 110) { pic.style.transform = ""; close(); return; }
+    pic.style.transition = "transform .3s var(--ease)"; pic.style.transform = "";
+    setTimeout(function () { pic.style.transition = ""; }, 320);
+  }
+  stage.addEventListener("pointerup", endSwipe); stage.addEventListener("pointercancel", endSwipe);
+
+  w.addEventListener("resize", function () { layRuler(P[cur]); });
+
+  /* ---- the state sheet (sample only): the real controls, cloned, held in each state */
+  function cell(node, label) { var c = d.createElement("div"); c.className = "st-cell"; c.appendChild(node); var s = d.createElement("small"); s.textContent = label; c.appendChild(s); return c; }
+  function row(title, cells) { var r = d.createElement("div"); r.className = "st-row"; r.innerHTML = "<h3>" + title + "</h3>"; var g = d.createElement("div"); g.className = "st-cells"; cells.forEach(function (c) { g.appendChild(c); }); r.appendChild(g); return r; }
+  function clone(sel, cls) { var n = d.querySelector(".ec " + sel).cloneNode(true); n.removeAttribute("id"); [].forEach.call(n.querySelectorAll("[id]"), function (x) { x.removeAttribute("id"); }); if (cls) n.classList.add(cls); n.removeAttribute("data-share"); n.tabIndex = -1; return n; }
+  function dlState(st) {
+    var n = clone(".ec-dl"), p = P[cur], b = blobs[p.stem], t = n.querySelector(".ec-dl-t span"), m = n.querySelector(".ec-dl-m");
+    n.classList.remove("is-busy", "is-done", "is-press"); n.removeAttribute("href");
+    if (st === "ready") { t.textContent = "Download"; m.innerHTML = px(p) + (b ? "<i>·</i>" + mb(b.size) : ""); n.style.setProperty("--p", 0); }
+    if (st === "busy") { n.classList.add("is-busy"); t.textContent = "Getting it"; m.textContent = "46%"; n.style.setProperty("--p", .46); }
+    if (st === "done") { n.classList.add("is-done"); t.textContent = "Downloaded"; m.innerHTML = p.stem + ".jpg" + (b ? "<i>·</i>" + mb(b.size) : ""); }
+    return n;
+  }
+  function states(on) {
+    var st = $("st");
+    if (!on) { st.classList.remove("is-open"); return; }
+    var g = $("stG"); g.innerHTML = "";
+    var fill = function () {
+      g.innerHTML = "";
+      g.appendChild(row("Download", [cell(dlState("ready"), "ready: resolution, then size"), cell(dlState("busy"), "getting it (the line is the real progress)"), cell(dlState("done"), "saved (Saved to Files on iPhone)")]));
+      g.appendChild(row("Previous and next", [cell(clone(".ec-prev"), "rest"), cell(clone(".ec-prev", "is-press"), "pressed"), cell(clone(".ec-next"), "rest"), cell(clone(".ec-next", "is-press"), "pressed")]));
+      g.appendChild(row("Share and close", [cell(clone(".ec-share"), "rest"), cell(clone(".ec-share", "is-press"), "pressed"), cell(clone(".ec-close"), "rest"), cell(clone(".ec-close", "is-press"), "pressed")]));
+      g.appendChild(row("Patreon", [cell(clone(".ec-pat"), "rest"), cell(clone(".ec-pat", "is-press"), "pressed")]));
+    };
+    fill();
+    var p = P[cur]; if (!blobs[p.stem]) fetchCopy(p).then(fill, function () {});
+    st.classList.add("is-open"); $("stX").focus();
+  }
+  $("stOpen").addEventListener("click", function () { states(true); });
+  $("stX").addEventListener("click", function () { states(false); });
+
+  var start = /#.*\b4\b/.test(location.hash) ? 1 : 0;
+  show(start);
+  if (/states/.test(location.hash)) states(true);
+})(window, document);
+</script>
+</body>
+</html>

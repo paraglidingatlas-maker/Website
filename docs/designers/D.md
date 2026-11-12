@@ -1,5 +1,24 @@
 # Designer D, "Final Cut": notebook (newest first)
 
+## 12 Nov 2026: the photo viewer's controls on a phone ("Edge Code")
+**Asked.** docs/designers/viewer-controls-brief.md: the viewer's controls, one-handed, Awwwards level, "sleek futuristic",
+not the old boxes and not chat 23's glass capsule ("still look odd"). One sample: prototypes/v4/samples/viewer-d/
+(index.html, phone.png, desktop.png). Worked alone, E and F unseen.
+**Found.** The live 2400 copy is a WebP (the JS makes the JPEG), so the size is only true after the fetch: 891 KB for
+SRS_6_T3_21 (1600 x 2400), 826 KB for SRS_6_T4_54 (2400 x 1702). Real places: Task 3 Tue 10 Nov, 21 of 144; Task 4 Wed
+11 Nov, 54 of 168. The glass capsule reads odd because it is a box with a glow: a material, not a mark.
+**Proposed, "Edge Code".** The controls set like a film's edge numbers: type and hairlines on the dark, no fills, no
+borders, no glass. The photo sits on a ruler of the task's frames (one tick per photo, seen ticks brighter, the near
+ones swell like a lens, the current one orange); the count rolls like an odometer; Prev and Next are long hairline
+arrows that stretch and turn orange on press. Bottom 240 px only: edge line (task, date; the name opens the licence),
+ruler, Prev / 21 of 144 / Next, Share / Download / Close (Close far from Next), Patreon as one line with the dock's
+only orange underline. Download: resolution at once, the size after a quiet fetch, "Getting it" with the hairline as
+the real progress, then "Downloaded" (Saved to Files on iPhone). Desktop: one band, name and Patreon left, ruler and
+steps centre, Share and Download right, Close top right with Esc. Phone on its side: the dock moves to the right.
+**Recommended** it. Why: nothing on it is a container, so the photo keeps the stage and the controls read as part of
+the print, and the ruler gives the sense of progress through the task for free. Tested 360x640, 390x683, 390x844,
+820x1180, 844x390, 1440x900, reduced motion; swipe, keys, close and reopen, real download.
+
 ## 12 Nov 2026: the first newsletter, contest round 1 ("The Day Sheet")
 **Asked.** docs/designers/newsletter-brief.md: the first email to all 28 subscribers (owner's opener, then brand
 sections): Tapalpa so far, the event pages, the Miguel Gutierrez talk, Patreon. Concept

@@ -1,0 +1,545 @@
+<!doctype html>
+<!--
+  The idea: the photo viewer's controls are one line of light, the task line, with prev and next as its two ends, the glider riding on it at "21 of 144", and Download, Share and Patreon as plain lit type beneath it; no boxes, no glass.
+  One hand: all of it sits in the bottom quarter (the id row, the line, the actions, the licence), every target 44 px or more; the thumb steps with the ends, swipes the photo, or scrubs the line itself to any photo in the task.
+  Borrows: the gallery's own task line and glider (gf-line, Turnpoint), an instrument tape's fisheye ticks, the scrubber of a phone's photo app, light pools instead of button fills (press feedback is light, not a shape).
+  Desktop: the same line centred in one low bar (id and licence left, actions right), close top right, Esc and the arrow keys; the photo's sides click to step.
+  Sample only (designer F, 12 Nov 2026): prev and next go between the two brief photos (SRS_6_T3_21 and SRS_6_T4_54); scrubbing the line loads the real photo at that place in its task. The States board is behind the close.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Viewer controls, F: The Task Line</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../../../../fonts.css">
+<style>
+:root{
+  --bg:#141519;--ink:#0e0f12;--white:#f6f4f4;--gray-light:#b4b4b4;--gray:#8c8c8c;--orange:#ff7517;
+  --font-display:"Poppins",system-ui,sans-serif;--font-body:"DM Sans",system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);--g:18px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--white);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+a{color:inherit}
+body.is-viewing{overflow:hidden}
+
+/* ---------------------------------------------------------------- the viewer */
+.vf{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;overflow:hidden;background:var(--ink);opacity:1;transition:opacity .26s var(--ease)}
+.vf.is-closed{opacity:0;pointer-events:none;visibility:hidden;transition:opacity .22s var(--ease),visibility 0s .22s}
+.vf-stage{position:relative;flex:1;min-height:0;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
+.vf-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;-webkit-user-drag:none;transition:opacity .18s var(--ease)}
+.vf-img.is-low{opacity:.92}
+.vf-zone{display:none}
+
+/* the panel: id, the line, the actions, the licence. No fill, no edge: type and light on the dark */
+.vf-panel{flex:none;position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"id x" "line line" "acts acts" "terms terms";
+  align-items:center;column-gap:12px;padding:2px var(--g) calc(10px + env(safe-area-inset-bottom,0px));transition:opacity .25s var(--ease)}
+.vf.is-bare .vf-panel,.vf.is-bare .vf-x{opacity:0;pointer-events:none}
+
+.vf-id{grid-area:id;min-width:0;display:flex;align-items:baseline;gap:.15rem .7rem;flex-wrap:wrap}
+.vf-name{font-family:var(--font-display);font-weight:600;font-size:.88rem;letter-spacing:.03em}
+.vf-where{font-size:.8rem;color:var(--gray-light)}
+
+/* every control: a glyph and a word, a light pool when pressed */
+.vf-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;color:var(--white);text-decoration:none;isolation:isolate}
+.vf-btn::before{content:"";position:absolute;left:var(--lx,50%);top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;z-index:-1;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(255,117,23,.34),rgba(255,117,23,.11) 55%,rgba(255,117,23,0));opacity:0;transform:scale(.45);
+  transition:opacity .45s var(--ease),transform .55s var(--ease)}
+.vf-btn:active::before,.vf-btn.is-press::before{opacity:1;transform:scale(1);transition:opacity .07s,transform .14s var(--ease)}
+.vf-btn svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;transition:transform .32s cubic-bezier(.2,.9,.25,1.35),color .2s}
+.vf-btn:focus-visible{outline:2px solid var(--orange);outline-offset:-2px;border-radius:12px}
+.vf-btn:disabled{cursor:default;color:rgba(246,244,244,.2)}
+.vf-btn:disabled::before{display:none}
+
+.vf-x{grid-area:x;width:48px;height:48px;margin-right:-10px}
+.vf-x::before{background:radial-gradient(closest-side,rgba(246,244,244,.2),rgba(246,244,244,.06) 55%,rgba(246,244,244,0))}
+.vf-x svg{width:18px;height:18px;stroke-width:1.4}
+.vf-x:active svg,.vf-x.is-press svg{transform:rotate(90deg) scale(.86)}
+
+/* the line: prev and next are its two ends, the glider rides it, the ticks are the task's photos */
+.vf-line{grid-area:line;display:grid;grid-template-columns:44px 1fr 44px;align-items:end;margin:0 -8px;height:72px}
+.vf-step{width:44px;height:48px;margin-bottom:-2px}
+.vf-step svg{width:26px;height:16px;stroke-width:1.5}
+.vf-step .tail{stroke-opacity:.32}
+.vf-prev:active:not(:disabled) svg,.vf-prev.is-press svg{transform:translateX(-6px)}
+.vf-next:active:not(:disabled) svg,.vf-next.is-press svg{transform:translateX(6px)}
+.vf-rail{position:relative;height:72px;padding-bottom:4px;touch-action:none;cursor:ew-resize;outline:none}
+.vf-rail::after{content:"";position:absolute;left:6px;right:6px;bottom:22px;height:1px;background:rgba(246,244,244,.14)}  /* the line without JS */
+.vf-rail canvas{position:absolute;left:0;bottom:4px;width:100%;height:36px;display:block;z-index:1}
+.vf-rail:focus-visible .vf-count b{color:var(--orange)}
+.vf-rail:focus-visible::after{background:var(--orange)}
+.vf-mark{position:absolute;left:0;bottom:40px;z-index:2;transform:translateX(var(--mx,0px));pointer-events:none}
+.vf-glider{position:absolute;left:-11px;bottom:-1px;width:22px;height:14px;color:var(--orange);filter:drop-shadow(0 0 6px rgba(255,117,23,.55))}
+.vf-glider svg{width:22px;height:14px;fill:none;stroke:currentColor;display:block}
+.vf-count{position:absolute;bottom:16px;left:0;transform:translateX(calc(-50% + var(--cx,0px)));white-space:nowrap;display:flex;align-items:baseline;gap:.3rem;
+  font-variant-numeric:tabular-nums;font-size:.72rem;color:var(--gray-light);letter-spacing:.02em}
+.vf-count b{font-family:var(--font-display);font-weight:600;font-size:1.06rem;color:var(--white);letter-spacing:0;display:inline-block;transition:color .2s}
+.vf-count i{font-style:normal;color:var(--gray)}
+.vf.is-scrub .vf-count b{color:var(--orange)}
+
+/* the actions: Download leads (its readout is the resolution and size), Share, Patreon */
+.vf-acts{grid-area:acts;display:flex;align-items:center;gap:2px;margin:0 -6px;min-height:58px}
+.vf-sep{flex:none;width:1px;height:30px;background:linear-gradient(180deg,rgba(246,244,244,0),rgba(246,244,244,.17),rgba(246,244,244,0))}
+.vf-dl{flex:1 1 auto;min-width:0;justify-content:flex-start;gap:8px;padding:6px 4px 8px;--lx:15px;text-align:left}
+.vf-dl-ico{flex:none;width:22px;height:24px;position:relative;color:var(--orange)}
+.vf-dl-ico svg{position:absolute;inset:0;width:22px;height:24px;stroke-width:1.6}
+.vf-dl-ico .chk{opacity:0}
+.vf-dl:active .arw,.vf-dl.is-press .arw{transform:translateY(3px)}
+.vf-dl-t{display:flex;flex-direction:column;min-width:0;line-height:1.15}
+.vf-dl-t b{font-family:var(--font-display);font-weight:600;font-size:.96rem;letter-spacing:.005em}
+.vf-dl-t small{font-size:.7rem;color:var(--gray-light);font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.vf-dl-bar{position:absolute;left:34px;right:4px;bottom:2px;height:1.5px;border-radius:2px;background:rgba(246,244,244,0);overflow:hidden;transition:background .3s}
+.vf-dl-bar::after{content:"";position:absolute;inset:0;transform-origin:0 50%;transform:scaleX(var(--p,0));background:linear-gradient(90deg,rgba(255,117,23,.5),var(--orange));
+  box-shadow:0 0 8px rgba(255,117,23,.8);transition:transform .25s linear,opacity .6s}
+.vf-dl[data-state="ready"] .vf-dl-bar::after{opacity:0}
+.vf-dl[data-state="busy"] .vf-dl-bar{background:rgba(246,244,244,.12)}
+.vf-dl[data-state="busy"] .vf-dl-t b{color:var(--gray-light)}
+.vf-dl[data-state="busy"] .arw{animation:vf-drop 1.1s var(--ease) infinite}
+.vf-dl[data-state="done"] .arw{opacity:0}
+.vf-dl[data-state="done"] .chk{opacity:1}
+.vf-dl[data-state="done"] .vf-dl-bar::after{transform:scaleX(1)}
+.vf-dl[data-state="done"] .vf-dl-t small{color:var(--white)}
+@keyframes vf-drop{0%{transform:translateY(-4px);opacity:0}35%{opacity:1}70%{transform:translateY(2px);opacity:1}100%{transform:translateY(3px);opacity:0}}
+
+.vf-share{flex:none;flex-direction:column;gap:3px;width:48px;height:56px}
+.vf-share svg{width:20px;height:20px;stroke-width:1.5}
+.vf-share span,.vf-pat small{font-size:.66rem;color:var(--gray-light);letter-spacing:.02em}
+.vf-share:active svg,.vf-share.is-press svg{transform:translateY(-3px)}
+
+.vf-pat{flex:none;flex-direction:column;align-items:flex-start;padding:6px 0 6px 8px;min-height:52px;line-height:1.2;--lx:40%}
+.vf-pat small{display:block;color:var(--gray)}
+.vf-pat b{font-weight:500;font-size:.8rem;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.vf-pat b svg{width:11px;height:11px;stroke-width:1.6;color:var(--orange)}
+.vf-pat:active b svg,.vf-pat.is-press b svg{transform:translate(2px,-2px)}
+
+.vf-terms{grid-area:terms;margin:2px 0 0;font-size:.69rem;line-height:1.45;color:var(--gray)}
+.vf-terms a{color:var(--gray-light);text-underline-offset:.2em}
+.vf-terms .px{color:var(--gray-light);font-variant-numeric:tabular-nums}
+
+.vf-toast{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translate(-50%,6px);opacity:0;font-size:.78rem;color:var(--white);white-space:nowrap;
+  padding:0 0 4px;border-bottom:1px solid var(--orange);transition:opacity .25s,transform .25s var(--ease);pointer-events:none}
+.vf-toast.is-on{opacity:1;transform:translate(-50%,0)}
+
+@media (hover:hover){
+  .vf-btn:not(:disabled):hover svg{color:var(--orange)}
+  .vf-x:hover svg{color:var(--white)}
+  .vf-pat:hover b{color:var(--white)}
+}
+@media (max-width:359px){
+  :root{--g:14px}
+  .vf-pat small{font-size:.62rem}.vf-pat b{font-size:.78rem}
+  .vf-share{width:48px}
+}
+
+/* ---- desktop: the same line in one low bar; close top right; the photo's sides step */
+@media (min-width:900px){
+  :root{--g:32px}
+  .vf-stage{margin:28px 120px 0}
+  .vf-zone{display:block;position:absolute;top:0;bottom:0;width:min(18%,220px);z-index:3;color:var(--white);opacity:0;transition:opacity .25s}
+  .vf-zone svg{position:absolute;top:50%;width:34px;height:34px;margin-top:-17px;fill:none;stroke:currentColor;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 2px 8px rgba(0,0,0,.6))}
+  .vf-zone:hover{opacity:.9}
+  .vf-zone:disabled{display:none}
+  .vf-zprev{left:-120px;cursor:w-resize}.vf-zprev svg{left:44px}
+  .vf-znext{right:-120px;cursor:e-resize}.vf-znext svg{right:44px}
+  .vf-panel{grid-template-columns:minmax(220px,1fr) minmax(360px,560px) minmax(min-content,1fr);grid-template-areas:"id line acts" "terms line acts";
+    column-gap:48px;row-gap:2px;padding:6px var(--g) 18px}
+  .vf-id{align-self:end;flex-direction:column;gap:2px}
+  .vf-terms{align-self:start;max-width:34rem}
+  .vf-line{margin:0}
+  .vf-acts{justify-content:flex-end;margin:0}
+  .vf-dl{flex:none;padding-right:10px}
+  .vf-dl-t b{font-size:1rem}.vf-dl-t small{font-size:.74rem}
+  .vf-x{position:fixed;top:14px;right:18px;margin:0;z-index:4}
+}
+
+/* ---------------------------------------------------------------- the page behind (the sample's own: thumbnails, the States board) */
+.pg{max-width:1080px;margin:0 auto;padding:40px var(--g) 64px;overflow-x:clip}
+.pg-k{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin:0 0 8px}
+.pg h1{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.15;letter-spacing:-.015em;margin:0 0 10px}
+.pg p{color:var(--gray-light);line-height:1.6;max-width:60ch;margin:0 0 20px;font-size:.95rem}
+.pg h2{font-family:var(--font-display);font-weight:600;font-size:1.15rem;margin:40px 0 12px}
+.pg-thumbs{display:flex;gap:12px;flex-wrap:wrap}
+.pg-thumb{display:block;position:relative}
+.pg-thumb img{display:block;height:200px;width:auto}
+.pg-thumb span{display:block;font-size:.75rem;color:var(--gray-light);margin-top:6px;text-align:left}
+.pg-thumb:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.sp{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px 28px}
+.sp-cell{padding:14px 0 0;border-top:1px solid rgba(246,244,244,.1)}
+.sp-cell > span{display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:6px}
+.sp-row{display:flex;align-items:center;gap:6px;min-height:58px;position:relative}
+.sp .vf-x{position:static;margin:0}
+.sp .vf-dl{flex:0 1 auto}
+
+@media (prefers-reduced-motion:reduce){
+  .vf,.vf-img,.vf-panel,.vf-btn::before,.vf-btn svg,.vf-dl-bar::after,.vf-toast,.vf-zone{transition:none!important}
+  .vf-dl[data-state="busy"] .arw{animation:none}
+  .vf-btn:active svg,.vf-btn.is-press svg{transform:none!important}
+}
+</style>
+</head>
+<body class="is-viewing">
+
+<main class="pg" id="pg">
+  <p class="pg-k">Designer F &middot; viewer controls</p>
+  <h1>The Task Line</h1>
+  <p>Close brings you here. Tap a photo to open the viewer. Step with the line's two ends, swipe the photo, or drag along the line itself; tap the photo to hide the controls; swipe down to close.</p>
+  <div class="pg-thumbs">
+    <button class="pg-thumb" type="button" data-open="T3:20"><img src="https://paraglidingatlas-maker.github.io/media-2026/srs-tapalpa/SRS_6_T3_21-800.webp" alt="SRS_6_T3_21, a pilot over Tapalpa, Task 3" width="133" height="200"><span>SRS_6_T3_21 &middot; portrait</span></button>
+    <button class="pg-thumb" type="button" data-open="T4:53"><img src="https://paraglidingatlas-maker.github.io/media-2026/srs-tapalpa/SRS_6_T4_54-800.webp" alt="SRS_6_T4_54, Task 4 over Tapalpa" width="282" height="200"><span>SRS_6_T4_54 &middot; landscape</span></button>
+  </div>
+
+  <h2>States</h2>
+  <div class="sp">
+    <div class="sp-cell"><span>Download, ready</span><div class="sp-row">
+      <button class="vf-btn vf-dl" type="button" data-state="ready" tabindex="-1"><span class="vf-dl-ico" aria-hidden="true"><svg viewBox="0 0 22 24"><path class="arw" d="M11 3v12M6.5 10.5 11 15l4.5-4.5"/><path d="M4 20.5h14"/></svg><svg viewBox="0 0 22 24"><path class="chk" d="M5.5 12.5 9.5 16.5 16.5 8"/></svg></span><span class="vf-dl-t"><b>Download</b><small>1600 &times; 2400 px &middot; 1.4 MB</small></span><i class="vf-dl-bar"></i></button>
+    </div></div>
+    <div class="sp-cell"><span>Download, getting it</span><div class="sp-row">
+      <button class="vf-btn vf-dl" type="button" data-state="busy" style="--p:.58" tabindex="-1"><span class="vf-dl-ico" aria-hidden="true"><svg viewBox="0 0 22 24"><path class="arw" d="M11 3v12M6.5 10.5 11 15l4.5-4.5"/><path d="M4 20.5h14"/></svg><svg viewBox="0 0 22 24"><path class="chk" d="M5.5 12.5 9.5 16.5 16.5 8"/></svg></span><span class="vf-dl-t"><b>Getting it</b><small>58% &middot; 1600 &times; 2400 px</small></span><i class="vf-dl-bar"></i></button>
+    </div></div>
+    <div class="sp-cell"><span>Download, saved</span><div class="sp-row">
+      <button class="vf-btn vf-dl" type="button" data-state="done" tabindex="-1"><span class="vf-dl-ico" aria-hidden="true"><svg viewBox="0 0 22 24"><path class="arw" d="M11 3v12M6.5 10.5 11 15l4.5-4.5"/><path d="M4 20.5h14"/></svg><svg viewBox="0 0 22 24"><path class="chk" d="M5.5 12.5 9.5 16.5 16.5 8"/></svg></span><span class="vf-dl-t"><b>Saved</b><small>SRS_6_T3_21.jpg</small></span><i class="vf-dl-bar"></i></button>
+    </div></div>
+    <div class="sp-cell"><span>Pressed: previous, next</span><div class="sp-row">
+      <button class="vf-btn vf-step vf-prev is-press" type="button" tabindex="-1" aria-label="Previous (pressed)"><svg viewBox="0 0 26 16"><path class="tail" d="M3 8h21"/><path d="M8 3 3 8l5 5"/></svg></button>
+      <span style="flex:1;height:1px;background:rgba(246,244,244,.14)"></span>
+      <button class="vf-btn vf-step vf-next is-press" type="button" tabindex="-1" aria-label="Next (pressed)"><svg viewBox="0 0 26 16"><path class="tail" d="M2 8h21"/><path d="m18 3 5 5-5 5"/></svg></button>
+    </div></div>
+    <div class="sp-cell"><span>Pressed: Download, Share</span><div class="sp-row">
+      <button class="vf-btn vf-dl is-press" type="button" data-state="ready" tabindex="-1"><span class="vf-dl-ico" aria-hidden="true"><svg viewBox="0 0 22 24"><path class="arw" d="M11 3v12M6.5 10.5 11 15l4.5-4.5"/><path d="M4 20.5h14"/></svg><svg viewBox="0 0 22 24"><path class="chk" d="M5.5 12.5 9.5 16.5 16.5 8"/></svg></span><span class="vf-dl-t"><b>Download</b><small>1600 &times; 2400 px</small></span><i class="vf-dl-bar"></i></button>
+      <button class="vf-btn vf-share is-press" type="button" tabindex="-1"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5v10M6.2 6.3 10 2.5l3.8 3.8M4 10.5V16a1.5 1.5 0 0 0 1.5 1.5h9A1.5 1.5 0 0 0 16 16v-5.5"/></svg><span>Share</span></button>
+    </div></div>
+    <div class="sp-cell"><span>Pressed: Patreon, close</span><div class="sp-row">
+      <a class="vf-btn vf-pat is-press" href="https://www.patreon.com/15133612/join" tabindex="-1"><small>Like what you see?</small><b>Join me on Patreon <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></b></a>
+      <button class="vf-btn vf-x is-press" type="button" tabindex="-1" aria-label="Close (pressed)"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="m3.5 3.5 11 11M14.5 3.5l-11 11"/></svg></button>
+    </div></div>
+  </div>
+</main>
+
+<div class="vf" id="vf" role="dialog" aria-modal="true" aria-label="The photo, enlarged" tabindex="-1">
+  <div class="vf-stage">
+    <img class="vf-img" src="https://paraglidingatlas-maker.github.io/media-2026/srs-tapalpa/SRS_6_T3_21-1600.webp" alt="SRS_6_T3_21, Task 3, SRS Tapalpa 2026" draggable="false">
+    <button class="vf-zone vf-zprev" type="button" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 34 34"><path d="M21 7 11 17l10 10"/></svg></button>
+    <button class="vf-zone vf-znext" type="button" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 34 34"><path d="m13 7 10 10-10 10"/></svg></button>
+  </div>
+  <div class="vf-panel">
+    <p class="vf-id" style="margin:0"><b class="vf-name">SRS_6_T3_21</b><span class="vf-where">Task 3 &middot; Tue 10 Nov</span></p>
+    <button class="vf-btn vf-x" type="button" aria-label="Close the photo"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="m3.5 3.5 11 11M14.5 3.5l-11 11"/></svg></button>
+
+    <div class="vf-line">
+      <button class="vf-btn vf-step vf-prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 26 16" aria-hidden="true"><path class="tail" d="M3 8h21"/><path d="M8 3 3 8l5 5"/></svg></button>
+      <div class="vf-rail" role="slider" tabindex="0" aria-label="Photo in the task" aria-valuemin="1" aria-valuemax="144" aria-valuenow="21" aria-valuetext="21 of 144, Task 3">
+        <canvas aria-hidden="true"></canvas>
+        <div class="vf-mark" aria-hidden="true" style="left:14%">
+          <span class="vf-count"><b>21</b><i>of</i><span class="vf-n">144</span></span>
+          <span class="vf-glider"><svg viewBox="0 0 22 14"><path d="M1.5 5.2C6 1.4 16 1.4 20.5 5.2" stroke-width="1.6"/><path d="M2.6 5 11 12.2 19.4 5" stroke-width=".6"/><circle cx="11" cy="12" r="1.5" fill="currentColor" stroke="none"/></svg></span>
+        </div>
+      </div>
+      <button class="vf-btn vf-step vf-next" type="button" aria-label="Next photo"><svg viewBox="0 0 26 16" aria-hidden="true"><path class="tail" d="M2 8h21"/><path d="m18 3 5 5-5 5"/></svg></button>
+    </div>
+
+    <div class="vf-acts">
+      <span class="vf-toast" role="status" aria-live="polite"></span>
+      <button class="vf-btn vf-dl" type="button" data-state="ready"><span class="vf-dl-ico" aria-hidden="true"><svg viewBox="0 0 22 24"><path class="arw" d="M11 3v12M6.5 10.5 11 15l4.5-4.5"/><path d="M4 20.5h14"/></svg><svg viewBox="0 0 22 24"><path class="chk" d="M5.5 12.5 9.5 16.5 16.5 8"/></svg></span><span class="vf-dl-t"><b>Download</b><small>1600 &times; 2400 px</small></span><i class="vf-dl-bar"></i></button>
+      <i class="vf-sep" aria-hidden="true"></i>
+      <button class="vf-btn vf-share" type="button"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5v10M6.2 6.3 10 2.5l3.8 3.8M4 10.5V16a1.5 1.5 0 0 0 1.5 1.5h9A1.5 1.5 0 0 0 16 16v-5.5"/></svg><span>Share</span></button>
+      <i class="vf-sep" aria-hidden="true"></i>
+      <a class="vf-btn vf-pat" href="https://www.patreon.com/15133612/join" target="_blank" rel="noopener"><small>Like what you see?</small><b>Join me on Patreon <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></b></a>
+    </div>
+
+    <p class="vf-terms">Free web copy, <span class="px">1600 &times; 2400 px</span>, under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="license noopener">CC BY-NC 4.0</a>: share it with the credit &ldquo;Photo: Aninder Singh, Paragliding Atlas&rdquo;, not for commercial use.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var CDN = "https://paraglidingatlas-maker.github.io/media-2026/srs-tapalpa/";
+  var DIMS = {"T3":[[1600,2400],[2400,1600],[1600,2400],[1600,2400],[2400,1600],[1600,2400],[1600,2400],[2400,1600],[2400,1600],[2400,1600],[1600,2400],[1600,2400],[2400,1600],[1600,2400],[1600,2400],[1600,2400],[1600,2400],[2400,1520],[2400,1600],[1600,2400],[1600,2400],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1573],[1600,2400],[2400,1600],[1987,2400],[2400,1600],[2400,1629],[2400,1613],[2400,1600],[2400,1600],[2400,1613],[2400,2202],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1655],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[1600,2400],[1600,2400],[2400,1600],[1600,2400],[1600,2400],[1600,2400],[1600,2400],[2400,1511],[2400,1600],[2400,1798],[2400,1942],[2400,1603],[2400,1571],[2400,1600],[1600,2400],[2400,1600],[1600,2400],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[1600,2400],[1629,2400],[2400,1672],[1600,2400],[1902,2400],[2400,1600],[2400,1840],[1600,2400],[2400,1600],[1600,2400],[2400,2386],[2400,2045],[2400,1942],[1600,2400],[2400,2141],[1515,2400],[2400,1600],[2369,1579],[2400,1733],[2400,1798],[2400,1747],[1600,2400],[1600,2400],[1600,2400],[2400,1600],[2400,1600],[2400,1600],[1973,2400],[1600,2400],[2400,1600],[1600,2400],[2400,1600],[1600,2400],[2400,1600],[2400,1600],[2400,1600],[2400,1845],[1600,2400],[1600,2400],[2400,1600],[1600,2400],[2400,1600],[2400,1600],[1689,2400],[1600,2400],[2400,1600],[2400,1600],[2400,1600],[1600,2400],[1600,2400],[2400,1600],[1349,2400],[2400,1600],[1600,2400],[1600,2400],[2400,1601],[2400,1600],[2400,1393],[2400,1600],[1600,2400],[2400,1600],[2400,1600]],"T4":[[1600,2400],[1940,1479],[1749,2400],[2400,1600],[1600,2400],[1600,2400],[1600,2400],[2400,1600],[2400,1600],[1600,2400],[1600,2400],[1600,2400],[1519,2400],[1596,2400],[1553,2400],[1600,2400],[1594,2400],[2400,1512],[2400,1600],[2400,1600],[2400,1600],[1600,2400],[1600,2400],[2400,1659],[2400,1600],[1600,2400],[2400,1600],[2400,1600],[1600,2400],[1600,2400],[1600,2400],[2400,1600],[1600,2400],[2400,1723],[1600,2400],[1600,2400],[2400,1766],[2400,1430],[1600,2400],[1600,2400],[1600,2400],[1600,2400],[2400,1613],[1600,2400],[1600,2400],[2400,1600],[1600,2400],[2400,1600],[1600,2400],[1600,2400],[2400,1600],[1600,2400],[1600,2400],[2400,1702],[1600,2400],[1600,2400],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[1600,2400],[2400,1600],[1600,2400],[1600,2400],[2400,1728],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[1600,2400],[1600,2400],[1600,2400],[2400,1600],[1600,2400],[2400,1600],[1600,2400],[2400,1600],[2400,1600],[2400,1926],[2400,1600],[2400,1600],[2400,1560],[1600,2400],[2400,1600],[1600,2400],[1600,2400],[1600,2400],[1600,2400],[2400,1600],[2400,1600],[1600,2400],[1600,2400],[2400,1600],[1600,2400],[2400,1600],[1600,2400],[1600,2400],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[1600,2400],[2400,1600],[2400,1600],[1600,2400],[1600,2400],[1600,2400],[1600,2400],[1600,2400],[1600,2400],[1600,2400],[2400,1655],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[1600,2400],[1600,2400],[2400,1600],[2400,1600],[1600,2400],[1600,2400],[2400,1600],[1600,2400],[1600,2400],[1600,2400],[1600,2400],[1600,2400],[1600,2400],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[1600,2400],[1600,2400],[1600,2400],[2400,1600],[2400,1600],[2400,1600],[1600,2400],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1569],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[2400,1600],[1600,2400],[2400,1600],[2400,1600],[2400,1835],[1346,2018],[1600,2400],[1600,2400],[1600,2400],[1600,2400],[1600,2400],[1600,2400],[1600,2400],[1600,2400]]};   // the 2400 copy's width and height for every photo of Tasks 3 and 4 (from media-srs-tapalpa-2026.html)
+  var TASKS = { T3: { label: "Task 3", date: "Tue 10 Nov" }, T4: { label: "Task 4", date: "Wed 11 Nov" } };
+  var d = document, w = window;
+  var reduced = function () { return w.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches; };
+  var $ = function (s, r) { return (r || d).querySelector(s); };
+
+  var vf = $("#vf"), stage = $(".vf-stage", vf), img = $(".vf-img", vf), rail = $(".vf-rail", vf), cv = $("canvas", rail), mark = $(".vf-mark", vf);
+  var countB = $(".vf-count b", vf), countN = $(".vf-n", vf), countEl = $(".vf-count", vf);
+  var nameEl = $(".vf-name", vf), whereEl = $(".vf-where", vf), pxEl = $(".vf-terms .px", vf);
+  var bPrev = $(".vf-prev", vf), bNext = $(".vf-next", vf), zPrev = $(".vf-zprev", vf), zNext = $(".vf-znext", vf);
+  var dl = $(".vf-dl", vf), dlB = $(".vf-dl-t b", dl), dlS = $(".vf-dl-t small", dl), share = $(".vf-share", vf), toast = $(".vf-toast", vf);
+
+  var cur = { t: "T3", i: 20 }, pos = 20, grow = 1, raf = 0, opener = null;
+  var blobs = {}, pending = {}, warmT = 0, lowT = 0, toastT = 0;
+  var stem = function (t, i) { return "SRS_6_" + t + "_" + (i + 1); };
+  var url = function (t, i, s) { return CDN + stem(t, i) + "-" + s + ".webp"; };
+  var n = function () { return DIMS[cur.t].length; };
+  var mb = function (b) { return b >= 1048576 ? (b / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(b / 1024)) + " KB"; };
+  var res = function (t, i) { var x = DIMS[t][i]; return x[0] + " × " + x[1] + " px"; };
+
+  /* ---- the line: one tick per photo in the task, a fisheye round the glider */
+  var ctx = cv.getContext && cv.getContext("2d"), W = 0, H = 36, DPR = 1, PAD = 6;
+  function size() {
+    DPR = Math.min(3, w.devicePixelRatio || 1); W = rail.clientWidth;
+    cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
+  }
+  function xAt(i) { return PAD + (n() > 1 ? i / (n() - 1) : 0) * (W - PAD * 2); }
+  function draw() {
+    if (!ctx || !W) return;
+    var N = n(), pitch = (W - PAD * 2) / Math.max(1, N - 1), sig = 11 / pitch, c = pos, ci = Math.round(c), mid = H / 2;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.clearRect(0, 0, W, H);
+    // the base line: flown in orange up to the glider, the rest a hairline
+    var xc = PAD + (N > 1 ? c / (N - 1) : 0) * (W - PAD * 2);
+    ctx.fillStyle = "rgba(246,244,244,.13)"; ctx.fillRect(PAD, mid - .5, W - PAD * 2, 1);
+    var gr = ctx.createLinearGradient(PAD, 0, xc, 0); gr.addColorStop(0, "rgba(255,117,23,.15)"); gr.addColorStop(1, "rgba(255,117,23,.9)");
+    ctx.fillStyle = gr; ctx.fillRect(PAD, mid - .5, Math.max(0, xc - PAD), 1);
+    var lw = Math.max(1 / DPR, Math.min(1.2, pitch * .55));
+    for (var i = 0; i < N; i++) {
+      var dd = i - c, g = Math.exp(-(dd * dd) / (2 * sig * sig));
+      var reach = grow >= 1 ? 1 : Math.max(0, Math.min(1, grow * 1.8 - Math.abs(dd) / N * 1.4));
+      var h = (2.2 + 9.5 * g) * reach, x = PAD + i * pitch;
+      if (i === ci) { h = 14 * reach; ctx.fillStyle = "#ff7517"; }
+      else if (i < c) ctx.fillStyle = "rgba(255,117,23," + (.32 + .6 * g).toFixed(3) + ")";
+      else ctx.fillStyle = "rgba(246,244,244," + (.2 + .65 * g).toFixed(3) + ")";
+      if (h > .2) ctx.fillRect(x - lw / 2, mid - h, i === ci ? Math.max(lw, 1.6) : lw, h * 2);
+    }
+    // the glider and the count ride the line; the count stays inside it
+    mark.style.left = "0"; mark.style.setProperty("--mx", xc.toFixed(1) + "px");
+    var half = countEl.offsetWidth / 2, cx = Math.max(half - xc, Math.min(0, W - half - xc));
+    countEl.style.setProperty("--cx", cx.toFixed(1) + "px");
+  }
+  function glide(to) {   // the glider moves along the line to its new place
+    cancelAnimationFrame(raf);
+    var from = pos, t0 = performance.now(), dur = 460;
+    if (reduced() || from === to) { pos = to; draw(); return; }
+    (function step(now) {
+      var k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      pos = from + (to - from) * e; draw();
+      if (k < 1) raf = requestAnimationFrame(step);
+    })(t0);
+  }
+  function arrive() {    // on opening, the ticks grow out from the glider
+    if (reduced()) { grow = 1; draw(); return; }
+    var t0 = performance.now(); grow = 0;
+    (function step(now) { grow = Math.min(1, (now - t0) / 750); draw(); if (grow < 1) requestAnimationFrame(step); })(t0);
+  }
+
+  /* ---- the photo */
+  function readout() {
+    var N = n(), s = stem(cur.t, cur.i), T = TASKS[cur.t];
+    nameEl.textContent = s; whereEl.textContent = T.label + " · " + T.date;
+    countB.textContent = cur.i + 1; countN.textContent = N;
+    rail.setAttribute("aria-valuemax", N); rail.setAttribute("aria-valuenow", cur.i + 1);
+    rail.setAttribute("aria-valuetext", (cur.i + 1) + " of " + N + ", " + T.label);
+    pxEl.textContent = res(cur.t, cur.i);
+    img.alt = s + ", " + T.label + ", SRS Tapalpa 2026";
+    bPrev.disabled = zPrev.disabled = !neighbour(-1); bNext.disabled = zNext.disabled = !neighbour(1);
+    dlState(blobs[s] && blobs[s].saved ? "done" : "ready");
+  }
+  function roll(dir) {
+    if (reduced() || !countB.animate) return;
+    countB.animate([{ transform: "translateY(" + (dir * 7) + "px)", opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 260, easing: "cubic-bezier(.2,.8,.2,1)" });
+  }
+  function load(t, i, dir, low) {
+    var u = url(t, i, low ? 800 : 1600), im = new Image();
+    im.decoding = "async"; im.src = u;
+    var put = function () {
+      if (cur.t !== t || cur.i !== i) return;
+      img.src = u; img.classList.toggle("is-low", !!low);
+      if (!low && dir && !reduced() && img.animate)
+        img.animate([{ opacity: 0, transform: "translateX(" + (dir * 22) + "px) scale(.985)" }, { opacity: 1, transform: "none" }], { duration: 300, easing: "cubic-bezier(.2,.8,.2,1)" });
+    };
+    (im.decode ? im.decode() : Promise.resolve()).then(put, put);
+  }
+  function set(t, i, dir, low) {
+    var taskChange = t !== cur.t;
+    cur = { t: t, i: i };
+    if (taskChange) { pos = i; grow = 1; if (!reduced()) { grow = 0; arrive(); } }
+    readout(); roll(dir || 0);
+    if (!taskChange) glide(i); else draw();
+    load(t, i, dir, low);
+    warm();
+  }
+  // the sample's two photos are each other's neighbour (the brief); anywhere else the line steps through the task
+  function neighbour(k) {
+    if (cur.t === "T3" && cur.i === 20 && k > 0) return { t: "T4", i: 53 };
+    if (cur.t === "T4" && cur.i === 53 && k < 0) return { t: "T3", i: 20 };
+    var j = cur.i + k; return j >= 0 && j < n() ? { t: cur.t, i: j } : null;
+  }
+  function go(k) { var nb = neighbour(k); if (nb) set(nb.t, nb.i, k); }
+
+  /* ---- press feedback that a quick tap still shows */
+  d.addEventListener("pointerdown", function (e) {
+    var b = e.target.closest && e.target.closest(".vf .vf-btn"); if (!b || b.disabled) return;
+    b.classList.add("is-press");
+    var up = function () { setTimeout(function () { b.classList.remove("is-press"); }, 140); w.removeEventListener("pointerup", up); w.removeEventListener("pointercancel", up); };
+    w.addEventListener("pointerup", up); w.addEventListener("pointercancel", up);
+  });
+  bPrev.addEventListener("click", function () { go(-1); });
+  bNext.addEventListener("click", function () { go(1); });
+  zPrev.addEventListener("click", function () { go(-1); });
+  zNext.addEventListener("click", function () { go(1); });
+
+  /* ---- scrub the line: the photo follows the thumb (a light copy), the full one on release */
+  var scrub = null;
+  function idxAt(x) { var r = rail.getBoundingClientRect(); return Math.max(0, Math.min(n() - 1, Math.round((x - r.left - PAD) / (r.width - PAD * 2) * (n() - 1)))); }
+  rail.addEventListener("pointerdown", function (e) {
+    if (e.button > 0) return;
+    scrub = { start: cur.i, last: cur.i }; vf.classList.add("is-scrub");
+    try { rail.setPointerCapture(e.pointerId); } catch (x) {}
+    move(e);
+  });
+  function move(e) {
+    if (!scrub) return;
+    var r = rail.getBoundingClientRect(), f = Math.max(0, Math.min(1, (e.clientX - r.left - PAD) / (r.width - PAD * 2)));
+    pos = f * (n() - 1); cancelAnimationFrame(raf); draw();
+    var i = Math.round(pos);
+    if (i !== scrub.last) {
+      scrub.last = i; cur = { t: cur.t, i: i }; readout();
+      clearTimeout(lowT); lowT = setTimeout(function () { load(cur.t, i, 0, true); }, 90);
+    }
+  }
+  rail.addEventListener("pointermove", move);
+  function endScrub() {
+    if (!scrub) return;
+    var i = scrub.last, moved = i !== scrub.start; scrub = null; vf.classList.remove("is-scrub");
+    clearTimeout(lowT); glide(i);
+    if (moved) { load(cur.t, i, 0, false); warm(); }
+  }
+  rail.addEventListener("pointerup", endScrub); rail.addEventListener("pointercancel", endScrub);
+  rail.addEventListener("keydown", function (e) {
+    var k = e.key;
+    if (k === "Home" || k === "End") { e.preventDefault(); set(cur.t, k === "Home" ? 0 : n() - 1, k === "Home" ? -1 : 1); }
+  });
+
+  /* ---- the photo: swipe sideways to step, down to close, tap to hide the controls */
+  var sw = null;
+  stage.addEventListener("pointerdown", function (e) {
+    if (e.target.closest(".vf-zone")) return;
+    sw = { x: e.clientX, y: e.clientY, id: e.pointerId, ax: null };
+    try { stage.setPointerCapture(e.pointerId); } catch (x) {}
+  });
+  stage.addEventListener("pointermove", function (e) {
+    if (!sw || e.pointerId !== sw.id) return;
+    var dx = e.clientX - sw.x, dy = e.clientY - sw.y;
+    if (!sw.ax && Math.hypot(dx, dy) > 8) sw.ax = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+    if (sw.ax === "x") img.style.transform = "translateX(" + (dx * .6) + "px)";
+    else if (sw.ax === "y" && dy > 0) { img.style.transform = "translateY(" + dy + "px) scale(" + Math.max(.85, 1 - dy / 1200) + ")"; vf.style.backgroundColor = "rgba(14,15,18," + Math.max(.3, 1 - dy / 400) + ")"; }
+  });
+  function swEnd(e) {
+    if (!sw) return;
+    var dx = e.clientX - sw.x, dy = e.clientY - sw.y, ax = sw.ax; sw = null;
+    img.style.transform = ""; vf.style.backgroundColor = "";
+    if (!ax) { vf.classList.toggle("is-bare"); return; }
+    if (ax === "x" && Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+    else if (ax === "y" && dy > 110) close();
+  }
+  stage.addEventListener("pointerup", swEnd); stage.addEventListener("pointercancel", function () { sw = null; img.style.transform = ""; vf.style.backgroundColor = ""; });
+
+  d.addEventListener("keydown", function (e) {
+    if (vf.classList.contains("is-closed")) return;
+    if (e.key === "ArrowRight") { e.preventDefault(); go(1); }
+    else if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
+    else if (e.key === "Escape") { e.preventDefault(); close(); }
+  });
+
+  /* ---- Download: ready (the resolution, the size once known), getting it (real progress), saved */
+  function dlState(s, p) {
+    var st = stem(cur.t, cur.i), b = blobs[st];
+    dl.setAttribute("data-state", s);
+    if (s === "ready") { dlB.textContent = "Download"; dlS.textContent = res(cur.t, cur.i) + (b ? " · " + mb(b.size) : ""); dl.removeAttribute("aria-busy"); dl.style.setProperty("--p", 0); }
+    if (s === "busy") { dlB.textContent = "Getting it"; dlS.textContent = (p != null ? Math.round(p * 100) + "% · " : "") + res(cur.t, cur.i); dl.setAttribute("aria-busy", "true"); dl.style.setProperty("--p", p || .04); }
+    if (s === "done") { dlB.textContent = "Saved"; dlS.textContent = st + (b && b.type !== "image/jpeg" ? ".webp" : ".jpg"); dl.removeAttribute("aria-busy"); }
+    dl.setAttribute("aria-label", dlB.textContent + ", " + dlS.textContent);
+  }
+  function toJpeg(b) {
+    return new Promise(function (ok) {
+      var u = URL.createObjectURL(b), im = new Image();
+      im.onload = function () {
+        try { var c = d.createElement("canvas"); c.width = im.naturalWidth; c.height = im.naturalHeight; c.getContext("2d").drawImage(im, 0, 0);
+          c.toBlob(function (j) { URL.revokeObjectURL(u); ok(j || b); }, "image/jpeg", .92); } catch (e) { URL.revokeObjectURL(u); ok(b); }
+      };
+      im.onerror = function () { URL.revokeObjectURL(u); ok(b); };
+      im.src = u;
+    });
+  }
+  function fetchCopy(t, i, onp) {
+    var st = stem(t, i);
+    if (blobs[st]) return Promise.resolve(blobs[st]);
+    if (!pending[st]) pending[st] = fetch(url(t, i, 2400), { mode: "cors" }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      var total = +r.headers.get("content-length") || 0;
+      if (!r.body || !total || !w.ReadableStream) return r.blob();
+      var rd = r.body.getReader(), got = 0, parts = [];
+      return (function pump() { return rd.read().then(function (x) {
+        if (x.done) return new Blob(parts, { type: "image/webp" });
+        parts.push(x.value); got += x.value.length; if (pending[st] && pending[st].onp) pending[st].onp(got / total);
+        return pump(); }); })();
+    }).then(toJpeg).then(function (b) { blobs[st] = b; delete pending[st]; if (cur.t === t && cur.i === i && dl.getAttribute("data-state") === "ready") dlState("ready"); return b; },
+                         function (e) { delete pending[st]; throw e; });
+    if (onp) pending[st].onp = onp;
+    return pending[st];
+  }
+  function warm() {   // a short look at a photo fetches its copy, so the size shows and Download is instant
+    clearTimeout(warmT);
+    if (!w.fetch || (navigator.connection && navigator.connection.saveData)) return;
+    var t = cur.t, i = cur.i;
+    warmT = setTimeout(function () { if (cur.t === t && cur.i === i && !vf.classList.contains("is-closed")) fetchCopy(t, i).catch(function () {}); }, 900);
+  }
+  function deliver(b, name) {
+    var f = w.File ? new File([b], name, { type: b.type }) : null;
+    var touch = w.matchMedia && matchMedia("(pointer: coarse)").matches;
+    if (touch && f && navigator.canShare && navigator.canShare({ files: [f] })) return navigator.share({ files: [f] }).catch(function () {});
+    var u = URL.createObjectURL(b), a = d.createElement("a"); a.href = u; a.download = name; a.style.display = "none"; d.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(u); }, 4000);
+  }
+  dl.addEventListener("click", function () {
+    var t = cur.t, i = cur.i, st = stem(t, i);
+    if (dl.getAttribute("data-state") === "busy") return;
+    var mine = function () { return cur.t === t && cur.i === i; };
+    var shown = 0, t0 = performance.now();
+    dlState("busy", blobs[st] ? 1 : 0);
+    var p = fetchCopy(t, i, function (f) { if (mine()) dlState("busy", f * .92); });
+    if (pending[st]) pending[st].onp = function (f) { if (mine()) dlState("busy", f * .92); };
+    p.then(function (b) {
+      var wait = blobs[st] && performance.now() - t0 < 360 ? 360 : 0;   // a copy already here still shows its line fill, briefly
+      setTimeout(function () {
+        if (mine()) dl.style.setProperty("--p", 1);
+        deliver(b, st + (b.type === "image/jpeg" ? ".jpg" : ".webp"));
+        b.saved = true; if (mine()) dlState("done");
+      }, wait);
+    }, function () { if (mine()) { dlState("ready"); say("Could not get the copy. Try again."); } });
+  });
+
+  /* ---- Share: the phone's share sheet, else the link copied */
+  function say(t) { toast.textContent = t; toast.classList.add("is-on"); clearTimeout(toastT); toastT = setTimeout(function () { toast.classList.remove("is-on"); }, 2200); }
+  share.addEventListener("click", function () {
+    var st = stem(cur.t, cur.i), link = "https://paraglidingatlas.com/media-srs-tapalpa-2026.html#" + st;
+    if (navigator.share) { navigator.share({ title: st + ", SRS Tapalpa 2026", url: link }).catch(function () {}); return; }
+    var done = function () { say("Link copied"); };
+    if (navigator.clipboard) navigator.clipboard.writeText(link).then(done, function () { say(link); }); else say(link);
+  });
+
+  /* ---- open and close */
+  function close() {
+    vf.classList.add("is-closed"); vf.classList.remove("is-bare"); d.body.classList.remove("is-viewing");
+    (opener || $(".pg-thumb")).focus({ preventScroll: true });
+  }
+  function open(t, i, from) {
+    opener = from || null; vf.classList.remove("is-closed", "is-bare"); d.body.classList.add("is-viewing");
+    cur = { t: t, i: i }; pos = i; readout(); load(t, i, 0, false); size(); arrive(); warm();
+    vf.focus({ preventScroll: true });
+  }
+  $(".vf-x", vf).addEventListener("click", close);
+  d.querySelectorAll("[data-open]").forEach(function (b) {
+    b.addEventListener("click", function () { var p = b.getAttribute("data-open").split(":"); open(p[0], +p[1], b); });
+  });
+  w.addEventListener("resize", function () { size(); draw(); });
+
+  var q = new URLSearchParams(location.search);
+  if (q.has("closed")) { vf.classList.add("is-closed"); d.body.classList.remove("is-viewing"); }
+  else { var p0 = (q.get("p") || "T3:20").split(":"); cur = { t: p0[0], i: +p0[1] }; pos = cur.i; readout(); size(); if (p0[0] !== "T3" || +p0[1] !== 20) load(cur.t, cur.i, 0, false); arrive(); warm(); }
+  if (d.fonts && d.fonts.ready) d.fonts.ready.then(draw);
+})();
+</script>
+</body>
+</html>

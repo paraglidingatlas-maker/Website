@@ -1,0 +1,564 @@
+<!doctype html>
+<!--
+  Designer E (Cloudbase), "The Heading Tape": the viewer's controls are one flight instrument at the foot of the photo, a heading tape where every photo of the task is a tick that slides under an orange needle, with Download, Share and Close as bare lit glyphs beside it (no boxes, no capsule).
+  One hand: everything sits in the bottom 230 px; the whole tape is a target (drag it, or tap either side of the needle), the photo swipes the tape along with it, Download is the widest target under the thumb, Close is at the thumb's right edge, swipe down also closes.
+  Progress without words: ticks you have passed are lit, the run so far is an orange line, the readout says "21 of 144"; crossing into the next task slides a new tape in.
+  Borrows: the heading tape of a glider's flight instrument and a jet's HUD, the scrub strip of a phone's photo app, a camera's jog dial; the photo's own colour glowing faintly behind (the films theatre's ambient, .gffv-amb).
+  Sample: two real Tapalpa photos (Task 3, 21 of 144; Task 4, 54 of 168); sizes are measured from the real 2400 px copy as it is fetched, made into a JPEG as the live viewer does.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Viewer E, The Heading Tape</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../../../../fonts.css">
+<style>
+:root{--ground:#0e0f12;--bg:#141519;--orange:#ff7517;--white:#f6f4f4;--gray-light:#b4b4b4;--gray:#8c8c8c;
+  --font-display:"Poppins","Poppins Fallback",Arial,Helvetica,sans-serif;--font-body:"DM Sans","DM Sans Fallback",Arial,Helvetica,sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);--spring:cubic-bezier(.2,.9,.25,1.4)}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--ground);color:var(--white);font-family:var(--font-body);-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+a{-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:1px solid var(--orange);outline-offset:3px}
+
+/* ------------------------------------------------------------ the viewer, open */
+.vw{position:relative;height:100vh;height:100svh;min-height:600px;display:flex;flex-direction:column;overflow:hidden;background:var(--ground);isolation:isolate;transition:opacity .3s var(--ease)}
+.vw-amb{position:absolute;inset:-14%;z-index:-2;opacity:.3;pointer-events:none;transition:opacity .6s var(--ease)}
+.vw-amb img{width:100%;height:100%;object-fit:cover;filter:blur(70px) saturate(1.3);display:block}
+.vw::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(14,15,18,.55) 0%,rgba(14,15,18,.25) 35%,rgba(14,15,18,.7) 70%,var(--ground) 100%)}
+.vw-stage{flex:1;min-height:0;position:relative;touch-action:none;margin-top:env(safe-area-inset-top)}
+.vw-img{position:absolute;top:12px;left:0;width:100%;height:calc(100% - 16px);object-fit:contain;display:block;user-select:none;-webkit-user-select:none;-webkit-user-drag:none;will-change:transform}
+.vw.is-zoomed .vw-img{cursor:zoom-out}
+
+/* the dock: four quiet lines in the thumb's third */
+.vw-dock{flex:none;position:relative;padding:0 14px calc(4px + env(safe-area-inset-bottom));transition:opacity .3s var(--ease),transform .45s var(--ease)}
+.vw.is-bare .vw-dock{opacity:0;transform:translateY(14px);pointer-events:none}
+
+/* 1. the photo's name, its task and day; the licence one tap away */
+.vw-meta{display:flex;align-items:center;gap:10px;min-height:40px;padding:0 4px}
+.vw-id{flex:1;min-width:0;display:flex;align-items:baseline;gap:10px;margin:0;white-space:nowrap;overflow:hidden}
+.vw-name{font-family:var(--font-display);font-weight:600;font-size:14px;letter-spacing:.02em}
+.vw-where{font-size:12.5px;color:var(--gray-light);overflow:hidden;text-overflow:ellipsis}
+.vw-lic-t{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 2px 0 10px;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-light)}
+.vw-lic-t i{width:5px;height:5px;border-radius:50%;background:var(--orange);opacity:.8}
+.vw-lic-t[aria-expanded=true]{color:var(--white)}
+.vw-lic{margin:0 4px 6px;font-size:12px;line-height:1.5;color:var(--gray-light)}
+.vw-lic a{color:var(--white);text-decoration:underline;text-decoration-color:rgba(255,117,23,.7);text-underline-offset:3px}
+.js .vw-lic[hidden]{display:none}
+
+/* 2. the heading tape: every photo of the task a tick, the needle is where you are */
+.ht{display:grid;grid-template-columns:52px minmax(0,1fr) 52px;height:74px;user-select:none;-webkit-user-select:none}
+.ht-nav{position:relative;display:grid;place-items:center;color:var(--white);transition:color .2s var(--ease)}
+.ht-nav svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .4s var(--spring)}
+.ht-nav::before{content:"";position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(255,117,23,.32),rgba(255,117,23,.08) 60%,rgba(255,117,23,0));opacity:0;transform:scale(.5);transition:opacity .3s var(--ease),transform .4s var(--ease)}
+.ht-nav:active,.ht-nav.is-press{color:var(--orange)}
+.ht-nav:active::before,.ht-nav.is-press::before{opacity:1;transform:none;transition-duration:.08s}
+.ht-prev:active svg,.ht-prev.is-press svg{transform:translateX(-5px)}
+.ht-next:active svg,.ht-next.is-press svg{transform:translateX(5px)}
+.ht-win{position:relative;overflow:hidden;cursor:grab;touch-action:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%,#000 78%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 22%,#000 78%,transparent 100%)}
+.ht-win.is-drag{cursor:grabbing}
+.ht-read{position:absolute;left:0;right:0;top:3px;display:flex;justify-content:center;align-items:baseline;gap:.4em;font-variant-numeric:tabular-nums;pointer-events:none;white-space:nowrap}
+.ht-read b{font-family:var(--font-display);font-weight:600;font-size:20px;line-height:1;letter-spacing:-.01em}
+.ht-read span{font-size:12px;color:var(--gray-light)}
+.ht-slide{position:absolute;left:50%;top:36px;height:36px}
+.ht-track{transform:translateX(var(--x,0px));transition:transform .6s var(--ease)}
+.ht-win.is-drag .ht-track,.ht-track.is-now{transition:none}
+.ht-ticks{display:block;overflow:visible}
+.ht-ticks line{stroke:rgba(246,244,244,.22);stroke-width:1;transition:stroke .45s var(--ease)}
+.ht-ticks line.M{stroke:rgba(246,244,244,.38)}
+.ht-ticks line.on{stroke:rgba(246,244,244,.72)}
+.ht-ticks line.cur{stroke:transparent}
+.ht-ticks .ht-base{stroke:rgba(246,244,244,.1)}
+.ht-ticks .ht-run{stroke:var(--orange);stroke-opacity:.75;transition:none}
+.ht-ticks text{fill:var(--gray);font-family:var(--font-body);font-size:9px;font-weight:500;text-anchor:middle;letter-spacing:.04em}
+.ht-needle{position:absolute;left:50%;top:28px;width:2px;height:28px;margin-left:-1px;border-radius:1px;background:var(--orange);pointer-events:none;
+  box-shadow:0 0 2px var(--orange),0 0 12px rgba(255,117,23,.75)}
+.ht-needle::before{content:"";position:absolute;left:-3px;top:-5px;border:4px solid transparent;border-top:5px solid var(--orange);border-bottom:0}
+.ht-win.is-tap-l .ht-track,.ht-win.is-tap-r .ht-track{transition-duration:.18s}
+
+/* 3. the actions: Download (wide, under the thumb), Share, Close; bare glyphs on the dark, hairlines between */
+.vw-acts{display:flex;align-items:center;height:62px}
+.dl{flex:1;min-width:0;height:58px;position:relative;display:flex;align-items:center;gap:10px;padding:0 10px 0 4px;color:var(--white);text-decoration:none}
+.dl-g{flex:none;position:relative;width:38px;height:38px;display:grid;place-items:center;color:var(--orange)}
+.dl-g svg{position:absolute;width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:opacity .25s var(--ease),transform .4s var(--spring)}
+.dl-g::before{content:"";position:absolute;inset:-6px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,117,23,.3),rgba(255,117,23,0));opacity:0;transform:scale(.5);transition:opacity .3s var(--ease),transform .4s var(--ease)}
+.dl-ok{opacity:0;transform:scale(.6)}
+.dl-tx{min-width:0;display:flex;flex-direction:column;gap:2px}
+.dl-t{font-family:var(--font-display);font-weight:600;font-size:16px;line-height:1.15;letter-spacing:.005em}
+.dl-m{font-size:12px;line-height:1.2;color:var(--gray-light);font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dl-bar{position:absolute;left:4px;right:12px;bottom:5px;height:2px;border-radius:2px;background:rgba(246,244,244,.09);overflow:hidden}
+.dl-bar i{position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,117,23,.55),var(--orange));transform-origin:0 50%;transform:scaleX(var(--p,0));transition:transform .25s linear}
+.dl-bar::before{content:"";position:absolute;left:0;top:0;bottom:0;width:22px;background:var(--orange);transition:opacity .3s var(--ease)}
+/* pressed */
+.dl:active .dl-g::before,.dl.is-press .dl-g::before{opacity:1;transform:none;transition-duration:.08s}
+.dl:active .dl-get,.dl.is-press .dl-get{transform:translateY(3px)}
+.dl:active .dl-t,.dl.is-press .dl-t{color:var(--orange)}
+/* getting it: the run fills from the real bytes */
+.dl[data-state=getting] .dl-bar::before{opacity:0}
+.dl[data-state=getting] .dl-get{animation:dl-drop 1.1s var(--ease) infinite}
+.dl[data-state=getting] .dl-t{color:var(--white)}
+@keyframes dl-drop{0%{transform:translateY(-4px);opacity:0}35%{opacity:1}70%{transform:translateY(2px);opacity:1}100%{transform:translateY(4px);opacity:0}}
+/* saved */
+.dl[data-state=saved] .dl-get{opacity:0;transform:translateY(6px)}
+.dl[data-state=saved] .dl-ok{opacity:1;transform:none}
+.dl[data-state=saved] .dl-bar::before{opacity:0}
+.dl[data-state=saved] .dl-bar i{transform:scaleX(1)}
+
+.ic{flex:none;position:relative;width:66px;height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:var(--white);transition:color .2s var(--ease)}
+.ic::before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:1px;background:linear-gradient(180deg,rgba(246,244,244,0),rgba(246,244,244,.18),rgba(246,244,244,0))}
+.ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .4s var(--spring)}
+.ic span{font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light);transition:color .2s var(--ease)}
+.ic::after{content:"";position:absolute;left:50%;top:50%;width:60px;height:60px;margin:-34px 0 0 -30px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(255,117,23,.28),rgba(255,117,23,0));opacity:0;transform:scale(.5);transition:opacity .3s var(--ease),transform .4s var(--ease)}
+.ic:active,.ic.is-press{color:var(--orange)}
+.ic:active span,.ic.is-press span{color:var(--orange)}
+.ic:active::after,.ic.is-press::after{opacity:1;transform:none;transition-duration:.08s}
+.vw-share:active svg,.vw-share.is-press svg{transform:translateY(-3px)}
+.vw-close:active svg,.vw-close.is-press svg{transform:rotate(90deg) scale(.9)}
+.ic.is-said span{color:var(--orange)}
+
+/* 4. the owner's support line */
+.vw-pat{display:flex;justify-content:center;align-items:center;gap:.45em;min-height:42px;font-size:13px;color:var(--white);text-decoration:none;white-space:nowrap}
+.vw-pat span{color:var(--gray-light)}
+.vw-pat b{font-weight:600;text-decoration:underline;text-decoration-color:rgba(255,117,23,.75);text-underline-offset:4px;text-decoration-thickness:1px;transition:color .2s var(--ease)}
+.vw-pat i{font-style:normal;color:var(--orange);transition:transform .35s var(--spring)}
+.vw-pat:active b,.vw-pat:hover b{color:var(--orange)}
+.vw-pat:active i,.vw-pat:hover i{transform:translate(2px,-2px)}
+
+/* closed (the sample only: a way back in) */
+.vw.is-closed{opacity:0;pointer-events:none}
+.vw-again{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);z-index:1;display:none;min-height:48px;padding:0 6px;font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--white);text-decoration:underline;text-decoration-color:var(--orange);text-underline-offset:6px}
+.vw-wrap{position:relative}
+.vw-wrap.is-closed .vw-again{display:block}
+
+/* hover, where there is a mouse */
+@media (hover:hover){
+  .ht-nav:hover{color:var(--orange)}
+  .ht-prev:hover svg{transform:translateX(-3px)}.ht-next:hover svg{transform:translateX(3px)}
+  .dl:hover .dl-t{color:var(--orange)}
+  .dl:hover .dl-get{transform:translateY(2px)}
+  .ic:hover,.ic:hover span{color:var(--orange)}
+}
+
+/* ------------------------------------------------------------ desktop: the same instrument, laid along the foot */
+@media (min-width:821px){
+  .vw-img{top:28px;left:96px;width:calc(100% - 192px);height:calc(100% - 36px)}
+  .vw-dock{display:grid;grid-template-columns:minmax(0,1fr) minmax(440px,540px) minmax(0,1fr);
+    grid-template-areas:"meta tape acts" "lic tape pat";align-items:center;column-gap:40px;padding:6px 32px 18px;position:static}
+  .vw-meta{grid-area:meta;min-height:0;padding:0;align-self:end}
+  .vw-id{flex-direction:column;gap:2px}
+  .vw-name{font-size:15px}
+  .vw-lic-t{display:none}
+  .js .vw-lic[hidden],.vw-lic{grid-area:lic;display:block;margin:0;align-self:start;max-width:46ch;font-size:11px}
+  .ht{grid-area:tape;height:80px;grid-template-columns:56px minmax(0,1fr) 56px}
+  .ht-read b{font-size:22px}
+  .ht-slide{top:40px}.ht-needle{top:31px;height:30px}
+  .vw-acts{grid-area:acts;justify-self:end;height:auto;gap:4px}
+  .dl{flex:none;width:auto;padding-right:18px}
+  .dl-m{overflow:visible}
+  .vw .vw-close{position:absolute;top:18px;right:22px;width:auto;flex-direction:row;gap:10px;height:48px;padding:0 6px 0 12px}
+  .vw .vw-close::before{display:none}
+  .vw .vw-close::after{left:auto;right:-6px;margin:-30px 0 0 0}
+  .vw-pat{grid-area:pat;justify-self:end;min-height:32px;font-size:12.5px;align-self:start}
+}
+
+/* ------------------------------------------------------------ reduced motion: the finished states, no moves */
+@media (prefers-reduced-motion:reduce){
+  .vw,.vw-dock,.ht-track,.ht-nav svg,.ht-nav::before,.dl-g svg,.dl-g::before,.dl-bar i,.ic svg,.ic::after,.vw-pat i,.ht-ticks line,.vw-amb{transition:none!important}
+  .dl[data-state=getting] .dl-get{animation:none}
+  .ht-prev:active svg,.ht-next:active svg,.vw-share:active svg,.vw-close:active svg,.dl:active .dl-get{transform:none}
+}
+
+/* ------------------------------------------------------------ below the viewer: the states, for review */
+.board{max-width:1180px;margin:0 auto;padding:72px 16px 96px}
+.board-k{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin:0 0 8px}
+.board h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.1;letter-spacing:-.015em;margin:0 0 10px}
+.board > p{max-width:62ch;color:var(--gray-light);font-size:15px;line-height:1.6;margin:0 0 36px}
+.board h3{font-family:var(--font-display);font-weight:600;font-size:15px;margin:40px 0 14px;color:var(--white)}
+.board-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.spec{margin:0;padding:18px 16px 14px;background:linear-gradient(180deg,#121317,#0b0c0e);border-top:1px solid rgba(246,244,244,.08)}
+.spec figcaption{margin-top:12px;font-size:12px;line-height:1.5;color:var(--gray)}
+.spec figcaption b{color:var(--white);font-weight:600}
+.spec .vw-acts{height:62px}
+.spec-row{display:flex;align-items:center;gap:6px}
+.spec .ht{max-width:none}
+</style>
+</head>
+<body>
+<main>
+<div class="vw-wrap" id="wrap">
+<section class="vw" id="vw" aria-label="The photo, enlarged">
+  <div class="vw-amb" aria-hidden="true"><img alt="" src="https://paraglidingatlas-maker.github.io/media-2026/srs-tapalpa/SRS_6_T3_21-1600.webp"></div>
+  <div class="vw-stage">
+    <img class="vw-img" draggable="false" alt="SRS Tapalpa 2026, Task 3, photo 21 of 144" width="1600" height="2400"
+      src="https://paraglidingatlas-maker.github.io/media-2026/srs-tapalpa/SRS_6_T3_21-1600.webp">
+  </div>
+
+  <div class="vw-dock">
+    <div class="vw-meta">
+      <p class="vw-id"><b class="vw-name">SRS_6_T3_21</b><span class="vw-where">Task 3 · Tue 10 Nov</span></p>
+      <button class="vw-lic-t" type="button" aria-expanded="false" aria-controls="vw-lic"><i aria-hidden="true"></i>CC BY-NC</button>
+    </div>
+    <p class="vw-lic" id="vw-lic" hidden>Free web copy under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="license noopener">CC BY-NC 4.0</a>: share it with the credit &ldquo;Photo: Aninder Singh, Paragliding Atlas&rdquo;, not for commercial use.</p>
+
+    <div class="ht" role="group" aria-label="Photos of the task">
+      <button class="ht-nav ht-prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></button>
+      <div class="ht-win" aria-hidden="true">
+        <div class="ht-read"><b class="ht-k">21</b><span>of <span class="ht-n">144</span></span></div>
+        <div class="ht-slide"><div class="ht-track"><svg class="ht-ticks" height="36"></svg></div></div>
+        <i class="ht-needle"></i>
+      </div>
+      <button class="ht-nav ht-next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></button>
+    </div>
+    <p class="vw-say" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);margin:0"></p>
+
+    <div class="vw-acts">
+      <a class="dl" data-state="ready" href="https://paraglidingatlas-maker.github.io/media-2026/srs-tapalpa/SRS_6_T3_21-2400.webp" download="SRS_6_T3_21.jpg">
+        <span class="dl-g" aria-hidden="true">
+          <svg class="dl-get" viewBox="0 0 24 24"><path d="M12 3.5v11M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>
+          <svg class="dl-ok" viewBox="0 0 24 24"><path d="M5.5 12.5 10 17l8.5-9.5"/></svg>
+        </span>
+        <span class="dl-tx"><span class="dl-t">Download</span><span class="dl-m">1600 × 2400 px</span></span>
+        <i class="dl-bar" aria-hidden="true"><i></i></i>
+      </a>
+      <button class="ic vw-share" type="button" data-share data-share-url="https://paraglidingatlas.com/media-srs-tapalpa-2026.html#SRS_6_T3_21" aria-label="Share this photo">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v11.5M7.5 8 12 3.5 16.5 8M5 12.5v6A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-6"/></svg><span>Share</span>
+      </button>
+      <button class="ic vw-close" type="button" aria-label="Close the photo">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg><span>Close</span>
+      </button>
+    </div>
+
+    <a class="vw-pat" href="https://www.patreon.com/15133612/join" target="_blank" rel="noopener"><span>Like what you see?</span><b>Join me on Patreon</b><i aria-hidden="true">&nearr;</i></a>
+  </div>
+</section>
+<button class="vw-again" type="button">Open the photo again</button>
+</div>
+
+<section class="board" aria-labelledby="board-t">
+  <p class="board-k">Designer E · The Heading Tape</p>
+  <h2 id="board-t">The states</h2>
+  <p>The viewer above works: tap the arrows, tap either side of the needle, drag the tape or swipe the photo; swipe down or Close to close; tap the photo to let it have the whole screen. Below, each control as it looks at rest, pressed, and Download in its three states.</p>
+
+  <h3>Download</h3>
+  <div class="board-row">
+    <figure class="spec"><div class="vw-acts"><a class="dl" data-state="ready" href="#" tabindex="-1">
+      <span class="dl-g" aria-hidden="true"><svg class="dl-get" viewBox="0 0 24 24"><path d="M12 3.5v11M7 10l5 5 5-5"/><path d="M5 20h14"/></svg><svg class="dl-ok" viewBox="0 0 24 24"><path d="M5.5 12.5 10 17l8.5-9.5"/></svg></span>
+      <span class="dl-tx"><span class="dl-t">Download</span><span class="dl-m" data-b="ready">1600 × 2400 px</span></span><i class="dl-bar"><i></i></i></a></div>
+      <figcaption><b>Ready.</b> The resolution at once; the size joins it when the copy has been fetched in the background (about a second after the photo opens).</figcaption></figure>
+    <figure class="spec"><div class="vw-acts"><a class="dl" data-state="getting" href="#" tabindex="-1" style="--p:.46">
+      <span class="dl-g" aria-hidden="true"><svg class="dl-get" viewBox="0 0 24 24"><path d="M12 3.5v11M7 10l5 5 5-5"/><path d="M5 20h14"/></svg><svg class="dl-ok" viewBox="0 0 24 24"><path d="M5.5 12.5 10 17l8.5-9.5"/></svg></span>
+      <span class="dl-tx"><span class="dl-t">Getting it</span><span class="dl-m">46%</span></span><i class="dl-bar"><i></i></i></a></div>
+      <figcaption><b>Getting it.</b> The arrow keeps dropping, the orange line under it fills from the real bytes received.</figcaption></figure>
+    <figure class="spec"><div class="vw-acts"><a class="dl" data-state="saved" href="#" tabindex="-1">
+      <span class="dl-g" aria-hidden="true"><svg class="dl-get" viewBox="0 0 24 24"><path d="M12 3.5v11M7 10l5 5 5-5"/><path d="M5 20h14"/></svg><svg class="dl-ok" viewBox="0 0 24 24"><path d="M5.5 12.5 10 17l8.5-9.5"/></svg></span>
+      <span class="dl-tx"><span class="dl-t">Downloaded</span><span class="dl-m" data-b="saved">SRS_6_T3_21.jpg</span></span><i class="dl-bar"><i></i></i></a></div>
+      <figcaption><b>Saved.</b> A tick, the line full, the file's name and size. On an iPhone it reads "Saved to Files".</figcaption></figure>
+  </div>
+
+  <h3>Pressed</h3>
+  <div class="board-row">
+    <figure class="spec"><div class="ht"><button class="ht-nav ht-prev is-press" type="button" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></button><span></span><button class="ht-nav ht-next" type="button" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></button></div>
+      <figcaption><b>Back, pressed</b> (left) and at rest (right). The chevron turns orange and kicks the way you are going, in a small orange bloom.</figcaption></figure>
+    <figure class="spec"><div class="vw-acts"><a class="dl is-press" data-state="ready" href="#" tabindex="-1">
+      <span class="dl-g" aria-hidden="true"><svg class="dl-get" viewBox="0 0 24 24"><path d="M12 3.5v11M7 10l5 5 5-5"/><path d="M5 20h14"/></svg><svg class="dl-ok" viewBox="0 0 24 24"><path d="M5.5 12.5 10 17l8.5-9.5"/></svg></span>
+      <span class="dl-tx"><span class="dl-t">Download</span><span class="dl-m">1600 × 2400 px</span></span><i class="dl-bar"><i></i></i></a></div>
+      <figcaption><b>Download, pressed.</b> The arrow dips onto its line.</figcaption></figure>
+    <figure class="spec"><div class="vw-acts" style="justify-content:flex-start">
+      <button class="ic vw-share is-press" type="button" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5v11.5M7.5 8 12 3.5 16.5 8M5 12.5v6A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-6"/></svg><span>Share</span></button>
+      <button class="ic vw-close is-press" type="button" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg><span>Close</span></button>
+      <button class="ic vw-close" type="button" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg><span>Close</span></button></div>
+      <figcaption><b>Share and Close, pressed</b>, then Close at rest. Share lifts its arrow; Close turns a quarter.</figcaption></figure>
+  </div>
+</section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var d = document, w = window;
+  d.documentElement.classList.add("js");
+  d.addEventListener("touchstart", function () {}, { passive: true });   // :active on iPhone
+
+  var BASE = "https://paraglidingatlas-maker.github.io/media-2026/srs-tapalpa/";
+  var PAGE = "https://paraglidingatlas.com/media-srs-tapalpa-2026.html#";
+  /* the two real photos; the place of each in its task is the gallery's own ("photo 53 of 168" is T4_53) */
+  var SET = [
+    { stem: "SRS_6_T3_21", W: 1600, H: 2400, task: "Task 3", date: "Tue 10 Nov", k: 21, n: 144 },
+    { stem: "SRS_6_T4_54", W: 2400, H: 1702, task: "Task 4", date: "Wed 11 Nov", k: 54, n: 168 }
+  ];
+  var wrap = d.getElementById("wrap"), vw = d.getElementById("vw");
+  var $ = function (s) { return vw.querySelector(s); };
+  var img = $(".vw-img"), amb = $(".vw-amb img"), nameEl = $(".vw-name"), whereEl = $(".vw-where"), say = $(".vw-say");
+  var win = $(".ht-win"), slide = $(".ht-slide"), track = $(".ht-track"), svg = $(".ht-ticks"), readK = $(".ht-k"), readN = $(".ht-n");
+  var dl = $(".dl"), dlT = $(".dl-t"), dlM = $(".dl-m"), share = $(".vw-share"), closeB = $(".vw-close");
+  var lic = $(".vw-lic"), licT = $(".vw-lic-t");
+  var reduced = w.matchMedia("(prefers-reduced-motion: reduce)"), wide = w.matchMedia("(min-width: 821px)");
+  var i = 0, S = 10, lines = [], run = null;
+  function rm() { return reduced.matches; }
+  function src(p, s) { return BASE + p.stem + "-" + s + ".webp"; }
+  function alt(p) { return "SRS Tapalpa 2026, " + p.task + ", photo " + p.k + " of " + p.n; }
+  SET.forEach(function (p) { var im = new Image(); im.src = src(p, 1600); });
+
+  /* ------------------------------------------------ the tape */
+  function build(p) {
+    S = wide.matches ? 12 : 10;
+    var NS = "http://www.w3.org/2000/svg", wd = (p.n - 1) * S + 2, h = "";
+    h += '<line class="ht-base" x1="1" y1="0.5" x2="' + (wd - 1) + '" y2="0.5"/><line class="ht-run" x1="1" y1="0.5" x2="1" y2="0.5"/>';
+    for (var k = 1; k <= p.n; k++) {
+      var x = (k - 1) * S + 1, M = k % 10 === 0 || k === 1 || k === p.n;
+      h += '<line class="t' + (M ? " M" : "") + '" x1="' + x + '" x2="' + x + '" y1="4" y2="' + (M ? 17 : 10) + '"/>';
+      if (M && !(k === p.n && p.n % 10 && p.n % 10 < 4) && !(k === 1 && false)) h += '<text x="' + x + '" y="30">' + k + "</text>";
+    }
+    svg.setAttribute("width", wd); svg.setAttribute("viewBox", "0 0 " + wd + " 36");
+    svg.innerHTML = h;
+    lines = [].slice.call(svg.querySelectorAll("line.t")); run = svg.querySelector(".ht-run");
+    readN.textContent = p.n;
+  }
+  function xOf(k) { return -((k - 1) * S + 1); }
+  function place(k, off, now) {
+    track.classList.toggle("is-now", !!now);
+    track.style.setProperty("--x", (xOf(k) + (off || 0)) + "px");
+    if (now) { void track.offsetWidth; track.classList.remove("is-now"); }
+  }
+  function mark(k) {
+    lines.forEach(function (l, j) { l.classList.toggle("on", j + 1 < k); l.classList.toggle("cur", j + 1 === k); });
+    run.setAttribute("x2", (k - 1) * S + 1);
+    readK.textContent = k;
+  }
+  function tapeTo(p, dir, cross) {
+    if (!cross || rm() || !slide.animate) { if (cross) build(p); mark(p.k); place(p.k, 0, !!cross || rm()); return; }
+    /* a new task: the old tape glides off the way you are going, the new one glides in */
+    var out = slide.animate([{ transform: "translateX(0)", opacity: 1 }, { transform: "translateX(" + (-dir * 70) + "px)", opacity: 0 }],
+      { duration: 200, easing: "cubic-bezier(.4,0,1,1)", fill: "forwards" });
+    out.onfinish = function () {
+      build(p); mark(p.k); place(p.k, 0, true);
+      slide.animate([{ transform: "translateX(" + (dir * 70) + "px)", opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 520, easing: "cubic-bezier(.2,.8,.2,1)" });
+      out.cancel();
+    };
+  }
+
+  /* ------------------------------------------------ the photo */
+  var swapping = null;
+  function photoTo(p, dir, from) {
+    var u = src(p, 1600);
+    if (swapping) { swapping.cancel(); swapping = null; }
+    if (!dir || rm() || !img.animate) { img.style.transform = ""; img.src = u; img.alt = alt(p); amb.src = u; return; }
+    var a = img.animate([{ transform: "translateX(" + (from || 0) + "px)", opacity: 1 }, { transform: "translateX(" + (-dir * 90 + (from || 0) * .5) + "px)", opacity: 0 }],
+      { duration: 170, easing: "cubic-bezier(.4,0,1,1)", fill: "forwards" });
+    img.style.transform = ""; swapping = a;
+    a.onfinish = function () {
+      img.src = u; img.alt = alt(p); amb.src = u;
+      var go = function () {
+        img.animate([{ transform: "translateX(" + (dir * 90) + "px)", opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 480, easing: "cubic-bezier(.2,.8,.2,1)" });
+        a.cancel(); if (swapping === a) swapping = null;
+      };
+      if (img.complete && img.naturalWidth) go(); else { img.onload = function () { img.onload = null; go(); }; }
+    };
+  }
+
+  /* ------------------------------------------------ show / go */
+  function show(j, dir, from) {
+    var old = SET[i], p = SET[j]; i = j;
+    var cross = old.task !== p.task || !lines.length;
+    photoTo(p, dir, from);
+    if (dir) tapeTo(p, dir, cross); else { build(p); mark(p.k); place(p.k, 0, true); }
+    nameEl.textContent = p.stem; whereEl.textContent = p.task + " · " + p.date;
+    win.parentNode.setAttribute("aria-label", "Photos of " + p.task);
+    share.setAttribute("data-share-url", PAGE + p.stem);
+    say.textContent = "Photo " + p.k + " of " + p.n + ", " + p.task;
+    dlReset(p); warm(p);
+  }
+  function go(dir, from) { show((i + dir + SET.length) % SET.length, dir, from); }
+  $(".ht-prev").addEventListener("click", function () { go(-1); });
+  $(".ht-next").addEventListener("click", function () { go(1); });
+  d.addEventListener("keydown", function (e) {
+    if (wrap.classList.contains("is-closed")) return;
+    if (e.key === "ArrowLeft") go(-1); else if (e.key === "ArrowRight") go(1); else if (e.key === "Escape") closeV();
+  });
+
+  /* ------------------------------------------------ the tape takes a thumb: drag it, or tap either side of the needle */
+  (function () {
+    var x0 = 0, dx = 0, on = false, id = null, t0 = 0;
+    win.addEventListener("pointerdown", function (e) { on = true; id = e.pointerId; x0 = e.clientX; dx = 0; t0 = Date.now(); win.setPointerCapture(id); win.classList.add("is-drag"); });
+    win.addEventListener("pointermove", function (e) {
+      if (!on || e.pointerId !== id) return;
+      dx = e.clientX - x0;
+      var a = Math.abs(dx), off = a < S * 1.5 ? dx : Math.sign(dx) * (S * 1.5 + (a - S * 1.5) * .22);   // one tick freely, then it resists
+      place(SET[i].k, off);
+    });
+    function end(e) {
+      if (!on || e.pointerId !== id) return;
+      on = false; win.classList.remove("is-drag");
+      if (Math.abs(dx) > S * .8) { go(dx < 0 ? 1 : -1); return; }               // drag the tape left: the next photo
+      place(SET[i].k, 0);
+      if (Math.abs(dx) < 6 && Date.now() - t0 < 400) {                           // a tap: left of the needle back, right of it on
+        var r = win.getBoundingClientRect();
+        go(e.clientX < r.left + r.width / 2 ? -1 : 1);
+      }
+    }
+    win.addEventListener("pointerup", end);
+    win.addEventListener("pointercancel", function (e) { if (on) { on = false; win.classList.remove("is-drag"); place(SET[i].k, 0); } });
+  })();
+
+  /* ------------------------------------------------ the photo takes a thumb: sideways moves the photo and the tape, down closes, a tap clears the dock */
+  (function () {
+    var stage = $(".vw-stage"), x0, y0, dx, dy, axis, on = false, id, t0;
+    stage.addEventListener("pointerdown", function (e) {
+      if (e.button) return;
+      on = true; id = e.pointerId; x0 = e.clientX; y0 = e.clientY; dx = dy = 0; axis = ""; t0 = Date.now(); stage.setPointerCapture(id);
+    });
+    stage.addEventListener("pointermove", function (e) {
+      if (!on || e.pointerId !== id) return;
+      dx = e.clientX - x0; dy = e.clientY - y0;
+      if (!axis && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) axis = Math.abs(dx) > Math.abs(dy) ? "x" : (dy > 0 ? "y" : "-");
+      if (axis === "x") {
+        img.style.transform = "translateX(" + dx + "px)";
+        place(SET[i].k, dx / stage.clientWidth * S * 2);                          // the tape travels with the photo
+      } else if (axis === "y") {
+        var t = Math.max(0, dy);
+        img.style.transform = "translateY(" + t + "px) scale(" + (1 - Math.min(t, 400) / 1600) + ")";
+        $(".vw-dock").style.opacity = Math.max(0, 1 - t / 120);
+      }
+    });
+    function end(e) {
+      if (!on || e.pointerId !== id) return;
+      on = false;
+      var fast = Date.now() - t0 < 260;
+      if (axis === "x" && (Math.abs(dx) > 70 || (fast && Math.abs(dx) > 30))) { go(dx < 0 ? 1 : -1, dx); return; }
+      if (axis === "y" && (dy > 120 || (fast && dy > 50))) { closeV(); return; }
+      var back = function () { img.style.transform = ""; $(".vw-dock").style.opacity = ""; place(SET[i].k, 0); };
+      if (axis && !rm() && img.animate) {
+        var cur = img.style.transform; back();
+        img.animate([{ transform: cur }, { transform: "none" }], { duration: 380, easing: "cubic-bezier(.2,.8,.2,1)" });
+      } else back();
+      if (!axis && Date.now() - t0 < 350) vw.classList.toggle("is-bare");
+    }
+    stage.addEventListener("pointerup", end);
+    stage.addEventListener("pointercancel", function (e) { if (on) { on = false; img.style.transform = ""; $(".vw-dock").style.opacity = ""; place(SET[i].k, 0); } });
+  })();
+
+  /* ------------------------------------------------ Download: the 2400 px copy, made a JPEG here, as the live viewer does */
+  var blobs = {}, pend = {}, prog = {}, warmT = 0;
+  var IOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var lean = !!(navigator.connection && navigator.connection.saveData);
+  function mb(n) { return n >= 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB"; }
+  function res(p) { return p.W + " × " + p.H + " px"; }
+  function setP(v) { dl.style.setProperty("--p", v); }
+  function state(s, t, m) { dl.setAttribute("data-state", s); dlT.textContent = t; dlM.textContent = m; if (s === "getting") dl.setAttribute("aria-busy", "true"); else dl.removeAttribute("aria-busy"); }
+  function dlReset(p) {
+    state("ready", "Download", res(p) + (blobs[p.stem] ? " · " + mb(blobs[p.stem].size) : ""));
+    setP(0); dl.href = src(p, 2400); dl.setAttribute("download", p.stem + ".jpg");
+    dl.setAttribute("aria-label", "Download " + p.stem + ", " + dlM.textContent);
+  }
+  function board(p) {   // the review board shows the same measured size
+    if (p !== SET[0] || !blobs[p.stem]) return;
+    var a = d.querySelector('.board [data-b=ready]'), b = d.querySelector('.board [data-b=saved]');
+    if (a) a.textContent = res(p) + " · " + mb(blobs[p.stem].size);
+    if (b) b.textContent = p.stem + ".jpg · " + mb(blobs[p.stem].size);
+  }
+  function toJpeg(b) {
+    return new Promise(function (ok) {
+      var u = URL.createObjectURL(b), im = new Image();
+      im.onload = function () {
+        try {
+          var c = d.createElement("canvas"); c.width = im.naturalWidth; c.height = im.naturalHeight;
+          c.getContext("2d").drawImage(im, 0, 0);
+          c.toBlob(function (j) { URL.revokeObjectURL(u); ok(j || b); }, "image/jpeg", .92);
+        } catch (e) { URL.revokeObjectURL(u); ok(b); }
+      };
+      im.onerror = function () { URL.revokeObjectURL(u); ok(b); };
+      im.src = u;
+    });
+  }
+  function paint(stem) {
+    var p = SET[i];
+    if (p.stem !== stem || dl.getAttribute("data-state") !== "getting") return;
+    var v = prog[stem] || 0; setP(v * .96); dlM.textContent = Math.round(v * 100) + "%";
+  }
+  function fetchCopy(p) {
+    var stem = p.stem;
+    if (blobs[stem]) return Promise.resolve(blobs[stem]);
+    if (pend[stem]) return pend[stem];
+    prog[stem] = 0;
+    pend[stem] = fetch(src(p, 2400), { mode: "cors" }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      var total = +r.headers.get("content-length") || 0;
+      if (!r.body || !r.body.getReader || !total) return r.blob();
+      var rd = r.body.getReader(), got = 0, parts = [];
+      return (function pump() {
+        return rd.read().then(function (x) {
+          if (x.done) return new Blob(parts, { type: r.headers.get("content-type") || "image/webp" });
+          parts.push(x.value); got += x.value.length; prog[stem] = Math.min(1, got / total); paint(stem);
+          return pump();
+        });
+      })();
+    }).then(toJpeg).then(function (b) {
+      blobs[stem] = b; delete pend[stem]; prog[stem] = 1; board(p);
+      if (SET[i] === p && dl.getAttribute("data-state") === "ready") dlReset(p);
+      return b;
+    }, function (e) { delete pend[stem]; throw e; });
+    return pend[stem];
+  }
+  function warm(p) {
+    clearTimeout(warmT);
+    if (lean || !w.fetch || !w.Blob) return;
+    warmT = setTimeout(function () { if (SET[i] === p) fetchCopy(p).catch(function () {}); }, 900);
+  }
+  function deliver(p) {
+    var b = blobs[p.stem], u = URL.createObjectURL(b), x = d.createElement("a");
+    x.href = u; x.download = p.stem + (b.type === "image/jpeg" ? ".jpg" : ".webp"); x.style.display = "none"; d.body.appendChild(x); x.click(); x.remove();
+    setTimeout(function () { URL.revokeObjectURL(u); }, 4000);
+    state("saved", IOS ? "Saved to Files" : "Downloaded", x.download + " · " + mb(b.size)); setP(1);
+  }
+  dl.addEventListener("click", function (e) {
+    var p = SET[i]; if (!w.fetch || !w.Blob) return;   // no fetch: the plain link opens the copy
+    e.preventDefault();
+    if (dl.getAttribute("data-state") === "getting") return;
+    if (blobs[p.stem] && !(IOS && dl.getAttribute("data-state") === "saved")) { deliver(p); return; }
+    state("getting", "Getting it", Math.round((prog[p.stem] || 0) * 100) + "%"); paint(p.stem);
+    fetchCopy(p).then(function () {
+      if (SET[i] !== p) return;
+      setP(1);
+      if (IOS) { state("ready", "Ready: tap to save", res(p) + " · " + mb(blobs[p.stem].size)); return; }   // Safari saves only straight from a tap
+      setTimeout(function () { deliver(p); }, rm() ? 0 : 260);
+    }).catch(function () { dlReset(p); w.open(src(p, 2400), "_blank", "noopener"); });
+  });
+
+  /* ------------------------------------------------ Share (the site's v4-share.js does this on the real page) */
+  share.addEventListener("click", function () {
+    var p = SET[i], u = share.getAttribute("data-share-url"), lab = share.querySelector("span");
+    var said = function (t) { lab.textContent = t; share.classList.add("is-said"); setTimeout(function () { lab.textContent = "Share"; share.classList.remove("is-said"); }, 1600); };
+    if (navigator.share) { navigator.share({ title: p.stem + ", SRS Tapalpa 2026", url: u }).catch(function () {}); return; }
+    if (navigator.clipboard) navigator.clipboard.writeText(u).then(function () { said("Copied"); }, function () { w.prompt("Copy the link", u); });
+    else w.prompt("Copy the link", u);
+  });
+
+  /* ------------------------------------------------ the licence, one tap away */
+  licT.addEventListener("click", function () {
+    var open = lic.hidden; lic.hidden = !open; licT.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  /* ------------------------------------------------ close, and (the sample only) open again */
+  var again = d.querySelector(".vw-again");
+  function closeV() {
+    wrap.classList.add("is-closed"); vw.classList.add("is-closed");
+    setTimeout(function () { img.style.transform = ""; $(".vw-dock").style.opacity = ""; again.focus({ preventScroll: true }); }, rm() ? 0 : 300);
+  }
+  closeB.addEventListener("click", closeV);
+  again.addEventListener("click", function () { wrap.classList.remove("is-closed"); vw.classList.remove("is-closed", "is-bare"); closeB.focus({ preventScroll: true }); });
+
+  /* the tape's spacing follows the screen */
+  var onWide = function () { build(SET[i]); mark(SET[i].k); place(SET[i].k, 0, true); };
+  if (wide.addEventListener) wide.addEventListener("change", onWide); else wide.addListener(onWide);
+
+  show(0, 0);
+})();
+</script>
+</body>
+</html>
