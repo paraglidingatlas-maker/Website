@@ -1,5 +1,26 @@
 # Designer F, "Fly the Season": notebook (newest first)
 
+## 12 Nov 2026: the first newsletter, contest round 1, "The Task Line" (chat 22)
+**Asked.** Brief `docs/designers/newsletter-brief.md`: the first email to all subscribers (28), a mix of the owner's
+first-person opener and brand sections; concept `docs/designers/newsletter/F-concept.md`, a static email-safe mock
+`prototypes/v4/samples/newsletter-f/` (index.html, img/, shot-390.png, shot-1440.png). No MailerLite writes.
+**Proposed.** The email as a task board in the site's grammar: masthead (welcome email's orange rule), the owner's
+cover photo SRS_6_T1_62, "Four Tasks Into Tapalpa" with a four-fact readout, the opener with the portrait, the 2026
+season line at scale (Tapalpa orange) and four season rows with one link each, then Tapalpa task by task (square
+poster, date, km, the film's own line, winner and goal count from SRS, "Watch m:ss | N photos" to the site's film
+theatre), the provisional top 3 (with a link to Bill Belcourt's episode, he is second), "Find Yourself In The Photos"
+with the one filled button, the Miguel Gutierrez talk (frame from the owner's video), Patreon as an outline button,
+sign-off, honest footer. Subjects: "Four tasks into Tapalpa" / "From the media team at SRS Tapalpa"; previews:
+"82.4 km and nobody in goal. The photos, the films and the rest of my season." / "484 photos free to save, three
+highlight films and a talk with Miguel Gutierrez."
+**Recommended** subject A and preview A, because they are true, short and name the place readers know.
+**Checked.** SRS scores T6.1 to T6.4 (goal counts 26, 1, 88, 0; Duffy 65.6 km), overall top 3, photos.json (484:
+P 19, T1 99, T2 54, T3 144, T4 168), YouTube (Miguel yhHoRUJtyOY 53:23; no Task 4 film yet). 390 and 1440: no errors,
+no sideways scroll; images off still reads.
+**Flagged.** Miguel talk not in the repo and "Maxico" in its YouTube title, its description links a Google Form for the
+newsletter; Task 4 film [to supply]; PWC and Bassano pages not live yet; countries 44 vs 25 (left out); postal address
+for the footer [to supply]; Gmail iPhone dark-mode inversion for G to test.
+
 ## 12 Nov 2026: event landing pages, the winner built for real (chat 22, branch claude/chat22-events)
 **Asked.** Build "The Season Opens Here" (won round 1) in the site's tools, with E's films-only chapter rows and season-foot pictures and D's two rules (a 16:9 film frame stays 16:9 on a phone; Piedrahita's Day 1 film is not Task 1's, posters are photos of the same task). No commit, no build or gates (the chat runs them).
 **Built.** `tools/v4_comp_gallery.py`: per-comp switch `COMPS[c]["landing"]` (absent = off; the name `event` was taken by the official-event link, and chat 21 asked that the tapalpa dict stay untouched). On: `landing()` swaps the gallery's lead for `opening()` (giant place name, readout, "325 photos, 3 films", official link), puts `season_strip()` (2026 line, this event lit, fan into the task line, phone prev/next row) over the task line and `season_foot()` (every event a row with its picture, dates on its rule, one link) before the organiser band. Films-only comps (`stops` instead of photos): `render_films()` / `page_films()`, each stop its films as `chapter()`s (16:9 frame playing in place via v4-media.js, kicker, title, length, views, date out, episode, YouTube), a missing film a dashed 16:9 slot with `[to supply]`. Piedrahita: Day 1 its own stop (state "film", "1 film, no photos this day"), films as Tapalpa's bands with photo posters (my pick: SRS_5_T1_10, SRS_5_T2_99; Day 1 a frame of its own film). New pages `media-pwc-pegalajar-2026.html`, `media-srs-bassano-2026.html` (NEW_PAGES; owned()/OWNED_GIT already take media*.html). Season from ONE place: `tools/v4_media.py season()` over SEASON + UPCOMING (new keys page, go, nick, pic). Media page rows now open the event pages. Shared code in new `v4-event.css/js` (not v4-gallery.css/js: Tapalpa's page carries their ?v= hashes, so touching them would change its bytes).
