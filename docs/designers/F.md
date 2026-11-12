@@ -1,5 +1,27 @@
 # Designer F, "Fly the Season": notebook (newest first)
 
+## 12 Nov 2026: the phone photo viewer's controls, "The Task Line" (chat 23)
+**Asked.** Brief `docs/designers/viewer-controls-brief.md`: the gallery viewer's controls one-handed and Awwwards level, sleek and
+futuristic, not boxes and not chat 23's glass capsule ("the buttons still look odd to me"). One sample each from D, E, F.
+**Proposed** `prototypes/v4/samples/viewer-f/` (index.html, phone.png, desktop.png). The controls are the task line itself: one
+line of ticks, one per photo in the task, a fisheye swell round the site's glider (the gallery's gf-line grammar), "21 of 144"
+riding above it; prev and next are the line's two arrow ends; drag the line to scrub to any photo (a light 800 copy follows the
+thumb, the 1600 on release; role="slider", Home/End). Under it plain lit type, no fills: Download (orange arrow onto a base, the
+readout "1600 x 2400 px · 891 KB", real fetch progress as a glowing underline, then a check and the file name), Share (the
+site's icon, share sheet else link copied), "Like what you see? Join me on Patreon" with an orange arrow. Pressed = a soft orange
+light pool under the glyph and the glyph nudges (no shape appears). Name, task, date, close in the row above; the licence line
+under. All in the bottom 240 px of 844, beside the photo, not over it. Tap the photo hides the controls; swipe sideways steps,
+down closes. Desktop: the same line centred in one low bar, id and licence left, actions right, close top right, the photo's
+sides click to step. A States board (behind Close) shows Download ready / getting it / saved and the pressed states.
+**Recommended** it because stepping, "where you are" and progress through the task are one control the thumb can slide, and it
+is the gallery's own line, so the viewer reads as the same site rather than a widget.
+**Checked** 390x844 and 1440x900 (file://): no console errors, no sideways scroll (two found and fixed: the panel grid's 1fr
+and the specimen light pools), Download fetched and saved SRS_6_T4_54.jpg, scrub lands on the real photo, reduced motion
+(no glides or pools) and no JS (the line and actions still drawn).
+**Flagged.** Real sizes after the site's JPEG step are smaller than the brief's example (T3_21 891 KB, T4_54 826 KB). Pinch
+zoom is not in the sample (the site's v4-gallery.js keeps it). The sample's prev/next joins the two brief photos; on the site
+they step through the task.
+
 ## 12 Nov 2026: the first newsletter, contest round 1, "The Task Line" (chat 22)
 **Asked.** Brief `docs/designers/newsletter-brief.md`: the first email to all subscribers (28), a mix of the owner's
 first-person opener and brand sections; concept `docs/designers/newsletter/F-concept.md`, a static email-safe mock
