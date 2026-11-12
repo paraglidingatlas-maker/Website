@@ -86,19 +86,60 @@ COMPS = {
                        facts=["22 to 29 Aug 2026", "FAI Category 2", "120 pilots, 54 countries", "Photos by Aninder Singh"],
                        desc="SRS BGD Edition, Piedrahita, Spain, 22 to 29 Aug 2026: all 325 photos by task, free to save, "
                             "and the task videos. Photos by Aninder Singh, Paragliding Atlas.",
-                       tasks=["T1", "T2", "T3"], window=("2026-08-22", "2026-08-29"), dates={}, lead="SRS_5_T3_63",
+                       # chat 22 (D's fix): Day 1 (registration) is its own day, not Task 1's; it has a film and no photos
+                       tasks=["D1", "T1", "T2", "T3"], window=("2026-08-22", "2026-08-29"), dates={}, lead="SRS_5_T3_63",
                        event=("SRS BGD Edition, Piedrahita", "https://airtribune.com/srs-2026-5/info"),
-                       # the task lines and videos as on the page chat 19 built (from the videos' descriptions)
-                       stories={"T1": "59 km, humid air, a 2,100 m ceiling and a long leg into a westerly wind.",
-                                "T2": "75 km, and a flatland gamble that cut the course short.",
-                                "T3": "The race from the air."},
-                       videos={"T1": ["cuGs7Lk6Dt4", "uCEfssE40u8"], "T2": ["NXUEyPQ3V4E"]}),
+                       # the event landing page (chat 22): on; its row in tools/v4_media.py SEASON; the opening's readout
+                       landing=True, season="srs5", lead_alt="Dozens of wings in a deep blue sky over Piedrahita, Task 3",
+                       read=["<b>22 to 29 Aug 2026</b>", "120 pilots, 54 countries", "FAI Category 2"],
+                       stories={"T3": "The race from the air."},
+                       # the films as Tapalpa's bands (chat 22, D's fix: a photo of the same task as the poster, not the
+                       # designed thumbnail); title and length from tools/v4_media.py V; the lines from the films' own
+                       # descriptions, as the page had them. Posters: designer F's pick, [to supply] the owner's own pick.
+                       # Day 1 has no photos: a frame of its own film (YouTube's frame grab, maxres1).
+                       films={"D1": dict(id="cuGs7Lk6Dt4", line="Registration, the pilots and the Peñas de Piedrahíta fiesta.",
+                                         still="https://i.ytimg.com/vi/cuGs7Lk6Dt4/maxres1.jpg", pos="50% 40%"),
+                              "T1": dict(id="uCEfssE40u8", line="59 km, humid air, a 2,100 m ceiling and a long leg into a westerly wind.",
+                                         poster="SRS_5_T1_10", pos="55% 35%"),
+                              "T2": dict(id="NXUEyPQ3V4E", line="75 km, and a flatland gamble that cut the course short.",
+                                         poster="SRS_5_T2_99", pos="60% 40%")}),
+    # films-only events (chat 22): no photos; "stops" are the event's days in order with their films (ids from
+    # tools/v4_media.py V, the title, length, views and date out from there); an empty stop is a dashed slot
+    "pwc": dict(page="media-pwc-pegalajar-2026.html", folder=None, title="Pegalajar 2026", full="PWC Super Final 2026",
+                kicker="15th Paragliding World Cup Super Final &middot; Pegalajar, Spain", season="pwc", landing=True,
+                desc="15th Paragliding World Cup Super Final, Pegalajar, Spain, May 2026: the five highlight films, by task. "
+                     "Films by Aninder Singh, Paragliding Atlas.",
+                read=["<b>May 2026</b>", "Comp dates " + TBD, "Pilots and countries " + TBD],
+                stops=[("D1", ["FOuAWMeoxs4"]), ("T1", ["BRAX1XMU390"]), ("T2", ["7il6yV1vdIc"]), ("T3", []),
+                       ("T4", ["op1-O01xkH4"]), ("T5", ["vPnIYYKcvEg"])],
+                # posters: frames of the owner's own films (YouTube's frame grabs), not the designed thumbnails;
+                # [to supply]: stills the owner picks from the footage
+                posters={"FOuAWMeoxs4": "maxres3", "BRAX1XMU390": "maxres1", "7il6yV1vdIc": "maxres1",
+                         "op1-O01xkH4": "maxres3", "vPnIYYKcvEg": "maxres3"},
+                lead=("op1-O01xkH4", "maxres2"), lead_alt="A task drawn in red on a relief map, a frame from Task 4 Highlights",
+                tp="len", word=("film", "films", "highlight films"), none="No film",
+                none_line="No highlights film of %s in the archive. Whether it was flown, and its film:"),
+    "bassano": dict(page="media-srs-bassano-2026.html", folder=None, title="Bassano 2026", full="SRS Bassano 2026",
+                    kicker="SRS Skywalk Bassano Edition &middot; Monte&nbsp;Grappa, Italy", season="srs4", landing=True,
+                    desc="SRS Skywalk Bassano Edition, Monte Grappa, Italy, May 2026: the five live broadcasts, by task. "
+                         "Live commentary by Paragliding Atlas.",
+                    read=["<b>May 2026</b>", "Comp dates " + TBD, "Pilots and countries " + TBD],
+                    # the broadcasts begin at Task 2: Task 1 is a dashed slot, [to supply]
+                    stops=[("T1", []), ("T2", ["ZL9B5eXip5o"]), ("T3", ["SZWQjcO_fWk"]), ("T4", ["x8sSBSBy4dI", "DA4nGop3i9g"]),
+                           ("T5", ["PEyO6MXngUw"])],
+                    # posters: YouTube's own thumbnails, until the owner picks frames ([to supply]); the opening: a frame of
+                    # the final day's broadcast, its live overlay and all
+                    posters={}, lead=("PEyO6MXngUw", "maxres1"), lead_alt="A frame from the live broadcast of the final day, Task 5",
+                    tp="date", word=("broadcast", "broadcasts", "live broadcasts"), none="No broadcast",
+                    none_line="No broadcast of %s in the archive. Whether it was flown, and its broadcast:"),
 }
 
 
 def photos(comp):
     """the comp's photos.json, from the local media repo, else from the published site; [] before the first night"""
     c = COMPS[comp]
+    if not c.get("folder"):        # a films-only event
+        return []
     p = os.path.join(REPO, c["folder"], "photos.json")
     try:
         return json.load(open(p))
@@ -164,6 +205,8 @@ def srcset(comp, stem, ws=(800, 1600, 2400)):
 
 
 def label(task):
+    if task.startswith("D") and task[1:].isdigit():      # an event day that is not a task (Piedrahita's Day 1: registration)
+        return "Day " + task[1:]
     return "Task " + task[1:] if task.startswith("T") else {"P": "Practice"}.get(task, task)
 
 
@@ -242,6 +285,8 @@ def cell(comp, r, task, k, n):
 
 
 def sid(task):
+    if task.startswith("D") and task[1:].isdigit():
+        return "day-" + task[1:]
     return "task-" + task[1:] if task.startswith("T") else {"P": "practice"}.get(task, task.lower())
 
 
@@ -265,20 +310,34 @@ def said(ln):
 
 
 def film_band(comp, task, f):
-    r = next(x for x in photos(comp) if x["stem"] == f["poster"])
-    return ('<div class="gff" id="film-%(s)s" data-film="%(id)s" style="--pos:%(pos)s">'
-            '<div class="gff-media"><img src="%(src)s" srcset="%(srcset)s" sizes="(min-width:1300px) 1300px, 100vw" '
-            'width="1600" height="%(h)d" alt="" loading="lazy" decoding="async"></div>'
-            '<div class="gff-head"><p class="gff-k"><span>Daily Highlights</span><span class="gff-len">%(len)s</span><span class="gff-at" hidden></span></p>'
+    if f.get("still"):         # a day with no photos (Piedrahita's Day 1): a frame of the film itself, 16:9 on a phone
+        media = ('<div class="gff ev-still" id="film-%s" data-film="%s" style="--pos:%s">'
+                 '<div class="gff-media"><img src="%s" sizes="(min-width:1300px) 1300px, 100vw" width="1280" height="720" '
+                 'alt="" loading="lazy" decoding="async"></div>' % (sid(task), E(f["id"]), E(f.get("pos", "50% 50%")), E(f["still"])))
+    else:
+        r = next(x for x in photos(comp) if x["stem"] == f["poster"])
+        media = ('<div class="gff" id="film-%(s)s" data-film="%(id)s" style="--pos:%(pos)s">'
+                 '<div class="gff-media"><img src="%(src)s" srcset="%(srcset)s" sizes="(min-width:1300px) 1300px, 100vw" '
+                 'width="1600" height="%(h)d" alt="" loading="lazy" decoding="async"></div>'
+                 % dict(s=sid(task), id=E(f["id"]), pos=E(f.get("pos", "50% 50%")), src=src(comp, f["poster"], 1600),
+                        srcset=srcset(comp, f["poster"]), h=round(1600 * r["h"] / r["w"])))
+    return media + ('<div class="gff-head"><p class="gff-k"><span>Daily Highlights</span><span class="gff-len">%(len)s</span><span class="gff-at" hidden></span></p>'
             '<h3 class="gff-t">%(title)s</h3></div>'
             '<a class="gff-play" href="%(yt)s" target="_blank" rel="noopener" aria-label="Play the film, %(title)s, %(said)s">'
             '<span class="gff-btn"><span class="gff-btn-in">%(ring)s%(play)s</span></span>'
             '<span class="gff-cta" aria-hidden="true"><b data-cta>Play the film</b><small data-cta-s>%(len)s</small></span></a>'
             '<p class="gff-line"><span>%(line)s</span> <a class="gff-yt" href="%(yt)s" target="_blank" rel="noopener">Watch on YouTube%(ext)s</a></p>'
             '<i class="gff-bar" aria-hidden="true"><i></i></i></div>'
-            % dict(s=sid(task), id=E(f["id"]), pos=E(f.get("pos", "50% 50%")), src=src(comp, f["poster"], 1600),
-                   srcset=srcset(comp, f["poster"]), h=round(1600 * r["h"] / r["w"]), len=E(f["len"]), title=E(f["title"]),
-                   line=E(f.get("line", "")), yt=E(YT + f["id"]), ext=EXT, said=said(f["len"]), ring=RING, play=PLAY))
+            % dict(len=E(f["len"]), title=E(f["title"]), line=E(f.get("line", "")), yt=E(YT + f["id"]), ext=EXT,
+                   said=said(f["len"]), ring=RING, play=PLAY))
+
+
+def filled(f):
+    """a film entry, its title and length from the Media page's list (tools/v4_media.py V) where it does not give them"""
+    v = M.V.get(f["id"])
+    if v and ("title" not in f or "len" not in f):
+        f = dict(f, title=f.get("title", v[1]), len=f.get("len", v[3]))
+    return f
 
 
 def film_cue(f):
@@ -324,7 +383,7 @@ FILM_DIALOG = """
 def render(comp):
     c = COMPS[comp]
     ds, dates = days(comp), task_dates(comp)
-    ds = [d for d in ds if d[2] or d[0].startswith("T")]       # the practice day shows only once it has photos
+    ds = [d for d in ds if d[2] or d[0] != "P"]       # the practice day shows only once it has photos
     N = len(ds)
     latest = max([i for i, (_, _, rows) in enumerate(ds) if rows] or [-1])
     # the lead: the comp's own chosen photo, else the first photo of the newest task, else a labelled stand-in
@@ -342,23 +401,29 @@ def render(comp):
         date = dates.get(task, "")
         short, full, dm = nice(date) if date else ("", "", "")
         n = len(rows)
-        info.append({"i": i, "task": int(task[1:]) if task[1:].isdigit() else 0, "name": lab, "date": date, "label": short, "n": n})
+        info.append({"i": i, "task": int(task[1:]) if task[0] == "T" and task[1:].isdigit() else 0, "name": lab, "date": date, "label": short, "n": n})
         cr = c.get("credits", {}).get(task)
         if cr:
             info[-1]["cred"] = cr[0]
-        fm = films.get(task)
+        fm = filled(films[task]) if task in films else None
+        filmday = bool(c.get("landing") and fm and not rows)     # a day with its film and no photos (state "film", v4-event.js)
         if fm:
             info[-1]["film"] = fm["id"]
             m, s = (int(x) for x in fm["len"].split(":"))
             fdata[fm["id"]] = {"title": fm["title"], "len": fm["len"], "secs": m * 60 + s, "line": fm.get("line", ""), "day": i,
-                               "band": "film-" + sid(task), "amb": src(comp, fm["poster"], 800)}
+                               "band": "film-" + sid(task), "amb": fm["still"] if fm.get("still") else src(comp, fm["poster"], 800)}
             cue = film_cue(fm)          # the newest film of the comp goes on the lead
-        tps.append('<li class="gf-tp" data-i="%d"><a href="#%s"><i class="gf-dot" aria-hidden="true"></i><b>%s</b>'
-                   '<span class="gf-tp-d">%s</span><span class="gf-tp-s"><span data-s="photos">%s%s</span>'
-                   '<span data-s="today">Photos tonight</span><span data-s="coming">Photos coming</span>'
-                   '<span data-s="soon">To come</span></span></a></li>'
-                   % (i, sid(task), lab, dm or nphotos(n), nphotos(n) if dm else "",
-                      '<span class="gf-tp-f"> + film</span>' if fm else ""))
+        if filmday:
+            tps.append('<li class="gf-tp" data-i="%d" data-film-only><a href="#%s"><i class="gf-dot" aria-hidden="true"></i><b>%s</b>'
+                       '<span class="gf-tp-d">%s</span><span class="gf-tp-s ev-tp-s">%s</span></a></li>'
+                       % (i, sid(task), lab, dm or "Film", "Film" if dm else ""))
+        else:
+            tps.append('<li class="gf-tp" data-i="%d"><a href="#%s"><i class="gf-dot" aria-hidden="true"></i><b>%s</b>'
+                     '<span class="gf-tp-d">%s</span><span class="gf-tp-s"><span data-s="photos">%s%s</span>'
+                     '<span data-s="today">Photos tonight</span><span data-s="coming">Photos coming</span>'
+                     '<span data-s="soon">To come</span></span></a></li>'
+                     % (i, sid(task), lab, dm or nphotos(n), nphotos(n) if dm else "",
+                        '<span class="gf-tp-f"> + film</span>' if fm else ""))
         story = c.get("stories", {}).get(task)
         vids = [v for v in c.get("videos", {}).get(task, [])]
         vb = ""
@@ -366,12 +431,18 @@ def render(comp):
             vb = '<div class="gf-vids">%s</div>' % "".join(
                 '<figure>%s<figcaption>%s &middot; %s</figcaption></figure>' % (M.frame(v), E(M.V[v][1]), M.V[v][3]) for v in vids)
         when = ("<span>%s</span>" % full) if full else ""
-        head = ('<header class="gf-dh"><h2 id="gf-h-%d">%s</h2><p class="gf-dh-r">%s<span class="gf-dh-n" data-s="photos">%s'
+        if filmday:
+            head = ('<header class="gf-dh"><h2 id="gf-h-%d">%s</h2><p class="gf-dh-r">%s<span class="ev-dh-n">1 film, no photos this day</span></p>%s</header>'
+                    % (i + 1, lab, when, '<p class="gf-story">%s</p>' % E(story) if story else ""))
+        else:
+            head = ('<header class="gf-dh"><h2 id="gf-h-%d">%s</h2><p class="gf-dh-r">%s<span class="gf-dh-n" data-s="photos">%s'
                 '<span class="gf-dh-o">, in the order shot</span></span><span class="gf-dh-n" data-s="today">Flying today</span>'
                 '<span class="gf-dh-n" data-s="coming">Photos coming</span><span class="gf-dh-n" data-s="soon">To come</span></p>%s%s</header>'
                 % (i + 1, lab, when, nphotos(n), '<p class="gf-story">%s</p>' % E(story) if story else "",
                    '<p class="gf-dh-cred">Photos by <a href="%s" target="_blank" rel="noopener">%s</a></p>' % (E(cr[1]), E(cr[0])) if cr else ""))
-        if rows:
+        if filmday:
+            body = ""
+        elif rows:
             body = '<div class="gf-grid" aria-label="Photos of %s, in the order shot">%s</div>' % (lab, "".join(cell(comp, r, task, k, n) for k, r in enumerate(rows)))
         else:
             on = full or lab
@@ -389,8 +460,8 @@ def render(comp):
             nav.append('<a class="gf-df-n" href="#%s" data-go="%d">Next leg: %s%s <i aria-hidden="true">&rarr;</i></a>'
                        % (sid(ds[i + 1][0]), i + 1, ds[i + 1][1], ", " + nice(nd)[0] if nd else ""))
         fb = film_band(comp, task, fm) if fm else ""
-        secs.append('<section class="gf-day" id="%s" data-i="%d" data-date="%s" aria-labelledby="gf-h-%d">%s%s%s%s%s</section>'
-                    % (sid(task), i, date, i + 1, head, fb, vb, body, '<nav class="gf-df" aria-label="Other tasks">%s</nav>' % "".join(nav) if nav else ""))
+        secs.append('<section class="gf-day" id="%s" data-i="%d" data-date="%s"%s aria-labelledby="gf-h-%d">%s%s%s%s%s</section>'
+                    % (sid(task), i, date, ' data-film-only data-state="film"' if filmday else "", i + 1, head, fb, vb, body, '<nav class="gf-df" aria-label="Other tasks">%s</nav>' % "".join(nav) if nav else ""))
     data = {"base": BASE + c["folder"] + "/", "tz": c["tz"], "days": info, "pay": pay_template()}
     if fdata:
         data["films"] = fdata
@@ -400,7 +471,7 @@ def render(comp):
              'target="_blank" rel="license noopener">CC BY-NC 4.0</a>: share it with the credit &ldquo;<span class="gfv-cr">%s</span>&rdquo;, not for '
              'commercial use.' % E(CREDIT.replace("Photo: ", "Photo: ")))
     w, h = lr["w"], lr["h"]
-    return """
+    out = """
 <header class="gf-lead">
   <div class="gf-lead-media"><img src="%(lead)s" srcset="%(leads)s" sizes="100vw" width="1600" height="%(lh)d" alt="%(lalt)s" fetchpriority="high"></div>
   <div class="gf-lead-copy">
@@ -474,10 +545,219 @@ def render(comp):
            paynote=("The payment carries the photo&#x27;s name. The download after paying: %s" % TBD) if PAYPAL_EMAIL
            else "Payment link: %s. It will carry the photo&#x27;s name." % TBD,
            data=json.dumps(data, separators=(",", ":")).replace("</", "<\\/"))
+    return landing(comp, out, ds) if c.get("landing") else out
+
+
+# ---------------------------------------------------------------- the event landing pages (chat 22, designer F) ----
+# "The Season Opens Here": the event's own page IS its gallery page (same URL), opening on the place, its facts and
+# counts; at the opening's foot the 2026 season line, this event lit orange, fans out into the event's own task line;
+# a previous / next event row on a phone; the whole season at the foot, each event a row with its picture. Switched on
+# per comp by COMPS[c]["landing"] (absent: off, the plain gallery, as Tapalpa until its comp is over). A comp with no
+# photos (films only) lists its "stops" instead of tasks: each task's films as chapters, a missing film as a dashed slot.
+# The season comes from tools/v4_media.py season() (SEASON and UPCOMING), never a copy. Shared code: v4-event.css/js.
+ARROW = '<i aria-hidden="true">&rarr;</i>'
+NE = '<i aria-hidden="true">&nearr;</i>'
+
+
+def season_strip(cur, n):
+    """the 2026 season line under the opening, this event lit, and the fan that opens it into the task line"""
+    S = M.season()
+    i = [e["key"] for e in S].index(cur)
+    ev = S[i]
+    tot = (M.LINE[1] - M.LINE[0]).days
+
+    def x(e):
+        return M.at(e["first"]), M.at(e["last"]) + 1 / tot
+    xa, xb = x(ev)
+    bars, names = [], []
+    for e in S:
+        a, b = x(e)
+        lit = e["key"] == cur
+        when = ' data-first="%s" data-last="%s"' % (e["first"].isoformat(), e["last"].isoformat())
+        bars.append('<i class="ev-bar%s"%s style="--x:%.4f;--w:%.4f"></i>' % (" is-lit" if lit else "", when, a, b - a))
+        lab = '<b>%s</b><small>%s</small>' % (E(e["nick"]), e["tag"])
+        if lit:
+            names.append('<span class="ev-nm is-lit" style="--x:%.4f" aria-current="page">%s</span>' % (a, lab))
+        else:
+            names.append('<a class="ev-nm"%s style="--x:%.4f" href="%s">%s</a>' % (when, a, E(e["page"]), lab))
+    prev = S[i - 1] if i > 0 else None
+    nxt = S[i + 1] if i + 1 < len(S) else None
+    pn = ('<a class="ev-pn-p" href="%s"><i aria-hidden="true">&larr;</i> <span><b>%s</b> %s</span></a>' % (E(prev["page"]), E(prev["name"]), prev["tag"])
+          if prev else '<span class="ev-pn-p is-first"><span>The season starts here</span></span>')
+    pn += ('<a class="ev-pn-n" href="%s"><span><b>%s</b> %s</span> %s</a>' % (E(nxt["page"]), E(nxt["name"]), nxt["tag"], ARROW)
+           if nxt else '<span class="ev-pn-n is-last"><span>The latest event</span></span>')
+    L = 50.0 / n                       # the task line's track runs from the first column's middle to the last's
+    fan = ('<svg class="ev-fan" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">'
+           '<defs><linearGradient id="ev-beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff7517" stop-opacity=".22"/>'
+           '<stop offset="1" stop-color="#ff7517" stop-opacity="0"/></linearGradient></defs>'
+           '<path d="M%.3f 0 L%.3f 0 L%.3f 100 L%.3f 100 Z" fill="url(#ev-beam)"/>'
+           '<line x1="%.3f" y1="0" x2="%.3f" y2="100"/><line x1="%.3f" y1="0" x2="%.3f" y2="100"/></svg>'
+           % (xa * 100, xb * 100, 100 - L, L, xa * 100, L, xb * 100, 100 - L))
+    return ('<nav class="ev-season" aria-label="The 2026 season: %s is event %d of %d">\n'
+            '  <div class="ev-season-in">\n    <p class="ev-pn">%s</p>\n'
+            '    <p class="ev-sh"><a href="media.html#reach">The 2026 season</a><span>%d of %d</span></p>\n'
+            '    <div class="ev-strip"><span class="ev-names">%s</span><span class="ev-rule" aria-hidden="true">%s</span></div>\n'
+            '    %s\n  </div>\n</nav>\n'
+            % (E(ev["name"]), i + 1, len(S), pn, i + 1, len(S), "".join(names), "".join(bars), fan))
+
+
+def season_foot(cur):
+    """the whole season at the page's foot: each event a row with its picture, dates on its own rule, one link"""
+    S = M.season()
+    tot = (M.LINE[1] - M.LINE[0]).days
+    rows = []
+    for e in S:
+        here = e["key"] == cur
+        a, b = M.at(e["first"]), M.at(e["last"]) + 1 / tot
+        go = ('<span class="ev-row-go is-here">You are here</span>' if here else
+              '<a class="ev-row-go" href="%s" aria-label="%s: %s">%s %s</a>' % (E(e["page"]), E(e["name"]), e["go"].lower(), e["go"], ARROW))
+        rows.append('<li class="ev-row%s" data-first="%s" data-last="%s">'
+                    '<span class="ev-row-pic" aria-hidden="true"><img src="%s" alt="" width="320" height="180" loading="lazy" decoding="async"></span>'
+                    '<span class="ev-row-d"><span class="ev-now"><i class="ev-tally" aria-hidden="true"></i>On air now &middot; </span>%s</span>'
+                    '<span class="ev-row-n"><b>%s</b><small>%s &middot; %s</small></span><span class="ev-row-m">%s</span>'
+                    '<span class="ev-row-bar" aria-hidden="true"><i style="--x:%.4f;--w:%.4f"></i></span>%s</li>'
+                    % (" is-here" if here else "", e["first"].isoformat(), e["last"].isoformat(), E(e["pic"]), e["when"],
+                       E(e["name"]), e["edition"], e["where"], e["made"], a, b - a, go))
+    up = {u["key"] for u in M.UPCOMING}          # a comp's own dates: UPCOMING's, or a SEASON row's "span"
+    own = [e["nick"] for e in S if e["key"] in up or any(x["comp"] == e["key"] and "span" in x for x in M.SEASON)]
+    other = [e["nick"] for e in S if e["nick"] not in own]
+    note = ('<p class="ev-rows-f">Dates on the line: %s the comps&#x27; own; %s the days the films and broadcasts came out '
+            '(the comps&#x27; own dates %s).</p>' % (" and ".join(own), " and ".join(other), TBD)) if other else ""
+    return ('<section class="ev-foot" aria-labelledby="ev-foot-t"><div class="ev-foot-in">'
+            '<h2 id="ev-foot-t" class="ev-foot-h">The 2026 Season</h2>'
+            '<ol class="ev-rows">%s</ol>%s<p class="ev-rows-m"><a href="media.html#reach">The season on the Media page %s</a></p></div></section>\n'
+            % ("".join(rows), note, ARROW))
+
+
+def opening(comp, have, media, film=False):
+    """the event's opening: the picture, the place in giant type, its readout and what the page holds"""
+    c = COMPS[comp]
+    ev = c.get("event")
+    off = ('<a class="ev-off" href="%s" target="_blank" rel="noopener">Official event %s</a>' % (E(ev[1]), NE) if ev
+           else '<span class="ev-off">Official event %s</span>' % TBD)
+    return ('<header class="gf-lead ev-open%s">\n  <div class="gf-lead-media">%s</div>\n  <div class="gf-lead-copy ev-copy">\n'
+            '    <a class="gf-back" href="media.html"><i aria-hidden="true">&larr;</i> Media</a>\n'
+            '    <p class="gf-kicker">%s</p>\n    <h1 class="gf-name ev-name">%s <span>%s</span></h1>\n'
+            '    <p class="ev-read">%s</p>\n    <p class="ev-have">%s%s</p>\n  </div>\n</header>\n'
+            % (" ev-open--film" if film else "", media, c["kicker"], E(c["title"].rsplit(" ", 1)[0]), c["title"].rsplit(" ", 1)[1],
+               "".join("<span>%s</span>" % r for r in c["read"]), have, off))
+
+
+def landing(comp, out, ds):
+    """the gallery page made the event's landing page: the opening, the season strip over the task line, the foot"""
+    c = COMPS[comp]
+    nph = sum(len(r) for _, _, r in ds)
+    with_ph = [t for t, _, r in ds if r]
+    films = [t for t, _, _ in ds if t in c.get("films", {})]
+    have = ""
+    if nph:
+        have += '<a href="#%s"><b>%s</b> photos</a>' % (sid(with_ph[-1]), M.n(nph))
+    if films:
+        have += '<a href="#film-%s"><b>%d</b> film%s</a>' % (sid(films[0]), len(films), "" if len(films) == 1 else "s")
+    lead = c["lead"]
+    lr = next(r for r in photos(comp) if r["stem"] == lead)
+    media = ('<img src="%s" srcset="%s" sizes="100vw" width="1600" height="%d" alt="%s" fetchpriority="high">'
+             % (src(comp, lead, 1600), srcset(comp, lead), round(1600 * lr["h"] / lr["w"]), E(c.get("lead_alt", "A photo from " + c["title"]))))
+    out, k = re.subn(r'<header class="gf-lead">.*?</header>\n', lambda m: opening(comp, have, media), out, count=1, flags=re.S)
+    assert k == 1
+    a = '<div class="gf-body">\n<nav class="gf-line"'
+    assert out.count(a) == 1
+    out = out.replace(a, '<div class="gf-body">\n' + season_strip(c["season"], len(ds)) + '<nav class="gf-line"', 1)
+    b = '<section class="cta-band" id="book">'
+    assert out.count(b) == 1
+    return out.replace(b, season_foot(c["season"]) + b, 1)
+
+
+def chapter(comp, v, eager):
+    """one film of a films-only event, as a chapter: its frame (plays in place, 16:9 at every width), title and readout"""
+    c = COMPS[comp]
+    k, t, views, ln, out, ep = M.V[v]
+    live = t.startswith("Live: ")
+    name = t[6:] if live else t
+    q = c.get("posters", {}).get(v, "maxresdefault")
+    badge = ""        # the broadcast's own frame carries the stream's LIVE overlay; the kicker says "Live broadcast"
+    acts = ('<a href="episodes/%s.html">Read the episode %s</a>' % (E(ep), ARROW) if ep else "") + \
+           '<a href="%s%s" target="_blank" rel="noopener">Watch on YouTube %s</a>' % (YT, E(v), NE)
+    return ('<article class="ev-ch"><div class="md-frame" data-vid="%(v)s"><img src="%(img)s" alt="" width="1280" height="720"%(lazy)s decoding="async">'
+            '<a class="md-play" href="%(yt)s" target="_blank" rel="noopener" aria-label="Play %(t)s, %(ev)s">%(play)s</a>%(badge)s</div>'
+            '<div class="ev-ch-f"><p class="ev-ch-k">%(kind)s</p><h3 class="ev-ch-t">%(name)s</h3>'
+            '<p class="ev-ch-m"><span>%(ln)s</span><span>%(views)s views</span><span>%(when)s %(out)s</span></p>'
+            '<p class="ev-ch-a">%(acts)s</p></div></article>'
+            % dict(v=E(v), img=M.thumb(v, q), lazy="" if eager else ' loading="lazy"', yt=E(YT + v), t=E(t), ev=E(c["title"]),
+                   play=M.PLAY, badge=badge, kind="Live broadcast" if live else "Highlights film", name=E(name), ln=ln,
+                   views=M.n(views), when="Live on" if live else "Out", out=out, acts=acts))
+
+
+def render_films(comp):
+    """a films-only event (no photos): the same opening, season and line; each stop its films as chapters"""
+    c = COMPS[comp]
+    stops = c["stops"]
+    N = len(stops)
+    ids = [v for _, vs in stops for v in vs]
+    top = max(ids, key=lambda v: M.V[v][2])            # the most watched film's stop opens first
+    start = next(i for i, (_, vs) in enumerate(stops) if top in vs)
+    tps, secs = [], []
+    for i, (task, vs) in enumerate(stops):
+        lab, s = label(task), sid(task)
+        if vs:
+            outs = [M.V[v][4].rsplit(" ", 1)[0] for v in vs]
+            dd = outs[0] if len(set(outs)) == 1 else "%s, %s" % (outs[0].split()[0], outs[-1])
+            lens = M.V[vs[0]][3] if len(vs) == 1 else "%d parts" % len(vs)
+            d1, d2 = (lens, "Out " + dd) if c.get("tp") == "len" else (dd, lens)
+            tps.append('<li class="gf-tp%s" data-i="%d" data-state="film"><a href="#%s"%s><i class="gf-dot" aria-hidden="true"></i><b>%s</b>'
+                       '<span class="gf-tp-d">%s</span><span class="gf-tp-s">%s</span></a></li>'
+                       % (" is-open" if i == start else "", i, s, ' aria-current="true"' if i == start else "", lab, d1, d2))
+            n = len(vs)
+            head = ('<p class="gf-dh-r"><span>%s</span></p>' % ("%d %s" % (n, c["word"][1]) if n > 1 else "1 " + c["word"][0]))
+            body = "".join(chapter(comp, v, i == start) for v in vs)
+            st = "film"
+        else:
+            tps.append('<li class="gf-tp" data-i="%d" data-state="none"><a href="#%s"><i class="gf-dot" aria-hidden="true"></i><b>%s</b>'
+                       '<span class="gf-tp-d">%s</span><span class="gf-tp-s">&nbsp;</span></a></li>' % (i, s, lab, c["none"]))
+            head = '<p class="gf-dh-r"><span>%s</span></p>' % c["none"]
+            body = ('<div class="ev-none"><p class="ev-none-t">%s, %s</p><p>%s %s</p></div>'
+                    % (lab, c["none"].lower(), c["none_line"] % lab, TBD))
+            st = "none"
+        nav = []
+        if i > 0:
+            nav.append('<a class="gf-df-p" href="#%s" data-go="%d"><i aria-hidden="true">&larr;</i> %s</a>' % (sid(stops[i - 1][0]), i - 1, label(stops[i - 1][0])))
+        if i + 1 < N:
+            nav.append('<a class="gf-df-n" href="#%s" data-go="%d">Next leg: %s %s</a>' % (sid(stops[i + 1][0]), i + 1, label(stops[i + 1][0]), ARROW))
+        secs.append('<section class="gf-day ev-stop%s" id="%s" data-i="%d" data-state="%s" aria-labelledby="gf-h-%d"><header class="gf-dh">'
+                    '<h2 id="gf-h-%d">%s</h2>%s</header>%s<nav class="gf-df" aria-label="Other tasks">%s</nav></section>'
+                    % (" is-open" if i == start else "", s, i, st, i + 1, i + 1, lab, head, body, "".join(nav)))
+    views = sum(M.V[v][2] for v in ids)
+    have = ('<a href="#%s"><b>%d</b> %s</a><span><b>%s</b> views on YouTube, %s</span>'
+            % (sid(stops[start][0]), len(ids), c["word"][2], M.n(views), M.COUNTED))
+    lv, lq = c["lead"]
+    media = '<img src="%s" width="1280" height="720" alt="%s" fetchpriority="high">' % (M.thumb(lv, lq), E(c["lead_alt"]))
+    line = ('<nav class="gf-line ev-fline" aria-label="%s" style="--flown:%d;--open:%d">\n  <div class="gf-line-in">\n'
+            '    <span class="gf-track" aria-hidden="true"><i class="gf-flown"></i></span>\n'
+            '    <span class="gf-glc" aria-hidden="true"><span class="gf-glw"><i class="gf-glider">%s</i></span></span>\n'
+            '    <ol class="gf-tps">%s</ol>\n  </div>\n</nav>\n'
+            % (E("%s, %s by task" % (c["title"], c["word"][1])), N - 1, start, GLIDER, "".join(tps)))
+    return ('\n%s\n<div class="gf-body">\n%s%s\n<div class="gf-days">\n%s\n</div>\n</div>\n\n%s%s'
+            % (opening(comp, have, media, film=True), season_strip(c["season"], N), line, "\n".join(secs), season_foot(c["season"]),
+               M.cta("Coverage Like This For <span class=\"v4-nw\">Your Event</span>", "Coverage For Your Comp",
+                     "Every task day: Daily Highlights, a video each task day with social clips and a results newsletter.")))
+
+
+def page_films(comp):
+    c = COMPS[comp]
+    lv, lq = c["lead"]
+    out = M.shell(c["full"], c["desc"], c["page"], M.thumb(lv, lq), c["full"], render_films(comp))
+    M.check(c["page"], out)
+    out = out.replace('<main id="v4-main">', '<main id="v4-main" class="gf ev ev-films" data-ev="%s" style="--n:%d">' % (c["season"], len(c["stops"])), 1)
+    out = out.replace("<!-- site-schema -->", '<link rel="stylesheet" href="v4-gallery.css?v=%s">\n<link rel="stylesheet" href="v4-event.css?v=%s">\n<!-- site-schema -->'
+                      % (M.ver("v4-gallery.css"), M.ver("v4-event.css")), 1)
+    out = out.replace("</body>", '<script defer src="v4-event.js?v=%s"></script>\n</body>' % M.ver("v4-event.js"), 1)
+    return out
 
 
 def page(comp):
     c = COMPS[comp]
+    if c.get("stops"):
+        return page_films(comp)
     rows = photos(comp)
     og = share_image(comp) or (src(comp, rows[0]["stem"], 1600) if rows else "https://paraglidingatlas.com/assets/images/hero.jpg")
     out = M.shell(c["title"], c["desc"], c["page"], og, c["title"], render(comp))
@@ -486,11 +766,15 @@ def page(comp):
         new = [lab for t, lab, rs in days(comp) if rs and t.startswith("T")]
         st = c["share_title"] + (" · " + new[-1] if new else "")
         out = out.replace('<meta property="og:title" content="%s">' % E(c["title"]), '<meta property="og:title" content="%s">' % E(st), 1)
-    k = len([d for d in days(comp) if d[2] or d[0].startswith("T")])
+    k = len([d for d in days(comp) if d[2] or d[0] != "P"])
     out = out.replace('<main id="v4-main">', '<main id="v4-main" class="gf" style="--n:%d">' % k, 1)
     out = out.replace("<!-- site-schema -->", '<link rel="stylesheet" href="v4-gallery.css?v=%s">\n<!-- site-schema -->' % M.ver("v4-gallery.css"), 1)
     out = out.replace("</body>", '<script defer src="v4-gallery.js?v=%s"></script>\n</body>' % M.ver("v4-gallery.js"), 1)
-    body = out.split('<main id="v4-main" class="gf"')[1].split("</main>")[0]
+    if c.get("landing"):         # the event landing page: its own styles and script after the gallery's
+        out = out.replace('<main id="v4-main" class="gf"', '<main id="v4-main" class="gf ev" data-ev="%s"' % c["season"], 1)
+        out = out.replace('<!-- site-schema -->', '<link rel="stylesheet" href="v4-event.css?v=%s">\n<!-- site-schema -->' % M.ver("v4-event.css"), 1)
+        out = out.replace('</body>', '<script defer src="v4-event.js?v=%s"></script>\n</body>' % M.ver("v4-event.js"), 1)
+    body = out.split('<main id="v4-main" class="gf')[1].split("</main>")[0]
     assert "drive.google" not in body, "a Drive link on " + c["page"]
     return out
 
@@ -500,4 +784,5 @@ if __name__ == "__main__":
     for comp in which:
         s = page(comp)
         open(os.path.join(V4, COMPS[comp]["page"]), "w").write(s)
-        print("wrote prototypes/v4/%s (%d photos)" % (COMPS[comp]["page"], len(photos(comp))))
+        print("wrote prototypes/v4/%s (%s)" % (COMPS[comp]["page"], "%d photos" % len(photos(comp)) if COMPS[comp].get("folder")
+                                                else "%d films" % sum(len(v) for _, v in COMPS[comp]["stops"])))

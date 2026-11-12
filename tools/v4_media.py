@@ -195,17 +195,25 @@ def now_title(v):
 UPCOMING = [
     {"key": "tapalpa", "name": "SRS Tapalpa", "place": "Mexico", "edition": "SRS Advance Edition", "where": "Tapalpa, Mexico",
      "first": "2026-11-08", "last": "2026-11-14", "dates": "8 to 14 Nov 2026", "short": "8 to 14 Nov",
-     "facts": "7 tasks, 116 pilots from 44 countries", "page": "media-srs-tapalpa-2026.html"},
+     "facts": "7 tasks, 116 pilots from 44 countries", "page": "media-srs-tapalpa-2026.html",
+     "nick": "Tapalpa", "pic": "https://paraglidingatlas-maker.github.io/media-2026/srs-tapalpa/SRS_6_T1_62-800.webp"},
 ]
 # the comps covered in 2026, in date order (R1); span: the days on the season line (Piedrahita: the comp's own dates;
 # the other two: the days their films and broadcasts came out)
+# page: the event's own landing page (chat 22, tools/v4_comp_gallery.py), which its row opens; go: the row's link words;
+# nick: its name on the event pages' season line; pic: its tile in their season foot (PWC: a frame of the owner's own
+# film; Bassano: a frame of the owner's broadcast, with its live overlay; both [to supply] by owner-chosen stills)
 SEASON = [
     {"comp": "pwc", "name": "PWC Super Final", "edition": "15th Paragliding World Cup Super Final", "where": "Pegalajar, Spain",
-     "when": "May 2026", "made": "5 highlight videos"},
+     "when": "May 2026", "made": "5 highlight videos", "page": "media-pwc-pegalajar-2026.html", "go": "Films",
+     "nick": "PWC", "pic": "https://i.ytimg.com/vi/BRAX1XMU390/maxres1.jpg"},
     {"comp": "srs4", "name": "SRS Bassano", "edition": "SRS Skywalk Bassano Edition", "where": "Monte&nbsp;Grappa, Italy",
-     "when": "May 2026", "made": "Live commentary: 5 broadcasts, 21&nbsp;h&nbsp;42&nbsp;min on air"},
+     "when": "May 2026", "made": "Live commentary: 5 broadcasts, 21&nbsp;h&nbsp;42&nbsp;min on air",
+     "page": "media-srs-bassano-2026.html", "go": "Broadcasts", "nick": "Bassano", "pic": "https://i.ytimg.com/vi/PEyO6MXngUw/maxres1.jpg"},
     {"comp": "srs5", "name": "SRS Piedrahita", "edition": "SRS BGD Edition", "where": "Piedrahita, &Aacute;vila, Spain",
-     "when": "22 to 29 Aug 2026", "made": "Stills and 3 highlight videos", "span": ("2026-08-22", "2026-08-29")},
+     "when": "22 to 29 Aug 2026", "made": "Stills and 3 highlight videos", "span": ("2026-08-22", "2026-08-29"),
+     "page": "media-srs-piedrahita-2026.html", "go": "Photos and films", "nick": "Piedrahita",
+     "pic": "https://paraglidingatlas-maker.github.io/media-2026/srs-piedrahita/SRS_5_T3_63-800.webp"},
 ]
 LINE = (datetime.date(2026, 5, 1), datetime.date(2026, 12, 1))   # the 2026 season line, 1 May to 1 Dec
 
@@ -221,6 +229,22 @@ def span(ev):
         ds = [day(v[4]) for v in V.values() if v[0] == ev["comp"]]
         a, b = min(ds), max(ds)
     return a, b
+
+
+def season():
+    """the whole 2026 season in date order, from SEASON and UPCOMING (the one place both lists live): what the event
+    pages' season line, their prev/next row and their season foot read (tools/v4_comp_gallery.py)"""
+    out = []
+    for ev in SEASON:
+        a, b = span(ev)
+        out.append(dict(key=ev["comp"], name=ev["name"], nick=ev["nick"], edition=ev["edition"], where=ev["where"],
+                        when=ev["when"], tag=ev["when"].replace(" 2026", ""), made=ev["made"], first=a, last=b,
+                        page=ev["page"], pic=ev["pic"], go=ev["go"]))
+    for u in UPCOMING:
+        out.append(dict(key=u["key"], name=u["name"], nick=u["nick"], edition=u["edition"], where=E(u["where"]),
+                        when=u["dates"], tag=u["short"], made=E(u["facts"]), first=day(u["first"]), last=day(u["last"]),
+                        page=u["page"], pic=u["pic"], go="Photos and films"))
+    return sorted(out, key=lambda e: e["first"])
 
 
 def next_up():
@@ -446,8 +470,10 @@ def reach():
         rows.append('<li class="e-row" data-i="%d" style="--v:%.4f"><span class="e-row-d">%s</span>'
                     '<span class="e-row-n"><b>%s</b><small><span>%s</span><span class="e-row-sep"> &middot; </span><span class="e-row-w">%s</span></small></span><span class="e-row-m">%s</span>'
                     '<span class="e-row-bar" aria-hidden="true"><i></i></span><span class="e-row-v">%s<small> views</small></span>'
-                    '<a class="e-watch" href="#watch" data-comp="%s" aria-label="Watch the %s videos">Watch <i aria-hidden="true">&rarr;</i></a></li>'
-                    % (i, v / top, ev["when"], ev["name"], ev["edition"], ev["where"], ev["made"], n(v), ev["comp"], ev["name"]))
+                    # chat 22: each row opens its event's own page (was the Watch sheet)
+                    '<a class="e-watch" href="%s" aria-label="%s: %s">%s <i aria-hidden="true">&rarr;</i></a></li>'
+                    % (i, v / top, ev["when"], ev["name"], ev["edition"], ev["where"], ev["made"], n(v), E(ev["page"]), ev["name"],
+                       ev["go"].lower(), ev["go"]))
     up = next_up()
     if up:
         a, b = day(up["first"]), day(up["last"])
