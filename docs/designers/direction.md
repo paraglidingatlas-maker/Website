@@ -25,6 +25,13 @@ v4 home page (chat 10's job).
 
 ## Decision log (newest first)
 
+- **12 Nov 2026 (chat 22), newsletter contest verdict (the chat; the owner may overrule).** F "The Task Line" wins:
+  it opens on the whole 2026 season (the owner asked to tell subscribers "what I've been doing", not only Tapalpa),
+  then Tapalpa task by task, and fits the mixed voice (portrait and a personal opener, then brand sections). Taken
+  from D: one solid orange button only (the photos), everything else text links or outlines. Taken from G: the inbox
+  craft (live text, images-off reading, dark-mode check in Gmail on iPhone) and G builds the MailerLite draft. E's
+  zoom meter is dropped (it needs custom HTML and adds little in an inbox). Images: assets/email/newsletter-2026-11/.
+
 - **12 Nov 2026 (chat 22), contest verdict (the chat, the owner may overrule).** Event landing pages: F "The Season
   Opens Here" wins. The landing page IS the event's gallery page (same URL), opening on the place, its facts and the
   2026 season line that fans out into the event's task line, all on the first phone screen; prev/next event row; the
