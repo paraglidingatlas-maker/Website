@@ -12,3 +12,7 @@
   the YouTube-style rounded rectangle the owner approved on the galleries (.gff-btn in v4-gallery.css; .md-play in
   v4-media.css matches it): about 16:11, radius ~14px, dark see-through at rest, YouTube red #f00 on hover. Audio
   players (episodes, live show) are not videos and keep their own controls.
+- Share links (owner, 12 Nov 2026): every photo and film on the site has a Share button (prototypes/v4/v4-share.js
+  and v4-share.css: <button type="button" data-share></button>, optional data-share-url / data-share-title). It
+  opens the device's own share sheet, else a panel (Copy link, WhatsApp, Telegram, Email, Facebook, X). Any new
+  media you add gets one. Photos share the site link (page#photo-name opens it); films share their YouTube link.
