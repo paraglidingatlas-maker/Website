@@ -201,6 +201,7 @@
     pxEl.textContent = a.getAttribute("data-W") + " × " + a.getAttribute("data-H") + " px";
     if (crEl) { if (crEl._d == null) crEl._d = crEl.textContent; crEl.textContent = info.cred ? "Photo: " + info.cred : crEl._d; }
     pos.textContent = (Z.i + 1) + " of " + Z.set.length;
+    lb.style.setProperty("--gfv-p", ((Z.i + 1) / Z.set.length).toFixed(4));   // the dock's line on a phone
     bPrev.disabled = Z.i <= 0; bNext.disabled = Z.i >= Z.set.length - 1;
     save.href = url(a, 2400); save.setAttribute("download", stem + ".jpg");
     if (origEl) { if (data.orig) { origEl.href = data.orig + stem + ".jpg"; origEl.hidden = false; } else origEl.hidden = true; }
@@ -209,7 +210,8 @@
     copy.textContent = "Copy name"; payNote.classList.remove("is-lit");
     apply();
     setHash("#" + stem);
-    if (shareB) { shareB.setAttribute("data-share-url", "/photo/" + stem + ".html");   // its own preview page (v4_comp_gallery.py share_stubs) shareB.setAttribute("data-share-title", whereEl.textContent); }
+    // Share: the photo's own preview page (v4_comp_gallery.py share_stubs), so a link preview shows this photo
+    if (shareB) { shareB.setAttribute("data-share-url", "/photo/" + stem + ".html"); shareB.setAttribute("data-share-title", whereEl.textContent); }
   }
   function openLb(a, o) {
     o = o || {};
