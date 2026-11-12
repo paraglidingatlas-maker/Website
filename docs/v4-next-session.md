@@ -69,7 +69,19 @@ give the owner the prompt to paste.
   is in "Newsletter", then the test address can go (the owner deleted/re-adds it themselves).
 - PWC Day 1 thumbnail with 2027 -> 2026 made (scratchpad copy sent to the owner; Inter Regular, patch invisible).
 
+- LIVE 12 Nov 23:20 UTC (main cd3fa57c): photo/ previews, Share, the phone dock (glass capsule, which the owner finds
+  "odd": being replaced, see job 0).
+- On branch claude/chat23-newsletter, NOT live: Download (one tap, no share sheet; "Download" + "W × H px · size",
+  the copy fetched quietly after 0.9 s on a photo; iPhone says "Saved to Files"), in v4-gallery.js/css and the
+  viewer markup in v4_comp_gallery.py.
+
 **Chat 24's job.**
+0. FIRST: the owner picks the photo viewer's controls from three designer samples (brief
+   docs/designers/viewer-controls-brief.md; samples prototypes/v4/samples/viewer-d|e|f/ with phone.png and
+   desktop.png, sent to the owner 12 Nov ~23:45 UTC: D "Edge Code" film-edge ruler, E "Heading Tape" instrument
+   tape, F "The Task Line" fisheye task line). Build the winner into the real viewer (replace chat 23's phone dock
+   at the end of v4-gallery.css; keep pinch, swipe, swipe-down close; keep the Download logic), phone first, then
+   gates and push together with Download. Merge from claude/chat23-newsletter first.
 1. YouTube (vidIQ): the owner must open the vidIQ verification link (youtube_mfa) and say done; then
    update_video yhHoRUJtyOY title "Miguel Gutiérrez Explains Flying in Tapalpa, Mexico during SRS - Advance Edition 2026"
    (owner asked "can you change?") and update_video_thumbnail FOuAWMeoxs4 with the fixed thumbnail (owner: "can you
