@@ -206,7 +206,7 @@
     bPrev.disabled = Z.i <= 0; bNext.disabled = Z.i >= Z.set.length - 1;
     save.href = url(a, 2400); save.setAttribute("download", stem + ".jpg");
     if (origEl) { if (data.orig) { origEl.href = data.orig + stem + ".jpg"; origEl.hidden = false; } else origEl.hidden = true; }
-    resetSave();
+    resetSave(); meta(a); warm(a);
     [].forEach.call(refs, function (r) { r.textContent = stem; });
     copy.textContent = "Copy name"; payNote.classList.remove("is-lit");
     apply();
@@ -352,11 +352,22 @@
     else if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
   });
 
-  /* ---------------------------------------------------------------- Save, free: the 2400 web copy, by name */
-  var saveLabel = save.textContent;
-  function resetSave() { save.textContent = saveLabel; save.classList.remove("is-busy"); save.removeAttribute("aria-busy"); }
-  function say(t, busy) { save.textContent = t; save.classList.toggle("is-busy", !!busy); if (busy) save.setAttribute("aria-busy", "true"); else save.removeAttribute("aria-busy"); }
-  function toFile(stem) { var b = blobs[stem]; try { return new File([b], stem + ".jpg", { type: b.type || "image/jpeg" }); } catch (e) { return null; } }
+  /* ---------------------------------------------------------------- Download: the 2400 web copy, by name.
+     Owner, 12 Nov 2026: one tap saves the file (no share sheet); the button shows the photo's resolution and, once
+     the copy is fetched, its size. The copy is fetched quietly after a short look at a photo (not on Save-Data), so
+     the tap is instant. iPhone Safari still asks "Download?" once and saves to Files: no website can skip that. */
+  var saveT = save.querySelector(".gfv-dl-t") || save, saveM = save.querySelector(".gfv-dl-m");
+  var saveLabel = saveT.textContent, pending = {}, warmT = 0;
+  var IOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var lean = !!(navigator.connection && navigator.connection.saveData);
+  function resetSave() { saveT.textContent = saveLabel; save.classList.remove("is-busy", "is-done"); save.removeAttribute("aria-busy"); }
+  function say(t, busy) { saveT.textContent = t; save.classList.toggle("is-busy", !!busy); if (busy) save.setAttribute("aria-busy", "true"); else save.removeAttribute("aria-busy"); }
+  function mb(n) { return n >= 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB"; }
+  function meta(a) {
+    if (!saveM || !a) return;
+    var stem = a.getAttribute("data-stem");
+    saveM.textContent = a.getAttribute("data-W") + " × " + a.getAttribute("data-H") + " px" + (blobs[stem] ? " · " + mb(blobs[stem].size) : "");
+  }
   function toJpeg(b) {   // WebP in, JPEG out (same pixels, quality .92); the WebP itself if the browser cannot
     return new Promise(function (res) {
       var u = URL.createObjectURL(b), im = new Image();
@@ -371,19 +382,24 @@
       im.src = u;
     });
   }
+  function fetchCopy(a) {
+    var stem = a.getAttribute("data-stem");
+    if (blobs[stem]) return Promise.resolve(blobs[stem]);
+    if (!pending[stem]) pending[stem] = fetch(url(a, 2400), { mode: "cors" }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.blob(); })
+      .then(toJpeg).then(function (b) { blobs[stem] = b; delete pending[stem]; if (Z.set[Z.i] === a) meta(a); return b; },
+                         function (e) { delete pending[stem]; throw e; });
+    return pending[stem];
+  }
+  function warm(a) {   // a short look at a photo fetches its copy, so Download is one instant tap
+    clearTimeout(warmT);
+    if (lean || !w.fetch || !w.Blob) return;
+    warmT = setTimeout(function () { if (lb.open && Z.set[Z.i] === a) fetchCopy(a).catch(function () {}); }, 900);
+  }
   function deliver(stem) {
-    var file = toFile(stem), touch = w.matchMedia && matchMedia("(pointer: coarse)").matches;
-    if (touch && file && navigator.canShare && navigator.canShare({ files: [file] })) {
-      // phones: the share sheet (Save Image puts it in Photos; or straight into Instagram or WhatsApp)
-      return navigator.share({ files: [file], title: stem }).then(function () { say("Saved"); }, function (err) {
-        if (err && err.name === "AbortError") { resetSave(); return; }
-        say("Tap again to save");   // the fetch took longer than the tap allows: the copy is ready now
-      });
-    }
-    var u = URL.createObjectURL(blobs[stem]), a = d.createElement("a");
-    a.href = u; a.download = stem + (blobs[stem].type === "image/jpeg" ? ".jpg" : ".webp"); a.style.display = "none"; d.body.appendChild(a); a.click(); a.remove();
+    var b = blobs[stem], u = URL.createObjectURL(b), x = d.createElement("a");
+    x.href = u; x.download = stem + (b.type === "image/jpeg" ? ".jpg" : ".webp"); x.style.display = "none"; d.body.appendChild(x); x.click(); x.remove();
     setTimeout(function () { URL.revokeObjectURL(u); }, 4000);
-    say("Saved");
+    say(IOS ? "Saved to Files" : "Downloaded"); save.classList.add("is-done");
   }
   save.addEventListener("click", function (e) {
     var a = Z.set[Z.i]; if (!a || !w.fetch || !w.Blob) return;   // no fetch: the plain link opens the copy
@@ -391,9 +407,11 @@
     var stem = a.getAttribute("data-stem");
     if (blobs[stem]) { deliver(stem); return; }
     say("Getting it", true);
-    fetch(url(a, 2400), { mode: "cors" }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.blob(); })
-      .then(toJpeg).then(function (b) { blobs[stem] = b; if (Z.set[Z.i] === a) deliver(stem); })
-      .catch(function () { resetSave(); w.open(url(a, 2400), "_blank", "noopener"); });
+    fetchCopy(a).then(function () {
+      if (Z.set[Z.i] !== a) return;
+      if (IOS) { say("Ready: tap to save"); return; }   // Safari only downloads straight from a tap
+      deliver(stem);
+    }).catch(function () { resetSave(); w.open(url(a, 2400), "_blank", "noopener"); });
   });
 
   /* ---------------------------------------------------------------- Original, EUR 1: the sheet */

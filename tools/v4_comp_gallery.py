@@ -516,7 +516,7 @@ def render(comp):
   <div class="gfv-foot">
     <div class="gfv-meta"><b class="gfv-name"></b><span class="gfv-where"></span></div>
     <div class="gfv-acts">
-      <a class="btn-lines gfv-save" href="#" download data-hover>Save, free</a>
+      <a class="btn-lines gfv-save" href="#" download data-hover><span class="gfv-dl-t">Download</span><small class="gfv-dl-m"></small></a>
       <button class="gfv-share" type="button" data-share></button>
       <a class="gfv-orig" href="#" rel="nofollow" hidden>Full-size original</a>
       <a class="btn-solid gfv-patreon" href="%(patreon)s" target="_blank" rel="noopener" data-hover><span><small>Like what you see?</small>Join me on Patreon</span></a>
