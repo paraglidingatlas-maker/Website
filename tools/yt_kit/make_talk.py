@@ -60,11 +60,12 @@ def ts(s):
 def inout(sel, total, a, b, start=0, inms=650, outms=500, stagger=0, ke=None):
     """sel goes a -> b at start (inms), holds, and back to a in the last outms"""
     k1 = dict(a); k2 = dict(b, offset=round((start + inms) / total, 5))
+    k0 = [dict(a, offset=round(start / total, 5))] if start > 0 else []
     k3 = dict(b, offset=round((total - outms) / total, 5), easing=OUT_E); k4 = dict(a)
     import json
     o = {"duration": total, "stagger": stagger}
     if ke: o["ke"] = ke
-    return "A(%s,%s,%s);\n" % (json.dumps(sel), json.dumps([k1, k2, k3, k4]), json.dumps(o))
+    return "A(%s,%s,%s);\n" % (json.dumps(sel), json.dumps([k1] + k0 + [k2, k3, k4]), json.dumps(o))
 
 
 FADE = ({"opacity": 0}, {"opacity": 1})
@@ -77,14 +78,18 @@ def page(body, script, bg=""):
 
 
 # ------------------------------------------------------------------ the overlays ----
+def shade(cls):
+    """the see-through shade behind the opener or the career line, as one still (put it under the clip, fade 0.5 s)"""
+    return page('<div class="%s"></div>' % cls, ""), 0
+
+
 def opener():
     T = 4200
-    body = ('<div class="shade"></div><div class="tri o-tri"><i></i><i></i><i></i></div>'
+    body = ('<div class="tri o-tri"><i></i><i></i><i></i></div>'
             '<div class="o-kick sh">%s</div><div class="o-name sh">%s</div><div class="o-line"></div>%s'
             '<img class="o-atlas" src="src/atlas.png">') % (
         SERIES, "".join("<span>%s</span>" % w for w in NAME.split()), LOCK)
-    sc = inout(".shade", T, *FADE, inms=700, outms=600, ke="linear")
-    sc += inout(".o-tri", T, {"opacity": 0, "transform": "skewX(-14deg) scaleY(0)"}, {"opacity": 1, "transform": "skewX(-14deg) scaleY(1)"}, start=100, inms=700)
+    sc = inout(".o-tri", T, {"opacity": 0, "transform": "skewX(-14deg) scaleY(0)"}, {"opacity": 1, "transform": "skewX(-14deg) scaleY(1)"}, start=100, inms=700)
     sc += inout(".o-kick", T, *LEFT, start=250)
     sc += inout(".o-name span", T, {"opacity": 0, "transform": "translateX(-140px)"}, {"opacity": 1, "transform": "none"}, start=380, inms=750, stagger=0)
     sc += "document.querySelectorAll('.o-name span')[1].getAnimations()[0].effect.updateTiming({delay:110});\n"
@@ -114,13 +119,12 @@ def career(c):
     t0 = items[0][2] - 1.2
     T = int((items[-1][2] + 2.6 - t0) * 1000)
     xs = [300 + 270 + i * (3240 - 540) / 5 for i in range(6)]
-    body = '<div class="band"></div><div class="cl-kick sh">%s <b>&middot;</b> In his words</div>' % NAME
+    body = '<div class="cl-kick sh">%s <b>&middot;</b> In his words</div>' % NAME
     body += '<div class="cl-base"></div><div class="cl-fill"></div>'
     for i, (y, t, _) in enumerate(items):
         body += '<div class="cl-it it%d%s" style="left:%dpx"><div class="y sh">%s</div><i></i><div class="t sh">%s</div></div>' % (
             i, " last" if i == 5 else "", xs[i], y, t)
-    sc = inout(".band", T, *FADE, inms=800, outms=700, ke="linear")
-    sc += inout(".cl-kick,.cl-base", T, *FADE, start=200, inms=700, ke="linear")
+    sc = inout(".cl-kick,.cl-base", T, *FADE, start=200, inms=700, ke="linear")
     # the orange line grows from dot to dot, reaching each as its year is said
     import json
     kf = [{"transform": "scaleX(0)", "opacity": 1}]
@@ -263,10 +267,12 @@ async def main(srt_path, out, only):
     c = srt(srt_path)
     src = os.path.join(out, "src")
     jobs, sheet = [], []
+    jobs.append(("01b_OpenerShade", *shade("shade"), True)); sheet.append(("01b_OpenerShade", 0.0, 4.2, "Still picture under the opener; fade in 0.5 s, out 0.5 s"))
     jobs.append(("01_Opener", *opener(), True)); sheet.append(("01_Opener", 0.0, 4.2, "Over the first seconds of the talk"))
     pl = word(c, 2, "Siegel") + 2.0   # after the opener has gone
     jobs.append(("02_NamePlate", *plate(), True)); sheet.append(("02_NamePlate", pl, 6.5, "He has just said his name"))
     h, T, t0, items = career(c)
+    jobs.append(("03b_CareerBand", *shade("band"), True)); sheet.append(("03b_CareerBand", t0, T / 1000, "Still picture under the career line; fade in 0.5 s, out 0.5 s"))
     jobs.append(("03_CareerLine", h, T, True)); sheet.append(("03_CareerLine", t0, T / 1000, "Years pop in as he says them: " + ", ".join("%s at %s" % (y, ts(a)) for y, _, a in items)))
     h, T, t0, items = brands(c)
     jobs.append(("04_Brands", h, T, True)); sheet.append(("04_Brands", t0, T / 1000, "Chips pop in as he says them: " + ", ".join("%s at %s" % (b, ts(a)) for b, _, a in items)))
@@ -298,10 +304,11 @@ async def main(srt_path, out, only):
             continue
         fr = os.path.join(out, "frames", nm)
         await frames(html, T, fr, alpha, src)
-        if alpha:
+        if T == 0:
+            shutil.copy(fr + "/00000.png", os.path.join(out, nm + "_4K_transparent.png"))
+        elif alpha:
             mov(fr, os.path.join(out, nm + "_4K60_transparent.mov"))
-            if nm not in ("01_Opener", "03_CareerLine"):   # these two need a see-through shade a GIF cannot hold
-                gif(fr, os.path.join(out, nm + "_1080p_transparent.gif"))
+            gif(fr, os.path.join(out, nm + "_1080p_transparent.gif"))
             shutil.copy("%s/%05d.png" % (fr, int(T * FPS / 1000 * 0.5)), os.path.join(out, "preview_" + nm + ".png"))
         else:
             ff("-framerate", str(FPS), "-i", fr + "/%05d.png", "-vf", "tpad=stop_mode=clone:stop_duration=13.4", "-c:v", "libx264",
