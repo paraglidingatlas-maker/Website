@@ -38,6 +38,59 @@ https://paraglidingatlas.com/media-srs-tapalpa-2026.html#film-task-1 (Task 1, ht
 - **Not done:** Piedrahita's three videos still use the older small frames (gf-vids). Giving them the band means
   picking two posters from its 325 photos (ask the owner first).
 
+## Chat 24 starts here (13 Nov 2026, from chat 23): the newsletter (waiting on the owner), YouTube fixes, Share on more pages
+**Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
+has grown long, hand over without asking the owner: write the handover at the top of this file, update the
+owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
+chat yourself with the session tools (create_session), and give the owner its link. If create_session is refused,
+give the owner the prompt to paste.
+
+**Done by chat 23 (12 Nov, LIVE on main unless marked).**
+- Play buttons: .md-play (Media page, event pages) is the YouTube-style rounded rectangle, like .gff-btn. Standing
+  rule in .claude/CLAUDE.md: never a round play button on a video.
+- Tapalpa: "116 pilots, 25 countries" (owner's answer, 12 Nov; chat 21 told). Designer G is named "Tailwind".
+- Share (standing rule in .claude/CLAUDE.md): prototypes/v4/v4-share.js + v4-share.css, loaded by v4_media.shell() on
+  the Media page and every event/gallery page. <button type="button" data-share></button>: navigator.share where the
+  browser has it, else a panel (Copy link, WhatsApp, Telegram, Email, Facebook, X; no Messenger: it needs a Facebook
+  app id we do not have). On: the photo viewer (beside Save), the film theatre, each film chapter (event pages),
+  the Media page's film line. Films share their YouTube link; photos share photo/<stem>.html.
+- Photo previews: tools/v4_comp_gallery.py share_stubs() writes photo/<stem>.html at the repo ROOT (809 now), one
+  per photo: noindex, its own og tags (the photo's 1600 webp: WhatsApp shows webp, checked by the owner's screenshot;
+  title "Task n · date · comp"; the day's own credit, e.g. Practice @paco_peciado), and an instant forward to
+  https://paraglidingatlas.com/<gallery>#<stem> (absolute: the galleries exist only in prototypes/v4 until deploy,
+  so the root audit would call a relative link broken). Written on every v4_comp_gallery.py run; chat 21 told to
+  git add photo/ nightly. [push pending at handover: see below]
+- Photo viewer on a phone (<=820px): a one-handed dock under the photo (back, "n of N" with an orange progress line
+  --gfv-p, next; close beside it), v4-gallery.css end of file; desktop unchanged. [push pending at handover]
+- Google Form -> MailerLite: tools/forms_to_mailerlite.gs, installed by the owner in Apps Script ("Mailerlite form",
+  bound to the form "Paragliding Atlas Newsletter", which asks only for an email). Trigger On form submit; script
+  properties MAILERLITE_TOKEN and MAILERLITE_GROUP=199520762834454427 ("Newsletter", where all 28 are). Tested: a
+  signup arrived in seconds (source api). The owner re-tests after the group was added: check the newest subscriber
+  is in "Newsletter", then the test address can go (the owner deleted/re-adds it themselves).
+- PWC Day 1 thumbnail with 2027 -> 2026 made (scratchpad copy sent to the owner; Inter Regular, patch invisible).
+
+**Chat 24's job.**
+1. YouTube (vidIQ): the owner must open the vidIQ verification link (youtube_mfa) and say done; then
+   update_video yhHoRUJtyOY title "Miguel Gutiérrez Explains Flying in Tapalpa, Mexico during SRS - Advance Edition 2026"
+   (owner asked "can you change?") and update_video_thumbnail FOuAWMeoxs4 with the fixed thumbnail (owner: "can you
+   fix"). Redo the fix if the file is gone: maxresdefault, the two 7s of "12.05.2027 - 23.05.2027" at x 599-615 and
+   833-849, y 656-682, Inter Regular 37px white, background filled by a per-row blend. A fresh call gives a fresh link.
+2. Newsletter (MailerLite DRAFT 203910238840031114; copy docs/emails/newsletter-01-tapalpa.html.txt): when the owner
+   sends the new YouTube video link, update: 12 Nov cancelled for weather, Task 5 on 13 Nov, Task 6 on 14 Nov, no
+   Task 7 ("4 of 7" and "Tasks 5 to 7 to come" are wrong), Task 4 has NO film (owner confirmed: photos only), the
+   new video, the latest provisional SRS results (api.airtribune.com/srs/scores/?indx=1&comp=9, T6.n), Tasks 5 and 6
+   films if chat 21 sends them. Owner still to give (asked once, do not nag): who Miguel Gutiérrez is, the footer's
+   postal address, their opener words, the send date. Preview to the owner; NEVER send/schedule/test-send without
+   their explicit yes.
+3. Share on more pages: proposed to the owner, waiting for which: the 96 episode pages, the 25 knowledge base
+   articles, trip and destination pages, the Atlas map points (their data already has shareUrl).
+4. Owner's answers already given (12 Nov): PWC/Bassano facts and own stills: forget it. Piedrahita film posters:
+   keep F's. Google Form stays (now synced). Own 1200x630 preview images: no, YouTube's are good.
+5. Pushes: chat 21 (session_018Da7i74T9xiAv1VY2PfhYw) runs Tapalpa until 14 Nov; message it before any push to
+   main; no pushes to main 02:30 to 08:00 UTC on photo nights; never forced; merge, don't rebase; build in a clean
+   worktree (./build.sh, tools/v4_build.py), tools/v4_gates.py (FAIL live-untouched and the audit's sitemap lastmod
+   FAIL are the known ones). Local checks: serve the REPO ROOT and open /prototypes/v4/<page> (pages load ../../ CSS).
+
 ## Chat 23 starts here (12 Nov 2026, from chat 22): the newsletter update and send, then the owner's open list
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
 has grown long, hand over without asking the owner: write the handover at the top of this file, update the
