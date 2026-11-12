@@ -8,3 +8,7 @@
   asking the owner: write the handover at the top of docs/v4-next-session.md, update the map, open the next numbered
   chat yourself with the session tools (create_session), and give the owner its link. Copy this rule into every
   handover so it carries on.
+- Video play buttons (owner, 12 Nov 2026): never a round/circle play button on the site. Every video play button is
+  the YouTube-style rounded rectangle the owner approved on the galleries (.gff-btn in v4-gallery.css; .md-play in
+  v4-media.css matches it): about 16:11, radius ~14px, dark see-through at rest, YouTube red #f00 on hover. Audio
+  players (episodes, live show) are not videos and keep their own controls.

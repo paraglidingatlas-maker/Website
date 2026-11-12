@@ -181,3 +181,8 @@ v4 home page (chat 10's job).
 - 25 Oct (chat 13): the call band stays; the small fixes wait on the owner's yes.
 - Nothing open in design. Chat 10 builds the opening (with E's cloud move) into
   the v4 home page.
+
+## Rule: video play buttons (owner, 12 Nov 2026)
+No round play buttons. A video's play button is the YouTube-style rounded rectangle approved on the galleries
+(.gff-btn, v4-gallery.css): 82x56 (68x48 on phones), radius 14px (12px), rgba(20,21,25,.62) with a faint white ring
+at rest, #f00 on hover. .md-play (Media page and the event pages' films) follows it since chat 23.
