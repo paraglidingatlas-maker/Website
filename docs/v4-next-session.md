@@ -38,6 +38,46 @@ https://paraglidingatlas.com/media-srs-tapalpa-2026.html#film-task-1 (Task 1, ht
 - **Not done:** Piedrahita's three videos still use the older small frames (gf-vids). Giving them the band means
   picking two posters from its 325 photos (ask the owner first).
 
+## Chat 22 starts here (12 Nov 2026): event landing pages, then the newsletter (design contest)
+**Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
+has grown long, hand over without asking the owner: write the handover at the top of this file, update the
+owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
+chat yourself with the session tools (create_session), and give the owner its link. If create_session is refused,
+give the owner the prompt to paste.
+
+**The owner's request (12 Nov, verbatim in spirit):** "every event page to have its own landing page which is immersive
+and easy to navigate; feel free to apply 3 designers to run a contest between them to make a most viable page; and
+also I need to design a newsletter to update my subscribers of what I've been doing. After the landing pages of media
+are complete, ask the 4 designers to design the newsletter." (The standing designers are the agents designer-d
+"Trim", designer-e "Cloudbase", designer-f "Turnpoint"; the fourth is [to supply]: ask the owner whether "4" means
+the three plus the Juror, or a fourth designer.)
+
+**The events (tools/v4_media.py SEASON and UPCOMING, the Media page's "The 2026 season"):** PWC Super Final (May 2026,
+Pegalajar, 5 highlight videos), SRS Bassano (May 2026, Monte Grappa, live commentary: 5 broadcasts), SRS Piedrahita
+(22 to 29 Aug, stills and 3 highlight videos, gallery media-srs-piedrahita-2026.html), SRS Tapalpa (8 to 14 Nov, on air:
+gallery media-srs-tapalpa-2026.html with Tasks 1 to 4 so far, the task films, the link picture). Today the season rows
+open a "Watch" sheet on the Media page; the owner wants each event to open its own landing page. Piedrahita and Tapalpa
+already have gallery pages (tools/v4_comp_gallery.py): decide with the designers whether the landing page IS the
+gallery page made more immersive, or a page above it. Nothing invented: facts only from the repo, SRS/airtribune and
+the owner's YouTube (vidIQ); a missing fact is [to supply].
+
+**Done by chat 21 on 12 Nov (live):** the Media page's Tapalpa row ("On air now") links to its gallery ("Photos and
+films"), and every season row is clickable across its whole width (tools/v4_media.py, v4-media.css).
+
+**Process:** run the three designers on the landing pages (one shared brief, each a full direction, judged; the Juror
+only with the owner's yes to its time and cost), build the winner with the best of the others, phone first, gates
+(./build.sh, tools/v4_build.py in a clean worktree, tools/v4_gates.py; the live-untouched FAIL is the known old one).
+Then the newsletter: the designers design it (MailerLite is connected; build it as a DRAFT only, never send or
+schedule; every subscriber email waits for the owner's explicit yes). Newsletter content plan chat 21 proposed on
+10 Nov: Tapalpa so far (Task 1 Groeneveld, Task 2 stopped by rain, Castro; Task 3 Varga, 88 in goal; Task 4 82.4 km,
+nobody in goal, Brian Duffy furthest), standings, the photos page, the films, the Miguel Gutierrez talk, Patreon line.
+Wait for the owner's answers on audience, send time and voice.
+
+**Pushes:** chat 21 still runs the Tapalpa days (photos each evening, films on the page) until 14 Nov and pushes to
+main for them. Work on your own branch; before any push to main, send chat 21 (session_018Da7i74T9xiAv1VY2PfhYw) a
+message and merge from origin/main first (never forced, merge, don't rebase). GitHub Pages still double-deploys
+(Settings > Pages > Source should be "GitHub Actions": the owner has not switched it yet).
+
 ## Chat 21 starts here (9 Nov 2026): Tapalpa, tasks 2 to 7 (9 to 14 Nov), the daily kit and photos
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
 has grown long, hand over without asking the owner: write the handover at the top of this file, update the
