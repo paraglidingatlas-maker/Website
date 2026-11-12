@@ -16,7 +16,7 @@
     var url = b.getAttribute("data-share-url"), vid;
     if (!url) { vid = box.querySelector("[data-vid]") || (box.parentNode && box.parentNode.querySelector("[data-vid]")); url = vid ? YT + vid.getAttribute("data-vid") : location.href.split("#")[0]; }
     var t = b.getAttribute("data-share-title");
-    if (!t) { var h = box.querySelector("[data-t], h3, h2, .gffv-t"); t = h ? h.textContent.trim() : ""; }
+    if (!t) { var h = box.querySelector("[data-t]") || box.querySelector(".gffv-t, h3, h2"); t = h ? h.textContent.trim() : ""; }
     var page = d.title;
     t = t ? t + " · " + page.replace(/: Paragliding Atlas$/, "") : page;
     return { url: abs(url), title: t, text: b.getAttribute("data-share-text") || t };
