@@ -6,6 +6,7 @@
 *{box-sizing:border-box;margin:0}
 html,body{width:3840px;height:2160px;overflow:hidden;background:transparent;-webkit-font-smoothing:antialiased}
 body.bg{background:radial-gradient(120% 90% at 20% 30%,#1a1d22 0%,#0b0d10 60%)}
+body.flat{background:#0b0d10}
 .tri{display:flex;gap:8px}.tri i{display:block;width:14px}
 .tri i:nth-child(1){background:var(--g)}.tri i:nth-child(2){background:#fff}.tri i:nth-child(3){background:var(--r)}
 .sh{text-shadow:0 6px 30px rgba(0,0,0,.55)}
