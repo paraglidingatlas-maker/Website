@@ -200,7 +200,8 @@
     whereEl.textContent = (info.name || "Task " + (di + 1)) + (info.label ? " · " + info.label : "");
     pxEl.textContent = a.getAttribute("data-W") + " × " + a.getAttribute("data-H") + " px";
     if (crEl) { if (crEl._d == null) crEl._d = crEl.textContent; crEl.textContent = info.cred ? "Photo: " + info.cred : crEl._d; }
-    pos.textContent = (Z.i + 1) + " of " + Z.set.length;
+    pos.innerHTML = "<b>" + (Z.i + 1) + "</b><i>/</i><span>" + Z.set.length + "</span>";   // "21 / 144" (the phone dock styles it)
+    pos.setAttribute("aria-label", "Photo " + (Z.i + 1) + " of " + Z.set.length);
     lb.style.setProperty("--gfv-p", ((Z.i + 1) / Z.set.length).toFixed(4));   // the dock's line on a phone
     bPrev.disabled = Z.i <= 0; bNext.disabled = Z.i >= Z.set.length - 1;
     save.href = url(a, 2400); save.setAttribute("download", stem + ".jpg");
