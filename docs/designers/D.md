@@ -1,5 +1,27 @@
 # Designer D, "Final Cut": notebook (newest first)
 
+## 12 Nov 2026: the first newsletter, contest round 1 ("The Day Sheet")
+**Asked.** docs/designers/newsletter-brief.md: the first email to all 28 subscribers (owner's opener, then brand
+sections): Tapalpa so far, the event pages, the Miguel Gutierrez talk, Patreon. Concept
+docs/designers/newsletter/D-concept.md, mock prototypes/v4/samples/newsletter-d/ (index.html, img/, shots). Worked
+alone (E, F and the new inbox designer G unseen). No MailerLite writes.
+**Found.** SRS scoring (meet 93) has four tasks, all provisional: T1 59.1 km Groeneveld (Tello first into goal, 26 in
+goal); T2 41.3 km stopped 14:40, Castro alone in goal; T3 58.7 km Varga, 88 in goal; T4 82.4 km nobody in goal,
+Duffy 65.6 km. Overall Tello 3137.6, Belcourt, Luebberke; Haynes first woman. Bill Belcourt is a past podcast guest.
+Task 4 film not out; the PWC and Bassano pages 404 live (branch only); the Gutierrez talk is YouTube yhHoRUJtyOY
+(53:23, 10 Nov UTC; title typo "Maxico"), not in the repo's episode list. The welcome promised four emails a month.
+The welcome letter is text in a picture; the new brief wants live text.
+**Proposed.** Dark, one column, 600 px: masthead, the gallery cover full width with a live caption, a short opener,
+the signature task strip (seven cells, live text, orange for flown with km, grey with dates to come: the home season
+line as email), one row per task (4:3 photo of that task, one true sentence, film and photo deep links), standings in
+live text with the Belcourt episode link, ONE solid button (every photo), the talk as text, the season as four rows,
+Patreon as an outline button in a raised panel, an honest footer. Images as JPEGs on the dark matte, logo baked onto
+the card colour (no rims), all sizes set, 22 KB HTML. Subject "Tapalpa, four tasks in"; preview "Four tasks flown,
+one stopped by rain, one with nobody in goal. The photos and films are up."
+**Recommended** it. Why: the results are in the email itself, readable with images off, and every click lands on the
+right task; one button keeps the ask clear. Flags for the send day: refresh results and counts, push or drop the two
+404 pages, Task 4 film, Gutierrez's one line, postal address.
+
 ## 12 Nov 2026: event landing pages, contest round 1 ("Final Cut, the event")
 **Asked.** docs/designers/event-brief.md: one immersive, easy landing page per event; a concept
 (docs/designers/events/D-concept.md) and a working sample, prototypes/v4/samples/event-d/ (index.html SRS Piedrahita,
