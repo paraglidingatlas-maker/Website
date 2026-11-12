@@ -102,7 +102,7 @@ TEMPLATE = """<!DOCTYPE html>
 <link rel="canonical" href="{canonical}">
 <meta http-equiv="refresh" content="0; url={rel}">
 <meta name="theme-color" content="#141519">
-<style>
+{social}<style>
 body{{background:#141519;color:#b4b4b4;font-family:system-ui,sans-serif;
   display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:2rem;text-align:center;}}
 a{{color:#ff7517;}}
@@ -115,6 +115,30 @@ a{{color:#ff7517;}}
 """
 
 
+def social(target, canonical):
+    """the destination's own link-preview tags (WhatsApp and the like read the stub, they do not follow the
+    refresh), so a shared old address still shows the page's title, words and picture (owner, 12 Nov 2026)"""
+    import re
+    here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    page = target.split("#")[0]
+    for f in (os.path.join(here, "prototypes", "v4", page), os.path.join(here, page)):
+        if os.path.exists(f):
+            src = open(f, encoding="utf-8", errors="ignore").read()
+            break
+    else:
+        return ""
+    out = []
+    for prop in ("og:type", "og:title", "og:description", "og:image"):
+        m = re.search(r'<meta property="%s" content="([^"]*)">' % prop, src)
+        if m:
+            out.append('<meta property="%s" content="%s">' % (prop, m.group(1)))
+    if not out:
+        return ""
+    out.append('<meta property="og:url" content="%s">' % canonical)
+    out.append('<meta name="twitter:card" content="summary_large_image">')
+    return "\n".join(out) + "\n"
+
+
 def build():
     written = []
     for old, target in sorted(REDIRECTS.items()):
@@ -124,7 +148,7 @@ def build():
         title = target.split("/")[-1].replace(".html", "").replace("-", " ").title()
         out = os.path.join(old, "index.html")
         os.makedirs(os.path.dirname(out), exist_ok=True)
-        html = TEMPLATE.format(title=title, canonical=canonical, rel=rel)
+        html = TEMPLATE.format(title=title, canonical=canonical, rel=rel, social=social(target, canonical))
         with open(out, "w", encoding="utf-8") as fh:
             fh.write(html)
         written.append(out)
