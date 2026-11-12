@@ -25,6 +25,14 @@ v4 home page (chat 10's job).
 
 ## Decision log (newest first)
 
+- **12 Nov 2026 (chat 22), contest verdict (the chat, the owner may overrule).** Event landing pages: F "The Season
+  Opens Here" wins. The landing page IS the event's gallery page (same URL), opening on the place, its facts and the
+  2026 season line that fans out into the event's task line, all on the first phone screen; prev/next event row; the
+  season listed at the foot. Taken from E: the films-only chapter rows and picture tiles in the season foot. Taken from
+  D: a 16:9 film frame stays 16:9 on a phone; Piedrahita's Day 1 film is not Task 1's; film posters are photos of the
+  same task. Why F: navigation and facts on the first screen, a once-only 1.2 s move (cheap on phones, unlike a
+  scroll-driven pull-back), and the home page's own season-line grammar. Tapalpa keeps its page until 14 Nov.
+
 - **12 Nov 2026 (chat 22), owner.** Every event on the Media page gets its own immersive, easy-to-navigate landing page,
   through a contest between D, E and F (brief docs/designers/event-brief.md, concepts in docs/designers/events/).
   Newsletter after the landing pages: "4 designers" = the three plus a NEW fourth designer (designer-g, the inbox
