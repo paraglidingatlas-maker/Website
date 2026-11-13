@@ -154,8 +154,12 @@
   var shareB = lb.querySelector(".gfv-share");
   var save = lb.querySelector(".gfv-save"), buy = lb.querySelector(".gfv-buy"), pay = lb.querySelector(".gfv-pay"), back = lb.querySelector(".gfv-back");
   var copy = lb.querySelector(".gfv-copy"), refs = lb.querySelectorAll(".gfv-ref-n, .gfv-ref-n2"), payNote = lb.querySelector(".gfv-paynote");
-  var rail = lb.querySelector(".gfv-rail"), cv = rail.querySelector("canvas"), mark = lb.querySelector(".gfv-mark");
-  var zPrev = lb.querySelector(".gfv-zprev"), zNext = lb.querySelector(".gfv-znext");
+  // a page built before the task line (the frozen event samples) has none of it: a detached stand-in keeps it working
+  var spare = d.createElement("div");
+  spare.innerHTML = '<div class="gfv-rail"><canvas></canvas><div class="gfv-mark"></div></div><button class="gfv-zprev"></button><button class="gfv-znext"></button>';
+  function part(c) { return lb.querySelector(c) || spare.querySelector(c); }
+  var rail = part(".gfv-rail"), cv = rail.querySelector("canvas"), mark = part(".gfv-mark");
+  var zPrev = part(".gfv-zprev"), zNext = part(".gfv-znext");
   var Z = { s: 1, x: 0, y: 0, ptrs: {}, pinch: null, moved: 0, closing: 0, set: [], i: 0, req: {}, got: {} };
   var blobs = {};
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
