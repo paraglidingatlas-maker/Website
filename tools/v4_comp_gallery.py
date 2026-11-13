@@ -506,20 +506,28 @@ def render(comp):
 %(cta)s
 
 <dialog class="gfv" id="gfv" aria-label="The photo, enlarged">
-  <div class="gfv-top">
-    <button class="gfv-nav gfv-prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
-    <span class="gfv-pos" aria-live="polite"></span>
-    <button class="gfv-nav gfv-next" type="button" aria-label="Next photo"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
-    <button class="gfv-x" type="button" aria-label="Close the photo"></button>
+  <div class="gfv-stage"><img alt="" draggable="false">
+    <button class="gfv-zone gfv-zprev" type="button" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 34 34"><path d="M21 7 11 17l10 10"/></svg></button>
+    <button class="gfv-zone gfv-znext" type="button" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 34 34"><path d="m13 7 10 10-10 10"/></svg></button>
   </div>
-  <div class="gfv-stage"><img alt="" draggable="false"></div>
   <div class="gfv-foot">
     <div class="gfv-meta"><b class="gfv-name"></b><span class="gfv-where"></span></div>
+    <button class="gfv-btn gfv-x" type="button" aria-label="Close the photo"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="m3.5 3.5 11 11M14.5 3.5l-11 11"/></svg></button>
+    <div class="gfv-line">
+      <button class="gfv-btn gfv-nav gfv-prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 26 16" aria-hidden="true"><path class="tail" d="M3 8h21"/><path d="M8 3 3 8l5 5"/></svg></button>
+      <div class="gfv-rail" role="slider" tabindex="0" aria-label="Photo in the task" aria-valuemin="1">
+        <canvas aria-hidden="true"></canvas>
+        <div class="gfv-mark" aria-hidden="true"><span class="gfv-pos"></span><span class="gfv-glider">%(glider)s</span></div>
+      </div>
+      <button class="gfv-btn gfv-nav gfv-next" type="button" aria-label="Next photo"><svg viewBox="0 0 26 16" aria-hidden="true"><path class="tail" d="M2 8h21"/><path d="m18 3 5 5-5 5"/></svg></button>
+    </div>
     <div class="gfv-acts">
-      <a class="btn-lines gfv-save" href="#" download data-hover><span class="gfv-dl-t">Download</span><small class="gfv-dl-m"></small></a>
-      <button class="gfv-share" type="button" data-share></button>
+      <a class="gfv-btn gfv-save" href="#" download data-state="ready"><span class="gfv-dl-ico" aria-hidden="true"><svg viewBox="0 0 22 24"><path class="arw" d="M11 3v12M6.5 10.5 11 15l4.5-4.5"/><path d="M4 20.5h14"/></svg><svg viewBox="0 0 22 24"><path class="chk" d="M5.5 12.5 9.5 16.5 16.5 8"/></svg></span><span class="gfv-dl-tt"><b class="gfv-dl-t">Download</b><small class="gfv-dl-m"></small></span><i class="gfv-dl-bar"></i></a>
+      <i class="gfv-sep" aria-hidden="true"></i>
+      <button class="gfv-btn gfv-share" type="button" data-share></button>
+      <i class="gfv-sep" aria-hidden="true"></i>
+      <a class="gfv-btn gfv-patreon" href="%(patreon)s" target="_blank" rel="noopener"><small>Like what you see?</small><b>Join me on Patreon <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></b></a>
       <a class="gfv-orig" href="#" rel="nofollow" hidden>Full-size original</a>
-      <a class="btn-solid gfv-patreon" href="%(patreon)s" target="_blank" rel="noopener" data-hover><span><small>Like what you see?</small>Join me on Patreon</span></a>
     </div>
     <p class="gfv-terms">%(terms)s</p>
   </div>

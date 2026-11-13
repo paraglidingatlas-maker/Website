@@ -154,6 +154,8 @@
   var shareB = lb.querySelector(".gfv-share");
   var save = lb.querySelector(".gfv-save"), buy = lb.querySelector(".gfv-buy"), pay = lb.querySelector(".gfv-pay"), back = lb.querySelector(".gfv-back");
   var copy = lb.querySelector(".gfv-copy"), refs = lb.querySelectorAll(".gfv-ref-n, .gfv-ref-n2"), payNote = lb.querySelector(".gfv-paynote");
+  var rail = lb.querySelector(".gfv-rail"), cv = rail.querySelector("canvas"), mark = lb.querySelector(".gfv-mark");
+  var zPrev = lb.querySelector(".gfv-zprev"), zNext = lb.querySelector(".gfv-znext");
   var Z = { s: 1, x: 0, y: 0, ptrs: {}, pinch: null, moved: 0, closing: 0, set: [], i: 0, req: {}, got: {} };
   var blobs = {};
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
@@ -164,7 +166,7 @@
   function fit() {     // the photo's height limit is the stage's real height (a % height does not hold in its grid)
     lb.style.setProperty("--gfv-h", stage.clientHeight + "px"); lb.style.setProperty("--gfv-w", stage.clientWidth + "px");
   }
-  w.addEventListener("resize", function () { if (lb.open) { fit(); if (Z.s > 1.01) { clampPan(); apply(); } } });
+  w.addEventListener("resize", function () { if (lb.open) { fit(); tl.size(); tl.draw(); if (Z.s > 1.01) { clampPan(); apply(); } } });
   function fill() {    // the scale at which the photo covers the whole screen
     var b = drawn(); return b.w && b.h ? Math.max(innerWidth / b.w, innerHeight / b.h) : 2;
   }
@@ -200,10 +202,8 @@
     whereEl.textContent = (info.name || "Task " + (di + 1)) + (info.label ? " · " + info.label : "");
     pxEl.textContent = a.getAttribute("data-W") + " × " + a.getAttribute("data-H") + " px";
     if (crEl) { if (crEl._d == null) crEl._d = crEl.textContent; crEl.textContent = info.cred ? "Photo: " + info.cred : crEl._d; }
-    pos.innerHTML = "<b>" + (Z.i + 1) + "</b><i>/</i><span>" + Z.set.length + "</span>";   // "21 / 144" (the phone dock styles it)
-    pos.setAttribute("aria-label", "Photo " + (Z.i + 1) + " of " + Z.set.length);
-    lb.style.setProperty("--gfv-p", ((Z.i + 1) / Z.set.length).toFixed(4));   // the dock's line on a phone
-    bPrev.disabled = Z.i <= 0; bNext.disabled = Z.i >= Z.set.length - 1;
+    count();
+    bPrev.disabled = zPrev.disabled = Z.i <= 0; bNext.disabled = zNext.disabled = Z.i >= Z.set.length - 1;
     save.href = url(a, 2400); save.setAttribute("download", stem + ".jpg");
     if (origEl) { if (data.orig) { origEl.href = data.orig + stem + ".jpg"; origEl.hidden = false; } else origEl.hidden = true; }
     resetSave(); meta(a); warm(a);
@@ -219,9 +219,9 @@
     Z.set = [].slice.call((all ? main : a.closest(".gf-grid")).querySelectorAll(all ? ".gf-day[data-state=photos] a[data-stem]" : "a[data-stem]"));
     Z.i = Math.max(0, Z.set.indexOf(a)); Z.ptrs = {}; Z.pinch = null; Z.closing = 0;
     lb.classList.remove("is-in", "is-buy"); img.style.transform = "";
-    show(a);
+    show(a); tl.pos = Z.i;
     if (lb.showModal) { if (!lb.open) lb.showModal(); } else lb.setAttribute("open", "");
-    fit();
+    fit(); tl.size(); tl.arrive();
     if (reduced() || !img.animate) { lb.classList.add("is-in"); return; }
     lb.classList.add("is-lift-out");          // ground clear, chrome hidden: only the photo shows, over its cell
     var started = false;
@@ -251,7 +251,7 @@
   }
   function go(k) {
     var j = Z.i + k; if (!lb.open || j < 0 || j >= Z.set.length) return;
-    Z.i = j; lb.classList.remove("is-buy");
+    Z.i = j; lb.classList.remove("is-buy"); tl.glide(j); tl.roll(k);
     if (reduced()) { show(Z.set[j]); return; }
     img.style.opacity = "0";
     setTimeout(function () {
@@ -294,6 +294,8 @@
   });
   bPrev.addEventListener("click", function () { go(-1); });
   bNext.addEventListener("click", function () { go(1); });
+  zPrev.addEventListener("click", function () { go(-1); });
+  zNext.addEventListener("click", function () { go(1); });
   lb.querySelector(".gfv-x").addEventListener("click", closeLb);
   lb.addEventListener("cancel", function (e) {
     e.preventDefault();
@@ -302,6 +304,7 @@
     else closeLb();
   });
   stage.addEventListener("click", function (e) {
+    if (e.target.closest(".gfv-zone")) return;
     if (Z.moved > 6) { Z.moved = 0; return; }
     var r = img.getBoundingClientRect(), onImg = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
     // first tap: the photo fills the whole screen; second: closer still; third: back (owner, 9 Nov)
@@ -310,6 +313,7 @@
   });
   stage.addEventListener("wheel", function (e) { e.preventDefault(); zoomAt(Math.exp(-clamp(e.deltaY, -80, 80) * 0.004), e.clientX, e.clientY); }, { passive: false });
   stage.addEventListener("pointerdown", function (e) {
+    if (e.target.closest(".gfv-zone")) return;
     Z.ptrs[e.pointerId] = { x: e.clientX, y: e.clientY, sx: e.clientX, sy: e.clientY }; var ids = Object.keys(Z.ptrs); Z.moved = 0;
     if (ids.length === 2) { var A = Z.ptrs[ids[0]], B = Z.ptrs[ids[1]]; Z.pinch = { span: Math.hypot(A.x - B.x, A.y - B.y), cx: (A.x + B.x) / 2, cy: (A.y + B.y) / 2 }; }
     if (stage.setPointerCapture) stage.setPointerCapture(e.pointerId); if (e.target === img && Z.s > 1.01) lb.classList.add("is-drag"); e.preventDefault();
@@ -352,6 +356,98 @@
     else if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
   });
 
+  /* ---------------------------------------------------------------- the task line (designer F, owner's pick 13 Nov 2026)
+     One tick per photo of the set, a fisheye round the glider, the flown part orange; the glider and "21 of 144" ride
+     it. Back and next are its ends; drag along it to any photo (a light copy follows the thumb, the full one on release). */
+  function count() {
+    var N = Z.set.length, n = Z.i + 1, a = Z.set[Z.i], di = a ? dayOf(a) : 0, info = (data.days || [])[di] || {};
+    pos.innerHTML = "<b>" + n + "</b><i>of</i><span>" + N + "</span>";
+    rail.setAttribute("aria-valuemax", N); rail.setAttribute("aria-valuenow", n);
+    rail.setAttribute("aria-valuetext", n + " of " + N + ", " + (info.name || "Task " + (di + 1)));
+  }
+  var tl = (function () {
+    var ctx = cv.getContext && cv.getContext("2d"), W = 0, H = 36, DPR = 1, PAD = 6, raf = 0, me = { pos: 0, grow: 1 };
+    me.size = function () { DPR = Math.min(3, w.devicePixelRatio || 1); W = rail.clientWidth; cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR); me.draw(); };
+    me.draw = function () {
+      if (!ctx || !W) return;
+      var N = Z.set.length || 1, pitch = (W - PAD * 2) / Math.max(1, N - 1), sig = 11 / pitch, c = me.pos, ci = Math.round(c), mid = H / 2;
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.clearRect(0, 0, W, H);
+      var xc = PAD + (N > 1 ? c / (N - 1) : 0) * (W - PAD * 2);
+      ctx.fillStyle = "rgba(246,244,244,.13)"; ctx.fillRect(PAD, mid - .5, W - PAD * 2, 1);
+      var gr = ctx.createLinearGradient(PAD, 0, Math.max(PAD + 1, xc), 0); gr.addColorStop(0, "rgba(255,117,23,.15)"); gr.addColorStop(1, "rgba(255,117,23,.9)");
+      ctx.fillStyle = gr; ctx.fillRect(PAD, mid - .5, Math.max(0, xc - PAD), 1);
+      var lw = Math.max(1 / DPR, Math.min(1.2, pitch * .55));
+      for (var i = 0; i < N; i++) {
+        var dd = i - c, g = Math.exp(-(dd * dd) / (2 * sig * sig));
+        var reach = me.grow >= 1 ? 1 : Math.max(0, Math.min(1, me.grow * 1.8 - Math.abs(dd) / N * 1.4));
+        var h = (2.2 + 9.5 * g) * reach, x = PAD + i * pitch;
+        if (i === ci) { h = 14 * reach; ctx.fillStyle = "#ff7517"; }
+        else if (i < c) ctx.fillStyle = "rgba(255,117,23," + (.32 + .6 * g).toFixed(3) + ")";
+        else ctx.fillStyle = "rgba(246,244,244," + (.2 + .65 * g).toFixed(3) + ")";
+        if (h > .2) ctx.fillRect(x - lw / 2, mid - h, i === ci ? Math.max(lw, 1.6) : lw, h * 2);
+      }
+      mark.style.setProperty("--mx", xc.toFixed(1) + "px");
+      var half = pos.offsetWidth / 2, cx = Math.max(half - xc, Math.min(0, W - half - xc));
+      pos.style.setProperty("--cx", cx.toFixed(1) + "px");
+    };
+    me.glide = function (to) {
+      cancelAnimationFrame(raf);
+      var from = me.pos, t0 = performance.now();
+      if (reduced() || from === to) { me.pos = to; me.draw(); return; }
+      (function step(now) { var k = Math.min(1, (now - t0) / 460), e = 1 - Math.pow(1 - k, 3); me.pos = from + (to - from) * e; me.draw(); if (k < 1) raf = requestAnimationFrame(step); })(t0);
+    };
+    me.arrive = function () {   // on opening, the ticks grow out from the glider
+      cancelAnimationFrame(raf);
+      if (reduced()) { me.grow = 1; me.draw(); return; }
+      var t0 = performance.now(); me.grow = 0;
+      (function step(now) { me.grow = Math.min(1, (now - t0) / 750); me.draw(); if (me.grow < 1) raf = requestAnimationFrame(step); })(t0);
+    };
+    me.roll = function (dir) {
+      var b = pos.querySelector("b"); if (reduced() || !b || !b.animate) return;
+      requestAnimationFrame(function () { var b2 = pos.querySelector("b"); if (b2 && b2.animate) b2.animate([{ transform: "translateY(" + (dir * 7) + "px)", opacity: 0 }, { transform: "none", opacity: 1 }], { duration: 260, easing: EASE }); });
+    };
+    // scrub: the thumb drags the glider; the thumbnail shows at once, the full photo on release
+    var sc = null;
+    function at(x) { var r = rail.getBoundingClientRect(); return Math.max(0, Math.min(1, (x - r.left - PAD) / Math.max(1, r.width - PAD * 2))) * Math.max(0, Z.set.length - 1); }
+    rail.addEventListener("pointerdown", function (e) {
+      if (e.button > 0 || !Z.set.length) return;
+      sc = { start: Z.i, last: Z.i }; lb.classList.add("is-scrub"); lb.classList.remove("is-buy");
+      try { rail.setPointerCapture(e.pointerId); } catch (x) {}
+      move(e);
+    });
+    function move(e) {
+      if (!sc) return;
+      cancelAnimationFrame(raf); me.pos = at(e.clientX); me.grow = 1; me.draw();
+      var i = Math.round(me.pos);
+      if (i !== sc.last) {
+        sc.last = i; Z.i = i; count();
+        var th = Z.set[i].querySelector("img"); img.src = th.currentSrc || th.src;
+        bPrev.disabled = zPrev.disabled = i <= 0; bNext.disabled = zNext.disabled = i >= Z.set.length - 1;
+      }
+    }
+    function end() {
+      if (!sc) return;
+      var moved = sc.last !== sc.start; sc = null; lb.classList.remove("is-scrub");
+      me.glide(Z.i); if (moved) show(Z.set[Z.i]);
+    }
+    rail.addEventListener("pointermove", move);
+    rail.addEventListener("pointerup", end); rail.addEventListener("pointercancel", end);
+    rail.addEventListener("keydown", function (e) {
+      var k = e.key;
+      if (k === "Home" || k === "End") { e.preventDefault(); e.stopPropagation(); go((k === "Home" ? 0 : Z.set.length - 1) - Z.i); }
+      else if (k === "ArrowUp" || k === "ArrowDown") { e.preventDefault(); go(k === "ArrowUp" ? 1 : -1); }
+    });
+    if (d.fonts && d.fonts.ready) d.fonts.ready.then(function () { if (lb.open) me.draw(); });
+    return me;
+  })();
+  // a press shows its pool of light even on a quick tap
+  lb.addEventListener("pointerdown", function (e) {
+    var b = e.target.closest && e.target.closest(".gfv-btn"); if (!b || b.disabled) return;
+    b.classList.add("is-press");
+    var up = function () { setTimeout(function () { b.classList.remove("is-press"); }, 140); w.removeEventListener("pointerup", up); w.removeEventListener("pointercancel", up); };
+    w.addEventListener("pointerup", up); w.addEventListener("pointercancel", up);
+  });
+
   /* ---------------------------------------------------------------- Download: the 2400 web copy, by name.
      Owner, 12 Nov 2026: one tap saves the file (no share sheet); the button shows the photo's resolution and, once
      the copy is fetched, its size. The copy is fetched quietly after a short look at a photo (not on Save-Data), so
@@ -360,8 +456,9 @@
   var saveLabel = saveT.textContent, pending = {}, warmT = 0;
   var IOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
   var lean = !!(navigator.connection && navigator.connection.saveData);
-  function resetSave() { saveT.textContent = saveLabel; save.classList.remove("is-busy", "is-done"); save.removeAttribute("aria-busy"); }
-  function say(t, busy) { saveT.textContent = t; save.classList.toggle("is-busy", !!busy); if (busy) save.setAttribute("aria-busy", "true"); else save.removeAttribute("aria-busy"); }
+  // three states (designer F): ready (resolution, the size once known), busy (the line under it fills), done (a tick)
+  function resetSave() { saveT.textContent = saveLabel; save.setAttribute("data-state", "ready"); save.style.setProperty("--p", 0); save.removeAttribute("aria-busy"); }
+  function say(t, busy) { saveT.textContent = t; save.setAttribute("data-state", busy ? "busy" : "ready"); if (busy) { save.setAttribute("aria-busy", "true"); save.style.setProperty("--p", .04); } else save.removeAttribute("aria-busy"); }
   function mb(n) { return n >= 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB"; }
   function meta(a) {
     if (!saveM || !a) return;
@@ -385,7 +482,17 @@
   function fetchCopy(a) {
     var stem = a.getAttribute("data-stem");
     if (blobs[stem]) return Promise.resolve(blobs[stem]);
-    if (!pending[stem]) pending[stem] = fetch(url(a, 2400), { mode: "cors" }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.blob(); })
+    if (!pending[stem]) pending[stem] = fetch(url(a, 2400), { mode: "cors" }).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        var total = +r.headers.get("content-length") || 0;
+        if (!r.body || !total || !w.ReadableStream) return r.blob();
+        var rd = r.body.getReader(), got = 0, parts = [];   // real progress for the line under Download
+        return (function pump() { return rd.read().then(function (x) {
+          if (x.done) return new Blob(parts, { type: r.headers.get("content-type") || "image/webp" });
+          parts.push(x.value); got += x.value.length;
+          if (Z.set[Z.i] === a && save.getAttribute("data-state") === "busy") save.style.setProperty("--p", Math.max(.04, got / total * .92).toFixed(3));
+          return pump(); }); })();
+      })
       .then(toJpeg).then(function (b) { blobs[stem] = b; delete pending[stem]; if (Z.set[Z.i] === a) meta(a); return b; },
                          function (e) { delete pending[stem]; throw e; });
     return pending[stem];
@@ -399,7 +506,7 @@
     var b = blobs[stem], u = URL.createObjectURL(b), x = d.createElement("a");
     x.href = u; x.download = stem + (b.type === "image/jpeg" ? ".jpg" : ".webp"); x.style.display = "none"; d.body.appendChild(x); x.click(); x.remove();
     setTimeout(function () { URL.revokeObjectURL(u); }, 4000);
-    say(IOS ? "Saved to Files" : "Downloaded"); save.classList.add("is-done");
+    say(IOS ? "Saved to Files" : "Downloaded"); save.style.setProperty("--p", 1); save.setAttribute("data-state", "done");
   }
   save.addEventListener("click", function (e) {
     var a = Z.set[Z.i]; if (!a || !w.fetch || !w.Blob) return;   // no fetch: the plain link opens the copy
