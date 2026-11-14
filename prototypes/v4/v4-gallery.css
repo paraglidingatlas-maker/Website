@@ -308,12 +308,13 @@ html.v2-nav-up .gf-line.is-stuck{transform:translateY(var(--v2-nav-h,5rem))}
 /* the lead's cue to the newest film */
 .gf-film{margin-top:.75rem}
 .gf-film a{display:inline-flex;align-items:center;gap:.7rem;min-height:40px;color:var(--white);text-decoration:none;font-size:var(--fs-body-s);font-weight:600}
-.gf-film-i{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:50%;background:var(--orange);transition:scale .35s var(--gf-ease)}
-.gf-film-i svg{width:12px;height:12px;margin-left:2px;fill:#141519}
+/* the play button is the owner's rounded rectangle (.gff-btn): about 16:11, dark see-through at rest, YouTube red on hover; never round */
+.gf-film-i{display:grid;place-items:center;flex:none;width:46px;height:32px;border-radius:9px;background:rgba(20,21,25,.62);box-shadow:inset 0 0 0 1px rgba(246,244,244,.22);transition:scale .35s var(--gf-ease),background-color .25s var(--gf-ease),box-shadow .25s var(--gf-ease)}
+.gf-film-i svg{width:12px;height:12px;margin-left:2px;fill:var(--white)}
 .gf-film-t{text-decoration:underline;text-decoration-color:rgba(246,244,244,0);text-underline-offset:.25em;transition:text-decoration-color .2s var(--gf-ease)}
 .gf-film-l{font-weight:500;color:var(--gray-light);font-variant-numeric:tabular-nums;padding-left:.7rem;border-left:1px solid rgba(246,244,244,.28)}
 .gf-film a:hover .gf-film-t,.gf-film a:focus-visible .gf-film-t{text-decoration-color:var(--orange)}
-.gf-film a:hover .gf-film-i{scale:1.08}
+.gf-film a:hover .gf-film-i,.gf-film a:focus-visible .gf-film-i{scale:1.08;background:#f00;box-shadow:0 4px 18px rgba(255,0,0,.4)}
 .gf-film a:focus-visible{outline:1px solid var(--orange);outline-offset:4px}
 /* the task line marks a task that has its film */
 .gf-tp-f{color:var(--white)}
