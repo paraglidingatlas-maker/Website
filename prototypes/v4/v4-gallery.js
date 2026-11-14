@@ -31,12 +31,12 @@
   days.forEach(function (sec, i) {
     var date = sec.getAttribute("data-date") || "", has = !!sec.querySelector(".gf-ph"), st;
     // a task with photos shows them whatever the date; a task without a date (a comp gone by) is flown
-    if (has) st = "photos"; else if (date && date > on) st = "soon"; else st = date === on ? "today" : "coming";
+    if (has) st = "photos"; else if (sec.hasAttribute("data-cancel")) st = "cancelled"; else if (date && date > on) st = "soon"; else st = date === on ? "today" : "coming";
     sec.setAttribute("data-state", st); tps[i].setAttribute("data-state", st);
     if (st === "photos") latest = i;
     if (has || !date || date <= on) flownTo = i;
     var info = (data.days || [])[i] || {}, a = tps[i].querySelector("a");
-    var say = { photos: (info.n || 0) + (info.n === 1 ? " photo" : " photos") + (info.film ? " and the highlights film" : ""), today: "flying today, photos tonight", coming: "photos coming", soon: "to come" }[st];
+    var say = { photos: (info.n || 0) + (info.n === 1 ? " photo" : " photos") + (info.film ? " and the highlights film" : ""), today: "flying today, photos tonight", coming: "photos coming", soon: "to come", cancelled: "cancelled, no task flown" }[st];
     a.setAttribute("aria-label", (info.name || "Task " + (i + 1)) + ", " + (info.label || "") + ", " + say);
   });
   line.style.setProperty("--flown", Math.max(0, flownTo));

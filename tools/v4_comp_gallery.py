@@ -61,6 +61,8 @@ COMPS = {
                     # srs.live, 12 Nov 12:02: the day's 57 km task was cancelled (cirrus, 100% cloud cover). SRS numbers
                     # only flown tasks, so Task 5 moves to 13 Nov, Task 6 to 14 Nov, and a seventh task no longer fits.
                     dates={"P": "2026-11-07"},
+                    # owner, 14 Nov: a cancelled day is never "Photos coming"; it says Cancelled (reason) and points on
+                    cancelled={"T5": "weather"},
                     stories={"T5": "12 Nov was cancelled for weather: SRS set a 57 km task north, then called it off under full cirrus cover. SRS still counts it as Task 5, so 13 Nov is Task 6."},
                     # owner, 9 Nov: the practice day's photos are by Paco Peciado; credit with a link to their Instagram
                     credits={"P": ("@paco_peciado", "https://www.instagram.com/paco_peciado/")},
@@ -415,6 +417,9 @@ def render(comp):
             info[-1]["cred"] = cr[0]
         fm = filled(films[task]) if task in films else None
         filmday = bool(c.get("landing") and fm and not rows)     # a day with its film and no photos (state "film", v4-event.js)
+        why = c.get("cancelled", {}).get(task) if not rows and not filmday else None   # a day called off: state "cancelled", fixed
+        if why:
+            info[-1]["cancel"] = why
         if fm:
             info[-1]["film"] = fm["id"]
             m, s = (int(x) for x in fm["len"].split(":"))
@@ -425,6 +430,10 @@ def render(comp):
             tps.append('<li class="gf-tp" data-i="%d" data-film-only><a href="#%s"><i class="gf-dot" aria-hidden="true"></i><b>%s</b>'
                        '<span class="gf-tp-d">%s</span><span class="gf-tp-s ev-tp-s">%s</span></a></li>'
                        % (i, sid(task), lab, dm or "Film", "Film" if dm else ""))
+        elif why:
+            tps.append('<li class="gf-tp" data-i="%d" data-cancel data-state="cancelled"><a href="#%s"><i class="gf-dot" aria-hidden="true"></i><b>%s</b>'
+                       '<span class="gf-tp-d">%s</span><span class="gf-tp-s"><span data-s="cancelled">Cancelled</span></span></a></li>'
+                       % (i, sid(task), lab, dm or "Cancelled"))
         else:
             tps.append('<li class="gf-tp" data-i="%d"><a href="#%s"><i class="gf-dot" aria-hidden="true"></i><b>%s</b>'
                      '<span class="gf-tp-d">%s</span><span class="gf-tp-s"><span data-s="photos">%s%s</span>'
@@ -442,6 +451,9 @@ def render(comp):
         if filmday:
             head = ('<header class="gf-dh"><h2 id="gf-h-%d">%s</h2><p class="gf-dh-r">%s<span class="ev-dh-n">1 film, no photos this day</span></p>%s</header>'
                     % (i + 1, lab, when, '<p class="gf-story">%s</p>' % E(story) if story else ""))
+        elif why:
+            head = ('<header class="gf-dh"><h2 id="gf-h-%d">%s</h2><p class="gf-dh-r">%s<span class="gf-dh-n" data-s="cancelled">Cancelled (%s)</span></p>%s</header>'
+                    % (i + 1, lab, when, E(why), '<p class="gf-story">%s</p>' % E(story) if story else ""))
         else:
             head = ('<header class="gf-dh"><h2 id="gf-h-%d">%s</h2><p class="gf-dh-r">%s<span class="gf-dh-n" data-s="photos">%s'
                 '<span class="gf-dh-o">, in the order shot</span></span><span class="gf-dh-n" data-s="today">Flying today</span>'
@@ -450,6 +462,10 @@ def render(comp):
                    '<p class="gf-dh-cred">Photos by <a href="%s" target="_blank" rel="noopener">%s</a></p>' % (E(cr[1]), E(cr[0])) if cr else ""))
         if filmday:
             body = ""
+        elif why:
+            body = ('<div class="gf-wait"><div data-s="cancelled"><p class="gf-wait-t">No task flown</p><p>%s%s was cancelled (%s).</p></div>'
+                    '<a class="gf-latest" href="#" data-latest hidden>See the latest photos <i aria-hidden="true">&rarr;</i></a></div>'
+                    % (lab, ", " + full + "," if full else "", E(why)))
         elif rows:
             body = '<div class="gf-grid" aria-label="Photos of %s, in the order shot">%s</div>' % (lab, "".join(cell(comp, r, task, k, n) for k, r in enumerate(rows)))
         else:
@@ -469,7 +485,7 @@ def render(comp):
                        % (sid(ds[i + 1][0]), i + 1, ds[i + 1][1], ", " + nice(nd)[0] if nd else ""))
         fb = film_band(comp, task, fm) if fm else ""
         secs.append('<section class="gf-day" id="%s" data-i="%d" data-date="%s"%s aria-labelledby="gf-h-%d">%s%s%s%s%s</section>'
-                    % (sid(task), i, date, ' data-film-only data-state="film"' if filmday else "", i + 1, head, fb, vb, body, '<nav class="gf-df" aria-label="Other tasks">%s</nav>' % "".join(nav) if nav else ""))
+                    % (sid(task), i, date, ' data-film-only data-state="film"' if filmday else ' data-cancel data-state="cancelled"' if why else "", i + 1, head, fb, vb, body, '<nav class="gf-df" aria-label="Other tasks">%s</nav>' % "".join(nav) if nav else ""))
     data = {"base": BASE + c["folder"] + "/", "tz": c["tz"], "days": info, "pay": pay_template()}
     if fdata:
         data["films"] = fdata
