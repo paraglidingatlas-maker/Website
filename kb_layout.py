@@ -168,9 +168,9 @@ def next_strip(nx):
 def render(slug, ed, ep_html, n_eps, stats):
     """Body + style for one category page. The generator wraps it in head/nav/footer."""
     body = (hero(slug, ed, stats)
-            + '<section class="k-sec bg" id="episodes"><div class="k-head"><h2>The %s conversations</h2>'
+            + '<section class="k-sec bg" id="episodes"><div class="k-head"><h2>%s</h2>'
               '<span class="kicker">Open any tile for chapters, quotes and links</span></div>%s</section>'
-              % (_words(n_eps), ep_html)
+              % ("The conversation" if n_eps == 1 else "The %s conversations" % _words(n_eps), ep_html)
             + bands(ed)
             + '<section class="k-sec bg" id="takeaways"><div class="k-head"><h2>%s</h2>'
               '<span class="kicker">Each one links to the chapter where it is said</span></div>%s%s</section>'
