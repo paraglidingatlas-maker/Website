@@ -52,7 +52,7 @@ ORIGINALS = ""
 COMPS = {
     "tapalpa": dict(page="media-srs-tapalpa-2026.html", folder="srs-tapalpa", title="Tapalpa 2026", tz="America/Mexico_City",
                     kicker="SRS Advance Edition &middot; Tapalpa, Mexico", span="8 to 14 Nov 2026",
-                    facts=["Tasks 8 to 14 Nov 2026", "Task 5 cancelled (weather)", "116 pilots, 25 countries", "Photos by Aninder Singh"],
+                    facts=["Tasks 8 to 14 Nov 2026", "5 tasks scored, 2 cancelled", "116 pilots, 25 countries", "Photos by Aninder Singh"],
                     desc="SRS Advance Edition, Tapalpa, Mexico, 8 to 14 Nov 2026: every photo by task, free to save. "
                          "Photos by Aninder Singh, Paragliding Atlas.",
                     # owner, 10 Nov: the link preview's title is the comp's full name and the newest task with photos
@@ -62,8 +62,9 @@ COMPS = {
                     # only flown tasks, so Task 5 moves to 13 Nov, Task 6 to 14 Nov, and a seventh task no longer fits.
                     dates={"P": "2026-11-07"},
                     # owner, 14 Nov: a cancelled day is never "Photos coming"; it says Cancelled (reason) and points on
-                    cancelled={"T5": "weather"},
-                    stories={"T5": "12 Nov was cancelled for weather: SRS set a 57 km task north, then called it off under full cirrus cover. SRS still counts it as Task 5, so 13 Nov is Task 6."},
+                    cancelled={"T5": "weather", "T7": "wind"},
+                    stories={"T5": "12 Nov was cancelled for weather: SRS set a 57 km task north, then called it off under full cirrus cover. SRS still counts it as Task 5, so 13 Nov is Task 6.",
+                             "T7": "14 Nov, the last day, was cancelled for wind: SRS set a 60.8 km triangle south, but the wind came over the back of launch and the one pilot who tested it top-landed. Tapalpa ends with five scored tasks."},
                     # owner, 9 Nov: the practice day's photos are by Paco Peciado; credit with a link to their Instagram
                     credits={"P": ("@paco_peciado", "https://www.instagram.com/paco_peciado/")},
                     event=("SRS Advance Edition, Tapalpa", "https://airtribune.com/srs-2026-6/info"),
