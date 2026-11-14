@@ -3000,7 +3000,10 @@ body:has(.v2-origin) .cta-band .cta-card{background-image:url("img/dust-soft.web
 .v4br-l{position:absolute;z-index:1;left:var(--edge-x,var(--gutter));bottom:12%;margin:0;max-width:16ch;font-family:var(--font-display,Poppins,sans-serif);font-weight:600;font-size:clamp(1.6rem,3vw,2.6rem);line-height:1.15;color:#f6f4f4;text-wrap:balance;text-shadow:0 2px 18px rgba(0,0,0,.45);}
 .v4br-p{position:absolute;z-index:1;right:var(--edge-x,var(--gutter));bottom:12%;font-size:.72rem;line-height:1;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,244,244,.75);text-shadow:0 1px 8px rgba(0,0,0,.5);}
 @media (max-width:760px){ .v4br{height:70vh;min-height:360px;} .v4br-l{left:var(--gutter);bottom:16%;max-width:12ch;} .v4br-p{left:var(--gutter);right:auto;bottom:9%;} }
-@media print{ .v4br{display:none;} }
+@media print{ .v4br{display:none;} }/* nav at laptop widths (site audit 14 Nov): Speed Record and Live keep to their icons up to 1149px, and the link row
+   tightens just above the menu button's breakpoint, so Enquire Now is never cut off and nothing scrolls sideways */
+@media (max-width:1149px){.page-wrap>nav .v4-nav a.v4-wr,.page-wrap>nav .v4-nav a.v4-live{font-size:0;gap:0}}
+@media (min-width:941px) and (max-width:1023px){.page-wrap>nav .nav-links.v4-nav{gap:.6rem}}
 /* app:start */
 /* ===== The app (tools/v4_pwa.py) ===== */
 .pwa-install{order:-1;background:none;border:1px solid var(--live);color:var(--white);
@@ -3016,7 +3019,3 @@ body:has(.v2-origin) .cta-band .cta-card{background-image:url("img/dust-soft.web
 /* Opened from the home screen: no browser bar above the header. */
 .is-app .page-wrap > nav{padding-top:max(1.5rem,env(safe-area-inset-top));}
 /* app:end */
-/* nav at laptop widths (site audit 14 Nov): Speed Record and Live keep to their icons up to 1149px, and the link row
-   tightens just above the menu button's breakpoint, so Enquire Now is never cut off and nothing scrolls sideways */
-@media (max-width:1149px){.page-wrap>nav .v4-nav a.v4-wr,.page-wrap>nav .v4-nav a.v4-live{font-size:0;gap:0}}
-@media (min-width:941px) and (max-width:1023px){.page-wrap>nav .nav-links.v4-nav{gap:.6rem}}
