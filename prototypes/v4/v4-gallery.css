@@ -422,18 +422,18 @@ html.v2-nav-up .gf-line.is-stuck{transform:translateY(var(--v2-nav-h,5rem))}
 .gfv-x svg{width:18px;height:18px;stroke-width:1.4}
 .gfv-x:active svg,.gfv-x.is-press svg{transform:rotate(90deg) scale(.86)}
 /* the line */
-.gfv-line{grid-area:line;display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:end;margin:0 -8px;height:72px}
-.gfv-nav{width:44px;height:48px;margin-bottom:-2px}
+.gfv-line{grid-area:line;display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:end;margin:0 -8px;height:84px}
+.gfv-nav{width:44px;height:48px;margin-bottom:4px}
 .gfv-nav svg{width:26px;height:16px;stroke-width:1.5}
 .gfv-nav .tail{stroke-opacity:.32}
 .gfv-prev:active:not(:disabled) svg,.gfv-prev.is-press svg{transform:translateX(-6px)}
 .gfv-next:active:not(:disabled) svg,.gfv-next.is-press svg{transform:translateX(6px)}
-.gfv-rail{position:relative;height:72px;padding-bottom:4px;touch-action:none;cursor:ew-resize;outline:none;user-select:none;-webkit-user-select:none}
-.gfv-rail::after{content:"";position:absolute;left:6px;right:6px;bottom:22px;height:1px;background:rgba(246,244,244,.14)}
-.gfv-rail canvas{position:absolute;left:0;bottom:4px;width:100%;height:36px;display:block;z-index:1}
+.gfv-rail{position:relative;height:84px;padding-bottom:4px;touch-action:none;cursor:ew-resize;outline:none;user-select:none;-webkit-user-select:none}
+.gfv-rail::after{content:"";position:absolute;left:6px;right:6px;bottom:28px;height:1px;background:none}
+.gfv-rail canvas{position:absolute;left:0;bottom:4px;width:100%;height:48px;display:block;z-index:1}
 .gfv-rail:focus-visible .gfv-pos b{color:var(--orange)}
-.gfv-rail:focus-visible::after{background:var(--orange)}
-.gfv-mark{position:absolute;left:0;bottom:40px;z-index:2;transform:translateX(var(--mx,0px));pointer-events:none}
+.gfv-rail:focus-visible::after{background:rgba(255,117,23,.45)}
+.gfv-mark{position:absolute;left:0;bottom:50px;z-index:2;transform:translateX(var(--mx,0px));pointer-events:none}
 .gfv-glider{position:absolute;left:-11px;bottom:-1px;width:22px;height:14px;color:var(--orange);filter:drop-shadow(0 0 6px rgba(255,117,23,.55))}
 .gfv-glider svg{width:22px;height:14px;fill:none;stroke:currentColor;display:block}
 .gfv-pos{position:absolute;bottom:16px;left:0;transform:translateX(calc(-50% + var(--cx,0px)));white-space:nowrap;display:flex;align-items:baseline;gap:.3rem;

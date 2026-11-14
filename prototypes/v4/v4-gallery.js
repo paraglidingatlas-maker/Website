@@ -370,26 +370,34 @@
     rail.setAttribute("aria-valuetext", n + " of " + N + ", " + (info.name || "Task " + (di + 1)));
   }
   var tl = (function () {
-    var ctx = cv.getContext && cv.getContext("2d"), W = 0, H = 36, DPR = 1, PAD = 6, raf = 0, me = { pos: 0, grow: 1 };
+    var ctx = cv.getContext && cv.getContext("2d"), W = 0, H = 48, DPR = 1, PAD = 6, raf = 0, me = { pos: 0, grow: 1 };
     me.size = function () { DPR = Math.min(3, w.devicePixelRatio || 1); W = rail.clientWidth; cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR); me.draw(); };
+    // the thermal (owner's pick, 14 Nov): two strands twist round a core of the photos, flown in orange, still to come in white;
+    // the lift opens up round the photo you are on, the far ends stay a tight thin coil
     me.draw = function () {
       if (!ctx || !W) return;
-      var N = Z.set.length || 1, pitch = (W - PAD * 2) / Math.max(1, N - 1), sig = 11 / pitch, c = me.pos, ci = Math.round(c), mid = H / 2;
+      var N = Z.set.length || 1, pitch = (W - PAD * 2) / Math.max(1, N - 1), c = me.pos, mid = H / 2, OR = "255,117,23", WH = "246,244,244";
+      var sig = Math.max(6.7, 34 / pitch), s2 = 2 * sig * sig, grow = me.grow >= 1 ? 1 : 1 - Math.pow(1 - me.grow, 3);
       ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.clearRect(0, 0, W, H);
-      var xc = PAD + (N > 1 ? c / (N - 1) : 0) * (W - PAD * 2);
-      ctx.fillStyle = "rgba(246,244,244,.13)"; ctx.fillRect(PAD, mid - .5, W - PAD * 2, 1);
-      var gr = ctx.createLinearGradient(PAD, 0, Math.max(PAD + 1, xc), 0); gr.addColorStop(0, "rgba(255,117,23,.15)"); gr.addColorStop(1, "rgba(255,117,23,.9)");
-      ctx.fillStyle = gr; ctx.fillRect(PAD, mid - .5, Math.max(0, xc - PAD), 1);
-      var lw = Math.max(1 / DPR, Math.min(1.2, pitch * .55));
-      for (var i = 0; i < N; i++) {
-        var dd = i - c, g = Math.exp(-(dd * dd) / (2 * sig * sig));
-        var reach = me.grow >= 1 ? 1 : Math.max(0, Math.min(1, me.grow * 1.8 - Math.abs(dd) / N * 1.4));
-        var h = (2.2 + 9.5 * g) * reach, x = PAD + i * pitch;
-        if (i === ci) { h = 14 * reach; ctx.fillStyle = "#ff7517"; }
-        else if (i < c) ctx.fillStyle = "rgba(255,117,23," + (.32 + .6 * g).toFixed(3) + ")";
-        else ctx.fillStyle = "rgba(246,244,244," + (.2 + .65 * g).toFixed(3) + ")";
-        if (h > .2) ctx.fillRect(x - lw / 2, mid - h, i === ci ? Math.max(lw, 1.6) : lw, h * 2);
+      var xc = PAD + (N > 1 ? c / (N - 1) : 0) * (W - PAD * 2), step = 1.5, F = .055;
+      ctx.lineCap = "round";
+      for (var pass = 0; pass < 2; pass++) for (var s = 0; s < 2; s++) {   // the back of the coil first, then its front
+        for (var x = PAD; x < W - PAD; x += step) {
+          var dd = (x - PAD) / pitch - c, g = Math.exp(-dd * dd / s2), ph = x * F + s * Math.PI + c * .35, z = Math.cos(ph);
+          if ((z > 0) !== (pass === 1)) continue;
+          var amp = (2.2 + 16.5 * g * grow), y1 = mid + Math.sin(ph) * amp, y2 = mid + Math.sin(ph + F * step) * amp, f = (z + 1) / 2;
+          ctx.strokeStyle = "rgba(" + (x <= xc ? OR : WH) + "," + Math.min(1, .1 + (.14 + .55 * g) * (.35 + .65 * f)).toFixed(3) + ")";
+          ctx.lineWidth = .8 + 1.5 * g * f;
+          ctx.beginPath(); ctx.moveTo(x, y1); ctx.lineTo(x + step, y2); ctx.stroke();
+        }
       }
+      for (var i = Math.max(0, Math.floor(c - sig * 2.6)); i <= Math.min(N - 1, Math.ceil(c + sig * 2.6)); i++) {   // the photos near you, beads on the core
+        var d2 = i - c, g2 = Math.exp(-d2 * d2 / (s2 * .45)); if (g2 < .05) continue;
+        ctx.fillStyle = "rgba(" + (i <= c ? OR : WH) + "," + ((.25 + .6 * g2) * grow).toFixed(3) + ")"; ctx.beginPath(); ctx.arc(PAD + i * pitch, mid, .6 + 1.3 * g2, 0, 7); ctx.fill();
+      }
+      var gl = ctx.createLinearGradient(0, 0, 0, H); gl.addColorStop(0, "rgba(" + OR + ",0)"); gl.addColorStop(.5, "rgba(" + OR + ",.95)"); gl.addColorStop(1, "rgba(" + OR + ",0)");
+      ctx.fillStyle = gl; ctx.fillRect(xc - .8, 0, 1.6, H);
+      ctx.shadowColor = "rgba(" + OR + ",.9)"; ctx.shadowBlur = 12; ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(xc, mid, 3, 0, 7); ctx.fill(); ctx.shadowBlur = 0;
       mark.style.setProperty("--mx", xc.toFixed(1) + "px");
       var half = pos.offsetWidth / 2, cx = Math.max(half - xc, Math.min(0, W - half - xc));
       pos.style.setProperty("--cx", cx.toFixed(1) + "px");
