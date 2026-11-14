@@ -225,6 +225,8 @@
     lb.classList.remove("is-in", "is-buy"); img.style.transform = "";
     show(a); tl.pos = Z.i;
     if (lb.showModal) { if (!lb.open) lb.showModal(); } else lb.setAttribute("open", "");
+    // the dialog's own pick would be the first focusable, the hidden side zone: start on Close, which has a name
+    var bx = lb.querySelector(".gfv-x"); if (bx) try { bx.focus({ preventScroll: true }); } catch (e) { bx.focus(); }
     fit(); tl.size(); tl.arrive();
     if (reduced() || !img.animate) { lb.classList.add("is-in"); return; }
     lb.classList.add("is-lift-out");          // ground clear, chrome hidden: only the photo shows, over its cell
