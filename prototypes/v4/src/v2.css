@@ -3016,3 +3016,7 @@ body:has(.v2-origin) .cta-band .cta-card{background-image:url("img/dust-soft.web
 /* Opened from the home screen: no browser bar above the header. */
 .is-app .page-wrap > nav{padding-top:max(1.5rem,env(safe-area-inset-top));}
 /* app:end */
+/* nav at laptop widths (site audit 14 Nov): Speed Record and Live keep to their icons up to 1149px, and the link row
+   tightens just above the menu button's breakpoint, so Enquire Now is never cut off and nothing scrolls sideways */
+@media (max-width:1149px){.page-wrap>nav .v4-nav a.v4-wr,.page-wrap>nav .v4-nav a.v4-live{font-size:0;gap:0}}
+@media (min-width:941px) and (max-width:1023px){.page-wrap>nav .nav-links.v4-nav{gap:.6rem}}
