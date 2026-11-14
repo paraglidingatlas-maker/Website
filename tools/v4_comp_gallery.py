@@ -69,7 +69,7 @@ COMPS = {
                     # picture from these four (the file names stay the originals', the ones a buyer quotes)
                     first={"T1": [2, 3, 4, 5, 15, 16, 17, 19]}, lead="SRS_6_T1_62",
                     # owner, 10 Nov: the link picture from Task 2 photos 22, 19, 43, 2 (was Task 1: 62, 10, 20, 58)
-                    share=["SRS_6_T4_54", "SRS_6_T4_67", "SRS_6_T4_94", "SRS_6_T4_100", "SRS_6_T4_150"],   # Task 4, owner 12 Nov
+                    share=["SRS_6_T6_89", "SRS_6_T6_66", "SRS_6_T6_18", "SRS_6_T6_160", "SRS_6_T6_35", "SRS_6_T6_56"],   # Task 6, owner 14 Nov
                     # owner, 9 Nov 2026: "Add this link to photos page if anyone wants to see video highlights too for
                     # the task day". A task's Daily Highlights film, one line a night once it is on YouTube: its id, its
                     # title and length as YouTube has them (vidIQ), its line from the video's own description, and a
@@ -180,7 +180,11 @@ def share_image(comp):
         im = im.resize((round(im.width * r), round(im.height * r)), Image.LANCZOS)
         x, y = (im.width - tw) // 2, (im.height - th) // 2
         return im.crop((x, y, x + tw, y + th))
-    if len(tiles) >= 5:      # owner, 10 Nov (Task 3): five photos, the first big on the left, four 2 by 2 on the right
+    if len(tiles) >= 6:      # owner, 14 Nov (Task 6): six photos, three by two
+        tw, th = (W - 2 * g) // 3, (H - g) // 2
+        for i, t in enumerate(tiles[:6]):
+            out.paste(fit(t, tw, th), ((i % 3) * (tw + g), (i // 3) * (th + g)))
+    elif len(tiles) >= 5:    # owner, 10 Nov (Task 3): five photos, the first big on the left, four 2 by 2 on the right
         bw = (W - g) // 2
         out.paste(fit(tiles[0], bw, H), (0, 0))
         tw, th = (W - bw - 2 * g) // 2, (H - g) // 2
