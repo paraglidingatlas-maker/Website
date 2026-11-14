@@ -4,6 +4,53 @@ Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
 the owner's current queue and what the last session learnt doing it.
 
+## Chat 25 starts here (14 Nov 2026, from chat 21): Tapalpa wrap-up
+**Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
+has grown long, hand over without asking the owner: write the handover at the top of this file, update the
+owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
+chat yourself with the session tools (create_session), and give the owner its link. If create_session is refused,
+give the owner the prompt to paste.
+
+**Where Tapalpa stands (LIVE, fa365a7a, 14 Nov 18:47 UTC).** SRS Advance Edition Tapalpa is over: 5 tasks scored
+(T1-T4, T6), 2 cancelled. SRS numbering: T6.5 = 12 Nov cancelled (weather), T6.6 = 13 Nov, T6.7 = 14 Nov cancelled
+(wind over the back of launch, 12:29). The page https://paraglidingatlas.com/media-srs-tapalpa-2026.html shows
+P + Tasks 1-7; COMPS["tapalpa"] has cancelled={"T5": "weather", "T7": "wind"}, stories for T5 and T7, facts chip
+"5 tasks scored, 2 cancelled". Photos: P 19, T1 99, T2 54, T3 144, T4 168, T6 185 (669). Films: T1-T3 (no T4,
+owner: "only photos"; none yet for T6). Link preview share.jpg = the owner's six T6 photos (89 66 18 160 35 56),
+3 by 2 (share_image() takes 4, 5 or 6).
+
+**Your queue (chat 25).**
+1. Any 14 Nov photos: watch the Drive parent folder (id in this file, "Tapalpa Drive folder") for a new subfolder;
+   files SRS_6_T7 (n).JPG -> `python3 tools/media_webcopies.py FOLDER /home/user/media-2026/srs-tapalpa --day T7
+   --keep-names --jobs 8`, push media-2026, then the build below. A cancelled day with photos: check how the
+   cancelled panel shows them (chat 24's cancelled-state code) before pushing.
+2. The T6 film, when the owner uploads it to the channel: one films line (see chat 20's notes below), and send its
+   id, title, length and line to the newsletter chat.
+3. The landing switch (owner-approved, chat 22's design): COMPS["tapalpa"]["landing"]=True once the owner's last
+   photos/film are in. Then build, check at 1440 and 390, push.
+4. Final results: SRS posts the final overall (api.airtribune.com/srs/scores/?indx=1&comp=9). Overlays only if the
+   owner asks (tools/yt_kit/make_boards_anim.py N --numbers / standings / women / overall; no stills, ever).
+5. Owner decisions still open: originals download (Cloudflare free vs GitHub Releases), music credits, Cloudflare
+   Web Analytics snippet, teams overlay (paused).
+
+**How to build and push (what worked all week).** Regenerate in /home/user/website (needs /home/user/media-2026 for
+share.jpg: clone paraglidingatlas-maker/media-2026 there first, or the og:image falls back): `python3
+tools/v4_comp_gallery.py tapalpa; python3 tools/v4_nav_live.py`; `git add -A prototypes tools photo`; commit;
+`git worktree add /home/user/wt HEAD`; in it `python3 tools/v4_gates.py --quick` (about 30 s). Two FAILs are
+expected and harmless: live-untouched (build.sh rewrites dateModified on root pages in the worktree; never copy
+those) and the audit's sitemap lastmod. v4-check, v4-switch and v2-static must be 0 FAIL. Copy back from the
+worktree only prototypes/v4 pages whose v4-gallery/v4-event stamp changed, plus media.html, search-index.js,
+index.html and the gallery page; commit; push HEAD to claude/v2-prototype and main (never forced; check
+merge-base first). Message the other website chat before every push.
+
+**Other chats.** Chat 24 (session_018Da7i6U9ADHxzqnSqhEs1h): newsletter, photo viewer (thermal slider, Download,
+cancelled state, site audit). Coordinate pushes with it. Chat 21's scheduled tasks: the nightly Tapalpa photo run
+ends after 14 Nov (it disables itself after 15 Nov).
+
+**YouTube kit (tools/yt_kit).** make_day.py N (SRS tables by header, IGC/KMZ), make_boards_anim.py N [--numbers]
+(transparent 4K60 MOV + preview MP4 in out/taskN/animated), make_flyby.py N (Google Earth tour KMZ), endscreen.tpl,
+thumb.tpl. srs_live.py writes the srs.live commentary to live2.txt (newest first).
+
 ## Chat 20, overnight 9 Nov: the Daily Highlights film on the comp gallery (chat 21 carries on below)
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
 has grown long, hand over without asking the owner: write the handover at the top of this file, update the
