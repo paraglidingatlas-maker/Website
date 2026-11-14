@@ -166,3 +166,5 @@ a.ev-row-go::after{content:"";position:absolute;inset:0;z-index:1}   /* the whol
 
 /* ---------------------------------------------------------------- reduced motion: the finished page, still */
 @media (prefers-reduced-motion:reduce){.ev-fan,.gf-track,.ev-row-pic img,.ev-row-go i{transition:none!important;animation:none!important}}
+/* laptop widths: the season strip and the foot keep the page's side margin (site audit 14 Nov) */
+@media (min-width:821px){.ev-season-in,.ev-foot-in{max-width:min(var(--measure),calc(100% - 2 * var(--gutter)))}}

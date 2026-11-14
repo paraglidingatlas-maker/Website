@@ -125,7 +125,7 @@
     if (want) { var t = d.querySelector(".gf-day[data-state=photos]"); if (t) { var nh = parseFloat(getComputedStyle(root).getPropertyValue("--v2-nav-h")) || 0; var top = t.getBoundingClientRect().top; if (top < 0) w.scrollTo(0, Math.max(0, w.scrollY + top - nh - 90)); } setHash(""); }
     else openDay(cur, { scroll: true });
   });
-  function setHash(h) { try { history.replaceState(null, "", location.pathname + location.search + h); } catch (e) {} }
+  function setHash(h) { try { history.replaceState(history.state, "", location.pathname + location.search + h); } catch (e) {} }
 
   d.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest(".gf-tp a, [data-go]");
@@ -214,6 +214,7 @@
     [].forEach.call(refs, function (r) { r.textContent = stem; });
     copy.textContent = "Copy name"; payNote.classList.remove("is-lit");
     apply();
+    var shp = d.querySelector(".v4sh"); if (shp && !shp.hidden) shp.hidden = true;   // a share panel never offers the last photo
     setHash("#" + stem);
     // Share: the photo's own preview page (v4_comp_gallery.py share_stubs), so a link preview shows this photo
     if (shareB) { shareB.setAttribute("data-share-url", "/photo/" + stem + ".html"); shareB.setAttribute("data-share-title", whereEl.textContent); }
@@ -223,6 +224,8 @@
     Z.set = [].slice.call((all ? main : a.closest(".gf-grid")).querySelectorAll(all ? ".gf-day[data-state=photos] a[data-stem]" : "a[data-stem]"));
     Z.i = Math.max(0, Z.set.indexOf(a)); Z.ptrs = {}; Z.pinch = null; Z.closing = 0;
     lb.classList.remove("is-in", "is-buy"); img.style.transform = "";
+    // the viewer is a step in history: the phone's Back closes it and stays on the gallery (site audit 14 Nov)
+    if (!(history.state && history.state.gfv)) try { history.pushState({ gfv: 1 }, "", location.href); Z.pushed = 1; } catch (e) {}
     show(a); tl.pos = Z.i;
     if (lb.showModal) { if (!lb.open) lb.showModal(); } else lb.setAttribute("open", "");
     // the dialog's own pick would be the first focusable, the hidden side zone: start on Close, which has a name
@@ -291,8 +294,11 @@
         if (!reduced()) { f.classList.remove("is-last"); void f.offsetWidth; f.classList.add("is-last"); }
         setHash(all ? "" : "#" + days[dayOf(a)].id);
       }
+      if (Z.pushed && !Z.popped) { Z.skipHash = Date.now(); try { history.back(); } catch (e) {} }
+      Z.pushed = Z.popped = 0;
     }
   }
+  w.addEventListener("popstate", function () { if (lb.open && Z.pushed) { Z.popped = 1; Z.skipHash = Date.now(); closeLb(); } });
   days.forEach(function (sec) {
     [].forEach.call(sec.querySelectorAll("a[data-stem]"), function (a) {
       a.addEventListener("click", function (e) { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); openLb(a); });
@@ -321,6 +327,7 @@
   stage.addEventListener("pointerdown", function (e) {
     if (e.target.closest(".gfv-zone")) return;
     Z.ptrs[e.pointerId] = { x: e.clientX, y: e.clientY, sx: e.clientX, sy: e.clientY }; var ids = Object.keys(Z.ptrs); Z.moved = 0;
+    if (ids.length === 2) Z.multi = 1;
     if (ids.length === 2) { var A = Z.ptrs[ids[0]], B = Z.ptrs[ids[1]]; Z.pinch = { span: Math.hypot(A.x - B.x, A.y - B.y), cx: (A.x + B.x) / 2, cy: (A.y + B.y) / 2 }; }
     if (stage.setPointerCapture) stage.setPointerCapture(e.pointerId); if (e.target === img && Z.s > 1.01) lb.classList.add("is-drag"); e.preventDefault();
   });
@@ -344,13 +351,14 @@
   });
   function up(e) {
     var p = Z.ptrs[e.pointerId]; delete Z.ptrs[e.pointerId]; var ids = Object.keys(Z.ptrs); if (ids.length < 2) Z.pinch = null; lb.classList.remove("is-drag");
+    var multi = Z.multi; if (!ids.length) Z.multi = 0;   // a pinch is never a swipe, even when its last finger slides off
     if (Z.pull) {                                  // a swipe down: far enough closes, else the photo settles back
       var far = Z.pull > 110; Z.pull = 0; Z.moved = 99; lb.classList.remove("is-pull");
       img.style.transition = ""; lb.style.backgroundColor = "";
       if (far) { closeLb(); } else { img.style.transform = ""; apply(); }
       return;
     }
-    if (p && !ids.length && Z.s <= 1.01 && !Z.pinch) { var dx = e.clientX - p.sx, dy = e.clientY - p.sy; if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) { Z.moved = 99; go(dx < 0 ? 1 : -1); } }
+    if (p && !ids.length && !multi && Z.s <= 1.01 && !Z.pinch) { var dx = e.clientX - p.sx, dy = e.clientY - p.sy; if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) { Z.moved = 99; go(dx < 0 ? 1 : -1); } }
   }
   stage.addEventListener("pointerup", up); stage.addEventListener("pointercancel", up);
   d.addEventListener("keydown", function (e) {
@@ -917,5 +925,5 @@
     };
     setTimeout(function () { requestAnimationFrame(go2); }, 450);
   }
-  w.addEventListener("hashchange", function () { if (!lb.open) fromHash({ scroll: true }); });
+  w.addEventListener("hashchange", function () { if (!lb.open && !(Z.skipHash && Date.now() - Z.skipHash < 1200)) fromHash({ scroll: true }); });
 })();

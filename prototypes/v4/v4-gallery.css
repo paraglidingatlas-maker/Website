@@ -515,3 +515,7 @@ html.v2-nav-up .gf-line.is-stuck{transform:translateY(var(--v2-nav-h,5rem))}
   .gfv-save[data-state="busy"] .arw{animation:none}
   .gfv-btn:active svg,.gfv-btn.is-press svg{transform:none!important}
 }
+/* laptop widths (821 to 1300): the days and the task line keep the page's side margin (site audit 14 Nov) */
+@media (min-width:821px){.gf-days,.gf-line-in{max-width:min(var(--measure),calc(100% - 2 * var(--gutter)))}}
+/* the narrowest phones: the Download size may take a second line rather than be cut */
+@media (max-width:359px){.gfv-dl-m{white-space:normal;overflow:visible}}
