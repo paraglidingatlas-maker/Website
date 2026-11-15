@@ -86,7 +86,15 @@ COMPS = {
                                       poster="SRS_6_T2_44", pos="50% 40%"),
                            "T3": dict(id="bB1TaxIN8Oo", title="Task 3 Highlights", len="6:41",
                                       line="A 58.7 km race on a day that looked better than forecast, the field raced the ridge, crossed the lake bed into the wind and ran a cloud street home.",
-                                      poster="SRS_6_T3_141", pos="60% 40%")}),
+                                      poster="SRS_6_T3_141", pos="60% 40%")},
+                    # owner, 15 Nov: "add the podium and results". SRS's event overall, marked Final on
+                    # api.airtribune.com/srs/scores/?meet=93 (type 56 Sports, 57 Female, 61 Team), 14 Nov; names as srs.live writes them
+                    results=dict(src="https://airtribune.com/srs-2026-6/results", note="SRS Advance Edition Tapalpa, after five scored tasks",
+                                 boards=[("Overall", [("Andrés Tello Alvarado", "MEX", "3978.7"), ("Bill Belcourt", "USA", "3782.4"),
+                                                      ("Chaeden Luebberke", "USA", "3630.9")]),
+                                         ("Women", [("Lynsey Haynes", "CAN", "3497.0"), ("Riley Ferre", "USA", "3032.0"),
+                                                    ("Summer Barham", "USA", "3008.6")]),
+                                         ("Teams", [("CryMeARiviuk", "", "3645.0"), ("Gin 2", "", "3499.7"), ("Ozone", "", "3493.1")])])),
     "piedrahita": dict(page="media-srs-piedrahita-2026.html", folder="srs-piedrahita", title="Piedrahita 2026", tz="Europe/Madrid",
                        kicker="SRS BGD Edition &middot; Piedrahita, Ávila, Spain", span="22 to 29 Aug 2026",
                        facts=["22 to 29 Aug 2026", "FAI Category 2", "120 pilots, 54 countries", "Photos by Aninder Singh"],
@@ -391,6 +399,22 @@ FILM_DIALOG = """
 """ % dict(channel=CHANNEL, ext=EXT)
 
 
+def results(comp):
+    """the event's podium once SRS marks the overall Final: three boards (overall, women, teams), top three each"""
+    r = COMPS[comp].get("results")
+    if not r:
+        return ""
+    def board(name, rows):
+        li = "".join('<li><span class="gr-rk">%d</span><span class="gr-nm">%s%s</span><span class="gr-pt">%s</span></li>'
+                     % (k + 1, E(n), ' <small>%s</small>' % E(nat) if nat else "", E(pt)) for k, (n, nat, pt) in enumerate(rows))
+        return '<div class="gr-b"><h3>%s</h3><ol>%s</ol></div>' % (E(name), li)
+    return ('<section class="gr" id="results" aria-labelledby="gr-t"><div class="gr-in">'
+            '<p class="gf-kicker">%s</p><h2 id="gr-t" class="gr-h">Final Results</h2>'
+            '<div class="gr-bs">%s</div>'
+            '<p class="gr-src">Points, from SRS. <a href="%s" target="_blank" rel="noopener">Full results %s</a></p></div></section>\n'
+            % (E(r["note"]), "".join(board(n, rows) for n, rows in r["boards"]), E(r["src"]), NE))
+
+
 def render(comp):
     c = COMPS[comp]
     ds, dates = days(comp), task_dates(comp)
@@ -504,7 +528,7 @@ def render(comp):
     <p class="gf-kicker">%(kicker)s</p>
     <h1 class="gf-name">%(name)s <span>%(year)s</span></h1>
     <p class="gf-facts">%(facts)s</p>
-    <p class="gf-event">Official event: <a href="%(evu)s" target="_blank" rel="noopener">%(evn)s</a></p>
+    <p class="gf-event">Official event: <a href="%(evu)s" target="_blank" rel="noopener">%(evn)s</a>%(reslink)s</p>
     %(cue)s%(note)s
   </div>
 </header>
@@ -523,7 +547,7 @@ def render(comp):
 %(secs)s
 </div>
 </div>
-
+%(results)s
 %(cta)s
 
 <dialog class="gfv" id="gfv" aria-label="The photo, enlarged">
@@ -569,7 +593,7 @@ def render(comp):
 %(filmdialog)s
 <script type="application/json" id="gf-data">%(data)s</script>
 """ % dict(lead=src(lead_comp, lead, 1600), leads=srcset(lead_comp, lead), lh=round(1600 * h / w),
-           cue=cue, filmdialog=FILM_DIALOG if fdata else "",
+           cue=cue, results=results(comp), reslink=' &middot; <a href="#results">Final results</a>' if c.get("results") else "", filmdialog=FILM_DIALOG if fdata else "",
            lalt=E("A photo from %s" % ("SRS Piedrahita 2026" if lead_comp != comp else c["title"])),
            kicker=c["kicker"], evn=E(c["event"][0]), evu=E(c["event"][1]), name=E(c["title"].rsplit(" ", 1)[0]), year=c["title"].rsplit(" ", 1)[1], facts=facts,
            note=note, linelabel=E("%s, %s" % (c["title"], "tasks " + c["span"])), glider=GLIDER, tps="".join(tps),
@@ -688,6 +712,8 @@ def landing(comp, out, ds):
         have += '<a href="#%s"><b>%s</b> photos</a>' % (sid(with_ph[-1]), M.n(nph))
     if films:
         have += '<a href="#film-%s"><b>%d</b> film%s</a>' % (sid(films[0]), len(films), "" if len(films) == 1 else "s")
+    if c.get("results"):
+        have += '<a href="#results"><b>Final</b> results</a>'
     lead = c["lead"]
     lr = next(r for r in photos(comp) if r["stem"] == lead)
     media = ('<img src="%s" srcset="%s" sizes="100vw" width="1600" height="%d" alt="%s" fetchpriority="high">'

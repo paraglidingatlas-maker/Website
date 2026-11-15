@@ -519,3 +519,23 @@ html.v2-nav-up .gf-line.is-stuck{transform:translateY(var(--v2-nav-h,5rem))}
 @media (min-width:821px){.gf-days,.gf-line-in{max-width:min(var(--measure),calc(100% - 2 * var(--gutter)))}}
 /* the narrowest phones: the Download size may take a second line rather than be cut */
 @media (max-width:359px){.gfv-dl-m{white-space:normal;overflow:visible}}
+
+/* ---- the final results (chat 25, 15 Nov 2026): the event's podium, three boards, top three each ---- */
+.gr{border-top:1px solid var(--line);padding:3rem 0 3.5rem;scroll-margin-top:84px}
+.gr-in{max-width:var(--measure);margin:0 auto}
+@media (max-width:820px){.gr-in{margin:0 var(--gutter)}}
+.gr-h{font-family:var(--font-display);font-weight:700;font-size:clamp(1.75rem,7.5vw,3rem);line-height:1;letter-spacing:-.02em;color:var(--white);margin-bottom:1.6rem}
+.gr-bs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem 2rem}
+@media (max-width:820px){.gr-bs{grid-template-columns:1fr;gap:1.6rem}}
+.gr-b h3{font-size:var(--fs-micro);font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray-light);padding-bottom:.55rem;border-bottom:1px solid var(--line)}
+.gr-b ol{list-style:none;margin:0;padding:0}
+.gr-b li{display:grid;grid-template-columns:1.6rem minmax(0,1fr) auto;align-items:baseline;gap:.6rem;padding:.6rem 0;border-bottom:1px solid var(--line)}
+.gr-rk{font-family:var(--font-display);font-weight:700;color:var(--gray)}
+.gr-b li:first-child .gr-rk{color:var(--orange)}
+.gr-nm{color:var(--white);overflow-wrap:anywhere}
+.gr-b li:first-child .gr-nm{font-weight:600}
+.gr-nm small{font-size:var(--fs-micro);letter-spacing:.08em;color:var(--gray);margin-left:.25rem}
+.gr-pt{font-size:var(--fs-small);color:var(--gray-light);font-variant-numeric:tabular-nums}
+.gr-src{margin-top:1.2rem;font-size:var(--fs-small);color:var(--gray-light)}
+.gr-src a{color:inherit;text-decoration:underline;text-underline-offset:.2em}
+.gr-src a:hover,.gr-src a:focus-visible{text-decoration-color:var(--orange)}
