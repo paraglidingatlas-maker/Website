@@ -927,3 +927,32 @@
   }
   w.addEventListener("hashchange", function () { if (!lb.open && !(Z.skipHash && Date.now() - Z.skipHash < 1200)) fromHash({ scroll: true }); });
 })();
+
+/* the podium (chat 25): a tab per board (overall, women, teams), arrow keys between tabs; the steps rise once when the
+   section first comes into view. No JS: the three boards stacked, steps standing. */
+(function () {
+  "use strict";
+  var d = document, sec = d.getElementById("results"); if (!sec || !sec.classList.contains("gr")) return;
+  var tabs = [].slice.call(sec.querySelectorAll(".gr-tabs [role=tab]")), panels = [].slice.call(sec.querySelectorAll(".gr-b"));
+  function pick(k, focus) {
+    tabs.forEach(function (t, j) { t.setAttribute("aria-selected", j === k ? "true" : "false"); t.tabIndex = j === k ? 0 : -1; });
+    panels.forEach(function (p, j) { p.hidden = j !== k; });
+    if (focus) tabs[k].focus();
+    if (sec.classList.contains("gr-up")) { sec.classList.remove("gr-up"); void sec.offsetWidth; sec.classList.add("gr-up"); }
+  }
+  tabs.forEach(function (t, k) {
+    t.addEventListener("click", function () { pick(k); });
+    t.addEventListener("keydown", function (e) {
+      var n = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0; if (!n) return;
+      e.preventDefault(); pick((k + n + tabs.length) % tabs.length, true);
+    });
+  });
+  pick(0);
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { sec.classList.add("gr-up"); io.disconnect(); } });
+    }, { threshold: 0.25 });
+    io.observe(sec.querySelector(".gr-pod"));
+  }
+})();
+

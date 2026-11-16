@@ -90,11 +90,17 @@ COMPS = {
                     # owner, 15 Nov: "add the podium and results". SRS's event overall, marked Final on
                     # api.airtribune.com/srs/scores/?meet=93 (type 56 Sports, 57 Female, 61 Team), 14 Nov; names as srs.live writes them
                     results=dict(src="https://airtribune.com/srs-2026-6/results", note="SRS Advance Edition Tapalpa, after five scored tasks",
-                                 boards=[("Overall", [("Andrés Tello Alvarado", "MEX", "3978.7"), ("Bill Belcourt", "USA", "3782.4"),
-                                                      ("Chaeden Luebberke", "USA", "3630.9")]),
-                                         ("Women", [("Lynsey Haynes", "CAN", "3497.0"), ("Riley Ferre", "USA", "3032.0"),
-                                                    ("Summer Barham", "USA", "3008.6")]),
-                                         ("Teams", [("CryMeARiviuk", "", "3645.0"), ("Gin 2", "", "3499.7"), ("Ozone", "", "3493.1")])])),
+                                 tasks=["T1", "T2", "T3", "T4", "T6"], photo="SRS_6_T6_56", pos="72% 45%",
+                                 # each: name, nation, glider (wing as SRS lists it) or the team's pilots, total, the five task scores
+                                 boards=[("Overall", [("Andrés Tello Alvarado", "MEX", "Tau DLS", "3978.7", [982.0, 542.7, 944.1, 668.8, 841.1]),
+                                                      ("Bill Belcourt", "USA", "Lyght", "3782.4", [922.1, 363.6, 963.2, 704.6, 828.9]),
+                                                      ("Chaeden Luebberke", "USA", "Artik R 2", "3630.9", [973.2, 430.4, 977.9, 515.5, 733.9])]),
+                                         ("Women", [("Lynsey Haynes", "CAN", "Artik R 2", "3497.0", [956.4, 342.1, 806.7, 648.9, 742.9]),
+                                                    ("Riley Ferre", "USA", "GTO 3", "3032.0", [643.7, 316.1, 616.2, 682.3, 773.7]),
+                                                    ("Summer Barham", "USA", "Photon", "3008.6", [644.8, 278.8, 707.4, 659.9, 717.7])]),
+                                         ("Teams", [("CryMeARiviuk", "", "Haynes, Nazander, Luebberke, McClurg", "3645.0", [956.4, 342.1, 954.7, 648.9, 742.9]),
+                                                    ("Gin 2", "", "Nicol, Andreliunas, Ferre, Groeneveld", "3499.7", [956.4, 316.1, 921.9, 462.1, 843.2]),
+                                                    ("Ozone", "", "Takats, Castro, Barham, Desmond", "3493.1", [644.8, 542.8, 937.2, 532.1, 836.2])])])),
     "piedrahita": dict(page="media-srs-piedrahita-2026.html", folder="srs-piedrahita", title="Piedrahita 2026", tz="Europe/Madrid",
                        kicker="SRS BGD Edition &middot; Piedrahita, Ávila, Spain", span="22 to 29 Aug 2026",
                        facts=["22 to 29 Aug 2026", "FAI Category 2", "120 pilots, 54 countries", "Photos by Aninder Singh"],
@@ -400,19 +406,40 @@ FILM_DIALOG = """
 
 
 def results(comp):
-    """the event's podium once SRS marks the overall Final: three boards (overall, women, teams), top three each"""
+    """the event's podium once SRS marks the overall Final (chat 25, 16 Nov): the comp's own photo behind, a tab per
+    board (overall, women, teams; no JS: the three stacked), the three on steps (2, 1, 3), each with its five task scores"""
     r = COMPS[comp].get("results")
     if not r:
         return ""
-    def board(name, rows):
-        li = "".join('<li><span class="gr-rk">%d</span><span class="gr-nm">%s%s</span><span class="gr-pt">%s</span></li>'
-                     % (k + 1, E(n), ' <small>%s</small>' % E(nat) if nat else "", E(pt)) for k, (n, nat, pt) in enumerate(rows))
-        return '<div class="gr-b"><h3>%s</h3><ol>%s</ol></div>' % (E(name), li)
-    return ('<section class="gr" id="results" aria-labelledby="gr-t"><div class="gr-in">'
-            '<p class="gf-kicker">%s</p><h2 id="gr-t" class="gr-h">Final Results</h2>'
-            '<div class="gr-bs">%s</div>'
-            '<p class="gr-src">Points, from SRS. <a href="%s" target="_blank" rel="noopener">Full results %s</a></p></div></section>\n'
-            % (E(r["note"]), "".join(board(n, rows) for n, rows in r["boards"]), E(r["src"]), NE))
+    tasks = [label(t) for t in r["tasks"]]
+    def card(k, row):
+        name, nat, sub, pts, ts = row
+        team = not nat
+        first, last = ("", name) if team or " " not in name else name.split(" ", 1)
+        bars = "".join('<i style="--v:%.3f" title="%s: %.1f"><span>%s</span></i>' % (v / 1000, E(t), v, E(t.replace("Task ", "T")))
+                       for t, v in zip(tasks, ts))
+        aria = "; ".join("%s %.1f" % (t, v) for t, v in zip(tasks, ts))
+        return ('<li class="gr-c gr-c%d"><div class="gr-who"><span class="gr-fn">%s</span><span class="gr-ln">%s</span>'
+                '<span class="gr-meta">%s</span></div><p class="gr-pts"><b>%s</b> pts</p>'
+                '<p class="gr-tk" role="img" aria-label="Task scores: %s">%s</p><div class="gr-step" aria-hidden="true"><span>%d</span></div></li>'
+                % (k + 1, E(first), E(last), (E(nat) + ' &middot; ' + E(sub)) if not team else E(sub), E(pts), E(aria), bars, k + 1))
+    tabs, panels = [], []
+    for b, (name, rows) in enumerate(r["boards"]):
+        gap = float(rows[0][3]) - float(rows[1][3])
+        tabs.append('<button type="button" role="tab" id="gr-tab-%d" aria-controls="gr-p-%d" aria-selected="%s">%s</button>'
+                    % (b, b, "true" if b == 0 else "false", E(name)))
+        panels.append('<div class="gr-b" id="gr-p-%d" role="tabpanel" aria-labelledby="gr-tab-%d"><h3>%s</h3><ol class="gr-pod">%s</ol>'
+                      '<p class="gr-gap">%s by <b>%.1f</b> points</p></div>'
+                      % (b, b, E(name), "".join(card(k, row) for k, row in enumerate(rows)), "Won", gap))
+    ph = r.get("photo")
+    bg = ('<div class="gr-bg" aria-hidden="true"><img src="%s" srcset="%s" sizes="100vw" alt="" loading="lazy" style="object-position:%s"></div>'
+          % (src(comp, ph, 1600), srcset(comp, ph), r.get("pos", "50% 50%")) if ph else "")
+    return ('<section class="gr" id="results" aria-labelledby="gr-t">%s<div class="gr-in">'
+            '<p class="gf-kicker">%s</p><h2 id="gr-t" class="gr-h">The Podium</h2>'
+            '<div class="gr-tabs" role="tablist" aria-label="Results">%s</div>%s'
+            '<p class="gr-src">Points from SRS&#x27;s final results; the bars are each task&#x27;s score, out of 1000. '
+            '<a href="%s" target="_blank" rel="noopener">Full results %s</a></p></div></section>\n'
+            % (bg, E(r["note"]), "".join(tabs), "".join(panels), E(r["src"]), NE))
 
 
 def render(comp):
