@@ -44,9 +44,7 @@
   },
   "pages": [
     "index.html",
-    "destinations/panchgani.html",
-    "enquire.html",
-    "media-srs-tapalpa-2026.html"
+    "enquire.html"
   ],
   "english_binding": [
     "terms.html",
@@ -122,5 +120,6 @@
     "Task days, or a rough window",
     "Your Event",
     "(optional)"
-  ]
+  ],
+  "_pilot": "Owner, 17 Nov 2026: the pilot is the home page and Enquire only; Panchgani and Tapalpa wait (their reviewed translations stay in memory)."
 }
