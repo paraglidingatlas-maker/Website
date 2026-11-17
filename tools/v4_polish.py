@@ -1067,7 +1067,7 @@ def words(n):
     if n < 20:
         return ones[n]
     if n < 100:
-        return tens[n // 10] + ("" if n % 10 == 0 else " " + ones[n % 10])
+        return tens[n // 10] + ("" if n % 10 == 0 else "-" + ones[n % 10])
     return str(n)
 
 
@@ -1078,7 +1078,7 @@ def episode_count(rel, html):
         html = re.sub(r"(13 series &middot; )\d+( episodes)", lambda m: m.group(1) + str(n) + m.group(2), html)
         html = re.sub(r'("sub": "13 series, )\d+( episodes")', lambda m: m.group(1) + str(n) + m.group(2), html)
     if rel == "mission.html":
-        num = r"(?:Twenty|Thirty|Forty|Fifty|Sixty|Seventy|Eighty|Ninety)(?: (?:one|two|three|four|five|six|seven|eight|nine))?"
+        num = r"(?:Twenty|Thirty|Forty|Fifty|Sixty|Seventy|Eighty|Ninety)(?:[ -](?:one|two|three|four|five|six|seven|eight|nine))?"
         html = re.sub(num + r" conversations( with designers| is a lot of ground)",
                       lambda m: words(n).capitalize() + " conversations" + m.group(1), html)
     return html
