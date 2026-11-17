@@ -23,7 +23,8 @@
  "00abe35af611": {
   "en": "FloraNorm probiotic<x1>Saccharomyces boulardii, available locally</x1>",
   "b": "Probiótico FloraNorm<x1>Saccharomyces boulardii, disponible allí</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Probiótico FloraNorm<x1>Saccharomyces boulardii, disponible allí</x1>"
  },
  "00d076c56ded": {
   "en": "The forested front range under building cumulus",
@@ -33,7 +34,8 @@
  "00d21720fac9": {
   "en": "Local knowledge",
   "b": "Conocimiento local",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Conocimiento local"
  },
  "00dfa1336339": {
   "en": "Report a translation error",
@@ -56,7 +58,8 @@
  "01ea0d476cd5": {
   "en": "We don’t see our clients as clients, we see them as friends and fellow dreamers. Pilots, who, like us, have made exploring new horizons a priority. That means we’ll leave no thermal unchecked in our quest to help you achieve a personal best or simply experience the flight of a lifetime",
   "b": "No vemos a nuestros clientes como clientes, los vemos como amigos y compañeros de sueños. Pilotos que, como nosotros, han hecho de explorar nuevos horizontes una prioridad. Eso significa que no dejaremos ninguna térmica sin probar en nuestro empeño por ayudarte a lograr tu mejor marca personal o simplemente a vivir el vuelo de tu vida.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "No vemos a nuestros clientes como clientes, sino como amigos y compañeros de sueños. Pilotos que, como nosotros, han hecho de explorar nuevos horizontes una prioridad. Por eso no dejaremos ninguna térmica sin probar en nuestro empeño por ayudarte a batir tu récord personal o simplemente a vivir el vuelo de tu vida"
  },
  "01f30b47ce79": {
   "en": "This form has no database behind it. Pressing send passes your message through a small relay of our own, running on {1}, which turns it into an email to us and does not store it. There is no form service or mailing list tool in between, so your details end up in our inbox and nowhere else.",
@@ -78,7 +81,8 @@
  "0221b4b6f4ce": {
   "en": "Skip the flight <x1>↓</x1>",
   "b": "Saltar el vuelo <x1>↓</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Saltar el vuelo <x1>↓</x1>"
  },
  "0226fcb7f6b0": {
   "en": "So we know who we are replying to.",
@@ -92,7 +96,8 @@
  "0241d92fd420": {
   "en": "A range of moorland and forest where in {1} Princess Elizabeth went up to Treetops lodge a princess and came down a queen.",
   "b": "Una cadena de páramos y bosque donde, en {1}, la princesa Isabel subió al refugio Treetops princesa y bajó reina.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Una cordillera de páramo y bosque donde, en {1}, la princesa Isabel subió al refugio Treetops siendo princesa y bajó siendo reina."
  },
  "027c9a89be3b": {
   "en": "Peru · {1} and the Andes",
@@ -116,7 +121,8 @@
  "02a1751e7d16": {
   "en": "About Baobab country",
   "b": "Sobre la tierra de los baobabs",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre la tierra de los baobabs"
  },
  "02ca51cb997f": {
   "en": "Insurance covering paragliding<x1>Essential</x1><x2>Medical treatment, repatriation and search and rescue</x2>",
@@ -126,7 +132,8 @@
  "030a16295eaa": {
   "en": "Flamingos",
   "b": "Flamencos",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Flamencos"
  },
  "0315457c3c58": {
   "en": "Where you are based <x1>(optional)</x1>",
@@ -140,7 +147,8 @@
  "031c7dd8da8a": {
   "en": "You are the precedent",
   "b": "Tú eres el precedente",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Tú eres el precedente"
  },
  "03415eb60d01": {
   "en": "{1} Immersive",
@@ -150,7 +158,8 @@
  "0362adf0c889": {
   "en": "Ona Kenya kama Miungu walivyoiona",
   "b": "Ona Kenya kama Miungu walivyoiona",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Ona Kenya kama Miungu walivyoiona"
  },
  "03688ba6aa34": {
   "en": "FAQ",
@@ -169,7 +178,8 @@
  "03cdf3d55e76": {
   "en": "Give work, not cash",
   "b": "Da trabajo, no dinero",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Da trabajo, no dinero"
  },
  "04885b0637b7": {
   "en": "Snow-covered back ranges seen from the air",
@@ -179,12 +189,14 @@
  "049b355d5109": {
   "en": "Kenya Tour {1}",
   "b": "Expedición a Kenia {1}",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Viaje a Kenia {1}"
  },
  "04f8eab3e65b": {
   "en": "Warm flying jacket",
   "b": "Chaqueta de vuelo abrigada",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Chaqueta de vuelo de abrigo"
  },
  "0587c136e342": {
   "en": "Watch again",
@@ -198,12 +210,14 @@
  "05a493798ebf": {
   "en": "Northern Kenya",
   "b": "Norte de Kenia",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Norte de Kenia"
  },
  "0629d788085f": {
   "en": "This is an {1} adventure tour for autonomous pilots. The minimum is being able to manage your own takeoffs and outlandings, with strong thermalling and ridge soaring skills recommended. An {2} course is highly desirable for handling collapses and turbulence.",
   "b": "Es una expedición de aventura {1} para pilotos autónomos. Lo mínimo es saber manejar tú mismo tus despegues y aterrizajes fuera de campo, y se recomienda un buen dominio de centrar térmicas y de la ascendente dinámica. Un curso {2} es muy recomendable para manejar la plegada asimétrica y la turbulencia.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Es un viaje de aventura de {1} para pilotos autónomos. Lo mínimo es saber gestionar tus propios despegues y aterrizajes fuera de campo, y se recomienda saber centrar bien las térmicas y volar con soltura en ascendente dinámica de ladera. Es muy recomendable un curso {2} para gestionar plegadas y turbulencia."
  },
  "065643564a80": {
   "en": "climb the knobs of the {1} and run west towards Dharamshala,",
@@ -213,12 +227,14 @@
  "068392a56f33": {
   "en": "Be open, enthusiastic and positive, and greet everyone, including the unsmiling ones. Ask locally about security, wild animals and access, because that knowledge is not in any guidebook. Explain your plan clearly: misunderstandings about where you intend to take off are the single most common problem.",
   "b": "Sé abierto, entusiasta y positivo, y saluda a todos, también a los que no sonríen. Pregunta en la zona por la seguridad, los animales salvajes y el acceso, porque ese conocimiento no está en ninguna guía. Explica tu plan con claridad: los malentendidos sobre dónde piensas despegar son el problema más común con diferencia.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sé abierto, entusiasta y positivo, y saluda a todo el mundo, también a los que no sonríen. Pregunta allí mismo por la seguridad, los animales salvajes y el acceso, porque eso no viene en ninguna guía. Explica tu plan con claridad: los malentendidos sobre dónde piensas despegar son, con diferencia, el problema más común."
  },
  "06b1d0979ccb": {
   "en": "{1} · The horizon",
   "b": "{1} · El horizonte",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1} · El horizonte"
  },
  "06c5ca790cef": {
   "en": "<x1>{1} launch</x1>Pilots laying out and launching on the grass at {2}<x2>at {3} launch</x2>",
@@ -247,17 +263,20 @@
  "07638eed0fac": {
   "en": "{1} · The season",
   "b": "{1} · La temporada",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1} · La temporada"
  },
  "077fe9c54ed5": {
   "en": "Base",
   "b": "Base",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Base"
  },
  "0781eab97ca9": {
   "en": "m highest",
   "b": "m de altura máxima",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "m de altura máxima"
  },
  "07a8f718d5e6": {
   "en": "The tracker question",
@@ -267,7 +286,8 @@
  "07c981c58181": {
   "en": "Helicopter rescue and good healthcare are both available.",
   "b": "Hay rescate en helicóptero y buena asistencia sanitaria.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Hay rescate en helicóptero y buena atención sanitaria."
  },
  "07e4f9c27860": {
   "en": "Topics",
@@ -281,7 +301,8 @@
  "084694536bd1": {
   "en": "Briefing",
   "b": "Briefing",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Briefing"
  },
  "08a76604772f": {
   "en": "Your flying",
@@ -301,7 +322,8 @@
  "08ec69f5be3c": {
   "en": "km",
   "b": "km",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "km"
  },
  "090a3c807816": {
   "en": "Scroll",
@@ -373,7 +395,8 @@
  "09df84a7c5ed": {
   "en": "Each runs {1} days from {2}.",
   "b": "Cada una dura {1} días desde {2}.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Cada una dura {1} días, desde {2}."
  },
  "0a0ce225ba83": {
   "en": "Play Pre {1} Kenya, with Nikolay Yotov",
@@ -405,7 +428,8 @@
  "0a8d65a9ad19": {
   "en": "The highest of the Kenyan Rift lakes, and fresh, with hippo in the papyrus and fish eagles in the acacias. Crescent Island, the rim of a drowned crater, is walked on foot among giraffe and zebra.",
   "b": "El más alto de los lagos del Rift keniano, y de agua dulce, con hipopótamos entre el papiro y águilas pescadoras en las acacias. Crescent Island, el borde de un cráter sumergido, se recorre a pie entre jirafas y cebras.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El más alto de los lagos del Rift keniano, y de agua dulce, con hipopótamos entre los papiros y águilas pescadoras en las acacias. Crescent Island, el borde de un cráter sumergido, se recorre a pie entre jirafas y cebras."
  },
  "0aecb638e55b": {
   "en": ", {1} hills, {2}",
@@ -419,12 +443,14 @@
  "0b1694751e73": {
   "en": "Elephants pass through Rimoi on an old route up and down the {1}, and it was to keep that route open that the reserve was set aside in {2}.",
   "b": "Los elefantes pasan por Rimoi siguiendo una vieja ruta que sube y baja por el {1}, y la reserva se creó en {2} para mantener abierta esa ruta.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Los elefantes pasan por Rimoi siguiendo una antigua ruta que sube y baja por el {1}, y la reserva se creó en {2} precisamente para mantener abierta esa ruta."
  },
  "0b2929a6e961": {
   "en": "Ground crew",
   "b": "Equipo de tierra",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Equipo de tierra"
  },
  "0b3818833e3e": {
   "en": "Opening your email app. If nothing happens, your device may have no mail client set up: email {1}",
@@ -438,7 +464,8 @@
  "0b572ab14525": {
   "en": "{1} {2} or equivalent",
   "b": "{1} {2} o equivalente",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1} {2} o equivalente"
  },
  "0b5aab133a4a": {
   "en": "Be very careful of the cloud. On a big day he would rather run out south, away from the mountains, than sit under big clouds in a valley system where you can get trapped.",
@@ -488,7 +515,8 @@
  "0c5209fd972c": {
   "en": "A dormant stratovolcano with an intact crater rim, and one of the more photographed flights of the trip.",
   "b": "Un estratovolcán dormido con el borde del cráter intacto, y uno de los vuelos más fotografiados del viaje.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un estratovolcán dormido con el borde del cráter intacto, y uno de los vuelos más fotografiados del viaje."
  },
  "0c77aeece8c2": {
   "en": "Media",
@@ -502,12 +530,14 @@
  "0ce7f440e93f": {
   "en": "Origins",
   "b": "Orígenes",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Orígenes"
  },
  "0ce89af0d5cb": {
   "en": "No, there are no dedicated one to one guides on this tour. Pilots are led by one or two expert instructors at a maximum ratio of one to three. Personalised {1} guidance, weather briefings and retrieve help are provided to the group, focused on collective safety and maximising flights.",
   "b": "No, en esta expedición no hay guías individuales dedicados. A los pilotos los guían uno o dos instructores expertos, con una proporción máxima de uno a tres. La guía {1} personalizada, los briefings meteorológicos y la ayuda con la recogida se ofrecen al grupo, centrados en la seguridad colectiva y en maximizar los vuelos.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "No, en este viaje no hay guías individuales dedicados. Los pilotos van dirigidos por uno o dos instructores expertos, con una proporción máxima de uno por cada tres. Se ofrece al grupo orientación de {1} personalizada, briefings meteorológicos y ayuda con las recogidas, centrados en la seguridad colectiva y en aprovechar al máximo los vuelos."
  },
  "0d017c0662e4": {
   "en": "Live from {1}: the photos and videos",
@@ -526,12 +556,14 @@
  "0d173730d528": {
   "en": "<x1>over</x1> the Rift",
   "b": "<x1>sobre</x1> el Rift",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "<x1>sobre</x1> el Rift"
  },
  "0d20ee8c0672": {
   "en": "Further",
   "b": "Más lejos",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Más lejos"
  },
  "0d77c71693ab": {
   "en": "Building something for the sport?",
@@ -559,7 +591,8 @@
  "0e3c956b6903": {
   "en": "What This Trip Is Actually Like",
   "b": "Cómo es de verdad este viaje",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Cómo es de verdad este viaje"
  },
  "0e3ddfb7d306": {
   "en": "The {1} front ridge from the pilot's seat, snow and rock below the wing",
@@ -578,7 +611,8 @@
  "0ec477f84012": {
   "en": "Nikolay Yotov of Skynomad takes the show to Africa for the first time, on flying in Kenya ahead of the pre World Cup held there. It covers what the sites are actually like and what it means to share that airspace with the wildlife below.",
   "b": "Nikolay Yotov, de Skynomad, lleva el programa a África por primera vez, para hablar de volar en Kenia antes de la Copa del Mundo previa que se celebró allí. Cuenta cómo son de verdad las zonas y qué significa compartir ese espacio aéreo con la fauna de abajo.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Nikolay Yotov, de Skynomad, lleva el programa a África por primera vez para hablar de volar en Kenia antes de la pre-Copa del Mundo que se celebró allí. Cuenta cómo son de verdad las zonas de vuelo y qué significa compartir ese espacio aéreo con la fauna de abajo."
  },
  "0ee423a2ca65": {
   "en": "See the {1} trip",
@@ -592,7 +626,8 @@
  "0eebaac6ddfe": {
   "en": "in the air",
   "b": "en el aire",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "en el aire"
  },
  "0efbc5dfee58": {
   "en": "India is paperwork before it is flying. None of this can be sorted out on the morning you need it.",
@@ -611,17 +646,20 @@
  "0f4487d89741": {
   "en": "Editable PDF",
   "b": "PDF editable",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "PDF editable"
  },
  "0f4b36cefb31": {
   "en": "The weather in Kenya is determined by its tropical location and the oscillating effects of the Inter-tropical Convergence Zone (ITCZ), which annually travels back and forth across equatorial Africa, providing Kenya with a bimodal annual rainfall pattern. Flying season peaks in this equatorial paradise from December to March, Ideal for joining our Kenya tour.",
   "b": "El clima de Kenia lo determinan su situación tropical y los efectos oscilantes de la Zona de Convergencia Intertropical (ZCIT), que cada año se desplaza de un lado a otro sobre el África ecuatorial y da a Kenia un régimen anual de lluvias bimodal. La temporada de vuelo alcanza su punto álgido en este paraíso ecuatorial de diciembre a marzo, ideal para unirte a nuestra expedición a Kenia.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El clima de Kenia está determinado por su situación tropical y por los efectos oscilantes de la Zona de Convergencia Intertropical (ZCIT), que cada año se desplaza de un lado a otro sobre el África ecuatorial y da a Kenia un régimen de lluvias bimodal. En este paraíso ecuatorial la temporada de vuelo alcanza su punto álgido de diciembre a marzo, ideal para unirte a nuestro viaje a Kenia."
  },
  "0f92a0c442c5": {
   "en": "From past pilots",
   "b": "De pilotos anteriores",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "De pilotos de otros años"
  },
  "0fa19b246492": {
   "en": "Navigators, Episode {1}",
@@ -717,7 +755,8 @@
  "12b1812d9565": {
   "en": "Cash in small notes<x1>For tips and porters. Agree the price first</x1>",
   "b": "Efectivo en billetes pequeños<x1>Para propinas y porteadores. Acuerda antes el precio</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Efectivo en billetes pequeños<x1>Para propinas y porteadores. Acuerda el precio primero</x1>"
  },
  "12e6c9e73647": {
   "en": "Offline maps of the front range",
@@ -786,7 +825,8 @@
  "158488221f07": {
   "en": "He launches first to check the air, or last to help with an awkward takeoff.",
   "b": "Él despega primero para comprobar el aire, o el último para ayudar con un despegue complicado.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Despega el primero para comprobar el aire, o el último para ayudar con un despegue complicado."
  },
  "15c39714fb66": {
   "en": "The pictures",
@@ -852,7 +892,8 @@
  "177aba2c4e3b": {
   "en": "Greet everyone, explain everything",
   "b": "Saluda a todos, explícalo todo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Saluda a todos, explícalo todo"
  },
  "17f332cecaf2": {
   "en": "{1} guide to {2} pilots",
@@ -862,7 +903,8 @@
  "182d37ec74bf": {
   "en": "Population",
   "b": "Población",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Población"
  },
  "187487095128": {
   "en": "Nov, Dec",
@@ -894,12 +936,14 @@
  "189b2366ec6b": {
   "en": "You can take off, fly, decide and land on your own. That is not a formality here, it is what makes the trip work at all.",
   "b": "Sabes despegar, volar, decidir y aterrizar por tu cuenta. Aquí eso no es una formalidad, es lo que hace que el viaje funcione.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Puedes despegar, volar, decidir y aterrizar por tu cuenta. Aquí no es una formalidad: es lo que hace que el viaje funcione."
  },
  "18adc8685240": {
   "en": "Maasai cattle",
   "b": "Ganado masái",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Ganado masái"
  },
  "18b1d21c656d": {
   "en": "The season, November to March. The tour sits in the middle of February.",
@@ -913,7 +957,8 @@
  "18da974cc29a": {
   "en": "Agree a price in advance, even when someone waves it off. Numbers get misheard, and {1}, {2} and {3} are easy to confuse in a second language on a windy hillside.",
   "b": "Acuerda un precio por adelantado, aunque alguien lo rechace con un gesto. Los números se oyen mal, y {1}, {2} y {3} son fáciles de confundir en un segundo idioma en una ladera ventosa.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Acuerda un precio por adelantado, aunque alguien le quite importancia. Los números se entienden mal, y {1}, {2} y {3} son fáciles de confundir en un segundo idioma en una ladera con viento."
  },
  "19452154f50d": {
   "en": "Most nationalities can apply online for India's e-Tourist visa, but not all, so check yours on the <x1>official portal</x1>. Apply at least four days before you arrive; with our first departure on {1}, it is not something to leave late. Since {2} every foreign visitor also files a free online e-Arrival Card in the {3} hours before flying.",
@@ -923,7 +968,8 @@
  "199778d7cc44": {
   "en": "Kenya has over {1} further ethnic languages.",
   "b": "Kenia tiene más de {1} lenguas étnicas más.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Kenia tiene además más de {1} lenguas étnicas."
  },
  "19da3bd8e3b8": {
   "en": "Photos by {1}",
@@ -935,7 +981,8 @@
  "19dd5fcd50d3": {
   "en": "We oversee every step of our ground crew logistics and meet the very highest safety standards. Our team's Kenyan roots and ability to bridge the gap between global flying standards and local realities allows us to run every aspect of the operation smoothly, from retrieve drives to campsite coordination.",
   "b": "Supervisamos cada paso de la logística de nuestro equipo de tierra y cumplimos los más altos estándares de seguridad. Las raíces kenianas de nuestro equipo y su capacidad de tender puentes entre los estándares globales de vuelo y las realidades locales nos permiten llevar sin problemas todos los aspectos de la operación, desde las recogidas hasta la coordinación del campamento.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Supervisamos cada paso de la logística de nuestro equipo de tierra y cumplimos los estándares de seguridad más exigentes. Las raíces kenianas de nuestro equipo y su capacidad para tender un puente entre los estándares de vuelo internacionales y la realidad local nos permiten que todos los aspectos de la operación funcionen sin problemas, desde los trayectos de recogida hasta la coordinación de los campamentos."
  },
  "1a1c7199240f": {
   "en": "Passport, valid {1} months, with two blank pages",
@@ -990,12 +1037,14 @@
  "1b1570b386be": {
   "en": "About The Ngong Hills",
   "b": "Sobre las colinas Ngong",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre las Ngong Hills"
  },
  "1b42d1673f56": {
   "en": "Glide Over Lands Where Humanity Took Its First Steps",
   "b": "Recorre en planeo las tierras donde la humanidad dio sus primeros pasos",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Planea sobre las tierras donde la humanidad dio sus primeros pasos"
  },
  "1baeb24536f8": {
   "en": "About Palampur",
@@ -1076,12 +1125,14 @@
  "1db1acd10889": {
   "en": "Previous photograph",
   "b": "Fotografía anterior",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Fotografía anterior"
  },
  "1de0e2a3654a": {
   "en": "Mount Longonot Crater",
   "b": "Cráter del monte Longonot",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Cráter del monte Longonot"
  },
  "1e500477d288": {
   "en": "Trip updates, new episodes, and stories from the field. No spam. Unsubscribe any time.",
@@ -1124,7 +1175,8 @@
  "20d114b07333": {
   "en": "Ticking is saved on this device, so you can come back to it the night before you fly. <x1>Nothing here is sent anywhere.</x1>",
   "b": "Las marcas se guardan en este dispositivo, así que puedes retomarlas la noche antes de volar. <x1>Nada de esto se envía a ningún sitio.</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Lo que marques se guarda en este dispositivo, así que puedes volver a ello la noche antes de volar. <x1>Nada de aquí se envía a ningún sitio.</x1>"
  },
  "20d3d0ce9104": {
   "en": "From<x1>, per pilot</x1>",
@@ -1156,12 +1208,14 @@
  "2145e91f053c": {
   "en": "Hiking shoes<x1>Comfortable, already broken in</x1>",
   "b": "Calzado de senderismo<x1>Cómodo y ya usado</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Calzado de montaña<x1>Cómodo y ya domado</x1>"
  },
  "218d369c4df1": {
   "en": "Tip {1} to {2} per cent for good work, and nothing extra for a rip off. Fairness runs both ways. Pay for the things you cannot see, like a path an ancestor cut or the fact that nothing with teeth came near you. Hire from the community closest to the site, or you create jealousy you will not be around to resolve.",
   "b": "Da una propina del {1} al {2} por ciento por un buen trabajo, y nada extra por un timo. La justicia va en los dos sentidos. Paga por las cosas que no ves, como un sendero que abrió un antepasado o el hecho de que nada con dientes se te acercara. Contrata a la comunidad más cercana a la zona, o generarás celos que no estarás allí para resolver.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Deja una propina del {1} al {2} por ciento por un buen trabajo, y nada extra si te han timado. La justicia va en las dos direcciones. Paga por lo que no ves, como un sendero que abrió un antepasado o el hecho de que nada con dientes se te acercara. Contrata a gente de la comunidad más cercana a la zona, o crearás celos que no estarás allí para resolver."
  },
  "21af6fcad3e5": {
   "en": "What pilot rating do I need for {1}?",
@@ -1198,7 +1252,8 @@
  "22786d42cc30": {
   "en": "Altitude",
   "b": "Altitud",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Altitud"
  },
  "227fef16fa1d": {
   "en": "Your photo",
@@ -1224,12 +1279,14 @@
  "22f8d45dccf8": {
   "en": "No mandatory vaccines for travellers from Europe or America. Local food can upset tender Western stomachs.",
   "b": "No hay vacunas obligatorias para viajeros de Europa o América. La comida local puede sentar mal a los estómagos occidentales delicados.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "No hay vacunas obligatorias para viajeros de Europa o América. La comida local puede sentar mal a los delicados estómagos occidentales."
  },
  "22f90faba3f0": {
   "en": "Flying gloves<x1>It is cold at {1}m</x1>",
   "b": "Guantes de vuelo<x1>Hace frío a {1} m</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Guantes de vuelo<x1>Hace frío a {1} m</x1>"
  },
  "2321d414ecd6": {
   "en": "Season Package",
@@ -1252,7 +1309,8 @@
  "24051a7bc463": {
   "en": "You expect polished service and comfort. This is the wrong trip.",
   "b": "Esperas un servicio pulido y comodidad. Este es el viaje equivocado.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Esperas un servicio pulido y comodidad. Este no es tu viaje."
  },
  "242cb352c019": {
   "en": "Reset the view",
@@ -1304,7 +1362,8 @@
  "24a9d3a5369a": {
   "en": "Paragliding in Kenya",
   "b": "Parapente en Kenia",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Parapente en Kenia"
  },
  "251858daa9ea": {
   "en": "the canyons seen through it",
@@ -1318,7 +1377,8 @@
  "2531bc8abdcb": {
   "en": "Six Sites Down The Rift",
   "b": "Seis zonas a lo largo del Rift",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Seis zonas de vuelo a lo largo del Rift"
  },
  "2532df6ef263": {
   "en": "Soar The Land Of The Incas",
@@ -1351,12 +1411,14 @@
  "268b9e099c39": {
   "en": "The hills between the {1} and Lake Baringo, where the six-million-year-old fossils of Orrorin tugenensis were found in {2}, among the oldest candidates for the human line.",
   "b": "Las colinas entre el {1} y el lago Baringo, donde en {2} se encontraron los fósiles de seis millones de años de Orrorin tugenensis, entre los candidatos más antiguos de la línea humana.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Las colinas entre el {1} y el lago Baringo, donde en {2} se hallaron los fósiles de seis millones de años de Orrorin tugenensis, entre los candidatos más antiguos al linaje humano."
  },
  "26977b4f4c5a": {
   "en": "A green field, a clean wind line, somewhere safe to put it down.",
   "b": "Un campo verde, una línea de viento limpia, un sitio seguro donde posarla.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un campo verde, una línea de viento limpia, un sitio seguro para aterrizar."
  },
  "26e00b08d068": {
   "en": "Get In Touch",
@@ -1380,7 +1442,8 @@
  "276462f97179": {
   "en": "Flying In Africa, And How To Do It Well <x1>DIY</x1>",
   "b": "Volar en África, y cómo hacerlo bien <x1>DIY</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Volar en África, y cómo hacerlo bien <x1>por libre</x1>"
  },
  "2776e9555d4a": {
   "en": "Stay In Touch",
@@ -1394,12 +1457,14 @@
  "278513f32580": {
   "en": "On you",
   "b": "Contigo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Encima"
  },
  "27a3dd606b1d": {
   "en": "It is not for you if",
   "b": "No es para ti si",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "No es para ti si"
  },
  "280cb7f1130c": {
   "en": "Daily Highlights",
@@ -1420,7 +1485,8 @@
  "2846e9b36222": {
   "en": "Chapter {1} of {2}: Mount Longonot Crater",
   "b": "Capítulo {1} de {2}: cráter del monte Longonot",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Capítulo {1} de {2}: cráter del monte Longonot"
  },
  "284a3357cc39": {
   "en": "Wing you know well<x1>EN or LTF certified. {1} rewards a wing you can relax on, not the hottest one you own</x1>",
@@ -1467,7 +1533,8 @@
  "2926f3032c89": {
   "en": "Tilt steeper",
   "b": "Inclinar más",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Más inclinación"
  },
  "294daa3bc60c": {
   "en": "<x1>The {1}</x1>The {2} range under building cumulus, above the Kangra valley<x2>near Big face</x2>",
@@ -1477,7 +1544,8 @@
  "2976a051355b": {
   "en": "A range of young volcanic cones and lava flows, the latest of them from the {1}, with some of the longest lava tubes in the world beneath. The rain that falls here sinks through the lava and surfaces at Mzima Springs.",
   "b": "Una cadena de conos volcánicos jóvenes y coladas de lava, la más reciente de los {1}, con algunos de los tubos de lava más largos del mundo debajo. La lluvia que cae aquí se filtra por la lava y aflora en los manantiales Mzima.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Una cadena de conos volcánicos jóvenes y coladas de lava, las últimas de los {1}, con algunos de los tubos de lava más largos del mundo debajo. La lluvia que cae aquí se filtra a través de la lava y aflora en Mzima Springs."
  },
  "2993d789bf23": {
   "en": "Indian visa, applied for before you travel<x1>At least {1} days before you arrive. The e-visa suits most nationalities, but not all</x1>",
@@ -1487,32 +1555,38 @@
  "2995baf73d83": {
   "en": "Nikolay Yotov <x1>Kenya episode, {1}</x1>",
   "b": "Nikolay Yotov <x1>episodio de Kenia, {1}</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Nikolay Yotov <x1>Episodio de Kenia, {1}</x1>"
  },
  "29afb9f3ac15": {
   "en": "Does the price include travel?",
   "b": "¿El precio incluye el viaje?",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "¿El precio incluye el viaje?"
  },
  "29f890050f45": {
   "en": "Long sleeved shirts",
   "b": "Camisas de manga larga",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Camisas de manga larga"
  },
  "2a3e5e58a390": {
   "en": "Will I get my own guide?",
   "b": "¿Tendré mi propio guía?",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "¿Tendré un guía para mí solo?"
  },
  "2a827fa48baa": {
   "en": "Dec to Mar",
   "b": "Dic a mar",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Dic. a mar."
  },
  "2a9c4fd5ed22": {
   "en": "launch from the lush green takeoffs in {1},",
   "b": "despega desde los exuberantes despegues verdes de {1},",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "despegas desde los despegues verdes y frondosos de {1},"
  },
  "2abac98987dc": {
   "en": "Click a pin, hear the story.",
@@ -1531,7 +1605,8 @@
  "2ad80ab9b960": {
   "en": "Better still, give work as a porter or guide, or donate to a local organisation. Avoid handing out your phone number or email, because it turns into requests for money later.",
   "b": "Mejor aún, da trabajo como porteador o guía, o dona a una organización local. Evita dar tu número de teléfono o correo, porque luego se convierte en peticiones de dinero.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Mejor aún, da trabajo como porteador o guía, o haz un donativo a una organización local. Evita dar tu número de teléfono o tu correo, porque luego se convierte en peticiones de dinero."
  },
  "2ae72f61ca17": {
   "en": "Behind {1} is a spine, and past it the big mountains: Barabangal, the run to Manali and beyond. Jigish Gohil's test for going is a couple of hundred hours, an {2} course, and the kit and fitness for a night out and a long walk. <x1>His test in full</x1>.",
@@ -1546,7 +1621,8 @@
  "2b234305d875": {
   "en": "The base for the tour, and the site where the world speed records are chased.",
   "b": "La base de la expedición y la zona donde se persiguen los récords mundiales de velocidad.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "La base del viaje y la zona donde se persiguen los récords mundiales de velocidad."
  },
  "2b3dd4849d56": {
   "en": "Free web copy, <x1></x1>, under <x2>{1} {2}</x2>: share it with the credit “<x3>Photo: {3}, {4}</x3>”, not for commercial use.",
@@ -1567,7 +1643,8 @@
  "2bd8d2658cb4": {
   "en": "Capital",
   "b": "Capital",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Capital"
  },
  "2bdd9abbc860": {
   "en": "North, not a first week line",
@@ -1577,7 +1654,8 @@
  "2c250444209e": {
   "en": "December to March",
   "b": "De diciembre a marzo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "De diciembre a marzo"
  },
  "2c639e809ef6": {
   "en": "Photos coming",
@@ -1589,7 +1667,8 @@
  "2c85daa77f37": {
   "en": "Eleven Frames From The Rift",
   "b": "Once imágenes del Rift",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Once fotos del Rift"
  },
  "2d46a4260e21": {
   "en": "Rule {1}, The cloud",
@@ -1646,7 +1725,8 @@
  "2eb0be707f32": {
   "en": "A dry lake bed in the southern Rift where stone hand axes lie in their thousands, left by early humans over hundreds of thousands of years. Louis and Mary Leakey began excavating here in the {1}; the site is open, with a small museum.",
   "b": "Un lecho de lago seco en el sur del Rift donde yacen millares de hachas de mano de piedra, dejadas por los primeros humanos a lo largo de cientos de miles de años. Louis y Mary Leakey empezaron a excavar aquí en los {1}; el yacimiento está abierto, con un pequeño museo.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un lecho de lago seco en el sur del Rift donde yacen por miles hachas de mano de piedra, dejadas por los primeros humanos a lo largo de cientos de miles de años. Louis y Mary Leakey empezaron a excavar aquí en los {1}; el yacimiento está abierto al público y tiene un pequeño museo."
  },
  "2f1a617c615f": {
   "en": "Podbean",
@@ -1669,7 +1749,8 @@
  "2f5cd23188b0": {
   "en": "{1} · Thermal strength",
   "b": "{1} · Fuerza de las térmicas",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1} · Fuerza de las térmicas"
  },
  "2f84eea5d45d": {
   "en": "Copy link",
@@ -1699,17 +1780,20 @@
  "306a28848cbf": {
   "en": "Documents and money",
   "b": "Documentos y dinero",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Documentos y dinero"
  },
  "30915439d691": {
   "en": "The small things that matter once you are away from the van.",
   "b": "Las cosas pequeñas que importan cuando te alejas de la furgoneta.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Las pequeñas cosas que importan cuando estás lejos de la furgoneta."
  },
  "30baea0ede33": {
   "en": "The approach that works",
   "b": "El enfoque que funciona",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El enfoque que funciona"
  },
  "30db08362e85": {
   "en": "Which airport do I fly into for {1}?",
@@ -1778,7 +1862,8 @@
  "32b37f50a40e": {
   "en": "Rule {1}, The approach that works",
   "b": "Regla {1}, el enfoque que funciona",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Regla {1}, el enfoque que funciona"
  },
  "32b4fdd76613": {
   "en": "{1} to Dharamshala and back",
@@ -1788,7 +1873,8 @@
  "32dc7997042d": {
   "en": "Founded {1}, elevation {2}m.",
   "b": "Fundada en {1}, a {2} m de altitud.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Fundada en {1}, altitud {2} m."
  },
  "32eed21e5502": {
   "en": "<x1>Meadows below the range</x1>A meadow of white flowers below the snow-covered {1}",
@@ -1803,7 +1889,8 @@
  "332e15a10e87": {
   "en": "Our expertise in East African flying has been accumulated over long years of exploring the region’s weather patterns and hidden gems. Our handpicked team of experienced local and international pilots have logged countless airtime over the savannah, giving us an industry-leading opportunity to fly in conditions that range from gentle soaring to potentially epic world record breaking {1} flights.",
   "b": "Nuestra experiencia en el vuelo en África Oriental se ha acumulado a lo largo de muchos años explorando los patrones meteorológicos y los tesoros ocultos de la región. Nuestro equipo escogido de pilotos experimentados, locales e internacionales, ha acumulado incontables horas de vuelo sobre la sabana, lo que nos da una oportunidad líder en el sector de volar en condiciones que van desde la suave ascendente dinámica hasta vuelos {1} potencialmente épicos, de récord mundial.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Nuestra experiencia en el vuelo en África Oriental se ha ido acumulando durante largos años explorando los patrones meteorológicos y las joyas escondidas de la región. Nuestro equipo de pilotos locales e internacionales con experiencia, elegidos uno a uno, acumula incontables horas de vuelo sobre la sabana, lo que nos da una oportunidad líder en el sector de volar en condiciones que van desde un suave vuelo en ascendente dinámica hasta vuelos de {1} potencialmente épicos, de récord mundial."
  },
  "335038d8a582": {
   "en": "Kazakhstan, the striped canyons",
@@ -1836,12 +1923,14 @@
  "3407b3d132f0": {
   "en": "About Hell's Gate",
   "b": "Sobre Hell's Gate",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre Hell's Gate"
  },
  "348d76471ead": {
   "en": "Health and stomach",
   "b": "Salud y estómago",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Salud y estómago"
  },
  "34a2dd009d1d": {
   "en": "Warm layers for the evening<x1>It cools off fast after landing</x1>",
@@ -1934,7 +2023,8 @@
  "36fbdfed0c23": {
   "en": "About Iten, Home of Champions",
   "b": "Sobre Iten, hogar de campeones",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre Iten, hogar de campeones"
  },
  "372ea5cbedff": {
   "en": "Coverage Like This For <x1>Your Event</x1>",
@@ -1946,7 +2036,8 @@
  "37372ddc8533": {
   "en": "Peak season, December to March. The two tours sit in the middle of it, two days apart.",
   "b": "Temporada alta, de diciembre a marzo. Las dos expediciones están en pleno centro de ella, con dos días de diferencia.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Temporada alta, de diciembre a marzo. Los dos viajes caen en plena temporada, con dos días de diferencia."
  },
  "376b0e8cf4cd": {
   "en": "Its name",
@@ -1960,12 +2051,14 @@
  "380a96f3392f": {
   "en": "See Kenya as the Gods saw it.",
   "b": "Mira Kenia como la vieron los dioses.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Mira Kenia como la vieron los dioses."
  },
  "3824e8ed0e41": {
   "en": "{1} to {2} m/s at the midday peaks,",
   "b": "{1} a {2} m/s en los picos del mediodía,",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "de {1} a {2} m/s en los picos del mediodía,"
  },
  "387e281ae314": {
   "en": "Amazon Music",
@@ -1984,7 +2077,8 @@
  "38cfe7dc1470": {
   "en": "Rule {1}, When you are asked for money",
   "b": "Regla {1}, cuando te piden dinero",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Regla {1}, cuando te piden dinero"
  },
  "38d178a350ef": {
   "en": "Do not assume the pilot ahead knows what they are doing. Some of the pilots in the air at {1} are superb, and some simply do not know better.",
@@ -1994,7 +2088,8 @@
  "38f79e8a82e3": {
   "en": "Rule {1}, You are the precedent",
   "b": "Regla {1}, tú eres el precedente",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Regla {1}, tú eres el precedente"
  },
  "3920b56e81bd": {
   "en": "<x1>{1} days</x1> · <x2>Next departure {2}</x2>",
@@ -2008,7 +2103,8 @@
  "39fa445c175d": {
   "en": "Turn right",
   "b": "Girar a la derecha",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Girar a la derecha"
  },
  "3a08d1aa9b0b": {
   "en": "about {1}m",
@@ -2074,7 +2170,8 @@
  "3c410b8d9c3e": {
   "en": "About Mount Suswa",
   "b": "Sobre el monte Suswa",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre el monte Suswa"
  },
  "3c50c2d39c34": {
   "en": "Being brave enough to go out and do it",
@@ -2101,12 +2198,14 @@
  "3cdc0f0f318b": {
   "en": "Chapter {1} of {2}: Kijabe Hill",
   "b": "Capítulo {1} de {2}: colina Kijabe",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Capítulo {1} de {2}: Kijabe Hill"
  },
  "3ce06cc5af08": {
   "en": "Rift Valley National Park",
   "b": "Parque Nacional del Valle del Rift",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Parque Nacional del Valle del Rift"
  },
  "3d0016068c7c": {
   "en": "{1}-{2} km",
@@ -2125,12 +2224,14 @@
  "3d0e256c6442": {
   "en": "The deposit is not refunded, and if you cancel there is a termination fee that on a trip like this is usually most of the price, because permits, guiding and local arrangements are committed months ahead. It is calculated as the price less what we save and less anything we recover by reselling your place, and we will show you the working. The balance is due {1} days before departure. This is exactly why we push trip cancellation insurance so hard. Full detail in the <x1>booking terms</x1>.",
   "b": "El depósito no se reembolsa, y si cancelas hay una penalización por cancelación que, en un viaje como este, suele ser la mayor parte del precio, porque los permisos, los guías y los acuerdos locales se comprometen con meses de antelación. Se calcula como el precio menos lo que ahorramos y menos lo que recuperemos revendiendo tu plaza, y te mostraremos el cálculo. El saldo vence {1} días antes de la salida. Por eso insistimos tanto en el seguro de cancelación de viaje. Todos los detalles en las <x1>condiciones de reserva</x1>.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El depósito no se reembolsa, y si cancelas hay unos gastos de cancelación que, en un viaje como este, suelen ser la mayor parte del precio, porque los permisos, el guiado y los servicios locales se contratan con meses de antelación. Se calculan como el precio menos lo que nos ahorramos y menos lo que recuperemos revendiendo tu plaza, y te enseñaremos el cálculo. El resto se paga {1} días antes de la salida. Precisamente por eso insistimos tanto en el seguro de cancelación de viaje. Todos los detalles en las <x1>condiciones de reserva</x1>."
  },
  "3d4c256bbca9": {
   "en": "Ripstop tape<x1>Takeoffs and landings can be bushy and thorny</x1>",
   "b": "Cinta ripstop<x1>Los despegues y aterrizajes pueden ser con maleza y espinos</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Cinta de reparación ripstop<x1>Los despegues y aterrizajes pueden tener matorrales y espinas</x1>"
  },
  "3d5fc1e20980": {
   "en": "What {1} you are working with",
@@ -2144,12 +2245,14 @@
  "3d773b0bf1aa": {
   "en": "The team",
   "b": "El equipo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El equipo"
  },
  "3d7f4d95d4a2": {
   "en": "About Olorgesailie",
   "b": "Sobre Olorgesailie",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre Olorgesailie"
  },
  "3d8703f3e37d": {
   "en": "Send a Media Enquiry",
@@ -2161,12 +2264,14 @@
  "3db45f883a11": {
   "en": "Tracker or a live tracking app<x1>So retrieve knows where you came down</x1>",
   "b": "Tracker o una app de seguimiento en directo<x1>Para que la recogida sepa dónde has aterrizado</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Rastreador o app de seguimiento en directo<x1>Para que la recogida sepa dónde has aterrizado</x1>"
  },
  "3dd0c90f8281": {
   "en": "The Equator",
   "b": "El ecuador",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El ecuador"
  },
  "3e0763edd17f": {
   "en": "{1} sits on the {2}, the range that runs down India's west coast about {3} km inland, on the volcanic tablelands of the {4}: flat tops and sharp vertical cliffs. Vistasp Kharas grew up here and has flown it for more than ten years. He calls it far more technical than {5}: a {6} km flight in {7} is as good as {8} km in {9}.",
@@ -2197,7 +2302,8 @@
  "3eb3bdc782ea": {
   "en": "Choose a photograph",
   "b": "Elige una fotografía",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Elige una fotografía"
  },
  "3eb7165288d1": {
   "en": "Gabriel Orsini",
@@ -2225,7 +2331,8 @@
  "3fbb51dc1891": {
   "en": "Mount Longonot",
   "b": "Monte Longonot",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Monte Longonot"
  },
  "3fed329b07ed": {
   "en": "McLeod Ganj, on the ridge above Dharamshala, has been the seat of the Dalai Lama and of the Central Tibetan Administration since {1}. The Tsuglagkhang complex holds his residence and the main temple.",
@@ -2235,22 +2342,26 @@
  "404cf90e2054": {
   "en": "Kenya: Paragliding in the Cradle of Humankind | {1}",
   "b": "Kenia: parapente en la cuna de la humanidad | {1}",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Kenia: parapente en la cuna de la humanidad | {1}"
  },
  "409f5b0a7706": {
   "en": "Chapter {1} of {2}: Chyulu Hills",
   "b": "Capítulo {1} de {2}: colinas Chyulu",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Capítulo {1} de {2}: Chyulu Hills"
  },
  "40ac7a9b2169": {
   "en": "{1} offers a tailored paragliding cross-country adventure based on the intimate local knowledge that allows our lead pilots: the founding team, to consistently find the best lines, unlock remote landing zones, and safely share the skies of this unparalleled landscape.",
   "b": "{1} ofrece una aventura de parapente de vuelo de cross a medida, basada en el íntimo conocimiento local que permite a nuestros pilotos guía, el equipo fundador, encontrar siempre las mejores líneas, abrir zonas de aterrizaje remotas y compartir con seguridad los cielos de este paisaje sin igual.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1} ofrece una aventura de vuelo de cross en parapente, a medida, basada en un profundo conocimiento local que permite a nuestros pilotos líderes, el equipo fundador, encontrar una y otra vez las mejores líneas, abrir zonas de aterrizaje remotas y compartir con seguridad el cielo de este paisaje sin igual."
  },
  "40e55e679b84": {
   "en": "The flamingos feed on the algae that bloom in the soda water. Their numbers rise and fall with the lake: in the high water since {1} most of them moved on to Bogoria, and they return as the lake drops.",
   "b": "Los flamencos se alimentan de las algas que proliferan en el agua de sosa. Su número sube y baja con el lago: con las aguas altas desde {1}, la mayoría se fue a Bogoria, y vuelven a medida que el lago baja.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Los flamencos se alimentan de las algas que proliferan en el agua alcalina. Su número sube y baja con el lago: con la crecida desde {1}, la mayoría se marchó a Bogoria, y vuelven cuando el lago baja."
  },
  "40f1736b73a8": {
   "en": "Play the film",
@@ -2274,7 +2385,8 @@
  "416c390ad34c": {
   "en": "About Lake Elementaita",
   "b": "Sobre el lago Elementaita",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre el lago Elementaita"
  },
  "41ce8b3675ff": {
   "en": "A white paraglider over farmland on the shore of a lake, a dry hillside to the right",
@@ -2302,7 +2414,8 @@
  "42167539b7fa": {
   "en": "Flying gear",
   "b": "Equipo de vuelo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Equipo de vuelo"
  },
  "4240b2c7a0db": {
   "en": "India Tour {1}",
@@ -2317,7 +2430,8 @@
  "42fec0b9ba92": {
   "en": "Kijabe Hill",
   "b": "Colina Kijabe",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Kijabe Hill"
  },
  "4385f498f29f": {
   "en": "Explore The Cradle",
@@ -2331,22 +2445,26 @@
  "4404703393a4": {
   "en": "{1} items, tick or print",
   "b": "{1} elementos, para marcar o imprimir",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1} cosas, márcalas o imprímelas"
  },
  "4410753e3239": {
   "en": "Three paragliders soaring along a hazy green ridge above terraced fields in the {1}",
   "b": "Tres parapentes en ascendente dinámica a lo largo de una cresta verde y brumosa sobre campos en terrazas en el {1}",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Tres parapentes aprovechando la ascendente dinámica a lo largo de una cresta verde y brumosa, por encima de los campos en terrazas del {1}"
  },
  "4424fd6a6489": {
   "en": "We fly the route together, or improvise over the radio when the day has other ideas. Under moderate easterlies, waiting for each other in the air is often simply not possible.",
   "b": "Volamos la ruta juntos, o improvisamos por radio cuando el día tiene otras ideas. Con vientos moderados del este, esperarse unos a otros en el aire a menudo simplemente no es posible.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Volamos la ruta juntos, o improvisamos por radio cuando el día tiene otros planes. Con vientos moderados del este, esperarse unos a otros en el aire a menudo simplemente no es posible."
  },
  "44495602a8ba": {
   "en": "Baobabs",
   "b": "Baobabs",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Baobabs"
  },
  "4493b00773f8": {
   "en": "{1}, about {2}m",
@@ -2387,7 +2505,8 @@
  "45c892cd251a": {
   "en": "The southern Rift from Suswa to Amboseli is Maasai land: pastoralists whose cattle, red cloth and beadwork are the best known image of Kenya, and who still move their herds across it.",
   "b": "El sur del Rift, de Suswa a Amboseli, es tierra masái: pastores cuyo ganado, telas rojas y abalorios son la imagen más conocida de Kenia, y que todavía mueven sus rebaños por ella.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El sur del Rift, de Suswa a Amboseli, es tierra masái: pastores cuyo ganado, telas rojas y abalorios son la imagen más conocida de Kenia, y que todavía trasladan sus rebaños por ella."
  },
  "4659fb30692d": {
   "en": "Tom Lolies",
@@ -2410,7 +2529,8 @@
  "469a7bd8bb71": {
   "en": "{1}°T · {2} km from Machakos Hills",
   "b": "{1}°T · {2} km desde las colinas Machakos",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1}°T · a {2} km de las Machakos Hills"
  },
  "469c38b8444c": {
   "en": "Touch The Sky With Glory",
@@ -2429,7 +2549,8 @@
  "46ae7252f6d3": {
   "en": "A {1} m fall on the Ewaso Ng'iro at Nyahururu, reached by the Scottish explorer Joseph Thomson in {2} and named for his father.",
   "b": "Una caída de {1} m en el Ewaso Ng'iro en Nyahururu, alcanzada por el explorador escocés Joseph Thomson en {2} y bautizada con el nombre de su padre.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Una cascada de {1} m en el Ewaso Ng'iro, en Nyahururu, a la que llegó el explorador escocés Joseph Thomson en {2} y que bautizó con el nombre de su padre."
  },
  "46bb0cf1a5ac": {
   "en": "The Science Of EN Certifications",
@@ -2443,7 +2564,8 @@
  "4702162cd621": {
   "en": "Elephants under Kilimanjaro: a park of swamps and dust where the longest-running study of wild elephants has followed the same families since {1}.",
   "b": "Elefantes bajo el Kilimanjaro: un parque de pantanos y polvo donde el estudio más largo de elefantes salvajes sigue a las mismas familias desde {1}.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Elefantes bajo el Kilimanjaro: un parque de pantanos y polvo donde el estudio más largo sobre elefantes salvajes sigue a las mismas familias desde {1}."
  },
  "4706b99f989f": {
   "en": "the plateau seen through it",
@@ -2490,32 +2612,38 @@
  "47f729e61141": {
   "en": "About The Aberdares",
   "b": "Sobre los Aberdares",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre los Aberdares"
  },
  "47fb5e07d480": {
   "en": "The {1} flows north along the floor of the Rift between the Elgeyo escarpment and the Tugen Hills, about a thousand metres below Iten. The east face of the escarpment is the wall pilots soar, and the long flights run north and south along it.",
   "b": "El {1} fluye hacia el norte por el fondo del Rift, entre la escarpa de Elgeyo y las colinas Tugen, unos mil metros por debajo de Iten. La cara este de la escarpa es la pared donde los pilotos vuelan en ladera, y los vuelos largos corren a lo largo de ella, hacia el norte y hacia el sur.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El {1} fluye hacia el norte por el fondo del Rift entre el escarpe de Elgeyo y las Tugen Hills, unos mil metros por debajo de Iten. La cara este del escarpe es la pared donde los pilotos hacen ladera, y los vuelos largos van hacia el norte y hacia el sur a lo largo de ella."
  },
  "480cb18f3fea": {
   "en": "Closer",
   "b": "Más cerca",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Más cerca"
  },
  "4823f445edd0": {
   "en": "Long trousers<x1>Against thorns, sunburn and mosquitoes</x1>",
   "b": "Pantalón largo<x1>Contra espinas, quemaduras solares y mosquitos</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Pantalones largos<x1>Contra espinas, quemaduras solares y mosquitos</x1>"
  },
  "486d1431f114": {
   "en": "Flying Etiquette",
   "b": "Etiqueta de vuelo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Etiqueta de vuelo"
  },
  "487336511e6c": {
   "en": "About Kijabe Hill",
   "b": "Sobre la colina Kijabe",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre Kijabe Hill"
  },
  "48bc78620bf1": {
   "en": "Full Event",
@@ -2534,12 +2662,14 @@
  "48e174553fed": {
   "en": "A conservancy on the Laikipia plateau that holds the last two northern white rhinos on earth, Najin and Fatu, under guard day and night.",
   "b": "Una reserva en la meseta de Laikipia que alberga a los dos últimos rinocerontes blancos del norte del planeta, Najin y Fatu, bajo vigilancia día y noche.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un área de conservación en la meseta de Laikipia que alberga los dos últimos rinocerontes blancos del norte del planeta, Najin y Fatu, vigilados día y noche."
  },
  "48fdd02f31df": {
   "en": "We know how it feels to <x1>Touch</x1> <x2>The</x2> <x3>Sky</x3> <x4>With</x4> <x5>Glory</x5> and It’s our dream to be able to share that with you",
   "b": "Sabemos lo que se siente al <x1>Touch</x1> <x2>The</x2> <x3>Sky</x3> <x4>With</x4> <x5>Glory</x5> y es nuestro sueño poder compartirlo contigo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sabemos lo que se siente al <x1>tocar</x1> <x2>el</x2> <x3>cielo</x3> <x4>con</x4> <x5>gloria</x5> y nuestro sueño es poder compartirlo contigo"
  },
  "4966f835881a": {
   "en": "Autumn at {1} can overdevelop. On {2} a visiting pilot near the end of a long flight was swept from {3}m to above {4}m inside a storm cloud in about ten minutes, and survived; nine incidents were reported in the area that day, three of them reserve deployments. <x1>Cross Country reported it</x1>.",
@@ -2564,17 +2694,20 @@
  "4a04f0b915c7": {
   "en": "A Neolithic and Iron Age settlement on a hill outside Nakuru, excavated by Mary Leakey in the late {1}, with burial mounds and hut floors and a museum in the old farmhouse.",
   "b": "Un asentamiento neolítico y de la Edad del Hierro en una colina a las afueras de Nakuru, excavado por Mary Leakey a finales de los {1}, con túmulos funerarios y suelos de cabañas y un museo en la antigua casa de labranza.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un asentamiento del Neolítico y de la Edad del Hierro en una colina a las afueras de Nakuru, excavado por Mary Leakey a finales de los {1}, con túmulos funerarios, suelos de chozas y un museo en la antigua casa de la granja."
  },
  "4a42d5cd351e": {
   "en": "Baobabs stand in the hot lowlands of Tsavo and along the Mombasa road, where the rains are short and the trees hold water in their trunks. The big ones are counted in centuries, and the oldest dated trees in Africa are over two thousand years old.",
   "b": "Los baobabs se alzan en las calurosas tierras bajas de Tsavo y a lo largo de la carretera de Mombasa, donde las lluvias son cortas y los árboles guardan agua en el tronco. Los grandes se cuentan en siglos, y los árboles datados más antiguos de África tienen más de dos mil años.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Los baobabs crecen en las tierras bajas y calurosas de Tsavo y a lo largo de la carretera de Mombasa, donde las lluvias son cortas y los árboles guardan agua en sus troncos. Los grandes se cuentan por siglos, y los árboles datados más antiguos de África tienen más de dos mil años."
  },
  "4a7f42dcebe5": {
   "en": "The elephants come to Amboseli for its swamps, fed by water that falls on Kilimanjaro and surfaces here in a dry plain. The families of this park have been followed by name since {1}, the longest study of wild elephants anywhere.",
   "b": "Los elefantes vienen a Amboseli por sus pantanos, alimentados por el agua que cae sobre el Kilimanjaro y aflora aquí, en una llanura seca. A las familias de este parque se las sigue por su nombre desde {1}, el estudio más largo de elefantes salvajes en cualquier lugar.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Los elefantes acuden a Amboseli por sus pantanos, alimentados por el agua que cae en el Kilimanjaro y aflora aquí en una llanura seca. Las familias de este parque se siguen por su nombre desde {1}, el estudio más largo sobre elefantes salvajes del mundo."
  },
  "4ab772cebc20": {
   "en": "Navigating India (Bonus Ep)",
@@ -2589,7 +2722,8 @@
  "4ac5a601aceb": {
   "en": "Between Kibwezi and Mtito Andei the Mombasa road runs through baobab country, the hot red lowlands of Tsavo. The trees stand bare for most of the year, their swollen trunks holding water through the dry months, and bear their fruit in hanging pods.",
   "b": "Entre Kibwezi y Mtito Andei, la carretera de Mombasa atraviesa tierra de baobabs, las calurosas tierras bajas rojas de Tsavo. Los árboles están desnudos la mayor parte del año, con sus troncos hinchados guardando agua durante los meses secos, y dan su fruto en vainas colgantes.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Entre Kibwezi y Mtito Andei, la carretera de Mombasa atraviesa la tierra de los baobabs, las tierras bajas, rojas y calurosas de Tsavo. Los árboles están sin hojas la mayor parte del año, con sus troncos hinchados guardando agua durante los meses secos, y dan su fruto en vainas colgantes."
  },
  "4ad48a02590f": {
   "en": "Launch",
@@ -2645,7 +2779,8 @@
  "4b4599ffd864": {
   "en": "Rule {1}, Permissions and officials",
   "b": "Regla {1}, permisos y autoridades",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Regla {1}, permisos y autoridades"
  },
  "4b96d91b5920": {
   "en": "A pilot on a red wing flying over snow-covered mountains",
@@ -2747,7 +2882,8 @@
  "4e1936d9228e": {
   "en": "Before You Fly, And What To Bring",
   "b": "Antes de volar, y qué llevar",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Antes de volar, y qué llevar"
  },
  "4e2f74d4f583": {
   "en": "BHPA instructor, {1} Paul Tissandier Diploma {2}",
@@ -2757,7 +2893,8 @@
  "4e3cc2599178": {
   "en": "What equipment is provided?",
   "b": "¿Qué equipo se proporciona?",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "¿Qué equipo se proporciona?"
  },
  "4fba49b06fc9": {
   "en": "Send enquiry",
@@ -2789,12 +2926,14 @@
  "50321769f071": {
   "en": "The only national park inside a capital city, gazetted in {1} as Kenya's first, where rhino and lion graze against the skyline.",
   "b": "El único parque nacional dentro de una capital, declarado en {1} como el primero de Kenia, donde rinocerontes y leones pastan contra el perfil de la ciudad.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El único parque nacional dentro de una capital, declarado en {1} como el primero de Kenia, donde rinocerontes y leones pacen con los rascacielos de fondo."
  },
  "50514f06d610": {
   "en": "Public transport is crowded and good fun, and your glider bag may double the fare, which is fair. Hitching, offer close to the bus fare and do not haggle below it; going lower is taken as an insult, not a bargain. A hired driver who negotiates, handles gear, keeps crowds back and will drive at night to fetch you is worth {1} to {2} dollars at the end of the trip. Avoid driving at night yourself. If you land a long way out, sleep where you landed.",
   "b": "El transporte público va lleno y es muy divertido, y tu bolsa de vela puede duplicar la tarifa, lo cual es justo. Si haces autostop, ofrece algo cercano a la tarifa del autobús y no regatees por debajo; ofrecer menos se toma como un insulto, no como una ganga. Un conductor contratado que negocia, se ocupa del equipo, mantiene a la gente a raya y conduce de noche para ir a buscarte vale de {1} a {2} dólares al final del viaje. Evita conducir tú de noche. Si aterrizas muy lejos, duerme donde aterrizaste.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El transporte público va lleno y es muy divertido, y la bolsa de la vela puede duplicar el billete, lo cual es justo. Si haces autostop, ofrece algo cercano al precio del autobús y no regatees por debajo; bajar más se toma como un insulto, no como una ganga. Un conductor contratado que negocia, se ocupa del equipo, mantiene a la gente a distancia y conduce de noche para ir a buscarte merece de {1} a {2} dólares al final del viaje. Evita conducir tú de noche. Si aterrizas muy lejos, duerme donde aterrizaste."
  },
  "50d13ea33788": {
   "en": "Media coverage",
@@ -2813,7 +2952,8 @@
  "514d6e0b3172": {
   "en": "Flamingos feed in the shallows, and the islets are one of the few places in East Africa where great white pelicans breed.",
   "b": "Los flamencos se alimentan en los bajíos, y los islotes son uno de los pocos lugares de África Oriental donde crían los pelícanos blancos.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Los flamencos se alimentan en las aguas someras, y los islotes son uno de los pocos lugares de África Oriental donde crían los grandes pelícanos blancos."
  },
  "515aba49a8e0": {
   "en": "Watch the sky, not just the climb",
@@ -2830,7 +2970,8 @@
  "51f46ac5ca5f": {
   "en": "From the Elgeyo escarpment at {1} in the north to the Chyulu Hills in the south, the scroll flies the six sites in order, {2} km end to end. Or take the controls and go where you like.",
   "b": "Desde la escarpa de Elgeyo en {1}, al norte, hasta las colinas Chyulu, al sur, el scroll vuela las seis zonas en orden, {2} km de punta a punta. O toma los mandos y ve adonde quieras.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Desde el escarpe de Elgeyo en {1}, al norte, hasta las Chyulu Hills, al sur, el desplazamiento de la página sobrevuela en orden las seis zonas, {2} km de punta a punta. O toma los mandos y ve a donde quieras."
  },
  "5219616d3f22": {
   "en": "Starting from",
@@ -2867,7 +3008,8 @@
  "52c1de03ff24": {
   "en": "Wing you know well<x1>EN or LTF certified</x1>",
   "b": "Vela que conozcas bien<x1>Certificada EN o LTF</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Una vela que conozcas bien<x1>Homologada EN o LTF</x1>"
  },
  "52c4fb8b83bb": {
   "en": "<x1>Kangra valley</x1>The Kangra valley from the air, villages and fields below the hills<x2>near Palampur</x2>",
@@ -2877,7 +3019,8 @@
  "52d1d8eef1f8": {
   "en": "Fitness: good condition for hikes to launch at moderate elevation, gear handling, and four to six hour active flying days in heat. You should be able to trek uneven terrain with a {1} to {2} kg pack.",
   "b": "Forma física: buena condición para caminatas hasta el despegue a elevación moderada, manejo del equipo y jornadas de vuelo activo de cuatro a seis horas con calor. Debes poder caminar por terreno irregular con una mochila de {1} a {2} kg.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Forma física: buena condición para subir caminando a despegues de altitud moderada, manejar el equipo y aguantar días de vuelo activo de cuatro a seis horas con calor. Debes poder caminar por terreno irregular con una mochila de {1} a {2} kg."
  },
  "52ef4185cdf4": {
   "en": "When is the paragliding season in {1}?",
@@ -2901,7 +3044,8 @@
  "53516dd2351d": {
   "en": "You bring your own EN or LTF certified wing, harness, reserve, helmet and vario or {1}. Hiking boots and thermal layers are recommended.",
   "b": "Traes tu propia vela con certificación EN o LTF, arnés, paracaídas de emergencia, casco y vario o {1}. Se recomiendan botas de montaña y capas térmicas.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Tú traes tu propia vela homologada EN o LTF, arnés, paracaídas de emergencia, casco y variómetro o {1}. Se recomiendan botas de montaña y capas térmicas."
  },
  "535d98c81acb": {
   "en": "Hours in the last {1} months",
@@ -2952,7 +3096,8 @@
  "5506eb6161a0": {
   "en": "Conditions",
   "b": "Condiciones",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Condiciones"
  },
  "5524bb564250": {
   "en": "Before you launch",
@@ -2971,7 +3116,8 @@
  "5558177e7134": {
   "en": "Reticulated giraffe",
   "b": "Jirafa reticulada",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Jirafa reticulada"
  },
  "5591a37269f0": {
   "en": ", {1} and the Andes, planned for {2}",
@@ -2985,7 +3131,8 @@
  "55b9742f0735": {
   "en": "The Practical Country",
   "b": "El país en la práctica",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El país, en la práctica"
  },
  "55c66106455f": {
   "en": "Navigating {1} (Pre {2} India) : Vistasp Kharas<x1>Navigators, Episode {3}, {4} min</x1>",
@@ -3000,7 +3147,8 @@
  "55d1c19628da": {
   "en": "There are few enough of us flying here that you are not an anonymous tourist. You are the paraglider pilot that community has met, and possibly the only one they will meet this year. What you do sets the terms for everyone who comes next.",
   "b": "Somos tan pocos los que volamos aquí que no eres un turista anónimo. Eres el piloto de parapente que esa comunidad ha conocido, y posiblemente el único que conocerá este año. Lo que hagas marca las condiciones para todos los que vengan después.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Somos tan pocos volando aquí que no eres un turista anónimo. Eres el piloto de parapente que esa comunidad ha conocido, y posiblemente el único que conocerá este año. Lo que hagas marca las condiciones para todos los que vengan después."
  },
  "55d8ace47701": {
   "en": "The flying in front of the takeoff is the textbook part: landing fields all along the valley, a road never far away, and griffon vultures marking the climbs. If the day goes wrong, you land, take a retrieve and go home.",
@@ -3019,7 +3167,8 @@
  "56725ad4c148": {
   "en": "{1} most populous in Africa, {2} globally. Area {3} km².",
   "b": "{1} más poblado de África, {2} del mundo. Superficie {3} km².",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1} país más poblado de África, {2} del mundo. Superficie: {3} km²."
  },
  "56907a4f988f": {
   "en": "Hold a place",
@@ -3101,7 +3250,8 @@
  "58b84bdc646b": {
   "en": "A {1} day guided paragliding tour based in {2}, Kenya. Thermals to {3} m/s, {4}m {5}, and flights of two to seven hours over the Rift Valley.",
   "b": "Expedición guiada de parapente de {1} días con base en {2}, Kenia. Térmicas de hasta {3} m/s, {4} m {5}, y vuelos de entre dos y siete horas sobre el Valle del Rift.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un viaje guiado de parapente de {1} días con base en {2}, Kenia. Térmicas de hasta {3} m/s, {4} m {5} y vuelos de dos a siete horas sobre el valle del Rift."
  },
  "58cf731a05e0": {
   "en": "Paused at {1}",
@@ -3124,7 +3274,8 @@
  "59856deb67b6": {
   "en": "A red and yellow paraglider high above a steep green ridge with plains stretching to the horizon",
   "b": "Un parapente rojo y amarillo muy por encima de una cresta verde y empinada, con llanuras que se extienden hasta el horizonte",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Una vela roja y amarilla muy por encima de una cresta verde y empinada, con llanuras que se extienden hasta el horizonte"
  },
  "59c6639bf0d2": {
   "en": "What equipment is recommended",
@@ -3159,12 +3310,14 @@
  "5b445bcb212c": {
   "en": "You expect quiet, picturesque air every day. {1} and Machakos can be rough through sections of a flight, and near the escarpments the turbulence is heavier than you were expecting.",
   "b": "Esperas un aire tranquilo y pintoresco todos los días. {1} y Machakos pueden ser duros en tramos del vuelo, y cerca de las escarpas la turbulencia es más fuerte de lo que esperabas.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Esperas un aire tranquilo y de postal todos los días. {1} y Machakos pueden estar movidos en algunos tramos del vuelo, y cerca de los escarpes la turbulencia es más fuerte de lo que esperabas."
  },
  "5b642ef6456e": {
   "en": "Explore the Cradle is built for independent pilots with strong glider handling and an appetite for the unfamiliar. We put flight safety first, because that is what keeps the fun factor intact.",
   "b": "Explorar la cuna está pensado para pilotos independientes con buen manejo de la vela y ganas de lo desconocido. Ponemos la seguridad de vuelo primero, porque eso es lo que mantiene intacta la diversión.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Explore the Cradle está pensado para pilotos independientes con un buen manejo de la vela y ganas de lo desconocido. Ponemos la seguridad en vuelo por delante, porque es lo que mantiene intacta la diversión."
  },
  "5bba91a3c176": {
   "en": "A paraglider high above a wide lake, with terraced cliffs beyond",
@@ -3199,7 +3352,8 @@
  "5c2e8b0f31fa": {
   "en": "A volcanic caldera on the edge of Nakuru, about twelve kilometres by eight, formed in a great eruption some eight thousand years ago, its floor a field of old lava. One of the largest calderas in the world.",
   "b": "Una caldera volcánica en el borde de Nakuru, de unos doce kilómetros por ocho, formada en una gran erupción hace unos ocho mil años, con el fondo convertido en un campo de lava antigua. Una de las calderas más grandes del mundo.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Una caldera volcánica en las afueras de Nakuru, de unos doce kilómetros por ocho, formada en una gran erupción hace unos ocho mil años; su fondo es un campo de lava antigua. Una de las calderas más grandes del mundo."
  },
  "5c4698b6e0d6": {
   "en": "About you",
@@ -3257,7 +3411,8 @@
  "5dbf1891ed60": {
   "en": "{1}°T · {2} km from Kijabe Hill",
   "b": "{1}°T · {2} km desde la colina Kijabe",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1}°T · a {2} km de Kijabe Hill"
  },
  "5de967789f50": {
   "en": "A gaggle of paragliders above a lake in the haze",
@@ -3285,7 +3440,8 @@
  "5e5f75450c91": {
   "en": "About The Tugen Hills",
   "b": "Sobre las colinas Tugen",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre las Tugen Hills"
  },
  "5eebdb77fe80": {
   "en": "Subscribe on {1}",
@@ -3304,17 +3460,20 @@
  "5f15f1fc58cb": {
   "en": "Chyulu Hills",
   "b": "Colinas Chyulu",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Chyulu Hills"
  },
  "5f173f56684a": {
   "en": "<x1>Kenya is the easy case.</x1> The tourism sector is used to foreigners and no special permits are needed for what we do on this tour.",
   "b": "<x1>Kenia es el caso fácil.</x1> El sector turístico está acostumbrado a los extranjeros y no hacen falta permisos especiales para lo que hacemos en esta expedición.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "<x1>Kenia es el caso fácil.</x1> El sector turístico está acostumbrado a los extranjeros y no hacen falta permisos especiales para lo que hacemos en este viaje."
  },
  "5f1e6c97772b": {
   "en": "{1} to {2} hrs / flight",
   "b": "{1} a {2} h / vuelo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "De {1} a {2} h por vuelo"
  },
  "5f3c62da571c": {
   "en": "<x1>Over the peaks</x1>A single wing high above a snow-streaked peak",
@@ -3345,7 +3504,8 @@
  "603a4a9eb9f3": {
   "en": "Take the controls",
   "b": "Toma los mandos",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Toma los mandos"
  },
  "6055fce9fc44": {
   "en": "April to May, October to November",
@@ -3364,7 +3524,8 @@
  "610733dc1a7c": {
   "en": "The second highest mountain in Africa at {1} m, an old volcano with glaciers on its twin summits, Batian and Nelion. A World Heritage Site.",
   "b": "La segunda montaña más alta de África, con {1} m, un viejo volcán con glaciares en sus cumbres gemelas, Batian y Nelion. Patrimonio de la Humanidad.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "La segunda montaña más alta de África, con {1} m, un viejo volcán con glaciares en sus dos cumbres, Batian y Nelion. Patrimonio de la Humanidad."
  },
  "61105e66c64a": {
   "en": "Book A Free <x1>{1}-Minute</x1>, No Obligation Virtual Call",
@@ -3436,7 +3597,8 @@
  "632b1800ad27": {
   "en": "Tilt flatter",
   "b": "Inclinar menos",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Menos inclinación"
  },
  "6357d42cf6f1": {
   "en": "Podcast · Episode {1} · {2} min",
@@ -3450,7 +3612,8 @@
  "636eb57f1516": {
   "en": "Machakos Hills",
   "b": "Colinas Machakos",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Machakos Hills"
  },
  "6373b267f92b": {
   "en": "{1}, Himachal Pradesh",
@@ -3478,22 +3641,26 @@
  "63d1d620fb1d": {
   "en": "Flights flown here",
   "b": "Vuelos realizados aquí",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Vuelos realizados aquí"
  },
  "63d81c3812ef": {
   "en": "Lion hunt the plains within sight of the city's towers, and the park is one of Kenya's oldest sanctuaries for black rhino, which bred well enough here to stock other parks.",
   "b": "Los leones cazan en las llanuras a la vista de las torres de la ciudad, y el parque es uno de los santuarios más antiguos de Kenia para el rinoceronte negro, que se reprodujo aquí lo bastante bien como para repoblar otros parques.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Los leones cazan en las llanuras a la vista de las torres de la ciudad, y el parque es uno de los santuarios de rinoceronte negro más antiguos de Kenia, donde se reprodujeron tan bien que sirvieron para repoblar otros parques."
  },
  "63dd05d09b87": {
   "en": "Kenyan Shilling",
   "b": "Chelín keniano",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Chelín keniano"
  },
  "642cfcd8d258": {
   "en": "About Lake Baringo",
   "b": "Sobre el lago Baringo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre el lago Baringo"
  },
  "6433edb488b5": {
   "en": "Photographs at Baijnath",
@@ -3503,17 +3670,20 @@
  "646600403b3d": {
   "en": "Lesser flamingos feed on the blue-green algae of the hot soda water, and when Nakuru is too fresh for them they gather here in their hundreds of thousands. Counts at Bogoria have passed a million.",
   "b": "Los flamencos enanos se alimentan de las algas verdeazuladas del agua caliente de sosa, y cuando Nakuru está demasiado dulce para ellos, se reúnen aquí por cientos de miles. Los recuentos en Bogoria han superado el millón.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Los flamencos enanos se alimentan de las algas verdeazuladas del agua alcalina caliente, y cuando el agua de Nakuru es demasiado dulce para ellos se reúnen aquí por cientos de miles. En Bogoria se han llegado a contar más de un millón."
  },
  "64994968fa95": {
   "en": "How you are read",
   "b": "Cómo te interpretan",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Cómo te perciben"
  },
  "64b34af0d76b": {
   "en": "Rule {1}, Prices and tipping",
   "b": "Regla {1}, precios y propinas",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Regla {1}, precios y propinas"
  },
  "64d1e09d2266": {
   "en": "See {1}, {2} photos",
@@ -3548,7 +3718,8 @@
  "656886a03c80": {
   "en": "weak, early and late",
   "b": "débiles, a primera y última hora",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "débiles, a primera y última hora"
  },
  "65af62e74232": {
   "en": "New Delhi",
@@ -3581,7 +3752,8 @@
  "665eaf727dea": {
   "en": "The base price covers local transport by {1} van, guiding, park entry for flying activities, takeoff fees, and Paragliding Association of Kenya membership. Transfers from the airport to the meetup point in Nairobi can be arranged on request.",
   "b": "El precio base cubre el transporte local en furgoneta {1}, los guías, la entrada a los parques para actividades de vuelo, las tasas de despegue y la afiliación a la Asociación de Parapente de Kenia. Los traslados del aeropuerto al punto de encuentro en Nairobi se pueden organizar bajo petición.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El precio base cubre el transporte local en furgoneta {1}, el guiado, la entrada a los parques para las actividades de vuelo, las tasas de despegue y la afiliación a la Paragliding Association of Kenya. Los traslados del aeropuerto al punto de encuentro en Nairobi se pueden organizar bajo petición."
  },
  "6673b439c370": {
   "en": "Go Thermal Hunting In Primal Habitats",
@@ -3633,22 +3805,26 @@
  "68587bad15e9": {
   "en": "Buffalo",
   "b": "Búfalo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Búfalo"
  },
  "688e2fcfd03a": {
   "en": "Reserve<x1>Essential</x1><x2>Repacked and in date</x2>",
   "b": "Paracaídas de emergencia<x1>Imprescindible</x1><x2>Replegado y en fecha</x2>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Paracaídas de emergencia<x1>Esencial</x1><x2>Replegado y en fecha</x2>"
  },
  "68bc39bde34a": {
   "en": "Lesser flamingos",
   "b": "Flamencos enanos",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Flamencos enanos"
  },
  "68eed731dd83": {
   "en": "Insurance covering paragliding to {1}m<x1>Essential</x1><x2>It must include helicopter rescue and medical evacuation</x2>",
   "b": "Seguro que cubra el parapente hasta {1} m<x1>Imprescindible</x1><x2>Debe incluir rescate en helicóptero y evacuación médica</x2>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Seguro que cubra el parapente hasta {1} m<x1>Esencial</x1><x2>Debe incluir rescate en helicóptero y evacuación médica</x2>"
  },
  "68efcc3e43b0": {
   "en": "Close the photo",
@@ -3660,7 +3836,8 @@
  "6909ba7b89c6": {
   "en": "Headlamp",
   "b": "Linterna frontal",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Frontal"
  },
  "69232d629246": {
   "en": "Place <x1>(optional)</x1>",
@@ -3705,7 +3882,8 @@
  "6a5fe73fd292": {
   "en": "About Menengai crater",
   "b": "Sobre el cráter Menengai",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre el cráter Menengai"
  },
  "6a6973244378": {
   "en": "Most days end back in {1}. Pick your field early, fly a full approach, and anywhere else, watch for terraces and power lines.",
@@ -3775,7 +3953,8 @@
  "6b6f05208d86": {
   "en": "Buffalo and elephant come to the salt licks and waterholes under the forest lodges at night, which is what Treetops was built to watch in {1}.",
   "b": "Búfalos y elefantes acuden de noche a los salitrales y abrevaderos bajo los refugios del bosque, que es lo que Treetops se construyó para observar en {1}.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Búfalos y elefantes acuden de noche a los saladeros y abrevaderos bajo los lodges del bosque, que es justo lo que Treetops se construyó para observar en {1}."
  },
  "6b7fe0aa12c6": {
   "en": "Safety for a solo female pilot",
@@ -3789,12 +3968,14 @@
  "6b93dc42c6ba": {
   "en": "An escarpment site on the eastern wall of the Rift, north west of Nairobi.",
   "b": "Una zona de escarpa en la pared oriental del Rift, al noroeste de Nairobi.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Una zona de escarpe en la pared oriental del Rift, al noroeste de Nairobi."
  },
  "6bd9b0500f4e": {
   "en": "A soda lake ringed by acacia woodland, famous for its flamingos and now a fenced sanctuary for black and white rhino. With Elementaita and Bogoria it forms the Kenya Lake System, a World Heritage Site since {1}.",
   "b": "Un lago de sosa rodeado de bosque de acacias, famoso por sus flamencos y hoy un santuario vallado para el rinoceronte negro y el blanco. Con Elementaita y Bogoria forma el Sistema de Lagos de Kenia, Patrimonio de la Humanidad desde {1}.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un lago alcalino rodeado de bosque de acacias, famoso por sus flamencos y hoy santuario vallado para rinocerontes negros y blancos. Con Elementaita y Bogoria forma el Sistema de Lagos de Kenia, Patrimonio de la Humanidad desde {1}."
  },
  "6bf7e4e0f7ee": {
   "en": "<x1>Step {1} of {2}.</x1> Your event is filled in from the Media page: check it, tick the box and send.",
@@ -3808,7 +3989,8 @@
  "6bffdfe1536c": {
   "en": "People will arrive, and quickly. Greet the children with enthusiasm, find the elders or the leader, and ask them to help keep a clear space. Fly with live tracking and a driver you trust.",
   "b": "La gente llegará, y rápido. Saluda a los niños con entusiasmo, busca a los ancianos o al líder, y pídeles que ayuden a mantener un espacio libre. Vuela con seguimiento en directo y un conductor de confianza.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "La gente llegará, y rápido. Saluda a los niños con entusiasmo, busca a los mayores o al jefe, y pídeles que ayuden a mantener un espacio despejado. Vuela con seguimiento en directo y con un conductor de confianza."
  },
  "6c12315658e2": {
   "en": "Small things, mostly for the day you land somewhere you did not plan to.",
@@ -3827,17 +4009,20 @@
  "6d0dacc5859a": {
   "en": "Strong, midday peaks",
   "b": "Fuertes, picos del mediodía",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Fuertes, picos del mediodía"
  },
  "6d2dcfe6a6bf": {
   "en": "Avg. altitude",
   "b": "Altitud media",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Altitud media"
  },
  "6d3e86a111e2": {
   "en": "Najin and Fatu, the last two northern white rhinos, came here from a zoo in the Czech Republic in {1}; the last male, Sudan, died in {2}. Ol Pejeta also holds more black rhino than any other sanctuary in East Africa.",
   "b": "Najin y Fatu, los dos últimos rinocerontes blancos del norte, llegaron aquí desde un zoo de la República Checa en {1}; el último macho, Sudan, murió en {2}. Ol Pejeta también alberga más rinocerontes negros que cualquier otro santuario de África Oriental.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Najin y Fatu, los dos últimos rinocerontes blancos del norte, llegaron aquí desde un zoo de la República Checa en {1}; el último macho, Sudan, murió en {2}. Ol Pejeta también alberga más rinocerontes negros que cualquier otro santuario de África Oriental."
  },
  "6d5bb241740a": {
   "en": "<x1>Group</x1>Small group",
@@ -3870,12 +4055,14 @@
  "6e151d2bd3cd": {
   "en": "A pink and yellow paraglider turning above the deep green crater of Mount Longonot",
   "b": "Un parapente rosa y amarillo girando sobre el cráter verde oscuro del monte Longonot",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Una vela rosa y amarilla girando sobre el cráter verde intenso del monte Longonot"
  },
  "6e17a42ea46b": {
   "en": "Read the place before you fly it",
   "b": "Lee el lugar antes de volarlo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Conoce el lugar antes de volarlo"
  },
  "6e556cc1559a": {
   "en": "Michael Nesler",
@@ -3907,7 +4094,8 @@
  "6ec9e7311f50": {
   "en": "{1}-{2} m/s",
   "b": "{1}-{2} m/s",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1}-{2} m/s"
  },
  "6ed1f652fde0": {
   "en": "What we do with it",
@@ -3945,7 +4133,8 @@
  "6fe64ca7394d": {
   "en": "Weak, early and late",
   "b": "Débiles, a primera y última hora",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Débiles, a primera y última hora"
  },
  "6ffa0f054227": {
   "en": "{1}, the last day, was cancelled for wind: {2} set a {3} km triangle south, but the wind came over the back of launch and the one pilot who tested it top-landed. {4} ends with five scored tasks.",
@@ -3960,7 +4149,8 @@
  "7012549440ad": {
   "en": "A stranger dropping out of the sky onto their land, unannounced.",
   "b": "Un desconocido que cae del cielo sobre su tierra, sin avisar.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un desconocido que cae del cielo en su tierra, sin avisar."
  },
  "703293ac7226": {
   "en": "Next one starts tomorrow",
@@ -3983,12 +4173,14 @@
  "70d87224c66f": {
   "en": "If it goes wrong",
   "b": "Si algo sale mal",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Si algo sale mal"
  },
  "712e947d4dde": {
   "en": "Giving cash directly tends to make things worse for the pilot behind you. Share food or buy someone a meal instead. Saying plainly that it would not be fair to give to one person and not the rest is usually understood and accepted.",
   "b": "Dar dinero directamente suele empeorar las cosas para el piloto que viene detrás. Comparte comida o invita a alguien a comer. Decir con claridad que no sería justo dar a una persona y no al resto suele entenderse y aceptarse.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Dar dinero en efectivo directamente suele empeorar las cosas para el piloto que viene detrás. Comparte comida o invita a alguien a comer. Decir claramente que no sería justo darle a una persona y no al resto suele entenderse y aceptarse."
  },
  "71fb78e6726e": {
   "en": "Over the back, then west<x1>{1} km</x1>",
@@ -4036,7 +4228,8 @@
  "732b65c00b46": {
   "en": "Plug type G, the UK socket.",
   "b": "Enchufe de tipo G, el británico.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Enchufe tipo G, el británico."
  },
  "734a8ce64ae7": {
   "en": "Photographs at Top of big face",
@@ -4069,7 +4262,8 @@
  "73c87bc99522": {
   "en": "Flying over the floor of the Great Rift, the geological scar that runs the length of the country.",
   "b": "Volando sobre el fondo del Gran Rift, la cicatriz geológica que recorre el país a lo largo.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Volando sobre el fondo del Gran Rift, la cicatriz geológica que recorre el país de punta a punta."
  },
  "73cb67667bda": {
   "en": "Eight days in {1}, two days after the last Kenya tour ends.",
@@ -4160,12 +4354,14 @@
  "7548ab52c3d1": {
   "en": "Power",
   "b": "Electricidad",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Electricidad"
  },
  "756a92bb0a97": {
   "en": "About The {1}",
   "b": "Sobre el {1}",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre el {1}"
  },
  "758c2f0b37e8": {
   "en": "Radio<x1>Essential</x1><x2>Group frequency is briefed on arrival</x2>",
@@ -4278,17 +4474,20 @@
  "77599cd0617f": {
   "en": "{1} · The launch",
   "b": "{1} · El despegue",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1} · El despegue"
  },
  "775a441ccf6e": {
   "en": "About Amboseli",
   "b": "Sobre Amboseli",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre Amboseli"
  },
  "778636d5ff5b": {
   "en": "About Ol Pejeta",
   "b": "Sobre Ol Pejeta",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre Ol Pejeta"
  },
  "77de5e0361bf": {
   "en": "Why fly with us",
@@ -4345,7 +4544,8 @@
  "797158e5ac6a": {
   "en": "Avoid schools, markets and crowds. Land somewhere remote but reachable by a vehicle. Pack fast with a quick pack sack, then deal with yourself and send your location; repack properly later.",
   "b": "Evita escuelas, mercados y multitudes. Aterriza en un sitio apartado pero accesible para un vehículo. Recoge rápido con una bolsa de recogida rápida, luego ocúpate de ti y envía tu ubicación; reempaqueta bien más tarde.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Evita escuelas, mercados y aglomeraciones. Aterriza en un sitio apartado pero accesible en vehículo. Recoge rápido en una bolsa de plegado rápido, luego ocúpate de ti y envía tu ubicación; pliega bien más tarde."
  },
  "79b5d5ff9924": {
   "en": "Oct to Nov",
@@ -4424,12 +4624,14 @@
  "7ce862d18707": {
   "en": "About Rimoi and Lake Kamnarok",
   "b": "Sobre Rimoi y el lago Kamnarok",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre Rimoi y el lago Kamnarok"
  },
  "7ce9cd0c154f": {
   "en": "About The Equator",
   "b": "Sobre el ecuador",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre el ecuador"
  },
  "7d0c0edc701e": {
   "en": "Peak season",
@@ -4439,7 +4641,8 @@
  "7d1288ff6d69": {
   "en": "<x1>{1}</x1>km wide",
   "b": "<x1>{1}</x1> km de ancho",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "<x1>{1}</x1> km de ancho"
  },
  "7d4857413070": {
   "en": "Flying today",
@@ -4456,7 +4659,8 @@
  "7d6fbeae88b6": {
   "en": "About Maasai country",
   "b": "Sobre la tierra masái",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre la tierra masái"
  },
  "7dea5fc2273d": {
   "en": "Guiding",
@@ -4475,7 +4679,8 @@
  "7e20e143cd47": {
   "en": "Hide what is packed",
   "b": "Ocultar lo ya guardado",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Ocultar lo ya preparado"
  },
  "7e3d96031b71": {
   "en": "Task {1}: {2}",
@@ -4496,7 +4701,8 @@
  "7e54360cf63c": {
   "en": "{1} · The thermals",
   "b": "{1} · Las térmicas",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1} · Las térmicas"
  },
  "7e960e1692ca": {
   "en": "<x1></x1>Our trips",
@@ -4565,12 +4771,14 @@
  "7fbb0cbb3de5": {
   "en": "The variometer readings vary from {1}-{2} m/s (weak, early morning/late afternoon) to {3}-{4} m/s (strong, midday peaks), with rare surges to {5}-{6} m/s. Variations include narrow, turbulent cores and wide, smooth ones as well, types range from classic bubble thermals to dynamic triggers depending on the location of flight",
   "b": "Las lecturas del variómetro varían de {1}-{2} m/s (débiles, a primera hora de la mañana o última de la tarde) a {3}-{4} m/s (fuertes, picos del mediodía), con subidas excepcionales de {5}-{6} m/s. Hay variaciones, con núcleos estrechos y turbulentos y otros anchos y suaves, y los tipos van desde las clásicas térmicas de burbuja hasta disparadores dinámicos, según el lugar de vuelo.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El variómetro marca de {1}-{2} m/s (débiles, a primera hora de la mañana y última de la tarde) a {3}-{4} m/s (fuertes, picos del mediodía), con repuntes poco frecuentes de {5}-{6} m/s. Hay núcleos estrechos y turbulentos y también anchos y suaves; los tipos van desde las clásicas burbujas térmicas hasta disparadores dinámicos, según el lugar del vuelo."
  },
  "7fc93cc7aa61": {
   "en": "Every flight is a good flight, but chasing airtime comes with bumpy air, variable thermal strength and conditions more demanding than you expected. That is part of it. Come willing to push your limits and you leave with a renewed understanding of flying in new terrain.",
   "b": "Todo vuelo es un buen vuelo, pero perseguir horas de vuelo trae aire turbulento, fuerza térmica variable y condiciones más exigentes de lo que esperabas. Eso forma parte. Si vienes dispuesto a llevar tus límites más allá, te marchas con una nueva comprensión del vuelo en terreno nuevo.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Todo vuelo es un buen vuelo, pero buscar horas de vuelo implica aire movido, térmicas de fuerza variable y condiciones más exigentes de lo que esperabas. Forma parte de ello. Ven dispuesto a superar tus límites y te irás con una nueva comprensión de lo que es volar en un terreno nuevo."
  },
  "7fdf4742dcd5": {
   "en": "{1} Paragliding Tour: Big Mountain Flying",
@@ -4580,12 +4788,14 @@
  "80242d097f95": {
   "en": "A young volcanic range between Tsavo and Amboseli, with Kilimanjaro on the horizon.",
   "b": "Una cadena volcánica joven entre Tsavo y Amboseli, con el Kilimanjaro en el horizonte.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Una cordillera volcánica joven entre Tsavo y Amboseli, con el Kilimanjaro en el horizonte."
  },
  "8054fdc78f51": {
   "en": "Chapter {1} of {2}: Rift Valley National Park",
   "b": "Capítulo {1} de {2}: Parque Nacional del Valle del Rift",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Capítulo {1} de {2}: Parque Nacional del Valle del Rift"
  },
  "80d8db7ad9bc": {
   "en": "Reset view",
@@ -4605,12 +4815,14 @@
  "81fc9e32c315": {
   "en": "Pocket knife",
   "b": "Navaja de bolsillo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Navaja"
  },
  "8201464a0e80": {
   "en": "Visa",
   "b": "Visado",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Visado"
  },
  "820e5c196403": {
   "en": "Full size, EUR {1}",
@@ -4622,22 +4834,26 @@
  "8211d84c034a": {
   "en": "You have strong glider handling and an appetite for the unfamiliar.",
   "b": "Manejas bien la vela y tienes ganas de lo desconocido.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Tienes un buen manejo de la vela y ganas de lo desconocido."
  },
  "821f2adc99df": {
   "en": "A freshwater lake on the floor of the Rift with hippo, crocodile and well over four hundred recorded bird species. The Njemps who fish it are among the few cattle-keeping peoples of the Rift who also take to the water.",
   "b": "Un lago de agua dulce en el fondo del Rift con hipopótamos, cocodrilos y bastante más de cuatrocientas especies de aves registradas. Los njemps, que pescan en él, son de los pocos pueblos ganaderos del Rift que también se echan al agua.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un lago de agua dulce en el fondo del Rift con hipopótamos, cocodrilos y bastante más de cuatrocientas especies de aves registradas. Los njemps que pescan en él son uno de los pocos pueblos ganaderos del Rift que también salen al agua."
  },
  "82373f62f483": {
   "en": "{1}°T · {2} km from {3}",
   "b": "{1}°T · {2} km desde {3}",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1}°T · a {2} km de {3}"
  },
  "82644b9b7ee9": {
   "en": "Machakos is the heart of Ukambani, the land of the Kamba, known for wood carving and basketry. The town was the first administrative centre of British East Africa, before Nairobi was founded.",
   "b": "Machakos es el corazón de Ukambani, la tierra de los kamba, conocidos por la talla de madera y la cestería. La ciudad fue el primer centro administrativo del África Oriental Británica, antes de que se fundara Nairobi.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Machakos es el corazón de Ukambani, la tierra de los kamba, conocidos por su talla en madera y su cestería. La ciudad fue el primer centro administrativo del África Oriental Británica, antes de que se fundara Nairobi."
  },
  "8274e3089bb3": {
   "en": "Book a Call",
@@ -4672,7 +4888,8 @@
  "8328b9cb9aab": {
   "en": "A small reserve on the floor of the {1} that elephants pass through on an old corridor up and down the Rift. Across the river, Lake Kamnarok was once thick with crocodiles; it has shrunk badly in recent years.",
   "b": "Una pequeña reserva en el fondo del {1} por la que los elefantes pasan siguiendo un viejo corredor que sube y baja por el Rift. Al otro lado del río, el lago Kamnarok estuvo antaño lleno de cocodrilos; ha menguado mucho en los últimos años.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Una pequeña reserva en el fondo del {1} por la que pasan los elefantes siguiendo un antiguo corredor que sube y baja por el Rift. Al otro lado del río, el lago Kamnarok estuvo lleno de cocodrilos; en los últimos años se ha reducido mucho."
  },
  "83a5ade09cc5": {
   "en": ", chapter {1}, {2}",
@@ -4772,7 +4989,8 @@
  "8520ea3a0028": {
   "en": "In remote areas you will camp or stay in somebody's house. Take your shoes off, wash your feet, compliment the food, and follow your host's lead on who it is appropriate to address. Pay discreetly, often to the woman running the household, and expect around half the price of a standard hotel.",
   "b": "En zonas remotas acamparás o te alojarás en casa de alguien. Quítate los zapatos, lávate los pies, elogia la comida y sigue la guía de tu anfitrión sobre a quién corresponde dirigirse. Paga con discreción, a menudo a la mujer que lleva la casa, y cuenta con pagar más o menos la mitad del precio de un hotel estándar.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "En zonas remotas acamparás o te alojarás en casa de alguien. Quítate los zapatos, lávate los pies, elogia la comida y sigue el ejemplo de tu anfitrión sobre a quién es apropiado dirigirse. Paga con discreción, a menudo a la mujer que lleva la casa, y cuenta con pagar más o menos la mitad que en un hotel normal."
  },
  "854bf7312a8e": {
   "en": "then turn for {1} with the light going.",
@@ -4796,12 +5014,14 @@
  "85b0539fda28": {
   "en": "Ear plugs<x1>Hotels can be noisy</x1>",
   "b": "Tapones para los oídos<x1>Los hoteles pueden ser ruidosos</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Tapones para los oídos<x1>Los hoteles pueden ser ruidosos</x1>"
  },
  "85ebaa301b45": {
   "en": "Map controls",
   "b": "Controles del mapa",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Controles del mapa"
  },
  "85f7868cd22c": {
   "en": "Pre {1} Kenya: Nikolay Yotov<x1>Navigators, Episode {2}, {3} min</x1>",
@@ -4824,7 +5044,8 @@
  "86e1f3162a56": {
   "en": "A prehistoric site above Gilgil where Louis Leakey found Acheulean hand axes and cleavers in {1}, one of the first such sites known in East Africa. A small museum stands beside the old diatomite mine.",
   "b": "Un yacimiento prehistórico sobre Gilgil donde Louis Leakey encontró hachas de mano y hendedores achelenses en {1}, uno de los primeros yacimientos así conocidos en África Oriental. Un pequeño museo se alza junto a la antigua mina de diatomita.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un yacimiento prehistórico sobre Gilgil donde Louis Leakey encontró hachas de mano y hendedores achelenses en {1}, uno de los primeros yacimientos de este tipo conocidos en África Oriental. Un pequeño museo se alza junto a la antigua mina de diatomita."
  },
  "87053d443651": {
   "en": "{1} {2}, tasks {3}",
@@ -4846,7 +5067,8 @@
  "873c7db571ef": {
   "en": "Fly",
   "b": "Volar",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Volar"
  },
  "87643b5625e0": {
   "en": "Watch the coverage first: the {1} comp videos of {2} play on the <x1>Media page</x1>, with the stills from {3} {4}.",
@@ -4911,7 +5133,8 @@
  "88c0bbe809a6": {
   "en": "Globally known as a hotbed of archaeological discoveries contributing to the story of human evolution, Kenya offers much more than just world class safaris, Flying a paraglider in cradle of humankind allows you to soar over majestic landscapes with rich culture and awe inspiring scenery, Chase the World Speed Records in {1} or endless adventures while crossing the equator from above. This tropical paradise delivers like no other flying destination known to humankind",
   "b": "Conocido en todo el mundo como un foco de descubrimientos arqueológicos que aportan a la historia de la evolución humana, Kenia ofrece mucho más que safaris de talla mundial. Volar en parapente en la cuna de la humanidad te permite sobrevolar paisajes majestuosos de rica cultura y belleza impresionante, perseguir los récords mundiales de velocidad en {1} o vivir aventuras sin fin cruzando el ecuador desde el aire. Este paraíso tropical ofrece lo que ningún otro destino de vuelo conocido por la humanidad.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Conocida en todo el mundo como un foco de descubrimientos arqueológicos que han contribuido a la historia de la evolución humana, Kenia ofrece mucho más que safaris de primer nivel. Volar en parapente en la cuna de la humanidad te permite planear sobre paisajes majestuosos, de rica cultura y escenarios que quitan el aliento. Persigue los récords mundiales de velocidad en {1} o aventuras sin fin cruzando el ecuador desde el aire. Este paraíso tropical cumple como ningún otro destino de vuelo conocido por la humanidad."
  },
  "88d03328d24e": {
   "en": "The cricket ground at Dharamshala",
@@ -4921,7 +5144,8 @@
  "892e4b4de5b1": {
   "en": "The eastern wall of the Rift above Mai Mahiu, with the old escarpment road below. At its foot stands the small chapel built by Italian prisoners of war in {1} while they cut that road.",
   "b": "La pared oriental del Rift sobre Mai Mahiu, con la antigua carretera de la escarpa debajo. A sus pies se alza la pequeña capilla que construyeron prisioneros de guerra italianos en {1} mientras abrían esa carretera.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "La pared oriental del Rift sobre Mai Mahiu, con la antigua carretera del escarpe abajo. A sus pies se alza la pequeña capilla que construyeron los prisioneros de guerra italianos en {1} mientras abrían esa carretera."
  },
  "8987ee02c101": {
   "en": "Take-off sits at about {1} to {2} m, and in the peak of the season pilots climb to {3} to {4} m, so on a good day the height above the ground beats {5}'s.",
@@ -4944,7 +5168,8 @@
  "89f15565e116": {
   "en": "of {1} packed",
   "b": "de {1} guardados",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "de {1} preparados"
  },
  "8a528519bdab": {
   "en": "Overall",
@@ -4961,7 +5186,8 @@
  "8aee973f0fe6": {
   "en": "Next photograph",
   "b": "Fotografía siguiente",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Fotografía siguiente"
  },
  "8b476e716cc3": {
   "en": "This is the part that decides whether a trip is right for you, so please be straight with us. It is used to answer your enquiry, nothing else.",
@@ -4984,7 +5210,8 @@
  "8b6b97fc11da": {
   "en": "Cattle are wealth and food to the Maasai, who moved south along the Rift between the fifteenth and the eighteenth centuries and still herd across it, from Kajiado to Amboseli and beyond.",
   "b": "El ganado es riqueza y alimento para los masái, que se desplazaron hacia el sur por el Rift entre los siglos quince y dieciocho y todavía pastorean por él, de Kajiado a Amboseli y más allá.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El ganado es riqueza y alimento para los masái, que bajaron hacia el sur a lo largo del Rift entre los siglos XV y XVIII y todavía pastorean por él, de Kajiado a Amboseli y más allá."
  },
  "8ba724b4bbcc": {
   "en": "<x1></x1>Every other episode",
@@ -5003,7 +5230,8 @@
  "8c007e7c9250": {
   "en": "Sunscreen and sunglasses",
   "b": "Protector solar y gafas de sol",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Crema solar y gafas de sol"
  },
  "8c06115f64e5": {
   "en": "What wing should I bring?",
@@ -5017,12 +5245,14 @@
  "8c0c8385217a": {
   "en": "Nairobi",
   "b": "Nairobi",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Nairobi"
  },
  "8c0f5970d5b1": {
   "en": "Malaria pre-medication<x1>Low risk in the dry season above {1}m. Can be bought locally</x1>",
   "b": "Medicación preventiva contra la malaria<x1>Riesgo bajo en la estación seca por encima de {1} m. Se puede comprar allí</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Medicación preventiva contra la malaria<x1>Riesgo bajo en la estación seca por encima de {1} m. Se puede comprar allí</x1>"
  },
  "8c144a744a01": {
   "en": "The front range is forgiving; the traffic is not. Bring gear you can relax on.",
@@ -5032,7 +5262,8 @@
  "8c208e902d7b": {
   "en": "Pepper spray<x1>Against dogs or wild animals</x1>",
   "b": "Spray de pimienta<x1>Contra perros o animales salvajes</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Espray de pimienta<x1>Contra perros o animales salvajes</x1>"
  },
  "8c410fd00f6c": {
   "en": "Castbox",
@@ -5087,12 +5318,14 @@
  "8de38bc21d0c": {
   "en": "Chapters of the flight",
   "b": "Capítulos del vuelo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Capítulos del vuelo"
  },
  "8e19bc8098d3": {
   "en": "Airtime",
   "b": "Tiempo de vuelo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Tiempo de vuelo"
  },
  "8e3df45a49db": {
   "en": "Copied",
@@ -5111,7 +5344,8 @@
  "8eb7fbc28c79": {
   "en": "A yellow paraglider on a long glide over arid rock outcrops in low golden light",
   "b": "Un parapente amarillo en un largo planeo sobre afloramientos de roca árida con luz dorada baja",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Una vela amarilla en un largo planeo sobre afloramientos rocosos áridos, con una luz dorada y rasante"
  },
  "8f26c6520d61": {
   "en": "Loading",
@@ -5134,12 +5368,14 @@
  "8f625382acaa": {
   "en": "Landmark",
   "b": "Lugar de interés",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Lugar de interés"
  },
  "8fdada14ddbd": {
   "en": "You are willing to push your limits in air that is rougher than you expected, and to call that the adventure rather than a failure of planning.",
   "b": "Estás dispuesto a llevar tus límites más allá en un aire más duro de lo que esperabas, y a llamar a eso la aventura en lugar de un fallo de planificación.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Estás dispuesto a superar tus límites en un aire más movido de lo que esperabas, y a llamarlo aventura y no un fallo de planificación."
  },
  "8fe6022d1507": {
   "en": "Booking open",
@@ -5160,7 +5396,8 @@
  "8fef678a84b9": {
   "en": "Runners train on the roads and tracks out of Iten from first light, at {1} m. Athletes have trained here in numbers since the {2}, when Brother Colm O'Connell began coaching at St Patrick's High School.",
   "b": "Los corredores entrenan en las carreteras y pistas de Iten desde el amanecer, a {1} m. Los atletas entrenan aquí en gran número desde los {2}, cuando el hermano Colm O'Connell empezó a entrenar en el St Patrick's High School.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Los corredores entrenan desde el amanecer en las carreteras y pistas que salen de Iten, a {1} m. Aquí entrenan atletas en gran número desde los {2}, cuando el hermano Colm O'Connell empezó a entrenar en el St Patrick's High School."
  },
  "8ffb91216573": {
   "en": "Founder, {1}",
@@ -5204,12 +5441,14 @@
  "919a69cdc726": {
   "en": "Know Before You Go",
   "b": "Qué saber antes de ir",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Lo que debes saber antes de ir"
  },
  "920999160e9e": {
   "en": "Turn left",
   "b": "Girar a la izquierda",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Girar a la izquierda"
  },
  "9224e4142eff": {
   "en": "<x1>The back ranges</x1>Snow-covered back ranges seen from the air<x2>near Mills peak</x2>",
@@ -5238,12 +5477,14 @@
  "92ed2c1f2504": {
   "en": "Keep scrolling",
   "b": "Sigue bajando",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sigue bajando"
  },
  "93040e728820": {
   "en": "You decide where, and you land on your own. Kenya's generous conditions produce long flights, and a long flight means a long retrieve.",
   "b": "Tú decides dónde, y aterrizas por tu cuenta. Las condiciones generosas de Kenia dan vuelos largos, y un vuelo largo supone una recogida larga.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Tú decides dónde, y aterrizas por tu cuenta. Las generosas condiciones de Kenia dan vuelos largos, y un vuelo largo significa una recogida larga."
  },
  "93157ccbafcd": {
   "en": "Sky Gods",
@@ -5267,7 +5508,8 @@
  "937b623db8c1": {
   "en": "The old rule is that it is better to say sorry than to ask permission, and paragliding is not explicitly illegal where the law does not describe it at all. That logic runs out in tense regions, where being arrested is a real outcome and official permission saves a great deal of time.",
   "b": "La vieja regla dice que es mejor pedir perdón que pedir permiso, y que el parapente no es explícitamente ilegal donde la ley no lo describe en absoluto. Esa lógica se acaba en las regiones tensas, donde que te arresten es un resultado real y el permiso oficial ahorra muchísimo tiempo.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "La vieja norma dice que es mejor pedir perdón que pedir permiso, y el parapente no es explícitamente ilegal donde la ley ni siquiera lo contempla. Esa lógica se agota en regiones tensas, donde que te arresten es una posibilidad real y un permiso oficial ahorra muchísimo tiempo."
  },
  "93809a9726d3": {
   "en": "I am happy for {1} to use these details to answer my enquiry. I understand they are kept for up to {2} months <x1>if this does not become a booking</x1><x2>if no coverage is agreed</x2>, that they are not sold or shared for marketing, and that I can ask for them to be deleted at any time. See the <x3>Privacy Policy</x3>.",
@@ -5310,17 +5552,20 @@
  "9522e6ae627c": {
   "en": "Spare lines",
   "b": "Suspentes de repuesto",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Suspentes de repuesto"
  },
  "956dec3ff903": {
   "en": "Flying Season",
   "b": "Temporada de vuelo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Temporada de vuelo"
  },
  "95763fce067e": {
   "en": "Paragliding is still new across much of the continent, and how visiting pilots behave shapes what the next ones are allowed to do. This is distilled from thirteen years of Nikolay Yotov's exploration in Ethiopia and Kenya. He is also the guest on the <x1>Kenya episode</x1>, if you would rather hear it in his own words.",
   "b": "El parapente aún es nuevo en gran parte del continente, y cómo se comportan los pilotos visitantes marca lo que se permitirá a los siguientes. Esto es un destilado de trece años de exploración de Nikolay Yotov en Etiopía y Kenia. También es el invitado del <x1>episodio de Kenia</x1>, por si prefieres oírlo con sus propias palabras.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El parapente sigue siendo algo nuevo en buena parte del continente, y cómo se comportan los pilotos visitantes determina lo que se permitirá hacer a los siguientes. Esto es la síntesis de trece años de exploración de Nikolay Yotov en Etiopía y Kenia. También es el invitado del <x1>episodio de Kenia</x1>, si prefieres oírlo con sus propias palabras."
  },
  "95898dee4581": {
   "en": "The land of five hills: volcanic tablelands, sharp cliffs and punchy thermals, two hours from {1}.",
@@ -5334,12 +5579,14 @@
  "95a184018fc9": {
   "en": "About Lake Magadi",
   "b": "Sobre el lago Magadi",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre el lago Magadi"
  },
  "95e408508963": {
   "en": "Springs in Tsavo West fed by rain that fell on the Chyulu Hills and filtered through their lava, pouring out clear enough to watch hippo and crocodile from an underwater hide.",
   "b": "Manantiales de Tsavo Oeste alimentados por la lluvia que cayó en las colinas Chyulu y se filtró por su lava, y que brotan tan claros que se pueden ver hipopótamos y cocodrilos desde un observatorio subacuático.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Manantiales en Tsavo Oeste alimentados por la lluvia que cayó en las Chyulu Hills y se filtró a través de su lava, que brotan tan claros que se pueden observar hipopótamos y cocodrilos desde un observatorio subacuático."
  },
  "95f216507e08": {
   "en": "<x1>Tibetan monastery</x1>A Tibetan monastery with prayer flags against a blue sky",
@@ -5408,7 +5655,8 @@
  "9896e4c3ba40": {
   "en": "Land away from crowds",
   "b": "Aterriza lejos de las multitudes",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Aterriza lejos de la gente"
  },
  "98be27b60ffb": {
   "en": "Most nationalities can use the e-visa, applied for at least {1} days before you arrive. Everyone also files a free online e-Arrival Card in the {2} hours before flying in.",
@@ -5418,12 +5666,14 @@
  "98d8bf8ce4f8": {
   "en": "The line crosses the road at Nanyuki, where a sign marks it, and again on the roads north of Nakuru. The tour drives across it on the way south from {1}.",
   "b": "La línea cruza la carretera en Nanyuki, donde un cartel la marca, y otra vez en las carreteras al norte de Nakuru. La expedición la cruza en coche de camino al sur desde {1}.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "La línea cruza la carretera en Nanyuki, donde la marca un cartel, y de nuevo en las carreteras al norte de Nakuru. El viaje la cruza por carretera en el trayecto hacia el sur desde {1}."
  },
  "9906127bc763": {
   "en": "Two Departures, Back To Back",
   "b": "Dos salidas, seguidas",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Dos salidas, una tras otra"
  },
  "9921fdc70b22": {
   "en": "Buff",
@@ -5449,12 +5699,14 @@
  "99d81a5cf890": {
   "en": "DEET repellent",
   "b": "Repelente con DEET",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Repelente con DEET"
  },
  "9a0d34c3a06b": {
   "en": "Chapter {1} of {2}: {3}",
   "b": "Capítulo {1} de {2}: {3}",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Capítulo {1} de {2}: {3}"
  },
  "9a1fc1731f62": {
   "en": "Questions",
@@ -5502,7 +5754,8 @@
  "9b12615d1500": {
   "en": "Hippo spend the day in the water and graze the shore at night; crocodiles bask on the banks. Baringo is fresh where its neighbours are soda, which is why both live here and not at Bogoria.",
   "b": "Los hipopótamos pasan el día en el agua y pastan en la orilla de noche; los cocodrilos toman el sol en las riberas. Baringo es dulce donde sus vecinos son de sosa, y por eso viven aquí ambos y no en Bogoria.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Los hipopótamos pasan el día en el agua y pastan en la orilla de noche; los cocodrilos toman el sol en las riberas. Baringo es de agua dulce donde sus vecinos son alcalinos, y por eso ambos viven aquí y no en Bogoria."
  },
  "9b61d3ee51c2": {
   "en": "Palampur, photographed by UnpetitproleX",
@@ -5524,7 +5777,8 @@
  "9bae4158c750": {
   "en": "Close the photograph",
   "b": "Cerrar la fotografía",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Cerrar la fotografía"
  },
  "9bd549f572c2": {
   "en": "A paraglider above the Peruvian desert coastline",
@@ -5538,7 +5792,8 @@
  "9bda84d781d4": {
   "en": "{1}, {2}<x1>{3} km</x1>",
   "b": "{1}, {2}<x1>{3} km</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1}, {2}<x1>{3} km</x1>"
  },
  "9be70232d54c": {
   "en": "drag the ground · scroll to come closer · right button to turn and tilt · a ring opens the photographs · a dotted name tells its story",
@@ -5594,22 +5849,26 @@
  "9e360d21c3a2": {
   "en": "<x1>From</x1> {1}",
   "b": "<x1>Desde</x1> {1}",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "<x1>Desde</x1> {1}"
  },
  "9eda7f7e151d": {
   "en": "About Kariandusi",
   "b": "Sobre Kariandusi",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre Kariandusi"
  },
  "9f19d4dcd451": {
   "en": "Lion",
   "b": "León",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "León"
  },
  "9f88b5e83627": {
   "en": "We take to the air from the heart of the Great Rift Valley with direct access from our home base, logistical arrangements are seamless and the adventure takes you into the very fabric of the Kenyan wilderness, as you",
   "b": "Despegamos desde el corazón del Gran Valle del Rift, con acceso directo desde nuestra base, así que la logística es fluida y la aventura te lleva al mismo tejido de la naturaleza salvaje keniana, mientras tú",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Despegamos desde el corazón del Gran Valle del Rift, con acceso directo desde nuestra base; la logística está perfectamente resuelta y la aventura te lleva al corazón mismo de la naturaleza salvaje de Kenia, mientras"
  },
  "9f92b10500f1": {
   "en": "{1}, on YouTube",
@@ -5637,7 +5896,8 @@
  "9fca955512fa": {
   "en": "The motorbike crashed the lady. And then who is guilty? The paragliding pilot is guilty.",
   "b": "La moto atropelló a la señora. ¿Y quién es el culpable? El piloto de parapente es el culpable.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "La moto atropelló a la señora. ¿Y quién tiene la culpa? La culpa la tiene el piloto de parapente."
  },
  "a0126394c231": {
   "en": "front range cloudbase",
@@ -5671,17 +5931,20 @@
  "a0896f202334": {
   "en": "A paraglider high above farmland, the flatlands hazy to the horizon",
   "b": "Un parapente muy por encima de tierras de cultivo, con las llanuras brumosas hasta el horizonte",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un parapente muy alto sobre tierras de cultivo, con las llanuras brumosas hasta el horizonte"
  },
  "a08c8a4adda6": {
   "en": "Three wings crossing a green ridgeline toward distant hills",
   "b": "Tres velas cruzando una cresta verde hacia unas colinas lejanas",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Tres velas cruzando una cresta verde hacia colinas lejanas"
  },
  "a0a878357dae": {
   "en": "About Mount Kenya",
   "b": "Sobre el monte Kenia",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre el monte Kenia"
  },
  "a190ee0c9ddc": {
   "en": "The pass drops into the Uhl valley at Barot, where a diversion dam was built in {1} for the Shanan hydroelectric scheme opened the following year, one of the first in these hills. The Uhl is known for its trout.",
@@ -5700,7 +5963,8 @@
  "a19c1f576429": {
   "en": "and set your sights on the distant shores of Lake Naivasha.",
   "b": "y pon la mirada en las lejanas orillas del lago Naivasha.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "y fijas la mirada en las lejanas orillas del lago Naivasha."
  },
  "a1bf92eff40d": {
   "en": "Cancelled",
@@ -5717,7 +5981,8 @@
  "a22032bce602": {
   "en": "Helmet<x1>Essential</x1>",
   "b": "Casco<x1>Imprescindible</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Casco<x1>Esencial</x1>"
  },
  "a232866143be": {
   "en": "{1}<x1>Paragliding Tour, {2} Days In The Indian Himalaya</x1>",
@@ -5727,7 +5992,8 @@
  "a26a08d221ed": {
   "en": "{1} days · from {2}",
   "b": "{1} días · desde {2}",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1} días · desde {2}"
  },
  "a2d37ab42f7c": {
   "en": "The landing field",
@@ -5771,7 +6037,8 @@
  "a370b22ff411": {
   "en": "{1}°T · {2} km from Mount Longonot",
   "b": "{1}°T · {2} km desde el monte Longonot",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1}°T · a {2} km del monte Longonot"
  },
  "a37c928492fb": {
   "en": "Photo in the task",
@@ -5804,7 +6071,8 @@
  "a3b9261a50cf": {
   "en": "The whole overview: thermals, season, the team, retrieves",
   "b": "Todo el panorama: térmicas, temporada, el equipo, recogidas",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "La visión completa: térmicas, temporada, el equipo, las recogidas"
  },
  "a3c3f49b6e81": {
   "en": "{1} is not the place to find out what your new high end wing does in the afternoon. The flying is long rather than difficult, and the pilots who enjoy it are the ones not busy managing their glider.",
@@ -5814,7 +6082,8 @@
  "a41e8703c0fe": {
   "en": "What insurance do I need?",
   "b": "¿Qué seguro necesito?",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "¿Qué seguro necesito?"
  },
  "a4309af7aa85": {
   "en": "{1} sits at about {2}m and cloudbase goes well over {3}m. Bring gear you trust.",
@@ -5851,7 +6120,8 @@
  "a49fd76b0bb1": {
   "en": "Permissions and officials",
   "b": "Permisos y autoridades",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Permisos y autoridades"
  },
  "a4ae4b24a1f5": {
   "en": "Zoom out",
@@ -5903,7 +6173,8 @@
  "a54c72766124": {
   "en": "Ask when it matters",
   "b": "Pregunta cuando importe",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Pide permiso cuando importa"
  },
  "a55a275aa676": {
   "en": "Terms",
@@ -6001,7 +6272,8 @@
  "a6dae249a8db": {
   "en": "{1}°N · {2}°E",
   "b": "{1}°N · {2}°E",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1}°N · {2}°E"
  },
  "a6ef4903501b": {
   "en": "<x1>Hold a place sends an enquiry for that departure.</x1> All four departures are guaranteed to run: we will not cancel any of them for low numbers. What is due when you book is set out in our <x2>booking terms</x2>.",
@@ -6030,17 +6302,20 @@
  "a793925968eb": {
   "en": "Read the eight rules",
   "b": "Lee las ocho reglas",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Lee las ocho reglas"
  },
  "a7d2b97b0cb7": {
   "en": "Your guide proposes the day's plan to maximise flying, and briefs you on the forecast, the site and the conditions. He suggests cross country directions and where a retrieve is realistic.",
   "b": "Tu guía propone el plan del día para volar al máximo, y te informa del pronóstico, la zona y las condiciones. Sugiere direcciones de cross y dónde es realista una recogida.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Tu guía propone el plan del día para volar al máximo, y te da el briefing sobre la previsión, la zona y las condiciones. Sugiere direcciones para el cross y dónde es realista una recogida."
  },
  "a838eea5c00e": {
   "en": "How a day runs, and who it is for",
   "b": "Cómo es un día, y para quién es",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Cómo es un día y para quién es"
  },
  "a84f56f2e6a7": {
   "en": "Kenya",
@@ -6068,7 +6343,8 @@
  "a8df5c9e0184": {
   "en": "Fly where humankind first walked. Rift Valley's endless skies await.",
   "b": "Vuela donde el ser humano caminó por primera vez. Los cielos infinitos del Valle del Rift te esperan.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Vuela donde la humanidad dio sus primeros pasos. Te esperan los cielos infinitos del valle del Rift."
  },
  "a8e32b874166": {
   "en": "Over the back",
@@ -6078,22 +6354,26 @@
  "a93c7c5358b0": {
   "en": "Policy number and rescue hotline, saved offline<x1>Essential</x1><x2>You will want these at the moment you have no signal</x2>",
   "b": "Número de póliza y teléfono de rescate, guardados sin conexión<x1>Imprescindible</x1><x2>Los querrás en el momento en que no tengas cobertura</x2>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Número de póliza y teléfono de rescate, guardados sin conexión<x1>Esencial</x1><x2>Los querrás justo cuando no tengas cobertura</x2>"
  },
  "a957a461b648": {
   "en": "{1} volts, {2} Hertz",
   "b": "{1} voltios, {2} hercios",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1} voltios, {2} hercios"
  },
  "a96dd16fa3cf": {
   "en": "Rule {1}, Staying and moving",
   "b": "Regla {1}, alojarse y desplazarse",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Regla {1}, alojamiento y desplazamientos"
  },
  "a9c4b6151646": {
   "en": "drag the ground · pinch to come closer · twist to turn, two fingers up or down to tilt · a dotted name or an animal tells its story",
   "b": "arrastra el suelo · pellizca para acercarte · gira con los dedos para orientar, dos dedos arriba o abajo para inclinar · un nombre punteado o un animal cuenta su historia",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "arrastra el terreno · pellizca para acercarte · gira con dos dedos para rotar, dos dedos arriba o abajo para inclinar · un nombre punteado o un animal cuenta su historia"
  },
  "aa61c413bd4b": {
   "en": "<x1>The valley floor</x1>Terraced fields, a river and villages seen from the air<x2>near Baijnath</x2>",
@@ -6103,7 +6383,8 @@
  "aab114f4f77b": {
   "en": "{1}-{2}<x1>M/S</x1>",
   "b": "{1}-{2}<x1>M/S</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1}-{2}<x1>M/S</x1>"
  },
  "aae454b44918": {
   "en": "You can launch cleanly in nil wind, without help from the breeze.",
@@ -6120,7 +6401,8 @@
  "ab12096c95fc": {
   "en": "Hippo",
   "b": "Hipopótamo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Hipopótamo"
  },
  "ab25fcd650c9": {
   "en": "Paragliding podcast, knowledge base and guided expeditions",
@@ -6143,7 +6425,8 @@
  "ab57603ab7a3": {
   "en": "Thermals to {1} m/s · {2} m above ground",
   "b": "Térmicas de hasta {1} m/s · {2} m sobre el suelo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Térmicas de hasta {1} m/s · {2} m sobre el suelo"
  },
  "ab95c7774c58": {
   "en": "See the Kenya trip",
@@ -6157,12 +6440,14 @@
  "abab2b36fc42": {
   "en": "You may be seen as progress, as wealth, or with suspicion: spying, drones, something military. None of that is unreasonable given the history. Read up on the communities, the security picture and the recent past of anywhere you are heading before you get there.",
   "b": "Pueden verte como progreso, como riqueza, o con recelo: espionaje, drones, algo militar. Nada de eso es irrazonable dada la historia. Infórmate sobre las comunidades, la situación de seguridad y el pasado reciente de cualquier lugar al que vayas antes de llegar.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Pueden verte como progreso, como riqueza o con recelo: espionaje, drones, algo militar. Nada de eso es descabellado dada la historia. Infórmate sobre las comunidades, la situación de seguridad y el pasado reciente de cualquier sitio al que vayas antes de llegar."
  },
  "ac42376ff891": {
   "en": "The paperwork is the part you cannot buy locally on the morning you need it.",
   "b": "Los papeles son lo único que no puedes comprar allí la mañana en que los necesitas.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El papeleo es lo que no puedes comprar allí la misma mañana en que lo necesitas."
  },
  "ac8d35c5651b": {
   "en": "Sharing our passion for the art of flight isn't just meaningful, it's our purpose. By flying with us, you help uplift local communities through welfare, training, and opportunities for the next generation.",
@@ -6184,7 +6469,8 @@
  "ac9918896062": {
   "en": "rare surges",
   "b": "subidas excepcionales",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "repuntes poco frecuentes"
  },
  "acfed849a1d0": {
   "en": "Chapters of Navigating India",
@@ -6208,7 +6494,8 @@
  "ad11441a6c3a": {
   "en": "Wherever you land, some guy with motorbike comes and offers you lift. We want people to benefit from this, to earn some money from this.",
   "b": "Donde sea que aterrices, algún tipo con una moto viene y te ofrece llevarte. Queremos que la gente se beneficie de esto, que gane algo de dinero con esto.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Aterrices donde aterrices, viene algún tipo con una moto y te ofrece llevarte. Queremos que la gente se beneficie de esto, que gane algo de dinero con esto."
  },
  "ad76c9cfcd87": {
   "en": "You want big mountain flying with a forgiving front range to learn it on.",
@@ -6245,7 +6532,8 @@
  "adbfdf8bffb4": {
   "en": "Hippo spend the day in the clear pools, and their dung feeds the fish that live on it, a chain the filmmakers Alan and Joan Root followed underwater here.",
   "b": "Los hipopótamos pasan el día en las pozas claras, y sus excrementos alimentan a los peces que viven de ellos, una cadena que los cineastas Alan y Joan Root siguieron bajo el agua aquí.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Los hipopótamos pasan el día en las pozas cristalinas, y su estiércol alimenta a los peces que viven de él, una cadena que los cineastas Alan y Joan Root siguieron aquí bajo el agua."
  },
  "addc5623cf16": {
   "en": "East, the bigger day",
@@ -6269,7 +6557,8 @@
  "afa5447f32f6": {
   "en": "Travel insurance covering paragliding at altitudes up to {1}m. It must include helicopter rescue for retrieves from remote regions, and medical evacuation and treatment covering local hospitals plus international repatriation.",
   "b": "Un seguro de viaje que cubra el parapente a altitudes de hasta {1} m. Debe incluir rescate en helicóptero para recogidas en regiones remotas, y evacuación y tratamiento médicos que cubran hospitales locales además de la repatriación internacional.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un seguro de viaje que cubra el parapente a altitudes de hasta {1} m. Debe incluir rescate en helicóptero para recogidas en regiones remotas, y evacuación y tratamiento médico que cubra los hospitales locales además de la repatriación internacional."
  },
  "afd25e00491c": {
   "en": "Fly into Delhi, then take a domestic flight to Dharamshala, listed as Kangra or Gaggal, and a taxi of about two hours to {1}. Jigish Gohil, who lives in {2}, rates the overnight Volvo bus from Delhi as the cheapest and easiest option, with seats that recline far enough to sleep. Chandigarh and Amritsar airports work too, with a longer drive at the end.",
@@ -6296,7 +6585,8 @@
  "b0826c4f9557": {
   "en": "Takeoffs sit between {1} and {2}m, and you can expect to climb to {3}m, where it is cold.",
   "b": "Los despegues están entre {1} y {2} m, y puedes esperar subir hasta {3} m, donde hace frío.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Los despegues están entre {1} y {2} m, y puedes subir hasta {3} m, donde hace frío."
  },
  "b0c4416b4d80": {
   "en": "Also from {1}",
@@ -6319,7 +6609,8 @@
  "b18b0885dcf4": {
   "en": "Standard travel insurance often excludes adventure sports, so read the wording rather than assuming.",
   "b": "El seguro de viaje estándar suele excluir los deportes de aventura, así que lee la letra pequeña en lugar de darlo por hecho.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Los seguros de viaje estándar suelen excluir los deportes de aventura, así que lee las condiciones en lugar de darlo por hecho."
  },
  "b191dbd602b6": {
   "en": "Will Gadd",
@@ -6366,17 +6657,20 @@
  "b2d43dc84d9f": {
   "en": "Zebra",
   "b": "Cebra",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Cebra"
  },
  "b302e15934f1": {
   "en": "Chapter {1} of {2}: Machakos Hills",
   "b": "Capítulo {1} de {2}: colinas Machakos",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Capítulo {1} de {2}: Machakos Hills"
  },
  "b37554f695b1": {
   "en": "People",
   "b": "Pueblos",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Pueblos"
  },
  "b3d45b8056fb": {
   "en": "Tell your friends your plan for the day, fly with a mate if you can, carry some form of tracking, and let people know when you have landed in the evening.",
@@ -6386,7 +6680,8 @@
  "b3f77216d90d": {
   "en": "Season Packages",
   "b": "Paquetes de temporada",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Paquetes de temporada"
  },
  "b453c4af37bd": {
   "en": "Pilots who can take off in strong wind and strong thermic conditions. Vistasp Kharas, who has flown {1} for more than ten years, advises an {2} course: the thermals can be punchy and there is wind in the mix. He would not send a pilot used only to alpine air with little knowledge of wind, because on the lee side the site is not forgiving.",
@@ -6401,7 +6696,8 @@
  "b462e82b674b": {
   "en": "About The Chyulu Hills",
   "b": "Sobre las colinas Chyulu",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre las Chyulu Hills"
  },
  "b49bbe9c0918": {
   "en": "Full-size original",
@@ -6413,7 +6709,8 @@
  "b4f034c0d814": {
   "en": "Last year, we got arrested by {1} people with spears and stones.",
   "b": "El año pasado nos arrestaron {1} personas con lanzas y piedras.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El año pasado nos arrestaron {1} personas con lanzas y piedras."
  },
  "b4f67e424077": {
   "en": "Getting it",
@@ -6456,7 +6753,8 @@
  "b5725ee89499": {
   "en": "camera <x1>{1}</x1> m",
   "b": "cámara a <x1>{1}</x1> m",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "cámara <x1>{1}</x1> m"
  },
  "b576d512dd2d": {
   "en": "<x1>{1}</x1> pts",
@@ -6473,7 +6771,8 @@
  "b5a8b51eaebe": {
   "en": "When you are asked for money",
   "b": "Cuando te piden dinero",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Cuando te piden dinero"
  },
  "b5e1b5c9c3bc": {
   "en": "The Science Of Wing Design",
@@ -6499,7 +6798,8 @@
  "b6372ea590b5": {
   "en": "Rule {1}, Landing protocol",
   "b": "Regla {1}, protocolo de aterrizaje",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Regla {1}, protocolo de aterrizaje"
  },
  "b63b356ef3f6": {
   "en": "The front range",
@@ -6509,12 +6809,14 @@
  "b69f947334e6": {
   "en": "About Lake Bogoria",
   "b": "Sobre el lago Bogoria",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre el lago Bogoria"
  },
  "b6d9c8d773ee": {
   "en": "About Nairobi National Park",
   "b": "Sobre el Parque Nacional de Nairobi",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre el Parque Nacional de Nairobi"
  },
  "b6dc5272c942": {
   "en": "{1} chapters",
@@ -6566,7 +6868,8 @@
  "b8ee2c93e7a7": {
   "en": "About Mzima Springs",
   "b": "Sobre los manantiales Mzima",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre Mzima Springs"
  },
  "b97819bea45d": {
   "en": "Our terms, privacy and safety pages are in English.",
@@ -6577,7 +6880,8 @@
  "b98b7d179d0f": {
   "en": "Offline maps on your phone<x1>Download the region before you fly out</x1>",
   "b": "Mapas sin conexión en el móvil<x1>Descarga la región antes de viajar</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Mapas sin conexión en el móvil<x1>Descarga la región antes de salir de viaje</x1>"
  },
  "b9b15d8821c5": {
   "en": "The film",
@@ -6623,7 +6927,8 @@
  "bad5b773a237": {
   "en": "Our lead guides also have extensive experience in conducting retrieves from remote locations. We have detailed flight plans and multiple communication systems in place to ensure a swift pickup, no matter where the sky takes you. While we can’t control the weather, we can guarantee that you will be in the safest possible hands both in the air and on the ground should the unexpected happen.",
   "b": "Nuestros guías principales también tienen amplia experiencia en recogidas desde lugares remotos. Tenemos planes de vuelo detallados y varios sistemas de comunicación para garantizar una recogida rápida, vayas donde vayas con el cielo. Aunque no podemos controlar el tiempo, sí podemos garantizar que estarás en las manos más seguras, tanto en el aire como en tierra, si ocurre algo inesperado.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Nuestros guías principales también tienen amplia experiencia en recogidas desde lugares remotos. Contamos con planes de vuelo detallados y varios sistemas de comunicación para garantizar una recogida rápida, te lleve donde te lleve el cielo. Aunque no podemos controlar el tiempo, sí podemos garantizarte que estarás en las manos más seguras posibles, en el aire y en tierra, si ocurre algo imprevisto."
  },
  "bae7d5be7082": {
   "en": "Status",
@@ -6655,7 +6960,8 @@
  "bba12849ef4b": {
   "en": "Kenyan conditions are stronger than most home sites. Bring gear you trust.",
   "b": "Las condiciones de Kenia son más fuertes que las de la mayoría de las zonas de casa. Trae equipo de confianza.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Las condiciones en Kenia son más fuertes que en la mayoría de las zonas de vuelo de casa. Trae equipo en el que confíes."
  },
  "bbaeb294a58b": {
   "en": "A short season, and a changing climate",
@@ -6678,12 +6984,14 @@
  "bbfa773e5a63": {
   "en": "Close",
   "b": "Cerrar",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Cerrar"
  },
  "bc14724fde36": {
   "en": "Buff<x1>For the dusty roads</x1>",
   "b": "Buff<x1>Para los caminos polvorientos</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Buff<x1>Para las carreteras polvorientas</x1>"
  },
  "bc596fdcb822": {
   "en": "How do I get there?",
@@ -6743,7 +7051,8 @@
  "bd169b66541a": {
   "en": "You want a fixed timetable. The plan follows the conditions, not the other way round.",
   "b": "Quieres un horario fijo. El plan sigue las condiciones, y no al revés.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Quieres un horario fijo. El plan sigue a las condiciones, no al revés."
  },
  "bd2490da7c01": {
   "en": "In from {1} km wide over the Kangra valley, down to {2}, west along the front to Dharamshala, back east to {3}, and up over the back. The scroll flies it, or take the controls and go where you like.",
@@ -6753,7 +7062,8 @@
  "bd4b21058f4b": {
   "en": "{1}m radio, {2} to {3} MHz<x1>Essential</x1><x2>Yaesu, Icom or Kenwood. Avoid Baofeng, reliable communication can save your life</x2>",
   "b": "Radio de {1} m, de {2} a {3} MHz<x1>Imprescindible</x1><x2>Yaesu, Icom o Kenwood. Evita Baofeng, una comunicación fiable puede salvarte la vida</x2>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Radio de banda de {1} m, de {2} a {3} MHz<x1>Esencial</x1><x2>Yaesu, Icom o Kenwood. Evita Baofeng: una comunicación fiable puede salvarte la vida</x2>"
  },
  "bd66d55258cd": {
   "en": "What the tour price covers is <x1>{1}</x1>.",
@@ -6799,7 +7109,8 @@
  "bdfd795ddbf5": {
   "en": "chase thermals over the flatlands,",
   "b": "persigue térmicas sobre las llanuras,",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "persigues térmicas sobre las llanuras,"
  },
  "be5602376409": {
   "en": "Warm in the valley, properly cold at {1}m. Both on the same day, every day.",
@@ -6818,7 +7129,8 @@
  "beb632039319": {
   "en": "A park of red cliffs, gorges and steam vents that can be crossed on foot or by bicycle among zebra, buffalo and giraffe. Olkaria, inside the park, is where Kenya draws geothermal power from the floor of the Rift.",
   "b": "Un parque de acantilados rojos, gargantas y fumarolas que se puede recorrer a pie o en bicicleta entre cebras, búfalos y jirafas. Olkaria, dentro del parque, es de donde Kenia saca energía geotérmica del fondo del Rift.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un parque de acantilados rojos, gargantas y fumarolas que se puede recorrer a pie o en bicicleta entre cebras, búfalos y jirafas. Olkaria, dentro del parque, es donde Kenia obtiene energía geotérmica del fondo del Rift."
  },
  "bee1ebaac1d6": {
   "en": ", the steppe, planned for {1}",
@@ -6837,7 +7149,8 @@
  "bfa7440fe011": {
   "en": "What you see",
   "b": "Lo que ves",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Lo que ves tú"
  },
  "c0044806d148": {
   "en": "Sky Is Not The Limit",
@@ -6847,12 +7160,14 @@
  "c0dc82cdf7c1": {
   "en": "Najin and Fatu",
   "b": "Najin y Fatu",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Najin y Fatu"
  },
  "c0faf4093874": {
   "en": "Rare surges",
   "b": "Subidas excepcionales",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Repuntes poco frecuentes"
  },
  "c11df50abfb9": {
   "en": "Guaranteed to run, {1} places",
@@ -6876,7 +7191,8 @@
  "c1c1bde972af": {
   "en": "Along the northern Elgeyo escarpment the Marakwet have watered the valley floor for centuries with furrows cut along the cliffs, a system still in use and still managed by the clans.",
   "b": "A lo largo de la escarpa norte de Elgeyo, los marakwet llevan siglos regando el fondo del valle con acequias talladas en los acantilados, un sistema que sigue en uso y que siguen gestionando los clanes.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "A lo largo del norte del escarpe de Elgeyo, los marakwet riegan desde hace siglos el fondo del valle con acequias excavadas a lo largo de los acantilados, un sistema que sigue en uso y que todavía gestionan los clanes."
  },
  "c290b21f5931": {
   "en": "A Tibetan monastery with prayer flags against a blue sky",
@@ -6918,12 +7234,14 @@
  "c304df9704a4": {
   "en": "{1}°S · {2}°E",
   "b": "{1}°S · {2}°E",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1}°S · {2}°E"
  },
  "c33ab8e216a2": {
   "en": "KES. Cash is used widely, ATMs are common in big towns only, and Mpesa is the preferred digital wallet.",
   "b": "KES. El efectivo se usa mucho, los cajeros automáticos solo son habituales en las ciudades grandes, y Mpesa es la cartera digital preferida.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "KES. El efectivo se usa mucho, los cajeros solo abundan en las ciudades grandes y Mpesa es el monedero digital preferido."
  },
  "c344423e7a48": {
   "en": "The {1} landing field under big cumulus, snow peaks behind, one wing coming in",
@@ -6942,7 +7260,8 @@
  "c38add4244e0": {
   "en": "Hiring porters is usually welcome. In some communities men will not take portering work, and offering a guiding or security role instead is the respectful move rather than pressing the point.",
   "b": "Contratar porteadores suele ser bien recibido. En algunas comunidades los hombres no aceptan trabajo de porteador, y ofrecer en su lugar un papel de guía o de seguridad es lo respetuoso, en vez de insistir.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Contratar porteadores suele ser bien recibido. En algunas comunidades los hombres no aceptan trabajo de porteador, y lo respetuoso es ofrecerles un papel de guía o de seguridad en lugar de insistir."
  },
  "c43856cd1a2a": {
   "en": "Photographs: Nerdandnutella (CC BY-SA {1}), UnpetitproleX (CC BY-SA {2}), via Wikimedia Commons",
@@ -6952,7 +7271,8 @@
  "c462e14b0fcf": {
   "en": "Zebra, buffalo, gazelle and giraffe graze the floor of the gorge among walkers and cyclists, which is possible because the park has no lions. It was gazetted in {1}.",
   "b": "Cebras, búfalos, gacelas y jirafas pastan en el fondo de la garganta entre caminantes y ciclistas, algo posible porque el parque no tiene leones. Fue declarado parque en {1}.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Cebras, búfalos, gacelas y jirafas pastan en el fondo de la garganta entre senderistas y ciclistas, algo posible porque en el parque no hay leones. Fue declarado parque en {1}."
  },
  "c474e040dc24": {
   "en": "Why wind strength differs between seasons",
@@ -7004,12 +7324,14 @@
  "c6090c736ae3": {
   "en": "Rehydration salts",
   "b": "Sales de rehidratación",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sales de rehidratación"
  },
  "c613695800ec": {
   "en": "About Ukambani",
   "b": "Sobre Ukambani",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre Ukambani"
  },
  "c61970292546": {
   "en": "Downloaded",
@@ -7048,7 +7370,8 @@
  "c6bf9a2980a6": {
   "en": "Two paragliders over flat dark bush under a stormy sky in the Chyulu Hills",
   "b": "Dos parapentes sobre un matorral oscuro y plano bajo un cielo de tormenta en las colinas Chyulu",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Dos parapentes sobre un matorral oscuro y llano bajo un cielo de tormenta en las Chyulu Hills"
  },
  "c6c17c967a2f": {
   "en": "Nikolay Yotov",
@@ -7071,12 +7394,14 @@
  "c6e2cd95139a": {
   "en": "{1}, Kenya",
   "b": "{1}, Kenia",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1}, Kenia"
  },
  "c6fc47a975d2": {
   "en": "The ground is open terrain data (AWS Terrain Tiles, Mapzen Terrarium, from SRTM and other open sources), a coarse layer for the whole Rift and a finer one over each site, drawn live as relief, flown by the scroll or moved by hand. The sites are the six of the tour, the launches are read from the owner's own tracklogs and the towns are placed from GeoNames (CC BY {1}); the parks, peoples, prehistoric sites and landmarks along the way are placed by hand at the centre of each area, with a few lines each from published sources; the border is Natural Earth's. The flights drawn are the owner's, scored by the XContest rules: the distance is the scored route, the dashed line is that route, and the average speed is the scored distance over the time in the air. The figures are Noto Emoji ({2}, Apache {3}): they stand on ground placed by hand near each park, lake or town, in view at any distance, for the animals and people of a place, not for sightings.",
   "b": "El terreno son datos abiertos de relieve (AWS Terrain Tiles, Mapzen Terrarium, de SRTM y otras fuentes abiertas): una capa gruesa para todo el Rift y otra más fina sobre cada zona, dibujada en directo como relieve, recorrida con el scroll o movida a mano. Las zonas son las seis de la expedición, los despegues se leen de los tracklogs propios del propietario y las poblaciones se sitúan a partir de GeoNames (CC BY {1}); los parques, pueblos, yacimientos prehistóricos y lugares de interés del camino se colocan a mano en el centro de cada área, con unas pocas líneas cada uno tomadas de fuentes publicadas; la frontera es la de Natural Earth. Los vuelos dibujados son del propietario, con puntuación según las reglas de XContest: la distancia es la ruta con puntuación, la línea discontinua es esa ruta, y la velocidad media es la distancia con puntuación dividida por el tiempo en el aire. Las figuras son Noto Emoji ({2}, Apache {3}): están sobre un terreno colocado a mano cerca de cada parque, lago o población, visibles a cualquier distancia, para los animales y las gentes de un lugar, no como avistamientos.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El terreno son datos topográficos abiertos (AWS Terrain Tiles, Mapzen Terrarium, a partir de SRTM y otras fuentes abiertas): una capa gruesa para todo el Rift y otra más fina sobre cada zona, dibujadas en directo como relieve, sobrevoladas con el desplazamiento de la página o movidas a mano. Las zonas son las seis del viaje, los despegues salen de los propios tracks del propietario del sitio y las ciudades están situadas a partir de GeoNames (CC BY {1}); los parques, pueblos, yacimientos prehistóricos y lugares de interés del camino están situados a mano en el centro de cada área, con unas pocas líneas cada uno tomadas de fuentes publicadas; la frontera es de Natural Earth. Los vuelos dibujados son los del propietario, con la puntuación según las reglas de XContest: la distancia es la ruta puntuada, la línea discontinua es esa ruta y la velocidad media es la distancia puntuada dividida por el tiempo en el aire. Las figuras son Noto Emoji ({2}, Apache {3}): se sitúan sobre un terreno colocado a mano cerca de cada parque, lago o ciudad, visibles a cualquier distancia, y representan los animales y las personas de un lugar, no avistamientos."
  },
  "c6fc5da17202": {
   "en": "Anything you would like us to know, and anything you would like to ask.",
@@ -7125,7 +7450,8 @@
  "c78f58eaf5f9": {
   "en": "Thermal Strength",
   "b": "Fuerza de las térmicas",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Fuerza de las térmicas"
  },
  "c7bd240ac63c": {
   "en": "Paraglider over snow-capped Himalayan peaks",
@@ -7148,7 +7474,8 @@
  "c7c0b7e21039": {
   "en": "{1}°T · {2} km from Rift Valley NP",
   "b": "{1}°T · {2} km desde el PN del Valle del Rift",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "{1}°T · a {2} km del P. N. del Valle del Rift"
  },
  "c7c6c8cc021f": {
   "en": "Over {1}",
@@ -7159,7 +7486,8 @@
  "c84812cadbc7": {
   "en": "Swahili and English",
   "b": "Suajili e inglés",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Suajili e inglés"
  },
  "c880e01143fc": {
   "en": "The more you tell us about where you are as a pilot, the more useful our answer will be. There are no wrong answers here, and telling us you are less current than you would like is genuinely more helpful than telling us you are fine.",
@@ -7242,7 +7570,8 @@
  "ca06cb87669f": {
   "en": "Rift Immersive",
   "b": "Rift inmersivo",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El Rift, inmersivo"
  },
  "ca07a6eab021": {
   "en": "flying today, photos tonight",
@@ -7265,7 +7594,8 @@
  "ca55e22e0546": {
   "en": "Before you go",
   "b": "Antes de ir",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Antes de ir"
  },
  "ca9d8ea87c29": {
   "en": "Flying {1} In Company, And How To Do It Well <x1>DIY</x1>",
@@ -7379,12 +7709,14 @@
  "ccebce0b23c4": {
   "en": "Pre {1} Kenya: Nikolay Yotov",
   "b": "Pre-{1} Kenia: Nikolay Yotov",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Pre-{1} de Kenia: Nikolay Yotov"
  },
  "ccf7e353de0c": {
   "en": "Runners",
   "b": "Corredores",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Corredores"
  },
  "cd4f60d8a103": {
   "en": "We'll break down",
@@ -7413,7 +7745,8 @@
  "ce31f52cf648": {
   "en": "About Lake Naivasha",
   "b": "Sobre el lago Naivasha",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre el lago Naivasha"
  },
  "ce3231da0838": {
   "en": "<x1>Over the peaks</x1>A single wing high above a snow-streaked peak<x2>near Waldo peak</x2>",
@@ -7448,7 +7781,8 @@
  "ce866c147e29": {
   "en": "About Kilimanjaro",
   "b": "Sobre el Kilimanjaro",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre el Kilimanjaro"
  },
  "ceaa2dca101a": {
   "en": "Dharamshala and McLeod Ganj",
@@ -7467,7 +7801,8 @@
  "cf32d34a384e": {
   "en": "Vario or {1}<x1>Load the airspace file before you travel</x1>",
   "b": "Vario o {1}<x1>Carga el archivo del espacio aéreo antes de viajar</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Variómetro o {1}<x1>Carga el archivo de espacio aéreo antes de viajar</x1>"
  },
  "cf765512cc6d": {
   "en": "Sending…",
@@ -7522,7 +7857,8 @@
  "d038f183f56f": {
   "en": "We provide certified rental wings only, for a fixed fee on request, and that is first come first served, so tell us in good time. Group safety items including first aid and retrieve support are covered.",
   "b": "Solo proporcionamos velas de alquiler certificadas, por una tarifa fija y bajo petición, por orden de llegada, así que avísanos con tiempo. Los elementos de seguridad del grupo, incluidos los primeros auxilios y el apoyo de recogida, están cubiertos.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Solo ofrecemos velas de alquiler homologadas, por una tarifa fija bajo petición, y por orden de llegada, así que avísanos con tiempo. El material de seguridad del grupo, incluidos los primeros auxilios y el apoyo de recogida, está cubierto."
  },
  "d0b66435c381": {
   "en": "Tap the name: {1}",
@@ -7536,7 +7872,8 @@
  "d0d0d809a657": {
   "en": "A reserve on the Ewaso Ng'iro in dry country north of Mount Kenya, home to the Samburu special five: Grevy's zebra, reticulated giraffe, Somali ostrich, gerenuk and beisa oryx.",
   "b": "Una reserva en el Ewaso Ng'iro, en tierra seca al norte del monte Kenia, hogar de los cinco especiales de Samburu: cebra de Grevy, jirafa reticulada, avestruz somalí, gerenuk y órix beisa.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Una reserva junto al Ewaso Ng'iro, en tierras secas al norte del monte Kenia, hogar de los cinco especiales de Samburu: la cebra de Grevy, la jirafa reticulada, el avestruz somalí, el gerenuk y el órix beisa."
  },
  "d12081b32289": {
   "en": "Hold a place sends an enquiry for that departure.",
@@ -7566,7 +7903,8 @@
  "d21ad7839b4b": {
   "en": "What they see",
   "b": "Lo que ven ellos",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Lo que ven ellos"
  },
  "d23a6fa82fae": {
   "en": "Navigating India, Eddie Colfox",
@@ -7595,22 +7933,26 @@
  "d2a19a06cf8c": {
   "en": "Clear the list",
   "b": "Borrar la lista",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Borrar la lista"
  },
  "d2f77486bbff": {
   "en": "Retrieves",
   "b": "Recogidas",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Recogidas"
  },
  "d318af3c70fe": {
   "en": "A shield volcano with a crater inside a crater, the inner one ringed by a moat, and a system of lava caves beneath its slopes. Maasai herders graze its outer flanks.",
   "b": "Un volcán en escudo con un cráter dentro de otro cráter, el interior rodeado por un foso, y un sistema de cuevas de lava bajo sus laderas. Pastores masái apacientan sus flancos exteriores.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un volcán en escudo con un cráter dentro de otro cráter, el interior rodeado por un foso, y un sistema de cuevas de lava bajo sus laderas. Los pastores masái llevan su ganado a pastar en sus flancos exteriores."
  },
  "d31d367bc5c7": {
   "en": "Clothing",
   "b": "Ropa",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Ropa"
  },
  "d34868312069": {
   "en": "Field Protocols For Rewiring Risk Intuition",
@@ -7634,7 +7976,8 @@
  "d3e5a48f6bd3": {
   "en": "The reticulated giraffe and Grevy's zebra of Samburu are dry-country animals of the north, found in few other places; most of the world's remaining Grevy's zebra live in northern Kenya.",
   "b": "La jirafa reticulada y la cebra de Grevy de Samburu son animales de tierra seca del norte, que se encuentran en pocos lugares más; la mayor parte de las cebras de Grevy que quedan en el mundo viven en el norte de Kenia.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "La jirafa reticulada y la cebra de Grevy de Samburu son animales de las tierras secas del norte que se encuentran en pocos lugares más; la mayoría de las cebras de Grevy que quedan en el mundo viven en el norte de Kenia."
  },
  "d42713493ca8": {
   "en": "Destination",
@@ -7698,12 +8041,14 @@
  "d61944bd751d": {
   "en": "A shallow soda lake where great white pelicans breed on the islets and flamingos feed, protected within the Soysambu conservancy. The third of the Kenya Lake System World Heritage lakes.",
   "b": "Un lago de sosa poco profundo donde crían pelícanos blancos en los islotes y se alimentan flamencos, protegido dentro de la reserva de Soysambu. El tercero de los lagos Patrimonio de la Humanidad del Sistema de Lagos de Kenia.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un lago alcalino poco profundo donde los grandes pelícanos blancos crían en los islotes y se alimentan los flamencos, protegido dentro del área de conservación de Soysambu. El tercero de los lagos del Sistema de Lagos de Kenia, Patrimonio de la Humanidad."
  },
  "d6384b2910b0": {
   "en": "Conditions here are stronger than most home sites. Bring gear you trust.",
   "b": "Aquí las condiciones son más fuertes que en la mayoría de las zonas de casa. Trae equipo de confianza.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Aquí las condiciones son más fuertes que en la mayoría de las zonas de vuelo de casa. Trae equipo en el que confíes."
  },
  "d65e418781f7": {
   "en": "This is the part the brochures leave out. The thermals that make {1} easy are the same thermals everyone else is in, and autumn is when everyone comes.",
@@ -7713,7 +8058,8 @@
  "d680e2d1210e": {
   "en": "A deep soda lake under the Siracho escarpment, with hot springs and geysers along its shore and, in a good season, vast flocks of lesser flamingo. Part of the Kenya Lake System World Heritage Site.",
   "b": "Un lago profundo de sosa bajo la escarpa de Siracho, con aguas termales y géiseres en su orilla y, en una buena temporada, enormes bandadas de flamenco enano. Parte del Patrimonio de la Humanidad del Sistema de Lagos de Kenia.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un lago alcalino profundo bajo el escarpe de Siracho, con aguas termales y géiseres en la orilla y, en una buena temporada, enormes bandadas de flamenco enano. Forma parte del Sistema de Lagos de Kenia, Patrimonio de la Humanidad."
  },
  "d7153c585db7": {
   "en": "<x1>←</x1> Task {1}",
@@ -7743,7 +8089,8 @@
  "d72eefd2e2d6": {
   "en": "Requirements & Packing",
   "b": "Requisitos y equipaje",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Requisitos y equipaje"
  },
  "d76511171f87": {
   "en": "Participant Agreement",
@@ -7785,12 +8132,14 @@
  "d8728aaa015b": {
   "en": "About The Kikuyu highlands",
   "b": "Sobre las tierras altas kikuyu",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre las tierras altas kikuyu"
  },
  "d8aa0d94c7cb": {
   "en": "Kenya: Paragliding in the Cradle of Humankind",
   "b": "Kenia: parapente en la cuna de la humanidad",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Kenia: parapente en la cuna de la humanidad"
  },
  "d9186ba11d2a": {
   "en": "Peru, the desert coast",
@@ -7804,27 +8153,32 @@
  "d96d3c1747b2": {
   "en": "The itinerary is designed with ample flexibility, built around the best flying windows and integrated with authentic cultural experiences for when your feet are back on the ground.",
   "b": "El itinerario está diseñado con mucha flexibilidad, construido en torno a las mejores ventanas de vuelo e integrado con experiencias culturales auténticas para cuando tengas los pies de nuevo en el suelo.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El itinerario está diseñado con amplia flexibilidad, pensado en torno a las mejores ventanas de vuelo y combinado con auténticas experiencias culturales para cuando vuelvas a tener los pies en el suelo."
  },
  "d99aa004c51b": {
   "en": "{1} {2} card or national licence<x1>This is a tour for autonomous pilots</x1>",
   "b": "Tarjeta {1} {2} o licencia nacional<x1>Es una expedición para pilotos autónomos</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Tarjeta {1} {2} o licencia nacional<x1>Es un viaje para pilotos autónomos</x1>"
  },
  "d9b34377c93f": {
   "en": "What skill and fitness level is required?",
   "b": "¿Qué nivel de habilidad y de forma física se necesita?",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "¿Qué nivel técnico y de forma física se necesita?"
  },
  "d9df90d8002f": {
   "en": "Land",
   "b": "Aterrizar",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Aterrizar"
  },
  "da0ff8fed2d1": {
   "en": "Staying and moving",
   "b": "Alojarse y desplazarse",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Alojamiento y desplazamientos"
  },
  "da18fae8a951": {
   "en": "Previous episodes",
@@ -7848,7 +8202,8 @@
  "dad072360d2d": {
   "en": "Four knuckles of hill on the edge of the Rift. Karen Blixen farmed at their foot and wrote Out of Africa about it; a wind farm now runs along the ridge.",
   "b": "Cuatro nudillos de colina en el borde del Rift. Karen Blixen cultivó a sus pies y escribió sobre ello Memorias de África; hoy un parque eólico recorre la cresta.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Cuatro nudillos de colina al borde del Rift. Karen Blixen tuvo su granja a sus pies y escribió sobre ella Memorias de África; hoy un parque eólico recorre la cresta."
  },
  "db20c0f0d789": {
   "en": "Helmut Schrempf",
@@ -7880,7 +8235,8 @@
  "dc0f904270c0": {
   "en": "Six Sites Down The Rift, {1} km End To End",
   "b": "Seis zonas a lo largo del Rift, {1} km de punta a punta",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Seis zonas de vuelo a lo largo del Rift, {1} km de punta a punta"
  },
  "dc2f4e7ef76c": {
   "en": "{1}'s landing field among terraced fields, seen from the air",
@@ -7955,7 +8311,8 @@
  "dd8239a63e4a": {
   "en": "The {1} from the air",
   "b": "El {1} desde el aire",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El {1} desde el aire"
  },
  "ddd71ef106b6": {
   "en": "Planned, {1}",
@@ -7969,7 +8326,8 @@
  "de0e3a5b66e5": {
   "en": "Agree the price first",
   "b": "Acuerda primero el precio",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Acuerda el precio primero"
  },
  "de23fc621bef": {
   "en": "Eddie Colfox remembers late October air turning too stable to climb much above {1}m. Now the monsoon lingers into the first week of October, and the air stays unstable enough to climb well over {2}m right into November. Leaving {3} in mid November, he was at {4}m on the front ridge and {5}m deep in the back ranges.",
@@ -8047,12 +8405,14 @@
  "e070de224434": {
   "en": "Currency",
   "b": "Moneda",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Moneda"
  },
  "e08feaa3f09d": {
   "en": "A young stratovolcano with an intact crater nearly two kilometres across, climbed from the road in a few hours and walked around the rim in a few more. Its forest fills the crater floor.",
   "b": "Un estratovolcán joven con un cráter intacto de casi dos kilómetros de ancho, que se sube desde la carretera en unas horas y cuyo borde se recorre en unas pocas más. Su bosque llena el fondo del cráter.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un estratovolcán joven con un cráter intacto de casi dos kilómetros de diámetro; se sube desde la carretera en unas horas y se rodea el borde en unas cuantas más. Su bosque llena el fondo del cráter."
  },
  "e09eb1e94858": {
   "en": "Navigating India (Bonus Ep), Episode {1}, {2} min",
@@ -8099,12 +8459,14 @@
  "e18018f32559": {
   "en": "A Flight Of Human Genesis",
   "b": "Un vuelo del génesis humano",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un vuelo sobre el origen de la humanidad"
  },
  "e21cb083dd0a": {
   "en": "Before You Book",
   "b": "Antes de reservar",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Antes de reservar"
  },
  "e2263a59774e": {
   "en": "The window",
@@ -8157,7 +8519,8 @@
  "e37f2d4126cb": {
   "en": "Rift wall to Naivasha, {1}<x1>{2} km</x1>",
   "b": "De la pared del Rift a Naivasha, {1}<x1>{2} km</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "De la pared del Rift a Naivasha, {1}<x1>{2} km</x1>"
  },
  "e3bb8740bb2c": {
   "en": "When he first came for an autumn season, about {1} pilots from around the world were flying there. In autumn {2} it was about {3}.",
@@ -8195,7 +8558,8 @@
  "e46461ac1c13": {
   "en": "Black rhino were brought back to Nakuru after the park was fenced as a sanctuary in the late {1}, and white rhino followed. It is one of the oldest rhino sanctuaries in Kenya.",
   "b": "Los rinocerontes negros se reintrodujeron en Nakuru después de que el parque se vallara como santuario a finales de los {1}, y los blancos los siguieron. Es uno de los santuarios de rinocerontes más antiguos de Kenia.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Los rinocerontes negros volvieron a Nakuru después de que el parque se vallara como santuario a finales de los {1}, y después llegaron los blancos. Es uno de los santuarios de rinocerontes más antiguos de Kenia."
  },
  "e4698d4ceacb": {
   "en": "Mission",
@@ -8209,7 +8573,8 @@
  "e4a04757d3ad": {
   "en": "About Thomson's Falls",
   "b": "Sobre las cataratas Thomson",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre las cataratas Thomson"
  },
  "e4a39135c67b": {
   "en": "Tasks {1}",
@@ -8239,7 +8604,8 @@
  "e528fb470df9": {
   "en": "Rule {1}, How you are read",
   "b": "Regla {1}, cómo te interpretan",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Regla {1}, cómo te perciben"
  },
  "e610f8570e95": {
   "en": "Point at the name: {1}",
@@ -8261,12 +8627,14 @@
  "e64dae62d1cf": {
   "en": "About Lake Nakuru",
   "b": "Sobre el lago Nakuru",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre el lago Nakuru"
  },
  "e654f0ecbc88": {
   "en": "High socks and long layers<x1>Prevention beats treatment</x1>",
   "b": "Calcetines altos y capas largas<x1>Más vale prevenir que curar</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Calcetines altos y capas largas<x1>Más vale prevenir que curar</x1>"
  },
  "e6552ff8db24": {
   "en": "See the trip →",
@@ -8290,7 +8658,8 @@
  "e6ed3b41d7d1": {
   "en": "Flamingos feed in the lagoons at the edge of the lake, where hot springs bring water in over the crust of soda.",
   "b": "Los flamencos se alimentan en las lagunas del borde del lago, donde las aguas termales traen agua sobre la costra de sosa.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Los flamencos se alimentan en las lagunas del borde del lago, donde las fuentes termales aportan agua por encima de la costra de sosa."
  },
  "e6f0ac20d465": {
   "en": "An {1} day guided paragliding tour in {2}, India, {3}: the volcanic tablelands of the {4} hills, where India held a pre World Cup.",
@@ -8311,12 +8680,14 @@
  "e78b5603bd4a": {
   "en": "This trip is for you if",
   "b": "Este viaje es para ti si",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Este viaje es para ti si"
  },
  "e79e5d8923e9": {
   "en": "Rolling hills south east of Nairobi, and a change of character from the Rift walls.",
   "b": "Colinas ondulantes al sureste de Nairobi, y un cambio de carácter respecto a las paredes del Rift.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Colinas onduladas al sureste de Nairobi, y un cambio de carácter respecto a las paredes del Rift."
  },
  "e7b4f1443b46": {
   "en": "<x1>Length</x1>{1} days",
@@ -8346,22 +8717,26 @@
  "e80781b9c2a9": {
   "en": "The six that come up every time. If yours is not here, ask it on the call.",
   "b": "Las seis que salen siempre. Si la tuya no está, pregúntala en la llamada.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Las seis que salen siempre. Si la tuya no está, pregúntala en la llamada."
  },
  "e83234017776": {
   "en": "Elephants",
   "b": "Elefantes",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Elefantes"
  },
  "e8aa261b0e91": {
   "en": "We would rather you read this and <x1>decide it is not for you</x1> than arrive and find that out.",
   "b": "Preferimos que leas esto y <x1>decidas que no es para ti</x1> a que llegues y lo descubras allí.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Preferimos que leas esto y <x1>decidas que no es para ti</x1> a que llegues y lo descubras allí."
  },
  "e90b113941a2": {
   "en": "About The Marakwet furrows",
   "b": "Sobre las acequias marakwet",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre las acequias de los marakwet"
  },
  "e974dd81fba3": {
   "en": "Two paragliders over striped canyon terrain in Kazakhstan",
@@ -8375,7 +8750,8 @@
  "e9a44a7572f8": {
   "en": "A town of runners at {1} m on the lip of the Elgeyo escarpment. The arch over its road calls it the Home of Champions: the Kalenjin athletes who train on its red tracks and roads have won a large share of the world's distance medals.",
   "b": "Un pueblo de corredores a {1} m en el borde de la escarpa de Elgeyo. El arco sobre su carretera lo llama el Hogar de Campeones: los atletas kalenjin que entrenan en sus pistas y caminos rojos han ganado una gran parte de las medallas mundiales de fondo.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Una ciudad de corredores a {1} m, en el borde del escarpe de Elgeyo. El arco sobre su carretera la llama «Hogar de Campeones»: los atletas kalenjin que entrenan en sus pistas y caminos rojos han ganado buena parte de las medallas mundiales de fondo."
  },
  "e9b97caadb76": {
   "en": "What you are asking about",
@@ -8389,7 +8765,8 @@
  "e9bdc07263f9": {
   "en": "About Hyrax Hill",
   "b": "Sobre la colina Hyrax",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre Hyrax Hill"
  },
  "e9cc0a548895": {
   "en": "Thermal layers",
@@ -8404,7 +8781,8 @@
  "ea515110b02d": {
   "en": "For pilots going out there under their own steam rather than on our tour. None of it is specific to us, and all of it is worth reading before you book anything, with anyone.",
   "b": "Para pilotos que van por su cuenta en lugar de con nuestra expedición. Nada de esto es específico de nosotros, y todo merece leerse antes de reservar nada, con quien sea.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Para pilotos que van allí por su cuenta y no con nuestro viaje. Nada de esto es exclusivo de nosotros, y todo merece leerse antes de reservar nada, con quien sea."
  },
  "ea87894cf00c": {
   "en": "Space plays and pauses · F full screen · Esc closes",
@@ -8416,7 +8794,8 @@
  "eaae29e6bea4": {
   "en": "South of Machakos, {1}<x1>{2} km</x1>",
   "b": "Al sur de Machakos, {1}<x1>{2} km</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Al sur de Machakos, {1}<x1>{2} km</x1>"
  },
  "ead9064285b7": {
   "en": "Anything else",
@@ -8437,7 +8816,8 @@
  "eb0a24a1c92d": {
   "en": "How a day runs",
   "b": "Cómo es un día",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Cómo es un día"
  },
  "eb1de0182dc6": {
   "en": "About Triund",
@@ -8447,17 +8827,20 @@
  "eb2960b73f0a": {
   "en": "Requirements depend on your own nationality.",
   "b": "Los requisitos dependen de tu propia nacionalidad.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Los requisitos dependen de tu nacionalidad."
  },
  "eb55f47b49ea": {
   "en": "Retrieve",
   "b": "Recogida",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Recogida"
  },
  "eb78e0175aee": {
   "en": "The photograph, enlarged",
   "b": "La fotografía, ampliada",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "La fotografía, ampliada"
  },
  "ebc8e854262e": {
   "en": "Big Mountain Flying from {1}",
@@ -8486,7 +8869,8 @@
  "ec7a3abe63e6": {
   "en": "Africa's highest mountain at {1} m, across the border in Tanzania, its ice on the horizon from the Chyulu Hills on a clear morning.",
   "b": "La montaña más alta de África, con {1} m, al otro lado de la frontera, en Tanzania; su hielo se ve en el horizonte desde las colinas Chyulu en una mañana despejada.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "La montaña más alta de África, con {1} m, al otro lado de la frontera, en Tanzania; su hielo se ve en el horizonte desde las Chyulu Hills en una mañana despejada."
  },
  "ec9b089b81b9": {
   "en": "Photographs: Ashutosh Tiwari (CC BY-SA {1}), Ashutosh Tiwari (CC BY-SA {2}), via Wikimedia Commons",
@@ -8496,7 +8880,8 @@
  "ecf94cfb9663": {
   "en": "The slopes between the Aberdares and Mount Kenya are the heartland of the Kikuyu, the largest of Kenya's peoples: tea and coffee country, and the ground of the Mau Mau uprising of the {1}, with Nyeri at its centre.",
   "b": "Las laderas entre los Aberdares y el monte Kenia son el corazón de los kikuyu, el mayor de los pueblos de Kenia: tierra de té y café, y escenario del levantamiento Mau Mau de los {1}, con Nyeri en su centro.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Las laderas entre los Aberdares y el monte Kenia son el corazón de los kikuyu, el mayor de los pueblos de Kenia: tierra de té y café, y escenario de la rebelión del Mau Mau de los {1}, con Nyeri en su centro."
  },
  "ed16cdea2237": {
   "en": "Chapters of Navigating India (Bonus Ep)",
@@ -8511,7 +8896,8 @@
  "ed37d08ecdde": {
   "en": "Prices and tipping",
   "b": "Precios y propinas",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Precios y propinas"
  },
  "edbb69d4dc57": {
   "en": "Kazakhstan · The steppe",
@@ -8534,7 +8920,8 @@
  "ee391531128a": {
   "en": "km/h over the route",
   "b": "km/h en la ruta",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "km/h en la ruta"
  },
  "ee76ac54f270": {
   "en": "Dr Matt Wilkes",
@@ -8557,7 +8944,8 @@
  "eef58ba32832": {
   "en": "Mosquito net<x1>Hotel beds usually have one</x1>",
   "b": "Mosquitera<x1>Las camas de hotel suelen tener una</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Mosquitera<x1>Las camas de hotel suelen tenerla</x1>"
  },
  "ef0ca08b3d85": {
   "en": "A {1} km task raced under a storm clock, which eventually got stopped by rain.",
@@ -8579,7 +8967,8 @@
  "ef83873c84da": {
   "en": "A wing lifting off a green grass slope dotted with acacia trees",
   "b": "Una vela despegando de una ladera de hierba verde salpicada de acacias",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Una vela despegando de una ladera de hierba verde salpicada de acacias"
  },
  "ef931280933d": {
   "en": "What you'll get in end-to-end guidance from {1}",
@@ -8611,7 +9000,8 @@
  "f00edc13965e": {
   "en": "Wildlife",
   "b": "Fauna",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Fauna"
  },
  "f0a3ce2aea68": {
   "en": "How Open Are Manufacturers Really",
@@ -8663,7 +9053,8 @@
  "f1d205c8a40d": {
   "en": "About Mount Longonot",
   "b": "Sobre el monte Longonot",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre el monte Longonot"
  },
  "f1deb1848d99": {
   "en": "See all {1} photos",
@@ -8701,7 +9092,8 @@
  "f28b6e2fdb09": {
   "en": "click to come closer · scroll or pinch for more · drag to move · arrows for the next · click outside to close",
   "b": "clic para acercarte · rueda o pellizca para más · arrastra para mover · flechas para la siguiente · clic fuera para cerrar",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "haz clic para acercarte · rueda o pellizca para más · arrastra para mover · flechas para la siguiente · haz clic fuera para cerrar"
  },
  "f2a9413341c8": {
   "en": "By submitting you consent to email updates from {1}. Unsubscribe any time.",
@@ -8724,7 +9116,8 @@
  "f31032fe9a42": {
   "en": "Terrain runs from {1} to {2}m. It can be hot in the lowlands and cold at height, so pack for both. Six items are marked essential. Do not travel without them.",
   "b": "El terreno va de {1} a {2} m. Puede hacer calor en las tierras bajas y frío en altura, así que prepara equipaje para ambos. Seis elementos están marcados como imprescindibles. No viajes sin ellos.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "El terreno va de {1} a {2} m. Puede hacer calor en las tierras bajas y frío en altura, así que prepárate para ambos. Hay seis cosas marcadas como esenciales. No viajes sin ellas."
  },
  "f314bfd7b738": {
   "en": "More conversations, {1} guests, newest first",
@@ -8819,7 +9212,8 @@
  "f63a0baebd1d": {
   "en": "A soda lake at the hot southern end of the Rift, its surface a crust of trona that has been mined for over a century, with flamingos on the brine.",
   "b": "Un lago de sosa en el caluroso extremo sur del Rift, con la superficie hecha una costra de trona que se explota desde hace más de un siglo, y flamencos sobre la salmuera.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Un lago alcalino en el cálido extremo sur del Rift, con la superficie cubierta por una costra de trona que se explota desde hace más de un siglo, y flamencos sobre la salmuera."
  },
  "f677d22679bc": {
   "en": "Refunds within {1} days",
@@ -8833,7 +9227,8 @@
  "f68c91ca2daf": {
   "en": "strong, midday peaks",
   "b": "fuertes, picos del mediodía",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "fuertes, picos del mediodía"
  },
  "f693cad595b5": {
   "en": "Two departures in spring, back to back from {1}. Two in autumn, inside the season that runs from about {2} well into November, three days apart.",
@@ -8843,7 +9238,8 @@
  "f6a7d9a32ab7": {
   "en": "Landing protocol",
   "b": "Protocolo de aterrizaje",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Protocolo de aterrizaje"
  },
  "f6f24c1013a5": {
   "en": "However big the field, pilots misjudge the last leg, arrive long, then stall the wing in from three or four metres up and break something.",
@@ -8872,7 +9268,8 @@
  "f792ea9a4cde": {
   "en": "December to March.",
   "b": "De diciembre a marzo.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "De diciembre a marzo."
  },
  "f80642793f25": {
   "en": "How high does it get?",
@@ -8886,7 +9283,8 @@
  "f887097356b5": {
   "en": "After you land, you are the one who activates and directs the retrieve driver, because the others may still be in the air.",
   "b": "Después de aterrizar, eres tú quien activa y dirige al conductor de la recogida, porque los demás aún pueden estar en el aire.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Después de aterrizar, eres tú quien avisa y guía al conductor de la recogida, porque los demás pueden seguir en el aire."
  },
  "f8dae5f762aa": {
   "en": "The {1} · launch about {2} m",
@@ -8896,7 +9294,8 @@
  "f95635422331": {
   "en": "Powerbank and cables",
   "b": "Batería externa y cables",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Batería externa y cables"
  },
  "f98d5b67851f": {
   "en": "What is the cancellation policy?",
@@ -8935,7 +9334,8 @@
  "fa77d75d3165": {
   "en": "Hippo live in the papyrus along the shore and come out at night to graze. The giraffe and zebra of Crescent Island are walked among on foot, because nothing on the island hunts them.",
   "b": "Los hipopótamos viven en el papiro de la orilla y salen de noche a pastar. Entre las jirafas y las cebras de Crescent Island se camina a pie, porque nada en la isla las caza.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Los hipopótamos viven entre los papiros de la orilla y salen de noche a pastar. Por Crescent Island se camina entre las jirafas y las cebras, porque nada en la isla las caza."
  },
  "fa8abbc3dd75": {
   "en": "Hear {1} From Someone Who Flies It",
@@ -8945,7 +9345,8 @@
  "faa0f436921e": {
   "en": "Paragliders over the green slopes of the {1}",
   "b": "Parapentes sobre las verdes laderas del {1}",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Parapentes sobre las verdes laderas del {1}"
  },
  "faad149b13bc": {
   "en": "<x1>Last light</x1>A paraglider silhouetted against a burning sunset",
@@ -8960,17 +9361,20 @@
  "fb11932e35e4": {
   "en": "Harness with back or airbag protection<x1>Essential</x1>",
   "b": "Arnés con protección dorsal o airbag<x1>Imprescindible</x1>",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Arnés con protección dorsal o airbag<x1>Esencial</x1>"
  },
  "fb2aed815954": {
   "en": "Check before you travel",
   "b": "Compruébalo antes de viajar",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Infórmate antes de viajar"
  },
  "fb73a7c5acd6": {
   "en": "Rhino",
   "b": "Rinoceronte",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Rinoceronte"
  },
  "fb9a55e2e558": {
   "en": "Thu {1}",
@@ -9011,17 +9415,20 @@
  "fc5c53aff170": {
   "en": "drag the ground · scroll to come closer · right button to turn and tilt · a dotted name or an animal tells its story",
   "b": "arrastra el suelo · rueda para acercarte · botón derecho para girar e inclinar · un nombre punteado o un animal cuenta su historia",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "arrastra el terreno · rueda del ratón para acercarte · botón derecho para girar e inclinar · un nombre punteado o un animal cuenta su historia"
  },
  "fc9f9ea5f99c": {
   "en": "Passport, and a photo of it on your phone",
   "b": "Pasaporte, y una foto suya en el móvil",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Pasaporte, y una foto de él en el móvil"
  },
  "fcd9a2a6afb6": {
   "en": "You want to wait for each other in the air. Most of Kenya sits under moderate easterly winds, and that is often simply not possible.",
   "b": "Quieres esperarte con los demás en el aire. La mayor parte de Kenia está bajo vientos moderados del este, y a menudo eso simplemente no es posible.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Quieres que os esperéis unos a otros en el aire. Casi toda Kenia está bajo vientos moderados del este, y a menudo eso simplemente no es posible."
  },
  "fd178e6aa89d": {
   "en": "{1} · Org. nr {2}<x1/>Olav {3} M {4}, {5} {6}, Norway",
@@ -9044,7 +9451,8 @@
  "fdb39d0fd8aa": {
   "en": "About Samburu",
   "b": "Sobre Samburu",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sobre Samburu"
  },
  "fdd28f3767dd": {
   "en": "Watch the film again, {1}",
@@ -9082,7 +9490,8 @@
  "fe7f2996bcb6": {
   "en": "Thorns, sun and mosquitoes at the bottom, cold at the top. These are the ones people forget, the ordinary clothes for twelve days go without saying.",
   "b": "Espinas, sol y mosquitos abajo, frío arriba. Estas son las cosas que la gente olvida; la ropa normal para doce días se da por supuesta.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Espinas, sol y mosquitos abajo, frío arriba. Estas son las que la gente olvida; la ropa normal para doce días no hace falta mencionarla."
  },
  "fea7f7310667": {
   "en": "<x1>{1}</x1>What you'll get in end-to-end guidance from {2}",
@@ -9114,12 +9523,14 @@
  "ff8109dc1c9b": {
   "en": "Follow your host's lead",
   "b": "Sigue la guía de tu anfitrión",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sigue el ejemplo de tu anfitrión"
  },
  "ffb6f8541248": {
   "en": "You can improvise, flex and tolerate a young destination whose cross country routes are still being worked out.",
   "b": "Sabes improvisar, ser flexible y tolerar un destino joven cuyas rutas de cross aún se están perfilando.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "a": "Sabes improvisar, adaptarte y tolerar un destino joven cuyas rutas de cross aún se están descubriendo."
  },
  "ffecf930cc9f": {
   "en": "Kinga Masztalerz",
