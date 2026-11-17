@@ -416,7 +416,8 @@
   "a": "{1}, Kenia · {2}",
   "date": "2026-11-17",
   "b": "{1}, Kenia · {2}",
-  "tr": "{1}, Kenia · {2}"
+  "tr": "{1}, Kenia · {2}",
+  "back": "{1}, Kenya · {2}"
  },
  "1370004da76f": {
   "en": "Duration",
@@ -1467,7 +1468,8 @@
   "a": "Leitbild",
   "date": "2026-11-17",
   "b": "Leitbild",
-  "tr": "Leitbild"
+  "tr": "Leitbild",
+  "back": "Mission statement"
  },
  "4bf5048f5cbf": {
   "en": "{1} off the hill: pottery, yoga and Buddhism",
@@ -1900,7 +1902,8 @@
   "a": "{1}, Mexiko · Fotos und Videos",
   "date": "2026-11-17",
   "b": "{1}, Mexiko · Fotos und Videos",
-  "tr": "{1}, Mexiko · Fotos und Videos"
+  "tr": "{1}, Mexiko · Fotos und Videos",
+  "back": "{1}, Mexico · Photos and videos"
  },
  "61fa280a65cf": {
   "en": "Tour {1}",
@@ -2137,7 +2140,8 @@
   "a": "Menü schließen",
   "date": "2026-11-17",
   "b": "Menü schließen",
-  "tr": "Menü schließen"
+  "tr": "Menü schließen",
+  "back": "Close menu"
  },
  "6d5bb241740a": {
   "en": "<x1>Group</x1>Small group",
@@ -3656,7 +3660,8 @@
   "date": "2026-11-17",
   "b": "Bibliothek",
   "tr": "Archiv",
-  "tr_note": "A: the episode library is Folgenarchiv / Archiv site-wide"
+  "tr_note": "A: the episode library is Folgenarchiv / Archiv site-wide",
+  "back": "Archive"
  },
  "b9b15d8821c5": {
   "en": "The film",
@@ -3985,7 +3990,8 @@
     "back": "For competition organisers and sponsors. Send us the event, the dates, the location and the coverage you have in mind, and we will reply regarding availability. Coverage is charged per event after a conversation.",
     "verdict": "wrong sense: 'wird ... nach einem Gespräch berechnet' reads as 'charged/billed after a call'; the English says the price is set per event after a call"
    }
-  ]
+  ],
+  "back": "For competition organisers and sponsors. Send us the event, the dates, the location and the coverage you have in mind, and we will reply regarding availability. The price for the coverage is set per event after a conversation."
  },
  "c7690d0577d4": {
   "en": "Other tasks",
@@ -4533,7 +4539,8 @@
   "date": "2026-11-17",
   "b": "Episoden, Wissensdatenbank und Reisen durchsuchen",
   "tr": "Folgen, Wissensdatenbank und Reisen durchsuchen",
-  "tr_note": "A: Episode is Folge site-wide"
+  "tr_note": "A: Episode is Folge site-wide",
+  "back": "Search episodes, knowledge base and trips"
  },
  "e09eb1e94858": {
   "en": "Navigating India (Bonus Ep), Episode {1}, {2} min",
@@ -4656,7 +4663,8 @@
     "verdict": "wrong sense: 'Über' + accusative reads as 'about' nature's wildest secrets, not flying above them"
    }
   ],
-  "tr_note": "comparer fix: wrong sense: 'Über' + accusative reads as 'about' nature's wildest secrets, not flying above them"
+  "tr_note": "comparer fix: wrong sense: 'Über' + accusative reads as 'about' nature's wildest secrets, not flying above them",
+  "back": "Above nature's wildest secrets"
  },
  "e512ce1ae8d0": {
   "en": "Skip the pictures <x1>↓</x1>",

@@ -412,7 +412,8 @@
   "date": "2026-11-17",
   "b": "{1}, Kenya – {2}",
   "tr": "{1}, Kenya · {2}",
-  "tr_note": "kept the English punctuation: both drafts had changed it only to get past the old 'left in English' check"
+  "tr_note": "kept the English punctuation: both drafts had changed it only to get past the old 'left in English' check",
+  "back": "{1}, Kenya · {2}"
  },
  "1370004da76f": {
   "en": "Duration",
@@ -601,7 +602,8 @@
     "verdict": "stronger: 'cachée' (hidden, concealed) for 'untold' (not usually told)"
    }
   ],
-  "tr_note": "comparer fix: stronger: 'cachée' (hidden, concealed) for 'untold' (not usually told)"
+  "tr_note": "comparer fix: stronger: 'cachée' (hidden, concealed) for 'untold' (not usually told)",
+  "back": "The little-known truth about reserve parachutes"
  },
  "1d47d07d1625": {
   "en": "Practice, photo {1} of {2}",
@@ -1152,7 +1154,8 @@
     "verdict": "weaker: 'et' drops the opposition of 'vs' (a trade-off between risk and reward)"
    }
   ],
-  "tr_note": "comparer fix: weaker: 'et' drops the opposition of 'vs' (a trade-off between risk and reward)"
+  "tr_note": "comparer fix: weaker: 'et' drops the opposition of 'vs' (a trade-off between risk and reward)",
+  "back": "Risk versus reward"
  },
  "3bade34ecbc5": {
   "en": "Length",
@@ -1469,7 +1472,8 @@
   "date": "2026-11-17",
   "b": "Notre mission",
   "tr": "Notre mission",
-  "tr_note": "both drafts; 'Déclaration de mission' is an anglicism, 'Notre mission' is the usual French menu label"
+  "tr_note": "both drafts; 'Déclaration de mission' is an anglicism, 'Notre mission' is the usual French menu label",
+  "back": "Our mission"
  },
  "4bf5048f5cbf": {
   "en": "{1} off the hill: pottery, yoga and Buddhism",
@@ -1897,7 +1901,8 @@
   "a": "{1}, Mexique · photos et vidéos",
   "date": "2026-11-17",
   "b": "{1}, Mexique · photos et vidéos",
-  "tr": "{1}, Mexique · photos et vidéos"
+  "tr": "{1}, Mexique · photos et vidéos",
+  "back": "{1}, Mexico · photos and videos"
  },
  "61fa280a65cf": {
   "en": "Tour {1}",
@@ -2007,7 +2012,8 @@
     "verdict": "wrong sense of a word: 'primitifs' reads as 'primitive/undeveloped', not 'primal' (original, untouched)"
    }
   ],
-  "tr_note": "comparer fix: wrong sense of a word: 'primitifs' reads as 'primitive/undeveloped', not 'primal' (original, untouched)"
+  "tr_note": "comparer fix: wrong sense of a word: 'primitifs' reads as 'primitive/undeveloped', not 'primal' (original, untouched)",
+  "back": "Go thermal hunting in original environments"
  },
  "6689bbb4bd9a": {
   "en": "Join The {1} List",
@@ -2139,7 +2145,8 @@
   "a": "Fermer le menu",
   "date": "2026-11-17",
   "b": "Fermer le menu",
-  "tr": "Fermer le menu"
+  "tr": "Fermer le menu",
+  "back": "Close the menu"
  },
  "6d5bb241740a": {
   "en": "<x1>Group</x1>Small group",
@@ -3648,7 +3655,8 @@
   "a": "Bibliothèque",
   "date": "2026-11-17",
   "b": "Bibliothèque",
-  "tr": "Bibliothèque"
+  "tr": "Bibliothèque",
+  "back": "Library"
  },
  "b9b15d8821c5": {
   "en": "The film",
@@ -4019,7 +4027,8 @@
     "verdict": "wrong sense: 'imposés' (forced on you) for 'sprung on you' (shown to you by surprise)"
    }
   ],
-  "tr_note": "comparer fix: wrong sense: 'imposés' (forced on you) for 'sprung on you' (shown to you by surprise)"
+  "tr_note": "comparer fix: wrong sense: 'imposés' (forced on you) for 'sprung on you' (shown to you by surprise)",
+  "back": "To read in all cases: the <x1>booking terms</x1>, and the <x2>participant agreement</x2> that each pilot fills in before a trip. Both are published in full rather than being presented to you unexpectedly later."
  },
  "c8ca264fde99": {
   "en": "If your device has no email app set up, the button will tell you, and you can copy the text or use {1} instead.",
@@ -4526,7 +4535,8 @@
   "a": "Rechercher dans les épisodes, la base de connaissances et les voyages",
   "date": "2026-11-17",
   "b": "Chercher dans les épisodes, la base de connaissances et les voyages",
-  "tr": "Rechercher dans les épisodes, la base de connaissances et les voyages"
+  "tr": "Rechercher dans les épisodes, la base de connaissances et les voyages",
+  "back": "Search in the episodes, the knowledge base and the trips"
  },
  "e09eb1e94858": {
   "en": "Navigating India (Bonus Ep), Episode {1}, {2} min",

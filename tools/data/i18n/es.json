@@ -44,7 +44,8 @@
     "verdict": "wrong sense of a word: 'relé' is an electrical relay; the English means a small mail-forwarding service"
    }
   ],
-  "tr_note": "comparer fix: wrong sense of a word: 'relé' is an electrical relay; the English means a small mail-forwarding service"
+  "tr_note": "comparer fix: wrong sense of a word: 'relé' is an electrical relay; the English means a small mail-forwarding service",
+  "back": "This form has no database behind it. When you press send, your message goes through a small forwarding service of our own, which runs on {1}, turns it into an email for us and does not store it. There is no form service or mailing-list tool in between, so your data reaches our inbox and no other place."
  },
  "0226fcb7f6b0": {
   "en": "So we know who we are replying to.",
@@ -425,7 +426,8 @@
   "a": "{1}, Kenia · {2}",
   "date": "2026-11-17",
   "b": "{1}, Kenia · {2}",
-  "tr": "{1}, Kenia · {2}"
+  "tr": "{1}, Kenia · {2}",
+  "back": "{1}, Kenya · {2}"
  },
  "1370004da76f": {
   "en": "Duration",
@@ -1477,7 +1479,8 @@
   "a": "Declaración de misión",
   "date": "2026-11-17",
   "b": "Declaración de misión",
-  "tr": "Declaración de misión"
+  "tr": "Declaración de misión",
+  "back": "Mission statement"
  },
  "4bf5048f5cbf": {
   "en": "{1} off the hill: pottery, yoga and Buddhism",
@@ -1501,7 +1504,8 @@
     "verdict": "wrong sense of a word: 'arranque en frío' is an engine cold start, not a story that opens straight into the action (cold open)"
    }
   ],
-  "tr_note": "comparer fix: wrong sense of a word: 'arranque en frío' is an engine cold start, not a story that opens straight into the action (cold open)"
+  "tr_note": "comparer fix: wrong sense of a word: 'arranque en frío' is an engine cold start, not a story that opens straight into the action (cold open)",
+  "back": "No preamble: the first landing at Barabangal"
  },
  "4d95cf5482fd": {
   "en": "Every Departure",
@@ -1912,7 +1916,8 @@
   "a": "{1}, México · fotos y vídeos",
   "date": "2026-11-17",
   "b": "{1}, México · fotos y vídeos",
-  "tr": "{1}, México · fotos y vídeos"
+  "tr": "{1}, México · fotos y vídeos",
+  "back": "{1}, Mexico · photos and videos"
  },
  "61fa280a65cf": {
   "en": "Tour {1}",
@@ -2150,7 +2155,8 @@
   "a": "Cerrar el menú",
   "date": "2026-11-17",
   "b": "Cerrar el menú",
-  "tr": "Cerrar el menú"
+  "tr": "Cerrar el menú",
+  "back": "Close the menu"
  },
  "6d5bb241740a": {
   "en": "<x1>Group</x1>Small group",
@@ -2219,7 +2225,8 @@
     "verdict": "dropped 'instead' (the fallback after a failed send)"
    }
   ],
-  "tr_note": "comparer fix: dropped 'instead' (the fallback after a failed send)"
+  "tr_note": "comparer fix: dropped 'instead' (the fallback after a failed send)",
+  "back": "Send it instead from your own email app"
  },
  "6f397349ef2d": {
   "en": "Like what you see?",
@@ -2276,7 +2283,8 @@
     "verdict": "reads as a different kind of label: bare 'Diario' (package option) can read as 'diary/newspaper'; the option is coverage per day"
    }
   ],
-  "tr_note": "comparer fix: reads as a different kind of label: bare 'Diario' (package option) can read as 'diary/newspaper'; the option is coverage per day"
+  "tr_note": "comparer fix: reads as a different kind of label: bare 'Diario' (package option) can read as 'diary/newspaper'; the option is coverage per day",
+  "back": "Per day"
  },
  "7312c6e6c797": {
   "en": "{1}: Touch The Sky With Glory",
@@ -3470,7 +3478,8 @@
     "verdict": "wrong sense: 'no solo tiene sentido' = 'not only makes sense', the English says 'meaningful'"
    }
   ],
-  "tr_note": "comparer fix: wrong sense: 'no solo tiene sentido' = 'not only makes sense', the English says 'meaningful'"
+  "tr_note": "comparer fix: wrong sense: 'no solo tiene sentido' = 'not only makes sense', the English says 'meaningful'",
+  "back": "Sharing our passion for the art of flying is not only meaningful: it is our purpose. By flying with us, you help boost local communities with well-being, training and opportunities for the next generation."
  },
  "acfed849a1d0": {
   "en": "Chapters of Navigating India",
@@ -3689,7 +3698,8 @@
   "a": "Biblioteca",
   "date": "2026-11-17",
   "b": "Biblioteca",
-  "tr": "Biblioteca"
+  "tr": "Biblioteca",
+  "back": "Library"
  },
  "b9b15d8821c5": {
   "en": "The film",
@@ -4052,7 +4062,8 @@
     "verdict": "wrong sense: 'less current' (less recent flying practice) became 'no tan al día' (not up to date / informed)"
    }
   ],
-  "tr_note": "comparer fix: wrong sense: 'less current' (less recent flying practice) became 'no tan al día' (not up to date / informed)"
+  "tr_note": "comparer fix: wrong sense: 'less current' (less recent flying practice) became 'no tan al día' (not up to date / informed)",
+  "back": "The more you tell us about your level as a pilot, the more useful our answer will be. There are no wrong answers here, and telling us that you have less recent practice than you would like helps us truly more than telling us you are fine."
  },
  "c8c413060379": {
   "en": "Worth reading either way: the <x1>booking terms</x1>, and the <x2>participant agreement</x2> that every pilot completes before a trip. Both are published in full rather than sprung on you later.",
@@ -4577,7 +4588,8 @@
   "date": "2026-11-17",
   "b": "Buscar en los episodios, la base de conocimiento y los viajes",
   "tr": "Buscar en los episodios, la base de conocimiento y los viajes",
-  "tr_note": "b: infinitive search label like 'Buscar', with articles throughout"
+  "tr_note": "b: infinitive search label like 'Buscar', with articles throughout",
+  "back": "Search the episodes, the knowledge base and the trips"
  },
  "e09eb1e94858": {
   "en": "Navigating India (Bonus Ep), Episode {1}, {2} min",
