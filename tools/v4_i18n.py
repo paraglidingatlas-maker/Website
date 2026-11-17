@@ -267,6 +267,23 @@ def classes_of(tag):
     return set(m.group(1).split()) if m else set()
 
 
+FACTS_LANG = [None]
+
+
+def facts_only(t):
+    """Text with no words (a price alone, "2,400 m"): its numbers and dates in the language's own format,
+    while a page is being built; unchanged otherwise."""
+    lang = FACTS_LANG[0]
+    if not lang or not re.search(r"\d", t):
+        return t
+    toks = []
+    prot = lock_text(html.unescape(t), toks)
+    if not toks:
+        return t
+    out = TOKEN_RX.sub(lambda m: render_tok(*toks[int(m.group(1)) - 1], lang), prot)
+    return t if html.unescape(t) == out else html.escape(out, quote=False)
+
+
 def is_skip(tag):
     return bool(classes_of(tag) & SKIP_CLASSES) or 'translate="no"' in tag
 
@@ -275,7 +292,7 @@ def process(body, page, visit_text):
     """A run of text and inline tags -> its output. A run with text of its own at the top is one segment;
     a run of elements only (a nav's links, a label and its value) is taken element by element."""
     if not any(x[0] == "text" and letters(x[1]) for x in body):
-        return "".join(x[1] for x in body)
+        return "".join(facts_only(x[1]) if x[0] == "text" else x[1] for x in body)
     # the top-level items
     items, i, n = [], 0, len(body)
     while i < n:
@@ -292,19 +309,19 @@ def process(body, page, visit_text):
                         break
                 j += 1
             if j >= n:
-                return visit_text(body, page) or "".join(x[1] for x in body)     # unbalanced: per text
+                return visit_text(body, page) or "".join(facts_only(x[1]) if x[0] == "text" else x[1] for x in body)     # unbalanced: per text
             items.append(("el", body[i:j + 1]))
             i = j + 1
         elif k == "end":
             r = visit_text(body, page)
-            return r if r is not None else "".join(x[1] for x in body)
+            return r if r is not None else "".join(facts_only(x[1]) if x[0] == "text" else x[1] for x in body)
         else:
             items.append(("x", [body[i]]))
             i += 1
     own_text = any(kind == "x" and it[0][0] == "text" and it[0][1].strip() for kind, it in items)
     if own_text:
         r = visit_text(body, page)
-        return r if r is not None else "".join(x[1] for x in body)
+        return r if r is not None else "".join(facts_only(x[1]) if x[0] == "text" else x[1] for x in body)
     out = []
     for kind, it in items:
         if kind == "x":
@@ -356,8 +373,11 @@ def walk(src, page, visit_text, visit_attr):
         if body and body[-1][0] == "text":
             body[-1] = ("text", body[-1][1].rstrip(), None)
         body = [x for x in body if not (x[0] == "text" and x[1] == "")]
-        if in_skip() or not any(x[0] == "text" and letters(x[1]) for x in body):
+        if in_skip():
             out.append("".join(x[1] for x in r))
+            return
+        if not any(x[0] == "text" and letters(x[1]) for x in body):
+            out.append("".join(facts_only(x[1]) if x[0] == "text" else x[1] for x in r))
             return
         out.append(lead + process(body, page, visit_text) + trail)
 
@@ -907,7 +927,11 @@ def build_page(page, lang, avail_by_page, mem):
         if not translatable(s.prot):
             return None
         return plain(s, mem[s.key]["tr"], lang)
-    out = walk(src, page, vt, va)
+    FACTS_LANG[0] = lang
+    try:
+        out = walk(src, page, vt, va)
+    finally:
+        FACTS_LANG[0] = None
     here_pages = {p for p, av in avail_by_page.items() if lang in av}
     out = relink(out, page, lang, here_pages)
     out = re.sub(r'<html lang="en"', '<html lang="%s"' % L["html"], out, count=1)
@@ -931,7 +955,11 @@ def build_page(page, lang, avail_by_page, mem):
             '<span aria-hidden="true"> · </span><a href="%s../%s">%s</a></p></div><!--/i18n-->\n'
             % (html.escape(ui["Translated from English."]), eng_href, html.escape(ui["Read the English page"]),
                up(page), CFG["report_error"], html.escape(ui["Report a translation error"])))
-    out = re.sub(r'(<main\b[^>]*>\n?)', lambda m: m.group(1) + note, out, count=1)
+    # at the end of the page's main content, in the flow (the nav floats over the top of some pages)
+    if "</main>" in out:
+        out = out.replace("</main>", note + "</main>", 1)
+    else:
+        out = re.sub(r'(<main\b[^>]*>\n?)', lambda m: m.group(1) + note, out, count=1)
     return out
 
 
@@ -980,9 +1008,12 @@ def cmd_build():
 
 # ---------------------------------------------------------------- check report
 def visible_text(src):
+    """The page's text as a reader meets it: the words, and the attributes people read (placeholders, alt
+    text, labels, the description); whitespace of every kind as one space."""
     b = re.sub(r"(?s)<(script|style|svg|template)\b[^>]*>.*?</\1>", " ", src)
     b = re.sub(r"(?s)<!--.*?-->", " ", b)
-    return " ".join(html.unescape(re.sub(r"<[^>]+>", " ", b)).split())
+    attrs = " ".join(m.group(2) for m in re.finditer(r'\s(alt|title|aria-label|placeholder|content|value|data-l|data-lines)="([^"]*)"', b))
+    return " ".join(html.unescape(re.sub(r"<[^>]+>", " ", b) + " " + attrs).split())
 
 
 def cmd_check():
@@ -1022,8 +1053,8 @@ def cmd_check():
             miss = []
             for s in page_segments(page):
                 for kind, v in s.toks:
-                    r = render_tok(kind, v, lang)
-                    if html.unescape(r) not in tr_t and r not in tr_t:
+                    r = " ".join(html.unescape(render_tok(kind, v, lang)).split())
+                    if r not in tr_t:
                         miss.append(r)
             # links: every relative link resolves
             broken = []

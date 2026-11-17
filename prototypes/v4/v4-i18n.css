@@ -28,8 +28,8 @@
 }
 
 /* the note under the nav on a translated page */
-.v4-i18n-note{margin:0;padding:.55rem var(--edge-x,clamp(1rem,4vw,4rem));font-size:.8rem;line-height:1.45;
-  color:var(--gray-light,#c9c7cc);background:rgba(246,244,244,.04);border-bottom:1px solid rgba(246,244,244,.08)}
+.v4-i18n-note{margin:0;padding:1.1rem var(--edge-x,clamp(1rem,4vw,4rem));font-size:.82rem;line-height:1.5;
+  color:var(--gray-light,#c9c7cc);border-top:1px solid rgba(246,244,244,.08)}
 .v4-i18n-note p{margin:0;max-width:none}
 .v4-i18n-note a{color:var(--white,#f6f4f4);text-decoration:underline;text-decoration-color:var(--orange,#ff7517);
   text-underline-offset:.2em}

@@ -39,6 +39,14 @@
     s = s.replace(RM, function (m, m1, y) { var f = fmt({ month: "long", year: "numeric" }); if (!f) return m; hit = true; return f.format(new Date(+y, mo(m1), 1)); });
     return hit ? s : null;
   }
+  // a price the scripts write ("US$2,100"): grouped the language's way, so 2,100 never reads as 2.1
+  var MONEY = /(US\$|[$€£₹])(\d{1,3}(?:,\d{3})+)\b/g;
+  function money(s) {
+    var hit = false, f;
+    try { f = new Intl.NumberFormat(LANG); } catch (e) { return null; }
+    s = s.replace(MONEY, function (m, c, n) { hit = true; return c + f.format(+n.replace(/,/g, "")); });
+    return hit ? s : null;
+  }
   function one(s, deep) {
     if (EX.hasOwnProperty(s)) return EX[s];
     for (var i = 0; i < PAT.length; i++) {
@@ -53,6 +61,8 @@
       if (ok) return out;
     }
     if (!deep) {
+      var mo3 = money(s);
+      if (mo3 != null && !/[A-Za-z]{3,}/.test(s.replace(MONEY, ""))) return mo3;
       var d = dates(s);
       // a date alone, or dates with commas and "and" between them
       if (d != null && !/[A-Za-z]{3,}/.test(s.replace(new RegExp(MRX, "g"), "").replace(/\band\b|\bto\b/g, ""))) return d;
