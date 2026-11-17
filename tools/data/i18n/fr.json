@@ -3,3654 +3,4303 @@
   "en": "Not a waiver",
   "a": "Pas une décharge",
   "date": "2026-11-17",
-  "b": "Pas une renonciation"
+  "b": "Pas une renonciation",
+  "tr": "Pas une décharge"
  },
  "00a1ea56e5b1": {
   "en": "A {1} km race on a day that looked better than forecast, the field raced the ridge, crossed the lake bed into the wind and ran a cloud street home.",
   "a": "Une course de {1} km un jour plus beau que prévu : le peloton a couru la crête, traversé le lit du lac face au vent et suivi une rue de nuages jusqu'au but.",
   "date": "2026-11-17",
-  "b": "Une course de {1} km par un jour qui s’annonçait mieux que prévu : le peloton a couru la crête, traversé le lit du lac face au vent et rentré sur une rue de nuages."
+  "b": "Une course de {1} km par un jour qui s’annonçait mieux que prévu : le peloton a couru la crête, traversé le lit du lac face au vent et rentré sur une rue de nuages.",
+  "tr": "Une course de {1} km un jour plus beau que prévu : le peloton a couru la crête, traversé le lit du lac face au vent et suivi une rue de nuages jusqu’au but."
  },
  "00dfa1336339": {
   "en": "Report a translation error",
   "a": "Signaler une erreur de traduction",
   "date": "2026-11-17",
-  "b": "Signaler une erreur de traduction"
+  "b": "Signaler une erreur de traduction",
+  "tr": "Signaler une erreur de traduction"
  },
  "01ac8015b98f": {
   "en": "Progression, Fear & Competition",
   "a": "Progression, peur et compétition",
   "date": "2026-11-17",
-  "b": "Progression, peur et compétition"
+  "b": "Progression, peur et compétition",
+  "tr": "Progression, peur et compétition"
  },
  "01f30b47ce79": {
   "en": "This form has no database behind it. Pressing send passes your message through a small relay of our own, running on {1}, which turns it into an email to us and does not store it. There is no form service or mailing list tool in between, so your details end up in our inbox and nowhere else.",
   "a": "Ce formulaire n'a pas de base de données derrière lui. Appuyer sur Envoyer fait passer votre message par un petit relais à nous, hébergé sur {1}, qui le transforme en e-mail à notre intention et ne le conserve pas. Il n'y a aucun service de formulaires ni outil de liste de diffusion entre les deux : vos informations arrivent dans notre boîte de réception et nulle part ailleurs.",
   "date": "2026-11-17",
-  "b": "Ce formulaire n’a aucune base de données derrière lui. En appuyant sur envoyer, votre message passe par un petit relais à nous, hébergé sur {1}, qui le transforme en e-mail pour nous et ne le stocke pas. Il n’y a aucun service de formulaires ni outil de liste de diffusion entre les deux : vos informations n’arrivent que dans notre boîte de réception, et nulle part ailleurs."
+  "b": "Ce formulaire n’a aucune base de données derrière lui. En appuyant sur envoyer, votre message passe par un petit relais à nous, hébergé sur {1}, qui le transforme en e-mail pour nous et ne le stocke pas. Il n’y a aucun service de formulaires ni outil de liste de diffusion entre les deux : vos informations n’arrivent que dans notre boîte de réception, et nulle part ailleurs.",
+  "tr": "Ce formulaire n’a pas de base de données derrière lui. Appuyer sur Envoyer fait passer votre message par un petit relais à nous, hébergé sur {1}, qui le transforme en e-mail à notre intention et ne le conserve pas. Il n’y a aucun service de formulaires ni outil de liste de diffusion entre les deux : vos informations arrivent dans notre boîte de réception et nulle part ailleurs."
  },
  "0226fcb7f6b0": {
   "en": "So we know who we are replying to.",
   "a": "Pour savoir à qui nous répondons.",
   "date": "2026-11-17",
-  "b": "Pour savoir à qui nous répondons."
+  "b": "Pour savoir à qui nous répondons.",
+  "tr": "Pour savoir à qui nous répondons."
  },
  "027c9a89be3b": {
   "en": "Peru · {1} and the Andes",
   "a": "Pérou · {1} et les Andes",
   "date": "2026-11-17",
-  "b": "Pérou · {1} et les Andes"
+  "b": "Pérou · {1} et les Andes",
+  "tr": "Pérou · {1} et les Andes"
  },
  "027ef160b4b9": {
   "en": "Navigating {1}, Episode {2}, {3} min",
   "a": "Naviguer à {1}, épisode {2}, {3} min",
   "date": "2026-11-17",
-  "b": "Naviguer : {1}, épisode {2}, {3} min"
+  "b": "Naviguer : {1}, épisode {2}, {3} min",
+  "tr": "Naviguer à {1}, épisode {2}, {3} min"
  },
  "0315457c3c58": {
   "en": "Where you are based <x1>(optional)</x1>",
   "a": "Où vous résidez <x1>(facultatif)</x1>",
   "date": "2026-11-17",
-  "b": "Où vous êtes basé <x1>(facultatif)</x1>"
+  "b": "Où vous êtes basé <x1>(facultatif)</x1>",
+  "tr": "Où vous résidez <x1>(facultatif)</x1>"
  },
  "03688ba6aa34": {
   "en": "FAQ",
   "a": "FAQ",
   "date": "2026-11-17",
-  "b": "FAQ"
+  "b": "FAQ",
+  "tr": "FAQ"
  },
  "0587c136e342": {
   "en": "Watch again",
   "a": "Revoir",
   "date": "2026-11-17",
-  "b": "Revoir"
+  "b": "Revoir",
+  "tr": "Revoir"
  },
  "06fa6dba0858": {
   "en": "{1} days · {2} hills",
   "a": "{1} jours · collines de {2}",
   "date": "2026-11-17",
-  "b": "{1} jours · {2} collines"
+  "b": "{1} jours · {2} collines",
+  "tr": "{1} jours · collines de {2}"
  },
  "070db57eef93": {
   "en": "Chapters of Navigating {1}",
   "a": "Chapitres de Naviguer à {1}",
   "date": "2026-11-17",
-  "b": "Chapitres de Naviguer : {1}"
+  "b": "Chapitres de Naviguer : {1}",
+  "tr": "Chapitres de Naviguer à {1}"
  },
  "07e4f9c27860": {
   "en": "Topics",
   "a": "Thèmes",
   "date": "2026-11-17",
-  "b": "Thèmes"
+  "b": "Thèmes",
+  "tr": "Thèmes"
  },
  "08a76604772f": {
   "en": "Your flying",
   "a": "Votre pratique du vol",
   "date": "2026-11-17",
-  "b": "Votre pratique du vol"
+  "b": "Votre pratique du vol",
+  "tr": "Votre pratique du vol"
  },
  "090a3c807816": {
   "en": "Scroll",
   "a": "Défiler",
   "date": "2026-11-17",
-  "b": "Défiler"
+  "b": "Défiler",
+  "tr": "Défiler"
  },
  "09807498617e": {
   "en": "Sat {1}",
   "a": "sam. {1}",
   "date": "2026-11-17",
-  "b": "Sam. {1}"
+  "b": "Sam. {1}",
+  "tr": "sam. {1}"
  },
  "09972524c11e": {
   "en": "Previous photo",
   "a": "Photo précédente",
   "date": "2026-11-17",
-  "b": "Photo précédente"
+  "b": "Photo précédente",
+  "tr": "Photo précédente"
  },
  "09a964a179ed": {
   "en": "{1} Podcast",
   "a": "Podcast {1}",
   "date": "2026-11-17",
-  "b": "Podcast {1}"
+  "b": "Podcast {1}",
+  "tr": "Podcast {1}"
  },
  "09ba557fd106": {
   "en": "Email Address",
   "a": "Adresse e-mail",
   "date": "2026-11-17",
-  "b": "Adresse e-mail"
+  "b": "Adresse e-mail",
+  "tr": "Adresse e-mail"
  },
  "09ca55ca52d2": {
   "en": "Share",
   "a": "Partager",
   "date": "2026-11-17",
-  "b": "Partager"
+  "b": "Partager",
+  "tr": "Partager"
  },
  "09d35f74a651": {
   "en": "Navigating India, Episode {1}, {2} min",
   "a": "Naviguer en Inde, épisode {1}, {2} min",
   "date": "2026-11-17",
-  "b": "Naviguer en Inde, épisode {1}, {2} min"
+  "b": "Naviguer en Inde, épisode {1}, {2} min",
+  "tr": "Naviguer en Inde, épisode {1}, {2} min"
  },
  "0a0ce225ba83": {
   "en": "Play Pre {1} Kenya, with Nikolay Yotov",
   "a": "Écouter Pré-{1} Kenya, avec Nikolay Yotov",
   "date": "2026-11-17",
-  "b": "Écouter Pré-{1} Kenya, avec Nikolay Yotov"
+  "b": "Écouter Pré-{1} Kenya, avec Nikolay Yotov",
+  "tr": "Écouter Pré-{1} Kenya, avec Nikolay Yotov"
  },
  "0a4470d64e9d": {
   "en": "Skip to content",
   "a": "Aller au contenu",
   "date": "2026-11-17",
-  "b": "Aller au contenu"
+  "b": "Aller au contenu",
+  "tr": "Aller au contenu"
  },
  "0a516b9c87f5": {
   "en": "Choose a trip on the season, {1} to {2}",
   "a": "Choisissez un voyage selon la saison, de {1} à {2}",
   "date": "2026-11-17",
-  "b": "Choisissez un voyage selon la saison, de {1} à {2}"
+  "b": "Choisissez un voyage selon la saison, de {1} à {2}",
+  "tr": "Choisissez un voyage selon la saison, de {1} à {2}"
  },
  "0aecb638e55b": {
   "en": ", {1} hills, {2}",
   "a": ", collines de {1}, {2}",
   "date": "2026-11-17",
-  "b": ", {1} collines, {2}"
+  "b": ", {1} collines, {2}",
+  "tr": ", collines de {1}, {2}"
  },
  "0b3818833e3e": {
   "en": "Opening your email app. If nothing happens, your device may have no mail client set up: email {1}",
   "a": "Ouverture de votre application de messagerie. Si rien ne se passe, votre appareil n'a peut-être aucun client de messagerie configuré : écrivez à {1}",
   "date": "2026-11-17",
-  "b": "Ouverture de votre application de messagerie. Si rien ne se passe, votre appareil n’a peut-être pas de client de messagerie configuré : écrivez à {1}"
+  "b": "Ouverture de votre application de messagerie. Si rien ne se passe, votre appareil n’a peut-être pas de client de messagerie configuré : écrivez à {1}",
+  "tr": "Ouverture de votre application de messagerie. Si rien ne se passe, votre appareil n’a peut-être aucun client de messagerie configuré : écrivez à {1}"
  },
  "0b896a5aaabd": {
   "en": "Next one in {1} days",
   "a": "Le prochain dans {1} jours",
   "date": "2026-11-17",
-  "b": "Le prochain dans {1} jours"
+  "b": "Le prochain dans {1} jours",
+  "tr": "Le prochain dans {1} jours"
  },
  "0bdc8133902b": {
   "en": "Next leg: Task {1}, Wed {2} <x1>→</x1>",
   "a": "Étape suivante : manche {1}, mer. {2} <x1>→</x1>",
   "date": "2026-11-17",
-  "b": "Étape suivante : manche {1}, mer. {2} <x1>→</x1>"
+  "b": "Étape suivante : manche {1}, mer. {2} <x1>→</x1>",
+  "tr": "Étape suivante : manche {1}, mer. {2} <x1>→</x1>"
  },
  "0be826c62da7": {
   "en": "If it cannot get through, the page will tell you and offer to open your own email app instead, or you can use {1}.",
   "a": "Si le message ne passe pas, la page vous le signalera et vous proposera d'ouvrir plutôt votre propre application de messagerie, ou vous pouvez utiliser {1}.",
   "date": "2026-11-17",
-  "b": "S’il ne peut pas passer, la page vous le dira et vous proposera d’ouvrir plutôt votre propre application de messagerie, ou vous pouvez utiliser {1}."
+  "b": "S’il ne peut pas passer, la page vous le dira et vous proposera d’ouvrir plutôt votre propre application de messagerie, ou vous pouvez utiliser {1}.",
+  "tr": "Si le message ne passe pas, la page vous le signalera et vous proposera d’ouvrir plutôt votre propre application de messagerie, ou vous pouvez utiliser {1}."
  },
  "0befa0f31017": {
   "en": "The paraguide.in website",
   "a": "Le site web paraguide.in",
   "date": "2026-11-17",
-  "b": "Le site paraguide.in"
+  "b": "Le site paraguide.in",
+  "tr": "Le site paraguide.in"
  },
  "0c77aeece8c2": {
   "en": "Media",
   "a": "Médias",
   "date": "2026-11-17",
-  "b": "Médias"
+  "b": "Médias",
+  "tr": "Médias"
  },
  "0d017c0662e4": {
   "en": "Live from {1}: the photos and videos",
   "a": "En direct de {1} : les photos et les vidéos",
   "date": "2026-11-17",
-  "b": "En direct de {1} : les photos et les vidéos"
+  "b": "En direct de {1} : les photos et les vidéos",
+  "tr": "En direct de {1} : les photos et les vidéos"
  },
  "0d77c71693ab": {
   "en": "Building something for the sport?",
   "a": "Vous créez quelque chose pour notre sport ?",
   "date": "2026-11-17",
-  "b": "Vous construisez quelque chose pour ce sport ?"
+  "b": "Vous construisez quelque chose pour ce sport ?",
+  "tr": "Vous créez quelque chose pour ce sport ?",
+  "tr_note": "a's verb, b's 'ce sport' (no 'notre' in the English)"
  },
  "0e143d9587c2": {
   "en": "Guaranteed to run",
   "a": "Départ garanti",
   "date": "2026-11-17",
-  "b": "Départ garanti"
+  "b": "Départ garanti",
+  "tr": "Départ garanti"
  },
  "0e5eed8fbb76": {
   "en": "How a newer pilot should approach it",
   "a": "Comment un pilote moins expérimenté devrait l'aborder",
   "date": "2026-11-17",
-  "b": "Comment un pilote moins expérimenté doit l’aborder"
+  "b": "Comment un pilote moins expérimenté doit l’aborder",
+  "tr": "Comment un pilote moins expérimenté devrait l’aborder"
  },
  "0ee423a2ca65": {
   "en": "See the {1} trip",
   "a": "Voir le voyage à {1}",
   "date": "2026-11-17",
-  "b": "Voir le voyage à {1}"
+  "b": "Voir le voyage à {1}",
+  "tr": "Voir le voyage à {1}"
  },
  "0efc2e6be4c2": {
   "en": "Overview",
   "a": "Aperçu",
   "date": "2026-11-17",
-  "b": "Aperçu"
+  "b": "Aperçu",
+  "tr": "Aperçu"
  },
  "0fa19b246492": {
   "en": "Navigators, Episode {1}",
   "a": "Navigators, épisode {1}",
   "date": "2026-11-17",
-  "b": "Navigateurs, épisode {1}"
+  "b": "Navigateurs, épisode {1}",
+  "tr": "Navigators, épisode {1}"
  },
  "0fcded4df36f": {
   "en": "Speed Record",
   "a": "Record de vitesse",
   "date": "2026-11-17",
-  "b": "Record de vitesse"
+  "b": "Record de vitesse",
+  "tr": "Record de vitesse"
  },
  "0fd45b0aa76c": {
   "en": "Play Navigating India, with Eddie Colfox",
   "a": "Écouter Naviguer en Inde, avec Eddie Colfox",
   "date": "2026-11-17",
-  "b": "Écouter Naviguer en Inde, avec Eddie Colfox"
+  "b": "Écouter Naviguer en Inde, avec Eddie Colfox",
+  "tr": "Écouter Naviguer en Inde, avec Eddie Colfox"
  },
  "107596d0fcf1": {
   "en": "Fly With Us",
   "a": "Volez avec nous",
   "date": "2026-11-17",
-  "b": "Voler avec nous"
+  "b": "Voler avec nous",
+  "tr": "Volez avec nous"
  },
  "11f7e9e5baf0": {
   "en": "One task at a time",
   "a": "Une manche à la fois",
   "date": "2026-11-17",
-  "b": "Une manche à la fois"
+  "b": "Une manche à la fois",
+  "tr": "Une manche à la fois"
  },
  "1212433cb6ef": {
   "en": "{1} pilots, {2} countries",
   "a": "{1} pilotes, {2} pays",
   "date": "2026-11-17",
-  "b": "{1} pilotes, {2} pays"
+  "b": "{1} pilotes, {2} pays",
+  "tr": "{1} pilotes, {2} pays"
  },
  "1268767001a3": {
   "en": "{1}, home",
   "a": "{1}, accueil",
   "date": "2026-11-17",
-  "b": "{1}, accueil"
+  "b": "{1}, accueil",
+  "tr": "{1}, accueil"
  },
  "1271bd6b37ef": {
   "en": "The Podium",
   "a": "Le podium",
   "date": "2026-11-17",
-  "b": "Le podium"
+  "b": "Le podium",
+  "tr": "Le podium"
  },
  "12a992a0b540": {
   "en": "All episodes in the Library",
   "a": "Tous les épisodes dans la bibliothèque",
   "date": "2026-11-17",
-  "b": "Tous les épisodes dans la bibliothèque"
+  "b": "Tous les épisodes dans la bibliothèque",
+  "tr": "Tous les épisodes dans la bibliothèque"
  },
  "131662a6b1d7": {
   "en": "Task {1}, Sat {2}, was cancelled (wind).",
   "a": "La manche {1}, sam. {2}, a été annulée (vent).",
   "date": "2026-11-17",
-  "b": "La manche {1}, sam. {2}, a été annulée (vent)."
+  "b": "La manche {1}, sam. {2}, a été annulée (vent).",
+  "tr": "La manche {1}, sam. {2}, a été annulée (vent)."
  },
  "1370004da76f": {
   "en": "Duration",
   "a": "Durée",
   "date": "2026-11-17",
-  "b": "Durée"
+  "b": "Durée",
+  "tr": "Durée"
  },
  "138ab007258c": {
   "en": "Copy name",
   "a": "Copier le nom",
   "date": "2026-11-17",
-  "b": "Copier le nom"
+  "b": "Copier le nom",
+  "tr": "Copier le nom"
  },
  "14d4c9eac279": {
   "en": "{1} guests, newest first",
   "a": "{1} invités, les plus récents d'abord",
   "date": "2026-11-17",
-  "b": "{1} invités, du plus récent au plus ancien"
+  "b": "{1} invités, du plus récent au plus ancien",
+  "tr": "{1} invités, les plus récents d’abord"
  },
  "15c39714fb66": {
   "en": "The pictures",
   "a": "Les images",
   "date": "2026-11-17",
-  "b": "Les images"
+  "b": "Les images",
+  "tr": "Les images"
  },
  "1680c69de6b4": {
   "en": "{1}, from the air",
   "a": "{1} vu du ciel",
   "date": "2026-11-17",
-  "b": "{1} vu du ciel"
+  "b": "{1} vu du ciel",
+  "tr": "{1} vu du ciel"
  },
  "16a1706013dd": {
   "en": "Which trip",
   "a": "Quel voyage",
   "date": "2026-11-17",
-  "b": "Quel voyage"
+  "b": "Quel voyage",
+  "tr": "Quel voyage"
  },
  "171a0606f7c7": {
   "en": "Group",
   "a": "Groupe",
   "date": "2026-11-17",
-  "b": "Groupe"
+  "b": "Groupe",
+  "tr": "Groupe"
  },
  "175058cca872": {
   "en": "Play Navigating {1}, with Vistasp Kharas",
   "a": "Écouter Naviguer à {1}, avec Vistasp Kharas",
   "date": "2026-11-17",
-  "b": "Écouter Naviguer : {1}, avec Vistasp Kharas"
+  "b": "Écouter Naviguer : {1}, avec Vistasp Kharas",
+  "tr": "Écouter Naviguer à {1}, avec Vistasp Kharas"
  },
  "187487095128": {
   "en": "Nov, Dec",
   "a": "nov., déc.",
   "date": "2026-11-17",
-  "b": "Nov., déc."
+  "b": "Nov., déc.",
+  "tr": "nov., déc."
  },
  "1875aaea3300": {
   "en": "Paragliding podcast with {1} interviews and full transcripts, a knowledge base on safety, gear and weather, and guided expeditions in Kenya, India and Peru.",
   "a": "Podcast de parapente avec {1} interviews et leurs transcriptions complètes, une base de connaissances sur la sécurité, le matériel et la météo, et des expéditions guidées au Kenya, en Inde et au Pérou.",
   "date": "2026-11-17",
-  "b": "Podcast de parapente avec {1} entretiens et transcriptions complètes, base de connaissances sur la sécurité, le matériel et la météo, et expéditions guidées au Kenya, en Inde et au Pérou."
+  "b": "Podcast de parapente avec {1} entretiens et transcriptions complètes, base de connaissances sur la sécurité, le matériel et la météo, et expéditions guidées au Kenya, en Inde et au Pérou.",
+  "tr": "Podcast de parapente avec {1} entretiens et leurs transcriptions complètes, une base de connaissances sur la sécurité, le matériel et la météo, et des expéditions guidées au Kenya, en Inde et au Pérou.",
+  "tr_note": "a's structure, b's 'entretiens' (French word for podcast interviews)"
  },
  "18900530bc69": {
   "en": "That did not go through.",
   "a": "L'envoi n'a pas abouti.",
   "date": "2026-11-17",
-  "b": "Cela n’a pas abouti."
+  "b": "Cela n’a pas abouti.",
+  "tr": "L’envoi n’a pas abouti."
  },
  "18b1d21c656d": {
   "en": "The season, November to March. The tour sits in the middle of February.",
   "a": "La saison, de novembre à mars. Le voyage a lieu à la mi-février.",
   "date": "2026-11-17",
-  "b": "La saison, de novembre à mars. Le voyage se situe au milieu de février."
+  "b": "La saison, de novembre à mars. Le voyage se situe au milieu de février.",
+  "tr": "La saison, de novembre à mars. Le voyage a lieu à la mi-février."
  },
  "19da3bd8e3b8": {
   "en": "Photos by {1}",
   "a": "Photos de {1}",
   "date": "2026-11-17",
-  "b": "Photos de {1}"
+  "b": "Photos de {1}",
+  "tr": "Photos de {1}"
  },
  "1a3be84bdb83": {
   "en": "See the trip <x1>→</x1>",
   "a": "Voir le voyage <x1>→</x1>",
   "date": "2026-11-17",
-  "b": "Voir le voyage <x1>→</x1>"
+  "b": "Voir le voyage <x1>→</x1>",
+  "tr": "Voir le voyage <x1>→</x1>"
  },
  "1ab5e12d4d7f": {
   "en": "Also from Kenya",
   "a": "Aussi depuis le Kenya",
   "date": "2026-11-17",
-  "b": "Aussi au Kenya"
+  "b": "Aussi au Kenya",
+  "tr": "Aussi au Kenya"
  },
  "1ad42700838f": {
   "en": "Photos tonight",
   "a": "Photos ce soir",
   "date": "2026-11-17",
-  "b": "Photos ce soir"
+  "b": "Photos ce soir",
+  "tr": "Photos ce soir"
  },
  "1b02d68f0236": {
   "en": "Longest flight, any {1} courses, thermalling comfort",
   "a": "Plus long vol, stages {1} éventuels, aisance en thermique",
   "date": "2026-11-17",
-  "b": "Plus long vol, éventuels cours de {1}, aisance en thermique"
+  "b": "Plus long vol, éventuels cours de {1}, aisance en thermique",
+  "tr": "Plus long vol, stages {1} éventuels, aisance en thermique",
+  "waive": {
+   "glossary": "'cerclage' is Swiss FSVL exam wording; a French pilot says 'aisance en thermique' (or 'enrouler') for thermalling comfort"
+  }
  },
  "1cdce20d0a32": {
   "en": "<x1></x1>Planned, no episode yet",
   "a": "<x1></x1>Prévu, pas encore d'épisode",
   "date": "2026-11-17",
-  "b": "<x1></x1>Prévu, pas encore d’épisode"
+  "b": "<x1></x1>Prévu, pas encore d’épisode",
+  "tr": "<x1></x1>Prévu, pas encore d’épisode"
  },
  "1cef1a2ff9f4": {
   "en": "Not sure yet",
   "a": "Je ne sais pas encore",
   "date": "2026-11-17",
-  "b": "Pas encore sûr"
+  "b": "Pas encore sûr",
+  "tr": "Je ne sais pas encore"
  },
  "1cf2a61c5ca1": {
   "en": "Pay EUR {1}",
   "a": "Payer {1} EUR",
   "date": "2026-11-17",
-  "b": "Payer {1} EUR"
+  "b": "Payer {1} EUR",
+  "tr": "Payer {1} EUR"
  },
  "1d0e5a71ff09": {
   "en": "Untold Truth About Reserve Parachutes",
   "a": "La vérité cachée sur les parachutes de secours",
   "date": "2026-11-17",
-  "b": "La vérité sur les parachutes de secours"
+  "b": "La vérité sur les parachutes de secours",
+  "tr": "La vérité cachée sur les parachutes de secours"
  },
  "1d47d07d1625": {
   "en": "Practice, photo {1} of {2}",
   "a": "Entraînement, photo {1} sur {2}",
   "date": "2026-11-17",
-  "b": "Entraînement, photo {1} sur {2}"
+  "b": "Entraînement, photo {1} sur {2}",
+  "tr": "Entraînement, photo {1} sur {2}"
  },
  "1d4bf96b3a5c": {
   "en": "Wind sound",
   "a": "Son du vent",
   "date": "2026-11-17",
-  "b": "Son du vent"
+  "b": "Son du vent",
+  "tr": "Son du vent"
  },
  "1d69c2f8a896": {
   "en": "Wing you fly",
   "a": "Votre voile",
   "date": "2026-11-17",
-  "b": "Voile que vous pilotez"
+  "b": "Voile que vous pilotez",
+  "tr": "Votre voile"
  },
  "1d6b095babd3": {
   "en": "{1} {2} {3} · Task {4}",
   "a": "{1} {2} {3} · Manche {4}",
   "date": "2026-11-17",
-  "b": "{1} {2} {3} · Manche {4}"
+  "b": "{1} {2} {3} · Manche {4}",
+  "tr": "{1} {2} {3} · Manche {4}"
  },
  "1e500477d288": {
   "en": "Trip updates, new episodes, and stories from the field. No spam. Unsubscribe any time.",
   "a": "Nouvelles des voyages, nouveaux épisodes et récits du terrain. Pas de spam. Désinscription à tout moment.",
   "date": "2026-11-17",
-  "b": "Nouvelles des voyages, nouveaux épisodes et histoires du terrain. Pas de spam. Désinscription à tout moment."
+  "b": "Nouvelles des voyages, nouveaux épisodes et histoires du terrain. Pas de spam. Désinscription à tout moment.",
+  "tr": "Nouvelles des voyages, nouveaux épisodes et récits du terrain. Pas de spam. Désinscription à tout moment."
  },
  "2035a08032bc": {
   "en": "Knowledge Base",
   "a": "Base de connaissances",
   "date": "2026-11-17",
-  "b": "Base de connaissances"
+  "b": "Base de connaissances",
+  "tr": "Base de connaissances"
  },
  "20d3d0ce9104": {
   "en": "From<x1>, per pilot</x1>",
   "a": "À partir de<x1>, par pilote</x1>",
   "date": "2026-11-17",
-  "b": "À partir de<x1>, par pilote</x1>"
+  "b": "À partir de<x1>, par pilote</x1>",
+  "tr": "À partir de<x1>, par pilote</x1>"
  },
  "212bbe1ac172": {
   "en": "Hear another trip",
   "a": "Écouter un autre voyage",
   "date": "2026-11-17",
-  "b": "Écouter un autre voyage"
+  "b": "Écouter un autre voyage",
+  "tr": "Écouter un autre voyage"
  },
  "213401cd0c27": {
   "en": "Antoine Girard",
   "a": "Antoine Girard",
   "date": "2026-11-17",
-  "b": "Antoine Girard"
+  "b": "Antoine Girard",
+  "tr": "Antoine Girard"
  },
  "224b543ea12b": {
   "en": "Hazards on retrieve and top landing",
   "a": "Les dangers de la récup et du posé au sommet",
   "date": "2026-11-17",
-  "b": "Les dangers de la remontée et de l’atterrissage au déco"
+  "b": "Les dangers de la remontée et de l’atterrissage au déco",
+  "tr": "Les dangers de la récupération et de l’atterrissage au sommet",
+  "tr_note": "glossary: retrieve = récupération; top landing has no sourced term, 'atterrissage au sommet' keeps the glossary's landing"
  },
  "22636d8f0782": {
   "en": "The pre World Cup on the plateau",
   "a": "La pré-Coupe du monde sur le plateau",
   "date": "2026-11-17",
-  "b": "La pré-Coupe du monde sur le plateau"
+  "b": "La pré-Coupe du monde sur le plateau",
+  "tr": "La pré-Coupe du monde sur le plateau"
  },
  "22703da52eb4": {
   "en": "Master Fear, Build Resilience & Find Joy",
   "a": "Maîtriser la peur, développer la résilience et trouver la joie",
   "date": "2026-11-17",
-  "b": "Maîtriser la peur, bâtir sa résilience et trouver la joie"
+  "b": "Maîtriser la peur, bâtir sa résilience et trouver la joie",
+  "tr": "Maîtriser la peur, développer la résilience et trouver la joie"
  },
  "227fef16fa1d": {
   "en": "Your photo",
   "a": "Votre photo",
   "date": "2026-11-17",
-  "b": "Votre photo"
+  "b": "Votre photo",
+  "tr": "Votre photo"
  },
  "22d8ded2f5b6": {
   "en": "In aviation, there's a saying: if it's controllable, then control it. On-site fixes, weather mastery, and rescue readiness mean we master every detail beforehand.",
   "a": "En aviation, on dit : si c'est maîtrisable, alors maîtrisez-le. Réparations sur place, maîtrise de la météo et préparation au secours : nous maîtrisons chaque détail à l'avance.",
   "date": "2026-11-17",
-  "b": "En aviation, on dit : si c’est contrôlable, alors contrôlez-le. Les correctifs sur place, la maîtrise de la météo et la préparation au sauvetage font que nous maîtrisons chaque détail à l’avance."
+  "b": "En aviation, on dit : si c’est contrôlable, alors contrôlez-le. Les correctifs sur place, la maîtrise de la météo et la préparation au sauvetage font que nous maîtrisons chaque détail à l’avance.",
+  "tr": "En aviation, on dit : si c’est contrôlable, alors contrôlez-le. Réparations sur place, maîtrise de la météo et préparation au secours : nous maîtrisons chaque détail à l’avance.",
+  "tr_note": "merged: b's controllable/control (the saying), a's 'réparations' for on-site fixes"
  },
  "2321d414ecd6": {
   "en": "Season Package",
   "a": "Forfait de saison",
   "date": "2026-11-17",
-  "b": "Forfait saison"
+  "b": "Forfait saison",
+  "tr": "Forfait de saison"
  },
  "23723355f8f9": {
   "en": "New Technologies",
   "a": "Nouvelles technologies",
   "date": "2026-11-17",
-  "b": "Nouvelles technologies"
+  "b": "Nouvelles technologies",
+  "tr": "Nouvelles technologies"
  },
  "242cb352c019": {
   "en": "Reset the view",
   "a": "Réinitialiser la vue",
   "date": "2026-11-17",
-  "b": "Réinitialiser la vue"
+  "b": "Réinitialiser la vue",
+  "tr": "Réinitialiser la vue"
  },
  "24345a14377f": {
   "en": "Today",
   "a": "Aujourd'hui",
   "date": "2026-11-17",
-  "b": "Aujourd’hui"
+  "b": "Aujourd’hui",
+  "tr": "Aujourd’hui"
  },
  "2473e96bc614": {
   "en": "Introduction",
   "a": "Introduction",
   "date": "2026-11-17",
-  "b": "Introduction"
+  "b": "Introduction",
+  "tr": "Introduction"
  },
  "247e97adf9b1": {
   "en": "Modernizing {1} Courses",
   "a": "Moderniser les stages {1}",
   "date": "2026-11-17",
-  "b": "Moderniser les cours de {1}"
+  "b": "Moderniser les cours de {1}",
+  "tr": "Moderniser les stages {1}"
  },
  "251858daa9ea": {
   "en": "the canyons seen through it",
   "a": "les canyons vus à travers",
   "date": "2026-11-17",
-  "b": "les canyons vus à travers"
+  "b": "les canyons vus à travers",
+  "tr": "les canyons vus à travers"
  },
  "2532df6ef263": {
   "en": "Soar The Land Of The Incas",
   "a": "Planez sur la terre des Incas",
   "date": "2026-11-17",
-  "b": "S’élever sur la terre des Incas"
+  "b": "S’élever sur la terre des Incas",
+  "tr": "Planez sur la terre des Incas"
  },
  "258c13fbc938": {
   "en": "Kenya · {1}, Rift Valley<x1>{2}°N · {3}°E</x1>",
   "a": "Kenya · {1}, vallée du Rift<x1>{2}°N · {3}°E</x1>",
   "date": "2026-11-17",
-  "b": "Kenya · {1}, vallée du Rift<x1>{2}°N · {3}°E</x1>"
+  "b": "Kenya · {1}, vallée du Rift<x1>{2}°N · {3}°E</x1>",
+  "tr": "Kenya · {1}, vallée du Rift<x1>{2}°N · {3}°E</x1>"
  },
  "26e00b08d068": {
   "en": "Get In Touch",
   "a": "Nous contacter",
   "date": "2026-11-17",
-  "b": "Contactez-nous"
+  "b": "Contactez-nous",
+  "tr": "Nous contacter"
  },
  "2776e9555d4a": {
   "en": "Stay In Touch",
   "a": "Restons en contact",
   "date": "2026-11-17",
-  "b": "Restez en contact"
+  "b": "Restez en contact",
+  "tr": "Restons en contact"
  },
  "280cb7f1130c": {
   "en": "Daily Highlights",
   "a": "Résumés quotidiens",
   "date": "2026-11-17",
-  "b": "Temps forts du jour"
+  "b": "Temps forts du jour",
+  "tr": "Temps forts du jour"
  },
  "28315067b19f": {
   "en": "More conversations",
   "a": "Plus de conversations",
   "date": "2026-11-17",
-  "b": "Plus de conversations"
+  "b": "Plus de conversations",
+  "tr": "Plus de conversations"
  },
  "28d341d6e81b": {
   "en": "Climate, seasons, and when to come",
   "a": "Climat, saisons, et quand venir",
   "date": "2026-11-17",
-  "b": "Climat, saisons et quand venir"
+  "b": "Climat, saisons et quand venir",
+  "tr": "Climat, saisons et quand venir"
  },
  "29004f688b0a": {
   "en": "Close the film",
   "a": "Fermer le film",
   "date": "2026-11-17",
-  "b": "Fermer le film"
+  "b": "Fermer le film",
+  "tr": "Fermer le film"
  },
  "2abac98987dc": {
   "en": "Click a pin, hear the story.",
   "a": "Cliquez sur une épingle, écoutez l'histoire.",
   "date": "2026-11-17",
-  "b": "Cliquez sur une épingle, écoutez l’histoire."
+  "b": "Cliquez sur une épingle, écoutez l’histoire.",
+  "tr": "Cliquez sur une épingle, écoutez l’histoire."
  },
  "2b3dd4849d56": {
   "en": "Free web copy, <x1></x1>, under <x2>{1} {2}</x2>: share it with the credit “<x3>Photo: {3}, {4}</x3>”, not for commercial use.",
   "a": "Copie web gratuite, <x1></x1>, sous licence <x2>{1} {2}</x2> : partagez-la avec la mention « <x3>Photo : {3}, {4}</x3> », sans usage commercial.",
   "date": "2026-11-17",
-  "b": "Copie web gratuite, <x1></x1>, sous <x2>{1} {2}</x2> : partagez-la avec la mention « <x3>Photo : {3}, {4}</x3> », pas d’usage commercial."
+  "b": "Copie web gratuite, <x1></x1>, sous <x2>{1} {2}</x2> : partagez-la avec la mention « <x3>Photo : {3}, {4}</x3> », pas d’usage commercial.",
+  "tr": "Copie web gratuite, <x1></x1>, sous licence <x2>{1} {2}</x2> : partagez-la avec la mention « <x3>Photo : {3}, {4}</x3> », sans usage commercial."
  },
  "2ba4023df482": {
   "en": "Sign Up",
   "a": "S'inscrire",
   "date": "2026-11-17",
-  "b": "S’inscrire"
+  "b": "S’inscrire",
+  "tr": "S’inscrire"
  },
  "2c639e809ef6": {
   "en": "Photos coming",
   "a": "Photos à venir",
   "date": "2026-11-17",
-  "b": "Photos à venir"
+  "b": "Photos à venir",
+  "tr": "Photos à venir"
  },
  "2dae96425990": {
   "en": "<x1>{1}</x1> to <x2>{2}</x2> {3}",
   "a": "Du <x1>{1}</x1> au <x2>{2}</x2> {3}",
   "date": "2026-11-17",
-  "b": "<x1>{1}</x1> au <x2>{2}</x2> {3}"
+  "b": "<x1>{1}</x1> au <x2>{2}</x2> {3}",
+  "tr": "Du <x1>{1}</x1> au <x2>{2}</x2> {3}"
  },
  "2deaab2fb58e": {
   "en": "Matthijs Groeneveld led after Task {1}; Andrés Tello Alvarado took the lead after Task {2} and kept it to the end.",
   "a": "Matthijs Groeneveld menait après la manche {1} ; Andrés Tello Alvarado a pris la tête après la manche {2} et l'a gardée jusqu'au bout.",
   "date": "2026-11-17",
-  "b": "Matthijs Groeneveld a mené après la manche {1} ; Andrés Tello Alvarado a pris la tête après la manche {2} et l’a gardée jusqu’au bout."
+  "b": "Matthijs Groeneveld a mené après la manche {1} ; Andrés Tello Alvarado a pris la tête après la manche {2} et l’a gardée jusqu’au bout.",
+  "tr": "Matthijs Groeneveld menait après la manche {1} ; Andrés Tello Alvarado a pris la tête après la manche {2} et l’a gardée jusqu’au bout."
  },
  "2df935d4641b": {
   "en": "Back to the photo",
   "a": "Retour à la photo",
   "date": "2026-11-17",
-  "b": "Retour à la photo"
+  "b": "Retour à la photo",
+  "tr": "Retour à la photo"
  },
  "2e471f63b7ba": {
   "en": ", {1}, January and {2}",
   "a": ", {1}, janvier et {2}",
   "date": "2026-11-17",
-  "b": ", {1}, janvier et {2}"
+  "b": ", {1}, janvier et {2}",
+  "tr": ", {1}, janvier et {2}"
  },
  "2e48b79c7302": {
   "en": "Licence or rating",
   "a": "Brevet ou niveau",
   "date": "2026-11-17",
-  "b": "Brevet ou niveau"
+  "b": "Brevet ou niveau",
+  "tr": "Brevet ou niveau"
  },
  "2f1a617c615f": {
   "en": "Podbean",
   "a": "Podbean",
   "date": "2026-11-17",
-  "b": "Podbean"
+  "b": "Podbean",
+  "tr": "Podbean"
  },
  "2f36b6bb1852": {
   "en": "Kazakhstan",
   "a": "Kazakhstan",
   "date": "2026-11-17",
-  "b": "Kazakhstan"
+  "b": "Kazakhstan",
+  "tr": "Kazakhstan"
  },
  "2f84eea5d45d": {
   "en": "Copy link",
   "a": "Copier le lien",
   "date": "2026-11-17",
-  "b": "Copier le lien"
+  "b": "Copier le lien",
+  "tr": "Copier le lien"
  },
  "2f8ce6a696bf": {
   "en": "We read it and reply, usually within a couple of days. We do not add you to a mailing list from an enquiry, and we do not pass your details to anyone. The full detail is in the <x1>Privacy Policy</x1>.",
   "a": "Nous la lisons et y répondons, généralement sous deux ou trois jours. Une demande ne vous inscrit à aucune liste de diffusion, et nous ne transmettons vos informations à personne. Tous les détails se trouvent dans la <x1>politique de confidentialité</x1>.",
   "date": "2026-11-17",
-  "b": "Nous la lisons et répondons, en général sous quelques jours. Une demande ne vous inscrit pas à une liste de diffusion, et nous ne transmettons vos informations à personne. Le détail complet figure dans la <x1>politique de confidentialité</x1>."
+  "b": "Nous la lisons et répondons, en général sous quelques jours. Une demande ne vous inscrit pas à une liste de diffusion, et nous ne transmettons vos informations à personne. Le détail complet figure dans la <x1>politique de confidentialité</x1>.",
+  "tr": "Nous la lisons et y répondons, généralement sous deux ou trois jours. Une demande ne vous inscrit à aucune liste de diffusion, et nous ne transmettons vos informations à personne. Tous les détails se trouvent dans la <x1>politique de confidentialité</x1>."
  },
  "2fbadb098101": {
   "en": "{1} · {2}, Mexico",
   "a": "{1} · {2}, Mexique",
   "date": "2026-11-17",
-  "b": "{1} · {2}, Mexique"
+  "b": "{1} · {2}, Mexique",
+  "tr": "{1} · {2}, Mexique"
  },
  "30dfc50ab0b8": {
   "en": "The deposit, when the balance is due and what happens if you cancel are all in the <x1>booking terms</x1>. Read them before you book, and take out trip cancellation insurance.",
   "a": "L'acompte, la date d'échéance du solde et ce qui se passe si vous annulez figurent tous dans les <x1>conditions de réservation</x1>. Lisez-les avant de réserver, et souscrivez une assurance annulation.",
   "date": "2026-11-17",
-  "b": "L’acompte, la date du solde et ce qui se passe en cas d’annulation figurent tous dans les <x1>conditions de réservation</x1>. Lisez-les avant de réserver, et souscrivez une assurance annulation de voyage."
+  "b": "L’acompte, la date du solde et ce qui se passe en cas d’annulation figurent tous dans les <x1>conditions de réservation</x1>. Lisez-les avant de réserver, et souscrivez une assurance annulation de voyage.",
+  "tr": "L’acompte, la date d’échéance du solde et ce qui se passe si vous annulez figurent tous dans les <x1>conditions de réservation</x1>. Lisez-les avant de réserver, et souscrivez une assurance annulation."
  },
  "30e159c76bbe": {
   "en": "Lynsey Haynes led from Task {1} to the end.",
   "a": "Lynsey Haynes a mené de la manche {1} jusqu'au bout.",
   "date": "2026-11-17",
-  "b": "Lynsey Haynes a mené de la manche {1} jusqu’à la fin."
+  "b": "Lynsey Haynes a mené de la manche {1} jusqu’à la fin.",
+  "tr": "Lynsey Haynes a mené de la manche {1} jusqu’au bout."
  },
  "31115561075f": {
   "en": "Sun {1}",
   "a": "dim. {1}",
   "date": "2026-11-17",
-  "b": "Dim. {1}"
+  "b": "Dim. {1}",
+  "tr": "dim. {1}"
  },
  "322ec11c194f": {
   "en": "To come",
   "a": "À venir",
   "date": "2026-11-17",
-  "b": "À venir"
+  "b": "À venir",
+  "tr": "À venir"
  },
  "3274592f6a03": {
   "en": "A paraglider above terraced fields and villages",
   "a": "Un parapente au-dessus de champs en terrasses et de villages",
   "date": "2026-11-17",
-  "b": "Un parapente au-dessus de champs en terrasses et de villages"
+  "b": "Un parapente au-dessus de champs en terrasses et de villages",
+  "tr": "Un parapente au-dessus de champs en terrasses et de villages"
  },
  "328d292443e7": {
   "en": "Beyond Roads, Beyond Maps",
   "a": "Au-delà des routes, au-delà des cartes",
   "date": "2026-11-17",
-  "b": "Au-delà des routes, au-delà des cartes"
+  "b": "Au-delà des routes, au-delà des cartes",
+  "tr": "Au-delà des routes, au-delà des cartes"
  },
  "335038d8a582": {
   "en": "Kazakhstan, the striped canyons",
   "a": "Le Kazakhstan, les canyons striés",
   "date": "2026-11-17",
-  "b": "Le Kazakhstan, les canyons striés"
+  "b": "Le Kazakhstan, les canyons striés",
+  "tr": "Le Kazakhstan, les canyons striés"
  },
  "33f1b2e570e8": {
   "en": "Choose the trip to hear",
   "a": "Choisissez le voyage à écouter",
   "date": "2026-11-17",
-  "b": "Choisissez le voyage à écouter"
+  "b": "Choisissez le voyage à écouter",
+  "tr": "Choisissez le voyage à écouter"
  },
  "34adb5fa1de1": {
   "en": "Paragliding Expeditions, Run By A Pilot.",
   "a": "Des expéditions de parapente, menées par un pilote.",
   "date": "2026-11-17",
-  "b": "Des expéditions de parapente, menées par un pilote."
+  "b": "Des expéditions de parapente, menées par un pilote.",
+  "tr": "Des expéditions de parapente, menées par un pilote."
  },
  "3527a13d0151": {
   "en": "<x1>{1}</x1>Fitness and wing experience required",
   "a": "<x1>{1}</x1>La condition physique et l'expérience de vol requises",
   "date": "2026-11-17",
-  "b": "<x1>{1}</x1>La condition physique et l’expérience de voile requises"
+  "b": "<x1>{1}</x1>La condition physique et l’expérience de voile requises",
+  "tr": "<x1>{1}</x1>La condition physique et l’expérience de vol requises"
  },
  "35548a7ef8d3": {
   "en": "Not sure yet, help me choose",
   "a": "Je ne sais pas encore, aidez-moi à choisir",
   "date": "2026-11-17",
-  "b": "Pas encore sûr, aidez-moi à choisir"
+  "b": "Pas encore sûr, aidez-moi à choisir",
+  "tr": "Je ne sais pas encore, aidez-moi à choisir"
  },
  "35c2a02cd4d0": {
   "en": "India · {1}, Himalaya<x1>{2}°N · {3}°E</x1>",
   "a": "Inde · {1}, Himalaya<x1>{2}°N · {3}°E</x1>",
   "date": "2026-11-17",
-  "b": "Inde · {1}, Himalaya<x1>{2}°N · {3}°E</x1>"
+  "b": "Inde · {1}, Himalaya<x1>{2}°N · {3}°E</x1>",
+  "tr": "Inde · {1}, Himalaya<x1>{2}°N · {3}°E</x1>"
  },
  "35f30297a54b": {
   "en": "A pilot under a red wing above snow-covered mountains in India",
   "a": "Un pilote sous une voile rouge au-dessus de montagnes enneigées en Inde",
   "date": "2026-11-17",
-  "b": "Un pilote sous une voile rouge au-dessus de montagnes enneigées en Inde"
+  "b": "Un pilote sous une voile rouge au-dessus de montagnes enneigées en Inde",
+  "tr": "Un pilote sous une voile rouge au-dessus de montagnes enneigées en Inde"
  },
  "36c57243155b": {
   "en": "Peru",
   "a": "Pérou",
   "date": "2026-11-17",
-  "b": "Pérou"
+  "b": "Pérou",
+  "tr": "Pérou"
  },
  "36d32e9b15b0": {
   "en": "Because We Care to Share",
   "a": "Parce que nous tenons à partager",
   "date": "2026-11-17",
-  "b": "Parce que nous aimons partager"
+  "b": "Parce que nous aimons partager",
+  "tr": "Parce que nous tenons à partager"
  },
  "372ea5cbedff": {
   "en": "Coverage Like This For <x1>Your Event</x1>",
   "a": "Une couverture comme celle-ci pour <x1>votre événement</x1>",
   "date": "2026-11-17",
-  "b": "Une couverture comme celle-ci pour <x1>votre événement</x1>"
+  "b": "Une couverture comme celle-ci pour <x1>votre événement</x1>",
+  "tr": "Une couverture comme celle-ci pour <x1>votre événement</x1>"
  },
  "376b0e8cf4cd": {
   "en": "Its name",
   "a": "Son nom",
   "date": "2026-11-17",
-  "b": "Son nom"
+  "b": "Son nom",
+  "tr": "Son nom"
  },
  "387e281ae314": {
   "en": "Amazon Music",
   "a": "Amazon Music",
   "date": "2026-11-17",
-  "b": "Amazon Music"
+  "b": "Amazon Music",
+  "tr": "Amazon Music"
  },
  "3920b56e81bd": {
   "en": "<x1>{1} days</x1> · <x2>Next departure {2}</x2>",
   "a": "<x1>{1} jours</x1> · <x2>Prochain départ {2}</x2>",
   "date": "2026-11-17",
-  "b": "<x1>{1} jours</x1> · <x2>Prochain départ {2}</x2>"
+  "b": "<x1>{1} jours</x1> · <x2>Prochain départ {2}</x2>",
+  "tr": "<x1>{1} jours</x1> · <x2>Prochain départ {2}</x2>"
  },
  "3a65e770b28a": {
   "en": "Women",
   "a": "Femmes",
   "date": "2026-11-17",
-  "b": "Femmes"
+  "b": "Femmes",
+  "tr": "Femmes"
  },
  "3ac720e2b43e": {
   "en": "Official event: <x1>{1}, {2}</x1> · <x2>Final results</x2>",
   "a": "Événement officiel : <x1>{1}, {2}</x1> · <x2>Résultats finaux</x2>",
   "date": "2026-11-17",
-  "b": "Événement officiel : <x1>{1}, {2}</x1> · <x2>Résultats finaux</x2>"
+  "b": "Événement officiel : <x1>{1}, {2}</x1> · <x2>Résultats finaux</x2>",
+  "tr": "Événement officiel : <x1>{1}, {2}</x1> · <x2>Résultats finaux</x2>"
  },
  "3ad4edd5eba7": {
   "en": "Risk vs Reward",
   "a": "Risque et récompense",
   "date": "2026-11-17",
-  "b": "Risque et récompense"
+  "b": "Risque et récompense",
+  "tr": "Risque et récompense"
  },
  "3bade34ecbc5": {
   "en": "Length",
   "a": "Durée",
   "date": "2026-11-17",
-  "b": "Durée"
+  "b": "Durée",
+  "tr": "Durée"
  },
  "3bc88d1e51e7": {
   "en": "Thank you, your enquiry is with us. We read every one and usually reply within a couple of days, to {1}.",
   "a": "Merci, nous avons bien reçu votre demande. Nous les lisons toutes et répondons généralement sous deux ou trois jours, à {1}.",
   "date": "2026-11-17",
-  "b": "Merci, votre demande nous est bien parvenue. Nous les lisons toutes et répondons en général sous quelques jours, à {1}."
+  "b": "Merci, votre demande nous est bien parvenue. Nous les lisons toutes et répondons en général sous quelques jours, à {1}.",
+  "tr": "Merci, nous avons bien reçu votre demande. Nous les lisons toutes et répondons généralement sous deux ou trois jours, à {1}."
  },
  "3c50c2d39c34": {
   "en": "Being brave enough to go out and do it",
   "a": "Avoir le courage de se lancer",
   "date": "2026-11-17",
-  "b": "Avoir le courage de se lancer"
+  "b": "Avoir le courage de se lancer",
+  "tr": "Avoir le courage de se lancer"
  },
  "3c6c41221b5b": {
   "en": "Play the film, Task {1} Highlights, {2} min {3} s",
   "a": "Lire le film, résumé de la manche {1}, {2} min {3} s",
   "date": "2026-11-17",
-  "b": "Lire le film, temps forts de la manche {1}, {2} min {3} s"
+  "b": "Lire le film, temps forts de la manche {1}, {2} min {3} s",
+  "tr": "Lire le film, temps forts de la manche {1}, {2} min {3} s"
  },
  "3d082142a0c2": {
   "en": "Listen on",
   "a": "Écouter sur",
   "date": "2026-11-17",
-  "b": "Écouter sur"
+  "b": "Écouter sur",
+  "tr": "Écouter sur"
  },
  "3d5fc1e20980": {
   "en": "What {1} you are working with",
   "a": "À quel {1} vous avez affaire",
   "date": "2026-11-17",
-  "b": "Avec quel {1} vous avez affaire"
+  "b": "Avec quel {1} vous avez affaire",
+  "tr": "Avec quel {1} vous avez affaire"
  },
  "3d8703f3e37d": {
   "en": "Send a Media Enquiry",
   "a": "Envoyer une demande média",
   "date": "2026-11-17",
-  "b": "Envoyer une demande médias"
+  "b": "Envoyer une demande médias",
+  "tr": "Envoyer une demande média"
  },
  "3e0763edd17f": {
   "en": "{1} sits on the {2}, the range that runs down India's west coast about {3} km inland, on the volcanic tablelands of the {4}: flat tops and sharp vertical cliffs. Vistasp Kharas grew up here and has flown it for more than ten years. He calls it far more technical than {5}: a {6} km flight in {7} is as good as {8} km in {9}.",
   "a": "{1} se trouve dans les {2}, la chaîne qui longe la côte ouest de l'Inde à environ {3} km à l'intérieur des terres, sur les plateaux volcaniques du {4} : des sommets plats et des falaises verticales abruptes. Vistasp Kharas a grandi ici et y vole depuis plus de dix ans. Il le juge bien plus technique que {5} : un vol de {6} km à {7} vaut un vol de {8} km à {9}.",
   "date": "2026-11-17",
-  "b": "{1} se trouve sur les {2}, la chaîne qui longe la côte ouest de l’Inde à environ {3} km à l’intérieur des terres, sur les plateaux volcaniques des {4} : sommets plats et falaises verticales abruptes. Vistasp Kharas a grandi ici et le vole depuis plus de dix ans. Il le dit bien plus technique que {5} : un vol de {6} km à {7} vaut {8} km à {9}."
+  "b": "{1} se trouve sur les {2}, la chaîne qui longe la côte ouest de l’Inde à environ {3} km à l’intérieur des terres, sur les plateaux volcaniques des {4} : sommets plats et falaises verticales abruptes. Vistasp Kharas a grandi ici et le vole depuis plus de dix ans. Il le dit bien plus technique que {5} : un vol de {6} km à {7} vaut {8} km à {9}.",
+  "tr": "{1} se trouve sur les {2}, la chaîne qui longe la côte ouest de l’Inde à environ {3} km à l’intérieur des terres, sur les plateaux volcaniques du {4} : des sommets plats et des falaises verticales abruptes. Vistasp Kharas a grandi ici et y vole depuis plus de dix ans. Il le juge bien plus technique que {5} : un vol de {6} km à {7} vaut un vol de {8} km à {9}.",
+  "tr_note": "a, with b's 'sur les' (on the range)"
  },
  "3e15ac7882aa": {
   "en": "Practice",
   "a": "Entraînement",
   "date": "2026-11-17",
-  "b": "Entraînement"
+  "b": "Entraînement",
+  "tr": "Entraînement"
  },
  "3e8248e32edf": {
   "en": "Price",
   "a": "Prix",
   "date": "2026-11-17",
-  "b": "Prix"
+  "b": "Prix",
+  "tr": "Prix"
  },
  "3eb7165288d1": {
   "en": "Gabriel Orsini",
   "a": "Gabriel Orsini",
   "date": "2026-11-17",
-  "b": "Gabriel Orsini"
+  "b": "Gabriel Orsini",
+  "tr": "Gabriel Orsini"
  },
  "3f66052a107e": {
   "en": "From",
   "a": "À partir de",
   "date": "2026-11-17",
-  "b": "À partir de"
+  "b": "À partir de",
+  "tr": "À partir de"
  },
  "40f1736b73a8": {
   "en": "Play the film",
   "a": "Lire le film",
   "date": "2026-11-17",
-  "b": "Lire le film"
+  "b": "Lire le film",
+  "tr": "Lire le film"
  },
  "4164d30fbe1e": {
   "en": "Thermals of {1} to {2} m/s, six sites down the Rift",
   "a": "Des thermiques de {1} à {2} m/s, six sites le long du Rift",
   "date": "2026-11-17",
-  "b": "Thermiques de {1} à {2} m/s, six sites le long du Rift"
+  "b": "Thermiques de {1} à {2} m/s, six sites le long du Rift",
+  "tr": "Des thermiques de {1} à {2} m/s, six sites le long du Rift"
  },
  "41ce8b3675ff": {
   "en": "A white paraglider over farmland on the shore of a lake, a dry hillside to the right",
   "a": "Un parapente blanc au-dessus de terres agricoles au bord d'un lac, une colline sèche à droite",
   "date": "2026-11-17",
-  "b": "Un parapente blanc au-dessus de terres cultivées au bord d’un lac, un versant sec à droite"
+  "b": "Un parapente blanc au-dessus de terres cultivées au bord d’un lac, un versant sec à droite",
+  "tr": "Un parapente blanc au-dessus de terres agricoles au bord d’un lac, une colline sèche à droite"
  },
  "420b6a3c5c90": {
   "en": "Hear Where We <x1>Fly</x1>",
   "a": "Écoutez où nous <x1>volons</x1>",
   "date": "2026-11-17",
-  "b": "Entendez où nous <x1>volons</x1>"
+  "b": "Entendez où nous <x1>volons</x1>",
+  "tr": "Écoutez où nous <x1>volons</x1>"
  },
  "4385f498f29f": {
   "en": "Explore The Cradle",
   "a": "Explorez le berceau",
   "date": "2026-11-17",
-  "b": "Explorer le berceau de l’humanité"
+  "b": "Explorer le berceau de l’humanité",
+  "tr": "Explorez le berceau"
  },
  "44ce8c5b2fc2": {
   "en": "{1}: Paragliding the {2} Tablelands | {3}",
   "a": "{1} : le parapente sur les plateaux de {2} | {3}",
   "date": "2026-11-17",
-  "b": "{1} : le parapente sur les plateaux de {2} | {3}"
+  "b": "{1} : le parapente sur les plateaux de {2} | {3}",
+  "tr": "{1} : le parapente sur les plateaux de {2} | {3}"
  },
  "44f7b74d06cb": {
   "en": "{1} held its first pre World Cup in {2}, with almost {3} pilots, and its second, the first run by the Paragliding Association of India, in {4}. The longest local line runs about {5} km north west to {6}.",
   "a": "{1} a accueilli sa première pré-Coupe du monde en {2}, avec près de {3} pilotes, et la deuxième, la première organisée par l'association de parapente de l'Inde (Paragliding Association of India), en {4}. La plus longue ligne locale fait environ {5} km vers le nord-ouest, jusqu'à {6}.",
   "date": "2026-11-17",
-  "b": "{1} a tenu sa première pré-Coupe du monde en {2}, avec près de {3} pilotes, et la deuxième, la première organisée par l’Association de parapente de l’Inde, en {4}. La plus longue ligne locale file sur environ {5} km vers le nord-ouest jusqu’à {6}."
+  "b": "{1} a tenu sa première pré-Coupe du monde en {2}, avec près de {3} pilotes, et la deuxième, la première organisée par l’Association de parapente de l’Inde, en {4}. La plus longue ligne locale file sur environ {5} km vers le nord-ouest jusqu’à {6}.",
+  "tr": "{1} a accueilli sa première pré-Coupe du monde en {2}, avec près de {3} pilotes, et la deuxième, la première organisée par la Paragliding Association of India, en {4}. La plus longue ligne locale fait environ {5} km vers le nord-ouest, jusqu’à {6}.",
+  "tr_note": "organisation's own name kept as written (names stay)",
+  "waive": {
+   "glossary": "'Paragliding' here is inside the organisation's own name, Paragliding Association of India, which stays as written",
+   "country": "'India' is inside the organisation's own name (Paragliding Association of India); names stay"
+  }
  },
  "4659fb30692d": {
   "en": "Tom Lolies",
   "a": "Tom Lolies",
   "date": "2026-11-17",
-  "b": "Tom Lolies"
+  "b": "Tom Lolies",
+  "tr": "Tom Lolies"
  },
  "467584cc0dae": {
   "en": "See dates",
   "a": "Voir les dates",
   "date": "2026-11-17",
-  "b": "Voir les dates"
+  "b": "Voir les dates",
+  "tr": "Voir les dates"
  },
  "469c38b8444c": {
   "en": "Touch The Sky With Glory",
   "a": "Touchez le ciel avec gloire",
   "date": "2026-11-17",
-  "b": "Toucher le ciel avec gloire"
+  "b": "Toucher le ciel avec gloire",
+  "tr": "Touchez le ciel avec gloire"
  },
  "46bb0cf1a5ac": {
   "en": "The Science Of EN Certifications",
   "a": "La science des homologations EN",
   "date": "2026-11-17",
-  "b": "La science des certifications EN"
+  "b": "La science des certifications EN",
+  "tr": "La science des homologations EN"
  },
  "4706b99f989f": {
   "en": "the plateau seen through it",
   "a": "le plateau vu à travers",
   "date": "2026-11-17",
-  "b": "le plateau vu à travers"
+  "b": "le plateau vu à travers",
+  "tr": "le plateau vu à travers"
  },
  "47454d82e0cd": {
   "en": "Welcome back after a long gap",
   "a": "Bon retour après une longue pause",
   "date": "2026-11-17",
-  "b": "Content de vous retrouver après une longue pause"
+  "b": "Content de vous retrouver après une longue pause",
+  "tr": "Bon retour après une longue pause"
  },
  "479b2ba5fc81": {
   "en": "Hear The Site From Someone Who Flies It",
   "a": "Le site raconté par quelqu'un qui y vole",
   "date": "2026-11-17",
-  "b": "Entendre le site par quelqu’un qui le vole"
+  "b": "Entendre le site par quelqu’un qui le vole",
+  "tr": "Le site raconté par quelqu’un qui y vole"
  },
  "47e1e16008a9": {
   "en": "Navigating {1}: Vistasp Kharas",
   "a": "Naviguer à {1} : Vistasp Kharas",
   "date": "2026-11-17",
-  "b": "Naviguer : {1} : Vistasp Kharas"
+  "b": "Naviguer : {1} : Vistasp Kharas",
+  "tr": "Naviguer à {1} : Vistasp Kharas"
  },
  "48bc78620bf1": {
   "en": "Full Event",
   "a": "Événement complet",
   "date": "2026-11-17",
-  "b": "Événement complet"
+  "b": "Événement complet",
+  "tr": "Événement complet"
  },
  "498d06b28ce2": {
   "en": "This form has no database behind it. Pressing send opens your own email app with the message written out, and you send it yourself. Nothing is posted to us or to any form service on the way, so there is no third party holding your details.",
   "a": "Ce formulaire n'a pas de base de données derrière lui. Appuyer sur Envoyer ouvre votre propre application de messagerie avec le message déjà rédigé, et c'est vous qui l'envoyez. Rien ne nous est transmis, ni à aucun service de formulaires en chemin : aucun tiers ne détient donc vos informations.",
   "date": "2026-11-17",
-  "b": "Ce formulaire n’a aucune base de données derrière lui. En appuyant sur envoyer, vous ouvrez votre propre application de messagerie avec le message déjà rédigé, et c’est vous qui l’envoyez. Rien ne nous est transmis ni à aucun service de formulaires en chemin, aucun tiers ne détient donc vos informations."
+  "b": "Ce formulaire n’a aucune base de données derrière lui. En appuyant sur envoyer, vous ouvrez votre propre application de messagerie avec le message déjà rédigé, et c’est vous qui l’envoyez. Rien ne nous est transmis ni à aucun service de formulaires en chemin, aucun tiers ne détient donc vos informations.",
+  "tr": "Ce formulaire n’a pas de base de données derrière lui. Appuyer sur Envoyer ouvre votre propre application de messagerie avec le message déjà rédigé, et c’est vous qui l’envoyez. Rien ne nous est transmis, ni à aucun service de formulaires en chemin : aucun tiers ne détient donc vos informations."
  },
  "4ab772cebc20": {
   "en": "Navigating India (Bonus Ep)",
   "a": "Naviguer en Inde (épisode bonus)",
   "date": "2026-11-17",
-  "b": "Naviguer en Inde (épisode bonus)"
+  "b": "Naviguer en Inde (épisode bonus)",
+  "tr": "Naviguer en Inde (épisode bonus)"
  },
  "4ad48a02590f": {
   "en": "Launch",
   "a": "Décollage",
   "date": "2026-11-17",
-  "b": "Décollage"
+  "b": "Décollage",
+  "tr": "Décollage"
  },
  "4ae0d3ceff1d": {
   "en": "Register interest",
   "a": "Manifester mon intérêt",
   "date": "2026-11-17",
-  "b": "Manifester mon intérêt"
+  "b": "Manifester mon intérêt",
+  "tr": "Manifester mon intérêt"
  },
  "4aee51e751b3": {
   "en": "Experience intimate, expert led flying in world class destinations. Skip the crowds with small group tours in iconic skies over untamed terrains, fully guided from launch to landing and beyond.",
   "a": "Vivez un vol intime, encadré par des experts, dans des destinations de classe mondiale. Évitez la foule grâce à des voyages en petits groupes dans des ciels mythiques au-dessus de terrains sauvages, entièrement guidés du décollage à l'atterrissage et au-delà.",
   "date": "2026-11-17",
-  "b": "Vivez un vol intime, encadré par des experts, dans des destinations de classe mondiale. Évitez la foule avec des voyages en petit groupe dans des ciels mythiques, au-dessus de terrains sauvages, entièrement guidés du décollage à l’atterrissage et au-delà."
+  "b": "Vivez un vol intime, encadré par des experts, dans des destinations de classe mondiale. Évitez la foule avec des voyages en petit groupe dans des ciels mythiques, au-dessus de terrains sauvages, entièrement guidés du décollage à l’atterrissage et au-delà.",
+  "tr": "Vivez un vol intime, encadré par des experts, dans des destinations de classe mondiale. Évitez la foule avec des voyages en petit groupe dans des ciels mythiques, au-dessus de terrains sauvages, entièrement guidés du décollage à l’atterrissage et au-delà."
  },
  "4af8ffdce3ca": {
   "en": "The cliffs heat through the morning and throw up strong thermals. There are inversions at several layers, the wind can change direction every thousand metres, and each valley and bowl has its own wind.",
   "a": "Les falaises chauffent au fil de la matinée et génèrent de forts thermiques. Il y a des inversions à plusieurs niveaux, le vent peut changer de direction tous les mille mètres, et chaque vallée et chaque cirque a son propre vent.",
   "date": "2026-11-17",
-  "b": "Les falaises chauffent dans la matinée et produisent de forts thermiques. Il y a des inversions à plusieurs niveaux, le vent peut changer de direction tous les mille mètres, et chaque vallée et chaque cuvette a son propre vent."
+  "b": "Les falaises chauffent dans la matinée et produisent de forts thermiques. Il y a des inversions à plusieurs niveaux, le vent peut changer de direction tous les mille mètres, et chaque vallée et chaque cuvette a son propre vent.",
+  "tr": "Les falaises chauffent au fil de la matinée et génèrent de forts thermiques. Il y a des inversions à plusieurs niveaux, le vent peut changer de direction tous les mille mètres, et chaque vallée et chaque cuvette a son propre vent.",
+  "tr_note": "a, with b's 'cuvette' for bowl"
  },
  "4b3a25477426": {
   "en": "Partner With Me",
   "a": "Devenir partenaire",
   "date": "2026-11-17",
-  "b": "Devenir partenaire"
+  "b": "Devenir partenaire",
+  "tr": "Devenir partenaire"
  },
  "4bb3e463ac3e": {
   "en": "Debunking The Myths, Enzo {1}",
   "a": "Démonter les mythes, Enzo {1}",
   "date": "2026-11-17",
-  "b": "Démonter les mythes, Enzo {1}"
+  "b": "Démonter les mythes, Enzo {1}",
+  "tr": "Démonter les mythes, Enzo {1}"
  },
  "4bf5048f5cbf": {
   "en": "{1} off the hill: pottery, yoga and Buddhism",
   "a": "{1} hors du vol : poterie, yoga et bouddhisme",
   "date": "2026-11-17",
-  "b": "{1} hors de la colline : poterie, yoga et bouddhisme"
+  "b": "{1} hors de la colline : poterie, yoga et bouddhisme",
+  "tr": "{1} hors du vol : poterie, yoga et bouddhisme"
  },
  "4ca9685eab65": {
   "en": "A cold open: the first landing at Barabangal",
   "a": "En ouverture : le premier atterrissage à Barabangal",
   "date": "2026-11-17",
-  "b": "Une ouverture à froid : le premier atterrissage à Barabangal"
+  "b": "Une ouverture à froid : le premier atterrissage à Barabangal",
+  "tr": "En ouverture : le premier atterrissage à Barabangal"
  },
  "4d95cf5482fd": {
   "en": "Every Departure",
   "a": "Tous les départs",
   "date": "2026-11-17",
-  "b": "Chaque départ"
+  "b": "Chaque départ",
+  "tr": "Tous les départs"
  },
  "4e0f5e510337": {
   "en": "Book a call",
   "a": "Réserver un appel",
   "date": "2026-11-17",
-  "b": "Réserver un appel"
+  "b": "Réserver un appel",
+  "tr": "Réserver un appel"
  },
  "4fba49b06fc9": {
   "en": "Send enquiry",
   "a": "Envoyer la demande",
   "date": "2026-11-17",
-  "b": "Envoyer la demande"
+  "b": "Envoyer la demande",
+  "tr": "Envoyer la demande"
  },
  "4fc05f2763ba": {
   "en": "Zoom in",
   "a": "Zoom avant",
   "date": "2026-11-17",
-  "b": "Zoomer"
+  "b": "Zoomer",
+  "tr": "Zoom avant"
  },
  "4fc19f8ce7ff": {
   "en": "Install the app",
   "a": "Installer l'application",
   "date": "2026-11-17",
-  "b": "Installer l’appli"
+  "b": "Installer l’appli",
+  "tr": "Installer l’application"
  },
  "50d13ea33788": {
   "en": "Media coverage",
   "a": "Couverture médiatique",
   "date": "2026-11-17",
-  "b": "Couverture médias"
+  "b": "Couverture médias",
+  "tr": "Couverture médiatique"
  },
  "51dd91dc98a9": {
   "en": "Start over",
   "a": "Recommencer",
   "date": "2026-11-17",
-  "b": "Recommencer"
+  "b": "Recommencer",
+  "tr": "Recommencer"
  },
  "5219616d3f22": {
   "en": "Starting from",
   "a": "À partir de",
   "date": "2026-11-17",
-  "b": "À partir de"
+  "b": "À partir de",
+  "tr": "À partir de"
  },
  "524cf50b5df5": {
   "en": "Cookies",
   "a": "Cookies",
   "date": "2026-11-17",
-  "b": "Cookies"
+  "b": "Cookies",
+  "tr": "Cookies"
  },
  "52a35818a37a": {
   "en": "Swipe sideways to turn it.",
   "a": "Balayez latéralement pour le faire tourner.",
   "date": "2026-11-17",
-  "b": "Glissez latéralement pour la tourner."
+  "b": "Glissez latéralement pour la tourner.",
+  "tr": "Faites glisser latéralement pour le faire tourner.",
+  "tr_note": "merged: 'faire glisser' as in the line before, 'le' for the globe"
  },
  "5301648dcf6b": {
   "en": "Edit",
   "a": "Modifier",
   "date": "2026-11-17",
-  "b": "Modifier"
+  "b": "Modifier",
+  "tr": "Modifier"
  },
  "535d98c81acb": {
   "en": "Hours in the last {1} months",
   "a": "Heures sur les {1} derniers mois",
   "date": "2026-11-17",
-  "b": "Heures sur les {1} derniers mois"
+  "b": "Heures sur les {1} derniers mois",
+  "tr": "Heures sur les {1} derniers mois"
  },
  "53827202712c": {
   "en": "Decoding Weather Apps",
   "a": "Décoder les applis météo",
   "date": "2026-11-17",
-  "b": "Décoder les applis météo"
+  "b": "Décoder les applis météo",
+  "tr": "Décoder les applis météo"
  },
  "53f612a997cf": {
   "en": "Alain Zoller",
   "a": "Alain Zoller",
   "date": "2026-11-17",
-  "b": "Alain Zoller"
+  "b": "Alain Zoller",
+  "tr": "Alain Zoller"
  },
  "547e4c87839a": {
   "en": "Translated from English.",
   "a": "Traduit de l'anglais.",
   "date": "2026-11-17",
-  "b": "Traduit de l’anglais."
+  "b": "Traduit de l’anglais.",
+  "tr": "Traduit de l’anglais."
  },
  "5548ae4f34cb": {
   "en": "days",
   "a": "jours",
   "date": "2026-11-17",
-  "b": "jours"
+  "b": "jours",
+  "tr": "jours"
  },
  "5591a37269f0": {
   "en": ", {1} and the Andes, planned for {2}",
   "a": ", {1} et les Andes, prévu pour {2}",
   "date": "2026-11-17",
-  "b": ", {1} et les Andes, prévu pour {2}"
+  "b": ", {1} et les Andes, prévu pour {2}",
+  "tr": ", {1} et les Andes, prévu pour {2}"
  },
  "55c66106455f": {
   "en": "Navigating {1} (Pre {2} India) : Vistasp Kharas<x1>Navigators, Episode {3}, {4} min</x1>",
   "a": "Naviguer à {1} (Pré-{2} Inde) : Vistasp Kharas<x1>Navigators, épisode {3}, {4} min</x1>",
   "date": "2026-11-17",
-  "b": "Naviguer : {1} (Pré-{2} Inde) : Vistasp Kharas<x1>Navigateurs, épisode {3}, {4} min</x1>"
+  "b": "Naviguer : {1} (Pré-{2} Inde) : Vistasp Kharas<x1>Navigateurs, épisode {3}, {4} min</x1>",
+  "tr": "Naviguer à {1} (Pré-{2} Inde) : Vistasp Kharas<x1>Navigators, épisode {3}, {4} min</x1>"
  },
  "5646f9c6b3a7": {
   "en": "Jigish Gohil",
   "a": "Jigish Gohil",
   "date": "2026-11-17",
-  "b": "Jigish Gohil"
+  "b": "Jigish Gohil",
+  "tr": "Jigish Gohil"
  },
  "56907a4f988f": {
   "en": "Hold a place",
   "a": "Réserver une place",
   "date": "2026-11-17",
-  "b": "Réserver une place"
+  "b": "Réserver une place",
+  "tr": "Réserver une place"
  },
  "56d75b537aec": {
   "en": "Next leg: Task {1}, Mon {2} <x1>→</x1>",
   "a": "Étape suivante : manche {1}, lun. {2} <x1>→</x1>",
   "date": "2026-11-17",
-  "b": "Étape suivante : manche {1}, lun. {2} <x1>→</x1>"
+  "b": "Étape suivante : manche {1}, lun. {2} <x1>→</x1>",
+  "tr": "Étape suivante : manche {1}, lun. {2} <x1>→</x1>"
  },
  "573b9dde2b03": {
   "en": "Dates & prices",
   "a": "Dates et tarifs",
   "date": "2026-11-17",
-  "b": "Dates et prix"
+  "b": "Dates et prix",
+  "tr": "Dates et prix"
  },
  "57ee87b05d7d": {
   "en": "<x1>{1}</x1> / <x2>{2} min</x2>",
   "a": "<x1>{1}</x1> / <x2>{2} min</x2>",
   "date": "2026-11-17",
-  "b": "<x1>{1}</x1> / <x2>{2} min</x2>"
+  "b": "<x1>{1}</x1> / <x2>{2} min</x2>",
+  "tr": "<x1>{1}</x1> / <x2>{2} min</x2>"
  },
  "583719b62809": {
   "en": "When you are hoping to travel",
   "a": "Quand vous espérez partir",
   "date": "2026-11-17",
-  "b": "Quand vous espérez voyager"
+  "b": "Quand vous espérez voyager",
+  "tr": "Quand vous espérez partir"
  },
  "583ccec79460": {
   "en": "Not ready to send?",
   "a": "Pas encore prêt à envoyer ?",
   "date": "2026-11-17",
-  "b": "Pas prêt à envoyer ?"
+  "b": "Pas prêt à envoyer ?",
+  "tr": "Pas encore prêt à envoyer ?"
  },
  "58cf731a05e0": {
   "en": "Paused at {1}",
   "a": "En pause à {1}",
   "date": "2026-11-17",
-  "b": "En pause à {1}"
+  "b": "En pause à {1}",
+  "tr": "En pause à {1}"
  },
  "59405fd508e7": {
   "en": "If You Would Rather Just Talk",
   "a": "Si vous préférez simplement parler",
   "date": "2026-11-17",
-  "b": "Si vous préférez simplement parler"
+  "b": "Si vous préférez simplement parler",
+  "tr": "Si vous préférez simplement parler"
  },
  "59c6639bf0d2": {
   "en": "What equipment is recommended",
   "a": "Quel matériel est recommandé",
   "date": "2026-11-17",
-  "b": "Quel équipement est recommandé"
+  "b": "Quel équipement est recommandé",
+  "tr": "Quel matériel est recommandé"
  },
  "59dec9ff9c39": {
   "en": "The Journey Within",
   "a": "Le voyage intérieur",
   "date": "2026-11-17",
-  "b": "Le voyage intérieur"
+  "b": "Le voyage intérieur",
+  "tr": "Le voyage intérieur"
  },
  "5a83d3de402d": {
   "en": "Payment link: <x1>{1}</x1>. It will carry the photo's name.",
   "a": "Lien de paiement : <x1>{1}</x1>. Il portera le nom de la photo.",
   "date": "2026-11-17",
-  "b": "Lien de paiement : <x1>{1}</x1>. Il portera le nom de la photo."
+  "b": "Lien de paiement : <x1>{1}</x1>. Il portera le nom de la photo.",
+  "tr": "Lien de paiement : <x1>{1}</x1>. Il portera le nom de la photo."
  },
  "5bba91a3c176": {
   "en": "A paraglider high above a wide lake, with terraced cliffs beyond",
   "a": "Un parapente haut au-dessus d'un vaste lac, avec des falaises en terrasses au-delà",
   "date": "2026-11-17",
-  "b": "Un parapente haut au-dessus d’un vaste lac, avec des falaises en terrasses au loin"
+  "b": "Un parapente haut au-dessus d’un vaste lac, avec des falaises en terrasses au loin",
+  "tr": "Un parapente haut au-dessus d’un vaste lac, avec des falaises en terrasses au loin"
  },
  "5bcfeb31e164": {
   "en": "Task {1}",
   "a": "Manche {1}",
   "date": "2026-11-17",
-  "b": "Manche {1}"
+  "b": "Manche {1}",
+  "tr": "Manche {1}"
  },
  "5bdc6e334285": {
   "en": "Planned, small group",
   "a": "Prévu, petit groupe",
   "date": "2026-11-17",
-  "b": "Prévu, petit groupe"
+  "b": "Prévu, petit groupe",
+  "tr": "Prévu, petit groupe"
  },
  "5c4698b6e0d6": {
   "en": "About you",
   "a": "À propos de vous",
   "date": "2026-11-17",
-  "b": "Vous"
+  "b": "Vous",
+  "tr": "À propos de vous"
  },
  "5c536d6dc682": {
   "en": "Task {1} Highlights",
   "a": "Résumé de la manche {1}",
   "date": "2026-11-17",
-  "b": "Temps forts de la manche {1}"
+  "b": "Temps forts de la manche {1}",
+  "tr": "Temps forts de la manche {1}"
  },
  "5c966a86cabc": {
   "en": "Playing on from {1}.",
   "a": "Lecture reprise à {1}.",
   "date": "2026-11-17",
-  "b": "Lecture à partir de {1}."
+  "b": "Lecture à partir de {1}.",
+  "tr": "Lecture reprise à {1}."
  },
  "5cca0ad0f982": {
   "en": "That message is a little long for an email link. Please shorten it, or send it straight to {1}.",
   "a": "Ce message est un peu long pour un lien e-mail. Raccourcissez-le, ou envoyez-le directement à {1}.",
   "date": "2026-11-17",
-  "b": "Ce message est un peu long pour un lien e-mail. Raccourcissez-le, ou envoyez-le directement à {1}."
+  "b": "Ce message est un peu long pour un lien e-mail. Raccourcissez-le, ou envoyez-le directement à {1}.",
+  "tr": "Ce message est un peu long pour un lien e-mail. Raccourcissez-le, ou envoyez-le directement à {1}."
  },
  "5d75a960c946": {
   "en": "What you need to navigate Africa",
   "a": "Ce qu'il faut pour naviguer en Afrique",
   "date": "2026-11-17",
-  "b": "Ce qu’il faut pour naviguer en Afrique"
+  "b": "Ce qu’il faut pour naviguer en Afrique",
+  "tr": "Ce qu’il faut pour naviguer en Afrique"
  },
  "5d82247f1bf2": {
   "en": "Zebras below the crater",
   "a": "Des zèbres sous le cratère",
   "date": "2026-11-17",
-  "b": "Des zèbres au pied du cratère"
+  "b": "Des zèbres au pied du cratère",
+  "tr": "Des zèbres au pied du cratère"
  },
  "5de967789f50": {
   "en": "A gaggle of paragliders above a lake in the haze",
   "a": "Un groupe de parapentes au-dessus d'un lac dans la brume",
   "date": "2026-11-17",
-  "b": "Un groupe de parapentes au-dessus d’un lac dans la brume"
+  "b": "Un groupe de parapentes au-dessus d’un lac dans la brume",
+  "tr": "Un groupe de parapentes au-dessus d’un lac dans la brume"
  },
  "5e257531115d": {
   "en": "Standing on takeoff, what to expect",
   "a": "Sur le décollage, à quoi s'attendre",
   "date": "2026-11-17",
-  "b": "Sur le déco, à quoi s’attendre"
+  "b": "Sur le déco, à quoi s’attendre",
+  "tr": "Sur le décollage, à quoi s’attendre"
  },
  "5eebdb77fe80": {
   "en": "Subscribe on {1}",
   "a": "S'abonner sur {1}",
   "date": "2026-11-17",
-  "b": "S’abonner sur {1}"
+  "b": "S’abonner sur {1}",
+  "tr": "S’abonner sur {1}"
  },
  "5efbf82028f5": {
   "en": "Cancelled (wind)",
   "a": "Annulée (vent)",
   "date": "2026-11-17",
-  "b": "Annulée (vent)"
+  "b": "Annulée (vent)",
+  "tr": "Annulée (vent)"
  },
  "5f403e38f2eb": {
   "en": "<x1>←</x1> Media",
   "a": "<x1>←</x1> Médias",
   "date": "2026-11-17",
-  "b": "<x1>←</x1> Médias"
+  "b": "<x1>←</x1> Médias",
+  "tr": "<x1>←</x1> Médias"
  },
  "5fc071f0a89b": {
   "en": "Photo by Michael Gebert / <x1>@{1}</x1>",
   "a": "Photo de Michael Gebert / <x1>@{1}</x1>",
   "date": "2026-11-17",
-  "b": "Photo de Michael Gebert / <x1>@{1}</x1>"
+  "b": "Photo de Michael Gebert / <x1>@{1}</x1>",
+  "tr": "Photo de Michael Gebert / <x1>@{1}</x1>"
  },
  "6073a2f2e928": {
   "en": "Next episodes",
   "a": "Épisodes suivants",
   "date": "2026-11-17",
-  "b": "Épisodes suivants"
+  "b": "Épisodes suivants",
+  "tr": "Épisodes suivants"
  },
  "61105e66c64a": {
   "en": "Book A Free <x1>{1}-Minute</x1>, No Obligation Virtual Call",
   "a": "Réservez un appel vidéo gratuit de <x1>{1} minutes</x1>, sans engagement",
   "date": "2026-11-17",
-  "b": "Réservez un appel vidéo gratuit de <x1>{1} minutes</x1>, sans engagement"
+  "b": "Réservez un appel vidéo gratuit de <x1>{1} minutes</x1>, sans engagement",
+  "tr": "Réservez un appel vidéo gratuit de <x1>{1} minutes</x1>, sans engagement"
  },
  "612e12d29278": {
   "en": "Results",
   "a": "Résultats",
   "date": "2026-11-17",
-  "b": "Résultats"
+  "b": "Résultats",
+  "tr": "Résultats"
  },
  "61fa280a65cf": {
   "en": "Tour {1}",
   "a": "Voyage {1}",
   "date": "2026-11-17",
-  "b": "Voyage {1}"
+  "b": "Voyage {1}",
+  "tr": "Voyage {1}"
  },
  "62255f5671e8": {
   "en": "Season",
   "a": "Saison",
   "date": "2026-11-17",
-  "b": "Saison"
+  "b": "Saison",
+  "tr": "Saison"
  },
  "627a053a8fc8": {
   "en": "A pilot under a white wing, small against the plateau and the terraced fields of {1}",
   "a": "Un pilote sous une voile blanche, minuscule face au plateau et aux champs en terrasses de {1}",
   "date": "2026-11-17",
-  "b": "Un pilote sous une voile blanche, minuscule face au plateau et aux champs en terrasses de {1}"
+  "b": "Un pilote sous une voile blanche, minuscule face au plateau et aux champs en terrasses de {1}",
+  "tr": "Un pilote sous une voile blanche, minuscule face au plateau et aux champs en terrasses de {1}"
  },
  "6357d42cf6f1": {
   "en": "Podcast · Episode {1} · {2} min",
   "a": "Podcast · épisode {1} · {2} min",
   "date": "2026-11-17",
-  "b": "Podcast · Épisode {1} · {2} min"
+  "b": "Podcast · Épisode {1} · {2} min",
+  "tr": "Podcast · épisode {1} · {2} min"
  },
  "638aaa2ae7ed": {
   "en": "Conversations with the designers, test pilots and champions who shape the sport.",
   "a": "Des conversations avec les concepteurs, les pilotes d'essai et les champions qui façonnent notre sport.",
   "date": "2026-11-17",
-  "b": "Des conversations avec les concepteurs, les pilotes d’essai et les champions qui façonnent ce sport."
+  "b": "Des conversations avec les concepteurs, les pilotes d’essai et les champions qui façonnent ce sport.",
+  "tr": "Des conversations avec les concepteurs, les pilotes d’essai et les champions qui façonnent ce sport."
  },
  "63b415f0c040": {
   "en": "How the visual clues change",
   "a": "Comment les indices visuels changent",
   "date": "2026-11-17",
-  "b": "Comment les indices visuels changent"
+  "b": "Comment les indices visuels changent",
+  "tr": "Comment les indices visuels changent"
  },
  "64d1e09d2266": {
   "en": "See {1}, {2} photos",
   "a": "Voir {1}, {2} photos",
   "date": "2026-11-17",
-  "b": "Voir {1}, {2} photos"
+  "b": "Voir {1}, {2} photos",
+  "tr": "Voir {1}, {2} photos"
  },
  "64d8677436db": {
   "en": "Weather Patterns",
   "a": "Situations météo",
   "date": "2026-11-17",
-  "b": "Phénomènes météo"
+  "b": "Phénomènes météo",
+  "tr": "Situations météo"
  },
  "652b532eab8b": {
   "en": "Task {1}, photo {2} of {3}",
   "a": "Manche {1}, photo {2} sur {3}",
   "date": "2026-11-17",
-  "b": "Manche {1}, photo {2} sur {3}"
+  "b": "Manche {1}, photo {2} sur {3}",
+  "tr": "Manche {1}, photo {2} sur {3}"
  },
  "65c821a596ce": {
   "en": "Live",
   "a": "En direct",
   "date": "2026-11-17",
-  "b": "En direct"
+  "b": "En direct",
+  "tr": "En direct"
  },
  "665c672c22eb": {
   "en": "Today<x1>{1}</x1>",
   "a": "Aujourd'hui<x1>{1}</x1>",
   "date": "2026-11-17",
-  "b": "Aujourd’hui<x1>{1}</x1>"
+  "b": "Aujourd’hui<x1>{1}</x1>",
+  "tr": "Aujourd’hui<x1>{1}</x1>"
  },
  "6673b439c370": {
   "en": "Go Thermal Hunting In Primal Habitats",
   "a": "Partez à la chasse aux thermiques dans des milieux primitifs",
   "date": "2026-11-17",
-  "b": "Chasser les thermiques dans des habitats primitifs"
+  "b": "Chasser les thermiques dans des habitats primitifs",
+  "tr": "Partez à la chasse aux thermiques dans des milieux primitifs"
  },
  "6689bbb4bd9a": {
   "en": "Join The {1} List",
   "a": "Rejoignez la liste {1}",
   "date": "2026-11-17",
-  "b": "Rejoignez la liste {1}"
+  "b": "Rejoignez la liste {1}",
+  "tr": "Rejoignez la liste {1}"
  },
  "66a96aca0b35": {
   "en": "Flying in this region",
   "a": "Voler dans cette région",
   "date": "2026-11-17",
-  "b": "Voler dans cette région"
+  "b": "Voler dans cette région",
+  "tr": "Voler dans cette région"
  },
  "683c07efac72": {
   "en": "{1} days, {2}",
   "a": "{1} jours, {2}",
   "date": "2026-11-17",
-  "b": "{1} jours, {2}"
+  "b": "{1} jours, {2}",
+  "tr": "{1} jours, {2}"
  },
  "68efcc3e43b0": {
   "en": "Close the photo",
   "a": "Fermer la photo",
   "date": "2026-11-17",
-  "b": "Fermer la photo"
+  "b": "Fermer la photo",
+  "tr": "Fermer la photo"
  },
  "69232d629246": {
   "en": "Place <x1>(optional)</x1>",
   "a": "Lieu <x1>(facultatif)</x1>",
   "date": "2026-11-17",
-  "b": "Lieu <x1>(facultatif)</x1>"
+  "b": "Lieu <x1>(facultatif)</x1>",
+  "tr": "Lieu <x1>(facultatif)</x1>"
  },
  "697c2ccf782e": {
   "en": "Navigating {1}, Vistasp Kharas",
   "a": "Naviguer à {1}, Vistasp Kharas",
   "date": "2026-11-17",
-  "b": "Naviguer : {1}, Vistasp Kharas"
+  "b": "Naviguer : {1}, Vistasp Kharas",
+  "tr": "Naviguer à {1}, Vistasp Kharas"
  },
  "69d8ee442d50": {
   "en": "Ask about a {1} trip. Book a free {2} minute call, message on {3}, or send the details of your flying and what you are after.",
   "a": "Renseignez-vous sur un voyage {1}. Réservez un appel gratuit de {2} minutes, envoyez un message sur {3}, ou décrivez-nous votre pratique et ce que vous recherchez.",
   "date": "2026-11-17",
-  "b": "Posez vos questions sur un voyage {1}. Réservez un appel gratuit de {2} minutes, écrivez sur {3}, ou envoyez le détail de votre pratique du vol et de ce que vous cherchez."
+  "b": "Posez vos questions sur un voyage {1}. Réservez un appel gratuit de {2} minutes, écrivez sur {3}, ou envoyez le détail de votre pratique du vol et de ce que vous cherchez.",
+  "tr": "Renseignez-vous sur un voyage {1}. Réservez un appel gratuit de {2} minutes, envoyez un message sur {3}, ou décrivez-nous votre pratique et ce que vous recherchez."
  },
  "6a2c2635c173": {
   "en": "Every task day: stills like these, and Daily Highlights, a video each task day with social clips and a results newsletter.",
   "a": "Chaque jour de manche : des photos comme celles-ci, et les Résumés quotidiens, une vidéo par jour de manche, avec des extraits pour les réseaux sociaux et une newsletter des résultats.",
   "date": "2026-11-17",
-  "b": "Chaque jour de manche : des photos comme celles-ci, et les temps forts du jour, une vidéo par jour de manche avec des clips pour les réseaux sociaux et une lettre d’information des résultats."
+  "b": "Chaque jour de manche : des photos comme celles-ci, et les temps forts du jour, une vidéo par jour de manche avec des clips pour les réseaux sociaux et une lettre d’information des résultats.",
+  "tr": "Chaque jour de manche : des photos comme celles-ci, et les temps forts du jour, une vidéo par jour de manche avec des clips pour les réseaux sociaux et une lettre d’information des résultats."
  },
  "6aa1b941eecc": {
   "en": "Pre {1} Kenya, Episode {2}, {3} min",
   "a": "Pré-{1} Kenya, épisode {2}, {3} min",
   "date": "2026-11-17",
-  "b": "Pré-{1} Kenya, épisode {2}, {3} min"
+  "b": "Pré-{1} Kenya, épisode {2}, {3} min",
+  "tr": "Pré-{1} Kenya, épisode {2}, {3} min"
  },
  "6abd5d0e6c77": {
   "en": "November to March",
   "a": "De novembre à mars",
   "date": "2026-11-17",
-  "b": "De novembre à mars"
+  "b": "De novembre à mars",
+  "tr": "De novembre à mars"
  },
  "6b17aaa0f4a4": {
   "en": "One Week On The Plateau",
   "a": "Une semaine sur le plateau",
   "date": "2026-11-17",
-  "b": "Une semaine sur le plateau"
+  "b": "Une semaine sur le plateau",
+  "tr": "Une semaine sur le plateau"
  },
  "6b21fb791ac0": {
   "en": "About",
   "a": "À propos",
   "date": "2026-11-17",
-  "b": "À propos"
+  "b": "À propos",
+  "tr": "À propos"
  },
  "6b6db5e205eb": {
   "en": "Ideal tour match for your skill and dreams (Kenya, {1}, India, Kazakhstan or Peru)",
   "a": "Le voyage idéal pour votre niveau et vos rêves (Kenya, {1}, Inde, Kazakhstan ou Pérou)",
   "date": "2026-11-17",
-  "b": "Le voyage qui correspond le mieux à votre niveau et à vos rêves (Kenya, {1}, Inde, Kazakhstan ou Pérou)"
+  "b": "Le voyage qui correspond le mieux à votre niveau et à vos rêves (Kenya, {1}, Inde, Kazakhstan ou Pérou)",
+  "tr": "Le voyage idéal pour votre niveau et vos rêves (Kenya, {1}, Inde, Kazakhstan ou Pérou)"
  },
  "6b7fe0aa12c6": {
   "en": "Safety for a solo female pilot",
   "a": "La sécurité pour une pilote seule",
   "date": "2026-11-17",
-  "b": "La sécurité pour une pilote seule"
+  "b": "La sécurité pour une pilote seule",
+  "tr": "La sécurité pour une pilote seule"
  },
  "6bf7e4e0f7ee": {
   "en": "<x1>Step {1} of {2}.</x1> Your event is filled in from the Media page: check it, tick the box and send.",
   "a": "<x1>Étape {1} sur {2}.</x1> Votre événement est prérempli depuis la page Médias : vérifiez-le, cochez la case et envoyez.",
   "date": "2026-11-17",
-  "b": "<x1>Étape {1} sur {2}.</x1> Votre événement est repris de la page Médias : vérifiez-le, cochez la case et envoyez."
+  "b": "<x1>Étape {1} sur {2}.</x1> Votre événement est repris de la page Médias : vérifiez-le, cochez la case et envoyez.",
+  "tr": "<x1>Étape {1} sur {2}.</x1> Votre événement est prérempli depuis la page Médias : vérifiez-le, cochez la case et envoyez."
  },
  "6d5bb241740a": {
   "en": "<x1>Group</x1>Small group",
   "a": "<x1>Groupe</x1>Petit groupe",
   "date": "2026-11-17",
-  "b": "<x1>Groupe</x1>Petit groupe"
+  "b": "<x1>Groupe</x1>Petit groupe",
+  "tr": "<x1>Groupe</x1>Petit groupe"
  },
  "6dd07555a840": {
   "en": "<x1>{1}</x1>Ideal tour match for your skill and dreams (Kenya, {2}, India, Kazakhstan or Peru)",
   "a": "<x1>{1}</x1>Le voyage idéal pour votre niveau et vos rêves (Kenya, {2}, Inde, Kazakhstan ou Pérou)",
   "date": "2026-11-17",
-  "b": "<x1>{1}</x1>Le voyage qui correspond le mieux à votre niveau et à vos rêves (Kenya, {2}, Inde, Kazakhstan ou Pérou)"
+  "b": "<x1>{1}</x1>Le voyage qui correspond le mieux à votre niveau et à vos rêves (Kenya, {2}, Inde, Kazakhstan ou Pérou)",
+  "tr": "<x1>{1}</x1>Le voyage idéal pour votre niveau et vos rêves (Kenya, {2}, Inde, Kazakhstan ou Pérou)"
  },
  "6e556cc1559a": {
   "en": "Michael Nesler",
   "a": "Michael Nesler",
   "date": "2026-11-17",
-  "b": "Michael Nesler"
+  "b": "Michael Nesler",
+  "tr": "Michael Nesler"
  },
  "6e62bd83db12": {
   "en": "the coast seen through it",
   "a": "la côte vue à travers",
   "date": "2026-11-17",
-  "b": "la côte vue à travers"
+  "b": "la côte vue à travers",
+  "tr": "la côte vue à travers"
  },
  "6eb92caf408c": {
   "en": "Media coverage of a race or a series. To ask about a trip instead, choose it here.",
   "a": "Couverture médiatique d'une compétition ou d'une série. Pour vous renseigner plutôt sur un voyage, choisissez-le ici.",
   "date": "2026-11-17",
-  "b": "Couverture médias d’une course ou d’une série. Pour poser une question sur un voyage, choisissez-le ici."
+  "b": "Couverture médias d’une course ou d’une série. Pour poser une question sur un voyage, choisissez-le ici.",
+  "tr": "Couverture médiatique d’une compétition ou d’une série. Pour vous renseigner plutôt sur un voyage, choisissez-le ici."
  },
  "6ed1f652fde0": {
   "en": "What we do with it",
   "a": "Ce que nous en faisons",
   "date": "2026-11-17",
-  "b": "Ce que nous en faisons"
+  "b": "Ce que nous en faisons",
+  "tr": "Ce que nous en faisons"
  },
  "6f2c69e9232e": {
   "en": "Send it from your own email app instead",
   "a": "Envoyez-le plutôt depuis votre propre application de messagerie",
   "date": "2026-11-17",
-  "b": "Envoyez-le plutôt depuis votre propre application de messagerie"
+  "b": "Envoyez-le plutôt depuis votre propre application de messagerie",
+  "tr": "Envoyez-le plutôt depuis votre propre application de messagerie"
  },
  "6f397349ef2d": {
   "en": "Like what you see?",
   "a": "Ça vous plaît ?",
   "date": "2026-11-17",
-  "b": "Ça vous plaît ?"
+  "b": "Ça vous plaît ?",
+  "tr": "Ça vous plaît ?"
  },
  "6ffa0f054227": {
   "en": "{1}, the last day, was cancelled for wind: {2} set a {3} km triangle south, but the wind came over the back of launch and the one pilot who tested it top-landed. {4} ends with five scored tasks.",
   "a": "{1}, le dernier jour, a été annulée pour cause de vent : {2} a posé un triangle de {3} km vers le sud, mais le vent est passé de dos au décollage et le seul pilote qui a testé s'est posé au sommet. {4} se termine avec cinq manches validées.",
   "date": "2026-11-17",
-  "b": "{1}, le dernier jour, a été annulée pour cause de vent : {2} a fixé un triangle de {3} km vers le sud, mais le vent est passé par l’arrière du décollage et l’unique pilote qui l’a testé s’est posé au déco. {4} se termine avec cinq manches validées."
+  "b": "{1}, le dernier jour, a été annulée pour cause de vent : {2} a fixé un triangle de {3} km vers le sud, mais le vent est passé par l’arrière du décollage et l’unique pilote qui l’a testé s’est posé au déco. {4} se termine avec cinq manches validées.",
+  "tr": "Le {1}, dernier jour, la manche a été annulée pour cause de vent : {2} a fixé un triangle de {3} km vers le sud, mais le vent est passé de dos au décollage et le seul pilote qui l’a testé s’est posé au sommet. {4} se termine avec cinq manches validées.",
+  "tr_note": "{1} is a date: rebuilt around it; a's wording otherwise"
  },
  "703293ac7226": {
   "en": "Next one starts tomorrow",
   "a": "Le prochain commence demain",
   "date": "2026-11-17",
-  "b": "Le prochain commence demain"
+  "b": "Le prochain commence demain",
+  "tr": "Le prochain commence demain"
  },
  "70a86c196d31": {
   "en": "The plateau that hosted a pre World Cup",
   "a": "Le plateau qui a accueilli une pré-Coupe du monde",
   "date": "2026-11-17",
-  "b": "Le plateau qui a accueilli une pré-Coupe du monde"
+  "b": "Le plateau qui a accueilli une pré-Coupe du monde",
+  "tr": "Le plateau qui a accueilli une pré-Coupe du monde"
  },
  "72542bccf7d2": {
   "en": "A photo from {1} {2}",
   "a": "Une photo de {1} {2}",
   "date": "2026-11-17",
-  "b": "Une photo de {1} {2}"
+  "b": "Une photo de {1} {2}",
+  "tr": "Une photo de {1} {2}"
  },
  "728298d3dbf4": {
   "en": "Daily",
   "a": "À la journée",
   "date": "2026-11-17",
-  "b": "Quotidienne"
+  "b": "Quotidienne",
+  "tr": "À la journée"
  },
  "7312c6e6c797": {
   "en": "{1}: Touch The Sky With Glory",
   "a": "{1} : touchez le ciel avec gloire",
   "date": "2026-11-17",
-  "b": "{1} : toucher le ciel avec gloire"
+  "b": "{1} : toucher le ciel avec gloire",
+  "tr": "{1} : touchez le ciel avec gloire"
  },
  "736d29009ba6": {
   "en": "The calm Pacific breeze, from {1} to the Andes",
   "a": "La douce brise du Pacifique, de {1} aux Andes",
   "date": "2026-11-17",
-  "b": "La brise calme du Pacifique, de {1} jusqu’aux Andes"
+  "b": "La brise calme du Pacifique, de {1} jusqu’aux Andes",
+  "tr": "La brise calme du Pacifique, de {1} jusqu’aux Andes"
  },
  "7398c2d1c615": {
   "en": "The Barabangal flight, told properly",
   "a": "Le vol de Barabangal, raconté en détail",
   "date": "2026-11-17",
-  "b": "Le vol de Barabangal, raconté comme il se doit"
+  "b": "Le vol de Barabangal, raconté comme il se doit",
+  "tr": "Le vol de Barabangal, raconté comme il se doit"
  },
  "73cb67667bda": {
   "en": "Eight days in {1}, two days after the last Kenya tour ends.",
   "a": "Huit jours à {1}, deux jours après la fin du dernier voyage au Kenya.",
   "date": "2026-11-17",
-  "b": "Huit jours à {1}, deux jours après la fin du dernier voyage au Kenya."
+  "b": "Huit jours à {1}, deux jours après la fin du dernier voyage au Kenya.",
+  "tr": "Huit jours à {1}, deux jours après la fin du dernier voyage au Kenya."
  },
  "74052d61eebb": {
   "en": "Organisasjonsnummer {1}",
   "a": "Organisasjonsnummer {1}",
   "date": "2026-11-17",
-  "b": "Organisasjonsnummer {1}"
+  "b": "Organisasjonsnummer {1}",
+  "tr": "Organisasjonsnummer {1}"
  },
  "7431e3df243c": {
   "en": "Package",
   "a": "Formule",
   "date": "2026-11-17",
-  "b": "Formule"
+  "b": "Formule",
+  "tr": "Formule"
  },
  "74946e5e41b4": {
   "en": "Package travel rights",
   "a": "Droits liés aux voyages à forfait",
   "date": "2026-11-17",
-  "b": "Droits des voyageurs à forfait"
+  "b": "Droits des voyageurs à forfait",
+  "tr": "Droits liés aux voyages à forfait"
  },
  "74b69fb5c012": {
   "en": "about, at {1}",
   "a": "environ, à {1}",
   "date": "2026-11-17",
-  "b": "environ, à {1}"
+  "b": "environ, à {1}",
+  "tr": "environ, à {1}"
  },
  "75079c5e96aa": {
   "en": "Your event",
   "a": "Votre événement",
   "date": "2026-11-17",
-  "b": "Votre événement"
+  "b": "Votre événement",
+  "tr": "Votre événement"
  },
  "75cf8cea2df4": {
   "en": "Mistakes visiting pilots make",
   "a": "Les erreurs des pilotes de passage",
   "date": "2026-11-17",
-  "b": "Les erreurs des pilotes de passage"
+  "b": "Les erreurs des pilotes de passage",
+  "tr": "Les erreurs des pilotes de passage"
  },
  "760f81a4285d": {
   "en": "The English version is binding.",
   "a": "La version anglaise fait foi.",
   "date": "2026-11-17",
-  "b": "La version anglaise fait foi."
+  "b": "La version anglaise fait foi.",
+  "tr": "La version anglaise fait foi."
  },
  "761c51e6d567": {
   "en": "Photo: {1}",
   "a": "Photo : {1}",
   "date": "2026-11-17",
-  "b": "Photo : {1}"
+  "b": "Photo : {1}",
+  "tr": "Photo : {1}"
  },
  "7620deee5c53": {
   "en": "Fly Where Humankind First Walked",
   "a": "Volez là où l'humanité a fait ses premiers pas",
   "date": "2026-11-17",
-  "b": "Voler là où l’humanité a fait ses premiers pas"
+  "b": "Voler là où l’humanité a fait ses premiers pas",
+  "tr": "Volez là où l’humanité a fait ses premiers pas"
  },
  "766b8b4fcd7e": {
   "en": "India · {1} hills<x1>{2}°N · {3}°E</x1>",
   "a": "Inde · collines de {1}<x1>{2}°N · {3}°E</x1>",
   "date": "2026-11-17",
-  "b": "Inde · {1} collines<x1>{2}°N · {3}°E</x1>"
+  "b": "Inde · {1} collines<x1>{2}°N · {3}°E</x1>",
+  "tr": "Inde · collines de {1}<x1>{2}°N · {3}°E</x1>"
  },
  "768455dcc4b9": {
   "en": "Navigating India: Eddie Colfox<x1>Navigators, Episode {1}, {2} min</x1>",
   "a": "Naviguer en Inde : Eddie Colfox<x1>Navigators, épisode {1}, {2} min</x1>",
   "date": "2026-11-17",
-  "b": "Naviguer en Inde : Eddie Colfox<x1>Navigateurs, épisode {1}, {2} min</x1>"
+  "b": "Naviguer en Inde : Eddie Colfox<x1>Navigateurs, épisode {1}, {2} min</x1>",
+  "tr": "Naviguer en Inde : Eddie Colfox<x1>Navigators, épisode {1}, {2} min</x1>"
  },
  "768f93497d35": {
   "en": "More to {1} than the nationals",
   "a": "{1}, bien plus que les championnats nationaux",
   "date": "2026-11-17",
-  "b": "{1}, c’est plus que les championnats nationaux"
+  "b": "{1}, c’est plus que les championnats nationaux",
+  "tr": "{1}, bien plus que les championnats nationaux"
  },
  "76fa8da4c233": {
   "en": "What you want from it",
   "a": "Ce que vous en attendez",
   "date": "2026-11-17",
-  "b": "Ce que vous en attendez"
+  "b": "Ce que vous en attendez",
+  "tr": "Ce que vous en attendez"
  },
  "76fe8afd4a7a": {
   "en": "India, above the snowline",
   "a": "L'Inde, au-dessus de la limite des neiges",
   "date": "2026-11-17",
-  "b": "L’Inde, au-dessus de la limite des neiges"
+  "b": "L’Inde, au-dessus de la limite des neiges",
+  "tr": "L’Inde, au-dessus de la limite des neiges"
  },
  "7704fc8209b6": {
   "en": "See the India trip",
   "a": "Voir le voyage en Inde",
   "date": "2026-11-17",
-  "b": "Voir le voyage en Inde"
+  "b": "Voir le voyage en Inde",
+  "tr": "Voir le voyage en Inde"
  },
  "772a7ddcb0fb": {
   "en": "A {1} km opener that started low and ended with a long glide into the wind.",
   "a": "Une première manche de {1} km, partie bas et terminée par une longue transition face au vent.",
   "date": "2026-11-17",
-  "b": "Une ouverture de {1} km, partie bas et terminée par un long plané face au vent."
+  "b": "Une ouverture de {1} km, partie bas et terminée par un long plané face au vent.",
+  "tr": "Une première manche de {1} km, partie bas et terminée par un long plané face au vent.",
+  "tr_note": "a's 'première manche', b's 'plané' (a glide, not a transition)",
+  "waive": {
+   "glossary": "'finesse' is the glide ratio; here 'a long glide' is the flight itself, which French pilots call 'un long plané'"
+  }
  },
  "77de5e0361bf": {
   "en": "Why fly with us",
   "a": "Pourquoi voler avec nous",
   "date": "2026-11-17",
-  "b": "Pourquoi voler avec nous"
+  "b": "Pourquoi voler avec nous",
+  "tr": "Pourquoi voler avec nous"
  },
  "77e7f86be6a0": {
   "en": "<x1>Group</x1>{1} places",
   "a": "<x1>Groupe</x1>{1} places",
   "date": "2026-11-17",
-  "b": "<x1>Groupe</x1>{1} places"
+  "b": "<x1>Groupe</x1>{1} places",
+  "tr": "<x1>Groupe</x1>{1} places"
  },
  "780c1ee30f1c": {
   "en": "The {1} front range, to a cloudbase of {2} to {3} km",
   "a": "Le premier chaînon de {1}, sous un plafond de {2} à {3} km",
   "date": "2026-11-17",
-  "b": "Le front de la chaîne {1}, jusqu’à une base des nuages de {2} à {3} km"
+  "b": "Le front de la chaîne {1}, jusqu’à une base des nuages de {2} à {3} km",
+  "tr": "Le premier chaînon du {1}, jusqu’à une base des nuages de {2} à {3} km",
+  "tr_note": "a's 'premier chaînon', b's 'jusqu’à'; cloudbase per glossary; Dhauladhar is a range (le)"
  },
  "79602a55c18a": {
   "en": "Pre {1} Kenya",
   "a": "Pré-{1} Kenya",
   "date": "2026-11-17",
-  "b": "Pré-{1} Kenya"
+  "b": "Pré-{1} Kenya",
+  "tr": "Pré-{1} Kenya"
  },
  "7a8616775e58": {
   "en": "Take-off at about {1} to {2} m",
   "a": "Décollage à environ {1} à {2} m",
   "date": "2026-11-17",
-  "b": "Décollage à environ {1} à {2} m"
+  "b": "Décollage à environ {1} à {2} m",
+  "tr": "Décollage entre {1} et {2} m environ",
+  "tr_note": "'à environ {1} à {2} m' is not French"
  },
  "7ab8307d3d9e": {
   "en": "Open the episode <x1>→</x1>",
   "a": "Ouvrir l'épisode <x1>→</x1>",
   "date": "2026-11-17",
-  "b": "Ouvrir l’épisode <x1>→</x1>"
+  "b": "Ouvrir l’épisode <x1>→</x1>",
+  "tr": "Ouvrir l’épisode <x1>→</x1>"
  },
  "7ae348a9b540": {
   "en": "We'll break down:",
   "a": "Nous passerons en revue :",
   "date": "2026-11-17",
-  "b": "Nous passerons en revue :"
+  "b": "Nous passerons en revue :",
+  "tr": "Nous passerons en revue :"
  },
  "7b8de0bcc0fa": {
   "en": "Jul, Aug, Sep",
   "a": "juil., août, sept.",
   "date": "2026-11-17",
-  "b": "Juil., août, sept."
+  "b": "Juil., août, sept.",
+  "tr": "juil., août, sept."
  },
  "7b970c21fe9c": {
   "en": "The Land Of Five Hills",
   "a": "La terre des cinq collines",
   "date": "2026-11-17",
-  "b": "La terre des cinq collines"
+  "b": "La terre des cinq collines",
+  "tr": "La terre des cinq collines"
  },
  "7c92ea879110": {
   "en": "<x1>Price</x1>{1}",
   "a": "<x1>Prix</x1>{1}",
   "date": "2026-11-17",
-  "b": "<x1>Prix</x1>{1}"
+  "b": "<x1>Prix</x1>{1}",
+  "tr": "<x1>Prix</x1>{1}"
  },
  "7d4857413070": {
   "en": "Flying today",
   "a": "On vole aujourd'hui",
   "date": "2026-11-17",
-  "b": "On vole aujourd’hui"
+  "b": "On vole aujourd’hui",
+  "tr": "On vole aujourd’hui"
  },
  "7defbd15ad35": {
   "en": "The season",
   "a": "La saison",
   "date": "2026-11-17",
-  "b": "La saison"
+  "b": "La saison",
+  "tr": "La saison"
  },
  "7e3d96031b71": {
   "en": "Task {1}: {2}",
   "a": "Manche {1} : {2}",
   "date": "2026-11-17",
-  "b": "Manche {1} : {2}"
+  "b": "Manche {1} : {2}",
+  "tr": "Manche {1} : {2}"
  },
  "7e47aa827214": {
   "en": "Our {1} trip",
   "a": "Notre voyage {1}",
   "date": "2026-11-17",
-  "b": "Notre voyage {1}"
+  "b": "Notre voyage {1}",
+  "tr": "Notre voyage {1}"
  },
  "7e960e1692ca": {
   "en": "<x1></x1>Our trips",
   "a": "<x1></x1>Nos voyages",
   "date": "2026-11-17",
-  "b": "<x1></x1>Nos voyages"
+  "b": "<x1></x1>Nos voyages",
+  "tr": "<x1></x1>Nos voyages"
  },
  "7eb1647323da": {
   "en": "a second view of Kenya",
   "a": "une autre vue du Kenya",
   "date": "2026-11-17",
-  "b": "une seconde vue du Kenya"
+  "b": "une seconde vue du Kenya",
+  "tr": "une autre vue du Kenya"
  },
  "7eb47d288599": {
   "en": "photos coming",
   "a": "photos à venir",
   "date": "2026-11-17",
-  "b": "photos à venir"
+  "b": "photos à venir",
+  "tr": "photos à venir"
  },
  "7f037e678652": {
   "en": "Flight Mechanics",
   "a": "Mécanique du vol",
   "date": "2026-11-17",
-  "b": "Mécanique du vol"
+  "b": "Mécanique du vol",
+  "tr": "Mécanique du vol"
  },
  "7f2bb1350583": {
   "en": "Skip: go on to the next place",
   "a": "Passer : aller au lieu suivant",
   "date": "2026-11-17",
-  "b": "Passer : aller au lieu suivant"
+  "b": "Passer : aller au lieu suivant",
+  "tr": "Passer : aller au lieu suivant"
  },
  "7f4d6bb6d2b3": {
   "en": "CryMeARiviuk shared the lead with Gin {1} after Task {2}, then led alone from Task {3} to the end.",
   "a": "CryMeARiviuk partageait la tête avec Gin {1} après la manche {2}, puis a mené seule de la manche {3} jusqu'au bout.",
   "date": "2026-11-17",
-  "b": "CryMeARiviuk a partagé la tête avec Gin {1} après la manche {2}, puis a mené seul de la manche {3} jusqu’à la fin."
+  "b": "CryMeARiviuk a partagé la tête avec Gin {1} après la manche {2}, puis a mené seul de la manche {3} jusqu’à la fin.",
+  "tr": "CryMeARiviuk partageait la tête avec Gin {1} après la manche {2}, puis a mené seule de la manche {3} jusqu’au bout."
  },
  "7fa79a289353": {
   "en": "Next leg: Task {1}, Fri {2} <x1>→</x1>",
   "a": "Étape suivante : manche {1}, ven. {2} <x1>→</x1>",
   "date": "2026-11-17",
-  "b": "Étape suivante : manche {1}, ven. {2} <x1>→</x1>"
+  "b": "Étape suivante : manche {1}, ven. {2} <x1>→</x1>",
+  "tr": "Étape suivante : manche {1}, ven. {2} <x1>→</x1>"
  },
  "820e5c196403": {
   "en": "Full size, EUR {1}",
   "a": "Pleine résolution, {1} EUR",
   "date": "2026-11-17",
-  "b": "Pleine taille, {1} EUR"
+  "b": "Pleine taille, {1} EUR",
+  "tr": "Pleine résolution, {1} EUR"
  },
  "8274e3089bb3": {
   "en": "Book a Call",
   "a": "Réserver un appel",
   "date": "2026-11-17",
-  "b": "Réserver un appel"
+  "b": "Réserver un appel",
+  "tr": "Réserver un appel"
  },
  "82bf4b32c770": {
   "en": "What Makes {1} Unique?",
   "a": "Qu'est-ce qui rend {1} unique ?",
   "date": "2026-11-17",
-  "b": "Qu’est-ce qui rend {1} unique ?"
+  "b": "Qu’est-ce qui rend {1} unique ?",
+  "tr": "Qu’est-ce qui rend {1} unique ?"
  },
  "82f92c35d5cf": {
   "en": "Won by <x1>{1}</x1> points",
   "a": "Gagné avec <x1>{1}</x1> points d'avance",
   "date": "2026-11-17",
-  "b": "Gagné de <x1>{1}</x1> points"
+  "b": "Gagné de <x1>{1}</x1> points",
+  "tr": "Gagné avec <x1>{1}</x1> points d’avance"
  },
  "83a5ade09cc5": {
   "en": ", chapter {1}, {2}",
   "a": ", chapitre {1}, {2}",
   "date": "2026-11-17",
-  "b": ", chapitre {1}, {2}"
+  "b": ", chapitre {1}, {2}",
+  "tr": ", chapitre {1}, {2}"
  },
  "83bb0c56bfb9": {
   "en": "Every task on one page",
   "a": "Toutes les manches sur une page",
   "date": "2026-11-17",
-  "b": "Toutes les manches sur une page"
+  "b": "Toutes les manches sur une page",
+  "tr": "Toutes les manches sur une page"
  },
  "83d092437476": {
   "en": "Where a refund is due",
   "a": "Lorsqu'un remboursement est dû",
   "date": "2026-11-17",
-  "b": "Quand un remboursement est dû"
+  "b": "Quand un remboursement est dû",
+  "tr": "Lorsqu’un remboursement est dû"
  },
  "842b7b5d7189": {
   "en": "Dates",
   "a": "Dates",
   "date": "2026-11-17",
-  "b": "Dates"
+  "b": "Dates",
+  "tr": "Dates"
  },
  "848c070ccdec": {
   "en": "See {1}, {2} photos and the highlights film",
   "a": "Voir {1}, {2} photos et le film résumé",
   "date": "2026-11-17",
-  "b": "Voir {1}, {2} photos et le film des temps forts"
+  "b": "Voir {1}, {2} photos et le film des temps forts",
+  "tr": "Voir {1}, {2} photos et le film des temps forts"
  },
  "84add5b29527": {
   "en": "Email",
   "a": "E-mail",
   "date": "2026-11-17",
-  "b": "E-mail"
+  "b": "E-mail",
+  "tr": "E-mail"
  },
  "84bea8184b95": {
   "en": "Point at the name: a second view of Kenya",
   "a": "Pointez le nom : une autre vue du Kenya",
   "date": "2026-11-17",
-  "b": "Pointez le nom : une seconde vue du Kenya"
+  "b": "Pointez le nom : une seconde vue du Kenya",
+  "tr": "Pointez le nom : une autre vue du Kenya"
  },
  "84ce31606ac7": {
   "en": "Expeditions",
   "a": "Expéditions",
   "date": "2026-11-17",
-  "b": "Expéditions"
+  "b": "Expéditions",
+  "tr": "Expéditions"
  },
  "84d69919120d": {
   "en": "{1}<x1>Planned, dates <x2>coming soon</x2></x1>",
   "a": "{1}<x1>Prévu, dates <x2>bientôt annoncées</x2></x1>",
   "date": "2026-11-17",
-  "b": "{1}<x1>Prévu, dates <x2>bientôt disponibles</x2></x1>"
+  "b": "{1}<x1>Prévu, dates <x2>bientôt disponibles</x2></x1>",
+  "tr": "{1}<x1>Prévu, dates <x2>à venir</x2></x1>",
+  "tr_note": "'à venir' is the exact French for 'coming soon' in a date line; 'annoncées' added a meaning"
  },
  "84ec3e71d2c9": {
   "en": "Sitemap",
   "a": "Plan du site",
   "date": "2026-11-17",
-  "b": "Plan du site"
+  "b": "Plan du site",
+  "tr": "Plan du site"
  },
  "8557d608fedc": {
   "en": "Ivelin Kalushkov",
   "a": "Ivelin Kalushkov",
   "date": "2026-11-17",
-  "b": "Ivelin Kalushkov"
+  "b": "Ivelin Kalushkov",
+  "tr": "Ivelin Kalushkov"
  },
  "85f7868cd22c": {
   "en": "Pre {1} Kenya: Nikolay Yotov<x1>Navigators, Episode {2}, {3} min</x1>",
   "a": "Pré-{1} Kenya : Nikolay Yotov<x1>Navigators, épisode {2}, {3} min</x1>",
   "date": "2026-11-17",
-  "b": "Pré-{1} Kenya : Nikolay Yotov<x1>Navigateurs, épisode {2}, {3} min</x1>"
+  "b": "Pré-{1} Kenya : Nikolay Yotov<x1>Navigateurs, épisode {2}, {3} min</x1>",
+  "tr": "Pré-{1} Kenya : Nikolay Yotov<x1>Navigators, épisode {2}, {3} min</x1>"
  },
  "862147f5e8f5": {
   "en": "The answers on the site come from Vistasp Kharas, on the show. If yours is not here, ask it on the call.",
   "a": "Les réponses sur le site viennent de Vistasp Kharas, dans l'émission. Si votre question n'y figure pas, posez-la pendant l'appel.",
   "date": "2026-11-17",
-  "b": "Les réponses du site viennent de Vistasp Kharas, dans l’émission. Si la vôtre n’y est pas, posez-la pendant l’appel."
+  "b": "Les réponses du site viennent de Vistasp Kharas, dans l’émission. Si la vôtre n’y est pas, posez-la pendant l’appel.",
+  "tr": "Les réponses sur le site viennent de Vistasp Kharas, dans l’émission. Si votre question n’y figure pas, posez-la pendant l’appel."
  },
  "87053d443651": {
   "en": "{1} {2}, tasks {3}",
   "a": "{1} {2}, manches {3}",
   "date": "2026-11-17",
-  "b": "{1} {2}, manches {3}"
+  "b": "{1} {2}, manches {3}",
+  "tr": "{1} {2}, manches {3}"
  },
  "87643b5625e0": {
   "en": "Watch the coverage first: the {1} comp videos of {2} play on the <x1>Media page</x1>, with the stills from {3} {4}.",
   "a": "Regardez d'abord la couverture : les {1} vidéos de compétition de {2} sont visibles sur la <x1>page Médias</x1>, avec les photos de {3} {4}.",
   "date": "2026-11-17",
-  "b": "Regardez d’abord la couverture : les {1} vidéos de compétition de {2} sont à voir sur la <x1>page Médias</x1>, avec les photos de {3} {4}."
+  "b": "Regardez d’abord la couverture : les {1} vidéos de compétition de {2} sont à voir sur la <x1>page Médias</x1>, avec les photos de {3} {4}.",
+  "tr": "Regardez d’abord la couverture : les {1} vidéos de compétition de {2} sont visibles sur la <x1>page Médias</x1>, avec les photos de {3} {4}."
  },
  "877cfb3896c9": {
   "en": "{1} hills",
   "a": "Collines de {1}",
   "date": "2026-11-17",
-  "b": "{1} collines"
+  "b": "{1} collines",
+  "tr": "Collines de {1}"
  },
  "87fe14c031dc": {
   "en": "Flight Safety, First and Always",
   "a": "La sécurité des vols, d'abord et toujours",
   "date": "2026-11-17",
-  "b": "La sécurité en vol, d’abord et toujours"
+  "b": "La sécurité en vol, d’abord et toujours",
+  "tr": "La sécurité en vol, d’abord et toujours"
  },
  "88146531f301": {
   "en": "Urs Haari",
   "a": "Urs Haari",
   "date": "2026-11-17",
-  "b": "Urs Haari"
+  "b": "Urs Haari",
+  "tr": "Urs Haari"
  },
  "8842e5b44771": {
   "en": "Leave this empty",
   "a": "Laissez ce champ vide",
   "date": "2026-11-17",
-  "b": "Laisser vide"
+  "b": "Laisser vide",
+  "tr": "Laissez ce champ vide"
  },
  "8987ee02c101": {
   "en": "Take-off sits at about {1} to {2} m, and in the peak of the season pilots climb to {3} to {4} m, so on a good day the height above the ground beats {5}'s.",
   "a": "Le décollage se situe à environ {1} à {2} m, et au cœur de la saison les pilotes montent à {3} à {4} m : un bon jour, la hauteur au-dessus du sol dépasse donc celle de {5}.",
   "date": "2026-11-17",
-  "b": "Le décollage se situe à environ {1} à {2} m, et au plus fort de la saison les pilotes montent à {3} à {4} m ; un bon jour, la hauteur au-dessus du sol dépasse donc celle de {5}."
+  "b": "Le décollage se situe à environ {1} à {2} m, et au plus fort de la saison les pilotes montent à {3} à {4} m ; un bon jour, la hauteur au-dessus du sol dépasse donc celle de {5}.",
+  "tr": "Le décollage se situe entre {1} et {2} m environ, et au cœur de la saison les pilotes montent entre {3} et {4} m : un bon jour, la hauteur au-dessus du sol dépasse donc celle de {5}.",
+  "tr_note": "a, with the 'à environ X à Y m' construction fixed"
  },
  "89b86ab0e66f": {
   "en": "Language",
   "a": "Langue",
   "date": "2026-11-17",
-  "b": "Langue"
+  "b": "Langue",
+  "tr": "Langue"
  },
  "8a528519bdab": {
   "en": "Overall",
   "a": "Général",
   "date": "2026-11-17",
-  "b": "Général"
+  "b": "Général",
+  "tr": "Général"
  },
  "8b476e716cc3": {
   "en": "This is the part that decides whether a trip is right for you, so please be straight with us. It is used to answer your enquiry, nothing else.",
   "a": "C'est cette partie qui détermine si un voyage vous convient, alors soyez francs avec nous. Elle sert uniquement à répondre à votre demande.",
   "date": "2026-11-17",
-  "b": "C’est cette partie qui décide si un voyage vous convient, alors soyez franc avec nous. Elle sert à répondre à votre demande, rien d’autre."
+  "b": "C’est cette partie qui décide si un voyage vous convient, alors soyez franc avec nous. Elle sert à répondre à votre demande, rien d’autre.",
+  "tr": "C’est cette partie qui détermine si un voyage vous convient, alors soyez franc avec nous. Elle sert à répondre à votre demande, rien d’autre.",
+  "tr_note": "merged: 'franc' (vous of politeness, one reader), b's 'rien d’autre'"
  },
  "8b59289e1b23": {
   "en": "See the photos",
   "a": "Voir les photos",
   "date": "2026-11-17",
-  "b": "Voir les photos"
+  "b": "Voir les photos",
+  "tr": "Voir les photos"
  },
  "8ba724b4bbcc": {
   "en": "<x1></x1>Every other episode",
   "a": "<x1></x1>Tous les autres épisodes",
   "date": "2026-11-17",
-  "b": "<x1></x1>Tous les autres épisodes"
+  "b": "<x1></x1>Tous les autres épisodes",
+  "tr": "<x1></x1>Tous les autres épisodes"
  },
  "8c06115f64e5": {
   "en": "What wing should I bring?",
   "a": "Quelle voile apporter ?",
   "date": "2026-11-17",
-  "b": "Quelle voile apporter ?"
+  "b": "Quelle voile apporter ?",
+  "tr": "Quelle voile apporter ?"
  },
  "8c410fd00f6c": {
   "en": "Castbox",
   "a": "Castbox",
   "date": "2026-11-17",
-  "b": "Castbox"
+  "b": "Castbox",
+  "tr": "Castbox"
  },
  "8c698c8ad0a3": {
   "en": "Your Event",
   "a": "Votre événement",
   "date": "2026-11-17",
-  "b": "Votre événement"
+  "b": "Votre événement",
+  "tr": "Votre événement"
  },
  "8d63dacc2634": {
   "en": "Enquire | {1}",
   "a": "Se renseigner | {1}",
   "date": "2026-11-17",
-  "b": "Nous contacter | {1}"
+  "b": "Nous contacter | {1}",
+  "tr": "Se renseigner | {1}"
  },
  "8da62b9741d1": {
   "en": "{1} {2}, {3}, national licence",
   "a": "{1} {2}, {3}, licence nationale",
   "date": "2026-11-17",
-  "b": "{1} {2}, {3}, brevet national"
+  "b": "{1} {2}, {3}, brevet national",
+  "tr": "{1} {2}, {3}, brevet national"
  },
  "8ddeb996e4b5": {
   "en": "Before You Come",
   "a": "Avant de venir",
   "date": "2026-11-17",
-  "b": "Avant de venir"
+  "b": "Avant de venir",
+  "tr": "Avant de venir"
  },
  "8e3df45a49db": {
   "en": "Copied",
   "a": "Copié",
   "date": "2026-11-17",
-  "b": "Copié"
+  "b": "Copié",
+  "tr": "Copié"
  },
  "8f26c6520d61": {
   "en": "Loading",
   "a": "Chargement",
   "date": "2026-11-17",
-  "b": "Chargement"
+  "b": "Chargement",
+  "tr": "Chargement"
  },
  "8f34007c756d": {
   "en": "Listen to the podcast",
   "a": "Écouter le podcast",
   "date": "2026-11-17",
-  "b": "Écouter le podcast"
+  "b": "Écouter le podcast",
+  "tr": "Écouter le podcast"
  },
  "8fe6022d1507": {
   "en": "Booking open",
   "a": "Réservations ouvertes",
   "date": "2026-11-17",
-  "b": "Réservations ouvertes"
+  "b": "Réservations ouvertes",
+  "tr": "Réservations ouvertes"
  },
  "8fe836a308e6": {
   "en": "Next leg: Task {1}, Sat {2} <x1>→</x1>",
   "a": "Étape suivante : manche {1}, sam. {2} <x1>→</x1>",
   "date": "2026-11-17",
-  "b": "Étape suivante : manche {1}, sam. {2} <x1>→</x1>"
+  "b": "Étape suivante : manche {1}, sam. {2} <x1>→</x1>",
+  "tr": "Étape suivante : manche {1}, sam. {2} <x1>→</x1>"
  },
  "902c91d94e0f": {
   "en": "Legal",
   "a": "Mentions légales",
   "date": "2026-11-17",
-  "b": "Mentions légales"
+  "b": "Mentions légales",
+  "tr": "Mentions légales"
  },
  "92711617537f": {
   "en": "Copy this link",
   "a": "Copiez ce lien",
   "date": "2026-11-17",
-  "b": "Copier ce lien"
+  "b": "Copier ce lien",
+  "tr": "Copier ce lien"
  },
  "93157ccbafcd": {
   "en": "Sky Gods",
   "a": "Les dieux du ciel",
   "date": "2026-11-17",
-  "b": "Dieux du ciel"
+  "b": "Dieux du ciel",
+  "tr": "Les dieux du ciel"
  },
  "93809a9726d3": {
   "en": "I am happy for {1} to use these details to answer my enquiry. I understand they are kept for up to {2} months <x1>if this does not become a booking</x1><x2>if no coverage is agreed</x2>, that they are not sold or shared for marketing, and that I can ask for them to be deleted at any time. See the <x3>Privacy Policy</x3>.",
   "a": "J'accepte que {1} utilise ces informations pour répondre à ma demande. Je comprends qu'elles sont conservées jusqu'à {2} mois <x1>si cela n'aboutit pas à une réservation</x1><x2>si aucune couverture n'est convenue</x2>, qu'elles ne sont ni vendues ni partagées à des fins marketing, et que je peux en demander la suppression à tout moment. Voir la <x3>politique de confidentialité</x3>.",
   "date": "2026-11-17",
-  "b": "J’accepte que {1} utilise ces informations pour répondre à ma demande. Je comprends qu’elles sont conservées jusqu’à {2} mois <x1>si cela ne débouche pas sur une réservation</x1><x2>si aucune couverture n’est convenue</x2>, qu’elles ne sont ni vendues ni partagées à des fins de marketing, et que je peux demander leur suppression à tout moment. Voir la <x3>politique de confidentialité</x3>."
+  "b": "J’accepte que {1} utilise ces informations pour répondre à ma demande. Je comprends qu’elles sont conservées jusqu’à {2} mois <x1>si cela ne débouche pas sur une réservation</x1><x2>si aucune couverture n’est convenue</x2>, qu’elles ne sont ni vendues ni partagées à des fins de marketing, et que je peux demander leur suppression à tout moment. Voir la <x3>politique de confidentialité</x3>.",
+  "tr": "J’accepte que {1} utilise ces informations pour répondre à ma demande. Je comprends qu’elles sont conservées jusqu’à {2} mois <x1>si cela ne débouche pas sur une réservation</x1><x2>si aucune couverture n’est convenue</x2>, qu’elles ne sont ni vendues ni partagées à des fins de marketing, et que je peux demander leur suppression à tout moment. Voir la <x3>politique de confidentialité</x3>."
  },
  "94735078de89": {
   "en": "{1}, India",
   "a": "{1}, Inde",
   "date": "2026-11-17",
-  "b": "{1}, Inde"
+  "b": "{1}, Inde",
+  "tr": "{1}, Inde"
  },
  "95898dee4581": {
   "en": "The land of five hills: volcanic tablelands, sharp cliffs and punchy thermals, two hours from {1}.",
   "a": "La terre des cinq collines : plateaux volcaniques, falaises abruptes et thermiques musclés, à deux heures de {1}.",
   "date": "2026-11-17",
-  "b": "La terre des cinq collines : plateaux volcaniques, falaises abruptes et thermiques toniques, à deux heures de {1}."
+  "b": "La terre des cinq collines : plateaux volcaniques, falaises abruptes et thermiques toniques, à deux heures de {1}.",
+  "tr": "La terre des cinq collines : plateaux volcaniques, falaises abruptes et thermiques musclés, à deux heures de {1}."
  },
  "95f48d8b7a34": {
   "en": "Before you book",
   "a": "Avant de réserver",
   "date": "2026-11-17",
-  "b": "Avant de réserver"
+  "b": "Avant de réserver",
+  "tr": "Avant de réserver"
  },
  "960923b93826": {
   "en": "{1} min",
   "a": "{1} min",
   "date": "2026-11-17",
-  "b": "{1} min"
+  "b": "{1} min",
+  "tr": "{1} min"
  },
  "96647f24fadb": {
   "en": "Site and country",
   "a": "Site et pays",
   "date": "2026-11-17",
-  "b": "Site et pays"
+  "b": "Site et pays",
+  "tr": "Site et pays"
  },
  "967ce367d89d": {
   "en": "India",
   "a": "Inde",
   "date": "2026-11-17",
-  "b": "Inde"
+  "b": "Inde",
+  "tr": "Inde"
  },
  "976b287e874e": {
   "en": "Two pilots coming in to land over a dry field, more wings above and a flat-topped hill behind",
   "a": "Deux pilotes en approche au-dessus d'un champ sec, d'autres voiles plus haut et une colline au sommet plat derrière",
   "date": "2026-11-17",
-  "b": "Deux pilotes en approche pour atterrir au-dessus d’un champ sec, d’autres voiles au-dessus et une colline à sommet plat derrière"
+  "b": "Deux pilotes en approche pour atterrir au-dessus d’un champ sec, d’autres voiles au-dessus et une colline à sommet plat derrière",
+  "tr": "Deux pilotes en approche au-dessus d’un champ sec, d’autres voiles plus haut et une colline au sommet plat derrière"
  },
  "97fe30b98737": {
   "en": "{1}: Paragliding the {2} Tablelands",
   "a": "{1} : le parapente sur les plateaux de {2}",
   "date": "2026-11-17",
-  "b": "{1} : le parapente sur les plateaux de {2}"
+  "b": "{1} : le parapente sur les plateaux de {2}",
+  "tr": "{1} : le parapente sur les plateaux de {2}"
  },
  "997f59bc99b2": {
   "en": "Dec",
   "a": "déc.",
   "date": "2026-11-17",
-  "b": "Déc."
+  "b": "Déc.",
+  "tr": "déc."
  },
  "99d628a2e8ba": {
   "en": "Watch on {1}",
   "a": "Voir sur {1}",
   "date": "2026-11-17",
-  "b": "Voir sur {1}"
+  "b": "Voir sur {1}",
+  "tr": "Voir sur {1}"
  },
  "9a1fc1731f62": {
   "en": "Questions",
   "a": "Questions",
   "date": "2026-11-17",
-  "b": "Questions"
+  "b": "Questions",
+  "tr": "Questions"
  },
  "9ad8943d7c46": {
   "en": "Tell Us About <x1>Your Flying</x1>",
   "a": "Parlez-nous de <x1>votre pratique du vol</x1>",
   "date": "2026-11-17",
-  "b": "Parlez-nous de <x1>votre pratique du vol</x1>"
+  "b": "Parlez-nous de <x1>votre pratique du vol</x1>",
+  "tr": "Parlez-nous de <x1>votre pratique du vol</x1>"
  },
  "9b088a46913a": {
   "en": "A paraglider over a terraced valley below steep cliffs",
   "a": "Un parapente au-dessus d'une vallée en terrasses, sous des falaises abruptes",
   "date": "2026-11-17",
-  "b": "Un parapente au-dessus d’une vallée en terrasses, sous des falaises abruptes"
+  "b": "Un parapente au-dessus d’une vallée en terrasses, sous des falaises abruptes",
+  "tr": "Un parapente au-dessus d’une vallée en terrasses, sous des falaises abruptes"
  },
  "9b90ea85e0a7": {
   "en": "Find Yourself In The Photos",
   "a": "Retrouvez-vous sur les photos",
   "date": "2026-11-17",
-  "b": "Retrouvez-vous sur les photos"
+  "b": "Retrouvez-vous sur les photos",
+  "tr": "Retrouvez-vous sur les photos"
  },
  "9bd549f572c2": {
   "en": "A paraglider above the Peruvian desert coastline",
   "a": "Un parapente au-dessus du littoral désertique péruvien",
   "date": "2026-11-17",
-  "b": "Un parapente au-dessus de la côte désertique du Pérou"
+  "b": "Un parapente au-dessus de la côte désertique du Pérou",
+  "tr": "Un parapente au-dessus de la côte désertique du Pérou"
  },
  "9c30a3485a58": {
   "en": "Gallery",
   "a": "Galerie",
   "date": "2026-11-17",
-  "b": "Galerie"
+  "b": "Galerie",
+  "tr": "Galerie"
  },
  "9cbe42aaff60": {
   "en": "Planned",
   "a": "Prévu",
   "date": "2026-11-17",
-  "b": "Prévu"
+  "b": "Prévu",
+  "tr": "Prévu"
  },
  "9cfd2c3b6cbc": {
   "en": "Insurance, and the admin side",
   "a": "L'assurance, et le côté administratif",
   "date": "2026-11-17",
-  "b": "L’assurance, et le côté administratif"
+  "b": "L’assurance, et le côté administratif",
+  "tr": "L’assurance, et le côté administratif"
  },
  "9d498b6f0693": {
   "en": "A season or a rough window is fine",
   "a": "Une saison ou une période approximative suffit",
   "date": "2026-11-17",
-  "b": "Une saison ou une période approximative suffit"
+  "b": "Une saison ou une période approximative suffit",
+  "tr": "Une saison ou une période approximative suffit"
  },
  "9f92b10500f1": {
   "en": "{1}, on YouTube",
   "a": "{1}, sur YouTube",
   "date": "2026-11-17",
-  "b": "{1}, sur YouTube"
+  "b": "{1}, sur YouTube",
+  "tr": "{1}, sur YouTube"
  },
  "9fadee64b66b": {
   "en": "The pilot rating for the tour is <x1>{1}</x1>.",
   "a": "Le niveau de pilote requis pour ce voyage est <x1>{1}</x1>.",
   "date": "2026-11-17",
-  "b": "Le niveau de pilote requis pour le voyage est <x1>{1}</x1>."
+  "b": "Le niveau de pilote requis pour le voyage est <x1>{1}</x1>.",
+  "tr": "Le niveau de pilote requis pour ce voyage est <x1>{1}</x1>."
  },
  "a0390598c54e": {
   "en": "Read the English page",
   "a": "Lire la page en anglais",
   "date": "2026-11-17",
-  "b": "Lire la page en anglais"
+  "b": "Lire la page en anglais",
+  "tr": "Lire la page en anglais"
  },
  "a0570bed3923": {
   "en": "Tue {1}",
   "a": "mar. {1}",
   "date": "2026-11-17",
-  "b": "Mar. {1}"
+  "b": "Mar. {1}",
+  "tr": "mar. {1}"
  },
  "a081ff0fdfde": {
   "en": "Next leg: Task {1}, Tue {2} <x1>→</x1>",
   "a": "Étape suivante : manche {1}, mar. {2} <x1>→</x1>",
   "date": "2026-11-17",
-  "b": "Étape suivante : manche {1}, mar. {2} <x1>→</x1>"
+  "b": "Étape suivante : manche {1}, mar. {2} <x1>→</x1>",
+  "tr": "Étape suivante : manche {1}, mar. {2} <x1>→</x1>"
  },
  "a19bbc5b94bd": {
   "en": "Dates set",
   "a": "Dates fixées",
   "date": "2026-11-17",
-  "b": "Dates fixées"
+  "b": "Dates fixées",
+  "tr": "Dates fixées"
  },
  "a1bf92eff40d": {
   "en": "Cancelled",
   "a": "Annulée",
   "date": "2026-11-17",
-  "b": "Annulée"
+  "b": "Annulée",
+  "tr": "Annulée"
  },
  "a30dfffe7898": {
   "en": "Vistasp Kharas walks through {1} ahead of the pre World Cup held there, covering what the site asks of a pilot and what to expect from competition flying in India.",
   "a": "Vistasp Kharas présente {1} avant la pré-Coupe du monde qui s'y est tenue : ce que le site exige d'un pilote et à quoi s'attendre en vol de compétition en Inde.",
   "date": "2026-11-17",
-  "b": "Vistasp Kharas parcourt {1} en amont de la pré-Coupe du monde qui s’y est tenue, avec ce que le site demande à un pilote et à quoi s’attendre du vol en compétition en Inde."
+  "b": "Vistasp Kharas parcourt {1} en amont de la pré-Coupe du monde qui s’y est tenue, avec ce que le site demande à un pilote et à quoi s’attendre du vol en compétition en Inde.",
+  "tr": "Vistasp Kharas présente {1} avant la pré-Coupe du monde qui s’y est tenue : ce que le site exige d’un pilote et à quoi s’attendre en vol de compétition en Inde."
  },
  "a3384368bd70": {
   "en": "{1} was cancelled for weather: {2} set a {3} km task north, then called it off under full cirrus cover. {4} still counts it as Task {5}, so {6} is Task {7}.",
   "a": "{1} a été annulée pour cause de météo : {2} a posé une manche de {3} km vers le nord, puis l'a annulée sous un voile complet de cirrus. {4} la compte quand même comme manche {5}, donc {6} est la manche {7}.",
   "date": "2026-11-17",
-  "b": "{1} a été annulée pour cause de météo : {2} a fixé une manche de {3} km vers le nord, puis l’a arrêtée sous une couverture complète de cirrus. {4} la compte quand même comme manche {5}, si bien que {6} est la manche {7}."
+  "b": "{1} a été annulée pour cause de météo : {2} a fixé une manche de {3} km vers le nord, puis l’a arrêtée sous une couverture complète de cirrus. {4} la compte quand même comme manche {5}, si bien que {6} est la manche {7}.",
+  "tr": "La journée du {1} a été annulée pour cause de météo : {2} a fixé une manche de {3} km vers le nord, puis l’a annulée sous un voile complet de cirrus. {4} la compte quand même comme manche {5}, donc le {6} correspond à la manche {7}.",
+  "tr_note": "{1} and {6} are dates: 'La journée du', 'le {6}' (both drafts agreed a date as feminine)"
  },
  "a33c3975e0cf": {
   "en": "Task days, or a rough window",
   "a": "Jours de manche, ou une période approximative",
   "date": "2026-11-17",
-  "b": "Jours de manche, ou une période approximative"
+  "b": "Jours de manche, ou une période approximative",
+  "tr": "Jours de manche, ou une période approximative"
  },
  "a37c928492fb": {
   "en": "Photo in the task",
   "a": "Photo de la manche",
   "date": "2026-11-17",
-  "b": "Photo de la manche"
+  "b": "Photo de la manche",
+  "tr": "Photo de la manche"
  },
  "a386ecdfac0b": {
   "en": "Sunshine, food, and the trade-offs of the place",
   "a": "Soleil, cuisine, et les compromis du lieu",
   "date": "2026-11-17",
-  "b": "Le soleil, la cuisine et les compromis du lieu"
+  "b": "Le soleil, la cuisine et les compromis du lieu",
+  "tr": "Le soleil, la cuisine et les compromis du lieu"
  },
  "a38f719bbef8": {
   "en": "Task scores: Task {1} {2}; Task {3} {4}; Task {5} {6}; Task {7} {8}; Task {9} {10}",
   "a": "Points par manche : manche {1} {2} ; manche {3} {4} ; manche {5} {6} ; manche {7} {8} ; manche {9} {10}",
   "date": "2026-11-17",
-  "b": "Scores par manche : manche {1} {2} ; manche {3} {4} ; manche {5} {6} ; manche {7} {8} ; manche {9} {10}"
+  "b": "Scores par manche : manche {1} {2} ; manche {3} {4} ; manche {5} {6} ; manche {7} {8} ; manche {9} {10}",
+  "tr": "Points par manche : manche {1} {2} ; manche {3} {4} ; manche {5} {6} ; manche {7} {8} ; manche {9} {10}"
  },
  "a445a0f43bc8": {
   "en": "Anything we should know about the event, and anything you would like to ask.",
   "a": "Tout ce que nous devrions savoir sur l'événement, et tout ce que vous aimeriez nous demander.",
   "date": "2026-11-17",
-  "b": "Tout ce que nous devrions savoir sur l’événement, et tout ce que vous aimeriez demander."
+  "b": "Tout ce que nous devrions savoir sur l’événement, et tout ce que vous aimeriez demander.",
+  "tr": "Tout ce que nous devrions savoir sur l’événement, et tout ce que vous aimeriez nous demander."
  },
  "a471b5d1f3c5": {
   "en": "The chosen trip",
   "a": "Le voyage choisi",
   "date": "2026-11-17",
-  "b": "Le voyage choisi"
+  "b": "Le voyage choisi",
+  "tr": "Le voyage choisi"
  },
  "a479c9c34e87": {
   "en": "Download",
   "a": "Télécharger",
   "date": "2026-11-17",
-  "b": "Télécharger"
+  "b": "Télécharger",
+  "tr": "Télécharger"
  },
  "a4ae4b24a1f5": {
   "en": "Zoom out",
   "a": "Zoom arrière",
   "date": "2026-11-17",
-  "b": "Dézoomer"
+  "b": "Dézoomer",
+  "tr": "Zoom arrière"
  },
  "a4bf95216f0d": {
   "en": "Enquire",
   "a": "Se renseigner",
   "date": "2026-11-17",
-  "b": "Nous contacter"
+  "b": "Nous contacter",
+  "tr": "Se renseigner"
  },
  "a4e803859891": {
   "en": "Navigating India",
   "a": "Naviguer en Inde",
   "date": "2026-11-17",
-  "b": "Naviguer en Inde"
+  "b": "Naviguer en Inde",
+  "tr": "Naviguer en Inde"
  },
  "a5051485b537": {
   "en": "Next leg: Task {1}, Thu {2} <x1>→</x1>",
   "a": "Étape suivante : manche {1}, jeu. {2} <x1>→</x1>",
   "date": "2026-11-17",
-  "b": "Étape suivante : manche {1}, jeu. {2} <x1>→</x1>"
+  "b": "Étape suivante : manche {1}, jeu. {2} <x1>→</x1>",
+  "tr": "Étape suivante : manche {1}, jeu. {2} <x1>→</x1>"
  },
  "a51c48b4aaa4": {
   "en": "Coverage For Your Comp",
   "a": "Une couverture pour votre compétition",
   "date": "2026-11-17",
-  "b": "Une couverture pour votre compétition"
+  "b": "Une couverture pour votre compétition",
+  "tr": "Une couverture pour votre compétition"
  },
  "a55a275aa676": {
   "en": "Terms",
   "a": "Conditions",
   "date": "2026-11-17",
-  "b": "Conditions"
+  "b": "Conditions",
+  "tr": "Conditions"
  },
  "a592e52206fa": {
   "en": "A high B or a C is great, and even a low B does well; an A will be a bit frustrating. Do not bring your best wing: the take-off at {1} is red dust, and the local pilots keep a second wing that is already red.",
   "a": "Une B haute ou une C, c'est parfait, et même une B basse s'en sort bien ; une A sera un peu frustrante. N'apportez pas votre meilleure voile : le décollage de {1} est en poussière rouge, et les pilotes locaux gardent une deuxième voile déjà rouge.",
   "date": "2026-11-17",
-  "b": "Une B haute ou une C est idéale, et même une B basse s’en sort bien ; une A sera un peu frustrante. N’apportez pas votre meilleure voile : le décollage de {1} est de la poussière rouge, et les pilotes locaux gardent une seconde voile déjà rouge."
+  "b": "Une B haute ou une C est idéale, et même une B basse s’en sort bien ; une A sera un peu frustrante. N’apportez pas votre meilleure voile : le décollage de {1} est de la poussière rouge, et les pilotes locaux gardent une seconde voile déjà rouge.",
+  "tr": "Une B haute ou une C, c’est parfait, et même une B basse s’en sort bien ; une A sera un peu frustrante. N’apportez pas votre meilleure voile : le décollage de {1} est en poussière rouge, et les pilotes locaux gardent une deuxième voile déjà rouge."
  },
  "a59807a9976e": {
   "en": "Vistasp Kharas <x1>Navigating {1}, {2}</x1>",
   "a": "Vistasp Kharas <x1>Naviguer à {1}, {2}</x1>",
   "date": "2026-11-17",
-  "b": "Vistasp Kharas <x1>Naviguer : {1}, {2}</x1>"
+  "b": "Vistasp Kharas <x1>Naviguer : {1}, {2}</x1>",
+  "tr": "Vistasp Kharas <x1>Naviguer à {1}, {2}</x1>"
  },
  "a5ad67ed78d9": {
   "en": "Watch Task {1} Highlights",
   "a": "Voir le résumé de la manche {1}",
   "date": "2026-11-17",
-  "b": "Voir les temps forts de la manche {1}"
+  "b": "Voir les temps forts de la manche {1}",
+  "tr": "Voir les temps forts de la manche {1}"
  },
  "a60504a2a5db": {
   "en": "Himalaya",
   "a": "Himalaya",
   "date": "2026-11-17",
-  "b": "Himalaya"
+  "b": "Himalaya",
+  "tr": "Himalaya"
  },
  "a637244e6040": {
   "en": "Wed {1}",
   "a": "mer. {1}",
   "date": "2026-11-17",
-  "b": "Mer. {1}"
+  "b": "Mer. {1}",
+  "tr": "mer. {1}"
  },
  "a6708a3a920a": {
   "en": "On Air: The {1} Podcast",
   "a": "À l'antenne : le podcast {1}",
   "date": "2026-11-17",
-  "b": "À l’antenne : le podcast {1}"
+  "b": "À l’antenne : le podcast {1}",
+  "tr": "À l’antenne : le podcast {1}"
  },
  "a72f4ef82a9d": {
   "en": "From The Show",
   "a": "Dans l'émission",
   "date": "2026-11-17",
-  "b": "Extraits de l’émission"
+  "b": "Extraits de l’émission",
+  "tr": "Dans l’émission"
  },
  "a746d98e2d69": {
   "en": "Wind shear, and reading it",
   "a": "Le cisaillement du vent, et comment le lire",
   "date": "2026-11-17",
-  "b": "Le cisaillement de vent, et comment le lire"
+  "b": "Le cisaillement de vent, et comment le lire",
+  "tr": "Le cisaillement de vent, et comment le lire"
  },
  "a84f56f2e6a7": {
   "en": "Kenya",
   "a": "Kenya",
   "date": "2026-11-17",
-  "b": "Kenya"
+  "b": "Kenya",
+  "tr": "Kenya"
  },
  "a86847003354": {
   "en": "Flying To Win",
   "a": "Voler pour gagner",
   "date": "2026-11-17",
-  "b": "Voler pour gagner"
+  "b": "Voler pour gagner",
+  "tr": "Voler pour gagner"
  },
  "aaef248a0c4e": {
   "en": "Join me on {1}",
   "a": "Rejoignez-moi sur {1}",
   "date": "2026-11-17",
-  "b": "Retrouvez-moi sur {1}"
+  "b": "Retrouvez-moi sur {1}",
+  "tr": "Rejoignez-moi sur {1}"
  },
  "ab25fcd650c9": {
   "en": "Paragliding podcast, knowledge base and guided expeditions",
   "a": "Podcast de parapente, base de connaissances et expéditions guidées",
   "date": "2026-11-17",
-  "b": "Podcast de parapente, base de connaissances et expéditions guidées"
+  "b": "Podcast de parapente, base de connaissances et expéditions guidées",
+  "tr": "Podcast de parapente, base de connaissances et expéditions guidées"
  },
  "ab42293e29e1": {
   "en": "Your name",
   "a": "Votre nom",
   "date": "2026-11-17",
-  "b": "Votre nom"
+  "b": "Votre nom",
+  "tr": "Votre nom"
  },
  "ab95c7774c58": {
   "en": "See the Kenya trip",
   "a": "Voir le voyage au Kenya",
   "date": "2026-11-17",
-  "b": "Voir le voyage au Kenya"
+  "b": "Voir le voyage au Kenya",
+  "tr": "Voir le voyage au Kenya"
  },
  "ac8d35c5651b": {
   "en": "Sharing our passion for the art of flight isn't just meaningful, it's our purpose. By flying with us, you help uplift local communities through welfare, training, and opportunities for the next generation.",
   "a": "Partager notre passion pour l'art du vol n'a pas seulement du sens, c'est notre raison d'être. En volant avec nous, vous aidez à soutenir les communautés locales par l'entraide sociale, la formation et des opportunités pour la prochaine génération.",
   "date": "2026-11-17",
-  "b": "Partager notre passion pour l’art du vol n’est pas seulement important, c’est notre raison d’être. En volant avec nous, vous contribuez à soutenir les communautés locales par l’aide sociale, la formation et des perspectives pour la génération suivante."
+  "b": "Partager notre passion pour l’art du vol n’est pas seulement important, c’est notre raison d’être. En volant avec nous, vous contribuez à soutenir les communautés locales par l’aide sociale, la formation et des perspectives pour la génération suivante.",
+  "tr": "Partager notre passion pour l’art du vol n’a pas seulement du sens, c’est notre raison d’être. En volant avec nous, vous aidez à soutenir les communautés locales par l’aide sociale, la formation et des perspectives pour la prochaine génération.",
+  "tr_note": "merged: a's 'a du sens' (meaningful), b's 'aide sociale' and 'perspectives'"
  },
  "acfed849a1d0": {
   "en": "Chapters of Navigating India",
   "a": "Chapitres de Naviguer en Inde",
   "date": "2026-11-17",
-  "b": "Chapitres de Naviguer en Inde"
+  "b": "Chapitres de Naviguer en Inde",
+  "tr": "Chapitres de Naviguer en Inde"
  },
  "ad081e336c7d": {
   "en": "Under Norwegian and EU law",
   "a": "Selon le droit norvégien et européen",
   "date": "2026-11-17",
-  "b": "Selon le droit norvégien et européen"
+  "b": "Selon le droit norvégien et européen",
+  "tr": "Selon le droit norvégien et européen"
  },
  "ad89087a3db0": {
   "en": "Airspace over the site",
   "a": "L'espace aérien au-dessus du site",
   "date": "2026-11-17",
-  "b": "L’espace aérien au-dessus du site"
+  "b": "L’espace aérien au-dessus du site",
+  "tr": "L’espace aérien au-dessus du site"
  },
  "ad8919ace091": {
   "en": "Event",
   "a": "Événement",
   "date": "2026-11-17",
-  "b": "Événement"
+  "b": "Événement",
+  "tr": "Événement"
  },
  "ada1c425fb60": {
   "en": "What Kenya offers as a flying destination",
   "a": "Ce que le Kenya offre comme destination de vol",
   "date": "2026-11-17",
-  "b": "Ce que le Kenya offre comme destination de vol"
+  "b": "Ce que le Kenya offre comme destination de vol",
+  "tr": "Ce que le Kenya offre comme destination de vol"
  },
  "aee92f3275ab": {
   "en": "Cancelled (weather)",
   "a": "Annulée (météo)",
   "date": "2026-11-17",
-  "b": "Annulée (météo)"
+  "b": "Annulée (météo)",
+  "tr": "Annulée (météo)"
  },
  "af3027a0dcc7": {
   "en": "The original",
   "a": "L'original",
   "date": "2026-11-17",
-  "b": "L’original"
+  "b": "L’original",
+  "tr": "L’original"
  },
  "b06613236072": {
   "en": "The photo, enlarged",
   "a": "La photo, agrandie",
   "date": "2026-11-17",
-  "b": "La photo, agrandie"
+  "b": "La photo, agrandie",
+  "tr": "La photo, agrandie"
  },
  "b0c4416b4d80": {
   "en": "Also from {1}",
   "a": "Aussi depuis {1}",
   "date": "2026-11-17",
-  "b": "Aussi à {1}"
+  "b": "Aussi à {1}",
+  "tr": "Aussi à {1}"
  },
  "b16c7ac6faff": {
   "en": "(optional)",
   "a": "(facultatif)",
   "date": "2026-11-17",
-  "b": "(facultatif)"
+  "b": "(facultatif)",
+  "tr": "(facultatif)"
  },
  "b191dbd602b6": {
   "en": "Will Gadd",
   "a": "Will Gadd",
   "date": "2026-11-17",
-  "b": "Will Gadd"
+  "b": "Will Gadd",
+  "tr": "Will Gadd"
  },
  "b1dd7cc0fd62": {
   "en": "You fly",
   "a": "Vous volez",
   "date": "2026-11-17",
-  "b": "Vous volez"
+  "b": "Vous volez",
+  "tr": "Vous volez"
  },
  "b21d43b2b6c9": {
   "en": "Not ready to enquire?",
   "a": "Pas encore prêt à vous renseigner ?",
   "date": "2026-11-17",
-  "b": "Pas prêt à nous écrire ?"
+  "b": "Pas prêt à nous écrire ?",
+  "tr": "Pas encore prêt à vous renseigner ?"
  },
  "b453c4af37bd": {
   "en": "Pilots who can take off in strong wind and strong thermic conditions. Vistasp Kharas, who has flown {1} for more than ten years, advises an {2} course: the thermals can be punchy and there is wind in the mix. He would not send a pilot used only to alpine air with little knowledge of wind, because on the lee side the site is not forgiving.",
   "a": "Aux pilotes capables de décoller par vent fort et en conditions thermiques fortes. Vistasp Kharas, qui vole à {1} depuis plus de dix ans, conseille un stage {2} : les thermiques peuvent être musclés et le vent s'en mêle. Il n'y enverrait pas un pilote habitué uniquement à l'aérologie alpine et connaissant mal le vent, car sous le vent, le site ne pardonne pas.",
   "date": "2026-11-17",
-  "b": "Aux pilotes capables de décoller par vent fort et en conditions thermiques fortes. Vistasp Kharas, qui vole {1} depuis plus de dix ans, conseille un cours de {2} : les thermiques peuvent être toniques et il y a du vent dans le mélange. Il n’enverrait pas un pilote habitué seulement à l’air alpin et connaissant peu le vent, car sous le vent le site ne pardonne pas."
+  "b": "Aux pilotes capables de décoller par vent fort et en conditions thermiques fortes. Vistasp Kharas, qui vole {1} depuis plus de dix ans, conseille un cours de {2} : les thermiques peuvent être toniques et il y a du vent dans le mélange. Il n’enverrait pas un pilote habitué seulement à l’air alpin et connaissant peu le vent, car sous le vent le site ne pardonne pas.",
+  "tr": "Aux pilotes capables de décoller par vent fort et en conditions thermiques fortes. Vistasp Kharas, qui vole à {1} depuis plus de dix ans, conseille un stage {2} : les thermiques peuvent être musclés et le vent s’en mêle. Il n’y enverrait pas un pilote habitué uniquement à l’aérologie alpine et connaissant mal le vent, car sous le vent, le site ne pardonne pas."
  },
  "b49bbe9c0918": {
   "en": "Full-size original",
   "a": "Original en pleine résolution",
   "date": "2026-11-17",
-  "b": "Original en pleine taille"
+  "b": "Original en pleine taille",
+  "tr": "Original en pleine résolution"
  },
  "b4f67e424077": {
   "en": "Getting it",
   "a": "Récupération",
   "date": "2026-11-17",
-  "b": "Récupération"
+  "b": "Récupération",
+  "tr": "Récupération"
  },
  "b516f1c72e7c": {
   "en": "Top landing on the main tableland is forgiving late in the afternoon, once you know where the wind is from. In the valleys, land near a road in a field that has been cut: never standing crops or sugarcane. The power lines are above ground, so look for the poles and their shadows. The villagers are friendly, and a shared jeep back to town is cheap.",
   "a": "Le posé au sommet sur le plateau principal est facile en fin d'après-midi, une fois que vous savez d'où vient le vent. Dans les vallées, posez-vous près d'une route dans un champ moissonné : jamais dans des cultures sur pied ni dans la canne à sucre. Les lignes électriques sont aériennes, alors repérez les poteaux et leurs ombres. Les villageois sont accueillants, et une jeep partagée pour rentrer en ville ne coûte pas cher.",
   "date": "2026-11-17",
-  "b": "L’atterrissage au déco sur le plateau principal est tolérant en fin d’après-midi, une fois qu’on sait d’où vient le vent. Dans les vallées, posez-vous près d’une route dans un champ déjà fauché : jamais dans des cultures sur pied ni de la canne à sucre. Les lignes électriques sont aériennes, cherchez donc les poteaux et leurs ombres. Les villageois sont accueillants, et un jeep partagé pour revenir en ville coûte peu."
+  "b": "L’atterrissage au déco sur le plateau principal est tolérant en fin d’après-midi, une fois qu’on sait d’où vient le vent. Dans les vallées, posez-vous près d’une route dans un champ déjà fauché : jamais dans des cultures sur pied ni de la canne à sucre. Les lignes électriques sont aériennes, cherchez donc les poteaux et leurs ombres. Les villageois sont accueillants, et un jeep partagé pour revenir en ville coûte peu.",
+  "tr": "L’atterrissage au sommet sur le plateau principal est tolérant en fin d’après-midi, une fois que vous savez d’où vient le vent. Dans les vallées, posez-vous près d’une route dans un champ moissonné : jamais dans des cultures sur pied ni dans la canne à sucre. Les lignes électriques sont aériennes, alors repérez les poteaux et leurs ombres. Les villageois sont accueillants, et une jeep partagée pour rentrer en ville ne coûte pas cher.",
+  "tr_note": "a, with b's 'tolérant' (forgiving; 'facile' softened it) and 'atterrissage au sommet' for top landing"
  },
  "b54b5c6f45ec": {
   "en": "Resume the film",
   "a": "Reprendre le film",
   "date": "2026-11-17",
-  "b": "Reprendre le film"
+  "b": "Reprendre le film",
+  "tr": "Reprendre le film"
  },
  "b56ac1b820a9": {
   "en": "Ready: tap to save",
   "a": "Prêt : touchez pour enregistrer",
   "date": "2026-11-17",
-  "b": "Prêt : touchez pour enregistrer"
+  "b": "Prêt : touchez pour enregistrer",
+  "tr": "Prêt : touchez pour enregistrer"
  },
  "b576d512dd2d": {
   "en": "<x1>{1}</x1> pts",
   "a": "<x1>{1}</x1> pts",
   "date": "2026-11-17",
-  "b": "<x1>{1}</x1> pts"
+  "b": "<x1>{1}</x1> pts",
+  "tr": "<x1>{1}</x1> pts"
  },
  "b5e1b5c9c3bc": {
   "en": "The Science Of Wing Design",
   "a": "La science de la conception des voiles",
   "date": "2026-11-17",
-  "b": "La science de la conception des voiles"
+  "b": "La science de la conception des voiles",
+  "tr": "La science de la conception des voiles"
  },
  "b61f417c90bd": {
   "en": "{1}, {2}, Mexico, {3}: every photo by task, free to save. Photos by {4}, {5}.",
   "a": "{1}, {2}, Mexique, {3} : toutes les photos par manche, à enregistrer gratuitement. Photos de {4}, {5}.",
   "date": "2026-11-17",
-  "b": "{1}, {2}, Mexique, {3} : toutes les photos par manche, à enregistrer librement. Photos de {4}, {5}."
+  "b": "{1}, {2}, Mexique, {3} : toutes les photos par manche, à enregistrer librement. Photos de {4}, {5}.",
+  "tr": "{1}, {2}, Mexique, {3} : toutes les photos par manche, à enregistrer gratuitement. Photos de {4}, {5}."
  },
  "b6dc5272c942": {
   "en": "{1} chapters",
   "a": "{1} chapitres",
   "date": "2026-11-17",
-  "b": "{1} chapitres"
+  "b": "{1} chapitres",
+  "tr": "{1} chapitres"
  },
  "b7bee045feb2": {
   "en": "The balance you have to strike",
   "a": "Le juste équilibre à trouver",
   "date": "2026-11-17",
-  "b": "L’équilibre à trouver"
+  "b": "L’équilibre à trouver",
+  "tr": "L’équilibre à trouver"
  },
  "b7e633c5265e": {
   "en": "Play Navigating India (Bonus Ep), with Jigish Gohil",
   "a": "Écouter Naviguer en Inde (épisode bonus), avec Jigish Gohil",
   "date": "2026-11-17",
-  "b": "Écouter Naviguer en Inde (épisode bonus), avec Jigish Gohil"
+  "b": "Écouter Naviguer en Inde (épisode bonus), avec Jigish Gohil",
+  "tr": "Écouter Naviguer en Inde (épisode bonus), avec Jigish Gohil"
  },
  "b9b15d8821c5": {
   "en": "The film",
   "a": "Le film",
   "date": "2026-11-17",
-  "b": "Le film"
+  "b": "Le film",
+  "tr": "Le film"
  },
  "b9fd62dddd28": {
   "en": "Next one starts today",
   "a": "Le prochain commence aujourd'hui",
   "date": "2026-11-17",
-  "b": "Le prochain commence aujourd’hui"
+  "b": "Le prochain commence aujourd’hui",
+  "tr": "Le prochain commence aujourd’hui"
  },
  "ba9e2565bdc8": {
   "en": "Booking open, {1} places",
   "a": "Réservations ouvertes, {1} places",
   "date": "2026-11-17",
-  "b": "Réservations ouvertes, {1} places"
+  "b": "Réservations ouvertes, {1} places",
+  "tr": "Réservations ouvertes, {1} places"
  },
  "bae7d5be7082": {
   "en": "Status",
   "a": "Statut",
   "date": "2026-11-17",
-  "b": "Statut"
+  "b": "Statut",
+  "tr": "Statut"
  },
  "bafb6ef29689": {
   "en": "Podcast",
   "a": "Podcast",
   "date": "2026-11-17",
-  "b": "Podcast"
+  "b": "Podcast",
+  "tr": "Podcast"
  },
  "bb9bfefd5391": {
   "en": "Nov",
   "a": "nov.",
   "date": "2026-11-17",
-  "b": "Nov."
+  "b": "Nov.",
+  "tr": "nov."
  },
  "bbaeb294a58b": {
   "en": "A short season, and a changing climate",
   "a": "Une saison courte, et un climat qui change",
   "date": "2026-11-17",
-  "b": "Une saison courte, et un climat qui change"
+  "b": "Une saison courte, et un climat qui change",
+  "tr": "Une saison courte, et un climat qui change"
  },
  "bbbbfec78db1": {
   "en": "Who is this tour for?",
   "a": "À qui s'adresse ce voyage ?",
   "date": "2026-11-17",
-  "b": "À qui s’adresse ce voyage ?"
+  "b": "À qui s’adresse ce voyage ?",
+  "tr": "À qui s’adresse ce voyage ?"
  },
  "bc596fdcb822": {
   "en": "How do I get there?",
   "a": "Comment s'y rendre ?",
   "date": "2026-11-17",
-  "b": "Comment s’y rendre ?"
+  "b": "Comment s’y rendre ?",
+  "tr": "Comment s’y rendre ?"
  },
  "bc8b00da2fc8": {
   "en": "The <x1>episode library</x1> has {1} conversations with pilots, designers and instructors, transcripts included. <x2>Kenya</x2> is the trip page with the most detail on it.",
   "a": "La <x1>bibliothèque d'épisodes</x1> compte {1} conversations avec des pilotes, des concepteurs et des moniteurs, transcriptions comprises. <x2>Kenya</x2> est la page de voyage la plus détaillée.",
   "date": "2026-11-17",
-  "b": "La <x1>bibliothèque d’épisodes</x1> compte {1} conversations avec des pilotes, des concepteurs et des instructeurs, transcriptions comprises. <x2>Kenya</x2> est la page de voyage la plus détaillée."
+  "b": "La <x1>bibliothèque d’épisodes</x1> compte {1} conversations avec des pilotes, des concepteurs et des instructeurs, transcriptions comprises. <x2>Kenya</x2> est la page de voyage la plus détaillée.",
+  "tr": "La <x1>bibliothèque d’épisodes</x1> compte {1} conversations avec des pilotes, des concepteurs et des moniteurs, transcriptions comprises. <x2>Kenya</x2> est la page de voyage la plus détaillée."
  },
  "bcc83be607c7": {
   "en": "Ready To Touch The Sky With Glory?",
   "a": "Prêt à toucher le ciel avec gloire ?",
   "date": "2026-11-17",
-  "b": "Prêt à toucher le ciel avec gloire ?"
+  "b": "Prêt à toucher le ciel avec gloire ?",
+  "tr": "Prêt à toucher le ciel avec gloire ?"
  },
  "bce06414177f": {
   "en": "Search",
   "a": "Rechercher",
   "date": "2026-11-17",
-  "b": "Chercher"
+  "b": "Chercher",
+  "tr": "Rechercher"
  },
  "bce86cfb0300": {
   "en": "Whether you're a {1} hour pilot eyeing your first {2} or a longtime sky veteran chasing your next world record, we specialize in turning ambition into airtime. This relaxed no-expectations intro call helps you cut through the unknowns with straight talk.",
   "a": "Que vous soyez un pilote de {1} heures qui vise son premier {2} ou un vétéran du ciel en quête de votre prochain record du monde, notre spécialité est de transformer l'ambition en heures de vol. Cet appel de présentation détendu, sans attente particulière, vous aide à y voir clair grâce à un discours franc.",
   "date": "2026-11-17",
-  "b": "Que vous soyez un pilote de {1} heures visant votre premier {2} ou un vieux routier du ciel en quête de votre prochain record du monde, nous sommes spécialisés dans l’art de transformer l’ambition en heures de vol. Cet appel d’introduction décontracté, sans attentes, vous aide à lever les inconnues en toute franchise."
+  "b": "Que vous soyez un pilote de {1} heures visant votre premier {2} ou un vieux routier du ciel en quête de votre prochain record du monde, nous sommes spécialisés dans l’art de transformer l’ambition en heures de vol. Cet appel d’introduction décontracté, sans attentes, vous aide à lever les inconnues en toute franchise.",
+  "tr": "Que vous soyez un pilote de {1} heures visant votre premier {2} ou un vieux routier du ciel en quête de votre prochain record du monde, nous sommes spécialisés dans l’art de transformer l’ambition en heures de vol. Cet appel d’introduction décontracté, sans attentes, vous aide à lever les inconnues en toute franchise."
  },
  "bd66d55258cd": {
   "en": "What the tour price covers is <x1>{1}</x1>.",
   "a": "Ce que couvre le prix du voyage : <x1>{1}</x1>.",
   "date": "2026-11-17",
-  "b": "Ce que couvre le prix du voyage est <x1>{1}</x1>."
+  "b": "Ce que couvre le prix du voyage est <x1>{1}</x1>.",
+  "tr": "Ce que couvre le prix du voyage : <x1>{1}</x1>."
  },
  "bd979dbade5b": {
   "en": "Eddie Colfox",
   "a": "Eddie Colfox",
   "date": "2026-11-17",
-  "b": "Eddie Colfox"
+  "b": "Eddie Colfox",
+  "tr": "Eddie Colfox"
  },
  "bdcf005b19ce": {
   "en": "Luc Armant",
   "a": "Luc Armant",
   "date": "2026-11-17",
-  "b": "Luc Armant"
+  "b": "Luc Armant",
+  "tr": "Luc Armant"
  },
  "bdd547a33abb": {
   "en": "Booking with us",
   "a": "Réserver avec nous",
   "date": "2026-11-17",
-  "b": "Réserver chez nous"
+  "b": "Réserver chez nous",
+  "tr": "Réserver avec nous"
  },
  "bead0a998f90": {
   "en": "RAST And The LeelooX Effect",
   "a": "RAST et l'effet LeelooX",
   "date": "2026-11-17",
-  "b": "Le RAST et l’effet LeelooX"
+  "b": "Le RAST et l’effet LeelooX",
+  "tr": "RAST et l’effet LeelooX"
  },
  "bee1ebaac1d6": {
   "en": ", the steppe, planned for {1}",
   "a": ", la steppe, prévu pour {1}",
   "date": "2026-11-17",
-  "b": ", la steppe, prévu pour {1}"
+  "b": ", la steppe, prévu pour {1}",
+  "tr": ", la steppe, prévu pour {1}"
  },
  "c11df50abfb9": {
   "en": "Guaranteed to run, {1} places",
   "a": "Départ garanti, {1} places",
   "date": "2026-11-17",
-  "b": "Départ garanti, {1} places"
+  "b": "Départ garanti, {1} places",
+  "tr": "Départ garanti, {1} places"
  },
  "c1301a9f5a76": {
   "en": "Navigating India: Jigish Gohil (Bonus Ep)<x1>Navigators, Episode {1}, {2} min</x1>",
   "a": "Naviguer en Inde : Jigish Gohil (épisode bonus)<x1>Navigators, épisode {1}, {2} min</x1>",
   "date": "2026-11-17",
-  "b": "Naviguer en Inde : Jigish Gohil (épisode bonus)<x1>Navigateurs, épisode {1}, {2} min</x1>"
+  "b": "Naviguer en Inde : Jigish Gohil (épisode bonus)<x1>Navigateurs, épisode {1}, {2} min</x1>",
+  "tr": "Naviguer en Inde : Jigish Gohil (épisode bonus)<x1>Navigators, épisode {1}, {2} min</x1>"
  },
  "c2ab77b0ff29": {
   "en": "The height",
   "a": "L'altitude",
   "date": "2026-11-17",
-  "b": "La hauteur"
+  "b": "La hauteur",
+  "tr": "La hauteur"
  },
  "c2c1fe4f4307": {
   "en": "Out and return",
   "a": "Aller-retour",
   "date": "2026-11-17",
-  "b": "Aller-retour"
+  "b": "Aller-retour",
+  "tr": "Aller-retour"
  },
  "c2e98476efb5": {
   "en": "Link copied",
   "a": "Lien copié",
   "date": "2026-11-17",
-  "b": "Lien copié"
+  "b": "Lien copié",
+  "tr": "Lien copié"
  },
  "c36774158ae7": {
   "en": "Registered in Norway",
   "a": "Immatriculé en Norvège",
   "date": "2026-11-17",
-  "b": "Immatriculée en Norvège"
+  "b": "Immatriculée en Norvège",
+  "tr": "Immatriculé en Norvège"
  },
  "c474e040dc24": {
   "en": "Why wind strength differs between seasons",
   "a": "Pourquoi la force du vent diffère selon les saisons",
   "date": "2026-11-17",
-  "b": "Pourquoi la force du vent diffère selon les saisons"
+  "b": "Pourquoi la force du vent diffère selon les saisons",
+  "tr": "Pourquoi la force du vent diffère selon les saisons"
  },
  "c4ba0822462e": {
   "en": "Mar",
   "a": "mars",
   "date": "2026-11-17",
-  "b": "Mars"
+  "b": "Mars",
+  "tr": "mars"
  },
  "c518fb067439": {
   "en": "Listen",
   "a": "Écouter",
   "date": "2026-11-17",
-  "b": "Écouter"
+  "b": "Écouter",
+  "tr": "Écouter"
  },
  "c61970292546": {
   "en": "Downloaded",
   "a": "Téléchargé",
   "date": "2026-11-17",
-  "b": "Téléchargé"
+  "b": "Téléchargé",
+  "tr": "Téléchargé"
  },
  "c66aebd3ba1b": {
   "en": "The camera's full-size file, paid with {1}. Licence of the original: <x1>{2}</x1>.",
   "a": "Le fichier pleine résolution de l'appareil photo, payé via {1}. Licence de l'original : <x1>{2}</x1>.",
   "date": "2026-11-17",
-  "b": "Le fichier pleine taille de l’appareil, payé avec {1}. Licence de l’original : <x1>{2}</x1>."
+  "b": "Le fichier pleine taille de l’appareil, payé avec {1}. Licence de l’original : <x1>{2}</x1>.",
+  "tr": "Le fichier pleine résolution de l’appareil photo, payé via {1}. Licence de l’original : <x1>{2}</x1>."
  },
  "c6733cd0eee8": {
   "en": "Enquire Now",
   "a": "Se renseigner",
   "date": "2026-11-17",
-  "b": "Nous contacter"
+  "b": "Nous contacter",
+  "tr": "Se renseigner"
  },
  "c699c3ac3ee8": {
   "en": "Take-off is at about {1} to {2} m, and in the peak of the season pilots climb to {3} to {4} m. The local rule: below {5} m, start looking for a safe landing, and stay off the terrain unless you know exactly what the wind is doing.",
   "a": "Le décollage est à environ {1} à {2} m, et au cœur de la saison les pilotes montent à {3} à {4} m. La règle locale : sous {5} m, commencez à chercher un atterrissage sûr, et restez à l'écart du relief à moins de savoir exactement ce que fait le vent.",
   "date": "2026-11-17",
-  "b": "Le décollage est à environ {1} à {2} m, et au plus fort de la saison les pilotes montent à {3} à {4} m. La règle locale : sous {5} m, commencez à chercher un atterrissage sûr, et restez loin du relief à moins de savoir exactement ce que fait le vent."
+  "b": "Le décollage est à environ {1} à {2} m, et au plus fort de la saison les pilotes montent à {3} à {4} m. La règle locale : sous {5} m, commencez à chercher un atterrissage sûr, et restez loin du relief à moins de savoir exactement ce que fait le vent.",
+  "tr": "Le décollage est entre {1} et {2} m environ, et au cœur de la saison les pilotes montent entre {3} et {4} m. La règle locale : sous {5} m, commencez à chercher un atterrissage sûr, et restez à l’écart du relief à moins de savoir exactement ce que fait le vent.",
+  "tr_note": "a, with the 'à environ X à Y m' construction fixed"
  },
  "c6c17c967a2f": {
   "en": "Nikolay Yotov",
   "a": "Nikolay Yotov",
   "date": "2026-11-17",
-  "b": "Nikolay Yotov"
+  "b": "Nikolay Yotov",
+  "tr": "Nikolay Yotov"
  },
  "c6daea37aee6": {
   "en": "Big Mountain Flying",
   "a": "Vol en haute montagne",
   "date": "2026-11-17",
-  "b": "Vol en haute montagne"
+  "b": "Vol en haute montagne",
+  "tr": "Vol en haute montagne"
  },
  "c6fc5da17202": {
   "en": "Anything you would like us to know, and anything you would like to ask.",
   "a": "Tout ce que vous aimeriez nous faire savoir, et tout ce que vous aimeriez nous demander.",
   "date": "2026-11-17",
-  "b": "Tout ce que vous aimeriez nous faire savoir, et tout ce que vous aimeriez demander."
+  "b": "Tout ce que vous aimeriez nous faire savoir, et tout ce que vous aimeriez demander.",
+  "tr": "Tout ce que vous aimeriez nous faire savoir, et tout ce que vous aimeriez nous demander."
  },
  "c70893d3bd66": {
   "en": "Kenya, from the air",
   "a": "Le Kenya vu du ciel",
   "date": "2026-11-17",
-  "b": "Le Kenya vu du ciel"
+  "b": "Le Kenya vu du ciel",
+  "tr": "Le Kenya vu du ciel"
  },
  "c74a37330584": {
   "en": "Resume the film from {1}",
   "a": "Reprendre le film à {1}",
   "date": "2026-11-17",
-  "b": "Reprendre le film à partir de {1}"
+  "b": "Reprendre le film à partir de {1}",
+  "tr": "Reprendre le film à {1}"
  },
  "c76174402a46": {
   "en": "For race organisers and sponsors. Send the event, its dates and its place, and the coverage you have in mind, and we will reply about availability. Coverage is priced per event, after a call.",
   "a": "Pour les organisateurs de compétitions et les sponsors. Indiquez l'événement, ses dates, son lieu et la couverture que vous envisagez, et nous vous répondrons sur nos disponibilités. La couverture est chiffrée par événement, après un appel.",
   "date": "2026-11-17",
-  "b": "Pour les organisateurs de courses et les sponsors. Envoyez l’événement, ses dates et son lieu, et la couverture que vous avez en tête, et nous vous répondrons sur la disponibilité. La couverture est facturée par événement, après un appel."
+  "b": "Pour les organisateurs de courses et les sponsors. Envoyez l’événement, ses dates et son lieu, et la couverture que vous avez en tête, et nous vous répondrons sur la disponibilité. La couverture est facturée par événement, après un appel.",
+  "tr": "Pour les organisateurs de compétitions et les sponsors. Indiquez l’événement, ses dates, son lieu et la couverture que vous envisagez, et nous vous répondrons sur nos disponibilités. La couverture est chiffrée par événement, après un appel."
  },
  "c7690d0577d4": {
   "en": "Other tasks",
   "a": "Autres manches",
   "date": "2026-11-17",
-  "b": "Autres manches"
+  "b": "Autres manches",
+  "tr": "Autres manches"
  },
  "c7bd240ac63c": {
   "en": "Paraglider over snow-capped Himalayan peaks",
   "a": "Parapente au-dessus de sommets himalayens enneigés",
   "date": "2026-11-17",
-  "b": "Parapente au-dessus de sommets himalayens enneigés"
+  "b": "Parapente au-dessus de sommets himalayens enneigés",
+  "tr": "Parapente au-dessus de sommets himalayens enneigés"
  },
  "c7bfee111a04": {
   "en": "Expedition",
   "a": "Expédition",
   "date": "2026-11-17",
-  "b": "Expédition"
+  "b": "Expédition",
+  "tr": "Expédition"
  },
  "c880e01143fc": {
   "en": "The more you tell us about where you are as a pilot, the more useful our answer will be. There are no wrong answers here, and telling us you are less current than you would like is genuinely more helpful than telling us you are fine.",
   "a": "Plus vous nous en dites sur votre niveau de pilote, plus notre réponse sera utile. Il n'y a pas de mauvaise réponse, et nous dire que vous volez moins que vous le voudriez nous aide vraiment davantage que de nous dire que tout va bien.",
   "date": "2026-11-17",
-  "b": "Plus vous nous dites où vous en êtes comme pilote, plus notre réponse sera utile. Il n’y a pas de mauvaises réponses ici, et nous dire que vous êtes moins à jour que vous ne le voudriez nous aide vraiment davantage que de nous dire que tout va bien."
+  "b": "Plus vous nous dites où vous en êtes comme pilote, plus notre réponse sera utile. Il n’y a pas de mauvaises réponses ici, et nous dire que vous êtes moins à jour que vous ne le voudriez nous aide vraiment davantage que de nous dire que tout va bien.",
+  "tr": "Plus vous nous en dites sur votre niveau actuel de pilote, plus notre réponse sera utile. Il n’y a pas de mauvaise réponse ici, et nous dire que vous volez moins que vous ne le voudriez nous aide vraiment davantage que de nous dire que tout va bien.",
+  "tr_note": "merged: a's 'vous volez moins' for 'less current' (b's 'à jour' is an anglicism), 'ici' kept"
  },
  "c8c413060379": {
   "en": "Worth reading either way: the <x1>booking terms</x1>, and the <x2>participant agreement</x2> that every pilot completes before a trip. Both are published in full rather than sprung on you later.",
   "a": "À lire dans tous les cas : les <x1>conditions de réservation</x1>, et l'<x2>accord du participant</x2> que chaque pilote remplit avant un voyage. Tous deux sont publiés en entier plutôt que de vous être imposés plus tard.",
   "date": "2026-11-17",
-  "b": "À lire dans tous les cas : les <x1>conditions de réservation</x1>, et l’<x2>accord du participant</x2> que chaque pilote remplit avant un voyage. Les deux sont publiés en entier, sans vous être imposés plus tard."
+  "b": "À lire dans tous les cas : les <x1>conditions de réservation</x1>, et l’<x2>accord du participant</x2> que chaque pilote remplit avant un voyage. Les deux sont publiés en entier, sans vous être imposés plus tard.",
+  "tr": "À lire dans tous les cas : les <x1>conditions de réservation</x1>, et l’<x2>accord du participant</x2> que chaque pilote remplit avant un voyage. Tous deux sont publiés en entier plutôt que de vous être imposés plus tard."
  },
  "c8ca264fde99": {
   "en": "If your device has no email app set up, the button will tell you, and you can copy the text or use {1} instead.",
   "a": "Si votre appareil n'a pas d'application de messagerie configurée, le bouton vous le signalera, et vous pourrez copier le texte ou utiliser {1} à la place.",
   "date": "2026-11-17",
-  "b": "Si votre appareil n’a pas d’application de messagerie configurée, le bouton vous le dira, et vous pourrez copier le texte ou utiliser {1} à la place."
+  "b": "Si votre appareil n’a pas d’application de messagerie configurée, le bouton vous le dira, et vous pourrez copier le texte ou utiliser {1} à la place.",
+  "tr": "Si votre appareil n’a pas d’application de messagerie configurée, le bouton vous le signalera, et vous pourrez copier le texte ou utiliser {1} à la place."
  },
  "c93354d871a6": {
   "en": "Pilot rating",
   "a": "Niveau de pilote",
   "date": "2026-11-17",
-  "b": "Niveau de pilote"
+  "b": "Niveau de pilote",
+  "tr": "Niveau de pilote"
  },
  "c94930a168ff": {
   "en": "Episode {1}",
   "a": "Épisode {1}",
   "date": "2026-11-17",
-  "b": "Épisode {1}"
+  "b": "Épisode {1}",
+  "tr": "Épisode {1}"
  },
  "c9a314a710f6": {
   "en": "Small groups, fixed dates. Prices are per pilot.",
   "a": "Petits groupes, dates fixes. Les prix s'entendent par pilote.",
   "date": "2026-11-17",
-  "b": "Petits groupes, dates fixes. Les prix sont par pilote."
+  "b": "Petits groupes, dates fixes. Les prix sont par pilote.",
+  "tr": "Petits groupes, dates fixes. Les prix s’entendent par pilote."
  },
  "ca07a6eab021": {
   "en": "flying today, photos tonight",
   "a": "on vole aujourd'hui, photos ce soir",
   "date": "2026-11-17",
-  "b": "on vole aujourd’hui, photos ce soir"
+  "b": "on vole aujourd’hui, photos ce soir",
+  "tr": "on vole aujourd’hui, photos ce soir"
  },
  "ca5546254a77": {
   "en": "{1} days",
   "a": "{1} jours",
   "date": "2026-11-17",
-  "b": "{1} jours"
+  "b": "{1} jours",
+  "tr": "{1} jours"
  },
  "cb9f9f47293f": {
   "en": "Fitness and wing experience required",
   "a": "La condition physique et l'expérience de vol requises",
   "date": "2026-11-17",
-  "b": "La condition physique et l’expérience de voile requises"
+  "b": "La condition physique et l’expérience de voile requises",
+  "tr": "La condition physique et l’expérience de vol requises"
  },
  "cbee872716d0": {
   "en": "Gear list, dates, and costs",
   "a": "Liste du matériel, dates et coûts",
   "date": "2026-11-17",
-  "b": "La liste de matériel, les dates et les coûts"
+  "b": "La liste de matériel, les dates et les coûts",
+  "tr": "Liste du matériel, dates et coûts"
  },
  "cbfd44d9c70c": {
   "en": "Teams",
   "a": "Équipes",
   "date": "2026-11-17",
-  "b": "Équipes"
+  "b": "Équipes",
+  "tr": "Équipes"
  },
  "cc1bca4e4044": {
   "en": "Mon {1}",
   "a": "lun. {1}",
   "date": "2026-11-17",
-  "b": "Lun. {1}"
+  "b": "Lun. {1}",
+  "tr": "lun. {1}"
  },
  "cc4ea2f2cc53": {
   "en": "Photos of Practice, in the order shot",
   "a": "Photos de l'entraînement, dans l'ordre de prise de vue",
   "date": "2026-11-17",
-  "b": "Photos de l’entraînement, dans l’ordre de prise"
+  "b": "Photos de l’entraînement, dans l’ordre de prise",
+  "tr": "Photos de l’entraînement, dans l’ordre de prise de vue"
  },
  "cc82c26f3d75": {
   "en": "Rift Valley's Endless Skies Await",
   "a": "Les ciels infinis de la vallée du Rift vous attendent",
   "date": "2026-11-17",
-  "b": "Les ciels infinis de la vallée du Rift vous attendent"
+  "b": "Les ciels infinis de la vallée du Rift vous attendent",
+  "tr": "Les ciels infinis de la vallée du Rift vous attendent"
  },
  "cca2c8a6436f": {
   "en": "{1} photos<x1>, in the order shot</x1>",
   "a": "{1} photos<x1>, dans l'ordre de prise de vue</x1>",
   "date": "2026-11-17",
-  "b": "{1} photos<x1>, dans l’ordre de prise</x1>"
+  "b": "{1} photos<x1>, dans l’ordre de prise</x1>",
+  "tr": "{1} photos<x1>, dans l’ordre de prise de vue</x1>"
  },
  "ccbc40360fc7": {
   "en": "A paraglider over fields along the lake shore, red hills below",
   "a": "Un parapente au-dessus des champs le long de la rive du lac, des collines rouges en dessous",
   "date": "2026-11-17",
-  "b": "Un parapente au-dessus de champs le long de la rive du lac, des collines rouges en dessous"
+  "b": "Un parapente au-dessus de champs le long de la rive du lac, des collines rouges en dessous",
+  "tr": "Un parapente au-dessus de champs le long de la rive du lac, des collines rouges en dessous"
  },
  "ccc70f2dc6b5": {
   "en": "Corrections",
   "a": "Corrections",
   "date": "2026-11-17",
-  "b": "Corrections"
+  "b": "Corrections",
+  "tr": "Corrections"
  },
  "ccdc7c7744d6": {
   "en": "Hours, roughly",
   "a": "Heures, environ",
   "date": "2026-11-17",
-  "b": "En heures, à peu près"
+  "b": "En heures, à peu près",
+  "tr": "Heures, environ"
  },
  "cd4f60d8a103": {
   "en": "We'll break down",
   "a": "Nous passerons en revue",
   "date": "2026-11-17",
-  "b": "Nous passerons en revue"
+  "b": "Nous passerons en revue",
+  "tr": "Nous passerons en revue"
  },
  "ce491dd76179": {
   "en": "Search The Whole Episode Library",
   "a": "Cherchez dans toute la bibliothèque d'épisodes",
   "date": "2026-11-17",
-  "b": "Chercher dans toute la bibliothèque d’épisodes"
+  "b": "Chercher dans toute la bibliothèque d’épisodes",
+  "tr": "Cherchez dans toute la bibliothèque d’épisodes"
  },
  "ce60712352df": {
   "en": "Maxime Pinot",
   "a": "Maxime Pinot",
   "date": "2026-11-17",
-  "b": "Maxime Pinot"
+  "b": "Maxime Pinot",
+  "tr": "Maxime Pinot"
  },
  "ce726413d84c": {
   "en": "Photos of Task {1}, in the order shot",
   "a": "Photos de la manche {1}, dans l'ordre de prise de vue",
   "date": "2026-11-17",
-  "b": "Photos de la manche {1}, dans l’ordre de prise"
+  "b": "Photos de la manche {1}, dans l’ordre de prise",
+  "tr": "Photos de la manche {1}, dans l’ordre de prise de vue"
  },
  "cf01481f626d": {
   "en": "Privacy",
   "a": "Confidentialité",
   "date": "2026-11-17",
-  "b": "Confidentialité"
+  "b": "Confidentialité",
+  "tr": "Confidentialité"
  },
  "cf765512cc6d": {
   "en": "Sending…",
   "a": "Envoi…",
   "date": "2026-11-17",
-  "b": "Envoi…"
+  "b": "Envoi…",
+  "tr": "Envoi…"
  },
  "cfc0529b1773": {
   "en": "Reading what is likely to happen next",
   "a": "Lire ce qui va probablement se passer ensuite",
   "date": "2026-11-17",
-  "b": "Lire ce qui va probablement arriver"
+  "b": "Lire ce qui va probablement arriver",
+  "tr": "Lire ce qui va probablement se passer ensuite"
  },
  "cfc3e69c1d27": {
   "en": "Make, model, EN class",
   "a": "Marque, modèle, classe EN",
   "date": "2026-11-17",
-  "b": "Marque, modèle, classe EN"
+  "b": "Marque, modèle, classe EN",
+  "tr": "Marque, modèle, classe EN"
  },
  "cff524d2580e": {
   "en": "Not sure yet is a perfectly good answer, and often the right one.",
   "a": "« Je ne sais pas encore » est une très bonne réponse, et souvent la bonne.",
   "date": "2026-11-17",
-  "b": "« Pas encore sûr » est une très bonne réponse, et souvent la bonne."
+  "b": "« Pas encore sûr » est une très bonne réponse, et souvent la bonne.",
+  "tr": "« Je ne sais pas encore » est une très bonne réponse, et souvent la bonne."
  },
  "d02a49aed22d": {
   "en": "About these questions",
   "a": "À propos de ces questions",
   "date": "2026-11-17",
-  "b": "À propos de ces questions"
+  "b": "À propos de ces questions",
+  "tr": "À propos de ces questions"
  },
  "d0b66435c381": {
   "en": "Tap the name: {1}",
   "a": "Touchez le nom : {1}",
   "date": "2026-11-17",
-  "b": "Touchez le nom : {1}"
+  "b": "Touchez le nom : {1}",
+  "tr": "Touchez le nom : {1}"
  },
  "d12081b32289": {
   "en": "Hold a place sends an enquiry for that departure.",
   "a": "« Réserver une place » envoie une demande pour ce départ.",
   "date": "2026-11-17",
-  "b": "« Réserver une place » envoie une demande pour ce départ."
+  "b": "« Réserver une place » envoie une demande pour ce départ.",
+  "tr": "« Réserver une place » envoie une demande pour ce départ."
  },
  "d189941a2aef": {
   "en": "Its name is enough to start. The dates, the place and the package help us reply about availability.",
   "a": "Son nom suffit pour commencer. Les dates, le lieu et la formule nous aident à vous répondre sur nos disponibilités.",
   "date": "2026-11-17",
-  "b": "Son nom suffit pour commencer. Les dates, le lieu et la formule nous aident à répondre sur la disponibilité."
+  "b": "Son nom suffit pour commencer. Les dates, le lieu et la formule nous aident à répondre sur la disponibilité.",
+  "tr": "Son nom suffit pour commencer. Les dates, le lieu et la formule nous aident à vous répondre sur nos disponibilités."
  },
  "d1de50eefbbd": {
   "en": "{1} photos",
   "a": "{1} photos",
   "date": "2026-11-17",
-  "b": "{1} photos"
+  "b": "{1} photos",
+  "tr": "{1} photos"
  },
  "d23a6fa82fae": {
   "en": "Navigating India, Eddie Colfox",
   "a": "Naviguer en Inde, Eddie Colfox",
   "date": "2026-11-17",
-  "b": "Naviguer en Inde, Eddie Colfox"
+  "b": "Naviguer en Inde, Eddie Colfox",
+  "tr": "Naviguer en Inde, Eddie Colfox"
  },
  "d26e27d2c13b": {
   "en": "Russell Ogden",
   "a": "Russell Ogden",
   "date": "2026-11-17",
-  "b": "Russell Ogden"
+  "b": "Russell Ogden",
+  "tr": "Russell Ogden"
  },
  "d34868312069": {
   "en": "Field Protocols For Rewiring Risk Intuition",
   "a": "Protocoles de terrain pour recâbler son intuition du risque",
   "date": "2026-11-17",
-  "b": "Protocoles de terrain pour reprogrammer l’intuition du risque"
+  "b": "Protocoles de terrain pour reprogrammer l’intuition du risque",
+  "tr": "Protocoles de terrain pour reprogrammer l’intuition du risque"
  },
  "d42713493ca8": {
   "en": "Destination",
   "a": "Destination",
   "date": "2026-11-17",
-  "b": "Destination"
+  "b": "Destination",
+  "tr": "Destination"
  },
  "d466c5436862": {
   "en": "Booking Open",
   "a": "Réservations ouvertes",
   "date": "2026-11-17",
-  "b": "Réservations ouvertes"
+  "b": "Réservations ouvertes",
+  "tr": "Réservations ouvertes"
  },
  "d523ebbd1014": {
   "en": "Country",
   "a": "Pays",
   "date": "2026-11-17",
-  "b": "Pays"
+  "b": "Pays",
+  "tr": "Pays"
  },
  "d539499a32a4": {
   "en": "Experience, and what it does not cover",
   "a": "L'expérience, et ce qu'elle ne couvre pas",
   "date": "2026-11-17",
-  "b": "L’expérience, et ce qu’elle ne couvre pas"
+  "b": "L’expérience, et ce qu’elle ne couvre pas",
+  "tr": "L’expérience, et ce qu’elle ne couvre pas"
  },
  "d599123fb63a": {
   "en": "India ({1})",
   "a": "Inde ({1})",
   "date": "2026-11-17",
-  "b": "Inde ({1})"
+  "b": "Inde ({1})",
+  "tr": "Inde ({1})"
  },
  "d614b99a0d0d": {
   "en": "What Pilots Ask Before Booking",
   "a": "Ce que les pilotes demandent avant de réserver",
   "date": "2026-11-17",
-  "b": "Ce que les pilotes demandent avant de réserver"
+  "b": "Ce que les pilotes demandent avant de réserver",
+  "tr": "Ce que les pilotes demandent avant de réserver"
  },
  "d7153c585db7": {
   "en": "<x1>←</x1> Task {1}",
   "a": "<x1>←</x1> Manche {1}",
   "date": "2026-11-17",
-  "b": "<x1>←</x1> Manche {1}"
+  "b": "<x1>←</x1> Manche {1}",
+  "tr": "<x1>←</x1> Manche {1}"
  },
  "d71e3907769c": {
   "en": "Three paragliders, yellow, red and orange, over a valley in Kenya",
   "a": "Trois parapentes, jaune, rouge et orange, au-dessus d'une vallée au Kenya",
   "date": "2026-11-17",
-  "b": "Trois parapentes, jaune, rouge et orange, au-dessus d’une vallée au Kenya"
+  "b": "Trois parapentes, jaune, rouge et orange, au-dessus d’une vallée au Kenya",
+  "tr": "Trois parapentes, jaune, rouge et orange, au-dessus d’une vallée au Kenya"
  },
  "d725e4c29e18": {
   "en": "{1} is about two hours by road from {2} and four and a half to five hours from {3}. No train goes to {4}: take the train from {5} to {6}, about four hours, then a taxi or a bus.",
   "a": "{1} est à environ deux heures de route de {2} et à quatre heures et demie à cinq heures de {3}. Aucun train ne va à {4} : prenez le train de {5} à {6}, environ quatre heures, puis un taxi ou un bus.",
   "date": "2026-11-17",
-  "b": "{1} est à environ deux heures de route de {2} et à quatre heures et demie à cinq heures de {3}. Aucun train ne va à {4} : prenez le train de {5} à {6}, environ quatre heures, puis un taxi ou un bus."
+  "b": "{1} est à environ deux heures de route de {2} et à quatre heures et demie à cinq heures de {3}. Aucun train ne va à {4} : prenez le train de {5} à {6}, environ quatre heures, puis un taxi ou un bus.",
+  "tr": "{1} est à environ deux heures de route de {2} et à quatre heures et demie à cinq heures de {3}. Aucun train ne va à {4} : prenez le train de {5} à {6}, environ quatre heures, puis un taxi ou un bus."
  },
  "d76511171f87": {
   "en": "Participant Agreement",
   "a": "Accord du participant",
   "date": "2026-11-17",
-  "b": "Accord du participant"
+  "b": "Accord du participant",
+  "tr": "Accord du participant"
  },
  "d7a20cbf61c3": {
   "en": ", {1}, April and May, and October and {2}",
   "a": ", {1}, avril et mai, et octobre et {2}",
   "date": "2026-11-17",
-  "b": ", {1}, avril et mai, et octobre et {2}"
+  "b": ", {1}, avril et mai, et octobre et {2}",
+  "tr": ", {1}, avril et mai, et octobre et {2}"
  },
  "d84d0ad04a29": {
   "en": "per pilot",
   "a": "par pilote",
   "date": "2026-11-17",
-  "b": "par pilote"
+  "b": "par pilote",
+  "tr": "par pilote"
  },
  "d9186ba11d2a": {
   "en": "Peru, the desert coast",
   "a": "Le Pérou, la côte désertique",
   "date": "2026-11-17",
-  "b": "Le Pérou, la côte désertique"
+  "b": "Le Pérou, la côte désertique",
+  "tr": "Le Pérou, la côte désertique"
  },
  "da18fae8a951": {
   "en": "Previous episodes",
   "a": "Épisodes précédents",
   "date": "2026-11-17",
-  "b": "Épisodes précédents"
+  "b": "Épisodes précédents",
+  "tr": "Épisodes précédents"
  },
  "db20c0f0d789": {
   "en": "Helmut Schrempf",
   "a": "Helmut Schrempf",
   "date": "2026-11-17",
-  "b": "Helmut Schrempf"
+  "b": "Helmut Schrempf",
+  "tr": "Helmut Schrempf"
  },
  "db71055d0472": {
   "en": "Task {1}, Thu {2}, was cancelled (weather).",
   "a": "La manche {1}, jeu. {2}, a été annulée (météo).",
   "date": "2026-11-17",
-  "b": "La manche {1}, jeu. {2}, a été annulée (météo)."
+  "b": "La manche {1}, jeu. {2}, a été annulée (météo).",
+  "tr": "La manche {1}, jeu. {2}, a été annulée (météo)."
  },
  "dbd0af254257": {
   "en": "Wind carved rock, with dried ancient seabeds to land on",
   "a": "Des roches sculptées par le vent, et d'anciens fonds marins asséchés pour se poser",
   "date": "2026-11-17",
-  "b": "Roche sculptée par le vent, avec d’anciens fonds marins asséchés où atterrir"
+  "b": "Roche sculptée par le vent, avec d’anciens fonds marins asséchés où atterrir",
+  "tr": "Des roches sculptées par le vent, avec d’anciens fonds marins asséchés où atterrir",
+  "tr_note": "merged: a's article, b's 'où atterrir'"
  },
  "dc8415ccfe52": {
   "en": "Feb",
   "a": "févr.",
   "date": "2026-11-17",
-  "b": "Févr."
+  "b": "Févr.",
+  "tr": "févr."
  },
  "dca1bc8e03da": {
   "en": "Pre {1} Kenya, Nikolay Yotov",
   "a": "Pré-{1} Kenya, Nikolay Yotov",
   "date": "2026-11-17",
-  "b": "Pré-{1} Kenya, Nikolay Yotov"
+  "b": "Pré-{1} Kenya, Nikolay Yotov",
+  "tr": "Pré-{1} Kenya, Nikolay Yotov"
  },
  "dcc39d11ca89": {
   "en": "<x1>{1}</x1>Gear list, dates, and costs",
   "a": "<x1>{1}</x1>Liste du matériel, dates et coûts",
   "date": "2026-11-17",
-  "b": "<x1>{1}</x1>La liste de matériel, les dates et les coûts"
+  "b": "<x1>{1}</x1>La liste de matériel, les dates et les coûts",
+  "tr": "<x1>{1}</x1>Liste du matériel, dates et coûts"
  },
  "dcd142d76412": {
   "en": "Also from India",
   "a": "Aussi depuis l'Inde",
   "date": "2026-11-17",
-  "b": "Aussi en Inde"
+  "b": "Aussi en Inde",
+  "tr": "Aussi en Inde"
  },
  "dcdd23907a64": {
   "en": "fly the route",
   "a": "suivre le parcours",
   "date": "2026-11-17",
-  "b": "voler le parcours"
+  "b": "voler le parcours",
+  "tr": "survoler le parcours",
+  "tr_note": "'voler le parcours' is not French; 'suivre' loses the flying"
  },
  "dd77da78750c": {
   "en": "Episode Library",
   "a": "Bibliothèque d'épisodes",
   "date": "2026-11-17",
-  "b": "Bibliothèque d’épisodes"
+  "b": "Bibliothèque d’épisodes",
+  "tr": "Bibliothèque d’épisodes"
  },
  "ddd71ef106b6": {
   "en": "Planned, {1}",
   "a": "Prévu, {1}",
   "date": "2026-11-17",
-  "b": "Prévu, {1}"
+  "b": "Prévu, {1}",
+  "tr": "Prévu, {1}"
  },
  "de9a3242d1b8": {
   "en": "Watched",
   "a": "Vu",
   "date": "2026-11-17",
-  "b": "Vu"
+  "b": "Vu",
+  "tr": "Vu"
  },
  "dead7d6e185a": {
   "en": "Drag to rotate.",
   "a": "Faites glisser pour pivoter.",
   "date": "2026-11-17",
-  "b": "Faites glisser pour faire pivoter."
+  "b": "Faites glisser pour faire pivoter.",
+  "tr": "Faites glisser pour faire pivoter."
  },
  "df68968bb28f": {
   "en": "{1} tasks scored, {2} cancelled",
   "a": "{1} manches validées, {2} annulées",
   "date": "2026-11-17",
-  "b": "{1} manches validées, {2} annulées"
+  "b": "{1} manches validées, {2} annulées",
+  "tr": "{1} manches validées, {2} annulées"
  },
  "e09eb1e94858": {
   "en": "Navigating India (Bonus Ep), Episode {1}, {2} min",
   "a": "Naviguer en Inde (épisode bonus), épisode {1}, {2} min",
   "date": "2026-11-17",
-  "b": "Naviguer en Inde (épisode bonus), épisode {1}, {2} min"
+  "b": "Naviguer en Inde (épisode bonus), épisode {1}, {2} min",
+  "tr": "Naviguer en Inde (épisode bonus), épisode {1}, {2} min"
  },
  "e0beea67ac4b": {
   "en": "{1} photos<x1> + film</x1>",
   "a": "{1} photos<x1> et un film</x1>",
   "date": "2026-11-17",
-  "b": "{1} photos<x1> + vidéo</x1>"
+  "b": "{1} photos<x1> + vidéo</x1>",
+  "tr": "{1} photos<x1> et un film</x1>"
  },
  "e17fcf4292ab": {
   "en": "Know Your Equipment",
   "a": "Connaître son matériel",
   "date": "2026-11-17",
-  "b": "Connaître son équipement"
+  "b": "Connaître son équipement",
+  "tr": "Connaître son matériel"
  },
  "e2263a59774e": {
   "en": "The window",
   "a": "Le créneau",
   "date": "2026-11-17",
-  "b": "La fenêtre"
+  "b": "La fenêtre",
+  "tr": "Le créneau"
  },
  "e23733910d4b": {
   "en": "<x1>←</x1> Practice",
   "a": "<x1>←</x1> Entraînement",
   "date": "2026-11-17",
-  "b": "<x1>←</x1> Entraînement"
+  "b": "<x1>←</x1> Entraînement",
+  "tr": "<x1>←</x1> Entraînement"
  },
  "e28e179e9c6c": {
   "en": "Total airtime",
   "a": "Heures de vol totales",
   "date": "2026-11-17",
-  "b": "Heures de vol au total"
+  "b": "Heures de vol au total",
+  "tr": "Heures de vol totales"
  },
  "e2961db6b32f": {
   "en": "We're a group of like minded pilots who meticulously craft each trip with passion, creativity, and teamwork.",
   "a": "Nous sommes un groupe de pilotes qui partagent les mêmes valeurs et qui conçoivent minutieusement chaque voyage avec passion, créativité et esprit d'équipe.",
   "date": "2026-11-17",
-  "b": "Nous sommes un groupe de pilotes qui pensent comme vous et qui préparent chaque voyage avec minutie, passion, créativité et esprit d’équipe."
+  "b": "Nous sommes un groupe de pilotes qui pensent comme vous et qui préparent chaque voyage avec minutie, passion, créativité et esprit d’équipe.",
+  "tr": "Nous sommes un groupe de pilotes qui partagent les mêmes valeurs et qui conçoivent minutieusement chaque voyage avec passion, créativité et esprit d’équipe."
  },
  "e2e55a0f5b9c": {
   "en": "{1}: Podcast, Knowledge Base and Guided Expeditions",
   "a": "{1} : podcast, base de connaissances et expéditions guidées",
   "date": "2026-11-17",
-  "b": "{1} : podcast, base de connaissances et expéditions guidées"
+  "b": "{1} : podcast, base de connaissances et expéditions guidées",
+  "tr": "{1} : podcast, base de connaissances et expéditions guidées"
  },
  "e4115be258db": {
   "en": "Coming soon",
   "a": "Bientôt",
   "date": "2026-11-17",
-  "b": "Bientôt disponible"
+  "b": "Bientôt disponible",
+  "tr": "Bientôt disponible"
  },
  "e42c1920eb71": {
   "en": "Flying 8000ers",
   "a": "Survoler les 8000",
   "date": "2026-11-17",
-  "b": "Voler sur les 8000"
+  "b": "Voler sur les 8000",
+  "tr": "Survoler les 8000"
  },
  "e45e18b8b5da": {
   "en": "{1} {2}, after five scored tasks",
   "a": "{1} {2}, après cinq manches validées",
   "date": "2026-11-17",
-  "b": "{1} {2}, après cinq manches validées"
+  "b": "{1} {2}, après cinq manches validées",
+  "tr": "{1} {2}, après cinq manches validées"
  },
  "e4698d4ceacb": {
   "en": "Mission",
   "a": "Mission",
   "date": "2026-11-17",
-  "b": "Mission"
+  "b": "Mission",
+  "tr": "Mission"
  },
  "e4a39135c67b": {
   "en": "Tasks {1}",
   "a": "Manches {1}",
   "date": "2026-11-17",
-  "b": "Manches {1}"
+  "b": "Manches {1}",
+  "tr": "Manches {1}"
  },
  "e4dfdee0faab": {
   "en": "Over Nature's Wildest Secrets",
   "a": "Au-dessus des secrets les plus sauvages de la nature",
   "date": "2026-11-17",
-  "b": "Aux plus grands secrets de la nature"
+  "b": "Aux plus grands secrets de la nature",
+  "tr": "Au-dessus des secrets les plus sauvages de la nature"
  },
  "e512ce1ae8d0": {
   "en": "Skip the pictures <x1>↓</x1>",
   "a": "Passer les images <x1>↓</x1>",
   "date": "2026-11-17",
-  "b": "Passer les images <x1>↓</x1>"
+  "b": "Passer les images <x1>↓</x1>",
+  "tr": "Passer les images <x1>↓</x1>"
  },
  "e610f8570e95": {
   "en": "Point at the name: {1}",
   "a": "Pointez le nom : {1}",
   "date": "2026-11-17",
-  "b": "Pointez le nom : {1}"
+  "b": "Pointez le nom : {1}",
+  "tr": "Pointez le nom : {1}"
  },
  "e62f600c6538": {
   "en": "Fri {1}",
   "a": "ven. {1}",
   "date": "2026-11-17",
-  "b": "Ven. {1}"
+  "b": "Ven. {1}",
+  "tr": "ven. {1}"
  },
  "e6552ff8db24": {
   "en": "See the trip →",
   "a": "Voir le voyage →",
   "date": "2026-11-17",
-  "b": "Voir le voyage →"
+  "b": "Voir le voyage →",
+  "tr": "Voir le voyage →"
  },
  "e6f0ac20d465": {
   "en": "An {1} day guided paragliding tour in {2}, India, {3}: the volcanic tablelands of the {4} hills, where India held a pre World Cup.",
   "a": "Un voyage de parapente guidé de {1} jours à {2}, en Inde, {3} : les plateaux volcaniques des collines de {4}, où l'Inde a accueilli une pré-Coupe du monde.",
   "date": "2026-11-17",
-  "b": "Un voyage de parapente guidé de {1} jours à {2}, en Inde, {3} : les plateaux volcaniques des collines de {4}, où l’Inde a tenu une pré-Coupe du monde."
+  "b": "Un voyage de parapente guidé de {1} jours à {2}, en Inde, {3} : les plateaux volcaniques des collines de {4}, où l’Inde a tenu une pré-Coupe du monde.",
+  "tr": "Un voyage de parapente guidé de {1} jours à {2}, en Inde, {3} : les plateaux volcaniques des collines de {4}, où l’Inde a accueilli une pré-Coupe du monde."
  },
  "e764aadd1307": {
   "en": "See the latest photos <x1>→</x1>",
   "a": "Voir les dernières photos <x1>→</x1>",
   "date": "2026-11-17",
-  "b": "Voir les dernières photos <x1>→</x1>"
+  "b": "Voir les dernières photos <x1>→</x1>",
+  "tr": "Voir les dernières photos <x1>→</x1>"
  },
  "e7b4f1443b46": {
   "en": "<x1>Length</x1>{1} days",
   "a": "<x1>Durée</x1>{1} jours",
   "date": "2026-11-17",
-  "b": "<x1>Durée</x1>{1} jours"
+  "b": "<x1>Durée</x1>{1} jours",
+  "tr": "<x1>Durée</x1>{1} jours"
  },
  "e7e51a25d971": {
   "en": "Live from {1}",
   "a": "En direct de {1}",
   "date": "2026-11-17",
-  "b": "En direct de {1}"
+  "b": "En direct de {1}",
+  "tr": "En direct de {1}"
  },
  "e7f2e2bf4c83": {
   "en": "How the race went",
   "a": "Le déroulé de la course",
   "date": "2026-11-17",
-  "b": "Le déroulement de la course"
+  "b": "Le déroulement de la course",
+  "tr": "Le déroulement de la course"
  },
  "e974dd81fba3": {
   "en": "Two paragliders over striped canyon terrain in Kazakhstan",
   "a": "Deux parapentes au-dessus d'un relief de canyons striés au Kazakhstan",
   "date": "2026-11-17",
-  "b": "Deux parapentes au-dessus d’un relief de canyons striés au Kazakhstan"
+  "b": "Deux parapentes au-dessus d’un relief de canyons striés au Kazakhstan",
+  "tr": "Deux parapentes au-dessus d’un relief de canyons striés au Kazakhstan"
  },
  "e9b97caadb76": {
   "en": "What you are asking about",
   "a": "L'objet de votre demande",
   "date": "2026-11-17",
-  "b": "Ce sur quoi porte votre demande"
+  "b": "Ce sur quoi porte votre demande",
+  "tr": "L’objet de votre demande"
  },
  "ea87894cf00c": {
   "en": "Space plays and pauses · F full screen · Esc closes",
   "a": "Espace : lecture et pause · F : plein écran · Échap : fermer",
   "date": "2026-11-17",
-  "b": "Espace lance et met en pause · F plein écran · Échap ferme"
+  "b": "Espace lance et met en pause · F plein écran · Échap ferme",
+  "tr": "Espace : lecture et pause · F : plein écran · Échap : fermer"
  },
  "ead9064285b7": {
   "en": "Anything else",
   "a": "Autre chose",
   "date": "2026-11-17",
-  "b": "Autre chose"
+  "b": "Autre chose",
+  "tr": "Autre chose"
  },
  "eaef28326bc8": {
   "en": "No task flown",
   "a": "Aucune manche volée",
   "date": "2026-11-17",
-  "b": "Aucune manche volée"
+  "b": "Aucune manche volée",
+  "tr": "Aucune manche volée"
  },
  "ec45acc37fea": {
   "en": "Navigating {1}",
   "a": "Naviguer à {1}",
   "date": "2026-11-17",
-  "b": "Naviguer : {1}"
+  "b": "Naviguer : {1}",
+  "tr": "Naviguer à {1}"
  },
  "ec5dec738a1e": {
   "en": "Pause: stay on this place",
   "a": "Pause : rester sur ce lieu",
   "date": "2026-11-17",
-  "b": "Pause : rester sur ce lieu"
+  "b": "Pause : rester sur ce lieu",
+  "tr": "Pause : rester sur ce lieu"
  },
  "ed16cdea2237": {
   "en": "Chapters of Navigating India (Bonus Ep)",
   "a": "Chapitres de Naviguer en Inde (épisode bonus)",
   "date": "2026-11-17",
-  "b": "Chapitres de Naviguer en Inde (épisode bonus)"
+  "b": "Chapitres de Naviguer en Inde (épisode bonus)",
+  "tr": "Chapitres de Naviguer en Inde (épisode bonus)"
  },
  "edbb69d4dc57": {
   "en": "Kazakhstan · The steppe",
   "a": "Kazakhstan · La steppe",
   "date": "2026-11-17",
-  "b": "Kazakhstan · La steppe"
+  "b": "Kazakhstan · La steppe",
+  "tr": "Kazakhstan · La steppe"
  },
  "edcea341dc9e": {
   "en": "Biophysics In The Art Of Flight",
   "a": "La biophysique dans l'art du vol",
   "date": "2026-11-17",
-  "b": "La biophysique dans l’art du vol"
+  "b": "La biophysique dans l’art du vol",
+  "tr": "La biophysique dans l’art du vol"
  },
  "ee76ac54f270": {
   "en": "Dr Matt Wilkes",
   "a": "Dr Matt Wilkes",
   "date": "2026-11-17",
-  "b": "Dr. Matt Wilkes"
+  "b": "Dr. Matt Wilkes",
+  "tr": "Dr Matt Wilkes",
+  "waive": {
+   "left in English": "a person's name (Dr Matt Wilkes); 'Dr' is also the French abbreviation"
+  }
  },
  "eeea3ff6f328": {
   "en": "What happens to this",
   "a": "Ce que devient ce formulaire",
   "date": "2026-11-17",
-  "b": "Ce qu’il advient de ces informations"
+  "b": "Ce qu’il advient de ces informations",
+  "tr": "Ce qu’il advient de ces informations"
  },
  "ef0ca08b3d85": {
   "en": "A {1} km task raced under a storm clock, which eventually got stopped by rain.",
   "a": "Une manche de {1} km courue sous la menace d'un orage, finalement arrêtée par la pluie.",
   "date": "2026-11-17",
-  "b": "Une manche de {1} km courue sous une horloge d’orage, finalement arrêtée par la pluie."
+  "b": "Une manche de {1} km courue sous une horloge d’orage, finalement arrêtée par la pluie.",
+  "tr": "Une manche de {1} km courue sous la menace d’un orage, finalement arrêtée par la pluie."
  },
  "ef699a7a5491": {
   "en": "What the guidebook offers",
   "a": "Ce que propose le guide",
   "date": "2026-11-17",
-  "b": "Ce qu’offre le guide"
+  "b": "Ce qu’offre le guide",
+  "tr": "Ce que propose le guide"
  },
  "ef931280933d": {
   "en": "What you'll get in end-to-end guidance from {1}",
   "a": "Ce que vous apporte l'accompagnement complet de {1}",
   "date": "2026-11-17",
-  "b": "Ce que vous obtiendrez en accompagnement de bout en bout avec {1}"
+  "b": "Ce que vous obtiendrez en accompagnement de bout en bout avec {1}",
+  "tr": "Ce que vous apporte l’accompagnement complet de {1}"
  },
  "efed3690ea22": {
   "en": "Jan",
   "a": "janv.",
   "date": "2026-11-17",
-  "b": "Janv."
+  "b": "Janv.",
+  "tr": "janv."
  },
  "efefa00fad45": {
   "en": "footage from Bir Billing",
   "a": "des images de Bir Billing",
   "date": "2026-11-17",
-  "b": "images de Bir Billing"
+  "b": "images de Bir Billing",
+  "tr": "des images de Bir Billing"
  },
  "f0a3ce2aea68": {
   "en": "How Open Are Manufacturers Really",
   "a": "Les constructeurs sont-ils vraiment transparents ?",
   "date": "2026-11-17",
-  "b": "Quelle est vraiment l’ouverture des constructeurs"
+  "b": "Quelle est vraiment l’ouverture des constructeurs",
+  "tr": "Les constructeurs sont-ils vraiment transparents ?"
  },
  "f0bad7dfd220": {
   "en": "Retrieves, taxis, and finding your tribe",
   "a": "Récups, taxis, et trouver sa tribu",
   "date": "2026-11-17",
-  "b": "Remontées, taxis, et trouver sa tribu"
+  "b": "Remontées, taxis, et trouver sa tribu",
+  "tr": "Récupérations, taxis, et trouver sa tribu",
+  "tr_note": "glossary: retrieve = récupération"
  },
  "f138d6b94b5a": {
   "en": "Every evening the sea breeze comes in from the coast, so the flying day is timed around it. In the time you get for cross country, it is glorious.",
   "a": "Chaque soir, la brise de mer arrive de la côte, donc la journée de vol s'organise autour d'elle. Dans le temps dont vous disposez pour le cross, c'est magnifique.",
   "date": "2026-11-17",
-  "b": "Chaque soir, la brise de mer arrive de la côte, et la journée de vol s’organise donc autour d’elle. Dans le temps dont on dispose pour le cross, c’est magnifique."
+  "b": "Chaque soir, la brise de mer arrive de la côte, et la journée de vol s’organise donc autour d’elle. Dans le temps dont on dispose pour le cross, c’est magnifique.",
+  "tr": "Chaque soir, la brise de mer arrive de la côte, et la journée de vol s’organise donc autour d’elle. Dans le temps dont vous disposez pour le cross, c’est magnifique.",
+  "tr_note": "b's sentence, a's 'vous' (site addresses the reader)"
  },
  "f190c98ece6a": {
   "en": "Your message",
   "a": "Votre message",
   "date": "2026-11-17",
-  "b": "Votre message"
+  "b": "Votre message",
+  "tr": "Votre message"
  },
  "f1c7151aa419": {
   "en": "If you get below {1} meters, start looking for a safe landing. Don't get close to the terrain unless you really know what you're doing.",
   "a": "Si vous descendez sous {1} mètres, commencez à chercher un atterrissage sûr. Ne vous approchez pas du relief à moins de vraiment savoir ce que vous faites.",
   "date": "2026-11-17",
-  "b": "Si vous descendez sous {1} mètres, commencez à chercher un atterrissage sûr. Ne vous approchez pas du relief si vous ne savez pas vraiment ce que vous faites."
+  "b": "Si vous descendez sous {1} mètres, commencez à chercher un atterrissage sûr. Ne vous approchez pas du relief si vous ne savez pas vraiment ce que vous faites.",
+  "tr": "Si vous descendez sous {1} mètres, commencez à chercher un atterrissage sûr. Ne vous approchez pas du relief à moins de vraiment savoir ce que vous faites."
  },
  "f1deb1848d99": {
   "en": "See all {1} photos",
   "a": "Voir les {1} photos",
   "date": "2026-11-17",
-  "b": "Voir les {1} photos"
+  "b": "Voir les {1} photos",
+  "tr": "Voir les {1} photos"
  },
  "f22b1fc2f44b": {
   "en": "Safety & Disclosure",
   "a": "Sécurité et transparence",
   "date": "2026-11-17",
-  "b": "Sécurité et mentions"
+  "b": "Sécurité et mentions",
+  "tr": "Sécurité et transparence"
  },
  "f27f0b9bc5b4": {
   "en": "Play: go on to the next places",
   "a": "Lecture : aller aux lieux suivants",
   "date": "2026-11-17",
-  "b": "Lecture : passer aux lieux suivants"
+  "b": "Lecture : passer aux lieux suivants",
+  "tr": "Lecture : passer aux lieux suivants"
  },
  "f2a9413341c8": {
   "en": "By submitting you consent to email updates from {1}. Unsubscribe any time.",
   "a": "En validant, vous acceptez de recevoir des nouvelles par e-mail de {1}. Désinscription à tout moment.",
   "date": "2026-11-17",
-  "b": "En envoyant ce formulaire, vous consentez à recevoir des e-mails de {1}. Désinscription à tout moment."
+  "b": "En envoyant ce formulaire, vous consentez à recevoir des e-mails de {1}. Désinscription à tout moment.",
+  "tr": "En envoyant ce formulaire, vous acceptez de recevoir des nouvelles par e-mail de {1}. Désinscription à tout moment.",
+  "tr_note": "merged: b's 'en envoyant ce formulaire', a's 'nouvelles par e-mail' (email updates)"
  },
  "f2d2644d755f": {
   "en": "Seven Frames From The Tablelands",
   "a": "Sept images des plateaux",
   "date": "2026-11-17",
-  "b": "Sept images des plateaux"
+  "b": "Sept images des plateaux",
+  "tr": "Sept images des plateaux"
  },
  "f314bfd7b738": {
   "en": "More conversations, {1} guests, newest first",
   "a": "Plus de conversations, {1} invités, les plus récents d'abord",
   "date": "2026-11-17",
-  "b": "Plus de conversations, {1} invités, du plus récent au plus ancien"
+  "b": "Plus de conversations, {1} invités, du plus récent au plus ancien",
+  "tr": "Plus de conversations, {1} invités, les plus récents d’abord"
  },
  "f34662b77043": {
   "en": "Vistasp Kharas",
   "a": "Vistasp Kharas",
   "date": "2026-11-17",
-  "b": "Vistasp Kharas"
+  "b": "Vistasp Kharas",
+  "tr": "Vistasp Kharas"
  },
  "f38e0023e4b0": {
   "en": "Points from {1}'s final results; the bars are each task's score, out of {2}. <x1>Full results <x2>↗</x2></x1>",
   "a": "Points issus des résultats finaux de {1} ; les barres représentent le score de chaque manche, sur {2}. <x1>Résultats complets <x2>↗</x2></x1>",
   "date": "2026-11-17",
-  "b": "Points issus des résultats finaux de {1} ; les barres sont le score de chaque manche, sur {2}. <x1>Résultats complets <x2>↗</x2></x1>"
+  "b": "Points issus des résultats finaux de {1} ; les barres sont le score de chaque manche, sur {2}. <x1>Résultats complets <x2>↗</x2></x1>",
+  "tr": "Points issus des résultats finaux de {1} ; les barres représentent le score de chaque manche, sur {2}. <x1>Résultats complets <x2>↗</x2></x1>"
  },
  "f3e6db90f07a": {
   "en": "November to March. The wind starts from the north-northeast and turns southeast towards spring, so the take-off is chosen to match. The tour flies in February, in the heart of it.",
   "a": "De novembre à mars. Le vent part du nord-nord-est et tourne au sud-est vers le printemps, et le décollage est choisi en conséquence. Le voyage a lieu en février, en pleine saison.",
   "date": "2026-11-17",
-  "b": "De novembre à mars. Le vent part du nord-nord-est et tourne au sud-est vers le printemps, et le décollage est donc choisi en conséquence. Le voyage a lieu en février, en plein cœur de la saison."
+  "b": "De novembre à mars. Le vent part du nord-nord-est et tourne au sud-est vers le printemps, et le décollage est donc choisi en conséquence. Le voyage a lieu en février, en plein cœur de la saison.",
+  "tr": "De novembre à mars. Le vent part du nord-nord-est et tourne au sud-est vers le printemps, et le décollage est choisi en conséquence. Le voyage a lieu en février, en pleine saison."
  },
  "f423fc07da77": {
   "en": "A {1} minute call, no obligation and nothing to prepare, is usually faster than any form. So is a message.",
   "a": "Un appel de {1} minutes, sans engagement et sans rien à préparer, est généralement plus rapide qu'un formulaire. Un message aussi.",
   "date": "2026-11-17",
-  "b": "Un appel de {1} minutes, sans engagement et sans rien à préparer, est généralement plus rapide qu’un formulaire. Un message aussi."
+  "b": "Un appel de {1} minutes, sans engagement et sans rien à préparer, est généralement plus rapide qu’un formulaire. Un message aussi.",
+  "tr": "Un appel de {1} minutes, sans engagement et sans rien à préparer, est généralement plus rapide qu’un formulaire. Un message aussi."
  },
  "f4a06efeb240": {
   "en": "Exclusive Journeys",
   "a": "Des voyages exclusifs",
   "date": "2026-11-17",
-  "b": "Des voyages exclusifs"
+  "b": "Des voyages exclusifs",
+  "tr": "Des voyages exclusifs"
  },
  "f4c9f3051b3d": {
   "en": "Also on",
   "a": "Aussi sur",
   "date": "2026-11-17",
-  "b": "Aussi sur"
+  "b": "Aussi sur",
+  "tr": "Aussi sur"
  },
  "f5b7906f2ef7": {
   "en": "Swipe the photo to fly the route",
   "a": "Faites glisser la photo pour suivre le parcours",
   "date": "2026-11-17",
-  "b": "Faites glisser la photo pour voler le parcours"
+  "b": "Faites glisser la photo pour voler le parcours",
+  "tr": "Faites glisser la photo pour survoler le parcours",
+  "tr_note": "same as 'fly the route' elsewhere"
  },
  "f5e423430d11": {
   "en": "If you have made a piece of gear, a piece of tech or a wild new adventure concept that would make a positive difference to this community, we would like to hear about it. We run paid spotlight segments inside episodes: you reach listeners across {1} countries, and it helps keep the podcast funded and free. Sponsored segments are always disclosed at the top of the episode, which is set out in our <x1>disclosure statements</x1>.",
   "a": "Si vous avez conçu un équipement, une technologie ou un nouveau concept d'aventure un peu fou qui apporterait quelque chose de positif à cette communauté, nous aimerions en entendre parler. Nous proposons des segments de mise en avant rémunérés dans les épisodes : vous touchez des auditeurs dans {1} pays, et cela contribue à financer le podcast et à le garder gratuit. Les segments sponsorisés sont toujours signalés en début d'épisode, comme l'indiquent nos <x1>déclarations de transparence</x1>.",
   "date": "2026-11-17",
-  "b": "Si vous avez conçu un équipement, une technologie ou un nouveau concept d’aventure audacieux qui ferait une différence positive pour cette communauté, nous aimerions en entendre parler. Nous diffusons des séquences à l’honneur payantes dans les épisodes : vous touchez des auditeurs dans {1} pays, et cela aide à financer le podcast et à le garder gratuit. Les séquences sponsorisées sont toujours signalées en début d’épisode, comme l’expliquent nos <x1>mentions de transparence</x1>."
+  "b": "Si vous avez conçu un équipement, une technologie ou un nouveau concept d’aventure audacieux qui ferait une différence positive pour cette communauté, nous aimerions en entendre parler. Nous diffusons des séquences à l’honneur payantes dans les épisodes : vous touchez des auditeurs dans {1} pays, et cela aide à financer le podcast et à le garder gratuit. Les séquences sponsorisées sont toujours signalées en début d’épisode, comme l’expliquent nos <x1>mentions de transparence</x1>.",
+  "tr": "Si vous avez conçu un équipement, une technologie ou un nouveau concept d’aventure un peu fou qui apporterait quelque chose de positif à cette communauté, nous aimerions en entendre parler. Nous proposons des segments de mise en avant payants dans les épisodes : vous touchez des auditeurs dans {1} pays, et cela contribue à financer le podcast et à le garder gratuit. Les segments sponsorisés sont toujours signalés en début d’épisode, comme l’indiquent nos <x1>déclarations de transparence</x1>.",
+  "tr_note": "a, with 'payants' (paid by the partner; 'rémunérés' read as paid to them)"
  },
  "f677d22679bc": {
   "en": "Refunds within {1} days",
   "a": "Remboursement sous {1} jours",
   "date": "2026-11-17",
-  "b": "Remboursements sous {1} jours"
+  "b": "Remboursements sous {1} jours",
+  "tr": "Remboursement sous {1} jours"
  },
  "f6f5b350c771": {
   "en": "Cross country and {1} experience <x1>(optional)</x1>",
   "a": "Expérience en cross et en {1} <x1>(facultatif)</x1>",
   "date": "2026-11-17",
-  "b": "Expérience de cross et de {1} <x1>(facultatif)</x1>"
+  "b": "Expérience de cross et de {1} <x1>(facultatif)</x1>",
+  "tr": "Expérience en cross et en {1} <x1>(facultatif)</x1>"
  },
  "f71baf639b74": {
   "en": "Of our responsibility to you",
   "a": "De notre responsabilité envers vous",
   "date": "2026-11-17",
-  "b": "À notre responsabilité envers vous"
+  "b": "À notre responsabilité envers vous",
+  "tr": "De notre responsabilité envers vous"
  },
  "f80642793f25": {
   "en": "How high does it get?",
   "a": "Jusqu'à quelle altitude monte-t-on ?",
   "date": "2026-11-17",
-  "b": "Jusqu’à quelle hauteur monte-t-on ?"
+  "b": "Jusqu’à quelle hauteur monte-t-on ?",
+  "tr": "Jusqu’à quelle altitude monte-t-on ?"
  },
  "f98d5b67851f": {
   "en": "What is the cancellation policy?",
   "a": "Quelle est la politique d'annulation ?",
   "date": "2026-11-17",
-  "b": "Quelle est la politique d’annulation ?"
+  "b": "Quelle est la politique d’annulation ?",
+  "tr": "Quelle est la politique d’annulation ?"
  },
  "f9b630a0d55f": {
   "en": "Chapters of Pre {1} Kenya",
   "a": "Chapitres de Pré-{1} Kenya",
   "date": "2026-11-17",
-  "b": "Chapitres de Pré-{1} Kenya"
+  "b": "Chapitres de Pré-{1} Kenya",
+  "tr": "Chapitres de Pré-{1} Kenya"
  },
  "f9eddba7c5dd": {
   "en": "The air",
   "a": "L'aérologie",
   "date": "2026-11-17",
-  "b": "L’air"
+  "b": "L’air",
+  "tr": "L’aérologie"
  },
  "fa232835d54c": {
   "en": "Photos by <x1>@{1}</x1>",
   "a": "Photos de <x1>@{1}</x1>",
   "date": "2026-11-17",
-  "b": "Photos de <x1>@{1}</x1>"
+  "b": "Photos de <x1>@{1}</x1>",
+  "tr": "Photos de <x1>@{1}</x1>"
  },
  "fb9a55e2e558": {
   "en": "Thu {1}",
   "a": "jeu. {1}",
   "date": "2026-11-17",
-  "b": "Jeu. {1}"
+  "b": "Jeu. {1}",
+  "tr": "jeu. {1}"
  },
  "fbfad16c223b": {
   "en": "Honorin Hamard",
   "a": "Honorin Hamard",
   "date": "2026-11-17",
-  "b": "Honorin Hamard"
+  "b": "Honorin Hamard",
+  "tr": "Honorin Hamard"
  },
  "fc44a371885f": {
   "en": "Where do we land?",
   "a": "Où atterrit-on ?",
   "date": "2026-11-17",
-  "b": "Où atterrit-on ?"
+  "b": "Où atterrit-on ?",
+  "tr": "Où atterrit-on ?"
  },
  "fd178e6aa89d": {
   "en": "{1} · Org. nr {2}<x1/>Olav {3} M {4}, {5} {6}, Norway",
   "a": "{1} · Org. nr {2}<x1/>Olav {3} M {4}, {5} {6}, Norvège",
   "date": "2026-11-17",
-  "b": "{1} · Org. nr {2}<x1/>Olav {3} M {4}, {5} {6}, Norvège"
+  "b": "{1} · Org. nr {2}<x1/>Olav {3} M {4}, {5} {6}, Norvège",
+  "tr": "{1} · Org. nr {2}<x1/>Olav {3} M {4}, {5} {6}, Norvège"
  },
  "fd7425b0b2cc": {
   "en": "Title, guest, or topic",
   "a": "Titre, invité ou sujet",
   "date": "2026-11-17",
-  "b": "Titre, invité ou sujet"
+  "b": "Titre, invité ou sujet",
+  "tr": "Titre, invité ou sujet"
  },
  "fdd28f3767dd": {
   "en": "Watch the film again, {1}",
   "a": "Revoir le film, {1}",
   "date": "2026-11-17",
-  "b": "Revoir le film, {1}"
+  "b": "Revoir le film, {1}",
+  "tr": "Revoir le film, {1}"
  },
  "fe29ff6d5070": {
   "en": "Saved to Files",
   "a": "Enregistré dans Fichiers",
   "date": "2026-11-17",
-  "b": "Enregistré dans Fichiers"
+  "b": "Enregistré dans Fichiers",
+  "tr": "Enregistré dans Fichiers"
  },
  "fe388a3a6791": {
   "en": "Next leg: Task {1}, Sun {2} <x1>→</x1>",
   "a": "Étape suivante : manche {1}, dim. {2} <x1>→</x1>",
   "date": "2026-11-17",
-  "b": "Étape suivante : manche {1}, dim. {2} <x1>→</x1>"
+  "b": "Étape suivante : manche {1}, dim. {2} <x1>→</x1>",
+  "tr": "Étape suivante : manche {1}, dim. {2} <x1>→</x1>"
  },
  "fe6687820101": {
   "en": "Next photo",
   "a": "Photo suivante",
   "date": "2026-11-17",
-  "b": "Photo suivante"
+  "b": "Photo suivante",
+  "tr": "Photo suivante"
  },
  "fea7f7310667": {
   "en": "<x1>{1}</x1>What you'll get in end-to-end guidance from {2}",
   "a": "<x1>{1}</x1>Ce que vous apporte l'accompagnement complet de {2}",
   "date": "2026-11-17",
-  "b": "<x1>{1}</x1>Ce que vous obtiendrez en accompagnement de bout en bout avec {2}"
+  "b": "<x1>{1}</x1>Ce que vous obtiendrez en accompagnement de bout en bout avec {2}",
+  "tr": "<x1>{1}</x1>Ce que vous apporte l’accompagnement complet de {2}"
  },
  "fef1cdedf4ba": {
   "en": "{1} Tour",
   "a": "Voyage {1}",
   "date": "2026-11-17",
-  "b": "Voyage {1}"
+  "b": "Voyage {1}",
+  "tr": "Voyage {1}"
  },
  "ff68eb68195a": {
   "en": "Enquiry",
   "a": "Demande",
   "date": "2026-11-17",
-  "b": "Demande"
+  "b": "Demande",
+  "tr": "Demande"
  },
  "ffecf930cc9f": {
   "en": "Kinga Masztalerz",
   "a": "Kinga Masztalerz",
   "date": "2026-11-17",
-  "b": "Kinga Masztalerz"
+  "b": "Kinga Masztalerz",
+  "tr": "Kinga Masztalerz"
  }
 }
