@@ -4,6 +4,71 @@ Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
 the owner's current queue and what the last session learnt doing it.
 
+## Chat 26 starts here (17 Nov 2026, from chat 24): photo viewer, newsletter, YouTube fixes, site-audit backlog
+**Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
+has grown long, hand over without asking the owner: write the handover at the top of this file, update the
+owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
+chat yourself with the session tools (create_session), and give the owner its link. If create_session is refused,
+give the owner the prompt to paste.
+
+**Other website chat:** chat 25 (session_018Da7i8zPtHufNaTNd97Qik) owns Tapalpa (COMPS["tapalpa"], media-2026/
+srs-tapalpa, photo/, the podium .gr block and the podium script at the end of v4-gallery.js). Message it before
+every push to main; merge origin/main first, never rebase or force. Owner rule for this chat line: no pushes to main
+02:30-08:00 UTC (a peer chat cannot lift it; only the owner).
+
+**LIVE, done by chat 24 (all on main, last mine 81dfca67, checked live at 390/1440/touch on 17 Nov after 441674b6):**
+- Photo viewer F "The Task Line" (owner's pick) with one-tap Download (JPEG, progress, iOS "Saved to Files").
+- Slider = B "Thermal" (owner's pick 14 Nov): tl.draw in v4-gallery.js, canvas H 48, rail 84px.
+- Cancelled days: comp key cancelled={task: reason} in tools/v4_comp_gallery.py -> fixed state "cancelled"
+  (line "Cancelled", panel "Cancelled (reason)" + "No task flown" + link to latest photos). Tapalpa T5 weather, T7 wind.
+- Site audit fixes: Back closes the viewer (pushState; popstate closes; hashchange skipped 1.2 s), pinch never
+  swipes (Z.multi), share panel (.v4sh) closes on photo change, focus starts on Close, laptop side margins
+  (.gf-days/.gf-line-in/.ev-season-in/.ev-foot-in, min-width 821), Watch button = rounded rectangle (.gf-film-i),
+  nav overflow 941-1149px (end of prototypes/v4/src/v2.css), KB singular heading (kb_layout.py + v4 weather-patterns).
+- Build note: v4_build.py does NOT regenerate gallery pages; tools/v4_comp_gallery.py does, and needs
+  /home/user/media-2026 or Tapalpa's share.jpg og:image is lost. Without it, hand regeneration to chat 25.
+
+**Waiting on the owner (ask again, don't guess):**
+1. media.html hero "Next" slot shows "[to supply]" from 15 Nov (UPCOMING in prototypes/v4/v4-media.js:218 has only
+   Tapalpa). Owner: name the next event, or hide the slot.
+2. "13 comp videos" on media.html (tools/v4_media.py 119-135, 506, 559) misses Tapalpa's T1-T3 films; views total
+   31,250 is from 3 Nov (needs vidIQ to refresh).
+3. Episode count 80 (v4_facts.json, RSS) vs library 86: which?
+4. Pegalajar/Bassano (May, past) still show "Coming soon" for dates/pilots/flown (v4_comp_gallery.py read=/
+   none_line): real facts, or drop the rows?
+5. Panchgani FAQ "Coming soon" (tools/v4_panchgani.py 49, 66): pilot rating and what the price covers.
+6. knowledge-base/navigators.html:684 Bir Billing card "autumn 2026" (past; tours are Apr/Oct/Nov 2027).
+7. vidIQ: owner must finish the verification link, then update_video yhHoRUJtyOY title "Miguel Gutierrez Explains
+   Flying in Tapalpa, Mexico during SRS - Advance Edition 2026" (with the accent: Gutiérrez) and
+   update_video_thumbnail FOuAWMeoxs4 (PWC Day 1, 2027->2026 fix; redo from maxresdefault if the file is gone:
+   the two 7s at x 599-615 and 833-849, y 656-682, Inter Regular 37px white, background by per-row blend).
+8. Talk thumbnails (Torsten Siegel, Miguel Gutierrez) were made in chat 24's scratchpad (gone with the container):
+   style A2, Barlow Condensed, photo right of 520px, MEX tricolour slashes, SRS + Advance lock, atlas logo. Torsten's
+   photo was XC Mag's (copyright): the owner owes a frame of their own footage or the YouTube link.
+9. Newsletter 01: MailerLite DRAFT 203910238840031114 (copy: docs/emails/newsletter-01-tapalpa.html.txt). Waiting
+   for the owner's new video link. Update: 12 Nov T5 cancelled (weather), 13 Nov T6, 14 Nov T7 cancelled (wind),
+   5 tasks scored; podium (chat 25): Overall 1 Andres Tello Alvarado (MEX) 3978.7, 2 Bill Belcourt (USA) 3782.4,
+   3 Chaeden Luebberke (USA) 3630.9; Women 1 Lynsey Haynes (CAN) 3497.0, 2 Riley Ferre (USA) 3032.0, 3 Summer
+   Barham (USA) 3008.6; Teams 1 CryMeARiviuk 3645.0, 2 Gin 2 3499.7, 3 Ozone 3493.1. NEVER send, schedule or
+   test-send without the owner's explicit yes; preview only.
+10. Share buttons on more pages: the owner picks which.
+
+**Audit backlog, not yet fixed (14 Nov audit; fix what is in your area, list the rest):**
+- podcast.html "Latest videos" dead: YouTube feeds/videos.xml returns 404 (youtube-feed.js); needs a build-time list.
+- Service worker never installs: PRECACHE offline.html 404 at /assets/v4/, and sw.js scope is /assets/v4/
+  (tools/v4_pwa.py, tools/v2_switch.py).
+- Weight: gallery thumbs only 800w (no 400w + srcset; 8-9 MB scrolled on phones); Bassano/Pegalajar load
+  maxresdefault YouTube thumbs (tools/v4_media.py 161, 210-213); home himalayas-1.webp 374 KB.
+- Tag pages say "each with a full transcript" when many have none (generate_tag_pages.py 289, 331, 363);
+  tags/pegalajar misses "Highlights Day 1 - PWCA Superfinal 2026" (episode-meta.json tags).
+- Touch targets < 44px (footer links 40px, episode cd-ts timestamps, library search 29px, media e-watch 28px);
+  podcast ep-play-btn-lg without aria-label; dead link up-paragliders.com/news/almost-200km-...; sitemap.html has
+  two meta descriptions; home links to index.html instead of /; library row "date to supply" (v4_library_e.py:120);
+  Tom Lolies og:title double space "ENC to  CSC" (episode-meta.json 6318).
+- Season strip "PWC May" overlapping "Bassano" at ~1024 was cured by the margins fix; recheck after any strip change.
+- Test scripts used (recreate as needed): Playwright checks of Back/pinch/share/margins (fixes.js), nav overflow
+  sweep 900-1200px (nav.js), Watch button (btn.js), cancelled days (cancel.js / t7.js).
+
 ## Chat 25 starts here (14 Nov 2026, from chat 21): Tapalpa wrap-up
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
 has grown long, hand over without asking the owner: write the handover at the top of this file, update the
