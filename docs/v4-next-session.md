@@ -4,70 +4,67 @@ Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
 the owner's current queue and what the last session learnt doing it.
 
-## Chat 26 starts here (17 Nov 2026, from chat 24): photo viewer, newsletter, YouTube fixes, site-audit backlog
+## Chat 27 starts here (17 Nov 2026, from chat 25): the site in German, French, Spanish and Simplified Chinese
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
 has grown long, hand over without asking the owner: write the handover at the top of this file, update the
 owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
 chat yourself with the session tools (create_session), and give the owner its link. If create_session is refused,
 give the owner the prompt to paste.
 
-**Other website chat:** chat 25 (session_018Da7i8zPtHufNaTNd97Qik) owns Tapalpa (COMPS["tapalpa"], media-2026/
-srs-tapalpa, photo/, the podium .gr block and the podium script at the end of v4-gallery.js). Message it before
-every push to main; merge origin/main first, never rebase or force. Owner rule for this chat line: no pushes to main
-02:30-08:00 UTC (a peer chat cannot lift it; only the owner).
+**The owner's request (17 Nov, in chat 25):** "add some of the most widely spoken languages on website so the locals
+easily understand it". Decided with the owner, in this order:
+- **Languages, first wave: German, French, Spanish, Simplified Chinese (zh-Hans)** (the owner added Chinese).
+  Why German/French/Spanish: the YouTube channel's views by country, 17 May to 16 Nov 2026 (vidIQ audience_geography):
+  DE 13,280, US 12,684, FR 12,115, CH 10,178, GB 8,769, IT 6,294, ES 5,469, AT 4,262, JP 3,105, AU 2,923, BR 2,482,
+  PL 2,251, CA 2,190, NL 2,036 (so German ~24k with AT and most of CH, French ~14.5k, Italian ~7k); Spanish also for
+  the locals at the comps (Tapalpa, Roldanillo, Pegalajar). Italian is the likely second wave; Japanese and Portuguese
+  only if the numbers grow. Chinese: mainland China blocks Google/YouTube: no Google Fonts on zh pages (system fonts),
+  films won't play there (keep the plain YouTube link).
+- **No human reviewer** (owner: "we'll have to devise a way to foolproof it by ourselves"). The pipeline below is the
+  review; nothing goes live that fails it.
+- **Start small** (owner: "We can start small if that's the easy way to go"): a pilot of 4 pages x 4 languages, show
+  the owner, then the rest. The whole site is the goal (215 v4 pages: 37 top level, 5 destinations, 30 knowledge-base,
+  50 tags, 93 episodes), in three waves: (1) pilot: home (index.html), one destination, enquire.html, the Tapalpa
+  page; (2) all the other pages but episodes; (3) episodes: titles, summaries, show notes (transcripts last, only if
+  the owner wants: the audio stays English; the episodes hold ~1M words).
 
-**LIVE, done by chat 24 (all on main, last mine 81dfca67, checked live at 390/1440/touch on 17 Nov after 441674b6):**
-- Photo viewer F "The Task Line" (owner's pick) with one-tap Download (JPEG, progress, iOS "Saved to Files").
-- Slider = B "Thermal" (owner's pick 14 Nov): tl.draw in v4-gallery.js, canvas H 48, rail 84px.
-- Cancelled days: comp key cancelled={task: reason} in tools/v4_comp_gallery.py -> fixed state "cancelled"
-  (line "Cancelled", panel "Cancelled (reason)" + "No task flown" + link to latest photos). Tapalpa T5 weather, T7 wind.
-- Site audit fixes: Back closes the viewer (pushState; popstate closes; hashchange skipped 1.2 s), pinch never
-  swipes (Z.multi), share panel (.v4sh) closes on photo change, focus starts on Close, laptop side margins
-  (.gf-days/.gf-line-in/.ev-season-in/.ev-foot-in, min-width 821), Watch button = rounded rectangle (.gf-film-i),
-  nav overflow 941-1149px (end of prototypes/v4/src/v2.css), KB singular heading (kb_layout.py + v4 weather-patterns).
-- Build note: v4_build.py does NOT regenerate gallery pages; tools/v4_comp_gallery.py does, and needs
-  /home/user/media-2026 or Tapalpa's share.jpg og:image is lost. Without it, hand regeneration to chat 25.
+**The pipeline the owner approved (build it as tools, so every chat runs the same thing):**
+1. English is the source of truth. Translations are generated from the built English page, never edited by hand.
+   Store per language a file of segments keyed by a hash of the English segment; a changed English segment is stale
+   and re-translated; the generator refuses to publish a page with stale segments.
+2. Locked tokens: names, numbers, dates, prices, distances, glider models, place names, URLs, emails are swapped for
+   placeholders before translating and restored after. A check: every number/date/price/URL on the English page is
+   on the translated page, unchanged; any miss blocks the page.
+3. A glossary per language for paragliding terms (thermal, launch, landing, reserve, harness, cross-country, task,
+   goal, speed bar, top landing, SIV, wing/glider ...), taken from each language's own federation/manual usage (DHV
+   for German, FFVL for French, the Spanish and Chinese equivalents; cite the source next to each term; a term with no
+   source is [to supply], not guessed). Enforced by a check.
+4. Two independent translations per page, a third pass picks/merges, then back-translates to English and compares
+   meaning with the original; any shifted meaning or substantive disagreement is flagged and fixed before publish.
+5. High-risk pages stay English text with a translated note "the English version is binding": terms, privacy,
+   cookies, booking conditions, safety/medical content.
+6. Every translated page says "Translated from English", links its English page, and has "Report a translation error"
+   (to the owner; ask the owner which address or form, [to supply]).
+7. Layout and tech: /de/, /fr/, /es/, /zh/ URLs, html lang, hreflang alternates both ways, language switcher, sitemaps;
+   run the gates (tools/v4_gates.py) on every language; German long words must not overflow; zh with system fonts.
+8. Show the owner the pilot (screenshots at 1440 and 390 + the check report) before wave 2.
+Never use a Google Translate widget.
 
-**Waiting on the owner (ask again, don't guess):**
-1. media.html hero "Next" slot shows "[to supply]" from 15 Nov (UPCOMING in prototypes/v4/v4-media.js:218 has only
-   Tapalpa). Owner: name the next event, or hide the slot.
-2. "13 comp videos" on media.html (tools/v4_media.py 119-135, 506, 559) misses Tapalpa's T1-T3 films; views total
-   31,250 is from 3 Nov (needs vidIQ to refresh).
-3. Episode count 80 (v4_facts.json, RSS) vs library 86: which?
-4. Pegalajar/Bassano (May, past) still show "Coming soon" for dates/pilots/flown (v4_comp_gallery.py read=/
-   none_line): real facts, or drop the rows?
-5. Panchgani FAQ "Coming soon" (tools/v4_panchgani.py 49, 66): pilot rating and what the price covers.
-6. knowledge-base/navigators.html:684 Bir Billing card "autumn 2026" (past; tours are Apr/Oct/Nov 2027).
-7. vidIQ: owner must finish the verification link, then update_video yhHoRUJtyOY title "Miguel Gutierrez Explains
-   Flying in Tapalpa, Mexico during SRS - Advance Edition 2026" (with the accent: Gutiérrez) and
-   update_video_thumbnail FOuAWMeoxs4 (PWC Day 1, 2027->2026 fix; redo from maxresdefault if the file is gone:
-   the two 7s at x 599-615 and 833-849, y 656-682, Inter Regular 37px white, background by per-row blend).
-8. Talk thumbnails (Torsten Siegel, Miguel Gutierrez) were made in chat 24's scratchpad (gone with the container):
-   style A2, Barlow Condensed, photo right of 520px, MEX tricolour slashes, SRS + Advance lock, atlas logo. Torsten's
-   photo was XC Mag's (copyright): the owner owes a frame of their own footage or the YouTube link.
-9. Newsletter 01: MailerLite DRAFT 203910238840031114 (copy: docs/emails/newsletter-01-tapalpa.html.txt). Waiting
-   for the owner's new video link. Update: 12 Nov T5 cancelled (weather), 13 Nov T6, 14 Nov T7 cancelled (wind),
-   5 tasks scored; podium (chat 25): Overall 1 Andres Tello Alvarado (MEX) 3978.7, 2 Bill Belcourt (USA) 3782.4,
-   3 Chaeden Luebberke (USA) 3630.9; Women 1 Lynsey Haynes (CAN) 3497.0, 2 Riley Ferre (USA) 3032.0, 3 Summer
-   Barham (USA) 3008.6; Teams 1 CryMeARiviuk 3645.0, 2 Gin 2 3499.7, 3 Ozone 3493.1. NEVER send, schedule or
-   test-send without the owner's explicit yes; preview only.
-10. Share buttons on more pages: the owner picks which.
+**How this repo builds** (see chat 25's notes below): pages are generated by tools/*.py into prototypes/v4, built in a
+clean worktree (python3 tools/v4_gates.py --quick; the live-untouched and audit-sitemap FAILs are the known harmless
+ones), only the pages a change touched are copied back, then push main + claude/v2-prototype (never forced; merge,
+don't rebase). Decide with care how the language copies fit tools/v4_build.py and the switch (tools/v2_switch.py).
 
-**Audit backlog, not yet fixed (14 Nov audit; fix what is in your area, list the rest):**
-- podcast.html "Latest videos" dead: YouTube feeds/videos.xml returns 404 (youtube-feed.js); needs a build-time list.
-- Service worker never installs: PRECACHE offline.html 404 at /assets/v4/, and sw.js scope is /assets/v4/
-  (tools/v4_pwa.py, tools/v2_switch.py).
-- Weight: gallery thumbs only 800w (no 400w + srcset; 8-9 MB scrolled on phones); Bassano/Pegalajar load
-  maxresdefault YouTube thumbs (tools/v4_media.py 161, 210-213); home himalayas-1.webp 374 KB.
-- Tag pages say "each with a full transcript" when many have none (generate_tag_pages.py 289, 331, 363);
-  tags/pegalajar misses "Highlights Day 1 - PWCA Superfinal 2026" (episode-meta.json tags).
-- Touch targets < 44px (footer links 40px, episode cd-ts timestamps, library search 29px, media e-watch 28px);
-  podcast ep-play-btn-lg without aria-label; dead link up-paragliders.com/news/almost-200km-...; sitemap.html has
-  two meta descriptions; home links to index.html instead of /; library row "date to supply" (v4_library_e.py:120);
-  Tom Lolies og:title double space "ENC to  CSC" (episode-meta.json 6318).
-- Season strip "PWC May" overlapping "Bassano" at ~1024 was cured by the margins fix; recheck after any strip change.
-- Test scripts used (recreate as needed): Playwright checks of Back/pinch/share/margins (fixes.js), nav overflow
-  sweep 900-1200px (nav.js), Watch button (btn.js), cancelled days (cancel.js / t7.js).
+**Other chats.** Chat 25 (session_018Da7i8zPtHufNaTNd97Qik): Tapalpa wrap-up (prize-giving photos, Task 6 film,
+landing switch). Chat 26 (session_018Da7i9BMwW1ZnHKGamjYUC): photo viewer, newsletter, YouTube fixes, audit backlog.
+Message both before every push to main.
+
+## Chat 25 (17 Nov): Tapalpa podium and race chart live; still waiting on the owner
+The Podium (results(), race(), story() in tools/v4_comp_gallery.py; data tools/data/tapalpa-results.json from
+tools/srs_results.py 93; .gr rules at the end of v4-gallery.css; the podium script at the end of v4-gallery.js) is live
+at https://paraglidingatlas.com/media-srs-tapalpa-2026.html#results. Owner ideas not built: the prize-giving photo as
+the podium's hero, the champion's winning flight on a 3D map (IGC from SRS). Chat 25 stays on: prize-giving photos,
+Task 6 film (none on the channel on 17 Nov; the newest is the private Torsten Siegel talk), then landing=True.
 
 ## Chat 25 starts here (14 Nov 2026, from chat 21): Tapalpa wrap-up
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat

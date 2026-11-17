@@ -91,7 +91,18 @@ COMPS = {
                     # api.airtribune.com/srs/scores/?meet=93 (type 56 Sports, 57 Female, 61 Team), 14 Nov; names as srs.live writes them
                     # SRS's final tables, saved by tools/srs_results.py 93 tools/data/tapalpa-results.json (14 Nov, "Final")
                     results=dict(src="https://airtribune.com/srs-2026-6/results", note="SRS Advance Edition Tapalpa, after five scored tasks",
-                                 data="tapalpa-results.json", tasks=["T1", "T2", "T3", "T4", "T6"], photo="SRS_6_T6_56", pos="72% 45%")),
+                                 data="tapalpa-results.json", tasks=["T1", "T2", "T3", "T4", "T6"], photo="SRS_6_T6_56", pos="72% 45%"),
+                    # owner, 17 Nov: "go ahead" with the talks and the landing page (prize-giving photos and the Task 6 film later).
+                    # The talks: titles, lengths and lines from the videos' own YouTube titles and descriptions (vidIQ, 17 Nov);
+                    # Miguel's title with its "Maxico" typo corrected
+                    talks=[dict(id="NBqwZBe0yBU", who="Torsten Siegel", title="On Glider Design, CCC Wings and 100 World Cups", len="36:06",
+                                line="On the evening of the SRS Advance Edition, he told the pilots his story and took their questions: "
+                                     "the new glider design rules, parakites, how a glider is designed, ballast, the Death Blade, and how to get better in competitions."),
+                           dict(id="yhHoRUJtyOY", who="Miguel Gutiérrez", title="Explains Flying in Tapalpa, Mexico", len="53:23",
+                                line="Airspace, local flying, thermals and all that you need to know on how to fly this Mexican paradise.")],
+                    # the event landing page (chat 22's design), switched on by the owner 17 Nov
+                    landing=True, season="tapalpa", lead_alt="A yellow wing over the greenhouses near Tapalpa, Task 1",
+                    read=["<b>8 to 14 Nov 2026</b>", "116 pilots, 25 countries", "FAI Category 2"]),
     "piedrahita": dict(page="media-srs-piedrahita-2026.html", folder="srs-piedrahita", title="Piedrahita 2026", tz="Europe/Madrid",
                        kicker="SRS BGD Edition &middot; Piedrahita, Ávila, Spain", span="22 to 29 Aug 2026",
                        facts=["22 to 29 Aug 2026", "FAI Category 2", "120 pilots, 54 countries", "Photos by Aninder Singh"],
@@ -499,6 +510,23 @@ def results(comp):
             % (bg, E(r["note"]), "".join(tabs), "".join(panels), E(r["src"]), NE))
 
 
+def talks(comp):
+    """the comp's talks (chat 25, 17 Nov): each a 16:9 frame that plays in place (v4-media.js .md-frame), who, the title, the
+    length and the line from the video's own description"""
+    ts = COMPS[comp].get("talks")
+    if not ts:
+        return ""
+    cards = "".join(
+        '<article class="gt-c"><div class="md-frame" data-vid="%s"><img src="https://i.ytimg.com/vi/%s/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async">'
+        '<a class="md-play" href="https://www.youtube.com/watch?v=%s" target="_blank" rel="noopener" aria-label="Play %s: %s">%s</a></div>'
+        '<p class="gt-k">%s &middot; %s</p><h3 class="gt-t"><b>%s</b> %s</h3><p class="gt-l">%s</p></article>'
+        % (t["id"], t["id"], t["id"], E(t["who"]), E(t["title"]), M.PLAY, "Talk", t["len"], E(t["who"]), E(t["title"]), E(t["line"]))
+        for t in ts)
+    return ('<section class="gt" id="talks" aria-labelledby="gt-h"><div class="gt-in"><p class="gf-kicker">On the ground</p>'
+            '<h2 id="gt-h" class="gt-h">%s Talks</h2><div class="gt-cs">%s</div></div></section>\n'
+            % (E(COMPS[comp]["title"].rsplit(" ", 1)[0]), cards))
+
+
 def render(comp):
     c = COMPS[comp]
     ds, dates = days(comp), task_dates(comp)
@@ -632,6 +660,7 @@ def render(comp):
 </div>
 </div>
 %(results)s
+%(talks)s
 %(cta)s
 
 <dialog class="gfv" id="gfv" aria-label="The photo, enlarged">
@@ -677,7 +706,7 @@ def render(comp):
 %(filmdialog)s
 <script type="application/json" id="gf-data">%(data)s</script>
 """ % dict(lead=src(lead_comp, lead, 1600), leads=srcset(lead_comp, lead), lh=round(1600 * h / w),
-           cue=cue, results=results(comp), reslink=' &middot; <a href="#results">Final results</a>' if c.get("results") else "", filmdialog=FILM_DIALOG if fdata else "",
+           cue=cue, results=results(comp), talks=talks(comp), reslink=' &middot; <a href="#results">Final results</a>' if c.get("results") else "", filmdialog=FILM_DIALOG if fdata else "",
            lalt=E("A photo from %s" % ("SRS Piedrahita 2026" if lead_comp != comp else c["title"])),
            kicker=c["kicker"], evn=E(c["event"][0]), evu=E(c["event"][1]), name=E(c["title"].rsplit(" ", 1)[0]), year=c["title"].rsplit(" ", 1)[1], facts=facts,
            note=note, linelabel=E("%s, %s" % (c["title"], "tasks " + c["span"])), glider=GLIDER, tps="".join(tps),
@@ -797,6 +826,8 @@ def landing(comp, out, ds):
         have += '<a href="#film-%s"><b>%d</b> film%s</a>' % (sid(films[0]), len(films), "" if len(films) == 1 else "s")
     if c.get("results"):
         have += '<a href="#results"><b>Final</b> results</a>'
+    if c.get("talks"):
+        have += '<a href="#talks"><b>%d</b> talks</a>' % len(c["talks"])
     lead = c["lead"]
     lr = next(r for r in photos(comp) if r["stem"] == lead)
     media = ('<img src="%s" srcset="%s" sizes="100vw" width="1600" height="%d" alt="%s" fetchpriority="high">'
