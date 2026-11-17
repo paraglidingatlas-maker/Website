@@ -133,6 +133,7 @@ def lock_text(text, toks):
         take(rx, kind)
     if KEEP_RX:
         take(KEEP_RX, "keep")
+    take(BIG_RX, "big")
     take(DECADE_RX, "decade")
     take(ORD_RX, "ord")
     take(NUM_RX, "num")
@@ -206,7 +207,21 @@ ORD_RX = re.compile(r"(?<![\w])\d+(?:st|nd|rd|th)(?![\w])")     # 7th: an ordina
 ORD = {"de": "%s.", "fr": "%se", "es": "%s.º", "zh": "第%s"}
 
 
+BIG_RX = re.compile(r"(?<![\w.,])\d+(?:\.\d+)? (?:million|billion)(?![\w-])")   # 1.4 billion: one fact (zh 14亿)
+
+
+def fmt_big(v, lang):
+    from babel.numbers import format_compact_decimal
+    num, word = v.split(" ")
+    n = float(num) * (1e6 if word == "million" else 1e9)
+    dec = len(num.split(".")[1]) if "." in num else 0
+    return format_compact_decimal(n, format_type="short" if lang == "zh" else "long",
+                                  locale=LANGS[lang]["babel"], fraction_digits=dec)
+
+
 def render_tok(kind, v, lang):
+    if kind == "big":
+        return fmt_big(v, lang) if lang in LANGS else v
     if kind == "ord":
         n = v[:-2]
         return ("1er" if lang == "fr" and n == "1" else ORD.get(lang, "%s") % n) if lang in ORD else v

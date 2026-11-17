@@ -15,9 +15,19 @@
   "b": "一个{1}公里的比赛，天气比预报的更好，选手们沿山脊比赛，穿过干湖床顶风飞行，再借着云街飞回终点。",
   "tr": "一场{1} km的竞速，当天天气比预报的好：选手们沿山脊竞速，迎风穿越干湖床，再沿着云街一路飞回终点。"
  },
+ "00a68d6f7253": {
+  "en": "Do not just follow the wing in front",
+  "b": "不要只是跟着前面的伞翼",
+  "date": "2026-11-17"
+ },
  "00abe35af611": {
   "en": "FloraNorm probiotic<x1>Saccharomyces boulardii, available locally</x1>",
   "b": "FloraNorm 益生菌<x1>布拉迪酵母菌，当地可买到</x1>",
+  "date": "2026-11-17"
+ },
+ "00d076c56ded": {
+  "en": "The forested front range under building cumulus",
+  "b": "积云渐起，下方是树木葱郁的前山脉",
   "date": "2026-11-17"
  },
  "00d21720fac9": {
@@ -99,6 +109,11 @@
   "b": "关于猴面包树之地",
   "date": "2026-11-17"
  },
+ "02ca51cb997f": {
+  "en": "Insurance covering paragliding<x1>Essential</x1><x2>Medical treatment, repatriation and search and rescue</x2>",
+  "b": "涵盖滑翔伞运动的保险<x1>必备</x1><x2>医疗、遣返以及搜索和救援</x2>",
+  "date": "2026-11-17"
+ },
  "030a16295eaa": {
   "en": "Flamingos",
   "b": "火烈鸟",
@@ -118,6 +133,11 @@
   "b": "你就是先例",
   "date": "2026-11-17"
  },
+ "03415eb60d01": {
+  "en": "{1} Immersive",
+  "b": "{1}深度体验",
+  "date": "2026-11-17"
+ },
  "0362adf0c889": {
   "en": "Ona Kenya kama Miungu walivyoiona",
   "b": "像众神那样看肯尼亚",
@@ -132,9 +152,19 @@
   "back": "FAQ",
   "check": "ok"
  },
+ "03861b4f05fb": {
+  "en": "Turn the way everyone else is turning",
+  "b": "跟着其他人转的方向转",
+  "date": "2026-11-17"
+ },
  "03cdf3d55e76": {
   "en": "Give work, not cash",
   "b": "给工作，不给现金",
+  "date": "2026-11-17"
+ },
+ "04885b0637b7": {
+  "en": "Snow-covered back ranges seen from the air",
+  "b": "空中俯瞰积雪覆盖的后山山脉",
   "date": "2026-11-17"
  },
  "049b355d5109": {
@@ -166,6 +196,11 @@
   "b": "这是一次面向自主飞行员的{1}冒险行程。最低要求是能自己处理起飞和野外降落，并建议具备出色的热气流盘旋和动力气流飘飞技术。强烈建议上过{2}课程，以便应对塌陷和紊流。",
   "date": "2026-11-17"
  },
+ "065643564a80": {
+  "en": "climb the knobs of the {1} and run west towards Dharamshala,",
+  "b": "爬升到{1}的山包上，向西飞往 Dharamshala，",
+  "date": "2026-11-17"
+ },
  "068392a56f33": {
   "en": "Be open, enthusiastic and positive, and greet everyone, including the unsmiling ones. Ask locally about security, wild animals and access, because that knowledge is not in any guidebook. Explain your plan clearly: misunderstandings about where you intend to take off are the single most common problem.",
   "b": "开放、热情、积极，问候每一个人，包括不笑的人。向当地人打听安全、野生动物和通行的情况，因为这些知识任何旅游指南里都没有。把你的计划解释清楚：对打算在哪里起飞的误解，是最常见的单一问题。",
@@ -174,6 +209,11 @@
  "06b1d0979ccb": {
   "en": "{1} · The horizon",
   "b": "{1} · 地平线",
+  "date": "2026-11-17"
+ },
+ "06c5ca790cef": {
+  "en": "<x1>{1} launch</x1>Pilots laying out and launching on the grass at {2}<x2>at {3} launch</x2>",
+  "b": "<x1>{1}起飞场</x1>飞行员们在{2}的草地上展开伞翼并起飞<x2>在{3}起飞场</x2>",
   "date": "2026-11-17"
  },
  "06fa6dba0858": {
@@ -209,6 +249,11 @@
   "b": "m 最高",
   "date": "2026-11-17"
  },
+ "07a8f718d5e6": {
+  "en": "The tracker question",
+  "b": "追踪器的问题",
+  "date": "2026-11-17"
+ },
  "07c981c58181": {
   "en": "Helicopter rescue and good healthcare are both available.",
   "b": "直升机救援和良好的医疗都有。",
@@ -236,6 +281,11 @@
   "tr": "你的飞行",
   "back": "Your flying",
   "check": "ok"
+ },
+ "08ce499c3b56": {
+  "en": "Himachal is one of the gentler parts of India for this, but the food will still be new to your stomach.",
+  "b": "在这方面，喜马偕尔邦是印度相对温和的地方之一，但这里的食物对你的肠胃来说仍然是新的。",
+  "date": "2026-11-17"
  },
  "08ec69f5be3c": {
   "en": "km",
@@ -273,6 +323,11 @@
   "tr": "{1}播客",
   "back": "{1} Podcast",
   "check": "ok"
+ },
+ "09ab2e7fa9ef": {
+  "en": "Pilots laying out and launching on the grass at {1}",
+  "b": "飞行员们在{1}的草地上展开伞翼并起飞",
+  "date": "2026-11-17"
  },
  "09ba557fd106": {
   "en": "Email Address",
@@ -372,6 +427,11 @@
   "b": "{1} {2}级或同等资质",
   "date": "2026-11-17"
  },
+ "0b5aab133a4a": {
+  "en": "Be very careful of the cloud. On a big day he would rather run out south, away from the mountains, than sit under big clouds in a valley system where you can get trapped.",
+  "b": "对云要非常小心。在一个大日子里，他宁愿往南飞出去、远离山脉，也不愿坐在容易被困住的山谷系统里的大云下面。",
+  "date": "2026-11-17"
+ },
  "0b896a5aaabd": {
   "en": "Next one in {1} days",
   "a": "下一团{1}天后出发",
@@ -406,6 +466,11 @@
   "back": "The paraguide.in website",
   "check": "ok"
  },
+ "0c2fb2925e0e": {
+  "en": "<x1>Hike and fly</x1>Two pilots with paraglider rucksacks climbing a forest trail",
+  "b": "<x1>徒步飞行</x1>两名背着滑翔伞背包的飞行员正攀登森林小径",
+  "date": "2026-11-17"
+ },
  "0c5209fd972c": {
   "en": "A dormant stratovolcano with an intact crater rim, and one of the more photographed flights of the trip.",
   "b": "一座休眠的层状火山，火山口边缘完整，是这次行程中被拍得最多的飞行之一。",
@@ -439,6 +504,11 @@
   "back": "{1} on site: photos and videos",
   "check": "ok"
  },
+ "0d067ebfa387": {
+  "en": "October to November.",
+  "b": "十月至十一月。",
+  "date": "2026-11-17"
+ },
  "0d173730d528": {
   "en": "<x1>over</x1> the Rift",
   "b": "<x1>飞越</x1>大裂谷",
@@ -459,6 +529,11 @@
   "back": "Building something for this sport?",
   "check": "ok"
  },
+ "0d9d0a3e4b97": {
+  "en": "Two paragliders silhouetted against the sunset",
+  "b": "两顶滑翔伞在夕阳下的剪影",
+  "date": "2026-11-17"
+ },
  "0e143d9587c2": {
   "en": "Guaranteed to run",
   "a": "确定成行",
@@ -471,6 +546,11 @@
  "0e3c956b6903": {
   "en": "What This Trip Is Actually Like",
   "b": "这次行程实际是什么样",
+  "date": "2026-11-17"
+ },
+ "0e3ddfb7d306": {
+  "en": "The {1} front ridge from the pilot's seat, snow and rock below the wing",
+  "b": "从飞行员座位看{1}前山脊，伞翼下方是冰雪与岩石",
   "date": "2026-11-17"
  },
  "0e5eed8fbb76": {
@@ -499,6 +579,11 @@
  "0eebaac6ddfe": {
   "en": "in the air",
   "b": "滞空",
+  "date": "2026-11-17"
+ },
+ "0efbc5dfee58": {
+  "en": "India is paperwork before it is flying. None of this can be sorted out on the morning you need it.",
+  "b": "在印度，手续文件先于飞行。这些事没有一件能在你需要它的那天早上办妥。",
   "date": "2026-11-17"
  },
  "0efc2e6be4c2": {
@@ -552,6 +637,11 @@
   "back": "Play \"Pathfinding India\", guest Eddie Colfox",
   "check": "ok"
  },
+ "10141d8d8dca": {
+  "en": "{1} km",
+  "b": "{1} 公里",
+  "date": "2026-11-17"
+ },
  "107596d0fcf1": {
   "en": "Fly With Us",
   "a": "和我们一起飞",
@@ -560,6 +650,16 @@
   "tr": "和我们一起飞",
   "back": "Fly with us",
   "check": "ok"
+ },
+ "11af05b5323a": {
+  "en": "Autumn at {1} drew around {2} visiting pilots in {3}, against about {4} when Jigish Gohil first arrived. We brief for traffic every morning and keep the group together on the radio.",
+  "b": "{3}年秋季，{1}吸引了约 {2} 名外来飞行员，而 Jigish Gohil 刚来时只有约 {4} 名。我们每天早上都会就空中交通做简报，并通过无线电让团队保持在一起。",
+  "date": "2026-11-17"
+ },
+ "11cf92eed48c": {
+  "en": "Terraced fields, a river and villages seen from the air",
+  "b": "梯田、河流和村庄，空中俯瞰",
+  "date": "2026-11-17"
  },
  "11f7e9e5baf0": {
   "en": "One task at a time",
@@ -605,6 +705,11 @@
   "b": "小面额现金<x1>用于小费和搬运工。先谈好价格</x1>",
   "date": "2026-11-17"
  },
+ "12e6c9e73647": {
+  "en": "Offline maps of the front range",
+  "b": "前山脉的离线地图",
+  "date": "2026-11-17"
+ },
  "131662a6b1d7": {
   "en": "Task {1}, Sat {2}, was cancelled (wind).",
   "a": "任务{1}（周六{2}）因风取消。",
@@ -639,6 +744,11 @@
   "back": "Copy name",
   "check": "ok"
  },
+ "13a82e78b830": {
+  "en": "INR. {1} has only one or two ATMs, and they can run dry at weekends, so arrive with cash in small notes for taxis, chai and the ride back from a landing out.",
+  "b": "INR。{1}只有一两台 ATM，周末可能会取空，所以请带上小面额现金，用于出租车、奶茶，以及从降落场以外的地方返程。",
+  "date": "2026-11-17"
+ },
  "14d4c9eac279": {
   "en": "{1} guests, newest first",
   "a": "{1}位嘉宾，最新在前",
@@ -647,6 +757,16 @@
   "tr": "{1}位嘉宾，最新在前",
   "back": "{1} guests, newest first",
   "check": "ok"
+ },
+ "14ef15607b78": {
+  "en": "The forecast, the plan and the traffic: where the climbs are likely to be, which way to head, and what to do if the day shuts down early.",
+  "b": "天气预报、计划和空中交通：哪里可能有热气流，往哪个方向飞，以及如果这一天提前收场该怎么办。",
+  "date": "2026-11-17"
+ },
+ "15248e0a55b9": {
+  "en": "<x1>over</x1> {1} launch",
+  "b": "<x1>飞越</x1>{1}起飞场",
+  "date": "2026-11-17"
  },
  "158488221f07": {
   "en": "He launches first to check the air, or last to help with an awkward takeoff.",
@@ -661,6 +781,11 @@
   "tr": "照片",
   "back": "Photos",
   "check": "ok"
+ },
+ "15de1016ddf6": {
+  "en": "What To Pack For {1}",
+  "b": "{1}要带什么",
+  "date": "2026-11-17"
  },
  "1680c69de6b4": {
   "en": "{1}, from the air",
@@ -690,6 +815,11 @@
   "back": "Group",
   "check": "ok"
  },
+ "174e33524195": {
+  "en": "Photographs at {1} launch",
+  "b": "{1}起飞场的照片",
+  "date": "2026-11-17"
+ },
  "175058cca872": {
   "en": "Play Navigating {1}, with Vistasp Kharas",
   "a": "播放《探路{1}》，嘉宾 Vistasp Kharas",
@@ -699,9 +829,19 @@
   "back": "Play \"Pathfinding {1}\", guest Vistasp Kharas",
   "check": "ok"
  },
+ "1764349d3403": {
+  "en": "Eddie Colfox, India episode",
+  "b": "Eddie Colfox，印度一集",
+  "date": "2026-11-17"
+ },
  "177aba2c4e3b": {
   "en": "Greet everyone, explain everything",
   "b": "问候每一个人，把一切解释清楚",
+  "date": "2026-11-17"
+ },
+ "17f332cecaf2": {
+  "en": "{1} guide to {2} pilots",
+  "b": "每{1}名向导带{2}名飞行员",
   "date": "2026-11-17"
  },
  "182d37ec74bf": {
@@ -764,6 +904,11 @@
   "b": "提前谈好价格，即使对方摆手说不用。数字很容易听错，在风吹的山坡上用第二语言交流，{1}、{2}和{3}一下子就会混淆。",
   "date": "2026-11-17"
  },
+ "19452154f50d": {
+  "en": "Most nationalities can apply online for India's e-Tourist visa, but not all, so check yours on the <x1>official portal</x1>. Apply at least four days before you arrive; with our first departure on {1}, it is not something to leave late. Since {2} every foreign visitor also files a free online e-Arrival Card in the {3} hours before flying.",
+  "b": "大多数国籍的人可以在线申请印度电子旅游签证，但并非所有人都可以，所以请到<x1>官方门户网站</x1>核实你的情况。至少在抵达前四天申请；我们的第一个出发班次在{1}，所以千万别拖。自{2}起，每位外国访客还需要在飞行前 {3} 小时内在线填写免费的电子入境卡。",
+  "date": "2026-11-17"
+ },
  "199778d7cc44": {
   "en": "Kenya has over {1} further ethnic languages.",
   "b": "肯尼亚还有超过{1}种其他民族语言。",
@@ -779,6 +924,11 @@
  "19dd5fcd50d3": {
   "en": "We oversee every step of our ground crew logistics and meet the very highest safety standards. Our team's Kenyan roots and ability to bridge the gap between global flying standards and local realities allows us to run every aspect of the operation smoothly, from retrieve drives to campsite coordination.",
   "b": "地勤后勤的每一个环节我们都亲自把关，并达到最高的安全标准。我们团队的肯尼亚根基，加上连接全球飞行标准与本地现实的能力，让我们能顺畅地运转行动的方方面面，从回收接送到营地协调。",
+  "date": "2026-11-17"
+ },
+ "1a1c7199240f": {
+  "en": "Passport, valid {1} months, with two blank pages",
+  "b": "护照，有效期 {1} 个月，带两页空白页",
   "date": "2026-11-17"
  },
  "1a3b6a0cbf85": {
@@ -804,12 +954,22 @@
   "back": "More from Kenya",
   "check": "ok"
  },
+ "1ac31865bdac": {
+  "en": "or equivalent",
+  "b": "或同等级别",
+  "date": "2026-11-17"
+ },
  "1ad42700838f": {
   "en": "Photos tonight",
   "a": "今晚发布照片",
   "date": "2026-11-17",
   "b": "今晚发布照片",
   "tr": "今晚发布照片"
+ },
+ "1aec23a99b74": {
+  "en": "English is widely spoken around {1}, which has welcomed visiting pilots for decades.",
+  "b": "{1}一带普遍说英语，这里几十年来一直欢迎外来飞行员。",
+  "date": "2026-11-17"
  },
  "1b02d68f0236": {
   "en": "Longest flight, any {1} courses, thermalling comfort",
@@ -828,6 +988,16 @@
  "1b42d1673f56": {
   "en": "Glide Over Lands Where Humanity Took Its First Steps",
   "b": "滑翔过人类迈出第一步的土地",
+  "date": "2026-11-17"
+ },
+ "1baeb24536f8": {
+  "en": "About Palampur",
+  "b": "关于 Palampur",
+  "date": "2026-11-17"
+ },
+ "1cac851f6415": {
+  "en": "A stone temple to Shiva as Vaidyanath, the lord of physicians, raised in {1} by two merchants, Ahuka and Manyuka, in the Nagara style of the north. It is a protected monument of the Archaeological Survey of India.",
+  "b": "一座供奉湿婆（作为医神 Vaidyanath）的石庙，由 Ahuka 和 Manyuka 两位商人于{1}年建成，属北方的 Nagara 风格。它是印度考古调查局保护的古迹。",
   "date": "2026-11-17"
  },
  "1cdce20d0a32": {
@@ -915,6 +1085,16 @@
   "back": "Itinerary updates, new episodes, and stories from the front line. No spam; you can unsubscribe at any time.",
   "check": "ok"
  },
+ "1f987c2739c7": {
+  "en": "If the circle gets too tight for your comfort, leave for the next ridge. There is a thermal on every knob along the front range.",
+  "b": "如果圈子小到让你不舒服，就离开去飞下一道山脊。前山脉上每个山包都有热气流。",
+  "date": "2026-11-17"
+ },
+ "1faf84b9fa9a": {
+  "en": "Who guides",
+  "b": "谁来带队",
+  "date": "2026-11-17"
+ },
  "2035a08032bc": {
   "en": "Knowledge Base",
   "a": "知识库",
@@ -923,6 +1103,16 @@
   "tr": "知识库",
   "back": "Knowledge base",
   "check": "ok"
+ },
+ "206c229a70e5": {
+  "en": "Triund, photographed by Ashutosh Tiwari",
+  "b": "Triund，摄影：Ashutosh Tiwari",
+  "date": "2026-11-17"
+ },
+ "207cdd36c41b": {
+  "en": "{1} · The front range",
+  "b": "{1}｜前山脉",
+  "date": "2026-11-17"
  },
  "20d114b07333": {
   "en": "Ticking is saved on this device, so you can come back to it the night before you fly. <x1>Nothing here is sent anywhere.</x1>",
@@ -964,6 +1154,11 @@
  "218d369c4df1": {
   "en": "Tip {1} to {2} per cent for good work, and nothing extra for a rip off. Fairness runs both ways. Pay for the things you cannot see, like a path an ancestor cut or the fact that nothing with teeth came near you. Hire from the community closest to the site, or you create jealousy you will not be around to resolve.",
   "b": "工作做得好，给{1}到{2} % 的小费，被宰了就不必多给。公平是双向的。为你看不见的东西付钱，比如祖先开出的小路，或者没有带牙的东西靠近你这件事。雇用离飞行场最近的社区的人，否则你会制造出嫉妒，而你不会留下来化解它。",
+  "date": "2026-11-17"
+ },
+ "21af6fcad3e5": {
+  "en": "What pilot rating do I need for {1}?",
+  "b": "{1}需要什么飞行员等级？",
   "date": "2026-11-17"
  },
  "224b543ea12b": {
@@ -1017,6 +1212,11 @@
   "back": "There is a saying in aviation: whatever is controllable, control it. On-site troubleshooting, mastery of the weather and rescue preparedness mean that we get every detail done in advance.",
   "check": "ok"
  },
+ "22e87cc41509": {
+  "en": "Palampur, photographed by Nerdandnutella",
+  "b": "Palampur，摄影：Nerdandnutella",
+  "date": "2026-11-17"
+ },
  "22f8d45dccf8": {
   "en": "No mandatory vaccines for travellers from Europe or America. Local food can upset tender Western stomachs.",
   "b": "来自欧洲或美洲的旅客没有强制疫苗。当地食物可能让娇弱的西方肠胃不适。",
@@ -1059,6 +1259,11 @@
   "back": "Reset view",
   "check": "ok"
  },
+ "24300e3b30a4": {
+  "en": "The {1} range under building cumulus, above the Kangra valley",
+  "b": "{1}山脉在渐起的积云下，位于 Kangra 山谷上方",
+  "date": "2026-11-17"
+ },
  "24345a14377f": {
   "en": "Today",
   "a": "今天",
@@ -1067,6 +1272,11 @@
   "tr": "今天",
   "back": "Today",
   "check": "ok"
+ },
+ "24531470e4eb": {
+  "en": "launch from the meadow at {1},",
+  "b": "从{1}草坡上的起飞场起飞，",
+  "date": "2026-11-17"
  },
  "2473e96bc614": {
   "en": "Introduction",
@@ -1115,6 +1325,11 @@
   "back": "Soar over the land of the Incas",
   "check": "ok"
  },
+ "257c704f93d2": {
+  "en": "{1} is an overnight bus ride north, or a short flight to Dharamshala and about two hours by road.",
+  "b": "{1}在北边，夜间大巴一夜可达，或搭短途航班到 Dharamshala，再走约两小时公路。",
+  "date": "2026-11-17"
+ },
  "258c13fbc938": {
   "en": "Kenya · {1}, Rift Valley<x1>{2}°N · {3}°E</x1>",
   "a": "肯尼亚 · {1}，裂谷<x1>北纬{2}° · 东经{3}°</x1>",
@@ -1123,6 +1338,11 @@
   "tr": "肯尼亚 · {1}，裂谷<x1>北纬{2}° · 东经{3}°</x1>",
   "back": "Kenya · {1}, Rift Valley<x1>North latitude {2}° · East longitude {3}°</x1>",
   "check": "ok"
+ },
+ "261cdd073d4b": {
+  "en": "About Barot",
+  "b": "关于 Barot",
+  "date": "2026-11-17"
  },
  "268b9e099c39": {
   "en": "The hills between the {1} and Lake Baringo, where the six-million-year-old fossils of Orrorin tugenensis were found in {2}, among the oldest candidates for the human line.",
@@ -1142,6 +1362,16 @@
   "tr": "联系我们",
   "back": "Contact us",
   "check": "ok"
+ },
+ "27115a137a68": {
+  "en": "One guide to every three pilots, never more.",
+  "b": "每三名飞行员配一名向导，绝不会更少。",
+  "date": "2026-11-17"
+ },
+ "27585126a1f9": {
+  "en": "Four departures in {1}, {2}.",
+  "b": "{1}年共四个出发班次，{2}。",
+  "date": "2026-11-17"
  },
  "276462f97179": {
   "en": "Flying In Africa, And How To Do It Well <x1>DIY</x1>",
@@ -1188,6 +1418,31 @@
   "b": "第{1}章，共{2}章：Mount Longonot 火山口",
   "date": "2026-11-17"
  },
+ "284a3357cc39": {
+  "en": "Wing you know well<x1>EN or LTF certified. {1} rewards a wing you can relax on, not the hottest one you own</x1>",
+  "b": "你熟悉的伞翼<x1>EN 或 LTF 认证。{1}更适合你能放松驾驭的伞翼，而不是你手里最激进的那顶</x1>",
+  "date": "2026-11-17"
+ },
+ "287252f0ba88": {
+  "en": "The whole overview: cloudbase, season, retrieves, traffic",
+  "b": "完整概览：云底、季节、回收、空中交通",
+  "date": "2026-11-17"
+ },
+ "2872667cf712": {
+  "en": "Barot, photographed by Timothy Gonsalves",
+  "b": "Barot，摄影：Timothy Gonsalves",
+  "date": "2026-11-17"
+ },
+ "2884ef0e4830": {
+  "en": "Gurpreet has flown since {1} and was the first Indian to hold a BHPA instructor licence. He founded the PG Gurukul school in {2}, now based at {3}, which in {4} became the first paragliding school in India accredited by the Aero Club of India. He was the first Indian on an international open-class podium, has flown {5} international events, and helped draft India's paragliding safety rules and pilot ratings. In {6} the {7} awarded him the Paul Tissandier Diploma.",
+  "b": "Gurpreet 自{1}年起飞行，是第一位持有 BHPA 教练执照的印度人。他于{2}年创办了 PG Gurukul 学校，现设在{3}，该校在{4}年成为印度第一所获印度航空俱乐部认证的滑翔伞运动学校。他是第一位登上国际开放级领奖台的印度人，参加过 {5} 场国际赛事，并协助起草了印度的滑翔伞运动安全规则和飞行员等级。{6}年，{7}授予他 Paul Tissandier 勋章。",
+  "date": "2026-11-17"
+ },
+ "289844172cb6": {
+  "en": "<x1>The landing field</x1>The {1} landing field under big cumulus, snow peaks behind, one wing coming in",
+  "b": "<x1>降落场</x1>{1}降落场在大积云下，身后是雪峰，一顶伞翼正在进场",
+  "date": "2026-11-17"
+ },
  "28d341d6e81b": {
   "en": "Climate, seasons, and when to come",
   "a": "气候、季节，以及何时前来",
@@ -1210,9 +1465,19 @@
   "b": "倾斜得更陡",
   "date": "2026-11-17"
  },
+ "294daa3bc60c": {
+  "en": "<x1>The {1}</x1>The {2} range under building cumulus, above the Kangra valley<x2>near Big face</x2>",
+  "b": "<x1>{1}</x1>{2}山脉在渐起的积云下，位于 Kangra 山谷上方<x2>靠近 Big face</x2>",
+  "date": "2026-11-17"
+ },
  "2976a051355b": {
   "en": "A range of young volcanic cones and lava flows, the latest of them from the {1}, with some of the longest lava tubes in the world beneath. The rain that falls here sinks through the lava and surfaces at Mzima Springs.",
   "b": "一片年轻的火山锥和熔岩流，最近的一次来自{1}，地下有世界上最长的一些熔岩管。落在这里的雨水渗过熔岩，在 Mzima Springs 重新涌出。",
+  "date": "2026-11-17"
+ },
+ "2993d789bf23": {
+  "en": "Indian visa, applied for before you travel<x1>At least {1} days before you arrive. The e-visa suits most nationalities, but not all</x1>",
+  "b": "印度签证，出发前申请<x1>至少在抵达前 {1} 天。电子签证适合大多数国籍，但并非所有</x1>",
   "date": "2026-11-17"
  },
  "2995baf73d83": {
@@ -1254,9 +1519,24 @@
   "back": "Tap a pin to listen to the story.",
   "check": "ok"
  },
+ "2abd0a6a8ab9": {
+  "en": "<x1>Cloud on the range</x1>A snow-dusted rock peak half hidden in cloud",
+  "b": "<x1>山脉上的云</x1>一座积雪覆盖的岩石山峰，半隐在云中",
+  "date": "2026-11-17"
+ },
  "2ad80ab9b960": {
   "en": "Better still, give work as a porter or guide, or donate to a local organisation. Avoid handing out your phone number or email, because it turns into requests for money later.",
   "b": "更好的做法是，给人搬运工或向导的工作，或者捐给当地的组织。不要把你的电话号码或邮箱给出去，因为这之后会变成要钱的请求。",
+  "date": "2026-11-17"
+ },
+ "2ae72f61ca17": {
+  "en": "Behind {1} is a spine, and past it the big mountains: Barabangal, the run to Manali and beyond. Jigish Gohil's test for going is a couple of hundred hours, an {2} course, and the kit and fitness for a night out and a long walk. <x1>His test in full</x1>.",
+  "b": "{1}后面是一道山脊，越过它就是真正的大山：Barabangal、通往 Manali 乃至更远的路线。Jigish Gohil 的出发标准是：两百来个飞行小时，一次 {2} 课程，以及能在外过夜和长途步行的装备与体力。<x1>他的完整标准</x1>。",
+  "date": "2026-11-17"
+ },
+ "2b174d1ec848": {
+  "en": "Behind the takeoff is a spine, and past it everything steps up at once: altitude, thermal strength, roughness and cold, by about a third in Eddie Colfox's reckoning. That is a later step, not a first week one.",
+  "b": "起飞场后面是一道山脊，越过之后一切都会陡然提升：海拔、热气流强度、乱流和寒冷，按 Eddie Colfox 的估计大约高出三分之一。那是之后才走的一步，不适合第一周。",
   "date": "2026-11-17"
  },
  "2b234305d875": {
@@ -1285,6 +1565,11 @@
   "b": "首都",
   "date": "2026-11-17"
  },
+ "2bdd9abbc860": {
+  "en": "North, not a first week line",
+  "b": "向北，不是第一周的路线",
+  "date": "2026-11-17"
+ },
  "2c250444209e": {
   "en": "December to March",
   "b": "十二月到三月",
@@ -1300,6 +1585,16 @@
  "2c85daa77f37": {
   "en": "Eleven Frames From The Rift",
   "b": "大裂谷的十一帧画面",
+  "date": "2026-11-17"
+ },
+ "2d46a4260e21": {
+  "en": "Rule {1}, The cloud",
+  "b": "第 {1} 条，云",
+  "date": "2026-11-17"
+ },
+ "2d4b33db83a3": {
+  "en": "What the brochures say",
+  "b": "宣传册上怎么说",
   "date": "2026-11-17"
  },
  "2dae96425990": {
@@ -1419,6 +1714,11 @@
   "b": "行之有效的做法",
   "date": "2026-11-17"
  },
+ "30db08362e85": {
+  "en": "Which airport do I fly into for {1}?",
+  "b": "飞{1}该在哪个机场降落？",
+  "date": "2026-11-17"
+ },
  "30dfc50ab0b8": {
   "en": "The deposit, when the balance is due and what happens if you cancel are all in the <x1>booking terms</x1>. Read them before you book, and take out trip cancellation insurance.",
   "a": "定金、尾款的支付时间以及取消后的处理，都写在<x1>预订条款</x1>中。请在预订前阅读，并购买行程取消保险。",
@@ -1441,6 +1741,16 @@
   "date": "2026-11-17",
   "b": "周日{1}",
   "tr": "周日{1}"
+ },
+ "312a9b22a9ab": {
+  "en": "The most populous country in the world. Area about {1} million km².",
+  "b": "世界上人口最多的国家。面积约 {1} 百万平方公里。",
+  "date": "2026-11-17"
+ },
+ "31ba42d6c570": {
+  "en": "Rupees in small notes<x1>For taxis, chai and the ride back from a landing out</x1>",
+  "b": "小面额卢比<x1>用于出租车、奶茶，以及从降落场以外的地方返程</x1>",
+  "date": "2026-11-17"
  },
  "322ec11c194f": {
   "en": "To come",
@@ -1481,9 +1791,24 @@
   "b": "第{1}条，行之有效的做法",
   "date": "2026-11-17"
  },
+ "32b4fdd76613": {
+  "en": "{1} to Dharamshala and back",
+  "b": "{1}往返 Dharamshala",
+  "date": "2026-11-17"
+ },
  "32dc7997042d": {
   "en": "Founded {1}, elevation {2}m.",
   "b": "建于{1}年，海拔{2}m。",
+  "date": "2026-11-17"
+ },
+ "32eed21e5502": {
+  "en": "<x1>Meadows below the range</x1>A meadow of white flowers below the snow-covered {1}",
+  "b": "<x1>山脉脚下的草甸</x1>白色花朵的草甸，在积雪覆盖的{1}之下",
+  "date": "2026-11-17"
+ },
+ "330f1fd6cbc9": {
+  "en": "The Kangra valley from the air, villages and fields below the hills",
+  "b": "Kangra 山谷的空中景象，山丘下是村庄和田野",
   "date": "2026-11-17"
  },
  "332e15a10e87": {
@@ -1499,6 +1824,16 @@
   "tr": "哈萨克斯坦，条纹峡谷",
   "back": "Kazakhstan, striped canyons",
   "check": "ok"
+ },
+ "336ebec0812c": {
+  "en": "Big Mountain Flying. Ten days on the {1}, the wall of the Himalaya above {2}.",
+  "b": "大山飞行。在{1}上飞十天，那是{2}上方喜马拉雅的一道高墙。",
+  "date": "2026-11-17"
+ },
+ "33cbaeb83982": {
+  "en": "His test for going over: a couple of hundred hours, an {1} course, gear to sleep out, and the fitness to walk for eight or nine hours. Go with people who have done it.",
+  "b": "他的出发标准：两百来个飞行小时、一次 {1} 课程、能在外过夜的装备，以及走八九个小时的体力。要和做过的人一起去。",
+  "date": "2026-11-17"
  },
  "33f1b2e570e8": {
   "en": "Choose the trip to hear",
@@ -1517,6 +1852,11 @@
  "348d76471ead": {
   "en": "Health and stomach",
   "b": "健康和肠胃",
+  "date": "2026-11-17"
+ },
+ "34a2dd009d1d": {
+  "en": "Warm layers for the evening<x1>It cools off fast after landing</x1>",
+  "b": "晚上穿的保暖衣物<x1>在降落场降落后，气温下降很快</x1>",
   "date": "2026-11-17"
  },
  "34adb5fa1de1": {
@@ -1550,6 +1890,11 @@
   "back": "Not sure yet, help me choose",
   "check": "ok"
  },
+ "3558e0ce47b4": {
+  "en": "Add {1} on the way home",
+  "b": "回程再加上 {1}",
+  "date": "2026-11-17"
+ },
  "35c2a02cd4d0": {
   "en": "India · {1}, Himalaya<x1>{2}°N · {3}°E</x1>",
   "a": "印度 · {1}，喜马拉雅<x1>北纬{2}° · 东经{3}°</x1>",
@@ -1567,6 +1912,16 @@
   "tr": "一名飞行员驾着红色伞翼，飞在印度的雪山之上",
   "back": "A pilot flying a red wing above the snow mountains of India",
   "check": "ok"
+ },
+ "36326cc78bb2": {
+  "en": "Fly the approach, every time",
+  "b": "每一次都要飞完整的进场",
+  "date": "2026-11-17"
+ },
+ "36b5c5b62ce6": {
+  "en": "The Majestic Himalayas: A Paraglider's Ultimate Frontier",
+  "b": "雄伟的喜马拉雅：滑翔伞飞行员的终极前沿",
+  "date": "2026-11-17"
  },
  "36c57243155b": {
   "en": "Peru",
@@ -1631,9 +1986,19 @@
   "back": "Amazon Music",
   "check": "ok"
  },
+ "38c382bd9c34": {
+  "en": "e-Arrival Card, filed online<x1>Free, and due in the {1} hours before you fly to India</x1>",
+  "b": "电子入境卡，在线填写<x1>免费，须在飞往印度前 {1} 小时内提交</x1>",
+  "date": "2026-11-17"
+ },
  "38cfe7dc1470": {
   "en": "Rule {1}, When you are asked for money",
   "b": "第{1}条，当有人向你要钱",
+  "date": "2026-11-17"
+ },
+ "38d178a350ef": {
+  "en": "Do not assume the pilot ahead knows what they are doing. Some of the pilots in the air at {1} are superb, and some simply do not know better.",
+  "b": "不要以为前面的飞行员知道自己在做什么。在{1}空中的飞行员里，有些非常出色，有些只是不知道更好的做法。",
   "date": "2026-11-17"
  },
  "38f79e8a82e3": {
@@ -1656,12 +2021,27 @@
   "b": "向右转",
   "date": "2026-11-17"
  },
+ "3a08d1aa9b0b": {
+  "en": "about {1}m",
+  "b": "约{1}米",
+  "date": "2026-11-17"
+ },
+ "3a37d22412b5": {
+  "en": "You want to fly deep into the back ranges on your first visit. That takes a couple of hundred hours, an {1} course, and kit for a night out.",
+  "b": "你想第一次来就深入后山飞行。那需要两百来个飞行小时、一次 {1} 课程，以及能在外过夜的装备。",
+  "date": "2026-11-17"
+ },
  "3a65e770b28a": {
   "en": "Women",
   "a": "女子",
   "date": "2026-11-17",
   "b": "女子",
   "tr": "女子"
+ },
+ "3a96e7de66f2": {
+  "en": "{1} · Cloudbase",
+  "b": "{1}｜云底",
+  "date": "2026-11-17"
  },
  "3ac720e2b43e": {
   "en": "Official event: <x1>{1}, {2}</x1> · <x2>Final results</x2>",
@@ -1705,6 +2085,11 @@
   "back": "Thank you, we have received your enquiry. We read every one, and usually reply to {1} within one or two days.",
   "check": "ok"
  },
+ "3c2e402cdfed": {
+  "en": "You do not like the cold. It is warm in the valley and freezing at cloudbase, on the same day.",
+  "b": "你怕冷。同一天里，山谷温暖，云底却冰冷。",
+  "date": "2026-11-17"
+ },
  "3c410b8d9c3e": {
   "en": "About Mount Suswa",
   "b": "关于 Mount Suswa",
@@ -1727,6 +2112,11 @@
   "tr": "播放视频：任务{1}精彩集锦，{2}分{3}秒",
   "tr_note": "film = 视频"
  },
+ "3c8f1cd99a57": {
+  "en": "Warm in the valley, freezing at cloudbase, and paperwork you cannot fix on the day. Six items are marked essential. Do not travel without them.",
+  "b": "山谷里温暖，云底冰冷，还有当天无法补救的手续文件。六项标为必备。没有它们不要出发。",
+  "date": "2026-11-17"
+ },
  "3cdc0f0f318b": {
   "en": "Chapter {1} of {2}: Kijabe Hill",
   "b": "第{1}章，共{2}章：Kijabe Hill",
@@ -1735,6 +2125,11 @@
  "3ce06cc5af08": {
   "en": "Rift Valley National Park",
   "b": "Rift Valley National Park",
+  "date": "2026-11-17"
+ },
+ "3d0016068c7c": {
+  "en": "{1}-{2} km",
+  "b": "{1}-{2} 公里",
   "date": "2026-11-17"
  },
  "3d082142a0c2": {
@@ -1831,6 +2226,11 @@
   "back": "Gabriel Orsini",
   "check": "ok"
  },
+ "3f2704981b99": {
+  "en": "About Dharamshala and McLeod Ganj",
+  "b": "关于 Dharamshala 和 McLeod Ganj",
+  "date": "2026-11-17"
+ },
  "3f66052a107e": {
   "en": "From",
   "a": "起价",
@@ -1843,6 +2243,11 @@
  "3fbb51dc1891": {
   "en": "Mount Longonot",
   "b": "Mount Longonot",
+  "date": "2026-11-17"
+ },
+ "3fed329b07ed": {
+  "en": "McLeod Ganj, on the ridge above Dharamshala, has been the seat of the Dalai Lama and of the Central Tibetan Administration since {1}. The Tsuglagkhang complex holds his residence and the main temple.",
+  "b": "McLeod Ganj 位于 Dharamshala 上方的山脊上，自{1}年起一直是达赖喇嘛和藏人行政中央的驻地。Tsuglagkhang 建筑群内有他的住所和主寺。",
   "date": "2026-11-17"
  },
  "404cf90e2054": {
@@ -1898,6 +2303,11 @@
   "back": "A white paraglider flying over farmland on the lake shore, a dry hillside on the right",
   "check": "ok"
  },
+ "420091ee46c0": {
+  "en": "Most days end back in {1}. When they do not, the pilots' {2} and {3} groups share taxis, usually four pilots to a small car, and the same network gets everyone up the hill in the morning.",
+  "b": "大多数日子都以回到{1}收尾。如果没有，飞行员的{2}和{3}群会拼出租车，通常是四名飞行员挤一辆小车，早上也靠同一个网络把大家送上山。",
+  "date": "2026-11-17"
+ },
  "420b6a3c5c90": {
   "en": "Hear Where We <x1>Fly</x1>",
   "a": "听听我们<x1>飞</x1>在哪里",
@@ -1911,6 +2321,16 @@
  "42167539b7fa": {
   "en": "Flying gear",
   "b": "飞行装备",
+  "date": "2026-11-17"
+ },
+ "4240b2c7a0db": {
+  "en": "India Tour {1}",
+  "b": "印度之旅 {1}",
+  "date": "2026-11-17"
+ },
+ "42498a018c64": {
+  "en": "Rule {1}, Over the back",
+  "b": "第 {1} 条，翻越后山",
   "date": "2026-11-17"
  },
  "42fec0b9ba92": {
@@ -1947,6 +2367,16 @@
   "b": "猴面包树",
   "date": "2026-11-17"
  },
+ "4493b00773f8": {
+  "en": "{1}, about {2}m",
+  "b": "{1}，海拔约{2}米",
+  "date": "2026-11-17"
+ },
+ "44a36328ccfb": {
+  "en": "Rule {1}, The wing you bring",
+  "b": "第 {1} 条，你带去的伞翼",
+  "date": "2026-11-17"
+ },
  "44ce8c5b2fc2": {
   "en": "{1}: Paragliding the {2} Tablelands | {3}",
   "a": "{1}：在{2}台地飞滑翔伞 | {3}",
@@ -1970,6 +2400,11 @@
   },
   "back": "{1} held the first World Cup qualifier in {2}, with nearly {3} pilots taking part; the second was held in {4}, and was also the first hosted by the Paragliding Association of India. The longest local route extends about {5} km to the northwest, as far as {6}.",
   "check": "ok"
+ },
+ "4550aaf7aa7e": {
+  "en": "With Dharamshala done, his next step is to turn back east past the takeoff to {1} and then home again. Same front range, same landing options, more of it.",
+  "b": "飞完 Dharamshala 之后，他的下一步是向东飞过起飞场，到 {1}，然后再飞回家。同一条前山脉，同样的降落场选择，只是更长。",
+  "date": "2026-11-17"
  },
  "45c892cd251a": {
   "en": "The southern Rift from Suswa to Amboseli is Maasai land: pastoralists whose cattle, red cloth and beadwork are the best known image of Kenya, and who still move their herds across it.",
@@ -2009,6 +2444,11 @@
   "back": "Touch the sky with glory",
   "check": "ok"
  },
+ "469f8377db2d": {
+  "en": "The weather at {1} is the easy part. What pilots there talk about is traffic, and the accidents they describe are traffic accidents. Most of it is drawn from two of our own episodes, with <x1>Eddie Colfox</x1>, who has run trips from {2} since {3}, and with <x2>Jigish Gohil</x2>, who has lived there for about a decade. Their words are paraphrased, not quoted.",
+  "b": "{1}的天气是容易的部分。那里的飞行员谈论的是空中交通，他们描述的事故都是空中交通事故。大部分内容取自我们自己的两集节目，一集是与自{3}年起就在{2}带团的 <x1>Eddie Colfox</x1>，另一集是与在那里住了大约十年的 <x2>Jigish Gohil</x2>。他们的话是转述，不是原话引用。",
+  "date": "2026-11-17"
+ },
  "46ae7252f6d3": {
   "en": "A {1} m fall on the Ewaso Ng'iro at Nyahururu, reached by the Scottish explorer Joseph Thomson in {2} and named for his father.",
   "b": "Nyahururu 的 Ewaso Ng'iro 河上一道{1} m 的瀑布，苏格兰探险家 Joseph Thomson 于{2}年到达这里，并以他父亲的名字命名。",
@@ -2045,6 +2485,11 @@
   "tr": "久别之后，欢迎回来",
   "back": "Welcome back after a long time away",
   "check": "ok"
+ },
+ "47809db27253": {
+  "en": "The Dzongsar Khyentse Chökyi Lodrö Institute, a Buddhist college on the hillside at Chauntra a few kilometres south-east of {1}. Its present campus opened in {2} and is home to several hundred monks.",
+  "b": "Dzongsar Khyentse Chökyi Lodrö 学院，是一所佛学院，位于{1}东南方几公里处 Chauntra 的山坡上。现在的校园于{2}年启用，住着几百名僧人。",
+  "date": "2026-11-17"
  },
  "479b2ba5fc81": {
   "en": "Hear The Site From Someone Who Flies It",
@@ -2105,6 +2550,11 @@
   "back": "Whole event",
   "check": "ok"
  },
+ "48ca926552ca": {
+  "en": "Reliable thermals, big distances, flyable almost every day of the trip.",
+  "b": "可靠的热气流、远距离、行程中几乎每天都能飞。",
+  "date": "2026-11-17"
+ },
  "48e174553fed": {
   "en": "A conservancy on the Laikipia plateau that holds the last two northern white rhinos on earth, Najin and Fatu, under guard day and night.",
   "b": "Laikipia 高原上的一处保护区，养着世界上仅剩的两头北部白犀牛，Najin 和 Fatu，日夜有人看守。",
@@ -2115,6 +2565,11 @@
   "b": "我们知道<x1>触摸</x1><x2>天空</x2><x3>的</x3><x4>荣耀</x4><x5>是什么感觉</x5>，我们的梦想，就是能与你分享这份感觉",
   "date": "2026-11-17"
  },
+ "4966f835881a": {
+  "en": "Autumn at {1} can overdevelop. On {2} a visiting pilot near the end of a long flight was swept from {3}m to above {4}m inside a storm cloud in about ten minutes, and survived; nine incidents were reported in the area that day, three of them reserve deployments. <x1>Cross Country reported it</x1>.",
+  "b": "{1}的秋季可能会过度发展。{2}，一名外来飞行员在长途飞行接近尾声时，在一团风暴云里约十分钟内，被从{3}米卷到{4}米以上，并活了下来；当天该地区上报了九起事件，其中三起是启用备份伞。<x1>Cross Country 报道了此事</x1>。",
+  "date": "2026-11-17"
+ },
  "498d06b28ce2": {
   "en": "This form has no database behind it. Pressing send opens your own email app with the message written out, and you send it yourself. Nothing is posted to us or to any form service on the way, so there is no third party holding your details.",
   "a": "这个表单背后没有数据库。点击发送会打开你自己的邮件应用，邮件内容已经写好，由你自己发送。途中不会向我们或任何表单服务提交任何内容，所以没有第三方持有你的信息。",
@@ -2123,6 +2578,11 @@
   "tr": "这个表单背后没有数据库。点击发送会打开你自己的邮件应用，邮件内容已经写好，由你自己发送。途中不会向我们或任何表单服务提交任何内容，所以没有第三方持有你的信息。",
   "back": "There is no database behind this form. Clicking send opens your own email app, with the email content already written, and you send it yourself. Nothing is submitted along the way to us or to any form service, so no third party holds your information.",
   "check": "ok"
+ },
+ "49d3e132dc21": {
+  "en": "Behind the front range the ground gets big and the options get thin. Altitude, thermal strength, roughness and cold all step up at once, and help can take until the next day to arrive.",
+  "b": "前山脉后面，地面变得辽阔，选择变得稀少。海拔、热气流强度、乱流和寒冷同时陡然升高，救援可能要到第二天才能到达。",
+  "date": "2026-11-17"
  },
  "4a04f0b915c7": {
   "en": "A Neolithic and Iron Age settlement on a hill outside Nakuru, excavated by Mary Leakey in the late {1}, with burial mounds and hut floors and a museum in the old farmhouse.",
@@ -2190,6 +2650,11 @@
   "back": "The cliffs heat up all morning, setting off strong thermals. There are multiple inversion layers in the air, the wind direction can change with every thousand metres of height, and every valley and hollow has its own wind.",
   "check": "ok"
  },
+ "4b14fd5b7fbf": {
+  "en": "Photographs at Thatwal Thati",
+  "b": "Thatwal Thati 的照片",
+  "date": "2026-11-17"
+ },
  "4b3a25477426": {
   "en": "Partner With Me",
   "a": "与我合作",
@@ -2202,6 +2667,11 @@
  "4b4599ffd864": {
   "en": "Rule {1}, Permissions and officials",
   "b": "第{1}条，许可和官员",
+  "date": "2026-11-17"
+ },
+ "4b96d91b5920": {
+  "en": "A pilot on a red wing flying over snow-covered mountains",
+  "b": "一名飞行员驾着红色伞翼飞越白雪覆盖的群山",
   "date": "2026-11-17"
  },
  "4bb3e463ac3e": {
@@ -2231,6 +2701,26 @@
   "back": "Below {1} mountain: pottery, yoga and Buddhism",
   "check": "ok"
  },
+ "4c04b97c15fd": {
+  "en": "{1} Paragliding Tour: {2} Days in India | {3}",
+  "b": "{1}滑翔伞运动之旅：印度 {2} 天｜{3}",
+  "date": "2026-11-17"
+ },
+ "4c12fe5e78a1": {
+  "en": "From the pilot's seat",
+  "b": "从飞行员的座位看出去",
+  "date": "2026-11-17"
+ },
+ "4c2ba4f293e2": {
+  "en": "Our Himalayan expedition delivers an aerial experience that makes you soar over landscapes shaped by time and legend, you get to drift over ancient monasteries while exploring your limits in thin air. It's a journey that stirs the soul. {1} is where it starts: one launch at {2}, a landing field at the edge of town, and a front range that pilots have been flying out and back along since the {3}.",
+  "b": "我们的喜马拉雅之旅带来的飞行体验，让你翱翔在由岁月与传说塑造的大地之上，飘过古老的寺院，在稀薄的空气中探索自己的极限。这是一段触动心灵的旅程。一切从{1}开始：一个位于{2}的起飞场，一块在小镇边缘的降落场，还有一条前山脉，自{3}以来，飞行员们一直沿着它来回飞行。",
+  "date": "2026-11-17"
+ },
+ "4c2d3e59d80e": {
+  "en": "{1} Cross Country Routes",
+  "b": "{1}越野飞行路线",
+  "date": "2026-11-17"
+ },
  "4ca9685eab65": {
   "en": "A cold open: the first landing at Barabangal",
   "a": "开场：第一次降落在 Barabangal",
@@ -2242,6 +2732,16 @@
   },
   "back": "Opening: the first landing at Barabangal",
   "check": "ok"
+ },
+ "4ccd5475ab8a": {
+  "en": "You want the sky to yourself. Autumn at {1} now draws hundreds of visiting pilots.",
+  "b": "你想独享天空。如今{1}的秋季会吸引数百名外来飞行员。",
+  "date": "2026-11-17"
+ },
+ "4cfce3db7e4a": {
+  "en": "Policy number and rescue hotline, saved offline<x1>Essential</x1><x2>You will want these when you are down the back with no signal</x2>",
+  "b": "保单号和救援热线，离线保存<x1>必备</x1><x2>当你降在后山、没有信号时，你会需要它们</x2>",
+  "date": "2026-11-17"
  },
  "4d95cf5482fd": {
   "en": "Every Departure",
@@ -2264,6 +2764,11 @@
  "4e1936d9228e": {
   "en": "Before You Fly, And What To Bring",
   "b": "飞行之前，以及该带什么",
+  "date": "2026-11-17"
+ },
+ "4e2f74d4f583": {
+  "en": "BHPA instructor, {1} Paul Tissandier Diploma {2}",
+  "b": "BHPA 教练，{1} Paul Tissandier 勋章 {2}",
   "date": "2026-11-17"
  },
  "4e3cc2599178": {
@@ -2317,9 +2822,19 @@
   "back": "Media coverage",
   "check": "ok"
  },
+ "51327aef9866": {
+  "en": "Oct",
+  "b": "十月",
+  "date": "2026-11-17"
+ },
  "514d6e0b3172": {
   "en": "Flamingos feed in the shallows, and the islets are one of the few places in East Africa where great white pelicans breed.",
   "b": "火烈鸟在浅水中觅食，这些小岛是东非少数几个大白鹈鹕繁殖的地方之一。",
+  "date": "2026-11-17"
+ },
+ "515aba49a8e0": {
+  "en": "Watch the sky, not just the climb",
+  "b": "要看天空，而不只是看爬升",
   "date": "2026-11-17"
  },
  "51dd91dc98a9": {
@@ -2352,6 +2867,11 @@
   "back": "Cookie",
   "check": "ok"
  },
+ "5273e736ef04": {
+  "en": "Next departure",
+  "b": "下一个出发班次",
+  "date": "2026-11-17"
+ },
  "52a35818a37a": {
   "en": "Swipe sideways to turn it.",
   "a": "左右滑动以转动。",
@@ -2366,9 +2886,19 @@
   "b": "你很熟悉的伞翼<x1>通过 EN 或 LTF 认证</x1>",
   "date": "2026-11-17"
  },
+ "52c4fb8b83bb": {
+  "en": "<x1>Kangra valley</x1>The Kangra valley from the air, villages and fields below the hills<x2>near Palampur</x2>",
+  "b": "<x1>Kangra 山谷</x1>Kangra 山谷的空中景象，山丘下是村庄和田野<x2>靠近 Palampur</x2>",
+  "date": "2026-11-17"
+ },
  "52d1d8eef1f8": {
   "en": "Fitness: good condition for hikes to launch at moderate elevation, gear handling, and four to six hour active flying days in heat. You should be able to trek uneven terrain with a {1} to {2} kg pack.",
   "b": "体能：状况良好，能在中等海拔徒步上起飞场，搬运装备，并在炎热中每个飞行日积极飞行四到六小时。你应该能背着{1}到{2} kg 的背包走过不平的地形。",
+  "date": "2026-11-17"
+ },
+ "52ef4185cdf4": {
+  "en": "When is the paragliding season in {1}?",
+  "b": "{1}的滑翔伞运动飞行季是什么时候？",
   "date": "2026-11-17"
  },
  "5301648dcf6b": {
@@ -2379,6 +2909,11 @@
   "tr": "编辑",
   "back": "Edit",
   "check": "ok"
+ },
+ "5336fe7bf53a": {
+  "en": "Over {1} billion",
+  "b": "超过 {1} 十亿",
+  "date": "2026-11-17"
  },
  "53516dd2351d": {
   "en": "You bring your own EN or LTF certified wing, harness, reserve, helmet and vario or {1}. Hiking boots and thermal layers are recommended.",
@@ -2403,6 +2938,16 @@
   "back": "Interpreting weather apps",
   "check": "ok"
  },
+ "538b3bbe3bdd": {
+  "en": "Photographs at Waldo peak",
+  "b": "Waldo peak 的照片",
+  "date": "2026-11-17"
+ },
+ "53a7a3b72089": {
+  "en": "Winter flying gloves<x1>Test them in easy air before the day you need them</x1>",
+  "b": "冬季飞行手套<x1>在你需要它的那天之前，先在平稳的空气里试一试</x1>",
+  "date": "2026-11-17"
+ },
  "53f612a997cf": {
   "en": "Alain Zoller",
   "a": "Alain Zoller",
@@ -2424,6 +2969,11 @@
  "5506eb6161a0": {
   "en": "Conditions",
   "b": "条件",
+  "date": "2026-11-17"
+ },
+ "5524bb564250": {
+  "en": "Before you launch",
+  "b": "在起飞场起飞之前",
   "date": "2026-11-17"
  },
  "5548ae4f34cb": {
@@ -2469,6 +3019,11 @@
   "b": "在这里飞行的人少之又少，所以你不是匿名的游客。你就是那个社区见过的滑翔伞飞行员，也可能是他们今年见到的唯一一个。你所做的一切，为之后到来的每个人定下了规矩。",
   "date": "2026-11-17"
  },
+ "55d8ace47701": {
+  "en": "The flying in front of the takeoff is the textbook part: landing fields all along the valley, a road never far away, and griffon vultures marking the climbs. If the day goes wrong, you land, take a retrieve and go home.",
+  "b": "起飞场前方的飞行是教科书式的部分：整个山谷沿线都有降落场，公路始终不远，还有兀鹫标示出热气流。如果这一天不顺，就降落，搭回收车回家。",
+  "date": "2026-11-17"
+ },
  "5646f9c6b3a7": {
   "en": "Jigish Gohil",
   "a": "Jigish Gohil",
@@ -2508,6 +3063,26 @@
   "back": "Dates and prices",
   "check": "ok"
  },
+ "574f743b8052": {
+  "en": "<x1>{1} launch</x1>Pilots laying out and launching on the grass at {2}",
+  "b": "<x1>{1}起飞场</x1>飞行员们在{2}的草地上展开伞翼并起飞",
+  "date": "2026-11-17"
+ },
+ "5764d68cb6d9": {
+  "en": "The launch is almost always nil-wind and there will be a queue. Lay out to the side, and once your wing is up, go.",
+  "b": "起飞场几乎总是无风，而且会有队伍。在侧边展开伞翼，伞翼一升起来就起飞。",
+  "date": "2026-11-17"
+ },
+ "57c7e57f9433": {
+  "en": "Ripstop tape",
+  "b": "防撕裂布胶带",
+  "date": "2026-11-17"
+ },
+ "57dc8eed9f20": {
+  "en": "Tour Dates For {1}",
+  "b": "{1}年行程日期",
+  "date": "2026-11-17"
+ },
  "57ee87b05d7d": {
   "en": "<x1>{1}</x1> / <x2>{2} min</x2>",
   "a": "<x1>{1}</x1> / <x2>{2}分钟</x2>",
@@ -2516,6 +3091,11 @@
   "tr": "<x1>{1}</x1> / <x2>{2}分钟</x2>",
   "back": "<x1>{1}</x1> / <x2>{2} minutes</x2>",
   "check": "ok"
+ },
+ "581e79bdf0fd": {
+  "en": "Down jacket for flying<x1>This is the one people underestimate</x1>",
+  "b": "飞行用羽绒服<x1>这是人们最容易低估的一样</x1>",
+  "date": "2026-11-17"
  },
  "583719b62809": {
   "en": "When you are hoping to travel",
@@ -2581,6 +3161,11 @@
   "back": "A journey inward",
   "check": "ok"
  },
+ "5a49ab00834c": {
+  "en": "Some satellite communicators are not technically legal in India, and the advice online has not all caught up. Ask us before you buy or pack one. Do not find this out at customs.",
+  "b": "有些卫星通信设备在印度严格来说并不合法，网上的说法也没有全部跟上。购买或打包之前先问我们。别等到海关才发现。",
+  "date": "2026-11-17"
+ },
  "5a83d3de402d": {
   "en": "Payment link: <x1>{1}</x1>. It will carry the photo's name.",
   "a": "付款链接：<x1>{1}</x1>。链接会带上照片名称。",
@@ -2622,6 +3207,11 @@
   "tr": "计划中，小团",
   "back": "Planned, small group",
   "check": "ok"
+ },
+ "5c1b9bb19d1e": {
+  "en": "<x1>{1} landing</x1>{2}'s landing field among terraced fields, seen from the air",
+  "b": "<x1>{1}降落场</x1>{2}的降落场，梯田之间，空中俯瞰",
+  "date": "2026-11-17"
  },
  "5c2e8b0f31fa": {
   "en": "A volcanic caldera on the edge of Nakuru, about twelve kilometres by eight, formed in a great eruption some eight thousand years ago, its floor a field of old lava. One of the largest calderas in the world.",
@@ -2695,6 +3285,11 @@
   "back": "A group of paragliders circling over a lake in light mist",
   "check": "ok"
  },
+ "5e031e95073b": {
+  "en": "<x1>Meadows below the range</x1>A meadow of white flowers below the snow-covered {1}<x2>near Thatwal Thati</x2>",
+  "b": "<x1>山脉脚下的草甸</x1>白色花朵的草甸，在积雪覆盖的{1}之下<x2>靠近 Thatwal Thati</x2>",
+  "date": "2026-11-17"
+ },
  "5e257531115d": {
   "en": "Standing on takeoff, what to expect",
   "a": "站在起飞场上，会遇到什么",
@@ -2738,6 +3333,11 @@
   "b": "每次飞行{1}到{2}小时",
   "date": "2026-11-17"
  },
+ "5f3c62da571c": {
+  "en": "<x1>Over the peaks</x1>A single wing high above a snow-streaked peak",
+  "b": "<x1>翻越群峰</x1>一顶孤零零的伞翼高高飞在积雪斑驳的山峰上方",
+  "date": "2026-11-17"
+ },
  "5f403e38f2eb": {
   "en": "<x1>←</x1> Media",
   "a": "<x1>←</x1> 媒体",
@@ -2754,9 +3354,19 @@
   "back": "Photo: Michael Gebert / <x1>@{1}</x1>",
   "check": "ok"
  },
+ "5fc70a55bc8c": {
+  "en": "The Himachal Pradesh Cricket Association's ground sits at about {1} m on the edge of Dharamshala, with the {2} straight behind the stands. It was built in {3} and {4}, saw its first one-day international in {5} and its first Test match in {6}.",
+  "b": "喜马偕尔邦板球协会的球场海拔约 {1} 米，位于 Dharamshala 边缘，看台正后方就是{2}。它在{3}和{4}年建成，{5}迎来首场一日国际赛，{6}迎来首场测试赛。",
+  "date": "2026-11-17"
+ },
  "603a4a9eb9f3": {
   "en": "Take the controls",
   "b": "自己操控",
+  "date": "2026-11-17"
+ },
+ "6055fce9fc44": {
+  "en": "April to May, October to November",
+  "b": "四月至五月，十月至十一月",
   "date": "2026-11-17"
  },
  "6073a2f2e928": {
@@ -2782,12 +3392,22 @@
   "back": "Book a free, no-obligation <x1>{1}-minute</x1> online call",
   "check": "ok"
  },
+ "6115706d5ecb": {
+  "en": "Autumn is the season. Eddie Colfox puts the start of good flying at around {1} now, later than it used to be, and it runs well into November. Jigish Gohil, who lives in {2}, says autumn is when almost everyone comes, because the flying is consistent nearly every day. Spring flies too, but it is stronger and far quieter. On the day, Jigish's own site, paraguide.in, runs a <x1>live weather station</x1> for {3}.",
+  "b": "秋季是飞行季。Eddie Colfox 认为，如今好天气大约从{1}开始，比以前晚了，一直持续到十一月中。住在{2}的 Jigish Gohil 说，秋季几乎所有人都会来，因为几乎每天都能稳定飞行。春季也能飞，但风更强，人也少得多。到了当天，Jigish 自己的网站 paraguide.in 提供{3}的<x1>实时气象站</x1>数据。",
+  "date": "2026-11-17"
+ },
  "612e12d29278": {
   "en": "Results",
   "a": "成绩",
   "date": "2026-11-17",
   "b": "成绩",
   "tr": "成绩"
+ },
+ "614065b1e075": {
+  "en": "Per pilot",
+  "b": "每位飞行员",
+  "date": "2026-11-17"
  },
  "6144c4a23eae": {
   "en": "{1}, Mexico · photos and videos",
@@ -2807,6 +3427,11 @@
   "tr_note": "tour = 团 site-wide; number reads as 'Tour 1'",
   "back": "Group {1}",
   "check": "ok"
+ },
+ "621568acce3f": {
+  "en": "There are exceptional pilots at {1}, and some of them are doing things you should not copy. A line that works for a local on a two liner is not automatically a line for you.",
+  "b": "{1}有出色的飞行员，其中一些人做的事你不该照搬。对一位当地人驾着双线伞翼行得通的线路，不见得就适合你。",
+  "date": "2026-11-17"
  },
  "62255f5671e8": {
   "en": "Season",
@@ -2843,6 +3468,11 @@
  "636eb57f1516": {
   "en": "Machakos Hills",
   "b": "Machakos Hills",
+  "date": "2026-11-17"
+ },
+ "6373b267f92b": {
+  "en": "{1}, Himachal Pradesh",
+  "b": "{1}，喜马偕尔邦",
   "date": "2026-11-17"
  },
  "638aaa2ae7ed": {
@@ -2886,6 +3516,11 @@
   "b": "关于巴林戈湖",
   "date": "2026-11-17"
  },
+ "6433edb488b5": {
+  "en": "Photographs at Baijnath",
+  "b": "Baijnath 的照片",
+  "date": "2026-11-17"
+ },
  "646600403b3d": {
   "en": "Lesser flamingos feed on the blue-green algae of the hot soda water, and when Nakuru is too fresh for them they gather here in their hundreds of thousands. Counts at Bogoria have passed a million.",
   "b": "小火烈鸟以热苏打水里的蓝绿藻为食，纳库鲁的水对它们太淡时，它们就成十万计地聚到这里。博戈里亚的统计数量曾超过一百万。",
@@ -2919,6 +3554,11 @@
   "back": "Weather patterns",
   "check": "ok"
  },
+ "65095688af35": {
+  "en": "What insurance do I need for paragliding in India?",
+  "b": "在印度参加滑翔伞运动需要什么保险？",
+  "date": "2026-11-17"
+ },
  "652b532eab8b": {
   "en": "Task {1}, photo {2} of {3}",
   "a": "任务{1}，第{2}张，共{3}张",
@@ -2931,6 +3571,11 @@
   "b": "微弱，在清晨和傍晚",
   "date": "2026-11-17"
  },
+ "65af62e74232": {
+  "en": "New Delhi",
+  "b": "新德里",
+  "date": "2026-11-17"
+ },
  "65c821a596ce": {
   "en": "Live",
   "a": "直播",
@@ -2939,6 +3584,11 @@
   "tr": "直播",
   "back": "Live broadcast",
   "check": "ok"
+ },
+ "6601b05c0dea": {
+  "en": "Shared taxis up to {1}, about {2} minutes from {3}, the way everyone does it, usually four pilots to a car.",
+  "b": "拼出租车上{1}，从{3}出发约 {2} 分钟，大家都这么走，通常四名飞行员一辆车。",
+  "date": "2026-11-17"
  },
  "665c672c22eb": {
   "en": "Today<x1>{1}</x1>",
@@ -2962,6 +3612,11 @@
   "tr": "到原始荒野追逐热气流",
   "back": "Go chase thermals in the primeval wilderness",
   "check": "ok"
+ },
+ "6679b821a581": {
+  "en": "Sunscreen and sunglasses<x1>The valley is warm and bright at midday</x1>",
+  "b": "防晒霜和太阳镜<x1>山谷里中午温暖而明亮</x1>",
+  "date": "2026-11-17"
  },
  "6689bbb4bd9a": {
   "en": "Join The {1} List",
@@ -2989,6 +3644,11 @@
   "tr": "{1}天，{2}",
   "back": "{1} days, {2}",
   "check": "ok"
+ },
+ "68563b5de4e3": {
+  "en": "Up the hill",
+  "b": "上山",
+  "date": "2026-11-17"
  },
  "68587bad15e9": {
   "en": "Buffalo",
@@ -3049,6 +3709,11 @@
   "back": "Enquire about {1} itineraries. Book a free {2}-minute call, send a message via {3}, or send us your flying situation and needs.",
   "check": "ok"
  },
+ "69f2bb995b97": {
+  "en": "You are comfortable thermalling in company, and you keep looking around while you climb.",
+  "b": "你能自如地在人群中盘旋爬升，并且在爬升时一直观察四周。",
+  "date": "2026-11-17"
+ },
  "6a2c2635c173": {
   "en": "Every task day: stills like these, and Daily Highlights, a video each task day with social clips and a results newsletter.",
   "a": "每个任务日：像这样的照片，以及每日精彩集锦——每个任务日一段视频，外加社交媒体短片和一份成绩通讯。",
@@ -3061,6 +3726,11 @@
   "b": "关于 Menengai 火山口",
   "date": "2026-11-17"
  },
+ "6a6973244378": {
+  "en": "Most days end back in {1}. Pick your field early, fly a full approach, and anywhere else, watch for terraces and power lines.",
+  "b": "大多数日子都以回到{1}收尾。早点选好降落场，完整地飞一遍进场；在别处降落时，要留意梯田和电线。",
+  "date": "2026-11-17"
+ },
  "6aa1b941eecc": {
   "en": "Pre {1} Kenya, Episode {2}, {3} min",
   "a": "《{1}预赛 肯尼亚》，第{2}集，{3}分钟",
@@ -3071,6 +3741,11 @@
   "back": "\"{1} Kenya Qualifier\", episode {2}, {3} minutes",
   "check": "ok"
  },
+ "6ab2ca57c9e3": {
+  "en": "The plan follows the conditions, not a timetable. On the ground, {1} has a kilometre of road with around a hundred restaurants, trails to walk, hot springs, and monasteries where you can sit in on the chanting.",
+  "b": "行程跟着天气条件走，而不是照时间表。在地面上，{1}有一公里长的街道，沿街约有一百家餐馆，还有可以步行的小径、温泉，以及可以坐下来听僧人诵经的寺院。",
+  "date": "2026-11-17"
+ },
  "6abd5d0e6c77": {
   "en": "November to March",
   "a": "十一月至三月",
@@ -3079,6 +3754,11 @@
   "tr": "十一月至三月",
   "back": "November to March",
   "check": "ok"
+ },
+ "6b03ef0b4a43": {
+  "en": "Photographs at Chauntra monastery",
+  "b": "Chauntra 寺院的照片",
+  "date": "2026-11-17"
  },
  "6b17aaa0f4a4": {
   "en": "One Week On The Plateau",
@@ -3097,6 +3777,11 @@
   "tr": "关于",
   "back": "About",
   "check": "ok"
+ },
+ "6b5f979d8d33": {
+  "en": "A grass ridge at about {1} m above McLeod Ganj, a day's walk up from McLeod Ganj or Dharamkot. The {2} peaks rise directly behind it, and the trail to the Indrahar pass carries on from here.",
+  "b": "一道海拔约 {1} 米的草坡山脊，在 McLeod Ganj 上方，从 McLeod Ganj 或 Dharamkot 步行一天可达。{2}的山峰就在它身后拔地而起，通往 Indrahar 山口的小径从这里继续向前。",
+  "date": "2026-11-17"
  },
  "6b6db5e205eb": {
   "en": "Ideal tour match for your skill and dreams (Kenya, {1}, India, Kazakhstan or Peru)",
@@ -3145,6 +3830,11 @@
   "b": "人会来，而且来得很快。热情地问候孩子们，找到长者或头领，请他们帮忙留出一块清空的地方。带着实时追踪飞行，并有一位你信任的司机。",
   "date": "2026-11-17"
  },
+ "6c12315658e2": {
+  "en": "Small things, mostly for the day you land somewhere you did not plan to.",
+  "b": "都是些小东西，多半是为了你降在计划之外某个地方的那一天。",
+  "date": "2026-11-17"
+ },
  "6c9fc9908984": {
   "en": "Close menu",
   "a": "关闭菜单",
@@ -3177,6 +3867,16 @@
   "tr": "<x1>团队</x1>小团",
   "back": "<x1>Group</x1>small group",
   "check": "ok"
+ },
+ "6da0bfffc89e": {
+  "en": "Reserve, repacked and in date<x1>Essential</x1>",
+  "b": "备份伞，已重新折叠且在有效期内<x1>必备</x1>",
+  "date": "2026-11-17"
+ },
+ "6dae2e1ec2f0": {
+  "en": "A snow-dusted rock peak half hidden in cloud",
+  "b": "一座积雪覆盖的岩石山峰，半隐在云中",
+  "date": "2026-11-17"
  },
  "6dd07555a840": {
   "en": "<x1>{1}</x1>Ideal tour match for your skill and dreams (Kenya, {2}, India, Kazakhstan or Peru)",
@@ -3299,6 +3999,11 @@
   "b": "直接给现金往往会让你后面的飞行员处境更糟。分享食物，或者请人吃一顿饭。直接说清楚，只给一个人而不给其他人是不公平的，通常都能被理解和接受。",
   "date": "2026-11-17"
  },
+ "71fb78e6726e": {
+  "en": "Over the back, then west<x1>{1} km</x1>",
+  "b": "翻越后山，再向西<x1>{1} 公里</x1>",
+  "date": "2026-11-17"
+ },
  "72542bccf7d2": {
   "en": "A photo from {1} {2}",
   "a": "一张来自{1} {2}的照片",
@@ -3315,6 +4020,11 @@
   "back": "By the day",
   "check": "ok"
  },
+ "72a7bac5d1e0": {
+  "en": "How far ahead do I need an Indian visa?",
+  "b": "印度签证要提前多久申请？",
+  "date": "2026-11-17"
+ },
  "7312c6e6c797": {
   "en": "{1}: Touch The Sky With Glory",
   "a": "{1}：荣耀触摸天空",
@@ -3330,6 +4040,11 @@
   "b": "G 型插头，英国式插座。",
   "date": "2026-11-17"
  },
+ "734a8ce64ae7": {
+  "en": "Photographs at Top of big face",
+  "b": "Big face 顶部的照片",
+  "date": "2026-11-17"
+ },
  "736d29009ba6": {
   "en": "The calm Pacific breeze, from {1} to the Andes",
   "a": "平静的太平洋海风，从{1}一直到安第斯山脉",
@@ -3338,6 +4053,11 @@
   "tr": "平静的太平洋海风，从{1}一直到安第斯山脉",
   "back": "Calm Pacific sea breeze, from {1} all the way to the Andes",
   "check": "ok"
+ },
+ "738e437a9196": {
+  "en": "Every flying day starts on the meadow at {1}, above {2}. The launch is almost always nil-wind, so a clean forward launch without help from the breeze is the one skill to arrive with,",
+  "b": "每个飞行日都从{2}上方{1}的草坡开始。起飞场几乎总是无风，所以到这里之前要练好的一项本领，就是不靠风帮忙、干净利落地正向起飞，",
+  "date": "2026-11-17"
  },
  "7398c2d1c615": {
   "en": "The Barabangal flight, told properly",
@@ -3362,6 +4082,11 @@
   "back": "Eight days in {1}, starting two days after the last Kenya tour ends.",
   "check": "ok"
  },
+ "73fab8ae164d": {
+  "en": "Autumn. Eddie Colfox, who has flown {1} since {2}, puts the start of good flying at around {3} now, because the monsoon often lingers into the first week of the month, and the air stays unstable enough to climb over {4}m well into November. Our autumn departures, {5} and {6}, sit inside that window; the two spring departures, {7} and {8}, come before it. <x1>Eddie on the season</x1>.",
+  "b": "秋季。自{2}年起就在{1}飞行的 Eddie Colfox 认为，如今好天气大约从{3}开始，因为季风常常拖到当月的第一周，而空气一直到十一月都足够不稳定，可以爬升到{4}米以上。我们的秋季出发班次{5}和{6}都在这个时间窗口内；两个春季班次{7}和{8}则在它之前。<x1>听 Eddie 讲季节</x1>。",
+  "date": "2026-11-17"
+ },
  "74052d61eebb": {
   "en": "Organisasjonsnummer {1}",
   "a": "Organisasjonsnummer {1}",
@@ -3370,6 +4095,11 @@
   "tr": "Organisasjonsnummer {1}",
   "back": "Organisasjonsnummer {1}",
   "check": "ok"
+ },
+ "7409420c6dad": {
+  "en": "Your own certified wing, a harness with back protection, reserve, helmet, vario or {1}, and a radio. Bring a wing you can relax on rather than your hottest: Eddie Colfox's advice is good equipment you feel comfortable on. It is warm in the valley and freezing at cloudbase, so pack a down jacket and gloves you have already tested in easy air. The full list is below.",
+  "b": "你自己的认证伞翼、带背部保护的座袋、备份伞、头盔、垂直速度表或{1}，以及一台无线电。带一顶你能放松驾驭的伞翼，而不是你手里最激进的那顶：Eddie Colfox 的建议是，带你用着踏实的好装备。山谷里温暖，云底却冰冷，所以请带上羽绒服和你已在平稳空气里试过的手套。完整清单在下方。",
+  "date": "2026-11-17"
  },
  "7431e3df243c": {
   "en": "Package",
@@ -3380,6 +4110,11 @@
   "back": "Package",
   "check": "ok"
  },
+ "7488061b8989": {
+  "en": "Tracker, once you have checked it is legal<x1>Some satellite communicators are not technically legal in India. Ask us before you buy or pack one</x1>",
+  "b": "追踪器，先确认它合法<x1>有些卫星通信设备在印度严格来说并不合法。购买或打包之前先问我们</x1>",
+  "date": "2026-11-17"
+ },
  "74946e5e41b4": {
   "en": "Package travel rights",
   "a": "包价旅游权利",
@@ -3389,6 +4124,11 @@
   "back": "Package travel rights",
   "check": "ok"
  },
+ "74a73abcce6d": {
+  "en": "The most populous country in the world. Area about {1} km².",
+  "a": "世界上人口最多的国家。面积约{1}平方公里。",
+  "date": "2026-11-17"
+ },
  "74b69fb5c012": {
   "en": "about, at {1}",
   "a": "约，位于{1}",
@@ -3397,6 +4137,16 @@
   "tr": "约，位于{1}",
   "back": "approx., located in {1}",
   "check": "ok"
+ },
+ "74c01eb278c5": {
+  "en": "Four departures of ten days and nine nights in {1}, six pilots on each.",
+  "b": "{1}共四个出发班次，每次十天九晚，每班六名飞行员。",
+  "date": "2026-11-17"
+ },
+ "74d0d1155f04": {
+  "en": "Rule {1}, The traffic",
+  "b": "第 {1} 条，空中交通",
+  "date": "2026-11-17"
  },
  "75079c5e96aa": {
   "en": "Your event",
@@ -3415,6 +4165,11 @@
  "756a92bb0a97": {
   "en": "About The {1}",
   "b": "关于{1}",
+  "date": "2026-11-17"
+ },
+ "758c2f0b37e8": {
+  "en": "Radio<x1>Essential</x1><x2>Group frequency is briefed on arrival</x2>",
+  "b": "无线电<x1>必备</x1><x2>团队频率会在抵达时做简报</x2>",
   "date": "2026-11-17"
  },
  "75cf8cea2df4": {
@@ -3479,6 +4234,11 @@
   "tr": "{1}不止全国锦标赛",
   "back": "{1} is more than the national championships",
   "check": "ok"
+ },
+ "76e2442996a5": {
+  "en": "the launch at {1}",
+  "b": "{1}的起飞场",
+  "date": "2026-11-17"
  },
  "76fa8da4c233": {
   "en": "What you want from it",
@@ -3556,6 +4316,16 @@
   "back": "{1} foothill mountain ranges, cloud base {2} to {3} km",
   "check": "ok"
  },
+ "7857067a9a70": {
+  "en": "A paraglider silhouetted against a burning sunset",
+  "b": "一顶滑翔伞在烈焰般的夕阳下的剪影",
+  "date": "2026-11-17"
+ },
+ "78e0341300b4": {
+  "en": "Check what is legal before you pack",
+  "b": "打包前先确认什么是合法的",
+  "date": "2026-11-17"
+ },
  "79602a55c18a": {
   "en": "Pre {1} Kenya",
   "a": "{1}预赛 肯尼亚",
@@ -3566,9 +4336,24 @@
   "back": "{1} Kenya Qualifier",
   "check": "ok"
  },
+ "796cf371aa8f": {
+  "en": "Routine vaccinations up to date<x1>Check with a travel clinic well before you go</x1>",
+  "b": "常规疫苗接种保持在有效期内<x1>出发前很早就向旅行诊所咨询</x1>",
+  "date": "2026-11-17"
+ },
  "797158e5ac6a": {
   "en": "Avoid schools, markets and crowds. Land somewhere remote but reachable by a vehicle. Pack fast with a quick pack sack, then deal with yourself and send your location; repack properly later.",
   "b": "避开学校、集市和人群。降落在偏远但车能到达的地方。用快收袋迅速收伞，然后先处理好自己，并发出你的位置；稍后再好好重新折伞。",
+  "date": "2026-11-17"
+ },
+ "79b5d5ff9924": {
+  "en": "Oct to Nov",
+  "b": "十月至十一月",
+  "date": "2026-11-17"
+ },
+ "79f4108eb122": {
+  "en": "He always tries to fly with some kind of transmitter alongside his reserve, and is open that some of them are not technically legal in India.",
+  "b": "他总是尽量在备份伞旁边带上某种发射设备，并坦率地说，其中有些在印度严格来说并不合法。",
   "date": "2026-11-17"
  },
  "7a8616775e58": {
@@ -3599,6 +4384,11 @@
   "back": "We will walk you through in detail:",
   "check": "ok"
  },
+ "7b2d7c065d6f": {
+  "en": "Photographs at Big face",
+  "b": "Big face 的照片",
+  "date": "2026-11-17"
+ },
  "7b8de0bcc0fa": {
   "en": "Jul, Aug, Sep",
   "a": "七月、八月、九月",
@@ -3616,6 +4406,11 @@
   "tr": "五山之地",
   "back": "Land of five mountains",
   "check": "ok"
+ },
+ "7bcd76a42e82": {
+  "en": "Plug types C, D and M. Bring an adapter.",
+  "b": "插头类型为 C、D 和 M。请带转换插头。",
+  "date": "2026-11-17"
  },
  "7c92ea879110": {
   "en": "<x1>Price</x1>{1}",
@@ -3636,6 +4431,11 @@
   "b": "关于赤道",
   "date": "2026-11-17"
  },
+ "7d0c0edc701e": {
+  "en": "Peak season",
+  "b": "旺季",
+  "date": "2026-11-17"
+ },
  "7d1288ff6d69": {
   "en": "<x1>{1}</x1>km wide",
   "b": "<x1>{1}</x1>km 宽",
@@ -3648,9 +4448,19 @@
   "b": "今日飞行",
   "tr": "今日飞行"
  },
+ "7d5d1f160e27": {
+  "en": "Rule {1}, Before you launch",
+  "b": "第 {1} 条，在起飞场起飞之前",
+  "date": "2026-11-17"
+ },
  "7d6fbeae88b6": {
   "en": "About Maasai country",
   "b": "关于马赛人的土地",
+  "date": "2026-11-17"
+ },
+ "7dea5fc2273d": {
+  "en": "Guiding",
+  "b": "带队",
   "date": "2026-11-17"
  },
  "7defbd15ad35": {
@@ -3740,6 +4550,11 @@
   "b": "CryMeARiviuk在任务{2}之后与Gin {1}并列领先，从任务{3}起独自领先到最后。",
   "tr": "CryMeARiviuk 在任务{2}后与 Gin {1}并列领先，随后从任务{3}起独自领先直到最后。"
  },
+ "7f50a27b7a7c": {
+  "en": "A deposit secures your place and the balance is due {1} days before departure; book later than that and the full price is due when you book. If you then cancel, a termination fee applies: the price less what we save and less anything we recover by reselling your place, and we will show you the working. That is why we push trip cancellation insurance so hard. Full detail in the <x1>booking terms</x1>.",
+  "b": "订金保住你的名额，余款在出发前 {1} 天支付；比这更晚预订，则预订时就要付全款。如果之后取消，要收取解约费：价格减去我们节省的部分，再减去我们转售你的名额收回的部分，我们会向你列出计算过程。这就是我们如此强烈推荐行程取消保险的原因。详情见<x1>预订条款</x1>。",
+  "date": "2026-11-17"
+ },
  "7fa79a289353": {
   "en": "Next leg: Task {1}, Fri {2} <x1>→</x1>",
   "a": "下一站：任务{1}，周五{2} <x1>→</x1>",
@@ -3757,6 +4572,11 @@
   "b": "每一次飞行都是好的飞行，但追求滞空时间会伴随颠簸的空气、强弱不定的热气流，以及比你预想更苛刻的条件。这是旅程的一部分。带着愿意挑战极限的心来，你离开时会对在陌生地形飞行有全新的认识。",
   "date": "2026-11-17"
  },
+ "7fdf4742dcd5": {
+  "en": "{1} Paragliding Tour: Big Mountain Flying",
+  "b": "{1}滑翔伞运动之旅：大山飞行",
+  "date": "2026-11-17"
+ },
  "80242d097f95": {
   "en": "A young volcanic range between Tsavo and Amboseli, with Kilimanjaro on the horizon.",
   "b": "介于 Tsavo 和安博塞利之间的一道年轻的火山山脉，地平线上是乞力马扎罗山。",
@@ -3765,6 +4585,21 @@
  "8054fdc78f51": {
   "en": "Chapter {1} of {2}: Rift Valley National Park",
   "b": "第{1}章，共{2}章：Rift Valley National Park",
+  "date": "2026-11-17"
+ },
+ "80d8db7ad9bc": {
+  "en": "Reset view",
+  "b": "重置视角",
+  "date": "2026-11-17"
+ },
+ "80df020f130a": {
+  "en": "The {1} from above {2}: the launch at {3} on its ridge, the snow of the back ranges behind, rendered from open terrain data",
+  "b": "从{2}上空看{1}：山脊上的{3}起飞场，身后是后山的积雪，由开放地形数据渲染而成",
+  "date": "2026-11-17"
+ },
+ "814e308f50c9": {
+  "en": "Two pilots with paraglider rucksacks climbing a forest trail",
+  "b": "两名背着滑翔伞背包的飞行员正攀登森林小径",
   "date": "2026-11-17"
  },
  "81fc9e32c315": {
@@ -3812,6 +4647,11 @@
   "tr": "预约通话",
   "back": "Book a call",
   "check": "ok"
+ },
+ "828f36ffea25": {
+  "en": "{1} front range, above {2}",
+  "b": "{1}前山脉，{2}上方",
+  "date": "2026-11-17"
  },
  "82bf4b32c770": {
   "en": "What Makes {1} Unique?",
@@ -3867,6 +4707,11 @@
   "tr": "日期",
   "back": "Date",
   "check": "ok"
+ },
+ "8459673322ba": {
+  "en": "A {1}-day guided paragliding tour from {2} in the Indian Himalaya. Four departures in {3}, in April, May, October and November, {4}, for pilots rated {5} {6}.",
+  "b": "从{2}出发、在印度喜马拉雅举行的 {1} 天滑翔伞运动带队之旅。{3}年共四个出发班次，分别在四月、五月、十月和十一月，{4}，适合 {5} {6} 级飞行员。",
+  "date": "2026-11-17"
  },
  "848c070ccdec": {
   "en": "See {1}, {2} photos and the highlights film",
@@ -3929,6 +4774,16 @@
   "b": "在偏远地区，你会露营，或者住在别人家里。脱鞋，洗脚，夸赞饭菜，并按主人的安排，跟着他的指引决定该和谁说话。悄悄地付钱，通常是付给操持家务的女主人，大约是标准酒店价格的一半。",
   "date": "2026-11-17"
  },
+ "854bf7312a8e": {
+  "en": "then turn for {1} with the light going.",
+  "b": "然后趁天光渐暗，转向{1}返航。",
+  "date": "2026-11-17"
+ },
+ "854f541115b8": {
+  "en": "Tell someone your plan",
+  "b": "把你的计划告诉别人",
+  "date": "2026-11-17"
+ },
  "8557d608fedc": {
   "en": "Ivelin Kalushkov",
   "a": "Ivelin Kalushkov",
@@ -3979,6 +4834,16 @@
   "b": "{1} {2}，任务{3}",
   "tr": "{1} {2}，任务{3}"
  },
+ "871fa918ae6f": {
+  "en": "Front range cloudbase",
+  "b": "前山脉云底",
+  "date": "2026-11-17"
+ },
+ "8722c7c833e1": {
+  "en": "Rule {1}, In the thermal",
+  "b": "第 {1} 条，在热气流里",
+  "date": "2026-11-17"
+ },
  "873c7db571ef": {
   "en": "Fly",
   "b": "飞行",
@@ -4002,6 +4867,16 @@
   "back": "The {1} hills",
   "check": "ok"
  },
+ "87a929833147": {
+  "en": "Gurpreet Dhindsa",
+  "b": "Gurpreet Dhindsa",
+  "date": "2026-11-17"
+ },
+ "87adc7be1e31": {
+  "en": "Dozens of paragliders thermalling together under grey cloud",
+  "b": "几十顶滑翔伞在灰色云层下一起盘旋上升",
+  "date": "2026-11-17"
+ },
  "87fe14c031dc": {
   "en": "Flight Safety, First and Always",
   "a": "飞行安全，永远第一",
@@ -4010,6 +4885,11 @@
   "tr": "飞行安全，永远第一",
   "back": "Flight safety, always first",
   "check": "ok"
+ },
+ "88117a79eb9c": {
+  "en": "{1}-{2}<x1>KM</x1>",
+  "b": "{1}-{2}<x1>公里</x1>",
+  "date": "2026-11-17"
  },
  "88146531f301": {
   "en": "Urs Haari",
@@ -4032,6 +4912,11 @@
  "88c0bbe809a6": {
   "en": "Globally known as a hotbed of archaeological discoveries contributing to the story of human evolution, Kenya offers much more than just world class safaris, Flying a paraglider in cradle of humankind allows you to soar over majestic landscapes with rich culture and awe inspiring scenery, Chase the World Speed Records in {1} or endless adventures while crossing the equator from above. This tropical paradise delivers like no other flying destination known to humankind",
   "b": "肯尼亚作为考古发现的温床闻名于世，这些发现不断充实着人类演化的故事，它给你的远不止世界级的野生动物狩猎。在人类的摇篮里飞滑翔伞，让你翱翔在风光壮丽、文化深厚、景色令人惊叹的土地之上，在{1}追逐世界速度纪录，或是从空中越过赤道，开始无穷无尽的冒险。这片热带乐土带来的体验，是人类所知的其他飞行目的地无法给予的",
+  "date": "2026-11-17"
+ },
+ "88d03328d24e": {
+  "en": "The cricket ground at Dharamshala",
+  "b": "Dharamshala 的板球场",
   "date": "2026-11-17"
  },
  "892e4b4de5b1": {
@@ -4070,6 +4955,11 @@
   "b": "总成绩",
   "tr": "总成绩"
  },
+ "8aca5f0add2c": {
+  "en": "The {1} landing is big, grassy and busy, which is exactly why people get hurt on it. Land out anywhere else and the main hazards become terraces and power lines, which show up late: keep looking until your feet are on the ground.",
+  "b": "{1}的降落场又大又平，满是草，也很繁忙，这正是人们在那里受伤的原因。如果在其他地方降落，主要的危险就变成梯田和电线，它们出现得晚：一直看到双脚落地为止。",
+  "date": "2026-11-17"
+ },
  "8aee973f0fe6": {
   "en": "Next photograph",
   "b": "下一张照片",
@@ -4107,6 +4997,11 @@
   "back": "<x1></x1>All other episodes",
   "check": "ok"
  },
+ "8bd912b3d34e": {
+  "en": "A single wing high above a snow-streaked peak",
+  "b": "一顶孤零零的伞翼高高飞在积雪斑驳的山峰上方",
+  "date": "2026-11-17"
+ },
  "8c007e7c9250": {
   "en": "Sunscreen and sunglasses",
   "b": "防晒霜和太阳镜",
@@ -4131,6 +5026,11 @@
   "b": "疟疾预防药<x1>旱季海拔{1}m 以上风险较低。可在当地购买</x1>",
   "date": "2026-11-17"
  },
+ "8c144a744a01": {
+  "en": "The front range is forgiving; the traffic is not. Bring gear you can relax on.",
+  "b": "前山脉很宽容；空中交通不宽容。带上你能放松驾驭的装备。",
+  "date": "2026-11-17"
+ },
  "8c208e902d7b": {
   "en": "Pepper spray<x1>Against dogs or wild animals</x1>",
   "b": "防狼喷雾<x1>防狗或野生动物</x1>",
@@ -4153,6 +5053,11 @@
   "tr": "你的赛事",
   "back": "Your event",
   "check": "ok"
+ },
+ "8d5959f220c4": {
+  "en": "The ground is open {1} m terrain data (AWS Terrain Tiles, Mapzen Terrarium, from SRTM and other open sources) drawn live as relief, flown by the scroll or moved by hand; the pins are the {2} waypoints pilots fly with (Indian {3} League) and the towns are placed from GeoNames (CC BY {4}). A photograph marked near is placed from its caption, not from a fix. The flights drawn are real tracklogs scored by the XContest rules: the distance is the scored route, the dashed line is that route, and the average speed is the scored distance over the time in the air. The landmark photographs are from Wikimedia Commons, each named with its author and licence where it appears.",
+  "b": "地面是开放的 {1} 米地形数据（AWS Terrain Tiles、Mapzen Terrarium，来自 SRTM 及其他开放来源），实时绘制成地形起伏，可由滚动页面带着飞行，也可手动移动；图钉是飞行员使用的 {2} 航点（印度 {3} 联赛），城镇位置来自 GeoNames（CC BY {4}）。标为“靠近”的照片，位置依据图注推定，并非来自定位。所绘的飞行是真实的轨迹记录，按 XContest 规则计分：距离是计分航线的距离，虚线就是这条航线，平均速度是计分距离除以空中时间。地标照片来自 Wikimedia Commons，在出现的地方都注明了作者和许可协议。",
+  "date": "2026-11-17"
  },
  "8d63dacc2634": {
   "en": "Enquire | {1}",
@@ -4199,6 +5104,11 @@
   "tr": "已复制",
   "back": "Copied",
   "check": "ok"
+ },
+ "8eb6e5c6b057": {
+  "en": "Hindi and English",
+  "b": "印地语和英语",
+  "date": "2026-11-17"
  },
  "8eb7fbc28c79": {
   "en": "A yellow paraglider on a long glide over arid rock outcrops in low golden light",
@@ -4254,6 +5164,11 @@
   "b": "跑者从天一亮就在伊滕的公路和跑道上训练，海拔{1} m。自{2} Brother Colm O'Connell 开始在 St Patrick's High School 执教以来，运动员就大批在这里训练。",
   "date": "2026-11-17"
  },
+ "8ffb91216573": {
+  "en": "Founder, {1}",
+  "b": "创始人，{1}",
+  "date": "2026-11-17"
+ },
  "902c91d94e0f": {
   "en": "Legal",
   "a": "法律",
@@ -4262,6 +5177,31 @@
   "tr": "法律",
   "back": "Legal",
   "check": "ok"
+ },
+ "905401b945ce": {
+  "en": "{1}'s own {2} footage, three seconds along the {3}. The scroll moves it forward and back. Nothing plays on its own.",
+  "b": "{1}自己拍摄的{2}画面，沿着{3}推进三秒。滚动页面即可前进和后退。没有任何内容会自动播放。",
+  "date": "2026-11-17"
+ },
+ "905e6faa15df": {
+  "en": "India Travel Essentials",
+  "b": "印度出行要点",
+  "date": "2026-11-17"
+ },
+ "909cf57e8a8c": {
+  "en": "{1} has a reputation as the easy Himalaya, and in the air it mostly earns it. What catches pilots out is everything around the flying: a nil-wind launch with a queue behind you, a house thermal full of wings, and a long approach into a busy landing field.",
+  "b": "{1}以“容易的喜马拉雅”著称，在空中它大体上名副其实。让飞行员栽跟头的是飞行之外的一切：身后排着队、在起飞场上无风起飞，满是伞翼的常用热气流，以及进入繁忙降落场的长长进场。",
+  "date": "2026-11-17"
+ },
+ "90eeb1008380": {
+  "en": "Following",
+  "b": "跟飞",
+  "date": "2026-11-17"
+ },
+ "910927eaf554": {
+  "en": "The traffic",
+  "b": "空中交通",
+  "date": "2026-11-17"
  },
  "919a69cdc726": {
   "en": "Know Before You Go",
@@ -4273,6 +5213,11 @@
   "b": "向左转",
   "date": "2026-11-17"
  },
+ "9224e4142eff": {
+  "en": "<x1>The back ranges</x1>Snow-covered back ranges seen from the air<x2>near Mills peak</x2>",
+  "b": "<x1>后山山脉</x1>空中俯瞰积雪覆盖的后山山脉<x2>靠近 Mills peak</x2>",
+  "date": "2026-11-17"
+ },
  "92711617537f": {
   "en": "Copy this link",
   "a": "复制此链接",
@@ -4281,6 +5226,16 @@
   "tr": "复制此链接",
   "back": "Copy this link",
   "check": "ok"
+ },
+ "929a28d26142": {
+  "en": "Guides",
+  "b": "向导",
+  "date": "2026-11-17"
+ },
+ "92ae51cdbaca": {
+  "en": "West, then east<x1>{1} km</x1>",
+  "b": "先向西，再向东<x1>{1} 公里</x1>",
+  "date": "2026-11-17"
  },
  "92ed2c1f2504": {
   "en": "Keep scrolling",
@@ -4301,6 +5256,16 @@
   "back": "God of the sky",
   "check": "ok"
  },
+ "93319b00d899": {
+  "en": "Cloudbase",
+  "b": "云底",
+  "date": "2026-11-17"
+ },
+ "934e1f595485": {
+  "en": "Navigating India: Eddie Colfox",
+  "b": "领航印度：Eddie Colfox",
+  "date": "2026-11-17"
+ },
  "937b623db8c1": {
   "en": "The old rule is that it is better to say sorry than to ask permission, and paragliding is not explicitly illegal where the law does not describe it at all. That logic runs out in tense regions, where being arrested is a real outcome and official permission saves a great deal of time.",
   "b": "老规矩是，道歉比请求许可更好，而在法律完全没有描述的地方，滑翔伞运动并不明确违法。这套逻辑在局势紧张的地区行不通，那里被拘留是实实在在的后果，官方许可能省下大量时间。",
@@ -4315,6 +5280,21 @@
   "back": "I agree that {1} may use this information to reply to my enquiry. I understand that <x1>if I do not end up booking</x1><x2>if no coverage agreement is reached</x2>, this information is kept for at most {2} months, will not be sold or shared for marketing purposes, and I may ask for it to be deleted at any time. See the <x3>privacy policy</x3> for details.",
   "check": "ok"
  },
+ "93a2ed6c863d": {
+  "en": "Join on the outside, take the established direction, and leave room. The mid-airs Jigish Gohil describes came from pilots turning the wrong way, bunching up, or not watching where they were going.",
+  "b": "从外侧加入，沿用已有的盘旋方向，并留出空间。Jigish Gohil 所描述的空中相撞，都源于飞行员转错方向、挤成一团，或没有留意自己飞向哪里。",
+  "date": "2026-11-17"
+ },
+ "942b23322e83": {
+  "en": "{1} to {2} km on the front range,",
+  "b": "在前山脉上飞 {1} 至 {2} 公里，",
+  "date": "2026-11-17"
+ },
+ "9445558047ca": {
+  "en": "Wings in the air off the {1} launch, with the valley below",
+  "b": "伞翼从{1}起飞场升空，山谷在下方",
+  "date": "2026-11-17"
+ },
  "94735078de89": {
   "en": "{1}, India",
   "a": "{1}，印度",
@@ -4323,6 +5303,11 @@
   "tr": "{1}，印度",
   "back": "{1}, India",
   "check": "ok"
+ },
+ "94aff4f2511d": {
+  "en": "Big Mountain Flying costs {1} per pilot for the ten days, the same on either departure, guided by {2} and Gurpreet Dhindsa at one guide to every three pilots. The price covers guiding, daily transport up to {3} and back, retrieves and takeoff fees. International flights, your visa and insurance are yours to arrange. All four departures are guaranteed to run.",
+  "b": "大山飞行每位飞行员十天费用为{1}，两个出发班次相同，由{2}和 Gurpreet Dhindsa 带队，每三名飞行员配一名向导。费用包含带队、每日往返{3}的交通、回收和起飞场费用。国际机票、签证和保险由你自己安排。四个出发班次都保证成行。",
+  "date": "2026-11-17"
  },
  "9522e6ae627c": {
   "en": "Spare lines",
@@ -4356,6 +5341,11 @@
  "95e408508963": {
   "en": "Springs in Tsavo West fed by rain that fell on the Chyulu Hills and filtered through their lava, pouring out clear enough to watch hippo and crocodile from an underwater hide.",
   "b": "Tsavo West 的泉水，由落在 Chyulu Hills 上并经熔岩过滤的雨水补给，涌出的水清澈到可以从水下观察室里看河马和鳄鱼。",
+  "date": "2026-11-17"
+ },
+ "95f216507e08": {
+  "en": "<x1>Tibetan monastery</x1>A Tibetan monastery with prayer flags against a blue sky",
+  "b": "<x1>藏传佛教寺院</x1>一座藏传佛教寺院，经幡飘在蓝天下",
   "date": "2026-11-17"
  },
  "95f48d8b7a34": {
@@ -4415,9 +5405,19 @@
   "back": "{1}: paragliding on the {2} plateau",
   "check": "ok"
  },
+ "986fdbacb92d": {
+  "en": "Check before you pack. Some satellite communicators are not technically legal in India, and the advice online has not all caught up. Eddie Colfox still counts some form of transmitter as essential safety equipment and says so openly, but the rules are yours to follow. Ask us about your device when you book, so you find out before you travel rather than at customs.",
+  "b": "打包前先确认。有些卫星通信设备在印度严格来说并不合法，网上的说法也没有全部跟上。Eddie Colfox 仍然认为某种发射设备是必不可少的安全装备，并且公开这样说，但规则必须由你自己遵守。预订时请问我们你的设备，这样你在出发前就能知道，而不是到了海关才发现。",
+  "date": "2026-11-17"
+ },
  "9896e4c3ba40": {
   "en": "Land away from crowds",
   "b": "远离人群降落",
+  "date": "2026-11-17"
+ },
+ "98be27b60ffb": {
+  "en": "Most nationalities can use the e-visa, applied for at least {1} days before you arrive. Everyone also files a free online e-Arrival Card in the {2} hours before flying in.",
+  "b": "大多数国籍的人可以使用电子签证，至少在抵达前 {1} 天申请。每个人还需要在飞入前 {2} 小时内在线填写免费的电子入境卡。",
   "date": "2026-11-17"
  },
  "98d8bf8ce4f8": {
@@ -4428,6 +5428,11 @@
  "9906127bc763": {
   "en": "Two Departures, Back To Back",
   "b": "两个出发日，紧挨着",
+  "date": "2026-11-17"
+ },
+ "9921fdc70b22": {
+  "en": "Buff",
+  "b": "Buff 头巾",
   "date": "2026-11-17"
  },
  "997f59bc99b2": {
@@ -4465,6 +5470,16 @@
   "back": "Questions",
   "check": "ok"
  },
+ "9ab81ba94644": {
+  "en": "About Adi Himani Chamunda",
+  "b": "关于 Adi Himani Chamunda",
+  "date": "2026-11-17"
+ },
+ "9abfcfd42602": {
+  "en": "You can choose a landing early and fly a full approach at the end of a long flight.",
+  "b": "你能及早选好降落场，并在长途飞行的最后完整地飞一遍进场。",
+  "date": "2026-11-17"
+ },
  "9ad8943d7c46": {
   "en": "Tell Us About <x1>Your Flying</x1>",
   "a": "说说<x1>你的飞行</x1>",
@@ -4473,6 +5488,11 @@
   "tr": "说说<x1>你的飞行</x1>",
   "back": "Tell us about <x1>your flying</x1>",
   "check": "ok"
+ },
+ "9add0f47b078": {
+  "en": "<x1>The valley floor</x1>Terraced fields, a river and villages seen from the air",
+  "b": "<x1>谷底</x1>梯田、河流和村庄，空中俯瞰",
+  "date": "2026-11-17"
  },
  "9b088a46913a": {
   "en": "A paraglider over a terraced valley below steep cliffs",
@@ -4486,6 +5506,16 @@
  "9b12615d1500": {
   "en": "Hippo spend the day in the water and graze the shore at night; crocodiles bask on the banks. Baringo is fresh where its neighbours are soda, which is why both live here and not at Bogoria.",
   "b": "河马白天泡在水里，夜里上岸吃草；鳄鱼在岸边晒太阳。巴林戈是淡水湖，而周边的湖是苏打湖，这就是为什么它们住在这里，而不是博戈里亚。",
+  "date": "2026-11-17"
+ },
+ "9b61d3ee51c2": {
+  "en": "Palampur, photographed by UnpetitproleX",
+  "b": "Palampur，摄影：UnpetitproleX",
+  "date": "2026-11-17"
+ },
+ "9b8250f1ae3d": {
+  "en": "drag the ground · pinch to come closer · twist to turn · two fingers up or down to tilt",
+  "b": "拖动地面 · 双指捏合靠近 · 扭转旋转 · 双指上下滑动倾斜",
   "date": "2026-11-17"
  },
  "9b90ea85e0a7": {
@@ -4512,6 +5542,11 @@
  "9bda84d781d4": {
   "en": "{1}, {2}<x1>{3} km</x1>",
   "b": "{1}，{2}<x1>{3} km</x1>",
+  "date": "2026-11-17"
+ },
+ "9be70232d54c": {
+  "en": "drag the ground · scroll to come closer · right button to turn and tilt · a ring opens the photographs · a dotted name tells its story",
+  "b": "拖动地面 · 滚动靠近 · 右键旋转和倾斜 · 点开圆环查看照片 · 点虚线名称了解它的故事",
   "date": "2026-11-17"
  },
  "9c30a3485a58": {
@@ -4549,6 +5584,16 @@
   "tr": "填一个季节或大致时间段即可",
   "back": "Just fill in a season or an approximate period",
   "check": "ok"
+ },
+ "9d623a450c42": {
+  "en": "Arrive {1} · eight flying days, {2} · leave {3}",
+  "b": "{1}抵达 · 八个飞行日，{2} · {3}离开",
+  "date": "2026-11-17"
+ },
+ "9e19ce72e6e9": {
+  "en": "The standard day, and the line Eddie Colfox would send a newer pilot on: west along the front range to Dharamshala and home, with big fields to land in and easy retrieves the whole way. In his telling, pilots were already flying it out and back in {1}. <x1>Hear him on it</x1>.",
+  "b": "标准飞行日，也是 Eddie Colfox 会带新手飞行员飞的路线：沿前山脉向西飞到 Dharamshala 再回家，沿途有大片适合降落的田野，回收也容易。据他所说，飞行员早在{1}年就已经在这条线上来回飞了。<x1>听他讲这一段</x1>。",
+  "date": "2026-11-17"
  },
  "9e360d21c3a2": {
   "en": "<x1>From</x1> {1}",
@@ -4588,9 +5633,19 @@
   "back": "The pilot level required for this tour is <x1>{1}</x1>.",
   "check": "ok"
  },
+ "9fb8d40d5ddc": {
+  "en": "About The cricket ground at Dharamshala",
+  "b": "关于 Dharamshala 的板球场",
+  "date": "2026-11-17"
+ },
  "9fca955512fa": {
   "en": "The motorbike crashed the lady. And then who is guilty? The paragliding pilot is guilty.",
   "b": "摩托车撞了那位女士。那么谁有错？滑翔伞运动飞行员有错。",
+  "date": "2026-11-17"
+ },
+ "a0126394c231": {
+  "en": "front range cloudbase",
+  "b": "前山脉云底",
   "date": "2026-11-17"
  },
  "a0390598c54e": {
@@ -4631,6 +5686,11 @@
   "b": "关于肯尼亚山",
   "date": "2026-11-17"
  },
+ "a190ee0c9ddc": {
+  "en": "The pass drops into the Uhl valley at Barot, where a diversion dam was built in {1} for the Shanan hydroelectric scheme opened the following year, one of the first in these hills. The Uhl is known for its trout.",
+  "b": "山口向下通到 Uhl 山谷中的 Barot，那里于{1}年为 Shanan 水电站修建了一座引水坝，水电站次年投入运行，是这片山区最早的水电站之一。Uhl 河以鳟鱼闻名。",
+  "date": "2026-11-17"
+ },
  "a19bbc5b94bd": {
   "en": "Dates set",
   "a": "日期已定",
@@ -4652,14 +5712,29 @@
   "b": "已取消",
   "tr": "已取消"
  },
+ "a201fecddea5": {
+  "en": "Indian Rupee",
+  "b": "印度卢比",
+  "date": "2026-11-17"
+ },
  "a22032bce602": {
   "en": "Helmet<x1>Essential</x1>",
   "b": "头盔<x1>必备</x1>",
   "date": "2026-11-17"
  },
+ "a232866143be": {
+  "en": "{1}<x1>Paragliding Tour, {2} Days In The Indian Himalaya</x1>",
+  "b": "{1}<x1>滑翔伞运动之旅，印度喜马拉雅 {2} 天</x1>",
+  "date": "2026-11-17"
+ },
  "a26a08d221ed": {
   "en": "{1} days · from {2}",
   "b": "{1}天 · 从{2}出发",
+  "date": "2026-11-17"
+ },
+ "a2d37ab42f7c": {
+  "en": "The landing field",
+  "b": "降落场",
   "date": "2026-11-17"
  },
  "a30dfffe7898": {
@@ -4686,6 +5761,11 @@
   "tr": "任务日，或大致时间段",
   "back": "Task day, or approximate period [?]",
   "check": "ok"
+ },
+ "a36e72d1143f": {
+  "en": "Photographs: Timothy Gonsalves (CC BY-SA {1}), Timothy Gonsalves (CC BY-SA {2}), via Wikimedia Commons",
+  "b": "照片：Timothy Gonsalves（CC BY-SA {1}），Timothy Gonsalves（CC BY-SA {2}），来自 Wikimedia Commons",
+  "date": "2026-11-17"
  },
  "a370b22ff411": {
   "en": "{1}°T · {2} km from Mount Longonot",
@@ -4715,14 +5795,29 @@
   "b": "任务得分：任务{1} {2}；任务{3} {4}；任务{5} {6}；任务{7} {8}；任务{9} {10}",
   "tr": "各任务得分：任务{1} {2}；任务{3} {4}；任务{5} {6}；任务{7} {8}；任务{9} {10}"
  },
+ "a3976a51faed": {
+  "en": "{1} launches at about {2}m, and cloudbase in season is over {3}m, where it is freezing.",
+  "b": "{1}的起飞场海拔约{2}米，飞行季的云底在{3}米以上，那里是冰冷的。",
+  "date": "2026-11-17"
+ },
  "a3b9261a50cf": {
   "en": "The whole overview: thermals, season, the team, retrieves",
   "b": "完整概览：热气流、季节、团队、回收",
   "date": "2026-11-17"
  },
+ "a3c3f49b6e81": {
+  "en": "{1} is not the place to find out what your new high end wing does in the afternoon. The flying is long rather than difficult, and the pilots who enjoy it are the ones not busy managing their glider.",
+  "b": "{1}不是用来摸清你的新款高端伞翼下午会有什么表现的地方。这里的飞行是长而不是难，享受它的飞行员，是那些没忙着摆弄自己滑翔伞的人。",
+  "date": "2026-11-17"
+ },
  "a41e8703c0fe": {
   "en": "What insurance do I need?",
   "b": "我需要什么保险？",
+  "date": "2026-11-17"
+ },
+ "a4309af7aa85": {
+  "en": "{1} sits at about {2}m and cloudbase goes well over {3}m. Bring gear you trust.",
+  "b": "{1}海拔约 {2} 米，云底远超 {3} 米。带上你信得过的装备。",
   "date": "2026-11-17"
  },
  "a445a0f43bc8": {
@@ -4783,6 +5878,11 @@
   "tr": "探路印度",
   "back": "Pathfinding India",
   "check": "ok"
+ },
+ "a4f67ea665fe": {
+  "en": "Photographs at Palampur",
+  "b": "Palampur 的照片",
+  "date": "2026-11-17"
  },
  "a5051485b537": {
   "en": "Next leg: Task {1}, Thu {2} <x1>→</x1>",
@@ -4847,6 +5947,11 @@
   "b": "观看任务{1}精彩集锦",
   "tr": "观看任务{1}精彩集锦"
  },
+ "a5bb23e58be7": {
+  "en": "{1} In Pictures",
+  "b": "{1}图集",
+  "date": "2026-11-17"
+ },
  "a60504a2a5db": {
   "en": "Himalaya",
   "a": "喜马拉雅",
@@ -4863,6 +5968,11 @@
   "b": "周三{1}",
   "tr": "周三{1}"
  },
+ "a64042530409": {
+  "en": "The Front Ridge, Frame By Frame",
+  "b": "前山脊，逐帧呈现",
+  "date": "2026-11-17"
+ },
  "a6708a3a920a": {
   "en": "On Air: The {1} Podcast",
   "a": "正在播出：{1}播客",
@@ -4872,9 +5982,24 @@
   "back": "Now playing: {1} Podcast",
   "check": "ok"
  },
+ "a6874414ae98": {
+  "en": "In the thermal",
+  "b": "在热气流里",
+  "date": "2026-11-17"
+ },
+ "a6cf2346daf2": {
+  "en": "A pilot flying along the forested front range, snow peaks behind",
+  "b": "一名飞行员沿着树木葱郁的前山脉飞行，身后是雪峰",
+  "date": "2026-11-17"
+ },
  "a6dae249a8db": {
   "en": "{1}°N · {2}°E",
   "b": "北纬{1}° · 东经{2}°",
+  "date": "2026-11-17"
+ },
+ "a6ef4903501b": {
+  "en": "<x1>Hold a place sends an enquiry for that departure.</x1> All four departures are guaranteed to run: we will not cancel any of them for low numbers. What is due when you book is set out in our <x2>booking terms</x2>.",
+  "b": "<x1>“预留名额”会发送该出发班次的咨询。</x1>四个出发班次都保证成行：我们不会因为人数不足取消其中任何一个。预订时需要支付的款项，写在我们的<x2>预订条款</x2>中。",
   "date": "2026-11-17"
  },
  "a72f4ef82a9d": {
@@ -4920,6 +6045,11 @@
   "back": "Kenya",
   "check": "ok"
  },
+ "a860f34a052e": {
+  "en": "The tea town of the Kangra valley. Tea was first planted here in {1}; Kangra tea won medals at exhibitions in the {2} and {3}, the earthquake of {4} set the gardens back, and in {5} it was given a geographical indication of its own.",
+  "b": "Kangra 山谷的茶镇。这里在{1}年首次种茶；Kangra 茶在{2}和{3}的博览会上获奖，{4}年的地震让茶园元气大伤，{5}年它获得了自己的地理标志。",
+  "date": "2026-11-17"
+ },
  "a86847003354": {
   "en": "Flying To Win",
   "a": "为胜利而飞",
@@ -4932,6 +6062,11 @@
  "a8df5c9e0184": {
   "en": "Fly where humankind first walked. Rift Valley's endless skies await.",
   "b": "飞向人类最初行走的地方。大裂谷无尽的天空在等你。",
+  "date": "2026-11-17"
+ },
+ "a8e32b874166": {
+  "en": "Over the back",
+  "b": "翻越后山",
   "date": "2026-11-17"
  },
  "a93c7c5358b0": {
@@ -4954,9 +6089,19 @@
   "b": "拖动地面 · 双指捏合拉近 · 扭转以转向，双指上下滑动以倾斜 · 带点的名字或动物会讲述它的故事",
   "date": "2026-11-17"
  },
+ "aa61c413bd4b": {
+  "en": "<x1>The valley floor</x1>Terraced fields, a river and villages seen from the air<x2>near Baijnath</x2>",
+  "b": "<x1>谷底</x1>梯田、河流和村庄，空中俯瞰<x2>靠近 Baijnath</x2>",
+  "date": "2026-11-17"
+ },
  "aab114f4f77b": {
   "en": "{1}-{2}<x1>M/S</x1>",
   "b": "{1}-{2}<x1>M/S</x1>",
+  "date": "2026-11-17"
+ },
+ "aae454b44918": {
+  "en": "You can launch cleanly in nil wind, without help from the breeze.",
+  "b": "你能在起飞场上于无风时干净利落地起飞，不需要风来帮忙。",
   "date": "2026-11-17"
  },
  "aaef248a0c4e": {
@@ -5054,6 +6199,11 @@
   "b": "不管你降落在哪里，总有个骑摩托车的人过来，提出载你一程。我们希望人们能从中受益，能从中赚到一些钱。",
   "date": "2026-11-17"
  },
+ "ad76c9cfcd87": {
+  "en": "You want big mountain flying with a forgiving front range to learn it on.",
+  "b": "你想要大山飞行，并且想在一条宽容的前山脉上学习它。",
+  "date": "2026-11-17"
+ },
  "ad89087a3db0": {
   "en": "Airspace over the site",
   "a": "场地上空的空域",
@@ -5086,6 +6236,11 @@
   "b": "河马白天泡在清澈的水潭里，它们的粪便养活了靠它为生的鱼，纪录片导演 Alan 和 Joan Root 曾在这里的水下追踪过这条食物链。",
   "date": "2026-11-17"
  },
+ "addc5623cf16": {
+  "en": "East, the bigger day",
+  "b": "向东，更大的一天",
+  "date": "2026-11-17"
+ },
  "aee92f3275ab": {
   "en": "Cancelled (weather)",
   "a": "已取消（天气）",
@@ -5103,6 +6258,21 @@
  "afa5447f32f6": {
   "en": "Travel insurance covering paragliding at altitudes up to {1}m. It must include helicopter rescue for retrieves from remote regions, and medical evacuation and treatment covering local hospitals plus international repatriation.",
   "b": "涵盖海拔最高{1}m 滑翔伞运动的旅行保险。必须包括从偏远地区回收所需的直升机救援，以及涵盖本地医院的医疗后送和治疗，外加国际遣返。",
+  "date": "2026-11-17"
+ },
+ "afd25e00491c": {
+  "en": "Fly into Delhi, then take a domestic flight to Dharamshala, listed as Kangra or Gaggal, and a taxi of about two hours to {1}. Jigish Gohil, who lives in {2}, rates the overnight Volvo bus from Delhi as the cheapest and easiest option, with seats that recline far enough to sleep. Chandigarh and Amritsar airports work too, with a longer drive at the end.",
+  "b": "飞到 Delhi，再搭国内航班到 Dharamshala（机场名为 Kangra 或 Gaggal），然后乘约两小时的出租车到{1}。住在{2}的 Jigish Gohil 认为，Delhi 出发的夜间沃尔沃大巴最便宜也最省事，座椅能放倒到足以睡觉。Chandigarh 和 Amritsar 机场也行，只是最后的车程更长。",
+  "date": "2026-11-17"
+ },
+ "b001a38ef05c": {
+  "en": "Read the nine rules",
+  "b": "阅读这九条规则",
+  "date": "2026-11-17"
+ },
+ "b02f66a25755": {
+  "en": "Photographs at {1} landing",
+  "b": "{1}降落场的照片",
   "date": "2026-11-17"
  },
  "b06613236072": {
@@ -5149,6 +6319,11 @@
   "back": "Will Gadd",
   "check": "ok"
  },
+ "b1c6b6f015a6": {
+  "en": "Expect company, and a lot of it",
+  "b": "预料到会有人，而且很多",
+  "date": "2026-11-17"
+ },
  "b1dd7cc0fd62": {
   "en": "You fly",
   "a": "你将飞",
@@ -5159,6 +6334,11 @@
   "back": "You will fly over",
   "check": "ok"
  },
+ "b21764021696": {
+  "en": "What gets pilots hurt",
+  "b": "飞行员是怎么受伤的",
+  "date": "2026-11-17"
+ },
  "b21d43b2b6c9": {
   "en": "Not ready to enquire?",
   "a": "还没准备好咨询？",
@@ -5167,6 +6347,11 @@
   "tr": "还没准备好咨询？",
   "back": "Not ready to enquire?",
   "check": "ok"
+ },
+ "b26ae670d84e": {
+  "en": "Big Mountain Flying is built for autonomous pilots who want the Himalaya at its most approachable, and who are happy to share the sky to get it.",
+  "b": "大山飞行是为自主飞行的飞行员设计的，他们想以最容易接近的方式体验喜马拉雅，并且愿意与他人共享天空。",
+  "date": "2026-11-17"
  },
  "b2d43dc84d9f": {
   "en": "Zebra",
@@ -5181,6 +6366,11 @@
  "b37554f695b1": {
   "en": "People",
   "b": "人",
+  "date": "2026-11-17"
+ },
+ "b3d45b8056fb": {
+  "en": "Tell your friends your plan for the day, fly with a mate if you can, carry some form of tracking, and let people know when you have landed in the evening.",
+  "b": "把你当天的计划告诉朋友，可以的话和同伴一起飞，随身带某种形式的追踪设备，并在晚上让大家知道你已经降落。",
   "date": "2026-11-17"
  },
  "b3f77216d90d": {
@@ -5267,6 +6457,11 @@
   "b": "<x1>{1}</x1>分",
   "tr": "<x1>{1}</x1>分"
  },
+ "b576d7b9af50": {
+  "en": "<x1>{1} landing</x1>{2}'s landing field among terraced fields, seen from the air<x2>at {3} landing</x2>",
+  "b": "<x1>{1}降落场</x1>{2}的降落场，梯田之间，空中俯瞰<x2>在{3}降落场</x2>",
+  "date": "2026-11-17"
+ },
  "b5a8b51eaebe": {
   "en": "When you are asked for money",
   "b": "当有人向你要钱",
@@ -5288,9 +6483,19 @@
   "b": "{1}，{2}，墨西哥，{3}：按任务分类的全部照片，可免费保存。摄影：{4}，{5}。",
   "tr": "{1}，{2}，墨西哥，{3}：按任务整理的全部照片，可免费保存。摄影：{4}，{5}。"
  },
+ "b61fb75dd022": {
+  "en": "Leave the house thermal as soon as you have the height for the next knob. The front range works for tens of kilometres either way, so there is no need to stay in the crowd.",
+  "b": "一旦有了足够高度去飞下一个山包，就离开常用热气流。前山脉向两侧延伸数十公里都能飞，所以没必要待在人群里。",
+  "date": "2026-11-17"
+ },
  "b6372ea590b5": {
   "en": "Rule {1}, Landing protocol",
   "b": "第{1}条，降落场规范",
+  "date": "2026-11-17"
+ },
+ "b63b356ef3f6": {
+  "en": "The front range",
+  "b": "前山脉",
   "date": "2026-11-17"
  },
  "b69f947334e6": {
@@ -5311,6 +6516,11 @@
   "tr": "{1}个章节",
   "back": "{1} chapters",
   "check": "ok"
+ },
+ "b7339a5cc89c": {
+  "en": "The cloud",
+  "b": "云",
+  "date": "2026-11-17"
  },
  "b7bee045feb2": {
   "en": "The balance you have to strike",
@@ -5340,6 +6550,11 @@
   "back": "Episode library",
   "check": "ok"
  },
+ "b87728ed34b0": {
+  "en": "Hundreds of wings in the same easy air, and a long approach into a busy field.",
+  "b": "数百顶伞翼挤在同一片平稳的空气里，还有进入繁忙降落场的长长进场。",
+  "date": "2026-11-17"
+ },
  "b8ee2c93e7a7": {
   "en": "About Mzima Springs",
   "b": "关于 Mzima Springs",
@@ -5364,6 +6579,11 @@
   "tr": "视频",
   "tr_note": "film = 视频"
  },
+ "b9dc856371d4": {
+  "en": "How crowded is {1} in October?",
+  "b": "十月的{1}有多拥挤？",
+  "date": "2026-11-17"
+ },
  "b9fd62dddd28": {
   "en": "Next one starts today",
   "a": "下一团今天出发",
@@ -5372,6 +6592,16 @@
   "tr": "下一团今天出发",
   "back": "The next group departs today",
   "check": "ok"
+ },
+ "ba162336edbb": {
+  "en": "Probiotic",
+  "b": "益生菌",
+  "date": "2026-11-17"
+ },
+ "ba18f22936f8": {
+  "en": "Vario or {1}<x1>Load the airspace and waypoints before you travel</x1>",
+  "b": "垂直速度表或{1}<x1>出发前先加载空域和航点</x1>",
+  "date": "2026-11-17"
  },
  "ba9e2565bdc8": {
   "en": "Booking open, {1} places",
@@ -5475,6 +6705,11 @@
   "back": "Ready to touch the sky with glory?",
   "check": "ok"
  },
+ "bccf5526150a": {
+  "en": "Photographs at Mills peak",
+  "b": "Mills peak 的照片",
+  "date": "2026-11-17"
+ },
  "bce06414177f": {
   "en": "Search",
   "a": "搜索",
@@ -5493,9 +6728,19 @@
   "back": "Whether you are a pilot with {1} hours of flying, moving toward your first {2} hours, or a seasoned sky veteran chasing the next world record, we focus on turning your ambition into flying time. This relaxed preliminary call, with no expectations of any kind, uses frank conversation to help you sort out the various unknowns.",
   "check": "ok"
  },
+ "bd0cf756a0ec": {
+  "en": "Not the best equipment, he says, but good equipment you feel at ease on: a wing calm enough that you would happily take a photo while flying it.",
+  "b": "他说，不是最好的装备，而是你用着自在的好装备：一顶足够平和、让你飞行时乐意拍张照的伞翼。",
+  "date": "2026-11-17"
+ },
  "bd169b66541a": {
   "en": "You want a fixed timetable. The plan follows the conditions, not the other way round.",
   "b": "你想要固定的时间表。计划跟着条件走，而不是反过来。",
+  "date": "2026-11-17"
+ },
+ "bd2490da7c01": {
+  "en": "In from {1} km wide over the Kangra valley, down to {2}, west along the front to Dharamshala, back east to {3}, and up over the back. The scroll flies it, or take the controls and go where you like.",
+  "b": "从宽 {1} 公里的 Kangra 山谷上空切入，下到{2}，沿前山向西飞往 Dharamshala，再向东飞回 {3}，然后翻越后山。滚动页面即可飞行，也可以自己接管操控，想去哪就去哪。",
   "date": "2026-11-17"
  },
  "bd4b21058f4b": {
@@ -5520,6 +6765,11 @@
   "back": "Eddie Colfox",
   "check": "ok"
  },
+ "bdae7162bc82": {
+  "en": "Unlocked phone<x1>So you can run a local SIM</x1>",
+  "b": "解锁的手机<x1>这样你就能用当地 SIM 卡</x1>",
+  "date": "2026-11-17"
+ },
  "bdcf005b19ce": {
   "en": "Luc Armant",
   "a": "Luc Armant",
@@ -5541,6 +6791,11 @@
  "bdfd795ddbf5": {
   "en": "chase thermals over the flatlands,",
   "b": "在平原上空追逐热气流，",
+  "date": "2026-11-17"
+ },
+ "be5602376409": {
+  "en": "Warm in the valley, properly cold at {1}m. Both on the same day, every day.",
+  "b": "山谷里温暖，在{1}米处则冷得彻骨。每天，同一天里两者兼有。",
   "date": "2026-11-17"
  },
  "bead0a998f90": {
@@ -5566,9 +6821,19 @@
   "back": ", steppe, planned for {1}",
   "check": "ok"
  },
+ "befde54a108c": {
+  "en": "Apr",
+  "b": "四月",
+  "date": "2026-11-17"
+ },
  "bfa7440fe011": {
   "en": "What you see",
   "b": "你看到的",
+  "date": "2026-11-17"
+ },
+ "c0044806d148": {
+  "en": "Sky Is Not The Limit",
+  "b": "天空不是极限",
   "date": "2026-11-17"
  },
  "c0dc82cdf7c1": {
@@ -5604,6 +6869,11 @@
   "b": "沿 Elgeyo 断崖北段，Marakwet 人几个世纪以来一直靠沿悬崖开凿的引水渠灌溉谷底，这套系统至今仍在使用，仍由各氏族管理。",
   "date": "2026-11-17"
  },
+ "c290b21f5931": {
+  "en": "A Tibetan monastery with prayer flags against a blue sky",
+  "b": "一座藏传佛教寺院，经幡飘在蓝天下",
+  "date": "2026-11-17"
+ },
  "c2ab77b0ff29": {
   "en": "The height",
   "a": "高度",
@@ -5612,6 +6882,11 @@
   "tr": "高度",
   "back": "Altitude",
   "check": "ok"
+ },
+ "c2c0295fe4e8": {
+  "en": "About Chauntra monastery",
+  "b": "关于 Chauntra 寺院",
+  "date": "2026-11-17"
  },
  "c2c1fe4f4307": {
   "en": "Out and return",
@@ -5641,6 +6916,11 @@
   "b": "KES。现金使用很广，ATM 只有大城镇才常见，Mpesa 是首选的数字钱包。",
   "date": "2026-11-17"
  },
+ "c344423e7a48": {
+  "en": "The {1} landing field under big cumulus, snow peaks behind, one wing coming in",
+  "b": "{1}降落场在大积云下，身后是雪峰，一顶伞翼正在进场",
+  "date": "2026-11-17"
+ },
  "c36774158ae7": {
   "en": "Registered in Norway",
   "a": "在挪威注册",
@@ -5653,6 +6933,11 @@
  "c38add4244e0": {
   "en": "Hiring porters is usually welcome. In some communities men will not take portering work, and offering a guiding or security role instead is the respectful move rather than pressing the point.",
   "b": "雇用搬运工通常受欢迎。在一些社区，男人不做搬运工作，这时改为提出让他们担任向导或安保，才是尊重的做法，而不是硬要坚持。",
+  "date": "2026-11-17"
+ },
+ "c43856cd1a2a": {
+  "en": "Photographs: Nerdandnutella (CC BY-SA {1}), UnpetitproleX (CC BY-SA {2}), via Wikimedia Commons",
+  "b": "照片：Nerdandnutella（CC BY-SA {1}），UnpetitproleX（CC BY-SA {2}），来自 Wikimedia Commons",
   "date": "2026-11-17"
  },
  "c462e14b0fcf": {
@@ -5668,6 +6953,11 @@
   "tr": "为什么不同季节风力不同",
   "back": "Why the wind differs in different seasons",
   "check": "ok"
+ },
+ "c4a20321d7f8": {
+  "en": "One launch, one landing field, and a front range that works for tens of kilometres either way. The tour follows the conditions rather than a schedule; these are the shapes the days tend to take.",
+  "b": "一个起飞场，一块降落场，还有一条向两侧延伸数十公里都能飞的前山脉。行程跟着天气条件走，而不是照日程表；以下是飞行日常见的几种形态。",
+  "date": "2026-11-17"
  },
  "c4ba0822462e": {
   "en": "Mar",
@@ -5686,6 +6976,21 @@
   "tr": "收听",
   "back": "Listen",
   "check": "ok"
+ },
+ "c576b4350288": {
+  "en": "Say where you are going and who you are going with, every day, before you take off. Then close the loop in the evening. Most of what goes wrong here is survivable; being missing for six hours before anyone notices is what turns it into a rescue.",
+  "b": "每天起飞前，说清楚你要去哪里、和谁一起去。然后在晚上把这件事收尾。这里出的大多数状况都能挺过去；真正让它变成救援的，是失踪六个小时都没人发觉。",
+  "date": "2026-11-17"
+ },
+ "c57971fe943d": {
+  "en": "Along The Front Range",
+  "b": "沿着前山脉",
+  "date": "2026-11-17"
+ },
+ "c59dd90945a1": {
+  "en": "Rule {1}, Following",
+  "b": "第 {1} 条，跟飞",
+  "date": "2026-11-17"
  },
  "c6090c736ae3": {
   "en": "Rehydration salts",
@@ -5842,6 +7147,11 @@
   "b": "方位{1}° · 距 Rift Valley NP {2} km",
   "date": "2026-11-17"
  },
+ "c7c6c8cc021f": {
+  "en": "Over {1}",
+  "a": "超过{1}",
+  "date": "2026-11-17"
+ },
  "c84812cadbc7": {
   "en": "Swahili and English",
   "b": "斯瓦希里语和英语",
@@ -5882,6 +7192,11 @@
   "back": "If your device has no email app set up, the button will prompt you, and you can copy the text or use {1} instead.",
   "check": "ok"
  },
+ "c8f217c9b96b": {
+  "en": "The ten that come up every time. If yours is not here, ask it on the call. More on {1} from our guests in <x1>Flying Abroad</x1>, in the knowledge base.",
+  "b": "每次都会被问到的十个问题。如果你的问题不在其中，通话时问我们。想了解更多来自我们客人的{1}内容，请看知识库里的<x1>出国飞行</x1>。",
+  "date": "2026-11-17"
+ },
  "c93354d871a6": {
   "en": "Pilot rating",
   "a": "飞行员等级",
@@ -5891,6 +7206,11 @@
   "back": "Pilot level",
   "check": "ok"
  },
+ "c934b0e6a158": {
+  "en": "What equipment do I need to bring?",
+  "b": "我需要带什么装备？",
+  "date": "2026-11-17"
+ },
  "c94930a168ff": {
   "en": "Episode {1}",
   "a": "第{1}集",
@@ -5899,6 +7219,11 @@
   "tr": "第{1}集",
   "back": "Episode {1}",
   "check": "ok"
+ },
+ "c94f479833c5": {
+  "en": "May",
+  "b": "五月",
+  "date": "2026-11-17"
  },
  "c9a314a710f6": {
   "en": "Small groups, fixed dates. Prices are per pilot.",
@@ -5935,6 +7260,26 @@
  "ca55e22e0546": {
   "en": "Before you go",
   "b": "出发之前",
+  "date": "2026-11-17"
+ },
+ "ca9d8ea87c29": {
+  "en": "Flying {1} In Company, And How To Do It Well <x1>DIY</x1>",
+  "b": "在{1}与人同飞，以及如何飞好 <x1>自助</x1>",
+  "date": "2026-11-17"
+ },
+ "cad1252c1c19": {
+  "en": "{1} places",
+  "b": "{1} 个名额",
+  "date": "2026-11-17"
+ },
+ "cafcb789895f": {
+  "en": "The wing you bring",
+  "b": "你带去的伞翼",
+  "date": "2026-11-17"
+ },
+ "cb25f915cf2a": {
+  "en": "Travel insurance that covers paragliding in India to at least {1}m, including rescue, medical treatment and repatriation. Check with your insurer before you come that it actually pays out there, because claims from India can be slow and complicated. In our episode with Jigish Gohil, an insured pilot who crashed about {2} km from launch still waited until the next day for the helicopter.",
+  "b": "旅行保险需覆盖在印度至少{1}米高度的滑翔伞运动，包括救援、医疗和遣返。来之前请向保险公司确认它在那里确实会赔付，因为来自印度的理赔可能缓慢而复杂。在我们与 Jigish Gohil 的那一集里，一位投了保的飞行员在距起飞场约 {2} 公里处坠落，仍然等到第二天才等来直升机。",
   "date": "2026-11-17"
  },
  "cb9f9f47293f": {
@@ -5975,6 +7320,11 @@
   "date": "2026-11-17",
   "b": "练习日照片，按拍摄顺序",
   "tr": "练习日照片，按拍摄顺序"
+ },
+ "cc572603a76b": {
+  "en": "Eddie Colfox, paraphrased <x1>India episode, {1}</x1>",
+  "b": "Eddie Colfox，转述 <x1>印度一集，{1}</x1>",
+  "date": "2026-11-17"
  },
  "cc82c26f3d75": {
   "en": "Rift Valley's Endless Skies Await",
@@ -6039,9 +7389,29 @@
   "back": "We will explain to you in detail",
   "check": "ok"
  },
+ "cdd531df5ad2": {
+  "en": "How much does the {1} paragliding tour cost?",
+  "b": "{1}滑翔伞运动之旅费用是多少？",
+  "date": "2026-11-17"
+ },
+ "ce00db7e7a69": {
+  "en": "{1} {2} or equivalent, the same as our Kenya tour, and you should be flying autonomously: launching, thermalling, deciding and landing on your own. Above all, practise nil-wind launches before you come, because {3} rarely gives you help from the breeze. Eddie Colfox counts a {4} to {5} hour pilot as still a beginner here, and his advice is to fly with an experienced group.",
+  "b": "{1} {2} 级或同等级别，与我们的肯尼亚之旅相同，而且你应该能够自主飞行：在起飞场自己起飞、盘旋爬升、做决定，并在降落场降落。最重要的是，来之前先练习无风起飞，因为{3}很少有风来帮你。Eddie Colfox 认为，飞了 {4} 到 {5} 小时的飞行员在这里仍属新手，他的建议是跟着有经验的团队一起飞。",
+  "date": "2026-11-17"
+ },
+ "ce0f7034543e": {
+  "en": "A meadow of white flowers below the snow-covered {1}",
+  "b": "白色花朵的草甸，在积雪覆盖的{1}之下",
+  "date": "2026-11-17"
+ },
  "ce31f52cf648": {
   "en": "About Lake Naivasha",
   "b": "关于奈瓦沙湖",
+  "date": "2026-11-17"
+ },
+ "ce3231da0838": {
+  "en": "<x1>Over the peaks</x1>A single wing high above a snow-streaked peak<x2>near Waldo peak</x2>",
+  "b": "<x1>翻越群峰</x1>一顶孤零零的伞翼高高飞在积雪斑驳的山峰上方<x2>靠近 Waldo peak</x2>",
   "date": "2026-11-17"
  },
  "ce491dd76179": {
@@ -6072,6 +7442,11 @@
  "ce866c147e29": {
   "en": "About Kilimanjaro",
   "b": "关于乞力马扎罗山",
+  "date": "2026-11-17"
+ },
+ "ceaa2dca101a": {
+  "en": "Dharamshala and McLeod Ganj",
+  "b": "Dharamshala 和 McLeod Ganj",
   "date": "2026-11-17"
  },
  "cf01481f626d": {
@@ -6114,6 +7489,11 @@
   "tr": "品牌、型号、EN 级别",
   "back": "Brand, model, EN class",
   "check": "ok"
+ },
+ "cff2536a26bb": {
+  "en": "Jigish Gohil, paraphrased <x1>{1} episode, {2}</x1>",
+  "b": "Jigish Gohil，转述 <x1>{1}一集，{2}</x1>",
+  "date": "2026-11-17"
  },
  "cff524d2580e": {
   "en": "Not sure yet is a perfectly good answer, and often the right one.",
@@ -6200,6 +7580,11 @@
   "back": "Russell Ogden",
   "check": "ok"
  },
+ "d278cc228c2e": {
+  "en": "Basic first aid and any personal medication",
+  "b": "基本急救用品和你个人的药物",
+  "date": "2026-11-17"
+ },
  "d2a19a06cf8c": {
   "en": "Clear the list",
   "b": "清空清单",
@@ -6228,6 +7613,16 @@
   "tr": "重塑风险直觉的实地方法",
   "back": "A field method for reshaping risk intuition",
   "check": "ok"
+ },
+ "d35cca4293cc": {
+  "en": "Above the snowline",
+  "b": "雪线之上",
+  "date": "2026-11-17"
+ },
+ "d3642b1ed3c4": {
+  "en": "Rule {1}, The landing field",
+  "b": "第 {1} 条，降落场",
+  "date": "2026-11-17"
  },
  "d3e5a48f6bd3": {
   "en": "The reticulated giraffe and Grevy's zebra of Samburu are dry-country animals of the north, found in few other places; most of the world's remaining Grevy's zebra live in northern Kenya.",
@@ -6279,6 +7674,11 @@
   "back": "India ({1})",
   "check": "ok"
  },
+ "d5f3f9a282ae": {
+  "en": "Watch how fast the clouds are building, stay out from under the big ones, and land early rather than late.",
+  "b": "留意云长得有多快，避开大云的下方，宁可早降落也别晚降落。",
+  "date": "2026-11-17"
+ },
  "d614b99a0d0d": {
   "en": "What Pilots Ask Before Booking",
   "a": "飞行员预订前常问的问题",
@@ -6296,6 +7696,11 @@
  "d6384b2910b0": {
   "en": "Conditions here are stronger than most home sites. Bring gear you trust.",
   "b": "这里的条件比大多数你家乡的飞行场更强。带上你信得过的装备。",
+  "date": "2026-11-17"
+ },
+ "d65e418781f7": {
+  "en": "This is the part the brochures leave out. The thermals that make {1} easy are the same thermals everyone else is in, and autumn is when everyone comes.",
+  "b": "这是宣传册略去不提的部分。让{1}变得容易的热气流，正是所有其他人也在其中的热气流，而秋季就是所有人都来的时候。",
   "date": "2026-11-17"
  },
  "d680e2d1210e": {
@@ -6351,6 +7756,16 @@
   "tr": "，{1}，四月和五月，以及十月和{2}",
   "back": ", {1}, April and May, and October and {2}",
   "check": "ok"
+ },
+ "d7e0248497cc": {
+  "en": "Eddie Colfox has run trips from {1} since {2}. He talks through how the season has shifted, the routes along the front range, and what changes the moment you go over the back.",
+  "b": "Eddie Colfox 自{2}年起就在{1}带团。他谈到季节是如何变化的、前山脉上的路线，以及一旦翻越后山会有什么不同。",
+  "date": "2026-11-17"
+ },
+ "d813a83fbc5f": {
+  "en": "{1} launch",
+  "b": "{1}起飞场",
+  "date": "2026-11-17"
  },
  "d84d0ad04a29": {
   "en": "per pilot",
@@ -6414,6 +7829,16 @@
   "back": "Previous group of episodes",
   "check": "ok"
  },
+ "da54f61ca461": {
+  "en": "Rule {1}, The tracker question",
+  "b": "第 {1} 条，追踪器的问题",
+  "date": "2026-11-17"
+ },
+ "da81ff1dc46c": {
+  "en": "For pilots going to {1} under their own steam rather than on our tour. None of it is specific to us, and all of it is worth reading before you fly there with anyone.",
+  "b": "写给不跟我们的团、而是自己去{1}的飞行员。这些内容都不是专门针对我们的，而且无论和谁一起飞到那里，之前都值得读一读。",
+  "date": "2026-11-17"
+ },
  "dad072360d2d": {
   "en": "Four knuckles of hill on the edge of the Rift. Karen Blixen farmed at their foot and wrote Out of Africa about it; a wind farm now runs along the ridge.",
   "b": "裂谷边缘的四个山丘，像四个指关节。Karen Blixen 曾在山脚下务农，并以此写下《走出非洲》；如今山脊上有一座风电场。",
@@ -6450,6 +7875,11 @@
   "b": "沿大裂谷而下的六个飞行场，首尾相距{1} km",
   "date": "2026-11-17"
  },
+ "dc2f4e7ef76c": {
+  "en": "{1}'s landing field among terraced fields, seen from the air",
+  "b": "{1}的降落场，梯田之间，空中俯瞰",
+  "date": "2026-11-17"
+ },
  "dc8415ccfe52": {
   "en": "Feb",
   "a": "二月",
@@ -6468,6 +7898,11 @@
   "tr_note": "episode title form",
   "back": "\"{1} Kenya Qualifier\", Nikolay Yotov",
   "check": "ok"
+ },
+ "dca264f67da0": {
+  "en": "<x1>The back ranges</x1>Snow-covered back ranges seen from the air",
+  "b": "<x1>后山山脉</x1>空中俯瞰积雪覆盖的后山山脉",
+  "date": "2026-11-17"
  },
  "dcc39d11ca89": {
   "en": "<x1>{1}</x1>Gear list, dates, and costs",
@@ -6495,6 +7930,11 @@
   "tr": "沿航线飞行",
   "back": "Fly along the route",
   "check": "ok"
+ },
+ "dd63aefbe5c0": {
+  "en": "The old seat of the goddess Chamunda, high on the {1} ridge at about {2} m, with the snow peaks straight behind it. The better known Chamunda Devi temple on the Baner river below, west of Palampur, is the newer of the two.",
+  "b": "女神 Chamunda 的古老圣座，高踞{1}山脊上约 {2} 米处，雪峰就在正后方。山下 Baner 河边、Palampur 以西那座更为知名的 Chamunda Devi 神庙，则是两座中较新的一座。",
+  "date": "2026-11-17"
  },
  "dd77da78750c": {
   "en": "Episode Library",
@@ -6524,6 +7964,21 @@
   "b": "先谈好价格",
   "date": "2026-11-17"
  },
+ "de23fc621bef": {
+  "en": "Eddie Colfox remembers late October air turning too stable to climb much above {1}m. Now the monsoon lingers into the first week of October, and the air stays unstable enough to climb well over {2}m right into November. Leaving {3} in mid November, he was at {4}m on the front ridge and {5}m deep in the back ranges.",
+  "b": "Eddie Colfox 记得，十月下旬的空气会变得过于稳定，很难爬升到{1}米以上。如今季风会拖到十月的第一周，空气依然足够不稳定，一直到十一月都能轻松爬升到{2}米以上。十一月中旬从{3}出发时，他在前山脊飞到了{4}米，在深处的后山飞到了{5}米。",
+  "date": "2026-11-17"
+ },
+ "de6d9932c347": {
+  "en": "Can I bring a satellite tracker to India?",
+  "b": "我可以带卫星追踪器去印度吗？",
+  "date": "2026-11-17"
+ },
+ "de7826067282": {
+  "en": "Hiking shoes, already broken in",
+  "b": "已经磨合好的登山鞋",
+  "date": "2026-11-17"
+ },
  "de9a3242d1b8": {
   "en": "Watched",
   "a": "已观看",
@@ -6542,6 +7997,11 @@
   "back": "Drag to rotate.",
   "check": "ok"
  },
+ "dede4d49ea45": {
+  "en": "Busy. Jigish Gohil counted about {1} visiting pilots in autumn {2}, against about {3} when he arrived, because almost nowhere else flies so consistently at that time of year. The front range is wide enough to spread out, and his advice is to leave the house thermal as soon as you have the height for the next ridge. Spring is quieter, at around {4} pilots, but stronger.",
+  "b": "很忙。Jigish Gohil 数过，{2}年秋季约有 {1} 名外来飞行员，而他刚来时约 {3} 名，因为一年中的这个时候，几乎没有别的地方能飞得这么稳定。前山脉足够宽，可以分散开，他的建议是：一旦有了足够高度去飞下一道山脊，就离开常用热气流。春季人少些，约 {4} 名飞行员，但风更强。",
+  "date": "2026-11-17"
+ },
  "df68968bb28f": {
   "en": "{1} tasks scored, {2} cancelled",
   "a": "{1}个任务计分，{2}个取消",
@@ -6557,6 +8017,21 @@
   "tr": "搜索节目、知识库和行程",
   "back": "Search episodes, knowledge base and itineraries",
   "check": "ok"
+ },
+ "dfaacea612e7": {
+  "en": "{1} took his first tandem flight as a child in the foothills of the Himalaya, and has been flying for more than ten years since. He founded {2} in {3}, has flown {4} himself, and hosts the podcast, including the two {5} episodes this page is built on.",
+  "b": "{1}小时候在喜马拉雅山麓第一次体验双人飞行，此后已飞行十多年。他在{3}年创办了{2}，亲自飞过{4}，并主持播客，包括这个页面所依据的两集{5}节目。",
+  "date": "2026-11-17"
+ },
+ "dfba57534e13": {
+  "en": "Apply before you travel",
+  "b": "出发前申请",
+  "date": "2026-11-17"
+ },
+ "dfec3671d8b9": {
+  "en": "<x1>The {1}</x1>The {2} range under building cumulus, above the Kangra valley",
+  "b": "<x1>{1}</x1>{2}山脉在渐起的积云下，位于 Kangra 山谷上方",
+  "date": "2026-11-17"
  },
  "e070de224434": {
   "en": "Currency",
@@ -6584,6 +8059,21 @@
   "b": "{1}张照片<x1> + 视频</x1>",
   "tr": "{1}张照片<x1> + 视频</x1>",
   "tr_note": "film = 视频 site-wide (mainland usage)"
+ },
+ "e0c48ff9cb51": {
+  "en": "<x1>Kangra valley</x1>The Kangra valley from the air, villages and fields below the hills",
+  "b": "<x1>Kangra 山谷</x1>Kangra 山谷的空中景象，山丘下是村庄和田野",
+  "date": "2026-11-17"
+ },
+ "e0cd69f533c9": {
+  "en": "Jigish Gohil, {1} episode",
+  "b": "Jigish Gohil，{1}一集",
+  "date": "2026-11-17"
+ },
+ "e14985e9e3b5": {
+  "en": "{1} · The way home",
+  "b": "{1}｜回程",
+  "date": "2026-11-17"
  },
  "e17fcf4292ab": {
   "en": "Know Your Equipment",
@@ -6648,9 +8138,19 @@
   "back": "{1}: podcast, knowledge base and guided expeditions",
   "check": "ok"
  },
+ "e34a2f28a435": {
+  "en": "deep in the back, mid November",
+  "b": "十一月中旬，深入后山",
+  "date": "2026-11-17"
+ },
  "e37f2d4126cb": {
   "en": "Rift wall to Naivasha, {1}<x1>{2} km</x1>",
   "b": "从裂谷断崖到奈瓦沙，{1}<x1>{2} km</x1>",
+  "date": "2026-11-17"
+ },
+ "e3bb8740bb2c": {
+  "en": "When he first came for an autumn season, about {1} pilots from around the world were flying there. In autumn {2} it was about {3}.",
+  "b": "他第一次在秋季飞行季来时，世界各地约有 {1} 名飞行员在那里飞行。{2}年秋季，约有 {3} 名。",
   "date": "2026-11-17"
  },
  "e4115be258db": {
@@ -6762,6 +8262,16 @@
   "back": "View itinerary →",
   "check": "ok"
  },
+ "e68f2b6766bf": {
+  "en": "{1}<x1>KM</x1>",
+  "b": "{1}<x1>公里</x1>",
+  "date": "2026-11-17"
+ },
+ "e6c27e05e95e": {
+  "en": "West, {1} to {2} km out and return",
+  "b": "向西，往返 {1} 至 {2} 公里",
+  "date": "2026-11-17"
+ },
  "e6ed3b41d7d1": {
   "en": "Flamingos feed in the lagoons at the edge of the lake, where hot springs bring water in over the crust of soda.",
   "b": "火烈鸟在湖边的潟湖里觅食，那里的温泉把水引入碱壳之上。",
@@ -6869,6 +8379,16 @@
   "b": "关于 Hyrax Hill",
   "date": "2026-11-17"
  },
+ "e9cc0a548895": {
+  "en": "Thermal layers",
+  "b": "保暖层",
+  "date": "2026-11-17"
+ },
+ "ea1a2ca13a79": {
+  "en": "{1} <x1>per pilot</x1>",
+  "b": "{1} <x1>每位飞行员</x1>",
+  "date": "2026-11-17"
+ },
  "ea515110b02d": {
   "en": "For pilots going out there under their own steam rather than on our tour. None of it is specific to us, and all of it is worth reading before you book anything, with anyone.",
   "b": "写给那些自己出发、而不是参加我们行程的飞行员。这些内容没有一条是我们独有的，在你向任何人预订任何东西之前，都值得读一读。",
@@ -6908,6 +8428,11 @@
   "b": "一天如何度过",
   "date": "2026-11-17"
  },
+ "eb1de0182dc6": {
+  "en": "About Triund",
+  "b": "关于 Triund",
+  "date": "2026-11-17"
+ },
  "eb2960b73f0a": {
   "en": "Requirements depend on your own nationality.",
   "b": "要求取决于你自己的国籍。",
@@ -6921,6 +8446,11 @@
  "eb78e0175aee": {
   "en": "The photograph, enlarged",
   "b": "放大的照片",
+  "date": "2026-11-17"
+ },
+ "ebc8e854262e": {
+  "en": "Big Mountain Flying from {1}",
+  "b": "从{1}出发的大山飞行",
   "date": "2026-11-17"
  },
  "ec45acc37fea": {
@@ -6944,6 +8474,11 @@
  "ec7a3abe63e6": {
   "en": "Africa's highest mountain at {1} m, across the border in Tanzania, its ice on the horizon from the Chyulu Hills on a clear morning.",
   "b": "非洲最高的山，海拔{1} m，在边境另一侧的坦桑尼亚，晴朗的早晨从 Chyulu Hills 可以望见山上的冰雪。",
+  "date": "2026-11-17"
+ },
+ "ec9b089b81b9": {
+  "en": "Photographs: Ashutosh Tiwari (CC BY-SA {1}), Ashutosh Tiwari (CC BY-SA {2}), via Wikimedia Commons",
+  "b": "照片：Ashutosh Tiwari（CC BY-SA {1}），Ashutosh Tiwari（CC BY-SA {2}），来自 Wikimedia Commons",
   "date": "2026-11-17"
  },
  "ecf94cfb9663": {
@@ -7135,6 +8670,11 @@
   "back": "Safety and disclosure",
   "check": "ok"
  },
+ "f267b994a707": {
+  "en": "{1} Paragliding FAQ",
+  "b": "{1}滑翔伞运动常见问题",
+  "date": "2026-11-17"
+ },
  "f27f0b9bc5b4": {
   "en": "Play: go on to the next places",
   "a": "播放：继续前往下一个地点",
@@ -7198,6 +8738,11 @@
   "b": "分数来自{1}的最终成绩；柱状图为各任务的得分，满分{2}。<x1>完整成绩<x2>↗</x2></x1>",
   "tr": "分数取自{1}的最终成绩；每根条形代表各任务得分，满分{2}。<x1>完整成绩<x2>↗</x2></x1>"
  },
+ "f3a61688b2c5": {
+  "en": "Going deep is a commitment",
+  "b": "深入后山是一种承诺",
+  "date": "2026-11-17"
+ },
  "f3e6db90f07a": {
   "en": "November to March. The wind starts from the north-northeast and turns southeast towards spring, so the take-off is chosen to match. The tour flies in February, in the heart of it.",
   "a": "十一月至三月。风起初来自北东北方向，临近春天转为东南风，因此起飞场会随之选择。本团在二月飞行，正值季节最好的时候。",
@@ -7234,6 +8779,11 @@
   "tr": "也可在以下平台收听",
   "back": "Also available to listen to on the following platforms",
   "check": "ok"
+ },
+ "f55b013d7aa8": {
+  "en": "About Baijnath temple",
+  "b": "关于 Baijnath 神庙",
+  "date": "2026-11-17"
  },
  "f5b7906f2ef7": {
   "en": "Swipe the photo to fly the route",
@@ -7272,9 +8822,19 @@
   "b": "强劲，在正午高峰",
   "date": "2026-11-17"
  },
+ "f693cad595b5": {
+  "en": "Two departures in spring, back to back from {1}. Two in autumn, inside the season that runs from about {2} well into November, three days apart.",
+  "b": "春季两个出发班次，在{1}期间连续进行。秋季两个，在大约从{2}一直到十一月的飞行季内，相隔三天。",
+  "date": "2026-11-17"
+ },
  "f6a7d9a32ab7": {
   "en": "Landing protocol",
   "b": "降落场规范",
+  "date": "2026-11-17"
+ },
+ "f6f24c1013a5": {
+  "en": "However big the field, pilots misjudge the last leg, arrive long, then stall the wing in from three or four metres up and break something.",
+  "b": "不管场地多大，飞行员都会误判最后一段，飞得过长，然后在离地三四米高处让伞翼失速，摔坏了什么。",
   "date": "2026-11-17"
  },
  "f6f5b350c771": {
@@ -7314,6 +8874,11 @@
  "f887097356b5": {
   "en": "After you land, you are the one who activates and directs the retrieve driver, because the others may still be in the air.",
   "b": "降落之后，由你来启动并指挥回收司机，因为其他人可能还在空中。",
+  "date": "2026-11-17"
+ },
+ "f8dae5f762aa": {
+  "en": "The {1} · launch about {2} m",
+  "b": "{1}｜起飞场海拔约 {2} 米",
   "date": "2026-11-17"
  },
  "f95635422331": {
@@ -7362,9 +8927,24 @@
   "b": "河马生活在岸边的纸莎草丛里，夜里上岸吃草。Crescent Island 上的长颈鹿和斑马可以步行靠近，因为岛上没有任何动物猎食它们。",
   "date": "2026-11-17"
  },
+ "fa8abbc3dd75": {
+  "en": "Hear {1} From Someone Who Flies It",
+  "b": "听飞过{1}的人亲口讲述",
+  "date": "2026-11-17"
+ },
  "faa0f436921e": {
   "en": "Paragliders over the green slopes of the {1}",
   "b": "滑翔伞飞过{1}的绿色山坡",
+  "date": "2026-11-17"
+ },
+ "faad149b13bc": {
+  "en": "<x1>Last light</x1>A paraglider silhouetted against a burning sunset",
+  "b": "<x1>最后一缕光</x1>一顶滑翔伞在烈焰般的夕阳下的剪影",
+  "date": "2026-11-17"
+ },
+ "face0d399279": {
+  "en": "Deep in the back, mid November",
+  "b": "十一月中旬，深入后山",
   "date": "2026-11-17"
  },
  "fb11932e35e4": {
@@ -7388,6 +8968,16 @@
   "date": "2026-11-17",
   "b": "周四{1}",
   "tr": "周四{1}"
+ },
+ "fbc33e96c03c": {
+  "en": "Land out over the back and help can take until the next day. Carry what you need for a night out.",
+  "b": "在后山外降落，救援可能要到第二天才来。带上在外过一夜所需的东西。",
+  "date": "2026-11-17"
+ },
+ "fbf882ae61d7": {
+  "en": "Fly something you can relax on",
+  "b": "飞一顶你能放松驾驭的伞翼",
+  "date": "2026-11-17"
  },
  "fbfad16c223b": {
   "en": "Honorin Hamard",
