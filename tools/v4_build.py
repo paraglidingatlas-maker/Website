@@ -389,6 +389,9 @@ def main():
         put = True
         run([PY, "tools/v4_pwa.py"])
         run([PY, "tools/version_assets.py"])
+        # last: the translations are made from the finished English pages (chat 27; docs/v4-i18n.md). A page
+        # with a changed English segment is not written until it is translated and checked again.
+        run([PY, "tools/v4_i18n.py", "build"])
     finally:
         if not put:
             # a failed or stopped run: the owned pages go back as they were, so the

@@ -119,3 +119,12 @@ NEW_PAGES = set() if IS_V2 else {"expeditions.html", "destinations/panchgani.htm
 
 if not os.path.isdir(DIR):
     raise SystemExit("no such prototype: %s" % os.path.relpath(DIR, ROOT))
+
+# The site in other languages (tools/v4_i18n.py, chat 27): each page it writes under de/, fr/, es/, zh/ is a
+# page the prototype adds (no live twin): switched to the same path, indexable, listed in sitemap.xml.
+I18N_DIRS = () if IS_V2 else ("de", "fr", "es", "zh")
+for _d in I18N_DIRS:
+    for _w, _, _fs in os.walk(os.path.join(DIR, _d)):
+        for _f in _fs:
+            if _f.endswith(".html"):
+                NEW_PAGES.add(os.path.relpath(os.path.join(_w, _f), DIR).replace(os.sep, "/"))

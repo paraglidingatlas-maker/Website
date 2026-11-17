@@ -1,2 +1,4 @@
 __pycache__/
 node_modules/
+# translation work files (tools/v4_i18n.py jobs): regenerated, never published
+tools/data/i18n/work/

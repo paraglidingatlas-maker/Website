@@ -1,0 +1,63 @@
+# Names that are never translated (tools/v4_i18n.py locks them before translating; the translation must keep them).
+# Countries are NOT here: they are translated, and checked against CLDR.
+Paragliding Atlas
+Atlas
+SRS - Advance Edition
+SRS Advance Edition
+Advance Edition
+SRS
+PWC
+Paragliding World Cup
+Tapalpa
+Panchgani
+Pegalajar
+Piedrahita
+Bassano
+Roldanillo
+Bir Billing
+Billing
+Bir
+Kamshet
+Kerio Valley
+Kerio
+Sahyadri
+Dhauladhar
+Deccan
+Pune
+Mumbai
+Lima
+Oslo
+Troviks Vei
+Harrison's Folly
+Jalisco
+WhatsApp
+YouTube
+Instagram
+Facebook
+Telegram
+Patreon
+PayPal
+Spotify
+Apple Podcasts
+Cloudflare
+Google
+IPPI
+APPI
+EN-A
+EN-B
+EN-C
+EN-D
+CIVL
+FAI
+AGL
+GPS
+XC
+SIV
+IGC
+KMZ
+BY-NC
+CC BY-NC
+Aninder
+Aninder Singh Malhi
+Paco
+Aninder Singh

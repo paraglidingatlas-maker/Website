@@ -1,0 +1,43 @@
+/* The site in other languages (tools/v4_i18n.py, chat 27): the language menu in the nav, the
+   "translated from English" note, and type that copes with long German words and Chinese. */
+.page-wrap>nav .v4-lang{order:3;position:relative;z-index:3;margin-left:1rem;flex-shrink:0}
+.v4-lang summary{list-style:none;display:inline-flex;align-items:center;gap:.4rem;min-height:44px;padding:0 .55rem;
+  color:var(--gray-light,#c9c7cc);font:600 .74rem/1 var(--font-body,inherit);letter-spacing:.12em;cursor:pointer;
+  border-radius:3px;-webkit-tap-highlight-color:transparent}
+.v4-lang summary::-webkit-details-marker{display:none}
+.v4-lang summary:hover,.v4-lang[open] summary{color:var(--white,#f6f4f4)}
+.v4-lang summary:focus-visible{outline:2px solid var(--orange,#ff7517);outline-offset:2px}
+.v4-lang svg{flex:none;opacity:.85}
+.v4-lang ul{position:absolute;right:0;top:calc(100% + .35rem);margin:0;padding:.35rem 0;list-style:none;min-width:11rem;
+  background:rgba(20,21,25,.97);border:1px solid rgba(246,244,244,.14);border-top:2px solid var(--orange,#ff7517);
+  box-shadow:0 18px 40px rgba(0,0,0,.45);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.v4-lang li a{display:flex;align-items:center;min-height:44px;padding:0 1.1rem;color:var(--gray-light,#c9c7cc);
+  font-size:.92rem;letter-spacing:0;text-decoration:none;white-space:nowrap}
+.v4-lang li a:hover,.v4-lang li a:focus-visible{color:var(--white,#f6f4f4);background:rgba(246,244,244,.06)}
+.v4-lang li a[aria-current]{color:var(--white,#f6f4f4);box-shadow:inset 2px 0 0 var(--orange,#ff7517)}
+@media (max-width:940px){
+  .page-wrap>nav .v4-lang{margin-left:auto}
+  html .page-wrap>nav .v4-lang~.nav-cta{margin-left:.35rem}
+  .v4-lang summary{padding:0 .35rem}
+}
+@media (max-width:480px){
+  .v4-lang summary span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .v4-lang summary{min-width:40px;justify-content:center;padding:0}
+  .v4-lang svg{width:18px;height:18px}
+  html:not([lang="en"]) .page-wrap>nav .nav-cta{padding-left:.8rem;padding-right:.8rem}
+}
+
+/* the note under the nav on a translated page */
+.v4-i18n-note{margin:0;padding:.55rem var(--edge-x,clamp(1rem,4vw,4rem));font-size:.8rem;line-height:1.45;
+  color:var(--gray-light,#c9c7cc);background:rgba(246,244,244,.04);border-bottom:1px solid rgba(246,244,244,.08)}
+.v4-i18n-note p{margin:0;max-width:none}
+.v4-i18n-note a{color:var(--white,#f6f4f4);text-decoration:underline;text-decoration-color:var(--orange,#ff7517);
+  text-underline-offset:.2em}
+
+/* long words: German and French headings break where the language allows, never past the edge */
+html[lang="de"] :is(h1,h2,h3,h4,.kit-kicker,.btn-solid,.btn-lines,legend,label,dt,th),
+html[lang="fr"] :is(h1,h2,h3,h4),html[lang="es"] :is(h1,h2,h3,h4){hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+/* Chinese: the system's own Chinese face (no web font download, which mainland China may block) */
+html[lang="zh-Hans"] body{font-synthesis:none}
+html[lang="zh-Hans"] :is(h1,h2,h3,h4){letter-spacing:0;line-break:strict}
+html[lang="zh-Hans"] :is(.kit-kicker,.op-kicker){letter-spacing:.08em}
