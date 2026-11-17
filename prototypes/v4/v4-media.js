@@ -215,7 +215,8 @@
     if (el) {
       var k = el.querySelector("[data-slate-k]"), e1 = el.querySelector("[data-slate-e]"), nn = el.querySelector("[data-slate-n]");
       el.setAttribute("data-state", state);
-      if (!ev) { k.textContent = "Next"; e1.innerHTML = '<i class="v2-tbd">[to supply]</i>'; nn.textContent = ""; }
+      el.hidden = false;
+      if (!ev) { el.hidden = true; }   // owner, 17 Nov 2026: nothing next, no slot
       else {
         e1.textContent = ev.name + ", " + ev.place + " · " + ev.dates;
         if (state === "now") { k.textContent = "On air now"; nn.textContent = ""; }

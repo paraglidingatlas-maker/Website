@@ -1057,8 +1057,8 @@ def feed_count():
     """The episode count is the RSS feed's (owner, 21 Oct 2026: "whatever the RSS feed shows, it's the correct count"):
     the episodes in episode-meta.json that went out on the feed (a publish date); the YouTube-only videos have none."""
     import json
-    meta = json.load(open(os.path.join(ROOT, "episode-meta.json"), encoding="utf-8"))
-    return sum(1 for e in meta if e.get("published"))
+    # owner, 17 Nov 2026: the count is 86 (the library's), kept in tools/data/v4_facts.json
+    return json.load(open(os.path.join(ROOT, "tools", "data", "v4_facts.json"), encoding="utf-8"))["episode_count"]["value"]
 
 
 def words(n):

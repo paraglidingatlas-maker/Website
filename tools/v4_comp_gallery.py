@@ -120,7 +120,7 @@ COMPS = {
                 kicker="15th Paragliding World Cup Super Final &middot; Pegalajar, Spain", season="pwc", landing=True,
                 desc="15th Paragliding World Cup Super Final, Pegalajar, Spain, May 2026: the five highlight films, by task. "
                      "Films by Aninder Singh, Paragliding Atlas.",
-                read=["<b>May 2026</b>", "Comp dates " + TBD, "Pilots and countries " + TBD],
+                read=["<b>May 2026</b>"],
                 stops=[("D1", ["FOuAWMeoxs4"]), ("T1", ["BRAX1XMU390"]), ("T2", ["7il6yV1vdIc"]), ("T3", []),
                        ("T4", ["op1-O01xkH4"]), ("T5", ["vPnIYYKcvEg"])],
                 # posters: frames of the owner's own films (YouTube's frame grabs), not the designed thumbnails;
@@ -129,12 +129,12 @@ COMPS = {
                          "op1-O01xkH4": "maxres3", "vPnIYYKcvEg": "maxres3"},
                 lead=("op1-O01xkH4", "maxres2"), lead_alt="A task drawn in red on a relief map, a frame from Task 4 Highlights",
                 tp="len", word=("film", "films", "highlight films"), none="No film",
-                none_line="No highlights film of %s in the archive. Whether it was flown, and its film:"),
+                none_line="No highlights film of %s in the archive."),
     "bassano": dict(page="media-srs-bassano-2026.html", folder=None, title="Bassano 2026", full="SRS Bassano 2026",
                     kicker="SRS Skywalk Bassano Edition &middot; Monte&nbsp;Grappa, Italy", season="srs4", landing=True,
                     desc="SRS Skywalk Bassano Edition, Monte Grappa, Italy, May 2026: the five live broadcasts, by task. "
                          "Live commentary by Paragliding Atlas.",
-                    read=["<b>May 2026</b>", "Comp dates " + TBD, "Pilots and countries " + TBD],
+                    read=["<b>May 2026</b>"],
                     # the broadcasts begin at Task 2: Task 1 is a dashed slot, [to supply]
                     stops=[("T1", []), ("T2", ["ZL9B5eXip5o"]), ("T3", ["SZWQjcO_fWk"]), ("T4", ["x8sSBSBy4dI", "DA4nGop3i9g"]),
                            ("T5", ["PEyO6MXngUw"])],
@@ -142,7 +142,7 @@ COMPS = {
                     # the final day's broadcast, its live overlay and all
                     posters={}, lead=("PEyO6MXngUw", "maxres1"), lead_alt="A frame from the live broadcast of the final day, Task 5",
                     tp="date", word=("broadcast", "broadcasts", "live broadcasts"), none="No broadcast",
-                    none_line="No broadcast of %s in the archive. Whether it was flown, and its broadcast:"),
+                    none_line="No broadcast of %s in the archive."),
 }
 
 
@@ -763,8 +763,7 @@ def season_foot(cur):
     up = {u["key"] for u in M.UPCOMING}          # a comp's own dates: UPCOMING's, or a SEASON row's "span"
     own = [e["nick"] for e in S if e["key"] in up or any(x["comp"] == e["key"] and "span" in x for x in M.SEASON)]
     other = [e["nick"] for e in S if e["nick"] not in own]
-    note = ('<p class="ev-rows-f">Dates on the line: %s the comps&#x27; own; %s the days the films and broadcasts came out '
-            '(the comps&#x27; own dates %s).</p>' % (" and ".join(own), " and ".join(other), TBD)) if other else ""
+    note = ('<p class="ev-rows-f">Dates on the line: %s the comps&#x27; own; %s the days the films and broadcasts came out.</p>' % (" and ".join(own), " and ".join(other))) if other else ""
     return ('<section class="ev-foot" aria-labelledby="ev-foot-t"><div class="ev-foot-in">'
             '<h2 id="ev-foot-t" class="ev-foot-h">The 2026 Season</h2>'
             '<ol class="ev-rows">%s</ol>%s<p class="ev-rows-m"><a href="media.html#reach">The season on the Media page %s</a></p></div></section>\n'
@@ -860,8 +859,8 @@ def render_films(comp):
             tps.append('<li class="gf-tp" data-i="%d" data-state="none"><a href="#%s"><i class="gf-dot" aria-hidden="true"></i><b>%s</b>'
                        '<span class="gf-tp-d">%s</span><span class="gf-tp-s">&nbsp;</span></a></li>' % (i, s, lab, c["none"]))
             head = '<p class="gf-dh-r"><span>%s</span></p>' % c["none"]
-            body = ('<div class="ev-none"><p class="ev-none-t">%s, %s</p><p>%s %s</p></div>'
-                    % (lab, c["none"].lower(), c["none_line"] % lab, TBD))
+            body = ('<div class="ev-none"><p class="ev-none-t">%s, %s</p><p>%s</p></div>'
+                    % (lab, c["none"].lower(), c["none_line"] % lab))
             st = "none"
         nav = []
         if i > 0:
