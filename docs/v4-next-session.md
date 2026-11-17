@@ -4,6 +4,61 @@ Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
 the owner's current queue and what the last session learnt doing it.
 
+## Chat 28 starts here (17 Nov 2026, from chat 27): the translations, wave 2
+**Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
+has grown long, hand over without asking the owner: write the handover at the top of this file, update the
+owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
+chat yourself with the session tools (create_session), and give the owner its link. If create_session is refused,
+give the owner the prompt to paste.
+
+**LIVE (main e24e70f, 17 Nov ~23:35 UTC): the pilot.** Home and Enquire in German, French, Spanish, Simplified
+Chinese: https://paraglidingatlas.com/de/ /fr/ /es/ /zh/ and /de/enquire.html etc. Language menu (a globe) in the nav
+of the English home and Enquire; "Translated from English · Read the English page · Report a translation error" at
+the end of each translated page. Checked live at 1440 and 390: no failed requests, no sideways scroll.
+The owner's answers (17 Nov): pilot "Go"; Report a translation error -> corrections.html (OK); du / tú / vous (OK,
+"you know better"); "Touch The Sky With Glory" stays ENGLISH (it is the brand line, on the shirt; locked in
+tools/data/i18n/keep.txt); the owner first asked for the pilot to be only home + Enquire (Panchgani and Tapalpa wait).
+
+**Read first:** docs/v4-i18n.md (the whole method, files, checks), tools/data/i18n/BRIEF.md (what every pass gets),
+tools/data/i18n/config.json (pages, ui, js strings), tools/data/i18n/report.md (the last check report).
+
+**How a page gets translated (what worked).** `python3 tools/v4_i18n.py jobs` -> work/<lang>-todo.json and
+work/all-segments.json (each with its facts). Per language: translator A (default model) and B (sonnet), each
+validated (`validate LANG FILE [TODO]`), `ingest LANG a|b`; a reviewer per language (picks/merges, glossary, waives
+with reasons) -> `ingest LANG tr`; a BLIND back-translator (told to open no other file) -> `ingest LANG back`; a
+comparer per language (verdict ok, or reason + fix) -> `ingest LANG check`; a fix goes back through back + check.
+Then `build`, `check` (must say PASS), and the browser check (tools/i18n_probe.js, tools/i18n_menutext.js; serve the
+repo on 127.0.0.1:8765). The pilot (416 strings x 4 languages, ~2,300 English words) took about 2.5 hours and 30
+agent runs; resuming the same agents with SendMessage for small follow-ups is cheap.
+Lessons: give every agent its own scratch folder (two translators shared /tmp/claude-0/s and one wrote Spanish into
+the German file; the "reads as another language" check caught it). Agents will game a soft check (they added
+brackets to dodge "left in English"): the check now ignores names and countries; keep checks honest rather than strict.
+Strings that page scripts write after load (countdowns, the menu, the photo viewer, Share, form replies) are in
+config "js" and translated at runtime by prototypes/v4/v4-i18n.js (exact strings and {n} patterns; dates and prices
+put in the language's format by the browser). The enquiry email stays English (option data-en values).
+
+**Your job (chat 28): wave 2, all the other pages except episodes** (plan in "Chat 27 starts here" below): add pages
+to config "pages" in batches (suggest: destinations (panchgani, kenya, india), expeditions, about, mission, podcast,
+knowledge-base landing, media; then the 30 knowledge-base articles; then tags), run the pipeline, check, show the
+owner screenshots of the first batch, push. Notes:
+- Panchgani and Tapalpa already have A, B and reviewed `tr` for their old segments in memory (back + check missing);
+  Tapalpa has new text since (landing page, Talks: chat 25, 17 Nov), so `jobs` will list the new segments.
+- NOT BUILT YET: the English-binding pages (config english_binding: terms, privacy, cookies, participant agreement,
+  safety) stay English; a translated page that links one should say "The English version is binding." (ui string
+  exists, unused). Decide how (a note beside the link, or a small English-only notice page) and build it.
+- Chinese glossary is weak (no federation source reachable); French rests on Swiss FSVL texts (ffvl.fr blocked).
+- The home hero's giant "KENYA" word and the timeline's month letters stay English (design; skip classes).
+- tools/data/i18n/work/ is gitignored; the memory files <lang>.json are the record (keep a, b, tr, back, check).
+- A changed English sentence on a translated page makes that page stale: the build then removes it (and its menu
+  entry) until re-translated. Numbers are locked facts and never make a page stale. Tell chats 25/26 this.
+- Deploy needs babel==2.18.0 (added to .github/workflows/deploy.yml and docs/v4-deploy-workflow.yml).
+- Gates: tools/v4_gates.py --quick; only live-untouched and the audit's sitemap lastmod FAIL (known, harmless).
+- Owner's open small choices: French "Mission Statement" = "Notre mission" (or plain "Mission"?).
+
+**Other chats.** Chat 25 (session_018Da7i8zPtHufNaTNd97Qik, Tapalpa) and chat 26 (session_018Da7i9BMwW1ZnHKGamjYUC,
+media/newsletter/audit; its push of "86 episodes" was blocked and pending). Message both before every push to main.
+Push main and claude/v2-prototype, never forced; merge, don't rebase.
+
 ## Chat 27 starts here (17 Nov 2026, from chat 25): the site in German, French, Spanish and Simplified Chinese
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
 has grown long, hand over without asking the owner: write the handover at the top of this file, update the
