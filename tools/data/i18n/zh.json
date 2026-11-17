@@ -25,7 +25,8 @@
   "en": "FloraNorm probiotic<x1>Saccharomyces boulardii, available locally</x1>",
   "b": "FloraNorm 益生菌<x1>布拉迪酵母菌，当地可买到</x1>",
   "date": "2026-11-17",
-  "a": "FloraNorm益生菌<x1>布拉氏酵母菌，当地有售</x1>"
+  "a": "FloraNorm益生菌<x1>布拉氏酵母菌，当地有售</x1>",
+  "tr": "FloraNorm益生菌<x1>布拉氏酵母菌，当地有售</x1>"
  },
  "00d076c56ded": {
   "en": "The forested front range under building cumulus",
@@ -37,7 +38,8 @@
   "en": "Local knowledge",
   "b": "本地经验",
   "date": "2026-11-17",
-  "a": "本地经验"
+  "a": "本地经验",
+  "tr": "本地经验"
  },
  "00dfa1336339": {
   "en": "Report a translation error",
@@ -61,7 +63,8 @@
   "en": "We don’t see our clients as clients, we see them as friends and fellow dreamers. Pilots, who, like us, have made exploring new horizons a priority. That means we’ll leave no thermal unchecked in our quest to help you achieve a personal best or simply experience the flight of a lifetime",
   "b": "我们不把客户当客户，而是当作朋友和同样爱做梦的人。和我们一样，把探索新的地平线放在首位的飞行员。这意味着，为了帮你创造个人最佳成绩，或者只是体验一次一生难忘的飞行，我们绝不放过任何一个热气流",
   "date": "2026-11-17",
-  "a": "我们不把客户当作客户，而是当作朋友和同样怀有梦想的人。他们是和我们一样，把探索新视野放在首位的飞行员。这意味着我们会不放过任何一个热气流，帮助你创造个人最佳成绩，或者只是体验一次终生难忘的飞行"
+  "a": "我们不把客户当作客户，而是当作朋友和同样怀有梦想的人。他们是和我们一样，把探索新视野放在首位的飞行员。这意味着我们会不放过任何一个热气流，帮助你创造个人最佳成绩，或者只是体验一次终生难忘的飞行",
+  "tr": "我们不把客户当作客户，而是当作朋友和同样怀有梦想的人。他们是和我们一样，把探索新视野放在首位的飞行员。这意味着我们会不放过任何一个热气流，帮助你创造个人最佳成绩，或者只是体验一次终生难忘的飞行"
  },
  "01f30b47ce79": {
   "en": "This form has no database behind it. Pressing send passes your message through a small relay of our own, running on {1}, which turns it into an email to us and does not store it. There is no form service or mailing list tool in between, so your details end up in our inbox and nowhere else.",
@@ -76,7 +79,8 @@
   "en": "Skip the flight <x1>↓</x1>",
   "b": "跳过飞行 <x1>↓</x1>",
   "date": "2026-11-17",
-  "a": "跳过飞行<x1>↓</x1>"
+  "a": "跳过飞行<x1>↓</x1>",
+  "tr": "跳过飞行<x1>↓</x1>"
  },
  "0226fcb7f6b0": {
   "en": "So we know who we are replying to.",
@@ -91,7 +95,8 @@
   "en": "A range of moorland and forest where in {1} Princess Elizabeth went up to Treetops lodge a princess and came down a queen.",
   "b": "一片荒原和森林的山脉，{1}，伊丽莎白公主在这里登上 Treetops 林中旅舍，上去时是公主，下来时已是女王。",
   "date": "2026-11-17",
-  "a": "一片高沼地和森林交错的山地，{1}，伊丽莎白公主登上树顶旅馆时还是公主，下山时已成为女王。"
+  "a": "一片高沼地和森林交错的山地，{1}，伊丽莎白公主登上树顶旅馆时还是公主，下山时已成为女王。",
+  "tr": "一片高沼地和森林交错的山地，{1}，伊丽莎白公主登上树顶旅馆时还是公主，下山时已成为女王。"
  },
  "027c9a89be3b": {
   "en": "Peru · {1} and the Andes",
@@ -115,7 +120,8 @@
   "en": "About Baobab country",
   "b": "关于猴面包树之地",
   "date": "2026-11-17",
-  "a": "关于猴面包树之乡"
+  "a": "关于猴面包树之乡",
+  "tr": "关于猴面包树之乡"
  },
  "02ca51cb997f": {
   "en": "Insurance covering paragliding<x1>Essential</x1><x2>Medical treatment, repatriation and search and rescue</x2>",
@@ -127,7 +133,8 @@
   "en": "Flamingos",
   "b": "火烈鸟",
   "date": "2026-11-17",
-  "a": "火烈鸟"
+  "a": "火烈鸟",
+  "tr": "火烈鸟"
  },
  "0315457c3c58": {
   "en": "Where you are based <x1>(optional)</x1>",
@@ -142,7 +149,8 @@
   "en": "You are the precedent",
   "b": "你就是先例",
   "date": "2026-11-17",
-  "a": "你就是先例"
+  "a": "你就是先例",
+  "tr": "你就是先例"
  },
  "03415eb60d01": {
   "en": "{1} Immersive",
@@ -154,7 +162,12 @@
   "en": "Ona Kenya kama Miungu walivyoiona",
   "b": "像众神那样看肯尼亚",
   "date": "2026-11-17",
-  "a": "Ona Kenya kama Miungu walivyoiona"
+  "a": "Ona Kenya kama Miungu walivyoiona",
+  "tr": "Ona Kenya kama Miungu walivyoiona",
+  "tr_note": "Swahili tagline kept",
+  "waive": {
+   "country": "Swahili tagline, kept in Swahili on purpose (translated in the next line)"
+  }
  },
  "03688ba6aa34": {
   "en": "FAQ",
@@ -175,7 +188,8 @@
   "en": "Give work, not cash",
   "b": "给工作，不给现金",
   "date": "2026-11-17",
-  "a": "给工作，不给现金"
+  "a": "给工作，不给现金",
+  "tr": "给工作，不给现金"
  },
  "04885b0637b7": {
   "en": "Snow-covered back ranges seen from the air",
@@ -187,13 +201,15 @@
   "en": "Kenya Tour {1}",
   "b": "肯尼亚行程{1}",
   "date": "2026-11-17",
-  "a": "肯尼亚之旅 {1}"
+  "a": "肯尼亚之旅 {1}",
+  "tr": "肯尼亚之旅{1}"
  },
  "04f8eab3e65b": {
   "en": "Warm flying jacket",
   "b": "保暖飞行外套",
   "date": "2026-11-17",
-  "a": "保暖飞行夹克"
+  "a": "保暖飞行夹克",
+  "tr": "保暖飞行夹克"
  },
  "0587c136e342": {
   "en": "Watch again",
@@ -208,13 +224,15 @@
   "en": "Northern Kenya",
   "b": "肯尼亚北部",
   "date": "2026-11-17",
-  "a": "肯尼亚北部"
+  "a": "肯尼亚北部",
+  "tr": "肯尼亚北部"
  },
  "0629d788085f": {
   "en": "This is an {1} adventure tour for autonomous pilots. The minimum is being able to manage your own takeoffs and outlandings, with strong thermalling and ridge soaring skills recommended. An {2} course is highly desirable for handling collapses and turbulence.",
   "b": "这是一次面向自主飞行员的{1}冒险行程。最低要求是能自己处理起飞和野外降落，并建议具备出色的热气流盘旋和动力气流飘飞技术。强烈建议上过{2}课程，以便应对塌陷和紊流。",
   "date": "2026-11-17",
-  "a": "这是一趟面向能够独立飞行的飞行员的{1}探险之旅。最低要求是能够自己完成起飞和场外降落，建议具备扎实的热气流盘旋和动力气流滑翔技术。强烈建议参加过{2}课程，以便应对塌陷和乱流。"
+  "a": "这是一趟面向能够独立飞行的飞行员的{1}探险之旅。最低要求是能够自己完成起飞和场外降落，建议具备扎实的热气流盘旋和动力气流滑翔技术。强烈建议参加过{2}课程，以便应对塌陷和乱流。",
+  "tr": "这是一趟面向能够独立飞行的飞行员的{1}探险之旅。最低要求是能够自己完成起飞和场外降落，建议具备扎实的热气流盘旋和动力气流滑翔技术。强烈建议参加过{2}课程，以便应对塌陷和乱流。"
  },
  "065643564a80": {
   "en": "climb the knobs of the {1} and run west towards Dharamshala,",
@@ -226,13 +244,15 @@
   "en": "Be open, enthusiastic and positive, and greet everyone, including the unsmiling ones. Ask locally about security, wild animals and access, because that knowledge is not in any guidebook. Explain your plan clearly: misunderstandings about where you intend to take off are the single most common problem.",
   "b": "开放、热情、积极，问候每一个人，包括不笑的人。向当地人打听安全、野生动物和通行的情况，因为这些知识任何旅游指南里都没有。把你的计划解释清楚：对打算在哪里起飞的误解，是最常见的单一问题。",
   "date": "2026-11-17",
-  "a": "保持开放、热情和积极，跟每个人打招呼，包括那些不苟言笑的人。在当地打听安全、野生动物和通行情况，因为这些知识任何旅行指南里都没有。把你的计划解释清楚：对你打算在哪里起飞产生误解，是最常见的问题。"
+  "a": "保持开放、热情和积极，跟每个人打招呼，包括那些不苟言笑的人。在当地打听安全、野生动物和通行情况，因为这些知识任何旅行指南里都没有。把你的计划解释清楚：对你打算在哪里起飞产生误解，是最常见的问题。",
+  "tr": "保持开放、热情和积极，跟每个人打招呼，包括那些不苟言笑的人。在当地打听安全、野生动物和通行情况，因为这些知识任何旅行指南里都没有。把你的计划解释清楚：对你打算在哪里起飞产生误解，是最常见的问题。"
  },
  "06b1d0979ccb": {
   "en": "{1} · The horizon",
   "b": "{1} · 地平线",
   "date": "2026-11-17",
-  "a": "{1} · 地平线"
+  "a": "{1} · 地平线",
+  "tr": "{1} · 地平线"
  },
  "06c5ca790cef": {
   "en": "<x1>{1} launch</x1>Pilots laying out and launching on the grass at {2}<x2>at {3} launch</x2>",
@@ -262,19 +282,22 @@
   "en": "{1} · The season",
   "b": "{1} · 季节",
   "date": "2026-11-17",
-  "a": "{1} · 季节"
+  "a": "{1} · 季节",
+  "tr": "{1} · 季节"
  },
  "077fe9c54ed5": {
   "en": "Base",
   "b": "基地",
   "date": "2026-11-17",
-  "a": "基地"
+  "a": "基地",
+  "tr": "基地"
  },
  "0781eab97ca9": {
   "en": "m highest",
   "b": "m 最高",
   "date": "2026-11-17",
-  "a": "米（最高）"
+  "a": "米（最高）",
+  "tr": "米（最高）"
  },
  "07a8f718d5e6": {
   "en": "The tracker question",
@@ -286,7 +309,8 @@
   "en": "Helicopter rescue and good healthcare are both available.",
   "b": "直升机救援和良好的医疗都有。",
   "date": "2026-11-17",
-  "a": "直升机救援和良好的医疗条件都有。"
+  "a": "直升机救援和良好的医疗条件都有。",
+  "tr": "直升机救援和良好的医疗条件都有。"
  },
  "07e4f9c27860": {
   "en": "Topics",
@@ -301,7 +325,8 @@
   "en": "Briefing",
   "b": "任务简报",
   "date": "2026-11-17",
-  "a": "任务简报"
+  "a": "任务简报",
+  "tr": "任务简报"
  },
  "08a76604772f": {
   "en": "Your flying",
@@ -322,7 +347,8 @@
   "en": "km",
   "b": "km",
   "date": "2026-11-17",
-  "a": "公里"
+  "a": "公里",
+  "tr": "公里"
  },
  "090a3c807816": {
   "en": "Scroll",
@@ -393,7 +419,8 @@
   "en": "Each runs {1} days from {2}.",
   "b": "每个行程从{2}出发，共{1}天。",
   "date": "2026-11-17",
-  "a": "每期{1}天，从{2}出发。"
+  "a": "每期{1}天，从{2}出发。",
+  "tr": "每期{1}天，从{2}出发。"
  },
  "0a0ce225ba83": {
   "en": "Play Pre {1} Kenya, with Nikolay Yotov",
@@ -427,7 +454,8 @@
   "en": "The highest of the Kenyan Rift lakes, and fresh, with hippo in the papyrus and fish eagles in the acacias. Crescent Island, the rim of a drowned crater, is walked on foot among giraffe and zebra.",
   "b": "肯尼亚境内海拔最高的裂谷湖，也是淡水湖，纸莎草丛里有河马，金合欢树上有鱼鹰。Crescent Island 是一座沉没火山口的边缘，可以步行其间，身边有长颈鹿和斑马。",
   "date": "2026-11-17",
-  "a": "肯尼亚裂谷湖泊中海拔最高的一座，而且是淡水湖，纸莎草丛中有河马，金合欢树上有非洲海雕。新月岛是一座被淹没的火山口的边缘，可以徒步走在长颈鹿和斑马之间。"
+  "a": "肯尼亚裂谷湖泊中海拔最高的一座，而且是淡水湖，纸莎草丛中有河马，金合欢树上有非洲海雕。新月岛是一座被淹没的火山口的边缘，可以徒步走在长颈鹿和斑马之间。",
+  "tr": "肯尼亚裂谷湖泊中海拔最高的一座，而且是淡水湖，纸莎草丛中有河马，金合欢树上有非洲海雕。新月岛是一座被淹没的火山口的边缘，可以徒步走在长颈鹿和斑马之间。"
  },
  "0aecb638e55b": {
   "en": ", {1} hills, {2}",
@@ -442,13 +470,19 @@
   "en": "Elephants pass through Rimoi on an old route up and down the {1}, and it was to keep that route open that the reserve was set aside in {2}.",
   "b": "大象沿着一条古老的路线穿过 Rimoi，在{1}上下往来，保护区于{2}年划定，就是为了保住这条路线。",
   "date": "2026-11-17",
-  "a": "大象沿着一条在{1}中南来北往的古老路线穿过里莫伊，保护区正是为了保持这条路线畅通，于{2}年划设的。"
+  "a": "大象沿着一条在{1}中南来北往的古老路线穿过里莫伊，保护区正是为了保持这条路线畅通，于{2}年划设的。",
+  "tr": "大象沿着一条在{1}中南来北往的古老路线穿过 Rimoi，保护区正是为了保持这条路线畅通，于{2}年划设的。",
+  "tr_note": "Rimoi kept as on its label",
+  "waive": {
+   "glossary": "a nature reserve, not the reserve parachute"
+  }
  },
  "0b2929a6e961": {
   "en": "Ground crew",
   "b": "地勤团队",
   "date": "2026-11-17",
-  "a": "地勤团队"
+  "a": "地勤团队",
+  "tr": "地勤团队"
  },
  "0b3818833e3e": {
   "en": "Opening your email app. If nothing happens, your device may have no mail client set up: email {1}",
@@ -463,7 +497,8 @@
   "en": "{1} {2} or equivalent",
   "b": "{1} {2}级或同等资质",
   "date": "2026-11-17",
-  "a": "{1} {2}级或同等资质"
+  "a": "{1} {2}级或同等资质",
+  "tr": "{1} {2}级或同等资质"
  },
  "0b5aab133a4a": {
   "en": "Be very careful of the cloud. On a big day he would rather run out south, away from the mountains, than sit under big clouds in a valley system where you can get trapped.",
@@ -515,7 +550,9 @@
   "en": "A dormant stratovolcano with an intact crater rim, and one of the more photographed flights of the trip.",
   "b": "一座休眠的层状火山，火山口边缘完整，是这次行程中被拍得最多的飞行之一。",
   "date": "2026-11-17",
-  "a": "一座火山口边缘完好的休眠层状火山，也是这趟行程中最常被拍摄的飞行之一。"
+  "a": "一座火山口边缘完好的休眠层状火山，也是这趟行程中最常被拍摄的飞行之一。",
+  "tr": "一座火山口边缘完好的休眠层状火山，也是这趟行程中拍照较多的一次飞行。",
+  "tr_note": "'one of the more photographed' is not 'most'"
  },
  "0c77aeece8c2": {
   "en": "Media",
@@ -530,13 +567,19 @@
   "en": "Origins",
   "b": "起源",
   "date": "2026-11-17",
-  "a": "人类起源"
+  "a": "人类起源",
+  "tr": "人类起源"
  },
  "0ce89af0d5cb": {
   "en": "No, there are no dedicated one to one guides on this tour. Pilots are led by one or two expert instructors at a maximum ratio of one to three. Personalised {1} guidance, weather briefings and retrieve help are provided to the group, focused on collective safety and maximising flights.",
   "b": "不会，这个行程没有一对一的专属向导。飞行员由一到两名资深教练带领，比例最高为一比三。我们为整个团队提供个性化的{1}指导、天气任务简报和回收协助，重点是集体安全和尽可能多地飞行。",
   "date": "2026-11-17",
-  "a": "不会，这趟行程没有一对一的专属向导。飞行员由一到两名资深教练带领，师生比最多为一比三。我们为整个团队提供个性化的{1}指导、天气任务简报和回收协助，重点是集体安全和尽可能多飞。"
+  "a": "不会，这趟行程没有一对一的专属向导。飞行员由一到两名资深教练带领，师生比最多为一比三。我们为整个团队提供个性化的{1}指导、天气任务简报和回收协助，重点是集体安全和尽可能多飞。",
+  "tr": "不会，这趟行程没有一对一的专属向导。飞行员由一到两名资深教练带领，教练与飞行员之比最多为一比三。我们为整个团队提供个性化的{1}指导、天气简报和回收协助，重点是集体安全和尽可能多飞。",
+  "tr_note": "weather briefings not stiff; ratio not teacher-student",
+  "waive": {
+   "glossary": "weather briefing for a tour group, not a competition task briefing"
+  }
  },
  "0d017c0662e4": {
   "en": "Live from {1}: the photos and videos",
@@ -557,13 +600,15 @@
   "en": "<x1>over</x1> the Rift",
   "b": "<x1>飞越</x1>大裂谷",
   "date": "2026-11-17",
-  "a": "<x1>飞越</x1>裂谷"
+  "a": "<x1>飞越</x1>裂谷",
+  "tr": "<x1>飞越</x1>东非大裂谷"
  },
  "0d20ee8c0672": {
   "en": "Further",
   "b": "更远",
   "date": "2026-11-17",
-  "a": "拉远"
+  "a": "拉远",
+  "tr": "拉远"
  },
  "0d77c71693ab": {
   "en": "Building something for the sport?",
@@ -594,7 +639,8 @@
   "en": "What This Trip Is Actually Like",
   "b": "这次行程实际是什么样",
   "date": "2026-11-17",
-  "a": "这趟行程的真实样子"
+  "a": "这趟行程的真实样子",
+  "tr": "这趟行程的真实样子"
  },
  "0e3ddfb7d306": {
   "en": "The {1} front ridge from the pilot's seat, snow and rock below the wing",
@@ -615,7 +661,9 @@
   "en": "Nikolay Yotov of Skynomad takes the show to Africa for the first time, on flying in Kenya ahead of the pre World Cup held there. It covers what the sites are actually like and what it means to share that airspace with the wildlife below.",
   "b": "Skynomad 的 Nikolay Yotov 首次把节目带到非洲，谈在肯尼亚飞行，那里正要举办世界杯前哨赛。内容涉及这些飞行场实际是什么样，以及与下方的野生动物共享同一片空域意味着什么。",
   "date": "2026-11-17",
-  "a": "Skynomad的Nikolay Yotov第一次把节目带到非洲，讲述在肯尼亚举办世界杯预赛之前在那里飞行的经历。节目谈到这些场地的真实情况，以及与下方的野生动物共享这片空域意味着什么。"
+  "a": "Skynomad的Nikolay Yotov第一次把节目带到非洲，讲述在肯尼亚举办世界杯预赛之前在那里飞行的经历。节目谈到这些场地的真实情况，以及与下方的野生动物共享这片空域意味着什么。",
+  "tr": "Skynomad 的 Nikolay Yotov 第一次把节目带到非洲，讲述在肯尼亚举办世界杯前哨赛之前在那里飞行的经历。节目谈到这些飞行场地的真实情况，以及与下方的野生动物共享这片空域意味着什么。",
+  "tr_note": "pre World Cup = 前哨赛 (test event), not 预赛"
  },
  "0ee423a2ca65": {
   "en": "See the {1} trip",
@@ -630,7 +678,8 @@
   "en": "in the air",
   "b": "滞空",
   "date": "2026-11-17",
-  "a": "滞空"
+  "a": "滞空",
+  "tr": "滞空"
  },
  "0efbc5dfee58": {
   "en": "India is paperwork before it is flying. None of this can be sorted out on the morning you need it.",
@@ -651,19 +700,22 @@
   "en": "Editable PDF",
   "b": "可编辑 PDF",
   "date": "2026-11-17",
-  "a": "可编辑PDF"
+  "a": "可编辑PDF",
+  "tr": "可编辑 PDF"
  },
  "0f4b36cefb31": {
   "en": "The weather in Kenya is determined by its tropical location and the oscillating effects of the Inter-tropical Convergence Zone (ITCZ), which annually travels back and forth across equatorial Africa, providing Kenya with a bimodal annual rainfall pattern. Flying season peaks in this equatorial paradise from December to March, Ideal for joining our Kenya tour.",
   "b": "肯尼亚的天气由它的热带位置和热带辐合带（ITCZ）的往复影响决定，热带辐合带每年在赤道非洲上空来回移动，使肯尼亚形成一年两次的降雨模式。在这片赤道乐土，飞行季节在十二月到三月达到高峰，最适合参加我们的肯尼亚行程。",
   "date": "2026-11-17",
-  "a": "肯尼亚的天气由其热带位置和热带辐合带（ITCZ）的往复摆动所决定。热带辐合带每年在赤道非洲上空来回移动，使肯尼亚形成一年两个雨季的降雨模式。这片赤道天堂的飞行季节在十二月至三月达到高峰，正适合参加我们的肯尼亚之旅。"
+  "a": "肯尼亚的天气由其热带位置和热带辐合带（ITCZ）的往复摆动所决定。热带辐合带每年在赤道非洲上空来回移动，使肯尼亚形成一年两个雨季的降雨模式。这片赤道天堂的飞行季节在十二月至三月达到高峰，正适合参加我们的肯尼亚之旅。",
+  "tr": "肯尼亚的天气由其热带位置和热带辐合带（ITCZ）的往复摆动所决定。热带辐合带每年在赤道非洲上空来回移动，使肯尼亚形成一年两个雨季的降雨模式。这片赤道天堂的飞行季节在十二月至三月达到高峰，正适合参加我们的肯尼亚之旅。"
  },
  "0f92a0c442c5": {
   "en": "From past pilots",
   "b": "来自往期飞行员",
   "date": "2026-11-17",
-  "a": "往期飞行员的评价"
+  "a": "往期飞行员的评价",
+  "tr": "往期飞行员的评价"
  },
  "0fa19b246492": {
   "en": "Navigators, Episode {1}",
@@ -762,7 +814,8 @@
   "en": "Cash in small notes<x1>For tips and porters. Agree the price first</x1>",
   "b": "小面额现金<x1>用于小费和搬运工。先谈好价格</x1>",
   "date": "2026-11-17",
-  "a": "小面额现金<x1>用于小费和挑夫。先谈好价格</x1>"
+  "a": "小面额现金<x1>用于小费和挑夫。先谈好价格</x1>",
+  "tr": "小面额现金<x1>用于小费和挑夫。先谈好价格</x1>"
  },
  "12e6c9e73647": {
   "en": "Offline maps of the front range",
@@ -835,7 +888,11 @@
   "en": "He launches first to check the air, or last to help with an awkward takeoff.",
   "b": "他先从起飞场起飞去查看空气，或者最后一个起飞，帮助处理起飞困难的人。",
   "date": "2026-11-17",
-  "a": "他会第一个起飞去试探空气，或者最后一个起飞，帮助应对不好起飞的情况。"
+  "a": "他会第一个起飞去试探空气，或者最后一个起飞，帮助应对不好起飞的情况。",
+  "tr": "他会第一个起飞去试探空气，或者最后一个起飞，帮助应对不好起飞的情况。",
+  "waive": {
+   "glossary": "verb 'launches' = takes off (起飞), not the launch site"
+  }
  },
  "15c39714fb66": {
   "en": "The pictures",
@@ -905,7 +962,8 @@
   "en": "Greet everyone, explain everything",
   "b": "问候每一个人，把一切解释清楚",
   "date": "2026-11-17",
-  "a": "跟每个人打招呼，把一切解释清楚"
+  "a": "跟每个人打招呼，把一切解释清楚",
+  "tr": "跟每个人打招呼，把一切解释清楚"
  },
  "17f332cecaf2": {
   "en": "{1} guide to {2} pilots",
@@ -917,7 +975,8 @@
   "en": "Population",
   "b": "人口",
   "date": "2026-11-17",
-  "a": "人口"
+  "a": "人口",
+  "tr": "人口"
  },
  "187487095128": {
   "en": "Nov, Dec",
@@ -954,13 +1013,15 @@
   "en": "You can take off, fly, decide and land on your own. That is not a formality here, it is what makes the trip work at all.",
   "b": "你能独自起飞、飞行、决策和降落。这在这里不是形式，而是整个行程能够成立的前提。",
   "date": "2026-11-17",
-  "a": "你能独立起飞、飞行、做决定和降落。这在这里不是走过场，而是整趟行程能够进行的前提。"
+  "a": "你能独立起飞、飞行、做决定和降落。这在这里不是走过场，而是整趟行程能够进行的前提。",
+  "tr": "你能独立起飞、飞行、做决定和降落。这在这里不是走过场，而是整趟行程能够进行的前提。"
  },
  "18adc8685240": {
   "en": "Maasai cattle",
   "b": "马赛人的牛",
   "date": "2026-11-17",
-  "a": "马赛人的牛群"
+  "a": "马赛人的牛群",
+  "tr": "马赛人的牛群"
  },
  "18b1d21c656d": {
   "en": "The season, November to March. The tour sits in the middle of February.",
@@ -975,7 +1036,8 @@
   "en": "Agree a price in advance, even when someone waves it off. Numbers get misheard, and {1}, {2} and {3} are easy to confuse in a second language on a windy hillside.",
   "b": "提前谈好价格，即使对方摆手说不用。数字很容易听错，在风吹的山坡上用第二语言交流，{1}、{2}和{3}一下子就会混淆。",
   "date": "2026-11-17",
-  "a": "提前谈好价格，即使对方摆手说不用。数字容易听错，在有风的山坡上用第二语言交流时，{1}、{2}和{3}很容易混淆。"
+  "a": "提前谈好价格，即使对方摆手说不用。数字容易听错，在有风的山坡上用第二语言交流时，{1}、{2}和{3}很容易混淆。",
+  "tr": "提前谈好价格，即使对方摆手说不用。数字容易听错，在有风的山坡上用第二语言交流时，{1}、{2}和{3}很容易混淆。"
  },
  "19452154f50d": {
   "en": "Most nationalities can apply online for India's e-Tourist visa, but not all, so check yours on the <x1>official portal</x1>. Apply at least four days before you arrive; with our first departure on {1}, it is not something to leave late. Since {2} every foreign visitor also files a free online e-Arrival Card in the {3} hours before flying.",
@@ -987,7 +1049,8 @@
   "en": "Kenya has over {1} further ethnic languages.",
   "b": "肯尼亚还有超过{1}种其他民族语言。",
   "date": "2026-11-17",
-  "a": "肯尼亚另外还有超过{1}种民族语言。"
+  "a": "肯尼亚另外还有超过{1}种民族语言。",
+  "tr": "肯尼亚另外还有超过{1}种民族语言。"
  },
  "19da3bd8e3b8": {
   "en": "Photos by {1}",
@@ -1000,7 +1063,9 @@
   "en": "We oversee every step of our ground crew logistics and meet the very highest safety standards. Our team's Kenyan roots and ability to bridge the gap between global flying standards and local realities allows us to run every aspect of the operation smoothly, from retrieve drives to campsite coordination.",
   "b": "地勤后勤的每一个环节我们都亲自把关，并达到最高的安全标准。我们团队的肯尼亚根基，加上连接全球飞行标准与本地现实的能力，让我们能顺畅地运转行动的方方面面，从回收接送到营地协调。",
   "date": "2026-11-17",
-  "a": "我们亲自把控地勤后勤的每一个环节，并达到最高的安全标准。我们团队扎根肯尼亚，能够在全球飞行标准与本地实际之间架起桥梁，让整个运营的每个方面都顺畅运转，从回收车辆到营地协调。"
+  "a": "我们亲自把控地勤后勤的每一个环节，并达到最高的安全标准。我们团队扎根肯尼亚，能够在全球飞行标准与本地实际之间架起桥梁，让整个运营的每个方面都顺畅运转，从回收车辆到营地协调。",
+  "tr": "我们亲自把控地勤后勤的每一个环节，并达到最高的安全标准。我们团队扎根肯尼亚，能够在全球飞行标准与本地实际之间架起桥梁，让整个运营的每个方面都顺畅运转，从回收接送到营地协调。",
+  "tr_note": "retrieve drives = 回收接送"
  },
  "1a1c7199240f": {
   "en": "Passport, valid {1} months, with two blank pages",
@@ -1064,13 +1129,15 @@
   "en": "About The Ngong Hills",
   "b": "关于 Ngong Hills",
   "date": "2026-11-17",
-  "a": "关于恩贡山"
+  "a": "关于恩贡山",
+  "tr": "关于恩贡山"
  },
  "1b42d1673f56": {
   "en": "Glide Over Lands Where Humanity Took Its First Steps",
   "b": "滑翔过人类迈出第一步的土地",
   "date": "2026-11-17",
-  "a": "滑翔飞越人类迈出第一步的土地"
+  "a": "滑翔飞越人类迈出第一步的土地",
+  "tr": "滑翔飞越人类迈出第一步的土地"
  },
  "1baeb24536f8": {
   "en": "About Palampur",
@@ -1154,13 +1221,15 @@
   "en": "Previous photograph",
   "b": "上一张照片",
   "date": "2026-11-17",
-  "a": "上一张照片"
+  "a": "上一张照片",
+  "tr": "上一张照片"
  },
  "1de0e2a3654a": {
   "en": "Mount Longonot Crater",
   "b": "Mount Longonot 火山口",
   "date": "2026-11-17",
-  "a": "隆戈诺特山火山口"
+  "a": "隆戈诺特山火山口",
+  "tr": "隆戈诺特山火山口"
  },
  "1e500477d288": {
   "en": "Trip updates, new episodes, and stories from the field. No spam. Unsubscribe any time.",
@@ -1208,7 +1277,8 @@
   "en": "Ticking is saved on this device, so you can come back to it the night before you fly. <x1>Nothing here is sent anywhere.</x1>",
   "b": "勾选记录保存在这台设备上，所以你可以在飞行前一晚再回来看。<x1>这里的任何内容都不会被发送到任何地方。</x1>",
   "date": "2026-11-17",
-  "a": "勾选状态保存在这台设备上，所以你可以在起飞前一晚回来查看。<x1>这里的任何内容都不会发送到任何地方。</x1>"
+  "a": "勾选状态保存在这台设备上，所以你可以在起飞前一晚回来查看。<x1>这里的任何内容都不会发送到任何地方。</x1>",
+  "tr": "勾选状态保存在这台设备上，所以你可以在出发前一晚回来查看。<x1>这里的任何内容都不会发送到任何地方。</x1>"
  },
  "20d3d0ce9104": {
   "en": "From<x1>, per pilot</x1>",
@@ -1241,13 +1311,15 @@
   "en": "Hiking shoes<x1>Comfortable, already broken in</x1>",
   "b": "登山鞋<x1>舒适，已经磨合好</x1>",
   "date": "2026-11-17",
-  "a": "徒步鞋<x1>舒适且已经穿合脚</x1>"
+  "a": "徒步鞋<x1>舒适且已经穿合脚</x1>",
+  "tr": "徒步鞋<x1>舒适且已经穿合脚</x1>"
  },
  "218d369c4df1": {
   "en": "Tip {1} to {2} per cent for good work, and nothing extra for a rip off. Fairness runs both ways. Pay for the things you cannot see, like a path an ancestor cut or the fact that nothing with teeth came near you. Hire from the community closest to the site, or you create jealousy you will not be around to resolve.",
   "b": "工作做得好，给{1}到{2} % 的小费，被宰了就不必多给。公平是双向的。为你看不见的东西付钱，比如祖先开出的小路，或者没有带牙的东西靠近你这件事。雇用离飞行场最近的社区的人，否则你会制造出嫉妒，而你不会留下来化解它。",
   "date": "2026-11-17",
-  "a": "干得好就给{1}%到{2}%的小费，被坑了就一分不多给。公平是双向的。为那些你看不见的东西付钱，比如祖辈开出的一条小路，或者没有任何长着利齿的东西靠近过你。从离场地最近的社区雇人，否则你会引起嫉妒，而你却不会留下来化解。"
+  "a": "干得好就给{1}%到{2}%的小费，被坑了就一分不多给。公平是双向的。为那些你看不见的东西付钱，比如祖辈开出的一条小路，或者没有任何长着利齿的东西靠近过你。从离场地最近的社区雇人，否则你会引起嫉妒，而你却不会留下来化解。",
+  "tr": "干得好就给{1}%到{2}%的小费，被坑了就一分不多给。公平是双向的。为那些你看不见的东西付钱，比如祖辈开出的一条小路，或者没有任何长着利齿的东西靠近过你。从离场地最近的社区雇人，否则你会引起嫉妒，而你却不会留下来化解。"
  },
  "21af6fcad3e5": {
   "en": "What pilot rating do I need for {1}?",
@@ -1289,7 +1361,8 @@
   "en": "Altitude",
   "b": "海拔",
   "date": "2026-11-17",
-  "a": "海拔"
+  "a": "海拔",
+  "tr": "海拔"
  },
  "227fef16fa1d": {
   "en": "Your photo",
@@ -1317,13 +1390,15 @@
   "en": "No mandatory vaccines for travellers from Europe or America. Local food can upset tender Western stomachs.",
   "b": "来自欧洲或美洲的旅客没有强制疫苗。当地食物可能让娇弱的西方肠胃不适。",
   "date": "2026-11-17",
-  "a": "来自欧洲或美洲的旅行者无须强制接种疫苗。当地食物可能会让娇气的西方肠胃不适。"
+  "a": "来自欧洲或美洲的旅行者无须强制接种疫苗。当地食物可能会让娇气的西方肠胃不适。",
+  "tr": "来自欧洲或美洲的旅行者无须强制接种疫苗。当地食物可能会让娇气的西方肠胃不适。"
  },
  "22f90faba3f0": {
   "en": "Flying gloves<x1>It is cold at {1}m</x1>",
   "b": "飞行手套<x1>{1}m 高处很冷</x1>",
   "date": "2026-11-17",
-  "a": "飞行手套<x1>{1}米高空很冷</x1>"
+  "a": "飞行手套<x1>{1}米高空很冷</x1>",
+  "tr": "飞行手套<x1>{1}米高空很冷</x1>"
  },
  "2321d414ecd6": {
   "en": "Season Package",
@@ -1347,7 +1422,8 @@
   "en": "You expect polished service and comfort. This is the wrong trip.",
   "b": "你期待精致的服务和舒适。这是一次选错的行程。",
   "date": "2026-11-17",
-  "a": "你期待周到的服务和舒适。那这趟行程选错了。"
+  "a": "你期待周到的服务和舒适。那这趟行程选错了。",
+  "tr": "你期待周到的服务和舒适。那这趟行程选错了。"
  },
  "242cb352c019": {
   "en": "Reset the view",
@@ -1402,7 +1478,8 @@
   "en": "Paragliding in Kenya",
   "b": "肯尼亚的滑翔伞运动",
   "date": "2026-11-17",
-  "a": "肯尼亚的滑翔伞运动"
+  "a": "肯尼亚的滑翔伞运动",
+  "tr": "肯尼亚的滑翔伞运动"
  },
  "251858daa9ea": {
   "en": "the canyons seen through it",
@@ -1417,7 +1494,9 @@
   "en": "Six Sites Down The Rift",
   "b": "沿大裂谷而下的六个飞行场",
   "date": "2026-11-17",
-  "a": "沿裂谷而下的六个场地"
+  "a": "沿裂谷而下的六个场地",
+  "tr": "沿东非大裂谷而下的六个飞行场地",
+  "tr_note": "same as its heading with distance"
  },
  "2532df6ef263": {
   "en": "Soar The Land Of The Incas",
@@ -1453,13 +1532,15 @@
   "en": "The hills between the {1} and Lake Baringo, where the six-million-year-old fossils of Orrorin tugenensis were found in {2}, among the oldest candidates for the human line.",
   "b": "{1}和巴林戈湖之间的山丘，六百万年前的 Orrorin tugenensis 化石于{2}年在这里被发现，是人类谱系中最古老的候选者之一。",
   "date": "2026-11-17",
-  "a": "{1}与巴林戈湖之间的丘陵，{2}年在这里发现了六百万年前的图根原人（Orrorin tugenensis）化石，是人类谱系最古老的候选者之一。"
+  "a": "{1}与巴林戈湖之间的丘陵，{2}年在这里发现了六百万年前的图根原人（Orrorin tugenensis）化石，是人类谱系最古老的候选者之一。",
+  "tr": "{1}与巴林戈湖之间的丘陵，{2}年在这里发现了六百万年前的图根原人（Orrorin tugenensis）化石，是人类谱系最古老的候选者之一。"
  },
  "26977b4f4c5a": {
   "en": "A green field, a clean wind line, somewhere safe to put it down.",
   "b": "一块绿地，一条清晰的风线，一个可以安全落地的地方。",
   "date": "2026-11-17",
-  "a": "一片绿地，一条干净的风线，一个可以安全降落的地方。"
+  "a": "一片绿地，一条干净的风线，一个可以安全降落的地方。",
+  "tr": "一片绿地，一条干净的风线，一个可以安全降落的地方。"
  },
  "26e00b08d068": {
   "en": "Get In Touch",
@@ -1486,7 +1567,8 @@
   "en": "Flying In Africa, And How To Do It Well <x1>DIY</x1>",
   "b": "在非洲飞行，以及如何飞好 <x1>DIY</x1>",
   "date": "2026-11-17",
-  "a": "在非洲飞行，以及如何<x1>自助</x1>飞好"
+  "a": "在非洲飞行，以及如何<x1>自助</x1>飞好",
+  "tr": "在非洲飞行，以及如何<x1>自助</x1>飞好"
  },
  "2776e9555d4a": {
   "en": "Stay In Touch",
@@ -1501,13 +1583,15 @@
   "en": "On you",
   "b": "随身携带",
   "date": "2026-11-17",
-  "a": "随身物品"
+  "a": "随身物品",
+  "tr": "随身物品"
  },
  "27a3dd606b1d": {
   "en": "It is not for you if",
   "b": "这次行程不适合你，如果",
   "date": "2026-11-17",
-  "a": "这趟行程不适合你，如果"
+  "a": "这趟行程不适合你，如果",
+  "tr": "这趟行程不适合你，如果"
  },
  "280cb7f1130c": {
   "en": "Daily Highlights",
@@ -1529,7 +1613,8 @@
   "en": "Chapter {1} of {2}: Mount Longonot Crater",
   "b": "第{1}章，共{2}章：Mount Longonot 火山口",
   "date": "2026-11-17",
-  "a": "第{1}章，共{2}章：隆戈诺特山火山口"
+  "a": "第{1}章，共{2}章：隆戈诺特山火山口",
+  "tr": "第{1}章，共{2}章：隆戈诺特山火山口"
  },
  "284a3357cc39": {
   "en": "Wing you know well<x1>EN or LTF certified. {1} rewards a wing you can relax on, not the hottest one you own</x1>",
@@ -1582,7 +1667,8 @@
   "en": "Tilt steeper",
   "b": "倾斜得更陡",
   "date": "2026-11-17",
-  "a": "调陡视角"
+  "a": "调陡视角",
+  "tr": "调陡视角"
  },
  "294daa3bc60c": {
   "en": "<x1>The {1}</x1>The {2} range under building cumulus, above the Kangra valley<x2>near Big face</x2>",
@@ -1594,7 +1680,9 @@
   "en": "A range of young volcanic cones and lava flows, the latest of them from the {1}, with some of the longest lava tubes in the world beneath. The rain that falls here sinks through the lava and surfaces at Mzima Springs.",
   "b": "一片年轻的火山锥和熔岩流，最近的一次来自{1}，地下有世界上最长的一些熔岩管。落在这里的雨水渗过熔岩，在 Mzima Springs 重新涌出。",
   "date": "2026-11-17",
-  "a": "一列由年轻火山锥和熔岩流组成的山脉，最近一次喷发在{1}，地下有世界上最长的一批熔岩管。落在这里的雨水渗入熔岩，再从姆济马泉涌出地面。"
+  "a": "一列由年轻火山锥和熔岩流组成的山脉，最近一次喷发在{1}，地下有世界上最长的一批熔岩管。落在这里的雨水渗入熔岩，再从姆济马泉涌出地面。",
+  "tr": "一列由年轻火山锥和熔岩流组成的山脉，最近一次喷发在{1}，地下有世界上最长的一批熔岩管。落在这里的雨水渗入熔岩，再从 Mzima Springs 涌出地面。",
+  "tr_note": "Mzima Springs kept as on its label"
  },
  "2993d789bf23": {
   "en": "Indian visa, applied for before you travel<x1>At least {1} days before you arrive. The e-visa suits most nationalities, but not all</x1>",
@@ -1606,37 +1694,44 @@
   "en": "Nikolay Yotov <x1>Kenya episode, {1}</x1>",
   "b": "Nikolay Yotov <x1>肯尼亚一集，{1}</x1>",
   "date": "2026-11-17",
-  "a": "Nikolay Yotov <x1>肯尼亚那一期，{1}</x1>"
+  "a": "Nikolay Yotov <x1>肯尼亚那一期，{1}</x1>",
+  "tr": "Nikolay Yotov <x1>肯尼亚那一期，{1}</x1>"
  },
  "29afb9f3ac15": {
   "en": "Does the price include travel?",
   "b": "价格包含旅行费用吗？",
   "date": "2026-11-17",
-  "a": "价格包含交通吗？"
+  "a": "价格包含交通吗？",
+  "tr": "价格包含交通吗？"
  },
  "29f890050f45": {
   "en": "Long sleeved shirts",
   "b": "长袖衬衫",
   "date": "2026-11-17",
-  "a": "长袖衬衫"
+  "a": "长袖衬衫",
+  "tr": "长袖衬衫"
  },
  "2a3e5e58a390": {
   "en": "Will I get my own guide?",
   "b": "我会有自己的向导吗？",
   "date": "2026-11-17",
-  "a": "我会有专属向导吗？"
+  "a": "我会有专属向导吗？",
+  "tr": "我会有专属向导吗？"
  },
  "2a827fa48baa": {
   "en": "Dec to Mar",
   "b": "十二月到三月",
   "date": "2026-11-17",
-  "a": "十二月至三月"
+  "a": "十二月至三月",
+  "tr": "十二月至三月"
  },
  "2a9c4fd5ed22": {
   "en": "launch from the lush green takeoffs in {1},",
   "b": "从{1}郁郁葱葱的绿色起飞场出发，",
   "date": "2026-11-17",
-  "a": "从{1}郁郁葱葱的绿色起飞场起飞，"
+  "a": "从{1}郁郁葱葱的绿色起飞场起飞，",
+  "tr": "从{1}郁郁葱葱的绿色起飞场起飞，",
+  "tr_note": "part of one sentence with 9f88b5e83627"
  },
  "2abac98987dc": {
   "en": "Click a pin, hear the story.",
@@ -1657,7 +1752,8 @@
   "en": "Better still, give work as a porter or guide, or donate to a local organisation. Avoid handing out your phone number or email, because it turns into requests for money later.",
   "b": "更好的做法是，给人搬运工或向导的工作，或者捐给当地的组织。不要把你的电话号码或邮箱给出去，因为这之后会变成要钱的请求。",
   "date": "2026-11-17",
-  "a": "更好的办法是提供挑夫或向导的工作，或者向当地组织捐款。不要随便留下你的电话号码或电子邮箱，因为以后会变成要钱的请求。"
+  "a": "更好的办法是提供挑夫或向导的工作，或者向当地组织捐款。不要随便留下你的电话号码或电子邮箱，因为以后会变成要钱的请求。",
+  "tr": "更好的办法是提供挑夫或向导的工作，或者向当地组织捐款。不要随便留下你的电话号码或电子邮箱，因为以后会变成要钱的请求。"
  },
  "2ae72f61ca17": {
   "en": "Behind {1} is a spine, and past it the big mountains: Barabangal, the run to Manali and beyond. Jigish Gohil's test for going is a couple of hundred hours, an {2} course, and the kit and fitness for a night out and a long walk. <x1>His test in full</x1>.",
@@ -1675,7 +1771,8 @@
   "en": "The base for the tour, and the site where the world speed records are chased.",
   "b": "行程的基地，也是追逐世界速度纪录的飞行场。",
   "date": "2026-11-17",
-  "a": "本次行程的基地，也是挑战世界速度纪录的场地。"
+  "a": "本次行程的基地，也是挑战世界速度纪录的场地。",
+  "tr": "本次行程的基地，也是挑战世界速度纪录的场地。"
  },
  "2b3dd4849d56": {
   "en": "Free web copy, <x1></x1>, under <x2>{1} {2}</x2>: share it with the credit “<x3>Photo: {3}, {4}</x3>”, not for commercial use.",
@@ -1697,7 +1794,8 @@
   "en": "Capital",
   "b": "首都",
   "date": "2026-11-17",
-  "a": "首都"
+  "a": "首都",
+  "tr": "首都"
  },
  "2bdd9abbc860": {
   "en": "North, not a first week line",
@@ -1709,7 +1807,8 @@
   "en": "December to March",
   "b": "十二月到三月",
   "date": "2026-11-17",
-  "a": "十二月至三月"
+  "a": "十二月至三月",
+  "tr": "十二月至三月"
  },
  "2c639e809ef6": {
   "en": "Photos coming",
@@ -1722,7 +1821,8 @@
   "en": "Eleven Frames From The Rift",
   "b": "大裂谷的十一帧画面",
   "date": "2026-11-17",
-  "a": "裂谷的十一个画面"
+  "a": "裂谷的十一个画面",
+  "tr": "东非大裂谷的十一个画面"
  },
  "2d46a4260e21": {
   "en": "Rule {1}, The cloud",
@@ -1781,7 +1881,9 @@
   "en": "A dry lake bed in the southern Rift where stone hand axes lie in their thousands, left by early humans over hundreds of thousands of years. Louis and Mary Leakey began excavating here in the {1}; the site is open, with a small museum.",
   "b": "南部大裂谷的一片干涸湖床，上千件石手斧散落其间，是早期人类在数十万年里留下的。Louis 和 Mary Leakey 从{1}起在这里开始发掘；遗址对外开放，有一座小博物馆。",
   "date": "2026-11-17",
-  "a": "南部裂谷中的一片干涸湖床，成千上万把石制手斧散落于此，是早期人类在数十万年间留下的。路易斯·利基（Louis Leakey）和玛丽·利基（Mary Leakey）于{1}开始在这里发掘；遗址对外开放，并设有一座小型博物馆。"
+  "a": "南部裂谷中的一片干涸湖床，成千上万把石制手斧散落于此，是早期人类在数十万年间留下的。路易斯·利基（Louis Leakey）和玛丽·利基（Mary Leakey）于{1}开始在这里发掘；遗址对外开放，并设有一座小型博物馆。",
+  "tr": "南部裂谷中的一片干涸湖床，成千上万把石制手斧散落于此，是早期人类在数十万年间留下的。Louis Leakey 和 Mary Leakey 于{1}开始在这里发掘；遗址对外开放，并设有一座小型博物馆。",
+  "tr_note": "people's names stay"
  },
  "2f1a617c615f": {
   "en": "Podbean",
@@ -1805,7 +1907,8 @@
   "en": "{1} · Thermal strength",
   "b": "{1} · 热气流强度",
   "date": "2026-11-17",
-  "a": "{1} · 热气流强度"
+  "a": "{1} · 热气流强度",
+  "tr": "{1} · 热气流强度"
  },
  "2f84eea5d45d": {
   "en": "Copy link",
@@ -1844,19 +1947,22 @@
   "en": "Documents and money",
   "b": "证件和钱",
   "date": "2026-11-17",
-  "a": "证件和钱"
+  "a": "证件和钱",
+  "tr": "证件和钱"
  },
  "30915439d691": {
   "en": "The small things that matter once you are away from the van.",
   "b": "离开车之后才显出作用的小东西。",
   "date": "2026-11-17",
-  "a": "离开面包车之后才显出重要的小东西。"
+  "a": "离开面包车之后才显出重要的小东西。",
+  "tr": "离开面包车之后才显出重要的小东西。"
  },
  "30baea0ede33": {
   "en": "The approach that works",
   "b": "行之有效的做法",
   "date": "2026-11-17",
-  "a": "行之有效的方式"
+  "a": "行之有效的方式",
+  "tr": "行之有效的方式"
  },
  "30db08362e85": {
   "en": "Which airport do I fly into for {1}?",
@@ -1937,7 +2043,8 @@
   "en": "Rule {1}, The approach that works",
   "b": "第{1}条，行之有效的做法",
   "date": "2026-11-17",
-  "a": "规则{1}：行之有效的方式"
+  "a": "规则{1}：行之有效的方式",
+  "tr": "规则{1}：行之有效的方式"
  },
  "32b4fdd76613": {
   "en": "{1} to Dharamshala and back",
@@ -1949,7 +2056,8 @@
   "en": "Founded {1}, elevation {2}m.",
   "b": "建于{1}年，海拔{2}m。",
   "date": "2026-11-17",
-  "a": "建于{1}年，海拔{2}米。"
+  "a": "建于{1}年，海拔{2}米。",
+  "tr": "建于{1}年，海拔{2}米。"
  },
  "32eed21e5502": {
   "en": "<x1>Meadows below the range</x1>A meadow of white flowers below the snow-covered {1}",
@@ -1967,7 +2075,9 @@
   "en": "Our expertise in East African flying has been accumulated over long years of exploring the region’s weather patterns and hidden gems. Our handpicked team of experienced local and international pilots have logged countless airtime over the savannah, giving us an industry-leading opportunity to fly in conditions that range from gentle soaring to potentially epic world record breaking {1} flights.",
   "b": "我们对东非飞行的了解，来自长年探索这一地区的天气规律和隐藏的好去处。我们精心挑选的团队由经验丰富的本地和国际飞行员组成，在草原上空积累了无数的滞空时间，这让我们有行业领先的机会，在从轻柔的飘飞到可能打破世界纪录的史诗级{1}飞行的各种条件下飞行。",
   "date": "2026-11-17",
-  "a": "我们在东非飞行方面的专业经验，来自多年来对该地区天气规律和隐秘宝地的探索。我们精心挑选的团队由经验丰富的本地和国际飞行员组成，他们在热带草原上空积累了无数滞空时间，让我们拥有业内领先的机会，在从温和的滑翔到可能打破世界纪录的史诗级{1}飞行等各种条件下飞行。"
+  "a": "我们在东非飞行方面的专业经验，来自多年来对该地区天气规律和隐秘宝地的探索。我们精心挑选的团队由经验丰富的本地和国际飞行员组成，他们在热带草原上空积累了无数滞空时间，让我们拥有业内领先的机会，在从温和的滑翔到可能打破世界纪录的史诗级{1}飞行等各种条件下飞行。",
+  "tr": "我们在东非飞行方面的专业经验，来自多年来对该地区天气规律和隐秘宝地的探索。我们精心挑选的团队由经验丰富的本地和国际飞行员组成，他们在热带草原上空积累了无数滞空时间，让我们拥有业内领先的机会，在从温和的翱翔到可能打破世界纪录的史诗级{1}飞行等各种条件下飞行。",
+  "tr_note": "soaring = 翱翔"
  },
  "335038d8a582": {
   "en": "Kazakhstan, the striped canyons",
@@ -2003,13 +2113,15 @@
   "en": "About Hell's Gate",
   "b": "关于 Hell's Gate",
   "date": "2026-11-17",
-  "a": "关于地狱之门"
+  "a": "关于地狱之门",
+  "tr": "关于地狱之门"
  },
  "348d76471ead": {
   "en": "Health and stomach",
   "b": "健康和肠胃",
   "date": "2026-11-17",
-  "a": "健康和肠胃"
+  "a": "健康和肠胃",
+  "tr": "健康和肠胃"
  },
  "34a2dd009d1d": {
   "en": "Warm layers for the evening<x1>It cools off fast after landing</x1>",
@@ -2106,7 +2218,8 @@
   "en": "About Iten, Home of Champions",
   "b": "关于伊滕，冠军之乡",
   "date": "2026-11-17",
-  "a": "关于伊滕，冠军之乡"
+  "a": "关于伊滕，冠军之乡",
+  "tr": "关于伊滕，冠军之乡"
  },
  "372ea5cbedff": {
   "en": "Coverage Like This For <x1>Your Event</x1>",
@@ -2119,7 +2232,8 @@
   "en": "Peak season, December to March. The two tours sit in the middle of it, two days apart.",
   "b": "旺季，十二月到三月。这两个行程处在旺季中段，相隔两天。",
   "date": "2026-11-17",
-  "a": "旺季在十二月至三月。两期行程都安排在旺季当中，相隔两天。"
+  "a": "旺季在十二月至三月。两期行程都安排在旺季当中，相隔两天。",
+  "tr": "旺季在十二月至三月。两期行程都安排在旺季当中，相隔两天。"
  },
  "376b0e8cf4cd": {
   "en": "Its name",
@@ -2134,13 +2248,16 @@
   "en": "See Kenya as the Gods saw it.",
   "b": "像众神那样看肯尼亚。",
   "date": "2026-11-17",
-  "a": "像众神那样俯瞰肯尼亚。"
+  "a": "像众神那样俯瞰肯尼亚。",
+  "tr": "像众神那样看肯尼亚。",
+  "tr_note": "'saw it' = 看, not 俯瞰"
  },
  "3824e8ed0e41": {
   "en": "{1} to {2} m/s at the midday peaks,",
   "b": "正午高峰时{1}到{2} m/s，",
   "date": "2026-11-17",
-  "a": "正午高峰时{1}至{2} m/s，"
+  "a": "正午高峰时{1}至{2} m/s，",
+  "tr": "正午高峰时{1}至{2} m/s，"
  },
  "387e281ae314": {
   "en": "Amazon Music",
@@ -2161,7 +2278,8 @@
   "en": "Rule {1}, When you are asked for money",
   "b": "第{1}条，当有人向你要钱",
   "date": "2026-11-17",
-  "a": "规则{1}：当有人向你要钱时"
+  "a": "规则{1}：当有人向你要钱时",
+  "tr": "规则{1}：当有人向你要钱时"
  },
  "38d178a350ef": {
   "en": "Do not assume the pilot ahead knows what they are doing. Some of the pilots in the air at {1} are superb, and some simply do not know better.",
@@ -2173,7 +2291,8 @@
   "en": "Rule {1}, You are the precedent",
   "b": "第{1}条，你就是先例",
   "date": "2026-11-17",
-  "a": "规则{1}：你就是先例"
+  "a": "规则{1}：你就是先例",
+  "tr": "规则{1}：你就是先例"
  },
  "3920b56e81bd": {
   "en": "<x1>{1} days</x1> · <x2>Next departure {2}</x2>",
@@ -2189,7 +2308,8 @@
   "en": "Turn right",
   "b": "向右转",
   "date": "2026-11-17",
-  "a": "向右转"
+  "a": "向右转",
+  "tr": "向右转"
  },
  "3a08d1aa9b0b": {
   "en": "about {1}m",
@@ -2268,7 +2388,8 @@
   "en": "About Mount Suswa",
   "b": "关于 Mount Suswa",
   "date": "2026-11-17",
-  "a": "关于苏斯瓦山"
+  "a": "关于苏斯瓦山",
+  "tr": "关于苏斯瓦山"
  },
  "3c50c2d39c34": {
   "en": "Being brave enough to go out and do it",
@@ -2297,13 +2418,16 @@
   "en": "Chapter {1} of {2}: Kijabe Hill",
   "b": "第{1}章，共{2}章：Kijabe Hill",
   "date": "2026-11-17",
-  "a": "第{1}章，共{2}章：基贾贝山"
+  "a": "第{1}章，共{2}章：基贾贝山",
+  "tr": "第{1}章，共{2}章：Kijabe Hill",
+  "tr_note": "local name kept"
  },
  "3ce06cc5af08": {
   "en": "Rift Valley National Park",
   "b": "Rift Valley National Park",
   "date": "2026-11-17",
-  "a": "裂谷国家公园"
+  "a": "裂谷国家公园",
+  "tr": "裂谷国家公园"
  },
  "3d0016068c7c": {
   "en": "{1}-{2} km",
@@ -2324,13 +2448,15 @@
   "en": "The deposit is not refunded, and if you cancel there is a termination fee that on a trip like this is usually most of the price, because permits, guiding and local arrangements are committed months ahead. It is calculated as the price less what we save and less anything we recover by reselling your place, and we will show you the working. The balance is due {1} days before departure. This is exactly why we push trip cancellation insurance so hard. Full detail in the <x1>booking terms</x1>.",
   "b": "定金不予退还，如果你取消，会收取一笔终止费用，在这样的行程中通常是价格的大部分，因为许可、向导和本地安排都是提前几个月就确定下来的。费用的算法是价格减去我们节省的部分，再减去转售你的名额所收回的部分，我们会向你展示计算过程。尾款在出发前{1}天到期。这正是我们极力推荐取消行程保险的原因。详情见<x1>预订条款</x1>。",
   "date": "2026-11-17",
-  "a": "定金不予退还；如果你取消行程，还需支付一笔解约费，像这样的行程，解约费通常占价格的大部分，因为许可、向导和当地安排都是提前几个月就定下来的。解约费的计算方法是：价格减去我们节省下来的费用，再减去我们转售你的名额所收回的款项，我们会把计算过程给你看。尾款须在出发前{1}天付清。这正是我们如此极力推荐购买行程取消险的原因。详情请见<x1>预订条款</x1>。"
+  "a": "定金不予退还；如果你取消行程，还需支付一笔解约费，像这样的行程，解约费通常占价格的大部分，因为许可、向导和当地安排都是提前几个月就定下来的。解约费的计算方法是：价格减去我们节省下来的费用，再减去我们转售你的名额所收回的款项，我们会把计算过程给你看。尾款须在出发前{1}天付清。这正是我们如此极力推荐购买行程取消险的原因。详情请见<x1>预订条款</x1>。",
+  "tr": "定金不予退还；如果你取消行程，还需支付一笔解约费，像这样的行程，解约费通常占价格的大部分，因为许可、向导和当地安排都是提前几个月就定下来的。解约费的计算方法是：价格减去我们节省下来的费用，再减去我们转售你的名额所收回的款项，我们会把计算过程给你看。尾款须在出发前{1}天付清。这正是我们如此极力推荐购买行程取消险的原因。详情请见<x1>预订条款</x1>。"
  },
  "3d4c256bbca9": {
   "en": "Ripstop tape<x1>Takeoffs and landings can be bushy and thorny</x1>",
   "b": "Ripstop 修补胶带<x1>起飞场和降落场可能灌木丛生、多刺</x1>",
   "date": "2026-11-17",
-  "a": "防撕裂修补胶带<x1>起飞场和降落场可能灌木丛生、多刺</x1>"
+  "a": "防撕裂修补胶带<x1>起飞场和降落场可能灌木丛生、多刺</x1>",
+  "tr": "防撕裂修补胶带<x1>起飞场和降落场可能灌木丛生、多刺</x1>"
  },
  "3d5fc1e20980": {
   "en": "What {1} you are working with",
@@ -2345,13 +2471,15 @@
   "en": "The team",
   "b": "团队",
   "date": "2026-11-17",
-  "a": "团队"
+  "a": "团队",
+  "tr": "团队"
  },
  "3d7f4d95d4a2": {
   "en": "About Olorgesailie",
   "b": "关于 Olorgesailie",
   "date": "2026-11-17",
-  "a": "关于奥洛戈赛利"
+  "a": "关于奥洛戈赛利",
+  "tr": "关于奥洛戈赛利"
  },
  "3d8703f3e37d": {
   "en": "Send a Media Enquiry",
@@ -2364,13 +2492,15 @@
   "en": "Tracker or a live tracking app<x1>So retrieve knows where you came down</x1>",
   "b": "追踪器或实时追踪应用<x1>这样回收的人知道你降在哪里</x1>",
   "date": "2026-11-17",
-  "a": "追踪器或实时追踪应用<x1>让回收人员知道你在哪里落地</x1>"
+  "a": "追踪器或实时追踪应用<x1>让回收人员知道你在哪里落地</x1>",
+  "tr": "追踪器或实时追踪应用<x1>让回收人员知道你在哪里落地</x1>"
  },
  "3dd0c90f8281": {
   "en": "The Equator",
   "b": "赤道",
   "date": "2026-11-17",
-  "a": "赤道"
+  "a": "赤道",
+  "tr": "赤道"
  },
  "3e0763edd17f": {
   "en": "{1} sits on the {2}, the range that runs down India's west coast about {3} km inland, on the volcanic tablelands of the {4}: flat tops and sharp vertical cliffs. Vistasp Kharas grew up here and has flown it for more than ten years. He calls it far more technical than {5}: a {6} km flight in {7} is as good as {8} km in {9}.",
@@ -2401,7 +2531,8 @@
   "en": "Choose a photograph",
   "b": "选择一张照片",
   "date": "2026-11-17",
-  "a": "选择一张照片"
+  "a": "选择一张照片",
+  "tr": "选择一张照片"
  },
  "3eb7165288d1": {
   "en": "Gabriel Orsini",
@@ -2431,7 +2562,8 @@
   "en": "Mount Longonot",
   "b": "Mount Longonot",
   "date": "2026-11-17",
-  "a": "隆戈诺特山"
+  "a": "隆戈诺特山",
+  "tr": "隆戈诺特山"
  },
  "3fed329b07ed": {
   "en": "McLeod Ganj, on the ridge above Dharamshala, has been the seat of the Dalai Lama and of the Central Tibetan Administration since {1}. The Tsuglagkhang complex holds his residence and the main temple.",
@@ -2443,25 +2575,31 @@
   "en": "Kenya: Paragliding in the Cradle of Humankind | {1}",
   "b": "{1}：肯尼亚滑翔伞运动，人类的摇篮",
   "date": "2026-11-17",
-  "a": "肯尼亚：人类摇篮里的滑翔伞运动 | {1}"
+  "a": "肯尼亚：人类摇篮里的滑翔伞运动 | {1}",
+  "tr": "肯尼亚：人类摇篮里的滑翔伞运动 | {1}"
  },
  "409f5b0a7706": {
   "en": "Chapter {1} of {2}: Chyulu Hills",
   "b": "第{1}章，共{2}章：Chyulu Hills",
   "date": "2026-11-17",
-  "a": "第{1}章，共{2}章：丘卢山"
+  "a": "第{1}章，共{2}章：丘卢山",
+  "tr": "第{1}章，共{2}章：丘卢山"
  },
  "40ac7a9b2169": {
   "en": "{1} offers a tailored paragliding cross-country adventure based on the intimate local knowledge that allows our lead pilots: the founding team, to consistently find the best lines, unlock remote landing zones, and safely share the skies of this unparalleled landscape.",
   "b": "{1}提供量身定制的滑翔伞运动越野飞行冒险，依靠的是深入的本地经验，这让我们的领队飞行员，也就是创始团队，始终能找到最好的路线，开辟偏远的降落场，并安全地与你共享这片无与伦比的土地上的天空。",
   "date": "2026-11-17",
-  "a": "{1}提供量身定制的滑翔伞运动越野飞行冒险，依托深厚的本地经验，让我们的领队飞行员，也就是创始团队，能够始终找到最佳航线，打开偏远的降落场，并安全地与大家共享这片无与伦比的天空。"
+  "a": "{1}提供量身定制的滑翔伞运动越野飞行冒险，依托深厚的本地经验，让我们的领队飞行员，也就是创始团队，能够始终找到最佳航线，打开偏远的降落场，并安全地与大家共享这片无与伦比的天空。",
+  "tr": "{1}提供量身定制的滑翔伞运动越野飞行冒险，依托深厚的本地经验，让我们的领队飞行员，也就是创始团队，能够始终找到最佳航线，开辟偏远的降落场，并在这片无与伦比的土地上空安全地共享天空。",
+  "tr_note": "landscape was dropped in a"
  },
  "40e55e679b84": {
   "en": "The flamingos feed on the algae that bloom in the soda water. Their numbers rise and fall with the lake: in the high water since {1} most of them moved on to Bogoria, and they return as the lake drops.",
   "b": "火烈鸟以苏打水中繁殖的藻类为食。它们的数量随湖水涨落：自{1}年的高水位以来，大部分已转移到博戈里亚湖，随着湖水下降，它们又会回来。",
   "date": "2026-11-17",
-  "a": "火烈鸟以碱水中繁殖的藻类为食。它们的数量随湖水涨落而变化：自{1}年湖水上涨以来，大部分火烈鸟迁往了博戈里亚湖，湖水回落时它们又会回来。"
+  "a": "火烈鸟以碱水中繁殖的藻类为食。它们的数量随湖水涨落而变化：自{1}年湖水上涨以来，大部分火烈鸟迁往了博戈里亚湖，湖水回落时它们又会回来。",
+  "tr": "火烈鸟以碱水中繁殖的藻类为食。它们的数量随湖水涨落而变化：自{1}年高水位以来，大部分火烈鸟迁往了博戈里亚湖，湖水回落时它们又会回来。",
+  "tr_note": "high water since, not 'since it rose'"
  },
  "40f1736b73a8": {
   "en": "Play the film",
@@ -2486,7 +2624,8 @@
   "en": "About Lake Elementaita",
   "b": "关于埃莱门泰塔湖",
   "date": "2026-11-17",
-  "a": "关于埃尔门泰塔湖"
+  "a": "关于埃尔门泰塔湖",
+  "tr": "关于埃尔门泰塔湖"
  },
  "41ce8b3675ff": {
   "en": "A white paraglider over farmland on the shore of a lake, a dry hillside to the right",
@@ -2517,7 +2656,8 @@
   "en": "Flying gear",
   "b": "飞行装备",
   "date": "2026-11-17",
-  "a": "飞行装备"
+  "a": "飞行装备",
+  "tr": "飞行装备"
  },
  "4240b2c7a0db": {
   "en": "India Tour {1}",
@@ -2535,7 +2675,9 @@
   "en": "Kijabe Hill",
   "b": "Kijabe Hill",
   "date": "2026-11-17",
-  "a": "基贾贝山"
+  "a": "基贾贝山",
+  "tr": "Kijabe Hill",
+  "tr_note": "local name kept"
  },
  "4385f498f29f": {
   "en": "Explore The Cradle",
@@ -2550,25 +2692,30 @@
   "en": "{1} items, tick or print",
   "b": "{1}项，勾选或打印",
   "date": "2026-11-17",
-  "a": "{1}项物品，可勾选或打印"
+  "a": "{1}项物品，可勾选或打印",
+  "tr": "{1}项物品，可勾选或打印"
  },
  "4410753e3239": {
   "en": "Three paragliders soaring along a hazy green ridge above terraced fields in the {1}",
   "b": "三顶滑翔伞沿着一道朦胧的绿色山脊飞行，下方是{1}的梯田",
   "date": "2026-11-17",
-  "a": "三顶滑翔伞沿着一道薄雾笼罩的绿色山脊滑翔，下方是{1}的梯田"
+  "a": "三顶滑翔伞沿着一道薄雾笼罩的绿色山脊滑翔，下方是{1}的梯田",
+  "tr": "三顶滑翔伞沿着一道雾蒙蒙的绿色山脊翱翔，下方是{1}的梯田",
+  "tr_note": "soaring = 翱翔"
  },
  "4424fd6a6489": {
   "en": "We fly the route together, or improvise over the radio when the day has other ideas. Under moderate easterlies, waiting for each other in the air is often simply not possible.",
   "b": "我们一起飞完这条路线，当这一天另有安排时，就通过无线电临场应变。在中等强度的东风下，在空中互相等待往往根本做不到。",
   "date": "2026-11-17",
-  "a": "我们一起飞完航线，或者在天气另有打算时通过无线电临场应变。在中等强度的东风下，往往根本无法在空中互相等待。"
+  "a": "我们一起飞完航线，或者在天气另有打算时通过无线电临场应变。在中等强度的东风下，往往根本无法在空中互相等待。",
+  "tr": "我们一起飞完航线，或者在天气另有打算时通过无线电临场应变。在中等强度的东风下，往往根本无法在空中互相等待。"
  },
  "44495602a8ba": {
   "en": "Baobabs",
   "b": "猴面包树",
   "date": "2026-11-17",
-  "a": "猴面包树"
+  "a": "猴面包树",
+  "tr": "猴面包树"
  },
  "4493b00773f8": {
   "en": "{1}, about {2}m",
@@ -2616,7 +2763,8 @@
   "en": "The southern Rift from Suswa to Amboseli is Maasai land: pastoralists whose cattle, red cloth and beadwork are the best known image of Kenya, and who still move their herds across it.",
   "b": "从 Suswa 到安博塞利的南部大裂谷是马赛人的土地：牧民的牛群、红布和串珠，是肯尼亚最广为人知的形象，他们至今仍在这片土地上迁徙放牧。",
   "date": "2026-11-17",
-  "a": "从苏斯瓦山到安博塞利的南部裂谷是马赛人的土地：这些游牧民的牛群、红色披布和珠饰是肯尼亚最广为人知的形象，他们至今仍赶着牛群在这片土地上迁徙。"
+  "a": "从苏斯瓦山到安博塞利的南部裂谷是马赛人的土地：这些游牧民的牛群、红色披布和珠饰是肯尼亚最广为人知的形象，他们至今仍赶着牛群在这片土地上迁徙。",
+  "tr": "从苏斯瓦山到安博塞利的南部裂谷是马赛人的土地：这些游牧民的牛群、红色披布和珠饰是肯尼亚最广为人知的形象，他们至今仍赶着牛群在这片土地上迁徙。"
  },
  "4659fb30692d": {
   "en": "Tom Lolies",
@@ -2640,7 +2788,8 @@
   "en": "{1}°T · {2} km from Machakos Hills",
   "b": "方位{1}° · 距 Machakos Hills {2} km",
   "date": "2026-11-17",
-  "a": "真方位{1}° · 距马查科斯山{2}公里"
+  "a": "真方位{1}° · 距马查科斯山{2}公里",
+  "tr": "真方位{1}° · 距马查科斯山{2}公里"
  },
  "469c38b8444c": {
   "en": "Touch The Sky With Glory",
@@ -2662,7 +2811,9 @@
   "en": "A {1} m fall on the Ewaso Ng'iro at Nyahururu, reached by the Scottish explorer Joseph Thomson in {2} and named for his father.",
   "b": "Nyahururu 的 Ewaso Ng'iro 河上一道{1} m 的瀑布，苏格兰探险家 Joseph Thomson 于{2}年到达这里，并以他父亲的名字命名。",
   "date": "2026-11-17",
-  "a": "尼亚胡鲁鲁埃瓦索恩吉罗河上一道落差{1}米的瀑布，苏格兰探险家约瑟夫·汤姆森（Joseph Thomson）于{2}年到达这里，并以他父亲的名字命名。"
+  "a": "尼亚胡鲁鲁埃瓦索恩吉罗河上一道落差{1}米的瀑布，苏格兰探险家约瑟夫·汤姆森（Joseph Thomson）于{2}年到达这里，并以他父亲的名字命名。",
+  "tr": "尼亚胡鲁鲁埃瓦索恩吉罗河上一道落差{1}米的瀑布，苏格兰探险家 Joseph Thomson 于{2}年到达这里，并以他父亲的名字命名。",
+  "tr_note": "people's names stay"
  },
  "46bb0cf1a5ac": {
   "en": "The Science Of EN Certifications",
@@ -2677,7 +2828,9 @@
   "en": "Elephants under Kilimanjaro: a park of swamps and dust where the longest-running study of wild elephants has followed the same families since {1}.",
   "b": "乞力马扎罗山下的大象：一座布满沼泽和尘土的公园，自{1}年以来，持续时间最长的野生大象研究就在这里追踪同样的象群。",
   "date": "2026-11-17",
-  "a": "乞力马扎罗山下的大象：一座由沼泽和尘土构成的公园，世界上持续时间最长的野生大象研究，自{1}年起就一直在追踪同样的家族。"
+  "a": "乞力马扎罗山下的大象：一座由沼泽和尘土构成的公园，世界上持续时间最长的野生大象研究，自{1}年起就一直在追踪同样的家族。",
+  "tr": "乞力马扎罗山下的大象：一座由沼泽和尘土构成的公园，持续时间最长的野生大象研究自{1}年起就一直在这里追踪同样的家族。",
+  "tr_note": "'世界上' not in the English here"
  },
  "4706b99f989f": {
   "en": "the plateau seen through it",
@@ -2726,37 +2879,45 @@
   "en": "About The Aberdares",
   "b": "关于阿伯德尔山脉",
   "date": "2026-11-17",
-  "a": "关于阿伯德尔山脉"
+  "a": "关于阿伯德尔山脉",
+  "tr": "关于阿伯德尔山脉"
  },
  "47fb5e07d480": {
   "en": "The {1} flows north along the floor of the Rift between the Elgeyo escarpment and the Tugen Hills, about a thousand metres below Iten. The east face of the escarpment is the wall pilots soar, and the long flights run north and south along it.",
   "b": "{1}河沿大裂谷谷底向北流，位于 Elgeyo 断崖和 Tugen Hills 之间，比伊滕低大约一千米。断崖东面是飞行员借以飘飞的山壁，长距离飞行就沿着它向北和向南展开。",
   "date": "2026-11-17",
-  "a": "{1}河沿着裂谷谷底向北流，夹在埃尔格约断崖与图根山之间，比伊滕低约一千米。断崖的东坡就是飞行员借以滑翔的崖壁，长距离飞行沿着它向南北两个方向展开。"
+  "a": "{1}河沿着裂谷谷底向北流，夹在埃尔格约断崖与图根山之间，比伊滕低约一千米。断崖的东坡就是飞行员借以滑翔的崖壁，长距离飞行沿着它向南北两个方向展开。",
+  "tr": "{1}河沿着裂谷谷底向北流，夹在埃尔格约断崖与图根山之间，比伊滕低约一千米。断崖的东坡就是飞行员借以翱翔的崖壁，长距离飞行沿着它向南北两个方向展开。",
+  "tr_note": "soar = 翱翔"
  },
  "480cb18f3fea": {
   "en": "Closer",
   "b": "更近",
   "date": "2026-11-17",
-  "a": "拉近"
+  "a": "拉近",
+  "tr": "拉近"
  },
  "4823f445edd0": {
   "en": "Long trousers<x1>Against thorns, sunburn and mosquitoes</x1>",
   "b": "长裤<x1>防荆棘、晒伤和蚊子</x1>",
   "date": "2026-11-17",
-  "a": "长裤<x1>防荆棘、防晒伤、防蚊子</x1>"
+  "a": "长裤<x1>防荆棘、防晒伤、防蚊子</x1>",
+  "tr": "长裤<x1>防荆棘、防晒伤、防蚊子</x1>"
  },
  "486d1431f114": {
   "en": "Flying Etiquette",
   "b": "飞行礼仪",
   "date": "2026-11-17",
-  "a": "飞行礼仪"
+  "a": "飞行礼仪",
+  "tr": "飞行礼仪"
  },
  "487336511e6c": {
   "en": "About Kijabe Hill",
   "b": "关于 Kijabe Hill",
   "date": "2026-11-17",
-  "a": "关于基贾贝山"
+  "a": "关于基贾贝山",
+  "tr": "关于 Kijabe Hill",
+  "tr_note": "small local place: name kept"
  },
  "48bc78620bf1": {
   "en": "Full Event",
@@ -2778,13 +2939,20 @@
   "en": "A conservancy on the Laikipia plateau that holds the last two northern white rhinos on earth, Najin and Fatu, under guard day and night.",
   "b": "Laikipia 高原上的一处保护区，养着世界上仅剩的两头北部白犀牛，Najin 和 Fatu，日夜有人看守。",
   "date": "2026-11-17",
-  "a": "莱基皮亚高原上的一座保护地，生活着地球上最后两头北方白犀牛纳金和法图，日夜有人看守。"
+  "a": "莱基皮亚高原上的一座保护地，生活着地球上最后两头北方白犀牛纳金和法图，日夜有人看守。",
+  "tr": "莱基皮亚高原上的一座保护地，生活着地球上最后两头北方白犀牛 Najin 和 Fatu，日夜有人看守。",
+  "tr_note": "the rhinos' names stay"
  },
  "48fdd02f31df": {
   "en": "We know how it feels to <x1>Touch</x1> <x2>The</x2> <x3>Sky</x3> <x4>With</x4> <x5>Glory</x5> and It’s our dream to be able to share that with you",
   "b": "我们知道<x1>触摸</x1><x2>天空</x2><x3>的</x3><x4>荣耀</x4><x5>是什么感觉</x5>，我们的梦想，就是能与你分享这份感觉",
   "date": "2026-11-17",
-  "a": "我们知道<x4>带着</x4><x5>荣耀</x5><x1>触</x1><x2>碰</x2><x3>天空</x3>是什么感觉，我们的梦想就是能与你分享这份感受"
+  "a": "我们知道<x4>带着</x4><x5>荣耀</x5><x1>触</x1><x2>碰</x2><x3>天空</x3>是什么感觉，我们的梦想就是能与你分享这份感受",
+  "tr": "我们知道 <x1>Touch</x1> <x2>The</x2> <x3>Sky</x3> <x4>With</x4> <x5>Glory</x5> 是什么感觉，我们的梦想就是能与你分享这份感受",
+  "tr_note": "brand line stays English (keep.txt)",
+  "waive": {
+   "left in English": "brand line Touch The Sky With Glory, kept English by the owner"
+  }
  },
  "4966f835881a": {
   "en": "Autumn at {1} can overdevelop. On {2} a visiting pilot near the end of a long flight was swept from {3}m to above {4}m inside a storm cloud in about ten minutes, and survived; nine incidents were reported in the area that day, three of them reserve deployments. <x1>Cross Country reported it</x1>.",
@@ -2811,19 +2979,23 @@
   "en": "A Neolithic and Iron Age settlement on a hill outside Nakuru, excavated by Mary Leakey in the late {1}, with burial mounds and hut floors and a museum in the old farmhouse.",
   "b": "纳库鲁城外一座山丘上的新石器和铁器时代聚落，Mary Leakey 于{1}末在此发掘，有墓冢和房屋地基，旧农舍里还有一座博物馆。",
   "date": "2026-11-17",
-  "a": "纳库鲁郊外一座小山上的新石器时代和铁器时代聚落，由玛丽·利基（Mary Leakey）于{1}末发掘，有墓冢和茅屋地基，旧农舍里设有一座博物馆。"
+  "a": "纳库鲁郊外一座小山上的新石器时代和铁器时代聚落，由玛丽·利基（Mary Leakey）于{1}末发掘，有墓冢和茅屋地基，旧农舍里设有一座博物馆。",
+  "tr": "纳库鲁郊外一座小山上的新石器时代和铁器时代聚落，由 Mary Leakey 于{1}末发掘，有墓冢和茅屋地基，旧农舍里设有一座博物馆。",
+  "tr_note": "people's names stay"
  },
  "4a42d5cd351e": {
   "en": "Baobabs stand in the hot lowlands of Tsavo and along the Mombasa road, where the rains are short and the trees hold water in their trunks. The big ones are counted in centuries, and the oldest dated trees in Africa are over two thousand years old.",
   "b": "猴面包树生长在 Tsavo 炎热的低地和蒙巴萨公路沿线，那里雨季很短，树靠树干储水。大树的年龄以世纪计，非洲有确切年代记录的最古老的树已超过两千岁。",
   "date": "2026-11-17",
-  "a": "猴面包树生长在察沃炎热的低地和蒙巴萨公路沿线，那里雨季短暂，树木把水储存在树干里。大树的树龄以世纪计，非洲已测定年代的最古老的树超过两千岁。"
+  "a": "猴面包树生长在察沃炎热的低地和蒙巴萨公路沿线，那里雨季短暂，树木把水储存在树干里。大树的树龄以世纪计，非洲已测定年代的最古老的树超过两千岁。",
+  "tr": "猴面包树生长在察沃炎热的低地和蒙巴萨公路沿线，那里雨季短暂，树木把水储存在树干里。大树的树龄以世纪计，非洲已测定年代的最古老的树超过两千岁。"
  },
  "4a7f42dcebe5": {
   "en": "The elephants come to Amboseli for its swamps, fed by water that falls on Kilimanjaro and surfaces here in a dry plain. The families of this park have been followed by name since {1}, the longest study of wild elephants anywhere.",
   "b": "大象来安博塞利是为了这里的沼泽，沼泽的水来自乞力马扎罗山上落下的雨雪，在这片干燥的平原上涌出。这座公园里的象群自{1}年起就被一个个按名字追踪，是世界上持续时间最长的野生大象研究。",
   "date": "2026-11-17",
-  "a": "大象来安博塞利是为了这里的沼泽，沼泽的水源是落在乞力马扎罗山上的雨雪，在一片干旱的平原上涌出地面。自{1}年起，这座公园里的大象家族就被逐一取名追踪，这是全世界持续最久的野生大象研究。"
+  "a": "大象来安博塞利是为了这里的沼泽，沼泽的水源是落在乞力马扎罗山上的雨雪，在一片干旱的平原上涌出地面。自{1}年起，这座公园里的大象家族就被逐一取名追踪，这是全世界持续最久的野生大象研究。",
+  "tr": "大象来安博塞利是为了这里的沼泽，沼泽的水源是落在乞力马扎罗山上的雨雪，在一片干旱的平原上涌出地面。自{1}年起，这座公园里的大象家族就被逐一取名追踪，这是全世界持续最久的野生大象研究。"
  },
  "4ab772cebc20": {
   "en": "Navigating India (Bonus Ep)",
@@ -2838,7 +3010,9 @@
   "en": "Between Kibwezi and Mtito Andei the Mombasa road runs through baobab country, the hot red lowlands of Tsavo. The trees stand bare for most of the year, their swollen trunks holding water through the dry months, and bear their fruit in hanging pods.",
   "b": "在 Kibwezi 和 Mtito Andei 之间，蒙巴萨公路穿过猴面包树之地，也就是 Tsavo 炎热的红色低地。这些树一年中大部分时间光秃秃的，膨大的树干在旱季储水，果实成串挂在荚里。",
   "date": "2026-11-17",
-  "a": "在基布韦齐和姆蒂托安代之间，蒙巴萨公路穿过猴面包树之乡，也就是察沃炎热的红土低地。这些树一年中大部分时间光秃秃的，膨大的树干在旱季储存水分，果实结在垂挂的荚中。"
+  "a": "在基布韦齐和姆蒂托安代之间，蒙巴萨公路穿过猴面包树之乡，也就是察沃炎热的红土低地。这些树一年中大部分时间光秃秃的，膨大的树干在旱季储存水分，果实结在垂挂的荚中。",
+  "tr": "在 Kibwezi 和 Mtito Andei 之间，蒙巴萨公路穿过猴面包树之乡，也就是察沃炎热的红土低地。这些树一年中大部分时间光秃秃的，膨大的树干在旱季储存水分，果实结在垂挂的荚中。",
+  "tr_note": "small towns kept"
  },
  "4ad48a02590f": {
   "en": "Launch",
@@ -2896,7 +3070,8 @@
   "en": "Rule {1}, Permissions and officials",
   "b": "第{1}条，许可和官员",
   "date": "2026-11-17",
-  "a": "规则{1}：许可和官员"
+  "a": "规则{1}：许可和官员",
+  "tr": "规则{1}：许可和官员"
  },
  "4b96d91b5920": {
   "en": "A pilot on a red wing flying over snow-covered mountains",
@@ -3001,7 +3176,8 @@
   "en": "Before You Fly, And What To Bring",
   "b": "飞行之前，以及该带什么",
   "date": "2026-11-17",
-  "a": "飞行之前，以及要带什么"
+  "a": "飞行之前，以及要带什么",
+  "tr": "飞行之前，以及要带什么"
  },
  "4e2f74d4f583": {
   "en": "BHPA instructor, {1} Paul Tissandier Diploma {2}",
@@ -3013,7 +3189,8 @@
   "en": "What equipment is provided?",
   "b": "提供哪些装备？",
   "date": "2026-11-17",
-  "a": "提供哪些装备？"
+  "a": "提供哪些装备？",
+  "tr": "提供哪些装备？"
  },
  "4fba49b06fc9": {
   "en": "Send enquiry",
@@ -3046,13 +3223,15 @@
   "en": "The only national park inside a capital city, gazetted in {1} as Kenya's first, where rhino and lion graze against the skyline.",
   "b": "唯一位于首都城市之内的国家公园，于{1}年被划为肯尼亚第一个国家公园，犀牛和狮子在天际线的映衬下吃草。",
   "date": "2026-11-17",
-  "a": "世界上唯一一座位于首都城内的国家公园，于{1}年设立，是肯尼亚第一座国家公园，犀牛和狮子在城市天际线前觅食。"
+  "a": "世界上唯一一座位于首都城内的国家公园，于{1}年设立，是肯尼亚第一座国家公园，犀牛和狮子在城市天际线前觅食。",
+  "tr": "世界上唯一一座位于首都城内的国家公园，于{1}年设立，是肯尼亚第一座国家公园，犀牛和狮子在城市天际线前觅食。"
  },
  "50514f06d610": {
   "en": "Public transport is crowded and good fun, and your glider bag may double the fare, which is fair. Hitching, offer close to the bus fare and do not haggle below it; going lower is taken as an insult, not a bargain. A hired driver who negotiates, handles gear, keeps crowds back and will drive at night to fetch you is worth {1} to {2} dollars at the end of the trip. Avoid driving at night yourself. If you land a long way out, sleep where you landed.",
   "b": "公共交通拥挤又有趣，你的伞包可能要多付一倍车费，这是合理的。搭便车时，出价接近公交车费，不要砍到那以下；出价更低会被当作侮辱，而不是讨价还价。一位能谈价、搬装备、拦住人群、夜里也愿意开车来接你的雇佣司机，在行程结束时值得给{1}到{2}美元。自己不要在夜里开车。如果你降落得很远，就在降落的地方过夜。",
   "date": "2026-11-17",
-  "a": "公共交通很拥挤，也很好玩，你的伞包可能让车费翻倍，这很公平。搭便车时，给的钱要接近公交车费，不要压到更低；压价会被视为侮辱，而不是讨价还价。一位能帮你谈价、搬装备、拦住人群、愿意夜里开车来接你的雇用司机，在行程结束时值得给{1}到{2}美元。避免自己夜间开车。如果你降落在很远的地方，就在降落处过夜。"
+  "a": "公共交通很拥挤，也很好玩，你的伞包可能让车费翻倍，这很公平。搭便车时，给的钱要接近公交车费，不要压到更低；压价会被视为侮辱，而不是讨价还价。一位能帮你谈价、搬装备、拦住人群、愿意夜里开车来接你的雇用司机，在行程结束时值得给{1}到{2}美元。避免自己夜间开车。如果你降落在很远的地方，就在降落处过夜。",
+  "tr": "公共交通很拥挤，也很好玩，你的伞包可能让车费翻倍，这很公平。搭便车时，给的钱要接近公交车费，不要压到更低；压价会被视为侮辱，而不是讨价还价。一位能帮你谈价、搬装备、拦住人群、愿意夜里开车来接你的雇用司机，在行程结束时值得给{1}到{2}美元。避免自己夜间开车。如果你降落在很远的地方，就在降落处过夜。"
  },
  "50d13ea33788": {
   "en": "Media coverage",
@@ -3073,7 +3252,8 @@
   "en": "Flamingos feed in the shallows, and the islets are one of the few places in East Africa where great white pelicans breed.",
   "b": "火烈鸟在浅水中觅食，这些小岛是东非少数几个大白鹈鹕繁殖的地方之一。",
   "date": "2026-11-17",
-  "a": "火烈鸟在浅水中觅食，这些小岛是东非少数几个大白鹈鹕繁殖的地方之一。"
+  "a": "火烈鸟在浅水中觅食，这些小岛是东非少数几个大白鹈鹕繁殖的地方之一。",
+  "tr": "火烈鸟在浅水中觅食，这些小岛是东非少数几个大白鹈鹕繁殖的地方之一。"
  },
  "515aba49a8e0": {
   "en": "Watch the sky, not just the climb",
@@ -3092,7 +3272,9 @@
   "en": "From the Elgeyo escarpment at {1} in the north to the Chyulu Hills in the south, the scroll flies the six sites in order, {2} km end to end. Or take the controls and go where you like.",
   "b": "从北边 Elgeyo 断崖上的{1}到南边的 Chyulu Hills，滚动页面会依次飞过这六个飞行场，首尾相距{2} km。你也可以自己操控，想去哪就去哪。",
   "date": "2026-11-17",
-  "a": "从北边{1}的埃尔格约断崖，到南边的丘卢山，页面滚动时会依次飞过这六个场地，全程{2}公里。你也可以自己操控，想去哪儿就去哪儿。"
+  "a": "从北边{1}的埃尔格约断崖，到南边的丘卢山，页面滚动时会依次飞过这六个场地，全程{2}公里。你也可以自己操控，想去哪儿就去哪儿。",
+  "tr": "从北边{1}的埃尔格约断崖，到南边的丘卢山，页面滚动时会依次飞过这六个飞行场地，首尾相距{2}公里。你也可以自己操控，想去哪儿就去哪儿。",
+  "tr_note": "merged"
  },
  "5219616d3f22": {
   "en": "Starting from",
@@ -3131,7 +3313,8 @@
   "en": "Wing you know well<x1>EN or LTF certified</x1>",
   "b": "你很熟悉的伞翼<x1>通过 EN 或 LTF 认证</x1>",
   "date": "2026-11-17",
-  "a": "你熟悉的伞翼<x1>经EN或LTF认证</x1>"
+  "a": "你熟悉的伞翼<x1>经EN或LTF认证</x1>",
+  "tr": "你熟悉的伞翼<x1>经 EN 或 LTF 认证</x1>"
  },
  "52c4fb8b83bb": {
   "en": "<x1>Kangra valley</x1>The Kangra valley from the air, villages and fields below the hills<x2>near Palampur</x2>",
@@ -3143,7 +3326,9 @@
   "en": "Fitness: good condition for hikes to launch at moderate elevation, gear handling, and four to six hour active flying days in heat. You should be able to trek uneven terrain with a {1} to {2} kg pack.",
   "b": "体能：状况良好，能在中等海拔徒步上起飞场，搬运装备，并在炎热中每个飞行日积极飞行四到六小时。你应该能背着{1}到{2} kg 的背包走过不平的地形。",
   "date": "2026-11-17",
-  "a": "体能：身体状况良好，能徒步登上海拔适中的起飞场，能搬运装备，能在炎热中完成每天四到六小时的飞行日。你应该能够背着{1}至{2}公斤的背包在崎岖地形上徒步。"
+  "a": "体能：身体状况良好，能徒步登上海拔适中的起飞场，能搬运装备，能在炎热中完成每天四到六小时的飞行日。你应该能够背着{1}至{2}公斤的背包在崎岖地形上徒步。",
+  "tr": "体能：身体状况良好，能徒步登上海拔适中的起飞场，能搬运装备，能在炎热中应对每天四到六小时积极飞行的飞行日。你应该能够背着{1}至{2}公斤的背包在崎岖地形上徒步。",
+  "tr_note": "smoother"
  },
  "52ef4185cdf4": {
   "en": "When is the paragliding season in {1}?",
@@ -3170,7 +3355,12 @@
   "en": "You bring your own EN or LTF certified wing, harness, reserve, helmet and vario or {1}. Hiking boots and thermal layers are recommended.",
   "b": "你自带通过 EN 或 LTF 认证的伞翼、座袋、备份伞、头盔，以及垂直速度表或{1}。建议带上登山靴和保暖层。",
   "date": "2026-11-17",
-  "a": "你需要自带经EN或LTF认证的伞翼、座袋、备份伞、头盔，以及垂直速度表或{1}。建议带上登山靴和保暖层。"
+  "a": "你需要自带经EN或LTF认证的伞翼、座袋、备份伞、头盔，以及垂直速度表或{1}。建议带上登山靴和保暖层。",
+  "tr": "你需要自带经 EN 或 LTF 认证的伞翼、座袋、备份伞、头盔，以及垂直速度表或{1}。建议带上登山靴和保暖衣物。",
+  "tr_note": "thermal layers = warm clothing",
+  "waive": {
+   "glossary": "thermal layers = warm clothing, not a thermal"
+  }
  },
  "535d98c81acb": {
   "en": "Hours in the last {1} months",
@@ -3224,7 +3414,8 @@
   "en": "Conditions",
   "b": "条件",
   "date": "2026-11-17",
-  "a": "飞行条件"
+  "a": "飞行条件",
+  "tr": "飞行条件"
  },
  "5524bb564250": {
   "en": "Before you launch",
@@ -3245,7 +3436,8 @@
   "en": "Reticulated giraffe",
   "b": "网纹长颈鹿",
   "date": "2026-11-17",
-  "a": "网纹长颈鹿"
+  "a": "网纹长颈鹿",
+  "tr": "网纹长颈鹿"
  },
  "5591a37269f0": {
   "en": ", {1} and the Andes, planned for {2}",
@@ -3260,7 +3452,8 @@
   "en": "The Practical Country",
   "b": "实用国家信息",
   "date": "2026-11-17",
-  "a": "实用国情"
+  "a": "实用国情",
+  "tr": "实用国情"
  },
  "55c66106455f": {
   "en": "Navigating {1} (Pre {2} India) : Vistasp Kharas<x1>Navigators, Episode {3}, {4} min</x1>",
@@ -3276,7 +3469,8 @@
   "en": "There are few enough of us flying here that you are not an anonymous tourist. You are the paraglider pilot that community has met, and possibly the only one they will meet this year. What you do sets the terms for everyone who comes next.",
   "b": "在这里飞行的人少之又少，所以你不是匿名的游客。你就是那个社区见过的滑翔伞飞行员，也可能是他们今年见到的唯一一个。你所做的一切，为之后到来的每个人定下了规矩。",
   "date": "2026-11-17",
-  "a": "在这里飞行的人少之又少，所以你不是一个匿名的游客。你就是那个社区见过的滑翔伞飞行员，可能也是他们今年唯一会见到的一个。你的所作所为，为之后来的每一个人定下了基调。"
+  "a": "在这里飞行的人少之又少，所以你不是一个匿名的游客。你就是那个社区见过的滑翔伞飞行员，可能也是他们今年唯一会见到的一个。你的所作所为，为之后来的每一个人定下了基调。",
+  "tr": "在这里飞行的人少之又少，所以你不是一个匿名的游客。你就是那个社区见过的滑翔伞飞行员，可能也是他们今年唯一会见到的一个。你的所作所为，为之后来的每一个人定下了基调。"
  },
  "55d8ace47701": {
   "en": "The flying in front of the takeoff is the textbook part: landing fields all along the valley, a road never far away, and griffon vultures marking the climbs. If the day goes wrong, you land, take a retrieve and go home.",
@@ -3297,7 +3491,8 @@
   "en": "{1} most populous in Africa, {2} globally. Area {3} km².",
   "b": "非洲人口第{1}，全球第{2}。面积{3} km²。",
   "date": "2026-11-17",
-  "a": "人口在非洲排{1}，全球排{2}。面积{3} 平方公里。"
+  "a": "人口在非洲排{1}，全球排{2}。面积{3} 平方公里。",
+  "tr": "人口在非洲排{1}，全球排{2}。面积{3}平方公里。"
  },
  "56907a4f988f": {
   "en": "Hold a place",
@@ -3385,7 +3580,9 @@
   "en": "A {1} day guided paragliding tour based in {2}, Kenya. Thermals to {3} m/s, {4}m {5}, and flights of two to seven hours over the Rift Valley.",
   "b": "{1}天的滑翔伞运动向导行程，以肯尼亚的{2}为基地。热气流最高{3} m/s，{4}m {5}，在东非大裂谷上空一次飞行两到七小时。",
   "date": "2026-11-17",
-  "a": "以肯尼亚{2}为基地、为期{1}天的有向导滑翔伞运动之旅。热气流可达{3} m/s，{5}{4}米，在东非大裂谷上空单次飞行两到七小时。"
+  "a": "以肯尼亚{2}为基地、为期{1}天的有向导滑翔伞运动之旅。热气流可达{3} m/s，{5}{4}米，在东非大裂谷上空单次飞行两到七小时。",
+  "tr": "以肯尼亚{2}为基地、为期{1}天的滑翔伞运动向导之旅。热气流可达{3} m/s，离地{4}米（{5}），在东非大裂谷上空单次飞行两到七小时。",
+  "tr_note": "merged; AGL made readable"
  },
  "58cf731a05e0": {
   "en": "Paused at {1}",
@@ -3409,7 +3606,8 @@
   "en": "A red and yellow paraglider high above a steep green ridge with plains stretching to the horizon",
   "b": "一顶红黄相间的滑翔伞高悬在陡峭的绿色山脊之上，平原一直延伸到地平线",
   "date": "2026-11-17",
-  "a": "一顶红黄相间的滑翔伞高悬在陡峭的绿色山脊上空，平原一直延伸到地平线"
+  "a": "一顶红黄相间的滑翔伞高悬在陡峭的绿色山脊上空，平原一直延伸到地平线",
+  "tr": "一顶红黄相间的滑翔伞高悬在陡峭的绿色山脊上空，平原一直延伸到地平线"
  },
  "59c6639bf0d2": {
   "en": "What equipment is recommended",
@@ -3446,13 +3644,16 @@
   "en": "You expect quiet, picturesque air every day. {1} and Machakos can be rough through sections of a flight, and near the escarpments the turbulence is heavier than you were expecting.",
   "b": "你期待每天都有安静、如画的空气。{1}和 Machakos 在飞行的某些路段可能很粗糙，在断崖附近，紊流比你预想的更强。",
   "date": "2026-11-17",
-  "a": "你期待每天都是平静如画的空气。{1}和马查科斯在飞行的某些路段可能很颠簸，靠近断崖处的乱流也比你预想的更强。"
+  "a": "你期待每天都是平静如画的空气。{1}和马查科斯在飞行的某些路段可能很颠簸，靠近断崖处的乱流也比你预想的更强。",
+  "tr": "你期待每天都是平静如画的空气。{1}和马查科斯在飞行的某些路段可能很颠簸，靠近断崖处的乱流也比你预想的更强。"
  },
  "5b642ef6456e": {
   "en": "Explore the Cradle is built for independent pilots with strong glider handling and an appetite for the unfamiliar. We put flight safety first, because that is what keeps the fun factor intact.",
   "b": "Explore the Cradle 是为具备出色伞翼操控能力、愿意面对陌生环境的独立飞行员设计的。我们把飞行安全放在第一位，因为这才能让乐趣保持完整。",
   "date": "2026-11-17",
-  "a": "“探索人类摇篮”之旅专为伞翼操控能力强、乐于面对陌生环境的独立飞行员而设计。我们把飞行安全放在首位，因为正是安全让乐趣得以保全。"
+  "a": "“探索人类摇篮”之旅专为伞翼操控能力强、乐于面对陌生环境的独立飞行员而设计。我们把飞行安全放在首位，因为正是安全让乐趣得以保全。",
+  "tr": "Explore the Cradle 之旅专为伞翼操控能力强、乐于面对陌生环境的独立飞行员而设计。我们把飞行安全放在首位，因为正是安全让乐趣得以保全。",
+  "tr_note": "tour name kept as written"
  },
  "5bba91a3c176": {
   "en": "A paraglider high above a wide lake, with terraced cliffs beyond",
@@ -3489,7 +3690,8 @@
   "en": "A volcanic caldera on the edge of Nakuru, about twelve kilometres by eight, formed in a great eruption some eight thousand years ago, its floor a field of old lava. One of the largest calderas in the world.",
   "b": "纳库鲁边上的一座火山口，长约十二千米，宽约八千米，形成于大约八千年前的一次大喷发，底部是一片古老的熔岩原。是世界上最大的火山口之一。",
   "date": "2026-11-17",
-  "a": "纳库鲁边上的一座火山破火山口，长约十二公里、宽约八公里，形成于大约八千年前的一次大喷发，底部是一片古老的熔岩地。它是世界上最大的破火山口之一。"
+  "a": "纳库鲁边上的一座火山破火山口，长约十二公里、宽约八公里，形成于大约八千年前的一次大喷发，底部是一片古老的熔岩地。它是世界上最大的破火山口之一。",
+  "tr": "纳库鲁边上的一座火山破火山口，长约十二公里、宽约八公里，形成于大约八千年前的一次大喷发，底部是一片古老的熔岩地。它是世界上最大的破火山口之一。"
  },
  "5c4698b6e0d6": {
   "en": "About you",
@@ -3548,7 +3750,9 @@
   "en": "{1}°T · {2} km from Kijabe Hill",
   "b": "方位{1}° · 距 Kijabe Hill {2} km",
   "date": "2026-11-17",
-  "a": "真方位{1}° · 距基贾贝山{2}公里"
+  "a": "真方位{1}° · 距基贾贝山{2}公里",
+  "tr": "真方位{1}° · 距 Kijabe Hill {2}公里",
+  "tr_note": "local name kept"
  },
  "5de967789f50": {
   "en": "A gaggle of paragliders above a lake in the haze",
@@ -3578,7 +3782,8 @@
   "en": "About The Tugen Hills",
   "b": "关于 Tugen Hills",
   "date": "2026-11-17",
-  "a": "关于图根山"
+  "a": "关于图根山",
+  "tr": "关于图根山"
  },
  "5eebdb77fe80": {
   "en": "Subscribe on {1}",
@@ -3598,19 +3803,22 @@
   "en": "Chyulu Hills",
   "b": "Chyulu Hills",
   "date": "2026-11-17",
-  "a": "丘卢山"
+  "a": "丘卢山",
+  "tr": "丘卢山"
  },
  "5f173f56684a": {
   "en": "<x1>Kenya is the easy case.</x1> The tourism sector is used to foreigners and no special permits are needed for what we do on this tour.",
   "b": "<x1>肯尼亚是容易的情况。</x1>旅游业习惯了外国人，我们在这次行程中所做的事不需要任何特别许可。",
   "date": "2026-11-17",
-  "a": "<x1>肯尼亚属于容易的情况。</x1>旅游业早已习惯外国人，我们这趟行程所做的事不需要任何特别许可。"
+  "a": "<x1>肯尼亚属于容易的情况。</x1>旅游业早已习惯外国人，我们这趟行程所做的事不需要任何特别许可。",
+  "tr": "<x1>肯尼亚属于容易的情况。</x1>旅游业早已习惯外国人，我们这趟行程所做的事不需要任何特别许可。"
  },
  "5f1e6c97772b": {
   "en": "{1} to {2} hrs / flight",
   "b": "每次飞行{1}到{2}小时",
   "date": "2026-11-17",
-  "a": "每次飞行{1}至{2}小时"
+  "a": "每次飞行{1}至{2}小时",
+  "tr": "每次飞行{1}至{2}小时"
  },
  "5f3c62da571c": {
   "en": "<x1>Over the peaks</x1>A single wing high above a snow-streaked peak",
@@ -3644,7 +3852,8 @@
   "en": "Take the controls",
   "b": "自己操控",
   "date": "2026-11-17",
-  "a": "自己操控"
+  "a": "自己操控",
+  "tr": "自己操控"
  },
  "6055fce9fc44": {
   "en": "April to May, October to November",
@@ -3665,7 +3874,8 @@
   "en": "The second highest mountain in Africa at {1} m, an old volcano with glaciers on its twin summits, Batian and Nelion. A World Heritage Site.",
   "b": "非洲第二高峰，海拔{1} m，是一座老火山，双峰 Batian 和 Nelion 上有冰川。世界遗产。",
   "date": "2026-11-17",
-  "a": "非洲第二高山，海拔{1}米，是一座古老的火山，双峰巴蒂安峰和奈利昂峰上覆盖着冰川。世界遗产地。"
+  "a": "非洲第二高山，海拔{1}米，是一座古老的火山，双峰巴蒂安峰和奈利昂峰上覆盖着冰川。世界遗产地。",
+  "tr": "非洲第二高山，海拔{1}米，是一座古老的火山，双峰巴蒂安峰和奈利昂峰上覆盖着冰川。世界遗产地。"
  },
  "61105e66c64a": {
   "en": "Book A Free <x1>{1}-Minute</x1>, No Obligation Virtual Call",
@@ -3742,7 +3952,8 @@
   "en": "Tilt flatter",
   "b": "倾斜得更平",
   "date": "2026-11-17",
-  "a": "放平视角"
+  "a": "放平视角",
+  "tr": "放平视角"
  },
  "6357d42cf6f1": {
   "en": "Podcast · Episode {1} · {2} min",
@@ -3757,7 +3968,8 @@
   "en": "Machakos Hills",
   "b": "Machakos Hills",
   "date": "2026-11-17",
-  "a": "马查科斯山"
+  "a": "马查科斯山",
+  "tr": "马查科斯山"
  },
  "6373b267f92b": {
   "en": "{1}, Himachal Pradesh",
@@ -3790,25 +4002,29 @@
   "en": "Flights flown here",
   "b": "在这里飞过的航线",
   "date": "2026-11-17",
-  "a": "在这里飞过的航程"
+  "a": "在这里飞过的航程",
+  "tr": "在这里飞过的航线"
  },
  "63d81c3812ef": {
   "en": "Lion hunt the plains within sight of the city's towers, and the park is one of Kenya's oldest sanctuaries for black rhino, which bred well enough here to stock other parks.",
   "b": "狮子在能望见城市高楼的平原上捕猎，这座公园是肯尼亚最古老的黑犀牛保护区之一，黑犀牛在这里繁衍得很好，足以供给其他公园。",
   "date": "2026-11-17",
-  "a": "狮子在望得见城市高楼的平原上狩猎，这座公园也是肯尼亚最古老的黑犀牛保护区之一，这里的黑犀牛繁衍得很好，足以向其他公园输送种群。"
+  "a": "狮子在望得见城市高楼的平原上狩猎，这座公园也是肯尼亚最古老的黑犀牛保护区之一，这里的黑犀牛繁衍得很好，足以向其他公园输送种群。",
+  "tr": "狮子在望得见城市高楼的平原上狩猎，这座公园也是肯尼亚最古老的黑犀牛保护区之一，这里的黑犀牛繁衍得很好，足以向其他公园输送种群。"
  },
  "63dd05d09b87": {
   "en": "Kenyan Shilling",
   "b": "肯尼亚先令",
   "date": "2026-11-17",
-  "a": "肯尼亚先令"
+  "a": "肯尼亚先令",
+  "tr": "肯尼亚先令"
  },
  "642cfcd8d258": {
   "en": "About Lake Baringo",
   "b": "关于巴林戈湖",
   "date": "2026-11-17",
-  "a": "关于巴林戈湖"
+  "a": "关于巴林戈湖",
+  "tr": "关于巴林戈湖"
  },
  "6433edb488b5": {
   "en": "Photographs at Baijnath",
@@ -3820,19 +4036,23 @@
   "en": "Lesser flamingos feed on the blue-green algae of the hot soda water, and when Nakuru is too fresh for them they gather here in their hundreds of thousands. Counts at Bogoria have passed a million.",
   "b": "小火烈鸟以热苏打水里的蓝绿藻为食，纳库鲁的水对它们太淡时，它们就成十万计地聚到这里。博戈里亚的统计数量曾超过一百万。",
   "date": "2026-11-17",
-  "a": "小火烈鸟以炽热碱水中的蓝绿藻为食，当纳库鲁湖的水对它们来说太淡时，它们就会成千上万、数十万地聚集到这里。博戈里亚湖的火烈鸟数量曾超过一百万只。"
+  "a": "小火烈鸟以炽热碱水中的蓝绿藻为食，当纳库鲁湖的水对它们来说太淡时，它们就会成千上万、数十万地聚集到这里。博戈里亚湖的火烈鸟数量曾超过一百万只。",
+  "tr": "小火烈鸟以炽热碱水中的蓝绿藻为食，当纳库鲁湖的水对它们来说太淡时，它们就会数以十万计地聚集到这里。博戈里亚湖的火烈鸟数量曾超过一百万只。",
+  "tr_note": "hundreds of thousands = 数以十万计"
  },
  "64994968fa95": {
   "en": "How you are read",
   "b": "你如何被看待",
   "date": "2026-11-17",
-  "a": "别人如何看你"
+  "a": "别人如何看你",
+  "tr": "别人如何看你"
  },
  "64b34af0d76b": {
   "en": "Rule {1}, Prices and tipping",
   "b": "第{1}条，价格和小费",
   "date": "2026-11-17",
-  "a": "规则{1}：价格和小费"
+  "a": "规则{1}：价格和小费",
+  "tr": "规则{1}：价格和小费"
  },
  "64d1e09d2266": {
   "en": "See {1}, {2} photos",
@@ -3869,7 +4089,8 @@
   "en": "weak, early and late",
   "b": "微弱，在清晨和傍晚",
   "date": "2026-11-17",
-  "a": "弱，清晨和傍晚"
+  "a": "弱，清晨和傍晚",
+  "tr": "弱，清晨和傍晚"
  },
  "65af62e74232": {
   "en": "New Delhi",
@@ -3905,7 +4126,13 @@
   "en": "The base price covers local transport by {1} van, guiding, park entry for flying activities, takeoff fees, and Paragliding Association of Kenya membership. Transfers from the airport to the meetup point in Nairobi can be arranged on request.",
   "b": "基础价格包括{1}车的本地交通、向导服务、飞行活动的公园门票、起飞场费用，以及肯尼亚滑翔伞运动协会的会员资格。从机场到内罗毕集合点的接送可按需安排。",
   "date": "2026-11-17",
-  "a": "基本价格包含乘坐{1}面包车的当地交通、向导服务、飞行活动的公园门票、起飞费，以及肯尼亚滑翔伞运动协会的会员费。从机场到内罗毕集合点的接送可应要求另行安排。"
+  "a": "基本价格包含乘坐{1}面包车的当地交通、向导服务、飞行活动的公园门票、起飞费，以及肯尼亚滑翔伞运动协会的会员费。从机场到内罗毕集合点的接送可应要求另行安排。",
+  "tr": "基本价格包含乘坐{1}面包车的当地交通、向导服务、飞行活动的公园门票、起飞费，以及 Paragliding Association of Kenya 的会员资格。从机场到内罗毕集合点的接送可应要求安排。",
+  "tr_note": "organisation name kept; 另行 dropped (not in English)",
+  "waive": {
+   "country": "Kenya is inside the organisation's own name, kept as written",
+   "glossary": "paragliding is inside the organisation's own name, kept as written"
+  }
  },
  "6673b439c370": {
   "en": "Go Thermal Hunting In Primal Habitats",
@@ -3959,25 +4186,29 @@
   "en": "Buffalo",
   "b": "水牛",
   "date": "2026-11-17",
-  "a": "水牛"
+  "a": "水牛",
+  "tr": "水牛"
  },
  "688e2fcfd03a": {
   "en": "Reserve<x1>Essential</x1><x2>Repacked and in date</x2>",
   "b": "备份伞<x1>必备</x1><x2>已重新折叠且在有效期内</x2>",
   "date": "2026-11-17",
-  "a": "备份伞<x1>必备</x1><x2>已重新叠伞且在有效期内</x2>"
+  "a": "备份伞<x1>必备</x1><x2>已重新叠伞且在有效期内</x2>",
+  "tr": "备份伞<x1>必备</x1><x2>已重新叠伞且在有效期内</x2>"
  },
  "68bc39bde34a": {
   "en": "Lesser flamingos",
   "b": "小火烈鸟",
   "date": "2026-11-17",
-  "a": "小火烈鸟"
+  "a": "小火烈鸟",
+  "tr": "小火烈鸟"
  },
  "68eed731dd83": {
   "en": "Insurance covering paragliding to {1}m<x1>Essential</x1><x2>It must include helicopter rescue and medical evacuation</x2>",
   "b": "涵盖海拔最高{1}m 滑翔伞运动的保险<x1>必备</x1><x2>必须包括直升机救援和医疗后送</x2>",
   "date": "2026-11-17",
-  "a": "覆盖海拔{1}米以下滑翔伞运动的保险<x1>必备</x1><x2>必须包括直升机救援和医疗后送</x2>"
+  "a": "覆盖海拔{1}米以下滑翔伞运动的保险<x1>必备</x1><x2>必须包括直升机救援和医疗后送</x2>",
+  "tr": "覆盖海拔{1}米以下滑翔伞运动的保险<x1>必备</x1><x2>必须包括直升机救援和医疗后送</x2>"
  },
  "68efcc3e43b0": {
   "en": "Close the photo",
@@ -3990,7 +4221,8 @@
   "en": "Headlamp",
   "b": "头灯",
   "date": "2026-11-17",
-  "a": "头灯"
+  "a": "头灯",
+  "tr": "头灯"
  },
  "69232d629246": {
   "en": "Place <x1>(optional)</x1>",
@@ -4036,7 +4268,8 @@
   "en": "About Menengai crater",
   "b": "关于 Menengai 火山口",
   "date": "2026-11-17",
-  "a": "关于梅嫩盖火山口"
+  "a": "关于梅嫩盖火山口",
+  "tr": "关于梅嫩盖火山口"
  },
  "6a6973244378": {
   "en": "Most days end back in {1}. Pick your field early, fly a full approach, and anywhere else, watch for terraces and power lines.",
@@ -4112,7 +4345,8 @@
   "en": "Buffalo and elephant come to the salt licks and waterholes under the forest lodges at night, which is what Treetops was built to watch in {1}.",
   "b": "夜里，水牛和大象会来到林中旅舍下方的盐舐地和水塘，而 Treetops 在{1}年建起来，就是为了观看这一幕。",
   "date": "2026-11-17",
-  "a": "夜里，水牛和大象会来到森林旅馆下方的盐碱地和水塘，树顶旅馆于{1}年建成，就是为了观看这一幕。"
+  "a": "夜里，水牛和大象会来到森林旅馆下方的盐碱地和水塘，树顶旅馆于{1}年建成，就是为了观看这一幕。",
+  "tr": "夜里，水牛和大象会来到森林旅馆下方的盐碱地和水塘，树顶旅馆于{1}年建成，就是为了观看这一幕。"
  },
  "6b7fe0aa12c6": {
   "en": "Safety for a solo female pilot",
@@ -4127,13 +4361,15 @@
   "en": "An escarpment site on the eastern wall of the Rift, north west of Nairobi.",
   "b": "大裂谷东壁上的一处断崖飞行场，位于内罗毕西北。",
   "date": "2026-11-17",
-  "a": "裂谷东侧崖壁上的一处断崖场地，位于内罗毕西北。"
+  "a": "裂谷东侧崖壁上的一处断崖场地，位于内罗毕西北。",
+  "tr": "裂谷东侧崖壁上的一处断崖场地，位于内罗毕西北。"
  },
  "6bd9b0500f4e": {
   "en": "A soda lake ringed by acacia woodland, famous for its flamingos and now a fenced sanctuary for black and white rhino. With Elementaita and Bogoria it forms the Kenya Lake System, a World Heritage Site since {1}.",
   "b": "一个被金合欢林环绕的苏打湖，以火烈鸟闻名，如今是黑犀牛和白犀牛的围栏保护区。它与埃莱门泰塔湖和博戈里亚湖一起组成肯尼亚湖泊系统，自{1}年起列为世界遗产。",
   "date": "2026-11-17",
-  "a": "一座四周环绕着金合欢林的碱湖，以火烈鸟闻名，如今是黑犀牛和白犀牛的围栏保护区。它与埃尔门泰塔湖、博戈里亚湖共同构成肯尼亚湖泊系统，自{1}年起被列为世界遗产。"
+  "a": "一座四周环绕着金合欢林的碱湖，以火烈鸟闻名，如今是黑犀牛和白犀牛的围栏保护区。它与埃尔门泰塔湖、博戈里亚湖共同构成肯尼亚湖泊系统，自{1}年起被列为世界遗产。",
+  "tr": "一座四周环绕着金合欢林的碱湖，以火烈鸟闻名，如今是黑犀牛和白犀牛的围栏保护区。它与埃尔门泰塔湖、博戈里亚湖共同构成肯尼亚湖泊系统，自{1}年起被列为世界遗产。"
  },
  "6bf7e4e0f7ee": {
   "en": "<x1>Step {1} of {2}.</x1> Your event is filled in from the Media page: check it, tick the box and send.",
@@ -4148,7 +4384,8 @@
   "en": "People will arrive, and quickly. Greet the children with enthusiasm, find the elders or the leader, and ask them to help keep a clear space. Fly with live tracking and a driver you trust.",
   "b": "人会来，而且来得很快。热情地问候孩子们，找到长者或头领，请他们帮忙留出一块清空的地方。带着实时追踪飞行，并有一位你信任的司机。",
   "date": "2026-11-17",
-  "a": "人们会赶来，而且来得很快。热情地跟孩子们打招呼，找到长老或领头人，请他们帮忙留出一片空地。飞行时开启实时追踪，并安排一位你信得过的司机。"
+  "a": "人们会赶来，而且来得很快。热情地跟孩子们打招呼，找到长老或领头人，请他们帮忙留出一片空地。飞行时开启实时追踪，并安排一位你信得过的司机。",
+  "tr": "人们会赶来，而且来得很快。热情地跟孩子们打招呼，找到长老或领头人，请他们帮忙留出一片空地。飞行时开启实时追踪，并安排一位你信得过的司机。"
  },
  "6c12315658e2": {
   "en": "Small things, mostly for the day you land somewhere you did not plan to.",
@@ -4169,19 +4406,23 @@
   "en": "Strong, midday peaks",
   "b": "强劲，在正午高峰",
   "date": "2026-11-17",
-  "a": "强，正午高峰"
+  "a": "强，正午高峰",
+  "tr": "强，正午高峰"
  },
  "6d2dcfe6a6bf": {
   "en": "Avg. altitude",
   "b": "平均海拔",
   "date": "2026-11-17",
-  "a": "平均海拔"
+  "a": "平均海拔",
+  "tr": "平均海拔"
  },
  "6d3e86a111e2": {
   "en": "Najin and Fatu, the last two northern white rhinos, came here from a zoo in the Czech Republic in {1}; the last male, Sudan, died in {2}. Ol Pejeta also holds more black rhino than any other sanctuary in East Africa.",
   "b": "Najin 和 Fatu 是仅剩的两头北部白犀牛，于{1}年从捷克共和国的一家动物园来到这里；最后一头雄性 Sudan 于{2}年死去。Ol Pejeta 养的黑犀牛也比东非任何其他保护区都多。",
   "date": "2026-11-17",
-  "a": "纳金和法图是最后两头北方白犀牛，于{1}年从捷克的一家动物园来到这里；最后一头雄性苏丹于{2}年死去。奥佩杰塔的黑犀牛数量也比东非其他任何保护区都多。"
+  "a": "纳金和法图是最后两头北方白犀牛，于{1}年从捷克的一家动物园来到这里；最后一头雄性苏丹于{2}年死去。奥佩杰塔的黑犀牛数量也比东非其他任何保护区都多。",
+  "tr": "Najin 和 Fatu 是最后两头北方白犀牛，于{1}年从捷克的一家动物园来到这里；最后一头雄性 Sudan 于{2}年死去。奥佩杰塔的黑犀牛数量也比东非其他任何保护区都多。",
+  "tr_note": "names stay"
  },
  "6d5bb241740a": {
   "en": "<x1>Group</x1>Small group",
@@ -4217,13 +4458,15 @@
   "en": "A pink and yellow paraglider turning above the deep green crater of Mount Longonot",
   "b": "一顶粉黄相间的滑翔伞，在 Mount Longonot 深绿色的火山口上方转弯",
   "date": "2026-11-17",
-  "a": "一顶粉黄相间的滑翔伞在隆戈诺特山深绿色的火山口上空盘旋"
+  "a": "一顶粉黄相间的滑翔伞在隆戈诺特山深绿色的火山口上空盘旋",
+  "tr": "一顶粉黄相间的滑翔伞在隆戈诺特山深绿色的火山口上空盘旋"
  },
  "6e17a42ea46b": {
   "en": "Read the place before you fly it",
   "b": "飞之前先读懂这个地方",
   "date": "2026-11-17",
-  "a": "飞之前先读懂这个地方"
+  "a": "飞之前先读懂这个地方",
+  "tr": "飞之前先读懂这个地方"
  },
  "6e556cc1559a": {
   "en": "Michael Nesler",
@@ -4256,7 +4499,8 @@
   "en": "{1}-{2} m/s",
   "b": "{1}-{2} m/s",
   "date": "2026-11-17",
-  "a": "{1}-{2} m/s"
+  "a": "{1}-{2} m/s",
+  "tr": "{1}-{2} m/s"
  },
  "6ed1f652fde0": {
   "en": "What we do with it",
@@ -4287,7 +4531,8 @@
   "en": "Weak, early and late",
   "b": "微弱，在清晨和傍晚",
   "date": "2026-11-17",
-  "a": "弱，清晨和傍晚"
+  "a": "弱，清晨和傍晚",
+  "tr": "弱，清晨和傍晚"
  },
  "6ffa0f054227": {
   "en": "{1}, the last day, was cancelled for wind: {2} set a {3} km triangle south, but the wind came over the back of launch and the one pilot who tested it top-landed. {4} ends with five scored tasks.",
@@ -4300,7 +4545,8 @@
   "en": "A stranger dropping out of the sky onto their land, unannounced.",
   "b": "一个陌生人，没打招呼，就从天而降落在他们的土地上。",
   "date": "2026-11-17",
-  "a": "一个陌生人从天而降，不打招呼就落在他们的土地上。"
+  "a": "一个陌生人从天而降，不打招呼就落在他们的土地上。",
+  "tr": "一个陌生人从天而降，不打招呼就落在他们的土地上。"
  },
  "703293ac7226": {
   "en": "Next one starts tomorrow",
@@ -4324,13 +4570,15 @@
   "en": "If it goes wrong",
   "b": "万一出事",
   "date": "2026-11-17",
-  "a": "万一出事"
+  "a": "万一出事",
+  "tr": "万一出事"
  },
  "712e947d4dde": {
   "en": "Giving cash directly tends to make things worse for the pilot behind you. Share food or buy someone a meal instead. Saying plainly that it would not be fair to give to one person and not the rest is usually understood and accepted.",
   "b": "直接给现金往往会让你后面的飞行员处境更糟。分享食物，或者请人吃一顿饭。直接说清楚，只给一个人而不给其他人是不公平的，通常都能被理解和接受。",
   "date": "2026-11-17",
-  "a": "直接给现金，往往会让你之后来的飞行员处境更糟。不如分享食物，或者请人吃顿饭。坦白地说，只给一个人而不给其他人是不公平的，通常都能被理解和接受。"
+  "a": "直接给现金，往往会让你之后来的飞行员处境更糟。不如分享食物，或者请人吃顿饭。坦白地说，只给一个人而不给其他人是不公平的，通常都能被理解和接受。",
+  "tr": "直接给现金，往往会让你之后来的飞行员处境更糟。不如分享食物，或者请人吃顿饭。坦白地说，只给一个人而不给其他人是不公平的，通常都能被理解和接受。"
  },
  "71fb78e6726e": {
   "en": "Over the back, then west<x1>{1} km</x1>",
@@ -4374,7 +4622,8 @@
   "en": "Plug type G, the UK socket.",
   "b": "G 型插头，英国式插座。",
   "date": "2026-11-17",
-  "a": "G型插头，即英式插座。"
+  "a": "G型插头，即英式插座。",
+  "tr": "G型插头，即英式插座。"
  },
  "734a8ce64ae7": {
   "en": "Photographs at Top of big face",
@@ -4410,7 +4659,8 @@
   "en": "Flying over the floor of the Great Rift, the geological scar that runs the length of the country.",
   "b": "飞越大裂谷的谷底，这道贯穿全国的地质伤痕。",
   "date": "2026-11-17",
-  "a": "飞越东非大裂谷的谷底，这道地质伤痕纵贯整个国家。"
+  "a": "飞越东非大裂谷的谷底，这道地质伤痕纵贯整个国家。",
+  "tr": "飞越东非大裂谷的谷底，这道地质伤痕纵贯整个国家。"
  },
  "73cb67667bda": {
   "en": "Eight days in {1}, two days after the last Kenya tour ends.",
@@ -4506,13 +4756,15 @@
   "en": "Power",
   "b": "电源",
   "date": "2026-11-17",
-  "a": "电源"
+  "a": "电源",
+  "tr": "电源"
  },
  "756a92bb0a97": {
   "en": "About The {1}",
   "b": "关于{1}",
   "date": "2026-11-17",
-  "a": "关于{1}"
+  "a": "关于{1}",
+  "tr": "关于{1}"
  },
  "758c2f0b37e8": {
   "en": "Radio<x1>Essential</x1><x2>Group frequency is briefed on arrival</x2>",
@@ -4627,19 +4879,22 @@
   "en": "{1} · The launch",
   "b": "{1} · 起飞场",
   "date": "2026-11-17",
-  "a": "{1} · 起飞场"
+  "a": "{1} · 起飞场",
+  "tr": "{1} · 起飞场"
  },
  "775a441ccf6e": {
   "en": "About Amboseli",
   "b": "关于安博塞利",
   "date": "2026-11-17",
-  "a": "关于安博塞利"
+  "a": "关于安博塞利",
+  "tr": "关于安博塞利"
  },
  "778636d5ff5b": {
   "en": "About Ol Pejeta",
   "b": "关于 Ol Pejeta",
   "date": "2026-11-17",
-  "a": "关于奥佩杰塔"
+  "a": "关于奥佩杰塔",
+  "tr": "关于奥佩杰塔"
  },
  "77de5e0361bf": {
   "en": "Why fly with us",
@@ -4700,7 +4955,8 @@
   "en": "Avoid schools, markets and crowds. Land somewhere remote but reachable by a vehicle. Pack fast with a quick pack sack, then deal with yourself and send your location; repack properly later.",
   "b": "避开学校、集市和人群。降落在偏远但车能到达的地方。用快收袋迅速收伞，然后先处理好自己，并发出你的位置；稍后再好好重新折伞。",
   "date": "2026-11-17",
-  "a": "避开学校、市场和人群。降落在偏僻但车辆能到达的地方。用快速收伞袋迅速收好伞，然后照顾好自己并发送你的位置；之后再好好叠伞。"
+  "a": "避开学校、市场和人群。降落在偏僻但车辆能到达的地方。用快速收伞袋迅速收好伞，然后照顾好自己并发送你的位置；之后再好好叠伞。",
+  "tr": "避开学校、市场和人群。降落在偏僻但车辆能到达的地方。用快速收伞袋迅速收好伞，然后照顾好自己并发送你的位置；之后再好好叠伞。"
  },
  "79b5d5ff9924": {
   "en": "Oct to Nov",
@@ -4785,13 +5041,16 @@
   "en": "About Rimoi and Lake Kamnarok",
   "b": "关于 Rimoi 和 Kamnarok 湖",
   "date": "2026-11-17",
-  "a": "关于里莫伊和卡姆纳罗克湖"
+  "a": "关于里莫伊和卡姆纳罗克湖",
+  "tr": "关于 Rimoi 和 Kamnarok 湖",
+  "tr_note": "small local places: names kept"
  },
  "7ce9cd0c154f": {
   "en": "About The Equator",
   "b": "关于赤道",
   "date": "2026-11-17",
-  "a": "关于赤道"
+  "a": "关于赤道",
+  "tr": "关于赤道"
  },
  "7d0c0edc701e": {
   "en": "Peak season",
@@ -4803,7 +5062,8 @@
   "en": "<x1>{1}</x1>km wide",
   "b": "<x1>{1}</x1>km 宽",
   "date": "2026-11-17",
-  "a": "宽<x1>{1}</x1>公里"
+  "a": "宽<x1>{1}</x1>公里",
+  "tr": "宽<x1>{1}</x1>公里"
  },
  "7d4857413070": {
   "en": "Flying today",
@@ -4822,7 +5082,8 @@
   "en": "About Maasai country",
   "b": "关于马赛人的土地",
   "date": "2026-11-17",
-  "a": "关于马赛人的土地"
+  "a": "关于马赛人的土地",
+  "tr": "关于马赛人的土地"
  },
  "7dea5fc2273d": {
   "en": "Guiding",
@@ -4843,7 +5104,8 @@
   "en": "Hide what is packed",
   "b": "隐藏已打包的",
   "date": "2026-11-17",
-  "a": "隐藏已打包的物品"
+  "a": "隐藏已打包的物品",
+  "tr": "隐藏已打包的物品"
  },
  "7e3d96031b71": {
   "en": "Task {1}: {2}",
@@ -4865,7 +5127,8 @@
   "en": "{1} · The thermals",
   "b": "{1} · 热气流",
   "date": "2026-11-17",
-  "a": "{1} · 热气流"
+  "a": "{1} · 热气流",
+  "tr": "{1} · 热气流"
  },
  "7e960e1692ca": {
   "en": "<x1></x1>Our trips",
@@ -4936,13 +5199,15 @@
   "en": "The variometer readings vary from {1}-{2} m/s (weak, early morning/late afternoon) to {3}-{4} m/s (strong, midday peaks), with rare surges to {5}-{6} m/s. Variations include narrow, turbulent cores and wide, smooth ones as well, types range from classic bubble thermals to dynamic triggers depending on the location of flight",
   "b": "垂直速度表的读数从{1}-{2} m/s（微弱，清晨和傍晚）到{3}-{4} m/s（强劲，正午高峰）不等，偶尔会冲到{5}-{6} m/s。热气流有的核心狭窄、紊乱，也有宽阔、平顺的，类型从经典的气泡式热气流到动力触发式都有，取决于飞行的地点",
   "date": "2026-11-17",
-  "a": "垂直速度表的读数从{1}-{2} m/s（弱，清晨或傍晚）到{3}-{4} m/s（强，正午高峰）不等，偶尔会猛升到{5}-{6} m/s。热气流核心有狭窄而颠簸的，也有宽阔而平顺的；类型从经典的气泡式热气流到动态触发的热气流都有，取决于飞行的位置"
+  "a": "垂直速度表的读数从{1}-{2} m/s（弱，清晨或傍晚）到{3}-{4} m/s（强，正午高峰）不等，偶尔会猛升到{5}-{6} m/s。热气流核心有狭窄而颠簸的，也有宽阔而平顺的；类型从经典的气泡式热气流到动态触发的热气流都有，取决于飞行的位置",
+  "tr": "垂直速度表的读数从{1}-{2} m/s（弱，清晨或傍晚）到{3}-{4} m/s（强，正午高峰）不等，偶尔会猛升到{5}-{6} m/s。热气流核心有狭窄而颠簸的，也有宽阔而平顺的；类型从经典的气泡式热气流到动态触发的热气流都有，取决于飞行的位置"
  },
  "7fc93cc7aa61": {
   "en": "Every flight is a good flight, but chasing airtime comes with bumpy air, variable thermal strength and conditions more demanding than you expected. That is part of it. Come willing to push your limits and you leave with a renewed understanding of flying in new terrain.",
   "b": "每一次飞行都是好的飞行，但追求滞空时间会伴随颠簸的空气、强弱不定的热气流，以及比你预想更苛刻的条件。这是旅程的一部分。带着愿意挑战极限的心来，你离开时会对在陌生地形飞行有全新的认识。",
   "date": "2026-11-17",
-  "a": "每次飞行都是好飞行，但追求滞空时间就意味着颠簸的空气、强弱不定的热气流，以及比你预想的更严苛的条件。这本就是其中的一部分。带着挑战自我极限的心态而来，你离开时会对在陌生地形中飞行有全新的认识。"
+  "a": "每次飞行都是好飞行，但追求滞空时间就意味着颠簸的空气、强弱不定的热气流，以及比你预想的更严苛的条件。这本就是其中的一部分。带着挑战自我极限的心态而来，你离开时会对在陌生地形中飞行有全新的认识。",
+  "tr": "每次飞行都是好飞行，但追求滞空时间就意味着颠簸的空气、强弱不定的热气流，以及比你预想的更严苛的条件。这本就是其中的一部分。带着挑战自我极限的心态而来，你离开时会对在陌生地形中飞行有全新的认识。"
  },
  "7fdf4742dcd5": {
   "en": "{1} Paragliding Tour: Big Mountain Flying",
@@ -4954,13 +5219,15 @@
   "en": "A young volcanic range between Tsavo and Amboseli, with Kilimanjaro on the horizon.",
   "b": "介于 Tsavo 和安博塞利之间的一道年轻的火山山脉，地平线上是乞力马扎罗山。",
   "date": "2026-11-17",
-  "a": "察沃与安博塞利之间一条年轻的火山山脉，地平线上可见乞力马扎罗山。"
+  "a": "察沃与安博塞利之间一条年轻的火山山脉，地平线上可见乞力马扎罗山。",
+  "tr": "察沃与安博塞利之间一条年轻的火山山脉，地平线上可见乞力马扎罗山。"
  },
  "8054fdc78f51": {
   "en": "Chapter {1} of {2}: Rift Valley National Park",
   "b": "第{1}章，共{2}章：Rift Valley National Park",
   "date": "2026-11-17",
-  "a": "第{1}章，共{2}章：裂谷国家公园"
+  "a": "第{1}章，共{2}章：裂谷国家公园",
+  "tr": "第{1}章，共{2}章：裂谷国家公园"
  },
  "80d8db7ad9bc": {
   "en": "Reset view",
@@ -4984,13 +5251,15 @@
   "en": "Pocket knife",
   "b": "折叠小刀",
   "date": "2026-11-17",
-  "a": "折叠小刀"
+  "a": "折叠小刀",
+  "tr": "折叠小刀"
  },
  "8201464a0e80": {
   "en": "Visa",
   "b": "签证",
   "date": "2026-11-17",
-  "a": "签证"
+  "a": "签证",
+  "tr": "签证"
  },
  "820e5c196403": {
   "en": "Full size, EUR {1}",
@@ -5003,25 +5272,31 @@
   "en": "You have strong glider handling and an appetite for the unfamiliar.",
   "b": "你具备出色的伞翼操控能力，愿意面对陌生环境。",
   "date": "2026-11-17",
-  "a": "你的伞翼操控能力强，乐于面对陌生环境。"
+  "a": "你的伞翼操控能力强，乐于面对陌生环境。",
+  "tr": "你的伞翼操控能力强，乐于面对陌生环境。"
  },
  "821f2adc99df": {
   "en": "A freshwater lake on the floor of the Rift with hippo, crocodile and well over four hundred recorded bird species. The Njemps who fish it are among the few cattle-keeping peoples of the Rift who also take to the water.",
   "b": "大裂谷谷底的一个淡水湖，有河马、鳄鱼，记录在案的鸟类远超四百种。在湖上捕鱼的 Njemps 人，是裂谷里少数同时也下水的养牛民族之一。",
   "date": "2026-11-17",
-  "a": "裂谷谷底的一座淡水湖，有河马、鳄鱼，记录在案的鸟类远超过四百种。在湖上捕鱼的恩杰姆普斯人，是裂谷中少数既放牧牛群又下水捕鱼的民族之一。"
+  "a": "裂谷谷底的一座淡水湖，有河马、鳄鱼，记录在案的鸟类远超过四百种。在湖上捕鱼的恩杰姆普斯人，是裂谷中少数既放牧牛群又下水捕鱼的民族之一。",
+  "tr": "裂谷谷底的一座淡水湖，有河马、鳄鱼，记录在案的鸟类远超过四百种。在湖上捕鱼的 Njemps 人，是裂谷中少数既放牧牛群又下水捕鱼的民族之一。",
+  "tr_note": "people's name kept"
  },
  "82373f62f483": {
   "en": "{1}°T · {2} km from {3}",
   "b": "方位{1}° · 距{3} {2} km",
   "date": "2026-11-17",
-  "a": "真方位{1}° · 距{3}{2}公里"
+  "a": "真方位{1}° · 距{3}{2}公里",
+  "tr": "真方位{1}° · 距{3} {2}公里"
  },
  "82644b9b7ee9": {
   "en": "Machakos is the heart of Ukambani, the land of the Kamba, known for wood carving and basketry. The town was the first administrative centre of British East Africa, before Nairobi was founded.",
   "b": "Machakos 是 Ukambani 的中心，也就是坎巴人的土地，以木雕和编织篮闻名。在内罗毕建城之前，这座城镇是英属东非的第一个行政中心。",
   "date": "2026-11-17",
-  "a": "马查科斯是乌坎巴尼的中心，也就是坎巴人的土地，以木雕和编篮闻名。在内罗毕建城之前，这座城镇是英属东非的第一个行政中心。"
+  "a": "马查科斯是乌坎巴尼的中心，也就是坎巴人的土地，以木雕和编篮闻名。在内罗毕建城之前，这座城镇是英属东非的第一个行政中心。",
+  "tr": "马查科斯是 Ukambani 的中心，也就是坎巴人的土地，以木雕和编篮闻名。在内罗毕建城之前，这座城镇是英属东非的第一个行政中心。",
+  "tr_note": "Ukambani kept as on its label"
  },
  "8274e3089bb3": {
   "en": "Book a Call",
@@ -5058,7 +5333,12 @@
   "en": "A small reserve on the floor of the {1} that elephants pass through on an old corridor up and down the Rift. Across the river, Lake Kamnarok was once thick with crocodiles; it has shrunk badly in recent years.",
   "b": "{1}谷底的一处小型保护区，大象沿着一条古老的走廊在裂谷里上下往来，穿过这里。河对岸的 Kamnarok 湖曾经满是鳄鱼，近年来严重萎缩。",
   "date": "2026-11-17",
-  "a": "{1}谷底的一座小型保护区，大象沿着一条古老的通道在裂谷中南来北往，从这里经过。河对岸的卡姆纳罗克湖曾经鳄鱼密布；近年来湖面严重萎缩。"
+  "a": "{1}谷底的一座小型保护区，大象沿着一条古老的通道在裂谷中南来北往，从这里经过。河对岸的卡姆纳罗克湖曾经鳄鱼密布；近年来湖面严重萎缩。",
+  "tr": "{1}谷底的一座小型保护区，大象沿着一条古老的通道在裂谷中南来北往，从这里经过。河对岸的 Kamnarok 湖曾经鳄鱼密布；近年来湖面严重萎缩。",
+  "tr_note": "Kamnarok kept as on its label",
+  "waive": {
+   "glossary": "a nature reserve, not the reserve parachute"
+  }
  },
  "83a5ade09cc5": {
   "en": ", chapter {1}, {2}",
@@ -5160,7 +5440,8 @@
   "en": "In remote areas you will camp or stay in somebody's house. Take your shoes off, wash your feet, compliment the food, and follow your host's lead on who it is appropriate to address. Pay discreetly, often to the woman running the household, and expect around half the price of a standard hotel.",
   "b": "在偏远地区，你会露营，或者住在别人家里。脱鞋，洗脚，夸赞饭菜，并按主人的安排，跟着他的指引决定该和谁说话。悄悄地付钱，通常是付给操持家务的女主人，大约是标准酒店价格的一半。",
   "date": "2026-11-17",
-  "a": "在偏远地区，你会露营或住在别人家里。脱鞋、洗脚、夸赞饭菜，至于该跟谁说话才合适，听从主人的引导。付钱要低调，通常是付给操持家务的女主人，价格大约是普通酒店的一半。"
+  "a": "在偏远地区，你会露营或住在别人家里。脱鞋、洗脚、夸赞饭菜，至于该跟谁说话才合适，听从主人的引导。付钱要低调，通常是付给操持家务的女主人，价格大约是普通酒店的一半。",
+  "tr": "在偏远地区，你会露营或住在别人家里。脱鞋、洗脚、夸赞饭菜，至于该跟谁说话才合适，听从主人的引导。付钱要低调，通常是付给操持家务的女主人，价格大约是普通酒店的一半。"
  },
  "854bf7312a8e": {
   "en": "then turn for {1} with the light going.",
@@ -5187,13 +5468,15 @@
   "en": "Ear plugs<x1>Hotels can be noisy</x1>",
   "b": "耳塞<x1>酒店可能很吵</x1>",
   "date": "2026-11-17",
-  "a": "耳塞<x1>酒店可能很吵</x1>"
+  "a": "耳塞<x1>酒店可能很吵</x1>",
+  "tr": "耳塞<x1>酒店可能很吵</x1>"
  },
  "85ebaa301b45": {
   "en": "Map controls",
   "b": "地图控制",
   "date": "2026-11-17",
-  "a": "地图控件"
+  "a": "地图控件",
+  "tr": "地图控件"
  },
  "85f7868cd22c": {
   "en": "Pre {1} Kenya: Nikolay Yotov<x1>Navigators, Episode {2}, {3} min</x1>",
@@ -5218,7 +5501,9 @@
   "en": "A prehistoric site above Gilgil where Louis Leakey found Acheulean hand axes and cleavers in {1}, one of the first such sites known in East Africa. A small museum stands beside the old diatomite mine.",
   "b": "Gilgil 上方的一处史前遗址，Louis Leakey 于{1}年在这里发现了阿舍利手斧和砍砸器，是东非已知最早的此类遗址之一。老硅藻土矿旁有一座小博物馆。",
   "date": "2026-11-17",
-  "a": "吉尔吉尔上方的一处史前遗址，路易斯·利基（Louis Leakey）于{1}年在这里发现了阿舍利文化的手斧和薄刃斧，这是东非最早为人所知的此类遗址之一。旧硅藻土矿旁边有一座小型博物馆。"
+  "a": "吉尔吉尔上方的一处史前遗址，路易斯·利基（Louis Leakey）于{1}年在这里发现了阿舍利文化的手斧和薄刃斧，这是东非最早为人所知的此类遗址之一。旧硅藻土矿旁边有一座小型博物馆。",
+  "tr": "吉尔吉尔上方的一处史前遗址，Louis Leakey 于{1}年在这里发现了阿舍利文化的手斧和薄刃斧，这是东非最早为人所知的此类遗址之一。旧硅藻土矿旁边有一座小型博物馆。",
+  "tr_note": "people's names stay"
  },
  "87053d443651": {
   "en": "{1} {2}, tasks {3}",
@@ -5243,7 +5528,8 @@
   "en": "Fly",
   "b": "飞行",
   "date": "2026-11-17",
-  "a": "飞行"
+  "a": "飞行",
+  "tr": "飞行"
  },
  "87643b5625e0": {
   "en": "Watch the coverage first: the {1} comp videos of {2} play on the <x1>Media page</x1>, with the stills from {3} {4}.",
@@ -5312,7 +5598,8 @@
   "en": "Globally known as a hotbed of archaeological discoveries contributing to the story of human evolution, Kenya offers much more than just world class safaris, Flying a paraglider in cradle of humankind allows you to soar over majestic landscapes with rich culture and awe inspiring scenery, Chase the World Speed Records in {1} or endless adventures while crossing the equator from above. This tropical paradise delivers like no other flying destination known to humankind",
   "b": "肯尼亚作为考古发现的温床闻名于世，这些发现不断充实着人类演化的故事，它给你的远不止世界级的野生动物狩猎。在人类的摇篮里飞滑翔伞，让你翱翔在风光壮丽、文化深厚、景色令人惊叹的土地之上，在{1}追逐世界速度纪录，或是从空中越过赤道，开始无穷无尽的冒险。这片热带乐土带来的体验，是人类所知的其他飞行目的地无法给予的",
   "date": "2026-11-17",
-  "a": "肯尼亚作为考古发现的热土举世闻名，这些发现讲述着人类进化的故事；而它能给你的远不止世界一流的野生动物之旅。在人类摇篮驾驶滑翔伞，你可以翱翔于壮丽的风景之上，脚下是丰富的文化和令人惊叹的景色。你可以在{1}挑战世界速度纪录，也可以从空中飞越赤道，开启无尽的冒险。这片热带天堂带来的体验，是人类已知的任何飞行目的地都无法相比的"
+  "a": "肯尼亚作为考古发现的热土举世闻名，这些发现讲述着人类进化的故事；而它能给你的远不止世界一流的野生动物之旅。在人类摇篮驾驶滑翔伞，你可以翱翔于壮丽的风景之上，脚下是丰富的文化和令人惊叹的景色。你可以在{1}挑战世界速度纪录，也可以从空中飞越赤道，开启无尽的冒险。这片热带天堂带来的体验，是人类已知的任何飞行目的地都无法相比的",
+  "tr": "肯尼亚作为考古发现的热土举世闻名，这些发现讲述着人类进化的故事；而它能给你的远不止世界一流的野生动物之旅。在人类摇篮驾驶滑翔伞，你可以翱翔于壮丽的风景之上，脚下是丰富的文化和令人惊叹的景色。你可以在{1}挑战世界速度纪录，也可以从空中飞越赤道，开启无尽的冒险。这片热带天堂带来的体验，是人类已知的任何飞行目的地都无法相比的"
  },
  "88d03328d24e": {
   "en": "The cricket ground at Dharamshala",
@@ -5324,7 +5611,9 @@
   "en": "The eastern wall of the Rift above Mai Mahiu, with the old escarpment road below. At its foot stands the small chapel built by Italian prisoners of war in {1} while they cut that road.",
   "b": "Mai Mahiu 之上的大裂谷东壁，下方是老断崖公路。山脚下有一座小教堂，是意大利战俘在{1}年修那条路时建的。",
   "date": "2026-11-17",
-  "a": "迈马希乌上方的裂谷东侧崖壁，下方是旧的断崖公路。山脚下有一座小教堂，是意大利战俘在{1}年修筑这条公路时建造的。"
+  "a": "迈马希乌上方的裂谷东侧崖壁，下方是旧的断崖公路。山脚下有一座小教堂，是意大利战俘在{1}年修筑这条公路时建造的。",
+  "tr": "Mai Mahiu 上方的裂谷东侧崖壁，下方是旧的断崖公路。山脚下有一座小教堂，是意大利战俘在{1}年修筑这条公路时建造的。",
+  "tr_note": "small town name kept"
  },
  "8987ee02c101": {
   "en": "Take-off sits at about {1} to {2} m, and in the peak of the season pilots climb to {3} to {4} m, so on a good day the height above the ground beats {5}'s.",
@@ -5349,7 +5638,9 @@
   "en": "of {1} packed",
   "b": "已打包{1}项中的",
   "date": "2026-11-17",
-  "a": "已打包，共{1}项"
+  "a": "已打包，共{1}项",
+  "tr": "/{1}项已打包",
+  "tr_note": "counter reads 'n/33 项已打包' after the number"
  },
  "8a528519bdab": {
   "en": "Overall",
@@ -5368,7 +5659,8 @@
   "en": "Next photograph",
   "b": "下一张照片",
   "date": "2026-11-17",
-  "a": "下一张照片"
+  "a": "下一张照片",
+  "tr": "下一张照片"
  },
  "8b476e716cc3": {
   "en": "This is the part that decides whether a trip is right for you, so please be straight with us. It is used to answer your enquiry, nothing else.",
@@ -5392,7 +5684,8 @@
   "en": "Cattle are wealth and food to the Maasai, who moved south along the Rift between the fifteenth and the eighteenth centuries and still herd across it, from Kajiado to Amboseli and beyond.",
   "b": "牛对马赛人来说既是财富也是食物，他们在十五到十八世纪之间沿大裂谷向南迁徙，至今仍在这里放牧，从 Kajiado 到安博塞利，再往外。",
   "date": "2026-11-17",
-  "a": "对马赛人来说，牛既是财富也是食物。他们在十五至十八世纪间沿着裂谷向南迁徙，至今仍在裂谷各地放牧，从卡贾多到安博塞利乃至更远。"
+  "a": "对马赛人来说，牛既是财富也是食物。他们在十五至十八世纪间沿着裂谷向南迁徙，至今仍在裂谷各地放牧，从卡贾多到安博塞利乃至更远。",
+  "tr": "对马赛人来说，牛既是财富也是食物。他们在十五至十八世纪间沿着裂谷向南迁徙，至今仍在裂谷各地放牧，从卡贾多到安博塞利乃至更远。"
  },
  "8ba724b4bbcc": {
   "en": "<x1></x1>Every other episode",
@@ -5413,7 +5706,8 @@
   "en": "Sunscreen and sunglasses",
   "b": "防晒霜和太阳镜",
   "date": "2026-11-17",
-  "a": "防晒霜和太阳镜"
+  "a": "防晒霜和太阳镜",
+  "tr": "防晒霜和太阳镜"
  },
  "8c06115f64e5": {
   "en": "What wing should I bring?",
@@ -5428,13 +5722,15 @@
   "en": "Nairobi",
   "b": "内罗毕",
   "date": "2026-11-17",
-  "a": "内罗毕"
+  "a": "内罗毕",
+  "tr": "内罗毕"
  },
  "8c0f5970d5b1": {
   "en": "Malaria pre-medication<x1>Low risk in the dry season above {1}m. Can be bought locally</x1>",
   "b": "疟疾预防药<x1>旱季海拔{1}m 以上风险较低。可在当地购买</x1>",
   "date": "2026-11-17",
-  "a": "疟疾预防药<x1>旱季在{1}米以上风险较低。可在当地购买</x1>"
+  "a": "疟疾预防药<x1>旱季在{1}米以上风险较低。可在当地购买</x1>",
+  "tr": "疟疾预防药<x1>旱季在{1}米以上风险较低。可在当地购买</x1>"
  },
  "8c144a744a01": {
   "en": "The front range is forgiving; the traffic is not. Bring gear you can relax on.",
@@ -5446,7 +5742,8 @@
   "en": "Pepper spray<x1>Against dogs or wild animals</x1>",
   "b": "防狼喷雾<x1>防狗或野生动物</x1>",
   "date": "2026-11-17",
-  "a": "防狼喷雾<x1>应对狗或野生动物</x1>"
+  "a": "防狼喷雾<x1>应对狗或野生动物</x1>",
+  "tr": "防狼喷雾<x1>应对狗或野生动物</x1>"
  },
  "8c410fd00f6c": {
   "en": "Castbox",
@@ -5503,13 +5800,15 @@
   "en": "Chapters of the flight",
   "b": "飞行的章节",
   "date": "2026-11-17",
-  "a": "飞行的章节"
+  "a": "飞行的章节",
+  "tr": "飞行的章节"
  },
  "8e19bc8098d3": {
   "en": "Airtime",
   "b": "滞空时间",
   "date": "2026-11-17",
-  "a": "滞空时间"
+  "a": "滞空时间",
+  "tr": "滞空时间"
  },
  "8e3df45a49db": {
   "en": "Copied",
@@ -5530,7 +5829,8 @@
   "en": "A yellow paraglider on a long glide over arid rock outcrops in low golden light",
   "b": "一顶黄色滑翔伞在柔和的金色光线下，长距离滑翔过干旱的岩石露头",
   "date": "2026-11-17",
-  "a": "一顶黄色滑翔伞在低斜的金色光线中长距离滑翔，下方是干旱的岩石露头"
+  "a": "一顶黄色滑翔伞在低斜的金色光线中长距离滑翔，下方是干旱的岩石露头",
+  "tr": "一顶黄色滑翔伞在低斜的金色光线中长距离滑翔，下方是干旱的岩石露头"
  },
  "8f26c6520d61": {
   "en": "Loading",
@@ -5554,13 +5854,15 @@
   "en": "Landmark",
   "b": "地标",
   "date": "2026-11-17",
-  "a": "地标"
+  "a": "地标",
+  "tr": "地标"
  },
  "8fdada14ddbd": {
   "en": "You are willing to push your limits in air that is rougher than you expected, and to call that the adventure rather than a failure of planning.",
   "b": "你愿意在比预想更粗糙的空气中挑战自己的极限，并把这称作冒险，而不是计划失误。",
   "date": "2026-11-17",
-  "a": "你愿意在比预想更颠簸的空气中挑战自己的极限，并把这看作冒险，而不是计划失误。"
+  "a": "你愿意在比预想更颠簸的空气中挑战自己的极限，并把这看作冒险，而不是计划失误。",
+  "tr": "你愿意在比预想更颠簸的空气中挑战自己的极限，并把这看作冒险，而不是计划失误。"
  },
  "8fe6022d1507": {
   "en": "Booking open",
@@ -5582,7 +5884,9 @@
   "en": "Runners train on the roads and tracks out of Iten from first light, at {1} m. Athletes have trained here in numbers since the {2}, when Brother Colm O'Connell began coaching at St Patrick's High School.",
   "b": "跑者从天一亮就在伊滕的公路和跑道上训练，海拔{1} m。自{2} Brother Colm O'Connell 开始在 St Patrick's High School 执教以来，运动员就大批在这里训练。",
   "date": "2026-11-17",
-  "a": "天一亮，跑步者就在伊滕周边的公路和跑道上训练，海拔{1}米。自{2}起，运动员便大批来到这里训练，那时Colm O'Connell修士开始在圣帕特里克中学执教。"
+  "a": "天一亮，跑步者就在伊滕周边的公路和跑道上训练，海拔{1}米。自{2}起，运动员便大批来到这里训练，那时Colm O'Connell修士开始在圣帕特里克中学执教。",
+  "tr": "天一亮，跑步者就在伊滕周边的公路和跑道上训练，海拔{1}米。自{2}起，运动员便大批来到这里训练，那时 Colm O'Connell 修士开始在 St Patrick's High School 执教。",
+  "tr_note": "school name kept"
  },
  "8ffb91216573": {
   "en": "Founder, {1}",
@@ -5633,13 +5937,15 @@
   "en": "Know Before You Go",
   "b": "出发前须知",
   "date": "2026-11-17",
-  "a": "出发前须知"
+  "a": "出发前须知",
+  "tr": "出发前须知"
  },
  "920999160e9e": {
   "en": "Turn left",
   "b": "向左转",
   "date": "2026-11-17",
-  "a": "向左转"
+  "a": "向左转",
+  "tr": "向左转"
  },
  "9224e4142eff": {
   "en": "<x1>The back ranges</x1>Snow-covered back ranges seen from the air<x2>near Mills peak</x2>",
@@ -5672,13 +5978,16 @@
   "en": "Keep scrolling",
   "b": "继续向下滚动",
   "date": "2026-11-17",
-  "a": "继续滚动"
+  "a": "继续滚动",
+  "tr": "继续滚动"
  },
  "93040e728820": {
   "en": "You decide where, and you land on your own. Kenya's generous conditions produce long flights, and a long flight means a long retrieve.",
   "b": "降落在哪里由你决定，而且你要自己降落。肯尼亚优越的条件会带来长距离飞行，而长距离飞行意味着漫长的回收。",
   "date": "2026-11-17",
-  "a": "降落地点由你决定，你要独自降落。肯尼亚慷慨的条件带来长距离飞行，而长距离飞行就意味着长距离回收。"
+  "a": "降落地点由你决定，你要独自降落。肯尼亚慷慨的条件带来长距离飞行，而长距离飞行就意味着长距离回收。",
+  "tr": "降落地点由你决定，你要独自降落。肯尼亚优越的条件带来长距离飞行，而长距离飞行就意味着漫长的回收。",
+  "tr_note": "generous = 优越"
  },
  "93157ccbafcd": {
   "en": "Sky Gods",
@@ -5705,7 +6014,8 @@
   "en": "The old rule is that it is better to say sorry than to ask permission, and paragliding is not explicitly illegal where the law does not describe it at all. That logic runs out in tense regions, where being arrested is a real outcome and official permission saves a great deal of time.",
   "b": "老规矩是，道歉比请求许可更好，而在法律完全没有描述的地方，滑翔伞运动并不明确违法。这套逻辑在局势紧张的地区行不通，那里被拘留是实实在在的后果，官方许可能省下大量时间。",
   "date": "2026-11-17",
-  "a": "老规矩是先斩后奏比事先请示好，而且在法律根本没有提及滑翔伞运动的地方，飞滑翔伞并不算明确违法。但在局势紧张的地区，这套逻辑就行不通了，在那里被捕是真实可能的结果，而官方许可能省下大量时间。"
+  "a": "老规矩是先斩后奏比事先请示好，而且在法律根本没有提及滑翔伞运动的地方，飞滑翔伞并不算明确违法。但在局势紧张的地区，这套逻辑就行不通了，在那里被捕是真实可能的结果，而官方许可能省下大量时间。",
+  "tr": "老规矩是先斩后奏比事先请示好，而且在法律根本没有提及滑翔伞运动的地方，飞滑翔伞并不算明确违法。但在局势紧张的地区，这套逻辑就行不通了，在那里被捕是真实可能的结果，而官方许可能省下大量时间。"
  },
  "93809a9726d3": {
   "en": "I am happy for {1} to use these details to answer my enquiry. I understand they are kept for up to {2} months <x1>if this does not become a booking</x1><x2>if no coverage is agreed</x2>, that they are not sold or shared for marketing, and that I can ask for them to be deleted at any time. See the <x3>Privacy Policy</x3>.",
@@ -5753,19 +6063,22 @@
   "en": "Spare lines",
   "b": "备用伞绳",
   "date": "2026-11-17",
-  "a": "备用伞绳"
+  "a": "备用伞绳",
+  "tr": "备用伞绳"
  },
  "956dec3ff903": {
   "en": "Flying Season",
   "b": "飞行季节",
   "date": "2026-11-17",
-  "a": "飞行季节"
+  "a": "飞行季节",
+  "tr": "飞行季节"
  },
  "95763fce067e": {
   "en": "Paragliding is still new across much of the continent, and how visiting pilots behave shapes what the next ones are allowed to do. This is distilled from thirteen years of Nikolay Yotov's exploration in Ethiopia and Kenya. He is also the guest on the <x1>Kenya episode</x1>, if you would rather hear it in his own words.",
   "b": "滑翔伞运动在非洲大陆的许多地方仍然很新，来访飞行员的行为会决定后来者被允许做什么。这些内容提炼自 Nikolay Yotov 在埃塞俄比亚和肯尼亚十三年的探索。他也是<x1>肯尼亚一集</x1>的嘉宾，如果你更想听他亲口讲述的话。",
   "date": "2026-11-17",
-  "a": "在非洲大陆的大部分地区，滑翔伞运动仍是新鲜事物，来访飞行员的言行，决定着后来者能被允许做什么。这些内容提炼自Nikolay Yotov在埃塞俄比亚和肯尼亚十三年的探索。他也是<x1>肯尼亚那一期节目</x1>的嘉宾，如果你更想听他亲口讲述的话。"
+  "a": "在非洲大陆的大部分地区，滑翔伞运动仍是新鲜事物，来访飞行员的言行，决定着后来者能被允许做什么。这些内容提炼自Nikolay Yotov在埃塞俄比亚和肯尼亚十三年的探索。他也是<x1>肯尼亚那一期节目</x1>的嘉宾，如果你更想听他亲口讲述的话。",
+  "tr": "在非洲大陆的大部分地区，滑翔伞运动仍是新鲜事物，来访飞行员的言行，决定着后来者能被允许做什么。这些内容提炼自 Nikolay Yotov 在埃塞俄比亚和肯尼亚十三年的探索。他也是<x1>肯尼亚那一期节目</x1>的嘉宾，如果你更想听他亲口讲述的话。"
  },
  "95898dee4581": {
   "en": "The land of five hills: volcanic tablelands, sharp cliffs and punchy thermals, two hours from {1}.",
@@ -5780,13 +6093,15 @@
   "en": "About Lake Magadi",
   "b": "关于马加迪湖",
   "date": "2026-11-17",
-  "a": "关于马加迪湖"
+  "a": "关于马加迪湖",
+  "tr": "关于马加迪湖"
  },
  "95e408508963": {
   "en": "Springs in Tsavo West fed by rain that fell on the Chyulu Hills and filtered through their lava, pouring out clear enough to watch hippo and crocodile from an underwater hide.",
   "b": "Tsavo West 的泉水，由落在 Chyulu Hills 上并经熔岩过滤的雨水补给，涌出的水清澈到可以从水下观察室里看河马和鳄鱼。",
   "date": "2026-11-17",
-  "a": "西察沃的泉水，源自落在丘卢山上、经熔岩过滤的雨水，涌出时清澈见底，可以从水下观察室里观看河马和鳄鱼。"
+  "a": "西察沃的泉水，源自落在丘卢山上、经熔岩过滤的雨水，涌出时清澈见底，可以从水下观察室里观看河马和鳄鱼。",
+  "tr": "西察沃的泉水，源自落在丘卢山上、经熔岩过滤的雨水，涌出时清澈见底，可以从水下观察室里观看河马和鳄鱼。"
  },
  "95f216507e08": {
   "en": "<x1>Tibetan monastery</x1>A Tibetan monastery with prayer flags against a blue sky",
@@ -5861,7 +6176,8 @@
   "en": "Land away from crowds",
   "b": "远离人群降落",
   "date": "2026-11-17",
-  "a": "远离人群降落"
+  "a": "远离人群降落",
+  "tr": "远离人群降落"
  },
  "98be27b60ffb": {
   "en": "Most nationalities can use the e-visa, applied for at least {1} days before you arrive. Everyone also files a free online e-Arrival Card in the {2} hours before flying in.",
@@ -5873,13 +6189,15 @@
   "en": "The line crosses the road at Nanyuki, where a sign marks it, and again on the roads north of Nakuru. The tour drives across it on the way south from {1}.",
   "b": "这条线在 Nanyuki 穿过公路，那里立有标牌，在纳库鲁以北的公路上又穿过一次。行程从{1}向南走时会驱车越过它。",
   "date": "2026-11-17",
-  "a": "赤道线在纳纽基与公路相交，那里有标牌标出，在纳库鲁以北的公路上又会再次穿过。行程从{1}南下时会驱车跨过赤道。"
+  "a": "赤道线在纳纽基与公路相交，那里有标牌标出，在纳库鲁以北的公路上又会再次穿过。行程从{1}南下时会驱车跨过赤道。",
+  "tr": "赤道线在纳纽基与公路相交，那里有标牌标出，在纳库鲁以北的公路上又会再次穿过。行程从{1}南下时会驱车跨过赤道。"
  },
  "9906127bc763": {
   "en": "Two Departures, Back To Back",
   "b": "两个出发日，紧挨着",
   "date": "2026-11-17",
-  "a": "两期出发，前后衔接"
+  "a": "两期出发，前后衔接",
+  "tr": "两期出发，前后相接"
  },
  "9921fdc70b22": {
   "en": "Buff",
@@ -5907,13 +6225,15 @@
   "en": "DEET repellent",
   "b": "DEET 驱蚊液",
   "date": "2026-11-17",
-  "a": "含避蚊胺（DEET）的驱蚊剂"
+  "a": "含避蚊胺（DEET）的驱蚊剂",
+  "tr": "含避蚊胺（DEET）的驱蚊剂"
  },
  "9a0d34c3a06b": {
   "en": "Chapter {1} of {2}: {3}",
   "b": "第{1}章，共{2}章：{3}",
   "date": "2026-11-17",
-  "a": "第{1}章，共{2}章：{3}"
+  "a": "第{1}章，共{2}章：{3}",
+  "tr": "第{1}章，共{2}章：{3}"
  },
  "9a1fc1731f62": {
   "en": "Questions",
@@ -5964,7 +6284,8 @@
   "en": "Hippo spend the day in the water and graze the shore at night; crocodiles bask on the banks. Baringo is fresh where its neighbours are soda, which is why both live here and not at Bogoria.",
   "b": "河马白天泡在水里，夜里上岸吃草；鳄鱼在岸边晒太阳。巴林戈是淡水湖，而周边的湖是苏打湖，这就是为什么它们住在这里，而不是博戈里亚。",
   "date": "2026-11-17",
-  "a": "河马白天待在水里，夜里上岸吃草；鳄鱼在岸边晒太阳。邻近的湖都是碱湖，唯独巴林戈湖是淡水湖，所以这两种动物都生活在这里，而不在博戈里亚湖。"
+  "a": "河马白天待在水里，夜里上岸吃草；鳄鱼在岸边晒太阳。邻近的湖都是碱湖，唯独巴林戈湖是淡水湖，所以这两种动物都生活在这里，而不在博戈里亚湖。",
+  "tr": "河马白天待在水里，夜里上岸吃草；鳄鱼在岸边晒太阳。邻近的湖都是碱湖，唯独巴林戈湖是淡水湖，所以这两种动物都生活在这里，而不在博戈里亚湖。"
  },
  "9b61d3ee51c2": {
   "en": "Palampur, photographed by UnpetitproleX",
@@ -5989,7 +6310,8 @@
   "en": "Close the photograph",
   "b": "关闭照片",
   "date": "2026-11-17",
-  "a": "关闭照片"
+  "a": "关闭照片",
+  "tr": "关闭照片"
  },
  "9bd549f572c2": {
   "en": "A paraglider above the Peruvian desert coastline",
@@ -6004,7 +6326,8 @@
   "en": "{1}, {2}<x1>{3} km</x1>",
   "b": "{1}，{2}<x1>{3} km</x1>",
   "date": "2026-11-17",
-  "a": "{1}，{2}<x1>{3}公里</x1>"
+  "a": "{1}，{2}<x1>{3}公里</x1>",
+  "tr": "{1}，{2}<x1>{3}公里</x1>"
  },
  "9be70232d54c": {
   "en": "drag the ground · scroll to come closer · right button to turn and tilt · a ring opens the photographs · a dotted name tells its story",
@@ -6064,25 +6387,31 @@
   "en": "<x1>From</x1> {1}",
   "b": "<x1>起价</x1> {1}",
   "date": "2026-11-17",
-  "a": "<x1>起价</x1>{1}"
+  "a": "<x1>起价</x1>{1}",
+  "tr": "<x1>起价</x1>{1}"
  },
  "9eda7f7e151d": {
   "en": "About Kariandusi",
   "b": "关于 Kariandusi",
   "date": "2026-11-17",
-  "a": "关于卡里安杜西"
+  "a": "关于卡里安杜西",
+  "tr": "关于 Kariandusi",
+  "tr_note": "small local site: name kept"
  },
  "9f19d4dcd451": {
   "en": "Lion",
   "b": "狮子",
   "date": "2026-11-17",
-  "a": "狮子"
+  "a": "狮子",
+  "tr": "狮子"
  },
  "9f88b5e83627": {
   "en": "We take to the air from the heart of the Great Rift Valley with direct access from our home base, logistical arrangements are seamless and the adventure takes you into the very fabric of the Kenyan wilderness, as you",
   "b": "我们从大裂谷的中心地带起飞，从我们的大本营就能直接上天，后勤安排顺畅无比，这场冒险会带你深入肯尼亚荒野的肌理，当你",
   "date": "2026-11-17",
-  "a": "我们从东非大裂谷的中心起飞，从大本营直达飞行场地，后勤安排无缝衔接，这场冒险会带你深入肯尼亚荒野的肌理，当你"
+  "a": "我们从东非大裂谷的中心起飞，从大本营直达飞行场地，后勤安排无缝衔接，这场冒险会带你深入肯尼亚荒野的肌理，当你",
+  "tr": "我们从东非大裂谷的中心起飞，从大本营即可直达，后勤安排无缝衔接，这场冒险会带你深入肯尼亚荒野的肌理：你会",
+  "tr_note": "sentence continues in the next three keys; 'direct access' without added 飞行场地"
  },
  "9f92b10500f1": {
   "en": "{1}, on YouTube",
@@ -6112,7 +6441,12 @@
   "en": "The motorbike crashed the lady. And then who is guilty? The paragliding pilot is guilty.",
   "b": "摩托车撞了那位女士。那么谁有错？滑翔伞运动飞行员有错。",
   "date": "2026-11-17",
-  "a": "摩托车撞了那位女士。那么谁有错？从事滑翔伞运动的飞行员有错。"
+  "a": "摩托车撞了那位女士。那么谁有错？从事滑翔伞运动的飞行员有错。",
+  "tr": "摩托车撞了那位女士。那么谁有错？飞滑翔伞的人有错。",
+  "tr_note": "spoken quote: natural, not 从事滑翔伞运动的飞行员",
+  "waive": {
+   "glossary": "spoken quote, 'paragliding pilot' as a plain phrase, not the sport's name"
+  }
  },
  "a0126394c231": {
   "en": "front range cloudbase",
@@ -6147,19 +6481,22 @@
   "en": "A paraglider high above farmland, the flatlands hazy to the horizon",
   "b": "一顶滑翔伞高悬在农田之上，平原一直朦胧地延伸到地平线",
   "date": "2026-11-17",
-  "a": "一顶滑翔伞高悬在农田上空，平原在薄雾中延伸到地平线"
+  "a": "一顶滑翔伞高悬在农田上空，平原在薄雾中延伸到地平线",
+  "tr": "一顶滑翔伞高悬在农田上空，平原在薄雾中延伸到地平线"
  },
  "a08c8a4adda6": {
   "en": "Three wings crossing a green ridgeline toward distant hills",
   "b": "三顶滑翔伞飞越绿色的山脊线，朝远处的群山而去",
   "date": "2026-11-17",
-  "a": "三顶伞翼越过一道绿色山脊，飞向远处的群山"
+  "a": "三顶伞翼越过一道绿色山脊，飞向远处的群山",
+  "tr": "三顶伞翼越过一道绿色山脊，飞向远处的群山"
  },
  "a0a878357dae": {
   "en": "About Mount Kenya",
   "b": "关于肯尼亚山",
   "date": "2026-11-17",
-  "a": "关于肯尼亚山"
+  "a": "关于肯尼亚山",
+  "tr": "关于肯尼亚山"
  },
  "a190ee0c9ddc": {
   "en": "The pass drops into the Uhl valley at Barot, where a diversion dam was built in {1} for the Shanan hydroelectric scheme opened the following year, one of the first in these hills. The Uhl is known for its trout.",
@@ -6180,7 +6517,9 @@
   "en": "and set your sights on the distant shores of Lake Naivasha.",
   "b": "然后把目光投向远方的奈瓦沙湖岸。",
   "date": "2026-11-17",
-  "a": "再把目光投向远方奈瓦沙湖的湖岸。"
+  "a": "再把目光投向远方奈瓦沙湖的湖岸。",
+  "tr": "再把目光投向远方奈瓦沙湖的湖岸。",
+  "tr_note": "ends the sentence begun in 9f88b5e83627"
  },
  "a1bf92eff40d": {
   "en": "Cancelled",
@@ -6199,7 +6538,8 @@
   "en": "Helmet<x1>Essential</x1>",
   "b": "头盔<x1>必备</x1>",
   "date": "2026-11-17",
-  "a": "头盔<x1>必备</x1>"
+  "a": "头盔<x1>必备</x1>",
+  "tr": "头盔<x1>必备</x1>"
  },
  "a232866143be": {
   "en": "{1}<x1>Paragliding Tour, {2} Days In The Indian Himalaya</x1>",
@@ -6211,7 +6551,8 @@
   "en": "{1} days · from {2}",
   "b": "{1}天 · 从{2}出发",
   "date": "2026-11-17",
-  "a": "{1}天 · 从{2}出发"
+  "a": "{1}天 · 从{2}出发",
+  "tr": "{1}天 · 从{2}出发"
  },
  "a2d37ab42f7c": {
   "en": "The landing field",
@@ -6254,7 +6595,8 @@
   "en": "{1}°T · {2} km from Mount Longonot",
   "b": "方位{1}° · 距 Mount Longonot {2} km",
   "date": "2026-11-17",
-  "a": "真方位{1}° · 距隆戈诺特山{2}公里"
+  "a": "真方位{1}° · 距隆戈诺特山{2}公里",
+  "tr": "真方位{1}° · 距隆戈诺特山{2}公里"
  },
  "a37c928492fb": {
   "en": "Photo in the task",
@@ -6289,7 +6631,8 @@
   "en": "The whole overview: thermals, season, the team, retrieves",
   "b": "完整概览：热气流、季节、团队、回收",
   "date": "2026-11-17",
-  "a": "全貌一览：热气流、季节、团队、回收"
+  "a": "全貌一览：热气流、季节、团队、回收",
+  "tr": "完整概览：热气流、季节、团队、回收"
  },
  "a3c3f49b6e81": {
   "en": "{1} is not the place to find out what your new high end wing does in the afternoon. The flying is long rather than difficult, and the pilots who enjoy it are the ones not busy managing their glider.",
@@ -6301,7 +6644,8 @@
   "en": "What insurance do I need?",
   "b": "我需要什么保险？",
   "date": "2026-11-17",
-  "a": "我需要什么保险？"
+  "a": "我需要什么保险？",
+  "tr": "我需要什么保险？"
  },
  "a4309af7aa85": {
   "en": "{1} sits at about {2}m and cloudbase goes well over {3}m. Bring gear you trust.",
@@ -6340,7 +6684,8 @@
   "en": "Permissions and officials",
   "b": "许可和官员",
   "date": "2026-11-17",
-  "a": "许可和官员"
+  "a": "许可和官员",
+  "tr": "许可和官员"
  },
  "a4ae4b24a1f5": {
   "en": "Zoom out",
@@ -6393,7 +6738,8 @@
   "en": "Ask when it matters",
   "b": "重要时才去问",
   "date": "2026-11-17",
-  "a": "该问的时候就问"
+  "a": "该问的时候就问",
+  "tr": "该问的时候就问"
  },
  "a55a275aa676": {
   "en": "Terms",
@@ -6492,7 +6838,8 @@
   "en": "{1}°N · {2}°E",
   "b": "北纬{1}° · 东经{2}°",
   "date": "2026-11-17",
-  "a": "北纬{1}° · 东经{2}°"
+  "a": "北纬{1}° · 东经{2}°",
+  "tr": "北纬{1}° · 东经{2}°"
  },
  "a6ef4903501b": {
   "en": "<x1>Hold a place sends an enquiry for that departure.</x1> All four departures are guaranteed to run: we will not cancel any of them for low numbers. What is due when you book is set out in our <x2>booking terms</x2>.",
@@ -6523,19 +6870,22 @@
   "en": "Read the eight rules",
   "b": "阅读这八条规则",
   "date": "2026-11-17",
-  "a": "阅读这八条规则"
+  "a": "阅读这八条规则",
+  "tr": "阅读这八条规则"
  },
  "a7d2b97b0cb7": {
   "en": "Your guide proposes the day's plan to maximise flying, and briefs you on the forecast, the site and the conditions. He suggests cross country directions and where a retrieve is realistic.",
   "b": "你的向导会提出当天的计划，以便尽可能多飞，并向你讲解预报、飞行场和条件。他会建议越野飞行的方向，以及哪里回收是现实的。",
   "date": "2026-11-17",
-  "a": "你的向导会提出当天的计划，尽可能多飞，并向你做任务简报，讲解天气预报、场地和条件。他会建议越野飞行的方向，以及在哪里回收比较现实。"
+  "a": "你的向导会提出当天的计划，尽可能多飞，并向你做任务简报，讲解天气预报、场地和条件。他会建议越野飞行的方向，以及在哪里回收比较现实。",
+  "tr": "你的向导会提出当天的计划，尽可能多飞，并向你做任务简报，讲解天气预报、场地和条件。他会建议越野飞行的方向，以及在哪里回收比较现实。"
  },
  "a838eea5c00e": {
   "en": "How a day runs, and who it is for",
   "b": "一天如何度过，适合谁",
   "date": "2026-11-17",
-  "a": "一天怎么过，适合什么人"
+  "a": "一天怎么过，适合什么人",
+  "tr": "一天怎么过，适合什么人"
  },
  "a84f56f2e6a7": {
   "en": "Kenya",
@@ -6565,7 +6915,8 @@
   "en": "Fly where humankind first walked. Rift Valley's endless skies await.",
   "b": "飞向人类最初行走的地方。大裂谷无尽的天空在等你。",
   "date": "2026-11-17",
-  "a": "飞越人类最初行走的土地。东非大裂谷无尽的天空在等你。"
+  "a": "飞越人类最初行走的土地。东非大裂谷无尽的天空在等你。",
+  "tr": "飞越人类最初行走的土地。东非大裂谷无尽的天空在等你。"
  },
  "a8e32b874166": {
   "en": "Over the back",
@@ -6577,25 +6928,29 @@
   "en": "Policy number and rescue hotline, saved offline<x1>Essential</x1><x2>You will want these at the moment you have no signal</x2>",
   "b": "保单号和救援热线，离线保存<x1>必备</x1><x2>你最需要它们的时候，正是没有信号的时候</x2>",
   "date": "2026-11-17",
-  "a": "保单号和救援热线，离线保存<x1>必备</x1><x2>你会在没有信号的时候需要它们</x2>"
+  "a": "保单号和救援热线，离线保存<x1>必备</x1><x2>你会在没有信号的时候需要它们</x2>",
+  "tr": "保单号和救援热线，离线保存<x1>必备</x1><x2>你会在没有信号的时候需要它们</x2>"
  },
  "a957a461b648": {
   "en": "{1} volts, {2} Hertz",
   "b": "{1}伏，{2}赫兹",
   "date": "2026-11-17",
-  "a": "{1}伏，{2}赫兹"
+  "a": "{1}伏，{2}赫兹",
+  "tr": "{1}伏，{2}赫兹"
  },
  "a96dd16fa3cf": {
   "en": "Rule {1}, Staying and moving",
   "b": "第{1}条，停留和行动",
   "date": "2026-11-17",
-  "a": "规则{1}：住宿和出行"
+  "a": "规则{1}：住宿和出行",
+  "tr": "规则{1}：住宿和出行"
  },
  "a9c4b6151646": {
   "en": "drag the ground · pinch to come closer · twist to turn, two fingers up or down to tilt · a dotted name or an animal tells its story",
   "b": "拖动地面 · 双指捏合拉近 · 扭转以转向，双指上下滑动以倾斜 · 带点的名字或动物会讲述它的故事",
   "date": "2026-11-17",
-  "a": "拖动地面 · 双指捏合拉近 · 双指旋转转向，双指上下滑动倾斜 · 点开带点的地名或动物，看它的故事"
+  "a": "拖动地面 · 双指捏合拉近 · 双指旋转转向，双指上下滑动倾斜 · 点开带点的地名或动物，看它的故事",
+  "tr": "拖动地面 · 双指捏合拉近 · 双指旋转转向，双指上下滑动倾斜 · 点开带点的地名或动物，看它的故事"
  },
  "aa61c413bd4b": {
   "en": "<x1>The valley floor</x1>Terraced fields, a river and villages seen from the air<x2>near Baijnath</x2>",
@@ -6607,7 +6962,8 @@
   "en": "{1}-{2}<x1>M/S</x1>",
   "b": "{1}-{2}<x1>M/S</x1>",
   "date": "2026-11-17",
-  "a": "{1}-{2}<x1>M/S</x1>"
+  "a": "{1}-{2}<x1>M/S</x1>",
+  "tr": "{1}-{2}<x1>M/S</x1>"
  },
  "aae454b44918": {
   "en": "You can launch cleanly in nil wind, without help from the breeze.",
@@ -6626,7 +6982,8 @@
   "en": "Hippo",
   "b": "河马",
   "date": "2026-11-17",
-  "a": "河马"
+  "a": "河马",
+  "tr": "河马"
  },
  "ab25fcd650c9": {
   "en": "Paragliding podcast, knowledge base and guided expeditions",
@@ -6654,7 +7011,8 @@
   "en": "Thermals to {1} m/s · {2} m above ground",
   "b": "热气流最高{1} m/s · 离地{2} m",
   "date": "2026-11-17",
-  "a": "热气流可达{1} m/s · 离地{2}米"
+  "a": "热气流可达{1} m/s · 离地{2}米",
+  "tr": "热气流可达{1} m/s · 离地{2}米"
  },
  "ab95c7774c58": {
   "en": "See the Kenya trip",
@@ -6669,13 +7027,15 @@
   "en": "You may be seen as progress, as wealth, or with suspicion: spying, drones, something military. None of that is unreasonable given the history. Read up on the communities, the security picture and the recent past of anywhere you are heading before you get there.",
   "b": "你可能被当作进步，被当作财富，或者被怀疑：间谍、无人机、军事。考虑到这里的历史，这些都不算不合理。去任何地方之前，先了解那里的社区、治安状况和近期的历史。",
   "date": "2026-11-17",
-  "a": "你可能被视为进步、财富的象征，也可能招来怀疑：间谍、无人机、军事活动。考虑到历史，这些都不是没有道理的。在前往任何地方之前，先了解那里的社区、安全形势和近来的历史。"
+  "a": "你可能被视为进步、财富的象征，也可能招来怀疑：间谍、无人机、军事活动。考虑到历史，这些都不是没有道理的。在前往任何地方之前，先了解那里的社区、安全形势和近来的历史。",
+  "tr": "你可能被视为进步、财富的象征，也可能招来怀疑：间谍、无人机、军事活动。考虑到历史，这些都不是没有道理的。在前往任何地方之前，先了解那里的社区、安全形势和近来的历史。"
  },
  "ac42376ff891": {
   "en": "The paperwork is the part you cannot buy locally on the morning you need it.",
   "b": "文件证件，是你需要的那天早上没法在当地买到的东西。",
   "date": "2026-11-17",
-  "a": "证件是你在需要它的那天早上无法在当地买到的东西。"
+  "a": "证件是你在需要它的那天早上无法在当地买到的东西。",
+  "tr": "证件是你在需要它的那天早上无法在当地买到的东西。"
  },
  "ac8d35c5651b": {
   "en": "Sharing our passion for the art of flight isn't just meaningful, it's our purpose. By flying with us, you help uplift local communities through welfare, training, and opportunities for the next generation.",
@@ -6690,7 +7050,8 @@
   "en": "rare surges",
   "b": "偶尔的强烈冲顶",
   "date": "2026-11-17",
-  "a": "偶有猛升"
+  "a": "偶有猛升",
+  "tr": "偶有猛升"
  },
  "acfed849a1d0": {
   "en": "Chapters of Navigating India",
@@ -6714,7 +7075,8 @@
   "en": "Wherever you land, some guy with motorbike comes and offers you lift. We want people to benefit from this, to earn some money from this.",
   "b": "不管你降落在哪里，总有个骑摩托车的人过来，提出载你一程。我们希望人们能从中受益，能从中赚到一些钱。",
   "date": "2026-11-17",
-  "a": "无论你在哪里降落，总会有个骑摩托车的家伙过来，说要载你一程。我们希望人们能从中受益，靠这个挣点钱。"
+  "a": "无论你在哪里降落，总会有个骑摩托车的家伙过来，说要载你一程。我们希望人们能从中受益，靠这个挣点钱。",
+  "tr": "无论你在哪里降落，总会有个骑摩托车的家伙过来，说要载你一程。我们希望人们能从中受益，靠这个挣点钱。"
  },
  "ad76c9cfcd87": {
   "en": "You want big mountain flying with a forgiving front range to learn it on.",
@@ -6753,7 +7115,8 @@
   "en": "Hippo spend the day in the clear pools, and their dung feeds the fish that live on it, a chain the filmmakers Alan and Joan Root followed underwater here.",
   "b": "河马白天泡在清澈的水潭里，它们的粪便养活了靠它为生的鱼，纪录片导演 Alan 和 Joan Root 曾在这里的水下追踪过这条食物链。",
   "date": "2026-11-17",
-  "a": "河马白天待在清澈的水池里，它们的粪便养活了以此为食的鱼，电影人Alan Root和Joan Root曾在这里的水下追踪拍摄这条食物链。"
+  "a": "河马白天待在清澈的水池里，它们的粪便养活了以此为食的鱼，电影人Alan Root和Joan Root曾在这里的水下追踪拍摄这条食物链。",
+  "tr": "河马白天待在清澈的水池里，它们的粪便养活了以此为食的鱼，电影人 Alan Root 和 Joan Root 曾在这里的水下追踪拍摄这条食物链。"
  },
  "addc5623cf16": {
   "en": "East, the bigger day",
@@ -6779,7 +7142,8 @@
   "en": "Travel insurance covering paragliding at altitudes up to {1}m. It must include helicopter rescue for retrieves from remote regions, and medical evacuation and treatment covering local hospitals plus international repatriation.",
   "b": "涵盖海拔最高{1}m 滑翔伞运动的旅行保险。必须包括从偏远地区回收所需的直升机救援，以及涵盖本地医院的医疗后送和治疗，外加国际遣返。",
   "date": "2026-11-17",
-  "a": "覆盖海拔{1}米以下滑翔伞运动的旅行保险。保险必须包括从偏远地区回收所需的直升机救援，以及医疗后送和治疗，涵盖当地医院和国际遣返。"
+  "a": "覆盖海拔{1}米以下滑翔伞运动的旅行保险。保险必须包括从偏远地区回收所需的直升机救援，以及医疗后送和治疗，涵盖当地医院和国际遣返。",
+  "tr": "覆盖海拔{1}米以下滑翔伞运动的旅行保险。保险必须包括从偏远地区回收所需的直升机救援，以及医疗后送和治疗，涵盖当地医院和国际遣返。"
  },
  "afd25e00491c": {
   "en": "Fly into Delhi, then take a domestic flight to Dharamshala, listed as Kangra or Gaggal, and a taxi of about two hours to {1}. Jigish Gohil, who lives in {2}, rates the overnight Volvo bus from Delhi as the cheapest and easiest option, with seats that recline far enough to sleep. Chandigarh and Amritsar airports work too, with a longer drive at the end.",
@@ -6810,7 +7174,8 @@
   "en": "Takeoffs sit between {1} and {2}m, and you can expect to climb to {3}m, where it is cold.",
   "b": "起飞场位于{1}到{2}m 之间，你可以预期爬升到{3}m，那里很冷。",
   "date": "2026-11-17",
-  "a": "起飞场海拔在{1}米到{2}米之间，你可以期待爬升到{3}米，那里很冷。"
+  "a": "起飞场海拔在{1}米到{2}米之间，你可以期待爬升到{3}米，那里很冷。",
+  "tr": "起飞场海拔在{1}米到{2}米之间，你可以期待爬升到{3}米，那里很冷。"
  },
  "b0c4416b4d80": {
   "en": "Also from {1}",
@@ -6834,7 +7199,8 @@
   "en": "Standard travel insurance often excludes adventure sports, so read the wording rather than assuming.",
   "b": "普通旅行保险通常把冒险运动排除在外，所以请仔细读条款，不要想当然。",
   "date": "2026-11-17",
-  "a": "标准旅行保险通常不保极限运动，所以请仔细阅读条款，不要想当然。"
+  "a": "标准旅行保险通常不保极限运动，所以请仔细阅读条款，不要想当然。",
+  "tr": "标准旅行保险通常不保极限运动，所以请仔细阅读条款，不要想当然。"
  },
  "b191dbd602b6": {
   "en": "Will Gadd",
@@ -6886,19 +7252,22 @@
   "en": "Zebra",
   "b": "斑马",
   "date": "2026-11-17",
-  "a": "斑马"
+  "a": "斑马",
+  "tr": "斑马"
  },
  "b302e15934f1": {
   "en": "Chapter {1} of {2}: Machakos Hills",
   "b": "第{1}章，共{2}章：Machakos Hills",
   "date": "2026-11-17",
-  "a": "第{1}章，共{2}章：马查科斯山"
+  "a": "第{1}章，共{2}章：马查科斯山",
+  "tr": "第{1}章，共{2}章：马查科斯山"
  },
  "b37554f695b1": {
   "en": "People",
   "b": "人",
   "date": "2026-11-17",
-  "a": "人文"
+  "a": "人文",
+  "tr": "人文"
  },
  "b3d45b8056fb": {
   "en": "Tell your friends your plan for the day, fly with a mate if you can, carry some form of tracking, and let people know when you have landed in the evening.",
@@ -6910,7 +7279,8 @@
   "en": "Season Packages",
   "b": "季节套餐",
   "date": "2026-11-17",
-  "a": "季节套餐"
+  "a": "季节套餐",
+  "tr": "季节套餐"
  },
  "b453c4af37bd": {
   "en": "Pilots who can take off in strong wind and strong thermic conditions. Vistasp Kharas, who has flown {1} for more than ten years, advises an {2} course: the thermals can be punchy and there is wind in the mix. He would not send a pilot used only to alpine air with little knowledge of wind, because on the lee side the site is not forgiving.",
@@ -6925,7 +7295,8 @@
   "en": "About The Chyulu Hills",
   "b": "关于 Chyulu Hills",
   "date": "2026-11-17",
-  "a": "关于丘卢山"
+  "a": "关于丘卢山",
+  "tr": "关于丘卢山"
  },
  "b49bbe9c0918": {
   "en": "Full-size original",
@@ -6938,7 +7309,8 @@
   "en": "Last year, we got arrested by {1} people with spears and stones.",
   "b": "去年，我们被{1}个拿着长矛和石头的人逮住了。",
   "date": "2026-11-17",
-  "a": "去年，我们被{1}个拿着长矛和石头的人抓了起来。"
+  "a": "去年，我们被{1}个拿着长矛和石头的人抓了起来。",
+  "tr": "去年，我们被{1}个拿着长矛和石头的人抓了起来。"
  },
  "b4f67e424077": {
   "en": "Getting it",
@@ -6985,7 +7357,8 @@
   "en": "camera <x1>{1}</x1> m",
   "b": "相机 <x1>{1}</x1> m",
   "date": "2026-11-17",
-  "a": "镜头高度<x1>{1}</x1>米"
+  "a": "镜头高度<x1>{1}</x1>米",
+  "tr": "镜头高度<x1>{1}</x1>米"
  },
  "b576d512dd2d": {
   "en": "<x1>{1}</x1> pts",
@@ -7004,7 +7377,8 @@
   "en": "When you are asked for money",
   "b": "当有人向你要钱",
   "date": "2026-11-17",
-  "a": "当有人向你要钱时"
+  "a": "当有人向你要钱时",
+  "tr": "当有人向你要钱时"
  },
  "b5e1b5c9c3bc": {
   "en": "The Science Of Wing Design",
@@ -7032,7 +7406,12 @@
   "en": "Rule {1}, Landing protocol",
   "b": "第{1}条，降落场规范",
   "date": "2026-11-17",
-  "a": "规则{1}：降落场守则"
+  "a": "规则{1}：降落场守则",
+  "tr": "规则{1}：降落守则",
+  "tr_note": "landing = the act, not the field",
+  "waive": {
+   "glossary": "the act of landing (a protocol), not a landing field"
+  }
  },
  "b63b356ef3f6": {
   "en": "The front range",
@@ -7044,13 +7423,15 @@
   "en": "About Lake Bogoria",
   "b": "关于博戈里亚湖",
   "date": "2026-11-17",
-  "a": "关于博戈里亚湖"
+  "a": "关于博戈里亚湖",
+  "tr": "关于博戈里亚湖"
  },
  "b6d9c8d773ee": {
   "en": "About Nairobi National Park",
   "b": "关于内罗毕国家公园",
   "date": "2026-11-17",
-  "a": "关于内罗毕国家公园"
+  "a": "关于内罗毕国家公园",
+  "tr": "关于内罗毕国家公园"
  },
  "b6dc5272c942": {
   "en": "{1} chapters",
@@ -7105,19 +7486,24 @@
   "en": "About Mzima Springs",
   "b": "关于 Mzima Springs",
   "date": "2026-11-17",
-  "a": "关于姆济马泉"
+  "a": "关于姆济马泉",
+  "tr": "关于 Mzima Springs",
+  "tr_note": "local name kept"
  },
  "b97819bea45d": {
   "en": "Our terms, privacy and safety pages are in English.",
   "a": "我们的条款、隐私和安全页面为英文。",
   "date": "2026-11-17",
-  "b": "我们的条款、隐私和安全页面均为英文。"
+  "b": "我们的条款、隐私和安全页面均为英文。",
+  "tr": "我们的条款、隐私和安全页面为英文版。",
+  "tr_note": "reads before 以英文版本为准。"
  },
  "b98b7d179d0f": {
   "en": "Offline maps on your phone<x1>Download the region before you fly out</x1>",
   "b": "手机离线地图<x1>出发前下载好这个地区</x1>",
   "date": "2026-11-17",
-  "a": "手机离线地图<x1>出发前下载好该地区</x1>"
+  "a": "手机离线地图<x1>出发前下载好该地区</x1>",
+  "tr": "手机离线地图<x1>出发前下载好该地区</x1>"
  },
  "b9b15d8821c5": {
   "en": "The film",
@@ -7167,7 +7553,8 @@
   "en": "Our lead guides also have extensive experience in conducting retrieves from remote locations. We have detailed flight plans and multiple communication systems in place to ensure a swift pickup, no matter where the sky takes you. While we can’t control the weather, we can guarantee that you will be in the safest possible hands both in the air and on the ground should the unexpected happen.",
   "b": "我们的领队向导在偏远地区组织回收方面也经验丰富。我们有详细的飞行计划和多重通讯系统，确保无论天空把你带到哪里，都能迅速接你。天气我们无法控制，但可以保证，万一出现意外，你在空中和地面都在最可靠的人手里。",
   "date": "2026-11-17",
-  "a": "我们的领队向导在偏远地区执行回收方面也经验丰富。我们备有详细的飞行计划和多套通讯系统，确保无论天空把你带到哪里，都能迅速接你。我们无法控制天气，但可以保证，万一发生意外，无论在空中还是地面，你都会得到尽可能安全的照应。"
+  "a": "我们的领队向导在偏远地区执行回收方面也经验丰富。我们备有详细的飞行计划和多套通讯系统，确保无论天空把你带到哪里，都能迅速接你。我们无法控制天气，但可以保证，万一发生意外，无论在空中还是地面，你都会得到尽可能安全的照应。",
+  "tr": "我们的领队向导在偏远地区执行回收方面也经验丰富。我们备有详细的飞行计划和多套通讯系统，确保无论天空把你带到哪里，都能迅速接你。我们无法控制天气，但可以保证，万一发生意外，无论在空中还是地面，你都会得到尽可能安全的照应。"
  },
  "bae7d5be7082": {
   "en": "Status",
@@ -7200,7 +7587,8 @@
   "en": "Kenyan conditions are stronger than most home sites. Bring gear you trust.",
   "b": "肯尼亚的条件比大多数你家乡的飞行场更强。带上你信得过的装备。",
   "date": "2026-11-17",
-  "a": "肯尼亚的飞行条件比大多数家乡场地都强。带上你信得过的装备。"
+  "a": "肯尼亚的飞行条件比大多数家乡场地都强。带上你信得过的装备。",
+  "tr": "肯尼亚的飞行条件比大多数家乡场地都强。带上你信得过的装备。"
  },
  "bbaeb294a58b": {
   "en": "A short season, and a changing climate",
@@ -7224,13 +7612,15 @@
   "en": "Close",
   "b": "关闭",
   "date": "2026-11-17",
-  "a": "关闭"
+  "a": "关闭",
+  "tr": "关闭"
  },
  "bc14724fde36": {
   "en": "Buff<x1>For the dusty roads</x1>",
   "b": "Buff 头巾<x1>用于多尘的道路</x1>",
   "date": "2026-11-17",
-  "a": "魔术头巾<x1>应对尘土飞扬的道路</x1>"
+  "a": "魔术头巾<x1>应对尘土飞扬的道路</x1>",
+  "tr": "魔术头巾<x1>应对尘土飞扬的道路</x1>"
  },
  "bc596fdcb822": {
   "en": "How do I get there?",
@@ -7294,7 +7684,8 @@
   "en": "You want a fixed timetable. The plan follows the conditions, not the other way round.",
   "b": "你想要固定的时间表。计划跟着条件走，而不是反过来。",
   "date": "2026-11-17",
-  "a": "你想要固定的时间表。计划跟着条件走，而不是反过来。"
+  "a": "你想要固定的时间表。计划跟着条件走，而不是反过来。",
+  "tr": "你想要固定的时间表。计划跟着条件走，而不是反过来。"
  },
  "bd2490da7c01": {
   "en": "In from {1} km wide over the Kangra valley, down to {2}, west along the front to Dharamshala, back east to {3}, and up over the back. The scroll flies it, or take the controls and go where you like.",
@@ -7306,7 +7697,8 @@
   "en": "{1}m radio, {2} to {3} MHz<x1>Essential</x1><x2>Yaesu, Icom or Kenwood. Avoid Baofeng, reliable communication can save your life</x2>",
   "b": "{1}m 电台，{2}到{3} MHz<x1>必备</x1><x2>Yaesu、Icom 或 Kenwood。避免 Baofeng，可靠的通讯能救你的命</x2>",
   "date": "2026-11-17",
-  "a": "{1}米波段电台，{2}至{3} MHz<x1>必备</x1><x2>Yaesu、Icom或Kenwood。避免使用Baofeng，可靠的通讯能救你的命</x2>"
+  "a": "{1}米波段电台，{2}至{3} MHz<x1>必备</x1><x2>Yaesu、Icom或Kenwood。避免使用Baofeng，可靠的通讯能救你的命</x2>",
+  "tr": "{1}米波段电台，{2}至{3} MHz<x1>必备</x1><x2>Yaesu、Icom 或 Kenwood。避免使用 Baofeng，可靠的通讯能救你的命</x2>"
  },
  "bd66d55258cd": {
   "en": "What the tour price covers is <x1>{1}</x1>.",
@@ -7353,7 +7745,8 @@
   "en": "chase thermals over the flatlands,",
   "b": "在平原上空追逐热气流，",
   "date": "2026-11-17",
-  "a": "在平原上空追逐热气流，"
+  "a": "在平原上空追逐热气流，",
+  "tr": "在平原上空追逐热气流，"
  },
  "be5602376409": {
   "en": "Warm in the valley, properly cold at {1}m. Both on the same day, every day.",
@@ -7374,7 +7767,8 @@
   "en": "A park of red cliffs, gorges and steam vents that can be crossed on foot or by bicycle among zebra, buffalo and giraffe. Olkaria, inside the park, is where Kenya draws geothermal power from the floor of the Rift.",
   "b": "一座有红色悬崖、峡谷和蒸汽喷口的公园，可以步行或骑自行车穿过，身边是斑马、水牛和长颈鹿。公园里的 Olkaria 是肯尼亚从大裂谷谷底获取地热发电的地方。",
   "date": "2026-11-17",
-  "a": "这座公园遍布红色悬崖、峡谷和蒸汽喷口，可以步行或骑自行车穿越，身边是斑马、水牛和长颈鹿。公园内的奥卡里亚，是肯尼亚从裂谷谷底获取地热能源的地方。"
+  "a": "这座公园遍布红色悬崖、峡谷和蒸汽喷口，可以步行或骑自行车穿越，身边是斑马、水牛和长颈鹿。公园内的奥卡里亚，是肯尼亚从裂谷谷底获取地热能源的地方。",
+  "tr": "这座公园遍布红色悬崖、峡谷和蒸汽喷口，可以步行或骑自行车穿越，身边是斑马、水牛和长颈鹿。公园内的奥卡里亚，是肯尼亚从裂谷谷底获取地热能源的地方。"
  },
  "bee1ebaac1d6": {
   "en": ", the steppe, planned for {1}",
@@ -7395,7 +7789,8 @@
   "en": "What you see",
   "b": "你看到的",
   "date": "2026-11-17",
-  "a": "你看到的"
+  "a": "你看到的",
+  "tr": "你看到的"
  },
  "c0044806d148": {
   "en": "Sky Is Not The Limit",
@@ -7407,13 +7802,16 @@
   "en": "Najin and Fatu",
   "b": "Najin 和 Fatu",
   "date": "2026-11-17",
-  "a": "纳金和法图"
+  "a": "纳金和法图",
+  "tr": "Najin 和 Fatu",
+  "tr_note": "names stay"
  },
  "c0faf4093874": {
   "en": "Rare surges",
   "b": "偶尔的强烈冲顶",
   "date": "2026-11-17",
-  "a": "偶有猛升"
+  "a": "偶有猛升",
+  "tr": "偶有猛升"
  },
  "c11df50abfb9": {
   "en": "Guaranteed to run, {1} places",
@@ -7437,7 +7835,8 @@
   "en": "Along the northern Elgeyo escarpment the Marakwet have watered the valley floor for centuries with furrows cut along the cliffs, a system still in use and still managed by the clans.",
   "b": "沿 Elgeyo 断崖北段，Marakwet 人几个世纪以来一直靠沿悬崖开凿的引水渠灌溉谷底，这套系统至今仍在使用，仍由各氏族管理。",
   "date": "2026-11-17",
-  "a": "在埃尔格约断崖北段，马拉奎特人几个世纪以来一直用沿悬崖开凿的水渠灌溉谷底，这套系统至今仍在使用，并仍由各氏族管理。"
+  "a": "在埃尔格约断崖北段，马拉奎特人几个世纪以来一直用沿悬崖开凿的水渠灌溉谷底，这套系统至今仍在使用，并仍由各氏族管理。",
+  "tr": "在埃尔格约断崖北段，马拉奎特人几个世纪以来一直用沿悬崖开凿的水渠灌溉谷底，这套系统至今仍在使用，并仍由各氏族管理。"
  },
  "c290b21f5931": {
   "en": "A Tibetan monastery with prayer flags against a blue sky",
@@ -7482,13 +7881,15 @@
   "en": "{1}°S · {2}°E",
   "b": "南纬{1}° · 东经{2}°",
   "date": "2026-11-17",
-  "a": "南纬{1}° · 东经{2}°"
+  "a": "南纬{1}° · 东经{2}°",
+  "tr": "南纬{1}° · 东经{2}°"
  },
  "c33ab8e216a2": {
   "en": "KES. Cash is used widely, ATMs are common in big towns only, and Mpesa is the preferred digital wallet.",
   "b": "KES。现金使用很广，ATM 只有大城镇才常见，Mpesa 是首选的数字钱包。",
   "date": "2026-11-17",
-  "a": "KES。现金使用广泛，自动取款机只在大城镇常见，Mpesa是首选的电子钱包。"
+  "a": "KES。现金使用广泛，自动取款机只在大城镇常见，Mpesa是首选的电子钱包。",
+  "tr": "KES。现金使用广泛，自动取款机只在大城镇常见，Mpesa 是首选的电子钱包。"
  },
  "c344423e7a48": {
   "en": "The {1} landing field under big cumulus, snow peaks behind, one wing coming in",
@@ -7509,7 +7910,8 @@
   "en": "Hiring porters is usually welcome. In some communities men will not take portering work, and offering a guiding or security role instead is the respectful move rather than pressing the point.",
   "b": "雇用搬运工通常受欢迎。在一些社区，男人不做搬运工作，这时改为提出让他们担任向导或安保，才是尊重的做法，而不是硬要坚持。",
   "date": "2026-11-17",
-  "a": "雇用挑夫通常很受欢迎。在有些社区，男人不愿做挑夫的活，这时改为提供向导或安保的工作才是尊重的做法，而不要硬坚持。"
+  "a": "雇用挑夫通常很受欢迎。在有些社区，男人不愿做挑夫的活，这时改为提供向导或安保的工作才是尊重的做法，而不要硬坚持。",
+  "tr": "雇用挑夫通常很受欢迎。在有些社区，男人不愿做挑夫的活，这时改为提供向导或安保的工作才是尊重的做法，而不要硬坚持。"
  },
  "c43856cd1a2a": {
   "en": "Photographs: Nerdandnutella (CC BY-SA {1}), UnpetitproleX (CC BY-SA {2}), via Wikimedia Commons",
@@ -7521,7 +7923,8 @@
   "en": "Zebra, buffalo, gazelle and giraffe graze the floor of the gorge among walkers and cyclists, which is possible because the park has no lions. It was gazetted in {1}.",
   "b": "斑马、水牛、瞪羚和长颈鹿在峡谷谷底吃草，身边就是步行和骑车的人，之所以可行，是因为公园里没有狮子。它于{1}年被正式划为公园。",
   "date": "2026-11-17",
-  "a": "斑马、水牛、瞪羚和长颈鹿在峡谷谷底吃草，身边就是徒步者和骑行者；之所以能这样，是因为公园里没有狮子。公园于{1}年正式设立。"
+  "a": "斑马、水牛、瞪羚和长颈鹿在峡谷谷底吃草，身边就是徒步者和骑行者；之所以能这样，是因为公园里没有狮子。公园于{1}年正式设立。",
+  "tr": "斑马、水牛、瞪羚和长颈鹿在峡谷谷底吃草，身边就是徒步者和骑行者；之所以能这样，是因为公园里没有狮子。公园于{1}年正式设立。"
  },
  "c474e040dc24": {
   "en": "Why wind strength differs between seasons",
@@ -7578,13 +7981,16 @@
   "en": "Rehydration salts",
   "b": "补液盐",
   "date": "2026-11-17",
-  "a": "口服补液盐"
+  "a": "口服补液盐",
+  "tr": "口服补液盐"
  },
  "c613695800ec": {
   "en": "About Ukambani",
   "b": "关于 Ukambani",
   "date": "2026-11-17",
-  "a": "关于乌坎巴尼"
+  "a": "关于乌坎巴尼",
+  "tr": "关于 Ukambani",
+  "tr_note": "local region name kept"
  },
  "c61970292546": {
   "en": "Downloaded",
@@ -7628,7 +8034,9 @@
   "en": "Two paragliders over flat dark bush under a stormy sky in the Chyulu Hills",
   "b": "两顶滑翔伞飞过 Chyulu Hills 风暴天空下平坦的深色灌木丛",
   "date": "2026-11-17",
-  "a": "丘卢山暴风雨般的天空下，两顶滑翔伞飞越平坦幽暗的灌木丛"
+  "a": "丘卢山暴风雨般的天空下，两顶滑翔伞飞越平坦幽暗的灌木丛",
+  "tr": "丘卢山风雨欲来的天空下，两顶滑翔伞飞越平坦幽暗的灌木丛",
+  "tr_note": "stormy sky"
  },
  "c6c17c967a2f": {
   "en": "Nikolay Yotov",
@@ -7652,13 +8060,16 @@
   "en": "{1}, Kenya",
   "b": "{1}，肯尼亚",
   "date": "2026-11-17",
-  "a": "肯尼亚{1}"
+  "a": "肯尼亚{1}",
+  "tr": "肯尼亚{1}",
+  "tr_note": "Chinese order: country first"
  },
  "c6fc47a975d2": {
   "en": "The ground is open terrain data (AWS Terrain Tiles, Mapzen Terrarium, from SRTM and other open sources), a coarse layer for the whole Rift and a finer one over each site, drawn live as relief, flown by the scroll or moved by hand. The sites are the six of the tour, the launches are read from the owner's own tracklogs and the towns are placed from GeoNames (CC BY {1}); the parks, peoples, prehistoric sites and landmarks along the way are placed by hand at the centre of each area, with a few lines each from published sources; the border is Natural Earth's. The flights drawn are the owner's, scored by the XContest rules: the distance is the scored route, the dashed line is that route, and the average speed is the scored distance over the time in the air. The figures are Noto Emoji ({2}, Apache {3}): they stand on ground placed by hand near each park, lake or town, in view at any distance, for the animals and people of a place, not for sightings.",
   "b": "地面是开放的地形数据（AWS Terrain Tiles、Mapzen Terrarium，来自 SRTM 和其他开放来源）：整个大裂谷用一层较粗的数据，每个飞行场上方用一层更精细的，实时绘制成地势，由滚动页面带着飞，或用手移动。飞行场是行程中的那六个，起飞场取自站长自己的飞行轨迹，城镇依据 GeoNames（CC BY {1}）标注；沿途的公园、民族、史前遗址和地标，则手工标在各个区域的中心，附有几行取自公开资料的介绍；边界来自 Natural Earth。画出的航线是站长的飞行，按 XContest 规则计分：距离是计分航线，虚线就是这条航线，平均速度是计分距离除以滞空时间。这些图案是 Noto Emoji（{2}，Apache {3}）：它们站在每个公园、湖泊或城镇附近手工放置的地面上，无论距离多远都看得见，代表的是一个地方的动物和人，而不是目击记录。",
   "date": "2026-11-17",
-  "a": "地面采用开放地形数据（AWS Terrain Tiles、Mapzen Terrarium，来自SRTM及其他开放来源），整条裂谷用一层较粗的数据，每个场地上方再叠加一层更精细的数据，实时绘制成地形起伏，可随页面滚动飞行，也可手动移动。场地是本次行程的六个场地，起飞场取自站长本人的航迹记录，城镇位置来自GeoNames（CC BY {1}）；沿途的公园、民族、史前遗址和地标是手工放置在各区域中心的，每处配有几行出自已出版资料的介绍；国界来自Natural Earth。图中的航程是站长本人飞的，按XContest规则计分：距离是计分航线的距离，虚线就是这条航线，平均速度是计分距离除以滞空时间。图中的形象来自Noto Emoji（{2}，Apache {3}）：它们立在每个公园、湖泊或城镇附近手工放置的地面上，任何距离都可见，代表的是一个地方的动物和人，而不是实际目击记录。"
+  "a": "地面采用开放地形数据（AWS Terrain Tiles、Mapzen Terrarium，来自SRTM及其他开放来源），整条裂谷用一层较粗的数据，每个场地上方再叠加一层更精细的数据，实时绘制成地形起伏，可随页面滚动飞行，也可手动移动。场地是本次行程的六个场地，起飞场取自站长本人的航迹记录，城镇位置来自GeoNames（CC BY {1}）；沿途的公园、民族、史前遗址和地标是手工放置在各区域中心的，每处配有几行出自已出版资料的介绍；国界来自Natural Earth。图中的航程是站长本人飞的，按XContest规则计分：距离是计分航线的距离，虚线就是这条航线，平均速度是计分距离除以滞空时间。图中的形象来自Noto Emoji（{2}，Apache {3}）：它们立在每个公园、湖泊或城镇附近手工放置的地面上，任何距离都可见，代表的是一个地方的动物和人，而不是实际目击记录。",
+  "tr": "地面采用开放地形数据（AWS Terrain Tiles、Mapzen Terrarium，来自 SRTM 及其他开放来源），整条裂谷用一层较粗的数据，每个场地上方再叠加一层更精细的数据，实时绘制成地形起伏，可随页面滚动飞行，也可手动移动。场地是本次行程的六个场地，起飞场取自站长本人的航迹记录，城镇位置来自 GeoNames（CC BY {1}）；沿途的公园、民族、史前遗址和地标是手工放置在各区域中心的，每处配有几行出自已出版资料的介绍；国界来自 Natural Earth。图中的航线是站长本人飞的，按 XContest 规则计分：距离是计分航线的距离，虚线就是这条航线，平均速度是计分距离除以滞空时间。图中的形象来自 Noto Emoji（{2}，Apache {3}）：它们立在每个公园、湖泊或城镇附近手工放置的地面上，任何距离都可见，代表的是一个地方的动物和人，而不是实际目击记录。"
  },
  "c6fc5da17202": {
   "en": "Anything you would like us to know, and anything you would like to ask.",
@@ -7709,7 +8120,8 @@
   "en": "Thermal Strength",
   "b": "热气流强度",
   "date": "2026-11-17",
-  "a": "热气流强度"
+  "a": "热气流强度",
+  "tr": "热气流强度"
  },
  "c7bd240ac63c": {
   "en": "Paraglider over snow-capped Himalayan peaks",
@@ -7734,7 +8146,8 @@
   "en": "{1}°T · {2} km from Rift Valley NP",
   "b": "方位{1}° · 距 Rift Valley NP {2} km",
   "date": "2026-11-17",
-  "a": "真方位{1}° · 距裂谷国家公园{2}公里"
+  "a": "真方位{1}° · 距裂谷国家公园{2}公里",
+  "tr": "真方位{1}° · 距裂谷国家公园{2}公里"
  },
  "c7c6c8cc021f": {
   "en": "Over {1}",
@@ -7746,7 +8159,8 @@
   "en": "Swahili and English",
   "b": "斯瓦希里语和英语",
   "date": "2026-11-17",
-  "a": "斯瓦希里语和英语"
+  "a": "斯瓦希里语和英语",
+  "tr": "斯瓦希里语和英语"
  },
  "c880e01143fc": {
   "en": "The more you tell us about where you are as a pilot, the more useful our answer will be. There are no wrong answers here, and telling us you are less current than you would like is genuinely more helpful than telling us you are fine.",
@@ -7832,7 +8246,9 @@
   "en": "Rift Immersive",
   "b": "Rift Immersive",
   "date": "2026-11-17",
-  "a": "沉浸式裂谷"
+  "a": "沉浸式裂谷",
+  "tr": "Rift Immersive",
+  "tr_note": "section name stays English (coordinator decision)"
  },
  "ca07a6eab021": {
   "en": "flying today, photos tonight",
@@ -7856,7 +8272,8 @@
   "en": "Before you go",
   "b": "出发之前",
   "date": "2026-11-17",
-  "a": "出发之前"
+  "a": "出发之前",
+  "tr": "出发之前"
  },
  "ca9d8ea87c29": {
   "en": "Flying {1} In Company, And How To Do It Well <x1>DIY</x1>",
@@ -7975,13 +8392,16 @@
   "en": "Pre {1} Kenya: Nikolay Yotov",
   "b": "{1}赛前的肯尼亚：Nikolay Yotov",
   "date": "2026-11-17",
-  "a": "{1}预赛前的肯尼亚：Nikolay Yotov"
+  "a": "{1}预赛前的肯尼亚：Nikolay Yotov",
+  "tr": "{1}赛前的肯尼亚：Nikolay Yotov",
+  "tr_note": "'Pre PWC' = before the pre-World Cup; 'pre-PWC event' not a qualifier"
  },
  "ccf7e353de0c": {
   "en": "Runners",
   "b": "跑者",
   "date": "2026-11-17",
-  "a": "跑步者"
+  "a": "跑步者",
+  "tr": "跑步者"
  },
  "cd4f60d8a103": {
   "en": "We'll break down",
@@ -8014,7 +8434,8 @@
   "en": "About Lake Naivasha",
   "b": "关于奈瓦沙湖",
   "date": "2026-11-17",
-  "a": "关于奈瓦沙湖"
+  "a": "关于奈瓦沙湖",
+  "tr": "关于奈瓦沙湖"
  },
  "ce3231da0838": {
   "en": "<x1>Over the peaks</x1>A single wing high above a snow-streaked peak<x2>near Waldo peak</x2>",
@@ -8051,7 +8472,8 @@
   "en": "About Kilimanjaro",
   "b": "关于乞力马扎罗山",
   "date": "2026-11-17",
-  "a": "关于乞力马扎罗山"
+  "a": "关于乞力马扎罗山",
+  "tr": "关于乞力马扎罗山"
  },
  "ceaa2dca101a": {
   "en": "Dharamshala and McLeod Ganj",
@@ -8072,7 +8494,8 @@
   "en": "Vario or {1}<x1>Load the airspace file before you travel</x1>",
   "b": "垂直速度表或{1}<x1>出发前载入空域文件</x1>",
   "date": "2026-11-17",
-  "a": "垂直速度表或{1}<x1>出发前载入空域文件</x1>"
+  "a": "垂直速度表或{1}<x1>出发前载入空域文件</x1>",
+  "tr": "垂直速度表或{1}<x1>出发前载入空域文件</x1>"
  },
  "cf765512cc6d": {
   "en": "Sending…",
@@ -8129,7 +8552,8 @@
   "en": "We provide certified rental wings only, for a fixed fee on request, and that is first come first served, so tell us in good time. Group safety items including first aid and retrieve support are covered.",
   "b": "我们只提供经认证的租用伞翼，按固定费用，需提前申请，先到先得，所以请尽早告诉我们。包括急救和回收支援在内的团队安全物品已包含在内。",
   "date": "2026-11-17",
-  "a": "我们只提供经过认证的租赁伞翼，按需收取固定费用，先到先得，所以请尽早告诉我们。急救和回收支持等团队安全保障都已包含在内。"
+  "a": "我们只提供经过认证的租赁伞翼，按需收取固定费用，先到先得，所以请尽早告诉我们。急救和回收支持等团队安全保障都已包含在内。",
+  "tr": "我们只提供经过认证的租赁伞翼，按需收取固定费用，先到先得，所以请尽早告诉我们。急救和回收支持等团队安全保障都已包含在内。"
  },
  "d0b66435c381": {
   "en": "Tap the name: {1}",
@@ -8144,7 +8568,11 @@
   "en": "A reserve on the Ewaso Ng'iro in dry country north of Mount Kenya, home to the Samburu special five: Grevy's zebra, reticulated giraffe, Somali ostrich, gerenuk and beisa oryx.",
   "b": "Ewaso Ng'iro 河边的一处保护区，位于肯尼亚山以北的干旱地带，是桑布鲁特有五兽的家园：细纹斑马、网纹长颈鹿、索马里鸵鸟、长颈羚和东非剑羚。",
   "date": "2026-11-17",
-  "a": "肯尼亚山以北干旱地带、埃瓦索恩吉罗河畔的一座保护区，是桑布鲁“特有五种”的家园：细纹斑马、网纹长颈鹿、索马里鸵鸟、长颈羚和东非剑羚。"
+  "a": "肯尼亚山以北干旱地带、埃瓦索恩吉罗河畔的一座保护区，是桑布鲁“特有五种”的家园：细纹斑马、网纹长颈鹿、索马里鸵鸟、长颈羚和东非剑羚。",
+  "tr": "肯尼亚山以北干旱地带、埃瓦索恩吉罗河畔的一座保护区，是桑布鲁“特有五种”的家园：细纹斑马、网纹长颈鹿、索马里鸵鸟、长颈羚和东非剑羚。",
+  "waive": {
+   "glossary": "a nature reserve, not the reserve parachute"
+  }
  },
  "d12081b32289": {
   "en": "Hold a place sends an enquiry for that departure.",
@@ -8175,7 +8603,8 @@
   "en": "What they see",
   "b": "他们看到的",
   "date": "2026-11-17",
-  "a": "他们看到的"
+  "a": "他们看到的",
+  "tr": "他们看到的"
  },
  "d23a6fa82fae": {
   "en": "Navigating India, Eddie Colfox",
@@ -8205,25 +8634,29 @@
   "en": "Clear the list",
   "b": "清空清单",
   "date": "2026-11-17",
-  "a": "清空清单"
+  "a": "清空清单",
+  "tr": "清空清单"
  },
  "d2f77486bbff": {
   "en": "Retrieves",
   "b": "回收",
   "date": "2026-11-17",
-  "a": "回收"
+  "a": "回收",
+  "tr": "回收"
  },
  "d318af3c70fe": {
   "en": "A shield volcano with a crater inside a crater, the inner one ringed by a moat, and a system of lava caves beneath its slopes. Maasai herders graze its outer flanks.",
   "b": "一座盾状火山，火山口里还套着一个火山口，内圈被一道壕沟环绕，山坡下有一套熔岩洞穴。马赛牧民在它的外坡放牧。",
   "date": "2026-11-17",
-  "a": "一座盾状火山，火山口里套着火山口，内火山口被一圈壕沟环绕，山坡下还有一套熔岩洞穴系统。马赛牧民在它的外侧山坡上放牧。"
+  "a": "一座盾状火山，火山口里套着火山口，内火山口被一圈壕沟环绕，山坡下还有一套熔岩洞穴系统。马赛牧民在它的外侧山坡上放牧。",
+  "tr": "一座盾状火山，火山口里套着火山口，内火山口被一圈壕沟环绕，山坡下还有一套熔岩洞穴系统。马赛牧民在它的外侧山坡上放牧。"
  },
  "d31d367bc5c7": {
   "en": "Clothing",
   "b": "衣物",
   "date": "2026-11-17",
-  "a": "衣物"
+  "a": "衣物",
+  "tr": "衣物"
  },
  "d34868312069": {
   "en": "Field Protocols For Rewiring Risk Intuition",
@@ -8250,7 +8683,8 @@
   "en": "The reticulated giraffe and Grevy's zebra of Samburu are dry-country animals of the north, found in few other places; most of the world's remaining Grevy's zebra live in northern Kenya.",
   "b": "桑布鲁的网纹长颈鹿和细纹斑马是北方干旱地区的动物，在其他地方很少见；世界上现存的大部分细纹斑马生活在肯尼亚北部。",
   "date": "2026-11-17",
-  "a": "桑布鲁的网纹长颈鹿和细纹斑马是北方干旱地带的动物，在其他地方很少见；世界上现存的细纹斑马大多生活在肯尼亚北部。"
+  "a": "桑布鲁的网纹长颈鹿和细纹斑马是北方干旱地带的动物，在其他地方很少见；世界上现存的细纹斑马大多生活在肯尼亚北部。",
+  "tr": "桑布鲁的网纹长颈鹿和细纹斑马是北方干旱地带的动物，在其他地方很少见；世界上现存的细纹斑马大多生活在肯尼亚北部。"
  },
  "d42713493ca8": {
   "en": "Destination",
@@ -8316,13 +8750,16 @@
   "en": "A shallow soda lake where great white pelicans breed on the islets and flamingos feed, protected within the Soysambu conservancy. The third of the Kenya Lake System World Heritage lakes.",
   "b": "一个浅水苏打湖，大白鹈鹕在小岛上繁殖，火烈鸟在这里觅食，受 Soysambu 保护区保护。它是肯尼亚湖泊系统世界遗产中的第三个湖。",
   "date": "2026-11-17",
-  "a": "一座浅碱湖，大白鹈鹕在湖中小岛上繁殖，火烈鸟在此觅食，受索伊桑布保护地保护。它是肯尼亚湖泊系统三座世界遗产湖泊中的第三座。"
+  "a": "一座浅碱湖，大白鹈鹕在湖中小岛上繁殖，火烈鸟在此觅食，受索伊桑布保护地保护。它是肯尼亚湖泊系统三座世界遗产湖泊中的第三座。",
+  "tr": "一座浅碱湖，大白鹈鹕在湖中小岛上繁殖，火烈鸟在此觅食，受 Soysambu 保护地保护。它是肯尼亚湖泊系统三座世界遗产湖泊中的第三座。",
+  "tr_note": "local name kept"
  },
  "d6384b2910b0": {
   "en": "Conditions here are stronger than most home sites. Bring gear you trust.",
   "b": "这里的条件比大多数你家乡的飞行场更强。带上你信得过的装备。",
   "date": "2026-11-17",
-  "a": "这里的飞行条件比大多数家乡场地都强。带上你信得过的装备。"
+  "a": "这里的飞行条件比大多数家乡场地都强。带上你信得过的装备。",
+  "tr": "这里的飞行条件比大多数家乡场地都强。带上你信得过的装备。"
  },
  "d65e418781f7": {
   "en": "This is the part the brochures leave out. The thermals that make {1} easy are the same thermals everyone else is in, and autumn is when everyone comes.",
@@ -8334,7 +8771,9 @@
   "en": "A deep soda lake under the Siracho escarpment, with hot springs and geysers along its shore and, in a good season, vast flocks of lesser flamingo. Part of the Kenya Lake System World Heritage Site.",
   "b": "Siracho 断崖下的一个深水苏打湖，湖岸有温泉和间歇泉，好年景时还有大群小火烈鸟。属于肯尼亚湖泊系统世界遗产。",
   "date": "2026-11-17",
-  "a": "西拉乔断崖下的一座深碱湖，湖岸有温泉和间歇泉，年景好时会聚集大群小火烈鸟。属于肯尼亚湖泊系统世界遗产地。"
+  "a": "西拉乔断崖下的一座深碱湖，湖岸有温泉和间歇泉，年景好时会聚集大群小火烈鸟。属于肯尼亚湖泊系统世界遗产地。",
+  "tr": "Siracho 断崖下的一座深碱湖，湖岸有温泉和间歇泉，年景好时会聚集大群小火烈鸟。属于肯尼亚湖泊系统世界遗产地。",
+  "tr_note": "local name kept"
  },
  "d7153c585db7": {
   "en": "<x1>←</x1> Task {1}",
@@ -8366,7 +8805,8 @@
   "en": "Requirements & Packing",
   "b": "要求和打包清单",
   "date": "2026-11-17",
-  "a": "要求和装备清单"
+  "a": "要求和装备清单",
+  "tr": "要求和装备清单"
  },
  "d76511171f87": {
   "en": "Participant Agreement",
@@ -8411,13 +8851,15 @@
   "en": "About The Kikuyu highlands",
   "b": "关于基库尤高地",
   "date": "2026-11-17",
-  "a": "关于基库尤高地"
+  "a": "关于基库尤高地",
+  "tr": "关于基库尤高地"
  },
  "d8aa0d94c7cb": {
   "en": "Kenya: Paragliding in the Cradle of Humankind",
   "b": "肯尼亚：人类摇篮之上的滑翔伞运动",
   "date": "2026-11-17",
-  "a": "肯尼亚：人类摇篮里的滑翔伞运动"
+  "a": "肯尼亚：人类摇篮里的滑翔伞运动",
+  "tr": "肯尼亚：人类摇篮里的滑翔伞运动"
  },
  "d9186ba11d2a": {
   "en": "Peru, the desert coast",
@@ -8432,31 +8874,38 @@
   "en": "The itinerary is designed with ample flexibility, built around the best flying windows and integrated with authentic cultural experiences for when your feet are back on the ground.",
   "b": "行程设计得十分灵活，围绕最好的飞行窗口来安排，并融入地道的文化体验，等你双脚回到地面时享受。",
   "date": "2026-11-17",
-  "a": "行程安排留有充分的灵活性，围绕最佳飞行窗口而定，并在你双脚回到地面时融入地道的文化体验。"
+  "a": "行程安排留有充分的灵活性，围绕最佳飞行窗口而定，并在你双脚回到地面时融入地道的文化体验。",
+  "tr": "行程安排留有充分的灵活性，围绕最佳飞行窗口而定，并融入地道的文化体验，留待你双脚回到地面时享受。",
+  "tr_note": "merged"
  },
  "d99aa004c51b": {
   "en": "{1} {2} card or national licence<x1>This is a tour for autonomous pilots</x1>",
   "b": "{1} {2}级卡或国家执照<x1>这是一次面向自主飞行员的行程</x1>",
   "date": "2026-11-17",
-  "a": "{1} {2}级证书或本国执照<x1>这是一趟面向能够独立飞行的飞行员的行程</x1>"
+  "a": "{1} {2}级证书或本国执照<x1>这是一趟面向能够独立飞行的飞行员的行程</x1>",
+  "tr": "{1} {2}级卡或本国执照<x1>这是一趟面向能够独立飞行的飞行员的行程</x1>",
+  "tr_note": "IPPI card"
  },
  "d9b34377c93f": {
   "en": "What skill and fitness level is required?",
   "b": "需要什么样的技术和体能水平？",
   "date": "2026-11-17",
-  "a": "需要什么样的技术和体能水平？"
+  "a": "需要什么样的技术和体能水平？",
+  "tr": "需要什么样的技术和体能水平？"
  },
  "d9df90d8002f": {
   "en": "Land",
   "b": "降落",
   "date": "2026-11-17",
-  "a": "降落"
+  "a": "降落",
+  "tr": "降落"
  },
  "da0ff8fed2d1": {
   "en": "Staying and moving",
   "b": "停留和行动",
   "date": "2026-11-17",
-  "a": "住宿和出行"
+  "a": "住宿和出行",
+  "tr": "住宿和出行"
  },
  "da18fae8a951": {
   "en": "Previous episodes",
@@ -8483,7 +8932,9 @@
   "en": "Four knuckles of hill on the edge of the Rift. Karen Blixen farmed at their foot and wrote Out of Africa about it; a wind farm now runs along the ridge.",
   "b": "裂谷边缘的四个山丘，像四个指关节。Karen Blixen 曾在山脚下务农，并以此写下《走出非洲》；如今山脊上有一座风电场。",
   "date": "2026-11-17",
-  "a": "裂谷边缘四座如指节般的山丘。凯伦·布里克森（Karen Blixen）曾在山脚下经营农场，并以此写下了《走出非洲》；如今山脊上建有一座风电场。"
+  "a": "裂谷边缘四座如指节般的山丘。凯伦·布里克森（Karen Blixen）曾在山脚下经营农场，并以此写下了《走出非洲》；如今山脊上建有一座风电场。",
+  "tr": "裂谷边缘四座如指节般的山丘。Karen Blixen 曾在山脚下经营农场，并以此写下了《走出非洲》；如今山脊上建有一座风电场。",
+  "tr_note": "people's names stay"
  },
  "db20c0f0d789": {
   "en": "Helmut Schrempf",
@@ -8515,7 +8966,9 @@
   "en": "Six Sites Down The Rift, {1} km End To End",
   "b": "沿大裂谷而下的六个飞行场，首尾相距{1} km",
   "date": "2026-11-17",
-  "a": "沿裂谷而下的六个场地，全程{1} 公里"
+  "a": "沿裂谷而下的六个场地，全程{1} 公里",
+  "tr": "沿东非大裂谷而下的六个飞行场地，首尾相距{1}公里",
+  "tr_note": "end to end, not 全程; site = 飞行场地"
  },
  "dc2f4e7ef76c": {
   "en": "{1}'s landing field among terraced fields, seen from the air",
@@ -8594,7 +9047,8 @@
   "en": "The {1} from the air",
   "b": "从空中看{1}",
   "date": "2026-11-17",
-  "a": "从空中看{1}"
+  "a": "从空中看{1}",
+  "tr": "从空中看{1}"
  },
  "ddd71ef106b6": {
   "en": "Planned, {1}",
@@ -8609,7 +9063,8 @@
   "en": "Agree the price first",
   "b": "先谈好价格",
   "date": "2026-11-17",
-  "a": "先谈好价格"
+  "a": "先谈好价格",
+  "tr": "先谈好价格"
  },
  "de23fc621bef": {
   "en": "Eddie Colfox remembers late October air turning too stable to climb much above {1}m. Now the monsoon lingers into the first week of October, and the air stays unstable enough to climb well over {2}m right into November. Leaving {3} in mid November, he was at {4}m on the front ridge and {5}m deep in the back ranges.",
@@ -8691,13 +9146,15 @@
   "en": "Currency",
   "b": "货币",
   "date": "2026-11-17",
-  "a": "货币"
+  "a": "货币",
+  "tr": "货币"
  },
  "e08feaa3f09d": {
   "en": "A young stratovolcano with an intact crater nearly two kilometres across, climbed from the road in a few hours and walked around the rim in a few more. Its forest fills the crater floor.",
   "b": "一座年轻的层状火山，火山口完整，宽近两千米，从公路出发几个小时就能爬上去，再花几个小时可以绕火山口边缘走一圈。森林铺满了火山口底部。",
   "date": "2026-11-17",
-  "a": "一座年轻的层状火山，火山口完好，直径近两公里。从公路出发几个小时就能登顶，再花几个小时可以绕火山口边缘走一圈。火山口底部长满了森林。"
+  "a": "一座年轻的层状火山，火山口完好，直径近两公里。从公路出发几个小时就能登顶，再花几个小时可以绕火山口边缘走一圈。火山口底部长满了森林。",
+  "tr": "一座年轻的层状火山，火山口完好，直径近两公里。从公路出发几个小时就能登顶，再花几个小时可以绕火山口边缘走一圈。火山口底部长满了森林。"
  },
  "e09eb1e94858": {
   "en": "Navigating India (Bonus Ep), Episode {1}, {2} min",
@@ -8747,13 +9204,15 @@
   "en": "A Flight Of Human Genesis",
   "b": "人类起源之飞",
   "date": "2026-11-17",
-  "a": "人类起源之飞"
+  "a": "人类起源之飞",
+  "tr": "人类起源之飞"
  },
  "e21cb083dd0a": {
   "en": "Before You Book",
   "b": "预订之前",
   "date": "2026-11-17",
-  "a": "预订之前"
+  "a": "预订之前",
+  "tr": "预订之前"
  },
  "e2263a59774e": {
   "en": "The window",
@@ -8809,7 +9268,8 @@
   "en": "Rift wall to Naivasha, {1}<x1>{2} km</x1>",
   "b": "从裂谷断崖到奈瓦沙，{1}<x1>{2} km</x1>",
   "date": "2026-11-17",
-  "a": "裂谷崖壁至奈瓦沙，{1}<x1>{2}公里</x1>"
+  "a": "裂谷崖壁至奈瓦沙，{1}<x1>{2}公里</x1>",
+  "tr": "裂谷崖壁至奈瓦沙，{1}<x1>{2}公里</x1>"
  },
  "e3bb8740bb2c": {
   "en": "When he first came for an autumn season, about {1} pilots from around the world were flying there. In autumn {2} it was about {3}.",
@@ -8846,7 +9306,8 @@
   "en": "Black rhino were brought back to Nakuru after the park was fenced as a sanctuary in the late {1}, and white rhino followed. It is one of the oldest rhino sanctuaries in Kenya.",
   "b": "在{1}末公园围起来成为保护区之后，黑犀牛被重新引回纳库鲁，随后是白犀牛。这里是肯尼亚最古老的犀牛保护区之一。",
   "date": "2026-11-17",
-  "a": "{1}末公园被围成保护区后，黑犀牛被重新引入纳库鲁，随后又引入了白犀牛。这里是肯尼亚最早的犀牛保护区之一。"
+  "a": "{1}末公园被围成保护区后，黑犀牛被重新引入纳库鲁，随后又引入了白犀牛。这里是肯尼亚最早的犀牛保护区之一。",
+  "tr": "{1}末公园被围成保护区后，黑犀牛被重新引入纳库鲁，随后又引入了白犀牛。这里是肯尼亚最早的犀牛保护区之一。"
  },
  "e4698d4ceacb": {
   "en": "Mission",
@@ -8861,7 +9322,8 @@
   "en": "About Thomson's Falls",
   "b": "关于 Thomson's Falls",
   "date": "2026-11-17",
-  "a": "关于汤姆森瀑布"
+  "a": "关于汤姆森瀑布",
+  "tr": "关于汤姆森瀑布"
  },
  "e4a39135c67b": {
   "en": "Tasks {1}",
@@ -8892,7 +9354,8 @@
   "en": "Rule {1}, How you are read",
   "b": "第{1}条，你如何被看待",
   "date": "2026-11-17",
-  "a": "规则{1}：别人如何看你"
+  "a": "规则{1}：别人如何看你",
+  "tr": "规则{1}：别人如何看你"
  },
  "e610f8570e95": {
   "en": "Point at the name: {1}",
@@ -8914,13 +9377,15 @@
   "en": "About Lake Nakuru",
   "b": "关于纳库鲁湖",
   "date": "2026-11-17",
-  "a": "关于纳库鲁湖"
+  "a": "关于纳库鲁湖",
+  "tr": "关于纳库鲁湖"
  },
  "e654f0ecbc88": {
   "en": "High socks and long layers<x1>Prevention beats treatment</x1>",
   "b": "高筒袜和长层衣物<x1>预防胜于治疗</x1>",
   "date": "2026-11-17",
-  "a": "长筒袜和长袖长裤<x1>预防胜于治疗</x1>"
+  "a": "长筒袜和长袖长裤<x1>预防胜于治疗</x1>",
+  "tr": "长筒袜和长袖长裤<x1>预防胜于治疗</x1>"
  },
  "e6552ff8db24": {
   "en": "See the trip →",
@@ -8947,7 +9412,8 @@
   "en": "Flamingos feed in the lagoons at the edge of the lake, where hot springs bring water in over the crust of soda.",
   "b": "火烈鸟在湖边的潟湖里觅食，那里的温泉把水引入碱壳之上。",
   "date": "2026-11-17",
-  "a": "火烈鸟在湖边的潟湖中觅食，那里有温泉把水漫过碱壳送进来。"
+  "a": "火烈鸟在湖边的潟湖中觅食，那里有温泉把水漫过碱壳送进来。",
+  "tr": "火烈鸟在湖边的潟湖中觅食，那里有温泉把水漫过碱壳送进来。"
  },
  "e6f0ac20d465": {
   "en": "An {1} day guided paragliding tour in {2}, India, {3}: the volcanic tablelands of the {4} hills, where India held a pre World Cup.",
@@ -8972,13 +9438,15 @@
   "en": "This trip is for you if",
   "b": "这次行程适合你，如果",
   "date": "2026-11-17",
-  "a": "这趟行程适合你，如果"
+  "a": "这趟行程适合你，如果",
+  "tr": "这趟行程适合你，如果"
  },
  "e79e5d8923e9": {
   "en": "Rolling hills south east of Nairobi, and a change of character from the Rift walls.",
   "b": "内罗毕东南的起伏丘陵，与裂谷断壁的风貌截然不同。",
   "date": "2026-11-17",
-  "a": "内罗毕东南的连绵丘陵，与裂谷崖壁的风格截然不同。"
+  "a": "内罗毕东南的连绵丘陵，与裂谷崖壁的风格截然不同。",
+  "tr": "内罗毕东南的连绵丘陵，与裂谷崖壁的风格截然不同。"
  },
  "e7b4f1443b46": {
   "en": "<x1>Length</x1>{1} days",
@@ -9009,25 +9477,29 @@
   "en": "The six that come up every time. If yours is not here, ask it on the call.",
   "b": "每次都会被问到的六个问题。如果你的问题不在这里，通话时直接问。",
   "date": "2026-11-17",
-  "a": "每次都会被问到的六个问题。如果你的问题不在这里，就在通话时问吧。"
+  "a": "每次都会被问到的六个问题。如果你的问题不在这里，就在通话时问吧。",
+  "tr": "每次都会被问到的六个问题。如果你的问题不在这里，就在通话时问吧。"
  },
  "e83234017776": {
   "en": "Elephants",
   "b": "大象",
   "date": "2026-11-17",
-  "a": "大象"
+  "a": "大象",
+  "tr": "大象"
  },
  "e8aa261b0e91": {
   "en": "We would rather you read this and <x1>decide it is not for you</x1> than arrive and find that out.",
   "b": "我们宁愿你读完之后<x1>决定它不适合你</x1>，也不愿你到了才发现。",
   "date": "2026-11-17",
-  "a": "我们宁愿你读完这些后<x1>认定它不适合你</x1>，也不愿你到了之后才发现。"
+  "a": "我们宁愿你读完这些后<x1>认定它不适合你</x1>，也不愿你到了之后才发现。",
+  "tr": "我们宁愿你读完这些后<x1>认定它不适合你</x1>，也不愿你到了之后才发现。"
  },
  "e90b113941a2": {
   "en": "About The Marakwet furrows",
   "b": "关于 Marakwet 引水渠",
   "date": "2026-11-17",
-  "a": "关于马拉奎特水渠"
+  "a": "关于马拉奎特水渠",
+  "tr": "关于马拉奎特水渠"
  },
  "e974dd81fba3": {
   "en": "Two paragliders over striped canyon terrain in Kazakhstan",
@@ -9042,7 +9514,8 @@
   "en": "A town of runners at {1} m on the lip of the Elgeyo escarpment. The arch over its road calls it the Home of Champions: the Kalenjin athletes who train on its red tracks and roads have won a large share of the world's distance medals.",
   "b": "一座跑者之城，位于 Elgeyo 断崖边缘海拔{1} m 处。路上的拱门称它为冠军之乡：在它红色的跑道和公路上训练的卡伦金运动员，拿下了世界长跑奖牌的很大一部分。",
   "date": "2026-11-17",
-  "a": "一座跑步者的小镇，海拔{1}米，坐落在埃尔格约断崖的边缘。镇上公路的拱门称它为“冠军之乡”：在这里的红土跑道和公路上训练的卡伦金运动员，赢得了世界长跑奖牌中的很大一部分。"
+  "a": "一座跑步者的小镇，海拔{1}米，坐落在埃尔格约断崖的边缘。镇上公路的拱门称它为“冠军之乡”：在这里的红土跑道和公路上训练的卡伦金运动员，赢得了世界长跑奖牌中的很大一部分。",
+  "tr": "一座跑步者的小镇，海拔{1}米，坐落在埃尔格约断崖的边缘。镇上公路的拱门称它为“冠军之乡”：在这里的红土跑道和公路上训练的卡伦金运动员，赢得了世界长跑奖牌中的很大一部分。"
  },
  "e9b97caadb76": {
   "en": "What you are asking about",
@@ -9057,7 +9530,9 @@
   "en": "About Hyrax Hill",
   "b": "关于 Hyrax Hill",
   "date": "2026-11-17",
-  "a": "关于海拉克斯山"
+  "a": "关于海拉克斯山",
+  "tr": "关于 Hyrax Hill",
+  "tr_note": "small local site: name kept"
  },
  "e9cc0a548895": {
   "en": "Thermal layers",
@@ -9075,7 +9550,8 @@
   "en": "For pilots going out there under their own steam rather than on our tour. None of it is specific to us, and all of it is worth reading before you book anything, with anyone.",
   "b": "写给那些自己出发、而不是参加我们行程的飞行员。这些内容没有一条是我们独有的，在你向任何人预订任何东西之前，都值得读一读。",
   "date": "2026-11-17",
-  "a": "写给自己前往、而不是参加我们行程的飞行员。这些内容没有一条是只针对我们的，无论你跟谁预订任何行程，事先都值得一读。"
+  "a": "写给自己前往、而不是参加我们行程的飞行员。这些内容没有一条是只针对我们的，无论你跟谁预订任何行程，事先都值得一读。",
+  "tr": "写给自己前往、而不是参加我们行程的飞行员。这些内容没有一条是只针对我们的，无论你跟谁预订任何行程，事先都值得一读。"
  },
  "ea87894cf00c": {
   "en": "Space plays and pauses · F full screen · Esc closes",
@@ -9088,7 +9564,8 @@
   "en": "South of Machakos, {1}<x1>{2} km</x1>",
   "b": "Machakos 以南，{1}<x1>{2} km</x1>",
   "date": "2026-11-17",
-  "a": "马查科斯以南，{1}<x1>{2}公里</x1>"
+  "a": "马查科斯以南，{1}<x1>{2}公里</x1>",
+  "tr": "马查科斯以南，{1}<x1>{2}公里</x1>"
  },
  "ead9064285b7": {
   "en": "Anything else",
@@ -9111,7 +9588,8 @@
   "en": "How a day runs",
   "b": "一天如何度过",
   "date": "2026-11-17",
-  "a": "一天怎么过"
+  "a": "一天怎么过",
+  "tr": "一天怎么过"
  },
  "eb1de0182dc6": {
   "en": "About Triund",
@@ -9123,19 +9601,22 @@
   "en": "Requirements depend on your own nationality.",
   "b": "要求取决于你自己的国籍。",
   "date": "2026-11-17",
-  "a": "具体要求取决于你的国籍。"
+  "a": "具体要求取决于你的国籍。",
+  "tr": "具体要求取决于你的国籍。"
  },
  "eb55f47b49ea": {
   "en": "Retrieve",
   "b": "回收",
   "date": "2026-11-17",
-  "a": "回收"
+  "a": "回收",
+  "tr": "回收"
  },
  "eb78e0175aee": {
   "en": "The photograph, enlarged",
   "b": "放大的照片",
   "date": "2026-11-17",
-  "a": "放大的照片"
+  "a": "放大的照片",
+  "tr": "放大的照片"
  },
  "ebc8e854262e": {
   "en": "Big Mountain Flying from {1}",
@@ -9165,7 +9646,8 @@
   "en": "Africa's highest mountain at {1} m, across the border in Tanzania, its ice on the horizon from the Chyulu Hills on a clear morning.",
   "b": "非洲最高的山，海拔{1} m，在边境另一侧的坦桑尼亚，晴朗的早晨从 Chyulu Hills 可以望见山上的冰雪。",
   "date": "2026-11-17",
-  "a": "非洲最高的山，海拔{1}米，位于边境另一侧的坦桑尼亚；晴朗的早晨，从丘卢山可以望见它地平线上的冰雪。"
+  "a": "非洲最高的山，海拔{1}米，位于边境另一侧的坦桑尼亚；晴朗的早晨，从丘卢山可以望见它地平线上的冰雪。",
+  "tr": "非洲最高的山，海拔{1}米，位于边境另一侧的坦桑尼亚；晴朗的早晨，从丘卢山可以望见它地平线上的冰雪。"
  },
  "ec9b089b81b9": {
   "en": "Photographs: Ashutosh Tiwari (CC BY-SA {1}), Ashutosh Tiwari (CC BY-SA {2}), via Wikimedia Commons",
@@ -9177,7 +9659,8 @@
   "en": "The slopes between the Aberdares and Mount Kenya are the heartland of the Kikuyu, the largest of Kenya's peoples: tea and coffee country, and the ground of the Mau Mau uprising of the {1}, with Nyeri at its centre.",
   "b": "阿伯德尔山脉和肯尼亚山之间的山坡是基库尤人的腹地，他们是肯尼亚最大的民族：这里是茶叶和咖啡产区，也是{1}茅茅起义的发生地，以涅里为中心。",
   "date": "2026-11-17",
-  "a": "阿伯德尔山脉与肯尼亚山之间的山坡是基库尤人的核心地带，基库尤人是肯尼亚人数最多的民族：这里是茶叶和咖啡之乡，也是{1}茅茅起义的发生地，以涅里为中心。"
+  "a": "阿伯德尔山脉与肯尼亚山之间的山坡是基库尤人的核心地带，基库尤人是肯尼亚人数最多的民族：这里是茶叶和咖啡之乡，也是{1}茅茅起义的发生地，以涅里为中心。",
+  "tr": "阿伯德尔山脉与肯尼亚山之间的山坡是基库尤人的核心地带，基库尤人是肯尼亚人数最多的民族：这里是茶叶和咖啡之乡，也是{1}茅茅起义的发生地，以涅里为中心。"
  },
  "ed16cdea2237": {
   "en": "Chapters of Navigating India (Bonus Ep)",
@@ -9192,7 +9675,8 @@
   "en": "Prices and tipping",
   "b": "价格和小费",
   "date": "2026-11-17",
-  "a": "价格和小费"
+  "a": "价格和小费",
+  "tr": "价格和小费"
  },
  "edbb69d4dc57": {
   "en": "Kazakhstan · The steppe",
@@ -9216,7 +9700,9 @@
   "en": "km/h over the route",
   "b": "km/h，沿航线平均",
   "date": "2026-11-17",
-  "a": "公里/小时（全程）"
+  "a": "公里/小时（全程）",
+  "tr": "公里/小时（全程平均）",
+  "tr_note": "average speed over the route"
  },
  "ee76ac54f270": {
   "en": "Dr Matt Wilkes",
@@ -9240,7 +9726,8 @@
   "en": "Mosquito net<x1>Hotel beds usually have one</x1>",
   "b": "蚊帐<x1>酒店的床通常自带</x1>",
   "date": "2026-11-17",
-  "a": "蚊帐<x1>酒店的床通常都有</x1>"
+  "a": "蚊帐<x1>酒店的床通常都有</x1>",
+  "tr": "蚊帐<x1>酒店的床通常都有</x1>"
  },
  "ef0ca08b3d85": {
   "en": "A {1} km task raced under a storm clock, which eventually got stopped by rain.",
@@ -9262,7 +9749,8 @@
   "en": "A wing lifting off a green grass slope dotted with acacia trees",
   "b": "一顶滑翔伞从点缀着金合欢树的绿色草坡上升空",
   "date": "2026-11-17",
-  "a": "一顶伞翼从点缀着金合欢树的绿色草坡上升空"
+  "a": "一顶伞翼从点缀着金合欢树的绿色草坡上升空",
+  "tr": "一顶伞翼从点缀着金合欢树的绿色草坡上升空"
  },
  "ef931280933d": {
   "en": "What you'll get in end-to-end guidance from {1}",
@@ -9295,7 +9783,8 @@
   "en": "Wildlife",
   "b": "野生动物",
   "date": "2026-11-17",
-  "a": "野生动物"
+  "a": "野生动物",
+  "tr": "野生动物"
  },
  "f0a3ce2aea68": {
   "en": "How Open Are Manufacturers Really",
@@ -9349,7 +9838,8 @@
   "en": "About Mount Longonot",
   "b": "关于 Mount Longonot",
   "date": "2026-11-17",
-  "a": "关于隆戈诺特山"
+  "a": "关于隆戈诺特山",
+  "tr": "关于隆戈诺特山"
  },
  "f1deb1848d99": {
   "en": "See all {1} photos",
@@ -9388,7 +9878,8 @@
   "en": "click to come closer · scroll or pinch for more · drag to move · arrows for the next · click outside to close",
   "b": "点击拉近 · 滚动或双指捏合进一步放大 · 拖动以移动 · 方向键切换下一张 · 点击外部关闭",
   "date": "2026-11-17",
-  "a": "点击放大 · 滚动或双指捏合进一步放大 · 拖动移动 · 方向键切换下一张 · 点击外部关闭"
+  "a": "点击放大 · 滚动或双指捏合进一步放大 · 拖动移动 · 方向键切换下一张 · 点击外部关闭",
+  "tr": "点击放大 · 滚动或双指捏合进一步放大 · 拖动移动 · 方向键切换下一张 · 点击外部关闭"
  },
  "f2a9413341c8": {
   "en": "By submitting you consent to email updates from {1}. Unsubscribe any time.",
@@ -9413,7 +9904,8 @@
   "en": "Terrain runs from {1} to {2}m. It can be hot in the lowlands and cold at height, so pack for both. Six items are marked essential. Do not travel without them.",
   "b": "地形海拔从{1}到{2}m。低地可能很热，高处可能很冷，所以两种都要准备。有六项物品标为必备。没有它们不要出行。",
   "date": "2026-11-17",
-  "a": "地形海拔从{1}米到{2}米不等。低地可能很热，高处则很冷，所以两种情况都要准备。有六样物品标为必备。没有它们不要出发。"
+  "a": "地形海拔从{1}米到{2}米不等。低地可能很热，高处则很冷，所以两种情况都要准备。有六样物品标为必备。没有它们不要出发。",
+  "tr": "地形海拔从{1}米到{2}米不等。低地可能很热，高处则很冷，所以两种情况都要准备。有六样物品标为必备。没有它们不要出发。"
  },
  "f314bfd7b738": {
   "en": "More conversations, {1} guests, newest first",
@@ -9511,7 +10003,8 @@
   "en": "A soda lake at the hot southern end of the Rift, its surface a crust of trona that has been mined for over a century, with flamingos on the brine.",
   "b": "大裂谷炎热的南端的一个苏打湖，湖面是一层已开采了一百多年的天然碱壳，盐水中有火烈鸟。",
   "date": "2026-11-17",
-  "a": "裂谷炎热南端的一座碱湖，湖面是一层天然碱结壳，开采历史已超过一个世纪，盐水上栖息着火烈鸟。"
+  "a": "裂谷炎热南端的一座碱湖，湖面是一层天然碱结壳，开采历史已超过一个世纪，盐水上栖息着火烈鸟。",
+  "tr": "裂谷炎热南端的一座碱湖，湖面是一层天然碱结壳，开采历史已超过一个世纪，盐水上栖息着火烈鸟。"
  },
  "f677d22679bc": {
   "en": "Refunds within {1} days",
@@ -9526,7 +10019,8 @@
   "en": "strong, midday peaks",
   "b": "强劲，在正午高峰",
   "date": "2026-11-17",
-  "a": "强，正午高峰"
+  "a": "强，正午高峰",
+  "tr": "强，正午高峰"
  },
  "f693cad595b5": {
   "en": "Two departures in spring, back to back from {1}. Two in autumn, inside the season that runs from about {2} well into November, three days apart.",
@@ -9538,7 +10032,12 @@
   "en": "Landing protocol",
   "b": "降落场规范",
   "date": "2026-11-17",
-  "a": "降落场守则"
+  "a": "降落场守则",
+  "tr": "降落守则",
+  "tr_note": "landing = the act, not the field",
+  "waive": {
+   "glossary": "the act of landing (a protocol), not a landing field"
+  }
  },
  "f6f24c1013a5": {
   "en": "However big the field, pilots misjudge the last leg, arrive long, then stall the wing in from three or four metres up and break something.",
@@ -9570,7 +10069,8 @@
   "en": "December to March.",
   "b": "十二月到三月。",
   "date": "2026-11-17",
-  "a": "十二月至三月。"
+  "a": "十二月至三月。",
+  "tr": "十二月至三月。"
  },
  "f80642793f25": {
   "en": "How high does it get?",
@@ -9585,7 +10085,8 @@
   "en": "After you land, you are the one who activates and directs the retrieve driver, because the others may still be in the air.",
   "b": "降落之后，由你来启动并指挥回收司机，因为其他人可能还在空中。",
   "date": "2026-11-17",
-  "a": "降落后，由你自己联系并指挥回收司机，因为其他人可能还在空中。"
+  "a": "降落后，由你自己联系并指挥回收司机，因为其他人可能还在空中。",
+  "tr": "降落后，由你自己联系并指挥回收司机，因为其他人可能还在空中。"
  },
  "f8dae5f762aa": {
   "en": "The {1} · launch about {2} m",
@@ -9597,7 +10098,8 @@
   "en": "Powerbank and cables",
   "b": "充电宝和数据线",
   "date": "2026-11-17",
-  "a": "充电宝和数据线"
+  "a": "充电宝和数据线",
+  "tr": "充电宝和数据线"
  },
  "f98d5b67851f": {
   "en": "What is the cancellation policy?",
@@ -9639,7 +10141,8 @@
   "en": "Hippo live in the papyrus along the shore and come out at night to graze. The giraffe and zebra of Crescent Island are walked among on foot, because nothing on the island hunts them.",
   "b": "河马生活在岸边的纸莎草丛里，夜里上岸吃草。Crescent Island 上的长颈鹿和斑马可以步行靠近，因为岛上没有任何动物猎食它们。",
   "date": "2026-11-17",
-  "a": "河马生活在湖岸的纸莎草丛中，夜里出来吃草。在新月岛，人们可以步行穿行于长颈鹿和斑马之间，因为岛上没有捕食它们的动物。"
+  "a": "河马生活在湖岸的纸莎草丛中，夜里出来吃草。在新月岛，人们可以步行穿行于长颈鹿和斑马之间，因为岛上没有捕食它们的动物。",
+  "tr": "河马生活在湖岸的纸莎草丛中，夜里出来吃草。在新月岛，人们可以步行穿行于长颈鹿和斑马之间，因为岛上没有捕食它们的动物。"
  },
  "fa8abbc3dd75": {
   "en": "Hear {1} From Someone Who Flies It",
@@ -9651,7 +10154,8 @@
   "en": "Paragliders over the green slopes of the {1}",
   "b": "滑翔伞飞过{1}的绿色山坡",
   "date": "2026-11-17",
-  "a": "{1}绿色山坡上空的滑翔伞"
+  "a": "{1}绿色山坡上空的滑翔伞",
+  "tr": "{1}绿色山坡上空的滑翔伞"
  },
  "faad149b13bc": {
   "en": "<x1>Last light</x1>A paraglider silhouetted against a burning sunset",
@@ -9669,19 +10173,22 @@
   "en": "Harness with back or airbag protection<x1>Essential</x1>",
   "b": "带背部或气囊保护的座袋<x1>必备</x1>",
   "date": "2026-11-17",
-  "a": "带背部保护或气囊保护的座袋<x1>必备</x1>"
+  "a": "带背部保护或气囊保护的座袋<x1>必备</x1>",
+  "tr": "带背部保护或气囊保护的座袋<x1>必备</x1>"
  },
  "fb2aed815954": {
   "en": "Check before you travel",
   "b": "出行前请核实",
   "date": "2026-11-17",
-  "a": "出行前请核实"
+  "a": "出行前请核实",
+  "tr": "出行前请核实"
  },
  "fb73a7c5acd6": {
   "en": "Rhino",
   "b": "犀牛",
   "date": "2026-11-17",
-  "a": "犀牛"
+  "a": "犀牛",
+  "tr": "犀牛"
  },
  "fb9a55e2e558": {
   "en": "Thu {1}",
@@ -9724,19 +10231,22 @@
   "en": "drag the ground · scroll to come closer · right button to turn and tilt · a dotted name or an animal tells its story",
   "b": "拖动地面 · 滚动滚轮拉近 · 按右键转向和倾斜 · 带点的名字或动物会讲述它的故事",
   "date": "2026-11-17",
-  "a": "拖动地面 · 滚动鼠标拉近 · 按住右键转向和倾斜 · 点开带点的地名或动物，看它的故事"
+  "a": "拖动地面 · 滚动鼠标拉近 · 按住右键转向和倾斜 · 点开带点的地名或动物，看它的故事",
+  "tr": "拖动地面 · 滚动鼠标拉近 · 按住右键转向和倾斜 · 点开带点的地名或动物，看它的故事"
  },
  "fc9f9ea5f99c": {
   "en": "Passport, and a photo of it on your phone",
   "b": "护照，以及手机里的一张护照照片",
   "date": "2026-11-17",
-  "a": "护照，以及手机里存一张护照照片"
+  "a": "护照，以及手机里存一张护照照片",
+  "tr": "护照，以及手机里存一张护照照片"
  },
  "fcd9a2a6afb6": {
   "en": "You want to wait for each other in the air. Most of Kenya sits under moderate easterly winds, and that is often simply not possible.",
   "b": "你想在空中互相等待。肯尼亚大部分地区处于中等强度的东风之下，这往往根本做不到。",
   "date": "2026-11-17",
-  "a": "你希望在空中互相等待。肯尼亚大部分地区处在中等强度的东风之下，这往往根本做不到。"
+  "a": "你希望在空中互相等待。肯尼亚大部分地区处在中等强度的东风之下，这往往根本做不到。",
+  "tr": "你希望在空中互相等待。肯尼亚大部分地区处在中等强度的东风之下，这往往根本做不到。"
  },
  "fd178e6aa89d": {
   "en": "{1} · Org. nr {2}<x1/>Olav {3} M {4}, {5} {6}, Norway",
@@ -9760,7 +10270,8 @@
   "en": "About Samburu",
   "b": "关于桑布鲁",
   "date": "2026-11-17",
-  "a": "关于桑布鲁"
+  "a": "关于桑布鲁",
+  "tr": "关于桑布鲁"
  },
  "fdd28f3767dd": {
   "en": "Watch the film again, {1}",
@@ -9800,7 +10311,8 @@
   "en": "Thorns, sun and mosquitoes at the bottom, cold at the top. These are the ones people forget, the ordinary clothes for twelve days go without saying.",
   "b": "底下有荆棘、阳光和蚊子，上面很冷。这些是人们最容易忘的，十二天的普通衣服不用多说。",
   "date": "2026-11-17",
-  "a": "低处有荆棘、烈日和蚊子，高处寒冷。这里列的是人们常忘带的东西，十二天的日常衣物就不用多说了。"
+  "a": "低处有荆棘、烈日和蚊子，高处寒冷。这里列的是人们常忘带的东西，十二天的日常衣物就不用多说了。",
+  "tr": "低处有荆棘、烈日和蚊子，高处寒冷。这里列的是人们常忘带的东西，十二天的日常衣物就不用多说了。"
  },
  "fea7f7310667": {
   "en": "<x1>{1}</x1>What you'll get in end-to-end guidance from {2}",
@@ -9833,13 +10345,15 @@
   "en": "Follow your host's lead",
   "b": "跟着主人的安排走",
   "date": "2026-11-17",
-  "a": "听从主人的安排"
+  "a": "听从主人的安排",
+  "tr": "听从主人的安排"
  },
  "ffb6f8541248": {
   "en": "You can improvise, flex and tolerate a young destination whose cross country routes are still being worked out.",
   "b": "你能随机应变，灵活变通，能包容一个年轻的目的地，这里的越野飞行路线还在摸索之中。",
   "date": "2026-11-17",
-  "a": "你能随机应变、灵活调整，并能接受一个越野飞行航线仍在摸索中的新兴目的地。"
+  "a": "你能随机应变、灵活调整，并能接受一个越野飞行航线仍在摸索中的新兴目的地。",
+  "tr": "你能随机应变、灵活调整，并能接受一个越野飞行航线仍在摸索中的新兴目的地。"
  },
  "ffecf930cc9f": {
   "en": "Kinga Masztalerz",
