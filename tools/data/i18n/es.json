@@ -3370,6 +3370,14 @@
   "tr": "Vistasp Kharas <x1>Navegando por {1}, {2}</x1>",
   "tr_note": "series title: 'Navegando por ...' and bare 'India' everywhere, one form across the site"
  },
+ "a5aa575c87f0": {
+  "en": "Ready To {1}?",
+  "a": "¿Listo para «{1}»?",
+  "date": "2026-11-17",
+  "b": "¿Listo para {1}?",
+  "tr": "¿Listo para {1}?",
+  "tr_note": "b: the English has no quotes around the slogan; masculine Listo as on the existing heading"
+ },
  "a5ad67ed78d9": {
   "en": "Watch Task {1} Highlights",
   "a": "Mira lo mejor de la manga {1}",

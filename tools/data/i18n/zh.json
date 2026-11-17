@@ -3362,6 +3362,14 @@
   "b": "Vistasp Kharas <x1>导航{1}，{2}</x1>",
   "tr": "Vistasp Kharas <x1>《探路{1}》，{2}</x1>"
  },
+ "a5aa575c87f0": {
+  "en": "Ready To {1}?",
+  "a": "准备好 {1} 了吗？",
+  "date": "2026-11-17",
+  "b": "准备好{1}了吗？",
+  "tr": "准备好{1}了吗？",
+  "tr_note": "picked b: no space around {n} (brief rule 6); the slogan stays in English inside {1}"
+ },
  "a5ad67ed78d9": {
   "en": "Watch Task {1} Highlights",
   "a": "观看任务{1}精彩集锦",

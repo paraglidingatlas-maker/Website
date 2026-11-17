@@ -3339,6 +3339,14 @@
   "b": "Vistasp Kharas <x1>Naviguer : {1}, {2}</x1>",
   "tr": "Vistasp Kharas <x1>Naviguer à {1}, {2}</x1>"
  },
+ "a5aa575c87f0": {
+  "en": "Ready To {1}?",
+  "a": "Prêt à vivre {1} ?",
+  "date": "2026-11-17",
+  "b": "Prêt à {1} ?",
+  "tr": "Prêt à {1} ?",
+  "tr_note": "picked b: a added \"vivre\", which is not in the English; the English slogan reads as the verb phrase it is"
+ },
  "a5ad67ed78d9": {
   "en": "Watch Task {1} Highlights",
   "a": "Voir le résumé de la manche {1}",
