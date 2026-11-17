@@ -411,7 +411,8 @@
   "en": "{1}, Kenya · {2}",
   "a": "{1}，肯尼亚 · {2}",
   "date": "2026-11-17",
-  "b": "{1}，肯尼亚 · {2}"
+  "b": "{1}，肯尼亚 · {2}",
+  "tr": "{1}，肯尼亚 · {2}"
  },
  "1370004da76f": {
   "en": "Duration",
@@ -1488,7 +1489,8 @@
   "en": "Mission Statement",
   "a": "使命宣言",
   "date": "2026-11-17",
-  "b": "使命宣言"
+  "b": "使命宣言",
+  "tr": "使命宣言"
  },
  "4bf5048f5cbf": {
   "en": "{1} off the hill: pottery, yoga and Buddhism",
@@ -1919,7 +1921,8 @@
   "en": "{1}, Mexico · photos and videos",
   "a": "{1}，墨西哥 · 照片与视频",
   "date": "2026-11-17",
-  "b": "{1}，墨西哥 · 照片和视频"
+  "b": "{1}，墨西哥 · 照片和视频",
+  "tr": "{1}，墨西哥 · 照片与视频"
  },
  "61fa280a65cf": {
   "en": "Tour {1}",
@@ -2159,7 +2162,8 @@
   "en": "Close menu",
   "a": "关闭菜单",
   "date": "2026-11-17",
-  "b": "关闭菜单"
+  "b": "关闭菜单",
+  "tr": "关闭菜单"
  },
  "6d5bb241740a": {
   "en": "<x1>Group</x1>Small group",
@@ -3675,7 +3679,9 @@
   "en": "Library",
   "a": "节目库",
   "date": "2026-11-17",
-  "b": "资料库"
+  "b": "资料库",
+  "tr": "节目库",
+  "tr_note": "picked a: the menu's Library is the episode library, 节目库 as on the rest of the site (b's 资料库 reads as a document archive)"
  },
  "b9b15d8821c5": {
   "en": "The film",
@@ -4561,7 +4567,8 @@
   "en": "Search episodes, the knowledge base and trips",
   "a": "搜索节目、知识库和行程",
   "date": "2026-11-17",
-  "b": "搜索节目、知识库和行程"
+  "b": "搜索节目、知识库和行程",
+  "tr": "搜索节目、知识库和行程"
  },
  "e09eb1e94858": {
   "en": "Navigating India (Bonus Ep), Episode {1}, {2} min",
