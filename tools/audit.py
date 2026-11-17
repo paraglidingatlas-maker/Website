@@ -255,7 +255,8 @@ def check_crawler():
     for m in re.finditer(r"<loc>([^<]+)</loc>", sm):
         u = m.group(1)
         if u.startswith(cfg.BASE):
-            listed.add(u[len(cfg.BASE):] or "index.html")
+            _p = u[len(cfg.BASE):] or "index.html"
+            listed.add(_p + "index.html" if _p.endswith("/") else _p)     # /de/ is de/index.html (chat 27)
     indexable = {p for p in PAGES if "noindex" not in read(p)}
     missing = sorted(indexable - listed)
     extra = sorted(listed - {p for p in PAGES})

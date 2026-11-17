@@ -1,0 +1,5278 @@
+{
+ "003a688d9237": {
+  "en": "Not a waiver",
+  "a": "并非弃权",
+  "date": "2026-11-17",
+  "b": "并非弃权",
+  "tr": "并非弃权"
+ },
+ "00a1ea56e5b1": {
+  "en": "A {1} km race on a day that looked better than forecast, the field raced the ridge, crossed the lake bed into the wind and ran a cloud street home.",
+  "a": "一场{1} km的竞速，当天天气比预报的好：选手们沿山脊竞速，迎风穿越干湖床，再沿着云街一路飞回终点。",
+  "date": "2026-11-17",
+  "b": "一个{1}公里的比赛，天气比预报的更好，选手们沿山脊比赛，穿过干湖床顶风飞行，再借着云街飞回终点。",
+  "tr": "一场{1} km的竞速，当天天气比预报的好：选手们沿山脊竞速，迎风穿越干湖床，再沿着云街一路飞回终点。"
+ },
+ "00dfa1336339": {
+  "en": "Report a translation error",
+  "a": "报告翻译错误",
+  "date": "2026-11-17",
+  "b": "报告翻译错误",
+  "tr": "报告翻译错误",
+  "back": "Report a translation error",
+  "check": "ok"
+ },
+ "01ac8015b98f": {
+  "en": "Progression, Fear & Competition",
+  "a": "进步、恐惧与比赛",
+  "date": "2026-11-17",
+  "b": "进阶、恐惧与竞赛",
+  "tr": "进步、恐惧与比赛",
+  "back": "Progress, fear and competition",
+  "check": "ok"
+ },
+ "01f30b47ce79": {
+  "en": "This form has no database behind it. Pressing send passes your message through a small relay of our own, running on {1}, which turns it into an email to us and does not store it. There is no form service or mailing list tool in between, so your details end up in our inbox and nowhere else.",
+  "a": "这个表单背后没有数据库。点击发送后，你的留言会经过我们自己的一个小型中转程序（运行在{1}上），它把留言转成一封发给我们的邮件，并且不做存储。中间没有任何表单服务或邮件列表工具，所以你的信息只会进入我们的收件箱，不会到别处。",
+  "date": "2026-11-17",
+  "b": "这份表单背后没有数据库。点击发送会让你的留言经过我们自己运行在{1}上的一个小型中继，由它转成发给我们的电子邮件，并且不保存。中间没有表单服务或邮件列表工具，所以你的信息只会进入我们的收件箱，不会去别处。",
+  "tr": "这个表单背后没有数据库。点击发送后，你的留言会经过我们自己的一个小型中转程序（运行在{1}上），它把留言转成一封发给我们的邮件，并且不做存储。中间没有任何表单服务或邮件列表工具，所以你的信息只会进入我们的收件箱，不会到别处。",
+  "back": "There is no database behind this form. After clicking send, your message passes through a small relay program of our own (running on {1}), which turns the message into an email sent to us, and does not store it. There is no form service or mailing-list tool in between, so your information goes only into our inbox and nowhere else.",
+  "check": "ok"
+ },
+ "0226fcb7f6b0": {
+  "en": "So we know who we are replying to.",
+  "a": "让我们知道在回复谁。",
+  "date": "2026-11-17",
+  "b": "让我们知道在回复谁。",
+  "tr": "让我们知道在回复谁。",
+  "back": "Let us know whom we are replying to.",
+  "check": "ok"
+ },
+ "027c9a89be3b": {
+  "en": "Peru · {1} and the Andes",
+  "a": "秘鲁 · {1}与安第斯山脉",
+  "date": "2026-11-17",
+  "b": "秘鲁 · {1}与安第斯山",
+  "tr": "秘鲁 · {1}与安第斯山脉",
+  "back": "Peru · {1} and the Andes",
+  "check": "ok"
+ },
+ "027ef160b4b9": {
+  "en": "Navigating {1}, Episode {2}, {3} min",
+  "a": "《探路{1}》，第{2}集，{3}分钟",
+  "date": "2026-11-17",
+  "b": "导航{1}，第{2}期，{3}分钟",
+  "tr": "《探路{1}》，第{2}集，{3}分钟",
+  "back": "\"Pathfinding {1}\", episode {2}, {3} minutes",
+  "check": "ok"
+ },
+ "0315457c3c58": {
+  "en": "Where you are based <x1>(optional)</x1>",
+  "a": "你所在的地方<x1>（选填）</x1>",
+  "date": "2026-11-17",
+  "b": "你所在的地方<x1>（选填）</x1>",
+  "tr": "你所在的地方<x1>（选填）</x1>",
+  "back": "Where you are located<x1>(optional)</x1>",
+  "check": "ok"
+ },
+ "03688ba6aa34": {
+  "en": "FAQ",
+  "a": "常见问题",
+  "date": "2026-11-17",
+  "b": "常见问题",
+  "tr": "常见问题"
+ },
+ "0587c136e342": {
+  "en": "Watch again",
+  "a": "再看一遍",
+  "date": "2026-11-17",
+  "b": "再看一遍",
+  "tr": "再看一遍",
+  "back": "Watch again",
+  "check": "ok"
+ },
+ "06fa6dba0858": {
+  "en": "{1} days · {2} hills",
+  "a": "{1}天 · {2}山区",
+  "date": "2026-11-17",
+  "b": "{1}天 · {2}山丘",
+  "tr": "{1}天 · {2}山区"
+ },
+ "070db57eef93": {
+  "en": "Chapters of Navigating {1}",
+  "a": "《探路{1}》章节",
+  "date": "2026-11-17",
+  "b": "《导航{1}》的章节",
+  "tr": "《探路{1}》章节",
+  "back": "Chapters of \"Pathfinding {1}\"",
+  "check": "ok"
+ },
+ "07e4f9c27860": {
+  "en": "Topics",
+  "a": "主题",
+  "date": "2026-11-17",
+  "b": "话题",
+  "tr": "主题",
+  "back": "Topics",
+  "check": "ok"
+ },
+ "08a76604772f": {
+  "en": "Your flying",
+  "a": "你的飞行",
+  "date": "2026-11-17",
+  "b": "你的飞行情况",
+  "tr": "你的飞行",
+  "back": "Your flying",
+  "check": "ok"
+ },
+ "090a3c807816": {
+  "en": "Scroll",
+  "a": "滚动",
+  "date": "2026-11-17",
+  "b": "向下滚动",
+  "tr": "滚动"
+ },
+ "09807498617e": {
+  "en": "Sat {1}",
+  "a": "周六{1}",
+  "date": "2026-11-17",
+  "b": "周六{1}",
+  "tr": "周六{1}"
+ },
+ "09972524c11e": {
+  "en": "Previous photo",
+  "a": "上一张",
+  "date": "2026-11-17",
+  "b": "上一张照片",
+  "tr": "上一张"
+ },
+ "09a964a179ed": {
+  "en": "{1} Podcast",
+  "a": "{1}播客",
+  "date": "2026-11-17",
+  "b": "{1}播客",
+  "tr": "{1}播客",
+  "back": "{1} Podcast",
+  "check": "ok"
+ },
+ "09ba557fd106": {
+  "en": "Email Address",
+  "a": "电子邮箱地址",
+  "date": "2026-11-17",
+  "b": "电子邮件地址",
+  "tr": "电子邮箱地址",
+  "back": "Email address",
+  "check": "ok"
+ },
+ "09ca55ca52d2": {
+  "en": "Share",
+  "a": "分享",
+  "date": "2026-11-17",
+  "b": "分享",
+  "tr": "分享",
+  "back": "Share",
+  "check": "ok"
+ },
+ "09d35f74a651": {
+  "en": "Navigating India, Episode {1}, {2} min",
+  "a": "《探路印度》，第{1}集，{2}分钟",
+  "date": "2026-11-17",
+  "b": "导航印度，第{1}期，{2}分钟",
+  "tr": "《探路印度》，第{1}集，{2}分钟",
+  "back": "\"Pathfinding India\", episode {1}, {2} minutes",
+  "check": "ok"
+ },
+ "0a0ce225ba83": {
+  "en": "Play Pre {1} Kenya, with Nikolay Yotov",
+  "a": "播放《{1}预赛 肯尼亚》，嘉宾 Nikolay Yotov",
+  "date": "2026-11-17",
+  "b": "播放{1}前哨赛肯尼亚站，嘉宾Nikolay Yotov",
+  "tr": "播放《{1}肯尼亚预赛》，嘉宾 Nikolay Yotov",
+  "tr_note": "episode title 'Pre PWC Kenya' = 《PWC肯尼亚预赛》 site-wide",
+  "back": "Play \"{1} Kenya Qualifier\", guest Nikolay Yotov",
+  "check": "ok"
+ },
+ "0a4470d64e9d": {
+  "en": "Skip to content",
+  "a": "跳到正文",
+  "date": "2026-11-17",
+  "b": "跳到正文",
+  "tr": "跳到正文",
+  "back": "Skip to main text",
+  "check": "ok"
+ },
+ "0a516b9c87f5": {
+  "en": "Choose a trip on the season, {1} to {2}",
+  "a": "按季节选择行程，{1}至{2}",
+  "date": "2026-11-17",
+  "b": "按季节选择行程，{1}至{2}",
+  "tr": "按季节选择行程，{1}至{2}",
+  "back": "Choose an itinerary by season, {1} to {2}",
+  "check": "ok"
+ },
+ "0aecb638e55b": {
+  "en": ", {1} hills, {2}",
+  "a": "，{1}山区，{2}",
+  "date": "2026-11-17",
+  "b": "，{1}山丘，{2}",
+  "tr": "，{1}山区，{2}",
+  "back": ", {1} mountain region, {2}",
+  "check": "ok"
+ },
+ "0b3818833e3e": {
+  "en": "Opening your email app. If nothing happens, your device may have no mail client set up: email {1}",
+  "a": "正在打开你的邮件应用。如果没有反应，可能是你的设备没有设置邮件客户端：请发邮件至{1}",
+  "date": "2026-11-17",
+  "b": "正在打开你的电子邮件应用。如果没有反应，可能是你的设备没有设置邮件客户端：请发邮件至{1}",
+  "tr": "正在打开你的邮件应用。如果没有反应，可能是你的设备没有设置邮件客户端：请发邮件至{1}",
+  "back": "Opening your email app. If there is no response, it may be that your device has no email client set up: please email {1}",
+  "check": "ok"
+ },
+ "0b896a5aaabd": {
+  "en": "Next one in {1} days",
+  "a": "下一团{1}天后出发",
+  "date": "2026-11-17",
+  "b": "{1}天后开始下一班",
+  "tr": "下一团{1}天后出发",
+  "back": "The next group departs in {1} days",
+  "check": "ok"
+ },
+ "0bdc8133902b": {
+  "en": "Next leg: Task {1}, Wed {2} <x1>→</x1>",
+  "a": "下一站：任务{1}，周三{2} <x1>→</x1>",
+  "date": "2026-11-17",
+  "b": "下一站：任务{1}，周三{2} <x1>→</x1>",
+  "tr": "下一站：任务{1}，周三{2} <x1>→</x1>"
+ },
+ "0be826c62da7": {
+  "en": "If it cannot get through, the page will tell you and offer to open your own email app instead, or you can use {1}.",
+  "a": "如果无法发送，页面会提示你，并提供打开你自己邮件应用的选项，你也可以改用{1}。",
+  "date": "2026-11-17",
+  "b": "如果无法送达，页面会告诉你，并提议改用你自己的电子邮件应用，或者你也可以使用{1}。",
+  "tr": "如果无法发送，页面会提示你，并提供打开你自己邮件应用的选项，你也可以改用{1}。",
+  "back": "If it cannot be sent, the page will prompt you and offer the option of opening your own email app; you can also use {1} instead.",
+  "check": "ok"
+ },
+ "0befa0f31017": {
+  "en": "The paraguide.in website",
+  "a": "paraguide.in 网站",
+  "date": "2026-11-17",
+  "b": "paraguide.in网站",
+  "tr": "paraguide.in 网站",
+  "back": "The paraguide.in website",
+  "check": "ok"
+ },
+ "0c77aeece8c2": {
+  "en": "Media",
+  "a": "媒体",
+  "date": "2026-11-17",
+  "b": "媒体",
+  "tr": "媒体",
+  "back": "Media",
+  "check": "ok"
+ },
+ "0d017c0662e4": {
+  "en": "Live from {1}: the photos and videos",
+  "a": "{1}现场：照片与视频",
+  "date": "2026-11-17",
+  "b": "{1}现场：照片和视频",
+  "tr": "{1}现场：照片与视频",
+  "back": "{1} on site: photos and videos",
+  "check": "ok"
+ },
+ "0d77c71693ab": {
+  "en": "Building something for the sport?",
+  "a": "在为这项运动打造什么吗？",
+  "date": "2026-11-17",
+  "b": "正在为这项运动打造什么吗？",
+  "tr": "正在为这项运动打造什么吗？",
+  "tr_note": "picked b",
+  "back": "Building something for this sport?",
+  "check": "ok"
+ },
+ "0e143d9587c2": {
+  "en": "Guaranteed to run",
+  "a": "确定成行",
+  "date": "2026-11-17",
+  "b": "保证成行",
+  "tr": "确定成行",
+  "back": "Confirmed to go ahead",
+  "check": "ok"
+ },
+ "0e5eed8fbb76": {
+  "en": "How a newer pilot should approach it",
+  "a": "新手飞行员该如何应对",
+  "date": "2026-11-17",
+  "b": "新手飞行员该如何应对",
+  "tr": "新手飞行员该如何应对",
+  "back": "How novice pilots should deal with it",
+  "check": "ok"
+ },
+ "0ee423a2ca65": {
+  "en": "See the {1} trip",
+  "a": "查看{1}行程",
+  "date": "2026-11-17",
+  "b": "查看{1}行程",
+  "tr": "查看{1}行程",
+  "back": "View the {1} itinerary",
+  "check": "ok"
+ },
+ "0efc2e6be4c2": {
+  "en": "Overview",
+  "a": "概览",
+  "date": "2026-11-17",
+  "b": "概览",
+  "tr": "概览"
+ },
+ "0fa19b246492": {
+  "en": "Navigators, Episode {1}",
+  "a": "Navigators，第{1}集",
+  "date": "2026-11-17",
+  "b": "领航者，第{1}期",
+  "tr": "Navigators，第{1}集",
+  "back": "Navigators, episode {1}",
+  "check": "ok"
+ },
+ "0fcded4df36f": {
+  "en": "Speed Record",
+  "a": "速度纪录",
+  "date": "2026-11-17",
+  "b": "速度纪录",
+  "tr": "速度纪录",
+  "back": "Speed record",
+  "check": "ok"
+ },
+ "0fd45b0aa76c": {
+  "en": "Play Navigating India, with Eddie Colfox",
+  "a": "播放《探路印度》，嘉宾 Eddie Colfox",
+  "date": "2026-11-17",
+  "b": "播放《导航印度》，嘉宾Eddie Colfox",
+  "tr": "播放《探路印度》，嘉宾 Eddie Colfox",
+  "back": "Play \"Pathfinding India\", guest Eddie Colfox",
+  "check": "ok"
+ },
+ "107596d0fcf1": {
+  "en": "Fly With Us",
+  "a": "和我们一起飞",
+  "date": "2026-11-17",
+  "b": "与我们同飞",
+  "tr": "和我们一起飞",
+  "back": "Fly with us",
+  "check": "ok"
+ },
+ "11f7e9e5baf0": {
+  "en": "One task at a time",
+  "a": "逐个任务查看",
+  "date": "2026-11-17",
+  "b": "一次一个任务",
+  "tr": "逐个任务查看"
+ },
+ "1212433cb6ef": {
+  "en": "{1} pilots, {2} countries",
+  "a": "{1}名飞行员，{2}个国家",
+  "date": "2026-11-17",
+  "b": "{1}名飞行员，{2}个国家",
+  "tr": "{1}名飞行员，{2}个国家"
+ },
+ "1268767001a3": {
+  "en": "{1}, home",
+  "a": "{1}，首页",
+  "date": "2026-11-17",
+  "b": "{1}，首页",
+  "tr": "{1}，首页",
+  "back": "{1}, home page",
+  "check": "ok"
+ },
+ "1271bd6b37ef": {
+  "en": "The Podium",
+  "a": "领奖台",
+  "date": "2026-11-17",
+  "b": "领奖台",
+  "tr": "领奖台"
+ },
+ "12a992a0b540": {
+  "en": "All episodes in the Library",
+  "a": "节目库中的全部节目",
+  "date": "2026-11-17",
+  "b": "节目库中的全部节目",
+  "tr": "节目库中的全部节目",
+  "back": "All episodes in the episode library",
+  "check": "ok"
+ },
+ "131662a6b1d7": {
+  "en": "Task {1}, Sat {2}, was cancelled (wind).",
+  "a": "任务{1}（周六{2}）因风取消。",
+  "date": "2026-11-17",
+  "b": "周六{2}的任务{1}已取消（风）。",
+  "tr": "任务{1}（周六{2}）因风取消。"
+ },
+ "13287d21fcd2": {
+  "en": "{1}, Kenya · {2}",
+  "a": "{1}，肯尼亚 · {2}",
+  "date": "2026-11-17",
+  "b": "{1}，肯尼亚 · {2}",
+  "tr": "{1}，肯尼亚 · {2}",
+  "back": "{1}, Kenya · {2}",
+  "check": "ok"
+ },
+ "1370004da76f": {
+  "en": "Duration",
+  "a": "时长",
+  "date": "2026-11-17",
+  "b": "时长",
+  "tr": "时长",
+  "back": "Duration",
+  "check": "ok"
+ },
+ "138ab007258c": {
+  "en": "Copy name",
+  "a": "复制名称",
+  "date": "2026-11-17",
+  "b": "复制名称",
+  "tr": "复制名称",
+  "back": "Copy name",
+  "check": "ok"
+ },
+ "14d4c9eac279": {
+  "en": "{1} guests, newest first",
+  "a": "{1}位嘉宾，最新在前",
+  "date": "2026-11-17",
+  "b": "{1}位嘉宾，按最新排序",
+  "tr": "{1}位嘉宾，最新在前",
+  "back": "{1} guests, newest first",
+  "check": "ok"
+ },
+ "15c39714fb66": {
+  "en": "The pictures",
+  "a": "照片",
+  "date": "2026-11-17",
+  "b": "图片",
+  "tr": "照片"
+ },
+ "1680c69de6b4": {
+  "en": "{1}, from the air",
+  "a": "空中的{1}",
+  "date": "2026-11-17",
+  "b": "空中看{1}",
+  "tr": "从空中看{1}",
+  "tr_note": "same form as 'Kenya, from the air'",
+  "back": "{1} seen from the air",
+  "check": "ok"
+ },
+ "16a1706013dd": {
+  "en": "Which trip",
+  "a": "哪个行程",
+  "date": "2026-11-17",
+  "b": "哪条行程",
+  "tr": "哪个行程",
+  "back": "Which itinerary",
+  "check": "ok"
+ },
+ "171a0606f7c7": {
+  "en": "Group",
+  "a": "团队",
+  "date": "2026-11-17",
+  "b": "团队",
+  "tr": "团队",
+  "back": "Group",
+  "check": "ok"
+ },
+ "175058cca872": {
+  "en": "Play Navigating {1}, with Vistasp Kharas",
+  "a": "播放《探路{1}》，嘉宾 Vistasp Kharas",
+  "date": "2026-11-17",
+  "b": "播放《导航{1}》，嘉宾Vistasp Kharas",
+  "tr": "播放《探路{1}》，嘉宾 Vistasp Kharas",
+  "back": "Play \"Pathfinding {1}\", guest Vistasp Kharas",
+  "check": "ok"
+ },
+ "187487095128": {
+  "en": "Nov, Dec",
+  "a": "十一月、十二月",
+  "date": "2026-11-17",
+  "b": "十一月、十二月",
+  "tr": "十一月、十二月",
+  "back": "November, December",
+  "check": "ok"
+ },
+ "1875aaea3300": {
+  "en": "Paragliding podcast with {1} interviews and full transcripts, a knowledge base on safety, gear and weather, and guided expeditions in Kenya, India and Peru.",
+  "a": "滑翔伞播客，收录{1}期访谈及完整文字稿；涵盖安全、装备与气象的知识库；以及在肯尼亚、印度和秘鲁的带队探险之旅。",
+  "date": "2026-11-17",
+  "b": "飞行伞播客，含{1}期访谈及完整文字稿；还有关于安全、装备和天气的知识库，以及在肯尼亚、印度和秘鲁的带队远征。",
+  "tr": "滑翔伞播客，收录{1}期访谈及完整文字稿；一个涵盖安全、装备与气象的知识库；以及在肯尼亚、印度和秘鲁的带队远征。",
+  "tr_note": "merged: a's wording, 'expeditions' = 远征 site-wide",
+  "waive": {
+   "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is an attributive or a verb, where Chinese pilots say 滑翔伞 / 飞滑翔伞, and 滑翔伞运动 would read stiffly"
+  },
+  "back": "A paragliding podcast, with {1} interview episodes and complete transcripts; a knowledge base covering safety, equipment and meteorology; and guided expeditions in Kenya, India and Peru.",
+  "check": "ok"
+ },
+ "18900530bc69": {
+  "en": "That did not go through.",
+  "a": "发送没有成功。",
+  "date": "2026-11-17",
+  "b": "没有发送成功。",
+  "tr": "发送没有成功。",
+  "back": "The sending did not succeed.",
+  "check": "ok"
+ },
+ "18b1d21c656d": {
+  "en": "The season, November to March. The tour sits in the middle of February.",
+  "a": "季节为十一月至三月。本团安排在二月中旬。",
+  "date": "2026-11-17",
+  "b": "季节为十一月至三月。行程在二月中旬。",
+  "tr": "季节为十一月至三月。本团安排在二月中旬。"
+ },
+ "19da3bd8e3b8": {
+  "en": "Photos by {1}",
+  "a": "摄影：{1}",
+  "date": "2026-11-17",
+  "b": "摄影：{1}",
+  "tr": "摄影：{1}"
+ },
+ "1a3be84bdb83": {
+  "en": "See the trip <x1>→</x1>",
+  "a": "查看行程<x1>→</x1>",
+  "date": "2026-11-17",
+  "b": "查看行程<x1>→</x1>",
+  "tr": "查看行程<x1>→</x1>",
+  "back": "View itinerary<x1>→</x1>",
+  "check": "ok"
+ },
+ "1ab5e12d4d7f": {
+  "en": "Also from Kenya",
+  "a": "更多来自肯尼亚",
+  "date": "2026-11-17",
+  "b": "同样来自肯尼亚",
+  "tr": "更多来自肯尼亚",
+  "back": "More from Kenya",
+  "check": "ok"
+ },
+ "1ad42700838f": {
+  "en": "Photos tonight",
+  "a": "今晚发布照片",
+  "date": "2026-11-17",
+  "b": "今晚发布照片",
+  "tr": "今晚发布照片"
+ },
+ "1b02d68f0236": {
+  "en": "Longest flight, any {1} courses, thermalling comfort",
+  "a": "最远一次飞行、上过的{1}课程、盘热气流的熟练程度",
+  "date": "2026-11-17",
+  "b": "最长飞行、{1}课程、盘旋热气流的熟练程度",
+  "tr": "最远一次飞行、上过的{1}课程、盘热气流的熟练程度",
+  "back": "Longest flight, {1} courses taken, proficiency at working thermals",
+  "check": "ok"
+ },
+ "1cdce20d0a32": {
+  "en": "<x1></x1>Planned, no episode yet",
+  "a": "<x1></x1>计划中，尚无节目",
+  "date": "2026-11-17",
+  "b": "<x1></x1>计划中，暂无节目",
+  "tr": "<x1></x1>计划中，尚无节目",
+  "back": "<x1></x1>Planned, no episode yet",
+  "check": "ok"
+ },
+ "1cef1a2ff9f4": {
+  "en": "Not sure yet",
+  "a": "还不确定",
+  "date": "2026-11-17",
+  "b": "还不确定",
+  "tr": "还不确定",
+  "back": "Not sure yet",
+  "check": "ok"
+ },
+ "1cf2a61c5ca1": {
+  "en": "Pay EUR {1}",
+  "a": "支付 EUR {1}",
+  "date": "2026-11-17",
+  "b": "支付EUR {1}",
+  "tr": "支付 EUR {1}"
+ },
+ "1d0e5a71ff09": {
+  "en": "Untold Truth About Reserve Parachutes",
+  "a": "备份伞不为人知的真相",
+  "date": "2026-11-17",
+  "b": "关于备伞不为人知的真相",
+  "tr": "备份伞不为人知的真相",
+  "back": "The little-known truth about reserve parachutes",
+  "check": "ok"
+ },
+ "1d47d07d1625": {
+  "en": "Practice, photo {1} of {2}",
+  "a": "练习日，第{1}张，共{2}张",
+  "date": "2026-11-17",
+  "b": "练习，第{1}张，共{2}张",
+  "tr": "练习日，第{1}张，共{2}张"
+ },
+ "1d4bf96b3a5c": {
+  "en": "Wind sound",
+  "a": "风声",
+  "date": "2026-11-17",
+  "b": "风声",
+  "tr": "风声",
+  "back": "Sound of the wind",
+  "check": "ok"
+ },
+ "1d69c2f8a896": {
+  "en": "Wing you fly",
+  "a": "你飞的伞",
+  "date": "2026-11-17",
+  "b": "你飞的伞翼",
+  "tr": "你飞的伞",
+  "back": "The wing you fly",
+  "check": "ok"
+ },
+ "1d6b095babd3": {
+  "en": "{1} {2} {3} · Task {4}",
+  "a": "{1} {2} {3} · 任务{4}",
+  "date": "2026-11-17",
+  "b": "{1} {2} {3} · 任务{4}",
+  "tr": "{1} {2} {3} · 任务{4}"
+ },
+ "1e500477d288": {
+  "en": "Trip updates, new episodes, and stories from the field. No spam. Unsubscribe any time.",
+  "a": "行程动态、新节目，以及来自一线的故事。不发垃圾邮件，可随时退订。",
+  "date": "2026-11-17",
+  "b": "行程动态、新节目和来自现场的故事。没有垃圾邮件。随时可以退订。",
+  "tr": "行程动态、新节目，以及来自一线的故事。不发垃圾邮件，可随时退订。",
+  "back": "Itinerary updates, new episodes, and stories from the front line. No spam; you can unsubscribe at any time.",
+  "check": "ok"
+ },
+ "2035a08032bc": {
+  "en": "Knowledge Base",
+  "a": "知识库",
+  "date": "2026-11-17",
+  "b": "知识库",
+  "tr": "知识库",
+  "back": "Knowledge base",
+  "check": "ok"
+ },
+ "20d3d0ce9104": {
+  "en": "From<x1>, per pilot</x1>",
+  "a": "起价<x1>，每位飞行员</x1>",
+  "date": "2026-11-17",
+  "b": "起价<x1>，每位飞行员</x1>",
+  "tr": "起价<x1>，每位飞行员</x1>",
+  "back": "Starting price<x1>, per pilot</x1>",
+  "check": "ok"
+ },
+ "212bbe1ac172": {
+  "en": "Hear another trip",
+  "a": "收听另一段行程",
+  "date": "2026-11-17",
+  "b": "听听另一条行程",
+  "tr": "收听另一段行程",
+  "back": "Listen to another itinerary",
+  "check": "ok"
+ },
+ "213401cd0c27": {
+  "en": "Antoine Girard",
+  "a": "Antoine Girard",
+  "date": "2026-11-17",
+  "b": "Antoine Girard",
+  "tr": "Antoine Girard",
+  "back": "Antoine Girard",
+  "check": "ok"
+ },
+ "224b543ea12b": {
+  "en": "Hazards on retrieve and top landing",
+  "a": "回收途中与山顶降落的危险",
+  "date": "2026-11-17",
+  "b": "回收与山顶着陆的风险",
+  "tr": "回收途中与山顶降落的危险",
+  "waive": {
+   "glossary": "glossary 'landing' (降落场) is the landing field; here English means the act or a spot of landing (降落), not a designated field; 'top landing' has no sourced term, 山顶降落 is the usual phrase"
+  },
+  "back": "Dangers on the retrieval trip and of landing on the summit",
+  "check": "ok"
+ },
+ "22636d8f0782": {
+  "en": "The pre World Cup on the plateau",
+  "a": "高原上的世界杯预赛",
+  "date": "2026-11-17",
+  "b": "高原上的世界杯前哨赛",
+  "tr": "高原上的世界杯预赛",
+  "back": "A World Cup qualifier on the plateau",
+  "check": "ok"
+ },
+ "22703da52eb4": {
+  "en": "Master Fear, Build Resilience & Find Joy",
+  "a": "驾驭恐惧、培养韧性、找到快乐",
+  "date": "2026-11-17",
+  "b": "战胜恐惧，培养韧性，找到乐趣",
+  "tr": "驾驭恐惧、培养韧性、找到快乐",
+  "back": "Mastering fear, building resilience, finding joy",
+  "check": "ok"
+ },
+ "227fef16fa1d": {
+  "en": "Your photo",
+  "a": "你的照片",
+  "date": "2026-11-17",
+  "b": "你的照片",
+  "tr": "你的照片"
+ },
+ "22d8ded2f5b6": {
+  "en": "In aviation, there's a saying: if it's controllable, then control it. On-site fixes, weather mastery, and rescue readiness mean we master every detail beforehand.",
+  "a": "航空界有句话：凡是可控的，就去控制它。现场排障、对天气的掌握和救援准备，意味着我们会事先把每个细节都做到位。",
+  "date": "2026-11-17",
+  "b": "航空界有句话：能控制的，就去控制。现场的应对、对天气的掌握和救援准备，意味着我们事先掌握每一个细节。",
+  "tr": "航空界有句话：凡是可控的，就去控制它。现场排障、对天气的掌握和救援准备，意味着我们会事先把每个细节都做到位。",
+  "back": "There is a saying in aviation: whatever is controllable, control it. On-site troubleshooting, mastery of the weather and rescue preparedness mean that we get every detail done in advance.",
+  "check": "ok"
+ },
+ "2321d414ecd6": {
+  "en": "Season Package",
+  "a": "季节套餐",
+  "date": "2026-11-17",
+  "b": "整季套餐",
+  "tr": "季节套餐"
+ },
+ "23723355f8f9": {
+  "en": "New Technologies",
+  "a": "新技术",
+  "date": "2026-11-17",
+  "b": "新技术",
+  "tr": "新技术",
+  "back": "New technology",
+  "check": "ok"
+ },
+ "242cb352c019": {
+  "en": "Reset the view",
+  "a": "重置视图",
+  "date": "2026-11-17",
+  "b": "重置视图",
+  "tr": "重置视图",
+  "back": "Reset view",
+  "check": "ok"
+ },
+ "24345a14377f": {
+  "en": "Today",
+  "a": "今天",
+  "date": "2026-11-17",
+  "b": "今天",
+  "tr": "今天",
+  "back": "Today",
+  "check": "ok"
+ },
+ "2473e96bc614": {
+  "en": "Introduction",
+  "a": "简介",
+  "date": "2026-11-17",
+  "b": "介绍",
+  "tr": "简介",
+  "back": "Introduction",
+  "check": "ok"
+ },
+ "247e97adf9b1": {
+  "en": "Modernizing {1} Courses",
+  "a": "让{1}课程走向现代化",
+  "date": "2026-11-17",
+  "b": "{1}课程的现代化",
+  "tr": "{1}课程的现代化",
+  "tr_note": "picked b",
+  "back": "Modernisation of {1} courses",
+  "check": "ok"
+ },
+ "251858daa9ea": {
+  "en": "the canyons seen through it",
+  "a": "透过它看峡谷",
+  "date": "2026-11-17",
+  "b": "透过它看到的峡谷",
+  "tr": "透过它看峡谷",
+  "back": "See the canyon through it",
+  "check": "ok"
+ },
+ "2532df6ef263": {
+  "en": "Soar The Land Of The Incas",
+  "a": "翱翔印加之地",
+  "date": "2026-11-17",
+  "b": "翱翔在印加人的故土",
+  "tr": "翱翔印加之地",
+  "back": "Soar over the land of the Incas",
+  "check": "ok"
+ },
+ "258c13fbc938": {
+  "en": "Kenya · {1}, Rift Valley<x1>{2}°N · {3}°E</x1>",
+  "a": "肯尼亚 · {1}，裂谷<x1>北纬{2}° · 东经{3}°</x1>",
+  "date": "2026-11-17",
+  "b": "肯尼亚 · {1}，大裂谷<x1>北纬{2}° 东经{3}°</x1>",
+  "tr": "肯尼亚 · {1}，裂谷<x1>北纬{2}° · 东经{3}°</x1>",
+  "back": "Kenya · {1}, Rift Valley<x1>North latitude {2}° · East longitude {3}°</x1>",
+  "check": "ok"
+ },
+ "26e00b08d068": {
+  "en": "Get In Touch",
+  "a": "联系我们",
+  "date": "2026-11-17",
+  "b": "联系我们",
+  "tr": "联系我们",
+  "back": "Contact us",
+  "check": "ok"
+ },
+ "2776e9555d4a": {
+  "en": "Stay In Touch",
+  "a": "保持联系",
+  "date": "2026-11-17",
+  "b": "保持联系",
+  "tr": "保持联系",
+  "back": "Stay in touch",
+  "check": "ok"
+ },
+ "280cb7f1130c": {
+  "en": "Daily Highlights",
+  "a": "每日精彩集锦",
+  "date": "2026-11-17",
+  "b": "每日精彩集锦",
+  "tr": "每日精彩集锦"
+ },
+ "28315067b19f": {
+  "en": "More conversations",
+  "a": "更多对话",
+  "date": "2026-11-17",
+  "b": "更多对话",
+  "tr": "更多对话",
+  "back": "More conversations",
+  "check": "ok"
+ },
+ "28d341d6e81b": {
+  "en": "Climate, seasons, and when to come",
+  "a": "气候、季节，以及何时前来",
+  "date": "2026-11-17",
+  "b": "气候、季节与最佳到访时间",
+  "tr": "气候、季节，以及何时前来",
+  "back": "Climate, seasons, and when to come",
+  "check": "ok"
+ },
+ "29004f688b0a": {
+  "en": "Close the film",
+  "a": "关闭影片",
+  "date": "2026-11-17",
+  "b": "关闭视频",
+  "tr": "关闭视频",
+  "tr_note": "film = 视频"
+ },
+ "2abac98987dc": {
+  "en": "Click a pin, hear the story.",
+  "a": "点击图钉，收听故事。",
+  "date": "2026-11-17",
+  "b": "点击图钉，听故事。",
+  "tr": "点击图钉，收听故事。",
+  "back": "Tap a pin to listen to the story.",
+  "check": "ok"
+ },
+ "2b3dd4849d56": {
+  "en": "Free web copy, <x1></x1>, under <x2>{1} {2}</x2>: share it with the credit “<x3>Photo: {3}, {4}</x3>”, not for commercial use.",
+  "a": "免费网络版，<x1></x1>，采用<x2>{1} {2}</x2>许可：分享时请注明“<x3>摄影：{3}，{4}</x3>”，不得用于商业用途。",
+  "date": "2026-11-17",
+  "b": "免费网页版，<x1></x1>，采用<x2>{1} {2}</x2>：分享时请注明出处“<x3>摄影：{3}，{4}</x3>”，不得用于商业用途。",
+  "tr": "免费网络版，<x1></x1>，采用<x2>{1} {2}</x2>许可：分享时请注明“<x3>摄影：{3}，{4}</x3>”，不得用于商业用途。"
+ },
+ "2ba4023df482": {
+  "en": "Sign Up",
+  "a": "订阅",
+  "date": "2026-11-17",
+  "b": "订阅",
+  "tr": "订阅",
+  "back": "Subscribe",
+  "check": "ok"
+ },
+ "2c639e809ef6": {
+  "en": "Photos coming",
+  "a": "照片即将发布",
+  "date": "2026-11-17",
+  "b": "照片即将发布",
+  "tr": "照片即将发布"
+ },
+ "2dae96425990": {
+  "en": "<x1>{1}</x1> to <x2>{2}</x2> {3}",
+  "a": "<x1>{1}</x1>至<x2>{2}</x2> {3}",
+  "date": "2026-11-17",
+  "b": "<x1>{1}</x1>至<x2>{2}</x2> {3}",
+  "tr": "<x1>{1}</x1>至<x2>{2}</x2> {3}"
+ },
+ "2deaab2fb58e": {
+  "en": "Matthijs Groeneveld led after Task {1}; Andrés Tello Alvarado took the lead after Task {2} and kept it to the end.",
+  "a": "Matthijs Groeneveld 在任务{1}后领先；Andrés Tello Alvarado 在任务{2}后夺得领先，并一直保持到最后。",
+  "date": "2026-11-17",
+  "b": "Matthijs Groeneveld在任务{1}之后领先；Andrés Tello Alvarado在任务{2}之后升至第一，并保持到最后。",
+  "tr": "Matthijs Groeneveld 在任务{1}后领先；Andrés Tello Alvarado 在任务{2}后夺得领先，并一直保持到最后。"
+ },
+ "2df935d4641b": {
+  "en": "Back to the photo",
+  "a": "返回照片",
+  "date": "2026-11-17",
+  "b": "返回照片",
+  "tr": "返回照片"
+ },
+ "2e471f63b7ba": {
+  "en": ", {1}, January and {2}",
+  "a": "，{1}，一月和{2}",
+  "date": "2026-11-17",
+  "b": "，{1}，一月和{2}",
+  "tr": "，{1}，一月和{2}",
+  "back": ", {1}, January and {2}",
+  "check": "ok"
+ },
+ "2e48b79c7302": {
+  "en": "Licence or rating",
+  "a": "执照或等级",
+  "date": "2026-11-17",
+  "b": "执照或等级",
+  "tr": "执照或等级",
+  "back": "Licence or rating",
+  "check": "ok"
+ },
+ "2f1a617c615f": {
+  "en": "Podbean",
+  "a": "Podbean",
+  "date": "2026-11-17",
+  "b": "Podbean",
+  "tr": "Podbean",
+  "back": "Podbean",
+  "check": "ok"
+ },
+ "2f36b6bb1852": {
+  "en": "Kazakhstan",
+  "a": "哈萨克斯坦",
+  "date": "2026-11-17",
+  "b": "哈萨克斯坦",
+  "tr": "哈萨克斯坦",
+  "back": "Kazakhstan",
+  "check": "ok"
+ },
+ "2f84eea5d45d": {
+  "en": "Copy link",
+  "a": "复制链接",
+  "date": "2026-11-17",
+  "b": "复制链接",
+  "tr": "复制链接",
+  "back": "Copy link",
+  "check": "ok"
+ },
+ "2f8ce6a696bf": {
+  "en": "We read it and reply, usually within a couple of days. We do not add you to a mailing list from an enquiry, and we do not pass your details to anyone. The full detail is in the <x1>Privacy Policy</x1>.",
+  "a": "我们会阅读并回复，通常在几天之内。我们不会因为你的咨询就把你加入邮件列表，也不会把你的信息转给任何人。详情请见<x1>隐私政策</x1>。",
+  "date": "2026-11-17",
+  "b": "我们会阅读并回复，通常在几天之内。我们不会因为一次咨询就把你加入邮件列表，也不会把你的信息交给任何人。详细说明见<x1>隐私政策</x1>。",
+  "tr": "我们会阅读并回复，通常在一两天之内。我们不会因为你的咨询就把你加入邮件列表，也不会把你的信息转给任何人。详情请见<x1>隐私政策</x1>。",
+  "check_history": [
+   {
+    "tr": "我们会阅读并回复，通常在几天之内。我们不会因为你的咨询就把你加入邮件列表，也不会把你的信息转给任何人。详情请见<x1>隐私政策</x1>。",
+    "back": "We will read and reply, usually within a few days. We will not add you to a mailing list because of your enquiry, and we will not pass your information to anyone. See the <x1>privacy policy</x1> for details.",
+    "verdict": "weaker promise: 'within a couple of days' became 几天之内 (within several days)"
+   }
+  ],
+  "tr_note": "comparer fix: weaker promise: 'within a couple of days' became 几天之内 (within several days)",
+  "back": "We will read and reply, usually within one or two days. We will not add you to a mailing list because of your enquiry, and we will not pass your information to anyone. See the <x1>privacy policy</x1> for details.",
+  "check": "ok"
+ },
+ "2fbadb098101": {
+  "en": "{1} · {2}, Mexico",
+  "a": "{1} · {2}，墨西哥",
+  "date": "2026-11-17",
+  "b": "{1} · 墨西哥{2}",
+  "tr": "{1} · {2}，墨西哥"
+ },
+ "30dfc50ab0b8": {
+  "en": "The deposit, when the balance is due and what happens if you cancel are all in the <x1>booking terms</x1>. Read them before you book, and take out trip cancellation insurance.",
+  "a": "定金、尾款的支付时间以及取消后的处理，都写在<x1>预订条款</x1>中。请在预订前阅读，并购买行程取消保险。",
+  "date": "2026-11-17",
+  "b": "定金、尾款何时到期，以及取消后会怎样，都写在<x1>预订条款</x1>里。预订前请先阅读，并购买行程取消险。",
+  "tr": "定金、尾款的支付时间以及取消后的处理，都写在<x1>预订条款</x1>中。请在预订前阅读，并购买行程取消保险。"
+ },
+ "30e159c76bbe": {
+  "en": "Lynsey Haynes led from Task {1} to the end.",
+  "a": "Lynsey Haynes 从任务{1}起领先直到最后。",
+  "date": "2026-11-17",
+  "b": "Lynsey Haynes从任务{1}起一直领先到最后。",
+  "tr": "Lynsey Haynes 从任务{1}起领先直到最后。"
+ },
+ "31115561075f": {
+  "en": "Sun {1}",
+  "a": "周日{1}",
+  "date": "2026-11-17",
+  "b": "周日{1}",
+  "tr": "周日{1}"
+ },
+ "322ec11c194f": {
+  "en": "To come",
+  "a": "即将推出",
+  "date": "2026-11-17",
+  "b": "待发布",
+  "tr": "待发布",
+  "tr_note": "picked b"
+ },
+ "3274592f6a03": {
+  "en": "A paraglider above terraced fields and villages",
+  "a": "一顶滑翔伞飞在梯田和村庄上空",
+  "date": "2026-11-17",
+  "b": "一顶伞翼飞过梯田和村庄",
+  "tr": "一顶滑翔伞飞在梯田和村庄上空"
+ },
+ "328d292443e7": {
+  "en": "Beyond Roads, Beyond Maps",
+  "a": "越过道路，越过地图",
+  "date": "2026-11-17",
+  "b": "超越道路，超越地图",
+  "tr": "道路之外，地图之外",
+  "check_history": [
+   {
+    "tr": "越过道路，越过地图",
+    "back": "Cross the roads, cross the map",
+    "verdict": "wrong sense of a word: 越过 means 'cross over'; 'beyond' means where roads and maps do not reach"
+   }
+  ],
+  "tr_note": "comparer fix: wrong sense of a word: 越过 means 'cross over'; 'beyond' means where roads and maps do not reach",
+  "back": "Beyond the roads, beyond the map",
+  "check": "ok"
+ },
+ "335038d8a582": {
+  "en": "Kazakhstan, the striped canyons",
+  "a": "哈萨克斯坦，条纹峡谷",
+  "date": "2026-11-17",
+  "b": "哈萨克斯坦，条纹峡谷",
+  "tr": "哈萨克斯坦，条纹峡谷",
+  "back": "Kazakhstan, striped canyons",
+  "check": "ok"
+ },
+ "33f1b2e570e8": {
+  "en": "Choose the trip to hear",
+  "a": "选择要收听的行程",
+  "date": "2026-11-17",
+  "b": "选择要收听的行程",
+  "tr": "选择要收听的行程",
+  "back": "Choose the itinerary to listen to",
+  "check": "ok"
+ },
+ "34adb5fa1de1": {
+  "en": "Paragliding Expeditions, Run By A Pilot.",
+  "a": "滑翔伞探险之旅，由飞行员亲自带队。",
+  "date": "2026-11-17",
+  "b": "飞行伞远征，由飞行员亲自带队。",
+  "tr": "滑翔伞远征，由飞行员亲自带队。",
+  "tr_note": "site-wide terms (滑翔伞远征, 远征)",
+  "waive": {
+   "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is an attributive or a verb, where Chinese pilots say 滑翔伞 / 飞滑翔伞, and 滑翔伞运动 would read stiffly"
+  },
+  "back": "Paragliding expeditions, led personally by pilots.",
+  "check": "ok"
+ },
+ "3527a13d0151": {
+  "en": "<x1>{1}</x1>Fitness and wing experience required",
+  "a": "<x1>{1}</x1>所需的体能与伞翼飞行经验",
+  "date": "2026-11-17",
+  "b": "<x1>{1}</x1>所需的体能和伞翼经验",
+  "tr": "<x1>{1}</x1>所需的体能与伞翼飞行经验",
+  "back": "<x1>{1}</x1> the physical fitness and wing-flying experience required",
+  "check": "ok"
+ },
+ "35548a7ef8d3": {
+  "en": "Not sure yet, help me choose",
+  "a": "还不确定，帮我选",
+  "date": "2026-11-17",
+  "b": "还不确定，请帮我选择",
+  "tr": "还不确定，帮我选",
+  "back": "Not sure yet, help me choose",
+  "check": "ok"
+ },
+ "35c2a02cd4d0": {
+  "en": "India · {1}, Himalaya<x1>{2}°N · {3}°E</x1>",
+  "a": "印度 · {1}，喜马拉雅<x1>北纬{2}° · 东经{3}°</x1>",
+  "date": "2026-11-17",
+  "b": "印度 · 喜马拉雅{1}<x1>北纬{2}° 东经{3}°</x1>",
+  "tr": "印度 · {1}，喜马拉雅<x1>北纬{2}° · 东经{3}°</x1>",
+  "back": "India · {1}, Himalaya<x1>North latitude {2}° · East longitude {3}°</x1>",
+  "check": "ok"
+ },
+ "35f30297a54b": {
+  "en": "A pilot under a red wing above snow-covered mountains in India",
+  "a": "一名飞行员驾着红色伞翼，飞在印度的雪山之上",
+  "date": "2026-11-17",
+  "b": "一名飞行员挂在红色伞翼下，飞越印度的积雪群山",
+  "tr": "一名飞行员驾着红色伞翼，飞在印度的雪山之上",
+  "back": "A pilot flying a red wing above the snow mountains of India",
+  "check": "ok"
+ },
+ "36c57243155b": {
+  "en": "Peru",
+  "a": "秘鲁",
+  "date": "2026-11-17",
+  "b": "秘鲁",
+  "tr": "秘鲁",
+  "back": "Peru",
+  "check": "ok"
+ },
+ "36d32e9b15b0": {
+  "en": "Because We Care to Share",
+  "a": "因为我们乐于分享",
+  "date": "2026-11-17",
+  "b": "因为我们乐于分享",
+  "tr": "因为我们乐于分享",
+  "back": "Because we are happy to share",
+  "check": "ok"
+ },
+ "372ea5cbedff": {
+  "en": "Coverage Like This For <x1>Your Event</x1>",
+  "a": "为<x1>你的赛事</x1>提供这样的报道",
+  "date": "2026-11-17",
+  "b": "为<x1>你的赛事</x1>提供这样的报道",
+  "tr": "为<x1>你的赛事</x1>提供这样的报道"
+ },
+ "376b0e8cf4cd": {
+  "en": "Its name",
+  "a": "赛事名称",
+  "date": "2026-11-17",
+  "b": "赛事名称",
+  "tr": "赛事名称",
+  "back": "Event name",
+  "check": "ok"
+ },
+ "387e281ae314": {
+  "en": "Amazon Music",
+  "a": "Amazon Music",
+  "date": "2026-11-17",
+  "b": "亚马逊音乐",
+  "tr": "Amazon Music",
+  "back": "Amazon Music",
+  "check": "ok"
+ },
+ "3920b56e81bd": {
+  "en": "<x1>{1} days</x1> · <x2>Next departure {2}</x2>",
+  "a": "<x1>{1}天</x1> · <x2>下一团期 {2}</x2>",
+  "date": "2026-11-17",
+  "b": "<x1>{1}天</x1> · <x2>下一班次{2}</x2>",
+  "tr": "<x1>{1}天</x1> · <x2>下一团期{2}</x2>",
+  "tr_note": "a, without the space before {2} (Chinese spacing rule)"
+ },
+ "3a65e770b28a": {
+  "en": "Women",
+  "a": "女子",
+  "date": "2026-11-17",
+  "b": "女子",
+  "tr": "女子"
+ },
+ "3ac720e2b43e": {
+  "en": "Official event: <x1>{1}, {2}</x1> · <x2>Final results</x2>",
+  "a": "官方赛事：<x1>{1}，{2}</x1> · <x2>最终成绩</x2>",
+  "date": "2026-11-17",
+  "b": "官方赛事：<x1>{1}，{2}</x1> · <x2>最终成绩</x2>",
+  "tr": "官方赛事：<x1>{1}，{2}</x1> · <x2>最终成绩</x2>"
+ },
+ "3ad4edd5eba7": {
+  "en": "Risk vs Reward",
+  "a": "风险与回报",
+  "date": "2026-11-17",
+  "b": "风险与回报",
+  "tr": "风险与回报",
+  "back": "Risk and reward",
+  "check": "ok"
+ },
+ "3bade34ecbc5": {
+  "en": "Length",
+  "a": "天数",
+  "date": "2026-11-17",
+  "b": "时长",
+  "tr": "天数",
+  "back": "Number of days",
+  "check": "ok"
+ },
+ "3bc88d1e51e7": {
+  "en": "Thank you, your enquiry is with us. We read every one and usually reply within a couple of days, to {1}.",
+  "a": "谢谢，我们已收到你的咨询。每一封我们都会阅读，通常在几天内回复到{1}。",
+  "date": "2026-11-17",
+  "b": "谢谢你，我们已收到你的咨询。每一条我们都会阅读，通常在几天之内回复到{1}。",
+  "tr": "谢谢，我们已收到你的咨询。每一封我们都会阅读，通常在一两天内回复到{1}。",
+  "check_history": [
+   {
+    "tr": "谢谢，我们已收到你的咨询。每一封我们都会阅读，通常在几天内回复到{1}。",
+    "back": "Thank you, we have received your enquiry. We read every one, and usually reply to {1} within a few days.",
+    "verdict": "weaker promise: 'within a couple of days' became 几天内 (within several days)"
+   }
+  ],
+  "tr_note": "comparer fix: weaker promise: 'within a couple of days' became 几天内 (within several days)",
+  "back": "Thank you, we have received your enquiry. We read every one, and usually reply to {1} within one or two days.",
+  "check": "ok"
+ },
+ "3c50c2d39c34": {
+  "en": "Being brave enough to go out and do it",
+  "a": "鼓起勇气出发去做",
+  "date": "2026-11-17",
+  "b": "有足够的勇气走出去，放手去做",
+  "tr": "鼓起勇气出发去做",
+  "back": "Summon the courage to set off and do it",
+  "check": "ok"
+ },
+ "3c6c41221b5b": {
+  "en": "Play the film, Task {1} Highlights, {2} min {3} s",
+  "a": "播放影片：任务{1}精彩集锦，{2}分{3}秒",
+  "date": "2026-11-17",
+  "b": "播放视频，任务{1}精彩集锦，{2}分{3}秒",
+  "tr": "播放视频：任务{1}精彩集锦，{2}分{3}秒",
+  "tr_note": "film = 视频"
+ },
+ "3d082142a0c2": {
+  "en": "Listen on",
+  "a": "收听平台",
+  "date": "2026-11-17",
+  "b": "收听平台",
+  "tr": "收听平台",
+  "back": "Listening platforms",
+  "check": "ok"
+ },
+ "3d5fc1e20980": {
+  "en": "What {1} you are working with",
+  "a": "你面对的是怎样的{1}",
+  "date": "2026-11-17",
+  "b": "你面对的是怎样的{1}",
+  "tr": "你面对的是怎样的{1}",
+  "back": "What kind of {1} you are facing",
+  "check": "ok"
+ },
+ "3d8703f3e37d": {
+  "en": "Send a Media Enquiry",
+  "a": "发送媒体咨询",
+  "date": "2026-11-17",
+  "b": "发送媒体咨询",
+  "tr": "发送媒体咨询"
+ },
+ "3e0763edd17f": {
+  "en": "{1} sits on the {2}, the range that runs down India's west coast about {3} km inland, on the volcanic tablelands of the {4}: flat tops and sharp vertical cliffs. Vistasp Kharas grew up here and has flown it for more than ten years. He calls it far more technical than {5}: a {6} km flight in {7} is as good as {8} km in {9}.",
+  "a": "{1}位于{2}，这条山脉沿印度西海岸延伸，距海岸约{3} km，坐落在{4}的火山台地上：平顶与陡直的悬崖。Vistasp Kharas 在这里长大，在此飞行已超过十年。他认为这里的技术难度远高于{5}：在{7}飞{6} km，相当于在{9}飞{8} km。",
+  "date": "2026-11-17",
+  "b": "{1}位于{2}，这条山脉沿印度西海岸延伸，距海岸约{3}公里，处在{4}的火山台地上：平顶和陡峭的垂直悬崖。Vistasp Kharas在这里长大，已在此飞行十多年。他说这里的技术难度远高于{5}：在{7}飞{6}公里，相当于在{9}飞{8}公里。",
+  "tr": "{1}位于{2}，这条山脉沿印度西海岸延伸，距海岸约{3} km，坐落在{4}的火山台地上：平顶与陡直的悬崖。Vistasp Kharas 在这里长大，在此飞行已超过十年。他认为这里的技术难度远高于{5}：在{7}飞{6} km，相当于在{9}飞{8} km。"
+ },
+ "3e15ac7882aa": {
+  "en": "Practice",
+  "a": "练习日",
+  "date": "2026-11-17",
+  "b": "练习",
+  "tr": "练习日"
+ },
+ "3e8248e32edf": {
+  "en": "Price",
+  "a": "价格",
+  "date": "2026-11-17",
+  "b": "价格",
+  "tr": "价格",
+  "back": "Price",
+  "check": "ok"
+ },
+ "3eb7165288d1": {
+  "en": "Gabriel Orsini",
+  "a": "Gabriel Orsini",
+  "date": "2026-11-17",
+  "b": "Gabriel Orsini",
+  "tr": "Gabriel Orsini",
+  "back": "Gabriel Orsini",
+  "check": "ok"
+ },
+ "3f66052a107e": {
+  "en": "From",
+  "a": "起价",
+  "date": "2026-11-17",
+  "b": "起价",
+  "tr": "起价"
+ },
+ "40f1736b73a8": {
+  "en": "Play the film",
+  "a": "播放影片",
+  "date": "2026-11-17",
+  "b": "播放视频",
+  "tr": "播放视频",
+  "tr_note": "film = 视频",
+  "back": "Play video",
+  "check": "ok"
+ },
+ "4164d30fbe1e": {
+  "en": "Thermals of {1} to {2} m/s, six sites down the Rift",
+  "a": "热气流强度{1}至{2} m/s，沿裂谷分布六个飞行场地",
+  "date": "2026-11-17",
+  "b": "热气流{1}至{2}米/秒，沿裂谷分布六个飞行场地",
+  "tr": "热气流强度{1}至{2} m/s，沿裂谷分布六个飞行场地",
+  "back": "Thermal strength {1} to {2} m/s, six flying sites distributed along the Rift Valley",
+  "check": "ok"
+ },
+ "41ce8b3675ff": {
+  "en": "A white paraglider over farmland on the shore of a lake, a dry hillside to the right",
+  "a": "一顶白色滑翔伞飞在湖岸农田上空，右侧是干燥的山坡",
+  "date": "2026-11-17",
+  "b": "一顶白色伞翼飞过湖岸边的农田，右侧是干燥的山坡",
+  "tr": "一顶白色滑翔伞飞在湖岸农田上空，右侧是干燥的山坡"
+ },
+ "420b6a3c5c90": {
+  "en": "Hear Where We <x1>Fly</x1>",
+  "a": "听听我们<x1>飞</x1>在哪里",
+  "date": "2026-11-17",
+  "b": "听听我们在哪里<x1>飞行</x1>",
+  "tr": "听听我们在哪里<x1>飞行</x1>",
+  "tr_note": "picked b",
+  "back": "Hear where we <x1>fly</x1>",
+  "check": "ok"
+ },
+ "4385f498f29f": {
+  "en": "Explore The Cradle",
+  "a": "探索人类摇篮",
+  "date": "2026-11-17",
+  "b": "探索人类摇篮",
+  "tr": "探索人类摇篮",
+  "back": "Explore the cradle of humankind",
+  "check": "ok"
+ },
+ "44ce8c5b2fc2": {
+  "en": "{1}: Paragliding the {2} Tablelands | {3}",
+  "a": "{1}：在{2}台地飞滑翔伞 | {3}",
+  "date": "2026-11-17",
+  "b": "{1}：在{2}台地飞行伞 | {3}",
+  "tr": "{1}：在{2}台地飞滑翔伞 | {3}",
+  "waive": {
+   "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is an attributive or a verb, where Chinese pilots say 滑翔伞 / 飞滑翔伞, and 滑翔伞运动 would read stiffly"
+  }
+ },
+ "44f7b74d06cb": {
+  "en": "{1} held its first pre World Cup in {2}, with almost {3} pilots, and its second, the first run by the Paragliding Association of India, in {4}. The longest local line runs about {5} km north west to {6}.",
+  "a": "{1}于{2}年举办了第一届世界杯预赛，有近{3}名飞行员参加；第二届于{4}年举办，也是印度滑翔伞协会（Paragliding Association of India）主办的第一届。当地最长的航线向西北延伸约{5} km，直到{6}。",
+  "date": "2026-11-17",
+  "b": "{1}于{2}举办了第一届世界杯前哨赛，参赛飞行员近{3}人；第二届于{4}举办，是印度飞行伞协会首次主办。当地最长的航线约{5}公里，向西北飞至{6}。",
+  "tr": "{1}于{2}年举办了第一届世界杯预赛，有近{3}名飞行员参加；第二届于{4}年举办，也是印度滑翔伞协会（Paragliding Association of India）主办的第一届。当地最长的航线向西北延伸约{5} km，直到{6}。",
+  "waive": {
+   "glossary": "'paragliding' only inside the organisation's own name (Paragliding Association of India), rendered 印度滑翔伞协会 with the English name kept"
+  }
+ },
+ "4659fb30692d": {
+  "en": "Tom Lolies",
+  "a": "Tom Lolies",
+  "date": "2026-11-17",
+  "b": "Tom Lolies",
+  "tr": "Tom Lolies",
+  "back": "Tom Lolies",
+  "check": "ok"
+ },
+ "467584cc0dae": {
+  "en": "See dates",
+  "a": "查看日期",
+  "date": "2026-11-17",
+  "b": "查看日期",
+  "tr": "查看日期",
+  "back": "View dates",
+  "check": "ok"
+ },
+ "469c38b8444c": {
+  "en": "Touch The Sky With Glory",
+  "a": "荣耀触摸天空",
+  "date": "2026-11-17",
+  "b": "带着荣耀触摸天空",
+  "tr": "带着荣耀触摸天空",
+  "tr_note": "picked b",
+  "back": "Touch the sky with glory",
+  "check": "ok"
+ },
+ "46bb0cf1a5ac": {
+  "en": "The Science Of EN Certifications",
+  "a": "EN 认证的科学",
+  "date": "2026-11-17",
+  "b": "EN认证的科学",
+  "tr": "EN 认证的科学",
+  "back": "The science of EN certification",
+  "check": "ok"
+ },
+ "4706b99f989f": {
+  "en": "the plateau seen through it",
+  "a": "透过它看高原",
+  "date": "2026-11-17",
+  "b": "透过它看到的高原",
+  "tr": "透过它看高原",
+  "back": "See the plateau through it",
+  "check": "ok"
+ },
+ "47454d82e0cd": {
+  "en": "Welcome back after a long gap",
+  "a": "久别之后，欢迎回来",
+  "date": "2026-11-17",
+  "b": "久别重逢，欢迎回来",
+  "tr": "久别之后，欢迎回来",
+  "back": "Welcome back after a long time away",
+  "check": "ok"
+ },
+ "479b2ba5fc81": {
+  "en": "Hear The Site From Someone Who Flies It",
+  "a": "听当地飞行员讲讲这个场地",
+  "date": "2026-11-17",
+  "b": "听亲身飞过这里的人讲这个场地",
+  "tr": "听亲身飞过这里的人讲这个场地",
+  "tr_note": "picked b"
+ },
+ "47e1e16008a9": {
+  "en": "Navigating {1}: Vistasp Kharas",
+  "a": "《探路{1}》：Vistasp Kharas",
+  "date": "2026-11-17",
+  "b": "导航{1}：Vistasp Kharas",
+  "tr": "《探路{1}》：Vistasp Kharas"
+ },
+ "48bc78620bf1": {
+  "en": "Full Event",
+  "a": "全程赛事",
+  "date": "2026-11-17",
+  "b": "整场赛事",
+  "tr": "整场赛事",
+  "tr_note": "picked b",
+  "back": "Whole event",
+  "check": "ok"
+ },
+ "498d06b28ce2": {
+  "en": "This form has no database behind it. Pressing send opens your own email app with the message written out, and you send it yourself. Nothing is posted to us or to any form service on the way, so there is no third party holding your details.",
+  "a": "这个表单背后没有数据库。点击发送会打开你自己的邮件应用，邮件内容已经写好，由你自己发送。途中不会向我们或任何表单服务提交任何内容，所以没有第三方持有你的信息。",
+  "date": "2026-11-17",
+  "b": "这份表单背后没有数据库。点击发送会打开你自己的电子邮件应用，里面已写好邮件，由你自己发出。过程中没有任何内容提交给我们或任何表单服务，所以没有第三方持有你的信息。",
+  "tr": "这个表单背后没有数据库。点击发送会打开你自己的邮件应用，邮件内容已经写好，由你自己发送。途中不会向我们或任何表单服务提交任何内容，所以没有第三方持有你的信息。",
+  "back": "There is no database behind this form. Clicking send opens your own email app, with the email content already written, and you send it yourself. Nothing is submitted along the way to us or to any form service, so no third party holds your information.",
+  "check": "ok"
+ },
+ "4ab772cebc20": {
+  "en": "Navigating India (Bonus Ep)",
+  "a": "探路印度（特辑）",
+  "date": "2026-11-17",
+  "b": "导航印度（加更）",
+  "tr": "探路印度（特辑）",
+  "back": "Pathfinding India (Special)",
+  "check": "ok"
+ },
+ "4ad48a02590f": {
+  "en": "Launch",
+  "a": "起飞场",
+  "date": "2026-11-17",
+  "b": "起飞点",
+  "tr": "起飞场",
+  "back": "Launch site",
+  "check": "ok"
+ },
+ "4ae0d3ceff1d": {
+  "en": "Register interest",
+  "a": "登记意向",
+  "date": "2026-11-17",
+  "b": "登记意向",
+  "tr": "登记意向",
+  "back": "Register interest",
+  "check": "ok"
+ },
+ "4aee51e751b3": {
+  "en": "Experience intimate, expert led flying in world class destinations. Skip the crowds with small group tours in iconic skies over untamed terrains, fully guided from launch to landing and beyond.",
+  "a": "在世界级目的地，体验亲密、由专家带领的飞行。小团出行，避开人群，在标志性的天空中飞越原始地貌，从起飞到降落乃至更多，全程带队。",
+  "date": "2026-11-17",
+  "b": "在世界级目的地体验由专家带领的私密飞行。小团出行，避开人群，在未经开发的地形上空、标志性的天空中飞行，从起飞到着陆乃至之后，全程有人带队。",
+  "tr": "在世界级的目的地，体验由专家带领、小而精的飞行。小团出行，避开人群，在标志性的天空下飞越原始地貌；从起飞场到降落场乃至之后，全程带队。",
+  "tr_note": "merged: launch/landing = 起飞场/降落场 (glossary); a's 亲密 and b's 私密 both misread 'intimate'; 小而精 keeps it",
+  "back": "At world-class destinations, experience small, refined flights led by experts. Travel in small groups, avoid the crowds, and fly over primeval landscapes beneath iconic skies; we lead you throughout, from the launch site to the landing site and beyond.",
+  "check": "ok"
+ },
+ "4af8ffdce3ca": {
+  "en": "The cliffs heat through the morning and throw up strong thermals. There are inversions at several layers, the wind can change direction every thousand metres, and each valley and bowl has its own wind.",
+  "a": "悬崖整个上午都在升温，激发出强劲的热气流。空中有多层逆温，风向每升高一千米就可能改变，每个山谷和山坳都有自己的风。",
+  "date": "2026-11-17",
+  "b": "悬崖在上午被加热，产生强劲的热气流。多个高度层都有逆温，风向可能每升高一千米就变一次，每个山谷和凹地都有自己的风。",
+  "tr": "悬崖整个上午都在升温，激发出强劲的热气流。空中有多层逆温，风向每升高一千米就可能改变，每个山谷和山坳都有自己的风。"
+ },
+ "4b3a25477426": {
+  "en": "Partner With Me",
+  "a": "与我合作",
+  "date": "2026-11-17",
+  "b": "与我合作",
+  "tr": "与我合作",
+  "back": "Work with me",
+  "check": "ok"
+ },
+ "4bb3e463ac3e": {
+  "en": "Debunking The Myths, Enzo {1}",
+  "a": "破除迷思，Enzo {1}",
+  "date": "2026-11-17",
+  "b": "破除迷思，Enzo {1}",
+  "tr": "破除迷思，Enzo {1}",
+  "back": "Debunking myths, Enzo {1}",
+  "check": "ok"
+ },
+ "4bd41e68f21b": {
+  "en": "Mission Statement",
+  "a": "使命宣言",
+  "date": "2026-11-17",
+  "b": "使命宣言",
+  "tr": "使命宣言",
+  "back": "Mission statement",
+  "check": "ok"
+ },
+ "4bf5048f5cbf": {
+  "en": "{1} off the hill: pottery, yoga and Buddhism",
+  "a": "{1}山下：陶艺、瑜伽与佛教",
+  "date": "2026-11-17",
+  "b": "下山之后的{1}：陶器、瑜伽与佛教",
+  "tr": "{1}山下：陶艺、瑜伽与佛教",
+  "back": "Below {1} mountain: pottery, yoga and Buddhism",
+  "check": "ok"
+ },
+ "4ca9685eab65": {
+  "en": "A cold open: the first landing at Barabangal",
+  "a": "开场：第一次降落在 Barabangal",
+  "date": "2026-11-17",
+  "b": "开场白：在Barabangal的第一次着陆",
+  "tr": "开场：第一次降落在 Barabangal",
+  "waive": {
+   "glossary": "glossary 'landing' (降落场) is the landing field; here English means the act or a spot of landing (降落), not a designated field"
+  },
+  "back": "Opening: the first landing at Barabangal",
+  "check": "ok"
+ },
+ "4d95cf5482fd": {
+  "en": "Every Departure",
+  "a": "所有出发团期",
+  "date": "2026-11-17",
+  "b": "每一个出发班次",
+  "tr": "所有出发团期",
+  "back": "All departure groups",
+  "check": "ok"
+ },
+ "4e0f5e510337": {
+  "en": "Book a call",
+  "a": "预约通话",
+  "date": "2026-11-17",
+  "b": "预约通话",
+  "tr": "预约通话"
+ },
+ "4fba49b06fc9": {
+  "en": "Send enquiry",
+  "a": "发送咨询",
+  "date": "2026-11-17",
+  "b": "发送咨询",
+  "tr": "发送咨询",
+  "back": "Send enquiry",
+  "check": "ok"
+ },
+ "4fc05f2763ba": {
+  "en": "Zoom in",
+  "a": "放大",
+  "date": "2026-11-17",
+  "b": "放大",
+  "tr": "放大",
+  "back": "Zoom in",
+  "check": "ok"
+ },
+ "4fc19f8ce7ff": {
+  "en": "Install the app",
+  "a": "安装应用",
+  "date": "2026-11-17",
+  "b": "安装应用",
+  "tr": "安装应用",
+  "back": "Install app",
+  "check": "ok"
+ },
+ "50d13ea33788": {
+  "en": "Media coverage",
+  "a": "媒体报道",
+  "date": "2026-11-17",
+  "b": "媒体报道",
+  "tr": "媒体报道",
+  "back": "Media coverage",
+  "check": "ok"
+ },
+ "51dd91dc98a9": {
+  "en": "Start over",
+  "a": "重新开始",
+  "date": "2026-11-17",
+  "b": "重新开始",
+  "tr": "重新开始"
+ },
+ "5219616d3f22": {
+  "en": "Starting from",
+  "a": "起价",
+  "date": "2026-11-17",
+  "b": "起价",
+  "tr": "起价"
+ },
+ "524cf50b5df5": {
+  "en": "Cookies",
+  "a": "Cookie",
+  "date": "2026-11-17",
+  "b": "Cookie",
+  "tr": "Cookie",
+  "back": "Cookie",
+  "check": "ok"
+ },
+ "52a35818a37a": {
+  "en": "Swipe sideways to turn it.",
+  "a": "左右滑动以转动。",
+  "date": "2026-11-17",
+  "b": "左右滑动可转动。",
+  "tr": "左右滑动以转动。",
+  "back": "Swipe left and right to turn.",
+  "check": "ok"
+ },
+ "5301648dcf6b": {
+  "en": "Edit",
+  "a": "编辑",
+  "date": "2026-11-17",
+  "b": "编辑",
+  "tr": "编辑",
+  "back": "Edit",
+  "check": "ok"
+ },
+ "535d98c81acb": {
+  "en": "Hours in the last {1} months",
+  "a": "最近{1}个月的飞行小时",
+  "date": "2026-11-17",
+  "b": "最近{1}个月的飞行小时数",
+  "tr": "最近{1}个月的飞行小时",
+  "back": "Flying hours in the last {1} months",
+  "check": "ok"
+ },
+ "53827202712c": {
+  "en": "Decoding Weather Apps",
+  "a": "解读天气应用",
+  "date": "2026-11-17",
+  "b": "解读天气应用",
+  "tr": "解读天气应用",
+  "back": "Interpreting weather apps",
+  "check": "ok"
+ },
+ "53f612a997cf": {
+  "en": "Alain Zoller",
+  "a": "Alain Zoller",
+  "date": "2026-11-17",
+  "b": "Alain Zoller",
+  "tr": "Alain Zoller",
+  "back": "Alain Zoller",
+  "check": "ok"
+ },
+ "547e4c87839a": {
+  "en": "Translated from English.",
+  "a": "译自英文。",
+  "date": "2026-11-17",
+  "b": "译自英文。",
+  "tr": "译自英文。",
+  "back": "Translated from English.",
+  "check": "ok"
+ },
+ "5548ae4f34cb": {
+  "en": "days",
+  "a": "天",
+  "date": "2026-11-17",
+  "b": "天",
+  "tr": "天",
+  "back": "days",
+  "check": "ok"
+ },
+ "5591a37269f0": {
+  "en": ", {1} and the Andes, planned for {2}",
+  "a": "，{1}与安第斯山脉，计划于{2}",
+  "date": "2026-11-17",
+  "b": "，{1}与安第斯山，计划于{2}",
+  "tr": "，{1}与安第斯山脉，计划于{2}",
+  "back": ", {1} and the Andes, planned for {2}",
+  "check": "ok"
+ },
+ "55c66106455f": {
+  "en": "Navigating {1} (Pre {2} India) : Vistasp Kharas<x1>Navigators, Episode {3}, {4} min</x1>",
+  "a": "《探路{1}（{2}预赛 印度）》：Vistasp Kharas<x1>Navigators，第{3}集，{4}分钟</x1>",
+  "date": "2026-11-17",
+  "b": "导航{1}（{2}前哨赛印度站）：Vistasp Kharas<x1>领航者，第{3}期，{4}分钟</x1>",
+  "tr": "《探路{1}（{2}印度预赛）》：Vistasp Kharas<x1>Navigators，第{3}集，{4}分钟</x1>",
+  "tr_note": "episode title form",
+  "back": "\"Pathfinding {1} ({2} India Qualifier)\": Vistasp Kharas<x1>Navigators, episode {3}, {4} minutes</x1>",
+  "check": "ok"
+ },
+ "5646f9c6b3a7": {
+  "en": "Jigish Gohil",
+  "a": "Jigish Gohil",
+  "date": "2026-11-17",
+  "b": "Jigish Gohil",
+  "tr": "Jigish Gohil",
+  "back": "Jigish Gohil",
+  "check": "ok"
+ },
+ "56907a4f988f": {
+  "en": "Hold a place",
+  "a": "预留名额",
+  "date": "2026-11-17",
+  "b": "预留名额",
+  "tr": "预留名额"
+ },
+ "56d75b537aec": {
+  "en": "Next leg: Task {1}, Mon {2} <x1>→</x1>",
+  "a": "下一站：任务{1}，周一{2} <x1>→</x1>",
+  "date": "2026-11-17",
+  "b": "下一站：任务{1}，周一{2} <x1>→</x1>",
+  "tr": "下一站：任务{1}，周一{2} <x1>→</x1>"
+ },
+ "573b9dde2b03": {
+  "en": "Dates & prices",
+  "a": "日期与价格",
+  "date": "2026-11-17",
+  "b": "日期与价格",
+  "tr": "日期与价格",
+  "back": "Dates and prices",
+  "check": "ok"
+ },
+ "57ee87b05d7d": {
+  "en": "<x1>{1}</x1> / <x2>{2} min</x2>",
+  "a": "<x1>{1}</x1> / <x2>{2}分钟</x2>",
+  "date": "2026-11-17",
+  "b": "<x1>{1}</x1> / <x2>{2}分钟</x2>",
+  "tr": "<x1>{1}</x1> / <x2>{2}分钟</x2>",
+  "back": "<x1>{1}</x1> / <x2>{2} minutes</x2>",
+  "check": "ok"
+ },
+ "583719b62809": {
+  "en": "When you are hoping to travel",
+  "a": "你希望何时出行",
+  "date": "2026-11-17",
+  "b": "你希望何时出行",
+  "tr": "你希望何时出行",
+  "back": "When you would like to travel",
+  "check": "ok"
+ },
+ "583ccec79460": {
+  "en": "Not ready to send?",
+  "a": "还没准备好发送？",
+  "date": "2026-11-17",
+  "b": "还没准备好发送？",
+  "tr": "还没准备好发送？",
+  "back": "Not ready to send?",
+  "check": "ok"
+ },
+ "58cf731a05e0": {
+  "en": "Paused at {1}",
+  "a": "暂停于{1}",
+  "date": "2026-11-17",
+  "b": "已暂停于{1}",
+  "tr": "暂停于{1}",
+  "back": "Paused at {1}",
+  "check": "ok"
+ },
+ "59405fd508e7": {
+  "en": "If You Would Rather Just Talk",
+  "a": "如果你更想直接聊聊",
+  "date": "2026-11-17",
+  "b": "如果你更想直接聊聊",
+  "tr": "如果你更想直接聊聊",
+  "back": "If you would rather just talk directly",
+  "check": "ok"
+ },
+ "59c6639bf0d2": {
+  "en": "What equipment is recommended",
+  "a": "推荐使用哪些装备",
+  "date": "2026-11-17",
+  "b": "推荐哪些装备",
+  "tr": "推荐使用哪些装备",
+  "back": "Which equipment is recommended",
+  "check": "ok"
+ },
+ "59dec9ff9c39": {
+  "en": "The Journey Within",
+  "a": "内心之旅",
+  "date": "2026-11-17",
+  "b": "内在之旅",
+  "tr": "内心之旅",
+  "back": "A journey inward",
+  "check": "ok"
+ },
+ "5a83d3de402d": {
+  "en": "Payment link: <x1>{1}</x1>. It will carry the photo's name.",
+  "a": "付款链接：<x1>{1}</x1>。链接会带上照片名称。",
+  "date": "2026-11-17",
+  "b": "付款链接：<x1>{1}</x1>。链接中会带有照片的名称。",
+  "tr": "付款链接：<x1>{1}</x1>。链接会带上照片名称。"
+ },
+ "5bba91a3c176": {
+  "en": "A paraglider high above a wide lake, with terraced cliffs beyond",
+  "a": "一顶滑翔伞高高飞在宽阔的湖面上空，远处是阶梯状的悬崖",
+  "date": "2026-11-17",
+  "b": "一顶伞翼高高飞在宽阔的湖面上，远处是梯田状的悬崖",
+  "tr": "一顶滑翔伞高高飞在宽阔的湖面上空，远处是阶梯状的悬崖"
+ },
+ "5bcfeb31e164": {
+  "en": "Task {1}",
+  "a": "任务{1}",
+  "date": "2026-11-17",
+  "b": "任务{1}",
+  "tr": "任务{1}"
+ },
+ "5bdc6e334285": {
+  "en": "Planned, small group",
+  "a": "计划中，小团",
+  "date": "2026-11-17",
+  "b": "计划中，小团",
+  "tr": "计划中，小团",
+  "back": "Planned, small group",
+  "check": "ok"
+ },
+ "5c4698b6e0d6": {
+  "en": "About you",
+  "a": "关于你",
+  "date": "2026-11-17",
+  "b": "关于你",
+  "tr": "关于你",
+  "back": "About you",
+  "check": "ok"
+ },
+ "5c536d6dc682": {
+  "en": "Task {1} Highlights",
+  "a": "任务{1}精彩集锦",
+  "date": "2026-11-17",
+  "b": "任务{1}精彩集锦",
+  "tr": "任务{1}精彩集锦"
+ },
+ "5c966a86cabc": {
+  "en": "Playing on from {1}.",
+  "a": "从{1}继续播放。",
+  "date": "2026-11-17",
+  "b": "从{1}继续播放。",
+  "tr": "从{1}继续播放。",
+  "back": "Continue playing from {1}.",
+  "check": "ok"
+ },
+ "5cca0ad0f982": {
+  "en": "That message is a little long for an email link. Please shorten it, or send it straight to {1}.",
+  "a": "这条留言对邮件链接来说有点长。请缩短一些，或直接发送到{1}。",
+  "date": "2026-11-17",
+  "b": "这条留言对于邮件链接来说有点长。请缩短它，或直接发送到{1}。",
+  "tr": "这条留言对邮件链接来说有点长。请缩短一些，或直接发送到{1}。",
+  "back": "This message is a bit long for an email link. Please shorten it somewhat, or send it directly to {1}.",
+  "check": "ok"
+ },
+ "5d75a960c946": {
+  "en": "What you need to navigate Africa",
+  "a": "在非洲飞行认路需要什么",
+  "date": "2026-11-17",
+  "b": "在非洲导航需要什么",
+  "tr": "畅行非洲需要什么",
+  "tr_note": "a added 'flying', b's 导航 reads as GPS navigation; 'navigate Africa' = get around it",
+  "back": "What you need to travel freely in Africa",
+  "check": "ok"
+ },
+ "5d82247f1bf2": {
+  "en": "Zebras below the crater",
+  "a": "火山口下的斑马",
+  "date": "2026-11-17",
+  "b": "火山口下的斑马",
+  "tr": "火山口下的斑马",
+  "back": "Zebras beneath the crater",
+  "check": "ok"
+ },
+ "5de967789f50": {
+  "en": "A gaggle of paragliders above a lake in the haze",
+  "a": "一群滑翔伞在薄雾中的湖面上空盘旋",
+  "date": "2026-11-17",
+  "b": "一群伞翼飞在薄雾中的湖面上空",
+  "tr": "一群滑翔伞在薄雾中的湖面上空盘旋"
+ },
+ "5e257531115d": {
+  "en": "Standing on takeoff, what to expect",
+  "a": "站在起飞场上，会遇到什么",
+  "date": "2026-11-17",
+  "b": "站在起飞场上，会遇到什么",
+  "tr": "站在起飞场上，会遇到什么",
+  "back": "What you will encounter standing on the launch site",
+  "check": "ok"
+ },
+ "5eebdb77fe80": {
+  "en": "Subscribe on {1}",
+  "a": "在{1}订阅",
+  "date": "2026-11-17",
+  "b": "在{1}订阅",
+  "tr": "在{1}订阅"
+ },
+ "5efbf82028f5": {
+  "en": "Cancelled (wind)",
+  "a": "已取消（风）",
+  "date": "2026-11-17",
+  "b": "已取消（风）",
+  "tr": "已取消（风）"
+ },
+ "5f403e38f2eb": {
+  "en": "<x1>←</x1> Media",
+  "a": "<x1>←</x1> 媒体",
+  "date": "2026-11-17",
+  "b": "<x1>←</x1> 媒体",
+  "tr": "<x1>←</x1> 媒体"
+ },
+ "5fc071f0a89b": {
+  "en": "Photo by Michael Gebert / <x1>@{1}</x1>",
+  "a": "摄影：Michael Gebert / <x1>@{1}</x1>",
+  "date": "2026-11-17",
+  "b": "摄影：Michael Gebert / <x1>@{1}</x1>",
+  "tr": "摄影：Michael Gebert / <x1>@{1}</x1>"
+ },
+ "6073a2f2e928": {
+  "en": "Next episodes",
+  "a": "下一组节目",
+  "date": "2026-11-17",
+  "b": "下一批节目",
+  "tr": "下一组节目",
+  "back": "Next group of episodes",
+  "check": "ok"
+ },
+ "61105e66c64a": {
+  "en": "Book A Free <x1>{1}-Minute</x1>, No Obligation Virtual Call",
+  "a": "预约一次免费、无任何义务的<x1>{1}分钟</x1>线上通话",
+  "date": "2026-11-17",
+  "b": "预约一次免费的<x1>{1}分钟</x1>线上通话，无需承诺",
+  "tr": "预约一次免费、无任何义务的<x1>{1}分钟</x1>线上通话",
+  "back": "Book a free, no-obligation <x1>{1}-minute</x1> online call",
+  "check": "ok"
+ },
+ "612e12d29278": {
+  "en": "Results",
+  "a": "成绩",
+  "date": "2026-11-17",
+  "b": "成绩",
+  "tr": "成绩"
+ },
+ "6144c4a23eae": {
+  "en": "{1}, Mexico · photos and videos",
+  "a": "{1}，墨西哥 · 照片与视频",
+  "date": "2026-11-17",
+  "b": "{1}，墨西哥 · 照片和视频",
+  "tr": "{1}，墨西哥 · 照片与视频",
+  "back": "{1}, Mexico · Photos and videos",
+  "check": "ok"
+ },
+ "61fa280a65cf": {
+  "en": "Tour {1}",
+  "a": "{1}团",
+  "date": "2026-11-17",
+  "b": "行程{1}",
+  "tr": "第{1}团",
+  "tr_note": "tour = 团 site-wide; number reads as 'Tour 1'",
+  "back": "Group {1}",
+  "check": "ok"
+ },
+ "62255f5671e8": {
+  "en": "Season",
+  "a": "季节",
+  "date": "2026-11-17",
+  "b": "季节",
+  "tr": "季节",
+  "back": "Season",
+  "check": "ok"
+ },
+ "627a053a8fc8": {
+  "en": "A pilot under a white wing, small against the plateau and the terraced fields of {1}",
+  "a": "一名飞行员驾着白色伞翼，在{1}的高原与梯田映衬下显得渺小",
+  "date": "2026-11-17",
+  "b": "一名飞行员挂在白色伞翼下，在{1}的高原和梯田前显得渺小",
+  "tr": "一名飞行员驾着白色伞翼，在{1}的高原与梯田映衬下显得渺小",
+  "back": "A pilot flying a white wing looks tiny set against the plateau and terraces of {1}",
+  "check": "ok"
+ },
+ "6357d42cf6f1": {
+  "en": "Podcast · Episode {1} · {2} min",
+  "a": "播客 · 第{1}集 · {2}分钟",
+  "date": "2026-11-17",
+  "b": "播客 · 第{1}期 · {2}分钟",
+  "tr": "播客 · 第{1}集 · {2}分钟"
+ },
+ "638aaa2ae7ed": {
+  "en": "Conversations with the designers, test pilots and champions who shape the sport.",
+  "a": "与塑造这项运动的设计师、试飞员和冠军们的对话。",
+  "date": "2026-11-17",
+  "b": "与塑造这项运动的设计师、试飞员和冠军对话。",
+  "tr": "与塑造这项运动的设计师、试飞员和冠军们的对话。",
+  "waive": {
+   "glossary": "'pilot' only inside 'test pilots', which is 试飞员"
+  },
+  "back": "Conversations with the designers, test pilots and champions who shape this sport.",
+  "check": "ok"
+ },
+ "63b415f0c040": {
+  "en": "How the visual clues change",
+  "a": "视觉线索如何变化",
+  "date": "2026-11-17",
+  "b": "视觉线索如何变化",
+  "tr": "视觉线索如何变化",
+  "back": "How visual cues change",
+  "check": "ok"
+ },
+ "64d1e09d2266": {
+  "en": "See {1}, {2} photos",
+  "a": "查看{1}，{2}张照片",
+  "date": "2026-11-17",
+  "b": "查看{1}，{2}张照片",
+  "tr": "查看{1}，{2}张照片",
+  "back": "View {1}, {2} photos",
+  "check": "ok"
+ },
+ "64d8677436db": {
+  "en": "Weather Patterns",
+  "a": "天气模式",
+  "date": "2026-11-17",
+  "b": "天气形态",
+  "tr": "天气模式",
+  "back": "Weather patterns",
+  "check": "ok"
+ },
+ "652b532eab8b": {
+  "en": "Task {1}, photo {2} of {3}",
+  "a": "任务{1}，第{2}张，共{3}张",
+  "date": "2026-11-17",
+  "b": "任务{1}，第{2}张，共{3}张",
+  "tr": "任务{1}，第{2}张，共{3}张"
+ },
+ "65c821a596ce": {
+  "en": "Live",
+  "a": "直播",
+  "date": "2026-11-17",
+  "b": "直播",
+  "tr": "直播",
+  "back": "Live broadcast",
+  "check": "ok"
+ },
+ "665c672c22eb": {
+  "en": "Today<x1>{1}</x1>",
+  "a": "今天<x1>{1}</x1>",
+  "date": "2026-11-17",
+  "b": "今天<x1>{1}</x1>",
+  "tr": "今天<x1>{1}</x1>",
+  "back": "Today<x1>{1}</x1>",
+  "check": "ok"
+ },
+ "6673b439c370": {
+  "en": "Go Thermal Hunting In Primal Habitats",
+  "a": "到原始荒野追逐热气流",
+  "date": "2026-11-17",
+  "b": "在原始栖息地追逐热气流",
+  "tr": "到原始荒野追逐热气流",
+  "back": "Go chase thermals in the primeval wilderness",
+  "check": "ok"
+ },
+ "6689bbb4bd9a": {
+  "en": "Join The {1} List",
+  "a": "加入{1}邮件列表",
+  "date": "2026-11-17",
+  "b": "加入{1}邮件列表",
+  "tr": "加入{1}邮件列表",
+  "back": "Join the {1} mailing list",
+  "check": "ok"
+ },
+ "66a96aca0b35": {
+  "en": "Flying in this region",
+  "a": "在这一地区飞行",
+  "date": "2026-11-17",
+  "b": "在这一地区飞行",
+  "tr": "在这一地区飞行",
+  "back": "Flying in this region",
+  "check": "ok"
+ },
+ "683c07efac72": {
+  "en": "{1} days, {2}",
+  "a": "{1}天，{2}",
+  "date": "2026-11-17",
+  "b": "{1}天，{2}",
+  "tr": "{1}天，{2}",
+  "back": "{1} days, {2}",
+  "check": "ok"
+ },
+ "68efcc3e43b0": {
+  "en": "Close the photo",
+  "a": "关闭照片",
+  "date": "2026-11-17",
+  "b": "关闭照片",
+  "tr": "关闭照片"
+ },
+ "69232d629246": {
+  "en": "Place <x1>(optional)</x1>",
+  "a": "地点<x1>（选填）</x1>",
+  "date": "2026-11-17",
+  "b": "地点<x1>（选填）</x1>",
+  "tr": "地点<x1>（选填）</x1>",
+  "back": "Location<x1>(optional)</x1>",
+  "check": "ok"
+ },
+ "697c2ccf782e": {
+  "en": "Navigating {1}, Vistasp Kharas",
+  "a": "《探路{1}》，Vistasp Kharas",
+  "date": "2026-11-17",
+  "b": "导航{1}，Vistasp Kharas",
+  "tr": "《探路{1}》，Vistasp Kharas",
+  "back": "\"Pathfinding {1}\", Vistasp Kharas",
+  "check": "ok"
+ },
+ "69d8ee442d50": {
+  "en": "Ask about a {1} trip. Book a free {2} minute call, message on {3}, or send the details of your flying and what you are after.",
+  "a": "咨询{1}行程。预约一次免费的{2}分钟通话，通过{3}发消息，或者把你的飞行情况和需求发给我们。",
+  "date": "2026-11-17",
+  "b": "咨询{1}行程。预约一次免费的{2}分钟通话，在{3}上留言，或发来你的飞行情况和你的期望。",
+  "tr": "咨询{1}行程。预约一次免费的{2}分钟通话，通过{3}发消息，或者把你的飞行情况和需求发给我们。",
+  "back": "Enquire about {1} itineraries. Book a free {2}-minute call, send a message via {3}, or send us your flying situation and needs.",
+  "check": "ok"
+ },
+ "6a2c2635c173": {
+  "en": "Every task day: stills like these, and Daily Highlights, a video each task day with social clips and a results newsletter.",
+  "a": "每个任务日：像这样的照片，以及每日精彩集锦——每个任务日一段视频，外加社交媒体短片和一份成绩通讯。",
+  "date": "2026-11-17",
+  "b": "每个任务日：这样的照片，以及每日精彩集锦，即每个任务日一段视频，配有社交媒体短片和成绩通讯。",
+  "tr": "每个任务日：像这样的照片，以及每日精彩集锦——每个任务日一段视频，外加社交媒体短片和一份成绩通讯。"
+ },
+ "6aa1b941eecc": {
+  "en": "Pre {1} Kenya, Episode {2}, {3} min",
+  "a": "《{1}预赛 肯尼亚》，第{2}集，{3}分钟",
+  "date": "2026-11-17",
+  "b": "{1}前哨赛肯尼亚站，第{2}期，{3}分钟",
+  "tr": "《{1}肯尼亚预赛》，第{2}集，{3}分钟",
+  "tr_note": "episode title form",
+  "back": "\"{1} Kenya Qualifier\", episode {2}, {3} minutes",
+  "check": "ok"
+ },
+ "6abd5d0e6c77": {
+  "en": "November to March",
+  "a": "十一月至三月",
+  "date": "2026-11-17",
+  "b": "十一月至三月",
+  "tr": "十一月至三月"
+ },
+ "6b17aaa0f4a4": {
+  "en": "One Week On The Plateau",
+  "a": "高原上的一周",
+  "date": "2026-11-17",
+  "b": "高原上的一周",
+  "tr": "高原上的一周"
+ },
+ "6b21fb791ac0": {
+  "en": "About",
+  "a": "关于",
+  "date": "2026-11-17",
+  "b": "关于",
+  "tr": "关于",
+  "back": "About",
+  "check": "ok"
+ },
+ "6b6db5e205eb": {
+  "en": "Ideal tour match for your skill and dreams (Kenya, {1}, India, Kazakhstan or Peru)",
+  "a": "与你的技术和梦想最匹配的行程（肯尼亚、{1}、印度、哈萨克斯坦或秘鲁）",
+  "date": "2026-11-17",
+  "b": "最适合你的技术水平和梦想的行程（肯尼亚、{1}、印度、哈萨克斯坦或秘鲁）",
+  "tr": "与你的技术和梦想最匹配的行程（肯尼亚、{1}、印度、哈萨克斯坦或秘鲁）"
+ },
+ "6b7fe0aa12c6": {
+  "en": "Safety for a solo female pilot",
+  "a": "女性飞行员独自出行的安全",
+  "date": "2026-11-17",
+  "b": "独自飞行的女飞行员的安全",
+  "tr": "女性飞行员独自出行的安全",
+  "back": "Safety for female pilots travelling alone",
+  "check": "ok"
+ },
+ "6bf7e4e0f7ee": {
+  "en": "<x1>Step {1} of {2}.</x1> Your event is filled in from the Media page: check it, tick the box and send.",
+  "a": "<x1>第{1}步，共{2}步。</x1>你的赛事信息已从媒体页面自动填入：请核对，勾选方框后发送。",
+  "date": "2026-11-17",
+  "b": "<x1>第{1}步，共{2}步。</x1>你的赛事已根据媒体页填好：请核对、勾选方框并发送。",
+  "tr": "<x1>第{1}步，共{2}步。</x1>你的赛事信息已从媒体页面自动填入：请核对，勾选方框后发送。",
+  "back": "<x1>Step {1} of {2}.</x1> Your event information has been filled in automatically from the media page: please check it, tick the box, then send.",
+  "check": "ok"
+ },
+ "6c9fc9908984": {
+  "en": "Close menu",
+  "a": "关闭菜单",
+  "date": "2026-11-17",
+  "b": "关闭菜单",
+  "tr": "关闭菜单",
+  "back": "Close menu",
+  "check": "ok"
+ },
+ "6d5bb241740a": {
+  "en": "<x1>Group</x1>Small group",
+  "a": "<x1>团队</x1>小团",
+  "date": "2026-11-17",
+  "b": "<x1>团队</x1>小团",
+  "tr": "<x1>团队</x1>小团",
+  "back": "<x1>Group</x1>small group",
+  "check": "ok"
+ },
+ "6dd07555a840": {
+  "en": "<x1>{1}</x1>Ideal tour match for your skill and dreams (Kenya, {2}, India, Kazakhstan or Peru)",
+  "a": "<x1>{1}</x1>与你的技术和梦想最匹配的行程（肯尼亚、{2}、印度、哈萨克斯坦或秘鲁）",
+  "date": "2026-11-17",
+  "b": "<x1>{1}</x1>最适合你的技术水平和梦想的行程（肯尼亚、{2}、印度、哈萨克斯坦或秘鲁）",
+  "tr": "<x1>{1}</x1>与你的技术和梦想最匹配的行程（肯尼亚、{2}、印度、哈萨克斯坦或秘鲁）",
+  "back": "<x1>{1}</x1> the itinerary that best matches your skills and dreams (Kenya, {2}, India, Kazakhstan or Peru)",
+  "check": "ok"
+ },
+ "6e556cc1559a": {
+  "en": "Michael Nesler",
+  "a": "Michael Nesler",
+  "date": "2026-11-17",
+  "b": "Michael Nesler",
+  "tr": "Michael Nesler",
+  "back": "Michael Nesler",
+  "check": "ok"
+ },
+ "6e62bd83db12": {
+  "en": "the coast seen through it",
+  "a": "透过它看海岸",
+  "date": "2026-11-17",
+  "b": "透过它看到的海岸",
+  "tr": "透过它看海岸",
+  "back": "See the coast through it",
+  "check": "ok"
+ },
+ "6eb92caf408c": {
+  "en": "Media coverage of a race or a series. To ask about a trip instead, choose it here.",
+  "a": "赛事或系列赛的媒体报道。如果想咨询行程，请在这里选择。",
+  "date": "2026-11-17",
+  "b": "赛事或系列赛的媒体报道。如果要咨询行程，请在这里选择。",
+  "tr": "赛事或系列赛的媒体报道。如果想咨询行程，请在这里选择。",
+  "back": "Media coverage of events or series. If you want to enquire about an itinerary, please choose it here.",
+  "check": "ok"
+ },
+ "6ed1f652fde0": {
+  "en": "What we do with it",
+  "a": "我们如何处理",
+  "date": "2026-11-17",
+  "b": "我们如何处理",
+  "tr": "我们如何处理",
+  "back": "How we handle it",
+  "check": "ok"
+ },
+ "6f2c69e9232e": {
+  "en": "Send it from your own email app instead",
+  "a": "改用你自己的邮件应用发送",
+  "date": "2026-11-17",
+  "b": "改用你自己的电子邮件应用发送",
+  "tr": "改用你自己的邮件应用发送",
+  "back": "Send using your own email app instead",
+  "check": "ok"
+ },
+ "6f397349ef2d": {
+  "en": "Like what you see?",
+  "a": "喜欢吗？",
+  "date": "2026-11-17",
+  "b": "喜欢你看到的吗？",
+  "tr": "喜欢吗？"
+ },
+ "6ffa0f054227": {
+  "en": "{1}, the last day, was cancelled for wind: {2} set a {3} km triangle south, but the wind came over the back of launch and the one pilot who tested it top-landed. {4} ends with five scored tasks.",
+  "a": "最后一天{1}因风取消：{2}设置了一个向南的{3} km三角航线，但风从起飞场后方翻过来，唯一一位试飞的飞行员做了山顶降落。{4}以五个计分任务结束。",
+  "date": "2026-11-17",
+  "b": "最后一天{1}因风取消：{2}向南设定了一个{3}公里的三角航线，但风从起飞场背后吹来，唯一试飞的一名飞行员选择了山顶着陆。{4}以五个计分任务结束。",
+  "tr": "最后一天{1}因风取消：{2}设置了一个向南的{3} km三角航线，但风从起飞场后方翻过来，唯一一位试飞的飞行员做了山顶降落。{4}以五个计分任务结束。"
+ },
+ "703293ac7226": {
+  "en": "Next one starts tomorrow",
+  "a": "下一团明天出发",
+  "date": "2026-11-17",
+  "b": "下一班明天开始",
+  "tr": "下一团明天出发",
+  "back": "The next group departs tomorrow",
+  "check": "ok"
+ },
+ "70a86c196d31": {
+  "en": "The plateau that hosted a pre World Cup",
+  "a": "曾举办世界杯预赛的高原",
+  "date": "2026-11-17",
+  "b": "曾举办世界杯前哨赛的高原",
+  "tr": "曾举办世界杯预赛的高原",
+  "back": "A plateau that once hosted a World Cup qualifying round",
+  "check": "ok"
+ },
+ "72542bccf7d2": {
+  "en": "A photo from {1} {2}",
+  "a": "一张来自{1} {2}的照片",
+  "date": "2026-11-17",
+  "b": "一张来自{1} {2}的照片",
+  "tr": "一张来自{1} {2}的照片"
+ },
+ "728298d3dbf4": {
+  "en": "Daily",
+  "a": "按天",
+  "date": "2026-11-17",
+  "b": "单日",
+  "tr": "按天",
+  "back": "By the day",
+  "check": "ok"
+ },
+ "7312c6e6c797": {
+  "en": "{1}: Touch The Sky With Glory",
+  "a": "{1}：荣耀触摸天空",
+  "date": "2026-11-17",
+  "b": "{1}：带着荣耀触摸天空",
+  "tr": "{1}：带着荣耀触摸天空",
+  "tr_note": "picked b",
+  "back": "{1}: Touch the sky with glory",
+  "check": "ok"
+ },
+ "736d29009ba6": {
+  "en": "The calm Pacific breeze, from {1} to the Andes",
+  "a": "平静的太平洋海风，从{1}一直到安第斯山脉",
+  "date": "2026-11-17",
+  "b": "平静的太平洋海风，从{1}吹向安第斯山",
+  "tr": "平静的太平洋海风，从{1}一直到安第斯山脉",
+  "back": "Calm Pacific sea breeze, from {1} all the way to the Andes",
+  "check": "ok"
+ },
+ "7398c2d1c615": {
+  "en": "The Barabangal flight, told properly",
+  "a": "Barabangal 飞行，完整讲述",
+  "date": "2026-11-17",
+  "b": "Barabangal之飞，完整讲述",
+  "tr": "Barabangal 飞行，完整讲述",
+  "back": "The Barabangal flight, told in full",
+  "check": "ok"
+ },
+ "73cb67667bda": {
+  "en": "Eight days in {1}, two days after the last Kenya tour ends.",
+  "a": "在{1}待八天，在最后一个肯尼亚团结束两天后开始。",
+  "date": "2026-11-17",
+  "b": "在{1}八天，在最后一期肯尼亚行程结束两天后。",
+  "tr": "在{1}待八天，在最后一个肯尼亚团结束两天后开始。"
+ },
+ "74052d61eebb": {
+  "en": "Organisasjonsnummer {1}",
+  "a": "Organisasjonsnummer {1}",
+  "date": "2026-11-17",
+  "b": "Organisasjonsnummer {1}",
+  "tr": "Organisasjonsnummer {1}"
+ },
+ "7431e3df243c": {
+  "en": "Package",
+  "a": "套餐",
+  "date": "2026-11-17",
+  "b": "套餐",
+  "tr": "套餐",
+  "back": "Package",
+  "check": "ok"
+ },
+ "74946e5e41b4": {
+  "en": "Package travel rights",
+  "a": "包价旅游权利",
+  "date": "2026-11-17",
+  "b": "包价旅游权利",
+  "tr": "包价旅游权利"
+ },
+ "74b69fb5c012": {
+  "en": "about, at {1}",
+  "a": "约，位于{1}",
+  "date": "2026-11-17",
+  "b": "约在{1}",
+  "tr": "约，位于{1}",
+  "back": "approx., located in {1}",
+  "check": "ok"
+ },
+ "75079c5e96aa": {
+  "en": "Your event",
+  "a": "你的赛事",
+  "date": "2026-11-17",
+  "b": "你的赛事",
+  "tr": "你的赛事",
+  "back": "Your event",
+  "check": "ok"
+ },
+ "75cf8cea2df4": {
+  "en": "Mistakes visiting pilots make",
+  "a": "外来飞行员常犯的错误",
+  "date": "2026-11-17",
+  "b": "外来飞行员常犯的错误",
+  "tr": "外来飞行员常犯的错误",
+  "back": "Mistakes commonly made by visiting pilots",
+  "check": "ok"
+ },
+ "760f81a4285d": {
+  "en": "The English version is binding.",
+  "a": "以英文版本为准。",
+  "date": "2026-11-17",
+  "b": "以英文版本为准。",
+  "tr": "以英文版本为准。",
+  "back": "The English version prevails.",
+  "check": "ok"
+ },
+ "761c51e6d567": {
+  "en": "Photo: {1}",
+  "a": "摄影：{1}",
+  "date": "2026-11-17",
+  "b": "摄影：{1}",
+  "tr": "摄影：{1}",
+  "back": "Photography: {1}",
+  "check": "ok"
+ },
+ "7620deee5c53": {
+  "en": "Fly Where Humankind First Walked",
+  "a": "飞在人类最初行走的土地上",
+  "date": "2026-11-17",
+  "b": "飞向人类最初行走的地方",
+  "tr": "飞在人类最初行走的土地上",
+  "back": "Fly over the land where humans first walked",
+  "check": "ok"
+ },
+ "766b8b4fcd7e": {
+  "en": "India · {1} hills<x1>{2}°N · {3}°E</x1>",
+  "a": "印度 · {1}山区<x1>北纬{2}° · 东经{3}°</x1>",
+  "date": "2026-11-17",
+  "b": "印度 · {1}山丘<x1>北纬{2}° 东经{3}°</x1>",
+  "tr": "印度 · {1}山区<x1>北纬{2}° · 东经{3}°</x1>",
+  "back": "India · {1} mountain region<x1>North latitude {2}° · East longitude {3}°</x1>",
+  "check": "ok"
+ },
+ "768455dcc4b9": {
+  "en": "Navigating India: Eddie Colfox<x1>Navigators, Episode {1}, {2} min</x1>",
+  "a": "《探路印度》：Eddie Colfox<x1>Navigators，第{1}集，{2}分钟</x1>",
+  "date": "2026-11-17",
+  "b": "导航印度：Eddie Colfox<x1>领航者，第{1}期，{2}分钟</x1>",
+  "tr": "《探路印度》：Eddie Colfox<x1>Navigators，第{1}集，{2}分钟</x1>",
+  "back": "\"Pathfinding India\": Eddie Colfox<x1>Navigators, episode {1}, {2} minutes</x1>",
+  "check": "ok"
+ },
+ "768f93497d35": {
+  "en": "More to {1} than the nationals",
+  "a": "{1}不止全国锦标赛",
+  "date": "2026-11-17",
+  "b": "{1}不只有全国赛",
+  "tr": "{1}不止全国锦标赛",
+  "back": "{1} is more than the national championships",
+  "check": "ok"
+ },
+ "76fa8da4c233": {
+  "en": "What you want from it",
+  "a": "你希望从中得到什么",
+  "date": "2026-11-17",
+  "b": "你想从中得到什么",
+  "tr": "你希望从中得到什么",
+  "back": "What you hope to get out of it",
+  "check": "ok"
+ },
+ "76fe8afd4a7a": {
+  "en": "India, above the snowline",
+  "a": "印度，雪线之上",
+  "date": "2026-11-17",
+  "b": "印度，雪线之上",
+  "tr": "印度，雪线之上",
+  "back": "India, above the snow line",
+  "check": "ok"
+ },
+ "7704fc8209b6": {
+  "en": "See the India trip",
+  "a": "查看印度行程",
+  "date": "2026-11-17",
+  "b": "查看印度行程",
+  "tr": "查看印度行程",
+  "back": "View the India itinerary",
+  "check": "ok"
+ },
+ "772a7ddcb0fb": {
+  "en": "A {1} km opener that started low and ended with a long glide into the wind.",
+  "a": "一个{1} km的开局任务，起步很低，最后迎风长距离滑翔到终点。",
+  "date": "2026-11-17",
+  "b": "{1}公里的开场任务，起初高度很低，最后顶风长距离滑翔收尾。",
+  "tr": "一个{1} km的开局任务，起步很低，最后迎风长距离滑翔到终点。"
+ },
+ "77de5e0361bf": {
+  "en": "Why fly with us",
+  "a": "为什么和我们一起飞",
+  "date": "2026-11-17",
+  "b": "为什么与我们同飞",
+  "tr": "为什么和我们一起飞",
+  "back": "Why fly with us",
+  "check": "ok"
+ },
+ "77e7f86be6a0": {
+  "en": "<x1>Group</x1>{1} places",
+  "a": "<x1>团队</x1>{1}个名额",
+  "date": "2026-11-17",
+  "b": "<x1>团队</x1>{1}个名额",
+  "tr": "<x1>团队</x1>{1}个名额",
+  "back": "<x1>Group</x1>{1} places",
+  "check": "ok"
+ },
+ "780c1ee30f1c": {
+  "en": "The {1} front range, to a cloudbase of {2} to {3} km",
+  "a": "{1}前山山脉，云底高度{2}至{3} km",
+  "date": "2026-11-17",
+  "b": "{1}前山脉，云底高度{2}至{3}公里",
+  "tr": "{1}前山山脉，云底高度{2}至{3} km",
+  "back": "{1} foothill mountain ranges, cloud base {2} to {3} km",
+  "check": "ok"
+ },
+ "79602a55c18a": {
+  "en": "Pre {1} Kenya",
+  "a": "{1}预赛 肯尼亚",
+  "date": "2026-11-17",
+  "b": "{1}前哨赛肯尼亚站",
+  "tr": "{1}肯尼亚预赛",
+  "tr_note": "episode title form fixed site-wide (a had a stray space, b used 前哨赛)",
+  "back": "{1} Kenya Qualifier",
+  "check": "ok"
+ },
+ "7a8616775e58": {
+  "en": "Take-off at about {1} to {2} m",
+  "a": "起飞点约{1}至{2} m",
+  "date": "2026-11-17",
+  "b": "起飞点海拔约{1}至{2}米",
+  "tr": "起飞场海拔约{1}至{2} m",
+  "tr_note": "launch = 起飞场 site-wide; 海拔 makes clear it is the elevation"
+ },
+ "7ab8307d3d9e": {
+  "en": "Open the episode <x1>→</x1>",
+  "a": "打开这一集<x1>→</x1>",
+  "date": "2026-11-17",
+  "b": "打开本期节目<x1>→</x1>",
+  "tr": "打开这一集<x1>→</x1>",
+  "back": "Open this episode<x1>→</x1>",
+  "check": "ok"
+ },
+ "7ae348a9b540": {
+  "en": "We'll break down:",
+  "a": "我们会为你详细讲解：",
+  "date": "2026-11-17",
+  "b": "我们会为你详细说明：",
+  "tr": "我们会为你详细讲解："
+ },
+ "7b8de0bcc0fa": {
+  "en": "Jul, Aug, Sep",
+  "a": "七月、八月、九月",
+  "date": "2026-11-17",
+  "b": "七月、八月、九月",
+  "tr": "七月、八月、九月",
+  "back": "July, August, September",
+  "check": "ok"
+ },
+ "7b970c21fe9c": {
+  "en": "The Land Of Five Hills",
+  "a": "五山之地",
+  "date": "2026-11-17",
+  "b": "五座山丘之地",
+  "tr": "五山之地",
+  "back": "Land of five mountains",
+  "check": "ok"
+ },
+ "7c92ea879110": {
+  "en": "<x1>Price</x1>{1}",
+  "a": "<x1>价格</x1>{1}",
+  "date": "2026-11-17",
+  "b": "<x1>价格</x1>{1}",
+  "tr": "<x1>价格</x1>{1}",
+  "back": "<x1>Price</x1>{1}",
+  "check": "ok"
+ },
+ "7d4857413070": {
+  "en": "Flying today",
+  "a": "今日飞行",
+  "date": "2026-11-17",
+  "b": "今日飞行",
+  "tr": "今日飞行"
+ },
+ "7defbd15ad35": {
+  "en": "The season",
+  "a": "季节",
+  "date": "2026-11-17",
+  "b": "季节",
+  "tr": "季节"
+ },
+ "7e3d96031b71": {
+  "en": "Task {1}: {2}",
+  "a": "任务{1}：{2}",
+  "date": "2026-11-17",
+  "b": "任务{1}：{2}",
+  "tr": "任务{1}：{2}"
+ },
+ "7e47aa827214": {
+  "en": "Our {1} trip",
+  "a": "我们的{1}行程",
+  "date": "2026-11-17",
+  "b": "我们的{1}行程",
+  "tr": "我们的{1}行程",
+  "back": "Our {1} itinerary",
+  "check": "ok"
+ },
+ "7e960e1692ca": {
+  "en": "<x1></x1>Our trips",
+  "a": "<x1></x1>我们的行程",
+  "date": "2026-11-17",
+  "b": "<x1></x1>我们的行程",
+  "tr": "<x1></x1>我们的行程",
+  "back": "<x1></x1>Our itineraries",
+  "check": "ok"
+ },
+ "7eb1647323da": {
+  "en": "a second view of Kenya",
+  "a": "再看一眼肯尼亚",
+  "date": "2026-11-17",
+  "b": "再看一眼肯尼亚",
+  "tr": "再看一眼肯尼亚",
+  "back": "Take another look at Kenya",
+  "check": "ok"
+ },
+ "7eb47d288599": {
+  "en": "photos coming",
+  "a": "照片即将发布",
+  "date": "2026-11-17",
+  "b": "照片即将发布",
+  "tr": "照片即将发布",
+  "back": "Photos coming soon",
+  "check": "ok"
+ },
+ "7f037e678652": {
+  "en": "Flight Mechanics",
+  "a": "飞行力学",
+  "date": "2026-11-17",
+  "b": "飞行力学",
+  "tr": "飞行力学",
+  "back": "Flight mechanics",
+  "check": "ok"
+ },
+ "7f2bb1350583": {
+  "en": "Skip: go on to the next place",
+  "a": "跳过：前往下一个地点",
+  "date": "2026-11-17",
+  "b": "跳过：前往下一站",
+  "tr": "跳过：前往下一个地点",
+  "back": "Skip: go to the next location",
+  "check": "ok"
+ },
+ "7f4d6bb6d2b3": {
+  "en": "CryMeARiviuk shared the lead with Gin {1} after Task {2}, then led alone from Task {3} to the end.",
+  "a": "CryMeARiviuk 在任务{2}后与 Gin {1}并列领先，随后从任务{3}起独自领先直到最后。",
+  "date": "2026-11-17",
+  "b": "CryMeARiviuk在任务{2}之后与Gin {1}并列领先，从任务{3}起独自领先到最后。",
+  "tr": "CryMeARiviuk 在任务{2}后与 Gin {1}并列领先，随后从任务{3}起独自领先直到最后。"
+ },
+ "7fa79a289353": {
+  "en": "Next leg: Task {1}, Fri {2} <x1>→</x1>",
+  "a": "下一站：任务{1}，周五{2} <x1>→</x1>",
+  "date": "2026-11-17",
+  "b": "下一站：任务{1}，周五{2} <x1>→</x1>",
+  "tr": "下一站：任务{1}，周五{2} <x1>→</x1>"
+ },
+ "820e5c196403": {
+  "en": "Full size, EUR {1}",
+  "a": "全尺寸，EUR {1}",
+  "date": "2026-11-17",
+  "b": "全尺寸，EUR {1}",
+  "tr": "全尺寸，EUR {1}"
+ },
+ "8274e3089bb3": {
+  "en": "Book a Call",
+  "a": "预约通话",
+  "date": "2026-11-17",
+  "b": "预约通话",
+  "tr": "预约通话",
+  "back": "Book a call",
+  "check": "ok"
+ },
+ "82bf4b32c770": {
+  "en": "What Makes {1} Unique?",
+  "a": "{1}有何独特之处？",
+  "date": "2026-11-17",
+  "b": "{1}的独特之处",
+  "tr": "{1}有何独特之处？",
+  "back": "What makes {1} unique?",
+  "check": "ok"
+ },
+ "82f92c35d5cf": {
+  "en": "Won by <x1>{1}</x1> points",
+  "a": "领先<x1>{1}</x1>分获胜",
+  "date": "2026-11-17",
+  "b": "领先<x1>{1}</x1>分获胜",
+  "tr": "领先<x1>{1}</x1>分获胜"
+ },
+ "83a5ade09cc5": {
+  "en": ", chapter {1}, {2}",
+  "a": "，第{1}章，{2}",
+  "date": "2026-11-17",
+  "b": "，第{1}章，{2}",
+  "tr": "，第{1}章，{2}",
+  "back": ", chapter {1}, {2}",
+  "check": "ok"
+ },
+ "83bb0c56bfb9": {
+  "en": "Every task on one page",
+  "a": "所有任务一页看完",
+  "date": "2026-11-17",
+  "b": "所有任务在同一页",
+  "tr": "所有任务一页看完"
+ },
+ "83d092437476": {
+  "en": "Where a refund is due",
+  "a": "如应退款",
+  "date": "2026-11-17",
+  "b": "应退款时",
+  "tr": "如应退款"
+ },
+ "842b7b5d7189": {
+  "en": "Dates",
+  "a": "日期",
+  "date": "2026-11-17",
+  "b": "日期",
+  "tr": "日期",
+  "back": "Date",
+  "check": "ok"
+ },
+ "848c070ccdec": {
+  "en": "See {1}, {2} photos and the highlights film",
+  "a": "查看{1}，{2}张照片及精彩集锦影片",
+  "date": "2026-11-17",
+  "b": "查看{1}，{2}张照片和精彩集锦视频",
+  "tr": "查看{1}，{2}张照片及精彩集锦视频",
+  "tr_note": "film = 视频",
+  "back": "View {1}, {2} photos and a highlights video",
+  "check": "ok"
+ },
+ "84add5b29527": {
+  "en": "Email",
+  "a": "电子邮箱",
+  "date": "2026-11-17",
+  "b": "电子邮件",
+  "tr": "电子邮箱",
+  "back": "Email",
+  "check": "ok"
+ },
+ "84bea8184b95": {
+  "en": "Point at the name: a second view of Kenya",
+  "a": "指向名称：再看一眼肯尼亚",
+  "date": "2026-11-17",
+  "b": "指向名字：再看一眼肯尼亚",
+  "tr": "指向名称：再看一眼肯尼亚",
+  "back": "Point at the name: take another look at Kenya",
+  "check": "ok"
+ },
+ "84ce31606ac7": {
+  "en": "Expeditions",
+  "a": "探险之旅",
+  "date": "2026-11-17",
+  "b": "远征",
+  "tr": "远征",
+  "tr_note": "picked b",
+  "back": "Expeditions",
+  "check": "ok"
+ },
+ "84d69919120d": {
+  "en": "{1}<x1>Planned, dates <x2>coming soon</x2></x1>",
+  "a": "{1}<x1>计划中，日期<x2>即将公布</x2></x1>",
+  "date": "2026-11-17",
+  "b": "{1}<x1>计划中，日期<x2>即将公布</x2></x1>",
+  "tr": "{1}<x1>计划中，日期<x2>即将公布</x2></x1>",
+  "back": "{1}<x1>Planned, dates <x2>to be announced soon</x2></x1>",
+  "check": "ok"
+ },
+ "84ec3e71d2c9": {
+  "en": "Sitemap",
+  "a": "网站地图",
+  "date": "2026-11-17",
+  "b": "网站地图",
+  "tr": "网站地图",
+  "back": "Site map",
+  "check": "ok"
+ },
+ "8557d608fedc": {
+  "en": "Ivelin Kalushkov",
+  "a": "Ivelin Kalushkov",
+  "date": "2026-11-17",
+  "b": "Ivelin Kalushkov",
+  "tr": "Ivelin Kalushkov",
+  "back": "Ivelin Kalushkov",
+  "check": "ok"
+ },
+ "85f7868cd22c": {
+  "en": "Pre {1} Kenya: Nikolay Yotov<x1>Navigators, Episode {2}, {3} min</x1>",
+  "a": "《{1}预赛 肯尼亚》：Nikolay Yotov<x1>Navigators，第{2}集，{3}分钟</x1>",
+  "date": "2026-11-17",
+  "b": "{1}前哨赛肯尼亚站：Nikolay Yotov<x1>领航者，第{2}期，{3}分钟</x1>",
+  "tr": "《{1}肯尼亚预赛》：Nikolay Yotov<x1>Navigators，第{2}集，{3}分钟</x1>",
+  "tr_note": "episode title form",
+  "back": "\"{1} Kenya Qualifier\": Nikolay Yotov<x1>Navigators, episode {2}, {3} minutes</x1>",
+  "check": "ok"
+ },
+ "862147f5e8f5": {
+  "en": "The answers on the site come from Vistasp Kharas, on the show. If yours is not here, ask it on the call.",
+  "a": "网站上的答案来自 Vistasp Kharas 在节目中的讲述。如果这里没有你的问题，请在通话时提出。",
+  "date": "2026-11-17",
+  "b": "网站上的答案来自Vistasp Kharas在节目中的讲述。如果你的问题不在这里，可以在通话时提问。",
+  "tr": "网站上的答案来自 Vistasp Kharas 在节目中的讲述。如果这里没有你的问题，请在通话时提出。"
+ },
+ "87053d443651": {
+  "en": "{1} {2}, tasks {3}",
+  "a": "{1} {2}，任务{3}",
+  "date": "2026-11-17",
+  "b": "{1} {2}，任务{3}",
+  "tr": "{1} {2}，任务{3}"
+ },
+ "87643b5625e0": {
+  "en": "Watch the coverage first: the {1} comp videos of {2} play on the <x1>Media page</x1>, with the stills from {3} {4}.",
+  "a": "先看看我们的报道：{2}的{1}段比赛视频在<x1>媒体页面</x1>播放，还有{3} {4}的照片。",
+  "date": "2026-11-17",
+  "b": "不妨先看看报道：{2}的{1}场比赛视频在<x1>媒体页</x1>播放，还有{3} {4}的照片。",
+  "tr": "先看看我们的报道：{2}的{1}段比赛视频在<x1>媒体页面</x1>播放，还有{3} {4}的照片。",
+  "back": "First take a look at our coverage: {1} race videos of {2} play on the <x1>media page</x1>, along with photos from {3} {4}.",
+  "check": "ok"
+ },
+ "877cfb3896c9": {
+  "en": "{1} hills",
+  "a": "{1}山区",
+  "date": "2026-11-17",
+  "b": "{1}山丘",
+  "tr": "{1}山区"
+ },
+ "87fe14c031dc": {
+  "en": "Flight Safety, First and Always",
+  "a": "飞行安全，永远第一",
+  "date": "2026-11-17",
+  "b": "飞行安全，始终第一",
+  "tr": "飞行安全，永远第一",
+  "back": "Flight safety, always first",
+  "check": "ok"
+ },
+ "88146531f301": {
+  "en": "Urs Haari",
+  "a": "Urs Haari",
+  "date": "2026-11-17",
+  "b": "Urs Haari",
+  "tr": "Urs Haari",
+  "back": "Urs Haari",
+  "check": "ok"
+ },
+ "8842e5b44771": {
+  "en": "Leave this empty",
+  "a": "此处请留空",
+  "date": "2026-11-17",
+  "b": "请留空",
+  "tr": "此处请留空",
+  "back": "Please leave this blank",
+  "check": "ok"
+ },
+ "8987ee02c101": {
+  "en": "Take-off sits at about {1} to {2} m, and in the peak of the season pilots climb to {3} to {4} m, so on a good day the height above the ground beats {5}'s.",
+  "a": "起飞点约在{1}至{2} m，旺季时飞行员能爬升到{3}至{4} m，所以好天气时的离地高度胜过{5}。",
+  "date": "2026-11-17",
+  "b": "起飞点海拔约{1}至{2}米，旺季时飞行员可爬升到{3}至{4}米，所以天气好的日子，离地高度超过{5}。",
+  "tr": "起飞场海拔约{1}至{2} m，旺季时飞行员能爬升到{3}至{4} m，所以好天气时的离地高度胜过{5}。",
+  "tr_note": "a, with launch = 起飞场 and 海拔 for the elevation"
+ },
+ "89b86ab0e66f": {
+  "en": "Language",
+  "a": "语言",
+  "date": "2026-11-17",
+  "b": "语言",
+  "tr": "语言",
+  "back": "Language",
+  "check": "ok"
+ },
+ "8a528519bdab": {
+  "en": "Overall",
+  "a": "总成绩",
+  "date": "2026-11-17",
+  "b": "总成绩",
+  "tr": "总成绩"
+ },
+ "8b476e716cc3": {
+  "en": "This is the part that decides whether a trip is right for you, so please be straight with us. It is used to answer your enquiry, nothing else.",
+  "a": "这部分决定一个行程是否适合你，所以请如实告诉我们。这些信息仅用于回复你的咨询，别无他用。",
+  "date": "2026-11-17",
+  "b": "这部分决定一条行程是否适合你，所以请对我们坦诚。它只用于回复你的咨询，别无他用。",
+  "tr": "这部分决定一个行程是否适合你，所以请如实告诉我们。这些信息仅用于回复你的咨询，别无他用。",
+  "back": "This part determines whether an itinerary suits you, so please tell us truthfully. This information is used only to reply to your enquiry, and for nothing else.",
+  "check": "ok"
+ },
+ "8b59289e1b23": {
+  "en": "See the photos",
+  "a": "查看照片",
+  "date": "2026-11-17",
+  "b": "查看照片",
+  "tr": "查看照片",
+  "back": "View photos",
+  "check": "ok"
+ },
+ "8ba724b4bbcc": {
+  "en": "<x1></x1>Every other episode",
+  "a": "<x1></x1>其他所有节目",
+  "date": "2026-11-17",
+  "b": "<x1></x1>其他所有节目",
+  "tr": "<x1></x1>其他所有节目",
+  "back": "<x1></x1>All other episodes",
+  "check": "ok"
+ },
+ "8c06115f64e5": {
+  "en": "What wing should I bring?",
+  "a": "我应该带什么伞？",
+  "date": "2026-11-17",
+  "b": "应该带什么伞翼？",
+  "tr": "我应该带什么伞？"
+ },
+ "8c410fd00f6c": {
+  "en": "Castbox",
+  "a": "Castbox",
+  "date": "2026-11-17",
+  "b": "Castbox",
+  "tr": "Castbox",
+  "back": "Castbox",
+  "check": "ok"
+ },
+ "8c698c8ad0a3": {
+  "en": "Your Event",
+  "a": "你的赛事",
+  "date": "2026-11-17",
+  "b": "你的赛事",
+  "tr": "你的赛事",
+  "back": "Your event",
+  "check": "ok"
+ },
+ "8d63dacc2634": {
+  "en": "Enquire | {1}",
+  "a": "咨询 | {1}",
+  "date": "2026-11-17",
+  "b": "咨询 | {1}",
+  "tr": "咨询 | {1}",
+  "back": "Enquiry | {1}",
+  "check": "ok"
+ },
+ "8da62b9741d1": {
+  "en": "{1} {2}, {3}, national licence",
+  "a": "{1} {2}，{3}，国家执照",
+  "date": "2026-11-17",
+  "b": "{1} {2}，{3}，国家执照",
+  "tr": "{1} {2}，{3}，国家执照",
+  "back": "{1} {2}, {3}, national licence",
+  "check": "ok"
+ },
+ "8ddeb996e4b5": {
+  "en": "Before You Come",
+  "a": "出发之前",
+  "date": "2026-11-17",
+  "b": "出发之前",
+  "tr": "出发之前"
+ },
+ "8e3df45a49db": {
+  "en": "Copied",
+  "a": "已复制",
+  "date": "2026-11-17",
+  "b": "已复制",
+  "tr": "已复制",
+  "back": "Copied",
+  "check": "ok"
+ },
+ "8f26c6520d61": {
+  "en": "Loading",
+  "a": "加载中",
+  "date": "2026-11-17",
+  "b": "加载中",
+  "tr": "加载中",
+  "back": "Loading",
+  "check": "ok"
+ },
+ "8f34007c756d": {
+  "en": "Listen to the podcast",
+  "a": "收听播客",
+  "date": "2026-11-17",
+  "b": "收听播客",
+  "tr": "收听播客",
+  "back": "Listen to the podcast",
+  "check": "ok"
+ },
+ "8fe6022d1507": {
+  "en": "Booking open",
+  "a": "开放报名",
+  "date": "2026-11-17",
+  "b": "开放报名",
+  "tr": "开放报名",
+  "back": "Open for registration",
+  "check": "ok"
+ },
+ "8fe836a308e6": {
+  "en": "Next leg: Task {1}, Sat {2} <x1>→</x1>",
+  "a": "下一站：任务{1}，周六{2} <x1>→</x1>",
+  "date": "2026-11-17",
+  "b": "下一站：任务{1}，周六{2} <x1>→</x1>",
+  "tr": "下一站：任务{1}，周六{2} <x1>→</x1>"
+ },
+ "902c91d94e0f": {
+  "en": "Legal",
+  "a": "法律",
+  "date": "2026-11-17",
+  "b": "法律",
+  "tr": "法律",
+  "back": "Legal",
+  "check": "ok"
+ },
+ "92711617537f": {
+  "en": "Copy this link",
+  "a": "复制此链接",
+  "date": "2026-11-17",
+  "b": "复制此链接",
+  "tr": "复制此链接",
+  "back": "Copy this link",
+  "check": "ok"
+ },
+ "93157ccbafcd": {
+  "en": "Sky Gods",
+  "a": "天空之神",
+  "date": "2026-11-17",
+  "b": "天空众神",
+  "tr": "天空之神",
+  "back": "God of the sky",
+  "check": "ok"
+ },
+ "93809a9726d3": {
+  "en": "I am happy for {1} to use these details to answer my enquiry. I understand they are kept for up to {2} months <x1>if this does not become a booking</x1><x2>if no coverage is agreed</x2>, that they are not sold or shared for marketing, and that I can ask for them to be deleted at any time. See the <x3>Privacy Policy</x3>.",
+  "a": "我同意{1}使用这些信息回复我的咨询。我了解<x1>如果最终没有预订</x1><x2>如果未达成报道协议</x2>，这些信息最多保留{2}个月，不会出售或为营销目的而分享，并且我可以随时要求删除。详见<x3>隐私政策</x3>。",
+  "date": "2026-11-17",
+  "b": "我同意{1}使用这些信息回复我的咨询。我了解，这些信息<x1>如果没有成为预订</x1><x2>如果没有谈妥报道</x2>，最多保存{2}个月，不会被出售或用于营销共享，并且我可以随时要求删除。详见<x3>隐私政策</x3>。",
+  "tr": "我同意{1}使用这些信息回复我的咨询。我了解<x1>如果最终没有预订</x1><x2>如果未达成报道协议</x2>，这些信息最多保留{2}个月，不会出售或为营销目的而分享，并且我可以随时要求删除。详见<x3>隐私政策</x3>。",
+  "back": "I agree that {1} may use this information to reply to my enquiry. I understand that <x1>if I do not end up booking</x1><x2>if no coverage agreement is reached</x2>, this information is kept for at most {2} months, will not be sold or shared for marketing purposes, and I may ask for it to be deleted at any time. See the <x3>privacy policy</x3> for details.",
+  "check": "ok"
+ },
+ "94735078de89": {
+  "en": "{1}, India",
+  "a": "{1}，印度",
+  "date": "2026-11-17",
+  "b": "{1}，印度",
+  "tr": "{1}，印度"
+ },
+ "95898dee4581": {
+  "en": "The land of five hills: volcanic tablelands, sharp cliffs and punchy thermals, two hours from {1}.",
+  "a": "五山之地：火山台地、陡峭悬崖和强劲的热气流，距{1}两小时路程。",
+  "date": "2026-11-17",
+  "b": "五座山丘之地：火山台地、陡峭悬崖和劲道十足的热气流，距{1}两小时车程。",
+  "tr": "五山之地：火山台地、陡峭悬崖和强劲的热气流，距{1}两小时路程。"
+ },
+ "95f48d8b7a34": {
+  "en": "Before you book",
+  "a": "预订之前",
+  "date": "2026-11-17",
+  "b": "预订之前",
+  "tr": "预订之前",
+  "back": "Before booking",
+  "check": "ok"
+ },
+ "960923b93826": {
+  "en": "{1} min",
+  "a": "{1}分钟",
+  "date": "2026-11-17",
+  "b": "{1}分钟",
+  "tr": "{1}分钟",
+  "back": "{1} minutes",
+  "check": "ok"
+ },
+ "96647f24fadb": {
+  "en": "Site and country",
+  "a": "场地和国家",
+  "date": "2026-11-17",
+  "b": "场地和国家",
+  "tr": "场地和国家",
+  "back": "Venue and country",
+  "check": "ok"
+ },
+ "967ce367d89d": {
+  "en": "India",
+  "a": "印度",
+  "date": "2026-11-17",
+  "b": "印度",
+  "tr": "印度",
+  "back": "India",
+  "check": "ok"
+ },
+ "976b287e874e": {
+  "en": "Two pilots coming in to land over a dry field, more wings above and a flat-topped hill behind",
+  "a": "两名飞行员正飞过一片干燥的田地准备降落，上方还有更多伞翼，身后是一座平顶山",
+  "date": "2026-11-17",
+  "b": "两名飞行员飞向干燥田野着陆，上方还有更多伞翼，后面是一座平顶山",
+  "tr": "两名飞行员正飞过一片干燥的田地准备降落，上方还有更多伞翼，身后是一座平顶山"
+ },
+ "97fe30b98737": {
+  "en": "{1}: Paragliding the {2} Tablelands",
+  "a": "{1}：在{2}台地飞滑翔伞",
+  "date": "2026-11-17",
+  "b": "{1}：在{2}台地飞行伞",
+  "tr": "{1}：在{2}台地飞滑翔伞",
+  "waive": {
+   "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is an attributive or a verb, where Chinese pilots say 滑翔伞 / 飞滑翔伞, and 滑翔伞运动 would read stiffly"
+  }
+ },
+ "997f59bc99b2": {
+  "en": "Dec",
+  "a": "十二月",
+  "date": "2026-11-17",
+  "b": "十二月",
+  "tr": "十二月"
+ },
+ "99d628a2e8ba": {
+  "en": "Watch on {1}",
+  "a": "在{1}观看",
+  "date": "2026-11-17",
+  "b": "在{1}观看",
+  "tr": "在{1}观看"
+ },
+ "9a1fc1731f62": {
+  "en": "Questions",
+  "a": "问题",
+  "date": "2026-11-17",
+  "b": "问答",
+  "tr": "问题"
+ },
+ "9ad8943d7c46": {
+  "en": "Tell Us About <x1>Your Flying</x1>",
+  "a": "说说<x1>你的飞行</x1>",
+  "date": "2026-11-17",
+  "b": "告诉我们<x1>你的飞行情况</x1>",
+  "tr": "说说<x1>你的飞行</x1>",
+  "back": "Tell us about <x1>your flying</x1>",
+  "check": "ok"
+ },
+ "9b088a46913a": {
+  "en": "A paraglider over a terraced valley below steep cliffs",
+  "a": "一顶滑翔伞飞过陡峭悬崖下的梯田山谷",
+  "date": "2026-11-17",
+  "b": "一顶伞翼飞过陡峭悬崖下的梯田山谷",
+  "tr": "一顶滑翔伞飞过陡峭悬崖下的梯田山谷"
+ },
+ "9b90ea85e0a7": {
+  "en": "Find Yourself In The Photos",
+  "a": "在照片里找到你自己",
+  "date": "2026-11-17",
+  "b": "在照片里找到你自己",
+  "tr": "在照片里找到你自己"
+ },
+ "9bd549f572c2": {
+  "en": "A paraglider above the Peruvian desert coastline",
+  "a": "一顶滑翔伞飞在秘鲁的沙漠海岸线上空",
+  "date": "2026-11-17",
+  "b": "一顶伞翼飞越秘鲁沙漠海岸线",
+  "tr": "一顶滑翔伞飞在秘鲁的沙漠海岸线上空",
+  "back": "A paraglider flies above the desert coastline of Peru",
+  "check": "ok"
+ },
+ "9c30a3485a58": {
+  "en": "Gallery",
+  "a": "图库",
+  "date": "2026-11-17",
+  "b": "图库",
+  "tr": "图库"
+ },
+ "9cbe42aaff60": {
+  "en": "Planned",
+  "a": "计划中",
+  "date": "2026-11-17",
+  "b": "计划中",
+  "tr": "计划中",
+  "back": "Planned",
+  "check": "ok"
+ },
+ "9cfd2c3b6cbc": {
+  "en": "Insurance, and the admin side",
+  "a": "保险与行政手续",
+  "date": "2026-11-17",
+  "b": "保险与行政事务",
+  "tr": "保险与行政手续",
+  "back": "Insurance and administrative procedures",
+  "check": "ok"
+ },
+ "9d498b6f0693": {
+  "en": "A season or a rough window is fine",
+  "a": "填一个季节或大致时间段即可",
+  "date": "2026-11-17",
+  "b": "一个季节或大致时间段即可",
+  "tr": "填一个季节或大致时间段即可",
+  "back": "Just fill in a season or an approximate period",
+  "check": "ok"
+ },
+ "9f92b10500f1": {
+  "en": "{1}, on YouTube",
+  "a": "{1}，在 YouTube 上",
+  "date": "2026-11-17",
+  "b": "{1}，在YouTube上",
+  "tr": "{1}，在 YouTube 上",
+  "back": "{1}, on YouTube",
+  "check": "ok"
+ },
+ "9fadee64b66b": {
+  "en": "The pilot rating for the tour is <x1>{1}</x1>.",
+  "a": "本团的飞行员等级要求为<x1>{1}</x1>。",
+  "date": "2026-11-17",
+  "b": "本行程的飞行员等级为<x1>{1}</x1>。",
+  "tr": "本团的飞行员等级要求为<x1>{1}</x1>。"
+ },
+ "a0390598c54e": {
+  "en": "Read the English page",
+  "a": "阅读英文页面",
+  "date": "2026-11-17",
+  "b": "阅读英文页面",
+  "tr": "阅读英文页面",
+  "back": "Read the English page",
+  "check": "ok"
+ },
+ "a0570bed3923": {
+  "en": "Tue {1}",
+  "a": "周二{1}",
+  "date": "2026-11-17",
+  "b": "周二{1}",
+  "tr": "周二{1}"
+ },
+ "a081ff0fdfde": {
+  "en": "Next leg: Task {1}, Tue {2} <x1>→</x1>",
+  "a": "下一站：任务{1}，周二{2} <x1>→</x1>",
+  "date": "2026-11-17",
+  "b": "下一站：任务{1}，周二{2} <x1>→</x1>",
+  "tr": "下一站：任务{1}，周二{2} <x1>→</x1>"
+ },
+ "a19bbc5b94bd": {
+  "en": "Dates set",
+  "a": "日期已定",
+  "date": "2026-11-17",
+  "b": "日期已定",
+  "tr": "日期已定",
+  "back": "Dates set",
+  "check": "ok"
+ },
+ "a1bf92eff40d": {
+  "en": "Cancelled",
+  "a": "已取消",
+  "date": "2026-11-17",
+  "b": "已取消",
+  "tr": "已取消"
+ },
+ "a30dfffe7898": {
+  "en": "Vistasp Kharas walks through {1} ahead of the pre World Cup held there, covering what the site asks of a pilot and what to expect from competition flying in India.",
+  "a": "在{1}举办世界杯预赛之前，Vistasp Kharas 介绍了这个场地：它对飞行员有哪些要求，以及在印度参加比赛飞行可以期待什么。",
+  "date": "2026-11-17",
+  "b": "Vistasp Kharas在这里举办世界杯前哨赛之前，带你走了一遍{1}，讲了这个场地对飞行员的要求，以及在印度比赛飞行会遇到什么。",
+  "tr": "在{1}举办世界杯预赛之前，Vistasp Kharas 介绍了这个场地：它对飞行员有哪些要求，以及在印度参加比赛飞行可以期待什么。"
+ },
+ "a3384368bd70": {
+  "en": "{1} was cancelled for weather: {2} set a {3} km task north, then called it off under full cirrus cover. {4} still counts it as Task {5}, so {6} is Task {7}.",
+  "a": "{1}因天气取消：{2}设置了一个向北的{3} km任务，随后因卷云满布而取消。{4}仍将其计为任务{5}，因此{6}是任务{7}。",
+  "date": "2026-11-17",
+  "b": "{1}因天气取消：{2}向北设定了一个{3}公里的任务，随后在卷云全面覆盖下叫停。{4}仍将它计为任务{5}，所以{6}是任务{7}。",
+  "tr": "{1}因天气取消：{2}设置了一个向北的{3} km任务，随后因卷云满布而取消。{4}仍将其计为任务{5}，因此{6}是任务{7}。"
+ },
+ "a33c3975e0cf": {
+  "en": "Task days, or a rough window",
+  "a": "任务日，或大致时间段",
+  "date": "2026-11-17",
+  "b": "任务日，或大致时间段",
+  "tr": "任务日，或大致时间段",
+  "back": "Task day, or approximate period [?]",
+  "check": "ok"
+ },
+ "a37c928492fb": {
+  "en": "Photo in the task",
+  "a": "本任务中的照片",
+  "date": "2026-11-17",
+  "b": "任务中的照片",
+  "tr": "本任务中的照片"
+ },
+ "a386ecdfac0b": {
+  "en": "Sunshine, food, and the trade-offs of the place",
+  "a": "阳光、美食，以及这里的利弊取舍",
+  "date": "2026-11-17",
+  "b": "阳光、美食，以及这个地方的取舍",
+  "tr": "阳光、美食，以及这里的利弊取舍",
+  "back": "Sunshine, food, and the pros and cons of trade-offs here",
+  "check": "ok"
+ },
+ "a38f719bbef8": {
+  "en": "Task scores: Task {1} {2}; Task {3} {4}; Task {5} {6}; Task {7} {8}; Task {9} {10}",
+  "a": "各任务得分：任务{1} {2}；任务{3} {4}；任务{5} {6}；任务{7} {8}；任务{9} {10}",
+  "date": "2026-11-17",
+  "b": "任务得分：任务{1} {2}；任务{3} {4}；任务{5} {6}；任务{7} {8}；任务{9} {10}",
+  "tr": "各任务得分：任务{1} {2}；任务{3} {4}；任务{5} {6}；任务{7} {8}；任务{9} {10}"
+ },
+ "a445a0f43bc8": {
+  "en": "Anything we should know about the event, and anything you would like to ask.",
+  "a": "任何我们应该了解的赛事情况，以及任何你想问的问题。",
+  "date": "2026-11-17",
+  "b": "任何我们应当了解的赛事信息，以及任何你想问的问题。",
+  "tr": "任何我们应该了解的赛事情况，以及任何你想问的问题。",
+  "back": "Any details of the event we should know, and any questions you would like to ask.",
+  "check": "ok"
+ },
+ "a471b5d1f3c5": {
+  "en": "The chosen trip",
+  "a": "所选行程",
+  "date": "2026-11-17",
+  "b": "所选行程",
+  "tr": "所选行程",
+  "back": "Selected itinerary",
+  "check": "ok"
+ },
+ "a479c9c34e87": {
+  "en": "Download",
+  "a": "下载",
+  "date": "2026-11-17",
+  "b": "下载",
+  "tr": "下载",
+  "back": "Download",
+  "check": "ok"
+ },
+ "a4ae4b24a1f5": {
+  "en": "Zoom out",
+  "a": "缩小",
+  "date": "2026-11-17",
+  "b": "缩小",
+  "tr": "缩小",
+  "back": "Zoom out",
+  "check": "ok"
+ },
+ "a4bf95216f0d": {
+  "en": "Enquire",
+  "a": "咨询",
+  "date": "2026-11-17",
+  "b": "咨询",
+  "tr": "咨询",
+  "back": "Enquiry",
+  "check": "ok"
+ },
+ "a4e803859891": {
+  "en": "Navigating India",
+  "a": "探路印度",
+  "date": "2026-11-17",
+  "b": "导航印度",
+  "tr": "探路印度",
+  "back": "Pathfinding India",
+  "check": "ok"
+ },
+ "a5051485b537": {
+  "en": "Next leg: Task {1}, Thu {2} <x1>→</x1>",
+  "a": "下一站：任务{1}，周四{2} <x1>→</x1>",
+  "date": "2026-11-17",
+  "b": "下一站：任务{1}，周四{2} <x1>→</x1>",
+  "tr": "下一站：任务{1}，周四{2} <x1>→</x1>"
+ },
+ "a51c48b4aaa4": {
+  "en": "Coverage For Your Comp",
+  "a": "为你的比赛提供报道",
+  "date": "2026-11-17",
+  "b": "为你的比赛做报道",
+  "tr": "为你的比赛提供报道"
+ },
+ "a55a275aa676": {
+  "en": "Terms",
+  "a": "条款",
+  "date": "2026-11-17",
+  "b": "条款",
+  "tr": "条款",
+  "back": "Terms",
+  "check": "ok"
+ },
+ "a592e52206fa": {
+  "en": "A high B or a C is great, and even a low B does well; an A will be a bit frustrating. Do not bring your best wing: the take-off at {1} is red dust, and the local pilots keep a second wing that is already red.",
+  "a": "高B级或C级伞很理想，低B级也表现不错；A级伞会让你有点沮丧。不要带你最好的伞：{1}的起飞场是红土，当地飞行员都会备一顶已经染红的伞。",
+  "date": "2026-11-17",
+  "b": "高B或C很棒，低B也不错；A会有点让人沮丧。不要带你最好的伞：{1}的起飞场是红色尘土，当地飞行员都备有一顶已经染红的备用伞。",
+  "tr": "高B级或C级伞很理想，低B级也表现不错；A级伞会让你有点沮丧。不要带你最好的伞：{1}的起飞场是红土，当地飞行员都会备一顶已经染红的伞。"
+ },
+ "a59807a9976e": {
+  "en": "Vistasp Kharas <x1>Navigating {1}, {2}</x1>",
+  "a": "Vistasp Kharas <x1>《探路{1}》，{2}</x1>",
+  "date": "2026-11-17",
+  "b": "Vistasp Kharas <x1>导航{1}，{2}</x1>",
+  "tr": "Vistasp Kharas <x1>《探路{1}》，{2}</x1>"
+ },
+ "a5aa575c87f0": {
+  "en": "Ready To {1}?",
+  "a": "准备好 {1} 了吗？",
+  "date": "2026-11-17",
+  "b": "准备好{1}了吗？",
+  "tr": "准备好{1}了吗？",
+  "tr_note": "picked b: no space around {n} (brief rule 6); the slogan stays in English inside {1}",
+  "back": "Ready for {1}?",
+  "check": "ok"
+ },
+ "a5ad67ed78d9": {
+  "en": "Watch Task {1} Highlights",
+  "a": "观看任务{1}精彩集锦",
+  "date": "2026-11-17",
+  "b": "观看任务{1}精彩集锦",
+  "tr": "观看任务{1}精彩集锦"
+ },
+ "a60504a2a5db": {
+  "en": "Himalaya",
+  "a": "喜马拉雅",
+  "date": "2026-11-17",
+  "b": "喜马拉雅",
+  "tr": "喜马拉雅",
+  "back": "Himalaya",
+  "check": "ok"
+ },
+ "a637244e6040": {
+  "en": "Wed {1}",
+  "a": "周三{1}",
+  "date": "2026-11-17",
+  "b": "周三{1}",
+  "tr": "周三{1}"
+ },
+ "a6708a3a920a": {
+  "en": "On Air: The {1} Podcast",
+  "a": "正在播出：{1}播客",
+  "date": "2026-11-17",
+  "b": "直播中：{1}播客",
+  "tr": "正在播出：{1}播客",
+  "back": "Now playing: {1} Podcast",
+  "check": "ok"
+ },
+ "a72f4ef82a9d": {
+  "en": "From The Show",
+  "a": "来自节目",
+  "date": "2026-11-17",
+  "b": "来自节目",
+  "tr": "来自节目"
+ },
+ "a746d98e2d69": {
+  "en": "Wind shear, and reading it",
+  "a": "风切变，以及如何判断",
+  "date": "2026-11-17",
+  "b": "风切变，以及如何判读",
+  "tr": "风切变，以及如何判读",
+  "tr_note": "picked b",
+  "back": "Wind shear, and how to read it",
+  "check": "ok"
+ },
+ "a84f56f2e6a7": {
+  "en": "Kenya",
+  "a": "肯尼亚",
+  "date": "2026-11-17",
+  "b": "肯尼亚",
+  "tr": "肯尼亚",
+  "back": "Kenya",
+  "check": "ok"
+ },
+ "a86847003354": {
+  "en": "Flying To Win",
+  "a": "为胜利而飞",
+  "date": "2026-11-17",
+  "b": "为赢而飞",
+  "tr": "为胜利而飞",
+  "back": "Flying to win",
+  "check": "ok"
+ },
+ "aaef248a0c4e": {
+  "en": "Join me on {1}",
+  "a": "在{1}关注我",
+  "date": "2026-11-17",
+  "b": "在{1}关注我",
+  "tr": "在{1}关注我"
+ },
+ "ab25fcd650c9": {
+  "en": "Paragliding podcast, knowledge base and guided expeditions",
+  "a": "滑翔伞播客、知识库与带队探险之旅",
+  "date": "2026-11-17",
+  "b": "飞行伞播客、知识库与带队远征",
+  "tr": "滑翔伞播客、知识库与带队远征",
+  "tr_note": "site-wide terms (带队远征, 远征)",
+  "waive": {
+   "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is an attributive or a verb, where Chinese pilots say 滑翔伞 / 飞滑翔伞, and 滑翔伞运动 would read stiffly"
+  },
+  "back": "Paragliding podcast, knowledge base and guided expeditions",
+  "check": "ok"
+ },
+ "ab42293e29e1": {
+  "en": "Your name",
+  "a": "你的姓名",
+  "date": "2026-11-17",
+  "b": "你的姓名",
+  "tr": "你的姓名",
+  "back": "Your name",
+  "check": "ok"
+ },
+ "ab95c7774c58": {
+  "en": "See the Kenya trip",
+  "a": "查看肯尼亚行程",
+  "date": "2026-11-17",
+  "b": "查看肯尼亚行程",
+  "tr": "查看肯尼亚行程",
+  "back": "View the Kenya itinerary",
+  "check": "ok"
+ },
+ "ac8d35c5651b": {
+  "en": "Sharing our passion for the art of flight isn't just meaningful, it's our purpose. By flying with us, you help uplift local communities through welfare, training, and opportunities for the next generation.",
+  "a": "分享我们对飞行艺术的热爱不只是有意义，更是我们的使命。和我们一起飞，你就在通过福利、培训和为下一代创造机会，帮助当地社区。",
+  "date": "2026-11-17",
+  "b": "分享我们对飞行艺术的热爱，不只是有意义，更是我们的使命。与我们同飞，你就在通过福利、培训和机会，帮助当地社区和下一代。",
+  "tr": "分享我们对飞行艺术的热爱不只是有意义，更是我们的使命。和我们一起飞，你就在通过福利、培训和为下一代创造机会，帮助当地社区。",
+  "back": "Sharing our love for the art of flying is not only meaningful, it is our mission. Fly with us and you are helping local communities, through welfare, training and creating opportunities for the next generation.",
+  "check": "ok"
+ },
+ "acfed849a1d0": {
+  "en": "Chapters of Navigating India",
+  "a": "《探路印度》章节",
+  "date": "2026-11-17",
+  "b": "《导航印度》的章节",
+  "tr": "《探路印度》章节",
+  "back": "Chapters of \"Pathfinding India\"",
+  "check": "ok"
+ },
+ "ad081e336c7d": {
+  "en": "Under Norwegian and EU law",
+  "a": "依据挪威及欧盟法律",
+  "date": "2026-11-17",
+  "b": "依据挪威和欧盟法律",
+  "tr": "依据挪威及欧盟法律"
+ },
+ "ad89087a3db0": {
+  "en": "Airspace over the site",
+  "a": "场地上空的空域",
+  "date": "2026-11-17",
+  "b": "场地上空的空域",
+  "tr": "场地上空的空域",
+  "back": "Airspace above the site",
+  "check": "ok"
+ },
+ "ad8919ace091": {
+  "en": "Event",
+  "a": "赛事",
+  "date": "2026-11-17",
+  "b": "赛事",
+  "tr": "赛事",
+  "back": "Event",
+  "check": "ok"
+ },
+ "ada1c425fb60": {
+  "en": "What Kenya offers as a flying destination",
+  "a": "肯尼亚作为飞行目的地能提供什么",
+  "date": "2026-11-17",
+  "b": "肯尼亚作为飞行目的地的优势",
+  "tr": "肯尼亚作为飞行目的地能提供什么",
+  "back": "What Kenya can offer as a flying destination",
+  "check": "ok"
+ },
+ "aee92f3275ab": {
+  "en": "Cancelled (weather)",
+  "a": "已取消（天气）",
+  "date": "2026-11-17",
+  "b": "已取消（天气）",
+  "tr": "已取消（天气）"
+ },
+ "af3027a0dcc7": {
+  "en": "The original",
+  "a": "原图",
+  "date": "2026-11-17",
+  "b": "原图",
+  "tr": "原图"
+ },
+ "b06613236072": {
+  "en": "The photo, enlarged",
+  "a": "放大的照片",
+  "date": "2026-11-17",
+  "b": "放大的照片",
+  "tr": "放大的照片"
+ },
+ "b0c4416b4d80": {
+  "en": "Also from {1}",
+  "a": "更多来自{1}",
+  "date": "2026-11-17",
+  "b": "同样来自{1}",
+  "tr": "更多来自{1}",
+  "back": "More from {1}",
+  "check": "ok"
+ },
+ "b16c7ac6faff": {
+  "en": "(optional)",
+  "a": "（选填）",
+  "date": "2026-11-17",
+  "b": "（选填）",
+  "tr": "（选填）",
+  "back": "(optional)",
+  "check": "ok"
+ },
+ "b191dbd602b6": {
+  "en": "Will Gadd",
+  "a": "Will Gadd",
+  "date": "2026-11-17",
+  "b": "Will Gadd",
+  "tr": "Will Gadd",
+  "back": "Will Gadd",
+  "check": "ok"
+ },
+ "b1dd7cc0fd62": {
+  "en": "You fly",
+  "a": "你将飞",
+  "date": "2026-11-17",
+  "b": "你将飞行的地方",
+  "tr": "你将飞越",
+  "tr_note": "a's 你将飞 is unfinished, b's is long for a label",
+  "back": "You will fly over",
+  "check": "ok"
+ },
+ "b21d43b2b6c9": {
+  "en": "Not ready to enquire?",
+  "a": "还没准备好咨询？",
+  "date": "2026-11-17",
+  "b": "还没准备好咨询？",
+  "tr": "还没准备好咨询？",
+  "back": "Not ready to enquire?",
+  "check": "ok"
+ },
+ "b453c4af37bd": {
+  "en": "Pilots who can take off in strong wind and strong thermic conditions. Vistasp Kharas, who has flown {1} for more than ten years, advises an {2} course: the thermals can be punchy and there is wind in the mix. He would not send a pilot used only to alpine air with little knowledge of wind, because on the lee side the site is not forgiving.",
+  "a": "能在强风和强热力条件下起飞的飞行员。在{1}飞行超过十年的 Vistasp Kharas 建议先参加{2}课程：这里的热气流可能很猛，还夹杂着风。他不会推荐只习惯阿尔卑斯空气、对风了解不多的飞行员前来，因为在背风面，这个场地毫不留情。",
+  "date": "2026-11-17",
+  "b": "能在强风和强热力条件下起飞的飞行员。在{1}飞行十多年的Vistasp Kharas建议具备{2}课程水平：热气流可能很猛，而且还有风。他不会推荐只习惯阿尔卑斯空气、对风了解不多的飞行员，因为在背风一侧，这个场地毫不留情。",
+  "tr": "能在强风和强热力条件下起飞的飞行员。在{1}飞行超过十年的 Vistasp Kharas 建议先参加{2}课程：这里的热气流可能很猛，还夹杂着风。他不会推荐只习惯阿尔卑斯空气、对风了解不多的飞行员前来，因为在背风面，这个场地毫不留情。"
+ },
+ "b49bbe9c0918": {
+  "en": "Full-size original",
+  "a": "全尺寸原图",
+  "date": "2026-11-17",
+  "b": "原始全尺寸",
+  "tr": "全尺寸原图"
+ },
+ "b4f67e424077": {
+  "en": "Getting it",
+  "a": "正在获取",
+  "date": "2026-11-17",
+  "b": "获取中",
+  "tr": "正在获取",
+  "back": "Fetching",
+  "check": "ok"
+ },
+ "b516f1c72e7c": {
+  "en": "Top landing on the main tableland is forgiving late in the afternoon, once you know where the wind is from. In the valleys, land near a road in a field that has been cut: never standing crops or sugarcane. The power lines are above ground, so look for the poles and their shadows. The villagers are friendly, and a shared jeep back to town is cheap.",
+  "a": "一旦你知道风从哪里来，傍晚在主台地上做山顶降落很宽容。在山谷里，要降落在靠近公路、已经收割过的田里：绝不要降在未收割的庄稼或甘蔗地里。电线架在地面之上，所以要留意电线杆和它们的影子。村民很友好，坐拼车吉普回镇上也很便宜。",
+  "date": "2026-11-17",
+  "b": "在主台地上，知道风向之后，下午晚些时候山顶着陆比较宽容。在山谷里，要在路边已收割的田里降落：绝不要降在未收割的庄稼或甘蔗地里。电线是架空的，所以要留意电线杆及其影子。村民很友好，搭乘合乘吉普车回镇上也很便宜。",
+  "tr": "一旦知道风从哪里来，下午晚些时候在主台地上做山顶降落比较宽容。在山谷里，要降落在靠近公路、已经收割过的田里：绝不要降在未收割的庄稼或甘蔗地里。电线架在地面之上，所以要留意电线杆和它们的影子。村民很友好，坐拼车吉普回镇上也很便宜。",
+  "tr_note": "merged: 'late in the afternoon' (b; a said evening), a's wording otherwise",
+  "waive": {
+   "glossary": "glossary 'landing' (降落场) is the landing field; here English means the act or a spot of landing (降落), not a designated field; 'top landing' has no sourced term, 山顶降落 is the usual phrase"
+  }
+ },
+ "b54b5c6f45ec": {
+  "en": "Resume the film",
+  "a": "继续播放影片",
+  "date": "2026-11-17",
+  "b": "继续播放视频",
+  "tr": "继续播放视频",
+  "tr_note": "film = 视频",
+  "back": "Continue playing video",
+  "check": "ok"
+ },
+ "b56ac1b820a9": {
+  "en": "Ready: tap to save",
+  "a": "已就绪：点按保存",
+  "date": "2026-11-17",
+  "b": "已就绪：点按保存",
+  "tr": "已就绪：点按保存",
+  "back": "Ready: tap to save",
+  "check": "ok"
+ },
+ "b576d512dd2d": {
+  "en": "<x1>{1}</x1> pts",
+  "a": "<x1>{1}</x1>分",
+  "date": "2026-11-17",
+  "b": "<x1>{1}</x1>分",
+  "tr": "<x1>{1}</x1>分"
+ },
+ "b5e1b5c9c3bc": {
+  "en": "The Science Of Wing Design",
+  "a": "伞翼设计的科学",
+  "date": "2026-11-17",
+  "b": "伞翼设计的科学",
+  "tr": "伞翼设计的科学",
+  "back": "The science of wing design",
+  "check": "ok"
+ },
+ "b61f417c90bd": {
+  "en": "{1}, {2}, Mexico, {3}: every photo by task, free to save. Photos by {4}, {5}.",
+  "a": "{1}，{2}，墨西哥，{3}：按任务整理的全部照片，可免费保存。摄影：{4}，{5}。",
+  "date": "2026-11-17",
+  "b": "{1}，{2}，墨西哥，{3}：按任务分类的全部照片，可免费保存。摄影：{4}，{5}。",
+  "tr": "{1}，{2}，墨西哥，{3}：按任务整理的全部照片，可免费保存。摄影：{4}，{5}。"
+ },
+ "b6dc5272c942": {
+  "en": "{1} chapters",
+  "a": "{1}个章节",
+  "date": "2026-11-17",
+  "b": "{1}个章节",
+  "tr": "{1}个章节",
+  "back": "{1} chapters",
+  "check": "ok"
+ },
+ "b7bee045feb2": {
+  "en": "The balance you have to strike",
+  "a": "你必须把握的平衡",
+  "date": "2026-11-17",
+  "b": "你必须把握的平衡",
+  "tr": "你必须把握的平衡",
+  "back": "The balance you must strike",
+  "check": "ok"
+ },
+ "b7e633c5265e": {
+  "en": "Play Navigating India (Bonus Ep), with Jigish Gohil",
+  "a": "播放《探路印度（特辑）》，嘉宾 Jigish Gohil",
+  "date": "2026-11-17",
+  "b": "播放《导航印度（加更）》，嘉宾Jigish Gohil",
+  "tr": "播放《探路印度（特辑）》，嘉宾 Jigish Gohil",
+  "back": "Play \"Pathfinding India (Special)\", guest Jigish Gohil",
+  "check": "ok"
+ },
+ "b8100f5ba8bd": {
+  "en": "Library",
+  "a": "节目库",
+  "date": "2026-11-17",
+  "b": "资料库",
+  "tr": "节目库",
+  "tr_note": "picked a: the menu's Library is the episode library, 节目库 as on the rest of the site (b's 资料库 reads as a document archive)",
+  "back": "Episode library",
+  "check": "ok"
+ },
+ "b9b15d8821c5": {
+  "en": "The film",
+  "a": "影片",
+  "date": "2026-11-17",
+  "b": "视频",
+  "tr": "视频",
+  "tr_note": "film = 视频"
+ },
+ "b9fd62dddd28": {
+  "en": "Next one starts today",
+  "a": "下一团今天出发",
+  "date": "2026-11-17",
+  "b": "下一班今天开始",
+  "tr": "下一团今天出发",
+  "back": "The next group departs today",
+  "check": "ok"
+ },
+ "ba9e2565bdc8": {
+  "en": "Booking open, {1} places",
+  "a": "开放报名，{1}个名额",
+  "date": "2026-11-17",
+  "b": "开放报名，{1}个名额",
+  "tr": "开放报名，{1}个名额",
+  "back": "Open for registration, {1} places",
+  "check": "ok"
+ },
+ "bae7d5be7082": {
+  "en": "Status",
+  "a": "状态",
+  "date": "2026-11-17",
+  "b": "状态",
+  "tr": "状态",
+  "back": "Status",
+  "check": "ok"
+ },
+ "bafb6ef29689": {
+  "en": "Podcast",
+  "a": "播客",
+  "date": "2026-11-17",
+  "b": "播客",
+  "tr": "播客",
+  "back": "Podcast",
+  "check": "ok"
+ },
+ "bb9bfefd5391": {
+  "en": "Nov",
+  "a": "十一月",
+  "date": "2026-11-17",
+  "b": "十一月",
+  "tr": "十一月"
+ },
+ "bbaeb294a58b": {
+  "en": "A short season, and a changing climate",
+  "a": "短暂的季节，变化的气候",
+  "date": "2026-11-17",
+  "b": "短暂的季节，变化的气候",
+  "tr": "短暂的季节，变化的气候",
+  "back": "A short season, a changing climate",
+  "check": "ok"
+ },
+ "bbbbfec78db1": {
+  "en": "Who is this tour for?",
+  "a": "这个团适合谁？",
+  "date": "2026-11-17",
+  "b": "这趟行程适合谁？",
+  "tr": "这个团适合谁？"
+ },
+ "bc596fdcb822": {
+  "en": "How do I get there?",
+  "a": "怎么去？",
+  "date": "2026-11-17",
+  "b": "怎么去那里？",
+  "tr": "怎么去？"
+ },
+ "bc8b00da2fc8": {
+  "en": "The <x1>episode library</x1> has {1} conversations with pilots, designers and instructors, transcripts included. <x2>Kenya</x2> is the trip page with the most detail on it.",
+  "a": "<x1>节目库</x1>收录了{1}期与飞行员、设计师和教练的对话，附文字稿。<x2>肯尼亚</x2>是介绍最详细的行程页面。",
+  "date": "2026-11-17",
+  "b": "<x1>节目库</x1>里有{1}场与飞行员、设计师和教练的对话，附有文字稿。<x2>肯尼亚</x2>是内容最详尽的行程页。",
+  "tr": "<x1>节目库</x1>收录了{1}期与飞行员、设计师和教练的对话，附文字稿。<x2>肯尼亚</x2>是介绍最详细的行程页面。",
+  "back": "The <x1>episode library</x1> contains {1} conversations with pilots, designers and instructors, with transcripts. <x2>Kenya</x2> is the most detailed itinerary page.",
+  "check": "ok"
+ },
+ "bcc83be607c7": {
+  "en": "Ready To Touch The Sky With Glory?",
+  "a": "准备好荣耀触摸天空了吗？",
+  "date": "2026-11-17",
+  "b": "准备好带着荣耀触摸天空了吗？",
+  "tr": "准备好带着荣耀触摸天空了吗？",
+  "tr_note": "picked b",
+  "back": "Ready to touch the sky with glory?",
+  "check": "ok"
+ },
+ "bce06414177f": {
+  "en": "Search",
+  "a": "搜索",
+  "date": "2026-11-17",
+  "b": "搜索",
+  "tr": "搜索",
+  "back": "Search",
+  "check": "ok"
+ },
+ "bce86cfb0300": {
+  "en": "Whether you're a {1} hour pilot eyeing your first {2} or a longtime sky veteran chasing your next world record, we specialize in turning ambition into airtime. This relaxed no-expectations intro call helps you cut through the unknowns with straight talk.",
+  "a": "无论你是飞行{1}小时、正向第一个{2}小时迈进的飞行员，还是追逐下一项世界纪录的天空老手，我们专注于把你的雄心变成飞行时间。这次轻松、不设任何预期的初步通话，用坦诚的交流帮你理清种种未知。",
+  "date": "2026-11-17",
+  "b": "无论你是飞行{1}小时、正盯着第一次{2}的飞行员，还是追逐下一个世界纪录的资深老手，我们都擅长把雄心变成实实在在的飞行时间。这次轻松、没有任何预期的介绍通话，会用直截了当的话帮你理清未知。",
+  "tr": "无论你是飞行{1}小时、正向第一个{2}小时迈进的飞行员，还是追逐下一项世界纪录的天空老手，我们专注于把你的雄心变成飞行时间。这次轻松、不设任何预期的初步通话，用坦诚的交流帮你理清种种未知。",
+  "back": "Whether you are a pilot with {1} hours of flying, moving toward your first {2} hours, or a seasoned sky veteran chasing the next world record, we focus on turning your ambition into flying time. This relaxed preliminary call, with no expectations of any kind, uses frank conversation to help you sort out the various unknowns.",
+  "check": "ok"
+ },
+ "bd66d55258cd": {
+  "en": "What the tour price covers is <x1>{1}</x1>.",
+  "a": "团费包含的内容见<x1>{1}</x1>。",
+  "date": "2026-11-17",
+  "b": "行程价格包含<x1>{1}</x1>。",
+  "tr": "团费包含的内容见<x1>{1}</x1>。"
+ },
+ "bd979dbade5b": {
+  "en": "Eddie Colfox",
+  "a": "Eddie Colfox",
+  "date": "2026-11-17",
+  "b": "Eddie Colfox",
+  "tr": "Eddie Colfox",
+  "back": "Eddie Colfox",
+  "check": "ok"
+ },
+ "bdcf005b19ce": {
+  "en": "Luc Armant",
+  "a": "Luc Armant",
+  "date": "2026-11-17",
+  "b": "Luc Armant",
+  "tr": "Luc Armant",
+  "back": "Luc Armant",
+  "check": "ok"
+ },
+ "bdd547a33abb": {
+  "en": "Booking with us",
+  "a": "通过我们预订",
+  "date": "2026-11-17",
+  "b": "与我们预订",
+  "tr": "通过我们预订"
+ },
+ "bead0a998f90": {
+  "en": "RAST And The LeelooX Effect",
+  "a": "RAST 与 LeelooX 效应",
+  "date": "2026-11-17",
+  "b": "RAST与LeelooX效应",
+  "tr": "RAST 与 LeelooX 效应",
+  "back": "RAST and the LeelooX effect",
+  "check": "ok"
+ },
+ "bee1ebaac1d6": {
+  "en": ", the steppe, planned for {1}",
+  "a": "，草原，计划于{1}",
+  "date": "2026-11-17",
+  "b": "，草原，计划于{1}",
+  "tr": "，草原，计划于{1}",
+  "back": ", steppe, planned for {1}",
+  "check": "ok"
+ },
+ "c11df50abfb9": {
+  "en": "Guaranteed to run, {1} places",
+  "a": "确定成行，{1}个名额",
+  "date": "2026-11-17",
+  "b": "保证成行，{1}个名额",
+  "tr": "确定成行，{1}个名额",
+  "back": "Confirmed to go ahead, {1} places",
+  "check": "ok"
+ },
+ "c1301a9f5a76": {
+  "en": "Navigating India: Jigish Gohil (Bonus Ep)<x1>Navigators, Episode {1}, {2} min</x1>",
+  "a": "《探路印度》：Jigish Gohil（特辑）<x1>Navigators，第{1}集，{2}分钟</x1>",
+  "date": "2026-11-17",
+  "b": "导航印度：Jigish Gohil（加更）<x1>领航者，第{1}期，{2}分钟</x1>",
+  "tr": "《探路印度》：Jigish Gohil（特辑）<x1>Navigators，第{1}集，{2}分钟</x1>",
+  "back": "\"Pathfinding India\": Jigish Gohil (Special)<x1>Navigators, episode {1}, {2} minutes</x1>",
+  "check": "ok"
+ },
+ "c2ab77b0ff29": {
+  "en": "The height",
+  "a": "高度",
+  "date": "2026-11-17",
+  "b": "高度",
+  "tr": "高度"
+ },
+ "c2c1fe4f4307": {
+  "en": "Out and return",
+  "a": "往返飞行",
+  "date": "2026-11-17",
+  "b": "往返飞行",
+  "tr": "往返飞行",
+  "back": "Flying there and back",
+  "check": "ok"
+ },
+ "c2e98476efb5": {
+  "en": "Link copied",
+  "a": "链接已复制",
+  "date": "2026-11-17",
+  "b": "链接已复制",
+  "tr": "链接已复制",
+  "back": "Link copied",
+  "check": "ok"
+ },
+ "c36774158ae7": {
+  "en": "Registered in Norway",
+  "a": "在挪威注册",
+  "date": "2026-11-17",
+  "b": "在挪威注册",
+  "tr": "在挪威注册"
+ },
+ "c474e040dc24": {
+  "en": "Why wind strength differs between seasons",
+  "a": "为什么不同季节风力不同",
+  "date": "2026-11-17",
+  "b": "为什么风力强度随季节而异",
+  "tr": "为什么不同季节风力不同",
+  "back": "Why the wind differs in different seasons",
+  "check": "ok"
+ },
+ "c4ba0822462e": {
+  "en": "Mar",
+  "a": "三月",
+  "date": "2026-11-17",
+  "b": "三月",
+  "tr": "三月"
+ },
+ "c518fb067439": {
+  "en": "Listen",
+  "a": "收听",
+  "date": "2026-11-17",
+  "b": "收听",
+  "tr": "收听",
+  "back": "Listen",
+  "check": "ok"
+ },
+ "c61970292546": {
+  "en": "Downloaded",
+  "a": "已下载",
+  "date": "2026-11-17",
+  "b": "已下载",
+  "tr": "已下载",
+  "back": "Downloaded",
+  "check": "ok"
+ },
+ "c66aebd3ba1b": {
+  "en": "The camera's full-size file, paid with {1}. Licence of the original: <x1>{2}</x1>.",
+  "a": "相机拍摄的全尺寸文件，通过{1}付款。原图许可：<x1>{2}</x1>。",
+  "date": "2026-11-17",
+  "b": "相机的全尺寸文件，通过{1}付款。原图授权：<x1>{2}</x1>。",
+  "tr": "相机拍摄的全尺寸文件，通过{1}付款。原图许可：<x1>{2}</x1>。"
+ },
+ "c6733cd0eee8": {
+  "en": "Enquire Now",
+  "a": "立即咨询",
+  "date": "2026-11-17",
+  "b": "立即咨询",
+  "tr": "立即咨询",
+  "back": "Enquire now",
+  "check": "ok"
+ },
+ "c699c3ac3ee8": {
+  "en": "Take-off is at about {1} to {2} m, and in the peak of the season pilots climb to {3} to {4} m. The local rule: below {5} m, start looking for a safe landing, and stay off the terrain unless you know exactly what the wind is doing.",
+  "a": "起飞点约在{1}至{2} m，旺季时飞行员能爬升到{3}至{4} m。当地规矩：低于{5} m，就开始寻找安全的降落点；除非你确切知道风在怎么吹，否则远离地形。",
+  "date": "2026-11-17",
+  "b": "起飞点海拔约{1}至{2}米，旺季时飞行员可爬升到{3}至{4}米。当地规矩：低于{5}米，就开始寻找安全的着陆点；除非你确切知道风在做什么，否则不要靠近地形。",
+  "tr": "起飞场海拔约{1}至{2} m，旺季时飞行员能爬升到{3}至{4} m。当地规矩：低于{5} m，就开始寻找安全的降落点；除非你确切知道风在怎么吹，否则远离地形。",
+  "tr_note": "a, launch = 起飞场",
+  "waive": {
+   "glossary": "glossary 'landing' (降落场) is the landing field; here English means the act or a spot of landing (降落), not a designated field"
+  }
+ },
+ "c6c17c967a2f": {
+  "en": "Nikolay Yotov",
+  "a": "Nikolay Yotov",
+  "date": "2026-11-17",
+  "b": "Nikolay Yotov",
+  "tr": "Nikolay Yotov",
+  "back": "Nikolay Yotov",
+  "check": "ok"
+ },
+ "c6daea37aee6": {
+  "en": "Big Mountain Flying",
+  "a": "大山飞行",
+  "date": "2026-11-17",
+  "b": "大山飞行",
+  "tr": "大山飞行",
+  "back": "Big-mountain flying",
+  "check": "ok"
+ },
+ "c6fc5da17202": {
+  "en": "Anything you would like us to know, and anything you would like to ask.",
+  "a": "任何你希望我们了解的情况，以及任何你想问的问题。",
+  "date": "2026-11-17",
+  "b": "任何你希望我们知道的事，以及任何你想问的问题。",
+  "tr": "任何你希望我们了解的情况，以及任何你想问的问题。",
+  "back": "Anything you would like us to know, and any questions you would like to ask.",
+  "check": "ok"
+ },
+ "c70893d3bd66": {
+  "en": "Kenya, from the air",
+  "a": "空中的肯尼亚",
+  "date": "2026-11-17",
+  "b": "空中看肯尼亚",
+  "tr": "从空中看肯尼亚",
+  "tr_note": "'from the air' read as a view; same form as the {1} variant",
+  "back": "Kenya seen from the air",
+  "check": "ok"
+ },
+ "c74a37330584": {
+  "en": "Resume the film from {1}",
+  "a": "从{1}继续播放影片",
+  "date": "2026-11-17",
+  "b": "从{1}继续播放视频",
+  "tr": "从{1}继续播放视频",
+  "tr_note": "film = 视频",
+  "back": "Continue playing video from {1}",
+  "check": "ok"
+ },
+ "c76174402a46": {
+  "en": "For race organisers and sponsors. Send the event, its dates and its place, and the coverage you have in mind, and we will reply about availability. Coverage is priced per event, after a call.",
+  "a": "面向赛事组织者和赞助商。请发送赛事名称、日期、地点以及你设想的报道内容，我们会回复档期情况。报道按每场赛事报价，需先通话。",
+  "date": "2026-11-17",
+  "b": "面向赛事组织者和赞助商。请发来赛事、日期和地点，以及你设想的报道内容，我们会回复档期情况。报道按每场赛事计价，通话之后确定。",
+  "tr": "面向赛事组织者和赞助商。请发送赛事名称、日期、地点以及你设想的报道内容，我们会回复档期情况。报道按每场赛事报价，需先通话。",
+  "back": "For event organisers and sponsors. Please send the event name, dates, location and the coverage you envisage, and we will reply with our availability. Coverage is quoted per event, and a call is needed first.",
+  "check": "ok"
+ },
+ "c7690d0577d4": {
+  "en": "Other tasks",
+  "a": "其他任务",
+  "date": "2026-11-17",
+  "b": "其他任务",
+  "tr": "其他任务"
+ },
+ "c7bd240ac63c": {
+  "en": "Paraglider over snow-capped Himalayan peaks",
+  "a": "滑翔伞飞越喜马拉雅的雪峰",
+  "date": "2026-11-17",
+  "b": "飞行伞飞越喜马拉雅的雪峰",
+  "tr": "滑翔伞飞越喜马拉雅的雪峰",
+  "back": "A paraglider flies over the snow peaks of the Himalaya",
+  "check": "ok"
+ },
+ "c7bfee111a04": {
+  "en": "Expedition",
+  "a": "探险之旅",
+  "date": "2026-11-17",
+  "b": "远征",
+  "tr": "远征",
+  "tr_note": "site-wide terms (远征)",
+  "back": "Expedition",
+  "check": "ok"
+ },
+ "c880e01143fc": {
+  "en": "The more you tell us about where you are as a pilot, the more useful our answer will be. There are no wrong answers here, and telling us you are less current than you would like is genuinely more helpful than telling us you are fine.",
+  "a": "你把自己目前的飞行水平说得越清楚，我们的回答就越有用。这里没有错误答案；告诉我们你最近飞得没有想象中多，比告诉我们一切都好要有用得多。",
+  "date": "2026-11-17",
+  "b": "你越清楚地告诉我们你作为飞行员的现状，我们的回答就越有用。这里没有错误答案，告诉我们你不如自己希望的那样勤于飞行，其实比说你一切都好更有帮助。",
+  "tr": "你把自己作为飞行员目前的水平说得越清楚，我们的回答就越有用。这里没有错误答案；告诉我们你最近飞得没有自己希望的那么多，比告诉我们一切都好要有用得多。",
+  "tr_note": "comparer fix: wrong sense: 'less current than you would like' became 'flown less than you imagined' (没有想象中多)",
+  "check_history": [
+   {
+    "tr": "你把自己作为飞行员目前的水平说得越清楚，我们的回答就越有用。这里没有错误答案；告诉我们你最近飞得没有想象中多，比告诉我们一切都好要有用得多。",
+    "back": "The more clearly you describe your current level as a pilot, the more useful our answer will be. There are no wrong answers here; telling us you have recently flown less than you imagined is much more useful than telling us everything is fine.",
+    "verdict": "wrong sense: 'less current than you would like' became 'flown less than you imagined' (没有想象中多)"
+   }
+  ],
+  "back": "The more clearly you describe your current level as a pilot, the more useful our answer will be. There are no wrong answers here; telling us you have recently flown not as much as you hoped is much more useful than telling us everything is fine.",
+  "check": "ok"
+ },
+ "c8c413060379": {
+  "en": "Worth reading either way: the <x1>booking terms</x1>, and the <x2>participant agreement</x2> that every pilot completes before a trip. Both are published in full rather than sprung on you later.",
+  "a": "无论如何都值得一读：<x1>预订条款</x1>，以及每位飞行员在出行前都要填写的<x2>参与者协议</x2>。两者都已完整公开，不会事后突然摆到你面前。",
+  "date": "2026-11-17",
+  "b": "不论如何都值得一读：<x1>预订条款</x1>，以及每位飞行员在行程前都要完成的<x2>参与者协议</x2>。两者都完整公布，不会事后才突然拿出来。",
+  "tr": "无论如何都值得一读：<x1>预订条款</x1>，以及每位飞行员在出行前都要填写的<x2>参与者协议</x2>。两者都已完整公开，不会事后突然摆到你面前。",
+  "back": "Worth reading in any case: the <x1>booking terms</x1>, and the <x2>participant agreement</x2> that every pilot has to fill in before the trip. Both are fully public, and will not suddenly be put in front of you afterwards.",
+  "check": "ok"
+ },
+ "c8ca264fde99": {
+  "en": "If your device has no email app set up, the button will tell you, and you can copy the text or use {1} instead.",
+  "a": "如果你的设备没有设置邮件应用，按钮会提示你，你可以复制文字，或改用{1}。",
+  "date": "2026-11-17",
+  "b": "如果你的设备没有设置电子邮件应用，按钮会告诉你，你可以复制文字，或改用{1}。",
+  "tr": "如果你的设备没有设置邮件应用，按钮会提示你，你可以复制文字，或改用{1}。",
+  "back": "If your device has no email app set up, the button will prompt you, and you can copy the text or use {1} instead.",
+  "check": "ok"
+ },
+ "c93354d871a6": {
+  "en": "Pilot rating",
+  "a": "飞行员等级",
+  "date": "2026-11-17",
+  "b": "飞行员等级",
+  "tr": "飞行员等级"
+ },
+ "c94930a168ff": {
+  "en": "Episode {1}",
+  "a": "第{1}集",
+  "date": "2026-11-17",
+  "b": "第{1}期",
+  "tr": "第{1}集",
+  "back": "Episode {1}",
+  "check": "ok"
+ },
+ "c9a314a710f6": {
+  "en": "Small groups, fixed dates. Prices are per pilot.",
+  "a": "小团出行，日期固定。价格按每位飞行员计。",
+  "date": "2026-11-17",
+  "b": "小团出行，日期固定。价格为每位飞行员的价格。",
+  "tr": "小团出行，日期固定。价格按每位飞行员计。",
+  "back": "Small-group travel, fixed dates. Prices are calculated per pilot.",
+  "check": "ok"
+ },
+ "ca07a6eab021": {
+  "en": "flying today, photos tonight",
+  "a": "今日飞行，今晚发布照片",
+  "date": "2026-11-17",
+  "b": "今日飞行，今晚发布照片",
+  "tr": "今日飞行，今晚发布照片",
+  "back": "Flying today, photos published tonight",
+  "check": "ok"
+ },
+ "ca5546254a77": {
+  "en": "{1} days",
+  "a": "{1}天",
+  "date": "2026-11-17",
+  "b": "{1}天",
+  "tr": "{1}天"
+ },
+ "cb9f9f47293f": {
+  "en": "Fitness and wing experience required",
+  "a": "所需的体能与伞翼飞行经验",
+  "date": "2026-11-17",
+  "b": "所需的体能和伞翼经验",
+  "tr": "所需的体能与伞翼飞行经验"
+ },
+ "cbee872716d0": {
+  "en": "Gear list, dates, and costs",
+  "a": "装备清单、日期与费用",
+  "date": "2026-11-17",
+  "b": "装备清单、日期和费用",
+  "tr": "装备清单、日期与费用"
+ },
+ "cbfd44d9c70c": {
+  "en": "Teams",
+  "a": "团体",
+  "date": "2026-11-17",
+  "b": "团队",
+  "tr": "团体"
+ },
+ "cc1bca4e4044": {
+  "en": "Mon {1}",
+  "a": "周一{1}",
+  "date": "2026-11-17",
+  "b": "周一{1}",
+  "tr": "周一{1}"
+ },
+ "cc4ea2f2cc53": {
+  "en": "Photos of Practice, in the order shot",
+  "a": "练习日照片，按拍摄顺序",
+  "date": "2026-11-17",
+  "b": "练习日照片，按拍摄顺序",
+  "tr": "练习日照片，按拍摄顺序"
+ },
+ "cc82c26f3d75": {
+  "en": "Rift Valley's Endless Skies Await",
+  "a": "裂谷的无垠天空在等你",
+  "date": "2026-11-17",
+  "b": "裂谷无尽的天空在等你",
+  "tr": "裂谷的无垠天空在等你",
+  "back": "The boundless sky of the Rift Valley is waiting for you",
+  "check": "ok"
+ },
+ "cca2c8a6436f": {
+  "en": "{1} photos<x1>, in the order shot</x1>",
+  "a": "{1}张照片<x1>，按拍摄顺序</x1>",
+  "date": "2026-11-17",
+  "b": "{1}张照片<x1>，按拍摄顺序</x1>",
+  "tr": "{1}张照片<x1>，按拍摄顺序</x1>"
+ },
+ "ccbc40360fc7": {
+  "en": "A paraglider over fields along the lake shore, red hills below",
+  "a": "一顶滑翔伞飞过湖岸的田野，下方是红色的山丘",
+  "date": "2026-11-17",
+  "b": "一顶伞翼飞过沿湖的田野，下方是红色山丘",
+  "tr": "一顶滑翔伞飞过湖岸的田野，下方是红色的山丘"
+ },
+ "ccc70f2dc6b5": {
+  "en": "Corrections",
+  "a": "更正",
+  "date": "2026-11-17",
+  "b": "更正",
+  "tr": "更正",
+  "back": "Corrections",
+  "check": "ok"
+ },
+ "ccdc7c7744d6": {
+  "en": "Hours, roughly",
+  "a": "小时，大概即可",
+  "date": "2026-11-17",
+  "b": "大致小时数",
+  "tr": "大致小时数",
+  "tr_note": "picked b",
+  "back": "Approximate number of hours",
+  "check": "ok"
+ },
+ "cd4f60d8a103": {
+  "en": "We'll break down",
+  "a": "我们会为你详细讲解",
+  "date": "2026-11-17",
+  "b": "我们会为你详细说明",
+  "tr": "我们会为你详细讲解",
+  "back": "We will explain to you in detail",
+  "check": "ok"
+ },
+ "ce491dd76179": {
+  "en": "Search The Whole Episode Library",
+  "a": "搜索全部节目库",
+  "date": "2026-11-17",
+  "b": "搜索全部节目库",
+  "tr": "搜索全部节目库",
+  "back": "Search the entire episode library",
+  "check": "ok"
+ },
+ "ce60712352df": {
+  "en": "Maxime Pinot",
+  "a": "Maxime Pinot",
+  "date": "2026-11-17",
+  "b": "Maxime Pinot",
+  "tr": "Maxime Pinot",
+  "back": "Maxime Pinot",
+  "check": "ok"
+ },
+ "ce726413d84c": {
+  "en": "Photos of Task {1}, in the order shot",
+  "a": "任务{1}照片，按拍摄顺序",
+  "date": "2026-11-17",
+  "b": "任务{1}的照片，按拍摄顺序",
+  "tr": "任务{1}照片，按拍摄顺序"
+ },
+ "cf01481f626d": {
+  "en": "Privacy",
+  "a": "隐私",
+  "date": "2026-11-17",
+  "b": "隐私",
+  "tr": "隐私",
+  "back": "Privacy",
+  "check": "ok"
+ },
+ "cf765512cc6d": {
+  "en": "Sending…",
+  "a": "正在发送…",
+  "date": "2026-11-17",
+  "b": "发送中…",
+  "tr": "正在发送…",
+  "back": "Sending...",
+  "check": "ok"
+ },
+ "cfc0529b1773": {
+  "en": "Reading what is likely to happen next",
+  "a": "预判接下来可能发生什么",
+  "date": "2026-11-17",
+  "b": "判断接下来可能发生什么",
+  "tr": "预判接下来可能发生什么",
+  "back": "Anticipating what might happen next",
+  "check": "ok"
+ },
+ "cfc3e69c1d27": {
+  "en": "Make, model, EN class",
+  "a": "品牌、型号、EN 级别",
+  "date": "2026-11-17",
+  "b": "品牌、型号、EN等级",
+  "tr": "品牌、型号、EN 级别",
+  "back": "Brand, model, EN class",
+  "check": "ok"
+ },
+ "cff524d2580e": {
+  "en": "Not sure yet is a perfectly good answer, and often the right one.",
+  "a": "“还不确定”完全可以，而且往往是正确的回答。",
+  "date": "2026-11-17",
+  "b": "“还不确定”是个完全可以的回答，而且往往是正确的回答。",
+  "tr": "“还不确定”完全可以，而且往往是正确的回答。",
+  "back": "\"Not sure yet\" is perfectly fine, and often the right answer.",
+  "check": "ok"
+ },
+ "d02a49aed22d": {
+  "en": "About these questions",
+  "a": "关于这些问题",
+  "date": "2026-11-17",
+  "b": "关于这些问题",
+  "tr": "关于这些问题"
+ },
+ "d0b66435c381": {
+  "en": "Tap the name: {1}",
+  "a": "点按名称：{1}",
+  "date": "2026-11-17",
+  "b": "点按名字：{1}",
+  "tr": "点按名称：{1}",
+  "back": "Tap the name: {1}",
+  "check": "ok"
+ },
+ "d12081b32289": {
+  "en": "Hold a place sends an enquiry for that departure.",
+  "a": "点击“预留名额”即会为该团期发送咨询。",
+  "date": "2026-11-17",
+  "b": "点击“预留名额”会为该班次发送一份咨询。",
+  "tr": "点击“预留名额”即会为该团期发送咨询。"
+ },
+ "d189941a2aef": {
+  "en": "Its name is enough to start. The dates, the place and the package help us reply about availability.",
+  "a": "先填名称就够了。日期、地点和套餐能帮助我们回复档期情况。",
+  "date": "2026-11-17",
+  "b": "先写赛事名称就够了。日期、地点和套餐能帮我们回复档期情况。",
+  "tr": "先填名称就够了。日期、地点和套餐能帮助我们回复档期情况。",
+  "back": "Just the name is enough to start. Dates, location and package help us reply on availability.",
+  "check": "ok"
+ },
+ "d1de50eefbbd": {
+  "en": "{1} photos",
+  "a": "{1}张照片",
+  "date": "2026-11-17",
+  "b": "{1}张照片",
+  "tr": "{1}张照片"
+ },
+ "d23a6fa82fae": {
+  "en": "Navigating India, Eddie Colfox",
+  "a": "《探路印度》，Eddie Colfox",
+  "date": "2026-11-17",
+  "b": "导航印度，Eddie Colfox",
+  "tr": "《探路印度》，Eddie Colfox",
+  "back": "\"Pathfinding India\", Eddie Colfox",
+  "check": "ok"
+ },
+ "d26e27d2c13b": {
+  "en": "Russell Ogden",
+  "a": "Russell Ogden",
+  "date": "2026-11-17",
+  "b": "Russell Ogden",
+  "tr": "Russell Ogden",
+  "back": "Russell Ogden",
+  "check": "ok"
+ },
+ "d34868312069": {
+  "en": "Field Protocols For Rewiring Risk Intuition",
+  "a": "重塑风险直觉的实地方法",
+  "date": "2026-11-17",
+  "b": "重塑风险直觉的实地方法",
+  "tr": "重塑风险直觉的实地方法",
+  "back": "A field method for reshaping risk intuition",
+  "check": "ok"
+ },
+ "d42713493ca8": {
+  "en": "Destination",
+  "a": "目的地",
+  "date": "2026-11-17",
+  "b": "目的地",
+  "tr": "目的地",
+  "back": "Destination",
+  "check": "ok"
+ },
+ "d466c5436862": {
+  "en": "Booking Open",
+  "a": "开放报名",
+  "date": "2026-11-17",
+  "b": "开放报名",
+  "tr": "开放报名"
+ },
+ "d523ebbd1014": {
+  "en": "Country",
+  "a": "国家",
+  "date": "2026-11-17",
+  "b": "国家",
+  "tr": "国家"
+ },
+ "d539499a32a4": {
+  "en": "Experience, and what it does not cover",
+  "a": "经验，以及经验覆盖不到的地方",
+  "date": "2026-11-17",
+  "b": "经验，以及它没有涵盖的部分",
+  "tr": "经验，以及经验覆盖不到的地方",
+  "back": "Experience, and where experience does not reach",
+  "check": "ok"
+ },
+ "d599123fb63a": {
+  "en": "India ({1})",
+  "a": "印度（{1}）",
+  "date": "2026-11-17",
+  "b": "印度（{1}）",
+  "tr": "印度（{1}）",
+  "back": "India ({1})",
+  "check": "ok"
+ },
+ "d614b99a0d0d": {
+  "en": "What Pilots Ask Before Booking",
+  "a": "飞行员预订前常问的问题",
+  "date": "2026-11-17",
+  "b": "飞行员预订前常问的问题",
+  "tr": "飞行员预订前常问的问题"
+ },
+ "d7153c585db7": {
+  "en": "<x1>←</x1> Task {1}",
+  "a": "<x1>←</x1> 任务{1}",
+  "date": "2026-11-17",
+  "b": "<x1>←</x1> 任务{1}",
+  "tr": "<x1>←</x1> 任务{1}"
+ },
+ "d71e3907769c": {
+  "en": "Three paragliders, yellow, red and orange, over a valley in Kenya",
+  "a": "三顶滑翔伞，黄、红、橙三色，飞越肯尼亚的一处山谷",
+  "date": "2026-11-17",
+  "b": "黄、红、橙三顶伞翼飞过肯尼亚的一处山谷",
+  "tr": "黄、红、橙三顶伞翼飞过肯尼亚的一处山谷",
+  "tr_note": "picked b",
+  "back": "Three wings, yellow, red and orange, fly over a valley in Kenya",
+  "check": "ok"
+ },
+ "d725e4c29e18": {
+  "en": "{1} is about two hours by road from {2} and four and a half to five hours from {3}. No train goes to {4}: take the train from {5} to {6}, about four hours, then a taxi or a bus.",
+  "a": "{1}距{2}约两小时车程，距{3}约四个半到五个小时。火车不通{4}：从{5}坐火车到{6}，约四小时，然后换乘出租车或巴士。",
+  "date": "2026-11-17",
+  "b": "{1}距{2}约两小时车程，距{3}约四个半到五小时车程。{4}不通火车：先乘火车从{5}到{6}，约四小时，再换出租车或巴士。",
+  "tr": "{1}距{2}约两小时车程，距{3}约四个半到五个小时。火车不通{4}：从{5}坐火车到{6}，约四小时，然后换乘出租车或巴士。"
+ },
+ "d76511171f87": {
+  "en": "Participant Agreement",
+  "a": "参与者协议",
+  "date": "2026-11-17",
+  "b": "参与者协议",
+  "tr": "参与者协议",
+  "back": "Participant agreement",
+  "check": "ok"
+ },
+ "d7a20cbf61c3": {
+  "en": ", {1}, April and May, and October and {2}",
+  "a": "，{1}，四月和五月，以及十月和{2}",
+  "date": "2026-11-17",
+  "b": "，{1}，四月和五月，以及十月和{2}",
+  "tr": "，{1}，四月和五月，以及十月和{2}",
+  "back": ", {1}, April and May, and October and {2}",
+  "check": "ok"
+ },
+ "d84d0ad04a29": {
+  "en": "per pilot",
+  "a": "每位飞行员",
+  "date": "2026-11-17",
+  "b": "每位飞行员",
+  "tr": "每位飞行员",
+  "back": "Per pilot",
+  "check": "ok"
+ },
+ "d9186ba11d2a": {
+  "en": "Peru, the desert coast",
+  "a": "秘鲁，沙漠海岸",
+  "date": "2026-11-17",
+  "b": "秘鲁，沙漠海岸",
+  "tr": "秘鲁，沙漠海岸",
+  "back": "Peru, desert coast",
+  "check": "ok"
+ },
+ "da18fae8a951": {
+  "en": "Previous episodes",
+  "a": "上一组节目",
+  "date": "2026-11-17",
+  "b": "上一批节目",
+  "tr": "上一组节目",
+  "back": "Previous group of episodes",
+  "check": "ok"
+ },
+ "db20c0f0d789": {
+  "en": "Helmut Schrempf",
+  "a": "Helmut Schrempf",
+  "date": "2026-11-17",
+  "b": "Helmut Schrempf",
+  "tr": "Helmut Schrempf",
+  "back": "Helmut Schrempf",
+  "check": "ok"
+ },
+ "db71055d0472": {
+  "en": "Task {1}, Thu {2}, was cancelled (weather).",
+  "a": "任务{1}（周四{2}）因天气取消。",
+  "date": "2026-11-17",
+  "b": "周四{2}的任务{1}已取消（天气）。",
+  "tr": "任务{1}（周四{2}）因天气取消。"
+ },
+ "dbd0af254257": {
+  "en": "Wind carved rock, with dried ancient seabeds to land on",
+  "a": "风蚀岩石，降落在干涸的远古海床上",
+  "date": "2026-11-17",
+  "b": "风蚀岩石，可降落在干涸的远古海床上",
+  "tr": "风蚀岩石，可降落在干涸的远古海床上",
+  "tr_note": "picked b",
+  "back": "Wind-eroded rock, with landing possible on the dried-up ancient seabed",
+  "check": "ok"
+ },
+ "dc8415ccfe52": {
+  "en": "Feb",
+  "a": "二月",
+  "date": "2026-11-17",
+  "b": "二月",
+  "tr": "二月"
+ },
+ "dca1bc8e03da": {
+  "en": "Pre {1} Kenya, Nikolay Yotov",
+  "a": "《{1}预赛 肯尼亚》，Nikolay Yotov",
+  "date": "2026-11-17",
+  "b": "{1}前哨赛肯尼亚站，Nikolay Yotov",
+  "tr": "《{1}肯尼亚预赛》，Nikolay Yotov",
+  "tr_note": "episode title form",
+  "back": "\"{1} Kenya Qualifier\", Nikolay Yotov",
+  "check": "ok"
+ },
+ "dcc39d11ca89": {
+  "en": "<x1>{1}</x1>Gear list, dates, and costs",
+  "a": "<x1>{1}</x1>装备清单、日期与费用",
+  "date": "2026-11-17",
+  "b": "<x1>{1}</x1>装备清单、日期和费用",
+  "tr": "<x1>{1}</x1>装备清单、日期与费用",
+  "back": "<x1>{1}</x1> equipment list, dates and costs",
+  "check": "ok"
+ },
+ "dcd142d76412": {
+  "en": "Also from India",
+  "a": "更多来自印度",
+  "date": "2026-11-17",
+  "b": "同样来自印度",
+  "tr": "更多来自印度",
+  "back": "More from India",
+  "check": "ok"
+ },
+ "dcdd23907a64": {
+  "en": "fly the route",
+  "a": "沿航线飞行",
+  "date": "2026-11-17",
+  "b": "飞这条路线",
+  "tr": "沿航线飞行",
+  "back": "Fly along the route",
+  "check": "ok"
+ },
+ "dd77da78750c": {
+  "en": "Episode Library",
+  "a": "节目库",
+  "date": "2026-11-17",
+  "b": "节目库",
+  "tr": "节目库",
+  "back": "Episode library",
+  "check": "ok"
+ },
+ "ddd71ef106b6": {
+  "en": "Planned, {1}",
+  "a": "计划中，{1}",
+  "date": "2026-11-17",
+  "b": "计划中，{1}",
+  "tr": "计划中，{1}",
+  "back": "Planned, {1}",
+  "check": "ok"
+ },
+ "de9a3242d1b8": {
+  "en": "Watched",
+  "a": "已观看",
+  "date": "2026-11-17",
+  "b": "已观看",
+  "tr": "已观看",
+  "back": "Watched",
+  "check": "ok"
+ },
+ "dead7d6e185a": {
+  "en": "Drag to rotate.",
+  "a": "拖动以旋转。",
+  "date": "2026-11-17",
+  "b": "拖动可旋转。",
+  "tr": "拖动以旋转。",
+  "back": "Drag to rotate.",
+  "check": "ok"
+ },
+ "df68968bb28f": {
+  "en": "{1} tasks scored, {2} cancelled",
+  "a": "{1}个任务计分，{2}个取消",
+  "date": "2026-11-17",
+  "b": "已计分{1}个任务，取消{2}个",
+  "tr": "{1}个任务计分，{2}个取消"
+ },
+ "df7b59baf144": {
+  "en": "Search episodes, the knowledge base and trips",
+  "a": "搜索节目、知识库和行程",
+  "date": "2026-11-17",
+  "b": "搜索节目、知识库和行程",
+  "tr": "搜索节目、知识库和行程",
+  "back": "Search episodes, knowledge base and itineraries",
+  "check": "ok"
+ },
+ "e09eb1e94858": {
+  "en": "Navigating India (Bonus Ep), Episode {1}, {2} min",
+  "a": "《探路印度（特辑）》，第{1}集，{2}分钟",
+  "date": "2026-11-17",
+  "b": "导航印度（加更），第{1}期，{2}分钟",
+  "tr": "《探路印度（特辑）》，第{1}集，{2}分钟",
+  "back": "\"Pathfinding India (Special)\", episode {1}, {2} minutes",
+  "check": "ok"
+ },
+ "e0beea67ac4b": {
+  "en": "{1} photos<x1> + film</x1>",
+  "a": "{1}张照片<x1> + 影片</x1>",
+  "date": "2026-11-17",
+  "b": "{1}张照片<x1> + 视频</x1>",
+  "tr": "{1}张照片<x1> + 视频</x1>",
+  "tr_note": "film = 视频 site-wide (mainland usage)"
+ },
+ "e17fcf4292ab": {
+  "en": "Know Your Equipment",
+  "a": "了解你的装备",
+  "date": "2026-11-17",
+  "b": "了解你的装备",
+  "tr": "了解你的装备",
+  "back": "Know your equipment",
+  "check": "ok"
+ },
+ "e2263a59774e": {
+  "en": "The window",
+  "a": "飞行窗口",
+  "date": "2026-11-17",
+  "b": "时间窗口",
+  "tr": "飞行窗口"
+ },
+ "e23733910d4b": {
+  "en": "<x1>←</x1> Practice",
+  "a": "<x1>←</x1> 练习日",
+  "date": "2026-11-17",
+  "b": "<x1>←</x1> 练习",
+  "tr": "<x1>←</x1> 练习日"
+ },
+ "e28e179e9c6c": {
+  "en": "Total airtime",
+  "a": "总飞行时间",
+  "date": "2026-11-17",
+  "b": "总飞行时间",
+  "tr": "总飞行时间",
+  "back": "Total flying time",
+  "check": "ok"
+ },
+ "e2961db6b32f": {
+  "en": "We're a group of like minded pilots who meticulously craft each trip with passion, creativity, and teamwork.",
+  "a": "我们是一群志同道合的飞行员，用热情、创意和团队合作精心打造每一次行程。",
+  "date": "2026-11-17",
+  "b": "我们是一群志同道合的飞行员，满怀热情、创意与团队精神，精心打造每一次行程。",
+  "tr": "我们是一群志同道合的飞行员，用热情、创意和团队合作精心打造每一次行程。",
+  "back": "We are a group of like-minded pilots who carefully craft every itinerary with passion, creativity and teamwork.",
+  "check": "ok"
+ },
+ "e2e55a0f5b9c": {
+  "en": "{1}: Podcast, Knowledge Base and Guided Expeditions",
+  "a": "{1}：播客、知识库与带队探险之旅",
+  "date": "2026-11-17",
+  "b": "{1}：播客、知识库与带队远征",
+  "tr": "{1}：播客、知识库与带队远征",
+  "tr_note": "picked b",
+  "back": "{1}: podcast, knowledge base and guided expeditions",
+  "check": "ok"
+ },
+ "e4115be258db": {
+  "en": "Coming soon",
+  "a": "即将公布",
+  "date": "2026-11-17",
+  "b": "即将推出",
+  "tr": "即将公布",
+  "back": "To be announced soon",
+  "check": "ok"
+ },
+ "e42c1920eb71": {
+  "en": "Flying 8000ers",
+  "a": "飞越8000米级高峰",
+  "date": "2026-11-17",
+  "b": "飞越八千米级高峰",
+  "tr": "飞越8000米级高峰",
+  "back": "Flying over 8000-metre-class peaks",
+  "check": "ok"
+ },
+ "e45e18b8b5da": {
+  "en": "{1} {2}, after five scored tasks",
+  "a": "{1} {2}，五个计分任务之后",
+  "date": "2026-11-17",
+  "b": "{1} {2}，五个任务计分之后",
+  "tr": "{1} {2}，五个计分任务之后"
+ },
+ "e4698d4ceacb": {
+  "en": "Mission",
+  "a": "使命",
+  "date": "2026-11-17",
+  "b": "使命",
+  "tr": "使命",
+  "back": "Mission",
+  "check": "ok"
+ },
+ "e4a39135c67b": {
+  "en": "Tasks {1}",
+  "a": "任务{1}",
+  "date": "2026-11-17",
+  "b": "任务{1}",
+  "tr": "任务{1}"
+ },
+ "e4dfdee0faab": {
+  "en": "Over Nature's Wildest Secrets",
+  "a": "飞越大自然最狂野的秘境",
+  "date": "2026-11-17",
+  "b": "飞越大自然最野性的秘密",
+  "tr": "飞越大自然最狂野的秘境",
+  "back": "Fly over the wildest secret realms of nature",
+  "check": "ok"
+ },
+ "e512ce1ae8d0": {
+  "en": "Skip the pictures <x1>↓</x1>",
+  "a": "跳过照片<x1>↓</x1>",
+  "date": "2026-11-17",
+  "b": "跳过图片<x1>↓</x1>",
+  "tr": "跳过照片<x1>↓</x1>"
+ },
+ "e610f8570e95": {
+  "en": "Point at the name: {1}",
+  "a": "指向名称：{1}",
+  "date": "2026-11-17",
+  "b": "指向名字：{1}",
+  "tr": "指向名称：{1}",
+  "back": "Point at the name: {1}",
+  "check": "ok"
+ },
+ "e62f600c6538": {
+  "en": "Fri {1}",
+  "a": "周五{1}",
+  "date": "2026-11-17",
+  "b": "周五{1}",
+  "tr": "周五{1}"
+ },
+ "e6552ff8db24": {
+  "en": "See the trip →",
+  "a": "查看行程 →",
+  "date": "2026-11-17",
+  "b": "查看行程 →",
+  "tr": "查看行程 →",
+  "back": "View itinerary →",
+  "check": "ok"
+ },
+ "e6f0ac20d465": {
+  "en": "An {1} day guided paragliding tour in {2}, India, {3}: the volcanic tablelands of the {4} hills, where India held a pre World Cup.",
+  "a": "在印度{2}进行的{1}天滑翔伞带队之旅，{3}：{4}山区的火山台地，印度曾在这里举办世界杯预赛。",
+  "date": "2026-11-17",
+  "b": "在印度{2}的{1}天带队飞行伞行程，{3}：{4}山丘的火山台地，印度曾在这里举办世界杯前哨赛。",
+  "tr": "在印度{2}进行的{1}天滑翔伞带队之旅，{3}：{4}山区的火山台地，印度曾在这里举办世界杯预赛。",
+  "waive": {
+   "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is an attributive or a verb, where Chinese pilots say 滑翔伞 / 飞滑翔伞, and 滑翔伞运动 would read stiffly"
+  }
+ },
+ "e764aadd1307": {
+  "en": "See the latest photos <x1>→</x1>",
+  "a": "查看最新照片<x1>→</x1>",
+  "date": "2026-11-17",
+  "b": "查看最新照片<x1>→</x1>",
+  "tr": "查看最新照片<x1>→</x1>"
+ },
+ "e7b4f1443b46": {
+  "en": "<x1>Length</x1>{1} days",
+  "a": "<x1>天数</x1>{1}天",
+  "date": "2026-11-17",
+  "b": "<x1>时长</x1>{1}天",
+  "tr": "<x1>天数</x1>{1}天",
+  "back": "<x1>Number of days</x1>{1} days",
+  "check": "ok"
+ },
+ "e7e51a25d971": {
+  "en": "Live from {1}",
+  "a": "{1}现场",
+  "date": "2026-11-17",
+  "b": "{1}现场",
+  "tr": "{1}现场",
+  "back": "{1} on site",
+  "check": "ok"
+ },
+ "e7f2e2bf4c83": {
+  "en": "How the race went",
+  "a": "比赛进程",
+  "date": "2026-11-17",
+  "b": "比赛经过",
+  "tr": "比赛进程"
+ },
+ "e974dd81fba3": {
+  "en": "Two paragliders over striped canyon terrain in Kazakhstan",
+  "a": "两顶滑翔伞飞越哈萨克斯坦条纹状的峡谷地貌",
+  "date": "2026-11-17",
+  "b": "两顶伞翼飞过哈萨克斯坦的条纹峡谷地带",
+  "tr": "两顶滑翔伞飞越哈萨克斯坦条纹状的峡谷地貌",
+  "back": "Two paragliders fly over the striped canyon landscape of Kazakhstan",
+  "check": "ok"
+ },
+ "e9b97caadb76": {
+  "en": "What you are asking about",
+  "a": "你想咨询什么",
+  "date": "2026-11-17",
+  "b": "你要咨询什么",
+  "tr": "你想咨询什么",
+  "back": "What you would like to enquire about",
+  "check": "ok"
+ },
+ "ea87894cf00c": {
+  "en": "Space plays and pauses · F full screen · Esc closes",
+  "a": "空格键播放/暂停 · F 全屏 · Esc 关闭",
+  "date": "2026-11-17",
+  "b": "空格键播放或暂停 · F全屏 · Esc关闭",
+  "tr": "空格键播放/暂停 · F 全屏 · Esc 关闭"
+ },
+ "ead9064285b7": {
+  "en": "Anything else",
+  "a": "其他",
+  "date": "2026-11-17",
+  "b": "其他事项",
+  "tr": "其他",
+  "back": "Other",
+  "check": "ok"
+ },
+ "eaef28326bc8": {
+  "en": "No task flown",
+  "a": "未飞任务",
+  "date": "2026-11-17",
+  "b": "未进行任务",
+  "tr": "没有飞任务",
+  "tr_note": "a's 未飞任务 reads as 'unflown task'"
+ },
+ "ec45acc37fea": {
+  "en": "Navigating {1}",
+  "a": "探路{1}",
+  "date": "2026-11-17",
+  "b": "导航{1}",
+  "tr": "探路{1}",
+  "back": "Pathfinding {1}",
+  "check": "ok"
+ },
+ "ec5dec738a1e": {
+  "en": "Pause: stay on this place",
+  "a": "暂停：停留在此地点",
+  "date": "2026-11-17",
+  "b": "暂停：停留在这一站",
+  "tr": "暂停：停留在此地点",
+  "back": "Pause: stay at this location",
+  "check": "ok"
+ },
+ "ed16cdea2237": {
+  "en": "Chapters of Navigating India (Bonus Ep)",
+  "a": "《探路印度（特辑）》章节",
+  "date": "2026-11-17",
+  "b": "《导航印度（加更）》的章节",
+  "tr": "《探路印度（特辑）》章节",
+  "back": "Chapters of \"Pathfinding India (Special)\"",
+  "check": "ok"
+ },
+ "edbb69d4dc57": {
+  "en": "Kazakhstan · The steppe",
+  "a": "哈萨克斯坦 · 草原",
+  "date": "2026-11-17",
+  "b": "哈萨克斯坦 · 草原",
+  "tr": "哈萨克斯坦 · 草原",
+  "back": "Kazakhstan · Steppe",
+  "check": "ok"
+ },
+ "edcea341dc9e": {
+  "en": "Biophysics In The Art Of Flight",
+  "a": "飞行艺术中的生物物理学",
+  "date": "2026-11-17",
+  "b": "飞行艺术中的生物物理学",
+  "tr": "飞行艺术中的生物物理学",
+  "back": "Biophysics in the art of flying",
+  "check": "ok"
+ },
+ "ee76ac54f270": {
+  "en": "Dr Matt Wilkes",
+  "a": "Matt Wilkes 博士",
+  "date": "2026-11-17",
+  "b": "Matt Wilkes博士",
+  "tr": "Matt Wilkes 博士",
+  "back": "Dr. Matt Wilkes",
+  "check": "ok"
+ },
+ "eeea3ff6f328": {
+  "en": "What happens to this",
+  "a": "这些信息会怎样处理",
+  "date": "2026-11-17",
+  "b": "这些信息会怎样处理",
+  "tr": "这些信息会怎样处理",
+  "back": "How this information is handled",
+  "check": "ok"
+ },
+ "ef0ca08b3d85": {
+  "en": "A {1} km task raced under a storm clock, which eventually got stopped by rain.",
+  "a": "一个{1} km的任务，在风暴倒计时下竞速，最终因下雨被叫停。",
+  "date": "2026-11-17",
+  "b": "一个{1}公里的任务，在风暴倒计时下进行，最终被降雨叫停。",
+  "tr": "一个{1} km的任务，在风暴倒计时下竞速，最终因下雨被叫停。"
+ },
+ "ef699a7a5491": {
+  "en": "What the guidebook offers",
+  "a": "这本指南能提供什么",
+  "date": "2026-11-17",
+  "b": "旅行指南能提供什么",
+  "tr": "这本指南能提供什么",
+  "back": "What this guide can offer",
+  "check": "ok"
+ },
+ "ef931280933d": {
+  "en": "What you'll get in end-to-end guidance from {1}",
+  "a": "{1}将为你提供的全程指导",
+  "date": "2026-11-17",
+  "b": "从{1}获得的全程指导包括哪些",
+  "tr": "{1}将为你提供的全程指导"
+ },
+ "efed3690ea22": {
+  "en": "Jan",
+  "a": "一月",
+  "date": "2026-11-17",
+  "b": "一月",
+  "tr": "一月"
+ },
+ "efefa00fad45": {
+  "en": "footage from Bir Billing",
+  "a": "Bir Billing 的影像",
+  "date": "2026-11-17",
+  "b": "Bir Billing的影像",
+  "tr": "Bir Billing 的影像",
+  "back": "Images of Bir Billing",
+  "check": "ok"
+ },
+ "f0a3ce2aea68": {
+  "en": "How Open Are Manufacturers Really",
+  "a": "制造商到底有多透明",
+  "date": "2026-11-17",
+  "b": "厂商究竟有多开放",
+  "tr": "制造商到底有多透明",
+  "back": "Just how transparent manufacturers really are",
+  "check": "ok"
+ },
+ "f0bad7dfd220": {
+  "en": "Retrieves, taxis, and finding your tribe",
+  "a": "回收、出租车，以及找到你的圈子",
+  "date": "2026-11-17",
+  "b": "回收、出租车，以及找到同路人",
+  "tr": "回收、出租车，以及找到你的圈子",
+  "back": "Retrieval, taxis, and finding your circle",
+  "check": "ok"
+ },
+ "f138d6b94b5a": {
+  "en": "Every evening the sea breeze comes in from the coast, so the flying day is timed around it. In the time you get for cross country, it is glorious.",
+  "a": "每天傍晚，海风从海岸吹来，所以飞行日的安排都围绕它展开。在可以越野飞行的那段时间里，这里棒极了。",
+  "date": "2026-11-17",
+  "b": "每天傍晚海风从海岸吹来，所以飞行日要围绕它安排。在留给越野飞行的时间里，飞行棒极了。",
+  "tr": "每天傍晚，海风从海岸吹来，所以飞行日的安排都围绕它展开。在可以越野飞行的那段时间里，这里棒极了。"
+ },
+ "f190c98ece6a": {
+  "en": "Your message",
+  "a": "你的留言",
+  "date": "2026-11-17",
+  "b": "你的留言",
+  "tr": "你的留言",
+  "back": "Your message",
+  "check": "ok"
+ },
+ "f1c7151aa419": {
+  "en": "If you get below {1} meters, start looking for a safe landing. Don't get close to the terrain unless you really know what you're doing.",
+  "a": "如果高度低于{1}米，就开始寻找安全的降落点。除非你真的清楚自己在做什么，否则不要靠近地形。",
+  "date": "2026-11-17",
+  "b": "如果高度低于{1}米，就要开始寻找安全的着陆点。除非你真的清楚自己在做什么，否则不要靠近地形。",
+  "tr": "如果高度低于{1}米，就开始寻找安全的降落点。除非你真的清楚自己在做什么，否则不要靠近地形。",
+  "waive": {
+   "glossary": "glossary 'landing' (降落场) is the landing field; here English means the act or a spot of landing (降落), not a designated field"
+  }
+ },
+ "f1deb1848d99": {
+  "en": "See all {1} photos",
+  "a": "查看全部{1}张照片",
+  "date": "2026-11-17",
+  "b": "查看全部{1}张照片",
+  "tr": "查看全部{1}张照片",
+  "back": "View all {1} photos",
+  "check": "ok"
+ },
+ "f22b1fc2f44b": {
+  "en": "Safety & Disclosure",
+  "a": "安全与披露",
+  "date": "2026-11-17",
+  "b": "安全与披露",
+  "tr": "安全与披露",
+  "back": "Safety and disclosure",
+  "check": "ok"
+ },
+ "f27f0b9bc5b4": {
+  "en": "Play: go on to the next places",
+  "a": "播放：继续前往下一个地点",
+  "date": "2026-11-17",
+  "b": "播放：前往下一站",
+  "tr": "播放：继续前往下一个地点",
+  "back": "Play: continue to the next location",
+  "check": "ok"
+ },
+ "f2a9413341c8": {
+  "en": "By submitting you consent to email updates from {1}. Unsubscribe any time.",
+  "a": "提交即表示你同意接收来自{1}的邮件更新。可随时退订。",
+  "date": "2026-11-17",
+  "b": "提交即表示你同意接收来自{1}的电子邮件更新。随时可以退订。",
+  "tr": "提交即表示你同意接收来自{1}的邮件更新。可随时退订。",
+  "back": "By submitting, you agree to receive email updates from {1}. You can unsubscribe at any time.",
+  "check": "ok"
+ },
+ "f2d2644d755f": {
+  "en": "Seven Frames From The Tablelands",
+  "a": "台地七帧",
+  "date": "2026-11-17",
+  "b": "台地上的七帧画面",
+  "tr": "台地上的七帧画面",
+  "tr_note": "picked b"
+ },
+ "f314bfd7b738": {
+  "en": "More conversations, {1} guests, newest first",
+  "a": "更多对话，{1}位嘉宾，最新在前",
+  "date": "2026-11-17",
+  "b": "更多对话，{1}位嘉宾，按最新排序",
+  "tr": "更多对话，{1}位嘉宾，最新在前",
+  "back": "More conversations, {1} guests, newest first",
+  "check": "ok"
+ },
+ "f34662b77043": {
+  "en": "Vistasp Kharas",
+  "a": "Vistasp Kharas",
+  "date": "2026-11-17",
+  "b": "Vistasp Kharas",
+  "tr": "Vistasp Kharas",
+  "back": "Vistasp Kharas",
+  "check": "ok"
+ },
+ "f38e0023e4b0": {
+  "en": "Points from {1}'s final results; the bars are each task's score, out of {2}. <x1>Full results <x2>↗</x2></x1>",
+  "a": "分数取自{1}的最终成绩；每根条形代表各任务得分，满分{2}。<x1>完整成绩<x2>↗</x2></x1>",
+  "date": "2026-11-17",
+  "b": "分数来自{1}的最终成绩；柱状图为各任务的得分，满分{2}。<x1>完整成绩<x2>↗</x2></x1>",
+  "tr": "分数取自{1}的最终成绩；每根条形代表各任务得分，满分{2}。<x1>完整成绩<x2>↗</x2></x1>"
+ },
+ "f3e6db90f07a": {
+  "en": "November to March. The wind starts from the north-northeast and turns southeast towards spring, so the take-off is chosen to match. The tour flies in February, in the heart of it.",
+  "a": "十一月至三月。风起初来自北东北方向，临近春天转为东南风，因此起飞场会随之选择。本团在二月飞行，正值季节最好的时候。",
+  "date": "2026-11-17",
+  "b": "十一月至三月。风从北偏东北开始，随着春天临近转向东南，所以要据此选择起飞场。行程安排在二月，正值旺季。",
+  "tr": "十一月至三月。风起初来自北东北方向，临近春天转为东南风，因此起飞场会随之选择。本团在二月飞行，正值季节正中。",
+  "tr_note": "a; 'in the heart of it' is mid-season, not 'the best time' (a) or 'peak season' (b)"
+ },
+ "f423fc07da77": {
+  "en": "A {1} minute call, no obligation and nothing to prepare, is usually faster than any form. So is a message.",
+  "a": "一次{1}分钟的通话，没有任何义务，也无需任何准备，通常比填任何表格都快。发消息也一样。",
+  "date": "2026-11-17",
+  "b": "一次{1}分钟的通话，无需承诺，也无需准备，通常比任何表单都快。发消息也一样。",
+  "tr": "一次{1}分钟的通话，没有任何义务，也无需任何准备，通常比填任何表格都快。发消息也一样。",
+  "back": "A {1}-minute call, with no obligation and no preparation needed, is usually faster than filling in any form. Sending a message is the same.",
+  "check": "ok"
+ },
+ "f4a06efeb240": {
+  "en": "Exclusive Journeys",
+  "a": "独家旅程",
+  "date": "2026-11-17",
+  "b": "专属之旅",
+  "tr": "独家旅程",
+  "back": "Exclusive journeys",
+  "check": "ok"
+ },
+ "f4c9f3051b3d": {
+  "en": "Also on",
+  "a": "也可在以下平台收听",
+  "date": "2026-11-17",
+  "b": "也可在以下平台收听",
+  "tr": "也可在以下平台收听",
+  "back": "Also available to listen to on the following platforms",
+  "check": "ok"
+ },
+ "f5b7906f2ef7": {
+  "en": "Swipe the photo to fly the route",
+  "a": "滑动照片，沿航线飞行",
+  "date": "2026-11-17",
+  "b": "滑动照片，飞这条路线",
+  "tr": "滑动照片，沿航线飞行",
+  "back": "Slide the photos, fly along the route",
+  "check": "ok"
+ },
+ "f5e423430d11": {
+  "en": "If you have made a piece of gear, a piece of tech or a wild new adventure concept that would make a positive difference to this community, we would like to hear about it. We run paid spotlight segments inside episodes: you reach listeners across {1} countries, and it helps keep the podcast funded and free. Sponsored segments are always disclosed at the top of the episode, which is set out in our <x1>disclosure statements</x1>.",
+  "a": "如果你做出了一件装备、一项技术，或一个能为这个圈子带来积极改变的大胆冒险新构想，我们很想听听。我们在节目中设有付费推介环节：你可以触达遍布{1}个国家的听众，同时也帮助播客维持运营、保持免费。赞助环节一律在节目开头声明，具体见我们的<x1>披露声明</x1>。",
+  "date": "2026-11-17",
+  "b": "如果你做出了一件装备、一项技术，或一个能为这个社群带来积极改变的全新冒险构想，我们很想听听。我们在节目中设有付费的聚焦环节：你可以触达{1}个国家的听众，这也有助于让播客得到资金支持并保持免费。赞助环节始终会在节目开头说明，详见我们的<x1>披露声明</x1>。",
+  "tr": "如果你做出了一件装备、一项技术，或一个能为这个圈子带来积极改变的大胆冒险新构想，我们很想听听。我们在节目中设有付费推介环节：你可以触达遍布{1}个国家的听众，同时也帮助播客维持运营、保持免费。赞助环节一律在节目开头声明，具体见我们的<x1>披露声明</x1>。",
+  "back": "If you have made a piece of equipment, a technique, or a bold new idea for adventure that could bring positive change to this community, we would love to hear it. We have a paid pitch segment in the episodes: you can reach listeners across {1} countries, while also helping the podcast keep running and stay free. Sponsored segments are always declared at the start of the episode; see our <x1>disclosure statement</x1> for details.",
+  "check": "ok"
+ },
+ "f677d22679bc": {
+  "en": "Refunds within {1} days",
+  "a": "{1}天内退款",
+  "date": "2026-11-17",
+  "b": "{1}天内退款",
+  "tr": "{1}天内退款"
+ },
+ "f6f5b350c771": {
+  "en": "Cross country and {1} experience <x1>(optional)</x1>",
+  "a": "越野与{1}经验<x1>（选填）</x1>",
+  "date": "2026-11-17",
+  "b": "越野飞行和{1}经验<x1>（选填）</x1>",
+  "tr": "越野飞行与{1}经验<x1>（选填）</x1>",
+  "tr_note": "a, cross country = 越野飞行 (glossary)",
+  "back": "Cross-country flying and {1} experience<x1>(optional)</x1>",
+  "check": "ok"
+ },
+ "f71baf639b74": {
+  "en": "Of our responsibility to you",
+  "a": "我们对你的责任依然不变",
+  "date": "2026-11-17",
+  "b": "我们对你的责任",
+  "tr": "我们对你的责任",
+  "tr_note": "picked b"
+ },
+ "f80642793f25": {
+  "en": "How high does it get?",
+  "a": "能飞多高？",
+  "date": "2026-11-17",
+  "b": "能飞多高？",
+  "tr": "能飞多高？"
+ },
+ "f98d5b67851f": {
+  "en": "What is the cancellation policy?",
+  "a": "取消政策是什么？",
+  "date": "2026-11-17",
+  "b": "取消政策是什么？",
+  "tr": "取消政策是什么？"
+ },
+ "f9b630a0d55f": {
+  "en": "Chapters of Pre {1} Kenya",
+  "a": "《{1}预赛 肯尼亚》章节",
+  "date": "2026-11-17",
+  "b": "{1}前哨赛肯尼亚站的章节",
+  "tr": "《{1}肯尼亚预赛》章节",
+  "tr_note": "episode title form",
+  "back": "Chapters of \"{1} Kenya Qualifier\"",
+  "check": "ok"
+ },
+ "f9eddba7c5dd": {
+  "en": "The air",
+  "a": "空气",
+  "date": "2026-11-17",
+  "b": "空气",
+  "tr": "气流",
+  "tr_note": "'The air' as a section heading about thermals, inversions and wind; 空气 reads as 'oxygen/air quality'"
+ },
+ "fa232835d54c": {
+  "en": "Photos by <x1>@{1}</x1>",
+  "a": "摄影：<x1>@{1}</x1>",
+  "date": "2026-11-17",
+  "b": "摄影：<x1>@{1}</x1>",
+  "tr": "摄影：<x1>@{1}</x1>"
+ },
+ "fb9a55e2e558": {
+  "en": "Thu {1}",
+  "a": "周四{1}",
+  "date": "2026-11-17",
+  "b": "周四{1}",
+  "tr": "周四{1}"
+ },
+ "fbfad16c223b": {
+  "en": "Honorin Hamard",
+  "a": "Honorin Hamard",
+  "date": "2026-11-17",
+  "b": "Honorin Hamard",
+  "tr": "Honorin Hamard",
+  "back": "Honorin Hamard",
+  "check": "ok"
+ },
+ "fc44a371885f": {
+  "en": "Where do we land?",
+  "a": "我们在哪里降落？",
+  "date": "2026-11-17",
+  "b": "我们在哪里降落？",
+  "tr": "我们在哪里降落？"
+ },
+ "fd178e6aa89d": {
+  "en": "{1} · Org. nr {2}<x1/>Olav {3} M {4}, {5} {6}, Norway",
+  "a": "{1} · Org. nr {2}<x1/>Olav {3} M {4}, {5} {6}, 挪威",
+  "date": "2026-11-17",
+  "b": "{1} · 组织编号{2}<x1/>Olav {3} M {4}，{5} {6}，挪威",
+  "tr": "{1} · Org. nr {2}<x1/>Olav {3} M {4}, {5} {6}, 挪威",
+  "back": "{1} · Org. nr {2}<x1/>Olav {3} M {4}, {5} {6}, Norway",
+  "check": "ok"
+ },
+ "fd7425b0b2cc": {
+  "en": "Title, guest, or topic",
+  "a": "标题、嘉宾或主题",
+  "date": "2026-11-17",
+  "b": "标题、嘉宾或话题",
+  "tr": "标题、嘉宾或主题",
+  "back": "Title, guest or topic",
+  "check": "ok"
+ },
+ "fdd28f3767dd": {
+  "en": "Watch the film again, {1}",
+  "a": "再看一遍影片，{1}",
+  "date": "2026-11-17",
+  "b": "再看一遍视频，{1}",
+  "tr": "再看一遍视频，{1}",
+  "tr_note": "film = 视频",
+  "back": "Watch the video again, {1}",
+  "check": "ok"
+ },
+ "fe29ff6d5070": {
+  "en": "Saved to Files",
+  "a": "已存储到“文件”",
+  "date": "2026-11-17",
+  "b": "已保存到“文件”",
+  "tr": "已保存到“文件”",
+  "tr_note": "picked b",
+  "back": "Saved to \"Files\"",
+  "check": "ok"
+ },
+ "fe388a3a6791": {
+  "en": "Next leg: Task {1}, Sun {2} <x1>→</x1>",
+  "a": "下一站：任务{1}，周日{2} <x1>→</x1>",
+  "date": "2026-11-17",
+  "b": "下一站：任务{1}，周日{2} <x1>→</x1>",
+  "tr": "下一站：任务{1}，周日{2} <x1>→</x1>"
+ },
+ "fe6687820101": {
+  "en": "Next photo",
+  "a": "下一张",
+  "date": "2026-11-17",
+  "b": "下一张照片",
+  "tr": "下一张"
+ },
+ "fea7f7310667": {
+  "en": "<x1>{1}</x1>What you'll get in end-to-end guidance from {2}",
+  "a": "<x1>{1}</x1>{2}将为你提供的全程指导",
+  "date": "2026-11-17",
+  "b": "<x1>{1}</x1>从{2}获得的全程指导包括哪些",
+  "tr": "<x1>{1}</x1>{2}将为你提供的全程指导",
+  "back": "<x1>{1}</x1> the full-course guidance that {2} will provide for you",
+  "check": "ok"
+ },
+ "fef1cdedf4ba": {
+  "en": "{1} Tour",
+  "a": "{1}团",
+  "date": "2026-11-17",
+  "b": "{1}行程",
+  "tr": "{1}团"
+ },
+ "ff68eb68195a": {
+  "en": "Enquiry",
+  "a": "咨询内容",
+  "date": "2026-11-17",
+  "b": "咨询",
+  "tr": "咨询内容",
+  "back": "Enquiry content",
+  "check": "ok"
+ },
+ "ffecf930cc9f": {
+  "en": "Kinga Masztalerz",
+  "a": "Kinga Masztalerz",
+  "date": "2026-11-17",
+  "b": "Kinga Masztalerz",
+  "tr": "Kinga Masztalerz",
+  "back": "Kinga Masztalerz",
+  "check": "ok"
+ }
+}

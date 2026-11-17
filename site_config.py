@@ -64,6 +64,9 @@ def url(path=""):
     return BASE + path.lstrip("/")
 
 
+I18N_DIRS = ("de", "fr", "es", "zh")    # the site in other languages (chat 27, docs/v4-i18n.md)
+
+
 def public_url(path=""):
     """The address a page is ADVERTISED at: canonical, og:url, sitemap, schema.
 
@@ -73,7 +76,12 @@ def public_url(path=""):
     index.html; the canonical is what consolidates them.
     """
     p = path.lstrip("/")
-    return BASE if p == "index.html" else BASE + p
+    if p == "index.html":
+        return BASE
+    # the home page in another language (tools/v4_i18n.py, chat 27): /de/, /fr/, /es/, /zh/
+    if p.endswith("/index.html") and p.split("/")[0] in I18N_DIRS and p.count("/") == 1:
+        return BASE + p[:-len("index.html")]
+    return BASE + p
 
 
 def organization():

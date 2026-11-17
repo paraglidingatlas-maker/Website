@@ -155,8 +155,20 @@ def transform(rel, pages, problems=None):
             src = src.replace("<head>\n", "<head>\n" + "\n".join(live_robots) + "\n", 1)
     # owner, 8 Nov 2026: a fact still missing reads "Coming soon" on the live site (the prototypes keep the
     # [to supply] marker, so the checks still find every gap)
-    src = src.replace("[to supply]", "Coming soon")
+    src = src.replace("[to supply]", coming_soon(rel))
     return src
+
+
+def coming_soon(rel):
+    """"Coming soon" in the page's language (tools/data/i18n/config.json; a page under de/ is German)."""
+    top = rel.split("/")[0]
+    if top in getattr(S, "I18N_DIRS", ()):
+        import json
+        cfg = json.load(open(os.path.join(ROOT, "tools", "data", "i18n", "config.json"), encoding="utf-8"))
+        for c in cfg["langs"].values():
+            if c["dir"] == top:
+                return c["coming"]
+    return "Coming soon"
 
 
 def apply(root, problems=None):
