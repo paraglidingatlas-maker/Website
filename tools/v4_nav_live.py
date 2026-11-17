@@ -39,7 +39,8 @@ def main(today=None):
     on = LIVE["first"] <= today <= LIVE["last"]
     n = 0
     for d, dirs, fs in os.walk(V4):
-        dirs[:] = [x for x in dirs if x != "src"]
+        # src, and the language folders (de/ fr/ es/ zh/): v4_i18n build writes those, cue translated (chat 28)
+        dirs[:] = [x for x in dirs if x != "src" and not (d == V4 and x in ("de", "fr", "es", "zh"))]
         for f in fs:
             if not f.endswith(".html"):
                 continue
