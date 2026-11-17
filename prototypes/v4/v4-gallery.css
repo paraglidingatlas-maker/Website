@@ -637,3 +637,15 @@ html.v2-nav-up .gf-line.is-stuck{transform:translateY(var(--v2-nav-h,5rem))}
   .gr-step{height:56px}.gr-c1 .gr-step{height:72px}.gr-c3 .gr-step{height:44px}
   .gr-step span{font-size:2.4rem}
 }
+
+/* ---- the comp's talks (chat 25, 17 Nov 2026): two frames that play in place, who and what under each ---- */
+.gt{padding:clamp(3rem,7vw,5rem) 0;border-top:1px solid var(--line)}
+.gt-in{max-width:min(1120px,calc(100% - 2*var(--gutter)));margin:0 auto}
+.gt-h{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,6vw,3.6rem);line-height:1;letter-spacing:-.03em;color:var(--white);margin:.35rem 0 1.8rem}
+.gt-cs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem clamp(1rem,3vw,2rem)}
+@media (max-width:760px){.gt-cs{grid-template-columns:1fr}}
+.gt-c .md-frame{border-radius:10px}
+.gt-k{margin-top:.9rem;font-size:var(--fs-micro);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+.gt-t{margin-top:.3rem;font-family:var(--font-display);font-weight:600;font-size:clamp(1.15rem,2.2vw,1.5rem);line-height:1.2;color:var(--gray-light)}
+.gt-t b{display:block;color:var(--white);font-weight:700}
+.gt-l{margin-top:.5rem;font-size:var(--fs-body-s);color:var(--gray-light);max-width:52ch}
