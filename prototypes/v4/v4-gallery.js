@@ -937,6 +937,7 @@
   function pick(k, focus) {
     tabs.forEach(function (t, j) { t.setAttribute("aria-selected", j === k ? "true" : "false"); t.tabIndex = j === k ? 0 : -1; });
     panels.forEach(function (p, j) { p.hidden = j !== k; });
+    sec.setAttribute("data-b", k);
     if (focus) tabs[k].focus();
     if (sec.classList.contains("gr-up")) { sec.classList.remove("gr-up"); void sec.offsetWidth; sec.classList.add("gr-up"); }
   }
