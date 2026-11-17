@@ -410,7 +410,9 @@
   "en": "{1}, Kenya · {2}",
   "a": "{1} (Kenya) · {2}",
   "date": "2026-11-17",
-  "b": "{1}, Kenya – {2}"
+  "b": "{1}, Kenya – {2}",
+  "tr": "{1}, Kenya · {2}",
+  "tr_note": "kept the English punctuation: both drafts had changed it only to get past the old 'left in English' check"
  },
  "1370004da76f": {
   "en": "Duration",
@@ -1465,7 +1467,9 @@
   "en": "Mission Statement",
   "a": "Notre mission",
   "date": "2026-11-17",
-  "b": "Notre mission"
+  "b": "Notre mission",
+  "tr": "Notre mission",
+  "tr_note": "both drafts; 'Déclaration de mission' is an anglicism, 'Notre mission' is the usual French menu label"
  },
  "4bf5048f5cbf": {
   "en": "{1} off the hill: pottery, yoga and Buddhism",
@@ -1892,7 +1896,8 @@
   "en": "{1}, Mexico · photos and videos",
   "a": "{1}, Mexique · photos et vidéos",
   "date": "2026-11-17",
-  "b": "{1}, Mexique · photos et vidéos"
+  "b": "{1}, Mexique · photos et vidéos",
+  "tr": "{1}, Mexique · photos et vidéos"
  },
  "61fa280a65cf": {
   "en": "Tour {1}",
@@ -2133,7 +2138,8 @@
   "en": "Close menu",
   "a": "Fermer le menu",
   "date": "2026-11-17",
-  "b": "Fermer le menu"
+  "b": "Fermer le menu",
+  "tr": "Fermer le menu"
  },
  "6d5bb241740a": {
   "en": "<x1>Group</x1>Small group",
@@ -3641,7 +3647,8 @@
   "en": "Library",
   "a": "Bibliothèque",
   "date": "2026-11-17",
-  "b": "Bibliothèque"
+  "b": "Bibliothèque",
+  "tr": "Bibliothèque"
  },
  "b9b15d8821c5": {
   "en": "The film",
@@ -4518,7 +4525,8 @@
   "en": "Search episodes, the knowledge base and trips",
   "a": "Rechercher dans les épisodes, la base de connaissances et les voyages",
   "date": "2026-11-17",
-  "b": "Chercher dans les épisodes, la base de connaissances et les voyages"
+  "b": "Chercher dans les épisodes, la base de connaissances et les voyages",
+  "tr": "Rechercher dans les épisodes, la base de connaissances et les voyages"
  },
  "e09eb1e94858": {
   "en": "Navigating India (Bonus Ep), Episode {1}, {2} min",

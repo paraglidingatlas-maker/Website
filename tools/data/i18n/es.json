@@ -424,7 +424,8 @@
   "en": "{1}, Kenya · {2}",
   "a": "{1}, Kenia · {2}",
   "date": "2026-11-17",
-  "b": "{1}, Kenia · {2}"
+  "b": "{1}, Kenia · {2}",
+  "tr": "{1}, Kenia · {2}"
  },
  "1370004da76f": {
   "en": "Duration",
@@ -1475,7 +1476,8 @@
   "en": "Mission Statement",
   "a": "Declaración de misión",
   "date": "2026-11-17",
-  "b": "Declaración de misión"
+  "b": "Declaración de misión",
+  "tr": "Declaración de misión"
  },
  "4bf5048f5cbf": {
   "en": "{1} off the hill: pottery, yoga and Buddhism",
@@ -1909,7 +1911,8 @@
   "en": "{1}, Mexico · photos and videos",
   "a": "{1}, México · fotos y vídeos",
   "date": "2026-11-17",
-  "b": "{1}, México · fotos y vídeos"
+  "b": "{1}, México · fotos y vídeos",
+  "tr": "{1}, México · fotos y vídeos"
  },
  "61fa280a65cf": {
   "en": "Tour {1}",
@@ -2146,7 +2149,8 @@
   "en": "Close menu",
   "a": "Cerrar el menú",
   "date": "2026-11-17",
-  "b": "Cerrar el menú"
+  "b": "Cerrar el menú",
+  "tr": "Cerrar el menú"
  },
  "6d5bb241740a": {
   "en": "<x1>Group</x1>Small group",
@@ -3684,7 +3688,8 @@
   "en": "Library",
   "a": "Biblioteca",
   "date": "2026-11-17",
-  "b": "Biblioteca"
+  "b": "Biblioteca",
+  "tr": "Biblioteca"
  },
  "b9b15d8821c5": {
   "en": "The film",
@@ -4570,7 +4575,9 @@
   "en": "Search episodes, the knowledge base and trips",
   "a": "Busca episodios, la base de conocimiento y viajes",
   "date": "2026-11-17",
-  "b": "Buscar en los episodios, la base de conocimiento y los viajes"
+  "b": "Buscar en los episodios, la base de conocimiento y los viajes",
+  "tr": "Buscar en los episodios, la base de conocimiento y los viajes",
+  "tr_note": "b: infinitive search label like 'Buscar', with articles throughout"
  },
  "e09eb1e94858": {
   "en": "Navigating India (Bonus Ep), Episode {1}, {2} min",
