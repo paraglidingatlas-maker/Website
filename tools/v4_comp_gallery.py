@@ -89,18 +89,9 @@ COMPS = {
                                       poster="SRS_6_T3_141", pos="60% 40%")},
                     # owner, 15 Nov: "add the podium and results". SRS's event overall, marked Final on
                     # api.airtribune.com/srs/scores/?meet=93 (type 56 Sports, 57 Female, 61 Team), 14 Nov; names as srs.live writes them
+                    # SRS's final tables, saved by tools/srs_results.py 93 tools/data/tapalpa-results.json (14 Nov, "Final")
                     results=dict(src="https://airtribune.com/srs-2026-6/results", note="SRS Advance Edition Tapalpa, after five scored tasks",
-                                 tasks=["T1", "T2", "T3", "T4", "T6"], photo="SRS_6_T6_56", pos="72% 45%",
-                                 # each: name, nation, glider (wing as SRS lists it) or the team's pilots, total, the five task scores
-                                 boards=[("Overall", [("Andrés Tello Alvarado", "MEX", "Tau DLS", "3978.7", [982.0, 542.7, 944.1, 668.8, 841.1]),
-                                                      ("Bill Belcourt", "USA", "Lyght", "3782.4", [922.1, 363.6, 963.2, 704.6, 828.9]),
-                                                      ("Chaeden Luebberke", "USA", "Artik R 2", "3630.9", [973.2, 430.4, 977.9, 515.5, 733.9])]),
-                                         ("Women", [("Lynsey Haynes", "CAN", "Artik R 2", "3497.0", [956.4, 342.1, 806.7, 648.9, 742.9]),
-                                                    ("Riley Ferre", "USA", "GTO 3", "3032.0", [643.7, 316.1, 616.2, 682.3, 773.7]),
-                                                    ("Summer Barham", "USA", "Photon", "3008.6", [644.8, 278.8, 707.4, 659.9, 717.7])]),
-                                         ("Teams", [("CryMeARiviuk", "", "Haynes, Nazander, Luebberke, McClurg", "3645.0", [956.4, 342.1, 954.7, 648.9, 742.9]),
-                                                    ("Gin 2", "", "Nicol, Andreliunas, Ferre, Groeneveld", "3499.7", [956.4, 316.1, 921.9, 462.1, 843.2]),
-                                                    ("Ozone", "", "Takats, Castro, Barham, Desmond", "3493.1", [644.8, 542.8, 937.2, 532.1, 836.2])])])),
+                                 data="tapalpa-results.json", tasks=["T1", "T2", "T3", "T4", "T6"], photo="SRS_6_T6_56", pos="72% 45%")),
     "piedrahita": dict(page="media-srs-piedrahita-2026.html", folder="srs-piedrahita", title="Piedrahita 2026", tz="Europe/Madrid",
                        kicker="SRS BGD Edition &middot; Piedrahita, Ávila, Spain", span="22 to 29 Aug 2026",
                        facts=["22 to 29 Aug 2026", "FAI Category 2", "120 pilots, 54 countries", "Photos by Aninder Singh"],
@@ -405,32 +396,98 @@ FILM_DIALOG = """
 """ % dict(channel=CHANNEL, ext=EXT)
 
 
+def person(n):
+    """an SRS name ("Andrés TELLO ALVARADO") as it reads on the page ("Andrés Tello Alvarado"); McX keeps its capital"""
+    def w(t):
+        if not t.isupper():
+            return t
+        t = "-".join(x.capitalize() for x in t.split("-"))
+        return "Mc" + t[2:].capitalize() if t.startswith("Mc") and len(t) > 2 else t
+    return " ".join(w(t) for t in n.split())
+
+
+def race(rows, tasks, cap, W=1000, H=420, R=210, cls=""):
+    """the race chart: each of the final top 10's place after every task (cumulative points, ties share a place) as
+    lines; the podium in its metals, the rest thin; places below `cap` sit on the bottom edge, marked as lower"""
+    allc = [[sum(r["scores"][:k + 1]) for k in range(len(tasks))] for r in rows]
+    place = [[1 + sum(1 for c in allc if c[k] > me[k] + 1e-9) for k in range(len(tasks))] for me in allc]
+    top = rows[:10]
+    L, T, B = 30, 24, 40
+    lo = min(cap, max(max(p) for p in place[:10]))
+    xs = [L + k * (W - L - R) / (len(tasks) - 1) for k in range(len(tasks))]
+    y = lambda rk: T + (min(rk, lo) - 1) * (H - T - B) / max(1, lo - 1)
+    grid = "".join('<line x1="%.0f" x2="%.0f" y1="%d" y2="%d"/>' % (x, x, T - 8, H - B + 8) for x in xs)
+    ticks = "".join('<text x="%.0f" y="%d">%s</text>' % (x, H - 12, E(t)) for x, t in zip(xs, tasks))
+    ylab = "".join('<text class="gr-rl" x="%d" y="%.1f">%d</text>' % (L - 12, y(r) + 4, r) for r in (1, 5, 10, 15, 20) if r <= lo and not (r == lo and any(max(p) > lo for p in place[:10])))
+    if any(max(p) > lo for p in place[:10]):
+        ylab += '<text class="gr-rl" x="%d" y="%.1f">%d+</text>' % (L - 12, y(lo) + 4, lo)
+    lines = []
+    for i, (r, p) in enumerate(reversed(list(zip(top, place[:10])))):
+        k = len(top) - 1 - i
+        pts = " ".join("%.1f,%.1f" % (x, y(rk)) for x, rk in zip(xs, p))
+        nm = person(r["name"]).split(" ", 1)[-1] if r.get("nat") else r["name"]
+        tip = "%s: %s" % (person(r["name"]), ", ".join("%s %s" % (t, ("%d" % rk) if rk <= lo else "%d" % rk) for t, rk in zip(tasks, p)))
+        dots = "".join('<circle cx="%.1f" cy="%.1f" r="%s"/>' % (x, y(rk), "5" if k < 3 else "3") for x, rk in zip(xs, p))
+        lines.append('<g class="gr-ln%d" tabindex="0"><title>%s</title><polyline points="%s" pathLength="1"/>%s'
+                     '<text x="%.0f" y="%.1f"><tspan class="gr-lp">%d</tspan> %s</text></g>'
+                     % (min(k + 1, 4), E(tip), pts, dots, xs[-1] + 16, y(p[-1]) + 5, k + 1, E(nm)))
+    return ('<svg class="gr-race%s" viewBox="0 0 %d %d" role="img" aria-label="Places of the final top ten after each task">'
+            '<g class="gr-grid">%s</g><g class="gr-ticks">%s%s</g>%s</svg>' % (cls, W, H, grid, ticks, ylab, "".join(lines))), place
+
+
+def story(rows, place, tasks, team=False):
+    """one line on how the lead went, from the places alone: who led after each task"""
+    who = lambda i: rows[i]["name"] if team else person(rows[i]["name"])
+    lead = [[i for i in range(len(rows)) if place[i][k] == 1] for k in range(len(tasks))]
+    w = 0
+    first = next(k for k in range(len(tasks)) if lead[k] == [w] and all(lead[j] == [w] for j in range(k, len(tasks))))
+    if first == 0:
+        return "%s led from %s to the end." % (E(who(w)), E(tasks[0]))
+    before = lead[first - 1]
+    if w in before:     # shared the lead, then held it alone
+        others = " and ".join(E(who(i)) for i in before if i != w)
+        return "%s shared the lead with %s after %s, then led alone from %s to the end." % (E(who(w)), others, E(tasks[first - 1]), E(tasks[first]))
+    was = " and ".join(E(who(i)) for i in before)
+    return "%s led after %s; %s took the lead after %s and kept it to the end." % (
+        was, E(tasks[first - 1]), E(who(w)), E(tasks[first]))
+
+
 def results(comp):
-    """the event's podium once SRS marks the overall Final (chat 25, 16 Nov): the comp's own photo behind, a tab per
-    board (overall, women, teams; no JS: the three stacked), the three on steps (2, 1, 3), each with its five task scores"""
+    """the event's podium once SRS marks the overall Final (chat 25, 16-17 Nov): the comp's own photo behind, a tab per
+    board (overall, women, teams; no JS: the three stacked), the three on steps (2, 1, 3) with their five task scores,
+    then the race: the top ten's places after each task"""
     r = COMPS[comp].get("results")
     if not r:
         return ""
+    d = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", r["data"])))
     tasks = [label(t) for t in r["tasks"]]
     def card(k, row):
-        name, nat, sub, pts, ts = row
-        team = not nat
+        team = "members" in row
+        name = row["name"] if team else person(row["name"])
         first, last = ("", name) if team or " " not in name else name.split(" ", 1)
+        sub = ", ".join(person(m).split(" ", 1)[-1] for m in row["members"]) if team else E(row["nat"]) + " &middot; " + E(row["glider"].split("/")[0])
         bars = "".join('<i style="--v:%.3f" title="%s: %.1f"><span>%s</span></i>' % (v / 1000, E(t), v, E(t.replace("Task ", "T")))
-                       for t, v in zip(tasks, ts))
-        aria = "; ".join("%s %.1f" % (t, v) for t, v in zip(tasks, ts))
+                       for t, v in zip(tasks, row["scores"]))
+        aria = "; ".join("%s %.1f" % (t, v) for t, v in zip(tasks, row["scores"]))
         return ('<li class="gr-c gr-c%d"><div class="gr-who"><span class="gr-fn">%s</span><span class="gr-ln">%s</span>'
-                '<span class="gr-meta">%s</span></div><p class="gr-pts"><b>%s</b> pts</p>'
+                '<span class="gr-meta">%s</span></div><p class="gr-pts"><b>%.1f</b> pts</p>'
                 '<p class="gr-tk" role="img" aria-label="Task scores: %s">%s</p><div class="gr-step" aria-hidden="true"><span>%d</span></div></li>'
-                % (k + 1, E(first), E(last), (E(nat) + ' &middot; ' + E(sub)) if not team else E(sub), E(pts), E(aria), bars, k + 1))
+                % (k + 1, E(first), E(last), sub if not team else E(sub), row["total"], E(aria), bars, k + 1))
     tabs, panels = [], []
-    for b, (name, rows) in enumerate(r["boards"]):
-        gap = float(rows[0][3]) - float(rows[1][3])
+    for b, (name, key) in enumerate([("Overall", "overall"), ("Women", "women"), ("Teams", "teams")]):
+        rows = d[key]
+        gap = rows[0]["total"] - rows[1]["total"]
+        short = [t.replace("Task ", "T") for t in tasks]
+        chart, place = race(rows, short, 20)
+        chart += race(rows, short, 20, W=560, H=560, R=150, cls=" gr-race--s")[0]     # a phone's: taller, so its words stay legible
         tabs.append('<button type="button" role="tab" id="gr-tab-%d" aria-controls="gr-p-%d" aria-selected="%s">%s</button>'
                     % (b, b, "true" if b == 0 else "false", E(name)))
         panels.append('<div class="gr-b" id="gr-p-%d" role="tabpanel" aria-labelledby="gr-tab-%d"><h3>%s</h3><ol class="gr-pod">%s</ol>'
-                      '<p class="gr-gap">%s by <b>%.1f</b> points</p></div>'
-                      % (b, b, E(name), "".join(card(k, row) for k, row in enumerate(rows)), "Won", gap))
+                      '<p class="gr-gap">Won by <b>%.1f</b> points</p>'
+                      '<div class="gr-rc"><p class="gr-rk-k">How the race went</p><p class="gr-story">%s</p>%s'
+                      '<p class="gr-rc-n">Place after each task, on points so far: the final top ten of %d.</p></div></div>'
+                      % (b, b, E(name), "".join(card(k, row) for k, row in enumerate(rows[:3])), gap,
+                         story(rows, place, tasks, key == "teams"), chart, len(rows)))
     ph = r.get("photo")
     bg = ('<div class="gr-bg" aria-hidden="true"><img src="%s" srcset="%s" sizes="100vw" alt="" loading="lazy" style="object-position:%s"></div>'
           % (src(comp, ph, 1600), srcset(comp, ph), r.get("pos", "50% 50%")) if ph else "")
