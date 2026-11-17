@@ -1,0 +1,1320 @@
+{
+  "_about": "Sourced paragliding glossary (EN -> DE/FR/ES/ZH-Hans) for the paragliding Atlas translation pipeline. Built 2026-11-17. Every non-placeholder entry was checked: the source was downloaded and the quote string was found verbatim in its extracted text. 'term' is the main rendering; 'also' lists variants, each found on that same page unless noted. 'source_type' says how authoritative the source is: federation sources first (DHV, SHV/FSVL, RFAE/FECDA); press, university, regional-association and Wikipedia sources are secondary and marked as such. ffvl.fr (Cloudflare) and the ASFC/中国航空运动协会 sites were unreachable, so French leans on Swiss FSVL texts and Chinese on secondary sources. '[to supply]' = no checkable source found; do not machine-guess these.",
+  "terms": [
+    {
+      "en": "paragliding",
+      "note": "the sport",
+      "de": {
+        "term": "Gleitschirmfliegen",
+        "source": "https://www.dhv.de/media/seiten/02_fliegen/APOundLehrpl%C3%A4ne/APOGleitschirm.pdf",
+        "quote": "Die Grundtechniken des Gleitschirmfliegens einschließlich der Vorbereitungen dafür",
+        "source_type": "federation (DHV)"
+      },
+      "fr": {
+        "term": "parapente",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Re__glement_C__2025-f.pdf",
+        "quote": "Compétitions FSVL de parapente",
+        "also": [
+          "vol libre"
+        ],
+        "source_type": "federation (FSVL competition rules)"
+      },
+      "es": {
+        "term": "parapente",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "El parapente es un planeador sin estructura rígida primaria",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "滑翔伞运动",
+        "source": "https://paper.people.com.cn/rmrb/html/2023-08/25/nw.D110000renmrb_20230825_6-15.htm",
+        "quote": "为滑翔伞运动提供了良好的环境",
+        "source_type": "press (People's Daily)"
+      }
+    },
+    {
+      "en": "paraglider",
+      "note": "the aircraft; also \"wing\", \"glider\"",
+      "de": {
+        "term": "Gleitschirm",
+        "source": "https://www.dhv.de/media/jahre/2026/news/04/SicherheitImFokus/DHVmagazinArtikelGSSafetyBasicsTeil1.pdf",
+        "quote": "Gleitschirme können bei massiven Störungen",
+        "also": [
+          "Schirm"
+        ],
+        "source_type": "federation (DHV magazine)"
+      },
+      "fr": {
+        "term": "aile",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Ausbildung/Flugschulen_SHV/Kommentar_Kontrollblatt_FR.pdf",
+        "quote": "Chaque partie du parapente (calotte, suspentes, élévateurs) est préparée en fonction du type d’aile",
+        "also": [
+          "parapente"
+        ],
+        "source_type": "federation (FSVL training)"
+      },
+      "es": {
+        "term": "vela",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Nivel máx. de vela recomendado: EN A.",
+        "also": [
+          "parapente"
+        ],
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "滑翔伞",
+        "source": "https://zh.wikipedia.org/zh-cn/%E6%BB%91%E7%BF%94%E4%BC%9E",
+        "quote": "整套装备分为三大件：主伞、飞行座袋、副伞（救生伞）。",
+        "also": [
+          "主伞",
+          "伞翼"
+        ],
+        "source_type": "wikipedia (secondary)"
+      }
+    },
+    {
+      "en": "pilot",
+      "de": {
+        "term": "Pilot",
+        "source": "https://www.dhv.de/media/seiten/02_fliegen/APOundLehrpl%C3%A4ne/APOGleitschirm.pdf",
+        "quote": "Der Pilot ist in der Lage Überlandflüge selbständig zu planen",
+        "also": [
+          "Pilotin"
+        ],
+        "source_type": "federation (DHV)"
+      },
+      "fr": {
+        "term": "pilote",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Re__glement_C__2025-f.pdf",
+        "quote": "Les entraînements de vol s’adressent uniquement aux pilotes de thermiques chevronnés",
+        "source_type": "federation (FSVL competition rules)"
+      },
+      "es": {
+        "term": "piloto",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Obtener al menos la certificación RFAE 4 para considerarse piloto autónomo.",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "飞行员",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "飞行员按序进入起飞区",
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules"
+      }
+    },
+    {
+      "en": "tandem",
+      "note": "tandem flight / tandem pilot",
+      "de": {
+        "term": "Tandem",
+        "source": "https://www.dhv.de/fliegen/ausbildung/tandem/",
+        "quote": "Für das Tandemfliegen ist eine gesonderte Lizenz erforderlich.",
+        "also": [
+          "Tandemfliegen",
+          "Tandempilot"
+        ],
+        "source_type": "federation (DHV)"
+      },
+      "fr": {
+        "term": "biplace",
+        "source": "https://soaringmeteo.org/examenTheoriquePara32ed.pdf",
+        "quote": "Les vols avec un passager (vol biplace) ne peuvent être effectués que par des pilotes",
+        "also": [
+          "vol biplace",
+          "pilote de biplace"
+        ],
+        "source_type": "FSVL exam answers by an FSVL instructor (soaringmeteo), not the federation itself"
+      },
+      "es": {
+        "term": "biplaza",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Vuelos de térmica en biplaza.",
+        "also": [
+          "piloto biplaza"
+        ],
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": "",
+        "note": "No checkable source reached; a Chinese group standard (ttbz.org.cn) reportedly uses 双人滑翔伞 but the PDF returned 404."
+      }
+    },
+    {
+      "en": "thermal",
+      "note": "rising air, noun",
+      "de": {
+        "term": "Thermik",
+        "source": "https://www.dhv.de/wettbewerb/race/live-berichte-2025/",
+        "quote": "finde eine richtig gute Thermik mit zwei weiteren Piloten",
+        "source_type": "federation (DHV competition reports 2025)"
+      },
+      "fr": {
+        "term": "thermique",
+        "source": "https://soarwrf4.soaringmeteo.org/examenTheoriquePara22ed.pdf",
+        "quote": "plus fortes sont les ascendances thermiques",
+        "also": [
+          "ascendance thermique"
+        ],
+        "source_type": "FSVL exam answers by an FSVL instructor (soaringmeteo), not the federation itself",
+        "note": "masculine noun in pilot usage (\"un thermique\")"
+      },
+      "es": {
+        "term": "térmica",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Iniciación a la térmica.",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "热气流",
+        "source": "https://paper.people.com.cn/hwbwap/html/2024-11/01/content_26088481.htm",
+        "quote": "热气流强劲，有利于滑翔伞运动的开展",
+        "source_type": "press (People's Daily overseas edition)"
+      }
+    },
+    {
+      "en": "thermalling",
+      "note": "circling to climb in a thermal",
+      "de": {
+        "term": "Kreisen in der Thermik",
+        "source": "https://www.dhv.de/media/jahre/2026/news/04/SicherheitImFokus/DHVmagazinArtikelGSSafetyBasicsTeil1.pdf",
+        "quote": "das beim Kreisen in der Thermik",
+        "source_type": "federation (DHV magazine)"
+      },
+      "fr": {
+        "term": "cerclage",
+        "source": "https://soarwrf4.soaringmeteo.org/examenTheoriquePara52ed.pdf",
+        "quote": "L’exploitation (cerclage) des ascendances thermiques nécessite une certaine expérience",
+        "source_type": "FSVL exam answers by an FSVL instructor (soaringmeteo), not the federation itself"
+      },
+      "es": {
+        "term": "centrar",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Técnicas para los primeros giros en una térmica (centrar), eficiencia en térmica.",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)",
+        "note": "verb: centrar (la térmica); noun phrase in source: giros en una térmica"
+      },
+      "zh": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": ""
+      }
+    },
+    {
+      "en": "launch",
+      "note": "the take-off place, noun",
+      "de": {
+        "term": "Startplatz",
+        "source": "https://www.dhv.de/media/seiten/02_fliegen/APOundLehrpl%C3%A4ne/APOGleitschirm.pdf",
+        "quote": "sowohl am Startplatz als auch am Landeplatz",
+        "source_type": "federation (DHV)"
+      },
+      "fr": {
+        "term": "terrain de décollage",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Ausbildung/Flugschulen_SHV/Kommentar_Kontrollblatt_FR.pdf",
+        "quote": "Dès l’inspection du terrain de décollage",
+        "also": [
+          "décollage"
+        ],
+        "source_type": "federation (FSVL training)"
+      },
+      "es": {
+        "term": "despegue",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "cesión de terrenos de despegue y aterrizaje",
+        "also": [
+          "terreno de despegue"
+        ],
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "起飞场",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "起飞场：1450米（ASL-海拔高度）",
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules"
+      }
+    },
+    {
+      "en": "take-off",
+      "note": "the act of taking off",
+      "de": {
+        "term": "Start",
+        "source": "https://www.dhv.de/media/seiten/02_fliegen/APOundLehrpl%C3%A4ne/APOGleitschirm.pdf",
+        "quote": "Prüfungsteilen Start (Aufgaben: Startvorbereitung und Prüfer-Gespräch",
+        "source_type": "federation (DHV)"
+      },
+      "fr": {
+        "term": "décollage",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Ausbildung/Flugschulen_SHV/Kommentar_Kontrollblatt_FR.pdf",
+        "quote": "Décollage avec gonflage dos et face à l’aile",
+        "source_type": "federation (FSVL training)"
+      },
+      "es": {
+        "term": "despegue",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "decidiendo por si mismo los momentos de despegue",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "起飞",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "参赛者只允许一次起飞。",
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules"
+      }
+    },
+    {
+      "en": "landing",
+      "note": "the landing field, noun",
+      "de": {
+        "term": "Landeplatz",
+        "source": "https://shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Sportreglement_C_25.pdf",
+        "quote": "Fluggebiet mit geeignetem Start- und Landeplatz",
+        "source_type": "federation (SHV competition rules)"
+      },
+      "fr": {
+        "term": "terrain d’atterrissage",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Ausbildung/Weisungen/2024/Gleitschirm_Biplace1_Januar_2024_FR.pdf",
+        "quote": "un au terrain d’atterrissage",
+        "also": [
+          "atterrissage"
+        ],
+        "source_type": "federation (FSVL)"
+      },
+      "es": {
+        "term": "campo de aterrizaje",
+        "source": "https://ocw.unizar.es/ciencias-de-la-salud-1/actividades-fisicas-y-deportivas-aereas/Tema04Parapente09.pdf",
+        "quote": "desde donde podrá planear hasta el campo de aterrizaje",
+        "also": [
+          "aterrizaje"
+        ],
+        "source_type": "university course (Universidad de Zaragoza OCW), not a federation"
+      },
+      "zh": {
+        "term": "降落场",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "降落场：1000米",
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules"
+      }
+    },
+    {
+      "en": "top landing",
+      "note": "landing back on or near launch",
+      "de": {
+        "term": "Toplanden",
+        "source": "https://www.dhv.de/media/jahre/2024/02_fliegen/Lehrmaterial/Artikel/Flugtechnik/StartLandetechnik/18_2011_173_toplanden.pdf",
+        "quote": "Toplanden ist sehr anspruchsvoll.",
+        "source_type": "federation (DHV magazine)"
+      },
+      "fr": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": ""
+      },
+      "es": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": ""
+      },
+      "zh": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": ""
+      }
+    },
+    {
+      "en": "reserve",
+      "note": "reserve parachute",
+      "de": {
+        "term": "Rettungsgerät",
+        "source": "https://www.dhv.de/media/seiten/02_fliegen/APOundLehrpl%C3%A4ne/APOGleitschirm.pdf",
+        "quote": "Fluggerät, Gurtzeug, Rettungsgerät, Schutzhelm",
+        "also": [
+          "Rettungsschirm"
+        ],
+        "source_type": "federation (DHV)"
+      },
+      "fr": {
+        "term": "parachute de secours",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Ausbildung/Flugschulen_SHV/Kommentar_Kontrollblatt_FR.pdf",
+        "quote": "L’élève sait déclencher un parachute de secours",
+        "also": [
+          "secours"
+        ],
+        "source_type": "federation (FSVL training)"
+      },
+      "es": {
+        "term": "paracaídas de emergencia",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Paracaídas de emergencia homologado para el peso en vuelo",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "备份伞",
+        "source": "https://zh.wikipedia.org/zh-cn/%E6%BB%91%E7%BF%94%E4%BC%9E",
+        "quote": "备份伞是滑翔伞飞行必备物品",
+        "also": [
+          "副伞",
+          "救生伞"
+        ],
+        "source_type": "wikipedia (secondary)"
+      }
+    },
+    {
+      "en": "harness",
+      "de": {
+        "term": "Gurtzeug",
+        "source": "https://www.dhv.de/media/seiten/02_fliegen/APOundLehrpl%C3%A4ne/APOGleitschirm.pdf",
+        "quote": "Gurtzeuge müssen mit mustergeprüftem Rückenschutz",
+        "source_type": "federation (DHV)"
+      },
+      "fr": {
+        "term": "sellette",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Ausbildung/Flugschulen_SHV/Kommentar_Kontrollblatt_FR.pdf",
+        "quote": "Les élévateurs et la sellette sont disposés de sorte que",
+        "source_type": "federation (FSVL training)"
+      },
+      "es": {
+        "term": "arnés",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "ajuste del arnés antes y durante el vuelo",
+        "also": [
+          "silla"
+        ],
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "座袋",
+        "source": "https://zh.wikipedia.org/zh-cn/%E6%BB%91%E7%BF%94%E4%BC%9E",
+        "quote": "主伞、飞行座袋、副伞（救生伞）",
+        "also": [
+          "吊袋"
+        ],
+        "source_type": "wikipedia (secondary)"
+      }
+    },
+    {
+      "en": "cross-country",
+      "note": "XC flying",
+      "de": {
+        "term": "Streckenflug",
+        "source": "https://shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Sportreglement_C_25.pdf",
+        "quote": "Online-Streckenflugwettbewerb für SHV-Mitglieder",
+        "also": [
+          "XC"
+        ],
+        "source_type": "federation (SHV competition rules)"
+      },
+      "fr": {
+        "term": "vol de distance",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Re__glement_C__2025-f.pdf",
+        "quote": "compétition nationale et en ligne de vol de distance",
+        "also": [
+          "cross"
+        ],
+        "source_type": "federation (FSVL competition rules)"
+      },
+      "es": {
+        "term": "vuelo de cross",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "los tres principales tipos de vuelo de cross: distancia libre, ida y vuelta, y triángulo",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "越野飞行",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "这里说的越野飞行，英文词语是cross-country（或XC）",
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules"
+      }
+    },
+    {
+      "en": "task",
+      "note": "in a competition",
+      "de": {
+        "term": "Task",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/RZ_Organizer_A5_Handbook_deutsch.pdf",
+        "quote": "Wie schaut eine «normale» Tagesaufgabe (Task) aus?",
+        "also": [
+          "Tagesaufgabe"
+        ],
+        "source_type": "federation (SHV organiser handbook)"
+      },
+      "fr": {
+        "term": "manche",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Re__glement_C__2025-f.pdf",
+        "quote": "Chaque manche compte pour la Swiss Cup.",
+        "source_type": "federation (FSVL competition rules)"
+      },
+      "es": {
+        "term": "manga",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Cómo crear una competición y sus mangas.",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "任务",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "在每天任务结束后归还",
+        "also": [
+          "科目"
+        ],
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules",
+        "note": "the same source also renders \"task\" as 科目"
+      }
+    },
+    {
+      "en": "goal",
+      "note": "competition goal",
+      "de": {
+        "term": "Ziel",
+        "source": "https://shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Sportreglement_C_25.pdf",
+        "quote": "Kommt kein Pilot ins Ziel, zählt nur noch die Strecke.",
+        "also": [
+          "Goal"
+        ],
+        "source_type": "federation (SHV competition rules)"
+      },
+      "fr": {
+        "term": "but",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Re__glement_C__2025-f.pdf",
+        "quote": "la prochaine balise ou le but",
+        "source_type": "federation (FSVL competition rules)"
+      },
+      "es": {
+        "term": "gol",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Haber hecho al menos 5 “goles” en pruebas FAI 2.",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "终点",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "终点线，虚拟的或是实体的，以及圆柱体,都可能用来被作为终点目标。",
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules"
+      }
+    },
+    {
+      "en": "turnpoint",
+      "de": {
+        "term": "Wendepunkt",
+        "source": "https://shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Sportreglement_C_25.pdf",
+        "quote": "Flug, allenfalls mit Wendepunkten zu einem Ziel",
+        "source_type": "federation (SHV competition rules)"
+      },
+      "fr": {
+        "term": "balise",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/RZ_Organizer_A5_Handbook_franzA_sisch.pdf",
+        "quote": "Premier point de contournement (balise) avec un rayon de 400 m.",
+        "also": [
+          "point de contournement"
+        ],
+        "source_type": "federation (FSVL organiser handbook)"
+      },
+      "es": {
+        "term": "baliza",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "software de descarga de balizas, visualización y análisis de tracks",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)",
+        "note": "attested only as GPS waypoint files in the source; competition usage (\"pasar por balizas\") not confirmed on a federation page"
+      },
+      "zh": {
+        "term": "航点",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "当飞过这些比赛要求的航点时，电脑会自动打点",
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules"
+      }
+    },
+    {
+      "en": "start gate",
+      "note": "competition start (start time / start cylinder)",
+      "de": {
+        "term": "Startzeit",
+        "source": "https://shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Sportreglement_C_25.pdf",
+        "quote": "Die Flugzeit kann ab einer individuellen oder einer generellen Startzeit angemessen werden.",
+        "also": [
+          "Startzylinder"
+        ],
+        "source_type": "federation (SHV competition rules)"
+      },
+      "fr": {
+        "term": "départ",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/RZ_Organizer_A5_Handbook_franzA_sisch.pdf",
+        "quote": "Départ en l’air, le départ effectif de la compétition.",
+        "source_type": "federation (FSVL organiser handbook)",
+        "note": "\"fenêtre de départ\" in FSVL rules is the launch window, not the start gate"
+      },
+      "es": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": ""
+      },
+      "zh": {
+        "term": "开始时间",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "科目从空中开始，采取统一开始时间（冲向终点的竞速）",
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules",
+        "note": "source translator marks this passage as uncertain"
+      }
+    },
+    {
+      "en": "speed bar",
+      "de": {
+        "term": "Beschleuniger",
+        "source": "https://www.dhv.de/media/jahre/2026/news/04/SicherheitImFokus/DHVmagazinArtikelGSSafetyBasicsTeil1.pdf",
+        "quote": "Welche Beschleuniger-Stellung ist am besten?",
+        "source_type": "federation (DHV magazine)"
+      },
+      "fr": {
+        "term": "accélérateur",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Ausbildung/Flugschulen_SHV/Kommentar_Kontrollblatt_FR.pdf",
+        "quote": "Utilisation de l’accélérateur",
+        "source_type": "federation (FSVL training)"
+      },
+      "es": {
+        "term": "acelerador",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Mecánica de las orejas y el uso del acelerador",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "脚蹬加速系统",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "除了使用刹车及脚蹬加速系统外",
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules"
+      }
+    },
+    {
+      "en": "ridge soaring",
+      "de": {
+        "term": "Hangsoaring",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Ausbildung/Flugschulen_SHV/Kommentar_Kontrollblatt_DE.pdf",
+        "quote": "Hangsoaring (über 30 Minuten)",
+        "source_type": "federation (SHV)"
+      },
+      "fr": {
+        "term": "soaring de pente",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Ausbildung/Flugschulen_SHV/Kommentar_Kontrollblatt_FR.pdf",
+        "quote": "Soaring de pente (plus de 30 minutes)",
+        "source_type": "federation (FSVL training)"
+      },
+      "es": {
+        "term": "vuelo de ladera",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Vuelos de ladera en biplaza.",
+        "also": [
+          "ascendente dinámica"
+        ],
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "动力气流",
+        "source": "https://zh.wikipedia.org/zh-cn/%E6%BB%91%E7%BF%94%E4%BC%9E",
+        "quote": "依靠山形造成的 动力气流 徘徊在陡坡峭壁",
+        "source_type": "wikipedia (secondary)",
+        "note": "ridge lift; no paragliding-specific term for \"ridge soaring\" sourced"
+      }
+    },
+    {
+      "en": "soaring",
+      "de": {
+        "term": "Soaren",
+        "source": "https://www.dhv.de/wettbewerb/race/live-berichte-2025/",
+        "quote": "zum Soaren war der Wind zu schwach",
+        "also": [
+          "Soaring"
+        ],
+        "source_type": "federation (DHV competition reports 2025)"
+      },
+      "fr": {
+        "term": "soaring",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Ausbildung/Flugschulen_SHV/Kommentar_Kontrollblatt_FR.pdf",
+        "quote": "lors d’un soaring à la dune",
+        "source_type": "federation (FSVL training)"
+      },
+      "es": {
+        "term": "ascendente dinámica",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Uso de la ascendente dinámica en pendiente y la ascendente térmica.",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": ""
+      }
+    },
+    {
+      "en": "cloudbase",
+      "de": {
+        "term": "Wolkenbasis",
+        "source": "https://www.dhv.de/media/jahre/2025/07_wetter/Wetterwissen/DHVmagazin_Artikel/525_Basish%C3%B6he_auf_die_Schnelle.pdf",
+        "quote": "Die Höhe der Wolkenbasis von Thermikwolken lässt sich näherungsweise leicht errechnen.",
+        "also": [
+          "Basis"
+        ],
+        "source_type": "federation (DHV magazine)"
+      },
+      "fr": {
+        "term": "base des nuages",
+        "source": "https://soarwrf4.soaringmeteo.org/examenTheoriquePara52ed.pdf",
+        "quote": "200 à 300 m. sous la base des nuages",
+        "source_type": "FSVL exam answers by an FSVL instructor (soaringmeteo), not the federation itself"
+      },
+      "es": {
+        "term": "techo",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Habilidad para llegar al techo.",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)",
+        "note": "\"techo\" = top of the climb, in practice cloudbase"
+      },
+      "zh": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": ""
+      }
+    },
+    {
+      "en": "glide",
+      "note": "glide ratio",
+      "de": {
+        "term": "Gleitzahl",
+        "source": "https://www.dhv.de/media/jahre/2024/02_fliegen/Lehrmaterial/Artikel/Flugtechnik/FlugpraxisFlugtechnik/35_2011_174_richtige_fluggeschwindigkeit.pdf",
+        "quote": "reden von der Gleitzahl",
+        "source_type": "federation (DHV magazine)"
+      },
+      "fr": {
+        "term": "finesse",
+        "source": "https://securitedesvols.aero/images/pdf/2026pdf/2025-09%20COACT%20CNFAS%20Parapentes%20VF.pdf",
+        "quote": "La finesse air d’un parapente est comprise entre 8 et 11.",
+        "source_type": "government (French civil aviation safety, CNFAS)"
+      },
+      "es": {
+        "term": "planeo",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Ver el ángulo de planeo",
+        "also": [
+          "fineza"
+        ],
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": ""
+      }
+    },
+    {
+      "en": "SIV",
+      "note": "simulated incident / safety training course",
+      "de": {
+        "term": "Sicherheitstraining",
+        "source": "https://www.dhv.de/fliegen/sicherheitstraining/",
+        "quote": "Gleitschirm-Sicherheitstraining: Ablauf & Inhalte",
+        "source_type": "federation (DHV)"
+      },
+      "fr": {
+        "term": "stage SIV",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Re__glement_C__2025-f.pdf",
+        "quote": "participer à un stage SIV par saison",
+        "source_type": "federation (FSVL competition rules)"
+      },
+      "es": {
+        "term": "curso SIV",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Anexo 1. Cursos SIV RFAE.",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": ""
+      }
+    },
+    {
+      "en": "collapse",
+      "note": "asymmetric collapse",
+      "de": {
+        "term": "seitlicher Einklapper",
+        "source": "https://www.dhv.de/media/seiten/02_fliegen/APOundLehrpl%C3%A4ne/APOGleitschirm.pdf",
+        "quote": "seitlicher Einklapper mit Stabilisierung",
+        "also": [
+          "Einklapper"
+        ],
+        "source_type": "federation (DHV)"
+      },
+      "fr": {
+        "term": "fermeture asymétrique",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Ausbildung/Flugschulen_SHV/Kommentar_Kontrollblatt_FR.pdf",
+        "quote": "17. Fermeture asymétrique Objectif L’élève est capable de contrôler une aile",
+        "source_type": "federation (FSVL training)"
+      },
+      "es": {
+        "term": "plegada asimétrica",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Plegada asimétrica (sin acelerador y con acelerador al 50%)",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "塌陷",
+        "source": "https://zh.wikipedia.org/zh-cn/%E6%BB%91%E7%BF%94%E4%BC%9E",
+        "quote": "当主伞发生塌陷无法充气",
+        "source_type": "wikipedia (secondary)",
+        "note": "generic \"collapse\"; asymmetric form not sourced"
+      }
+    },
+    {
+      "en": "brake",
+      "note": "brake line / toggle",
+      "de": {
+        "term": "Bremse",
+        "source": "https://www.dhv.de/media/jahre/2026/news/04/SicherheitImFokus/DHVmagazinArtikelGSSafetyBasicsTeil1.pdf",
+        "quote": "Halte die Bremsen oben an der Bremsrolle",
+        "also": [
+          "Steuerleine"
+        ],
+        "source_type": "federation (DHV magazine)"
+      },
+      "fr": {
+        "term": "freins",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Ausbildung/Flugschulen_SHV/Kommentar_Kontrollblatt_FR.pdf",
+        "quote": "sans utiliser les commandes/freins",
+        "also": [
+          "commandes"
+        ],
+        "source_type": "federation (FSVL training)"
+      },
+      "es": {
+        "term": "frenos",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "El bombeo con los frenos.",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "刹车",
+        "source": "https://zh.wikipedia.org/zh-cn/%E6%BB%91%E7%BF%94%E4%BC%9E",
+        "quote": "飞行时左右手各持相应一侧的刹车手柄",
+        "also": [
+          "刹车手柄"
+        ],
+        "source_type": "wikipedia (secondary)"
+      }
+    },
+    {
+      "en": "risers",
+      "de": {
+        "term": "Tragegurte",
+        "source": "https://www.dhv.de/media/jahre/2026/news/04/SicherheitImFokus/DHVmagazinArtikelGSSafetyBasicsTeil1.pdf",
+        "quote": "Der Pilot greift den Tragegurt der nicht geklappten",
+        "source_type": "federation (DHV magazine)"
+      },
+      "fr": {
+        "term": "élévateurs",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Ausbildung/Flugschulen_SHV/Kommentar_Kontrollblatt_FR.pdf",
+        "quote": "Pilotage aux élévateurs arrière",
+        "source_type": "federation (FSVL training)"
+      },
+      "es": {
+        "term": "bandas",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Maniobrar con bandas traseras",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "组带",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "发现任何改变组带长度或是改变加速系统功能的装置",
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules"
+      }
+    },
+    {
+      "en": "variometer",
+      "note": "vario",
+      "de": {
+        "term": "Vario",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Ausbildung/Flugschulen_SHV/Kommentar_Kontrollblatt_DE.pdf",
+        "quote": "Dies soll sowohl mit als auch ohne Vario erfolgen.",
+        "source_type": "federation (SHV)"
+      },
+      "fr": {
+        "term": "variomètre",
+        "source": "https://soarwrf4.soaringmeteo.org/examenTheoriquePara42ed.pdf",
+        "quote": "le variomètre est incontestablement le plus utile au pilote de parapente",
+        "also": [
+          "vario"
+        ],
+        "source_type": "FSVL exam answers by an FSVL instructor (soaringmeteo), not the federation itself"
+      },
+      "es": {
+        "term": "variómetro",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Instrumentos: variómetros, GPS, etc.",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "垂直速度表",
+        "source": "https://zh.wikipedia.org/zh-cn/%E5%9E%82%E7%9B%B4%E9%80%9F%E5%BA%A6%E8%A1%A8",
+        "quote": "垂直速度表 （英语： variometer ）",
+        "source_type": "wikipedia (secondary; general-aviation instrument article)",
+        "note": "general-aviation name; paragliding-specific usage not confirmed"
+      }
+    },
+    {
+      "en": "airspace",
+      "de": {
+        "term": "Luftraum",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/RZ_Organizer_A5_Handbook_deutsch.pdf",
+        "quote": "Kabel, Luftraum, Talwindsysteme mit den Lees",
+        "source_type": "federation (SHV organiser handbook)"
+      },
+      "fr": {
+        "term": "espace aérien",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Re__glement_C__2025-f.pdf",
+        "quote": "respecter toutes les ordonnances relatives à l’espace aérien",
+        "source_type": "federation (FSVL competition rules)"
+      },
+      "es": {
+        "term": "espacio aéreo",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Espacio aéreo y normas VFR.",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "空域",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "在这次赛事期间，没有特别的空域限制。",
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules"
+      }
+    },
+    {
+      "en": "briefing",
+      "de": {
+        "term": "Briefing",
+        "source": "https://shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Sportreglement_C_25.pdf",
+        "quote": "Der Organisator definiert am Briefing die Art des Zieleinfluges.",
+        "source_type": "federation (SHV competition rules)"
+      },
+      "fr": {
+        "term": "briefing",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Re__glement_C__2025-f.pdf",
+        "quote": "Lors du briefing, l’organisateur détermine la manière de franchir",
+        "source_type": "federation (FSVL competition rules)"
+      },
+      "es": {
+        "term": "briefing",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Asistir a sesiones informativas de tareas (briefings) y seguir instrucciones.",
+        "also": [
+          "sesión informativa"
+        ],
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "任务简报",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "在任务简报的时候会告知飞行限制以及限制的原因",
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules"
+      }
+    },
+    {
+      "en": "retrieve",
+      "note": "driving pilots back",
+      "de": {
+        "term": "Rückholdienst",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/RZ_Organizer_A5_Handbook_deutsch.pdf",
+        "quote": "spezielles zum Start- und Landeplatz, Rückholdienst",
+        "also": [
+          "Retrieve"
+        ],
+        "source_type": "federation (SHV organiser handbook)"
+      },
+      "fr": {
+        "term": "récupération",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/RZ_Organizer_A5_Handbook_franzA_sisch.pdf",
+        "quote": "Pour les compétitions de parapente en Suisse, la récupération se fait presque toujours",
+        "also": [
+          "service de récupération"
+        ],
+        "source_type": "federation (FSVL organiser handbook)"
+      },
+      "es": {
+        "term": "recogida",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Recogidas: Flymaster Retrieve y bot Telegram.",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "回收",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "改善回收服务",
+        "also": [
+          "回收服务"
+        ],
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules"
+      }
+    },
+    {
+      "en": "competition",
+      "note": "comp",
+      "de": {
+        "term": "Wettbewerb",
+        "source": "https://shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Sportreglement_C_25.pdf",
+        "quote": "Die Schweizermeisterschaft ist ein Wettbewerb",
+        "source_type": "federation (SHV competition rules)"
+      },
+      "fr": {
+        "term": "compétition",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Re__glement_C__2025-f.pdf",
+        "quote": "La Cross Country Cup (CCC) est une compétition nationale",
+        "source_type": "federation (FSVL competition rules)"
+      },
+      "es": {
+        "term": "competición",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Área de competición.",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "比赛",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "滑翔伞比赛的时间为2018年8月20-29日",
+        "also": [
+          "竞赛",
+          "赛事"
+        ],
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules"
+      }
+    },
+    {
+      "en": "Paragliding World Cup",
+      "de": {
+        "term": "Paragliding World Cup",
+        "source": "https://www.dhv.de/wettbewerb/race/live-berichte-2024/",
+        "quote": "Herzlich Willkommen zum Paragliding World Cup in Cameli in der Türkei.",
+        "also": [
+          "Weltcup"
+        ],
+        "source_type": "federation (DHV competition reports 2024)"
+      },
+      "fr": {
+        "term": "Coupe du monde",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/RZ_Organizer_A5_Handbook_franzA_sisch.pdf",
+        "quote": "La dernière Coupe du monde organisée en Suisse a eu lieu à Grindelwald en 2008.",
+        "source_type": "federation (FSVL organiser handbook)"
+      },
+      "es": {
+        "term": "Copa del Mundo de Parapente",
+        "source": "https://www.elpais.com.co/deportes/roldanillo-otra-vez-recibira-la-final-de-la-copa-mundo-de-parapente.html",
+        "quote": "la Superfinal de la Copa del Mundo de Parapente Cross Country",
+        "source_type": "press (El País Colombia), not a federation"
+      },
+      "zh": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": "",
+        "note": "Chinese press found only for the Paragliding Accuracy World Cup (滑翔伞定点世界杯), a different series."
+      }
+    },
+    {
+      "en": "Super Final",
+      "de": {
+        "term": "Superfinal",
+        "source": "https://www.dhv.de/wettbewerb/race/live-berichte/",
+        "quote": "trifft sich die Elite des Gleitschirmsports zum Superfinal in Pegalajar",
+        "also": [
+          "Superfinale"
+        ],
+        "source_type": "federation (DHV competition reports; current-season page, content rotates)"
+      },
+      "fr": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": ""
+      },
+      "es": {
+        "term": "Superfinal",
+        "source": "https://www.elpais.com.co/deportes/roldanillo-otra-vez-recibira-la-final-de-la-copa-mundo-de-parapente.html",
+        "quote": "La Superfinal de la Copa del Mundo de Parapente Cross Country se realiza",
+        "source_type": "press (El País Colombia), not a federation"
+      },
+      "zh": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": "",
+        "note": "Only 总决赛 of the Accuracy World Cup found; not confirmed for the PWC Superfinal."
+      }
+    },
+    {
+      "en": "valley wind",
+      "de": {
+        "term": "Talwind",
+        "source": "https://www.dhv.de/wettbewerb/race/live-berichte/",
+        "quote": "bis wir unten im Talwind sind",
+        "source_type": "federation (DHV competition reports; current-season page, content rotates)"
+      },
+      "fr": {
+        "term": "vent de vallée",
+        "source": "https://soarwrf4.soaringmeteo.org/examenTheoriquePara22ed.pdf",
+        "quote": "Le vent de vallée (ou vent d’aval ou brise montante) est un vent qui souffle",
+        "source_type": "FSVL exam answers by an FSVL instructor (soaringmeteo), not the federation itself"
+      },
+      "es": {
+        "term": "viento de valle",
+        "source": "https://ocw.unizar.es/ciencias-de-la-salud-1/actividades-fisicas-y-deportivas-aereas/Tema04Parapente09.pdf",
+        "quote": "encontrará un fuerte viento de valle al aterrizar",
+        "source_type": "university course (Universidad de Zaragoza OCW), not a federation"
+      },
+      "zh": {
+        "term": "谷风",
+        "source": "https://zh.wikipedia.org/zh-cn/%E5%B1%B1%E8%B0%B7%E9%A3%8E",
+        "quote": "山谷地区形成 上升气流 ，称为谷风",
+        "source_type": "wikipedia (secondary)"
+      }
+    },
+    {
+      "en": "sea breeze",
+      "de": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": "",
+        "note": "A DHV-info 238 article reportedly says \"Der Seewind ist leider etwas schwach\" but the PDF could not be fetched to confirm."
+      },
+      "fr": {
+        "term": "brise de mer",
+        "source": "https://fr.wikipedia.org/wiki/Parapente",
+        "quote": "Parapente profitant de la brise de mer pour effectuer du vol de pente le long d'une falaise.",
+        "source_type": "wikipedia (secondary)"
+      },
+      "es": {
+        "term": "brisa marina",
+        "source": "https://es.wikipedia.org/wiki/Brisa_marina",
+        "quote": "Un frente de brisa marina es un frente meteorológico creado por una brisa marina",
+        "source_type": "wikipedia (secondary)"
+      },
+      "zh": {
+        "term": "海风",
+        "source": "https://zh.wikipedia.org/zh-cn/%E6%B5%B7%E9%99%86%E9%A3%8E",
+        "quote": "在白昼 风 从海上吹向陆地，称为 海风",
+        "source_type": "wikipedia (secondary)"
+      }
+    },
+    {
+      "en": "flying site",
+      "de": {
+        "term": "Fluggelände",
+        "source": "https://www.dhv.de/media/seiten/02_fliegen/APOundLehrpl%C3%A4ne/APOGleitschirm.pdf",
+        "quote": "vom DHV als ausbildungs-geeignet anerkanntes Fluggelände",
+        "also": [
+          "Fluggebiet"
+        ],
+        "source_type": "federation (DHV)"
+      },
+      "fr": {
+        "term": "site de vol",
+        "source": "https://soarwrf4.soaringmeteo.org/examenTheoriquePara52ed.pdf",
+        "quote": "Lorsqu’on se rend dans un nouveau site de vol",
+        "source_type": "FSVL exam answers by an FSVL instructor (soaringmeteo), not the federation itself"
+      },
+      "es": {
+        "term": "zona de vuelo",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Establece los requisitos para el reconocimiento de una Zona de Vuelo de parapente.",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "滑翔伞基地",
+        "source": "https://paper.people.com.cn/hwbwap/html/2024-11/01/content_26088481.htm",
+        "quote": "是国内基础条件最好、面积最大的滑翔伞基地之一",
+        "also": [
+          "航空飞行营地"
+        ],
+        "source_type": "press (People's Daily overseas edition)"
+      }
+    },
+    {
+      "en": "hike and fly",
+      "de": {
+        "term": "Hike & Fly",
+        "source": "https://shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Sportreglement_C_25.pdf",
+        "quote": "Der Disziplin Hike & Fly (Hike & Fly-League)",
+        "source_type": "federation (SHV competition rules)"
+      },
+      "fr": {
+        "term": "Hike & fly",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Re__glement_C__2025-f.pdf",
+        "quote": "Swiss League de parapente, discipline Hike & fly",
+        "source_type": "federation (FSVL competition rules)"
+      },
+      "es": {
+        "term": "hike&fly",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Reglamento Hike&Fly RFAE.",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": ""
+      }
+    },
+    {
+      "en": "beginner course / pilot licence",
+      "note": "e.g. \"P2\"; national systems differ, do not map levels 1:1",
+      "de": {
+        "term": "A-Lizenz",
+        "source": "https://www.dhv.de/media/seiten/02_fliegen/APOundLehrpl%C3%A4ne/APOGleitschirm.pdf",
+        "quote": "Beschränkter Luftfahrerschein für Luftsportgeräteführer (A-Lizenz)",
+        "also": [
+          "Grundausbildung"
+        ],
+        "source_type": "federation (DHV)"
+      },
+      "fr": {
+        "term": "brevet",
+        "source": "https://soaringmeteo.org/examenTheoriquePara32ed.pdf",
+        "quote": "L’âge minimal pour obtenir la licence (brevet) de vol libre est 16 ans.",
+        "also": [
+          "licence"
+        ],
+        "source_type": "FSVL exam answers by an FSVL instructor (soaringmeteo), not the federation itself",
+        "note": "Swiss usage; FFVL \"brevet initial / brevet de pilote\" not verified (ffvl.fr blocked)"
+      },
+      "es": {
+        "term": "curso de iniciación",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "los niveles 1 y 2 del Curso de Iniciación",
+        "also": [
+          "certificación RFAE"
+        ],
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": ""
+      }
+    },
+    {
+      "en": "weather window",
+      "de": {
+        "term": "Wetterfenster",
+        "source": "https://www.dhv.de/wettbewerb/race/live-berichte-2025/",
+        "quote": "wegen eines zu kleinen Wetterfensters abgesagt",
+        "source_type": "federation (DHV competition reports 2025)"
+      },
+      "fr": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": ""
+      },
+      "es": {
+        "term": "ventana",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "dónde volar, mejor ventana, interpretación condiciones meteo",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)",
+        "note": "bare \"ventana\" in a meteo context; \"ventana meteorológica\" not attested"
+      },
+      "zh": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": ""
+      }
+    },
+    {
+      "en": "flying day",
+      "note": "flying day / task day",
+      "de": {
+        "term": "Flugtag",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/RZ_Organizer_A5_Handbook_deutsch.pdf",
+        "quote": "An den Flugtagen",
+        "source_type": "federation (SHV organiser handbook)"
+      },
+      "fr": {
+        "term": "journée de vol",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Re__glement_C__2025-f.pdf",
+        "quote": "ne pas renoncer à une bonne journée de vol",
+        "source_type": "federation (FSVL competition rules)"
+      },
+      "es": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": ""
+      },
+      "zh": {
+        "term": "飞行日",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "并且在每个飞行日发放给飞行员",
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules"
+      }
+    },
+    {
+      "en": "scored",
+      "note": "task scored / valid",
+      "de": {
+        "term": "gewertet",
+        "source": "https://shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Sportreglement_C_25.pdf",
+        "quote": "Wird ein Task gestoppt, wird er unter gewissen Voraussetzungen gewertet",
+        "also": [
+          "Wertung"
+        ],
+        "source_type": "federation (SHV competition rules)"
+      },
+      "fr": {
+        "term": "validée",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Re__glement_C__2025-f.pdf",
+        "quote": "la condition suivante relative à la validation ou l’annulation d’une manche",
+        "also": [
+          "évaluée"
+        ],
+        "source_type": "federation (FSVL competition rules)"
+      },
+      "es": {
+        "term": "puntuación",
+        "source": "https://fecda.org/federacion/documentos/10/descargar",
+        "quote": "La puntuación se realizará en función al recorrido.",
+        "source_type": "federation (FECDA, Canary Islands regional rules)"
+      },
+      "zh": {
+        "term": "计分",
+        "source": "http://csfly.org/h-nd-222.html",
+        "quote": "计分主要根据实时追踪设备，GPS作为一个备份。",
+        "also": [
+          "得分",
+          "成绩"
+        ],
+        "source_type": "regional association (长沙市航空运动协会), reprinted article on Asian Games XC rules"
+      }
+    },
+    {
+      "en": "cancelled",
+      "note": "task cancelled",
+      "de": {
+        "term": "abgesagt",
+        "source": "https://shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/Reglemente/2025/Sportreglement_C_25.pdf",
+        "quote": "ob ein Wettbewerb durchgeführt, verschoben, abgesagt oder abgebrochen wird",
+        "also": [
+          "gecancelt",
+          "Annullation"
+        ],
+        "source_type": "federation (SHV competition rules)"
+      },
+      "fr": {
+        "term": "annulée",
+        "source": "https://www.shv-fsvl.ch/fileadmin/files/redakteure/Allgemein/Sport/RZ_Organizer_A5_Handbook_franzA_sisch.pdf",
+        "quote": "la manche devrait être annulée",
+        "source_type": "federation (FSVL organiser handbook)"
+      },
+      "es": {
+        "term": "cancelada",
+        "source": "https://fecda.org/federacion/documentos/11/descargar",
+        "quote": "Mangas paradas en vuelo o canceladas.",
+        "source_type": "federation (RFAE Reglamento General de Parapente 2023 v9.7, hosted by FECDA)"
+      },
+      "zh": {
+        "term": "[to supply]",
+        "source": "",
+        "quote": ""
+      }
+    }
+  ]
+}
