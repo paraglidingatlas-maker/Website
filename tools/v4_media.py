@@ -216,7 +216,7 @@ SEASON = [
      "page": "media-srs-piedrahita-2026.html", "go": "Photos and films", "nick": "Piedrahita",
      "pic": "https://paraglidingatlas-maker.github.io/media-2026/srs-piedrahita/SRS_5_T3_63-800.webp"},
     {"comp": "tapalpa", "name": "SRS Tapalpa", "edition": "SRS Advance Edition", "where": "Tapalpa, Mexico",
-     "when": "8 to 14 Nov 2026", "made": "Stills and 3 highlight videos", "span": ("2026-11-08", "2026-11-14"),
+     "when": "8 to 14 Nov 2026", "made": "5 tasks scored, 116 pilots from 25 countries", "span": ("2026-11-08", "2026-11-14"),
      "page": "media-srs-tapalpa-2026.html", "go": "Photos and films", "nick": "Tapalpa",
      "pic": "https://paraglidingatlas-maker.github.io/media-2026/srs-tapalpa/SRS_6_T1_62-800.webp"},
 ]
