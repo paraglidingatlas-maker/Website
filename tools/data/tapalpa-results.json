@@ -1,0 +1,2150 @@
+{
+"source": "https://api.airtribune.com/srs/scores/?meet=93",
+"tasks": [
+"T6.1",
+"T6.2",
+"T6.3",
+"T6.4",
+"T6.6"
+],
+"overall": [
+{
+"rank": 1,
+"name": "Andrés TELLO ALVARADO",
+"nat": "MEX",
+"glider": "Tau DLS/Submarine",
+"scores": [
+982.0,
+542.7,
+944.1,
+668.8,
+841.1
+],
+"total": 3978.7
+},
+{
+"rank": 2,
+"name": "Bill BELCOURT",
+"nat": "USA",
+"glider": "Lyght/Submarine",
+"scores": [
+922.1,
+363.6,
+963.2,
+704.6,
+828.9
+],
+"total": 3782.4
+},
+{
+"rank": 3,
+"name": "Chaeden LUEBBERKE",
+"nat": "USA",
+"glider": "Artik R 2/Submarine",
+"scores": [
+973.2,
+430.4,
+977.9,
+515.5,
+733.9
+],
+"total": 3630.9
+},
+{
+"rank": 4,
+"name": "Szilard FORGO",
+"nat": "HUN",
+"glider": "GTO 3/Genie Race 6",
+"scores": [
+786.1,
+300.0,
+949.1,
+704.4,
+842.6
+],
+"total": 3582.2
+},
+{
+"rank": 5,
+"name": "Michael SIGEL",
+"nat": "CHE",
+"glider": "GTO 3/Genie Race 6",
+"scores": [
+950.4,
+310.9,
+848.8,
+485.6,
+972.8
+],
+"total": 3568.5
+},
+{
+"rank": 6,
+"name": "Salvador DIAZ ARRIAGA",
+"nat": "MEX",
+"glider": "Photon/Submarine",
+"scores": [
+913.4,
+331.0,
+952.2,
+489.4,
+828.0
+],
+"total": 3514.0
+},
+{
+"rank": 7,
+"name": "Luke NICOL",
+"nat": "GBR",
+"glider": "GTO 3/Genie Race 6",
+"scores": [
+956.4,
+313.0,
+921.9,
+462.1,
+854.6
+],
+"total": 3508.0
+},
+{
+"rank": 8,
+"name": "Lynsey HAYNES",
+"nat": "CAN",
+"glider": "Artik R 2/Submarine",
+"scores": [
+956.4,
+342.1,
+806.7,
+648.9,
+742.9
+],
+"total": 3497.0
+},
+{
+"rank": 9,
+"name": "Rodrigo DE OBESO",
+"nat": "MEX",
+"glider": "Photon/Submarine",
+"scores": [
+899.1,
+398.8,
+810.8,
+518.4,
+858.8
+],
+"total": 3485.9
+},
+{
+"rank": 10,
+"name": "Arnold CASTRO",
+"nat": "ARG",
+"glider": "Photon/Submarine",
+"scores": [
+641.0,
+547.0,
+937.2,
+488.8,
+837.5
+],
+"total": 3451.5
+},
+{
+"rank": 11,
+"name": "Torsten SIEGEL",
+"nat": "DEU",
+"glider": "Tau DLS/Lightness 4",
+"scores": [
+599.7,
+542.5,
+956.3,
+421.4,
+856.1
+],
+"total": 3376.0
+},
+{
+"rank": 12,
+"name": "Matthijs GROENEVELD",
+"nat": "NLD",
+"glider": "GTO 3/Genie Race 6",
+"scores": [
+989.7,
+361.2,
+707.1,
+451.3,
+841.3
+],
+"total": 3350.6
+},
+{
+"rank": 13,
+"name": "Pal TAKATS",
+"nat": "HUN",
+"glider": "Photon/Submarine",
+"scores": [
+641.9,
+542.8,
+901.6,
+423.7,
+836.2
+],
+"total": 3346.2
+},
+{
+"rank": 14,
+"name": "Gavin MCCLURG",
+"nat": "USA",
+"glider": "Artik R 2/Rocket R",
+"scores": [
+738.5,
+308.1,
+840.6,
+478.9,
+880.3
+],
+"total": 3246.4
+},
+{
+"rank": 15,
+"name": "Oliver THURMAN",
+"nat": "SWE",
+"glider": "Tau DLS/Submarine",
+"scores": [
+640.1,
+505.8,
+803.3,
+480.1,
+806.0
+],
+"total": 3235.3
+},
+{
+"rank": 16,
+"name": "Albert NAZANDER",
+"nat": "USA",
+"glider": "Artik R 2/Submarine",
+"scores": [
+880.3,
+332.2,
+954.7,
+659.2,
+401.8
+],
+"total": 3228.2
+},
+{
+"rank": 17,
+"name": "Ulric JESSOP",
+"nat": "GBR",
+"glider": "Photon/Submarine",
+"scores": [
+834.0,
+446.0,
+675.2,
+468.5,
+803.4
+],
+"total": 3227.1
+},
+{
+"rank": 18,
+"name": "Manuel QUINTANILLA",
+"nat": "MEX",
+"glider": "GTO 3/Genie Race 6",
+"scores": [
+245.5,
+467.6,
+979.8,
+496.2,
+1000.0
+],
+"total": 3189.1
+},
+{
+"rank": 19,
+"name": "Brett JANAWAY",
+"nat": "GBR",
+"glider": "GTO 3/Genie Race 6",
+"scores": [
+645.3,
+349.5,
+834.3,
+484.6,
+835.2
+],
+"total": 3148.9
+},
+{
+"rank": 20,
+"name": "Aurelijus ANDRELIUNAS",
+"nat": "LTU",
+"glider": "GTO 3/Genie Race 6",
+"scores": [
+616.5,
+299.6,
+925.3,
+451.1,
+843.2
+],
+"total": 3135.7
+},
+{
+"rank": 21,
+"name": "Deonir SPANCERSKI",
+"nat": "BRA",
+"glider": "Photon/Submarine",
+"scores": [
+257.7,
+542.8,
+958.5,
+492.4,
+867.0
+],
+"total": 3118.4
+},
+{
+"rank": 22,
+"name": "Vincent GRIFFITH",
+"nat": "USA",
+"glider": "Photon/Genie Race 5",
+"scores": [
+733.2,
+309.0,
+656.7,
+613.2,
+790.1
+],
+"total": 3102.2
+},
+{
+"rank": 23,
+"name": "Junio Cesar DA SILVA RODRIGUES",
+"nat": "BRA",
+"glider": "GTO 3/Genie Race 5",
+"scores": [
+593.4,
+353.6,
+668.3,
+652.5,
+787.7
+],
+"total": 3055.5
+},
+{
+"rank": 24,
+"name": "Riley FERRE",
+"nat": "USA",
+"glider": "GTO 3/Genie Race 6",
+"scores": [
+643.7,
+316.1,
+616.2,
+682.3,
+773.7
+],
+"total": 3032.0
+},
+{
+"rank": 25,
+"name": "Summer BARHAM",
+"nat": "USA",
+"glider": "Photon/Forza 2",
+"scores": [
+644.8,
+278.8,
+707.4,
+659.9,
+717.7
+],
+"total": 3008.6
+},
+{
+"rank": 26,
+"name": "Eric BADER",
+"nat": "USA",
+"glider": "Photon/Genie Race 5",
+"scores": [
+571.8,
+273.0,
+699.0,
+656.5,
+768.4
+],
+"total": 2968.7
+},
+{
+"rank": 27,
+"name": "Estefano SALGADO",
+"nat": "MEX",
+"glider": "Lyght/Sublite",
+"scores": [
+972.6,
+194.7,
+826.1,
+69.4,
+834.2
+],
+"total": 2897.0
+},
+{
+"rank": 28,
+"name": "Magdalena JANAWAY",
+"nat": "GBR",
+"glider": "GTO 3/Genie Race 5",
+"scores": [
+618.0,
+311.1,
+742.5,
+401.7,
+792.6
+],
+"total": 2865.9
+},
+{
+"rank": 29,
+"name": "Didier DE SAINT ETIENNE",
+"nat": "FRA",
+"glider": "GTO 3/Submarine",
+"scores": [
+629.5,
+319.3,
+659.9,
+481.1,
+758.8
+],
+"total": 2848.6
+},
+{
+"rank": 30,
+"name": "Ross DESMOND",
+"nat": "USA",
+"glider": "Lyght/Submarine",
+"scores": [
+650.5,
+360.9,
+949.2,
+532.1,
+340.7
+],
+"total": 2833.4
+},
+{
+"rank": 31,
+"name": "Jan RINDLISBACHER",
+"nat": "CHE",
+"glider": "Scala 2 Light/F*Race 2",
+"scores": [
+557.5,
+302.0,
+666.0,
+634.7,
+671.0
+],
+"total": 2831.2
+},
+{
+"rank": 32,
+"name": "Cesar Dario AREVALO URREGO",
+"nat": "COL",
+"glider": "Tigra/Tuna",
+"scores": [
+600.7,
+368.5,
+652.9,
+418.6,
+785.1
+],
+"total": 2825.8
+},
+{
+"rank": 33,
+"name": "Mark SIMPSON",
+"nat": "NZL",
+"glider": "Photon/Submarine",
+"scores": [
+250.9,
+315.7,
+698.8,
+705.3,
+849.8
+],
+"total": 2820.5
+},
+{
+"rank": 34,
+"name": "Zoltan FORDOS",
+"nat": "HUN",
+"glider": "Artik R 2/Genie Race 6",
+"scores": [
+662.8,
+309.2,
+824.7,
+661.9,
+329.9
+],
+"total": 2788.5
+},
+{
+"rank": 35,
+"name": "Philipp LANGENEGGER",
+"nat": "CHE",
+"glider": "Mint/Zeppelin 2",
+"scores": [
+582.1,
+364.3,
+724.2,
+474.2,
+641.9
+],
+"total": 2786.7
+},
+{
+"rank": 36,
+"name": "Enes MENTESE",
+"nat": "USA",
+"glider": "Photon/Genie Race 6",
+"scores": [
+570.6,
+302.6,
+741.3,
+671.2,
+478.7
+],
+"total": 2764.4
+},
+{
+"rank": 37,
+"name": "Jonathan ARRIAGA",
+"nat": "MEX",
+"glider": "Photon/Submarine",
+"scores": [
+516.7,
+306.1,
+660.8,
+486.8,
+767.8
+],
+"total": 2738.2
+},
+{
+"rank": 38,
+"name": "Celia VIERMANN",
+"nat": "DEU",
+"glider": "Tau DLS/Lightness 4",
+"scores": [
+593.5,
+318.6,
+619.4,
+506.2,
+686.6
+],
+"total": 2724.3
+},
+{
+"rank": 39,
+"name": "Luis ROSENKJER",
+"nat": "USA",
+"glider": "Lyght/Zeppelin",
+"scores": [
+549.0,
+364.2,
+363.7,
+671.0,
+767.8
+],
+"total": 2715.7
+},
+{
+"rank": 40,
+"name": "Yann GALLIN",
+"nat": "FRA",
+"glider": "Photon/Zeppelin 2",
+"scores": [
+572.8,
+314.4,
+674.2,
+476.1,
+651.4
+],
+"total": 2688.9
+},
+{
+"rank": 41,
+"name": "Yury MISHANIN",
+"nat": "KAZ",
+"glider": "Tau DLS/Genie Race 6",
+"scores": [
+627.9,
+303.2,
+822.2,
+88.1,
+847.3
+],
+"total": 2688.7
+},
+{
+"rank": 42,
+"name": "Luis POL BERNAL",
+"nat": "ESP",
+"glider": "Tau DLS/Genie Race 5",
+"scores": [
+571.8,
+323.2,
+882.7,
+481.5,
+422.0
+],
+"total": 2681.2
+},
+{
+"rank": 43,
+"name": "Pamela DIEZ",
+"nat": "MEX",
+"glider": "Tau DLS/Submarine",
+"scores": [
+30.5,
+514.0,
+953.3,
+446.6,
+693.9
+],
+"total": 2638.3
+},
+{
+"rank": 44,
+"name": "Jason GORE",
+"nat": "USA",
+"glider": "Artik R 2/Genie Race 6",
+"scores": [
+564.5,
+293.0,
+613.1,
+498.0,
+659.4
+],
+"total": 2628.0
+},
+{
+"rank": 45,
+"name": "Evan FURBEYRE",
+"nat": "USA",
+"glider": "Photon/Genie Race 5",
+"scores": [
+259.6,
+314.0,
+739.7,
+475.2,
+837.2
+],
+"total": 2625.7
+},
+{
+"rank": 46,
+"name": "Grant FOAD",
+"nat": "USA",
+"glider": "Artik R 2/Impress 4",
+"scores": [
+489.1,
+308.3,
+643.6,
+344.5,
+775.6
+],
+"total": 2561.1
+},
+{
+"rank": 47,
+"name": "Marcin KRAWCZYK",
+"nat": "NLD",
+"glider": "GTO 3/Genie Race 5",
+"scores": [
+258.3,
+322.1,
+579.2,
+521.3,
+841.1
+],
+"total": 2522.0
+},
+{
+"rank": 48,
+"name": "Flavio LYSZKOWSKI PINHEIRO",
+"nat": "BRA",
+"glider": "GTO 3/Genie Race 5",
+"scores": [
+685.1,
+296.7,
+648.4,
+460.7,
+412.1
+],
+"total": 2503.0
+},
+{
+"rank": 49,
+"name": "Chad UCHINO",
+"nat": "USA",
+"glider": "Lyght/Calixte",
+"scores": [
+118.7,
+307.7,
+636.9,
+669.0,
+760.7
+],
+"total": 2493.0
+},
+{
+"rank": 50,
+"name": "Boon ONG",
+"nat": "SGP",
+"glider": "Lyght/Sublite",
+"scores": [
+705.3,
+223.8,
+685.1,
+501.4,
+352.3
+],
+"total": 2467.9
+},
+{
+"rank": 51,
+"name": "Jk SMITH",
+"nat": "USA",
+"glider": "GTO 3/Genie Race 5",
+"scores": [
+744.3,
+358.2,
+149.3,
+445.1,
+738.7
+],
+"total": 2435.6
+},
+{
+"rank": 52,
+"name": "Benjamin SILVA CUEVAS",
+"nat": "MEX",
+"glider": "Lyght/Genie Race 5",
+"scores": [
+625.7,
+297.6,
+721.3,
+36.3,
+704.2
+],
+"total": 2385.1
+},
+{
+"rank": 53,
+"name": "Héctor VALDÉS",
+"nat": "MEX",
+"glider": "GTO 3/Genie Race 6",
+"scores": [
+631.2,
+321.1,
+160.1,
+483.6,
+782.2
+],
+"total": 2378.2
+},
+{
+"rank": 54,
+"name": "Eduardo MENDEZ",
+"nat": "VEN",
+"glider": "GTO 3/Vissta",
+"scores": [
+261.0,
+319.5,
+630.9,
+478.8,
+675.9
+],
+"total": 2366.1
+},
+{
+"rank": 55,
+"name": "Yemerson AGUDELO",
+"nat": "COL",
+"glider": "GTO 3/Genie Race 5",
+"scores": [
+217.5,
+515.6,
+658.7,
+246.2,
+712.7
+],
+"total": 2350.7
+},
+{
+"rank": 56,
+"name": "Sebastian GARCIA OYANGUREN",
+"nat": "MEX",
+"glider": "Photon/Artus",
+"scores": [
+657.1,
+280.6,
+159.2,
+637.1,
+610.2
+],
+"total": 2344.2
+},
+{
+"rank": 57,
+"name": "Thomas MILKO",
+"nat": "BRA",
+"glider": "Cure 3/Genie Race 6",
+"scores": [
+571.0,
+312.9,
+660.3,
+435.3,
+364.0
+],
+"total": 2343.5
+},
+{
+"rank": 58,
+"name": "Alberto KAWAKAMI",
+"nat": "BRA",
+"glider": "Merlin/Cx Max",
+"scores": [
+430.7,
+45.9,
+582.9,
+431.3,
+832.6
+],
+"total": 2323.4
+},
+{
+"rank": 59,
+"name": "Juan Camilo ZULUAGA GIRALDO",
+"nat": "COL",
+"glider": "GTO 3/Submarine",
+"scores": [
+473.5,
+359.9,
+652.3,
+500.0,
+328.2
+],
+"total": 2313.9
+},
+{
+"rank": 60,
+"name": "Angel RIVERA",
+"nat": "MEX",
+"glider": "Photon/Impress",
+"scores": [
+663.6,
+297.5,
+626.5,
+398.9,
+306.9
+],
+"total": 2293.4
+},
+{
+"rank": 61,
+"name": "Korey CURTIS",
+"nat": "USA",
+"glider": "GTO 3/Submarine",
+"scores": [
+627.9,
+523.3,
+643.4,
+460.4,
+0.0
+],
+"total": 2255.0
+},
+{
+"rank": 62,
+"name": "Manuel LOZADA",
+"nat": "VEN",
+"glider": "GTO 3/Genie Race 6",
+"scores": [
+495.9,
+223.2,
+647.8,
+86.1,
+750.7
+],
+"total": 2203.7
+},
+{
+"rank": 63,
+"name": "Louis COULOMBE",
+"nat": "USA",
+"glider": "Lyght/Impress 4",
+"scores": [
+621.0,
+271.7,
+511.2,
+389.6,
+400.8
+],
+"total": 2194.3
+},
+{
+"rank": 64,
+"name": "Abel VARGA",
+"nat": "HUN",
+"glider": "Tigra/Submarine",
+"scores": [
+181.1,
+241.5,
+993.5,
+436.9,
+333.8
+],
+"total": 2186.8
+},
+{
+"rank": 65,
+"name": "Lucas DUBINSKI",
+"nat": "AUS",
+"glider": "Photon/Genie Race 6",
+"scores": [
+30.5,
+219.0,
+651.8,
+473.8,
+796.2
+],
+"total": 2171.3
+},
+{
+"rank": 66,
+"name": "Lukas GAFNER",
+"nat": "CHE",
+"glider": "Sage/Range X-Alps 3",
+"scores": [
+536.0,
+309.0,
+529.5,
+441.6,
+319.2
+],
+"total": 2135.3
+},
+{
+"rank": 67,
+"name": "Rasa GRIGORAITIENE",
+"nat": "LTU",
+"glider": "GTO 3/X-Rated 7",
+"scores": [
+273.0,
+176.9,
+483.6,
+457.7,
+735.8
+],
+"total": 2127.0
+},
+{
+"rank": 68,
+"name": "Brian DUFFY",
+"nat": "USA",
+"glider": "Photon/Genie Race 5",
+"scores": [
+269.0,
+441.4,
+63.4,
+881.8,
+463.6
+],
+"total": 2119.2
+},
+{
+"rank": 69,
+"name": "Julia MENZEL",
+"nat": "DEU",
+"glider": "Alpina 5/Impress 4",
+"scores": [
+564.2,
+312.6,
+473.1,
+420.0,
+321.0
+],
+"total": 2090.9
+},
+{
+"rank": 70,
+"name": "Juan Felipe KARAM PARTIDA",
+"nat": "MEX",
+"glider": "Lyght/F*Race 2",
+"scores": [
+557.9,
+131.0,
+503.0,
+84.2,
+812.9
+],
+"total": 2089.0
+},
+{
+"rank": 71,
+"name": "Adrian ACOSTA",
+"nat": "ARG",
+"glider": "Tigra/Genie Race 6",
+"scores": [
+698.0,
+302.9,
+626.7,
+75.2,
+379.1
+],
+"total": 2081.9
+},
+{
+"rank": 72,
+"name": "Sebastian RODRIGUEZ ROMERO",
+"nat": "MEX",
+"glider": "Lyght/BV1",
+"scores": [
+549.9,
+172.1,
+563.9,
+477.9,
+306.8
+],
+"total": 2070.6
+},
+{
+"rank": 73,
+"name": "Cristiano ROSSA MODEL",
+"nat": "BRA",
+"glider": "Volt 5/Sock",
+"scores": [
+524.5,
+316.5,
+490.4,
+414.5,
+302.3
+],
+"total": 2048.2
+},
+{
+"rank": 74,
+"name": "Pierre SAVARD",
+"nat": "CAN",
+"glider": "Lyght/F*Race 2",
+"scores": [
+583.8,
+46.2,
+655.7,
+443.1,
+293.0
+],
+"total": 2021.8
+},
+{
+"rank": 75,
+"name": "Wade LIPPINCOTT",
+"nat": "USA",
+"glider": "GTO 3/Genie Race 6",
+"scores": [
+561.4,
+339.8,
+511.5,
+472.2,
+127.9
+],
+"total": 2012.8
+},
+{
+"rank": 76,
+"name": "Dustin PACHURA",
+"nat": "USA",
+"glider": "GTO 3/Zeppelin 2",
+"scores": [
+258.0,
+355.0,
+898.4,
+469.2,
+0.0
+],
+"total": 1980.6
+},
+{
+"rank": 77,
+"name": "Tiago Cassiano FORTUNA MENEZES",
+"nat": "BRA",
+"glider": "GTO 3/Genie Race 5",
+"scores": [
+587.1,
+305.2,
+505.1,
+501.6,
+64.2
+],
+"total": 1963.2
+},
+{
+"rank": 78,
+"name": "Xinwei ZHENG",
+"nat": "CHN",
+"glider": "Photon/Submarine",
+"scores": [
+257.8,
+365.9,
+363.7,
+468.5,
+404.5
+],
+"total": 1860.4
+},
+{
+"rank": 79,
+"name": "Michael GRAEF",
+"nat": "USA",
+"glider": "Merlin/Forza 2",
+"scores": [
+262.8,
+47.1,
+615.3,
+89.3,
+830.9
+],
+"total": 1845.4
+},
+{
+"rank": 80,
+"name": "Mike RAVELLI",
+"nat": "NLD",
+"glider": "Sphera 2 RS/Genie Race 5",
+"scores": [
+587.6,
+280.1,
+221.1,
+346.6,
+370.3
+],
+"total": 1805.7
+},
+{
+"rank": 81,
+"name": "Travis KOOL",
+"nat": "USA",
+"glider": "GTO 3/Zeppelin 2",
+"scores": [
+945.1,
+38.3,
+0.0,
+0.0,
+805.2
+],
+"total": 1788.6
+},
+{
+"rank": 82,
+"name": "Jarotron KRUPA",
+"nat": "VIR",
+"glider": "Mystic +/Submarine",
+"scores": [
+30.5,
+232.9,
+654.7,
+388.5,
+430.6
+],
+"total": 1737.2
+},
+{
+"rank": 83,
+"name": "Fabio POTENZA",
+"nat": "USA",
+"glider": "Photon/Genie Race 4",
+"scores": [
+436.6,
+313.9,
+574.4,
+238.3,
+155.9
+],
+"total": 1719.1
+},
+{
+"rank": 84,
+"name": "Patrick CANNON",
+"nat": "USA",
+"glider": "Artik R 2/Range X-Alps 3",
+"scores": [
+524.7,
+214.8,
+573.6,
+264.5,
+136.7
+],
+"total": 1714.3
+},
+{
+"rank": 85,
+"name": "Adolfo TOLEDO",
+"nat": "MEX",
+"glider": "Bonanza 2/GTO Light 2",
+"scores": [
+441.9,
+165.7,
+373.3,
+477.3,
+126.3
+],
+"total": 1584.5
+},
+{
+"rank": 86,
+"name": "Mike STEED",
+"nat": "USA",
+"glider": "Mystic +/Tuna",
+"scores": [
+237.7,
+174.1,
+577.4,
+459.5,
+89.8
+],
+"total": 1538.5
+},
+{
+"rank": 87,
+"name": "Tom ZHOU",
+"nat": "USA",
+"glider": "Photon/Range X-Alps 3",
+"scores": [
+255.6,
+276.8,
+488.7,
+414.6,
+29.4
+],
+"total": 1465.1
+},
+{
+"rank": 88,
+"name": "Stephen NOBLE",
+"nat": "AUS",
+"glider": "Vortex/F*Race 2",
+"scores": [
+583.9,
+260.8,
+161.3,
+36.3,
+402.5
+],
+"total": 1444.8
+},
+{
+"rank": 89,
+"name": "Mike BROWN",
+"nat": "USA",
+"glider": "Sigma/Arrow",
+"scores": [
+262.2,
+233.2,
+495.9,
+436.0,
+0.0
+],
+"total": 1427.3
+},
+{
+"rank": 90,
+"name": "Fermin MONTANER MORANT",
+"nat": "DEU",
+"glider": "GTO 3/Genie Race 5",
+"scores": [
+225.1,
+310.5,
+18.6,
+144.2,
+718.7
+],
+"total": 1417.1
+},
+{
+"rank": 91,
+"name": "Xinling YUAN",
+"nat": "CHN",
+"glider": "Tau DLS/Submarine",
+"scores": [
+71.6,
+218.9,
+431.0,
+468.5,
+151.3
+],
+"total": 1341.3
+},
+{
+"rank": 92,
+"name": "Jose Henrique HERRERA",
+"nat": "MEX",
+"glider": "Cure 3/Tuna",
+"scores": [
+30.5,
+257.2,
+484.8,
+481.7,
+63.0
+],
+"total": 1317.2
+},
+{
+"rank": 93,
+"name": "Jay ZOLLINGER",
+"nat": "USA",
+"glider": "Artik R 2/Forza 2",
+"scores": [
+0.0,
+228.0,
+521.8,
+442.4,
+0.0
+],
+"total": 1192.2
+},
+{
+"rank": 94,
+"name": "Alberto MARTINEZ BRUN",
+"nat": "MEX",
+"glider": "Photon/Ozium 3",
+"scores": [
+663.0,
+89.0,
+0.0,
+0.0,
+364.0
+],
+"total": 1116.0
+},
+{
+"rank": 95,
+"name": "Michael VERGALLA",
+"nat": "USA",
+"glider": "Camino 2/BV1",
+"scores": [
+67.6,
+139.8,
+158.8,
+433.7,
+294.2
+],
+"total": 1094.1
+},
+{
+"rank": 96,
+"name": "Adrian J GARZA SADA",
+"nat": "MEX",
+"glider": "Lyght/Forza 2",
+"scores": [
+0.0,
+174.4,
+436.5,
+437.5,
+35.1
+],
+"total": 1083.5
+},
+{
+"rank": 97,
+"name": "Luis FLORES GARZA",
+"nat": "MEX",
+"glider": "Lyght/F*Race 2",
+"scores": [
+231.6,
+94.6,
+481.1,
+155.3,
+95.8
+],
+"total": 1058.4
+},
+{
+"rank": 98,
+"name": "Jon GLEASON",
+"nat": "USA",
+"glider": "Alpina/Range X-Alps",
+"scores": [
+226.8,
+58.2,
+454.5,
+36.3,
+247.8
+],
+"total": 1023.6
+},
+{
+"rank": 99,
+"name": "Carlos LONGORIA",
+"nat": "USA",
+"glider": "Lyght/F*Race 2",
+"scores": [
+522.1,
+153.9,
+0.0,
+36.3,
+307.0
+],
+"total": 1019.3
+},
+{
+"rank": 100,
+"name": "Andrew RAYHILL",
+"nat": "USA",
+"glider": "Tigra/Zeppelin",
+"scores": [
+268.2,
+147.8,
+399.6,
+0.0,
+151.4
+],
+"total": 967.0
+},
+{
+"rank": 101,
+"name": "William CORCHADO",
+"nat": "USA",
+"glider": "GTO 3/Genie Race 4",
+"scores": [
+30.5,
+189.3,
+428.0,
+196.0,
+117.6
+],
+"total": 961.4
+},
+{
+"rank": 102,
+"name": "Iain DOUGLAS",
+"nat": "GBR",
+"glider": "Lyght/Zeppelin 2",
+"scores": [
+445.8,
+130.9,
+131.8,
+36.3,
+210.5
+],
+"total": 955.3
+},
+{
+"rank": 103,
+"name": "Patti MAYFIELD",
+"nat": "USA",
+"glider": "Lyght/Delight 4 Sport",
+"scores": [
+468.9,
+214.7,
+62.3,
+151.1,
+0.0
+],
+"total": 897.0
+},
+{
+"rank": 104,
+"name": "Steven YOUNG",
+"nat": "USA",
+"glider": "Photon/Delight 4",
+"scores": [
+211.8,
+158.0,
+61.6,
+89.0,
+337.3
+],
+"total": 857.7
+},
+{
+"rank": 105,
+"name": "Monika TAKÁTS",
+"nat": "AUT",
+"glider": "Lyght/Forza 2",
+"scores": [
+30.5,
+240.0,
+71.9,
+434.9,
+0.0
+],
+"total": 777.3
+},
+{
+"rank": 106,
+"name": "Shauin KAO",
+"nat": "ARG",
+"glider": "Tigra/Submarine",
+"scores": [
+457.1,
+155.9,
+0.0,
+0.0,
+0.0
+],
+"total": 613.0
+},
+{
+"rank": 107,
+"name": "Jeff SINASON",
+"nat": "USA",
+"glider": "Alpina 4/Ozium 3",
+"scores": [
+61.5,
+168.1,
+165.6,
+109.8,
+21.8
+],
+"total": 526.8
+},
+{
+"rank": 108,
+"name": "Andres CANTU",
+"nat": "MEX",
+"glider": "Alpina 5/Wani Light 2",
+"scores": [
+30.5,
+205.7,
+155.2,
+81.0,
+31.6
+],
+"total": 504.0
+},
+{
+"rank": 109,
+"name": "Martin BASTOW",
+"nat": "GBR",
+"glider": "X2C/Delight 4",
+"scores": [
+56.1,
+46.4,
+277.3,
+37.2,
+48.1
+],
+"total": 465.1
+},
+{
+"rank": 110,
+"name": "Andria Lea MONTELEONE",
+"nat": "USA",
+"glider": "Photon/Delight 4 Sport",
+"scores": [
+30.5,
+59.2,
+34.1,
+150.6,
+19.3
+],
+"total": 293.7
+}
+],
+"women": [
+{
+"rank": 1,
+"name": "Lynsey HAYNES",
+"nat": "CAN",
+"glider": "Artik R 2/Submarine",
+"scores": [
+956.4,
+342.1,
+806.7,
+648.9,
+742.9
+],
+"total": 3497.0
+},
+{
+"rank": 2,
+"name": "Riley FERRE",
+"nat": "USA",
+"glider": "GTO 3/Genie Race 6",
+"scores": [
+643.7,
+316.1,
+616.2,
+682.3,
+773.7
+],
+"total": 3032.0
+},
+{
+"rank": 3,
+"name": "Summer BARHAM",
+"nat": "USA",
+"glider": "Photon/Forza 2",
+"scores": [
+644.8,
+278.8,
+707.4,
+659.9,
+717.7
+],
+"total": 3008.6
+},
+{
+"rank": 4,
+"name": "Magdalena JANAWAY",
+"nat": "GBR",
+"glider": "GTO 3/Genie Race 5",
+"scores": [
+618.0,
+311.1,
+742.5,
+401.7,
+792.6
+],
+"total": 2865.9
+},
+{
+"rank": 5,
+"name": "Celia VIERMANN",
+"nat": "DEU",
+"glider": "Tau DLS/Lightness 4",
+"scores": [
+593.5,
+318.6,
+619.4,
+506.2,
+686.6
+],
+"total": 2724.3
+},
+{
+"rank": 6,
+"name": "Pamela DIEZ",
+"nat": "MEX",
+"glider": "Tau DLS/Submarine",
+"scores": [
+30.5,
+514.0,
+953.3,
+446.6,
+693.9
+],
+"total": 2638.3
+},
+{
+"rank": 7,
+"name": "Rasa GRIGORAITIENE",
+"nat": "LTU",
+"glider": "GTO 3/X-Rated 7",
+"scores": [
+273.0,
+176.9,
+483.6,
+457.7,
+735.8
+],
+"total": 2127.0
+},
+{
+"rank": 8,
+"name": "Julia MENZEL",
+"nat": "DEU",
+"glider": "Alpina 5/Impress 4",
+"scores": [
+564.2,
+312.6,
+473.1,
+420.0,
+321.0
+],
+"total": 2090.9
+},
+{
+"rank": 9,
+"name": "Patti MAYFIELD",
+"nat": "USA",
+"glider": "Lyght/Delight 4 Sport",
+"scores": [
+468.9,
+214.7,
+62.3,
+151.1,
+0.0
+],
+"total": 897.0
+},
+{
+"rank": 10,
+"name": "Monika TAKÁTS",
+"nat": "AUT",
+"glider": "Lyght/Forza 2",
+"scores": [
+30.5,
+240.0,
+71.9,
+434.9,
+0.0
+],
+"total": 777.3
+},
+{
+"rank": 11,
+"name": "Shauin KAO",
+"nat": "ARG",
+"glider": "Tigra/Submarine",
+"scores": [
+457.1,
+155.9,
+0.0,
+0.0,
+0.0
+],
+"total": 613.0
+},
+{
+"rank": 12,
+"name": "Andria Lea MONTELEONE",
+"nat": "USA",
+"glider": "Photon/Delight 4 Sport",
+"scores": [
+30.5,
+59.2,
+34.1,
+150.6,
+19.3
+],
+"total": 293.7
+}
+],
+"teams": [
+{
+"rank": 1,
+"name": "CryMeARiviuk",
+"scores": [
+956.4,
+342.1,
+954.7,
+648.9,
+742.9
+],
+"total": 3645.0,
+"members": [
+"Lynsey HAYNES",
+"Albert NAZANDER",
+"Chaeden LUEBBERKE",
+"Gavin MCCLURG"
+]
+},
+{
+"rank": 2,
+"name": "Gin 2",
+"scores": [
+956.4,
+316.1,
+921.9,
+462.1,
+843.2
+],
+"total": 3499.7,
+"members": [
+"Luke NICOL",
+"Aurelijus ANDRELIUNAS",
+"Riley FERRE",
+"Matthijs GROENEVELD"
+]
+},
+{
+"rank": 3,
+"name": "Ozone",
+"scores": [
+644.8,
+542.8,
+937.2,
+532.1,
+836.2
+],
+"total": 3493.1,
+"members": [
+"Pal TAKATS",
+"Arnold CASTRO",
+"Summer BARHAM",
+"Ross DESMOND"
+]
+},
+{
+"rank": 4,
+"name": "Ozone 2",
+"scores": [
+834.0,
+363.6,
+741.3,
+671.2,
+828.9
+],
+"total": 3439.0,
+"members": [
+"Enes MENTESE",
+"Bill BELCOURT",
+"Ulric JESSOP",
+"Evan FURBEYRE"
+]
+},
+{
+"rank": 5,
+"name": "Advance",
+"scores": [
+599.7,
+542.5,
+953.3,
+481.5,
+841.1
+],
+"total": 3418.1,
+"members": [
+"Torsten SIEGEL",
+"Pamela DIEZ",
+"Andrés TELLO ALVARADO",
+"Luis POL BERNAL"
+]
+},
+{
+"rank": 6,
+"name": "Gin",
+"scores": [
+473.5,
+359.9,
+848.8,
+500.0,
+972.8
+],
+"total": 3155.0,
+"members": [
+"Michael SIGEL",
+"Juan Camilo ZULUAGA GIRALDO",
+"Marcin KRAWCZYK",
+"Manuel QUINTANILLA"
+]
+},
+{
+"rank": 7,
+"name": "Airtribune",
+"scores": [
+640.1,
+349.5,
+803.3,
+484.6,
+835.2
+],
+"total": 3112.7,
+"members": [
+"Brett JANAWAY",
+"Oliver THURMAN",
+"Magdalena JANAWAY",
+"Mark SIMPSON"
+]
+},
+{
+"rank": 8,
+"name": "El Geriátrico",
+"scores": [
+899.1,
+194.7,
+810.8,
+84.2,
+834.2
+],
+"total": 2823.0,
+"members": [
+"Rodrigo DE OBESO",
+"Estefano SALGADO",
+"Juan Felipe KARAM PARTIDA",
+"Alberto MARTINEZ BRUN"
+]
+},
+{
+"rank": 9,
+"name": "Lift Equations",
+"scores": [
+583.8,
+293.0,
+655.7,
+498.0,
+790.1
+],
+"total": 2820.6,
+"members": [
+"Pierre SAVARD",
+"Jason GORE",
+"Vincent GRIFFITH",
+"Lucas DUBINSKI"
+]
+},
+{
+"rank": 10,
+"name": "Zes Kitchen",
+"scores": [
+662.8,
+300.0,
+824.7,
+661.9,
+329.9
+],
+"total": 2779.3,
+"members": [
+"Zoltan FORDOS",
+"Szilard FORGO"
+]
+},
+{
+"rank": 11,
+"name": "Pabellon",
+"scores": [
+495.9,
+364.2,
+647.8,
+478.8,
+750.7
+],
+"total": 2737.4,
+"members": [
+"Manuel LOZADA",
+"Eduardo MENDEZ",
+"Luis ROSENKJER",
+"Yemerson AGUDELO"
+]
+},
+{
+"rank": 12,
+"name": "Bigorna",
+"scores": [
+436.6,
+313.9,
+660.3,
+435.3,
+832.6
+],
+"total": 2678.7,
+"members": [
+"Thomas MILKO",
+"Alberto KAWAKAMI",
+"Fabio POTENZA",
+"Deonir SPANCERSKI"
+]
+},
+{
+"rank": 13,
+"name": "Shoots Brah",
+"scores": [
+269.0,
+308.3,
+636.9,
+669.0,
+760.7
+],
+"total": 2643.9,
+"members": [
+"Chad UCHINO",
+"Grant FOAD",
+"Brian DUFFY",
+"Tom ZHOU"
+]
+},
+{
+"rank": 14,
+"name": "Cloudbase Nomads",
+"scores": [
+571.8,
+273.0,
+473.1,
+420.0,
+768.4
+],
+"total": 2506.3,
+"members": [
+"Eric BADER",
+"Julia MENZEL",
+"Patti MAYFIELD",
+"Travis KOOL"
+]
+},
+{
+"rank": 15,
+"name": "AGVL",
+"scores": [
+593.4,
+316.5,
+648.4,
+501.6,
+412.1
+],
+"total": 2472.0,
+"members": [
+"Flavio LYSZKOWSKI PINHEIRO",
+"Junio Cesar DA SILVA RODRIGUES",
+"Tiago Cassiano FORTUNA MENEZES",
+"Cristiano ROSSA MODEL"
+]
+},
+{
+"rank": 16,
+"name": "Borinots 2",
+"scores": [
+631.2,
+280.6,
+436.5,
+483.6,
+610.2
+],
+"total": 2442.1,
+"members": [
+"Héctor VALDÉS",
+"Sebastian GARCIA OYANGUREN",
+"Adrian J GARZA SADA",
+"Luis FLORES GARZA"
+]
+},
+{
+"rank": 17,
+"name": "Team Chili Pepper",
+"scores": [
+621.0,
+355.0,
+643.4,
+460.4,
+294.2
+],
+"total": 2374.0,
+"members": [
+"Korey CURTIS",
+"Louis COULOMBE",
+"Dustin PACHURA",
+"Michael VERGALLA"
+]
+},
+{
+"rank": 18,
+"name": "Stratus",
+"scores": [
+273.0,
+310.5,
+483.6,
+457.7,
+735.8
+],
+"total": 2260.6,
+"members": [
+"Rasa GRIGORAITIENE",
+"Fermin MONTANER MORANT",
+"Didier DE SAINT ETIENNE",
+"Martin BASTOW"
+]
+},
+{
+"rank": 19,
+"name": "The Flatlanders",
+"scores": [
+262.8,
+232.9,
+654.7,
+388.5,
+651.4
+],
+"total": 2190.3,
+"members": [
+"Jarotron KRUPA",
+"Yann GALLIN",
+"Michael GRAEF",
+"Andria Lea MONTELEONE"
+]
+},
+{
+"rank": 20,
+"name": "Skywalk",
+"scores": [
+536.0,
+309.0,
+529.5,
+441.6,
+319.2
+],
+"total": 2135.3,
+"members": [
+"Lukas GAFNER",
+"Philipp LANGENEGGER"
+]
+},
+{
+"rank": 21,
+"name": "Orange Arrows",
+"scores": [
+587.6,
+280.1,
+363.7,
+468.5,
+370.3
+],
+"total": 2070.2,
+"members": [
+"Mike RAVELLI",
+"Xinwei ZHENG",
+"Boon ONG",
+"Jeff SINASON"
+]
+},
+{
+"rank": 22,
+"name": "XC Mag",
+"scores": [
+698.0,
+302.9,
+149.3,
+434.9,
+379.1
+],
+"total": 1964.2,
+"members": [
+"Adrian ACOSTA",
+"Monika TAKÁTS",
+"Jk SMITH",
+"Shauin KAO"
+]
+},
+{
+"rank": 23,
+"name": "BGD",
+"scores": [
+268.2,
+257.2,
+652.9,
+436.9,
+333.8
+],
+"total": 1949.0,
+"members": [
+"Abel VARGA",
+"Cesar Dario AREVALO URREGO",
+"Andrew RAYHILL",
+"Jose Henrique HERRERA"
+]
+},
+{
+"rank": 24,
+"name": "Americondor",
+"scores": [
+0.0,
+174.1,
+521.8,
+442.4,
+0.0
+],
+"total": 1138.3,
+"members": [
+"Jay ZOLLINGER",
+"Mike STEED"
+]
+}
+]
+}
