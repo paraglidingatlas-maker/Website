@@ -4125,7 +4125,8 @@
  "74a73abcce6d": {
   "en": "The most populous country in the world. Area about {1} km².",
   "a": "El país más poblado del mundo. Superficie de unos {1} km².",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "b": "El país más poblado del mundo. Superficie de unos {1} km²."
  },
  "74b69fb5c012": {
   "en": "about, at {1}",
@@ -7152,7 +7153,8 @@
  "c7c6c8cc021f": {
   "en": "Over {1}",
   "a": "Más de {1}",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "b": "Más de {1}"
  },
  "c84812cadbc7": {
   "en": "Swahili and English",
