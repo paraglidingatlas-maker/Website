@@ -5,7 +5,8 @@
   "date": "2026-11-17",
   "b": "并非弃权",
   "tr": "并非弃权",
-  "back": "Not a waiver"
+  "back": "Not a waiver",
+  "check": "ok"
  },
  "00a1ea56e5b1": {
   "en": "A {1} km race on a day that looked better than forecast, the field raced the ridge, crossed the lake bed into the wind and ran a cloud street home.",
@@ -83,7 +84,8 @@
   "date": "2026-11-17",
   "b": "常见问题",
   "tr": "常见问题",
-  "back": "FAQ"
+  "back": "FAQ",
+  "check": "ok"
  },
  "0587c136e342": {
   "en": "Watch again",
@@ -100,7 +102,8 @@
   "date": "2026-11-17",
   "b": "{1}天 · {2}山丘",
   "tr": "{1}天 · {2}山区",
-  "back": "{1} days · {2} hills"
+  "back": "{1} days · {2} hills",
+  "check": "ok"
  },
  "070db57eef93": {
   "en": "Chapters of Navigating {1}",
@@ -135,7 +138,8 @@
   "date": "2026-11-17",
   "b": "向下滚动",
   "tr": "滚动",
-  "back": "Scroll"
+  "back": "Scroll",
+  "check": "ok"
  },
  "09807498617e": {
   "en": "Sat {1}",
@@ -328,7 +332,8 @@
   "date": "2026-11-17",
   "b": "概览",
   "tr": "概览",
-  "back": "Overview"
+  "back": "Overview",
+  "check": "ok"
  },
  "0fa19b246492": {
   "en": "Navigators, Episode {1}",
@@ -454,7 +459,8 @@
   "date": "2026-11-17",
   "b": "图片",
   "tr": "照片",
-  "back": "Photos"
+  "back": "Photos",
+  "check": "ok"
  },
  "1680c69de6b4": {
   "en": "{1}, from the air",
@@ -530,7 +536,8 @@
   "date": "2026-11-17",
   "b": "季节为十一月至三月。行程在二月中旬。",
   "tr": "季节为十一月至三月。本团安排在二月中旬。",
-  "back": "The season is November to March. This tour is scheduled for mid-February."
+  "back": "The season is November to March. This tour is scheduled for mid-February.",
+  "check": "ok"
  },
  "19da3bd8e3b8": {
   "en": "Photos by {1}",
@@ -736,7 +743,8 @@
   "date": "2026-11-17",
   "b": "整季套餐",
   "tr": "季节套餐",
-  "back": "Season package"
+  "back": "Season package",
+  "check": "ok"
  },
  "23723355f8f9": {
   "en": "New Technologies",
@@ -900,7 +908,8 @@
   "date": "2026-11-17",
   "b": "<x1>{1}</x1>至<x2>{2}</x2> {3}",
   "tr": "<x1>{1}</x1>至<x2>{2}</x2> {3}",
-  "back": "<x1>{1}</x1> to <x2>{2}</x2> {3}"
+  "back": "<x1>{1}</x1> to <x2>{2}</x2> {3}",
+  "check": "ok"
  },
  "2deaab2fb58e": {
   "en": "Matthijs Groeneveld led after Task {1}; Andrés Tello Alvarado took the lead after Task {2} and kept it to the end.",
@@ -991,7 +1000,8 @@
   "date": "2026-11-17",
   "b": "定金、尾款何时到期，以及取消后会怎样，都写在<x1>预订条款</x1>里。预订前请先阅读，并购买行程取消险。",
   "tr": "定金、尾款的支付时间以及取消后的处理，都写在<x1>预订条款</x1>中。请在预订前阅读，并购买行程取消保险。",
-  "back": "The deposit, when the balance is paid, and what happens after cancellation are all written in the <x1>booking terms</x1>. Please read them before booking, and buy trip cancellation insurance."
+  "back": "The deposit, when the balance is paid, and what happens after cancellation are all written in the <x1>booking terms</x1>. Please read them before booking, and buy trip cancellation insurance.",
+  "check": "ok"
  },
  "30e159c76bbe": {
   "en": "Lynsey Haynes led from Task {1} to the end.",
@@ -1021,7 +1031,8 @@
   "date": "2026-11-17",
   "b": "一顶伞翼飞过梯田和村庄",
   "tr": "一顶滑翔伞飞在梯田和村庄上空",
-  "back": "A paraglider flying over terraces and a village"
+  "back": "A paraglider flying over terraces and a village",
+  "check": "ok"
  },
  "328d292443e7": {
   "en": "Beyond Roads, Beyond Maps",
@@ -1157,7 +1168,8 @@
   "b": "<x1>{1}天</x1> · <x2>下一班次{2}</x2>",
   "tr": "<x1>{1}天</x1> · <x2>下一团期{2}</x2>",
   "tr_note": "a, without the space before {2} (Chinese spacing rule)",
-  "back": "<x1>{1} days</x1> · <x2>Next tour {2}</x2>"
+  "back": "<x1>{1} days</x1> · <x2>Next tour {2}</x2>",
+  "check": "ok"
  },
  "3a65e770b28a": {
   "en": "Women",
@@ -1256,7 +1268,8 @@
   "date": "2026-11-17",
   "b": "{1}位于{2}，这条山脉沿印度西海岸延伸，距海岸约{3}公里，处在{4}的火山台地上：平顶和陡峭的垂直悬崖。Vistasp Kharas在这里长大，已在此飞行十多年。他说这里的技术难度远高于{5}：在{7}飞{6}公里，相当于在{9}飞{8}公里。",
   "tr": "{1}位于{2}，这条山脉沿印度西海岸延伸，距海岸约{3} km，坐落在{4}的火山台地上：平顶与陡直的悬崖。Vistasp Kharas 在这里长大，在此飞行已超过十年。他认为这里的技术难度远高于{5}：在{7}飞{6} km，相当于在{9}飞{8} km。",
-  "back": "{1} is in {2}, the mountain range that runs along India's west coast, about {3} km from the coast, on the volcanic plateaus of {4}: flat tops and sheer cliffs. Vistasp Kharas grew up here and has flown here for more than ten years. He considers the technical difficulty here far higher than {5}: flying {6} km in {7} is equivalent to flying {8} km in {9}."
+  "back": "{1} is in {2}, the mountain range that runs along India's west coast, about {3} km from the coast, on the volcanic plateaus of {4}: flat tops and sheer cliffs. Vistasp Kharas grew up here and has flown here for more than ten years. He considers the technical difficulty here far higher than {5}: flying {6} km in {7} is equivalent to flying {8} km in {9}.",
+  "check": "ok"
  },
  "3e15ac7882aa": {
   "en": "Practice",
@@ -1289,7 +1302,8 @@
   "date": "2026-11-17",
   "b": "起价",
   "tr": "起价",
-  "back": "Starting price"
+  "back": "Starting price",
+  "check": "ok"
  },
  "40f1736b73a8": {
   "en": "Play the film",
@@ -1316,7 +1330,8 @@
   "date": "2026-11-17",
   "b": "一顶白色伞翼飞过湖岸边的农田，右侧是干燥的山坡",
   "tr": "一顶白色滑翔伞飞在湖岸农田上空，右侧是干燥的山坡",
-  "back": "A white paraglider flying over farmland on the lake shore, a dry hillside on the right"
+  "back": "A white paraglider flying over farmland on the lake shore, a dry hillside on the right",
+  "check": "ok"
  },
  "420b6a3c5c90": {
   "en": "Hear Where We <x1>Fly</x1>",
@@ -1346,7 +1361,8 @@
   "waive": {
    "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is an attributive or a verb, where Chinese pilots say 滑翔伞 / 飞滑翔伞, and 滑翔伞运动 would read stiffly"
   },
-  "back": "{1}: paragliding on the {2} plateau | {3}"
+  "back": "{1}: paragliding on the {2} plateau | {3}",
+  "check": "ok"
  },
  "44f7b74d06cb": {
   "en": "{1} held its first pre World Cup in {2}, with almost {3} pilots, and its second, the first run by the Paragliding Association of India, in {4}. The longest local line runs about {5} km north west to {6}.",
@@ -1357,7 +1373,8 @@
   "waive": {
    "glossary": "'paragliding' only inside the organisation's own name (Paragliding Association of India), rendered 印度滑翔伞协会 with the English name kept"
   },
-  "back": "{1} held the first World Cup qualifier in {2}, with nearly {3} pilots taking part; the second was held in {4}, and was also the first hosted by the Paragliding Association of India. The longest local route extends about {5} km to the northwest, as far as {6}."
+  "back": "{1} held the first World Cup qualifier in {2}, with nearly {3} pilots taking part; the second was held in {4}, and was also the first hosted by the Paragliding Association of India. The longest local route extends about {5} km to the northwest, as far as {6}.",
+  "check": "ok"
  },
  "4659fb30692d": {
   "en": "Tom Lolies",
@@ -1421,7 +1438,8 @@
   "b": "听亲身飞过这里的人讲这个场地",
   "tr": "听亲身飞过这里的人讲这个场地",
   "tr_note": "picked b",
-  "back": "Hear this site described by someone who has flown it themselves"
+  "back": "Hear this site described by someone who has flown it themselves",
+  "check": "ok"
  },
  "47e1e16008a9": {
   "en": "Navigating {1}: Vistasp Kharas",
@@ -1429,7 +1447,8 @@
   "date": "2026-11-17",
   "b": "导航{1}：Vistasp Kharas",
   "tr": "《探路{1}》：Vistasp Kharas",
-  "back": "\"Pathfinding {1}\": Vistasp Kharas"
+  "back": "\"Pathfinding {1}\": Vistasp Kharas",
+  "check": "ok"
  },
  "48bc78620bf1": {
   "en": "Full Event",
@@ -1493,7 +1512,8 @@
   "date": "2026-11-17",
   "b": "悬崖在上午被加热，产生强劲的热气流。多个高度层都有逆温，风向可能每升高一千米就变一次，每个山谷和凹地都有自己的风。",
   "tr": "悬崖整个上午都在升温，激发出强劲的热气流。空中有多层逆温，风向每升高一千米就可能改变，每个山谷和山坳都有自己的风。",
-  "back": "The cliffs heat up all morning, setting off strong thermals. There are multiple inversion layers in the air, the wind direction can change with every thousand metres of height, and every valley and hollow has its own wind."
+  "back": "The cliffs heat up all morning, setting off strong thermals. There are multiple inversion layers in the air, the wind direction can change with every thousand metres of height, and every valley and hollow has its own wind.",
+  "check": "ok"
  },
  "4b3a25477426": {
   "en": "Partner With Me",
@@ -1558,7 +1578,8 @@
   "date": "2026-11-17",
   "b": "预约通话",
   "tr": "预约通话",
-  "back": "Book a call"
+  "back": "Book a call",
+  "check": "ok"
  },
  "4fba49b06fc9": {
   "en": "Send enquiry",
@@ -1609,7 +1630,8 @@
   "date": "2026-11-17",
   "b": "起价",
   "tr": "起价",
-  "back": "Starting price"
+  "back": "Starting price",
+  "check": "ok"
  },
  "524cf50b5df5": {
   "en": "Cookies",
@@ -1717,7 +1739,8 @@
   "date": "2026-11-17",
   "b": "预留名额",
   "tr": "预留名额",
-  "back": "Reserve a place"
+  "back": "Reserve a place",
+  "check": "ok"
  },
  "56d75b537aec": {
   "en": "Next leg: Task {1}, Mon {2} <x1>→</x1>",
@@ -1811,7 +1834,8 @@
   "date": "2026-11-17",
   "b": "一顶伞翼高高飞在宽阔的湖面上，远处是梯田状的悬崖",
   "tr": "一顶滑翔伞高高飞在宽阔的湖面上空，远处是阶梯状的悬崖",
-  "back": "A paraglider flying high over a wide lake, with stepped cliffs in the distance"
+  "back": "A paraglider flying high over a wide lake, with stepped cliffs in the distance",
+  "check": "ok"
  },
  "5bcfeb31e164": {
   "en": "Task {1}",
@@ -1888,7 +1912,8 @@
   "date": "2026-11-17",
   "b": "一群伞翼飞在薄雾中的湖面上空",
   "tr": "一群滑翔伞在薄雾中的湖面上空盘旋",
-  "back": "A group of paragliders circling over a lake in light mist"
+  "back": "A group of paragliders circling over a lake in light mist",
+  "check": "ok"
  },
  "5e257531115d": {
   "en": "Standing on takeoff, what to expect",
@@ -1926,7 +1951,8 @@
   "date": "2026-11-17",
   "b": "摄影：Michael Gebert / <x1>@{1}</x1>",
   "tr": "摄影：Michael Gebert / <x1>@{1}</x1>",
-  "back": "Photo: Michael Gebert / <x1>@{1}</x1>"
+  "back": "Photo: Michael Gebert / <x1>@{1}</x1>",
+  "check": "ok"
  },
  "6073a2f2e928": {
   "en": "Next episodes",
@@ -1996,7 +2022,8 @@
   "date": "2026-11-17",
   "b": "播客 · 第{1}期 · {2}分钟",
   "tr": "播客 · 第{1}集 · {2}分钟",
-  "back": "Podcast · Episode {1} · {2} minutes"
+  "back": "Podcast · Episode {1} · {2} minutes",
+  "check": "ok"
  },
  "638aaa2ae7ed": {
   "en": "Conversations with the designers, test pilots and champions who shape the sport.",
@@ -2155,7 +2182,8 @@
   "date": "2026-11-17",
   "b": "十一月至三月",
   "tr": "十一月至三月",
-  "back": "November to March"
+  "back": "November to March",
+  "check": "ok"
  },
  "6b17aaa0f4a4": {
   "en": "One Week On The Plateau",
@@ -2163,7 +2191,8 @@
   "date": "2026-11-17",
   "b": "高原上的一周",
   "tr": "高原上的一周",
-  "back": "A week on the plateau"
+  "back": "A week on the plateau",
+  "check": "ok"
  },
  "6b21fb791ac0": {
   "en": "About",
@@ -2180,7 +2209,8 @@
   "date": "2026-11-17",
   "b": "最适合你的技术水平和梦想的行程（肯尼亚、{1}、印度、哈萨克斯坦或秘鲁）",
   "tr": "与你的技术和梦想最匹配的行程（肯尼亚、{1}、印度、哈萨克斯坦或秘鲁）",
-  "back": "The trip that best matches your skills and dreams (Kenya, {1}, India, Kazakhstan or Peru)"
+  "back": "The trip that best matches your skills and dreams (Kenya, {1}, India, Kazakhstan or Peru)",
+  "check": "ok"
  },
  "6b7fe0aa12c6": {
   "en": "Safety for a solo female pilot",
@@ -2354,7 +2384,8 @@
   "date": "2026-11-17",
   "b": "在{1}八天，在最后一期肯尼亚行程结束两天后。",
   "tr": "在{1}待八天，在最后一个肯尼亚团结束两天后开始。",
-  "back": "Eight days in {1}, starting two days after the last Kenya tour ends."
+  "back": "Eight days in {1}, starting two days after the last Kenya tour ends.",
+  "check": "ok"
  },
  "74052d61eebb": {
   "en": "Organisasjonsnummer {1}",
@@ -2362,7 +2393,8 @@
   "date": "2026-11-17",
   "b": "Organisasjonsnummer {1}",
   "tr": "Organisasjonsnummer {1}",
-  "back": "Organisasjonsnummer {1}"
+  "back": "Organisasjonsnummer {1}",
+  "check": "ok"
  },
  "7431e3df243c": {
   "en": "Package",
@@ -2379,7 +2411,8 @@
   "date": "2026-11-17",
   "b": "包价旅游权利",
   "tr": "包价旅游权利",
-  "back": "Package travel rights"
+  "back": "Package travel rights",
+  "check": "ok"
  },
  "74b69fb5c012": {
   "en": "about, at {1}",
@@ -2540,7 +2573,8 @@
   "b": "起飞点海拔约{1}至{2}米",
   "tr": "起飞场海拔约{1}至{2} m",
   "tr_note": "launch = 起飞场 site-wide; 海拔 makes clear it is the elevation",
-  "back": "Launch elevation about {1} to {2} m"
+  "back": "Launch elevation about {1} to {2} m",
+  "check": "ok"
  },
  "7ab8307d3d9e": {
   "en": "Open the episode <x1>→</x1>",
@@ -2557,7 +2591,8 @@
   "date": "2026-11-17",
   "b": "我们会为你详细说明：",
   "tr": "我们会为你详细讲解：",
-  "back": "We will walk you through in detail:"
+  "back": "We will walk you through in detail:",
+  "check": "ok"
  },
  "7b8de0bcc0fa": {
   "en": "Jul, Aug, Sep",
@@ -2599,7 +2634,8 @@
   "date": "2026-11-17",
   "b": "季节",
   "tr": "季节",
-  "back": "Season"
+  "back": "Season",
+  "check": "ok"
  },
  "7e3d96031b71": {
   "en": "Task {1}: {2}",
@@ -2730,7 +2766,8 @@
   "date": "2026-11-17",
   "b": "应退款时",
   "tr": "如应退款",
-  "back": "If a refund is due"
+  "back": "If a refund is due",
+  "check": "ok"
  },
  "842b7b5d7189": {
   "en": "Dates",
@@ -2822,7 +2859,8 @@
   "date": "2026-11-17",
   "b": "网站上的答案来自Vistasp Kharas在节目中的讲述。如果你的问题不在这里，可以在通话时提问。",
   "tr": "网站上的答案来自 Vistasp Kharas 在节目中的讲述。如果这里没有你的问题，请在通话时提出。",
-  "back": "The answers on the website come from what Vistasp Kharas said on the show. If your question is not here, ask it during the call."
+  "back": "The answers on the website come from what Vistasp Kharas said on the show. If your question is not here, ask it during the call.",
+  "check": "ok"
  },
  "87053d443651": {
   "en": "{1} {2}, tasks {3}",
@@ -2846,7 +2884,8 @@
   "date": "2026-11-17",
   "b": "{1}山丘",
   "tr": "{1}山区",
-  "back": "The {1} hills"
+  "back": "The {1} hills",
+  "check": "ok"
  },
  "87fe14c031dc": {
   "en": "Flight Safety, First and Always",
@@ -2882,7 +2921,8 @@
   "b": "起飞点海拔约{1}至{2}米，旺季时飞行员可爬升到{3}至{4}米，所以天气好的日子，离地高度超过{5}。",
   "tr": "起飞场海拔约{1}至{2} m，旺季时飞行员能爬升到{3}至{4} m，所以好天气时的离地高度胜过{5}。",
   "tr_note": "a, with launch = 起飞场 and 海拔 for the elevation",
-  "back": "Launch elevation is about {1} to {2} m, and in high season pilots can climb to {3} to {4} m, so in good weather the height above ground is better than {5}."
+  "back": "Launch elevation is about {1} to {2} m, and in high season pilots can climb to {3} to {4} m, so in good weather the height above ground is better than {5}.",
+  "check": "ok"
  },
  "89b86ab0e66f": {
   "en": "Language",
@@ -2933,7 +2973,8 @@
   "date": "2026-11-17",
   "b": "应该带什么伞翼？",
   "tr": "我应该带什么伞？",
-  "back": "Which wing should I bring?"
+  "back": "Which wing should I bring?",
+  "check": "ok"
  },
  "8c410fd00f6c": {
   "en": "Castbox",
@@ -2977,7 +3018,8 @@
   "date": "2026-11-17",
   "b": "出发之前",
   "tr": "出发之前",
-  "back": "Before departure"
+  "back": "Before departure",
+  "check": "ok"
  },
  "8e3df45a49db": {
   "en": "Copied",
@@ -3064,7 +3106,8 @@
   "date": "2026-11-17",
   "b": "{1}，印度",
   "tr": "{1}，印度",
-  "back": "{1}, India"
+  "back": "{1}, India",
+  "check": "ok"
  },
  "95898dee4581": {
   "en": "The land of five hills: volcanic tablelands, sharp cliffs and punchy thermals, two hours from {1}.",
@@ -3072,7 +3115,8 @@
   "date": "2026-11-17",
   "b": "五座山丘之地：火山台地、陡峭悬崖和劲道十足的热气流，距{1}两小时车程。",
   "tr": "五山之地：火山台地、陡峭悬崖和强劲的热气流，距{1}两小时路程。",
-  "back": "Land of five hills: volcanic plateaus, steep cliffs and strong thermals, two hours from {1}."
+  "back": "Land of five hills: volcanic plateaus, steep cliffs and strong thermals, two hours from {1}.",
+  "check": "ok"
  },
  "95f48d8b7a34": {
   "en": "Before you book",
@@ -3116,7 +3160,8 @@
   "date": "2026-11-17",
   "b": "两名飞行员飞向干燥田野着陆，上方还有更多伞翼，后面是一座平顶山",
   "tr": "两名飞行员正飞过一片干燥的田地准备降落，上方还有更多伞翼，身后是一座平顶山",
-  "back": "Two pilots flying over a dry field preparing to land, with more wings above and a flat-topped mountain behind them"
+  "back": "Two pilots flying over a dry field preparing to land, with more wings above and a flat-topped mountain behind them",
+  "check": "ok"
  },
  "97fe30b98737": {
   "en": "{1}: Paragliding the {2} Tablelands",
@@ -3127,7 +3172,8 @@
   "waive": {
    "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is an attributive or a verb, where Chinese pilots say 滑翔伞 / 飞滑翔伞, and 滑翔伞运动 would read stiffly"
   },
-  "back": "{1}: paragliding on the {2} plateau"
+  "back": "{1}: paragliding on the {2} plateau",
+  "check": "ok"
  },
  "997f59bc99b2": {
   "en": "Dec",
@@ -3135,7 +3181,8 @@
   "date": "2026-11-17",
   "b": "十二月",
   "tr": "十二月",
-  "back": "December"
+  "back": "December",
+  "check": "ok"
  },
  "99d628a2e8ba": {
   "en": "Watch on {1}",
@@ -3150,7 +3197,8 @@
   "date": "2026-11-17",
   "b": "问答",
   "tr": "问题",
-  "back": "Questions"
+  "back": "Questions",
+  "check": "ok"
  },
  "9ad8943d7c46": {
   "en": "Tell Us About <x1>Your Flying</x1>",
@@ -3167,7 +3215,8 @@
   "date": "2026-11-17",
   "b": "一顶伞翼飞过陡峭悬崖下的梯田山谷",
   "tr": "一顶滑翔伞飞过陡峭悬崖下的梯田山谷",
-  "back": "A paraglider flying over a terraced valley beneath steep cliffs"
+  "back": "A paraglider flying over a terraced valley beneath steep cliffs",
+  "check": "ok"
  },
  "9b90ea85e0a7": {
   "en": "Find Yourself In The Photos",
@@ -3191,7 +3240,8 @@
   "date": "2026-11-17",
   "b": "图库",
   "tr": "图库",
-  "back": "Gallery"
+  "back": "Gallery",
+  "check": "ok"
  },
  "9cbe42aaff60": {
   "en": "Planned",
@@ -3235,7 +3285,8 @@
   "date": "2026-11-17",
   "b": "本行程的飞行员等级为<x1>{1}</x1>。",
   "tr": "本团的飞行员等级要求为<x1>{1}</x1>。",
-  "back": "The pilot level required for this tour is <x1>{1}</x1>."
+  "back": "The pilot level required for this tour is <x1>{1}</x1>.",
+  "check": "ok"
  },
  "a0390598c54e": {
   "en": "Read the English page",
@@ -3282,7 +3333,8 @@
   "date": "2026-11-17",
   "b": "Vistasp Kharas在这里举办世界杯前哨赛之前，带你走了一遍{1}，讲了这个场地对飞行员的要求，以及在印度比赛飞行会遇到什么。",
   "tr": "在{1}举办世界杯预赛之前，Vistasp Kharas 介绍了这个场地：它对飞行员有哪些要求，以及在印度参加比赛飞行可以期待什么。",
-  "back": "Before {1} held the World Cup qualifier, Vistasp Kharas described this site: what it demands of pilots, and what to expect from competition flying in India."
+  "back": "Before {1} held the World Cup qualifier, Vistasp Kharas described this site: what it demands of pilots, and what to expect from competition flying in India.",
+  "check": "ok"
  },
  "a3384368bd70": {
   "en": "{1} was cancelled for weather: {2} set a {3} km task north, then called it off under full cirrus cover. {4} still counts it as Task {5}, so {6} is Task {7}.",
@@ -3406,7 +3458,8 @@
   "date": "2026-11-17",
   "b": "高B或C很棒，低B也不错；A会有点让人沮丧。不要带你最好的伞：{1}的起飞场是红色尘土，当地飞行员都备有一顶已经染红的备用伞。",
   "tr": "高B级或C级伞很理想，低B级也表现不错；A级伞会让你有点沮丧。不要带你最好的伞：{1}的起飞场是红土，当地飞行员都会备一顶已经染红的伞。",
-  "back": "A high B or C wing is ideal, a low B also performs well; an A wing will leave you a little frustrated. Do not bring your best wing: the launch at {1} is red soil, and local pilots all keep a wing that has already been dyed red."
+  "back": "A high B or C wing is ideal, a low B also performs well; an A wing will leave you a little frustrated. Do not bring your best wing: the launch at {1} is red soil, and local pilots all keep a wing that has already been dyed red.",
+  "check": "ok"
  },
  "a59807a9976e": {
   "en": "Vistasp Kharas <x1>Navigating {1}, {2}</x1>",
@@ -3414,7 +3467,8 @@
   "date": "2026-11-17",
   "b": "Vistasp Kharas <x1>导航{1}，{2}</x1>",
   "tr": "Vistasp Kharas <x1>《探路{1}》，{2}</x1>",
-  "back": "Vistasp Kharas <x1>\"Pathfinding {1}\", {2}</x1>"
+  "back": "Vistasp Kharas <x1>\"Pathfinding {1}\", {2}</x1>",
+  "check": "ok"
  },
  "a5aa575c87f0": {
   "en": "Ready To {1}?",
@@ -3464,7 +3518,8 @@
   "date": "2026-11-17",
   "b": "来自节目",
   "tr": "来自节目",
-  "back": "From the show"
+  "back": "From the show",
+  "check": "ok"
  },
  "a746d98e2d69": {
   "en": "Wind shear, and reading it",
@@ -3556,7 +3611,8 @@
   "date": "2026-11-17",
   "b": "依据挪威和欧盟法律",
   "tr": "依据挪威及欧盟法律",
-  "back": "Under Norwegian and EU law"
+  "back": "Under Norwegian and EU law",
+  "check": "ok"
  },
  "ad89087a3db0": {
   "en": "Airspace over the site",
@@ -3658,7 +3714,8 @@
   "date": "2026-11-17",
   "b": "能在强风和强热力条件下起飞的飞行员。在{1}飞行十多年的Vistasp Kharas建议具备{2}课程水平：热气流可能很猛，而且还有风。他不会推荐只习惯阿尔卑斯空气、对风了解不多的飞行员，因为在背风一侧，这个场地毫不留情。",
   "tr": "能在强风和强热力条件下起飞的飞行员。在{1}飞行超过十年的 Vistasp Kharas 建议先参加{2}课程：这里的热气流可能很猛，还夹杂着风。他不会推荐只习惯阿尔卑斯空气、对风了解不多的飞行员前来，因为在背风面，这个场地毫不留情。",
-  "back": "Pilots who can launch in strong wind and strong thermals. Vistasp Kharas, who has flown {1} for more than ten years, recommends first taking the {2} course: the thermals here can be fierce, mixed with wind. He would not recommend pilots who are only used to Alpine air and know little about wind, because on the lee side this site shows no mercy."
+  "back": "Pilots who can launch in strong wind and strong thermals. Vistasp Kharas, who has flown {1} for more than ten years, recommends first taking the {2} course: the thermals here can be fierce, mixed with wind. He would not recommend pilots who are only used to Alpine air and know little about wind, because on the lee side this site shows no mercy.",
+  "check": "ok"
  },
  "b49bbe9c0918": {
   "en": "Full-size original",
@@ -3686,7 +3743,8 @@
   "waive": {
    "glossary": "glossary 'landing' (降落场) is the landing field; here English means the act or a spot of landing (降落), not a designated field; 'top landing' has no sourced term, 山顶降落 is the usual phrase"
   },
-  "back": "Once you know where the wind comes from, a top landing on the main plateau in the later afternoon is fairly forgiving. In the valley, land in an already-harvested field near the road: never in unharvested crops or sugarcane. Power lines are strung above the ground, so watch for the poles and their shadows. The villagers are friendly, and going back to town by shared jeep is also cheap."
+  "back": "Once you know where the wind comes from, a top landing on the main plateau in the later afternoon is fairly forgiving. In the valley, land in an already-harvested field near the road: never in unharvested crops or sugarcane. Power lines are strung above the ground, so watch for the poles and their shadows. The villagers are friendly, and going back to town by shared jeep is also cheap.",
+  "check": "ok"
  },
  "b54b5c6f45ec": {
   "en": "Resume the film",
@@ -3770,7 +3828,8 @@
  "b97819bea45d": {
   "en": "Our terms, privacy and safety pages are in English.",
   "a": "我们的条款、隐私和安全页面为英文。",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "b": "我们的条款、隐私和安全页面均为英文。"
  },
  "b9b15d8821c5": {
   "en": "The film",
@@ -3822,7 +3881,8 @@
   "date": "2026-11-17",
   "b": "十一月",
   "tr": "十一月",
-  "back": "November"
+  "back": "November",
+  "check": "ok"
  },
  "bbaeb294a58b": {
   "en": "A short season, and a changing climate",
@@ -3839,7 +3899,8 @@
   "date": "2026-11-17",
   "b": "这趟行程适合谁？",
   "tr": "这个团适合谁？",
-  "back": "Who is this tour for?"
+  "back": "Who is this tour for?",
+  "check": "ok"
  },
  "bc596fdcb822": {
   "en": "How do I get there?",
@@ -3847,7 +3908,8 @@
   "date": "2026-11-17",
   "b": "怎么去那里？",
   "tr": "怎么去？",
-  "back": "How do I get there?"
+  "back": "How do I get there?",
+  "check": "ok"
  },
  "bc8b00da2fc8": {
   "en": "The <x1>episode library</x1> has {1} conversations with pilots, designers and instructors, transcripts included. <x2>Kenya</x2> is the trip page with the most detail on it.",
@@ -3891,8 +3953,8 @@
   "a": "团费包含的内容见<x1>{1}</x1>。",
   "date": "2026-11-17",
   "b": "行程价格包含<x1>{1}</x1>。",
-  "tr": "团费包含的内容见<x1>{1}</x1>。",
-  "back": "What the tour fee includes is described in <x1>{1}</x1>."
+  "tr": "团费包含的内容为<x1>{1}</x1>。",
+  "tr_note": "comparer: wrong sense: '见<x1>{1}</x1>' says 'see {1}' (a reference), but {1} is the list of what the price covers itself"
  },
  "bd979dbade5b": {
   "en": "Eddie Colfox",
@@ -3918,7 +3980,8 @@
   "date": "2026-11-17",
   "b": "与我们预订",
   "tr": "通过我们预订",
-  "back": "Booking through us"
+  "back": "Booking through us",
+  "check": "ok"
  },
  "bead0a998f90": {
   "en": "RAST And The LeelooX Effect",
@@ -3962,7 +4025,8 @@
   "date": "2026-11-17",
   "b": "高度",
   "tr": "高度",
-  "back": "Altitude"
+  "back": "Altitude",
+  "check": "ok"
  },
  "c2c1fe4f4307": {
   "en": "Out and return",
@@ -3988,7 +4052,8 @@
   "date": "2026-11-17",
   "b": "在挪威注册",
   "tr": "在挪威注册",
-  "back": "Registered in Norway"
+  "back": "Registered in Norway",
+  "check": "ok"
  },
  "c474e040dc24": {
   "en": "Why wind strength differs between seasons",
@@ -4005,7 +4070,8 @@
   "date": "2026-11-17",
   "b": "三月",
   "tr": "三月",
-  "back": "March"
+  "back": "March",
+  "check": "ok"
  },
  "c518fb067439": {
   "en": "Listen",
@@ -4051,7 +4117,8 @@
   "waive": {
    "glossary": "glossary 'landing' (降落场) is the landing field; here English means the act or a spot of landing (降落), not a designated field"
   },
-  "back": "Launch elevation is about {1} to {2} m, and in high season pilots can climb to {3} to {4} m. Local rule: below {5} m, start looking for a safe landing spot; unless you know exactly how the wind is blowing, stay away from the terrain."
+  "back": "Launch elevation is about {1} to {2} m, and in high season pilots can climb to {3} to {4} m. Local rule: below {5} m, start looking for a safe landing spot; unless you know exactly how the wind is blowing, stay away from the terrain.",
+  "check": "ok"
  },
  "c6c17c967a2f": {
   "en": "Nikolay Yotov",
@@ -4176,7 +4243,8 @@
   "date": "2026-11-17",
   "b": "飞行员等级",
   "tr": "飞行员等级",
-  "back": "Pilot level"
+  "back": "Pilot level",
+  "check": "ok"
  },
  "c94930a168ff": {
   "en": "Episode {1}",
@@ -4211,7 +4279,8 @@
   "date": "2026-11-17",
   "b": "{1}天",
   "tr": "{1}天",
-  "back": "{1} days"
+  "back": "{1} days",
+  "check": "ok"
  },
  "cb9f9f47293f": {
   "en": "Fitness and wing experience required",
@@ -4219,7 +4288,8 @@
   "date": "2026-11-17",
   "b": "所需的体能和伞翼经验",
   "tr": "所需的体能与伞翼飞行经验",
-  "back": "The physical fitness and wing-flying experience required"
+  "back": "The physical fitness and wing-flying experience required",
+  "check": "ok"
  },
  "cbee872716d0": {
   "en": "Gear list, dates, and costs",
@@ -4227,7 +4297,8 @@
   "date": "2026-11-17",
   "b": "装备清单、日期和费用",
   "tr": "装备清单、日期与费用",
-  "back": "Equipment list, dates and costs"
+  "back": "Equipment list, dates and costs",
+  "check": "ok"
  },
  "cbfd44d9c70c": {
   "en": "Teams",
@@ -4272,7 +4343,8 @@
   "date": "2026-11-17",
   "b": "一顶伞翼飞过沿湖的田野，下方是红色山丘",
   "tr": "一顶滑翔伞飞过湖岸的田野，下方是红色的山丘",
-  "back": "A paraglider flying over fields on the lake shore, with red hills below"
+  "back": "A paraglider flying over fields on the lake shore, with red hills below",
+  "check": "ok"
  },
  "ccc70f2dc6b5": {
   "en": "Corrections",
@@ -4378,7 +4450,8 @@
   "date": "2026-11-17",
   "b": "关于这些问题",
   "tr": "关于这些问题",
-  "back": "About these questions"
+  "back": "About these questions",
+  "check": "ok"
  },
  "d0b66435c381": {
   "en": "Tap the name: {1}",
@@ -4395,7 +4468,8 @@
   "date": "2026-11-17",
   "b": "点击“预留名额”会为该班次发送一份咨询。",
   "tr": "点击“预留名额”即会为该团期发送咨询。",
-  "back": "Clicking \"Reserve a place\" sends an enquiry for this tour date."
+  "back": "Clicking \"Reserve a place\" sends an enquiry for this tour date.",
+  "check": "ok"
  },
  "d189941a2aef": {
   "en": "Its name is enough to start. The dates, the place and the package help us reply about availability.",
@@ -4455,7 +4529,8 @@
   "date": "2026-11-17",
   "b": "开放报名",
   "tr": "开放报名",
-  "back": "Open for registration"
+  "back": "Open for registration",
+  "check": "ok"
  },
  "d523ebbd1014": {
   "en": "Country",
@@ -4463,7 +4538,8 @@
   "date": "2026-11-17",
   "b": "国家",
   "tr": "国家",
-  "back": "Country"
+  "back": "Country",
+  "check": "ok"
  },
  "d539499a32a4": {
   "en": "Experience, and what it does not cover",
@@ -4489,7 +4565,8 @@
   "date": "2026-11-17",
   "b": "飞行员预订前常问的问题",
   "tr": "飞行员预订前常问的问题",
-  "back": "Questions pilots often ask before booking"
+  "back": "Questions pilots often ask before booking",
+  "check": "ok"
  },
  "d7153c585db7": {
   "en": "<x1>←</x1> Task {1}",
@@ -4514,7 +4591,8 @@
   "date": "2026-11-17",
   "b": "{1}距{2}约两小时车程，距{3}约四个半到五小时车程。{4}不通火车：先乘火车从{5}到{6}，约四小时，再换出租车或巴士。",
   "tr": "{1}距{2}约两小时车程，距{3}约四个半到五个小时。火车不通{4}：从{5}坐火车到{6}，约四小时，然后换乘出租车或巴士。",
-  "back": "{1} is about two hours by car from {2} and about four and a half to five hours from {3}. Trains do not go to {4}: take a train from {5} to {6}, about four hours, then change to a taxi or bus."
+  "back": "{1} is about two hours by car from {2} and about four and a half to five hours from {3}. Trains do not go to {4}: take a train from {5} to {6}, about four hours, then change to a taxi or bus.",
+  "check": "ok"
  },
  "d76511171f87": {
   "en": "Participant Agreement",
@@ -4593,7 +4671,8 @@
   "date": "2026-11-17",
   "b": "二月",
   "tr": "二月",
-  "back": "February"
+  "back": "February",
+  "check": "ok"
  },
  "dca1bc8e03da": {
   "en": "Pre {1} Kenya, Nikolay Yotov",
@@ -4716,7 +4795,8 @@
   "date": "2026-11-17",
   "b": "时间窗口",
   "tr": "飞行窗口",
-  "back": "Flying window"
+  "back": "Flying window",
+  "check": "ok"
  },
  "e23733910d4b": {
   "en": "<x1>←</x1> Practice",
@@ -4809,7 +4889,8 @@
   "date": "2026-11-17",
   "b": "跳过图片<x1>↓</x1>",
   "tr": "跳过照片<x1>↓</x1>",
-  "back": "Skip photos<x1>↓</x1>"
+  "back": "Skip photos<x1>↓</x1>",
+  "check": "ok"
  },
  "e610f8570e95": {
   "en": "Point at the name: {1}",
@@ -4845,7 +4926,8 @@
   "waive": {
    "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is an attributive or a verb, where Chinese pilots say 滑翔伞 / 飞滑翔伞, and 滑翔伞运动 would read stiffly"
   },
-  "back": "A {1}-day guided paragliding tour in {2}, India, {3}: the volcanic plateau of the {4} hills, where India once held a World Cup qualifier."
+  "back": "A {1}-day guided paragliding tour in {2}, India, {3}: the volcanic plateau of the {4} hills, where India once held a World Cup qualifier.",
+  "check": "ok"
  },
  "e764aadd1307": {
   "en": "See the latest photos <x1>→</x1>",
@@ -5006,7 +5088,8 @@
   "date": "2026-11-17",
   "b": "从{1}获得的全程指导包括哪些",
   "tr": "{1}将为你提供的全程指导",
-  "back": "The guidance {1} will give you throughout"
+  "back": "The guidance {1} will give you throughout",
+  "check": "ok"
  },
  "efed3690ea22": {
   "en": "Jan",
@@ -5014,7 +5097,8 @@
   "date": "2026-11-17",
   "b": "一月",
   "tr": "一月",
-  "back": "January"
+  "back": "January",
+  "check": "ok"
  },
  "efefa00fad45": {
   "en": "footage from Bir Billing",
@@ -5049,7 +5133,8 @@
   "date": "2026-11-17",
   "b": "每天傍晚海风从海岸吹来，所以飞行日要围绕它安排。在留给越野飞行的时间里，飞行棒极了。",
   "tr": "每天傍晚，海风从海岸吹来，所以飞行日的安排都围绕它展开。在可以越野飞行的那段时间里，这里棒极了。",
-  "back": "Every evening a sea breeze blows in from the coast, so the flying day is organised around it. In the period when cross-country flying is possible, it is superb here."
+  "back": "Every evening a sea breeze blows in from the coast, so the flying day is organised around it. In the period when cross-country flying is possible, it is superb here.",
+  "check": "ok"
  },
  "f190c98ece6a": {
   "en": "Your message",
@@ -5069,7 +5154,8 @@
   "waive": {
    "glossary": "glossary 'landing' (降落场) is the landing field; here English means the act or a spot of landing (降落), not a designated field"
   },
-  "back": "If your height is below {1} metres, start looking for a safe landing spot. Unless you really know what you are doing, do not go near the terrain."
+  "back": "If your height is below {1} metres, start looking for a safe landing spot. Unless you really know what you are doing, do not go near the terrain.",
+  "check": "ok"
  },
  "f1deb1848d99": {
   "en": "See all {1} photos",
@@ -5114,7 +5200,8 @@
   "b": "台地上的七帧画面",
   "tr": "台地上的七帧画面",
   "tr_note": "picked b",
-  "back": "Seven frames from the plateau"
+  "back": "Seven frames from the plateau",
+  "check": "ok"
  },
  "f314bfd7b738": {
   "en": "More conversations, {1} guests, newest first",
@@ -5148,7 +5235,8 @@
   "b": "十一月至三月。风从北偏东北开始，随着春天临近转向东南，所以要据此选择起飞场。行程安排在二月，正值旺季。",
   "tr": "十一月至三月。风起初来自北东北方向，临近春天转为东南风，因此起飞场会随之选择。本团在二月飞行，正值季节正中。",
   "tr_note": "a; 'in the heart of it' is mid-season, not 'the best time' (a) or 'peak season' (b)",
-  "back": "November to March. The wind comes first from the north-northeast and turns southeasterly near spring, so the launch is chosen accordingly. This tour flies in February, right in the middle of the season."
+  "back": "November to March. The wind comes first from the north-northeast and turns southeasterly near spring, so the launch is chosen accordingly. This tour flies in February, right in the middle of the season.",
+  "check": "ok"
  },
  "f423fc07da77": {
   "en": "A {1} minute call, no obligation and nothing to prepare, is usually faster than any form. So is a message.",
@@ -5201,7 +5289,8 @@
   "date": "2026-11-17",
   "b": "{1}天内退款",
   "tr": "{1}天内退款",
-  "back": "Refund within {1} days"
+  "back": "Refund within {1} days",
+  "check": "ok"
  },
  "f6f5b350c771": {
   "en": "Cross country and {1} experience <x1>(optional)</x1>",
@@ -5220,7 +5309,8 @@
   "b": "我们对你的责任",
   "tr": "我们对你的责任",
   "tr_note": "picked b",
-  "back": "Our responsibility to you"
+  "back": "Our responsibility to you",
+  "check": "ok"
  },
  "f80642793f25": {
   "en": "How high does it get?",
@@ -5228,7 +5318,8 @@
   "date": "2026-11-17",
   "b": "能飞多高？",
   "tr": "能飞多高？",
-  "back": "How high can you fly?"
+  "back": "How high can you fly?",
+  "check": "ok"
  },
  "f98d5b67851f": {
   "en": "What is the cancellation policy?",
@@ -5236,7 +5327,8 @@
   "date": "2026-11-17",
   "b": "取消政策是什么？",
   "tr": "取消政策是什么？",
-  "back": "What is the cancellation policy?"
+  "back": "What is the cancellation policy?",
+  "check": "ok"
  },
  "f9b630a0d55f": {
   "en": "Chapters of Pre {1} Kenya",
@@ -5255,7 +5347,8 @@
   "b": "空气",
   "tr": "气流",
   "tr_note": "'The air' as a section heading about thermals, inversions and wind; 空气 reads as 'oxygen/air quality'",
-  "back": "Air"
+  "back": "Air",
+  "check": "ok"
  },
  "fa232835d54c": {
   "en": "Photos by <x1>@{1}</x1>",
@@ -5286,7 +5379,8 @@
   "date": "2026-11-17",
   "b": "我们在哪里降落？",
   "tr": "我们在哪里降落？",
-  "back": "Where do we land?"
+  "back": "Where do we land?",
+  "check": "ok"
  },
  "fd178e6aa89d": {
   "en": "{1} · Org. nr {2}<x1/>Olav {3} M {4}, {5} {6}, Norway",
@@ -5355,7 +5449,8 @@
   "date": "2026-11-17",
   "b": "{1}行程",
   "tr": "{1}团",
-  "back": "{1} tour"
+  "back": "{1} tour",
+  "check": "ok"
  },
  "ff68eb68195a": {
   "en": "Enquiry",

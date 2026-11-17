@@ -6,7 +6,8 @@
   "a": "Kein Haftungsverzicht",
   "tr": "Kein Verzicht",
   "tr_note": "B: reads on into the next line 'Auf unsere Verantwortung dir gegenüber'",
-  "back": "No waiver"
+  "back": "No waiver",
+  "check": "ok"
  },
  "00a1ea56e5b1": {
   "en": "A {1} km race on a day that looked better than forecast, the field raced the ridge, crossed the lake bed into the wind and ran a cloud street home.",
@@ -86,7 +87,8 @@
   "date": "2026-11-17",
   "a": "FAQ",
   "tr": "FAQ",
-  "back": "FAQ"
+  "back": "FAQ",
+  "check": "ok"
  },
  "0587c136e342": {
   "en": "Watch again",
@@ -104,7 +106,8 @@
   "a": "{1} Tage · Hügel von {2}",
   "tr": "{1} Tage · {2}-Hügel",
   "tr_note": "hill name as elsewhere",
-  "back": "{1} days · {2} hills"
+  "back": "{1} days · {2} hills",
+  "check": "ok"
  },
  "070db57eef93": {
   "en": "Chapters of Navigating {1}",
@@ -139,7 +142,8 @@
   "date": "2026-11-17",
   "a": "Scrollen",
   "tr": "Scrollen",
-  "back": "Scroll"
+  "back": "Scroll",
+  "check": "ok"
  },
  "09807498617e": {
   "en": "Sat {1}",
@@ -332,7 +336,8 @@
   "date": "2026-11-17",
   "a": "Überblick",
   "tr": "Überblick",
-  "back": "Overview"
+  "back": "Overview",
+  "check": "ok"
  },
  "0fa19b246492": {
   "en": "Navigators, Episode {1}",
@@ -458,7 +463,8 @@
   "date": "2026-11-17",
   "a": "Die Bilder",
   "tr": "Die Bilder",
-  "back": "The pictures"
+  "back": "The pictures",
+  "check": "ok"
  },
  "1680c69de6b4": {
   "en": "{1}, from the air",
@@ -532,7 +538,8 @@
   "date": "2026-11-17",
   "a": "Die Saison: November bis März. Die Tour liegt mitten im Februar.",
   "tr": "Die Saison: November bis März. Die Tour liegt mitten im Februar.",
-  "back": "The season: November to March. The tour is in the middle of February."
+  "back": "The season: November to March. The tour is in the middle of February.",
+  "check": "ok"
  },
  "19da3bd8e3b8": {
   "en": "Photos by {1}",
@@ -740,7 +747,8 @@
   "date": "2026-11-17",
   "a": "Saisonpaket",
   "tr": "Saisonpaket",
-  "back": "Season package"
+  "back": "Season package",
+  "check": "ok"
  },
  "23723355f8f9": {
   "en": "New Technologies",
@@ -901,7 +909,8 @@
   "date": "2026-11-17",
   "a": "<x1>{1}</x1> bis <x2>{2}</x2> {3}",
   "tr": "<x1>{1}</x1> bis <x2>{2}</x2> {3}",
-  "back": "<x1>{1}</x1> to <x2>{2}</x2> {3}"
+  "back": "<x1>{1}</x1> to <x2>{2}</x2> {3}",
+  "check": "ok"
  },
  "2deaab2fb58e": {
   "en": "Matthijs Groeneveld led after Task {1}; Andrés Tello Alvarado took the lead after Task {2} and kept it to the end.",
@@ -984,7 +993,8 @@
   "date": "2026-11-17",
   "a": "Die Anzahlung, wann der Restbetrag fällig ist und was bei einer Stornierung passiert, steht alles in den <x1>Buchungsbedingungen</x1>. Lies sie vor der Buchung und schließ eine Reiserücktrittsversicherung ab.",
   "tr": "Die Anzahlung, wann der Restbetrag fällig ist und was bei einer Stornierung passiert, steht alles in den <x1>Buchungsbedingungen</x1>. Lies sie vor der Buchung und schließ eine Reiserücktrittsversicherung ab.",
-  "back": "The deposit, when the balance is due and what happens on cancellation are all in the <x1>booking terms</x1>. Read them before booking and take out travel cancellation insurance."
+  "back": "The deposit, when the balance is due and what happens on cancellation are all in the <x1>booking terms</x1>. Read them before booking and take out travel cancellation insurance.",
+  "check": "ok"
  },
  "30e159c76bbe": {
   "en": "Lynsey Haynes led from Task {1} to the end.",
@@ -1013,7 +1023,8 @@
   "date": "2026-11-17",
   "a": "Ein Gleitschirm über Terrassenfeldern und Dörfern",
   "tr": "Ein Gleitschirm über Terrassenfeldern und Dörfern",
-  "back": "A paraglider over terraced fields and villages"
+  "back": "A paraglider over terraced fields and villages",
+  "check": "ok"
  },
  "328d292443e7": {
   "en": "Beyond Roads, Beyond Maps",
@@ -1139,7 +1150,8 @@
   "date": "2026-11-17",
   "a": "<x1>{1} Tage</x1> · <x2>Nächster Termin {2}</x2>",
   "tr": "<x1>{1} Tage</x1> · <x2>Nächster Termin {2}</x2>",
-  "back": "<x1>{1} days</x1> · <x2>Next date {2}</x2>"
+  "back": "<x1>{1} days</x1> · <x2>Next date {2}</x2>",
+  "check": "ok"
  },
  "3a65e770b28a": {
   "en": "Women",
@@ -1231,7 +1243,8 @@
   "a": "{1} liegt in den {2}, der Gebirgskette, die etwa {3} km landeinwärts entlang der Westküste Indiens verläuft, auf dem vulkanischen Tafelland des {4}: flache Gipfel und steile, senkrechte Klippen. Vistasp Kharas ist hier aufgewachsen und fliegt hier seit mehr als zehn Jahren. Er nennt es weit technischer als {5}: Ein Flug von {6} km in {7} ist so gut wie {8} km in {9}.",
   "tr": "{1} liegt in den {2}, der Gebirgskette, die etwa {3} km landeinwärts entlang der Westküste Indiens verläuft, auf dem vulkanischen Tafelland des {4}: flache Gipfel und steile, senkrechte Klippen. Vistasp Kharas ist hier aufgewachsen und fliegt hier seit mehr als zehn Jahren. Er nennt es weit technischer als {5}: Ein Flug von {6} km in {7} ist so viel wert wie {8} km in {9}.",
   "tr_note": "A, with B's clearer 'so viel wert wie' for 'as good as'",
-  "back": "{1} lies in the {2}, the mountain range that runs about {3} km inland along the west coast of India, on the volcanic plateau land of the {4}: flat summits and steep, vertical cliffs. Vistasp Kharas grew up here and has been flying here for more than ten years. He calls it far more technical than {5}: a flight of {6} km in {7} is worth as much as {8} km in {9}."
+  "back": "{1} lies in the {2}, the mountain range that runs about {3} km inland along the west coast of India, on the volcanic plateau land of the {4}: flat summits and steep, vertical cliffs. Vistasp Kharas grew up here and has been flying here for more than ten years. He calls it far more technical than {5}: a flight of {6} km in {7} is worth as much as {8} km in {9}.",
+  "check": "ok"
  },
  "3e15ac7882aa": {
   "en": "Practice",
@@ -1264,7 +1277,8 @@
   "date": "2026-11-17",
   "a": "Ab",
   "tr": "Ab",
-  "back": "From"
+  "back": "From",
+  "check": "ok"
  },
  "40f1736b73a8": {
   "en": "Play the film",
@@ -1290,7 +1304,8 @@
   "date": "2026-11-17",
   "a": "Ein weißer Gleitschirm über Ackerland am Ufer eines Sees, rechts ein trockener Hang",
   "tr": "Ein weißer Gleitschirm über Ackerland am Ufer eines Sees, rechts ein trockener Hang",
-  "back": "A white paraglider over farmland on the shore of a lake, a dry slope on the right"
+  "back": "A white paraglider over farmland on the shore of a lake, a dry slope on the right",
+  "check": "ok"
  },
  "420b6a3c5c90": {
   "en": "Hear Where We <x1>Fly</x1>",
@@ -1317,7 +1332,8 @@
   "a": "{1}: Gleitschirmfliegen im Tafelland von {2} | {3}",
   "tr": "{1}: Gleitschirmfliegen im {2}-Tafelland | {3}",
   "tr_note": "'tablelands' as Tafelland on every card, hill names hyphenated",
-  "back": "{1}: Paragliding in the {2} plateau land | {3}"
+  "back": "{1}: Paragliding in the {2} plateau land | {3}",
+  "check": "ok"
  },
  "44f7b74d06cb": {
   "en": "{1} held its first pre World Cup in {2}, with almost {3} pilots, and its second, the first run by the Paragliding Association of India, in {4}. The longest local line runs about {5} km north west to {6}.",
@@ -1330,7 +1346,8 @@
    "glossary": "'Paragliding' and 'India' are inside the organisation's own name, Paragliding Association of India, which stays as written",
    "country": "'India' is inside the organisation's own name, Paragliding Association of India"
   },
-  "back": "{1} hosted {2} its first Pre-World-Cup with almost {3} pilots and {4} its second, the first under the direction of the Paragliding Association of India. The longest local route leads about {5} km north-west to {6}."
+  "back": "{1} hosted {2} its first Pre-World-Cup with almost {3} pilots and {4} its second, the first under the direction of the Paragliding Association of India. The longest local route leads about {5} km north-west to {6}.",
+  "check": "ok"
  },
  "4659fb30692d": {
   "en": "Tom Lolies",
@@ -1391,8 +1408,8 @@
   "b": "Hör das Fluggebiet von jemandem, der es fliegt",
   "date": "2026-11-17",
   "a": "Hör das Fluggebiet von jemandem, der es fliegt",
-  "tr": "Hör das Fluggebiet von jemandem, der es fliegt",
-  "back": "Hear the flying area from someone who flies it"
+  "tr": "Das Fluggebiet, erzählt von jemandem, der es fliegt",
+  "tr_note": "comparer: wrong sense: \"Hör das Fluggebiet\" reads as literally hearing the site; English means hear about it from a local pilot"
  },
  "47e1e16008a9": {
   "en": "Navigating {1}: Vistasp Kharas",
@@ -1400,7 +1417,8 @@
   "date": "2026-11-17",
   "a": "Orientierung in {1}: Vistasp Kharas",
   "tr": "Navigieren in {1}: Vistasp Kharas",
-  "back": "Navigating in {1}: Vistasp Kharas"
+  "back": "Navigating in {1}: Vistasp Kharas",
+  "check": "ok"
  },
  "48bc78620bf1": {
   "en": "Full Event",
@@ -1464,7 +1482,8 @@
   "date": "2026-11-17",
   "a": "Die Klippen heizen sich über den Vormittag auf und liefern starke Thermik. Es gibt Inversionen in mehreren Schichten, der Wind kann alle tausend Meter die Richtung ändern, und jedes Tal und jeder Kessel hat seinen eigenen Wind.",
   "tr": "Die Klippen heizen sich über den Vormittag auf und liefern starke Thermik. Es gibt Inversionen in mehreren Schichten, der Wind kann alle tausend Meter die Richtung ändern, und jedes Tal und jeder Kessel hat seinen eigenen Wind.",
-  "back": "The cliffs heat up over the morning and deliver strong thermals. There are inversions in several layers, the wind can change direction every thousand metres, and every valley and every basin has its own wind."
+  "back": "The cliffs heat up over the morning and deliver strong thermals. There are inversions in several layers, the wind can change direction every thousand metres, and every valley and every basin has its own wind.",
+  "check": "ok"
  },
  "4b3a25477426": {
   "en": "Partner With Me",
@@ -1530,7 +1549,8 @@
   "date": "2026-11-17",
   "a": "Gespräch buchen",
   "tr": "Gespräch buchen",
-  "back": "Book a conversation"
+  "back": "Book a conversation",
+  "check": "ok"
  },
  "4fba49b06fc9": {
   "en": "Send enquiry",
@@ -1581,7 +1601,8 @@
   "date": "2026-11-17",
   "a": "Ab",
   "tr": "Ab",
-  "back": "From"
+  "back": "From",
+  "check": "ok"
  },
  "524cf50b5df5": {
   "en": "Cookies",
@@ -1689,7 +1710,8 @@
   "date": "2026-11-17",
   "a": "Platz reservieren",
   "tr": "Platz reservieren",
-  "back": "Reserve a place"
+  "back": "Reserve a place",
+  "check": "ok"
  },
  "56d75b537aec": {
   "en": "Next leg: Task {1}, Mon {2} <x1>→</x1>",
@@ -1783,7 +1805,8 @@
   "date": "2026-11-17",
   "a": "Ein Gleitschirm hoch über einem weiten See, dahinter terrassierte Klippen",
   "tr": "Ein Gleitschirm hoch über einem weiten See, dahinter terrassierte Klippen",
-  "back": "A paraglider high above a wide lake, terraced cliffs behind"
+  "back": "A paraglider high above a wide lake, terraced cliffs behind",
+  "check": "ok"
  },
  "5bcfeb31e164": {
   "en": "Task {1}",
@@ -1860,7 +1883,8 @@
   "date": "2026-11-17",
   "a": "Ein Pulk Gleitschirme über einem See im Dunst",
   "tr": "Ein Pulk Gleitschirme über einem See im Dunst",
-  "back": "A cluster of paragliders over a lake in the haze"
+  "back": "A cluster of paragliders over a lake in the haze",
+  "check": "ok"
  },
  "5e257531115d": {
   "en": "Standing on takeoff, what to expect",
@@ -1898,7 +1922,8 @@
   "date": "2026-11-17",
   "a": "Foto: Michael Gebert / <x1>@{1}</x1>",
   "tr": "Foto: Michael Gebert / <x1>@{1}</x1>",
-  "back": "Photo: Michael Gebert / <x1>@{1}</x1>"
+  "back": "Photo: Michael Gebert / <x1>@{1}</x1>",
+  "check": "ok"
  },
  "6073a2f2e928": {
   "en": "Next episodes",
@@ -1967,7 +1992,8 @@
   "date": "2026-11-17",
   "a": "Podcast · Folge {1} · {2} Min.",
   "tr": "Podcast · Folge {1} · {2} Min.",
-  "back": "Podcast · Episode {1} · {2} min."
+  "back": "Podcast · Episode {1} · {2} min.",
+  "check": "ok"
  },
  "638aaa2ae7ed": {
   "en": "Conversations with the designers, test pilots and champions who shape the sport.",
@@ -2122,7 +2148,8 @@
   "date": "2026-11-17",
   "a": "November bis März",
   "tr": "November bis März",
-  "back": "November to March"
+  "back": "November to March",
+  "check": "ok"
  },
  "6b17aaa0f4a4": {
   "en": "One Week On The Plateau",
@@ -2130,7 +2157,8 @@
   "date": "2026-11-17",
   "a": "Eine Woche auf dem Plateau",
   "tr": "Eine Woche auf dem Plateau",
-  "back": "A week on the plateau"
+  "back": "A week on the plateau",
+  "check": "ok"
  },
  "6b21fb791ac0": {
   "en": "About",
@@ -2147,7 +2175,8 @@
   "date": "2026-11-17",
   "a": "Die ideale Tour für dein Können und deine Träume (Kenia, {1}, Indien, Kasachstan oder Peru)",
   "tr": "Die ideale Tour für dein Können und deine Träume (Kenia, {1}, Indien, Kasachstan oder Peru)",
-  "back": "The ideal tour for your skill and your dreams (Kenya, {1}, India, Kazakhstan or Peru)"
+  "back": "The ideal tour for your skill and your dreams (Kenya, {1}, India, Kazakhstan or Peru)",
+  "check": "ok"
  },
  "6b7fe0aa12c6": {
   "en": "Safety for a solo female pilot",
@@ -2321,7 +2350,8 @@
   "date": "2026-11-17",
   "a": "Acht Tage in {1}, zwei Tage nach dem Ende der letzten Kenia-Tour.",
   "tr": "Acht Tage in {1}, zwei Tage nach dem Ende der letzten Kenia-Tour.",
-  "back": "Eight days in {1}, two days after the end of the last Kenya tour."
+  "back": "Eight days in {1}, two days after the end of the last Kenya tour.",
+  "check": "ok"
  },
  "74052d61eebb": {
   "en": "Organisasjonsnummer {1}",
@@ -2329,7 +2359,8 @@
   "date": "2026-11-17",
   "a": "Organisasjonsnummer {1}",
   "tr": "Organisasjonsnummer {1}",
-  "back": "Organisasjonsnummer {1}"
+  "back": "Organisasjonsnummer {1}",
+  "check": "ok"
  },
  "7431e3df243c": {
   "en": "Package",
@@ -2346,7 +2377,8 @@
   "date": "2026-11-17",
   "a": "Pauschalreiserechte",
   "tr": "Pauschalreiserechte",
-  "back": "Package travel rights"
+  "back": "Package travel rights",
+  "check": "ok"
  },
  "74b69fb5c012": {
   "en": "about, at {1}",
@@ -2511,7 +2543,8 @@
   "date": "2026-11-17",
   "a": "Start auf etwa {1} bis {2} m",
   "tr": "Startplatz auf etwa {1} bis {2} m",
-  "back": "Launch site at about {1} to {2} m"
+  "back": "Launch site at about {1} to {2} m",
+  "check": "ok"
  },
  "7ab8307d3d9e": {
   "en": "Open the episode <x1>→</x1>",
@@ -2528,7 +2561,8 @@
   "date": "2026-11-17",
   "a": "Wir besprechen:",
   "tr": "Wir besprechen:",
-  "back": "We discuss:"
+  "back": "We discuss:",
+  "check": "ok"
  },
  "7b8de0bcc0fa": {
   "en": "Jul, Aug, Sep",
@@ -2570,7 +2604,8 @@
   "date": "2026-11-17",
   "a": "Die Saison",
   "tr": "Die Saison",
-  "back": "The season"
+  "back": "The season",
+  "check": "ok"
  },
  "7e3d96031b71": {
   "en": "Task {1}: {2}",
@@ -2701,7 +2736,8 @@
   "date": "2026-11-17",
   "a": "Wenn eine Erstattung fällig ist",
   "tr": "Wenn eine Erstattung fällig ist",
-  "back": "When a refund is due"
+  "back": "When a refund is due",
+  "check": "ok"
  },
  "842b7b5d7189": {
   "en": "Dates",
@@ -2791,7 +2827,8 @@
   "date": "2026-11-17",
   "a": "Die Antworten auf dieser Seite stammen von Vistasp Kharas, aus dem Podcast. Wenn deine Frage nicht dabei ist, stell sie im Gespräch.",
   "tr": "Die Antworten auf dieser Seite stammen von Vistasp Kharas, aus dem Podcast. Wenn deine Frage nicht dabei ist, stell sie im Gespräch.",
-  "back": "The answers on this page come from Vistasp Kharas, from the podcast. If your question is not among them, ask it in a conversation."
+  "back": "The answers on this page come from Vistasp Kharas, from the podcast. If your question is not among them, ask it in a conversation.",
+  "check": "ok"
  },
  "87053d443651": {
   "en": "{1} {2}, tasks {3}",
@@ -2816,7 +2853,8 @@
   "date": "2026-11-17",
   "a": "Hügel von {1}",
   "tr": "{1}-Hügel",
-  "back": "{1} hills"
+  "back": "{1} hills",
+  "check": "ok"
  },
  "87fe14c031dc": {
   "en": "Flight Safety, First and Always",
@@ -2852,7 +2890,8 @@
   "a": "Der Start liegt auf etwa {1} bis {2} m, und in der Hochsaison steigen die Piloten auf {3} bis {4} m, sodass die Höhe über Grund an einem guten Tag die von {5} übertrifft.",
   "tr": "Der Startplatz liegt auf etwa {1} bis {2} m, und in der Hochsaison steigen die Piloten auf {3} bis {4} m, sodass die Höhe über Grund an einem guten Tag die von {5} übertrifft.",
   "tr_note": "A, with 'Startplatz' for take-off as on every card",
-  "back": "The launch site is at about {1} to {2} m, and in high season pilots climb to {3} to {4} m, so that the height above ground on a good day exceeds that of {5}."
+  "back": "The launch site is at about {1} to {2} m, and in high season pilots climb to {3} to {4} m, so that the height above ground on a good day exceeds that of {5}.",
+  "check": "ok"
  },
  "89b86ab0e66f": {
   "en": "Language",
@@ -2903,7 +2942,8 @@
   "date": "2026-11-17",
   "a": "Welchen Schirm soll ich mitbringen?",
   "tr": "Welchen Schirm soll ich mitbringen?",
-  "back": "Which wing should I bring?"
+  "back": "Which wing should I bring?",
+  "check": "ok"
  },
  "8c410fd00f6c": {
   "en": "Castbox",
@@ -2947,7 +2987,8 @@
   "date": "2026-11-17",
   "a": "Bevor du kommst",
   "tr": "Bevor du kommst",
-  "back": "Before you come"
+  "back": "Before you come",
+  "check": "ok"
  },
  "8e3df45a49db": {
   "en": "Copied",
@@ -3034,7 +3075,8 @@
   "date": "2026-11-17",
   "a": "{1}, Indien",
   "tr": "{1}, Indien",
-  "back": "{1}, India"
+  "back": "{1}, India",
+  "check": "ok"
  },
  "95898dee4581": {
   "en": "The land of five hills: volcanic tablelands, sharp cliffs and punchy thermals, two hours from {1}.",
@@ -3042,7 +3084,8 @@
   "date": "2026-11-17",
   "a": "Das Land der fünf Hügel: vulkanisches Tafelland, steile Klippen und kräftige Thermik, zwei Stunden von {1} entfernt.",
   "tr": "Das Land der fünf Hügel: vulkanisches Tafelland, steile Klippen und kräftige Thermik, zwei Stunden von {1} entfernt.",
-  "back": "The land of the five hills: volcanic plateau land, steep cliffs and strong thermals, two hours from {1}."
+  "back": "The land of the five hills: volcanic plateau land, steep cliffs and strong thermals, two hours from {1}.",
+  "check": "ok"
  },
  "95f48d8b7a34": {
   "en": "Before you book",
@@ -3086,7 +3129,8 @@
   "date": "2026-11-17",
   "a": "Zwei Piloten im Landeanflug über einem trockenen Feld, weitere Schirme darüber und ein Tafelberg dahinter",
   "tr": "Zwei Piloten im Landeanflug über einem trockenen Feld, weitere Schirme darüber und ein Tafelberg dahinter",
-  "back": "Two pilots on final approach over a dry field, more canopies above and a table mountain behind"
+  "back": "Two pilots on final approach over a dry field, more canopies above and a table mountain behind",
+  "check": "ok"
  },
  "97fe30b98737": {
   "en": "{1}: Paragliding the {2} Tablelands",
@@ -3095,7 +3139,8 @@
   "a": "{1}: Gleitschirmfliegen im Tafelland von {2}",
   "tr": "{1}: Gleitschirmfliegen im {2}-Tafelland",
   "tr_note": "'tablelands' as Tafelland on every card",
-  "back": "{1}: Paragliding in the {2} plateau land"
+  "back": "{1}: Paragliding in the {2} plateau land",
+  "check": "ok"
  },
  "997f59bc99b2": {
   "en": "Dec",
@@ -3103,7 +3148,8 @@
   "date": "2026-11-17",
   "a": "Dez.",
   "tr": "Dez.",
-  "back": "Dec."
+  "back": "Dec.",
+  "check": "ok"
  },
  "99d628a2e8ba": {
   "en": "Watch on {1}",
@@ -3118,7 +3164,8 @@
   "date": "2026-11-17",
   "a": "Fragen",
   "tr": "Fragen",
-  "back": "Questions"
+  "back": "Questions",
+  "check": "ok"
  },
  "9ad8943d7c46": {
   "en": "Tell Us About <x1>Your Flying</x1>",
@@ -3135,7 +3182,8 @@
   "date": "2026-11-17",
   "a": "Ein Gleitschirm über einem terrassierten Tal unter steilen Klippen",
   "tr": "Ein Gleitschirm über einem terrassierten Tal unter steilen Klippen",
-  "back": "A paraglider over a terraced valley beneath steep cliffs"
+  "back": "A paraglider over a terraced valley beneath steep cliffs",
+  "check": "ok"
  },
  "9b90ea85e0a7": {
   "en": "Find Yourself In The Photos",
@@ -3159,7 +3207,8 @@
   "date": "2026-11-17",
   "a": "Galerie",
   "tr": "Galerie",
-  "back": "Gallery"
+  "back": "Gallery",
+  "check": "ok"
  },
  "9cbe42aaff60": {
   "en": "Planned",
@@ -3204,7 +3253,8 @@
   "a": "Das Pilotenniveau für die Tour: <x1>{1}</x1>.",
   "tr": "Das Pilotenniveau für die Tour ist <x1>{1}</x1>.",
   "tr_note": "A's terms, the English sentence shape",
-  "back": "The pilot level for the tour is <x1>{1}</x1>."
+  "back": "The pilot level for the tour is <x1>{1}</x1>.",
+  "check": "ok"
  },
  "a0390598c54e": {
   "en": "Read the English page",
@@ -3252,7 +3302,8 @@
   "a": "Vistasp Kharas stellt {1} vor dem dort ausgetragenen Pre-World-Cup vor: was das Fluggebiet von einem Piloten verlangt und was man vom Wettkampffliegen in Indien erwarten kann.",
   "tr": "Vistasp Kharas stellt {1} vor dem dort ausgetragenen Pre-World-Cup vor: was das Fluggebiet von einem Piloten verlangt und was man vom Wettbewerbsfliegen in Indien erwarten kann.",
   "tr_note": "A ('der Pre-World-Cup'), 'competition' as Wettbewerb (glossary) on every comp label",
-  "back": "Vistasp Kharas introduces {1} before the Pre-World-Cup held there: what the flying area demands of a pilot and what to expect from competition flying in India."
+  "back": "Vistasp Kharas introduces {1} before the Pre-World-Cup held there: what the flying area demands of a pilot and what to expect from competition flying in India.",
+  "check": "ok"
  },
  "a3384368bd70": {
   "en": "{1} was cancelled for weather: {2} set a {3} km task north, then called it off under full cirrus cover. {4} still counts it as Task {5}, so {6} is Task {7}.",
@@ -3378,7 +3429,8 @@
   "date": "2026-11-17",
   "a": "Ein High-B oder ein C ist ideal, und selbst ein Low-B kommt gut zurecht; mit einem A wird es etwas frustrierend. Bring nicht deinen besten Schirm mit: Der Startplatz in {1} ist roter Staub, und die einheimischen Piloten haben einen Zweitschirm, der schon rot ist.",
   "tr": "Ein High-B oder ein C ist ideal, und selbst ein Low-B kommt gut zurecht; mit einem A wird es etwas frustrierend. Bring nicht deinen besten Schirm mit: Der Startplatz in {1} ist roter Staub, und die einheimischen Piloten haben einen Zweitschirm, der schon rot ist.",
-  "back": "A high-B or a C is ideal, and even a low-B copes well; with an A it gets somewhat frustrating. Do not bring your best wing: the launch site in {1} is red dust, and the local pilots have a second wing that is already red."
+  "back": "A high-B or a C is ideal, and even a low-B copes well; with an A it gets somewhat frustrating. Do not bring your best wing: the launch site in {1} is red dust, and the local pilots have a second wing that is already red.",
+  "check": "ok"
  },
  "a59807a9976e": {
   "en": "Vistasp Kharas <x1>Navigating {1}, {2}</x1>",
@@ -3386,7 +3438,8 @@
   "date": "2026-11-17",
   "a": "Vistasp Kharas <x1>Orientierung in {1}, {2}</x1>",
   "tr": "Vistasp Kharas <x1>Navigieren in {1}, {2}</x1>",
-  "back": "Vistasp Kharas <x1>Navigating in {1}, {2}</x1>"
+  "back": "Vistasp Kharas <x1>Navigating in {1}, {2}</x1>",
+  "check": "ok"
  },
  "a5aa575c87f0": {
   "en": "Ready To {1}?",
@@ -3435,7 +3488,8 @@
   "date": "2026-11-17",
   "a": "Aus dem Podcast",
   "tr": "Aus dem Podcast",
-  "back": "From the podcast"
+  "back": "From the podcast",
+  "check": "ok"
  },
  "a746d98e2d69": {
   "en": "Wind shear, and reading it",
@@ -3525,7 +3579,8 @@
   "date": "2026-11-17",
   "a": "Nach norwegischem und EU-Recht",
   "tr": "Nach norwegischem und EU-Recht",
-  "back": "Under Norwegian and EU law"
+  "back": "Under Norwegian and EU law",
+  "check": "ok"
  },
  "ad89087a3db0": {
   "en": "Airspace over the site",
@@ -3626,7 +3681,8 @@
   "date": "2026-11-17",
   "a": "Für Piloten, die bei starkem Wind und starker Thermik starten können. Vistasp Kharas, der {1} seit mehr als zehn Jahren fliegt, rät zu einem {2}-Kurs: Die Thermik kann ruppig sein, und es ist Wind im Spiel. Einen Piloten, der nur alpine Luft gewohnt ist und wenig über Wind weiß, würde er nicht schicken, denn im Lee verzeiht das Fluggebiet nichts.",
   "tr": "Für Piloten, die bei starkem Wind und starker Thermik starten können. Vistasp Kharas, der {1} seit mehr als zehn Jahren fliegt, rät zu einem {2}-Kurs: Die Thermik kann ruppig sein, und es ist Wind im Spiel. Einen Piloten, der nur alpine Luft gewohnt ist und wenig über Wind weiß, würde er nicht schicken, denn im Lee verzeiht das Fluggebiet nichts.",
-  "back": "For pilots who can launch in strong wind and strong thermals. Vistasp Kharas, who has been flying {1} for more than ten years, recommends a {2} course: the thermals can be rough, and wind is involved. He would not send a pilot who is only used to alpine air and knows little about wind, because in the lee the flying area forgives nothing."
+  "back": "For pilots who can launch in strong wind and strong thermals. Vistasp Kharas, who has been flying {1} for more than ten years, recommends a {2} course: the thermals can be rough, and wind is involved. He would not send a pilot who is only used to alpine air and knows little about wind, because in the lee the flying area forgives nothing.",
+  "check": "ok"
  },
  "b49bbe9c0918": {
   "en": "Full-size original",
@@ -3649,12 +3705,8 @@
   "b": "Die Toplandung auf dem Haupt-Hochplateau ist am späten Nachmittag gutmütig, sobald du weißt, woher der Wind kommt. Lande in den Tälern in der Nähe einer Straße auf einem abgeernteten Feld: niemals auf stehenden Feldfrüchten oder Zuckerrohr. Die Stromleitungen verlaufen oberirdisch, achte also auf die Masten und ihre Schatten. Die Dorfbewohner sind freundlich, und ein gemeinsamer Jeep zurück in die Stadt ist günstig.",
   "date": "2026-11-17",
   "a": "Die Toplandung auf dem Haupttafelberg ist am späten Nachmittag unkritisch, sobald du weißt, woher der Wind kommt. In den Tälern landest du nahe einer Straße auf einem abgeernteten Feld: nie in stehendem Getreide oder Zuckerrohr. Die Stromleitungen verlaufen oberirdisch, also achte auf die Masten und ihre Schatten. Die Dorfbewohner sind freundlich, und ein Sammeljeep zurück in die Stadt ist günstig.",
-  "tr": "Das Toplanden auf dem Haupttafelberg ist am späten Nachmittag gutmütig, sobald du weißt, woher der Wind kommt. In den Tälern landest du nahe einer Straße auf einem abgeernteten Feld: nie in stehendem Getreide oder Zuckerrohr. Die Stromleitungen verlaufen oberirdisch, also achte auf die Masten und ihre Schatten. Die Dorfbewohner sind freundlich, und ein Sammeljeep zurück in die Stadt ist günstig.",
-  "tr_note": "A, glossary Toplanden, the pilots' word 'gutmütig' for forgiving",
-  "waive": {
-   "glossary": "'landing' is part of 'top landing' (glossary Toplanden); the verb 'land' is landest, not the landing field"
-  },
-  "back": "Top-landing on the main table mountain is benign in the late afternoon, once you know where the wind is coming from. In the valleys you land near a road on a harvested field: never in standing grain or sugar cane. The power lines run overhead, so watch for the poles and their shadows. The villagers are friendly, and a shared jeep back to town is cheap."
+  "tr": "Das Toplanden auf dem Haupttafelberg ist am späten Nachmittag gutmütig, sobald du weißt, woher der Wind kommt. In den Tälern landest du nahe einer Straße auf einem abgeernteten Feld: nie in einem Feld mit stehender Ernte oder in Zuckerrohr. Die Stromleitungen verlaufen oberirdisch, also achte auf die Masten und ihre Schatten. Die Dorfbewohner sind freundlich, und ein Sammeljeep zurück in die Stadt ist günstig.",
+  "tr_note": "comparer: narrower: \"standing crops\" (any crop) became \"stehendem Getreide\" (grain only)"
  },
  "b54b5c6f45ec": {
   "en": "Resume the film",
@@ -3738,7 +3790,8 @@
  "b97819bea45d": {
   "en": "Our terms, privacy and safety pages are in English.",
   "a": "Unsere Seiten zu den Geschäftsbedingungen, zum Datenschutz und zur Sicherheit gibt es nur auf Englisch.",
-  "date": "2026-11-17"
+  "date": "2026-11-17",
+  "b": "Unsere AGB, die Datenschutz- und die Sicherheitsseiten sind auf Englisch."
  },
  "b9b15d8821c5": {
   "en": "The film",
@@ -3789,7 +3842,8 @@
   "date": "2026-11-17",
   "a": "Nov.",
   "tr": "Nov.",
-  "back": "Nov."
+  "back": "Nov.",
+  "check": "ok"
  },
  "bbaeb294a58b": {
   "en": "A short season, and a changing climate",
@@ -3806,7 +3860,8 @@
   "date": "2026-11-17",
   "a": "Für wen ist diese Tour?",
   "tr": "Für wen ist diese Tour?",
-  "back": "Who is this tour for?"
+  "back": "Who is this tour for?",
+  "check": "ok"
  },
  "bc596fdcb822": {
   "en": "How do I get there?",
@@ -3814,7 +3869,8 @@
   "date": "2026-11-17",
   "a": "Wie komme ich hin?",
   "tr": "Wie komme ich hin?",
-  "back": "How do I get there?"
+  "back": "How do I get there?",
+  "check": "ok"
  },
  "bc8b00da2fc8": {
   "en": "The <x1>episode library</x1> has {1} conversations with pilots, designers and instructors, transcripts included. <x2>Kenya</x2> is the trip page with the most detail on it.",
@@ -3859,7 +3915,8 @@
   "date": "2026-11-17",
   "a": "Was im Tourpreis enthalten ist: <x1>{1}</x1>.",
   "tr": "Was im Tourpreis enthalten ist: <x1>{1}</x1>.",
-  "back": "What is included in the tour price: <x1>{1}</x1>."
+  "back": "What is included in the tour price: <x1>{1}</x1>.",
+  "check": "ok"
  },
  "bd979dbade5b": {
   "en": "Eddie Colfox",
@@ -3885,7 +3942,8 @@
   "date": "2026-11-17",
   "a": "Buchen bei uns",
   "tr": "Bei uns buchen",
-  "back": "Book with us"
+  "back": "Book with us",
+  "check": "ok"
  },
  "bead0a998f90": {
   "en": "RAST And The LeelooX Effect",
@@ -3930,7 +3988,8 @@
   "date": "2026-11-17",
   "a": "Die Höhe",
   "tr": "Die Höhe",
-  "back": "The height"
+  "back": "The height",
+  "check": "ok"
  },
  "c2c1fe4f4307": {
   "en": "Out and return",
@@ -3956,7 +4015,8 @@
   "date": "2026-11-17",
   "a": "In Norwegen registriert",
   "tr": "In Norwegen registriert",
-  "back": "Registered in Norway"
+  "back": "Registered in Norway",
+  "check": "ok"
  },
  "c474e040dc24": {
   "en": "Why wind strength differs between seasons",
@@ -3973,7 +4033,8 @@
   "date": "2026-11-17",
   "a": "März",
   "tr": "März",
-  "back": "March"
+  "back": "March",
+  "check": "ok"
  },
  "c518fb067439": {
   "en": "Listen",
@@ -4016,7 +4077,8 @@
   "a": "Der Start liegt auf etwa {1} bis {2} m, und in der Hochsaison steigen die Piloten auf {3} bis {4} m. Die lokale Regel: Unter {5} m such dir einen sicheren Landeplatz, und bleib vom Gelände weg, wenn du nicht genau weißt, was der Wind macht.",
   "tr": "Der Startplatz liegt auf etwa {1} bis {2} m, und in der Hochsaison steigen die Piloten auf {3} bis {4} m. Die lokale Regel: Unter {5} m such dir einen sicheren Landeplatz und bleib vom Gelände weg, es sei denn, du weißt genau, was der Wind macht.",
   "tr_note": "merged: Startplatz; 'unless' as es sei denn",
-  "back": "The launch site is at about {1} to {2} m, and in high season pilots climb to {3} to {4} m. The local rule: below {5} m look for a safe landing place and stay away from the terrain, unless you know exactly what the wind is doing."
+  "back": "The launch site is at about {1} to {2} m, and in high season pilots climb to {3} to {4} m. The local rule: below {5} m look for a safe landing place and stay away from the terrain, unless you know exactly what the wind is doing.",
+  "check": "ok"
  },
  "c6c17c967a2f": {
   "en": "Nikolay Yotov",
@@ -4138,7 +4200,8 @@
   "date": "2026-11-17",
   "a": "Pilotenniveau",
   "tr": "Pilotenniveau",
-  "back": "Pilot level"
+  "back": "Pilot level",
+  "check": "ok"
  },
  "c94930a168ff": {
   "en": "Episode {1}",
@@ -4173,7 +4236,8 @@
   "date": "2026-11-17",
   "a": "{1} Tage",
   "tr": "{1} Tage",
-  "back": "{1} days"
+  "back": "{1} days",
+  "check": "ok"
  },
  "cb9f9f47293f": {
   "en": "Fitness and wing experience required",
@@ -4181,7 +4245,8 @@
   "date": "2026-11-17",
   "a": "Benötigte Fitness und Schirmerfahrung",
   "tr": "Benötigte Fitness und Schirmerfahrung",
-  "back": "Required fitness and wing experience"
+  "back": "Required fitness and wing experience",
+  "check": "ok"
  },
  "cbee872716d0": {
   "en": "Gear list, dates, and costs",
@@ -4189,7 +4254,8 @@
   "date": "2026-11-17",
   "a": "Ausrüstungsliste, Termine und Kosten",
   "tr": "Ausrüstungsliste, Termine und Kosten",
-  "back": "Equipment list, dates and costs"
+  "back": "Equipment list, dates and costs",
+  "check": "ok"
  },
  "cbfd44d9c70c": {
   "en": "Teams",
@@ -4234,7 +4300,8 @@
   "date": "2026-11-17",
   "a": "Ein Gleitschirm über Feldern am Seeufer, darunter rote Hügel",
   "tr": "Ein Gleitschirm über Feldern am Seeufer, darunter rote Hügel",
-  "back": "A paraglider over fields on the lake shore, red hills below"
+  "back": "A paraglider over fields on the lake shore, red hills below",
+  "check": "ok"
  },
  "ccc70f2dc6b5": {
   "en": "Corrections",
@@ -4339,7 +4406,8 @@
   "date": "2026-11-17",
   "a": "Über diese Fragen",
   "tr": "Zu diesen Fragen",
-  "back": "To these questions"
+  "back": "To these questions",
+  "check": "ok"
  },
  "d0b66435c381": {
   "en": "Tap the name: {1}",
@@ -4356,7 +4424,8 @@
   "date": "2026-11-17",
   "a": "„Platz reservieren“ sendet eine Anfrage für diesen Termin.",
   "tr": "„Platz reservieren“ sendet eine Anfrage für diesen Termin.",
-  "back": "\"Reserve a place\" sends a request for this date."
+  "back": "\"Reserve a place\" sends a request for this date.",
+  "check": "ok"
  },
  "d189941a2aef": {
   "en": "Its name is enough to start. The dates, the place and the package help us reply about availability.",
@@ -4416,7 +4485,8 @@
   "date": "2026-11-17",
   "a": "Buchung offen",
   "tr": "Buchung offen",
-  "back": "Booking open"
+  "back": "Booking open",
+  "check": "ok"
  },
  "d523ebbd1014": {
   "en": "Country",
@@ -4424,7 +4494,8 @@
   "date": "2026-11-17",
   "a": "Land",
   "tr": "Land",
-  "back": "Country"
+  "back": "Country",
+  "check": "ok"
  },
  "d539499a32a4": {
   "en": "Experience, and what it does not cover",
@@ -4450,7 +4521,8 @@
   "date": "2026-11-17",
   "a": "Was Piloten vor der Buchung fragen",
   "tr": "Was Piloten vor der Buchung fragen",
-  "back": "What pilots ask before booking"
+  "back": "What pilots ask before booking",
+  "check": "ok"
  },
  "d7153c585db7": {
   "en": "<x1>←</x1> Task {1}",
@@ -4474,7 +4546,8 @@
   "date": "2026-11-17",
   "a": "{1} liegt etwa zwei Autostunden von {2} und viereinhalb bis fünf Stunden von {3} entfernt. Nach {4} fährt kein Zug: Nimm den Zug von {5} nach {6}, etwa vier Stunden, dann ein Taxi oder einen Bus.",
   "tr": "{1} liegt etwa zwei Autostunden von {2} und viereinhalb bis fünf Stunden von {3} entfernt. Nach {4} fährt kein Zug: Nimm den Zug von {5} nach {6}, etwa vier Stunden, dann ein Taxi oder einen Bus.",
-  "back": "{1} is about two hours by car from {2} and four and a half to five hours from {3}. No train goes to {4}: take the train from {5} to {6}, about four hours, then a taxi or a bus."
+  "back": "{1} is about two hours by car from {2} and four and a half to five hours from {3}. No train goes to {4}: take the train from {5} to {6}, about four hours, then a taxi or a bus.",
+  "check": "ok"
  },
  "d76511171f87": {
   "en": "Participant Agreement",
@@ -4552,7 +4625,8 @@
   "date": "2026-11-17",
   "a": "Feb.",
   "tr": "Feb.",
-  "back": "Feb."
+  "back": "Feb.",
+  "check": "ok"
  },
  "dca1bc8e03da": {
   "en": "Pre {1} Kenya, Nikolay Yotov",
@@ -4674,7 +4748,8 @@
   "date": "2026-11-17",
   "a": "Das Zeitfenster",
   "tr": "Das Zeitfenster",
-  "back": "The time window"
+  "back": "The time window",
+  "check": "ok"
  },
  "e23733910d4b": {
   "en": "<x1>←</x1> Practice",
@@ -4774,7 +4849,8 @@
   "date": "2026-11-17",
   "a": "Bilder überspringen <x1>↓</x1>",
   "tr": "Bilder überspringen <x1>↓</x1>",
-  "back": "Skip pictures <x1>↓</x1>"
+  "back": "Skip pictures <x1>↓</x1>",
+  "check": "ok"
  },
  "e610f8570e95": {
   "en": "Point at the name: {1}",
@@ -4811,7 +4887,8 @@
   "waive": {
    "glossary": "'paragliding tour' compounds as Gleitschirmtour with the glossary word Gleitschirm"
   },
-  "back": "A {1}-day guided paragliding tour in {2}, India, {3}: the volcanic plateau land of the {4} hills, where India hosted a Pre-World-Cup."
+  "back": "A {1}-day guided paragliding tour in {2}, India, {3}: the volcanic plateau land of the {4} hills, where India hosted a Pre-World-Cup.",
+  "check": "ok"
  },
  "e764aadd1307": {
   "en": "See the latest photos <x1>→</x1>",
@@ -4972,7 +5049,8 @@
   "date": "2026-11-17",
   "a": "Was du an Rundum-Betreuung von {1} bekommst",
   "tr": "Was du an Rundum-Betreuung von {1} bekommst",
-  "back": "What you get in all-round care from {1}"
+  "back": "What you get in all-round care from {1}",
+  "check": "ok"
  },
  "efed3690ea22": {
   "en": "Jan",
@@ -4980,7 +5058,8 @@
   "date": "2026-11-17",
   "a": "Jan.",
   "tr": "Jan.",
-  "back": "Jan."
+  "back": "Jan.",
+  "check": "ok"
  },
  "efefa00fad45": {
   "en": "footage from Bir Billing",
@@ -5016,7 +5095,8 @@
   "date": "2026-11-17",
   "a": "Jeden Abend kommt der Seewind von der Küste herein, deshalb richtet sich der Flugtag nach ihm. In der Zeit, die dir für Streckenflüge bleibt, ist es herrlich.",
   "tr": "Jeden Abend kommt der Seewind von der Küste herein, deshalb richtet sich der Flugtag nach ihm. In der Zeit, die dir für Streckenflüge bleibt, ist es herrlich.",
-  "back": "Every evening the sea wind comes in from the coast, so the flying day is organised around it. In the time that is left to you for cross-country flights, it is wonderful."
+  "back": "Every evening the sea wind comes in from the coast, so the flying day is organised around it. In the time that is left to you for cross-country flights, it is wonderful.",
+  "check": "ok"
  },
  "f190c98ece6a": {
   "en": "Your message",
@@ -5033,7 +5113,8 @@
   "date": "2026-11-17",
   "a": "Wenn du unter {1} Meter kommst, such dir einen sicheren Landeplatz. Geh nicht nah ans Gelände, wenn du nicht wirklich weißt, was du tust.",
   "tr": "Wenn du unter {1} Meter kommst, such dir einen sicheren Landeplatz. Geh nicht nah ans Gelände, es sei denn, du weißt wirklich, was du tust.",
-  "back": "If you get below {1} metres, look for a safe landing place. Do not go close to the terrain unless you really know what you are doing."
+  "back": "If you get below {1} metres, look for a safe landing place. Do not go close to the terrain unless you really know what you are doing.",
+  "check": "ok"
  },
  "f1deb1848d99": {
   "en": "See all {1} photos",
@@ -5077,7 +5158,8 @@
   "date": "2026-11-17",
   "a": "Sieben Bilder aus dem Tafelland",
   "tr": "Sieben Bilder aus dem Tafelland",
-  "back": "Seven pictures from the plateau land"
+  "back": "Seven pictures from the plateau land",
+  "check": "ok"
  },
  "f314bfd7b738": {
   "en": "More conversations, {1} guests, newest first",
@@ -5111,7 +5193,8 @@
   "a": "November bis März. Der Wind kommt anfangs aus Nordnordost und dreht zum Frühjahr hin auf Südost, also wird der Startplatz passend gewählt. Die Tour fliegt im Februar, mitten in der Saison.",
   "tr": "November bis März. Der Wind kommt anfangs aus Nordnordost und dreht zum Frühjahr hin auf Südost, also wird der Startplatz passend gewählt. Die Tour findet im Februar statt, mitten in der Saison.",
   "tr_note": "A, 'Die Tour fliegt' made natural",
-  "back": "November to March. The wind comes at first from north-north-east and turns to south-east towards spring, so the launch site is chosen accordingly. The tour takes place in February, in the middle of the season."
+  "back": "November to March. The wind comes at first from north-north-east and turns to south-east towards spring, so the launch site is chosen accordingly. The tour takes place in February, in the middle of the season.",
+  "check": "ok"
  },
  "f423fc07da77": {
   "en": "A {1} minute call, no obligation and nothing to prepare, is usually faster than any form. So is a message.",
@@ -5164,7 +5247,8 @@
   "date": "2026-11-17",
   "a": "Erstattung innerhalb von {1} Tagen",
   "tr": "Erstattung innerhalb von {1} Tagen",
-  "back": "Refund within {1} days"
+  "back": "Refund within {1} days",
+  "check": "ok"
  },
  "f6f5b350c771": {
   "en": "Cross country and {1} experience <x1>(optional)</x1>",
@@ -5182,7 +5266,8 @@
   "a": "Unserer Verantwortung dir gegenüber",
   "tr": "Auf unsere Verantwortung dir gegenüber",
   "tr_note": "B: completes 'Kein Verzicht' grammatically",
-  "back": "Of our responsibility towards you"
+  "back": "Of our responsibility towards you",
+  "check": "ok"
  },
  "f80642793f25": {
   "en": "How high does it get?",
@@ -5190,7 +5275,8 @@
   "date": "2026-11-17",
   "a": "Wie hoch geht es?",
   "tr": "Wie hoch kommt man?",
-  "back": "How high do you get?"
+  "back": "How high do you get?",
+  "check": "ok"
  },
  "f98d5b67851f": {
   "en": "What is the cancellation policy?",
@@ -5198,7 +5284,8 @@
   "date": "2026-11-17",
   "a": "Wie sind die Stornobedingungen?",
   "tr": "Wie lauten die Stornobedingungen?",
-  "back": "What are the cancellation terms?"
+  "back": "What are the cancellation terms?",
+  "check": "ok"
  },
  "f9b630a0d55f": {
   "en": "Chapters of Pre {1} Kenya",
@@ -5215,7 +5302,8 @@
   "date": "2026-11-17",
   "a": "Die Luft",
   "tr": "Die Luft",
-  "back": "The air"
+  "back": "The air",
+  "check": "ok"
  },
  "fa232835d54c": {
   "en": "Photos by <x1>@{1}</x1>",
@@ -5246,7 +5334,8 @@
   "date": "2026-11-17",
   "a": "Wo landen wir?",
   "tr": "Wo landen wir?",
-  "back": "Where do we land?"
+  "back": "Where do we land?",
+  "check": "ok"
  },
  "fd178e6aa89d": {
   "en": "{1} · Org. nr {2}<x1/>Olav {3} M {4}, {5} {6}, Norway",
@@ -5314,7 +5403,8 @@
   "date": "2026-11-17",
   "a": "{1}-Tour",
   "tr": "{1}-Tour",
-  "back": "{1} tour"
+  "back": "{1} tour",
+  "check": "ok"
  },
  "ff68eb68195a": {
   "en": "Enquiry",
