@@ -4174,7 +4174,8 @@
   "date": "2026-11-17",
   "a": "起飞场前方的飞行是教科书式的部分：整条山谷都有降落场，公路从不远，兀鹫会标出上升气流的位置。如果当天不顺，你就降落、搭回收车回家。",
   "tr": "起飞场前方的飞行是教科书式的部分：整条山谷沿线都有降落场，公路总在不远处，兀鹫会标出热气流的位置。如果当天不顺，你就降落，搭回收车回家。",
-  "tr_note": "comparer: wrong grammar: '公路从不远' is not idiomatic Chinese for 'a road never far away'"
+  "tr_note": "comparer: wrong grammar: '公路从不远' is not idiomatic Chinese for 'a road never far away'",
+  "back": "The flying in front of the launch is the textbook part: there are landing fields all along the valley, the road is always not far away, and vultures mark where the thermals are. If the day does not go well, you land and take the retrieval vehicle home."
  },
  "5646f9c6b3a7": {
   "en": "Jigish Gohil",
@@ -4652,7 +4653,8 @@
   "date": "2026-11-17",
   "a": "秋季才是飞行季。Eddie Colfox说，如今好天气大约从{1}开始，比以前晚，并且一直持续到十一月深处。住在{2}的Jigish Gohil说，几乎所有人都在秋季来，因为那时几乎每天都能稳定飞行。春季也能飞，但条件更强，人也少得多。当天的天气，可以看Jigish自己的网站paraguide.in为{3}提供的<x1>实时气象站</x1>。",
   "tr": "秋季才是飞行季。Eddie Colfox 说，如今好的飞行条件大约从{1}开始，比以前晚，并会一直持续到十一月中后期。住在{2}的 Jigish Gohil 说，几乎所有人都在秋季来，因为那时几乎每天都能稳定飞行。春季也能飞，但条件更强，人也少得多。飞行当天，可以看 Jigish 自己的网站 paraguide.in 为{3}提供的<x1>实时气象站</x1>。",
-  "tr_note": "orchestrator: 'well into November', not 'most of November'"
+  "tr_note": "orchestrator: 'well into November', not 'most of November'",
+  "back": "Autumn is the flying season. Eddie Colfox says that good flying conditions now start from about {1}, later than before, and last until mid-to-late November. Jigish Gohil, who lives in {2}, says almost everyone comes in autumn, because then it is possible to fly steadily almost every day. Spring can also be flown, but the conditions are stronger and there are far fewer people. On a flying day, you can look at the <x1>live weather station</x1> that Jigish's own website paraguide.in provides for {3}."
  },
  "612e12d29278": {
   "en": "Results",
@@ -4825,7 +4827,8 @@
   "date": "2026-11-17",
   "a": "小火烈鸟以炽热碱水中的蓝绿藻为食，当纳库鲁湖的水对它们来说太淡时，它们就会成千上万、数十万地聚集到这里。博戈里亚湖的火烈鸟数量曾超过一百万只。",
   "tr": "小火烈鸟以热碱水中的蓝绿藻为食，当纳库鲁湖的水对它们来说太淡时，它们就会数以十万计地聚集到这里。博戈里亚湖的火烈鸟数量曾超过一百万只。",
-  "tr_note": "orchestrator: 'hot', not 'scalding'"
+  "tr_note": "orchestrator: 'hot', not 'scalding'",
+  "back": "Lesser flamingos feed on the blue-green algae in the hot alkaline water, and when the water of Lake Nakuru is too fresh for them, they gather here in the hundreds of thousands. The number of flamingos at Lake Bogoria has exceeded one million."
  },
  "64994968fa95": {
   "en": "How you are read",
@@ -5455,7 +5458,8 @@
   "date": "2026-11-17",
   "a": "直接给现金，往往会让你之后来的飞行员处境更糟。不如分享食物，或者请人吃顿饭。坦白地说，只给一个人而不给其他人是不公平的，通常都能被理解和接受。",
   "tr": "直接给现金，往往会让你之后来的飞行员处境更糟。不如分享食物，或者请人吃顿饭。坦白告诉对方，只给一个人而不给其他人是不公平的，这样说通常都能被理解和接受。",
-  "tr_note": "comparer: wrong grammar: '坦白地说' reads as 'frankly', so the unfairness itself is what is 'understood and accepted'; English says that telling people plainly it would be unfair is what gets accepted"
+  "tr_note": "comparer: wrong grammar: '坦白地说' reads as 'frankly', so the unfairness itself is what is 'understood and accepted'; English says that telling people plainly it would be unfair is what gets accepted",
+  "back": "Giving cash directly often makes things worse for the pilots who come after you. It is better to share food, or to treat someone to a meal. Tell them frankly that giving to only one person and not to the others is unfair; saying this is usually understood and accepted."
  },
  "71fb78e6726e": {
   "en": "Over the back, then west<x1>{1} km</x1>",
@@ -5572,7 +5576,8 @@
   "date": "2026-11-17",
   "a": "秋季。从{2}年起就在{1}飞行的Eddie Colfox说，如今好天气大约从{3}开始，因为季风常常拖到当月第一周，而空气一直保持足够不稳定，直到十一月都能爬升到{4}米以上。我们的秋季两期，{5}和{6}，都在这个窗口之内；春季两期，{7}和{8}，则在它之前。<x1>Eddie谈飞行季</x1>。",
   "tr": "秋季。从{2}年起就在{1}飞行的 Eddie Colfox 说，如今好的飞行条件大约从{3}开始，因为季风常常拖到当月第一周，而空气一直保持足够不稳定，直到进入十一月很久以后都能爬升到{4} m 以上。我们的秋季两个团期，{5}和{6}，都在这个窗口之内；春季两个团期，{7}和{8}，则在它之前。<x1>Eddie 谈飞行季</x1>。",
-  "tr_note": "orchestrator: 'well into November', not 'most of November'"
+  "tr_note": "orchestrator: 'well into November', not 'most of November'",
+  "back": "Autumn. Eddie Colfox, who has flown in {1} since the year {2}, says good flying conditions now start from about {3}, because the monsoon often drags into the first week of that month, and the air stays unstable enough to climb above {4} m until well into November. Our two autumn groups, {5} and {6}, are both within this window; the two spring groups, {7} and {8}, are before it. <x1>Eddie on the flying season</x1>."
  },
  "74052d61eebb": {
   "en": "Organisasjonsnummer {1}",
@@ -8616,7 +8621,8 @@
   "date": "2026-11-17",
   "a": "标准旅行保险通常不保极限运动，所以请仔细阅读条款，不要想当然。",
   "tr": "标准旅行保险通常不保冒险类运动，所以请仔细阅读条款，不要想当然。",
-  "tr_note": "orchestrator: adventure, not extreme sports"
+  "tr_note": "orchestrator: adventure, not extreme sports",
+  "back": "Standard travel insurance usually does not cover adventure sports, so read the terms carefully and do not take it for granted."
  },
  "b191dbd602b6": {
   "en": "Will Gadd",
@@ -11930,7 +11936,8 @@
   "date": "2026-11-17",
   "a": "春季两期，从{1}连续进行。秋季两期，都在大约从{2}开始、一直持续到十一月深处的飞行季里，两期相隔三天。",
   "tr": "春季两个团期，在{1}期间前后衔接。秋季两个团期，都在大约从{2}开始、一直持续到十一月中后期的飞行季里，两期相隔三天。",
-  "tr_note": "orchestrator: 'well into November', not 'most of November'"
+  "tr_note": "orchestrator: 'well into November', not 'most of November'",
+  "back": "Two spring groups, back to back, during {1}. Two autumn groups, both within the flying season that starts at about {2} and lasts until mid-to-late November, with three days between the two."
  },
  "f6a7d9a32ab7": {
   "en": "Landing protocol",
