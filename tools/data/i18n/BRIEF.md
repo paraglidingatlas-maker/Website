@@ -54,3 +54,15 @@ Input: `work/<lang>-review.json`: per key the English (`en`), where it is, what 
 Output `work/<lang>-tr.json`: `{"key": {"tr": "...", "note": "why, when you changed or merged", "waive":
 {...}}}` for every key. Then `python3 tools/v4_i18n.py validate <lang> work/<lang>-tr.json
 work/all-segments.json` must show no hard problem (tokens, markup, digit, brace, language).
+
+## The comparer (fifth pass)
+Input `work/<lang>-compare.json`: per key the English (`en`, with `facts`), the published `translation`, and
+`back`, a blind back-translation of it into English by someone who never saw the English. Decide for each
+key whether the translation says what the English says:
+- "ok": same meaning, same facts, same promises, same tone. Wording, word order, idiom and an obvious
+  back-translation slip do not matter (check the translation itself when back looks off).
+- otherwise a short reason: what shifted (added, dropped, stronger, weaker, wrong referent, wrong sense of
+  a word, wrong grammar around a `{n}`, a wrong paragliding term, reads as a different kind of label).
+  Then also give `fix`: your corrected translation (keep every `{n}` and `<xN>`).
+Be strict on meaning and facts, lenient on style. Output `work/<lang>-check.json`:
+`{"key": {"verdict": "ok"}}` or `{"key": {"verdict": "<reason>", "fix": "..."}}` for every key.

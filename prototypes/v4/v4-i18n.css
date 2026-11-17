@@ -41,3 +41,29 @@ html[lang="fr"] :is(h1,h2,h3,h4),html[lang="es"] :is(h1,h2,h3,h4){hyphens:auto;-
 html[lang="zh-Hans"] body{font-synthesis:none}
 html[lang="zh-Hans"] :is(h1,h2,h3,h4){letter-spacing:0;line-break:strict}
 html[lang="zh-Hans"] :is(.kit-kicker,.op-kicker){letter-spacing:.08em}
+
+/* the nav in a longer language: the compact forms the English nav uses below 1300px (Speed Record and
+   "Live" as their icons) come in sooner, and the links sit closer, so Enquire never leaves the screen */
+@media (min-width:941px) and (max-width:1699px){
+  html:not([lang="en"]) .page-wrap>nav .v4-nav .v4-live-l{display:none}
+  html:not([lang="en"]) .page-wrap>nav .v4-nav .v4-live-s{display:inline}
+  html:not([lang="en"]) .page-wrap>nav .v4-nav a.v4-wr{font-size:0;gap:0}
+  html:not([lang="en"]) .page-wrap>nav .nav-links.v4-nav{gap:clamp(.5rem,1.3vw,1.4rem)}
+  html:not([lang="en"]) .page-wrap>nav .v4-lang{margin-left:.5rem}
+}
+/* 941 to 1099px in a longer language: the links go into the menu (the Menu button beside Enquire, which
+   holds every one of them), as they do in every language below 941px */
+@media (min-width:941px) and (max-width:1099px){
+  html:not([lang="en"]) .page-wrap>nav .nav-links.v4-nav{display:none}
+  html:not([lang="en"]) .page-wrap>nav .v4-lang{margin-left:auto}
+}
+/* a narrow laptop (941 to 1199px), every language: the menu is the globe alone and the links sit closer,
+   so the nav keeps the width it had before the menu came */
+@media (min-width:941px) and (max-width:1199px){
+  .page-wrap>nav:has(.v4-lang) .nav-links.v4-nav{gap:clamp(.45rem,1vw,.9rem)}
+  .page-wrap>nav .v4-lang{margin-left:.35rem}
+  .v4-lang summary span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .v4-lang summary{min-width:36px;justify-content:center;padding:0}
+  html:not([lang="en"]) .page-wrap>nav .v4-nav a{font-size:.84rem;padding-left:.35rem;padding-right:.35rem}
+  html:not([lang="en"]) .page-wrap>nav .nav-cta{padding-left:.9rem;padding-right:.9rem}
+}
