@@ -8,18 +8,11 @@ Segments on the pilot pages: **416** (2310 English words).
 
 | | segments |
 |---|---|
-| missing | 1 |
-| ok | 415 |
+| ok | 416 |
 
 Glossary: 41 of 42 terms sourced for de.
-- `de/index.html`: **not written** (segments not ready)
+- `de/index.html`: all facts checked
 - `de/enquire.html`: all facts checked
-
-<details><summary>1 segments not publishable</summary>
-
-- `a5aa575c87f0` index.html: missing. _Ready To {1}?_
-
-</details>
 
 Waived checks (each with its reason):
 - `1875aaea3300`: {'glossary': "'paragliding' used as an adjective: German compounds it with the glossary's own word Gleitschirm (Gleitschirm-Podcast); Gleitschirmfliegen is the noun for the sport"}
@@ -32,18 +25,11 @@ Waived checks (each with its reason):
 
 | | segments |
 |---|---|
-| missing | 1 |
-| ok | 415 |
+| ok | 416 |
 
 Glossary: 39 of 42 terms sourced for fr.
-- `fr/index.html`: **not written** (segments not ready)
-- `fr/enquire.html`: all facts checked; **broken links**: index.html
-
-<details><summary>1 segments not publishable</summary>
-
-- `a5aa575c87f0` index.html: missing. _Ready To {1}?_
-
-</details>
+- `fr/index.html`: all facts checked
+- `fr/enquire.html`: all facts checked
 
 Waived checks (each with its reason):
 - `1b02d68f0236`: {'glossary': "'cerclage' is Swiss FSVL exam wording; a French pilot says 'aisance en thermique' (or 'enrouler') for thermalling comfort"}
@@ -53,18 +39,11 @@ Waived checks (each with its reason):
 
 | | segments |
 |---|---|
-| missing | 1 |
-| ok | 415 |
+| ok | 416 |
 
 Glossary: 39 of 42 terms sourced for es.
-- `es/index.html`: **1 missing** facts checked (Touch The Sky With Glory); **broken links**: ../de/index.html, ../fr/index.html
+- `es/index.html`: all facts checked
 - `es/enquire.html`: all facts checked
-
-<details><summary>1 segments not publishable</summary>
-
-- `a5aa575c87f0` index.html: missing. _Ready To {1}?_
-
-</details>
 
 Waived checks (each with its reason):
 - `35c2a02cd4d0`: {'left in English': 'country, a place name and Himalaya read the same in Spanish; coordinates are locked'}
@@ -73,18 +52,11 @@ Waived checks (each with its reason):
 
 | | segments |
 |---|---|
-| missing | 1 |
-| ok | 415 |
+| ok | 416 |
 
 Glossary: 29 of 42 terms sourced for zh.
-- `zh/index.html`: **1 missing** facts checked (Touch The Sky With Glory); **broken links**: ../de/index.html, ../fr/index.html
+- `zh/index.html`: all facts checked
 - `zh/enquire.html`: all facts checked
-
-<details><summary>1 segments not publishable</summary>
-
-- `a5aa575c87f0` index.html: missing. _Ready To {1}?_
-
-</details>
 
 Waived checks (each with its reason):
 - `1875aaea3300`: {'glossary': "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is an attributive or a verb, where Chinese pilots say 滑翔伞 / 飞滑翔伞, and 滑翔伞运动 would read stiffly"}

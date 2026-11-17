@@ -3339,7 +3339,9 @@
   "a": "Bereit für {1}?",
   "date": "2026-11-17",
   "b": "Bereit für {1}?",
-  "tr": "Bereit für {1}?"
+  "tr": "Bereit für {1}?",
+  "back": "Ready for {1}?",
+  "check": "ok"
  },
  "a5ad67ed78d9": {
   "en": "Watch Task {1} Highlights",

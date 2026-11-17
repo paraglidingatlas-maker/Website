@@ -3368,7 +3368,9 @@
   "date": "2026-11-17",
   "b": "准备好{1}了吗？",
   "tr": "准备好{1}了吗？",
-  "tr_note": "picked b: no space around {n} (brief rule 6); the slogan stays in English inside {1}"
+  "tr_note": "picked b: no space around {n} (brief rule 6); the slogan stays in English inside {1}",
+  "back": "Ready for {1}?",
+  "check": "ok"
  },
  "a5ad67ed78d9": {
   "en": "Watch Task {1} Highlights",

@@ -3345,7 +3345,9 @@
   "date": "2026-11-17",
   "b": "Prêt à {1} ?",
   "tr": "Prêt à {1} ?",
-  "tr_note": "picked b: a added \"vivre\", which is not in the English; the English slogan reads as the verb phrase it is"
+  "tr_note": "picked b: a added \"vivre\", which is not in the English; the English slogan reads as the verb phrase it is",
+  "back": "Ready to {1}?",
+  "check": "ok"
  },
  "a5ad67ed78d9": {
   "en": "Watch Task {1} Highlights",

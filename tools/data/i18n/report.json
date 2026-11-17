@@ -3,31 +3,27 @@
  "langs": {
   "de": {
    "counts": {
-    "ok": 415,
-    "missing": 1
+    "ok": 416
    },
-   "problems": 1
+   "problems": 0
   },
   "fr": {
    "counts": {
-    "ok": 415,
-    "missing": 1
+    "ok": 416
    },
-   "problems": 1
+   "problems": 0
   },
   "es": {
    "counts": {
-    "ok": 415,
-    "missing": 1
+    "ok": 416
    },
-   "problems": 1
+   "problems": 0
   },
   "zh": {
    "counts": {
-    "ok": 415,
-    "missing": 1
+    "ok": 416
    },
-   "problems": 1
+   "problems": 0
   }
  }
 }
