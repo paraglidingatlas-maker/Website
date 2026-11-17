@@ -406,6 +406,12 @@
   "b": "La manche {1}, sam. {2}, a été annulée (vent).",
   "tr": "La manche {1}, sam. {2}, a été annulée (vent)."
  },
+ "13287d21fcd2": {
+  "en": "{1}, Kenya · {2}",
+  "a": "{1} (Kenya) · {2}",
+  "date": "2026-11-17",
+  "b": "{1}, Kenya – {2}"
+ },
  "1370004da76f": {
   "en": "Duration",
   "a": "Durée",
@@ -1455,6 +1461,12 @@
   "back": "Debunking the myths, Enzo {1} [?]",
   "check": "ok"
  },
+ "4bd41e68f21b": {
+  "en": "Mission Statement",
+  "a": "Notre mission",
+  "date": "2026-11-17",
+  "b": "Notre mission"
+ },
  "4bf5048f5cbf": {
   "en": "{1} off the hill: pottery, yoga and Buddhism",
   "a": "{1} hors du vol : poterie, yoga et bouddhisme",
@@ -1876,6 +1888,12 @@
   "b": "Résultats",
   "tr": "Résultats"
  },
+ "6144c4a23eae": {
+  "en": "{1}, Mexico · photos and videos",
+  "a": "{1}, Mexique · photos et vidéos",
+  "date": "2026-11-17",
+  "b": "{1}, Mexique · photos et vidéos"
+ },
  "61fa280a65cf": {
   "en": "Tour {1}",
   "a": "Voyage {1}",
@@ -2110,6 +2128,12 @@
   "tr": "<x1>Étape {1} sur {2}.</x1> Votre événement est prérempli depuis la page Médias : vérifiez-le, cochez la case et envoyez.",
   "back": "<x1>Step {1} of {2}.</x1> Your event is pre-filled from the Media page: check it, tick the box and send.",
   "check": "ok"
+ },
+ "6c9fc9908984": {
+  "en": "Close menu",
+  "a": "Fermer le menu",
+  "date": "2026-11-17",
+  "b": "Fermer le menu"
  },
  "6d5bb241740a": {
   "en": "<x1>Group</x1>Small group",
@@ -3613,6 +3637,12 @@
   "back": "Listen to Navigating India (bonus episode), with Jigish Gohil",
   "check": "ok"
  },
+ "b8100f5ba8bd": {
+  "en": "Library",
+  "a": "Bibliothèque",
+  "date": "2026-11-17",
+  "b": "Bibliothèque"
+ },
  "b9b15d8821c5": {
   "en": "The film",
   "a": "Le film",
@@ -4483,6 +4513,12 @@
   "date": "2026-11-17",
   "b": "{1} manches validées, {2} annulées",
   "tr": "{1} manches validées, {2} annulées"
+ },
+ "df7b59baf144": {
+  "en": "Search episodes, the knowledge base and trips",
+  "a": "Rechercher dans les épisodes, la base de connaissances et les voyages",
+  "date": "2026-11-17",
+  "b": "Chercher dans les épisodes, la base de connaissances et les voyages"
  },
  "e09eb1e94858": {
   "en": "Navigating India (Bonus Ep), Episode {1}, {2} min",

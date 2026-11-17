@@ -565,7 +565,8 @@ def check_seg(lang, en, tr):
     if len(en) > 25 and not lo <= ratio <= hi:
         p.append("length %.2f of the English" % ratio)
     ebare = TAG_PH.sub("", TOKEN_RX.sub("", en)).strip()
-    if len(ebare.split()) >= 3 and ebare.lower() == bare.strip().lower():
+    # three or more ordinary (lower-case) words the same as the English: names and countries alone do not count
+    if len(re.findall(r"(?<![\w])[a-z][a-z']+", ebare)) >= 3 and ebare.lower() == bare.strip().lower():
         p.append("left in English")
     low = tr.lower()
     wl = wrong_lang(lang, bare)

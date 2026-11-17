@@ -411,6 +411,12 @@
   "a": "Task {1}, Sa. {2}, wurde abgesagt (Wind).",
   "tr": "Task {1}, Sa. {2}, wurde abgesagt (Wind)."
  },
+ "13287d21fcd2": {
+  "en": "{1}, Kenya · {2}",
+  "a": "{1}, Kenia · {2}",
+  "date": "2026-11-17",
+  "b": "{1}, Kenia · {2}"
+ },
  "1370004da76f": {
   "en": "Duration",
   "b": "Dauer",
@@ -1455,6 +1461,12 @@
   "back": "Myths debunked, Enzo {1} [?]",
   "check": "ok"
  },
+ "4bd41e68f21b": {
+  "en": "Mission Statement",
+  "a": "Leitbild",
+  "date": "2026-11-17",
+  "b": "Leitbild"
+ },
  "4bf5048f5cbf": {
   "en": "{1} off the hill: pottery, yoga and Buddhism",
   "b": "{1} abseits des Hügels: Töpferei, Yoga und Buddhismus",
@@ -1881,6 +1893,12 @@
   "a": "Ergebnisse",
   "tr": "Ergebnisse"
  },
+ "6144c4a23eae": {
+  "en": "{1}, Mexico · photos and videos",
+  "a": "{1}, Mexiko · Fotos und Videos",
+  "date": "2026-11-17",
+  "b": "{1}, Mexiko · Fotos und Videos"
+ },
  "61fa280a65cf": {
   "en": "Tour {1}",
   "b": "Tour {1}",
@@ -2110,6 +2128,12 @@
   "tr": "<x1>Schritt {1} von {2}.</x1> Deine Veranstaltung wurde von der Medienseite übernommen: Prüf sie, setz das Häkchen und sende ab.",
   "back": "<x1>Step {1} of {2}.</x1> Your event was taken over from the media page: check it, tick the box and submit.",
   "check": "ok"
+ },
+ "6c9fc9908984": {
+  "en": "Close menu",
+  "a": "Menü schließen",
+  "date": "2026-11-17",
+  "b": "Menü schließen"
  },
  "6d5bb241740a": {
   "en": "<x1>Group</x1>Small group",
@@ -3622,6 +3646,12 @@
   "back": "Play Navigating India (bonus episode) with Jigish Gohil",
   "check": "ok"
  },
+ "b8100f5ba8bd": {
+  "en": "Library",
+  "a": "Archiv",
+  "date": "2026-11-17",
+  "b": "Bibliothek"
+ },
  "b9b15d8821c5": {
   "en": "The film",
   "b": "Der Film",
@@ -4490,6 +4520,12 @@
   "date": "2026-11-17",
   "a": "{1} Tasks gewertet, {2} abgesagt",
   "tr": "{1} Tasks gewertet, {2} abgesagt"
+ },
+ "df7b59baf144": {
+  "en": "Search episodes, the knowledge base and trips",
+  "a": "Folgen, Wissensdatenbank und Reisen durchsuchen",
+  "date": "2026-11-17",
+  "b": "Episoden, Wissensdatenbank und Reisen durchsuchen"
  },
  "e09eb1e94858": {
   "en": "Navigating India (Bonus Ep), Episode {1}, {2} min",

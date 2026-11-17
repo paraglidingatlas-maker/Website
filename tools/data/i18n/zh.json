@@ -407,6 +407,12 @@
   "b": "周六{2}的任务{1}已取消（风）。",
   "tr": "任务{1}（周六{2}）因风取消。"
  },
+ "13287d21fcd2": {
+  "en": "{1}, Kenya · {2}",
+  "a": "{1}，肯尼亚 · {2}",
+  "date": "2026-11-17",
+  "b": "{1}，肯尼亚 · {2}"
+ },
  "1370004da76f": {
   "en": "Duration",
   "a": "时长",
@@ -1478,6 +1484,12 @@
   "back": "Debunking myths, Enzo {1}",
   "check": "ok"
  },
+ "4bd41e68f21b": {
+  "en": "Mission Statement",
+  "a": "使命宣言",
+  "date": "2026-11-17",
+  "b": "使命宣言"
+ },
  "4bf5048f5cbf": {
   "en": "{1} off the hill: pottery, yoga and Buddhism",
   "a": "{1}山下：陶艺、瑜伽与佛教",
@@ -1903,6 +1915,12 @@
   "b": "成绩",
   "tr": "成绩"
  },
+ "6144c4a23eae": {
+  "en": "{1}, Mexico · photos and videos",
+  "a": "{1}，墨西哥 · 照片与视频",
+  "date": "2026-11-17",
+  "b": "{1}，墨西哥 · 照片和视频"
+ },
  "61fa280a65cf": {
   "en": "Tour {1}",
   "a": "{1}团",
@@ -2136,6 +2154,12 @@
   "tr": "<x1>第{1}步，共{2}步。</x1>你的赛事信息已从媒体页面自动填入：请核对，勾选方框后发送。",
   "back": "<x1>Step {1} of {2}.</x1> Your event information has been filled in automatically from the media page: please check it, tick the box, then send.",
   "check": "ok"
+ },
+ "6c9fc9908984": {
+  "en": "Close menu",
+  "a": "关闭菜单",
+  "date": "2026-11-17",
+  "b": "关闭菜单"
  },
  "6d5bb241740a": {
   "en": "<x1>Group</x1>Small group",
@@ -3647,6 +3671,12 @@
   "back": "Play \"Pathfinding India (Special)\", guest Jigish Gohil",
   "check": "ok"
  },
+ "b8100f5ba8bd": {
+  "en": "Library",
+  "a": "节目库",
+  "date": "2026-11-17",
+  "b": "资料库"
+ },
  "b9b15d8821c5": {
   "en": "The film",
   "a": "影片",
@@ -4526,6 +4556,12 @@
   "date": "2026-11-17",
   "b": "已计分{1}个任务，取消{2}个",
   "tr": "{1}个任务计分，{2}个取消"
+ },
+ "df7b59baf144": {
+  "en": "Search episodes, the knowledge base and trips",
+  "a": "搜索节目、知识库和行程",
+  "date": "2026-11-17",
+  "b": "搜索节目、知识库和行程"
  },
  "e09eb1e94858": {
   "en": "Navigating India (Bonus Ep), Episode {1}, {2} min",
