@@ -119,19 +119,22 @@ def grid(stems, label):
 # ---------------------------------------------------------------- the videos ----
 # id: (comp, title, views, length, published, episode page or None)
 V = {
-    "BRAX1XMU390": ("pwc", "Task 1 Highlights", 7342, "6:53", "14 May 2026", "task-1-highlights-15th-paragliding-world-cup-super-final"),
-    "7il6yV1vdIc": ("pwc", "Task 2 Highlights", 4034, "8:17", "16 May 2026", "task-2-highlights-15th-paragliding-world-cup-super-final"),
-    "FOuAWMeoxs4": ("pwc", "Day 1 Highlights", 3537, "6:44", "13 May 2026", "highlights-day-1-pwca-superfinal-2026"),
-    "op1-O01xkH4": ("pwc", "Task 4 Highlights", 3437, "7:47", "18 May 2026", "task-4-highlights-15th-paragliding-world-cup-super-final"),
-    "vPnIYYKcvEg": ("pwc", "Task 5 Highlights", 3340, "8:08", "20 May 2026", "task-5-highlights-15th-paragliding-world-cup-super-final"),
-    "NXUEyPQ3V4E": ("srs5", "Task 2 Highlights", 2303, "13:46", "6 Sep 2026", "srs-piedrahita-bgd-edition-task-2-highlights"),
-    "uCEfssE40u8": ("srs5", "Task 1 Highlights", 1970, "7:38", "27 Aug 2026", "srs-piedrahita-bgd-edition-task-1-highlights"),
-    "cuGs7Lk6Dt4": ("srs5", "Day 1: Registration and the Peñas", 1206, "9:04", "23 Aug 2026", "srs-bgd-edition-2026-day-1-registration-pilots-penas-de"),
-    "ZL9B5eXip5o": ("srs4", "Live: Task 2", 1145, "5 h 41 min", "25 May 2026", None),
-    "SZWQjcO_fWk": ("srs4", "Live: Task 3", 890, "4 h 59 min", "26 May 2026", None),
-    "x8sSBSBy4dI": ("srs4", "Live: Task 4, part 1", 853, "1 h 57 min", "29 May 2026", None),
-    "PEyO6MXngUw": ("srs4", "Live: Task 5, the final day", 680, "5 h 8 min", "30 May 2026", None),
-    "DA4nGop3i9g": ("srs4", "Live: Task 4, part 2", 513, "3 h 55 min", "30 May 2026", None),
+    "BRAX1XMU390": ("pwc", "Task 1 Highlights", 7414, "6:53", "14 May 2026", "task-1-highlights-15th-paragliding-world-cup-super-final"),
+    "7il6yV1vdIc": ("pwc", "Task 2 Highlights", 4078, "8:17", "16 May 2026", "task-2-highlights-15th-paragliding-world-cup-super-final"),
+    "FOuAWMeoxs4": ("pwc", "Day 1 Highlights", 3559, "6:44", "13 May 2026", "highlights-day-1-pwca-superfinal-2026"),
+    "op1-O01xkH4": ("pwc", "Task 4 Highlights", 3460, "7:47", "18 May 2026", "task-4-highlights-15th-paragliding-world-cup-super-final"),
+    "vPnIYYKcvEg": ("pwc", "Task 5 Highlights", 3379, "8:08", "20 May 2026", "task-5-highlights-15th-paragliding-world-cup-super-final"),
+    "NXUEyPQ3V4E": ("srs5", "Task 2 Highlights", 2417, "13:46", "6 Sep 2026", "srs-piedrahita-bgd-edition-task-2-highlights"),
+    "uCEfssE40u8": ("srs5", "Task 1 Highlights", 2004, "7:38", "27 Aug 2026", "srs-piedrahita-bgd-edition-task-1-highlights"),
+    "cuGs7Lk6Dt4": ("srs5", "Day 1: Registration and the Peñas", 1222, "9:04", "23 Aug 2026", "srs-bgd-edition-2026-day-1-registration-pilots-penas-de"),
+    "ZTxWnsHeUmE": ("tapalpa", "Task 1 Highlights", 2282, "4:48", "9 Nov 2026", None),
+    "bB1TaxIN8Oo": ("tapalpa", "Task 3 Highlights", 1666, "6:41", "11 Nov 2026", None),
+    "MXt0RJgXNs4": ("tapalpa", "Task 2 Highlights", 1444, "4:36", "10 Nov 2026", None),
+    "ZL9B5eXip5o": ("srs4", "Live: Task 2", 1147, "5 h 41 min", "25 May 2026", None),
+    "SZWQjcO_fWk": ("srs4", "Live: Task 3", 894, "4 h 59 min", "26 May 2026", None),
+    "x8sSBSBy4dI": ("srs4", "Live: Task 4, part 1", 854, "1 h 57 min", "29 May 2026", None),
+    "PEyO6MXngUw": ("srs4", "Live: Task 5, the final day", 695, "5 h 8 min", "30 May 2026", None),
+    "DA4nGop3i9g": ("srs4", "Live: Task 4, part 2", 514, "3 h 55 min", "30 May 2026", None),
 }
 # the showreel lists them in this order: by comp, the most watched comp first, and by views inside each (buyer-2-3)
 _order = [c for c in dict.fromkeys(v[0] for v in V.values())]
@@ -139,11 +142,12 @@ assert _order == sorted(_order, key=lambda c: -sum(v[2] for v in V.values() if v
 for _c in _order:
     _k = [v[2] for v in V.values() if v[0] == _c]
     assert _k == sorted(_k, reverse=True), (_c, _k)
-COMPS = {"pwc": "PWC Super Final, Pegalajar", "srs5": "SRS Piedrahita", "srs4": "SRS Bassano, live"}
+COMPS = {"pwc": "PWC Super Final, Pegalajar", "srs5": "SRS Piedrahita", "tapalpa": "SRS Tapalpa", "srs4": "SRS Bassano, live"}
 REEL = "BRAX1XMU390"
-TOTAL = sum(v[2] for v in V.values())             # 31,250 on 3 Nov 2026
-assert TOTAL == 31250, TOTAL
-COUNTED = "3 Nov 2026"                            # when the views were read (YouTube, vidIQ)
+TOTAL = sum(v[2] for v in V.values())             # 37,029 on 17 Nov 2026 (31,250 on 3 Nov, before Tapalpa)
+assert TOTAL == 37029, TOTAL
+NV = len(V)                                        # 16 comp videos (owner, 17 Nov: add Tapalpa's films)
+COUNTED = "17 Nov 2026"                            # when the views were read (YouTube, vidIQ)
 
 
 def views(comp):
@@ -194,10 +198,6 @@ def now_title(v):
 # ---------------------------------------------------------------- the comps ----
 # the next comps, in order (H3): the slate and the season line read this list against the visitor's date
 UPCOMING = [
-    {"key": "tapalpa", "name": "SRS Tapalpa", "place": "Mexico", "edition": "SRS Advance Edition", "where": "Tapalpa, Mexico",
-     "first": "2026-11-08", "last": "2026-11-14", "dates": "8 to 14 Nov 2026", "short": "8 to 14 Nov",
-     "facts": "5 tasks scored, 116 pilots from 25 countries", "page": "media-srs-tapalpa-2026.html",
-     "nick": "Tapalpa", "pic": "https://paraglidingatlas-maker.github.io/media-2026/srs-tapalpa/SRS_6_T1_62-800.webp"},
 ]
 # the comps covered in 2026, in date order (R1); span: the days on the season line (Piedrahita: the comp's own dates;
 # the other two: the days their films and broadcasts came out)
@@ -215,6 +215,10 @@ SEASON = [
      "when": "22 to 29 Aug 2026", "made": "Stills and 3 highlight videos", "span": ("2026-08-22", "2026-08-29"),
      "page": "media-srs-piedrahita-2026.html", "go": "Photos and films", "nick": "Piedrahita",
      "pic": "https://paraglidingatlas-maker.github.io/media-2026/srs-piedrahita/SRS_5_T3_63-800.webp"},
+    {"comp": "tapalpa", "name": "SRS Tapalpa", "edition": "SRS Advance Edition", "where": "Tapalpa, Mexico",
+     "when": "8 to 14 Nov 2026", "made": "5 tasks scored, 116 pilots from 25 countries", "span": ("2026-11-08", "2026-11-14"),
+     "page": "media-srs-tapalpa-2026.html", "go": "Photos and films", "nick": "Tapalpa",
+     "pic": "https://paraglidingatlas-maker.github.io/media-2026/srs-tapalpa/SRS_6_T1_62-800.webp"},
 ]
 LINE = (datetime.date(2026, 5, 1), datetime.date(2026, 12, 1))   # the 2026 season line, 1 May to 1 Dec
 
@@ -311,7 +315,8 @@ def shell(title, desc, canon, og_img, name, main, enquire=None):
 # ---------------------------------------------------------------- media.html, part by part ----
 def hero():
     up = next_up()
-    slate = ("%s, %s &middot; %s" % (E(up["name"]), E(up["place"]), up["dates"])) if up else TBD
+    slate = ("%s, %s &middot; %s" % (E(up["name"]), E(up["place"]), up["dates"])) if up else ""
+    hide = "" if up else " hidden"          # owner, 17 Nov 2026: with nothing next, hide the slot
     return '''<header class="e-hero" aria-labelledby="e-h1">
     <div class="e-cam" aria-hidden="true">
       <img class="e-cam-img" src="%(s16)s" srcset="%(ss)s" sizes="100vw" width="1600" height="2400" alt="" fetchpriority="high">
@@ -322,7 +327,7 @@ def hero():
     </div>
     <div class="e-hero-in">
       <div class="e-copy">
-        <p class="e-slate" data-slate><i class="e-tally" aria-hidden="true"></i><span class="e-slate-k" data-slate-k>Next</span><span data-slate-e>%(slate)s</span><span class="e-slate-n" data-slate-n></span></p>
+        <p class="e-slate" data-slate%(hide)s><i class="e-tally" aria-hidden="true"></i><span class="e-slate-k" data-slate-k>Next</span><span data-slate-e>%(slate)s</span><span class="e-slate-n" data-slate-n></span></p>
         <span class="e-kick">Media &middot; For organisers and sponsors</span>
         <h1 id="e-h1">Your Comp, <span class="e-seen">Seen.</span></h1>
         <p class="e-deck">Highlights every task day, live commentary and stills, as joint posts on your channels and ours.</p>
@@ -342,7 +347,7 @@ def hero():
         <div class="kit-stat"><b>21<small>&nbsp;h</small> 42<small>&nbsp;min</small></b><span class="e-cr"><span>live</span><span class="e-cr-sep">, </span><span class="e-cr-s">SRS Bassano</span></span><em>5 broadcasts, May 2026</em></div>
       </div>
     </div>
-  </header>''' % dict(s16=src(SHOT, 1600), ss=srcset(SHOT), tags=POSTERS[1][4], slate=slate, call=CALL,
+  </header>''' % dict(s16=src(SHOT, 1600), ss=srcset(SHOT), tags=POSTERS[1][4], slate=slate, hide=hide, call=CALL,
                       pv=n(views("pwc")), rv=n(V[REEL][2]))
 
 
@@ -503,7 +508,7 @@ def reach():
         <p class="kit-intro">Every piece goes out as one joint post on your channels and on Paragliding Atlas. One post, two audiences.</p>
       </div>
       <div class="e-total">
-        <p class="e-total-n"><b>%(total)s</b><span>views on 13 comp videos in 2026</span><small>Counted on YouTube, %(counted)s</small></p>
+        <p class="e-total-n"><b>%(total)s</b><span>views on %(nv)d comp videos in 2026</span><small>Counted on YouTube, %(counted)s</small></p>
         <p class="e-most"><b>Most watched</b> Task 1 Highlights, PWC&nbsp;Super&nbsp;Final, %(rv)s&nbsp;views for %(ln)s of an 86.5&nbsp;km sprint</p>
       </div>
     </div>
@@ -519,19 +524,19 @@ def reach():
             <dl class="e-base"><div><dt>YouTube subscribers</dt><dd>2,160 <small>(4 Nov 2026)</small></dd></div><div><dt>YouTube views</dt><dd>294,561 <small>all videos</small></dd></div></dl>
           </div>
         </div>
-        <p class="e-pod">The podcast: about 80 episodes, listened to in 136 countries.</p>
+        <p class="e-pod">The podcast: 86 episodes, listened to in 136 countries.</p>
       </div>
       <figure class="e-season" aria-labelledby="e-season-t">
         <figcaption class="e-season-h"><b id="e-season-t">The 2026 season</b><span>Views on YouTube, %(counted)s</span></figcaption>
         <div class="e-tl" aria-hidden="true" data-from="%(l0)s" data-to="%(l1)s">%(months)s%(marks)s<span class="e-tl-today" data-today hidden><i>Today</i></span></div>
         <ol class="e-rows">%(rows)s</ol>
-        <p class="e-season-f"><span>13 videos</span><span>%(total)s views in all</span></p>
+        <p class="e-season-f"><span>%(nv)d videos</span><span>%(total)s views in all</span></p>
       </figure>
     </div>
   </div>
 </section>''' % dict(b16=src(BAND, 1600), bss=srcset(BAND), balt="%s, SRS Piedrahita 2026" % E(PH[BAND][3]), total=n(TOTAL),
                      counted=COUNTED, rv=n(k), ln=ln, tbd=TBD, months=months, marks="".join(marks), rows="".join(rows),
-                     l0=LINE[0].isoformat(), l1=LINE[1].isoformat())
+                     l0=LINE[0].isoformat(), l1=LINE[1].isoformat(), nv=NV)
 
 
 def proof():
@@ -542,9 +547,10 @@ def proof():
                      % (c, v, d, E(t), E(COMPS[c]), n(k), ln, thumb(v), ' data-ep="episodes/%s.html"' % ep if ep else "",
                         ' aria-current="true"' if v == REEL else "", thumb(v, "mqdefault"), E(t), E(COMPS[c]), vmeta(v)))
     chips = ('<div class="v2-chips" role="group" aria-label="Show the videos from">'
-             '<button class="v2-chip" type="button" aria-pressed="true" data-comp="">All <i>13</i></button>'
+             '<button class="v2-chip" type="button" aria-pressed="true" data-comp="">All <i>%d</i></button>' % NV +
              '<button class="v2-chip" type="button" aria-pressed="false" data-comp="pwc">Pegalajar <i>5</i></button>'
              '<button class="v2-chip" type="button" aria-pressed="false" data-comp="srs5">Piedrahita <i>3</i></button>'
+             '<button class="v2-chip" type="button" aria-pressed="false" data-comp="tapalpa">Tapalpa <i>3</i></button>'
              '<button class="v2-chip" type="button" aria-pressed="false" data-comp="srs4">Bassano live <i>5</i></button></div>')
     c, t, k, ln, d, ep = V[REEL]
     reel = ('<div class="md-reel"><div class="md-main">%s<div class="md-now">%s%s</div></div>'
@@ -556,7 +562,7 @@ def proof():
     <div class="kit-head e-watch-head" id="watch">
       <span class="kit-kicker">The work</span>
       <h2 class="kit-title" id="e-watch-t">Watch The Coverage</h2>
-      <p class="kit-intro">The 13 comp videos of 2026, by comp and the most watched first: Task 1 of the Super&nbsp;Final, %(rv)s&nbsp;views. Every one plays here.</p>
+      <p class="kit-intro">The %(nv)d comp videos of 2026, by comp and the most watched first: Task 1 of the Super&nbsp;Final, %(rv)s&nbsp;views. Every one plays here.</p>
     </div>
     %(reel)s
     <div class="e-stills-head">
@@ -567,7 +573,7 @@ def proof():
     <div class="e-more"><a class="btn-lines" href="media-srs-piedrahita-2026.html" data-hover>All 325 from Piedrahita, by task</a>
       <a class="btn-lines" href="media-srs-tapalpa-2026.html" data-hover>Tapalpa 2026, each task day from 8 Nov</a></div>
   </div>
-</section>''' % dict(q16=src(QUOTE, 1600), qss=srcset(QUOTE), tbd=TBD, rv=n(V[REEL][2]), reel=reel,
+</section>''' % dict(q16=src(QUOTE, 1600), qss=srcset(QUOTE), tbd=TBD, rv=n(V[REEL][2]), nv=NV, reel=reel,
                      grid=grid(STILLS, "Stills from SRS Piedrahita 2026"))
 
 
