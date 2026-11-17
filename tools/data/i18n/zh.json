@@ -19,7 +19,8 @@
   "en": "Do not just follow the wing in front",
   "b": "不要只是跟着前面的伞翼",
   "date": "2026-11-17",
-  "a": "不要只是跟着前面的伞翼飞"
+  "a": "不要只是跟着前面的伞翼飞",
+  "tr": "不要只是跟着前面的伞翼飞"
  },
  "00abe35af611": {
   "en": "FloraNorm probiotic<x1>Saccharomyces boulardii, available locally</x1>",
@@ -32,7 +33,9 @@
   "en": "The forested front range under building cumulus",
   "b": "积云渐起，下方是树木葱郁的前山脉",
   "date": "2026-11-17",
-  "a": "正在发展的积云下，森林覆盖的前山"
+  "a": "正在发展的积云下，森林覆盖的前山",
+  "tr": "正在发展的积云下，森林覆盖的前山山脉",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "00d21720fac9": {
   "en": "Local knowledge",
@@ -127,7 +130,8 @@
   "en": "Insurance covering paragliding<x1>Essential</x1><x2>Medical treatment, repatriation and search and rescue</x2>",
   "b": "涵盖滑翔伞运动的保险<x1>必备</x1><x2>医疗、遣返以及搜索和救援</x2>",
   "date": "2026-11-17",
-  "a": "涵盖滑翔伞运动的保险<x1>必备</x1><x2>医疗、遣返以及搜索与救援</x2>"
+  "a": "涵盖滑翔伞运动的保险<x1>必备</x1><x2>医疗、遣返以及搜索与救援</x2>",
+  "tr": "涵盖滑翔伞运动的保险<x1>必备</x1><x2>医疗、遣返以及搜索与救援</x2>"
  },
  "030a16295eaa": {
   "en": "Flamingos",
@@ -156,7 +160,9 @@
   "en": "{1} Immersive",
   "b": "{1}深度体验",
   "date": "2026-11-17",
-  "a": "{1}沉浸之旅"
+  "a": "{1}沉浸之旅",
+  "tr": "{1} Immersive",
+  "tr_note": "'Bir Immersive' kept as a name (coordinator)"
  },
  "0362adf0c889": {
   "en": "Ona Kenya kama Miungu walivyoiona",
@@ -182,7 +188,8 @@
   "en": "Turn the way everyone else is turning",
   "b": "跟着其他人转的方向转",
   "date": "2026-11-17",
-  "a": "和其他人朝同一方向盘旋"
+  "a": "和其他人朝同一方向盘旋",
+  "tr": "和其他人朝同一方向盘旋"
  },
  "03cdf3d55e76": {
   "en": "Give work, not cash",
@@ -195,7 +202,9 @@
   "en": "Snow-covered back ranges seen from the air",
   "b": "空中俯瞰积雪覆盖的后山山脉",
   "date": "2026-11-17",
-  "a": "从空中看白雪覆盖的后山"
+  "a": "从空中看白雪覆盖的后山",
+  "tr": "从空中看白雪覆盖的后山山脉",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "049b355d5109": {
   "en": "Kenya Tour {1}",
@@ -238,7 +247,9 @@
   "en": "climb the knobs of the {1} and run west towards Dharamshala,",
   "b": "爬升到{1}的山包上，向西飞往 Dharamshala，",
   "date": "2026-11-17",
-  "a": "在{1}山脉的一个个山包上爬升，再向西飞往Dharamshala，"
+  "a": "在{1}山脉的一个个山包上爬升，再向西飞往Dharamshala，",
+  "tr": "在{1}山脉的一个个山包上爬升，再向西飞往达兰萨拉，",
+  "tr_note": "standard Chinese names for well-known places"
  },
  "068392a56f33": {
   "en": "Be open, enthusiastic and positive, and greet everyone, including the unsmiling ones. Ask locally about security, wild animals and access, because that knowledge is not in any guidebook. Explain your plan clearly: misunderstandings about where you intend to take off are the single most common problem.",
@@ -258,7 +269,8 @@
   "en": "<x1>{1} launch</x1>Pilots laying out and launching on the grass at {2}<x2>at {3} launch</x2>",
   "b": "<x1>{1}起飞场</x1>飞行员们在{2}的草地上展开伞翼并起飞<x2>在{3}起飞场</x2>",
   "date": "2026-11-17",
-  "a": "<x1>{1}起飞场</x1>飞行员们在{2}的草地上铺伞、起飞<x2>位于{3}起飞场</x2>"
+  "a": "<x1>{1}起飞场</x1>飞行员们在{2}的草地上铺伞、起飞<x2>位于{3}起飞场</x2>",
+  "tr": "<x1>{1}起飞场</x1>飞行员们在{2}的草地上铺伞、起飞<x2>位于{3}起飞场</x2>"
  },
  "06fa6dba0858": {
   "en": "{1} days · {2} hills",
@@ -303,7 +315,8 @@
   "en": "The tracker question",
   "b": "追踪器的问题",
   "date": "2026-11-17",
-  "a": "追踪器问题"
+  "a": "追踪器问题",
+  "tr": "追踪器问题"
  },
  "07c981c58181": {
   "en": "Helicopter rescue and good healthcare are both available.",
@@ -341,7 +354,9 @@
   "en": "Himachal is one of the gentler parts of India for this, but the food will still be new to your stomach.",
   "b": "在这方面，喜马偕尔邦是印度相对温和的地方之一，但这里的食物对你的肠胃来说仍然是新的。",
   "date": "2026-11-17",
-  "a": "在这方面，喜马偕尔是印度比较温和的地区之一，但这里的食物对你的肠胃来说仍然是新的。"
+  "a": "在这方面，喜马偕尔是印度比较温和的地区之一，但这里的食物对你的肠胃来说仍然是新的。",
+  "tr": "在这方面，喜马偕尔邦是印度比较温和的地区之一，但这里的食物对你的肠胃来说仍然是新的。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "08ec69f5be3c": {
   "en": "km",
@@ -386,7 +401,8 @@
   "en": "Pilots laying out and launching on the grass at {1}",
   "b": "飞行员们在{1}的草地上展开伞翼并起飞",
   "date": "2026-11-17",
-  "a": "飞行员们在{1}的草地上铺伞、起飞"
+  "a": "飞行员们在{1}的草地上铺伞、起飞",
+  "tr": "飞行员们在{1}的草地上铺伞、起飞"
  },
  "09ba557fd106": {
   "en": "Email Address",
@@ -504,7 +520,9 @@
   "en": "Be very careful of the cloud. On a big day he would rather run out south, away from the mountains, than sit under big clouds in a valley system where you can get trapped.",
   "b": "对云要非常小心。在一个大日子里，他宁愿往南飞出去、远离山脉，也不愿坐在容易被困住的山谷系统里的大云下面。",
   "date": "2026-11-17",
-  "a": "对云要非常小心。在条件强的日子，他宁愿向南远离山区飞出去，也不愿待在大云下面一个可能被困住的山谷系统里。"
+  "a": "对云要非常小心。在条件强的日子，他宁愿向南远离山区飞出去，也不愿待在大云下面一个可能被困住的山谷系统里。",
+  "tr": "对云要非常小心。在条件强的日子，他宁愿向南飞出去、远离山区，也不愿待在大云下面一个可能被困住的山谷系统里。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "0b896a5aaabd": {
   "en": "Next one in {1} days",
@@ -544,7 +562,8 @@
   "en": "<x1>Hike and fly</x1>Two pilots with paraglider rucksacks climbing a forest trail",
   "b": "<x1>徒步飞行</x1>两名背着滑翔伞背包的飞行员正攀登森林小径",
   "date": "2026-11-17",
-  "a": "<x1>徒步飞行</x1>两名背着滑翔伞背包的飞行员沿林间小路攀登"
+  "a": "<x1>徒步飞行</x1>两名背着滑翔伞背包的飞行员沿林间小路攀登",
+  "tr": "<x1>徒步飞行</x1>两名背着滑翔伞背包的飞行员沿林间小路攀登"
  },
  "0c5209fd972c": {
   "en": "A dormant stratovolcano with an intact crater rim, and one of the more photographed flights of the trip.",
@@ -594,7 +613,8 @@
   "en": "October to November.",
   "b": "十月至十一月。",
   "date": "2026-11-17",
-  "a": "十月至十一月。"
+  "a": "十月至十一月。",
+  "tr": "十月至十一月。"
  },
  "0d173730d528": {
   "en": "<x1>over</x1> the Rift",
@@ -624,7 +644,8 @@
   "en": "Two paragliders silhouetted against the sunset",
   "b": "两顶滑翔伞在夕阳下的剪影",
   "date": "2026-11-17",
-  "a": "夕阳下两顶滑翔伞的剪影"
+  "a": "夕阳下两顶滑翔伞的剪影",
+  "tr": "夕阳下两顶滑翔伞的剪影"
  },
  "0e143d9587c2": {
   "en": "Guaranteed to run",
@@ -646,7 +667,9 @@
   "en": "The {1} front ridge from the pilot's seat, snow and rock below the wing",
   "b": "从飞行员座位看{1}前山脊，伞翼下方是冰雪与岩石",
   "date": "2026-11-17",
-  "a": "从飞行员座位上看{1}前山山脊，伞翼下方是雪与岩石"
+  "a": "从飞行员座位上看{1}前山山脊，伞翼下方是雪与岩石",
+  "tr": "从飞行员座位上看{1}前山山脊，伞翼下方是冰雪与岩石",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "0e5eed8fbb76": {
   "en": "How a newer pilot should approach it",
@@ -685,7 +708,8 @@
   "en": "India is paperwork before it is flying. None of this can be sorted out on the morning you need it.",
   "b": "在印度，手续文件先于飞行。这些事没有一件能在你需要它的那天早上办妥。",
   "date": "2026-11-17",
-  "a": "在印度，先办手续，后飞行。这些事都没法在你需要它的当天早上搞定。"
+  "a": "在印度，先办手续，后飞行。这些事都没法在你需要它的当天早上搞定。",
+  "tr": "在印度，先办手续，后飞行。这些事都没法在你需要它的当天早上搞定。"
  },
  "0efc2e6be4c2": {
   "en": "Overview",
@@ -748,7 +772,9 @@
   "en": "{1} km",
   "b": "{1} 公里",
   "date": "2026-11-17",
-  "a": "{1}公里"
+  "a": "{1}公里",
+  "tr": "{1} km",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "107596d0fcf1": {
   "en": "Fly With Us",
@@ -763,13 +789,16 @@
   "en": "Autumn at {1} drew around {2} visiting pilots in {3}, against about {4} when Jigish Gohil first arrived. We brief for traffic every morning and keep the group together on the radio.",
   "b": "{3}年秋季，{1}吸引了约 {2} 名外来飞行员，而 Jigish Gohil 刚来时只有约 {4} 名。我们每天早上都会就空中交通做简报，并通过无线电让团队保持在一起。",
   "date": "2026-11-17",
-  "a": "{3}年秋季，{1}迎来了大约{2}名外来飞行员，而Jigish Gohil刚来时只有大约{4}名。我们每天早上都会做空中交通简报，并通过对讲机让队伍保持在一起。"
+  "a": "{3}年秋季，{1}迎来了大约{2}名外来飞行员，而Jigish Gohil刚来时只有大约{4}名。我们每天早上都会做空中交通简报，并通过对讲机让队伍保持在一起。",
+  "tr": "{3}年秋季，{1}迎来了大约{2}名外来飞行员，而 Jigish Gohil 刚来时只有大约{4}名。我们每天早上都会做空中交通简报，并通过对讲机让队伍保持在一起。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "11cf92eed48c": {
   "en": "Terraced fields, a river and villages seen from the air",
   "b": "梯田、河流和村庄，空中俯瞰",
   "date": "2026-11-17",
-  "a": "从空中看梯田、河流和村庄"
+  "a": "从空中看梯田、河流和村庄",
+  "tr": "从空中看梯田、河流和村庄"
  },
  "11f7e9e5baf0": {
   "en": "One task at a time",
@@ -821,7 +850,9 @@
   "en": "Offline maps of the front range",
   "b": "前山脉的离线地图",
   "date": "2026-11-17",
-  "a": "前山的离线地图"
+  "a": "前山的离线地图",
+  "tr": "前山山脉的离线地图",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "131662a6b1d7": {
   "en": "Task {1}, Sat {2}, was cancelled (wind).",
@@ -861,7 +892,12 @@
   "en": "INR. {1} has only one or two ATMs, and they can run dry at weekends, so arrive with cash in small notes for taxis, chai and the ride back from a landing out.",
   "b": "INR。{1}只有一两台 ATM，周末可能会取空，所以请带上小面额现金，用于出租车、奶茶，以及从降落场以外的地方返程。",
   "date": "2026-11-17",
-  "a": "INR。{1}只有一两台ATM，周末还可能被取空，所以来的时候带上小面额现金，用来付出租车、喝印度奶茶，以及外场降落后的回程车费。"
+  "a": "INR。{1}只有一两台ATM，周末还可能被取空，所以来的时候带上小面额现金，用来付出租车、喝印度奶茶，以及外场降落后的回程车费。",
+  "tr": "INR。{1}只有一两台 ATM，周末还可能被取空，所以来的时候带上小面额现金，用来付出租车、印度奶茶，以及外场降落后的回程车费。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages",
+  "waive": {
+   "glossary": "glossary 'landing' (降落场) is the landing field; here it is the act of landing (降落), not a field"
+  }
  },
  "14d4c9eac279": {
   "en": "{1} guests, newest first",
@@ -876,13 +912,17 @@
   "en": "The forecast, the plan and the traffic: where the climbs are likely to be, which way to head, and what to do if the day shuts down early.",
   "b": "天气预报、计划和空中交通：哪里可能有热气流，往哪个方向飞，以及如果这一天提前收场该怎么办。",
   "date": "2026-11-17",
-  "a": "天气预报、计划和空中交通：上升气流可能在哪里，往哪个方向飞，以及如果当天条件提早关闭该怎么办。"
+  "a": "天气预报、计划和空中交通：上升气流可能在哪里，往哪个方向飞，以及如果当天条件提早关闭该怎么办。",
+  "tr": "天气预报、计划和空中交通：上升气流可能在哪里，往哪个方向飞，以及如果当天条件提前收场该怎么办。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "15248e0a55b9": {
   "en": "<x1>over</x1> {1} launch",
   "b": "<x1>飞越</x1>{1}起飞场",
   "date": "2026-11-17",
-  "a": "<x1>上空</x1> {1}起飞场"
+  "a": "<x1>上空</x1> {1}起飞场",
+  "tr": "{1}起飞场<x1>上空</x1>",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "158488221f07": {
   "en": "He launches first to check the air, or last to help with an awkward takeoff.",
@@ -907,7 +947,8 @@
   "en": "What To Pack For {1}",
   "b": "{1}要带什么",
   "date": "2026-11-17",
-  "a": "去{1}带什么"
+  "a": "去{1}带什么",
+  "tr": "去{1}带什么"
  },
  "1680c69de6b4": {
   "en": "{1}, from the air",
@@ -941,7 +982,8 @@
   "en": "Photographs at {1} launch",
   "b": "{1}起飞场的照片",
   "date": "2026-11-17",
-  "a": "{1}起飞场的照片"
+  "a": "{1}起飞场的照片",
+  "tr": "{1}起飞场的照片"
  },
  "175058cca872": {
   "en": "Play Navigating {1}, with Vistasp Kharas",
@@ -956,7 +998,8 @@
   "en": "Eddie Colfox, India episode",
   "b": "Eddie Colfox，印度一集",
   "date": "2026-11-17",
-  "a": "Eddie Colfox，印度篇"
+  "a": "Eddie Colfox，印度篇",
+  "tr": "Eddie Colfox，印度篇"
  },
  "177aba2c4e3b": {
   "en": "Greet everyone, explain everything",
@@ -969,7 +1012,8 @@
   "en": "{1} guide to {2} pilots",
   "b": "每{1}名向导带{2}名飞行员",
   "date": "2026-11-17",
-  "a": "{1}名向导带{2}名飞行员"
+  "a": "{1}名向导带{2}名飞行员",
+  "tr": "{1}名向导带{2}名飞行员"
  },
  "182d37ec74bf": {
   "en": "Population",
@@ -1043,7 +1087,9 @@
   "en": "Most nationalities can apply online for India's e-Tourist visa, but not all, so check yours on the <x1>official portal</x1>. Apply at least four days before you arrive; with our first departure on {1}, it is not something to leave late. Since {2} every foreign visitor also files a free online e-Arrival Card in the {3} hours before flying.",
   "b": "大多数国籍的人可以在线申请印度电子旅游签证，但并非所有人都可以，所以请到<x1>官方门户网站</x1>核实你的情况。至少在抵达前四天申请；我们的第一个出发班次在{1}，所以千万别拖。自{2}起，每位外国访客还需要在飞行前 {3} 小时内在线填写免费的电子入境卡。",
   "date": "2026-11-17",
-  "a": "大多数国籍可以在线申请印度电子旅游签证，但并非全部，所以请在<x1>官方网站</x1>上查询你的国籍。至少在抵达前四天申请；我们第一期在{1}出发，这件事可别拖到最后。自{2}起，每位外国旅客还需在登机前{3}小时内在线免费填写一份电子入境卡（e-Arrival Card）。"
+  "a": "大多数国籍可以在线申请印度电子旅游签证，但并非全部，所以请在<x1>官方网站</x1>上查询你的国籍。至少在抵达前四天申请；我们第一期在{1}出发，这件事可别拖到最后。自{2}起，每位外国旅客还需在登机前{3}小时内在线免费填写一份电子入境卡（e-Arrival Card）。",
+  "tr": "大多数国籍可以在线申请印度电子旅游签证，但并非全部，所以请在<x1>官方网站</x1>上查询你的国籍。至少在抵达前四天申请；我们第一个团期在{1}出发，这件事可别拖到最后。自{2}起，每位外国旅客还需在登机前{3}小时内在线免费填写一份电子入境卡（e-Arrival Card）。",
+  "tr_note": "'departure'/'tour' = 团期/团, as live"
  },
  "199778d7cc44": {
   "en": "Kenya has over {1} further ethnic languages.",
@@ -1071,7 +1117,8 @@
   "en": "Passport, valid {1} months, with two blank pages",
   "b": "护照，有效期 {1} 个月，带两页空白页",
   "date": "2026-11-17",
-  "a": "护照，有效期{1}个月，留有两页空白页"
+  "a": "护照，有效期{1}个月，留有两页空白页",
+  "tr": "护照，有效期{1}个月，留有两页空白页"
  },
  "1a3b6a0cbf85": {
   "en": "{1} million",
@@ -1101,7 +1148,8 @@
   "en": "or equivalent",
   "b": "或同等级别",
   "date": "2026-11-17",
-  "a": "或同等资质"
+  "a": "或同等资质",
+  "tr": "或同等资质"
  },
  "1ad42700838f": {
   "en": "Photos tonight",
@@ -1114,7 +1162,8 @@
   "en": "English is widely spoken around {1}, which has welcomed visiting pilots for decades.",
   "b": "{1}一带普遍说英语，这里几十年来一直欢迎外来飞行员。",
   "date": "2026-11-17",
-  "a": "{1}一带普遍说英语，几十年来这里一直欢迎外来飞行员。"
+  "a": "{1}一带普遍说英语，几十年来这里一直欢迎外来飞行员。",
+  "tr": "{1}一带普遍说英语，几十年来这里一直欢迎外来飞行员。"
  },
  "1b02d68f0236": {
   "en": "Longest flight, any {1} courses, thermalling comfort",
@@ -1143,13 +1192,16 @@
   "en": "About Palampur",
   "b": "关于 Palampur",
   "date": "2026-11-17",
-  "a": "关于Palampur"
+  "a": "关于Palampur",
+  "tr": "关于 Palampur"
  },
  "1cac851f6415": {
   "en": "A stone temple to Shiva as Vaidyanath, the lord of physicians, raised in {1} by two merchants, Ahuka and Manyuka, in the Nagara style of the north. It is a protected monument of the Archaeological Survey of India.",
   "b": "一座供奉湿婆（作为医神 Vaidyanath）的石庙，由 Ahuka 和 Manyuka 两位商人于{1}年建成，属北方的 Nagara 风格。它是印度考古调查局保护的古迹。",
   "date": "2026-11-17",
-  "a": "一座供奉湿婆（以“医者之主”Vaidyanath之身）的石砌神庙，由两位商人Ahuka和Manyuka于{1}年以北方的Nagara风格建造。它是印度考古调查局保护的古迹。"
+  "a": "一座供奉湿婆（以“医者之主”Vaidyanath之身）的石砌神庙，由两位商人Ahuka和Manyuka于{1}年以北方的Nagara风格建造。它是印度考古调查局保护的古迹。",
+  "tr": "一座供奉湿婆（化身为“医者之主”Vaidyanath）的石砌神庙，由两位商人 Ahuka 和 Manyuka 于{1}年以北方的 Nagara 风格建造。它是印度考古调查局（Archaeological Survey of India）保护的古迹。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "1cdce20d0a32": {
   "en": "<x1></x1>Planned, no episode yet",
@@ -1244,13 +1296,16 @@
   "en": "If the circle gets too tight for your comfort, leave for the next ridge. There is a thermal on every knob along the front range.",
   "b": "如果圈子小到让你不舒服，就离开去飞下一道山脊。前山脉上每个山包都有热气流。",
   "date": "2026-11-17",
-  "a": "如果盘旋圈小到让你不舒服，就离开去下一道山脊。前山沿线每个山包上都有热气流。"
+  "a": "如果盘旋圈小到让你不舒服，就离开去下一道山脊。前山沿线每个山包上都有热气流。",
+  "tr": "如果盘旋圈小到让你不舒服，就离开去下一道山脊。前山山脉沿线每个山包上都有热气流。",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "1faf84b9fa9a": {
   "en": "Who guides",
   "b": "谁来带队",
   "date": "2026-11-17",
-  "a": "谁来带队"
+  "a": "谁来带队",
+  "tr": "谁来带队"
  },
  "2035a08032bc": {
   "en": "Knowledge Base",
@@ -1265,13 +1320,16 @@
   "en": "Triund, photographed by Ashutosh Tiwari",
   "b": "Triund，摄影：Ashutosh Tiwari",
   "date": "2026-11-17",
-  "a": "Triund，摄影：Ashutosh Tiwari"
+  "a": "Triund，摄影：Ashutosh Tiwari",
+  "tr": "Triund，摄影：Ashutosh Tiwari"
  },
  "207cdd36c41b": {
   "en": "{1} · The front range",
   "b": "{1}｜前山脉",
   "date": "2026-11-17",
-  "a": "{1} · 前山"
+  "a": "{1} · 前山",
+  "tr": "{1} · 前山山脉",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "20d114b07333": {
   "en": "Ticking is saved on this device, so you can come back to it the night before you fly. <x1>Nothing here is sent anywhere.</x1>",
@@ -1325,7 +1383,8 @@
   "en": "What pilot rating do I need for {1}?",
   "b": "{1}需要什么飞行员等级？",
   "date": "2026-11-17",
-  "a": "飞{1}需要什么飞行员等级？"
+  "a": "飞{1}需要什么飞行员等级？",
+  "tr": "飞{1}需要什么飞行员等级？"
  },
  "224b543ea12b": {
   "en": "Hazards on retrieve and top landing",
@@ -1384,7 +1443,8 @@
   "en": "Palampur, photographed by Nerdandnutella",
   "b": "Palampur，摄影：Nerdandnutella",
   "date": "2026-11-17",
-  "a": "Palampur，摄影：Nerdandnutella"
+  "a": "Palampur，摄影：Nerdandnutella",
+  "tr": "Palampur，摄影：Nerdandnutella"
  },
  "22f8d45dccf8": {
   "en": "No mandatory vaccines for travellers from Europe or America. Local food can upset tender Western stomachs.",
@@ -1438,7 +1498,9 @@
   "en": "The {1} range under building cumulus, above the Kangra valley",
   "b": "{1}山脉在渐起的积云下，位于 Kangra 山谷上方",
   "date": "2026-11-17",
-  "a": "正在发展的积云下的{1}山脉，位于Kangra山谷上方"
+  "a": "正在发展的积云下的{1}山脉，位于Kangra山谷上方",
+  "tr": "正在发展的积云下的{1}山脉，位于 Kangra 山谷上方",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "24345a14377f": {
   "en": "Today",
@@ -1453,7 +1515,11 @@
   "en": "launch from the meadow at {1},",
   "b": "从{1}草坡上的起飞场起飞，",
   "date": "2026-11-17",
-  "a": "从{1}的草甸起飞，"
+  "a": "从{1}的草甸起飞，",
+  "tr": "从{1}的草甸起飞，",
+  "waive": {
+   "glossary": "glossary 'launch' (起飞场) is the take-off place; here 'launch' is the verb, 起飞"
+  }
  },
  "2473e96bc614": {
   "en": "Introduction",
@@ -1511,7 +1577,9 @@
   "en": "{1} is an overnight bus ride north, or a short flight to Dharamshala and about two hours by road.",
   "b": "{1}在北边，夜间大巴一夜可达，或搭短途航班到 Dharamshala，再走约两小时公路。",
   "date": "2026-11-17",
-  "a": "去{1}可以向北坐一晚夜班大巴，或者短途飞到Dharamshala，再走大约两小时公路。"
+  "a": "去{1}可以向北坐一晚夜班大巴，或者短途飞到Dharamshala，再走大约两小时公路。",
+  "tr": "{1}在北边，坐一晚夜班大巴可达，或者短途飞到达兰萨拉，再走大约两小时公路。",
+  "tr_note": "standard Chinese names for well-known places"
  },
  "258c13fbc938": {
   "en": "Kenya · {1}, Rift Valley<x1>{2}°N · {3}°E</x1>",
@@ -1526,7 +1594,8 @@
   "en": "About Barot",
   "b": "关于 Barot",
   "date": "2026-11-17",
-  "a": "关于Barot"
+  "a": "关于Barot",
+  "tr": "关于 Barot"
  },
  "268b9e099c39": {
   "en": "The hills between the {1} and Lake Baringo, where the six-million-year-old fossils of Orrorin tugenensis were found in {2}, among the oldest candidates for the human line.",
@@ -1555,13 +1624,16 @@
   "en": "One guide to every three pilots, never more.",
   "b": "每三名飞行员配一名向导，绝不会更少。",
   "date": "2026-11-17",
-  "a": "每名向导最多带三名飞行员，绝不超过。"
+  "a": "每名向导最多带三名飞行员，绝不超过。",
+  "tr": "每名向导最多带三名飞行员，绝不超过。"
  },
  "27585126a1f9": {
   "en": "Four departures in {1}, {2}.",
   "b": "{1}年共四个出发班次，{2}。",
   "date": "2026-11-17",
-  "a": "{1}年共四期，{2}。"
+  "a": "{1}年共四期，{2}。",
+  "tr": "{1}年共四个团期，{2}。",
+  "tr_note": "'departure'/'tour' = 团期/团, as live"
  },
  "276462f97179": {
   "en": "Flying In Africa, And How To Do It Well <x1>DIY</x1>",
@@ -1620,31 +1692,41 @@
   "en": "Wing you know well<x1>EN or LTF certified. {1} rewards a wing you can relax on, not the hottest one you own</x1>",
   "b": "你熟悉的伞翼<x1>EN 或 LTF 认证。{1}更适合你能放松驾驭的伞翼，而不是你手里最激进的那顶</x1>",
   "date": "2026-11-17",
-  "a": "你熟悉的伞翼<x1>经EN或LTF认证。{1}青睐一顶让你能放松飞的伞，而不是你手里最激进的那顶</x1>"
+  "a": "你熟悉的伞翼<x1>经EN或LTF认证。{1}青睐一顶让你能放松飞的伞，而不是你手里最激进的那顶</x1>",
+  "tr": "你熟悉的伞翼<x1>经 EN 或 LTF 认证。{1}青睐一顶能让你放松飞的伞翼，而不是你手里最激进的那顶</x1>",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "287252f0ba88": {
   "en": "The whole overview: cloudbase, season, retrieves, traffic",
   "b": "完整概览：云底、季节、回收、空中交通",
   "date": "2026-11-17",
-  "a": "全面概览：云底、季节、回收、空中交通"
+  "a": "全面概览：云底、季节、回收、空中交通",
+  "tr": "全面概览：云底、季节、回收、空中交通"
  },
  "2872667cf712": {
   "en": "Barot, photographed by Timothy Gonsalves",
   "b": "Barot，摄影：Timothy Gonsalves",
   "date": "2026-11-17",
-  "a": "Barot，摄影：Timothy Gonsalves"
+  "a": "Barot，摄影：Timothy Gonsalves",
+  "tr": "Barot，摄影：Timothy Gonsalves"
  },
  "2884ef0e4830": {
   "en": "Gurpreet has flown since {1} and was the first Indian to hold a BHPA instructor licence. He founded the PG Gurukul school in {2}, now based at {3}, which in {4} became the first paragliding school in India accredited by the Aero Club of India. He was the first Indian on an international open-class podium, has flown {5} international events, and helped draft India's paragliding safety rules and pilot ratings. In {6} the {7} awarded him the Paul Tissandier Diploma.",
   "b": "Gurpreet 自{1}年起飞行，是第一位持有 BHPA 教练执照的印度人。他于{2}年创办了 PG Gurukul 学校，现设在{3}，该校在{4}年成为印度第一所获印度航空俱乐部认证的滑翔伞运动学校。他是第一位登上国际开放级领奖台的印度人，参加过 {5} 场国际赛事，并协助起草了印度的滑翔伞运动安全规则和飞行员等级。{6}年，{7}授予他 Paul Tissandier 勋章。",
   "date": "2026-11-17",
-  "a": "Gurpreet从{1}年开始飞行，是第一位持有BHPA教练执照的印度人。他于{2}年创办了PG Gurukul学校，学校现设在{3}，{4}年成为印度第一所获得印度航空俱乐部（Aero Club of India）认证的滑翔伞运动学校。他是第一位登上国际公开级领奖台的印度人，参加过{5}项国际赛事，并参与起草了印度的滑翔伞安全规则和飞行员等级制度。{6}年，{7}授予他Paul Tissandier奖章。"
+  "a": "Gurpreet从{1}年开始飞行，是第一位持有BHPA教练执照的印度人。他于{2}年创办了PG Gurukul学校，学校现设在{3}，{4}年成为印度第一所获得印度航空俱乐部（Aero Club of India）认证的滑翔伞运动学校。他是第一位登上国际公开级领奖台的印度人，参加过{5}项国际赛事，并参与起草了印度的滑翔伞安全规则和飞行员等级制度。{6}年，{7}授予他Paul Tissandier奖章。",
+  "tr": "Gurpreet 从{1}年开始飞行，是第一位持有 BHPA 教练执照的印度人。他于{2}年创办了 PG Gurukul 学校，学校现设在{3}，{4}年成为印度第一所获得印度航空俱乐部（Aero Club of India）认证的滑翔伞学校。他是第一位登上国际公开级领奖台的印度人，参加过{5}项国际赛事，并参与起草了印度的滑翔伞安全规则和飞行员等级制度。{6}年，{7}授予他 Paul Tissandier 奖状。",
+  "tr_note": "'paragliding' attributive: 滑翔伞, as live",
+  "waive": {
+   "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is attributive, where Chinese pilots say 滑翔伞 and 滑翔伞运动 reads stiffly (same waiver as the live pages)"
+  }
  },
  "289844172cb6": {
   "en": "<x1>The landing field</x1>The {1} landing field under big cumulus, snow peaks behind, one wing coming in",
   "b": "<x1>降落场</x1>{1}降落场在大积云下，身后是雪峰，一顶伞翼正在进场",
   "date": "2026-11-17",
-  "a": "<x1>降落场</x1>大朵积云下的{1}降落场，身后是雪峰，一顶伞翼正在进场"
+  "a": "<x1>降落场</x1>大朵积云下的{1}降落场，身后是雪峰，一顶伞翼正在进场",
+  "tr": "<x1>降落场</x1>大朵积云下的{1}降落场，身后是雪峰，一顶伞翼正在进场"
  },
  "28d341d6e81b": {
   "en": "Climate, seasons, and when to come",
@@ -1674,7 +1756,9 @@
   "en": "<x1>The {1}</x1>The {2} range under building cumulus, above the Kangra valley<x2>near Big face</x2>",
   "b": "<x1>{1}</x1>{2}山脉在渐起的积云下，位于 Kangra 山谷上方<x2>靠近 Big face</x2>",
   "date": "2026-11-17",
-  "a": "<x1>{1}山脉</x1>正在发展的积云下的{2}山脉，位于Kangra山谷上方<x2>Big face附近</x2>"
+  "a": "<x1>{1}山脉</x1>正在发展的积云下的{2}山脉，位于Kangra山谷上方<x2>Big face附近</x2>",
+  "tr": "<x1>{1}山脉</x1>正在发展的积云下的{2}山脉，位于 Kangra 山谷上方<x2>Big face 附近</x2>",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "2976a051355b": {
   "en": "A range of young volcanic cones and lava flows, the latest of them from the {1}, with some of the longest lava tubes in the world beneath. The rain that falls here sinks through the lava and surfaces at Mzima Springs.",
@@ -1688,7 +1772,8 @@
   "en": "Indian visa, applied for before you travel<x1>At least {1} days before you arrive. The e-visa suits most nationalities, but not all</x1>",
   "b": "印度签证，出发前申请<x1>至少在抵达前 {1} 天。电子签证适合大多数国籍，但并非所有</x1>",
   "date": "2026-11-17",
-  "a": "印度签证，出行前办好<x1>至少在抵达前{1}天申请。电子签证适合大多数国籍，但并非全部</x1>"
+  "a": "印度签证，出行前办好<x1>至少在抵达前{1}天申请。电子签证适合大多数国籍，但并非全部</x1>",
+  "tr": "印度签证，出行前办好<x1>至少在抵达前{1}天申请。电子签证适合大多数国籍，但并非全部</x1>"
  },
  "2995baf73d83": {
   "en": "Nikolay Yotov <x1>Kenya episode, {1}</x1>",
@@ -1746,7 +1831,8 @@
   "en": "<x1>Cloud on the range</x1>A snow-dusted rock peak half hidden in cloud",
   "b": "<x1>山脉上的云</x1>一座积雪覆盖的岩石山峰，半隐在云中",
   "date": "2026-11-17",
-  "a": "<x1>山脉上的云</x1>一座覆着薄雪的岩峰，半隐在云中"
+  "a": "<x1>山脉上的云</x1>一座覆着薄雪的岩峰，半隐在云中",
+  "tr": "<x1>山脉上的云</x1>一座覆着薄雪的岩峰，半隐在云中"
  },
  "2ad80ab9b960": {
   "en": "Better still, give work as a porter or guide, or donate to a local organisation. Avoid handing out your phone number or email, because it turns into requests for money later.",
@@ -1759,13 +1845,17 @@
   "en": "Behind {1} is a spine, and past it the big mountains: Barabangal, the run to Manali and beyond. Jigish Gohil's test for going is a couple of hundred hours, an {2} course, and the kit and fitness for a night out and a long walk. <x1>His test in full</x1>.",
   "b": "{1}后面是一道山脊，越过它就是真正的大山：Barabangal、通往 Manali 乃至更远的路线。Jigish Gohil 的出发标准是：两百来个飞行小时，一次 {2} 课程，以及能在外过夜和长途步行的装备与体力。<x1>他的完整标准</x1>。",
   "date": "2026-11-17",
-  "a": "{1}后面是一道山脊，过了它就是大山：Barabangal、飞往Manali的航线，乃至更远。Jigish Gohil判断能否去的标准是：几百小时的飞行经验、一次{2}课程，以及能在野外过夜、长途徒步的装备和体能。<x1>他的完整标准</x1>。"
+  "a": "{1}后面是一道山脊，过了它就是大山：Barabangal、飞往Manali的航线，乃至更远。Jigish Gohil判断能否去的标准是：几百小时的飞行经验、一次{2}课程，以及能在野外过夜、长途徒步的装备和体能。<x1>他的完整标准</x1>。",
+  "tr": "{1}后面是一道山脊，过了它就是大山：Barabangal、飞往马纳利的航线，乃至更远。Jigish Gohil 判断能否去的标准是：两百来个小时的飞行经验、一次{2}课程，以及能在野外过夜、长途徒步的装备和体能。<x1>他的完整标准</x1>。",
+  "tr_note": "standard Chinese names for well-known places; 'a couple of hundred hours' = 两百来个小时, not 几百"
  },
  "2b174d1ec848": {
   "en": "Behind the takeoff is a spine, and past it everything steps up at once: altitude, thermal strength, roughness and cold, by about a third in Eddie Colfox's reckoning. That is a later step, not a first week one.",
   "b": "起飞场后面是一道山脊，越过之后一切都会陡然提升：海拔、热气流强度、乱流和寒冷，按 Eddie Colfox 的估计大约高出三分之一。那是之后才走的一步，不适合第一周。",
   "date": "2026-11-17",
-  "a": "起飞场后面是一道山脊，过了它，一切同时升级：海拔、热气流强度、颠簸和寒冷，按Eddie Colfox的估算大约都增加三分之一。那是以后的一步，不是第一周该做的事。"
+  "a": "起飞场后面是一道山脊，过了它，一切同时升级：海拔、热气流强度、颠簸和寒冷，按Eddie Colfox的估算大约都增加三分之一。那是以后的一步，不是第一周该做的事。",
+  "tr": "起飞场后面是一道山脊，过了它，一切同时升级：海拔、热气流强度、乱流和寒冷，按 Eddie Colfox 的估算大约都增加三分之一。那是以后的一步，不是第一周该做的事。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "2b234305d875": {
   "en": "The base for the tour, and the site where the world speed records are chased.",
@@ -1801,7 +1891,8 @@
   "en": "North, not a first week line",
   "b": "向北，不是第一周的路线",
   "date": "2026-11-17",
-  "a": "向北，不是第一周的航线"
+  "a": "向北，不是第一周的航线",
+  "tr": "向北，不是第一周的航线"
  },
  "2c250444209e": {
   "en": "December to March",
@@ -1828,13 +1919,15 @@
   "en": "Rule {1}, The cloud",
   "b": "第 {1} 条，云",
   "date": "2026-11-17",
-  "a": "规则{1}：云"
+  "a": "规则{1}：云",
+  "tr": "规则{1}：云"
  },
  "2d4b33db83a3": {
   "en": "What the brochures say",
   "b": "宣传册上怎么说",
   "date": "2026-11-17",
-  "a": "宣传册上怎么说"
+  "a": "宣传册上怎么说",
+  "tr": "宣传册上怎么说"
  },
  "2dae96425990": {
   "en": "<x1>{1}</x1> to <x2>{2}</x2> {3}",
@@ -1968,7 +2061,8 @@
   "en": "Which airport do I fly into for {1}?",
   "b": "飞{1}该在哪个机场降落？",
   "date": "2026-11-17",
-  "a": "去{1}应该飞到哪个机场？"
+  "a": "去{1}应该飞到哪个机场？",
+  "tr": "去{1}应该飞到哪个机场？"
  },
  "30dfc50ab0b8": {
   "en": "The deposit, when the balance is due and what happens if you cancel are all in the <x1>booking terms</x1>. Read them before you book, and take out trip cancellation insurance.",
@@ -2003,7 +2097,12 @@
   "en": "Rupees in small notes<x1>For taxis, chai and the ride back from a landing out</x1>",
   "b": "小面额卢比<x1>用于出租车、奶茶，以及从降落场以外的地方返程</x1>",
   "date": "2026-11-17",
-  "a": "小面额卢比<x1>用来付出租车、喝印度奶茶，以及外场降落后的回程车费</x1>"
+  "a": "小面额卢比<x1>用来付出租车、喝印度奶茶，以及外场降落后的回程车费</x1>",
+  "tr": "小面额卢比<x1>用来付出租车、印度奶茶，以及外场降落后的回程车费</x1>",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages",
+  "waive": {
+   "glossary": "glossary 'landing' (降落场) is the landing field; here it is the act of landing (降落), not a field"
+  }
  },
  "322ec11c194f": {
   "en": "To come",
@@ -2050,7 +2149,9 @@
   "en": "{1} to Dharamshala and back",
   "b": "{1}往返 Dharamshala",
   "date": "2026-11-17",
-  "a": "{1}往返Dharamshala"
+  "a": "{1}往返Dharamshala",
+  "tr": "{1}往返达兰萨拉",
+  "tr_note": "standard Chinese names for well-known places"
  },
  "32dc7997042d": {
   "en": "Founded {1}, elevation {2}m.",
@@ -2063,13 +2164,16 @@
   "en": "<x1>Meadows below the range</x1>A meadow of white flowers below the snow-covered {1}",
   "b": "<x1>山脉脚下的草甸</x1>白色花朵的草甸，在积雪覆盖的{1}之下",
   "date": "2026-11-17",
-  "a": "<x1>山脉下的草甸</x1>白雪覆盖的{1}山脉下，一片开满白花的草甸"
+  "a": "<x1>山脉下的草甸</x1>白雪覆盖的{1}山脉下，一片开满白花的草甸",
+  "tr": "<x1>山脉下的草甸</x1>白雪覆盖的{1}山脉下，一片开满白花的草甸"
  },
  "330f1fd6cbc9": {
   "en": "The Kangra valley from the air, villages and fields below the hills",
   "b": "Kangra 山谷的空中景象，山丘下是村庄和田野",
   "date": "2026-11-17",
-  "a": "从空中看Kangra山谷，群山下的村庄和田地"
+  "a": "从空中看Kangra山谷，群山下的村庄和田地",
+  "tr": "从空中看 Kangra 山谷，群山下的村庄和田地",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "332e15a10e87": {
   "en": "Our expertise in East African flying has been accumulated over long years of exploring the region’s weather patterns and hidden gems. Our handpicked team of experienced local and international pilots have logged countless airtime over the savannah, giving us an industry-leading opportunity to fly in conditions that range from gentle soaring to potentially epic world record breaking {1} flights.",
@@ -2092,13 +2196,17 @@
   "en": "Big Mountain Flying. Ten days on the {1}, the wall of the Himalaya above {2}.",
   "b": "大山飞行。在{1}上飞十天，那是{2}上方喜马拉雅的一道高墙。",
   "date": "2026-11-17",
-  "a": "大山飞行。在{1}山脉上飞行十天，这道喜马拉雅的高墙就耸立在{2}上方。"
+  "a": "大山飞行。在{1}山脉上飞行十天，这道喜马拉雅的高墙就耸立在{2}上方。",
+  "tr": "大山飞行。在{1}山脉飞十天，这道喜马拉雅高墙就耸立在{2}上方。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "33cbaeb83982": {
   "en": "His test for going over: a couple of hundred hours, an {1} course, gear to sleep out, and the fitness to walk for eight or nine hours. Go with people who have done it.",
   "b": "他的出发标准：两百来个飞行小时、一次 {1} 课程、能在外过夜的装备，以及走八九个小时的体力。要和做过的人一起去。",
   "date": "2026-11-17",
-  "a": "他判断能否飞越后山的标准：几百小时的飞行经验、一次{1}课程、能在野外睡觉的装备，以及能走八九个小时的体能。跟已经飞过的人一起去。"
+  "a": "他判断能否飞越后山的标准：几百小时的飞行经验、一次{1}课程、能在野外睡觉的装备，以及能走八九个小时的体能。跟已经飞过的人一起去。",
+  "tr": "他判断能否翻过后山的标准：两百来个小时的飞行经验、一次{1}课程、能在野外过夜的装备，以及能走八九个小时的体能。跟已经飞过的人一起去。",
+  "tr_note": "'a couple of hundred hours' = 两百来个小时, not 几百"
  },
  "33f1b2e570e8": {
   "en": "Choose the trip to hear",
@@ -2127,7 +2235,11 @@
   "en": "Warm layers for the evening<x1>It cools off fast after landing</x1>",
   "b": "晚上穿的保暖衣物<x1>在降落场降落后，气温下降很快</x1>",
   "date": "2026-11-17",
-  "a": "晚上穿的保暖衣物<x1>降落后很快就会变冷</x1>"
+  "a": "晚上穿的保暖衣物<x1>降落后很快就会变冷</x1>",
+  "tr": "晚上穿的保暖衣物<x1>降落后很快就会变冷</x1>",
+  "waive": {
+   "glossary": "glossary 'landing' (降落场) is the landing field; here it is the act of landing (降落), not a field"
+  }
  },
  "34adb5fa1de1": {
   "en": "Paragliding Expeditions, Run By A Pilot.",
@@ -2164,7 +2276,8 @@
   "en": "Add {1} on the way home",
   "b": "回程再加上 {1}",
   "date": "2026-11-17",
-  "a": "回程时加上{1}"
+  "a": "回程时加上{1}",
+  "tr": "回程时加上{1}"
  },
  "35c2a02cd4d0": {
   "en": "India · {1}, Himalaya<x1>{2}°N · {3}°E</x1>",
@@ -2188,13 +2301,15 @@
   "en": "Fly the approach, every time",
   "b": "每一次都要飞完整的进场",
   "date": "2026-11-17",
-  "a": "每次都飞完整的进场航线"
+  "a": "每次都飞完整的进场航线",
+  "tr": "每次都飞完整的进场航线"
  },
  "36b5c5b62ce6": {
   "en": "The Majestic Himalayas: A Paraglider's Ultimate Frontier",
   "b": "雄伟的喜马拉雅：滑翔伞飞行员的终极前沿",
   "date": "2026-11-17",
-  "a": "雄伟的喜马拉雅：滑翔伞飞行员的终极疆域"
+  "a": "雄伟的喜马拉雅：滑翔伞飞行员的终极疆域",
+  "tr": "雄伟的喜马拉雅：滑翔伞飞行员的终极疆域"
  },
  "36c57243155b": {
   "en": "Peru",
@@ -2272,7 +2387,8 @@
   "en": "e-Arrival Card, filed online<x1>Free, and due in the {1} hours before you fly to India</x1>",
   "b": "电子入境卡，在线填写<x1>免费，须在飞往印度前 {1} 小时内提交</x1>",
   "date": "2026-11-17",
-  "a": "电子入境卡，在线填写<x1>免费，需在飞往印度前{1}小时内提交</x1>"
+  "a": "电子入境卡，在线填写<x1>免费，需在飞往印度前{1}小时内提交</x1>",
+  "tr": "电子入境卡，在线填写<x1>免费，需在飞往印度前{1}小时内提交</x1>"
  },
  "38cfe7dc1470": {
   "en": "Rule {1}, When you are asked for money",
@@ -2285,7 +2401,8 @@
   "en": "Do not assume the pilot ahead knows what they are doing. Some of the pilots in the air at {1} are superb, and some simply do not know better.",
   "b": "不要以为前面的飞行员知道自己在做什么。在{1}空中的飞行员里，有些非常出色，有些只是不知道更好的做法。",
   "date": "2026-11-17",
-  "a": "不要以为前面的飞行员知道自己在做什么。在{1}空中飞的飞行员，有的技术一流，有的只是不懂得更好的做法。"
+  "a": "不要以为前面的飞行员知道自己在做什么。在{1}空中飞的飞行员，有的技术一流，有的只是不懂得更好的做法。",
+  "tr": "不要以为前面的飞行员知道自己在做什么。在{1}空中飞的飞行员，有的技术一流，有的只是不懂得更好的做法。"
  },
  "38f79e8a82e3": {
   "en": "Rule {1}, You are the precedent",
@@ -2315,13 +2432,17 @@
   "en": "about {1}m",
   "b": "约{1}米",
   "date": "2026-11-17",
-  "a": "海拔约{1}米"
+  "a": "海拔约{1}米",
+  "tr": "海拔约{1} m",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "3a37d22412b5": {
   "en": "You want to fly deep into the back ranges on your first visit. That takes a couple of hundred hours, an {1} course, and kit for a night out.",
   "b": "你想第一次来就深入后山飞行。那需要两百来个飞行小时、一次 {1} 课程，以及能在外过夜的装备。",
   "date": "2026-11-17",
-  "a": "你想在第一次来时就深入后山飞行。那需要几百小时的经验、一次{1}课程，以及能在野外过夜的装备。"
+  "a": "你想在第一次来时就深入后山飞行。那需要几百小时的经验、一次{1}课程，以及能在野外过夜的装备。",
+  "tr": "你想在第一次来时就深入后山飞行。那需要两百来个小时的飞行经验、一次{1}课程，以及能在野外过夜的装备。",
+  "tr_note": "'a couple of hundred hours' = 两百来个小时, not 几百"
  },
  "3a65e770b28a": {
   "en": "Women",
@@ -2334,7 +2455,8 @@
   "en": "{1} · Cloudbase",
   "b": "{1}｜云底",
   "date": "2026-11-17",
-  "a": "{1} · 云底"
+  "a": "{1} · 云底",
+  "tr": "{1} · 云底"
  },
  "3ac720e2b43e": {
   "en": "Official event: <x1>{1}, {2}</x1> · <x2>Final results</x2>",
@@ -2382,7 +2504,9 @@
   "en": "You do not like the cold. It is warm in the valley and freezing at cloudbase, on the same day.",
   "b": "你怕冷。同一天里，山谷温暖，云底却冰冷。",
   "date": "2026-11-17",
-  "a": "你不喜欢寒冷。同一天里，山谷很暖和，云底却冰冷。"
+  "a": "你不喜欢寒冷。同一天里，山谷很暖和，云底却冰冷。",
+  "tr": "你怕冷。同一天里，山谷很暖和，云底却冰冷。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "3c410b8d9c3e": {
   "en": "About Mount Suswa",
@@ -2412,7 +2536,8 @@
   "en": "Warm in the valley, freezing at cloudbase, and paperwork you cannot fix on the day. Six items are marked essential. Do not travel without them.",
   "b": "山谷里温暖，云底冰冷，还有当天无法补救的手续文件。六项标为必备。没有它们不要出发。",
   "date": "2026-11-17",
-  "a": "山谷里暖和，云底冰冷，还有当天无法补救的证件手续。其中六项标为必备。没有它们不要出发。"
+  "a": "山谷里暖和，云底冰冷，还有当天无法补救的证件手续。其中六项标为必备。没有它们不要出发。",
+  "tr": "山谷里暖和，云底冰冷，还有当天无法补救的证件手续。其中六项标为必备。没有它们不要出发。"
  },
  "3cdc0f0f318b": {
   "en": "Chapter {1} of {2}: Kijabe Hill",
@@ -2433,7 +2558,9 @@
   "en": "{1}-{2} km",
   "b": "{1}-{2} 公里",
   "date": "2026-11-17",
-  "a": "{1}–{2}公里"
+  "a": "{1}–{2}公里",
+  "tr": "{1}-{2} km",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "3d082142a0c2": {
   "en": "Listen on",
@@ -2547,7 +2674,9 @@
   "en": "About Dharamshala and McLeod Ganj",
   "b": "关于 Dharamshala 和 McLeod Ganj",
   "date": "2026-11-17",
-  "a": "关于Dharamshala和McLeod Ganj"
+  "a": "关于Dharamshala和McLeod Ganj",
+  "tr": "关于达兰萨拉和 McLeod Ganj",
+  "tr_note": "standard Chinese names for well-known places"
  },
  "3f66052a107e": {
   "en": "From",
@@ -2569,7 +2698,9 @@
   "en": "McLeod Ganj, on the ridge above Dharamshala, has been the seat of the Dalai Lama and of the Central Tibetan Administration since {1}. The Tsuglagkhang complex holds his residence and the main temple.",
   "b": "McLeod Ganj 位于 Dharamshala 上方的山脊上，自{1}年起一直是达赖喇嘛和藏人行政中央的驻地。Tsuglagkhang 建筑群内有他的住所和主寺。",
   "date": "2026-11-17",
-  "a": "Dharamshala上方山脊上的McLeod Ganj，自{1}年以来一直是达赖喇嘛和藏人行政中央的所在地。祖拉康（Tsuglagkhang）建筑群里有他的居所和主寺。"
+  "a": "Dharamshala上方山脊上的McLeod Ganj，自{1}年以来一直是达赖喇嘛和藏人行政中央的所在地。祖拉康（Tsuglagkhang）建筑群里有他的居所和主寺。",
+  "tr": "达兰萨拉上方山脊上的 McLeod Ganj，自{1}年以来一直是达赖喇嘛和藏人行政中央的所在地。祖拉康（Tsuglagkhang）建筑群里有他的居所和主寺。",
+  "tr_note": "standard Chinese names for well-known places"
  },
  "404cf90e2054": {
   "en": "Kenya: Paragliding in the Cradle of Humankind | {1}",
@@ -2640,7 +2771,9 @@
   "en": "Most days end back in {1}. When they do not, the pilots' {2} and {3} groups share taxis, usually four pilots to a small car, and the same network gets everyone up the hill in the morning.",
   "b": "大多数日子都以回到{1}收尾。如果没有，飞行员的{2}和{3}群会拼出租车，通常是四名飞行员挤一辆小车，早上也靠同一个网络把大家送上山。",
   "date": "2026-11-17",
-  "a": "大多数日子都在{1}结束。如果没有，飞行员们的{2}和{3}群会拼出租车，通常四名飞行员挤一辆小车；早上上山也是靠同一个网络。"
+  "a": "大多数日子都在{1}结束。如果没有，飞行员们的{2}和{3}群会拼出租车，通常四名飞行员挤一辆小车；早上上山也是靠同一个网络。",
+  "tr": "大多数日子都以回到{1}收尾。如果没有，飞行员们的{2}和{3}群会拼出租车，通常四名飞行员挤一辆小车；早上也是靠同一个网络把大家送上山。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "420b6a3c5c90": {
   "en": "Hear Where We <x1>Fly</x1>",
@@ -2663,13 +2796,17 @@
   "en": "India Tour {1}",
   "b": "印度之旅 {1}",
   "date": "2026-11-17",
-  "a": "印度之旅 {1}"
+  "a": "印度之旅 {1}",
+  "tr": "印度第{1}团",
+  "tr_note": "'departure'/'tour' = 团期/团, as live"
  },
  "42498a018c64": {
   "en": "Rule {1}, Over the back",
   "b": "第 {1} 条，翻越后山",
   "date": "2026-11-17",
-  "a": "规则{1}：飞越后山"
+  "a": "规则{1}：飞越后山",
+  "tr": "规则{1}：翻过后山",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "42fec0b9ba92": {
   "en": "Kijabe Hill",
@@ -2721,13 +2858,16 @@
   "en": "{1}, about {2}m",
   "b": "{1}，海拔约{2}米",
   "date": "2026-11-17",
-  "a": "{1}，海拔约{2}米"
+  "a": "{1}，海拔约{2}米",
+  "tr": "{1}，海拔约{2} m",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "44a36328ccfb": {
   "en": "Rule {1}, The wing you bring",
   "b": "第 {1} 条，你带去的伞翼",
   "date": "2026-11-17",
-  "a": "规则{1}：你带的伞翼"
+  "a": "规则{1}：你带的伞翼",
+  "tr": "规则{1}：你带的伞翼"
  },
  "44ce8c5b2fc2": {
   "en": "{1}: Paragliding the {2} Tablelands | {3}",
@@ -2757,7 +2897,9 @@
   "en": "With Dharamshala done, his next step is to turn back east past the takeoff to {1} and then home again. Same front range, same landing options, more of it.",
   "b": "飞完 Dharamshala 之后，他的下一步是向东飞过起飞场，到 {1}，然后再飞回家。同一条前山脉，同样的降落场选择，只是更长。",
   "date": "2026-11-17",
-  "a": "飞完Dharamshala之后，他的下一步是回头向东，飞过起飞场到{1}，然后再回家。同一道前山，同样可选的降落场，只是飞得更多。"
+  "a": "飞完Dharamshala之后，他的下一步是回头向东，飞过起飞场到{1}，然后再回家。同一道前山，同样可选的降落场，只是飞得更多。",
+  "tr": "飞完达兰萨拉之后，他的下一步是回头向东，飞过起飞场到{1}，然后再回家。同一道前山山脉，同样可选的降落场，只是飞得更多。",
+  "tr_note": "'front range' = 前山山脉, as live; standard Chinese names for well-known places"
  },
  "45c892cd251a": {
   "en": "The southern Rift from Suswa to Amboseli is Maasai land: pastoralists whose cattle, red cloth and beadwork are the best known image of Kenya, and who still move their herds across it.",
@@ -2805,7 +2947,8 @@
   "en": "The weather at {1} is the easy part. What pilots there talk about is traffic, and the accidents they describe are traffic accidents. Most of it is drawn from two of our own episodes, with <x1>Eddie Colfox</x1>, who has run trips from {2} since {3}, and with <x2>Jigish Gohil</x2>, who has lived there for about a decade. Their words are paraphrased, not quoted.",
   "b": "{1}的天气是容易的部分。那里的飞行员谈论的是空中交通，他们描述的事故都是空中交通事故。大部分内容取自我们自己的两集节目，一集是与自{3}年起就在{2}带团的 <x1>Eddie Colfox</x1>，另一集是与在那里住了大约十年的 <x2>Jigish Gohil</x2>。他们的话是转述，不是原话引用。",
   "date": "2026-11-17",
-  "a": "{1}的天气是最容易的部分。那里的飞行员谈论的是空中交通，他们讲到的事故也都是空中交通事故。这里的内容大多来自我们自己的两集节目：一集是<x1>Eddie Colfox</x1>，他从{3}年起就在{2}组织飞行之旅；另一集是<x2>Jigish Gohil</x2>，他在那里住了大约十年。他们的话是转述，不是原话引用。"
+  "a": "{1}的天气是最容易的部分。那里的飞行员谈论的是空中交通，他们讲到的事故也都是空中交通事故。这里的内容大多来自我们自己的两集节目：一集是<x1>Eddie Colfox</x1>，他从{3}年起就在{2}组织飞行之旅；另一集是<x2>Jigish Gohil</x2>，他在那里住了大约十年。他们的话是转述，不是原话引用。",
+  "tr": "{1}的天气是最容易的部分。那里的飞行员谈论的是空中交通，他们讲到的事故也都是空中交通事故。这里的内容大多来自我们自己的两集节目：一集是<x1>Eddie Colfox</x1>，他从{3}年起就在{2}组织飞行之旅；另一集是<x2>Jigish Gohil</x2>，他在那里住了大约十年。他们的话是转述，不是原话引用。"
  },
  "46ae7252f6d3": {
   "en": "A {1} m fall on the Ewaso Ng'iro at Nyahururu, reached by the Scottish explorer Joseph Thomson in {2} and named for his father.",
@@ -2854,7 +2997,9 @@
   "en": "The Dzongsar Khyentse Chökyi Lodrö Institute, a Buddhist college on the hillside at Chauntra a few kilometres south-east of {1}. Its present campus opened in {2} and is home to several hundred monks.",
   "b": "Dzongsar Khyentse Chökyi Lodrö 学院，是一所佛学院，位于{1}东南方几公里处 Chauntra 的山坡上。现在的校园于{2}年启用，住着几百名僧人。",
   "date": "2026-11-17",
-  "a": "宗萨钦哲确吉罗卓学院（Dzongsar Khyentse Chökyi Lodrö Institute），一所位于{1}东南几公里处Chauntra山坡上的佛学院。现在的校园于{2}年启用，是数百名僧人的家。"
+  "a": "宗萨钦哲确吉罗卓学院（Dzongsar Khyentse Chökyi Lodrö Institute），一所位于{1}东南几公里处Chauntra山坡上的佛学院。现在的校园于{2}年启用，是数百名僧人的家。",
+  "tr": "宗萨钦哲确吉罗卓学院（Dzongsar Khyentse Chökyi Lodrö Institute），一所佛学院，位于{1}东南几公里处 Chauntra 的山坡上。现在的校园于{2}年启用，有数百名僧人在此生活。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "479b2ba5fc81": {
   "en": "Hear The Site From Someone Who Flies It",
@@ -2933,7 +3078,9 @@
   "en": "Reliable thermals, big distances, flyable almost every day of the trip.",
   "b": "可靠的热气流、远距离、行程中几乎每天都能飞。",
   "date": "2026-11-17",
-  "a": "可靠的热气流，长距离，行程中几乎每天都能飞。"
+  "a": "可靠的热气流，长距离，行程中几乎每天都能飞。",
+  "tr": "可靠的热气流、长距离，行程中几乎每天都能飞。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "48e174553fed": {
   "en": "A conservancy on the Laikipia plateau that holds the last two northern white rhinos on earth, Najin and Fatu, under guard day and night.",
@@ -2958,7 +3105,9 @@
   "en": "Autumn at {1} can overdevelop. On {2} a visiting pilot near the end of a long flight was swept from {3}m to above {4}m inside a storm cloud in about ten minutes, and survived; nine incidents were reported in the area that day, three of them reserve deployments. <x1>Cross Country reported it</x1>.",
   "b": "{1}的秋季可能会过度发展。{2}，一名外来飞行员在长途飞行接近尾声时，在一团风暴云里约十分钟内，被从{3}米卷到{4}米以上，并活了下来；当天该地区上报了九起事件，其中三起是启用备份伞。<x1>Cross Country 报道了此事</x1>。",
   "date": "2026-11-17",
-  "a": "{1}的秋季可能出现对流过度发展。{2}，一名外来飞行员在一次长距离飞行接近尾声时，在大约十分钟内被卷进雷暴云，从{3}米卷到{4}米以上，最终幸存；当天这一地区报告了九起事故，其中三起开了备份伞。<x1>Cross Country做了报道</x1>。"
+  "a": "{1}的秋季可能出现对流过度发展。{2}，一名外来飞行员在一次长距离飞行接近尾声时，在大约十分钟内被卷进雷暴云，从{3}米卷到{4}米以上，最终幸存；当天这一地区报告了九起事故，其中三起开了备份伞。<x1>Cross Country做了报道</x1>。",
+  "tr": "{1}的秋季可能出现对流过度发展。{2}，一名外来飞行员在一次长距离飞行接近尾声时，在大约十分钟内被卷进雷暴云，从{3} m 卷到{4} m 以上，最终幸存；当天这一地区报告了九起事件，其中三起抛了备份伞。<x1>《Cross Country》杂志做了报道</x1>。",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "498d06b28ce2": {
   "en": "This form has no database behind it. Pressing send opens your own email app with the message written out, and you send it yourself. Nothing is posted to us or to any form service on the way, so there is no third party holding your details.",
@@ -2973,7 +3122,9 @@
   "en": "Behind the front range the ground gets big and the options get thin. Altitude, thermal strength, roughness and cold all step up at once, and help can take until the next day to arrive.",
   "b": "前山脉后面，地面变得辽阔，选择变得稀少。海拔、热气流强度、乱流和寒冷同时陡然升高，救援可能要到第二天才能到达。",
   "date": "2026-11-17",
-  "a": "前山后面，地形变得巨大，选择却变得很少。海拔、热气流强度、颠簸和寒冷同时升级，救援可能要到第二天才能赶到。"
+  "a": "前山后面，地形变得巨大，选择却变得很少。海拔、热气流强度、颠簸和寒冷同时升级，救援可能要到第二天才能赶到。",
+  "tr": "前山山脉后面，地形变得巨大，选择却变得很少。海拔、热气流强度、乱流和寒冷同时升级，救援可能要到第二天才能赶到。",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "4a04f0b915c7": {
   "en": "A Neolithic and Iron Age settlement on a hill outside Nakuru, excavated by Mary Leakey in the late {1}, with burial mounds and hut floors and a museum in the old farmhouse.",
@@ -3055,7 +3206,8 @@
   "en": "Photographs at Thatwal Thati",
   "b": "Thatwal Thati 的照片",
   "date": "2026-11-17",
-  "a": "Thatwal Thati的照片"
+  "a": "Thatwal Thati的照片",
+  "tr": "Thatwal Thati 的照片"
  },
  "4b3a25477426": {
   "en": "Partner With Me",
@@ -3077,7 +3229,8 @@
   "en": "A pilot on a red wing flying over snow-covered mountains",
   "b": "一名飞行员驾着红色伞翼飞越白雪覆盖的群山",
   "date": "2026-11-17",
-  "a": "一名飞行员驾驶红色伞翼飞越白雪覆盖的群山"
+  "a": "一名飞行员驾驶红色伞翼飞越白雪覆盖的群山",
+  "tr": "一名飞行员驾着红色伞翼飞越白雪覆盖的群山"
  },
  "4bb3e463ac3e": {
   "en": "Debunking The Myths, Enzo {1}",
@@ -3110,25 +3263,35 @@
   "en": "{1} Paragliding Tour: {2} Days in India | {3}",
   "b": "{1}滑翔伞运动之旅：印度 {2} 天｜{3}",
   "date": "2026-11-17",
-  "a": "{1}滑翔伞运动之旅：印度{2}天 | {3}"
+  "a": "{1}滑翔伞运动之旅：印度{2}天 | {3}",
+  "tr": "{1}滑翔伞之旅：印度{2}天 | {3}",
+  "tr_note": "'paragliding' attributive: 滑翔伞, as live",
+  "waive": {
+   "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is attributive, where Chinese pilots say 滑翔伞 and 滑翔伞运动 reads stiffly (same waiver as the live pages)"
+  }
  },
  "4c12fe5e78a1": {
   "en": "From the pilot's seat",
   "b": "从飞行员的座位看出去",
   "date": "2026-11-17",
-  "a": "从飞行员的座位上"
+  "a": "从飞行员的座位上",
+  "tr": "从飞行员的座位上看",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "4c2ba4f293e2": {
   "en": "Our Himalayan expedition delivers an aerial experience that makes you soar over landscapes shaped by time and legend, you get to drift over ancient monasteries while exploring your limits in thin air. It's a journey that stirs the soul. {1} is where it starts: one launch at {2}, a landing field at the edge of town, and a front range that pilots have been flying out and back along since the {3}.",
   "b": "我们的喜马拉雅之旅带来的飞行体验，让你翱翔在由岁月与传说塑造的大地之上，飘过古老的寺院，在稀薄的空气中探索自己的极限。这是一段触动心灵的旅程。一切从{1}开始：一个位于{2}的起飞场，一块在小镇边缘的降落场，还有一条前山脉，自{3}以来，飞行员们一直沿着它来回飞行。",
   "date": "2026-11-17",
-  "a": "我们的喜马拉雅远征带来一种空中体验：你将翱翔于被时间与传说塑造的大地之上，飘过古老的寺院，同时在稀薄的空气中探索自己的极限。这是一段触动心灵的旅程。{1}就是起点：一个位于{2}的起飞场，一片在镇子边上的降落场，还有一道前山，飞行员们从{3}起就一直沿着它往返飞行。"
+  "a": "我们的喜马拉雅远征带来一种空中体验：你将翱翔于被时间与传说塑造的大地之上，飘过古老的寺院，同时在稀薄的空气中探索自己的极限。这是一段触动心灵的旅程。{1}就是起点：一个位于{2}的起飞场，一片在镇子边上的降落场，还有一道前山，飞行员们从{3}起就一直沿着它往返飞行。",
+  "tr": "我们的喜马拉雅远征带来一种空中体验：你将翱翔于被时间与传说塑造的大地之上，飘过古老的寺院，同时在稀薄的空气中探索自己的极限。这是一段触动心灵的旅程。{1}就是起点：一个位于{2}的起飞场，一片在镇子边上的降落场，还有一道前山山脉，飞行员们从{3}起就一直沿着它往返飞行。",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "4c2d3e59d80e": {
   "en": "{1} Cross Country Routes",
   "b": "{1}越野飞行路线",
   "date": "2026-11-17",
-  "a": "{1}越野飞行航线"
+  "a": "{1}越野飞行航线",
+  "tr": "{1}越野飞行航线"
  },
  "4ca9685eab65": {
   "en": "A cold open: the first landing at Barabangal",
@@ -3146,13 +3309,15 @@
   "en": "You want the sky to yourself. Autumn at {1} now draws hundreds of visiting pilots.",
   "b": "你想独享天空。如今{1}的秋季会吸引数百名外来飞行员。",
   "date": "2026-11-17",
-  "a": "你想独享天空。如今{1}的秋季会吸引数以百计的外来飞行员。"
+  "a": "你想独享天空。如今{1}的秋季会吸引数以百计的外来飞行员。",
+  "tr": "你想独享天空。如今{1}的秋季会吸引数百名外来飞行员。"
  },
  "4cfce3db7e4a": {
   "en": "Policy number and rescue hotline, saved offline<x1>Essential</x1><x2>You will want these when you are down the back with no signal</x2>",
   "b": "保单号和救援热线，离线保存<x1>必备</x1><x2>当你降在后山、没有信号时，你会需要它们</x2>",
   "date": "2026-11-17",
-  "a": "保单号码和救援热线，离线保存<x1>必备</x1><x2>当你降落在后山、没有信号时，你会需要它们</x2>"
+  "a": "保单号码和救援热线，离线保存<x1>必备</x1><x2>当你降落在后山、没有信号时，你会需要它们</x2>",
+  "tr": "保单号码和救援热线，离线保存<x1>必备</x1><x2>当你降落在后山、没有信号时，你会需要它们</x2>"
  },
  "4d95cf5482fd": {
   "en": "Every Departure",
@@ -3183,7 +3348,9 @@
   "en": "BHPA instructor, {1} Paul Tissandier Diploma {2}",
   "b": "BHPA 教练，{1} Paul Tissandier 勋章 {2}",
   "date": "2026-11-17",
-  "a": "BHPA教练，{2}年{1} Paul Tissandier奖章"
+  "a": "BHPA教练，{2}年{1} Paul Tissandier奖章",
+  "tr": "BHPA 教练，{2}年{1} Paul Tissandier 奖状",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "4e3cc2599178": {
   "en": "What equipment is provided?",
@@ -3246,7 +3413,8 @@
   "en": "Oct",
   "b": "十月",
   "date": "2026-11-17",
-  "a": "十月"
+  "a": "十月",
+  "tr": "十月"
  },
  "514d6e0b3172": {
   "en": "Flamingos feed in the shallows, and the islets are one of the few places in East Africa where great white pelicans breed.",
@@ -3259,7 +3427,8 @@
   "en": "Watch the sky, not just the climb",
   "b": "要看天空，而不只是看爬升",
   "date": "2026-11-17",
-  "a": "看天空，而不只是看爬升"
+  "a": "看天空，而不只是看爬升",
+  "tr": "看天空，而不只是看爬升"
  },
  "51dd91dc98a9": {
   "en": "Start over",
@@ -3298,7 +3467,9 @@
   "en": "Next departure",
   "b": "下一个出发班次",
   "date": "2026-11-17",
-  "a": "下一期出发"
+  "a": "下一期出发",
+  "tr": "下一团期",
+  "tr_note": "'departure'/'tour' = 团期/团, as live"
  },
  "52a35818a37a": {
   "en": "Swipe sideways to turn it.",
@@ -3320,7 +3491,9 @@
   "en": "<x1>Kangra valley</x1>The Kangra valley from the air, villages and fields below the hills<x2>near Palampur</x2>",
   "b": "<x1>Kangra 山谷</x1>Kangra 山谷的空中景象，山丘下是村庄和田野<x2>靠近 Palampur</x2>",
   "date": "2026-11-17",
-  "a": "<x1>Kangra山谷</x1>从空中看Kangra山谷，群山下的村庄和田地<x2>Palampur附近</x2>"
+  "a": "<x1>Kangra山谷</x1>从空中看Kangra山谷，群山下的村庄和田地<x2>Palampur附近</x2>",
+  "tr": "<x1>Kangra 山谷</x1>从空中看 Kangra 山谷，群山下的村庄和田地<x2>Palampur 附近</x2>",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "52d1d8eef1f8": {
   "en": "Fitness: good condition for hikes to launch at moderate elevation, gear handling, and four to six hour active flying days in heat. You should be able to trek uneven terrain with a {1} to {2} kg pack.",
@@ -3334,7 +3507,12 @@
   "en": "When is the paragliding season in {1}?",
   "b": "{1}的滑翔伞运动飞行季是什么时候？",
   "date": "2026-11-17",
-  "a": "{1}的滑翔伞运动季节是什么时候？"
+  "a": "{1}的滑翔伞运动季节是什么时候？",
+  "tr": "{1}的滑翔伞飞行季是什么时候？",
+  "tr_note": "'paragliding' attributive: 滑翔伞, as live",
+  "waive": {
+   "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is attributive, where Chinese pilots say 滑翔伞 and 滑翔伞运动 reads stiffly (same waiver as the live pages)"
+  }
  },
  "5301648dcf6b": {
   "en": "Edit",
@@ -3384,13 +3562,15 @@
   "en": "Photographs at Waldo peak",
   "b": "Waldo peak 的照片",
   "date": "2026-11-17",
-  "a": "Waldo peak的照片"
+  "a": "Waldo peak的照片",
+  "tr": "Waldo peak 的照片"
  },
  "53a7a3b72089": {
   "en": "Winter flying gloves<x1>Test them in easy air before the day you need them</x1>",
   "b": "冬季飞行手套<x1>在你需要它的那天之前，先在平稳的空气里试一试</x1>",
   "date": "2026-11-17",
-  "a": "冬季飞行手套<x1>在真正需要之前，先在平稳气流里试戴</x1>"
+  "a": "冬季飞行手套<x1>在真正需要之前，先在平稳气流里试戴</x1>",
+  "tr": "冬季飞行手套<x1>在真正需要之前，先在平稳气流里试戴</x1>"
  },
  "53f612a997cf": {
   "en": "Alain Zoller",
@@ -3421,7 +3601,11 @@
   "en": "Before you launch",
   "b": "在起飞场起飞之前",
   "date": "2026-11-17",
-  "a": "起飞之前"
+  "a": "起飞之前",
+  "tr": "起飞之前",
+  "waive": {
+   "glossary": "glossary 'launch' (起飞场) is the take-off place; here 'launch' is the verb, 起飞"
+  }
  },
  "5548ae4f34cb": {
   "en": "days",
@@ -3476,7 +3660,9 @@
   "en": "The flying in front of the takeoff is the textbook part: landing fields all along the valley, a road never far away, and griffon vultures marking the climbs. If the day goes wrong, you land, take a retrieve and go home.",
   "b": "起飞场前方的飞行是教科书式的部分：整个山谷沿线都有降落场，公路始终不远，还有兀鹫标示出热气流。如果这一天不顺，就降落，搭回收车回家。",
   "date": "2026-11-17",
-  "a": "起飞场前方的飞行是教科书式的部分：整条山谷都有降落场，公路从不远，兀鹫会标出上升气流的位置。如果当天不顺，你就降落、搭回收车回家。"
+  "a": "起飞场前方的飞行是教科书式的部分：整条山谷都有降落场，公路从不远，兀鹫会标出上升气流的位置。如果当天不顺，你就降落、搭回收车回家。",
+  "tr": "起飞场前方的飞行是教科书式的部分：整条山谷沿线都有降落场，公路从不远，兀鹫会标出热气流的位置。如果当天不顺，你就降落，搭回收车回家。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "5646f9c6b3a7": {
   "en": "Jigish Gohil",
@@ -3523,25 +3709,30 @@
   "en": "<x1>{1} launch</x1>Pilots laying out and launching on the grass at {2}",
   "b": "<x1>{1}起飞场</x1>飞行员们在{2}的草地上展开伞翼并起飞",
   "date": "2026-11-17",
-  "a": "<x1>{1}起飞场</x1>飞行员们在{2}的草地上铺伞、起飞"
+  "a": "<x1>{1}起飞场</x1>飞行员们在{2}的草地上铺伞、起飞",
+  "tr": "<x1>{1}起飞场</x1>飞行员们在{2}的草地上铺伞、起飞"
  },
  "5764d68cb6d9": {
   "en": "The launch is almost always nil-wind and there will be a queue. Lay out to the side, and once your wing is up, go.",
   "b": "起飞场几乎总是无风，而且会有队伍。在侧边展开伞翼，伞翼一升起来就起飞。",
   "date": "2026-11-17",
-  "a": "起飞场几乎总是无风，而且会排队。到旁边去铺伞，伞翼一升起来，就走。"
+  "a": "起飞场几乎总是无风，而且会排队。到旁边去铺伞，伞翼一升起来，就走。",
+  "tr": "起飞场几乎总是无风，而且会排队。到旁边去铺伞，伞翼一升起来，就起飞。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "57c7e57f9433": {
   "en": "Ripstop tape",
   "b": "防撕裂布胶带",
   "date": "2026-11-17",
-  "a": "伞布修补胶带"
+  "a": "伞布修补胶带",
+  "tr": "伞布修补胶带"
  },
  "57dc8eed9f20": {
   "en": "Tour Dates For {1}",
   "b": "{1}年行程日期",
   "date": "2026-11-17",
-  "a": "{1}年行程日期"
+  "a": "{1}年行程日期",
+  "tr": "{1}年行程日期"
  },
  "57ee87b05d7d": {
   "en": "<x1>{1}</x1> / <x2>{2} min</x2>",
@@ -3556,7 +3747,8 @@
   "en": "Down jacket for flying<x1>This is the one people underestimate</x1>",
   "b": "飞行用羽绒服<x1>这是人们最容易低估的一样</x1>",
   "date": "2026-11-17",
-  "a": "飞行用羽绒服<x1>这是大家最容易低估的一件</x1>"
+  "a": "飞行用羽绒服<x1>这是大家最容易低估的一件</x1>",
+  "tr": "飞行用羽绒服<x1>这是大家最容易低估的一件</x1>"
  },
  "583719b62809": {
   "en": "When you are hoping to travel",
@@ -3631,7 +3823,8 @@
   "en": "Some satellite communicators are not technically legal in India, and the advice online has not all caught up. Ask us before you buy or pack one. Do not find this out at customs.",
   "b": "有些卫星通信设备在印度严格来说并不合法，网上的说法也没有全部跟上。购买或打包之前先问我们。别等到海关才发现。",
   "date": "2026-11-17",
-  "a": "有些卫星通信设备在印度严格来说并不合法，而网上的建议也还没完全更新。购买或打包之前先问我们。别等到了海关才发现。"
+  "a": "有些卫星通信设备在印度严格来说并不合法，而网上的建议也还没完全更新。购买或打包之前先问我们。别等到了海关才发现。",
+  "tr": "有些卫星通信设备在印度严格来说并不合法，而网上的建议也还没完全更新。购买或打包之前先问我们。别等到了海关才发现。"
  },
  "5a83d3de402d": {
   "en": "Payment link: <x1>{1}</x1>. It will carry the photo's name.",
@@ -3684,7 +3877,8 @@
   "en": "<x1>{1} landing</x1>{2}'s landing field among terraced fields, seen from the air",
   "b": "<x1>{1}降落场</x1>{2}的降落场，梯田之间，空中俯瞰",
   "date": "2026-11-17",
-  "a": "<x1>{1}降落场</x1>从空中看{2}的降落场，四周是梯田"
+  "a": "<x1>{1}降落场</x1>从空中看{2}的降落场，四周是梯田",
+  "tr": "<x1>{1}降落场</x1>从空中看{2}的降落场，四周是梯田"
  },
  "5c2e8b0f31fa": {
   "en": "A volcanic caldera on the edge of Nakuru, about twelve kilometres by eight, formed in a great eruption some eight thousand years ago, its floor a field of old lava. One of the largest calderas in the world.",
@@ -3767,7 +3961,9 @@
   "en": "<x1>Meadows below the range</x1>A meadow of white flowers below the snow-covered {1}<x2>near Thatwal Thati</x2>",
   "b": "<x1>山脉脚下的草甸</x1>白色花朵的草甸，在积雪覆盖的{1}之下<x2>靠近 Thatwal Thati</x2>",
   "date": "2026-11-17",
-  "a": "<x1>山脉下的草甸</x1>白雪覆盖的{1}山脉下，一片开满白花的草甸<x2>Thatwal Thati附近</x2>"
+  "a": "<x1>山脉下的草甸</x1>白雪覆盖的{1}山脉下，一片开满白花的草甸<x2>Thatwal Thati附近</x2>",
+  "tr": "<x1>山脉下的草甸</x1>白雪覆盖的{1}山脉下，一片开满白花的草甸<x2>Thatwal Thati 附近</x2>",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "5e257531115d": {
   "en": "Standing on takeoff, what to expect",
@@ -3824,7 +4020,8 @@
   "en": "<x1>Over the peaks</x1>A single wing high above a snow-streaked peak",
   "b": "<x1>翻越群峰</x1>一顶孤零零的伞翼高高飞在积雪斑驳的山峰上方",
   "date": "2026-11-17",
-  "a": "<x1>飞越群峰</x1>一顶伞翼高悬在一座带着积雪的山峰之上"
+  "a": "<x1>飞越群峰</x1>一顶伞翼高悬在一座带着积雪的山峰之上",
+  "tr": "<x1>飞越群峰</x1>一顶伞翼高悬在一座带着积雪的山峰之上"
  },
  "5f403e38f2eb": {
   "en": "<x1>←</x1> Media",
@@ -3846,7 +4043,9 @@
   "en": "The Himachal Pradesh Cricket Association's ground sits at about {1} m on the edge of Dharamshala, with the {2} straight behind the stands. It was built in {3} and {4}, saw its first one-day international in {5} and its first Test match in {6}.",
   "b": "喜马偕尔邦板球协会的球场海拔约 {1} 米，位于 Dharamshala 边缘，看台正后方就是{2}。它在{3}和{4}年建成，{5}迎来首场一日国际赛，{6}迎来首场测试赛。",
   "date": "2026-11-17",
-  "a": "喜马偕尔邦板球协会的球场位于Dharamshala边上，海拔约{1}米，看台后方就是{2}山脉。它建于{3}年和{4}年，{5}举办了第一场单日国际赛，{6}举办了第一场Test match（国际板球对抗赛）。"
+  "a": "喜马偕尔邦板球协会的球场位于Dharamshala边上，海拔约{1}米，看台后方就是{2}山脉。它建于{3}年和{4}年，{5}举办了第一场单日国际赛，{6}举办了第一场Test match（国际板球对抗赛）。",
+  "tr": "喜马偕尔邦板球协会的球场位于达兰萨拉边缘，海拔约{1} m，看台正后方就是{2}山脉。它建于{3}年和{4}年，{5}举办了第一场单日国际赛，{6}举办了第一场测试赛（Test match）。",
+  "tr_note": "units kept as m/km, as on the live zh pages; standard Chinese names for well-known places"
  },
  "603a4a9eb9f3": {
   "en": "Take the controls",
@@ -3859,7 +4058,8 @@
   "en": "April to May, October to November",
   "b": "四月至五月，十月至十一月",
   "date": "2026-11-17",
-  "a": "四月至五月，十月至十一月"
+  "a": "四月至五月，十月至十一月",
+  "tr": "四月至五月，十月至十一月"
  },
  "6073a2f2e928": {
   "en": "Next episodes",
@@ -3890,7 +4090,9 @@
   "en": "Autumn is the season. Eddie Colfox puts the start of good flying at around {1} now, later than it used to be, and it runs well into November. Jigish Gohil, who lives in {2}, says autumn is when almost everyone comes, because the flying is consistent nearly every day. Spring flies too, but it is stronger and far quieter. On the day, Jigish's own site, paraguide.in, runs a <x1>live weather station</x1> for {3}.",
   "b": "秋季是飞行季。Eddie Colfox 认为，如今好天气大约从{1}开始，比以前晚了，一直持续到十一月中。住在{2}的 Jigish Gohil 说，秋季几乎所有人都会来，因为几乎每天都能稳定飞行。春季也能飞，但风更强，人也少得多。到了当天，Jigish 自己的网站 paraguide.in 提供{3}的<x1>实时气象站</x1>数据。",
   "date": "2026-11-17",
-  "a": "秋季才是飞行季。Eddie Colfox说，如今好天气大约从{1}开始，比以前晚，并且一直持续到十一月深处。住在{2}的Jigish Gohil说，几乎所有人都在秋季来，因为那时几乎每天都能稳定飞行。春季也能飞，但条件更强，人也少得多。当天的天气，可以看Jigish自己的网站paraguide.in为{3}提供的<x1>实时气象站</x1>。"
+  "a": "秋季才是飞行季。Eddie Colfox说，如今好天气大约从{1}开始，比以前晚，并且一直持续到十一月深处。住在{2}的Jigish Gohil说，几乎所有人都在秋季来，因为那时几乎每天都能稳定飞行。春季也能飞，但条件更强，人也少得多。当天的天气，可以看Jigish自己的网站paraguide.in为{3}提供的<x1>实时气象站</x1>。",
+  "tr": "秋季才是飞行季。Eddie Colfox 说，如今好的飞行条件大约从{1}开始，比以前晚，并会一直持续到十一月的大部分时间。住在{2}的 Jigish Gohil 说，几乎所有人都在秋季来，因为那时几乎每天都能稳定飞行。春季也能飞，但条件更强，人也少得多。飞行当天，可以看 Jigish 自己的网站 paraguide.in 为{3}提供的<x1>实时气象站</x1>。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "612e12d29278": {
   "en": "Results",
@@ -3903,7 +4105,8 @@
   "en": "Per pilot",
   "b": "每位飞行员",
   "date": "2026-11-17",
-  "a": "每位飞行员"
+  "a": "每位飞行员",
+  "tr": "每位飞行员"
  },
  "6144c4a23eae": {
   "en": "{1}, Mexico · photos and videos",
@@ -3928,7 +4131,9 @@
   "en": "There are exceptional pilots at {1}, and some of them are doing things you should not copy. A line that works for a local on a two liner is not automatically a line for you.",
   "b": "{1}有出色的飞行员，其中一些人做的事你不该照搬。对一位当地人驾着双线伞翼行得通的线路，不见得就适合你。",
   "date": "2026-11-17",
-  "a": "{1}有出色的飞行员，其中有些人做的事你不该模仿。本地飞行员驾驶双排组带伞飞得通的线路，并不自动就是适合你的线路。"
+  "a": "{1}有出色的飞行员，其中有些人做的事你不该模仿。本地飞行员驾驶双排组带伞飞得通的线路，并不自动就是适合你的线路。",
+  "tr": "{1}有出色的飞行员，其中有些人做的事你不该模仿。本地飞行员驾驶双排组伞翼飞得通的线路，并不自动就是适合你的线路。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "62255f5671e8": {
   "en": "Season",
@@ -3975,7 +4180,8 @@
   "en": "{1}, Himachal Pradesh",
   "b": "{1}，喜马偕尔邦",
   "date": "2026-11-17",
-  "a": "{1}，喜马偕尔邦"
+  "a": "{1}，喜马偕尔邦",
+  "tr": "{1}，喜马偕尔邦"
  },
  "638aaa2ae7ed": {
   "en": "Conversations with the designers, test pilots and champions who shape the sport.",
@@ -4030,7 +4236,8 @@
   "en": "Photographs at Baijnath",
   "b": "Baijnath 的照片",
   "date": "2026-11-17",
-  "a": "Baijnath的照片"
+  "a": "Baijnath的照片",
+  "tr": "Baijnath 的照片"
  },
  "646600403b3d": {
   "en": "Lesser flamingos feed on the blue-green algae of the hot soda water, and when Nakuru is too fresh for them they gather here in their hundreds of thousands. Counts at Bogoria have passed a million.",
@@ -4076,7 +4283,9 @@
   "en": "What insurance do I need for paragliding in India?",
   "b": "在印度参加滑翔伞运动需要什么保险？",
   "date": "2026-11-17",
-  "a": "在印度进行滑翔伞运动需要什么保险？"
+  "a": "在印度进行滑翔伞运动需要什么保险？",
+  "tr": "在印度从事滑翔伞运动需要什么保险？",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "652b532eab8b": {
   "en": "Task {1}, photo {2} of {3}",
@@ -4096,7 +4305,8 @@
   "en": "New Delhi",
   "b": "新德里",
   "date": "2026-11-17",
-  "a": "新德里"
+  "a": "新德里",
+  "tr": "新德里"
  },
  "65c821a596ce": {
   "en": "Live",
@@ -4111,7 +4321,8 @@
   "en": "Shared taxis up to {1}, about {2} minutes from {3}, the way everyone does it, usually four pilots to a car.",
   "b": "拼出租车上{1}，从{3}出发约 {2} 分钟，大家都这么走，通常四名飞行员一辆车。",
   "date": "2026-11-17",
-  "a": "拼出租车上{1}，从{3}出发约{2}分钟，大家都是这样上去的，通常四名飞行员一辆车。"
+  "a": "拼出租车上{1}，从{3}出发约{2}分钟，大家都是这样上去的，通常四名飞行员一辆车。",
+  "tr": "拼出租车上{1}，从{3}出发约{2}分钟，大家都是这样上去的，通常四名飞行员一辆车。"
  },
  "665c672c22eb": {
   "en": "Today<x1>{1}</x1>",
@@ -4147,7 +4358,8 @@
   "en": "Sunscreen and sunglasses<x1>The valley is warm and bright at midday</x1>",
   "b": "防晒霜和太阳镜<x1>山谷里中午温暖而明亮</x1>",
   "date": "2026-11-17",
-  "a": "防晒霜和太阳镜<x1>中午的山谷又暖又亮</x1>"
+  "a": "防晒霜和太阳镜<x1>中午的山谷又暖又亮</x1>",
+  "tr": "防晒霜和太阳镜<x1>中午的山谷又暖又亮</x1>"
  },
  "6689bbb4bd9a": {
   "en": "Join The {1} List",
@@ -4180,7 +4392,8 @@
   "en": "Up the hill",
   "b": "上山",
   "date": "2026-11-17",
-  "a": "上山"
+  "a": "上山",
+  "tr": "上山"
  },
  "68587bad15e9": {
   "en": "Buffalo",
@@ -4255,7 +4468,8 @@
   "en": "You are comfortable thermalling in company, and you keep looking around while you climb.",
   "b": "你能自如地在人群中盘旋爬升，并且在爬升时一直观察四周。",
   "date": "2026-11-17",
-  "a": "你能自如地与他人一起盘热气流，爬升时也会不停观察四周。"
+  "a": "你能自如地与他人一起盘热气流，爬升时也会不停观察四周。",
+  "tr": "你能自如地与他人一起盘热气流，爬升时也会不停观察四周。"
  },
  "6a2c2635c173": {
   "en": "Every task day: stills like these, and Daily Highlights, a video each task day with social clips and a results newsletter.",
@@ -4275,7 +4489,9 @@
   "en": "Most days end back in {1}. Pick your field early, fly a full approach, and anywhere else, watch for terraces and power lines.",
   "b": "大多数日子都以回到{1}收尾。早点选好降落场，完整地飞一遍进场；在别处降落时，要留意梯田和电线。",
   "date": "2026-11-17",
-  "a": "大多数日子都在{1}结束。早点选好降落场，飞完整的进场航线；在其他任何地方降落，都要留意梯田和电线。"
+  "a": "大多数日子都在{1}结束。早点选好降落场，飞完整的进场航线；在其他任何地方降落，都要留意梯田和电线。",
+  "tr": "大多数日子都以回到{1}收尾。早点选好降落场，飞完整的进场航线；在其他任何地方降落，都要留意梯田和电线。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "6aa1b941eecc": {
   "en": "Pre {1} Kenya, Episode {2}, {3} min",
@@ -4291,7 +4507,9 @@
   "en": "The plan follows the conditions, not a timetable. On the ground, {1} has a kilometre of road with around a hundred restaurants, trails to walk, hot springs, and monasteries where you can sit in on the chanting.",
   "b": "行程跟着天气条件走，而不是照时间表。在地面上，{1}有一公里长的街道，沿街约有一百家餐馆，还有可以步行的小径、温泉，以及可以坐下来听僧人诵经的寺院。",
   "date": "2026-11-17",
-  "a": "行程跟着天气条件走，而不是跟着时间表走。在地面上，{1}有一公里长的街道，开着大约一百家餐馆，还有步道可走、温泉可泡，以及可以坐下来聆听诵经的寺院。"
+  "a": "行程跟着天气条件走，而不是跟着时间表走。在地面上，{1}有一公里长的街道，开着大约一百家餐馆，还有步道可走、温泉可泡，以及可以坐下来聆听诵经的寺院。",
+  "tr": "行程跟着天气条件走，而不是照时间表。在地面上，{1}有一公里长的街道，沿街约有一百家餐馆，还有可以徒步的小径、温泉，以及可以坐下来聆听诵经的寺院。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "6abd5d0e6c77": {
   "en": "November to March",
@@ -4306,7 +4524,8 @@
   "en": "Photographs at Chauntra monastery",
   "b": "Chauntra 寺院的照片",
   "date": "2026-11-17",
-  "a": "Chauntra寺院的照片"
+  "a": "Chauntra寺院的照片",
+  "tr": "Chauntra 寺院的照片"
  },
  "6b17aaa0f4a4": {
   "en": "One Week On The Plateau",
@@ -4330,7 +4549,9 @@
   "en": "A grass ridge at about {1} m above McLeod Ganj, a day's walk up from McLeod Ganj or Dharamkot. The {2} peaks rise directly behind it, and the trail to the Indrahar pass carries on from here.",
   "b": "一道海拔约 {1} 米的草坡山脊，在 McLeod Ganj 上方，从 McLeod Ganj 或 Dharamkot 步行一天可达。{2}的山峰就在它身后拔地而起，通往 Indrahar 山口的小径从这里继续向前。",
   "date": "2026-11-17",
-  "a": "McLeod Ganj上方一道海拔约{1}米的草坡山脊，从McLeod Ganj或Dharamkot步行一天可达。{2}山脉的群峰就在它身后拔地而起，通往Indrahar山口的步道也从这里继续向上。"
+  "a": "McLeod Ganj上方一道海拔约{1}米的草坡山脊，从McLeod Ganj或Dharamkot步行一天可达。{2}山脉的群峰就在它身后拔地而起，通往Indrahar山口的步道也从这里继续向上。",
+  "tr": "McLeod Ganj 上方一道海拔约{1} m 的草坡山脊，从 McLeod Ganj 或 Dharamkot 步行一天可达。{2}山脉的群峰就在它身后拔地而起，通往 Indrahar 山口的步道也从这里继续向上。",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "6b6db5e205eb": {
   "en": "Ideal tour match for your skill and dreams (Kenya, {1}, India, Kazakhstan or Peru)",
@@ -4391,7 +4612,8 @@
   "en": "Small things, mostly for the day you land somewhere you did not plan to.",
   "b": "都是些小东西，多半是为了你降在计划之外某个地方的那一天。",
   "date": "2026-11-17",
-  "a": "一些小东西，主要用于你降落在计划之外地点的那天。"
+  "a": "一些小东西，主要用于你降落在计划之外地点的那天。",
+  "tr": "一些小东西，主要用于你降落在计划之外地点的那天。"
  },
  "6c9fc9908984": {
   "en": "Close menu",
@@ -4437,13 +4659,15 @@
   "en": "Reserve, repacked and in date<x1>Essential</x1>",
   "b": "备份伞，已重新折叠且在有效期内<x1>必备</x1>",
   "date": "2026-11-17",
-  "a": "备份伞，已重新折叠且在有效期内<x1>必备</x1>"
+  "a": "备份伞，已重新折叠且在有效期内<x1>必备</x1>",
+  "tr": "备份伞，已重新折叠且在有效期内<x1>必备</x1>"
  },
  "6dae2e1ec2f0": {
   "en": "A snow-dusted rock peak half hidden in cloud",
   "b": "一座积雪覆盖的岩石山峰，半隐在云中",
   "date": "2026-11-17",
-  "a": "一座覆着薄雪的岩峰，半隐在云中"
+  "a": "一座覆着薄雪的岩峰，半隐在云中",
+  "tr": "一座覆着薄雪的岩峰，半隐在云中"
  },
  "6dd07555a840": {
   "en": "<x1>{1}</x1>Ideal tour match for your skill and dreams (Kenya, {2}, India, Kazakhstan or Peru)",
@@ -4584,7 +4808,9 @@
   "en": "Over the back, then west<x1>{1} km</x1>",
   "b": "翻越后山，再向西<x1>{1} 公里</x1>",
   "date": "2026-11-17",
-  "a": "先越过后山，再向西<x1>{1}公里</x1>"
+  "a": "先越过后山，再向西<x1>{1}公里</x1>",
+  "tr": "先翻过后山，再向西<x1>{1} km</x1>",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "72542bccf7d2": {
   "en": "A photo from {1} {2}",
@@ -4606,7 +4832,8 @@
   "en": "How far ahead do I need an Indian visa?",
   "b": "印度签证要提前多久申请？",
   "date": "2026-11-17",
-  "a": "印度签证需要提前多久办？"
+  "a": "印度签证需要提前多久办？",
+  "tr": "印度签证需要提前多久办？"
  },
  "7312c6e6c797": {
   "en": "{1}: Touch The Sky With Glory",
@@ -4629,7 +4856,8 @@
   "en": "Photographs at Top of big face",
   "b": "Big face 顶部的照片",
   "date": "2026-11-17",
-  "a": "Big face顶部的照片"
+  "a": "Big face顶部的照片",
+  "tr": "Big face 顶部的照片"
  },
  "736d29009ba6": {
   "en": "The calm Pacific breeze, from {1} to the Andes",
@@ -4644,7 +4872,9 @@
   "en": "Every flying day starts on the meadow at {1}, above {2}. The launch is almost always nil-wind, so a clean forward launch without help from the breeze is the one skill to arrive with,",
   "b": "每个飞行日都从{2}上方{1}的草坡开始。起飞场几乎总是无风，所以到这里之前要练好的一项本领，就是不靠风帮忙、干净利落地正向起飞，",
   "date": "2026-11-17",
-  "a": "每个飞行日都从{2}上方{1}的草甸开始。起飞场几乎总是无风，所以你需要带来的一项技能，就是不靠风助力、干净利落地正向起飞，"
+  "a": "每个飞行日都从{2}上方{1}的草甸开始。起飞场几乎总是无风，所以你需要带来的一项技能，就是不靠风助力、干净利落地正向起飞，",
+  "tr": "每个飞行日都从{2}上方{1}的草甸开始。起飞场几乎总是无风，所以来之前要掌握的一项技能，就是不借助风、干净利落地正向起飞，",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "7398c2d1c615": {
   "en": "The Barabangal flight, told properly",
@@ -4675,7 +4905,9 @@
   "en": "Autumn. Eddie Colfox, who has flown {1} since {2}, puts the start of good flying at around {3} now, because the monsoon often lingers into the first week of the month, and the air stays unstable enough to climb over {4}m well into November. Our autumn departures, {5} and {6}, sit inside that window; the two spring departures, {7} and {8}, come before it. <x1>Eddie on the season</x1>.",
   "b": "秋季。自{2}年起就在{1}飞行的 Eddie Colfox 认为，如今好天气大约从{3}开始，因为季风常常拖到当月的第一周，而空气一直到十一月都足够不稳定，可以爬升到{4}米以上。我们的秋季出发班次{5}和{6}都在这个时间窗口内；两个春季班次{7}和{8}则在它之前。<x1>听 Eddie 讲季节</x1>。",
   "date": "2026-11-17",
-  "a": "秋季。从{2}年起就在{1}飞行的Eddie Colfox说，如今好天气大约从{3}开始，因为季风常常拖到当月第一周，而空气一直保持足够不稳定，直到十一月都能爬升到{4}米以上。我们的秋季两期，{5}和{6}，都在这个窗口之内；春季两期，{7}和{8}，则在它之前。<x1>Eddie谈飞行季</x1>。"
+  "a": "秋季。从{2}年起就在{1}飞行的Eddie Colfox说，如今好天气大约从{3}开始，因为季风常常拖到当月第一周，而空气一直保持足够不稳定，直到十一月都能爬升到{4}米以上。我们的秋季两期，{5}和{6}，都在这个窗口之内；春季两期，{7}和{8}，则在它之前。<x1>Eddie谈飞行季</x1>。",
+  "tr": "秋季。从{2}年起就在{1}飞行的 Eddie Colfox 说，如今好的飞行条件大约从{3}开始，因为季风常常拖到当月第一周，而空气一直保持足够不稳定，直到十一月的大部分时间都能爬升到{4} m 以上。我们的秋季两个团期，{5}和{6}，都在这个窗口之内；春季两个团期，{7}和{8}，则在它之前。<x1>Eddie 谈飞行季</x1>。",
+  "tr_note": "units kept as m/km, as on the live zh pages; 'departure'/'tour' = 团期/团, as live"
  },
  "74052d61eebb": {
   "en": "Organisasjonsnummer {1}",
@@ -4690,7 +4922,9 @@
   "en": "Your own certified wing, a harness with back protection, reserve, helmet, vario or {1}, and a radio. Bring a wing you can relax on rather than your hottest: Eddie Colfox's advice is good equipment you feel comfortable on. It is warm in the valley and freezing at cloudbase, so pack a down jacket and gloves you have already tested in easy air. The full list is below.",
   "b": "你自己的认证伞翼、带背部保护的座袋、备份伞、头盔、垂直速度表或{1}，以及一台无线电。带一顶你能放松驾驭的伞翼，而不是你手里最激进的那顶：Eddie Colfox 的建议是，带你用着踏实的好装备。山谷里温暖，云底却冰冷，所以请带上羽绒服和你已在平稳空气里试过的手套。完整清单在下方。",
   "date": "2026-11-17",
-  "a": "你自己的认证伞翼、带背部保护的座袋、备份伞、头盔、垂直速度表或{1}，以及对讲机。带一顶让你能放松飞的伞，而不是你最激进的那顶：Eddie Colfox的建议是，带让你感到舒服的好装备。山谷里很暖和，云底却冰冷，所以要带上羽绒服，以及你已经在平稳气流里试过的手套。完整清单见下方。"
+  "a": "你自己的认证伞翼、带背部保护的座袋、备份伞、头盔、垂直速度表或{1}，以及对讲机。带一顶让你能放松飞的伞，而不是你最激进的那顶：Eddie Colfox的建议是，带让你感到舒服的好装备。山谷里很暖和，云底却冰冷，所以要带上羽绒服，以及你已经在平稳气流里试过的手套。完整清单见下方。",
+  "tr": "你自己的认证伞翼、带背部保护的座袋、备份伞、头盔、垂直速度表或{1}，以及对讲机。带一顶让你能放松飞的伞翼，而不是你手里最激进的那顶：Eddie Colfox 的建议是，带让你感到自在的好装备。山谷里很暖和，云底却冰冷，所以要带上羽绒服，以及你已经在平稳气流里试过的手套。完整清单见下方。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "7431e3df243c": {
   "en": "Package",
@@ -4705,7 +4939,8 @@
   "en": "Tracker, once you have checked it is legal<x1>Some satellite communicators are not technically legal in India. Ask us before you buy or pack one</x1>",
   "b": "追踪器，先确认它合法<x1>有些卫星通信设备在印度严格来说并不合法。购买或打包之前先问我们</x1>",
   "date": "2026-11-17",
-  "a": "追踪器，确认合法后再带<x1>有些卫星通信设备在印度严格来说并不合法。购买或打包之前先问我们</x1>"
+  "a": "追踪器，确认合法后再带<x1>有些卫星通信设备在印度严格来说并不合法。购买或打包之前先问我们</x1>",
+  "tr": "追踪器，确认合法后再带<x1>有些卫星通信设备在印度严格来说并不合法。购买或打包之前先问我们</x1>"
  },
  "74946e5e41b4": {
   "en": "Package travel rights",
@@ -4720,7 +4955,8 @@
   "en": "The most populous country in the world. Area about {1} km².",
   "a": "世界上人口最多的国家。面积约{1}平方公里。",
   "date": "2026-11-17",
-  "b": "世界上人口最多的国家。面积约{1}平方公里。"
+  "b": "世界上人口最多的国家。面积约{1}平方公里。",
+  "tr": "世界上人口最多的国家。面积约{1}平方公里。"
  },
  "74b69fb5c012": {
   "en": "about, at {1}",
@@ -4735,13 +4971,16 @@
   "en": "Four departures of ten days and nine nights in {1}, six pilots on each.",
   "b": "{1}共四个出发班次，每次十天九晚，每班六名飞行员。",
   "date": "2026-11-17",
-  "a": "在{1}共四期，每期十天九晚，每期六名飞行员。"
+  "a": "在{1}共四期，每期十天九晚，每期六名飞行员。",
+  "tr": "在{1}共四个团期，每期十天九晚，每期六名飞行员。",
+  "tr_note": "'departure'/'tour' = 团期/团, as live"
  },
  "74d0d1155f04": {
   "en": "Rule {1}, The traffic",
   "b": "第 {1} 条，空中交通",
   "date": "2026-11-17",
-  "a": "规则{1}：空中交通"
+  "a": "规则{1}：空中交通",
+  "tr": "规则{1}：空中交通"
  },
  "75079c5e96aa": {
   "en": "Your event",
@@ -4770,7 +5009,8 @@
   "en": "Radio<x1>Essential</x1><x2>Group frequency is briefed on arrival</x2>",
   "b": "无线电<x1>必备</x1><x2>团队频率会在抵达时做简报</x2>",
   "date": "2026-11-17",
-  "a": "对讲机<x1>必备</x1><x2>抵达时会通报团队频率</x2>"
+  "a": "对讲机<x1>必备</x1><x2>抵达时会通报团队频率</x2>",
+  "tr": "对讲机<x1>必备</x1><x2>抵达时会通报团队频率</x2>"
  },
  "75cf8cea2df4": {
   "en": "Mistakes visiting pilots make",
@@ -4839,7 +5079,8 @@
   "en": "the launch at {1}",
   "b": "{1}的起飞场",
   "date": "2026-11-17",
-  "a": "{1}的起飞场"
+  "a": "{1}的起飞场",
+  "tr": "{1}的起飞场"
  },
  "76fa8da4c233": {
   "en": "What you want from it",
@@ -4927,13 +5168,16 @@
   "en": "A paraglider silhouetted against a burning sunset",
   "b": "一顶滑翔伞在烈焰般的夕阳下的剪影",
   "date": "2026-11-17",
-  "a": "燃烧般的夕阳下一顶滑翔伞的剪影"
+  "a": "燃烧般的夕阳下一顶滑翔伞的剪影",
+  "tr": "燃烧般的夕阳下，一顶滑翔伞的剪影",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "78e0341300b4": {
   "en": "Check what is legal before you pack",
   "b": "打包前先确认什么是合法的",
   "date": "2026-11-17",
-  "a": "打包前先查清什么是合法的"
+  "a": "打包前先查清什么是合法的",
+  "tr": "打包前先查清什么是合法的"
  },
  "79602a55c18a": {
   "en": "Pre {1} Kenya",
@@ -4949,7 +5193,8 @@
   "en": "Routine vaccinations up to date<x1>Check with a travel clinic well before you go</x1>",
   "b": "常规疫苗接种保持在有效期内<x1>出发前很早就向旅行诊所咨询</x1>",
   "date": "2026-11-17",
-  "a": "常规疫苗接种保持最新<x1>出发前尽早咨询旅行诊所</x1>"
+  "a": "常规疫苗接种保持最新<x1>出发前尽早咨询旅行诊所</x1>",
+  "tr": "常规疫苗接种保持最新<x1>出发前尽早咨询旅行诊所</x1>"
  },
  "797158e5ac6a": {
   "en": "Avoid schools, markets and crowds. Land somewhere remote but reachable by a vehicle. Pack fast with a quick pack sack, then deal with yourself and send your location; repack properly later.",
@@ -4962,13 +5207,16 @@
   "en": "Oct to Nov",
   "b": "十月至十一月",
   "date": "2026-11-17",
-  "a": "十月至十一月"
+  "a": "十月至十一月",
+  "tr": "十月至十一月"
  },
  "79f4108eb122": {
   "en": "He always tries to fly with some kind of transmitter alongside his reserve, and is open that some of them are not technically legal in India.",
   "b": "他总是尽量在备份伞旁边带上某种发射设备，并坦率地说，其中有些在印度严格来说并不合法。",
   "date": "2026-11-17",
-  "a": "他总是尽量在备份伞之外再带一个某种发射设备飞行，并坦言其中有些在印度严格来说并不合法。"
+  "a": "他总是尽量在备份伞之外再带一个某种发射设备飞行，并坦言其中有些在印度严格来说并不合法。",
+  "tr": "他飞行时总是尽量在备份伞之外再带上某种发射设备，并坦言其中有些在印度严格来说并不合法。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "7a8616775e58": {
   "en": "Take-off at about {1} to {2} m",
@@ -5002,7 +5250,8 @@
   "en": "Photographs at Big face",
   "b": "Big face 的照片",
   "date": "2026-11-17",
-  "a": "Big face的照片"
+  "a": "Big face的照片",
+  "tr": "Big face 的照片"
  },
  "7b8de0bcc0fa": {
   "en": "Jul, Aug, Sep",
@@ -5026,7 +5275,9 @@
   "en": "Plug types C, D and M. Bring an adapter.",
   "b": "插头类型为 C、D 和 M。请带转换插头。",
   "date": "2026-11-17",
-  "a": "插头类型为C、D和M型。请带转换插头。"
+  "a": "插头类型为C、D和M型。请带转换插头。",
+  "tr": "插头类型为 C、D 和 M 型。请带转换插头。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "7c92ea879110": {
   "en": "<x1>Price</x1>{1}",
@@ -5056,7 +5307,8 @@
   "en": "Peak season",
   "b": "旺季",
   "date": "2026-11-17",
-  "a": "旺季"
+  "a": "旺季",
+  "tr": "旺季"
  },
  "7d1288ff6d69": {
   "en": "<x1>{1}</x1>km wide",
@@ -5076,7 +5328,11 @@
   "en": "Rule {1}, Before you launch",
   "b": "第 {1} 条，在起飞场起飞之前",
   "date": "2026-11-17",
-  "a": "规则{1}：起飞之前"
+  "a": "规则{1}：起飞之前",
+  "tr": "规则{1}：起飞之前",
+  "waive": {
+   "glossary": "glossary 'launch' (起飞场) is the take-off place; here 'launch' is the verb, 起飞"
+  }
  },
  "7d6fbeae88b6": {
   "en": "About Maasai country",
@@ -5089,7 +5345,8 @@
   "en": "Guiding",
   "b": "带队",
   "date": "2026-11-17",
-  "a": "带队"
+  "a": "带队",
+  "tr": "带队"
  },
  "7defbd15ad35": {
   "en": "The season",
@@ -5186,7 +5443,8 @@
   "en": "A deposit secures your place and the balance is due {1} days before departure; book later than that and the full price is due when you book. If you then cancel, a termination fee applies: the price less what we save and less anything we recover by reselling your place, and we will show you the working. That is why we push trip cancellation insurance so hard. Full detail in the <x1>booking terms</x1>.",
   "b": "订金保住你的名额，余款在出发前 {1} 天支付；比这更晚预订，则预订时就要付全款。如果之后取消，要收取解约费：价格减去我们节省的部分，再减去我们转售你的名额收回的部分，我们会向你列出计算过程。这就是我们如此强烈推荐行程取消保险的原因。详情见<x1>预订条款</x1>。",
   "date": "2026-11-17",
-  "a": "支付定金即可锁定名额，余款在出发前{1}天付清；晚于这个时间预订的，需在预订时支付全款。如果之后取消，需要支付解约费：即价格减去我们节省的费用，再减去我们转卖你的名额所收回的款项，我们会给你看具体的计算。这就是我们大力推荐行程取消险的原因。详情见<x1>预订条款</x1>。"
+  "a": "支付定金即可锁定名额，余款在出发前{1}天付清；晚于这个时间预订的，需在预订时支付全款。如果之后取消，需要支付解约费：即价格减去我们节省的费用，再减去我们转卖你的名额所收回的款项，我们会给你看具体的计算。这就是我们大力推荐行程取消险的原因。详情见<x1>预订条款</x1>。",
+  "tr": "支付定金即可锁定名额，余款在出发前{1}天付清；晚于这个时间预订的，需在预订时支付全款。如果之后取消，需要支付解约费：即价格减去我们节省的费用，再减去我们转卖你的名额所收回的款项，我们会给你看具体的计算。这就是我们大力推荐行程取消险的原因。详情见<x1>预订条款</x1>。"
  },
  "7fa79a289353": {
   "en": "Next leg: Task {1}, Fri {2} <x1>→</x1>",
@@ -5213,7 +5471,12 @@
   "en": "{1} Paragliding Tour: Big Mountain Flying",
   "b": "{1}滑翔伞运动之旅：大山飞行",
   "date": "2026-11-17",
-  "a": "{1}滑翔伞运动之旅：大山飞行"
+  "a": "{1}滑翔伞运动之旅：大山飞行",
+  "tr": "{1}滑翔伞之旅：大山飞行",
+  "tr_note": "'paragliding' attributive: 滑翔伞, as live",
+  "waive": {
+   "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is attributive, where Chinese pilots say 滑翔伞 and 滑翔伞运动 reads stiffly (same waiver as the live pages)"
+  }
  },
  "80242d097f95": {
   "en": "A young volcanic range between Tsavo and Amboseli, with Kilimanjaro on the horizon.",
@@ -5233,19 +5496,23 @@
   "en": "Reset view",
   "b": "重置视角",
   "date": "2026-11-17",
-  "a": "重置视角"
+  "a": "重置视角",
+  "tr": "重置视角"
  },
  "80df020f130a": {
   "en": "The {1} from above {2}: the launch at {3} on its ridge, the snow of the back ranges behind, rendered from open terrain data",
   "b": "从{2}上空看{1}：山脊上的{3}起飞场，身后是后山的积雪，由开放地形数据渲染而成",
   "date": "2026-11-17",
-  "a": "从{2}上空看{1}山脉：山脊上的{3}起飞场，后方是后山的积雪，由公开地形数据渲染而成"
+  "a": "从{2}上空看{1}山脉：山脊上的{3}起飞场，后方是后山的积雪，由公开地形数据渲染而成",
+  "tr": "从{2}上空看{1}山脉：山脊上的{3}起飞场，后方是后山的积雪，由开放地形数据渲染而成",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "814e308f50c9": {
   "en": "Two pilots with paraglider rucksacks climbing a forest trail",
   "b": "两名背着滑翔伞背包的飞行员正攀登森林小径",
   "date": "2026-11-17",
-  "a": "两名背着滑翔伞背包的飞行员沿林间小路攀登"
+  "a": "两名背着滑翔伞背包的飞行员沿林间小路攀登",
+  "tr": "两名背着滑翔伞背包的飞行员沿林间小路攀登"
  },
  "81fc9e32c315": {
   "en": "Pocket knife",
@@ -5311,7 +5578,9 @@
   "en": "{1} front range, above {2}",
   "b": "{1}前山脉，{2}上方",
   "date": "2026-11-17",
-  "a": "{1}前山，位于{2}上方"
+  "a": "{1}前山，位于{2}上方",
+  "tr": "{1}前山山脉，{2}上方",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "82bf4b32c770": {
   "en": "What Makes {1} Unique?",
@@ -5378,7 +5647,12 @@
   "en": "A {1}-day guided paragliding tour from {2} in the Indian Himalaya. Four departures in {3}, in April, May, October and November, {4}, for pilots rated {5} {6}.",
   "b": "从{2}出发、在印度喜马拉雅举行的 {1} 天滑翔伞运动带队之旅。{3}年共四个出发班次，分别在四月、五月、十月和十一月，{4}，适合 {5} {6} 级飞行员。",
   "date": "2026-11-17",
-  "a": "从印度喜马拉雅山区的{2}出发、为期{1}天、有向导带队的滑翔伞运动之旅。{3}年共四期，分别在四月、五月、十月和十一月出发，{4}，面向持有{5} {6}级资质的飞行员。"
+  "a": "从印度喜马拉雅山区的{2}出发、为期{1}天、有向导带队的滑翔伞运动之旅。{3}年共四期，分别在四月、五月、十月和十一月出发，{4}，面向持有{5} {6}级资质的飞行员。",
+  "tr": "从印度喜马拉雅山区的{2}出发、为期{1}天的滑翔伞带队之旅。{3}年共四个团期，分别在四月、五月、十月和十一月，{4}，面向持有{5} {6}级资质的飞行员。",
+  "tr_note": "'departure'/'tour' = 团期/团, as live",
+  "waive": {
+   "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is attributive, where Chinese pilots say 滑翔伞 and 滑翔伞运动 reads stiffly (same waiver as the live pages)"
+  }
  },
  "848c070ccdec": {
   "en": "See {1}, {2} photos and the highlights film",
@@ -5447,13 +5721,16 @@
   "en": "then turn for {1} with the light going.",
   "b": "然后趁天光渐暗，转向{1}返航。",
   "date": "2026-11-17",
-  "a": "然后趁着天光渐暗转向{1}。"
+  "a": "然后趁着天光渐暗转向{1}。",
+  "tr": "然后趁天光渐暗，掉头飞回{1}。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "854f541115b8": {
   "en": "Tell someone your plan",
   "b": "把你的计划告诉别人",
   "date": "2026-11-17",
-  "a": "把你的计划告诉别人"
+  "a": "把你的计划告诉别人",
+  "tr": "把你的计划告诉别人"
  },
  "8557d608fedc": {
   "en": "Ivelin Kalushkov",
@@ -5516,13 +5793,16 @@
   "en": "Front range cloudbase",
   "b": "前山脉云底",
   "date": "2026-11-17",
-  "a": "前山云底高度"
+  "a": "前山云底高度",
+  "tr": "前山山脉云底",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "8722c7c833e1": {
   "en": "Rule {1}, In the thermal",
   "b": "第 {1} 条，在热气流里",
   "date": "2026-11-17",
-  "a": "规则{1}：在热气流里"
+  "a": "规则{1}：在热气流里",
+  "tr": "规则{1}：在热气流里"
  },
  "873c7db571ef": {
   "en": "Fly",
@@ -5553,13 +5833,15 @@
   "en": "Gurpreet Dhindsa",
   "b": "Gurpreet Dhindsa",
   "date": "2026-11-17",
-  "a": "Gurpreet Dhindsa"
+  "a": "Gurpreet Dhindsa",
+  "tr": "Gurpreet Dhindsa"
  },
  "87adc7be1e31": {
   "en": "Dozens of paragliders thermalling together under grey cloud",
   "b": "几十顶滑翔伞在灰色云层下一起盘旋上升",
   "date": "2026-11-17",
-  "a": "灰色云层下，几十顶滑翔伞一起盘热气流"
+  "a": "灰色云层下，几十顶滑翔伞一起盘热气流",
+  "tr": "灰色云层下，几十顶滑翔伞一起盘热气流"
  },
  "87fe14c031dc": {
   "en": "Flight Safety, First and Always",
@@ -5574,7 +5856,9 @@
   "en": "{1}-{2}<x1>KM</x1>",
   "b": "{1}-{2}<x1>公里</x1>",
   "date": "2026-11-17",
-  "a": "{1}–{2}<x1>公里</x1>"
+  "a": "{1}–{2}<x1>公里</x1>",
+  "tr": "{1}-{2}<x1>km</x1>",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "88146531f301": {
   "en": "Urs Haari",
@@ -5605,7 +5889,9 @@
   "en": "The cricket ground at Dharamshala",
   "b": "Dharamshala 的板球场",
   "date": "2026-11-17",
-  "a": "Dharamshala的板球场"
+  "a": "Dharamshala的板球场",
+  "tr": "达兰萨拉的板球场",
+  "tr_note": "standard Chinese names for well-known places"
  },
  "892e4b4de5b1": {
   "en": "The eastern wall of the Rift above Mai Mahiu, with the old escarpment road below. At its foot stands the small chapel built by Italian prisoners of war in {1} while they cut that road.",
@@ -5653,7 +5939,9 @@
   "en": "The {1} landing is big, grassy and busy, which is exactly why people get hurt on it. Land out anywhere else and the main hazards become terraces and power lines, which show up late: keep looking until your feet are on the ground.",
   "b": "{1}的降落场又大又平，满是草，也很繁忙，这正是人们在那里受伤的原因。如果在其他地方降落，主要的危险就变成梯田和电线，它们出现得晚：一直看到双脚落地为止。",
   "date": "2026-11-17",
-  "a": "{1}的降落场很大、长满草、而且很繁忙，这正是人们会在那里受伤的原因。在其他任何地方外场降落，主要危险就变成了梯田和电线，它们往往很晚才看得见：一直观察，直到双脚落地。"
+  "a": "{1}的降落场很大、长满草、而且很繁忙，这正是人们会在那里受伤的原因。在其他任何地方外场降落，主要危险就变成了梯田和电线，它们往往很晚才看得见：一直观察，直到双脚落地。",
+  "tr": "{1}的降落场很大、长满草，而且很繁忙，这正是人们会在那里受伤的原因。在其他任何地方外场降落，主要危险就变成了梯田和电线，它们往往很晚才看得见：一直观察，直到双脚落地。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "8aee973f0fe6": {
   "en": "Next photograph",
@@ -5700,7 +5988,8 @@
   "en": "A single wing high above a snow-streaked peak",
   "b": "一顶孤零零的伞翼高高飞在积雪斑驳的山峰上方",
   "date": "2026-11-17",
-  "a": "一顶伞翼高悬在一座带着积雪的山峰之上"
+  "a": "一顶伞翼高悬在一座带着积雪的山峰之上",
+  "tr": "一顶伞翼高悬在一座带着积雪的山峰之上"
  },
  "8c007e7c9250": {
   "en": "Sunscreen and sunglasses",
@@ -5736,7 +6025,9 @@
   "en": "The front range is forgiving; the traffic is not. Bring gear you can relax on.",
   "b": "前山脉很宽容；空中交通不宽容。带上你能放松驾驭的装备。",
   "date": "2026-11-17",
-  "a": "前山很包容；空中交通可不会。带上能让你放松飞的装备。"
+  "a": "前山很包容；空中交通可不会。带上能让你放松飞的装备。",
+  "tr": "前山山脉很宽容；空中交通可不。带上能让你放松飞的装备。",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "8c208e902d7b": {
   "en": "Pepper spray<x1>Against dogs or wild animals</x1>",
@@ -5767,7 +6058,9 @@
   "en": "The ground is open {1} m terrain data (AWS Terrain Tiles, Mapzen Terrarium, from SRTM and other open sources) drawn live as relief, flown by the scroll or moved by hand; the pins are the {2} waypoints pilots fly with (Indian {3} League) and the towns are placed from GeoNames (CC BY {4}). A photograph marked near is placed from its caption, not from a fix. The flights drawn are real tracklogs scored by the XContest rules: the distance is the scored route, the dashed line is that route, and the average speed is the scored distance over the time in the air. The landmark photographs are from Wikimedia Commons, each named with its author and licence where it appears.",
   "b": "地面是开放的 {1} 米地形数据（AWS Terrain Tiles、Mapzen Terrarium，来自 SRTM 及其他开放来源），实时绘制成地形起伏，可由滚动页面带着飞行，也可手动移动；图钉是飞行员使用的 {2} 航点（印度 {3} 联赛），城镇位置来自 GeoNames（CC BY {4}）。标为“靠近”的照片，位置依据图注推定，并非来自定位。所绘的飞行是真实的轨迹记录，按 XContest 规则计分：距离是计分航线的距离，虚线就是这条航线，平均速度是计分距离除以空中时间。地标照片来自 Wikimedia Commons，在出现的地方都注明了作者和许可协议。",
   "date": "2026-11-17",
-  "a": "地面是{1}米精度的公开地形数据（AWS Terrain Tiles、Mapzen Terrarium，来自SRTM及其他公开来源），实时绘制成地形起伏，可随滚动飞行，也可以手动移动；图钉是飞行员在{2}飞行时使用的航点（Indian {3} League），城镇位置取自GeoNames（CC BY {4}）。标注“附近”的照片是根据图片说明定位的，而不是根据定位坐标。图中绘制的飞行都是按XContest规则计分的真实航迹：距离是计分航线，虚线就是这条航线，平均速度是计分距离除以留空时间。地标照片来自Wikimedia Commons，每张出现时都注明了作者和许可协议。"
+  "a": "地面是{1}米精度的公开地形数据（AWS Terrain Tiles、Mapzen Terrarium，来自SRTM及其他公开来源），实时绘制成地形起伏，可随滚动飞行，也可以手动移动；图钉是飞行员在{2}飞行时使用的航点（Indian {3} League），城镇位置取自GeoNames（CC BY {4}）。标注“附近”的照片是根据图片说明定位的，而不是根据定位坐标。图中绘制的飞行都是按XContest规则计分的真实航迹：距离是计分航线，虚线就是这条航线，平均速度是计分距离除以留空时间。地标照片来自Wikimedia Commons，每张出现时都注明了作者和许可协议。",
+  "tr": "地面是{1} m 精度的开放地形数据（AWS Terrain Tiles、Mapzen Terrarium，来自 SRTM 及其他开放来源），实时绘制成地形起伏，可随滚动飞行，也可手动移动；图钉是飞行员在{2}飞行时使用的航点（Indian {3} League），城镇位置取自 GeoNames（CC BY {4}）。标注“附近”的照片是根据图片说明定位的，而不是根据定位坐标。图中绘制的飞行都是按 XContest 规则计分的真实航迹：距离是计分航线的距离，虚线就是这条航线，平均速度是计分距离除以留空时间。地标照片来自 Wikimedia Commons，每张出现时都注明了作者和许可协议。",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "8d63dacc2634": {
   "en": "Enquire | {1}",
@@ -5823,7 +6116,8 @@
   "en": "Hindi and English",
   "b": "印地语和英语",
   "date": "2026-11-17",
-  "a": "印地语和英语"
+  "a": "印地语和英语",
+  "tr": "印地语和英语"
  },
  "8eb7fbc28c79": {
   "en": "A yellow paraglider on a long glide over arid rock outcrops in low golden light",
@@ -5892,7 +6186,8 @@
   "en": "Founder, {1}",
   "b": "创始人，{1}",
   "date": "2026-11-17",
-  "a": "{1}创始人"
+  "a": "{1}创始人",
+  "tr": "{1}创始人"
  },
  "902c91d94e0f": {
   "en": "Legal",
@@ -5907,31 +6202,38 @@
   "en": "{1}'s own {2} footage, three seconds along the {3}. The scroll moves it forward and back. Nothing plays on its own.",
   "b": "{1}自己拍摄的{2}画面，沿着{3}推进三秒。滚动页面即可前进和后退。没有任何内容会自动播放。",
   "date": "2026-11-17",
-  "a": "{1}本人在{2}拍摄的画面，沿{3}山脉飞行的三秒钟。滚动页面可以让它前进或后退，它不会自己播放。"
+  "a": "{1}本人在{2}拍摄的画面，沿{3}山脉飞行的三秒钟。滚动页面可以让它前进或后退，它不会自己播放。",
+  "tr": "{1}本人在{2}拍摄的画面，沿{3}山脉飞行的三秒钟。滚动页面让它前进或后退，不会自动播放任何内容。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "905e6faa15df": {
   "en": "India Travel Essentials",
   "b": "印度出行要点",
   "date": "2026-11-17",
-  "a": "印度旅行须知"
+  "a": "印度旅行须知",
+  "tr": "印度旅行须知"
  },
  "909cf57e8a8c": {
   "en": "{1} has a reputation as the easy Himalaya, and in the air it mostly earns it. What catches pilots out is everything around the flying: a nil-wind launch with a queue behind you, a house thermal full of wings, and a long approach into a busy landing field.",
   "b": "{1}以“容易的喜马拉雅”著称，在空中它大体上名副其实。让飞行员栽跟头的是飞行之外的一切：身后排着队、在起飞场上无风起飞，满是伞翼的常用热气流，以及进入繁忙降落场的长长进场。",
   "date": "2026-11-17",
-  "a": "{1}以“容易的喜马拉雅”著称，在空中，它大体上名副其实。让飞行员栽跟头的，是飞行之外的一切：在无风的起飞场起飞、身后还排着队、挤满伞翼的主热气流，以及进入繁忙降落场的长距离进场。"
+  "a": "{1}以“容易的喜马拉雅”著称，在空中，它大体上名副其实。让飞行员栽跟头的，是飞行之外的一切：在无风的起飞场起飞、身后还排着队、挤满伞翼的主热气流，以及进入繁忙降落场的长距离进场。",
+  "tr": "{1}以“容易的喜马拉雅”著称，在空中，它大体上名副其实。让飞行员栽跟头的，是飞行之外的一切：在无风的起飞场起飞、身后还排着队，挤满伞翼的主热气流，以及进入繁忙降落场的长距离进场。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "90eeb1008380": {
   "en": "Following",
   "b": "跟飞",
   "date": "2026-11-17",
-  "a": "跟飞"
+  "a": "跟飞",
+  "tr": "跟飞"
  },
  "910927eaf554": {
   "en": "The traffic",
   "b": "空中交通",
   "date": "2026-11-17",
-  "a": "空中交通"
+  "a": "空中交通",
+  "tr": "空中交通"
  },
  "919a69cdc726": {
   "en": "Know Before You Go",
@@ -5951,7 +6253,9 @@
   "en": "<x1>The back ranges</x1>Snow-covered back ranges seen from the air<x2>near Mills peak</x2>",
   "b": "<x1>后山山脉</x1>空中俯瞰积雪覆盖的后山山脉<x2>靠近 Mills peak</x2>",
   "date": "2026-11-17",
-  "a": "<x1>后山</x1>从空中看白雪覆盖的后山<x2>Mills peak附近</x2>"
+  "a": "<x1>后山</x1>从空中看白雪覆盖的后山<x2>Mills peak附近</x2>",
+  "tr": "<x1>后山山脉</x1>从空中看白雪覆盖的后山山脉<x2>Mills peak 附近</x2>",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "92711617537f": {
   "en": "Copy this link",
@@ -5966,13 +6270,16 @@
   "en": "Guides",
   "b": "向导",
   "date": "2026-11-17",
-  "a": "向导"
+  "a": "向导",
+  "tr": "向导"
  },
  "92ae51cdbaca": {
   "en": "West, then east<x1>{1} km</x1>",
   "b": "先向西，再向东<x1>{1} 公里</x1>",
   "date": "2026-11-17",
-  "a": "先向西，再向东<x1>{1}公里</x1>"
+  "a": "先向西，再向东<x1>{1}公里</x1>",
+  "tr": "先向西，再向东<x1>{1} km</x1>",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "92ed2c1f2504": {
   "en": "Keep scrolling",
@@ -6002,13 +6309,16 @@
   "en": "Cloudbase",
   "b": "云底",
   "date": "2026-11-17",
-  "a": "云底"
+  "a": "云底",
+  "tr": "云底"
  },
  "934e1f595485": {
   "en": "Navigating India: Eddie Colfox",
   "b": "领航印度：Eddie Colfox",
   "date": "2026-11-17",
-  "a": "飞在印度：Eddie Colfox"
+  "a": "飞在印度：Eddie Colfox",
+  "tr": "《探路印度》：Eddie Colfox",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "937b623db8c1": {
   "en": "The old rule is that it is better to say sorry than to ask permission, and paragliding is not explicitly illegal where the law does not describe it at all. That logic runs out in tense regions, where being arrested is a real outcome and official permission saves a great deal of time.",
@@ -6030,19 +6340,25 @@
   "en": "Join on the outside, take the established direction, and leave room. The mid-airs Jigish Gohil describes came from pilots turning the wrong way, bunching up, or not watching where they were going.",
   "b": "从外侧加入，沿用已有的盘旋方向，并留出空间。Jigish Gohil 所描述的空中相撞，都源于飞行员转错方向、挤成一团，或没有留意自己飞向哪里。",
   "date": "2026-11-17",
-  "a": "从外侧加入，按已有的方向盘旋，并留出空间。Jigish Gohil讲到的空中相撞，都是因为飞行员转错方向、挤成一团，或者不看自己往哪里飞。"
+  "a": "从外侧加入，按已有的方向盘旋，并留出空间。Jigish Gohil讲到的空中相撞，都是因为飞行员转错方向、挤成一团，或者不看自己往哪里飞。",
+  "tr": "从外侧加入，按已有的方向盘旋，并留出空间。Jigish Gohil 讲到的空中相撞，都是因为飞行员转错方向、挤成一团，或者不看自己往哪里飞。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "942b23322e83": {
   "en": "{1} to {2} km on the front range,",
   "b": "在前山脉上飞 {1} 至 {2} 公里，",
   "date": "2026-11-17",
-  "a": "前山上空{1}至{2}公里，"
+  "a": "前山上空{1}至{2}公里，",
+  "tr": "前山山脉上{1}至{2} km，",
+  "tr_note": "units kept as m/km, as on the live zh pages; 'front range' = 前山山脉, as live"
  },
  "9445558047ca": {
   "en": "Wings in the air off the {1} launch, with the valley below",
   "b": "伞翼从{1}起飞场升空，山谷在下方",
   "date": "2026-11-17",
-  "a": "{1}起飞场上空的伞翼，山谷在下方"
+  "a": "{1}起飞场上空的伞翼，山谷在下方",
+  "tr": "刚离开{1}起飞场的空中伞翼，下方是山谷",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "94735078de89": {
   "en": "{1}, India",
@@ -6057,7 +6373,9 @@
   "en": "Big Mountain Flying costs {1} per pilot for the ten days, the same on either departure, guided by {2} and Gurpreet Dhindsa at one guide to every three pilots. The price covers guiding, daily transport up to {3} and back, retrieves and takeoff fees. International flights, your visa and insurance are yours to arrange. All four departures are guaranteed to run.",
   "b": "大山飞行每位飞行员十天费用为{1}，两个出发班次相同，由{2}和 Gurpreet Dhindsa 带队，每三名飞行员配一名向导。费用包含带队、每日往返{3}的交通、回收和起飞场费用。国际机票、签证和保险由你自己安排。四个出发班次都保证成行。",
   "date": "2026-11-17",
-  "a": "大山飞行十天的费用为每位飞行员{1}，每一期价格相同，由{2}和Gurpreet Dhindsa带队，每名向导带三名飞行员。费用包括向导服务、每天往返{3}的交通、回收和起飞费。国际航班、签证和保险需你自行安排。四期全部保证成行。"
+  "a": "大山飞行十天的费用为每位飞行员{1}，每一期价格相同，由{2}和Gurpreet Dhindsa带队，每名向导带三名飞行员。费用包括向导服务、每天往返{3}的交通、回收和起飞费。国际航班、签证和保险需你自行安排。四期全部保证成行。",
+  "tr": "大山飞行十天的费用为每位飞行员{1}，每个团期价格相同，由{2}和 Gurpreet Dhindsa 带队，每名向导带三名飞行员。费用包括向导服务、每天往返{3}的交通、回收和起飞费。国际航班、签证和保险需你自行安排。四个团期全部保证成行。",
+  "tr_note": "'departure'/'tour' = 团期/团, as live"
  },
  "9522e6ae627c": {
   "en": "Spare lines",
@@ -6107,7 +6425,8 @@
   "en": "<x1>Tibetan monastery</x1>A Tibetan monastery with prayer flags against a blue sky",
   "b": "<x1>藏传佛教寺院</x1>一座藏传佛教寺院，经幡飘在蓝天下",
   "date": "2026-11-17",
-  "a": "<x1>藏传佛教寺院</x1>蓝天下挂着经幡的藏传佛教寺院"
+  "a": "<x1>藏传佛教寺院</x1>蓝天下挂着经幡的藏传佛教寺院",
+  "tr": "<x1>藏传佛教寺院</x1>蓝天下挂着经幡的藏传佛教寺院"
  },
  "95f48d8b7a34": {
   "en": "Before you book",
@@ -6170,7 +6489,9 @@
   "en": "Check before you pack. Some satellite communicators are not technically legal in India, and the advice online has not all caught up. Eddie Colfox still counts some form of transmitter as essential safety equipment and says so openly, but the rules are yours to follow. Ask us about your device when you book, so you find out before you travel rather than at customs.",
   "b": "打包前先确认。有些卫星通信设备在印度严格来说并不合法，网上的说法也没有全部跟上。Eddie Colfox 仍然认为某种发射设备是必不可少的安全装备，并且公开这样说，但规则必须由你自己遵守。预订时请问我们你的设备，这样你在出发前就能知道，而不是到了海关才发现。",
   "date": "2026-11-17",
-  "a": "打包前先查清楚。有些卫星通信设备在印度严格来说并不合法，而网上的建议也还没完全更新。Eddie Colfox仍然把某种发射设备视为必备的安全装备，并且公开这样说，但遵守规定是你自己的事。预订时问问我们你的设备的情况，这样你在出发前就能弄清楚，而不是到了海关才知道。"
+  "a": "打包前先查清楚。有些卫星通信设备在印度严格来说并不合法，而网上的建议也还没完全更新。Eddie Colfox仍然把某种发射设备视为必备的安全装备，并且公开这样说，但遵守规定是你自己的事。预订时问问我们你的设备的情况，这样你在出发前就能弄清楚，而不是到了海关才知道。",
+  "tr": "打包前先查清楚。有些卫星通信设备在印度严格来说并不合法，而网上的建议也还没完全更新。Eddie Colfox 仍然把某种发射设备视为必备的安全装备，并且公开这样说，但遵守规定是你自己的事。预订时问问我们你的设备的情况，这样你在出发前就能弄清楚，而不是到了海关才知道。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "9896e4c3ba40": {
   "en": "Land away from crowds",
@@ -6183,7 +6504,8 @@
   "en": "Most nationalities can use the e-visa, applied for at least {1} days before you arrive. Everyone also files a free online e-Arrival Card in the {2} hours before flying in.",
   "b": "大多数国籍的人可以使用电子签证，至少在抵达前 {1} 天申请。每个人还需要在飞入前 {2} 小时内在线填写免费的电子入境卡。",
   "date": "2026-11-17",
-  "a": "大多数国籍可以使用电子签证，需在抵达前至少{1}天申请。所有人还需在飞抵前{2}小时内在线免费填写一份电子入境卡（e-Arrival Card）。"
+  "a": "大多数国籍可以使用电子签证，需在抵达前至少{1}天申请。所有人还需在飞抵前{2}小时内在线免费填写一份电子入境卡（e-Arrival Card）。",
+  "tr": "大多数国籍可以使用电子签证，需在抵达前至少{1}天申请。所有人还需在飞抵前{2}小时内在线免费填写一份电子入境卡（e-Arrival Card）。"
  },
  "98d8bf8ce4f8": {
   "en": "The line crosses the road at Nanyuki, where a sign marks it, and again on the roads north of Nakuru. The tour drives across it on the way south from {1}.",
@@ -6203,7 +6525,8 @@
   "en": "Buff",
   "b": "Buff 头巾",
   "date": "2026-11-17",
-  "a": "魔术头巾"
+  "a": "魔术头巾",
+  "tr": "魔术头巾"
  },
  "997f59bc99b2": {
   "en": "Dec",
@@ -6248,13 +6571,16 @@
   "en": "About Adi Himani Chamunda",
   "b": "关于 Adi Himani Chamunda",
   "date": "2026-11-17",
-  "a": "关于Adi Himani Chamunda"
+  "a": "关于Adi Himani Chamunda",
+  "tr": "关于 Adi Himani Chamunda"
  },
  "9abfcfd42602": {
   "en": "You can choose a landing early and fly a full approach at the end of a long flight.",
   "b": "你能及早选好降落场，并在长途飞行的最后完整地飞一遍进场。",
   "date": "2026-11-17",
-  "a": "在长距离飞行的最后，你能及早选好降落场并飞完整的进场航线。"
+  "a": "在长距离飞行的最后，你能及早选好降落场并飞完整的进场航线。",
+  "tr": "在长距离飞行的最后，你能及早选好降落场，并飞完整的进场航线。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "9ad8943d7c46": {
   "en": "Tell Us About <x1>Your Flying</x1>",
@@ -6269,7 +6595,8 @@
   "en": "<x1>The valley floor</x1>Terraced fields, a river and villages seen from the air",
   "b": "<x1>谷底</x1>梯田、河流和村庄，空中俯瞰",
   "date": "2026-11-17",
-  "a": "<x1>谷底</x1>从空中看梯田、河流和村庄"
+  "a": "<x1>谷底</x1>从空中看梯田、河流和村庄",
+  "tr": "<x1>谷底</x1>从空中看梯田、河流和村庄"
  },
  "9b088a46913a": {
   "en": "A paraglider over a terraced valley below steep cliffs",
@@ -6291,13 +6618,15 @@
   "en": "Palampur, photographed by UnpetitproleX",
   "b": "Palampur，摄影：UnpetitproleX",
   "date": "2026-11-17",
-  "a": "Palampur，摄影：UnpetitproleX"
+  "a": "Palampur，摄影：UnpetitproleX",
+  "tr": "Palampur，摄影：UnpetitproleX"
  },
  "9b8250f1ae3d": {
   "en": "drag the ground · pinch to come closer · twist to turn · two fingers up or down to tilt",
   "b": "拖动地面 · 双指捏合靠近 · 扭转旋转 · 双指上下滑动倾斜",
   "date": "2026-11-17",
-  "a": "拖动地面 · 双指捏合以拉近 · 双指扭转以旋转 · 双指上下滑动以倾斜"
+  "a": "拖动地面 · 双指捏合以拉近 · 双指扭转以旋转 · 双指上下滑动以倾斜",
+  "tr": "拖动地面 · 双指捏合以拉近 · 双指扭转以旋转 · 双指上下滑动以倾斜"
  },
  "9b90ea85e0a7": {
   "en": "Find Yourself In The Photos",
@@ -6333,7 +6662,9 @@
   "en": "drag the ground · scroll to come closer · right button to turn and tilt · a ring opens the photographs · a dotted name tells its story",
   "b": "拖动地面 · 滚动靠近 · 右键旋转和倾斜 · 点开圆环查看照片 · 点虚线名称了解它的故事",
   "date": "2026-11-17",
-  "a": "拖动地面 · 滚动以拉近 · 按住右键旋转和倾斜 · 点击圆环打开照片 · 点击虚线下划线的名称查看它的故事"
+  "a": "拖动地面 · 滚动以拉近 · 按住右键旋转和倾斜 · 点击圆环打开照片 · 点击虚线下划线的名称查看它的故事",
+  "tr": "拖动地面 · 滚动以拉近 · 按住右键旋转和倾斜 · 点击圆环打开照片 · 点击虚线名称查看它的故事",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "9c30a3485a58": {
   "en": "Gallery",
@@ -6375,13 +6706,16 @@
   "en": "Arrive {1} · eight flying days, {2} · leave {3}",
   "b": "{1}抵达 · 八个飞行日，{2} · {3}离开",
   "date": "2026-11-17",
-  "a": "{1}抵达 · 八个飞行日，{2} · {3}离开"
+  "a": "{1}抵达 · 八个飞行日，{2} · {3}离开",
+  "tr": "{1}抵达 · 八个飞行日，{2} · {3}离开"
  },
  "9e19ce72e6e9": {
   "en": "The standard day, and the line Eddie Colfox would send a newer pilot on: west along the front range to Dharamshala and home, with big fields to land in and easy retrieves the whole way. In his telling, pilots were already flying it out and back in {1}. <x1>Hear him on it</x1>.",
   "b": "标准飞行日，也是 Eddie Colfox 会带新手飞行员飞的路线：沿前山脉向西飞到 Dharamshala 再回家，沿途有大片适合降落的田野，回收也容易。据他所说，飞行员早在{1}年就已经在这条线上来回飞了。<x1>听他讲这一段</x1>。",
   "date": "2026-11-17",
-  "a": "标准的一天，也是Eddie Colfox会推荐给较新飞行员的航线：沿前山向西飞到Dharamshala再飞回来，一路都有大片可降落的田地，回收也很方便。照他的说法，早在{1}年，飞行员们就已经在这条线上往返飞行了。<x1>听他讲这条线</x1>。"
+  "a": "标准的一天，也是Eddie Colfox会推荐给较新飞行员的航线：沿前山向西飞到Dharamshala再飞回来，一路都有大片可降落的田地，回收也很方便。照他的说法，早在{1}年，飞行员们就已经在这条线上往返飞行了。<x1>听他讲这条线</x1>。",
+  "tr": "标准的一天，也是 Eddie Colfox 会推荐给经验较少的飞行员的航线：沿前山山脉向西飞到达兰萨拉再飞回家，一路都有大片可降落的田地，回收也很方便。照他的说法，早在{1}年，飞行员们就已经在这条线上往返飞行了。<x1>听他讲这条线</x1>。",
+  "tr_note": "'front range' = 前山山脉, as live; standard Chinese names for well-known places"
  },
  "9e360d21c3a2": {
   "en": "<x1>From</x1> {1}",
@@ -6435,7 +6769,9 @@
   "en": "About The cricket ground at Dharamshala",
   "b": "关于 Dharamshala 的板球场",
   "date": "2026-11-17",
-  "a": "关于Dharamshala的板球场"
+  "a": "关于Dharamshala的板球场",
+  "tr": "关于达兰萨拉的板球场",
+  "tr_note": "standard Chinese names for well-known places"
  },
  "9fca955512fa": {
   "en": "The motorbike crashed the lady. And then who is guilty? The paragliding pilot is guilty.",
@@ -6452,7 +6788,9 @@
   "en": "front range cloudbase",
   "b": "前山脉云底",
   "date": "2026-11-17",
-  "a": "前山云底高度"
+  "a": "前山云底高度",
+  "tr": "前山山脉云底",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "a0390598c54e": {
   "en": "Read the English page",
@@ -6502,7 +6840,9 @@
   "en": "The pass drops into the Uhl valley at Barot, where a diversion dam was built in {1} for the Shanan hydroelectric scheme opened the following year, one of the first in these hills. The Uhl is known for its trout.",
   "b": "山口向下通到 Uhl 山谷中的 Barot，那里于{1}年为 Shanan 水电站修建了一座引水坝，水电站次年投入运行，是这片山区最早的水电站之一。Uhl 河以鳟鱼闻名。",
   "date": "2026-11-17",
-  "a": "山口向下进入Uhl河谷的Barot，{1}年这里为Shanan水电工程修建了一座引水坝，该工程于次年投入使用，是这片山区最早的水电工程之一。Uhl河以鳟鱼闻名。"
+  "a": "山口向下进入Uhl河谷的Barot，{1}年这里为Shanan水电工程修建了一座引水坝，该工程于次年投入使用，是这片山区最早的水电工程之一。Uhl河以鳟鱼闻名。",
+  "tr": "山口向下进入 Uhl 河谷的 Barot，{1}年这里为 Shanan 水电工程修建了一座引水坝，该工程于次年投入使用，是这片山区最早的水电工程之一。Uhl 河以鳟鱼闻名。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "a19bbc5b94bd": {
   "en": "Dates set",
@@ -6532,7 +6872,8 @@
   "en": "Indian Rupee",
   "b": "印度卢比",
   "date": "2026-11-17",
-  "a": "印度卢比"
+  "a": "印度卢比",
+  "tr": "印度卢比"
  },
  "a22032bce602": {
   "en": "Helmet<x1>Essential</x1>",
@@ -6545,7 +6886,12 @@
   "en": "{1}<x1>Paragliding Tour, {2} Days In The Indian Himalaya</x1>",
   "b": "{1}<x1>滑翔伞运动之旅，印度喜马拉雅 {2} 天</x1>",
   "date": "2026-11-17",
-  "a": "{1}<x1>滑翔伞运动之旅，印度喜马拉雅{2}天</x1>"
+  "a": "{1}<x1>滑翔伞运动之旅，印度喜马拉雅{2}天</x1>",
+  "tr": "{1}<x1>滑翔伞之旅，印度喜马拉雅{2}天</x1>",
+  "tr_note": "'paragliding' attributive: 滑翔伞, as live",
+  "waive": {
+   "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is attributive, where Chinese pilots say 滑翔伞 and 滑翔伞运动 reads stiffly (same waiver as the live pages)"
+  }
  },
  "a26a08d221ed": {
   "en": "{1} days · from {2}",
@@ -6558,7 +6904,8 @@
   "en": "The landing field",
   "b": "降落场",
   "date": "2026-11-17",
-  "a": "降落场"
+  "a": "降落场",
+  "tr": "降落场"
  },
  "a30dfffe7898": {
   "en": "Vistasp Kharas walks through {1} ahead of the pre World Cup held there, covering what the site asks of a pilot and what to expect from competition flying in India.",
@@ -6589,7 +6936,9 @@
   "en": "Photographs: Timothy Gonsalves (CC BY-SA {1}), Timothy Gonsalves (CC BY-SA {2}), via Wikimedia Commons",
   "b": "照片：Timothy Gonsalves（CC BY-SA {1}），Timothy Gonsalves（CC BY-SA {2}），来自 Wikimedia Commons",
   "date": "2026-11-17",
-  "a": "照片：Timothy Gonsalves（CC BY-SA {1}）、Timothy Gonsalves（CC BY-SA {2}），来自Wikimedia Commons"
+  "a": "照片：Timothy Gonsalves（CC BY-SA {1}）、Timothy Gonsalves（CC BY-SA {2}），来自Wikimedia Commons",
+  "tr": "照片：Timothy Gonsalves（CC BY-SA {1}）、Timothy Gonsalves（CC BY-SA {2}），来自 Wikimedia Commons",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "a370b22ff411": {
   "en": "{1}°T · {2} km from Mount Longonot",
@@ -6625,7 +6974,9 @@
   "en": "{1} launches at about {2}m, and cloudbase in season is over {3}m, where it is freezing.",
   "b": "{1}的起飞场海拔约{2}米，飞行季的云底在{3}米以上，那里是冰冷的。",
   "date": "2026-11-17",
-  "a": "{1}的起飞场海拔约{2}米，飞行季的云底超过{3}米，那里冰冷。"
+  "a": "{1}的起飞场海拔约{2}米，飞行季的云底超过{3}米，那里冰冷。",
+  "tr": "{1}的起飞场海拔约{2} m，飞行季的云底超过{3} m，那里冰冷。",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "a3b9261a50cf": {
   "en": "The whole overview: thermals, season, the team, retrieves",
@@ -6638,7 +6989,9 @@
   "en": "{1} is not the place to find out what your new high end wing does in the afternoon. The flying is long rather than difficult, and the pilots who enjoy it are the ones not busy managing their glider.",
   "b": "{1}不是用来摸清你的新款高端伞翼下午会有什么表现的地方。这里的飞行是长而不是难，享受它的飞行员，是那些没忙着摆弄自己滑翔伞的人。",
   "date": "2026-11-17",
-  "a": "{1}不是你去摸索自己新买的高性能伞翼在下午表现如何的地方。这里的飞行在于长，而不在于难，能享受其中的，是那些不必忙着操控自己伞翼的飞行员。"
+  "a": "{1}不是你去摸索自己新买的高性能伞翼在下午表现如何的地方。这里的飞行在于长，而不在于难，能享受其中的，是那些不必忙着操控自己伞翼的飞行员。",
+  "tr": "{1}不是你去摸索自己新买的高端伞翼在下午表现如何的地方。这里的飞行在于长，而不在于难；能享受其中的，是那些不必忙着操控自己滑翔伞的飞行员。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "a41e8703c0fe": {
   "en": "What insurance do I need?",
@@ -6651,7 +7004,9 @@
   "en": "{1} sits at about {2}m and cloudbase goes well over {3}m. Bring gear you trust.",
   "b": "{1}海拔约 {2} 米，云底远超 {3} 米。带上你信得过的装备。",
   "date": "2026-11-17",
-  "a": "{1}海拔约{2}米，云底远超{3}米。带上你信得过的装备。"
+  "a": "{1}海拔约{2}米，云底远超{3}米。带上你信得过的装备。",
+  "tr": "{1}海拔约{2} m，云底远超{3} m。带上你信得过的装备。",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "a445a0f43bc8": {
   "en": "Anything we should know about the event, and anything you would like to ask.",
@@ -6718,7 +7073,8 @@
   "en": "Photographs at Palampur",
   "b": "Palampur 的照片",
   "date": "2026-11-17",
-  "a": "Palampur的照片"
+  "a": "Palampur的照片",
+  "tr": "Palampur 的照片"
  },
  "a5051485b537": {
   "en": "Next leg: Task {1}, Thu {2} <x1>→</x1>",
@@ -6789,7 +7145,8 @@
   "en": "{1} In Pictures",
   "b": "{1}图集",
   "date": "2026-11-17",
-  "a": "{1}图集"
+  "a": "{1}图集",
+  "tr": "{1}图集"
  },
  "a60504a2a5db": {
   "en": "Himalaya",
@@ -6811,7 +7168,8 @@
   "en": "The Front Ridge, Frame By Frame",
   "b": "前山脊，逐帧呈现",
   "date": "2026-11-17",
-  "a": "前山山脊，逐帧呈现"
+  "a": "前山山脊，逐帧呈现",
+  "tr": "前山山脊，逐帧呈现"
  },
  "a6708a3a920a": {
   "en": "On Air: The {1} Podcast",
@@ -6826,13 +7184,16 @@
   "en": "In the thermal",
   "b": "在热气流里",
   "date": "2026-11-17",
-  "a": "在热气流里"
+  "a": "在热气流里",
+  "tr": "在热气流里"
  },
  "a6cf2346daf2": {
   "en": "A pilot flying along the forested front range, snow peaks behind",
   "b": "一名飞行员沿着树木葱郁的前山脉飞行，身后是雪峰",
   "date": "2026-11-17",
-  "a": "一名飞行员沿着森林覆盖的前山飞行，身后是雪峰"
+  "a": "一名飞行员沿着森林覆盖的前山飞行，身后是雪峰",
+  "tr": "一名飞行员沿着森林覆盖的前山山脉飞行，身后是雪峰",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "a6dae249a8db": {
   "en": "{1}°N · {2}°E",
@@ -6845,7 +7206,9 @@
   "en": "<x1>Hold a place sends an enquiry for that departure.</x1> All four departures are guaranteed to run: we will not cancel any of them for low numbers. What is due when you book is set out in our <x2>booking terms</x2>.",
   "b": "<x1>“预留名额”会发送该出发班次的咨询。</x1>四个出发班次都保证成行：我们不会因为人数不足取消其中任何一个。预订时需要支付的款项，写在我们的<x2>预订条款</x2>中。",
   "date": "2026-11-17",
-  "a": "<x1>点击“保留名额”会就该期发送咨询。</x1>四期全部保证成行：我们不会因为人数不足取消任何一期。预订时需要支付哪些费用，请见我们的<x2>预订条款</x2>。"
+  "a": "<x1>点击“保留名额”会就该期发送咨询。</x1>四期全部保证成行：我们不会因为人数不足取消任何一期。预订时需要支付哪些费用，请见我们的<x2>预订条款</x2>。",
+  "tr": "<x1>点击“预留名额”即会为该团期发送咨询。</x1>四个团期全部保证成行：我们不会因为人数不足取消其中任何一期。预订时需要支付哪些款项，请见我们的<x2>预订条款</x2>。",
+  "tr_note": "'departure'/'tour' = 团期/团, as live"
  },
  "a72f4ef82a9d": {
   "en": "From The Show",
@@ -6900,7 +7263,9 @@
   "en": "The tea town of the Kangra valley. Tea was first planted here in {1}; Kangra tea won medals at exhibitions in the {2} and {3}, the earthquake of {4} set the gardens back, and in {5} it was given a geographical indication of its own.",
   "b": "Kangra 山谷的茶镇。这里在{1}年首次种茶；Kangra 茶在{2}和{3}的博览会上获奖，{4}年的地震让茶园元气大伤，{5}年它获得了自己的地理标志。",
   "date": "2026-11-17",
-  "a": "Kangra山谷的茶城。这里在{1}年首次种下茶树；Kangra茶在{2}和{3}的博览会上获得奖牌，{4}年的地震让茶园遭受重创，{5}年它获得了自己的地理标志。"
+  "a": "Kangra山谷的茶城。这里在{1}年首次种下茶树；Kangra茶在{2}和{3}的博览会上获得奖牌，{4}年的地震让茶园遭受重创，{5}年它获得了自己的地理标志。",
+  "tr": "Kangra 山谷的茶镇。这里在{1}年首次种下茶树；Kangra 茶在{2}和{3}的博览会上获得奖牌，{4}年的地震让茶园遭受重创，{5}年它获得了自己的地理标志。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "a86847003354": {
   "en": "Flying To Win",
@@ -6922,7 +7287,9 @@
   "en": "Over the back",
   "b": "翻越后山",
   "date": "2026-11-17",
-  "a": "飞越后山"
+  "a": "飞越后山",
+  "tr": "翻过后山",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "a93c7c5358b0": {
   "en": "Policy number and rescue hotline, saved offline<x1>Essential</x1><x2>You will want these at the moment you have no signal</x2>",
@@ -6956,7 +7323,9 @@
   "en": "<x1>The valley floor</x1>Terraced fields, a river and villages seen from the air<x2>near Baijnath</x2>",
   "b": "<x1>谷底</x1>梯田、河流和村庄，空中俯瞰<x2>靠近 Baijnath</x2>",
   "date": "2026-11-17",
-  "a": "<x1>谷底</x1>从空中看梯田、河流和村庄<x2>Baijnath附近</x2>"
+  "a": "<x1>谷底</x1>从空中看梯田、河流和村庄<x2>Baijnath附近</x2>",
+  "tr": "<x1>谷底</x1>从空中看梯田、河流和村庄<x2>Baijnath 附近</x2>",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "aab114f4f77b": {
   "en": "{1}-{2}<x1>M/S</x1>",
@@ -6969,7 +7338,11 @@
   "en": "You can launch cleanly in nil wind, without help from the breeze.",
   "b": "你能在起飞场上于无风时干净利落地起飞，不需要风来帮忙。",
   "date": "2026-11-17",
-  "a": "你能在无风时干净利落地起飞，不需要风的帮助。"
+  "a": "你能在无风时干净利落地起飞，不需要风的帮助。",
+  "tr": "你能在无风时干净利落地起飞，不需要风的帮助。",
+  "waive": {
+   "glossary": "glossary 'launch' (起飞场) is the take-off place; here 'launch' is the verb, 起飞"
+  }
  },
  "aaef248a0c4e": {
   "en": "Join me on {1}",
@@ -7082,7 +7455,9 @@
   "en": "You want big mountain flying with a forgiving front range to learn it on.",
   "b": "你想要大山飞行，并且想在一条宽容的前山脉上学习它。",
   "date": "2026-11-17",
-  "a": "你想体验大山飞行，并在一道包容的前山上学习它。"
+  "a": "你想体验大山飞行，并在一道包容的前山上学习它。",
+  "tr": "你想体验大山飞行，并在一道宽容的前山山脉上学习它。",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "ad89087a3db0": {
   "en": "Airspace over the site",
@@ -7122,7 +7497,8 @@
   "en": "East, the bigger day",
   "b": "向东，更大的一天",
   "date": "2026-11-17",
-  "a": "向东，更大的一天"
+  "a": "向东，更大的一天",
+  "tr": "向东，更大的一天"
  },
  "aee92f3275ab": {
   "en": "Cancelled (weather)",
@@ -7149,19 +7525,23 @@
   "en": "Fly into Delhi, then take a domestic flight to Dharamshala, listed as Kangra or Gaggal, and a taxi of about two hours to {1}. Jigish Gohil, who lives in {2}, rates the overnight Volvo bus from Delhi as the cheapest and easiest option, with seats that recline far enough to sleep. Chandigarh and Amritsar airports work too, with a longer drive at the end.",
   "b": "飞到 Delhi，再搭国内航班到 Dharamshala（机场名为 Kangra 或 Gaggal），然后乘约两小时的出租车到{1}。住在{2}的 Jigish Gohil 认为，Delhi 出发的夜间沃尔沃大巴最便宜也最省事，座椅能放倒到足以睡觉。Chandigarh 和 Amritsar 机场也行，只是最后的车程更长。",
   "date": "2026-11-17",
-  "a": "先飞到德里，再转国内航班到Dharamshala（机场名为Kangra或Gaggal），然后坐大约两小时的出租车到{1}。住在{2}的Jigish Gohil认为，从德里出发的Volvo夜班大巴是最便宜、最省事的选择，座椅可以放得很平，能睡觉。昌迪加尔和阿姆利则机场也可以，只是最后要多开一段车。"
+  "a": "先飞到德里，再转国内航班到Dharamshala（机场名为Kangra或Gaggal），然后坐大约两小时的出租车到{1}。住在{2}的Jigish Gohil认为，从德里出发的Volvo夜班大巴是最便宜、最省事的选择，座椅可以放得很平，能睡觉。昌迪加尔和阿姆利则机场也可以，只是最后要多开一段车。",
+  "tr": "先飞到德里，再转国内航班到达兰萨拉（机场名为 Kangra 或 Gaggal），然后坐大约两小时的出租车到{1}。住在{2}的 Jigish Gohil 认为，从德里出发的 Volvo 夜班大巴是最便宜、最省事的选择，座椅可以放得很低，足以睡觉。昌迪加尔和阿姆利则机场也可以，只是最后要多开一段车。",
+  "tr_note": "standard Chinese names for well-known places"
  },
  "b001a38ef05c": {
   "en": "Read the nine rules",
   "b": "阅读这九条规则",
   "date": "2026-11-17",
-  "a": "阅读九条规则"
+  "a": "阅读九条规则",
+  "tr": "阅读这九条规则"
  },
  "b02f66a25755": {
   "en": "Photographs at {1} landing",
   "b": "{1}降落场的照片",
   "date": "2026-11-17",
-  "a": "{1}降落场的照片"
+  "a": "{1}降落场的照片",
+  "tr": "{1}降落场的照片"
  },
  "b06613236072": {
   "en": "The photo, enlarged",
@@ -7215,7 +7595,9 @@
   "en": "Expect company, and a lot of it",
   "b": "预料到会有人，而且很多",
   "date": "2026-11-17",
-  "a": "预料会有很多人一起飞"
+  "a": "预料会有很多人一起飞",
+  "tr": "做好与很多人同飞的准备",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "b1dd7cc0fd62": {
   "en": "You fly",
@@ -7231,7 +7613,8 @@
   "en": "What gets pilots hurt",
   "b": "飞行员是怎么受伤的",
   "date": "2026-11-17",
-  "a": "飞行员是怎么受伤的"
+  "a": "飞行员是怎么受伤的",
+  "tr": "飞行员是怎么受伤的"
  },
  "b21d43b2b6c9": {
   "en": "Not ready to enquire?",
@@ -7246,7 +7629,8 @@
   "en": "Big Mountain Flying is built for autonomous pilots who want the Himalaya at its most approachable, and who are happy to share the sky to get it.",
   "b": "大山飞行是为自主飞行的飞行员设计的，他们想以最容易接近的方式体验喜马拉雅，并且愿意与他人共享天空。",
   "date": "2026-11-17",
-  "a": "大山飞行专为能独立飞行的飞行员打造：他们想在喜马拉雅最容易上手的地方飞，也乐意为此与别人分享天空。"
+  "a": "大山飞行专为能独立飞行的飞行员打造：他们想在喜马拉雅最容易上手的地方飞，也乐意为此与别人分享天空。",
+  "tr": "大山飞行专为能独立飞行的飞行员打造：他们想在喜马拉雅最容易上手的地方飞，也乐意为此与别人分享天空。"
  },
  "b2d43dc84d9f": {
   "en": "Zebra",
@@ -7273,7 +7657,8 @@
   "en": "Tell your friends your plan for the day, fly with a mate if you can, carry some form of tracking, and let people know when you have landed in the evening.",
   "b": "把你当天的计划告诉朋友，可以的话和同伴一起飞，随身带某种形式的追踪设备，并在晚上让大家知道你已经降落。",
   "date": "2026-11-17",
-  "a": "把当天的计划告诉朋友，能找到伙伴就结伴飞，带上某种追踪设备，晚上降落后告诉大家一声。"
+  "a": "把当天的计划告诉朋友，能找到伙伴就结伴飞，带上某种追踪设备，晚上降落后告诉大家一声。",
+  "tr": "把当天的计划告诉朋友，能找到伙伴就结伴飞，带上某种追踪设备，晚上降落后告诉大家一声。"
  },
  "b3f77216d90d": {
   "en": "Season Packages",
@@ -7371,7 +7756,8 @@
   "en": "<x1>{1} landing</x1>{2}'s landing field among terraced fields, seen from the air<x2>at {3} landing</x2>",
   "b": "<x1>{1}降落场</x1>{2}的降落场，梯田之间，空中俯瞰<x2>在{3}降落场</x2>",
   "date": "2026-11-17",
-  "a": "<x1>{1}降落场</x1>从空中看{2}的降落场，四周是梯田<x2>位于{3}降落场</x2>"
+  "a": "<x1>{1}降落场</x1>从空中看{2}的降落场，四周是梯田<x2>位于{3}降落场</x2>",
+  "tr": "<x1>{1}降落场</x1>从空中看{2}的降落场，四周是梯田<x2>位于{3}降落场</x2>"
  },
  "b5a8b51eaebe": {
   "en": "When you are asked for money",
@@ -7400,7 +7786,9 @@
   "en": "Leave the house thermal as soon as you have the height for the next knob. The front range works for tens of kilometres either way, so there is no need to stay in the crowd.",
   "b": "一旦有了足够高度去飞下一个山包，就离开常用热气流。前山脉向两侧延伸数十公里都能飞，所以没必要待在人群里。",
   "date": "2026-11-17",
-  "a": "一旦高度够飞到下一个山包，就离开主热气流。前山向两边延伸几十公里都能飞，没必要待在人群里。"
+  "a": "一旦高度够飞到下一个山包，就离开主热气流。前山向两边延伸几十公里都能飞，没必要待在人群里。",
+  "tr": "一旦高度够飞到下一个山包，就离开主热气流。前山山脉向两边延伸几十公里都能飞，没必要待在人群里。",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "b6372ea590b5": {
   "en": "Rule {1}, Landing protocol",
@@ -7417,7 +7805,9 @@
   "en": "The front range",
   "b": "前山脉",
   "date": "2026-11-17",
-  "a": "前山"
+  "a": "前山",
+  "tr": "前山山脉",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "b69f947334e6": {
   "en": "About Lake Bogoria",
@@ -7446,7 +7836,8 @@
   "en": "The cloud",
   "b": "云",
   "date": "2026-11-17",
-  "a": "云"
+  "a": "云",
+  "tr": "云"
  },
  "b7bee045feb2": {
   "en": "The balance you have to strike",
@@ -7480,7 +7871,9 @@
   "en": "Hundreds of wings in the same easy air, and a long approach into a busy field.",
   "b": "数百顶伞翼挤在同一片平稳的空气里，还有进入繁忙降落场的长长进场。",
   "date": "2026-11-17",
-  "a": "成百上千顶伞翼挤在同一片平稳的空气里，还有进入繁忙降落场的长距离进场。"
+  "a": "成百上千顶伞翼挤在同一片平稳的空气里，还有进入繁忙降落场的长距离进场。",
+  "tr": "数百顶伞翼挤在同一片平稳的空气里，还有进入繁忙降落场的长距离进场。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "b8ee2c93e7a7": {
   "en": "About Mzima Springs",
@@ -7517,7 +7910,8 @@
   "en": "How crowded is {1} in October?",
   "b": "十月的{1}有多拥挤？",
   "date": "2026-11-17",
-  "a": "{1}十月有多拥挤？"
+  "a": "{1}十月有多拥挤？",
+  "tr": "十月的{1}有多拥挤？"
  },
  "b9fd62dddd28": {
   "en": "Next one starts today",
@@ -7532,13 +7926,15 @@
   "en": "Probiotic",
   "b": "益生菌",
   "date": "2026-11-17",
-  "a": "益生菌"
+  "a": "益生菌",
+  "tr": "益生菌"
  },
  "ba18f22936f8": {
   "en": "Vario or {1}<x1>Load the airspace and waypoints before you travel</x1>",
   "b": "垂直速度表或{1}<x1>出发前先加载空域和航点</x1>",
   "date": "2026-11-17",
-  "a": "垂直速度表或{1}<x1>出行前载入空域和航点</x1>"
+  "a": "垂直速度表或{1}<x1>出行前载入空域和航点</x1>",
+  "tr": "垂直速度表或{1}<x1>出行前载入空域和航点</x1>"
  },
  "ba9e2565bdc8": {
   "en": "Booking open, {1} places",
@@ -7654,7 +8050,8 @@
   "en": "Photographs at Mills peak",
   "b": "Mills peak 的照片",
   "date": "2026-11-17",
-  "a": "Mills peak的照片"
+  "a": "Mills peak的照片",
+  "tr": "Mills peak 的照片"
  },
  "bce06414177f": {
   "en": "Search",
@@ -7678,7 +8075,8 @@
   "en": "Not the best equipment, he says, but good equipment you feel at ease on: a wing calm enough that you would happily take a photo while flying it.",
   "b": "他说，不是最好的装备，而是你用着自在的好装备：一顶足够平和、让你飞行时乐意拍张照的伞翼。",
   "date": "2026-11-17",
-  "a": "他说，不是最好的装备，而是让你感到安心的好装备：一顶平稳到你飞着它都乐意拍照的伞翼。"
+  "a": "他说，不是最好的装备，而是让你感到安心的好装备：一顶平稳到你飞着它都乐意拍照的伞翼。",
+  "tr": "他说，不是最好的装备，而是让你感到安心的好装备：一顶平稳到你飞着它都乐意拍照的伞翼。"
  },
  "bd169b66541a": {
   "en": "You want a fixed timetable. The plan follows the conditions, not the other way round.",
@@ -7691,7 +8089,9 @@
   "en": "In from {1} km wide over the Kangra valley, down to {2}, west along the front to Dharamshala, back east to {3}, and up over the back. The scroll flies it, or take the controls and go where you like.",
   "b": "从宽 {1} 公里的 Kangra 山谷上空切入，下到{2}，沿前山向西飞往 Dharamshala，再向东飞回 {3}，然后翻越后山。滚动页面即可飞行，也可以自己接管操控，想去哪就去哪。",
   "date": "2026-11-17",
-  "a": "从{1}公里宽的Kangra山谷全景飞入，降到{2}，沿前山向西飞到Dharamshala，再向东飞回{3}，然后越过后山。滚动页面就会自动飞这条线，你也可以自己操控，想去哪里就去哪里。"
+  "a": "从{1}公里宽的Kangra山谷全景飞入，降到{2}，沿前山向西飞到Dharamshala，再向东飞回{3}，然后越过后山。滚动页面就会自动飞这条线，你也可以自己操控，想去哪里就去哪里。",
+  "tr": "从{1} km 宽的 Kangra 山谷全景飞入，降到{2}，沿前山山脉向西飞到达兰萨拉，再向东飞回{3}，然后翻过后山。滚动页面就会飞这条线，你也可以自己操控，想去哪里就去哪里。",
+  "tr_note": "units kept as m/km, as on the live zh pages; 'front range' = 前山山脉, as live; standard Chinese names for well-known places"
  },
  "bd4b21058f4b": {
   "en": "{1}m radio, {2} to {3} MHz<x1>Essential</x1><x2>Yaesu, Icom or Kenwood. Avoid Baofeng, reliable communication can save your life</x2>",
@@ -7721,7 +8121,9 @@
   "en": "Unlocked phone<x1>So you can run a local SIM</x1>",
   "b": "解锁的手机<x1>这样你就能用当地 SIM 卡</x1>",
   "date": "2026-11-17",
-  "a": "无锁手机<x1>这样你就能用当地SIM卡</x1>"
+  "a": "无锁手机<x1>这样你就能用当地SIM卡</x1>",
+  "tr": "无锁手机<x1>这样你就能用当地 SIM 卡</x1>",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "bdcf005b19ce": {
   "en": "Luc Armant",
@@ -7752,7 +8154,9 @@
   "en": "Warm in the valley, properly cold at {1}m. Both on the same day, every day.",
   "b": "山谷里温暖，在{1}米处则冷得彻骨。每天，同一天里两者兼有。",
   "date": "2026-11-17",
-  "a": "山谷里暖和，到{1}米就真冷了。两者都在同一天，天天如此。"
+  "a": "山谷里暖和，到{1}米就真冷了。两者都在同一天，天天如此。",
+  "tr": "山谷里暖和，到{1} m 就真冷了。两者都在同一天，天天如此。",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "bead0a998f90": {
   "en": "RAST And The LeelooX Effect",
@@ -7783,7 +8187,8 @@
   "en": "Apr",
   "b": "四月",
   "date": "2026-11-17",
-  "a": "四月"
+  "a": "四月",
+  "tr": "四月"
  },
  "bfa7440fe011": {
   "en": "What you see",
@@ -7796,7 +8201,8 @@
   "en": "Sky Is Not The Limit",
   "b": "天空不是极限",
   "date": "2026-11-17",
-  "a": "天空不是极限"
+  "a": "天空不是极限",
+  "tr": "天空不是极限"
  },
  "c0dc82cdf7c1": {
   "en": "Najin and Fatu",
@@ -7842,7 +8248,8 @@
   "en": "A Tibetan monastery with prayer flags against a blue sky",
   "b": "一座藏传佛教寺院，经幡飘在蓝天下",
   "date": "2026-11-17",
-  "a": "蓝天下挂着经幡的藏传佛教寺院"
+  "a": "蓝天下挂着经幡的藏传佛教寺院",
+  "tr": "蓝天下挂着经幡的藏传佛教寺院"
  },
  "c2ab77b0ff29": {
   "en": "The height",
@@ -7857,7 +8264,8 @@
   "en": "About Chauntra monastery",
   "b": "关于 Chauntra 寺院",
   "date": "2026-11-17",
-  "a": "关于Chauntra寺院"
+  "a": "关于Chauntra寺院",
+  "tr": "关于 Chauntra 寺院"
  },
  "c2c1fe4f4307": {
   "en": "Out and return",
@@ -7895,7 +8303,8 @@
   "en": "The {1} landing field under big cumulus, snow peaks behind, one wing coming in",
   "b": "{1}降落场在大积云下，身后是雪峰，一顶伞翼正在进场",
   "date": "2026-11-17",
-  "a": "大朵积云下的{1}降落场，身后是雪峰，一顶伞翼正在进场"
+  "a": "大朵积云下的{1}降落场，身后是雪峰，一顶伞翼正在进场",
+  "tr": "大朵积云下的{1}降落场，身后是雪峰，一顶伞翼正在进场"
  },
  "c36774158ae7": {
   "en": "Registered in Norway",
@@ -7917,7 +8326,9 @@
   "en": "Photographs: Nerdandnutella (CC BY-SA {1}), UnpetitproleX (CC BY-SA {2}), via Wikimedia Commons",
   "b": "照片：Nerdandnutella（CC BY-SA {1}），UnpetitproleX（CC BY-SA {2}），来自 Wikimedia Commons",
   "date": "2026-11-17",
-  "a": "照片：Nerdandnutella（CC BY-SA {1}）、UnpetitproleX（CC BY-SA {2}），来自Wikimedia Commons"
+  "a": "照片：Nerdandnutella（CC BY-SA {1}）、UnpetitproleX（CC BY-SA {2}），来自Wikimedia Commons",
+  "tr": "照片：Nerdandnutella（CC BY-SA {1}）、UnpetitproleX（CC BY-SA {2}），来自 Wikimedia Commons",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "c462e14b0fcf": {
   "en": "Zebra, buffalo, gazelle and giraffe graze the floor of the gorge among walkers and cyclists, which is possible because the park has no lions. It was gazetted in {1}.",
@@ -7939,7 +8350,9 @@
   "en": "One launch, one landing field, and a front range that works for tens of kilometres either way. The tour follows the conditions rather than a schedule; these are the shapes the days tend to take.",
   "b": "一个起飞场，一块降落场，还有一条向两侧延伸数十公里都能飞的前山脉。行程跟着天气条件走，而不是照日程表；以下是飞行日常见的几种形态。",
   "date": "2026-11-17",
-  "a": "一个起飞场，一片降落场，还有一道向两边延伸几十公里都能飞的前山。行程跟着天气条件走，而不是按时间表；下面是这里的飞行日通常的几种走法。"
+  "a": "一个起飞场，一片降落场，还有一道向两边延伸几十公里都能飞的前山。行程跟着天气条件走，而不是按时间表；下面是这里的飞行日通常的几种走法。",
+  "tr": "一个起飞场，一片降落场，还有一道向两边延伸几十公里都能飞的前山山脉。行程跟着天气条件走，而不是按时间表；下面是这里的飞行日通常的几种走法。",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "c4ba0822462e": {
   "en": "Mar",
@@ -7963,19 +8376,24 @@
   "en": "Say where you are going and who you are going with, every day, before you take off. Then close the loop in the evening. Most of what goes wrong here is survivable; being missing for six hours before anyone notices is what turns it into a rescue.",
   "b": "每天起飞前，说清楚你要去哪里、和谁一起去。然后在晚上把这件事收尾。这里出的大多数状况都能挺过去；真正让它变成救援的，是失踪六个小时都没人发觉。",
   "date": "2026-11-17",
-  "a": "每天起飞前，说清楚你要去哪里、和谁一起去。晚上再把这件事收尾。这里出的大多数问题都能挺过去；真正把它变成一场救援的，是失踪六小时都没人发现。"
+  "a": "每天起飞前，说清楚你要去哪里、和谁一起去。晚上再把这件事收尾。这里出的大多数问题都能挺过去；真正把它变成一场救援的，是失踪六小时都没人发现。",
+  "tr": "每天起飞前，说清楚你要去哪里、和谁一起去。晚上再报一声平安，形成闭环。这里出的大多数问题都能挺过去；真正把它变成一场救援的，是失踪六小时都没人发现。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "c57971fe943d": {
   "en": "Along The Front Range",
   "b": "沿着前山脉",
   "date": "2026-11-17",
-  "a": "沿着前山"
+  "a": "沿着前山",
+  "tr": "沿着前山山脉",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "c59dd90945a1": {
   "en": "Rule {1}, Following",
   "b": "第 {1} 条，跟飞",
   "date": "2026-11-17",
-  "a": "规则{1}：跟飞"
+  "a": "规则{1}：跟飞",
+  "tr": "规则{1}：跟飞"
  },
  "c6090c736ae3": {
   "en": "Rehydration salts",
@@ -8153,7 +8571,8 @@
   "en": "Over {1}",
   "a": "超过{1}",
   "date": "2026-11-17",
-  "b": "超过{1}"
+  "b": "超过{1}",
+  "tr": "超过{1}"
  },
  "c84812cadbc7": {
   "en": "Swahili and English",
@@ -8201,7 +8620,9 @@
   "en": "The ten that come up every time. If yours is not here, ask it on the call. More on {1} from our guests in <x1>Flying Abroad</x1>, in the knowledge base.",
   "b": "每次都会被问到的十个问题。如果你的问题不在其中，通话时问我们。想了解更多来自我们客人的{1}内容，请看知识库里的<x1>出国飞行</x1>。",
   "date": "2026-11-17",
-  "a": "每次都会被问到的十个问题。如果你的问题不在这里，就在通话时问吧。更多嘉宾讲述的{1}内容，请看知识库中的<x1>出国飞行</x1>。"
+  "a": "每次都会被问到的十个问题。如果你的问题不在这里，就在通话时问吧。更多嘉宾讲述的{1}内容，请看知识库中的<x1>出国飞行</x1>。",
+  "tr": "每次都会被问到的十个问题。如果你的问题不在这里，就在通话时问吧。更多来自我们嘉宾的{1}内容，请看知识库中的<x1>出国飞行</x1>。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "c93354d871a6": {
   "en": "Pilot rating",
@@ -8216,7 +8637,8 @@
   "en": "What equipment do I need to bring?",
   "b": "我需要带什么装备？",
   "date": "2026-11-17",
-  "a": "我需要带哪些装备？"
+  "a": "我需要带哪些装备？",
+  "tr": "我需要带哪些装备？"
  },
  "c94930a168ff": {
   "en": "Episode {1}",
@@ -8231,7 +8653,8 @@
   "en": "May",
   "b": "五月",
   "date": "2026-11-17",
-  "a": "五月"
+  "a": "五月",
+  "tr": "五月"
  },
  "c9a314a710f6": {
   "en": "Small groups, fixed dates. Prices are per pilot.",
@@ -8279,25 +8702,31 @@
   "en": "Flying {1} In Company, And How To Do It Well <x1>DIY</x1>",
   "b": "在{1}与人同飞，以及如何飞好 <x1>自助</x1>",
   "date": "2026-11-17",
-  "a": "与众人同飞{1}，以及如何飞好 <x1>自助</x1>"
+  "a": "与众人同飞{1}，以及如何飞好 <x1>自助</x1>",
+  "tr": "在{1}与众人同飞，以及如何飞好<x1>自助</x1>",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "cad1252c1c19": {
   "en": "{1} places",
   "b": "{1} 个名额",
   "date": "2026-11-17",
-  "a": "{1}个名额"
+  "a": "{1}个名额",
+  "tr": "{1}个名额"
  },
  "cafcb789895f": {
   "en": "The wing you bring",
   "b": "你带去的伞翼",
   "date": "2026-11-17",
-  "a": "你带的伞翼"
+  "a": "你带的伞翼",
+  "tr": "你带的伞翼"
  },
  "cb25f915cf2a": {
   "en": "Travel insurance that covers paragliding in India to at least {1}m, including rescue, medical treatment and repatriation. Check with your insurer before you come that it actually pays out there, because claims from India can be slow and complicated. In our episode with Jigish Gohil, an insured pilot who crashed about {2} km from launch still waited until the next day for the helicopter.",
   "b": "旅行保险需覆盖在印度至少{1}米高度的滑翔伞运动，包括救援、医疗和遣返。来之前请向保险公司确认它在那里确实会赔付，因为来自印度的理赔可能缓慢而复杂。在我们与 Jigish Gohil 的那一集里，一位投了保的飞行员在距起飞场约 {2} 公里处坠落，仍然等到第二天才等来直升机。",
   "date": "2026-11-17",
-  "a": "旅行保险必须涵盖在印度飞行至少{1}米高度的滑翔伞运动，包括救援、医疗和遣返。来之前请向你的保险公司确认它在那里确实会赔付，因为来自印度的理赔可能又慢又复杂。在我们与Jigish Gohil的那一集节目里，一名有保险的飞行员在距起飞场约{2}公里处坠落，仍然等到第二天才等来直升机。"
+  "a": "旅行保险必须涵盖在印度飞行至少{1}米高度的滑翔伞运动，包括救援、医疗和遣返。来之前请向你的保险公司确认它在那里确实会赔付，因为来自印度的理赔可能又慢又复杂。在我们与Jigish Gohil的那一集节目里，一名有保险的飞行员在距起飞场约{2}公里处坠落，仍然等到第二天才等来直升机。",
+  "tr": "旅行保险必须涵盖在印度至少{1} m 高度的滑翔伞运动，包括救援、医疗和遣返。来之前请向你的保险公司确认它在那里确实会赔付，因为来自印度的理赔可能又慢又复杂。在我们与 Jigish Gohil 的那一集节目里，一名有保险的飞行员在距起飞场约{2} km 处坠落，仍然等到第二天才等来直升机。",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "cb9f9f47293f": {
   "en": "Fitness and wing experience required",
@@ -8342,7 +8771,8 @@
   "en": "Eddie Colfox, paraphrased <x1>India episode, {1}</x1>",
   "b": "Eddie Colfox，转述 <x1>印度一集，{1}</x1>",
   "date": "2026-11-17",
-  "a": "Eddie Colfox，转述 <x1>印度篇，{1}</x1>"
+  "a": "Eddie Colfox，转述 <x1>印度篇，{1}</x1>",
+  "tr": "Eddie Colfox，转述 <x1>印度篇，{1}</x1>"
  },
  "cc82c26f3d75": {
   "en": "Rift Valley's Endless Skies Await",
@@ -8416,19 +8846,30 @@
   "en": "How much does the {1} paragliding tour cost?",
   "b": "{1}滑翔伞运动之旅费用是多少？",
   "date": "2026-11-17",
-  "a": "{1}滑翔伞运动之旅费用是多少？"
+  "a": "{1}滑翔伞运动之旅费用是多少？",
+  "tr": "{1}滑翔伞之旅的费用是多少？",
+  "tr_note": "'paragliding' attributive: 滑翔伞, as live",
+  "waive": {
+   "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is attributive, where Chinese pilots say 滑翔伞 and 滑翔伞运动 reads stiffly (same waiver as the live pages)"
+  }
  },
  "ce00db7e7a69": {
   "en": "{1} {2} or equivalent, the same as our Kenya tour, and you should be flying autonomously: launching, thermalling, deciding and landing on your own. Above all, practise nil-wind launches before you come, because {3} rarely gives you help from the breeze. Eddie Colfox counts a {4} to {5} hour pilot as still a beginner here, and his advice is to fly with an experienced group.",
   "b": "{1} {2} 级或同等级别，与我们的肯尼亚之旅相同，而且你应该能够自主飞行：在起飞场自己起飞、盘旋爬升、做决定，并在降落场降落。最重要的是，来之前先练习无风起飞，因为{3}很少有风来帮你。Eddie Colfox 认为，飞了 {4} 到 {5} 小时的飞行员在这里仍属新手，他的建议是跟着有经验的团队一起飞。",
   "date": "2026-11-17",
-  "a": "{1} {2}级或同等资质，与我们的肯尼亚之旅相同，而且你应该能够独立飞行：自己起飞、盘热气流、做判断和降落。最重要的是，来之前先练好无风起飞，因为{3}很少有风帮你。在Eddie Colfox看来，飞了{4}到{5}小时的飞行员在这里仍算新手，他的建议是跟着有经验的团队飞。"
+  "a": "{1} {2}级或同等资质，与我们的肯尼亚之旅相同，而且你应该能够独立飞行：自己起飞、盘热气流、做判断和降落。最重要的是，来之前先练好无风起飞，因为{3}很少有风帮你。在Eddie Colfox看来，飞了{4}到{5}小时的飞行员在这里仍算新手，他的建议是跟着有经验的团队飞。",
+  "tr": "{1} {2}级或同等资质，与我们的肯尼亚团相同，而且你应该能够独立飞行：自己起飞、盘热气流、做判断和降落。最重要的是，来之前先练好无风起飞，因为{3}很少有风帮你。在 Eddie Colfox 看来，飞了{4}到{5}小时的飞行员在这里仍算新手，他的建议是跟着有经验的团队飞。",
+  "tr_note": "'departure'/'tour' = 团期/团, as live",
+  "waive": {
+   "glossary": "'launching' and 'landing' are verbs here (起飞, 降落), not the take-off place or landing field"
+  }
  },
  "ce0f7034543e": {
   "en": "A meadow of white flowers below the snow-covered {1}",
   "b": "白色花朵的草甸，在积雪覆盖的{1}之下",
   "date": "2026-11-17",
-  "a": "白雪覆盖的{1}山脉下，一片开满白花的草甸"
+  "a": "白雪覆盖的{1}山脉下，一片开满白花的草甸",
+  "tr": "白雪覆盖的{1}山脉下，一片开满白花的草甸"
  },
  "ce31f52cf648": {
   "en": "About Lake Naivasha",
@@ -8441,7 +8882,9 @@
   "en": "<x1>Over the peaks</x1>A single wing high above a snow-streaked peak<x2>near Waldo peak</x2>",
   "b": "<x1>翻越群峰</x1>一顶孤零零的伞翼高高飞在积雪斑驳的山峰上方<x2>靠近 Waldo peak</x2>",
   "date": "2026-11-17",
-  "a": "<x1>飞越群峰</x1>一顶伞翼高悬在一座带着积雪的山峰之上<x2>Waldo peak附近</x2>"
+  "a": "<x1>飞越群峰</x1>一顶伞翼高悬在一座带着积雪的山峰之上<x2>Waldo peak附近</x2>",
+  "tr": "<x1>飞越群峰</x1>一顶伞翼高悬在一座带着积雪的山峰之上<x2>Waldo peak 附近</x2>",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "ce491dd76179": {
   "en": "Search The Whole Episode Library",
@@ -8479,7 +8922,9 @@
   "en": "Dharamshala and McLeod Ganj",
   "b": "Dharamshala 和 McLeod Ganj",
   "date": "2026-11-17",
-  "a": "Dharamshala和McLeod Ganj"
+  "a": "Dharamshala和McLeod Ganj",
+  "tr": "达兰萨拉和 McLeod Ganj",
+  "tr_note": "standard Chinese names for well-known places"
  },
  "cf01481f626d": {
   "en": "Privacy",
@@ -8528,7 +8973,8 @@
   "en": "Jigish Gohil, paraphrased <x1>{1} episode, {2}</x1>",
   "b": "Jigish Gohil，转述 <x1>{1}一集，{2}</x1>",
   "date": "2026-11-17",
-  "a": "Jigish Gohil，转述 <x1>{1}篇，{2}</x1>"
+  "a": "Jigish Gohil，转述 <x1>{1}篇，{2}</x1>",
+  "tr": "Jigish Gohil，转述 <x1>{1}篇，{2}</x1>"
  },
  "cff524d2580e": {
   "en": "Not sure yet is a perfectly good answer, and often the right one.",
@@ -8628,7 +9074,8 @@
   "en": "Basic first aid and any personal medication",
   "b": "基本急救用品和你个人的药物",
   "date": "2026-11-17",
-  "a": "基础急救用品及个人药品"
+  "a": "基础急救用品及个人药品",
+  "tr": "基础急救用品及个人药品"
  },
  "d2a19a06cf8c": {
   "en": "Clear the list",
@@ -8671,13 +9118,15 @@
   "en": "Above the snowline",
   "b": "雪线之上",
   "date": "2026-11-17",
-  "a": "飞越雪线"
+  "a": "飞越雪线",
+  "tr": "雪线之上"
  },
  "d3642b1ed3c4": {
   "en": "Rule {1}, The landing field",
   "b": "第 {1} 条，降落场",
   "date": "2026-11-17",
-  "a": "规则{1}：降落场"
+  "a": "规则{1}：降落场",
+  "tr": "规则{1}：降落场"
  },
  "d3e5a48f6bd3": {
   "en": "The reticulated giraffe and Grevy's zebra of Samburu are dry-country animals of the north, found in few other places; most of the world's remaining Grevy's zebra live in northern Kenya.",
@@ -8735,7 +9184,9 @@
   "en": "Watch how fast the clouds are building, stay out from under the big ones, and land early rather than late.",
   "b": "留意云长得有多快，避开大云的下方，宁可早降落也别晚降落。",
   "date": "2026-11-17",
-  "a": "留意云发展得有多快，远离大云的下方，宁可早降，不要晚降。"
+  "a": "留意云发展得有多快，远离大云的下方，宁可早降，不要晚降。",
+  "tr": "留意云发展得有多快，远离大云的下方，宁可早降落，不要晚降落。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "d614b99a0d0d": {
   "en": "What Pilots Ask Before Booking",
@@ -8765,7 +9216,8 @@
   "en": "This is the part the brochures leave out. The thermals that make {1} easy are the same thermals everyone else is in, and autumn is when everyone comes.",
   "b": "这是宣传册略去不提的部分。让{1}变得容易的热气流，正是所有其他人也在其中的热气流，而秋季就是所有人都来的时候。",
   "date": "2026-11-17",
-  "a": "这是宣传册不会写的部分。让{1}变得容易的热气流，也正是其他所有人都在飞的热气流，而秋季正是所有人都来的时候。"
+  "a": "这是宣传册不会写的部分。让{1}变得容易的热气流，也正是其他所有人都在飞的热气流，而秋季正是所有人都来的时候。",
+  "tr": "这是宣传册不会写的部分。让{1}变得容易的热气流，也正是其他所有人都在飞的热气流，而秋季正是所有人都来的时候。"
  },
  "d680e2d1210e": {
   "en": "A deep soda lake under the Siracho escarpment, with hot springs and geysers along its shore and, in a good season, vast flocks of lesser flamingo. Part of the Kenya Lake System World Heritage Site.",
@@ -8830,13 +9282,16 @@
   "en": "Eddie Colfox has run trips from {1} since {2}. He talks through how the season has shifted, the routes along the front range, and what changes the moment you go over the back.",
   "b": "Eddie Colfox 自{2}年起就在{1}带团。他谈到季节是如何变化的、前山脉上的路线，以及一旦翻越后山会有什么不同。",
   "date": "2026-11-17",
-  "a": "Eddie Colfox从{2}年起就在{1}组织飞行之旅。他聊到飞行季如何推移、沿前山的航线，以及一旦飞越后山会有什么变化。"
+  "a": "Eddie Colfox从{2}年起就在{1}组织飞行之旅。他聊到飞行季如何推移、沿前山的航线，以及一旦飞越后山会有什么变化。",
+  "tr": "Eddie Colfox 从{2}年起就在{1}组织飞行之旅。他聊到飞行季如何推移、沿前山山脉的航线，以及一旦翻过后山会有什么变化。",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "d813a83fbc5f": {
   "en": "{1} launch",
   "b": "{1}起飞场",
   "date": "2026-11-17",
-  "a": "{1}起飞场"
+  "a": "{1}起飞场",
+  "tr": "{1}起飞场"
  },
  "d84d0ad04a29": {
   "en": "per pilot",
@@ -8920,13 +9375,15 @@
   "en": "Rule {1}, The tracker question",
   "b": "第 {1} 条，追踪器的问题",
   "date": "2026-11-17",
-  "a": "规则{1}：追踪器问题"
+  "a": "规则{1}：追踪器问题",
+  "tr": "规则{1}：追踪器问题"
  },
  "da81ff1dc46c": {
   "en": "For pilots going to {1} under their own steam rather than on our tour. None of it is specific to us, and all of it is worth reading before you fly there with anyone.",
   "b": "写给不跟我们的团、而是自己去{1}的飞行员。这些内容都不是专门针对我们的，而且无论和谁一起飞到那里，之前都值得读一读。",
   "date": "2026-11-17",
-  "a": "写给自行前往{1}、而不是参加我们行程的飞行员。这些内容都不是我们独有的，无论你跟谁去那里飞，飞之前都值得一读。"
+  "a": "写给自行前往{1}、而不是参加我们行程的飞行员。这些内容都不是我们独有的，无论你跟谁去那里飞，飞之前都值得一读。",
+  "tr": "写给自行前往{1}、而不是参加我们行程的飞行员。这些内容都不是我们独有的，无论你跟谁去那里飞，飞之前都值得一读。"
  },
  "dad072360d2d": {
   "en": "Four knuckles of hill on the edge of the Rift. Karen Blixen farmed at their foot and wrote Out of Africa about it; a wind farm now runs along the ridge.",
@@ -8974,7 +9431,8 @@
   "en": "{1}'s landing field among terraced fields, seen from the air",
   "b": "{1}的降落场，梯田之间，空中俯瞰",
   "date": "2026-11-17",
-  "a": "从空中看{1}的降落场，四周是梯田"
+  "a": "从空中看{1}的降落场，四周是梯田",
+  "tr": "从空中看{1}的降落场，四周是梯田"
  },
  "dc8415ccfe52": {
   "en": "Feb",
@@ -8999,7 +9457,9 @@
   "en": "<x1>The back ranges</x1>Snow-covered back ranges seen from the air",
   "b": "<x1>后山山脉</x1>空中俯瞰积雪覆盖的后山山脉",
   "date": "2026-11-17",
-  "a": "<x1>后山</x1>从空中看白雪覆盖的后山"
+  "a": "<x1>后山</x1>从空中看白雪覆盖的后山",
+  "tr": "<x1>后山山脉</x1>从空中看白雪覆盖的后山山脉",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "dcc39d11ca89": {
   "en": "<x1>{1}</x1>Gear list, dates, and costs",
@@ -9032,7 +9492,9 @@
   "en": "The old seat of the goddess Chamunda, high on the {1} ridge at about {2} m, with the snow peaks straight behind it. The better known Chamunda Devi temple on the Baner river below, west of Palampur, is the newer of the two.",
   "b": "女神 Chamunda 的古老圣座，高踞{1}山脊上约 {2} 米处，雪峰就在正后方。山下 Baner 河边、Palampur 以西那座更为知名的 Chamunda Devi 神庙，则是两座中较新的一座。",
   "date": "2026-11-17",
-  "a": "女神Chamunda的古老神座，高踞{1}山脊之上，海拔约{2}米，雪峰就在它正后方。山下Palampur以西、Baner河畔那座更有名的Chamunda Devi神庙，是两者中较新的一座。"
+  "a": "女神Chamunda的古老神座，高踞{1}山脊之上，海拔约{2}米，雪峰就在它正后方。山下Palampur以西、Baner河畔那座更有名的Chamunda Devi神庙，是两者中较新的一座。",
+  "tr": "女神 Chamunda 的古老神座，高踞{1}山脊之上，海拔约{2} m，雪峰就在它正后方。山下 Palampur 以西、Baner 河畔那座更有名的 Chamunda Devi 神庙，是两者中较新的一座。",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "dd77da78750c": {
   "en": "Episode Library",
@@ -9070,19 +9532,24 @@
   "en": "Eddie Colfox remembers late October air turning too stable to climb much above {1}m. Now the monsoon lingers into the first week of October, and the air stays unstable enough to climb well over {2}m right into November. Leaving {3} in mid November, he was at {4}m on the front ridge and {5}m deep in the back ranges.",
   "b": "Eddie Colfox 记得，十月下旬的空气会变得过于稳定，很难爬升到{1}米以上。如今季风会拖到十月的第一周，空气依然足够不稳定，一直到十一月都能轻松爬升到{2}米以上。十一月中旬从{3}出发时，他在前山脊飞到了{4}米，在深处的后山飞到了{5}米。",
   "date": "2026-11-17",
-  "a": "Eddie Colfox记得，过去到了十月下旬，空气会变得过于稳定，很难爬升到{1}米以上。如今季风一直拖到十月的第一周，空气也一直保持足够不稳定，直到十一月都能爬升到远超{2}米的高度。十一月中旬从{3}出发，他在前山山脊上到过{4}米，在深处的后山到过{5}米。"
+  "a": "Eddie Colfox记得，过去到了十月下旬，空气会变得过于稳定，很难爬升到{1}米以上。如今季风一直拖到十月的第一周，空气也一直保持足够不稳定，直到十一月都能爬升到远超{2}米的高度。十一月中旬从{3}出发，他在前山山脊上到过{4}米，在深处的后山到过{5}米。",
+  "tr": "Eddie Colfox 记得，过去到了十月下旬，空气会变得过于稳定，很难爬升到{1} m 以上。如今季风会一直拖到十月第一周，空气也一直足够不稳定，直到十一月都能爬升到远超{2} m 的高度。十一月中旬从{3}出发时，他在前山山脊上到过{4} m，在深处的后山到过{5} m。",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "de6d9932c347": {
   "en": "Can I bring a satellite tracker to India?",
   "b": "我可以带卫星追踪器去印度吗？",
   "date": "2026-11-17",
-  "a": "可以带卫星追踪器去印度吗？"
+  "a": "可以带卫星追踪器去印度吗？",
+  "tr": "可以带卫星追踪器去印度吗？"
  },
  "de7826067282": {
   "en": "Hiking shoes, already broken in",
   "b": "已经磨合好的登山鞋",
   "date": "2026-11-17",
-  "a": "已经穿合脚的徒步鞋"
+  "a": "已经穿合脚的徒步鞋",
+  "tr": "已经磨合好的徒步鞋",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "de9a3242d1b8": {
   "en": "Watched",
@@ -9106,7 +9573,9 @@
   "en": "Busy. Jigish Gohil counted about {1} visiting pilots in autumn {2}, against about {3} when he arrived, because almost nowhere else flies so consistently at that time of year. The front range is wide enough to spread out, and his advice is to leave the house thermal as soon as you have the height for the next ridge. Spring is quieter, at around {4} pilots, but stronger.",
   "b": "很忙。Jigish Gohil 数过，{2}年秋季约有 {1} 名外来飞行员，而他刚来时约 {3} 名，因为一年中的这个时候，几乎没有别的地方能飞得这么稳定。前山脉足够宽，可以分散开，他的建议是：一旦有了足够高度去飞下一道山脊，就离开常用热气流。春季人少些，约 {4} 名飞行员，但风更强。",
   "date": "2026-11-17",
-  "a": "很忙。Jigish Gohil统计，{2}年秋季约有{1}名外来飞行员，而他刚来时约有{3}名，因为每年这个时候几乎没有别的地方能这样稳定地飞。前山足够宽，可以分散开飞；他的建议是，一旦高度够飞到下一道山脊，就离开主热气流。春季人少一些，大约{4}名飞行员，但条件更强。"
+  "a": "很忙。Jigish Gohil统计，{2}年秋季约有{1}名外来飞行员，而他刚来时约有{3}名，因为每年这个时候几乎没有别的地方能这样稳定地飞。前山足够宽，可以分散开飞；他的建议是，一旦高度够飞到下一道山脊，就离开主热气流。春季人少一些，大约{4}名飞行员，但条件更强。",
+  "tr": "很拥挤。Jigish Gohil 统计，{2}年秋季约有{1}名外来飞行员，而他刚来时约有{3}名，因为每年这个时候几乎没有别的地方能这样稳定地飞。前山山脉足够宽，可以分散开飞；他的建议是，一旦高度够飞到下一道山脊，就离开主热气流。春季人少一些，大约{4}名飞行员，但条件更强。",
+  "tr_note": "'front range' = 前山山脉, as live"
  },
  "df68968bb28f": {
   "en": "{1} tasks scored, {2} cancelled",
@@ -9128,19 +9597,24 @@
   "en": "{1} took his first tandem flight as a child in the foothills of the Himalaya, and has been flying for more than ten years since. He founded {2} in {3}, has flown {4} himself, and hosts the podcast, including the two {5} episodes this page is built on.",
   "b": "{1}小时候在喜马拉雅山麓第一次体验双人飞行，此后已飞行十多年。他在{3}年创办了{2}，亲自飞过{4}，并主持播客，包括这个页面所依据的两集{5}节目。",
   "date": "2026-11-17",
-  "a": "{1}小时候在喜马拉雅山麓第一次坐上双人滑翔伞，此后已经飞行了十多年。他于{3}年创立了{2}，自己飞过{4}，并主持播客，包括本页内容所依据的两集{5}节目。"
+  "a": "{1}小时候在喜马拉雅山麓第一次坐上双人滑翔伞，此后已经飞行了十多年。他于{3}年创立了{2}，自己飞过{4}，并主持播客，包括本页内容所依据的两集{5}节目。",
+  "tr": "{1}小时候在喜马拉雅山麓第一次体验双人飞行，此后已经飞行了十多年。他于{3}年创立了{2}，自己飞过{4}，并主持播客，包括本页内容所依据的两集{5}节目。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "dfba57534e13": {
   "en": "Apply before you travel",
   "b": "出发前申请",
   "date": "2026-11-17",
-  "a": "出行前申请"
+  "a": "出行前申请",
+  "tr": "出行前申请"
  },
  "dfec3671d8b9": {
   "en": "<x1>The {1}</x1>The {2} range under building cumulus, above the Kangra valley",
   "b": "<x1>{1}</x1>{2}山脉在渐起的积云下，位于 Kangra 山谷上方",
   "date": "2026-11-17",
-  "a": "<x1>{1}山脉</x1>正在发展的积云下的{2}山脉，位于Kangra山谷上方"
+  "a": "<x1>{1}山脉</x1>正在发展的积云下的{2}山脉，位于Kangra山谷上方",
+  "tr": "<x1>{1}山脉</x1>正在发展的积云下的{2}山脉，位于 Kangra 山谷上方",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "e070de224434": {
   "en": "Currency",
@@ -9177,19 +9651,24 @@
   "en": "<x1>Kangra valley</x1>The Kangra valley from the air, villages and fields below the hills",
   "b": "<x1>Kangra 山谷</x1>Kangra 山谷的空中景象，山丘下是村庄和田野",
   "date": "2026-11-17",
-  "a": "<x1>Kangra山谷</x1>从空中看Kangra山谷，群山下的村庄和田地"
+  "a": "<x1>Kangra山谷</x1>从空中看Kangra山谷，群山下的村庄和田地",
+  "tr": "<x1>Kangra 山谷</x1>从空中看 Kangra 山谷，群山下的村庄和田地",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "e0cd69f533c9": {
   "en": "Jigish Gohil, {1} episode",
   "b": "Jigish Gohil，{1}一集",
   "date": "2026-11-17",
-  "a": "Jigish Gohil，{1}篇"
+  "a": "Jigish Gohil，{1}篇",
+  "tr": "Jigish Gohil，{1}篇"
  },
  "e14985e9e3b5": {
   "en": "{1} · The way home",
   "b": "{1}｜回程",
   "date": "2026-11-17",
-  "a": "{1} · 回家的路"
+  "a": "{1} · 回家的路",
+  "tr": "{1} · 回程",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "e17fcf4292ab": {
   "en": "Know Your Equipment",
@@ -9262,7 +9741,8 @@
   "en": "deep in the back, mid November",
   "b": "十一月中旬，深入后山",
   "date": "2026-11-17",
-  "a": "深入后山，十一月中旬"
+  "a": "深入后山，十一月中旬",
+  "tr": "深入后山，十一月中旬"
  },
  "e37f2d4126cb": {
   "en": "Rift wall to Naivasha, {1}<x1>{2} km</x1>",
@@ -9275,7 +9755,8 @@
   "en": "When he first came for an autumn season, about {1} pilots from around the world were flying there. In autumn {2} it was about {3}.",
   "b": "他第一次在秋季飞行季来时，世界各地约有 {1} 名飞行员在那里飞行。{2}年秋季，约有 {3} 名。",
   "date": "2026-11-17",
-  "a": "他第一次来过秋季飞行季时，大约有{1}名来自世界各地的飞行员在那里飞。到{2}年秋季，大约有{3}名。"
+  "a": "他第一次来过秋季飞行季时，大约有{1}名来自世界各地的飞行员在那里飞。到{2}年秋季，大约有{3}名。",
+  "tr": "他第一次来过秋季飞行季时，大约有{1}名来自世界各地的飞行员在那里飞。到{2}年秋季，大约有{3}名。"
  },
  "e4115be258db": {
   "en": "Coming soon",
@@ -9400,13 +9881,17 @@
   "en": "{1}<x1>KM</x1>",
   "b": "{1}<x1>公里</x1>",
   "date": "2026-11-17",
-  "a": "{1}<x1>公里</x1>"
+  "a": "{1}<x1>公里</x1>",
+  "tr": "{1}<x1>km</x1>",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "e6c27e05e95e": {
   "en": "West, {1} to {2} km out and return",
   "b": "向西，往返 {1} 至 {2} 公里",
   "date": "2026-11-17",
-  "a": "向西，飞出{1}至{2}公里再返回"
+  "a": "向西，飞出{1}至{2}公里再返回",
+  "tr": "向西，飞出{1}至{2} km 再返回",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "e6ed3b41d7d1": {
   "en": "Flamingos feed in the lagoons at the edge of the lake, where hot springs bring water in over the crust of soda.",
@@ -9538,13 +10023,19 @@
   "en": "Thermal layers",
   "b": "保暖层",
   "date": "2026-11-17",
-  "a": "保暖内衣层"
+  "a": "保暖内衣层",
+  "tr": "保暖内层衣物",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages",
+  "waive": {
+   "glossary": "'thermal layers' is warm clothing, not a thermal of rising air"
+  }
  },
  "ea1a2ca13a79": {
   "en": "{1} <x1>per pilot</x1>",
   "b": "{1} <x1>每位飞行员</x1>",
   "date": "2026-11-17",
-  "a": "{1} <x1>每位飞行员</x1>"
+  "a": "{1} <x1>每位飞行员</x1>",
+  "tr": "{1} <x1>每位飞行员</x1>"
  },
  "ea515110b02d": {
   "en": "For pilots going out there under their own steam rather than on our tour. None of it is specific to us, and all of it is worth reading before you book anything, with anyone.",
@@ -9595,7 +10086,8 @@
   "en": "About Triund",
   "b": "关于 Triund",
   "date": "2026-11-17",
-  "a": "关于Triund"
+  "a": "关于Triund",
+  "tr": "关于 Triund"
  },
  "eb2960b73f0a": {
   "en": "Requirements depend on your own nationality.",
@@ -9622,7 +10114,8 @@
   "en": "Big Mountain Flying from {1}",
   "b": "从{1}出发的大山飞行",
   "date": "2026-11-17",
-  "a": "从{1}出发的大山飞行"
+  "a": "从{1}出发的大山飞行",
+  "tr": "从{1}出发的大山飞行"
  },
  "ec45acc37fea": {
   "en": "Navigating {1}",
@@ -9653,7 +10146,9 @@
   "en": "Photographs: Ashutosh Tiwari (CC BY-SA {1}), Ashutosh Tiwari (CC BY-SA {2}), via Wikimedia Commons",
   "b": "照片：Ashutosh Tiwari（CC BY-SA {1}），Ashutosh Tiwari（CC BY-SA {2}），来自 Wikimedia Commons",
   "date": "2026-11-17",
-  "a": "照片：Ashutosh Tiwari（CC BY-SA {1}）、Ashutosh Tiwari（CC BY-SA {2}），来自Wikimedia Commons"
+  "a": "照片：Ashutosh Tiwari（CC BY-SA {1}）、Ashutosh Tiwari（CC BY-SA {2}），来自Wikimedia Commons",
+  "tr": "照片：Ashutosh Tiwari（CC BY-SA {1}）、Ashutosh Tiwari（CC BY-SA {2}），来自 Wikimedia Commons",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "ecf94cfb9663": {
   "en": "The slopes between the Aberdares and Mount Kenya are the heartland of the Kikuyu, the largest of Kenya's peoples: tea and coffee country, and the ground of the Mau Mau uprising of the {1}, with Nyeri at its centre.",
@@ -9863,7 +10358,12 @@
   "en": "{1} Paragliding FAQ",
   "b": "{1}滑翔伞运动常见问题",
   "date": "2026-11-17",
-  "a": "{1}滑翔伞运动常见问题"
+  "a": "{1}滑翔伞运动常见问题",
+  "tr": "{1}滑翔伞常见问题",
+  "tr_note": "'paragliding' attributive: 滑翔伞, as live",
+  "waive": {
+   "glossary": "glossary 'paragliding' (滑翔伞运动) is the sport as a noun; here it is attributive, where Chinese pilots say 滑翔伞 and 滑翔伞运动 reads stiffly (same waiver as the live pages)"
+  }
  },
  "f27f0b9bc5b4": {
   "en": "Play: go on to the next places",
@@ -9936,7 +10436,8 @@
   "en": "Going deep is a commitment",
   "b": "深入后山是一种承诺",
   "date": "2026-11-17",
-  "a": "深入飞行是一种承诺"
+  "a": "深入飞行是一种承诺",
+  "tr": "深入后山是一种承诺"
  },
  "f3e6db90f07a": {
   "en": "November to March. The wind starts from the north-northeast and turns southeast towards spring, so the take-off is chosen to match. The tour flies in February, in the heart of it.",
@@ -9979,7 +10480,8 @@
   "en": "About Baijnath temple",
   "b": "关于 Baijnath 神庙",
   "date": "2026-11-17",
-  "a": "关于Baijnath神庙"
+  "a": "关于Baijnath神庙",
+  "tr": "关于 Baijnath 神庙"
  },
  "f5b7906f2ef7": {
   "en": "Swipe the photo to fly the route",
@@ -10026,7 +10528,9 @@
   "en": "Two departures in spring, back to back from {1}. Two in autumn, inside the season that runs from about {2} well into November, three days apart.",
   "b": "春季两个出发班次，在{1}期间连续进行。秋季两个，在大约从{2}一直到十一月的飞行季内，相隔三天。",
   "date": "2026-11-17",
-  "a": "春季两期，从{1}连续进行。秋季两期，都在大约从{2}开始、一直持续到十一月深处的飞行季里，两期相隔三天。"
+  "a": "春季两期，从{1}连续进行。秋季两期，都在大约从{2}开始、一直持续到十一月深处的飞行季里，两期相隔三天。",
+  "tr": "春季两个团期，在{1}期间前后衔接。秋季两个团期，都在大约从{2}开始、一直持续到十一月大部分时间的飞行季里，两期相隔三天。",
+  "tr_note": "'departure'/'tour' = 团期/团, as live"
  },
  "f6a7d9a32ab7": {
   "en": "Landing protocol",
@@ -10043,7 +10547,9 @@
   "en": "However big the field, pilots misjudge the last leg, arrive long, then stall the wing in from three or four metres up and break something.",
   "b": "不管场地多大，飞行员都会误判最后一段，飞得过长，然后在离地三四米高处让伞翼失速，摔坏了什么。",
   "date": "2026-11-17",
-  "a": "不管场地多大，飞行员都会判断错最后一边，进场过长，然后从三四米高处把伞失速砸下去，摔伤哪里。"
+  "a": "不管场地多大，飞行员都会判断错最后一边，进场过长，然后从三四米高处把伞失速砸下去，摔伤哪里。",
+  "tr": "不管场地多大，飞行员还是会误判最后一边，进场过长，然后在三四米高处让伞翼失速砸下去，摔断点什么。",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "f6f5b350c771": {
   "en": "Cross country and {1} experience <x1>(optional)</x1>",
@@ -10092,7 +10598,9 @@
   "en": "The {1} · launch about {2} m",
   "b": "{1}｜起飞场海拔约 {2} 米",
   "date": "2026-11-17",
-  "a": "{1}山脉 · 起飞场海拔约{2}米"
+  "a": "{1}山脉 · 起飞场海拔约{2}米",
+  "tr": "{1}山脉 · 起飞场海拔约{2} m",
+  "tr_note": "units kept as m/km, as on the live zh pages"
  },
  "f95635422331": {
   "en": "Powerbank and cables",
@@ -10148,7 +10656,9 @@
   "en": "Hear {1} From Someone Who Flies It",
   "b": "听飞过{1}的人亲口讲述",
   "date": "2026-11-17",
-  "a": "听真正在{1}飞的人讲那里"
+  "a": "听真正在{1}飞的人讲那里",
+  "tr": "听亲身飞过的人讲{1}",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "faa0f436921e": {
   "en": "Paragliders over the green slopes of the {1}",
@@ -10161,13 +10671,16 @@
   "en": "<x1>Last light</x1>A paraglider silhouetted against a burning sunset",
   "b": "<x1>最后一缕光</x1>一顶滑翔伞在烈焰般的夕阳下的剪影",
   "date": "2026-11-17",
-  "a": "<x1>最后的天光</x1>燃烧般的夕阳下一顶滑翔伞的剪影"
+  "a": "<x1>最后的天光</x1>燃烧般的夕阳下一顶滑翔伞的剪影",
+  "tr": "<x1>最后的天光</x1>燃烧般的夕阳下，一顶滑翔伞的剪影",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "face0d399279": {
   "en": "Deep in the back, mid November",
   "b": "十一月中旬，深入后山",
   "date": "2026-11-17",
-  "a": "深入后山，十一月中旬"
+  "a": "深入后山，十一月中旬",
+  "tr": "深入后山，十一月中旬"
  },
  "fb11932e35e4": {
   "en": "Harness with back or airbag protection<x1>Essential</x1>",
@@ -10201,13 +10714,16 @@
   "en": "Land out over the back and help can take until the next day. Carry what you need for a night out.",
   "b": "在后山外降落，救援可能要到第二天才来。带上在外过一夜所需的东西。",
   "date": "2026-11-17",
-  "a": "在后山外场降落，救援可能要到第二天才到。带上在野外过夜所需的东西。"
+  "a": "在后山外场降落，救援可能要到第二天才到。带上在野外过夜所需的东西。",
+  "tr": "在后山外场降落，救援可能要到第二天才到。带上在野外过夜所需的东西。"
  },
  "fbf882ae61d7": {
   "en": "Fly something you can relax on",
   "b": "飞一顶你能放松驾驭的伞翼",
   "date": "2026-11-17",
-  "a": "飞一顶能让你放松的伞"
+  "a": "飞一顶能让你放松的伞",
+  "tr": "飞一顶能让你放松的伞翼",
+  "tr_note": "merged a and b, wording and Han/Latin spacing as on live pages"
  },
  "fbfad16c223b": {
   "en": "Honorin Hamard",
