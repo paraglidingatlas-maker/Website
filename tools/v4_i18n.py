@@ -57,7 +57,7 @@ ATTRS = ("alt", "title", "aria-label", "placeholder", "aria-description", "data-
 META_NAMES = {"description", "og:title", "og:description", "twitter:title", "twitter:description", "og:image:alt",
               "twitter:image:alt", "apple-mobile-web-app-title"}
 SKIP_CLASSES = {"rt-m", "sl-m", "word", "nav-coords", "notranslate", "gr-fn", "gr-ln", "gr-meta", "gr-rc-n", "gr-lp"}
-I18N_BLOCK = re.compile(r"<!--i18n-->.*?<!--/i18n-->\n?", re.S)
+I18N_BLOCK = re.compile(r"[ \t]*<!--i18n-->.*?<!--/i18n-->\n?", re.S)    # with its own indent, so a rebuild adds none
 
 
 def tokens(src):
