@@ -302,7 +302,8 @@
   "a": "subida por las lomas del {1} y avance hacia el oeste, rumbo a Dharamshala,",
   "tr": "ganas altura sobre las lomas del {1} y vuelas hacia el oeste, rumbo a Dharamshala,",
   "tr_note": "comparer: wrong sense: 'climb the knobs' is gaining height in thermals over the knobs, 'subes por las lomas' reads as walking up them; 'corres' for 'run' (fly) is off",
-  "back": "you gain height over the hills of {1} and fly west, heading for Dharamshala,"
+  "back": "you gain height over the hills of {1} and fly west, heading for Dharamshala,",
+  "check": "ok"
  },
  "068392a56f33": {
   "en": "Be open, enthusiastic and positive, and greet everyone, including the unsmiling ones. Ask locally about security, wild animals and access, because that knowledge is not in any guidebook. Explain your plan clearly: misunderstandings about where you intend to take off are the single most common problem.",
@@ -1062,7 +1063,8 @@
   "a": "Despega el primero para comprobar el aire, o el último para ayudar con un despegue complicado.",
   "tr": "El guía despega el primero para comprobar el aire, o el último para ayudar con un despegue complicado.",
   "tr_note": "comparer: wrong referent: 'Despega el primero' reads as an imperative to the reader (back-translation took it so); the English is about the guide",
-  "back": "The guide takes off first to check the air, or last to help with a tricky takeoff."
+  "back": "The guide takes off first to check the air, or last to help with a tricky takeoff.",
+  "check": "ok"
  },
  "15c39714fb66": {
   "en": "The pictures",
@@ -9432,9 +9434,10 @@
   "b": "Di adónde vas y con quién, todos los días, antes de despegar. Y por la tarde, cierra el círculo. Casi todo lo que sale mal aquí tiene solución; lo que lo convierte en un rescate es estar desaparecido seis horas antes de que nadie lo note.",
   "date": "2026-11-17",
   "a": "Di adónde vas y con quién, cada día, antes de despegar. Y cierra el círculo por la tarde. Casi todo lo que sale mal aquí se puede sobrevivir; pasar seis horas desaparecido antes de que nadie se dé cuenta es lo que lo convierte en un rescate.",
-  "tr": "Di adónde vas y con quién, cada día, antes de despegar. Y por la tarde, avisa de que has vuelto. Casi todo lo que sale mal aquí se puede sobrevivir; pasar seis horas desaparecido antes de que nadie se dé cuenta es lo que lo convierte en un rescate.",
-  "tr_note": "comparer: 'close the loop' means report back that you have landed; 'cierra el círculo' does not carry that sense",
-  "back": "Say where you are going and with whom, every day, before taking off. And in the afternoon, report that you are back. Almost everything that goes wrong here can be survived; spending six hours missing before anyone notices is what turns it into a rescue."
+  "tr": "Di adónde vas y con quién, cada día, antes de despegar. Y por la tarde, avisa de que has vuelto. La mayor parte de lo que sale mal aquí se puede sobrevivir; pasar seis horas desaparecido antes de que nadie se dé cuenta es lo que lo convierte en un rescate.",
+  "tr_note": "comparer: stronger: 'Casi todo' (almost everything) for 'Most of what goes wrong' overstates survivability in a safety note",
+  "back": "Say where you are going and with whom, every day, before taking off. And in the afternoon, let them know that you have come back. Most of what goes wrong here can be survived; spending six hours missing before anyone notices is what turns it into a rescue.",
+  "check": "ok"
  },
  "c57971fe943d": {
   "en": "Along The Front Range",

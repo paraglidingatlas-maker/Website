@@ -2095,7 +2095,8 @@
   "a": "Derrière {1} se trouve une crête, et au-delà les grandes montagnes : Barabangal, la route vers Manali et plus loin encore. Le critère de Jigish Gohil pour y aller : quelques centaines d’heures de vol, un stage {2}, et le matériel et la condition physique pour une nuit dehors et une longue marche. <x1>Son critère en détail</x1>.",
   "tr": "Derrière {1} se dresse une arête, et au-delà les grandes montagnes : Barabangal, le vol vers Manali et plus loin encore. Le critère de Jigish Gohil pour y aller : environ deux cents heures de vol, un stage {2}, ainsi que le matériel et la condition physique pour passer une nuit dehors et faire une longue marche. <x1>Son critère en détail</x1>.",
   "tr_note": "comparer: wrong grammar: 'passer une nuit dehors et une longue marche' (one cannot 'passer une marche'); fitness for a long walk is lost",
-  "back": "Behind {1} rises a ridge, and beyond it the big mountains: Barabangal, the flight to Manali and further still. Jigish Gohil's criterion for going there: about two hundred hours of flying, a {2} course, as well as the equipment and the physical condition to spend a night outside and do a long walk. <x1>His criterion in detail</x1>."
+  "back": "Behind {1} rises a ridge, and beyond it the big mountains: Barabangal, the flight to Manali and further still. Jigish Gohil's criterion for going there: about two hundred hours of flying, a {2} course, as well as the equipment and the physical condition to spend a night outside and do a long walk. <x1>His criterion in detail</x1>.",
+  "check": "ok"
  },
  "2b174d1ec848": {
   "en": "Behind the takeoff is a spine, and past it everything steps up at once: altitude, thermal strength, roughness and cold, by about a third in Eddie Colfox's reckoning. That is a later step, not a first week one.",
@@ -7164,7 +7165,8 @@
   "a": "Voler en haute montagne coûte {1} par pilote pour les dix jours, le même prix pour chaque départ, avec l’encadrement d’{2} et de Gurpreet Dhindsa, à raison d’un guide pour trois pilotes. Le prix comprend l’encadrement, le transport quotidien jusqu’à {3} et retour, les récupérations et les droits de décollage. Les vols internationaux, votre visa et votre assurance sont à votre charge. Les quatre départs sont garantis.",
   "tr": "Le voyage « Vol en haute montagne » coûte {1} par pilote pour les dix jours, le même prix pour chaque départ, avec l’encadrement d’{2} et de Gurpreet Dhindsa, à raison d’un guide pour trois pilotes. Le prix comprend l’encadrement, le transport quotidien jusqu’à {3} et retour, les récupérations et les droits de décollage. Les vols internationaux, votre visa et votre assurance sont à votre charge. Les quatre départs sont garantis.",
   "tr_note": "comparer: wrong grammar around the tour name: bare 'Vol en haute montagne' as sentence subject reads as generic 'mountain flying costs...'; name it as the tour",
-  "back": "The \"High Mountain Flying\" trip costs {1} per pilot for the ten days, the same price for each departure, with the supervision of {2} and Gurpreet Dhindsa, at a rate of one guide for three pilots. The price includes supervision, daily transport to {3} and back, retrievals and launch fees. International flights, your visa and your insurance are at your own expense. The four departures are guaranteed."
+  "back": "The \"High Mountain Flying\" trip costs {1} per pilot for the ten days, the same price for each departure, with the supervision of {2} and Gurpreet Dhindsa, at a rate of one guide for three pilots. The price includes supervision, daily transport to {3} and back, retrievals and launch fees. International flights, your visa and your insurance are at your own expense. The four departures are guaranteed.",
+  "check": "ok"
  },
  "9522e6ae627c": {
   "en": "Spare lines",
@@ -8428,7 +8430,8 @@
   "a": "Est, la plus grande journée",
   "tr": "Vers l’est, une plus grande journée",
   "tr_note": "comparer: stronger: 'la plus grande journée' (the biggest) for 'the bigger day' (comparative, vs the Dharamshala day)",
-  "back": "Eastward, a bigger day"
+  "back": "Eastward, a bigger day",
+  "check": "ok"
  },
  "aee92f3275ab": {
   "en": "Cancelled (weather)",
@@ -8577,7 +8580,8 @@
   "a": "Voler en haute montagne est conçu pour des pilotes autonomes qui veulent l’Himalaya sous son jour le plus accessible, et qui acceptent de partager le ciel pour cela.",
   "tr": "Le voyage « Vol en haute montagne » est conçu pour les pilotes autonomes qui veulent l’Himalaya sous son jour le plus accessible, et qui acceptent de partager le ciel pour cela.",
   "tr_note": "comparer: wrong grammar around the tour name: bare 'Vol en haute montagne est conçu' reads as generic high-mountain flying, not the tour",
-  "back": "The \"High Mountain Flying\" trip is designed for independent pilots who want the Himalaya in its most accessible light, and who accept sharing the sky to get it."
+  "back": "The \"High Mountain Flying\" trip is designed for independent pilots who want the Himalaya in its most accessible light, and who accept sharing the sky to get it.",
+  "check": "ok"
  },
  "b2d43dc84d9f": {
   "en": "Zebra",
@@ -8933,7 +8937,8 @@
   "a": "Nos guides principaux ont aussi une longue expérience des récupérations dans des endroits isolés. Nous avons des plans de vol détaillés et plusieurs systèmes de communication pour garantir une récupération rapide, où que le ciel vous emmène. Nous ne pouvons pas contrôler la météo, mais nous pouvons vous garantir qu’en cas d’imprévu, vous serez entre les meilleures mains possibles, en l’air comme au sol.",
   "tr": "Nos guides principaux ont aussi une longue expérience des récupérations dans des endroits isolés. Nous avons des plans de vol détaillés et plusieurs systèmes de communication pour garantir une récupération rapide, où que le ciel vous emmène. Nous ne pouvons pas contrôler la météo, mais nous pouvons vous garantir qu’en cas d’imprévu, vous serez entre les mains les plus sûres qui soient, en l’air comme au sol.",
   "tr_note": "orchestrator: 'safest possible hands', not 'best'",
-  "back": "Our lead guides also have long experience of retrievals in remote places. We have detailed flight plans and several communication systems to guarantee a quick retrieval, wherever the sky takes you. We cannot control the weather, but we can guarantee that if the unexpected happens, you will be in the safest hands there are, in the air as on the ground."
+  "back": "Our lead guides also have long experience of retrievals in remote places. We have detailed flight plans and several communication systems to guarantee a quick retrieval, wherever the sky takes you. We cannot control the weather, but we can guarantee that if the unexpected happens, you will be in the safest hands there are, in the air as on the ground.",
+  "check": "ok"
  },
  "bae7d5be7082": {
   "en": "Status",
@@ -9730,7 +9735,8 @@
   "a": "Immersion dans le Rift",
   "tr": "Rift Immersive",
   "tr_note": "comparer: stays English by decision",
-  "back": "Rift Immersive"
+  "back": "Rift Immersive",
+  "check": "ok"
  },
  "ca07a6eab021": {
   "en": "flying today, photos tonight",

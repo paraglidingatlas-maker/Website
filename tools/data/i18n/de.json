@@ -3697,7 +3697,8 @@
   "a": "Unsere Himalaya-Expedition schenkt dir ein Flugerlebnis, bei dem du über Landschaften schwebst, die von Zeit und Legenden geformt wurden: Du gleitest über uralte Klöster und lotest in dünner Luft deine Grenzen aus. Eine Reise, die die Seele bewegt. In {1} geht es los: ein Startplatz in {2}, ein Landeplatz am Ortsrand und eine Vorderkette, an der Piloten seit den {3} hin und zurück fliegen.",
   "tr": "Unsere Himalaya-Expedition schenkt dir ein Flugerlebnis, bei dem du über Landschaften schwebst, die von Zeit und Legenden geformt wurden: Du gleitest über uralte Klöster und lotest in dünner Luft deine Grenzen aus. Eine Reise, die die Seele bewegt. In {1} geht es los: ein Startplatz in {2}, ein Landeplatz am Ortsrand und eine Vorkette, an der Piloten seit den {3} Jahren hin und zurück fliegen.",
   "tr_note": "comparer: wrong grammar around {3}: \"seit den 1980er\" lacks its noun (needs \"1980er Jahren\")",
-  "back": "Our Himalaya expedition gives you a flying experience in which you float over landscapes shaped by time and legends: you glide over ancient monasteries and probe your limits in thin air. A journey that moves the soul. It starts in {1}: a launch site in {2}, a landing site at the edge of town and a front range along which pilots have been flying there and back since the {3} years."
+  "back": "Our Himalaya expedition gives you a flying experience in which you float over landscapes shaped by time and legends: you glide over ancient monasteries and probe your limits in thin air. A journey that moves the soul. It starts in {1}: a launch site in {2}, a landing site at the edge of town and a front range along which pilots have been flying there and back since the {3} years.",
+  "check": "ok"
  },
  "4c2d3e59d80e": {
   "en": "{1} Cross Country Routes",
@@ -4778,7 +4779,8 @@
   "a": "Zwergflamingos fressen die Blaualgen des heißen Sodawassers, und wenn der Nakurusee ihnen zu süß ist, sammeln sie sich hier zu Hunderttausenden. Am Bogoria wurden schon über eine Million gezählt.",
   "tr": "Zwergflamingos fressen die Blaualgen des heißen Sodawassers, und wenn der Nakurusee für sie zu wenig salzig ist, sammeln sie sich hier zu Hunderttausenden. Am Bogoria wurden schon über eine Million gezählt.",
   "tr_note": "comparer: wrong sense: 'zu süß' reads as 'too sweet'; the English means the water is too fresh (not salty enough) for the flamingos",
-  "back": "Lesser flamingos feed on the blue-green algae of the hot soda water, and when Lake Nakuru is not salty enough for them, they gather here in hundreds of thousands. More than a million have already been counted at Bogoria."
+  "back": "Lesser flamingos feed on the blue-green algae of the hot soda water, and when Lake Nakuru is not salty enough for them, they gather here in hundreds of thousands. More than a million have already been counted at Bogoria.",
+  "check": "ok"
  },
  "64994968fa95": {
   "en": "How you are read",
@@ -7586,7 +7588,8 @@
   "a": "Der Standardtag und die Strecke, auf die Eddie Colfox einen weniger erfahrenen Piloten schicken würde: westwärts an der Vorderkette entlang nach Dharamshala und zurück, mit großen Landewiesen und unkompliziertem Rückholdienst auf dem ganzen Weg. Nach seiner Erzählung flogen Piloten das schon {1} hin und zurück. <x1>Hör ihn dazu</x1>.",
   "tr": "Der Standardtag und die Strecke, auf die Eddie Colfox einen weniger erfahrenen Piloten schicken würde: westwärts an der Vorkette entlang nach Dharamshala und zurück, mit großen Landewiesen und unkompliziertem Rückholdienst auf dem ganzen Weg. Nach seiner Erzählung flogen Piloten sie schon {1} hin und zurück. <x1>Hör, was er dazu sagt</x1>.",
   "tr_note": "comparer: wrong grammar: link text \"Hör ihn dazu\" is not idiomatic German (missing verb particle)",
-  "back": "The standard day and the route on which Eddie Colfox would send a less experienced pilot: westward along the front range to Dharamshala and back, with large landing meadows and uncomplicated retrieval all the way. According to his account, pilots have flown it there and back {1}. <x1>Hear what he says about it</x1>."
+  "back": "The standard day and the route on which Eddie Colfox would send a less experienced pilot: westward along the front range to Dharamshala and back, with large landing meadows and uncomplicated retrieval all the way. According to his account, pilots have flown it there and back {1}. <x1>Hear what he says about it</x1>.",
+  "check": "ok"
  },
  "9e360d21c3a2": {
   "en": "<x1>From</x1> {1}",
@@ -8208,7 +8211,8 @@
   "a": "Die Teestadt des Kangra-Tals. Tee wurde hier erstmals {1} gepflanzt; Kangra-Tee gewann in den {2} und {3} Medaillen auf Ausstellungen, das Erdbeben von {4} warf die Gärten zurück, und {5} erhielt er eine eigene geschützte geografische Angabe.",
   "tr": "Die Teestadt des Kangra-Tals. Tee wurde hier erstmals {1} gepflanzt; Kangra-Tee gewann in den {2} und {3} Jahren Medaillen auf Ausstellungen, das Erdbeben von {4} warf die Gärten zurück, und {5} erhielt er eine eigene geografische Angabe.",
   "tr_note": "comparer: wrong grammar around {2}/{3}: \"in den 1880er und 1890er\" lacks its noun (needs \"Jahren\")",
-  "back": "The tea town of the Kangra Valley. Tea was first planted here {1}; Kangra tea won medals at exhibitions in the {2} and {3} years, the earthquake of {4} set the gardens back, and {5} it received its own geographical indication."
+  "back": "The tea town of the Kangra Valley. Tea was first planted here {1}; Kangra tea won medals at exhibitions in the {2} and {3} years, the earthquake of {4} set the gardens back, and {5} it received its own geographical indication.",
+  "check": "ok"
  },
  "a86847003354": {
   "en": "Flying To Win",
