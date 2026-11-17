@@ -413,7 +413,8 @@
   "b": "{1}, Kenya – {2}",
   "tr": "{1}, Kenya · {2}",
   "tr_note": "kept the English punctuation: both drafts had changed it only to get past the old 'left in English' check",
-  "back": "{1}, Kenya · {2}"
+  "back": "{1}, Kenya · {2}",
+  "check": "ok"
  },
  "1370004da76f": {
   "en": "Duration",
@@ -603,7 +604,8 @@
    }
   ],
   "tr_note": "comparer fix: stronger: 'cachée' (hidden, concealed) for 'untold' (not usually told)",
-  "back": "The little-known truth about reserve parachutes"
+  "back": "The little-known truth about reserve parachutes",
+  "check": "ok"
  },
  "1d47d07d1625": {
   "en": "Practice, photo {1} of {2}",
@@ -1155,7 +1157,8 @@
    }
   ],
   "tr_note": "comparer fix: weaker: 'et' drops the opposition of 'vs' (a trade-off between risk and reward)",
-  "back": "Risk versus reward"
+  "back": "Risk versus reward",
+  "check": "ok"
  },
  "3bade34ecbc5": {
   "en": "Length",
@@ -1473,7 +1476,8 @@
   "b": "Notre mission",
   "tr": "Notre mission",
   "tr_note": "both drafts; 'Déclaration de mission' is an anglicism, 'Notre mission' is the usual French menu label",
-  "back": "Our mission"
+  "back": "Our mission",
+  "check": "ok"
  },
  "4bf5048f5cbf": {
   "en": "{1} off the hill: pottery, yoga and Buddhism",
@@ -1902,7 +1906,8 @@
   "date": "2026-11-17",
   "b": "{1}, Mexique · photos et vidéos",
   "tr": "{1}, Mexique · photos et vidéos",
-  "back": "{1}, Mexico · photos and videos"
+  "back": "{1}, Mexico · photos and videos",
+  "check": "ok"
  },
  "61fa280a65cf": {
   "en": "Tour {1}",
@@ -2013,7 +2018,8 @@
    }
   ],
   "tr_note": "comparer fix: wrong sense of a word: 'primitifs' reads as 'primitive/undeveloped', not 'primal' (original, untouched)",
-  "back": "Go thermal hunting in original environments"
+  "back": "Go thermal hunting in original environments",
+  "check": "ok"
  },
  "6689bbb4bd9a": {
   "en": "Join The {1} List",
@@ -2146,7 +2152,8 @@
   "date": "2026-11-17",
   "b": "Fermer le menu",
   "tr": "Fermer le menu",
-  "back": "Close the menu"
+  "back": "Close the menu",
+  "check": "ok"
  },
  "6d5bb241740a": {
   "en": "<x1>Group</x1>Small group",
@@ -3656,7 +3663,8 @@
   "date": "2026-11-17",
   "b": "Bibliothèque",
   "tr": "Bibliothèque",
-  "back": "Library"
+  "back": "Library",
+  "check": "ok"
  },
  "b9b15d8821c5": {
   "en": "The film",
@@ -4028,7 +4036,8 @@
    }
   ],
   "tr_note": "comparer fix: wrong sense: 'imposés' (forced on you) for 'sprung on you' (shown to you by surprise)",
-  "back": "To read in all cases: the <x1>booking terms</x1>, and the <x2>participant agreement</x2> that each pilot fills in before a trip. Both are published in full rather than being presented to you unexpectedly later."
+  "back": "To read in all cases: the <x1>booking terms</x1>, and the <x2>participant agreement</x2> that each pilot fills in before a trip. Both are published in full rather than being presented to you unexpectedly later.",
+  "check": "ok"
  },
  "c8ca264fde99": {
   "en": "If your device has no email app set up, the button will tell you, and you can copy the text or use {1} instead.",
@@ -4536,7 +4545,8 @@
   "date": "2026-11-17",
   "b": "Chercher dans les épisodes, la base de connaissances et les voyages",
   "tr": "Rechercher dans les épisodes, la base de connaissances et les voyages",
-  "back": "Search in the episodes, the knowledge base and the trips"
+  "back": "Search in the episodes, the knowledge base and the trips",
+  "check": "ok"
  },
  "e09eb1e94858": {
   "en": "Navigating India (Bonus Ep), Episode {1}, {2} min",

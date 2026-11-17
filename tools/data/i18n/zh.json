@@ -413,7 +413,8 @@
   "date": "2026-11-17",
   "b": "{1}，肯尼亚 · {2}",
   "tr": "{1}，肯尼亚 · {2}",
-  "back": "{1}, Kenya · {2}"
+  "back": "{1}, Kenya · {2}",
+  "check": "ok"
  },
  "1370004da76f": {
   "en": "Duration",
@@ -965,7 +966,8 @@
    }
   ],
   "tr_note": "comparer fix: weaker promise: 'within a couple of days' became 几天之内 (within several days)",
-  "back": "We will read and reply, usually within one or two days. We will not add you to a mailing list because of your enquiry, and we will not pass your information to anyone. See the <x1>privacy policy</x1> for details."
+  "back": "We will read and reply, usually within one or two days. We will not add you to a mailing list because of your enquiry, and we will not pass your information to anyone. See the <x1>privacy policy</x1> for details.",
+  "check": "ok"
  },
  "2fbadb098101": {
   "en": "{1} · {2}, Mexico",
@@ -1024,7 +1026,8 @@
    }
   ],
   "tr_note": "comparer fix: wrong sense of a word: 越过 means 'cross over'; 'beyond' means where roads and maps do not reach",
-  "back": "Beyond the roads, beyond the map"
+  "back": "Beyond the roads, beyond the map",
+  "check": "ok"
  },
  "335038d8a582": {
   "en": "Kazakhstan, the striped canyons",
@@ -1190,7 +1193,8 @@
    }
   ],
   "tr_note": "comparer fix: weaker promise: 'within a couple of days' became 几天内 (within several days)",
-  "back": "Thank you, we have received your enquiry. We read every one, and usually reply to {1} within one or two days."
+  "back": "Thank you, we have received your enquiry. We read every one, and usually reply to {1} within one or two days.",
+  "check": "ok"
  },
  "3c50c2d39c34": {
   "en": "Being brave enough to go out and do it",
@@ -1495,7 +1499,8 @@
   "date": "2026-11-17",
   "b": "使命宣言",
   "tr": "使命宣言",
-  "back": "Mission statement"
+  "back": "Mission statement",
+  "check": "ok"
  },
  "4bf5048f5cbf": {
   "en": "{1} off the hill: pottery, yoga and Buddhism",
@@ -1928,7 +1933,8 @@
   "date": "2026-11-17",
   "b": "{1}，墨西哥 · 照片和视频",
   "tr": "{1}，墨西哥 · 照片与视频",
-  "back": "{1}, Mexico · Photos and videos"
+  "back": "{1}, Mexico · Photos and videos",
+  "check": "ok"
  },
  "61fa280a65cf": {
   "en": "Tour {1}",
@@ -2170,7 +2176,8 @@
   "date": "2026-11-17",
   "b": "关闭菜单",
   "tr": "关闭菜单",
-  "back": "Close menu"
+  "back": "Close menu",
+  "check": "ok"
  },
  "6d5bb241740a": {
   "en": "<x1>Group</x1>Small group",
@@ -3689,7 +3696,8 @@
   "b": "资料库",
   "tr": "节目库",
   "tr_note": "picked a: the menu's Library is the episode library, 节目库 as on the rest of the site (b's 资料库 reads as a document archive)",
-  "back": "Episode library"
+  "back": "Episode library",
+  "check": "ok"
  },
  "b9b15d8821c5": {
   "en": "The film",
@@ -4059,7 +4067,8 @@
     "verdict": "wrong sense: 'less current than you would like' became 'flown less than you imagined' (没有想象中多)"
    }
   ],
-  "back": "The more clearly you describe your current level as a pilot, the more useful our answer will be. There are no wrong answers here; telling us you have recently flown not as much as you hoped is much more useful than telling us everything is fine."
+  "back": "The more clearly you describe your current level as a pilot, the more useful our answer will be. There are no wrong answers here; telling us you have recently flown not as much as you hoped is much more useful than telling us everything is fine.",
+  "check": "ok"
  },
  "c8c413060379": {
   "en": "Worth reading either way: the <x1>booking terms</x1>, and the <x2>participant agreement</x2> that every pilot completes before a trip. Both are published in full rather than sprung on you later.",
@@ -4578,7 +4587,8 @@
   "date": "2026-11-17",
   "b": "搜索节目、知识库和行程",
   "tr": "搜索节目、知识库和行程",
-  "back": "Search episodes, knowledge base and itineraries"
+  "back": "Search episodes, knowledge base and itineraries",
+  "check": "ok"
  },
  "e09eb1e94858": {
   "en": "Navigating India (Bonus Ep), Episode {1}, {2} min",
