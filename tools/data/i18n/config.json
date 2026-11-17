@@ -44,7 +44,10 @@
   },
   "pages": [
     "index.html",
-    "enquire.html"
+    "enquire.html",
+    "destinations/panchgani.html",
+    "destinations/kenya.html",
+    "destinations/india.html"
   ],
   "english_binding": [
     "terms.html",
@@ -60,6 +63,7 @@
     "Report a translation error",
     "Language",
     "The English version is binding.",
+    "Our terms, privacy and safety pages are in English.",
     "Coming soon"
   ],
   "js": [

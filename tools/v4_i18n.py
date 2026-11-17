@@ -27,6 +27,7 @@ prototypes/v4 and is never edited by hand. The method (docs/v4-i18n.md has it in
 Commands:
   python3 tools/v4_i18n.py jobs           write tools/data/i18n/work/<lang>-todo.json: what still needs translating
   python3 tools/v4_i18n.py ingest LANG STAGE FILE   take an agent's output (STAGE a|b|tr|back|check) into <lang>.json
+  python3 tools/v4_i18n.py prep LANG STAGE OUT [PAGE]   one pass's input (translate|review|back|compare), blind for back
   python3 tools/v4_i18n.py build          write every page whose segments all pass; mark the English pages
   python3 tools/v4_i18n.py check          the check report: tools/data/i18n/report.md (and .json); exit 1 on a FAIL
 """
@@ -91,7 +92,7 @@ DATE_RX = [
     ("my", re.compile(r"\b((?:January|February|March|April|May|June|July|August|September|October|November|December)) (\d{4})\b")),
 ]
 URL_RX = re.compile(r"https?://[^\s<>\"']+|www\.[^\s<>\"']+|[\w.+-]+@[\w-]+\.[\w.-]+\w")
-NUM_RX = re.compile(r"(?<![\w.,])(?:US\$|[$€£₹])?\d+(?:[,.:]\d+)*(?![\w])")
+NUM_RX = re.compile(r"(?<![\w.,])(?:US\$|[$€£₹])?\d+(?:[,.:]\d+)*(?:(?![\w])|(?=(?:km|m|h|min|kg)(?![\w])))")     # 1,500m: the number, the unit stays
 TOKEN_RX = re.compile(r"\{(\d+)\}")
 TAG_PH = re.compile(r"</?x(\d+)/?>")
 
@@ -132,6 +133,8 @@ def lock_text(text, toks):
         take(rx, kind)
     if KEEP_RX:
         take(KEEP_RX, "keep")
+    take(DECADE_RX, "decade")
+    take(ORD_RX, "ord")
     take(NUM_RX, "num")
     take(re.compile(r"[{}<>]"), "keep")
     spans.sort()
@@ -195,7 +198,20 @@ def fmt_date(kind, v, lang):
     return v
 
 
+DECADE_RX = re.compile(r"(?<![\w])\d{3}0s(?![\w])")     # the 1960s: one locked fact, written the language's way
+DECADE = {"de": "%ser", "fr": "années %s", "es": "años %s", "zh": "%s年代"}
+
+
+ORD_RX = re.compile(r"(?<![\w])\d+(?:st|nd|rd|th)(?![\w])")     # 7th: an ordinal, written the language's way
+ORD = {"de": "%s.", "fr": "%se", "es": "%s.º", "zh": "第%s"}
+
+
 def render_tok(kind, v, lang):
+    if kind == "ord":
+        n = v[:-2]
+        return ("1er" if lang == "fr" and n == "1" else ORD.get(lang, "%s") % n) if lang in ORD else v
+    if kind == "decade":
+        return DECADE.get(lang, "%ss") % v[:-1]
     if kind == "num":
         return fmt_num(v, lang)
     if kind in dict(DATE_RX):
@@ -715,6 +731,32 @@ def cmd_ingest(lang, stage, path):
     print("%s %s: %d taken" % (lang, stage, n))
 
 
+def cmd_prep(lang, stage, out, page=None):
+    """The input file of one pass (chat 28): STAGE translate | review | back | compare, for the segments of
+    PAGE (a path prefix, e.g. destinations/kenya.html) or of every page. back gets the translation only (blind)."""
+    segs = all_segments()
+    mem = load_mem(lang)
+    res = {}
+    for k, s in segs.items():
+        if page and not s.where.startswith(page):
+            continue
+        r = mem.get(k) or {}
+        facts = {"{%d}" % (i + 1): "%s: %s" % (kind, v) + ("" if render_tok(kind, v, lang) == v else
+                 " (printed as: %s)" % render_tok(kind, v, lang)) for i, (kind, v) in enumerate(s.toks)}
+        if stage == "translate" and not r.get("tr") and not r.get("a" if out.endswith("-a.json") else "b"):
+            res[k] = {"en": s.prot, "where": s.where, "facts": facts}
+        elif stage == "review" and not r.get("tr") and r.get("a") and r.get("b"):
+            res[k] = {"en": s.prot, "where": s.where, "facts": facts, "a": r["a"], "b": r["b"]}
+        elif stage == "back" and r.get("tr") and not r.get("back"):
+            res[k] = r["tr"]
+        elif stage == "compare" and r.get("tr") and r.get("back") and not r.get("check"):
+            res[k] = {"en": s.prot, "facts": facts, "translation": r["tr"], "back": r["back"]}
+    os.makedirs(os.path.dirname(os.path.abspath(out)), exist_ok=True)
+    with open(out, "w", encoding="utf-8") as fh:
+        json.dump(res, fh, ensure_ascii=False, indent=1)
+    print("%s %s: %d segments -> %s" % (lang, stage, len(res), out))
+
+
 # ---------------------------------------------------------------- build
 def out_rel(page, lang):
     return "%s/%s" % (LANGS[lang]["dir"], page)
@@ -934,6 +976,7 @@ def build_page(page, lang, avail_by_page, mem):
         FACTS_LANG[0] = None
     here_pages = {p for p, av in avail_by_page.items() if lang in av}
     out = relink(out, page, lang, here_pages)
+    out, binding = mark_binding(out, lang)
     out = re.sub(r'<html lang="en"', '<html lang="%s"' % L["html"], out, count=1)
     canon = "https://paraglidingatlas.com/%s/%s" % (L["dir"], "" if page == "index.html" else page)
     eng = "https://paraglidingatlas.com/%s" % ("" if page == "index.html" else page)
@@ -955,12 +998,39 @@ def build_page(page, lang, avail_by_page, mem):
             '<span aria-hidden="true"> · </span><a href="%s../%s">%s</a></p></div><!--/i18n-->\n'
             % (html.escape(ui["Translated from English."]), eng_href, html.escape(ui["Read the English page"]),
                up(page), CFG["report_error"], html.escape(ui["Report a translation error"])))
+    if binding:
+        note = note.replace("</p></div>", '</p><p class="v4-i18n-bind">%s %s</p></div>' % (
+            html.escape(ui[BIND_UI]), html.escape(ui["The English version is binding."])), 1)
     # at the end of the page's main content, in the flow (the nav floats over the top of some pages)
     if "</main>" in out:
         out = out.replace("</main>", note + "</main>", 1)
     else:
         out = re.sub(r'(<main\b[^>]*>\n?)', lambda m: m.group(1) + note, out, count=1)
     return out
+
+
+BIND_UI = "Our terms, privacy and safety pages are in English."
+
+
+def mark_binding(src, lang):
+    """Links to the pages whose English is binding (config english_binding, never translated): hreflang="en",
+    the binding sentence as their title, and a small EN after a plain-text link. Returns (src, any link marked)."""
+    names = "|".join(re.escape(p[:-5]) for p in CFG["english_binding"])
+    rx = re.compile(r'<a(\s[^>]*?href="(?:\.\./)*(?:%s)\.html(?:#[^"]*)?"[^>]*)>(.*?)</a>' % names, re.S)
+    title = html.escape(UI[lang]["The English version is binding."], quote=True)
+    hit = [False]
+
+    def mark(m):
+        attrs, inner = m.group(1), m.group(2)
+        hit[0] = True
+        if "hreflang=" not in attrs:
+            attrs += ' hreflang="en"'
+        if "title=" not in attrs:
+            attrs += ' title="%s"' % title
+        if "<" not in inner and inner.strip():
+            inner += '<span class="v4-en" lang="en" aria-hidden="true">EN</span>'
+        return "<a%s>%s</a>" % (attrs, inner)
+    return rx.sub(mark, src), hit[0]
 
 
 def load_ui():
@@ -1120,11 +1190,15 @@ if __name__ == "__main__":
                 bad += 1
                 continue
             pr = check_seg(a[1], segs[k]["en"], v)
+            waived = list(data[k].get("waive") or {}) if isinstance(data[k], dict) else []
+            pr = [x for x in pr if not any(x.startswith(w) for w in waived if w in SOFT)]
             if pr:
                 print("%s: %s | EN: %s | TR: %s" % (k, "; ".join(pr), segs[k]["en"][:80], v[:80]))
                 bad += 1
         print("%d problems" % bad)
         sys.exit(1 if bad else 0)
+    elif a[0] == "prep" and len(a) in (4, 5):
+        cmd_prep(a[1], a[2], a[3], a[4] if len(a) == 5 else None)
     elif a[0] == "segments":
         for s in page_segments(a[1]):
             print(s.key, s.where, s.prot, s.toks)

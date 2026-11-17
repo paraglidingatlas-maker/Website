@@ -67,3 +67,9 @@ html[lang="zh-Hans"] :is(.kit-kicker,.op-kicker){letter-spacing:.08em}
   html:not([lang="en"]) .page-wrap>nav .v4-nav a{font-size:.84rem;padding-left:.35rem;padding-right:.35rem}
   html:not([lang="en"]) .page-wrap>nav .nav-cta{padding-left:.9rem;padding-right:.9rem}
 }
+
+/* links to the pages whose English is binding (terms, privacy, cookies, participant agreement, safety):
+   a small EN after the link, and the sentence in the note at the end of the page (chat 28) */
+.v4-en{display:inline-block;margin-left:.3em;padding:.08em .32em;font-size:.68em;line-height:1.2;font-weight:600;
+  letter-spacing:.06em;vertical-align:.12em;border:1px solid currentColor;border-radius:2px;opacity:.7;text-decoration:none}
+.v4-i18n-note p.v4-i18n-bind{margin-top:.35rem}
