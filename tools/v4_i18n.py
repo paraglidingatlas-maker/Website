@@ -133,6 +133,7 @@ def lock_text(text, toks):
         take(rx, kind)
     if KEEP_RX:
         take(KEEP_RX, "keep")
+    take(LICENCE_RX, "keep")      # CC BY-SA 4.0: a licence's version, never a decimal (chat 28)
     take(BIG_RX, "big")
     take(DECADE_RX, "decade")
     take(ORD_RX, "ord")
@@ -207,6 +208,7 @@ ORD_RX = re.compile(r"(?<![\w])\d+(?:st|nd|rd|th)(?![\w])")     # 7th: an ordina
 ORD = {"de": "%s.", "fr": "%se", "es": "%s.º", "zh": "第%s"}
 
 
+LICENCE_RX = re.compile(r"(?:(?<=CC BY )|(?<=CC BY-SA )|(?<=CC BY-ND )|(?<=CC BY-NC )|(?<=CC BY-NC-SA )|(?<=CC0 ))\d\.\d(?![\w.])")
 BIG_RX = re.compile(r"(?<![\w.,])\d+(?:\.\d+)? (?:million|billion)(?![\w-])")   # 1.4 billion: one fact (zh 14亿)
 
 
