@@ -510,6 +510,99 @@ def episode_listen_button(src):
     return src[:close] + "  " + btn + "\n      " + src[close:]
 
 
+SHARE_MARK = ("<!--v4u-share-->", "<!--/v4u-share-->")
+
+
+def _ver(name):
+    import hashlib
+    with open(os.path.join(V4, name), "rb") as fh:
+        return hashlib.md5(fh.read()).hexdigest()[:8]
+
+
+def episode_share(src):
+    """Owner, 12 Nov 2026 (.claude/CLAUDE.md): every film on the site has a Share button. An episode's goes under
+    its Watch / Listen row: a filmed episode shares its YouTube link (the row's own Watch on YouTube), one with no
+    film the episode page. The button, its styles and its script (v4-share.js) are the media pages' own."""
+    if 'data-v2="ep"' not in src:
+        return src
+    row = re.search(r'<div class="cd-listen ep2-listen">', src)
+    if not row:
+        return src
+    title = re.search(r'<span class="ep2-h1">(.*?)</span>', src)
+    title = plain(title.group(1)) if title else ""
+    yt = re.search(r'<a class="cd-lbtn" href="(https://www\.youtube\.com/watch\?v=[\w-]+)"', src[row.start():row.start() + 4000])
+    attrs = ' data-share-url="%s"' % html.escape(yt.group(1)) if yt else ""
+    if title:
+        attrs += ' data-share-title="%s"' % html.escape(title)
+    btn = '<div class="ep2-share"><button type="button" data-share%s></button></div>' % attrs
+    if 'class="ep2-share"' in src:
+        src = re.sub(r'<div class="ep2-share">.*?</div>', lambda m: btn, src, count=1, flags=re.S)
+    else:
+        a, b = element_span(src, row.start(), "div")
+        src = src[:b] + "\n      " + btn + src[b:]
+    return _share_head(src)
+
+
+def _share_head(src, up="../"):
+    head = ('<link rel="stylesheet" href="%sv4-share.css?v=%s">'
+            '<script defer src="%sv4-share.js?v=%s"></script>' % (up, _ver("v4-share.css"), up, _ver("v4-share.js")))
+    return put_block(src, SHARE_MARK, head, "</head>")
+
+
+def _stem(tag):
+    m = re.search(r'(?:data-v4-)?srcset="[^"]*/([\w-]+)\.\w+"', tag)
+    return m.group(1) if m else None
+
+
+def trip_photo_share(src):
+    """Owner, 12 Nov 2026 (.claude/CLAUDE.md): every photo has a Share button; a photo shares the page's own link,
+    page#photo-name, which opens on it. The trip galleries (the fly-through, tools/v4_flythrough.py): each frame gets
+    the id photo-<file name> and a Share button in its caption; v2-immersive.js part 14 scrolls a #photo- arrival to
+    its frame. The overview's photographs (.kfly, India's only ones): a step's words go with the slide of its
+    number, so the step takes the id (the page scrolls to it natively) and the button; a photo the gallery already
+    shares is left to the gallery."""
+    ids = set(re.findall(r'\sid="(photo-[\w-]+)"', src))
+    n0 = src.count("data-share")
+
+    def btn(cls, stem, title):
+        return ('<button type="button" class="%s" data-share data-share-url="#photo-%s" data-share-title="%s"></button>'
+                % (cls, stem, html.escape(title)))
+
+    def fig(m):
+        tag, body = m.group(1), m.group(2)
+        stem = _stem(body)
+        if not stem or "data-share" in body:
+            return m.group(0)
+        title = html.unescape(re.search(r'data-title="([^"]*)"', tag).group(1)) or \
+            html.unescape(re.search(r'alt="([^"]*)"', body).group(1))
+        if ' id="' not in tag:
+            tag = tag[:-1] + ' id="photo-%s">' % stem
+            ids.add("photo-" + stem)
+        body = body.replace("</figcaption>", btn("gxa-share", stem, title) + "</figcaption>", 1)
+        return tag + body + "</figure>"
+    src = re.sub(r'(<figure class="gxa-f[^"]*"[^>]*>)(.*?)</figure>', fig, src, flags=re.S)
+
+    k = src.find('<div class="kfly" id="kfly">')
+    if k >= 0:
+        slides = [(_stem(s), html.unescape(a)) for s, a in re.findall(
+            r'<div class="kfly-slide[^"]*"><picture>(<source [^>]*>)<img [^>]*alt="([^"]*)"', src[k:])]
+        steps = list(re.finditer(r'<div class="kfly-step[^"]*">\s*<div class="kfly-copy">', src[k:]))
+        if len(steps) == len(slides):
+            for (stem, alt), m in reversed(list(zip(slides, steps))):
+                a, b = element_span(src, k + m.start(), "div")
+                step = src[a:b]
+                if not stem or "data-share" in step or ("photo-" + stem) in ids:
+                    continue
+                c = step.index('<div class="kfly-copy">')
+                cend = element_span(step, c, "div")[1] - len("</div>")
+                step = step[:cend] + btn("kfly-share", stem, alt) + step[cend:]
+                step = step.replace('<div class="kfly-step', '<div id="photo-%s" class="kfly-step' % stem, 1)
+                src = src[:a] + step + src[b:]
+    if src.count("data-share") > n0 or SHARE_MARK[0] in src:
+        src = _share_head(src)
+    return src
+
+
 # ------------------------------------------------------------------------------------------------ 14
 def _slug(s):
     return re.sub(r"[^a-z0-9]+", "-", plain(s).lower()).strip("-")
@@ -1214,6 +1307,7 @@ def page(rel, src):
     if rel.startswith("episodes/"):
         src = episode_labels(src)
         src = episode_listen_button(src)
+        src = episode_share(src)
     if rel.startswith("knowledge-base/"):
         src = kb_jump(src)
         src = kb_tile_art(rel, src)
@@ -1235,6 +1329,7 @@ def page(rel, src):
         src = trip_hero_weight(rel, src)
         src = gallery_lazy(src)
         src = trip_subnav(src)
+        src = trip_photo_share(src)
         src = media_script(src)
     src = footage_gone(src)
     src = ux_scripts(rel, src)

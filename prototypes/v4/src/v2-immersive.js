@@ -886,6 +886,16 @@
     }
     w.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(frame); }, { passive: true });
     w.addEventListener("resize", frame);
+    // a shared photo's link (page#photo-name, v4-share.js): the section scrolls to where that frame is on screen
+    function land() {
+      var f = /^#photo-/.test(location.hash) ? d.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+      var k = figs.indexOf(f);
+      if (k < 0) return;
+      var r = track.getBoundingClientRect(), span = r.height - w.innerHeight;
+      w.scrollTo(0, w.pageYOffset + r.top + Math.max(1, span) * (k + .5) / n);
+    }
+    w.addEventListener("hashchange", land);
+    if (d.readyState === "complete") setTimeout(land, 60); else w.addEventListener("load", function () { setTimeout(land, 60); });
     frame();
   }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();

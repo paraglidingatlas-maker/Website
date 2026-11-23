@@ -17,8 +17,10 @@
     if (!url) { vid = box.querySelector("[data-vid]") || (box.parentNode && box.parentNode.querySelector("[data-vid]")); url = vid ? YT + vid.getAttribute("data-vid") : location.href.split("#")[0]; }
     var t = b.getAttribute("data-share-title");
     if (!t) { var h = box.querySelector("[data-t]") || box.querySelector(".gffv-t, h3, h2"); t = h ? h.textContent.trim() : ""; }
-    var page = d.title;
-    t = t ? t + " · " + page.replace(/: Paragliding Atlas$/, "") : page;
+    // the page's name without the site's (": Paragliding Atlas" or " | Paragliding Atlas"); a button whose title is
+    // the page's own name (an episode's film) gets the site's name instead of its own twice
+    var page = d.title.replace(/\s*[:|]\s*Paragliding Atlas$/, "");
+    t = t ? t + " · " + (t === page ? "Paragliding Atlas" : page) : d.title;
     return { url: abs(url), title: t, text: b.getAttribute("data-share-text") || t };
   }
 
