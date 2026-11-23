@@ -4,7 +4,7 @@ Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
 the owner's current queue and what the last session learnt doing it.
 
-## Chat 29 (23 Nov 2026): the SRS 2027 race calendar is online; chat 30 starts here
+## Chat 29 (23 Nov 2026): the SRS 2027 race calendar is online; its next chat starts here
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
 has grown long, hand over without asking the owner: write the handover at the top of this file, update the
 owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
@@ -14,8 +14,9 @@ give the owner the prompt to paste.
 **LIVE (main f7b9c8e, 23 Nov, checked live at 1440 and 390):** https://paraglidingatlas.com/srs-2027-calendar.html and, in the header slot that
 carried "Live from SRS", "SRS 2027 Calendar" (owner, 23 Nov: "put this online and put the lable in the place next
 instead of srs lvie"; later the same day: "use different styles for different pics and give me a link where i can
-clik and enter the calendar"). Chat 29 keeps the box "w-srs-calendar" until the last months are in; chat 30 is not
-opened yet (nothing to do until the design chat sends pages).
+clik and enter the calendar"). September went in the same evening (ten pages; October to December to come). Chat 29
+keeps the box "w-srs-calendar" until the last months are in. "Chat 30" is chat 26's successor
+(session_018Da7i86qZYkBT7A9sorMu7: media, newsletter, audit), so the calendar's next chat is 31.
 
 **What is where.**
 - The page: `tools/v4_srs_calendar.py` writes `prototypes/v4/srs-2027-calendar.html` on tools/v4_media.py's shell;
@@ -59,8 +60,8 @@ its parts sit closer there now (src/v2.css, end).
 better. The footer and sitemap.html do not list the calendar (the header and search do). The owner has not said
 whether he likes the label "SRS 2027 Calendar" and the address /srs-2027-calendar.html (both my choice).
 
-**Other chats.** Chat 25 (session_018Da7i8zPtHufNaTNd97Qik, Tapalpa), chat 26 (session_018Da7i9BMwW1ZnHKGamjYUC,
-media/newsletter/audit), chat 28 (session_018Da7i6VpcykdWKJdoa1b2T, translations wave 2, branch
+**Other chats.** Chat 25 (session_018Da7i8zPtHufNaTNd97Qik, Tapalpa), chat 30 (session_018Da7i86qZYkBT7A9sorMu7,
+media/newsletter/audit, from chat 26), chat 28 (session_018Da7i6VpcykdWKJdoa1b2T, translations wave 2, branch
 claude/i18n-wave2). Message all three before every push to main. Push main and claude/v2-prototype, never forced;
 merge, don't rebase.
 

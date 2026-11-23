@@ -56,7 +56,7 @@ PAGES = [("01-cover", "cover", "Cover", "Task 6", "a pilot in an orange pod harn
          ("07-june", "june", "June", "Task 4", "a gaggle of red, yellow and green wings over the hills"),
          ("08-july", "july", "July", "Task 3", "an orange, yellow and white wing seen from the side"),
          ("09-august", "august", "August", "Task 3", "an orange wing over fields and greenhouses"),
-         ("10-september", "september", "September", "", ""),
+         ("10-september", "september", "September", "Task 3", "a gaggle of wings in a blue sky above the clouds"),
          ("11-october", "october", "October", "", ""),
          ("12-november", "november", "November", "", ""),
          ("13-december", "december", "December", "", "")]
