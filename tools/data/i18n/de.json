@@ -2611,6 +2611,16 @@
   "a": "Nächste Etappe: Task {1}, Fr. {2} <x1>→</x1>",
   "tr": "Nächste Etappe: Task {1}, Fr. {2} <x1>→</x1>"
  },
+ "8084e50f4e9d": {
+  "en": "{1} {2} Calendar",
+  "a": "{1}-Kalender {2}",
+  "date": "2026-11-23",
+  "b": "{1} {2} Kalender",
+  "tr": "{1}-Kalender {2}",
+  "tr_note": "a: German compound needs the hyphen (SRS-Kalender 2027); b's spaced 'SRS 2027 Kalender' is an English-style open compound.",
+  "back": "{1} calendar {2}",
+  "check": "ok"
+ },
  "820e5c196403": {
   "en": "Full size, EUR {1}",
   "b": "Volle Größe, {1} EUR",
@@ -3496,6 +3506,15 @@
   "a": "Was Kenia als Flugziel bietet",
   "tr": "Was Kenia als Flugziel bietet",
   "back": "What Kenya offers as a flying destination",
+  "check": "ok"
+ },
+ "adab5090ac6a": {
+  "en": "Calendar",
+  "a": "Kalender",
+  "date": "2026-11-23",
+  "b": "Kalender",
+  "tr": "Kalender",
+  "back": "Calendar",
   "check": "ok"
  },
  "aee92f3275ab": {

@@ -47,8 +47,12 @@ menu.innerHTML =
 '<div class="v4-menu-search" role="search"><label class="v4-menu-lab" for="v4q">Search episodes, the knowledge base and trips</label>' +
 '<input id="v4q" type="search" autocomplete="off" placeholder="Search" aria-controls="v4hits">' +
 '<ol class="v4-hits" id="v4hits" aria-live="polite"></ol></div>' +
-(d.querySelector(".v4-nav .v4-live") ? '<a class="v4-live v4-menu-live" href="' + d.querySelector(".v4-nav .v4-live").getAttribute("href") + '">' +
-'<i aria-hidden="true"></i><span>Live from SRS <small>Tapalpa, Mexico &middot; photos and videos</small></span></a>' : "") +
+(function (a) {
+if (!a) return "";
+var mark = a.querySelector("svg, i"), words = a.querySelector(".v4-live-l"), sub = a.getAttribute("data-sub");
+return '<a class="' + (a.classList.contains("v4-cal") ? "v4-live v4-cal" : "v4-live") + ' v4-menu-live" href="' + a.getAttribute("href") + '">' +
+(mark ? mark.outerHTML : "") + '<span>' + (words ? words.innerHTML : "") + (sub ? ' <small>' + sub + '</small>' : "") + '</span></a>';
+})(d.querySelector(".v4-nav .v4-live")) +
 '<ul class="v4-menu-go">' + go + '</ul>' +
 (d.querySelector(".v4-nav .v4-wr") ? '<a class="v4-wr v4-menu-wr" href="' + BASE + 'record-attempt.html">' +
 d.querySelector(".v4-nav .v4-wr svg").outerHTML + 'Speed Record <small>Kerio Valley, Kenya &middot; 18 Jan to 12 Feb 2027</small></a>' : "") +

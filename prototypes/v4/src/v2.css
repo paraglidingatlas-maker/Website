@@ -2934,6 +2934,12 @@ html .tm-cards{left:var(--edge-x);width:min(26rem,calc(100% - 2 * var(--edge-x))
 .v4-live-s{display:none}
 @media (max-width:1299px){.page-wrap>nav .v4-nav .v4-live-l{display:none}.page-wrap>nav .v4-nav .v4-live-s{display:inline}}
 @media (max-width:1099px){.page-wrap>nav .v4-nav a.v4-live{font-size:0;gap:0}}
+/* THE SRS 2027 CALENDAR in the same slot when nothing is live (owner, 23 Nov 2026; tools/v4_nav_live.py STAND): a
+   small calendar mark in orange in place of the dot, and nothing pulses. Its words are longer than "Live from SRS",
+   so "Calendar" alone comes in sooner. */
+.v4-cal svg{width:14px;height:14px;flex:none;fill:none;stroke:var(--orange);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:1419px){.page-wrap>nav .v4-nav .v4-cal .v4-live-l{display:none}.page-wrap>nav .v4-nav .v4-cal .v4-live-s{display:inline}}
+.v4-menu-live.v4-cal svg{width:18px;height:18px}
 .v4-menu-live{display:inline-flex;align-self:flex-start;align-items:center;gap:.6rem;margin:0 0 var(--sp-3);color:var(--white);
   font-family:var(--font-display);font-weight:600;font-size:1.05rem;text-decoration:none}
 .v4-menu-live small{display:block;font-family:var(--font-body);font-weight:400;font-size:var(--fs-small);color:var(--gray-light)}

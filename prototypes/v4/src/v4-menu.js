@@ -62,9 +62,14 @@
       '<div class="v4-menu-search" role="search"><label class="v4-menu-lab" for="v4q">Search episodes, the knowledge base and trips</label>' +
       '<input id="v4q" type="search" autocomplete="off" placeholder="Search" aria-controls="v4hits">' +
       '<ol class="v4-hits" id="v4hits" aria-live="polite"></ol></div>' +
-      // Live from SRS, as in the header (tools/v4_nav_live.py), only while the header carries it
-      (d.querySelector(".v4-nav .v4-live") ? '<a class="v4-live v4-menu-live" href="' + d.querySelector(".v4-nav .v4-live").getAttribute("href") + '">' +
-        '<i aria-hidden="true"></i><span>Live from SRS <small>Tapalpa, Mexico &middot; photos and videos</small></span></a>' : "") +
+      // the header's slot after Speed Record (tools/v4_nav_live.py): Live from SRS while a comp runs, else the SRS 2027
+      // calendar; only while the header carries it, with the header's own mark and words (so a translated page's too)
+      (function (a) {
+        if (!a) return "";
+        var mark = a.querySelector("svg, i"), words = a.querySelector(".v4-live-l"), sub = a.getAttribute("data-sub");
+        return '<a class="' + (a.classList.contains("v4-cal") ? "v4-live v4-cal" : "v4-live") + ' v4-menu-live" href="' + a.getAttribute("href") + '">' +
+          (mark ? mark.outerHTML : "") + '<span>' + (words ? words.innerHTML : "") + (sub ? ' <small>' + sub + '</small>' : "") + '</span></a>';
+      })(d.querySelector(".v4-nav .v4-live")) +
       '<ul class="v4-menu-go">' + go + '</ul>' +
       // the record attempt, as in the header (tools/v4_nav_record.py), only when the header carries it, so it
       // goes with the header's item at the switch-over while the record page is prototype-only

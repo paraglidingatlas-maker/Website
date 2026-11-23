@@ -114,7 +114,8 @@ def needs(src, root=None):
 NEW_PAGES = set() if IS_V2 else {"expeditions.html", "destinations/panchgani.html", "record-attempt.html",
                                     "media.html", "media-srs-piedrahita-2026.html",
                                     "media-srs-tapalpa-2026.html", "media-pwc-pegalajar-2026.html",
-                                    "media-srs-bassano-2026.html"}     # Panchgani: a new tour (chat 11); Media (owner's yes, 4 Nov); the event pages (chat 22)
+                                    "media-srs-bassano-2026.html",
+                                    "srs-2027-calendar.html"}     # Panchgani: a new tour (chat 11); Media (owner's yes, 4 Nov); the event pages (chat 22); the SRS 2027 race calendar (chat 29)
 
 
 if not os.path.isdir(DIR):

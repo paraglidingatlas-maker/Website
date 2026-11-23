@@ -2644,6 +2644,15 @@
   "b": "Siguiente etapa: manga {1}, vie {2} <x1>→</x1>",
   "tr": "Siguiente etapa: manga {1}, vie. {2} <x1>→</x1>"
  },
+ "8084e50f4e9d": {
+  "en": "{1} {2} Calendar",
+  "a": "Calendario {1} {2}",
+  "date": "2026-11-23",
+  "b": "Calendario {1} {2}",
+  "tr": "Calendario {1} {2}",
+  "back": "Calendar {1} {2}",
+  "check": "ok"
+ },
  "820e5c196403": {
   "en": "Full size, EUR {1}",
   "a": "Tamaño completo, {1} EUR",
@@ -3542,6 +3551,15 @@
   "b": "Lo que ofrece Kenia como destino de vuelo",
   "tr": "Lo que ofrece Kenia como destino de vuelo",
   "back": "What Kenya offers as a flying destination",
+  "check": "ok"
+ },
+ "adab5090ac6a": {
+  "en": "Calendar",
+  "a": "Calendario",
+  "date": "2026-11-23",
+  "b": "Calendario",
+  "tr": "Calendario",
+  "back": "Calendar",
   "check": "ok"
  },
  "aee92f3275ab": {

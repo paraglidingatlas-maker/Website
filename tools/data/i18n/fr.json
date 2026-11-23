@@ -2620,6 +2620,15 @@
   "b": "Étape suivante : manche {1}, ven. {2} <x1>→</x1>",
   "tr": "Étape suivante : manche {1}, ven. {2} <x1>→</x1>"
  },
+ "8084e50f4e9d": {
+  "en": "{1} {2} Calendar",
+  "a": "Calendrier {1} {2}",
+  "date": "2026-11-23",
+  "b": "Calendrier {1} {2}",
+  "tr": "Calendrier {1} {2}",
+  "back": "Calendar {1} {2}",
+  "check": "ok"
+ },
  "820e5c196403": {
   "en": "Full size, EUR {1}",
   "a": "Pleine résolution, {1} EUR",
@@ -3500,6 +3509,15 @@
   "b": "Ce que le Kenya offre comme destination de vol",
   "tr": "Ce que le Kenya offre comme destination de vol",
   "back": "What Kenya offers as a flying destination",
+  "check": "ok"
+ },
+ "adab5090ac6a": {
+  "en": "Calendar",
+  "a": "Calendrier",
+  "date": "2026-11-23",
+  "b": "Calendrier",
+  "tr": "Calendrier",
+  "back": "Calendar",
   "check": "ok"
  },
  "aee92f3275ab": {

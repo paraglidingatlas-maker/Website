@@ -2640,6 +2640,16 @@
   "b": "下一站：任务{1}，周五{2} <x1>→</x1>",
   "tr": "下一站：任务{1}，周五{2} <x1>→</x1>"
  },
+ "8084e50f4e9d": {
+  "en": "{1} {2} Calendar",
+  "a": "{1} {2}赛历",
+  "date": "2026-11-23",
+  "b": "{1} {2}日历",
+  "tr": "{1} {2}日历",
+  "tr_note": "b: the link is a downloadable wall calendar (monthly photo pages); 日历 is that object, 赛历 only means a race schedule.",
+  "back": "{1} {2} calendar",
+  "check": "ok"
+ },
  "820e5c196403": {
   "en": "Full size, EUR {1}",
   "a": "全尺寸，EUR {1}",
@@ -3527,6 +3537,16 @@
   "b": "肯尼亚作为飞行目的地的优势",
   "tr": "肯尼亚作为飞行目的地能提供什么",
   "back": "What Kenya can offer as a flying destination",
+  "check": "ok"
+ },
+ "adab5090ac6a": {
+  "en": "Calendar",
+  "a": "赛历",
+  "date": "2026-11-23",
+  "b": "日历",
+  "tr": "日历",
+  "tr_note": "b: 日历, same word as the long form; 赛历 would read as a fixtures list, not a calendar to download.",
+  "back": "Calendar",
   "check": "ok"
  },
  "aee92f3275ab": {
