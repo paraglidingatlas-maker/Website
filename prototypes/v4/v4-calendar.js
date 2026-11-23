@@ -28,7 +28,7 @@
       dl = lb.querySelector(".cal-lb-dl"), sh = lb.querySelector(".cal-lb-sh"),
       prev = lb.querySelector(".cal-lb-p"), next = lb.querySelector(".cal-lb-nx");
   var items = sheets.map(function (s) {
-    var a = s.querySelector(".cal-page"), i = a.querySelector("img"), h = s.querySelector("h3"), n = s.querySelector(".cal-no"),
+    var a = s.querySelector(".cal-page"), i = a.querySelector("img"), h = s.querySelector("h2"), n = s.querySelector(".cal-no"),
         l = s.querySelector(".cal-dl"), b = s.querySelector("[data-share]");
     return { id: s.id, big: a.getAttribute("href"), small: i.currentSrc || i.src, alt: i.alt, name: h ? h.textContent : "",
              no: n ? n.textContent : "", file: l ? l.getAttribute("download") : "", title: b ? b.getAttribute("data-share-title") : "", a: a };

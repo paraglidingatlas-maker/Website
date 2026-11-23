@@ -90,7 +90,7 @@ def sheet(k, stem, slug, name, task, shows):
   </a>
   <figcaption>
     <span class="cal-no">%(no)s</span>
-    <h3 data-t>%(name)s</h3>
+    <h2 data-t>%(name)s</h2>
     %(note)s
     <span class="cal-ph">Photo: SRS Tapalpa 2026, %(task)s</span>
     <span class="cal-act">
