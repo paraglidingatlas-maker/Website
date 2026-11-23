@@ -4,6 +4,62 @@ Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
 the owner's current queue and what the last session learnt doing it.
 
+## Chat 29 (23 Nov 2026): the SRS 2027 race calendar is online; chat 30 starts here
+**Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
+has grown long, hand over without asking the owner: write the handover at the top of this file, update the
+owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules"), open the next numbered
+chat yourself with the session tools (create_session), and give the owner its link. If create_session is refused,
+give the owner the prompt to paste.
+
+**LIVE (main 5b4eed1, 23 Nov):** https://paraglidingatlas.com/srs-2027-calendar.html and, in the header slot that
+carried "Live from SRS", "SRS 2027 Calendar" (owner, 23 Nov: "put this online and put the lable in the place next
+instead of srs lvie"; later the same day: "use different styles for different pics and give me a link where i can
+clik and enter the calendar"). Chat 29 keeps the box "w-srs-calendar" until the last months are in; chat 30 is not
+opened yet (nothing to do until the design chat sends pages).
+
+**What is where.**
+- The page: `tools/v4_srs_calendar.py` writes `prototypes/v4/srs-2027-calendar.html` on tools/v4_media.py's shell;
+  `prototypes/v4/v4-calendar.css`, `v4-calendar.js` (the rise, the viewer: fit, tap for full size, arrows, swipe,
+  Download, Share). The pages' images: `prototypes/v4/img/calendar/srs-2027/NN-name-1200.webp` and `-2400.webp`,
+  `share.jpg` (the cover, the link preview), `srs-2027.ics` (Add to Calendar). The design chat's sources:
+  `tools/srs_calendar_2027/`. Three layouts in turn on a laptop (centred; left with its words beside it; right):
+  the owner's "different styles for different pics". Each page: Download (the 2400px WebP) and Share (#month).
+- The nav: `tools/v4_nav_live.py` LIVE (a dated comp, the pulsing dot) else STAND (the calendar: a calendar mark,
+  no dot). Classes `v4-live v4-cal`; CSS in src/v2.css after LIVE FROM SRS; the phone menu (src/v4-menu.js) copies
+  the header's mark and words. "Calendar" alone below 1420px (below 1700px on a translated page), the mark alone
+  below 1150px. To put a live comp back: set LIVE's page and dates; it takes the slot for those days by itself.
+- Owned page: `srs-*.html` joined owned() and OWNED_GIT in tools/v4_build.py; NEW_PAGES in tools/v2_site.py (so
+  sitemap.xml gets its line at the switch); tools/v2_switch.py publishes .ics files.
+- Translations: the nav's two new strings went through the whole pipeline into tools/data/i18n/<lang>.json
+  ("{1}-Kalender {2}", "Calendrier {1} {2}", "Calendario {1} {2}", "{1} {2}日历"; Kalender, Calendrier, Calendario,
+  日历). The calendar page itself is English only (not in config "pages"). A new nav label always needs this first,
+  or the home and Enquire lose their languages at the next build. Chat 28 told (its branch claude/i18n-wave2
+  changes the same memory files: sorted keys, should merge clean).
+
+**A new month (the design chat, session_018Da7i8GvmpTqQuksKDnhdU, pushes to branch
+claude/srs-calendar-2027-assets, folder handoff/srs-calendar-2027/pages, and messages the website chat):**
+`git fetch origin claude/srs-calendar-2027-assets`; copy the month's two files (10-september-1200.webp,
+-2400.webp ... 13-december) into prototypes/v4/img/calendar/srs-2027/ (never commit handoff/ on main); add the
+photo's task and one line on what it shows to PAGES in tools/v4_srs_calendar.py (the alt text); `python3
+tools/v4_srs_calendar.py; python3 tools/v4_nav_live.py`; commit; worktree; `python3 tools/v4_gates.py --quick`
+(needs `pip install fonttools==4.66.0 brotli==1.2.0 numpy==2.4.6 contourpy==1.3.3 babel==2.18.0` in a new
+container); copy back the pages whose hashes moved; message chats 25, 26, 28; push main and claude/v2-prototype.
+The page says by itself which months are here and which are on their way; when all twelve are in, the "On Their
+Way" section goes. Then: wallpapers and the complete PDF (the design chat makes them; add their downloads to the
+opening and tell the owner).
+
+**Also fixed:** the header scrolled sideways between 941 and 999px since the language menu joined it (live too);
+its parts sit closer there now (src/v2.css, end).
+
+**Not done / for the owner.** Downloads are WebP (what the design chat made); a JPG or the PDF would suit printing
+better. The footer and sitemap.html do not list the calendar (the header and search do). The owner has not said
+whether he likes the label "SRS 2027 Calendar" and the address /srs-2027-calendar.html (both my choice).
+
+**Other chats.** Chat 25 (session_018Da7i8zPtHufNaTNd97Qik, Tapalpa), chat 26 (session_018Da7i9BMwW1ZnHKGamjYUC,
+media/newsletter/audit), chat 28 (session_018Da7i6VpcykdWKJdoa1b2T, translations wave 2, branch
+claude/i18n-wave2). Message all three before every push to main. Push main and claude/v2-prototype, never forced;
+merge, don't rebase.
+
 ## Chat 28 starts here (17 Nov 2026, from chat 27): the translations, wave 2
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
 has grown long, hand over without asking the owner: write the handover at the top of this file, update the
