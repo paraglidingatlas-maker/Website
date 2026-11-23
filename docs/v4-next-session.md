@@ -4,6 +4,68 @@ Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
 the owner's current queue and what the last session learnt doing it.
 
+## Chat 30 starts here (23 Nov 2026, from chat 26): Share buttons on episode pages, audit backlog, parked owner items
+**Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
+has grown long, hand over without asking the owner: write the handover at the top of this file, update the
+owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules", box w-media), open the next
+numbered chat yourself with the session tools (create_session), and give the owner its link. If create_session is
+refused, give the owner the prompt to paste.
+
+**Branch:** start claude/chat30 from claude/chat26 (it holds this handover; main merged in up to chat 29's
+calendar work). Merge origin/main first, never rebase or force.
+
+**Other website chats (message before every push to main):** chat 25 (session_018Da7i8zPtHufNaTNd97Qik) Tapalpa,
+owns COMPS["tapalpa"], media-2026/srs-tapalpa, photo/, the podium code; chat 28 (session_018Da7i6VpcykdWKJdoa1b2T)
+translations de/fr/es/zh; chat 29 (session_018Da7i8f9zcFTF92MPPAuQT) SRS 2027 calendar page + nav label (from
+23 Nov tools/v4_nav_live.py writes "SRS 2027 Calendar" when no comp is live). No pushes to main 02:30-08:00 UTC.
+Pushing to main may be blocked by this session's permission check: then ask the owner for an explicit "yes, push
+to main" and retry.
+
+**LIVE, done by chat 26 (88b5d9d, 17 Nov, checked live), owner's answers of 17 Nov:**
+- media.html "Next" slot hidden while nothing is next (hero() hide attr; v4-media.js slate() sets el.hidden;
+  .e-slate[hidden]). UPCOMING in tools/v4_media.py is now EMPTY; Tapalpa moved to SEASON (key "tapalpa", span
+  8-14 Nov; chat 25's landing page looks itself up by that key: keep it). A new comp goes into UPCOMING again.
+- Tapalpa T1-T3 films in V (comp "tapalpa"): 16 comp videos, 37,029 views counted 17 Nov via vidIQ
+  vidiq_get_videos_by_ids (reads work without the verification). Chips: Tapalpa 3. NV = len(V).
+- Episode count 86 (owner): tools/data/v4_facts.json episode_count value 86 + replacements; v4_polish.feed_count()
+  now returns that value; words() hyphenates ("Eighty-six").
+- Pegalajar/Bassano "Comp dates/Pilots [to supply]" rows and the "Whether it was flown" TBD dropped
+  (tools/v4_comp_gallery.py); season-foot note lost its "(own dates [to supply])" tail.
+- Bir Billing card "autumn 2027" (kb_editorial.py, prototypes/v4/knowledge-base/navigators.html).
+
+**Build lessons:** fresh worktree, `./build.sh`, `python3 tools/v4_build.py` (needs pip: fonttools brotli contourpy
+babel==2.18.0; gates need `pip install playwright==1.63.0`, browsers already in /opt/pw-browsers). v4_build does
+NOT regenerate media.html or the comp pages: run `python3 tools/v4_media.py` and `python3 tools/v4_comp_gallery.py
+pwc bassano piedrahita` after it (never tapalpa: chat 25, needs /home/user/media-2026). Chat 29 says run
+tools/v4_nav_live.py after regenerating a media page; it once rewrote the de/fr/es/zh live cue to English, so check
+git diff on prototypes/v4/{de,fr,es,zh}/ and never commit English there. Then gates with `python3 -m http.server
+8765` at the worktree root (full run about 12 min). CI (deploy.yml) builds the live site from prototypes/v4 via
+v2_switch, so copy back only prototypes/v4 files. Never `git checkout -- .` after copying back.
+
+**Your queue:**
+1. Share buttons (owner, 17 Nov: "you decide, whichever helps the site"; chat 26's pick): the 93 episode pages
+   first (their video; films share their YouTube link: v4-share.js/.css, `<button type="button" data-share>`,
+   data-share-url/-title; see .claude/CLAUDE.md), then the destination pages' photos. New user-facing JS strings
+   need a line in tools/data/i18n/config.json "js" (tell chat 28).
+2. Audit backlog (14 Nov): podcast.html "Latest videos" dead (YouTube feeds/videos.xml 404; build-time list
+   instead); service worker never installs (offline.html 404 at /assets/v4/, scope; tools/v4_pwa.py,
+   tools/v2_switch.py); gallery thumbs 800w only (add 400w + srcset), Bassano/Pegalajar maxresdefault thumbs
+   (tools/v4_media.py thumb()), home himalayas-1.webp 374 KB; tag pages "each with a full transcript" untrue
+   (generate_tag_pages.py 289, 331, 363), tags/pegalajar misses "Highlights Day 1 - PWCA Superfinal 2026"; touch
+   targets < 44px (footer links, cd-ts, library search, media e-watch); podcast ep-play-btn-lg no aria-label;
+   dead link up-paragliders.com/news/almost-200km-...; sitemap.html two meta descriptions; home links index.html
+   not /; library "date to supply" (v4_library_e.py:120); Tom Lolies og:title double space (episode-meta.json).
+3. Parked by the owner ("we do later", 17 Nov), ask only when they bring it up: Panchgani FAQ (pilot rating,
+   price cover; tools/v4_panchgani.py 49, 66); vidIQ verification, then update_video yhHoRUJtyOY title "Miguel
+   Gutiérrez Explains Flying in Tapalpa, Mexico during SRS - Advance Edition 2026" and the FOuAWMeoxs4
+   thumbnail (2027->2026: the two 7s at x 599-615 and 833-849, y 656-682, Inter Regular 37px white); talk
+   thumbnails (Torsten: owner's frame or YouTube link; XC Mag photo is copyright); Newsletter 01 MailerLite DRAFT
+   203910238840031114 (copy docs/emails/newsletter-01-tapalpa.html.txt): needs the new video link, Miguel line,
+   postal address, opener, send date. Race story for it: Matthijs Groeneveld led after T1, Andrés Tello Alvarado
+   led from T2 to the end; Lynsey Haynes led the women T1 to the end; CryMeARiviuk shared the team lead with Gin 2
+   after T1, then led alone. NEVER send, schedule or test-send without the owner's explicit yes; preview only.
+- Rules: nothing invented ([to supply]); never two builds at once; never force-push; no model IDs in commits.
+
 ## Chat 28 starts here (17 Nov 2026, from chat 27): the translations, wave 2
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
 has grown long, hand over without asking the owner: write the handover at the top of this file, update the
