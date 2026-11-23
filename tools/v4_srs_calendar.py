@@ -83,7 +83,7 @@ def sheet(k, stem, slug, name, task, shows):
     alt = ("The cover of the SRS 2027 race calendar: %s, and the five rounds with their dates" % shows if not k else
            "The %s 2027 page of the SRS race calendar: %s, beside the month's dates" % (name, shows))
     big, small = "%s%s-2400.webp" % (IMG, stem), "%s%s-1200.webp" % (IMG, stem)
-    dl = "SRS-2027-Race-Calendar-%s.webp" % stem.title()
+    dl = "SRS-2027-Race-Calendar-%s.webp" % name
     return '''<figure class="cal-sheet cal-%(lay)s" id="%(slug)s" data-share-box style="--glow:url(%(small)s)">
   <a class="cal-page" href="%(big)s" data-cal="%(i)d" aria-label="%(name)s: see the page large">
     <img src="%(small)s" srcset="%(small)s 1200w, %(big)s 2400w" sizes="(max-width:760px) 100vw, min(1500px, 88vw)" width="%(w)d" height="%(h)d" alt="%(alt)s"%(lazy)s>
@@ -99,7 +99,7 @@ def sheet(k, stem, slug, name, task, shows):
     </span>
   </figcaption>
 </figure>''' % dict(lay="abc"[k % 3], slug=slug, small=small, big=big, i=k, name=name, w=W, h=H, alt=E(alt), no=no(k), note=note, task=task, dl=dl,
-                    title="SRS 2027 Race Calendar, %s" % name, lazy="" if not k else ' loading="lazy" decoding="async"')
+                    title=name, lazy="" if not k else ' loading="lazy" decoding="async"')
 
 
 def page():

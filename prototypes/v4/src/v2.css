@@ -3010,6 +3010,9 @@ body:has(.v2-origin) .cta-band .cta-card{background-image:url("img/dust-soft.web
    tightens just above the menu button's breakpoint, so Enquire Now is never cut off and nothing scrolls sideways */
 @media (max-width:1149px){.page-wrap>nav .v4-nav a.v4-wr,.page-wrap>nav .v4-nav a.v4-live{font-size:0;gap:0}}
 @media (min-width:941px) and (max-width:1023px){.page-wrap>nav .nav-links.v4-nav{gap:.6rem}}
+/* and below 1000px the row was still some 20px too wide since the language menu joined it (it scrolled sideways):
+   the parts of the header sit closer there (chat 29, 23 Nov 2026) */
+@media (min-width:941px) and (max-width:999px){.page-wrap>nav{column-gap:.6rem}.page-wrap>nav .nav-links.v4-nav{gap:.45rem}}
 /* app:start */
 /* ===== The app (tools/v4_pwa.py) ===== */
 .pwa-install{order:-1;background:none;border:1px solid var(--live);color:var(--white);
