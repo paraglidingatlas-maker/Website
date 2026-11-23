@@ -11,7 +11,7 @@ owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modu
 chat yourself with the session tools (create_session), and give the owner its link. If create_session is refused,
 give the owner the prompt to paste.
 
-**LIVE (main 5b4eed1, 23 Nov):** https://paraglidingatlas.com/srs-2027-calendar.html and, in the header slot that
+**LIVE (main f7b9c8e, 23 Nov, checked live at 1440 and 390):** https://paraglidingatlas.com/srs-2027-calendar.html and, in the header slot that
 carried "Live from SRS", "SRS 2027 Calendar" (owner, 23 Nov: "put this online and put the lable in the place next
 instead of srs lvie"; later the same day: "use different styles for different pics and give me a link where i can
 clik and enter the calendar"). Chat 29 keeps the box "w-srs-calendar" until the last months are in; chat 30 is not
@@ -47,6 +47,10 @@ container); copy back the pages whose hashes moved; message chats 25, 26, 28; pu
 The page says by itself which months are here and which are on their way; when all twelve are in, the "On Their
 Way" section goes. Then: wallpapers and the complete PDF (the design chat makes them; add their downloads to the
 opening and tell the owner).
+
+**Lesson:** a `url()` inside a CSS custom property in a style attribute (`style="--glow:url(img/x.webp)"`) passes the
+dry run and breaks live: the switch rewrites it for the page, but the browser reads it from the stylesheet's folder
+(assets/v4/). Put the picture in a real `background-image` on an element instead (the page's .cal-glow).
 
 **Also fixed:** the header scrolled sideways between 941 and 999px since the language menu joined it (live too);
 its parts sit closer there now (src/v2.css, end).
