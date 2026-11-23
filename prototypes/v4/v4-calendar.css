@@ -13,12 +13,14 @@
 
 /* ---------------------------------------------------------------- the glow */
 .cal-open,.cal-sheet{position:relative;isolation:isolate}
-.cal-open::before,.cal-sheet::before{content:"";position:absolute;z-index:-1;pointer-events:none;background:var(--glow) center/cover no-repeat;
+/* a real element with its picture in its own style attribute: a url() in a custom property would be read from this
+   file's folder once the site is switched (assets/v4/), not the page's */
+.cal-glow{position:absolute;z-index:-1;pointer-events:none;background:center/cover no-repeat;
   filter:blur(70px) saturate(1.35);opacity:.5;transform:translateZ(0)}
-.cal-open::before{inset:-10% -10% 8%}
+.cal-open>.cal-glow{inset:-10% -10% 8%}
 .cal-open::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:linear-gradient(180deg,rgba(20,21,25,.72) 0%,rgba(20,21,25,.35) 30%,rgba(20,21,25,.6) 72%,var(--bg) 100%)}
-.cal-sheet::before{inset:6% 4% 14%;opacity:.42}
+.cal-sheet>.cal-glow{inset:6% 4% 14%;opacity:.42}
 
 /* ---------------------------------------------------------------- the opening */
 .cal-open{padding:clamp(7rem,13vh,10rem) var(--edge-x,var(--gutter)) 0;min-height:min(100svh,980px);display:flex;flex-direction:column;justify-content:center}
@@ -69,7 +71,7 @@
   .cal-sheet:is(.cal-b,.cal-c) h2{font-size:clamp(2rem,3.1vw,3rem);letter-spacing:-.01em}
   .cal-sheet:is(.cal-b,.cal-c) .cal-rd b{display:block;margin:0}
   .cal-sheet:is(.cal-b,.cal-c) .cal-act{margin-top:.8rem}
-  .cal-sheet:is(.cal-b,.cal-c)::before{inset:6% 12% 6%}
+  .cal-sheet:is(.cal-b,.cal-c)>.cal-glow{inset:6% 12% 6%}
   .cal-js .cal-sheet.cal-b .cal-page{transform:translateX(-46px) scale(.985)}
   .cal-js .cal-sheet.cal-c .cal-page{transform:translateX(46px) scale(.985)}
   .cal-js .cal-sheet:is(.cal-b,.cal-c).is-in .cal-page{transform:none}
@@ -78,8 +80,8 @@
 /* a page rises a little as it comes into view (v4-calendar.js adds .cal-js; without it nothing is hidden) */
 .cal-js .cal-sheet .cal-page{opacity:0;transform:translateY(34px) scale(.975);transition:opacity .9s var(--cal-ease),transform 1.1s var(--cal-ease)}
 .cal-js .cal-sheet.is-in .cal-page{opacity:1;transform:none}
-.cal-js .cal-sheet::before{opacity:0;transition:opacity 1.4s var(--cal-ease) .15s}
-.cal-js .cal-sheet.is-in::before{opacity:.42}
+.cal-js .cal-sheet>.cal-glow{opacity:0;transition:opacity 1.4s var(--cal-ease) .15s}
+.cal-js .cal-sheet.is-in>.cal-glow{opacity:.42}
 
 /* ---------------------------------------------------------------- on their way */
 .cal-wait{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1rem}
@@ -138,7 +140,7 @@
 @media (max-width:760px){
   .cal .cal-sheet{width:100%;padding-top:3.2rem}
   .cal-page{border-radius:0;box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
-  .cal-sheet::before{inset:0 0 30%}
+  .cal-sheet>.cal-glow{inset:0 0 30%}
   .cal-sheet figcaption{grid-template-columns:auto minmax(0,1fr);padding:.9rem var(--gutter) 0}
   .cal-rd{grid-column:1 / 3}
   .cal-ph{grid-column:1 / 3}
@@ -149,6 +151,6 @@
 @media (prefers-reduced-motion:reduce){
   .cal-open-sheet{transform:none;transition:none}
   .cal-js .cal-sheet .cal-page{opacity:1;transform:none;transition:none}
-  .cal-js .cal-sheet::before{opacity:.42;transition:none}
+  .cal-js .cal-sheet>.cal-glow{opacity:.42;transition:none}
 }
-@media print{.cal-open::before,.cal-sheet::before,.cal-lb{display:none}}
+@media print{.cal-glow,.cal-lb{display:none}}
