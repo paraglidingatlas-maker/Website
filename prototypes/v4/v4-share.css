@@ -3,6 +3,8 @@
   font:inherit;font-size:var(--fs-small,.875rem);cursor:pointer;-webkit-tap-highlight-color:transparent;border-bottom:1px solid transparent}
 [data-share] svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 [data-share]:hover{color:var(--orange,#ff7517)}
+/* without script a Share button does nothing: not shown */
+@media (scripting:none){[data-share]{display:none}}
 [data-share]:focus-visible{outline:2px solid var(--orange,#ff7517);outline-offset:2px}
 
 .v4sh{position:fixed;inset:0;z-index:2147483000;display:grid;align-items:end;justify-items:center;background:rgba(8,9,11,.55);
