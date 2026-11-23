@@ -211,8 +211,7 @@ def answer_block(tag, eps):
             people.append(n)
     near = Counter(t for e in eps for t in (e.get("tags") or []) if t != tag)
     adjacent = [t for t, _ in near.most_common(4)]
-    withT = sum(1 for e in eps if os.path.exists(os.path.join(ROOT, "transcripts",
-                                                              e["slug"] + ".vtt")))
+    withT = transcripts(eps)
     bits = ["Paragliding Atlas has %d conversations tagged %s, %d of them with a complete "
             "transcript you can read and search on the page."
             % (len(eps), tag.lower(), withT)]
@@ -233,6 +232,19 @@ def answer_block(tag, eps):
 V2_ON = "all"
 
 _YT = None
+def transcripts(eps):
+    """How many of eps have a transcript on their page (transcripts/<slug>.vtt). Audit, 14 Nov 2026: the pages
+    said every episode had one, and not every one does."""
+    return sum(1 for e in eps if os.path.exists(os.path.join(ROOT, "transcripts", e["slug"] + ".vtt")))
+
+
+def with_transcripts(n, total):
+    """'every one with a full transcript' only when it is true; else how many have one."""
+    if n == total:
+        return "every one with a full transcript" if total > 1 else "with a full transcript"
+    return "%d with a full transcript" % n if n else "no transcript yet"
+
+
 def youtube_ids():
     """Video ids in youtube_video_ids.json. A thumbnail is only ever drawn for
     an id listed there, never for one taken on trust from elsewhere."""
@@ -286,8 +298,8 @@ def build():
     for tag in sorted(by_tag):
         eps = sorted(by_tag[tag], key=lambda e: (e.get("published") or "", e["title"]), reverse=True)
         s = slug(tag)
-        desc = "%d Paragliding Atlas conversations about %s, each with a full transcript." % (
-            len(eps), tag.lower())
+        desc = "%d Paragliding Atlas conversations about %s, %s." % (
+            len(eps), tag.lower(), with_transcripts(transcripts(eps), len(eps)))
         if len(desc) > 158:
             desc = desc[:155].rsplit(" ", 1)[0] + "..."
         rows = []
@@ -328,13 +340,14 @@ def build():
             '  <p class="breadcrumb"><a href="../index.html">Home</a> / <a href="../tags.html">Topics</a> / %s</p>\n'
             '  <span class="kicker">Topic</span>\n'
             '  <h1><span class="tg-hash">#</span>%s</h1>\n'
-            '  <p class="tg-count">%d conversation%s, every one with a full transcript.</p>\n'
+            '  <p class="tg-count">%d conversation%s, %s.</p>\n'
             '</header>\n\n'
             '<p class="tg-answer">%s</p>\n\n'
             '<ul class="tg-list%s">\n%s\n</ul>\n\n'
             '<p class="tg-back"><a href="../tags.html">All topics</a> &middot; '
             '<a href="../library.html">Full episode library</a></p>\n'
             % (esc(tag), esc(tag), len(eps), "" if len(eps) == 1 else "s",
+               with_transcripts(transcripts(eps), len(eps)),
                esc(answer_block(tag, eps)), " tg-v2" if v2 else "", "\n".join(rows)))
         open(os.path.join(OUT, s + ".html"), "w", encoding="utf-8").write(
             HEAD.format(title=esc("%s | Paragliding Atlas episodes" % tag), desc=esc(desc),
@@ -360,11 +373,13 @@ def build():
             '  <span class="kicker">Browse By Subject</span>\n'
             '  <h1>Topics</h1>\n'
             '  <p class="tg-count">%d subjects across %d conversations. '
-            'Every episode carries a full transcript.</p>\n'
+            '%s.</p>\n'
             '</header>\n\n<div class="tg-cloud">\n%s</div>\n\n'
             '<p class="tg-back"><a href="library.html">Full episode library</a> &middot; '
             '<a href="knowledge-base.html">Knowledge base</a></p>\n'
-            % (len(by_tag), len(meta), cards))
+            % (len(by_tag), len(meta),
+               "Every episode carries a full transcript" if transcripts(meta) == len(meta)
+               else "%d of them carry a full transcript" % transcripts(meta), cards))
     open(os.path.join(ROOT, "tags.html"), "w", encoding="utf-8").write(
         HEAD.format(title="Topics | Paragliding Atlas", desc=esc(desc), ogtitle="Topics",
                     base=BASE, path="tags.html", jsonld=jsonld, root="", body=body, sortver=_sortver()))

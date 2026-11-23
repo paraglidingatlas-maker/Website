@@ -36,3 +36,19 @@
   }
   if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();
+
+/* Audit, 14 Nov 2026: the feed's open player has a big play button with no name (rss-feed.js, never edited,
+   names only the row's own); it takes the row's words, "Play episode", as the rows are drawn. */
+(function () {
+  var d = document, w = window;
+  function name(root) {
+    [].forEach.call(root.querySelectorAll(".ep-play-btn-lg:not([aria-label])"), function (b) { b.setAttribute("aria-label", "Play episode"); });
+  }
+  function init() {
+    var grid = d.getElementById("liveFeedGrid");
+    if (!grid) return;
+    name(grid);
+    if (w.MutationObserver) new MutationObserver(function () { name(grid); }).observe(grid, { childList: true, subtree: true });
+  }
+  if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();
