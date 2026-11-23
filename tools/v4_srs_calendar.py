@@ -56,7 +56,7 @@ PAGES = [("01-cover", "cover", "Cover", "Task 6", "a pilot in an orange pod harn
          ("07-june", "june", "June", "Task 4", "a gaggle of red, yellow and green wings over the hills"),
          ("08-july", "july", "July", "Task 3", "an orange, yellow and white wing seen from the side"),
          ("09-august", "august", "August", "Task 3", "an orange wing over fields and greenhouses"),
-         ("10-september", "september", "September", "", ""),
+         ("10-september", "september", "September", "Task 3", "a gaggle of wings in a blue sky above the clouds"),
          ("11-october", "october", "October", "", ""),
          ("12-november", "november", "November", "", ""),
          ("13-december", "december", "December", "", "")]
@@ -84,7 +84,8 @@ def sheet(k, stem, slug, name, task, shows):
            "The %s 2027 page of the SRS race calendar: %s, beside the month's dates" % (name, shows))
     big, small = "%s%s-2400.webp" % (IMG, stem), "%s%s-1200.webp" % (IMG, stem)
     dl = "SRS-2027-Race-Calendar-%s.webp" % name
-    return '''<figure class="cal-sheet cal-%(lay)s" id="%(slug)s" data-share-box style="--glow:url(%(small)s)">
+    return '''<figure class="cal-sheet cal-%(lay)s" id="%(slug)s" data-share-box>
+  <span class="cal-glow" style="background-image:url(%(small)s)" aria-hidden="true"></span>
   <a class="cal-page" href="%(big)s" data-cal="%(i)d" aria-label="%(name)s: see the page large">
     <img src="%(small)s" srcset="%(small)s 1200w, %(big)s 2400w" sizes="(max-width:760px) 100vw, min(1500px, 88vw)" width="%(w)d" height="%(h)d" alt="%(alt)s"%(lazy)s>
   </a>
@@ -146,7 +147,8 @@ def page():
      of the calendar lies on a glow of its own colours, like a print under a lamp. Reduced motion and no JavaScript
      show the finished page; without JavaScript a page opens as its large image. -->
 <div class="cal" data-n="%(n)d">
-<header class="cal-open" style="--glow:url(%(c_small)s)">
+<header class="cal-open">
+  <span class="cal-glow" style="background-image:url(%(c_small)s)" aria-hidden="true"></span>
   <div class="cal-open-in">
     <div class="cal-open-copy">
       <span class="kit-kicker">Sports-Class Racing Series &middot; Download</span>

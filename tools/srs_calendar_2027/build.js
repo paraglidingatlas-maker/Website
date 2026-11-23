@@ -18,6 +18,7 @@ const PAGES=[
  {file:'07-june',type:'tower',m:6,img:'t6_t4118_dusk.jpg',pos:'100% 50%',cap:'Tapalpa, Mexico',sub:'SRS 2026 · Task 4'},
  {file:'08-july',type:'month',cls:'sl',m:7,img:'t6_t345_fx.jpg',pos:'46% 50%',cap:'Tapalpa, Mexico',sub:'SRS 2026 · Task 3'},
  {file:'09-august',type:'depth',m:8,img:'t6_t357_depth.jpg',cut:'t6_t357_cut.png',pos:'30% 50%',cap:'Tapalpa, Mexico',sub:'SRS 2026 · Task 3'},
+ {file:'10-september',type:'light',m:9,img:'t6_t376_day.jpg',pos:'50% 12%',cap:'Tapalpa, Mexico',sub:'SRS 2026 · Task 3'},
 ];
 const MN=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const MS=MN.map(x=>x.slice(0,3).toUpperCase());
@@ -145,6 +146,25 @@ html,body{width:297mm;height:210mm;background:#141519;color:#f6f4f4;font-family:
 .dp .card .ft .c{font:400 2.7mm/1 "DM Sans";color:#b9b8bd;margin-top:1.6mm}
 .dp .card .ft .t{font:600 3.1mm/1 Poppins;letter-spacing:.14em;text-align:right}
 .dp .card .ft .s{font:500 1.9mm/1 "DM Sans";letter-spacing:.28em;text-transform:uppercase;color:#8d8c92;margin-top:1.8mm;text-align:right}
+/* light: a gallery print on paper, ink type */
+.lt{background:#f6f4f4;color:#141519}
+.lt .lab{color:#5c5d63}
+.lt .ph{position:absolute;left:12mm;right:12mm;top:12mm;height:126mm;background-size:cover}
+.lt .cap{position:absolute;left:17mm;top:127mm;color:#f6f4f4;font:600 2.5mm/1 "DM Sans";letter-spacing:.3em;text-transform:uppercase;text-shadow:0 0 2mm rgba(20,21,25,.5)}
+.lt .cr{position:absolute;right:17mm;top:127mm;color:#f6f4f4;font:500 2.5mm/1 "DM Sans";letter-spacing:.3em;text-transform:uppercase;text-shadow:0 0 2mm rgba(20,21,25,.5)}
+.lt .hd{position:absolute;left:12mm;top:147mm;display:flex;gap:6mm;align-items:center}
+.lt .hd i{width:9mm;height:.5mm;background:#e8112d}
+.lt .name{position:absolute;left:11mm;top:153mm;font:800 var(--fs)/1 Poppins;letter-spacing:-.03em;text-transform:uppercase;white-space:nowrap}
+.lt .rd{position:absolute;left:12mm;bottom:12mm;display:flex;align-items:baseline;gap:5mm}
+.lt .rd .tag{font:800 2.9mm/1 Poppins;letter-spacing:.14em;background:#e8112d;color:#fff;padding:1.7mm 3mm;transform:skewX(-12deg)}
+.lt .rd .p{font:700 5.2mm/1 Poppins;text-transform:uppercase}
+.lt .rd .t{font:600 3.2mm/1 Poppins;letter-spacing:.14em}
+.lt .gr{position:absolute;right:12mm;top:146mm;width:104mm;display:grid;grid-template-columns:repeat(7,1fr);isolation:isolate}
+.lt .gr .h{font:600 1.9mm/1 "DM Sans";letter-spacing:.22em;color:#77767c;text-align:center;padding-bottom:2.4mm;border-bottom:.3mm solid #141519;margin-bottom:.8mm}
+.lt .gr .c{position:relative;height:var(--rh);display:flex;align-items:center;justify-content:center;font:500 3.9mm/1 Poppins;font-variant-numeric:tabular-nums}
+.lt .gr .c.we{color:#9a999e}.lt .gr .c.rc{color:#fff;font-weight:700}
+.lt .gr .c.rc::before{content:"";position:absolute;inset:.8mm 0;background:#e8112d;z-index:-1}
+.lt .gr .c.rc.f::before{left:1mm;border-radius:1mm 0 0 1mm}.lt .gr .c.rc.l::before{right:1mm;border-radius:0 1mm 1mm 0}
 `;
 function cover(p){return `<div class="pg cv"><div class="ph" style="background-image:url(file://${DIR}/${p.img});background-position:${p.pos}"></div><div class="sh"></div>
 <div class="top"><span class="lab">Sports-Class Racing Series</span><span class="lab">${p.cap}</span></div>
@@ -195,9 +215,21 @@ function depth(p){const y=2027,m=p.m,first=new Date(Date.UTC(y,m-1,1)),days=new 
 <div class="cap"><b>${p.cap}</b><span class="lab">${p.sub}</span><span class="lab">Photo · Aninder Singh / Paragliding Atlas</span></div>
 <div class="card"><div class="hd"><span class="lab">${MN[m-1]} 2027</span><span class="lab red">${r&&mine[0]?'Race month':''}</span></div><div class="gr" style="--rh:${rows>5?8.4:9.6}mm">${cells}</div>
 ${r?`<div class="ft"><div><div class="lab red">${lab}</div><div class="p">${r.place}</div><div class="c">${r.country}</div></div><div><div class="t">${span(r)}</div><div class="s">${r.status}</div></div></div>`:''}</div></div>`}
+function light(p){const y=2027,m=p.m,first=new Date(Date.UTC(y,m-1,1)),days=new Date(Date.UTC(y,m,0)).getUTCDate(),off=(first.getUTCDay()+6)%7,rows=Math.ceil((off+days)/7);
+ const iso=n=>`${y}-${pad(m)}-${pad(n)}`, rOf=n=>ROUNDS.find(r=>iso(n)>=r.from&&iso(n)<=r.to);
+ let cells=['MON','TUE','WED','THU','FRI','SAT','SUN'].map(h=>`<div class="h">${h}</div>`).join('')+'<div></div>'.repeat(off);
+ for(let n=1;n<=days;n++){const col=(off+n-1)%7,r=rOf(n);let c='c'+(col>4?' we':'');if(r){c+=' rc';if(iso(n)==r.from||col==0||n==1)c+=' f';if(iso(n)==r.to||col==6||n==days)c+=' l'}cells+=`<div class="${c}">${n}</div>`}
+ const mine=ROUNDS.filter(r=>r.from.slice(5,7)==pad(m)||r.to.slice(5,7)==pad(m)), nxt=ROUNDS.find(r=>r.from>iso(days)), r=mine[0]||nxt;
+ const L=MN[m-1].length, fs=Math.min(26,150/(L*0.69));
+ return `<div class="pg lt"><div class="ph" style="background-image:url(file://${DIR}/${p.img});background-position:${p.pos}"></div>
+<div class="cap">${p.cap} · ${p.sub}</div><div class="cr">Photo · Aninder Singh / Paragliding Atlas</div>
+<div class="hd"><span class="lab">SRS <span class="red">/</span> 2027</span><i></i><span class="lab">${pad(m)} / 12</span></div>
+<div class="name" style="--fs:${fs.toFixed(1)}mm">${MN[m-1]}</div>
+${r?`<div class="rd"><span class="tag">${mine[0]?'':'NEXT · '}ROUND ${pad(r.n)}</span><span class="p">${r.place}, ${r.country}</span><span class="t">${span(r)}</span><span class="lab">${r.status}</span></div>`:`<div class="rd"><span class="lab">Season complete</span></div>`}
+<div class="gr" style="--rh:${rows>5?7.4:8.8}mm">${cells}</div></div>`}
 (async()=>{const only=process.argv.slice(2);const b=await chromium.launch({args:['--allow-file-access-from-files']});
  const pg=await b.newPage({viewport:{width:1123,height:794},deviceScaleFactor:3});const all=[];
- for(const p of PAGES){const body=p.type=='cover'?cover(p):p.type=='strip'?strip(p):p.type=='tower'?tower(p):p.type=='depth'?depth(p):month(p);all.push(body);if(only.length&&!only.includes(p.file))continue;
+ for(const p of PAGES){const body=p.type=='cover'?cover(p):p.type=='strip'?strip(p):p.type=='tower'?tower(p):p.type=='depth'?depth(p):p.type=='light'?light(p):month(p);all.push(body);if(only.length&&!only.includes(p.file))continue;
   const f=`${DIR}/${p.file}.html`;fs.writeFileSync(f,`<!doctype html><meta charset="utf-8"><style>${CSS}</style>${body}`);
   await pg.goto('file://'+f);await pg.evaluate(()=>document.fonts.ready);await pg.waitForTimeout(300);
   await pg.screenshot({path:`${OUT}/${p.file}.png`,clip:{x:0,y:0,width:1122.5,height:793.7}})}
