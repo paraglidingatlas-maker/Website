@@ -1463,6 +1463,19 @@ if (!quiet && audio && !audio.paused && e.target.closest && e.target.closest(".e
 });
 }
 if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
+})();
+(function () {
+var d = document, w = window;
+function name(root) {
+[].forEach.call(root.querySelectorAll(".ep-play-btn-lg:not([aria-label])"), function (b) { b.setAttribute("aria-label", "Play episode"); });
+}
+function init() {
+var grid = d.getElementById("liveFeedGrid");
+if (!grid) return;
+name(grid);
+if (w.MutationObserver) new MutationObserver(function () { name(grid); }).observe(grid, { childList: true, subtree: true });
+}
+if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", init); else init();
 })();</script><!--/v4u-latest-js-->
 </body>
 </html>
