@@ -1,0 +1,67 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Paragliding Atlas//SRS 2027 Race Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:SRS 2027 Race Calendar
+BEGIN:VEVENT
+UID:srs-2027-round-01@paraglidingatlas.com
+DTSTAMP:20261123T000000Z
+DTSTART;VALUE=DATE:20270315
+DTEND;VALUE=DATE:20270322
+SUMMARY:SRS 2027 Round 01 · Lijak\, Slovenia
+LOCATION:Lijak\, Slovenia
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+DESCRIPTION:Sports-Class Racing Series 2027. Dates as listed on sportsracingseries.org/events on 23 Nov 2026.
+URL:https://sportsracingseries.org/events/
+END:VEVENT
+BEGIN:VEVENT
+UID:srs-2027-round-02@paraglidingatlas.com
+DTSTAMP:20261123T000000Z
+DTSTART;VALUE=DATE:20270620
+DTEND;VALUE=DATE:20270628
+SUMMARY:SRS 2027 Round 02 · St Jean Montclar\, France (provisional)
+LOCATION:St Jean Montclar\, France
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+DESCRIPTION:Sports-Class Racing Series 2027. Dates as listed on sportsracingseries.org/events on 23 Nov 2026.
+URL:https://sportsracingseries.org/events/
+END:VEVENT
+BEGIN:VEVENT
+UID:srs-2027-round-03@paraglidingatlas.com
+DTSTAMP:20261123T000000Z
+DTSTART;VALUE=DATE:20270717
+DTEND;VALUE=DATE:20270725
+SUMMARY:SRS 2027 Round 03 · Gemona\, Italy
+LOCATION:Gemona\, Italy
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+DESCRIPTION:Sports-Class Racing Series 2027. Dates as listed on sportsracingseries.org/events on 23 Nov 2026.
+URL:https://sportsracingseries.org/events/
+END:VEVENT
+BEGIN:VEVENT
+UID:srs-2027-round-04@paraglidingatlas.com
+DTSTAMP:20261123T000000Z
+DTSTART;VALUE=DATE:20270822
+DTEND;VALUE=DATE:20270830
+SUMMARY:SRS 2027 Round 04 · Krushevo\, North Macedonia
+LOCATION:Krushevo\, North Macedonia
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+DESCRIPTION:Sports-Class Racing Series 2027. Dates as listed on sportsracingseries.org/events on 23 Nov 2026.
+URL:https://sportsracingseries.org/events/
+END:VEVENT
+BEGIN:VEVENT
+UID:srs-2027-round-05@paraglidingatlas.com
+DTSTAMP:20261123T000000Z
+DTSTART;VALUE=DATE:20270912
+DTEND;VALUE=DATE:20270920
+SUMMARY:SRS 2027 Round 05 · St André\, France
+LOCATION:St André\, France
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+DESCRIPTION:Sports-Class Racing Series 2027. Dates as listed on sportsracingseries.org/events on 23 Nov 2026.
+URL:https://sportsracingseries.org/events/
+END:VEVENT
+END:VCALENDAR
