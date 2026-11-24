@@ -47,7 +47,7 @@ ROUNDS = [("01", "Lijak", "Slovenia", "15 to 21 Mar 2027", 3, "Confirmed"),
           ("04", "Krushevo", "North Macedonia", "22 to 29 Aug 2027", 8, "Confirmed"),
           ("05", "St André", "France", "12 to 19 Sep 2027", 9, "Confirmed")]
 # file stem, anchor, name, the Tapalpa task its photo is from, what the photo shows
-PAGES = [("01-cover", "cover", "Cover", "Task 6", "a pilot in an orange pod harness under a dark sky"),
+PAGES = [("01-cover", "cover", "Cover", "Task 1", "an orange and grey wing above a pilot in a dark pod harness, tracking marks drawn over the photograph"),
          ("02-january", "january", "January", "Task 6", "a pink, orange and yellow wing against dark forest"),
          ("03-february", "february", "February", "Task 6", "an orange and teal wing, the ground a blur behind it"),
          ("04-march", "march", "March", "Task 4", "a white and blue wing banking"),
@@ -61,7 +61,7 @@ PAGES = [("01-cover", "cover", "Cover", "Task 6", "a pilot in an orange pod harn
          ("12-november", "november", "November", "Task 6", "a pilot in a yellow pod under a yellow wing, seen from above over rows of greenhouses"),
          ("13-december", "december", "December", "Task 6",
           "a pilot in a pod harness under a lime wing, the daylight sky graded to sunset colours")]
-PDF = "SRS-2027-Race-Calendar.pdf"   # the whole calendar (the design chat, 24 Nov 2026); its button shows when the file is there
+PDF = "SRS-2027-Race-Calendar.pdf"   # the whole calendar (tools/srs_calendar_pdf.py, with share.jpg); its button shows when the file is there
 W, H = 2400, 1696              # every page: A4 landscape
 
 
