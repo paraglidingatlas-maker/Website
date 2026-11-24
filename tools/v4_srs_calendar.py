@@ -67,6 +67,13 @@ def ready(stem):
     return all(os.path.isfile(os.path.join(V4, IMG, "%s-%d.webp" % (stem, w))) for w in (1200, 2400))
 
 
+def pic(stem, w):
+    """a page's image with ?v= its content hash: a corrected page (October's wing, 24 Nov) then reaches a visitor
+    who has the old one cached under the same name"""
+    name = "%s%s-%d.webp" % (IMG, stem, w)
+    return "%s?v=%s" % (name, M.ver(name))
+
+
 def round_of(k):
     """the round held in month k (0 = the cover), or None"""
     return next((r for r in ROUNDS if r[4] == k), None)
@@ -82,7 +89,7 @@ def sheet(k, stem, slug, name, task, shows):
             % (r[0], E(r[1]), r[2], r[3][:-5], " &middot; provisional" if r[5] == "Provisional" else "")) if r else ""
     alt = ("The cover of the SRS 2027 race calendar: %s, and the five rounds with their dates" % shows if not k else
            "The %s 2027 page of the SRS race calendar: %s, beside the month's dates" % (name, shows))
-    big, small = "%s%s-2400.webp" % (IMG, stem), "%s%s-1200.webp" % (IMG, stem)
+    big, small = pic(stem, 2400), pic(stem, 1200)
     dl = "SRS-2027-Race-Calendar-%s.webp" % name
     return '''<figure class="cal-sheet cal-%(lay)s" id="%(slug)s" data-share-box>
   <span class="cal-glow" style="background-image:url(%(small)s)" aria-hidden="true"></span>
@@ -122,7 +129,7 @@ def page():
                    '<li><span title="%s: on its way">%s</span></li>' % (p[2], p[2][:3]) for k, p in enumerate(PAGES))
     sheets = "\n".join(sheet(k, *p) for k, p in have)
     cover = PAGES[0]
-    c_small, c_big = "%s%s-1200.webp" % (IMG, cover[0]), "%s%s-2400.webp" % (IMG, cover[0])
+    c_small, c_big = pic(cover[0], 1200), pic(cover[0], 2400)
     rounds = "".join(
         '<li%s><span class="cal-r-n">Round %s</span><b>%s</b><span class="cal-r-c">%s</span><span class="cal-r-d">%s</span>'
         '<span class="cal-r-s">%s</span></li>' % (' class="is-prov"' if r[5] == "Provisional" else "", r[0], E(r[1]), r[2], r[3], r[5])

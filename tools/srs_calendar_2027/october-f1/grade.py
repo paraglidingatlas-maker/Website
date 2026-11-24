@@ -15,6 +15,18 @@ red = (r > g * 1.35) & (r > .4) & (sat > .4)             # the red stripes
 pil = (lum > .55) & (sat < .25)                          # the helmet
 wing = ((hue | red) * box[..., 0:1] > 0) | ((pil * box[..., 0:1]) > 0) & (yy0 := 0) == 0
 wing = (((hue | red) | (pil & (np.arange(H)[:, None, None] > 1370))) * box).astype(np.float32)
+# above the ridge the wing stands against sky only: there, anything not sky is wing (its shaded leading edge too),
+# filled across each row between the wing's outer edges
+rows = np.arange(H)[:, None, None] < 800
+sky = (b >= g * .97) | ((lum > .62) & (sat < .2))
+loose = (~sky & (lum > .06) & rows & (box > 0)).astype(np.float32)
+wing = np.maximum(wing, loose)
+wa = wing[..., 0] > .5
+for y in range(110, 800):
+    xs = np.nonzero(wa[y, 1300:1790])[0]
+    if len(xs) > 1:
+        wa[y, 1300 + xs[0]:1300 + xs[-1] + 1] = True
+wing = np.maximum(wing, wa[..., None].astype(np.float32))
 m = Image.fromarray((wing[..., 0] * 255).astype(np.uint8))
 m = m.filter(ImageFilter.MaxFilter(21)).filter(ImageFilter.MinFilter(21))   # close the black logo and seams
 from PIL import ImageDraw
