@@ -238,10 +238,10 @@ def transcripts(eps):
     return sum(1 for e in eps if os.path.exists(os.path.join(ROOT, "transcripts", e["slug"] + ".vtt")))
 
 
-def with_transcripts(n, total):
+def with_transcripts(n, total, every="every one with a full transcript"):
     """'every one with a full transcript' only when it is true; else how many have one."""
     if n == total:
-        return "every one with a full transcript" if total > 1 else "with a full transcript"
+        return every if total > 1 else "with a full transcript"
     return "%d with a full transcript" % n if n else "no transcript yet"
 
 
@@ -299,7 +299,7 @@ def build():
         eps = sorted(by_tag[tag], key=lambda e: (e.get("published") or "", e["title"]), reverse=True)
         s = slug(tag)
         desc = "%d Paragliding Atlas conversations about %s, %s." % (
-            len(eps), tag.lower(), with_transcripts(transcripts(eps), len(eps)))
+            len(eps), tag.lower(), with_transcripts(transcripts(eps), len(eps), "each with a full transcript"))
         if len(desc) > 158:
             desc = desc[:155].rsplit(" ", 1)[0] + "..."
         rows = []

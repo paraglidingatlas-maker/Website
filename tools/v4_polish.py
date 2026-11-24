@@ -1091,7 +1091,8 @@ def transcripts(rel, html):
     m = re.search(r"(\d+) conversations tagged [^,<]+, (\d+) of them with a complete transcript", html)
     if m and int(m.group(2)) < int(m.group(1)):
         html = html.replace('<p class="kit-intro">%s conversations, every one with a full transcript.</p>' % m.group(1),
-                            '<p class="kit-intro">%s conversations, %s with a full transcript.</p>' % (m.group(1), m.group(2)))
+                            '<p class="kit-intro">%s conversations, %s.</p>' % (m.group(1), "%s with a full transcript" % m.group(2)
+                                                                           if int(m.group(2)) else "no transcript yet"))
     return html
 
 
