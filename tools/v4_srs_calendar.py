@@ -112,7 +112,7 @@ def page():
     run = all(a[0] + 1 == b[0] for a, b in zip(have, have[1:]))
     here = ("%s to %s" % (months[0], months[-1]) if run and len(months) > 1 else ", ".join(months)) if months else ""
     soon = [p[2] for _, p in wait]
-    soon_run = "%s to %s" % (soon[0], soon[-1]) if len(soon) > 1 else (soon[0] if soon else "")
+    soon_run = ("%s to %s" if len(soon) > 2 else "%s and %s") % (soon[0], soon[-1]) if len(soon) > 1 else (soon[0] if soon else "")
     if wait:
         status = "The cover and %s are here. %s %s on %s way." % (here, soon_run, "are" if len(soon) > 1 else "is",
                                                                "their" if len(soon) > 1 else "its")
