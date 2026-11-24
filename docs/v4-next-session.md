@@ -84,7 +84,8 @@ pages) has its button in the opening. WHEN A PAGE'S IMAGE CHANGES the PDF and sh
 `python3 tools/srs_calendar_pdf.py` rebuilds both from the thirteen 2400px pages, then tools/v4_srs_calendar.py
 and v4_nav_live.py. The cover was replaced on 24 Nov (the owner with chat 30, from SRS_6_T1_51, lit on black, orange
 brush lettering: "fix the crop in the glider edges and then go live"; tools/srs_calendar_2027/cover-black/), the PDF
-and share.jpg rebuilt with it. A first "F1 HUD" cover was rejected before it was pushed. Left: wallpapers (waiting on the owner). NOT LIVE, do not publish without
+and share.jpg rebuilt with it. A first "F1 HUD" cover was rejected before it was pushed. That black cover was itself replaced the same night by the
+"studio" one (grey studio, SRS 2027 faint behind; owner: "go"; tools/srs_calendar_2027/cover-studio/). Left: wallpapers (waiting on the owner). NOT LIVE, do not publish without
 the owner's word: the design chat's reworked "v2" pages (a season line on every page) on its branch under
 handoff/srs-calendar-2027/v2/; if he says yes they replace 01 to 10, October to December need the same line,
 and the PDF must be remade. The page images carry

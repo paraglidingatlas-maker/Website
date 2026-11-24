@@ -48,7 +48,7 @@ ROUNDS = [("01", "Lijak", "Slovenia", "15 to 21 Mar 2027", 3, "Confirmed"),
           ("05", "St André", "France", "12 to 19 Sep 2027", 9, "Confirmed")]
 # file stem, anchor, name, the Tapalpa task its photo is from, what the photo shows
 PAGES = [("01-cover", "cover", "Cover", "Task 1",
-          "a pilot in a pod harness under an orange and navy wing, lit on black above its reflection, SRS 2027 in orange brush lettering behind"),
+          "a pilot in a pod harness under an orange and navy wing, lit in a grey studio, SRS 2027 set faintly behind"),
          ("02-january", "january", "January", "Task 6", "a pink, orange and yellow wing against dark forest"),
          ("03-february", "february", "February", "Task 6", "an orange and teal wing, the ground a blur behind it"),
          ("04-march", "march", "March", "Task 4", "a white and blue wing banking"),
