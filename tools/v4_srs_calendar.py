@@ -61,6 +61,7 @@ PAGES = [("01-cover", "cover", "Cover", "Task 6", "a pilot in an orange pod harn
          ("12-november", "november", "November", "Task 6", "a pilot in a yellow pod under a yellow wing, seen from above over rows of greenhouses"),
          ("13-december", "december", "December", "Task 6",
           "a pilot in a pod harness under a lime wing, the daylight sky graded to sunset colours")]
+PDF = "SRS-2027-Race-Calendar.pdf"   # the whole calendar (the design chat, 24 Nov 2026); its button shows when the file is there
 W, H = 2400, 1696              # every page: A4 landscape
 
 
@@ -151,6 +152,15 @@ def page():
   </div>
 </section>''' % (soon_run, "are being made now, one page at a time, and will appear here as each is finished." if len(soon) > 1
                  else "is being made now and will appear here when it is finished.", tiles)
+    pdf = pdf_note = ""
+    what = "any page"
+    pdf_path = os.path.join(V4, IMG, PDF)
+    if os.path.isfile(pdf_path) and not wait:        # the PDF is the complete calendar: only beside all twelve months
+        mb = os.path.getsize(pdf_path) / 1e6
+        pdf = ('        <a class="btn-lines" href="%s%s?v=%s" download="%s" data-hover>Download the PDF</a>\n'
+               % (IMG, PDF, M.ver(IMG + PDF), PDF))
+        pdf_note = " The PDF is the whole calendar: %d pages, A4 landscape, %.1f MB." % (len(have), mb)
+        what = "the whole calendar as a PDF or any page on its own"
     main = '''
 <!-- chat 29, 23 Nov 2026: the SRS 2027 race calendar (tools/v4_srs_calendar.py). The signature moment: every page
      of the calendar lies on a glow of its own colours, like a print under a lamp. Reduced motion and no JavaScript
@@ -162,13 +172,13 @@ def page():
     <div class="cal-open-copy">
       <span class="kit-kicker">Sports-Class Racing Series &middot; Download</span>
       <h1>SRS 2027 Race Calendar</h1>
-      <p class="kit-intro">The five rounds of the 2027 season, month by month, on photographs from SRS Tapalpa 2026. Download any page, or put the rounds in your own calendar.</p>
+      <p class="kit-intro">The five rounds of the 2027 season, month by month, on photographs from SRS Tapalpa 2026. Download %(what)s, or put the rounds in your own calendar.</p>
       <p class="cal-status">%(status)s</p>
       <div class="cal-cta">
         <a class="btn-solid" href="%(ics)s" download="srs-2027.ics" data-hover><span>Add to Calendar</span></a>
-        <a class="btn-lines" href="#cover" data-hover>See the Pages</a>
+%(pdf)s        <a class="btn-lines" href="#cover" data-hover>See the Pages</a>
       </div>
-      <p class="cal-fine">Add to Calendar downloads one small file (.ics) with the five rounds as all-day events. Apple Calendar, Google Calendar and Outlook open it.</p>
+      <p class="cal-fine">Add to Calendar downloads one small file (.ics) with the five rounds as all-day events. Apple Calendar, Google Calendar and Outlook open it.%(pdf_note)s</p>
     </div>
     <a class="cal-open-sheet" href="%(c_big)s" data-cal="0" aria-label="The cover: see the page large">
       <img src="%(c_small)s" srcset="%(c_small)s 1200w, %(c_big)s 2400w" sizes="(max-width:900px) 92vw, 52vw" width="%(w)d" height="%(h)d" alt="The cover of the SRS 2027 race calendar" fetchpriority="high">
@@ -213,7 +223,7 @@ def page():
   <button class="cal-lb-x" type="button" aria-label="Close the page"></button>
 </dialog>
 </div>
-''' % dict(n=len(have), c_small=c_small, c_big=c_big, status=status, ics=IMG + "srs-2027.ics", w=W, h=H, rail=rail,
+''' % dict(pdf=pdf, pdf_note=pdf_note, what=what, n=len(have), c_small=c_small, c_big=c_big, status=status, ics=IMG + "srs-2027.ics", w=W, h=H, rail=rail,
            sheets=sheets, coming=coming, rounds=rounds, srs=SRS, read=READ)
     desc = ("The SRS 2027 race calendar by Paragliding Atlas: the five rounds of the Sports-Class Racing Series, month by "
             "month, on photographs from SRS Tapalpa 2026. Download each page, or add the rounds to your calendar.")
