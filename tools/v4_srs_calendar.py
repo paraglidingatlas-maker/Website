@@ -59,7 +59,8 @@ PAGES = [("01-cover", "cover", "Cover", "Task 6", "a pilot in an orange pod harn
          ("10-september", "september", "September", "Task 3", "a gaggle of wings in a blue sky above the clouds"),
          ("11-october", "october", "October", "Task 3", "a pilot in a yellow pod harness under a lime wing, light trails streaked behind him"),
          ("12-november", "november", "November", "Task 6", "a pilot in a yellow pod under a yellow wing, seen from above over rows of greenhouses"),
-         ("13-december", "december", "December", "", "")]
+         ("13-december", "december", "December", "Task 6",
+          "a pilot in a pod harness under a lime wing, the daylight sky graded to sunset colours")]
 W, H = 2400, 1696              # every page: A4 landscape
 
 
