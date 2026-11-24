@@ -4,6 +4,66 @@ Start here, then read `docs/v4-plan.md` (the brief and the owner's rules) and
 the progress table in `docs/v4-report.md` (rows 0 to 43). Everything below is
 the owner's current queue and what the last session learnt doing it.
 
+## Chat 31 starts here (24 Nov 2026, from chat 30): audit backlog, the held-back text fixes, parked owner items
+**Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
+has grown long, hand over without asking the owner: write the handover at the top of this file, update the
+owner's map (https://claude.ai/artifact/CBTZTQhwDrP8AZswj5PFV5, collection "modules", box w-media), open the next
+numbered chat yourself with the session tools (create_session), and give the owner its link. If create_session is
+refused, give the owner the prompt to paste.
+
+**Branch:** start claude/chat31 from claude/chat30 (it holds this handover; main merged in up to the studio cover,
+f34bcdc). Merge origin/main first, never rebase or force.
+
+**Other website chats (message before every push to main):** chat 25 (session_018Da7i8zPtHufNaTNd97Qik) Tapalpa;
+chat 28 (session_018Da7i6VpcykdWKJdoa1b2T) translations (wave 2 on claude/i18n-wave2, paused on the owner;
+data-share-title attributes are translated segments); chat 29 (session_018Da7i8f9zcFTF92MPPAuQT) owns
+srs-2027-calendar.html, the nav label and tools/srs_calendar_pdf.py (rebuilds the PDF and share.jpg when a page
+changes); the calendar design chat (session_018Da7i8GvmpTqQuksKDnhdU) holds an unpublished "v2" set of January to
+September (its cover is superseded). **No pushes to main 02:30-08:00 UTC, and no hand-offs that reach main then**
+(chat 30 broke this once: the studio cover went to main at 03:27 UTC on 24 Nov; told the owner).
+
+**LIVE, done by chat 30 (all checked on paraglidingatlas.com):**
+- 23 Nov (cf72e1b): a Share button on all 93 episode pages (filmed: their YouTube link; audio-only: the page) and on
+  every trip photo (Kenya and Panchgani galleries, India's overview .kfly steps); page#photo-<file> lands on it
+  (v2-immersive.js part 14). tools/v4_ux.py episode_share, trip_photo_share; no-script rule in v4-share.css (the live
+  audit fails any episode page whose own HTML holds display:none). Podcast .ep-play-btn-lg named "Play episode"
+  (src/v4-ux-latest.js; rss-feed.js is never edited); templates/sitemap-template.html one meta description.
+- 24 Nov, via chat 29 (it publishes; chat 30 hands over images on branch claude/srs-calendar-october, handoff/):
+  October (SRS_6_T3_82, F1 streaks and light trails), November (SRS_6_T6_89, broadcast teal, wing toned down),
+  December (SRS_6_T6_106, sunset finale), and the cover (SRS_6_T1_51 as a grey studio shot, the glider matted with
+  a difference matte). Scripts in tools/srs_calendar_2027/{october-f1,november-bc,december-dusk,cover-studio}.
+
+**Owner's design rules learnt here (24 Nov):** lines are never removed from a close-up glider shot (blur the
+background only around a mask that includes the lines, or matte them); a different style for each picture; the
+words "Paragliding Atlas" appear once on a design (the logo counts); no teal/cyan HUD palette ("horrible"); never
+over-expose a wing (hold the highlights back); the owner likes studio-lit, F1-poster references; nothing invented
+on designs (no fake telemetry; facts only: rounds, dates, task, place, photo credit).
+
+**Your queue:**
+1. Held-back text fixes (source done in 799b603, reverted in 799e22e because the v4 copies did not follow and the
+   switch check failed): topic pages' "every one with a full transcript" (generate_tag_pages.py: count with
+   transcripts/<slug>.vtt; 78 of 93 have one) and the Tom Lolies title double space (episode-meta.json,
+   youtube_video_ids.json). Re-apply, then regenerate the v4 copies (prototypes/v4/tags/*.html and
+   episodes/tom-lolies-...html: find which v4 step writes them) so tools/v2_switch.py --site v4 --dry-run passes.
+2. Audit backlog (14 Nov): podcast.html "Latest videos" dead (YouTube feeds/videos.xml 404; a build-time list
+   instead); the service worker never installs (offline.html 404 at /assets/v4/; tools/v4_pwa.py, v2_switch.py);
+   gallery thumbs 800w only (add 400w + srcset), Bassano/Pegalajar maxresdefault thumbs (tools/v4_media.py thumb()),
+   home himalayas-1.webp 374 KB; tags/pegalajar misses "Highlights Day 1 - PWCA Superfinal 2026"; touch targets
+   < 44px (footer links, cd-ts, library search, media e-watch); dead link up-paragliders.com/news/almost-200km-...;
+   library "date to supply" (v4_library_e.py:120). Left alone on purpose: home links to index.html not / (site-wide
+   pattern, both work).
+3. If the owner wants them: the wallpapers (phone and desktop, broadcast style from SRS_6_T6_68; F1 HUD from
+   SRS_6_T1_51) as downloads on the calendar page (chat 29's page): files in handoff/srs-calendar-2027/extras/ on
+   claude/srs-calendar-october, with five unpicked December alternatives.
+4. Parked by the owner, only when they bring it up: Panchgani FAQ, vidIQ fixes, talk thumbnails, Newsletter 01
+   (NEVER send, schedule or test-send without the owner's explicit yes).
+- Build lessons (unchanged): fresh worktree, ./build.sh, python3 tools/v4_build.py, then python3 tools/v4_gates.py
+  (it starts its own server on 8765; starting one by hand was refused by the permission check here). Only
+  live-untouched and the sitemap lastmod audit may FAIL. Copy back only prototypes/v4, and commit uncommitted work
+  first (a cp -a of prototypes/v4 overwrote an uncommitted src/ edit once).
+- Rules: nothing invented ([to supply]); never two builds at once; never force-push; merge, don't rebase; no model
+  IDs in commits; after each live push give the owner a paraglidingatlas.com link.
+
 ## Chat 30 starts here (23 Nov 2026, from chat 26): Share buttons on episode pages, audit backlog, parked owner items
 **Standing rule (copy it into every handover):** website chats are numbered. When your job is done, or the chat
 has grown long, hand over without asking the owner: write the handover at the top of this file, update the
