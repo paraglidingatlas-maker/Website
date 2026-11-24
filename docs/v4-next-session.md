@@ -77,8 +77,9 @@ give the owner the prompt to paste.
 carried "Live from SRS", "SRS 2027 Calendar" (owner, 23 Nov: "put this online and put the lable in the place next
 instead of srs lvie"; later the same day: "use different styles for different pics and give me a link where i can
 clik and enter the calendar"). September went in the same evening and October on 24 Nov (made by chat 30 with the owner, "f1 style
-with streams and light trails"; its scripts: tools/srs_calendar_2027/october-f1/): eleven pages; November and
-December to come. Chat 29
+with streams and light trails"; its scripts: tools/srs_calendar_2027/october-f1/): and November the same night (chat 30 again,
+from SRS_6_T6_89; tools/srs_calendar_2027/november-bc/): twelve pages; December to come. The page images carry
+?v= their content hash (pic() in the generator), so a corrected page gets past caches. Chat 29
 keeps the box "w-srs-calendar" until the last months are in. "Chat 30" is chat 26's successor
 (session_018Da7i86qZYkBT7A9sorMu7: media, newsletter, audit), so the calendar's next chat is 31.
 
