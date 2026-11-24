@@ -14,7 +14,8 @@ const PAGES=[
   sh:'linear-gradient(90deg,rgba(20,21,25,.72) 0%,rgba(20,21,25,.3) 34%,rgba(20,21,25,0) 52%),linear-gradient(180deg,rgba(20,21,25,.4) 0%,rgba(20,21,25,0) 14%,rgba(20,21,25,0) 62%,rgba(20,21,25,.9) 90%,#141519 100%)',cap:'Tapalpa, Mexico',sub:'SRS 2026 · Task 6'},
  {file:'03-february',type:'quiet',m:2,img:'t6_100_nat.jpg',size:'297mm auto',pos:'0 0',t:{x:12,y:24,w:118,max:26},c:{x:12,y:104},
   sh:'linear-gradient(90deg,rgba(20,21,25,.93) 0%,rgba(20,21,25,.84) 32%,rgba(20,21,25,0) 58%),linear-gradient(180deg,rgba(20,21,25,.7) 0%,rgba(20,21,25,0) 18%,rgba(20,21,25,0) 70%,rgba(20,21,25,.92) 91%,#141519 100%)',cap:'Tapalpa, Mexico',sub:'SRS 2026 · Task 6'},
- {file:'04-march',type:'round',m:3,img:'t6_89_e.jpg',cut:'t6_89_ecut.png',size:'360mm auto',pos:'-42.6mm -1mm',cap:'Tapalpa, Mexico',sub:'SRS 2026 · Task 6'},
+ {file:'04-march',type:'fan',m:3,head:'tr',hw:100,img:'t6_t454_sd.jpg',size:'auto 175mm',pos:'0 0',
+  sh:'linear-gradient(270deg,#141519 0,#141519 50mm,rgba(20,21,25,.5) 96mm,rgba(20,21,25,0) 150mm),linear-gradient(180deg,rgba(20,21,25,.3) 0%,rgba(20,21,25,0) 14%,rgba(20,21,25,0) 84%,#141519 100%)',cap:'Tapalpa, Mexico',sub:'SRS 2026 · Task 4',capL:true},
  {file:'05-april',type:'fan',m:4,head:'tl',hw:88,img:'t6_t494_fx.jpg',size:'262mm auto',pos:'35mm 0',
   sh:'linear-gradient(90deg,#141519 0,#141519 37mm,rgba(20,21,25,.55) 80mm,rgba(20,21,25,0) 150mm),linear-gradient(180deg,rgba(20,21,25,.35) 0%,rgba(20,21,25,0) 16%,rgba(20,21,25,0) 80%,#141519 100%)',cap:'Tapalpa, Mexico',sub:'SRS 2026 · Task 4'},
  {file:'06-may',type:'fan',m:5,head:'tl',hw:92,img:'t6_t4152_nat.jpg',size:'297mm auto',pos:'0 -18mm',
@@ -262,6 +263,7 @@ html,body{width:297mm;height:210mm;background:#141519;color:#f6f4f4;font-family:
 /* ===== v2: the three designers combined ===== */
 .tagn{display:inline-block;font:800 3.3mm/1 Poppins;letter-spacing:.14em;color:#f6f4f4;padding:2mm 3.4mm;transform:skewX(-12deg);box-shadow:0 0 0 .3mm rgba(246,244,244,.75) inset;white-space:nowrap}
 .cr2{color:#8d8c92}
+.capl{position:absolute;right:12mm;top:160mm;text-align:right}.capl .lb{display:block}.capl .lb+.lb{margin-top:2.2mm;color:#8d8c92}
 .capv{position:absolute;right:5.5mm;top:12mm;writing-mode:vertical-rl}
 /* quiet month: the month is the headline, the calendar sits in the photo's own dark */
 .qm .ph{position:absolute;inset:0;background-repeat:no-repeat}
@@ -425,11 +427,11 @@ function fxRow(m){const {r,here}=rinfo(m);if(!r)return '<span class="lb">Season 
  return here?`<span class="tagf">ROUND ${pad(r.n)}</span><span class="co">${r.country}</span><span class="dt">${span(r)}</span>${statusTag(r)}`
   :`<span class="tagn">${nextLab(r,false)}</span><span class="co">${r.place}, ${r.country}</span><span class="dt">${span(r)}</span>${statusTag(r)}`}
 function fan(p){const m=p.m,{r,here}=rinfo(m),tl=p.head=='tl',H=headline(m,p.hw||128,21,34),two=H.lines.length>1;
- const fxTop=tl?23:(two?120:126.5), bigTop=tl?32.5:(two?130:136.5);
+ const tr=p.head=='tr', fxTop=tl||tr?23:(two?120:126.5), bigTop=tl||tr?32.5:(two?130:136.5), side=tr?'left:auto;right:12mm;':'';
  return `<div class="pg fs"><div class="ph" style="${bgf(p,p.img)}"></div><div class="sh"${p.sh?` style="background:${p.sh}"`:''}></div>
-<div class="top"><span class="lb">SRS <span class="red">/</span> 2027 &nbsp;·&nbsp; Race Calendar</span>${p.capV?'':`<span class="lb">Photographed at ${p.cap} · ${p.sub} &nbsp;·&nbsp; ${CREDIT}</span>`}</div>${p.capV?`<div class="capv lb">${p.cap} · ${p.sub} &nbsp;·&nbsp; ${CREDIT}</div>`:''}
-<div class="fx" style="top:${fxTop}mm">${fxRow(m)}</div>
-<div class="big" style="--fs:${H.fs.toFixed(1)}mm;top:${bigTop}mm">${H.lines.join('<br>')}</div>
+<div class="top"><span class="lb">SRS <span class="red">/</span> 2027 &nbsp;·&nbsp; Race Calendar</span>${p.capV||p.capL?'':`<span class="lb">Photographed at ${p.cap} · ${p.sub} &nbsp;·&nbsp; ${CREDIT}</span>`}</div>${p.capL?`<div class="capl"><span class="lb">Photographed at ${p.cap} · ${p.sub}</span><span class="lb">${CREDIT}</span></div>`:''}${p.capV?`<div class="capv lb">${p.cap} · ${p.sub} &nbsp;·&nbsp; ${CREDIT}</div>`:''}
+<div class="fx" style="${side}top:${fxTop}mm">${fxRow(m)}</div>
+<div class="big" style="${side}${tr?'text-align:right;':''}--fs:${H.fs.toFixed(1)}mm;top:${bigTop}mm">${H.lines.join('<br>')}</div>
 ${rowBlock(m,here?MN[m-1]:'2027')}</div>`}
 function depthrow(p){const m=p.m,{r,here}=rinfo(m);
  return `<div class="pg fs dr"><div class="ph" style="${bgf(p,p.img)}"></div><div class="sh"></div>
