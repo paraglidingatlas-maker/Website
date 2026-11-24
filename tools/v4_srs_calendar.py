@@ -145,10 +145,11 @@ def page():
 <section class="kit-band cal-soon" id="on-their-way" aria-labelledby="cal-soon-t">
   <div class="kit-in">
     <div class="kit-head"><span class="kit-kicker">Still Being Made</span><h2 class="kit-title" id="cal-soon-t">On Their Way</h2>
-      <p class="kit-intro">%s %s being made now, one page at a time, and will appear here as each is finished. Wallpapers and the complete calendar as one PDF follow once all twelve months are done.</p></div>
+      <p class="kit-intro">%s %s Wallpapers and the complete calendar as one PDF follow once all twelve months are done.</p></div>
     <ul class="cal-wait">%s</ul>
   </div>
-</section>''' % (soon_run, "are" if len(soon) > 1 else "is", tiles)
+</section>''' % (soon_run, "are being made now, one page at a time, and will appear here as each is finished." if len(soon) > 1
+                 else "is being made now and will appear here when it is finished.", tiles)
     main = '''
 <!-- chat 29, 23 Nov 2026: the SRS 2027 race calendar (tools/v4_srs_calendar.py). The signature moment: every page
      of the calendar lies on a glow of its own colours, like a print under a lamp. Reduced motion and no JavaScript
