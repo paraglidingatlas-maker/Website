@@ -80,7 +80,10 @@ clik and enter the calendar"). September went in the same evening and October on
 with streams and light trails"; its scripts: tools/srs_calendar_2027/october-f1/): and November the same night (chat 30 again,
 from SRS_6_T6_89; tools/srs_calendar_2027/november-bc/): then December (SRS_6_T6_106, a sunset grade;
 tools/srs_calendar_2027/december-dusk/): all thirteen pages are in and "On Their Way" has gone. The complete PDF (the design chat, 24 Nov; img/calendar/srs-2027/SRS-2027-Race-Calendar.pdf, made from the live
-pages) has its button in the opening. Left: wallpapers (waiting on the owner). NOT LIVE, do not publish without
+pages) has its button in the opening. WHEN A PAGE'S IMAGE CHANGES the PDF and share.jpg (the cover) must follow:
+`python3 tools/srs_calendar_pdf.py` rebuilds both from the thirteen 2400px pages, then tools/v4_srs_calendar.py
+and v4_nav_live.py. A new cover is in the making (the owner with chat 30; a first "F1 HUD" one from SRS_6_T1_51
+was rejected before it was pushed: "the colors used are horrible use a different concept"). Left: wallpapers (waiting on the owner). NOT LIVE, do not publish without
 the owner's word: the design chat's reworked "v2" pages (a season line on every page) on its branch under
 handoff/srs-calendar-2027/v2/; if he says yes they replace 01 to 10, October to December need the same line,
 and the PDF must be remade. The page images carry
