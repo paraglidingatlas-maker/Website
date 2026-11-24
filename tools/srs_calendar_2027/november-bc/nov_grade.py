@@ -24,11 +24,13 @@ yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
 vig = np.clip(1.2 - 1.0 * np.sqrt(((xx - W * .62) / W) ** 2 + ((yy - H * .5) / H) ** 2) ** 1.4, .28, 1)[..., None]
 bg = bg * vig
 gs = Image.fromarray((wing[..., 0] * 255).astype(np.uint8))
-glow = sum(np.asarray(gs.filter(ImageFilter.GaussianBlur(rr))).astype(np.float32)[..., None] / 255 * k for rr, k in ((10, .45), (50, .45), (140, .35)))
+glow = sum(np.asarray(gs.filter(ImageFilter.GaussianBlur(rr))).astype(np.float32)[..., None] / 255 * k for rr, k in ((10, .16), (50, .16), (140, .14)))
 glow = glow * np.array([1.0, .78, .1], np.float32)
 x = 1 - (1 - np.clip(bg, 0, 1)) * (1 - np.clip(glow, 0, 1))
-w2 = src + (src - lum) * .2
-x = x * (1 - wing) + np.clip(w2 * 1.05, 0, 1) * wing
+w2 = src + (src - lum) * .12
+w2 = np.clip(w2, 0, 1) * .86
+w2 = np.where(w2 > .55, .55 + (w2 - .55) * .62, w2)          # roll the highlights off: the panels and seams show
+x = x * (1 - wing) + w2 * wing
 x = np.clip(x + np.random.default_rng(6).normal(0, .009, (H, W, 1)).astype(np.float32), 0, 1)
 Image.fromarray((x * 255 + .5).astype(np.uint8)).save(D + '/work/nov_bc.jpg', quality=95, subsampling=0)
 print('ok', round(float(wing.mean()), 4))
