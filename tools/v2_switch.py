@@ -39,6 +39,7 @@ v2 generators read the freshly generated live pages as their input.
 import argparse
 import datetime
 import html
+import json
 import os
 import re
 import shutil
@@ -194,7 +195,50 @@ def apply(root, problems=None):
             fh.write(out)
         n += 1
     list_new_pages(root)
+    app_pass(root)
     return n
+
+
+def app_pass(root):
+    """The v4 app's root-level pass (tools/v4_pwa.py; audit 14 Nov 2026: the offline rules never installed).
+    A service worker only controls pages at or below its own folder, so at assets/v4/sw.js it controlled no
+    page, and its precache asked for assets/v4/offline.html, which was never published, so install failed.
+    Here: sw.js goes to the site root with its precache paths from the root; the offline page is published
+    beside the other app files with its /prototypes/v4/ links turned to the asset folder; pwa.js registers
+    the root sw.js; the manifest's start page, scope and shortcuts point at the site root."""
+    adir = os.path.join(root, ASSET_DIR)
+    sw = os.path.join(V2, "sw.js")
+    if not os.path.exists(sw):
+        return
+    up = "/".join(".." for _ in ASSET_DIR.strip("/").split("/")) + "/"      # assets/v4/ -> ../../
+    s = open(sw, encoding="utf-8").read()
+    m = re.search(r"const PRECACHE = (\[.*?\]);", s)
+    pre = [os.path.normpath(os.path.join(ASSET_DIR, p)).replace(os.sep, "/") for p in json.loads(m.group(1))]
+    s = s.replace(m.group(0), "const PRECACHE = %s;" % json.dumps(pre))
+    s = s.replace("caches.match('offline.html'", "caches.match('%s/offline.html'" % ASSET_DIR.strip("/"))
+    with open(os.path.join(root, "sw.js"), "w", encoding="utf-8") as fh:
+        fh.write(s)
+    off = os.path.join(V2, "offline.html")
+    if os.path.exists(off):
+        t = open(off, encoding="utf-8").read().replace("/prototypes/%s/" % S.NAME, "/%s/" % ASSET_DIR.strip("/"))
+        with open(os.path.join(adir, "offline.html"), "w", encoding="utf-8") as fh:
+            fh.write(t)
+    pj = os.path.join(adir, "pwa.js")
+    if os.path.exists(pj):
+        t = open(pj, encoding="utf-8").read().replace("register(root + 'sw.js')", "register(root + '%ssw.js')" % up)
+        with open(pj, "w", encoding="utf-8") as fh:
+            fh.write(t)
+    mf = os.path.join(adir, "manifest.webmanifest")
+    if os.path.exists(mf):
+        d = json.load(open(mf, encoding="utf-8"))
+        fix = lambda u: up + u[2:] if u.startswith("./") else u
+        for k in ("id", "start_url", "scope"):
+            if k in d:
+                d[k] = fix(d[k])
+        for sc in d.get("shortcuts", []):
+            sc["url"] = fix(sc["url"])
+        with open(mf, "w", encoding="utf-8") as fh:
+            json.dump(d, fh, indent=1)
 
 
 def list_new_pages(root):
